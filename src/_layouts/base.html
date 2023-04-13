@@ -89,13 +89,25 @@
 
     <div id="overlay-under-drawer"></div>
 
-    {% include header.html %}
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | append: cache_bust }}">
+  {% for css in page.css -%}
+  {% assign asset_path = '/assets/css/{{css}}' -%}
+  <link rel="stylesheet" href="{{ asset_path | append: cache_bust }}">
+  {% endfor -%}
+</head>
+<body{% if page.body_class %} class="{{ page.body_class }}" {% endif %}>
 
     {% if site.show_banner != false and show_banner != false -%}
     {% render banner.html %}
     {% endif -%}
 
-    {{ content }}
+  {% if jekyll.environment == "production" %}
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id={{ site.google_tag_manager_id }}" height="0" width="0"
+      style="display:none;visibility:hidden">
+    </iframe>
+  </noscript>
+  {% endif %}
 
     {% render footer.html %}
 

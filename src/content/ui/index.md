@@ -1,6 +1,6 @@
 ---
 title: Construindo interfaces de usuário com Flutter
-short-title: IU
+short-title: UI
 description: Introdução ao desenvolvimento de interfaces de usuário no Flutter.
 
 js:

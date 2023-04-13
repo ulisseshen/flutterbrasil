@@ -1,10 +1,10 @@
 ---
 title: Introdução aos widgets
 description: Aprenda sobre os widgets do Flutter.
+show_translate: true
 js:
   - defer: true
     url: https://dartpad.dev/inject_embed.dart.js
-traduzida: true
 ---
 
 <?code-excerpt path-base="ui/widgets_intro/"?>

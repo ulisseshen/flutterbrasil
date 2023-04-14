@@ -96,6 +96,7 @@ defaults:
       show_banner: true
       show_footer: true
       show_translate: false
+      translate_in_progress: false
   - scope:
       path: ''
     values:

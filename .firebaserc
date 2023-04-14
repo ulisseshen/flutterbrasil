@@ -8,6 +8,9 @@
     "sz": "sz-flutter",
     "sz2": "sz-flutter-2",
     "ft": "flutter-web-staging",
-    "bt": "flt-test"
-  }
+    "bt": "flt-test",
+    "prod": "transliteradu"
+  },
+  "targets": {},
+  "etags": {}
 }

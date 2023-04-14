@@ -103,6 +103,8 @@
 
   {% if page.show_translate %}
   <div class="alert-translate">Esta página foi traduzida usando IA.</div>
+  {% elsif page.translate_in_progress %}
+  <div class="alert-translate">Tradução em progresso. Seja paciente</div>
   {% else %}
   <div class="alert-translate">Página ainda não traduzida. Solicitar tradução <a href="#vote">vote</a></div>
   {% endif %}

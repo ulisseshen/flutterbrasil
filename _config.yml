@@ -95,7 +95,8 @@ defaults:
       show-nav-get-started-button: true
       show_banner: true
       show_footer: true
-      traduzida: false
+      show_translate: false
+      translate_in_progress: false
   - scope:
       path: ''
     values:

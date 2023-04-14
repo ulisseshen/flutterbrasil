@@ -48,7 +48,7 @@ function adjustToc() {
 
   if (tocHeader) {
     tocHeader.addEventListener('click', function (_) {
-      $('html, body').animate({scrollTop: 0}, 'fast');
+      $('html, body').animate({ scrollTop: 0 }, 'fast');
     });
   }
 
@@ -60,6 +60,7 @@ function initFixedColumns() {
   var bannerSelector = '.site-banner';
   var footerSelector = 'footer.site-footer';
   var headerSelector = '.site-header';
+  var translateSelector = '.alert-translate';
   var fixedColumns = $(fixedColumnsSelector);
 
   function adjustFixedColumns() {
@@ -69,6 +70,7 @@ function initFixedColumns() {
     }
 
     var headerHeight = $(headerSelector).outerHeight();
+    var translateHeight = $(translateSelector).outerHeight();
     var bannerVisibleHeight = 0;
     // First, make sure the banner element even exists on the page.
     if ($(bannerSelector).length > 0) {
@@ -76,9 +78,19 @@ function initFixedColumns() {
       var bannerOffset = $(bannerSelector).offset().top;
       var bannerPosition = bannerOffset - $(window).scrollTop();
       bannerVisibleHeight =
-          Math.max(bannerHeight - (headerHeight - bannerPosition), 0);
+        Math.max(bannerHeight - (headerHeight - bannerPosition), 0);
     }
-    var topOffset = headerHeight + bannerVisibleHeight;
+
+    var translateVisibleHeight = 0;
+    if ($(translateSelector).length > 0) {
+      var translateOffset = $(translateSelector).offset().top;
+      var translatePosition = translateOffset - $(window).scrollTop();
+      if (translatePosition > headerHeight) {
+        translateVisibleHeight = translateHeight;
+      }
+    }
+
+    var topOffset = headerHeight + bannerVisibleHeight + translateVisibleHeight;
 
     var footerOffset = $(footerSelector).offset().top;
     var footerPosition = footerOffset - $(window).scrollTop();
@@ -95,9 +107,11 @@ function initFixedColumns() {
 
     // listen for scroll and execute once
     $(window).scroll(adjustFixedColumns);
+    $(window).resize(adjustFixedColumns);
     adjustFixedColumns();
   }
 }
+
 
 function getOS() {
   var ua = navigator.userAgent;
@@ -249,7 +263,7 @@ function initCookieNotice() {
 
   agreeBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    Cookies.set(cookieKey, cookieConsentValue, {sameSite: 'strict', expires: 30});
+    Cookies.set(cookieKey, cookieConsentValue, { sameSite: 'strict', expires: 30 });
     notice.classList.remove(activeClass);
   });
 }

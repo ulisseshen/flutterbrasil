@@ -8,7 +8,9 @@
     "sz": "sz-flutter",
     "sz2": "sz-flutter-2",
     "ft": "flutter-web-staging",
-    "ats": "tony-flutter-site",
-    "filiph": "flutter-website-filiph-staging"
-  }
+    "bt": "flt-test",
+    "prod": "transliteradu"
+  },
+  "targets": {},
+  "etags": {}
 }

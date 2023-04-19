@@ -5,7 +5,7 @@ toc: false
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
-translate_in_progress: true
+show_translate: true
 ---
 
 <?code-excerpt path-base="layout/constraints/"?>

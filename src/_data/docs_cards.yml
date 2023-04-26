@@ -1,18 +1,18 @@
-- name: Get started
-  description: Set up your environment and start building.
+- name: Começando
+  description: Configure seu ambiente e comece a desenvolver.
   url: /get-started/install
-- name: Widget catalog
-  description: Dip into the rich set of Flutter widgets available in the SDK.
+- name: Catálogo de widgets
+  description: Mergulhe no rico conjunto de widgets Flutter disponíveis no SDK.
   url: /ui/widgets
-- name: API docs
-  description: Bookmark the API reference docs for the Flutter framework.
+- name: Documentação da API
+  description: Acesse a documentação de referência da API para o framework Flutter.
   url: https://api.flutter.dev/
 - name: Cookbook
-  description: Browse the cookbook for many easy Flutter recipes.
+  description: Navegue pelo cookbook para encontrar muitas receitas fáceis de Flutter.
   url: /cookbook
-- name: Samples
-  description: Check out the Flutter examples.
+- name: Exemplos
+  description: Confira os exemplos do Flutter.
   url: https://flutter.github.io/samples
-- name: Videos
-  description: View the many videos on the Flutter YouTube channel.
+- name: Vídeos
+  description: Assista a muitos vídeos no canal do Flutter no YouTube.
   url: https://www.youtube.com/@flutterdev

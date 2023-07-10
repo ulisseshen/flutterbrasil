@@ -1,11 +1,11 @@
 title: Flutter
-url: https://docs.flutter.dev
-main-url: https://flutter.dev
+url: https://docs.flutterbrasil.dev
+main-url: https://flutterbrasil.dev
 email: flutter-dev@googlegroups.com
 
 google_analytics_id: UA-67589403-1
 google_site_verification: HFqxhSbf9YA_0rBglNLzDiWnrHiK_w4cqDh2YD2GEY4
-google_tag_manager_id: GTM-ND4LWWZ
+google_tag_manager_id: G-9ZWV29YQ23
 default_share_image: /assets/images/flutter-logo-sharing.png
 
 
@@ -102,17 +102,25 @@ defaults:
     values:
       toc: true
   - scope:
+      path: 'accessibility-and-localization'
+    values:
+      show_breadcrumbs: true
+  - scope:
+      path: 'add-to-app'
+    values:
+      show_breadcrumbs: true
+  - scope:
       path: 'cookbook'
     values:
       show_breadcrumbs: true
   - scope:
-      path: 'development'
+      path: 'data-and-backend'
     values:
       show_breadcrumbs: true
   - scope:
-      path: 'development/ui/widgets'
+      path: 'deployment'
     values:
-      toc: false
+      show_breadcrumbs: true
   - scope:
       path: 'get-started'
     values:
@@ -122,9 +130,37 @@ defaults:
     values:
       show_breadcrumbs: false
   - scope:
+      path: 'packages-and-plugins'
+    values:
+      show_breadcrumbs: true
+  - scope:
+      path: 'perf'
+    values:
+      show_breadcrumbs: true
+  - scope:
+      path: 'platform-integration'
+    values:
+      show_breadcrumbs: true
+  - scope:
       path: 'release'
     values:
       show_breadcrumbs: true
+  - scope:
+      path: 'testing'
+    values:
+      show_breadcrumbs: true
+  - scope:
+      path: 'tools'
+    values:
+      show_breadcrumbs: true
+  - scope:
+      path: 'ui'
+    values:
+      show_breadcrumbs: true
+  - scope:
+      path: 'ui/widgets'
+    values:
+      toc: false
 
 
 ########### Alerts ###########

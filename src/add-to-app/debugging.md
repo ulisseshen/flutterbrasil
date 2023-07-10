@@ -1,10 +1,8 @@
 ---
-title: Debugging your add-to-app module
+title: Debug your add-to-app module
 short-title: Debugging
 description: How to run, debug, and hot reload your add-to-app Flutter module.
 ---
-
-## Debugging your add-to-app module
 
 Once you've integrated the Flutter module to your project and used Flutter's
 platform APIs to run the Flutter engine and/or UI,
@@ -16,7 +14,7 @@ However, Flutter is now powering the UI in places where you're showing a
 
 ### Debugging
 
-You may be used to having your suite of favorite Flutter debugging tools
+You might be used to having your suite of favorite Flutter debugging tools
 available to you automatically when running `flutter run` or an equivalent
 command from an IDE. But you can also use all your Flutter
 [debugging functionalities][] such as hot reload, performance
@@ -62,3 +60,52 @@ Select the device on which the Flutter module runs so `flutter attach` filters f
 
 
 [debugging functionalities]: {{site.url}}/testing/debugging
+
+### Wireless debugging
+
+You can debug your app wirelessly on an iOS or Android device 
+using `flutter attach`.
+
+
+#### iOS
+
+On iOS, you must follow the steps below: 
+
+<ol markdown="1">
+<li markdown="1">
+
+Ensure that your device is wirelessly connected to Xcode 
+as described in the [iOS setup guide][].
+
+</li>
+<li markdown="1">
+
+Open **Xcode > Product > Scheme > Edit Scheme**
+
+</li>
+<li markdown="1">
+
+Select the **Arguments** tab 
+
+</li>
+<li markdown="1">
+
+Add either `--vm-service-host=0.0.0.0` for IPv4, 
+or `--vm-service-host=::0` for IPv6 as a launch argument
+
+You can determine if you're on an IPv6 network by opening your Mac's 
+**Settings > Wi-Fi > Details (of the network you're connected to) > TCP/IP** 
+and check to see if there is an **IPv6 address** section.
+
+<img src="/assets/images/docs/development/add-to-app/debugging/wireless-port.png" alt="Check the box that says 'connect via network' from the devices and simulators page">
+
+</li>
+</ol>
+
+#### Android
+
+Ensure that your device is wirelessly connected to Android Studio 
+as described in the [Android setup guide][].
+
+[iOS setup guide]: {{site.url}}/get-started/install/macos#deploy-to-ios-devices
+[Android setup guide]: {{site.url}}/get-started/install/macos#set-up-your-android-device

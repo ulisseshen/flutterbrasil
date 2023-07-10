@@ -394,7 +394,7 @@ class HeroAnimation extends StatelessWidget {
                   body: Container(
                     // The blue background emphasizes that it's a new route.
                     color: Colors.lightBlueAccent,
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(16),
                     alignment: Alignment.topLeft,
                     [[highlight]]child: PhotoHero([[/highlight]]
                       photo: 'images/flippers-alpha.png',
@@ -477,7 +477,7 @@ provided example to your needs.** The heavy lifting is done for you.
     described in this guide.
 
   [radial_hero_animation_animate<wbr>_rectclip][]
-  : Extends radial_hero_animaton by also animating the size of the
+  : Extends radial_hero_animation by also animating the size of the
     rectangular clip. This more advanced example,
     provided for your reference, isn't described in this guide.
 {{site.alert.end}}
@@ -652,7 +652,7 @@ Key information:
 [`Hero`]: {{site.api}}/flutter/widgets/Hero-class.html
 [hero_animation]: {{site.repo.this}}/tree/{{site.branch}}/examples/_animation/hero_animation/
 [`Inkwell`]: {{site.api}}/flutter/material/InkWell-class.html
-[Material Design motion spec]: {{site.material}}/design/motion/understanding-motion.html#principles
+[Material Design motion spec]: {{site.material2}}/design/motion/understanding-motion.html#principles
 [`MaterialRectArcTween`]: {{site.api}}/flutter/material/MaterialRectArcTween-class.html
 [`MaterialRectCenterArcTween`]: {{site.api}}/flutter/material/MaterialRectCenterArcTween-class.html
 [`Navigator`]: {{site.api}}/flutter/widgets/Navigator-class.html

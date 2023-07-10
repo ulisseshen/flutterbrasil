@@ -17,7 +17,6 @@ Learn more about the Flutter framework from the following pages:
 ## Apply your existing knowledge
 
 * [Flutter for Android developers][]
-* [From Java to Dart][] codelab
 * [Flutter for SwiftUI developers][]
 * [Flutter for UIKit developers][]
 * [Flutter for React Native developers][]

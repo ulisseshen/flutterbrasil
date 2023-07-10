@@ -7,7 +7,7 @@ Dart & Flutter DevTools - A Suite of Performance Tools for Dart and Flutter
 * Use the default Flutter service worker. [#5331](https://github.com/flutter/devtools/pull/5331)
 * Added the new verbose logging feature for helping us debug user issues. [#5404](https://github.com/flutter/devtools/pull/5404)
 
-![verbose logging](images-2.23.1/verbose-logging.png "verbose_logging")
+![verbose logging]({{site.url}}/tools/devtools/release-notes/images-2.23.1/verbose-logging.png "verbose_logging")
 
 * Fix a bug where some asynchronous errors were not being reported. [#5456](https://github.com/flutter/devtools/pull/5456)
 * Added support for viewing data after an app disconnects for screens that support offline viewing (currently only the Performance and CPU proiler pages).
@@ -23,7 +23,7 @@ Dart & Flutter DevTools - A Suite of Performance Tools for Dart and Flutter
 ## CPU profiler updates
 * Add a Method Table to the CPU profiler. [#5366](https://github.com/flutter/devtools/pull/5366)
 
-![method table](images-2.23.1/cpu-method-table.png "method_table")
+![method table]({{site.url}}/tools/devtools/release-notes/images-2.23.1/cpu-method-table.png "method_table")
 
 * Improve the performance of data processing in the CPU profiler. [#5468](https://github.com/flutter/devtools/pull/5468), [#5533](https://github.com/flutter/devtools/pull/5533), [#5535](https://github.com/flutter/devtools/pull/5535)
 * Polish and performance improvements for the CPU profile flame chart. [#5529](https://github.com/flutter/devtools/pull/5529)
@@ -54,6 +54,6 @@ Dart & Flutter DevTools - A Suite of Performance Tools for Dart and Flutter
 * Fix a bug where JSON requests were shown in plain text, instead of the formatted JSON viewer. [#5463](https://github.com/flutter/devtools/pull/5463)
 * Fix a UI issue where the copy button on the response or request tab would let you copy while still loading the data. [#5476](https://github.com/flutter/devtools/pull/5476)
 
-## Changelog
-More details about changes and fixes are available in the DevTools
-[changelog](https://github.com/flutter/devtools/blob/master/CHANGELOG.md).
+## Full commit history
+More details about changes and fixes are available from the
+[DevTools git log.](https://github.com/flutter/devtools/commits/master).

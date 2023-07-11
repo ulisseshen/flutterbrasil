@@ -191,21 +191,21 @@ class _SignUpFormState extends State<SignUpForm> {
           LinearProgressIndicator(value: _formProgress),
           Text('Sign up', style: Theme.of(context).textTheme.headlineMedium),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8),
             child: TextFormField(
               controller: _firstNameTextController,
               decoration: const InputDecoration(hintText: 'First name'),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8),
             child: TextFormField(
               controller: _lastNameTextController,
               decoration: const InputDecoration(hintText: 'Last name'),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8),
             child: TextFormField(
               controller: _usernameTextController,
               decoration: const InputDecoration(hintText: 'Username'),
@@ -914,21 +914,21 @@ class _SignUpFormState extends State<SignUpForm> {
           AnimatedProgressIndicator(value: _formProgress),
           Text('Sign up', style: Theme.of(context).textTheme.headlineMedium),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8),
             child: TextFormField(
               controller: _firstNameTextController,
               decoration: const InputDecoration(hintText: 'First name'),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8),
             child: TextFormField(
               controller: _lastNameTextController,
               decoration: const InputDecoration(hintText: 'Last name'),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8),
             child: TextFormField(
               controller: _usernameTextController,
               decoration: const InputDecoration(hintText: 'Username'),
@@ -1072,7 +1072,7 @@ Dart DevTools, or Flutter animations, see the following:
 [Flutter SDK]: {{site.url}}/get-started/install
 [Implicit animations]: {{site.url}}/codelabs/implicit-animations
 [Introduction to declarative UI]: {{site.url}}/get-started/flutter-for/declarative
-[Material Design]: {{site.material}}/design/introduction/#
+[Material Design]: {{site.material}}/get-started
 [TextButton]: {{site.api}}/flutter/material/TextButton-class.html
 [VS Code]: {{site.url}}/tools/devtools/vscode
 [Web samples]: {{site.github}}/flutter/samples/tree/main/web

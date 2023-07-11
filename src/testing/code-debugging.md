@@ -108,7 +108,7 @@ certain condition is true, as in the following example:
 import 'dart:developer';
 
 void someFunction(double offset) {
-  debugger(when: offset > 30.0);
+  debugger(when: offset > 30);
   // ...
 }
 ```
@@ -1012,9 +1012,9 @@ effect by using a [`GridPaper`][] widget directly.
 
 
 [`GridPaper`]: {{site.api}}/flutter/widgets/GridPaper-class.html
-[Material Design]: {{site.material}}/design/introduction
+[Material Design]: {{site.material}}/styles
 [`MaterialApp` constructor]: {{site.api}}/flutter/material/MaterialApp/MaterialApp.html
-[Material Design baseline grid]: {{site.material}}/design/layout/spacing-methods.html#baseline
+[Material Design baseline grid]: {{site.material}}/foundations/layout/understanding-layout/spacing
 [`MaterialApp`]: {{site.api}}/flutter/material/MaterialApp/MaterialApp.html
 [`WidgetsApp`]: {{site.api}}/flutter/widgets/WidgetsApp-class.html
 [`CupertinoApp`]: {{site.api}}/flutter/cupertino/CupertinoApp-class.html

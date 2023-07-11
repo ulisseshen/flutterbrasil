@@ -422,15 +422,15 @@ class _TapboxAState extends State<TapboxA> {
     return GestureDetector(
       onTap: _handleTap,
       child: Container(
-        width: 200.0,
-        height: 200.0,
+        width: 200,
+        height: 200,
         decoration: BoxDecoration(
           color: _active ? Colors.lightGreen[700] : Colors.grey[600],
         ),
         child: Center(
           child: Text(
             _active ? 'Active' : 'Inactive',
-            style: const TextStyle(fontSize: 32.0, color: Colors.white),
+            style: const TextStyle(fontSize: 32, color: Colors.white),
           ),
         ),
       ),
@@ -546,15 +546,15 @@ class TapboxB extends StatelessWidget {
     return GestureDetector(
       onTap: _handleTap,
       child: Container(
-        width: 200.0,
-        height: 200.0,
+        width: 200,
+        height: 200,
         decoration: BoxDecoration(
           color: active ? Colors.lightGreen[700] : Colors.grey[600],
         ),
         child: Center(
           child: Text(
             active ? 'Active' : 'Inactive',
-            style: const TextStyle(fontSize: 32.0, color: Colors.white),
+            style: const TextStyle(fontSize: 32, color: Colors.white),
           ),
         ),
       ),
@@ -684,20 +684,20 @@ class _TapboxCState extends State<TapboxC> {
       onTap: _handleTap,
       onTapCancel: _handleTapCancel,
       child: Container(
-        width: 200.0,
-        height: 200.0,
+        width: 200,
+        height: 200,
         decoration: BoxDecoration(
           color: widget.active ? Colors.lightGreen[700] : Colors.grey[600],
           border: _highlight
               ? Border.all(
                   color: Colors.teal[700]!,
-                  width: 10.0,
+                  width: 10,
                 )
               : null,
         ),
         child: Center(
           child: Text(widget.active ? 'Active' : 'Inactive',
-              style: const TextStyle(fontSize: 32.0, color: Colors.white)),
+              style: const TextStyle(fontSize: 32, color: Colors.white)),
         ),
       ),
     );
@@ -812,7 +812,7 @@ Flutter Gallery [running app][], [repo][]
 [`ListView`]: {{site.api}}/flutter/widgets/ListView-class.html
 [`main.dart`]: {{examples}}/layout/lakes/step6/lib/main.dart
 [Managing state]: #managing-state
-[Material Design guidelines]: {{site.material}}/design/guidelines-overview
+[Material Design guidelines]: {{site.material}}/styles
 [`meta.dart`]: {{site.pub}}/packages/meta
 [`pubspec.yaml`]: {{examples}}/layout/lakes/step6/pubspec.yaml
 [`Radio`]: {{site.api}}/flutter/material/Radio-class.html

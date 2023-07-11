@@ -36,7 +36,7 @@ initializes.
   [Android splash screen sample app][].
   
   If, prior to 2.5, you used `flutter create` to create an app,
-  and you run the app on 2.5 or later, the app might app crash.
+  and you run the app on 2.5 or later, the app might crash.
   For more info, see the [Deprecated Splash Screen API Migration guide][].
 {{site.alert.end}}
 
@@ -146,7 +146,7 @@ Android APIs might be helpful:
 
 {% samplecode android-splash-alignment %}
 {% sample Java %}
-<!--code-excerpt "MainActivity.java" title-->
+<?code-excerpt title="MainActivity.java"?>
 ```java
 import android.os.Build;
 import android.os.Bundle;
@@ -176,7 +176,7 @@ public class MainActivity extends FlutterActivity {
 ```
 
 {% sample Kotlin %}
-<!--code-excerpt "MainActivity.kt" title-->
+<?code-excerpt title="MainActivity.kt"?>
 ```kotlin
 import android.os.Build
 import android.os.Bundle

@@ -1201,7 +1201,7 @@ Os seguintes recursos podem ajudar ao escrever código de layout.
 [`Container`]: {{api}}/widgets/Container-class.html
 [`CrossAxisAlignment`]: {{api}}/rendering/CrossAxisAlignment.html
 [`DataTable`]: {{api}}/material/DataTable-class.html
-[Trabalhando com restrições de Tamanho e Posição (Box) no Flutter]: {{site.url}}/ui/layout/box-constraints
+[Dealing with Box Constraints in Flutter]: {{site.url}}/ui/layout/box-constraints
 [Elevation]: {{site.material}}/design/environment/elevation.html
 [`Expanded`]: {{api}}/widgets/Expanded-class.html
 [Flutter em Foco]: {{site.youtube-site}}/watch?v=wgTBLj7rMPM&list=PLjxrf2q8roU2HdJQDjJzOeO6J3FoFLWr2
@@ -1215,9 +1215,9 @@ Os seguintes recursos podem ajudar ao escrever código de layout.
 [`ListTile`]: {{api}}/material/ListTile-class.html
 [`ListView`]: {{api}}/widgets/ListView-class.html
 [`MainAxisAlignment`]: {{api}}/rendering/MainAxisAlignment.html
-[Material card]: {{site.material}}/design/components/cards.html
-[Material Design]: {{site.material}}/design
-[paleta do Material Design]: {{site.material}}/design/color
+[Material card]: {{site.material}}/components/cards
+[Material Design]: {{site.material}}/styles
+[paleta do Material Design]: {{site.material2}}/design/color/the-color-system.html#tools-for-picking-colors
 [Biblioteca Material]: {{api}}/material/material-library.html
 [arquivo pubspec]: {{examples}}/layout/pavlova/pubspec.yaml
 [arquivo `pubspec.yaml`]: {{examples}}/layout/row_column/pubspec.yaml

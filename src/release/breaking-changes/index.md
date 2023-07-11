@@ -1,5 +1,6 @@
 ---
-title: Breaking changes
+title: Breaking changes and migration guides
+short-title: Breaking changes
 description: A list of migration guides for breaking changes in Flutter.
 ---
 
@@ -30,53 +31,75 @@ release, and listed in alphabetical order:
 
 ### Not yet released to stable
 
-* [Deprecated API removed after v3.7][]
-* [Removed `ignoringSemantics`][]
-* [The window singleton is deprecated][]
-* [Migration guide for `RouteInformation.location`][]
-* [At least one clipboard data variant must be provided][]
+* [Added AppLifecycleState.hidden][] enum value
+* [Deprecated API removed after v3.10][]
+* [Moved ReorderableListView's localized strings][]  from material to widgets localizations
+* [Removed `ignoringSemantics`][] properties
+* [Deprecated `RouteInformation.location`][] and its related APIs
+* [Customize tabs alignment using the new `TabBar.tabAlignment` property][]
+* [Updated EditableText scroll into view behavior][]
 
-[Material localized Strings migration guide]: {{site.url}}/release/breaking-changes/material-localized-strings
-[Android Java Gradle migration guide]: {{site.url}}/release/breaking-changes/android-java-gradle-migration-guide
-[Deprecated API removed after v3.7]: {{site.url}}/release/breaking-changes/3-7-deprecations
+[Added AppLifecycleState.hidden]: {{site.url}}/release/breaking-changes/add-applifecyclestate-hidden
+[Deprecated API removed after v3.10]: {{site.url}}/release/breaking-changes/3-10-deprecations
+[Moved ReorderableListView's localized strings]: {{site.url}}/release/breaking-changes/material-localized-strings
 [Removed `ignoringSemantics`]: {{site.url}}/release/breaking-changes/ignoringsemantics-migration
-[The window singleton is deprecated]: {{site.url}}/release/breaking-changes/window-singleton
-[Migration guide for `RouteInformation.location`]: {{site.url}}/release/breaking-changes/route-information-uri
-[Migration guide for `describeEnum`]: {{site.url}}/release/breaking-changes/describeEnum
-[At least one clipboard data variant must be provided]: {{site.url}}/release/breaking-changes/clipboard-data-required
+[Deprecated `RouteInformation.location`]: {{site.url}}/release/breaking-changes/route-information-uri
+[Customize tabs alignment using the new `TabBar.tabAlignment` property]: {{site.url}}/release/breaking-changes/tab-alignment
+[Updated EditableText scroll into view behavior]: {{site.url}}/release/breaking-changes/editable-text-scroll-into-view
+
+### Released in Flutter 3.10
+
+* [Dart 3 changes in Flutter v3.10 and later][]
+* [Deprecated API removed after v3.7][]
+* [Insert content text input client][]
+* [Deprecated the window singleton][]
+* [Resolve the Android Java Gradle error][]
+* [Require one data variant for `ClipboardData` constructor][]
+* ["Zone mismatch" message][]
+
+[Dart 3 changes in Flutter v3.10 and later]: {{site.dart-site}}/resources/dart-3-migration
+[Deprecated API removed after v3.7]: {{site.url}}/release/breaking-changes/3-7-deprecations
+[Insert Content Text Input Client]: {{site.url}}/release/breaking-changes/insert-content-text-input-client
+[Deprecated the window singleton]: {{site.url}}/release/breaking-changes/window-singleton
+[Resolve the Android Java Gradle error]: {{site.url}}/release/breaking-changes/android-java-gradle-migration-guide
+[Require one data variant for `ClipboardData` constructor]: {{site.url}}/release/breaking-changes/clipboard-data-required
+["Zone mismatch" message]: {{site.url}}/release/breaking-changes/zone-errors
 
 ### Released in Flutter 3.7
 
 * [Deprecated API removed after v3.3][]
+* [Replaced parameters for customizing context menus with a generic widget builder][]
 * [iOS FlutterViewController splashScreenView made nullable][]
 * [Migrate `of` to non-nullable return values, and add `maybeOf`][]
 * [Removed RouteSettings.copyWith][]
 * [ThemeData's toggleableActiveColor property has been deprecated][]
-* [A new way to customize context menus][]
+* [Migrate a Windows project to support dark title bars][]
 
+[Replaced parameters for customizing context menus with a generic widget builder]: {{site.url}}/release/breaking-changes/context-menus
 [Deprecated API removed after v3.3]: {{site.url}}/release/breaking-changes/3-3-deprecations
 [iOS FlutterViewController splashScreenView made nullable]: {{site.url}}/release/breaking-changes/ios-flutterviewcontroller-splashscreenview-nullable
 [Migrate `of` to non-nullable return values, and add `maybeOf`]: {{site.url}}/release/breaking-changes/supplemental-maybeOf-migration
 [Removed RouteSettings.copyWith]: {{site.url}}/release/breaking-changes/routesettings-copywith-migration
 [ThemeData's toggleableActiveColor property has been deprecated]: {{site.url}}/release/breaking-changes/toggleable-active-color
-[A new way to customize context menus]: {{site.url}}/release/breaking-changes/context-menus
+[Migrate a Windows project to support dark title bars]: {{site.url}}/release/breaking-changes/windows-dark-mode
 
 ### Released in Flutter 3.3
 
 * [Adding ImageProvider.loadBuffer][]
 * [Default PrimaryScrollController on Desktop][]
 * [Trackpad gestures can trigger GestureRecognizer][]
+* [Migrate a Windows project to set version information][]
 
 [Adding ImageProvider.loadBuffer]: {{site.url}}/release/breaking-changes/image-provider-load-buffer
 [Default PrimaryScrollController on Desktop]: {{site.url}}/release/breaking-changes/primary-scroll-controller-desktop
 [Trackpad gestures can trigger GestureRecognizer]: {{site.url}}/release/breaking-changes/trackpad-gestures
+[Migrate a Windows project to set version information]: {{site.url}}/release/breaking-changes/windows-version-information
 
 ### Released in Flutter 3
 
 * [Deprecated API removed after v2.10][]
 * [Migrate useDeleteButtonTooltip to deleteButtonTooltipMessage of Chips][]
 * [Page transitions replaced by ZoomPageTransitionsBuilder][]
-
 
 [Deprecated API removed after v2.10]: {{site.url}}/release/breaking-changes/2-10-deprecations
 [Page transitions replaced by ZoomPageTransitionsBuilder]: {{site.url}}/release/breaking-changes/page-transition-replaced-by-ZoomPageTransitionBuilder
@@ -105,6 +128,7 @@ release, and listed in alphabetical order:
 * [ThemeData's accent properties have been deprecated][]
 * [Transition of platform channel test interfaces to flutter_test package][]
 * [Using HTML slots to render platform views in the web][]
+* [Migrate a Windows project to the idiomatic run loop][]
 
 [Change the enterText method to move the caret to the end of the input text]: {{site.url}}/release/breaking-changes/enterText-trailing-caret
 [Default drag scrolling devices]: {{site.url}}/release/breaking-changes/default-scroll-behavior-drag
@@ -115,6 +139,7 @@ release, and listed in alphabetical order:
 [ThemeData's accent properties have been deprecated]: {{site.url}}/release/breaking-changes/theme-data-accent-properties
 [Transition of platform channel test interfaces to flutter_test package]: {{site.url}}/release/breaking-changes/mock-platform-channels
 [Using HTML slots to render platform views in the web]: {{site.url}}/release/breaking-changes/platform-views-using-html-slots-web
+[Migrate a Windows project to the idiomatic run loop]: {{site.url}}/release/breaking-changes/windows-run-loop
 
 ### Reverted change in 2.2
 

@@ -155,7 +155,7 @@ A federated plugin requires the following packages:
   accessible to the end user.
 
 **platform interface package**
-: The package that glues the app-facing packing
+: The package that glues the app-facing package
   to the platform package(s). This package declares an
   interface that any platform package must implement to
   support the app-facing package. Having a single package
@@ -214,12 +214,6 @@ flutter:
         pluginClass: HelloPlugin
       ios:
         pluginClass: HelloPlugin
-
-environment:
-  sdk: ">=2.1.0 <3.0.0"
-  # Flutter versions prior to 1.12 did not support the
-  # flutter.plugin.platforms map.
-  flutter: ">=1.12.0"
 ```
 
 When adding plugin implementations for more platforms,
@@ -242,12 +236,6 @@ flutter:
       web:
         pluginClass: HelloPlugin
         fileName: hello_web.dart
-
-environment:
-  sdk: ">=2.1.0 <3.0.0"
-  # Flutter versions prior to 1.12 did not support the
-  # flutter.plugin.platforms map.
-  flutter: ">=1.12.0"
 ```
 
 #### Federated platform packages
@@ -318,13 +306,13 @@ flutter:
         sharedDarwinSource: true
 
 environment:
-  sdk: ">=2.19.0 <3.0.0"
+  sdk: ^3.0.0
   # Flutter versions prior to 3.7 did not support the
   # sharedDarwinSource option.
   flutter: ">=3.7.0"
 ```
 
-When `sharedDawninSource` is enabled, instead of
+When `sharedDarwinSource` is enabled, instead of
 an `ios` directory for iOS and a `macos` directory
 for macOS, both platforms use a shared `darwin`
 directory for all code and resources. When enabling
@@ -679,7 +667,7 @@ folder with the following specialized content:
 **lib**: The Dart code that defines the API of the plugin,
   and which calls into the native code using `dart:ffi`.
 
-**src**: The native source code, and a `CmakeFile.txt`
+**src**: The native source code, and a `CMakeLists.txt`
   file for building that source code into a dynamic library.
 
 **platform folders** (`android`, `ios`, `windows`, etc.): The

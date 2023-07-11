@@ -63,6 +63,7 @@ setup:
 	docker-compose build --no-cache site
 	docker-compose run --rm site npm install
 	docker-compose run --rm site bundle config set force_ruby_platform true
+	docker-compose run --rm site bundle config build.ffi "--disable-system-libffi"
 	docker-compose run --rm site bundle install
 
 # Serve the Jekyll site with livereload and incremental builds

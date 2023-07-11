@@ -7,6 +7,8 @@ gem 'webrick'
 # Used for custom _plugins
 gem 'activesupport', '~> 7.0.6'
 gem 'liquid-tag-parser', '~> 2.0.2'
+gem 'eventmachine', '~> 1.2.7'
+gem 'ffi', '~> 1.15.4'
 
 group :jekyll_plugins do
   gem 'jekyll-include-cache', '~> 0.2.1'

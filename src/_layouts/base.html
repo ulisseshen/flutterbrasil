@@ -89,25 +89,19 @@
 
     <div id="overlay-under-drawer"></div>
 
-  <link rel="stylesheet" href="{{ '/assets/css/main.css' | append: cache_bust }}">
-  {% for css in page.css -%}
-  {% assign asset_path = '/assets/css/{{css}}' -%}
-  <link rel="stylesheet" href="{{ asset_path | append: cache_bust }}">
-  {% endfor -%}
-</head>
-<body{% if page.body_class %} class="{{ page.body_class }}" {% endif %}>
+    {% include header.html %}
 
     {% if site.show_banner != false and show_banner != false -%}
     {% render banner.html %}
     {% endif -%}
-
-  {% if jekyll.environment == "production" %}
-  <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id={{ site.google_tag_manager_id }}" height="0" width="0"
-      style="display:none;visibility:hidden">
-    </iframe>
-  </noscript>
-  {% endif %}
+    {% if page.show_translate %}
+    <div class="alert-translate">Esta página foi traduzida usando IA.</div>
+    {% elsif page.translate_in_progress %}
+    <div class="alert-translate">Tradução em progresso. Seja paciente</div>
+    {% else %}
+    <div class="alert-translate">Página ainda não traduzida. Solicitar tradução <a href="#vote">vote</a></div>
+    {% endif %}  
+    {{ content }}
 
     {% render footer.html %}
 
@@ -123,13 +117,6 @@
       <script src="{{ jsFile.url | default: js }}" {% if jsFile.defer %}defer{% endif %}></script>
     {% endfor -%}
     {% endif -%}
-    {% if page.show_translate %}
-    <div class="alert-translate">Esta página foi traduzida usando IA.</div>
-    {% elsif page.translate_in_progress %}
-    <div class="alert-translate">Tradução em progresso. Seja paciente</div>
-    {% else %}
-    <div class="alert-translate">Página ainda não traduzida. Solicitar tradução <a href="#vote">vote</a></div>
-    {% endif %}
 
   </body>
 </html>

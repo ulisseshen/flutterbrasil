@@ -121,33 +121,33 @@ o mecanismo de layout do Flutter possui algumas limitações importantes:
   então o tamanho do filho pode ser ignorado.
   **Seja específico ao definir o alinhamento.**
 
-No Flutter, widgets são renderizados pelos seus  
-objetos subjacentes [`RenderBox`][]. Muitos boxes  
-no Flutter, especialmente os que têm apenas um  
-filho, passam suas restrições para seus filhos.  
+No Flutter, widgets são renderizados pelos seus
+objetos subjacentes [`RenderBox`][]. Muitos boxes
+no Flutter, especialmente os que têm apenas um
+filho, passam suas restrições para seus filhos.
 
-Geralmente, há três tipos de boxes, com base em  
-como eles lidam com suas restrições:  
+Geralmente, há três tipos de boxes, com base em
+como eles lidam com suas restrições:
 
-* Aqueles que tentam ser o maior possível.  
-  Por exemplo, os boxes usados por [`Center`][]  
-  e [`ListView`][].  
-* Aqueles que tentam ter o mesmo tamanho que  
-  seus filhos. Por exemplo, os boxes usados  
-  por [`Transform`][] e [`Opacity`][].  
-* Aqueles que tentam ter um tamanho específico.  
-  Por exemplo, os boxes usados por [`Image`][]  
-  e [`Text`][].  
+* Aqueles que tentam ser o maior possível.
+  Por exemplo, os boxes usados por [`Center`][]
+  e [`ListView`][].
+* Aqueles que tentam ter o mesmo tamanho que
+  seus filhos. Por exemplo, os boxes usados
+  por [`Transform`][] e [`Opacity`][].
+* Aqueles que tentam ter um tamanho específico.
+  Por exemplo, os boxes usados por [`Image`][]
+  e [`Text`][].
 
-Alguns widgets, como o [`Container`][] variam de  
-tipo para tipo com base nos argumentos do  
-construtor. O construtor de [`Container`][]  
-tenta ser o maior possível por padrão, mas se  
-você definir uma `width`, ele tentará respeitar  
-essa definição e terá o tamanho especificado.  
+Alguns widgets, como o [`Container`][] variam de
+tipo para tipo com base nos argumentos do
+construtor. O construtor de [`Container`][]
+tenta ser o maior possível por padrão, mas se
+você definir uma `width`, ele tentará respeitar
+essa definição e terá o tamanho especificado.
 
-Outros, como [`Row`][] e [`Column`][] (boxes flex),  
-variam com base nas restrições recebidas, como  
+Outros, como [`Row`][] e [`Column`][] (boxes flex),
+variam com base nas restrições recebidas, como
 descrito na seção [Flex](#flex). 
 
 [`Center`]: {{site.api}}/flutter/widgets/Center-class.html
@@ -159,7 +159,7 @@ descrito na seção [Flex](#flex).
 [`Row`]: {{site.api}}/flutter/widgets/Row-class.html
 [`Text`]: {{site.api}}/flutter/widgets/Text-class.html
 [`Transform`]: {{site.api}}/flutter/widgets/Transform-class.html
-  
+
 ## Exemplos
 
 Para uma experiência interativa, use o seguinte DartPad.
@@ -2025,20 +2025,20 @@ um tamanho exato. Em outras palavras, uma restrição tight
 tem sua largura máxima igual à sua largura mínima;
 e tem sua altura máxima igual à sua altura mínima.
 
-Um exemplo disso é o widget `App`,  
-que é contido pela classe [`RenderView`][]:  
-o box usado pelo filho retornado pela  
-função [`build`][] da aplicação recebe uma restrição  
-que força a preencher exatamente a área de conteúdo da aplicação  
-(tipicamente, a tela inteira).  
+Um exemplo disso é o widget `App`,
+que é contido pela classe [`RenderView`][]:
+o box usado pelo filho retornado pela
+função [`build`][] da aplicação recebe uma restrição
+que força a preencher exatamente a área de conteúdo da aplicação
+(tipicamente, a tela inteira).
 
-Outro exemplo: se você aninhar vários boxes dentro  
-uns dos outros na raiz da árvore de renderização da sua aplicação,  
-eles irão se ajustar perfeitamente uns aos outros,  
-forçados pelas restrições rígidas do box.  
+Outro exemplo: se você aninhar vários boxes dentro
+uns dos outros na raiz da árvore de renderização da sua aplicação,
+eles irão se ajustar perfeitamente uns aos outros,
+forçados pelas restrições rígidas do box.
 
-Se você acessar o arquivo `box.dart` do Flutter e buscar pelos  
-construtores de `BoxConstraints`,  
+Se você acessar o arquivo `box.dart` do Flutter e buscar pelos
+construtores de `BoxConstraints`,
 encontrará o seguinte:
 
 ```dart
@@ -2060,18 +2060,18 @@ ao `Container`.
 Uma _loose_ constraint é aquela que tem um valor 
 mínimo de zero e um valor máximo diferente de zero.
 
-Alguns boxes _loosen_ as restrições recebidas,  
-significando que o máximo é mantido, mas o  
-mínimo é removido, permitindo que o widget tenha  
-uma largura e altura **mínimas** iguais a **zero**.  
+Alguns boxes _loosen_ as restrições recebidas,
+significando que o máximo é mantido, mas o
+mínimo é removido, permitindo que o widget tenha
+uma largura e altura **mínimas** iguais a **zero**.
 
-O objetivo final do `Center` é transformar  
-as restrições rígidas que recebeu de seu pai  
-(a tela) em restrições _loose_ para seu filho  
-(o `Container`).  
+O objetivo final do `Center` é transformar
+as restrições rígidas que recebeu de seu pai
+(a tela) em restrições _loose_ para seu filho
+(o `Container`).
 
-Se você revisitar o [Exemplo 3](#exemplo-3),  
-o `Center` permite que o `Container` vermelho  
+Se você revisitar o [Exemplo 3](#exemplo-3),
+o `Center` permite que o `Container` vermelho
 seja menor, mas não maior que a tela.
 
 
@@ -2083,62 +2083,62 @@ seja menor, mas não maior que a tela.
 ## Restrições unbounded  (sem limite)
 
 :::note
-Você pode ser direcionado para cá se o framework  
-detectar um problema envolvendo restrições de box.  
-A seção `Flex` abaixo também pode se aplicar.  
+Você pode ser direcionado para cá se o framework
+detectar um problema envolvendo restrições de box.
+A seção `Flex` abaixo também pode se aplicar.
 :::
 
-Em certas situações,  
-a restrição de um box é _sem limite_, ou infinita.  
-Isso significa que a largura máxima ou  
-a altura máxima é definida como [`double.infinity`][].  
+Em certas situações,
+a restrição de um box é _sem limite_, ou infinita.
+Isso significa que a largura máxima ou
+a altura máxima é definida como [`double.infinity`][].
 
-Um box que tenta ser o maior possível não funcionará  
-de forma útil quando receber uma restrição sem limite e,  
-no modo de depuração, lançará uma exceção.  
+Um box que tenta ser o maior possível não funcionará
+de forma útil quando receber uma restrição sem limite e,
+no modo de depuração, lançará uma exceção.
 
-O caso mais comum onde um render box acaba  
-com uma restrição sem limite é dentro de um box flex  
-([`Row`][] ou [`Column`][]),  
-e **dentro de uma região rolável**  
-(como [`ListView`][] e outras subclasses de [`ScrollView`][]).  
+O caso mais comum onde um render box acaba
+com uma restrição sem limite é dentro de um box flex
+([`Row`][] ou [`Column`][]),
+e **dentro de uma região rolável**
+(como [`ListView`][] e outras subclasses de [`ScrollView`][]).
 
-Por exemplo, o [`ListView`][],  
-tenta se expandir para preencher o espaço disponível  
-na sua direção cruzada  
-(talvez seja um bloco rolável verticalmente e  
-tente ser tão largo quanto seu pai).  
-Se você aninhar um [`ListView`][] rolável verticalmente  
-dentro de um `ListView` rolável horizontalmente,  
-a lista interna tentará ser o mais larga possível,  
-o que é infinitamente largo,  
-já que a externa é rolável naquela direção.  
+Por exemplo, o [`ListView`][],
+tenta se expandir para preencher o espaço disponível
+na sua direção cruzada
+(talvez seja um bloco rolável verticalmente e
+tente ser tão largo quanto seu pai).
+Se você aninhar um [`ListView`][] rolável verticalmente
+dentro de um `ListView` rolável horizontalmente,
+a lista interna tentará ser o mais larga possível,
+o que é infinitamente largo,
+já que a externa é rolável naquela direção.
 
-A próxima seção descreve o erro que você pode  
-encontrar com restrições sem limite em um widget `Flex`.  
+A próxima seção descreve o erro que você pode
+encontrar com restrições sem limite em um widget `Flex`.
 
 ## Flex
 
-Uma flex box ([`Row`][] e [`Column`][]) se comporta  
-de maneira diferente dependendo se sua  
-restrição é limitada ou sem limite na sua  
-direção principal.  
+Uma flex box ([`Row`][] e [`Column`][]) se comporta
+de maneira diferente dependendo se sua
+restrição é limitada ou sem limite na sua
+direção principal.
 
-Uma flex box com uma restrição limitada na sua  
-direção principal tenta ser o maior possível.  
+Uma flex box com uma restrição limitada na sua
+direção principal tenta ser o maior possível.
 
-Uma flex box com uma restrição sem limite  
-na sua direção principal tenta ajustar seus filhos  
-a esse espaço. O valor `flex` de cada filho deve ser  
-definido como zero, o que significa que não é possível usar  
-[`Expanded`][] quando a flex box está dentro  
-de outra flex box ou de uma região rolável;  
-caso contrário, lançará uma exceção.  
+Uma flex box com uma restrição sem limite
+na sua direção principal tenta ajustar seus filhos
+a esse espaço. O valor `flex` de cada filho deve ser
+definido como zero, o que significa que não é possível usar
+[`Expanded`][] quando a flex box está dentro
+de outra flex box ou de uma região rolável;
+caso contrário, lançará uma exceção.
 
-A direção _cruzada_  
-(largura para [`Column`][] ou altura para [`Row`][]),  
-**nunca** deve ser sem limite,  
-ou não será possível alinhar seus filhos de forma razoável.  
+A direção _cruzada_
+(largura para [`Column`][] ou altura para [`Row`][]),
+**nunca** deve ser sem limite,
+ou não será possível alinhar seus filhos de forma razoável.
 
 
 [`double.infinity`]: {{site.api}}/flutter/dart-core/double/infinity-constant.html
@@ -2207,7 +2207,7 @@ imagem do cabeçalho no topo do artigo.
 [Simon Lightfoot]: {{site.github}}/slightfoot
 
 :::note
-Para entender melhor como o Flutter implementa as  
+Para entender melhor como o Flutter implementa as
 restrições de layout, confira o seguinte vídeo de 5 minutos:
 
 {% ytEmbed 'jckqXR5CrPI', 'Decodificando o Flutter: Altura e largura ilimitadas' %}

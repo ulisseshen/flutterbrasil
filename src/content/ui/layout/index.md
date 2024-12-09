@@ -157,7 +157,7 @@ class MyApp extends StatelessWidget {
 ```
 
 :::note
-A [Material library][] implementa widgets que seguem os  
+A [Biblioteca Material][] implementa widgets que seguem os  
 princípios do [Material Design][]. Ao projetar sua IU, você pode  
 usar exclusivamente os widgets da [widgets library][], ou pode usar  
 widgets da Material library. Você pode combinar widgets de ambas as  
@@ -911,9 +911,6 @@ List<Container> _buildGridTileList(int count) => List.generate(
     count, (i) => Container(child: Image.asset('images/pic$i.jpg')));
 ```
 
-Você pode encontrar mais exemplos de `GridView` no [tutorial][]
-e na Flutter Gallery ([app em execução][], [repositório][]).
-
 **Código Fonte:** [grid_and_list]({{examples}}/layout/grid_and_list)
 
 <hr>
@@ -1243,10 +1240,6 @@ Os seguintes recursos podem ajudar ao escrever código de layout.
 [Análogos HTML/CSS no Flutter][]
 : Para aqueles familiarizados com a programação web,
   esta página mapeia funcionalidades HTML/CSS para recursos do Flutter.
-
-Flutter Gallery [app em execução][], [repositório][]
-: Aplicativo de demonstração apresentando muitos widgets Material Design e outros
-  recursos do Flutter.
 
 [Documentação de referência da API][]
 : Documentação de referência para todas as bibliotecas do Flutter.

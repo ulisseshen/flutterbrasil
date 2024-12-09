@@ -126,4 +126,4 @@ Flutter no YouTube:
 
 <a class="btn btn-primary" target="_blank" href="https://www.youtube.com/@flutterdev">Explore mais vídeos do Flutter</a>
 
-[videos]: /resources/videos
+[vídeos]: /resources/videos

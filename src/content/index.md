@@ -1,7 +1,7 @@
 ---
-title: Flutter documentation
+title: Documentação do Flutter
 short-title: Docs
-description: Get started with Flutter. Widgets, examples, updates, and API docs to help you write your first Flutter app.
+description: Comece com Flutter. Widgets, exemplos, atualizações e API docs para ajudar a criar seu primeiro app Flutter.
 ---
 
 <div class="card-grid">
@@ -15,65 +15,65 @@ description: Get started with Flutter. Widgets, examples, updates, and API docs 
 {% endfor %}
 </div>
 
-**To see changes to the site since our last release,
-see [What's new][].**
+**Para ver mudanças no site desde nosso último lançamento, 
+veja [O que há de novo][].**
 
-[What's new]: /release/whats-new
+[O que há de novo]: /release/whats-new
 
-## New to Flutter?
+## Novo no Flutter?
 
-Once you've [Set up Flutter][],
-you should follow the 
-[Write your first Flutter app][] codelab 
-and read [Flutter fundamentals][]. 
-These resources are opinionated documentation 
-that guide you through the most important
-parts of building a Flutter app.
+Depois de [Configurar o Flutter][],
+siga o codelab 
+[Escreva seu primeiro app Flutter][]
+e leia [Fundamentos do Flutter][].
+Esses recursos são documentações opinativas 
+que guiam você pelos
+aspectos mais importantes de construir um app Flutter.
 
-[Write your first Flutter app]: /get-started/codelab
-[Flutter fundamentals]: /get-started/fundamentals
+[Escreva seu primeiro app Flutter]: /get-started/codelab
+[Fundamentos do Flutter]: /get-started/fundamentals
 
-### Docs
+### Documentação
 
-Coming from another platform? Check out Flutter for:
-[Android][], [SwiftUI][], [UIKit][], [React Native][], and
+Vindo de outra plataforma? Veja Flutter para:
+[Android][], [SwiftUI][], [UIKit][], [React Native][] e
 [Xamarin.Forms][] developers.
 
-[Building layouts][]
-: Learn how to create layouts in Flutter,
-  where everything is a widget.
+[Construindo layouts][]
+: Aprenda como criar layouts no Flutter,
+  onde tudo é um widget.
 
-[Understanding constraints][]
-: Once you understand that "Constraints
-  flow down. Sizes flow up. Parents set
-  positions", then you are well on your
-  way to understanding Flutter's layout model.
+[Entendendo constraints][]
+: Assim que você entender que "Constraints
+  descem. Tamanhos sobem. Pais definem posições",
+  estará no caminho para entender o modelo
+  de layout do Flutter.
 
-[Adding interactivity to your Flutter app][interactivity]
-: Learn how to add a stateful widget to your app.
+[Adicionando interatividade ao seu app Flutter][interactivity]
+: Aprenda como adicionar um widget stateful ao seu app.
 
 [FAQ][]
-: Get the answers to frequently asked questions.
+: Obtenha respostas para perguntas frequentes.
 
 [Android]: /get-started/flutter-for/android-devs
-[Building layouts]: /ui/layout
+[Construindo layouts]: /ui/layout
 [FAQ]: /resources/faq
-[Set up Flutter]: /get-started/install
+[Configurar o Flutter]: /get-started/install
 [interactivity]: /ui/interactivity
 [SwiftUI]: /get-started/flutter-for/swiftui-devs
 [UIKit]: /get-started/flutter-for/uikit-devs
 [React Native]: /get-started/flutter-for/react-native-devs
-[Understanding constraints]: /ui/layout/constraints
+[Entendendo constraints]: /ui/layout/constraints
 [Xamarin.Forms]: /get-started/flutter-for/xamarin-forms-devs
 
-### Videos
+### Vídeos
 
-Check out the Introducing Flutter series.
-Learn Flutter basics like
-[how do I make my first Flutter app?][first-app]
-In Flutter, "everything is a widget"!
-Learn more about `Stateless` and `Stateful`
-widgets in [What is State?][]
+Confira a série "Introducing Flutter".
+Aprenda conceitos básicos como
+[como criar meu primeiro app Flutter?][first-app].
+No Flutter, "tudo é um widget"!
+Descubra mais sobre `Stateless` e `Stateful`
+widgets em [What is State?][].
 
 <div class="card-grid">
     <div class="card">
@@ -91,16 +91,16 @@ widgets in [What is State?][]
 [first-app]: {{site.yt.watch}}?v=xWV71C2kp38
 [What is State?]: {{site.yt.watch}}?v=QlwiL_yLh6E
 
-{% videoWrapper 'Only have 60 seconds? Learn how to build and deploy a Flutter App!' %}
-{% ytEmbed 'ZnufaryH43s', 'How to build and deploy a Flutter app in 60 seconds!', true %}
+{% videoWrapper 'Só tem 60 segundos? Aprenda como criar e publicar um app Flutter!' %}
+{% ytEmbed 'ZnufaryH43s', 'Como criar e publicar um app Flutter em 60 segundos!', true %}
 {% endvideoWrapper %}
 
-## Want to skill up?
+## Quer melhorar suas habilidades?
 
-Dive deeper into how Flutter works under the hood!
-Learn [why you write standalone widgets instead of
-using helper methods][standalone-widgets] or
-[what is "BuildContext" and how is it used][buildcontext]?
+Aprofunde-se no funcionamento interno do Flutter!
+Descubra [por que criar widgets standalone ao
+invés de usar métodos helpers][standalone-widgets] ou
+[o que é "BuildContext" e como é usado][buildcontext].
 
 <div class="card-grid">
     <div class="card">
@@ -118,11 +118,12 @@ using helper methods][standalone-widgets] or
 [standalone-widgets]: {{site.yt.watch}}?v=IOyq-eTRhvo
 [buildcontext]: {{site.yt.watch}}?v=rIaaH87z1-g
 
-To learn about all of the Flutter video series,
-see our [videos][] page.
+Para saber sobre todas as séries de vídeos do Flutter,
+veja nossa página de [vídeos][].
 
-We release new videos almost every week on the Flutter YouTube channel:
+Lançamos novos vídeos quase toda semana no canal
+Flutter no YouTube:
 
-<a class="btn btn-primary" target="_blank" href="https://www.youtube.com/@flutterdev">Explore more Flutter videos</a>
+<a class="btn btn-primary" target="_blank" href="https://www.youtube.com/@flutterdev">Explore mais vídeos do Flutter</a>
 
 [videos]: /resources/videos

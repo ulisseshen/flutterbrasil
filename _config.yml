@@ -96,10 +96,7 @@ defaults:
       show_footer: true
       show_translate: false
       translate_in_progress: false
-  - scope:
-      path: ''
-    values:
-      toc: true
+      toc: true   
   - scope:
       path: 'cookbook'
     values:

@@ -66,7 +66,6 @@ liquid:
   strict_filters: true
 sass:
   sass_dir: _sass
-  cache: false
   style: compressed
   load_paths:
     - ../node_modules

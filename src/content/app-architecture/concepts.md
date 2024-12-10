@@ -21,7 +21,7 @@ para que possam ser explorados em mais detalhes ao longo deste guia.
 
 ## Separação de responsabilidades
 
-[A separação de responsabilidades][] é um princípio central no desenvolvimento de aplicativos
+A [separação de responsabilidades][] é um princípio central no desenvolvimento de aplicativos
 que promove a modularidade e a manutenção ao dividir a funcionalidade de um aplicativo
 em unidades distintas e independentes. De forma geral, isso significa separar a lógica de UI
 da lógica de negócios.

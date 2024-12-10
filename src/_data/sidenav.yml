@@ -417,39 +417,39 @@
     - title: Google APIs
       permalink: /data-and-backend/google-apis
 
-- title: App architecture
+- title: Arquitetura de apps
   permalink: /app-architecture
   children:
-    - title: Introduction
+    - title: Introdução
       permalink: /app-architecture
-    - title: Architecture concepts
+    - title: Conceitos de arquitetura
       permalink: /app-architecture/concepts
-    - title: Guide to app architecture
+    - title: Guia de arquitetura de apps
       permalink: /app-architecture/guide
-    - title: Architecture case study
+    - title: Estudo de caso de arquitetura
       permalink: /app-architecture/case-study
       children:
-        - title: Overview
+        - title: Visão geral
           permalink: /app-architecture/case-study
-        - title: UI layer
+        - title: Camada de UI
           permalink: /app-architecture/case-study/ui-layer
-        - title: Data layer
+        - title: Camada de dados
           permalink: /app-architecture/case-study/data-layer
-        - title: Dependency injection
+        - title: Injeção de dependências
           permalink: /app-architecture/case-study/dependency-injection
-        - title: Testing each layer
+        - title: Testando cada camada
           permalink: /app-architecture/case-study/testing
 
-    - title: Recommendations
+    - title: Recomendações
       permalink: /app-architecture/recommendations
-    - title: Design patterns
+    - title: Padrões de design
       permalink: /cookbook/architecture
       children:
-        - title: Optimistic state
+        - title: Estado otimista
           permalink: /cookbook/architecture/optimistic-state
-        - title: "Persistent storage architecture: Key-value data"
+        - title: "Arquitetura de armazenamento persistente: Dados chave-valor"
           permalink: /cookbook/architecture/key-value-data
-        - title: "Persistent storage architecture: SQL"
+        - title: "Arquitetura de armazenamento persistente: SQL"
           permalink: /cookbook/architecture/sql
         - title: Offline-first
           permalink: /cookbook/architecture/offline-first

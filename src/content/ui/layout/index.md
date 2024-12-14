@@ -336,7 +336,7 @@ com propriedades para ícones de liderança e de rastreamento e
 até 3 linhas de texto. Em vez de `Column`, você pode preferir [`ListView`][],
 um layout semelhante a uma coluna que rola automaticamente se o conteúdo for 
 muito longo para caber no espaço disponível.
-Para mais informações, consulte [Widgets comuns de layout][].
+Para mais informações, consulte [Widgets de layout comuns][].
 :::
 
 ### Alinhando widgets

@@ -324,7 +324,7 @@ A árvore de widgets da coluna da esquerda contém linhas e colunas aninhadas.
 <img src='/assets/images/docs/ui/layout/pavlova-left-column-diagram.png' class="mw-100"
     alt="Diagram showing a left column broken down to its sub-rows and sub-columns">
 
-Você irá implementar parte do código de layout da Pavlova em [Aninhando linhas e colunas](#nesting-rows-and-columns).
+Você irá implementar parte do código de layout da Pavlova em [Aninhando linhas e colunas](#aninhando linhas e colunas).
 
 :::note
 `Row` e `Column` são widgets primitivos básicos para layouts horizontais 
@@ -1261,7 +1261,7 @@ Os seguintes recursos podem ajudar ao escrever código de layout.
 [`Card`]: {{api}}/material/Card-class.html
 [`Center`]: {{api}}/widgets/Center-class.html
 [`Column`]: {{api}}/widgets/Column-class.html
-[Widgets comuns de layout]: #common-layout-widgets
+[Widgets de layout comuns]: #widgets-de-layout-comuns
 [`Colors`]: {{api}}/material/Colors-class.html
 [`Container`]: {{api}}/widgets/Container-class.html
 [`CrossAxisAlignment`]: {{api}}/rendering/CrossAxisAlignment.html

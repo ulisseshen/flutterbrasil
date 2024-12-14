@@ -2049,7 +2049,7 @@ BoxConstraints.tight(Size size)
      maxHeight = size.height;
 ```
 
-Se você revisitar [Exemplo 2](#example-2) acima,
+Se você revisitar [Exemplo 2](#examplo-2) acima,
 ele nos diz que a tela força o `Container` vermelho
 a ter exatamente o mesmo tamanho da tela.
 A tela faz isso, é claro, passando restrições tight

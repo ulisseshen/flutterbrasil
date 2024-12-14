@@ -784,7 +784,7 @@ Wonderous app [running app][wonderous-app], [repo][wonderous-repo]
 [`GestureDetector`]: {{site.api}}/flutter/widgets/GestureDetector-class.html
 [Gestures]: /cookbook/gestures
 [Gestures in Flutter]: /ui/interactivity/gestures
-[Handling gestures]: /ui#handling-gestures
+[Handling gestures]: /ui#manipulando-gestos
 [new-flutter-app]: /get-started/test-drive
 [`IconButton`]: {{site.api}}/flutter/material/IconButton-class.html
 [`Icon`]: {{site.api}}/flutter/widgets/Icon-class.html

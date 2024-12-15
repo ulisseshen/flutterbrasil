@@ -113,3 +113,16 @@ jobs:
         run: dart pub get
       - name: Validate the firebase.json file
         run: dart run flutter_site verify-firebase-json
+
+  firebase-deploy:
+    name: Deploy to Firebase Hosting
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: Deploy to Firebase Hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        run: |
+          firebase deploy --only hosting

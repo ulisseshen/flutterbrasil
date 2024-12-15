@@ -3,6 +3,7 @@
     "public": "_site",
     "cleanUrls": true,
     "trailingSlash": false,
+    "target": "docs-flutterbrasil",
     "ignore": [
       "firebase.json",
       "**/.*",

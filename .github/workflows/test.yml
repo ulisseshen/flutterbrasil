@@ -93,10 +93,16 @@ jobs:
         run: dart pub get
       - name: Build site
         run: dart run flutter_site build
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: _site
       - name: Check for broken Markdown link references
         run: dart run flutter_site check-link-references
       - name: Check for broken internal links
         run: dart run flutter_site check-links
+     
 
   firebase-validate:
     name: Validate Firebase configuration
@@ -121,18 +127,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+        
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
         with:
-          ruby-version: 3.2.2
-
-      - name: Cache bundler dependencies
-        uses: actions/cache@v2
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: ${{ runner.os }}-gems-
+          name: build-artifacts
       
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0

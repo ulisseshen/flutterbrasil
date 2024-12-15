@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "transliteradu",
+    "default": "docs-flutterbrasil",
     "devtools-staging": "flutter-website-dt-staging",
     "flutter-dev": "flutter-dev-230821",
     "staging-1": "flutter-io-staging-1",
@@ -10,16 +10,5 @@
     "ft": "flutter-web-staging",
     "bt": "flt-test",
     "prod": "transliteradu"
-  },
-  "targets": {
-    "transliteradu": {
-      "hosting": {
-        "docs-flutterbrasil": [
-          "docs-flutterbrasil"
-        ]
-      }
-    }
-  },
-  "etags": {},
-  "dataconnectEmulatorConfig": {}
+  }
 }

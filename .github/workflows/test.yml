@@ -117,6 +117,7 @@ jobs:
   firebase-deploy:
     name: Deploy to Firebase Hosting
     runs-on: ubuntu-latest
+    needs: [linkcheck]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -137,7 +138,7 @@ jobs:
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
           channelId: live
           projectId: transliteradu
           target: docs-flutterbrasil

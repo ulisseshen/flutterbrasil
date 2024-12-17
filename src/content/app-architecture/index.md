@@ -1,4 +1,5 @@
 ---
+ia-translate: true
 title: Arquitetando apps Flutter
 short-title: Arquitetura
 description: >
@@ -8,7 +9,6 @@ show_translate: true
 next:
   title: Conceitos de arquitetura
   path: /app-architecture/concepts
-
 ---
 
 <div class="row">

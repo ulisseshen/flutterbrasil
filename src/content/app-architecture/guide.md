@@ -10,6 +10,7 @@ next:
   title: Estudo de caso de arquitetura
   path: /app-architecture/case-study
 ia-translate: true
+revised: true
 ---
 
 As páginas a seguir demonstram como construir um aplicativo usando as boas práticas.

@@ -522,8 +522,8 @@ Você também pode ter notado que `Command` é uma classe abstrata.
 Ele é implementado por classes concretas como `Command0` `Command1`.
 O inteiro no nome da classe se refere a
 o número de argumentos que o método subjacente espera.
-Você pode ver exemplos dessas classes de implementação em
-o [diretório `utils` do aplicativo Compass][].
+Você pode ver exemplos dessas classes de implementação no
+[diretório `utils`][] do aplicativo Compass.
 
 :::tip Recomendação de pacote
 Em vez de escrever sua própria classe `Command`,

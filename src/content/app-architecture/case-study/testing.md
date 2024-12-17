@@ -217,14 +217,14 @@ void main() {
 
 Para saber mais sobre como escrever mocks e fakes,
 confira exemplos no [diretório `testing` do aplicativo Compass][] ou
-leia a [documentação de teste do Flutter][].
+leia a [documentação de testes do Flutter][].
 
 [use-cases]: /app-architecture/guide#optional-domain-layer
 [`FakeBookingRepository`]: https://github.com/flutter/samples/blob/main/compass_app/app/testing/fakes/repositories/fake_booking_repository.dart
 [`BookingRepository`]: https://github.com/flutter/samples/tree/main/compass_app/app/lib/data/repositories/booking
 [seção da camada de dados]: /app-architecture/case-study/data-layer
 [`package:mocktail`]: {{site.pub-pkg}}/mocktail
-[documentação de teste do Flutter]: /testing/overview
+[documentação de testes do Flutter]: /testing/overview
 [diretório `testing` do aplicativo Compass]: https://github.com/flutter/samples/tree/main/compass_app/app/testing
 
 ## Feedback

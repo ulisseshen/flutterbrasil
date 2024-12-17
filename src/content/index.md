@@ -1,4 +1,5 @@
 ---
+ia-translate: true
 title: Documentação do Flutter
 short-title: Docs
 description: Comece com Flutter. Widgets, exemplos, atualizações e API docs para ajudar a criar seu primeiro app Flutter.
@@ -15,7 +16,7 @@ description: Comece com Flutter. Widgets, exemplos, atualizações e API docs pa
 {% endfor %}
 </div>
 
-**Para ver mudanças no site desde nosso último lançamento, 
+**Para ver mudanças no site desde nosso último lançamento,
 veja [O que há de novo][].**
 
 [O que há de novo]: /release/whats-new
@@ -23,10 +24,10 @@ veja [O que há de novo][].**
 ## Novo no Flutter?
 
 Depois de [Configurar o Flutter][],
-siga o codelab 
+siga o codelab
 [Escreva seu primeiro app Flutter][]
 e leia [Fundamentos do Flutter][].
-Esses recursos são documentações opinativas 
+Esses recursos são documentações opinativas
 que guiam você pelos
 aspectos mais importantes de construir um app Flutter.
 

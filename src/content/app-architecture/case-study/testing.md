@@ -1,37 +1,38 @@
 ---
-title: Testing each layer
-short-title: Testing
+title: Testando cada camada
+short-title: Testando
 description: >-
-  How to test an app that implements MVVM architecture.
+  Como testar um aplicativo que implementa a arquitetura MVVM.
 prev:
-  title: Dependency injection
+  title: Injeção de dependência
   path: /app-architecture/case-study/dependency-injection
+ia-translate: true
 ---
 
-## Testing the UI layer
+## Testando a camada de UI
 
-One way to determine whether your architecture is sound is
-considering how easy (or difficult) the application is to test.
-Because view models and views have well-defined inputs,
-their dependencies can easily be mocked or faked,
-and unit tests are easily written.
+Uma maneira de determinar se sua arquitetura é sólida é
+considerar o quão fácil (ou difícil) o aplicativo é de testar.
+Como os view models e as views têm entradas bem definidas,
+suas dependências podem ser facilmente simuladas ou falsificadas,
+e os testes unitários são facilmente escritos.
 
-### ViewModel unit tests
+### Testes unitários de ViewModel
 
-To test the UI logic of the view model, you should write unit tests that
-don't rely on Flutter libraries or testing frameworks.
+Para testar a lógica da UI do view model, você deve escrever testes unitários que
+não dependam de bibliotecas Flutter ou frameworks de teste.
 
-Repositories are a view model's only dependencies
-(unless you're implementing [use-cases][]),
-and writing `mocks` or `fakes` of the repository is
-the only setup you need to do.
-In this example test, a fake called `FakeBookingRepository` is used.
+Repositórios são as únicas dependências de um view model
+(a menos que você esteja implementando [use-cases][]),
+e escrever `mocks` ou `fakes` do repositório é
+a única configuração que você precisa fazer.
+Neste teste de exemplo, um fake chamado `FakeBookingRepository` é usado.
 
 ```dart title=home_screen_test.dart
 void main() {
-  group('HomeViewModel tests', () {
-    test('Load bookings', () {
-      // HomeViewModel._load is called in the constructor of HomeViewModel.
+  group('Testes do HomeViewModel', () {
+    test('Carregar reservas', () {
+      // HomeViewModel._load é chamado no construtor de HomeViewModel.
       final viewModel = HomeViewModel(
         bookingRepository: FakeBookingRepository()
           ..createBooking(kBooking),
@@ -44,9 +45,9 @@ void main() {
 }
 ```
 
-The [`FakeBookingRepository`][] class implements [`BookingRepository`][].
-In the [data layer section][] of this case-study,
-the `BookingRepository` class is explained thoroughly.
+A classe [`FakeBookingRepository`][] implementa [`BookingRepository`][].
+Na [seção da camada de dados][] deste estudo de caso,
+a classe `BookingRepository` é explicada detalhadamente.
 
 ```dart title=fake_booking_repository.dart
 class FakeBookingRepository implements BookingRepository {
@@ -62,20 +63,20 @@ class FakeBookingRepository implements BookingRepository {
 ```
 
 :::note
-If you're using this architecture with [use-cases][], these would
-similarly need to be faked.
+Se você estiver usando esta arquitetura com [use-cases][], estes também
+precisariam ser falsificados da mesma forma.
 :::
 
-### View widget tests
+### Testes de widget da View
 
-Once you've written tests for your view model,
-you've already created the fakes you need to write widget tests as well.
-The following example shows how the `HomeScreen` widget tests
-are set up using the `HomeViewModel` and needed repositories:
+Depois de escrever testes para seu view model,
+você já criou os fakes que precisa para escrever testes de widget também.
+O exemplo a seguir mostra como os testes de widget `HomeScreen`
+são configurados usando o `HomeViewModel` e os repositórios necessários:
 
 ```dart title=home_screen_test.dart
 void main() {
-  group('HomeScreen tests', () {
+  group('Testes do HomeScreen', () {
     late HomeViewModel viewModel;
     late MockGoRouter goRouter;
     late FakeBookingRepository bookingRepository;
@@ -96,24 +97,24 @@ void main() {
 }
 ```
 
-This setup creates the two fake repositories needed,
-and passes them into a `HomeViewModel` object.
-This class doesn't need to be faked.
+Esta configuração cria os dois repositórios fake necessários
+e os passa para um objeto `HomeViewModel`.
+Esta classe não precisa ser falsificada.
 
 :::note
-The code also defines a `MockGoRouter`.
-The router is mocked using [`package:mocktail`][],
-and is outside the scope of this case-study. 
-You can find general testing guidance in [Flutter's testing documentation][].
+O código também define um `MockGoRouter`.
+O roteador é simulado usando [`package:mocktail`][],
+e está fora do escopo deste estudo de caso.
+Você pode encontrar orientação geral de testes na [documentação de testes do Flutter][].
 :::
 
-After the view model and its dependencies are defined,
-the Widget tree that will be tested needs to be created.
-In the tests for `HomeScreen`, a `loadWidget` method is defined.
+Depois que o view model e suas dependências são definidos,
+a árvore de widgets que será testada precisa ser criada.
+Nos testes para `HomeScreen`, um método `loadWidget` é definido.
 
 ```dart title=home_screen_test.dart highlightLines=11-23
 void main() {
-  group('HomeScreen tests', () {
+  group('Testes do HomeScreen', () {
     late HomeViewModel viewModel;
     late MockGoRouter goRouter;
     late FakeBookingRepository bookingRepository;
@@ -141,9 +142,9 @@ void main() {
 }
 ```
 
-This method turns around and calls `testApp`,
-a generalized method used for all widget tests in the compass app.
-It looks like this:
+Este método se transforma e chama `testApp`,
+um método generalizado usado para todos os testes de widget no aplicativo compass.
+Ele se parece com isto:
 
 ```dart title=testing/app.dart
 void testApp(
@@ -174,27 +175,27 @@ void testApp(
 }
 ```
 
-This function's only job is to create a widget tree that can be tested.
+O único trabalho desta função é criar uma árvore de widgets que possa ser testada.
 
-The `loadWidget` method passes in the unique parts of a widget tree for testing.
-In this case, that includes the `HomeScreen` and its view model,
-as well as some additional faked repositories that
-are higher in the widget tree.
+O método `loadWidget` passa as partes exclusivas de uma árvore de widgets para teste.
+Neste caso, isso inclui o `HomeScreen` e seu view model,
+bem como alguns repositórios falsificados adicionais que
+estão mais acima na árvore de widgets.
 
-The most important thing to take away is that view and view model tests
-only require mocking repositories if your architecture is sound.
+A coisa mais importante a se notar é que os testes de view e view model
+só exigem simulação de repositórios se sua arquitetura for sólida.
 
-## Testing the data layer
+## Testando a camada de dados
 
-Similar to the UI layer, the components of the data layer have
-well-defined inputs and outputs, making both sides fake-able.
-To write unit tests for any given repository,
-mock the services that it depends on.
-The following example shows a unit test for the `BookingRepository`.
+Semelhante à camada de UI, os componentes da camada de dados têm
+entradas e saídas bem definidas, tornando ambos os lados falsificáveis.
+Para escrever testes unitários para qualquer repositório,
+simule os serviços dos quais ele depende.
+O exemplo a seguir mostra um teste unitário para o `BookingRepository`.
 
 ```dart title=booking_repository_remote_test.dart
 void main() {
-  group('BookingRepositoryRemote tests', () {
+  group('Testes do BookingRepositoryRemote', () {
     late BookingRepository bookingRepository;
     late FakeApiClient fakeApiClient;
 
@@ -205,7 +206,7 @@ void main() {
       );
     });
 
-    test('should get booking', () async {
+    test('deve obter a reserva', () async {
       final result = await bookingRepository.getBooking(0);
       final booking = result.asOk.value;
       expect(booking, kBooking);
@@ -214,21 +215,21 @@ void main() {
 }
 ```
 
-To learn more about writing mocks and fakes,
-check out examples in the [Compass App `testing` directory][] or
-read [Flutter's testing documentation][].
+Para saber mais sobre como escrever mocks e fakes,
+confira exemplos no [diretório `testing` do aplicativo Compass][] ou
+leia a [documentação de teste do Flutter][].
 
 [use-cases]: /app-architecture/guide#optional-domain-layer
 [`FakeBookingRepository`]: https://github.com/flutter/samples/blob/main/compass_app/app/testing/fakes/repositories/fake_booking_repository.dart
 [`BookingRepository`]: https://github.com/flutter/samples/tree/main/compass_app/app/lib/data/repositories/booking
-[data layer section]: /app-architecture/case-study/data-layer
+[seção da camada de dados]: /app-architecture/case-study/data-layer
 [`package:mocktail`]: {{site.pub-pkg}}/mocktail
-[Flutter's testing documentation]: /testing/overview
-[Compass App `testing` directory]: https://github.com/flutter/samples/tree/main/compass_app/app/testing
+[documentação de teste do Flutter]: /testing/overview
+[diretório `testing` do aplicativo Compass]: https://github.com/flutter/samples/tree/main/compass_app/app/testing
 
 ## Feedback
 
-As this section of the website is evolving,
-we [welcome your feedback][]!
+Como esta seção do site está evoluindo,
+nós [agradecemos seu feedback][]!
 
-[welcome your feedback]: https://google.qualtrics.com/jfe/form/SV_4T0XuR9Ts29acw6?page="case-study/testing"
+[agradecemos seu feedback]: https://google.qualtrics.com/jfe/form/SV_4T0XuR9Ts29acw6?page="case-study/testing"

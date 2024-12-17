@@ -1,31 +1,32 @@
 ---
-title: Architecture recommendations and resources
-short-title: Architecture recommendations
+title: Recomendações e recursos de arquitetura
+short-title: Recomendações de arquitetura
 description: >
-  Recommendations for building scalable Flutter applications.
+  Recomendações para construir aplicações Flutter escaláveis.
 prev:
-  title: Architecture case study
+  title: Estudo de caso de arquitetura
   path: /app-architecture/case-study
 next:
-  title: Design patterns
+  title: Padrões de projeto
   path: /app-architecture/design-patterns
+ia-translate: true
 ---
 
-This page presents architecture best practices, why they matter, and
-whether we recommend them for your Flutter application.
-You should treat these recommendations as recommendations,
-and not steadfast rules, and you should
-adapt them to your app's unique requirements.
+Esta página apresenta as melhores práticas de arquitetura, por que elas são importantes e
+se nós as recomendamos para a sua aplicação Flutter.
+Você deve tratar estas recomendações como recomendações,
+e não como regras inflexíveis, e você deve
+adaptá-las aos requisitos únicos do seu app.
 
-The best practices on this page have a priority,
-which reflects how strongly the Flutter team recommends it.
+As melhores práticas nesta página têm uma prioridade,
+que reflete o quão fortemente o time Flutter a recomenda.
 
-* **Strongly recommend:** You should always implement this recommendation if
-  you're starting to build a new application. You should strongly consider
-  refactoring an existing app to implement this practice unless doing so would
-  fundamentally clash with your current approach.
-* **Recommend**: This practice will likely improve your app.
-* **Conditional**: This practice can improve your app in certain circumstances.
+*   **Fortemente recomendado:** Você deve sempre implementar esta recomendação se
+    você está começando a construir um novo aplicativo. Você deve considerar fortemente
+    refatorar um aplicativo existente para implementar esta prática a menos que isso
+    entre em conflito fundamentalmente com sua abordagem atual.
+*   **Recomendado**: Esta prática provavelmente irá melhorar o seu aplicativo.
+*   **Condicional**: Esta prática pode melhorar seu aplicativo em certas circunstâncias.
 <br /><br />
 
 {% for section in architecture_recommendations %}
@@ -33,19 +34,19 @@ which reflects how strongly the Flutter team recommends it.
 <p>{{section.description}}</p>
 <table class="table table-striped" style="border-bottom:1px #DADCE0 solid">
     <tr class="tr-main-head">
-      <th style="width: 30%">Recommendation</th>
-      <th style="width: 70%">Description</th>
+      <th style="width: 30%">Recomendação</th>
+      <th style="width: 70%">Descrição</th>
     </tr>
     {% for rec in section.recommendations %}
     <tr>
       <td>
         <p>{{rec.recommendation}}</p>
         {% if rec.confidence == "strong" %}
-            <div class="rrec-pill success">Strongly recommend</div>
+            <div class="rrec-pill success">Fortemente recomendado</div>
         {% elsif rec.confidence == "recommend" %}
-            <div class="rrec-pill info">Recommend</div>
+            <div class="rrec-pill info">Recomendado</div>
         {% else %}
-            <div class="rrec-pill">Conditional</div>
+            <div class="rrec-pill">Condicional</div>
         {% endif %}
       </td>
       <td>
@@ -57,34 +58,33 @@ which reflects how strongly the Flutter team recommends it.
 <br />
 {% endfor %}
 
-## Recommended resources
+## Recursos recomendados
 
-* Code and templates
-  * [Compass app source code][] -
-    Source code of a full-featured, robust Flutter application that
-    implements many of these recommendations.
+* Código e templates
+  * [Código fonte do aplicativo Compass][] -
+    Código fonte de um aplicativo Flutter robusto e completo que
+    implementa muitas dessas recomendações.
   * [Flutter skeleton][] -
-    A Flutter application template that includes many of these recommendations.
+    Um template de aplicativo Flutter que inclui muitas dessas recomendações.
   * [very_good_cli][] -
-    A Flutter application template made by
-    the Flutter experts Very Good Ventures.
-    This template generates a similar app structure.
-* Documentation
-  * [Very Good Engineering architecture documentation][] -
-    Very Good Engineering is a documentation site by VGV that has
-    technical articles, demos, and open-sourced projects.
-    It includes documentation on architecting Flutter applications.
-  * [State Management with ChangeNotifier walkthrough][] -
-    A gentle introduction into using the primitives in
-    the Flutter SDK for your state management.
-* Tooling
-  * [Flutter developer tools][] -
-    DevTools is a suite of performance and debugging tools for Dart and Flutter.
+    Um template de aplicativo Flutter feito por
+    especialistas Flutter da Very Good Ventures.
+    Este template gera uma estrutura de aplicativo similar.
+* Documentação
+  * [Documentação de arquitetura da Very Good Engineering][] -
+    Very Good Engineering é um site de documentação da VGV que possui
+    artigos técnicos, demos e projetos de código aberto.
+    Inclui documentação sobre arquitetura de aplicativos Flutter.
+  * [Passo a passo de gerenciamento de estado com ChangeNotifier][] -
+    Uma introdução suave ao uso dos primitivos no
+    SDK Flutter para seu gerenciamento de estado.
+* Ferramentas
+  * [Ferramentas de desenvolvedor Flutter][] -
+    DevTools é um conjunto de ferramentas de desempenho e depuração para Dart e Flutter.
   * [flutter_lints][] -
-    A package that contains the lints for
-    Flutter apps recommended by the Flutter team.
-    Use this package to encourage good coding practices across a team.
-
+    Um pacote que contém os lints para
+    aplicativos Flutter recomendados pelo time Flutter.
+    Use este pacote para incentivar boas práticas de codificação em uma equipe.
 
 [Separation-of-concerns]: https://en.wikipedia.org/wiki/Separation_of_concerns
 [architecture case study]: /app-architecture/guide
@@ -94,17 +94,17 @@ which reflects how strongly the Flutter team recommends it.
 [built_value]: https://pub.dev/packages/built_value
 [Flutter Navigator API]: https://docs.flutter.dev/ui/navigation
 [pub.dev]: https://pub.dev
-[Compass app source code]: https://github.com/flutter/samples/tree/main/compass_app
+[Código fonte do aplicativo Compass]: https://github.com/flutter/samples/tree/main/compass_app
 [Flutter skeleton]: https://github.com/flutter/flutter/blob/master/packages/flutter_tools/templates/skeleton/README.md.tmpl
 [very_good_cli]: https://cli.vgv.dev/
-[Very Good Engineering architecture documentation]: https://engineering.verygood.ventures/architecture/
-[State Management with ChangeNotifier walkthrough]: /get-started/fwe/state-management
-[Flutter developer tools]: /tools/devtools
+[Documentação de arquitetura da Very Good Engineering]: https://engineering.verygood.ventures/architecture/
+[Passo a passo de gerenciamento de estado com ChangeNotifier]: /get-started/fwe/state-management
+[Ferramentas de desenvolvedor Flutter]: /tools/devtools
 [flutter_lints]: https://pub.dev/packages/flutter_lints
 
 ## Feedback
 
-As this section of the website is evolving,
-we [welcome your feedback][]!
+Como esta seção do site está evoluindo,
+nós [agradecemos seu feedback][]!
 
-[welcome your feedback]: https://google.qualtrics.com/jfe/form/SV_4T0XuR9Ts29acw6?page="recommendations"
+[agradecemos seu feedback]: https://google.qualtrics.com/jfe/form/SV_4T0XuR9Ts29acw6?page="recommendations"

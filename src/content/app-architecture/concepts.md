@@ -1,4 +1,5 @@
 ---
+ia-translate: true
 title: Conceitos comuns de arquitetura
 short-title: Conceitos de arquitetura
 description: >

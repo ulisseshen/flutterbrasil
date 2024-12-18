@@ -1,33 +1,33 @@
 ---
-title: Validate deep links
-description: Learn how to validate deep links in your app.
+ia-translate: true
+title: Validar deep links
+description: Aprenda como validar deep links em seu app.
 ---
 
 :::note
-The deep link validator was added to DevTools
-in Flutter SDK 3.19. It currently works only for
-Android, but will be expanded to cover iOS
-in a future release.
+O validador de deep links foi adicionado ao DevTools
+no Flutter SDK 3.19. Atualmente, ele funciona apenas para
+Android, mas será expandido para cobrir iOS
+em uma versão futura.
 
-To see a demo of the deep link validator,
-check out the Google I/O 2024 video,
+Para ver uma demonstração do validador de deep links,
+confira o vídeo do Google I/O 2024,
 [No more broken links: Deep linking success in Flutter][].
 :::
 
 [No more broken links: Deep linking success in Flutter]: {{site.youtube-site}}/watch?v=d7sZL6h1Elw
 
-The deep link view validates any deep links
-that are defined in your app.
+A visualização de deep links valida quaisquer deep links
+que estejam definidos em seu app.
 
-To use this feature, open DevTools,
-click into the **Deep Links** tab,
-and import a Flutter project that contains deep links.
+Para usar esse recurso, abra o DevTools,
+clique na aba **Deep Links** e importe um projeto
+Flutter que contenha deep links.
 
-![Screenshot of the Deep Link Validator](/assets/images/docs/tools/devtools/deep-link-validator.png){:width="100%"}
+![Captura de tela do Validador de Deep Link](/assets/images/docs/tools/devtools/deep-link-validator.png){:width="100%"}
 
-This tool helps you identify and troubleshoot any errors
-in your Android deep link setup,
-from website configuration to Android manifest files.
-DevTools provides instructions on how to fix any issues,
-making the implementation process easier. 
-
+Essa ferramenta ajuda você a identificar e solucionar quaisquer erros
+na sua configuração de deep link no Android,
+desde a configuração do site até os arquivos manifest do Android.
+O DevTools fornece instruções sobre como corrigir quaisquer problemas,
+tornando o processo de implementação mais fácil.

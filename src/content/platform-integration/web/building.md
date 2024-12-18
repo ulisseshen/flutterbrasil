@@ -1,128 +1,130 @@
 ---
-title: Building a web application with Flutter
-description: Instructions for creating a Flutter app for the web.
-short-title: Web development
+ia-translate: true
+title: Construindo uma aplicação web com Flutter
+description: Instruções para criar um aplicativo Flutter para a web.
+short-title: Desenvolvimento Web
 ---
 
-This page provides an overview of how to configure, run, and build a web
-application using Flutter.
+Esta página fornece uma visão geral de como configurar, executar e construir
+uma aplicação web usando Flutter.
 
-## Requirements
+## Requisitos
 
-Before you can build a web application with Flutter,
-make sure that you have the [Flutter SDK][] and a web browser installed.
-See the [Set up web development for Flutter][Setup-web] instructions
-for details.
+Antes de construir uma aplicação web com Flutter, certifique-se de ter o
+[Flutter SDK][] e um navegador instalado. Veja as instruções de
+[Configurar o desenvolvimento web para Flutter][Setup-web] para detalhes.
 
-## Set up a Flutter project
+## Configurar um projeto Flutter
 
-To set up your project, you can create a new Flutter project or add web support
-to an existing project.
+Para configurar seu projeto, você pode criar um novo projeto Flutter ou adicionar
+suporte web a um projeto existente.
 
-### Create a new project
+### Criar um novo projeto
 
-To create a new app that includes web support, run the following command:
+Para criar um novo aplicativo que inclua suporte web, execute o seguinte comando:
 
 ```console
-$ flutter create my_app 
+$ flutter create my_app
 ```
 
-### Add web support to an existing project
+### Adicionar suporte web a um projeto existente
 
-If you already have a project, run the `flutter create` command in your project directory:
+Se você já tem um projeto, execute o comando `flutter create` no diretório
+do seu projeto:
 
 ```console
 $ flutter create . --platforms web
 ```
 
-This creates a `web/` directory containing the web assets used to bootstrap
-and run your Flutter app. 
+Isso cria um diretório `web/` contendo os ativos web usados para inicializar
+e executar seu aplicativo Flutter.
 
-## Run your app
+## Executar seu aplicativo
 
-Select [Chrome][] as your app's target device to run and debug a Flutter web app:
+Selecione [Chrome][] como o dispositivo alvo do seu aplicativo para executar e
+depurar um aplicativo web Flutter:
 
 ```console
 $ flutter run -d chrome
 ```
 
-You can also choose Chrome as a target device in your IDE.
+Você também pode escolher o Chrome como um dispositivo alvo em sua IDE.
 
-If you prefer, you can use the `edge` device type on Windows, or use `web-server` to
-navigate to a local URL in the browser of your choice.
+Se preferir, você pode usar o tipo de dispositivo `edge` no Windows, ou usar
+`web-server` para navegar até uma URL local no navegador de sua escolha.
 
 :::warning
-**Hot reload is not supported in a web browser**.
-Currently, Flutter only supports **hot restart**, which restarts your app
-without refreshing the web page.
+**Hot reload não é suportado em um navegador web**. Atualmente, o Flutter
+suporta apenas **hot restart**, que reinicia seu aplicativo sem atualizar a
+página web.
 :::
 
-### Run your app using WebAssembly
+### Execute seu aplicativo usando WebAssembly
 
-You can pass the `--wasm` flag to run your app using WebAssembly:
+Você pode passar a flag `--wasm` para executar seu aplicativo usando WebAssembly:
 
 ```console
 $ flutter run -d chrome --wasm
 ```
 
-Flutter web offers multiple build modes and renderers. For more information,
-see [Web renderers][].
+Flutter web oferece múltiplos modos de build e renderizadores. Para mais
+informações, veja [Renderizadores web][].
 
-## Build your app
+## Construir seu aplicativo
 
-Run the following command to generate a release build:
+Execute o seguinte comando para gerar uma build de release:
 
 ```console
 $ flutter build web
 ```
 
-### Build your app using WebAssembly
-You can also pass the `--wasm` flag to build your app using WebAssembly:
+### Construir seu aplicativo usando WebAssembly
+Você também pode passar a flag `--wasm` para construir seu aplicativo usando
+WebAssembly:
 
 ```console
 $ flutter build web --wasm
 ```
 
-This populates a `build/web` directory
-with built files, including an `assets` directory,
-which need to be served together.
+Isso preenche um diretório `build/web` com arquivos construídos, incluindo um
+diretório `assets`, que precisam ser servidos juntos.
 
-To learn more about how to deploy these assets to the web, see
-[Build and release a web app][].
-For answers to other common questions, see the [Web FAQ][].
+Para aprender mais sobre como realizar o deploy desses ativos na web, veja
+[Construir e liberar um aplicativo web][]. Para respostas a outras perguntas
+comuns, veja o [FAQ web][].
 
-## Debugging
+## Depuração
 
-Use [Flutter DevTools][] for the following tasks:
+Use o [Flutter DevTools][] para as seguintes tarefas:
 
-* [Debugging][]
+* [Depuração][]
 * [Logging][]
-* [Running Flutter inspector][]
+* [Executando o inspetor do Flutter][]
 
-Use [Chrome DevTools][] for the following tasks:
+Use o [Chrome DevTools][] para as seguintes tarefas:
 
-* [Generating event timeline][]
-* [Analyzing performance][]&mdash;make sure to use a
-  profile build
+* [Gerando timeline de eventos][]
+* [Analisando performance][]&mdash;certifique-se de usar uma
+  build de perfil
 
-## Testing
+## Testes
 
-Use [widget tests][Widget tests] or integration tests. To learn more about
-running integration tests in a browser, see the [Integration testing][] page.
+Use [testes de widget][Widget tests] ou testes de integração. Para aprender
+mais sobre como executar testes de integração em um navegador, veja a página
+[Testes de integração][].
 
-[Analyzing performance]: {{site.developers}}/web/tools/chrome-devtools/evaluate-performance
+[Analisando performance]: {{site.developers}}/web/tools/chrome-devtools/evaluate-performance
 [Build and release a web app]: /deployment/web
 [Chrome DevTools]: {{site.developers}}/web/tools/chrome-devtools
 [Chrome]: https://www.google.com/chrome/
-[Debugging]: /tools/devtools/debugger
+[Depuração]: /tools/devtools/debugger
 [Flutter DevTools]: /tools/devtools
 [Flutter SDK]: /get-started/install
-[Generating event timeline]: {{site.developers}}/web/tools/chrome-devtools/evaluate-performance/performance-reference
-[Integration testing]: /testing/integration-tests#test-in-a-web-browser
+[Gerando timeline de eventos]: {{site.developers}}/web/tools/chrome-devtools/evaluate-performance/performance-reference
+[Testes de integração]: /testing/integration-tests#test-in-a-web-browser
 [Logging]: /tools/devtools/logging
-[Running Flutter inspector]: /tools/devtools/inspector
+[Executando o inspetor do Flutter]: /tools/devtools/inspector
 [Setup-web]: {{site.url}}/platform-integration/web/install-web
-[Web FAQ]: /platform-integration/web/faq
-[Web renderers]: /platform-integration/web/renderers
-[Widget tests]: /testing/overview#widget-tests
-
+[FAQ web]: /platform-integration/web/faq
+[Renderizadores web]: /platform-integration/web/renderers
+[Testes de widget]: /testing/overview#widget-tests

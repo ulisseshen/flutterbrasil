@@ -1,61 +1,62 @@
 ---
-title: Read and write files
-description: How to read from and write to files on disk.
+ia-translate: true
+title: Ler e escrever arquivos
+description: Como ler e escrever arquivos no disco.
 ---
 
 <?code-excerpt path-base="cookbook/persistence/reading_writing_files/"?>
 
-In some cases, you need to read and write files to disk.
-For example, you might need to persist data across app launches,
-or download data from the internet and save it for later offline use.
+Em alguns casos, você precisa ler e gravar arquivos no disco.
+Por exemplo, você pode precisar persistir dados entre inicializações do aplicativo,
+ou baixar dados da internet e salvá-los para uso offline posterior.
 
-To save files to disk on mobile or desktop apps,
-combine the [`path_provider`][] plugin with the [`dart:io`][] library.
+Para salvar arquivos em disco em aplicativos móveis ou desktop,
+combine o plugin [`path_provider`][] com a biblioteca [`dart:io`][].
 
-This recipe uses the following steps:
+Esta receita usa os seguintes passos:
 
-  1. Find the correct local path.
-  2. Create a reference to the file location.
-  3. Write data to the file.
-  4. Read data from the file.
+  1. Encontre o caminho local correto.
+  2. Crie uma referência para o local do arquivo.
+  3. Escreva dados no arquivo.
+  4. Leia dados do arquivo.
 
-To learn more, watch this Package of the Week video
-on the `path_provider` package:
+Para saber mais, assista a este vídeo do Package of the Week
+sobre o pacote `path_provider`:
 
-{% ytEmbed 'Ci4t-NkOY3I', 'path_provider | Flutter package of the week' %}
+{% ytEmbed 'Ci4t-NkOY3I', 'path_provider | Pacote Flutter da semana' %}
 
 :::note
-This recipe doesn't work with web apps at this time.
-To follow the discussion on this issue,
-check out `flutter/flutter` [issue #45296]({{site.repo.flutter}}/issues/45296).
+Esta receita não funciona com aplicativos web neste momento.
+Para acompanhar a discussão sobre este problema,
+verifique `flutter/flutter` [issue #45296]({{site.repo.flutter}}/issues/45296).
 :::
 
-## 1. Find the correct local path
+## 1. Encontre o caminho local correto
 
-This example displays a counter. When the counter changes,
-write data on disk so you can read it again when the app loads.
-Where should you store this data?
+Este exemplo exibe um contador. Quando o contador muda,
+escreva dados no disco para que você possa lê-los novamente quando o aplicativo carregar.
+Onde você deve armazenar esses dados?
 
-The [`path_provider`][] package
-provides a platform-agnostic way to access commonly used locations on the
-device's file system. The plugin currently supports access to
-two file system locations:
+O pacote [`path_provider`][]
+fornece uma maneira independente de plataforma para acessar locais comumente usados no
+sistema de arquivos do dispositivo. O plugin atualmente oferece suporte ao acesso a
+dois locais do sistema de arquivos:
 
-*Temporary directory*
-: A temporary directory (cache) that the system can
-  clear at any time. On iOS, this corresponds to the
-  [`NSCachesDirectory`][]. On Android, this is the value that
-  [`getCacheDir()`][] returns.
+*Diretório temporário*
+: Um diretório temporário (cache) que o sistema pode
+  limpar a qualquer momento. No iOS, isso corresponde a
+  [`NSCachesDirectory`][]. No Android, este é o valor que
+  [`getCacheDir()`][] retorna.
 
-*Documents directory*
-: A directory for the app to store files that only
-  it can access. The system clears the directory only when the app
-  is deleted.
-  On iOS, this corresponds to the `NSDocumentDirectory`.
-  On Android, this is the `AppData` directory.
+*Diretório de documentos*
+: Um diretório para o aplicativo armazenar arquivos que apenas
+  ele pode acessar. O sistema limpa o diretório somente quando o aplicativo
+  é excluído.
+  No iOS, isso corresponde ao `NSDocumentDirectory`.
+  No Android, este é o diretório `AppData`.
 
-This example stores information in the documents directory.
-You can find the path to the documents directory as follows:
+Este exemplo armazena informações no diretório de documentos.
+Você pode encontrar o caminho para o diretório de documentos da seguinte forma:
 
 <?code-excerpt "lib/main.dart (localPath)"?>
 ```dart
@@ -68,11 +69,11 @@ import 'package:path_provider/path_provider.dart';
   }
 ```
 
-## 2. Create a reference to the file location
+## 2. Crie uma referência para o local do arquivo
 
-Once you know where to store the file, create a reference to the
-file's full location. You can use the [`File`][]
-class from the [`dart:io`][] library to achieve this.
+Depois de saber onde armazenar o arquivo, crie uma referência para o
+local completo do arquivo. Você pode usar a classe [`File`][]
+da biblioteca [`dart:io`][] para realizar isso.
 
 <?code-excerpt "lib/main.dart (localFile)"?>
 ```dart
@@ -82,28 +83,28 @@ Future<File> get _localFile async {
 }
 ```
 
-## 3. Write data to the file
+## 3. Escreva dados no arquivo
 
-Now that you have a `File` to work with,
-use it to read and write data.
-First, write some data to the file.
-The counter is an integer, but is written to the
-file as a string using the `'$counter'` syntax.
+Agora que você tem um `File` para trabalhar,
+use-o para ler e escrever dados.
+Primeiro, escreva alguns dados no arquivo.
+O contador é um inteiro, mas é escrito no
+arquivo como uma string usando a sintaxe `'$counter'`.
 
 <?code-excerpt "lib/main.dart (writeCounter)"?>
 ```dart
 Future<File> writeCounter(int counter) async {
   final file = await _localFile;
 
-  // Write the file
+  // Escreve o arquivo
   return file.writeAsString('$counter');
 }
 ```
 
-## 4. Read data from the file
+## 4. Leia dados do arquivo
 
-Now that you have some data on disk, you can read it.
-Once again, use the `File` class.
+Agora que você tem alguns dados no disco, você pode lê-los.
+Mais uma vez, use a classe `File`.
 
 <?code-excerpt "lib/main.dart (readCounter)"?>
 ```dart
@@ -111,18 +112,18 @@ Future<int> readCounter() async {
   try {
     final file = await _localFile;
 
-    // Read the file
+    // Lê o arquivo
     final contents = await file.readAsString();
 
     return int.parse(contents);
   } catch (e) {
-    // If encountering an error, return 0
+    // Se ocorrer um erro, retorna 0
     return 0;
   }
 }
 ```
 
-## Complete example
+## Exemplo completo
 
 <?code-excerpt "lib/main.dart"?>
 ```dart
@@ -135,7 +136,7 @@ import 'package:path_provider/path_provider.dart';
 void main() {
   runApp(
     MaterialApp(
-      title: 'Reading and Writing Files',
+      title: 'Leitura e Escrita de Arquivos',
       home: FlutterDemo(storage: CounterStorage()),
     ),
   );
@@ -157,12 +158,12 @@ class CounterStorage {
     try {
       final file = await _localFile;
 
-      // Read the file
+      // Lê o arquivo
       final contents = await file.readAsString();
 
       return int.parse(contents);
     } catch (e) {
-      // If encountering an error, return 0
+      // Se ocorrer um erro, retorna 0
       return 0;
     }
   }
@@ -170,7 +171,7 @@ class CounterStorage {
   Future<File> writeCounter(int counter) async {
     final file = await _localFile;
 
-    // Write the file
+    // Escreve o arquivo
     return file.writeAsString('$counter');
   }
 }
@@ -202,7 +203,7 @@ class _FlutterDemoState extends State<FlutterDemo> {
       _counter++;
     });
 
-    // Write the variable as a string to the file.
+    // Escreve a variável como uma string no arquivo.
     return widget.storage.writeCounter(_counter);
   }
 
@@ -210,16 +211,16 @@ class _FlutterDemoState extends State<FlutterDemo> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Reading and Writing Files'),
+        title: const Text('Leitura e Escrita de Arquivos'),
       ),
       body: Center(
         child: Text(
-          'Button tapped $_counter time${_counter == 1 ? '' : 's'}.',
+          'Botão pressionado $_counter vez${_counter == 1 ? '' : 'es'}.',
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        tooltip: 'Incrementar',
         child: const Icon(Icons.add),
       ),
     );

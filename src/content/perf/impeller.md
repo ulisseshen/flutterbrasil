@@ -1,96 +1,96 @@
 ---
-title: Impeller rendering engine
-description: What is Impeller and how to enable it?
+ia-translate: true
+title: Mecanismo de renderização Impeller
+description: O que é Impeller e como habilitá-lo?
 ---
 
-## What is Impeller?
+## O que é Impeller?
 
-Impeller provides a new rendering runtime for Flutter.
-The Flutter team's believes this solves Flutter's
-[early-onset jank][] issue.
-Impeller precompiles a [smaller, simpler set of shaders][]
-at Engine-build time so they don't compile at runtime.
+Impeller fornece um novo tempo de execução de renderização para Flutter.
+A equipe do Flutter acredita que isso resolve o problema de
+[jank de início precoce][] do Flutter.
+Impeller pré-compila um [conjunto menor e mais simples de shaders][]
+no momento da construção do Engine, para que eles não sejam compilados em tempo de execução.
 
-[early-onset jank]: {{site.repo.flutter}}/projects/188
-[smaller, simpler set of shaders]: {{site.repo.flutter}}/issues/77412
+[jank de início precoce]: {{site.repo.flutter}}/projects/188
+[conjunto menor e mais simples de shaders]: {{site.repo.flutter}}/issues/77412
 
-For a video introduction to Impeller, check out the following
-talk from Google I/O 2023.
+Para uma introdução em vídeo ao Impeller, confira a seguinte palestra do Google I/O 2023.
 
-{% ytEmbed 'vd5NqS01rlA', 'Introducing Impeller, Flutter\'s new rendering engine' %}
+{% ytEmbed 'vd5NqS01rlA', 'Apresentando o Impeller, o novo mecanismo de renderização do Flutter' %}
 
-Impeller has the following objectives:
+O Impeller tem os seguintes objetivos:
 
-* **Predictable performance**:
-  Impeller compiles all shaders and reflection offline at build time.
-  It builds all pipeline state objects upfront.
-  The engine controls caching and caches explicitly.
-* **Instrumentable**:
-  Impeller tags and labels all graphics resources,
-  such as textures and buffers.
-  It can capture and persist animations to disk without affecting
-  per-frame rendering performance.
-* **Portable**:
-  Flutter doesn't tie Impeller to a specific client-rendering API.
-  You can author shaders once and convert them to backend-specific
-  formats, as necessary.
-* **Leverages modern graphics APIs**:
-  Impeller uses, but doesn't depend on, features available in
-  modern APIs like Metal and Vulkan.
-* **Leverages concurrency**:
-  Impeller can distribute single-frame workloads across multiple
-  threads, if necessary.
+* **Desempenho previsível**:
+  Impeller compila todos os shaders e reflexão offline no momento da compilação.
+  Ele constrói todos os objetos de estado do pipeline antecipadamente.
+  O mecanismo controla o armazenamento em cache e armazena em cache explicitamente.
+* **Instrumentável**:
+  Impeller marca e rotula todos os recursos gráficos,
+  como texturas e buffers.
+  Ele pode capturar e persistir animações em disco sem afetar
+  o desempenho da renderização por quadro.
+* **Portátil**:
+  O Flutter não vincula o Impeller a uma API de renderização de cliente específica.
+  Você pode criar shaders uma vez e convertê-los em formatos específicos de backend,
+  conforme necessário.
+* **Aproveita APIs gráficas modernas**:
+  O Impeller usa, mas não depende de, recursos disponíveis em
+  APIs modernas como Metal e Vulkan.
+* **Aproveita a concorrência**:
+  O Impeller pode distribuir cargas de trabalho de um único quadro em várias
+  threads, se necessário.
 
-## Availability
+## Disponibilidade
 
-Where can you use Impeller?
+Onde você pode usar o Impeller?
 
 ### iOS
 
-Flutter **enables Impeller by default** on iOS.
+O Flutter **habilita o Impeller por padrão** no iOS.
 
-* To _disable_ Impeller on iOS when debugging,
-  pass `--no-enable-impeller` to the `flutter run` command.
+* Para _desabilitar_ o Impeller no iOS durante a depuração,
+  passe `--no-enable-impeller` para o comando `flutter run`.
 
   ```console
   flutter run --no-enable-impeller
   ```
 
-* To _disable_ Impeller on iOS when deploying your app,
-  add the following tags under the top-level `<dict>` tag in your
-  app's `Info.plist` file.
+* Para _desabilitar_ o Impeller no iOS ao implantar seu aplicativo,
+  adicione as seguintes tags sob a tag de nível superior `<dict>` no
+  arquivo `Info.plist` do seu aplicativo.
 
   ```xml
     <key>FLTEnableImpeller</key>
     <false />
   ```
 
-The team continues to improve iOS support.
-If you encounter performance or fidelity issues
-with Impeller on iOS,
-file an issue in the [GitHub tracker][file-issue].
-Prefix the issue title with `[Impeller]` and
-include a small reproducible test case.
+A equipe continua a melhorar o suporte ao iOS.
+Se você encontrar problemas de desempenho ou fidelidade
+com o Impeller no iOS,
+registre um problema no [rastreador do GitHub][file-issue].
+Prefixe o título do problema com `[Impeller]` e
+inclua um pequeno caso de teste reproduzível.
 
 [file-issue]: {{site.repo.flutter}}/issues/new/choose
 
 ### macOS
 
-As of the 3.19 release,
-you can try out Impeller for macOS behind a flag.
-In a future release, the ability to opt-out of
-using Impeller will be removed.
+A partir da versão 3.19,
+você pode experimentar o Impeller para macOS por trás de um sinalizador.
+Em uma versão futura, a capacidade de desativar o
+uso do Impeller será removida.
 
-To enable Impeller on macOS when debugging,
-pass `--enable-impeller` to the `flutter run` command.
+Para habilitar o Impeller no macOS durante a depuração,
+passe `--enable-impeller` para o comando `flutter run`.
 
 ```console
 flutter run --enable-impeller
 ```
 
-To enable Impeller on macOS when deploying your app,
-add the following tags under the top-level
-`<dict>` tag in your app's `Info.plist` file.
+Para habilitar o Impeller no macOS ao implantar seu aplicativo,
+adicione as seguintes tags sob o nível superior
+tag `<dict>` no arquivo `Info.plist` do seu aplicativo.
 
 ```xml
   <key>FLTEnableImpeller</key>
@@ -99,27 +99,27 @@ add the following tags under the top-level
 
 ### Android
 
-As of the 3.22 release, Impeller on Android with Vulkan
-is a release candidate. On devices that don't support Vulkan,
-Impeller will fallback to the the legacy OpenGL renderer. No
-action on your part is necessary for this fallback behavior.
-Consider trying Impeller on Android before it becomes the default
-on stable, you can explicitly opt into it.
+A partir da versão 3.22, o Impeller no Android com Vulkan
+é um release candidate. Em dispositivos que não suportam Vulkan,
+o Impeller voltará para o renderizador OpenGL legado. Nenhuma
+ação de sua parte é necessária para este comportamento de fallback.
+Considere experimentar o Impeller no Android antes que ele se torne o padrão
+no stable, você pode optar explicitamente por ele.
 
-:::secondary Does your device support Vulkan?
-You can determine whether your Android device
-supports Vulkan at [checking for Vulkan support][vulkan].
+:::secondary Seu dispositivo suporta Vulkan?
+Você pode determinar se o seu dispositivo Android
+suporta Vulkan em [verificando o suporte ao Vulkan][vulkan].
 :::
 
-To try out Impeller on Vulkan-capable Android devices,
-pass `--enable-impeller` to `flutter run`:
+Para experimentar o Impeller em dispositivos Android com capacidade Vulkan,
+passe `--enable-impeller` para `flutter run`:
 
 ```console
 flutter run --enable-impeller
 ```
 
-Or, you can add the following setting to your project's
-`AndroidManifest.xml` file under the `<application>` tag:
+Ou, você pode adicionar a seguinte configuração ao
+arquivo `AndroidManifest.xml` do seu projeto sob a tag `<application>`:
 
 ```xml
 <meta-data
@@ -129,46 +129,45 @@ Or, you can add the following setting to your project's
 
 [vulkan]: https://docs.vulkan.org/guide/latest/checking_for_support.html#_android
 
-### Bugs and issues
+### Bugs e problemas
 
-For the full list of Impeller's known bugs
-and missing features,
-the most up-to-date information is on the
-[Impeller project board][] on GitHub.
+Para a lista completa de bugs conhecidos e recursos ausentes do Impeller,
+as informações mais atualizadas estão no
+[quadro do projeto Impeller][] no GitHub.
 
-The team continues to improve Impeller support.
-If you encounter performance or fidelity issues
-with Impeller on any platform,
-file an issue in the [GitHub tracker][file-issue].
-Prefix the issue title with `[Impeller]` and
-include a small reproducible test case.
+A equipe continua a melhorar o suporte do Impeller.
+Se você encontrar problemas de desempenho ou fidelidade
+com o Impeller em qualquer plataforma,
+registre um problema no [rastreador do GitHub][file-issue].
+Prefixe o título do problema com `[Impeller]` e
+inclua um pequeno caso de teste reproduzível.
 
-Please include the following information when
-submitting an issue for Impeller:
+Inclua as seguintes informações ao
+enviar um problema para o Impeller:
 
-* The device you are running on,
-  including the chip information.
-* Screenshots or recordings of any visible issues.
-* An [export of the performance trace][].
-  Zip the file and attach it to the GitHub issue.
+* O dispositivo em que você está executando,
+  incluindo as informações do chip.
+* Capturas de tela ou gravações de quaisquer problemas visíveis.
+* Uma [exportação do rastreamento de desempenho][].
+  Compacte o arquivo e anexe-o ao problema do GitHub.
 
-[export of the performance trace]:/tools/devtools/performance#import-and-export
-[Impeller project board]: {{site.github}}/orgs/flutter/projects/21
+[exportação do rastreamento de desempenho]:/tools/devtools/performance#import-and-export
+[quadro do projeto Impeller]: {{site.github}}/orgs/flutter/projects/21
 
-## Architecture
+## Arquitetura
 
-To learn more details about Impeller's design and architecture,
-check out the [README.md][] file in the source tree.
+Para saber mais detalhes sobre o design e a arquitetura do Impeller,
+confira o arquivo [README.md][] na árvore de origem.
 
 [README.md]: {{site.repo.engine}}/blob/main/impeller/README.md
 
-## Additional information
+## Informações adicionais
 
-* [Frequently asked questions]({{site.repo.engine}}/blob/main/impeller/docs/faq.md)
-* [Impeller's coordinate system]({{site.repo.engine}}/blob/main/impeller/docs/coordinate_system.md)
-* [How to set up Xcode for GPU frame captures with metal]({{site.repo.engine}}/blob/main/impeller/docs/xcode_frame_capture.md)
-* [Learning to read GPU frame captures]({{site.repo.engine}}/blob/main/impeller/docs/read_frame_captures.md)
-* [How to enable metal validation for command line apps]({{site.repo.engine}}/blob/main/impeller/docs/metal_validation.md)
-* [How Impeller works around the lack of uniform buffers in Open GL ES 2.0]({{site.repo.engine}}/blob/main/impeller/docs/ubo_gles2.md)
-* [Guidance for writing efficient shaders]({{site.repo.engine}}/blob/main/impeller/docs/shader_optimization.md)
-* [How color blending works in Impeller]({{site.repo.engine}}/blob/main/impeller/docs/blending.md)
+* [Perguntas frequentes]({{site.repo.engine}}/blob/main/impeller/docs/faq.md)
+* [Sistema de coordenadas do Impeller]({{site.repo.engine}}/blob/main/impeller/docs/coordinate_system.md)
+* [Como configurar o Xcode para capturas de quadro de GPU com metal]({{site.repo.engine}}/blob/main/impeller/docs/xcode_frame_capture.md)
+* [Aprendendo a ler capturas de quadro de GPU]({{site.repo.engine}}/blob/main/impeller/docs/read_frame_captures.md)
+* [Como habilitar a validação de metal para aplicativos de linha de comando]({{site.repo.engine}}/blob/main/impeller/docs/metal_validation.md)
+* [Como o Impeller contorna a falta de buffers uniformes no Open GL ES 2.0]({{site.repo.engine}}/blob/main/impeller/docs/ubo_gles2.md)
+* [Orientação para escrever shaders eficientes]({{site.repo.engine}}/blob/main/impeller/docs/shader_optimization.md)
+* [Como a mistura de cores funciona no Impeller]({{site.repo.engine}}/blob/main/impeller/docs/blending.md)

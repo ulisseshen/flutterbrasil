@@ -1,80 +1,45 @@
 ---
-title: Display images on the web
-short-title: Web images
-description: Learn how to load and display images on the web.
+ia-translate: true
+title: Exibir imagens na web
+short-title: Imagens na web
+description: Aprenda como carregar e exibir imagens na web.
 ---
 
-The web supports the standard [`Image`][] widget and the more 
-advanced [`dart:ui/Image`][] class (where more fine-grained control 
-is needed to display images).
-However, because web browsers are built to run untrusted code safely,
-there are certain limitations in what you can do with images compared
-to mobile and desktop platforms. This page explains these limitations
-and offers ways to work around them.
+A web suporta o widget padrão [`Image`][] e a classe mais avançada [`dart:ui/Image`][] (onde é necessário um controle mais preciso para exibir imagens). No entanto, como os navegadores da web são construídos para executar código não confiável com segurança, existem certas limitações no que você pode fazer com imagens em comparação com plataformas móveis e desktop. Esta página explica essas limitações e oferece maneiras de contorná-las.
 
 [`Image`]: {{site.api}}/flutter/widgets/Image-class.html
 [`dart:ui/Image`]: {{site.api}}/flutter/dart-ui/Image-class.html
 
 :::note
-For information on how to optimize web loading speed,
-check out the (free) article on Medium,
+Para obter informações sobre como otimizar a velocidade de carregamento da web, confira o artigo (gratuito) no Medium,
 [Best practices for optimizing Flutter web loading speed][article].
 
 [article]: {{site.flutter-medium}}/best-practices-for-optimizing-flutter-web-loading-speed-7cc0df14ce5c
 :::
 
-## Background
+## Plano de fundo
 
-The web offers several methods for displaying images:
+A web oferece vários métodos para exibir imagens:
 
-- The built-in [`<img>`][] and [`<picture>`][] HTML elements
-- The [`drawImage`][] method on the [`<canvas>`][] element
-- Custom image codec that renders to a WebGL canvas
+- Os elementos HTML integrados [`<img>`][] e [`<picture>`][]
+- O método [`drawImage`][] no elemento [`<canvas>`][]
+- Codec de imagem personalizado que renderiza para um canvas WebGL
 
-Each option has its own benefits and drawbacks.
-For example, the built-in elements fit nicely among
-other HTML elements, and they automatically take
-advantage of browser caching, and built-in image
-optimization and memory management.
-They allow you to safely display images from arbitrary sources
-(more on than in the CORS section below).
-`drawImage` is great when the image must fit within
-other content rendered using the `<canvas>` element.
-You also gain control over image sizing and,
-when the CORS policy allows it, read the pixels
-of the image back for further processing.
-Finally, WebGL gives you the highest degree of
-control over the image. Not only can you read the pixels and
-apply custom image algorithms, but you can also use GLSL for
-hardware-acceleration.
+Cada opção tem seus próprios benefícios e desvantagens. Por exemplo, os elementos integrados se encaixam bem entre outros elementos HTML, e eles aproveitam automaticamente o cache do navegador e a otimização de imagem e gerenciamento de memória integrados. Eles permitem que você exiba imagens com segurança de fontes arbitrárias (mais sobre isso na seção CORS abaixo). `drawImage` é ótimo quando a imagem deve se encaixar em outro conteúdo renderizado usando o elemento `<canvas>`. Você também ganha controle sobre o dimensionamento da imagem e, quando a política CORS permite, lê os pixels da imagem de volta para processamento posterior. Finalmente, o WebGL oferece o maior grau de controle sobre a imagem. Você não só pode ler os pixels e aplicar algoritmos de imagem personalizados, mas também pode usar GLSL para aceleração de hardware.
 
 [`<img>`]: https://developer.mozilla.org/docs/Web/HTML/Element/img
 [`<picture>`]: https://developer.mozilla.org/docs/Web/HTML/Element/picture
 [`drawImage`]: https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/drawImage
 [`<canvas>`]: https://developer.mozilla.org/docs/Web/HTML/Element/canvas
 
-## Cross-Origin Resource Sharing (CORS)
+## Compartilhamento de recursos de origem cruzada (CORS)
 
-[CORS][] is a mechanism that browsers use to control how
-one site accesses the resources of another site. It is
-designed such that, by default, one web-site is not
-allowed to make HTTP requests to another site using
-[XHR][] or [`fetch`][].  
-This prevents scripts on another site from acting on
-behalf of the user and from gaining access to another
-site's resources without permission.
+[CORS][] é um mecanismo que os navegadores usam para controlar como um site acessa os recursos de outro site. Ele é projetado de forma que, por padrão, um site não tenha permissão para fazer solicitações HTTP para outro site usando [XHR][] ou [`fetch`][]. Isso impede que scripts em outro site atuem em nome do usuário e obtenham acesso aos recursos de outro site sem permissão.
 
-On the web, Flutter renders apps using the CanvasKit
-or skwasm (when using Wasm) renderers. These both rely
-on WebGL. WebGL requires access to the raw image data
-(bytes) in order to be able to render the image.
-Therefore, images must only come from servers that
-have a CORS policy configured to work with the domain
-that serves your application.
+Na web, o Flutter renderiza aplicativos usando os renderizadores CanvasKit ou skwasm (ao usar Wasm). Ambos dependem do WebGL. O WebGL requer acesso aos dados brutos da imagem (bytes) para poder renderizar a imagem. Portanto, as imagens devem vir apenas de servidores que tenham uma política CORS configurada para funcionar com o domínio que atende seu aplicativo.
 
-:::note   
-For more information about web renderers, see
-[Web renderers][].
+:::note
+Para obter mais informações sobre renderizadores da web, consulte [Web renderers][].
 :::
 
 [CORS]: https://developer.mozilla.org/docs/Web/HTTP/CORS
@@ -82,61 +47,41 @@ For more information about web renderers, see
 [`fetch`]: https://developer.mozilla.org/docs/Web/API/Fetch_API/Using_Fetch
 [Web renderers]: /platform-integration/web/renderers
 
-## Solutions
+## Soluções
 
-There are multiple solutions to workaround CORS restrictions
-in Flutter.
+Existem várias soluções para contornar as restrições CORS no Flutter.
 
-### In-memory, asset, and same-origin network images
+### Imagens em memória, assets e de rede de mesma origem
 
-If the app has the bytes of the encoded image in memory,
-provided as an [asset][], or stored on the
-same server that serves the application
-(also known as _same-origin_), no extra effort is necessary.
-The image can be displayed using
-[`Image.memory`][], [`Image.asset`][], or [`Image.network`][].
+Se o aplicativo tiver os bytes da imagem codificada na memória, fornecidos como um [asset][], ou armazenados no mesmo servidor que atende o aplicativo (também conhecido como _mesma origem_), nenhum esforço extra é necessário. A imagem pode ser exibida usando [`Image.memory`][], [`Image.asset`][], ou [`Image.network`][].
 
 [asset]: /ui/assets/assets-and-images
 [`Image.memory`]: {{site.api}}/flutter/widgets/Image/Image.memory.html
 [`Image.asset`]: {{site.api}}/flutter/widgets/Image/Image.asset.html
 [`Image.network`]: {{site.api}}/flutter/widgets/Image/Image.network.html
 
-### Host images in a CORS-enabled CDN
+### Hospede imagens em um CDN habilitado para CORS
 
-Typically, content delivery networks (CDN)
-can be configured to customize what domains
-are allowed to access your content.
-For example, Firebase site hosting allows
-[specifying a custom][custom-header] `Access-Control-Allow-Origin`
-header in the `firebase.json` file.
+Normalmente, as redes de entrega de conteúdo (CDN) podem ser configuradas para personalizar quais domínios podem acessar seu conteúdo. Por exemplo, a hospedagem de sites do Firebase permite [especificar um cabeçalho][custom-header] `Access-Control-Allow-Origin` personalizado no arquivo `firebase.json`.
 
 [custom-header]: {{site.firebase}}/docs/hosting/full-config#headers
 
-### Use a CORS proxy if you have no control over the origin server
+### Use um proxy CORS se você não tiver controle sobre o servidor de origem
 
-If the image server cannot be configured to allow CORS
-requests from your application,
-you might still be able to load images by proxying
-the requests through another server. This requires that the
-intermediate server has sufficient access to load the images.
+Se o servidor de imagem não puder ser configurado para permitir solicitações CORS do seu aplicativo, você ainda poderá carregar imagens fazendo proxy das solicitações por meio de outro servidor. Isso exige que o servidor intermediário tenha acesso suficiente para carregar as imagens.
 
-This method can be used in situations when the original
-image server serves images publicly,
-but is not configured with the correct CORS headers.
+Este método pode ser usado em situações em que o servidor de imagem original serve imagens publicamente, mas não está configurado com os cabeçalhos CORS corretos.
 
-Examples:
+Exemplos:
 
-* Using [CloudFlare Workers][].
-* Using [Firebase Functions][].
+* Usando [CloudFlare Workers][].
+* Usando [Firebase Functions][].
 
 [CloudFlare Workers]: https://developers.cloudflare.com/workers/examples/cors-header-proxy
 [Firebase Functions]: {{site.github}}/7kfpun/cors-proxy
 
-### Use a HTML platform view
+### Use uma visualização de plataforma HTML
 
-If none of the other solutions work for your app, Flutter
-supports embedding raw HTML inside the app using
-[`HtmlElementView`][].  Use it to create an `<img>`
-element to render the image from another domain.
+Se nenhuma das outras soluções funcionar para o seu aplicativo, o Flutter oferece suporte à incorporação de HTML bruto dentro do aplicativo usando [`HtmlElementView`][]. Use-o para criar um elemento `<img>` para renderizar a imagem de outro domínio.
 
 [`HtmlElementView`]: {{site.api}}/flutter/widgets/HtmlElementView-class.html

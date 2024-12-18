@@ -1,6 +1,7 @@
 ---
+ia-translate: true
 title: Networking
-description: A catalog of recipes for networking in your Flutter app.
+description: Um catálogo de receitas para networking em seu aplicativo Flutter.
 ---
 
 {% include docs/cookbook-group-index.md %}

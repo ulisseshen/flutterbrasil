@@ -1,266 +1,260 @@
 ---
-title: Use the Performance view
-description: Learn how to use the DevTools performance view.
+ia-translate: true
+title: Use a visualização de Performance
+description: Aprenda a usar a visualização de performance do DevTools.
 ---
 
 :::note
-The DevTools performance view works for Flutter mobile and desktop apps.
-For web apps, Flutter adds timeline events to the
-performance panel of Chrome DevTools instead.
-To learn about profiling web apps,
-check out [Debugging web performance][].
+A visualização de performance do DevTools funciona para aplicativos Flutter móveis e de desktop.
+Para aplicativos web, o Flutter adiciona eventos de timeline ao painel de
+performance do Chrome DevTools. Para saber mais sobre como fazer o
+profiling de aplicativos web, consulte [Depurando performance web][].
 :::
 
-[Debugging web performance]: /perf/web-performance
+[Depurando performance web]: /perf/web-performance
 
-The performance page can help you diagnose performance
-problems and UI jank in your application.
-This page offers timing and performance information
-for activity in your application.
-It consists of several tools to help you identify
-the cause of poor performance in your app:
+A página de performance pode te ajudar a diagnosticar problemas de
+performance e jank de UI no seu aplicativo. Esta página oferece informações
+de tempo e performance para a atividade no seu aplicativo. Ela consiste
+em diversas ferramentas para te ajudar a identificar a causa de performance
+ruim no seu app:
 
-* Flutter frames chart (Flutter apps only)
-* Frame analysis tab (Flutter apps only)
-* Timeline events trace viewer (all native Dart applications)
-* Advanced debugging tools (Flutter apps only)
+* Gráfico de frames do Flutter (somente aplicativos Flutter)
+* Aba de análise de frames (somente aplicativos Flutter)
+* Visualizador de rastreamento de eventos de timeline (todos os aplicativos nativos Dart)
+* Ferramentas avançadas de debug (somente aplicativos Flutter)
 
 :::secondary
-**Use a [profile build][] of your application to analyze performance.**
-Frame rendering times aren't indicative of release performance
-when running in debug mode. Run your app in profile mode,
-which still preserves useful debugging information.
+**Use um [build de profile][] do seu aplicativo para analisar a performance.**
+Tempos de renderização de frame não são indicativos da performance de
+release quando rodando em modo debug. Rode seu app em modo profile, o qual
+ainda preserva informações úteis de debug.
 :::
 
-[profile build]: /testing/build-modes#profile
+[build de profile]: /testing/build-modes#profile
 
-The performance view also supports importing and exporting of
-data snapshots. For more information,
-check out the [Import and export][] section.
+A visualização de performance também suporta a importação e exportação de
+snapshots de dados. Para mais informações, consulte a seção [Importar e exportar][].
 
-## What is a frame in Flutter?
+## O que é um frame no Flutter?
 
-Flutter is designed to render its UI at 60 frames per second
-(fps), or 120 fps on devices capable of 120Hz updates.
-Each render is called a _frame_.
-This means that, approximately every 16ms, the UI updates
-to reflect animations or other changes to the UI. A frame
-that takes longer than 16ms to render causes jank
-(jerky motion) on the display device.
+O Flutter é projetado para renderizar sua UI a 60 frames por segundo
+(fps), ou 120 fps em dispositivos capazes de atualizações de 120Hz. Cada
+renderização é chamada de _frame_. Isso significa que, aproximadamente
+a cada 16ms, a UI é atualizada para refletir animações ou outras
+mudanças na UI. Um frame que leva mais de 16ms para renderizar causa
+jank (movimento instável) no dispositivo de exibição.
 
-## Flutter frames chart
+## Gráfico de frames do Flutter
 
-This chart contains Flutter frame information for your application.
-Each bar set in the chart represents a single Flutter frame.
-The bars are color-coded to highlight the different portions
-of work that occur when rendering a Flutter frame: work from
-the UI thread and work from the raster thread.
+Este gráfico contém informações de frames do Flutter para seu aplicativo.
+Cada conjunto de barras no gráfico representa um único frame do Flutter.
+As barras são codificadas por cores para destacar as diferentes porções de
+trabalho que ocorrem ao renderizar um frame do Flutter: trabalho da thread
+da UI e trabalho da thread raster.
 
-This chart contains Flutter frame timing information for your
-application. Each pair of bars in the chart represents a single
-Flutter frame. Selecting a frame from this chart updates the data
-that is displayed below in the [Frame analysis](#frame-analysis-tab) tab
-or the [Timeline events](#timeline-events-tab) tab.
+Este gráfico contém informações de tempo de frames do Flutter para seu
+aplicativo. Cada par de barras no gráfico representa um único frame do
+Flutter. Selecionar um frame neste gráfico atualiza os dados exibidos
+abaixo na aba [Análise de frames](#aba-de-análise-de-frames) ou na aba
+[Eventos de timeline](#aba-de-eventos-de-timeline).
 
 [DevTools 2.23.1]: /tools/devtools/release-notes/release-notes-2.23.1
 
-The flutter frames chart updates when new frames
-are drawn in your app. To pause updates to this chart,
-click the pause button to the right of the chart.
-This chart can be collapsed to provide more viewing space
-for data below by clicking the **Flutter frames** button above the chart.
+O gráfico de frames do Flutter é atualizado quando novos frames são
+desenhados no seu app. Para pausar as atualizações neste gráfico, clique
+no botão de pausa à direita do gráfico. Este gráfico pode ser recolhido
+para fornecer mais espaço de visualização para os dados abaixo clicando no
+botão **Flutter frames** acima do gráfico.
 
-![Screenshot of a Flutter frames chart](/assets/images/docs/tools/devtools/flutter-frames-chart.png)
+![Screenshot de um gráfico de frames do Flutter](/assets/images/docs/tools/devtools/flutter-frames-chart.png)
 
-The pair of bars representing each Flutter frame are color-coded
-to highlight the different portions of work that occur when rendering
-a Flutter frame: work from the UI thread and work from the raster thread.
+O par de barras representando cada frame do Flutter é codificado por cores
+para destacar as diferentes porções de trabalho que ocorrem ao renderizar
+um frame do Flutter: trabalho da thread da UI e trabalho da thread raster.
 
 ### UI
 
-The UI thread executes Dart code in the Dart VM. This includes
-code from your application as well as the Flutter framework.
-When your app creates and displays a scene, the UI thread creates
-a layer tree, a lightweight object containing device-agnostic
-painting commands, and sends the layer tree to the raster thread
-to be rendered on the device. Do **not** block this thread.
+A thread da UI executa código Dart na VM Dart. Isso inclui código do seu
+aplicativo, bem como do framework Flutter. Quando seu aplicativo cria e
+exibe uma cena, a thread da UI cria uma árvore de camadas, um objeto leve
+contendo comandos de desenho independentes do dispositivo, e envia a árvore
+de camadas para a thread raster para ser renderizada no dispositivo.
+**Não** bloqueie esta thread.
 
 ### Raster
 
-The raster thread executes graphics code from the Flutter Engine.
-This thread takes the layer tree and displays it by talking to
-the GPU (graphic processing unit). You can't directly access
-the raster thread or its data, but if this thread is slow,
-it's a result of something you've done in the Dart code.
-Skia, the graphics library, runs on this thread.
-[Impeller][] also uses this thread.
+A thread raster executa o código gráfico do Flutter Engine. Esta thread
+pega a árvore de camadas e a exibe comunicando-se com a GPU (unidade de
+processamento gráfico). Você não pode acessar diretamente a thread raster
+ou seus dados, mas se esta thread estiver lenta, é resultado de algo que
+você fez no código Dart. Skia, a biblioteca gráfica, é executada nesta
+thread. [Impeller][] também usa esta thread.
 
 [Impeller]: /perf/impeller
 
-Sometimes a scene results in a layer tree that is easy to construct,
-but expensive to render on the raster thread. In this case, you
-need to figure out what your code is doing that is causing
-rendering code to be slow. Specific kinds of workloads are more
-difficult for the GPU. They might involve unnecessary calls to
-`saveLayer()`, intersecting opacities with multiple objects,
-and clips or shadows in specific situations.
+Às vezes, uma cena resulta em uma árvore de camadas que é fácil de
+construir, mas cara para renderizar na thread raster. Neste caso, você
+precisa descobrir o que seu código está fazendo que está causando a lentidão
+do código de renderização. Tipos específicos de cargas de trabalho são mais
+difíceis para a GPU. Elas podem envolver chamadas desnecessárias para
+`saveLayer()`, interseção de opacidades com vários objetos, e recortes ou
+sombras em situações específicas.
 
-For more information on profiling, check out
-[Identifying problems in the GPU graph][GPU graph].
+Para mais informações sobre profiling, consulte
+[Identificando problemas no gráfico da GPU][gráfico da GPU].
 
-### Jank (slow frame)
+### Jank (frame lento)
 
-The frame rendering chart shows jank with a red overlay.
-A frame is considered to be janky if it takes more than
-~16 ms to complete (for 60 FPS devices). To achieve a frame rendering rate of
-60 FPS (frames per second), each frame must render in
-~16 ms or less. When this target is missed, you may
-experience UI jank or dropped frames.
+O gráfico de renderização de frames mostra jank com uma sobreposição
+vermelha. Um frame é considerado janky se levar mais de ~16 ms para ser
+concluído (para dispositivos de 60 FPS). Para atingir uma taxa de
+renderização de frame de 60 FPS (frames por segundo), cada frame deve ser
+renderizado em ~16 ms ou menos. Quando esta meta é perdida, você pode
+experimentar jank de UI ou frames perdidos.
 
-For more information on how to analyze your app's performance,
-check out [Flutter performance profiling][].
+Para mais informações sobre como analisar a performance do seu app,
+consulte [Profiling de performance do Flutter][].
 
-### Shader compilation
+### Compilação de shader
 
-Shader compilation occurs when a shader is first used in your Flutter
-app. Frames that perform shader compilation are marked in dark
-red:
+A compilação de shader ocorre quando um shader é usado pela primeira vez
+no seu app Flutter. Frames que executam a compilação de shader são
+marcados em vermelho escuro:
 
-![Screenshot of shader compilation for a frame](/assets/images/docs/tools/devtools/shader-compilation-frames-chart.png)
+![Screenshot da compilação de shader para um frame](/assets/images/docs/tools/devtools/shader-compilation-frames-chart.png)
 
-For more information on how to reduce shader compilation jank,
-check out [Reduce shader compilation jank on mobile][].
+Para mais informações sobre como reduzir o jank de compilação de shader,
+consulte [Reduzir o jank de compilação de shader no mobile][].
 
-## Frame analysis tab
+## Aba de análise de frames
 
-Selecting a janky frame (slow, colored in red)
-from the Flutter frames chart above shows debugging hints
-in the Frame analysis tab. These hints help you diagnose
-jank in your app, and notify you of any expensive operations
-that we have detected that might have contributed to the slow frame time.
+Selecionar um frame janky (lento, colorido em vermelho) do gráfico de
+frames do Flutter acima mostra dicas de debug na aba Análise de frames.
+Essas dicas ajudam você a diagnosticar jank no seu app e notificam você
+de quaisquer operações caras que detectamos que podem ter contribuído para
+o tempo lento do frame.
 
-![Screenshot of the frame analysis tab](/assets/images/docs/tools/devtools/frame-analysis-tab.png)
+![Screenshot da aba de análise de frames](/assets/images/docs/tools/devtools/frame-analysis-tab.png)
 
-## Timeline events tab
+## Aba de eventos de timeline
 
-The timeline events chart shows all event tracing from your application.
-The Flutter framework emits timeline events as it works to build frames,
-draw scenes, and track other activity such as HTTP request timings
-and garbage collection. These events show up here in the Timeline.
-You can also send your own Timeline events using the dart:developer
-[`Timeline`][] and [`TimelineTask`][] APIs.
+O gráfico de eventos de timeline mostra todo o rastreamento de eventos do
+seu aplicativo. O framework Flutter emite eventos de timeline enquanto
+trabalha para construir frames, desenhar cenas e rastrear outras
+atividades, como tempos de requisição HTTP e coleta de lixo. Esses eventos
+aparecem aqui na Timeline. Você também pode enviar seus próprios eventos
+de Timeline usando as APIs `Timeline`][] e [`TimelineTask`][] do
+dart:developer.
 
 [`Timeline`]: {{site.api}}/flutter/dart-developer/Timeline-class.html
 [`TimelineTask`]: {{site.api}}/flutter/dart-developer/TimelineTask-class.html
 
-![Screenshot of a timeline events tab](/assets/images/docs/tools/devtools/timeline-events-tab.png)
-For help with navigating and using the trace viewer,
-click the **?** button at the top right of the timeline
-events tab bar. To refresh the timeline with new events from
-your application, click the refresh button
-(also in the upper right corner of the tab controls).
+![Screenshot da aba de eventos de timeline](/assets/images/docs/tools/devtools/timeline-events-tab.png)
+Para ajuda com a navegação e o uso do visualizador de rastreamento,
+clique no botão **?** no canto superior direito da barra da aba de
+eventos de timeline. Para atualizar a timeline com novos eventos do seu
+aplicativo, clique no botão de atualização (também no canto superior
+direito dos controles da aba).
 
-## Advanced debugging tools
+## Ferramentas avançadas de debug
 
-### Enhance tracing
+### Aprimorar rastreamento
 
-To view more detailed tracing in the timeline events chart,
-use the options in the enhance tracing dropdown:
+Para visualizar rastreamentos mais detalhados no gráfico de eventos de
+timeline, use as opções no dropdown de aprimorar rastreamento:
 
 :::note
-Frame times might be negatively affected when these options are enabled.
+Os tempos de frame podem ser afetados negativamente quando essas opções são habilitadas.
 :::
 
-![Screenshot of enhanced tracing options](/assets/images/docs/tools/devtools/enhanced-tracing.png)
+![Screenshot das opções de rastreamento aprimorado](/assets/images/docs/tools/devtools/enhanced-tracing.png)
 
-To see the new timeline events, reproduce the activity
-in your app that you are interested in tracing,
-and then select a frame to inspect the timeline.
+Para ver os novos eventos de timeline, reproduza a atividade no seu app
+que você está interessado em rastrear e, em seguida, selecione um frame
+para inspecionar a timeline.
 
-### Track widget builds
+### Rastrear construções de widget
 
-To see the `build()` method events in the timeline,
-enable the **Track Widget Builds** option.
-The name of the widget is shown in the timeline event.
+Para ver os eventos do método `build()` na timeline, habilite a opção
+**Rastrear construções de Widget**. O nome do widget é exibido no evento
+da timeline.
 
-![Screenshot of track widget builds](/assets/images/docs/tools/devtools/track-widget-builds.png)
+![Screenshot de rastrear construções de widget](/assets/images/docs/tools/devtools/track-widget-builds.png)
 
-[Watch this video for an example of tracking widget builds][track-widgets]
+[Assista a este vídeo para um exemplo de rastreamento de construções de widgets][rastrear-widgets]
 
-### Track layouts
+### Rastrear layouts
 
-To see render object layout events in the timeline,
-enable the **Track Layouts** option:
+Para ver os eventos de layout de objetos de renderização na timeline,
+habilite a opção **Rastrear layouts**:
 
-![Screenshot of track layouts](/assets/images/docs/tools/devtools/track-layouts.png)
+![Screenshot de rastrear layouts](/assets/images/docs/tools/devtools/track-layouts.png)
 
-[Watch this video for an example of tracking layouts][track-layouts]
+[Assista a este vídeo para um exemplo de rastreamento de layouts][rastrear-layouts]
 
-### Track paints
+### Rastrear pinturas
 
-To see render object paint events in the timeline,
-enable the **Track Paints** option:
+Para ver os eventos de pintura de objetos de renderização na timeline,
+habilite a opção **Rastrear pinturas**:
 
-![Screenshot of track paints](/assets/images/docs/tools/devtools/track-paints.png)
+![Screenshot de rastrear pinturas](/assets/images/docs/tools/devtools/track-paints.png)
 
-[Watch this video for an example of tracking paints][track-paints]
+[Assista a este vídeo para um exemplo de rastreamento de pinturas][rastrear-paints]
 
-## More debugging options
+## Mais opções de debug
 
-To diagnose performance problems related to rendering layers,
-toggle off a rendering layer.
-These options are enabled by default.
+Para diagnosticar problemas de performance relacionados a camadas de
+renderização, desative uma camada de renderização. Essas opções são
+habilitadas por padrão.
 
-To see the effects on your app's performance,
-reproduce the activity in your app.
-Then select the new frames in the frames chart
-to inspect the timeline events
-with the layers disabled.
-If raster time has significantly decreased,
-excessive use of the effects you disabled might be contributing
-to the jank you saw in your app.
+Para ver os efeitos na performance do seu app, reproduza a atividade no
+seu app. Em seguida, selecione os novos frames no gráfico de frames para
+inspecionar os eventos de timeline com as camadas desabilitadas. Se o
+tempo raster diminuiu significativamente, o uso excessivo dos efeitos que
+você desabilitou pode estar contribuindo para o jank que você viu no seu
+app.
 
-**Render Clip layers**
-: Disable this option to check whether excessive use of clipping
-  is affecting performance.
-  If performance improves with this option disabled,
-  try to reduce the use of clipping effects in your app.
-  
-**Render Opacity layers**
-:  Disable this option to check whether
-   excessive use of opacity effects are affecting performance.
-   If performance improves with this option disabled,
-   try to reduce the use of opacity effects in your app.
-  
-**Render Physical Shape layers**
-: Disable this option to check whether excessive
-  use of physical modeling effects are affecting performance,
-  such as shadows or elevation.
-  If performance improves with this option disabled,
-  try to reduce the use of physical modeling effects in your app.
+**Renderizar camadas de Clip**
+: Desabilite esta opção para verificar se o uso excessivo de clipping
+  está afetando a performance. Se a performance melhorar com esta
+  opção desabilitada, tente reduzir o uso de efeitos de clipping no
+  seu app.
 
-![Screenshot of more debugging options](/assets/images/docs/tools/devtools/more-debugging-options.png)
+**Renderizar camadas de Opacidade**
+: Desabilite esta opção para verificar se o uso excessivo de efeitos de
+  opacidade está afetando a performance. Se a performance melhorar com
+  esta opção desabilitada, tente reduzir o uso de efeitos de opacidade no
+  seu app.
 
-## Import and export
+**Renderizar camadas de Formato Físico**
+: Desabilite esta opção para verificar se o uso excessivo de efeitos de
+  modelagem física está afetando a performance, como sombras ou elevação.
+  Se a performance melhorar com esta opção desabilitada, tente reduzir o
+  uso de efeitos de modelagem física no seu app.
 
-DevTools supports importing and exporting performance snapshots.
-Clicking the export button (upper-right corner above the
-frame rendering chart) downloads a snapshot of the current data on the
-performance page. To import a performance snapshot, you can drag and drop the
-snapshot into DevTools from any page. **Note that DevTools only
-supports importing files that were originally exported from DevTools.**
+![Screenshot de mais opções de debug](/assets/images/docs/tools/devtools/more-debugging-options.png)
 
-## Other resources
+## Importar e exportar
 
-To learn how to monitor an app's performance and
-detect jank using DevTools, check out a guided
-[Performance View tutorial][performance-tutorial].
+O DevTools suporta a importação e exportação de snapshots de performance.
+Clicar no botão de exportação (canto superior direito acima do gráfico
+de renderização de frames) baixa um snapshot dos dados atuais na página de
+performance. Para importar um snapshot de performance, você pode arrastar
+e soltar o snapshot no DevTools de qualquer página. **Observe que o
+DevTools só suporta a importação de arquivos que foram originalmente
+exportados do DevTools.**
 
-[GPU graph]: /perf/ui-performance#identifying-problems-in-the-gpu-graph
-[Flutter performance profiling]: /perf/ui-performance
-[Reduce shader compilation jank on mobile]: /perf/shader
-[Import and export]: #import-and-export
-[performance-tutorial]: {{site.medium}}/@fluttergems/mastering-dart-flutter-devtools-performance-view-part-8-of-8-4ae762f91230
-[track-widgets]: {{site.yt.watch}}/_EYk-E29edo?t=623
-[track-layouts]: {{site.yt.watch}}/_EYk-E29edo?t=676
-[track-paints]: {{site.yt.watch}}/_EYk-E29edo?t=748
+## Outros recursos
+
+Para aprender como monitorar a performance de um app e detectar jank usando
+o DevTools, confira um [tutorial guiado da visualização de performance][tutorial-de-performance].
+
+[gráfico da GPU]: /perf/ui-performance#identifying-problems-in-the-gpu-graph
+[Profiling de performance do Flutter]: /perf/ui-performance
+[Reduzir o jank de compilação de shader no mobile]: /perf/shader
+[Importar e exportar]: #importar-e-exportar
+[tutorial-de-performance]: {{site.medium}}/@fluttergems/mastering-dart-flutter-devtools-performance-view-part-8-of-8-4ae762f91230
+[rastrear-widgets]: {{site.yt.watch}}/_EYk-E29edo?t=623
+[rastrear-layouts]: {{site.yt.watch}}/_EYk-E29edo?t=676
+[rastrear-paints]: {{site.yt.watch}}/_EYk-E29edo?t=748

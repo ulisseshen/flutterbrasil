@@ -1,104 +1,105 @@
 ---
-title: Flutter's fonts and typography
-description: Learn about Flutter's support for typography.
+ia-translate: true
+title: Fontes e tipografia no Flutter
+description: Saiba mais sobre o suporte do Flutter para tipografia.
 ---
 
-[_Typography_][] covers the style and appearance of
-type or fonts: it specifies how heavy the font is,
-the slant of the font, the spacing between
-the letters, and other visual aspects of the text. 
+[_Tipografia_][] abrange o estilo e a aparência do
+tipo ou fontes: especifica a espessura da fonte,
+a inclinação da fonte, o espaçamento entre
+as letras e outros aspectos visuais do texto.
 
-All fonts are _not_ created the same. 
+Nem todas as fontes são criadas da mesma forma.
 
-A font style is defined by, at minimum, a typeface, representing the set of 
-common character rules describing fonts in the same type family, such as 
-**Roboto** or **Noto**, a font weight (for example, Regular, Bold, or a 
-numeric value), and a style (like Regular, _Italic_, etc). All of these 
-and additional pre-set attributes come together to make up 
-what we would call a static font.
+Um estilo de fonte é definido, no mínimo, por um tipo de letra, representando o conjunto de
+regras de caracteres comuns que descrevem fontes na mesma família de tipos, como
+**Roboto** ou **Noto**, um peso de fonte (por exemplo, Regular, Negrito ou um
+valor numérico) e um estilo (como Regular, _Itálico_, etc.). Todos estes
+e atributos predefinidos adicionais se juntam para formar
+o que chamaríamos de uma fonte estática.
 
-Variable fonts allow some of these attributes to be modified at runtime and 
-store what would normally be multiple static fonts in a single file.
+Fontes variáveis permitem que alguns desses atributos sejam modificados em tempo de execução e
+armazenem o que normalmente seriam várias fontes estáticas em um único arquivo.
 
-[_Typography_]: https://en.wikipedia.org/wiki/Typography
+[_Tipografia_]: https://en.wikipedia.org/wiki/Typography
 
-## Typographic Scale
+## Escala Tipográfica
 
-A typographical scale is a set of related text styles to provide balance, 
-cohesion, and visual variety in your apps.
+Uma escala tipográfica é um conjunto de estilos de texto relacionados para fornecer equilíbrio,
+coesão e variedade visual em seus aplicativos.
 
-The common type scale in Flutter, provided by [`TextTheme`][], includes five 
-categories of text indicating the function:
+A escala de tipo comum no Flutter, fornecida por [`TextTheme`][], inclui cinco
+categorias de texto que indicam a função:
 
 * Display
 * Headline
-* Title
-* Label
-* Body
+* Título
+* Rótulo
+* Corpo
 
-There are also three size variations for each:
+Há também três variações de tamanho para cada:
 
-* Small
-* Medium 
-* Large
+* Pequeno
+* Médio
+* Grande
 
-Each of these fifteen combinations of a category and text size are represented 
-by a single [`TextStyle`][]. 
+Cada uma dessas quinze combinações de uma categoria e tamanho de texto é representada
+por um único [`TextStyle`][].
 
-<img src='/assets/images/docs/development/ui/typography/typographical-scale.png' 
-class="mw-100" alt="Listing of typographical scale for Material TextTheme">
+<img src='/assets/images/docs/development/ui/typography/typographical-scale.png'
+class="mw-100" alt="Lista da escala tipográfica para Material TextTheme">
 
-All the platform specific typographical scales that Flutter exposes are 
-contained in the [`Typography`][] class. Usually, you will not need to 
-reference this class directly as the `TextTheme` will be localized to your target platform.
+Todas as escalas tipográficas específicas da plataforma que o Flutter expõe estão
+contidas na classe [`Typography`][]. Normalmente, você não precisará
+referenciar esta classe diretamente, pois o `TextTheme` será localizado para sua plataforma de destino.
 
 [`TextTheme`]: https://api.flutter.dev/flutter/material/TextTheme-class.html
 [`TextStyle`]: https://api.flutter.dev/flutter/painting/TextStyle-class.html
 [`Typography`]: https://api.flutter.dev/flutter/material/Typography-class.html
 
-## Variable fonts
+## Fontes variáveis
 
-[Variable fonts][]
-allow you to control pre-defined aspects of text styling.
-Variable fonts support specific axes, such as width,
-weight, slant (to name a few).
-The user can select _any value along the continuous axis_
-when specifying the type.
+[Fontes variáveis][]
+permitem que você controle aspectos predefinidos do estilo do texto.
+Fontes variáveis suportam eixos específicos, como largura,
+peso, inclinação (para citar alguns).
+O usuário pode selecionar _qualquer valor ao longo do eixo contínuo_
+ao especificar o tipo.
 
-[Variable fonts]: https://fonts.google.com/knowledge/introducing_type/introducing_variable_fonts
+[Fontes variáveis]: https://fonts.google.com/knowledge/introducing_type/introducing_variable_fonts
 
-### Using the Google Fonts type tester
+### Usando o testador de tipo do Google Fonts
 
-A growing number of fonts on Google Fonts offer some variable font capabilities. 
-You can see the range of options by using the Type Tester and see how you 
-might vary a single font.
+Um número crescente de fontes no Google Fonts oferece alguns recursos de fontes variáveis.
+Você pode ver a gama de opções usando o Type Tester e ver como você
+pode variar uma única fonte.
 
 <img src='/assets/images/docs/development/ui/typography/google-fonts-type-tester.png'
-class="mw-100" alt="Demonstration of varying aspects for Noto Sans with Lorem ipsum text">
+class="mw-100" alt="Demonstração de variação de aspectos para Noto Sans com texto Lorem ipsum">
 
-In real time, move the slider on any of the axes to
-see how it affects the font. When programming a variable font,
-use the [`FontVariation`][] class to modify the font's design axes.
-The `FontVariation` class conforms to the
-[OpenType font variables spec][].
+Em tempo real, mova o controle deslizante em qualquer um dos eixos para
+ver como isso afeta a fonte. Ao programar uma fonte variável,
+use a classe [`FontVariation`][] para modificar os eixos de design da fonte.
+A classe `FontVariation` está em conformidade com a
+[especificação de variáveis de fontes OpenType][].
 
 [`FontVariation`]: {{site.api}}/flutter/dart-ui/FontVariation-class.html
 [Google Fonts]: https://fonts.google.com/
-[OpenType font variables spec]: https://learn.microsoft.com/en-us/typography/opentype/spec/otvaroverview
+[especificação de variáveis de fontes OpenType]: https://learn.microsoft.com/en-us/typography/opentype/spec/otvaroverview
 
-## Static fonts
+## Fontes estáticas
 
-Google Fonts also contains static fonts. As with variable fonts,
-you need to know how the font is designed to know what options
-are available to you.
-Once again, the Google Fonts site can help.
+O Google Fonts também contém fontes estáticas. Como nas fontes variáveis,
+você precisa saber como a fonte foi projetada para saber quais opções
+estão disponíveis para você.
+Mais uma vez, o site do Google Fonts pode ajudar.
 
-### Using the Google Fonts package
+### Usando o pacote Google Fonts
 
-While you can download fonts from the site and install them manually in your apps, 
-you can elect to use theme directly from the [google_fonts][] package on [pub.dev][].
+Embora você possa baixar fontes do site e instalá-las manualmente em seus aplicativos,
+você pode optar por usar o tema diretamente do pacote [google_fonts][] em [pub.dev][].
 
-They can be used as is by referencing simply the font name:
+Eles podem ser usados como estão, referenciando simplesmente o nome da fonte:
 
 ```dart
 Text(
@@ -107,7 +108,7 @@ Text(
 ),
 ```
 
-or customized by setting properties on the resulting `TextStyle`:
+ou personalizados definindo propriedades no `TextStyle` resultante:
 
 ```dart
 Text(
@@ -121,42 +122,42 @@ Text(
 ),
 ```
 
-### Modifying fonts
+### Modificando fontes
 
-Use the following API to programmatically alter a static font
-(but remember that this only works if the font was _designed_
-to support the feature):
+Use a seguinte API para alterar programaticamente uma fonte estática
+(mas lembre-se de que isso só funciona se a fonte foi _projetada_
+para suportar o recurso):
 
-* [`FontFeature`][] to select glyphs
-* [`FontWeight`][] to modify weight
-* [`FontStyle`][] to italicize
-* [`FontVariation`][] to specify a range of values for a specific property. 
+* [`FontFeature`][] para selecionar glifos
+* [`FontWeight`][] para modificar o peso
+* [`FontStyle`][] para itálico
+* [`FontVariation`][] para especificar um intervalo de valores para uma propriedade específica.
 
-A `FontFeature` corresponds to an [OpenType feature tag][]
-and can be thought of as a boolean flag to enable or disable
-a feature of a given font.
+Um `FontFeature` corresponde a uma [tag de recurso OpenType][]
+e pode ser considerado como um sinalizador booleano para ativar ou desativar
+um recurso de uma determinada fonte.
 
 [`FontFeature`]: {{site.api}}/flutter/dart-ui/FontFeature-class.html
 [`FontStyle`]: {{site.api}}/flutter/dart-ui/FontStyle.html
 [`FontWeight`]: {{site.api}}/flutter/dart-ui/FontWeight-class.html
-[OpenType feature tag]: https://learn.microsoft.com/en-us/typography/opentype/spec/featuretags
+[tag de recurso OpenType]: https://learn.microsoft.com/en-us/typography/opentype/spec/featuretags
 [pub.dev]: https://pub.dev
 [google_fonts]: https://pub.dev/packages/google_fonts
 
-## Other resources
+## Outros recursos
 
-The following video shows you some of the capabilities
-of Flutter's typography and combines it with the Material
-_and_ Cupertino look and feel (depending on the platform
-the app runs on), animation, and custom fragment shaders:
+O vídeo a seguir mostra algumas das capacidades
+da tipografia do Flutter e combina-o com o Material
+_e_ a aparência do Cupertino (dependendo da plataforma
+em que o aplicativo é executado), animação e sombreadores de fragmentos personalizados:
 
-{% ytEmbed 'sA5MRFFUuOU', 'Prototyping beautiful designs with Flutter' %}
+{% ytEmbed 'sA5MRFFUuOU', 'Prototipando designs bonitos com Flutter' %}
 
-To read one engineer's experience
-customizing variable fonts and animating them as they
-morph (and was the basis for the above video),
-check out [Playful typography with Flutter][article],
-a free article on Medium. The associated example also
-uses a custom shader.
+Para ler a experiência de um engenheiro
+personalizando fontes variáveis e animando-as enquanto elas
+se transformam (e foi a base para o vídeo acima),
+confira [Tipografia divertida com Flutter][article],
+um artigo gratuito no Medium. O exemplo associado também
+usa um sombreador personalizado.
 
 [article]: {{site.flutter-medium}}/playful-typography-with-flutter-f030385058b4

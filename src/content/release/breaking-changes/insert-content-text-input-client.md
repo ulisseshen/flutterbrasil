@@ -1,40 +1,30 @@
 ---
-title: Insert content text input client
+ia-translate: true
+title: Inserir conteúdo de texto do cliente
 description: >
-  Add a new method to the TextInputClient interface to allow
-  Android virtual keyboards to insert rich content into Flutter TextFields. 
+  Adicione um novo método à interface TextInputClient para permitir que
+  teclados virtuais Android insiram conteúdo rich em TextFields Flutter.
 ---
 
-## Summary
+## Sumário
 
-Added an `insertContent` method to the `TextInputClient` interface to
-allow Android's image keyboard feature to
-insert content into a Flutter `TextField`.
+Adicionado um método `insertContent` à interface `TextInputClient` para permitir que o recurso de teclado de imagem do Android insira conteúdo em um `TextField` do Flutter.
 
-## Context
+## Contexto
 
-As of Android 7.1, IMEs (input method editors or virtual keyboards) can send
-images and rich content into a text editor.
-This allows users to insert gifs, stickers, or
-context-aware rich content into a text field.
+A partir do Android 7.1, os IMEs (editores de método de entrada ou teclados virtuais) podem enviar imagens e conteúdo rich para um editor de texto. Isso permite que os usuários insiram gifs, stickers ou conteúdo rich sensível ao contexto em um campo de texto.
 
-## Description of change
+## Descrição da mudança
 
-When the user inserts rich content in the IME, the platform
-sends a `TextInputClient.commitContent` channel message,
-notifying the Dart code that the IME inserted rich content.
-The channel message contains the mime type, URI, and bytedata for
-the inserted content in JSON form.
+Quando o usuário insere conteúdo rich no IME, a plataforma envia uma mensagem de canal `TextInputClient.commitContent`, notificando o código Dart de que o IME inseriu conteúdo rich. A mensagem do canal contém o tipo MIME, URI e bytedata para o conteúdo inserido em formato JSON.
 
-## Migration guide
+## Guia de migração
 
-If you implemented the `TextInputClient` interface earlier, override
-`insertContent` to either support rich content insertion
-or provide an empty implementation.
+Se você implementou a interface `TextInputClient` anteriormente, substitua `insertContent` para suportar a inserção de conteúdo rich ou forneça uma implementação vazia.
 
-To migrate, implement `insertContent`.
+Para migrar, implemente `insertContent`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 class MyCustomTextInputClient implements TextInputClient {
@@ -42,7 +32,7 @@ class MyCustomTextInputClient implements TextInputClient {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class MyCustomTextInputClient implements TextInputClient {
@@ -55,10 +45,7 @@ class MyCustomTextInputClient implements TextInputClient {
 }
 ```
 
-Your implementation of `TextInputClient` might not require
-the ability to receive rich content inserted from the IME.
-In that case, you can leave the implementation of
-`insertContent` empty with no consequences.
+Sua implementação de `TextInputClient` pode não exigir a capacidade de receber conteúdo rich inserido do IME. Nesse caso, você pode deixar a implementação de `insertContent` vazia sem consequências.
 
 ```dart
 class MyCustomTextInputClient implements TextInputClient {
@@ -69,31 +56,28 @@ class MyCustomTextInputClient implements TextInputClient {
 }
 ```
 
-As an alternative, you can use a similar implementation to
-the default `TextInputClient`.
-To learn how to do this, check out the [insertContent implementation][].
+Como alternativa, você pode usar uma implementação semelhante ao `TextInputClient` padrão. Para saber como fazer isso, confira a [implementação insertContent][].
 
-To prevent breaking changes to an interface,
-use `with TextInputClient` rather than `implements TextInputClient`.
+Para evitar breaking changes em uma interface, use `with TextInputClient` em vez de `implements TextInputClient`.
 
-[insertContent implementation]: {{site.api}}/flutter/services/TextInputClient/insertContent.html
+[implementação insertContent]: {{site.api}}/flutter/services/TextInputClient/insertContent.html
 
-## Timeline
+## Cronograma
 
-Landed in version: 3.8.0-1.0.pre<br>
-In stable release: 3.10.0
+Implementado na versão: 3.8.0-1.0.pre<br>
+Na versão estável: 3.10.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`TextInputClient`]({{site.api}}/flutter/services/TextInputClient-class.html)
 
-Relevant issue:
+Issue relevante:
 
 * [Issue 20796]({{site.repo.flutter}}/issues/20796)
 
-Relevant PRs:
+PRs relevantes:
 
-* [24224: Support Image Insertion on Android (engine)]({{site.repo.engine}}/pull/35619)
-* [97437: Support Image Insertion on Android]({{site.repo.flutter}}/pull/110052)
+* [24224: Suporte à Inserção de Imagem no Android (engine)]({{site.repo.engine}}/pull/35619)
+* [97437: Suporte à Inserção de Imagem no Android]({{site.repo.flutter}}/pull/110052)

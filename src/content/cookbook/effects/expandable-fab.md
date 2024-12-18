@@ -1,6 +1,7 @@
 ---
-title: Create an expandable FAB
-description: How to implement a FAB that expands to multiple buttons when tapped.
+ia-translate: true
+title: Criar um FAB expansível
+description: Como implementar um FAB que se expande para múltiplos botões quando tocado.
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
@@ -8,29 +9,29 @@ js:
 
 <?code-excerpt path-base="cookbook/effects/expandable_fab"?>
 
-A Floating Action Button (FAB) is a round button that
-floats near the bottom right of a content area.
-This button represents the primary action for the
-corresponding content, but sometimes, there is no primary action.
-Instead, there are a few critical actions that the user might take.
-In this case, you could create an expandable FAB like the one shown
-in the following figure. When pressed, this expandable FAB spawns
-multiple, other action buttons. Each button corresponds to one of
-those critical actions.
+Um Floating Action Button (FAB) é um botão redondo que
+flutua próximo à parte inferior direita de uma área de conteúdo.
+Este botão representa a ação primária para o
+conteúdo correspondente, mas, às vezes, não existe uma ação primária.
+Em vez disso, existem algumas ações críticas que o usuário pode realizar.
+Nesse caso, você pode criar um FAB expansível como o mostrado
+na figura a seguir. Quando pressionado, este FAB expansível gera
+vários outros botões de ação. Cada botão corresponde a uma dessas
+ações críticas.
 
-The following animation shows the app's behavior:
+A seguinte animação mostra o comportamento do aplicativo:
 
-![Expanding and collapsing the FAB](/assets/images/docs/cookbook/effects/ExpandingFAB.gif){:.site-mobile-screenshot}
+![Expandindo e recolhendo o FAB](/assets/images/docs/cookbook/effects/ExpandingFAB.gif){:.site-mobile-screenshot}
 
-## Create an ExpandableFab widget
+## Criar um widget ExpandableFab
 
-Start by creating a new stateful widget called `ExpandableFab`.
-This widget displays the primary FAB and coordinates the expansion
-and collapse of the other action buttons. The widget takes
-in parameters for whether or not the `ExpandedFab` begins in
-the expanded position, what the maximum distance of each action button is,
-and a list of children. You'll use the list later to provide
-the other action buttons.
+Comece criando um novo widget stateful chamado `ExpandableFab`.
+Este widget exibe o FAB primário e coordena a expansão
+e o recolhimento dos outros botões de ação. O widget recebe
+parâmetros para indicar se o `ExpandedFab` começa ou não na
+posição expandida, qual a distância máxima de cada botão de ação
+e uma lista de children. Você usará a lista posteriormente para fornecer
+os outros botões de ação.
 
 <?code-excerpt "lib/excerpt1.dart (ExpandableFab)"?>
 ```dart
@@ -59,13 +60,13 @@ class _ExpandableFabState extends State<ExpandableFab> {
 }
 ```
 
-## FAB cross-fade
+## Transição cruzada do FAB (FAB cross-fade)
 
-The `ExpandableFab` displays a blue edit button when collapsed
-and a white close button when expanded. When expanding and collapsing,
-these two buttons scale and fade between one another. 
+O `ExpandableFab` exibe um botão de edição azul quando recolhido
+e um botão de fechar branco quando expandido. Ao expandir e recolher,
+esses dois botões escalam e fazem uma transição de um para o outro.
 
-Implement the expand and collapse cross-fade between the two different FABs.
+Implemente a transição cruzada de expandir e recolher entre os dois FABs diferentes.
 
 <?code-excerpt "lib/excerpt2.dart (ExpandableFabState)"?>
 ```dart
@@ -149,31 +150,31 @@ class _ExpandableFabState extends State<ExpandableFab> {
 }
 ```
 
-The open button sits on top of the close button within a `Stack`,
-allowing for the visual appearance of a cross-fade as the top button
-appears and disappears.
+O botão de abrir fica em cima do botão de fechar dentro de um `Stack`,
+permitindo a aparência visual de uma transição cruzada enquanto o botão superior
+aparece e desaparece.
 
-To achieve the cross-fade animation, the open button uses an
-`AnimatedContainer` with a scale transform and an `AnimatedOpacity`.
-The open button scales down and fades out when the `ExpandableFab`
-goes from collapsed to expanded. Then, the open button scales up
-and fades in when the `ExpandableFab` goes from expanded to collapsed.
+Para conseguir a animação de transição cruzada, o botão de abrir usa um
+`AnimatedContainer` com uma transformação de escala e um `AnimatedOpacity`.
+O botão de abrir diminui de escala e desaparece quando o `ExpandableFab`
+passa de recolhido para expandido. Em seguida, o botão de abrir aumenta de escala
+e aparece quando o `ExpandableFab` passa de expandido para recolhido.
 
-You'll notice that the open button is wrapped with an
-`IgnorePointer` widget. This is because the open button always exists,
-even when it's transparent. Without the `IgnorePointer`,
-the open button always receives the tap event,
-even when the close button is visible.
+Você notará que o botão de abrir está envolvido com um widget
+`IgnorePointer`. Isso ocorre porque o botão de abrir sempre existe,
+mesmo quando está transparente. Sem o `IgnorePointer`,
+o botão de abrir sempre recebe o evento de toque,
+mesmo quando o botão de fechar está visível.
 
-## Create an ActionButton widget
+## Criar um widget ActionButton
 
-Each of the buttons that expand from the `ExpandableFab`
-have the same design. They're  blue circles with white icons.
-More precisely, the button background color is the `ColorScheme.secondary`
-color, and the icon color is `ColorScheme.onSecondary`.
+Cada um dos botões que se expandem do `ExpandableFab`
+têm o mesmo design. São círculos azuis com ícones brancos.
+Mais precisamente, a cor de fundo do botão é a cor `ColorScheme.secondary`
+e a cor do ícone é `ColorScheme.onSecondary`.
 
-Define a new stateless widget called `ActionButton` to display
-these round buttons.
+Defina um novo widget stateless chamado `ActionButton` para exibir
+esses botões redondos.
 
 <?code-excerpt "lib/main.dart (ActionButton)"?>
 ```dart
@@ -206,7 +207,7 @@ class ActionButton extends StatelessWidget {
 }
 ```
 
-Pass a few instances of this new `ActionButton` widget into your
+Passe algumas instâncias deste novo widget `ActionButton` para o seu
 `ExpandableFab`.
 
 <?code-excerpt "lib/main.dart (FloatingActionButton)"?>
@@ -230,17 +231,17 @@ floatingActionButton: ExpandableFab(
 ),
 ```
 
-## Expand and collapse the action buttons
+## Expandir e recolher os botões de ação
 
-The child `ActionButton`s should fly out from under the open
-FAB when expanded. Then, the child `ActionButton`s should
-fly back under the open FAB when collapsed.
-This motion requires explicit (x,y) positioning of each
-`ActionButton` and an `Animation` to choreograph changes to
-those (x,y) positions over time.
+Os `ActionButton`s filhos devem sair de baixo do FAB de abrir
+quando expandido. Em seguida, os `ActionButton`s filhos devem
+voltar para baixo do FAB de abrir quando recolhidos.
+Esse movimento requer posicionamento explícito (x,y) de cada
+`ActionButton` e uma `Animation` para coreografar as mudanças nas
+posições (x,y) ao longo do tempo.
 
-Introduce an `AnimationController` and an `Animation` to
-control the rate at which the various `ActionButton`s expand and collapse.
+Introduza um `AnimationController` e uma `Animation` para
+controlar a velocidade na qual os vários `ActionButton`s expandem e recolhem.
 
 <?code-excerpt "lib/excerpt3.dart (ExpandableFabState3)" replace="/\/\/ code-excerpt-closing-bracket/}/g"?>
 ```dart
@@ -285,8 +286,8 @@ class _ExpandableFabState extends State<ExpandableFab>
 }
 ```
 
-Next, introduce a new stateless widget called `_ExpandingActionButton`,
-and configure this widget to animate and position an individual `ActionButton`. The `ActionButton` is provided as a generic `Widget` called `child`.
+Em seguida, introduza um novo widget stateless chamado `_ExpandingActionButton`
+e configure este widget para animar e posicionar um `ActionButton` individual. O `ActionButton` é fornecido como um `Widget` genérico chamado `child`.
 
 <?code-excerpt "lib/excerpt3.dart (ExpandingActionButton)"?>
 ```dart
@@ -331,23 +332,23 @@ class _ExpandingActionButton extends StatelessWidget {
 }
 ```
 
-The most important part of `_ExpandingActionButton` is the
-`Positioned` widget, which positions the `child` at a specific (x,y)
-coordinate within the surrounding `Stack`.
-The `AnimatedBuilder` causes the `Positioned` widget to rebuild
-every time the animation changes. The `FadeTransition` widget
-orchestrates the appearance and disappearance of each
-`ActionButton` as they expand and collapse, respectively.
+A parte mais importante de `_ExpandingActionButton` é o
+widget `Positioned`, que posiciona o `child` em uma coordenada (x,y)
+específica dentro do `Stack` circundante.
+O `AnimatedBuilder` faz com que o widget `Positioned` seja reconstruído
+sempre que a animação muda. O widget `FadeTransition`
+coordena o aparecimento e o desaparecimento de cada
+`ActionButton` à medida que eles se expandem e recolhem, respectivamente.
 
 :::note
-The use of a `Positioned` widget within `_ExpandingActionButton`
-implies that `_ExpandingActionButton` can only be used as a direct
-child of a `Stack`. This is due to the explicit relationship
-between `Positioned` and `Stack`.
+O uso de um widget `Positioned` dentro de `_ExpandingActionButton`
+implica que `_ExpandingActionButton` só pode ser usado como um filho
+direto de um `Stack`. Isso ocorre devido à relação explícita
+entre `Positioned` e `Stack`.
 :::
 
-Finally, use the new `_ExpandingActionButton` widget
-within the `ExpandableFab` to complete the exercise.
+Finalmente, use o novo widget `_ExpandingActionButton`
+dentro do `ExpandableFab` para concluir o exercício.
 
 <?code-excerpt "lib/excerpt4.dart (ExpandableFabState4)" replace="/\/\/ code-excerpt-closing-bracket/}/g"?>
 ```dart
@@ -389,28 +390,28 @@ class _ExpandableFabState extends State<ExpandableFab>
 }
 ```
 
-Congratulations! You now have an expandable FAB.
+Parabéns! Agora você tem um FAB expansível.
 
-## Interactive example
+## Exemplo interativo
 
-Run the app:
+Execute o aplicativo:
 
-* Click the FAB in the lower-right corner,
-  represented with an Edit icon.
-  It fans out to 3 buttons and is itself replaced by
-  a close button, represented by an **X**.
-* Click the close button to see the expanded
-  buttons fly back to the original FAB and
-  the **X** is replaced by the Edit icon.
-* Expand the FAB again, and click on any
-  of the 3 satellite buttons to see a dialog
-  representing that button's action.
+* Clique no FAB no canto inferior direito,
+  representado com um ícone de Editar.
+  Ele se abre para 3 botões e ele mesmo é substituído por
+  um botão de fechar, representado por um **X**.
+* Clique no botão de fechar para ver os botões expandidos
+  voltarem ao FAB original e
+  o **X** ser substituído pelo ícone de Editar.
+* Expanda o FAB novamente e clique em qualquer
+  um dos 3 botões satélite para ver uma caixa de diálogo
+  representando a ação desse botão.
 
 
 <!-- start dartpad -->
 
 <?code-excerpt "lib/main.dart"?>
-```dartpad title="Flutter expandable floating action button hands-on example in DartPad" run="true"
+```dartpad title="Exemplo prático de botão de ação flutuante expansível do Flutter no DartPad" run="true"
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
@@ -426,7 +427,7 @@ void main() {
 
 @immutable
 class ExampleExpandableFab extends StatelessWidget {
-  static const _actionTitles = ['Create Post', 'Upload Photo', 'Upload Video'];
+  static const _actionTitles = ['Criar Postagem', 'Enviar Foto', 'Enviar Vídeo'];
 
   const ExampleExpandableFab({super.key});
 
@@ -439,7 +440,7 @@ class ExampleExpandableFab extends StatelessWidget {
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text('CLOSE'),
+              child: const Text('FECHAR'),
             ),
           ],
         );
@@ -451,7 +452,7 @@ class ExampleExpandableFab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Expandable Fab'),
+        title: const Text('FAB Expansível'),
       ),
       body: ListView.builder(
         padding: const EdgeInsets.symmetric(vertical: 8),

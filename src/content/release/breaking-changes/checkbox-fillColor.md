@@ -1,38 +1,40 @@
 ---
-title: Updated `Checkbox.fillColor` behavior
+ia-translate: true
+title: Comportamento atualizado de `Checkbox.fillColor`
 description: >
-  Improved `Checkbox.fillColor` behavior applies the fill color to the
-  background when the checkbox is unselected.
+  O comportamento aprimorado de `Checkbox.fillColor` aplica a cor de
+  preenchimento ao fundo quando a caixa de seleção está desmarcada.
 ---
 
-## Summary
+## Resumo
 
-The `Checkbox.fillColor` is now applied to the checkbox's background when
-the checkbox is unselected.
+O `Checkbox.fillColor` agora é aplicado ao fundo da caixa de seleção quando
+a caixa de seleção está desmarcada.
 
-## Context
+## Contexto
 
-Previously, the `Checkbox.fillColor` was applied to the checkbox's border
-when the checkbox was unselected and its background was transparent.
-With this change, the `Checkbox.fillColor` is applied to the checkbox's
-background and the border uses the `Checkbox.side` color when the checkbox
-is unselected.
+Anteriormente, o `Checkbox.fillColor` era aplicado à borda da caixa de
+seleção quando a caixa de seleção estava desmarcada e seu fundo era
+transparente. Com esta alteração, o `Checkbox.fillColor` é aplicado ao
+fundo da caixa de seleção e a borda usa a cor `Checkbox.side` quando a
+caixa de seleção está desmarcada.
 
-## Description of change
+## Descrição da mudança
 
-The `Checkbox.fillColor` is now applied to the checkbox's background when
-the checkbox is unselected instead of being used as the border color.
+O `Checkbox.fillColor` agora é aplicado ao fundo da caixa de seleção quando
+a caixa de seleção está desmarcada, em vez de ser usado como a cor da borda.
 
-## Migration guide
+## Guia de migração
 
-The updated `Checkbox.fillColor` behavior applies the fill color to the
-checkbox's background in the unselected state. To get the previous behavior,
-set `Checbox.fillColor` to `Colors.transparent` in the unselected state and
-set `Checkbox.side` to the desired color.
+O comportamento atualizado de `Checkbox.fillColor` aplica a cor de
+preenchimento ao fundo da caixa de seleção no estado desmarcado. Para obter
+o comportamento anterior, defina `Checbox.fillColor` como `Colors.transparent`
+no estado desmarcado e defina `Checkbox.side` com a cor desejada.
 
-If you use the `Checkbox.fillColor` property to customize the checkbox.
+Se você usa a propriedade `Checkbox.fillColor` para personalizar a caixa de
+seleção.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 Checkbox(
@@ -53,7 +55,7 @@ Checkbox(
 ),
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 Checkbox(
@@ -75,9 +77,10 @@ Checkbox(
 ),
 ```
 
-If you use the `CheckboxThemeData.fillColor` property to customize the checkbox.
+Se você usa a propriedade `CheckboxThemeData.fillColor` para personalizar a
+caixa de seleção.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 checkboxTheme: CheckboxThemeData(
@@ -90,7 +93,7 @@ checkboxTheme: CheckboxThemeData(
 ),
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 checkboxTheme: CheckboxThemeData(
@@ -104,26 +107,25 @@ checkboxTheme: CheckboxThemeData(
 ),
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.10.0-17.0.pre<br>
-In stable release: 3.13.0
+Implementado na versão: 3.10.0-17.0.pre<br>
+Na versão estável: 3.13.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`Checkbox.fillColor`][]
 
-Relevant issues:
+Problemas relevantes:
 
-* [Add `backgroundColor` to `Checkbox` and `CheckboxThemeData`][]
+* [Adicionar `backgroundColor` a `Checkbox` e `CheckboxThemeData`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* [`Checkbox.fillColor` should be applied to checkbox's background color when it is unchecked.][]
+* [`Checkbox.fillColor` deve ser aplicado à cor de fundo da caixa de seleção quando ela estiver desmarcada.][]
 
 [`Checkbox.fillColor`]: {{site.api}}/flutter/material/Checkbox/fillColor.html
-
-[Add `backgroundColor` to `Checkbox` and `CheckboxThemeData`]: {{site.repo.flutter}}/issues/123386
-[`Checkbox.fillColor` should be applied to checkbox's background color when it is unchecked.]: {{site.repo.flutter}}/pull/125643
+[Adicionar `backgroundColor` a `Checkbox` e `CheckboxThemeData`]: {{site.repo.flutter}}/issues/123386
+[`Checkbox.fillColor` deve ser aplicado à cor de fundo da caixa de seleção quando ela estiver desmarcada.]: {{site.repo.flutter}}/pull/125643

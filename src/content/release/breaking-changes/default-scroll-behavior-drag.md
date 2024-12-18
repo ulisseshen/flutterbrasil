@@ -1,67 +1,69 @@
 ---
-title: Default drag scrolling devices
+ia-translate: true
+title: Dispositivos de rolagem por arrasto padrão
 description: >
-  ScrollBehaviors will now configure what
-  PointerDeviceKinds can drag Scrollables.
+  ScrollBehaviors agora configuram quais
+  PointerDeviceKinds podem arrastar Scrollables.
 ---
 
-## Summary
+## Resumo
 
-`ScrollBehavior`s now allow or disallow drag scrolling from specified
-`PointerDeviceKind`s. `ScrollBehavior.dragDevices`, by default,
-allows scrolling widgets to be dragged by all `PointerDeviceKind`s
-except for `PointerDeviceKind.mouse`.
+`ScrollBehavior`s agora permitem ou impedem a rolagem por arrasto de
+`PointerDeviceKind`s especificados. `ScrollBehavior.dragDevices`, por padrão,
+permite que widgets de rolagem sejam arrastados por todos os
+`PointerDeviceKind`s, exceto por `PointerDeviceKind.mouse`.
 
-## Context
+## Contexto
 
-Prior to this change, all `PointerDeviceKind`s could drag a `Scrollable` widget.
-This did not match developer expectations when interacting with Flutter
-applications using mouse input devices. This also made it difficult to execute
-other mouse gestures, like selecting text that was contained in a `Scrollable` widget.
+Antes desta alteração, todos os `PointerDeviceKind`s podiam arrastar um widget
+`Scrollable`. Isso não correspondia às expectativas dos desenvolvedores ao
+interagir com aplicativos Flutter usando dispositivos de entrada de mouse. Isso
+também dificultava a execução de outros gestos do mouse, como selecionar texto
+que estava contido em um widget `Scrollable`.
 
-Now, the inherited `ScrollBehavior` manages which devices can drag scrolling widgets
-as specified by `ScrollBehavior.dragDevices`. This set of `PointerDeviceKind`s are
-allowed to drag.
+Agora, o `ScrollBehavior` herdado gerencia quais dispositivos podem arrastar
+widgets de rolagem, conforme especificado por `ScrollBehavior.dragDevices`. Este
+conjunto de `PointerDeviceKind`s tem permissão para arrastar.
 
-## Description of change
+## Descrição da alteração
 
-This change fixed the unexpected ability to scroll by dragging with a mouse.
+Essa alteração corrigiu a capacidade inesperada de rolar arrastando com o mouse.
 
-If you have relied on the previous behavior in your application, there are several ways to
-control and configure this feature.
+Se você confiou no comportamento anterior em seu aplicativo, existem várias
+maneiras de controlar e configurar esse recurso.
 
-- Extend `ScrollBehavior`, `MaterialScrollBehavior`, or `CupertinoScrollBehavior`
-to modify the default behavior, overriding `ScrollBehavior.dragDevices`.
-  
-  - With your own `ScrollBehavior`, you can apply it app-wide by setting
-    `MaterialApp.scrollBehavior` or `CupertinoApp.scrollBehavior`.
-  - Or, if you wish to only apply it to specific widgets, add a
-    `ScrollConfiguration` above the widget in question with your
-    custom `ScrollBehavior`.
- 
-Your scrollable widgets then inherit and reflect this behavior.
+- Estenda `ScrollBehavior`, `MaterialScrollBehavior` ou `CupertinoScrollBehavior`
+para modificar o comportamento padrão, substituindo `ScrollBehavior.dragDevices`.
 
-- Instead of creating your own `ScrollBehavior`, another option for changing
-the default behavior is to copy the existing `ScrollBehavior`, and set different
-`dragDevices`.
-  - Create a `ScrollConfiguration` in your widget tree, and provide a modified copy
-    of the existing `ScrollBehavior` in the current context using `copyWith`.
+  - Com seu próprio `ScrollBehavior`, você pode aplicá-lo em todo o aplicativo
+    definindo `MaterialApp.scrollBehavior` ou `CupertinoApp.scrollBehavior`.
+  - Ou, se você deseja aplicá-lo apenas a widgets específicos, adicione um
+    `ScrollConfiguration` acima do widget em questão com seu `ScrollBehavior`
+    personalizado.
 
-To accommodate the new configuration of drag devices in `ScrollBehavior`,
-`GestureDetector.kind` has been deprecated along with
-all subclassed instances of the parameter.
-A flutter fix is available to migrate existing code
-for all gesture detectors from `kind` to `supportedDevices`.
-The previous parameter `kind` only allowed one `PointerDeviceKind` to
-be used to filter gestures.
-The introduction of `supportedDevices` makes it possible for more
-than one valid `PointerDeviceKind`.
+Seus widgets roláveis ​​herdam e refletem esse comportamento.
 
-## Migration guide
+- Em vez de criar seu próprio `ScrollBehavior`, outra opção para alterar
+o comportamento padrão é copiar o `ScrollBehavior` existente e definir
+`dragDevices` diferentes.
+  - Crie um `ScrollConfiguration` em sua árvore de widgets e forneça uma cópia
+    modificada do `ScrollBehavior` existente no contexto atual usando
+    `copyWith`.
 
-### Setting a custom `ScrollBehavior` for your application
+Para acomodar a nova configuração de dispositivos de arrasto em
+`ScrollBehavior`, `GestureDetector.kind` foi descontinuado junto com todas as
+instâncias de subclasses do parâmetro. Uma correção do flutter está disponível
+para migrar o código existente para todos os detectores de gestos de `kind` para
+`supportedDevices`. O parâmetro anterior `kind` permitia que apenas um
+`PointerDeviceKind` fosse usado para filtrar gestos. A introdução de
+`supportedDevices` torna possível o uso de mais de um `PointerDeviceKind`
+válido.
 
-Code before migration:
+## Guia de migração
+
+### Definindo um `ScrollBehavior` personalizado para seu aplicativo
+
+Código antes da migração:
 
 ```dart
 MaterialApp(
@@ -69,29 +71,29 @@ MaterialApp(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class MyCustomScrollBehavior extends MaterialScrollBehavior {
-  // Override behavior methods and getters like dragDevices
+  // Substitua métodos de comportamento e getters como dragDevices
   @override
-  Set<PointerDeviceKind> get dragDevices => { 
+  Set<PointerDeviceKind> get dragDevices => {
     PointerDeviceKind.touch,
     PointerDeviceKind.mouse,
     // etc.
   };
 }
 
-// Set ScrollBehavior for an entire application.
+// Define ScrollBehavior para um aplicativo inteiro.
 MaterialApp(
   scrollBehavior: MyCustomScrollBehavior(),
   // ...
 );
 ```
 
-### Setting a custom `ScrollBehavior` for a specific widget
+### Definindo um `ScrollBehavior` personalizado para um widget específico
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 final ScrollController controller = ScrollController();
@@ -103,20 +105,20 @@ ListView.builder(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class MyCustomScrollBehavior extends MaterialScrollBehavior {
-  // Override behavior methods and getters like dragDevices
+  // Substitua métodos de comportamento e getters como dragDevices
   @override
-  Set<PointerDeviceKind> get dragDevices => { 
+  Set<PointerDeviceKind> get dragDevices => {
     PointerDeviceKind.touch,
     PointerDeviceKind.mouse,
     // etc.
   };
 }
 
-// ScrollBehavior can be set for a specific widget.
+// ScrollBehavior pode ser definido para um widget específico.
 final ScrollController controller = ScrollController();
 ScrollConfiguration(
   behavior: MyCustomScrollBehavior(),
@@ -129,9 +131,9 @@ ScrollConfiguration(
 );
 ```
 
-### Copy and modify existing `ScrollBehavior`
+### Copiar e modificar o `ScrollBehavior` existente
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 final ScrollController controller = ScrollController();
@@ -143,10 +145,10 @@ ListView.builder(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
-// ScrollBehavior can be copied and adjusted.
+// ScrollBehavior pode ser copiado e ajustado.
 final ScrollController controller = ScrollController();
 ScrollConfiguration(
   behavior: ScrollConfiguration.of(context).copyWith(dragDevices: {
@@ -162,9 +164,9 @@ ScrollConfiguration(
 );
 ```
 
-### Migrate `GestureDetector`s from `kind` to `supportedDevices`
+### Migrar `GestureDetector`s de `kind` para `supportedDevices`
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 VerticalDragGestureRecognizer(
@@ -172,7 +174,7 @@ VerticalDragGestureRecognizer(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 VerticalDragGestureRecognizer(
@@ -180,14 +182,14 @@ VerticalDragGestureRecognizer(
 );
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 2.3.0-12.0.pre<br>
-In stable release: 2.5
+Implementado na versão: 2.3.0-12.0.pre<br>
+Na versão estável: 2.5
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`ScrollConfiguration`][]
 * [`ScrollBehavior`][]
@@ -196,14 +198,14 @@ API documentation:
 * [`PointerDeviceKind`][]
 * [`GestureDetector`][]
 
-Relevant issue:
+Problema relevante:
 
 * [Issue #71322][]
 
-Relevant PRs:
+PRs relevantes:
 
-* [Reject mouse drags by default in scrollables][]
-* [Deprecate GestureDetector.kind in favor of new supportedDevices][]
+* [Rejeitar arrastos do mouse por padrão em roláveis][]
+* [Descontinuar GestureDetector.kind em favor de novos supportedDevices][]
 
 
 [`ScrollConfiguration`]: {{site.api}}/flutter/widgets/ScrollConfiguration-class.html
@@ -213,5 +215,5 @@ Relevant PRs:
 [`PointerDeviceKind`]: {{site.api}}/flutter/dart-ui/PointerDeviceKind-class.html
 [`GestureDetector`]: {{site.api}}/flutter/widgets/GestureDetector-class.html
 [Issue #71322]: {{site.repo.flutter}}/issues/71322
-[Reject mouse drags by default in scrollables]: {{site.repo.flutter}}/pull/81569
-[Deprecate GestureDetector.kind in favor of new supportedDevices]: {{site.repo.flutter}}/pull/81858
+[Rejeitar arrastos do mouse por padrão em roláveis]: {{site.repo.flutter}}/pull/81569
+[Descontinuar GestureDetector.kind em favor de novos supportedDevices]: {{site.repo.flutter}}/pull/81858

@@ -1,73 +1,74 @@
 ---
-title: Hosting native Android views in your Flutter app with Platform Views
-short-title: Android platform-views
-description: Learn how to host native Android views in your Flutter app with Platform Views.
+ia-translate: true
+title: Hospedando visualizações nativas do Android em seu aplicativo Flutter com Platform Views
+short-title: Platform-views do Android
+description: Aprenda como hospedar visualizações nativas do Android em seu aplicativo Flutter com Platform Views.
 ---
 
 <?code-excerpt path-base="platform_integration/platform_views"?>
 
-Platform views allow you to embed native views in a Flutter app,
-so you can apply transforms, clips, and opacity to the native view
-from Dart.
+Platform views permitem incorporar visualizações nativas em um aplicativo Flutter,
+para que você possa aplicar transformações, recortes e opacidade à visualização nativa
+do Dart.
 
-This allows you, for example, to use the native
-Google Maps from the Android SDK
-directly inside your Flutter app.
+Isso permite, por exemplo, usar o
+Google Maps nativo do SDK do Android
+diretamente dentro do seu aplicativo Flutter.
 
 :::note
-This page discusses how to host your own native Android views
-within a Flutter app.
-If you'd like to embed native iOS views in your Flutter app,
-see [Hosting native iOS views][].
-If you'd like to embed native macOS views in your Flutter app,
-see [Hosting native macOS views][].
+Esta página discute como hospedar suas próprias visualizações nativas do Android
+dentro de um aplicativo Flutter.
+Se você quiser incorporar visualizações nativas do iOS em seu aplicativo Flutter,
+consulte [Hospedando visualizações nativas do iOS][].
+Se você quiser incorporar visualizações nativas do macOS em seu aplicativo Flutter,
+consulte [Hospedando visualizações nativas do macOS][].
 :::
 
-[Hosting native iOS views]: /platform-integration/ios/platform-views
-[Hosting native macOS views]: /platform-integration/macos/platform-views
+[Hospedando visualizações nativas do iOS]: /platform-integration/ios/platform-views
+[Hospedando visualizações nativas do macOS]: /platform-integration/macos/platform-views
 
-Platform Views on Android have two implementations. They come with tradeoffs
-both in terms of performance and fidelity. 
-Platform views require Android API 23+.
+As Platform Views no Android possuem duas implementações. Elas vêm com vantagens e desvantagens,
+tanto em termos de desempenho quanto de fidelidade.
+As Platform views exigem Android API 23+.
 
 ## [Hybrid Composition](#hybrid-composition)
 
-Platform Views are rendered as they are normally. Flutter content is rendered into a texture.
-SurfaceFlinger composes the Flutter content and the platform views.
+As Platform Views são renderizadas como normalmente. O conteúdo do Flutter é renderizado em uma textura.
+O SurfaceFlinger compõe o conteúdo do Flutter e as Platform views.
 
-* `+` best performance and fidelity of Android views.
-* `-` Flutter performance suffers.
-* `-` FPS of application will be lower.
-* `-` Certain transformations that can be applied to Flutter widgets will not work when applied to platform views.
+* `+` melhor desempenho e fidelidade das visualizações do Android.
+* `-` O desempenho do Flutter é prejudicado.
+* `-` O FPS do aplicativo será menor.
+* `-` Certas transformações que podem ser aplicadas aos widgets do Flutter não funcionarão quando aplicadas às platform views.
 
-## [Texture Layer](#texturelayerhybridcomposition) (or Texture Layer Hybrid Composition)
+## [Texture Layer](#texturelayerhybridcomposition) (ou Texture Layer Hybrid Composition)
 
-Platform Views are rendered into a texture.
-Flutter draws the platform views (via the texture).
-Flutter content is rendered directly into a Surface.
+As Platform Views são renderizadas em uma textura.
+O Flutter desenha as platform views (via textura).
+O conteúdo do Flutter é renderizado diretamente em uma Surface.
 
-* `+` good performance for Android Views
-* `+` best performance for Flutter rendering.
-* `+` all transformations work correctly.
-* `-` quick scrolling (e.g. a web view) will be janky
-* `-` SurfaceViews are problematic in this mode and will be moved into a virtual display (breaking a11y)
-* `-` Text magnifier will break unless Flutter is rendered into a TextureView.
+* `+` bom desempenho para visualizações do Android
+* `+` melhor desempenho para renderização do Flutter.
+* `+` todas as transformações funcionam corretamente.
+* `-` a rolagem rápida (por exemplo, uma visualização da web) será instável
+* `-` SurfaceViews são problemáticos neste modo e serão movidos para uma exibição virtual (quebrando o a11y)
+* `-` A lupa de texto será quebrada, a menos que o Flutter seja renderizado em uma TextureView.
 
-To create a platform view on Android,
-use the following steps:
+Para criar uma platform view no Android,
+siga estas etapas:
 
-## On the Dart side
+## No lado do Dart
 
-On the Dart side, create a `Widget`
-and add one of the following build implementations.
+No lado do Dart, crie um `Widget`
+e adicione uma das seguintes implementações de build.
 
 ### Hybrid composition
 
-In your Dart file,
-for example `native_view_example.dart`,
-use the following instructions:
+Em seu arquivo Dart,
+por exemplo, `native_view_example.dart`,
+use as seguintes instruções:
 
-1. Add the following imports:  
+1. Adicione as seguintes importações:
 
    <?code-excerpt "lib/native_view_example_1.dart (import)"?>
    ```dart
@@ -76,16 +77,16 @@ use the following instructions:
    import 'package:flutter/material.dart';
    import 'package:flutter/rendering.dart';
    import 'package:flutter/services.dart';
-   ```  
-    
-2. Implement a `build()` method:
+   ```
+
+2. Implemente um método `build()`:
 
    <?code-excerpt "lib/native_view_example_1.dart (hybrid-composition)"?>
    ```dart
    Widget build(BuildContext context) {
-     // This is used in the platform side to register the view.
+     // Isso é usado no lado da plataforma para registrar a visualização.
      const String viewType = '<platform-view-type>';
-     // Pass parameters to the platform side.
+     // Passe os parâmetros para o lado da plataforma.
      const Map<String, dynamic> creationParams = <String, dynamic>{};
    
      return PlatformViewLink(
@@ -115,7 +116,7 @@ use the following instructions:
    }
    ```
 
-For more information, see the API docs for:
+Para obter mais informações, consulte a documentação da API para:
 
 * [`PlatformViewLink`][]
 * [`AndroidViewSurface`][]
@@ -127,11 +128,11 @@ For more information, see the API docs for:
 
 ### TextureLayerHybridComposition
 
-In your Dart file,
-for example `native_view_example.dart`,
-use the following instructions:
+Em seu arquivo Dart,
+por exemplo, `native_view_example.dart`,
+use as seguintes instruções:
 
-1. Add the following imports:
+1. Adicione as seguintes importações:
 
    <?code-excerpt "lib/native_view_example_2.dart (import)"?>
    ```dart
@@ -139,14 +140,14 @@ use the following instructions:
    import 'package:flutter/services.dart';
    ```
 
-2. Implement a `build()` method:
+2. Implemente um método `build()`:
 
    <?code-excerpt "lib/native_view_example_2.dart (virtual-display)"?>
    ```dart
    Widget build(BuildContext context) {
-     // This is used in the platform side to register the view.
+     // Isso é usado no lado da plataforma para registrar a visualização.
      const String viewType = '<platform-view-type>';
-     // Pass parameters to the platform side.
+     // Passe os parâmetros para o lado da plataforma.
      final Map<String, dynamic> creationParams = <String, dynamic>{};
    
      return AndroidView(
@@ -158,26 +159,26 @@ use the following instructions:
    }
    ```
 
-For more information, see the API docs for:
+Para obter mais informações, consulte a documentação da API para:
 
 * [`AndroidView`][]
 
 [`AndroidView`]: {{site.api}}/flutter/widgets/AndroidView-class.html
 
-## On the platform side
+## No lado da plataforma
 
-On the platform side, use the standard
-`io.flutter.plugin.platform` package
-in either Kotlin or Java:
+No lado da plataforma, use o padrão
+pacote `io.flutter.plugin.platform`
+em Kotlin ou Java:
 
 {% tabs "android-language" %}
 {% tab "Kotlin" %}
 
-In your native code, implement the following:
+Em seu código nativo, implemente o seguinte:
 
-Extend `io.flutter.plugin.platform.PlatformView`
-to provide a reference to the `android.view.View`
-(for example, `NativeView.kt`):
+Estenda `io.flutter.plugin.platform.PlatformView`
+para fornecer uma referência ao `android.view.View`
+(por exemplo, `NativeView.kt`):
 
 ```kotlin
 package dev.flutter.example
@@ -201,14 +202,14 @@ internal class NativeView(context: Context, id: Int, creationParams: Map<String?
         textView = TextView(context)
         textView.textSize = 72f
         textView.setBackgroundColor(Color.rgb(255, 255, 255))
-        textView.text = "Rendered on a native Android view (id: $id)"
+        textView.text = "Renderizado em uma visualização nativa do Android (id: $id)"
     }
 }
 ```
 
-Create a factory class that creates an instance of the
-`NativeView` created earlier
-(for example, `NativeViewFactory.kt`):
+Crie uma classe de fábrica que cria uma instância do
+`NativeView` criado anteriormente
+(por exemplo, `NativeViewFactory.kt`):
 
 ```kotlin
 package dev.flutter.example
@@ -226,12 +227,12 @@ class NativeViewFactory : PlatformViewFactory(StandardMessageCodec.INSTANCE) {
 }
 ```
 
-Finally, register the platform view.
-You can do this in an app or a plugin.
+Finalmente, registre a platform view.
+Você pode fazer isso em um aplicativo ou um plugin.
 
-For app registration,
-modify the app's main activity
-(for example, `MainActivity.kt`):
+Para registro de aplicativo,
+modifique a atividade principal do aplicativo
+(por exemplo, `MainActivity.kt`):
 
 ```kotlin
 package dev.flutter.example
@@ -251,9 +252,9 @@ class MainActivity : FlutterActivity() {
 }
 ```
 
-For plugin registration,
-modify the plugin's main class
-(for example, `PlatformViewPlugin.kt`):
+Para registro de plugin,
+modifique a classe principal do plugin
+(por exemplo, `PlatformViewPlugin.kt`):
 
 ```kotlin
 package dev.flutter.plugin.example
@@ -275,11 +276,11 @@ class PlatformViewPlugin : FlutterPlugin {
 {% endtab %}
 {% tab "Java" %}
 
-In your native code, implement the following:
+Em seu código nativo, implemente o seguinte:
 
-Extend `io.flutter.plugin.platform.PlatformView`
-to provide a reference to the `android.view.View`
-(for example, `NativeView.java`):
+Estenda `io.flutter.plugin.platform.PlatformView`
+para fornecer uma referência ao `android.view.View`
+(por exemplo, `NativeView.java`):
 
 ```java
 package dev.flutter.example;
@@ -300,7 +301,7 @@ class NativeView implements PlatformView {
         textView = new TextView(context);
         textView.setTextSize(72);
         textView.setBackgroundColor(Color.rgb(255, 255, 255));
-        textView.setText("Rendered on a native Android view (id: " + id + ")");
+        textView.setText("Renderizado em uma visualização nativa do Android (id: " + id + ")");
     }
 
     @NonNull
@@ -314,9 +315,9 @@ class NativeView implements PlatformView {
 }
 ```
 
-Create a factory class that creates an
-instance of the `NativeView` created earlier
-(for example, `NativeViewFactory.java`):
+Crie uma classe de fábrica que cria um
+instância do `NativeView` criado anteriormente
+(por exemplo, `NativeViewFactory.java`):
 
 ```java
 package dev.flutter.example;
@@ -344,12 +345,12 @@ class NativeViewFactory extends PlatformViewFactory {
 }
 ```
 
-Finally, register the platform view.
-You can do this in an app or a plugin.
+Finalmente, registre a platform view.
+Você pode fazer isso em um aplicativo ou um plugin.
 
-For app registration,
-modify the app's main activity
-(for example, `MainActivity.java`):
+Para registro de aplicativo,
+modifique a atividade principal do aplicativo
+(por exemplo, `MainActivity.java`):
 
 ```java
 package dev.flutter.example;
@@ -369,9 +370,9 @@ public class MainActivity extends FlutterActivity {
 }
 ```
 
-For plugin registration,
-modify the plugin's main file
-(for example, `PlatformViewPlugin.java`):
+Para registro de plugin,
+modifique o arquivo principal do plugin
+(por exemplo, `PlatformViewPlugin.java`):
 
 ```java
 package dev.flutter.plugin.example;
@@ -395,7 +396,7 @@ public class PlatformViewPlugin implements FlutterPlugin {
 {% endtab %}
 {% endtabs %}
 
-For more information, see the API docs for:
+Para obter mais informações, consulte a documentação da API para:
 
 * [`FlutterPlugin`][]
 * [`PlatformViewRegistry`][]
@@ -407,36 +408,35 @@ For more information, see the API docs for:
 [`PlatformViewFactory`]: {{site.api}}/javadoc/io/flutter/plugin/platform/PlatformViewFactory.html
 [`PlatformViewRegistry`]: {{site.api}}/javadoc/io/flutter/plugin/platform/PlatformViewRegistry.html
 
-Finally, modify your `build.gradle` file
-to require one of the minimal Android SDK versions:
+Finalmente, modifique seu arquivo `build.gradle`
+para exigir uma das versões mínimas do SDK do Android:
 
 ```kotlin
 android {
     defaultConfig {
-        minSdk = 19 // if using hybrid composition
-        minSdk = 20 // if using virtual display.
+        minSdk = 19 // se estiver usando a hybrid composition
+        minSdk = 20 // se estiver usando a exibição virtual.
     }
 }
 ```
-### Surface Views 
+### Surface Views
 
-Handling SurfaceViews is problematic for Flutter and should be avoided when possible.
+O tratamento de SurfaceViews é problemático para o Flutter e deve ser evitado sempre que possível.
 
-### Manual view invalidation
+### Invalidação manual da view
 
-Certain Android Views do not invalidate themselves when their content changes.
-Some example views include `SurfaceView` and `SurfaceTexture`.
-When your Platform View includes these views you are required to
-manually invalidate the view after they have been drawn to
-(or more specifically: after the swap chain is flipped).
-Manual view invalidation is done by calling `invalidate` on the View 
-or one of its parent views.
+Certas Views do Android não se invalidam quando seu conteúdo é alterado.
+Algumas views de exemplo incluem `SurfaceView` e `SurfaceTexture`.
+Quando sua Platform View inclui essas views, você é obrigado a
+invalidar manualmente a view depois que elas foram desenhadas para
+(ou mais especificamente: depois que a cadeia de troca é invertida).
+A invalidação manual da view é feita chamando `invalidate` na View
+ou uma de suas views pai.
 
 [`AndroidViewSurface`]: {{site.api}}/flutter/widgets/AndroidViewSurface-class.html
 
-### Issues 
+### Problemas
 
-[Existing Platform View issues](https://github.com/flutter/flutter/issues?q=is%3Aopen+is%3Aissue+label%3A%22a%3A+platform-views%22)
+[Problemas existentes da Platform View](https://github.com/flutter/flutter/issues?q=is%3Aopen+is%3Aissue+label%3A%22a%3A+platform-views%22)
 
 {% include docs/platform-view-perf.md %}
-

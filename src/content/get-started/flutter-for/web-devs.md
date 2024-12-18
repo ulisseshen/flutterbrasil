@@ -1,41 +1,42 @@
 ---
-title: Flutter for web developers
+ia-translate: true
+title: Flutter para desenvolvedores web
 description: >-
-  Learn how to apply Web developer knowledge when building Flutter apps.
+  Aprenda como aplicar o conhecimento de desenvolvedor Web ao criar aplicativos Flutter.
 ---
 
 <?code-excerpt path-base="get-started/flutter-for/web_devs"?>
 
-This page is for users who are familiar with the HTML
-and CSS syntax for arranging components of an application's UI.
-It maps HTML/CSS code snippets to their Flutter/Dart code equivalents.
+Esta página é para usuários que estão familiarizados com a sintaxe HTML
+e CSS para organizar os componentes da interface do usuário de um aplicativo.
+Ela mapeia trechos de código HTML/CSS para seus equivalentes de código Flutter/Dart.
 
-Flutter is a framework for building cross-platform applications
-that uses the Dart programming language.
-To understand some differences between programming with Dart
-and programming with Javascript, 
-see [Learning Dart as a JavaScript Developer][].
+Flutter é um framework para construir aplicativos multiplataforma
+que usa a linguagem de programação Dart.
+Para entender algumas diferenças entre programar com Dart
+e programar com Javascript,
+veja [Aprendendo Dart como um desenvolvedor JavaScript][].
 
-One of the fundamental differences between
-designing a web layout and a Flutter layout,
-is learning how constraints work,
-and how widgets are sized and positioned.
-To learn more, see [Understanding constraints][].
+Uma das diferenças fundamentais entre
+projetar um layout da web e um layout do Flutter,
+é aprender como as constraints funcionam,
+e como os widgets são dimensionados e posicionados.
+Para saber mais, veja [Entendendo as constraints][].
 
-The examples assume:
+Os exemplos assumem:
 
-* The HTML document starts with `<!DOCTYPE html>`, and the CSS box model
-  for all HTML elements is set to [`border-box`][],
-  for consistency with the Flutter model.
+* O documento HTML começa com `<!DOCTYPE html>`, e o modelo de caixa CSS
+  para todos os elementos HTML está definido como [`border-box`][],
+  para consistência com o modelo Flutter.
 
   ```css
   {
       box-sizing: border-box;
   }
   ```
-* In Flutter, the default styling of the 'Lorem ipsum' text
-  is defined by the `bold24Roboto` variable as follows,
-  to keep the syntax simple:
+* No Flutter, o estilo padrão do texto 'Lorem ipsum'
+  é definido pela variável `bold24Roboto` da seguinte forma,
+  para manter a sintaxe simples:
 
   <?code-excerpt "lib/main.dart (text-style)"?>
   ```dart
@@ -47,26 +48,26 @@ The examples assume:
   ```
 
 :::secondary
-How is react-style, or _declarative_, programming different from the
-traditional imperative style?
-For a comparison, see [Introduction to declarative UI][].
+Como a programação estilo react, ou _declarativa_, é diferente do
+estilo imperativo tradicional?
+Para uma comparação, veja [Introdução à UI declarativa][].
 :::
 
-## Performing basic layout operations
+## Realizando operações básicas de layout
 
-The following examples show how to perform the most common UI layout tasks.
+Os exemplos a seguir mostram como realizar as tarefas de layout de UI mais comuns.
 
-### Styling and aligning text
+### Estilizando e alinhando texto
 
-Font style, size, and other text attributes that CSS
-handles with the font and color properties are individual
-properties of a [`TextStyle`][] child of a [`Text`][] widget.
+Estilo da fonte, tamanho e outros atributos de texto que o CSS
+manipula com as propriedades font e color são propriedades individuais
+de um [`TextStyle`][] filho de um widget [`Text`][].
 
-For text-align property in CSS that is used for aligning text,
-there is a textAlign property of a [`Text`][] widget.
+Para a propriedade text-align em CSS que é usada para alinhar o texto,
+existe uma propriedade textAlign de um widget [`Text`][].
 
-In both HTML and Flutter, child elements or widgets
-are anchored at the top left, by default.
+Tanto em HTML quanto em Flutter, os elementos ou widgets filhos
+são ancorados no canto superior esquerdo, por padrão.
 
 ```css highlightLines=9
 <div class="grey-box">
@@ -83,7 +84,7 @@ are anchored at the top left, by default.
 
 ```dart highlightLines=8-13
 final container = Container(
-  // grey box
+  // caixa cinza
   width: 320,
   height: 240,
   color: Colors.grey[300],
@@ -99,18 +100,18 @@ final container = Container(
 );
 ```
 
-### Setting background color
+### Definindo a cor de fundo
 
-In Flutter, you set the background color using the `color` property
-or the `decoration` property of a [`Container`][].
-However, you cannot supply both, since it would potentially
-result in the decoration drawing over the background color.
-The `color` property should be preferred
-when the background is a simple color.
-For other cases, such as gradients or images,
-use the `decoration` property.
+No Flutter, você define a cor de fundo usando a propriedade `color`
+ou a propriedade `decoration` de um [`Container`][].
+No entanto, você não pode fornecer ambas, pois isso poderia
+resultar na decoração sendo desenhada sobre a cor de fundo.
+A propriedade `color` deve ser preferida
+quando o fundo é uma cor simples.
+Para outros casos, como gradientes ou imagens,
+use a propriedade `decoration`.
 
-The CSS examples use the hex color equivalents to the Material color palette.
+Os exemplos CSS usam os equivalentes de cor hexadecimal para a paleta de cores Material.
 
 ```css highlightLines=6
 <div class="grey-box">
@@ -127,7 +128,7 @@ The CSS examples use the hex color equivalents to the Material color palette.
 
 ```dart highlightLines=5
 final container = Container(
-  // grey box
+  // caixa cinza
   width: 320,
   height: 240,
   color: Colors.grey[300],
@@ -140,7 +141,7 @@ final container = Container(
 
 ```dart highlightLines=5-7
 final container = Container(
-  // grey box
+  // caixa cinza
   width: 320,
   height: 240,
   decoration: BoxDecoration(
@@ -153,14 +154,13 @@ final container = Container(
 );
 ```
 
-### Centering components
+### Centralizando componentes
 
-A [`Center`][] widget centers its child both horizontally
-and vertically.
+Um widget [`Center`][] centraliza seu filho tanto horizontal
+quanto verticalmente.
 
-To accomplish a similar effect in CSS, the parent element uses either a flex
-or table-cell display behavior. The examples on this page show the flex
-behavior.
+Para obter um efeito semelhante em CSS, o elemento pai usa um comportamento de exibição flex
+ou table-cell. Os exemplos nesta página mostram o comportamento flex.
 
 ```css highlightLines=10-12
 <div class="grey-box">
@@ -180,7 +180,7 @@ behavior.
 
 ```dart highlightLines=6-7
 final container = Container(
-  // grey box
+  // caixa cinza
   width: 320,
   height: 240,
   color: Colors.grey[300],
@@ -193,18 +193,18 @@ final container = Container(
 );
 ```
 
-### Setting container width
+### Definindo a largura do container
 
-To specify the width of a [`Container`][]
-widget, use its `width` property.
-This is a fixed width, unlike the CSS max-width property
-that adjusts the container width up to a maximum value.
-To mimic that effect in Flutter,
-use the `constraints` property of the Container.
-Create a new [`BoxConstraints`][] widget with a `minWidth` or `maxWidth`.
+Para especificar a largura de um widget [`Container`][],
+use sua propriedade `width`.
+Esta é uma largura fixa, diferente da propriedade CSS max-width
+que ajusta a largura do container até um valor máximo.
+Para imitar esse efeito no Flutter,
+use a propriedade `constraints` do Container.
+Crie um novo widget [`BoxConstraints`][] com um `minWidth` ou `maxWidth`.
 
-For nested Containers, if the parent's width is less than the child's width,
-the child Container sizes itself to match the parent.
+Para Containers aninhados, se a largura do pai for menor que a largura do filho,
+o Container filho dimensiona-se para corresponder ao pai.
 
 ```css highlightLines=9,20-21
 <div class="grey-box">
@@ -233,14 +233,14 @@ the child Container sizes itself to match the parent.
 
 ```dart highlightLines=3,9
 final container = Container(
-  // grey box
+  // caixa cinza
   width: 320,
   height: 240,
   color: Colors.grey[300],
   child: Center(
     child: Container(
-      // red box
-      width: 240, // max-width is 240
+      // caixa vermelha
+      width: 240, // max-width é 240
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.red[400],
@@ -254,18 +254,18 @@ final container = Container(
 );
 ```
 
-## Manipulating position and size
+## Manipulando posição e tamanho
 
-The following examples show how to perform more complex operations
-on widget position, size, and background.
+Os exemplos a seguir mostram como realizar operações mais complexas
+na posição, tamanho e fundo do widget.
 
-### Setting absolute position
+### Definindo posição absoluta
 
-By default, widgets are positioned relative to their parent.
+Por padrão, os widgets são posicionados em relação ao seu pai.
 
-To specify an absolute position for a widget as x-y coordinates,
-nest it in a [`Positioned`][] widget that is,
-in turn, nested in a [`Stack`][] widget.
+Para especificar uma posição absoluta para um widget como coordenadas x-y,
+anexe-o em um widget [`Positioned`][] que está,
+por sua vez, aninhado em um widget [`Stack`][].
 
 ```css highlightLines=8,18-20
 <div class="grey-box">
@@ -293,14 +293,14 @@ in turn, nested in a [`Stack`][] widget.
 
 ```dart highlightLines=6-7,10-11
 final container = Container(
-  // grey box
+  // caixa cinza
   width: 320,
   height: 240,
   color: Colors.grey[300],
   child: Stack(
     children: [
       Positioned(
-        // red box
+        // caixa vermelha
         left: 24,
         top: 24,
         child: Container(
@@ -319,17 +319,17 @@ final container = Container(
 );
 ```
 
-### Rotating components
+### Rotacionando componentes
 
-To rotate a widget, nest it in a [`Transform`][] widget.
-Use the `Transform` widget's `alignment` and `origin` properties
-to specify the transform origin (fulcrum) in relative and absolute terms,
-respectively.
+Para rotacionar um widget, anexe-o em um widget [`Transform`][].
+Use as propriedades `alignment` e `origin` do widget `Transform`
+para especificar a origem da transformação (fulcro) em termos relativos e absolutos,
+respectivamente.
 
-For a simple 2D rotation, in which the widget is rotated on the Z axis,
-create a new [`Matrix4`][] identity object
-and use its `rotateZ()` method to specify the rotation factor
-using radians (degrees × π / 180).
+Para uma rotação 2D simples, na qual o widget é rotacionado no eixo Z,
+crie um novo objeto de identidade [`Matrix4`][]
+e use seu método `rotateZ()` para especificar o fator de rotação
+usando radianos (graus × π / 180).
 
 ```css highlightLines=20
 <div class="grey-box">
@@ -357,7 +357,7 @@ using radians (degrees × π / 180).
 
 ```dart highlightLines=7-10,
 final container = Container(
-  // grey box
+  // caixa cinza
   width: 320,
   height: 240,
   color: Colors.grey[300],
@@ -366,7 +366,7 @@ final container = Container(
       alignment: Alignment.center,
       transform: Matrix4.identity()..rotateZ(15 * 3.1415927 / 180),
       child: Container(
-        // red box
+        // caixa vermelha
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: Colors.red[400],
@@ -382,19 +382,19 @@ final container = Container(
 );
 ```
 
-### Scaling components
+### Escalonando componentes
 
-To scale a widget up or down, nest it in a [`Transform`][] widget.
-Use the Transform widget's `alignment` and `origin` properties
-to specify the transform origin (fulcrum) in relative or absolute terms,
-respectively.
+Para aumentar ou diminuir a escala de um widget, anexe-o em um widget [`Transform`][].
+Use as propriedades `alignment` e `origin` do widget Transform
+para especificar a origem da transformação (fulcro) em termos relativos ou absolutos,
+respectivamente.
 
-For a simple scaling operation along the x-axis,
-create a new [`Matrix4`][] identity object
-and use its `scale()` method to specify the scaling factor.
+Para uma operação de escala simples ao longo do eixo x,
+crie um novo objeto de identidade [`Matrix4`][]
+e use seu método `scale()` para especificar o fator de escala.
 
-When you scale a parent widget,
-its child widgets are scaled accordingly.
+Quando você escala um widget pai,
+seus widgets filhos são escalados de acordo.
 
 ```css highlightLines=20
 <div class="grey-box">
@@ -422,7 +422,7 @@ its child widgets are scaled accordingly.
 
 ```dart highlightLines=7-10
 final container = Container(
-  // grey box
+  // caixa cinza
   width: 320,
   height: 240,
   color: Colors.grey[300],
@@ -431,7 +431,7 @@ final container = Container(
       alignment: Alignment.center,
       transform: Matrix4.identity()..scale(1.5),
       child: Container(
-        // red box
+        // caixa vermelha
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: Colors.red[400],
@@ -447,22 +447,22 @@ final container = Container(
 );
 ```
 
-### Applying a linear gradient
+### Aplicando um gradiente linear
 
-To apply a linear gradient to a widget's background,
-nest it in a [`Container`][] widget.
-Then use the `Container` widget's `decoration` property to create a
-[`BoxDecoration`][] object, and use `BoxDecoration`'s `gradient`
-property to transform the background fill.
+Para aplicar um gradiente linear ao fundo de um widget,
+anexe-o em um widget [`Container`][].
+Em seguida, use a propriedade `decoration` do widget `Container` para criar um
+objeto [`BoxDecoration`][], e use a propriedade `gradient` do `BoxDecoration`
+para transformar o preenchimento do fundo.
 
-The gradient "angle" is based on the Alignment (x, y) values:
+O "ângulo" do gradiente é baseado nos valores de Alinhamento (x, y):
 
-* If the beginning and ending x values are equal,
-  the gradient is vertical (0° | 180°).
-* If the beginning and ending y values are equal,
-  the gradient is horizontal (90° | 270°).
+* Se os valores x inicial e final forem iguais,
+  o gradiente é vertical (0° | 180°).
+* Se os valores y inicial e final forem iguais,
+  o gradiente é horizontal (90° | 270°).
 
-#### Vertical gradient
+#### Gradiente vertical
 
 ```css highlightLines=19
 <div class="grey-box">
@@ -489,13 +489,13 @@ The gradient "angle" is based on the Alignment (x, y) values:
 
 ```dart highlightLines=9-18
 final container = Container(
-  // grey box
+  // caixa cinza
   width: 320,
   height: 240,
   color: Colors.grey[300],
   child: Center(
     child: Container(
-      // red box
+      // caixa vermelha
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
@@ -516,7 +516,7 @@ final container = Container(
 );
 ```
 
-#### Horizontal gradient
+#### Gradiente horizontal
 
 ```css highlightLines=19
 <div class="grey-box">
@@ -543,13 +543,13 @@ final container = Container(
 
 ```dart highlightLines=10-19
 final container = Container(
-  // grey box
+  // caixa cinza
   width: 320,
   height: 240,
   color: Colors.grey[300],
   child: Center(
     child: Container(
-      // red box
+      // caixa vermelha
       padding: const EdgeInsets.all(16),
       decoration: const BoxDecoration(
         gradient: LinearGradient(
@@ -570,16 +570,16 @@ final container = Container(
 );
 ```
 
-## Manipulating shapes
+## Manipulando formas
 
-The following examples show how to make and customize shapes.
+Os exemplos a seguir mostram como fazer e personalizar formas.
 
-### Rounding corners
+### Arredondando cantos
 
-To round the corners of a rectangular shape,
-use the `borderRadius` property of a [`BoxDecoration`][] object.
-Create a new [`BorderRadius`][]
-object that specifies the radius for rounding each corner.
+Para arredondar os cantos de uma forma retangular,
+use a propriedade `borderRadius` de um objeto [`BoxDecoration`][].
+Crie um novo objeto [`BorderRadius`][]
+que especifica o raio para arredondar cada canto.
 
 ```css highlightLines=20
 <div class="grey-box">
@@ -607,13 +607,13 @@ object that specifies the radius for rounding each corner.
 
 ```dart highlightLines=12-14
 final container = Container(
-  // grey box
+  // caixa cinza
   width: 320,
   height: 240,
   color: Colors.grey[300],
   child: Center(
     child: Container(
-      // red circle
+      // círculo vermelho
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.red[400],
@@ -630,20 +630,20 @@ final container = Container(
 );
 ```
 
-### Adding box shadows
+### Adicionando sombras de caixa
 
-In CSS you can specify shadow offset and blur in shorthand,
-using the box-shadow property. This example shows two box shadows,
-with properties:
+Em CSS, você pode especificar o deslocamento e o desfoque da sombra em abreviação,
+usando a propriedade box-shadow. Este exemplo mostra duas sombras de caixa,
+com propriedades:
 
 * `xOffset: 0px, yOffset: 2px, blur: 4px, color: black @80% alpha`
 * `xOffset: 0px, yOffset: 06x, blur: 20px, color: black @50% alpha`
 
-In Flutter, each property and value is specified separately.
-Use the `boxShadow` property of `BoxDecoration` to create a list of
-[`BoxShadow`][] widgets. You can define one or multiple
-`BoxShadow` widgets, which can be stacked
-to customize the shadow depth, color, and so on.
+No Flutter, cada propriedade e valor é especificado separadamente.
+Use a propriedade `boxShadow` de `BoxDecoration` para criar uma lista de
+widgets [`BoxShadow`][]. Você pode definir um ou vários
+widgets `BoxShadow`, que podem ser empilhados
+para personalizar a profundidade da sombra, cor e assim por diante.
 
 ```css highlightLines=20-21
 <div class="grey-box">
@@ -672,7 +672,7 @@ to customize the shadow depth, color, and so on.
 
 ```dart highlightLines=15-26
 final container = Container(
-  // grey box
+  // caixa cinza
   width: 320,
   height: 240,
   margin: const EdgeInsets.only(bottom: 16),
@@ -681,7 +681,7 @@ final container = Container(
   ),
   child: Center(
     child: Container(
-      // red box
+      // caixa vermelha
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.red[400],
@@ -707,16 +707,16 @@ final container = Container(
 );
 ```
 
-### Making circles and ellipses
+### Fazendo círculos e elipses
 
-Making a circle in CSS requires a workaround of applying a
-border-radius of 50% to all four sides of a rectangle,
-though there are [basic shapes][].
+Fazer um círculo em CSS requer uma solução alternativa de aplicar um
+border-radius de 50% em todos os quatro lados de um retângulo,
+embora existam [formas básicas][].
 
-While this approach is supported
-with the `borderRadius` property of [`BoxDecoration`][],
-Flutter provides a `shape` property
-with [`BoxShape` enum][] for this purpose.
+Embora essa abordagem seja suportada
+com a propriedade `borderRadius` de [`BoxDecoration`][],
+o Flutter fornece uma propriedade `shape`
+com [`enum BoxShape`][] para essa finalidade.
 
 ```css highlightLines=20-23
 <div class="grey-box">
@@ -747,13 +747,13 @@ with [`BoxShape` enum][] for this purpose.
 
 ```dart highlightLines=11,14-15,19
 final container = Container(
-  // grey box
+  // caixa cinza
   width: 320,
   height: 240,
   color: Colors.grey[300],
   child: Center(
     child: Container(
-      // red circle
+      // círculo vermelho
       decoration: BoxDecoration(
         color: Colors.red[400],
         shape: BoxShape.circle,
@@ -771,23 +771,23 @@ final container = Container(
 );
 ```
 
-## Manipulating text
+## Manipulando texto
 
-The following examples show how to specify fonts and other
-text attributes. They also show how to transform text strings,
-customize spacing, and create excerpts.
+Os exemplos a seguir mostram como especificar fontes e outros
+atributos de texto. Eles também mostram como transformar strings de texto,
+personalizar o espaçamento e criar trechos.
 
-### Adjusting text spacing
+### Ajustando o espaçamento do texto
 
-In CSS, you specify the amount of white space
-between each letter or word by giving a length value
-for the letter-spacing and word-spacing properties, respectively.
-The amount of space can be in px, pt, cm, em, etc.
+Em CSS, você especifica a quantidade de espaço em branco
+entre cada letra ou palavra, dando um valor de comprimento
+para as propriedades letter-spacing e word-spacing, respectivamente.
+A quantidade de espaço pode ser em px, pt, cm, em, etc.
 
-In Flutter, you specify white space as logical pixels
-(negative values are allowed)
-for the `letterSpacing` and `wordSpacing` properties
-of a [`TextStyle`][] child of a `Text` widget.
+No Flutter, você especifica o espaço em branco como pixels lógicos
+(valores negativos são permitidos)
+para as propriedades `letterSpacing` e `wordSpacing`
+de um [`TextStyle`][] filho de um widget `Text`.
 
 ```css highlightLines=20
 <div class="grey-box">
@@ -815,13 +815,13 @@ of a [`TextStyle`][] child of a `Text` widget.
 
 ```dart highlightLines=19
 final container = Container(
-  // grey box
+  // caixa cinza
   width: 320,
   height: 240,
   color: Colors.grey[300],
   child: Center(
     child: Container(
-      // red box
+      // caixa vermelha
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.red[400],
@@ -840,19 +840,19 @@ final container = Container(
 );
 ```
 
-### Making inline formatting changes
+### Fazendo mudanças de formatação inline
 
-A [`Text`][] widget lets you display text
-with some formatting characteristics.
-To display text that uses multiple styles
-(in this example, a single word with emphasis),
-use a [`RichText`][] widget instead.
-Its `text` property can specify one or more
-[`TextSpan`][] objects that can be individually styled.
+Um widget [`Text`][] permite exibir texto
+com algumas características de formatação.
+Para exibir texto que usa vários estilos
+(neste exemplo, uma única palavra com ênfase),
+use um widget [`RichText`][] em vez disso.
+Sua propriedade `text` pode especificar um ou mais
+objetos [`TextSpan`][] que podem ser estilizados individualmente.
 
-In the following example, "Lorem" is in a `TextSpan`
-with the default (inherited) text styling,
-and "ipsum" is in a separate `TextSpan` with custom styling.
+No exemplo a seguir, "Lorem" está em um `TextSpan`
+com o estilo de texto padrão (herdado),
+e "ipsum" está em um `TextSpan` separado com estilo personalizado.
 
 ```css highlightLines=3,11,21-4
 <div class="grey-box">
@@ -883,13 +883,13 @@ and "ipsum" is in a separate `TextSpan` with custom styling.
 
 ```dart highlightLines=13-28
 final container = Container(
-  // grey box
+  // caixa cinza
   width: 320,
   height: 240,
   color: Colors.grey[300],
   child: Center(
     child: Container(
-      // red box
+      // caixa vermelha
       decoration: BoxDecoration(
         color: Colors.red[400],
       ),
@@ -915,14 +915,14 @@ final container = Container(
 );
 ```
 
-### Creating text excerpts
+### Criando trechos de texto
 
-An excerpt displays the initial line(s) of text in a paragraph,
-and handles the overflow text, often using an ellipsis.
+Um trecho exibe a(s) linha(s) inicial(is) de texto em um parágrafo,
+e lida com o texto de estouro, geralmente usando reticências.
 
-In Flutter, use the `maxLines` property of a [`Text`][] widget
-to specify the number of lines to include in the excerpt,
-and the `overflow` property for handling overflow text.
+No Flutter, use a propriedade `maxLines` de um widget [`Text`][]
+para especificar o número de linhas a serem incluídas no trecho,
+e a propriedade `overflow` para lidar com o estouro de texto.
 
 ```css highlightLines=20-23
 <div class="grey-box">
@@ -953,13 +953,13 @@ and the `overflow` property for handling overflow text.
 
 ```dart highlightLines=16-17
 final container = Container(
-  // grey box
+  // caixa cinza
   width: 320,
   height: 240,
   color: Colors.grey[300],
   child: Center(
     child: Container(
-      // red box
+      // caixa vermelha
       decoration: BoxDecoration(
         color: Colors.red[400],
       ),
@@ -975,18 +975,17 @@ final container = Container(
 );
 ```
 
-
-[basic shapes]: https://developer.mozilla.org/en-US/docs/Web/CSS/basic-shape
+[formas básicas]: https://developer.mozilla.org/en-US/docs/Web/CSS/basic-shape
 [`border-box`]: https://css-tricks.com/box-sizing/
 [`BorderRadius`]: {{site.api}}/flutter/painting/BorderRadius-class.html
 [`BoxDecoration`]: {{site.api}}/flutter/painting/BoxDecoration-class.html
 [`BoxConstraints`]: {{site.api}}/flutter/rendering/BoxConstraints-class.html
-[`BoxShape` enum]: {{site.api}}/flutter/painting/BoxShape.html
+[`enum BoxShape`]: {{site.api}}/flutter/painting/BoxShape.html
 [`BoxShadow`]: {{site.api}}/flutter/painting/BoxShadow-class.html
 [`Center`]: {{site.api}}/flutter/widgets/Center-class.html
 [`Container`]: {{site.api}}/flutter/widgets/Container-class.html
-[Introduction to declarative UI]: /get-started/flutter-for/declarative
-[Learning Dart as a JavaScript Developer]: {{site.dart-site}}/guides/language/coming-from/js-to-dart
+[Introdução à UI declarativa]: /get-started/flutter-for/declarative
+[Aprendendo Dart como um desenvolvedor JavaScript]: {{site.dart-site}}/guides/language/coming-from/js-to-dart
 [`Matrix4`]: {{site.api}}/flutter/vector_math_64/Matrix4-class.html
 [`Positioned`]: {{site.api}}/flutter/widgets/Positioned-class.html
 [`RichText`]: {{site.api}}/flutter/widgets/RichText-class.html
@@ -995,5 +994,5 @@ final container = Container(
 [`TextSpan`]: {{site.api}}/flutter/painting/TextSpan-class.html
 [`TextStyle`]: {{site.api}}/flutter/painting/TextStyle-class.html
 [`Transform`]: {{site.api}}/flutter/widgets/Transform-class.html
-[Understanding constraints]: /ui/layout/constraints
+[Entendendo as constraints]: /ui/layout/constraints
 

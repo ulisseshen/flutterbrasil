@@ -1,41 +1,41 @@
 ---
-title: Flutter on latest iOS
+ia-translate: true
+title: Flutter no iOS mais recente
 description: >-
-  Learn about Flutter's support for and compatibility with
-  the latest releases of iOS.
+  Aprenda sobre o suporte e a compatibilidade do Flutter com as versões mais
+  recentes do iOS.
 ---
 
-You can develop Flutter on the iOS platform, even on
-the latest release of iOS. The latest Flutter SDK
-already supports a number of the features in the
-latest release of iOS.
+Você pode desenvolver em Flutter na plataforma iOS, mesmo na versão
+mais recente do iOS. O SDK Flutter mais recente já suporta vários
+recursos na versão mais recente do iOS.
 
-Of course, if you find a bug on Flutter,
-please [file an issue][].
+Claro, se você encontrar um bug no Flutter, por favor,
+[abra uma issue][].
 
-[file an issue]: {{site.github}}/flutter/flutter/issues
+[abra uma issue]: {{site.github}}/flutter/flutter/issues
 
-## iOS 18 release
+## Lançamento do iOS 18
 
-The following table shows the status of support for
-the iOS 18 release as of the Flutter 3.24.3 release.
+A tabela a seguir mostra o status do suporte para o lançamento do
+iOS 18 a partir do lançamento do Flutter 3.24.3.
 
-| Feature | Status |
-|---------|--------|
-| Target and build for iOS 18 | Delivered, supported |
-| Control Center (CC) widgets | Delivered, [supported][cc] Requires writing some Swift code to create a toggle for the CC |
-| Light/dark/tinted icon colors | Delivered, [supported][icon] | 
-| Password apps work/integrate work with Flutter | Delivered, supported |
-| Eye tracking of a Flutter app | Partially works; [known issues][eye] |
-| iPhone mirroring (when viewing a Flutter app) | Partially works; [known issues][mirror] |
-| iOS formatting menu | Not yet available; on roadmap |
-| Showing Translate option for the context edit menu | Not yet available; on roadmap |
-| Apple Intelligence (AI), such as New Writing Tools | Not yet available; on roadmap |
-| iOS-style zoom page transition | Not yet available; on roadmap |
-| Hover typing feature | Not available |
-| [iPad-style tab bar][] | Not available |
-| Large content viewer | Not available |
-| Virtual trackpad feature | Not available |
+| Recurso                                      | Status                                         |
+|-----------------------------------------------|------------------------------------------------|
+| Destinar e compilar para iOS 18                | Entregue, suportado                             |
+| Widgets da Central de Controle (CC)           | Entregue, [suportado][cc] Requer escrever algum código Swift para criar um botão de alternância para o CC  |
+| Cores de ícones claro/escuro/tingido            | Entregue, [suportado][icon]                    |
+| Apps de senha funcionam/integram-se com Flutter | Entregue, suportado                            |
+| Rastreamento ocular de um app Flutter         | Funciona parcialmente; [problemas conhecidos][eye] |
+| Espelhamento do iPhone (ao visualizar um app Flutter)  | Funciona parcialmente; [problemas conhecidos][mirror] |
+| Menu de formatação do iOS                     | Ainda não disponível; no roadmap               |
+| Exibindo a opção Traduzir para o menu de edição de contexto | Ainda não disponível; no roadmap               |
+| Apple Intelligence (AI), como Novas Ferramentas de Escrita | Ainda não disponível; no roadmap               |
+| Transição de página de zoom estilo iOS          | Ainda não disponível; no roadmap               |
+| Recurso de digitação por pairar                | Não disponível                                 |
+| [Barra de abas estilo iPad][]                 | Não disponível                                 |
+| Visualizador de conteúdo grande                | Não disponível                                 |
+| Recurso de trackpad virtual                    | Não disponível                                 |
 {% comment %}
 {% endcomment %}
 {:.table .table-striped}
@@ -45,4 +45,3 @@ the iOS 18 release as of the Flutter 3.24.3 release.
 [eye]: {{site.github}}/flutter/flutter/issues/153573
 [iPad-style tab bar]: {{site.apple-dev}}/documentation/uikit/app_and_environment/elevating_your_ipad_app_with_a_tab_bar_and_sidebar
 [mirror]: {{site.github}}/flutter/flutter/issues/152711
-

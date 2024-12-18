@@ -1,43 +1,39 @@
 ---
-title: Flutter SDK overview
-short-title: Flutter SDK
-description: Flutter libraries and command-line tools.
+ia-translate: true
+title: Visão geral do SDK Flutter
+short-title: SDK Flutter
+description: Ferramentas de linha de comando e bibliotecas do Flutter.
 ---
 
-The Flutter SDK has the packages and command-line tools that you need to develop
-Flutter apps across platforms. To get the Flutter SDK, see [Install][].
+O SDK Flutter possui os pacotes e ferramentas de linha de comando que você precisa para desenvolver aplicativos Flutter em várias plataformas. Para obter o SDK Flutter, consulte [Instalar][].
 
-## What's in the Flutter SDK
+## O que há no SDK Flutter
 
-The following is available through the Flutter SDK:
+O seguinte está disponível através do SDK Flutter:
 
 * [Dart SDK][]
-* Heavily optimized, mobile-first 2D rendering engine with
-  excellent support for text
-* Modern react-style framework
-* Rich set of widgets implementing Material Design and iOS styles
-* APIs for unit and integration tests
-* Interop and plugin APIs to connect to the system and 3rd-party SDKs
-* Headless test runner for running tests on Windows, Linux, and Mac
-* [Flutter DevTools][] for testing, debugging, and profiling your app
-* `flutter` and `dart` command-line tools for creating, building, testing,
-  and compiling your apps
+* Mecanismo de renderização 2D otimizado para dispositivos móveis com excelente suporte para texto
+* Framework moderno estilo reativo
+* Conjunto avançado de widgets implementando Material Design e estilos iOS
+* APIs para testes de unidade e integração
+* APIs de interoperação e plugin para conectar-se ao sistema e SDKs de terceiros
+* Executador de testes headless para executar testes no Windows, Linux e Mac
+* [Flutter DevTools][] para testar, depurar e criar perfis do seu aplicativo
+* Ferramentas de linha de comando `flutter` e `dart` para criar, construir, testar e compilar seus aplicativos
 
-Note: For more information about the Flutter SDK, see its
-[README file][].
+Nota: Para mais informações sobre o SDK Flutter, veja seu [arquivo README][].
 
-## `flutter` command-line tool
+## Ferramenta de linha de comando `flutter`
 
-The [`flutter` CLI tool][] (`flutter/bin/flutter`) is how developers
-(or IDEs on behalf of developers) interact with Flutter.
+A ferramenta [`flutter` CLI][] (`flutter/bin/flutter`) é como os desenvolvedores (ou IDEs em nome dos desenvolvedores) interagem com o Flutter.
 
-## `dart` command-line tool
+## Ferramenta de linha de comando `dart`
 
-The [`dart` CLI tool][] is available with the Flutter SDK at `flutter/bin/dart`.
+A ferramenta [`dart` CLI][] está disponível com o SDK Flutter em `flutter/bin/dart`.
 
 [Flutter DevTools]: /tools/devtools
 [Dart SDK]: {{site.dart-site}}/tools/sdk
 [`dart` CLI tool]: {{site.dart-site}}/tools/dart-tool
 [`flutter` CLI tool]: /reference/flutter-cli
-[Install]: /get-started/install
-[README file]: {{site.repo.flutter}}/blob/master/README.md
+[Instalar]: /get-started/install
+[arquivo README]: {{site.repo.flutter}}/blob/master/README.md

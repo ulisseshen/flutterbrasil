@@ -1,14 +1,15 @@
 ---
-title: Add Linux as a target platform for Flutter from web start
-description: Configure your system to develop Flutter mobile apps on Linux.
-short-title: Starting from web
+ia-translate: true
+title: Adicionar Linux como plataforma alvo para Flutter a partir da web
+description: Configure seu sistema para desenvolver aplicativos Flutter para dispositivos móveis no Linux.
+short-title: Começando a partir da web
 ---
 
-To add Linux as a Flutter app target for Linux, follow this procedure.
+Para adicionar o Linux como um alvo de aplicativo Flutter para Linux, siga este procedimento.
 
-## Install Linux compilation tools
+## Instalar ferramentas de compilação do Linux
 
-1. Allocate a minimum of 5 GB of storage for the Linux compilation tools.
+1. Alocar um mínimo de 5 GB de armazenamento para as ferramentas de compilação do Linux.
 
 {% include docs/install/reqs/linux/install-desktop-tools.md devos='linux' %}
 

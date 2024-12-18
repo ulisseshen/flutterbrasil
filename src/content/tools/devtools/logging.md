@@ -1,49 +1,49 @@
 ---
-title: Use the Logging view
-description: Learn how to use the DevTools logging view.
+ia-translate: true
+title: Use a visualização de Logging
+description: Aprenda a usar a visualização de logging do DevTools.
 ---
 
 :::note
-The logging view works with all Flutter and Dart applications.
+A visualização de logging funciona com todos os aplicativos Flutter e Dart.
 :::
 
-## What is it?
+## O que é?
 
-The logging view displays events from the Dart runtime,
-application frameworks (like Flutter), and application-level
-logging events.
+A visualização de logging exibe eventos do tempo de execução do Dart,
+frameworks de aplicativos (como Flutter) e eventos de logging
+no nível do aplicativo.
 
-## Standard logging events
+## Eventos de logging padrão
 
-By default, the logging view shows:
+Por padrão, a visualização de logging mostra:
 
-* Garbage collection events from the Dart runtime
-* Flutter framework events, like frame creation events
-* `stdout` and `stderr` from applications
-* Custom logging events from applications
+* Eventos de coleta de lixo do tempo de execução do Dart
+* Eventos do framework Flutter, como eventos de criação de frame
+* `stdout` e `stderr` de aplicativos
+* Eventos de logging personalizados de aplicativos
 
-![Screenshot of a logging view](/assets/images/docs/tools/devtools/logging_log_entries.png){:width="100%"}
+![Captura de tela de uma visualização de logging](/assets/images/docs/tools/devtools/logging_log_entries.png){:width="100%"}
 
-## Logging from your application
+## Logging do seu aplicativo
 
-To implement logging in your code,
-see the [Logging][] section in the
-[Debugging Flutter apps programmatically][]
-page.
+Para implementar logging no seu código,
+veja a seção [Logging][] na
+página [Depurando aplicativos Flutter programaticamente][].
 
-## Clearing logs
+## Limpando logs
 
-To clear the log entries in the logging view,
-click the **Clear logs** button.
+Para limpar as entradas de log na visualização de logging,
+clique no botão **Limpar logs**.
 
 [Logging]: /testing/code-debugging#add-logging-to-your-application
-[Debugging Flutter apps programmatically]: /testing/code-debugging
+[Depurando aplicativos Flutter programaticamente]: /testing/code-debugging
 
-## Other resources
+## Outros recursos
 
-To learn about different methods of logging
-and how to effectively use DevTools to
-analyze and debug Flutter apps faster,
-check out a guided [Logging View tutorial][logging-tutorial].
+Para aprender sobre diferentes métodos de logging
+e como usar efetivamente o DevTools para
+analisar e depurar aplicativos Flutter mais rapidamente,
+confira um [tutorial guiado sobre a visualização de Logging][logging-tutorial].
 
 [logging-tutorial]: {{site.medium}}/@fluttergems/mastering-dart-flutter-devtools-logging-view-part-5-of-8-b634f3a3af26

@@ -1,6 +1,7 @@
 ---
-title: Add a drawer to a screen
-description: How to implement a Material Drawer.
+ia-translate: true
+title: Adicionar uma gaveta a uma tela
+description: Como implementar uma gaveta do Material.
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
@@ -8,100 +9,100 @@ js:
 
 <?code-excerpt path-base="cookbook/design/drawer"?>
 
-In apps that use Material Design,
-there are two primary options for navigation: tabs and drawers.
-When there is insufficient space to support tabs,
-drawers provide a handy alternative.
+Em aplicativos que usam o Material Design,
+existem duas opções principais para navegação: abas e gavetas.
+Quando não há espaço suficiente para suportar abas,
+as gavetas fornecem uma alternativa útil.
 
-In Flutter, use the [`Drawer`][] widget in combination with a
-[`Scaffold`][] to create a layout with a Material Design drawer.
-This recipe uses the following steps:
+No Flutter, use o widget [`Drawer`][] em combinação com um
+[`Scaffold`][] para criar um layout com uma gaveta do Material Design.
+Esta receita usa os seguintes passos:
 
-  1. Create a `Scaffold`.
-  2. Add a drawer.
-  3. Populate the drawer with items.
-  4. Close the drawer programmatically.
+  1. Crie um `Scaffold`.
+  2. Adicione uma gaveta.
+  3. Preencha a gaveta com itens.
+  4. Feche a gaveta programaticamente.
 
-## 1. Create a `Scaffold`
+## 1. Crie um `Scaffold`
 
-To add a drawer to the app, wrap it in a [`Scaffold`][] widget.
-The `Scaffold` widget provides a consistent visual structure to apps that
-follow the Material Design Guidelines.
-It also supports special Material Design
-components, such as Drawers, AppBars, and SnackBars.
+Para adicionar uma gaveta ao aplicativo, envolva-o em um widget [`Scaffold`][].
+O widget `Scaffold` fornece uma estrutura visual consistente para aplicativos que
+seguem as Diretrizes de Material Design.
+Ele também oferece suporte a componentes especiais do Material Design,
+como Gavetas, AppBars e SnackBars.
 
-In this example, create a `Scaffold` with a `drawer`:
+Neste exemplo, crie um `Scaffold` com uma `drawer`:
 
 <?code-excerpt "lib/drawer.dart (DrawerStart)" replace="/null, //g"?>
 ```dart
 Scaffold(
   appBar: AppBar(
-    title: const Text('AppBar without hamburger button'),
+    title: const Text('AppBar sem botão de menu'),
   ),
-  drawer: // Add a Drawer here in the next step.
+  drawer: // Adicione uma Gaveta aqui no próximo passo.
 );
 ```
 
-## 2. Add a drawer
+## 2. Adicione uma gaveta
 
-Now add a drawer to the `Scaffold`. A drawer can be any widget,
-but it's often best to use the `Drawer` widget from the
-[material library][],
-which adheres to the Material Design spec.
+Agora adicione uma gaveta ao `Scaffold`. Uma gaveta pode ser qualquer widget,
+mas geralmente é melhor usar o widget `Drawer` da
+[biblioteca material][],
+que adere à especificação do Material Design.
 
 <?code-excerpt "lib/drawer.dart (DrawerEmpty)" replace="/null, //g"?>
 ```dart
 Scaffold(
   appBar: AppBar(
-    title: const Text('AppBar with hamburger button'),
+    title: const Text('AppBar com botão de menu'),
   ),
   drawer: Drawer(
-    child: // Populate the Drawer in the next step.
+    child: // Preencha a Gaveta no próximo passo.
   ),
 );
 ```
 
-## 3. Populate the drawer with items
+## 3. Preencha a gaveta com itens
 
-Now that you have a `Drawer` in place, add content to it.
-For this example, use a [`ListView`][].
-While you could use a `Column` widget,
-`ListView` is handy because it allows users to scroll
-through the drawer if the
-content takes more space than the screen supports.
+Agora que você tem um `Drawer` no lugar, adicione conteúdo a ele.
+Para este exemplo, use um [`ListView`][].
+Embora você possa usar um widget `Column`,
+`ListView` é útil porque permite que os usuários rolem
+pela gaveta se o
+conteúdo ocupar mais espaço do que a tela suporta.
 
-Populate the `ListView` with a [`DrawerHeader`][]
-and two [`ListTile`][] widgets.
-For more information on working with Lists,
-see the [list recipes][].
+Preencha o `ListView` com um [`DrawerHeader`][]
+e dois widgets [`ListTile`][].
+Para obter mais informações sobre como trabalhar com Listas,
+consulte as [receitas de lista][].
 
 <?code-excerpt "lib/drawer.dart (DrawerListView)"?>
 ```dart
 Drawer(
-  // Add a ListView to the drawer. This ensures the user can scroll
-  // through the options in the drawer if there isn't enough vertical
-  // space to fit everything.
+  // Adicione uma ListView à gaveta. Isso garante que o usuário possa rolar
+  // pelas opções na gaveta se não houver espaço vertical suficiente
+  // para caber tudo.
   child: ListView(
-    // Important: Remove any padding from the ListView.
+    // Importante: Remova qualquer preenchimento da ListView.
     padding: EdgeInsets.zero,
     children: [
       const DrawerHeader(
         decoration: BoxDecoration(
           color: Colors.blue,
         ),
-        child: Text('Drawer Header'),
+        child: Text('Cabeçalho da Gaveta'),
       ),
       ListTile(
         title: const Text('Item 1'),
         onTap: () {
-          // Update the state of the app.
+          // Atualize o estado do aplicativo.
           // ...
         },
       ),
       ListTile(
         title: const Text('Item 2'),
         onTap: () {
-          // Update the state of the app.
+          // Atualize o estado do aplicativo.
           // ...
         },
       ),
@@ -110,19 +111,19 @@ Drawer(
 );
 ```
 
-## 4. Open the drawer programmatically
+## 4. Abra a gaveta programaticamente
 
-Typically, you don't need to write any code to open a `drawer`,
-Because when the `leading` widget is null, the default implementation in `AppBar` is `DrawerButton`.
+Normalmente, você não precisa escrever nenhum código para abrir uma `drawer`,
+porque quando o widget `leading` é nulo, a implementação padrão em `AppBar` é `DrawerButton`.
 
-But if you want to have free control of the `drawer`.
-You can do this by using the `Builder` call `Scaffold.of(context).openDrawer()`.
+Mas se você quiser ter controle livre da `drawer`.
+Você pode fazer isso usando a chamada `Builder` `Scaffold.of(context).openDrawer()`.
 
 <?code-excerpt "lib/drawer.dart (DrawerOpen)" replace="/null, //g"?>
 ```dart
 Scaffold(
   appBar: AppBar(
-    title: const Text('AppBar with hamburger button'),
+    title: const Text('AppBar com botão de menu'),
     leading: Builder(
       builder: (context) {
         return IconButton(
@@ -135,46 +136,46 @@ Scaffold(
     ),
   ),
   drawer: Drawer(
-    child: // Populate the Drawer in the last step.
+    child: // Preencha a Gaveta no último passo.
   ),
 );
 ```
 
-## 5. Close the drawer programmatically
+## 5. Feche a gaveta programaticamente
 
-After a user taps an item, you might want to close the drawer.
-You can do this by using the [`Navigator`][].
+Depois que um usuário toca em um item, você pode querer fechar a gaveta.
+Você pode fazer isso usando o [`Navigator`][].
 
-When a user opens the drawer, Flutter adds the drawer to the navigation
-stack. Therefore, to close the drawer, call `Navigator.pop(context)`.
+Quando um usuário abre a gaveta, o Flutter adiciona a gaveta à pilha de navegação.
+Portanto, para fechar a gaveta, chame `Navigator.pop(context)`.
 
 <?code-excerpt "lib/drawer.dart (CloseDrawer)"?>
 ```dart
 ListTile(
   title: const Text('Item 1'),
   onTap: () {
-    // Update the state of the app
+    // Atualize o estado do aplicativo
     // ...
-    // Then close the drawer
+    // Então feche a gaveta
     Navigator.pop(context);
   },
 ),
 ```
 
-## Interactive example
+## Exemplo interativo
 
-This example shows a [`Drawer`][] as it is used within a [`Scaffold`][] widget.
-The [`Drawer`][] has three [`ListTile`][] items.
-The `_onItemTapped` function changes the selected item's index
-and displays the corresponding text in the center of the `Scaffold`.
+Este exemplo mostra um [`Drawer`][] como é usado dentro de um widget [`Scaffold`][].
+O [`Drawer`][] tem três itens [`ListTile`][].
+A função `_onItemTapped` altera o índice do item selecionado
+e exibe o texto correspondente no centro do `Scaffold`.
 
 :::note
-For more information on implementing navigation,
-check out the [Navigation][] section of the cookbook.
+Para obter mais informações sobre como implementar a navegação,
+confira a seção [Navegação][] do cookbook.
 :::
 
 <?code-excerpt "lib/main.dart"?>
-```dartpad title="Flutter drawer hands-on example in DartPad" run="true"
+```dartpad title="Exemplo prático de gaveta Flutter no DartPad" run="true"
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -182,7 +183,7 @@ void main() => runApp(const MyApp());
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  static const appTitle = 'Drawer Demo';
+  static const appTitle = 'Demonstração de Gaveta';
 
   @override
   Widget build(BuildContext context) {
@@ -208,15 +209,15 @@ class _MyHomePageState extends State<MyHomePage> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     Text(
-      'Index 0: Home',
+      'Índice 0: Início',
       style: optionStyle,
     ),
     Text(
-      'Index 1: Business',
+      'Índice 1: Negócios',
       style: optionStyle,
     ),
     Text(
-      'Index 2: School',
+      'Índice 2: Escola',
       style: optionStyle,
     ),
   ];
@@ -247,46 +248,46 @@ class _MyHomePageState extends State<MyHomePage> {
         child: _widgetOptions[_selectedIndex],
       ),
       drawer: Drawer(
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
+        // Adicione uma ListView à gaveta. Isso garante que o usuário possa rolar
+        // pelas opções na gaveta se não houver espaço vertical suficiente
+        // para caber tudo.
         child: ListView(
-          // Important: Remove any padding from the ListView.
+          // Importante: Remova qualquer preenchimento da ListView.
           padding: EdgeInsets.zero,
           children: [
             const DrawerHeader(
               decoration: BoxDecoration(
                 color: Colors.blue,
               ),
-              child: Text('Drawer Header'),
+              child: Text('Cabeçalho da Gaveta'),
             ),
             ListTile(
-              title: const Text('Home'),
+              title: const Text('Início'),
               selected: _selectedIndex == 0,
               onTap: () {
-                // Update the state of the app
+                // Atualize o estado do aplicativo
                 _onItemTapped(0);
-                // Then close the drawer
+                // Então feche a gaveta
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              title: const Text('Business'),
+              title: const Text('Negócios'),
               selected: _selectedIndex == 1,
               onTap: () {
-                // Update the state of the app
+                // Atualize o estado do aplicativo
                 _onItemTapped(1);
-                // Then close the drawer
+                // Então feche a gaveta
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              title: const Text('School'),
+              title: const Text('Escola'),
               selected: _selectedIndex == 2,
               onTap: () {
-                // Update the state of the app
+                // Atualize o estado do aplicativo
                 _onItemTapped(2);
-                // Then close the drawer
+                // Então feche a gaveta
                 Navigator.pop(context);
               },
             ),
@@ -299,7 +300,7 @@ class _MyHomePageState extends State<MyHomePage> {
 ```
 
 <noscript>
-  <img src="/assets/images/docs/cookbook/drawer.png" alt="Drawer Demo" class="site-mobile-screenshot" />
+  <img src="/assets/images/docs/cookbook/drawer.png" alt="Demonstração de Gaveta" class="site-mobile-screenshot" />
 </noscript>
 
 

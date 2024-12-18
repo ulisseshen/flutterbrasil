@@ -1,132 +1,134 @@
 ---
-title: New CupertinoIcons has icon glyph changes
+ia-translate: true
+title: Novos CupertinoIcons têm mudanças nos glifos de ícones
 description: >
-  Once you update to cupertino_icons 1.0.0, some old glyphs are
-  automapped to the new glyphs. Consider double-checking visually.
+  Ao atualizar para cupertino_icons 1.0.0, alguns glifos antigos são
+  mapeados automaticamente para os novos glifos. Considere verificar
+  visualmente.
 ---
 
-## Summary
+## Resumo
 
-The existing cupertino_icons [0.1.3 icons][]
-are based on iOS 11 aesthetics with sharp angles and thin lines.
+Os `cupertino_icons` [ícones 0.1.3][] existentes são
+baseados na estética do iOS 11, com ângulos agudos e linhas finas.
 
-As Apple's iconography updates with new OS versions,
-the `cupertino_icons` package is also refreshed.
+À medida que a iconografia da Apple é atualizada com novas versões do
+SO, o pacote `cupertino_icons` também é atualizado.
 
-Generally, all previous glyphs referenced from the
-[`CupertinoIcons`][] API are automatically mapped to
-very similar looking icons in the new SF Symbols
-style (featuring rounder, thicker lines).
+Geralmente, todos os glifos anteriores referenciados na
+API [`CupertinoIcons`][] são mapeados automaticamente para
+ícones de aparência muito semelhante no novo estilo SF Symbols
+(apresentando linhas mais arredondadas e espessas).
 
-Some icons that have no equivalents in the
-new SF Symbols style are left as is.
+Alguns ícones que não têm equivalentes no
+novo estilo SF Symbols são deixados como estão.
 
-Some icons that have less variation
-(such as thickness, alternative looks, and so on)
-are automapped and collapsed to the best matching
-variation in the new SF Symbols style but should be
-double checked to determine whether they preserve the
-intended visual effect.
+Alguns ícones que têm menos variação
+(como espessura, aparências alternativas e assim por diante)
+são mapeados automaticamente e agrupados na variação
+mais adequada no novo estilo SF Symbols, mas devem ser
+verificados para determinar se preservam o efeito visual
+pretendido.
 
-## Description of change
+## Descrição da mudança
 
-The new `cupertino_icons 1.0.0` font is handcrafted
-to best preserve the intent and aesthetic of the
-symbology through the transition. All existing
-`CupertinoIcons`' static `IconData` fields
-(and thus all of the font `.ttf`'s codepoints)
-continue to work and point to a reasonable new icon.
+A nova fonte `cupertino_icons 1.0.0` é feita à mão
+para melhor preservar a intenção e a estética da
+simbologia durante a transição. Todos os campos
+`IconData` estáticos existentes de `CupertinoIcons`
+(e, portanto, todos os codepoints do `.ttf` da fonte)
+continuam a funcionar e apontar para um novo ícone razoável.
 
-The new cupertino_icons 1.0.0 package also has ~1,000
-more icons to choose from.
+O novo pacote cupertino_icons 1.0.0 também tem ~1.000
+ícones a mais para escolher.
 
-### Unchanged icons
+### Ícones inalterados
 
-No SF Symbols styled alternatives exist
-for the icons in the following list.
-The previous cupertino_icons 0.1.3 icons
-have been kept as is in 1.0.0.
+Não existem alternativas com estilo SF Symbols para
+os ícones da lista a seguir. Os ícones cupertino_icons 0.1.3
+anteriores foram mantidos como estão na versão 1.0.0.
 
-* bluetooth
-* bus
-* car
-* car_detailed
-* chevron_back
-* chevron_forward
-* lab_flask
-* lab_flask_solid
-* news
-* news_solid
-* train_style_one
-* train_style_two
+*   bluetooth
+*   bus
+*   car
+*   car_detailed
+*   chevron_back
+*   chevron_forward
+*   lab_flask
+*   lab_flask_solid
+*   news
+*   news_solid
+*   train_style_one
+*   train_style_two
 
-### Merged icons
+### Ícones mesclados
 
-Icons within the same group are now the exact same
-icon in 1.0.0. In other words, the distinctions
-between those icon variations that existed in 0.1.3 is
-lost and now renders the same SF Symbols
-styled icon that represents the theme of the group.
+Ícones dentro do mesmo grupo agora são exatamente o mesmo
+ícone na versão 1.0.0. Em outras palavras, as distinções
+entre as variações de ícones que existiam na versão 0.1.3
+são perdidas e agora renderizam o mesmo ícone com estilo
+SF Symbols que representa o tema do grupo.
 
-This affects the following icon groups:
+Isso afeta os seguintes grupos de ícones:
 
-* share, share_up
-* battery_charging, battery_full, battery_75_percent
-* shuffle, shuffle_medium, shuffle_thick
-* delete, delete_simple
-* refresh, refresh_thin, refresh_thick
-* clear, clear_thick
-* clear_circled_solid, clear_thick_circled
-* gear, gear_alt, gear_big
-* loop, loop_thick
-* time_solid, clock_solid
-* time, clock
-* tag, tags
-* tag_solid, tags_solid
+*   share, share_up
+*   battery_charging, battery_full, battery_75_percent
+*   shuffle, shuffle_medium, shuffle_thick
+*   delete, delete_simple
+*   refresh, refresh_thin, refresh_thick
+*   clear, clear_thick
+*   clear_circled_solid, clear_thick_circled
+*   gear, gear_alt, gear_big
+*   loop, loop_thick
+*   time_solid, clock_solid
+*   time, clock
+*   tag, tags
+*   tag_solid, tags_solid
 
-This is mainly due to some artistic liberties taken
-when creating the original `cupertino_icons` set that
-no longer match the variations diversity of the more
-formal SF Symbols icon set for some of the icons.
+Isso se deve principalmente a algumas liberdades artísticas
+tomadas ao criar o conjunto `cupertino_icons` original que
+não correspondem mais à diversidade de variações do conjunto
+de ícones SF Symbols mais formal para alguns dos ícones.
 
-## Migration guide
+## Guia de migração
 
-After upgrading to 1.22,
-if you also upgrade the `cupertino_icons`
-pubspec dependency from 0.1.3 to 1.0.0,
-for example, by changing:
+Depois de atualizar para 1.22,
+se você também atualizar a dependência
+`cupertino_icons` do pubspec de 0.1.3 para 1.0.0,
+por exemplo, alterando:
 
 ```yaml
 dependencies:
-  ... // Other dependencies
+  ... // Outras dependências
   cupertino_icons: ^0.1.0
 ```
 
-to:
+para:
 
 ```yaml
 dependencies:
-  ... // Other dependencies
+  ... // Outras dependências
   cupertino_icons: ^1.0.0
 ```
 
-All your `CupertinoIcons` should automatically
-update to the new aesthetic (except for the
-[unchanged icons](#unchanged-icons) listed above).
+Todos os seus `CupertinoIcons` devem atualizar
+automaticamente para a nova estética (exceto para os
+[ícones inalterados](#unchanged-icons) listados acima).
 
-At this point, you can also explore [`CupertinoIcons`][]
-for new icons to use in your application.
+Neste ponto, você também pode explorar
+[`CupertinoIcons`][] para novos ícones para usar em seu
+aplicativo.
 
-You're encouraged to verify your application after
-migrating to ensure that the automatically mapped
-new icons are suitable for your desired aesthetics.
+Você é encorajado a verificar seu aplicativo após a migração
+para garantir que os novos ícones mapeados automaticamente
+sejam adequados para a estética desejada.
 
-## Timeline
+## Cronograma
 
-Landed in: 1.22.0-10.0.pre.65<br>
-In stable release: 1.22
+Incluído em: 1.22.0-10.0.pre.65<br>
+Na versão estável: 1.22
 
-## References
+## Referências
 
-[0.1.3 icons]: https://raw.githubusercontent.com/flutter/cupertino_icons/master/map.png
+[ícones 0.1.3]: https://raw.githubusercontent.com/flutter/cupertino_icons/master/map.png
 [`CupertinoIcons`]: {{site.api}}/flutter/cupertino/CupertinoIcons-class.html

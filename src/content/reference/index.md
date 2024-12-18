@@ -1,6 +1,7 @@
 ---
+ia-translate: true
 layout: toc
-title: Flutter reference docs
-short-title: Reference
-description: Miscellaneous reference docs relating to Flutter.
+title: Documentação de referência do Flutter
+short-title: Referência
+description: Documentos de referência diversos relacionados ao Flutter.
 ---

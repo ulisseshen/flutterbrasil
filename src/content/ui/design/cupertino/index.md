@@ -1,32 +1,33 @@
 ---
-title: Cupertino design for Flutter
-description: Learn about Cupertino design for Flutter.
+ia-translate: true
+title: Design Cupertino para Flutter
+description: Aprenda sobre o design Cupertino para Flutter.
 ---
 
-The Flutter Cupertino library is a collection
-of widgets that implement Apple's iOS design language
-for Flutter apps. The widgets have a similar look
-and feel to iOS, including rounded corners, gradients,
-and minimalistic design.
-They also include iOS interactions and animations. 
+A biblioteca Cupertino do Flutter é uma coleção
+de widgets que implementam a linguagem de design iOS da Apple
+para aplicativos Flutter. Os widgets têm uma aparência similar
+ao iOS, incluindo cantos arredondados, gradientes,
+e design minimalista.
+Eles também incluem interações e animações do iOS.
 
-The following 15-minute video provides a high-level
-glimpse of the Cupertino package:
+O vídeo a seguir de 15 minutos oferece uma visão geral
+do pacote Cupertino:
 
-{% ytEmbed '3PdUaidHc-E?si=xDp3bU50oSuljzye', 'Flutter\'s Cupertino Package' %}
+{% ytEmbed '3PdUaidHc-E?si=xDp3bU50oSuljzye', 'Pacote Cupertino do Flutter' %}
 
-## More information {:.no_toc}
+## Mais informações  {:.no_toc}
 
-To learn more about using the Cupertino
-package with Flutter,
-check out the following resources:
+Para saber mais sobre o uso do pacote Cupertino
+com Flutter,
+confira os seguintes recursos:
 
-* The (mostly visual) [Cupertino widget catalog][]
-  on doc.flutter.dev
-* The [Cupertino library][] page in the API docs
-* The [Cupertino API examples][] on the flutter/flutter
-  repo. ([Instructions][]) For example,
-  to run `CupertinoSwitch`:
+* O (principalmente visual) [Catálogo de widgets Cupertino][]
+  em doc.flutter.dev
+* A página da [Biblioteca Cupertino][] na documentação da API
+* Os [Exemplos da API Cupertino][] no repositório flutter/flutter.
+  ([Instruções][]) Por exemplo,
+  para executar `CupertinoSwitch`:
 
 ```console
 cd path/to/flutter
@@ -34,8 +35,7 @@ cd examples/api
 flutter run lib/cupertino/switch/cupertino_switch.0.dart
 ```
 
-[Cupertino API examples]: {{site.github}}/flutter/flutter/tree/master/examples/api/lib/cupertino
-[Cupertino library]: {{site.api}}/flutter/cupertino/cupertino-library.html
-[Cupertino widget catalog]: /ui/widgets/cupertino
-[Instructions]: {{site.github}}/flutter/flutter/tree/master/examples/api#api-example-code
-
+[Exemplos da API Cupertino]: {{site.github}}/flutter/flutter/tree/master/examples/api/lib/cupertino
+[Biblioteca Cupertino]: {{site.api}}/flutter/cupertino/cupertino-library.html
+[Catálogo de widgets Cupertino]: /ui/widgets/cupertino
+[Instruções]: {{site.github}}/flutter/flutter/tree/master/examples/api#api-example-code

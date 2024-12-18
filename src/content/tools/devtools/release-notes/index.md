@@ -1,31 +1,32 @@
 ---
-title: DevTools release notes
-description: Learn about the latest changes in Dart and Flutter DevTools.
+ia-translate: true
+title: Notas de lançamento do DevTools
+description: Saiba mais sobre as últimas alterações no Dart e no Flutter DevTools.
 toc: false
 ---
 
-This page summarizes the changes in official stable releases of DevTools.
-To view a complete list of changes, check out the
-[DevTools git log]({{site.repo.organization}}/devtools/commits/master).
+Esta página resume as alterações nas versões estáveis oficiais do DevTools.
+Para ver uma lista completa de alterações, consulte o
+[log do git do DevTools]({{site.repo.organization}}/devtools/commits/master).
 
-The Dart and Flutter SDKs include DevTools.
-To check your current version of DevTools,
-run the following on your command line:
+Os SDKs do Dart e Flutter incluem o DevTools.
+Para verificar sua versão atual do DevTools,
+execute o seguinte em sua linha de comando:
 
 ```console
 $ dart devtools --version
 ```
 
-### Release notes
+### Notas de lançamento
 
 {% comment %}
-When adding the release notes for a new DevTools release,
-make sure to add the version number as an entry to the list
-found at `/src/_data/devtools_releases.yml`.
+Ao adicionar as notas de lançamento para uma nova versão do DevTools,
+certifique-se de adicionar o número da versão como uma entrada na lista
+encontrada em `/src/_data/devtools_releases.yml`.
 {% endcomment -%}
 
 {% assign releases = devtools_releases.releases %}
 
 {% for release in releases -%}
-* [{{release}} release notes](/tools/devtools/release-notes/release-notes-{{release}})
+* [Notas de lançamento da versão {{release}}](/tools/devtools/release-notes/release-notes-{{release}})
 {% endfor -%}

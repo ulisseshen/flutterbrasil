@@ -1,6 +1,7 @@
 ---
-title: Send data to a new screen
-description: How to pass data to a new route.
+ia-translate: true
+title: Enviar dados para uma nova tela
+description: Como passar dados para uma nova rota.
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
@@ -8,26 +9,26 @@ js:
 
 <?code-excerpt path-base="cookbook/navigation/passing_data"?>
 
-Often, you not only want to navigate to a new screen,
-but also pass data to the screen as well.
-For example, you might want to pass information about
-the item that's been tapped.
+Frequentemente, você não quer apenas navegar para uma nova tela,
+mas também passar dados para essa tela.
+Por exemplo, você pode querer passar informações sobre
+o item que foi tocado.
 
-Remember: Screens are just widgets.
-In this example, create a list of todos.
-When a todo is tapped, navigate to a new screen (widget) that
-displays information about the todo.
-This recipe uses the following steps:
+Lembre-se: telas são apenas widgets.
+Neste exemplo, crie uma lista de tarefas (todos).
+Quando uma tarefa é tocada, navegue para uma nova tela (widget) que
+exibe informações sobre a tarefa.
+Esta receita usa os seguintes passos:
 
-  1. Define a todo class.
-  2. Display a list of todos.
-  3. Create a detail screen that can display information about a todo.
-  4. Navigate and pass data to the detail screen.
+  1. Defina uma classe de tarefa.
+  2. Exiba uma lista de tarefas.
+  3. Crie uma tela de detalhes que pode exibir informações sobre uma tarefa.
+  4. Navegue e passe dados para a tela de detalhes.
 
-## 1. Define a todo class
+## 1. Defina uma classe de tarefa
 
-First, you need a simple way to represent todos. For this example,
-create a class that contains two pieces of data: the title and description.
+Primeiro, você precisa de uma maneira simples de representar tarefas. Para este exemplo,
+crie uma classe que contenha duas partes de dados: o título e a descrição.
 
 <?code-excerpt "lib/main.dart (Todo)"?>
 ```dart
@@ -39,14 +40,14 @@ class Todo {
 }
 ```
 
-## 2. Create a list of todos
+## 2. Crie uma lista de tarefas
 
-Second, display a list of todos. In this example, generate
-20 todos and show them using a ListView.
-For more information on working with lists,
-see the [Use lists][] recipe.
+Segundo, exiba uma lista de tarefas. Neste exemplo, gere
+20 tarefas e mostre-as usando um ListView.
+Para mais informações sobre como trabalhar com listas,
+veja a receita [Usar listas][].
 
-### Generate the list of todos
+### Gere a lista de tarefas
 
 <?code-excerpt "lib/main.dart (Generate)" replace="/^todos:/final todos =/g/^\),$/);/g"?>
 ```dart
@@ -54,12 +55,12 @@ final todos = List.generate(
   20,
   (i) => Todo(
     'Todo $i',
-    'A description of what needs to be done for Todo $i',
+    'Uma descrição do que precisa ser feito para a Tarefa $i',
   ),
 );
 ```
 
-### Display the list of todos using a ListView
+### Exiba a lista de tarefas usando um ListView
 
 <?code-excerpt "lib/main_todoscreen.dart (ListViewBuilder)" replace="/^body: //g;/^\),$/)/g"?>
 ```dart
@@ -73,23 +74,23 @@ ListView.builder(
 )
 ```
 
-So far, so good.
-This generates 20 todos and displays them in a ListView.
+Até agora, tudo bem.
+Isso gera 20 tarefas e as exibe em um ListView.
 
-## 3. Create a Todo screen to display the list
+## 3. Crie uma tela de tarefas para exibir a lista
 
-For this, we create a `StatelessWidget`. We call it `TodosScreen`.
-Since the contents of this page won't change during runtime,
-we'll have to require the list
-of todos within the scope of this widget.
+Para isso, criamos um `StatelessWidget`. Nós o chamamos de `TodosScreen`.
+Como o conteúdo desta página não mudará durante o tempo de execução,
+teremos que exigir a lista
+de tarefas dentro do escopo deste widget.
 
-We pass in our `ListView.builder` as body of the widget we're returning to `build()`.
-This'll render the list on to the screen for you to get going!
+Passamos nosso `ListView.builder` como corpo do widget que estamos retornando para `build()`.
+Isso renderizará a lista na tela para você começar!
 
 <?code-excerpt "lib/main_todoscreen.dart (TodosScreen)"?>
 ```dart
 class TodosScreen extends StatelessWidget {
-  // Requiring the list of todos.
+  // Requerendo a lista de tarefas.
   const TodosScreen({super.key, required this.todos});
 
   final List<Todo> todos;
@@ -100,7 +101,7 @@ class TodosScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Todos'),
       ),
-      //passing in the ListView.builder
+      //passando o ListView.builder
       body: ListView.builder(
         itemCount: todos.length,
         itemBuilder: (context, index) {
@@ -114,30 +115,30 @@ class TodosScreen extends StatelessWidget {
 }
 ```
 
-With Flutter's default styling, you're good to go without sweating about 
-things that you'd like to do later on!
+Com o estilo padrão do Flutter, você está pronto para começar sem se preocupar com
+coisas que você gostaria de fazer mais tarde!
 
-## 4. Create a detail screen to display information about a todo
+## 4. Crie uma tela de detalhes para exibir informações sobre uma tarefa
 
-Now, create the second screen. The title of the screen contains the
-title of the todo, and the body of the screen shows the description.
+Agora, crie a segunda tela. O título da tela contém o
+título da tarefa, e o corpo da tela mostra a descrição.
 
-Since the detail screen is a normal `StatelessWidget`,
-require the user to enter a `Todo` in the UI.
-Then, build the UI using the given todo.
+Como a tela de detalhes é um `StatelessWidget` normal,
+exija que o usuário insira um `Todo` na UI.
+Em seguida, construa a UI usando a tarefa fornecida.
 
 <?code-excerpt "lib/main.dart (detail)"?>
 ```dart
 class DetailScreen extends StatelessWidget {
-  // In the constructor, require a Todo.
+  // No construtor, requer um Todo.
   const DetailScreen({super.key, required this.todo});
 
-  // Declare a field that holds the Todo.
+  // Declara um campo que armazena o Todo.
   final Todo todo;
 
   @override
   Widget build(BuildContext context) {
-    // Use the Todo to create the UI.
+    // Use o Todo para criar a UI.
     return Scaffold(
       appBar: AppBar(
         title: Text(todo.title),
@@ -151,16 +152,16 @@ class DetailScreen extends StatelessWidget {
 }
 ```
 
-## 5. Navigate and pass data to the detail screen
+## 5. Navegue e passe dados para a tela de detalhes
 
-With a `DetailScreen` in place,
-you're ready to perform the Navigation.
-In this example, navigate to the `DetailScreen` when a user
-taps a todo in the list. Pass the todo to the `DetailScreen`.
+Com uma `DetailScreen` no lugar,
+você está pronto para realizar a Navegação.
+Neste exemplo, navegue para a `DetailScreen` quando um usuário
+tocar em uma tarefa na lista. Passe a tarefa para a `DetailScreen`.
 
-To capture the user's tap in the `TodosScreen`, write an [`onTap()`][]
-callback for the `ListTile` widget. Within the `onTap()` callback,
-use the [`Navigator.push()`][] method.
+Para capturar o toque do usuário na `TodosScreen`, escreva um callback [`onTap()`][]
+para o widget `ListTile`. Dentro do callback `onTap()`,
+use o método [`Navigator.push()`][].
 
 <?code-excerpt "lib/main.dart (builder)"?>
 ```dart
@@ -169,9 +170,9 @@ body: ListView.builder(
   itemBuilder: (context, index) {
     return ListTile(
       title: Text(todos[index].title),
-      // When a user taps the ListTile, navigate to the DetailScreen.
-      // Notice that you're not only creating a DetailScreen, you're
-      // also passing the current todo through to it.
+      // Quando um usuário toca no ListTile, navegue para a DetailScreen.
+      // Observe que você não está apenas criando uma DetailScreen, você está
+      // também passando a tarefa atual para ela.
       onTap: () {
         Navigator.push(
           context,
@@ -185,10 +186,10 @@ body: ListView.builder(
 ),
 ```
 
-### Interactive example
+### Exemplo interativo
 
 <?code-excerpt "lib/main.dart"?>
-```dartpad title="Flutter passing data hands-on example in DartPad" run="true"
+```dartpad title="Exemplo prático de passagem de dados no Flutter com DartPad" run="true"
 import 'package:flutter/material.dart';
 
 class Todo {
@@ -201,13 +202,13 @@ class Todo {
 void main() {
   runApp(
     MaterialApp(
-      title: 'Passing Data',
+      title: 'Passando Dados',
       home: TodosScreen(
         todos: List.generate(
           20,
           (i) => Todo(
-            'Todo $i',
-            'A description of what needs to be done for Todo $i',
+            'Tarefa $i',
+            'Uma descrição do que precisa ser feito para a Tarefa $i',
           ),
         ),
       ),
@@ -231,9 +232,9 @@ class TodosScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           return ListTile(
             title: Text(todos[index].title),
-            // When a user taps the ListTile, navigate to the DetailScreen.
-            // Notice that you're not only creating a DetailScreen, you're
-            // also passing the current todo through to it.
+            // Quando um usuário toca no ListTile, navegue para a DetailScreen.
+            // Observe que você não está apenas criando uma DetailScreen, você está
+            // também passando a tarefa atual para ela.
             onTap: () {
               Navigator.push(
                 context,
@@ -250,15 +251,15 @@ class TodosScreen extends StatelessWidget {
 }
 
 class DetailScreen extends StatelessWidget {
-  // In the constructor, require a Todo.
+  // No construtor, requer um Todo.
   const DetailScreen({super.key, required this.todo});
 
-  // Declare a field that holds the Todo.
+  // Declara um campo que armazena o Todo.
   final Todo todo;
 
   @override
   Widget build(BuildContext context) {
-    // Use the Todo to create the UI.
+    // Use o Todo para criar a UI.
     return Scaffold(
       appBar: AppBar(
         title: Text(todo.title),
@@ -272,13 +273,13 @@ class DetailScreen extends StatelessWidget {
 }
 ```
 
-## Alternatively, pass the arguments using RouteSettings
+## Alternativamente, passe os argumentos usando RouteSettings
 
-Repeat the first two steps.
+Repita os dois primeiros passos.
 
-### Create a detail screen to extract the arguments
+### Crie uma tela de detalhes para extrair os argumentos
 
-Next, create a detail screen that extracts and displays the title and description from the `Todo`. To access the `Todo`, use the [`ModalRoute.of()`][] method. This method returns the current route with the arguments.
+Em seguida, crie uma tela de detalhes que extrai e exibe o título e a descrição do `Todo`. Para acessar o `Todo`, use o método [`ModalRoute.of()`][]. Este método retorna a rota atual com os argumentos.
 
 <?code-excerpt "lib/main_routesettings.dart (DetailScreen)"?>
 ```dart
@@ -289,7 +290,7 @@ class DetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final todo = ModalRoute.of(context)!.settings.arguments as Todo;
 
-    // Use the Todo to create the UI.
+    // Use o Todo para criar a UI.
     return Scaffold(
       appBar: AppBar(
         title: Text(todo.title),
@@ -303,12 +304,12 @@ class DetailScreen extends StatelessWidget {
 }
 ```
 
-### Navigate and pass the arguments to the detail screen
+### Navegue e passe os argumentos para a tela de detalhes
 
-Finally, navigate to the `DetailScreen` when a user taps
-a `ListTile` widget using `Navigator.push()`.
-Pass the arguments as part of the [`RouteSettings`][].
-The `DetailScreen` extracts these arguments.
+Finalmente, navegue até a `DetailScreen` quando um usuário toca
+em um widget `ListTile` usando `Navigator.push()`.
+Passe os argumentos como parte do [`RouteSettings`][].
+A `DetailScreen` extrai esses argumentos.
 
 <?code-excerpt "lib/main_routesettings.dart (builder)" replace="/^body: //g;/^\),$/)/g"?>
 ```dart
@@ -317,16 +318,16 @@ ListView.builder(
   itemBuilder: (context, index) {
     return ListTile(
       title: Text(todos[index].title),
-      // When a user taps the ListTile, navigate to the DetailScreen.
-      // Notice that you're not only creating a DetailScreen, you're
-      // also passing the current todo through to it.
+      // Quando um usuário toca no ListTile, navegue para a DetailScreen.
+      // Observe que você não está apenas criando uma DetailScreen, você está
+      // também passando a tarefa atual para ela.
       onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => const DetailScreen(),
-            // Pass the arguments as part of the RouteSettings. The
-            // DetailScreen reads the arguments from these settings.
+            // Passe os argumentos como parte do RouteSettings. A
+            // DetailScreen lê os argumentos dessas configurações.
             settings: RouteSettings(
               arguments: todos[index],
             ),
@@ -338,7 +339,7 @@ ListView.builder(
 )
 ```
 
-### Complete example
+### Exemplo completo
 
 <?code-excerpt "lib/main_routesettings.dart"?>
 ```dart
@@ -354,13 +355,13 @@ class Todo {
 void main() {
   runApp(
     MaterialApp(
-      title: 'Passing Data',
+      title: 'Passando Dados',
       home: TodosScreen(
         todos: List.generate(
           20,
           (i) => Todo(
-            'Todo $i',
-            'A description of what needs to be done for Todo $i',
+            'Tarefa $i',
+            'Uma descrição do que precisa ser feito para a Tarefa $i',
           ),
         ),
       ),
@@ -384,16 +385,16 @@ class TodosScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           return ListTile(
             title: Text(todos[index].title),
-            // When a user taps the ListTile, navigate to the DetailScreen.
-            // Notice that you're not only creating a DetailScreen, you're
-            // also passing the current todo through to it.
+            // Quando um usuário toca no ListTile, navegue para a DetailScreen.
+            // Observe que você não está apenas criando uma DetailScreen, você está
+            // também passando a tarefa atual para ela.
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => const DetailScreen(),
-                  // Pass the arguments as part of the RouteSettings. The
-                  // DetailScreen reads the arguments from these settings.
+                  // Passe os argumentos como parte do RouteSettings. A
+                  // DetailScreen lê os argumentos dessas configurações.
                   settings: RouteSettings(
                     arguments: todos[index],
                   ),
@@ -414,7 +415,7 @@ class DetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final todo = ModalRoute.of(context)!.settings.arguments as Todo;
 
-    // Use the Todo to create the UI.
+    // Use o Todo para criar a UI.
     return Scaffold(
       appBar: AppBar(
         title: Text(todo.title),
@@ -429,7 +430,7 @@ class DetailScreen extends StatelessWidget {
 ```
 
 <noscript>
-  <img src="/assets/images/docs/cookbook/passing-data.gif" alt="Passing Data Demo" class="site-mobile-screenshot" />
+  <img src="/assets/images/docs/cookbook/passing-data.gif" alt="Demo de Passagem de Dados" class="site-mobile-screenshot" />
 </noscript>
 
 
@@ -437,4 +438,4 @@ class DetailScreen extends StatelessWidget {
 [`Navigator.push()`]: {{site.api}}/flutter/widgets/Navigator/push.html
 [`onTap()`]: {{site.api}}/flutter/material/ListTile/onTap.html
 [`RouteSettings`]: {{site.api}}/flutter/widgets/RouteSettings-class.html
-[Use lists]: /cookbook/lists/basic-list
+[Usar listas]: /cookbook/lists/basic-list

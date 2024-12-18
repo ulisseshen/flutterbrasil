@@ -1,18 +1,18 @@
 ---
-title: Payments overview
+ia-translate: true
+title: Visão Geral de Pagamentos
 description: >
-  Learn about the resources available for Google pay
-  and other services to your Flutter app.
+  Aprenda sobre os recursos disponíveis para Google Pay
+  e outros serviços para seu aplicativo Flutter.
 ---
 
-![adding ads](/assets/images/docs/add-payments.png)
+![adicionando anúncios](/assets/images/docs/add-payments.png)
 
-Seamlessly accept payments with multiple providers
-in your Flutter app
+Aceite pagamentos de forma integrada com múltiplos provedores
+em seu aplicativo Flutter
 
-The the following resource can help to get you started:
+Os seguintes recursos podem ajudar você a começar:
 
-* [Add ads to your mobile Flutter app or game][] (cookbook recipe)
+* [Adicione anúncios ao seu aplicativo ou jogo mobile Flutter][] (receita de cookbook)
 
-
-[Add ads to your mobile Flutter app or game]: /cookbook/plugins/google-mobile-ads
+[Adicione anúncios ao seu aplicativo ou jogo mobile Flutter]: /cookbook/plugins/google-mobile-ads

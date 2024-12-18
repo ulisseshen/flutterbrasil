@@ -1,147 +1,147 @@
 ---
-title: Web FAQ
-description: Some gotchas and differences when writing or running web apps in Flutter.
+ia-translate: true
+title: FAQ da Web
+description: Algumas armadilhas e diferenças ao escrever ou executar aplicativos da web no Flutter.
 ---
 
-## Questions
+## Perguntas
 
-### What scenarios are ideal for Flutter on the web?
+### Quais cenários são ideais para Flutter na web?
 
-Not every web page makes sense in Flutter, but we think Flutter is particularly
-suited for app-centric experiences:
+Nem toda página da web faz sentido no Flutter, mas achamos que o Flutter é
+particularmente adequado para experiências centradas em aplicativos:
 
 * Progressive Web Apps
 * Single Page Apps
-* Existing Flutter mobile apps
+* Aplicativos móveis Flutter existentes
 
-At this time, Flutter is not suitable for static websites with text-rich
-flow-based content. For example, blog articles benefit from the document-centric
-model that the web is built around, rather than the app-centric services that a
-UI framework like Flutter can deliver. However, you _can_ use Flutter to embed
-interactive experiences into these websites.
+Neste momento, o Flutter não é adequado para sites estáticos com conteúdo rico em
+texto e baseado em fluxo. Por exemplo, artigos de blog se beneficiam do modelo
+centrado em documentos em que a web é construída, em vez dos serviços centrados em
+aplicativos que uma estrutura de UI como o Flutter pode fornecer. No entanto, você
+_pode_ usar o Flutter para incorporar experiências interativas nesses sites.
 
-For more information on how you can use Flutter on the web,
-see [Web support for Flutter][].
+Para obter mais informações sobre como você pode usar o Flutter na web, consulte
+[Suporte Web para Flutter][].
 
-### Search Engine Optimization (SEO)
+### Otimização para Mecanismos de Busca (SEO)
 
-In general, Flutter is geared towards dynamic application experiences. Flutter's
-web support is no exception. Flutter web prioritizes performance, fidelity, and
-consistency. This means application output does not align with what search
-engines need to properly index. For web content that is static or document-like,
-we recommend using HTML—just like we do on [flutter.dev]({{site.main-url}}),
-[dart.dev]({{site.dart-site}}), and [pub.dev]({{site.pub}}). You should also
-consider separating your primary application experience—created in Flutter—from
-your landing page, marketing content, and help content—created using
-search-engine optimized HTML.
+Em geral, o Flutter é voltado para experiências de aplicativos dinâmicos. O suporte
+do Flutter para a web não é exceção. A web do Flutter prioriza desempenho,
+fidelidade e consistência. Isso significa que a saída do aplicativo não se alinha
+com o que os mecanismos de pesquisa precisam para indexar adequadamente. Para
+conteúdo da web que seja estático ou semelhante a um documento, recomendamos o uso
+de HTML—assim como fazemos em [flutter.dev]({{site.main-url}}),
+[dart.dev]({{site.dart-site}}) e [pub.dev]({{site.pub}}). Você também deve
+considerar separar sua experiência primária do aplicativo — criada no Flutter — de
+sua landing page, conteúdo de marketing e conteúdo de ajuda — criados usando HTML
+otimizado para mecanismos de pesquisa.
 
-That said, as mentioned in the [roadmap][], the Flutter team plans to
-investigate search engine indexability of Flutter web.
+Dito isso, como mencionado no [roadmap][], a equipe do Flutter planeja investigar
+a indexabilidade em mecanismos de busca da web do Flutter.
 
-### Does hot reload work with a web app?
+### O hot reload funciona com um aplicativo web?
 
-No, but you can use hot restart. Hot restart is a fast way of seeing your
-changes without having to relaunch your web app and wait for it to compile and
-load. This works similarly to the hot reload feature for Flutter mobile
-development. The only difference is that hot reload remembers your state and hot
-restart doesn't.
+Não, mas você pode usar o hot restart. Hot restart é uma maneira rápida de ver
+suas alterações sem ter que relançar seu aplicativo da web e esperar que ele
+compile e carregue. Isso funciona de forma semelhante ao recurso de hot reload para
+desenvolvimento móvel Flutter. A única diferença é que o hot reload se lembra do
+seu estado e o hot restart não.
 
-### Which web browsers are supported by Flutter?
+### Quais navegadores da web são compatíveis com o Flutter?
 
-Flutter web apps can run on the following browsers:
+Aplicativos web do Flutter podem ser executados nos seguintes navegadores:
 
-* Chrome (mobile & desktop)
-* Safari (mobile & desktop)
-* Edge (mobile & desktop)
-* Firefox (mobile & desktop)
+* Chrome (mobile e desktop)
+* Safari (mobile e desktop)
+* Edge (mobile e desktop)
+* Firefox (mobile e desktop)
 
-During development, Chrome (on macOS, Windows, and Linux) and Edge (on Windows)
-are supported as the default browsers for debugging your app.
+Durante o desenvolvimento, Chrome (em macOS, Windows e Linux) e Edge (no Windows)
+são suportados como os navegadores padrão para depurar seu aplicativo.
 
-### Can I build, run, and deploy web apps in any of the IDEs?
+### Posso construir, executar e implantar aplicativos da web em qualquer IDE?
 
-You can select **Chrome** or **Edge** as the target device in
-Android Studio/IntelliJ and VS Code.
+Você pode selecionar **Chrome** ou **Edge** como o dispositivo de destino no
+Android Studio/IntelliJ e VS Code.
 
-The device pulldown should now include the **Chrome (web)**
-option for all channels.
+O menu suspenso do dispositivo agora deve incluir a opção **Chrome (web)** para
+todos os canais.
 
-### How do I build a responsive app for the web?
+### Como faço para construir um aplicativo responsivo para a web?
 
-See [Creating responsive apps][].
+Consulte [Criando aplicativos responsivos][].
 
-### Can I use `dart:io` with a web app?
+### Posso usar `dart:io` com um aplicativo da web?
 
-No. The file system is not accessible from the browser.
-For network functionality, use the [`http`][]
-package. Note that security works somewhat
-differently because the browser (and not the app)
-controls the headers on an HTTP request.
+Não. O sistema de arquivos não é acessível pelo navegador. Para funcionalidade de
+rede, use o pacote [`http`][]. Observe que a segurança funciona de forma um
+tanto diferente porque o navegador (e não o aplicativo) controla os cabeçalhos em
+uma solicitação HTTP.
 
-### How do I handle web-specific imports?
+### Como lido com importações específicas da web?
 
-Some plugins require platform-specific imports, particularly if they use the
-file system, which is not accessible from the browser. To use these plugins
-in your app, see the [documentation for conditional imports][]
-on [dart.dev]({{site.dart-site}}).
+Alguns plugins exigem importações específicas da plataforma, principalmente se
+usarem o sistema de arquivos, que não é acessível pelo navegador. Para usar esses
+plugins em seu aplicativo, consulte a [documentação para importações condicionais][]
+em [dart.dev]({{site.dart-site}}).
 
-### Does Flutter web support concurrency?
+### A web do Flutter suporta concorrência?
 
-Dart's concurrency support via [isolates][]
-is not currently supported in Flutter web.
+O suporte de concorrência do Dart por meio de [isolates][] não é atualmente
+suportado na web do Flutter.
 
-Flutter web apps can potentially work around this
-by using [web workers][],
-although no such support is built in.
+Aplicativos web do Flutter podem potencialmente contornar isso usando [web
+workers][], embora nenhum suporte desse tipo esteja integrado.
 
-### How do I deploy a web app?
+### Como faço para implantar um aplicativo da web?
 
-See [Preparing a web app for release][].
+Consulte [Preparando um aplicativo da web para lançamento][].
 
-### Does `Platform.is` work on the web?
+### O `Platform.is` funciona na web?
 
-Not currently.
+Não atualmente.
 
-### Why doesn't my app update immediately after it's deployed?
+### Por que meu aplicativo não é atualizado imediatamente após a implantação?
 
-You might need to configure the `Cache-Control` header returned by your web server. 
-For example, if this header is set to 3600, then the browser
-and CDN will cache the asset for 1 hour, and your users might see an out-of-date
-version of your app up to 1 hour after you deploy a new version. For
-more information about caching on the web,
-check out [Prevent unnecessary network requests with the HTTP Cache][http-cache].
+Você pode precisar configurar o cabeçalho `Cache-Control` retornado pelo seu
+servidor web. Por exemplo, se este cabeçalho estiver definido como 3600, o
+navegador e a CDN armazenarão em cache o recurso por 1 hora, e seus usuários
+poderão ver uma versão desatualizada do seu aplicativo até 1 hora após a
+implantação de uma nova versão. Para obter mais informações sobre o cache na web,
+confira [Evite solicitações de rede desnecessárias com o Cache HTTP][http-cache].
 
-It is a good idea to be aware of this behavior to avoid an undesirable user experience.
-After you deploy your app, users might use a 
-cached version of your app (cached by the browser or CDN)
-for the duration defined by your cache headers.
-This can lead to users using a version of your app that
-is incompatible with changes that have been deployed to backend services.
+É uma boa ideia estar ciente desse comportamento para evitar uma experiência de
+usuário indesejável. Depois de implantar seu aplicativo, os usuários podem usar
+uma versão em cache do seu aplicativo (armazenada em cache pelo navegador ou CDN)
+pela duração definida pelos seus cabeçalhos de cache. Isso pode levar os usuários a
+usar uma versão do seu aplicativo que é incompatível com as alterações que foram
+implantadas nos serviços de backend.
 
-### How do I clear the web cache after a deployment and force an app download?
-If you wish to defeat these cache headers after each deployment, a common
-technique is to append a build ID of some sort to the links of your static
-resources, or update the filenames themselves.
-For example, `logo.png` might become `logo.v123.png`.
+### Como faço para limpar o cache da web após uma implantação e forçar o download de um aplicativo?
+Se você deseja anular esses cabeçalhos de cache após cada implantação, uma técnica
+comum é anexar um ID de build de algum tipo aos links de seus recursos estáticos
+ou atualizar os próprios nomes de arquivos. Por exemplo, `logo.png` pode se tornar
+`logo.v123.png`.
 
 ```html
-<!-- Option 1, append build ID as a query parameter in your links -->
+<!-- Opção 1, anexar ID de build como um parâmetro de consulta em seus links -->
 <script src="flutter_bootstrap.js?v=123" async></script>
 
-<!-- Option 2, update the filename and update your links -->
+<!-- Opção 2, atualizar o nome do arquivo e atualizar seus links -->
 <script src="flutter_bootstrap.v123.js" async></script>
 ```
 
-Flutter does not currently support appending build IDs to resources
-automatically.
+O Flutter atualmente não oferece suporte para anexar IDs de build aos recursos
+automaticamente.
 
-### How do I configure my cache headers?
+### Como faço para configurar meus cabeçalhos de cache?
 
-If you are using Firebase Hosting,
-the shared cache (CDN) is invalidated when you deploy a new version of your
-app. But you might choose to configure your cache headers as follows,
-so that the browser cache doesn't cache application scripts,
-but the shared cache does.
+Se você estiver usando o Firebase Hosting, o cache compartilhado (CDN) será
+invalidado quando você implantar uma nova versão do seu aplicativo. Mas você pode
+optar por configurar seus cabeçalhos de cache da seguinte forma, para que o cache
+do navegador não armazene em cache scripts de aplicativos, mas o cache compartilhado
+o faça.
 
 ```json
 {
@@ -172,35 +172,34 @@ but the shared cache does.
 }
 ```
 
-### How do I configure a service worker?
+### Como faço para configurar um service worker?
 
-The service worker generated by `flutter build web` is deprecated,
-and you can disable it by setting the `--pwa-strategy` flag to `none`
-when running the `flutter build web` command.
+O service worker gerado por `flutter build web` foi descontinuado e você pode
+desativá-lo definindo o sinalizador `--pwa-strategy` como `none` ao executar o
+comando `flutter build web`.
 
 ```console
 flutter build web --pwa-strategy=none
 ```
 
-If you would like to continue to use a service worker, you can
-[build your own][using-service-workers] or try third-party tools
-such as [Workbox][workbox].
+Se você quiser continuar usando um service worker, você pode [criar o seu próprio][using-service-workers] ou experimentar ferramentas de terceiros como o
+[Workbox][workbox].
 
-If your service worker is not refreshing,
-configure your CDN and browser cache by setting
-the `Cache-Control` header to a small value such as 0 or 60 seconds.
+Se o seu service worker não estiver sendo atualizado, configure seu CDN e cache do
+navegador definindo o cabeçalho `Cache-Control` para um valor pequeno, como 0 ou
+60 segundos.
 
 [building a web app with Flutter]: /platform-integration/web/building
-[Creating responsive apps]: /ui/adaptive-responsive
-[documentation for conditional imports]: {{site.dart-site}}/guides/libraries/create-library-packages#conditionally-importing-and-exporting-library-files
+[Criando aplicativos responsivos]: /ui/adaptive-responsive
+[documentação para importações condicionais]: {{site.dart-site}}/guides/libraries/create-library-packages#conditionally-importing-and-exporting-library-files
 [Embedding Flutter web]: /platform-integration/web/embedding-flutter-web
-[file an issue]: {{site.repo.flutter}}/issues/new?title=[web]:+%3Cdescribe+issue+here%3E&labels=%E2%98%B8+platform-web&body=Describe+your+issue+and+include+the+command+you%27re+running,+flutter_web%20version,+browser+version
+[file an issue]: {{site.repo.flutter}}/issues/new?title=[web]:+%3Cdescreva+o+problema+aqui%3E&labels=%E2%98%B8+platform-web&body=Descreva+seu+problema+e+inclua+o+comando+que+voc%C3%AA+est%C3%A1+executando,+flutter_web%20version,+browser+version
 [`http`]: {{site.pub}}/packages/http
 [http-cache]: https://web.dev/articles/http-cache
 [`iframe`]: https://html.com/tags/iframe/
 [isolates]: {{site.dart-site}}/guides/language/concurrency
 [Issue 32248]: {{site.repo.flutter}}/issues/32248
-[Preparing a web app for release]: /deployment/web
+[Preparando um aplicativo da web para lançamento]: /deployment/web
 [roadmap]: {{site.github}}/flutter/flutter/blob/master/docs/roadmap/Roadmap.md#web-platform
 [run your web apps in any supported browser]: /platform-integration/web/building#create-and-run
 [using-service-workers]: https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers

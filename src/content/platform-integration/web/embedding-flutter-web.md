@@ -1,25 +1,26 @@
 ---
-title: Adding Flutter to any web application
-short-title: Add Flutter to any web app
-description: Learn the different ways to embed Flutter views into web content.
+ia-translate: true
+title: Adicionando Flutter a qualquer aplicação web
+short-title: Adicione Flutter a qualquer app web
+description: Aprenda as diferentes formas de incorporar views do Flutter em conteúdo web.
 ---
 
-Flutter views and web content can be composed to produce a web application
-in different ways. Choose one of the following depending on your use-case:
+Views do Flutter e conteúdo web podem ser compostos para produzir uma aplicação
+web de diferentes maneiras. Escolha uma das seguintes dependendo do seu caso de uso:
 
-* A Flutter view controls the full page ([full page mode][])
-* Adding Flutter views to an existing web application ([embedded mode][])
+* Uma view do Flutter controla a página inteira ([modo de página inteira][])
+* Adicionando views do Flutter a uma aplicação web existente ([modo embutido][])
 
-[full page mode]: #full-page-mode
-[embedded mode]: #embedded-mode
+[modo de página inteira]: #full-page-mode
+[modo embutido]: #embedded-mode
 
-## Full page mode
+## Modo de página inteira
 
-In full page mode, the Flutter web application takes control of the whole
-browser window and covers its viewport completely when rendering.
+No modo de página inteira, a aplicação web Flutter assume o controle de toda a
+janela do navegador e cobre completamente seu viewport ao renderizar.
 
-This is the default embedding mode for new Flutter web projects, and no
-additional configuration is needed.
+Este é o modo de incorporação padrão para novos projetos web Flutter, e nenhuma
+configuração adicional é necessária.
 
 ```html highlightLines=6
 <!DOCTYPE html>
@@ -32,48 +33,48 @@ additional configuration is needed.
 </html>
 ```
 
-When Flutter web is launched without referencing `multiViewEnabled` or a
-`hostElement`, it uses full page mode.
+Quando o Flutter web é iniciado sem referenciar `multiViewEnabled` ou um
+`hostElement`, ele usa o modo de página inteira.
 
-To learn more about the `flutter_bootstrap.js` file,
-check out [Customize app initialization][].
+Para aprender mais sobre o arquivo `flutter_bootstrap.js`,
+confira [Personalizar a inicialização do app][].
 
-[Customize app initialization]: {{site.docs}}/platform-integration/web/initialization/
+[Personalizar a inicialização do app]: {{site.docs}}/platform-integration/web/initialization/
 
-### `iframe` embedding
+### Incorporação com `iframe`
 
-Full page mode is recommended when embedding a Flutter web application through an
-`iframe`. The page that embeds the `iframe` can size and position it as needed,
-and Flutter will fill it completely.
+O modo de página inteira é recomendado ao incorporar uma aplicação web Flutter através de um
+`iframe`. A página que incorpora o `iframe` pode dimensioná-lo e posicioná-lo conforme necessário,
+e o Flutter o preencherá completamente.
 
 ```html
-<iframe src="https://url-to-your-flutter/index.html"></iframe>
+<iframe src="https://url-para-seu-flutter/index.html"></iframe>
 ```
 
-To learn more about the pros and cons of an `iframe`,
-check out the [Inline Frame element][] docs on MDN.
+Para aprender mais sobre os prós e contras de um `iframe`,
+confira a documentação do [Elemento Inline Frame][] no MDN.
 
-[Inline Frame element]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
+[Elemento Inline Frame]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
 
-## Embedded mode
+## Modo Embutido
 
-Flutter web applications can also render content into an arbitrary number of
-elements (commonly `div`s) of another web application; this is called "embedded
-mode" (or "multi-view").
+Aplicações web Flutter também podem renderizar conteúdo em um número arbitrário de
+elementos (comumente `div`s) de outra aplicação web; isso é chamado de "modo embutido"
+(ou "multi-view").
 
-In this mode:
+Neste modo:
 
-* A Flutter web application can launch, but doesn't render until the first
-  "view" is added, with `addView`.
-* The host application can add or remove views from the embedded Flutter web
-  application.
-* The Flutter application is notified when views are added or removed,
-  so it can adjust its widgets accordingly.
+* Uma aplicação web Flutter pode ser iniciada, mas não renderiza até que a primeira
+  "view" seja adicionada, com `addView`.
+* A aplicação hospedeira pode adicionar ou remover views da aplicação web Flutter
+  embutida.
+* A aplicação Flutter é notificada quando views são adicionadas ou removidas,
+  para que possa ajustar seus widgets de acordo.
 
-### Enable multi-view mode
+### Habilitar modo multi-view
 
-Enable multi-view mode setting `multiViewEnabled: true` in the
-`initializeEngine` method as shown:
+Habilite o modo multi-view definindo `multiViewEnabled: true` no
+método `initializeEngine` como mostrado:
 
 ```js highlightLines=8 title="flutter_bootstrap.js"
 {% raw %}{{flutter_js}}{% endraw %}
@@ -82,51 +83,51 @@ Enable multi-view mode setting `multiViewEnabled: true` in the
 _flutter.loader.load({
   onEntrypointLoaded: async function onEntrypointLoaded(engineInitializer) {
     let engine = await engineInitializer.initializeEngine({
-      multiViewEnabled: true, // Enables embedded mode.
+      multiViewEnabled: true, // Habilita o modo embutido.
     });
     let app = await engine.runApp();
-    // Make this `app` object available to your JS app.
+    // Torne este objeto `app` disponível para seu app JS.
   }
 });
 ```
 
-### Manage Flutter views from JS
+### Gerenciar views do Flutter a partir de JS
 
-To add or remove views, use the `app` object returned by the `runApp` method:
+Para adicionar ou remover views, use o objeto `app` retornado pelo método `runApp`:
 
 ```js highlightLines=2-4,7
-// Adding a view...
+// Adicionando uma view...
 let viewId = app.addView({
   hostElement: document.querySelector('#some-element'),
 });
 
-// Removing viewId...
+// Removendo viewId...
 let viewConfig = app.removeView(viewId);
 ```
 
-### Handling view changes from Dart
+### Lidando com mudanças de view a partir do Dart
 
-View additions and removals are surfaced to Flutter through the
-[`didChangeMetrics` method][] of the `WidgetsBinding` class.
+Adições e remoções de views são apresentadas ao Flutter através do
+[`método didChangeMetrics`][] da classe `WidgetsBinding`.
 
-The complete list of views attached to your Flutter app is available
-through the `WidgetsBinding.instance.platformDispatcher.views` iterable. These
-views are of [type `FlutterView`][].
+A lista completa de views anexadas ao seu app Flutter está disponível
+através do iterável `WidgetsBinding.instance.platformDispatcher.views`. Essas
+views são do [tipo `FlutterView`][].
 
-To render content into each `FlutterView`, your Flutter app needs to create a
-[`View` widget][]. `View` widgets can be grouped together under a
-[`ViewCollection` widget][].
+Para renderizar conteúdo em cada `FlutterView`, seu app Flutter precisa criar um
+[`Widget View`][]. Widgets `View` podem ser agrupados sob um
+[`Widget ViewCollection`][].
 
-The following example, from the _Multi View Playground_, encapsulates
-the above in a `MultiViewApp` widget that can be used as the root widget for
-your app. A [`WidgetBuilder` function][] runs for each `FlutterView`:
+O exemplo a seguir, do _Multi View Playground_, encapsula
+o acima em um widget `MultiViewApp` que pode ser usado como o widget raiz para
+seu app. Uma [`função WidgetBuilder`][] é executada para cada `FlutterView`:
 
 ```dart highlightLines=25,39,46-49,56-61,72 title="multi_view_app.dart"
 import 'dart:ui' show FlutterView;
 import 'package:flutter/widgets.dart';
 
-/// Calls [viewBuilder] for every view added to the app to obtain the widget to
-/// render into that view. The current view can be looked up with [View.of].
+/// Chama [viewBuilder] para cada view adicionada ao app para obter o widget a
+/// ser renderizado naquela view. A view atual pode ser consultada com [View.of].
 class MultiViewApp extends StatefulWidget {
   const MultiViewApp({super.key, required this.viewBuilder});
 
@@ -147,7 +148,7 @@ class _MultiViewAppState extends State<MultiViewApp> with WidgetsBindingObserver
   @override
   void didUpdateWidget(MultiViewApp oldWidget) {
     super.didUpdateWidget(oldWidget);
-    // Need to re-evaluate the viewBuilder callback for all views.
+    // Necessário reavaliar o callback viewBuilder para todas as views.
     _views.clear();
     _updateViews();
   }
@@ -192,30 +193,30 @@ class _MultiViewAppState extends State<MultiViewApp> with WidgetsBindingObserver
 }
 ```
 
-For more information, check out [`WidgetsBinding` mixin][] in the API docs, or
-the [Multi View Playground repo][] that was used during development.
+Para mais informações, confira o [`mixin WidgetsBinding`][] na documentação da API, ou
+o [repositório Multi View Playground][] que foi usado durante o desenvolvimento.
 
-[`didChangeMetrics` method]: {{site.api}}/flutter/widgets/WidgetsBindingObserver/didChangeMetrics.html
-[Multi View Playground repo]: {{site.github}}/goderbauer/mvp
-[type `FlutterView`]: {{site.api}}/flutter/dart-ui/FlutterView-class.html
-[`View` widget]: {{site.api}}/flutter/widgets/View-class.html
-[`ViewCollection` widget]: {{site.api}}/flutter/widgets/ViewCollection-class.html
-[`WidgetsBinding` mixin]: {{site.api}}/flutter/widgets/WidgetsBinding-mixin.html
-[`WidgetBuilder` function]: {{site.api}}/flutter/widgets/WidgetBuilder.html
+[`método didChangeMetrics`]: {{site.api}}/flutter/widgets/WidgetsBindingObserver/didChangeMetrics.html
+[repositório Multi View Playground]: {{site.github}}/goderbauer/mvp
+[tipo `FlutterView`]: {{site.api}}/flutter/dart-ui/FlutterView-class.html
+[`Widget View`]: {{site.api}}/flutter/widgets/View-class.html
+[`Widget ViewCollection`]: {{site.api}}/flutter/widgets/ViewCollection-class.html
+[`mixin WidgetsBinding`]: {{site.api}}/flutter/widgets/WidgetsBinding-mixin.html
+[`função WidgetBuilder`]: {{site.api}}/flutter/widgets/WidgetBuilder.html
 
-### Replace `runApp` by `runWidget` in Dart
+### Substitua `runApp` por `runWidget` em Dart
 
-Flutter's [`runApp` function][] assumes that there's at least one view available
-to render into (the `implicitView`), however in Flutter web's multi-view mode,
-the `implicitView` doesn't exist anymore, so `runApp` will start failing with
-`Unexpected null value` errors.
+A [`função runApp`][] do Flutter assume que há pelo menos uma view disponível
+para renderizar (a `implicitView`), no entanto, no modo multi-view do Flutter web,
+a `implicitView` não existe mais, então `runApp` começará a falhar com
+erros de `Unexpected null value`.
 
-In multi-view mode, your `main.dart` must call the [`runWidget` function][]
-instead. It doesn't require an `implicitView`, and will only render into the
-views that have been explicitly added into your app.
+No modo multi-view, seu `main.dart` deve chamar a [`função runWidget`][]
+em vez disso. Ela não requer uma `implicitView` e só renderizará nas
+views que foram explicitamente adicionadas ao seu app.
 
-The following example uses the `MultiViewApp` described above to render
-copies of the `MyApp()` widget on every `FlutterView` available:
+O exemplo a seguir usa o `MultiViewApp` descrito acima para renderizar
+cópias do widget `MyApp()` em cada `FlutterView` disponível:
 
 ```dart highlightLines=3 title="main.dart"
 void main() {
@@ -227,90 +228,89 @@ void main() {
 }
 ```
 
-[`runApp` function]: {{site.api}}/flutter/widgets/runApp.html
-[`runWidget` function]: {{site.api}}/flutter/widgets/runWidget.html
+[`função runApp`]: {{site.api}}/flutter/widgets/runApp.html
+[`função runWidget`]: {{site.api}}/flutter/widgets/runWidget.html
 
-### Identifying views
+### Identificando views
 
-Each `FlutterView` has an identifier assigned by Flutter when
-attached. This `viewId` can be used to uniquely identify each view, retrieve
-its initial configuration, or decide what to render in it.
+Cada `FlutterView` tem um identificador atribuído pelo Flutter quando
+anexada. Este `viewId` pode ser usado para identificar exclusivamente cada view, recuperar
+sua configuração inicial ou decidir o que renderizar nela.
 
-The `viewId` of the rendered `FlutterView` can be retrieved from
-its `BuildContext` like this:
+O `viewId` da `FlutterView` renderizada pode ser recuperado de
+seu `BuildContext` assim:
 
 ```dart highlightLines=4-5
 class SomeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Retrieve the `viewId` where this Widget is being built:
+    // Recupera o `viewId` onde este Widget está sendo construído:
     final int viewId = View.of(context).viewId;
     // ...
 ```
 
-Similarly, from the `viewBuilder` method of the `MultiViewApp`, the `viewId`
-can be retrieved like this:
+Da mesma forma, a partir do método `viewBuilder` do `MultiViewApp`, o `viewId`
+pode ser recuperado assim:
 
 ```dart highlightLines=4
 MultiViewApp(
   viewBuilder: (BuildContext context) {
-    // Retrieve the `viewId` where this Widget is being built:
+    // Recupera o `viewId` onde este Widget está sendo construído:
     final int viewId = View.of(context).viewId;
-    // Decide what to render based on `viewId`...
+    // Decide o que renderizar com base em `viewId`...
   },
 )
 ```
 
-Read more about the [`View.of` constructor][].
+Leia mais sobre o [`construtor View.of`][].
 
-[`View.of` constructor]: {{site.api}}/flutter/widgets/View/of.html
+[`construtor View.of`]: {{site.api}}/flutter/widgets/View/of.html
 
-### Initial view configuration
+### Configuração inicial da view
 
-Flutter views can receive any initialization data from JS when starting up.
-The values are passed through the `initialData` property of the `addView`
-method, as shown:
+Views do Flutter podem receber quaisquer dados de inicialização do JS ao iniciar.
+Os valores são passados através da propriedade `initialData` do método `addView`,
+como mostrado:
 
 ```js highlightLines=4-7
-// Adding a view with initial data...
+// Adicionando uma view com dados iniciais...
 let viewId = app.addView({
   hostElement: someElement,
   initialData: {
-    greeting: 'Hello, world!',
+    greeting: 'Olá, mundo!',
     randomValue: Math.floor(Math.random() * 100),
   }
 });
 ```
 
-In Dart, the `initialData` is available as a `JSAny` object, accessible through
-the top-level `views` property in the `dart:ui_web` library. The data is
-accessed through the `viewId` of the current view,  as shown:
+Em Dart, o `initialData` está disponível como um objeto `JSAny`, acessível através
+da propriedade de nível superior `views` na biblioteca `dart:ui_web`. Os dados são
+acessados através do `viewId` da view atual, como mostrado:
 
 ```dart
 final initialData = ui_web.views.getInitialData(viewId) as YourJsInteropType;
 ```
 
-To learn how to define the `YourJsInteropType` class to map the `initialData`
-object passed from JS so it's type-safe in your Dart program, check out:
-[JS Interoperability][] on dart.dev.
+Para aprender como definir a classe `YourJsInteropType` para mapear o objeto
+`initialData` passado do JS para que seja type-safe em seu programa Dart, confira:
+[Interoperabilidade JS][] em dart.dev.
 
-[JS Interoperability]: {{site.dart-site}}/interop/js-interop
+[Interoperabilidade JS]: {{site.dart-site}}/interop/js-interop
 
-### View constraints
+### Restrições de view
 
-By default, an embedded Flutter web view considers the size of its `hostElement`
-as an immutable property, and tightly constrains its layout to the available
-space.
+Por padrão, uma view web Flutter embutida considera o tamanho de seu `hostElement`
+como uma propriedade imutável e restringe rigidamente seu layout ao espaço disponível.
 
-On the web, it's common for the intrinsic size of an element to affect the
-layout of the page (like `img` or `p` tags that can reflow content around
-them).
+Na web, é comum que o tamanho intrínseco de um elemento afete o
+layout da página (como tags `img` ou `p` que podem refluir o conteúdo ao redor
+delas).
 
-When adding a view to Flutter web, you might configure it with constraints that
-inform Flutter of how the view needs to be laid out:
+Ao adicionar uma view ao Flutter web, você pode configurá-la com restrições que
+informam o Flutter de como a view precisa ser disposta:
 
 ```js highlightLines=4-8
-// Adding a view with initial data...
+// Adicionando uma view com dados iniciais...
 let viewId = app.addView({
   hostElement: someElement,
   viewConstraints: {
@@ -321,26 +321,24 @@ let viewId = app.addView({
 });
 ```
 
-The view constraints passed from JS need to be compatible with the CSS styling
-of the `hostElement` where Flutter is being embedded. For example, Flutter
-won’t try to "fix" contradictory constants like passing  `max-height: 100px`
-in CSS, but `maxHeight: Infinity` to Flutter.
+As restrições de view passadas do JS precisam ser compatíveis com o estilo CSS
+do `hostElement` onde o Flutter está sendo incorporado. Por exemplo, o Flutter
+não tentará "corrigir" constantes contraditórias como passar `max-height: 100px`
+em CSS, mas `maxHeight: Infinity` para o Flutter.
 
-To learn more, check out the [`ViewConstraints` class][],
-and [Understanding constraints][].
+Para saber mais, confira a [`classe ViewConstraints`][],
+e [Entendendo restrições][].
 
-[`ViewConstraints` class]: {{site.api}}/flutter/dart-ui/ViewConstraints-class.html
-[Understanding constraints]: {{site.docs}}/ui/layout/constraints
+[`classe ViewConstraints`]: {{site.api}}/flutter/dart-ui/ViewConstraints-class.html
+[Entendendo restrições]: {{site.docs}}/ui/layout/constraints
 
-## Custom element (`hostElement`)
+## Elemento customizado (`hostElement`)
 
-_Between Flutter 3.10 and 3.24_<br />
-You can embed a single-view Flutter web app into any HTML element of your web
-page.
+_Entre Flutter 3.10 e 3.24_<br />
+Você pode incorporar um app web Flutter de view única em qualquer elemento HTML da sua página web.
 
-To tell Flutter web which element to render into, pass an object with a `config`
-field to the `_flutter.loader.load` function that specifies a `HTMLElement` as
-the `hostElement`.
+Para informar ao Flutter web em qual elemento renderizar, passe um objeto com um campo `config`
+para a função `_flutter.loader.load` que especifica um `HTMLElement` como o `hostElement`.
 
 ```js highlightLines=3
 _flutter.loader.load({
@@ -350,7 +348,7 @@ _flutter.loader.load({
 });
 ```
 
-To learn more about other configuration options,
-check out [Customizing web app initialization][].
+Para saber mais sobre outras opções de configuração,
+confira [Personalizando a inicialização do app web][].
 
-[Customizing web app initialization]: {{site.docs}}/platform-integration/web/initialization
+[Personalizando a inicialização do app web]: {{site.docs}}/platform-integration/web/initialization

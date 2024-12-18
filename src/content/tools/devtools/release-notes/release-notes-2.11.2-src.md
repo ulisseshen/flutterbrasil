@@ -1,35 +1,34 @@
-# DevTools 2.11.2 release notes
+# Notas de lançamento do DevTools 2.11.2
 
-The 2.11.2 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutter.dev/tools/devtools).
+A versão 2.11.2 do Dart e Flutter DevTools inclui as seguintes alterações,
+entre outras melhorias gerais. Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](https://docs.flutter.dev/tools/devtools).
 
-## General updates
+## Atualizações gerais
 
-* This release included a lot of cleanup and reduction in technical debt.
+* Esta versão incluiu muita limpeza e redução de dívida técnica.
 
-## CPU profiler updates
+## Atualizações do profiler de CPU
 
-* Added the source line number to file uris in CPU profiles -
+* Adicionado o número da linha de origem aos URIs de arquivo em perfis de CPU -
   [#3718](https://github.com/flutter/devtools/pull/3718)
 
-  ![cpu stack frame line numbers](/tools/devtools/release-notes/images-2.11.2/image1.png "cpu stack frame line numbers")
+  ![números de linha do frame de pilha da cpu](/tools/devtools/release-notes/images-2.11.2/image1.png "números de linha do frame de pilha da cpu")
 
-## Debugger updates
+## Atualizações do Debugger
 
-* File opener UX improvements, including support for clicking
-  the source file name to open the file search window -
+* Melhorias na UX do abridor de arquivos, incluindo suporte para clicar
+  no nome do arquivo de origem para abrir a janela de pesquisa de arquivos -
   [#3612](https://github.com/flutter/devtools/pull/3612),
   [#3758](https://github.com/flutter/devtools/pull/3758)
-* Added support for auto-scrolling the File Explorer to the selected file -
+* Adicionado suporte para rolagem automática do Explorador de Arquivos para o
+  arquivo selecionado -
   [#3786](https://github.com/flutter/devtools/pull/3786),
   [#3794](https://github.com/flutter/devtools/pull/3794)
 
-  ![debugger file explorer scrolling](/tools/devtools/release-notes/images-2.11.2/image2.gif "debugger file explorer scrolling")
+  ![rolagem do explorador de arquivos do debugger](/tools/devtools/release-notes/images-2.11.2/image2.gif "rolagem do explorador de arquivos do debugger")
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes since the previous release,
-check out
-[the diff on GitHub](https://github.com/flutter/devtools/compare/v2.10.0...v2.11.2).
+Para encontrar uma lista completa de alterações desde a versão anterior,
+confira [o diff no GitHub](https://github.com/flutter/devtools/compare/v2.10.0...v2.11.2).

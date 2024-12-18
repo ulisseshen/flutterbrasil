@@ -1,57 +1,56 @@
 ---
-title: Bootstrap into Dart
-description: How to get started with the Dart programming language.
+ia-translate: true
+title: Inicializando no Dart
+description: Como começar com a linguagem de programação Dart.
 ---
 
-New to the [Dart][] language?
-We compiled our favorite resources to
-help you quickly learn Dart.
-Many people have reported that
-[Dart is easy and fun to learn][].
-We hope these resources make Dart easy for
-you to learn, too.
+Novo na linguagem [Dart][]?
+Compilamos nossos recursos favoritos para
+ajudá-lo a aprender Dart rapidamente.
+Muitas pessoas relataram que
+[Dart é fácil e divertido de aprender][].
+Esperamos que esses recursos tornem Dart fácil para
+você aprender também.
 
-[Language tour][]
-: Your best introduction to the Dart language.
-  Learn about Dart's features such as _strong types_,
-  _closures_, _libraries_, _lexical scoping_,
-  _top-level functions_, _named parameters_,
-  _async / await_, and lots more.
+[Tour da Linguagem][]
+: Sua melhor introdução à linguagem Dart.
+  Aprenda sobre os recursos do Dart, como _tipagem forte_,
+  _closures_, _bibliotecas_, _escopo léxico_,
+  _funções de nível superior_, _parâmetros nomeados_,
+  _async / await_, e muito mais.
 
-[Library tour][]
-: A good overview of Dart's powerful core libraries.
-  Learn about Dart's support for collections, async,
-  math, numbers, strings, JSON, and more.
+[Tour da Biblioteca][]
+: Uma boa visão geral das poderosas bibliotecas principais do Dart.
+  Aprenda sobre o suporte do Dart para coleções, async,
+  matemática, números, strings, JSON e muito mais.
 
-[Learning Dart as a JavaScript developer][]
-: Use your JavaScript knowledge to get up and running quickly with Dart.
-  Learn about the key similarities and differences between the languages
-  as well as concepts and conventions not present in vanilla JavaScript.
+[Aprendendo Dart como um desenvolvedor JavaScript][]
+: Use seu conhecimento de JavaScript para começar a usar o Dart rapidamente.
+  Aprenda sobre as principais semelhanças e diferenças entre as linguagens
+  assim como conceitos e convenções não presentes no JavaScript puro.
 
-[Effective Dart][]
-: Guides for style, authoring documentation, usage,
-  and more.
+[Dart Eficaz][]
+: Guias para estilo, criação de documentação, uso
+  e muito mais.
 
-[Asynchronous programming: futures, async, await][] codelab
-: Learn how to write asynchronous code using
-  futures and the `async` and `await` keywords.
+[Programação assíncrona: futures, async, await][] codelab
+: Aprenda como escrever código assíncrono usando
+  futures e as palavras-chave `async` e `await`.
 
-[Asynchronous programming: streams][]
-: Learn how to use streams to perform asynchronous
-  I/O and event handling.
+[Programação assíncrona: streams][]
+: Aprenda como usar streams para realizar operações
+  de E/S assíncronas e tratamento de eventos.
 
-Want to learn more and perhaps contribute?
-Check out the [Dart community][].
+Quer aprender mais e talvez contribuir?
+Confira a [comunidade Dart][].
 
-
-
-[Asynchronous programming: futures, async, await]: {{site.dart-site}}/codelabs/async-await
-[Asynchronous programming: streams]: {{site.dart-site}}/tutorials/language/streams
+[Programação assíncrona: futures, async, await]: {{site.dart-site}}/codelabs/async-await
+[Programação assíncrona: streams]: {{site.dart-site}}/tutorials/language/streams
 [Dart]: {{site.dart-site}}
-[Dart community]: {{site.dart-site}}/community
-[Dart is easy and fun to learn]: /resources/faq#why-did-flutter-choose-to-use-dart
-[Effective Dart]: {{site.dart-site}}/guides/language/effective-dart
+[comunidade Dart]: {{site.dart-site}}/community
+[Dart é fácil e divertido de aprender]: /resources/faq#why-did-flutter-choose-to-use-dart
+[Dart Eficaz]: {{site.dart-site}}/guides/language/effective-dart
 [`File`]: {{site.api}}/flutter/dart-io/File-class.html
-[Learning Dart as a JavaScript developer]: {{site.dart-site}}/guides/language/coming-from/js-to-dart
-[Language tour]: {{site.dart-site}}/language
-[Library tour]: {{site.dart-site}}/guides/libraries/library-tour
+[Aprendendo Dart como um desenvolvedor JavaScript]: {{site.dart-site}}/guides/language/coming-from/js-to-dart
+[Tour da Linguagem]: {{site.dart-site}}/language
+[Tour da Biblioteca]: {{site.dart-site}}/guides/libraries/library-tour

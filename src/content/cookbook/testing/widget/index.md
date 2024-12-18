@@ -1,6 +1,7 @@
 ---
+ia-translate: true
 title: Widget
-description: A catalog of recipes for adding widget testing to your Flutter app.
+description: Um catálogo de receitas para adicionar testes de widget ao seu aplicativo Flutter.
 ---
 
 {% include docs/cookbook-group-index.md %}

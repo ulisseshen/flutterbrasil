@@ -1,64 +1,40 @@
-# DevTools 2.7.0 release notes
+# Notas de lançamento do DevTools 2.7.0
 
-The 2.7.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](/tools/devtools).
+A versão 2.7.0 do Dart e Flutter DevTools inclui as seguintes alterações, entre outras melhorias gerais. Para saber mais sobre o DevTools, confira a [visão geral do DevTools](/tools/devtools).
 
-## General updates
+## Atualizações gerais
 
-* Improvements for initial page load time -
-  [#3309](https://github.com/flutter/devtools/pull/3309)
-* Fix a couple scrollbar-related issues -
-  [#3393](https://github.com/flutter/devtools/pull/3393),
-  [#3401](https://github.com/flutter/devtools/pull/3401)
+* Melhorias no tempo de carregamento inicial da página - [#3309](https://github.com/flutter/devtools/pull/3309)
+* Correção de alguns problemas relacionados à barra de rolagem - [#3393](https://github.com/flutter/devtools/pull/3393), [#3401](https://github.com/flutter/devtools/pull/3401)
 
-## Debugger updates
+## Atualizações do Depurador
 
-* Add an open file dialog (ctrl / cmd + p) -
-  [#3342](https://github.com/flutter/devtools/pull/3342),
-  [#3354](https://github.com/flutter/devtools/pull/3354),
-  [#3371](https://github.com/flutter/devtools/pull/3371),
-  [#3384](https://github.com/flutter/devtools/pull/3384)
+* Adicionado um diálogo para abrir arquivos (ctrl / cmd + p) - [#3342](https://github.com/flutter/devtools/pull/3342), [#3354](https://github.com/flutter/devtools/pull/3354), [#3371](https://github.com/flutter/devtools/pull/3371), [#3384](https://github.com/flutter/devtools/pull/3384)
 
-  ![Open file dialog](/tools/devtools/release-notes/images-2.7.0/image1.gif "Open file dialog")
+  ![Diálogo para abrir arquivos](/tools/devtools/release-notes/images-2.7.0/image1.gif "Diálogo para abrir arquivos")
 
-* Add a copy button to the call stack view -
-  [#3334](https://github.com/flutter/devtools/pull/3334)
+* Adicionado um botão de copiar na visualização da call stack - [#3334](https://github.com/flutter/devtools/pull/3334)
 
-  ![Call stack view](/tools/devtools/release-notes/images-2.7.0/image2.png "Call stack view")
+  ![Visualização da call stack](/tools/devtools/release-notes/images-2.7.0/image2.png "Visualização da call stack")
 
-## CPU profiler updates
+## Atualizações do CPU profiler
 
-* Added functionality to load an app startup profile for Flutter apps.
-  This profile will contain CPU samples from the initialization
-  of the Dart VM up until the first Flutter frame has been rendered -
-  [#3357](https://github.com/flutter/devtools/pull/3357)
+* Adicionada funcionalidade para carregar um profile de inicialização de aplicativo para aplicativos Flutter. Este profile conterá amostras de CPU desde a inicialização da VM Dart até o primeiro frame do Flutter ser renderizado - [#3357](https://github.com/flutter/devtools/pull/3357)
 
-  ![Profile button](/tools/devtools/release-notes/images-2.7.0/image3.png "Profile button")
+  ![Botão de profile](/tools/devtools/release-notes/images-2.7.0/image3.png "Botão de profile")
 
-  When the app startup profile has been loaded,
-  you will see that the "AppStartUp" user tag is selected for the profile.
-  You can also load the app startup profile
-  by selecting this user tag filter, when present,
-  in the list of available user tags.
-  
-  ![User tag example](/tools/devtools/release-notes/images-2.7.0/image4.png "User tag example")
+  Quando o profile de inicialização do aplicativo for carregado, você verá que a tag de usuário "AppStartUp" está selecionada para o profile. Você também pode carregar o profile de inicialização do aplicativo selecionando este filtro de tag de usuário, quando presente, na lista de tags de usuário disponíveis.
 
-* Added multi-isolate support.
-  Select which isolate you want to profile
-  from the isolate selector at the bottom of the page -
-  [#3362](https://github.com/flutter/devtools/pull/3362)
+  ![Exemplo de tag de usuário](/tools/devtools/release-notes/images-2.7.0/image4.png "Exemplo de tag de usuário")
 
-  ![isolate selector](/tools/devtools/release-notes/images-2.7.0/image5.png "isolate selector")
+* Adicionado suporte multi-isolate. Selecione qual isolate você deseja criar o profile no seletor de isolate na parte inferior da página - [#3362](https://github.com/flutter/devtools/pull/3362)
 
-* Add class names to CPU stack frames in the profiler -
-  [#3385](https://github.com/flutter/devtools/pull/3385)
+  ![Seletor de isolate](/tools/devtools/release-notes/images-2.7.0/image5.png "Seletor de isolate")
 
-  ![Class names](/tools/devtools/release-notes/images-2.7.0/image6.png "Class names")
+* Adicione nomes de classe aos stack frames da CPU no profiler - [#3385](https://github.com/flutter/devtools/pull/3385)
 
-## Full commit history
+  ![Nomes de classe](/tools/devtools/release-notes/images-2.7.0/image6.png "Nomes de classe")
 
-To find a complete list of changes since the previous release,
-check out 
-[the diff on GitHub](https://github.com/flutter/devtools/compare/v2.6.0...v2.7.0).
+## Histórico completo de commits
+
+Para encontrar uma lista completa de alterações desde a versão anterior, confira [o diff no GitHub](https://github.com/flutter/devtools/compare/v2.6.0...v2.7.0).

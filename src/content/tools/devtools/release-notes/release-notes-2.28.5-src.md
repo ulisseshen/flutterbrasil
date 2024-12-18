@@ -1,25 +1,19 @@
-# DevTools 2.28.5 release notes
+# Notas da versão DevTools 2.28.5
 
-The 2.28.5 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutter.dev/tools/devtools).
+A versão 2.28.5 do Dart e Flutter DevTools inclui as seguintes mudanças, entre outras melhorias gerais. Para saber mais sobre o DevTools, confira a [visão geral do DevTools](https://docs.flutter.dev/tools/devtools).
 
-This was a cherry-pick release on top of DevTools 2.28.4.
-To learn about the improvements included in DevTools 2.28.4, please read the
-[release notes](/tools/devtools/release-notes/release-notes-2.28.4).
+Esta foi uma versão cherry-pick em cima do DevTools 2.28.4. Para saber mais sobre as melhorias incluídas no DevTools 2.28.4, leia as [notas de versão](/tools/devtools/release-notes/release-notes-2.28.4).
 
-## Inspector updates
+## Atualizações do Inspector
 
-* Only cache pub root directories added by the user. - [#6897](https://github.com/flutter/devtools/pull/6897)
+*   Cachear apenas diretórios root pub adicionados pelo usuário. - [#6897](https://github.com/flutter/devtools/pull/6897)
 
-* Remove Flutter pub root if it was accidently cached. - [#6911](https://github.com/flutter/devtools/pull/6911)
+*   Remover o root pub do Flutter se ele foi acidentalmente cacheado. - [#6911](https://github.com/flutter/devtools/pull/6911)
 
-## DevTools Extension updates
+## Atualizações da Extensão DevTools
 
-* Fixed a couple bugs preventing Dart server apps from connecting to DevTools extensions. - [#6982](https://github.com/flutter/devtools/pull/6982), [#6993](https://github.com/flutter/devtools/pull/6993)
+*   Corrigido alguns bugs que impediam que aplicativos de servidor Dart se conectassem às extensões DevTools. - [#6982](https://github.com/flutter/devtools/pull/6982), [#6993](https://github.com/flutter/devtools/pull/6993)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes in this release, check out the
-[DevTools git log](https://github.com/flutter/devtools/tree/v2.28.5).
+Para encontrar uma lista completa de alterações nesta versão, confira o [log git do DevTools](https://github.com/flutter/devtools/tree/v2.28.5).

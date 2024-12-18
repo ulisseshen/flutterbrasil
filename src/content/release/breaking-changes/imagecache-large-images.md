@@ -1,30 +1,31 @@
 ---
-title: ImageCache large images
+ia-translate: true
+title: ImageCache para imagens grandes
 description: >
-  Stop increasing the ImageCache maxByteSize to accommodate large images.
+  Pare de aumentar o maxByteSize do ImageCache para acomodar imagens grandes.
 ---
 
-## Summary
+## Sumário
 
-The `maxByteSize` of the `ImageCache` is no longer
-automatically made larger to accommodate large images.
+O `maxByteSize` do `ImageCache` não é mais
+automaticamente aumentado para acomodar imagens grandes.
 
-## Context
+## Contexto
 
-Previously, when loading images into the `ImageCache`
-that had larger byte sizes than the `ImageCache`'s `maxByteSize`,
-Flutter permanently increased the `maxByteSize` value
-to accommodate those images.
-This logic sometimes led to bloated `maxByteSize` values that
-made working in memory-limited systems more difficult.
+Anteriormente, ao carregar imagens no `ImageCache`
+que tinham tamanhos de byte maiores do que o `maxByteSize` do `ImageCache`,
+o Flutter aumentava permanentemente o valor `maxByteSize`
+para acomodar essas imagens.
+Essa lógica às vezes levava a valores `maxByteSize` inchados que
+dificultavam o trabalho em sistemas com memória limitada.
 
-## Description of change
+## Descrição da mudança
 
-The following "before" and "after" pseudocode demonstrates
-the changes made to the `ImageCache` algorithm:
+O seguinte pseudocódigo "antes" e "depois" demonstra
+as mudanças feitas no algoritmo `ImageCache`:
 
 ```dart
-// Old logic pseudocode
+// Pseudocódigo da lógica antiga
 void onLoadImage(Image image) {
   if (image.byteSize > _cache.maxByteSize) {
     _cache.maxByteSize = image.byteSize + 1000;
@@ -38,7 +39,7 @@ void onLoadImage(Image image) {
 ```
 
 ```dart
-// New logic pseudocode
+// Pseudocódigo da nova lógica
 void onLoadImage(Image image) {
   if (image.byteSize < _cache.maxByteSize) {
     _cache.add(image);
@@ -50,48 +51,47 @@ void onLoadImage(Image image) {
 }
 ```
 
-## Migration guide
+## Guia de migração
 
-There might be situations where the `ImageCache`
-is thrashing with the new logic where it wasn't previously,
-specifically if you load images that are larger than your
-`cache.maxByteSize` value.
-This can be remedied by one of the following approaches:
+Pode haver situações em que o `ImageCache`
+esteja "thrashing" com a nova lógica onde não estava anteriormente,
+especificamente se você carregar imagens que são maiores do que o seu
+valor `cache.maxByteSize`.
+Isso pode ser resolvido por uma das seguintes abordagens:
 
-1. Increase the `ImageCache.maxByteSize` value
-   to accommodate larger images.
-1. Adjust your image loading logic to guarantee that
-   the images fit nicely into the `ImageCache.maxByteSize`
-   value of your choosing.
-1. Subclass `ImageCache`, implement your desired logic,
-   and create a new binding that serves up your subclass
-   of `ImageCache` (see the [`image_cache.dart`][] source).
+1. Aumente o valor `ImageCache.maxByteSize`
+   para acomodar imagens maiores.
+1. Ajuste sua lógica de carregamento de imagem para garantir que
+   as imagens se encaixem bem no valor `ImageCache.maxByteSize`
+   de sua escolha.
+1. Crie uma subclasse de `ImageCache`, implemente a lógica desejada
+   e crie um novo binding que forneça sua subclasse
+   de `ImageCache` (veja o código fonte em [`image_cache.dart`][]).
 
-## Timeline
+## Cronograma
 
-The old algorithm is no longer supported.
+O algoritmo antigo não é mais suportado.
 
-Landed in version: 1.16.3<br>
-In stable release: 1.17
+Implementado na versão: 1.16.3<br>
+Na versão estável: 1.17
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`ImageCache`][]
 
-Relevant issue:
+Problema relevante:
 
 * [Issue 45643][]
 
-Relevant PR:
+PR relevante:
 
 * [Stopped increasing the cache size to accommodate large images][]
 
-Other:
+Outros:
 
-* [`ImageCache` source][]
-
+* Código fonte do [`ImageCache`][]
 
 [Stopped increasing the cache size to accommodate large images]: {{site.repo.flutter}}/pull/47387
 [`ImageCache`]: {{site.api}}/flutter/painting/ImageCache-class.html

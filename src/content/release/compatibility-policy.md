@@ -1,67 +1,38 @@
 ---
-title: Flutter compatibility policy
-description: How Flutter approaches the question of breaking changes.
+ia-translate: true
+title: Política de compatibilidade do Flutter
+description: Como o Flutter aborda a questão de mudanças que quebram a compatibilidade.
 ---
 
-The Flutter team tries to balance the need for API stability with the
-need to keep evolving APIs to fix bugs, improve API ergonomics,
-and provide new features in a coherent manner.
+A equipe do Flutter tenta equilibrar a necessidade de estabilidade da API com a necessidade de continuar evoluindo as APIs para corrigir bugs, melhorar a ergonomia da API e fornecer novos recursos de forma coerente.
 
-To this end, we have created a test registry where you can provide
-unit tests for your own applications or libraries that we run
-on every change to help us track changes that would break
-existing applications. Our commitment is that we won't make any
-changes that break these tests without working with the developers of
-those tests to (a) determine if the change is sufficiently valuable,
-and (b) provide fixes for the code so that the tests continue to pass.
+Para este fim, criamos um registro de testes onde você pode fornecer testes unitários para seus próprios aplicativos ou bibliotecas que executamos em cada alteração para nos ajudar a rastrear alterações que quebram aplicativos existentes. Nosso compromisso é que não faremos nenhuma alteração que quebre esses testes sem trabalhar com os desenvolvedores desses testes para (a) determinar se a alteração é suficientemente valiosa e (b) fornecer correções para o código para que os testes continuem sendo aprovados.
 
-If you would like to provide tests as part of this program, please
-submit a PR to the [flutter/tests repository][]. 
-The [README][flutter-tests-readme] on that repository describes 
-the process in detail.
+Se você quiser fornecer testes como parte deste programa, envie um PR para o [repositório flutter/tests][]. O [README][flutter-tests-readme] nesse repositório descreve o processo em detalhes.
 
-[flutter/tests repository]: {{site.github}}/flutter/tests
+[repositório flutter/tests]: {{site.github}}/flutter/tests
 [flutter-tests-readme]: {{site.github}}/flutter/tests#adding-more-tests
 
-## Announcements and migration guides
+## Anúncios e guias de migração
 
-If we do make a breaking change (defined as a change that caused one
-or more of these submitted tests to require changes), we will announce
-the change on our [flutter-announce][]
-mailing list as well as in our release notes.
+Se fizermos uma alteração que quebra a compatibilidade (definida como uma alteração que fez com que um ou mais desses testes enviados exigissem alterações), anunciaremos a alteração em nossa lista de discussão [flutter-announce][] , bem como em nossas notas de versão.
 
-We provide a list of [guides for migrating code][] affected by
-breaking changes.
+Fornecemos uma lista de [guias para migração de código][] afetados por alterações que quebram a compatibilidade.
 
 [flutter-announce]: {{site.groups}}/forum/#!forum/flutter-announce
-[guides for migrating code]: /release/breaking-changes
+[guias para migração de código]: /release/breaking-changes
 
-## Deprecation policy
+## Política de descontinuação
 
-We will, on occasion, deprecate certain APIs rather than outright
-break them overnight. This is independent of our compatibility policy
-which is exclusively based on whether submitted tests fail, as
-described above.
+Ocasionalmente, iremos descontinuar certas APIs em vez de quebrá-las completamente da noite para o dia. Isso é independente de nossa política de compatibilidade, que se baseia exclusivamente em se os testes enviados falham, conforme descrito acima.
 
-The Flutter team doesn't remove deprecated APIs on a scheduled basis.
-If the team removes a deprecated API,
-it follows the same procedures as those for breaking changes.
+A equipe do Flutter não remove APIs descontinuadas de forma programada. Se a equipe remover uma API descontinuada, ela segue os mesmos procedimentos que aqueles para mudanças que quebram a compatibilidade.
 
+## Dart e outras bibliotecas usadas pelo Flutter
 
-## Dart and other libraries used by Flutter
+A própria linguagem Dart tem uma [política separada de mudanças que quebram a compatibilidade][], com anúncios em [Dart announce][].
 
-The Dart language itself has a [separate breaking-change policy][],
-with announcements on [Dart announce][].
+Em geral, a equipe do Flutter não tem atualmente nenhum compromisso com relação a mudanças que quebram a compatibilidade para outras dependências. Por exemplo, é possível que uma nova versão do Flutter usando uma nova versão do Skia (o mecanismo de gráficos usado por algumas plataformas no Flutter) ou Harfbuzz (o mecanismo de modelagem de fontes usado pelo Flutter) tenha alterações que afetem os testes contribuidos. Tais mudanças não seriam necessariamente acompanhadas por um guia de migração.
 
-In general, the Flutter team doesn't currently have any commitment
-regarding breaking changes for other dependencies.
-For example, it's possible that a new version of
-Flutter using a new version of Skia
-(the graphics engine used by some platforms on Flutter)
-or Harfbuzz (the font shaping engine used by Flutter)
-would have changes that affect contributed tests.
-Such changes wouldn't necessarily be accompanied by a
-migration guide.
-
-[separate breaking-change policy]: {{site.github}}/dart-lang/sdk/blob/main/docs/process/breaking-changes.md
+[política separada de mudanças que quebram a compatibilidade]: {{site.github}}/dart-lang/sdk/blob/main/docs/process/breaking-changes.md
 [Dart announce]: {{site.groups}}/a/dartlang.org/g/announce

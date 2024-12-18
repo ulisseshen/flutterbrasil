@@ -1,6 +1,7 @@
 ---
-title: Return data from a screen
-description: How to return data from a new screen.
+ia-translate: true
+title: Retornar dados de uma tela
+description: Como retornar dados de uma nova tela.
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
@@ -8,24 +9,24 @@ js:
 
 <?code-excerpt path-base="cookbook/navigation/returning_data/"?>
 
-In some cases, you might want to return data from a new screen.
-For example, say you push a new screen that presents two options to a user.
-When the user taps an option, you want to inform the first screen
-of the user's selection so that it can act on that information.
+Em alguns casos, você pode querer retornar dados de uma nova tela.
+Por exemplo, digamos que você empurre uma nova tela que apresenta duas opções para um usuário.
+Quando o usuário toca em uma opção, você quer informar a primeira tela
+da seleção do usuário para que ela possa agir sobre essa informação.
 
-You can do this with the [`Navigator.pop()`][]
-method using the following steps:
+Você pode fazer isso com o método [`Navigator.pop()`][]
+seguindo os seguintes passos:
 
-  1. Define the home screen
-  2. Add a button that launches the selection screen
-  3. Show the selection screen with two buttons
-  4. When a button is tapped, close the selection screen
-  5. Show a snackbar on the home screen with the selection
+  1. Defina a tela inicial
+  2. Adicione um botão que inicia a tela de seleção
+  3. Mostre a tela de seleção com dois botões
+  4. Quando um botão é tocado, feche a tela de seleção
+  5. Mostre uma snackbar na tela inicial com a seleção
 
-## 1. Define the home screen
+## 1. Defina a tela inicial
 
-The home screen displays a button. When tapped,
-it launches the selection screen.
+A tela inicial exibe um botão. Quando tocado,
+ele inicia a tela de seleção.
 
 <?code-excerpt "lib/main_step2.dart (HomeScreen)"?>
 ```dart
@@ -36,9 +37,9 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Returning Data Demo'),
+        title: const Text('Demonstração de Retorno de Dados'),
       ),
-      // Create the SelectionButton widget in the next step.
+      // Crie o widget SelectionButton no próximo passo.
       body: const Center(
         child: SelectionButton(),
       ),
@@ -47,12 +48,12 @@ class HomeScreen extends StatelessWidget {
 }
 ```
 
-## 2. Add a button that launches the selection screen
+## 2. Adicione um botão que inicia a tela de seleção
 
-Now, create the SelectionButton, which does the following:
+Agora, crie o SelectionButton, que faz o seguinte:
 
-  * Launches the SelectionScreen when it's tapped.
-  * Waits for the SelectionScreen to return a result.
+  * Inicia a SelectionScreen quando é tocado.
+  * Espera que a SelectionScreen retorne um resultado.
 
 <?code-excerpt "lib/main_step2.dart (SelectionButton)"?>
 ```dart
@@ -70,31 +71,31 @@ class _SelectionButtonState extends State<SelectionButton> {
       onPressed: () {
         _navigateAndDisplaySelection(context);
       },
-      child: const Text('Pick an option, any option!'),
+      child: const Text('Escolha uma opção, qualquer opção!'),
     );
   }
 
   Future<void> _navigateAndDisplaySelection(BuildContext context) async {
-    // Navigator.push returns a Future that completes after calling
-    // Navigator.pop on the Selection Screen.
+    // Navigator.push retorna um Future que é completado após chamar
+    // Navigator.pop na Selection Screen.
     final result = await Navigator.push(
       context,
-      // Create the SelectionScreen in the next step.
+      // Crie a SelectionScreen no próximo passo.
       MaterialPageRoute(builder: (context) => const SelectionScreen()),
     );
   }
 }
 ```
 
-## 3. Show the selection screen with two buttons
+## 3. Mostre a tela de seleção com dois botões
 
-Now, build a selection screen that contains two buttons.
-When a user taps a button,
-that app closes the selection screen and lets the home
-screen know which button was tapped.
+Agora, construa uma tela de seleção que contenha dois botões.
+Quando um usuário toca em um botão,
+o aplicativo fecha a tela de seleção e informa à tela inicial
+qual botão foi tocado.
 
-This step defines the UI.
-The next step adds code to return data.
+Este passo define a UI.
+O próximo passo adiciona código para retornar dados.
 
 <?code-excerpt "lib/main_step2.dart (SelectionScreen)"?>
 ```dart
@@ -105,7 +106,7 @@ class SelectionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pick an option'),
+        title: const Text('Escolha uma opção'),
       ),
       body: Center(
         child: Column(
@@ -115,18 +116,18 @@ class SelectionScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8),
               child: ElevatedButton(
                 onPressed: () {
-                  // Pop here with "Yep"...
+                  // Pop aqui com "Sim"...
                 },
-                child: const Text('Yep!'),
+                child: const Text('Sim!'),
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8),
               child: ElevatedButton(
                 onPressed: () {
-                  // Pop here with "Nope"...
+                  // Pop aqui com "Não"...
                 },
-                child: const Text('Nope.'),
+                child: const Text('Não.'),
               ),
             )
           ],
@@ -137,82 +138,82 @@ class SelectionScreen extends StatelessWidget {
 }
 ```
 
-## 4. When a button is tapped, close the selection screen
+## 4. Quando um botão é tocado, feche a tela de seleção
 
-Now, update the `onPressed()` callback for both of the buttons.
-To return data to the first screen,
-use the [`Navigator.pop()`][] method,
-which accepts an optional second argument called `result`.
-Any result is returned to the `Future` in the SelectionButton.
+Agora, atualize o callback `onPressed()` para ambos os botões.
+Para retornar dados para a primeira tela,
+use o método [`Navigator.pop()`][],
+que aceita um segundo argumento opcional chamado `result`.
+Qualquer resultado é retornado para o `Future` no SelectionButton.
 
-### Yep button
+### Botão Sim
 
 <?code-excerpt "lib/main.dart (Yep)" replace="/^child: //g;/^\),$/)/g"?>
 ```dart
 ElevatedButton(
   onPressed: () {
-    // Close the screen and return "Yep!" as the result.
-    Navigator.pop(context, 'Yep!');
+    // Fecha a tela e retorna "Sim!" como resultado.
+    Navigator.pop(context, 'Sim!');
   },
-  child: const Text('Yep!'),
+  child: const Text('Sim!'),
 )
 ```
 
-### Nope button
+### Botão Não
 
 <?code-excerpt "lib/main.dart (Nope)" replace="/^child: //g;/^\),$/)/g"?>
 ```dart
 ElevatedButton(
   onPressed: () {
-    // Close the screen and return "Nope." as the result.
-    Navigator.pop(context, 'Nope.');
+    // Fecha a tela e retorna "Não." como resultado.
+    Navigator.pop(context, 'Não.');
   },
-  child: const Text('Nope.'),
+  child: const Text('Não.'),
 )
 ```
 
-## 5. Show a snackbar on the home screen with the selection
+## 5. Mostre uma snackbar na tela inicial com a seleção
 
-Now that you're launching a selection screen and awaiting the result,
-you'll want to do something with the information that's returned.
+Agora que você está iniciando uma tela de seleção e aguardando o resultado,
+você vai querer fazer algo com a informação que foi retornada.
 
-In this case, show a snackbar displaying the result by using the
-`_navigateAndDisplaySelection()` method in `SelectionButton`:
+Neste caso, mostre uma snackbar exibindo o resultado usando o
+método `_navigateAndDisplaySelection()` em `SelectionButton`:
 
 <?code-excerpt "lib/main.dart (navigateAndDisplay)"?>
 ```dart
-// A method that launches the SelectionScreen and awaits the result from
+// Um método que inicia a SelectionScreen e aguarda o resultado de
 // Navigator.pop.
 Future<void> _navigateAndDisplaySelection(BuildContext context) async {
-  // Navigator.push returns a Future that completes after calling
-  // Navigator.pop on the Selection Screen.
+  // Navigator.push retorna um Future que é completado após chamar
+  // Navigator.pop na Selection Screen.
   final result = await Navigator.push(
     context,
     MaterialPageRoute(builder: (context) => const SelectionScreen()),
   );
 
-  // When a BuildContext is used from a StatefulWidget, the mounted property
-  // must be checked after an asynchronous gap.
+  // Quando um BuildContext é usado de um StatefulWidget, a propriedade mounted
+  // deve ser verificada após um intervalo assíncrono.
   if (!context.mounted) return;
 
-  // After the Selection Screen returns a result, hide any previous snackbars
-  // and show the new result.
+  // Após a Selection Screen retornar um resultado, oculte qualquer snackbar
+  // anterior e mostre o novo resultado.
   ScaffoldMessenger.of(context)
     ..removeCurrentSnackBar()
     ..showSnackBar(SnackBar(content: Text('$result')));
 }
 ```
 
-## Interactive example
+## Exemplo interativo
 
 <?code-excerpt "lib/main.dart"?>
-```dartpad title="Flutter Return from Data hands-on example in DartPad" run="true"
+```dartpad title="Exemplo prático de retorno de dados do Flutter no DartPad" run="true"
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(
     const MaterialApp(
-      title: 'Returning Data',
+      title: 'Retornando Dados',
       home: HomeScreen(),
     ),
   );
@@ -225,7 +226,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Returning Data Demo'),
+        title: const Text('Demonstração de Retorno de Dados'),
       ),
       body: const Center(
         child: SelectionButton(),
@@ -248,26 +249,26 @@ class _SelectionButtonState extends State<SelectionButton> {
       onPressed: () {
         _navigateAndDisplaySelection(context);
       },
-      child: const Text('Pick an option, any option!'),
+      child: const Text('Escolha uma opção, qualquer opção!'),
     );
   }
 
-  // A method that launches the SelectionScreen and awaits the result from
+  // Um método que inicia a SelectionScreen e aguarda o resultado de
   // Navigator.pop.
   Future<void> _navigateAndDisplaySelection(BuildContext context) async {
-    // Navigator.push returns a Future that completes after calling
-    // Navigator.pop on the Selection Screen.
+    // Navigator.push retorna um Future que é completado após chamar
+    // Navigator.pop na Selection Screen.
     final result = await Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => const SelectionScreen()),
     );
 
-    // When a BuildContext is used from a StatefulWidget, the mounted property
-    // must be checked after an asynchronous gap.
+    // Quando um BuildContext é usado de um StatefulWidget, a propriedade mounted
+    // deve ser verificada após um intervalo assíncrono.
     if (!context.mounted) return;
 
-    // After the Selection Screen returns a result, hide any previous snackbars
-    // and show the new result.
+    // Após a Selection Screen retornar um resultado, oculte qualquer snackbar
+    // anterior e mostre o novo resultado.
     ScaffoldMessenger.of(context)
       ..removeCurrentSnackBar()
       ..showSnackBar(SnackBar(content: Text('$result')));
@@ -281,7 +282,7 @@ class SelectionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pick an option'),
+        title: const Text('Escolha uma opção'),
       ),
       body: Center(
         child: Column(
@@ -291,20 +292,20 @@ class SelectionScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8),
               child: ElevatedButton(
                 onPressed: () {
-                  // Close the screen and return "Yep!" as the result.
-                  Navigator.pop(context, 'Yep!');
+                  // Fecha a tela e retorna "Sim!" como resultado.
+                  Navigator.pop(context, 'Sim!');
                 },
-                child: const Text('Yep!'),
+                child: const Text('Sim!'),
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8),
               child: ElevatedButton(
                 onPressed: () {
-                  // Close the screen and return "Nope." as the result.
-                  Navigator.pop(context, 'Nope.');
+                  // Fecha a tela e retorna "Não." como resultado.
+                  Navigator.pop(context, 'Não.');
                 },
-                child: const Text('Nope.'),
+                child: const Text('Não.'),
               ),
             )
           ],
@@ -316,7 +317,7 @@ class SelectionScreen extends StatelessWidget {
 ```
 
 <noscript>
-  <img src="/assets/images/docs/cookbook/returning-data.gif" alt="Returning data demo" class="site-mobile-screenshot" />
+  <img src="/assets/images/docs/cookbook/returning-data.gif" alt="Demonstração de retorno de dados" class="site-mobile-screenshot" />
 </noscript>
 
 

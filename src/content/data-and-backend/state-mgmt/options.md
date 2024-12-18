@@ -1,161 +1,160 @@
 ---
-title: List of state management approaches
-description: A list of different approaches to managing state.
+ia-translate: true
+title: Lista de abordagens para gerenciamento de estado
+description: Uma lista de diferentes abordagens para gerenciamento de estado.
 prev:
-  title: Simple app state management
+  title: Gerenciamento de estado simples em apps
   path: /development/data-and-backend/state-mgmt/simple
 ---
 
-State management is a complex topic.
-If you feel that some of your questions haven't been answered,
-or that the approach described on these pages
-is not viable for your use cases, you are probably right.
+O gerenciamento de estado é um tópico complexo.
+Se você sente que algumas de suas perguntas não foram respondidas,
+ou que a abordagem descrita nestas páginas
+não é viável para seus casos de uso, você provavelmente está certo.
 
-Learn more at the following links,
-many of which have been contributed by the Flutter community:
+Aprenda mais nos seguintes links,
+muitos dos quais foram contribuições da comunidade Flutter:
 
-## General overview
+## Visão geral
 
-Things to review before selecting an approach.
+Coisas a revisar antes de selecionar uma abordagem.
 
-* [Introduction to state management][],
-  which is the beginning of this very section
-  (for those of you who arrived directly to this _Options_ page
-  and missed the previous pages)
-* [Pragmatic State Management in Flutter][],
-  a video from Google I/O 2019
-* [Flutter Architecture Samples][], by Brian Egan
+* [Introdução ao gerenciamento de estado][],
+  que é o começo desta mesma seção
+  (para aqueles que chegaram diretamente a esta página _Opções_
+  e perderam as páginas anteriores)
+* [Gerenciamento de Estado Pragmático em Flutter][],
+  um vídeo do Google I/O 2019
+* [Flutter Architecture Samples][], por Brian Egan
 
 [Flutter Architecture Samples]: https://fluttersamples.com/
-[Introduction to state management]: /data-and-backend/state-mgmt/intro
-[Pragmatic State Management in Flutter]: {{site.yt.watch}}?v=d_m5csmrf7I
+[Introdução ao gerenciamento de estado]: /data-and-backend/state-mgmt/intro
+[Gerenciamento de Estado Pragmático em Flutter]: {{site.yt.watch}}?v=d_m5csmrf7I
 
 ## Provider
 
-* [Simple app state management][], the previous page in this section
-* [Provider package][]
+* [Gerenciamento de estado simples em apps][], a página anterior nesta seção
+* [Pacote Provider][]
 
-[Provider package]: {{site.pub-pkg}}/provider
-[Simple app state management]: /data-and-backend/state-mgmt/simple
+[Pacote Provider]: {{site.pub-pkg}}/provider
+[Gerenciamento de estado simples em apps]: /data-and-backend/state-mgmt/simple
 
 ## Riverpod
 
-Riverpod works in a similar fashion to Provider.
-It offers compile safety and testing without depending on the Flutter SDK.
+Riverpod funciona de maneira semelhante ao Provider.
+Ele oferece segurança de compilação e testes sem depender do SDK do Flutter.
 
-* [Riverpod][] homepage
-* [Getting started with Riverpod][]
+* [Riverpod][] página inicial
+* [Começando com Riverpod][]
 
-[Getting started with Riverpod]: https://riverpod.dev/docs/introduction/getting_started
+[Começando com Riverpod]: https://riverpod.dev/docs/introduction/getting_started
 [Riverpod]: https://riverpod.dev/
 
 ## setState
 
-The low-level approach to use for widget-specific, ephemeral state.
+A abordagem de baixo nível para usar para estado efêmero e específico do widget.
 
-* [Adding interactivity to your Flutter app][], a Flutter tutorial
-* [Basic state management in Google Flutter][], by Agung Surya
+* [Adicionando interatividade ao seu app Flutter][], um tutorial do Flutter
+* [Gerenciamento básico de estado no Google Flutter][], por Agung Surya
 
-[Adding interactivity to your Flutter app]: /ui/interactivity
-[Basic state management in Google Flutter]: {{site.medium}}/@agungsurya/basic-state-management-in-google-flutter-6ee73608f96d
+[Adicionando interatividade ao seu app Flutter]: /ui/interactivity
+[Gerenciamento básico de estado no Google Flutter]: {{site.medium}}/@agungsurya/basic-state-management-in-google-flutter-6ee73608f96d
 
 ## ValueNotifier &amp; InheritedNotifier
 
-An approach using only Flutter provided tooling to update state and notify the UI of changes.
+Uma abordagem usando apenas ferramentas fornecidas pelo Flutter para atualizar o estado e notificar a interface do usuário sobre as mudanças.
 
+* [Gerenciamento de Estado usando ValueNotifier e InheritedNotifier][], por Tadas Petra
 
-* [State Management using ValueNotifier and InheritedNotifier][], by Tadas Petra
-
-[State Management using ValueNotifier and InheritedNotifier]: https://www.hungrimind.com/articles/flutter-state-management
+[Gerenciamento de Estado usando ValueNotifier e InheritedNotifier]: https://www.hungrimind.com/articles/flutter-state-management
 
 ## InheritedWidget &amp; InheritedModel
 
-The low-level approach used to communicate between ancestors and children
-in the widget tree. This is what `provider` and many other approaches
-use under the hood.
+A abordagem de baixo nível usada para comunicar entre ancestrais e filhos
+na árvore de widgets. Isso é o que `provider` e muitas outras abordagens
+usam por baixo dos panos.
 
-The following instructor-led video workshop covers how to
-use `InheritedWidget`:
+O seguinte workshop em vídeo conduzido por um instrutor cobre como
+usar `InheritedWidget`:
 
-{% ytEmbed 'LFcGPS6cGrY', 'How to manage application state using inherited widgets' %}
+{% ytEmbed 'LFcGPS6cGrY', 'Como gerenciar o estado do aplicativo usando widgets herdados' %}
 
-Other useful docs include:
+Outros documentos úteis incluem:
 
-* [InheritedWidget docs][]
-* [Managing Flutter Application State With InheritedWidgets][],
-  by Hans Muller
-* [Inheriting Widgets][], by Mehmet Fidanboylu
-* [Using Flutter Inherited Widgets Effectively][], by Eric Windmill
-* [Widget - State - Context - InheritedWidget][], by Didier Bolelens
+* [Documentação do InheritedWidget][]
+* [Gerenciando o estado da aplicação Flutter com InheritedWidgets][],
+  por Hans Muller
+* [Herança de Widgets][], por Mehmet Fidanboylu
+* [Usando Widgets Inherited do Flutter de forma Eficaz][], por Eric Windmill
+* [Widget - Estado - Contexto - InheritedWidget][], por Didier Bolelens
 
-[InheritedWidget docs]: {{site.api}}/flutter/widgets/InheritedWidget-class.html
-[Inheriting Widgets]: {{site.medium}}/@mehmetf_71205/inheriting-widgets-b7ac56dbbeb1
-[Managing Flutter Application State With InheritedWidgets]: {{site.flutter-medium}}/managing-flutter-application-state-with-inheritedwidgets-1140452befe1
-[Using Flutter Inherited Widgets Effectively]: https://ericwindmill.com/articles/inherited_widget/
-[Widget - State - Context - InheritedWidget]: https://www.didierboelens.com/2018/06/widget---state---context---inheritedwidget/
+[Documentação do InheritedWidget]: {{site.api}}/flutter/widgets/InheritedWidget-class.html
+[Herança de Widgets]: {{site.medium}}/@mehmetf_71205/inheriting-widgets-b7ac56dbbeb1
+[Gerenciando o estado da aplicação Flutter com InheritedWidgets]: {{site.flutter-medium}}/managing-flutter-application-state-with-inheritedwidgets-1140452befe1
+[Usando Widgets Inherited do Flutter de forma Eficaz]: https://ericwindmill.com/articles/inherited_widget/
+[Widget - Estado - Contexto - InheritedWidget]: https://www.didierboelens.com/2018/06/widget---state---context---inheritedwidget/
 
 ## June
 
-A lightweight and modern state management library that focuses on providing
-a pattern similar to Flutter's built-in state management.
+Uma biblioteca de gerenciamento de estado leve e moderna que se concentra em fornecer
+um padrão semelhante ao gerenciamento de estado integrado do Flutter.
 
-* [june package][]
+* [Pacote June][]
 
-[june package]: {{site.pub-pkg}}/june
-
+[Pacote June]: {{site.pub-pkg}}/june
 
 ## Redux
 
-A state container approach familiar to many web developers.
+Uma abordagem de contêiner de estado familiar para muitos desenvolvedores web.
 
-* [Animation Management with Redux and Flutter][],
-  a video from DartConf 2018 [Accompanying article on Medium][]
-* [Flutter Redux package][]
-* [Redux Saga Middleware Dart and Flutter][], by Bilal Uslu
-* [Introduction to Redux in Flutter][], by Xavi Rigau
-* [Flutter + Redux&mdash;How to make a shopping list app][],
-  by Paulina Szklarska on Hackernoon
-* [Building a TODO application (CRUD) in Flutter with Redux&mdash;Part 1][],
-  a video by Tensor Programming
-* [Flutter Redux Thunk, an example][], by Jack Wong
-* [Building a (large) Flutter app with Redux][], by Hillel Coren
-* [Fish-Redux–An assembled flutter application framework based on Redux][],
-  by Alibaba
-* [Async Redux–Redux without boilerplate. Allows for both sync and async reducers][],
-  by Marcelo Glasberg
-* [Flutter meets Redux: The Redux way of managing Flutter applications state][],
-  by Amir Ghezelbash
-* [Redux and epics for better-organized code in Flutter apps][], by Nihad Delic
-* [Flutter_Redux_Gen - VS Code Plugin to generate boiler plate code][], by Balamurugan Muthusamy (BalaDhruv)
-* [Flutter Animations Studio][], by Gianluca Romeo
+* [Gerenciamento de Animação com Redux e Flutter][],
+  um vídeo da DartConf 2018 [Artigo complementar no Medium][]
+* [Pacote Flutter Redux][]
+* [Redux Saga Middleware Dart e Flutter][], por Bilal Uslu
+* [Introdução ao Redux no Flutter][], por Xavi Rigau
+* [Flutter + Redux — Como fazer um aplicativo de lista de compras][],
+  por Paulina Szklarska no Hackernoon
+* [Construindo um aplicativo TODO (CRUD) no Flutter com Redux — Parte 1][],
+  um vídeo da Tensor Programming
+* [Flutter Redux Thunk, um exemplo][], por Jack Wong
+* [Construindo um aplicativo Flutter (grande) com Redux][], por Hillel Coren
+* [Fish-Redux – Uma estrutura de aplicativo Flutter montada baseada em Redux][],
+  por Alibaba
+* [Async Redux – Redux sem boilerplate. Permite reducers síncronos e assíncronos][],
+  por Marcelo Glasberg
+* [Flutter encontra Redux: A maneira Redux de gerenciar o estado das aplicações Flutter][],
+  por Amir Ghezelbash
+* [Redux e epics para código mais bem organizado em aplicativos Flutter][], por Nihad Delic
+* [Flutter_Redux_Gen - Plugin do VS Code para gerar código boilerplate][], por Balamurugan Muthusamy (BalaDhruv)
+* [Flutter Animations Studio][], por Gianluca Romeo
 
-[Accompanying article on Medium]: {{site.flutter-medium}}/animation-management-with-flutter-and-flux-redux-94729e6585fa
-[Animation Management with Redux and Flutter]: {{site.yt.watch}}?v=9ZkLtr0Fbgk
-[Async Redux–Redux without boilerplate. Allows for both sync and async reducers]: {{site.pub}}/packages/async_redux
-[Building a (large) Flutter app with Redux]: https://hillelcoren.com/2018/06/01/building-a-large-flutter-app-with-redux/
-[Building a TODO application (CRUD) in Flutter with Redux&mdash;Part 1]: {{site.yt.watch}}?v=Wj216eSBBWs
-[Fish-Redux–An assembled flutter application framework based on Redux]: {{site.github}}/alibaba/fish-redux/
-[Flutter Redux Thunk, an example]: {{site.medium}}/flutterpub/flutter-redux-thunk-27c2f2b80a3b
-[Flutter meets Redux: The Redux way of managing Flutter applications state]: {{site.medium}}/@thisisamir98/flutter-meets-redux-the-redux-way-of-managing-flutter-applications-state-f60ef693b509
-[Flutter Redux package]: {{site.pub-pkg}}/flutter_redux
-[Flutter + Redux&mdash;How to make a shopping list app]: https://hackernoon.com/flutter-redux-how-to-make-shopping-list-app-1cd315e79b65
-[Introduction to Redux in Flutter]: https://blog.novoda.com/introduction-to-redux-in-flutter/
-[Redux and epics for better-organized code in Flutter apps]: {{site.medium}}/upday-devs/reduce-duplication-achieve-flexibility-means-success-for-the-flutter-app-e5e432839e61
-[Redux Saga Middleware Dart and Flutter]: {{site.pub-pkg}}/redux_saga
-[Flutter_Redux_Gen - VS Code Plugin to generate boiler plate code]: https://marketplace.visualstudio.com/items?itemName=BalaDhruv.flutter-redux-gen
+[Artigo complementar no Medium]: {{site.flutter-medium}}/animation-management-with-flutter-and-flux-redux-94729e6585fa
+[Gerenciamento de Animação com Redux e Flutter]: {{site.yt.watch}}?v=9ZkLtr0Fbgk
+[Async Redux – Redux sem boilerplate. Permite reducers síncronos e assíncronos]: {{site.pub}}/packages/async_redux
+[Construindo um aplicativo Flutter (grande) com Redux]: https://hillelcoren.com/2018/06/01/building-a-large-flutter-app-with-redux/
+[Construindo um aplicativo TODO (CRUD) no Flutter com Redux — Parte 1]: {{site.yt.watch}}?v=Wj216eSBBWs
+[Fish-Redux – Uma estrutura de aplicativo Flutter montada baseada em Redux]: {{site.github}}/alibaba/fish-redux/
+[Flutter Redux Thunk, um exemplo]: {{site.medium}}/flutterpub/flutter-redux-thunk-27c2f2b80a3b
+[Flutter encontra Redux: A maneira Redux de gerenciar o estado das aplicações Flutter]: {{site.medium}}/@thisisamir98/flutter-meets-redux-the-redux-way-of-managing-flutter-applications-state-f60ef693b509
+[Pacote Flutter Redux]: {{site.pub-pkg}}/flutter_redux
+[Flutter + Redux — Como fazer um aplicativo de lista de compras]: https://hackernoon.com/flutter-redux-how-to-make-shopping-list-app-1cd315e79b65
+[Introdução ao Redux no Flutter]: https://blog.novoda.com/introduction-to-redux-in-flutter/
+[Redux e epics para código mais bem organizado em aplicativos Flutter]: {{site.medium}}/upday-devs/reduce-duplication-achieve-flexibility-means-success-for-the-flutter-app-e5e432839e61
+[Redux Saga Middleware Dart e Flutter]: {{site.pub-pkg}}/redux_saga
+[Flutter_Redux_Gen - Plugin do VS Code para gerar código boilerplate]: https://marketplace.visualstudio.com/items?itemName=BalaDhruv.flutter-redux-gen
 [Flutter Animations Studio]: {{site.github}}/gianlucaromeo/flutter-animations-studio
 
 ## Fish-Redux
 
-Fish Redux is an assembled flutter application framework
-based on Redux state management.
-It is suitable for building medium and large applications.
+Fish Redux é uma estrutura de aplicativo Flutter montada
+baseada no gerenciamento de estado Redux.
+É adequada para construir aplicativos médios e grandes.
 
-* [Fish-Redux-Library][] package, by Alibaba
-* [Fish-Redux-Source][], project code
-* [Flutter-Movie][], A non-trivial example demonstrating how
-  to use Fish Redux, with more than 30 screens, graphql,
-  payment api, and media player.
+* [Pacote Fish-Redux-Library][], por Alibaba
+* [Fish-Redux-Source][], código do projeto
+* [Flutter-Movie][], Um exemplo não trivial demonstrando como
+  usar Fish Redux, com mais de 30 telas, graphql,
+  api de pagamento e reprodutor de mídia.
 
 [Fish-Redux-Library]: {{site.pub-pkg}}/fish_redux
 [Fish-Redux-Source]: {{site.github}}/alibaba/fish-redux
@@ -163,176 +162,169 @@ It is suitable for building medium and large applications.
 
 ## BLoC / Rx
 
-A family of stream/observable based patterns.
+Uma família de padrões baseados em stream/observable.
 
-* [Architect your Flutter project using BLoC pattern][],
-  by Sagar Suri
-* [BloC Library][], by Felix Angelov
-* [Reactive Programming - Streams - BLoC - Practical Use Cases][],
-  by Didier Boelens
+* [Arquitetando seu projeto Flutter usando o padrão BLoC][],
+  por Sagar Suri
+* [Biblioteca BloC][], por Felix Angelov
+* [Programação Reativa - Streams - BLoC - Casos de Uso Práticos][],
+  por Didier Boelens
 
-[Architect your Flutter project using BLoC pattern]: {{site.medium}}/flutterpub/architecting-your-flutter-project-bd04e144a8f1
-[BloC Library]: https://felangel.github.io/bloc
-[Reactive Programming - Streams - BLoC - Practical Use Cases]: https://www.didierboelens.com/2018/12/reactive-programming---streams---bloc---practical-use-cases
+[Arquitetando seu projeto Flutter usando o padrão BLoC]: {{site.medium}}/flutterpub/architecting-your-flutter-project-bd04e144a8f1
+[Biblioteca BloC]: https://felangel.github.io/bloc
+[Programação Reativa - Streams - BLoC - Casos de Uso Práticos]: https://www.didierboelens.com/2018/12/reactive-programming---streams---bloc---practical-use-cases
 
 ## GetIt
 
-A service locator based state management approach that
-doesn't need a `BuildContext`.
+Uma abordagem de gerenciamento de estado baseada em localizador de serviço que
+não precisa de um `BuildContext`.
 
-* [GetIt package][], the service locator.
-  It can also be used together with BloCs.
-* [GetIt Mixin package][], a mixin that completes
-  `GetIt` to a full state management solution.
-* [GetIt Hooks package][], same as the mixin in
-  case you already use `flutter_hooks`.
-* [Flutter state management for minimalists][], by Suragch
+* [Pacote GetIt][], o localizador de serviço.
+  Ele também pode ser usado em conjunto com BloCs.
+* [Pacote GetIt Mixin][], um mixin que completa
+  `GetIt` para uma solução completa de gerenciamento de estado.
+* [Pacote GetIt Hooks][], o mesmo que o mixin, caso
+  você já use `flutter_hooks`.
+* [Gerenciamento de estado Flutter para minimalistas][], por Suragch
 
 :::note
-To learn more, watch this short Package of the Week video on the GetIt package:
+Para aprender mais, assista este pequeno vídeo do Pacote da Semana sobre o pacote GetIt:
 
-{% ytEmbed 'f9XQD5mf6FY', 'get_it | Flutter package of the week', true %}
+{% ytEmbed 'f9XQD5mf6FY', 'get_it | Pacote Flutter da semana', true %}
 :::
 
-[Flutter state management for minimalists]: {{site.medium}}/flutter-community/flutter-state-management-for-minimalists-4c71a2f2f0c1?sk=6f9cedfb550ca9cc7f88317e2e7055a0
-[GetIt package]: {{site.pub-pkg}}/get_it
-[GetIt Hooks package]: {{site.pub-pkg}}/get_it_hooks
-[GetIt Mixin package]: {{site.pub-pkg}}/get_it_mixin
+[Gerenciamento de estado Flutter para minimalistas]: {{site.medium}}/flutter-community/flutter-state-management-for-minimalists-4c71a2f2f0c1?sk=6f9cedfb550ca9cc7f88317e2e7055a0
+[Pacote GetIt]: {{site.pub-pkg}}/get_it
+[Pacote GetIt Hooks]: {{site.pub-pkg}}/get_it_hooks
+[Pacote GetIt Mixin]: {{site.pub-pkg}}/get_it_mixin
 
 ## MobX
 
-A popular library based on observables and reactions.
+Uma biblioteca popular baseada em observables e reações.
 
-* [MobX.dart, Hassle free state-management for your Dart and Flutter apps][]
-* [Getting started with MobX.dart][]
-* [Flutter: State Management with Mobx][], a video by Paul Halliday
+* [MobX.dart, gerenciamento de estado descomplicado para seus aplicativos Dart e Flutter][]
+* [Começando com MobX.dart][]
+* [Flutter: Gerenciamento de Estado com Mobx][], um vídeo de Paul Halliday
 
-[Flutter: State Management with Mobx]: {{site.yt.watch}}?v=p-MUBLOEkCs
-[Getting started with MobX.dart]: https://mobx.netlify.app/getting-started
-[MobX.dart, Hassle free state-management for your Dart and Flutter apps]: {{site.github}}/mobxjs/mobx.dart
+[Flutter: Gerenciamento de Estado com Mobx]: {{site.yt.watch}}?v=p-MUBLOEkCs
+[Começando com MobX.dart]: https://mobx.netlify.app/getting-started
+[MobX.dart, gerenciamento de estado descomplicado para seus aplicativos Dart e Flutter]: {{site.github}}/mobxjs/mobx.dart
 
 ## Dart Board
 
-A modular feature management framework for Flutter.
-Dart Board is designed to help encapsulate and isolate
-features, including examples/frameworks,
-small kernel, and many ready-to-use decoupled features
-such as debugging, logging, auth, redux, locator,
-particle system and more.
+Uma estrutura modular de gerenciamento de recursos para Flutter.
+Dart Board foi projetado para ajudar a encapsular e isolar
+recursos, incluindo exemplos/frameworks,
+pequeno kernel e muitos recursos desacoplados prontos para uso
+como depuração, registro, autenticação, redux, localizador,
+sistema de partículas e mais.
 
 * [Dart Board Homepage + Demos](https://dart-board.io/)
-* [Dart Board on pub.dev]({{site.pub-pkg}}/dart_board_core)
-* [dart_board on GitHub]({{site.github}}/ahammer/dart_board)
-* [Getting started with Dart Board]({{site.github}}/ahammer/dart_board/blob/master/GETTING_STARTED.md)
+* [Dart Board no pub.dev]({{site.pub-pkg}}/dart_board_core)
+* [dart_board no GitHub]({{site.github}}/ahammer/dart_board)
+* [Começando com Dart Board]({{site.github}}/ahammer/dart_board/blob/master/GETTING_STARTED.md)
 
 ## Flutter Commands
 
-Reactive state management that uses the Command Pattern
-and is based on `ValueNotifiers`. Best in combination with
-[GetIt](#getit), but can be used with `Provider` or other
-locators too.
+Gerenciamento de estado reativo que usa o Command Pattern
+e é baseado em `ValueNotifiers`. Melhor em combinação com
+[GetIt](#getit), mas pode ser usado com `Provider` ou outros
+localizadores também.
 
-* [Flutter Command package][]
-* [RxCommand package][], `Stream` based implementation.
+* [Pacote Flutter Command][]
+* [Pacote RxCommand][], implementação baseada em `Stream`.
 
-[Flutter Command package]: {{site.pub-pkg}}/flutter_command
-[RxCommand package]: {{site.pub-pkg}}/rx_command
+[Pacote Flutter Command]: {{site.pub-pkg}}/flutter_command
+[Pacote RxCommand]: {{site.pub-pkg}}/rx_command
 
 ## Binder
 
-A state management package that uses `InheritedWidget`
-at its core. Inspired in part by recoil.
-This package promotes the separation of concerns.
+Um pacote de gerenciamento de estado que usa `InheritedWidget`
+em seu núcleo. Inspirado em parte por recoil.
+Este pacote promove a separação de responsabilidades.
 
-* [Binder package][]
-* [Binder examples][]
-* [Binder snippets][], vscode snippets to be even more
-  productive with Binder
+* [Pacote Binder][]
+* [Exemplos do Binder][]
+* [Snippets do Binder][], snippets do vscode para ser ainda mais
+  produtivo com o Binder
 
-[Binder examples]: {{site.github}}/letsar/binder/tree/main/examples
-[Binder package]: {{site.pub-pkg}}/binder
-[Binder snippets]: https://marketplace.visualstudio.com/items?itemName=romain-rastel.flutter-binder-snippets
+[Exemplos do Binder]: {{site.github}}/letsar/binder/tree/main/examples
+[Pacote Binder]: {{site.pub-pkg}}/binder
+[Snippets do Binder]: https://marketplace.visualstudio.com/items?itemName=romain-rastel.flutter-binder-snippets
 
 ## GetX
 
-A simplified reactive state management solution.
+Uma solução simplificada de gerenciamento de estado reativo.
 
-* [GetX package][]
-* [GetX Flutter Firebase Auth Example][], by Jeff McMorris
+* [Pacote GetX][]
+* [Exemplo de Autenticação Firebase do GetX Flutter][], por Jeff McMorris
 
-[GetX package]: {{site.pub-pkg}}/get
-[GetX Flutter Firebase Auth Example]: {{site.medium}}/@jeffmcmorris/getx-flutter-firebase-auth-example-b383c1dd1de2
+[Pacote GetX]: {{site.pub-pkg}}/get
+[Exemplo de Autenticação Firebase do GetX Flutter]: {{site.medium}}/@jeffmcmorris/getx-flutter-firebase-auth-example-b383c1dd1de2
 
 ## states_rebuilder
 
-An approach that combines state management with a
-dependency injection solution and an integrated router.
-For more information, see the following info:
+Uma abordagem que combina gerenciamento de estado com uma
+solução de injeção de dependência e um roteador integrado.
+Para mais informações, veja as seguintes informações:
 
-* [States Rebuilder][] project code
-* [States Rebuilder documentation][]
+* [States Rebuilder][] código do projeto
+* [Documentação do States Rebuilder][]
 
 [States Rebuilder]: {{site.github}}/GIfatahTH/states_rebuilder
-[States Rebuilder documentation]: {{site.github}}/GIfatahTH/states_rebuilder/wiki
+[Documentação do States Rebuilder]: {{site.github}}/GIfatahTH/states_rebuilder/wiki
 
 ## Triple Pattern (Segmented State Pattern)
 
-Triple is a pattern for state management that uses `Streams` or `ValueNotifier`.
-This mechanism (nicknamed _triple_ because the stream always uses three
-values: `Error`, `Loading`, and `State`), is based on the
+Triple é um padrão para gerenciamento de estado que usa `Streams` ou `ValueNotifier`.
+Este mecanismo (apelidado de _triple_ porque o stream sempre usa três
+valores: `Error`, `Loading` e `State`), é baseado no
 [Segmented State pattern][].
 
-For more information, refer to the following resources:
+Para mais informações, consulte os seguintes recursos:
 
-* [Triple documentation][]
-* [Flutter Triple package][]
-* [Triple Pattern: A new pattern for state management in Flutter][]
-  (blog post written in Portuguese but can be auto-translated)
-* [VIDEO: Flutter Triple Pattern by Kevlin Ossada][] (recorded in English)
+* [Documentação do Triple][]
+* [Pacote Flutter Triple][]
+* [Triple Pattern: Um novo padrão para gerenciamento de estado no Flutter][]
+  (postagem de blog escrita em português, mas pode ser traduzida automaticamente)
+* [VÍDEO: Flutter Triple Pattern por Kevlin Ossada][] (gravado em inglês)
 
-[Triple documentation]: https://triple.flutterando.com.br/
-[Flutter Triple package]: {{site.pub-pkg}}/flutter_triple
+[Documentação do Triple]: https://triple.flutterando.com.br/
+[Pacote Flutter Triple]: {{site.pub-pkg}}/flutter_triple
 [Segmented State pattern]: https://triple.flutterando.com.br/docs/intro/overview#-segmented-state-pattern-ssp
-[Triple Pattern: A new pattern for state management in Flutter]: https://blog.flutterando.com.br/triple-pattern-um-novo-padr%C3%A3o-para-ger%C3%AAncia-de-estado-no-flutter-2e693a0f4c3e
-[VIDEO: Flutter Triple Pattern by Kevlin Ossada]: {{site.yt.watch}}?v=dXc3tR15AoA
+[Triple Pattern: Um novo padrão para gerenciamento de estado no Flutter]: https://blog.flutterando.com.br/triple-pattern-um-novo-padr%C3%A3o-para-ger%C3%AAncia-de-estado-no-flutter-2e693a0f4c3e
+[VÍDEO: Flutter Triple Pattern por Kevlin Ossada]: {{site.yt.watch}}?v=dXc3tR15AoA
 
 ## solidart
 
-A simple but powerful state management solution inspired by SolidJS.
+Uma solução de gerenciamento de estado simples, mas poderosa, inspirada no SolidJS.
 
-* [Official Documentation][]
-* [solidart package][]
-* [flutter_solidart package][]
+* [Documentação Oficial][]
+* [Pacote solidart][]
+* [Pacote flutter_solidart][]
 
-[Official Documentation]: https://docs.page/nank1ro/solidart
-[solidart package]: {{site.pub-pkg}}/solidart
-[flutter_solidart package]: {{site.pub-pkg}}/flutter_solidart
+[Documentação Oficial]: https://docs.page/nank1ro/solidart
+[Pacote solidart]: {{site.pub-pkg}}/solidart
+[Pacote flutter_solidart]: {{site.pub-pkg}}/flutter_solidart
 
 ## flutter_reactive_value
 
-The `flutter_reactive_value` library might offer the least complex solution for state
-management in Flutter. It might help Flutter newcomers add reactivity to their UI,
-without the complexity of the mechanisms described before.
-The `flutter_reactive_value` library defines the `reactiveValue(BuildContext)`
-extension method on `ValueNotifier`. This extension allows a `Widget` to
-fetch the current value of the `ValueNotifier` and
-subscribe the `Widget` to changes in the value of the `ValueNotifier`.
-If the value of the `ValueNotifier` changes, `Widget` rebuilds.
+A biblioteca `flutter_reactive_value` pode oferecer a solução menos complexa para o gerenciamento de estado no Flutter. Pode ajudar os recém-chegados ao Flutter a adicionar reatividade à sua IU, sem a complexidade dos mecanismos descritos anteriormente. A biblioteca `flutter_reactive_value` define o método de extensão `reactiveValue(BuildContext)` em `ValueNotifier`. Essa extensão permite que um `Widget` busque o valor atual do `ValueNotifier` e subscreva o `Widget` a alterações no valor do `ValueNotifier`. Se o valor do `ValueNotifier` mudar, o `Widget` é reconstruído.
 
-* [`flutter_reactive_value`][] source and documentation
+* [`flutter_reactive_value`][] código fonte e documentação
 
 [`flutter_reactive_value`]: {{site.github}}/lukehutch/flutter_reactive_value
 
 ## Elementary
 
-Elementary is a simple and reliable way to build applications with MVVM in Flutter.
-It offers a pure Flutter experience with clear code separation by responsibilities,
-efficient rebuilds, easy testability, and enhancing team productivity.
+Elementary é uma maneira simples e confiável de construir aplicativos com MVVM no Flutter.
+Ele oferece uma experiência Flutter pura com separação clara de código por responsabilidades,
+reconstruções eficientes, fácil testabilidade e aprimoramento da produtividade da equipe.
 
-* [Elementary Documentation][]
-* [Elementary Repository][]
-* [Elementary package][]
+* [Documentação do Elementary][]
+* [Repositório do Elementary][]
+* [Pacote Elementary][]
 
-[Elementary Documentation]: https://documentation.elementaryteam.dev/
-[Elementary Repository]: {{site.github}}/Elementary-team/flutter-elementary
-[Elementary package]: {{site.pub-pkg}}/elementary
+[Documentação do Elementary]: https://documentation.elementaryteam.dev/
+[Repositório do Elementary]: {{site.github}}/Elementary-team/flutter-elementary
+[Pacote Elementary]: {{site.pub-pkg}}/elementary

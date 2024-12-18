@@ -1,20 +1,20 @@
 ---
-title: iOS debugging
-description: iOS-specific debugging techniques for Flutter apps
+ia-translate: true
+title: Depuração no iOS
+description: Técnicas de depuração específicas do iOS para aplicativos Flutter
 ---
 
-Due to security around
-[local network permissions in iOS 14 or later][],
-you must accept a permission dialog box to enable
-Flutter debugging functionalities such as hot-reload
-and DevTools.
+Devido à segurança em torno das
+[permissões de rede local no iOS 14 ou posterior][],
+você deve aceitar uma caixa de diálogo de permissão para habilitar
+funcionalidades de depuração do Flutter, como hot-reload
+e DevTools.
 
-![Screenshot of "allow network connections" dialog](/assets/images/docs/development/device-connect.png)
+![Captura de tela da caixa de diálogo "permitir conexões de rede"](/assets/images/docs/development/device-connect.png)
 
-This affects debug and profile builds only and won't
-appear in release builds. You can also allow this
-permission by enabling
-**Settings > Privacy > Local Network > Your App**.
+Isso afeta apenas builds de depuração e perfil e não
+aparecerá em builds de lançamento. Você também pode permitir esta
+permissão habilitando
+**Ajustes > Privacidade > Rede Local > Seu Aplicativo**.
 
-[local network permissions in iOS 14 or later]: {{site.apple-dev}}/news/?id=0oi77447
-
+[permissões de rede local no iOS 14 ou posterior]: {{site.apple-dev}}/news/?id=0oi77447

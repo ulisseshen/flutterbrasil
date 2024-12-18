@@ -1,6 +1,7 @@
 ---
+ia-translate: true
 title: Plugins
-description: A catalog of recipes showcasing using plugins in your Flutter app.
+description: Um catálogo de receitas mostrando o uso de plugins no seu aplicativo Flutter.
 ---
 
 {% include docs/cookbook-group-index.md %}

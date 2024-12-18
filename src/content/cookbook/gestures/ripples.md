@@ -1,6 +1,7 @@
 ---
-title: Add Material touch ripples
-description: How to implement ripple animations.
+ia-translate: true
+title: Adicionar ondulações de toque Material
+description: Como implementar animações de ondulação.
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
@@ -8,22 +9,22 @@ js:
 
 <?code-excerpt path-base="cookbook/gestures/ripples/"?>
 
-Widgets that follow the Material Design guidelines display
-a ripple animation when tapped.
+Widgets que seguem as diretrizes do Material Design exibem
+uma animação de ondulação quando tocados.
 
-Flutter provides the [`InkWell`][]
-widget to perform this effect.
-Create a ripple effect using the following steps:
+O Flutter fornece o widget [`InkWell`][]
+para executar esse efeito.
+Crie um efeito de ondulação usando os seguintes passos:
 
-  1. Create a widget that supports tap.
-  2. Wrap it in an `InkWell` widget to manage tap callbacks and
-     ripple animations.
+  1. Crie um widget que suporte toque.
+  2. Envolva-o em um widget `InkWell` para gerenciar os callbacks de toque e
+     as animações de ondulação.
 
 <?code-excerpt "lib/main.dart (InkWell)" replace="/return //g;/^\);$/)/g"?>
 ```dart
-// The InkWell wraps the custom flat button widget.
+// O InkWell envolve o widget de botão plano customizado.
 InkWell(
-  // When the user taps the button, show a snackbar.
+  // Quando o usuário tocar no botão, exibe um snackbar.
   onTap: () {
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
       content: Text('Tap'),
@@ -36,10 +37,10 @@ InkWell(
 )
 ```
 
-## Interactive example
+## Exemplo interativo
 
 <?code-excerpt "lib/main.dart"?>
-```dartpad title="Flutter Material ripples hands-on example in DartPad" run="true"
+```dartpad title="Exemplo prático de ondulações Material do Flutter no DartPad" run="true"
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -49,7 +50,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const title = 'InkWell Demo';
+    const title = 'Demonstração do InkWell';
 
     return const MaterialApp(
       title: title,
@@ -81,9 +82,9 @@ class MyButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // The InkWell wraps the custom flat button widget.
+    // O InkWell envolve o widget de botão plano customizado.
     return InkWell(
-      // When the user taps the button, show a snackbar.
+      // Quando o usuário tocar no botão, exibe um snackbar.
       onTap: () {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text('Tap'),
@@ -99,7 +100,7 @@ class MyButton extends StatelessWidget {
 ```
 
 <noscript>
-  <img src="/assets/images/docs/cookbook/ripples.gif" alt="Ripples Demo" class="site-mobile-screenshot" />
+  <img src="/assets/images/docs/cookbook/ripples.gif" alt="Demonstração de Ondulações" class="site-mobile-screenshot" />
 </noscript>
 
 

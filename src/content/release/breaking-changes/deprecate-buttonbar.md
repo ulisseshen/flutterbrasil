@@ -1,65 +1,64 @@
 ---
-title: Deprecate `ButtonBar` in favor of `OverflowBar`
+ia-translate: true
+title: Descontinuar `ButtonBar` em favor de `OverflowBar`
 description: >-
-  The ButtonBar widget has been replaced by
-  a more efficient widget, OverflowBar.
+  O widget ButtonBar foi substituído por um widget mais eficiente, OverflowBar.
 ---
 
-## Summary
+## Sumário
 
-The `ButtonBar` widget was deprecated in favor of
-the more efficient `OverflowBar` widget.
-As a result, `ThemeData.buttonBarTheme` and
-`ButtonBarTheme` were also deprecated.
+O widget `ButtonBar` foi descontinuado em favor do widget `OverflowBar`,
+que é mais eficiente. Como resultado, `ThemeData.buttonBarTheme` e
+`ButtonBarTheme` também foram descontinuados.
 
-## Context
+## Contexto
 
-The `ButtonBar` widget lays out its children in a row and
-in a column if there is not enough horizontal space.
-The `OverflowBar` widget does the same, but it's
-not tied to the Material library and is part of the core `widgets.dart` library.
+O widget `ButtonBar` organiza seus filhos em uma linha e
+em uma coluna se não houver espaço horizontal suficiente.
+O widget `OverflowBar` faz o mesmo, mas não está
+vinculado à biblioteca Material e faz parte da biblioteca principal `widgets.dart`.
 
-## Description of change
+## Descrição da mudança
 
-- Replace `ButtonBar` widget with `OverflowBar` widget.
-- By default, `ButtonBar` aligns its children to the end of the layout, while
-  `OverflowBar` aligns its children to the start.
-  To align the `OverflowBar` children to the end, set
-  the `OverflowBar.alignment` property to `MainAxisAlignment.end`.
-- `ButtonBar.buttonPadding` provides spacing
-  between buttons and padding around buttons.
-  Replace it with `OverflowBar.spacing`, which provides spacing between buttons.
-  Wrap the `OverflowBar` widget with `Padding` widget to
-  provide padding around the buttons.
-- Replace `ButtonBar.overflowButtonSpacing` with `OverflowBar.overflowSpacing`,
-  which provides spacing between buttons when the buttons are laid in a column
-  when there is not enough horizontal space.
-- If it is specified, remove `ButtonBarThemeData` from `ThemeData`.
+- Substitua o widget `ButtonBar` pelo widget `OverflowBar`.
+- Por padrão, `ButtonBar` alinha seus filhos ao final do layout, enquanto
+  `OverflowBar` alinha seus filhos ao início.
+  Para alinhar os filhos de `OverflowBar` ao final, defina
+  a propriedade `OverflowBar.alignment` para `MainAxisAlignment.end`.
+- `ButtonBar.buttonPadding` fornece espaçamento
+  entre os botões e preenchimento em volta dos botões.
+  Substitua-o por `OverflowBar.spacing`, que fornece espaçamento entre os botões.
+  Envolva o widget `OverflowBar` com o widget `Padding` para
+  fornecer preenchimento em volta dos botões.
+- Substitua `ButtonBar.overflowButtonSpacing` por `OverflowBar.overflowSpacing`,
+  que fornece espaçamento entre os botões quando os botões são dispostos em uma
+  coluna quando não há espaço horizontal suficiente.
+- Se especificado, remova `ButtonBarThemeData` de `ThemeData`.
 
-## Migration guide
+## Guia de migração
 
-Replace `ButtonBar` with `OverflowBar`, override the default alignment if
-necessary, replace `ButtonBar.buttonPadding` with `Padding` widget and
-`OverflowBar.spacing` for spacing between and around buttons, and replace
-`ButtonBar.overflowButtonSpacing` with `OverflowBar.overflowSpacing` for
-spacing between buttons when the buttons are laid in a column when there is not
-enough horizontal space.
+Substitua `ButtonBar` por `OverflowBar`, sobrescreva o alinhamento padrão se
+necessário, substitua `ButtonBar.buttonPadding` pelo widget `Padding` e
+`OverflowBar.spacing` para espaçamento entre e em volta dos botões, e substitua
+`ButtonBar.overflowButtonSpacing` por `OverflowBar.overflowSpacing` para
+espaçamento entre os botões quando os botões são dispostos em uma coluna quando não há
+espaço horizontal suficiente.
 
-Before:
+Antes:
 
 ```dart
 ButtonBar(
   buttonPadding: const EdgeInsets.all(8.0),
   overflowButtonSpacing: 8.0,
   children: <Widget>[
-    TextButton(child: const Text('Button 1'), onPressed: () {}),
-    TextButton(child: const Text('Button 2'), onPressed: () {}),
-    TextButton(child: const Text('Button 3'), onPressed: () {}),
+    TextButton(child: const Text('Botão 1'), onPressed: () {}),
+    TextButton(child: const Text('Botão 2'), onPressed: () {}),
+    TextButton(child: const Text('Botão 3'), onPressed: () {}),
   ],
 ),
 ```
 
-After:
+Depois:
 
 ```dart
 Padding(
@@ -69,18 +68,18 @@ Padding(
     spacing: 8.0,
     overflowSpacing: 8.0,
     children: <Widget>[
-      TextButton(child: const Text('Button 1'), onPressed: () {}),
-      TextButton(child: const Text('Button 2'), onPressed: () {}),
-      TextButton(child: const Text('Button 3'), onPressed: () {}),
+      TextButton(child: const Text('Botão 1'), onPressed: () {}),
+      TextButton(child: const Text('Botão 2'), onPressed: () {}),
+      TextButton(child: const Text('Botão 3'), onPressed: () {}),
     ],
   ),
 ),
 ```
 
-If you specify a `ThemeData.buttonBarTheme`, remove it and
-use the `OverflowBar` widget properties to customize the `OverflowBar` widget.
+Se você especificar um `ThemeData.buttonBarTheme`, remova-o e
+use as propriedades do widget `OverflowBar` para personalizar o widget `OverflowBar`.
 
-Before:
+Antes:
 
 ```dart
 ThemeData(
@@ -90,7 +89,7 @@ ThemeData(
 ),
 ```
 
-After:
+Depois:
 
 ```dart
 ThemeData(
@@ -98,10 +97,10 @@ ThemeData(
 ),
 ```
 
-If you use the `ButtonBarTheme` widget, remove it and
-use the `OverflowBar` widget properties to customize the `OverflowBar` widget.
+Se você usar o widget `ButtonBarTheme`, remova-o e
+use as propriedades do widget `OverflowBar` para personalizar o widget `OverflowBar`.
 
-Before:
+Antes:
 
 ```dart
 ButtonBarTheme(
@@ -116,7 +115,7 @@ ButtonBarTheme(
 ),
 ```
 
-After:
+Depois:
 
 ```dart
 OverflowBar(
@@ -127,27 +126,27 @@ OverflowBar(
 ),
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.22.0-2.0.pre<br>
-In stable release: 3.24.0
+Implementado na versão: 3.22.0-2.0.pre<br>
+Na versão estável: 3.24.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 - [`OverflowBar`][]
 - [`ButtonBar`][]
 
-Relevant issues:
+Issues relevantes:
 
 - [Issue #127955][]
 
-Relevant PRs:
+PRs relevantes:
 
-- [Deprecate `ButtonBar`, `ButtonBarThemeData`, and `ThemeData.buttonBarTheme`][]
+- [Descontinuar `ButtonBar`, `ButtonBarThemeData` e `ThemeData.buttonBarTheme`][]
 
 [`OverflowBar`]: {{site.api}}/flutter/widgets/OverflowBar-class.html
 [`ButtonBar`]: {{site.api}}/flutter/material/ButtonBar-class.html
 [Issue #127955]: {{site.repo.flutter}}/issues/127955
-[Deprecate `ButtonBar`, `ButtonBarThemeData`, and `ThemeData.buttonBarTheme`]: {{site.repo.flutter}}/pull/145523
+[Descontinuar `ButtonBar`, `ButtonBarThemeData` e `ThemeData.buttonBarTheme`]: {{site.repo.flutter}}/pull/145523

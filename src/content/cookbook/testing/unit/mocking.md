@@ -1,75 +1,55 @@
 ---
-title: Mock dependencies using Mockito
+ia-translate: true
+title: Mock de dependências usando o Mockito
 description: >
-  Use the Mockito package to mimic the behavior of services for testing.
+  Use o pacote Mockito para simular o comportamento de serviços para testes.
 short-title: Mocking
 ---
 
 <?code-excerpt path-base="cookbook/testing/unit/mocking"?>
 
-Sometimes, unit tests might depend on classes that fetch data from live
-web services or databases. This is inconvenient for a few reasons:
+Às vezes, os testes de unidade podem depender de classes que buscam dados de serviços da Web ou bancos de dados ativos. Isso é inconveniente por alguns motivos:
 
-  * Calling live services or databases slows down test execution.
-  * A passing test might start failing if a web service or database returns
-    unexpected results. This is known as a "flaky test."
-  * It is difficult to test all possible success and failure scenarios
-    by using a live web service or database.
+*   Chamar serviços da Web ou bancos de dados ativos torna a execução do teste mais lenta.
+*   Um teste que estava passando pode começar a falhar se um serviço da Web ou banco de dados retornar resultados inesperados. Isso é conhecido como "teste instável".
+*   É difícil testar todos os cenários possíveis de sucesso e falha usando um serviço da Web ou banco de dados ativo.
 
-Therefore, rather than relying on a live web service or database,
-you can "mock" these dependencies. Mocks allow emulating a live
-web service or database and return specific results depending
-on the situation.
+Portanto, em vez de depender de um serviço da Web ou banco de dados ativo, você pode "simular" (mock) essas dependências. Os mocks permitem emular um serviço da Web ou banco de dados ativo e retornar resultados específicos dependendo da situação.
 
-Generally speaking, you can mock dependencies by creating an alternative
-implementation of a class. Write these alternative implementations by
-hand or make use of the [Mockito package][] as a shortcut.
+De um modo geral, você pode simular dependências criando uma implementação alternativa de uma classe. Escreva essas implementações alternativas manualmente ou use o pacote [Mockito package][] como um atalho.
 
-This recipe demonstrates the basics of mocking with the
-Mockito package using the following steps:
+Esta receita demonstra os fundamentos do mocking com o pacote Mockito usando as seguintes etapas:
 
-  1. Add the package dependencies.
-  2. Create a function to test.
-  3. Create a test file with a mock `http.Client`.
-  4. Write a test for each condition.
-  5. Run the tests.
+1. Adicione as dependências do pacote.
+2. Crie uma função para testar.
+3. Crie um arquivo de teste com um `http.Client` mock.
+4. Escreva um teste para cada condição.
+5. Execute os testes.
 
-For more information, see the [Mockito package][] documentation.
+Para obter mais informações, consulte a documentação do [Mockito package][].
 
-## 1. Add the package dependencies
+## 1. Adicione as dependências do pacote
 
-To use the `mockito` package, add it to the
-`pubspec.yaml` file along with the `flutter_test` dependency in the
-`dev_dependencies` section.
+Para usar o pacote `mockito`, adicione-o ao arquivo `pubspec.yaml` junto com a dependência `flutter_test` na seção `dev_dependencies`.
 
-This example also uses the `http` package,
-so define that dependency in the `dependencies` section.
+Este exemplo também usa o pacote `http`, portanto, defina essa dependência na seção `dependencies`.
 
-`mockito: 5.0.0` supports Dart's null safety thanks to code generation.
-To run the required code generation, add the `build_runner` dependency
-in the `dev_dependencies` section.
+O `mockito: 5.0.0` suporta a null safety do Dart graças à geração de código. Para executar a geração de código necessária, adicione a dependência `build_runner` na seção `dev_dependencies`.
 
-To add the dependencies, run `flutter pub add`:
+Para adicionar as dependências, execute `flutter pub add`:
 
 ```console
 $ flutter pub add http dev:mockito dev:build_runner
 ```
 
-## 2. Create a function to test
+## 2. Crie uma função para testar
 
-In this example, unit test the `fetchAlbum` function from the
-[Fetch data from the internet][] recipe.
-To test this function, make two changes:
+Neste exemplo, teste a função `fetchAlbum` da receita [Fetch data from the internet][]. Para testar esta função, faça duas alterações:
 
-  1. Provide an `http.Client` to the function. This allows providing the
-     correct `http.Client` depending on the situation.
-     For Flutter and server-side projects, provide an `http.IOClient`.
-     For Browser apps, provide an `http.BrowserClient`.
-     For tests, provide a mock `http.Client`.
-  2. Use the provided `client` to fetch data from the internet,
-     rather than the static `http.get()` method, which is difficult to mock.
+1. Forneça um `http.Client` para a função. Isso permite fornecer o `http.Client` correto dependendo da situação. Para projetos Flutter e do lado do servidor, forneça um `http.IOClient`. Para aplicativos de navegador, forneça um `http.BrowserClient`. Para testes, forneça um `http.Client` mock.
+2. Use o `client` fornecido para buscar dados da Internet, em vez do método estático `http.get()`, que é difícil de simular.
 
-The function should now look like this:
+A função deve ficar assim:
 
 <?code-excerpt "lib/main.dart (fetchAlbum)"?>
 ```dart
@@ -89,26 +69,19 @@ Future<Album> fetchAlbum(http.Client client) async {
 }
 ```
 
-In your app code, you can provide an `http.Client` to the `fetchAlbum` method 
-directly with `fetchAlbum(http.Client())`. `http.Client()` creates a default
-`http.Client`.
+No código do seu aplicativo, você pode fornecer um `http.Client` para o método `fetchAlbum` diretamente com `fetchAlbum(http.Client())`. `http.Client()` cria um `http.Client` padrão.
 
-## 3. Create a test file with a mock `http.Client`
+## 3. Crie um arquivo de teste com um `http.Client` mock
 
-Next, create a test file.
+Em seguida, crie um arquivo de teste.
 
-Following the advice in the [Introduction to unit testing][] recipe,
-create a file called `fetch_album_test.dart` in the root `test` folder.
+Seguindo o conselho da receita [Introduction to unit testing][], crie um arquivo chamado `fetch_album_test.dart` na pasta raiz `test`.
 
-Add the annotation `@GenerateMocks([http.Client])` to the main
-function to generate a `MockClient` class with `mockito`.
+Adicione a anotação `@GenerateMocks([http.Client])` à função principal para gerar uma classe `MockClient` com `mockito`.
 
-The generated `MockClient` class implements the `http.Client` class.
-This allows you to pass the `MockClient` to the `fetchAlbum` function,
-and return different http responses in each test.
+A classe `MockClient` gerada implementa a classe `http.Client`. Isso permite que você passe o `MockClient` para a função `fetchAlbum` e retorne diferentes respostas http em cada teste.
 
-The generated mocks will be located in `fetch_album_test.mocks.dart`.
-Import this file to use them.
+Os mocks gerados estarão localizados em `fetch_album_test.mocks.dart`. Importe este arquivo para usá-los.
 
 <?code-excerpt "test/fetch_album_test.dart (mockClient)" plaster="none"?>
 ```dart
@@ -123,24 +96,20 @@ void main() {
 }
 ```
 
-Next, generate the mocks running the following command:
+Em seguida, gere os mocks executando o seguinte comando:
 
 ```console
 $ dart run build_runner build
 ```
 
-## 4. Write a test for each condition
+## 4. Escreva um teste para cada condição
 
-The `fetchAlbum()` function does one of two things:
+A função `fetchAlbum()` faz uma de duas coisas:
 
-  1. Returns an `Album` if the http call succeeds
-  2. Throws an `Exception` if the http call fails
+1. Retorna um `Album` se a chamada http for bem-sucedida
+2. Lança uma `Exception` se a chamada http falhar
 
-Therefore, you want to test these two conditions.
-Use the `MockClient` class to return an "Ok" response
-for the success test, and an error response for the unsuccessful test.
-Test these conditions using the `when()` function provided by
-Mockito:
+Portanto, você deseja testar essas duas condições. Use a classe `MockClient` para retornar uma resposta "Ok" para o teste de sucesso e uma resposta de erro para o teste malsucedido. Teste essas condições usando a função `when()` fornecida pelo Mockito:
 
 <?code-excerpt "test/fetch_album_test.dart"?>
 ```dart
@@ -185,19 +154,17 @@ void main() {
 }
 ```
 
-## 5. Run the tests
+## 5. Execute os testes
 
-Now that you have a `fetchAlbum()` function with tests in place,
-run the tests.
+Agora que você tem uma função `fetchAlbum()` com testes em vigor, execute os testes.
 
 ```console
 $ flutter test test/fetch_album_test.dart
 ```
 
-You can also run tests inside your favorite editor by following the
-instructions in the [Introduction to unit testing][] recipe.
+Você também pode executar testes dentro do seu editor favorito seguindo as instruções na receita [Introduction to unit testing][].
 
-## Complete example
+## Exemplo completo
 
 ##### lib/main.dart
 
@@ -335,13 +302,9 @@ void main() {
 }
 ```
 
-## Summary
+## Resumo
 
-In this example, you've learned how to use Mockito to test functions or classes
-that depend on web services or databases. This is only a short introduction to
-the Mockito library and the concept of mocking. For more information,
-see the documentation provided by the [Mockito package][].
-
+Neste exemplo, você aprendeu como usar o Mockito para testar funções ou classes que dependem de serviços da Web ou bancos de dados. Esta é apenas uma breve introdução à biblioteca Mockito e ao conceito de mocking. Para obter mais informações, consulte a documentação fornecida pelo [Mockito package][].
 
 [Fetch data from the internet]: /cookbook/networking/fetch-data
 [Introduction to unit testing]: /cookbook/testing/unit/introduction

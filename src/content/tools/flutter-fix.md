@@ -1,88 +1,61 @@
 ---
+ia-translate: true
 title: Flutter fix
-description: Keep your code up to date with the help of the Flutter Fix feature.
+description: Mantenha seu código atualizado com a ajuda do recurso Flutter Fix.
 ---
 
-As Flutter continues to evolve, we provide a tool to help you clean up
-deprecated APIs from your codebase. The tool ships as part of Flutter, and
-suggests changes that you might want to make to your code. The tool is available
-from the command line, and is also integrated into the IDE plugins for Android
-Studio and Visual Studio Code.
+À medida que o Flutter continua a evoluir, fornecemos uma ferramenta para ajudá-lo a limpar APIs obsoletas de sua base de código. A ferramenta é fornecida como parte do Flutter e sugere mudanças que você pode querer fazer em seu código. A ferramenta está disponível na linha de comando e também é integrada aos plugins IDE para Android Studio e Visual Studio Code.
 
 :::tip
-These automated updates are called _quick-fixes_ in IntelliJ and Android
-Studio, and _code actions_ in VS Code.
+Essas atualizações automatizadas são chamadas de _quick-fixes_ no IntelliJ e Android Studio, e _code actions_ no VS Code.
 :::
 
-## Applying individual fixes
+## Aplicando correções individuais
 
-You can use any supported IDE
-to apply a single fix at a time.
+Você pode usar qualquer IDE suportado para aplicar uma correção por vez.
 
-### IntelliJ and Android Studio
+### IntelliJ e Android Studio
 
-When the analyzer detects a deprecated API,
-a light bulb appears on that line of code.
-Clicking the light bulb displays the suggested fix
-that updates that code to the new API.
-Clicking the suggested fix performs the update.
+Quando o analisador detecta uma API obsoleta, uma lâmpada aparece nessa linha de código. Clicar na lâmpada exibe a correção sugerida que atualiza esse código para a nova API. Clicar na correção sugerida realiza a atualização.
 
-![Screenshot showing suggested change in IntelliJ](/assets/images/docs/development/tools/flutter-fix-suggestion-intellij.png)<br>
-A sample quick-fix in IntelliJ
+![Captura de tela mostrando a mudança sugerida no IntelliJ](/assets/images/docs/development/tools/flutter-fix-suggestion-intellij.png)<br>
+Um exemplo de quick-fix no IntelliJ
 
 ### VS Code
 
-When the analyzer detects a deprecated API,
-it presents an error.
-You can do any of the following:
+Quando o analisador detecta uma API obsoleta, ele apresenta um erro. Você pode fazer qualquer uma das seguintes ações:
 
-* Hover over the error and then click the
-  **Quick Fix** link.
-  This presents a filtered list showing
-  _only_ fixes.
+* Passe o mouse sobre o erro e clique no link **Quick Fix**. Isso apresenta uma lista filtrada mostrando _apenas_ as correções.
 
-* Put the caret in the code with the error and click
-  the light bulb icon that appears.
-  This shows a list of all actions, including
-  refactors.
+* Coloque o cursor no código com o erro e clique no ícone da lâmpada que aparece. Isso mostra uma lista de todas as ações, incluindo refatorações.
 
-* Put the caret in the code with the error and
-  press the shortcut
-  (**Command+.** on macOS, **Control+.** elsewhere)
-  This shows a list of all actions, including
-  refactors.
+* Coloque o cursor no código com o erro e pressione o atalho (**Command+.** no macOS, **Control+.** em outros sistemas). Isso mostra uma lista de todas as ações, incluindo refatorações.
 
-![Screenshot showing suggested change in VS Code](/assets/images/docs/development/tools/flutter-fix-suggestion-vscode.png)<br>
-A sample code action in VS Code
+![Captura de tela mostrando a mudança sugerida no VS Code](/assets/images/docs/development/tools/flutter-fix-suggestion-vscode.png)<br>
+Um exemplo de code action no VS Code
 
-## Applying project-wide fixes
+## Aplicando correções em todo o projeto
 
-[dart fix Decoding Flutter][]
+[dart fix Decodificando o Flutter][]
 
-To see or apply changes to an entire project,
-you can use the command-line tool, [`dart fix`][].
+Para ver ou aplicar mudanças em um projeto inteiro, você pode usar a ferramenta de linha de comando, [`dart fix`][].
 
-This tool has two options:
+Esta ferramenta tem duas opções:
 
-* To see a full list of available changes, run
-  the following command:
+* Para ver uma lista completa de mudanças disponíveis, execute o seguinte comando:
 
   ```console
   $ dart fix --dry-run
   ```
 
-* To apply all changes in bulk, run the
-  following command:
+* Para aplicar todas as mudanças em massa, execute o seguinte comando:
 
   ```console
   $ dart fix --apply
   ```
 
-For more information on Flutter deprecations, see
-[Deprecation lifetime in Flutter][], a free article
-on Flutter's Medium publication.
+Para mais informações sobre depreciações do Flutter, veja [Tempo de vida da depreciação no Flutter][], um artigo gratuito na publicação Medium do Flutter.
 
-
-[Deprecation lifetime in Flutter]: {{site.flutter-medium}}/deprecation-lifetime-in-flutter-e4d76ee738ad
+[Tempo de vida da depreciação no Flutter]: {{site.flutter-medium}}/deprecation-lifetime-in-flutter-e4d76ee738ad
 [`dart fix`]: {{site.dart-site}}/tools/dart-fix
-[dart fix Decoding Flutter]: {{site.yt.watch}}?v=OBIuSrg_Quo
+[dart fix Decodificando o Flutter]: {{site.yt.watch}}?v=OBIuSrg_Quo

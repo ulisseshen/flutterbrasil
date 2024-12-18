@@ -1,5 +1,6 @@
 ---
+ia-translate: true
 layout: toc
 title: macOS
-description: Content covering integration with macOS in Flutter apps.
+description: Conteúdo sobre a integração com o macOS em aplicativos Flutter.
 ---

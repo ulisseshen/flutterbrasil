@@ -1,148 +1,149 @@
 ---
-title: Flutter release notes
-short-title: Release notes
-description: Release notes for Flutter for prior releases.
+ia-translate: true
+title: Notas de lançamento do Flutter
+short-title: Notas de lançamento
+description: Notas de lançamento do Flutter para versões anteriores.
 ---
 
-This page links to announcements and release notes for
-releases to the stable channel.
+Esta página contém links para anúncios e notas de lançamento para
+as versões do canal estável.
 
 :::note
-For information about bug-fix releases,
-check out the Flutter [CHANGELOG][].
+Para informações sobre lançamentos de correção de bugs,
+confira o [CHANGELOG][] do Flutter.
 :::
 
 * 3.27.0
-  * [3.27.0 announcement][]
-  * [3.27.0 release notes & change log][]
-  * [3.27.0 breaking changes & migrations][]
+  * [Anúncio da versão 3.27.0][]
+  * [Notas de lançamento e changelog da versão 3.27.0][]
+  * [Mudanças e migrações interruptivas da versão 3.27.0][]
 * 3.24.0
-  * [3.24.0 announcement][]
-  * [3.24.0 release notes & change log][]
-  * [3.24.0 breaking changes & migrations][]
+  * [Anúncio da versão 3.24.0][]
+  * [Notas de lançamento e changelog da versão 3.24.0][]
+  * [Mudanças e migrações interruptivas da versão 3.24.0][]
 * 3.22.0
-  * [3.22.0 announcement][]
-  * [3.22.0 release notes & change log][]
-  * [3.22.0 breaking changes & migrations][]
+  * [Anúncio da versão 3.22.0][]
+  * [Notas de lançamento e changelog da versão 3.22.0][]
+  * [Mudanças e migrações interruptivas da versão 3.22.0][]
 * 3.19.0
-  * [3.19.0 announcement][]
-  * [3.19.0 release notes & change log][]
-  * [3.19.0 breaking changes & migrations][]
+  * [Anúncio da versão 3.19.0][]
+  * [Notas de lançamento e changelog da versão 3.19.0][]
+  * [Mudanças e migrações interruptivas da versão 3.19.0][]
 * 3.16.0
-  * [3.16.0 announcement][]
-  * [3.16.0 release notes & change log][]
-  * [3.16.0 breaking changes & migrations][]
+  * [Anúncio da versão 3.16.0][]
+  * [Notas de lançamento e changelog da versão 3.16.0][]
+  * [Mudanças e migrações interruptivas da versão 3.16.0][]
 * 3.13.0
-  * [3.13.0 announcement][]
-  * [3.13.0 release notes & change log][]
-  * [3.13.0 breaking changes & migrations][]
+  * [Anúncio da versão 3.13.0][]
+  * [Notas de lançamento e changelog da versão 3.13.0][]
+  * [Mudanças e migrações interruptivas da versão 3.13.0][]
 * 3.10.0
-  * [3.10.0 announcement][]
-  * [3.10.0 release notes & change log][]
-  * [3.10.0 breaking changes & migrations][]
+  * [Anúncio da versão 3.10.0][]
+  * [Notas de lançamento e changelog da versão 3.10.0][]
+  * [Mudanças e migrações interruptivas da versão 3.10.0][]
 * 3.7.0
-  * [3.7.0 announcement][]
-  * [3.7.0 release notes & change log][]
-  * [3.7.0 breaking changes & migrations][]
+  * [Anúncio da versão 3.7.0][]
+  * [Notas de lançamento e changelog da versão 3.7.0][]
+  * [Mudanças e migrações interruptivas da versão 3.7.0][]
 * 3.3.0
-  * [3.3.0 announcement][]
-  * [3.3.0 release notes & change log][]
-  * [3.3.0 breaking changes & migrations][]
+  * [Anúncio da versão 3.3.0][]
+  * [Notas de lançamento e changelog da versão 3.3.0][]
+  * [Mudanças e migrações interruptivas da versão 3.3.0][]
 * 3.0.0
-  * [3.0.0 announcement][]
-  * [3.0.0 release notes & change log][]
-  * [3.0.0 breaking changes & migrations][]
+  * [Anúncio da versão 3.0.0][]
+  * [Notas de lançamento e changelog da versão 3.0.0][]
+  * [Mudanças e migrações interruptivas da versão 3.0.0][]
 * 2.10.0
-  * [2.10.0 announcement][]
-  * [2.10.0 release notes & change log][]
-  * [2.10.0 breaking changes & migrations][]
+  * [Anúncio da versão 2.10.0][]
+  * [Notas de lançamento e changelog da versão 2.10.0][]
+  * [Mudanças e migrações interruptivas da versão 2.10.0][]
 * 2.8.0
-  * [2.8.0 announcement][]
-  * [2.8.0 release notes & change log][]
+  * [Anúncio da versão 2.8.0][]
+  * [Notas de lançamento e changelog da versão 2.8.0][]
 * 2.5.0
-  * [2.5.0 announcement][]
-  * [2.5.0 release notes & change log][]
-  * [2.5.0 breaking changes & migrations][]
+  * [Anúncio da versão 2.5.0][]
+  * [Notas de lançamento e changelog da versão 2.5.0][]
+  * [Mudanças e migrações interruptivas da versão 2.5.0][]
 * 2.2.0
-  * [2.2.0 announcement][]
-  * [2.2.0 release notes & change log][]
-  * [2.2.0 breaking changes & migrations][]
+  * [Anúncio da versão 2.2.0][]
+  * [Notas de lançamento e changelog da versão 2.2.0][]
+  * [Mudanças e migrações interruptivas da versão 2.2.0][]
 * 2.0.0
-  * [2.0.0 announcement][]
-  * [2.0.0 release notes & change log][]
-  * [2.0.0 breaking changes & migrations][]
+  * [Anúncio da versão 2.0.0][]
+  * [Notas de lançamento e changelog da versão 2.0.0][]
+  * [Mudanças e migrações interruptivas da versão 2.0.0][]
 * 1.22.0
-  * [1.22.0 announcement][]
-  * [1.22.0 release notes & change log][]
-  * [1.22.0 breaking changes & migrations][]
+  * [Anúncio da versão 1.22.0][]
+  * [Notas de lançamento e changelog da versão 1.22.0][]
+  * [Mudanças e migrações interruptivas da versão 1.22.0][]
 * 1.20.0
-  * [1.20.0 announcement][]
-  * [1.20.0 release notes & change log][]
-  * [1.20.0 breaking changes & migrations][]
+  * [Anúncio da versão 1.20.0][]
+  * [Notas de lançamento e changelog da versão 1.20.0][]
+  * [Mudanças e migrações interruptivas da versão 1.20.0][]
 * 1.17.0
-  * [1.17.0 announcement][]
-  * [1.17.0 release notes and change log][]
-  * [1.17.0 breaking changes & migrations][]
+  * [Anúncio da versão 1.17.0][]
+  * [Notas de lançamento e changelog da versão 1.17.0][]
+  * [Mudanças e migrações interruptivas da versão 1.17.0][]
 * 1.12.13
-  * [1.12.13 announcement][]
-  * [1.12.13 release notes and change log][]
-* Earlier
-  * [Archived release notes][]
+  * [Anúncio da versão 1.12.13][]
+  * [Notas de lançamento e changelog da versão 1.12.13][]
+* Anterior
+  * [Notas de lançamento arquivadas][]
 
-[3.27.0 announcement]: {{site.flutter-medium}}/whats-new-in-flutter-3-27-28341129570c
-[3.27.0 release notes & change log]: /release/release-notes/release-notes-3.27.0
-[3.27.0 breaking changes & migrations]: /release/breaking-changes#released-in-flutter-3-27
-[3.24.0 announcement]: {{site.flutter-medium}}/whats-new-in-flutter-3-24-6c040f87d1e4
-[3.24.0 release notes & change log]: /release/release-notes/release-notes-3.24.0
-[3.24.0 breaking changes & migrations]: /release/breaking-changes#released-in-flutter-3-24
-[3.22.0 announcement]: {{site.flutter-medium}}/whats-new-in-flutter-3-22-fbde6c164fe3
-[3.22.0 release notes & change log]: /release/release-notes/release-notes-3.22.0
-[3.22.0 breaking changes & migrations]: /release/breaking-changes#released-in-flutter-3-22
-[3.19.0 announcement]: {{site.flutter-medium}}/whats-new-in-flutter-3-19-58b1aae242d2
-[3.19.0 release notes & change log]: /release/release-notes/release-notes-3.19.0
-[3.19.0 breaking changes & migrations]: /release/breaking-changes#released-in-flutter-3-19
-[3.16.0 announcement]: {{site.flutter-medium}}/whats-new-in-flutter-3-16-dba6cb1015d1
-[3.16.0 release notes & change log]: /release/release-notes/release-notes-3.16.0
-[3.16.0 breaking changes & migrations]: /release/breaking-changes#released-in-flutter-3-16
-[3.13.0 announcement]: {{site.flutter-medium}}/whats-new-in-flutter-3-13-479d9b11df4d
-[3.13.0 release notes & change log]: /release/release-notes/release-notes-3.13.0
-[3.13.0 breaking changes & migrations]: /release/breaking-changes#released-in-flutter-3-13
-[3.10.0 announcement]: {{site.flutter-medium}}/whats-new-in-flutter-3-10-b21db2c38c73
-[3.10.0 release notes & change log]: /release/release-notes/release-notes-3.10.0
-[3.10.0 breaking changes & migrations]: /release/breaking-changes#released-in-flutter-3-10
-[3.7.0 announcement]: {{site.flutter-medium}}/whats-new-in-flutter-3-7-38cbea71133c
-[3.7.0 release notes & change log]: /release/release-notes/release-notes-3.7.0
-[3.7.0 breaking changes & migrations]: /release/breaking-changes#released-in-flutter-3-7
-[3.3.0 announcement]: {{site.flutter-medium}}/announcing-flutter-3-3-at-flutter-vikings-6f213e068793
-[3.3.0 release notes & change log]: /release/release-notes/release-notes-3.3.0
-[3.3.0 breaking changes & migrations]: /release/breaking-changes#released-in-flutter-3-3
-[3.0.0 announcement]: {{site.flutter-medium}}/whats-new-in-flutter-3-8c74a5bc32d0
-[3.0.0 release notes & change log]: /release/release-notes/release-notes-3.0.0
-[3.0.0 breaking changes & migrations]: /release/breaking-changes#released-in-flutter-3
-[2.10.0 announcement]: {{site.flutter-medium}}/whats-new-in-flutter-2-10-5aafb0314b12
-[2.10.0 release notes & change log]: /release/release-notes/release-notes-2.10.0
-[2.10.0 breaking changes & migrations]: /release/breaking-changes#released-in-flutter-2-10
-[2.8.0 announcement]: {{site.flutter-medium}}/whats-new-in-flutter-2-8-d085b763d181
-[2.8.0 release notes & change log]: /release/release-notes/release-notes-2.8.0
-[2.5.0 announcement]: {{site.flutter-medium}}/whats-new-in-flutter-2-5-6f080c3f3dc
-[2.5.0 release notes & change log]: /release/release-notes/release-notes-2.5.0
-[2.5.0 breaking changes & migrations]: /release/breaking-changes#released-in-flutter-2-5
-[2.2.0 announcement]: {{site.flutter-medium}}/whats-new-in-flutter-2-2-fd00c65e2039
-[2.2.0 release notes & change log]: /release/release-notes/release-notes-2.2.0
-[2.2.0 breaking changes & migrations]: /release/breaking-changes#released-in-flutter-2-2
-[2.0.0 announcement]: {{site.flutter-medium}}/whats-new-in-flutter-2-0-fe8e95ecc65
-[2.0.0 release notes & change log]: /release/release-notes/release-notes-2.0.0
-[2.0.0 breaking changes & migrations]: /release/breaking-changes#released-in-flutter-2
-[1.22.0 announcement]: {{site.flutter-medium}}/announcing-flutter-1-22-stable-44f146009e5f
-[1.22.0 release notes & change log]: /release/release-notes/release-notes-1.22.0
-[1.22.0 breaking changes & migrations]: /release/breaking-changes#released-in-flutter-1-22
-[1.20.0 announcement]: {{site.flutter-medium}}/announcing-flutter-1-20-2aaf68c89c75
-[1.20.0 release notes & change log]: /release/release-notes/release-notes-1.20.0
-[1.20.0 breaking changes & migrations]: /release/breaking-changes#released-in-flutter-1-20
-[1.17.0 announcement]: {{site.flutter-medium}}/announcing-flutter-1-17-4182d8af7f8e
-[1.17.0 release notes and change log]: /release/release-notes/release-notes-1.17.0
-[1.17.0 breaking changes & migrations]: /release/breaking-changes#released-in-flutter-1-17
-[1.12.13 announcement]: {{site.flutter-medium}}/announcing-flutter-1-12-what-a-year-22c256ba525d
-[1.12.13 release notes and change log]: /release/release-notes/release-notes-1.12.13
-[Archived release notes]: /release/release-notes/release-notes-archive
+[Anúncio da versão 3.27.0]: {{site.flutter-medium}}/whats-new-in-flutter-3-27-28341129570c
+[Notas de lançamento e changelog da versão 3.27.0]: /release/release-notes/release-notes-3.27.0
+[Mudanças e migrações interruptivas da versão 3.27.0]: /release/breaking-changes#released-in-flutter-3-27
+[Anúncio da versão 3.24.0]: {{site.flutter-medium}}/whats-new-in-flutter-3-24-6c040f87d1e4
+[Notas de lançamento e changelog da versão 3.24.0]: /release/release-notes/release-notes-3.24.0
+[Mudanças e migrações interruptivas da versão 3.24.0]: /release/breaking-changes#released-in-flutter-3-24
+[Anúncio da versão 3.22.0]: {{site.flutter-medium}}/whats-new-in-flutter-3-22-fbde6c164fe3
+[Notas de lançamento e changelog da versão 3.22.0]: /release/release-notes/release-notes-3.22.0
+[Mudanças e migrações interruptivas da versão 3.22.0]: /release/breaking-changes#released-in-flutter-3-22
+[Anúncio da versão 3.19.0]: {{site.flutter-medium}}/whats-new-in-flutter-3-19-58b1aae242d2
+[Notas de lançamento e changelog da versão 3.19.0]: /release/release-notes/release-notes-3.19.0
+[Mudanças e migrações interruptivas da versão 3.19.0]: /release/breaking-changes#released-in-flutter-3-19
+[Anúncio da versão 3.16.0]: {{site.flutter-medium}}/whats-new-in-flutter-3-16-dba6cb1015d1
+[Notas de lançamento e changelog da versão 3.16.0]: /release/release-notes/release-notes-3.16.0
+[Mudanças e migrações interruptivas da versão 3.16.0]: /release/breaking-changes#released-in-flutter-3-16
+[Anúncio da versão 3.13.0]: {{site.flutter-medium}}/whats-new-in-flutter-3-13-479d9b11df4d
+[Notas de lançamento e changelog da versão 3.13.0]: /release/release-notes/release-notes-3.13.0
+[Mudanças e migrações interruptivas da versão 3.13.0]: /release/breaking-changes#released-in-flutter-3-13
+[Anúncio da versão 3.10.0]: {{site.flutter-medium}}/whats-new-in-flutter-3-10-b21db2c38c73
+[Notas de lançamento e changelog da versão 3.10.0]: /release/release-notes/release-notes-3.10.0
+[Mudanças e migrações interruptivas da versão 3.10.0]: /release/breaking-changes#released-in-flutter-3-10
+[Anúncio da versão 3.7.0]: {{site.flutter-medium}}/whats-new-in-flutter-3-7-38cbea71133c
+[Notas de lançamento e changelog da versão 3.7.0]: /release/release-notes/release-notes-3.7.0
+[Mudanças e migrações interruptivas da versão 3.7.0]: /release/breaking-changes#released-in-flutter-3-7
+[Anúncio da versão 3.3.0]: {{site.flutter-medium}}/announcing-flutter-3-3-at-flutter-vikings-6f213e068793
+[Notas de lançamento e changelog da versão 3.3.0]: /release/release-notes/release-notes-3.3.0
+[Mudanças e migrações interruptivas da versão 3.3.0]: /release/breaking-changes#released-in-flutter-3-3
+[Anúncio da versão 3.0.0]: {{site.flutter-medium}}/whats-new-in-flutter-3-8c74a5bc32d0
+[Notas de lançamento e changelog da versão 3.0.0]: /release/release-notes/release-notes-3.0.0
+[Mudanças e migrações interruptivas da versão 3.0.0]: /release/breaking-changes#released-in-flutter-3
+[Anúncio da versão 2.10.0]: {{site.flutter-medium}}/whats-new-in-flutter-2-10-5aafb0314b12
+[Notas de lançamento e changelog da versão 2.10.0]: /release/release-notes/release-notes-2.10.0
+[Mudanças e migrações interruptivas da versão 2.10.0]: /release/breaking-changes#released-in-flutter-2-10
+[Anúncio da versão 2.8.0]: {{site.flutter-medium}}/whats-new-in-flutter-2-8-d085b763d181
+[Notas de lançamento e changelog da versão 2.8.0]: /release/release-notes/release-notes-2.8.0
+[Anúncio da versão 2.5.0]: {{site.flutter-medium}}/whats-new-in-flutter-2-5-6f080c3f3dc
+[Notas de lançamento e changelog da versão 2.5.0]: /release/release-notes/release-notes-2.5.0
+[Mudanças e migrações interruptivas da versão 2.5.0]: /release/breaking-changes#released-in-flutter-2-5
+[Anúncio da versão 2.2.0]: {{site.flutter-medium}}/whats-new-in-flutter-2-2-fd00c65e2039
+[Notas de lançamento e changelog da versão 2.2.0]: /release/release-notes/release-notes-2.2.0
+[Mudanças e migrações interruptivas da versão 2.2.0]: /release/breaking-changes#released-in-flutter-2-2
+[Anúncio da versão 2.0.0]: {{site.flutter-medium}}/whats-new-in-flutter-2-0-fe8e95ecc65
+[Notas de lançamento e changelog da versão 2.0.0]: /release/release-notes/release-notes-2.0.0
+[Mudanças e migrações interruptivas da versão 2.0.0]: /release/breaking-changes#released-in-flutter-2
+[Anúncio da versão 1.22.0]: {{site.flutter-medium}}/announcing-flutter-1-22-stable-44f146009e5f
+[Notas de lançamento e changelog da versão 1.22.0]: /release/release-notes/release-notes-1.22.0
+[Mudanças e migrações interruptivas da versão 1.22.0]: /release/breaking-changes#released-in-flutter-1-22
+[Anúncio da versão 1.20.0]: {{site.flutter-medium}}/announcing-flutter-1-20-2aaf68c89c75
+[Notas de lançamento e changelog da versão 1.20.0]: /release/release-notes/release-notes-1.20.0
+[Mudanças e migrações interruptivas da versão 1.20.0]: /release/breaking-changes#released-in-flutter-1-20
+[Anúncio da versão 1.17.0]: {{site.flutter-medium}}/announcing-flutter-1-17-4182d8af7f8e
+[Notas de lançamento e changelog da versão 1.17.0]: /release/release-notes/release-notes-1.17.0
+[Mudanças e migrações interruptivas da versão 1.17.0]: /release/breaking-changes#released-in-flutter-1-17
+[Anúncio da versão 1.12.13]: {{site.flutter-medium}}/announcing-flutter-1-12-what-a-year-22c256ba525d
+[Notas de lançamento e changelog da versão 1.12.13]: /release/release-notes/release-notes-1.12.13
+[Notas de lançamento arquivadas]: /release/release-notes/release-notes-archive
 [CHANGELOG]: {{site.repo.flutter}}/blob/stable/CHANGELOG.md

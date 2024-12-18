@@ -1,51 +1,52 @@
 ---
-title: Use the Network View
-description: How to use the DevTools network view.
+ia-translate: true
+title: Use a Visão de Rede
+description: Como usar a visão de rede do DevTools.
 ---
 
 :::note
-The network view works with all Flutter and Dart applications.
+A visão de rede funciona com todos os aplicativos Flutter e Dart.
 :::
 
-## What is it?
+## O que é isso?
 
-The network view allows you to inspect HTTP, HTTPS, and web socket traffic from
-your Dart or Flutter application.
+A visão de rede permite que você inspecione o tráfego HTTP, HTTPS e web socket do
+seu aplicativo Dart ou Flutter.
 
-![Screenshot of the network screen](/assets/images/docs/tools/devtools/network_screenshot.png){:width="100%"}
+![Captura de tela da tela de rede](/assets/images/docs/tools/devtools/network_screenshot.png){:width="100%"}
 
-## How to use it
+## Como usar
 
-Network traffic should be recording by default when you open the Network page.
-If it is not, click the **Resume** button in the upper left to
-begin polling.
+O tráfego de rede deve estar sendo gravado por padrão quando você abre a página Rede.
+Se não estiver, clique no botão **Resume** no canto superior esquerdo para
+começar a sondar.
 
-Select a network request from the table (left) to view details (right). You can
-inspect general and timing information about the request, as well as the content
-of response and request headers and bodies.
+Selecione uma requisição de rede da tabela (esquerda) para visualizar os detalhes (direita). Você pode
+inspecionar informações gerais e de tempo sobre a requisição, bem como o conteúdo
+de resposta e cabeçalhos e corpos da requisição.
 
-### Search and filtering
+### Busca e filtragem
 
-You can use the search and filter controls to find a specific request or filter
-requests out of the request table.
+Você pode usar os controles de busca e filtro para encontrar uma requisição específica ou filtrar
+requisições da tabela de requisições.
 
-![Screenshot of the network screen](/assets/images/docs/tools/devtools/network_search_and_filter.png)
+![Captura de tela da tela de rede](/assets/images/docs/tools/devtools/network_search_and_filter.png)
 
-To apply a filter, press the filter button (right of the search bar). You will
-see a filter dialog pop up:
+Para aplicar um filtro, pressione o botão de filtro (à direita da barra de pesquisa). Você verá
+uma caixa de diálogo de filtro aparecer:
 
-![Screenshot of the network screen](/assets/images/docs/tools/devtools/network_filter_dialog.png)
+![Captura de tela da tela de rede](/assets/images/docs/tools/devtools/network_filter_dialog.png)
 
-The filter query syntax is described in the dialog. You can filter network
-requests by the following keys:
-* `method`, `m`: this filter corresponds to the value in the "Method" column
-* `status`, `s`: this filter corresponds to the value in the "Status" column
-* `type`, `t`: this filter corresponds to the value in the "Type" column
+A sintaxe de consulta de filtro é descrita na caixa de diálogo. Você pode filtrar a rede
+requisições pelas seguintes chaves:
+* `method`, `m`: este filtro corresponde ao valor na coluna "Method"
+* `status`, `s`: este filtro corresponde ao valor na coluna "Status"
+* `type`, `t`: este filtro corresponde ao valor na coluna "Type"
 
-Any text that is not paired with an available filter key will be queried against
-all categories (method, uri, status, type).
+Qualquer texto que não esteja emparelhado com uma chave de filtro disponível será consultado em
+todas as categorias (method, uri, status, type).
 
-Example filter queries:
+Exemplo de consultas de filtro:
 
 ```plaintext
 my-endpoint m:get t:json s:200
@@ -55,35 +56,35 @@ my-endpoint m:get t:json s:200
 https s:404
 ```
 
-### Recording network requests on app startup
+### Gravando requisições de rede na inicialização do app
 
-To record network traffic on app startup, you can start your app in a paused
-state, and then begin recording network traffic in DevTools
-before resuming your app.
+Para gravar o tráfego de rede na inicialização do aplicativo, você pode iniciar seu aplicativo em um estado pausado
+e então começar a gravar o tráfego de rede no DevTools
+antes de retomar seu aplicativo.
 
-1. Start your app in a paused state:
+1. Inicie seu aplicativo em um estado pausado:
     * `flutter run --start-paused ...`
     * `dart run --pause-isolates-on-start --observe ...`
-2. Open DevTools from the IDE where you started your app, or from the link that
-   was printed to the command line if you started your app from the CLI.
-3. Navigate to the Network screen and ensure that recording has started.
-4. Resume your app.
-   ![Screenshot of the app resumption experience on the Network screen](/assets/images/docs/tools/devtools/network_startup_resume.png){:width="100%"}
-5. The Network profiler will now record all network traffic from your app,
-   including traffic from app startup.
+2. Abra o DevTools a partir do IDE onde você iniciou seu aplicativo, ou a partir do link que
+   foi impresso na linha de comando se você iniciou seu aplicativo a partir do CLI.
+3. Navegue até a tela Rede e certifique-se de que a gravação foi iniciada.
+4. Retome seu aplicativo.
+   ![Captura de tela da experiência de retomada do aplicativo na tela de rede](/assets/images/docs/tools/devtools/network_startup_resume.png){:width="100%"}
+5. O profiler de rede agora irá gravar todo o tráfego de rede do seu aplicativo,
+   incluindo o tráfego da inicialização do aplicativo.
 
-## Other resources
+## Outros recursos
 
-HTTP and HTTPs requests are also surfaced in the [Timeline][timeline] as
-asynchronous timeline events. Viewing network activity in the timeline can be
-useful if you want to see how HTTP traffic aligns with other events happening
-in your app or in the Flutter framework.
+Requisições HTTP e HTTPS também são exibidas no [Timeline][timeline] como
+eventos de timeline assíncronos. Visualizar a atividade de rede no timeline pode ser
+útil se você quiser ver como o tráfego HTTP se alinha com outros eventos que acontecem
+no seu aplicativo ou no framework Flutter.
 
-To learn how to monitor an app's network traffic and inspect
-different types of requests using the DevTools,
-check out a guided [Network View tutorial][network-tutorial].
-The tutorial also uses the view to identify network activity that
-causes poor app performance.
+Para aprender como monitorar o tráfego de rede de um aplicativo e inspecionar
+diferentes tipos de requisições usando o DevTools,
+confira um [tutorial guiado sobre a visão de rede][network-tutorial].
+O tutorial também usa a visão para identificar atividades de rede que
+causam baixo desempenho do aplicativo.
 
 [timeline]: /tools/devtools/performance#timeline-events-tab
 [network-tutorial]: {{site.medium}}/@fluttergems/mastering-dart-flutter-devtools-network-view-part-4-of-8-afce2463687c

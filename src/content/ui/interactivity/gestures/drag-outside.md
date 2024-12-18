@@ -1,57 +1,59 @@
 ---
-title: Drag outside an app
-description: How to drag from an app to another app or the operating system.
+ia-translate: true
+title: Arrastar para fora de um app
+description: Como arrastar de um aplicativo para outro ou para o sistema operacional.
 ---
 
-You might want to implement
-drag and drop somewhere in your app.
+Você pode querer implementar
+arrastar e soltar em algum lugar do seu aplicativo.
 
-You have a couple potential approaches
-that you can take. One directly uses
-Flutter widgets and the other uses a package
-([super_drag_and_drop][]), available on [pub.dev][].
+Você tem algumas abordagens potenciais
+que você pode adotar. Uma usa diretamente
+widgets Flutter e a outra usa um pacote
+([super_drag_and_drop][]), disponível em [pub.dev][].
 
 [pub.dev]: {{site.pub}}
 [super_drag_and_drop]: {{site.pub-pkg}}/super_drag_and_drop
 
-## Create draggable widgets within your app
+## Criar widgets arrastáveis dentro do seu app
 
-If you want to implement drag and drop within
-your application, you can use the [`Draggable`][]
-widget. For insight into this approach, see
-the [Drag a UI element within an app][] recipe.
+Se você deseja implementar arrastar e soltar dentro
+do seu aplicativo, você pode usar o widget [`Draggable`][].
+Para obter informações sobre essa abordagem, consulte
+a receita [Arrastar um elemento de UI dentro de um app][].
 
-An advantage of using `Draggable` and `DragTarget` is
-that you can supply Dart code to decide whether to accept a drop.
+Uma vantagem de usar `Draggable` e `DragTarget` é
+que você pode fornecer código Dart para decidir se deve aceitar
+uma soltura.
 
-For more information, check out the
-[`Draggable` widget of the week][video] video.
+Para mais informações, confira o
+vídeo [`Draggable` widget da semana][video].
 
-[Drag a UI element within an app]: /cookbook/effects/drag-a-widget
+[Arrastar um elemento de UI dentro de um app]: /cookbook/effects/drag-a-widget
 [`Draggable`]:  {{site.api}}/flutter/widgets/Draggable-class.html
 [`DragTarget`]: {{site.api}}/flutter/widgets/DragTarget-class.html
 [local data]: {{site.pub-api}}/super_drag_and_drop/latest/super_drag_and_drop/DragItem/localData.html
 [video]: https://youtu.be/q4x2G_9-Mu0?si=T4679e90U2yrloCs
 
-## Implement drag and drop between apps
+## Implementar arrastar e soltar entre apps
 
-If you want to implement drag and drop within
-your application and _also_ between your
-application and another (possibly non-Flutter) app,
-check out the [super_drag_and_drop][] package.
+Se você deseja implementar arrastar e soltar dentro
+do seu aplicativo e _também_ entre seu
+aplicativo e outro aplicativo (possivelmente não-Flutter),
+confira o pacote [super_drag_and_drop][].
 
-To avoid implementing two styles of drag and drop,
-one for drags outside of the app and another for
-dragging inside the app,
-you can supply [local data][] to the package to
-perform drags within your app.
+Para evitar a implementação de dois estilos de arrastar e soltar,
+um para arrastar para fora do aplicativo e outro para
+arrastar dentro do aplicativo,
+você pode fornecer [local data][] para o pacote para
+realizar arrastos dentro do seu aplicativo.
 
-Another difference between this approach and
-using `Draggable` directly,
-is that you must tell the package up front
-what data your app accepts because the platform
-APIs need a synchronous response, which doesn't
-allow an asynchronous response from the framework.
+Outra diferença entre esta abordagem e
+usar `Draggable` diretamente,
+é que você deve informar ao pacote antecipadamente
+quais dados seu aplicativo aceita porque a plataforma
+APIs precisam de uma resposta síncrona, o que não
+permite uma resposta assíncrona do framework.
 
-An advantage of using this approach is that it
-works across desktop, mobile, _and_ web.
+Uma vantagem de usar esta abordagem é que ela
+funciona em desktop, mobile e _web_.

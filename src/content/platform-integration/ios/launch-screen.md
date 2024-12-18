@@ -1,41 +1,40 @@
 ---
-title: Adding a launch screen to your iOS app
-short-title: Launch screen
-description: Learn how to add a launch screen to your iOS app.
+ia-translate: true
+title: Adicionando uma tela de inicialização ao seu aplicativo iOS
+short-title: Tela de inicialização
+description: Aprenda como adicionar uma tela de inicialização ao seu aplicativo iOS.
 toc: false
 ---
 
 {% comment %}
-Consider introducing an image here similar to the android splash-screen one:
+Considere introduzir uma imagem aqui semelhante à da tela inicial do Android:
 https://github.com/flutter/website/issues/8357
 {% endcomment -%}
 
-[Launch screens][] provide a simple initial experience while your iOS app loads.
-They set the stage for your application, while allowing time for the app engine
-to load and your app to initialize.
+[Telas de inicialização][] fornecem uma experiência inicial simples enquanto seu aplicativo iOS carrega. Elas preparam o cenário para seu aplicativo, enquanto dão tempo para o motor do aplicativo carregar e seu aplicativo inicializar.
 
-[Launch screens]: {{site.apple-dev}}/design/human-interface-guidelines/launching#Launch-screens
+[Telas de inicialização]: {{site.apple-dev}}/design/human-interface-guidelines/launching#Launch-screens
 
-All apps submitted to the Apple App Store
-[must provide a launch screen][apple-requirement]
-with an Xcode storyboard.
+Todos os aplicativos enviados para a Apple App Store
+[devem fornecer uma tela de inicialização][apple-requirement]
+com um storyboard do Xcode.
 
-## Customize the launch screen
+## Personalize a tela de inicialização
 
-The default Flutter template includes an Xcode
-storyboard named `LaunchScreen.storyboard`
-that can be customized with your own assets.
-By default, the storyboard displays a blank image,
-but you can change this. To do so,
-open the Flutter app's Xcode project
-by typing `open ios/Runner.xcworkspace`
-from the root of your app directory.
-Then select `Runner/Assets.xcassets`
-from the Project Navigator and
-drop in the desired images to the `LaunchImage` image set.
+O modelo padrão do Flutter inclui um storyboard do Xcode
+chamado `LaunchScreen.storyboard`
+que pode ser personalizado com seus próprios recursos.
+Por padrão, o storyboard exibe uma imagem em branco,
+mas você pode alterar isso. Para fazer isso,
+abra o projeto Xcode do aplicativo Flutter
+digitando `open ios/Runner.xcworkspace`
+a partir da raiz do diretório do seu aplicativo.
+Em seguida, selecione `Runner/Assets.xcassets`
+no Project Navigator e
+solte as imagens desejadas no conjunto de imagens `LaunchImage`.
 
-Apple provides detailed guidance for launch screens as
-part of the [Human Interface Guidelines][].
+A Apple fornece orientação detalhada para telas de inicialização como
+parte das [Diretrizes de Interface Humana][].
 
 [apple-requirement]: {{site.apple-dev}}/documentation/xcode/specifying-your-apps-launch-screen
-[Human Interface Guidelines]: {{site.apple-dev}}/design/human-interface-guidelines/patterns/launching#launch-screens
+[Diretrizes de Interface Humana]: {{site.apple-dev}}/design/human-interface-guidelines/patterns/launching#launch-screens

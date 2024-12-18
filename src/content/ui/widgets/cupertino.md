@@ -1,9 +1,10 @@
 ---
-title: Cupertino widgets
+ia-translate: true
+title: Widgets Cupertino
 short-title: Cupertino
 description: >
-  A catalog of Flutter's cupertino widgets that align with
-  Apple's Human Interface Guidelines for iOS and macOS.
+  Um catálogo de widgets Cupertino do Flutter que se alinham com as
+  Diretrizes de Interface Humana da Apple para iOS e macOS.
 ---
 
 {% render docs/catalog-page.md, categoryName:"Cupertino", catalog:catalog %}

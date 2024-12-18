@@ -1,131 +1,114 @@
 ---
+ia-translate: true
 title: Cookbook
 description: >
-  The Flutter cookbook provides recipes for many commonly performed tasks.
+  O cookbook do Flutter fornece receitas para muitas tarefas comuns.
 ---
 
-This cookbook contains recipes that demonstrate how to solve common problems 
-while writing Flutter apps. Each recipe is self-contained and can be used as a
-reference to help you build up an application.
+Este cookbook contém receitas que demonstram como resolver problemas comuns ao
+escrever aplicativos Flutter. Cada receita é autocontida e pode ser usada como uma
+referência para ajudá-lo a construir um aplicativo.
 
-
-## Animation
-- [Animate a page route transition](/cookbook/animation/page-route-animation)
-- [Animate a widget using a physics simulation](/cookbook/animation/physics-simulation)
-- [Animate the properties of a container](/cookbook/animation/animated-container)
-- [Fade a widget in and out](/cookbook/animation/opacity-animation)
-
+## Animação
+- [Animar uma transição de rota de página](/cookbook/animation/page-route-animation)
+- [Animar um widget usando uma simulação física](/cookbook/animation/physics-simulation)
+- [Animar as propriedades de um container](/cookbook/animation/animated-container)
+- [Efeito de fade in e fade out em um widget](/cookbook/animation/opacity-animation)
 
 ## Design
-- [Add a drawer to a screen](/cookbook/design/drawer)
-- [Display a snackbar](/cookbook/design/snackbars)
-- [Export fonts from a package](/cookbook/design/package-fonts)
-- [Update the UI based on orientation](/cookbook/design/orientation)
-- [Use a custom font](/cookbook/design/fonts)
-- [Use themes to share colors and font styles](/cookbook/design/themes)
-- [Work with tabs](/cookbook/design/tabs)
+- [Adicionar um drawer a uma tela](/cookbook/design/drawer)
+- [Exibir um snackbar](/cookbook/design/snackbars)
+- [Exportar fontes de um pacote](/cookbook/design/package-fonts)
+- [Atualizar a interface do usuário com base na orientação](/cookbook/design/orientation)
+- [Usar uma fonte customizada](/cookbook/design/fonts)
+- [Usar temas para compartilhar cores e estilos de fonte](/cookbook/design/themes)
+- [Trabalhar com tabs](/cookbook/design/tabs)
 
+## Efeitos
+- [Criar um botão de download](/cookbook/effects/download-button)
+- [Criar um fluxo de navegação aninhado](/cookbook/effects/nested-nav)
+- [Criar um efeito de parallax com scrolling](/cookbook/effects/parallax-scrolling)
+- [Criar um efeito de carregamento shimmer](/cookbook/effects/shimmer-loading)
+- [Criar uma animação de menu escalonada](/cookbook/effects/staggered-menu-animation)
+- [Criar um indicador de digitação](/cookbook/effects/typing-indicator)
+- [Criar um FAB expansível](/cookbook/effects/expandable-fab)
+- [Criar balões de chat com gradiente](/cookbook/effects/gradient-bubbles)
+- [Arrastar um elemento da UI](/cookbook/effects/drag-a-widget)
 
-## Effects
-- [Create a download button](/cookbook/effects/download-button)
-- [Create a nested navigation flow](/cookbook/effects/nested-nav)
-- [Create a scrolling parallax effect](/cookbook/effects/parallax-scrolling)
-- [Create a shimmer loading effect](/cookbook/effects/shimmer-loading)
-- [Create a staggered menu animation](/cookbook/effects/staggered-menu-animation)
-- [Create a typing indicator](/cookbook/effects/typing-indicator)
-- [Create an expandable FAB](/cookbook/effects/expandable-fab)
-- [Create gradient chat bubbles](/cookbook/effects/gradient-bubbles)
-- [Drag a UI element](/cookbook/effects/drag-a-widget)
+## Formulários
+- [Construir um formulário com validação](/cookbook/forms/validation)
+- [Criar e estilizar um campo de texto](/cookbook/forms/text-input)
+- [Foco e campos de texto](/cookbook/forms/focus)
+- [Lidar com mudanças em um campo de texto](/cookbook/forms/text-field-changes)
+- [Recuperar o valor de um campo de texto](/cookbook/forms/retrieve-input)
 
+## Jogos
+- [Adicionar conquistas e placares de líderes ao seu jogo para celular](/cookbook/games/achievements-leaderboard)
+- [Adicionar suporte multijogador via Firestore](/cookbook/games/firestore-multiplayer)
+- [Adicionar anúncios ao seu app ou jogo Flutter para celular](/cookbook/plugins/google-mobile-ads)
 
-## Forms
-- [Build a form with validation](/cookbook/forms/validation)
-- [Create and style a text field](/cookbook/forms/text-input)
-- [Focus and text fields](/cookbook/forms/focus)
-- [Handle changes to a text field](/cookbook/forms/text-field-changes)
-- [Retrieve the value of a text field](/cookbook/forms/retrieve-input)
+## Gestos
+- [Adicionar ripples de toque Material](/cookbook/gestures/ripples)
+- [Lidar com toques](/cookbook/gestures/handling-taps)
+- [Implementar swipe para dispensar](/cookbook/gestures/dismissible)
 
+## Imagens
+- [Exibir imagens da internet](/cookbook/images/network-image)
+- [Efeito de fade in em imagens com um placeholder](/cookbook/images/fading-in-images)
 
-## Games
+## Listas
+- [Criar uma lista em grid](/cookbook/lists/grid-lists)
+- [Criar uma lista horizontal](/cookbook/lists/horizontal-list)
+- [Criar listas com diferentes tipos de itens](/cookbook/lists/mixed-list)
+- [Colocar uma app bar flutuante acima de uma lista](/cookbook/lists/floating-app-bar)
+- [Usar listas](/cookbook/lists/basic-list)
+- [Trabalhar com listas longas](/cookbook/lists/long-lists)
+- [Criar uma lista com itens espaçados](/cookbook/lists/spaced-items)
 
-- [Add achievements and leaderboards to your mobile game](/cookbook/games/achievements-leaderboard)
-- [Add multiplayer support via Firestore](/cookbook/games/firestore-multiplayer)
-- [Add ads to your mobile Flutter app or game](/cookbook/plugins/google-mobile-ads)
+## Manutenção
+- [Reportar erros para um serviço](/cookbook/maintenance/error-reporting)
 
-
-## Gestures
-- [Add Material touch ripples](/cookbook/gestures/ripples)
-- [Handle taps](/cookbook/gestures/handling-taps)
-- [Implement swipe to dismiss](/cookbook/gestures/dismissible)
-
-
-## Images
-- [Display images from the internet](/cookbook/images/network-image)
-- [Fade in images with a placeholder](/cookbook/images/fading-in-images)
-
-
-## Lists
-- [Create a grid list](/cookbook/lists/grid-lists)
-- [Create a horizontal list](/cookbook/lists/horizontal-list)
-- [Create lists with different types of items](/cookbook/lists/mixed-list)
-- [Place a floating app bar above a list](/cookbook/lists/floating-app-bar)
-- [Use lists](/cookbook/lists/basic-list)
-- [Work with long lists](/cookbook/lists/long-lists)
-- [Create a list with spaced items](/cookbook/lists/spaced-items)
-
-
-## Maintenance
-- [Report errors to a service](/cookbook/maintenance/error-reporting)
-
-
-## Navigation
-- [Animate a widget across screens](/cookbook/navigation/hero-animations)
-- [Navigate to a new screen and back](/cookbook/navigation/navigation-basics)
-- [Navigate with named routes](/cookbook/navigation/named-routes)
-- [Pass arguments to a named route](/cookbook/navigation/navigate-with-arguments)
-- [Set up app links for Android](/cookbook/navigation/set-up-app-links)
-- [Set up universal links for iOS](/cookbook/navigation/set-up-universal-links)
-- [Return data from a screen](/cookbook/navigation/returning-data)
-- [Send data to a new screen](/cookbook/navigation/passing-data)
-
-
+## Navegação
+- [Animar um widget entre telas](/cookbook/navigation/hero-animations)
+- [Navegar para uma nova tela e voltar](/cookbook/navigation/navigation-basics)
+- [Navegar com rotas nomeadas](/cookbook/navigation/named-routes)
+- [Passar argumentos para uma rota nomeada](/cookbook/navigation/navigate-with-arguments)
+- [Configurar links de aplicativos para Android](/cookbook/navigation/set-up-app-links)
+- [Configurar links universais para iOS](/cookbook/navigation/set-up-universal-links)
+- [Retornar dados de uma tela](/cookbook/navigation/returning-data)
+- [Enviar dados para uma nova tela](/cookbook/navigation/passing-data)
 
 ## Networking
-- [Fetch data from the internet](/cookbook/networking/fetch-data)
-- [Make authenticated requests](/cookbook/networking/authenticated-requests)
-- [Send data to the internet](/cookbook/networking/send-data)
-- [Update data over the internet](/cookbook/networking/update-data)
-- [Delete data on the internet](/cookbook/networking/delete-data)
-- [Communicate with WebSockets](/cookbook/networking/web-sockets)
-- [Parse JSON in the background](/cookbook/networking/background-parsing)
+- [Buscar dados da internet](/cookbook/networking/fetch-data)
+- [Fazer requisições autenticadas](/cookbook/networking/authenticated-requests)
+- [Enviar dados para a internet](/cookbook/networking/send-data)
+- [Atualizar dados pela internet](/cookbook/networking/update-data)
+- [Deletar dados na internet](/cookbook/networking/delete-data)
+- [Comunicar com WebSockets](/cookbook/networking/web-sockets)
+- [Analisar JSON em background](/cookbook/networking/background-parsing)
 
-
-## Persistence
-- [Persist data with SQLite](/cookbook/persistence/sqlite)
-- [Read and write files](/cookbook/persistence/reading-writing-files)
-- [Store key-value data on disk](/cookbook/persistence/key-value)
-
+## Persistência
+- [Persistir dados com SQLite](/cookbook/persistence/sqlite)
+- [Ler e escrever arquivos](/cookbook/persistence/reading-writing-files)
+- [Armazenar dados chave-valor em disco](/cookbook/persistence/key-value)
 
 ## Plugins
+- [Reproduzir e pausar um vídeo](/cookbook/plugins/play-video)
+- [Adicionar anúncios ao seu app ou jogo Flutter para celular](/cookbook/plugins/google-mobile-ads)
+- [Tirar uma foto usando a câmera](/cookbook/plugins/picture-using-camera)
 
-- [Play and pause a video](/cookbook/plugins/play-video)
-- [Add ads to your mobile Flutter app or game](/cookbook/plugins/google-mobile-ads)
-- [Take a picture using the camera](/cookbook/plugins/picture-using-camera)
+## Testes
 
-
-## Testing
-
-### Integration
-- [An introduction to integration testing](/cookbook/testing/integration/introduction)
+### Integração
+- [Uma introdução aos testes de integração](/cookbook/testing/integration/introduction)
 - [Performance profiling](/cookbook/testing/integration/profiling)
 
 ### Unit
-- [An introduction to unit testing](/cookbook/testing/unit/introduction)
-- [Mock dependencies using Mockito](/cookbook/testing/unit/mocking)
-
+- [Uma introdução aos testes unitários](/cookbook/testing/unit/introduction)
+- [Mock de dependências usando Mockito](/cookbook/testing/unit/mocking)
 
 ### Widget
-- [An introduction to widget testing](/cookbook/testing/widget/introduction)
-- [Find widgets](/cookbook/testing/widget/finders)
-- [Handle scrolling](/cookbook/testing/widget/scrolling)
-- [Tap, drag, and enter text](/cookbook/testing/widget/tap-drag)
+- [Uma introdução aos testes de widget](/cookbook/testing/widget/introduction)
+- [Encontrar widgets](/cookbook/testing/widget/finders)
+- [Lidar com scrolling](/cookbook/testing/widget/scrolling)
+- [Tocar, arrastar e inserir texto](/cookbook/testing/widget/tap-drag)

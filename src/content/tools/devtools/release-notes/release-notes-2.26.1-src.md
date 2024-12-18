@@ -1,47 +1,47 @@
-# DevTools 2.26.1 release notes
+# Notas da versão do DevTools 2.26.1
 
-The 2.26.1 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutter.dev/tools/devtools).
+A versão 2.26.1 do Dart e Flutter DevTools inclui as seguintes
+alterações, entre outras melhorias gerais. Para saber mais sobre o
+DevTools, confira a [visão geral do DevTools](https://docs.flutter.dev/tools/devtools).
 
-## General updates
+## Atualizações gerais
 
-- Added a new "Home" screen in DevTools that either shows the "Connect" dialog
-  or a summary of your connected app, depending on
-  the connection status in DevTools.
-  Keep an eye on this screen for cool new features in the future.
-  This change also enables support for static tooling
-  (tools that don't require a connected app) in DevTools -
+- Adicionada uma nova tela "Home" no DevTools que exibe a caixa de
+  diálogo "Conectar" ou um resumo do seu aplicativo conectado,
+  dependendo do status da conexão no DevTools. Fique de olho nesta tela
+  para novas funcionalidades interessantes no futuro. Essa mudança
+  também permite suporte para ferramentas estáticas (ferramentas que não
+  exigem um aplicativo conectado) no DevTools -
   [#6010](https://github.com/flutter/devtools/pull/6010)
 
-  ![home screen](/tools/devtools/release-notes/images-2.26.1/home_screen.png "DevTools home screen")
+  ![tela inicial](/tools/devtools/release-notes/images-2.26.1/home_screen.png "Tela inicial do DevTools")
 
-- Fixed overlay notifications so that they
-  cover the area that their background blocks -
+- Corrigidas as notificações de sobreposição para que elas cubram a área
+  que seu plano de fundo bloqueia -
   [#5975](https://github.com/flutter/devtools/pull/5975)
 
-## Memory updates
+## Atualizações de memória
 
-- Added a context menu to rename or delete a heap snapshot from the list -
+- Adicionado um menu de contexto para renomear ou excluir um snapshot de
+  heap da lista -
   [#5997](https://github.com/flutter/devtools/pull/5997)
-- Warn users when HTTP logging may be affecting their app's memory consumption -
+- Avisar os usuários quando o registro HTTP puder estar afetando o
+  consumo de memória do aplicativo -
   [#5998](https://github.com/flutter/devtools/pull/5998)
 
-## Debugger updates
+## Atualizações do debugger
 
-- Improvements to text selection and copy behavior in
-  the code view, console, and variables windows -
+- Melhorias na seleção de texto e no comportamento de cópia na visualização
+  de código, console e janelas de variáveis -
   [#6020](https://github.com/flutter/devtools/pull/6020)
 
-## Network profiler updates
+## Atualizações do Network profiler
 
-- Added a selector to customize the display type
-  of text and json responses (thanks to @hhacker1999!) -
+- Adicionado um seletor para personalizar o tipo de exibição de texto e
+  respostas json (graças a @hhacker1999!) -
   [#5816](https://github.com/flutter/devtools/pull/5816)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes since the previous release,
-check out
-[the diff on GitHub](https://github.com/flutter/devtools/compare/v2.25.0...v2.26.1).
+Para encontrar uma lista completa de alterações desde a versão
+anterior, confira [o diff no GitHub](https://github.com/flutter/devtools/compare/v2.25.0...v2.26.1).

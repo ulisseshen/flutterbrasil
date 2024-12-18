@@ -1,23 +1,24 @@
 ---
-title: "Binding to native Android code using dart:ffi"
-description: "To use C code in your Flutter program, use the dart:ffi library."
+ia-translate: true
+title: "Vinculando ao código nativo Android usando dart:ffi"
+description: "Para usar código C em seu programa Flutter, use a biblioteca dart:ffi."
 ---
 
 <?code-excerpt path-base="platform_integration"?>
 
-Flutter mobile and desktop apps can use the
-[dart:ffi][] library to call native C APIs.
-_FFI_ stands for [_foreign function interface._][FFI]
-Other terms for similar functionality include
-_native interface_ and _language bindings._
+Aplicativos Flutter para mobile e desktop podem usar a biblioteca
+[dart:ffi][] para chamar APIs C nativas.
+_FFI_ significa [_interface de função estrangeira._][FFI]
+Outros termos para funcionalidade similar incluem
+_interface nativa_ e _vinculações de linguagem._
 
 :::note
-This page describes using the `dart:ffi` library
-in Android apps. For information on iOS, see
-[Binding to native iOS code using dart:ffi][ios-ffi].
-For information in macOS, see
-[Binding to native macOS code using dart:ffi][macos-ffi].
-This feature is not yet supported for web plugins.
+Esta página descreve o uso da biblioteca `dart:ffi`
+em aplicativos Android. Para obter informações sobre iOS, consulte
+[Vinculando ao código nativo iOS usando dart:ffi][ios-ffi].
+Para obter informações em macOS, consulte
+[Vinculando ao código nativo macOS usando dart:ffi][macos-ffi].
+Este recurso ainda não é suportado para plugins web.
 :::
 
 
@@ -26,56 +27,56 @@ This feature is not yet supported for web plugins.
 [macos-ffi]: /platform-integration/macos/c-interop
 [FFI]: https://en.wikipedia.org/wiki/Foreign_function_interface
 
-Before your library or program can use the FFI library
-to bind to native code, you must ensure that the
-native code is loaded and its symbols are visible to Dart.
-This page focuses on compiling, packaging,
-and loading Android native code within a Flutter plugin or app.
+Antes que sua biblioteca ou programa possa usar a biblioteca FFI
+para vincular ao código nativo, você deve garantir que o
+código nativo seja carregado e seus símbolos sejam visíveis para o Dart.
+Esta página se concentra na compilação, empacotamento,
+e carregamento de código nativo Android dentro de um plugin ou aplicativo Flutter.
 
-This tutorial demonstrates how to bundle C/C++
-sources in a Flutter plugin and bind to them using
-the Dart FFI library on both Android and iOS.
-In this walkthrough, you'll create a C function
-that implements 32-bit addition and then
-exposes it through a Dart plugin named "native_add".
+Este tutorial demonstra como agrupar fontes C/C++
+em um plugin Flutter e vinculá-los usando
+a biblioteca Dart FFI em Android e iOS.
+Neste passo a passo, você criará uma função C
+que implementa a adição de 32 bits e, em seguida,
+a expõe por meio de um plugin Dart chamado "native_add".
 
-## Dynamic vs static linking
+## Vinculação dinâmica vs estática
 
-A native library can be linked into an app either
-dynamically or statically. A statically linked library
-is embedded into the app's executable image,
-and is loaded when the app starts.
+Uma biblioteca nativa pode ser vinculada a um aplicativo
+dinamicamente ou estaticamente. Uma biblioteca vinculada estaticamente
+é incorporada à imagem executável do aplicativo,
+e é carregada quando o aplicativo é iniciado.
 
-Symbols from a statically linked library can be
-loaded using [`DynamicLibrary.executable`][] or
+Símbolos de uma biblioteca vinculada estaticamente podem ser
+carregados usando [`DynamicLibrary.executable`][] ou
 [`DynamicLibrary.process`][].
 
-A dynamically linked library, by contrast, is distributed
-in a separate file or folder within the app,
-and loaded on-demand. On Android, a dynamically
-linked library is distributed as a set of `.so` (ELF)
-files, one for each architecture.
+Uma biblioteca vinculada dinamicamente, por outro lado, é distribuída
+em um arquivo ou pasta separada dentro do aplicativo,
+e carregada sob demanda. No Android, uma biblioteca dinamicamente
+vinculada é distribuída como um conjunto de arquivos `.so` (ELF),
+um para cada arquitetura.
 
-A dynamically linked library can be loaded into
+Uma biblioteca vinculada dinamicamente pode ser carregada em
 Dart via [`DynamicLibrary.open`][].
 
-API documentation is available from the
-[Dart API reference documentation][].
+A documentação da API está disponível na
+[Documentação de referência da API Dart][].
 
-On Android, only dynamic libraries are supported
-(because the main executable is the JVM,
-which we don't link to statically).
+No Android, apenas bibliotecas dinâmicas são suportadas
+(porque o executável principal é a JVM,
+à qual não nos vinculamos estaticamente).
 
 
-[Dart API reference documentation]: {{site.dart.api}}
+[Documentação de referência da API Dart]: {{site.dart.api}}
 [`DynamicLibrary.executable`]: {{site.dart.api}}/dart-ffi/DynamicLibrary/DynamicLibrary.executable.html
 [`DynamicLibrary.open`]: {{site.dart.api}}/dart-ffi/DynamicLibrary/DynamicLibrary.open.html
 [`DynamicLibrary.process`]: {{site.dart.api}}/dart-ffi/DynamicLibrary/DynamicLibrary.process.html
 
-## Create an FFI plugin
+## Criar um plugin FFI
 
-To create an FFI plugin called "native_add",
-do the following:
+Para criar um plugin FFI chamado "native_add",
+faça o seguinte:
 
 ```console
 $ flutter create --platforms=android,ios,macos,windows,linux --template=plugin_ffi native_add
@@ -83,117 +84,117 @@ $ cd native_add
 ```
 
 :::note
-You can exclude platforms from `--platforms` that you don't want
-to build to. However, you need to include the platform of 
-the device you are testing on.
+Você pode excluir plataformas de `--platforms` que você não
+quer construir. No entanto, você precisa incluir a plataforma do
+dispositivo em que você está testando.
 :::
 
-This will create a plugin with C/C++ sources in `native_add/src`.
-These sources are built by the native build files in the various
-os build folders.
+Isso criará um plugin com fontes C/C++ em `native_add/src`.
+Essas fontes são construídas pelos arquivos de compilação nativos nas várias
+pastas de compilação do sistema operacional.
 
-The FFI library can only bind against C symbols,
-so in C++ these symbols are marked `extern "C"`.
+A biblioteca FFI só pode vincular contra símbolos C,
+então, em C++, esses símbolos são marcados com `extern "C"`.
 
-You should also add attributes to indicate that the
-symbols are referenced from Dart,
-to prevent the linker from discarding the symbols
-during link-time optimization.
+Você também deve adicionar atributos para indicar que os
+símbolos são referenciados a partir do Dart,
+para impedir que o vinculador descarte os símbolos
+durante a otimização em tempo de link.
 `__attribute__((visibility("default"))) __attribute__((used))`.
 
-On Android, the `native_add/android/build.gradle` links the code.
+No Android, o `native_add/android/build.gradle` vincula o código.
 
-The native code is invoked from dart in `lib/native_add_bindings_generated.dart`.
+O código nativo é invocado do dart em `lib/native_add_bindings_generated.dart`.
 
-The bindings are generated with [package:ffigen]({{site.pub-pkg}}/ffigen).
+As vinculações são geradas com [package:ffigen]({{site.pub-pkg}}/ffigen).
 
-## Other use cases
+## Outros casos de uso
 
-### Platform library
+### Biblioteca da plataforma
 
-To link against a platform library,
-use the following instructions:
+Para vincular a uma biblioteca da plataforma,
+use as seguintes instruções:
 
- 1. Find the desired library in the [Android NDK Native APIs][]
-    list in the Android docs. This lists stable native APIs.
- 1. Load the library using [`DynamicLibrary.open`][].
-    For example, to load OpenGL ES (v3):
+ 1. Encontre a biblioteca desejada na [APIs Nativas do Android NDK][]
+    lista na documentação do Android. Isso lista APIs nativas estáveis.
+ 1. Carregue a biblioteca usando [`DynamicLibrary.open`][].
+    Por exemplo, para carregar OpenGL ES (v3):
 
     ```dart
     DynamicLibrary.open('libGLES_v3.so');
     ```
 
-You might need to update the Android manifest
-file of the app or plugin if indicated by
-the documentation.
+Pode ser necessário atualizar o arquivo de manifesto do Android
+do aplicativo ou plugin, se indicado pela
+documentação.
 
 
-[Android NDK Native APIs]: {{site.android-dev}}/ndk/guides/stable_apis
+[APIs Nativas do Android NDK]: {{site.android-dev}}/ndk/guides/stable_apis
 
-#### First-party library
+#### Biblioteca própria
 
-The process for including native code in source
-code or binary form is the same for an app or
+O processo para incluir código nativo no código
+fonte ou forma binária é o mesmo para um aplicativo ou
 plugin.
 
-#### Open-source third-party
+#### Terceiros de código aberto
 
-Follow the [Add C and C++ code to your project][]
-instructions in the Android docs to
-add native code and support for the native
-code toolchain (either CMake or `ndk-build`).
+Siga as instruções [Adicionar código C e C++ ao seu projeto][]
+na documentação do Android para
+adicionar código nativo e suporte para o nativo
+cadeia de ferramentas de código (CMake ou `ndk-build`).
 
 
-[Add C and C++ code to your project]: {{site.android-dev}}/studio/projects/add-native-code
+[Adicionar código C e C++ ao seu projeto]: {{site.android-dev}}/studio/projects/add-native-code
 
-#### Closed-source third-party library
+#### Biblioteca de terceiros de código fechado
 
-To create a Flutter plugin that includes Dart
-source code, but distribute the C/C++ library
-in binary form, use the following instructions:
+Para criar um plugin Flutter que inclua Dart
+código fonte, mas distribua a biblioteca C/C++
+em forma binária, use as seguintes instruções:
 
-1. Open the `android/build.gradle` file for your
-   project.
-1. Add the AAR artifact as a dependency.
-   **Don't** include the artifact in your
-   Flutter package. Instead, it should be
-   downloaded from a repository, such as
+1. Abra o arquivo `android/build.gradle` para o seu
+   projeto.
+2. Adicione o artefato AAR como uma dependência.
+   **Não** inclua o artefato em seu
+   pacote Flutter. Em vez disso, ele deve ser
+   baixado de um repositório, como
    JCenter.
 
 
-## Android APK size (shared object compression)
+## Tamanho do APK do Android (compressão de objeto compartilhado)
 
-[Android guidelines][] in general recommend
-distributing native shared objects uncompressed
-because that actually saves on device space.
-Shared objects can be directly loaded from the APK
-instead of unpacking them on device into a
-temporary location and then loading.
-APKs are additionally packed in transit&mdash;that's
-why you should be looking at download size.
+As [diretrizes do Android][] geralmente recomendam
+distribuir objetos compartilhados nativos não compactados
+porque isso realmente economiza espaço no dispositivo.
+Objetos compartilhados podem ser carregados diretamente do APK
+em vez de descompactá-los no dispositivo em um
+local temporário e depois carregar.
+Os APKs são adicionalmente compactados em trânsito&mdash;é por isso
+que você deve estar olhando para o tamanho do download.
 
-Flutter APKs by default don't follow these guidelines
-and compress `libflutter.so` and `libapp.so`&mdash;this
-leads to smaller APK size but larger on device size.
+Os APKs Flutter, por padrão, não seguem essas diretrizes
+e compactam `libflutter.so` e `libapp.so`&mdash;isso
+leva a um tamanho menor de APK, mas um tamanho maior no dispositivo.
 
-Shared objects from third parties can change this default
-setting with `android:extractNativeLibs="true"` in their
-`AndroidManifest.xml` and stop the compression of `libflutter.so`,
-`libapp.so`, and any user-added shared objects.
-To re-enable compression, override the setting in
+Objetos compartilhados de terceiros podem alterar essa configuração padrão
+com `android:extractNativeLibs="true"` em seu
+`AndroidManifest.xml` e interromper a compactação de `libflutter.so`,
+`libapp.so` e quaisquer objetos compartilhados adicionados pelo usuário.
+Para reabilitar a compressão, substitua a configuração em
 `your_app_name/android/app/src/main/AndroidManifest.xml`
-in the following way.
+da seguinte forma.
 
 ```xml diff
   <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 -     package="com.example.your_app_name">
 +     xmlns:tools="http://schemas.android.com/tools"
 +     package="com.example.your_app_name" >
-      <!-- io.flutter.app.FlutterApplication is an android.app.Application that
-           calls FlutterMain.startInitialization(this); in its onCreate method.
-           In most cases you can leave this as-is, but you if you want to provide
-           additional functionality it is fine to subclass or reimplement
-           FlutterApplication and put your custom class here. -->
+      <!-- io.flutter.app.FlutterApplication é um android.app.Application que
+           chama FlutterMain.startInitialization(this); em seu método onCreate.
+           Na maioria dos casos, você pode deixar isso como está, mas se você quiser fornecer
+           funcionalidade adicional, não há problema em subclassificar ou reimplementar
+           FlutterApplication e coloque sua classe personalizada aqui. -->
 
       <application
           android:name="io.flutter.app.FlutterApplication"
@@ -204,6 +205,7 @@ in the following way.
 +         tools:replace="android:extractNativeLibs">
 ```
 
-[Android guidelines]: {{site.android-dev}}/topic/performance/reduce-apk-size#extract-false
+[diretrizes do Android]: {{site.android-dev}}/topic/performance/reduce-apk-size#extract-false
 
 {% include docs/resource-links/ffi-video-resources.md %}
+

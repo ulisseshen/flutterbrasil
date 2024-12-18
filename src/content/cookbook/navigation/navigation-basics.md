@@ -1,6 +1,7 @@
 ---
-title: Navigate to a new screen and back
-description: How to navigate between routes.
+ia-translate: true
+title: Navegar para uma nova tela e voltar
+description: Como navegar entre rotas.
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
@@ -8,38 +9,38 @@ js:
 
 <?code-excerpt path-base="cookbook/navigation/navigation_basics"?>
 
-Most apps contain several screens for displaying different types of
-information.
-For example, an app might have a screen that displays products.
-When the user taps the image of a product, a new screen displays
-details about the product.
+A maioria dos aplicativos contém diversas telas para exibir diferentes tipos de
+informação.
+Por exemplo, um aplicativo pode ter uma tela que exibe produtos.
+Quando o usuário toca na imagem de um produto, uma nova tela exibe
+detalhes sobre o produto.
 
-:::note Terminology
-In Flutter, _screens_ and _pages_ are called _routes_.
-The remainder of this recipe refers to routes.
+:::note Terminologia
+Em Flutter, _telas_ e _páginas_ são chamadas de _rotas_.
+O restante desta receita se refere a rotas.
 :::
 
-In Android, a route is equivalent to an Activity.
-In iOS, a route is equivalent to a ViewController.
-In Flutter, a route is just a widget.
+No Android, uma rota é equivalente a uma Activity.
+No iOS, uma rota é equivalente a um ViewController.
+No Flutter, uma rota é apenas um widget.
 
-This recipe uses the [`Navigator`][] to navigate to a new route.
+Esta receita usa o [`Navigator`][] para navegar para uma nova rota.
 
-The next few sections show how to navigate between two routes,
-using these steps:
+As próximas seções mostram como navegar entre duas rotas,
+usando estas etapas:
 
-  1. Create two routes.
-  2. Navigate to the second route using Navigator.push().
-  3. Return to the first route using Navigator.pop().
+  1. Criar duas rotas.
+  2. Navegar para a segunda rota usando Navigator.push().
+  3. Retornar para a primeira rota usando Navigator.pop().
 
-## 1. Create two routes
+## 1. Criar duas rotas
 
-First, create two routes to work with. Since this is a basic example,
-each route contains only a single button. Tapping the button on the
-first route navigates to the second route. Tapping the button on the
-second route returns to the first route.
+Primeiro, crie duas rotas para trabalhar. Como este é um exemplo básico,
+cada rota contém apenas um único botão. Tocar no botão na
+primeira rota navega para a segunda rota. Tocar no botão na
+segunda rota retorna para a primeira rota.
 
-First, set up the visual structure:
+Primeiro, configure a estrutura visual:
 
 <?code-excerpt "lib/main_step1.dart (first-second-routes)"?>
 ```dart
@@ -56,7 +57,7 @@ class FirstRoute extends StatelessWidget {
         child: ElevatedButton(
           child: const Text('Open route'),
           onPressed: () {
-            // Navigate to second route when tapped.
+            // Navegar para a segunda rota quando tocado.
           },
         ),
       ),
@@ -76,7 +77,7 @@ class SecondRoute extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            // Navigate back to first route when tapped.
+            // Navegar de volta para a primeira rota quando tocado.
           },
           child: const Text('Go back!'),
         ),
@@ -86,21 +87,21 @@ class SecondRoute extends StatelessWidget {
 }
 ```
 
-## 2. Navigate to the second route using Navigator.push()
+## 2. Navegar para a segunda rota usando Navigator.push()
 
-To switch to a new route, use the [`Navigator.push()`][]
-method. The `push()` method adds a `Route` to the stack of routes managed by
-the `Navigator`. Where does the `Route` come from?
-You can create your own, or use a [`MaterialPageRoute`][],
-which is useful because it transitions to the
-new route using a platform-specific animation.
+Para mudar para uma nova rota, use o método [`Navigator.push()`][].
+O método `push()` adiciona uma `Route` à pilha de rotas gerenciadas pelo
+`Navigator`. De onde vem a `Route`?
+Você pode criar a sua própria, ou usar uma [`MaterialPageRoute`][],
+que é útil porque faz a transição para a
+nova rota usando uma animação específica da plataforma.
 
-In the `build()` method of the `FirstRoute` widget,
-update the `onPressed()` callback:
+No método `build()` do widget `FirstRoute`,
+atualize o callback `onPressed()`:
 
 <?code-excerpt "lib/main_step2.dart (first-route-on-pressed)" replace="/^\},$/}/g"?>
 ```dart
-// Within the `FirstRoute` widget:
+// Dentro do widget `FirstRoute`:
 onPressed: () {
   Navigator.push(
     context,
@@ -109,28 +110,28 @@ onPressed: () {
 }
 ```
 
-## 3. Return to the first route using Navigator.pop()
+## 3. Retornar para a primeira rota usando Navigator.pop()
 
-How do you close the second route and return to the first?
-By using the [`Navigator.pop()`][] method.
-The `pop()` method removes the current `Route` from the stack of
-routes managed by the `Navigator`.
+Como você fecha a segunda rota e retorna para a primeira?
+Usando o método [`Navigator.pop()`][].
+O método `pop()` remove a `Route` atual da pilha de
+rotas gerenciadas pelo `Navigator`.
 
-To implement a return to the original route, update the `onPressed()`
-callback in the `SecondRoute` widget:
+Para implementar um retorno à rota original, atualize o callback `onPressed()`
+no widget `SecondRoute`:
 
 <?code-excerpt "lib/main_step2.dart (second-route-on-pressed)" replace="/^\},$/}/g"?>
 ```dart
-// Within the SecondRoute widget
+// Dentro do widget SecondRoute
 onPressed: () {
   Navigator.pop(context);
 }
 ```
 
-## Interactive example
+## Exemplo interativo
 
 <?code-excerpt "lib/main.dart"?>
-```dartpad title="Flutter navigation hands-on example in DartPad" run="true"
+```dartpad title="Exemplo prático de navegação Flutter no DartPad" run="true"
 import 'package:flutter/material.dart';
 
 void main() {
@@ -187,38 +188,38 @@ class SecondRoute extends StatelessWidget {
 ```
 
 <noscript>
-  <img src="/assets/images/docs/cookbook/navigation-basics.gif" alt="Navigation Basics Demo" class="site-mobile-screenshot" />
+  <img src="/assets/images/docs/cookbook/navigation-basics.gif" alt="Demonstração de conceitos básicos de navegação" class="site-mobile-screenshot" />
 </noscript>
 
-## Navigation with CupertinoPageRoute
+## Navegação com CupertinoPageRoute
 
-In the previous example you learned how to navigate between screens
-using the [`MaterialPageRoute`][] from [Material Components][].
-However, in Flutter you are not limited to Material design language,
-instead, you also have access to [Cupertino][] (iOS-style) widgets.
+No exemplo anterior você aprendeu como navegar entre telas
+usando a [`MaterialPageRoute`][] do [Material Components][].
+No entanto, no Flutter você não está limitado à linguagem de design Material,
+em vez disso, você também tem acesso aos widgets [Cupertino][] (estilo iOS).
 
-Implementing navigation with Cupertino widgets follows the same steps
-as when using [`MaterialPageRoute`][], 
-but instead you use [`CupertinoPageRoute`][]
-which provides an iOS-style transition animation.
+Implementar a navegação com widgets Cupertino segue as mesmas etapas
+de quando usar [`MaterialPageRoute`][],
+mas em vez disso você usa [`CupertinoPageRoute`][]
+que fornece uma animação de transição estilo iOS.
 
-In the following example, these widgets have been replaced:
+No exemplo a seguir, esses widgets foram substituídos:
 
-- [`MaterialApp`][] replaced by [`CupertinoApp`].
-- [`Scaffold`][] replaced by [`CupertinoPageScaffold`][].
-- [`ElevatedButton`][] replaced by [`CupertinoButton`][].
+- [`MaterialApp`][] substituído por [`CupertinoApp`].
+- [`Scaffold`][] substituído por [`CupertinoPageScaffold`][].
+- [`ElevatedButton`][] substituído por [`CupertinoButton`][].
 
-This way, the example follows the current iOS design language.
+Dessa forma, o exemplo segue a atual linguagem de design do iOS.
 
 :::secondary
-You don't need to replace all Material widgets with Cupertino versions
-to use [`CupertinoPageRoute`][]
-since Flutter allows you to mix and match Material and Cupertino widgets
-depending on your needs.
+Você não precisa substituir todos os widgets Material por versões Cupertino
+para usar [`CupertinoPageRoute`][]
+já que o Flutter permite que você misture e combine widgets Material e Cupertino
+dependendo das suas necessidades.
 :::
 
 <?code-excerpt "lib/main_cupertino.dart"?>
-```dartpad title="Flutter Cupertino theme hands-on example in DartPad" run="true"
+```dartpad title="Exemplo prático do tema Cupertino do Flutter no DartPad" run="true"
 import 'package:flutter/cupertino.dart';
 
 void main() {
@@ -275,7 +276,7 @@ class SecondRoute extends StatelessWidget {
 ```
 
 <noscript>
-  <img src="/assets/images/docs/cookbook/navigation-basics-cupertino.gif" alt="Navigation Basics Cupertino Demo" class="site-mobile-screenshot" />
+  <img src="/assets/images/docs/cookbook/navigation-basics-cupertino.gif" alt="Demonstração de conceitos básicos de navegação no Cupertino" class="site-mobile-screenshot" />
 </noscript>
 
 [Cupertino]: {{site.docs}}/ui/widgets/cupertino

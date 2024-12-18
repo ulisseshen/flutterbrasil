@@ -1,68 +1,67 @@
 ---
-title: Use the Debug console
-description: Learn how to use the DevTools console.
+ia-translate: true
+title: Usar o console de Debug
+description: Aprenda a usar o console do DevTools.
 ---
 
-The DevTools Debug console allows you to watch an
-application's standard output (`stdout`),
-evaluate expressions for a paused or running
-app in debug mode, and analyze inbound and outbound
-references for objects.
+O console de Debug do DevTools permite observar a saída
+padrão de um aplicativo (`stdout`), avaliar expressões
+para um aplicativo em pausa ou em execução no modo de
+depuração e analisar referências de entrada e saída para
+objetos.
 
 :::note
-This page is up to date for DevTools 2.23.0.
+Esta página está atualizada para o DevTools 2.23.0.
 :::
 
-The Debug console is available from the [Inspector][],
-[Debugger][], and [Memory][] views.
+O console de Debug está disponível nas visualizações
+[Inspector][], [Debugger][] e [Memory][].
 
 [Inspector]: /tools/devtools/inspector
 [Debugger]:  /tools/devtools/debugger
 [Memory]:    /tools/devtools/memory
 
-## Watch application output
+## Observar a saída do aplicativo
 
-The console shows the application's standard output (`stdout`):
+O console mostra a saída padrão do aplicativo (`stdout`):
 
-![Screenshot of stdout in Console view](/assets/images/docs/tools/devtools/console-stdout.png)
+![Captura de tela de stdout na visualização do Console](/assets/images/docs/tools/devtools/console-stdout.png)
 
-## Explore inspected widgets
+## Explorar widgets inspecionados
 
-If you click a widget on the **Inspector** screen,
-the variable for this widget displays in the **Console**: 
+Se você clicar em um widget na tela **Inspector**, a
+variável para este widget será exibida no **Console**:
 
-![Screenshot of inspected widget in Console view](/assets/images/docs/tools/devtools/console-inspect-widget.png){:width="100%"}
+![Captura de tela do widget inspecionado na visualização do Console](/assets/images/docs/tools/devtools/console-inspect-widget.png){:width="100%"}
 
-## Evaluate expressions
+## Avaliar expressões
 
-In the console, you can evaluate expressions for a paused
-or running application, assuming that you are running
-your app in debug mode:
+No console, você pode avaliar expressões para um
+aplicativo em pausa ou em execução, supondo que você
+esteja executando seu aplicativo no modo de depuração:
 
-![Screenshot showing evaluating an expression in the console](/assets/images/docs/tools/devtools/console-evaluate-expressions.png)
+![Captura de tela mostrando a avaliação de uma expressão no console](/assets/images/docs/tools/devtools/console-evaluate-expressions.png)
 
-To assign an evaluated object to a variable,
-use `$0`, `$1` (through `$5`) in the form of `var x = $0`:
+Para atribuir um objeto avaliado a uma variável, use `$0`,
+`$1` (até `$5`) na forma de `var x = $0`:
 
-![Screenshot showing how to evaluate variables](/assets/images/docs/tools/devtools/console-evaluate-variables.png){:width="100%"}
+![Captura de tela mostrando como avaliar variáveis](/assets/images/docs/tools/devtools/console-evaluate-variables.png){:width="100%"}
 
-## Browse heap snapshot
+## Navegar pelo snapshot de heap
 
-To drop a variable to the console from a heap snapshot,
-do the following:
+Para soltar uma variável no console a partir de um snapshot de heap, faça o seguinte:
 
-1. Navigate to **Devtools > Memory > Diff Snapshots**.
-1. Record a memory heap snapshot.
-1. Click on the context menu `[⋮]` to view the number of
-   **Instances** for the desired **Class**.
-1. Select whether you want to store a single instance as
-   a console variable, or whether you want to store _all_
-   currently alive instances in the app.
+1.  Navegue até **Devtools > Memory > Diff Snapshots**.
+2.  Grave um snapshot de heap de memória.
+3.  Clique no menu de contexto `[⋮]` para visualizar o número
+    de **Instances** para a **Class** desejada.
+4.  Selecione se deseja armazenar uma única instância como
+    uma variável do console ou se deseja armazenar _todas_
+    as instâncias vivas no aplicativo.
 
-![Screenshot showing how to browse the heap snapshots](/assets/images/docs/tools/devtools/browse-heap-snapshot.png){:width="100%"}
+![Captura de tela mostrando como navegar pelos snapshots de heap](/assets/images/docs/tools/devtools/browse-heap-snapshot.png){:width="100%"}
 
-The Console screen displays both live and static
-inbound and outbound references, as well as field values:
+A tela do Console exibe referências de entrada e saída
+estáticas e dinâmicas, bem como valores de campos:
 
-![Screenshot showing inbound and outbound references in Console](/assets/images/docs/tools/devtools/console-references.png){:width="100%"}
-
+![Captura de tela mostrando referências de entrada e saída no Console](/assets/images/docs/tools/devtools/console-references.png){:width="100%"}

@@ -1,41 +1,42 @@
 ---
-title: Semantics Order of the Overlay Entries in Modal Routes
+ia-translate: true
+title: Ordem Semântica das Entradas de Sobreposição em Rotas Modais
 description: >
-  The scope of the modal route has a higher semantics
-  traverse order than its modal barrier.
+  O escopo da rota modal tem uma ordem de percurso semântico
+  superior à sua barreira modal.
 ---
 
-## Summary
+## Resumo
 
-We changed the semantics traverse order of the overlay entries in modal routes.
-Accessibility talk back or voice over now focuses the scope of a modal route
-first instead of its modal barrier.
+Nós alteramos a ordem de percurso semântico das entradas de sobreposição em rotas modais.
+O talkback ou voice over de acessibilidade agora foca o escopo de uma rota modal
+primeiro, em vez de sua barreira modal.
 
-## Context
+## Contexto
 
-The modal route has two overlay entries, the scope and the modal barrier. The
-scope is the actual content of the modal route, and the modal barrier is the
-background of the route if its scope does not cover the entire screen. If the
-modal route returns true for `barrierDismissible`, the modal barrier becomes
-accessibility focusable because users can tap the modal barrier to pop the
-modal route. This change specifically made the accessibility to focus the scope
-first before the modal barrier.
+A rota modal tem duas entradas de sobreposição, o escopo e a barreira modal. O
+escopo é o conteúdo real da rota modal, e a barreira modal é o
+fundo da rota se seu escopo não cobrir a tela inteira. Se a
+rota modal retorna verdadeiro para `barrierDismissible`, a barreira modal se torna
+focável por acessibilidade porque os usuários podem tocar na barreira modal para remover a
+rota modal. Esta mudança fez especificamente com que a acessibilidade focasse o escopo
+primeiro antes da barreira modal.
 
-## Description of change
+## Descrição da mudança
 
-We added additional semantics node above both
-the overlay entries of modal routes.
-Those semantics nodes denote the semantics
-traverse order of these two overlay entries.
-This also changed the structure of semantics tree.
+Nós adicionamos um nó semântico adicional acima de ambas
+as entradas de sobreposição de rotas modais.
+Esses nós semânticos denotam a ordem de
+percurso semântico dessas duas entradas de sobreposição.
+Isso também mudou a estrutura da árvore semântica.
 
-## Migration guide
+## Guia de migração
 
-If your tests start failing due to semantics tree changes after the update,
-you can migrate your code by expecting a new node on above of the modal route
-overlay entries.
+Se seus testes começarem a falhar devido a mudanças na árvore semântica após a atualização,
+você pode migrar seu código esperando um novo nó acima das
+entradas de sobreposição da rota modal.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 import 'dart:ui';
@@ -45,12 +46,12 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  testWidgets('example test', (WidgetTester tester) async {
+  testWidgets('exemplo de teste', (WidgetTester tester) async {
     final SemanticsHandle handle =
         tester.binding.pipelineOwner.ensureSemantics();
 
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(MaterialApp(home: Scaffold(body: Text('test'))));
+    // Constrói nosso aplicativo e aciona um frame.
+    await tester.pumpWidget(MaterialApp(home: Scaffold(body: Text('teste'))));
 
     final SemanticsNode root =
         tester.binding.pipelineOwner.semanticsOwner.rootSemanticsNode;
@@ -58,7 +59,7 @@ void main() {
     final SemanticsNode firstNode = getChild(root);
     expect(firstNode.rect, Rect.fromLTRB(0.0, 0.0, 800.0, 600.0));
 
-    // Fixes the test by expecting an additional node above the scope route.
+    // Corrige o teste esperando um nó adicional acima da rota do escopo.
     final SemanticsNode secondNode = getChild(firstNode);
     expect(secondNode.rect, Rect.fromLTRB(0.0, 0.0, 800.0, 600.0));
 
@@ -68,7 +69,7 @@ void main() {
 
     final SemanticsNode forthNode = getChild(thirdNode);
     expect(forthNode.rect, Rect.fromLTRB(0.0, 0.0, 56.0, 14.0));
-    expect(forthNode.label, 'test');
+    expect(forthNode.label, 'teste');
     handle.dispose();
   });
 }
@@ -85,7 +86,7 @@ SemanticsNode getChild(SemanticsNode node) {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 import 'dart:ui';
@@ -95,12 +96,12 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  testWidgets('example test', (WidgetTester tester) async {
+  testWidgets('exemplo de teste', (WidgetTester tester) async {
     final SemanticsHandle handle =
         tester.binding.pipelineOwner.ensureSemantics();
 
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(MaterialApp(home: Scaffold(body: Text('test'))));
+    // Constrói nosso aplicativo e aciona um frame.
+    await tester.pumpWidget(MaterialApp(home: Scaffold(body: Text('teste'))));
 
     final SemanticsNode root =
         tester.binding.pipelineOwner.semanticsOwner.rootSemanticsNode;
@@ -108,7 +109,7 @@ void main() {
     final SemanticsNode firstNode = getChild(root);
     expect(firstNode.rect, Rect.fromLTRB(0.0, 0.0, 800.0, 600.0));
 
-    // Fixes the test by expecting an additional node above the scope route.
+    // Corrige o teste esperando um nó adicional acima da rota do escopo.
     final SemanticsNode secondNode = getChild(firstNode);
     expect(secondNode.rect, Rect.fromLTRB(0.0, 0.0, 800.0, 600.0));
 
@@ -118,7 +119,7 @@ void main() {
 
     final SemanticsNode forthNode = getChild(thirdNode);
     expect(forthNode.rect, Rect.fromLTRB(0.0, 0.0, 56.0, 14.0));
-    expect(forthNode.label, 'test');
+    expect(forthNode.label, 'teste');
     handle.dispose();
   });
 }
@@ -135,23 +136,23 @@ SemanticsNode getChild(SemanticsNode node) {
 }
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.19.0<br>
-In stable release: 1.20
+Implementado na versão: 1.19.0<br>
+Na versão estável: 1.20
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`ModalRoute`][]
 * [`OverlayEntry`][]
 
-Relevant issue:
+Issue relevante:
 
 * [Issue 46625][]
 
-Relevant PR:
+PR relevante:
 
 * [PR 59290][]
 

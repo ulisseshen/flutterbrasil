@@ -1,1 +1,1 @@
-![Small green almost circular arrow that indicates reloading the UI of a Flutter app and resetting any state values](/assets/images/docs/testing/debugging/vscode-ui/icons/hot-restart.png)
+![Pequena seta verde quase circular que indica recarregar a interface do usuário de um aplicativo Flutter e redefinir quaisquer valores de estado](/assets/images/docs/testing/debugging/vscode-ui/icons/hot-restart.png)

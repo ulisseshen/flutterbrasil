@@ -1,69 +1,38 @@
-# DevTools 2.21.1 release notes
+# Notas de lançamento do DevTools 2.21.1
 
-The 2.21.1 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutter.dev/tools/devtools).
+A versão 2.21.1 do Dart e Flutter DevTools inclui as seguintes alterações, entre outras melhorias gerais. Para saber mais sobre o DevTools, consulte a [visão geral do DevTools](https://docs.flutter.dev/tools/devtools).
 
-## Performance updates
+## Atualizações de desempenho
 
-* Replace the DevTools timeline trace viewer with
-  the [Perfetto](https://perfetto.dev/) trace viewer - 
-  [#5142](https://github.com/flutter/devtools/pull/5142)
+* Substituir o visualizador de rastreamento da linha do tempo do DevTools pelo visualizador de rastreamento [Perfetto](https://perfetto.dev/) - [#5142](https://github.com/flutter/devtools/pull/5142)
 
-  ![perfetto trace viewer](/tools/devtools/release-notes/images-2.21.1/image1.png "perfetto_trace_viewer")
+  ![visualizador de rastreamento perfetto](/tools/devtools/release-notes/images-2.21.1/image1.png "perfetto_trace_viewer")
 
-* Fix several issues with loading a Performance snapshot into DevTools -
-  [#5048](https://github.com/flutter/devtools/pull/5048),
-  [#4929](https://github.com/flutter/devtools/pull/4929)
-* UI polish and cleanup - [#4889](https://github.com/flutter/devtools/pull/4889)
+* Corrigir vários problemas ao carregar um snapshot de desempenho no DevTools - [#5048](https://github.com/flutter/devtools/pull/5048), [#4929](https://github.com/flutter/devtools/pull/4929)
+* Polimento e limpeza da IU - [#4889](https://github.com/flutter/devtools/pull/4889)
 
-## Memory updates
+## Atualizações de memória
 
-* Improve usability of snapshot diffing -
-  [#5015](https://github.com/flutter/devtools/pull/5015)
-* UI polish and cleanup -
-  [#4855](https://github.com/flutter/devtools/pull/4855)
-* Color code classes based on where they are defined
-  (SDK, your package, dependencies, etc.) -
-  [#5030](https://github.com/flutter/devtools/pull/5030)
-* Fix state management issue for tracing -
-  [#5062](https://github.com/flutter/devtools/pull/5062)
-* Improve the performance of taking a heap snapshot -
-  [#5134](https://github.com/flutter/devtools/pull/5134)
-* Retire broken import/export feature -
-  [#5135](https://github.com/flutter/devtools/pull/5135)
+* Melhorar a usabilidade da diferenciação de snapshots - [#5015](https://github.com/flutter/devtools/pull/5015)
+* Polimento e limpeza da IU - [#4855](https://github.com/flutter/devtools/pull/4855)
+* Classes de código de cores com base em onde são definidas (SDK, seu pacote, dependências, etc.) - [#5030](https://github.com/flutter/devtools/pull/5030)
+* Corrigir problema de gerenciamento de estado para rastreamento - [#5062](https://github.com/flutter/devtools/pull/5062)
+* Melhorar o desempenho da captura de um heap snapshot - [#5134](https://github.com/flutter/devtools/pull/5134)
+* Desativar o recurso de importação/exportação quebrado - [#5135](https://github.com/flutter/devtools/pull/5135)
 
-## Debugger updates
+## Atualizações do depurador
 
-* Added support for viewing profiler hits in
-  the debugger script viewer -
-  [#4831](https://github.com/flutter/devtools/pull/4831)
-* Added support for inspecting records -
-  [#5084](https://github.com/flutter/devtools/pull/5084)
+* Adicionado suporte para visualização de hits do profiler no visualizador de scripts do depurador - [#4831](https://github.com/flutter/devtools/pull/4831)
+* Adicionado suporte para inspeção de registros - [#5084](https://github.com/flutter/devtools/pull/5084)
 
-## General updates
+## Atualizações gerais
 
-* Fix several issues in syntax highlighting that would
-  color variable names that contain reserved words incorrectly and
-  leave `extends`/`implements` clauses uncolored for some classes -
-  [#4948](https://github.com/flutter/devtools/pull/4948)
-* Fix an issue in Safari, and
-  other browsers that do not support RegExp negative lookbehind,
-  that prevented DevTools from loading -
-  [#4938](https://github.com/flutter/devtools/pull/4938)
-* Fix an issue that would prevent DevTools connecting to
-  the backend server that would disable some functionality -
-  [#5016](https://github.com/flutter/devtools/pull/5016)
-* Add a link to the DevTools
-  [contribution guide](https://github.com/flutter/devtools/blob/master/CONTRIBUTING.md)
-  to the About menu, and fixed the Discord link -
-  [#4926](https://github.com/flutter/devtools/pull/4926)
-* Fix conflicting colors in light theme -
-  [#5067](https://github.com/flutter/devtools/pull/5067)
+* Corrigir vários problemas na coloração de sintaxe que coloririam incorretamente nomes de variáveis que contêm palavras reservadas e deixariam as cláusulas `extends`/`implements` sem cor para algumas classes - [#4948](https://github.com/flutter/devtools/pull/4948)
+* Corrigir um problema no Safari e em outros navegadores que não oferecem suporte a lookbehind negativo RegExp, que impedia o carregamento do DevTools - [#4938](https://github.com/flutter/devtools/pull/4938)
+* Corrigir um problema que impedia o DevTools de se conectar ao servidor de back-end que desabilitava algumas funcionalidades - [#5016](https://github.com/flutter/devtools/pull/5016)
+* Adicionar um link para o [guia de contribuição](https://github.com/flutter/devtools/blob/master/CONTRIBUTING.md) do DevTools ao menu Sobre e corrigir o link do Discord - [#4926](https://github.com/flutter/devtools/pull/4926)
+* Corrigir cores conflitantes no tema claro - [#5067](https://github.com/flutter/devtools/pull/5067)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes since the previous release,
-check out
-[the diff on GitHub](https://github.com/flutter/devtools/compare/v2.20.0...v2.21.1).
+Para encontrar uma lista completa de alterações desde a versão anterior, consulte [o diff no GitHub](https://github.com/flutter/devtools/compare/v2.20.0...v2.21.1).

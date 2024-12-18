@@ -1,8 +1,9 @@
 ---
-title: Interaction model widgets
-short-title: Interaction
-description: > 
-  A catalog of Flutter's widgets supporting user interaction and navigation.
+ia-translate: true
+title: Widgets de modelo de interação
+short-title: Interação
+description: >
+  Um catálogo de widgets do Flutter que oferecem suporte à interação e navegação do usuário.
 ---
 
-{% render docs/catalog-page.md, categoryName:"Interaction models", catalog:catalog %}
+{% render docs/catalog-page.md, categoryName:"Modelos de interação", catalog:catalog %}

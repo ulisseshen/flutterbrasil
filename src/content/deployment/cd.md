@@ -1,99 +1,97 @@
 ---
-title: Continuous delivery with Flutter
+ia-translate: true
+title: Entrega contínua com Flutter
 description: >
-  How to automate continuous building and releasing of your Flutter app.
+  Como automatizar a construção e liberação contínuas do seu aplicativo Flutter.
 ---
 
-Follow continuous delivery best practices with Flutter to make sure your
-application is delivered to your beta testers and validated on a frequent basis
-without resorting to manual workflows.
+Siga as melhores práticas de entrega contínua com Flutter para garantir que seu
+aplicativo seja entregue aos seus testadores beta e validado frequentemente,
+sem recorrer a fluxos de trabalho manuais.
 
-## CI/CD Options
+## Opções de CI/CD
 
-There are a number of continuous integration (CI) and continuous delivery (CD)
-options available to help automate the delivery of your application.
+Há várias opções de integração contínua (CI) e entrega contínua (CD)
+disponíveis para ajudar a automatizar a entrega do seu aplicativo.
 
-### All-in-one options with built-in Flutter functionality
+### Opções tudo-em-um com funcionalidade Flutter integrada
 
 * [Codemagic][]
 * [Bitrise][]
 * [Appcircle][]
 
-### Integrating fastlane with existing workflows
+### Integrando fastlane com fluxos de trabalho existentes
 
-You can use fastlane with the following tooling:
+Você pode usar o fastlane com as seguintes ferramentas:
 
 * [GitHub Actions][]
-  * Example: [Github Action in Flutter Project][]
+  * Exemplo: [Github Action in Flutter Project][]
 * [Cirrus][]
 * [Travis][]
 * [GitLab][]
 * [CircleCI][]
    * [Building and deploying Flutter apps with Fastlane][]
 
-This guide shows how to set up fastlane and then integrate it with 
-your existing testing and continuous integration (CI) workflows. 
-For more information, see "Integrating fastlane with existing workflow".
+Este guia mostra como configurar o fastlane e, em seguida, integrá-lo aos
+seus fluxos de trabalho de teste e integração contínua (CI) existentes.
+Para obter mais informações, consulte "Integrando fastlane com fluxo de trabalho existente".
 
 ## fastlane
 
-[fastlane][] is an open-source tool suite to automate releases and deployments 
-for your app.
+[fastlane][] é um conjunto de ferramentas de código aberto para automatizar lançamentos e implantações
+para seu aplicativo.
 
-### Local setup
+### Configuração local
 
-It's recommended that you test the build and deployment process locally before
-migrating to a cloud-based system. You could also choose to perform continuous
-delivery from a local machine.
+É recomendável testar o processo de compilação e implantação localmente antes de
+migrar para um sistema baseado em nuvem. Você também pode optar por executar a entrega contínua
+de uma máquina local.
 
-1. Install fastlane `gem install fastlane` or `brew install fastlane`.
-Visit the [fastlane docs][fastlane] for more info.
-1. Create an environment variable named `FLUTTER_ROOT`,
-    and set it to the root directory of your Flutter SDK.
-    (This is required for the scripts that deploy for iOS.)
-1. Create your Flutter project, and when ready, make sure that your project builds via
-    * ![Android](/assets/images/docs/cd/android.png) `flutter build appbundle`; and
+1. Instale o fastlane `gem install fastlane` ou `brew install fastlane`.
+   Visite a [documentação do fastlane][fastlane] para mais informações.
+2. Crie uma variável de ambiente chamada `FLUTTER_ROOT` e
+   defina-a para o diretório raiz do seu Flutter SDK.
+   (Isso é necessário para os scripts que implantam para iOS.)
+3. Crie seu projeto Flutter e, quando estiver pronto, certifique-se de que seu projeto seja compilado via
+    * ![Android](/assets/images/docs/cd/android.png) `flutter build appbundle`; e
     * ![iOS](/assets/images/docs/cd/ios.png) `flutter build ipa`.
-1. Initialize the fastlane projects for each platform.
-    * ![Android](/assets/images/docs/cd/android.png) In your `[project]/android`
-    directory, run `fastlane init`.
-    * ![iOS](/assets/images/docs/cd/ios.png) In your `[project]/ios` directory,
-    run `fastlane init`.
-1. Edit the `Appfile`s to ensure they have adequate metadata for your app.
-    * ![Android](/assets/images/docs/cd/android.png) Check that `package_name` in
-    `[project]/android/fastlane/Appfile` matches your package name in AndroidManifest.xml.
-    * ![iOS](/assets/images/docs/cd/ios.png) Check that `app_identifier` in
-    `[project]/ios/fastlane/Appfile` also matches Info.plist's bundle identifier. Fill in
-    `apple_id`, `itc_team_id`, `team_id` with your respective account info.
-1. Set up your local login credentials for the stores.
-    * ![Android](/assets/images/docs/cd/android.png) Follow the [Supply setup steps][]
-    and ensure that `fastlane supply init` successfully syncs data from your
-    Play Store console. _Treat the .json file like your password and do not check
-    it into any public source control repositories._
-    * ![iOS](/assets/images/docs/cd/ios.png) Your iTunes Connect username is already
-    in your `Appfile`'s `apple_id` field. Set the `FASTLANE_PASSWORD` shell
-    environment variable with your iTunes Connect password. Otherwise, you'll be
-    prompted when uploading to iTunes/TestFlight.
-1. Set up code signing.
-    * ![Android](/assets/images/docs/cd/android.png) Follow the [Android app signing steps][].
-    * ![iOS](/assets/images/docs/cd/ios.png) On iOS, create and sign using a
-      distribution certificate instead of a development certificate when you're
-      ready to test and deploy using TestFlight or App Store.
-        * Create and download a distribution certificate in your
-          [Apple Developer Account console][].
-        * `open [project]/ios/Runner.xcworkspace/` and select the distribution
-          certificate in your target's settings pane.
-1. Create a `Fastfile` script for each platform.
-    * ![Android](/assets/images/docs/cd/android.png) On Android, follow the
-      [fastlane Android beta deployment guide][].
-      Your edit could be as simple as adding a `lane` that calls
+4. Inicialize os projetos fastlane para cada plataforma.
+    * ![Android](/assets/images/docs/cd/android.png) No seu diretório `[projeto]/android`, execute `fastlane init`.
+    * ![iOS](/assets/images/docs/cd/ios.png) No seu diretório `[projeto]/ios`, execute `fastlane init`.
+5. Edite os `Appfile`s para garantir que eles tenham metadados adequados para seu aplicativo.
+    * ![Android](/assets/images/docs/cd/android.png) Verifique se `package_name` em
+   `[projeto]/android/fastlane/Appfile` corresponde ao nome do seu pacote em AndroidManifest.xml.
+    * ![iOS](/assets/images/docs/cd/ios.png) Verifique se `app_identifier` em
+   `[projeto]/ios/fastlane/Appfile` também corresponde ao identificador do pacote do Info.plist. Preencha
+   `apple_id`, `itc_team_id`, `team_id` com as informações da sua respectiva conta.
+6. Configure suas credenciais de login locais para as lojas.
+    * ![Android](/assets/images/docs/cd/android.png) Siga as [etapas de configuração do Supply][]
+   e certifique-se de que `fastlane supply init` sincronize com sucesso os dados do seu
+   console da Play Store. _Trate o arquivo .json como sua senha e não o inclua
+   em nenhum repositório de controle de versão público._
+    * ![iOS](/assets/images/docs/cd/ios.png) Seu nome de usuário do iTunes Connect já está
+   no campo `apple_id` do seu `Appfile`. Defina a variável de ambiente do shell `FASTLANE_PASSWORD`
+   com sua senha do iTunes Connect. Caso contrário, você será solicitado ao fazer o upload para o iTunes/TestFlight.
+7. Configure a assinatura de código.
+    * ![Android](/assets/images/docs/cd/android.png) Siga as [etapas de assinatura de aplicativos Android][].
+    * ![iOS](/assets/images/docs/cd/ios.png) No iOS, crie e assine usando um
+      certificado de distribuição em vez de um certificado de desenvolvimento quando estiver
+      pronto para testar e implantar usando o TestFlight ou a App Store.
+        * Crie e baixe um certificado de distribuição em seu
+          [console da conta de desenvolvedor da Apple][].
+        * `open [projeto]/ios/Runner.xcworkspace/` e selecione a distribuição
+          certificado no painel de configurações do seu destino.
+8. Crie um script `Fastfile` para cada plataforma.
+    * ![Android](/assets/images/docs/cd/android.png) No Android, siga o
+      [guia de implantação beta do fastlane para Android][].
+      Sua edição pode ser tão simples quanto adicionar um `lane` que chama
       `upload_to_play_store`.
-      Set the `aab` argument to `../build/app/outputs/bundle/release/app-release.aab`
-      to use the app bundle `flutter build` already built.
-    * ![iOS](/assets/images/docs/cd/ios.png) On iOS, follow the
-      [fastlane iOS beta deployment guide][].
-      You can specify the archive path to avoid rebuilding the project. For example:
-      
+      Defina o argumento `aab` como `../build/app/outputs/bundle/release/app-release.aab`
+      para usar o pacote de aplicativos `flutter build` já construído.
+    * ![iOS](/assets/images/docs/cd/ios.png) No iOS, siga o
+      [guia de implantação beta do fastlane para iOS][].
+      Você pode especificar o caminho do arquivo para evitar a reconstrução do projeto. Por exemplo:
+
       ```ruby
       build_app(
         skip_build_archive: true,
@@ -102,231 +100,228 @@ Visit the [fastlane docs][fastlane] for more info.
       upload_to_testflight
       ```
 
-You're now ready to perform deployments locally or migrate the deployment
-process to a continuous integration (CI) system.
+Agora você está pronto para realizar implantações localmente ou migrar o
+processo de implantação para um sistema de integração contínua (CI).
 
-### Running deployment locally
+### Executando a implantação localmente
 
-1. Build the release mode app.
+1. Crie o aplicativo no modo de lançamento.
     * ![Android](/assets/images/docs/cd/android.png) `flutter build appbundle`.
     * ![iOS](/assets/images/docs/cd/ios.png) `flutter build ipa`.
-1. Run the Fastfile script on each platform.
-    * ![Android](/assets/images/docs/cd/android.png) `cd android` then
-    `fastlane [name of the lane you created]`.
-    * ![iOS](/assets/images/docs/cd/ios.png) `cd ios` then
-    `fastlane [name of the lane you created]`.
+2. Execute o script Fastfile em cada plataforma.
+    * ![Android](/assets/images/docs/cd/android.png) `cd android` então
+   `fastlane [nome do lane que você criou]`.
+    * ![iOS](/assets/images/docs/cd/ios.png) `cd ios` então
+   `fastlane [nome do lane que você criou]`.
 
-### Cloud build and deploy setup
+### Configuração de construção e implantação na nuvem
 
-First, follow the local setup section described in 'Local setup' to make sure
-the process works before migrating onto a cloud system like Travis.
+Primeiro, siga a seção de configuração local descrita em 'Configuração local' para ter certeza de que
+o processo funciona antes de migrar para um sistema em nuvem como o Travis.
 
-The main thing to consider is that since cloud instances are ephemeral and
-untrusted, you won't be leaving your credentials like your Play Store service
-account JSON or your iTunes distribution certificate on the server.
+O principal a considerar é que, como as instâncias em nuvem são efêmeras e
+não confiáveis, você não deixará suas credenciais como o serviço Play Store
+conta JSON ou seu certificado de distribuição do iTunes no servidor.
 
-Continuous Integration (CI) systems generally support encrypted environment 
-variables to store private data. You can pass these environment variables 
-using `--dart-define MY_VAR=MY_VALUE` while building the app.
+Os sistemas de Integração Contínua (CI) geralmente oferecem suporte a variáveis de ambiente
+criptografadas para armazenar dados privados. Você pode passar essas variáveis de ambiente
+usando `--dart-define MY_VAR=MY_VALUE` ao construir o aplicativo.
 
-**Take precaution not to re-echo those variable values back onto the console in
-your test scripts**. Those variables are also not available in pull requests
-until they're merged to ensure that malicious actors cannot create a pull
-request that prints these secrets out. Be careful with interactions with these
-secrets in pull requests that you accept and merge.
+**Tome cuidado para não ecoar esses valores de variáveis de volta no console em
+seus scripts de teste**. Essas variáveis também não estão disponíveis em pull requests
+até que sejam mesclados para garantir que atores maliciosos não possam criar um pull
+request que imprima esses segredos. Tenha cuidado com as interações com esses
+segredos em pull requests que você aceita e mescla.
 
-1. Make login credentials ephemeral.
-    * ![Android](/assets/images/docs/cd/android.png) On Android:
-        * Remove the `json_key_file` field from `Appfile` and store the string
-          content of the JSON in your CI system's encrypted variable. 
-          Read the environment variable directly in your `Fastfile`.
+1. Torne as credenciais de login efêmeras.
+    * ![Android](/assets/images/docs/cd/android.png) No Android:
+        * Remova o campo `json_key_file` de `Appfile` e armazene a string
+          conteúdo do JSON na variável criptografada do seu sistema de CI.
+          Leia a variável de ambiente diretamente em seu `Fastfile`.
           ```plaintext
           upload_to_play_store(
             ...
-            json_key_data: ENV['<variable name>']
+            json_key_data: ENV['<nome da variável>']
           )
           ```
-        * Serialize your upload key (for example, using base64) and save it as
-          an encrypted environment variable. You can deserialize it on your CI
-          system during the install phase with
+        * Serialize sua chave de upload (por exemplo, usando base64) e salve-a como
+          uma variável de ambiente criptografada. Você pode deserializá-la em seu sistema de CI
+          durante a fase de instalação com
           ```bash
-          echo "$PLAY_STORE_UPLOAD_KEY" | base64 --decode > [path to your upload keystore]
+          echo "$PLAY_STORE_UPLOAD_KEY" | base64 --decode > [caminho para seu keystore de upload]
           ```
-    * ![iOS](/assets/images/docs/cd/ios.png) On iOS:
-        * Move the local environment variable `FASTLANE_PASSWORD` to use
-          encrypted environment variables on the CI system.
-        * The CI system needs access to your distribution certificate.
-          fastlane's [Match][] system is
-          recommended to synchronize your certificates across machines.
-
-2. It's recommended to use a Gemfile instead of using an indeterministic
-   `gem install fastlane` on the CI system each time to ensure the fastlane
-   dependencies are stable and reproducible between local and cloud machines.
-   However, this step is optional.
-    * In both your `[project]/android` and `[project]/ios` folders, create a
-      `Gemfile` containing the following content:
+    * ![iOS](/assets/images/docs/cd/ios.png) No iOS:
+        * Mova a variável de ambiente local `FASTLANE_PASSWORD` para usar
+          variáveis de ambiente criptografadas no sistema de CI.
+        * O sistema de CI precisa acessar seu certificado de distribuição.
+          O sistema [Match][] do fastlane é
+          recomendado para sincronizar seus certificados entre máquinas.
+2. É recomendável usar um Gemfile em vez de usar um indeterminístico
+   `gem install fastlane` no sistema CI cada vez para garantir que o fastlane
+   dependências são estáveis e reproduzíveis entre máquinas locais e em nuvem.
+   No entanto, esta etapa é opcional.
+    * Em suas pastas `[projeto]/android` e `[projeto]/ios`, crie um
+      `Gemfile` contendo o seguinte conteúdo:
         ```plaintext
         source "https://rubygems.org"
 
         gem "fastlane"
         ```
-    * In both directories, run `bundle update` and check both `Gemfile` and
-      `Gemfile.lock` into source control.
-    * When running locally, use `bundle exec fastlane` instead of `fastlane`.
-
-3. Create the CI test script such as `.travis.yml` or `.cirrus.yml` in your
-   repository root.
-    * See [fastlane CI documentation][] for CI specific setup.
-    * Shard your script to run on both Linux and macOS platforms.
-    * During the setup phase of the CI task, do the following:
-         * Ensure Bundler is available using `gem install bundler`.
-         * Run `bundle install` in `[project]/android` or `[project]/ios`.
-         * Make sure the Flutter SDK is available and set in `PATH`.
-         * For Android, ensure the Android SDK is available and the `ANDROID_SDK_ROOT`
-           path is set.
-         * For iOS, you might have to specify a dependency on Xcode
-           (for example, `osx_image: xcode9.2`).
-    * In the script phase of the CI task:
-         * Run `flutter build appbundle` or
-           `flutter build ios --release --no-codesign`,
-           depending on the platform.
-         * `cd android` or `cd ios`
-         * `bundle exec fastlane [name of the lane]`
+    * Em ambos os diretórios, execute `bundle update` e marque `Gemfile` e
+      `Gemfile.lock` no controle de versão.
+    * Ao executar localmente, use `bundle exec fastlane` em vez de `fastlane`.
+3. Crie o script de teste de CI, como `.travis.yml` ou `.cirrus.yml` em seu
+   raiz do repositório.
+    * Consulte a [documentação do fastlane CI][] para configuração específica de CI.
+    * Divida seu script para ser executado nas plataformas Linux e macOS.
+    * Durante a fase de configuração da tarefa de CI, faça o seguinte:
+        * Certifique-se de que o Bundler esteja disponível usando `gem install bundler`.
+        * Execute `bundle install` em `[projeto]/android` ou `[projeto]/ios`.
+        * Certifique-se de que o Flutter SDK esteja disponível e definido em `PATH`.
+        * Para Android, certifique-se de que o Android SDK esteja disponível e o `ANDROID_SDK_ROOT`
+          caminho está definido.
+        * Para iOS, pode ser necessário especificar uma dependência do Xcode
+          (por exemplo, `osx_image: xcode9.2`).
+    * Na fase de script da tarefa de CI:
+        * Execute `flutter build appbundle` ou
+          `flutter build ios --release --no-codesign`,
+          dependendo da plataforma.
+        * `cd android` ou `cd ios`
+        * `bundle exec fastlane [nome do lane]`
 
 ## Xcode Cloud
 
-[Xcode Cloud][] is a continuous integration and delivery service for building,
-testing, and distributing apps and frameworks for Apple platforms.
+[Xcode Cloud][] é um serviço de integração e entrega contínuas para construir,
+testar e distribuir aplicativos e estruturas para plataformas Apple.
 
-### Requirements
+### Requisitos
 
-* Xcode 13.4.1 or higher.
-* Be enrolled in the [Apple Developer Program][].
+* Xcode 13.4.1 ou superior.
+* Esteja inscrito no [Programa de desenvolvedor da Apple][].
 
-### Custom build script
+### Script de construção personalizado
 
-Xcode Cloud recognizes [custom build scripts][] that can be 
-used to perform additional tasks at a designated time. It also includes a set
-of [predefined environment variables][], such as `$CI_WORKSPACE`, which is the
-location of your cloned repository.
+O Xcode Cloud reconhece [scripts de construção personalizados][] que podem ser
+usados para executar tarefas adicionais em um horário designado. Também inclui um conjunto
+de [variáveis de ambiente predefinidas][], como `$CI_WORKSPACE`, que é o
+localização do seu repositório clonado.
 
 :::note
-The temporary build environment that Xcode Cloud uses includes tools that are
-part of macOS and Xcode&mdash;for example, Python&mdash;and additionally Homebrew to
-support installing third-party dependencies and tools.
+O ambiente de construção temporário que o Xcode Cloud usa inclui ferramentas que fazem parte
+do macOS e Xcode — por exemplo, Python — e, adicionalmente, o Homebrew para
+dar suporte à instalação de dependências e ferramentas de terceiros.
 :::
 
-#### Post-clone script
+#### Script pós-clone
 
-Leverage the post-clone custom build script that runs after
-Xcode Cloud clones your Git repository using the following instructions:
+Aproveite o script de construção personalizado pós-clone que é executado após
+Xcode Cloud clona seu repositório Git usando as seguintes instruções:
 
-Create a file at `ios/ci_scripts/ci_post_clone.sh` and add the content below.
+Crie um arquivo em `ios/ci_scripts/ci_post_clone.sh` e adicione o conteúdo abaixo.
 
 <?code-excerpt "deployment/xcode_cloud/ci_post_clone.sh"?>
 ```sh
 #!/bin/sh
 
-# Fail this script if any subcommand fails.
+# Falhe neste script se algum subcomando falhar.
 set -e
 
-# The default execution directory of this script is the ci_scripts directory.
-cd $CI_PRIMARY_REPOSITORY_PATH # change working directory to the root of your cloned repo.
+# O diretório de execução padrão deste script é o diretório ci_scripts.
+cd $CI_PRIMARY_REPOSITORY_PATH # altere o diretório de trabalho para a raiz do seu repositório clonado.
 
-# Install Flutter using git.
+# Instale o Flutter usando git.
 git clone https://github.com/flutter/flutter.git --depth 1 -b stable $HOME/flutter
 export PATH="$PATH:$HOME/flutter/bin"
 
-# Install Flutter artifacts for iOS (--ios), or macOS (--macos) platforms.
+# Instale artefatos do Flutter para plataformas iOS (--ios) ou macOS (--macos).
 flutter precache --ios
 
-# Install Flutter dependencies.
+# Instale as dependências do Flutter.
 flutter pub get
 
-# Install CocoaPods using Homebrew.
-HOMEBREW_NO_AUTO_UPDATE=1 # disable homebrew's automatic updates.
+# Instale o CocoaPods usando o Homebrew.
+HOMEBREW_NO_AUTO_UPDATE=1 # desabilita as atualizações automáticas do homebrew.
 brew install cocoapods
 
-# Install CocoaPods dependencies.
-cd ios && pod install # run `pod install` in the `ios` directory.
+# Instale as dependências do CocoaPods.
+cd ios && pod install # execute `pod install` no diretório `ios`.
 
 exit 0
 ```
 
-This file should be added to your git repository and marked as executable.
+Este arquivo deve ser adicionado ao seu repositório git e marcado como executável.
 
 ```console
 $ git add --chmod=+x ios/ci_scripts/ci_post_clone.sh
 ```
 
-### Workflow configuration
+### Configuração do fluxo de trabalho
 
-An [Xcode Cloud workflow][] defines the steps performed in the CI/CD process
-when your workflow is triggered.
+Um [fluxo de trabalho do Xcode Cloud][] define as etapas executadas no processo de CI/CD
+quando seu fluxo de trabalho é acionado.
 
 :::note
-This requires that your project is already initialized with Git
-and linked to a remote repository.
+Isso exige que seu projeto já esteja inicializado com o Git
+e vinculado a um repositório remoto.
 :::
 
-To create a new workflow in Xcode, use the following instructions:
+Para criar um novo fluxo de trabalho no Xcode, use as seguintes instruções:
 
-1. Choose **Product > Xcode Cloud > Create Workflow** to open the
-   **Create Workflow** sheet.
+1. Escolha **Product > Xcode Cloud > Create Workflow** para abrir a
+   planilha **Create Workflow**.
 
-2. Select the product (app) that the workflow should be attached to, then click
-   the **Next** button.
+2. Selecione o produto (aplicativo) ao qual o fluxo de trabalho deve ser anexado e clique no
+   botão **Next**.
 
-3. The next sheet displays an overview of the default workflow provided by Xcode,
-    and can be customized by clicking the **Edit Workflow** button.
+3. A próxima planilha exibe uma visão geral do fluxo de trabalho padrão fornecido pelo Xcode,
+    e pode ser personalizado clicando no botão **Edit Workflow**.
 
-#### Branch changes
+#### Alterações de branch
 
-By default Xcode suggests the Branch Changes condition that starts a new build
-for every change to your Git repository's default branch.
+Por padrão, o Xcode sugere a condição de Alterações de Branch que inicia uma nova construção
+para cada alteração no branch padrão do seu repositório Git.
 
-For your app's iOS variant, it's reasonable that you would want Xcode Cloud to
-trigger your workflow after you've made changes to your flutter packages, or
-modified either the Dart or iOS source files within the `lib\` and `ios\`
-directories.
+Para a variante iOS do seu aplicativo, é razoável que você queira que o Xcode Cloud
+dispare seu fluxo de trabalho depois de você fazer alterações nos seus pacotes flutter, ou
+modificar os arquivos de origem Dart ou iOS nos diretórios `lib\` e `ios\`.
 
-This can be achieved by using the following Files and Folders conditions:
+Isso pode ser alcançado usando as seguintes condições de Arquivos e Pastas:
 
 ![Xcode Workflow Branch Changes](/assets/images/docs/releaseguide/xcode_workflow_branch_changes.png){:width="100%"}
 
-### Next build number
+### Próximo número de compilação
 
-Xcode Cloud defaults the build number for new workflows to `1` and increments
-it per successful build. If you're using an existing app with a higher build
-number, you'll need to configure Xcode Cloud to use the correct build number
-for its builds by simply specifying the `Next Build Number` in your iteration.
+O Xcode Cloud define o número de compilação para novos fluxos de trabalho como `1` e o incrementa
+por compilação bem-sucedida. Se você estiver usando um aplicativo existente com um número de compilação maior
+, você precisará configurar o Xcode Cloud para usar o número de compilação correto
+para suas compilações, simplesmente especificando o `Next Build Number` na sua iteração.
 
-Check out [Setting the next build number for Xcode Cloud builds][] for more
-information.
+Confira [Definindo o próximo número de compilação para as compilações do Xcode Cloud][] para mais
+informações.
 
-[Android app signing steps]: /deployment/android#signing-the-app
-[Appcircle]: https://appcircle.io/blog/guide-to-automated-mobile-ci-cd-for-flutter-projects-with-appcircle/
-[Apple Developer Account console]: {{site.apple-dev}}/account/ios/certificate/
-[Bitrise]: https://devcenter.bitrise.io/en/getting-started/quick-start-guides/getting-started-with-flutter-apps
-[CI Options and Examples]: #reference-and-examples
-[Cirrus]: https://cirrus-ci.org
-[Cirrus script]: {{site.repo.flutter}}/blob/master/.cirrus.yml
-[Codemagic]: https://blog.codemagic.io/getting-started-with-codemagic/
-[fastlane]: https://docs.fastlane.tools
-[fastlane Android beta deployment guide]: https://docs.fastlane.tools/getting-started/android/beta-deployment/
-[fastlane CI documentation]: https://docs.fastlane.tools/best-practices/continuous-integration
-[fastlane iOS beta deployment guide]: https://docs.fastlane.tools/getting-started/ios/beta-deployment/
-[Github Action in Flutter Project]: {{site.github}}/nabilnalakath/flutter-githubaction
-[GitHub Actions]: {{site.github}}/features/actions
-[GitLab]: https://docs.gitlab.com/ee/ci/
-[CircleCI]: https://circleci.com
-[Building and deploying Flutter apps with Fastlane]: https://circleci.com/blog/deploy-flutter-android
-[Match]: https://docs.fastlane.tools/actions/match/
-[Supply setup steps]: https://docs.fastlane.tools/getting-started/android/setup/#setting-up-supply
-[Travis]: https://travis-ci.org/
-[Apple Developer Program]: {{site.apple-dev}}/programs
-[Xcode Cloud]: {{site.apple-dev}}/xcode-cloud
-[Xcode Cloud workflow]: {{site.apple-dev}}/documentation/xcode/xcode-cloud-workflow-reference
-[custom build scripts]: {{site.apple-dev}}/documentation/xcode/writing-custom-build-scripts
-[predefined environment variables]: {{site.apple-dev}}/documentation/xcode/environment-variable-reference
-[Setting the next build number for Xcode Cloud builds]: {{site.apple-dev}}/documentation/xcode/setting-the-next-build-number-for-xcode-cloud-builds#Set-the-next-build-number-to-a-custom-value
+[etapas de assinatura de aplicativos Android]: /deployment/android#signing-the-app  
+[Appcircle]: https://appcircle.io/blog/guide-to-automated-mobile-ci-cd-for-flutter-projects-with-appcircle/  
+[console da conta de desenvolvedor da Apple]: {{site.apple-dev}}/account/ios/certificate/  
+[Bitrise]: https://devcenter.bitrise.io/en/getting-started/quick-start-guides/getting-started-with-flutter-apps  
+[CI Options and Examples]: #reference-and-examples  
+[Cirrus]: https://cirrus-ci.org  
+[Cirrus script]: {{site.repo.flutter}}/blob/master/.cirrus.yml  
+[Codemagic]: https://blog.codemagic.io/getting-started-with-codemagic/  
+[fastlane]: https://docs.fastlane.tools  
+[guia de implantação beta do fastlane para Android]: https://docs.fastlane.tools/getting-started/android/beta-deployment/  
+[guia de implantação beta do fastlane para iOS]: https://docs.fastlane.tools/getting-started/ios/beta-deployment/  
+[documentação do fastlane CI]: https://docs.fastlane.tools/best-practices/continuous-integration  
+[Github Action in Flutter Project]: {{site.github}}/nabilnalakath/flutter-githubaction  
+[GitHub Actions]: {{site.github}}/features/actions  
+[GitLab]: https://docs.gitlab.com/ee/ci/  
+[CircleCI]: https://circleci.com  
+[Building and deploying Flutter apps with Fastlane]: https://circleci.com/blog/deploy-flutter-android  
+[Match]: https://docs.fastlane.tools/actions/match/  
+[etapas de configuração do Supply]: https://docs.fastlane.tools/getting-started/android/setup/#setting-up-supply  
+[Travis]: https://travis-ci.org/  
+[Programa de desenvolvedor da Apple]: {{site.apple-dev}}/programs  
+[Xcode Cloud]: {{site.apple-dev}}/xcode-cloud  
+[fluxo de trabalho do Xcode Cloud]: {{site.apple-dev}}/documentation/xcode/xcode-cloud-workflow-reference  
+[scripts de construção personalizados]: {{site.apple-dev}}/documentation/xcode/writing-custom-build-scripts  
+[variáveis de ambiente predefinidas]: {{site.apple-dev}}/documentation/xcode/environment-variable-reference  
+[Definindo o próximo número de compilação para as compilações do Xcode Cloud]: {{site.apple-dev}}/documentation/xcode/setting-the-next-build-number-for-xcode-cloud-builds#Set-the-next-build-number-to-a-custom-value  

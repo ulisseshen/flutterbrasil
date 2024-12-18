@@ -1,13 +1,14 @@
 ---
-title: Add macOS as a target platform for Flutter from web start
-description: Configure your system to develop Flutter mobile apps on macOS.
-short-title: Starting from web
+ia-translate: true
+title: Adicione macOS como plataforma de destino para Flutter a partir do início na web
+description: Configure seu sistema para desenvolver aplicativos móveis Flutter no macOS.
+short-title: Começando pela web
 ---
 
-To add macOS desktop as a Flutter app target, follow this procedure.
+Para adicionar o desktop macOS como um alvo para aplicativo Flutter, siga este procedimento.
 
-This procedure presumes you installed [Xcode][] {{site.appnow.xcode}}
-when your Flutter getting started path began with iOS.
+Este procedimento presume que você instalou o [Xcode][] {{site.appnow.xcode}}
+quando seu caminho de introdução ao Flutter começou com iOS.
 
 {% include docs/install/compiler/xcode.md target='macOS' devos='macOS' attempt="first" -%}
 

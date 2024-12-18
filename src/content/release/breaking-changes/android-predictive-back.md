@@ -1,95 +1,90 @@
 ---
-title: Android predictive back
+ia-translate: true
+title: Retorno preditivo do Android
 description: >-
-  The ability to control back navigation at the time that a back gesture is
-  received has been replaced with an ahead-of-time navigation API in order to
-  support Android 14's Predictive Back feature.
+  A capacidade de controlar a navegação de retorno no momento em que um gesto
+  de retorno é recebido foi substituída por uma API de navegação antecipada
+  para oferecer suporte ao recurso de Retorno Preditivo do Android 14.
 ---
 
-## Summary
+## Resumo
 
-To support Android 14's Predictive Back feature,
-a set of ahead-of-time APIs have replaced just-in-time navigation APIs,
-like `WillPopScope` and `Navigator.willPop`.
+Para oferecer suporte ao recurso de Retorno Preditivo do Android 14, um conjunto
+de APIs antecipadas substituiu as APIs de navegação just-in-time, como
+`WillPopScope` e `Navigator.willPop`.
 
 :::note
-The Flutter 3.22 release includes some updates
-to predictive back behavior. For more info, check out
-[Issue #132504][].
+A versão 3.22 do Flutter inclui algumas atualizações para o comportamento de
+retorno preditivo. Para mais informações, confira [Issue #132504][].
 :::
 
 [Issue #132504]: {{site.github}}/flutter/flutter/issues/132504#issuecomment-2025776552
 
-## Background
+## Contexto
 
-Android 14 introduced the
-[Predictive Back feature]({{site.android-dev}}/guide/navigation/predictive-back-gesture),
-which allows the user to peek behind the current route during a valid back
-gesture and decide whether to continue back or to cancel the gesture. This was
-incompatible with Flutter's navigation APIs that allow the developer to cancel a
-back gesture after it is received.
+O Android 14 introduziu o [recurso de Retorno Preditivo]({{site.android-dev}}/guide/navigation/predictive-back-gesture), que permite que o usuário espreite por trás da rota atual durante um gesto de retorno válido e decida se continua para trás ou cancela o gesto. Isso era incompatível com as APIs de navegação do Flutter que permitiam ao desenvolvedor cancelar um gesto de retorno depois de recebido.
 
-With predictive back, the back animation begins immediately when the
-user initiates the gesture and before it has been committed. There is no
-opportunity for the Flutter app to decide whether it's allowed to happen at that
-time. It must be known ahead of time.
+Com o retorno preditivo, a animação de retorno começa imediatamente quando o
+usuário inicia o gesto e antes que ele seja confirmado. Não há oportunidade para
+o aplicativo Flutter decidir se ele pode acontecer naquele momento. Isso deve ser
+conhecido antecipadamente.
 
-For this reason, all APIs that allow a Flutter app developer to cancel a back
-navigation at the time that a back gesture is received are now deprecated. They
-have been replaced with equivalent APIs that maintain a boolean state at all
-times that dictates whether or not back navigation is possible. When it is, the
-predictive back animation happens as usual. Otherwise, navigation is stopped. In
-both cases, the app developer is informed that a back was attempted and
-whether it was successful.
+Por esse motivo, todas as APIs que permitem que um desenvolvedor de aplicativo
+Flutter cancele uma navegação de retorno no momento em que um gesto de retorno é
+recebido agora estão obsoletas. Elas foram substituídas por APIs equivalentes que
+mantêm um estado booleano em todos os momentos que dita se a navegação de retorno
+é possível ou não. Quando é, a animação de retorno preditivo acontece
+normalmente. Caso contrário, a navegação é interrompida. Em ambos os casos, o
+desenvolvedor do aplicativo é informado de que uma tentativa de retorno foi feita
+e se ela foi bem-sucedida.
 
 ### PopScope
 
-The `PopScope` class directly replaces `WillPopScope` in order to enable
-predictive back. Instead of deciding whether a pop is possible at the time it
-occurs, this is set ahead of time with the `canPop` boolean. You can still
-listen to pops by using `onPopInvoked`.
+A classe `PopScope` substitui diretamente `WillPopScope` para habilitar o
+retorno preditivo. Em vez de decidir se um pop é possível no momento em que
+ocorre, isso é definido antecipadamente com o booleano `canPop`. Você ainda pode
+ouvir os pops usando `onPopInvoked`.
 
 ```dart
 PopScope(
   canPop: _myPopDisableEnableLogic(),
   onPopInvoked: (bool didPop) {
-    // Handle the pop. If `didPop` is false, it was blocked.
+    // Lidar com o pop. Se `didPop` for falso, ele foi bloqueado.
   },
 )
 ```
 
-### Form.canPop and Form.onPopInvoked
+### Form.canPop e Form.onPopInvoked
 
-These two new parameters are based on `PopScope` and replace the deprecated
-`Form.onWillPop` parameter. They are used with `PopScope` in the same way as
-above.
+Esses dois novos parâmetros são baseados em `PopScope` e substituem o parâmetro
+obsoleto `Form.onWillPop`. Eles são usados com `PopScope` da mesma forma que
+acima.
 
 ```dart
 Form(
   canPop: _myPopDisableEnableLogic(),
   onPopInvoked: (bool didPop) {
-    // Handle the pop. If `didPop` is false, it was blocked.
+    // Lidar com o pop. Se `didPop` for falso, ele foi bloqueado.
   },
 )
 ```
 
 ### Route.popDisposition
 
-This getter synchronously returns the `RoutePopDisposition`
-for the route, which describes how pops will behave.
+Este getter retorna de forma síncrona o `RoutePopDisposition` para a rota, que
+descreve como os pops se comportarão.
 
 ```dart
 if (myRoute.popDisposition == RoutePopDisposition.doNotPop) {
-  // Back gestures are disabled.
+  // Gestos de retorno são desabilitados.
 }
 ```
 
-### ModalRoute.registerPopEntry and ModalRoute.unregisterPopEntry
+### ModalRoute.registerPopEntry e ModalRoute.unregisterPopEntry
 
-Use these methods to register `PopScope` widgets,
-to be evaluated when the route decides whether it can pop.
-This functionality might be used when implementing a
-custom `PopScope` widget.
+Use esses métodos para registrar widgets `PopScope`, a serem avaliados quando a
+rota decidir se pode fazer pop. Essa funcionalidade pode ser usada ao
+implementar um widget `PopScope` personalizado.
 
 ```dart
 @override
@@ -104,15 +99,15 @@ void didChangeDependencies() {
 }
 ```
 
-## Migration guide
+## Guia de migração
 
-### Migrating from `WillPopScope` to `PopScope`
+### Migrando de `WillPopScope` para `PopScope`
 
-The direct replacement of the `WillPopScope` widget is the `PopScope` widget.
-In many cases, logic that was being run at the time of the back gesture in
-`onWillPop` can be done at build time and set to `canPop`.
+A substituição direta do widget `WillPopScope` é o widget `PopScope`. Em muitos
+casos, a lógica que estava sendo executada no momento do gesto de retorno em
+`onWillPop` pode ser feita em tempo de construção e definida como `canPop`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 WillPopScope(
@@ -123,7 +118,7 @@ WillPopScope(
 ),
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 PopScope(
@@ -132,14 +127,13 @@ PopScope(
 ),
 ```
 
-For cases where it's necessary to be notified that a
-pop was attempted, the `onPopInvoked` method can be
-used in a similar way to `onWillPop`. Keep in mind
-that while `onWillPop` was called before the pop
-was handled and had the ability to cancel it,
-`onPopInvoked` is called after the pop is finished being handled.
+Para os casos em que é necessário ser notificado de que um pop foi tentado, o
+método `onPopInvoked` pode ser usado de forma semelhante a `onWillPop`. Tenha em
+mente que, embora `onWillPop` fosse chamado antes que o pop fosse tratado e
+tivesse a capacidade de cancelá-lo, `onPopInvoked` é chamado após o pop terminar
+de ser tratado.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 WillPopScope(
@@ -151,7 +145,7 @@ WillPopScope(
 ),
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 PopScope(
@@ -163,15 +157,14 @@ PopScope(
 ),
 ```
 
-### Migrating from WillPopScope to NavigatorPopHandler for nested Navigators
+### Migrando de WillPopScope para NavigatorPopHandler para Navigators aninhados
 
-A very common use case of `WillPopScope` was to properly handle
-back gestures when using nested `Navigator` widgets.
-It's possible to do this using `PopScope` as well,
-but there is now a wrapper widget that makes this even easier:
-`NavigatorPopHandler`.
+Um caso de uso muito comum de `WillPopScope` era lidar adequadamente com gestos
+de retorno ao usar widgets `Navigator` aninhados. É possível fazer isso usando
+`PopScope` também, mas agora existe um widget de wrapper que torna isso ainda
+mais fácil: `NavigatorPopHandler`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 WillPopScope(
@@ -183,7 +176,7 @@ WillPopScope(
 )
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 NavigatorPopHandler(
@@ -195,23 +188,20 @@ NavigatorPopHandler(
 )
 ```
 
-### Migrating from Form.onWillPop to Form.canPop and Form.onPopInvoked
+### Migrando de Form.onWillPop para Form.canPop e Form.onPopInvoked
 
-Previously, `Form` used a `WillPopScope` instance under
-the hood and exposed its `onWillPop` method.
-This has been replaced with a `PopScope` that exposes its
-`canPop` and `onPopInvoked` methods.
-Migrating is identical to migrating from
-`WillPopScope` to `PopScope`, detailed above.
+Anteriormente, `Form` usava uma instância `WillPopScope` sob o capô e expunha
+seu método `onWillPop`. Isso foi substituído por um `PopScope` que expõe seus
+métodos `canPop` e `onPopInvoked`. A migração é idêntica à migração de
+`WillPopScope` para `PopScope`, detalhada acima.
 
-### Migrating from Route.willPop to Route.popDisposition
+### Migrando de Route.willPop para Route.popDisposition
 
-`Route`'s `willPop` method returned a
-`Future<RoutePopDisposition>` to accommodate the fact
-that pops could be canceled. Now that that's no longer true,
-this logic has been simplified to a synchronous getter.
+O método `willPop` de `Route` retornava um `Future<RoutePopDisposition>` para
+acomodar o fato de que os pops podiam ser cancelados. Agora que isso não é mais
+verdade, essa lógica foi simplificada para um getter síncrono.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 if (await myRoute.willPop() == RoutePopDisposition.doNotPop) {
@@ -219,7 +209,7 @@ if (await myRoute.willPop() == RoutePopDisposition.doNotPop) {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 if (myRoute.popDisposition == RoutePopDisposition.doNotPop) {
@@ -227,22 +217,20 @@ if (myRoute.popDisposition == RoutePopDisposition.doNotPop) {
 }
 ```
 
-### Migrating from ModalRoute.add/removeScopedWillPopCallback to ModalRoute.(un)registerPopEntry
+### Migrando de ModalRoute.add/removeScopedWillPopCallback para ModalRoute.(un)registerPopEntry
 
-Internally, `ModalRoute` kept track of the existence of
-`WillPopScope`s in its widget subtree by registering them
-with `addScopedWillPopCallback` and
-`removeScopedWillPopCallback`.
-Since `PopScope` replaces `WillPopScope`,
-these methods have been replaced by `registerPopEntry` and
-`unregisterPopEntry`, respectively.
+Internamente, `ModalRoute` rastreava a existência de `WillPopScope`s em sua
+subárvore de widgets, registrando-os com `addScopedWillPopCallback` e
+`removeScopedWillPopCallback`. Como `PopScope` substitui `WillPopScope`, esses
+métodos foram substituídos por `registerPopEntry` e `unregisterPopEntry`,
+respectivamente.
 
-`PopEntry` is implemented by `PopScope` in order to expose only the minimal
-information necessary to `ModalRoute`. Anyone writing their own `PopScope`
-should implement `PopEntry` and register and unregister their widget with
-its enclosing `ModalRoute`.
+`PopEntry` é implementado por `PopScope` para expor apenas as informações
+mínimas necessárias para `ModalRoute`. Qualquer pessoa que escreva seu próprio
+`PopScope` deve implementar `PopEntry` e registrar e cancelar o registro de seu
+widget com seu `ModalRoute` envolvente.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 @override
@@ -258,7 +246,7 @@ void didChangeDependencies() {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 @override
@@ -270,44 +258,41 @@ void didChangeDependencies() {
 }
 ```
 
-### Migrating from ModalRoute.hasScopedWillPopCallback to ModalRoute.popDisposition
+### Migrando de ModalRoute.hasScopedWillPopCallback para ModalRoute.popDisposition
 
-This method was previously used for a use-case
-very similar to Predictive Back but in the Cupertino library,
-where certain back transitions allowed canceling
-the navigation. The route transition was disabled
-when there was even the possibility of a `WillPopScope`
-widget canceling the pop.
+Esse método era usado anteriormente para um caso de uso muito semelhante ao
+Retorno Preditivo, mas na biblioteca Cupertino, onde certas transições de retorno
+permitiam cancelar a navegação. A transição da rota era desabilitada quando havia
+mesmo a possibilidade de um widget `WillPopScope` cancelar o pop.
 
-Now that the API requires this to be decided ahead of time,
-this no longer needs to be speculatively based on the
-existence of `PopScope` widgets. The definitive
-logic of whether a `ModalRoute` has popping blocked
-by a `PopScope` widget is baked into `ModalRoute.popDisposition`.
+Agora que a API exige que isso seja decidido antecipadamente, isso não precisa
+mais ser especulativamente baseado na existência de widgets `PopScope`. A lógica
+definitiva de se um `ModalRoute` tem o pop bloqueado por um widget `PopScope` é
+incorporada em `ModalRoute.popDisposition`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 if (_route.hasScopedWillPopCallback) {
-  // Disable predictive route transitions.
+  // Desabilite as transições preditivas de rota.
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 if (_route.popDisposition == RoutePopDisposition.doNotPop) {
-  // Disable predictive route transitions.
+  // Desabilite as transições preditivas de rota.
 }
 ```
 
-### Migrating a back confirmation dialog
+### Migrando um diálogo de confirmação de retorno
 
-`WillPopScope` was sometimes used to show a confirmation
-dialog when a back gesture was received. 
-This can still be done with `PopScope` in a similar pattern.
+`WillPopScope` era usado às vezes para mostrar uma caixa de diálogo de
+confirmação quando um gesto de retorno era recebido. Isso ainda pode ser feito
+com `PopScope` em um padrão semelhante.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 WillPopScope(
@@ -319,7 +304,7 @@ WillPopScope(
 )
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 return PopScope(
@@ -338,33 +323,32 @@ return PopScope(
 )
 ```
 
-### Supporting predictive back
+### Suportando o retorno preditivo
 
-  1. Run Android 14 (API level 34) or above.
-  1. Enable the feature flag for predictive back on
-     the device under "Developer options".
-     This will be unnecessary on future versions of Android.
-  1. Set `android:enableOnBackInvokedCallback="true"` in
-     `android/app/src/main/AndroidManifest.xml`.
-      If needed, refer to
-     [Android's full guide]({{site.android-dev}}/guide/navigation/custom-back/predictive-back-gesture).
-     for migrating Android apps to support predictive back.
-  1. Make sure you're using version `3.14.0-7.0.pre`
-     of Flutter or greater.
-  1. Make sure your Flutter app doesn't use the
-     `WillPopScope` widget. Using it disables
-     predictive back. If needed, use `PopScope` instead.
-  1. Run the app and perform a back gesture (swipe from the
-     left side of the screen).
+  1. Execute o Android 14 (nível de API 34) ou superior.
+  1. Habilite o sinalizador de recurso para retorno preditivo no
+     dispositivo em "Opções do desenvolvedor". Isso será desnecessário em
+     versões futuras do Android.
+  1. Defina `android:enableOnBackInvokedCallback="true"` em
+     `android/app/src/main/AndroidManifest.xml`. Se necessário, consulte o
+     [guia completo do Android]({{site.android-dev}}/guide/navigation/custom-back/predictive-back-gesture).
+     para migrar aplicativos Android para suportar o retorno preditivo.
+  1. Certifique-se de que você está usando a versão `3.14.0-7.0.pre`
+     do Flutter ou superior.
+  1. Certifique-se de que seu aplicativo Flutter não usa o widget
+     `WillPopScope`. Usá-lo desabilita o retorno preditivo. Se necessário, use
+     `PopScope` em vez disso.
+  1. Execute o aplicativo e execute um gesto de retorno (deslize da
+     esquerda da tela).
 
-## Timeline
+## Cronograma
 
-Landed in version: 3.14.0-7.0.pre<br>
-In stable release: 3.16
+Implementado na versão: 3.14.0-7.0.pre<br>
+Em versão estável: 3.16
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`PopScope`][]
 * [`NavigatorPopHandler`][]
@@ -377,14 +361,14 @@ API documentation:
 * [`ModalRoute.registerPopEntry`][]
 * [`ModalRoute.unregisterPopEntry`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue 109513][]
 
-Relevant PRs:
+PRs relevantes:
 
-* [Predictive Back support for root routes][]
-* [Platform channel for predictive back][]
+* [Suporte de Retorno Preditivo para rotas raiz][]
+* [Canal de plataforma para retorno preditivo][]
 
 [`PopScope`]: {{site.api}}/flutter/widgets/PopScope-class.html
 [`NavigatorPopHandler`]: {{site.api}}/flutter/widgets/NavigatorPopHandler-class.html
@@ -396,5 +380,5 @@ Relevant PRs:
 [`ModalRoute.unregisterPopEntry`]: {{site.api}}/flutter/widgets/ModalRoute/unregisterPopEntry.html
 
 [Issue 109513]: {{site.repo.flutter}}/issues/109513
-[Predictive back support for root routes]: {{site.repo.flutter}}/pull/120385
-[Platform channel for predictive back]: {{site.repo.engine}}/pull/39208
+[Suporte de Retorno Preditivo para rotas raiz]: {{site.repo.flutter}}/pull/120385
+[Canal de plataforma para retorno preditivo]: {{site.repo.engine}}/pull/39208

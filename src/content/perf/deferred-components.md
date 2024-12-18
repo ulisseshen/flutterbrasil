@@ -1,62 +1,61 @@
 ---
-title: Deferred components
-description: How to create deferred components for improved download performance.
+ia-translate: true
+title: Componentes adiados
+description: Como criar componentes adiados para melhorar o desempenho de download.
 ---
 
 <?code-excerpt path-base="perf/deferred_components"?>
 
-## Introduction
+## Introdução
 
-Flutter has the capability to build apps that can
-download additional Dart code and assets at runtime.
-This allows apps to reduce install apk size and download
-features and assets when needed by the user.
+O Flutter tem a capacidade de criar aplicativos que podem baixar
+código Dart e ativos adicionais em tempo de execução.
+Isso permite que os aplicativos reduzam o tamanho do APK de instalação e
+baixem recursos e ativos quando necessário pelo usuário.
 
-We refer to each uniquely downloadable bundle of Dart
-libraries and assets as a "deferred component".
-To load these components, use [Dart's deferred imports][dart-def-import].
-They can be compiled into split AOT and JavaScript shared libraries.
+Nos referimos a cada pacote de bibliotecas e ativos Dart
+exclusivamente para download como um "componente adiado".
+Para carregar esses componentes, use [imports adiados do Dart][dart-def-import].
+Eles podem ser compilados em bibliotecas compartilhadas AOT e JavaScript divididas.
 
 :::note
-Flutter supports deferred, or "lazy", loading on Android and the web.
-The implementations differ.
-Android's [dynamic feature modules][] deliver the
-deferred components packaged as Android modules.
-The web creates these components as separate `*.js` files.
-Deferred code doesn't impact other platforms,
-which continue to build as normal with all deferred
-components and assets included at initial install time.
+O Flutter oferece suporte ao carregamento adiado ou "preguiçoso" no Android
+e na web. As implementações diferem.
+Os [módulos de recursos dinâmicos][] do Android entregam os componentes
+adiados empacotados como módulos Android. A web cria esses componentes
+como arquivos `*.js` separados.
+O código adiado não afeta outras plataformas, que continuam a ser
+construídas normalmente com todos os componentes e ativos adiados incluídos
+no tempo de instalação inicial.
 :::
 
-Though you can defer loading modules,
-you must build the entire app and upload that app as a single
+Embora você possa adiar o carregamento de módulos, você deve
+construir todo o aplicativo e fazer o upload desse aplicativo como um único
 [Android App Bundle][android-app-bundle] (`*.aab`).
-Flutter doesn't support dispatching partial updates without re-uploading
-new Android App Bundles for the entire application.
+O Flutter não oferece suporte ao envio de atualizações parciais
+sem reenviar novos Android App Bundles para todo o aplicativo.
 
-Flutter performs deferred loading when you compile your app
-in [release or profile mode][].
-Debug mode treats all deferred components as regular imports.
-The components are present at launch and load immediately.
-This allows debug builds to hot reload.
+O Flutter executa o carregamento adiado quando você compila seu aplicativo
+no [modo release ou profile][].
+O modo debug trata todos os componentes adiados como imports regulares.
+Os componentes estão presentes na inicialização e são carregados
+imediatamente. Isso permite que os builds de debug façam hot reload.
 
-For a deeper dive into the technical details of
-how this feature works, see [Deferred Components][]
-on the [Flutter wiki][].
+Para um mergulho mais profundo nos detalhes técnicos de como esse recurso
+funciona, consulte [Componentes Adiados][] no [Flutter wiki][].
 
-## How to set your project up for deferred components
+## Como configurar seu projeto para componentes adiados
 
-The following instructions explain how to set up your
-Android app for deferred loading.
+As instruções a seguir explicam como configurar seu aplicativo
+Android para carregamento adiado.
 
-### Step 1: Dependencies and initial project setup
+### Etapa 1: Dependências e configuração inicial do projeto
 
 <ol>
 <li>
 
-Add Play Core to the Android app's
-build.gradle dependencies.
-In `android/app/build.gradle` add the following:
+Adicione o Play Core às dependências build.gradle do aplicativo Android.
+Em `android/app/build.gradle`, adicione o seguinte:
 
 ```groovy
 ...
@@ -70,14 +69,12 @@ dependencies {
 
 <li>
 
-If using the Google Play Store as the
-distribution model for dynamic features,
-the app must support `SplitCompat` and provide an instance
-of a `PlayStoreDeferredComponentManager`.
-Both of these tasks can be accomplished by setting
-the `android:name` property on the application in
-`android/app/src/main/AndroidManifest.xml` to
-`io.flutter.embedding.android.FlutterPlayStoreSplitApplication`:
+Se estiver usando a Google Play Store como modelo de distribuição
+para recursos dinâmicos, o aplicativo deve oferecer suporte a `SplitCompat`
+e fornecer uma instância de um `PlayStoreDeferredComponentManager`.
+Ambas as tarefas podem ser realizadas configurando a propriedade
+`android:name` no aplicativo em `android/app/src/main/AndroidManifest.xml`
+para `io.flutter.embedding.android.FlutterPlayStoreSplitApplication`:
 
 ```xml
 <manifest ...
@@ -88,23 +85,21 @@ the `android:name` property on the application in
 </manifest>
 ```
 
-`io.flutter.app.FlutterPlayStoreSplitApplication` handles
-both of these tasks for you. If you use
-`FlutterPlayStoreSplitApplication`,
-you can skip to step 1.3.
+`io.flutter.app.FlutterPlayStoreSplitApplication` lida com ambas
+as tarefas para você. Se você usar `FlutterPlayStoreSplitApplication`,
+você pode pular para a etapa 1.3.
 
-If your Android application
-is large or complex, you might want to separately support
-`SplitCompat` and provide the
-`PlayStoreDynamicFeatureManager` manually.
+Se o seu aplicativo Android for grande ou complexo, você pode
+querer oferecer suporte separadamente ao `SplitCompat` e fornecer o
+`PlayStoreDynamicFeatureManager` manualmente.
 
-To support `SplitCompat`, there are three methods
-(as detailed in the [Android docs][]), any of which are valid:
+Para suportar `SplitCompat`, existem três métodos (conforme detalhado
+na [documentação do Android][]), qualquer um dos quais é válido:
 
 <ul>
 <li>
 
-Make your application class extend `SplitCompatApplication`:
+Faça sua classe de aplicativo estender `SplitCompatApplication`:
 
 ```java
 public class MyApplication extends SplitCompatApplication {
@@ -116,14 +111,14 @@ public class MyApplication extends SplitCompatApplication {
 
 <li>
 
-Call `SplitCompat.install(this);`
-in the `attachBaseContext()` method:
+Chame `SplitCompat.install(this);` no método
+`attachBaseContext()`:
 
 ```java
 @Override
 protected void attachBaseContext(Context base) {
     super.attachBaseContext(base);
-    // Emulates installation of future on demand modules using SplitCompat.
+    // Emula a instalação de futuros módulos sob demanda usando SplitCompat.
     SplitCompat.install(this);
 }
 ```
@@ -132,9 +127,9 @@ protected void attachBaseContext(Context base) {
 
 <li>
 
-Declare `SplitCompatApplication` as the application
-subclass and add the Flutter compatibility code from
-`FlutterApplication` to your application class:
+Declare `SplitCompatApplication` como a subclasse do aplicativo e
+adicione o código de compatibilidade do Flutter de `FlutterApplication`
+à sua classe de aplicativo:
 
 ```xml
 <application
@@ -146,12 +141,10 @@ subclass and add the Flutter compatibility code from
 </li>
 </ul>
 
-The embedder relies on an injected
-`DeferredComponentManager` instance to handle
-install requests for deferred components.
-Provide a `PlayStoreDeferredComponentManager` into
-the Flutter embedder by adding the following code
-to your app initialization:
+O embedder depende de uma instância injetada de `DeferredComponentManager`
+para lidar com solicitações de instalação para componentes adiados.
+Forneça um `PlayStoreDeferredComponentManager` no embedder do Flutter
+adicionando o seguinte código à inicialização do seu aplicativo:
 
 ```java
 import io.flutter.embedding.engine.dynamicfeatures.PlayStoreDeferredComponentManager;
@@ -167,9 +160,9 @@ FlutterInjector.setInstance(new FlutterInjector.Builder()
     
 <li>
 
-Opt into deferred components by adding
-the `deferred-components` entry to the app's `pubspec.yaml`
-under the `flutter` entry:
+Opte por componentes adiados adicionando a entrada
+`deferred-components` ao `pubspec.yaml` do aplicativo sob a entrada
+`flutter`:
 
 ```yaml
 ...
@@ -179,45 +172,39 @@ flutter:
   ...
 ```
 
-The `flutter` tool looks for the `deferred-components`
-entry in the `pubspec.yaml` to determine whether the
-app should be built as deferred or not.
-This can be left empty for now unless you already
-know the components desired and the Dart deferred libraries
-that go into each. You will fill in this section later
-in [step 3.3][] once `gen_snapshot` produces the loading units.
+A ferramenta `flutter` procura a entrada `deferred-components` no
+`pubspec.yaml` para determinar se o aplicativo deve ser construído
+como adiado ou não. Isso pode ser deixado vazio por enquanto, a menos
+que você já conheça os componentes desejados e as bibliotecas Dart
+adiadas que entram em cada um. Você preencherá esta seção mais tarde na
+[etapa 3.3][] depois que `gen_snapshot` produzir as unidades de carregamento.
 
 </li>
 </ol>
 
-### Step 2: Implementing deferred Dart libraries
+### Etapa 2: Implementando bibliotecas Dart adiadas
 
-Next, implement deferred loaded Dart libraries in your
-app's Dart code. The implementation does not need
-to be feature complete yet. The example in the
-rest of this page adds a new simple deferred widget
-as a placeholder. You can also convert existing code
-to be deferred by modifying the imports and
-guarding usages of deferred code behind `loadLibrary()`
-`Futures`.
+Em seguida, implemente bibliotecas Dart carregadas adiadas no código
+Dart do seu aplicativo. A implementação não precisa estar completa
+ainda. O exemplo no restante desta página adiciona um novo widget adiado
+simples como um placeholder. Você também pode converter o código
+existente para ser adiado modificando os imports e protegendo os usos
+de código adiado por trás de `Futures` de `loadLibrary()`.
 
 <ol>
 <li>
 
-Create a new Dart library.
-For example, create a new `DeferredBox` widget that
-can be downloaded at runtime.
-This widget can be of any complexity but,
-for the purposes of this guide,
-create a simple box as a stand-in.
-To create a simple blue box widget,
-create `box.dart` with the following contents:
+Crie uma nova biblioteca Dart.
+Por exemplo, crie um novo widget `DeferredBox` que pode ser baixado em tempo de
+execução. Este widget pode ser de qualquer complexidade, mas, para os
+propósitos deste guia, crie uma caixa simples como substituto. Para criar
+um widget de caixa azul simples, crie `box.dart` com o seguinte conteúdo:
 
 <?code-excerpt "lib/box.dart"?>
 ```dart title="box.dart"
 import 'package:flutter/material.dart';
 
-/// A simple blue 30x30 box.
+/// Uma caixa azul simples de 30x30.
 class DeferredBox extends StatelessWidget {
   const DeferredBox({super.key});
 
@@ -236,17 +223,14 @@ class DeferredBox extends StatelessWidget {
 
 <li>
 
-Import the new Dart library
-with the `deferred` keyword in your app and
-call `loadLibrary()` (see [lazily loading a library][]).
-The following example uses `FutureBuilder`
-to wait for the `loadLibrary` `Future` (created in
-`initState`) to complete and display a
-`CircularProgressIndicator` as a placeholder.
-When the `Future` completes, it returns the `DeferredBox` widget.
-`SomeWidget` can then be used in the app as normal and
-won't ever attempt to access the deferred Dart code until
-it has successfully loaded.
+Importe a nova biblioteca Dart com a palavra-chave `deferred` em seu
+aplicativo e chame `loadLibrary()` (consulte [carregando uma biblioteca
+preguiçosamente][]). O exemplo a seguir usa `FutureBuilder` para esperar
+que o `Future` de `loadLibrary` (criado em `initState`) seja concluído e
+exiba um `CircularProgressIndicator` como um placeholder. Quando o
+`Future` é concluído, ele retorna o widget `DeferredBox`. `SomeWidget`
+pode então ser usado no aplicativo normalmente e nunca tentará acessar o
+código Dart adiado até que ele seja carregado com sucesso.
 
 <?code-excerpt "lib/use_deferred_box.dart"?>
 ```dart
@@ -276,7 +260,7 @@ class _SomeWidgetState extends State<SomeWidget> {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasError) {
-            return Text('Error: ${snapshot.error}');
+            return Text('Erro: ${snapshot.error}');
           }
           return box.DeferredBox();
         }
@@ -287,97 +271,92 @@ class _SomeWidgetState extends State<SomeWidget> {
 }
 ```
 
-The `loadLibrary()` function returns a `Future<void>`
-that completes successfully when the code in the library
-is available for use and completes with an error otherwise.
-All usage of symbols from the deferred library should be
-guarded behind a completed `loadLibrary()` call. All imports
-of the library must be marked as `deferred` for it to be
-compiled appropriately to be used in a deferred component.
-If a component has already been loaded, additional calls
-to `loadLibrary()` complete quickly (but not synchronously).
-The `loadLibrary()` function can also be called early to
-trigger a pre-load to help mask the loading time.
+A função `loadLibrary()` retorna um `Future<void>` que é concluído com
+sucesso quando o código na biblioteca está disponível para uso e é
+concluído com um erro caso contrário. Todo o uso de símbolos da
+biblioteca adiada deve ser protegido por trás de uma chamada
+`loadLibrary()` concluída. Todos os imports da biblioteca devem ser
+marcados como `deferred` para que sejam compilados adequadamente para
+serem usados em um componente adiado. Se um componente já foi
+carregado, chamadas adicionais para `loadLibrary()` são concluídas
+rapidamente (mas não de forma síncrona). A função `loadLibrary()`
+também pode ser chamada antecipadamente para disparar um pré-carregamento
+para ajudar a mascarar o tempo de carregamento.
 
-You can find another example of deferred import loading in
-[Flutter Gallery's `lib/deferred_widget.dart`][].
+Você pode encontrar outro exemplo de carregamento de import adiado em
+[`lib/deferred_widget.dart` da Flutter Gallery][].
 
 </li>
 </ol>
 
-### Step 3: Building the app
+### Etapa 3: Construindo o aplicativo
 
-Use the following `flutter` command to build a
-deferred components app:
+Use o seguinte comando `flutter` para construir um aplicativo
+de componentes adiados:
 
 ```console
 $ flutter build appbundle
 ```
 
-This command assists you by validating that your project
-is properly set up to build deferred components apps.
-By default, the build fails if the validator detects
-any issues and guides you through suggested changes to fix them.
+Este comando auxilia você, validando se seu projeto está configurado
+corretamente para construir aplicativos de componentes adiados.
+Por padrão, a build falha se o validador detectar quaisquer problemas e
+o guia através das mudanças sugeridas para corrigi-los.
 
 :::note
-You can opt out of building deferred components
-with the `--no-deferred-components` flag.
-This flag causes all assets defined under
-deferred components to be treated as if they were
-defined under the assets section of `pubspec.yaml`.
-All Dart code is compiled into a single shared library
-and `loadLibrary()` calls complete in the next event
-loop boundary (as soon as possible while being asynchronous).
-This flag is also equivalent to omitting the `deferred-components:`
-entry in `pubspec.yaml`.
+Você pode optar por não construir componentes adiados com a flag
+`--no-deferred-components`. Esta flag faz com que todos os ativos
+definidos em componentes adiados sejam tratados como se tivessem sido
+definidos na seção de ativos de `pubspec.yaml`. Todo o código Dart é
+compilado em uma única biblioteca compartilhada e as chamadas de
+`loadLibrary()` são concluídas no próximo limite de loop de eventos
+(o mais rápido possível, sendo assíncrono). Esta flag também é
+equivalente a omitir a entrada `deferred-components:` em `pubspec.yaml`.
 :::
 
 <ol>
 <li><a id="step-3.1"></a>
 
-The `flutter build appbundle` command
-runs the validator and attempts to build the app with
-`gen_snapshot` instructed to produce split AOT shared libraries
-as separate `.so` files. On the first run, the validator will
-likely fail as it detects issues; the tool makes
-recommendations for how to set up the project and fix these issues.
+O comando `flutter build appbundle` executa o validador e tenta
+construir o aplicativo com `gen_snapshot` instruído a produzir
+bibliotecas compartilhadas AOT divididas como arquivos `.so` separados.
+Na primeira execução, o validador provavelmente falhará ao detectar
+problemas; a ferramenta faz recomendações sobre como configurar o
+projeto e corrigir esses problemas.
 
-The validator is split into two sections: prebuild
-and post-gen_snapshot validation. This is because any
-validation referencing loading units cannot be performed
-until `gen_snapshot` completes and produces a final set
-of loading units.
+O validador é dividido em duas seções: pré-build e validação pós-
+`gen_snapshot`. Isso ocorre porque qualquer validação que faça
+referência a unidades de carregamento não pode ser executada até que
+`gen_snapshot` seja concluído e produza um conjunto final de unidades
+de carregamento.
 
 :::note
-You can opt to have the tool attempt to build your
-app without the validator by passing the
-`--no-validate-deferred-components` flag.
-This can result in unexpected and confusing
-instructions to resolve failures.
-This flag is meant to be used in
-custom implementations that do not rely on the default
-Play-store-based implementation that the validator checks for.
+Você pode optar por fazer com que a ferramenta tente construir seu
+aplicativo sem o validador passando a flag
+`--no-validate-deferred-components`. Isso pode resultar em
+instruções inesperadas e confusas para resolver falhas.
+Esta flag deve ser usada em implementações personalizadas que não
+dependem da implementação padrão baseada na Play Store que o validador verifica.
 :::
 
-The validator detects any new, changed, or removed
-loading units generated by `gen_snapshot`.
-The current generated loading units are tracked in your
-`<projectDirectory>/deferred_components_loading_units.yaml` file.
-This file should be checked into source control to ensure that
-changes to the loading units by other developers can be caught.
+O validador detecta quaisquer unidades de carregamento novas, alteradas ou
+removidas geradas por `gen_snapshot`. As unidades de carregamento geradas
+atuais são rastreadas em seu arquivo `<projectDirectory>/deferred_components_loading_units.yaml`.
+Este arquivo deve ser verificado no controle de origem para garantir que
+as mudanças nas unidades de carregamento por outros desenvolvedores possam
+ser detectadas.
 
-The validator also checks for the following in the
-`android` directory:
+O validador também verifica o seguinte no diretório `android`:
 
 <ul>
 <li>
 
 **`<projectDir>/android/app/src/main/res/values/strings.xml`**<br>
-An entry for every deferred component mapping the key
-`${componentName}Name` to `${componentName}`.
-This string resource is used by the `AndroidManifest.xml`
-of each feature module to define the `dist:title property`.
-For example:
+Uma entrada para cada componente adiado mapeando a chave
+`${componentName}Name` para `${componentName}`.
+Este recurso de string é usado pelo `AndroidManifest.xml` de cada
+módulo de recurso para definir a `propriedade dist:title`.
+Por exemplo:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -392,23 +371,22 @@ For example:
 <li>
 
 **`<projectDir>/android/<componentName>`**<br>
-An Android dynamic feature module for
-each deferred component exists and contains a `build.gradle`
-and `src/main/AndroidManifest.xml` file.
-This only checks for existence and does not validate
-the contents of these files. If a file does not exist,
-it generates a default recommended one.
+Um módulo de recurso dinâmico do Android para cada componente
+adiado existe e contém um arquivo `build.gradle` e
+`src/main/AndroidManifest.xml`. Isso verifica apenas a existência e não
+valida o conteúdo desses arquivos. Se um arquivo não existir, ele
+gerará um recomendado padrão.
 
 </li>
 
 <li>
 
 **`<projectDir>/android/app/src/main/res/values/AndroidManifest.xml`**<br>
-Contains a meta-data entry that encodes
-the mapping between loading units and component name the
-loading unit is associated with. This mapping is used by the
-embedder to convert Dart's internal loading unit id
-to the name of a deferred component to install. For example:
+Contém uma entrada de metadados que codifica o mapeamento entre as
+unidades de carregamento e o nome do componente com o qual a unidade de
+carregamento está associada. Este mapeamento é usado pelo embedder para
+converter o id interno da unidade de carregamento do Dart para o nome
+de um componente adiado a ser instalado. Por exemplo:
 
 ```xml
 ...
@@ -425,37 +403,34 @@ to the name of a deferred component to install. For example:
 </li>
 </ul>
 
-The `gen_snapshot` validator won't run until the prebuild
-validator passes.
+O validador `gen_snapshot` não será executado até que o validador
+pré-build seja aprovado.
 </li>
 
 <li>
 
-or each of these checks,
-the tool produces the modified or new files
-needed to pass the check.
-These files are placed in the
-`<projectDir>/build/android_deferred_components_setup_files` directory.
-It is recommended that the changes be applied by
-copying and overwriting the same files in the
-project's `android` directory. Before overwriting,
-the current project state should be committed to
-source control and the recommended changes should be
-reviewed to be appropriate. The tool won't make any
-changes to your `android/` directory automatically.
+Para cada uma dessas verificações, a ferramenta produz os arquivos
+modificados ou novos necessários para passar na verificação. Esses
+arquivos são colocados no diretório
+`<projectDir>/build/android_deferred_components_setup_files`.
+É recomendável que as mudanças sejam aplicadas copiando e
+sobrescrevendo os mesmos arquivos no diretório `android` do projeto.
+Antes de sobrescrever, o estado atual do projeto deve ser confirmado no
+controle de origem e as mudanças recomendadas devem ser revisadas
+para serem apropriadas. A ferramenta não fará nenhuma alteração em seu
+diretório `android/` automaticamente.
 
 </li>
 
 <li><a id="step-3.3"></a>
 
-Once the available
-loading units are generated and logged in
-`<projectDirectory>/deferred_components_loading_units.yaml`,
-it is possible to fully configure the pubspec's
-`deferred-components` section so that the loading units
-are assigned to deferred components as desired.
-To continue with the box example, the generated
-`deferred_components_loading_units.yaml` file would contain:
+Assim que as unidades de carregamento disponíveis forem geradas e
+registradas em `<projectDirectory>/deferred_components_loading_units.yaml`,
+é possível configurar totalmente a seção `deferred-components` do
+`pubspec` para que as unidades de carregamento sejam atribuídas aos
+componentes adiados conforme desejado. Para continuar com o exemplo da
+caixa, o arquivo gerado `deferred_components_loading_units.yaml`
+conteria:
 
 ```yaml
 loading-units:
@@ -464,13 +439,12 @@ loading-units:
       - package:MyAppName/box.Dart
 ```
 
-The loading unit id ('2' in this case) is used
-internally by Dart, and can be ignored.
-The base loading unit (id '1') is not listed
-and contains everything not explicitly contained
-in another loading unit.
+O id da unidade de carregamento ('2' neste caso) é usado internamente pelo
+Dart e pode ser ignorado. A unidade de carregamento base (id '1') não
+está listada e contém tudo que não está explicitamente contido em
+outra unidade de carregamento.
 
-You can now add the following to `pubspec.yaml`:
+Você pode agora adicionar o seguinte ao `pubspec.yaml`:
 
 ```yaml
 ...
@@ -483,43 +457,42 @@ flutter:
   ...
 ```
 
-To assign a loading unit to a deferred component,
-add any Dart lib in the loading unit into the
-libraries section of the feature module.
-Keep the following guidelines in mind:
+Para atribuir uma unidade de carregamento a um componente adiado,
+adicione qualquer lib Dart na unidade de carregamento à seção de
+bibliotecas do módulo de recurso. Tenha as seguintes diretrizes em
+mente:
 
 <ul>
 <li>
 
-Loading units should not be included
-in more than one component.
+As unidades de carregamento não devem ser incluídas em mais de um
+componente.
 
 </li>
 <li>
 
-Including one Dart library from a
-loading unit indicates that the entire loading
-unit is assigned to the deferred component.
+Incluir uma biblioteca Dart de uma unidade de carregamento indica
+que a unidade de carregamento inteira é atribuída ao componente
+adiado.
 
 </li>
 <li>
 
-All loading units not assigned to
-a deferred component are included in the base component,
-which always exists implicitly.
+Todas as unidades de carregamento não atribuídas a um componente
+adiado são incluídas no componente base, que sempre existe
+implicitamente.
 
 </li>
 <li>
 
-Loading units assigned to the same
-deferred component are downloaded, installed,
-and shipped together.
+As unidades de carregamento atribuídas ao mesmo componente
+adiado são baixadas, instaladas e enviadas juntas.
 
 </li>
 <li>
 
-The base component is implicit and
-need not be defined in the pubspec.
+O componente base é implícito e não precisa ser definido no
+pubspec.
 
 </li>
 </ul>
@@ -527,8 +500,8 @@ need not be defined in the pubspec.
 
 <li>
 
-Assets can also be included by adding
-an assets section in the deferred component configuration:
+Os ativos também podem ser incluídos adicionando uma seção de ativos
+na configuração do componente adiado:
 
 ```yaml
   deferred-components:
@@ -538,39 +511,36 @@ an assets section in the deferred component configuration:
       assets:
         - assets/image.jpg
         - assets/picture.png
-          # wildcard directory
+          # diretório curinga
         - assets/gallery/
 ```
 
-An asset can be included in multiple deferred components,
-but installing both components results in a replicated asset.
-Assets-only components can also be defined by omitting the
-libraries section. These assets-only components must be
-installed with the [`DeferredComponent`][] utility class in
-services rather than `loadLibrary()`.
-Since Dart libs are packaged together with assets,
-if a Dart library is loaded with `loadLibrary()`,
-any assets in the component are loaded as well.
-However, installing by component name and the services utility
-won't load any dart libraries in the component.
+Um ativo pode ser incluído em vários componentes adiados, mas a
+instalação de ambos os componentes resulta em um ativo replicado.
+Componentes somente de ativos também podem ser definidos omitindo a
+seção de bibliotecas. Esses componentes somente de ativos devem ser
+instalados com a classe de utilitário [`DeferredComponent`][] em
+services, em vez de `loadLibrary()`. Como as libs Dart são
+empacotadas junto com os ativos, se uma biblioteca Dart for carregada
+com `loadLibrary()`, todos os ativos no componente também serão
+carregados. No entanto, a instalação pelo nome do componente e pela
+utilitário de serviços não carregará nenhuma biblioteca Dart no
+componente.
 
-You are free to include assets in any component,
-as long as they are installed and loaded when they
-are first referenced, though typically,
-assets and the Dart code that uses those assets
-are best packed in the same component.
+Você pode incluir ativos em qualquer componente, contanto que eles
+sejam instalados e carregados quando forem referenciados pela
+primeira vez, embora normalmente os ativos e o código Dart que usa
+esses ativos sejam melhor compactados no mesmo componente.
 
 </li>
 
 <li>
 
-Manually add all deferred components
-that you defined in `pubspec.yaml` into the
-`android/settings.gradle` file as includes.
-For example, if there are three deferred components
-defined in the pubspec named, `boxComponent`, `circleComponent`,
-and `assetComponent`, ensure that `android/settings.gradle`
-contains the following:
+Adicione manualmente todos os componentes adiados que você definiu em
+`pubspec.yaml` no arquivo `android/settings.gradle` como includes.
+Por exemplo, se houver três componentes adiados definidos no pubspec
+chamados `boxComponent`, `circleComponent` e `assetComponent`,
+certifique-se de que `android/settings.gradle` contenha o seguinte:
 
 ```groovy
 include ':app', ':boxComponent', ':circleComponent', ':assetComponent'
@@ -581,91 +551,86 @@ include ':app', ':boxComponent', ':circleComponent', ':assetComponent'
 
 <li>
 
-Repeat steps [3.1][] through 3.6 (this step)
-until all validator recommendations are handled and the tool
-runs without further recommendations.
+Repita as etapas [3.1][] a 3.6 (esta etapa) até que todas as
+recomendações do validador sejam tratadas e a ferramenta seja
+executada sem mais recomendações.
 
-When successful, this command outputs an `app-release.aab`
-file in `build/app/outputs/bundle/release`.
+Quando bem-sucedido, este comando gera um arquivo `app-release.aab` em
+`build/app/outputs/bundle/release`.
 
-A successful build does not always mean the app was
-built as intended. It is up to you to ensure that all loading
-units and Dart libraries are included in the way you intended.
-For example, a common mistake is accidentally importing a
-Dart library without the `deferred` keyword,
-resulting in a deferred library being compiled as part of
-the base loading unit. In this case, the Dart lib would
-load properly because it is always present in the base,
-and the lib would not be split off. This can be checked
-by examining the `deferred_components_loading_units.yaml`
-file to verify that the generated loading units are described
-as intended.
+Uma build bem-sucedida nem sempre significa que o aplicativo foi
+construído como pretendido. Cabe a você garantir que todas as unidades
+de carregamento e bibliotecas Dart sejam incluídas da maneira que você
+pretendia. Por exemplo, um erro comum é importar acidentalmente uma
+biblioteca Dart sem a palavra-chave `deferred`, resultando em uma
+biblioteca adiada sendo compilada como parte da unidade de carregamento
+base. Nesse caso, a lib Dart seria carregada corretamente porque está
+sempre presente na base, e a lib não seria dividida. Isso pode ser
+verificado examinando o arquivo `deferred_components_loading_units.yaml`
+para verificar se as unidades de carregamento geradas são descritas
+como pretendido.
 
-When adjusting the deferred components configurations,
-or making Dart changes that add, modify, or remove loading units,
-you should expect the validator to fail.
-Follow steps [3.1][] through 3.6 (this step) to apply any
-recommended changes to continue the build.
+Ao ajustar as configurações de componentes adiados ou fazer alterações
+no Dart que adicionam, modificam ou removem unidades de carregamento,
+você deve esperar que o validador falhe. Siga as etapas [3.1][] a
+3.6 (esta etapa) para aplicar quaisquer mudanças recomendadas para
+continuar a build.
 </li>
 </ol>
 
-### Running the app locally
+### Executando o aplicativo localmente
 
-Once your app has successfully built an `.aab` file,
-use Android's [`bundletool`][] to perform
-local testing with the `--local-testing` flag.
+Depois que seu aplicativo tiver construído com sucesso um arquivo
+`.aab`, use o [`bundletool`][] do Android para realizar testes
+locais com a flag `--local-testing`.
 
-To run the `.aab` file on a test device,
-download the bundletool jar executable from
-[github.com/google/bundletool/releases][] and run:
-
-```console
-$ java -jar bundletool.jar build-apks --bundle=<your_app_project_dir>/build/app/outputs/bundle/release/app-release.aab --output=<your_temp_dir>/app.apks --local-testing
-
-$ java -jar bundletool.jar install-apks --apks=<your_temp_dir>/app.apks
-```
-
-Where `<your_app_project_dir>` is the path to your app's
-project directory and `<your_temp_dir>` is any temporary
-directory used to store the outputs of bundletool.
-This unpacks your `.aab` file into an `.apks` file and
-installs it on the device. All available Android dynamic
-features are loaded onto the device locally and
-installation of deferred components is emulated.
-
-Before running `build-apks` again,
-remove the existing app .apks file:
+Para executar o arquivo `.aab` em um dispositivo de teste, baixe o
+executável jar do bundletool de [github.com/google/bundletool/releases][]
+e execute:
 
 ```console
-$ rm <your_temp_dir>/app.apks
+$ java -jar bundletool.jar build-apks --bundle=<seu_diretorio_de_projeto_app>/build/app/outputs/bundle/release/app-release.aab --output=<seu_diretorio_temp>/app.apks --local-testing
+
+$ java -jar bundletool.jar install-apks --apks=<seu_diretorio_temp>/app.apks
 ```
 
-Changes to the Dart codebase require either incrementing
-the Android build ID or uninstalling and reinstalling
-the app, as Android won't update the feature modules
-unless it detects a new version number.
+Onde `<seu_diretorio_de_projeto_app>` é o caminho para o diretório do
+projeto do seu aplicativo e `<seu_diretorio_temp>` é qualquer diretório
+temporário usado para armazenar as saídas do bundletool. Isso descompacta
+seu arquivo `.aab` em um arquivo `.apks` e o instala no dispositivo.
+Todos os recursos dinâmicos do Android disponíveis são carregados no
+dispositivo localmente e a instalação de componentes adiados é emulada.
 
-### Releasing to the Google Play Store
+Antes de executar o `build-apks` novamente, remova o arquivo .apks
+do aplicativo existente:
 
-The built `.aab` file can be uploaded directly to
-the Play store as normal. When `loadLibrary()` is called,
-the needed Android module containing the Dart AOT lib and
-assets is downloaded by the Flutter engine using the
-Play store's delivery feature.
+```console
+$ rm <seu_diretorio_temp>/app.apks
+```
 
+As alterações na base de código Dart exigem o incremento do ID de build
+do Android ou a desinstalação e reinstalação do aplicativo, pois o
+Android não atualizará os módulos de recursos, a menos que detecte um
+novo número de versão.
+
+### Publicando na Google Play Store
+
+O arquivo `.aab` construído pode ser carregado diretamente na Play
+Store normalmente. Quando `loadLibrary()` é chamado, o módulo Android
+necessário contendo a biblioteca Dart AOT e os ativos é baixado pelo
+mecanismo Flutter usando o recurso de entrega da Play Store.
 
 [3.1]: #step-3.1
-[Android docs]: {{site.android-dev}}/guide/playcore/feature-delivery#declare_splitcompatapplication_in_the_manifest
+[Documentação do Android]: {{site.android-dev}}/guide/playcore/feature-delivery#declare_splitcompatapplication_in_the_manifest
 [`bundletool`]: {{site.android-dev}}/studio/command-line/bundletool
-[Deferred Components]: {{site.repo.flutter}}/wiki/Deferred-Components
+[Componentes Adiados]: {{site.repo.flutter}}/wiki/Deferred-Components
 [`DeferredComponent`]: {{site.api}}/flutter/services/DeferredComponent-class.html
-[dynamic feature modules]: {{site.android-dev}}/guide/playcore/feature-delivery
-[Flutter Gallery's `lib/deferred_widget.dart`]: {{site.repo.gallery-archive}}/blob/main/lib/deferred_widget.dart
+[módulos de recursos dinâmicos]: {{site.android-dev}}/guide/playcore/feature-delivery
+[`lib/deferred_widget.dart` da Flutter Gallery]: {{site.repo.gallery-archive}}/blob/main/lib/deferred_widget.dart
 [Flutter wiki]: {{site.repo.flutter}}/tree/master/docs
 [github.com/google/bundletool/releases]: {{site.github}}/google/bundletool/releases
-[lazily loading a library]: {{site.dart-site}}/language/libraries#lazily-loading-a-library
-[release or profile mode]: /testing/build-modes
-[step 3.3]: #step-3.3
+[carregando uma biblioteca preguiçosamente]: {{site.dart-site}}/language/libraries#lazily-loading-a-library
+[modo release ou profile]: /testing/build-modes
+[etapa 3.3]: #step-3.3
 [android-app-bundle]: {{site.android-dev}}/guide/app-bundle
 [dart-def-import]: https://dart.dev/language/libraries#lazily-loading-a-library
-

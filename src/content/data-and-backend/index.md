@@ -1,5 +1,6 @@
 ---
+ia-translate: true
 layout: toc
-title: Data & backend
-description: Content covering data and backend development in Flutter apps.
+title: Dados & backend
+description: Conteúdo cobrindo o desenvolvimento de dados e backend em aplicativos Flutter.
 ---

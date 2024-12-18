@@ -1,73 +1,75 @@
 ---
-title: LayoutBuilder optimization
+ia-translate: true
+title: Otimização do LayoutBuilder
 description: >
-  LayoutBuilder and SliverLayoutBuilder call the builder function less often.
+  LayoutBuilder e SliverLayoutBuilder chamam a função builder com menos frequência.
 ---
 
-## Summary
+## Resumo
 
-This guide explains how to migrate Flutter applications after
-[the LayoutBuilder optimization][1].
+Este guia explica como migrar aplicativos Flutter após
+[a otimização do LayoutBuilder][1].
 
-## Context
+## Contexto
 
-[LayoutBuilder][2] and [SliverLayoutBuilder][3] call
-the [builder][4] function more often than necessary to
-fulfill their primary goal of allowing apps to adapt their
-widget structure to parent layout constraints.
-This has led to less efficient and jankier applications
-because widgets are rebuilt unnecessarily.
+[LayoutBuilder][2] e [SliverLayoutBuilder][3] chamam
+a função [builder][4] mais vezes do que o necessário para
+cumprir seu objetivo principal de permitir que os aplicativos adaptem sua
+estrutura de widget às restrições de layout pai.
+Isso levou a aplicativos menos eficientes e mais instáveis
+porque os widgets são reconstruídos desnecessariamente.
 
-This transitively affects [OrientationBuilder][5] as well.
+Isso afeta transitivamente o [OrientationBuilder][5] também.
 
-In order to improve app performance
-the [LayoutBuilder optimization][1] was made,
-which results in calling the `builder` function less often.
+Para melhorar o desempenho do aplicativo,
+a [otimização do LayoutBuilder][1] foi feita,
+o que resulta em chamar a função `builder` com menos frequência.
 
-Apps that rely on this function to be called with a certain frequency may break.
-The app may exhibit some combination of the following symptoms:
+Aplicativos que dependem dessa função para ser chamada com uma certa frequência
+podem quebrar.
+O aplicativo pode apresentar alguma combinação dos seguintes sintomas:
 
-* The `builder` function is not called when it would before the upgrade to the
-  Flutter version that introduced the optimization.
-* The UI of a widget is missing.
-* The UI of a widget is not updating.
+* A função `builder` não é chamada quando seria antes da atualização para a
+  versão do Flutter que introduziu a otimização.
+* A UI de um widget está faltando.
+* A UI de um widget não está sendo atualizada.
 
-## Description of change
+## Descrição da mudança
 
-Prior to the optimization the builder function passed to `LayoutBuilder` or
-`SliverLayoutBuilder` was called when any one of the following happened:
+Antes da otimização, a função builder passada para `LayoutBuilder` ou
+`SliverLayoutBuilder` era chamada quando qualquer um dos seguintes acontecia:
 
-1. `LayoutBuilder` is rebuilt due to a widget configuration change
-   (this typically happens when the widget that uses `LayoutBuilder` rebuilds
-   due to `setState`, `didUpdateWidget` or `didChangeDependencies`).
-1. `LayoutBuilder` is laid out and receives layout constraints from its parent
-   that are _different_ from the last received constraints.
-1. `LayoutBuilder` is laid out and receives layout constraints from its parent
-   that are the _same_ as the constraints received last time.
+1.  `LayoutBuilder` é reconstruído devido a uma mudança na configuração do widget
+    (isso normalmente acontece quando o widget que usa `LayoutBuilder` é reconstruído
+    devido a `setState`, `didUpdateWidget` ou `didChangeDependencies`).
+2.  `LayoutBuilder` é disposto e recebe restrições de layout de seu pai
+    que são _diferentes_ das últimas restrições recebidas.
+3.  `LayoutBuilder` é disposto e recebe restrições de layout de seu pai
+    que são _iguais_ às restrições recebidas da última vez.
 
-After the optimization the builder function is no longer called in the latter
-case. If the constraints are the same and the widget configuration did not
-change, the builder function is not called.
+Após a otimização, a função builder não é mais chamada no último caso.
+Se as restrições forem as mesmas e a configuração do widget não mudar,
+a função builder não é chamada.
 
-Your app can break if it relies on the relayout to cause the rebuilding of the
-`LayoutBuilder` rather than on an explicit call to `setState`. This usually
-happens by accident. You meant to add `setState`, but you forgot because the app
-continued functioning as you wanted, and therefore nothing reminded you to add
-it.
+Seu aplicativo pode quebrar se ele depender do relayout para causar a
+reconstrução do `LayoutBuilder` em vez de uma chamada explícita para `setState`.
+Isso geralmente acontece por acidente. Você pretendia adicionar `setState`, mas
+esqueceu porque o aplicativo continuou funcionando como você queria e, portanto,
+nada o lembrou de adicioná-lo.
 
-## Migration guide
+## Guia de migração
 
-Look for usages of `LayoutBuilder` and `SliverLayoutBuilder` and make sure to
-call `setState` any time the widget state changes.
+Procure por usos de `LayoutBuilder` e `SliverLayoutBuilder` e certifique-se de
+chamar `setState` sempre que o estado do widget mudar.
 
-**Example**: in the example below the contents of the builder function depend
-on the value of the `_counter` field. Therefore, whenever the value is updated,
-you should call `setState` to tell the framework to rebuild the widget. However,
-this example may have previously worked even without calling `setState`, if the
-`_ResizingBox` triggers a relayout of `LayoutBuilder`.
+**Exemplo**: no exemplo abaixo, o conteúdo da função builder depende
+do valor do campo `_counter`. Portanto, sempre que o valor for atualizado,
+você deve chamar `setState` para informar ao framework para reconstruir o
+widget. No entanto, este exemplo pode ter funcionado anteriormente mesmo sem
+chamar `setState`, se o `_ResizingBox` acionar um relayout de `LayoutBuilder`.
 
-Code before migration (note the missing `setState` inside the `onPressed`
-callback):
+Código antes da migração (observe a falta de `setState` dentro do
+callback `onPressed`):
 
 ```dart
 import 'package:flutter/material.dart';
@@ -90,7 +92,7 @@ class MyApp extends StatelessWidget {
 }
 
 class Counter extends StatefulWidget {
-  Counter({Key key}) : super(key: key);
+  Counter({Key? key}) : super(key: key);
 
   @override
   _CounterState createState() => _CounterState();
@@ -130,7 +132,7 @@ class _ResizingBox extends StatefulWidget {
 
 class _ResizingBoxState extends State<_ResizingBox>
     with SingleTickerProviderStateMixin {
-  Animation animation;
+  Animation? animation;
 
   @override
   void initState() {
@@ -151,11 +153,11 @@ class _ResizingBoxState extends State<_ResizingBox>
       mainAxisSize: MainAxisSize.min,
       children: [
         SizedBox(
-          width: 100 + animation.value * 100,
+          width: 100 + animation!.value * 100,
           child: widget.child1,
         ),
         SizedBox(
-          width: 100 + animation.value * 100,
+          width: 100 + animation!.value * 100,
           child: widget.child2,
         ),
       ],
@@ -164,7 +166,7 @@ class _ResizingBoxState extends State<_ResizingBox>
 }
 ```
 
-Code after migration (`setState` added to `onPressed`):
+Código após a migração (`setState` adicionado a `onPressed`):
 
 ```dart
 import 'package:flutter/material.dart';
@@ -187,7 +189,7 @@ class MyApp extends StatelessWidget {
 }
 
 class Counter extends StatefulWidget {
-  Counter({Key key}) : super(key: key);
+  Counter({Key? key}) : super(key: key);
 
   @override
   _CounterState createState() => _CounterState();
@@ -229,7 +231,7 @@ class _ResizingBox extends StatefulWidget {
 
 class _ResizingBoxState extends State<_ResizingBox>
     with SingleTickerProviderStateMixin {
-  Animation animation;
+  Animation? animation;
 
   @override
   void initState() {
@@ -250,11 +252,11 @@ class _ResizingBoxState extends State<_ResizingBox>
       mainAxisSize: MainAxisSize.min,
       children: [
         SizedBox(
-          width: 100 + animation.value * 100,
+          width: 100 + animation!.value * 100,
           child: widget.child1,
         ),
         SizedBox(
-          width: 100 + animation.value * 100,
+          width: 100 + animation!.value * 100,
           child: widget.child2,
         ),
       ],
@@ -263,37 +265,37 @@ class _ResizingBoxState extends State<_ResizingBox>
 }
 ```
 
-Watch for usages of `Animation` and `LayoutBuilder` in the same widget.
-Animations have internal mutable state that changes on every frame. If the
-logic of your builder function depends on the value of the animation, it may
-require a `setState` to update in tandem with the animation. To do that, add an
-[animation listener][7] that calls `setState`, like so:
+Observe o uso de `Animation` e `LayoutBuilder` no mesmo widget.
+Animações têm um estado mutável interno que muda a cada frame. Se a
+lógica da sua função builder depender do valor da animação, pode ser
+necessário um `setState` para atualizar em conjunto com a animação. Para
+fazer isso, adicione um [listener de animação][7] que chama `setState`, assim:
 
 ```dart
-Animation animation = … create animation …;
+Animation animation = … criar animação …;
 animation.addListener(() {
   setState(() {
-    // Intentionally empty. The state is inside the animation object.
+    // Intencionalmente vazio. O estado está dentro do objeto de animação.
   });
 });
 ```
 
-## Timeline
+## Cronograma
 
-This change was released in Flutter v1.20.0.
+Essa mudança foi lançada no Flutter v1.20.0.
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`LayoutBuilder`][2]
 * [`SliverLayoutBuilder`][3]
 
-Relevant issue:
+Problema relevante:
 
 * [Issue 6469][8]
 
-Relevant PR:
+PR relevante:
 
 * [LayoutBuilder: skip calling builder when constraints are the same][6]
 

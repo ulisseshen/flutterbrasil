@@ -1,30 +1,31 @@
 ---
-title: Component theme normalization
+ia-translate: true
+title: Normalização do tema de componentes
 description: >-
-  `CardTheme`, `DialogTheme`, and `TabBarTheme` have been normalized to follow
-  Flutter's convention for component themes in the Material library.
+  `CardTheme`, `DialogTheme` e `TabBarTheme` foram normalizados para seguir a
+  convenção do Flutter para temas de componentes na biblioteca Material.
 ---
 
-## Summary
+## Resumo
 
-`CardTheme`, `DialogTheme` and `TabBarTheme` were refactored to 
-conform to Flutter's conventions for component themes. `CardThemeData`, 
-`DialogThemeData` and `TabBarThemeData` were added to define overrides for the
-defaults of the component visual properties. Future releases will continue to
-normalize component themes like these for a more consistent theming experience
-in the material library.
+`CardTheme`, `DialogTheme` e `TabBarTheme` foram refatorados para
+conformar com as convenções do Flutter para temas de componentes.
+`CardThemeData`, `DialogThemeData` e `TabBarThemeData` foram adicionados para
+definir overrides para os valores padrão das propriedades visuais do componente.
+Versões futuras continuarão a normalizar temas de componentes como esses para uma
+experiência de temas mais consistente na biblioteca Material.
 
-## Migration guide
+## Guia de migração
 
-In `ThemeData`, the type of `cardTheme` property has been changed from
-`CardTheme` to `CardThemeData`; the type of `dialogTheme` property has been
-changed from `DialogTheme` to `DialogThemeData`; the type of `tabBarTheme`
-property has been changed from `TabBarTheme` to `TabBarThemeData`.
+Em `ThemeData`, o tipo da propriedade `cardTheme` foi alterado de
+`CardTheme` para `CardThemeData`; o tipo da propriedade `dialogTheme` foi
+alterado de `DialogTheme` para `DialogThemeData`; o tipo da propriedade
+`tabBarTheme` foi alterado de `TabBarTheme` para `TabBarThemeData`.
 
-The return type of the compoenent theme `xTheme.of()` method and
-`Theme.of().xTheme` now has also changed to `xThemeData` accordingly.
+O tipo de retorno do método `xTheme.of()` do tema do componente e
+`Theme.of().xTheme` agora também foi alterado para `xThemeData` de acordo.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 final CardTheme cardTheme = Theme.of(context).cardTheme;
@@ -37,7 +38,7 @@ final TabBarTheme tabBarTheme = Theme.of(context).tabBarTheme;
 final TabBarTheme tabBarTheme = TabBarTheme.of(context);
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 final CardThemeData cardTheme = Theme.of(context).cardTheme;
@@ -50,30 +51,31 @@ final TabBarThemeData tabBarTheme = Theme.of(context).tabBarTheme;
 final TabBarThemeData tabBarTheme = TabBarTheme.of(context);
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.27.0-0.0.pre<br>
-Stable release: 3.27
+Implementado na versão: 3.27.0-0.0.pre<br>
+Versão estável: 3.27
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`ThemeData`][]
 * [`CardTheme`][]
 * [`DialogTheme`][]
 * [`TabBarTheme`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* [Normalize ThemeData.cardTheme][]
-* [Normalize ThemeData.dialogTheme][]
-* [Normalize ThemeData.tabBarTheme][]
+* [Normalizar ThemeData.cardTheme][]
+* [Normalizar ThemeData.dialogTheme][]
+* [Normalizar ThemeData.tabBarTheme][]
 
 [`ThemeData`]: {{site.api}}/flutter/material/ThemeData-class.html
 [`CardTheme`]: {{site.api}}/flutter/material/CardTheme-class.html
 [`DialogTheme`]: {{site.api}}/flutter/material/DialogTheme-class.html
 [`TabBarTheme`]: {{site.api}}/flutter/material/TabBarTheme-class.html
-[Normalize ThemeData.cardTheme]: {{site.repo.flutter}}/pull/153254
-[Normalize ThemeData.dialogTheme]: {{site.repo.flutter}}/pull/155129
-[Normalize ThemeData.tabBarTheme]: {{site.repo.flutter}}/pull/156253
+[Normalizar ThemeData.cardTheme]: {{site.repo.flutter}}/pull/153254
+[Normalizar ThemeData.dialogTheme]: {{site.repo.flutter}}/pull/155129
+[Normalizar ThemeData.tabBarTheme]: {{site.repo.flutter}}/pull/156253
+

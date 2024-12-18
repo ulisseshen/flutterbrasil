@@ -1,27 +1,24 @@
 ---
-title: Take a picture using the camera
-description: How to use a camera plugin on mobile.
+ia-translate: true
+title: Tirar uma foto usando a câmera
+description: Como usar um plugin de câmera no celular.
 ---
 
 <?code-excerpt path-base="cookbook/plugins/picture_using_camera/"?>
 
-Many apps require working with the device's cameras to
-take photos and videos.  Flutter provides the [`camera`][] plugin
-for this purpose. The `camera` plugin provides tools to get a list of the
-available cameras, display a preview coming from a specific camera,
-and take photos or videos.
+Muitos aplicativos exigem trabalhar com as câmeras do dispositivo para tirar fotos e vídeos. O Flutter fornece o plugin [`camera`][] para essa finalidade. O plugin `camera` fornece ferramentas para obter uma lista das câmeras disponíveis, exibir uma prévia de uma câmera específica e tirar fotos ou vídeos.
 
 :::note
-The [`camera_android_camerax`][] plugin,
-built on top of the [CameraX][] Android library,
-improves image resolution with automatic selection
-of the resolution based on the device's capability.
-This plugin also helps deal with _device quirks_,
-defined as camera hardware that might
-not work as expected.
+O plugin [`camera_android_camerax`][],
+construído sobre a biblioteca [CameraX][] do Android,
+melhora a resolução da imagem com a seleção automática
+da resolução com base na capacidade do dispositivo.
+Este plugin também ajuda a lidar com _peculiaridades do dispositivo_,
+definidas como hardware de câmera que pode
+não funcionar como esperado.
 
-For more information,
-check out the Google I/O 2024 talk,
+Para mais informações,
+confira a palestra do Google I/O 2024,
 [Building picture perfect camera experiences in Flutter with CameraX][camerax-video].
 :::
 
@@ -29,83 +26,83 @@ check out the Google I/O 2024 talk,
 [CameraX]: https://developer.android.com/training/camerax
 [camerax-video]: {{site.youtube-site}}/watch?v=d1sRCa5k2Sg&t=1s
 
-This recipe demonstrates how to use the `camera` plugin to display a preview,
-take a photo, and display it using the following steps:
+Esta receita demonstra como usar o plugin `camera` para exibir uma prévia,
+tirar uma foto e exibi-la usando as seguintes etapas:
 
-  1. Add the required dependencies.
-  2. Get a list of the available cameras.
-  3. Create and initialize the `CameraController`.
-  4. Use a `CameraPreview` to display the camera's feed.
-  5. Take a picture with the `CameraController`.
-  6. Display the picture with an `Image` widget.
+  1. Adicione as dependências necessárias.
+  2. Obtenha uma lista das câmeras disponíveis.
+  3. Crie e inicialize o `CameraController`.
+  4. Use um `CameraPreview` para exibir o feed da câmera.
+  5. Tire uma foto com o `CameraController`.
+  6. Exiba a foto com um widget `Image`.
 
-## 1. Add the required dependencies
+## 1. Adicione as dependências necessárias
 
-To complete this recipe, you need to add three dependencies to your app:
+Para concluir esta receita, você precisa adicionar três dependências ao seu aplicativo:
 
 [`camera`][]
-: Provides tools to work with the cameras on the device.
+: Fornece ferramentas para trabalhar com as câmeras do dispositivo.
 
 [`path_provider`][]
-: Finds the correct paths to store images.
+: Encontra os caminhos corretos para armazenar imagens.
 
 [`path`][]
-: Creates paths that work on any platform.
+: Cria caminhos que funcionam em qualquer plataforma.
 
-To add the packages as dependencies, run `flutter pub add`:
+Para adicionar os pacotes como dependências, execute `flutter pub add`:
 
 ```console
 $ flutter pub add camera path_provider path
 ```
 
 :::tip
-- For android, You must update `minSdkVersion` to 21 (or higher).
-- On iOS, the following lines must be added inside
-  `ios/Runner/Info.plist` to the access the camera and microphone.
+- Para o Android, você deve atualizar `minSdkVersion` para 21 (ou superior).
+- No iOS, as seguintes linhas devem ser adicionadas dentro
+  de `ios/Runner/Info.plist` para acessar a câmera e o microfone.
 
   ```xml
   <key>NSCameraUsageDescription</key>
-  <string>Explanation on why the camera access is needed.</string>
+  <string>Explicação sobre por que o acesso à câmera é necessário.</string>
   <key>NSMicrophoneUsageDescription</key>
-  <string>Explanation on why the microphone access is needed.</string>
+  <string>Explicação sobre por que o acesso ao microfone é necessário.</string>
   ```
 :::
 
-## 2. Get a list of the available cameras
+## 2. Obtenha uma lista das câmeras disponíveis
 
-Next, get a list of available cameras using the `camera` plugin.
+Em seguida, obtenha uma lista de câmeras disponíveis usando o plugin `camera`.
 
 <?code-excerpt "lib/main.dart (init)"?>
 ```dart
-// Ensure that plugin services are initialized so that `availableCameras()`
-// can be called before `runApp()`
+// Garanta que os serviços do plugin sejam inicializados para que `availableCameras()`
+// possa ser chamado antes de `runApp()`
 WidgetsFlutterBinding.ensureInitialized();
 
-// Obtain a list of the available cameras on the device.
+// Obtenha uma lista das câmeras disponíveis no dispositivo.
 final cameras = await availableCameras();
 
-// Get a specific camera from the list of available cameras.
+// Obtenha uma câmera específica da lista de câmeras disponíveis.
 final firstCamera = cameras.first;
 ```
 
-## 3. Create and initialize the `CameraController`
+## 3. Crie e inicialize o `CameraController`
 
-Once you have a camera, use the following steps to
-create and initialize a `CameraController`.
-This process establishes a connection to
-the device's camera that allows you to control the camera
-and display a preview of the camera's feed.
+Depois de ter uma câmera, use as seguintes etapas para
+criar e inicializar um `CameraController`.
+Esse processo estabelece uma conexão com
+a câmera do dispositivo que permite controlar a câmera
+e exibir uma prévia do feed da câmera.
 
-  1. Create a `StatefulWidget` with a companion `State` class.
-  2. Add a variable to the `State` class to store the `CameraController`.
-  3. Add a variable to the `State` class to store the `Future`
-     returned from `CameraController.initialize()`.
-  4. Create and initialize the controller in the `initState()` method.
-  5. Dispose of the controller in the `dispose()` method.
+  1. Crie um `StatefulWidget` com uma classe `State` associada.
+  2. Adicione uma variável à classe `State` para armazenar o `CameraController`.
+  3. Adicione uma variável à classe `State` para armazenar o `Future`
+     retornado de `CameraController.initialize()`.
+  4. Crie e inicialize o controlador no método `initState()`.
+  5. Descarte o controlador no método `dispose()`.
 
 <?code-excerpt "lib/main_step3.dart (controller)" remove="ignore:"?>
 ```dart
-// A screen that allows users to take a picture using a given camera.
+// Uma tela que permite aos usuários tirar uma foto usando uma câmera específica.
 class TakePictureScreen extends StatefulWidget {
   const TakePictureScreen({
     super.key,
@@ -125,131 +122,131 @@ class TakePictureScreenState extends State<TakePictureScreen> {
   @override
   void initState() {
     super.initState();
-    // To display the current output from the Camera,
-    // create a CameraController.
+    // Para exibir a saída atual da Câmera,
+    // crie um CameraController.
     _controller = CameraController(
-      // Get a specific camera from the list of available cameras.
+      // Obtenha uma câmera específica da lista de câmeras disponíveis.
       widget.camera,
-      // Define the resolution to use.
+      // Defina a resolução a ser usada.
       ResolutionPreset.medium,
     );
 
-    // Next, initialize the controller. This returns a Future.
+    // Em seguida, inicialize o controlador. Isso retorna um Future.
     _initializeControllerFuture = _controller.initialize();
   }
 
   @override
   void dispose() {
-    // Dispose of the controller when the widget is disposed.
+    // Descarte o controlador quando o widget for descartado.
     _controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    // Fill this out in the next steps.
+    // Preencha isso nas próximas etapas.
     return Container();
   }
 }
 ```
 
 :::warning
-If you don't initialize the `CameraController`,
-you *cannot* use the camera to display a preview and take pictures.
+Se você não inicializar o `CameraController`,
+você *não pode* usar a câmera para exibir uma prévia e tirar fotos.
 :::
 
-## 4. Use a `CameraPreview` to display the camera's feed
+## 4. Use um `CameraPreview` para exibir o feed da câmera
 
-Next, use the `CameraPreview` widget from the `camera` package to
-display a preview of the camera's feed.
+Em seguida, use o widget `CameraPreview` do pacote `camera` para
+exibir uma prévia do feed da câmera.
 
-:::note Remember
-You must wait until the controller has finished
-initializing before working with the camera. Therefore,
-you must wait for the `_initializeControllerFuture()`, created
-in the previous step, to complete before showing a `CameraPreview`.
+:::note Lembre-se
+Você deve esperar até que o controlador tenha terminado
+de inicializar antes de trabalhar com a câmera. Portanto,
+você deve esperar que o `_initializeControllerFuture()`, criado
+na etapa anterior, seja concluído antes de mostrar um `CameraPreview`.
 :::
 
-Use a [`FutureBuilder`][] for exactly this purpose.
+Use um [`FutureBuilder`][] exatamente para esse propósito.
 
 <?code-excerpt "lib/main.dart (FutureBuilder)" replace="/body: //g;/^\),$/)/g"?>
 ```dart
-// You must wait until the controller is initialized before displaying the
-// camera preview. Use a FutureBuilder to display a loading spinner until the
-// controller has finished initializing.
+// Você deve esperar até que o controlador seja inicializado antes de exibir a
+// prévia da câmera. Use um FutureBuilder para exibir um indicador de carregamento até que o
+// controlador termine de inicializar.
 FutureBuilder<void>(
   future: _initializeControllerFuture,
   builder: (context, snapshot) {
     if (snapshot.connectionState == ConnectionState.done) {
-      // If the Future is complete, display the preview.
+      // Se o Future estiver completo, exiba a prévia.
       return CameraPreview(_controller);
     } else {
-      // Otherwise, display a loading indicator.
+      // Caso contrário, exiba um indicador de carregamento.
       return const Center(child: CircularProgressIndicator());
     }
   },
 )
 ```
 
-## 5. Take a picture with the `CameraController`
+## 5. Tire uma foto com o `CameraController`
 
-You can use the `CameraController` to take pictures using the
-[`takePicture()`][] method, which returns an [`XFile`][],
-a cross-platform, simplified `File` abstraction.
-On both Android and IOS, the new image is stored in their
-respective cache directories,
-and the `path` to that location is returned in the `XFile`.
+Você pode usar o `CameraController` para tirar fotos usando o
+método [`takePicture()`][], que retorna um [`XFile`][],
+uma abstração `File` multiplataforma simplificada.
+Tanto no Android quanto no IOS, a nova imagem é armazenada em seus
+respectórios diretórios de cache,
+e o `path` para esse local é retornado no `XFile`.
 
-In this example, create a `FloatingActionButton` that takes a picture
-using the `CameraController` when a user taps on the button.
+Neste exemplo, crie um `FloatingActionButton` que tire uma foto
+usando o `CameraController` quando um usuário tocar no botão.
 
-Taking a picture requires 2 steps:
+Tirar uma foto requer 2 etapas:
 
-  1. Ensure that the camera is initialized.
-  2. Use the controller to take a picture and ensure
-     that it returns a `Future<XFile>`.
+  1. Garanta que a câmera esteja inicializada.
+  2. Use o controlador para tirar uma foto e garantir
+     que ele retorne um `Future<XFile>`.
 
-It is good practice to wrap these operations in a `try / catch` block in order
-to handle any errors that might occur.
+É uma boa prática envolver essas operações em um bloco `try / catch` para
+lidar com quaisquer erros que possam ocorrer.
 
 <?code-excerpt "lib/main_step5.dart (FAB)" replace="/^floatingActionButton: //g;/^\),$/)/g"?>
 ```dart
 FloatingActionButton(
-  // Provide an onPressed callback.
+  // Forneça um callback onPressed.
   onPressed: () async {
-    // Take the Picture in a try / catch block. If anything goes wrong,
-    // catch the error.
+    // Tire a Foto em um bloco try / catch. Se algo der errado,
+    // capture o erro.
     try {
-      // Ensure that the camera is initialized.
+      // Garanta que a câmera esteja inicializada.
       await _initializeControllerFuture;
 
-      // Attempt to take a picture and then get the location
-      // where the image file is saved.
+      // Tente tirar uma foto e, em seguida, obtenha o local
+      // onde o arquivo de imagem é salvo.
       final image = await _controller.takePicture();
     } catch (e) {
-      // If an error occurs, log the error to the console.
+      // Se ocorrer um erro, registre o erro no console.
       print(e);
     }
   },
   child: const Icon(Icons.camera_alt),
 )
 ```
-## 6. Display the picture with an `Image` widget
+## 6. Exiba a foto com um widget `Image`
 
-If you take the picture successfully, you can then display the saved picture
-using an `Image` widget. In this case, the picture is stored as a file on
-the device.
+Se você tirar a foto com sucesso, poderá exibir a foto salva
+usando um widget `Image`. Neste caso, a foto é armazenada como um arquivo no
+dispositivo.
 
-Therefore, you must provide a `File` to the `Image.file` constructor.
-You can create an instance of the `File` class by passing the path created in
-the previous step.
+Portanto, você deve fornecer um `File` para o construtor `Image.file`.
+Você pode criar uma instância da classe `File` passando o caminho criado em
+a etapa anterior.
 
 <?code-excerpt "lib/image_file.dart (ImageFile)" replace="/^return\ //g"?>
 ```dart
 Image.file(File('path/to/my/picture.png'));
 ```
 
-## Complete example
+## Exemplo completo
 
 <?code-excerpt "lib/main.dart"?>
 ```dart
@@ -260,28 +257,28 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
 Future<void> main() async {
-  // Ensure that plugin services are initialized so that `availableCameras()`
-  // can be called before `runApp()`
+  // Garanta que os serviços do plugin sejam inicializados para que `availableCameras()`
+  // possa ser chamado antes de `runApp()`
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Obtain a list of the available cameras on the device.
+  // Obtenha uma lista das câmeras disponíveis no dispositivo.
   final cameras = await availableCameras();
 
-  // Get a specific camera from the list of available cameras.
+  // Obtenha uma câmera específica da lista de câmeras disponíveis.
   final firstCamera = cameras.first;
 
   runApp(
     MaterialApp(
       theme: ThemeData.dark(),
       home: TakePictureScreen(
-        // Pass the appropriate camera to the TakePictureScreen widget.
+        // Passe a câmera apropriada para o widget TakePictureScreen.
         camera: firstCamera,
       ),
     ),
   );
 }
 
-// A screen that allows users to take a picture using a given camera.
+// Uma tela que permite aos usuários tirar uma foto usando uma câmera específica.
 class TakePictureScreen extends StatefulWidget {
   const TakePictureScreen({
     super.key,
@@ -301,22 +298,22 @@ class TakePictureScreenState extends State<TakePictureScreen> {
   @override
   void initState() {
     super.initState();
-    // To display the current output from the Camera,
-    // create a CameraController.
+    // Para exibir a saída atual da Câmera,
+    // crie um CameraController.
     _controller = CameraController(
-      // Get a specific camera from the list of available cameras.
+      // Obtenha uma câmera específica da lista de câmeras disponíveis.
       widget.camera,
-      // Define the resolution to use.
+      // Defina a resolução a ser usada.
       ResolutionPreset.medium,
     );
 
-    // Next, initialize the controller. This returns a Future.
+    // Em seguida, inicialize o controlador. Isso retorna um Future.
     _initializeControllerFuture = _controller.initialize();
   }
 
   @override
   void dispose() {
-    // Dispose of the controller when the widget is disposed.
+    // Descarte o controlador quando o widget for descartado.
     _controller.dispose();
     super.dispose();
   }
@@ -324,49 +321,49 @@ class TakePictureScreenState extends State<TakePictureScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Take a picture')),
-      // You must wait until the controller is initialized before displaying the
-      // camera preview. Use a FutureBuilder to display a loading spinner until the
-      // controller has finished initializing.
+      appBar: AppBar(title: const Text('Tirar uma foto')),
+      // Você deve esperar até que o controlador seja inicializado antes de exibir a
+      // prévia da câmera. Use um FutureBuilder para exibir um indicador de carregamento até que o
+      // controlador termine de inicializar.
       body: FutureBuilder<void>(
         future: _initializeControllerFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            // If the Future is complete, display the preview.
+            // Se o Future estiver completo, exiba a prévia.
             return CameraPreview(_controller);
           } else {
-            // Otherwise, display a loading indicator.
+            // Caso contrário, exiba um indicador de carregamento.
             return const Center(child: CircularProgressIndicator());
           }
         },
       ),
       floatingActionButton: FloatingActionButton(
-        // Provide an onPressed callback.
+        // Forneça um callback onPressed.
         onPressed: () async {
-          // Take the Picture in a try / catch block. If anything goes wrong,
-          // catch the error.
+          // Tire a Foto em um bloco try / catch. Se algo der errado,
+          // capture o erro.
           try {
-            // Ensure that the camera is initialized.
+            // Garanta que a câmera esteja inicializada.
             await _initializeControllerFuture;
 
-            // Attempt to take a picture and get the file `image`
-            // where it was saved.
+            // Tente tirar uma foto e obter o arquivo `image`
+            // onde ele foi salvo.
             final image = await _controller.takePicture();
 
             if (!context.mounted) return;
 
-            // If the picture was taken, display it on a new screen.
+            // Se a foto foi tirada, exiba-a em uma nova tela.
             await Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => DisplayPictureScreen(
-                  // Pass the automatically generated path to
-                  // the DisplayPictureScreen widget.
+                  // Passe o caminho gerado automaticamente para
+                  // o widget DisplayPictureScreen.
                   imagePath: image.path,
                 ),
               ),
             );
           } catch (e) {
-            // If an error occurs, log the error to the console.
+            // Se ocorrer um erro, registre o erro no console.
             print(e);
           }
         },
@@ -376,7 +373,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
   }
 }
 
-// A widget that displays the picture taken by the user.
+// Um widget que exibe a foto tirada pelo usuário.
 class DisplayPictureScreen extends StatelessWidget {
   final String imagePath;
 
@@ -385,9 +382,9 @@ class DisplayPictureScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Display the Picture')),
-      // The image is stored as a file on the device. Use the `Image.file`
-      // constructor with the given path to display the image.
+      appBar: AppBar(title: const Text('Exibir a Foto')),
+      // A imagem é armazenada como um arquivo no dispositivo. Use o construtor `Image.file`
+      // com o caminho fornecido para exibir a imagem.
       body: Image.file(File(imagePath)),
     );
   }

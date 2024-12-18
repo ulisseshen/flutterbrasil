@@ -1,65 +1,66 @@
 ---
-title: Insecure HTTP connections are disabled by default on iOS and Android
+ia-translate: true
+title: Conexões HTTP inseguras são desabilitadas por padrão no iOS e Android
 description: >
-  Accessing a URL with HTTP protocol throws an exception unless
-  the domain is explicitly allowed by policy.
+  Acessar uma URL com protocolo HTTP lança uma exceção a menos que o
+  domínio seja explicitamente permitido pela política.
 ---
 
-## Summary
+## Resumo
 
-If your code tries to open an HTTP connection to a host
-on iOS or Android, a `StateException` is now thrown with
-the following message:
+Se seu código tentar abrir uma conexão HTTP para um host no iOS ou Android,
+uma `StateException` agora será lançada com a seguinte mensagem:
 
 ```plaintext
-Insecure HTTP is not allowed by platform: <host>
+HTTP inseguro não é permitido pela plataforma: <host>
 ```
 
-Use HTTPS instead.
+Use HTTPS em vez disso.
 
 :::important
-This change over-restricted HTTP access on local networks beyond the
-restrictions imposed by mobile platforms ([flutter/flutter#72723]({{site.repo.flutter}}/issues/72723)).
+Essa mudança restringiu excessivamente o acesso HTTP em redes locais,
+além das restrições impostas pelas plataformas móveis
+([flutter/flutter#72723]({{site.repo.flutter}}/issues/72723)).
 
-This change has since been reverted.
+Essa mudança foi revertida desde então.
 :::
 
-## Context
+## Contexto
 
-Starting with Android [API 28][] and [iOS 9][],
-these platforms disable insecure HTTP connections by default.
+Começando com o Android [API 28][] e [iOS 9][],
+essas plataformas desabilitam conexões HTTP inseguras por padrão.
 
-With this change Flutter also disables insecure connections on
-mobile platforms. Other platforms (desktop, web, etc)
-are not affected.
+Com essa mudança, o Flutter também desabilita conexões inseguras em
+plataformas móveis. Outras plataformas (desktop, web, etc) não são
+afetadas.
 
-You can override this behavior by following the
-platform-specific guidelines to define a domain-specific
-network policy. See the migration guide below for details.
+Você pode substituir esse comportamento seguindo as diretrizes
+específicas da plataforma para definir uma política de rede
+específica do domínio. Veja o guia de migração abaixo para
+detalhes.
 
 [API 28]: {{site.android-dev}}/training/articles/security-config#CleartextTrafficPermitted
 [iOS 9]: {{site.apple-dev}}/documentation/bundleresources/information_property_list/nsapptransportsecurity
 
-Much like the platforms, the application can still open
-insecure socket connections. Flutter does not enforce
-any policy at socket level; you would be
-responsible for securing the connection.
+Assim como as plataformas, o aplicativo ainda pode abrir conexões de socket
+inseguras. O Flutter não impõe nenhuma política em nível de socket;
+você seria responsável por proteger a conexão.
 
-## Migration guide
+## Guia de migração
 
-On iOS, you can add [NSExceptionDomains][] to your
-application's Info.plist.
+No iOS, você pode adicionar [NSExceptionDomains][] ao Info.plist do seu
+aplicativo.
 
-On Android, you can add a [network security config][] XML.
-For Flutter to find your XML file, you need to also add a
-`metadata` entry to the `<application>` tag in your manifest.
-This metadata entry should carry the name:
-`io.flutter.network-policy` and should contain the
-resource identifier of the XML.
+No Android, você pode adicionar um XML de [configuração de segurança de
+rede][]. Para que o Flutter encontre seu arquivo XML, você também
+precisa adicionar uma entrada `metadata` à tag `<application>` no
+seu manifesto. Essa entrada de metadados deve ter o nome:
+`io.flutter.network-policy` e deve conter o identificador de
+recurso do XML.
 
-For instance, if you put your XML configuration under
-`res/xml/network_security_config.xml`,
-your manifest would contain the following:
+Por exemplo, se você colocar sua configuração XML em
+`res/xml/network_security_config.xml`, seu manifesto
+conteria o seguinte:
 
 ```xml
 <application ...>
@@ -69,16 +70,17 @@ your manifest would contain the following:
 </application>
 ```
 
-### Allowing cleartext connection for debug builds
+### Permitindo conexão cleartext para builds de debug
 
-If you would like to allow HTTP connections for Android debug
-builds, you can add the following snippet to your $project_path\android\app\src\debug\AndroidManifest.xml:
+Se você quiser permitir conexões HTTP para builds de debug do
+Android, você pode adicionar o seguinte snippet ao seu
+$project_path\android\app\src\debug\AndroidManifest.xml:
 
 ```xml
 <application android:usesCleartextTraffic="true"/>
 ```
 
-For iOS, you can follow [these instructions](/add-to-app/ios/project-setup/?tab=embed-using-cocoapods#set-local-network-privacy-permissions) to create a `Info-debug.plist` and put this in:
+Para iOS, você pode seguir [estas instruções](/add-to-app/ios/project-setup/?tab=embed-using-cocoapods#set-local-network-privacy-permissions) para criar um `Info-debug.plist` e colocar isto nele:
 
 ```xml
 <key>NSAppTransportSecurity</key>
@@ -88,38 +90,39 @@ For iOS, you can follow [these instructions](/add-to-app/ios/project-setup/?tab=
 </dict>
 ```
 
-We **do not** recommend you do this for your release builds.
+Nós **não** recomendamos que você faça isso para seus builds de release.
 
-## Additional Information
+## Informação Adicional
 
-* Build time configuration is the only way to change
-  network policy. It cannot be modified at runtime.
-* Localhost connections are always allowed.
-* You can allow insecure connections only to domains.
-  Specific IP addresses are not accepted as input.
-  This is in line with what platforms support. If you would
-  like to allow IP addresses, the only option is to allow
-  cleartext connections in your app.
+* A configuração em tempo de build é a única maneira de alterar a
+  política de rede. Ela não pode ser modificada em tempo de execução.
+* Conexões localhost são sempre permitidas.
+* Você pode permitir conexões inseguras apenas para domínios.
+  Endereços IP específicos não são aceitos como entrada.
+  Isso está alinhado com o que as plataformas suportam. Se você quiser
+  permitir endereços IP, a única opção é permitir conexões cleartext
+  em seu aplicativo.
 
 [network security config]: {{site.android-dev}}/training/articles/security-config#CleartextTrafficPermitted
 [NSExceptionDomains]: {{site.apple-dev}}/documentation/bundleresources/information_property_list/nsapptransportsecurity/nsexceptiondomains
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.23<br>
-In stable release: 2.0.0<br>
-Reverted in version: 2.2.0 (proposed)
+Implementado na versão: 1.23<br>
+Na versão estável: 2.0.0<br>
+Revertido na versão: 2.2.0 (proposta)
 
-## References
+## Referências
 
-API documentation: There's no API for this change since
-the modification to network policy is done through the
-platform specific configuration as detailed above.
+Documentação da API: Não há API para esta mudança, uma vez que a
+modificação na política de rede é feita através da configuração
+específica da plataforma, conforme detalhado acima.
 
-Relevant PRs:
+PRs relevantes:
 
-* [PR 20218: Plumbing for setting domain network policy][]
-* [Introduce per-domain policy for strict secure connections][]
+* [PR 20218: Plumbing para configuração da política de rede por domínio][]
+* [Introduzir política por domínio para conexões seguras estritas][]
 
-[PR 20218: Plumbing for setting domain network policy]: {{site.repo.engine}}/pull/20218
-[Introduce per-domain policy for strict secure connections]: {{site.github}}/dart-lang/sdk/commit/d878cfbf20375befa09f9bf85f0ba2b87b319427
+[PR 20218: Plumbing para configuração da política de rede por domínio]: {{site.repo.engine}}/pull/20218
+[Introduzir política por domínio para conexões seguras estritas]: {{site.github}}/dart-lang/sdk/commit/d878cfbf20375befa09f9bf85f0ba2b87b319427
+

@@ -1,36 +1,37 @@
 ---
-title: Communicate with WebSockets
-description: How to connect to a web socket.
+ia-translate: true
+title: Comunicar-se com WebSockets
+description: Como conectar-se a um web socket.
 ---
 
 <?code-excerpt path-base="cookbook/networking/web_sockets/"?>
 
-In addition to normal HTTP requests,
-you can connect to servers using `WebSockets`.
-`WebSockets` allow for two-way communication with a server
-without polling.
+Além de requisições HTTP normais,
+você pode se conectar a servidores usando `WebSockets`.
+`WebSockets` permitem comunicação bidirecional com um servidor
+sem polling.
 
-In this example, connect to a
-[test WebSocket server sponsored by Lob.com][].
-The server sends back the same message you send to it.
-This recipe uses the following steps:
+Neste exemplo, conecte-se a um
+[servidor WebSocket de teste patrocinado pela Lob.com][].
+O servidor envia de volta a mesma mensagem que você envia a ele.
+Esta receita utiliza os seguintes passos:
 
-  1. Connect to a WebSocket server.
-  2. Listen for messages from the server.
-  3. Send data to the server.
-  4. Close the WebSocket connection.
+  1. Conectar-se a um servidor WebSocket.
+  2. Escutar mensagens do servidor.
+  3. Enviar dados para o servidor.
+  4. Fechar a conexão WebSocket.
 
-## 1. Connect to a WebSocket server
+## 1. Conectar-se a um servidor WebSocket
 
-The [`web_socket_channel`][] package provides the
-tools you need to connect to a WebSocket server.
+O pacote [`web_socket_channel`][] fornece as
+ferramentas que você precisa para se conectar a um servidor WebSocket.
 
-The package provides a `WebSocketChannel`
-that allows you to both listen for messages
-from the server and push messages to the server.
+O pacote fornece um `WebSocketChannel`
+que permite que você tanto escute mensagens
+do servidor quanto envie mensagens para o servidor.
 
-In Flutter, use the following line to
-create a `WebSocketChannel` that connects to a server:
+No Flutter, use a seguinte linha para
+criar um `WebSocketChannel` que se conecta a um servidor:
 
 <?code-excerpt "lib/main.dart (connect)" replace="/_channel/channel/g"?>
 ```dart
@@ -39,17 +40,17 @@ final channel = WebSocketChannel.connect(
 );
 ```
 
-## 2. Listen for messages from the server
+## 2. Escutar mensagens do servidor
 
-Now that you've established a connection,
-listen to messages from the server.
+Agora que você estabeleceu uma conexão,
+escute mensagens do servidor.
 
-After sending a message to the test server,
-it sends the same message back.
+Após enviar uma mensagem para o servidor de teste,
+ele envia a mesma mensagem de volta.
 
-In this example, use a [`StreamBuilder`][]
-widget to listen for new messages, and a
-[`Text`][] widget to display them.
+Neste exemplo, use um widget [`StreamBuilder`][]
+para escutar novas mensagens, e um
+widget [`Text`][] para exibí-las.
 
 <?code-excerpt "lib/main.dart (StreamBuilder)" replace="/_channel/channel/g"?>
 ```dart
@@ -61,49 +62,49 @@ StreamBuilder(
 )
 ```
 
-### How this works
+### Como isso funciona
 
-The `WebSocketChannel` provides a
-[`Stream`][] of messages from the server.
+O `WebSocketChannel` fornece um
+[`Stream`][] de mensagens do servidor.
 
-The `Stream` class is a fundamental part of the `dart:async` package.
-It provides a way to listen to async events from a data source.
-Unlike `Future`, which returns a single async response,
-the `Stream` class can deliver many events over time.
+A classe `Stream` é uma parte fundamental do pacote `dart:async`.
+Ela fornece uma forma de escutar eventos assíncronos de uma fonte de dados.
+Diferente de `Future`, que retorna uma única resposta assíncrona,
+a classe `Stream` pode entregar muitos eventos ao longo do tempo.
 
-The [`StreamBuilder`][] widget connects to a `Stream`
-and asks Flutter to rebuild every time it
-receives an event using the given `builder()` function.
+O widget [`StreamBuilder`][] se conecta a um `Stream`
+e pede ao Flutter para reconstruir toda vez que ele
+recebe um evento usando a função `builder()` fornecida.
 
-## 3. Send data to the server
+## 3. Enviar dados para o servidor
 
-To send data to the server,
-`add()` messages to the `sink` provided
-by the `WebSocketChannel`.
+Para enviar dados para o servidor,
+`add()` mensagens para o `sink` fornecido
+pelo `WebSocketChannel`.
 
 <?code-excerpt "lib/main.dart (add)" replace="/_channel/channel/g;/_controller.text/'Hello!'/g"?>
 ```dart
 channel.sink.add('Hello!');
 ```
 
-### How this works
+### Como isso funciona
 
-The `WebSocketChannel` provides a
-[`StreamSink`][] to push messages to the server.
+O `WebSocketChannel` fornece um
+[`StreamSink`][] para enviar mensagens para o servidor.
 
-The `StreamSink` class provides a general way to add sync or async
-events to a data source.
+A classe `StreamSink` fornece uma maneira geral de adicionar eventos
+síncronos ou assíncronos a uma fonte de dados.
 
-## 4. Close the WebSocket connection
+## 4. Fechar a conexão WebSocket
 
-After you're done using the WebSocket, close the connection:
+Depois de terminar de usar o WebSocket, feche a conexão:
 
 <?code-excerpt "lib/main.dart (close)" replace="/_channel/channel/g"?>
 ```dart
 channel.sink.close();
 ```
 
-## Complete example
+## Exemplo completo
 
 <?code-excerpt "lib/main.dart"?>
 ```dart
@@ -159,7 +160,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Form(
               child: TextFormField(
                 controller: _controller,
-                decoration: const InputDecoration(labelText: 'Send a message'),
+                decoration: const InputDecoration(labelText: 'Enviar uma mensagem'),
               ),
             ),
             const SizedBox(height: 24),
@@ -174,7 +175,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _sendMessage,
-        tooltip: 'Send message',
+        tooltip: 'Enviar mensagem',
         child: const Icon(Icons.send),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
@@ -194,12 +195,11 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 ```
-![Web sockets demo](/assets/images/docs/cookbook/web-sockets.gif){:.site-mobile-screenshot}
-
+![Demonstração de web sockets](/assets/images/docs/cookbook/web-sockets.gif){:.site-mobile-screenshot}
 
 [`Stream`]: {{site.api}}/flutter/dart-async/Stream-class.html
 [`StreamBuilder`]: {{site.api}}/flutter/widgets/StreamBuilder-class.html
 [`StreamSink`]: {{site.api}}/flutter/dart-async/StreamSink-class.html
-[test WebSocket server sponsored by Lob.com]: https://www.lob.com/blog/websocket-org-is-down-here-is-an-alternative
+[servidor WebSocket de teste patrocinado pela Lob.com]: https://www.lob.com/blog/websocket-org-is-down-here-is-an-alternative
 [`Text`]: {{site.api}}/flutter/widgets/Text-class.html
 [`web_socket_channel`]: {{site.pub-pkg}}/web_socket_channel

@@ -1,46 +1,47 @@
 ---
-title: The new Form, FormField auto-validation API
-description: Gives more control in how to auto validate a Form and a FormField.
+ia-translate: true
+title: A nova API de auto-validação de Form e FormField
+description: Dá mais controle em como auto validar um Form e um FormField.
 ---
 
-## Summary
+## Resumo
 
-The previous auto validation API for the `Form` and
-`FormField` widgets didn't control when auto validation
-should occur. So the auto validation for these widgets
-always happened on first build when the widget was first
-visible to the user, and you weren't able to control
-when the auto validation should happen.
+A API de auto-validação anterior para os widgets `Form` e
+`FormField` não controlava quando a auto-validação
+deveria ocorrer. Então a auto-validação para esses widgets
+sempre acontecia na primeira construção quando o widget era
+visível ao usuário pela primeira vez, e você não era capaz
+de controlar quando a auto-validação deveria acontecer.
 
-## Context
+## Contexto
 
-Due to the original API not allowing developers to change
-the auto validation behavior for validating only when
-the user interacts with the form field, we added new API
-that allows developers to configure how they want
-auto validation to behave for the `Form` and `FormField`
-widgets.
+Devido à API original não permitir que os desenvolvedores
+mudassem o comportamento de auto-validação para validar
+somente quando o usuário interage com o campo do formulário,
+nós adicionamos uma nova API que permite aos desenvolvedores
+configurar como eles querem que a auto-validação se
+comporte para os widgets `Form` e `FormField`.
 
-## Description of change
+## Descrição da mudança
 
-The following changes were made:
+As seguintes mudanças foram feitas:
 
-* The `autovalidate` parameter is deprecated.
-* A new parameter called `autovalidateMode`,
-  an Enum that accepts values from the `AutovalidateMode`
-  Enum class, is added.
+* O parâmetro `autovalidate` está obsoleto.
+* Um novo parâmetro chamado `autovalidateMode`,
+  um Enum que aceita valores da classe Enum `AutovalidateMode`,
+  foi adicionado.
 
-## Migration guide
+## Guia de migração
 
-To migrate to the new auto validation API you need to
-replace the usage of the deprecated `autovalidate`
-parameter to the new `autovalidateMode` parameter.
-If you want the same behavior as before you can use:
+Para migrar para a nova API de auto-validação você precisa
+substituir o uso do parâmetro obsoleto `autovalidate`
+pelo novo parâmetro `autovalidateMode`.
+Se você quer o mesmo comportamento de antes, você pode usar:
 `autovalidateMode = AutovalidateMode.always`.
-This makes your `Form` and `FormField` widgets auto
-validate on first build and every time it changes.
+Isso faz com que seus widgets `Form` e `FormField` se auto
+validem na primeira construção e toda vez que mudam.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 class MyWidget extends StatelessWidget {
@@ -56,7 +57,7 @@ class MyWidget extends StatelessWidget {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class MyWidget extends StatelessWidget {
@@ -72,18 +73,18 @@ class MyWidget extends StatelessWidget {
 }
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.21.0-5.0.pre<br>
-In stable release: 1.22
+Implementado na versão: 1.21.0-5.0.pre<br>
+Na versão estável: 1.22
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`AutovalidateMode`]({{site.api}}/flutter/widgets/AutovalidateMode.html)
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue 56363]({{site.repo.flutter}}/issues/56363)
 * [Issue 18885]({{site.repo.flutter}}/issues/18885)
@@ -91,7 +92,7 @@ Relevant issues:
 * [Issue 36154]({{site.repo.flutter}}/issues/36154)
 * [Issue 48876]({{site.repo.flutter}}/issues/48876)
 
-Relevant PRs:
+PRs relevantes:
 
 * [PR 56365: FormField should autovalidate only if its
   content was changed]({{site.github}}/flutter/pull/56365)

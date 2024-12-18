@@ -1,98 +1,98 @@
 ---
-title: Use the debugger
-description: How to use DevTools' source-level debugger.
+ia-translate: true
+title: Use o depurador
+description: Como usar o depurador de nível de código-fonte do DevTools.
 ---
 
 :::note
-DevTools hides the Debugger tab if the app was launched
-from VS Code because VS Code has a built-in debugger.
+O DevTools oculta a aba do Depurador se o aplicativo foi inicializado
+a partir do VS Code porque o VS Code tem um depurador integrado.
 :::
 
-## Getting started
+## Primeiros passos
 
-DevTools includes a full source-level debugger,
-supporting breakpoints, stepping, and variable inspection.
+O DevTools inclui um depurador completo em nível de código-fonte,
+suportando breakpoints, stepping e inspeção de variáveis.
 
 :::note
-The debugger works with all Flutter and Dart applications.
-If you are looking for a way to use GDB to remotely debug the
-Flutter engine running within an Android app process,
-check out [`flutter_gdb`][].
+O depurador funciona com todos os aplicativos Flutter e Dart.
+Se você está procurando uma forma de usar o GDB para depurar remotamente o
+motor Flutter rodando dentro de um processo de aplicativo Android,
+confira [`flutter_gdb`][].
 :::
 
 [`flutter_gdb`]: {{site.repo.engine}}/blob/main/sky/tools/flutter_gdb
 
-When you open the debugger tab, you should see the source for the main
-entry-point for your app loaded in the debugger.
+Quando você abre a aba do depurador, você deve ver o código-fonte do ponto
+de entrada principal para o seu aplicativo carregado no depurador.
 
-In order to browse around more of your application sources, click **Libraries**
-(top right) or press <kbd>Ctrl</kbd> / <kbd>Cmd</kbd> + <kbd>P</kbd>.
-This opens the libraries window and allows you
-to search for other source files.
+Para navegar por mais fontes do seu aplicativo, clique em **Libraries**
+(canto superior direito) ou pressione <kbd>Ctrl</kbd> / <kbd>Cmd</kbd> + <kbd>P</kbd>.
+Isso abre a janela de bibliotecas e permite que você
+pesquise por outros arquivos de código-fonte.
 
-![Screenshot of the debugger tab](/assets/images/docs/tools/devtools/debugger_screenshot.png){:width="100%"}
+![Captura de tela da aba do depurador](/assets/images/docs/tools/devtools/debugger_screenshot.png){:width="100%"}
 
-## Setting breakpoints
+## Definindo breakpoints
 
-To set a breakpoint, click the left margin (the line number ruler)
-in the source area. Clicking once sets a breakpoint, which should
-also show up in the **Breakpoints** area on the left. Clicking
-again removes the breakpoint.
+Para definir um breakpoint, clique na margem esquerda (a régua do número da linha)
+na área de código-fonte. Clicar uma vez define um breakpoint, que também deve
+aparecer na área de **Breakpoints** à esquerda. Clicar novamente remove o breakpoint.
 
-## The call stack and variable areas
+## A pilha de chamadas e áreas de variáveis
 
-When your application encounters a breakpoint, it pauses there,
-and the DevTools debugger shows the paused execution location
-in the source area. In addition, the `Call stack` and `Variables`
-areas populate with the current call stack for the paused isolate,
-and the local variables for the selected frame. Selecting other
-frames in the `Call stack` area changes the contents of the variables.
+Quando seu aplicativo encontra um breakpoint, ele pausa ali,
+e o depurador do DevTools mostra a localização da execução pausada
+na área do código-fonte. Além disso, as áreas `Call stack` e `Variables`
+são preenchidas com a pilha de chamadas atual para o isolate pausado,
+e as variáveis locais para o frame selecionado. Selecionar outros
+frames na área `Call stack` altera o conteúdo das variáveis.
 
-Within the `Variables` area, you can inspect individual objects by
-toggling them open to see their fields. Hovering over an object
-in the `Variables` area calls `toString()` for that object and
-displays the result.
+Dentro da área `Variables`, você pode inspecionar objetos individuais
+abrindo-os para ver seus campos. Passar o mouse sobre um objeto
+na área `Variables` chama `toString()` para aquele objeto e
+exibe o resultado.
 
-## Stepping through source code
+## Avançando pelo código-fonte
 
-When paused, the three stepping buttons become active.
+Quando pausado, os três botões de stepping ficam ativos.
 
-* Use **Step in** to step into a method invocation, stopping at
-  the first executable line in that invoked method.
-* Use **Step over** to step over a method invocation;
-  this steps through source lines in the current method.
-* Use **Step out** to step out of the current method,
-  without stopping at any intermediary lines.
+* Use **Step in** para entrar em uma invocação de método, parando na
+  primeira linha executável naquele método invocado.
+* Use **Step over** para passar por cima de uma invocação de método;
+  isso avança pelas linhas do código-fonte no método atual.
+* Use **Step out** para sair do método atual,
+  sem parar em nenhuma linha intermediária.
 
-In addition, the **Resume** button continues regular
-execution of the application.
+Além disso, o botão **Resume** continua a execução regular
+do aplicativo.
 
-## Console output
+## Saída do console
 
-Console output for the running app (stdout and stderr) is
-displayed in the console, below the source code area.
-You can also see the output in the [Logging view][].
+A saída do console para o aplicativo em execução (stdout e stderr) é
+exibida no console, abaixo da área do código-fonte.
+Você também pode ver a saída na [visualização de Logging][].
 
-## Breaking on exceptions
+## Interrompendo em exceções
 
-To adjust the stop-on-exceptions behavior, toggle the
-**Ignore** dropdown at the top of the debugger view.
+Para ajustar o comportamento de parar em exceções, alterne o
+dropdown **Ignore** no topo da visualização do depurador.
 
-Breaking on unhandled excepts only pauses execution if the
-breakpoint is considered uncaught by the application code.
-Breaking on all exceptions causes the debugger to pause
-whether or not the breakpoint was caught by application code.
+Interromper em exceções não tratadas só pausa a execução se o
+breakpoint for considerado não capturado pelo código do aplicativo.
+Interromper em todas as exceções faz com que o depurador pause
+se o breakpoint foi ou não capturado pelo código do aplicativo.
 
-## Known issues
+## Problemas conhecidos
 
-When performing a hot restart for a Flutter application,
-user breakpoints are cleared.
+Ao realizar um hot restart para um aplicativo Flutter,
+os breakpoints do usuário são limpos.
 
 [Logging view]: /tools/devtools/logging
 
-## Other resources
+## Outros recursos
 
-For more information on debugging and profiling, see the
-[Debugging][] page.
+Para mais informações sobre depuração e profiling, veja a página
+[Debugging][].
 
 [Debugging]: /testing/debugging

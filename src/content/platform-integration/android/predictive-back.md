@@ -1,43 +1,44 @@
 ---
-title: Add the predictive-back gesture
-short-title: Predictive-back
+ia-translate: true
+title: Adicione o gesto de voltar preditivo
+short-title: Voltar preditivo
 description: >-
-  Learn how to add the predictive back gesture to your Android app.
+  Aprenda como adicionar o gesto de voltar preditivo ao seu aplicativo Android.
 ---
 
-This feature has landed in Flutter,
-but it's not enabled by default in Android itself yet.
-You can try it out using the following instructions.
+Este recurso chegou ao Flutter,
+mas ainda não está habilitado por padrão no próprio Android.
+Você pode experimentá-lo usando as seguintes instruções.
 
-## Configure your app
+## Configure seu aplicativo
 
-Make sure your app supports Android API 33 or higher,
-as predictive back won't work on older versions of Android.
-Then, set the flag `android:enableOnBackInvokedCallback="true"`
-in `android/app/src/main/AndroidManifest.xml`.
+Certifique-se de que seu aplicativo seja compatível com a API do Android 33 ou superior,
+pois o voltar preditivo não funcionará em versões mais antigas do Android.
+Em seguida, defina a flag `android:enableOnBackInvokedCallback="true"`
+em `android/app/src/main/AndroidManifest.xml`.
 
-## Configure your device
+## Configure seu dispositivo
 
-You need to enable Developer Mode and set a flag on your device,
-so you can't yet expect predictive back to work on most users'
-Android devices. If you want to try it out on your own device though,
-make sure it's running API 33 or higher, and then in
-**Settings => System => Developer** options,
-make sure the switch is enabled next to **Predictive back animations**.
+Você precisa ativar o Modo de Desenvolvedor e definir uma flag no seu dispositivo,
+portanto, você ainda não pode esperar que o voltar preditivo funcione na maioria dos
+dispositivos Android dos usuários. Se você quiser experimentar em seu próprio dispositivo,
+certifique-se de que ele esteja executando a API 33 ou superior e, em
+**Configurações => Sistema => Opções do desenvolvedor**,
+certifique-se de que a chave esteja ativada ao lado de **Animações de voltar preditivo**.
 
-## Set up your app
+## Configure seu aplicativo
 
-The predictive back route transitions are currently
-not enabled by default, so for now you'll need to enable them
-manually in your app.
-Typically, you do this by setting them in your theme:
+As transições de rota de voltar preditivo atualmente
+não estão habilitadas por padrão, então, por enquanto, você precisará habilitá-las
+manualmente em seu aplicativo.
+Normalmente, você faz isso configurando-as no seu tema:
 
 ```dart
 MaterialApp(
   theme: ThemeData(
     pageTransitionsTheme: const PageTransitionsTheme(
       builders: <TargetPlatform, PageTransitionsBuilder>{
-        // Set the predictive back transitions for Android.
+        // Define as transições de voltar preditivo para Android.
         TargetPlatform.android: PredictiveBackPageTransitionsBuilder(),
       },
     ),
@@ -46,17 +47,16 @@ MaterialApp(
 ),
 ```
 
-## Run your app
+## Execute seu aplicativo
 
-Lastly, just make sure you're using at least
-Flutter version 3.22.2 to run your app,
-which is the latest stable release at the time of this writing.
+Por fim, certifique-se de estar usando pelo menos
+a versão 3.22.2 do Flutter para executar seu aplicativo,
+que é a versão estável mais recente no momento da escrita deste texto.
 
-## For more information
+## Para mais informações
 
-You can find more information at the following link:
+Você pode encontrar mais informações no seguinte link:
 
-* [Android predictive back][] breaking change
+* [Mudança de comportamento do voltar preditivo do Android][]
 
-[Android predictive back]: /release/breaking-changes/android-predictive-back
-
+[Mudança de comportamento do voltar preditivo do Android]: /release/breaking-changes/android-predictive-back

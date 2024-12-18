@@ -1,51 +1,51 @@
 ---
-title: Run DevTools from VS Code
-description: Learn how to launch and use DevTools from VS Code.
+ia-translate: true
+title: Execute o DevTools a partir do VS Code
+description: Aprenda como iniciar e usar o DevTools a partir do VS Code.
 ---
 
-## Add the VS Code extensions
+## Adicione as extensões do VS Code
 
-To use the DevTools from VS Code, you need the [Dart extension][].
-If you're debugging Flutter applications, you should also install
-the [Flutter extension][].
+Para usar o DevTools a partir do VS Code, você precisa da
+[extensão Dart][]. Se você estiver depurando aplicativos
+Flutter, você também deve instalar a [extensão Flutter][].
 
-## Start an application to debug
+## Inicie um aplicativo para depurar
 
-Start a debug session for your application by opening the root
-folder of your project (the one containing `pubspec.yaml`)
-in VS Code and clicking **Run > Start Debugging** (`F5`).
+Inicie uma sessão de depuração para seu aplicativo abrindo a
+pasta raiz do seu projeto (aquela que contém `pubspec.yaml`)
+no VS Code e clicando em **Executar > Iniciar Depuração**
+(`F5`).
 
-## Launch DevTools
+## Inicie o DevTools
 
-Once the debug session is active and the application has started,
-the **Open DevTools** commands become available in the
-VS Code command palette (`F1`):
+Assim que a sessão de depuração estiver ativa e o aplicativo
+tiver sido iniciado, os comandos **Abrir DevTools**
+tornam-se disponíveis na paleta de comandos do VS Code (`F1`):
 
-![Screenshot showing Open DevTools commands](/assets/images/docs/tools/vs-code/vscode_command.png){:width="100%"}
+![Captura de tela mostrando os comandos Abrir DevTools](/assets/images/docs/tools/vs-code/vscode_command.png){:width="100%"}
 
-The chosen tool will be opened embedded inside VS Code.
+A ferramenta escolhida será aberta incorporada dentro do VS Code.
 
-![Screenshot showing DevTools embedded in VS Code](/assets/images/docs/tools/vs-code/vscode_embedded.png){:width="100%"}
+![Captura de tela mostrando o DevTools incorporado no VS Code](/assets/images/docs/tools/vs-code/vscode_embedded.png){:width="100%"}
 
-You can choose to have DevTools always opened
-in a browser with the `dart.embedDevTools` setting,
-and control whether it opens as a full window or
-in a new column next to your current editor with the
-`dart.devToolsLocation` setting.
+Você pode escolher ter o DevTools sempre aberto em um navegador
+com a configuração `dart.embedDevTools`, e controlar se ele
+abre em uma janela inteira ou em uma nova coluna ao lado do
+seu editor atual com a configuração `dart.devToolsLocation`.
 
-A full list of Dart/Flutter settings are available on
-[dartcode.org](https://dartcode.org/docs/settings/)
-or in the
-[VS Code settings editor](https://code.visualstudio.com/docs/getstarted/settings#_settings-editor).
-Some recommendation settings for Dart/Flutter in VS Code
-can also be found on
+Uma lista completa de configurações Dart/Flutter está disponível
+em [dartcode.org](https://dartcode.org/docs/settings/) ou no
+[editor de configurações do VS Code](https://code.visualstudio.com/docs/getstarted/settings#_settings-editor).
+Algumas configurações recomendadas para Dart/Flutter no VS Code
+também podem ser encontradas em
 [dartcode.org](https://dartcode.org/docs/recommended-settings/).
 
-You can also see whether DevTools is running
-and launch it in a browser from the language status area
-(the `{}` icon next to **Dart** in the status bar).
+Você também pode ver se o DevTools está em execução e iniciá-lo
+em um navegador a partir da área de status da linguagem (o
+ícone `{}` ao lado de **Dart** na barra de status).
 
-![Screenshot showing DevTools in the VS Code language status area](/assets/images/docs/tools/vs-code/vscode_status_bar.png){:width="100%"}
+![Captura de tela mostrando o DevTools na área de status da linguagem do VS Code](/assets/images/docs/tools/vs-code/vscode_status_bar.png){:width="100%"}
 
 [Dart extension]: https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code
 [Flutter extension]: https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter

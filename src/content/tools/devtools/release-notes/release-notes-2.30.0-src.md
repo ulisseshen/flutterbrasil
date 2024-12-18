@@ -1,32 +1,32 @@
-# DevTools 2.30.0 release notes
+# Notas de lançamento do DevTools 2.30.0
 
-The 2.30.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutter.dev/tools/devtools).
+A versão 2.30.0 do Dart e Flutter DevTools
+inclui as seguintes alterações, entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](https://docs.flutter.dev/tools/devtools).
 
-## Performance updates
+## Atualizações de desempenho
 
-* Add an indicator of the rendering engine to the Flutter Frames chart. -
+* Adiciona um indicador do motor de renderização ao gráfico de Frames do Flutter. -
   [#6771](https://github.com/flutter/devtools/pull/6771)
 
-  ![Flutter rendering engine text](/tools/devtools/release-notes/images-2.30.0/flutter_frames_engine_text.png "Text describing the current flutter rendering engine")
+  ![Texto do motor de renderização do Flutter](/tools/devtools/release-notes/images-2.30.0/flutter_frames_engine_text.png "Texto descrevendo o motor de renderização atual do flutter")
 
-* Improve messaging when we do not have analysis data available for a
-  Flutter frame. - [#6768](https://github.com/flutter/devtools/pull/6768)
+* Melhora as mensagens quando não temos dados de análise disponíveis para um
+  frame do Flutter. - [#6768](https://github.com/flutter/devtools/pull/6768)
 
-## VS Code Sidebar updates
+## Atualizações da barra lateral do VS Code
 
-* The Flutter Sidebar provided to VS Code now has the ability to enable new
-  platforms if a device is available for a platform that is not enabled for
-  the current project. This also requires a corresponding Dart extension for
-  VS Code update to appear. - [#6688](https://github.com/flutter/devtools/pull/6688)
+* A barra lateral do Flutter fornecida ao VS Code agora tem a capacidade de habilitar novas
+  plataformas se um dispositivo estiver disponível para uma plataforma que não está habilitada para
+  o projeto atual. Isso também requer uma extensão Dart correspondente para
+  a atualização do VS Code para aparecer. - [#6688](https://github.com/flutter/devtools/pull/6688)
 
-* The DevTools menu in the sidebar now has an entry "Open in Browser"
-  that opens DevTools in an external browser window even when VS Code settings
-  are set to usually use embedded DevTools. - [#6736](https://github.com/flutter/devtools/pull/6736)
+* O menu do DevTools na barra lateral agora tem uma entrada "Abrir no Navegador"
+  que abre o DevTools em uma janela de navegador externo, mesmo quando as configurações do VS Code
+  são definidas para usar normalmente o DevTools incorporado. - [#6736](https://github.com/flutter/devtools/pull/6736)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes in this release, check out the
-[DevTools git log](https://github.com/flutter/devtools/tree/v2.30.0).
+Para encontrar uma lista completa de alterações nesta versão, confira o
+[log do git do DevTools](https://github.com/flutter/devtools/tree/v2.30.0).

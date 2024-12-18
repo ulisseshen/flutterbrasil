@@ -1,43 +1,44 @@
 ---
-title: Run DevTools from the command line
-description: Learn how to launch and use DevTools from the command line.
+ia-translate: true
+title: Execute DevTools a partir da linha de comando
+description: Aprenda como iniciar e usar o DevTools a partir da linha de comando.
 ---
 
-To run DevTools from the CLI,
-you must have `dart` on your path.
-Then to launch DevTools, run the `dart devtools` command.
+Para executar o DevTools a partir do CLI,
+você deve ter o `dart` no seu path.
+Então, para iniciar o DevTools, execute o comando `dart devtools`.
 
-To upgrade DevTools, upgrade Flutter.
-If a newer Dart SDK
-(which is included in the Flutter SDK)
-includes a newer version of DevTools,
-running `dart devtools` automatically launches this version.
-If `which dart` points to a Dart SDK _not_
-included in your Flutter SDK, updating that
-Dart SDK won't update the Flutter version.
+Para atualizar o DevTools, atualize o Flutter.
+Se um SDK Dart mais recente
+(que está incluído no SDK do Flutter)
+incluir uma versão mais recente do DevTools,
+executar `dart devtools` inicia automaticamente esta versão.
+Se `which dart` apontar para um SDK Dart _não_
+incluído no seu SDK do Flutter, atualizar esse
+SDK Dart não atualizará a versão do Flutter.
 
-When you run DevTools from the command line,
-you should see output that looks something like:
+Quando você executa o DevTools a partir da linha de comando,
+você deve ver uma saída semelhante a esta:
 
 ```plaintext
 Serving DevTools at http://127.0.0.1:9100
 ```
 
-## Start an application to debug
+## Iniciar um aplicativo para depurar
 
-Next, start an app to connect to.
-This can be either a Flutter application
-or a Dart command-line application.
-The command below specifies a Flutter app:
+Em seguida, inicie um aplicativo para se conectar.
+Este pode ser um aplicativo Flutter
+ou um aplicativo Dart de linha de comando.
+O comando abaixo especifica um aplicativo Flutter:
 
 ```console
 cd path/to/flutter/app
 flutter run
 ```
 
-You need to have a device connected, or a simulator open,
-for `flutter run` to work. Once the app starts, you'll see a
-message in your terminal that looks like the following:
+Você precisa ter um dispositivo conectado ou um simulador aberto,
+para que o `flutter run` funcione. Assim que o aplicativo iniciar, você verá uma
+mensagem no seu terminal semelhante à seguinte:
 
 ```console
 An Observatory debugger and profiler on macOS is available at:
@@ -46,23 +47,23 @@ The Flutter DevTools debugger and profiler on macOS is available at:
 http://127.0.0.1:9100?uri=http://127.0.0.1:52129/QjqebSY4lQ8=/
 ```
 
-Open the DevTools instance connected to your app
-by opening the second link in Chrome.
+Abra a instância do DevTools conectada ao seu aplicativo
+abrindo o segundo link no Chrome.
 
-This URL contains a security token, 
-so it's different for each run of your app. 
-This means that if you stop your application and re-run it, 
-you need to connect to DevTools again with the new URL.
+Este URL contém um token de segurança,
+portanto, é diferente para cada execução do seu aplicativo.
+Isso significa que, se você parar seu aplicativo e executá-lo novamente,
+você precisa se conectar ao DevTools novamente com o novo URL.
 
-## Connect to a new app instance
+## Conectar a uma nova instância de aplicativo
 
-If your app stops running
-or you opened DevTools manually,
-you should see a **Connect** dialog:
+Se o seu aplicativo parar de ser executado
+ou você abriu o DevTools manualmente,
+você deverá ver uma caixa de diálogo **Connect**:
 
-![Screenshot of the DevTools connect dialog](/assets/images/docs/tools/devtools/connect_dialog.png){:width="100%"}
+![Captura de tela da caixa de diálogo de conexão do DevTools](/assets/images/docs/tools/devtools/connect_dialog.png){:width="100%"}
 
-You can manually connect DevTools to a new app instance
-by copying the Observatory link you got from running your app,
-such as `http://127.0.0.1:52129/QjqebSY4lQ8=/`
-and pasting it into the connect dialog:
+Você pode conectar manualmente o DevTools a uma nova instância de aplicativo
+copiando o link do Observatory que você obteve ao executar seu aplicativo,
+como `http://127.0.0.1:52129/QjqebSY4lQ8=/`
+e colando-o na caixa de diálogo de conexão:

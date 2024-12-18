@@ -1,77 +1,76 @@
 ---
-title: Notable Rendering and Layout Changes after v3.7
-description: Non-API related breaking changes made after Flutter v3.7.
+ia-translate: true
+title: Mudanças Notáveis de Renderização e Layout após a v3.7
+description: Mudanças interruptivas não relacionadas à API feitas após o Flutter v3.7.
 ---
 
-## Changes
+## Mudanças
 
-This section lists the notable non-API breaking changes.
+Esta seção lista as mudanças interruptivas notáveis não relacionadas à API.
 
-### (Only Affects Tests) `FlutterTest` is now the default test font
+### (Afeta Apenas Testes) `FlutterTest` agora é a fonte de teste padrão
 
-The `FlutterTest` font replaced `Ahem` as the default font in tests: when
-`fontFamily` isn't specified, or the font families specified are not registered,
-tests use the `FlutterTest` font to render text. The `Ahem` font is still
-available in tests if specified as the `fontFamily` to use.
+A fonte `FlutterTest` substituiu a `Ahem` como a fonte padrão em testes: quando
+`fontFamily` não é especificado, ou as famílias de fontes especificadas não estão registradas,
+os testes usam a fonte `FlutterTest` para renderizar o texto. A fonte `Ahem` ainda está
+disponível em testes se especificada como a `fontFamily` a ser usada.
 
-The `FlutterTest` font produces more precise font and glyph metrics than `Ahem`,
-and the metrics are generally font-engine agnostic.
-Check out the [Flutter Test Fonts][]
-wiki page for more details about the test font.
+A fonte `FlutterTest` produz métricas de fonte e glifo mais precisas do que a `Ahem`,
+e as métricas são geralmente agnósticas ao mecanismo de fonte.
+Confira a página wiki [Fontes de Teste do Flutter][] para mais detalhes sobre a fonte de teste.
 
-**Differences**
+**Diferenças**
 
-The `FlutterTest` font looks almost identical to the old default `Ahem`: the
-glyph for most characters is a box that fills the em square. The notable
-differences between the `FlutterTest` font and `Ahem` font are:
+A fonte `FlutterTest` parece quase idêntica à antiga `Ahem` padrão: o
+glifo para a maioria dos caracteres é uma caixa que preenche o quadrado em. As diferenças notáveis entre a fonte `FlutterTest` e a fonte `Ahem` são:
 
-**1. Different baseline location**
+**1. Localização da linha de base diferente**
 
-The `FlutterTest` font's ascent and descent are 0.75 em and 0.25 em, while
-`Ahem`'s are 0.8 em and 0.2 em, respectively.
+O ascendente e o descendente da fonte `FlutterTest` são 0,75 em e 0,25 em, enquanto
+os de `Ahem` são 0,8 em e 0,2 em, respectivamente.
 
-In the example golden image change below, the white blocks are text rendered
-using `Ahem` and `FlutterTest`. The second character is taller in the new font
-since it has a larger descent.
+No exemplo de mudança de imagem dourada abaixo, os blocos brancos são texto renderizado
+usando `Ahem` e `FlutterTest`. O segundo caractere é mais alto na nova fonte
+já que tem um descendente maior.
 
-| Before (`Ahem`) | After | Animated Diff |
+| Antes (`Ahem`) | Depois | Diff Animado |
 | :---: | :---: | :---: |
-| ![before](assets/material.ink_sparkle.bottom_right.0_masterImage.png) | ![after](assets/material.ink_sparkle.bottom_right.0_testImage.png) | ![baseline_animated](assets/baseline.gif) |
+| ![antes](assets/material.ink_sparkle.bottom_right.0_masterImage.png) | ![depois](assets/material.ink_sparkle.bottom_right.0_testImage.png) | ![baseline_animated](assets/baseline.gif) |
 
-**2. Different decoration position**
+**2. Posição de decoração diferente**
 
-The underline location is slightly higher in `FlutterTest` than `Ahem`.
+A localização do sublinhado é ligeiramente mais alta em `FlutterTest` do que em `Ahem`.
 
-In the example golden image change below, the 3 lines of white blocks are text
-rendered using `Ahem` and `FlutterTest`. The blue dashed lines indicate the
-[TextDecoration.overline]/[TextDecoration.lineThrough]/[TextDecoration.underline]
-positions for each line.
+No exemplo de mudança de imagem dourada abaixo, as 3 linhas de blocos brancos são texto
+renderizado usando `Ahem` e `FlutterTest`. As linhas tracejadas azuis indicam as
+posições de [TextDecoration.overline]/[TextDecoration.lineThrough]/[TextDecoration.underline]
+para cada linha.
 
-| Before (`Ahem`) | After | Animated Diff |
+| Antes (`Ahem`) | Depois | Diff Animado |
 | :---: | :---: | :---: |
-| ![before](assets/widgets.text_golden.Decoration.1_masterImage.png) | ![after](assets/widgets.text_golden.Decoration.1_testImage.png) |  ![baseline_animated](assets/underline.gif) |
+| ![antes](assets/widgets.text_golden.Decoration.1_masterImage.png) | ![depois](assets/widgets.text_golden.Decoration.1_testImage.png) |  ![baseline_animated](assets/underline.gif) |
 
-**3. The glyph used for unmapped characters are slightly different**
+**3. O glifo usado para caracteres não mapeados é ligeiramente diferente**
 
-Unmapped characters are rendered as hollow boxes in both fonts, with
-a slight difference:
+Caracteres não mapeados são renderizados como caixas vazias em ambas as fontes, com
+uma pequena diferença:
 
-| Before (`Ahem`) | After | Diff |
+| Antes (`Ahem`) | Depois | Diff |
 | :---: | :---: | :---: |
-| ![before](assets/material.floating_action_button_test.clip_masterImage.png) | ![after](assets/material.floating_action_button_test.clip_testImage.png) | ![not_def_animated](assets/not_def.gif) |
+| ![antes](assets/material.floating_action_button_test.clip_masterImage.png) | ![depois](assets/material.floating_action_button_test.clip_testImage.png) | ![not_def_animated](assets/not_def.gif) |
 
-## References
+## Referências
 
-Relevant PRs:
+PRs relevantes:
 
-* The `FlutterTest` font was added in: [Add new test font]({{site.repo.engine}}/pull/39809)
-* The `FlutterTest` font was made the default in: [Make FlutterTest the default test font]({{site.repo.engine}}/pull/40188)
+* A fonte `FlutterTest` foi adicionada em: [Adicionar nova fonte de teste]({{site.repo.engine}}/pull/39809)
+* A fonte `FlutterTest` se tornou a padrão em: [Fazer FlutterTest a fonte de teste padrão]({{site.repo.engine}}/pull/40188)
 
-Wiki page:
+Página wiki:
 
-* [Flutter Test Fonts][]
+* [Fontes de Teste do Flutter][]
 
-[Flutter Test Fonts]: {{site.repo.flutter}}/blob/master/docs/contributing/testing/Flutter-Test-Fonts.md
+[Fontes de Teste do Flutter]: {{site.repo.flutter}}/blob/master/docs/contributing/testing/Flutter-Test-Fonts.md
 [TextDecoration.underline]: {{site.api}}/flutter/dart-ui/TextDecoration/underline-constant.html
 [TextDecoration.overline]: {{site.api}}/flutter/dart-ui/TextDecoration/overline-constant.html
 [TextDecoration.lineThrough]: {{site.api}}/flutter/dart-ui/TextDecoration/lineThrough-constant.html

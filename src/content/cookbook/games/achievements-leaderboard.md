@@ -1,107 +1,108 @@
 ---
-title: Add achievements and leaderboards to your mobile game
+ia-translate: true
+title: Adicione conquistas e placares de líderes ao seu jogo mobile
 description: >
-  How to use the games_services plugin to add functionality to your game.
+  Como usar o plugin games_services para adicionar funcionalidades ao seu jogo.
 ---
 
 <?code-excerpt path-base="cookbook/games/achievements_leaderboards"?>
 
-Gamers have various motivations for playing games.
-In broad strokes, there are four major motivations: 
-[immersion, achievement, cooperation, and competition][].
-No matter the game you build, some players want to *achieve* in it.
-This could be trophies won or secrets unlocked.
-Some players want to *compete* in it.
-This could be hitting high scores or accomplishing speedruns.
-These two ideas map to the concepts of *achievements* and *leaderboards*.
+Jogadores têm várias motivações para jogar.
+Em linhas gerais, existem quatro motivações principais:
+[imersão, conquista, cooperação e competição][].
+Não importa o jogo que você construa, alguns jogadores querem *conquistar* algo nele.
+Isso pode ser troféus ganhos ou segredos desbloqueados.
+Alguns jogadores querem *competir* nele.
+Isso pode ser atingir altas pontuações ou realizar speedruns.
+Essas duas ideias mapeiam os conceitos de *conquistas* e *placar de líderes* (leaderboards).
 
-![A simple graphic representing the four types of motivation explained above](/assets/images/docs/cookbook/types-of-gamer-motivations.png){:.site-illustration}
+![Um gráfico simples representando os quatro tipos de motivação explicados acima](/assets/images/docs/cookbook/types-of-gamer-motivations.png){:.site-illustration}
 
-Ecosystems such as the App Store and Google Play provide
-centralized services for achievements and leaderboards.
-Players can view achievements from all their games in one place and
-developers don't need to re-implement them for every game.
+Ecossistemas como a App Store e o Google Play fornecem
+serviços centralizados para conquistas e placares de líderes.
+Jogadores podem ver as conquistas de todos os seus jogos em um só lugar e
+desenvolvedores não precisam reimplementá-los para cada jogo.
 
-This recipe demonstrates how to use the [`games_services` package][] 
-to add achievements and leaderboard functionality to your mobile game.
+Esta receita demonstra como usar o pacote [`games_services`][]
+para adicionar funcionalidades de conquistas e placar de líderes ao seu jogo mobile.
 
 [`games_services` package]: {{site.pub-pkg}}/games_services
-[immersion, achievement, cooperation, and competition]: https://meditations.metavert.io/p/game-player-motivations
+[imersão, conquista, cooperação e competição]: https://meditations.metavert.io/p/game-player-motivations
 
-## 1. Enable platform services
+## 1. Habilite serviços de plataforma
 
-To enable games services, set up *Game Center* on iOS and
-*Google Play Games Services* on Android.
+Para habilitar os serviços de jogos, configure o *Game Center* no iOS e
+o *Google Play Games Services* no Android.
 
 ### iOS
 
-To enable Game Center (GameKit) on iOS:
+Para habilitar o Game Center (GameKit) no iOS:
 
-1.  Open your Flutter project in Xcode.
-    Open `ios/Runner.xcworkspace`
+1.  Abra seu projeto Flutter no Xcode.
+    Abra `ios/Runner.xcworkspace`
 
-2.  Select the root **Runner** project.
+2.  Selecione o projeto raiz **Runner**.
 
-3.  Go to the **Signing & Capabilities** tab.
+3.  Vá para a aba **Signing & Capabilities**.
 
-4.  Click the `+` button to add **Game Center** as a capability.
+4.  Clique no botão `+` para adicionar **Game Center** como uma capacidade.
 
-5.  Close Xcode.
+5.  Feche o Xcode.
 
-6.  If you haven't already,
-    register your game in [App Store Connect][]
-    and from the **My App** section press the `+` icon.
+6.  Se você ainda não fez isso,
+    registre seu jogo no [App Store Connect][]
+    e na seção **My App**, clique no ícone `+`.
 
-    ![Screenshot of the + button in App Store Connect](/assets/images/docs/cookbook/app-store-add-app-button.png)
+    ![Captura de tela do botão + no App Store Connect](/assets/images/docs/cookbook/app-store-add-app-button.png)
 
-7.  Still in App Store Connect, look for the *Game Center* section. You
-    can find it in **Services** as of this writing. On the **Game
-    Center** page, you might want to set up a leaderboard and several
-    achievements, depending on your game. Take note of the IDs of the
-    leaderboards and achievements you create.
+7.  Ainda no App Store Connect, procure a seção *Game Center*. Você
+    pode encontrá-la em **Services**, no momento em que escrevo isso. Na página do **Game
+    Center**, você pode querer configurar um placar de líderes e várias
+    conquistas, dependendo do seu jogo. Anote os IDs dos
+    placar de líderes e conquistas que você criar.
 
 [App Store Connect]: https://appstoreconnect.apple.com/
 
 ### Android
 
-To enable *Play Games Services* on Android:
+Para habilitar o *Play Games Services* no Android:
 
-1.  If you haven't already, go to [Google Play Console][]
-    and register your game there.  
-    
-    ![Screenshot of the 'Create app' button in Google Play Console](/assets/images/docs/cookbook/google-play-create-app.png)
+1.  Se você ainda não fez isso, vá para o [Google Play Console][]
+    e registre seu jogo lá.
 
-2.  Still in Google Play Console, select *Play Games Services* → *Setup
-    and management* → *Configuration* from the navigation menu and
-    follow their instructions.
+    ![Captura de tela do botão 'Criar aplicativo' no Google Play Console](/assets/images/docs/cookbook/google-play-create-app.png)
 
-      * This takes a significant amount of time and patience.
-        Among other things, you'll need to set up an
-        OAuth consent screen in Google Cloud Console.
-        If at any point you feel lost, consult the
-        official [Play Games Services guide][].    
-         
-        ![Screenshot showing the Games Services section in Google Play Console](/assets/images/docs/cookbook/play-console-play-games-services.png)
+2.  Ainda no Google Play Console, selecione *Play Games Services* → *Configuração
+    e gerenciamento* → *Configuração* no menu de navegação e
+    siga as instruções.
 
-3.  When done, you can start adding leaderboards and achievements in
-    **Play Games Services** → **Setup and management**. Create the exact
-    same set as you did on the iOS side. Make note of IDs.
+      * Isso leva uma quantidade significativa de tempo e paciência.
+        Entre outras coisas, você precisará configurar uma
+        tela de consentimento OAuth no Google Cloud Console.
+        Se em algum momento você se sentir perdido, consulte o
+        [guia oficial do Play Games Services][].
 
-4.  Go to **Play Games Services → Setup and management → Publishing**.
+        ![Captura de tela mostrando a seção de Serviços de jogos no Google Play Console](/assets/images/docs/cookbook/play-console-play-games-services.png)
 
-5.  Click **Publish**. Don't worry, this doesn't actually publish your
-    game. It only publishes the achievements and leaderboard. Once a
-    leaderboard, for example, is published this way, it cannot be
-    unpublished.
+3.  Quando terminar, você pode começar a adicionar placares de líderes e conquistas em
+    **Play Games Services** → **Configuração e gerenciamento**. Crie o mesmo conjunto
+    exato que você fez no lado iOS. Anote os IDs.
 
-6.  Go to **Play Games Services** **→ Setup and management →
-    Configuration → Credentials**.
+4.  Vá para **Play Games Services → Configuração e gerenciamento → Publicação**.
 
-7.  Find the **Get resources** button.
-    It returns an XML file with the Play Games Services IDs.
+5.  Clique em **Publicar**. Não se preocupe, isso não publica seu
+    jogo. Isso só publica as conquistas e o placar de líderes. Uma vez que um
+    placar de líderes, por exemplo, é publicado dessa forma, ele não pode ser
+    despublicado.
+
+6.  Vá para **Play Games Services** **→ Configuração e gerenciamento →
+    Configuração → Credenciais**.
+
+7.  Encontre o botão **Obter recursos**.
+    Ele retorna um arquivo XML com os IDs do Play Games Services.
 
     ```xml
-    <!-- THIS IS JUST AN EXAMPLE -->
+    <!-- ESTE É APENAS UM EXEMPLO -->
     <?xml version="1.0" encoding="utf-8"?>
     <resources>
         <!--app_id-->
@@ -115,143 +116,142 @@ To enable *Play Games Services* on Android:
     </resources>
     ```
 
-8.  Add a file at `android/app/src/main/res/values/games-ids.xml`
-    containing the XML you received in the previous step.
+8.  Adicione um arquivo em `android/app/src/main/res/values/games-ids.xml`
+    contendo o XML que você recebeu na etapa anterior.
 
 [Google Play Console]: https://play.google.com/console/
-[Play Games Services guide]: {{site.developers}}/games/services/console/enabling
+[guia oficial do Play Games Services]: {{site.developers}}/games/services/console/enabling
 
-## 2. Sign in to the game service
+## 2. Faça login no serviço de jogos
 
-Now that you have set up *Game Center* and *Play Games Services*, and
-have your achievement & leaderboard IDs ready, it's finally Dart time.
+Agora que você configurou o *Game Center* e o *Play Games Services*, e
+tem seus IDs de conquista e placar de líderes prontos, finalmente é hora do Dart.
 
-1.  Add a dependency on the [`games_services` package]({{site.pub-pkg}}/games_services).
+1.  Adicione uma dependência no pacote [`games_services`]({{site.pub-pkg}}/games_services).
 
     ```console
     $ flutter pub add games_services
     ```
 
-2.  Before you can do anything else, you have to sign the player into
-    the game service.
+2.  Antes de fazer qualquer outra coisa, você precisa fazer o jogador fazer login no
+    serviço de jogos.
 
     <?code-excerpt "lib/various.dart (signIn)"?>
     ```dart
     try {
       await GamesServices.signIn();
     } on PlatformException catch (e) {
-      // ... deal with failures ...
+      // ... lide com as falhas ...
     }
     ```
 
-The sign in happens in the background. It takes several seconds, so
-don't call `signIn()` before `runApp()` or the players will be forced to
-stare at a blank screen every time they start your game.
+O login acontece em segundo plano. Leva vários segundos, então
+não chame `signIn()` antes de `runApp()` ou os jogadores serão forçados a
+olhar para uma tela em branco toda vez que iniciarem seu jogo.
 
-The API calls to the `games_services` API can fail for a multitude of
-reasons. Therefore, every call should be wrapped in a try-catch block as
-in the previous example. The rest of this recipe omits exception
-handling for clarity.
+As chamadas de API para a API `games_services` podem falhar por uma variedade de
+razões. Portanto, cada chamada deve ser envolvida em um bloco try-catch como
+no exemplo anterior. O resto desta receita omite o tratamento de exceções
+para clareza.
 
 :::tip
-It's a good practice to create a controller. This would be a
-`ChangeNotifier`, a bloc, or some other piece of logic that wraps around
-the raw functionality of the `games_services` plugin.
+É uma boa prática criar um controller. Este seria um
+`ChangeNotifier`, um bloc ou alguma outra parte da lógica que envolve
+a funcionalidade bruta do plugin `games_services`.
 :::
 
+## 3. Desbloquear conquistas
 
-## 3. Unlock achievements
-
-1.  Register achievements in Google Play Console and App Store Connect,
-    and take note of their IDs. Now you can award any of those
-    achievements from your Dart code:
+1.  Registre as conquistas no Google Play Console e no App Store Connect,
+    e anote seus IDs. Agora você pode conceder qualquer uma dessas
+    conquistas do seu código Dart:
 
     <?code-excerpt "lib/various.dart (unlock)"?>
     ```dart
     await GamesServices.unlock(
       achievement: Achievement(
-        androidID: 'your android id',
-        iOSID: 'your ios id',
+        androidID: 'seu id android',
+        iOSID: 'seu id ios',
       ),
     );
     ```
 
-    The player's account on Google Play Games or Apple Game Center now
-    lists the achievement.
+    A conta do jogador no Google Play Games ou Apple Game Center agora
+    lista a conquista.
 
-2.  To display the achievements UI from your game, call the
-    `games_services` API:
+2.  Para exibir a interface do usuário de conquistas do seu jogo, chame a
+    API `games_services`:
 
     <?code-excerpt "lib/various.dart (showAchievements)"?>
     ```dart
     await GamesServices.showAchievements();
     ```
 
-    This displays the platform achievements UI as an overlay on your game.
+    Isso exibe a interface do usuário de conquistas da plataforma como uma sobreposição em seu jogo.
 
-3.  To display the achievements in your own UI, use
+3.  Para exibir as conquistas em sua própria interface do usuário, use
     [`GamesServices.loadAchievements()`][].
-    
+
 [`GamesServices.loadAchievements()`]: {{site.pub-api}}/games_services/latest/games_services/GamesServices/loadAchievements.html
 
-## 4. Submit scores
+## 4. Enviar pontuações
 
-When the player finishes a play-through, your game can submit the result
-of that play session into one or more leaderboards.
+Quando o jogador termina uma partida, seu jogo pode enviar o resultado
+dessa sessão de jogo para um ou mais placares de líderes.
 
-For example, a platformer game like Super Mario can submit both the
-final score and the time taken to complete the level, to two separate
-leaderboards.
+Por exemplo, um jogo de plataforma como Super Mario pode enviar tanto o
+pontuação final quanto o tempo gasto para completar a fase, para dois
+placar de líderes separados.
 
-1.  In the first step, you registered a leaderboard in Google Play
-    Console and App Store Connect, and took note of its ID. Using this
-    ID, you can submit new scores for the player:
+1.  Na primeira etapa, você registrou um placar de líderes no Google Play
+    Console e App Store Connect, e anotou seu ID. Usando este
+    ID, você pode enviar novas pontuações para o jogador:
 
     <?code-excerpt "lib/various.dart (submitScore)"?>
     ```dart
     await GamesServices.submitScore(
       score: Score(
-        iOSLeaderboardID: 'some_id_from_app_store',
-        androidLeaderboardID: 'sOmE_iD_fRoM_gPlAy',
+        iOSLeaderboardID: 'algum_id_da_app_store',
+        androidLeaderboardID: 'aLgUm_Id_dO_gPlAy',
         value: 100,
       ),
     );
     ```
 
-    You don't need to check whether the new score is the player's
-    highest. The platform game services handle that for you.
+    Você não precisa verificar se a nova pontuação é a mais alta do jogador.
+    Os serviços de jogos da plataforma cuidam disso para você.
 
-2.  To display the leaderboard as an overlay over your game, make the
-    following call:
+2.  Para exibir o placar de líderes como uma sobreposição sobre seu jogo, faça a
+    seguinte chamada:
 
     <?code-excerpt "lib/various.dart (showLeaderboards)"?>
     ```dart
     await GamesServices.showLeaderboards(
-      iOSLeaderboardID: 'some_id_from_app_store',
-      androidLeaderboardID: 'sOmE_iD_fRoM_gPlAy',
+      iOSLeaderboardID: 'algum_id_da_app_store',
+      androidLeaderboardID: 'aLgUm_Id_dO_gPlAy',
     );
     ```
 
-3.  If you want to display the leaderboard scores in your own UI, you
-    can fetch them with [`GamesServices.loadLeaderboardScores()`][].
-    
+3.  Se você quiser exibir as pontuações do placar de líderes em sua própria interface do usuário, você
+    pode buscá-las com [`GamesServices.loadLeaderboardScores()`][].
+
 [`GamesServices.loadLeaderboardScores()`]: {{site.pub-api}}/games_services/latest/games_services/GamesServices/loadLeaderboardScores.html
 
-## 5. Next steps
+## 5. Próximos passos
 
-There's more to the `games_services` plugin. With this plugin, you can:
+Há mais no plugin `games_services`. Com este plugin, você pode:
 
-- Get the player's icon, name or unique ID
-- Save and load game states
-- Sign out of the game service
+- Obter o ícone, nome ou ID exclusivo do jogador
+- Salvar e carregar estados de jogo
+- Sair do serviço de jogos
 
-Some achievements can be incremental. For example: "You have collected
-all 10 pieces of the McGuffin."
+Algumas conquistas podem ser incrementais. Por exemplo: "Você coletou
+todas as 10 peças do McGuffin."
 
-Each game has different needs from game services.
+Cada jogo tem necessidades diferentes de serviços de jogos.
 
-To start, you might want to create this controller 
-in order to keep all achievements & leaderboards logic in one place:
+Para começar, você pode querer criar este controller
+para manter toda a lógica de conquistas e placar de líderes em um só lugar:
 
 <?code-excerpt "lib/games_services_controller.dart"?>
 ```dart
@@ -260,11 +260,11 @@ import 'dart:async';
 import 'package:games_services/games_services.dart';
 import 'package:logging/logging.dart';
 
-/// Allows awarding achievements and leaderboard scores,
-/// and also showing the platforms' UI overlays for achievements
-/// and leaderboards.
+/// Permite conceder conquistas e pontuações do placar de líderes,
+/// e também mostrar as sobreposições da UI das plataformas para conquistas
+/// e placares de líderes.
 ///
-/// A facade of `package:games_services`.
+/// Uma fachada do `package:games_services`.
 class GamesServicesController {
   static final Logger _log = Logger('GamesServicesController');
 
@@ -272,17 +272,15 @@ class GamesServicesController {
 
   Future<bool> get signedIn => _signedInCompleter.future;
 
-  /// Unlocks an achievement on Game Center / Play Games.
+  /// Desbloqueia uma conquista no Game Center / Play Games.
   ///
-  /// You must provide the achievement ids via the [iOS] and [android]
-  /// parameters.
+  /// Você deve fornecer os ids de conquista por meio dos parâmetros [iOS] e [android].
   ///
-  /// Does nothing when the game isn't signed into the underlying
-  /// games service.
+  /// Não faz nada quando o jogo não está conectado ao serviço de jogos subjacente.
   Future<void> awardAchievement(
       {required String iOS, required String android}) async {
     if (!await signedIn) {
-      _log.warning('Trying to award achievement when not logged in.');
+      _log.warning('Tentando conceder conquista quando não está logado.');
       return;
     }
 
@@ -294,91 +292,91 @@ class GamesServicesController {
         ),
       );
     } catch (e) {
-      _log.severe('Cannot award achievement: $e');
+      _log.severe('Não é possível conceder conquista: $e');
     }
   }
 
-  /// Signs into the underlying games service.
+  /// Faz login no serviço de jogos subjacente.
   Future<void> initialize() async {
     try {
       await GamesServices.signIn();
-      // The API is unclear so we're checking to be sure. The above call
-      // returns a String, not a boolean, and there's no documentation
-      // as to whether every non-error result means we're safely signed in.
+      // A API não é clara, então estamos verificando para ter certeza. A chamada acima
+      // retorna uma String, não um booleano, e não há documentação
+      // sobre se todo resultado sem erro significa que estamos conectados com segurança.
       final signedIn = await GamesServices.isSignedIn;
       _signedInCompleter.complete(signedIn);
     } catch (e) {
-      _log.severe('Cannot log into GamesServices: $e');
+      _log.severe('Não é possível fazer login no GamesServices: $e');
       _signedInCompleter.complete(false);
     }
   }
 
-  /// Launches the platform's UI overlay with achievements.
+  /// Lança a sobreposição de UI da plataforma com conquistas.
   Future<void> showAchievements() async {
     if (!await signedIn) {
-      _log.severe('Trying to show achievements when not logged in.');
+      _log.severe('Tentando mostrar conquistas quando não está logado.');
       return;
     }
 
     try {
       await GamesServices.showAchievements();
     } catch (e) {
-      _log.severe('Cannot show achievements: $e');
+      _log.severe('Não é possível mostrar conquistas: $e');
     }
   }
 
-  /// Launches the platform's UI overlay with leaderboard(s).
+  /// Lança a sobreposição de UI da plataforma com o(s) placar(es) de líderes.
   Future<void> showLeaderboard() async {
     if (!await signedIn) {
-      _log.severe('Trying to show leaderboard when not logged in.');
+      _log.severe('Tentando mostrar o placar de líderes quando não está logado.');
       return;
     }
 
     try {
       await GamesServices.showLeaderboards(
-        // TODO: When ready, change both these leaderboard IDs.
-        iOSLeaderboardID: 'some_id_from_app_store',
-        androidLeaderboardID: 'sOmE_iD_fRoM_gPlAy',
+        // TODO: Quando estiver pronto, altere ambos esses IDs de placar de líderes.
+        iOSLeaderboardID: 'algum_id_da_app_store',
+        androidLeaderboardID: 'aLgUm_Id_dO_gPlAy',
       );
     } catch (e) {
-      _log.severe('Cannot show leaderboard: $e');
+      _log.severe('Não é possível mostrar o placar de líderes: $e');
     }
   }
 
-  /// Submits [score] to the leaderboard.
+  /// Envia [score] para o placar de líderes.
   Future<void> submitLeaderboardScore(int score) async {
     if (!await signedIn) {
-      _log.warning('Trying to submit leaderboard when not logged in.');
+      _log.warning('Tentando enviar o placar de líderes quando não está logado.');
       return;
     }
 
-    _log.info('Submitting $score to leaderboard.');
+    _log.info('Enviando $score para o placar de líderes.');
 
     try {
       await GamesServices.submitScore(
         score: Score(
-          // TODO: When ready, change these leaderboard IDs.
-          iOSLeaderboardID: 'some_id_from_app_store',
-          androidLeaderboardID: 'sOmE_iD_fRoM_gPlAy',
+          // TODO: Quando estiver pronto, altere esses IDs de placar de líderes.
+          iOSLeaderboardID: 'algum_id_da_app_store',
+          androidLeaderboardID: 'aLgUm_Id_dO_gPlAy',
           value: score,
         ),
       );
     } catch (e) {
-      _log.severe('Cannot submit leaderboard score: $e');
+      _log.severe('Não é possível enviar pontuação para o placar de líderes: $e');
     }
   }
 }
 ```
 
-## More information
+## Mais informações
 
-The Flutter Casual Games Toolkit includes the following templates:
+O Flutter Casual Games Toolkit inclui os seguintes templates:
 
-* [basic][]: basic starter game
-* [card][]: starter card game
-* [endless runner][]: starter game (using Flame)
-  where the player endlessly runs, avoiding pitfalls
-  and gaining rewards
+* [basic][]: jogo inicial básico
+* [card][]: jogo de cartas inicial
+* [endless runner][]: jogo inicial (usando Flame)
+  onde o jogador corre infinitamente, evitando armadilhas
+  e ganhando recompensas
 
 [basic]: {{site.github}}/flutter/games/tree/main/templates/basic#readme
 [card]: {{site.github}}/flutter/games/tree/main/templates/card#readme

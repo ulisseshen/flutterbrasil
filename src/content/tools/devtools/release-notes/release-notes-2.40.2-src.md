@@ -1,67 +1,75 @@
-# DevTools 2.40.2 release notes
+# Notas de lançamento do DevTools 2.40.2
 
-The 2.40.2 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](/tools/devtools/overview).
+A versão 2.40.2 do Dart e Flutter DevTools
+inclui as seguintes alterações, entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](/tools/devtools/overview).
 
-## General updates
+## Atualizações gerais
 
-* Add a setting that allows users to opt in to loading DevTools
-  with WebAssembly. - [#8270](https://github.com/flutter/devtools/pull/8270)
+* Adicionada uma configuração que permite aos usuários optar por carregar o
+  DevTools com WebAssembly. - [#8270](https://github.com/flutter/devtools/pull/8270)
 
-  ![Wasm opt-in setting](/tools/devtools/release-notes/images-2.40.2/wasm_setting.png "DevTools setting to opt into wasm.")
+  ![Configuração de adesão ao Wasm](/tools/devtools/release-notes/images-2.40.2/wasm_setting.png "Configuração do DevTools para aderir ao wasm.")
 
-* Removed the legacy Provider screen from DevTools.
-  The `package:provider` tool is now distributed as a
-  DevTools extension from `package:provider`.
-  Upgrade your `package:provider` dependency to
-  use the extension. - [#8364](https://github.com/flutter/devtools/pull/8364)
+* Removida a tela legada do Provider do DevTools.
+  A ferramenta `package:provider` agora é distribuída como uma
+  extensão do DevTools do `package:provider`.
+  Atualize sua dependência `package:provider` para
+  usar a extensão. - [#8364](https://github.com/flutter/devtools/pull/8364)
 
-* Fixed a bug that was causing the DevTools release notes to
-  always show. - [#8277](https://github.com/flutter/devtools/pull/8277)
+* Corrigido um bug que estava fazendo com que as notas de lançamento do
+  DevTools sempre fossem exibidas. - [#8277](https://github.com/flutter/devtools/pull/8277)
 
-* Added support for loading extensions in pub workspaces
+* Adicionado suporte para carregar extensões em workspaces pub
   [8347](https://github.com/flutter/devtools/pull/8347).
 
-* Mapped error stack traces to use the Dart source code locations so
-  that they are human-readable. - [#8385](https://github.com/flutter/devtools/pull/8385)
+* Mapeadas as stack traces de erro para usar os locais do código-fonte Dart
+  para que sejam legíveis. - [#8385](https://github.com/flutter/devtools/pull/8385)
 
-* Added handling for IDE theme change events to
-  update embedded DevTools UI. - [#8336](https://github.com/flutter/devtools/pull/8336)
+* Adicionado tratamento para eventos de mudança de tema do IDE para
+  atualizar a interface do usuário do DevTools incorporada. -
+  [#8336](https://github.com/flutter/devtools/pull/8336)
 
-* Fixed a bug that was causing data filters to be cleared when clearing data
-on the Network and Logging screens. - [#8407](https://github.com/flutter/devtools/pull/8407)
+* Corrigido um bug que estava fazendo com que os filtros de dados fossem
+  limpos ao limpar os dados nas telas de Rede e Log. -
+  [#8407](https://github.com/flutter/devtools/pull/8407)
 
-* Fixed a bug that was causing the navigator to lose state when opening the VM
-Flags dialog. - [#8413](https://github.com/flutter/devtools/pull/8413)
+* Corrigido um bug que estava fazendo com que o navegador perdesse o
+  estado ao abrir a caixa de diálogo VM Flags. -
+  [#8413](https://github.com/flutter/devtools/pull/8413)
 
-* Tables match IDE theme when embedded in an IDE. - [#8498](https://github.com/flutter/devtools/pull/8498)
+* Tabelas correspondem ao tema do IDE quando incorporadas em um IDE. -
+  [#8498](https://github.com/flutter/devtools/pull/8498)
 
-## Inspector updates
+## Atualizações do inspetor
 
-- Added a setting to the Flutter Inspector controls that
-  allows users to opt in to the newly redesigned Flutter Inspector. - [#8342](https://github.com/flutter/devtools/pull/8342)
+- Adicionada uma configuração aos controles do Flutter Inspector que
+  permite aos usuários optar pelo Flutter Inspector recém-reprojetado. -
+  [#8342](https://github.com/flutter/devtools/pull/8342)
 
-  ![New inspector opt-in setting](/tools/devtools/release-notes/images-2.40.2/new_inspector.png "DevTools setting to opt into the new Flutter Inspector.")
+  ![Nova configuração de adesão ao inspetor](/tools/devtools/release-notes/images-2.40.2/new_inspector.png "Configuração do DevTools para aderir ao novo Flutter Inspector.")
 
-## Performance updates
+## Atualizações de desempenho
 
-* Fixed an issue with the "Refreshing timeline" overlay that was getting shown
-  when it should not have been. - [#8318](https://github.com/flutter/devtools/pull/8318)
+* Corrigido um problema com a sobreposição "Atualizando timeline" que
+  estava sendo exibida quando não deveria. -
+  [#8318](https://github.com/flutter/devtools/pull/8318)
 
-## Network profiler updates
+## Atualizações do Network profiler
 
-* Resolved an issue in `.har` export where
-  response content was sometimes missing in the data. - [#8333](https://github.com/flutter/devtools/pull/8333)
+* Resolvido um problema na exportação `.har` onde o
+  conteúdo da resposta às vezes estava faltando nos dados. -
+  [#8333](https://github.com/flutter/devtools/pull/8333)
 
-## Deep links tool updates
+## Atualizações da ferramenta de Deep links
 
-- Added support for validating iOS deep link settings. - [#8394](https://github.com/flutter/devtools/pull/8394)
+- Adicionado suporte para validar as configurações de deep link do iOS. -
+  [#8394](https://github.com/flutter/devtools/pull/8394)
 
-  ![Deep link validator for iOS](/tools/devtools/release-notes/images-2.40.2/deep_link_ios.png "DevTools Deep link validator Page")
+  ![Validador de deep link para iOS](/tools/devtools/release-notes/images-2.40.2/deep_link_ios.png "Página do validador de deep link do DevTools")
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes in this release, check out the
-[DevTools git log](https://github.com/flutter/devtools/tree/v2.40.2).
+Para encontrar uma lista completa de alterações nesta versão, confira o
+[log git do DevTools](https://github.com/flutter/devtools/tree/v2.40.2).

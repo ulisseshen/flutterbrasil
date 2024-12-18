@@ -1,6 +1,7 @@
 ---
-short-title: 2.13.1 release notes
-description: Release notes for Dart and Flutter DevTools version 2.13.1.
+ia-translate: true
+short-title: Notas de versão 2.13.1
+description: Notas de versão para Dart e Flutter DevTools versão 2.13.1.
 toc: false
 ---
 

@@ -1,32 +1,33 @@
 ---
-title: Remove invalid parameters for `InputDecoration.collapsed`
+ia-translate: true
+title: Remover parâmetros inválidos para `InputDecoration.collapsed`
 description: >
-  'InputDecoration.collapsed' constructor parameters
-  'floatingLabelBehavior' and 'floatingLabelAlignment' are deprecated without
-  replacement because they have no effect.
+  Parâmetros do construtor 'InputDecoration.collapsed'
+  'floatingLabelBehavior' e 'floatingLabelAlignment' estão
+  obsoletos sem substituição porque não têm efeito.
 ---
 
-## Summary
+## Resumo
 
-`InputDecoration.collapsed` invalid parameters `floatingLabelBehavior` and
-`floatingLabelAlignment` are deprecated.
+Parâmetros inválidos de `InputDecoration.collapsed` `floatingLabelBehavior` e
+`floatingLabelAlignment` estão obsoletos.
 
-## Background
+## Contexto
 
-`InputDecoration.collapsed` constructor is used to create a minimal decoration
-without label.
+O construtor `InputDecoration.collapsed` é usado para criar uma decoração mínima
+sem rótulo.
 
-The parameters `floatingLabelAlignment` and `floatingLabelBehavior` have
-no effect because an input decoration created using `InputDecoration.collapsed`
-has no label.
+Os parâmetros `floatingLabelAlignment` e `floatingLabelBehavior` não têm
+efeito porque uma decoração de entrada criada usando `InputDecoration.collapsed`
+não tem rótulo.
 
-## Migration guide
+## Guia de migração
 
-To migrate, remove usage of `floatingLabelBehavior` and `floatingLabelAlignment`
-parameters when calling `InputDecoration.collapsed` constructor.
-Those parameters had no effect.
+Para migrar, remova o uso dos parâmetros `floatingLabelBehavior` e
+`floatingLabelAlignment` ao chamar o construtor `InputDecoration.collapsed`.
+Esses parâmetros não tiveram efeito.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 InputDecoration.collapsed(
@@ -36,7 +37,7 @@ InputDecoration.collapsed(
 ),
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 InputDecoration.collapsed(
@@ -44,32 +45,32 @@ InputDecoration.collapsed(
 ),
 ```
 
-## Timeline
+## Cronograma
 
-Landed in version: v3.24.0-0.1.pre<br>
-In stable release: Not yet
+Implementado na versão: v3.24.0-0.1.pre<br>
+Em lançamento estável: Ainda não
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`InputDecoration.collapsed`][]
 * [`InputDecoration.floatingLabelAlignment`][]
 * [`InputDecoration.floatingLabelBehavior`][]
 
-Relevant issues:
+Issues relevantes:
 
-* [Add prefixIcon and suffixIcon parameters to InputDecoration.collapsed][]
+* [Adicionar parâmetros prefixIcon e suffixIcon a InputDecoration.collapsed][]
 
-Relevant PRs:
+PRs relevantes:
 
-* [Deprecate invalid InputDecoration.collapsed parameters][]
-* [Cleanup InputDecoration.collapsed constructor][]
+* [Depreciar parâmetros inválidos de InputDecoration.collapsed][]
+* [Limpeza do construtor InputDecoration.collapsed][]
 
 [`InputDecoration.collapsed`]: {{site.api}}/flutter/material/InputDecoration/InputDecoration.collapsed.html
 [`InputDecoration.floatingLabelAlignment`]: {{site.api}}/flutter/material/InputDecoration/floatingLabelAlignment.html
 [`InputDecoration.floatingLabelBehavior`]: {{site.api}}/flutter/material/InputDecoration/floatingLabelBehavior.html
 
-[Add prefixIcon and suffixIcon parameters to InputDecoration.collapsed]: {{site.repo.flutter}}/issues/61331
-[Deprecate invalid InputDecoration.collapsed parameters]: {{site.repo.flutter}}/pull/152486
-[Cleanup InputDecoration.collapsed constructor]: {{site.repo.flutter}}/pull/152165
+[Adicionar parâmetros prefixIcon e suffixIcon a InputDecoration.collapsed]: {{site.repo.flutter}}/issues/61331
+[Depreciar parâmetros inválidos de InputDecoration.collapsed]: {{site.repo.flutter}}/pull/152486
+[Limpeza do construtor InputDecoration.collapsed]: {{site.repo.flutter}}/pull/152165

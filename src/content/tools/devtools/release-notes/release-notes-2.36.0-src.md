@@ -1,51 +1,63 @@
-# DevTools 2.36.0 release notes
+# Notas de lançamento do DevTools 2.36.0
 
-The 2.36.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](/tools/devtools).
+O lançamento 2.36.0 do Dart e Flutter DevTools inclui as seguintes
+mudanças, entre outras melhorias gerais. Para saber mais sobre o
+DevTools, confira a [visão geral do DevTools](/tools/devtools).
 
-## Performance updates
+## Atualizações de desempenho
 
-* Added a feature for showing widget build counts.
-  Enable this setting to see widget build counts for
-  each Flutter frame in the "Frame Analysis" tool, or to see
-  an aggregate summary of these counts in the new "Rebuild Stats" tool. -
-  [#7838](https://github.com/flutter/devtools/pull/7838), [#7847](https://github.com/flutter/devtools/pull/7847)
+* Adicionada uma funcionalidade para mostrar a contagem de builds de
+  widgets. Habilite esta configuração para ver a contagem de builds de
+  widgets para cada frame do Flutter na ferramenta "Análise de Frame",
+  ou para ver um resumo agregado destas contagens na nova ferramenta
+  "Estatísticas de Reconstrução". -
+  [#7838](https://github.com/flutter/devtools/pull/7838),
+  [#7847](https://github.com/flutter/devtools/pull/7847)
 
-    ![Track widget build counts setting](/tools/devtools/release-notes/images-2.36.0/track_build_counts_setting.png "Track widget build counts setting")
+    ![Configuração de rastreamento de contagem de builds de widgets]
+    (/tools/devtools/release-notes/images-2.36.0/track_build_counts_setting.png
+     "Configuração de rastreamento de contagem de builds de widgets")
 
-    ![Widget rebuild counts in the Frame Analysis view](/tools/devtools/release-notes/images-2.36.0/rebuild_counts_frame_analysis.png "Widget rebuilds counts for a flutter frame")
+    ![Contagem de reconstruções de widgets na visualização de Análise de
+    Frame]
+    (/tools/devtools/release-notes/images-2.36.0/rebuild_counts_frame_analysis.png
+     "Contagens de reconstruções de widgets para um frame do flutter")
 
-    ![Widget rebuild counts in the Rebuild Stats view](/tools/devtools/release-notes/images-2.36.0/rebuild_stats.png "Widget rebuilds counts aggregate stats")
+    ![Contagem de reconstruções de widgets na visualização de Estatísticas
+    de Reconstrução]
+    (/tools/devtools/release-notes/images-2.36.0/rebuild_stats.png
+     "Estatísticas agregadas de contagens de reconstruções de widgets")
 
-## Network profiler updates
+## Atualizações do Network Profiler
 
-* Added better support for narrow viewing windows, like when
-  this screen is embedded in an IDE. - [#7726](https://github.com/flutter/devtools/pull/7726)
+* Adicionado melhor suporte para janelas de visualização estreitas,
+  como quando esta tela é incorporada em um IDE. -
+  [#7726](https://github.com/flutter/devtools/pull/7726)
 
-## Deep links tool updates
+## Atualizações da ferramenta Deep Links
 
-* Adds an error page to explain the issue when
-  the tool fails to parse the project. - [#7767](https://github.com/flutter/devtools/pull/7767)
+* Adicionada uma página de erro para explicar o problema quando a
+  ferramenta não consegue analisar o projeto. -
+  [#7767](https://github.com/flutter/devtools/pull/7767)
 
-## DevTools Extension updates
+## Atualizações da Extensão do DevTools
 
-* Fixed an issue with detecting extensions for
-  Dart or Flutter tests. - [#7717](https://github.com/flutter/devtools/pull/7717)
-* Fixed an issue with detecting extensions for
-  nested Dart or Flutter projects. - [#7742](https://github.com/flutter/devtools/pull/7742)
-* Added an example to `package:devtools_extensions` that shows
-  how to interact with the Dart Tooling Daemon from
-  a DevTools extension. - [#7752](https://github.com/flutter/devtools/pull/7752)
-* Fixed a DevTools routing bug related to
-  disabling an extension. - [#7791](https://github.com/flutter/devtools/pull/7791)
-* Fixed a bug causing a "Page Not Found" error when
-  refreshing DevTools from an extension screen. - [#7822](https://github.com/flutter/devtools/pull/7822)
-* Fixed a theming issue when extensions are
-  embedded in an IDE - [#7824](https://github.com/flutter/devtools/pull/7824)
+* Corrigido um problema na detecção de extensões para testes Dart ou
+  Flutter. - [#7717](https://github.com/flutter/devtools/pull/7717)
+* Corrigido um problema na detecção de extensões para projetos Dart ou
+  Flutter aninhados. - [#7742](https://github.com/flutter/devtools/pull/7742)
+* Adicionado um exemplo ao `package:devtools_extensions` que mostra
+  como interagir com o Dart Tooling Daemon a partir de uma extensão do
+  DevTools. - [#7752](https://github.com/flutter/devtools/pull/7752)
+* Corrigido um bug de roteamento do DevTools relacionado a desabilitar
+  uma extensão. - [#7791](https://github.com/flutter/devtools/pull/7791)
+* Corrigido um bug que causava um erro "Página Não Encontrada" ao
+  atualizar o DevTools a partir de uma tela de extensão. -
+  [#7822](https://github.com/flutter/devtools/pull/7822)
+* Corrigido um problema de tema quando as extensões são incorporadas
+  em um IDE - [#7824](https://github.com/flutter/devtools/pull/7824)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes in this release, check out the
-[DevTools git log](https://github.com/flutter/devtools/tree/v2.36.0).
+Para encontrar uma lista completa de alterações nesta versão, confira o
+[log do git do DevTools](https://github.com/flutter/devtools/tree/v2.36.0).

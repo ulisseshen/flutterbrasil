@@ -1,92 +1,61 @@
 ---
-title: Measuring your app's size
-description: How to measure app size for iOS and Android.
+ia-translate: true
+title: Medindo o tamanho do seu aplicativo
+description: Como medir o tamanho do aplicativo para iOS e Android.
 ---
 
-Many developers are concerned with the size of their compiled app.
-As the APK, app bundle, or IPA version of a Flutter app is
-self-contained and holds all the code and assets needed to run the app,
-its size can be a concern. The larger an app,
-the more space it requires on a device,
-the longer it takes to download,
-and it might break the limit of useful
-features like Android instant apps.
+Muitos desenvolvedores se preocupam com o tamanho do aplicativo compilado. Como o APK, o app bundle ou a versão IPA de um aplicativo Flutter é autocontido e contém todo o código e ativos necessários para executar o aplicativo, seu tamanho pode ser uma preocupação. Quanto maior um aplicativo, mais espaço ele requer em um dispositivo, mais tempo leva para ser baixado e pode quebrar o limite de recursos úteis, como aplicativos instantâneos do Android.
 
-## Debug builds are not representative
+## Builds de debug não são representativos
 
-By default, launching your app with `flutter run`,
-or by clicking the **Play** button in your IDE
-(as used in [Test drive][] and
-[Write your first Flutter app][]),
-generates a _debug_ build of the Flutter app.
-The app size of a debug build is large due to
-the debugging overhead that allows for hot reload
-and source-level debugging. As such, it is not representative of a production
-app end users download.
+Por padrão, iniciar seu aplicativo com `flutter run` ou clicando no botão **Play** no seu IDE (como usado em [Test drive][] e [Escreva seu primeiro aplicativo Flutter][]), gera um build de _debug_ do aplicativo Flutter. O tamanho do aplicativo de um build de debug é grande devido à sobrecarga de depuração que permite hot reload e depuração em nível de código-fonte. Sendo assim, não é representativo de um aplicativo de produção que os usuários finais baixam.
 
-## Checking the total size
+## Verificando o tamanho total
 
-A default release build, such as one created by `flutter build apk` or
-`flutter build ios`, is built to conveniently assemble your upload package
-to the Play Store and App Store. As such, they're also not representative of
-your end-users' download size. The stores generally reprocess and split
-your upload package to target the specific downloader and the downloader's
-hardware, such as filtering for assets targeting the phone's DPI, filtering
-native libraries targeting the phone's CPU architecture.
+Um build de release padrão, como um criado por `flutter build apk` ou `flutter build ios`, é construído para montar convenientemente seu pacote de upload para a Play Store e a App Store. Sendo assim, eles também não são representativos do tamanho de download de seus usuários finais. As lojas geralmente reprocessam e dividem seu pacote de upload para direcionar o downloader específico e o hardware do downloader, como filtrar ativos direcionados ao DPI do telefone, filtrar bibliotecas nativas direcionadas à arquitetura da CPU do telefone.
 
-### Estimating total size
+### Estimando o tamanho total
 
-To get the closest approximate size on each platform, use the following
-instructions.
+Para obter o tamanho aproximado mais próximo em cada plataforma, use as seguintes instruções.
 
 #### Android
 
-Follow the Google [Play Console's instructions][] for checking app download and
-install sizes.
+Siga as [instruções do Google Play Console][] para verificar o tamanho de download e instalação do aplicativo.
 
-Produce an upload package for your application:
+Produza um pacote de upload para sua aplicação:
 
 ```console
 flutter build appbundle
 ```
 
-Log into your [Google Play Console][]. Upload your application binary by drag
-dropping the .aab file.
+Faça login no seu [Google Play Console][]. Faça o upload do binário do seu aplicativo arrastando e soltando o arquivo .aab.
 
-View the application's download and install size in the **Android vitals** ->
-**App size** tab.
+Visualize o tamanho de download e instalação do aplicativo na aba **Android vitals** -> **Tamanho do aplicativo**.
 
-{% render docs/app-figure.md, image:"perf/vital-size.png", alt:"App size tab in Google Play Console" %}
+{% render docs/app-figure.md, image:"perf/vital-size.png", alt:"Aba de tamanho do aplicativo no Google Play Console" %}
 
-The download size is calculated based on an XXXHDPI (~640dpi) device on an
-arm64-v8a architecture. Your end users' download sizes might vary depending on
-their hardware.
+O tamanho do download é calculado com base em um dispositivo XXXHDPI (~640dpi) em uma arquitetura arm64-v8a. Os tamanhos de download de seus usuários finais podem variar dependendo do hardware deles.
 
-The top tab has a toggle for download size and install size. The page also
-contains optimization tips further below.
+A aba superior tem um alternador para o tamanho do download e o tamanho da instalação. A página também contém dicas de otimização mais abaixo.
 
 #### iOS
 
-Create an [Xcode App Size Report][].
+Crie um [Relatório de Tamanho do Aplicativo Xcode][].
 
-First, by configuring the app version and build as described in the
-[iOS create build archive instructions][].
+Primeiro, configurando a versão e o build do aplicativo conforme descrito nas [instruções de criação do arquivo de build do iOS][].
 
-Then:
+Então:
 
-1. Run `flutter build ipa --export-method development`.
-1. Run `open build/ios/archive/*.xcarchive` to open the archive in Xcode.
-1. Click **Distribute App**.
-1. Select a method of distribution. **Development** is the simplest if you don't
-   intend to distribute the application.
-1. In **App Thinning**, select 'all compatible device variants'.
-1. Select **Strip Swift symbols**.
+1. Execute `flutter build ipa --export-method development`.
+2. Execute `open build/ios/archive/*.xcarchive` para abrir o arquivo no Xcode.
+3. Clique em **Distribute App**.
+4. Selecione um método de distribuição. **Development** é o mais simples se você não pretende distribuir o aplicativo.
+5. Em **App Thinning**, selecione 'all compatible device variants'.
+6. Selecione **Strip Swift symbols**.
 
-Sign and export the IPA. The exported directory contains
-`App Thinning Size Report.txt` with details about your projected
-application size on different devices and versions of iOS.
+Assine e exporte o IPA. O diretório exportado contém `App Thinning Size Report.txt` com detalhes sobre o tamanho projetado do seu aplicativo em diferentes dispositivos e versões do iOS.
 
-The App Size Report for the default demo app in Flutter 1.17 shows:
+O Relatório de Tamanho do Aplicativo para o aplicativo de demonstração padrão no Flutter 1.17 mostra:
 
 ```plaintext
 Variant: Runner-7433FC8E-1DF4-4299-A7E8-E00768671BEB.ipa
@@ -96,35 +65,19 @@ App size: 5.4 MB compressed, 13.7 MB uncompressed
 On Demand Resources size: Zero KB compressed, Zero KB uncompressed
 ```
 
-In this example, the app has an approximate
-download size of 5.4 MB and an approximate
-installation size of 13.7 MB on an iPhone12,1 ([Model ID / Hardware
-number][] for iPhone 11)
-and iPhone11,8 (iPhone XR) running iOS 13.0.
+Neste exemplo, o aplicativo tem um tamanho de download aproximado de 5,4 MB e um tamanho de instalação aproximado de 13,7 MB em um iPhone12,1 ([ID do modelo / número de hardware][] para iPhone 11) e iPhone11,8 (iPhone XR) executando iOS 13.0.
 
-To measure an iOS app exactly,
-you have to upload a release IPA to Apple's
-App Store Connect ([instructions][])
-and obtain the size report from there.
-IPAs are commonly larger than APKs as explained
-in [How big is the Flutter engine?][], a
-section in the Flutter [FAQ][].
+Para medir um aplicativo iOS exatamente, você deve enviar um IPA de release para o App Store Connect da Apple ([instruções][]) e obter o relatório de tamanho de lá. Os IPAs são normalmente maiores do que os APKs, conforme explicado em [Quão grande é o engine Flutter?][], uma seção nas [FAQ][] do Flutter.
 
-## Breaking down the size
+## Dividindo o tamanho
 
-Starting in Flutter version 1.22 and DevTools version 0.9.1,
-a size analysis tool is included to help developers understand the breakdown
-of the release build of their application.
+A partir da versão 1.22 do Flutter e da versão 0.9.1 do DevTools, uma ferramenta de análise de tamanho está incluída para ajudar os desenvolvedores a entender a divisão do build de release de seu aplicativo.
 
 :::warning
-As stated in the [checking total size](#checking-the-total-size) section
-above, an upload package is not representative of your end users' download
-size. Be aware that redundant native library architectures and asset densities
-seen in the breakdown tool can be filtered by the Play Store and App Store.
+Como afirmado na seção [verificando o tamanho total](#verificando-o-tamanho-total) acima, um pacote de upload não é representativo do tamanho de download de seus usuários finais. Esteja ciente de que as arquiteturas de bibliotecas nativas redundantes e as densidades de ativos vistas na ferramenta de detalhamento podem ser filtradas pela Play Store e pela App Store.
 :::
 
-The size analysis tool is invoked by passing the `--analyze-size` flag when
-building:
+A ferramenta de análise de tamanho é invocada passando a flag `--analyze-size` ao construir:
 
 - `flutter build apk --analyze-size`
 - `flutter build appbundle --analyze-size`
@@ -133,69 +86,50 @@ building:
 - `flutter build macos --analyze-size`
 - `flutter build windows --analyze-size`
 
-This build is different from a standard release build in two ways.
+Este build é diferente de um build de release padrão de duas maneiras.
 
-1. The tool compiles Dart in a way that records code size usage of Dart
-   packages.
-2. The tool displays a high level summary of the size breakdown
-   in the terminal, and leaves a `*-code-size-analysis_*.json` file for more
-   detailed analysis in DevTools.
+1. A ferramenta compila o Dart de uma forma que registra o uso do tamanho do código de pacotes Dart.
+2. A ferramenta exibe um resumo de alto nível da divisão do tamanho no terminal e deixa um arquivo `*-code-size-analysis_*.json` para uma análise mais detalhada no DevTools.
 
-In addition to analyzing a single build, two builds can also be diffed by
-loading two `*-code-size-analysis_*.json` files into DevTools.
-Check out the [DevTools documentation][] for details.
+Além de analisar um único build, dois builds também podem ser comparados carregando dois arquivos `*-code-size-analysis_*.json` no DevTools. Confira a [documentação do DevTools][] para mais detalhes.
 
-{% render docs/app-figure.md, image:"perf/size-summary.png", alt:"Size summary of an Android application in terminal" %}
+{% render docs/app-figure.md, image:"perf/size-summary.png", alt:"Resumo do tamanho de um aplicativo Android no terminal" %}
 
-Through the summary, you can get a quick idea of the size usage per category
-(such as asset, native code, Flutter libraries, etc). The compiled Dart
-native library is further broken down by package for quick analysis.
+Através do resumo, você pode ter uma ideia rápida do uso do tamanho por categoria (como ativo, código nativo, bibliotecas Flutter, etc.). A biblioteca nativa Dart compilada é ainda dividida por pacote para uma análise rápida.
 
 :::warning
-This tool on iOS creates a .app rather than an IPA. Use this tool to
-evaluate the relative size of the .app's content. To get
-a closer estimate of the download size, reference the
-[Estimating total size](#estimating-total-size) section above.
+Esta ferramenta no iOS cria um .app em vez de um IPA. Use esta ferramenta para avaliar o tamanho relativo do conteúdo do .app. Para obter uma estimativa mais precisa do tamanho do download, consulte a seção [Estimando o tamanho total](#estimando-o-tamanho-total) acima.
 :::
 
-### Deeper analysis in DevTools
+### Análise mais profunda no DevTools
 
-The `*-code-size-analysis_*.json` file produced above can be further
-analyzed in deeper detail in DevTools where a tree or a treemap view can
-break down the contents of the application into the individual file level and
-up to function level for the Dart AOT artifact.
+O arquivo `*-code-size-analysis_*.json` produzido acima pode ser analisado mais detalhadamente no DevTools, onde uma visualização em árvore ou mapa de árvore pode detalhar o conteúdo do aplicativo até o nível de arquivo individual e até o nível de função para o artefato Dart AOT.
 
-This can be done by `dart devtools`, selecting
-`Open app size tool` and uploading the JSON file.
+Isso pode ser feito por `dart devtools`, selecionando `Open app size tool` e enviando o arquivo JSON.
 
-{% render docs/app-figure.md, image:"perf/devtools-size.png", alt:"Example breakdown of app in DevTools" %}
+{% render docs/app-figure.md, image:"perf/devtools-size.png", alt:"Exemplo de divisão do aplicativo no DevTools" %}
 
-For further information on using the DevTools app size tool,
-check out the [DevTools documentation][].
+Para obter mais informações sobre como usar a ferramenta de tamanho de aplicativo do DevTools, consulte a [documentação do DevTools][].
 
-## Reducing app size
+## Reduzindo o tamanho do aplicativo
 
-When building a release version of your app,
-consider using the `--split-debug-info` tag.
-This tag can dramatically reduce code size.
-For an example of using this tag, see
-[Obfuscating Dart code][].
+Ao construir uma versão de release do seu aplicativo, considere usar a tag `--split-debug-info`. Essa tag pode reduzir drasticamente o tamanho do código. Para um exemplo de uso desta tag, veja [Ofuscando código Dart][].
 
-Some other things you can do to make your app smaller are:
+Outras coisas que você pode fazer para tornar seu aplicativo menor são:
 
-* Remove unused resources
-* Minimize resource imported from libraries
-* Compress PNG and JPEG files
+* Remover recursos não utilizados
+* Minimizar recursos importados de bibliotecas
+* Compactar arquivos PNG e JPEG
 
 [FAQ]: /resources/faq
-[How big is the Flutter engine?]: /resources/faq#how-big-is-the-flutter-engine
-[instructions]: /deployment/ios
-[Xcode App Size Report]: {{site.apple-dev}}/documentation/xcode/reducing_your_app_s_size#3458589
-[iOS create build archive instructions]: /deployment/ios#update-the-apps-build-and-version-numbers
-[Model ID / Hardware number]: https://en.wikipedia.org/wiki/List_of_iOS_devices#Models
-[Obfuscating Dart code]: /deployment/obfuscate
+[Quão grande é o engine Flutter?]: /resources/faq#how-big-is-the-flutter-engine
+[instruções]: /deployment/ios
+[Relatório de Tamanho do Aplicativo Xcode]: {{site.apple-dev}}/documentation/xcode/reducing_your_app_s_size#3458589
+[instruções de criação do arquivo de build do iOS]: /deployment/ios#update-the-apps-build-and-version-numbers
+[ID do modelo / número de hardware]: https://en.wikipedia.org/wiki/List_of_iOS_devices#Models
+[Ofuscando código Dart]: /deployment/obfuscate
 [Test drive]: /get-started/test-drive
-[Write your first Flutter app]: /get-started/codelab
-[Play Console's instructions]: https://support.google.com/googleplay/android-developer/answer/9302563?hl=en
+[Escreva seu primeiro aplicativo Flutter]: /get-started/codelab
+[instruções do Google Play Console]: https://support.google.com/googleplay/android-developer/answer/9302563?hl=en
 [Google Play Console]: https://play.google.com/apps/publish/
-[DevTools documentation]: /tools/devtools/app-size
+[documentação do DevTools]: /tools/devtools/app-size

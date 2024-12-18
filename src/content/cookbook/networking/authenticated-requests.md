@@ -1,36 +1,37 @@
 ---
-title: Make authenticated requests
-description: How to fetch authorized data from a web service.
+ia-translate: true
+title: Fazer requisições autenticadas
+description: Como buscar dados autorizados de um serviço web.
 ---
 
 <?code-excerpt path-base="cookbook/networking/authenticated_requests/"?>
 
-To fetch data from most web services, you need to provide
-authorization. There are many ways to do this,
-but perhaps the most common uses the `Authorization` HTTP header.
+Para buscar dados da maioria dos serviços web, você precisa fornecer
+autorização. Existem muitas maneiras de fazer isso,
+mas talvez a mais comum use o cabeçalho HTTP `Authorization`.
 
-## Add authorization headers
+## Adicionar cabeçalhos de autorização
 
-The [`http`][] package provides a
-convenient way to add headers to your requests.
-Alternatively, use the [`HttpHeaders`][]
-class from the `dart:io` library.
+O pacote [`http`][] fornece uma
+maneira conveniente de adicionar cabeçalhos às suas requisições.
+Alternativamente, use a classe [`HttpHeaders`][]
+da biblioteca `dart:io`.
 
 <?code-excerpt "lib/main.dart (get)"?>
 ```dart
 final response = await http.get(
   Uri.parse('https://jsonplaceholder.typicode.com/albums/1'),
-  // Send authorization headers to the backend.
+  // Envia cabeçalhos de autorização para o backend.
   headers: {
     HttpHeaders.authorizationHeader: 'Basic your_api_token_here',
   },
 );
 ```
 
-## Complete example
+## Exemplo completo
 
-This example builds upon the
-[Fetching data from the internet][] recipe.
+Este exemplo é construído sobre a receita
+[Buscando dados da internet][].
 
 <?code-excerpt "lib/main.dart"?>
 ```dart
@@ -43,7 +44,7 @@ import 'package:http/http.dart' as http;
 Future<Album> fetchAlbum() async {
   final response = await http.get(
     Uri.parse('https://jsonplaceholder.typicode.com/albums/1'),
-    // Send authorization headers to the backend.
+    // Envia cabeçalhos de autorização para o backend.
     headers: {
       HttpHeaders.authorizationHeader: 'Basic your_api_token_here',
     },
@@ -76,13 +77,12 @@ class Album {
           id: id,
           title: title,
         ),
-      _ => throw const FormatException('Failed to load album.'),
+      _ => throw const FormatException('Falha ao carregar o álbum.'),
     };
   }
 }
 ```
 
-
-[Fetching data from the internet]: /cookbook/networking/fetch-data
+[Buscando dados da internet]: /cookbook/networking/fetch-data
 [`http`]: {{site.pub-pkg}}/http
 [`HttpHeaders`]: {{site.dart.api}}/dart-io/HttpHeaders-class.html

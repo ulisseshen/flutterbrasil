@@ -1,45 +1,42 @@
-# DevTools 2.24.0 release notes
+# Notas de lançamento do DevTools 2.24.0
 
-The 2.24.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutter.dev/tools/devtools).
+A versão 2.24.0 do Dart e Flutter DevTools inclui as seguintes
+alterações, entre outras melhorias gerais. Para saber mais sobre
+o DevTools, confira a [visão geral do DevTools](https://docs.flutter.dev/tools/devtools).
 
-## General updates
+## Atualizações gerais
 
-* Improve the overall performance of DevTools tables -
+* Melhora o desempenho geral das tabelas do DevTools -
   [#5664](https://github.com/flutter/devtools/pull/5664),
   [#5696](https://github.com/flutter/devtools/pull/5696)
 
-## CPU profiler updates
+## Atualizações do profiler de CPU
 
-* Fix bug with CPU flame chart selection and tooltips -
+* Corrige bug com a seleção do flame chart da CPU e dicas de ferramenta -
   [#5676](https://github.com/flutter/devtools/pull/5676)
 
-## Debugger updates
+## Atualizações do depurador
 
-* Improve support for inspecting
-  `UserTag` and `MirrorReferent` instances -
+* Melhora o suporte para inspecionar instâncias `UserTag` e
+  `MirrorReferent` -
   [#5490](https://github.com/flutter/devtools/pull/5490)
-* Fix expression evaluation bug where
-  selecting an autocomplete result for a field would clear the current input -
+* Corrige bug de avaliação de expressão onde selecionar um resultado de
+  preenchimento automático para um campo apagaria a entrada atual -
   [#5717](https://github.com/flutter/devtools/pull/5717)
-* Make selection of a stack frame 
-  scroll to the frame location in the source code -
+* Faz a seleção de um stack frame rolar para o local do frame no código-fonte -
   [#5722](https://github.com/flutter/devtools/pull/5722)
-* Improve performance of searching for a file and searching in a file -
+* Melhora o desempenho da pesquisa por um arquivo e da pesquisa em um arquivo -
   [#5733](https://github.com/flutter/devtools/pull/5733)
-* Disable syntax highlighting for files with more than 100,000 characters
-  due to performance constraints -
+* Desabilita o realce de sintaxe para arquivos com mais de 100.000
+  caracteres devido a restrições de desempenho -
   [#5743](https://github.com/flutter/devtools/pull/5743)
-* Fix bug where source code wasn't visible if
-  syntax highlighting for a file was disabled -
+* Corrige bug onde o código-fonte não estava visível se o realce de
+  sintaxe para um arquivo estivesse desabilitado -
   [#5743](https://github.com/flutter/devtools/pull/5743)
-* Prevent file names and source code from getting out of sync -
+* Impede que os nomes de arquivos e o código-fonte fiquem dessincronizados -
   [#5827](https://github.com/flutter/devtools/pull/5827)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes since the previous release,
-check out
-[the diff on GitHub](https://github.com/flutter/devtools/compare/v2.23.1...v2.24.0).
+Para encontrar uma lista completa de alterações desde a versão
+anterior, confira [o diff no GitHub](https://github.com/flutter/devtools/compare/v2.23.1...v2.24.0).

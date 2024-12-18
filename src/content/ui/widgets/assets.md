@@ -1,7 +1,8 @@
 ---
-title: Assets, images, and icon widgets
+ia-translate: true
+title: Assets, imagens e widgets de ícones
 short-title: Assets
-description: A catalog of Flutter's asset widgets.
+description: Um catálogo de widgets de assets do Flutter.
 ---
 
-{% render docs/catalog-page.md, categoryName:"Assets, images, and icons", catalog:catalog %}
+{% render docs/catalog-page.md, categoryName:"Assets, imagens e ícones", catalog:catalog %}

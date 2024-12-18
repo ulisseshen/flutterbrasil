@@ -1,48 +1,49 @@
 ---
-title: State management
-description: Learn how to manage state in Flutter.
+ia-translate: true
+title: Gerenciamento de estado
+description: Aprenda como gerenciar o estado no Flutter.
 prev:
   title: Layout
   path: /get-started/fundamentals/layout
 next:
-  title: Handling user input
+  title: Lidando com entrada do usuário
   path: /get-started/fundamentals/user-input
 ---
 
-The _state_ of a Flutter app refers to all the objects it uses
-to display its UI or manage system resources.
-State management is how we organize our app
-to most effectively access these objects
-and share them between different widgets.
+O _estado_ de um aplicativo Flutter refere-se a todos os objetos que ele usa
+para exibir sua interface do usuário ou gerenciar recursos do sistema.
+O gerenciamento de estado é como organizamos nosso aplicativo
+para acessar esses objetos da forma mais eficaz
+e compartilhá-los entre diferentes widgets.
 
-This page explores many aspects of state management, including:
+Esta página explora muitos aspectos do gerenciamento de estado, incluindo:
 
-* Using a [`StatefulWidget`][]
-* Sharing state between widgets using constructors,
-  [`InheritedWidget`][]s, and callbacks
-* Using [`Listenable`][]s to notify other widgets
-  when something changes
-* Using Model-View-ViewModel (MVVM)
-  for your application's architecture
+* Usando um [`StatefulWidget`][]
+* Compartilhando o estado entre widgets usando construtores,
+  [`InheritedWidget`][]s e callbacks
+* Usando [`Listenable`][]s para notificar outros widgets
+  quando algo muda
+* Usando Model-View-ViewModel (MVVM)
+  para a arquitetura do seu aplicativo
 
-For other introductions to state management, check out these resources:
+Para outras introduções ao gerenciamento de estado, consulte estes recursos:
 
-* Video: [Managing state in Flutter][managing-state-video].
-  This video shows how to use the [riverpod][] package.
+* Vídeo: [Gerenciando o estado no Flutter][managing-state-video].
+  Este vídeo mostra como usar o pacote [riverpod][].
 
 <i class="material-symbols" aria-hidden="true">flutter_dash</i> Tutorial:
-[State management][].
-This shows how to use `ChangeNotifer` with the [provider][] package.
+[Gerenciamento de estado][].
+Isso mostra como usar `ChangeNotifier` com o pacote [provider][].
 
-This guide doesn't use third-party packages
-like provider or Riverpod. Instead,
-it only uses primitives available in the Flutter framework.
+Este guia não usa pacotes de terceiros
+como o provider ou o Riverpod. Em vez disso,
+ele usa apenas primitivos disponíveis no framework Flutter.
 
-## Using a StatefulWidget
+## Usando um StatefulWidget
 
-The simplest way to manage state is to use a `StatefulWidget`,
-which stores state within itself.
-For example, consider the following widget:
+A maneira mais simples de gerenciar o estado é usar um `StatefulWidget`,
+que armazena o estado dentro de si mesmo.
+Por exemplo, considere o seguinte widget:
 
 ```dart
 class MyCounter extends StatefulWidget {
@@ -59,14 +60,14 @@ class _MyCounterState extends State<MyCounter> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text('Count: $count'),
+        Text('Contagem: $count'),
         TextButton(
           onPressed: () {
             setState(() {
               count++;
             });
           },
-          child: Text('Increment'),
+          child: Text('Incrementar'),
         )
       ],
     );
@@ -74,51 +75,51 @@ class _MyCounterState extends State<MyCounter> {
 }
 ```
 
-This code illustrates two important concepts
-when thinking about state management:
+Este código ilustra dois conceitos importantes
+ao pensar sobre o gerenciamento de estado:
 
-* **Encapsulation**
-: The widget that uses `MyCounter` has no visibility into
-  the underlying `count` variable
-  and no means to access or change it.
-* **Object lifecycle**
-: The `_MyCounterState` object and its `count` variable
-  are created the first time that `MyCounter` is built,
-  and exist until it's removed from the screen.
-  This is an example of _ephemeral state_.
+* **Encapsulamento**
+: O widget que usa `MyCounter` não tem visibilidade sobre
+  a variável `count` subjacente
+  e não tem meios de acessá-la ou alterá-la.
+* **Ciclo de vida do objeto**
+: O objeto `_MyCounterState` e sua variável `count`
+  são criados na primeira vez em que `MyCounter` é construído,
+  e existem até que seja removido da tela.
+  Este é um exemplo de _estado efêmero_.
 
-You might find the following resources to be useful:
+Você pode achar os seguintes recursos úteis:
 
-* Article: [Ephemeral state and app state][ephemeral-state]
-* API docs: [StatefulWidget][]
+* Artigo: [Estado efêmero e estado do aplicativo][ephemeral-state]
+* Documentação da API: [StatefulWidget][]
 
-## Sharing state between widgets
+## Compartilhando o estado entre widgets
 
-Some scenarios where an app needs to store state
-include the following:
+Alguns cenários em que um aplicativo precisa armazenar o estado
+incluem o seguinte:
 
-* To **update** the shared state and notify other parts of the app
-* To **listen** for changes to the shared state
-  and rebuild the UI when it changes
+* Para **atualizar** o estado compartilhado e notificar outras partes do aplicativo
+* Para **escutar** as mudanças no estado compartilhado
+  e reconstruir a interface do usuário quando ela muda
 
-This section explores how you can effectively share state
-between different widgets in your app.
-The most common patterns are:
+Esta seção explora como você pode compartilhar o estado de forma eficaz
+entre diferentes widgets em seu aplicativo.
+Os padrões mais comuns são:
 
-* **Using widget constructors**
-  (sometimes called "prop drilling" in other frameworks)
-* **Using `InheritedWidget`** (or a similar API,
-  such as the [provider][] package).
-* **Using callbacks** to notify a parent widget
-  that something has changed
+* **Usando construtores de widget**
+  (às vezes chamado de "prop drilling" em outros frameworks)
+* **Usando `InheritedWidget`** (ou uma API similar,
+  como o pacote [provider][]).
+* **Usando callbacks** para notificar um widget pai
+  que algo mudou
 
-### Using widget constructors
+### Usando construtores de widget
 
-Since Dart objects are passed by reference,
-it's very common for widgets to define the
-objects they need to use in their constructor.
-Any state you pass into a widget's constructor
-can be used to build its UI:
+Como os objetos Dart são passados por referência,
+é muito comum que os widgets definam os
+objetos que precisam usar em seu construtor.
+Qualquer estado que você passe para o construtor de um widget
+pode ser usado para construir sua interface do usuário:
 
 ```dart
 class MyCounter extends StatelessWidget {
@@ -132,8 +133,8 @@ class MyCounter extends StatelessWidget {
 }
 ```
 
-This makes it obvious for other users of your widget to know
-what they need to provide in order to use it:
+Isso torna óbvio para outros usuários do seu widget saber
+o que eles precisam fornecer para usá-lo:
 
 ```dart
 Column(
@@ -145,7 +146,7 @@ Column(
       count: count,
     ),
     TextButton(
-      child: Text('Increment'),
+      child: Text('Incrementar'),
       onPressed: () {
         setState(() {
           count++;
@@ -156,27 +157,27 @@ Column(
 )
 ```
 
-Passing the shared data for your app through widget constructors
-makes it clear to anyone reading the code that there are shared dependencies.
-This is a common design pattern called _dependency injection_
-and many frameworks take advantage of it or provide tools to make it easier.
+Passar os dados compartilhados para seu aplicativo por meio de construtores de widget
+deixa claro para qualquer pessoa que leia o código que existem dependências compartilhadas.
+Este é um design pattern comum chamado _injeção de dependência_
+e muitos frameworks tiram proveito dele ou fornecem ferramentas para torná-lo mais fácil.
 
-### Using InheritedWidget
+### Usando InheritedWidget
 
-Manually passing data down the widget tree can be verbose
-and cause unwanted boilerplate code,
-so Flutter provides _`InheritedWidget`_,
-which provides a way to efficiently host data in a parent widget
-so that child widgets can get access them without storing them as a field.
+Passar dados manualmente pela árvore de widgets pode ser verboso
+e causar código boilerplate indesejado,
+então o Flutter fornece _`InheritedWidget`_,
+que oferece uma maneira de hospedar dados com eficiência em um widget pai
+para que os widgets filhos possam acessá-los sem armazená-los como um campo.
 
-To use `InheritedWidget`, extend the `InheritedWidget` class
-and implement the static method `of()`
-using `dependOnInheritedWidgetOfExactType`.
-A widget calling `of()` in a build method
-creates a dependency that is managed by the Flutter framework,
-so that any widgets that depend on this `InheritedWidget` rebuild
-when this widget re-builds with new data
-and `updateShouldNotify` returns true.
+Para usar `InheritedWidget`, estenda a classe `InheritedWidget`
+e implemente o método estático `of()`
+usando `dependOnInheritedWidgetOfExactType`.
+Um widget chamando `of()` em um método build
+cria uma dependência que é gerenciada pelo framework Flutter,
+para que todos os widgets que dependem deste `InheritedWidget` sejam reconstruídos
+quando este widget é reconstruído com novos dados
+e `updateShouldNotify` retorna true.
 
 ```dart
 class MyState extends InheritedWidget {
@@ -189,25 +190,25 @@ class MyState extends InheritedWidget {
   final String data;
 
   static MyState of(BuildContext context) {
-    // This method looks for the nearest `MyState` widget ancestor.
+    // Este método procura o widget ancestral `MyState` mais próximo.
     final result = context.dependOnInheritedWidgetOfExactType<MyState>();
 
-    assert(result != null, 'No MyState found in context');
+    assert(result != null, 'Nenhum MyState encontrado no contexto');
 
     return result!;
   }
 
   @override
-  // This method should return true if the old widget's data is different
-  // from this widget's data. If true, any widgets that depend on this widget
-  // by calling `of()` will be re-built.
+  // Este método deve retornar true se os dados do widget antigo forem diferentes
+  // dos dados deste widget. Se true, todos os widgets que dependem deste widget
+  // chamando `of()` serão reconstruídos.
   bool updateShouldNotify(MyState oldWidget) => data != oldWidget.data;
 }
 ```
 
-Next, call the `of()` method
-from the `build()`method of the widget
-that needs access to the shared state:
+Em seguida, chame o método `of()`
+do método `build()` do widget
+que precisa de acesso ao estado compartilhado:
 
 ```dart
 class HomeScreen extends StatelessWidget {
@@ -225,20 +226,19 @@ class HomeScreen extends StatelessWidget {
 }
 ```
 
+### Usando callbacks
 
-### Using callbacks
-
-You can notify other widgets when a value changes by exposing a callback.
-Flutter provides the `ValueChanged` type,
-which declares a function callback with a single parameter:
+Você pode notificar outros widgets quando um valor muda expondo um callback.
+O Flutter fornece o tipo `ValueChanged`,
+que declara um callback de função com um único parâmetro:
 
 ```dart
 typedef ValueChanged<T> = void Function(T value);
 ```
 
-By exposing `onChanged` in your widget's constructor,
-you provide a way for any widget that is using this widget
-to respond when your widget calls `onChanged`.
+Ao expor `onChanged` no construtor do seu widget,
+você fornece uma maneira para qualquer widget que esteja usando este widget
+responder quando seu widget chama `onChanged`.
 
 ```dart
 class MyCounter extends StatefulWidget {
@@ -251,8 +251,8 @@ class MyCounter extends StatefulWidget {
 }
 ```
 
-For example, this widget might handle the `onPressed` callback,
-and call `onChanged` with its latest internal state for the `count` variable:
+Por exemplo, este widget pode lidar com o callback `onPressed`
+e chamar `onChanged` com seu estado interno mais recente para a variável `count`:
 
 ```dart
 TextButton(
@@ -262,37 +262,37 @@ TextButton(
 ),
 ```
 
-### Dive deeper
+### Mergulhe mais fundo
 
-For more information on sharing state between widgets,
-check out the following resources:
+Para obter mais informações sobre como compartilhar o estado entre widgets,
+confira os seguintes recursos:
 
-* Article: [Flutter Architectural Overview—State management][architecture-state]
-* Video: [Pragmatic state management][]
-* Video: [InheritedWidgets][inherited-widget-video]
-* Video: [A guide to Inherited Widgets][]
-* Sample: [Provider shopper][]
-* Sample: [Provider counter][]
-* API Docs: [`InheritedWidget`][]
+* Artigo: [Visão geral arquitetônica do Flutter — Gerenciamento de estado][architecture-state]
+* Vídeo: [Gerenciamento de estado pragmático][Pragmatic state management]
+* Vídeo: [InheritedWidgets][inherited-widget-video]
+* Vídeo: [Um guia para Inherited Widgets][A guide to Inherited Widgets]
+* Exemplo: [Provider shopper][Provider shopper]
+* Exemplo: [Provider counter][Provider counter]
+* Documentação da API: [`InheritedWidget`][]
 
-## Using listenables
+## Usando listenables
 
-Now that you've chosen how you want to share state in your app,
-how do you update the UI when it changes?
-How do you change the shared state in a way
-that notifies other parts of the app?
+Agora que você escolheu como deseja compartilhar o estado em seu aplicativo,
+como você atualiza a interface do usuário quando ela muda?
+Como você altera o estado compartilhado de uma forma
+que notifica outras partes do aplicativo?
 
-Flutter provides an abstract class called `Listenable`
-that can update one or more listeners.
-Some useful ways to use listenables are:
+O Flutter fornece uma classe abstrata chamada `Listenable`
+que pode atualizar um ou mais listeners.
+Algumas maneiras úteis de usar listenables são:
 
-* Use a `ChangeNotifier` and subscribe to it using a `ListenableBuilder`
-* Use a `ValueNotifier` with a `ValueListenableBuilder`
+* Use um `ChangeNotifier` e inscreva-se nele usando um `ListenableBuilder`
+* Use um `ValueNotifier` com um `ValueListenableBuilder`
 
 ### ChangeNotifier
 
-To use `ChangeNotifier`, create a class that extends it,
-and call `notifyListeners` whenever the class needs to notify its listeners.
+Para usar `ChangeNotifier`, crie uma classe que o estenda,
+e chame `notifyListeners` sempre que a classe precisar notificar seus listeners.
 
 ```dart
 class CounterNotifier extends ChangeNotifier {
@@ -306,9 +306,9 @@ class CounterNotifier extends ChangeNotifier {
 }
 ```
 
-Then pass it to `ListenableBuilder`
-to ensure that the subtree returned by the `builder` function
-is re-built whenever the `ChangeNotifier` updates its listeners.
+Em seguida, passe-o para `ListenableBuilder`
+para garantir que a subárvore retornada pela função `builder`
+seja reconstruída sempre que o `ChangeNotifier` atualizar seus listeners.
 
 ```dart
 Column(
@@ -316,11 +316,11 @@ Column(
     ListenableBuilder(
       listenable: counterNotifier,
       builder: (context, child) {
-        return Text('counter: ${counterNotifier.count}');
+        return Text('contador: ${counterNotifier.count}');
       },
     ),
     TextButton(
-      child: Text('Increment'),
+      child: Text('Incrementar'),
       onPressed: () {
         counterNotifier.increment();
       },
@@ -331,23 +331,23 @@ Column(
 
 ### ValueNotifier
 
-A [`ValueNotifier`][] is a simpler version of a `ChangeNotifier`,
-that stores a single value.
-It implements the `ValueListenable` and `Listenable` interfaces,
-so it's compatible
-with widgets such as `ListenableBuilder` and `ValueListenableBuilder`.
-To use it, create an instance of `ValueNotifier` with the initial value:
+Um [`ValueNotifier`][] é uma versão mais simples de um `ChangeNotifier`,
+que armazena um único valor.
+Ele implementa as interfaces `ValueListenable` e `Listenable`,
+então é compatível
+com widgets como `ListenableBuilder` e `ValueListenableBuilder`.
+Para usá-lo, crie uma instância de `ValueNotifier` com o valor inicial:
 
 ```dart
 ValueNotifier<int> counterNotifier = ValueNotifier(0);
 ```
 
-Then use the `value` field to read or update the value,
-and notify any listeners that the value has changed.
-Because `ValueNotifier` extends `ChangeNotifier`,
-it is also a `Listenable` and can be used with a `ListenableBuilder`.
-But you can also use `ValueListenableBuilder`,
-which provides the value in the `builder` callback:
+Em seguida, use o campo `value` para ler ou atualizar o valor,
+e notificar quaisquer listeners de que o valor foi alterado.
+Como `ValueNotifier` estende `ChangeNotifier`,
+ele também é um `Listenable` e pode ser usado com um `ListenableBuilder`.
+Mas você também pode usar `ValueListenableBuilder`,
+que fornece o valor no callback `builder`:
 
 ```dart
 Column(
@@ -355,11 +355,11 @@ Column(
     ValueListenableBuilder(
       valueListenable: counterNotifier,
       builder: (context, child, value) {
-        return Text('counter: $value');
+        return Text('contador: $value');
       },
     ),
     TextButton(
-      child: Text('Increment'),
+      child: Text('Incrementar'),
       onPressed: () {
         counterNotifier.value++;
       },
@@ -368,38 +368,38 @@ Column(
 )
 ```
 
-### Deep dive
+### Mergulhe fundo
 
-To learn more about `Listenable` objects, check out the following resources:
+Para saber mais sobre objetos `Listenable`, consulte os seguintes recursos:
 
-* API Docs: [`Listenable`][]
-* API Docs: [`ValueNotifier`][]
-* API Docs: [`ValueListenable`][]
-* API Docs: [`ChangeNotifier`][]
-* API Docs: [`ListenableBuilder`][]
-* API Docs: [`ValueListenableBuilder`][]
-* API Docs: [`InheritedNotifier`][]
+* Documentação da API: [`Listenable`][]
+* Documentação da API: [`ValueNotifier`][]
+* Documentação da API: [`ValueListenable`][]
+* Documentação da API: [`ChangeNotifier`][]
+* Documentação da API: [`ListenableBuilder`][]
+* Documentação da API: [`ValueListenableBuilder`][]
+* Documentação da API: [`InheritedNotifier`][]
 
-## Using MVVM for your application's architecture
+## Usando MVVM para a arquitetura do seu aplicativo
 
-Now that we understand how to share state
-and notify other parts of the app when its state changes,
-we're ready to start thinking about how to organize
-the stateful objects in our app.
+Agora que entendemos como compartilhar o estado
+e notificar outras partes do aplicativo quando seu estado muda,
+estamos prontos para começar a pensar em como organizar
+os objetos com estado em nosso aplicativo.
 
-This section describes how to implement a design pattern that works well
-with reactive frameworks like Flutter,
-called _Model-View-ViewModel_ or _MVVM_.
+Esta seção descreve como implementar um design pattern que funciona bem
+com frameworks reativos como o Flutter,
+chamado de _Model-View-ViewModel_ ou _MVVM_.
 
-### Defining the Model
+### Definindo o Model
 
-The Model is typically a Dart class that does low-level tasks
-such as making HTTP requests,
-caching data, or managing system resources such as a plugin.
-A model doesn't usually need to import Flutter libraries.
+O Model é normalmente uma classe Dart que executa tarefas de baixo nível
+como fazer requisições HTTP,
+armazenar dados em cache ou gerenciar recursos do sistema, como um plugin.
+Um model normalmente não precisa importar bibliotecas do Flutter.
 
-For example, consider a model that loads or updates the counter state
-using an HTTP client:
+Por exemplo, considere um model que carrega ou atualiza o estado do contador
+usando um cliente HTTP:
 
 ```dart
 import 'package:http/http.dart';
@@ -416,7 +416,7 @@ class CounterModel {
     final response = await get(uri);
 
     if (response.statusCode != 200) {
-      throw ('Failed to update resource');
+      throw ('Falha ao atualizar o recurso');
     }
 
     return CounterData(int.parse(response.body));
@@ -428,32 +428,32 @@ class CounterModel {
 }
 ```
 
-This model doesn't use any Flutter primitives or make any assumptions
-about the platform it's running on;
-its only job is to fetch or update the count using its HTTP client.
-This allows the model to be implemented with a Mock or Fake in unit tests,
-and defines clear boundaries between your app's low-level components and the
-higher-level UI components needed to build the full app.
+Este model não usa nenhum primitivo do Flutter ou faz nenhuma suposição
+sobre a plataforma em que está sendo executado;
+seu único trabalho é buscar ou atualizar a contagem usando seu cliente HTTP.
+Isso permite que o model seja implementado com um Mock ou Fake em testes unitários,
+e define limites claros entre os componentes de baixo nível do seu aplicativo e os
+componentes de interface do usuário de nível superior necessários para construir o aplicativo completo.
 
-The `CounterData` class defines the structure of the data
-and is the true "model" of our application.
-The model layer is typically responsible for the core algorithms
-and data structures needed for your app.
-If you are interested in other ways to define the model,
-such as using immutable value types,
-check out packages like [freezed][]
-or [build_collection][] on pub.dev.
+A classe `CounterData` define a estrutura dos dados
+e é o verdadeiro "model" de nossa aplicação.
+A camada do model é normalmente responsável pelos algoritmos centrais
+e estruturas de dados necessárias para seu aplicativo.
+Se você estiver interessado em outras maneiras de definir o model,
+como usar tipos de valor imutáveis,
+confira pacotes como [freezed][]
+ou [build_collection][] no pub.dev.
 
-### Defining the ViewModel
+### Definindo o ViewModel
 
-A `ViewModel` binds the _View_ to the _Model_.
-It protects the model from being accessed directly by the View,
-and ensures that data flow starts from a change to the model.
-Data flow is handled by the `ViewModel`, which uses `notifyListeners`
-to inform the View that something changed.
-The `ViewModel` is like a waiter in a restaurant
-that handles the communication
-between the kitchen (model) and the customers (views).
+Um `ViewModel` vincula a _View_ ao _Model_.
+Ele protege o model de ser acessado diretamente pela View,
+e garante que o fluxo de dados comece a partir de uma alteração no model.
+O fluxo de dados é gerenciado pelo `ViewModel`, que usa `notifyListeners`
+para informar à View que algo mudou.
+O `ViewModel` é como um garçom em um restaurante
+que lida com a comunicação
+entre a cozinha (model) e os clientes (views).
 
 ```dart
 import 'package:flutter/foundation.dart';
@@ -468,7 +468,7 @@ class CounterViewModel extends ChangeNotifier {
     try {
       count = (await model.loadCountFromServer()).count;
     } catch (e) {
-      errorMessage = 'Could not initialize counter';
+      errorMessage = 'Não foi possível inicializar o contador';
     }
     notifyListeners();
   }
@@ -476,33 +476,32 @@ class CounterViewModel extends ChangeNotifier {
   Future<void> increment() async {
     var count = this.count;
     if (count == null) {
-      throw('Not initialized');
+      throw('Não inicializado');
     }
     try {
       await model.updateCountOnServer(count + 1);
       count++;
     } catch(e) {
-      errorMessage = 'Count not update count';
+      errorMessage = 'Não foi possível atualizar o contador';
     }
     notifyListeners();
   }
 }
 ```
 
-Notice that the `ViewModel` stores an `errorMessage`
-when it receives an error from the Model.
-This protects the View from unhandled runtime errors,
-which could lead to a crash.
-Instead, the `errorMessage` field
-can be used by the view to show a user-friendly error message.
+Observe que o `ViewModel` armazena uma `errorMessage`
+quando recebe um erro do Model.
+Isso protege a View de erros de tempo de execução não tratados,
+o que poderia levar a uma falha.
+Em vez disso, o campo `errorMessage`
+pode ser usado pela view para mostrar uma mensagem de erro amigável ao usuário.
 
+### Definindo a View
 
-### Defining the View
-
-Since our `ViewModel` is a `ChangeNotifier`,
-any widget with a reference to it can use a `ListenableBuilder`
-to rebuild its widget tree
-when the `ViewModel` notifies its listeners:
+Como nosso `ViewModel` é um `ChangeNotifier`,
+qualquer widget com uma referência a ele pode usar um `ListenableBuilder`
+para reconstruir sua árvore de widgets
+quando o `ViewModel` notificar seus listeners:
 
 ```dart
 ListenableBuilder(
@@ -512,18 +511,18 @@ ListenableBuilder(
       children: [
         if (viewModel.errorMessage != null)
           Text(
-            'Error: ${viewModel.errorMessage}',
+            'Erro: ${viewModel.errorMessage}',
             style: Theme.of(context)
                 .textTheme
                 .labelSmall
                 ?.apply(color: Colors.red),
           ),
-        Text('Count: ${viewModel.count}'),
+        Text('Contagem: ${viewModel.count}'),
         TextButton(
           onPressed: () {
             viewModel.increment();
           },
-          child: Text('Increment'),
+          child: Text('Incrementar'),
         ),
       ],
     );
@@ -531,29 +530,29 @@ ListenableBuilder(
 )
 ```
 
-This pattern allows the business logic of your application
-to be separate from the UI logic
-and low-level operations performed by the Model layer.
+Este pattern permite que a lógica de negócios do seu aplicativo
+seja separada da lógica da interface do usuário
+e operações de baixo nível executadas pela camada Model.
 
-## Learn more about state management
+## Saiba mais sobre gerenciamento de estado
 
-This page touches the surface of state management as
-there are many ways to organize and manage
-the state of your Flutter application.
-If you would like to learn more, check out the following resources:
+Esta página aborda a superfície do gerenciamento de estado, pois
+existem muitas maneiras de organizar e gerenciar
+o estado do seu aplicativo Flutter.
+Se você quiser saber mais, confira os seguintes recursos:
 
-* Article: [List of state management approaches][]
-* Repository: [Flutter Architecture Samples][]
+* Artigo: [Lista de abordagens de gerenciamento de estado][List of state management approaches]
+* Repositório: [Exemplos de Arquitetura do Flutter][Flutter Architecture Samples]
 
-[A guide to Inherited Widgets]: {{site.youtube-site}}/watch?v=Zbm3hjPjQMk
+[Um guia para Inherited Widgets]: {{site.youtube-site}}/watch?v=Zbm3hjPjQMk
 [build_collection]: {{site.pub-pkg}}/built_collection
-[Flutter Architecture Samples]: https://fluttersamples.com/
+[Exemplos de Arquitetura do Flutter]: https://fluttersamples.com/
 [`InheritedWidget`]: {{site.api}}/flutter/widgets/InheritedWidget-class.html
-[List of state management approaches]: /data-and-backend/state-mgmt/options
-[Pragmatic state management]: {{site.youtube-site}}/watch?v=d_m5csmrf7I
+[Lista de abordagens de gerenciamento de estado]: /data-and-backend/state-mgmt/options
+[Gerenciamento de estado pragmático]: {{site.youtube-site}}/watch?v=d_m5csmrf7I
 [Provider counter]: https://github.com/flutter/samples/tree/main/provider_counter
 [Provider shopper]: https://flutter.github.io/samples/provider_shopper.html
-[State management]: /data-and-backend/state-mgmt/intro
+[Gerenciamento de estado]: /data-and-backend/state-mgmt/intro
 [StatefulWidget]: {{site.api}}/flutter/widgets/StatefulWidget-class.html
 [`StatefulWidget`]: {{site.api}}/flutter/widgets/StatefulWidget-class.html
 [`ChangeNotifier`]: {{site.api}}/flutter/foundation/ChangeNotifier-class.html
@@ -573,7 +572,7 @@ If you would like to learn more, check out the following resources:
 
 ## Feedback
 
-As this section of the website is evolving,
-we [welcome your feedback][]!
+Como esta seção do site está evoluindo,
+nós [agradecemos seu feedback][]!
 
-[welcome your feedback]: https://google.qualtrics.com/jfe/form/SV_6A9KxXR7XmMrNsy?page="state-management"
+[agradecemos seu feedback]: https://google.qualtrics.com/jfe/form/SV_6A9KxXR7XmMrNsy?page="state-management"

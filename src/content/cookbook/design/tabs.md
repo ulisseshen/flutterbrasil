@@ -1,6 +1,7 @@
 ---
-title: Work with tabs
-description: How to implement tabs in a layout.
+ia-translate: true
+title: Trabalhando com abas
+description: Como implementar abas em um layout.
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
@@ -8,28 +9,21 @@ js:
 
 <?code-excerpt path-base="cookbook/design/tabs/"?>
 
-Working with tabs is a common pattern in apps that follow the
-Material Design guidelines.
-Flutter includes a convenient way to create tab layouts as part of
-the [material library][].
+Trabalhar com abas é um *design pattern* comum em aplicativos que seguem as diretrizes do Material Design. O Flutter inclui uma maneira conveniente de criar layouts de abas como parte da [biblioteca Material][].
 
-This recipe creates a tabbed example using the following steps;
+Esta receita cria um exemplo com abas usando os seguintes passos:
 
-  1. Create a `TabController`.
-  2. Create the tabs.
-  3. Create content for each tab.
+  1. Crie um `TabController`.
+  2. Crie as abas.
+  3. Crie o conteúdo para cada aba.
 
-## 1. Create a `TabController`
+## 1. Crie um `TabController`
 
-For tabs to work, you need to keep the selected tab and content
-sections in sync.
-This is the job of the [`TabController`][].
+Para que as abas funcionem, é necessário manter a aba selecionada e as seções de conteúdo em sincronia. Este é o trabalho do [`TabController`][].
 
-Either create a `TabController` manually,
-or automatically by using a [`DefaultTabController`][] widget.
+Você pode criar um `TabController` manualmente, ou automaticamente usando um widget [`DefaultTabController`][].
 
-Using `DefaultTabController` is the simplest option, since it
-creates a `TabController` and makes it available to all descendant widgets.
+Usar `DefaultTabController` é a opção mais simples, pois ele cria um `TabController` e o disponibiliza para todos os widgets descendentes.
 
 <?code-excerpt "lib/partials.dart (TabController)"?>
 ```dart
@@ -41,12 +35,9 @@ return MaterialApp(
 );
 ```
 
-## 2. Create the tabs
+## 2. Crie as abas
 
-When a tab is selected, it needs to display content.
-You can create tabs using the [`TabBar`][] widget.
-In this example, create a `TabBar` with three
-[`Tab`][] widgets and place it within an [`AppBar`][].
+Quando uma aba é selecionada, ela precisa exibir conteúdo. Você pode criar abas usando o widget [`TabBar`][]. Neste exemplo, crie um `TabBar` com três widgets [`Tab`][] e coloque-o dentro de um [`AppBar`][].
 
 <?code-excerpt "lib/partials.dart (Tabs)"?>
 ```dart
@@ -68,18 +59,14 @@ return MaterialApp(
 );
 ```
 
-By default, the `TabBar` looks up the widget tree for the nearest
-`DefaultTabController`. If you're manually creating a `TabController`,
-pass it to the `TabBar`.
+Por padrão, o `TabBar` procura na árvore de widgets pelo `DefaultTabController` mais próximo. Se você estiver criando um `TabController` manualmente, passe-o para o `TabBar`.
 
-## 3. Create content for each tab
+## 3. Crie conteúdo para cada aba
 
-Now that you have tabs, display content when a tab is selected.
-For this purpose, use the [`TabBarView`][] widget.
+Agora que você tem as abas, exiba o conteúdo quando uma aba for selecionada. Para isso, use o widget [`TabBarView`][].
 
 :::note
-Order is important and must correspond to the
-order of the tabs in the `TabBar`.
+A ordem é importante e deve corresponder à ordem das abas no `TabBar`.
 :::
 
 <?code-excerpt "lib/main.dart (TabBarView)"?>
@@ -93,10 +80,10 @@ body: const TabBarView(
 ),
 ```
 
-## Interactive example
+## Exemplo interativo
 
 <?code-excerpt "lib/main.dart"?>
-```dartpad title="Flutter TabBar DartPad hands-on example" run="true"
+```dartpad title="Exemplo prático de Flutter TabBar no DartPad" run="true"
 import 'package:flutter/material.dart';
 
 void main() {

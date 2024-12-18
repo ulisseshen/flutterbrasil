@@ -1,38 +1,39 @@
 ---
-title: Generic types in PopScope
+ia-translate: true
+title: Tipos genéricos em PopScope
 description: >-
-  Added a generic type to the PopScope class and updated
-  the onPopInvoked function signature.
+  Adicionado um tipo genérico à classe PopScope e atualizada a
+  assinatura da função onPopInvoked.
 ---
 
-## Summary
+## Resumo
 
-Added a generic type to the [`PopScope`][] class and replaced
-the [`onPopInvoked`][] with a new method [`onPopInvokedWithResult`][].
-The new method takes a boolean `didPop` and a `result` as position parameters.
+Adicionado um tipo genérico à classe [`PopScope`][] e substituído
+o [`onPopInvoked`][] por um novo método [`onPopInvokedWithResult`][].
+O novo método recebe um booleano `didPop` e um `result` como parâmetros posicionais.
 
-Also replaced the [`Form.onPopInvoked`] with [`Form.onPopInvokedWithResult`][]
-for the same reason.
+Também substituído o [`Form.onPopInvoked`] por [`Form.onPopInvokedWithResult`][]
+pelo mesmo motivo.
 
-## Context
+## Contexto
 
-Previously, `PopScope` didn't have a way to access
-the pop result when `onPopInvoked` was called.
-The generic type is added to the `PopScope` class so that
-the new method `onPopInvokedWithResult` can access the type-safe result.
+Anteriormente, `PopScope` não tinha como acessar o resultado
+do pop quando `onPopInvoked` era chamado.
+O tipo genérico é adicionado à classe `PopScope` para que o
+novo método `onPopInvokedWithResult` possa acessar o resultado com tipo seguro.
 
-## Description of change
+## Descrição da mudança
 
-Added a generic type (`<T>`) to the `PopScope` class and
-a new method `onPopInvokedWithResult`. 
-The `onPopInvoked` property was deprecated in favor of `onPopInvokedWithResult`.
+Adicionado um tipo genérico (`<T>`) à classe `PopScope` e
+um novo método `onPopInvokedWithResult`.
+A propriedade `onPopInvoked` foi depreciada em favor de `onPopInvokedWithResult`.
 
-Also added a new method `onPopInvokedWithResult`
-to `Form` to replace `onPopInvoked`.
+Também adicionado um novo método `onPopInvokedWithResult`
+a `Form` para substituir `onPopInvoked`.
 
-## Migration guide
+## Guia de migração
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -70,7 +71,7 @@ void main() {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -108,22 +109,22 @@ void main() {
 }
 ```
 
-The generic type should match the generic type of the [`Route`][]
-that the `PopScope` is in.
-For example, if the route uses `int` as its generic type,
-consider using `PopScope<int>`.
+O tipo genérico deve corresponder ao tipo genérico da [`Route`][]
+em que o `PopScope` está.
+Por exemplo, se a rota usa `int` como seu tipo genérico,
+considere usar `PopScope<int>`.
 
-If the `PopScope` widgets are shared across multiple routes with
-different types, you can use `PopScope<Object?>` to catch all possible types.
+Se os widgets `PopScope` forem compartilhados entre várias rotas com
+tipos diferentes, você pode usar `PopScope<Object?>` para capturar todos os tipos possíveis.
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.22.0-26.0.pre<br>
-In stable release: 3.24.0
+Implementado na versão: 3.22.0-26.0.pre<br>
+Na versão estável: 3.24.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`PopScope`][]
 * [`onPopInvoked`][]
@@ -132,14 +133,14 @@ API documentation:
 * [`Form.onPopInvoked`][]
 * [`Form.onPopInvokedWithResult`][]
 
-Relevant issue:
+Issue relevante:
 
 * [Issue 137458][]
 
-Relevant PR:
+PRs relevantes:
 
-* [Add generic type for result in PopScope][] _(reverted)_
-* [Reapply new PopScope API][] _(final reland)_
+* [Add generic type for result in PopScope][] _(revertido)_
+* [Reapply new PopScope API][] _(re-aplicação final)_
 
 [Add generic type for result in PopScope]: {{site.repo.flutter}}/pull/139164
 [Reapply new PopScope API]: {{site.repo.flutter}}/pull/147607

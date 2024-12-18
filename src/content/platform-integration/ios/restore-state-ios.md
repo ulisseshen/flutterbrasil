@@ -1,25 +1,24 @@
---- 
-title: "Restore state on iOS"
-description: "How to restore the state of your iOS app after it's been killed by the OS."
+---
+ia-translate: true
+title: "Restaurar o estado no iOS"
+description: "Como restaurar o estado do seu aplicativo iOS após ele ser finalizado pelo SO."
 ---
 
-When a user runs a mobile app and then selects another
-app to run, the first app is moved to the background,
-or _backgrounded_. The operating system (both iOS and Android)
-often kills the backgrounded app to release memory or
-improve performance for the app running in the foreground.
+Quando um usuário executa um aplicativo móvel e então seleciona outro aplicativo
+para executar, o primeiro aplicativo é movido para o segundo plano ou _em
+segundo plano_. O sistema operacional (tanto iOS quanto Android) frequentemente
+finaliza o aplicativo em segundo plano para liberar memória ou melhorar o
+desempenho do aplicativo em execução em primeiro plano.
 
-You can use the [`RestorationManager`][] (and related)
-classes to handle state restoration. 
-An iOS app requires [a bit of extra setup][] in Xcode,
-but the restoration classes otherwise work the same on
-both iOS and Android.
+Você pode usar as classes [`RestorationManager`][] (e relacionadas) para
+lidar com a restauração de estado. Um aplicativo iOS requer [um pouco de
+configuração extra][] no Xcode, mas as classes de restauração funcionam da
+mesma forma tanto no iOS quanto no Android.
 
-For more information, check out [State restoration on Android][]
-and the [VeggieSeasons][] code sample.
+Para mais informações, confira [Restauração de estado no Android][] e o
+exemplo de código [VeggieSeasons][].
 
-[a bit of extra setup]: {{site.api}}/flutter/services/RestorationManager-class.html#state-restoration-on-ios
+[um pouco de configuração extra]: {{site.api}}/flutter/services/RestorationManager-class.html#state-restoration-on-ios
 [`RestorationManager`]: {{site.api}}/flutter/services/RestorationManager-class.html
-[State restoration on Android]: /platform-integration/android/restore-state-android
+[Restauração de estado no Android]: /platform-integration/android/restore-state-android
 [VeggieSeasons]: {{site.repo.samples}}/tree/main/veggieseasons
-

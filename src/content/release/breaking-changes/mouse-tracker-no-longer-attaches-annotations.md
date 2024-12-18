@@ -1,46 +1,48 @@
 ---
-title: MouseTracker no longer attaches annotations
+ia-translate: true
+title: MouseTracker não anexa mais anotações
 description: >
-  MouseTracker no longer relies on annotation attachment to
-  perform the mounted-exit check; therefore, 
-  all three related methods are removed.
+  MouseTracker não depende mais da anexação de anotações para
+  realizar a verificação de saída-montada; portanto,
+  todos os três métodos relacionados são removidos.
 ---
 
-## Summary
+## Resumo
 
-Removed `MouseTracker`'s methods `attachAnnotation`,
-`detachAnnotation`, and `isAnnotationAttached`.
+Removidos os métodos de `MouseTracker` `attachAnnotation`,
+`detachAnnotation` e `isAnnotationAttached`.
 
-## Context
+## Contexto
 
-Mouse events, such as when a mouse pointer has entered a region,
-exited, or is hovering over a region, are detected with the help of
-`MouseTrackerAnnotation`s that are placed on interested regions
-during the render phase. Upon each update (a new frame or a new event),
-`MouseTracker` compares the annotations hovered by the mouse
-pointer before and after the update, then dispatches
-callbacks accordingly.
+Eventos de mouse, como quando um ponteiro do mouse entrou em uma região,
+saiu ou está pairando sobre uma região, são detectados com a ajuda de
+`MouseTrackerAnnotation`s que são colocadas em regiões de interesse
+durante a fase de renderização. A cada atualização (um novo frame ou um novo evento),
+`MouseTracker` compara as anotações sobre as quais o ponteiro do mouse
+pairou antes e depois da atualização, então despacha
+callbacks adequadamente.
 
-The `MouseTracker` class, which manages the state of mouse pointers,
-used to require `MouseRegion` to attach annotations when mounted,
-and detach annotations when unmounted.
-This was used by `MouseTracker` to perform the
-_mounted-exit check_ (for example, `MouseRegion.onExit`
-must not be called if the exit was caused by the unmounting
-of the widget), in order to prevent calling `setState`
-of an unmounted widget and throwing exceptions (explained
-in detail in [Issue #44631][]).
+A classe `MouseTracker`, que gerencia o estado dos ponteiros do mouse,
+costumava exigir que `MouseRegion` anexasse anotações quando montado,
+e desanexasse as anotações quando desmontado.
+Isso era usado por `MouseTracker` para realizar a
+_verificação de saída-montada_ (por exemplo, `MouseRegion.onExit`
+não deve ser chamado se a saída foi causada pela desmontagem
+do widget), a fim de evitar chamar `setState`
+de um widget desmontado e lançar exceções (explicado
+em detalhes em [Issue #44631][]).
 
-This mechanism has been replaced by making `MouseRegion`
-a stateful widget, so that it can perform the mounted-exit
-check by itself by blocking the callback when unmounted.
-Therefore, these methods have been removed, and `MouseTracker`
-no longer tracks all annotations on the screen.
+Este mecanismo foi substituído fazendo de `MouseRegion`
+um widget stateful, para que ele possa realizar a verificação
+de saída-montada por si só, bloqueando o callback quando
+desmontado.
+Portanto, esses métodos foram removidos e `MouseTracker`
+não rastreia mais todas as anotações na tela.
 
-## Description of change
+## Descrição da mudança
 
-The `MouseTracker` class has removed three methods related
-to attaching annotations:
+A classe `MouseTracker` removeu três métodos relacionados
+à anexação de anotações:
 
 ```dart diff
   class MouseTracker extends ChangeNotifier {
@@ -54,25 +56,25 @@ to attaching annotations:
   }
 ```
 
-`RenderMouseRegion` and `MouseTrackerAnnotation` no longer perform the
-mounted-exit check, while `MouseRegion` still does.
+`RenderMouseRegion` e `MouseTrackerAnnotation` não realizam mais a
+verificação de saída-montada, enquanto `MouseRegion` ainda realiza.
 
-## Migration guide
+## Guia de migração
 
-Calls to `MouseTracker.attachAnnotation` and
-`detachAnnotation` should be removed with little to no impact:
+Chamadas para `MouseTracker.attachAnnotation` e
+`detachAnnotation` devem ser removidas com pouco ou nenhum impacto:
 
-* Uses of `MouseRegion` should not be affected at all.
-* If your code directly uses `RenderMouseRegion` or
-  `MouseTrackerAnnotation`, be aware that `onExit`
-  is now called when the exit is caused by events that used
-  to call `MouseTracker.detachAnnotation`.
-  This should not be a problem if no states are involved,
-  otherwise you might want to add the mounted-exit check,
-  especially if the callback is leaked so that outer
-  widgets might call `setState` in it. For example:
+* Usos de `MouseRegion` não devem ser afetados de forma alguma.
+* Se o seu código usa diretamente `RenderMouseRegion` ou
+  `MouseTrackerAnnotation`, esteja ciente de que `onExit`
+  agora é chamado quando a saída é causada por eventos que
+  costumavam chamar `MouseTracker.detachAnnotation`.
+  Isso não deve ser um problema se nenhum estado estiver envolvido,
+  caso contrário, você pode querer adicionar a verificação de saída-montada,
+  especialmente se o callback vazar para que widgets externos possam
+  chamar `setState` nele. Por exemplo:
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 class MyMouseRegion extends SingleChildRenderObjectWidget {
@@ -97,7 +99,7 @@ class MyMouseRegion extends SingleChildRenderObjectWidget {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class MyMouseRegion extends SingleChildRenderObjectWidget {
@@ -128,32 +130,32 @@ class MyMouseRegion extends SingleChildRenderObjectWidget {
 }
 ```
 
-Calls to `MouseTracker.isAnnotationAttached` must be removed.
-This feature is no longer technically possible,
-since annotations are no longer tracked.
-If you somehow need this feature, please submit an issue.
+Chamadas para `MouseTracker.isAnnotationAttached` devem ser removidas.
+Esse recurso não é mais tecnicamente possível,
+já que as anotações não são mais rastreadas.
+Se você precisar desse recurso de alguma forma, envie um issue.
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.15.4<br>
-In stable release: 1.17
+Implementado na versão: 1.15.4<br>
+Na versão estável: 1.17
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`MouseRegion`][]
 * [`MouseTracker`][]
 * [`MouseTrackerAnnotation`][]
 * [`RenderMouseRegion`][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [MouseTracker no longer requires annotations attached][],
-  which made the change
+  que fez a mudança
 * [Improve MouseTracker lifecycle: Move checks to post-frame][],
-  which first introduced the mounted-exit change,
-  explained at _The change to onExit_.
+  que primeiro introduziu a mudança de saída-montada,
+  explicado em _The change to onExit_.
 
 
 [Improve MouseTracker lifecycle: Move checks to post-frame]: {{site.repo.flutter}}/issues/44631

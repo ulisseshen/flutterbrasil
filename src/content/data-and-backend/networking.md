@@ -1,21 +1,22 @@
 ---
+ia-translate: true
 title: Networking
-description: Internet network calls in Flutter.
+description: Chamadas de rede pela Internet no Flutter.
 ---
 
-## Cross-platform http networking
+## Networking http cross-platform
 
-The [`http`][] package provides the simplest way to issue http requests. This
-package is supported on Android, iOS, macOS, Windows, Linux and the web.
+O pacote [`http`][] oferece a maneira mais simples de emitir requisições http. Este
+pacote é suportado em Android, iOS, macOS, Windows, Linux e web.
 
-## Platform notes
+## Notas sobre Plataformas
 
-Some platforms require additional steps, as detailed below.
+Algumas plataformas exigem etapas adicionais, conforme detalhado abaixo.
 
 ### Android
 
-Android apps must [declare their use of the internet][declare] in the Android
-manifest (`AndroidManifest.xml`):
+Aplicativos Android devem [declarar seu uso da internet][declare] no manifesto do
+Android (`AndroidManifest.xml`):
 
 ```xml
 <manifest xmlns:android...>
@@ -27,22 +28,22 @@ manifest (`AndroidManifest.xml`):
 
 ### macOS
 
-macOS apps must allow network access in the relevant `*.entitlements` files. 
+Aplicativos macOS devem permitir acesso à rede nos arquivos `*.entitlements` relevantes.
 
 ```xml
 <key>com.apple.security.network.client</key>
 <true/>
 ```
 
-Learn more about [setting up entitlements][].
+Saiba mais sobre [como configurar entitlements][].
 
-[setting up entitlements]: /platform-integration/macos/building#setting-up-entitlements
+[como configurar entitlements]: /platform-integration/macos/building#setting-up-entitlements
 
-## Samples
+## Exemplos
 
-For a practical sample of various networking tasks (incl. fetching data,
-WebSockets, and parsing data in the background) see the 
-[networking cookbook](/cookbook#networking).
+Para um exemplo prático de várias tarefas de networking (incluindo busca de dados,
+WebSockets e análise de dados em segundo plano), consulte o
+[cookbook de networking](/cookbook#networking).
 
 [declare]: {{site.android-dev}}/training/basics/network-ops/connecting
 [`http`]: {{site.pub-pkg}}/http

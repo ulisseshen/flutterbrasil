@@ -1,51 +1,32 @@
 ---
-title: Page transitions replaced by ZoomPageTransitionsBuilder
-description: Using the latest page transition instead of the old one.
+ia-translate: true
+title: Transições de página substituídas por ZoomPageTransitionsBuilder
+description: Usando a transição de página mais recente em vez da antiga.
 ---
 
-## Summary
+## Resumo
 
-In order to ensure that libraries follow the latest OEM behavior,
-the default page transition builders now use
-`ZoomPageTransitionsBuilder` on all platforms (excluding iOS and macOS)
-instead of `FadeUpwardsPageTransitionsBuilder`.
+Para garantir que as bibliotecas sigam o comportamento OEM mais recente, os construtores de transição de página padrão agora usam `ZoomPageTransitionsBuilder` em todas as plataformas (excluindo iOS e macOS) em vez de `FadeUpwardsPageTransitionsBuilder`.
 
-## Context
+## Contexto
 
-The `FadeUpwardsPageTransitionsBuilder` (provided with the first
-Flutter release), defined a page transition that's
-similar to the one provided by Android O. This page transitions builder
-will eventually be deprecated on Android, as per Flutter's
-[deprecation policy](/release/compatibility-policy#deprecation-policy).
+O `FadeUpwardsPageTransitionsBuilder` (fornecido com a primeira versão do Flutter), definia uma transição de página semelhante à fornecida pelo Android O. Este construtor de transições de página será eventualmente descontinuado no Android, de acordo com a [política de descontinuação](/release/compatibility-policy#deprecation-policy) do Flutter.
 
-`ZoomPageTransitionsBuilder`, the new page transition builder for
-Android, Linux, and Windows, defines a page transition that's similar to
-the one provided by Android Q and R.
+`ZoomPageTransitionsBuilder`, o novo construtor de transição de página para Android, Linux e Windows, define uma transição de página semelhante à fornecida pelo Android Q e R.
 
-According to the [Style guide for Flutter repo][],
-the framework will follow the latest OEM behavior.
-Page transition builders using `FadeUpwardsPageTransitionsBuilder`
-are all switched to the `ZoomPageTransitionsBuilder`.
-When the current `TargetPlatform` doesn't have
-`PageTransitionsBuilder` defined in the `ThemeData.pageTransitionsTheme`,
-`ZoomPageTransitionsBuilder` is used as the default.
+De acordo com o [Guia de estilo para o repositório do Flutter][], o framework seguirá o comportamento OEM mais recente. Os construtores de transição de página que usam `FadeUpwardsPageTransitionsBuilder` foram todos trocados para `ZoomPageTransitionsBuilder`. Quando o `TargetPlatform` atual não tem `PageTransitionsBuilder` definido em `ThemeData.pageTransitionsTheme`, `ZoomPageTransitionsBuilder` é usado como o padrão.
 
-[Style guide for Flutter repo]: {{site.repo.flutter}}/blob/master/docs/contributing/Style-guide-for-Flutter-repo.md
-## Description of change
+[Guia de estilo para o repositório do Flutter]: {{site.repo.flutter}}/blob/master/docs/contributing/Style-guide-for-Flutter-repo.md
 
-`PageTransitionsBuilder`s defined in
-`PageTransitionsTheme._defaultBuilders` have changed from
-`FadeUpwardsPageTransitionsBuilder` to
-`ZoomPageTransitionsBuilder` for `TargetPlatform.android`,
-`TargetPlatform.linux` and `TargetPlatform.windows`.
+## Descrição da mudança
 
-## Migration guide
+Os `PageTransitionsBuilder`s definidos em `PageTransitionsTheme._defaultBuilders` foram alterados de `FadeUpwardsPageTransitionsBuilder` para `ZoomPageTransitionsBuilder` para `TargetPlatform.android`, `TargetPlatform.linux` e `TargetPlatform.windows`.
 
-If you want to switch back to the previous page transition builder
-(`FadeUpwardsPageTransitionsBuilder`), you should define builders
-explicitly for the target platforms.
+## Guia de migração
 
-Code before migration:
+Se você quiser voltar ao construtor de transição de página anterior (`FadeUpwardsPageTransitionsBuilder`), você deve definir os construtores explicitamente para as plataformas de destino.
+
+Código antes da migração:
 
 ```dart
 MaterialApp(
@@ -53,21 +34,21 @@ MaterialApp(
 )
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 MaterialApp(
   theme: ThemeData(
     pageTransitionsTheme: const PageTransitionsTheme(
       builders: <TargetPlatform, PageTransitionsBuilder>{
-        TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(), // Apply this to every platforms you need.
+        TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(), // Aplique isso a todas as plataformas que você precisar.
       },
     ),
   ),
 )
 ```
 
-If you want to apply the same page transition builder to all platforms:
+Se você quiser aplicar o mesmo construtor de transição de página a todas as plataformas:
 
 ```dart
 MaterialApp(
@@ -80,13 +61,11 @@ MaterialApp(
     ),
   ),
 )
-
 ```
 
-### Tests migration
+### Migração de testes
 
-If you used to try to find widgets but failed with *Too many elements*
-using the new transition, and saw errors similar to the following:
+Se você costumava tentar encontrar widgets, mas falhava com *Muitos elementos* usando a nova transição, e via erros semelhantes ao seguinte:
 
 ```plaintext
 ══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
@@ -99,17 +78,15 @@ When the exception was thrown, this was the stack:
 #2      main.<anonymous closure> (file:///path/to/your/test.dart:1:2)
 ```
 
-You should migrate your tests by using the
-`descendant` scope for `Finder`s with the specific widget type.
-Below is the example of `DataTable`'s test:
+Você deve migrar seus testes usando o escopo `descendant` para `Finder`s com o tipo de widget específico. Abaixo está o exemplo do teste de `DataTable`:
 
-Test before migration:
+Teste antes da migração:
 
 ```dart
 final Finder finder = find.widgetWithIcon(Transform, Icons.arrow_upward);
 ```
 
-Test after migration:
+Teste após a migração:
 
 ```dart
 final Finder finder = find.descendant(
@@ -118,27 +95,26 @@ final Finder finder = find.descendant(
 );
 ```
 
-Widgets that typically need to migrate the finder scope are:
-`Transform`, `FadeTransition`, `ScaleTransition`, and `ColoredBox`.
+Widgets que normalmente precisam migrar o escopo do finder são: `Transform`, `FadeTransition`, `ScaleTransition` e `ColoredBox`.
 
-## Timeline
+## Cronograma
 
-Landed in version: 2.13.0-1.0.pre<br>
-In stable release: 3.0.0
+Incluído na versão: 2.13.0-1.0.pre<br>
+Na versão estável: 3.0.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`ZoomPageTransitionsBuilder`][]
 * [`FadeUpwardsPageTransitionsBuilder`][]
 * [`PageTransitionsTheme`][]
 
-Relevant issues:
+Problemas relevantes:
 
 * [Issue 43277][]
 
-Relevant PR:
+PR relevante:
 
 * [PR 100812][]
 

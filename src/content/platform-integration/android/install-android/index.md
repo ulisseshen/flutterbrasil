@@ -1,13 +1,14 @@
 ---
-title: Add Android as a target platform for Flutter
-description: Configure your system to develop Flutter for Android.
-short-title: Set up Android development
-target-list: [Windows, 'web on Windows', Linux, 'web on Linux', macOS, 'web on macOS', iOS, 'web on ChromeOS']
+ia-translate: true
+title: Adicionar Android como plataforma de destino para Flutter
+description: Configure seu sistema para desenvolver Flutter para Android.
+short-title: Configurar desenvolvimento Android
+target-list: [Windows, 'web no Windows', Linux, 'web no Linux', macOS, 'web no macOS', iOS, 'web no ChromeOS']
 ---
 
-To set up your development environment for targeting Android,
-choose the guide that corresponds to the [Getting Started path][] you followed,
-or the platform you already have set up.
+Para configurar seu ambiente de desenvolvimento para Android,
+escolha o guia que corresponde ao [caminho Começando][] que você seguiu,
+ou a plataforma que você já configurou.
 
 <div class="card-grid">
 {% for target in target-list %}
@@ -42,13 +43,13 @@ or the platform you already have set up.
           <span class="material-symbols">phone_android</span>
         </span>
         <span class="text-muted d-block">
-        Make Android and
+        Crie aplicativos Android e
         {% if target contains "iOS" -%}
-        {{target}} apps on macOS
+         {{target}} apps no macOS
         {%- elsif target contains "on" -%}
-        {{ target | replace: "on", "apps on" }}
+        {{ target | replace: "on", "apps no" }}
         {%- else -%}
-        {{target}} desktop apps
+        {{target}} aplicativos desktop
         {%- endif -%}
         </span>
       </header>
@@ -57,4 +58,4 @@ or the platform you already have set up.
 {% endfor %}
 </div>
 
-[Getting Started path]: /get-started/install
+[caminho Começando]: /get-started/install

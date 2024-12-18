@@ -1,114 +1,90 @@
 ---
-title: Find widgets
-description: How to use the Finder classes for testing widgets.
+ia-translate: true
+title: Encontrar widgets
+description: Como usar as classes `Finder` para testar widgets.
 ---
 
 <?code-excerpt path-base="cookbook/testing/widget/finders/"?>
 
 {% assign api = site.api | append: '/flutter' -%}
 
-To locate widgets in a test environment, use the [`Finder`][]
-classes. While it's possible to write your own `Finder` classes,
-it's generally more convenient to locate widgets using the tools
-provided by the [`flutter_test`][] package.
+Para localizar widgets em um ambiente de teste, use as classes [`Finder`][]. Embora seja possível escrever suas próprias classes `Finder`, geralmente é mais conveniente localizar widgets usando as ferramentas fornecidas pelo pacote [`flutter_test`][].
 
-During a `flutter run` session on a widget test, you can also
-interactively tap parts of the screen for the Flutter tool to
-print the suggested `Finder`.
+Durante uma sessão `flutter run` em um teste de widget, você também pode tocar interativamente em partes da tela para que a ferramenta Flutter imprima o `Finder` sugerido.
 
-This recipe looks at the [`find`][] constant provided by
-the `flutter_test` package, and demonstrates how
-to work with some of the `Finders` it provides.
-For a full list of available finders,
-see the [`CommonFinders` documentation][].
+Esta receita examina a constante [`find`][] fornecida pelo pacote `flutter_test` e demonstra como trabalhar com alguns dos `Finders` que ela fornece. Para obter uma lista completa dos finders disponíveis, consulte a [documentação do `CommonFinders`][].
 
-If you're unfamiliar with widget testing and the role of
-`Finder` classes,
-review the [Introduction to widget testing][] recipe.
+Se você não estiver familiarizado com testes de widget e o papel das classes `Finder`, revise a receita [Introdução ao teste de widget][].
 
-This recipe uses the following steps:
+Esta receita usa os seguintes passos:
 
-  1. Find a `Text` widget.
-  2. Find a widget with a specific `Key`.
-  3. Find a specific widget instance.
+  1. Encontrar um widget `Text`.
+  2. Encontrar um widget com uma `Key` específica.
+  3. Encontrar uma instância de widget específica.
 
-## 1. Find a `Text` widget
+## 1. Encontrar um widget `Text`
 
-In testing, you often need to find widgets that contain specific text.
-This is exactly what the `find.text()` method is for. It creates a
-`Finder` that searches for widgets that display a specific `String` of text.
+Em testes, muitas vezes você precisa encontrar widgets que contêm texto específico. É exatamente para isso que serve o método `find.text()`. Ele cria um `Finder` que procura widgets que exibem uma `String` de texto específica.
 
 <?code-excerpt "test/finders_test.dart (test1)"?>
 ```dart
-testWidgets('finds a Text widget', (tester) async {
-  // Build an App with a Text widget that displays the letter 'H'.
+testWidgets('encontra um widget Text', (tester) async {
+  // Constrói um App com um widget Text que exibe a letra 'H'.
   await tester.pumpWidget(const MaterialApp(
     home: Scaffold(
       body: Text('H'),
     ),
   ));
 
-  // Find a widget that displays the letter 'H'.
+  // Encontra um widget que exibe a letra 'H'.
   expect(find.text('H'), findsOneWidget);
 });
 ```
 
-## 2. Find a widget with a specific `Key`
+## 2. Encontrar um widget com uma `Key` específica
 
-In some cases, you might want to find a widget based on the Key that has been
-provided to it. This can be handy if displaying multiple instances of the
-same widget. For example, a `ListView` might display several
-`Text` widgets that contain the same text.
+Em alguns casos, você pode querer encontrar um widget com base na `Key` que foi fornecida a ele. Isso pode ser útil se você estiver exibindo várias instâncias do mesmo widget. Por exemplo, um `ListView` pode exibir vários widgets `Text` que contêm o mesmo texto.
 
-In this case, provide a `Key` to each widget in the list. This allows
-an app to uniquely identify a specific widget, making it easier to find
-the widget in the test environment.
+Nesse caso, forneça uma `Key` para cada widget na lista. Isso permite que um aplicativo identifique exclusivamente um widget específico, facilitando a localização do widget no ambiente de teste.
 
 <?code-excerpt "test/finders_test.dart (test2)"?>
 ```dart
-testWidgets('finds a widget using a Key', (tester) async {
-  // Define the test key.
+testWidgets('encontra um widget usando uma Key', (tester) async {
+  // Define a chave de teste.
   const testKey = Key('K');
 
-  // Build a MaterialApp with the testKey.
+  // Constrói um MaterialApp com a testKey.
   await tester.pumpWidget(MaterialApp(key: testKey, home: Container()));
 
-  // Find the MaterialApp widget using the testKey.
+  // Encontra o widget MaterialApp usando a testKey.
   expect(find.byKey(testKey), findsOneWidget);
 });
 ```
 
-## 3. Find a specific widget instance
+## 3. Encontrar uma instância de widget específica
 
-Finally, you might be interested in locating a specific instance of a widget.
-For example, this can be useful when creating widgets that take a `child`
-property and you want to ensure you're rendering the `child` widget.
+Finalmente, você pode estar interessado em localizar uma instância específica de um widget. Por exemplo, isso pode ser útil ao criar widgets que usam uma propriedade `child` e você deseja garantir que está renderizando o widget `child`.
 
 <?code-excerpt "test/finders_test.dart (test3)"?>
 ```dart
-testWidgets('finds a specific instance', (tester) async {
+testWidgets('encontra uma instância específica', (tester) async {
   const childWidget = Padding(padding: EdgeInsets.zero);
 
-  // Provide the childWidget to the Container.
+  // Fornece o childWidget ao Container.
   await tester.pumpWidget(Container(child: childWidget));
 
-  // Search for the childWidget in the tree and verify it exists.
+  // Procura pelo childWidget na árvore e verifica se ele existe.
   expect(find.byWidget(childWidget), findsOneWidget);
 });
 ```
 
-## Summary
+## Resumo
 
-The `find` constant provided by the `flutter_test` package provides
-several ways to locate widgets in the test environment. This recipe
-demonstrated three of these methods, and several more methods exist
-for different purposes.
+A constante `find` fornecida pelo pacote `flutter_test` oferece várias maneiras de localizar widgets no ambiente de teste. Esta receita demonstrou três desses métodos, e vários outros métodos existem para diferentes finalidades.
 
-If the above examples do not work for a particular use-case,
-see the [`CommonFinders` documentation][]
-to review all available methods.
+Se os exemplos acima não funcionarem para um caso de uso específico, consulte a [documentação do `CommonFinders`][] para revisar todos os métodos disponíveis.
 
-## Complete example
+## Exemplo completo
 
 <?code-excerpt "test/finders_test.dart"?>
 ```dart
@@ -116,36 +92,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  testWidgets('finds a Text widget', (tester) async {
-    // Build an App with a Text widget that displays the letter 'H'.
+  testWidgets('encontra um widget Text', (tester) async {
+    // Constrói um App com um widget Text que exibe a letra 'H'.
     await tester.pumpWidget(const MaterialApp(
       home: Scaffold(
         body: Text('H'),
       ),
     ));
 
-    // Find a widget that displays the letter 'H'.
+    // Encontra um widget que exibe a letra 'H'.
     expect(find.text('H'), findsOneWidget);
   });
 
-  testWidgets('finds a widget using a Key', (tester) async {
-    // Define the test key.
+  testWidgets('encontra um widget usando uma Key', (tester) async {
+    // Define a chave de teste.
     const testKey = Key('K');
 
-    // Build a MaterialApp with the testKey.
+    // Constrói um MaterialApp com a testKey.
     await tester.pumpWidget(MaterialApp(key: testKey, home: Container()));
 
-    // Find the MaterialApp widget using the testKey.
+    // Encontra o widget MaterialApp usando a testKey.
     expect(find.byKey(testKey), findsOneWidget);
   });
 
-  testWidgets('finds a specific instance', (tester) async {
+  testWidgets('encontra uma instância específica', (tester) async {
     const childWidget = Padding(padding: EdgeInsets.zero);
 
-    // Provide the childWidget to the Container.
+    // Fornece o childWidget ao Container.
     await tester.pumpWidget(Container(child: childWidget));
 
-    // Search for the childWidget in the tree and verify it exists.
+    // Procura pelo childWidget na árvore e verifica se ele existe.
     expect(find.byWidget(childWidget), findsOneWidget);
   });
 }
@@ -155,4 +131,4 @@ void main() {
 [`CommonFinders` documentation]: {{api}}/flutter_test/CommonFinders-class.html
 [`find`]: {{api}}/flutter_test/find-constant.html
 [`flutter_test`]: {{api}}/flutter_test/flutter_test-library.html
-[Introduction to widget testing]: /cookbook/testing/widget/introduction
+[Introdução ao teste de widget]: /cookbook/testing/widget/introduction

@@ -1,164 +1,166 @@
 ---
-title: Support for WebAssembly (Wasm)
+ia-translate: true
+title: Suporte para WebAssembly (Wasm)
 description: >-
-  Current status of Flutter's support for WebAssembly (Wasm).
+  Status atual do suporte do Flutter para WebAssembly (Wasm).
 short-title: Wasm
-last-update: Nov 6, 2024
+last-update: 6 de nov de 2024
 ---
 
-Flutter and Dart support
+O Flutter e o Dart suportam
 [WebAssembly](https://webassembly.org/)
-as a compilation target when building
-applications for the web.
+como um alvo de compilação ao construir
+aplicativos para a web.
 
 [`stable`]: {{site.github}}/flutter/flutter/blob/master/docs/releases/Flutter-build-release-channels.md#stable
 [`package:web`]: {{site.pub-pkg}}/web
 [`dart:js_interop`]: {{site.dart.api}}/{{site.dart.sdk.channel}}/dart-js_interop
 
-## Get started
+## Primeiros passos
 
-To try a pre-built Flutter web app using Wasm, check out the
-[Wonderous demo app](https://wonderous.app/web/).
+Para experimentar um aplicativo web Flutter pré-construído usando Wasm, confira
+o [aplicativo de demonstração Wonderous](https://wonderous.app/web/).
 
-To experiment with Wasm in your own apps, use the following steps.
+Para experimentar o Wasm em seus próprios aplicativos, siga os seguintes passos.
 
-### Switch to the latest version of Flutter
+### Mude para a versão mais recente do Flutter
 
-Switch to Flutter version 3.24 or higher
-to run and compile Flutter applications to WebAssembly.
-To ensure you are running the latest version, run `flutter upgrade`.
+Mude para a versão 3.24 ou superior do Flutter
+para executar e compilar aplicativos Flutter para WebAssembly.
+Para garantir que você está executando a versão mais recente, execute `flutter upgrade`.
 
-### Ensure that your app's dependencies are compatible
+### Certifique-se de que as dependências do seu aplicativo são compatíveis
 
-Try the default template [sample app][],
-or choose any Flutter application
-that has been migrated to be
-[compatible with Wasm](#js-interop-wasm).
+Experimente o [aplicativo de exemplo][] do template padrão,
+ou escolha qualquer aplicativo Flutter
+que tenha sido migrado para ser
+[compatível com Wasm](#js-interop-wasm).
 
-[sample app]: /get-started/test-drive
+[aplicativo de exemplo]: /get-started/test-drive
 
-### Modify the index page
+### Modifique a página index
 
-Make sure your app's `web/index.html` is updated to the latest
-[Flutter web app initialization][] for Flutter 3.22 and later.
+Certifique-se de que o `web/index.html` do seu aplicativo esteja atualizado para a
+[inicialização mais recente do aplicativo web Flutter][] para Flutter 3.22 e posterior.
 
-If you would like to use the default, delete the contents of the `web/`
-directory and run the following command to regenerate them:
+Se você quiser usar o padrão, exclua o conteúdo do diretório `web/`
+e execute o seguinte comando para regenerá-los:
 
 ```console
 $ flutter create . --platforms web
 ```
 
-[Flutter web app initialization]: /platform-integration/web/initialization
+[inicialização mais recente do aplicativo web Flutter]: /platform-integration/web/initialization
 
-### Run or build your app
+### Execute ou compile seu aplicativo
 
-To run the app with Wasm for development or testing,
-use the `--wasm` flag with the `flutter run` command.
+Para executar o aplicativo com Wasm para desenvolvimento ou teste,
+use o sinalizador `--wasm` com o comando `flutter run`.
 
 ```console
 $ flutter run -d chrome --wasm
 ```
 
-To build a web application with Wasm, add the `--wasm` flag to
-the existing `flutter build web` command.
+Para construir um aplicativo web com Wasm, adicione o sinalizador `--wasm` ao
+comando existente `flutter build web`.
 
 ```console
 $ flutter build web --wasm
 ```
 
-The command produces output into the `build/web` directory relative to the
-package root, just like `flutter build web`.
+O comando produz saída no diretório `build/web` relativo à raiz do
+pacote, assim como `flutter build web`.
 
-### Open the app in a compatible web browser
-Even with the `--wasm` flag, Flutter will still compile the application to
-JavaScript. If WasmGC support is not detected at runtime, the JavaScript output
-is used so the application will continue to work in all major browsers.
+### Abra o aplicativo em um navegador compatível
+Mesmo com o sinalizador `--wasm`, o Flutter ainda compilará o aplicativo para
+JavaScript. Se o suporte a WasmGC não for detectado em tempo de execução, a saída
+JavaScript será usada para que o aplicativo continue funcionando em todos os
+principais navegadores.
 
-You can verify whether the app is actually running with Wasm by checking for 
-the `dart2wasm` environment variable, set during compilation (preferred).
+Você pode verificar se o aplicativo está realmente executando com Wasm verificando a
+variável de ambiente `dart2wasm`, definida durante a compilação (preferencial).
 
 ```dart
 const isRunningWithWasm = bool.fromEnvironment('dart.tool.dart2wasm');
 ```
 
-Alternatively, you can use differences in number representations
-to test whether the native (Wasm) number representaton is used.
+Alternativamente, você pode usar diferenças nas representações de números
+para testar se a representação de número nativo (Wasm) está sendo usada.
 
 ```dart
 final isRunningWithWasm = identical(double.nan, double.nan);
 ```
 
-### Serve the built output with an HTTP server
+### Sirva a saída construída com um servidor HTTP
 
-Flutter web WebAssembly uses multiple threads to render your application
-faster, with less jank. To do this, Flutter uses advanced browser features that
-require specific HTTP response headers.
+O Flutter web WebAssembly usa várias threads para renderizar seu aplicativo
+mais rápido, com menos travamentos. Para fazer isso, o Flutter usa recursos
+avançados do navegador que exigem cabeçalhos de resposta HTTP específicos.
 
 :::warning
-Flutter web applications won't run with WebAssembly unless the server is
-configured to send specific HTTP headers.
+Aplicativos web Flutter não serão executados com WebAssembly a menos que o
+servidor esteja configurado para enviar cabeçalhos HTTP específicos.
 :::
 
-| Name | Value |
+| Nome | Valor |
 |-|-|
-| `Cross-Origin-Embedder-Policy` | `credentialless` <br> or <br> `require-corp` |
+| `Cross-Origin-Embedder-Policy` | `credentialless` <br> ou <br> `require-corp` |
 | `Cross-Origin-Opener-Policy` | `same-origin` |
 
 {:.table}
 
-To learn more about these headers, check out
-[Load cross-origin resources without CORP headers using COEP: credentialless][coep].
+Para saber mais sobre esses cabeçalhos, confira
+[Carregue recursos de origem cruzada sem cabeçalhos CORP usando COEP: sem credenciais][coep].
 
 [coep]: https://developer.chrome.com/blog/coep-credentialless-origin-trial
 
-## Learn more about browser compatibility
-To run a Flutter app that has been compiled to Wasm,
-you need a browser that supports [WasmGC][].
+## Saiba mais sobre a compatibilidade do navegador
+Para executar um aplicativo Flutter que foi compilado para Wasm,
+você precisa de um navegador que suporte [WasmGC][].
 
-[Chromium and V8][] support WasmGC since version 119.
-Chrome on iOS uses WebKit, which doesn't yet [support WasmGC][].
-Firefox announced stable support for WasmGC in Firefox 120,
-but currently doesn't work due to a known limitation (see details below).
+[Chromium and V8][] suportam WasmGC desde a versão 119.
+O Chrome no iOS usa o WebKit, que ainda não [suporta WasmGC][].
+O Firefox anunciou suporte estável para WasmGC no Firefox 120,
+mas atualmente não funciona devido a uma limitação conhecida (veja detalhes abaixo).
 
 [WasmGC]: {{site.github}}/WebAssembly/gc/tree/main/proposals/gc
 [Chromium and V8]: https://chromestatus.com/feature/6062715726462976
 [support WasmGC]: https://bugs.webkit.org/show_bug.cgi?id=247394
 [issue]: https://bugzilla.mozilla.org/show_bug.cgi?id=1788206
 
-- **Why not Firefox?**
-  Firefox versions 120 and later were previously able to run Flutter/Wasm, but
-  they're experiencing a bug that is blocking compatibility with Flutter's Wasm
-  renderer. Follow [this bug][firefox-bug] for details.
-- **Why not Safari?**
-  Safari now supports WasmGC, but is experiencing a similar bug that is
-  blocking compatibility with Flutter's Wasm renderer.
-  Follow [this bug][safari-bug] for details.
+- **Por que não o Firefox?**
+  As versões 120 e posteriores do Firefox eram capazes de executar o Flutter/Wasm, mas
+  estão enfrentando um bug que está bloqueando a compatibilidade com o renderizador Wasm
+  do Flutter. Siga [este bug][firefox-bug] para mais detalhes.
+- **Por que não o Safari?**
+  O Safari agora suporta WasmGC, mas está enfrentando um bug semelhante que está
+  bloqueando a compatibilidade com o renderizador Wasm do Flutter.
+  Siga [este bug][safari-bug] para mais detalhes.
 
 [firefox-bug]: https://bugzilla.mozilla.org/show_bug.cgi?id=1788206
 [safari-bug]: https://bugs.webkit.org/show_bug.cgi?id=267291
 
 :::warning
-Flutter compiled to Wasm can't run on the iOS version of any browser.
-All browsers on iOS are required to use WebKit,
-and can't use their own browser engine.
+O Flutter compilado para Wasm não pode ser executado na versão iOS de nenhum
+navegador. Todos os navegadores no iOS são obrigados a usar o WebKit,
+e não podem usar seu próprio mecanismo de navegador.
 :::
 
-## Using compatible JS interop libraries {:#js-interop-wasm}
+## Usando bibliotecas JS interop compatíveis {:#js-interop-wasm}
 
-To support compilation to Wasm, Dart has changed
-how it enables interop with browser and JavaScript APIs.
-This prevents Dart code that uses `dart:html` or `package:js`
-from compiling to Wasm.
+Para oferecer suporte à compilação para Wasm, o Dart mudou
+como ele habilita a interoperação com o navegador e as APIs JavaScript.
+Isso impede que o código Dart que usa `dart:html` ou `package:js`
+seja compilado para Wasm.
 
-Instead, Dart now provides new, lightweight interop solutions built around
-static JS interop:
+Em vez disso, o Dart agora fornece novas soluções de interoperação leves, construídas em torno
+da interoperação JS estática:
 
-- [`package:web`][], which replaces `dart:html` (and other web libraries)
-- [`dart:js_interop`][], which replaces `package:js` and `dart:js`
+- [`package:web`][], que substitui `dart:html` (e outras bibliotecas da web)
+- [`dart:js_interop`][], que substitui `package:js` e `dart:js`
 
-To learn more about JS interop in Dart,
-see Dart's [JS interop][] documentation page.
+Para saber mais sobre a interoperação JS no Dart,
+veja a página de documentação [JS interop][] do Dart.
 
 [`package:url_launcher`]: {{site.pub-pkg}}/url_launcher
 [`package:web` migration guide]: {{site.dart-site}}/interop/js-interop/package-web

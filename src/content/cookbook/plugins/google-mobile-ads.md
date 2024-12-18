@@ -1,7 +1,8 @@
 ---
-title: Add ads to your mobile Flutter app or game
-short-title: Show ads
-description: How to use the google_mobile_ads package to show ads in Flutter.
+ia-translate: true
+title: Adicione anúncios ao seu aplicativo ou jogo móvel Flutter
+short-title: Exibir anúncios
+description: Como usar o pacote google_mobile_ads para exibir anúncios no Flutter.
 ---
 
 <?code-excerpt path-base="cookbook/plugins/google_mobile_ads"?>
@@ -18,49 +19,48 @@ description: How to use the google_mobile_ads package to show ads in Flutter.
   introduction to ads in Flutter.
 {% endcomment %}
 
+Muitos desenvolvedores usam publicidade para monetizar seus aplicativos e jogos móveis.
+Isso permite que seu aplicativo seja baixado gratuitamente,
+o que melhora a popularidade do aplicativo.
 
-Many developers use advertising to monetize their mobile apps and games.
-This allows their app to be downloaded free of charge, 
-which improves the app's popularity.
+![Uma ilustração de um smartphone mostrando um anúncio](/assets/images/docs/cookbook/ads-device.jpg){:.site-illustration}
 
-![An illustration of a smartphone showing an ad](/assets/images/docs/cookbook/ads-device.jpg){:.site-illustration}
-
-To add ads to your Flutter project, use
-[AdMob](https://admob.google.com/home/), 
-Google's mobile advertising platform.
-This recipe demonstrates how to use the
+Para adicionar anúncios ao seu projeto Flutter, use
+[AdMob](https://admob.google.com/home/),
+a plataforma de publicidade móvel do Google.
+Esta receita demonstra como usar o
 [`google_mobile_ads`]({{site.pub-pkg}}/google_mobile_ads)
-package to add a banner ad to your app or game.
+pacote para adicionar um anúncio banner ao seu aplicativo ou jogo.
 
 :::note
-Apart from AdMob, the `google_mobile_ads` package also supports
-Ad Manager, a platform intended for large publishers. Integrating Ad
-Manager resembles integrating AdMob, but it won't be covered in this
-cookbook recipe. To use Ad Manager, follow the
-[Ad Manager documentation]({{site.developers}}/ad-manager/mobile-ads-sdk/flutter/quick-start).
+Além do AdMob, o pacote `google_mobile_ads` também suporta
+Ad Manager, uma plataforma destinada a grandes editores. Integrar o Ad
+Manager se assemelha à integração do AdMob, mas não será abordado neste
+receita do cookbook. Para usar o Ad Manager, siga a
+[documentação do Ad Manager]({{site.developers}}/ad-manager/mobile-ads-sdk/flutter/quick-start).
 :::
 
-## 1. Get AdMob App IDs
+## 1. Obtenha IDs de aplicativos do AdMob
 
-1.  Go to [AdMob](https://admob.google.com/) and set up an
-    account. This could take some time because you need to provide
-    banking information, sign contracts, and so on.
+1.  Acesse [AdMob](https://admob.google.com/) e configure um
+    conta. Isso pode levar algum tempo porque você precisa fornecer
+    informações bancárias, assinar contratos e assim por diante.
 
-2.  With the AdMob account ready, create two *Apps* in AdMob: one for
-    Android and one for iOS.
+2.  Com a conta do AdMob pronta, crie dois *Aplicativos* no AdMob: um para
+    Android e um para iOS.
 
-3.  Open the **App settings** section.
+3.  Abra a seção **Configurações do aplicativo**.
 
-4.  Get the AdMob *App IDs* for both the Android app and the iOS app.
-    They resemble `ca-app-pub-1234567890123456~1234567890`. Note the
-    tilde (`~`) between the two numbers.
-    {% comment %} https://support.google.com/admob/answer/7356431 for future reference {% endcomment %}
+4.  Obtenha os *IDs de aplicativos* do AdMob para o aplicativo Android e o aplicativo iOS.
+    Eles se parecem com `ca-app-pub-1234567890123456~1234567890`. Observe o
+    til (`~`) entre os dois números.
+    {% comment %} https://support.google.com/admob/answer/7356431 para referência futura {% endcomment %}
 
-    ![Screenshot from AdMob showing the location of the App ID](/assets/images/docs/cookbook/ads-app-id.png)
+    ![Captura de tela do AdMob mostrando a localização do ID do aplicativo](/assets/images/docs/cookbook/ads-app-id.png)
 
-## 2. Platform-specific setup
+## 2. Configuração específica da plataforma
 
-Update your Android and iOS configurations to include your App IDs.
+Atualize suas configurações do Android e iOS para incluir seus IDs de aplicativo.
 
 {% comment %}
     Content below is more or less a copypaste from devsite: 
@@ -69,18 +69,18 @@ Update your Android and iOS configurations to include your App IDs.
 
 ### Android
 
-Add your AdMob app ID to your Android app.
+Adicione o ID do seu aplicativo AdMob ao seu aplicativo Android.
 
-1.  Open the app's `android/app/src/main/AndroidManifest.xml` file.
+1.  Abra o arquivo `android/app/src/main/AndroidManifest.xml` do aplicativo.
 
-2.  Add a new `<meta-data>` tag.
+2.  Adicione uma nova tag `<meta-data>`.
 
-3.  Set the `android:name` element with a value of
+3.  Defina o elemento `android:name` com o valor de
     `com.google.android.gms.ads.APPLICATION_ID`.
 
-4.  Set the `android:value` element with the value to your own AdMob app
-    ID that you got in the previous step. 
-    Include them in quotes as shown:
+4.  Defina o elemento `android:value` com o valor do seu próprio aplicativo AdMob
+    ID que você obteve na etapa anterior.
+    Inclua-os entre aspas, como mostrado:
 
     ```xml
     <manifest>
@@ -97,23 +97,23 @@ Add your AdMob app ID to your Android app.
 
 ### iOS
 
-Add your AdMob app ID to your iOS app.
+Adicione o ID do seu aplicativo AdMob ao seu aplicativo iOS.
 
-1.  Open your app's `ios/Runner/Info.plist` file.
+1.  Abra o arquivo `ios/Runner/Info.plist` do seu aplicativo.
 
-2.  Enclose `GADApplicationIdentifier` with a `key` tag.
+2.  Envolva `GADApplicationIdentifier` com uma tag `key`.
 
-3.  Enclose your AdMob app ID with a `string` tag. You created this AdMob
-    App ID in [step 1](#1-get-admob-app-ids).
+3.  Envolva o ID do seu aplicativo AdMob com uma tag `string`. Você criou este AdMob
+    ID do aplicativo na [etapa 1](#1-get-admob-app-ids).
 
     ```xml
     <key>GADApplicationIdentifier</key>
     <string>ca-app-pub-################~##########</string>
     ```
 
-## 3. Add the `google_mobile_ads` plugin
+## 3. Adicione o plugin `google_mobile_ads`
 
-To add the `google_mobile_ads` plugin as a dependency, run
+Para adicionar o plugin `google_mobile_ads` como uma dependência, execute
 `flutter pub add`:
 
 ```console
@@ -121,7 +121,7 @@ $ flutter pub add google_mobile_ads
 ```
 
 :::note
-Once you add the plugin, your Android app might fail to build with a
+Depois de adicionar o plugin, seu aplicativo Android pode falhar na compilação com um
 `DexArchiveMergerException`:
 
 ```plaintext
@@ -129,19 +129,19 @@ Error while merging dex archives:
 The number of method references in a .dex file cannot exceed 64K.
 ```
 
-To resolve this, execute the `flutter run` command in the terminal, not
-through an IDE plugin. The `flutter` tool can detect the issue and ask
-whether it should try to solve it. Answer `y`, and the problem goes away.
-You can return to running your app from an IDE after that.
+Para resolver isso, execute o comando `flutter run` no terminal, não
+através de um plugin IDE. A ferramenta `flutter` pode detectar o problema e perguntar
+se ele deve tentar resolvê-lo. Responda `y` e o problema desaparece.
+Você pode voltar a executar seu aplicativo de um IDE depois disso.
 
-![Screenshot of the `flutter` tool asking about multidex support](/assets/images/docs/cookbook/ads-multidex.png)
+![Captura de tela da ferramenta `flutter` perguntando sobre suporte multidex](/assets/images/docs/cookbook/ads-multidex.png)
 :::
 
-## 4. Initialize the Mobile Ads SDK
+## 4. Inicialize o SDK de anúncios para dispositivos móveis
 
-You need to initialize the Mobile Ads SDK before loading ads.
+Você precisa inicializar o SDK de anúncios para dispositivos móveis antes de carregar os anúncios.
 
-1.  Call `MobileAds.instance.initialize()` to initialize the Mobile Ads
+1.  Chame `MobileAds.instance.initialize()` para inicializar os anúncios para dispositivos móveis
     SDK.
 
     <?code-excerpt "lib/main.dart (main)"?>
@@ -154,28 +154,28 @@ You need to initialize the Mobile Ads SDK before loading ads.
     }
     ```
 
-Run the initialization step at startup, as shown above, 
-so that the AdMob SDK has enough time to initialize before it is needed.
+Execute a etapa de inicialização na inicialização, como mostrado acima,
+para que o SDK do AdMob tenha tempo suficiente para inicializar antes de ser necessário.
 
 :::note
-`MobileAds.instance.initialize()` returns a `Future` but, the
-way the SDK is built, you don't need to `await` it.
-If you try to load an ad before that `Future` is completed, 
-the SDK will gracefully wait until the initialization, and _then_ load the ad.
-You can await the `Future`
-if you want to know the exact time when the AdMob SDK is ready.
+`MobileAds.instance.initialize()` retorna um `Future`, mas, o
+maneira como o SDK é construído, você não precisa `await`.
+Se você tentar carregar um anúncio antes que esse `Future` seja concluído,
+o SDK aguardará normalmente até a inicialização e _então_ carregará o anúncio.
+Você pode aguardar o `Future`
+se você quiser saber o momento exato em que o SDK do AdMob está pronto.
 :::
 
-## 5. Load a banner ad
+## 5. Carregue um anúncio banner
 
-To show an ad, you need to request it from AdMob.
+Para exibir um anúncio, você precisa solicitá-lo ao AdMob.
 
-To load a banner ad, construct a `BannerAd` instance, and
-call `load()` on it.
+Para carregar um anúncio banner, construa uma instância `BannerAd` e
+chame `load()` nele.
 
 :::note
-The following code snippet refers to fields such a `adSize`, `adUnitId`
-and `_bannerAd`. This will all make more sense in a later step.
+O seguinte trecho de código se refere a campos como `adSize`, `adUnitId`
+e `_bannerAd`. Tudo isso fará mais sentido em uma etapa posterior.
 :::
 
 <?code-excerpt "lib/my_banner_ad.dart (loadAd)"?>
@@ -210,20 +210,19 @@ void _loadAd() {
 }
 ```
 
-To view a complete example, check out the last step of this recipe.
+Para ver um exemplo completo, confira a última etapa desta receita.
 
+## 6. Exibir anúncio banner
 
-## 6. Show banner ad
-
-Once you have a loaded instance of `BannerAd`, use `AdWidget` to show it.
+Depois de ter uma instância carregada de `BannerAd`, use `AdWidget` para exibi-la.
 
 ```dart
 AdWidget(ad: _bannerAd)
 ```
 
-It's a good idea to wrap the widget in a `SafeArea` (so that no part of
-the ad is obstructed by device notches) and a `SizedBox` (so that it has
-its specified, constant size before and after loading).
+É uma boa ideia envolver o widget em um `SafeArea` (para que nenhuma parte do
+anúncio seja obstruído por entalhes do dispositivo) e um `SizedBox` (para que ele tenha
+seu tamanho especificado e constante antes e depois do carregamento).
 
 <?code-excerpt "lib/my_banner_ad.dart (build)"?>
 ```dart
@@ -243,47 +242,46 @@ Widget build(BuildContext context) {
 }
 ```
 
-You must dispose of an ad when you no longer need to access it. The best
-practice for when to call `dispose()` is either after the `AdWidget` is
-removed from the widget tree or in the
-`BannerAdListener.onAdFailedToLoad()` callback.
+Você deve descartar um anúncio quando não precisar mais acessá-lo. O melhor
+prática para quando chamar `dispose()` é depois que o `AdWidget` é
+removido da árvore de widgets ou no
+callback `BannerAdListener.onAdFailedToLoad()`.
 
 <?code-excerpt "lib/my_banner_ad.dart (dispose)"?>
 ```dart
 _bannerAd?.dispose();
 ```
 
+## 7. Configurar anúncios
 
-## 7. Configure ads
+Para exibir algo além dos anúncios de teste, você deve registrar unidades de anúncios.
 
-To show anything beyond test ads, you have to register ad units.
+1.  Abra [AdMob](https://admob.google.com/).
 
-1.  Open [AdMob](https://admob.google.com/).
+2.  Crie uma *Unidade de anúncio* para cada um dos aplicativos AdMob.
 
-2.  Create an *Ad unit* for each of the AdMob apps.
+    ![Captura de tela da localização das unidades de anúncio na interface do usuário da Web do AdMob](/assets/images/docs/cookbook/ads-ad-unit.png)
 
-    ![Screenshot of the location of Ad Units in AdMob web UI](/assets/images/docs/cookbook/ads-ad-unit.png)
+    Isso pergunta sobre o formato da unidade de anúncio. O AdMob oferece muitos formatos
+    além de anúncios em banner --- intersticiais, anúncios com recompensa, anúncios de abertura de aplicativo e
+    assim por diante.
+    A API para eles é semelhante e documentada no
+    [documentação do AdMob]({{site.developers}}/admob/flutter/quick-start)
+    e através
+    [amostras oficiais](https://github.com/googleads/googleads-mobile-flutter/tree/main/samples/admob).
 
-    This asks for the Ad unit's format. AdMob provides many formats
-    beyond banner ads --- interstitials, rewarded ads, app open ads, and
-    so on. 
-    The API for those is similar, and documented in the 
-    [AdMob documentation]({{site.developers}}/admob/flutter/quick-start)
-    and through 
-    [official samples](https://github.com/googleads/googleads-mobile-flutter/tree/main/samples/admob).
+3.  Escolha anúncios em banner.
 
-3.  Choose banner ads.
+4.  Obtenha os *IDs de unidades de anúncio* para o aplicativo Android e o aplicativo iOS.
+    Você pode encontrá-los na seção **Unidades de anúncio**. Eles parecem algo
+    como `ca-app-pub-1234567890123456/1234567890`. O formato se assemelha
+    o *ID do aplicativo*, mas com uma barra (`/`) entre os dois números. Isso
+    distingue um *ID de unidade de anúncio* de um *ID de aplicativo*.
 
-4.  Get the *Ad unit IDs* for both the Android app and the iOS app.
-    You can find these in the **Ad units** section. They look something
-    like `ca-app-pub-1234567890123456/1234567890`. The format resembles
-    the *App ID* but with a slash (`/`) between the two numbers. This
-    distinguishes an *Ad unit ID* from an *App ID*.
+    ![Captura de tela de um ID de unidade de anúncio na interface do usuário da Web do AdMob](/assets/images/docs/cookbook/ads-ad-unit-id.png)
 
-    ![Screenshot of an Ad Unit ID in AdMob web UI](/assets/images/docs/cookbook/ads-ad-unit-id.png)
-
-5.  Add these *Ad unit IDs* to the constructor of `BannerAd`,
-    depending on the target app platform.
+5.  Adicione esses *IDs de unidades de anúncio* ao construtor de `BannerAd`,
+    dependendo da plataforma do aplicativo de destino.
 
     <?code-excerpt "lib/my_banner_ad.dart (adUnitId)"?>
     ```dart
@@ -294,32 +292,31 @@ To show anything beyond test ads, you have to register ad units.
         : 'ca-app-pub-3940256099942544/2934735716';
     ```
 
-## 8. Final touches
+## 8. Toques finais
 
-To display the ads in a published app or game (as opposed to debug or
-testing scenarios), your app must meet additional requirements:
+Para exibir os anúncios em um aplicativo ou jogo publicado (em vez de depurar ou
+cenários de teste), seu aplicativo deve atender a requisitos adicionais:
 
-1.  Your app must be reviewed and approved before it can fully serve
-    ads.
-    Follow AdMob's [app readiness guidelines](https://support.google.com/admob/answer/10564477).
-    For example, your app must be listed on at least one of the
-    supported stores such as Google Play Store or Apple App Store.
+1.  Seu aplicativo deve ser revisado e aprovado antes que possa atender totalmente
+    anúncios.
+    Siga as [diretrizes de prontidão de aplicativos](https://support.google.com/admob/answer/10564477) do AdMob.
+    Por exemplo, seu aplicativo deve estar listado em pelo menos uma das
+    lojas suportadas, como Google Play Store ou Apple App Store.
 
-2.  You must [create an `app-ads.txt`](https://support.google.com/admob/answer/9363762)
-    file and publish it on your developer website.
+2.  Você deve [criar um `app-ads.txt`](https://support.google.com/admob/answer/9363762)
+    arquivo e publique-o em seu site de desenvolvedor.
 
-![An illustration of a smartphone showing an ad](/assets/images/docs/cookbook/ads-device.jpg){:.site-illustration}
+![Uma ilustração de um smartphone mostrando um anúncio](/assets/images/docs/cookbook/ads-device.jpg){:.site-illustration}
 
-To learn more about app and game monetization, 
-visit the official sites
-of [AdMob](https://admob.google.com/)
-and [Ad Manager](https://admanager.google.com/).
+Para saber mais sobre monetização de aplicativos e jogos,
+visite os sites oficiais
+do [AdMob](https://admob.google.com/)
+e [Ad Manager](https://admanager.google.com/).
 
+## 9. Exemplo completo
 
-## 9. Complete example
-
-The following code implements a simple stateful widget that loads a
-banner ad and shows it.
+O código a seguir implementa um widget stateful simples que carrega um
+anúncio banner e mostra.
 
 <?code-excerpt "lib/my_banner_ad.dart"?>
 ```dart
@@ -413,14 +410,14 @@ class _MyBannerAdWidgetState extends State<MyBannerAdWidget> {
 ```
 
 :::tip
-In many cases, you will want to load the ad _outside_ a widget.
+Em muitos casos, você vai querer carregar o anúncio _fora_ de um widget.
 
-For example, you can load it in a `ChangeNotifier`, a BLoC, a controller,
-or whatever else you are using for app-level state. This way, you can
-preload a banner ad in advance, and have it ready to show for when the
-user navigates to a new screen.
+Por exemplo, você pode carregá-lo em um `ChangeNotifier`, um BLoC, um controlador,
+ou qualquer outra coisa que você esteja usando para o estado do nível do aplicativo. Dessa forma, você pode
+pré-carregar um anúncio banner com antecedência e tê-lo pronto para exibir quando o
+usuário navega para uma nova tela.
 
-Verify that you have loaded the `BannerAd` instance before showing it with
-an `AdWidget`, and that you dispose of the instance when it is no longer
-needed.
+Verifique se você carregou a instância `BannerAd` antes de exibi-la com
+um `AdWidget`, e que você descarte a instância quando ela não for mais
+necessário.
 :::

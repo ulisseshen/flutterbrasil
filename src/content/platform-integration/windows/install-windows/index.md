@@ -1,13 +1,14 @@
 ---
-title: Add Windows as a target platform for Flutter
-description: Configure your system to develop Flutter for Windows.
-short-title: Set up Windows development
+ia-translate: true
+title: Adicione o Windows como uma plataforma de destino para o Flutter
+description: Configure seu sistema para desenvolver Flutter para Windows.
+short-title: Configurar o desenvolvimento para Windows
 target-list: [Android, web]
 ---
 
-To set up your development environment for targeting Windows,
-choose the guide that corresponds to the [Getting Started path][] you followed,
-or the platform you already have set up.
+Para configurar seu ambiente de desenvolvimento para direcionar o Windows,
+escolha o guia que corresponde ao [Caminho de Introdução][] que você seguiu,
+ou a plataforma que você já configurou.
 
 <div class="card-grid">
 {% for target in target-list %}
@@ -27,7 +28,7 @@ or the platform you already have set up.
           <span class="material-symbols">desktop_windows</span>
         </span>
         <span class="text-muted d-block">
-        Make Windows desktop and {{ target }} apps
+        Crie aplicativos para desktop Windows e {{ target }}
         </span>
       </header>
     </div>
@@ -35,4 +36,4 @@ or the platform you already have set up.
 {% endfor %}
 </div>
 
-[Getting Started path]: /get-started/install
+[Caminho de Introdução]: /get-started/install

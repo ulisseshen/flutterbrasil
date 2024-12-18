@@ -1,34 +1,31 @@
 ---
-title: Flutter SDK archive
-short-title: Archive
-description: "All current Flutter SDK releases: stable, beta, and main."
+ia-translate: true
+title: Arquivo do SDK Flutter
+short-title: Arquivo
+description: "Todas as versões atuais do SDK Flutter: estável, beta e principal."
 toc: false
 ---
 
-The {{site.sdk.channel | capitalize }} channel contains the
-most stable Flutter builds.
-To learn more, check out [Flutter's channels][].
+O canal {{site.sdk.channel | capitalize }} contém as builds mais estáveis do Flutter.
+Para saber mais, confira os [canais do Flutter][].
 
 {% render docs/china-notice.md %}
 
-To learn what's new in the major Flutter releases,
-check out the [release notes][] page.
+Para saber as novidades das principais versões do Flutter, confira a página de
+[notas de versão][].
 
-
-:::note Note on provenance
-[provenance](https://slsa.dev/provenance)
-describes how software artifacts are built, including
-what the download contains and who created it.
-To view provenance in a more readable format
-and where nothing is downloaded, run the following
-command using the provenance file URL from a release (you might need to 
-download [jq](https://stedolan.github.io/jq/) to easily parse the JSON).
+:::note Nota sobre procedência
+[procedência](https://slsa.dev/provenance)
+descreve como os artefatos de software são construídos, incluindo
+o que o download contém e quem o criou. Para visualizar a procedência em um formato mais
+legível e onde nada é baixado, execute o seguinte comando usando o URL do
+arquivo de procedência de uma versão (pode ser necessário baixar o
+[jq](https://stedolan.github.io/jq/) para analisar facilmente o JSON).
 
 ```console
-curl [provenance URL] | jq -r .payload | base64 -d | jq
+curl [URL da procedência] | jq -r .payload | base64 -d | jq
 ```
 :::
-
 
 {% tabs "os-archive-tabs" %}
 {% tab "Windows" %}
@@ -50,23 +47,22 @@ curl [provenance URL] | jq -r .payload | base64 -d | jq
 
 <a id="master-channel" aria-hidden="true"></a>
 
-## Main channel
+## Canal Principal
 
-Installation bundles are not available for the `main` channel
-(which was previously known as the `master` channel).
-However, you can get the SDK directly from
-[GitHub repo][] by cloning the main channel,
-and then triggering a download of the SDK dependencies:
+Os pacotes de instalação não estão disponíveis para o canal `main`
+(anteriormente conhecido como canal `master`).
+No entanto, você pode obter o SDK diretamente do [repositório do GitHub][] clonando o canal principal e, em seguida,
+acionando um download das dependências do SDK:
 
 ```console
 $ git clone -b main https://github.com/flutter/flutter.git
 $ ./flutter/bin/flutter --version
 ```
 
-For additional details on how our installation bundles are structured,
-see [Installation bundles][].
+Para obter detalhes adicionais sobre como nossos pacotes de instalação são
+estruturados, consulte [Pacotes de instalação][].
 
-[Flutter's channels]: {{site.repo.flutter}}/blob/main/docs/releases/Flutter-build-release-channels.md
-[release notes]: /release/release-notes
-[GitHub repo]: {{site.repo.flutter}}
-[Installation bundles]: {{site.repo.flutter}}/blob/main/docs/infra/Flutter-Installation-Bundles.md
+[canais do Flutter]: {{site.repo.flutter}}/blob/main/docs/releases/Flutter-build-release-channels.md
+[notas de versão]: /release/release-notes
+[repositório do GitHub]: {{site.repo.flutter}}
+[Pacotes de instalação]: {{site.repo.flutter}}/blob/main/docs/infra/Flutter-Installation-Bundles.md

@@ -1,7 +1,8 @@
 ---
-title: Async widgets
-short-title: Async
-description: A catalog of Flutter widgets for handling asynchronous code.
+ia-translate: true
+title: Widgets Assíncronos
+short-title: Assíncrono
+description: Um catálogo de widgets Flutter para lidar com código assíncrono.
 ---
 
 {% render docs/catalog-page.md, categoryName:"Async", catalog:catalog %}

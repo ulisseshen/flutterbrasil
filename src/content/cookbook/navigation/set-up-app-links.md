@@ -1,55 +1,56 @@
 ---
-title: Set up app links for Android
+ia-translate: true
+title: Configurar links de aplicativos para Android
 description: >-
-  Learn how to set up app links for an
-  Android application built with Flutter.
+  Aprenda como configurar links de aplicativos para um
+  aplicativo Android construído com Flutter.
 ---
 
-Deep linking is a mechanism for launching an app with a URI.
-This URI contains scheme, host, and path,
-and opens the app to a specific screen.
+Deep linking é um mecanismo para iniciar um aplicativo com um URI.
+Este URI contém esquema, host e caminho,
+e abre o aplicativo para uma tela específica.
 
 :::note
-Did you know that Flutter DevTools provides a
-deep link validation tool for Android?
-An iOS version of the tool is in the works.
-Learn more and see a demo at [Validate deep links][].
+Você sabia que o Flutter DevTools fornece uma
+ferramenta de validação de deep link para Android?
+Uma versão iOS da ferramenta está em desenvolvimento.
+Saiba mais e veja uma demonstração em [Validar deep links][].
 :::
 
-[Validate deep links]: /tools/devtools/deep-links
+[Validar deep links]: /tools/devtools/deep-links
 
-An _app link_ is a type of deep link that uses
-`http` or `https` and is exclusive to Android devices.
+Um _link de aplicativo_ é um tipo de deep link que usa
+`http` ou `https` e é exclusivo para dispositivos Android.
 
-Setting up app links requires one to own a web domain.
-Otherwise, consider using [Firebase Hosting][]
-or [GitHub Pages][] as a temporary solution.
+Configurar links de aplicativos requer que você possua um domínio web.
+Caso contrário, considere usar o [Firebase Hosting][]
+ou [GitHub Pages][] como uma solução temporária.
 
-## 1. Customize a Flutter application
+## 1. Personalizar um aplicativo Flutter
 
-Write a Flutter app that can handle an incoming URL.
-This example uses the [go_router][] package to handle the routing.
-The Flutter team maintains the `go_router` package.
-It provides a simple API to handle complex routing scenarios.
+Escreva um aplicativo Flutter que possa lidar com um URL de entrada.
+Este exemplo usa o pacote [go_router][] para lidar com o roteamento.
+A equipe do Flutter mantém o pacote `go_router`.
+Ele fornece uma API simples para lidar com cenários complexos de roteamento.
 
- 1. To create a new application, type `flutter create <app-name>`:
+ 1. Para criar um novo aplicativo, digite `flutter create <nome-do-app>`:
 
     ```console
     $ flutter create deeplink_cookbook
     ```
 
- 2. To include `go_router` package in your app,
-    add a dependency for `go_router` to the project:
+ 2. Para incluir o pacote `go_router` no seu aplicativo,
+    adicione uma dependência para `go_router` ao projeto:
 
-    To add the `go_router` package as a dependency,
-    run `flutter pub add`:
+    Para adicionar o pacote `go_router` como uma dependência,
+    execute `flutter pub add`:
 
     ```console
     $ flutter pub add go_router
     ```
 
- 3. To handle the routing,
-    create a `GoRouter` object in the `main.dart` file:
+ 3. Para lidar com o roteamento,
+    crie um objeto `GoRouter` no arquivo `main.dart`:
 
     ```dart title="main.dart"
     import 'package:flutter/material.dart';
@@ -57,19 +58,19 @@ It provides a simple API to handle complex routing scenarios.
     
     void main() => runApp(MaterialApp.router(routerConfig: router));
     
-    /// This handles '/' and '/details'.
+    /// Isso lida com '/' e '/details'.
     final router = GoRouter(
       routes: [
         GoRoute(
           path: '/',
           builder: (_, __) => Scaffold(
-            appBar: AppBar(title: const Text('Home Screen')),
+            appBar: AppBar(title: const Text('Tela Inicial')),
           ),
           routes: [
             GoRoute(
               path: 'details',
               builder: (_, __) => Scaffold(
-                appBar: AppBar(title: const Text('Details Screen')),
+                appBar: AppBar(title: const Text('Tela de Detalhes')),
               ),
             ),
           ],
@@ -78,14 +79,14 @@ It provides a simple API to handle complex routing scenarios.
     );
     ```
 
-## 2. Modify AndroidManifest.xml
+## 2. Modificar AndroidManifest.xml
 
- 1. Open the Flutter project with VS Code or Android Studio. 
- 2. Navigate to `android/app/src/main/AndroidManifest.xml` file.
- 3. Add the following metadata tag and intent filter inside the
-   `<activity>` tag with `.MainActivity`.
+ 1. Abra o projeto Flutter com VS Code ou Android Studio.
+ 2. Navegue até o arquivo `android/app/src/main/AndroidManifest.xml`.
+ 3. Adicione a seguinte tag metadata e o filtro de intent dentro da
+   tag `<activity>` com `.MainActivity`.
 
-    Replace `example.com` with your own web domain.
+    Substitua `example.com` pelo seu próprio domínio web.
 
     ```xml
     <intent-filter android:autoVerify="true">
@@ -98,57 +99,57 @@ It provides a simple API to handle complex routing scenarios.
     ```
    
     :::note
-    If you use a third-party plugin to handle deep links,
-    such as [app_links][], 
-    Flutter's default deeplink handler will
-    break these plugins. 
+    Se você usar um plugin de terceiros para lidar com deep links,
+    como [app_links][],
+    o manipulador de deeplink padrão do Flutter irá
+    quebrar esses plugins.
     
-    To opt out of using Flutter's default deep link handler,
-     add the following metadata tag:
+    Para optar por não usar o manipulador de deep link padrão do Flutter,
+     adicione a seguinte tag metadata:
     ```<meta-data android:name="flutter_deeplinking_enabled" android:value="false" />```
-    to opt out of Flutter's default deeplink handler 
+    para optar por não usar o manipulador de deeplink padrão do Flutter
     :::
 
-## 3. Hosting assetlinks.json file
+## 3. Hospedagem do arquivo assetlinks.json
 
-Host an `assetlinks.json` file in using a web server
-with a domain that you own. This file tells the
-mobile browser which Android application to open instead
-of the browser. To create the file,
-get the package name of the Flutter app you created in
-the previous step and the sha256 fingerprint of the
-signing key you will be using to build the APK.
+Hospede um arquivo `assetlinks.json` usando um servidor web
+com um domínio que você possui. Este arquivo informa ao
+navegador móvel qual aplicativo Android abrir em vez
+do navegador. Para criar o arquivo,
+obtenha o nome do pacote do aplicativo Flutter que você criou na
+etapa anterior e a impressão digital sha256 da
+chave de assinatura que você usará para construir o APK.
 
-### Package name
+### Nome do pacote
 
-Locate the package name in `AndroidManifest.xml`,
-the `package` property under `<manifest>` tag.
-Package names are usually in the format of `com.example.*`.
+Localize o nome do pacote em `AndroidManifest.xml`,
+a propriedade `package` sob a tag `<manifest>`.
+Os nomes dos pacotes geralmente estão no formato `com.example.*`.
 
-### sha256 fingerprint
+### Impressão digital sha256
 
-The process might differ depending on how the apk is signed.
+O processo pode variar dependendo de como o apk é assinado.
 
-#### Using google play app signing
+#### Usando o Google Play App Signing
 
-You can find the sha256 fingerprint directly from play
-developer console. Open your app in the play console,
-under **Release> Setup > App Integrity> App Signing tab**:
+Você pode encontrar a impressão digital sha256 diretamente no console do
+desenvolvedor do Play. Abra seu aplicativo no console do Play,
+em **Lançamento> Configuração > Integridade do Aplicativo > Guia Assinatura do Aplicativo**:
 
-<img src="/assets/images/docs/cookbook/set-up-app-links-pdc-signing-key.png" alt="Screenshot of sha256 fingerprint in play developer console" width="50%" />
+<img src="/assets/images/docs/cookbook/set-up-app-links-pdc-signing-key.png" alt="Captura de tela da impressão digital sha256 no console do desenvolvedor do Play" width="50%" />
 
-#### Using local keystore
+#### Usando o keystore local
 
-If you are storing the key locally,
-you can generate sha256 using the following command:
+Se você estiver armazenando a chave localmente,
+você pode gerar o sha256 usando o seguinte comando:
 
 ```console
-keytool -list -v -keystore <path-to-keystore>
+keytool -list -v -keystore <caminho-para-o-keystore>
 ```
 
 ### assetlinks.json
 
-The hosted file should look similar to this:
+O arquivo hospedado deve ser semelhante a este:
 
 ```json
 [{
@@ -162,62 +163,62 @@ The hosted file should look similar to this:
 }]
 ```
 
- 1. Set the `package_name` value to your Android application ID.
+ 1. Defina o valor de `package_name` para o ID do seu aplicativo Android.
 
- 2. Set sha256_cert_fingerprints to the value you got
-    from the previous step.
+ 2. Defina `sha256_cert_fingerprints` para o valor que você obteve
+    na etapa anterior.
 
- 3.  Host the file at a URL that resembles the following:
-    `<webdomain>/.well-known/assetlinks.json`
+ 3.  Hospede o arquivo em um URL semelhante ao seguinte:
+    `<domínio-web>/.well-known/assetlinks.json`
 
- 4. Verify that your browser can access this file.
+ 4. Verifique se o seu navegador pode acessar este arquivo.
 
 :::note
-If you have multiple flavors, you can have many sha256_cert_fingerprint 
-values in thesha256_cert_fingerprints field. 
-Just add it to the sha256_cert_fingerprints list
+Se você tiver vários flavors, você pode ter muitos valores sha256_cert_fingerprint
+no campo sha256_cert_fingerprints.
+Basta adicioná-lo à lista sha256_cert_fingerprints.
 :::
 
-## Testing
+## Testando
 
-You can use a real device or the Emulator to test an app link,
-but first make sure you have executed `flutter run` at least once on
-the devices. This ensures that the Flutter application is installed.
+Você pode usar um dispositivo real ou o emulador para testar um link de aplicativo,
+mas primeiro certifique-se de ter executado `flutter run` pelo menos uma vez em
+os dispositivos. Isso garante que o aplicativo Flutter esteja instalado.
 
-<img src="/assets/images/docs/cookbook/set-up-app-links-emulator-installed.png" alt="Emulator screenshot" width="50%" />
+<img src="/assets/images/docs/cookbook/set-up-app-links-emulator-installed.png" alt="Captura de tela do emulador" width="50%" />
 
-To test **only** the app setup, use the adb command:
+Para testar **apenas** a configuração do aplicativo, use o comando adb:
 
 ```console
 adb shell 'am start -a android.intent.action.VIEW \
     -c android.intent.category.BROWSABLE \
-    -d "http://<web-domain>/details"' \
-    <package name>
+    -d "http://<domínio-web>/details"' \
+    <nome do pacote>
 ```
 
 :::note
-This doesn't test whether the web files are
-hosted correctly,
-the command launches the app even
-if web files are not presented.
+Isso não testa se os arquivos da web estão
+hospedados corretamente,
+o comando inicia o aplicativo mesmo
+se os arquivos da web não estiverem presentes.
 :::
 
-To test **both** web and app setup, you must click a link
-directly through web browser or another app.
-One way is to create a Google Doc, add the link, and tap on it.
+Para testar **tanto** a configuração web quanto a do aplicativo, você deve clicar em um link
+diretamente através do navegador da web ou de outro aplicativo.
+Uma maneira é criar um Google Docs, adicionar o link e tocar nele.
 
-If everything is set up correctly, the Flutter application
-launches and displays the details screen:
+Se tudo estiver configurado corretamente, o aplicativo Flutter
+será iniciado e exibirá a tela de detalhes:
 
-<img src="/assets/images/docs/cookbook/set-up-app-links-emulator-deeplinked.png" alt="Deeplinked Emulator screenshot" width="50%" />
+<img src="/assets/images/docs/cookbook/set-up-app-links-emulator-deeplinked.png" alt="Captura de tela do emulador com deep link" width="50%" />
 
-## Appendix
+## Apêndice
 
-Source code: [deeplink_cookbook][]
+Código-fonte: [deeplink_cookbook][]
 
 [deeplink_cookbook]: {{site.github}}/flutter/codelabs/tree/main/deeplink_cookbook
 [Firebase Hosting]: {{site.firebase}}/docs/hosting
 [go_router]: {{site.pub}}/packages/go_router
 [GitHub Pages]: https://pages.github.com
 [app_links]: {{site.pub}}/packages/app_links
-[Signing the app]: /deployment/android#signing-the-app
+[Assinando o aplicativo]: /deployment/android#signing-the-app

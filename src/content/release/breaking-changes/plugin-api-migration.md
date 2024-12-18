@@ -1,81 +1,42 @@
 ---
-title: Supporting the new Android plugins APIs
-description: How to update a plugin using the old APIs to support the new APIs.
+ia-translate: true
+title: Suportando as novas APIs de plugins Android
+description: Como atualizar um plugin usando as APIs antigas para suportar as novas APIs.
 ---
 
 <?code-excerpt path-base="platform_integration/plugin_api_migration"?>
 
 :::note
-New plugins and all plugins that are compatible with Flutter 2 (March 2021) can ignore this page.
+Novos plugins e todos os plugins que são compatíveis com o Flutter 2 (Março de 2021) podem ignorar esta página.
 :::
 
 :::note
-You might be directed to this page if the framework detects that
-your app uses a plugin based on the old Android APIs.
+Você pode ser direcionado para esta página se o framework detectar que seu app usa um plugin baseado nas APIs Android antigas.
 :::
 
-_If you don't write or maintain an Android Flutter plugin,
-you can skip this page._
+_Se você não escreve ou mantém um plugin Flutter para Android, pode pular esta página._
 
-As of the 1.12 release,
-new plugin APIs are available for the Android platform.
-The old APIs based on [`PluginRegistry.Registrar`][]
-won't be immediately deprecated,
-but we encourage you to migrate to the new APIs based on
-[`FlutterPlugin`][].
+A partir da versão 1.12, novas APIs de plugin estão disponíveis para a plataforma Android. As APIs antigas baseadas em [`PluginRegistry.Registrar`][] não serão imediatamente descontinuadas, mas encorajamos você a migrar para as novas APIs baseadas em [`FlutterPlugin`][].
 
-The new API has the advantage of providing a cleaner set
-of accessors for lifecycle dependent components compared
-to the old APIs. For instance
-[`PluginRegistry.Registrar.activity()`][] could return null if
-Flutter isn't attached to any activities.
+A nova API tem a vantagem de fornecer um conjunto mais limpo de acessadores para componentes dependentes do ciclo de vida em comparação com as APIs antigas. Por exemplo, [`PluginRegistry.Registrar.activity()`][] poderia retornar nulo se o Flutter não estiver anexado a nenhuma atividade.
 
-In other words, plugins using the old API might produce undefined
-behaviors when embedding Flutter into an Android app.
-Most of the [Flutter plugins][] provided by the flutter.dev
-team have been migrated already. (Learn how to become a
-[verified publisher][] on pub.dev!) For an example of
-a plugin that uses the new APIs, see the
-[battery plus package][].
+Em outras palavras, plugins que usam a API antiga podem produzir comportamentos indefinidos ao incorporar o Flutter em um aplicativo Android. A maioria dos [plugins Flutter][] fornecidos pela equipe flutter.dev já foi migrada. (Aprenda como se tornar um [publisher verificado][] no pub.dev!) Para um exemplo de um plugin que usa as novas APIs, veja o [pacote battery plus][].
 
-## Upgrade steps
+## Etapas de atualização
 
-The following instructions outline the steps for supporting the new API:
+As instruções a seguir descrevem as etapas para suportar a nova API:
 
-1. Update the main plugin class (`*Plugin.java`) to implement the
-   [`FlutterPlugin`][] interface. For more complex plugins,
-   you can separate the `FlutterPlugin` and `MethodCallHandler`
-   into two classes. See the next section, [Basic plugin][],
-   for more details on accessing app resources with
-   the latest version (v2) of embedding.
+1. Atualize a classe principal do plugin (`*Plugin.java`) para implementar a interface [`FlutterPlugin`][]. Para plugins mais complexos, você pode separar o `FlutterPlugin` e o `MethodCallHandler` em duas classes. Veja a próxima seção, [Plugin básico][], para obter mais detalhes sobre como acessar os recursos do aplicativo com a versão mais recente (v2) de incorporação.
    <br><br>
-   Also, note that the plugin should still contain the static
-   `registerWith()` method to remain compatible with apps that
-   don't use the v2 Android embedding.
-   (See [Upgrading pre 1.12 Android projects][] for details.)
-   The easiest thing to do (if possible) is move the logic from
-   `registerWith()` into a private method that both
-   `registerWith()` and `onAttachedToEngine()` can call.
-   Either `registerWith()` or `onAttachedToEngine()` will be called,
-   not both.
+   Além disso, observe que o plugin ainda deve conter o método estático `registerWith()` para permanecer compatível com aplicativos que não usam a incorporação v2 do Android. (Veja [Atualizando projetos Android pré 1.12][] para detalhes.) A coisa mais fácil a fazer (se possível) é mover a lógica de `registerWith()` para um método privado que tanto `registerWith()` quanto `onAttachedToEngine()` possam chamar. Ou `registerWith()` ou `onAttachedToEngine()` serão chamados, não ambos.
    <br><br>
-   In addition, you should document all non-overridden public members
-   within the plugin. In an add-to-app scenario,
-   these classes are accessible to a developer and
-   require documentation.
+   Além disso, você deve documentar todos os membros públicos não substituídos dentro do plugin. Em um cenário de adicionar a um aplicativo, essas classes são acessíveis a um desenvolvedor e exigem documentação.
 
-1. (Optional) If your plugin needs an `Activity` reference,
-   also implement the [`ActivityAware`][] interface.
+2. (Opcional) Se o seu plugin precisar de uma referência `Activity`, implemente também a interface [`ActivityAware`][].
 
-1. (Optional) If your plugin is expected to be held in a
-   background Service at any point in time, implement the
-   [`ServiceAware`][] interface.
+3. (Opcional) Se o seu plugin for esperado para ser mantido em um Serviço em segundo plano em algum momento, implemente a interface [`ServiceAware`][].
 
-1. Update the example app's `MainActivity.java` to use the
-   v2 embedding `FlutterActivity`. For details, see
-   [Upgrading pre 1.12 Android projects][].
-   You might have to make a public constructor for your plugin class
-   if one didn't exist already. For example:
+4. Atualize o `MainActivity.java` do aplicativo de exemplo para usar a incorporação v2 `FlutterActivity`. Para obter detalhes, consulte [Atualizando projetos Android pré 1.12][]. Pode ser necessário criar um construtor público para sua classe de plugin, caso ainda não exista. Por exemplo:
 
    ```java title="MainActivity.java"
     package io.flutter.plugins.firebasecoreexample;
@@ -85,15 +46,15 @@ The following instructions outline the steps for supporting the new API:
     import io.flutter.plugins.firebase.core.FirebaseCorePlugin;
 
     public class MainActivity extends FlutterActivity {
-      // You can keep this empty class or remove it. Plugins on the new embedding
-      // now automatically registers plugins.
+      // Você pode manter esta classe vazia ou removê-la. Plugins na nova incorporação
+      // agora registram automaticamente os plugins.
     }
     ```
 
-1. (Optional) If you removed `MainActivity.java`, update the
+5. (Opcional) Se você removeu `MainActivity.java`, atualize o
    `<plugin_name>/example/android/app/src/main/AndroidManifest.xml`
-   to use `io.flutter.embedding.android.FlutterActivity`.
-   For example:
+   para usar `io.flutter.embedding.android.FlutterActivity`.
+   Por exemplo:
 
     ```xml title="AndroidManifest.xml"
      <activity android:name="io.flutter.embedding.android.FlutterActivity"
@@ -112,13 +73,7 @@ The following instructions outline the steps for supporting the new API:
         </activity>
     ```
 
-1. (Optional) Create an `EmbeddingV1Activity.java` file
-   that uses the v1 embedding for the example project
-   in the same folder as `MainActivity` to
-   keep testing the v1 embedding's compatibility
-   with your plugin. Note that you have to manually
-   register all the plugins instead of using
-   `GeneratedPluginRegistrant`.  For example:
+6. (Opcional) Crie um arquivo `EmbeddingV1Activity.java` que use a incorporação v1 para o projeto de exemplo na mesma pasta que `MainActivity` para continuar testando a compatibilidade da incorporação v1 com seu plugin. Observe que você tem que registrar manualmente todos os plugins em vez de usar `GeneratedPluginRegistrant`. Por exemplo:
 
     ```java title="EmbeddingV1Activity.java"
     package io.flutter.plugins.batteryexample;
@@ -136,14 +91,11 @@ The following instructions outline the steps for supporting the new API:
     }
     ```
 
-1.  Add `<meta-data android:name="flutterEmbedding" android:value="2"/>`
-    to the `<plugin_name>/example/android/app/src/main/AndroidManifest.xml`.
-    This sets the example app to use the v2 embedding.
+7.  Adicione `<meta-data android:name="flutterEmbedding" android:value="2"/>` ao
+    `<plugin_name>/example/android/app/src/main/AndroidManifest.xml`.
+    Isso define o aplicativo de exemplo para usar a incorporação v2.
 
-1. (Optional) If you created an `EmbeddingV1Activity`
-   in the previous step, add the `EmbeddingV1Activity` to the
-   `<plugin_name>/example/android/app/src/main/AndroidManifest.xml` file.
-   For example:
+8. (Opcional) Se você criou um `EmbeddingV1Activity` na etapa anterior, adicione o `EmbeddingV1Activity` ao arquivo `<plugin_name>/example/android/app/src/main/AndroidManifest.xml`. Por exemplo:
 
     ```xml title="AndroidManifest.xml"
     <activity
@@ -156,13 +108,11 @@ The following instructions outline the steps for supporting the new API:
     </activity>
     ```
 
-## Testing your plugin
+## Testando seu plugin
 
-The remaining steps address testing your plugin, which we encourage,
-but aren't required.
+As etapas restantes abordam o teste do seu plugin, o que incentivamos, mas não é obrigatório.
 
-1. Update `<plugin_name>/example/android/app/build.gradle`
-   to replace references to `android.support.test` with `androidx.test`:
+1. Atualize `<plugin_name>/example/android/app/build.gradle` para substituir as referências a `android.support.test` por `androidx.test`:
 
     ```groovy title="build.gradle"
     defaultConfig {
@@ -182,9 +132,7 @@ but aren't required.
     }
     ```
 
-1. Add tests files for `MainActivity` and `EmbeddingV1Activity`
-   in `<plugin_name>/example/android/app/src/androidTest/java/<plugin_path>/`.
-   You will need to create these directories. For example:
+2. Adicione arquivos de teste para `MainActivity` e `EmbeddingV1Activity` em `<plugin_name>/example/android/app/src/androidTest/java/<plugin_path>/`. Você precisará criar esses diretórios. Por exemplo:
 
     ```java title="MainActivityTest.java"
     package io.flutter.plugins.firebase.core;
@@ -196,7 +144,7 @@ but aren't required.
 
     @RunWith(FlutterRunner.class)
     public class MainActivityTest {
-      // Replace `MainActivity` with `io.flutter.embedding.android.FlutterActivity` if you removed `MainActivity`.
+      // Substitua `MainActivity` por `io.flutter.embedding.android.FlutterActivity` se você removeu `MainActivity`.
       @Rule public ActivityTestRule<MainActivity> rule = new ActivityTestRule<>(MainActivity.class);
     }
     ```
@@ -217,9 +165,7 @@ but aren't required.
     }
     ```
 
-1. Add `integration_test` and `flutter_driver` dev_dependencies to
-   `<plugin_name>/pubspec.yaml` and
-   `<plugin_name>/example/pubspec.yaml`.
+3. Adicione `integration_test` e `flutter_driver` como `dev_dependencies` em `<plugin_name>/pubspec.yaml` e `<plugin_name>/example/pubspec.yaml`.
 
     ```yaml title="pubspec.yaml"
     integration_test:
@@ -228,11 +174,7 @@ but aren't required.
       sdk: flutter
     ```
 
-1. Update minimum Flutter version of environment in
-   `<plugin_name>/pubspec.yaml`. All plugins moving
-   forward will set the minimum version to 1.12.13+hotfix.6
-   which is the minimum version for which we can guarantee support.
-   For example:
+4. Atualize a versão mínima do Flutter do ambiente em `<plugin_name>/pubspec.yaml`. Todos os plugins avançando definirão a versão mínima para 1.12.13+hotfix.6, que é a versão mínima para a qual podemos garantir suporte. Por exemplo:
 
     ```yaml title="pubspec.yaml"
     environment:
@@ -240,11 +182,7 @@ but aren't required.
       flutter: ">=1.17.0"
     ```
 
-1. Create a simple test in `<plugin_name>/test/<plugin_name>_test.dart`.
-   For the purpose of testing the PR that adds the v2 embedding support,
-   we're trying to test some very basic functionality of the plugin.
-   This is a smoke test to ensure that the plugin properly registers
-   with the new embedder. For example:
+5. Crie um teste simples em `<plugin_name>/test/<plugin_name>_test.dart`. Para fins de teste do PR que adiciona o suporte de incorporação v2, estamos tentando testar alguma funcionalidade muito básica do plugin. Este é um smoke test para garantir que o plugin se registre corretamente com o novo embedder. Por exemplo:
 
     <?code-excerpt "lib/test.dart (test)"?>
     ```dart
@@ -262,110 +200,88 @@ but aren't required.
     }
     ```
 
-1. Test run the `integration_test` tests locally. In a terminal,
-   do the following:
+6. Execute os testes de `integration_test` localmente. Em um terminal, faça o seguinte:
 
     ```console
     flutter test integration_test/app_test.dart
     ```
 
-## Basic plugin
+## Plugin básico
 
-To get started with a Flutter Android plugin in code,
-start by implementing `FlutterPlugin`.
+Para começar com um plugin Flutter Android em código, comece implementando `FlutterPlugin`.
 
 ```java
 public class MyPlugin implements FlutterPlugin {
   @Override
   public void onAttachedToEngine(@NonNull FlutterPluginBinding binding) {
-    // TODO: your plugin is now attached to a Flutter experience.
+    // TODO: seu plugin agora está anexado a uma experiência Flutter.
   }
 
   @Override
   public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
-    // TODO: your plugin is no longer attached to a Flutter experience.
+    // TODO: seu plugin não está mais anexado a uma experiência Flutter.
   }
 }
 ```
 
-As shown above, your plugin might (or might not)
-be associated with a given Flutter experience at
-any given moment in time.
-You should take care to initialize your plugin's behavior
-in `onAttachedToEngine()`, and then cleanup your plugin's
-references in `onDetachedFromEngine()`.
+Como mostrado acima, seu plugin pode (ou não) estar associado a uma determinada experiência Flutter em qualquer momento. Você deve ter o cuidado de inicializar o comportamento do seu plugin em `onAttachedToEngine()`, e então limpar as referências do seu plugin em `onDetachedFromEngine()`.
 
-The FlutterPluginBinding provides your plugin with a few
-important references:
+O `FlutterPluginBinding` fornece ao seu plugin algumas referências importantes:
 
 **binding.getFlutterEngine()**
-: Returns the `FlutterEngine` that your plugin is attached to,
-  providing access to components like the `DartExecutor`,
-  `FlutterRenderer`, and more.
+: Retorna o `FlutterEngine` ao qual seu plugin está anexado, fornecendo acesso a componentes como `DartExecutor`, `FlutterRenderer` e muito mais.
 
 **binding.getApplicationContext()**
-: Returns the Android application's `Context` for the running app.
+: Retorna o `Context` do aplicativo Android para o aplicativo em execução.
 
-## UI/Activity plugin
+## Plugin de UI/Activity
 
-If your plugin needs to interact with the UI,
-such as requesting permissions, or altering Android UI chrome,
-then you need to take additional steps to define your plugin.
-You must implement the `ActivityAware` interface.
+Se o seu plugin precisar interagir com a UI, como solicitar permissões ou alterar o cromo da UI do Android, você precisará executar etapas adicionais para definir seu plugin. Você deve implementar a interface `ActivityAware`.
 
 ```java
 public class MyPlugin implements FlutterPlugin, ActivityAware {
-  //...normal plugin behavior is hidden...
+  //...o comportamento normal do plugin está oculto...
 
   @Override
   public void onAttachedToActivity(ActivityPluginBinding activityPluginBinding) {
-    // TODO: your plugin is now attached to an Activity
+    // TODO: seu plugin agora está anexado a uma Activity
   }
 
   @Override
   public void onDetachedFromActivityForConfigChanges() {
-    // TODO: the Activity your plugin was attached to was
-    // destroyed to change configuration.
-    // This call will be followed by onReattachedToActivityForConfigChanges().
+    // TODO: a Activity à qual seu plugin estava anexado foi
+    // destruída para alterar a configuração.
+    // Esta chamada será seguida por onReattachedToActivityForConfigChanges().
   }
 
   @Override
   public void onReattachedToActivityForConfigChanges(ActivityPluginBinding activityPluginBinding) {
-    // TODO: your plugin is now attached to a new Activity
-    // after a configuration change.
+    // TODO: seu plugin agora está anexado a uma nova Activity
+    // após uma mudança de configuração.
   }
 
   @Override
   public void onDetachedFromActivity() {
-    // TODO: your plugin is no longer associated with an Activity.
-    // Clean up references.
+    // TODO: seu plugin não está mais associado a uma Activity.
+    // Limpe as referências.
   }
 }
 ```
 
-To interact with an `Activity`, your `ActivityAware` plugin must
-implement appropriate behavior at 4 stages. First, your plugin
-is attached to an `Activity`. You can access that `Activity` and
-a number of its callbacks through the provided `ActivityPluginBinding`.
+Para interagir com uma `Activity`, seu plugin `ActivityAware` deve implementar o comportamento apropriado em 4 estágios. Primeiro, seu plugin é anexado a uma `Activity`. Você pode acessar essa `Activity` e um número de seus callbacks através do `ActivityPluginBinding` fornecido.
 
-Since `Activity`s can be destroyed during configuration changes,
-you must clean up any references to the given `Activity` in
-`onDetachedFromActivityForConfigChanges()`,
-and then re-establish those references in
-`onReattachedToActivityForConfigChanges()`.
+Como as `Activity`s podem ser destruídas durante as alterações de configuração, você deve limpar quaisquer referências à `Activity` fornecida em `onDetachedFromActivityForConfigChanges()`, e então restabelecer essas referências em `onReattachedToActivityForConfigChanges()`.
 
-Finally, in `onDetachedFromActivity()` your plugin should clean
-up all references related to `Activity` behavior and return to
-a non-UI configuration.
+Finalmente, em `onDetachedFromActivity()` seu plugin deve limpar todas as referências relacionadas ao comportamento da `Activity` e retornar a uma configuração não-UI.
 
 
 [`ActivityAware`]: {{site.api}}/javadoc/io/flutter/embedding/engine/plugins/activity/ActivityAware.html
-[Basic plugin]: #basic-plugin
-[battery plus package]: {{site.github}}/fluttercommunity/plus_plugins/tree/main/packages/battery_plus/battery_plus
-[Flutter plugins]: {{site.pub}}/flutter/packages
+[Plugin básico]: #plugin-basico
+[pacote battery plus]: {{site.github}}/fluttercommunity/plus_plugins/tree/main/packages/battery_plus/battery_plus
+[plugins Flutter]: {{site.pub}}/flutter/packages
 [`FlutterPlugin`]: {{site.api}}/javadoc/io/flutter/embedding/engine/plugins/FlutterPlugin.html
 [`PluginRegistry.Registrar`]: {{site.api}}/javadoc/io/flutter/plugin/common/PluginRegistry.Registrar.html
 [`PluginRegistry.Registrar.activity()`]: {{site.api}}/javadoc/io/flutter/plugin/common/PluginRegistry.Registrar.html#activity--
 [`ServiceAware`]: {{site.api}}/javadoc/io/flutter/embedding/engine/plugins/service/ServiceAware.html
-[Upgrading pre 1.12 Android projects]: {{site.repo.flutter}}/blob/master/docs/platforms/android/Upgrading-pre-1.12-Android-projects.md
-[verified publisher]: {{site.dart-site}}/tools/pub/verified-publishers
+[Atualizando projetos Android pré 1.12]: {{site.repo.flutter}}/blob/master/docs/platforms/android/Upgrading-pre-1.12-Android-projects.md
+[publisher verificado]: {{site.dart-site}}/tools/pub/verified-publishers

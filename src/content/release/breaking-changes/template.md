@@ -1,190 +1,196 @@
 ---
-title: Replace with title of breaking change
+ia-translate: true
+title: Substitua pelo título da mudança Breaking Change
 description: >-
-  Brief description similar to the "context" section below. 
-  Text should break at 80 chars or less.
+  Breve descrição similar à seção "contexto" abaixo.
+  O texto deve quebrar em 80 caracteres ou menos.
 ---
 
 {% comment %}
-  PLEASE READ THESE GENERAL INSTRUCTIONS:
-  * All lines of text should be 80 chars OR LESS.
-    The writers strongly prefer semantic line breaks:
+  POR FAVOR, LEIA ESTAS INSTRUÇÕES GERAIS:
+  * Todas as linhas de texto devem ter 80 caracteres OU MENOS.
+    Os escritores preferem quebras de linha semânticas:
     https://github.com/dart-lang/site-shared/blob/main/doc/writing-for-dart-and-flutter-websites.md#semantic-line-breaks
-  * DON'T SUBMIT a PR weeks and weeks in advance.
-    Doing this causes it to get stanky in the website
-    repo and usually develops conflicts in the index file.
-    Ideally, submit a PR once you have confirmed
-    info on the version number where the breaking
-    change landed.
-  * One of the most important things to fill out 
-    in this template is the *Timeline* section.
-    I won't approve/merge the PR until the "landed in"
-    release info is provided. For example:
-    `Landed in version: 1.21.0-5.0.pre<br>`.
-    Do NOT list the PR in this section. Also, don't
-    fill in the "stable" release info unless it's
-    already in a published stable release.
-    After a stable release, I go through and confirm
-    that updates have made it to stable and I then
-    update the breaking change and the index file.
-  * The text in this page should be backwards looking,
-    so write about previous behavior in past tense,
-    not future tense. People are reading this months
-    from now when the change is likely in the stable
-    release, not today. Don't say "in a month" or
-    talk about your plan to do something next week.
-    Assume you've done it, and that they're looking
-    back to figure out how to migrate their code.
-  * Use sentence case for headings and titles.
-    (`## Migration guide`, NOT `Migration Guide`)
-  * DON'T use the abbreviation `i.e.` or `e.g.`.
-    Use "for example" or "such as", and similar.
-  * For links, use the macros where possible.
-    See the examples at the end of this template,
-    but don't use "github.com" or "api.flutter.dev" or
-    "pub.dev" in your URLs. Use the {{site.github}},
-    {{site.api}}, or {{site.pub}} macros.
-  * AVOID "will" when possible, in other words,
-    stay in the present tense. For example:
-    Bad: "When encountering an xxx value,
-          the code will throw an exception."
-    Good: "When encountering an xxx value,
-           the code throws an exception."
-    Good use of "will": "In release 2.0, the xxx API
-          will be deprecated."
-  * Finally, delete the comment tags and text from the
-    final PR.
+  * NÃO ENVIE um PR semanas e semanas antes.
+    Fazer isso faz com que ele fique estagnado no
+    repositório do site e geralmente desenvolva
+    conflitos no arquivo de índice. Idealmente, envie
+    um PR assim que tiver informações confirmadas
+    sobre o número da versão em que a mudança
+    interruptiva foi implementada.
+  * Uma das coisas mais importantes a serem preenchidas
+    neste modelo é a seção *Linha do Tempo*.
+    Não aprovarei/mesclarei o PR até que as informações
+    de lançamento "implementado em" sejam fornecidas.
+    Por exemplo: `Implementado na versão: 1.21.0-5.0.pre<br>`.
+    NÃO liste o PR nesta seção. Além disso, não
+    preencha as informações de lançamento "estável", a
+    menos que já esteja em um lançamento estável publicado.
+    Após um lançamento estável, eu reviso e confirmo
+    se as atualizações chegaram ao estável e então
+    atualizo a mudança interruptiva e o arquivo de índice.
+  * O texto nesta página deve ser retrospectivo,
+    portanto, escreva sobre o comportamento anterior no
+    tempo passado, não no futuro. As pessoas estão
+    lendo isso meses depois, quando a mudança
+    provavelmente estará no lançamento estável, não hoje.
+    Não diga "em um mês" ou fale sobre seu plano de
+    fazer algo na próxima semana. Suponha que você já
+    fez isso e que eles estão olhando para trás para
+    descobrir como migrar seu código.
+  * Use letras minúsculas para cabeçalhos e títulos.
+    (`## Guia de migração`, NÃO `Guia de Migração`)
+  * NÃO use a abreviação `i.e.` ou `e.g.`.
+    Use "por exemplo" ou "como", e similares.
+  * Para links, use os macros sempre que possível.
+    Veja os exemplos no final deste modelo,
+    mas não use "github.com" ou "api.flutter.dev" ou
+    "pub.dev" em seus URLs. Use as macros {{site.github}},
+    {{site.api}} ou {{site.pub}}.
+  * EVITE "irá" quando possível, em outras palavras,
+    permaneça no tempo presente. Por exemplo:
+    Ruim: "Ao encontrar um valor xxx,
+          o código irá lançar uma exceção."
+    Bom: "Ao encontrar um valor xxx,
+           o código lança uma exceção."
+    Bom uso de "irá": "Na versão 2.0, a API xxx
+          será descontinuada."
+  * Finalmente, exclua as tags de comentário e o texto
+    do PR final.
 {% endcomment %}
 
-## Summary
+## Sumário
 
 {% comment %}
-  A brief (one- to three-line) summary that gives
-  context as to what changed so that someone can
-  find it when browsing through an index of
-  breaking changes, ideally using keywords from
-  the symptoms you would see if you had not yet
-  migrated (for example, the text from probable
-  error messages).
+  Um breve sumário (de uma a três linhas) que forneça
+  contexto sobre o que mudou para que alguém possa
+  encontrá-lo ao navegar por um índice de
+  mudanças interruptivas, idealmente usando palavras-
+  chave dos sintomas que você veria se ainda não
+  tivesse migrado (por exemplo, o texto de mensagens
+  de erro prováveis).
 {% endcomment %}
 
-## Background
+## Contexto
 
 {% comment %}
-  High-level description of what API changed and why.
-  Should be clear enough to be understandable to someone
-  who has no context about this breaking change,
-  such as someone who doesn't know the underlying API.
-  This section should also answer the question
-  "what is the problem that led to considering making
-  a breaking change?"
+  Descrição de alto nível de qual API mudou e por quê.
+  Deve ser claro o suficiente para ser compreensível
+  para alguém que não tem contexto sobre essa mudança
+  interruptiva, como alguém que não conhece a API
+  subjacente. Esta seção também deve responder à
+  pergunta "qual é o problema que levou a considerar
+  fazer uma mudança interruptiva?"
 
-  Include a technical description of the actual change,
-  with code samples showing how the API changed.
+  Inclua uma descrição técnica da mudança real, com
+  exemplos de código mostrando como a API mudou.
 
-  Include examples of the error messages that are produced
-  in code that has not been migrated. This helps the search
-  engine find the migration guide when people search for those
-  error messages. THIS IS VERY IMPORTANT FOR DISCOVERY!
+  Inclua exemplos das mensagens de erro produzidas
+  em código que não foi migrado. Isso ajuda o mecanismo
+  de busca a encontrar o guia de migração quando as
+  pessoas procuram por essas mensagens de erro.
+  ISTO É MUITO IMPORTANTE PARA A DESCOBERTA!
 {% endcomment %}
 
-## Migration guide
+## Guia de migração
 
 {% comment %}
-  A description of how to make the change.
-  If a migration tool is available,
-  discuss it here. Even if there is a tool,
-  a description of how to make the change manually
-  must be provided. This section needs before and
-  after code examples that are relevant to the
-  developer.
+  Uma descrição de como fazer a mudança.
+  Se uma ferramenta de migração estiver disponível,
+  discuta isso aqui. Mesmo que exista uma ferramenta,
+  uma descrição de como fazer a alteração manualmente
+  deve ser fornecida. Esta seção precisa de exemplos
+  de código antes e depois que sejam relevantes para
+  o desenvolvedor.
 {% endcomment %}
 
-Code before migration:
+Código antes da migração:
 
 ```dart
-// Example of code before the change.
+// Exemplo de código antes da mudança.
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
-// Example of code after the change.
+// Exemplo de código após a mudança.
 ```
 
 {% comment %}
-  Make sure you have looked for old tutorials online that
-  use the old API. Contact their authors and point out how
-  they should be updated. Leave a comment pointing out that
-  the API has changed and linking to this guide.
+  Certifique-se de que você procurou por tutoriais
+  antigos online que usam a API antiga. Entre em contato
+  com seus autores e aponte como eles devem ser
+  atualizados. Deixe um comentário apontando que a
+  API mudou e vinculando a este guia.
 {% endcomment %}
 
-## Timeline
+## Linha do tempo
 
 {% comment %}
-  The version # of the SDK where this change was
-  introduced.  If there is a deprecation window,
-  the version # to which we guarantee to maintain
-  the old API. Use the following template:
+  O número da versão do SDK onde esta mudança foi
+  introduzida. Se houver uma janela de depreciação,
+  o número da versão para o qual garantimos manter
+  a API antiga. Use o seguinte modelo:
 
-  If a breaking change has been reverted in a
-  subsequent release, move that item to the
-  "Reverted" section of the index.md file.
-  Also add the "Reverted in version" line,
-  shown as optional below. Otherwise, delete
-  that line.
+  Se uma mudança interruptiva foi revertida em um
+  lançamento subsequente, mova esse item para a seção
+  "Revertido" do arquivo index.md. Adicione também a
+  linha "Revertido na versão", mostrada como opcional
+  abaixo. Caso contrário, exclua essa linha.
 {% endcomment %}
 
-Landed in version: xxx<br>
-In stable release: Not yet
-Reverted in version: xxx  (OPTIONAL, delete if not used)
+Implementado na versão: xxx<br>
+Em lançamento estável: Ainda não
+Revertido na versão: xxx (OPCIONAL, exclua se não usado)
 
-## References
+## Referências
 
 {% comment %}
-  These links are commented out because they
-  cause the GitHubActions (GHA) linkcheck to fail.
-  Remove the comment tags once you fill this in with
-  real links. Only use the "main-api" include if
-  you link to "main-api.flutter.dev"; prefer our
-  stable documentation if possible.
+  Esses links estão comentados porque causam a falha
+  do linkcheck do GitHubActions (GHA). Remova as tags de
+  comentário assim que você preencher isso com links
+  reais. Use apenas o include "main-api" se você
+  vincular a "main-api.flutter.dev"; prefira nossa
+  documentação estável, se possível.
 
 {% include docs/main-api.md %}
 
-API documentation:
+Documentação da API:
 
 * [`ClassName`][]
 
-Relevant issues:
+Problemas relevantes:
 
 * [Issue xxxx][]
 * [Issue yyyy][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [PR title #1][]
 * [PR title #2][]
 {% endcomment %}
 
 {% comment %}
-  Add the links to the end of the file in alphabetical order.
-  The following links are commented out because they make
-  the GitHubActions (GHA) link checker believe they are broken links,
-  but please remove the comment tags before you commit!
+  Adicione os links ao final do arquivo em ordem
+  alfabética. Os links a seguir estão comentados porque
+  fazem com que o verificador de links do GitHubActions
+  (GHA) acredite que eles são links quebrados, mas
+  remova as tags de comentário antes de fazer o commit!
 
-  If you are sharing new API that hasn't landed in
-  the stable channel yet, use the main channel link.
-  To link to docs on the main channel,
-  include the following note and make sure that
-  the URL includes the main link (as shown below).
+  Se você estiver compartilhando uma nova API que ainda
+  não foi lançada no canal estável, use o link do canal
+  principal. Para vincular à documentação no canal
+  principal, inclua a seguinte observação e certifique-
+  se de que o URL inclua o link principal (conforme
+  mostrado abaixo).
 
-  Here's an example of defining a stable (site.api) link
-  and a main channel (main-api) link.
+  Aqui está um exemplo de definição de um link estável
+  (site.api) e um link de canal principal (main-api).
 
-<!-- Stable channel link: -->
+<!-- Link do canal estável: -->
 [`ClassName`]: {{site.api}}/flutter/[link_to_relevant_page].html
 
-<!-- Master channel link: -->
+<!-- Link do canal master: -->
 {% include docs/main-api.md %}
 
 [`ClassName`]: {{site.main-api}}/flutter/[link_to_relevant_page].html

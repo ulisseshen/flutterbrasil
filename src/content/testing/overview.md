@@ -1,124 +1,129 @@
 ---
-title: Testing Flutter apps
-description: 
-  Learn more about the different types of testing and how to write them.
+ia-translate: true
+title: Testando aplicativos Flutter
+description:
+  Aprenda mais sobre os diferentes tipos de testes e como escrevê-los.
 ---
 
-The more features your app has, the harder it is to test manually.
-Automated tests help ensure that your app performs correctly before
-you publish it, while retaining your feature and bug fix velocity.
+Quanto mais recursos seu aplicativo tiver, mais difícil será testá-lo
+manualmente. Testes automatizados ajudam a garantir que seu aplicativo funcione
+corretamente antes de publicá-lo, enquanto mantém sua velocidade de
+desenvolvimento de recursos e correção de bugs.
 
 :::note
-For hands-on practice of testing Flutter apps, see the
-[How to test a Flutter app][] codelab.
+Para a prática de testar aplicativos Flutter, consulte o
+codelab [How to test a Flutter app][].
 :::
 
-Automated testing falls into a few categories:
+O teste automatizado se enquadra em algumas categorias:
 
-* A [_unit test_](#unit-tests) tests a single function, method, or class.
-* A [_widget test_](#widget-tests) (in other UI frameworks referred to
-  as _component test_) tests a single widget.
-* An [_integration test_](#integration-tests)
-  tests a complete app or a large part of an app.
+* Um [_teste de unidade_](#testes-de-unidade) testa uma única função, método ou
+  classe.
+* Um [_teste de widget_](#testes-de-widget) (em outras *frameworks* de UI é
+  referido como _teste de componente_) testa um único *widget*.
+* Um [_teste de integração_](#testes-de-integração) testa um aplicativo
+  completo ou uma grande parte de um aplicativo.
 
-Generally speaking, a well-tested app has many unit and widget tests,
-tracked by [code coverage][], plus enough integration tests
-to cover all the important use cases. This advice is based on
-the fact that there are trade-offs between different kinds of testing,
-seen below.
+De um modo geral, um aplicativo bem testado tem muitos testes de unidade e de
+*widget*, rastreados por [code coverage][], além de testes de integração
+suficientes para cobrir todos os casos de uso importantes. Este conselho é
+baseado no fato de que existem *trade-offs* entre os diferentes tipos de teste,
+como pode ser visto abaixo.
 
-| Tradeoff             | Unit   | Widget | Integration |
-|----------------------|--------|--------|-------------|
-| **Confidence**       | Low    | Higher | Highest     |
-| **Maintenance cost** | Low    | Higher | Highest     |
-| **Dependencies**     | Few    | More   | Most        |
-| **Execution speed**  | Quick  | Quick  | Slow        |
+| Tradeoff             | Unidade | Widget    | Integração |
+|----------------------|---------|-----------|------------|
+| **Confiança**        | Baixa   | Maior     | Mais alta  |
+| **Custo de manutenção** | Baixa   | Maior     | Mais alta  |
+| **Dependências**     | Poucas  | Mais      | Muitas     |
+| **Velocidade de execução** | Rápida | Rápida    | Lenta      |
 
 {:.table .table-striped}
 
-## Unit tests
+## Testes de unidade
 
-A _unit test_ tests a single function, method, or class.
-The goal of a unit test is to verify the correctness of a
-unit of logic under a variety of conditions.
-External dependencies of the unit under test are generally
-[mocked out](/cookbook/testing/unit/mocking).
-Unit tests generally don't read from or write
-to disk, render to screen, or receive user actions from
-outside the process running the test.
-For more information regarding unit tests,
-you can view the following recipes
-or run `flutter test --help` in your terminal.
+Um _teste de unidade_ testa uma única função, método ou classe.
+O objetivo de um teste de unidade é verificar a exatidão de uma
+unidade de lógica sob uma variedade de condições.
+As dependências externas da unidade em teste são geralmente
+simuladas usando *mocks*.
+Os testes de unidade geralmente não leem ou gravam em disco,
+não renderizam na tela, nem recebem ações do usuário de
+fora do processo que executa o teste.
+Para mais informações sobre testes de unidade,
+você pode ver as seguintes receitas
+ou executar `flutter test --help` em seu terminal.
 
 :::note
-If you're writing unit tests for code that
-uses plugins and you want to avoid crashes,
-check out [Plugins in Flutter tests][].
-If you want to test your Flutter plugin,
-check out [Testing plugins][].
+Se você estiver escrevendo testes de unidade para código que
+usa *plugins* e quiser evitar falhas,
+consulte [*Plugins* em testes do Flutter][].
+Se você quiser testar seu *plugin* do Flutter,
+consulte [Testando *plugins*][].
 :::
 
 [Plugins in Flutter tests]: /testing/plugins-in-tests
 [Testing plugins]: /testing/testing-plugins
 
-### Recipes {:.no_toc}
+### Receitas {:.no_toc}
 
 {% include docs/testing-toc.md type='unit' %}
 
-## Widget tests
+## Testes de widget
 
-A _widget test_ (in other UI frameworks referred to as _component test_)
-tests a single widget. The goal of a widget test is to verify that the
-widget's UI looks and interacts as expected. Testing a widget involves
-multiple classes and requires a test environment that provides the
-appropriate widget lifecycle context.
+Um _teste de widget_ (em outras *frameworks* de UI, é chamado de _teste de
+componente_) testa um único *widget*. O objetivo de um teste de *widget* é
+verificar se a interface do usuário do *widget* tem a aparência e interage
+conforme o esperado. Testar um *widget* envolve várias classes e requer um
+ambiente de teste que forneça o contexto de ciclo de vida do *widget*
+apropriado.
 
-For example, the Widget being tested should be able to receive and
-respond to user actions and events, perform layout, and instantiate child
-widgets. A widget test is therefore more comprehensive than a unit test.
-However, like a unit test, a widget test's environment is replaced with
-an implementation much simpler than a full-blown UI system.
+Por exemplo, o *widget* sendo testado deve ser capaz de receber e responder a
+ações e eventos do usuário, executar o *layout* e instanciar *widgets* filhos.
+Um teste de *widget* é, portanto, mais abrangente do que um teste de unidade.
+No entanto, como um teste de unidade, o ambiente de um teste de *widget* é
+substituído por uma implementação muito mais simples do que um sistema de UI
+completo.
 
-### Recipes {:.no_toc}
+### Receitas {:.no_toc}
 
 {% include docs/testing-toc.md type='widget' %}
 
-## Integration tests
+## Testes de integração
 
-An _integration test_ tests a complete app or a large part of an app.
-The goal of an integration test is to verify that all the widgets
-and services being tested work together as expected.
-Furthermore, you can use integration
-tests to verify your app's performance.
+Um _teste de integração_ testa um aplicativo completo ou uma grande parte de um
+aplicativo. O objetivo de um teste de integração é verificar se todos os
+*widgets* e serviços testados funcionam juntos conforme o esperado.
+Além disso, você pode usar testes de integração para verificar o desempenho do
+seu aplicativo.
 
-Generally, an _integration test_ runs on a real device or an OS emulator,
-such as iOS Simulator or Android Emulator.
-The app under test is typically isolated
-from the test driver code to avoid skewing the results.
+Geralmente, um _teste de integração_ é executado em um dispositivo real ou em
+um emulador de sistema operacional, como o *iOS Simulator* ou o *Android
+Emulator*. O aplicativo em teste é normalmente isolado do código do *driver* de
+teste para evitar distorcer os resultados.
 
-For more information on how to write integration tests, see the [integration
-testing page][].
+Para obter mais informações sobre como escrever testes de integração, consulte a
+[página de testes de integração][].
 
-### Recipes {:.no_toc}
+### Receitas {:.no_toc}
 
 {% include docs/testing-toc.md type='integration' %}
 
-## Continuous integration services
+## Serviços de integração contínua
 
-Continuous integration (CI) services allow you to run your
-tests automatically when pushing new code changes.
-This provides timely feedback on whether the code
-changes work as expected and do not introduce bugs.
+Os serviços de integração contínua (CI) permitem que você execute seus testes
+automaticamente ao enviar novas alterações de código. Isso fornece *feedback*
+oportuno sobre se as alterações de código funcionam conforme o esperado e se
+não introduzem *bugs*.
 
-For information on running tests on various continuous
-integration services, see the following:
+Para obter informações sobre como executar testes em vários serviços de
+integração contínua, consulte o seguinte:
 
-* [Continuous delivery using fastlane with Flutter][]
-* [Test Flutter apps on Appcircle][]
-* [Test Flutter apps on Travis][]
-* [Test Flutter apps on Cirrus][]
-* [Codemagic CI/CD for Flutter][]
-* [Flutter CI/CD with Bitrise][]
+*   [Entrega contínua usando *fastlane* com Flutter][]
+*   [Teste aplicativos Flutter no Appcircle][]
+*   [Teste aplicativos Flutter no Travis][]
+*   [Teste aplicativos Flutter no Cirrus][]
+*   [Codemagic CI/CD para Flutter][]
+*   [Flutter CI/CD com Bitrise][]
 
 [code coverage]: https://en.wikipedia.org/wiki/Code_coverage
 [Codemagic CI/CD for Flutter]: https://blog.codemagic.io/getting-started-with-codemagic/
@@ -128,4 +133,4 @@ integration services, see the following:
 [Test Flutter apps on Appcircle]: https://blog.appcircle.io/article/flutter-ci-cd-github-ios-android-web#
 [Test Flutter apps on Cirrus]: https://cirrus-ci.org/examples/#flutter
 [Test Flutter apps on Travis]: {{site.flutter-medium}}/test-flutter-apps-on-travis-3fd5142ecd8c
-[integration testing page]: /testing/integration-tests
+[página de testes de integração]: /testing/integration-tests

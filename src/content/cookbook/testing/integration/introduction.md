@@ -1,60 +1,61 @@
 ---
-title: Integration testing concepts
-description: Learn about integration testing in Flutter.
-short-title: Introduction
+ia-translate: true
+title: Conceitos de testes de integração
+description: Aprenda sobre testes de integração no Flutter.
+short-title: Introdução
 ---
 
 <?code-excerpt path-base="cookbook/testing/integration/introduction/"?>
 
-Unit tests and widget tests validate individual classes,
-functions, or widgets.
-They don't validate how individual pieces work
-together in whole or capture the performance
-of an app running on a real device.
-To perform these tasks, use *integration tests*.
+Testes unitários e testes de widget validam classes individuais,
+funções ou widgets.
+Eles não validam como as peças individuais funcionam
+juntas no todo ou capturam o desempenho
+de um aplicativo em execução em um dispositivo real.
+Para realizar essas tarefas, use *testes de integração*.
 
-Integration tests verify the behavior of the complete app.
-This test can also be called end-to-end testing or GUI testing.
+Testes de integração verificam o comportamento do aplicativo completo.
+Este teste também pode ser chamado de teste de ponta a ponta ou teste de GUI.
 
-The Flutter SDK includes the [integration_test][] package.
+O SDK do Flutter inclui o pacote [integration_test][].
 
-## Terminology
+## Terminologia
 
-**host machine**
-: The system on which you develop your app, like a desktop computer.
+**máquina host**
+: O sistema no qual você desenvolve seu aplicativo, como um computador desktop.
 
-**target device**
-: The mobile device, browser, or desktop application that runs
-your Flutter app.
+**dispositivo alvo**
+: O dispositivo móvel, navegador ou aplicativo de desktop que executa
+seu aplicativo Flutter.
 
-  If you run your app in a web browser or as a desktop application,
-  the host machine and the target device are the same.
+  Se você executar seu aplicativo em um navegador da web ou como um aplicativo de desktop,
+  a máquina host e o dispositivo alvo são os mesmos.
 
-## Dependent package
+## Pacote Dependente
 
-To run integration tests, add the `integration_test` package
-as a dependency for your Flutter app test file.
+Para executar testes de integração, adicione o pacote `integration_test`
+como uma dependência para o seu arquivo de teste do aplicativo Flutter.
 
-To migrate existing projects that use `flutter_driver`,
-consult the [Migrating from flutter_driver][] guide.
+Para migrar projetos existentes que usam `flutter_driver`,
+consulte o guia [Migrando do flutter_driver][].
 
-Tests written with the `integration_test` package 
-can perform the following tasks.
+Testes escritos com o pacote `integration_test`
+podem realizar as seguintes tarefas.
 
-* Run on the target device.
-  To test multiple Android or iOS devices, use Firebase Test Lab.
-* Run from the host machine with `flutter test integration_test`.
-* Use `flutter_test` APIs. This makes integration tests
-  similar to writing [widget tests][].
+* Executar no dispositivo alvo.
+  Para testar vários dispositivos Android ou iOS, use o Firebase Test Lab.
+* Executar a partir da máquina host com `flutter test integration_test`.
+* Usar APIs `flutter_test`. Isso torna os testes de integração
+  semelhantes à escrita de [testes de widget][].
 
-## Use cases for integration testing
+## Casos de uso para testes de integração
 
-The other guides in this section explain how to use integration tests to validate
-[functionality][] and [performance][].
+Os outros guias nesta seção explicam como usar testes de integração para validar
+[funcionalidade][] e [desempenho][].
 
-[functionality]: /testing/integration-tests/
-[performance]: /cookbook/testing/integration/profiling/
+[funcionalidade]: /testing/integration-tests/
+[desempenho]: /cookbook/testing/integration/profiling/
 [integration_test]: {{site.repo.flutter}}/tree/main/packages/integration_test
-[Migrating from flutter_driver]:
+[Migrando do flutter_driver]:
     /release/breaking-changes/flutter-driver-migration
-[widget tests]: /testing/overview#widget-tests
+[testes de widget]: /testing/overview#widget-tests

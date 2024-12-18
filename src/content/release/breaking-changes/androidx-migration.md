@@ -1,139 +1,140 @@
 ---
-title: AndroidX migration
-description: How to migrate existing Flutter projects to AndroidX.
+ia-translate: true
+title: Migração para AndroidX
+description: Como migrar projetos Flutter existentes para AndroidX.
 ---
 
 :::note
-You might be directed to this page if Flutter detects
-that your project doesn't use AndroidX.
+Você pode ser direcionado a esta página se o Flutter detectar
+que seu projeto não usa AndroidX.
 :::
 
-[AndroidX][] is a major improvement
-to the original Android Support Library.
+[AndroidX][] é uma grande melhoria
+para a Biblioteca de Suporte Android original.
 
-It provides the `androidx.*` package libraries,
-unbundled from the platform API. This means that it
-offers backward compatibility and is updated
-more frequently than the Android platform.
+Ela fornece as bibliotecas de pacotes `androidx.*`,
+desvinculadas da API da plataforma. Isso significa que ela
+oferece compatibilidade com versões anteriores e é atualizada
+com mais frequência do que a plataforma Android.
 
 [AndroidX]: {{site.android-dev}}/jetpack/androidx
 
-## Common Questions
+## Perguntas Comuns
 
-### How do I migrate my existing app, plugin or host-editable module project to AndroidX?
+### Como migro meu aplicativo, plugin ou projeto de módulo editável pelo host existente para AndroidX?
 
-_You will need Android Studio 3.2 or higher.
-If you don't have it installed,
-you can download the latest version from the
-[Android Studio][] site_.
+_Você precisará do Android Studio 3.2 ou superior.
+Se você não o tiver instalado,
+pode baixar a versão mais recente do site do
+[Android Studio][]_.
 
-1. Open Android Studio.
-2. Select **Open an existing Android Studio Project**.
-3. Open the `android` directory within your app.
-4. Wait until the project has been synced successfully.
-   (This happens automatically once you open the project,
-   but if it doesn't, select **Sync Project with Gradle Files**
-   from the **File** menu).
-5. Select **Migrate to AndroidX** from the Refactor menu.
-6. If you are asked to backup the project before proceeding,
-   check **Backup project as Zip file**, then click **Migrate**.
-   Lastly, save the zip file in your location of preference.
+1. Abra o Android Studio.
+2. Selecione **Open an existing Android Studio Project** (Abrir um Projeto Android Studio Existente).
+3. Abra o diretório `android` dentro do seu aplicativo.
+4. Espere até que o projeto seja sincronizado com sucesso.
+   (Isso acontece automaticamente quando você abre o projeto,
+   mas se não acontecer, selecione **Sync Project with Gradle Files** (Sincronizar Projeto com Arquivos Gradle)
+   no menu **File** (Arquivo)).
+5. Selecione **Migrate to AndroidX** (Migrar para AndroidX) no menu Refactor.
+6. Se você for solicitado a fazer backup do projeto antes de prosseguir,
+   marque **Backup project as Zip file** (Fazer backup do projeto como arquivo Zip) e clique em **Migrate** (Migrar).
+   Por fim, salve o arquivo zip no local de sua preferência.
   <img
       width="500"
       style="border-radius: 12px;"
       src="/assets/images/docs/androidx/migrate_prompt.png"
       class="figure-img img-fluid"
-      alt="Select backup project as zip file" />
-7. The refactoring preview shows the list of changes.
-   Finally, click **Do Refactor**:
+      alt="Selecionar backup do projeto como arquivo zip" />
+7. A visualização da refatoração mostra a lista de alterações.
+   Finalmente, clique em **Do Refactor** (Refatorar):
   <img
       width="600"
       style="border-radius: 12px;"
       src="/assets/images/docs/androidx/do_androidx_refactor.png"
       class="figure-img img-fluid"
-      alt="An animation of the bottom-up page transition on Android" />
-8. That is it! You successfully migrated your project to AndroidX.
+      alt="Uma animação da transição de página de baixo para cima no Android" />
+8. É isso! Você migrou seu projeto para AndroidX com sucesso.
 
-Finally, if you migrated a plugin,
-publish the new AndroidX version to pub and update
-your `CHANGELOG.md` to indicate that this new version
-is compatible with AndroidX.
+Finalmente, se você migrou um plugin,
+publique a nova versão AndroidX no pub e atualize
+seu `CHANGELOG.md` para indicar que esta nova versão
+é compatível com AndroidX.
 
 [Android Studio]: {{site.android-dev}}/studio
 
-### What if I can't use Android Studio?
+### E se eu não puder usar o Android Studio?
 
-You can create a new project using the Flutter tool
-and then move the Dart code and
-assets to the new project.
+Você pode criar um novo projeto usando a ferramenta Flutter
+e, em seguida, mover o código Dart e os
+assets para o novo projeto.
 
-To create a new project run:
+Para criar um novo projeto, execute:
 
 ```console
-flutter create -t <project-type> <new-project-path>
+flutter create -t <tipo-de-projeto> <novo-caminho-do-projeto>
 ```
 
-### Add to app
+### Adicionar ao aplicativo
 
-If your Flutter project is a module type for adding
-to an existing Android app, and contains a
-`.android` directory, add the following line to `pubspec.yaml`:
+Se o seu projeto Flutter for um tipo de módulo para adicionar
+a um aplicativo Android existente e contiver um
+diretório `.android`, adicione a seguinte linha em `pubspec.yaml`:
 
 ```yaml
  module:
    ...
-    androidX: true # Add this line.
+    androidX: true # Adicione esta linha.
 ```
 
-Finally, run `flutter clean`.
+Finalmente, execute `flutter clean`.
 
-If your module contains an `android` directory instead,
-then follow the steps in previous section.
+Se o seu módulo contiver um diretório `android`,
+siga os passos da seção anterior.
 
-### How do I know if my project is using AndroidX?
+### Como sei se meu projeto está usando AndroidX?
 
-Starting from Flutter v1.12.13, new projects created with
-`flutter create -t <project-type>`
-use AndroidX by default.
+A partir do Flutter v1.12.13, novos projetos criados com
+`flutter create -t <tipo-de-projeto>`
+usam AndroidX por padrão.
 
-Projects created prior to this Flutter version
-mustn't depend on any [old build artifact][] or
-[old Support Library class][].
+Projetos criados antes desta versão do Flutter
+não devem depender de nenhum [artefato de build antigo][] ou
+[classe antiga da Biblioteca de Suporte][].
 
-[old build artifact]: {{site.android-dev}}/jetpack/androidx/migrate/artifact-mappings
-[old Support Library class]: {{site.android-dev}}/jetpack/androidx/migrate/class-mappings
+[artefato de build antigo]: {{site.android-dev}}/jetpack/androidx/migrate/artifact-mappings
+[classe antiga da Biblioteca de Suporte]: {{site.android-dev}}/jetpack/androidx/migrate/class-mappings
 
-In an app or module project,
-the file `android/gradle.properties`
-or `.android/gradle.properties`
-must contain:
+Em um aplicativo ou projeto de módulo,
+o arquivo `android/gradle.properties`
+ou `.android/gradle.properties`
+deve conter:
 
 ```properties
 android.useAndroidX=true
 android.enableJetifier=true
 ```
 
-### What if I don't migrate my app or module to AndroidX?
+### E se eu não migrar meu aplicativo ou módulo para AndroidX?
 
-Your app might continue to work. However,
-combining AndroidX and Support artifacts
-is generally not recommended because it can
-result in dependency conflicts or
-other kind of Gradle failures.
-As a result, as more plugins migrate to AndroidX,
-plugins depending on Android core libraries are likely
-to cause build failures.
+Seu aplicativo pode continuar funcionando. No entanto,
+combinar artefatos AndroidX e Support
+geralmente não é recomendado porque pode
+resultar em conflitos de dependência ou
+outros tipos de falhas do Gradle.
+Como resultado, à medida que mais plugins migram para AndroidX,
+plugins que dependem das bibliotecas principais do Android provavelmente
+causarão falhas de build.
 
-### What if my app is migrated to AndroidX, but not all of the plugins I use?
+### E se meu aplicativo for migrado para AndroidX, mas nem todos os plugins que uso?
 
-The Flutter tool uses Jetifier to automatically
-migrate Flutter plugins using the Support Library
-to AndroidX, so you can use the same plugins even
-if they haven't been migrated to AndroidX yet.
+A ferramenta Flutter usa o Jetifier para migrar automaticamente
+os plugins Flutter que usam a Biblioteca de Suporte
+para AndroidX, para que você possa usar os mesmos plugins mesmo
+que eles ainda não tenham sido migrados para AndroidX.
 
-### I'm having issues migrating to AndroidX
+### Estou tendo problemas para migrar para AndroidX
 
-[Open an issue on GitHub][] and add `[androidx-migration]`
-to the title of the issue.
+[Abra um issue no GitHub][] e adicione `[androidx-migration]`
+ao título do issue.
 
-[Open an issue on GitHub]: {{site.repo.flutter}}/issues/new/choose
+[Abra um issue no GitHub]: {{site.repo.flutter}}/issues/new/choose

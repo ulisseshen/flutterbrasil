@@ -1,21 +1,21 @@
 ---
-title: Android Java Gradle migration guide
+ia-translate: true
+title: Guia de migração do Android Java Gradle
 description: >
-  How to migrate your Android app if you experience
-  a run or build error from Gradle.
+  Como migrar seu aplicativo Android se você tiver um erro de
+  execução ou build do Gradle.
 ---
 
-## Summary
+## Resumo
 
-If you've recently upgraded Android Studio to the Flamingo
-release and have either run or built an existing Android app,
-you might have run into an error similar to the following:
+Se você atualizou recentemente o Android Studio para a versão
+Flamingo e executou ou construiu um aplicativo Android existente,
+você pode ter se deparado com um erro semelhante ao seguinte:
 
-![Error dialog in Android Studio Flamingo: MultipleCompilationErrorsException](/assets/images/docs/releaseguide/android-studio-flamingo-error.png){:width="80%"}
+![Caixa de diálogo de erro no Android Studio Flamingo: MultipleCompilationErrorsException](/assets/images/docs/releaseguide/android-studio-flamingo-error.png){:width="80%"}
 
-The terminal output for this error is
-similar to the following:
-
+A saída do terminal para este erro é
+semelhante ao seguinte:
 
 ```sh
 FAILURE: Build failed with an exception.
@@ -38,84 +38,84 @@ Could not compile build file '…/example/android/build.gradle'.
   	at java.base/java.lang.Thread.run(Thread.java:833)
 ```
 
-This error occurs because Android Studio Flamingo
-updates its bundled Java SDK from 11 to 17.
-Flutter uses the version of Java bundled with
-Android Studio to build Android apps.
-Gradle versions [prior to 7.3][] can't run
-when using Java 17.
+Este erro ocorre porque o Android Studio Flamingo
+atualiza seu SDK Java agrupado de 11 para 17.
+O Flutter usa a versão do Java agrupada com
+o Android Studio para construir aplicativos Android.
+Versões do Gradle [anteriores a 7.3][] não podem ser executadas
+ao usar Java 17.
 
-**You can fix this error by upgrading your Gradle project
-to a compatible version (7.3 through 7.6.1, inclusive)
-using one of the following approaches.**
+**Você pode corrigir esse erro atualizando seu projeto Gradle
+para uma versão compatível (7.3 a 7.6.1, inclusive)
+usando uma das seguintes abordagens.**
 
-[prior to 7.3]: https://docs.gradle.org/current/userguide/compatibility.html#java
+[anteriores a 7.3]: https://docs.gradle.org/current/userguide/compatibility.html#java
 
-## Solution #1: Guided fix using Android Studio
+## Solução #1: Correção guiada usando o Android Studio
 
-Upgrade the Gradle version in Android Studio Flamingo
-as follows:
+Atualize a versão do Gradle no Android Studio Flamingo
+da seguinte forma:
 
-1. In Android Studio, open the `android` folder.
-   This should bring up the following dialog: 
+1. No Android Studio, abra a pasta `android`.
+   Isso deve abrir a seguinte caixa de diálogo:
 
-   ![Dialog prompting you to upgrade Gradle](/assets/images/docs/releaseguide/android-studio-flamingo-upgrade-alert.png){:width="50%"}
+   ![Caixa de diálogo solicitando que você atualize o Gradle](/assets/images/docs/releaseguide/android-studio-flamingo-upgrade-alert.png){:width="50%"}
 
-   Update to a Gradle release between 7.3 through 7.6.1, inclusive.
+   Atualize para uma versão do Gradle entre 7.3 e 7.6.1, inclusive.
 
-1. Follow the guided workflow to update Gradle.
+1. Siga o fluxo de trabalho guiado para atualizar o Gradle.
 
-   ![Workflow to upgrade Gradle](/assets/images/docs/releaseguide/android-studio-flamingo-gradle-upgrade.png){:width="85%"}
+   ![Fluxo de trabalho para atualizar o Gradle](/assets/images/docs/releaseguide/android-studio-flamingo-gradle-upgrade.png){:width="85%"}
 
-## Solution #2: Manual fix at the command line
+## Solução #2: Correção manual na linha de comando
 
-Do the following from the top of your Flutter project.
+Faça o seguinte a partir do topo do seu projeto Flutter.
 
-1. Go to the Android directory for your project.
+1. Vá para o diretório Android do seu projeto.
 
    ```console
    $ cd android
    ```
 
-1. Update Gradle to the preferred version. Choose between 7.3 through 7.6.1, inclusive.
+1. Atualize o Gradle para a versão preferida. Escolha entre 7.3 e 7.6.1, inclusive.
 
    ```console
    $ ./gradlew wrapper --gradle-version=7.6.1
    ```
 
-## Notes
+## Notas
 
-A few notes to be aware of:
+Algumas observações a serem consideradas:
 
-* Repeat this step for each affected Android app.
-* This issue can be experienced by those who
-  _don't_ download Java and the Android SDK through
+* Repita esta etapa para cada aplicativo Android afetado.
+* Este problema pode ser experimentado por aqueles que
+  _não_ baixam o Java e o SDK do Android através do
   Android studio.
-  If you've manually upgraded your Java SDK to
-  version 17 but haven't upgraded Gradle, you can
-  also encounter this issue. The fix is the same:
-  upgrade Gradle to a release between 7.3 and 7.6.1.
-* Your development machine _might_ contain more
-  than one copy of the Java SDK:
-  * The Android Studio app includes a version of Java,
-    which Flutter uses by default.
-  * If you don't have Android Studio installed,
-    Flutter relies on the version defined by your
-    shell script's `JAVA_HOME` environment variable.
-  * If `JAVA_HOME` isn't defined, Flutter looks
-    for any `java` executable in your path.
-    Once [issue 122609][] lands, the `flutter doctor -v`
-    command reports which version of Java is used.
-* If you upgrade Gradle to a release _newer_ than 7.6.1,
-  you might (though it's unlikely) encounter issues
-  that result from changes to Gradle, such as
-  [deprecated Gradle classes][], or changes to the
-  Android file structure, such as
-  [splitting out ApplicationId from PackageName][].
-  If this occurs, downgrade to a release of Gradle
-  between 7.3 and 7.6.1, inclusive.
-* Upgrading to Flutter 3.10 won't fix this issue.
+  Se você atualizou manualmente seu SDK Java para
+  a versão 17, mas não atualizou o Gradle, você também pode
+  encontrar este problema. A correção é a mesma:
+  atualize o Gradle para uma versão entre 7.3 e 7.6.1.
+* Sua máquina de desenvolvimento _pode_ conter mais
+  de uma cópia do SDK Java:
+  * O aplicativo Android Studio inclui uma versão do Java,
+    que o Flutter usa por padrão.
+  * Se você não tiver o Android Studio instalado,
+    o Flutter depende da versão definida pela variável
+    de ambiente `JAVA_HOME` do seu shell script.
+  * Se `JAVA_HOME` não estiver definida, o Flutter procura
+    por qualquer executável `java` no seu caminho.
+    Depois que [issue 122609][] for aplicada, o comando
+    `flutter doctor -v` relatará qual versão do Java é usada.
+* Se você atualizar o Gradle para uma versão _mais recente_ que 7.6.1,
+  você pode (embora seja improvável) encontrar problemas
+  que resultam de mudanças no Gradle, como
+  [classes Gradle depreciadas][], ou mudanças na
+  estrutura de arquivos do Android, como
+  [separar ApplicationId de PackageName][].
+  Se isso ocorrer, faça o downgrade para uma versão do Gradle
+  entre 7.3 e 7.6.1, inclusive.
+* A atualização para o Flutter 3.10 não corrigirá esse problema.
 
-[deprecated Gradle classes]: https://docs.gradle.org/7.6/javadoc/deprecated-list.html
+[classes Gradle depreciadas]: https://docs.gradle.org/7.6/javadoc/deprecated-list.html
 [issue 122609]: {{site.repo.flutter}}/issues/122609
-[splitting out ApplicationId from PackageName]: http://tools.android.com/tech-docs/new-build-system/applicationid-vs-packagename
+[separar ApplicationId de PackageName]: http://tools.android.com/tech-docs/new-build-system/applicationid-vs-packagename

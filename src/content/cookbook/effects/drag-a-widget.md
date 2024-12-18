@@ -1,6 +1,7 @@
 ---
-title: Drag a UI element
-description: How to implement a draggable UI element.
+ia-translate: true
+title: Arrastar um elemento da interface do usuário
+description: Como implementar um elemento de interface do usuário arrastável.
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
@@ -8,38 +9,38 @@ js:
 
 <?code-excerpt path-base="cookbook/effects/drag_a_widget"?>
 
-Drag and drop is a common mobile app interaction.
-As the user long presses (sometimes called _touch & hold_)
-on a widget, another widget appears beneath the
-user's finger, and the user drags the widget to a
-final location and releases it.
-In this recipe, you'll build a drag-and-drop interaction
-where the user long presses on a choice of food,
-and then drags that food to the picture of the customer who
-is paying for it.
+Arrastar e soltar é uma interação comum em aplicativos móveis.
+Quando o usuário pressiona e segura (às vezes chamado de _toque e segurar_)
+em um widget, outro widget aparece abaixo do
+dedo do usuário, e o usuário arrasta o widget para uma
+localização final e o solta.
+Nesta receita, você construirá uma interação de arrastar e soltar
+onde o usuário pressiona e segura uma opção de comida,
+e então arrasta essa comida para a imagem do cliente que
+está pagando por ela.
 
-The following animation shows the app's behavior:
+A seguinte animação mostra o comportamento do aplicativo:
 
-![Ordering the food by dragging it to the person](/assets/images/docs/cookbook/effects/DragAUIElement.gif){:.site-mobile-screenshot}
+![Pedindo comida arrastando-a para a pessoa](/assets/images/docs/cookbook/effects/DragAUIElement.gif){:.site-mobile-screenshot}
 
-This recipe begins with a prebuilt list of menu items and
-a row of customers.
-The first step is to recognize a long press
-and display a draggable photo of a menu item.
+Esta receita começa com uma lista pré-construída de itens de menu e
+uma fileira de clientes.
+O primeiro passo é reconhecer um pressionamento longo
+e exibir uma foto arrastável de um item de menu.
 
-## Press and drag
+## Pressionar e arrastar
 
-Flutter provides a widget called [`LongPressDraggable`][]
-that provides the exact behavior that you need to begin
-a drag-and-drop interaction. A `LongPressDraggable`
-widget recognizes when a long press occurs and then 
-displays a new widget near the user's finger.
-As the user drags, the widget follows the user's finger.
-`LongPressDraggable` gives you full control over the 
-widget that the user drags.
+O Flutter fornece um widget chamado [`LongPressDraggable`][]
+que fornece o comportamento exato que você precisa para iniciar
+uma interação de arrastar e soltar. Um widget `LongPressDraggable`
+reconhece quando ocorre um pressionamento longo e então
+exibe um novo widget perto do dedo do usuário.
+Conforme o usuário arrasta, o widget segue o dedo do usuário.
+`LongPressDraggable` oferece controle total sobre o
+widget que o usuário arrasta.
 
-Each menu list item is displayed with a custom
-`MenuListItem` widget.
+Cada item da lista de menu é exibido com um
+widget personalizado `MenuListItem`.
 
 <?code-excerpt "lib/main.dart (MenuListItem)" replace="/^child: //g;/^\),$/)/g"?>
 ```dart
@@ -50,7 +51,7 @@ MenuListItem(
 )
 ```
 
-Wrap the `MenuListItem` widget with a `LongPressDraggable` widget.
+Empacote o widget `MenuListItem` com um widget `LongPressDraggable`.
 
 <?code-excerpt "lib/main.dart (LongPressDraggable)" replace="/^return //g;/^\),$/)/g"?>
 ```dart
@@ -69,42 +70,42 @@ LongPressDraggable<Item>(
 );
 ```
 
-In this case, when the user long presses on the
-`MenuListItem` widget, the `LongPressDraggable`
-widget displays a `DraggingListItem`.
-This `DraggingListItem` displays a photo of the
-selected food item, centered beneath 
-the user's finger.
+Neste caso, quando o usuário pressiona longamente o
+widget `MenuListItem`, o widget `LongPressDraggable`
+exibe um `DraggingListItem`.
+Este `DraggingListItem` exibe uma foto do
+item de comida selecionado, centralizado abaixo
+do dedo do usuário.
 
-The `dragAnchorStrategy` property is set to
+A propriedade `dragAnchorStrategy` está definida como
 [`pointerDragAnchorStrategy`][].
-This property value instructs `LongPressDraggable`
-to base the `DraggableListItem`'s position on the 
-user's finger. As the user moves a finger,
-the `DraggableListItem` moves with it.
+Este valor de propriedade instrui `LongPressDraggable`
+a basear a posição do `DraggableListItem` no
+dedo do usuário. À medida que o usuário move um dedo,
+o `DraggableListItem` se move com ele.
 
-Dragging and dropping is of little use if no information
-is transmitted when the item is dropped.
-For this reason, `LongPressDraggable` takes a `data` parameter. 
-In this case, the type of `data` is `Item`,
-which holds information about the 
-food menu item that the user pressed on.
+Arrastar e soltar é de pouca utilidade se nenhuma informação
+for transmitida quando o item é solto.
+Por esse motivo, `LongPressDraggable` recebe um parâmetro `data`.
+Neste caso, o tipo de `data` é `Item`,
+que contém informações sobre o
+item do menu de comida que o usuário pressionou.
 
-The `data` associated with a `LongPressDraggable`
-is sent to a special widget called `DragTarget`,
-where the user releases the drag gesture.
-You'll implement the drop behavior next.
+O `data` associado a um `LongPressDraggable`
+é enviado para um widget especial chamado `DragTarget`,
+onde o usuário libera o gesto de arrastar.
+Você implementará o comportamento de soltar em seguida.
 
-## Drop the draggable
+## Soltar o elemento arrastável
 
-The user can drop a `LongPressDraggable` wherever they choose,
-but dropping the draggable has no effect unless it's dropped
-on top of a `DragTarget`. When the user drops a draggable on
-top of a `DragTarget` widget, the `DragTarget` widget 
-can either accept or reject the data from the draggable.
+O usuário pode soltar um `LongPressDraggable` onde quiser,
+mas soltar o elemento arrastável não tem efeito a menos que seja solto
+em cima de um `DragTarget`. Quando o usuário solta um elemento arrastável em
+cima de um widget `DragTarget`, o widget `DragTarget`
+pode aceitar ou rejeitar os dados do elemento arrastável.
 
-In this recipe, the user should drop a menu item on a
-`CustomerCart` widget to add the menu item to the user's cart.
+Nesta receita, o usuário deve soltar um item de menu em um
+widget `CustomerCart` para adicionar o item de menu ao carrinho do usuário.
 
 <?code-excerpt "lib/main.dart (CustomerCart)" replace="/^return //g;/^\),$/)/g"?>
 ```dart
@@ -115,7 +116,7 @@ CustomerCart(
 );
 ```
 
-Wrap the `CustomerCart` widget with a `DragTarget` widget.
+Empacote o widget `CustomerCart` com um widget `DragTarget`.
 
 <?code-excerpt "lib/main.dart (DragTarget)" replace="/^child: //g;/^\),$/)/g"?>
 ```dart
@@ -136,43 +137,43 @@ DragTarget<Item>(
 )
 ```
 
-The `DragTarget` displays your existing widget and
-also coordinates with `LongPressDraggable` to recognize
-when the user drags a draggable on top of the `DragTarget`.
-The `DragTarget` also recognizes when the user drops
-a draggable on top of the `DragTarget` widget.
+O `DragTarget` exibe seu widget existente e
+também se coordena com `LongPressDraggable` para reconhecer
+quando o usuário arrasta um elemento arrastável em cima do `DragTarget`.
+O `DragTarget` também reconhece quando o usuário solta
+um elemento arrastável em cima do widget `DragTarget`.
 
-When the user drags a draggable on the `DragTarget` widget,
-`candidateItems` contains the data items that the user is dragging.
-This draggable allows you to change what your widget looks
-like when the user is dragging over it. In this case,
-the `Customer` widget turns red whenever any items are dragged above the 
-`DragTarget` widget. The red visual appearance is configured with the 
-`highlighted` property within the `CustomerCart` widget.
+Quando o usuário arrasta um elemento arrastável no widget `DragTarget`,
+`candidateItems` contém os itens de dados que o usuário está arrastando.
+Este elemento arrastável permite que você altere a aparência do seu widget
+quando o usuário está arrastando sobre ele. Neste caso,
+o widget `Customer` fica vermelho sempre que algum item é arrastado acima
+do widget `DragTarget`. A aparência visual vermelha é configurada com a
+propriedade `highlighted` dentro do widget `CustomerCart`.
 
-When the user drops a draggable on the `DragTarget` widget,
-the `onAcceptWithDetails` callback is invoked. This is when you get
-to decide whether or not to accept the data that was dropped.
-In this case, the item is always accepted and processed. 
-You might choose to inspect the incoming item to make a
-different decision. 
+Quando o usuário solta um elemento arrastável no widget `DragTarget`,
+o callback `onAcceptWithDetails` é invocado. É quando você decide
+se deve ou não aceitar os dados que foram soltos.
+Neste caso, o item é sempre aceito e processado.
+Você pode optar por inspecionar o item de entrada para tomar uma
+decisão diferente.
 
-Notice that the type of item dropped on `DragTarget`
-must match the type of the item dragged from `LongPressDraggable`.
-If the types are not compatible, then 
-the `onAcceptWithDetails` method isn't invoked.
+Observe que o tipo de item solto em `DragTarget`
+deve corresponder ao tipo do item arrastado de `LongPressDraggable`.
+Se os tipos não forem compatíveis, então
+o método `onAcceptWithDetails` não é invocado.
 
-With a `DragTarget` widget configured to accept your
-desired data, you can now transmit data from one part
-of your UI to another by dragging and dropping.
+Com um widget `DragTarget` configurado para aceitar o seu
+dado desejado, você agora pode transmitir dados de uma parte
+de sua interface do usuário para outra arrastando e soltando.
 
-In the next step,
-you update the customer's cart with the dropped menu item.
+Na próxima etapa,
+você atualizará o carrinho do cliente com o item de menu solto.
 
-## Add a menu item to a cart
+## Adicionar um item de menu a um carrinho
 
-Each customer is represented by a `Customer` object,
-which maintains a cart of items and a price total.
+Cada cliente é representado por um objeto `Customer`,
+que mantém um carrinho de itens e um total de preço.
 
 <?code-excerpt "lib/main.dart (CustomerClass)"?>
 ```dart
@@ -195,11 +196,11 @@ class Customer {
 }
 ```
 
-The `CustomerCart` widget displays the customer's photo,
-name, total, and item count based on a `Customer` instance.
+O widget `CustomerCart` exibe a foto do cliente,
+nome, total e contagem de itens com base em uma instância `Customer`.
 
-To update a customer's cart when a menu item is dropped,
-add the dropped item to the associated `Customer` object.
+Para atualizar o carrinho de um cliente quando um item de menu é solto,
+adicione o item solto ao objeto `Customer` associado.
 
 <?code-excerpt "lib/main.dart (AddCart)"?>
 ```dart
@@ -213,37 +214,37 @@ void _itemDroppedOnCustomerCart({
 }
 ```
 
-The `_itemDroppedOnCustomerCart` method is invoked in
-`onAcceptWithDetails()` when the user drops a menu item on a
-`CustomerCart` widget. By adding the dropped item to the 
-`customer` object, and invoking `setState()` to cause a
-layout update, the UI refreshes with the new customer's
-price total and item count.
+O método `_itemDroppedOnCustomerCart` é invocado em
+`onAcceptWithDetails()` quando o usuário solta um item de menu em um
+widget `CustomerCart`. Ao adicionar o item solto ao
+objeto `customer`, e invocar `setState()` para causar uma
+atualização de layout, a interface do usuário é atualizada com o novo
+total de preço e contagem de itens do cliente.
 
-Congratulations! You have a drag-and-drop interaction
-that adds food items to a customer's shopping cart.
+Parabéns! Você tem uma interação de arrastar e soltar
+que adiciona itens de comida ao carrinho de compras de um cliente.
 
-## Interactive example
+## Exemplo interativo
 
-Run the app:
+Execute o aplicativo:
 
-* Scroll through the food items.
-* Press and hold on one with your
-  finger or click and hold with the
+* Percorra os itens de comida.
+* Pressione e segure um com o seu
+  dedo ou clique e segure com o
   mouse.
-* While holding, the food item's image
-  will appear above the list.
-* Drag the image and drop it on one of the
-  people at the bottom of the screen.
-  The text under the image updates to
-  reflect the charge for that person.
-  You can continue to add food items
-  and watch the charges accumulate.
+* Enquanto segura, a imagem do item de comida
+  aparecerá acima da lista.
+* Arraste a imagem e solte-a em uma das
+  pessoas na parte inferior da tela.
+  O texto sob a imagem é atualizado para
+  refletir a cobrança para essa pessoa.
+  Você pode continuar adicionando itens de comida
+  e observar as cobranças acumularem.
 
 <!-- Start DartPad -->
 
 <?code-excerpt "lib/main.dart"?>
-```dartpad title="Flutter drag a widget hands-on example in DartPad" run="true"
+```dartpad title="Exemplo prático de arrastar um widget no Flutter no DartPad" run="true"
 import 'package:flutter/material.dart';
 
 void main() {
@@ -257,21 +258,21 @@ void main() {
 
 const List<Item> _items = [
   Item(
-    name: 'Spinach Pizza',
+    name: 'Pizza de Espinafre',
     totalPriceCents: 1299,
     uid: '1',
     imageProvider: NetworkImage('https://docs.flutter.dev'
         '/cookbook/img-files/effects/split-check/Food1.jpg'),
   ),
   Item(
-    name: 'Veggie Delight',
+    name: 'Delícia Veggie',
     totalPriceCents: 799,
     uid: '2',
     imageProvider: NetworkImage('https://docs.flutter.dev'
         '/cookbook/img-files/effects/split-check/Food2.jpg'),
   ),
   Item(
-    name: 'Chicken Parmesan',
+    name: 'Frango à Parmegiana',
     totalPriceCents: 1499,
     uid: '3',
     imageProvider: NetworkImage('https://docs.flutter.dev'
@@ -331,7 +332,7 @@ class _ExampleDragAndDropState extends State<ExampleDragAndDrop>
     return AppBar(
       iconTheme: const IconThemeData(color: Color(0xFFF64209)),
       title: Text(
-        'Order Food',
+        'Pedir Comida',
         style: Theme.of(context).textTheme.headlineMedium?.copyWith(
               fontSize: 36,
               color: const Color(0xFFF64209),

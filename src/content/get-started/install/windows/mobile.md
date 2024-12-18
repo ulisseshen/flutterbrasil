@@ -1,12 +1,13 @@
 ---
-title: Start building Flutter Android apps on Windows
-description: Configure your system to develop Flutter mobile apps on Windows.
-short-title: Make Android apps
+ia-translate: true
+title: Comece a construir aplicativos Flutter para Android no Windows
+description: Configure seu sistema para desenvolver aplicativos móveis Flutter no Windows.
+short-title: Crie aplicativos Android
 target: Android
 config: WindowsAndroid
 devos: Windows
 next:
-  title: Create your first app
+  title: Crie seu primeiro aplicativo
   path: /get-started/codelab
 ---
 

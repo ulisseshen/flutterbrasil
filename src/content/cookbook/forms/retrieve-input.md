@@ -1,6 +1,7 @@
 ---
-title: Retrieve the value of a text field
-description: How to retrieve text from a text field.
+ia-translate: true
+title: Recuperar o valor de um campo de texto
+description: Como recuperar texto de um campo de texto.
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
@@ -8,29 +9,29 @@ js:
 
 <?code-excerpt path-base="cookbook/forms/retrieve_input"?>
 
-In this recipe,
-learn how to retrieve the text a user has entered into a text field
-using the following steps:
+Nesta receita,
+aprenda como recuperar o texto que um usuário inseriu em um campo de texto
+usando os seguintes passos:
 
-  1. Create a `TextEditingController`.
-  2. Supply the `TextEditingController` to a `TextField`.
-  3. Display the current value of the text field.
+  1. Crie um `TextEditingController`.
+  2. Forneça o `TextEditingController` a um `TextField`.
+  3. Exiba o valor atual do campo de texto.
 
-## 1. Create a `TextEditingController`
+## 1. Crie um `TextEditingController`
 
-To retrieve the text a user has entered into a text field,
-create a [`TextEditingController`][]
-and supply it to a `TextField` or `TextFormField`.
+Para recuperar o texto que um usuário inseriu em um campo de texto,
+crie um [`TextEditingController`][]
+e forneça-o a um `TextField` ou `TextFormField`.
 
 :::important
-Call `dispose` of the `TextEditingController` when
-you've finished using it. This ensures that you discard any resources
-used by the object.
+Chame `dispose` do `TextEditingController` quando
+você terminar de usá-lo. Isso garante que você descarte quaisquer recursos
+usados pelo objeto.
 :::
 
 <?code-excerpt "lib/starter.dart (Starter)" remove="return Container();"?>
 ```dart
-// Define a custom Form widget.
+// Define um widget Form personalizado.
 class MyCustomForm extends StatefulWidget {
   const MyCustomForm({super.key});
 
@@ -38,31 +39,31 @@ class MyCustomForm extends StatefulWidget {
   State<MyCustomForm> createState() => _MyCustomFormState();
 }
 
-// Define a corresponding State class.
-// This class holds the data related to the Form.
+// Define uma classe State correspondente.
+// Esta classe contém os dados relacionados ao Form.
 class _MyCustomFormState extends State<MyCustomForm> {
-  // Create a text controller and use it to retrieve the current value
-  // of the TextField.
+  // Cria um controlador de texto e usa-o para recuperar o valor atual
+  // do TextField.
   final myController = TextEditingController();
 
   @override
   void dispose() {
-    // Clean up the controller when the widget is disposed.
+    // Limpa o controlador quando o widget é descartado.
     myController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    // Fill this out in the next step.
+    // Preencha isso no próximo passo.
   }
 }
 ```
 
-## 2. Supply the `TextEditingController` to a `TextField`
+## 2. Forneça o `TextEditingController` a um `TextField`
 
-Now that you have a `TextEditingController`, wire it up
-to a text field using the `controller` property:
+Agora que você tem um `TextEditingController`, conecte-o
+a um campo de texto usando a propriedade `controller`:
 
 <?code-excerpt "lib/step2.dart (TextFieldController)"?>
 ```dart
@@ -71,42 +72,42 @@ return TextField(
 );
 ```
 
-## 3. Display the current value of the text field
+## 3. Exiba o valor atual do campo de texto
 
-After supplying the `TextEditingController` to the text field,
-begin reading values. Use the [`text()`][]
-method provided by the `TextEditingController` to retrieve the
-String that the user has entered into the text field.
+Após fornecer o `TextEditingController` ao campo de texto,
+comece a ler os valores. Use o método [`text()`][]
+fornecido pelo `TextEditingController` para recuperar a
+String que o usuário inseriu no campo de texto.
 
-The following code displays an alert dialog with the current
-value of the text field when the user taps a floating action button.
+O código a seguir exibe um diálogo de alerta com o valor atual
+do campo de texto quando o usuário toca em um botão de ação flutuante.
 
 <?code-excerpt "lib/step3.dart (FloatingActionButton)" replace="/^floatingActionButton\: //g"?>
 ```dart
 FloatingActionButton(
-  // When the user presses the button, show an alert dialog containing
-  // the text that the user has entered into the text field.
+  // Quando o usuário pressiona o botão, mostra um diálogo de alerta contendo
+  // o texto que o usuário inseriu no campo de texto.
   onPressed: () {
     showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          // Retrieve the text that the user has entered by using the
+          // Recupera o texto que o usuário inseriu usando o
           // TextEditingController.
           content: Text(myController.text),
         );
       },
     );
   },
-  tooltip: 'Show me the value!',
+  tooltip: 'Mostre-me o valor!',
   child: const Icon(Icons.text_fields),
 ),
 ```
 
-## Interactive example
+## Exemplo interativo
 
 <?code-excerpt "lib/main.dart"?>
-```dartpad title="Flutter retrieve input hands-on example in DartPad" run="true"
+```dartpad title="Exemplo prático de recuperação de entrada do Flutter no DartPad" run="true"
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -117,13 +118,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      title: 'Retrieve Text Input',
+      title: 'Recuperar Entrada de Texto',
       home: MyCustomForm(),
     );
   }
 }
 
-// Define a custom Form widget.
+// Define um widget Form personalizado.
 class MyCustomForm extends StatefulWidget {
   const MyCustomForm({super.key});
 
@@ -131,16 +132,16 @@ class MyCustomForm extends StatefulWidget {
   State<MyCustomForm> createState() => _MyCustomFormState();
 }
 
-// Define a corresponding State class.
-// This class holds the data related to the Form.
+// Define uma classe State correspondente.
+// Esta classe contém os dados relacionados ao Form.
 class _MyCustomFormState extends State<MyCustomForm> {
-  // Create a text controller and use it to retrieve the current value
-  // of the TextField.
+  // Cria um controlador de texto e usa-o para recuperar o valor atual
+  // do TextField.
   final myController = TextEditingController();
 
   @override
   void dispose() {
-    // Clean up the controller when the widget is disposed.
+    // Limpa o controlador quando o widget é descartado.
     myController.dispose();
     super.dispose();
   }
@@ -149,7 +150,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Retrieve Text Input'),
+        title: const Text('Recuperar Entrada de Texto'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -158,21 +159,21 @@ class _MyCustomFormState extends State<MyCustomForm> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        // When the user presses the button, show an alert dialog containing
-        // the text that the user has entered into the text field.
+        // Quando o usuário pressiona o botão, mostra um diálogo de alerta contendo
+        // o texto que o usuário inseriu no campo de texto.
         onPressed: () {
           showDialog(
             context: context,
             builder: (context) {
               return AlertDialog(
-                // Retrieve the text the that user has entered by using the
+                // Recupera o texto que o usuário inseriu usando o
                 // TextEditingController.
                 content: Text(myController.text),
               );
             },
           );
         },
-        tooltip: 'Show me the value!',
+        tooltip: 'Mostre-me o valor!',
         child: const Icon(Icons.text_fields),
       ),
     );
@@ -181,7 +182,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
 ```
 
 <noscript>
-  <img src="/assets/images/docs/cookbook/retrieve-input.gif" alt="Retrieve Text Input Demo" class="site-mobile-screenshot" />
+  <img src="/assets/images/docs/cookbook/retrieve-input.gif" alt="Demonstração de Recuperar Entrada de Texto" class="site-mobile-screenshot" />
 </noscript>
 
 

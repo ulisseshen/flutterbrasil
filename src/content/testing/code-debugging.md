@@ -1,54 +1,55 @@
 ---
-title: Debug Flutter apps from code
+title: Depurar aplicativos Flutter a partir do código
 description: >
-  How to enable various debugging tools from
-  your code and at the command line.
+  Como ativar várias ferramentas de depuração a partir do
+  seu código e na linha de comando.
+ia-translate: true
 ---
 
 <?code-excerpt path-base="testing/code_debugging"?>
 
-This guide describes which debugging features you can enable in your code.
-For a full list of debugging and profiling tools, check out the
-[Debugging][] page.
+Este guia descreve quais recursos de depuração você pode ativar em seu código.
+Para uma lista completa de ferramentas de depuração e criação de perfil, consulte a
+página [Depuração][].
 
 :::note
-If you are looking for a way to use GDB to remotely debug the
-Flutter engine running within an Android app process,
-check out [`flutter_gdb`][].
+Se você está procurando uma maneira de usar o GDB para depurar remotamente o
+mecanismo Flutter em execução dentro de um processo de aplicativo Android,
+confira o [`flutter_gdb`][].
 :::
 
 [`flutter_gdb`]: {{site.repo.engine}}/blob/main/sky/tools/flutter_gdb
 
-## Add logging to your application
+## Adicionar registro ao seu aplicativo
 
 :::note
-You can view logs in DevTools' [Logging view][]
-or in your system console. This sections
-shows how to set up your logging statements.
+Você pode ver os logs na [Visualização de registro][] do DevTools
+ou no console do seu sistema. Esta seção
+mostra como configurar suas declarações de registro.
 :::
 
-You have two options for logging for your application.
+Você tem duas opções para registrar seu aplicativo.
 
-1. Print to `stdout` and `stderr` using `print()` statements.
-1. Import `dart:io` and invoking methods on
-   `stderr` and `stdout`. For example:
+1. Imprimir em `stdout` e `stderr` usando declarações `print()`.
+2. Importar `dart:io` e invocar métodos em
+   `stderr` e `stdout`. Por exemplo:
 
     <?code-excerpt "lib/main.dart (stderr)"?>
     ```dart
     stderr.writeln('print me');
     ```
 
-If you output too much at once, then Android might discard some log lines.
-To avoid this outcome,
-use [`debugPrint()`][] from Flutter's `foundation` library.
-This wrapper around `print` throttles the output to avoid the Android kernel
-dropping output.
+Se você gerar muita saída de uma vez, o Android poderá descartar algumas linhas de log.
+Para evitar esse resultado,
+use [`debugPrint()`][] da biblioteca `foundation` do Flutter.
+Este wrapper em torno de `print` limita a saída para evitar que o kernel do Android
+descarte a saída.
 
-You can also log your app using the `dart:developer` [`log()`][] function.
-This allows you to include greater granularity and more information
-in the logging output.
+Você também pode registrar seu aplicativo usando a função `dart:developer` [`log()`][].
+Isso permite que você inclua maior granularidade e mais informações
+na saída do registro.
 
-### Example 1 {:.no_toc}
+### Exemplo 1 {:.no_toc}
 
 <?code-excerpt "lib/main.dart (log)"?>
 ```dart
@@ -62,13 +63,13 @@ void main() {
 }
 ```
 
-You can also pass app data to the log call.
-The convention for this is to use the `error:` named
-parameter on the `log()` call, JSON encode the object
-you want to send, and pass the encoded string to the
-error parameter.
+Você também pode passar dados do aplicativo para a chamada de log.
+A convenção para isso é usar o parâmetro nomeado `error:`
+na chamada `log()`, codificar em JSON o objeto
+que você deseja enviar e passar a string codificada para o
+parâmetro de erro.
 
-### Example 2 {:.no_toc}
+### Exemplo 2 {:.no_toc}
 
 <?code-excerpt "lib/app_data.dart (pass-data)"?>
 ```dart
@@ -86,25 +87,25 @@ void main() {
 }
 ```
 
-DevTool's logging view interprets the JSON encoded error parameter
-as a data object.
-DevTool renders in the details view for that log entry.
+A visualização de logs do DevTool interpreta o parâmetro de erro codificado em JSON
+como um objeto de dados.
+O DevTool renderiza na visualização de detalhes para essa entrada de log.
 
-## Set breakpoints
+## Definir breakpoints
 
-You can set breakpoints in DevTools' [Debugger][] or
-in the built-in debugger of your IDE.
+Você pode definir breakpoints no [Debugger][] do DevTools ou
+no depurador integrado do seu IDE.
 
-To set programmatic breakpoints:
+Para definir breakpoints programáticos:
 
-1. Import the `dart:developer` package into the relevant file.
-1. Insert programmatic breakpoints using the `debugger()` statement.
-   This statement takes an optional `when` argument.
-   This boolean argument sets a break when the given condition resolves to true.
+1. Importe o pacote `dart:developer` no arquivo relevante.
+2. Insira breakpoints programáticos usando a declaração `debugger()`.
+   Esta declaração usa um argumento `when` opcional.
+   Este argumento booleano define uma pausa quando a condição dada é resolvida como verdadeira.
 
-   **Example 3** illustrates this.
+   O **Exemplo 3** ilustra isso.
 
-### Example 3 {:.no_toc}
+### Exemplo 3 {:.no_toc}
 
 <?code-excerpt "lib/debugger.dart"?>
 ```dart
@@ -116,35 +117,35 @@ void someFunction(double offset) {
 }
 ```
 
-## Debug app layers using flags
+## Depurar camadas do aplicativo usando flags
 
-Each layer of the Flutter framework provides a function to dump its
-current state or events to the console using the `debugPrint` property.
+Cada camada do framework Flutter fornece uma função para despejar seu
+estado atual ou eventos no console usando a propriedade `debugPrint`.
 
 :::note
-All of the following examples were run as macOS native apps on
-a MacBook Pro M1. These will differ from any dumps your
-development machine prints.
+Todos os exemplos a seguir foram executados como aplicativos nativos macOS em
+um MacBook Pro M1. Eles serão diferentes de qualquer despejo que sua
+máquina de desenvolvimento imprime.
 :::
 
 {% include docs/admonitions/tip-hashCode-tree.md %}
 
-### Print the widget tree
+### Imprimir a árvore de widgets
 
-To dump the state of the Widgets library,
-call the [`debugDumpApp()`][] function.
+Para despejar o estado da biblioteca Widgets,
+chame a função [`debugDumpApp()`][].
 
-1. Open your source file.
-1. Import `package:flutter/rendering.dart`.
-1. Call the [`debugDumpApp()`][] function from within the `runApp()` function.
-   You need your app in debug mode.
-   You cannot call this function inside a `build()` method
-   when the app is building.
-1. If you haven't started your app, debug it using your IDE.
-1. If you have started your app, save your source file.
-   Hot reload re-renders your app.
+1. Abra seu arquivo de origem.
+2. Importe `package:flutter/rendering.dart`.
+3. Chame a função [`debugDumpApp()`][] de dentro da função `runApp()`.
+   Você precisa do seu aplicativo em modo de depuração.
+   Você não pode chamar essa função dentro de um método `build()`
+   quando o aplicativo está sendo construído.
+4. Se você não iniciou seu aplicativo, depure-o usando seu IDE.
+5. Se você iniciou seu aplicativo, salve seu arquivo de origem.
+   O hot reload renderiza seu aplicativo novamente.
 
-#### Example 4: Call `debugDumpApp()`
+#### Exemplo 4: Chamar `debugDumpApp()`
 
 <?code-excerpt "lib/dump_app.dart"?>
 ```dart
@@ -177,58 +178,58 @@ class AppHome extends StatelessWidget {
 }
 ```
 
-This function recursively calls the `toStringDeep()` method starting with
-the root of the widget tree. It returns a "flattened" tree.
+Esta função chama recursivamente o método `toStringDeep()` começando com
+a raiz da árvore de widgets. Ele retorna uma árvore "achatada".
 
-**Example 4** produces the following widget tree. It includes:
+O **Exemplo 4** produz a seguinte árvore de widgets. Ele inclui:
 
-* All the widgets projected through their various build functions.
-* Many widgets that don't appear in your app's source.
-  The framework's widgets' build functions insert them during the build.
+* Todos os widgets projetados através de suas várias funções de build.
+* Muitos widgets que não aparecem no código fonte do seu aplicativo.
+  As funções de build dos widgets do framework os inserem durante o build.
 
-  The following tree, for example, shows [`_InkFeatures`][].
-  That class implements part of the [`Material`][] widget.
-  It doesn't appear anywhere in the code in **Example 4**.
+  A árvore a seguir, por exemplo, mostra [`_InkFeatures`][].
+  Essa classe implementa parte do widget [`Material`][].
+  Ela não aparece em nenhum lugar no código do **Exemplo 4**.
 
 <details>
-<summary><strong>Expand to view the widget tree for Example 4</strong></summary>
+<summary><strong>Expandir para ver a árvore de widgets para o Exemplo 4</strong></summary>
 
 {% render docs/testing/trees/widget-tree.md -%}
 
 </details>
 
-When the button changes from being pressed to being released,
-this invokes the `debugDumpApp()` function.
-It also coincides with the [`TextButton`][] object calling [`setState()`][]
-and thus marking itself dirty.
-This explains why a Flutter marks a specific object as "dirty".
-When you review the widget tree, look for a line that resembles the following:
+Quando o botão muda de pressionado para liberado,
+isso invoca a função `debugDumpApp()`.
+Também coincide com o objeto [`TextButton`][] chamando [`setState()`][]
+e, portanto, marcando-se como sujo.
+Isso explica por que o Flutter marca um objeto específico como "sujo".
+Ao revisar a árvore de widgets, procure por uma linha que se pareça com a seguinte:
 
 ```plaintext
 └TextButton(dirty, dependencies: [MediaQuery, _InheritedTheme, _LocalizationsScope-[GlobalKey#5880d]], state: _ButtonStyleState#ab76e)
 ```
 
-If you write your own widgets, override the
-[`debugFillProperties()`][widget-fill] method to add information.
-Add [DiagnosticsProperty][] objects to the method's argument
-and call the superclass method.
-The `toString` method uses this function to fill in the widget's description.
+Se você escrever seus próprios widgets, substitua o
+método [`debugFillProperties()`][widget-fill] para adicionar informações.
+Adicione objetos [DiagnosticsProperty][] ao argumento do método
+e chame o método da superclasse.
+O método `toString` usa essa função para preencher a descrição do widget.
 
-### Print the render tree
+### Imprimir a árvore de renderização
 
-When debugging a layout issue, the Widgets layer's tree might lack detail.
-The next level of debugging might require a render tree.
-To dump the render tree:
+Ao depurar um problema de layout, a árvore da camada Widgets pode não ter detalhes.
+O próximo nível de depuração pode exigir uma árvore de renderização.
+Para despejar a árvore de renderização:
 
-1. Open your source file.
-1. Call the [`debugDumpRenderTree()`][] function.
-   You can call this any time except during a layout or paint phase.
-   Consider calling it from a [frame callback][] or an event handler.
-1. If you haven't started your app, debug it using your IDE.
-1. If you have started your app, save your source file.
-   Hot reload re-renders your app.
+1. Abra seu arquivo de origem.
+2. Chame a função [`debugDumpRenderTree()`][].
+   Você pode chamar isso a qualquer momento, exceto durante uma fase de layout ou pintura.
+   Considere chamá-lo de um [callback de frame][] ou um manipulador de eventos.
+3. Se você não iniciou seu aplicativo, depure-o usando seu IDE.
+4. Se você iniciou seu aplicativo, salve seu arquivo de origem.
+   O hot reload renderiza seu aplicativo novamente.
 
-#### Example 5: Call `debugDumpRenderTree()`
+#### Exemplo 5: Chamar `debugDumpRenderTree()`
 
 <?code-excerpt "lib/dump_render_tree.dart"?>
 ```dart
@@ -261,79 +262,79 @@ class AppHome extends StatelessWidget {
 }
 ```
 
-When debugging layout issues, look at the `size` and `constraints` fields.
-The constraints flow down the tree and the sizes flow back up.
+Ao depurar problemas de layout, observe os campos `size` e `constraints`.
+As restrições fluem para baixo da árvore e os tamanhos fluem de volta para cima.
 
 <details>
-<summary><strong>Expand to view the render tree for Example 5</strong></summary>
+<summary><strong>Expandir para ver a árvore de renderização para o Exemplo 5</strong></summary>
 
 {% render docs/testing/trees/render-tree.md -%}
 
 </details>
 
-In the render tree for **Example 5**:
+Na árvore de renderização do **Exemplo 5**:
 
-* The `RenderView`, or window size, limits all render objects up to and
-  including [`RenderPositionedBox`][]`#dc1df` render object
-  to the size of the screen.
-  This example sets the size to `Size(800.0, 600.0)`
+* O `RenderView`, ou tamanho da janela, limita todos os objetos de renderização até e
+  incluindo o objeto de renderização [`RenderPositionedBox`][]`#dc1df`
+  ao tamanho da tela.
+  Este exemplo define o tamanho para `Size(800.0, 600.0)`
 
-* The `constraints` property of each render object limits the size
-  of each child. This property takes the [`BoxConstraints`][] render object as a value.
-  Starting with the `RenderSemanticsAnnotations#fe6b5`, the constraint equals
+* A propriedade `constraints` de cada objeto de renderização limita o tamanho
+  de cada filho. Esta propriedade usa o objeto de renderização [`BoxConstraints`][] como um valor.
+  Começando com `RenderSemanticsAnnotations#fe6b5`, a restrição é igual a
   `BoxConstraints(w=800.0, h=600.0)`.
 
-* The [`Center`][] widget created the `RenderPositionedBox#dc1df` render object
-  under the `RenderSemanticsAnnotations#8187b` subtree.
+* O widget [`Center`][] criou o objeto de renderização `RenderPositionedBox#dc1df`
+  sob a subárvore `RenderSemanticsAnnotations#8187b`.
 
-* Each child under this render object has `BoxConstraints` with both
-  minimum and maximum values. For example, `RenderSemanticsAnnotations#a0a4b`
-  uses `BoxConstraints(0.0<=w<=800.0, 0.0<=h<=600.0)`.
+* Cada filho sob este objeto de renderização tem `BoxConstraints` com ambos
+  valores mínimos e máximos. Por exemplo, `RenderSemanticsAnnotations#a0a4b`
+  usa `BoxConstraints(0.0<=w<=800.0, 0.0<=h<=600.0)`.
 
-* All children of the `RenderPhysicalShape#8e171` render object use
+* Todos os filhos do objeto de renderização `RenderPhysicalShape#8e171` usam
   `BoxConstraints(BoxConstraints(56.0<=w<=800.0, 28.0<=h<=600.0))`.
 
-* The child `RenderPadding#8455f` sets a `padding` value of
+* O filho `RenderPadding#8455f` define um valor de `padding` de
   `EdgeInsets(8.0, 0.0, 8.0, 0.0)`.
-  This sets a left and right padding of 8 to all subsequent children of
-  this render object.
-  They now have new constraints:
+  Isso define um padding esquerdo e direito de 8 para todos os filhos subsequentes de
+  este objeto de renderização.
+  Eles agora têm novas restrições:
   `BoxConstraints(40.0<=w<=784.0, 28.0<=h<=600.0)`.
 
-This object, which the `creator` field tells us is
-probably part of the [`TextButton`][]'s definition,
-sets a minimum width of 88 pixels on its contents and a
-specific height of 36.0. This is the `TextButton` class implementing
-the Material Design guidelines regarding button dimensions.
+Este objeto, que o campo `creator` nos diz que é
+provavelmente parte da definição do [`TextButton`][],
+define uma largura mínima de 88 pixels em seu conteúdo e uma
+altura específica de 36.0. Esta é a classe `TextButton` implementando
+as diretrizes de Material Design sobre dimensões de botão.
 
-`RenderPositionedBox#80b8d` render object loosens the constraints again
-to center the text within the button.
-The [`RenderParagraph`][]#59bc2 render object picks its size based on
-its contents.
-If you follow the sizes back up the tree,
-you see how the size of the text influences the width of all the boxes
-that form the button.
-All parents take their child's dimensions to size themselves.
+O objeto de renderização `RenderPositionedBox#80b8d` afrouxa as restrições novamente
+para centralizar o texto dentro do botão.
+O objeto de renderização [`RenderParagraph`][]#59bc2 escolhe seu tamanho com base em
+seu conteúdo.
+Se você seguir os tamanhos de volta na árvore,
+você verá como o tamanho do texto influencia a largura de todas as caixas
+que formam o botão.
+Todos os pais pegam as dimensões de seus filhos para se dimensionarem.
 
-Another way to notice this is by looking at the `relayoutBoundary`
-attribute of in the descriptions of each box.
-This tells you how many ancestors depend on this element's size.
+Outra maneira de notar isso é olhando para o `relayoutBoundary`
+atributo nas descrições de cada caixa.
+Isso informa quantos ancestrais dependem do tamanho deste elemento.
 
-For example, the innermost `RenderPositionedBox` line has a `relayoutBoundary=up13`.
-This means that when Flutter marks the `RenderConstrainedBox` as dirty,
-it also marks box's 13 ancestors as dirty because the new dimensions
-might affect those ancestors.
+Por exemplo, a linha `RenderPositionedBox` mais interna tem um `relayoutBoundary=up13`.
+Isso significa que quando o Flutter marca o `RenderConstrainedBox` como sujo,
+ele também marca os 13 ancestrais da caixa como sujos porque as novas dimensões
+podem afetar esses ancestrais.
 
-To add information to the dump if you write your own render objects,
-override [`debugFillProperties()`][render-fill].
-Add [DiagnosticsProperty][] objects to the method's argument
-then call the superclass method.
+Para adicionar informações ao despejo se você escrever seus próprios objetos de renderização,
+substitua [`debugFillProperties()`][render-fill].
+Adicione objetos [DiagnosticsProperty][] ao argumento do método
+e, em seguida, chame o método da superclasse.
 
-### Print the layer tree
+### Imprimir a árvore de camadas
 
-To debug a compositing issue, use [`debugDumpLayerTree()`][].
+Para depurar um problema de composição, use [`debugDumpLayerTree()`][].
 
-#### Example 6: Call `debugDumpLayerTree()`
+#### Exemplo 6: Chamar `debugDumpLayerTree()`
 
 <?code-excerpt "lib/dump_layer_tree.dart"?>
 ```dart
@@ -367,16 +368,16 @@ class AppHome extends StatelessWidget {
 ```
 
 <details>
-<summary><strong>Expand to view the output of layer tree for Example 6</strong></summary>
+<summary><strong>Expandir para ver a saída da árvore de camadas para o Exemplo 6</strong></summary>
 
 {% render docs/testing/trees/layer-tree.md -%}
 
 </details>
 
-The `RepaintBoundary` widget creates:
+O widget `RepaintBoundary` cria:
 
-1. A `RenderRepaintBoundary` RenderObject in the render tree
-   as shown in the **Example 5** results.
+1. Um `RenderRepaintBoundary` RenderObject na árvore de renderização
+   como mostrado nos resultados do **Exemplo 5**.
 
    ```plaintext
    ╎     └─child: RenderRepaintBoundary#f8f28
@@ -394,8 +395,8 @@ The `RepaintBoundary` widget creates:
    ╎       │   repaints)
    ```
 
-1. A new layer in the layer tree as shown in the **Example 6**
-   results.
+2. Uma nova camada na árvore de camadas, conforme mostrado no **Exemplo 6**
+   resultados.
 
    ```plaintext
    ├─child 1: OffsetLayer#0f766
@@ -408,27 +409,27 @@ The `RepaintBoundary` widget creates:
    │ │ offset: Offset(0.0, 0.0)
    ```
 
-This reduces how much needs to be repainted.
+Isso reduz o quanto precisa ser repintado.
 
-### Print the focus tree
+### Imprimir a árvore de foco
 
-To debug a focus or shortcut issue, dump the focus tree
-using the [`debugDumpFocusTree()`][] function.
+Para depurar um problema de foco ou atalho, despeje a árvore de foco
+usando a função [`debugDumpFocusTree()`][].
 
-The `debugDumpFocusTree()` method returns the focus tree for the app.
+O método `debugDumpFocusTree()` retorna a árvore de foco para o aplicativo.
 
-The focus tree labels nodes in the following way:
+A árvore de foco rotula os nós da seguinte maneira:
 
-* The focused node is labeled `PRIMARY FOCUS`.
-* Ancestors of the focus nodes are labeled `IN FOCUS PATH`.
+* O nó com foco é rotulado como `PRIMARY FOCUS`.
+* Os ancestrais dos nós de foco são rotulados como `IN FOCUS PATH`.
 
-If your app uses the [`Focus`][] widget, use the [`debugLabel`][]
-property to simplify finding its focus node in the tree.
+Se o seu aplicativo usa o widget [`Focus`][], use a propriedade [`debugLabel`][]
+para simplificar a localização de seu nó de foco na árvore.
 
-You can also use the [`debugFocusChanges`][] boolean property to enable
-extensive logging when the focus changes.
+Você também pode usar a propriedade booleana [`debugFocusChanges`][] para ativar
+o registro extenso quando o foco mudar.
 
-#### Example 7: Call `debugDumpFocusTree()`
+#### Exemplo 7: Chamar `debugDumpFocusTree()`
 
 <?code-excerpt "lib/dump_focus_tree.dart"?>
 ```dart
@@ -462,24 +463,24 @@ class AppHome extends StatelessWidget {
 ```
 
 <details>
-<summary><strong>Expand to view the focus tree for Example 7</strong></summary>
+<summary><strong>Expandir para ver a árvore de foco para o Exemplo 7</strong></summary>
 
 {% render docs/testing/trees/focus-tree.md -%}
 
 </details>
 
-### Print the semantics tree
+### Imprimir a árvore semântica
 
-The `debugDumpSemanticsTree()` function prints the semantic tree for the app.
+A função `debugDumpSemanticsTree()` imprime a árvore semântica para o aplicativo.
 
-The Semantics tree is presented to the system accessibility APIs.
-To obtain a dump of the Semantics tree:
+A árvore semântica é apresentada às APIs de acessibilidade do sistema.
+Para obter um despejo da árvore semântica:
 
-1. Enable accessibility using a system accessibility tool
-   or the `SemanticsDebugger`
-1. Use the [`debugDumpSemanticsTree()`][] function.
+1. Ative a acessibilidade usando uma ferramenta de acessibilidade do sistema
+   ou o `SemanticsDebugger`
+2. Use a função [`debugDumpSemanticsTree()`][].
 
-#### Example 8: Call `debugDumpSemanticsTree()`
+#### Exemplo 8: Chamar `debugDumpSemanticsTree()`
 
 <?code-excerpt "lib/dump_semantic_tree.dart"?>
 ```dart
@@ -522,21 +523,21 @@ class AppHome extends StatelessWidget {
 ```
 
 <details>
-<summary><strong>Expand to view the semantic tree for Example 8</strong></summary>
+<summary><strong>Expandir para ver a árvore semântica para o Exemplo 8</strong></summary>
 
 {% render docs/testing/trees/semantic-tree.md -%}
 
 </details>
 
-### Print event timings
+### Imprimir tempos de eventos
 
-If you want to find out where your events happen relative to the frame's
-begin and end, you can set prints to log these events.
-To print the beginning and end of the frames to the console,
-toggle the [`debugPrintBeginFrameBanner`][]
-and the [`debugPrintEndFrameBanner`][].
+Se você quiser descobrir onde seus eventos acontecem em relação ao início e fim do frame,
+você pode definir impressões para registrar esses eventos.
+Para imprimir o início e o fim dos frames no console,
+alterne o [`debugPrintBeginFrameBanner`][]
+e o [`debugPrintEndFrameBanner`][].
 
-**The print frame banner log for Example 1**
+**O log do banner de frame de impressão para o Exemplo 1**
 
 ```plaintext
 I/flutter : ▄▄▄▄▄▄▄▄ Frame 12         30s 437.086ms ▄▄▄▄▄▄▄▄
@@ -545,24 +546,24 @@ I/flutter : Debug print: Am I performing this work more than once per frame?
 I/flutter : ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 ```
 
-To print the call stack causing the current frame to be scheduled,
-use the [`debugPrintScheduleFrameStacks`][] flag.
+Para imprimir a pilha de chamadas que faz com que o frame atual seja agendado,
+use a flag [`debugPrintScheduleFrameStacks`][].
 
-## Debug layout issues
+## Depurar problemas de layout
 
-To debug a layout problem using a GUI, set
-[`debugPaintSizeEnabled`][] to `true`.
-This flag can be found in the `rendering` library.
-You can enable it at any time and affects all painting while `true`.
-Consider adding it to the top of your `void main()` entry point.
+Para depurar um problema de layout usando uma GUI, defina
+[`debugPaintSizeEnabled`][] como `true`.
+Esta flag pode ser encontrada na biblioteca `rendering`.
+Você pode ativá-la a qualquer momento e afeta toda a pintura enquanto estiver `true`.
+Considere adicioná-la ao topo do seu ponto de entrada `void main()`.
 
-#### Example 9
+#### Exemplo 9
 
-See an example in the following code:
+Veja um exemplo no código a seguir:
 
 <?code-excerpt "lib/debug_flags.dart (debug-paint-size-enabled)"?>
 ```dart
-// Add import to the Flutter rendering library.
+// Adicione a importação à biblioteca de renderização do Flutter.
 import 'package:flutter/rendering.dart';
 
 void main() {
@@ -571,138 +572,138 @@ void main() {
 }
 ```
 
-When enabled, Flutter displays the following changes to your app:
+Quando ativado, o Flutter exibe as seguintes alterações no seu aplicativo:
 
-* Displays all boxes in a bright teal border.
-* Displays all padding as a box with a faded blue fill and blue border
-  around the child widget.
-* Displays all alignment positioning with yellow arrows.
-* Displays all spacers in gray, when they have no child.
+* Exibe todas as caixas em uma borda teal brilhante.
+* Exibe todo o padding como uma caixa com preenchimento azul desbotado e borda azul
+  em torno do widget filho.
+* Exibe todo o posicionamento de alinhamento com setas amarelas.
+* Exibe todos os espaçadores em cinza, quando não têm filhos.
 
-The [`debugPaintBaselinesEnabled`][] flag
-does something similar but for objects with baselines.
-The app displays the baseline for alphabetic characters in bright green
-and the baseline for ideographic characters in orange.
-Alphabetic characters "sit" on the alphabetic baseline,
-but that baseline "cuts" through the bottom of [CJK characters][cjk].
-Flutter positions the ideographic baseline at the very bottom of the text line.
+A flag [`debugPaintBaselinesEnabled`][]
+faz algo semelhante, mas para objetos com linhas de base.
+O aplicativo exibe a linha de base para caracteres alfabéticos em verde brilhante
+e a linha de base para caracteres ideográficos em laranja.
+Caracteres alfabéticos "sentam-se" na linha de base alfabética,
+mas essa linha de base "corta" a parte inferior dos [caracteres CJK][cjk].
+O Flutter posiciona a linha de base ideográfica na parte inferior da linha de texto.
 
-The [`debugPaintPointersEnabled`][] flag turns on a special mode that
-highlights any objects that you tap in teal.
-This can help you determine if an object fails to hit test.
-This might happen if the object falls outside the bounds of its parent
-and thus not considered for hit testing in the first place.
+A flag [`debugPaintPointersEnabled`][] ativa um modo especial que
+destaca todos os objetos que você toca em teal.
+Isso pode ajudar você a determinar se um objeto não consegue acertar o teste.
+Isso pode acontecer se o objeto estiver fora dos limites de seu pai
+e, portanto, não for considerado para o teste de acerto em primeiro lugar.
 
-If you're trying to debug compositor layers, consider using the following flags.
+Se você estiver tentando depurar camadas de compositor, considere usar as seguintes flags.
 
-* Use the [`debugPaintLayerBordersEnabled`][] flag to find the boundaries
-  of each layer. This flag results in outlining each layer's bounds in orange.
+* Use a flag [`debugPaintLayerBordersEnabled`][] para encontrar os limites
+  de cada camada. Esta flag resulta em delinear os limites de cada camada em laranja.
 
-* Use the [`debugRepaintRainbowEnabled`][] flag to display a repainted layer.
-  Whenever a layer repaints, it overlays with a rotating set of colors.
+* Use a flag [`debugRepaintRainbowEnabled`][] para exibir uma camada repintada.
+  Sempre que uma camada repinta, ela sobrepõe com um conjunto rotativo de cores.
 
-Any function or method in the Flutter framework that starts with
-`debug...` only works in [debug mode][].
+Qualquer função ou método no framework Flutter que começa com
+`debug...` só funciona em [modo de depuração][].
 
 [cjk]: https://en.wikipedia.org/wiki/CJK_characters
 
-## Debug animation issues
+## Depurar problemas de animação
 
 :::note
-To debug animations with the least effort, slow them down.
-To slow down the animation,
-click **Slow Animations** in DevTools' [Inspector view][].
-This reduces the animation to 20% speed.
-If you want more control over the amount of slowness,
-use the following instructions.
+Para depurar animações com o mínimo esforço, desacelere-as.
+Para desacelerar a animação,
+clique em **Animações Lentas** na [Visualização do inspetor][] do DevTools.
+Isso reduz a animação para 20% da velocidade.
+Se você quiser mais controle sobre a quantidade de lentidão,
+use as seguintes instruções.
 :::
 
-Set the [`timeDilation`][] variable (from the `scheduler`
-library) to a number greater than 1.0, for instance, 50.0.
-It's best to only set this once on app startup. If you
-change it on the fly, especially if you reduce it while
-animations are running, it's possible that the framework
-will observe time going backwards, which will probably
-result in asserts and generally interfere with your efforts.
+Defina a variável [`timeDilation`][] (da biblioteca `scheduler`)
+para um número maior que 1.0, por exemplo, 50.0.
+É melhor definir isso apenas uma vez na inicialização do aplicativo. Se você
+alterá-lo em tempo real, especialmente se você reduzi-lo enquanto
+as animações estão em execução, é possível que o framework
+observe o tempo voltando para trás, o que provavelmente
+resultará em asserts e geralmente interferirá em seus esforços.
 
-## Debug performance issues
+## Depurar problemas de desempenho
 
 :::note
-You can achieve similar results to some of these debug
-flags using [DevTools][]. Some of the debug flags provide little benefit.
-If you find a flag with functionality you would like to add to [DevTools][],
-[file an issue][].
+Você pode obter resultados semelhantes a algumas dessas flags de depuração
+usando o [DevTools][]. Algumas das flags de depuração fornecem pouco benefício.
+Se você encontrar uma flag com funcionalidade que gostaria de adicionar ao [DevTools][],
+[abra um issue][].
 :::
 
-Flutter provides a wide variety of top-level properties and functions
-to help you debug your app at various points along the
-development cycle.
-To use these features, compile your app in debug mode.
+O Flutter fornece uma ampla variedade de propriedades e funções de nível superior
+para ajudar você a depurar seu aplicativo em vários pontos ao longo do
+ciclo de desenvolvimento.
+Para usar esses recursos, compile seu aplicativo no modo de depuração.
 
-The following list highlights some of flags and one function from the
-[rendering library][] for debugging performance issues.
+A lista a seguir destaca algumas flags e uma função da
+[biblioteca de renderização][] para depurar problemas de desempenho.
 
 [`debugDumpRenderTree()`][]
-: To dump the rendering tree to the console,
-  call this function when not in a layout or repaint phase.
+: Para despejar a árvore de renderização no console,
+  chame esta função quando não estiver em uma fase de layout ou repintura.
 
   {% comment %}
-    Feature is not yet added to DevTools:
-    Rather than using this flag to dump the render tree
-    to a file, view the render tree in the Flutter inspector.
-    To do so, bring up the Flutter inspector and select the
-    **Render Tree** tab.
+    O recurso ainda não foi adicionado ao DevTools:
+    Em vez de usar esta flag para despejar a árvore de renderização
+    em um arquivo, visualize a árvore de renderização no inspetor do Flutter.
+    Para fazer isso, abra o inspetor do Flutter e selecione a
+    aba **Árvore de Renderização**.
   {% endcomment %}
 
-  To set these flags either:
+  Para definir essas flags:
 
-* edit the framework code
-* import the module, set the value in your `main()` function,
-  then hot restart.
+* edite o código do framework
+* importe o módulo, defina o valor em sua função `main()`,
+  e então faça hot restart.
 
 [`debugPaintLayerBordersEnabled`][]
-: To display the boundaries of each layer, set this property to `true`.
-  When set, each layer paints a box around its boundary.
+: Para exibir os limites de cada camada, defina esta propriedade como `true`.
+  Quando definido, cada camada pinta uma caixa ao redor de seu limite.
 
 [`debugRepaintRainbowEnabled`][]
-: To display a colored border around each widget, set this property to `true`.
-  These borders change color as the app user scrolls in the app.
-  To set this flag, add `debugRepaintRainbowEnabled = true;` as a top-level
-  property in your app.
-  If any static widgets rotate through colors after setting this flag,
-  consider adding repaint boundaries to those areas.
+: Para exibir uma borda colorida ao redor de cada widget, defina esta propriedade como `true`.
+  Essas bordas mudam de cor à medida que o usuário do aplicativo rola no aplicativo.
+  Para definir esta flag, adicione `debugRepaintRainbowEnabled = true;` como uma
+  propriedade de nível superior em seu aplicativo.
+  Se algum widget estático girar através de cores após definir esta flag,
+  considere adicionar limites de repintura a essas áreas.
 
 [`debugPrintMarkNeedsLayoutStacks`][]
-: To determine if your app creates more layouts than expected,
-  set this property to `true`.
-  This layout issue could happen on the timeline, on a profile,
-  or from a `print` statement inside a layout method.
-  When set, the framework outputs stack traces to the console
-  to explain why your app marks each render object to be laid out.
+: Para determinar se seu aplicativo cria mais layouts do que o esperado,
+  defina esta propriedade como `true`.
+  Esse problema de layout pode acontecer na linha do tempo, em um perfil,
+  ou a partir de uma declaração `print` dentro de um método de layout.
+  Quando definido, o framework produz rastreamentos de pilha no console
+  para explicar por que seu aplicativo marca cada objeto de renderização para ser disposto.
 
 [`debugPrintMarkNeedsPaintStacks`][]
-: To determine if your app paints more layouts than expected,
-  set this property to `true`.
+: Para determinar se seu aplicativo pinta mais layouts do que o esperado,
+  defina esta propriedade como `true`.
 
-You can generate stack traces on demand as well.
-To print your own stack traces, add the `debugPrintStack()`
-function to your app.
+Você também pode gerar rastreamentos de pilha sob demanda.
+Para imprimir seus próprios rastreamentos de pilha, adicione a função
+`debugPrintStack()` ao seu aplicativo.
 
-### Trace Dart code performance
+### Rastrear o desempenho do código Dart
 
 :::note
-You can use the DevTools [Timeline events tab][] to perform traces.
-You can also import and export trace files into the Timeline view,
-but only files generated by DevTools.
+Você pode usar a aba [Eventos da linha do tempo][] do DevTools para realizar rastreamentos.
+Você também pode importar e exportar arquivos de rastreamento para a visualização da linha do tempo,
+mas apenas arquivos gerados pelo DevTools.
 :::
 
-To perform custom performance traces and
-measure wall or CPU time of arbitrary segments of Dart code
-like Android does with [systrace][],
-use `dart:developer` [Timeline][] utilities.
+Para realizar rastreamentos de desempenho personalizados e
+medir o tempo de parede ou CPU de segmentos arbitrários de código Dart
+como o Android faz com o [systrace][],
+use as utilidades [Timeline][] de `dart:developer`.
 
-1. Open your source code.
-1. Wrap the code you want to measure in `Timeline` methods.
+1. Abra seu código-fonte.
+2. Envolva o código que você deseja medir em métodos `Timeline`.
 
     <?code-excerpt "lib/perf_trace.dart"?>
     ```dart
@@ -715,28 +716,27 @@ use `dart:developer` [Timeline][] utilities.
     }
     ```
 
-1. While connected to your app, open DevTools' [Timeline events tab][].
-1. Select the **Dart** recording option in the **Performance settings**.
-1. Perform the function you want to measure.
+3. Enquanto estiver conectado ao seu aplicativo, abra a aba [Eventos da linha do tempo][] do DevTools.
+4. Selecione a opção de gravação **Dart** nas **Configurações de desempenho**.
+5. Execute a função que você deseja medir.
 
-To ensure that the runtime performance characteristics closely match that
-of your final product, run your app in [profile mode][].
+Para garantir que as características de desempenho do runtime correspondam de perto às
+do seu produto final, execute seu aplicativo no [modo profile][].
 
-### Add performance overlay
+### Adicionar sobreposição de desempenho
 
 :::note
-You can toggle display of the performance overlay on
-your app using the **Performance Overlay** button in the
-[Flutter inspector][]. If you prefer to do it in code,
-use the following instructions.
+Você pode alternar a exibição da sobreposição de desempenho no
+seu aplicativo usando o botão **Sobreposição de Desempenho** no
+[inspetor do Flutter][]. Se você preferir fazer isso no código,
+use as seguintes instruções.
 :::
 
-To enable the `PerformanceOverlay` widget in your code,
-set the `showPerformanceOverlay` property to `true` on the
-[`MaterialApp`][], [`CupertinoApp`][], or [`WidgetsApp`][]
-constructor:
+Para ativar o widget `PerformanceOverlay` no seu código,
+defina a propriedade `showPerformanceOverlay` como `true` no
+construtor [`MaterialApp`][], [`CupertinoApp`][] ou [`WidgetsApp`][]:
 
-#### Example 10
+#### Exemplo 10
 
 <?code-excerpt "lib/performance_overlay.dart (show-overlay)"?>
 ```dart
@@ -759,40 +759,40 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-(If you're not using `MaterialApp`, `CupertinoApp`,
-or `WidgetsApp`, you can get the same effect by wrapping your
-application in a stack and putting a widget on your stack that was
-created by calling [`PerformanceOverlay.allEnabled()`][].)
+(Se você não estiver usando `MaterialApp`, `CupertinoApp`
+ou `WidgetsApp`, você pode obter o mesmo efeito envolvendo seu
+aplicativo em uma pilha e colocando um widget em sua pilha que foi
+criado chamando [`PerformanceOverlay.allEnabled()`][].)
 
-To learn how to interpret the graphs in the overlay,
-check out [The performance overlay][] in
-[Profiling Flutter performance][].
+Para aprender como interpretar os gráficos na sobreposição,
+confira [A sobreposição de desempenho][] em
+[Criando perfil de desempenho do Flutter][].
 
-## Add widget alignment grid
+## Adicionar grade de alinhamento de widget
 
-To add an overlay to a [Material Design baseline grid][] on your app to
-help verify alignments, add the `debugShowMaterialGrid` argument in the
-[`MaterialApp` constructor][].
+Para adicionar uma sobreposição a uma [grade de linha de base do Material Design][] em seu aplicativo para
+ajudar a verificar os alinhamentos, adicione o argumento `debugShowMaterialGrid` no
+[`Construtor MaterialApp`][].
 
-To add an overlay to non-Material applications, add a [`GridPaper`][] widget.
+Para adicionar uma sobreposição a aplicativos não Material, adicione um widget [`GridPaper`][].
 
-[Debugger]: /tools/devtools/debugger
-[Debugging]: /testing/debugging
+[Depurador]: /tools/devtools/debugger
+[Depuração]: /testing/debugging
 [DevTools]: /tools/devtools
-[DiagnosticsProperty]: {{site.api}}/flutter/foundation/DiagnosticsProperty-class.html
-[Flutter inspector]: /tools/devtools/inspector
-[Inspector view]: /tools/devtools/inspector
-[Logging view]: /tools/devtools/logging
-[Material Design baseline grid]: {{site.material}}/foundations/layout/understanding-layout/spacing
-[Profiling Flutter performance]: /perf/ui-performance
-[The performance overlay]: /perf/ui-performance#the-performance-overlay
-[Timeline events tab]: /tools/devtools/performance#timeline-events-tab
-[Timeline]: {{site.dart.api}}/dart-developer/Timeline-class.html
+[Propriedade de Diagnóstico]: {{site.api}}/flutter/foundation/DiagnosticsProperty-class.html
+[Inspetor do Flutter]: /tools/devtools/inspector
+[Visualização do Inspetor]: /tools/devtools/inspector
+[Visualização de Registro]: /tools/devtools/logging
+[Grade de linha de base do Material Design]: {{site.material}}/foundations/layout/understanding-layout/spacing
+[Criando perfil de desempenho do Flutter]: /perf/ui-performance
+[A sobreposição de desempenho]: /perf/ui-performance#the-performance-overlay
+[Eventos da linha do tempo]: /tools/devtools/performance#timeline-events-tab
+[Linha do tempo]: {{site.dart.api}}/dart-developer/Timeline-class.html
 [`Center`]: {{site.api}}/flutter/widgets/Center-class.html
 [`CupertinoApp`]: {{site.api}}/flutter/cupertino/CupertinoApp-class.html
 [`Focus`]: {{site.api}}/flutter/widgets/Focus-class.html
 [`GridPaper`]: {{site.api}}/flutter/widgets/GridPaper-class.html
-[`MaterialApp` constructor]: {{site.api}}/flutter/material/MaterialApp/MaterialApp.html
+[`Construtor MaterialApp`]: {{site.api}}/flutter/material/MaterialApp/MaterialApp.html
 [`MaterialApp`]: {{site.api}}/flutter/material/MaterialApp/MaterialApp.html
 [`Material`]: {{site.api}}/flutter/material/Material-class.html
 [`PerformanceOverlay.allEnabled()`]: {{site.api}}/flutter/widgets/PerformanceOverlay/PerformanceOverlay.allEnabled.html
@@ -822,12 +822,12 @@ To add an overlay to non-Material applications, add a [`GridPaper`][] widget.
 [`log()`]: {{site.api}}/flutter/dart-developer/log.html
 [`setState()`]: {{site.api}}/flutter/widgets/State/setState.html
 [`timeDilation`]: {{site.api}}/flutter/scheduler/timeDilation.html
-[debug mode]: /testing/build-modes#debug
-[file an issue]: {{site.github}}/flutter/devtools/issues
-[frame callback]: {{site.api}}/flutter/scheduler/SchedulerBinding/addPersistentFrameCallback.html
-[profile mode]: /testing/build-modes#profile
+[modo de depuração]: /testing/build-modes#debug
+[abra um issue]: {{site.github}}/flutter/devtools/issues
+[callback de frame]: {{site.api}}/flutter/scheduler/SchedulerBinding/addPersistentFrameCallback.html
+[modo profile]: /testing/build-modes#profile
 [render-fill]: {{site.api}}/flutter/rendering/Layer/debugFillProperties.html
-[rendering library]: {{site.api}}/flutter/rendering/rendering-library.html
+[biblioteca de renderização]: {{site.api}}/flutter/rendering/rendering-library.html
 [systrace]: {{site.android-dev}}/studio/profile/systrace
 [widget-fill]: {{site.api}}/flutter/widgets/Widget/debugFillProperties.html
 [`BoxConstraints`]: {{site.api}}/flutter/rendering/BoxConstraints-class.html

@@ -1,80 +1,58 @@
 ---
-title: Route and Navigator Refactoring
+ia-translate: true
+title: Refatoração de Rotas e Navigator
 description: >
-  Some APIs and function signatures of the
-  Route and Navigator classes have changed.
+  Algumas APIs e assinaturas de função das classes
+  Route e Navigator foram alteradas.
 ---
 
-## Summary
+## Resumo
 
-The `Route` class no longer manages its overlay entries in overlay,
-and its `install()` method no longer has an `insertionPoint` parameter.
-The `isInitialRoute` property in `RouteSetting` has been deprecated,
-and `Navigator.pop()` no longer returns a value.
+A classe `Route` não gerencia mais suas entradas de overlay no overlay, e seu método `install()` não possui mais um parâmetro `insertionPoint`. A propriedade `isInitialRoute` em `RouteSetting` foi depreciada e `Navigator.pop()` não retorna mais um valor.
 
-## Context
+## Contexto
 
-We refactored the navigator APIs to prepare for the new page API
-and the introduction of the `Router` widget as outlined in
-the [Router][] design document.
-This refactoring introduced some function signature changes
-in order to make the existing navigator APIs continue to work
-with the new page API.
+Refatoramos as APIs do navigator para preparar para a nova API de página e a introdução do widget `Router`, conforme descrito no documento de design [Router][]. Essa refatoração introduziu algumas mudanças na assinatura da função para que as APIs existentes do navigator continuem funcionando com a nova API de página.
 
-## Description of change
+## Descrição da mudança
 
-The boolean return value of `Navigator.pop()` was not well
-defined, and the user could achieve the same result by calling
-`Navigator.canPop()`.
-Since the API for `Navigator.canPop()` was better defined,
-we simplified `Navigator.pop()` to not return a boolean value.
- 
-On the other hand, the navigator requires the ability
-to manually rearrange entries in the overlay to allow
-the user to change the route history in the new API.
-We changed it so that the route only creates and destroys
-its overlay entries, while the navigator inserts or
-removes overlay entries from the overlay.
-We also removed the `insertionPoint` argument of
-`Route.install()` because it was obsolete after the change.
+O valor booleano de retorno de `Navigator.pop()` não era bem definido e o usuário poderia obter o mesmo resultado chamando `Navigator.canPop()`. Como a API para `Navigator.canPop()` foi melhor definida, simplificamos `Navigator.pop()` para não retornar um valor booleano.
 
-Finally, we removed the `isInitialRoute` property from
-`RouteSetting` as part of refactoring, and provided the
-`onGenerateInitialRoutes` API for full control of
-initial routes generation.
+Por outro lado, o navigator exige a capacidade de reorganizar manualmente as entradas no overlay para permitir que o usuário altere o histórico de rotas na nova API. Alteramos para que a rota apenas crie e destrua suas entradas de overlay, enquanto o navigator insere ou remove entradas de overlay do overlay. Também removemos o argumento `insertionPoint` de `Route.install()` porque estava obsoleto após a alteração.
 
-## Migration guide
+Finalmente, removemos a propriedade `isInitialRoute` de `RouteSetting` como parte da refatoração e fornecemos a API `onGenerateInitialRoutes` para controle total da geração de rotas iniciais.
 
-Case 1: An app depends on `pop()` returning a boolean value.
+## Guia de migração
+
+Caso 1: Um aplicativo depende de `pop()` retornando um valor booleano.
 
 ```dart
 TextField(
   onTap: () {
     if (Navigator.pop(context))
-      print('There still is at least one route after pop');
+      print('Ainda há pelo menos uma rota após o pop');
     else
-      print('Oops! No more routes.');
+      print('Ops! Não há mais rotas.');
   }
 )
 ```
 
-You could use `Navigator.canPop()` in combination with
-`Navigator.pop()` to achieve the same result.
+Você pode usar `Navigator.canPop()` em combinação com `Navigator.pop()` para obter o mesmo resultado.
 
 ```dart
 TextField(
   onTap: () {
     if (Navigator.canPop(context))
-      print('There still is at least one route after pop');
+      print('Ainda há pelo menos uma rota após o pop');
     else
-      print('Oops! No more routes.');
-    // Our navigator pops the route anyway.
+      print('Ops! Não há mais rotas.');
+    // Nosso navigator remove a rota de qualquer forma.
     Navigator.pop(context);
   }
 )
 ```
 
-Case 2: An app generates routes based on `isInitialRoute`.
+Caso 2: Um aplicativo gera rotas com base em `isInitialRoute`.
 
 ```dart
 MaterialApp(
@@ -87,15 +65,11 @@ MaterialApp(
 )
 ```
 
-There are different ways to migrate this change.
-One way is to set an explicit value for `MaterialApp.initialRoute`.
-You can then test for this value in place of `isInitialRoute`.
-As `initialRoute` inherits its default value outside of Flutter's scope,
-you must set an explicit value for it.
+Existem diferentes maneiras de migrar essa mudança. Uma maneira é definir um valor explícito para `MaterialApp.initialRoute`. Você pode então testar esse valor no lugar de `isInitialRoute`. Como `initialRoute` herda seu valor padrão fora do escopo do Flutter, você deve definir um valor explícito para ele.
 
 ```dart
 MaterialApp(
-  initialRoute: '/', // Set this value explicitly. Default might be altered.
+  initialRoute: '/', // Defina este valor explicitamente. O padrão pode ser alterado.
   onGenerateRoute: (RouteSetting setting) {
     if (setting.name == '/')
       return FakeSplashRoute();
@@ -105,9 +79,7 @@ MaterialApp(
 )
 ```
 
-If there is a more complicated use case,
-you can use the new API, `onGenerateInitialRoutes`,
-in `MaterialApp` or `CupertinoApp`.
+Se houver um caso de uso mais complicado, você pode usar a nova API, `onGenerateInitialRoutes`, em `MaterialApp` ou `CupertinoApp`.
 
 ```dart
 MaterialApp(
@@ -120,18 +92,18 @@ MaterialApp(
 )
 ```
 
-## Timeline
+## Cronograma
 
-Landed in version: 1.16.3<br>
-In stable release: 1.17
+Implementado na versão: 1.16.3<br>
+Na versão estável: 1.17
 
-## References
+## Referências
 
-Design doc:
+Documento de design:
 
 * [Router][]
 
-API documentation:
+Documentação da API:
 
 * [`Route`][]
 * [`Route.install`][]
@@ -140,13 +112,13 @@ API documentation:
 * [`Navigator.pop`][]
 * [`Navigator.canPop`][]
 
-Relevant issue:
+Issue relevante:
 
 * [Issue 45938: Router][]
 
-Relevant PR:
+PR relevante:
 
-* [PR 44930][] - Refactor the imperative api to continue working in the new navigation system
+* [PR 44930][] - Refatorar a api imperativa para continuar funcionando no novo sistema de navegação
 
 
 [Issue 45938: Router]: {{site.repo.flutter}}/issues/45938

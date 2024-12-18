@@ -1,59 +1,60 @@
 ---
+ia-translate: true
 title: Flutter News Toolkit
-description: Learn more about creating a newsfeed app in Flutter.
+description: Saiba mais sobre como criar um aplicativo de notícias no Flutter.
 ---
 
-The Flutter News Toolkit enables you to accelerate
-development of a mobile news app.
-The toolkit assists you in building a customized
-template app with prebuilt features required
-for most news apps, such authentication and
-monetization. After generating your
-template app, your primary tasks are to connect to your
-data source, and to customize the UI to reflect
-your brand.
+O Flutter News Toolkit permite que você acelere
+o desenvolvimento de um aplicativo de notícias para dispositivos móveis.
+O toolkit auxilia você na construção de um
+aplicativo de template personalizado com funcionalidades pré-construídas necessárias
+para a maioria dos aplicativos de notícias, como autenticação e
+monetização. Após gerar seu
+aplicativo de template, suas tarefas principais são conectar-se à sua
+fonte de dados e personalizar a interface do usuário para refletir
+sua marca.
 
-The Flutter News Toolkit includes critical features,
-such as:
+O Flutter News Toolkit inclui recursos essenciais,
+como:
 
-* User onboarding
-* Account creation/login
-* Content feeds and content pages
-* Analytics
-* Notifications
-* Social sharing
-* Subscriptions
-* Ads
+* Onboarding do usuário
+* Criação/login de conta
+* Feeds de conteúdo e páginas de conteúdo
+* Análise de dados (Analytics)
+* Notificações
+* Compartilhamento em redes sociais
+* Assinaturas
+* Anúncios
 
-You can use these pre-integrated features out of the box,
-or modify and swap them with other functionality that
-you prefer.
+Você pode usar esses recursos pré-integrados prontos para uso,
+ou modificá-los e trocá-los por outras funcionalidades que
+você preferir.
 
-Generating your template app requires answering
-a few simple questions, as described on the
-[Flutter News Toolkit Overview][toolkit] doc page.
+Gerar seu aplicativo de template requer responder
+algumas perguntas simples, conforme descrito na
+página de documentação [Visão Geral do Flutter News Toolkit][toolkit].
 
-For complete documentation on how to configure your project,
-create a template app, develop the app, how to
-handle authentication, theming, work with an API
-server, and much more, check out the
-[Flutter News Toolkit][toolkit] documentation.
+Para obter a documentação completa sobre como configurar seu projeto,
+criar um aplicativo de template, desenvolver o aplicativo, como
+lidar com autenticação, temas, trabalhar com um servidor de API
+e muito mais, confira a
+documentação do [Flutter News Toolkit][toolkit].
 
-You might also check out:
+Você também pode verificar:
 
-* [Announcing the Flutter News Toolkit][blog],
-  an article on Medium.
-* [Quick start to building a news app in Flutter][video]
-  an introduction to the toolkit on YouTube.
+* [Anunciando o Flutter News Toolkit][blog],
+  um artigo no Medium.
+* [Início rápido para construir um aplicativo de notícias no Flutter][video]
+  uma introdução ao toolkit no YouTube.
 
 :::note
-This is an early release of the news toolkit and,
-while it has been tested by early adopters, it
-might have issues or rough edges. Please don't
-hesitate to [file an issue][].
+Esta é uma versão inicial do news toolkit e,
+embora tenha sido testada por early adopters, pode
+apresentar problemas ou imperfeições. Por favor, não
+hesite em [abrir um issue][].
 :::
 
 [toolkit]: https://flutter.github.io/news_toolkit/
 [blog]: {{site.flutter-medium}}/announcing-the-flutter-news-toolkit-180a0d32c012
 [video]: {{site.yt.watch}}?v=dukRAS-OUMM
-[file an issue]: {{site.repo.flutter}}/issues
+[abrir um issue]: {{site.repo.flutter}}/issues

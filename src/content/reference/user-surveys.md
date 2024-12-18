@@ -1,37 +1,37 @@
 ---
-title: User surveys
-description: Why users see a survey announcement, how the data is used, and how to disable.
+ia-translate: true
+title: Pesquisas com Usuários
+description: Por que os usuários veem um anúncio de pesquisa, como os dados são usados e como desativar.
 ---
 
-## Why do I see a survey announcement?
-If you have not opted-out of Flutter's 
-[analytics and crash reporting](/reference/crash-reporting), 
-you may receive a survey announcement in your IDE. 
+## Por que vejo um anúncio de pesquisa?
+Se você não optou por sair do 
+[relatório de analytics e falhas](/reference/crash-reporting) do Flutter,
+você poderá receber um anúncio de pesquisa em seu IDE.
 
-We run two types of surveys:
-1. **Each quarter.** We give all active Flutter and Dart users
-  the option to take this survey.
-2. **Ad-hoc.** We design and deploy experimental surveys
-  when we want to learn more about specific topics. 
-  If your telemetry data meets the survey criteria,
-  you might see a survey announcement. 
+Realizamos dois tipos de pesquisas:
+1. **A cada trimestre.** Damos a todos os usuários ativos de Flutter e Dart
+  a opção de participar desta pesquisa.
+2. **Ad-hoc.** Projetamos e implementamos pesquisas experimentais
+  quando queremos aprender mais sobre tópicos específicos.
+  Se seus dados de telemetria corresponderem aos critérios da pesquisa,
+  você poderá ver um anúncio de pesquisa.
 
-## How will my responses be used?
+## Como minhas respostas serão usadas?
 
-We use the responses you submit via survey to improve 
-Flutter and Dart. We store this information independent 
-of the information sent to Google via analytics.
-To see how we used prior surveys to improve Flutter and Dart,
-check out our blogs on [Medium][]. 
+Usamos as respostas que você envia por meio de pesquisas para aprimorar
+Flutter e Dart. Armazenamos essas informações independentemente
+das informações enviadas ao Google por meio de analytics.
+Para ver como usamos pesquisas anteriores para melhorar Flutter e Dart,
+confira nossos blogs no [Medium][].
 
-## How can I disable it?
+## Como posso desativá-lo?
 
-To mute survey announcements, you might do one of the following:
+Para silenciar os anúncios de pesquisa, você pode fazer um dos seguintes procedimentos:
 
-1. Click the button on the message.
-2. Opt-out of analytics and crash reporting per the steps
-  given in
-  [Disabling 
-analytics reporting](/reference/crash-reporting#disabling-analytics-reporting).
+1. Clique no botão na mensagem.
+2. Desative o analytics e o relatório de falhas seguindo os passos
+  fornecidos em
+  [Desativando o relatório de analytics](/reference/crash-reporting#disabling-analytics-reporting).
 
 [Medium]: {{site.flutter-medium}}/search?q=survey

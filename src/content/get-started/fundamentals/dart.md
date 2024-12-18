@@ -1,43 +1,26 @@
 ---
-title: Intro to Dart
-description: Learn about the Dart programming language
+ia-translate: true
+title: Introdução ao Dart
+description: Aprenda sobre a linguagem de programação Dart
 prev:
-  title: Fundamentals
+  title: Fundamentos
   path: /get-started/fundamentals
 next:
   title: Widgets
   path: /get-started/fundamentals/widgets
 ---
 
-To get started with Flutter, 
-you need to have some familiarity with 
-the Dart programming language, which Flutter 
-applications are written in.
-This page is a gentle introduction to Dart, 
-and if you're comfortable reading the 
-code examples, feel free to skip this page. 
-You do not need to be an expert in Dart to 
-continue with this series.
+Para começar com Flutter, você precisa ter alguma familiaridade com a linguagem de programação Dart, na qual os aplicativos Flutter são escritos. Esta página é uma introdução suave ao Dart e, se você se sentir à vontade para ler os exemplos de código, sinta-se à vontade para pular esta página. Você não precisa ser um especialista em Dart para continuar com esta série.
 
 ## Dart
 
-Flutter applications are built in [Dart][],
-a language that will look familiar
-to anyone who's written Java, Javascript,
-or any other C-like language.  
+Aplicativos Flutter são construídos em [Dart][], uma linguagem que parecerá familiar para qualquer pessoa que já escreveu Java, Javascript ou qualquer outra linguagem semelhante a C.
 
 :::note
-Installing Flutter also installs Dart,
-so you don't need to install Dart separately.
+Instalar o Flutter também instala o Dart, então você não precisa instalar o Dart separadamente.
 :::
 
-The following example is a small program that 
-fetches data from dart.dev, 
-decodes the returned json, 
-and prints it to the console. 
-If you're confident in your ability to 
-understand this program, 
-feel free to skip to the page.
+O exemplo a seguir é um pequeno programa que busca dados de dart.dev, decodifica o json retornado e o imprime no console. Se você está confiante em sua capacidade de entender este programa, sinta-se à vontade para pular para a próxima página.
 
 ```dart
 import 'dart:convert';
@@ -60,7 +43,7 @@ void main() async {
   final httpPackageUrl = Uri.https('dart.dev', '/f/packages/http.json');
   final httpPackageResponse = await http.get(httpPackageUrl);
   if (httpPackageResponse.statusCode != 200) {
-    print('Failed to retrieve the http package!');
+    print('Falha ao recuperar o pacote http!');
     return;
   }
   final json = jsonDecode(httpPackageResponse.body);
@@ -73,52 +56,18 @@ void main() async {
 }
 ```
 
-This program has two parts: 
-the `Package` class declaration, and the business logic, 
-which is contained in the [`main`][] function.
+Este programa tem duas partes: a declaração da classe `Package` e a lógica de negócios, que está contida na função [`main`][].
 
-The `Package` class contains many of the most common
-features you'll use when working with [classes in Dart][].
-This class has three members, 
-and defines a constructor and a method.
+A classe `Package` contém muitos dos recursos mais comuns que você usará ao trabalhar com [classes em Dart][]. Esta classe tem três membros e define um construtor e um método.
 
-The Dart language is [type safe][]; it uses 
-static type checking to ensure that 
-a variable's value always matches the
-variable's static type. 
-When defining a class, annotating the members with 
-`String` is required, 
-but it is often optional due to type inference. 
-In the `main` function in this example 
-there are many lines that start with `final variableName =`. 
-These lines are type safe, 
-despite not being explicitly given a type.
+A linguagem Dart é [type safe][]; ela usa verificação de tipo estática para garantir que o valor de uma variável sempre corresponda ao tipo estático da variável. Ao definir uma classe, anotar os membros com `String` é obrigatório, mas muitas vezes é opcional devido à inferência de tipo. Na função `main` neste exemplo, há muitas linhas que começam com `final variableName =`. Essas linhas são type safe, apesar de não terem um tipo explicitamente definido.
 
-Dart also has built-in [sound null safety][]. 
-In the example, the `description` member is 
-declared with the type `String?`. 
-The `?` at the end of `String?` means that 
-this property can be null. 
-The other two members cannot be null, 
-and the program will not compile if 
-you tried to set them to `null`. 
-You can see this demonstrated in the constructor for 
-the `Package` class. It takes two required,
-positional arguments and one optional, named argument.
+Dart também possui [sound null safety][] integrado. No exemplo, o membro `description` é declarado com o tipo `String?`. O `?` no final de `String?` significa que esta propriedade pode ser nula. Os outros dois membros não podem ser nulos e o programa não será compilado se você tentar defini-los como `null`. Você pode ver isso demonstrado no construtor da classe `Package`. Ele recebe dois argumentos posicionais obrigatórios e um argumento nomeado opcional.
 
-Next in the example is the `main` function. 
-All Dart programs, including Flutter apps, 
-start with a `main` function. 
-The function showcases several basic Dart language features, 
-including using libraries, marking functions as async, 
-making function calls, using `if` statement control-flow,
-and more.
+Em seguida, no exemplo, está a função `main`. Todos os programas Dart, incluindo aplicativos Flutter, começam com uma função `main`. A função mostra vários recursos básicos da linguagem Dart, incluindo o uso de bibliotecas, a marcação de funções como async, a realização de chamadas de função, o uso de controle de fluxo de instruções `if` e muito mais.
 
-:::note Where does initialization code go?
-The main entrypoint in a starter
-Flutter app is in `lib/main.dart`.
-The default `main` method looks
-like the following:
+:::note Onde o código de inicialização vai?
+O ponto de entrada principal em um aplicativo Flutter inicial é em `lib/main.dart`. O método `main` padrão se parece com o seguinte:
 
 ```dart title="lib/main.dart"
 void main() {
@@ -126,58 +75,33 @@ void main() {
 }       
 ```
 
-Perform any _quick_ initialization (less than a frame or two)
-_before_ calling `runApp()`,
-though be aware that the widget tree hasn't been created yet.
-If you want to perform initialization that takes awhile,
-such as loading data from disk or over a network,
-do it in a way that won't block the main UI thread.
-For more information, check out [Asynchronous programming][],
-the [`FutureBuilder`][] API, [Deferred components][],
-or the [Working with long lists][] cookbook recipe,
-as appropriate.
+Execute qualquer inicialização _rápida_ (menos de um ou dois frames) _antes_ de chamar `runApp()`, embora esteja ciente de que a árvore de widgets ainda não foi criada. Se você deseja realizar uma inicialização que leva um tempo, como carregar dados do disco ou pela rede, faça-o de uma maneira que não bloqueie a thread da interface do usuário principal. Para obter mais informações, consulte [Programação assíncrona][], a API [`FutureBuilder`][], [Componentes adiados][] ou a receita do livro de receitas [Trabalhando com listas longas][], conforme apropriado.
 
-Every stateful widget has an `initState()`
-method that is called when the widget is
-created and added to the widget tree.
-You can override this method and perform
-initialization there, though the first line of
-this method _must_ be `super.initState()`.
+Todo widget stateful tem um método `initState()` que é chamado quando o widget é criado e adicionado à árvore de widgets. Você pode substituir este método e realizar a inicialização lá, embora a primeira linha deste método _deva_ ser `super.initState()`.
 
-Finally, hot reloading your app does _not_
-call `initState` or `main` again.
-Hot restart calls both.
+Finalmente, o hot reloading do seu aplicativo _não_ chama `initState` ou `main` novamente. O hot restart chama ambos.
 :::
 
-If these features aren't familiar to you, 
-you can find resources to learn Dart on the 
-[Bootstrap into Dart][] page.
+Se esses recursos não são familiares para você, você pode encontrar recursos para aprender Dart na página [Bootstrap into Dart][].
 
-## Next: Widgets
+## Próximo: Widgets
 
-This page is an introduction to Dart,
-and helps you become familiar with reading
-Flutter and Dart code. It's okay if you don't
-feel clear on all the code on this page, 
-as long as you feel comfortable with the _syntax_
-of the Dart language.
-In the next section, you'll learn about the 
-building block of Flutter apps: widgets.
+Esta página é uma introdução ao Dart e ajuda você a se familiarizar com a leitura de código Flutter e Dart. Não tem problema se você não se sentir claro sobre todo o código nesta página, contanto que se sinta confortável com a _sintaxe_ da linguagem Dart. Na próxima seção, você aprenderá sobre os blocos de construção de aplicativos Flutter: widgets.
 
-[Asynchronous programming]: {{site.dart-site}}/libraries/async/async-await
+[Programação assíncrona]: {{site.dart-site}}/libraries/async/async-await
 [Dart]: {{site.dart-site}}
-[Deferred components]: /perf/deferred-components
+[Componentes adiados]: /perf/deferred-components
 [`main`]: {{site.dart-site}}/language#hello-world
-[classes in Dart]: {{site.dart-site}}/language/classes
+[classes em Dart]: {{site.dart-site}}/language/classes
 [`FutureBuilder`]: {{site.api}}/flutter/widgets/FutureBuilder-class
 [type safe]: {{site.dart-site}}/language/type-system
 [sound null safety]: {{site.dart-site}}/null-safety
-[Working with long lists]: /cookbook/lists/long-lists
+[Trabalhando com listas longas]: /cookbook/lists/long-lists
 [Bootstrap into Dart]: /resources/bootstrap-into-dart
 
 ## Feedback
 
-As this section of the website is evolving, 
-we [welcome your feedback][]!
+Como esta seção do site está evoluindo, nós [agradecemos seu feedback][]!
 
-[welcome your feedback]: https://google.qualtrics.com/jfe/form/SV_6A9KxXR7XmMrNsy?page="dart"
+[agradecemos seu feedback]: https://google.qualtrics.com/jfe/form/SV_6A9KxXR7XmMrNsy?page="dart"
+

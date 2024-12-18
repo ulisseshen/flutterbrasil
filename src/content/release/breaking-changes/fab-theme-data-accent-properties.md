@@ -1,72 +1,72 @@
 ---
-title: FloatingActionButton and ThemeData's accent properties
+ia-translate: true
+title: FloatingActionButton e propriedades de accent do ThemeData
 description: >
-  Remove FloatingActionButton's undocumented use of
-  the ThemeData accentTextTheme property, and
-  its unnecessary use of accentIconTheme.
+  Remove o uso não documentado do FloatingActionButton da
+  propriedade accentTextTheme do ThemeData e seu uso
+  desnecessário de accentIconTheme.
 ---
 
-## Summary
+## Resumo
 
-Removed Flutter's `FloatingActionButton` (FAB) dependency on
-`ThemeData` accent properties.
+Removida a dependência do `FloatingActionButton` (FAB) do Flutter
+das propriedades `accent` do `ThemeData`.
 
-## Context
+## Contexto
 
-This was a small part of the [Material Theme System Updates][] project.
+Esta foi uma pequena parte do projeto [Atualizações do Sistema de Temas Material][].
 
-Previously, the `ThemeData` [`accentIconTheme`] property was only
-used by [`FloatingActionButton`][] to determine the default
-color of the text or icons that appeared within the button.
+Anteriormente, a propriedade `accentIconTheme` do `ThemeData`
+era usada apenas pelo [`FloatingActionButton`][] para determinar a cor
+padrão do texto ou ícones que apareciam dentro do botão.
 
-`FloatingActionButton` also used the
-`ThemeData accentTextTheme` property,
-however this dependency was undocumented and unnecessary.
+O `FloatingActionButton` também usava a propriedade
+`accentTextTheme` do `ThemeData`, no entanto, essa dependência
+não era documentada e desnecessária.
 
-Both of these dependencies were confusing.
-For example if one configured the `Theme`'s `accentIconTheme`
-to change the appearance of all floating action buttons,
-it was difficult to know what other components would be affected,
-or might be affected in the future.
+Ambas as dependências eram confusas. Por exemplo, se alguém
+configurasse o `accentIconTheme` do `Theme` para alterar a
+aparência de todos os botões de ação flutuantes, era difícil saber
+quais outros componentes seriam afetados, ou poderiam ser
+afetados no futuro.
 
-The [Material Design spec][] no longer includes an "accent" color.
-The `ColorScheme`'s [secondary color][] is now used instead.
+A [especificação do Material Design][] não inclui mais uma cor
+"accent". A [cor secundária][] do `ColorScheme` é usada agora.
 
-Previously, applications could configure the color of text and icons
-within `FloatingActionButtons` with the widget's `foregroundColor`
-property, or with the `FloatingActionButtonTheme`'s `foregroundColor`.
-If neither `foregroundColor` property was specified, the foreground
-color defaulted to the `accentIconTheme`'s color.
+Anteriormente, os aplicativos podiam configurar a cor do texto e
+dos ícones dentro dos `FloatingActionButtons` com a propriedade
+`foregroundColor` do widget ou com o `foregroundColor` do
+`FloatingActionButtonTheme`. Se nenhuma propriedade
+`foregroundColor` fosse especificada, a cor de primeiro plano
+assumia como padrão a cor do `accentIconTheme`.
 
-With this change, the default behavior uses the color scheme's
-`onSecondary` color instead.
+Com essa alteração, o comportamento padrão usa a cor `onSecondary`
+do esquema de cores.
 
-## Description of change
+## Descrição da alteração
 
-Previously, the `accentIconTheme` provided a default for the
-`FloatingActionButton`'s `foregroundColor` property:
+Anteriormente, o `accentIconTheme` fornecia um valor padrão para
+a propriedade `foregroundColor` do `FloatingActionButton`:
 
 ```dart
     final Color foregroundColor = this.foregroundColor
       ?? floatingActionButtonTheme.foregroundColor
-      ?? theme.accentIconTheme.color // To be removed.
+      ?? theme.accentIconTheme.color // A ser removido.
       ?? theme.colorScheme.onSecondary;
 ```
 
-Apps that configure their theme's `accentIconTheme`
-to effectively configure the `foregroundColor` of all
-floating action buttons, can get the same effect by
-configuring the `foregroundColor` of their theme's
-`floatingActionButtonTheme`.
+Aplicativos que configuram o `accentIconTheme` do seu tema para
+configurar efetivamente o `foregroundColor` de todos os botões de
+ação flutuantes, podem obter o mesmo efeito configurando o
+`foregroundColor` do `floatingActionButtonTheme` do seu tema.
 
-The `FloatingActionButton`'s `foregroundColor` is now used
-to configure the `textStyle` of the `RawMaterialButton`
-created by `FloatingActionButton`. Previously,
-this text style was based on the button style of
-`ThemeData.accentTextTheme`:
+O `foregroundColor` do `FloatingActionButton` agora é usado para
+configurar o `textStyle` do `RawMaterialButton` criado pelo
+`FloatingActionButton`. Anteriormente, esse estilo de texto era
+baseado no estilo do botão do `ThemeData.accentTextTheme`:
 
 ```dart
-// theme.accentTextTheme becomes theme.textTheme
+// theme.accentTextTheme torna-se theme.textTheme
 final TextStyle textStyle = theme.accentTextTheme.button.copyWith(
   color: foregroundColor,
   letterSpacing: 1.2,
@@ -74,26 +74,27 @@ final TextStyle textStyle = theme.accentTextTheme.button.copyWith(
 
 ```
 
-Except in a case where an app has explicitly configured the
-`accentTextTheme` to take advantage of this undocumented dependency,
-this use of `accentTextTheme` is unnecessary.
-This change replaces this use of `accentTextTheme` with `textTheme`.
+Exceto em um caso em que um aplicativo tenha configurado
+explicitamente o `accentTextTheme` para tirar proveito dessa
+dependência não documentada, esse uso do `accentTextTheme` é
+desnecessário. Essa alteração substitui esse uso do
+`accentTextTheme` por `textTheme`.
 
-## Migration guide
+## Guia de migração
 
-This change occurred in two steps:
+Essa alteração ocorreu em duas etapas:
 
-1. If the foreground of a `FloatingActionButton` is set
-   to a non-default color, a warning is now printed.
-2. The `accentIconTheme` dependency was removed.
-   If you haven't already done so, migrate your apps
-   per the pattern below.
+1. Se o primeiro plano de um `FloatingActionButton` for definido
+   para uma cor não padrão, um aviso será impresso agora.
+2. A dependência do `accentIconTheme` foi removida. Se você
+   ainda não o fez, migre seus aplicativos de acordo com o
+   padrão abaixo.
 
-To configure the `FloatingActionButton`'s `foregroundColor`
-for all FABs, you can configure the theme's
-`floatingActionButtonTheme` instead of its `accentIconTheme`.
+Para configurar o `foregroundColor` do `FloatingActionButton`
+para todos os FABs, você pode configurar o
+`floatingActionButtonTheme` do tema em vez de seu `accentIconTheme`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 MaterialApp(
@@ -103,7 +104,7 @@ MaterialApp(
 )
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 MaterialApp(
@@ -115,42 +116,41 @@ MaterialApp(
 )
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.16.3<br>
-In stable release: 1.17
+Incluído na versão: 1.16.3<br>
+Na versão estável: 1.17
 
-## References
+## Referências
 
-Design doc:
+Documento de design:
 
-* [Remove FAB Accent Theme Dependency][]
+* [Remover Dependência do Tema Accent do FAB][]
 
-API documentation:
+Documentação da API:
 
 * [`FloatingActionButton`][]
 * [`ThemeData`][]
 * [`FloatingActionButtonThemeData`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* [Step 1 of 2][] Warn about Flutter's
-  FloatingActionButton dependency on ThemeData accent properties
-* [Step 2 of 2][] Remove Flutter's FloatingActionButton dependency
-  on ThemeData accent properties
+* [Etapa 1 de 2][] Avisar sobre a dependência do FloatingActionButton
+  do Flutter nas propriedades accent do ThemeData
+* [Etapa 2 de 2][] Remover a dependência do FloatingActionButton do
+  Flutter nas propriedades accent do ThemeData
 
-Other:
+Outro:
 
-* [Material Theme System Updates][]
-
+* [Atualizações do Sistema de Temas Material][]
 
 [`accentIconTheme`]: {{site.api}}/flutter/material/ThemeData/accentIconTheme.html
 [`FloatingActionButton`]: {{site.api}}/flutter/material/FloatingActionButton/foregroundColor.html
 [`FloatingActionButtonThemeData`]: {{site.api}}/flutter/material/FloatingActionButtonThemeData-class.html
 [Material Design spec]: {{site.material}}/styles/color
-[Material Theme System Updates]: /go/material-theme-system-updates
-[Remove FAB Accent Theme Dependency]: /go/remove-fab-accent-theme-dependency
-[secondary color]: {{site.material}}/styles/color/the-color-system/color-roles#904230ec-ae73-4f0f-8bff-4024a036ca66
-[Step 1 of 2]: {{site.repo.flutter}}/pull/48435
-[Step 2 of 2]: {{site.repo.flutter}}/pull/46923
+[Atualizações do Sistema de Temas Material]: /go/material-theme-system-updates
+[Remover Dependência do Tema Accent do FAB]: /go/remove-fab-accent-theme-dependency
+[cor secundária]: {{site.material}}/styles/color/the-color-system/color-roles#904230ec-ae73-4f0f-8bff-4024a036ca66
+[Etapa 1 de 2]: {{site.repo.flutter}}/pull/48435
+[Etapa 2 de 2]: {{site.repo.flutter}}/pull/46923
 [`ThemeData`]: {{site.api}}/flutter/material/ThemeData/floatingActionButtonTheme.html

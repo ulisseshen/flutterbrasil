@@ -1,13 +1,14 @@
 ---
-title: Testing
-description: A catalog of recipes showcasing testing your Flutter app.
+ia-translate: true
+title: Testes
+description: Um catálogo de receitas mostrando como testar seu aplicativo Flutter.
 ---
 
-## Integration
+## Integração
 
 {% include docs/testing-toc.md type='integration' %}
 
-## Unit
+## Unitários
 
 {% include docs/testing-toc.md type='unit' %}
 

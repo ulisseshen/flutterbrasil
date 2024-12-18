@@ -1,80 +1,84 @@
 ---
-title: Material Chip button semantics
-description: Interactive Material Chips are now semantically marked as buttons.
+ia-translate: true
+title: Semântica do botão Material Chip
+description: Material Chips interativos agora são marcados semanticamente como botões.
 ---
 
-## Summary
+## Resumo
 
-Flutter now applies the semantic label of `button` to
-all interactive [Material Chips][] for accessibility purposes.
+O Flutter agora aplica o rótulo semântico de `button` a
+todos os [Material Chips][] interativos para fins de
+acessibilidade.
 
-## Context
+## Contexto
 
-Interactive Material Chips (namely [`ActionChip`][],
-[`ChoiceChip`][], [`FilterChip`][], and [`InputChip`][])
-are now semantically marked as being buttons.
-However, the non-interactive information [`Chip`][] is not.
+Material Chips interativos (a saber, [`ActionChip`][],
+[`ChoiceChip`][], [`FilterChip`][] e [`InputChip`][])
+agora são marcados semanticamente como botões.
+No entanto, o [`Chip`][] de informação não interativo não é.
 
-Marking Chips as buttons helps accessibility tools,
-search engines, and other semantic analysis software
-understand the meaning of an app. For example, it
-allows screen readers (such as TalkBack on Android
-and VoiceOver on iOS) to announce a tappable Chip
-as a "button", which can assist users in navigating
-your app. Prior to this change, users of accessibility
-tools may have had a subpar experience,
-unless you implemented a workaround by manually adding the
-missing semantics to the Chip widgets in your app.
+Marcar Chips como botões ajuda ferramentas de acessibilidade,
+mecanismos de busca e outros softwares de análise semântica a
+entender o significado de um aplicativo. Por exemplo, isso
+permite que leitores de tela (como o TalkBack no Android
+e o VoiceOver no iOS) anunciem um Chip clicável
+como um "botão", o que pode auxiliar os usuários na navegação
+em seu aplicativo. Antes dessa mudança, usuários de
+ferramentas de acessibilidade podem ter tido uma experiência
+abaixo do ideal, a menos que você implementasse uma solução
+alternativa adicionando manualmente a semântica ausente
+aos widgets Chip em seu aplicativo.
 
-## Description of change
+## Descrição da mudança
 
-The outermost [`Semantics`][] widget that wraps all
-Chip classes to describe their semantic properties
-is modified.
+O widget [`Semantics`][] mais externo que envolve todas as
+classes Chip para descrever suas propriedades semânticas
+foi modificado.
 
-The following changes apply to
-[`ActionChip`][], [`ChoiceChip`][], [`FilterChip`][],
-and [`InputChip`][]:
+As seguintes mudanças se aplicam a
+[`ActionChip`][], [`ChoiceChip`][], [`FilterChip`][] e
+[`InputChip`][]:
 
-* The [`button`][`SemanticsProperties.button`] property
-  is set to `true`.
-* The [`enabled`][`SemanticsProperties.enabled`] property
-  reflects whether the Chip is _currently_ tappable
-  (by having a callback set).
+* A propriedade [`button`][`SemanticsProperties.button`]
+  é definida como `true`.
+* A propriedade [`enabled`][`SemanticsProperties.enabled`]
+  reflete se o Chip é _atualmente_ clicável
+  (por ter um callback definido).
 
-These property changes bring interactive Chips' semantic
-behavior in-line with that of other [Material Buttons][].
+Essas mudanças de propriedade alinham o comportamento
+semântico de Chips interativos com o de outros
+[Material Buttons][].
 
-For the non-interactive information [`Chip`][]:
+Para o [`Chip`][] de informação não interativo:
 
-* The [`button`][`SemanticsProperties.button`] property
-  is set to `false`.
-* The [`enabled`][`SemanticsProperties.enabled`] property
-  is set to `null`.
+* A propriedade [`button`][`SemanticsProperties.button`]
+  é definida como `false`.
+* A propriedade [`enabled`][`SemanticsProperties.enabled`]
+  é definida como `null`.
 
-## Migration guide
+## Guia de migração
 
-**You might not need to perform any migration.**
-This change only affects you if you worked around
-the issue of Material Chips missing `button` semantics by
-wrapping the widget given to the `label` field of a
-`Chip` with a `Semantics` widget marked as
-`button: true`. **In this case, the inner and outer `button`
-semantics conflict, resulting in the tappable area
-of the button shrinking down to the size of the label
-after this change is introduced.** Fix this issue
-either by deleting that `Semantics` widget and replacing
-it with its child, or by removing the `button: true`
-property if other semantic properties still
-need to be applied to the `label` widget of the Chip.
+**Você pode não precisar realizar nenhuma migração.**
+Essa mudança afeta você apenas se você contornou
+o problema de Material Chips faltando a semântica de `button`
+envolvendo o widget fornecido ao campo `label` de um
+`Chip` com um widget `Semantics` marcado como
+`button: true`. **Nesse caso, a semântica `button` interna
+e externa entram em conflito, resultando na área clicável
+do botão diminuindo para o tamanho do rótulo
+após essa mudança ser introduzida.** Corrija esse problema
+excluindo esse widget `Semantics` e substituindo-o
+por seu filho, ou removendo a propriedade `button: true`
+se outras propriedades semânticas ainda
+precisarem ser aplicadas ao widget `label` do Chip.
 
-The following snippets use [`InputChip`][] as an example,
-but the same process applies to [`ActionChip`][],
-[`ChoiceChip`][], and [`FilterChip`][] as well.
+Os seguintes trechos usam [`InputChip`][] como um exemplo,
+mas o mesmo processo se aplica a [`ActionChip`][],
+[`ChoiceChip`][] e [`FilterChip`][] também.
 
-**Case 1: Remove the `Semantics` widget.**
+**Caso 1: Remova o widget `Semantics`.**
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 Widget myInputChip = InputChip(
@@ -86,7 +90,7 @@ Widget myInputChip = InputChip(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 Widget myInputChip = InputChip(
@@ -95,9 +99,9 @@ Widget myInputChip = InputChip(
 );
 ```
 
-**Case 2: Remove `button:true` from the `Semantics` widget.**
+**Caso 2: Remova `button:true` do widget `Semantics`.**
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 Widget myInputChip = InputChip(
@@ -110,7 +114,7 @@ Widget myInputChip = InputChip(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 Widget myInputChip = InputChip(
@@ -122,14 +126,14 @@ Widget myInputChip = InputChip(
 );
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.23.0-7.0.pre<br>
-In stable release: 2.0.0
+Implementado na versão: 1.23.0-7.0.pre<br>
+Na versão estável: 2.0.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`ActionChip`][]
 * [`Chip`][]
@@ -142,19 +146,20 @@ API documentation:
 * [`SemanticsProperties.button`][]
 * [`SemanticsProperties.enabled`][]
 
-Relevant issue:
+Issue relevante:
 
-* [Issue 58010][]: InputChip doesn't announce any
-  action for a11y on iOS
+* [Issue 58010][]: InputChip não anuncia nenhuma
+  ação para a11y no iOS
 
-Relevant PRs:
+PRs relevantes:
 
-* [PR 60141][]: Tweaking Material Chip a11y semantics
-  to match buttons
-* [PR 60645][]: Revert "Tweaking Material Chip a11y
-  semantics to match buttons (#60141)
-* [PR 61048][]: Re-land "Tweaking Material Chip a11y
-  semantics to match buttons (#60141)
+* [PR 60141][]: Ajustando a semântica a11y do Material Chip
+  para corresponder a botões
+* [PR 60645][]: Reverter "Ajustando a semântica a11y do
+  Material Chip para corresponder a botões (#60141)
+* [PR 61048][]: Re-implementar "Ajustando a semântica
+  a11y do Material Chip para corresponder a botões
+  (#60141)
 
 [`ActionChip`]: {{site.api}}/flutter/material/ActionChip-class.html
 [`Chip`]: {{site.api}}/flutter/material/Chip-class.html

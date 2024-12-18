@@ -1,6 +1,7 @@
 ---
-title: Using Flutter in China
-description: How to use, access, and learn about Flutter in China.
+ia-translate: true
+title: Usando Flutter na China
+description: Como usar, acessar e aprender sobre o Flutter na China.
 toc: true
 os-list: [Windows, macOS, Linux, ChromeOS]
 ---
@@ -10,30 +11,30 @@ os-list: [Windows, macOS, Linux, ChromeOS]
 
 {% render docs/china-notice-cn.md %}
 
-To speed the download and installation of Flutter in China,
-consider using a [mirror site][] or _mirror_.
+Para acelerar o download e a instalação do Flutter na China,
+considere usar um [site espelho][] ou _mirror_.
 
 :::important
-Use mirror sites _only_ if you _trust_ the provider.
-The Flutter team can't verify their reliability or security.
+Use sites espelho _somente_ se você _confiar_ no provedor.
+A equipe do Flutter não pode verificar sua confiabilidade ou segurança.
 :::
 
-[mirror site]: https://en.wikipedia.org/wiki/Mirror_site
+[site espelho]: https://en.wikipedia.org/wiki/Mirror_site
 
-## Use a Flutter mirror site
+## Use um site espelho do Flutter
 
-The [China Flutter User Group][] (CFUG) maintains a Simplified Chinese
-Flutter website [https://flutter.cn](https://flutter.cn) and a mirror.
-Other mirrors can be found at the [end of this guide](#known-trusted-community-run-mirror-sites).
+O [Grupo de Usuários Flutter da China][] (CFUG) mantém um site
+Flutter em chinês simplificado [https://flutter.cn](https://flutter.cn) e um mirror.
+Outros mirrors podem ser encontrados no [final deste guia](#known-trusted-community-run-mirror-sites).
 
-### Configure your machine to use a mirror site
+### Configure sua máquina para usar um site espelho
 
-To install or use Flutter in China, use a trustworthy Flutter mirror.
-This requires setting two environment variables on your machine.
+Para instalar ou usar o Flutter na China, use um mirror Flutter confiável.
+Isso requer a definição de duas variáveis de ambiente em sua máquina.
 
-_All examples that follow presume that you are using the CFUG mirror._
+_Todos os exemplos a seguir pressupõem que você está usando o mirror do CFUG._
 
-To set your machine to use a mirror site:
+Para configurar sua máquina para usar um site espelho:
 
 {% tabs "china-setup-os" %}
 
@@ -47,18 +48,18 @@ To set your machine to use a mirror site:
 
 {% endtabs %}
 
-### Download Flutter archives based on a mirror site
+### Baixe arquivos do Flutter com base em um site espelho
 
-To download Flutter from the [SDK archive][] from a mirror,
-replace `storage.googleapis.com` with the URL of your trusted mirror.
-Use your mirror site in the browser or in other applications
-like IDM or Thunder.
-This should improve download speed.
+Para baixar o Flutter do [arquivo SDK][] de um mirror,
+substitua `storage.googleapis.com` pelo URL do seu mirror confiável.
+Use seu site espelho no navegador ou em outros aplicativos
+como IDM ou Thunder.
+Isso deve melhorar a velocidade de download.
 
-[SDK archive]: /release/archive
+[arquivo SDK]: /release/archive
 
-The following example shows how to change the URL for Flutter's download site
-from Google's archive to CFUG's mirror.
+O exemplo a seguir mostra como alterar o URL do site de download do Flutter
+do arquivo do Google para o mirror do CFUG.
 
 {% tabs "china-setup-os" %}
 
@@ -73,19 +74,19 @@ from Google's archive to CFUG's mirror.
 {% endtabs %}
 
 :::note
-Not every mirror supports downloading artifacts using their direct URL.
+Nem todos os mirrors suportam o download de artefatos usando seu URL direto.
 :::
 
-## Configure your machine to publish your package
+## Configure sua máquina para publicar seu pacote
 
-To publish your packages to `pub.dev`,
-you need to be able to access both Google Auth and the `pub.dev` site.
+Para publicar seus pacotes no `pub.dev`,
+você precisa ser capaz de acessar tanto o Google Auth quanto o site `pub.dev`.
 
 {% comment %}
 From <https://github.com/flutter/website/pull/9338#discussion_r1328077020>
 {% endcomment %}
 
-To enable access to `pub.dev`:
+Para habilitar o acesso ao `pub.dev`:
 
 {% tabs "china-setup-os" %}
 
@@ -99,15 +100,15 @@ To enable access to `pub.dev`:
 
 {% endtabs %}
 
-To learn more about publishing packages, check out the
-[Dart documentation on publishing packages][].
+Para saber mais sobre a publicação de pacotes, consulte a
+[documentação Dart sobre publicação de pacotes][].
 
-[Dart documentation on publishing packages]: {{site.dart-site}}/tools/pub/publishing
+[documentação Dart sobre publicação de pacotes]: {{site.dart-site}}/tools/pub/publishing
 
-## Known, trusted community-run mirror sites
+## Sites espelho conhecidos e confiáveis mantidos pela comunidade
 
-The Flutter team can't guarantee long-term availability of any mirrors.
-You can use other mirrors if they become available.
+A equipe do Flutter não pode garantir a disponibilidade de longo prazo de nenhum mirror.
+Você pode usar outros mirrors se eles se tornarem disponíveis.
 
 {% for mirror in mirrors %}
 
@@ -115,32 +116,32 @@ You can use other mirrors if they become available.
 
 ### {{mirror.group}}
 
-[{{mirror.group}}][] maintains the `{{mirror.mirror}}` mirror.
-It includes the Flutter SDK and pub packages.
+[{{mirror.group}}][] mantém o mirror `{{mirror.mirror}}`.
+Ele inclui o Flutter SDK e pacotes pub.
 
-#### Configure your machine to use this mirror
+#### Configure sua máquina para usar este mirror
 
-To set your machine to use this mirror, use these commands.
+Para configurar sua máquina para usar este mirror, use estes comandos.
 
-On macOS, Linux, or ChromeOS:
+No macOS, Linux ou ChromeOS:
 
 ```console
 export PUB_HOSTED_URL={{mirror.urls.pubhosted}};
 export FLUTTER_STORAGE_BASE_URL={{mirror.urls.flutterstorage}}
 ```
 
-On Windows:
+No Windows:
 
 ```console
 $env:PUB_HOSTED_URL="{{mirror.urls.pubhosted}}";
 $env:FLUTTER_STORAGE_BASE_URL="{{mirror.urls.flutterstorage}}"
 ```
 
-#### Get support for this mirror
+#### Obtenha suporte para este mirror
 
-If you're running into issues that only occur when
-using the `{{mirror.mirror}}` mirror, report the issue to their
-[issue tracker]({{mirror.urls.issues}}).
+Se você estiver enfrentando problemas que ocorrem apenas quando
+usando o mirror `{{mirror.mirror}}`, relate o problema ao
+[rastreador de problemas]({{mirror.urls.issues}}).
 
 {% endfor %}
 
@@ -148,9 +149,8 @@ using the `{{mirror.mirror}}` mirror, report the issue to their
 [{{mirror.group}}]: {{mirror.urls.group}}
 {% endfor %}
 
-## Offer to host a new mirror site
+## Ofereça-se para hospedar um novo site espelho
 
-If you're interested in setting up your own mirror,
-contact [flutter-dev@googlegroups.com](mailto:flutter-dev@googlegroups.com)
-for assistance.
-
+Se você estiver interessado em configurar seu próprio mirror,
+entre em contato com [flutter-dev@googlegroups.com](mailto:flutter-dev@googlegroups.com)
+para obter assistência.

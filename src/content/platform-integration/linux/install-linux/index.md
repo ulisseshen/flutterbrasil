@@ -1,13 +1,14 @@
 ---
-title: Add Linux as a target platform for Flutter
-description: Configure your system to develop Flutter for Linux.
-short-title: Set up Linux development
+ia-translate: true
+title: Adicione Linux como plataforma alvo para Flutter
+description: Configure seu sistema para desenvolver Flutter para Linux.
+short-title: Configure o desenvolvimento Linux
 target-list: [Android, web]
 ---
 
-To set up your development environment for targeting Linux,
-choose the guide that corresponds to the [Getting Started path][] you followed,
-or the platform you already have set up.
+Para configurar seu ambiente de desenvolvimento para ter o Linux como alvo,
+escolha o guia que corresponde ao caminho de [Começando][] que você seguiu,
+ou a plataforma que você já tem configurada.
 
 <div class="card-grid">
 {% for target in target-list %}
@@ -25,7 +26,7 @@ or the platform you already have set up.
           {% endcase -%}
         </span>
         <span class="text-muted d-block">
-        Make {{ target }} and Linux desktop apps
+        Crie aplicativos desktop {{ target }} e Linux
         </span>
       </header>
     </div>
@@ -33,4 +34,4 @@ or the platform you already have set up.
 {% endfor %}
 </div>
 
-[Getting Started path]: /get-started/install
+[Começando]: /get-started/install

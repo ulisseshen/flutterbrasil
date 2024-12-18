@@ -1,6 +1,7 @@
 ---
+ia-translate: true
 title: Design
-description: A catalog of recipes for designing your Flutter app.
+description: Um catálogo de receitas para projetar seu aplicativo Flutter.
 ---
 
 {% include docs/cookbook-group-index.md %}

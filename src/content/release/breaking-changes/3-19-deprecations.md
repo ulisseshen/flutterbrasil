@@ -1,61 +1,62 @@
 ---
-title: Deprecated API removed after v3.19
+ia-translate: true
+title: API Deprecadas Removidas após a v3.19
 description: >-
-  After reaching end of life, the following deprecated APIs
-  were removed from Flutter.
+  Após atingir o fim da vida útil, as seguintes APIs deprecadas
+  foram removidas do Flutter.
 ---
 
-## Summary
+## Resumo
 
-In accordance with Flutter's [Deprecation Policy][],
-deprecated APIs that reached end of life after the
-3.19 stable release have been removed.
+De acordo com a [Política de Depreciação][] do Flutter,
+APIs deprecadas que atingiram o fim da vida útil após o
+lançamento estável 3.19 foram removidas.
 
-All affected APIs have been compiled into this
-primary source to aid in migration.
-To further aid your migration, check out this
-[quick reference sheet][].
+Todas as APIs afetadas foram compiladas nesta
+fonte primária para auxiliar na migração.
+Para auxiliar ainda mais na sua migração, confira esta
+[folha de referência rápida][].
 
-[Deprecation Policy]: {{site.repo.flutter}}/blob/master/docs/contributing/Tree-hygiene.md#deprecations
-[quick reference sheet]: /go/deprecations-removed-after-3-19
+[Política de Depreciação]: {{site.repo.flutter}}/blob/master/docs/contributing/Tree-hygiene.md#deprecations
+[folha de referência rápida]: /go/deprecations-removed-after-3-19
 
-## Changes
+## Mudanças
 
-This section lists the deprecations by the package and affected class.
+Esta seção lista as depreciações pelo pacote e classe afetada.
 
 ### `TextTheme`
 
-Package: flutter
-Supported by Flutter Fix: yes
+Pacote: flutter
+Suportado pelo Flutter Fix: sim
 
-Several `TextStyle` properties of `TextTheme` were deprecated in v3.1 to support new
-stylings from the Material Design specification. They
-are listed in the following table alongside the appropriate replacement in the
-new API.
+Várias propriedades `TextStyle` de `TextTheme` foram deprecadas na v3.1 para suportar
+novos estilos da especificação do Material Design. Elas estão
+listadas na tabela a seguir, juntamente com a substituição apropriada na
+nova API.
 
-| Deprecation | New API |
-|---|---|
-| headline1	| displayLarge |
-| headline2	| displayMedium |
-| headline3	| displaySmall |
-| headline4	| headlineMedium |
-| headline5	| headlineSmall |
-| headline6	| titleLarge |
-| subtitle1	| titleMedium |
-| subtitle2	| titleSmall |
-| bodyText1	| bodyLarge |
-| bodyText2	| bodyMedium |
-| caption	  | bodySmall |
-| button	  | labelLarge |
-| overline	| labelSmall |
+| Depreciação | Nova API     |
+|-------------|--------------|
+| headline1   | displayLarge |
+| headline2   | displayMedium|
+| headline3   | displaySmall |
+| headline4   | headlineMedium|
+| headline5   | headlineSmall|
+| headline6   | titleLarge   |
+| subtitle1   | titleMedium  |
+| subtitle2   | titleSmall   |
+| bodyText1   | bodyLarge    |
+| bodyText2   | bodyMedium   |
+| caption     | bodySmall    |
+| button      | labelLarge   |
+| overline    | labelSmall   |
 
-**Migration guide**
+**Guia de migração**
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 // TextTheme
-// Base constructor
+// Construtor base
 TextTheme(
   headline1: headline1Style,
   headline2: headline2Style,
@@ -106,11 +107,11 @@ style = textTheme.button,
 style = textTheme.overline,
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 // TextTheme
-// Base constructor
+// Construtor base
 TextTheme(
   displayLarge: headline1Style,
   displayMedium: headline2Style,
@@ -159,16 +160,16 @@ style = textTheme.labelLarge;
 style = textTheme.labelSmall;
 ```
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 
 * [`TextTheme`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#109817][]
-* Removed in [#139255][]
+* Deprecado em [#109817][]
+* Removido em [#139255][]
 
 [`TextTheme`]: {{site.api}}/flutter/material/TextTheme-class.html
 
@@ -179,19 +180,19 @@ Relevant PRs:
 
 ### `ThemeData`
 
-Package: flutter
-Supported by Flutter Fix: yes
+Pacote: flutter
+Suportado pelo Flutter Fix: sim
 
-Several `Color` properties of `ThemeData` were deprecated in v3.3 to support new stylings
-from the Material Design specification. These colors were `errorColor`, `backgroundColor`,
- `bottomAppBarColor`, and `toggleableActiveColor`. The first two are replaced by
- properties of the `ThemeData.colorScheme`, while `bottomAppBarColor` is replaced by the
- color of the component theme, `BottomAppBarTheme`. The `toggleableActiveColor` was no
- longer used by the framework and was removed.
+Várias propriedades `Color` de `ThemeData` foram deprecadas na v3.3 para suportar
+novos estilos da especificação do Material Design. Essas cores eram `errorColor`,
+`backgroundColor`, `bottomAppBarColor` e `toggleableActiveColor`. As duas primeiras são
+substituídas por propriedades de `ThemeData.colorScheme`, enquanto `bottomAppBarColor` é
+substituída pela cor do tema do componente, `BottomAppBarTheme`. A
+`toggleableActiveColor` não era mais usada pelo framework e foi removida.
 
-**Migration guide**
+**Guia de migração**
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 var myTheme = ThemeData(
@@ -208,7 +209,7 @@ var bottomAppBarColor = myTheme.bottomAppBarColor;
 var toggleableActiveColor = myTheme.toggleableActiveColor;
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 var myTheme = ThemeData(
@@ -229,18 +230,18 @@ var bottomAppBarColor = myTheme.bottomAppBarTheme.color;
 var toggleableActiveColor = Colors.orange;
 ```
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 
 * [`ThemeData`][]
 * [`ColorScheme`][]
 * [`BottomAppBarTheme`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#110162][], [#111080][], and [#97972][]
-* Removed in [#144178][], [#144080][], [#144079][], and [#144078][]
+* Deprecado em [#110162][], [#111080][] e [#97972][]
+* Removido em [#144178][], [#144080][], [#144079][] e [#144078][]
 
 [`ThemeData`]: {{site.api}}/flutter/material/ThemeData-class.html
 [`ColorScheme`]: {{site.api}}/flutter/material/ColorScheme-class.html
@@ -258,18 +259,17 @@ Relevant PRs:
 
 ### `CupertinoContextMenu.previewBuilder`
 
-Package: flutter
-Supported by Flutter Fix: yes
+Pacote: flutter
+Suportado pelo Flutter Fix: sim
 
-The `previewBuilder` was replaced by the `builder` of `CupertinoContextMenu` after
-v3.4. By adding `builder`, the entirety of the animation executed by the context
-menu is covered, the second half of which was performed by `previewBuilder`, and
-delineated by `CupertinoContextMenu.animationOpensAt`.
+O `previewBuilder` foi substituído pelo `builder` de `CupertinoContextMenu` após
+a v3.4. Ao adicionar `builder`, toda a animação executada pelo menu de contexto
+é coberta, sendo que a segunda metade era realizada por `previewBuilder`, e
+delineada por `CupertinoContextMenu.animationOpensAt`.
 
+**Guia de migração**
 
-**Migration guide**
-
-Code before migration:
+Código antes da migração:
 
 ```dart
 CupertinoContextMenu(
@@ -295,7 +295,7 @@ CupertinoContextMenu(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 CupertinoContextMenu(
@@ -358,16 +358,16 @@ CupertinoContextMenu(
  )
 ```
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 
 * [`CupertinoContextMenu`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#110616][]
-* Removed in [#143990][]
+* Deprecado em [#110616][]
+* Removido em [#143990][]
 
 [`CupertinoContextMenu`]: {{site.api}}/flutter/cupertino/CupertinoContextMenu-class.html
 
@@ -378,19 +378,18 @@ Relevant PRs:
 
 ### `Scrollbar.showTrackOnHover`
 
-Package: flutter
-Supported by Flutter Fix: yes
+Pacote: flutter
+Suportado pelo Flutter Fix: sim
 
-The `showTrackOnHover` property of `Scrollbar`, and its associated component theme,
-`ScrollbarThemeData.showTrackOnHover`, were replaced by the stateful property
-`ScrollbarThemeData.trackVisibility` after v3.4. By utilizing `trackVisibility`,
-all permutations of state can factor into revealing the scrollbar track, not
-just hover.
+A propriedade `showTrackOnHover` de `Scrollbar`, e seu tema de componente associado,
+`ScrollbarThemeData.showTrackOnHover`, foram substituídos pela propriedade stateful
+`ScrollbarThemeData.trackVisibility` após a v3.4. Ao utilizar `trackVisibility`,
+todas as permutações de estado podem influenciar na exibição da track da barra de rolagem, não
+apenas o hover.
 
+**Guia de migração**
 
-**Migration guide**
-
-Code before migration:
+Código antes da migração:
 
 ```dart
 Scrollbar(
@@ -402,36 +401,36 @@ ScrollbarThemeData(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 Scrollbar(
   child: //...
 );
 ScrollbarThemeData(
-  // This will always show the track for any state.
+  // Isso sempre mostrará a track para qualquer estado.
   trackVisibility: MaterialStateProperty<bool>.all(true),
 );
-// Or
+// Ou
 ScrollbarThemeData(
-  // Only show on hover.
+  // Mostra apenas no hover.
   trackVisibility: (Set<MaterialState> states) => states.contains(MaterialState.hovered),
 );
 ```
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 
 * [`Scrollbar`][]
 * [`ScrollbarThemeData`][]
 * [`MaterialState`][]
 * [`MaterialStateProperty`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#111706][]
-* Removed in [#144180][]
+* Deprecado em [#111706][]
+* Removido em [#144180][]
 
 [`Scrollbar`]: {{site.api}}/flutter/material/Scrollbar-class.html
 [`ScrollbarThemeData`]: {{site.api}}/flutter/material/ScrollbarThemeData-class.html
@@ -443,20 +442,19 @@ Relevant PRs:
 
 ---
 
-### `KeepAliveHandle.release` method
+### Método `KeepAliveHandle.release`
 
-Package: flutter
-Supported by Flutter Fix: no
+Pacote: flutter
+Suportado pelo Flutter Fix: não
 
-The `release` method of `KeepAliveHandle` was removed and replaced by calling
-`dispose` after v3.3. This change was made because `release` was found to often
-be called without then calling `dispose`, leading to memory leaks. The `dispose`
-method executes the same functionality as `release` did now.
+O método `release` de `KeepAliveHandle` foi removido e substituído por chamar
+`dispose` após a v3.3. Essa alteração foi feita porque descobriu-se que `release` era
+frequentemente chamado sem chamar `dispose` em seguida, levando a vazamentos de memória. O método
+`dispose` executa a mesma funcionalidade que `release` fazia agora.
 
+**Guia de migração**
 
-**Migration guide**
-
-Code before migration:
+Código antes da migração:
 
 ```dart
 KeepAliveHandle handle = KeepAliveHandle();
@@ -464,23 +462,23 @@ handle.release();
 handle.dispose();
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 KeepAliveHandle handle = KeepAliveHandle();
 handle.dispose();
 ```
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 
 * [`KeepAliveHandle`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#108384][]
-* Removed in [#143961][]
+* Deprecado em [#108384][]
+* Removido em [#143961][]
 
 [`KeepAliveHandle`]: {{site.api}}/flutter/widgets/KeepAliveHandle-class.html
 
@@ -491,17 +489,16 @@ Relevant PRs:
 
 ### `InteractiveViewer.alignPanAxis`
 
-Package: flutter
-Supported by Flutter Fix: yes
+Pacote: flutter
+Suportado pelo Flutter Fix: sim
 
-The `alignPanAxis` property of `InteractiveViewer` was removed and replaced with
-`panAxis` after v3.3. This change was made to enable more modes of panning in
+A propriedade `alignPanAxis` de `InteractiveViewer` foi removida e substituída por
+`panAxis` após a v3.3. Essa alteração foi feita para habilitar mais modos de pan em
 `InteractiveViewer`.
 
+**Guia de migração**
 
-**Migration guide**
-
-Code before migration:
+Código antes da migração:
 
 ```dart
 InteractiveViewer(
@@ -509,7 +506,7 @@ InteractiveViewer(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 InteractiveViewer(
@@ -517,17 +514,17 @@ InteractiveViewer(
 );
 ```
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 
 * [`InteractiveViewer`][]
 * [`PanAxis`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#109014][]
-* Removed in [#142500][]
+* Deprecado em [#109014][]
+* Removido em [#142500][]
 
 [`InteractiveViewer`]: {{site.api}}/flutter/widgets/InteractiveViewer-class.html
 [`PanAxis`]: {{site.api}}/flutter/widgets/PanAxis.html
@@ -539,39 +536,38 @@ Relevant PRs:
 
 ### `MediaQuery.boldTextOverride`
 
-Package: flutter
-Supported by Flutter Fix: yes
+Pacote: flutter
+Suportado pelo Flutter Fix: sim
 
-The `boldTextOverride` method of `MediaQuery` was removed and replaced with
-`boldTextOf` after v3.5. This change was made as part of larger refactor of
-`MediaQuery`, most notably reducing the number of rebuilds that would be
-triggered by widgets that depend on it.
+O método `boldTextOverride` de `MediaQuery` foi removido e substituído por
+`boldTextOf` após a v3.5. Essa alteração foi feita como parte de uma refatoração maior de
+`MediaQuery`, principalmente reduzindo o número de reconstruções que seriam
+acionadas por widgets que dependem dele.
 
+**Guia de migração**
 
-**Migration guide**
-
-Code before migration:
+Código antes da migração:
 
 ```dart
 MediaQuery.boldTextOverride(context);
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 MediaQuery.boldTextOf(context)
 ```
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 
 * [`MediaQuery`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#114459][]
-* Removed in [#143960][]
+* Deprecado em [#114459][]
+* Removido em [#143960][]
 
 [`MediaQuery`]: {{site.api}}/flutter/widgets/MediaQuery-class.html
 
@@ -580,29 +576,29 @@ Relevant PRs:
 
 ---
 
-### Renamed builder typedefs for `AnimatedList`
+### Typedefs de builder renomeados para `AnimatedList`
 
-Package: flutter
-Supported by Flutter Fix: no
+Pacote: flutter
+Suportado pelo Flutter Fix: não
 
-With the addition of `AnimatedGrid`, `AnimatedList` was refactored to share a common base
-class. The previously named `AnimatedListItemBuilder` and `AnimatedListRemovedItemBuilder`
-were renamed to better reflect the classes they could be used with after v3.5.
-Rename any references to `AnimatedItemBuilder` and `AnimatedRemovedItemBuilder`.
+Com a adição de `AnimatedGrid`, `AnimatedList` foi refatorado para compartilhar uma base
+classe comum. Os anteriormente nomeados `AnimatedListItemBuilder` e `AnimatedListRemovedItemBuilder`
+foram renomeados para melhor refletir as classes com as quais poderiam ser usados após a v3.5.
+Renomeie qualquer referência para `AnimatedItemBuilder` e `AnimatedRemovedItemBuilder`.
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 
 * [`AnimatedGrid`][]
 * [`AnimatedList`][]
 * [`AnimatedItemBuilder`][]
 * [`AnimatedRemovedItemBuilder`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#113793][]
-* Removed in [#143974][]
+* Deprecado em [#113793][]
+* Removido em [#143974][]
 
 [`AnimatedGrid`]: {{site.api}}/flutter/widgets/AnimatedGrid-class.html
 [`AnimatedList`]: {{site.api}}/flutter/widgets/AnimatedList-class.html
@@ -616,16 +612,16 @@ Relevant PRs:
 
 ### `FlutterDriver.enableAccessibility`
 
-Package: flutter_driver
-Supported by Flutter Fix: yes
+Pacote: flutter_driver
+Suportado pelo Flutter Fix: sim
 
-The `enableAccessibility` method of `flutterDriver` was deprecated in v2.3. It
-was removed and replaced with `setSemantics`. This change made is possible to
-enable or disable accessibility, rather than only enable it.
+O método `enableAccessibility` de `flutterDriver` foi deprecado na v2.3. Ele
+foi removido e substituído por `setSemantics`. Essa alteração tornou possível
+habilitar ou desabilitar a acessibilidade, em vez de apenas habilitá-la.
 
-**Migration guide**
+**Guia de migração**
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 FlutterDriver driver = FlutterDriver.connectedTo(
@@ -634,7 +630,7 @@ FlutterDriver driver = FlutterDriver.connectedTo(
 driver.enableAccessibility();
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 FlutterDriver driver = FlutterDriver.connectedTo(
@@ -643,16 +639,16 @@ FlutterDriver driver = FlutterDriver.connectedTo(
 driver.setSemantics(true);
 ```
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 
 * [`FlutterDriver`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#82939][]
-* Removed in [#143979][]
+* Deprecado em [#82939][]
+* Removido em [#143979][]
 
 [`FlutterDriver`]: {{site.api}}/flutter/flutter_driver/FlutterDriver-class.html
 
@@ -663,15 +659,15 @@ Relevant PRs:
 
 ### `TimelineSummary.writeSummaryToFile`
 
-Package: flutter_driver
-Supported by Flutter Fix: yes
+Pacote: flutter_driver
+Suportado pelo Flutter Fix: sim
 
-The `writeSummaryToFile` method of `TimelineSummary` was deprecated in v2.1. It
-was removed and replaced with `writeTimelineToFile`.
+O método `writeSummaryToFile` de `TimelineSummary` foi deprecado na v2.1. Ele
+foi removido e substituído por `writeTimelineToFile`.
 
-**Migration guide**
+**Guia de migração**
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 TimelineSummary summary = TimelineSummary.summarize(
@@ -683,7 +679,7 @@ summary.writeSummaryToFile(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 TimelineSummary summary = TimelineSummary.summarize(
@@ -695,45 +691,46 @@ summary.writeTimelineToFile(
 );
 ```
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 
 * [`TimelineSummary`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#79310][]
-* Removed in [#143983][]
+* Deprecado em [#79310][]
+* Removido em [#143983][]
 
 [`TimelineSummary`]: {{site.api}}/flutter/flutter_driver/TimelineSummary-class.html
 
 [#79310]: {{site.repo.flutter}}/pull/79310
 [#143983]: {{site.repo.flutter}}/pull/143983
 
-### `Android Platform Views on API 22 and below `
+### `Platform Views Android em API 22 e inferior`
 
-Supported by Flutter Fix: no
+Suportado pelo Flutter Fix: não
 
-As of Flutter 3.0 platform views require api 23 or higher. In Flutter 3.19 we now throw UnsupportedOperationException 
-when using platform views on android devices running api level 22 and below. 
+A partir do Flutter 3.0, as platform views exigem a API 23 ou superior. No Flutter 3.19, agora lançamos UnsupportedOperationException
+ao usar platform views em dispositivos Android executando o nível de API 22 e inferior.
 
-**Migration guide**
+**Guia de migração**
 
-Set minimum api level to 23 (or higher) or check the android api level before displaying a platform view. 
-
----
-
-The [previously announced][] deprecations for context menus, relating to `ToolbarOptions`
-as well as parts of `TextSelectionController` and `SelectableRegionState` were not
-removed this cycle, to allow more time for migration.
-Expect these deprecations to be removed in the next cycle, which will
-be announced again when the time comes.
-
-[previously announced]: https://groups.google.com/g/flutter-announce/c/8XjXpUKlnf8
+Defina o nível mínimo da API para 23 (ou superior) ou verifique o nível da API do Android antes de exibir uma platform view.
 
 ---
 
-## Timeline
+As depreciações [anunciadas anteriormente][] para menus de contexto, relacionadas a `ToolbarOptions`
+bem como partes de `TextSelectionController` e `SelectableRegionState` não foram
+removidas neste ciclo, para permitir mais tempo para migração.
+Espere que essas depreciações sejam removidas no próximo ciclo, que será
+anunciado novamente quando chegar a hora.
 
-In stable release: 3.22.0
+[anunciadas anteriormente]: https://groups.google.com/g/flutter-announce/c/8XjXpUKlnf8
+
+---
+
+## Cronograma
+
+Em versão estável: 3.22.0
+

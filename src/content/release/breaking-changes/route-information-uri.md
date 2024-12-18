@@ -1,56 +1,50 @@
 ---
-title: Migration guide for `RouteInformation.location`
-description: Deprecation of `RouteInformation.location` and its related APIs.
+ia-translate: true
+title: Guia de migração para `RouteInformation.location`
+description:  Descontinuação de `RouteInformation.location` e suas APIs relacionadas.
 ---
 
-## Summary
+## Sumário
 
-`RouteInformation.location` and related APIs were deprecated
-in the favor of `RouteInformation.uri`.
+`RouteInformation.location` e APIs relacionadas foram descontinuadas em favor de `RouteInformation.uri`.
 
-## Context
+## Contexto
 
-The [`RouteInformation`][] needs the authority information to
-handle mobile deeplinks from different web domains.
-The `uri` field was added to `RouteInformation` that captures
-the entire deeplink information and route-related parameters
-were converted to the full [`Uri`][] format.
-This led to deprecation of incompatible APIs.
+O [`RouteInformation`][] precisa das informações de autoridade para lidar com deeplinks móveis de diferentes domínios web. O campo `uri` foi adicionado a `RouteInformation` que captura toda a informação do deeplink e os parâmetros relacionados à rota foram convertidos para o formato completo [`Uri`][]. Isso levou à descontinuação de APIs incompatíveis.
 
-## Description of change
+## Descrição da mudança
 
-* The `RouteInformation.location` was replaced by `RouteInformation.uri`.
-* The `WidgetBindingObserver.didPushRoute` was deprecated.
-* The `location` parameter of `SystemNavigator.routeInformationUpdated` was
-  replaced by the newly added `uri` parameter.
+* O `RouteInformation.location` foi substituído por `RouteInformation.uri`.
+* O `WidgetBindingObserver.didPushRoute` foi descontinuado.
+* O parâmetro `location` de `SystemNavigator.routeInformationUpdated` foi substituído pelo parâmetro `uri` recém-adicionado.
 
-## Migration guide
+## Guia de migração
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 const RouteInformation myRoute = RouteInformation(location: '/myroute');
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 final RouteInformation myRoute = RouteInformation(uri: Uri.parse('/myroute'));
 ```
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 final String myPath = myRoute.location;
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 final String myPath = myRoute.uri.path;
 ```
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 class MyObserverState extends State<MyWidget> with WidgetsBindingObserver {
@@ -59,7 +53,7 @@ class MyObserverState extends State<MyWidget> with WidgetsBindingObserver {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class MyObserverState extends State<MyWidget> with WidgetsBindingObserver {
@@ -76,29 +70,29 @@ class MyObserverState extends State<MyWidget> with WidgetsBindingObserver {
 }
 ```
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 SystemNavigator.routeInformationUpdated(location: '/myLocation');
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 SystemNavigator.routeInformationUpdated(uri: Uri.parse('/myLocation'));
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.10.0-13.0.pre<br>
-In stable release: 3.13.0
+Implementado na versão: 3.10.0-13.0.pre<br>
+Na versão estável: 3.13.0
 
-## References
+## Referências
 
-Relevant PRs:
+PRs relevantes:
 
-* [PR 119968][]: Implement url support for
-  RouteInformation and didPushRouteInformation.
+* [PR 119968][]: Implementa suporte a url para
+  RouteInformation e didPushRouteInformation.
 
 [PR 119968]: {{site.repo.flutter}}/pull/119968
 [`RouteInformation`]: {{site.api}}/flutter/widgets/RouteInformation-class.html

@@ -1,58 +1,59 @@
 ---
-title: Launching a Jetpack Compose activity from your Flutter application
-short-title: Native Android activities
+ia-translate: true
+title: Iniciando uma atividade Jetpack Compose a partir do seu aplicativo Flutter
+short-title: Atividades Nativas do Android
 description: >-
-  Learn how to launch native Android activities in your Flutter app.
+  Aprenda como iniciar atividades nativas do Android em seu aplicativo Flutter.
 ---
 
 <?code-excerpt path-base="platform_integration/compose_activities"?>
 
-Native Android activities allow you to launch
-fullscreen UIs that are entirely run by and on the Android platform.
-You will only write Kotlin code in those views (though they might
-pass messages to and receive messages from your Dart code) and
-you will have access to the full breadth of native Android functionality.
+As atividades nativas do Android permitem que você inicie
+UIs em tela cheia que são totalmente executadas e na plataforma Android.
+Você só escreverá código Kotlin nessas visualizações (embora elas possam
+passar mensagens e receber mensagens do seu código Dart) e
+você terá acesso a toda a extensão da funcionalidade nativa do Android.
 
-Adding this functionality requires making several changes to
-your Flutter app and its internal, generated Android app.
-On the Flutter side, you will need to create a new
-platform method channel and call its `invokeMethod` method.
-On the Android side, you will need to register a matching native `MethodChannel`
-to receive the signal from Dart and then launch a new activity.
-Recall that all Flutter apps (when running on Android) exist within
-an Android activity that is completely consumed by the Flutter app.
-Thus, as you will see in the code sample, the job of the
-native `MethodChannel` callback is to launch a second activity.
+Adicionar esta funcionalidade requer fazer várias alterações em
+seu aplicativo Flutter e seu aplicativo Android interno gerado.
+No lado do Flutter, você precisará criar um novo
+canal de método de plataforma e chamar seu método `invokeMethod`.
+No lado do Android, você precisará registrar um `MethodChannel` nativo correspondente
+para receber o sinal do Dart e, em seguida, iniciar uma nova atividade.
+Lembre-se de que todos os aplicativos Flutter (ao serem executados no Android) existem dentro
+de uma atividade do Android que é completamente consumida pelo aplicativo Flutter.
+Assim, como você verá no exemplo de código, o trabalho do
+callback `MethodChannel` nativo é iniciar uma segunda atividade.
 
 :::note
-This page discusses how to launch native Android activities
-within a Flutter app.
-If you'd like to host native Android views in your Flutter app,
-check out [Hosting native Android views][].
+Esta página discute como iniciar atividades nativas do Android
+dentro de um aplicativo Flutter.
+Se você gostaria de hospedar visualizações nativas do Android em seu aplicativo Flutter,
+confira [Hospedando visualizações nativas do Android][].
 :::
 
-[Hosting native Android views]: /platform-integration/android/platform-views
+[Hospedando visualizações nativas do Android]: /platform-integration/android/platform-views
 
-Not all Android activities use Jetpack Compose, but
-this tutorial assumes you want to use Compose.
+Nem todas as atividades do Android usam o Jetpack Compose, mas
+este tutorial assume que você deseja usar o Compose.
 
-## On the Dart side
+## No lado do Dart
 
-On the Dart side, create a method channel and invoke it from
-a specific user interaction, like tapping a button.
+No lado do Dart, crie um canal de método e o invoque a partir de
+uma interação específica do usuário, como tocar em um botão.
 
 <?code-excerpt "lib/launch_compose_activity_example_1.dart"?>
 ```dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-// SECTION 1: START COPYING HERE
+// SEÇÃO 1: COMECE A COPIAR AQUI
 const platformMethodChannel = MethodChannel(
-  // Note: You can change this string value, but it must match
-  // the `CHANNEL` attribute in the next step.
+  // Observação: você pode alterar este valor de string, mas ele deve corresponder
+  // ao atributo `CHANNEL` na próxima etapa.
   'com.example.flutter_android_activity',
 );
-// SECTION 1: END COPYING HERE
+// SEÇÃO 1: FIM DA CÓPIA AQUI
 
 void main() {
   runApp(const MainApp());
@@ -61,34 +62,34 @@ void main() {
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
-  // SECTION 2: START COPYING HERE
+  // SEÇÃO 2: COMECE A COPIAR AQUI
   void _launchAndroidActivity() {
     platformMethodChannel.invokeMethod(
-      // Note: You can change this value, but it must match
-      // the `call.method` value in the next section.
+      // Observação: você pode alterar este valor, mas ele deve corresponder
+      // ao valor `call.method` na próxima seção.
       'launchActivity',
 
-      // Note: You can pass any primitive data types you like.
-      // To pass complex types, use package:pigeon to generate
-      // matching Dart and Kotlin classes that share serialization logic.
-      {'message': 'Hello from Flutter'},
+      // Observação: você pode passar qualquer tipo de dados primitivos que desejar.
+      // Para passar tipos complexos, use o pacote:pigeon para gerar
+      // classes Dart e Kotlin correspondentes que compartilham a lógica de serialização.
+      {'message': 'Olá do Flutter'},
     );
   }
-  // SECTION 2: END COPYING HERE
+  // SEÇÃO 2: FIM DA CÓPIA AQUI
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         body: const Center(
-          child: Text('Hello World!'),
+          child: Text('Olá Mundo!'),
         ),
         floatingActionButton: FloatingActionButton(
-          // SECTION 3: Call `_launchAndroidActivity` somewhere.
+          // SEÇÃO 3: Chame `_launchAndroidActivity` em algum lugar.
           onPressed: _launchAndroidActivity,
-          // SECTION 3: End
+          // SEÇÃO 3: Fim
 
-          tooltip: 'Launch Android activity',
+          tooltip: 'Iniciar atividade do Android',
           child: const Icon(Icons.launch),
         ),
       ),
@@ -97,28 +98,28 @@ class MainApp extends StatelessWidget {
 }
 ```
 
-There are 3 important values that must match across your Dart and Kotlin code:
+Existem 3 valores importantes que devem corresponder em seu código Dart e Kotlin:
 
- 1. The channel name (in this sample, the value is
+ 1. O nome do canal (neste exemplo, o valor é
     `"com.example.flutter_android_activity"`).
- 2. The method name (in this sample, the value is `"launchActivity"`).
- 3. The structure of the data which Dart passes and
-    the structure of the data which Kotlin expects to receive.
-    In this case, the data is a map with a single `"message"` key.
+ 2. O nome do método (neste exemplo, o valor é `"launchActivity"`).
+ 3. A estrutura dos dados que o Dart passa e
+    a estrutura dos dados que o Kotlin espera receber.
+    Neste caso, os dados são um mapa com uma única chave `"message"`.
 
 
-## On the Android side
+## No lado do Android
 
-You must make changes to 4 files in the generated Android app to
-ready it for launching fresh Compose activities.
+Você deve fazer alterações em 4 arquivos no aplicativo Android gerado para
+prepará-lo para iniciar novas atividades Compose.
 
-The first file requiring modifications is `android/app/build.gradle`.
+O primeiro arquivo que requer modificações é `android/app/build.gradle`.
 
- 1. Add the following to the existing `android` block:
+ 1. Adicione o seguinte ao bloco `android` existente:
 
     ```groovy title="android/app/build.gradle"
     android {
-      // Begin adding here
+      // Comece a adicionar aqui
       buildFeatures {
         compose true
       }
@@ -126,19 +127,19 @@ The first file requiring modifications is `android/app/build.gradle`.
         // https://developer.android.com/jetpack/androidx/releases/compose-kotlin
         kotlinCompilerExtensionVersion = "1.4.8"
       }
-      // End adding here
+      // Fim da adição aqui
     }
     ```
 
-    Visit the [developer.android.com][] link in the code snippet and
-    adjust `kotlinCompilerExtensionVersion`, as necessary.
-    You should only need to do this if you
-    receive errors during `flutter run` and those errors tell you
-    which versions are installed on your machine.
+    Visite o link [developer.android.com][] no trecho de código e
+    ajuste `kotlinCompilerExtensionVersion`, conforme necessário.
+    Você só precisa fazer isso se você
+    receber erros durante `flutter run` e esses erros informarem
+    quais versões estão instaladas em sua máquina.
 
     [developer.android.com]: {{site.android-dev}}/jetpack/androidx/releases/compose-kotlin
 
- 2. Next, add the following block at the bottom of the file, at the root level:
+ 2. Em seguida, adicione o seguinte bloco na parte inferior do arquivo, no nível raiz:
  
     ```groovy title="android/app/build.gradle"
     dependencies {
@@ -161,14 +162,14 @@ The first file requiring modifications is `android/app/build.gradle`.
     }
     ```
 
-    The second file requiring modifications is `android/build.gradle`.
+    O segundo arquivo que requer modificações é `android/build.gradle`.
  
- 1. Add the following buildscript block at the top of the file:
+ 1. Adicione o seguinte bloco buildscript na parte superior do arquivo:
  
     ```groovy title="android/build.gradle"
     buildscript {
         dependencies {
-            // Replace with the latest version.
+            // Substitua pela versão mais recente.
             classpath 'com.android.tools.build:gradle:8.1.1'
         }
         repositories {
@@ -178,10 +179,10 @@ The first file requiring modifications is `android/app/build.gradle`.
     }
     ```
 
-    The third file requiring modifications is
+    O terceiro arquivo que requer modificações é
     `android/app/src/main/AndroidManifest.xml`.
  
- 1. In the root application block, add the following `<activity>` declaration:
+ 1. No bloco de aplicativo raiz, adicione a seguinte declaração `<activity>`:
  
     ```xml title="android/app/src/main/AndroidManifest.xml"
     <manifest xmlns:android="http://schemas.android.com/apk/res/android">
@@ -190,26 +191,26 @@ The first file requiring modifications is `android/app/build.gradle`.
             android:name="${applicationName}"
             android:icon="@mipmap/ic_launcher">
 
-           // START COPYING HERE
+           // COMECE A COPIAR AQUI
             <activity android:name=".SecondActivity" android:exported="true" android:theme="@style/LaunchTheme"></activity>
-           // END COPYING HERE
+           // FIM DA CÓPIA AQUI
 
            <activity android:name=".MainActivity" …></activity>
           …
     </manifest>
     ```
 
-    The fourth and final code requiring modifications is
+    O quarto e último código que requer modificações é
     `android/app/src/main/kotlin/com/example/flutter_android_activity/MainActivity.kt`.
-    Here you'll write Kotlin code for your desired Android functionality.
+    Aqui, você escreverá código Kotlin para a funcionalidade desejada do Android.
  
- 1. Add the necessary imports at the top of the file:
+ 1. Adicione as importações necessárias na parte superior do arquivo:
  
     :::note
-    Your imports might vary if library versions have changed or
-    if you introduce different Compose classes when
-    you write your own Kotlin code.
-    Follow your IDE's hints for the correct imports you require.
+    Suas importações podem variar se as versões da biblioteca foram alteradas ou
+    se você introduzir diferentes classes Compose quando
+    você escrever seu próprio código Kotlin.
+    Siga as dicas do seu IDE para as importações corretas que você precisa.
     :::
 
     ```kotlin title="MainActivity.kt"
@@ -234,12 +235,12 @@ The first file requiring modifications is `android/app/build.gradle`.
     import io.flutter.plugins.GeneratedPluginRegistrant
     ```
  
- 1. Modify the generated `MainActivity` class by adding a
-    `CHANNEL` field and a `configureFlutterEngine` method:
+ 1. Modifique a classe `MainActivity` gerada adicionando um
+    campo `CHANNEL` e um método `configureFlutterEngine`:
  
      ```kotlin  title="MainActivity.kt"
      class MainActivity: FlutterActivity() {
-         // This value must match the `MethodChannel` name in your Dart code.
+         // Este valor deve corresponder ao nome `MethodChannel` em seu código Dart.
          private val CHANNEL = "com.example.flutter_android_activity"
 
          override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
@@ -248,11 +249,11 @@ The first file requiring modifications is `android/app/build.gradle`.
              MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL).setMethodCallHandler {
                  call: MethodCall, result: MethodChannel.Result ->
                      when (call.method) {
-                         // Note: This must match the first parameter passed to
-                         // `platformMethodChannel.invokeMethod` in your Dart code.
+                         // Observação: isso deve corresponder ao primeiro parâmetro passado para
+                         // `platformMethodChannel.invokeMethod` em seu código Dart.
                          "launchActivity" -> {
                              try {
-                                 // Takes an object, in this case a String.
+                                 // Recebe um objeto, neste caso uma String.
                                  val message = call.arguments
                                  val intent = Intent(this@MainActivity, SecondActivity::class.java)
                                  intent.putExtra("message", message.toString())
@@ -267,8 +268,8 @@ The first file requiring modifications is `android/app/build.gradle`.
      }
      ```
  
- 1. Add a second `Activity` to the bottom of the file, which you
-    referenced in the previous changes to `AndroidManifest.xml`:
+ 1. Adicione uma segunda `Activity` na parte inferior do arquivo, que você
+    referenciou nas alterações anteriores em `AndroidManifest.xml`:
  
     ```kotlin  title="MainActivity.kt"
     class SecondActivity : ComponentActivity() {
@@ -278,11 +279,11 @@ The first file requiring modifications is `android/app/build.gradle`.
             setContent {
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
                     Column {
-                        Text(text = "Second Activity")
-                        // Note: This must match the shape of the data passed from your Dart code.
+                        Text(text = "Segunda Atividade")
+                        // Observação: Isso deve corresponder ao formato dos dados passados do seu código Dart.
                         Text("" + getIntent()?.getExtras()?.getString("message"))
                         Button(onClick = {  finish() }) {
-                            Text("Exit")
+                            Text("Sair")
                         }
                     }
                 }
@@ -291,5 +292,6 @@ The first file requiring modifications is `android/app/build.gradle`.
     }
     ```
 
-These steps show how to launch a native Android activity from a Flutter app,
-which can sometimes be an easy way to connect to specific Android functionality.
+Estas etapas mostram como iniciar uma atividade nativa do Android a partir de um aplicativo Flutter,
+o que às vezes pode ser uma maneira fácil de se conectar a funcionalidades específicas do Android.
+

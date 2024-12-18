@@ -1,61 +1,41 @@
 ---
-title: DevTools extensions
-description: Learn how to use and build DevTools extensions.
+title: Extensões do DevTools
+description: Aprenda a usar e criar extensões do DevTools.
+ia-translate: true
 ---
 
-## What are DevTools extensions?
+## O que são extensões do DevTools?
 
-[DevTools extensions][]
-are developer tools provided by third-party packages that are
-tightly integrated into the DevTools tooling suite.
-Extensions are distributed as part of a pub package,
-and they are dynamically loaded into DevTools when
-a user is debugging their app.
+[Extensões do DevTools][]
+são ferramentas de desenvolvedor fornecidas
+por pacotes de terceiros que são firmemente integradas ao conjunto de
+ferramentas do DevTools. As extensões são distribuídas como parte de um
+pacote pub, e são carregadas dinamicamente no DevTools quando um usuário
+está depurando seu aplicativo.
 
-[DevTools extensions]: {{site.pub-pkg}}/devtools_extensions
+[Extensões do DevTools]: {{site.pub-pkg}}/devtools_extensions
 
-## Use a DevTools extension
+## Usar uma extensão do DevTools
 
-If your app depends on a package that provides a
-DevTools extension, the extension automatically
-shows up in a new tab when you open DevTools.
+Se o seu aplicativo depende de um pacote que fornece uma extensão do DevTools, a extensão aparece automaticamente em uma nova aba quando você abre o DevTools.
 
-### Configure extension enablement states
+### Configurar estados de habilitação da extensão
 
-You need to manually enable the extension before it loads
-for the first time. Make sure the extension is provided by
-a source you trust before enabling it.
+Você precisa habilitar manualmente a extensão antes que ela seja carregada pela primeira vez. Certifique-se de que a extensão seja fornecida por uma fonte confiável antes de habilitá-la.
 
-![Screenshot of extension enablement prompt](/assets/images/docs/tools/devtools/extension_enable_prompt.png)
+![Captura de tela do prompt de habilitação de extensão](/assets/images/docs/tools/devtools/extension_enable_prompt.png)
 
-Extension enablement states are stored in a `devtools_options.yaml`
-file in the root of the user's project
-(similar to `analysis_options.yaml`).
-This file stores per-project
-(or optionally, per user) settings for DevTools.
+Os estados de habilitação da extensão são armazenados em um arquivo `devtools_options.yaml` na raiz do projeto do usuário (semelhante a `analysis_options.yaml`). Este arquivo armazena configurações por projeto (ou opcionalmente, por usuário) para o DevTools.
 
-If this file is **checked into source control**,
-the specified options are configured for the project.
-This means that anyone who pulls a project's
-source code and works on the project uses the same settings.
+Se este arquivo for **incluído no controle de versão**, as opções especificadas serão configuradas para o projeto. Isso significa que qualquer pessoa que extrair o código-fonte de um projeto e trabalhar no projeto usará as mesmas configurações.
 
-If this file is **omitted from source control**,
-for example by adding `devtools_options.yaml`
-as an entry in the `.gitignore` file, then the specified
-options are configured separately for each user.
-Since each user or contributor to the project
-uses a local copy of the `devtools_options.yaml`
-file in this case, the specified options might
-differ between project contributors.
+Se este arquivo for **omitido do controle de versão**, por exemplo, adicionando `devtools_options.yaml` como uma entrada no arquivo `.gitignore`, então as opções especificadas serão configuradas separadamente para cada usuário. Como cada usuário ou colaborador do projeto usa uma cópia local do arquivo `devtools_options.yaml` neste caso, as opções especificadas podem diferir entre os colaboradores do projeto.
 
-## Build a DevTools extension
+### Construir uma extensão do DevTools
 
-For an in-depth guide on how to build a DevTools extension,
-check out [Dart and Flutter DevTools extensions][article],
-a free article on Medium.
+Para um guia detalhado sobre como construir uma extensão do DevTools, confira [Dart and Flutter DevTools extensions][article], um artigo gratuito no Medium.
 
-To learn more about writing and using DevTools extensions,
-check out the following video:
+Para saber mais sobre como escrever e usar extensões do DevTools, confira o vídeo a seguir:
 
 {% ytEmbed 'gOrSc4s4RWY', 'Building DevTools extensions | Flutter Build Show' %}
 

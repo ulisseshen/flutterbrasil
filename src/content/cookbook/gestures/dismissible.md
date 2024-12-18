@@ -1,6 +1,7 @@
 ---
-title: Implement swipe to dismiss
-description: How to implement swiping to dismiss or delete.
+ia-translate: true
+title: Implementar o gesto de deslizar para dispensar
+description: Como implementar o gesto de deslizar para dispensar ou excluir.
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
@@ -8,40 +9,40 @@ js:
 
 <?code-excerpt path-base="cookbook/gestures/dismissible"?>
 
-The "swipe to dismiss" pattern is common in many mobile apps.
-For example, when writing an email app,
-you might want to allow a user to swipe away
-email messages to delete them from a list.
+O padrão "deslizar para dispensar" é comum em muitos aplicativos móveis.
+Por exemplo, ao escrever um aplicativo de e-mail,
+você pode querer permitir que um usuário deslize mensagens de e-mail
+para excluí-las de uma lista.
 
-Flutter makes this task easy by providing the
-[`Dismissible`][] widget.
-Learn how to implement swipe to dismiss with the following steps:
+O Flutter facilita essa tarefa fornecendo o
+widget [`Dismissible`][].
+Aprenda como implementar o gesto de deslizar para dispensar com as seguintes etapas:
 
-  1. Create a list of items.
-  2. Wrap each item in a `Dismissible` widget.
-  3. Provide "leave behind" indicators.
+  1. Crie uma lista de itens.
+  2. Envolva cada item em um widget `Dismissible`.
+  3. Forneça indicadores de "deixar para trás".
 
-## 1. Create a list of items
+## 1. Crie uma lista de itens
 
-First, create a list of items. For detailed
-instructions on how to create a list,
-follow the [Working with long lists][] recipe.
+Primeiro, crie uma lista de itens. Para obter instruções detalhadas
+sobre como criar uma lista,
+siga a receita [Trabalhando com listas longas][].
 
-### Create a data source
+### Crie uma fonte de dados
 
-In this example,
-you want 20 sample items to work with.
-To keep it simple, generate a list of strings.
+Neste exemplo,
+você precisa de 20 itens de amostra para trabalhar.
+Para manter a simplicidade, gere uma lista de strings.
 
 <?code-excerpt "lib/main.dart (Items)"?>
 ```dart
 final items = List<String>.generate(20, (i) => 'Item ${i + 1}');
 ```
 
-### Convert the data source into a list
+### Converta a fonte de dados em uma lista
 
-Display each item in the list on screen. Users won't
-be able to swipe these items away just yet.
+Exiba cada item da lista na tela. Os usuários não
+poderão dispensar esses itens deslizando por enquanto.
 
 <?code-excerpt "lib/step1.dart (ListView)" replace="/^body: //g;/^\),$/)/g"?>
 ```dart
@@ -55,38 +56,38 @@ ListView.builder(
 )
 ```
 
-## 2. Wrap each item in a Dismissible widget
+## 2. Envolva cada item em um widget Dismissible
 
-In this step,
-give users the ability to swipe an item off the list by using the
-[`Dismissible`][] widget.
+Nesta etapa,
+dê aos usuários a capacidade de deslizar um item da lista usando o
+widget [`Dismissible`][].
 
-After the user has swiped away the item,
-remove the item from the list and display a snackbar.
-In a real app, you might need to perform more complex logic,
-such as removing the item from a web service or database.
+Depois que o usuário deslizar o item,
+remova o item da lista e exiba uma snackbar.
+Em um aplicativo real, você pode precisar executar uma lógica mais complexa,
+como remover o item de um serviço da Web ou banco de dados.
 
-Update the `itemBuilder()` function to return a `Dismissible` widget:
+Atualize a função `itemBuilder()` para retornar um widget `Dismissible`:
 
 <?code-excerpt "lib/step2.dart (Dismissible)"?>
 ```dart
 itemBuilder: (context, index) {
   final item = items[index];
   return Dismissible(
-    // Each Dismissible must contain a Key. Keys allow Flutter to
-    // uniquely identify widgets.
+    // Cada Dismissible deve conter uma Key. Keys permitem que o Flutter
+    // identifique widgets de forma única.
     key: Key(item),
-    // Provide a function that tells the app
-    // what to do after an item has been swiped away.
+    // Forneça uma função que diga ao aplicativo
+    // o que fazer depois que um item for dispensado por deslize.
     onDismissed: (direction) {
-      // Remove the item from the data source.
+      // Remova o item da fonte de dados.
       setState(() {
         items.removeAt(index);
       });
 
-      // Then show a snackbar.
+      // Em seguida, mostre uma snackbar.
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('$item dismissed')));
+          .showSnackBar(SnackBar(content: Text('$item dispensado')));
     },
     child: ListTile(
       title: Text(item),
@@ -95,43 +96,43 @@ itemBuilder: (context, index) {
 },
 ```
 
-## 3. Provide "leave behind" indicators
+## 3. Forneça indicadores de "deixar para trás"
 
-As it stands,
-the app allows users to swipe items off the list, but it doesn't
-give a visual indication of what happens when they do.
-To provide a cue that items are removed,
-display a "leave behind" indicator as they
-swipe the item off the screen. In this case,
-the indicator is a red background.
+Como está,
+o aplicativo permite que os usuários dispensem itens da lista, mas não
+dá uma indicação visual do que acontece quando o fazem.
+Para fornecer uma dica de que os itens são removidos,
+exiba um indicador de "deixar para trás" enquanto eles
+deslizam o item para fora da tela. Neste caso,
+o indicador é um fundo vermelho.
 
-To add the indicator,
-provide a `background` parameter to the `Dismissible`.
+Para adicionar o indicador,
+forneça um parâmetro `background` ao `Dismissible`.
 
 
 ```dart diff
     ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text('$item dismissed')));
+        .showSnackBar(SnackBar(content: Text('$item dispensado')));
   },
-+ // Show a red background as the item is swiped away.
++ // Mostre um fundo vermelho enquanto o item é dispensado por deslize.
 + background: Container(color: Colors.red),
   child: ListTile(
     title: Text(item),
   ),
 ```
 
-## Interactive example
+## Exemplo interativo
 
 <?code-excerpt "lib/main.dart"?>
-```dartpad title="Flutter Swipe to Dismiss hands-on example in DartPad" run="true"
+```dartpad title="Exemplo prático de deslizar para dispensar do Flutter no DartPad" run="true"
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-// MyApp is a StatefulWidget. This allows updating the state of the
-// widget when an item is removed.
+// MyApp é um StatefulWidget. Isso permite atualizar o estado do
+// widget quando um item é removido.
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
@@ -146,7 +147,7 @@ class MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    const title = 'Dismissing Items';
+    const title = 'Dispensando Itens';
 
     return MaterialApp(
       title: title,
@@ -162,22 +163,22 @@ class MyAppState extends State<MyApp> {
           itemBuilder: (context, index) {
             final item = items[index];
             return Dismissible(
-              // Each Dismissible must contain a Key. Keys allow Flutter to
-              // uniquely identify widgets.
+              // Cada Dismissible deve conter uma Key. Keys permitem que o Flutter
+              // identifique widgets de forma única.
               key: Key(item),
-              // Provide a function that tells the app
-              // what to do after an item has been swiped away.
+              // Forneça uma função que diga ao aplicativo
+              // o que fazer depois que um item for dispensado por deslize.
               onDismissed: (direction) {
-                // Remove the item from the data source.
+                // Remova o item da fonte de dados.
                 setState(() {
                   items.removeAt(index);
                 });
 
-                // Then show a snackbar.
+                // Em seguida, mostre uma snackbar.
                 ScaffoldMessenger.of(context)
-                    .showSnackBar(SnackBar(content: Text('$item dismissed')));
+                    .showSnackBar(SnackBar(content: Text('$item dispensado')));
               },
-              // Show a red background as the item is swiped away.
+              // Mostre um fundo vermelho enquanto o item é dispensado por deslize.
               background: Container(color: Colors.red),
               child: ListTile(
                 title: Text(item),
@@ -192,9 +193,9 @@ class MyAppState extends State<MyApp> {
 ```
 
 <noscript>
-  <img src="/assets/images/docs/cookbook/dismissible.gif" alt="Dismissible Demo" class="site-mobile-screenshot" />
+  <img src="/assets/images/docs/cookbook/dismissible.gif" alt="Demonstração do Dismissible" class="site-mobile-screenshot" />
 </noscript>
 
 
 [`Dismissible`]: {{site.api}}/flutter/widgets/Dismissible-class.html
-[Working with long lists]: /cookbook/lists/long-lists
+[Trabalhando com listas longas]: /cookbook/lists/long-lists

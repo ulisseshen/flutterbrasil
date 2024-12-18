@@ -1,29 +1,30 @@
 ---
-title: Delete data on the internet
-description: How to use the http package to delete data on the internet.
+ia-translate: true
+title: Excluir dados na internet
+description: Como usar o pacote http para excluir dados na internet.
 ---
 
 <?code-excerpt path-base="cookbook/networking/delete_data/"?>
 
-This recipe covers how to delete data over
-the internet using the `http` package.
+Esta receita aborda como excluir dados pela
+internet usando o pacote `http`.
 
-This recipe uses the following steps:
+Esta receita usa os seguintes passos:
 
-  1. Add the `http` package.
-  2. Delete data on the server.
-  3. Update the screen.
+  1. Adicione o pacote `http`.
+  2. Exclua dados no servidor.
+  3. Atualize a tela.
 
-## 1. Add the `http` package
+## 1. Adicione o pacote `http`
 
-To add the `http` package as a dependency,
-run `flutter pub add`:
+Para adicionar o pacote `http` como uma dependência,
+execute `flutter pub add`:
 
 ```console
 $ flutter pub add http
 ```
 
-Import the `http` package.
+Importe o pacote `http`.
 
 <?code-excerpt "lib/main.dart (Http)"?>
 ```dart
@@ -32,13 +33,13 @@ import 'package:http/http.dart' as http;
 
 {% render docs/cookbook/networking/internet-permission.md %}
 
-## 2. Delete data on the server
+## 2. Exclua dados no servidor
 
-This recipe covers how to delete an album from the
-[JSONPlaceholder][] using the `http.delete()` method.
-Note that this requires the `id` of the album that
-you want to delete. For this example,
-use something you already know, for example `id = 1`.
+Esta receita aborda como excluir um álbum do
+[JSONPlaceholder][] usando o método `http.delete()`.
+Note que isso requer o `id` do álbum que
+você deseja excluir. Para este exemplo,
+use algo que você já conhece, por exemplo, `id = 1`.
 
 <?code-excerpt "lib/main_step1.dart (deleteAlbum)"?>
 ```dart
@@ -54,33 +55,33 @@ Future<http.Response> deleteAlbum(String id) async {
 }
 ```
 
-The `http.delete()` method returns a `Future` that contains a `Response`.
+O método `http.delete()` retorna um `Future` que contém uma `Response`.
 
-* [`Future`][] is a core Dart class for working with
-  async operations. A Future object represents a potential
-  value or error that will be available at some time in the future.
-* The `http.Response` class contains the data received from a successful
-  http call.
-* The `deleteAlbum()` method takes an `id` argument that
-  is needed to identify the data to be deleted from the server.
+* [`Future`][] é uma classe central do Dart para trabalhar com
+  operações assíncronas. Um objeto Future representa um valor
+  ou erro potencial que estará disponível em algum momento no futuro.
+* A classe `http.Response` contém os dados recebidos de uma chamada
+  http bem-sucedida.
+* O método `deleteAlbum()` recebe um argumento `id` que
+  é necessário para identificar os dados a serem excluídos do servidor.
 
-## 3. Update the screen
+## 3. Atualize a tela
 
-In order to check whether the data has been deleted or not,
-first fetch the data from the [JSONPlaceholder][]
-using the `http.get()` method, and display it in the screen.
-(See the [Fetch Data][] recipe for a complete example.)
-You should now have a **Delete Data** button that,
-when pressed, calls the `deleteAlbum()` method.
+Para verificar se os dados foram excluídos ou não,
+primeiro busque os dados do [JSONPlaceholder][]
+usando o método `http.get()` e os exiba na tela.
+(Veja a receita [Buscar Dados][] para um exemplo completo.)
+Você agora deve ter um botão **Excluir Dados** que,
+quando pressionado, chama o método `deleteAlbum()`.
 
 <?code-excerpt "lib/main.dart (Column)" replace="/return //g"?>
 ```dart
 Column(
   mainAxisAlignment: MainAxisAlignment.center,
   children: <Widget>[
-    Text(snapshot.data?.title ?? 'Deleted'),
+    Text(snapshot.data?.title ?? 'Excluído'),
     ElevatedButton(
-      child: const Text('Delete Data'),
+      child: const Text('Excluir Dados'),
       onPressed: () {
         setState(() {
           _futureAlbum =
@@ -91,16 +92,16 @@ Column(
   ],
 );
 ```
-Now, when you click on the ***Delete Data*** button,
-the `deleteAlbum()` method is called and the id
-you are passing is the id of the data that you retrieved
-from the internet. This means you are going to delete
-the same data that you fetched from the internet.
+Agora, quando você clica no botão ***Excluir Dados***,
+o método `deleteAlbum()` é chamado e o id
+que você está passando é o id dos dados que você recuperou
+da internet. Isso significa que você irá excluir
+os mesmos dados que você buscou da internet.
 
-### Returning a response from the deleteAlbum() method
-Once the delete request has been made,
-you can return a response from the `deleteAlbum()`
-method to notify our screen that the data has been deleted.
+### Retornando uma resposta do método deleteAlbum()
+Uma vez que a requisição de exclusão foi feita,
+você pode retornar uma resposta do método `deleteAlbum()`
+para notificar nossa tela que os dados foram excluídos.
 
 <?code-excerpt "lib/main.dart (deleteAlbum)"?>
 ```dart
@@ -113,31 +114,31 @@ Future<Album> deleteAlbum(String id) async {
   );
 
   if (response.statusCode == 200) {
-    // If the server did return a 200 OK response,
-    // then return an empty Album. After deleting,
-    // you'll get an empty JSON `{}` response.
-    // Don't return `null`, otherwise `snapshot.hasData`
-    // will always return false on `FutureBuilder`.
+    // Se o servidor retornou uma resposta 200 OK,
+    // então retorne um Album vazio. Após a exclusão,
+    // você receberá uma resposta JSON `{}` vazia.
+    // Não retorne `null`, caso contrário `snapshot.hasData`
+    // sempre retornará falso no `FutureBuilder`.
     return Album.empty();
   } else {
-    // If the server did not return a "200 OK response",
-    // then throw an exception.
-    throw Exception('Failed to delete album.');
+    // Se o servidor não retornou uma resposta "200 OK",
+    // então lance uma exceção.
+    throw Exception('Falha ao excluir álbum.');
   }
 }
 ```
 
-`FutureBuilder()` now rebuilds when it receives a response.
-Since the response won't have any data in its body
-if the request was successful,
-the `Album.fromJson()` method creates an instance of the
-`Album` object with a default value (`null` in our case).
-This behavior can be altered in any way you wish.
+`FutureBuilder()` agora é reconstruído quando recebe uma resposta.
+Como a resposta não terá nenhum dado em seu corpo
+se a requisição foi bem-sucedida,
+o método `Album.fromJson()` cria uma instância do
+objeto `Album` com um valor padrão (`null` no nosso caso).
+Esse comportamento pode ser alterado da maneira que você desejar.
 
-That's all!
-Now you've got a function that deletes the data from the internet.
+É isso!
+Agora você tem uma função que exclui os dados da internet.
 
-## Complete example
+## Exemplo completo
 
 <?code-excerpt "lib/main.dart"?>
 ```dart
@@ -153,11 +154,11 @@ Future<Album> fetchAlbum() async {
   );
 
   if (response.statusCode == 200) {
-    // If the server did return a 200 OK response, then parse the JSON.
+    // Se o servidor retornou uma resposta 200 OK, então analise o JSON.
     return Album.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
   } else {
-    // If the server did not return a 200 OK response, then throw an exception.
-    throw Exception('Failed to load album');
+    // Se o servidor não retornou uma resposta 200 OK, então lance uma exceção.
+    throw Exception('Falha ao carregar álbum');
   }
 }
 
@@ -170,16 +171,16 @@ Future<Album> deleteAlbum(String id) async {
   );
 
   if (response.statusCode == 200) {
-    // If the server did return a 200 OK response,
-    // then return an empty Album. After deleting,
-    // you'll get an empty JSON `{}` response.
-    // Don't return `null`, otherwise `snapshot.hasData`
-    // will always return false on `FutureBuilder`.
+    // Se o servidor retornou uma resposta 200 OK,
+    // então retorne um Album vazio. Após a exclusão,
+    // você receberá uma resposta JSON `{}` vazia.
+    // Não retorne `null`, caso contrário `snapshot.hasData`
+    // sempre retornará falso no `FutureBuilder`.
     return Album.empty();
   } else {
-    // If the server did not return a "200 OK response",
-    // then throw an exception.
-    throw Exception('Failed to delete album.');
+    // Se o servidor não retornou uma resposta "200 OK",
+    // então lance uma exceção.
+    throw Exception('Falha ao excluir álbum.');
   }
 }
 
@@ -201,7 +202,7 @@ class Album {
           id: id,
           title: title,
         ),
-      _ => throw const FormatException('Failed to load album.'),
+      _ => throw const FormatException('Falha ao carregar álbum.'),
     };
   }
 }
@@ -231,28 +232,28 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Delete Data Example',
+      title: 'Exemplo de Exclusão de Dados',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Delete Data Example'),
+          title: const Text('Exemplo de Exclusão de Dados'),
         ),
         body: Center(
           child: FutureBuilder<Album>(
             future: _futureAlbum,
             builder: (context, snapshot) {
-              // If the connection is done,
-              // check for response data or an error.
+              // Se a conexão estiver concluída,
+              // verifique os dados de resposta ou um erro.
               if (snapshot.connectionState == ConnectionState.done) {
                 if (snapshot.hasData) {
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text(snapshot.data?.title ?? 'Deleted'),
+                      Text(snapshot.data?.title ?? 'Excluído'),
                       ElevatedButton(
-                        child: const Text('Delete Data'),
+                        child: const Text('Excluir Dados'),
                         onPressed: () {
                           setState(() {
                             _futureAlbum =
@@ -267,7 +268,7 @@ class _MyAppState extends State<MyApp> {
                 }
               }
 
-              // By default, show a loading spinner.
+              // Por padrão, mostre um indicador de carregamento.
               return const CircularProgressIndicator();
             },
           ),
@@ -278,7 +279,7 @@ class _MyAppState extends State<MyApp> {
 }
 ```
 
-[Fetch Data]: /cookbook/networking/fetch-data
+[Buscar Dados]: /cookbook/networking/fetch-data
 [ConnectionState]: {{site.api}}/flutter/widgets/ConnectionState-class.html
 [`didChangeDependencies()`]: {{site.api}}/flutter/widgets/State/didChangeDependencies.html
 [`Future`]: {{site.api}}/flutter/dart-async/Future-class.html

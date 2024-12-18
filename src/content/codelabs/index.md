@@ -1,318 +1,223 @@
 ---
+ia-translate: true
 title: Codelabs
 description: >-
-  Codelabs to help you quickly get started programming Flutter.
+  Codelabs para ajudar você a começar a programar em Flutter rapidamente.
 ---
 
-The Flutter codelabs provide a guided,
-hands-on coding experience. Some codelabs
-run in DartPad&mdash;no downloads required!
+Os codelabs do Flutter fornecem uma experiência de programação guiada e prática. Alguns codelabs são executados no DartPad &mdash; sem necessidade de downloads!
 
-## Good for beginners
+## Bom para iniciantes
 
-If you're new to Flutter, we recommend starting with
-one of the following codelabs:
+Se você é novo no Flutter, recomendamos começar com um dos seguintes codelabs:
 
-* [Building your first Flutter app][] (workshop)<br>
-  An instructor-led version of our very popular
-  "Write your first Flutter app" codelab
-  (listed below).
+*   [Construindo seu primeiro aplicativo Flutter][] (workshop)<br>
+    Uma versão guiada por instrutor do nosso popular codelab "Escreva seu primeiro aplicativo Flutter" (listado abaixo).
 
-* [Your first Flutter app][]<br>
-  Create a simple app that automatically generates cool-sounding names,
-  such as "newstay", "lightstream", "mainbrake", or "graypine".
-  This app is responsive and runs on mobile, desktop, and web.
-  (This also replaces the previous "write your first Flutter app"
-  for mobile, part 1 and part 2 codelabs.)
+*   [Seu primeiro aplicativo Flutter][]<br>
+    Crie um aplicativo simples que gera automaticamente nomes com sons legais, como "newstay", "lightstream", "mainbrake" ou "graypine". Este aplicativo é responsivo e é executado em dispositivos móveis, desktop e na web. (Isso também substitui os codelabs anteriores "escreva seu primeiro aplicativo Flutter" para celular, parte 1 e parte 2.)
 
-* [Write your first Flutter app on the web][]<br>
-  Implement a simple web app in DartPad (no downloads
-  required!) that displays a sign-in screen
-  containing three text fields. As the user fills out the
-  fields, a progress bar animates along the top of the
-  sign-in area. This codelab is written specifically for
-  the web, but if you have downloaded and configured
-  Android and iOS tooling, the completed app
-  works on Android and iOS devices, as well.
+*   [Escreva seu primeiro aplicativo Flutter na web][]<br>
+    Implemente um aplicativo web simples no DartPad (sem downloads necessários!) que exibe uma tela de login contendo três campos de texto. À medida que o usuário preenche os campos, uma barra de progresso é animada ao longo da parte superior da área de login. Este codelab é escrito especificamente para a web, mas se você baixou e configurou as ferramentas do Android e iOS, o aplicativo concluído também funciona em dispositivos Android e iOS.
 
-[Building your first Flutter app]: {{site.yt.watch}}?v=8sAyPDLorek
-[Your first Flutter app]: {{site.codelabs}}/codelabs/flutter-codelab-first
-[Write your first Flutter app on the web]: /get-started/codelab-web
+[Construindo seu primeiro aplicativo Flutter]: {{site.yt.watch}}?v=8sAyPDLorek
+[Seu primeiro aplicativo Flutter]: {{site.codelabs}}/codelabs/flutter-codelab-first
+[Escreva seu primeiro aplicativo Flutter na web]: /get-started/codelab-web
 
-## Next steps
+## Próximos passos
 
-* [Records and Patterns in Dart 3][]<br>
-  Discover Dart 3's new records and patterns features.
-  Learn how you can use them in a Flutter app to help you
-  write more readable and maintainable Dart code.
+*   [Records e Patterns no Dart 3][]<br>
+    Descubra os novos recursos de records e patterns do Dart 3. Aprenda como usá-los em um aplicativo Flutter para ajudá-lo a escrever código Dart mais legível e fácil de manter.
 
-* [Building scrolling experiences in Flutter][] (workshop)<br>
-  Start with an app that performs simple, straightforward scrolling
-  and enhance it to create fancy and custom scrolling effects
-  by using slivers.
+*   [Construindo experiências de rolagem no Flutter][] (workshop)<br>
+    Comece com um aplicativo que realiza rolagem simples e direta e aprimore-o para criar efeitos de rolagem sofisticados e personalizados usando slivers.
 
-* [Dart null safety in Action][] (workshop)<br>
-  An instructor-led workshop introducing the features
-  that enable Dart's null-safe type system.
+*   [Dart null safety em Ação][] (workshop)<br>
+    Um workshop guiado por instrutor que apresenta os recursos que habilitam o sistema de tipos null-safe do Dart.
 
-* [How to manage application states using inherited widgets][inherited-widget-ws] (workshop)<br>
-  Learn how to manage the state of your app's data by
-  using the `InheritedWidget` class, one of the
-  [low-level state management][] classes provided
-  by Flutter.
+*   [Como gerenciar estados de aplicação usando inherited widgets][inherited-widget-ws] (workshop)<br>
+    Aprenda como gerenciar o estado dos dados do seu aplicativo usando a classe `InheritedWidget`, uma das classes de [gerenciamento de estado de baixo nível][] fornecidas pelo Flutter.
 
-[Records and Patterns in Dart 3]: {{site.codelabs}}/codelabs/dart-patterns-records
-[Dart null safety in Action]: {{site.yt.watch}}?v=HdKwuHQvArY
+[Records e Patterns no Dart 3]: {{site.codelabs}}/codelabs/dart-patterns-records
+[Dart null safety em Ação]: {{site.yt.watch}}?v=HdKwuHQvArY
 [inherited-widget-ws]: {{site.yt.watch}}?v=LFcGPS6cGrY
-[low-level state management]: /data-and-backend/state-mgmt/options#inheritedwidget-inheritedmodel
+[gerenciamento de estado de baixo nível]: /data-and-backend/state-mgmt/options#inheritedwidget-inheritedmodel
 
-## Designing a Flutter UI
+## Projetando uma UI do Flutter
 
-Learn about Material Design and basic Flutter concepts,
-like layout and animations:
+Aprenda sobre Material Design e conceitos básicos do Flutter, como layout e animações:
 
-* [How to debug layout issues with the Flutter Inspector][]<br>
-  Not an official codelab, but step-by-step instructions on
-  how to debug common layout problems using the Flutter
-  Inspector and Layout Explorer.
+*   [Como depurar problemas de layout com o Flutter Inspector][]<br>
+    Não é um codelab oficial, mas instruções passo a passo sobre como depurar problemas comuns de layout usando o Flutter Inspector e o Layout Explorer.
 
-* [Implicit animations][]<br>
-  Use DartPad (no downloads required!) to learn how to use
-  implicit animations to add motion and create
-  visual effects for the widgets in your UI.
+*   [Animações Implícitas][]<br>
+    Use o DartPad (sem necessidade de downloads!) para aprender como usar animações implícitas para adicionar movimento e criar efeitos visuais para os widgets em sua UI.
 
-* [Building Beautiful Transitions with Material Motion for Flutter][]<br>
-  Learn how to use the Material [animations][] package to
-  add pre-built transitions to a Material app called Reply.
+*   [Construindo Transições Bonitas com Material Motion para Flutter][]<br>
+    Aprenda a usar o pacote Material [animations][] para adicionar transições pré-construídas a um aplicativo Material chamado Reply.
 
-* [Take your Flutter app from boring to beautiful][]<br>
-  Learn how to use some of the features in Material 3
-  to make your app more beautiful _and_ more responsive.
+*   [Leve seu aplicativo Flutter de chato a bonito][]<br>
+    Aprenda como usar alguns dos recursos do Material 3 para tornar seu aplicativo mais bonito _e_ mais responsivo.
 
-* [MDC-101 Flutter: Material Components (MDC) Basics][]<br>
-  Learn the basics of using Material Components by building
-  a simple app with core components.  The four MDC codelabs
-  guide you through building an e-commerce app called Shrine.
-  You'll start by building a login page using several of MDC
-  Flutter's components.
+*   [MDC-101 Flutter: Material Components (MDC) Básico][]<br>
+    Aprenda o básico de como usar Material Components criando um aplicativo simples com componentes principais. Os quatro codelabs do MDC guiam você na construção de um aplicativo de e-commerce chamado Shrine. Você começará construindo uma página de login usando vários componentes do MDC Flutter.
 
-* [MDC-102 Flutter: Material Structure and Layout][]<br>
-  Learn how to use Material for structure and layout in Flutter.
-  Continue building the e-commerce app, introduced in MDC-101,
-  by adding navigation, structure, and data.
+*   [MDC-102 Flutter: Estrutura e Layout Material][]<br>
+    Aprenda como usar o Material para estrutura e layout no Flutter. Continue construindo o aplicativo de e-commerce, introduzido no MDC-101, adicionando navegação, estrutura e dados.
 
-* [MDC-103 Flutter: Material Theming with Color, Shape, Elevation, and Type][]<br>
-  Discover how Material Components for Flutter make it
-  easy to differentiate your product, and express your
-  brand through design. Continue building your e-commerce
-  app by adding a home screen that displays products.
+*   [MDC-103 Flutter: Temas Material com Cor, Forma, Elevação e Tipo][]<br>
+    Descubra como os Material Components para Flutter facilitam a diferenciação do seu produto e a expressão da sua marca por meio do design. Continue construindo seu aplicativo de e-commerce adicionando uma tela inicial que exibe produtos.
 
-* [MDC-104 Flutter: Material Advanced Components][]<br>
-  Improve your design and learn to use our advanced
-  component backdrop menu. Finish your e-commerce app
-  by adding a backdrop with a menu that filters
-  products by the selected category.
+*   [MDC-104 Flutter: Material Advanced Components][]<br>
+    Melhore seu design e aprenda a usar nosso menu suspenso de componente avançado. Termine seu aplicativo de e-commerce adicionando um pano de fundo com um menu que filtra produtos pela categoria selecionada.
 
-* [Adaptive Apps in Flutter][]<br>
-  Learn how to build a Flutter app that adapts to the
-  platform that it's running on, be that Android, iOS,
-  the web, Windows, macOS, or Linux.
+*   [Aplicativos Adaptáveis no Flutter][]<br>
+    Aprenda como construir um aplicativo Flutter que se adapta à plataforma em que está sendo executado, seja Android, iOS, web, Windows, macOS ou Linux.
 
-* [Building next generation UIs in Flutter][]<br>
-  Learn how to build a Flutter app that uses the power of `flutter_animate`,
-  fragment shaders, and particle fields. You will craft a user interface that
-  evokes those science fiction movies and TV shows we all love
-  watching when we aren't coding.
+*   [Construindo UIs de última geração no Flutter][]<br>
+    Aprenda como construir um aplicativo Flutter que usa o poder do `flutter_animate`, fragment shaders e campos de partículas. Você irá criar uma interface de usuário que evoca aqueles filmes e programas de TV de ficção científica que todos nós amamos assistir quando não estamos codificando.
 
-[Building next generation UIs in Flutter]: {{site.codelabs}}/codelabs/flutter-next-gen-uis
-[Adaptive Apps in Flutter]: {{site.codelabs}}/codelabs/flutter-adaptive-app
+[Construindo UIs de última geração no Flutter]: {{site.codelabs}}/codelabs/flutter-next-gen-uis
+[Aplicativos Adaptáveis no Flutter]: {{site.codelabs}}/codelabs/flutter-adaptive-app
 [animations]: {{site.pub}}/packages/animations
-[Building Beautiful Transitions with Material Motion for Flutter]: {{site.codelabs}}/codelabs/material-motion-flutter
-[Building scrolling experiences in Flutter]: {{site.yt.watch}}?v=YY-_yrZdjGc
-[How to debug layout issues with the Flutter Inspector]: {{site.flutter-medium}}/how-to-debug-layout-issues-with-the-flutter-inspector-87460a7b9db
-[Implicit animations]: /codelabs/implicit-animations
-[MDC-101 Flutter: Material Components (MDC) Basics]: {{site.codelabs}}/codelabs/mdc-101-flutter
-[MDC-102 Flutter: Material Structure and Layout]: {{site.codelabs}}/codelabs/mdc-102-flutter
-[MDC-103 Flutter: Material Theming with Color, Shape, Elevation, and Type]: {{site.codelabs}}/codelabs/mdc-103-flutter
+[Construindo Transições Bonitas com Material Motion para Flutter]: {{site.codelabs}}/codelabs/material-motion-flutter
+[Construindo experiências de rolagem no Flutter]: {{site.yt.watch}}?v=YY-_yrZdjGc
+[Como depurar problemas de layout com o Flutter Inspector]: {{site.flutter-medium}}/how-to-debug-layout-issues-with-the-flutter-inspector-87460a7b9db
+[Animações Implícitas]: /codelabs/implicit-animations
+[MDC-101 Flutter: Material Components (MDC) Básico]: {{site.codelabs}}/codelabs/mdc-101-flutter
+[MDC-102 Flutter: Estrutura e Layout Material]: {{site.codelabs}}/codelabs/mdc-102-flutter
+[MDC-103 Flutter: Temas Material com Cor, Forma, Elevação e Tipo]: {{site.codelabs}}/codelabs/mdc-103-flutter
 [MDC-104 Flutter: Material Advanced Components]: {{site.codelabs}}/codelabs/mdc-104-flutter
-[Take your Flutter app from boring to beautiful]: {{site.codelabs}}/codelabs/flutter-boring-to-beautiful
+[Leve seu aplicativo Flutter de chato a bonito]: {{site.codelabs}}/codelabs/flutter-boring-to-beautiful
 
-## Using Flutter with ...
+## Usando Flutter com ...
 
-Learn how to use Flutter with other technologies.
+Aprenda como usar o Flutter com outras tecnologias.
 
 {% comment %}
   Once we get at least 3 codelabs on a specific topic,
   add a subheader for that topic.
 {% endcomment %}
 
-### Monetizing Flutter
+### Monetizando Flutter
 
-* [Adding AdMob Ads to a Flutter app][]<br>
-  Learn how to add an AdMob banner, an interstitial ad,
-  and a rewarded ad to an app called Awesome Drawing Quiz,
-  a game that lets players guess the name of the drawing.
+*   [Adicionando Anúncios AdMob a um aplicativo Flutter][]<br>
+    Aprenda como adicionar um banner do AdMob, um anúncio intersticial e um anúncio recompensado a um aplicativo chamado Awesome Drawing Quiz, um jogo que permite aos jogadores adivinhar o nome do desenho.
 
-* [Adding an AdMob banner and native inline ads to a Flutter app][]<br>
-  Learn how to implement inline banner and native ads
-  to a travel booking app that lists possible
-  flight destinations.
+*   [Adicionando um banner do AdMob e anúncios nativos inline a um aplicativo Flutter][]<br>
+    Aprenda como implementar banners inline e anúncios nativos em um aplicativo de reserva de viagens que lista possíveis destinos de voo.
 
-* [Adding in-app purchases to your Flutter app][]<br>
-  Extend a simple gaming app that uses the Dash mascot as
-  currency to offer three types of in-app purchases:
-  consumable, non-consumable, and subscription.
+*   [Adicionando compras no aplicativo ao seu aplicativo Flutter][]<br>
+    Estenda um aplicativo de jogos simples que usa o mascote Dash como moeda para oferecer três tipos de compras no aplicativo: consumível, não consumível e assinatura.
 
-[Adding AdMob Ads to a Flutter app]: {{site.codelabs}}/codelabs/admob-ads-in-flutter
-[Adding an AdMob banner and native inline ads to a Flutter app]: {{site.codelabs}}/codelabs/admob-inline-ads-in-flutter
-[Adding in-app purchases to your Flutter app]: {{site.codelabs}}/codelabs/flutter-in-app-purchases
+[Adicionando Anúncios AdMob a um aplicativo Flutter]: {{site.codelabs}}/codelabs/admob-ads-in-flutter
+[Adicionando um banner do AdMob e anúncios nativos inline a um aplicativo Flutter]: {{site.codelabs}}/codelabs/admob-inline-ads-in-flutter
+[Adicionando compras no aplicativo ao seu aplicativo Flutter]: {{site.codelabs}}/codelabs/flutter-in-app-purchases
 
-### Flutter and Firebase
+### Flutter e Firebase
 
-* [Add a user authentication flow to a Flutter app using FirebaseUI][]<br>
-  Learn how to add Firebase authentication to a Flutter app
-  with only a few lines of code.
+*   [Adicione um fluxo de autenticação de usuário a um aplicativo Flutter usando FirebaseUI][]<br>
+    Aprenda como adicionar a autenticação do Firebase a um aplicativo Flutter com apenas algumas linhas de código.
 
-* [Get to know Firebase for Flutter][firebase-ws] (workshop)<br>
-  An instructor-led version of our popular
-  "Get to know Firebase for Flutter" codelab
-  (listed below).
+*   [Conheça o Firebase para Flutter][firebase-ws] (workshop)<br>
+    Uma versão guiada por instrutor do nosso popular codelab "Conheça o Firebase para Flutter" (listado abaixo).
 
-* [Get to know Firebase for Flutter][]<br>
-  Build an event RSVP and guestbook chat app on both Android
-  and iOS using Flutter, authenticating users with Firebase
-  Authentication, and sync data using Cloud Firestore.
+*   [Conheça o Firebase para Flutter][]<br>
+    Construa um aplicativo de RSVP de eventos e chat de livro de visitas no Android e iOS usando Flutter, autenticando usuários com Firebase Authentication e sincronizando dados usando o Cloud Firestore.
 
-* [Local development for your Flutter apps using the Firebase Emulator Suite][]<br>
-  Learn how to use the Firebase Emulator Suite when
-  developing with Flutter. You will also learn to use
-  the Auth and Firestore emulators.
+*   [Desenvolvimento local para seus aplicativos Flutter usando o Firebase Emulator Suite][]<br>
+    Aprenda como usar o Firebase Emulator Suite ao desenvolver com Flutter. Você também aprenderá a usar os emuladores Auth e Firestore.
 
-* [Send and receive notifications for a Flutter app using Firebase Cloud Messaging][]<br>
-  Learn how to develop a multi-platform app with Flutter
-  and Firebase Cloud Messaging, integrating FCM to send and
-  receive messages on Android, iOS, and web.
+*   [Envie e receba notificações para um aplicativo Flutter usando Firebase Cloud Messaging][]<br>
+    Aprenda como desenvolver um aplicativo multiplataforma com Flutter e Firebase Cloud Messaging, integrando o FCM para enviar e receber mensagens no Android, iOS e web.
 
-[Add a user authentication flow to a Flutter app using FirebaseUI]: {{site.firebase}}/codelabs/firebase-auth-in-flutter-apps
+[Adicione um fluxo de autenticação de usuário a um aplicativo Flutter usando FirebaseUI]: {{site.firebase}}/codelabs/firebase-auth-in-flutter-apps
 [firebase-ws]: {{site.yt.watch}}?v=wUSkeTaBonA
-[Get to know Firebase for Flutter]: {{site.firebase}}/codelabs/firebase-get-to-know-flutter
-[Local development for your Flutter apps using the Firebase Emulator Suite]: {{site.firebase}}/codelabs/get-started-firebase-emulators-and-flutter
-[Send and receive notifications for a Flutter app using Firebase Cloud Messaging]: {{site.firebase}}/codelabs/firebase-fcm-flutter
+[Conheça o Firebase para Flutter]: {{site.firebase}}/codelabs/firebase-get-to-know-flutter
+[Desenvolvimento local para seus aplicativos Flutter usando o Firebase Emulator Suite]: {{site.firebase}}/codelabs/get-started-firebase-emulators-and-flutter
+[Envie e receba notificações para um aplicativo Flutter usando Firebase Cloud Messaging]: {{site.firebase}}/codelabs/firebase-fcm-flutter
 
-### Build games with Flutter
+### Construa jogos com Flutter
 
-* [Add sound and music to your Flutter game with SoLoud][]—**NEW**<br>
-  The [SoLoud][] package, a free and portable engine,
-  delivers the low-latency and high-performance sound that's
-  essential for many games.
-  In this codelab, learn how to add SoLoud to your game.
+*   [Adicione som e música ao seu jogo Flutter com SoLoud][] — **NOVO**<br>
+    O pacote [SoLoud][], um motor gratuito e portátil, fornece o som de baixa latência e alto desempenho que é essencial para muitos jogos. Neste codelab, aprenda como adicionar o SoLoud ao seu jogo.
 
-* [Build a 2D physics game with Flutter and Flame][]—**NEW**<br>
-  This codelab guides you through crafting game mechanics in a
-  Flutter and Flame game using a 2D physics simulation along
-  the lines of Box2D, called [Forge2D][].
+*   [Construa um jogo de física 2D com Flutter e Flame][] — **NOVO**<br>
+    Este codelab orienta você na criação de mecânicas de jogo em um jogo Flutter e Flame usando uma simulação de física 2D nos moldes do Box2D, chamada [Forge2D][].
 
-* [Build a word puzzle with Flutter][]—**NEW**<br>
-  This codelab focuses on building word puzzle games,
-  and dives into using Flutter's background processing
-  to generate expansive crossword-style grids of interlocking words.
+*   [Construa um jogo de palavras com Flutter][] — **NOVO**<br>
+    Este codelab se concentra na construção de jogos de quebra-cabeça de palavras e mergulha no uso do processamento em segundo plano do Flutter para gerar grades expansivas de palavras interligadas no estilo de palavras cruzadas.
 
-* [Introduction to Flame with Flutter][]<br>
-  Build a Breakout clone using the Flame 2D game engine and
-  embed it in a Flutter wrapper. You will use Flame's Effects
-  to animate and remove components, along with the `google_fonts` and
-  `flutter_animate` packages, to make the whole game look well designed.
+*   [Introdução ao Flame com Flutter][]<br>
+    Construa um clone do Breakout usando o mecanismo de jogo 2D Flame e incorpore-o em um wrapper Flutter. Você usará os efeitos do Flame para animar e remover componentes, juntamente com os pacotes `google_fonts` e `flutter_animate`, para fazer com que todo o jogo pareça bem projetado.
 
-[Add sound and music to your Flutter game with SoLoud]: {{site.codelabs}}/codelabs/flutter-codelab-soloud
-[Build a 2D physics game with Flutter and Flame]: {{site.codelabs}}/codelabs/flutter-flame-forge2d
-[Build a word puzzle with Flutter]: {{site.codelabs}}/codelabs/flutter-word-puzzle
+[Adicione som e música ao seu jogo Flutter com SoLoud]: {{site.codelabs}}/codelabs/flutter-codelab-soloud
+[Construa um jogo de física 2D com Flutter e Flame]: {{site.codelabs}}/codelabs/flutter-flame-forge2d
+[Construa um jogo de palavras com Flutter]: {{site.codelabs}}/codelabs/flutter-word-puzzle
 [Forge2D]: {{site.pub-pkg}}/forge2d
-[Introduction to Flame with Flutter]: {{site.codelabs}}/codelabs/flutter-flame-brick-breaker
+[Introdução ao Flame com Flutter]: {{site.codelabs}}/codelabs/flutter-flame-brick-breaker
 [SoLoud]: {{site.pub-pkg}}/flutter_soloud
 
-### Flutter and TensorFlow
+### Flutter e TensorFlow
 
-* [Create a custom text-classification model with TensorFlow Lite Model Maker][]<br>
+*   [Crie um modelo de classificação de texto personalizado com TensorFlow Lite Model Maker][]<br>
 
-* [Create a Flutter app to classify texts with TensorFlow][]<br>
-  Learn how to run a text-classification inference from a Flutter
-  app with TensorFlow Serving through REST and gRPC.
+*   [Crie um aplicativo Flutter para classificar textos com TensorFlow][]<br>
+    Aprenda como executar uma inferência de classificação de texto a partir de um aplicativo Flutter com TensorFlow Serving por meio de REST e gRPC.
 
-* [Train a comment-spam detection model with TensorFlow Lite Model Maker][]<br>
-  Learn how to install the TensorFlow Lite Model Maker with Colab,
-  how to use a data loader, and how to build a model.
+*   [Treine um modelo de detecção de spam de comentários com TensorFlow Lite Model Maker][]<br>
+    Aprenda como instalar o TensorFlow Lite Model Maker com Colab, como usar um carregador de dados e como construir um modelo.
 
-[Create a custom text-classification model with TensorFlow Lite Model Maker]: {{site.developers}}/codelabs/classify-text-update-tensorflow-serving
-[Create a Flutter app to classify texts with TensorFlow]: {{site.developers}}/codelabs/classify-texts-flutter-tensorflow-serving
-[Train a comment-spam detection model with TensorFlow Lite Model Maker]: {{site.developers}}/codelabs/classify-text-tensorflow-serving
+[Crie um modelo de classificação de texto personalizado com TensorFlow Lite Model Maker]: {{site.developers}}/codelabs/classify-text-update-tensorflow-serving
+[Crie um aplicativo Flutter para classificar textos com TensorFlow]: {{site.developers}}/codelabs/classify-texts-flutter-tensorflow-serving
+[Treine um modelo de detecção de spam de comentários com TensorFlow Lite Model Maker]: {{site.developers}}/codelabs/classify-text-tensorflow-serving
 
-### Flutter and other technologies
+### Flutter e outras tecnologias
 
-* [Adding Google Maps to a Flutter app][]<br>
-  Display a Google map in an app, retrieve data from a
-  web service, and display the data as markers on the map.
+*   [Adicionando o Google Maps a um aplicativo Flutter][]<br>
+    Exiba um mapa do Google em um aplicativo, recupere dados de um serviço da web e exiba os dados como marcadores no mapa.
 
-* [Adding WebView to your Flutter app][]<br>
-  With the WebView Flutter plugin you can add a WebView
-  widget to your Android or iOS Flutter app.
+*  [Adicionando WebView ao seu aplicativo Flutter][]<br>
+   Com o plugin WebView Flutter você pode adicionar um widget WebView ao seu aplicativo Flutter para Android ou iOS.
 
-* [Build voice bots for mobile with Dialogflow and Flutter][] (workshop)<br>
-  An instructor-led version of the Dialogflow
-  and Flutter codelab (listed below).
+*   [Crie bots de voz para celular com Dialogflow e Flutter][] (workshop)<br>
+    Uma versão guiada por instrutor do codelab Dialogflow e Flutter (listado abaixo).
 
-* [Build voice bots for Android with Dialogflow and Flutter][]<br>
-  Learn how to build a mobile FAQ bot that can answer most
-  common questions about the tool Dialogflow. End users
-  can interact with the text interface or stream a voice
-  interaction via the built-in microphone of a mobile device.
+*   [Crie bots de voz para Android com Dialogflow e Flutter][]<br>
+    Aprenda como criar um bot de perguntas frequentes móvel que pode responder às perguntas mais comuns sobre a ferramenta Dialogflow. Os usuários finais podem interagir com a interface de texto ou transmitir uma interação de voz por meio do microfone embutido de um dispositivo móvel.
 
-* [Using FFI in a Flutter plugin][]<br>
-  Learn how to use Dart's FFI (foreign function interface)
-  library, ffigen, allowing you to leverage
-  existing native libraries that provide a
-  C interface.
+*   [Usando FFI em um plugin Flutter][]<br>
+    Aprenda como usar a biblioteca FFI (foreign function interface) do Dart, ffigen, permitindo que você aproveite as bibliotecas nativas existentes que fornecem uma interface C.
 
-* [Create haikus about Google products with the PaLM API and Flutter][]<br>
-  Learn how to build an app that uses the PaLM API to
-  generate haikus based on Google product names. The
-  PaLM API gives you access to Google's
-  state-of-the-art large language models.
+*   [Crie haicais sobre produtos do Google com a API PaLM e Flutter][]<br>
+    Aprenda como construir um aplicativo que usa a API PaLM para gerar haicais com base em nomes de produtos do Google. A API PaLM oferece acesso aos modelos de linguagem grandes e de última geração do Google.
 
-[Adding Google Maps to a Flutter app]: {{site.codelabs}}/codelabs/google-maps-in-flutter
-[Adding WebView to your Flutter app]: {{site.codelabs}}/codelabs/flutter-webview
-[Build voice bots for Android with Dialogflow and Flutter]: {{site.codelabs}}/codelabs/dialogflow-flutter
-[Build voice bots for mobile with Dialogflow and Flutter]: {{site.yt.watch}}?v=O7JfSF3CJ84
-[Create haikus about Google products with the PaLM API and Flutter]: {{site.codelabs}}/haiku-generator
-[Using FFI in a Flutter plugin]: {{site.codelabs}}/codelabs/flutter-ffigen
+[Adicionando o Google Maps a um aplicativo Flutter]: {{site.codelabs}}/codelabs/google-maps-in-flutter
+[Adicionando WebView ao seu aplicativo Flutter]: {{site.codelabs}}/codelabs/flutter-webview
+[Crie bots de voz para Android com Dialogflow e Flutter]: {{site.codelabs}}/codelabs/dialogflow-flutter
+[Crie bots de voz para celular com Dialogflow e Flutter]: {{site.yt.watch}}?v=O7JfSF3CJ84
+[Crie haicais sobre produtos do Google com a API PaLM e Flutter]: {{site.codelabs}}/haiku-generator
+[Usando FFI em um plugin Flutter]: {{site.codelabs}}/codelabs/flutter-ffigen
 
-## Testing
+## Testando
 
-Learn how to test your Flutter application.
+Aprenda como testar seu aplicativo Flutter.
 
-* [How to test a Flutter app][]<br>
-  Start with a simple app that manages state with the Provider package.
-  Unit test the provider package. Write widget tests for two of the
-  widgets. Use Flutter Driver to create an integration test.
+*   [Como testar um aplicativo Flutter][]<br>
+    Comece com um aplicativo simples que gerencia o estado com o pacote Provider. Teste unitário o pacote provider. Escreva testes de widget para dois dos widgets. Use o Flutter Driver para criar um teste de integração.
 
-[How to test a Flutter app]: {{site.codelabs}}/codelabs/flutter-app-testing/
+[Como testar um aplicativo Flutter]: {{site.codelabs}}/codelabs/flutter-app-testing/
 
-## Writing platform-specific code
+## Escrevendo código específico da plataforma
 
-Learn how to write code that's targeted for specific platforms,
-like iOS, Android, desktop, or the web.
+Aprenda como escrever código direcionado para plataformas específicas, como iOS, Android, desktop ou web.
 
-* [Write a Flutter desktop application][]<br>
-  Build a Flutter desktop app (Windows, Linux, or macOS)
-  that accesses GitHub APIs to retrieve your repositories,
-  assigned issues, and pull requests. As part of this task,
-  create and use plugins to interact with native APIs and desktop applications,
-  and use code generation to build type-safe client libraries for GitHub's APIs.
+*   [Escreva um aplicativo Flutter para desktop][]<br>
+    Crie um aplicativo Flutter para desktop (Windows, Linux ou macOS) que acesse as APIs do GitHub para recuperar seus repositórios, problemas atribuídos e pull requests. Como parte dessa tarefa, crie e use plugins para interagir com APIs nativas e aplicativos de desktop e use a geração de código para construir bibliotecas de cliente type-safe para as APIs do GitHub.
 
-* [Adding a Home Screen widget to your Flutter app][home-screen]<br>
-  Learn how to add a Home Screen widget to your Flutter app
-  on iOS. This applies to your home screen, lock screen, or the
-  today view.
+*   [Adicionando um widget de tela inicial ao seu aplicativo Flutter][home-screen]<br>
+    Aprenda como adicionar um widget de tela inicial ao seu aplicativo Flutter no iOS. Isso se aplica à sua tela inicial, tela de bloqueio ou à visualização de hoje.
 
 [home-screen]: {{site.codelabs}}/flutter-home-screen-widgets
 [provider]: {{site.pub-pkg}}/provider
-[Write a Flutter desktop application]: {{site.codelabs}}/codelabs/flutter-github-client
+[Escreva um aplicativo Flutter para desktop]: {{site.codelabs}}/codelabs/flutter-github-client

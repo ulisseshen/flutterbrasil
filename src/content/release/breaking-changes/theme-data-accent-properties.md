@@ -1,61 +1,65 @@
 ---
-title: ThemeData's accent properties have been deprecated
+ia-translate: true
+title: Propriedades de acento do ThemeData foram descontinuadas
 description: >
-  The ThemeData accentColor, accentColorBrightness, accentIconTheme, and
-  accentTextTheme properties have been deprecated.
+  As propriedades accentColor, accentColorBrightness, accentIconTheme e
+  accentTextTheme do ThemeData foram descontinuadas.
 ---
 
-## Summary
+## Resumo
 
-The ThemeData [accentColor][], [accentColorBrightness][], [accentIconTheme][]
-and [accentTextTheme][] properties have been deprecated.
+As propriedades [accentColor][], [accentColorBrightness][],
+[accentIconTheme][] e [accentTextTheme][] do ThemeData foram
+descontinuadas.
 
-The [Material Design spec][] no longer specifies or uses an "accent"
-color for the Material components. The default values for component
-colors are derived from the overall theme's [color scheme][color-scheme-prop].
-The `ColorScheme`'s [secondary color][] is now typically used instead of
-`accentColor` and the [onSecondary color][] is used when a contrasting
-color is needed.
+A [especificação do Material Design][] não especifica ou usa mais uma
+cor de "acento" para os componentes do Material. Os valores padrão
+para as cores dos componentes são derivados do [esquema de cores][]
+geral do tema. A [cor secundária][] do `ColorScheme` agora é
+normalmente usada em vez de `accentColor` e a [cor onSecondary][] é
+usada quando uma cor contrastante é necessária.
 
-## Context
+## Contexto
 
-This was a small part of the [Material Theme System Updates][] project.
+Esta foi uma pequena parte do projeto [Atualizações do Sistema de Temas
+Material][].
 
-As of Flutter 1.17, the ThemeData accent properties - accentColor,
-accentColorBrightness, accentIconTheme, and accentTextTheme - were no
-longer used by the Material library. They had been replaced by
-dependencies on the theme's [`colorScheme`][color-scheme-prop] and
-[`textTheme`][text-scheme-prop] properties as part of the long-term goal of
-making the default configurations of the material components depend
-almost exclusively on these two properties.
+A partir do Flutter 1.17, as propriedades de acento do ThemeData -
+accentColor, accentColorBrightness, accentIconTheme e accentTextTheme
+- não eram mais usadas pela biblioteca Material. Elas foram
+substituídas por dependências das propriedades [`colorScheme`][] e
+[`textTheme`][] do tema, como parte da meta de longo prazo de fazer
+com que as configurações padrão dos componentes Material dependam
+quase exclusivamente dessas duas propriedades.
 
-The motivation for these changes is to make the theme system easier to
-understand and use. The default colors for all components are to be
-defined by the components themselves and based on the color
-scheme. The defaults for specific component types can be overridden
-with component-specific themes like [`FloatingActionButtonThemeData`][] or
-[`CheckBoxTheme`][]. Previously, properties like accentColor were used by a
-handful of component types and only in some situations, which made it
-difficult to understand the implications of overriding them.
+A motivação para essas mudanças é tornar o sistema de temas mais fácil
+de entender e usar. As cores padrão para todos os componentes devem
+ser definidas pelos próprios componentes e com base no esquema de
+cores. Os padrões para tipos de componentes específicos podem ser
+substituídos com temas específicos de componentes, como
+[`FloatingActionButtonThemeData`][] ou [`CheckBoxTheme`][].
+Anteriormente, propriedades como accentColor eram usadas por alguns
+tipos de componentes e apenas em algumas situações, o que dificultava
+a compreensão das implicações de substituí-las.
 
-## Description of change
+## Descrição da mudança
 
-The ThemeData accentColor, accentColorBrightness, accentIconTheme and
-accentTextTheme properties have been deprecated because the Material
-library no longer uses them.
+As propriedades accentColor, accentColorBrightness, accentIconTheme e
+accentTextTheme do ThemeData foram descontinuadas porque a biblioteca
+Material não as usa mais.
 
-## Migration guide
+## Guia de migração
 
-### Application theme
+### Tema do aplicativo
 
-[`ThemeData`][] values no longer need to specify accentColor,
-accentColorBrightness, accentIconTheme, or accentTextTheme.
+Os valores de [`ThemeData`][] não precisam mais especificar
+accentColor, accentColorBrightness, accentIconTheme ou accentTextTheme.
 
-To configure the appearance of the material components in about the
-same way as before, specify the color scheme's secondary color
-instead of accentColor.
+Para configurar a aparência dos componentes Material da mesma forma
+que antes, especifique a cor secundária do esquema de cores em vez
+de accentColor.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 MaterialApp(
@@ -64,7 +68,7 @@ MaterialApp(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 final ThemeData theme = ThemeData();
@@ -78,21 +82,22 @@ MaterialApp(
 
 ### `accentColor`
 
-The closest backwards compatible [`ColorScheme`][] color is
-[`ColorScheme.secondary`][]. To hew most closely to the latest Material
-Design guidelines one can substitute `ColorScheme.primary` instead.
-If a contrasting color is needed then use [`ColorScheme.onSecondary`][].
+A cor [`ColorScheme`][] mais compatível com versões anteriores é
+[`ColorScheme.secondary`][]. Para seguir mais de perto as diretrizes
+mais recentes do Material Design, pode-se substituir
+`ColorScheme.primary`. Se uma cor contrastante for necessária, use
+[`ColorScheme.onSecondary`][].
 
-Custom components that used to look up the theme's accentColor, can look up
-the `ColorScheme.secondary` instead.
+Componentes personalizados que costumavam procurar a accentColor do
+tema podem procurar o `ColorScheme.secondary` em vez disso.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 Color myColor = Theme.of(context).accentColor;
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 Color myColor = Theme.of(context).colorScheme.secondary;
@@ -100,26 +105,26 @@ Color myColor = Theme.of(context).colorScheme.secondary;
 
 ### `accentColorBrightness`
 
-The static [`ThemeData.estimateBrightnessForColor()`][] method can be used
-to compute the brightness of any color.
+O método estático [`ThemeData.estimateBrightnessForColor()`][] pode
+ser usado para calcular o brilho de qualquer cor.
 
 ### `accentTextTheme`
 
-This was white [`TextStyle`]s for dark themes, black
-TextStyles for light themes. In most cases textTheme can be used
-instead. A common idiom was to refer to one TextStyle from
-accentTextTheme, since the text style's color was guaranteed to contrast
-well with the accent color (now `ColorScheme.secondaryColor`).
-To get the same result now, specify the text style's color as
-`ColorScheme.onSecondary`:
+Este era [`TextStyle`] branco para temas escuros, `TextStyles`
+pretos para temas claros. Na maioria dos casos, textTheme pode ser
+usado em vez disso. Um idioma comum era referir-se a um TextStyle de
+accentTextTheme, já que a cor do estilo de texto tinha garantia de
+contrastar bem com a cor de acento (agora `ColorScheme.secondaryColor`).
+Para obter o mesmo resultado agora, especifique a cor do estilo de
+texto como `ColorScheme.onSecondary`:
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 TextStyle style = Theme.of(context).accentTextTheme.headline1;
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 final ThemeData theme = Theme.of(context);
@@ -130,40 +135,39 @@ TextStyle style = theme.textTheme.headline1.copyWith(
 
 ### `accentIconTheme`
 
-This property had only been used to configure the color of icons
-within a [`FloatingActionButton`][]. It's now possible to configure the icon
-color directly or with the [`FloatingActionButtonThemeData`][]. See
-[FloatingActionButton and ThemeData's accent properties][].
+Esta propriedade só era usada para configurar a cor dos ícones em
+um [`FloatingActionButton`][]. Agora é possível configurar a cor do
+ícone diretamente ou com o [`FloatingActionButtonThemeData`][]. Veja
+[FloatingActionButton e propriedades de acento do ThemeData][].
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 2.3.0-0.1.pre<br>
-In stable release: 2.5
+Implementado na versão: 2.3.0-0.1.pre<br>
+Na versão estável: 2.5
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
-* [`ColorScheme`][]
-* [`FloatingActionButton`][]
-* [`FloatingActionButtonThemeData`][]
-* [`TextStyle`][]
-* [`TextTheme`][]
-* [`Theme`][]
-* [`ThemeData`][]
+*   [`ColorScheme`][]
+*   [`FloatingActionButton`][]
+*   [`FloatingActionButtonThemeData`][]
+*   [`TextStyle`][]
+*   [`TextTheme`][]
+*   [`Theme`][]
+*   [`ThemeData`][]
 
-Relevant issues:
+Problemas relevantes:
 
-* [Issue #56918][]
+*   [Issue #56918][]
 
-Relevant PRs:
+PRs relevantes:
 
-* [PR #81336][]
+*   [PR #81336][]
 
-Other:
+Outros:
 
-* [Material Theme System Updates][]
-
+*   [Atualizações do Sistema de Temas Material][]
 
 [accentColor]: {{site.api}}/flutter/material/ThemeData/accentColor.html
 [accentColorBrightness]: {{site.api}}/flutter/material/ThemeData/accentColorBrightness.html
@@ -175,13 +179,13 @@ Other:
 [`colorScheme.secondary`]: {{site.api}}/flutter/material/ColorScheme/secondary.html
 [`ColorScheme`]: {{site.api}}/flutter/material/ColorScheme-class.html
 [Issue #56918]: {{site.repo.flutter}}/issues/56918
-[FloatingActionButton and ThemeData's accent properties]: /release/breaking-changes/fab-theme-data-accent-properties
+[FloatingActionButton e propriedades de acento do ThemeData]: /release/breaking-changes/fab-theme-data-accent-properties
 [`FloatingActionButton`]: {{site.api}}/flutter/material/FloatingActionButton-class.html
 [`FloatingActionButtonThemeData`]: {{site.api}}/flutter/material/FloatingActionButtonThemeData-class.html
 [Material Design spec]: {{site.material}}/styles/color
-[Material Theme System Updates]: /go/material-theme-system-updates
-[secondary color]: {{site.api}}/flutter/material/ColorScheme/secondary.html
-[onSecondary color]: {{site.api}}/flutter/material/ColorScheme/onSecondary.html
+[Atualizações do Sistema de Temas Material]: /go/material-theme-system-updates
+[cor secundária]: {{site.api}}/flutter/material/ColorScheme/secondary.html
+[cor onSecondary]: {{site.api}}/flutter/material/ColorScheme/onSecondary.html
 [PR #81336]: {{site.repo.flutter}}/pull/81336
 [`TextStyle`]: {{site.api}}/flutter/painting/TextStyle-class.html
 [text-scheme-prop]: {{site.api}}/flutter/material/ThemeData/textTheme.html

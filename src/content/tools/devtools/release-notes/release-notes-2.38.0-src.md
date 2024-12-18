@@ -1,32 +1,36 @@
-# DevTools 2.38.0 release notes
+# Notas de lançamento do DevTools 2.38.0
 
-The 2.38.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](/tools/devtools/overview).
+A versão 2.38.0 do Dart e Flutter DevTools inclui as seguintes
+mudanças, entre outras melhorias gerais. Para saber mais sobre o
+DevTools, consulte a [visão geral do DevTools](/tools/devtools/overview).
 
-## Performance updates
+## Atualizações de Performance
 
-* Renamed the "Track" builds, paints, and layouts settings to "Trace"
-builds, paints, and layouts. - [#8084](https://github.com/flutter/devtools/pull/8084)
-* Renamed the "Track widget build counts" setting to "Count widget builds". - [#8084](https://github.com/flutter/devtools/pull/8084)
+* Renomeou as configurações "Track" builds, paints e layouts para
+"Trace" builds, paints e layouts. - [#8084](https://github.com/flutter/devtools/pull/8084)
+* Renomeou a configuração "Track widget build counts" para "Count
+widget builds". - [#8084](https://github.com/flutter/devtools/pull/8084)
 
-## Debugger updates
+## Atualizações do Debugger
 
-* Added recommendation to debug code from an IDE, with links to IDE instructions. - [#8085](https://github.com/flutter/devtools/pull/8085)
+* Adicionada recomendação para depurar o código a partir de uma IDE,
+com links para as instruções da IDE. - [#8085](https://github.com/flutter/devtools/pull/8085)
 
-## Network profiler updates
+## Atualizações do Network profiler
 
-* Added support to export network requests as a HAR file (thanks to @hrajwade96!). - [#7970](https://github.com/flutter/devtools/pull/7970)
+* Adicionado suporte para exportar requisições de rede como um arquivo
+HAR (obrigado @hrajwade96!). - [#7970](https://github.com/flutter/devtools/pull/7970)
 
-## DevTools Extension updates
+## Atualizações da Extensão DevTools
 
-* Fixed an issue where extensions did not load with the proper theme when
-embedded in an IDE. - [#8034](https://github.com/flutter/devtools/pull/8034)
-* Added an API for copying text to clipboard by proxy of the parent DevTools web app, which has
-workarounds for copy issues when embedded inside an IDE. - [#8130](https://github.com/flutter/devtools/pull/8130)
+* Corrigido um problema em que as extensões não carregavam com o tema
+adequado quando incorporadas em uma IDE. - [#8034](https://github.com/flutter/devtools/pull/8034)
+* Adicionada uma API para copiar texto para a área de transferência
+por meio do proxy do aplicativo web pai DevTools, que tem soluções
+alternativas para problemas de cópia quando incorporado em uma IDE. -
+[#8130](https://github.com/flutter/devtools/pull/8130)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes in this release, check out the
-[DevTools git log](https://github.com/flutter/devtools/tree/v2.38.0).
+Para encontrar uma lista completa de alterações nesta versão,
+consulte o [log do git do DevTools](https://github.com/flutter/devtools/tree/v2.38.0).

@@ -1,136 +1,136 @@
 ---
-title: Flutter's build modes
-description: Describes Flutter's build modes and when you should use debug, release, or profile mode.
+title: Modos de build do Flutter
+description: Descreve os modos de build do Flutter e quando você deve usar o modo debug, release ou profile.
+ia-translate: true
 ---
 
-The Flutter tooling supports three modes when compiling your app,
-and a headless mode for testing.
-You choose a compilation mode depending on where you are in
-the development cycle. Are you debugging your code? Do you
-need profiling information? Are you ready to deploy your app?
+As ferramentas do Flutter suportam três modos ao compilar seu aplicativo,
+e um modo headless para testes.
+Você escolhe um modo de compilação dependendo de onde você está no
+ciclo de desenvolvimento. Você está depurando seu código? Você precisa
+de informações de profiling? Você está pronto para implantar seu aplicativo?
 
-A quick summary for when to use which mode is as follows:
+Um resumo rápido de quando usar cada modo é o seguinte:
 
-* Use [debug](#debug) mode during development,
-  when you want to use [hot reload][].
-* Use [profile](#profile) mode when you want to analyze
-  performance.
-* Use [release](#release) mode when you are ready to release
-  your app.
+* Use o modo [debug](#debug) durante o desenvolvimento,
+  quando você quiser usar o [hot reload][].
+* Use o modo [profile](#profile) quando você quiser analisar
+  o desempenho.
+* Use o modo [release](#release) quando você estiver pronto para lançar
+  seu aplicativo.
 
-The rest of the page details these modes.
+O restante da página detalha esses modos.
 
-* To learn about the headless testing mode,
-  refer to the engine wiki's docs on [Flutter's build modes][].
-* To learn how to detect the build mode, check out the
-  [Check for Debug/Release Mode in Flutter Apps] blog post.
+* Para saber mais sobre o modo de teste headless,
+  consulte a documentação do wiki do engine sobre os [modos de build do Flutter][].
+* Para saber como detectar o modo de build, verifique a postagem do blog
+  [Check for Debug/Release Mode in Flutter Apps].
 
 [Check for Debug/Release Mode in Flutter Apps]: https://retroportalstudio.medium.com/check-for-debug-release-mode-in-flutter-apps-d8d545f20da3
 
 ## Debug
 
-In _debug mode_, the app is set up for debugging on the physical
-device, emulator, or simulator.
+No _modo debug_, o aplicativo é configurado para depuração no dispositivo físico,
+emulador ou simulador.
 
-Debug mode for mobile apps mean that:
+O modo debug para aplicativos móveis significa que:
 
-* [Assertions][] are enabled.
-* Service extensions are enabled.
-* Compilation is optimized for fast development and run cycles
-  (but not for execution speed, binary size, or deployment).
-* Debugging is enabled, and tools supporting source level debugging
-  (such as [DevTools][]) can connect to the process.
+* [Assertions][] estão habilitadas.
+* Extensões de serviço estão habilitadas.
+* A compilação é otimizada para desenvolvimento rápido e ciclos de execução
+  (mas não para velocidade de execução, tamanho binário ou implantação).
+* A depuração está habilitada e as ferramentas que suportam depuração em nível de código-fonte
+  (como [DevTools][]) podem se conectar ao processo.
 
-Debug mode for a web app means that:
+O modo debug para um aplicativo web significa que:
 
-* The build is _not_ minified and tree shaking has _not_ been
-  performed.
-* The app is compiled with the [dartdevc][] compiler for
-  easier debugging.
+* O build _não_ é minificado e o tree shaking _não_ foi
+  executado.
+* O aplicativo é compilado com o compilador [dartdevc][] para
+  facilitar a depuração.
 
-By default, `flutter run` compiles to debug mode.
-Your IDE supports this mode. Android Studio,
-for example, provides a **Run > Debug...** menu option,
-as well as a green bug icon overlaid with a small triangle
-on the project page.
+Por padrão, `flutter run` compila para o modo debug.
+Seu IDE oferece suporte a esse modo. O Android Studio,
+por exemplo, fornece uma opção de menu **Run > Debug...**,
+bem como um ícone de bug verde sobreposto com um pequeno triângulo
+na página do projeto.
 
 :::note
-* Hot reload works _only_ in debug mode.
-* The emulator and simulator execute _only_ in debug mode.
-* Application performance can be janky in debug mode.
-  Measure performance in [profile](#profile)
-  mode on an actual device.
+* Hot reload funciona _apenas_ no modo debug.
+* O emulador e o simulador são executados _apenas_ no modo debug.
+* O desempenho do aplicativo pode ser instável no modo debug.
+  Meça o desempenho no modo [profile](#profile)
+  em um dispositivo real.
 :::
 
 ## Release
 
-Use _release mode_ for deploying the app, when you want maximum
-optimization and minimal footprint size. For mobile, release mode
-(which is not supported on the simulator or emulator), means that:
+Use o _modo release_ para implantar o aplicativo, quando você quiser o máximo
+de otimização e tamanho mínimo. Para dispositivos móveis, o modo release
+(que não é suportado no simulador ou emulador), significa que:
 
-* Assertions are disabled.
-* Debugging information is stripped out.
-* Debugging is disabled.
-* Compilation is optimized for fast startup, fast execution,
-  and small package sizes.
-* Service extensions are disabled.
+* Assertions são desabilitadas.
+* Informações de depuração são removidas.
+* A depuração está desabilitada.
+* A compilação é otimizada para inicialização rápida, execução rápida
+  e tamanhos de pacote pequenos.
+* Extensões de serviço são desabilitadas.
 
-Release mode for a web app means that:
+O modo release para um aplicativo web significa que:
 
-* The build is minified and tree shaking has been performed.
-* The app is compiled with the [dart2js][] compiler for
-  best performance.
+* O build é minificado e o tree shaking foi executado.
+* O aplicativo é compilado com o compilador [dart2js][] para
+  melhor desempenho.
 
-The command `flutter run --release` compiles to release mode.
-Your IDE supports this mode. Android Studio, for example,
-provides a **Run > Run...** menu option, as well as a triangular
-green run button icon on the project page.
-You can compile to release mode for a specific target
-with `flutter build <target>`. For a list of supported targets,
+O comando `flutter run --release` compila para o modo release.
+Seu IDE oferece suporte a esse modo. O Android Studio, por exemplo,
+fornece uma opção de menu **Run > Run...**, bem como um botão
+triangular verde de execução na página do projeto.
+Você pode compilar para o modo release para um destino específico
+com `flutter build <destino>`. Para obter uma lista de destinos suportados,
 use `flutter help build`.
 
-For more information, see the docs on releasing
-[iOS][] and [Android][] apps.
+Para mais informações, consulte a documentação sobre lançamento de aplicativos
+[iOS][] e [Android][].
 
 ## Profile
 
-In _profile mode_, some debugging ability is maintained&mdash;enough
-to profile your app's performance. Profile mode is disabled on
-the emulator and simulator, because their behavior is not representative
-of real performance. On mobile, profile mode is similar to release mode,
-with the following differences:
+No _modo profile_, alguma capacidade de depuração é mantida — o suficiente
+para fazer o profiling do desempenho do seu aplicativo. O modo profile é desabilitado no
+emulador e no simulador, porque o comportamento deles não é representativo
+do desempenho real. Em dispositivos móveis, o modo profile é semelhante ao modo release,
+com as seguintes diferenças:
 
-* Some service extensions, such as the one that enables the performance
-  overlay, are enabled.
-* Tracing is enabled, and tools supporting source-level debugging
-  (such as [DevTools][]) can connect to the process.
+* Algumas extensões de serviço, como a que habilita a sobreposição de desempenho,
+  estão habilitadas.
+* O tracing está habilitado e as ferramentas que suportam a depuração em nível de código-fonte
+  (como [DevTools][]) podem se conectar ao processo.
 
-Profile mode for a web app means that:
+O modo profile para um aplicativo web significa que:
 
-* The build is _not_ minified but tree shaking has been performed.
-* The app is compiled with the [dart2js][] compiler.
-* DevTools can't connect to a Flutter web app running
-  in profile mode. Use Chrome DevTools to
-  [generate timeline events][] for a web app.
+* O build _não_ é minificado, mas o tree shaking foi executado.
+* O aplicativo é compilado com o compilador [dart2js][].
+* DevTools não consegue se conectar a um aplicativo web Flutter em execução
+  no modo profile. Use o Chrome DevTools para
+  [gerar eventos de timeline][] para um aplicativo web.
 
-Your IDE supports this mode. Android Studio, for example,
-provides a **Run > Profile...** menu option.
-The command `flutter run --profile` compiles to profile mode.
+Seu IDE oferece suporte a esse modo. O Android Studio, por exemplo,
+fornece uma opção de menu **Run > Profile...**.
+O comando `flutter run --profile` compila para o modo profile.
 
 :::note
-Use the [DevTools][] suite to profile your app's performance.
+Use o conjunto [DevTools][] para fazer o profiling do desempenho do seu aplicativo.
 :::
 
-For more information on the build modes, see
-[Flutter's build modes][].
-
+Para mais informações sobre os modos de build, veja
+[modos de build do Flutter][].
 
 [Android]: /deployment/android
 [Assertions]: {{site.dart-site}}/language/error-handling#assert
 [dart2js]: {{site.dart-site}}/tools/dart2js
 [dartdevc]: {{site.dart-site}}/tools/dartdevc
 [DevTools]: /tools/devtools
-[Flutter's build modes]: {{site.repo.engine}}/blob/main/docs/Flutter's-modes.md
-[generate timeline events]: {{site.developers}}/web/tools/chrome-devtools/evaluate-performance/performance-reference
+[modos de build do Flutter]: {{site.repo.engine}}/blob/main/docs/Flutter's-modes.md
+[gerar eventos de timeline]: {{site.developers}}/web/tools/chrome-devtools/evaluate-performance/performance-reference
 [hot reload]: /tools/hot-reload
 [iOS]: /deployment/ios

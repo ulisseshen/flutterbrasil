@@ -1,44 +1,19 @@
-# DevTools 2.17.0 release notes
+# Notas de lançamento do DevTools 2.17.0
 
-The 2.17.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutter.dev/tools/devtools).
+A versão 2.17.0 do Dart e Flutter DevTools inclui as seguintes alterações, entre outras melhorias gerais. Para saber mais sobre o DevTools, consulte a [visão geral do DevTools](https://docs.flutter.dev/tools/devtools).
 
-## Inspector updates
+## Atualizações do Inspetor
 
-* Added support for manually setting the package directories for your app.
-  If you've ever loaded the Inspector and noticed that
-  some of your widgets aren't present in the widget tree, this might
-  indicate that the package directories for your app
-  haven't been set or detected properly.
-  Your package directories determine which widgets
-  the Inspector considers to be from _your_ application.
-  If you see an empty Inspector widget tree,
-  or if you develop widgets across multiple packages,
-  and want widgets from all these locations to show up in your tree,
-  check the **Inspector Settings** dialog to ensure that your package
-  directories are properly configured -
-  [#4306](https://github.com/flutter/devtools/pull/4306)
+* Adicionado suporte para definir manualmente os diretórios de pacotes para seu aplicativo. Se você já carregou o Inspetor e notou que alguns de seus widgets não estão presentes na árvore de widgets, isso pode indicar que os diretórios de pacotes para seu aplicativo não foram definidos ou detectados corretamente. Seus diretórios de pacotes determinam quais widgets o Inspetor considera como sendo de _seu_ aplicativo. Se você vir uma árvore de widgets do Inspetor vazia, ou se você desenvolver widgets em vários pacotes e quiser que os widgets de todos esses locais apareçam em sua árvore, verifique a caixa de diálogo **Configurações do Inspetor** para garantir que seus diretórios de pacotes estejam configurados corretamente - [#4306](https://github.com/flutter/devtools/pull/4306)
 
-  ![frame_analysis](/tools/devtools/release-notes/images-2.17.0/package_directories.png "package directories")
+  ![frame_analysis](/tools/devtools/release-notes/images-2.17.0/package_directories.png "diretórios de pacotes")
 
-## Performance updates
+## Atualizações de desempenho
 
-* Added a **Frame Analysis** tab to the Performance page.
-  When analyzing a janky Flutter frame,
-  this view provides hints for how to diagnose the jank and
-  detects expensive operations that might have
-  contributed to the slow frame time.
-  This view also shows a breakdown of your Flutter frame time
-  per phase (**Build**, **Layout**, **Paint**, and **Raster**)
-  to try to guide you in the right direction -
-  [#4339](https://github.com/flutter/devtools/pull/4339)
+* Adicionada uma aba **Análise de Frame** na página de Performance. Ao analisar um frame do Flutter instável, esta visualização fornece dicas sobre como diagnosticar a instabilidade e detecta operações dispendiosas que podem ter contribuído para o tempo de frame lento. Esta visualização também mostra um detalhamento do seu tempo de frame do Flutter por fase (**Build**, **Layout**, **Paint** e **Raster**) para tentar guiá-lo na direção certa - [#4339](https://github.com/flutter/devtools/pull/4339)
 
-  ![frame_analysis](/tools/devtools/release-notes/images-2.17.0/frame_analysis.png "frame analysis")
+  ![frame_analysis](/tools/devtools/release-notes/images-2.17.0/frame_analysis.png "análise de frame")
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes since the previous release,
-check out
-[the diff on GitHub](https://github.com/flutter/devtools/compare/v2.16.0...v2.17.0).
+Para encontrar uma lista completa de alterações desde a versão anterior, confira [o diff no GitHub](https://github.com/flutter/devtools/compare/v2.16.0...v2.17.0).

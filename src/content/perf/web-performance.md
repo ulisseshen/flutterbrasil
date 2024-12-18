@@ -1,57 +1,50 @@
 ---
-title: Debug performance for web apps
-description: Learn how to use Chrome DevTools to debug web performance issues.
+ia-translate: true
+title: Depuração de performance para aplicativos web
+description: Aprenda como usar o Chrome DevTools para depurar problemas de performance web.
 ---
 
 :::note
-Profiling Flutter web apps requires Flutter version 3.14 or later.
+O profiling de aplicativos web Flutter requer a versão 3.14 ou mais recente do Flutter.
 :::
 
-The Flutter framework emits timeline events as it works to build frames,
-draw scenes, and track other activity such as garbage collections.
-These events are exposed in the 
-[Chrome DevTools performance panel][] for debugging.
+O framework Flutter emite eventos de linha do tempo enquanto trabalha para construir frames, desenhar cenas e rastrear outras atividades como coletas de lixo. Esses eventos são expostos no [painel de performance do Chrome DevTools][] para depuração.
 
 :::note
-For information on how to optimize web loading speed,
-check out the (free) article on Medium,
-[Best practices for optimizing Flutter web loading speed][article].
+Para informações sobre como otimizar a velocidade de carregamento web, confira o artigo (gratuito) no Medium, [Melhores práticas para otimizar a velocidade de carregamento web do Flutter][article].
 
 [article]: {{site.flutter-medium}}/best-practices-for-optimizing-flutter-web-loading-speed-7cc0df14ce5c
 :::
 
-You can also emit your own timeline events using the `dart:developer`
-[Timeline][] and [TimelineTask][] APIs for further performance analysis.
+Você também pode emitir seus próprios eventos de linha do tempo usando as APIs `dart:developer` [Timeline][] e [TimelineTask][] para análises de performance adicionais.
 
-[Chrome DevTools performance panel]: https://developer.chrome.com/docs/devtools/performance
+[painel de performance do Chrome DevTools]: https://developer.chrome.com/docs/devtools/performance
 [Timeline]: {{site.api}}/flutter/dart-developer/Timeline-class.html
 [TimelineTask]: {{site.api}}/flutter/dart-developer/TimelineTask-class.html
 
-![Screenshot of the Chrome DevTools performance panel](/assets/images/docs/tools/devtools/chrome-devtools-performance-panel.png)
+![Captura de tela do painel de performance do Chrome DevTools](/assets/images/docs/tools/devtools/chrome-devtools-performance-panel.png)
 
-## Optional flags to enhance tracing
+## Flags opcionais para aprimorar o rastreamento
 
-To configure which timeline events are tracked, set any of the following top-level properties to `true`
-in your app's `main` method.
+Para configurar quais eventos da linha do tempo são rastreados, defina qualquer uma das seguintes propriedades de nível superior para `true` no método `main` do seu aplicativo.
 
-- [debugProfileBuildsEnabled][]: Adds `Timeline` events for every `Widget` built.
-- [debugProfileBuildsEnabledUserWidgets][]: Adds `Timeline` events for every user-created `Widget` built.
-- [debugProfileLayoutsEnabled][]: Adds `Timeline` events for every `RenderObject` layout.
-- [debugProfilePaintsEnabled][]: Adds `Timeline` events for every `RenderObject` painted.
+- [debugProfileBuildsEnabled][]: Adiciona eventos `Timeline` para cada `Widget` construído.
+- [debugProfileBuildsEnabledUserWidgets][]: Adiciona eventos `Timeline` para cada `Widget` criado pelo usuário construído.
+- [debugProfileLayoutsEnabled][]: Adiciona eventos `Timeline` para cada layout de `RenderObject`.
+- [debugProfilePaintsEnabled][]: Adiciona eventos `Timeline` para cada `RenderObject` pintado.
 
 [debugProfileBuildsEnabled]: {{site.api}}/flutter/widgets/debugProfileBuildsEnabled.html
 [debugProfileBuildsEnabledUserWidgets]: {{site.api}}/flutter/widgets/debugProfileBuildsEnabledUserWidgets.html
 [debugProfileLayoutsEnabled]: {{site.api}}/flutter/rendering/debugProfileLayoutsEnabled.html
 [debugProfilePaintsEnabled]: {{site.api}}/flutter/rendering/debugProfilePaintsEnabled.html
 
-## Instructions
+## Instruções
 
-1. _[Optional]_ Set any desired tracing flags to true from your app's main method.
-2. Run your Flutter web app in [profile mode][].
-3. Open up the [Chrome DevTools Performance panel][] for your application,
-    and [start recording][] to capture timeline events.
+1. _[Opcional]_ Defina quaisquer flags de rastreamento desejadas como true a partir do método principal do seu aplicativo.
+2. Execute seu aplicativo web Flutter em [modo de profile][].
+3. Abra o [painel de performance do Chrome DevTools][] para seu aplicativo e [inicie a gravação][] para capturar eventos da linha do tempo.
 
-[start recording]: https://developer.chrome.com/docs/devtools/performance/#record
+[inicie a gravação]: https://developer.chrome.com/docs/devtools/performance/#record
 
-[profile mode]: /testing/build-modes#profile
-[Chrome DevTools performance panel]: https://developer.chrome.com/docs/devtools/performance
+[modo de profile]: /testing/build-modes#profile
+[painel de performance do Chrome DevTools]: https://developer.chrome.com/docs/devtools/performance

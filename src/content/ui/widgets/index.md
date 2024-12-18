@@ -1,24 +1,25 @@
 ---
-title: Widget catalog
-description: A catalog of some of Flutter's rich set of widgets.
+ia-translate: true
+title: Catálogo de widgets
+description: Um catálogo de alguns dos ricos conjuntos de widgets do Flutter.
 short-title: Widgets
 toc: false
 ---
 
-Create beautiful apps faster with Flutter's collection of visual, structural,
-platform, and interactive widgets. In addition to browsing widgets by category,
-you can also see all the widgets in the [widget index][].
+Crie aplicativos bonitos mais rapidamente com a coleção de widgets visuais,
+estruturais, de plataforma e interativos do Flutter. Além de navegar pelos widgets
+por categoria, você também pode ver todos os widgets no [índice de widgets][].
 
-## Design systems
+## Sistemas de design
 
-Flutter ships with two design systems as part of the SDK.
-You can find many more designs systems created by the Flutter community
-on [pub.dev]({{site.pub}}), the package repository for Dart and Flutter.
+O Flutter é fornecido com dois sistemas de design como parte do SDK.
+Você pode encontrar muitos outros sistemas de design criados pela comunidade
+Flutter em [pub.dev]({{site.pub}}), o repositório de pacotes para Dart e Flutter.
 
 <div class="card-grid">
 {% assign categories = catalog.index | sort: 'name' -%}
 {% for section in categories %}
-    {%- if section.name == "Cupertino" or section.name == "Material components" -%}
+    {%- if section.name == "Cupertino" or section.name == "Componentes Material" -%}
         <div class="card">
             <div class="card-body">
                 <a href="{{page.url}}{{section.id}}"><header class="card-title">{{section.name}}</header></a>
@@ -29,15 +30,15 @@ on [pub.dev]({{site.pub}}), the package repository for Dart and Flutter.
 {% endfor %}
 </div>
 
-## Base widgets
+## Widgets base
 
-Base widgets support a range of common rendering options
-like input, layout, and text.
+Widgets base suportam uma variedade de opções de renderização comuns como entrada,
+layout e texto.
 
 <div class="card-grid">
 {% assign categories = catalog.index | sort: 'name' -%}
 {% for section in categories %}
-    {%- if section.name != "Cupertino" and section.name != "Material components" and section.name != "Material 2 components" -%}
+    {%- if section.name != "Cupertino" and section.name != "Componentes Material" and section.name != "Componentes Material 2" -%}
         <div class="card">
             <div class="card-body">
                 <a href="{{page.url}}{{section.id}}"><header class="card-title">{{section.name}}</header></a>
@@ -48,44 +49,44 @@ like input, layout, and text.
 {% endfor %}
 </div>
 
-## Widget of the Week
+## Widget da Semana
 
-100+ short, 1-minute explainer videos to
-help you quickly get started with Flutter widgets.
+Mais de 100 vídeos explicativos curtos de 1 minuto para ajudá-lo a começar
+rapidamente com os widgets do Flutter.
 
 <div class="card-grid wide">
     <div class="card">
         <div class="card-body">
-            {% ytEmbed '1z6YP7YmvwA', 'TextStyle - Flutter widget of the week', true, true %}
+            {% ytEmbed '1z6YP7YmvwA', 'TextStyle - Widget do Flutter da semana', true, true %}
         </div>
     </div>
     <div class="card">
         <div class="card-body">
-            {% ytEmbed 'VdkRy3yZiPo', 'flutter_rating_bar - Flutter package of the week', true, true %}
+            {% ytEmbed 'VdkRy3yZiPo', 'flutter_rating_bar - Pacote Flutter da semana', true, true %}
         </div>
     </div>
     <div class="card">
         <div class="card-body">
-            {% ytEmbed 'gYNTcgZVcWw', 'LinearGradient - Flutter widget of the week', true, true %}
+            {% ytEmbed 'gYNTcgZVcWw', 'LinearGradient - Widget do Flutter da semana', true, true %}
         </div>
     </div>
     <div class="card">
         <div class="card-body">
-            {% ytEmbed '-Nny8kzW380', 'AutoComplete - Flutter widget of the week', true, true %}
+            {% ytEmbed '-Nny8kzW380', 'AutoComplete - Widget do Flutter da semana', true, true %}
         </div>
     </div>
     <div class="card">
         <div class="card-body">
-            {% ytEmbed 'y9xchtVTtqQ', 'NavigationRail - Flutter widget of the week', true, true %}
+            {% ytEmbed 'y9xchtVTtqQ', 'NavigationRail - Widget do Flutter da semana', true, true %}
         </div>
     </div>
     <div class="card">
         <div class="card-body">
-            {% ytEmbed 'qjA0JFiPMnQ', 'mason - Flutter package of the week', true, true %}
+            {% ytEmbed 'qjA0JFiPMnQ', 'mason - Pacote Flutter da semana', true, true %}
         </div>
     </div>
 </div>
 
-<a class="btn btn-primary full-width" target="_blank" href="{{site.yt.playlist}}PLjxrf2q8roU23XGwz3Km7sQZFTdB996iG">Watch more widget of the week videos</a>
+<a class="btn btn-primary full-width" target="_blank" href="{{site.yt.playlist}}PLjxrf2q8roU23XGwz3Km7sQZFTdB996iG">Assista mais vídeos do widget da semana</a>
 
 [widget index]: /reference/widgets

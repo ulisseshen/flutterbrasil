@@ -1,6 +1,7 @@
 ---
-title: Create and style a text field
-description: How to implement a text field.
+ia-translate: true
+title: Criar e estilizar um campo de texto
+description: Como implementar um campo de texto.
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
@@ -8,61 +9,61 @@ js:
 
 <?code-excerpt path-base="cookbook/forms/text_input/"?>
 
-Text fields allow users to type text into an app.
-They are used to build forms,
-send messages, create search experiences, and more.
-In this recipe, explore how to create and style text fields.
+Campos de texto permitem que usuários digitem texto em um aplicativo.
+Eles são usados para construir formulários,
+enviar mensagens, criar experiências de pesquisa e muito mais.
+Nesta receita, explore como criar e estilizar campos de texto.
 
-Flutter provides two text fields:
-[`TextField`][] and [`TextFormField`][].
+O Flutter fornece dois campos de texto:
+[`TextField`][] e [`TextFormField`][].
 
 ## `TextField`
 
-[`TextField`][] is the most commonly used text input widget.
+[`TextField`][] é o widget de entrada de texto mais comumente usado.
 
-By default, a `TextField` is decorated with an underline.
-You can add a label, icon, inline hint text, and error text by supplying an
-[`InputDecoration`][] as the [`decoration`][]
-property of the `TextField`.
-To remove the decoration entirely (including the
-underline and the space reserved for the label),
-set the `decoration` to null.
+Por padrão, um `TextField` é decorado com um sublinhado.
+Você pode adicionar um rótulo, ícone, texto de dica embutido e texto de erro, fornecendo um
+[`InputDecoration`][] como a propriedade [`decoration`][]
+do `TextField`.
+Para remover a decoração completamente (incluindo o
+sublinhado e o espaço reservado para o rótulo),
+defina a `decoration` como nula.
 
 <?code-excerpt "lib/main.dart (TextField)" replace="/^child\: //g"?>
 ```dart
 TextField(
   decoration: InputDecoration(
     border: OutlineInputBorder(),
-    hintText: 'Enter a search term',
+    hintText: 'Digite um termo de pesquisa',
   ),
 ),
 ```
 
-To retrieve the value when it changes,
-see the [Handle changes to a text field][] recipe.
+Para recuperar o valor quando ele mudar,
+veja a receita [Lidar com mudanças em um campo de texto][].
 
 ## `TextFormField`
 
-[`TextFormField`][] wraps a `TextField` and integrates it
-with the enclosing [`Form`][].
-This provides additional functionality,
-such as validation and integration with other
-[`FormField`][] widgets.
+[`TextFormField`][] envolve um `TextField` e o integra
+com o [`Form`][] delimitador.
+Isso fornece funcionalidades adicionais,
+como validação e integração com outros
+widgets [`FormField`][].
 
 <?code-excerpt "lib/main.dart (TextFormField)" replace="/^child\: //g"?>
 ```dart
 TextFormField(
   decoration: const InputDecoration(
     border: UnderlineInputBorder(),
-    labelText: 'Enter your username',
+    labelText: 'Digite seu nome de usuário',
   ),
 ),
 ```
 
-## Interactive example
+## Exemplo interativo
 
 <?code-excerpt "lib/main.dart" replace="/^child\: //g"?>
-```dartpad title="Flutter text input hands-on example in DartPad" run="true"
+```dartpad title="Exemplo prático de entrada de texto do Flutter no DartPad" run="true"
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -72,7 +73,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const appTitle = 'Form Styling Demo';
+    const appTitle = 'Demonstração de Estilo de Formulário';
     return MaterialApp(
       title: appTitle,
       home: Scaffold(
@@ -98,7 +99,7 @@ class MyCustomForm extends StatelessWidget {
           child: TextField(
             decoration: InputDecoration(
               border: OutlineInputBorder(),
-              hintText: 'Enter a search term',
+              hintText: 'Digite um termo de pesquisa',
             ),
           ),
         ),
@@ -107,7 +108,7 @@ class MyCustomForm extends StatelessWidget {
           child: TextFormField(
             decoration: const InputDecoration(
               border: UnderlineInputBorder(),
-              labelText: 'Enter your username',
+              labelText: 'Digite seu nome de usuário',
             ),
           ),
         ),
@@ -117,15 +118,15 @@ class MyCustomForm extends StatelessWidget {
 }
 ```
 
-For more information on input validation, see the
-[Building a form with validation][] recipe.
+Para mais informações sobre validação de entrada, veja a receita
+[Construindo um formulário com validação][].
 
 
-[Building a form with validation]: /cookbook/forms/validation/
+[Construindo um formulário com validação]: /cookbook/forms/validation/
 [`decoration`]: {{site.api}}/flutter/material/TextField/decoration.html
 [`Form`]: {{site.api}}/flutter/widgets/Form-class.html
 [`FormField`]: {{site.api}}/flutter/widgets/FormField-class.html
-[Handle changes to a text field]: /cookbook/forms/text-field-changes/
+[Lidar com mudanças em um campo de texto]: /cookbook/forms/text-field-changes/
 [`InputDecoration`]: {{site.api}}/flutter/material/InputDecoration-class.html
 [`TextField`]: {{site.api}}/flutter/material/TextField-class.html
 [`TextFormField`]: {{site.api}}/flutter/material/TextFormField-class.html

@@ -1,7 +1,8 @@
 ---
+ia-translate: true
 layout: toc
-title: Accessibility & internationalization
+title: Acessibilidade e internacionalização
 short-title: a11y & i18n
 description: >
-  Content covering accessibility and internationalization in Flutter apps.
+  Conteúdo que abrange acessibilidade e internacionalização em aplicativos Flutter.
 ---

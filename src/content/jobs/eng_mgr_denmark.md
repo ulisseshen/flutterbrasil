@@ -1,74 +1,56 @@
 ---
-title: Engineering Manager, Dart
-short-title: Open manager role
-description: Learn about and apply to this role!
+ia-translate: true
+title: Gerente de Engenharia, Dart
+short-title: Cargo de gerente aberto
+description: Saiba mais e candidate-se a esta vaga!
 toc: false
 ---
 
-## About the position
+## Sobre a posição
 
-Like Google's own ambitions, the work of a Software Engineer goes beyond just Search. Software Engineering Managers have not only the technical expertise to take on and provide technical leadership to major projects, but also manage a team of Engineers. You not only optimize your own code but make sure Engineers are able to optimize theirs. As a Software Engineering Manager you manage your project goals, contribute to product strategy and help develop your team. Teams work all across the company, in areas such as information retrieval, artificial intelligence, natural language processing, distributed computing, large-scale system design, networking, security, data compression, user interface design; the list goes on and is growing every day. Operating with scale and speed, our exceptional software engineers are just getting started -- and as a manager, you guide the way.
+Assim como as ambições do próprio Google, o trabalho de um Engenheiro de Software vai além da simples Busca. Gerentes de Engenharia de Software não só possuem a expertise técnica para assumir e fornecer liderança técnica a grandes projetos, mas também gerenciar uma equipe de Engenheiros. Você não só otimiza seu próprio código, mas garante que os Engenheiros sejam capazes de otimizar os deles. Como Gerente de Engenharia de Software, você gerencia as metas do seu projeto, contribui para a estratégia do produto e ajuda a desenvolver sua equipe. As equipes trabalham em toda a empresa, em áreas como recuperação de informações, inteligência artificial, processamento de linguagem natural, computação distribuída, design de sistemas em larga escala, redes, segurança, compressão de dados, design de interface de usuário; a lista continua e cresce a cada dia. Operando com escala e velocidade, nossos excepcionais engenheiros de software estão apenas começando - e como gerente, você guia o caminho.
 
-With technical and leadership expertise, you manage engineers across multiple teams and locations, a large product budget and oversee the deployment of large-scale projects across multiple sites internationally.
+Com expertise técnica e de liderança, você gerencia engenheiros em várias equipes e locais, um grande orçamento de produto e supervisiona a implantação de projetos em larga escala em vários sites internacionalmente.
 
-## Our values
+## Nossos valores
 
-### Mentorship
+### Mentoria
 
-Upon joining Google, you will be paired with a formal mentor,
-who will help guide you in the process of ramping up, forging relationships,
-and learning the systems you'll need to do your job.
-Your manager can also help you find mentors who can coach you
-as you navigate your career at Google. In addition to formal mentors,
-we work and train together so that we are always learning from one another,
-and we celebrate and support the career progression of our team members.
+Ao ingressar no Google, você será acompanhado por um mentor formal, que o ajudará no processo de integração, criação de relacionamentos e aprendizado dos sistemas necessários para realizar seu trabalho. Seu gerente também pode ajudá-lo a encontrar mentores que possam orientá-lo enquanto você navega em sua carreira no Google. Além de mentores formais, trabalhamos e treinamos juntos para que estejamos sempre aprendendo uns com os outros, e celebramos e apoiamos a progressão na carreira dos membros de nossa equipe.
 
-### Inclusion
+### Inclusão
 
-Here on the Flutter team and at Google, we embrace our differences
-and are [committed to furthering our culture of inclusion](https://flutter.dev/culture).
-In addition to groups like the [Flutteristas](https://flutteristas.org/),
-[Employee Resource Groups (ERGs)](https://diversity.google/commitments/)
-are employee-initiated networks for supporting underrepresented employees
-and their allies with shared values of creating belonging 
-across their communities and Google.
+Aqui na equipe Flutter e no Google, abraçamos nossas diferenças e estamos [comprometidos em promover nossa cultura de inclusão](https://flutter.dev/culture). Além de grupos como as [Flutteristas](https://flutteristas.org/), os [Grupos de Recursos de Funcionários (ERGs)](https://diversity.google/commitments/) são redes iniciadas por funcionários para apoiar funcionários sub-representados e seus aliados com valores compartilhados de criar pertencimento em suas comunidades e no Google.
 
-### Work-Life Balance
+### Equilíbrio entre vida profissional e pessoal
 
-Our team also puts a high value on work-life balance.
-Striking a healthy balance between your personal and professional life
-is crucial to your happiness and success here, which is why we aren't focused
-on how many hours you spend at work or online. Instead,
-we're happy to offer a flexible schedule so you can have a more productive and
-well-balanced life—both in and outside of work.
+Nossa equipe também valoriza muito o equilíbrio entre vida profissional e pessoal. Alcançar um equilíbrio saudável entre sua vida pessoal e profissional é crucial para sua felicidade e sucesso aqui, e é por isso que não nos concentramos em quantas horas você passa no trabalho ou online. Em vez disso, temos o prazer de oferecer um horário flexível para que você possa ter uma vida mais produtiva e equilibrada — tanto no trabalho quanto fora dele.
 
-## Job location
+## Local de trabalho
 
-Aarhus, Denmark
+Aarhus, Dinamarca
 
-## Job responsibilities
+## Responsabilidades do trabalho
 
-* Set and communicate team priorities that support the broader organization's goals. Align strategy, processes, and decision-making across teams.
-* Set clear expectations with individuals based on their level and role and aligned to the broader organization's goals. Meet regularly with individuals to discuss performance and development and provide feedback and coaching.
-* Develop the mid-term technical outlook and roadmap within the scope of your (often multiple) team(s). Evolve the roadmap to meet anticipated future requirements and infrastructure needs.
-* Design, guide, and vet systems designs within the scope of the broader area, and write product or system development code to solve ambiguous problems.
-* Review code developed by other engineers and provide feedback to ensure best practices (e.g., style guidelines, checking code in, accuracy, testability, and efficiency).
+* Definir e comunicar as prioridades da equipe que apoiam as metas mais amplas da organização. Alinhar estratégia, processos e tomada de decisões entre as equipes.
+* Definir expectativas claras com os indivíduos com base em seu nível e função e alinhadas com os objetivos mais amplos da organização. Reunir-se regularmente com os indivíduos para discutir desempenho e desenvolvimento e fornecer feedback e orientação.
+* Desenvolver a visão técnica de médio prazo e o roteiro dentro do escopo de sua(s) equipe(s) (frequentemente múltiplas). Evoluir o roteiro para atender aos requisitos futuros previstos e às necessidades de infraestrutura.
+* Projetar, orientar e analisar projetos de sistemas dentro do escopo da área mais ampla e escrever código de desenvolvimento de produtos ou sistemas para resolver problemas ambíguos.
+* Revisar o código desenvolvido por outros engenheiros e fornecer feedback para garantir as melhores práticas (por exemplo, diretrizes de estilo, verificação de código, precisão, testabilidade e eficiência).
 
-## Qualifications
+## Qualificações
 
-### Minimum qualifications
+### Qualificações mínimas
 
-* Bachelor’s degree, or equivalent practical experience.
-* 8 years of experience with software development in one or more programming languages (e.g., Python, C, C++, Java, JavaScript).
-* 3 years of experience in a technical leadership role; overseeing 
-  projects, with 2 years of experience in a people management,
-  supervision/team leadership role.
+* Bacharelado ou experiência prática equivalente.
+* 8 anos de experiência com desenvolvimento de software em uma ou mais linguagens de programação (por exemplo, Python, C, C++, Java, JavaScript).
+* 3 anos de experiência em uma função de liderança técnica; supervisionando projetos, com 2 anos de experiência em gestão de pessoas, supervisão/liderança de equipe.
 
-### Preferred qualifications
+### Qualificações preferenciais
 
-* Master's degree or PhD in Computer Science or related technical field.
-* 5 years of experience working in a complex, matrixed organization.
+* Mestrado ou doutorado em Ciência da Computação ou área técnica relacionada.
+* 5 anos de experiência trabalhando em uma organização complexa e matricial.
 
-## To apply
+## Para se candidatar
 
-Please apply via [this Google Careers page](https://www.google.com/about/careers/applications/jobs/results/115475745324573382-engineering-manager).
+Por favor, candidate-se através [desta página do Google Careers](https://www.google.com/about/careers/applications/jobs/results/115475745324573382-engineering-manager).

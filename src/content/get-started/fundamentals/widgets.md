@@ -1,41 +1,40 @@
 ---
+ia-translate: true
 title: Widgets
-description: Learn the basic building blocks of Flutter.
+description: Aprenda os blocos de construção básicos do Flutter.
 prev:
-  title: Intro to Dart
+  title: Introdução ao Dart
   path: /get-started/fundamentals/dart
 next:
   title: Layout
   path: /get-started/fundamentals/layout
 ---
 
-To get started with Flutter,
-you need to have some familiarity with the Dart programming language, which Flutter
-applications are written in, and widgets,
-which are the building blocks of Flutter UI.
-Both will be introduced on this page, but you'll continue
-learning about each throughout this series.
-Additional resources are listed throughout this page,
-but you do not need to be an expert in either
-subject in order to continue.
+Para começar com Flutter, você precisa ter alguma familiaridade
+com a linguagem de programação Dart, na qual os aplicativos
+Flutter são escritos, e com os widgets, que são os blocos de
+construção da UI do Flutter. Ambos serão introduzidos nesta
+página, mas você continuará aprendendo sobre cada um ao longo
+desta série. Recursos adicionais são listados ao longo desta
+página, mas você não precisa ser um especialista em nenhum dos
+assuntos para continuar.
 
 ## Widgets
 
-In regard to Flutter, you'll often hear
-"everything is a widget".
-Widgets are the building blocks of a
-Flutter app's user interface,
-and each widget is an immutable declaration of part
-of the user interface. Widgets are used
-to describe all aspects of a user interface,
-including physical aspects such as text and buttons to
-lay out effects like padding and alignment.
+Em relação ao Flutter, você costuma ouvir
+"tudo é um widget". Widgets são os blocos de
+construção da interface do usuário de um aplicativo
+Flutter, e cada widget é uma declaração imutável de parte
+da interface do usuário. Widgets são usados para
+descrever todos os aspectos de uma interface do usuário,
+incluindo aspectos físicos como texto e botões para
+dispor efeitos como padding e alinhamento.
 
-Widgets form a hierarchy based on composition.
-Each widget nests inside its parent and
-can receive context from the parent.
-This structure carries all the way up to the root
-widget, as this trivial example shows:
+Widgets formam uma hierarquia baseada em composição.
+Cada widget se aninha dentro de seu pai e
+pode receber contexto do pai.
+Essa estrutura segue até o widget raiz,
+como mostra este exemplo trivial:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -48,23 +47,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp( // Root widget
+    return MaterialApp( // Widget Raiz
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('My Home Page'),
+          title: const Text('Minha Página Inicial'),
         ),
         body: Center(
           child: Builder(
             builder: (context) {
               return Column(
                 children: [
-                  const Text('Hello, World!'),
+                  const Text('Olá, Mundo!'),
                   const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () {
-                      print('Click!');
+                      print('Clique!');
                     },
-                    child: const Text('A button'),
+                    child: const Text('Um botão'),
                   ),
                 ],
               );
@@ -77,57 +76,54 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-In the preceding code,
-all instantiated classes are widgets:
+No código anterior, todas as classes instanciadas são widgets:
 `MaterialApp`, `Scaffold`, `AppBar`, `Text`,
-`Center`, `Builder`, `Column`, `SizedBox`, and
+`Center`, `Builder`, `Column`, `SizedBox` e
 `ElevatedButton`.
 
-### Widget composition
+### Composição de Widgets
 
-As mentioned, Flutter emphasizes widgets as a unit
-of composition. Widgets are typically composed of
-many other small, single-purpose widgets that
-combine to produce powerful effects.
+Como mencionado, Flutter enfatiza widgets como uma unidade
+de composição. Os widgets são normalmente compostos por
+muitos outros widgets pequenos e de propósito único que
+se combinam para produzir efeitos poderosos.
 
-There are layout widgets such
-as `Padding`, `Alignment`, `Row`, `Column`,
-and `Grid`. These layout widgets do not have a
-visual representation of their own.
-Instead, their sole purpose is to
-control some aspect of another widget's layout.
-Flutter also includes utility widgets that
-take advantage of this compositional approach.
-For example, `Container`, a commonly used widget,
-is made up of several widgets responsible for layout,
-painting, positioning, and sizing.
-Some widgets have visual representation,
-such as `ElevatedButton` and
-`Text` in the preceding example, as well as
-widgets like `Icon` and `Image`.
+Existem widgets de layout como
+`Padding`, `Alignment`, `Row`, `Column` e `Grid`.
+Esses widgets de layout não têm uma representação
+visual própria. Em vez disso, seu único propósito é
+controlar algum aspecto do layout de outro widget.
+Flutter também inclui widgets utilitários que
+aproveitam essa abordagem composicional.
+Por exemplo, `Container`, um widget comumente usado,
+é composto por vários widgets responsáveis pelo layout,
+pintura, posicionamento e dimensionamento.
+Alguns widgets têm representação visual,
+como `ElevatedButton` e
+`Text` no exemplo anterior, bem como
+widgets como `Icon` e `Image`.
 
-If you run the code from the preceding example,
-Flutter paints a button with the text
-"Hello, World!" centered on the screen, laid out vertically.
-To position these elements, there's a `Center` widget,
-which positions its children in the center
-of the available space, and a `Column` widget,
-which lays out its children vertically one after another.
+Se você executar o código do exemplo anterior,
+o Flutter pinta um botão com o texto
+"Olá, Mundo!" centralizado na tela, disposto verticalmente.
+Para posicionar esses elementos, há um widget `Center`,
+que posiciona seus filhos no centro do espaço disponível,
+e um widget `Column`, que dispõe seus filhos verticalmente,
+um após o outro.
 
-<img src='/assets/images/docs/fwe/simple_composition_example.png' width="100%" alt="A diagram that shows widget composition with a series of lines and nodes.">
+<img src='/assets/images/docs/fwe/simple_composition_example.png' width="100%" alt="Um diagrama que mostra a composição de widgets com uma série de linhas e nós.">
 
+Na [próxima página][] desta série, você aprenderá
+mais sobre layout no Flutter.
 
-In the [next page][] in this series, you will
-learn more about layout in Flutter.
+### Construindo widgets
 
-### Building widgets
-
-To create a user interface in Flutter,
-you override the [`build`][] method on widget objects.
-All widgets must have a build method,
-and it must return another widget. For example,
-if you want to add text to the screen with some padding,
-you could write it like this:
+Para criar uma interface do usuário no Flutter,
+você sobrescreve o método [`build`][] em objetos widget.
+Todos os widgets devem ter um método `build`,
+e ele deve retornar outro widget. Por exemplo,
+se você quiser adicionar texto à tela com algum padding,
+você pode escrevê-lo assim:
 
 ```dart
 class PaddedText extends StatelessWidget {
@@ -137,50 +133,50 @@ class PaddedText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: const Text('Hello, World!'),
+      child: const Text('Olá, Mundo!'),
     );
   }
 }
 ```
 
-The framework calls the `build` method when this
-widget is created and when the dependencies of this
-widget change (such as state that is passed into the widget).
-This method can potentially be called in every frame
-and should not have any side effects beyond
-building a widget.
-To learn more about how Flutter renders widgets,
-check out the [Flutter architectural overview][].
+O framework chama o método `build` quando este
+widget é criado e quando as dependências deste
+widget mudam (como o estado que é passado para o widget).
+Este método pode ser potencialmente chamado em cada frame
+e não deve ter nenhum efeito colateral além de
+construir um widget.
+Para saber mais sobre como o Flutter renderiza widgets,
+confira a [visão geral arquitetônica do Flutter][].
 
-### Widget state
+### Estado do widget
 
-The framework introduces two major classes of widget:
-stateful and stateless widgets.
+O framework introduz duas classes principais de widget:
+widgets com estado e widgets sem estado.
 
-Widgets that have no mutable state
-(they have no class properties
-that change over time) subclass [`StatelessWidget`][].
-Many built-in widgets are stateless,
-such as `Padding`, `Text`, and `Icon`.
-When you create your own widgets,
-you'll create `Stateless` widgets most of the time.
+Widgets que não têm estado mutável
+(eles não têm propriedades de classe
+que mudam ao longo do tempo) são subclasses de [`StatelessWidget`][].
+Muitos widgets integrados são sem estado,
+como `Padding`, `Text` e `Icon`.
+Quando você cria seus próprios widgets,
+você criará widgets `Stateless` na maioria das vezes.
 
-On the other hand,
-if the unique characteristics of a widget need to change
-based on user interaction or other factors,
-that widget is stateful.
-For example, if a widget has a counter that
-increments whenever the user taps a button,
-then the value of the counter is the state for that widget.
-When that value changes, the widget needs to be
-rebuilt to update its part of the UI.
-These widgets subclass [`StatefulWidget`][],
-and (because the widget itself is immutable)
-they store mutable state in a separate class that
-subclasses [`State`][].
-`StatefulWidgets` don't have a `build` method;
-instead, their user interface is built through
-their `State` object, as shown in the example below.
+Por outro lado,
+se as características únicas de um widget precisam mudar
+com base na interação do usuário ou outros fatores,
+esse widget é com estado.
+Por exemplo, se um widget tem um contador que
+incrementa sempre que o usuário toca em um botão,
+então o valor do contador é o estado para esse widget.
+Quando esse valor muda, o widget precisa ser
+reconstruído para atualizar sua parte da UI.
+Esses widgets são subclasses de [`StatefulWidget`][],
+e (porque o próprio widget é imutável) eles armazenam
+o estado mutável em uma classe separada que
+é subclasse de [`State`][].
+`StatefulWidgets` não têm um método `build`;
+em vez disso, sua interface do usuário é construída por meio
+de seu objeto `State`, como mostrado no exemplo abaixo.
 
 ```dart
 class CounterWidget extends StatefulWidget {
@@ -204,70 +200,68 @@ class _CounterWidgetState extends State<CounterWidget> {
 }
 ```
 
-Whenever you mutate a `State` object
-(for example, by incrementing the counter),
-you must call [`setState`][] to signal the framework
-to update the user interface by
-calling the `State`'s `build` method again.
+Sempre que você altera um objeto `State`
+(por exemplo, incrementando o contador),
+você deve chamar [`setState`][] para sinalizar o framework
+para atualizar a interface do usuário chamando
+o método `build` do `State` novamente.
 
-Separating state from widget objects
-lets other widgets treat both
-stateless and stateful widgets in exactly the same way,
-without being concerned about losing state.
-Instead of needing to hold on to
-a child to preserve its state,
-the parent can create a new instance of the child
-at any time without losing
-the child's persistent state.
-The framework does all the work of finding and
-reusing existing state objects when appropriate.
+Separar o estado dos objetos widget permite que outros
+widgets tratem widgets sem estado e com estado exatamente
+da mesma forma, sem se preocupar em perder o estado.
+Em vez de precisar manter um filho para preservar seu
+estado, o pai pode criar uma nova instância do filho
+a qualquer momento sem perder
+o estado persistente do filho.
+O framework faz todo o trabalho de encontrar e
+reutilizar objetos de estado existentes quando apropriado.
 
-There's more information about
-[`StatefulWidget`][] objects later in this
-series, in the [state management lesson][].
+Há mais informações sobre objetos
+[`StatefulWidget`][] mais adiante nesta
+série, na [lição de gerenciamento de estado][].
 
-## Important widgets to know
+## Widgets importantes para conhecer
 
-The Flutter SDK includes many built-in widgets,
-from the smallest pieces of UI, like `Text`,
-to layout widgets, and widgets that style
-your application. The following widgets are
-the most important to be aware of as you move onto the
-next lesson in the learning pathway.
+O SDK do Flutter inclui muitos widgets integrados,
+desde as menores partes da UI, como `Text`,
+até widgets de layout e widgets que estilizam
+seu aplicativo. Os seguintes widgets são os mais
+importantes para estar ciente ao passar para a
+próxima lição no caminho de aprendizado.
 
 * [`Container`][]
 * [`Text`][]
 * [`Scaffold`][]
 * [`AppBar`][]
-* [`Row`][] and [`Column`][]
+* [`Row`][] e [`Column`][]
 * [`ElevatedButton`][]
 * [`Image`][]
 * [`Icon`][]
 
-## Next: Layouts
+## Próximo: Layouts
 
-This page is an introduction to foundational
-Flutter concepts, like widgets,
-and helps you become familiar with reading
-Flutter and Dart code. It's okay if you don't
-feel clear on every topic you encountered, as every page after
-this is a deep-dive on specific topics.
-In the next section, you'll start building more
-interesting UIs by creating more complex layouts in Flutter.
+Esta página é uma introdução aos conceitos
+fundamentais do Flutter, como widgets, e ajuda você a se
+familiarizar com a leitura do código Flutter e Dart.
+Tudo bem se você não estiver claro sobre todos os tópicos que
+encontrou, pois cada página após esta é um mergulho profundo
+em tópicos específicos. Na próxima seção, você começará a
+construir UIs mais interessantes criando layouts mais
+complexos no Flutter.
 
-If you'd like practice with the
-information you learned on this page,
-you can read [Building user interfaces with Flutter][].
+Se você quiser praticar as informações que
+aprendeu nesta página, você pode ler [Construindo
+interfaces de usuário com Flutter][].
 
-[Building user interfaces with Flutter]: /ui
+[Construindo interfaces de usuário com Flutter]: /ui
 [`build`]: {{site.api}}/flutter/widgets/StatelessWidget/build.html
-[next page]: /get-started/fundamentals/layout
-[Flutter architectural overview]: /resources/architectural-overview
+[próxima página]: /get-started/fundamentals/layout
+[visão geral arquitetônica do Flutter]: /resources/architectural-overview
 [`StatelessWidget`]: {{site.api}}/flutter/widgets/StatelessWidget-class.html
 [`StatefulWidget`]: {{site.api}}/flutter/widgets/StatefulWidget-class.html
 [`State`]: {{site.api}}/flutter/widgets/State-class.html
 [`setState`]: {{site.api}}/flutter/widgets/State/setState.html
-[state management lesson]: /get-started/fundamentals/state-management
+[lição de gerenciamento de estado]: /get-started/fundamentals/state-management
 [`AppBar`]: {{site.api}}/flutter/material/AppBar-class.html
 [`Column`]: {{site.api}}/flutter/widgets/Column-class.html
 [`Container`]: {{site.api}}/flutter/widgets/Container-class.html
@@ -280,7 +274,7 @@ you can read [Building user interfaces with Flutter][].
 
 ## Feedback
 
-As this section of the website is evolving,
-we [welcome your feedback][]!
+Como esta seção do site está em evolução,
+nós [agradecemos seu feedback][]!
 
-[welcome your feedback]: https://google.qualtrics.com/jfe/form/SV_6A9KxXR7XmMrNsy?page="widgets"
+[agradecemos seu feedback]: https://google.qualtrics.com/jfe/form/SV_6A9KxXR7XmMrNsy?page="widgets"

@@ -1,226 +1,149 @@
 ---
-title: Introduction to animations
-short-title: Animations
-description: How to perform animations in Flutter.
+ia-translate: true
+title: Introdução a animações
+short-title: Animações
+description: Como realizar animações no Flutter.
 ---
 
-Well-designed animations make a UI feel more intuitive,
-contribute to the slick look and feel of a polished app,
-and improve the user experience.
-Flutter's animation support makes it easy to implement a variety of
-animation types. Many widgets, especially [Material widgets][],
-come with the standard motion effects defined in their design spec,
-but it's also possible to customize these effects.
+Animações bem projetadas tornam uma UI mais intuitiva, contribuem para a aparência elegante de um aplicativo refinado e melhoram a experiência do usuário. O suporte a animações do Flutter facilita a implementação de diversos tipos de animação. Muitos widgets, especialmente [widgets Material][], vêm com os efeitos de movimento padrão definidos em sua especificação de design, mas também é possível personalizar esses efeitos.
 
-## Choosing an approach
+## Escolhendo uma abordagem
 
-There are different approaches you can take when creating
-animations in Flutter. Which approach is right for you?
-To help you decide, check out the video,
-[How to choose which Flutter Animation Widget is right for you?][]
-(Also published as a [_companion article_][article1].)
+Existem diferentes abordagens que você pode adotar ao criar animações no Flutter. Qual abordagem é a certa para você? Para ajudá-lo a decidir, confira o vídeo, [Como escolher qual Widget de Animação do Flutter é o certo para você?][] (Também publicado como um [_artigo complementar_][article1].)
 
-{% ytEmbed 'GXIJJkq_H8g', 'How to choose which Flutter animation widget is right for your use case' %}
+{% ytEmbed 'GXIJJkq_H8g', 'Como escolher qual widget de animação Flutter é o certo para seu caso de uso' %}
 
-(To dive deeper into the decision process,
-watch the [Animations in Flutter done right][] video,
-presented at Flutter Europe.)
+(Para se aprofundar no processo de decisão, assista ao vídeo [Animações no Flutter da maneira certa][], apresentado no Flutter Europe.)
 
-As shown in the video, the following
-decision tree helps you decide what approach
-to use when implementing a Flutter animation:
+Como mostrado no vídeo, a seguinte árvore de decisão ajuda você a decidir qual abordagem usar ao implementar uma animação Flutter:
 
 <img src='/assets/images/docs/ui/animations/animation-decision-tree.png'
-    alt="The animation decision tree" class="mw-100">
+    alt="A árvore de decisão da animação" class="mw-100">
 
-If a pre-packaged implicit animation (the easiest animation
-to implement) suits your needs, watch
-[Animation basics with implicit animations][].
-(Also published as a [_companion article_][article2].)
+Se uma animação implícita pré-empacotada (a animação mais fácil de implementar) atender às suas necessidades, assista a [Noções básicas de animação com animações implícitas][]. (Também publicado como um [_artigo complementar_][article2].)
 
-{% ytEmbed 'IVTjpW3W33s', 'Flutter implicit animation basics' %}
+{% ytEmbed 'IVTjpW3W33s', 'Noções básicas de animação implícita do Flutter' %}
 
-To create a custom implicit animation, watch
-[Creating your own custom implicit animations with TweenAnimationBuilder][].
-(Also published as a [_companion article_][article3].)
+Para criar uma animação implícita personalizada, assista a [Criando suas próprias animações implícitas personalizadas com TweenAnimationBuilder][]. (Também publicado como um [_artigo complementar_][article3].)
 
-{% ytEmbed '6KiPEqzJIKQ', 'Create custom implicit animations with TweenAnimationBuilder' %}
+{% ytEmbed '6KiPEqzJIKQ', 'Crie animações implícitas personalizadas com TweenAnimationBuilder' %}
 
-To create an explicit animation (where you control the animation,
-rather than letting the framework control it), perhaps
-you can use one of the built-in explicit animations classes.
-For more information, watch
-[Making your first directional animations with
-built-in explicit animations][].
-(Also published as a [_companion article_][article4].)
+Para criar uma animação explícita (onde você controla a animação, em vez de deixar o framework controlá-la), talvez você possa usar uma das classes de animações explícitas integradas. Para mais informações, assista [Fazendo suas primeiras animações direcionais com animações explícitas integradas][]. (Também publicado como um [_artigo complementar_][article4].)
 
-{% ytEmbed 'CunyH6unILQ', 'Making your first directional animations with built-in explicit animations', true %}
+{% ytEmbed 'CunyH6unILQ', 'Fazendo suas primeiras animações direcionais com animações explícitas integradas', true %}
 
-If you need to build an explicit animation from scratch, watch
-[Creating custom explicit animations with
-AnimatedBuilder and AnimatedWidget][].
-(Also published as a [_companion article_][article5].)
+Se você precisar construir uma animação explícita do zero, assista a [Criando animações explícitas personalizadas com AnimatedBuilder e AnimatedWidget][]. (Também publicado como um [_artigo complementar_][article5].)
 
-{% ytEmbed 'fneC7t4R_B0', 'Creating custom explicit animations with AnimatedBuilder and AnimatedWidget', true %}
+{% ytEmbed 'fneC7t4R_B0', 'Criando animações explícitas personalizadas com AnimatedBuilder e AnimatedWidget', true %}
 
-For a deeper understanding of just how animations work in Flutter, watch
-[Animation deep dive][].
-(Also published as a [_companion article_][article6].)
+Para uma compreensão mais profunda de como as animações funcionam no Flutter, assista a [Animação em detalhes][]. (Também publicado como um [_artigo complementar_][article6].)
 
-{% ytEmbed 'PbcILiN8rbo', 'Take a deep dive into Flutter animation', true %}
+{% ytEmbed 'PbcILiN8rbo', 'Mergulhe na animação do Flutter', true %}
 
-## Codelabs, tutorials, and articles
+## Codelabs, tutoriais e artigos
 
-The following resources are a good place to start learning
-the Flutter animation framework. Each of these documents
-shows how to write animation code.
+Os recursos a seguir são um bom ponto de partida para aprender sobre o framework de animação do Flutter. Cada um desses documentos mostra como escrever código de animação.
 
-* [Implicit animations codelab][]<br>
-  Covers how to use implicit animations
-  using step-by-step instructions and interactive examples.
+* [Codelab de animações implícitas][]<br>
+  Cobre como usar animações implícitas usando instruções passo a passo e exemplos interativos.
 
-* [Animations tutorial][]<br>
-  Explains the fundamental classes in the Flutter animation package
-  (controllers, `Animatable`, curves, listeners, builders),
-  as it guides you through a progression of tween animations using
-  different aspects of the animation APIs. This tutorial shows
-  how to create your own custom explicit animations.
+* [Tutorial de animações][]<br>
+  Explica as classes fundamentais no pacote de animação do Flutter (controladores, `Animatable`, curvas, listeners, builders), enquanto orienta você por uma progressão de animações tween usando diferentes aspectos das APIs de animação. Este tutorial mostra como criar suas próprias animações explícitas personalizadas.
 
-* [Zero to One with Flutter, part 1][] and [part 2][]<br>
-  Medium articles showing how to create an animated chart using tweening.
+* [Do Zero ao Um com Flutter, parte 1][] e [parte 2][]<br>
+  Artigos do Medium mostrando como criar um gráfico animado usando tweening.
 
-* [Write your first Flutter app on the web][]<br>
-  Codelab demonstrating how to create a form
-  that uses animation to show the user's progress
-  as they fill in the fields.
+* [Escreva seu primeiro aplicativo Flutter na web][]<br>
+  Codelab demonstrando como criar um formulário que usa animação para mostrar o progresso do usuário ao preencher os campos.
 
-## Animation types
+## Tipos de animação
 
-Generally, animations are either tween- or physics-based.
-The following sections explain what these terms mean,
-and point you to resources where you can learn more.
+Geralmente, as animações são baseadas em tween ou em física. As seções a seguir explicam o que esses termos significam e apontam para recursos onde você pode aprender mais.
 
-### Tween animation
+### Animação Tween
 
-Short for _in-betweening_. In a tween animation, the beginning
-and ending points are defined, as well as a timeline, and a curve
-that defines the timing and speed of the transition.
-The framework calculates how to transition from the beginning point
-to the end point.
+Abreviatura de _in-betweening_. Em uma animação tween, os pontos inicial e final são definidos, bem como uma linha do tempo e uma curva que define o tempo e a velocidade da transição. O framework calcula como fazer a transição do ponto inicial para o ponto final.
 
-The documents listed above, such as the
-[Animations tutorial][], are not specifically
-about tweening, but they use tweens in their examples.
+Os documentos listados acima, como o [Tutorial de animações][], não são especificamente sobre tweening, mas usam tweens em seus exemplos.
 
-### Physics-based animation
+### Animação baseada em física
 
-In physics-based animation, motion is modeled to resemble real-world
-behavior. When you toss a ball, for example, where and when it lands
-depends on how fast it was tossed and how far it was from the ground.
-Similarly, dropping a ball attached to a spring falls
-(and bounces) differently than dropping a ball attached to a string.
+Na animação baseada em física, o movimento é modelado para se assemelhar ao comportamento do mundo real. Quando você joga uma bola, por exemplo, onde e quando ela aterrissa depende da rapidez com que foi lançada e da distância do chão. Da mesma forma, deixar cair uma bola presa a uma mola cai (e salta) de maneira diferente de deixar cair uma bola presa a uma corda.
 
-* [Animate a widget using a physics simulation][]<br>
-  A recipe in the animations section of the Flutter cookbook.
+* [Anime um widget usando uma simulação física][]<br>
+  Uma receita na seção de animações do cookbook do Flutter.
 
-* Also see the API documentation for
-  [`AnimationController.animateWith`][] and
-  [`SpringSimulation`][].
+* Consulte também a documentação da API para [`AnimationController.animateWith`][] e [`SpringSimulation`][].
 
-## Pre-canned animations
+## Animações pré-fabricadas
 
-If you are using Material widgets, you might check
-out the [animations package][] available on pub.dev.
-This package contains pre-built animations for
-the following commonly used patterns:
-`Container` transforms, shared axis transitions,
-fade through transitions, and fade transitions.
+Se você estiver usando widgets Material, pode consultar o [pacote animations][] disponível no pub.dev. Este pacote contém animações pré-construídas para os seguintes padrões comumente usados: transformações `Container`, transições de eixo compartilhado, transições de fade through e transições de fade.
 
-## Common animation patterns
+## Padrões de animação comuns
 
-Most UX or motion designers find that certain
-animation patterns are used repeatedly when designing a UI.
-This section lists some of the commonly
-used animation patterns, and tells you where to learn more.
+A maioria dos designers de UX ou motion percebe que certos padrões de animação são usados repetidamente ao projetar uma UI. Esta seção lista alguns dos padrões de animação comumente usados e informa onde aprender mais.
 
-### Animated list or grid
+### Lista ou grade animada
 
-This pattern involves animating the addition or removal of
-elements from a list or grid.
+Esse padrão envolve animar a adição ou remoção de elementos de uma lista ou grade.
 
-* [`AnimatedList` example][]<br>
-  This demo, from the [Sample app catalog][], shows how to
-  animate adding an element to a list, or removing a selected element.
-  The internal Dart list is synced as the user modifies the list using
-  the plus (+) and minus (-) buttons.
+* Exemplo de [`AnimatedList`][]:<br>
+  Esta demonstração, do [Catálogo de aplicativos de amostra][], mostra como animar a adição de um elemento a uma lista ou remover um elemento selecionado. A lista interna do Dart é sincronizada à medida que o usuário modifica a lista usando os botões de mais (+) e menos (-).
 
-### Shared element transition
+### Transição de elemento compartilhado
 
-In this pattern, the user selects an element&mdash;often an
-image&mdash;from the page, and the UI animates the selected element
-to a new page with more detail. In Flutter, you can easily implement
-shared element transitions between routes (pages)
-using the `Hero` widget.
+Nesse padrão, o usuário seleciona um elemento — geralmente uma imagem — na página, e a UI anima o elemento selecionado para uma nova página com mais detalhes. No Flutter, você pode implementar facilmente transições de elementos compartilhados entre rotas (páginas) usando o widget `Hero`.
 
-* [Hero animations][]
-  How to create two styles of Hero animations:
-  * The hero flies from one page to another while changing position
-    and size.
-  * The hero's boundary changes shape, from a circle to a square,
-    as its flies from one page to another.
+* [Animações Hero][]
+  Como criar dois estilos de animações Hero:
+  * O hero voa de uma página para outra enquanto muda de posição e tamanho.
+  * O limite do hero muda de forma, de um círculo para um quadrado, enquanto ele voa de uma página para outra.
 
-* Also see the API documentation for the
-  [`Hero`][], [`Navigator`][], and [`PageRoute`][] classes.
+* Consulte também a documentação da API para as classes [`Hero`][], [`Navigator`][] e [`PageRoute`][].
 
-### Staggered animation
+### Animação escalonada
 
-Animations that are broken into smaller motions,
-where some of the motion is delayed.
-The smaller animations might be sequential,
-or might partially or completely overlap.
+Animações que são divididas em movimentos menores, onde parte do movimento é atrasada. As animações menores podem ser sequenciais ou podem se sobrepor parcial ou completamente.
 
-* [Staggered Animations][]
+* [Animações escalonadas][]
 
 {% comment %}
-  Save so I can remember how to add it back later.
-  <img src="/assets/images/docs/ic_new_releases_black_24px.svg" alt="this doc is new!"> NEW<br>
+  Salve para que eu possa lembrar como adicioná-lo de volta mais tarde.
+  <img src="/assets/images/docs/ic_new_releases_black_24px.svg" alt="este documento é novo!"> NOVO<br>
 {% endcomment -%}
 
-## Other resources
+## Outros recursos
 
-Learn more about Flutter animations at the following links:
+Saiba mais sobre animações do Flutter nos links a seguir:
 
-* [Animation samples][] from the [Sample app catalog][].
+* [Amostras de animação][] do [Catálogo de aplicativos de amostra][].
 
-* [Animation recipes][] from the Flutter cookbook.
+* [Receitas de animação][] do cookbook do Flutter.
 
-* [Animation videos][] from the Flutter YouTube channel.
+* [Vídeos de animação][] do canal do Flutter no YouTube.
 
-* [Animations: overview][]<br>
-  A look at some of the major classes in the
-  animations library, and Flutter's animation architecture.
+* [Animações: visão geral][]<br>
+  Uma olhada em algumas das principais classes na biblioteca de animações e na arquitetura de animação do Flutter.
 
-* [Animation and motion widgets][]<br>
-  A catalog of some of the animation widgets
-  provided in the Flutter APIs.
+* [Widgets de animação e movimento][]<br>
+  Um catálogo de alguns dos widgets de animação fornecidos nas APIs do Flutter.
 
-* The [animation library][] in the [Flutter API documentation][]<br>
-  The animation API for the Flutter framework. This link
-  takes you to a technical overview page for the library.
+* A [biblioteca de animação][] na [documentação da API do Flutter][]<br>
+  A API de animação para o framework Flutter. Este link leva você a uma página de visão geral técnica da biblioteca.
 
-[Animate a widget using a physics simulation]: /cookbook/animation/physics-simulation
-[`AnimatedList` example]: https://flutter.github.io/samples/animations.html
-[Animation and motion widgets]: /ui/widgets/animation
-[Animation basics with implicit animations]: {{site.yt.watch}}?v=IVTjpW3W33s&list=PLjxrf2q8roU2v6UqYlt_KPaXlnjbYySua&index=1
-[Animation deep dive]: {{site.yt.watch}}?v=PbcILiN8rbo&list=PLjxrf2q8roU2v6UqYlt_KPaXlnjbYySua&index=5
-[animation library]: {{site.api}}/flutter/animation/animation-library.html
-[Animation recipes]: /cookbook/animation
-[Animation samples]: {{site.repo.samples}}/tree/main/animations#animation-samples
-[Animation videos]: {{site.social.youtube}}/search?query=animation
-[Animations in Flutter done right]: {{site.yt.watch}}?v=wnARLByOtKA&t=3s
-[Animations: overview]: /ui/animations/overview
-[animations package]: {{site.pub}}/packages/animations
-[Animations tutorial]: /ui/animations/tutorial
+[Anime um widget usando uma simulação física]: /cookbook/animation/physics-simulation
+[Exemplo de `AnimatedList`]: https://flutter.github.io/samples/animations.html
+[Widgets de animação e movimento]: /ui/widgets/animation
+[Noções básicas de animação com animações implícitas]: {{site.yt.watch}}?v=IVTjpW3W33s&list=PLjxrf2q8roU2v6UqYlt_KPaXlnjbYySua&index=1
+[Animação em detalhes]: {{site.yt.watch}}?v=PbcILiN8rbo&list=PLjxrf2q8roU2v6UqYlt_KPaXlnjbYySua&index=5
+[biblioteca de animação]: {{site.api}}/flutter/animation/animation-library.html
+[Receitas de animação]: /cookbook/animation
+[Amostras de animação]: {{site.repo.samples}}/tree/main/animations#animation-samples
+[Vídeos de animação]: {{site.social.youtube}}/search?query=animation
+[Animações no Flutter da maneira certa]: {{site.yt.watch}}?v=wnARLByOtKA&t=3s
+[Animações: visão geral]: /ui/animations/overview
+[pacote animations]: {{site.pub}}/packages/animations
+[Tutorial de animações]: /ui/animations/tutorial
 [`AnimationController.animateWith`]: {{site.api}}/flutter/animation/AnimationController/animateWith.html
 [article1]: {{site.flutter-medium}}/how-to-choose-which-flutter-animation-widget-is-right-for-you-79ecfb7e72b5
 [article2]: {{site.flutter-medium}}/flutter-animation-basics-with-implicit-animations-95db481c5916
@@ -228,20 +151,21 @@ Learn more about Flutter animations at the following links:
 [article4]: {{site.flutter-medium}}/directional-animations-with-built-in-explicit-animations-3e7c5e6fbbd7
 [article5]: {{site.flutter-medium}}/when-should-i-useanimatedbuilder-or-animatedwidget-57ecae0959e8
 [article6]: {{site.flutter-medium}}/animation-deep-dive-39d3ffea111f
-[Creating your own custom implicit animations with TweenAnimationBuilder]: {{site.yt.watch}}?v=6KiPEqzJIKQ&feature=youtu.be
-[Creating custom explicit animations with AnimatedBuilder and AnimatedWidget]: {{site.yt.watch}}?v=fneC7t4R_B0&list=PLjxrf2q8roU2v6UqYlt_KPaXlnjbYySua&index=4
-[Flutter API documentation]: {{site.api}}
+[Criando suas próprias animações implícitas personalizadas com TweenAnimationBuilder]: {{site.yt.watch}}?v=6KiPEqzJIKQ&feature=youtu.be
+[Criando animações explícitas personalizadas com AnimatedBuilder e AnimatedWidget]: {{site.yt.watch}}?v=fneC7t4R_B0&list=PLjxrf2q8roU2v6UqYlt_KPaXlnjbYySua&index=4
+[documentação da API do Flutter]: {{site.api}}
 [`Hero`]: {{site.api}}/flutter/widgets/Hero-class.html
-[Hero animations]: /ui/animations/hero-animations
-[How to choose which Flutter Animation Widget is right for you?]: {{site.yt.watch}}?v=GXIJJkq_H8g
-[Implicit animations codelab]: /codelabs/implicit-animations
-[Making your first directional animations with built-in explicit animations]: {{site.yt.watch}}?v=CunyH6unILQ&list=PLjxrf2q8roU2v6UqYlt_KPaXlnjbYySua&index=3
-[Material widgets]: /ui/widgets/material
+[Animações Hero]: /ui/animations/hero-animations
+[Como escolher qual Widget de Animação do Flutter é o certo para você?]: {{site.yt.watch}}?v=GXIJJkq_H8g
+[Codelab de animações implícitas]: /codelabs/implicit-animations
+[Fazendo suas primeiras animações direcionais com animações explícitas integradas]: {{site.yt.watch}}?v=CunyH6unILQ&list=PLjxrf2q8roU2v6UqYlt_KPaXlnjbYySua&index=3
+[widgets Material]: /ui/widgets/material
 [`Navigator`]: {{site.api}}/flutter/widgets/Navigator-class.html
 [`PageRoute`]: {{site.api}}/flutter/widgets/PageRoute-class.html
-[part 2]: {{site.medium}}/dartlang/zero-to-one-with-flutter-part-two-5aa2f06655cb
-[Sample app catalog]: https://flutter.github.io/samples
+[parte 2]: {{site.medium}}/dartlang/zero-to-one-with-flutter-part-two-5aa2f06655cb
+[Catálogo de aplicativos de amostra]: https://flutter.github.io/samples
 [`SpringSimulation`]: {{site.api}}/flutter/physics/SpringSimulation-class.html
-[Staggered Animations]: /ui/animations/staggered-animations
-[Write your first Flutter app on the web]: /get-started/codelab-web
-[Zero to One with Flutter, part 1]: {{site.medium}}/dartlang/zero-to-one-with-flutter-43b13fd7b354
+[Animações escalonadas]: /ui/animations/staggered-animations
+[Escreva seu primeiro aplicativo Flutter na web]: /get-started/codelab-web
+[Do Zero ao Um com Flutter, parte 1]: {{site.medium}}/dartlang/zero-to-one-with-flutter-43b13fd7b354
+

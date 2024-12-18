@@ -1,107 +1,107 @@
 ---
+ia-translate: true
 title: SafeArea & MediaQuery
 description: >-
-  Learn how to use SafeArea and MediaQuery
-  to create an adaptive app.
+  Aprenda como usar SafeArea e MediaQuery para criar um aplicativo adaptável.
 ---
 
-This page discusses how and when to use the
-`SafeArea` and `MediaQuery` widgets.
+Esta página discute como e quando usar os widgets
+`SafeArea` e `MediaQuery`.
 
 ## SafeArea
 
-When running your app on the latest devices,
-you might encounter bits of the UI being blocked
-by cutouts on the device's screen.
-You can fix this with the [`SafeArea`][] widget,
-which insets its child widget to avoid intrusions
-(like notches and camera cutouts),
-as well as operating system UI
-(such as the status bar on Android),
-or by rounded corners of the physical display.
+Ao executar seu aplicativo nos dispositivos mais recentes,
+você pode encontrar partes da UI sendo bloqueadas
+por recortes na tela do dispositivo.
+Você pode corrigir isso com o widget [`SafeArea`][],
+que insere seu widget filho para evitar intrusões
+(como entalhes e recortes de câmera),
+bem como a interface do usuário do sistema operacional
+(como a barra de status no Android),
+ou pelos cantos arredondados da tela física.
 
-If you don't want this behavior,
-the `SafeArea` widget allows you to
-disable padding on any of its four sides.
-By default, all four sides are enabled.
+Se você não quiser esse comportamento,
+o widget `SafeArea` permite que você
+desabilite o preenchimento em qualquer um de seus quatro lados.
+Por padrão, todos os quatro lados estão habilitados.
 
-It's generally recommended to wrap the body of a
-`Scaffold` widget in `SafeArea` as a good place to start,
-but you don't always need to put it this high in the
-`Widget` tree.
+Geralmente, é recomendado envolver o corpo de um
+widget `Scaffold` em `SafeArea` como um bom ponto de partida,
+mas você nem sempre precisa colocá-lo tão alto na
+árvore de `Widget`.
 
-For example, if you purposefully want your app to stretch
-under the cutouts, you can move the `SafeArea` to wrap
-whatever content makes sense,
-and let the rest of the app take up the full screen.
+Por exemplo, se você deseja propositalmente que seu aplicativo se estenda
+sob os recortes, você pode mover o `SafeArea` para envolver
+qualquer conteúdo que faça sentido,
+e deixar o resto do aplicativo ocupar a tela inteira.
 
-Using `SafeArea` ensures that your app content won't be
-cut off by physical display features or operating system UI,
-and sets your app up for success even as new devices with
-different shapes and styles of cutouts enter the market.
+Usar `SafeArea` garante que o conteúdo do seu aplicativo não seja
+cortado por recursos físicos da tela ou interface do usuário do sistema operacional,
+e prepara seu aplicativo para o sucesso mesmo quando novos dispositivos com
+diferentes formatos e estilos de recortes entrarem no mercado.
 
-How does `SafeArea` do so much in a small amount of code?
-Behind the scenes it uses the `MediaQuery` object.
+Como o `SafeArea` faz tanto em uma pequena quantidade de código?
+Nos bastidores, ele usa o objeto `MediaQuery`.
 
 [`SafeArea`]: {{site.api}}/flutter/widgets/SafeArea-class.html
 
 ## MediaQuery
 
-As discussed in the [SafeArea](#safearea) section,
-`MediaQuery` is a powerful widget for creating
-adaptive apps. Sometimes you'll use `MediaQuery`
-directly, and sometimes you'll use `SafeArea`,
-which uses `MediaQuery` behind the scenes.
+Como discutido na seção [SafeArea](#safearea),
+`MediaQuery` é um widget poderoso para criar
+aplicativos adaptáveis. Às vezes, você usará `MediaQuery`
+diretamente e, às vezes, usará `SafeArea`,
+que usa `MediaQuery` nos bastidores.
 
-`MediaQuery` provides lots of information,
-including the app's current window size.
-It exposes accessibility settings like high contrast mode
-and text scaling, or if the user is using an accessibility
-service like TalkBack or VoiceOver.
-`MediaQuery` also contains info about the features
-of your device's display, such as having a hinge or a fold.
+`MediaQuery` fornece muitas informações,
+incluindo o tamanho atual da janela do aplicativo.
+Ele expõe configurações de acessibilidade como modo de alto contraste
+e dimensionamento de texto, ou se o usuário está usando um serviço de acessibilidade
+como TalkBack ou VoiceOver.
+`MediaQuery` também contém informações sobre os recursos
+da tela do seu dispositivo, como ter uma dobradiça ou uma dobra.
 
-`SafeArea` uses the data from `MediaQuery` to figure out
-how much to inset its child `Widget`.
-Specifically, it uses the `MediaQuery` padding property,
-which is basically the amount of the display that's
-partially obscured by system UI, display notches, or status bar. 
+`SafeArea` usa os dados de `MediaQuery` para descobrir
+quanto inserir seu `Widget` filho.
+Especificamente, ele usa a propriedade de padding do `MediaQuery`,
+que é basicamente a quantidade da tela que está
+parcialmente obscurecida pela UI do sistema, recortes da tela ou barra de status.
 
-So, why not use `MediaQuery` directly?
+Então, por que não usar `MediaQuery` diretamente?
 
-The answer is that `SafeArea` does one clever thing
-that makes it beneficial to use over just raw `MediaQueryData`.
-Specifically, it modifies the `MediaQuery` exposed
-to `SafeArea`'s children to make it appear as if the
-padding added to `SafeArea` doesn't exist.
-This means that you can nest `SafeArea`s,
-and only the topmost one will apply the padding
-needed to avoid the notches as system UI. 
+A resposta é que `SafeArea` faz uma coisa inteligente
+que torna benéfico usá-lo em vez de apenas `MediaQueryData` bruto.
+Especificamente, ele modifica o `MediaQuery` exposto
+aos filhos de `SafeArea` para fazer parecer que o
+padding adicionado ao `SafeArea` não existe.
+Isso significa que você pode aninhar `SafeArea`s,
+e apenas o mais alto aplicará o padding
+necessário para evitar os entalhes como UI do sistema.
 
-As your app grows and you move widgets around,
-you don't have to worry about having too much
-padding applied if you have multiple `SafeArea`s,
-whereas you would have issues if using
-`MediaQueryData.padding` directly.
+À medida que seu aplicativo cresce e você move os widgets,
+você não precisa se preocupar em ter muito
+padding aplicado se tiver vários `SafeArea`s,
+enquanto você teria problemas se usasse
+`MediaQueryData.padding` diretamente.
 
-You _can_ wrap the body of a `Scaffold` widget 
-with a `SafeArea`, but you don't _have_ to put it this high
-in the widget tree.
-The `SafeArea` just needs to wrap the contents
-that would cause information loss if cut off by the
-hardware features mentioned earlier. 
+Você _pode_ envolver o corpo de um widget `Scaffold`
+com um `SafeArea`, mas você não _precisa_ colocá-lo tão alto
+na árvore de widgets.
+O `SafeArea` só precisa envolver o conteúdo
+que causaria perda de informações se fosse cortado pelos
+recursos de hardware mencionados anteriormente.
 
-For example, if you purposefully want your app to stretch
-under the cutouts, you can move the `SafeArea` to wrap
-whatever content makes sense,
-and let the rest of the app take up the full screen.
-A side note is that this is what the `AppBar` widget
-does by default, which is how it goes underneath the
-system status bar. This is also why wrapping the body
-of a `Scaffold` in a `SafeArea` is recommended,
-instead of wrapping the whole `Scaffold` itself.
+Por exemplo, se você deseja propositalmente que seu aplicativo se estenda
+sob os recortes, você pode mover o `SafeArea` para envolver
+qualquer conteúdo que faça sentido,
+e deixar o resto do aplicativo ocupar a tela inteira.
+Uma observação é que isso é o que o widget `AppBar`
+faz por padrão, que é como ele fica sob a
+barra de status do sistema. É também por isso que envolver o corpo
+de um `Scaffold` em um `SafeArea` é recomendado,
+em vez de envolver todo o `Scaffold` em si.
 
-`SafeArea` ensures that your app content won't be
-cut off in a generic way and sets your app up
-for success even as new devices with different
-shapes and styles of cutouts enter the market.
+`SafeArea` garante que o conteúdo do seu aplicativo não seja
+cortado de forma genérica e prepara seu aplicativo
+para o sucesso mesmo quando novos dispositivos com diferentes
+formatos e estilos de recortes entrarem no mercado.

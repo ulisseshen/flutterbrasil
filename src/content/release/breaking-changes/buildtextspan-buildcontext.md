@@ -1,47 +1,48 @@
 ---
-title: Added BuildContext parameter to TextEditingController.buildTextSpan
+ia-translate: true
+title: Adicionado parâmetro BuildContext a TextEditingController.buildTextSpan
 description: >
-  A BuildContext parameter is added to TextEditingController.buildTextSpan so
-  inheritors that override buildTextSpan can access inherited widgets.
+  Um parâmetro BuildContext é adicionado a TextEditingController.buildTextSpan
+  para que herdeiros que substituem buildTextSpan possam acessar widgets herdados.
 ---
 
-## Summary
+## Resumo
 
-A `BuildContext` parameter was added to `TextEditingController.buildTextSpan`.
+Um parâmetro `BuildContext` foi adicionado a `TextEditingController.buildTextSpan`.
 
-Classes that extend or implement `TextEditingController`
-and override `buildTextSpan` need to add the `BuildContext`
-parameter to the signature to make it a valid override.
+Classes que estendem ou implementam `TextEditingController`
+e substituem `buildTextSpan` precisam adicionar o parâmetro
+`BuildContext` à assinatura para torná-la uma substituição válida.
 
-Callers of `TextEditingController.buildTextSpan`
-need to pass a `BuildContext` to the call.
+Os chamadores de `TextEditingController.buildTextSpan`
+precisam passar um `BuildContext` para a chamada.
 
-## Context
+## Contexto
 
-`TextEditingController.buildTextSpan` is called by `EditableText`
-on its controller to create the `TextSpan` that it renders.
-`buildTextSpan` can be overridden in custom classes that extend
-`TextEditingController`. This allows classes extending
-`TextEditingController` override `buildTextSpan` to change
-the style of parts of the text, for example, for rich text editing.
+`TextEditingController.buildTextSpan` é chamado por `EditableText`
+em seu controlador para criar o `TextSpan` que ele renderiza.
+`buildTextSpan` pode ser substituído em classes personalizadas que estendem
+`TextEditingController`. Isso permite que classes que estendem
+`TextEditingController` substituam `buildTextSpan` para alterar
+o estilo de partes do texto, por exemplo, para edição de rich text.
 
-Any state that is required by `buildTextSpan`
-(other than the `TextStyle` and `withComposing` arguments)
-needed to be passed into the class that extends
+Qualquer estado que seja exigido por `buildTextSpan`
+(além dos argumentos `TextStyle` e `withComposing`)
+precisava ser passado para a classe que estende
 `TextEditingController`.
 
-## Description of change
+## Descrição da mudança
 
-With the `BuildContext` available, users can access
-`InheritedWidgets` inside `buildTextSpan`
-to retrieve state required to style the text,
-or otherwise manipulate the created `TextSpan`.
+Com o `BuildContext` disponível, os usuários podem acessar
+`InheritedWidgets` dentro de `buildTextSpan`
+para recuperar o estado necessário para estilizar o texto,
+ou manipular de outra forma o `TextSpan` criado.
 
-Consider the example where we have a
-`HighlightTextEditingController` that wants to
-highlight text by setting its color to `Theme.accentColor`.
+Considere o exemplo em que temos um
+`HighlightTextEditingController` que deseja
+destacar o texto definindo sua cor para `Theme.accentColor`.
 
-Before this change the controller implementation would look like this:
+Antes desta alteração, a implementação do controlador seria assim:
 
 ```dart
 class HighlightTextEditingController extends TextEditingController {
@@ -55,12 +56,12 @@ class HighlightTextEditingController extends TextEditingController {
   }
 ```
 
-And users of the controller would need to pass the color
-when creating the controller.
+E os usuários do controlador precisariam passar a cor
+ao criar o controlador.
 
-With the `BuildContext` parameter available,
-the `HighlightTextEditingController` can directly access
-`Theme.accentColor` using `Theme.of(BuildContext)`:
+Com o parâmetro `BuildContext` disponível,
+o `HighlightTextEditingController` pode acessar diretamente
+`Theme.accentColor` usando `Theme.of(BuildContext)`:
 
 ```dart
 class HighlightTextEditingController extends TextEditingController {
@@ -72,14 +73,14 @@ class HighlightTextEditingController extends TextEditingController {
 }
 ```
 
-## Migration guide
+## Guia de migração
 
-### Overriding `TextEditingController.buildTextSpan`
+### Substituindo `TextEditingController.buildTextSpan`
 
-Add a `required BuildContext context` parameter to the
-signature of the `buildTextSpan` override.
+Adicione um parâmetro `required BuildContext context` à
+assinatura da substituição de `buildTextSpan`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 class MyTextEditingController {
@@ -90,13 +91,13 @@ class MyTextEditingController {
 }
 ```
 
-Example error message before migration:
+Mensagem de erro de exemplo antes da migração:
 
 ```plaintext
-'MyTextEditingController.buildTextSpan' ('TextSpan Function({TextStyle? style, required bool withComposing})') isn't a valid override of 'TextEditingController.buildTextSpan' ('TextSpan Function({required BuildContext context, TextStyle? style, required bool withComposing})').
+'MyTextEditingController.buildTextSpan' ('TextSpan Function({TextStyle? style, required bool withComposing})') não é uma substituição válida de 'TextEditingController.buildTextSpan' ('TextSpan Function({required BuildContext context, TextStyle? style, required bool withComposing})').
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class MyTextEditingController {
@@ -107,26 +108,26 @@ class MyTextEditingController {
 }
 ```
 
-### Calling `TextEditingController.buildTextSpan`
+### Chamando `TextEditingController.buildTextSpan`
 
-Pass a named parameter 'context' of type
-`BuildContext` to the call.
+Passe um parâmetro nomeado 'context' do tipo
+`BuildContext` para a chamada.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 TextEditingController controller = /* ... */;
 TextSpan span = controller.buildTextSpan(withComposing: false);
 ```
 
-Error message before migration:
+Mensagem de erro antes da migração:
 
 ```plaintext
-The named parameter 'context' is required, but there's no corresponding argument.
-Try adding the required argument.
+O parâmetro nomeado 'context' é obrigatório, mas não há argumento correspondente.
+Tente adicionar o argumento necessário.
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 BuildContext context = /* ... */;
@@ -134,22 +135,22 @@ TextEditingController controller = /* ... */;
 TextSpan span = controller.buildTextSpan(context: context, withComposing: false);
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.26.0<br>
-In stable release: 2.0.0
+Implementado na versão: 1.26.0<br>
+Na versão estável: 2.0.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`TextEditingController.buildTextSpan`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue #72343][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Reland "Add BuildContext parameter to TextEditingController.buildTextSpan" #73510][]
 * [Revert "Add BuildContext parameter to TextEditingController.buildTextSpan" #73503][]
@@ -160,3 +161,4 @@ Relevant PRs:
 [Reland "Add BuildContext parameter to TextEditingController.buildTextSpan" #73510]: {{site.repo.flutter}}/pull/73510
 [Revert "Add BuildContext parameter to TextEditingController.buildTextSpan" #73503]: {{site.repo.flutter}}/pull/73503
 [`TextEditingController.buildTextSpan`]: {{site.api}}/flutter/widgets/TextEditingController/buildTextSpan.html
+

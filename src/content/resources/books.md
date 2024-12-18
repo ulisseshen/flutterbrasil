@@ -1,36 +1,37 @@
 ---
-title: Books about Flutter
-description: Extra, extra! Here's a collection of books about Flutter.
+ia-translate: true
+title: Livros sobre Flutter
+description: Extra, extra! Aqui está uma coleção de livros sobre Flutter.
 toc: false
 ---
 
-Here's a collection of books about Flutter,
-in alphabetical order.
-If you find another one that we should add,
-[file an issue][] and (feel free to)
-submit a PR ([sample][]) to add it yourself.
+Aqui está uma coleção de livros sobre Flutter,
+em ordem alfabética.
+Se você encontrar outro que devemos adicionar,
+[abra uma issue][] e (sinta-se à vontade para)
+enviar um PR ([exemplo][]) para adicioná-lo você mesmo.
 
-Also, check the Flutter version that the book
-was written under. Anything published before
-Flutter 3.10/Dart 3 (May 2023),
-won't reflect the latest version of Dart and
-might not include null safety;
-anything published before Flutter 3.16 (November 2023)
-won't reflect that Material 3 is now
-Flutter's default theme.
-See the [what's new][]
-page to view Flutter's latest release.
+Além disso, verifique a versão do Flutter sob a qual o livro
+foi escrito. Qualquer coisa publicada antes do
+Flutter 3.10/Dart 3 (Maio de 2023),
+não refletirá a versão mais recente do Dart e
+pode não incluir null safety;
+qualquer coisa publicada antes do Flutter 3.16 (Novembro de 2023)
+não refletirá que o Material 3 agora é o
+tema padrão do Flutter.
+Veja a página [novidades][]
+para visualizar o último lançamento do Flutter.
 
-[file an issue]: {{site.repo.this}}/issues/new
-[sample]: {{site.repo.this}}/pull/6019
-[what's new]: /release/whats-new
+[abra uma issue]: {{site.repo.this}}/issues/new
+[exemplo]: {{site.repo.this}}/pull/6019
+[novidades]: /release/whats-new
 
 {% for book in books -%}
 * [{{book.title}}]({{book.link}})
 {% endfor -%}
 
 <p>
-  The following sections have more information about each book.
+  As seções a seguir têm mais informações sobre cada livro.
 </p>
 
 {% for book in books %}
@@ -43,11 +44,10 @@ page to view Flutter's latest release.
 ### [{{book.title}}]({{book.link}})
 {:.title}
 
-by {{book.authors | array_to_sentence_string}}
+por {{book.authors | array_to_sentence_string}}
 {:.authors.h4}
 
 {{book.desc}}
 </div>
 </div>
 {% endfor %}
-

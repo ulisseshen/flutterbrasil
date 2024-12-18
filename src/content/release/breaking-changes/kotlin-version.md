@@ -1,43 +1,44 @@
 ---
-title: Required Kotlin version 
+ia-translate: true
+title: Versão do Kotlin Necessária
 description: >
-    Flutter apps built for the Android platform
-    now require Kotlin 1.5.31 or greater.
+    Aplicativos Flutter construídos para a plataforma
+    Android agora requerem Kotlin 1.5.31 ou superior.
 ---
 
-## Summary
+## Sumário
 
-To build a Flutter app for Android, Kotlin 1.5.31 or greater is required.
+Para construir um aplicativo Flutter para Android, é necessário Kotlin 1.5.31 ou superior.
 
-If your app uses a lower version,
-you will receive the following error message:
+Se seu aplicativo usa uma versão inferior,
+você receberá a seguinte mensagem de erro:
 
 ```plaintext noHighlight
 ┌─ Flutter Fix ────────────────────────────────────────────────────────────┐
 │                                                                          │
-│ [!] Your project requires a newer version of the Kotlin Gradle plugin.   │
-│ Find the latest version on                                               │
-│ https://kotlinlang.org/docs/gradle.html#plugin-and-versions, then update │
-│ <path-to-app>/android/build.gradle:                                      │
-│ ext.kotlin_version = '<latest-version>'                                  │
+│ [!] Seu projeto requer uma versão mais recente do plugin Kotlin do Gradle. │
+│ Encontre a versão mais recente em                                          │
+│ https://kotlinlang.org/docs/gradle.html#plugin-and-versions, então atualize │
+│ <caminho-para-o-app>/android/build.gradle:                                 │
+│ ext.kotlin_version = '<versão-mais-recente>'                             │
 │                                                                          │
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-## Context
+## Contexto
 
-Flutter added support for [foldable devices][1] on Android.
-This required adding an AndroidX dependency to the Flutter embedding that
-requires apps to use Kotlin 1.5.31 or greater.
+O Flutter adicionou suporte para [dispositivos dobráveis][1] no Android.
+Isso exigiu a adição de uma dependência AndroidX à incorporação do Flutter, que
+requer que os aplicativos usem Kotlin 1.5.31 ou superior.
 
-## Description of change
+## Descrição da mudança
 
-A Flutter app compiled for Android now includes the Gradle dependency
+Um aplicativo Flutter compilado para Android agora inclui a dependência Gradle
 `androidx.window:window-java`.
 
-## Migration guide
+## Guia de migração
 
-Open `<app-src>/android/build.gradle`, and change `ext.kotlin_version`:
+Abra `<app-src>/android/build.gradle` e altere `ext.kotlin_version`:
 
 ```groovy diff
   buildscript {
@@ -45,18 +46,19 @@ Open `<app-src>/android/build.gradle`, and change `ext.kotlin_version`:
 +     ext.kotlin_version = '1.5.31'
 ```
 
-## Timeline
+## Cronograma
 
-Landed in version: v2.9.0 beta<br>
-In stable release: 2.10
+Implementado na versão: v2.9.0 beta<br>
+Na versão estável: 2.10
 
-## References
+## Referências
 
-Relevant PR:
+PR relevante:
 
-* [PR 29585: Display Features support][]
+* [PR 29585: Suporte a Display Features][]
 
 
-[PR 29585: Display Features support]: {{site.repo.engine}}/pull/29585
+[PR 29585: Suporte a Display Features]: {{site.repo.engine}}/pull/29585
 
 [1]: {{site.android-dev}}/guide/topics/large-screens/learn-about-foldables
+

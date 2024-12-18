@@ -1,62 +1,41 @@
-# DevTools 2.20.0 release notes
+# Notas de lançamento do DevTools 2.20.0
 
-The 2.20.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutter.dev/tools/devtools).
+A versão 2.20.0 do Dart e Flutter DevTools inclui as seguintes mudanças, entre outras melhorias gerais. Para saber mais sobre o DevTools, consulte a [visão geral do DevTools](https://docs.flutter.dev/tools/devtools).
 
-## CPU profiler updates
+## Atualizações do profiler de CPU
 
-* Add support for grouping samples by tag -
-  [#4693](https://github.com/flutter/devtools/pull/4693)
+* Adicionado suporte para agrupar amostras por tag - [#4693](https://github.com/flutter/devtools/pull/4693)
 
-  ![samples by tag](/tools/devtools/release-notes/images-2.20.0/4693.png "samples by tag")
+  ![amostras por tag](/tools/devtools/release-notes/images-2.20.0/4693.png "amostras por tag")
 
-* Enable guidelines for tree view -
-  [#4722](https://github.com/flutter/devtools/pull/4722)
+* Ativar diretrizes para visualização em árvore - [#4722](https://github.com/flutter/devtools/pull/4722)
 
-  ![guidelines](/tools/devtools/release-notes/images-2.20.0/4722.png "guidelines")
+  ![diretrizes](/tools/devtools/release-notes/images-2.20.0/4722.png "diretrizes")
 
-* Rename "Profile granularity" to "CPU sampling rate"
-  and move down to the area it relates to -
-  [#4803](https://github.com/flutter/devtools/pull/4722)
+* Renomear "Granularidade do perfil" para "Taxa de amostragem da CPU" e mover para a área relacionada - [#4803](https://github.com/flutter/devtools/pull/4722)
 
-  ![sampling rate](/tools/devtools/release-notes/images-2.20.0/4803.png "sampling rate")
+  ![taxa de amostragem](/tools/devtools/release-notes/images-2.20.0/4803.png "taxa de amostragem")
 
+## Atualizações de memória
 
-## Memory updates
+* Retirar a aba **Análise** - [#4714](https://github.com/flutter/devtools/pull/4714)
 
-* Retire the **Analysis** tab -
-  [#4714](https://github.com/flutter/devtools/pull/4714)
+* Adicionar uma nova aba, **Diff**, para habilitar a detecção de vazamento de memória e solução de problemas comparando snapshots de heap, fornecendo insights sobre o número de instâncias, tamanho raso, tamanho retido e caminhos de retenção - [#4714](https://github.com/flutter/devtools/pull/4714)
 
-* Add a new tab, **Diff**, to enable memory leak detection
-  and troubleshooting by comparing heap snapshots,
-  providing insights about the number of instances,
-  shallow size, retained size, and retaining paths -
-  [#4714](https://github.com/flutter/devtools/pull/4714)
+  ![diff](/tools/devtools/release-notes/images-2.20.0/4714.png "Diff na aba Memória")
 
-  ![diff](/tools/devtools/release-notes/images-2.20.0/4714.png "Diff in Memory tab")
+## Atualizações do depurador
 
-## Debugger updates
+* Suporte para inspecionar mais tipos de instâncias no visualizador de variáveis (Expandos, Types, TypeArguments, Parameters, Closures + contextos de closure, WeakProperty, Function, FunctionType, ReceivePort, Closure, RegExp) - [#4760](https://github.com/flutter/devtools/pull/4760)
 
-* Support for inspecting more types of instances in the variables viewer
-  (Expandos, Types, TypeArguments, Parameters, Closures + closure Contexts, 
-  WeakProperty, Function, FunctionType, ReceivePort, Closure, RegExp) -
-  [#4760](https://github.com/flutter/devtools/pull/4760)
+* Adicionado suporte para exibir cobertura no CodeView - [#4700](https://github.com/flutter/devtools/pull/4700)
 
-* Add support for displaying coverage in CodeView -
-  [#4700](https://github.com/flutter/devtools/pull/4700)
+  ![cobertura](/tools/devtools/release-notes/images-2.20.0/4700.png "cobertura em CodeView")
 
-  ![coverage](/tools/devtools/release-notes/images-2.20.0/4700.png "coverage in CodeView")
+## Atualizações de rede
 
-## Network updates
+* Exibir dados da solicitação se o tipo de conteúdo não for json (obrigado a @leungpuikuen!) - [#4602](https://github.com/flutter/devtools/pull/4602)
 
-* Display request data if content type is not json
-  (thanks to @leungpuikuen!) -
-  [#4602](https://github.com/flutter/devtools/pull/4602)
+## Histórico completo de commits
 
-## Full commit history
-
-To find a complete list of changes since the previous release,
-check out
-[the diff on GitHub](https://github.com/flutter/devtools/compare/v2.19.0...v2.20.0).
+Para encontrar uma lista completa de alterações desde a versão anterior, confira [o diff no GitHub](https://github.com/flutter/devtools/compare/v2.19.0...v2.20.0).

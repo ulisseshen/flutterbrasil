@@ -1,22 +1,19 @@
-# DevTools 2.28.4 release notes
+# Notas de lançamento do DevTools 2.28.4
 
-The 2.28.4 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutter.dev/tools/devtools).
+A versão 2.28.4 do Dart e Flutter DevTools inclui as seguintes alterações, entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a [visão geral do DevTools](https://docs.flutter.dev/tools/devtools).
 
-This was a cherry-pick release on top of DevTools 2.28.3.
-To learn about the improvements included in DevTools 2.28.3, please read the
-[release notes](/tools/devtools/release-notes/release-notes-2.28.3).
+Esta foi uma versão cherry-pick em cima do DevTools 2.28.3.
+Para saber mais sobre as melhorias incluídas no DevTools 2.28.3, leia as
+[notas de lançamento](/tools/devtools/release-notes/release-notes-2.28.3).
 
-## Inspector updates
+## Atualizações do Inspector
 
-* Added link to package directory documentation, from the inspect settings dialog - [#6825](https://github.com/flutter/devtools/pull/6825)
+* Adicionado link para documentação do diretório do pacote, a partir da caixa de diálogo de configurações de inspeção - [#6825](https://github.com/flutter/devtools/pull/6825)
 
-* Fixed a bug where widgets owned by the Flutter framework were showing up in the widget tree view -
-[#6857](https://github.com/flutter/devtools/pull/6857)
+* Corrigido um bug em que os widgets pertencentes ao framework Flutter apareciam na visualização da árvore de widgets - [#6857](https://github.com/flutter/devtools/pull/6857)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes in this release, check out the
-[DevTools git log](https://github.com/flutter/devtools/tree/v2.28.4).
+Para encontrar uma lista completa de alterações nesta versão, confira o
+[log do git do DevTools](https://github.com/flutter/devtools/tree/v2.28.4).

@@ -1,36 +1,37 @@
 ---
-title: Deprecated API removed after v3.16
+ia-translate: true
+title: API Deprecadas Removidas Após a v3.16
 description: >-
-  After reaching end of life, the following deprecated APIs
-  were removed from Flutter.
+  Após atingir o fim da vida útil, as seguintes APIs
+  deprecadas foram removidas do Flutter.
 ---
 
-## Summary
+## Sumário
 
-In accordance with Flutter's [Deprecation Policy][],
-deprecated APIs that reached end of life after the
-3.16 stable release have been removed.
+Em conformidade com a [Política de Depreciação][] do Flutter,
+APIs deprecadas que atingiram o fim da vida útil após o
+lançamento estável 3.16 foram removidas.
 
-All affected APIs have been compiled into this
-primary source to aid in migration.
-To further aid your migration, check out this
-[quick reference sheet][].
+Todas as APIs afetadas foram compiladas nesta fonte
+primária para auxiliar na migração.
+Para auxiliar ainda mais na sua migração, confira esta
+[folha de referência rápida][].
 
-[Deprecation Policy]: {{site.repo.flutter}}/blob/master/docs/contributing/Tree-hygiene.md#deprecations
-[quick reference sheet]: /go/deprecations-removed-after-3-16
+[Política de Depreciação]: {{site.repo.flutter}}/blob/master/docs/contributing/Tree-hygiene.md#deprecations
+[folha de referência rápida]: /go/deprecations-removed-after-3-16
 
-## Changes
+## Mudanças
 
-This section lists the deprecations by the package and affected class.
+Esta seção lista as depreciações por pacote e classe afetada.
 
-### Button `styleFrom` properties
+### Propriedades `styleFrom` de Botões
 
-Package: flutter
-Supported by Flutter Fix: yes
+Pacote: flutter
+Suportado pelo Flutter Fix: sim
 
-The `TextButton`, `ElevatedButton` and `OutlinedButton` widgets all have a
-static `styleFrom` method for generating the `ButtonStyle`. The following color
-properties of this method for each class were deprecated in v3.1:
+Os widgets `TextButton`, `ElevatedButton` e `OutlinedButton` possuem um
+método estático `styleFrom` para gerar o `ButtonStyle`. As seguintes propriedades
+de cor deste método para cada classe foram depreciadas na v3.1:
 
 * `TextButton.styleFrom`
   * `primary`
@@ -43,14 +44,14 @@ properties of this method for each class were deprecated in v3.1:
   * `primary`
   * `onSurface`
 
-These changes better aligned the API with updated Material Design
-specifications. The changes also provided more clarity in how the colors would
-be applied to the buttons, by replacing these properties with `backgroundColor`,
-`foregroundColor`, and `disabledForegroundColor`.
+Essas mudanças alinharam melhor a API com as especificações atualizadas do Material
+Design. As mudanças também proporcionaram mais clareza em como as cores seriam
+aplicadas aos botões, substituindo essas propriedades por `backgroundColor`,
+`foregroundColor` e `disabledForegroundColor`.
 
-**Migration guide**
+**Guia de Migração**
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 TextButton.styleFrom(
@@ -68,7 +69,7 @@ OutlinedButton.styleFrom(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 TextButton.styleFrom(
@@ -86,19 +87,19 @@ OutlinedButton.styleFrom(
 );
 ```
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 
 * [`TextButton`][]
 * [`ElevatedButton`][]
 * [`OutlinedButton`][]
 * [`ButtonStyle`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#105291][]
-* Removed in [#139267][]
+* Depreciado em [#105291][]
+* Removido em [#139267][]
 
 [`TextButton`]: {{site.api}}/flutter/material/TextButton-class.html
 [`ElevatedButton`]: {{site.api}}/flutter/material/ElevatedButton-class.html
@@ -112,45 +113,45 @@ Relevant PRs:
 
 ### ThemeData.selectedRowColor
 
-Package: flutter
-Supported by Flutter Fix: yes
+Pacote: flutter
+Suportado pelo Flutter Fix: sim
 
-The `selectedRowColor` property of `ThemeData` was deprecated in v3.1.
+A propriedade `selectedRowColor` de `ThemeData` foi depreciada na v3.1.
 
-The property was no longer used by the framework, as widgets using it migrated
-to other component themes or no longer required it in the updated specification
-for Material Design.
+A propriedade não era mais usada pelo framework, pois os widgets que a usavam migraram
+para outros temas de componentes ou não precisavam mais dela na especificação
+atualizada para o Material Design.
 
-**Migration guide**
+**Guia de Migração**
 
-Code before migration:
-
-```dart
-ThemeData(
-  // ...
-  selectedRowColor: Colors.pink, // Would have no effect.  
-);
-```
-
-Code after migration:
+Código antes da migração:
 
 ```dart
 ThemeData(
   // ...
-  // Remove uses.  
+  selectedRowColor: Colors.pink, // Não teria efeito.
 );
 ```
 
-**References**
+Código após a migração:
 
-API documentation:
+```dart
+ThemeData(
+  // ...
+  // Remova os usos.
+);
+```
+
+**Referências**
+
+Documentação da API:
 
 * [`ThemeData`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#109070][]
-* Removed in [#139080][]
+* Depreciado em [#109070][]
+* Removido em [#139080][]
 
 [`ThemeData`]: {{site.api}}/flutter/material/ThemeData-class.html
 
@@ -161,35 +162,35 @@ Relevant PRs:
 
 ### NavigatorState.focusScopeNode
 
-Package: flutter
-Supported by Flutter Fix: yes
+Pacote: flutter
+Suportado pelo Flutter Fix: sim
 
-The `focusScopeNode` property of `NavigatorState` was deprecated in v3.1.
+A propriedade `focusScopeNode` de `NavigatorState` foi depreciada na v3.1.
 
-This change was made to resolve several issues stemming around the
-`FocusScopeNode` introduced by the `Navigator`. Instead, the `FocusScope`
-was moved to enclose the topmost `Navigator` in a `WidgetsApp`.
-`NavigatorState` was changed to contain its own `FocusNode`, from where it can
-refer to its `FocusNode.enclosingScope` to access the correct `FocusScopeNode`.
+Essa mudança foi feita para resolver vários problemas decorrentes do
+`FocusScopeNode` introduzido pelo `Navigator`. Em vez disso, o `FocusScope`
+foi movido para envolver o `Navigator` mais alto em um `WidgetsApp`.
+`NavigatorState` foi alterado para conter seu próprio `FocusNode`, de onde ele
+pode se referir ao seu `FocusNode.enclosingScope` para acessar o `FocusScopeNode` correto.
 
-**Migration guide**
+**Guia de Migração**
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 Navigator.of(context).focusScopeNode;
 
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 Navigator.of(context).focusNode.enclosingScope!;
 ```
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 
 * [`Navigator`][]
 * [`NavigatorState`][]
@@ -197,10 +198,10 @@ API documentation:
 * [`FocusScopeNode`][]
 * [`FocusNode`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#109702][]
-* Removed in [#139260][]
+* Depreciado em [#109702][]
+* Removido em [#139260][]
 
 [`Navigator`]: {{site.api}}/flutter/widgets/Navigator-class.html
 [`NavigatorState`]: {{site.api}}/flutter/widgets/NavigatorState-class.html
@@ -215,17 +216,17 @@ Relevant PRs:
 
 ### PlatformMenuBar.body
 
-Package: flutter
-Supported by Flutter Fix: yes
+Pacote: flutter
+Suportado pelo Flutter Fix: sim
 
-The `body` property of `PlatformMenuBar` was deprecated in v3.1.
+A propriedade `body` de `PlatformMenuBar` foi depreciada na v3.1.
 
-This change was made to align `PlatformMenuBar` with other widgets in the
-framework, renaming it to `child`.
+Essa mudança foi feita para alinhar `PlatformMenuBar` com outros widgets no
+framework, renomeando-o para `child`.
 
-**Migration guide**
+**Guia de Migração**
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 PlatformMenuBar(
@@ -233,7 +234,7 @@ PlatformMenuBar(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 PlatformMenuBar(
@@ -241,16 +242,16 @@ PlatformMenuBar(
 );
 ```
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 
 * [`PlatformMenuBar`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#104565][]
-* Removed in [#138509][]
+* Depreciado em [#104565][]
+* Removido em [#138509][]
 
 [`PlatformMenuBar`]: {{site.api}}/flutter/widgets/PlatformMenuBar-class.html
 
@@ -259,18 +260,19 @@ Relevant PRs:
 
 ---
 
-The [previously announced][] deprecations for `TextTheme`, `WidgetInspectorService`,
-and `WidgetInspectorServiceExtensions` were not removed during this cycle.
-The `WidgetInspectorService` and `WidgetInspectorServiceExtensions`
-deprecation on `setPubRootDirectories` has been extended another year to allow
-IDEs and other customer to migrate.
-Expect the `TextTheme` deprecations to be removed in the next cycle, which will
-be announced again when it comes.
+As depreciações [anunciadas anteriormente][] para `TextTheme`, `WidgetInspectorService`,
+e `WidgetInspectorServiceExtensions` não foram removidas durante este ciclo.
+A depreciação de `WidgetInspectorService` e `WidgetInspectorServiceExtensions`
+em `setPubRootDirectories` foi estendida por mais um ano para permitir que
+IDEs e outros clientes migrem.
+Espere que as depreciações de `TextTheme` sejam removidas no próximo ciclo, o
+que será anunciado novamente quando chegar.
 
-[previously announced]: https://groups.google.com/g/flutter-announce/c/DLnuqZo714o
+[anunciadas anteriormente]: https://groups.google.com/g/flutter-announce/c/DLnuqZo714o
 
 ---
 
-## Timeline
+## Linha do Tempo
 
-In stable release: 3.19.0
+Na versão estável: 3.19.0
+

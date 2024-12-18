@@ -1,4 +1,5 @@
 ---
+ia-translate: true
 title: Construindo interfaces de usuário com Flutter
 short-title: UI
 description: Introdução ao desenvolvimento de interfaces de usuário no Flutter.
@@ -21,19 +22,19 @@ códigos, confira [criando layouts][],
 e [adicionando interatividade ao seu aplicativo Flutter][].
 :::
 
-## Hello world
+## Olá mundo
 
 O aplicativo mínimo do Flutter simplesmente chama a função [`runApp()`][] com um widget:
 
 <?code-excerpt "lib/main.dart"?>
-```dartpad title="Flutter Hello World hands-on example in DartPad" run="true"
+```dartpad title="Exemplo prático de Hello World do Flutter no DartPad" run="true"
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(
     const Center(
       child: Text(
-        'Hello, world!',
+        'Olá, mundo!',
         textDirection: TextDirection.ltr,
       ),
     ),
@@ -70,7 +71,7 @@ O Flutter vem com uma série de widgets básicos poderosos, dos quais os seguint
 Abaixo estão alguns widgets simples que combinam estes e outros widgets:
 
 <?code-excerpt "lib/main_myappbar.dart"?>
-```dartpad title="Flutter combining widgets hands-on example in DartPad" run="true"
+```dartpad title="Exemplo prático de combinação de widgets do Flutter no DartPad" run="true"
 import 'package:flutter/material.dart';
 
 class MyAppBar extends StatelessWidget {
@@ -91,7 +92,7 @@ class MyAppBar extends StatelessWidget {
         children: [
           const IconButton(
             icon: Icon(Icons.menu),
-            tooltip: 'Navigation menu',
+            tooltip: 'Menu de navegação',
             onPressed: null, // null disables the button
           ),
           // Expanded expands its child
@@ -101,7 +102,7 @@ class MyAppBar extends StatelessWidget {
           ),
           const IconButton(
             icon: Icon(Icons.search),
-            tooltip: 'Search',
+            tooltip: 'Pesquisar',
             onPressed: null,
           ),
         ],
@@ -123,7 +124,7 @@ class MyScaffold extends StatelessWidget {
         children: [
           MyAppBar(
             title: Text(
-              'Example title',
+              'Título de exemplo',
               style: Theme.of(context) //
                   .primaryTextTheme
                   .titleLarge,
@@ -131,7 +132,7 @@ class MyScaffold extends StatelessWidget {
           ),
           const Expanded(
             child: Center(
-              child: Text('Hello, world!'),
+              child: Text('Olá, mundo!'),
             ),
           ),
         ],
@@ -143,7 +144,7 @@ class MyScaffold extends StatelessWidget {
 void main() {
   runApp(
     const MaterialApp(
-      title: 'My app', // used by the OS task switcher
+      title: 'Meu aplicativo', // usado pelo alternador de tarefas do SO
       home: SafeArea(
         child: MyScaffold(),
       ),
@@ -193,13 +194,13 @@ Flutter fornece vários widgets que ajudam você a construir aplicativos que seg
 
 
 <?code-excerpt "lib/main_tutorial.dart"?>
-```dartpad title="Flutter Material design hands-on example in DartPad" run="true"
+```dartpad title="Exemplo prático de Material design do Flutter no DartPad" run="true"
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(
     const MaterialApp(
-      title: 'Flutter Tutorial',
+      title: 'Tutorial do Flutter',
       home: TutorialHome(),
     ),
   );
@@ -216,24 +217,24 @@ class TutorialHome extends StatelessWidget {
       appBar: AppBar(
         leading: const IconButton(
           icon: Icon(Icons.menu),
-          tooltip: 'Navigation menu',
+          tooltip: 'Menu de navegação',
           onPressed: null,
         ),
-        title: const Text('Example title'),
+        title: const Text('Título de exemplo'),
         actions: const [
           IconButton(
             icon: Icon(Icons.search),
-            tooltip: 'Search',
+            tooltip: 'Pesquisar',
             onPressed: null,
           ),
         ],
       ),
       // body is the majority of the screen.
       body: const Center(
-        child: Text('Hello, world!'),
+        child: Text('Olá, mundo!'),
       ),
       floatingActionButton: const FloatingActionButton(
-        tooltip: 'Add', // used by assistive technologies
+        tooltip: 'Adicionar', // usado por tecnologias assistivas
         onPressed: null,
         child: Icon(Icons.add),
       ),
@@ -275,7 +276,7 @@ A primeira etapa na construção de um aplicativo interativo é detectar
 gestos de entrada. Veja como isso funciona criando um botão simples:
 
 <?code-excerpt "lib/main_mybutton.dart"?>
-```dartpad title="Flutter button hands-on example in DartPad" run="true"
+```dartpad title="Exemplo prático de botão do Flutter no DartPad" run="true"
 import 'package:flutter/material.dart';
 
 class MyButton extends StatelessWidget {
@@ -285,7 +286,7 @@ class MyButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print('MyButton was tapped!');
+        print('MyButton foi clicado!');
       },
       child: Container(
         height: 50,
@@ -296,7 +297,7 @@ class MyButton extends StatelessWidget {
           color: Colors.lightGreen[500],
         ),
         child: const Center(
-          child: Text('Engage'),
+          child: Text('Engajar'),
         ),
       ),
     );
@@ -340,7 +341,7 @@ Considere este exemplo básico, usando o [`ElevatedButton`][] mencionado anterio
 
 
 <?code-excerpt "lib/main_counter.dart"?>
-```dartpad title="Flutter state management hands-on example in DartPad" run="true"
+```dartpad title="Exemplo prático de gerenciamento de estado do Flutter no DartPad" run="true"
 import 'package:flutter/material.dart';
 
 class Counter extends StatefulWidget {
@@ -385,10 +386,10 @@ class _CounterState extends State<Counter> {
       children: <Widget>[
         ElevatedButton(
           onPressed: _increment,
-          child: const Text('Increment'),
+          child: const Text('Incrementar'),
         ),
         const SizedBox(width: 16),
-        Text('Count: $_counter'),
+        Text('Contagem: $_counter'),
       ],
     );
   }
@@ -417,7 +418,7 @@ No Flutter, as notificações de mudanças fluem "para cima" na hierarquia de wi
 
 
 <?code-excerpt "lib/main_counterdisplay.dart"?>
-```dartpad title="Flutter Hello World hands-on example in DartPad" run="true"
+```dartpad title="Exemplo prático de Hello World do Flutter no DartPad" run="true"
 import 'package:flutter/material.dart';
 
 class CounterDisplay extends StatelessWidget {
@@ -427,7 +428,7 @@ class CounterDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('Count: $count');
+    return Text('Contagem: $count');
   }
 }
 
@@ -440,7 +441,7 @@ class CounterIncrementor extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
-      child: const Text('Increment'),
+      child: const Text('Incrementar'),
     );
   }
 }
@@ -506,7 +507,7 @@ A seguir, temos um exemplo mais completo que reúne esses conceitos: um aplicati
 
 
 <?code-excerpt "lib/main_shoppingitem.dart"?>
-```dartpad title="Flutter complete shopping list item hands-on example in DartPad" run="true"
+```dartpad title="Exemplo prático completo de item de lista de compras do Flutter no DartPad" run="true"
 import 'package:flutter/material.dart';
 
 class Product {
@@ -597,7 +598,7 @@ Aqui está um exemplo de widget pai que armazena estado mutável:
 
 
 <?code-excerpt "lib/main_shoppinglist.dart"?>
-```dartpad title="Flutter storing mutable state hands-on example in DartPad" run="true"
+```dartpad title="Exemplo prático de armazenamento de estado mutável do Flutter no DartPad" run="true"
 import 'package:flutter/material.dart';
 
 class Product {
@@ -695,7 +696,7 @@ class _ShoppingListState extends State<ShoppingList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Shopping List'),
+        title: const Text('Lista de compras'),
       ),
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 8),
@@ -713,12 +714,12 @@ class _ShoppingListState extends State<ShoppingList> {
 
 void main() {
   runApp(const MaterialApp(
-    title: 'Shopping App',
+    title: 'Aplicativo de compras',
     home: ShoppingList(
       products: [
-        Product(name: 'Eggs'),
-        Product(name: 'Flour'),
-        Product(name: 'Chocolate chips'),
+        Product(name: 'Ovos'),
+        Product(name: 'Farinha'),
+        Product(name: 'Gotas de chocolate'),
       ],
     ),
   ));

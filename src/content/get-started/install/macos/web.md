@@ -1,12 +1,13 @@
 ---
-title: Start building Flutter web apps on macOS
-description: Configure your system to develop Flutter web apps on macOS.
-short-title: Make web apps
+ia-translate: true
+title: Comece a construir aplicativos Flutter web no macOS
+description: Configure seu sistema para desenvolver aplicativos Flutter web no macOS.
+short-title: Faça aplicativos web
 target: web
 config: macOSWeb
 devos: macOS
 next:
-  title: Create your first app
+  title: Crie seu primeiro aplicativo
   path: /get-started/codelab
 ---
 

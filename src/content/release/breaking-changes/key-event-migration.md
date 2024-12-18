@@ -1,121 +1,121 @@
 ---
-title: Migrate RawKeyEvent/RawKeyboard system to KeyEvent/HardwareKeyboard system
+ia-translate: true
+title: Migrar o sistema RawKeyEvent/RawKeyboard para o sistema KeyEvent/HardwareKeyboard
 description: >-
-  The raw key event subsystem has been superseded by the key event subsystem,
-  and APIs that use RawKeyEvent and RawKeyboard are converted to KeyEvent and
-  HardwareKeyboard.
+  O subsistema de eventos de tecla raw foi substituído pelo subsistema de eventos
+  de tecla, e as APIs que usam RawKeyEvent e RawKeyboard são convertidas para
+  KeyEvent e HardwareKeyboard.
 ---
 
-## Summary
+## Sumário
 
-For some time now (years), Flutter has had two key event systems implemented.
-The new system reached parity with the old platform-specific raw key event
-system, and the raw system has been deprecated.
+Há algum tempo (anos), o Flutter possui dois sistemas de eventos de tecla
+implementados. O novo sistema atingiu paridade com o antigo sistema de eventos de
+tecla raw específico da plataforma, e o sistema raw foi descontinuado.
 
-## Context
+## Contexto
 
-In the original key event subsystem, handling each platform's quirks in the
-framework and in client apps caused overly complex code, and the old system
-didn't properly represent the true state of key events on the system.
+No subsistema de eventos de tecla original, o tratamento das peculiaridades de
+cada plataforma no framework e nos aplicativos cliente causava código
+excessivamente complexo, e o antigo sistema não representava corretamente o
+estado real dos eventos de tecla no sistema.
 
-The legacy API [`RawKeyboard`][] has been deprecated
-and will be removed in the future.
-The [`HardwareKeyboard`][] and [`KeyEvent`][] APIs replace this legacy API.
-An example of this change is [`FocusNode.onKeyEvent`][]
-replacing `FocusNode.onKey`.
+A API legada [`RawKeyboard`][] foi descontinuada e será removida no futuro. As
+APIs [`HardwareKeyboard`][] e [`KeyEvent`][] substituem essa API legada. Um
+exemplo dessa mudança é [`FocusNode.onKeyEvent`][] substituindo `FocusNode.onKey`.
 
-The behavior of [`RawKeyboard`][] provided a
-less unified and less regular event model
-than [`HardwareKeyboard`][] does.
-Consider the following examples:
+O comportamento de [`RawKeyboard`][] fornecia um modelo de evento menos unificado
+e menos regular do que [`HardwareKeyboard`][] fornece. Considere os seguintes
+exemplos:
 
-* Down events were not always matched with an up event, and vice versa (the set
-  of pressed keys was silently updated).
-* The logical key of the down event was not always the same as that of the up
-  event.
-* Down events and repeat events were not easily distinguishable (had to be
-  tracked manually).
-* Lock modes (such as CapsLock) only had their "enabled" state recorded. There
-  was no way to acquire their pressed state.
+*   Eventos de "tecla pressionada" nem sempre eram correspondidos com um evento
+    de "tecla liberada", e vice-versa (o conjunto de teclas pressionadas era
+    atualizado silenciosamente).
+*   A tecla lógica do evento de "tecla pressionada" nem sempre era a mesma do
+    evento de "tecla liberada".
+*   Eventos de "tecla pressionada" e eventos de repetição não eram facilmente
+    distinguíveis (tinham que ser rastreados manualmente).
+*   Os modos de bloqueio (como CapsLock) apenas tinham seu estado "habilitado"
+    registrado. Não havia como adquirir seu estado pressionado.
 
-So, the new [`KeyEvent`][]/[`HardwareKeyboard`][]-based system was born and, to
-minimize breaking changes, was implemented in parallel with the old system with
-the intention of eventually deprecating the raw system. That time has arrived,
-and application developers should migrate their code to avoid breaking changes
-that will occur when the deprecated APIs are removed.
+Assim, o novo sistema baseado em [`KeyEvent`][]/[`HardwareKeyboard`][] nasceu
+e, para minimizar as mudanças interruptivas, foi implementado em paralelo com o
+antigo sistema com a intenção de eventualmente descontinuar o sistema raw. Esse
+momento chegou, e os desenvolvedores de aplicativos devem migrar seu código para
+evitar mudanças interruptivas que ocorrerão quando as APIs descontinuadas forem
+removidas.
 
-## Description of change
+## Descrição da mudança
 
-Below are the APIs that have been deprecated.
+Abaixo estão as APIs que foram descontinuadas.
 
-### Deprecated APIs that have an equivalent
+### APIs descontinuadas que têm um equivalente
 
-* [`Focus.onKey`][] => [`Focus.onKeyEvent`][]
-* [`FocusNode.attach`][]'s `onKey` argument => `onKeyEvent` argument
-* [`FocusNode.onKey`][] => [`FocusNode.onKeyEvent`][]
-* [`FocusOnKeyCallback`][] => [`FocusOnKeyEventCallback`][]
-* [`FocusScope.onKey`][] => [`FocusScope.onKeyEvent`][]
-* [`FocusScopeNode.onKey`][] => [`FocusScopeNode.onKeyEvent`][]
-* [`RawKeyboard`][] => [`HardwareKeyboard`][]
-* [`RawKeyboardListener`][] => [`KeyboardListener`][]
-* [`RawKeyDownEvent`][] => [`KeyDownEvent`][]
-* [`RawKeyEvent`][] => [`KeyEvent`][]
-* [`RawKeyUpEvent`][] => [`KeyUpEvent`][]
+*   [`Focus.onKey`][] => [`Focus.onKeyEvent`][]
+*   O argumento `onKey` de [`FocusNode.attach`][] => argumento `onKeyEvent`
+*   [`FocusNode.onKey`][] => [`FocusNode.onKeyEvent`][]
+*   [`FocusOnKeyCallback`][] => [`FocusOnKeyEventCallback`][]
+*   [`FocusScope.onKey`][] => [`FocusScope.onKeyEvent`][]
+*   [`FocusScopeNode.onKey`][] => [`FocusScopeNode.onKeyEvent`][]
+*   [`RawKeyboard`][] => [`HardwareKeyboard`][]
+*   [`RawKeyboardListener`][] => [`KeyboardListener`][]
+*   [`RawKeyDownEvent`][] => [`KeyDownEvent`][]
+*   [`RawKeyEvent`][] => [`KeyEvent`][]
+*   [`RawKeyUpEvent`][] => [`KeyUpEvent`][]
 
-### APIs that have been discontinued
+### APIs que foram descontinuadas
 
-These APIs are no longer needed once there is only one key event system, or
-their functionality is no longer offered.
+Essas APIs não são mais necessárias depois que houver apenas um sistema de
+eventos de tecla, ou sua funcionalidade não é mais oferecida.
 
-* [`debugKeyEventSimulatorTransitModeOverride`][]
-* [`GLFWKeyHelper`][]
-* [`GtkKeyHelper`][]
-* [`KeyboardSide`][]
-* [`KeyDataTransitMode`][]
-* [`KeyEventManager`][]
-* [`KeyHelper`][]
-* [`KeyMessage`][]
-* [`KeyMessageHandler`][]
-* [`KeySimulatorTransitModeVariant`][]
-* [`ModifierKey`][]
-* [`RawKeyEventData`][]
-* [`RawKeyEventDataAndroid`][]
-* [`RawKeyEventDataFuchsia`][]
-* [`RawKeyEventDataIos`][]
-* [`RawKeyEventDataLinux`][]
-* [`RawKeyEventDataMacOs`][]
-* [`RawKeyEventDataWeb`][]
-* [`RawKeyEventDataWindows`][]
-* [`RawKeyEventHandler`][]
-* [`ServicesBinding.keyEventManager`][]
+*   [`debugKeyEventSimulatorTransitModeOverride`][]
+*   [`GLFWKeyHelper`][]
+*   [`GtkKeyHelper`][]
+*   [`KeyboardSide`][]
+*   [`KeyDataTransitMode`][]
+*   [`KeyEventManager`][]
+*   [`KeyHelper`][]
+*   [`KeyMessage`][]
+*   [`KeyMessageHandler`][]
+*   [`KeySimulatorTransitModeVariant`][]
+*   [`ModifierKey`][]
+*   [`RawKeyEventData`][]
+*   [`RawKeyEventDataAndroid`][]
+*   [`RawKeyEventDataFuchsia`][]
+*   [`RawKeyEventDataIos`][]
+*   [`RawKeyEventDataLinux`][]
+*   [`RawKeyEventDataMacOs`][]
+*   [`RawKeyEventDataWeb`][]
+*   [`RawKeyEventDataWindows`][]
+*   [`RawKeyEventHandler`][]
+*   [`ServicesBinding.keyEventManager`][]
 
-## Migration guide
+## Guia de migração
 
-The Flutter framework libraries have already been migrated.
-If your code uses any of the classes or methods listed in
-the previous section, migrate to these new APIs.
+As bibliotecas do framework Flutter já foram migradas. Se seu código usar alguma
+das classes ou métodos listados na seção anterior, migre para essas novas APIs.
 
-### Migrating your code that uses `RawKeyEvent`
+### Migrando seu código que usa `RawKeyEvent`
 
-For the most part, there are equivalent `KeyEvent` APIs available for all of the
-`RawKeyEvent` APIs.
+Na maior parte, existem APIs `KeyEvent` equivalentes disponíveis para todas as
+APIs `RawKeyEvent`.
 
-Some APIs relating to platform specific information contained in
-[`RawKeyEventData`][] objects or their subclasses have been removed and are no
-longer supported. One exception is that [`RawKeyEventDataAndroid.eventSource`][]
-information is accessible now as [`KeyEvent.deviceType`][] in a more
-platform independent form.
+Algumas APIs relacionadas a informações específicas da plataforma contidas em
+objetos [`RawKeyEventData`][] ou suas subclasses foram removidas e não são mais
+suportadas. Uma exceção é que as informações de [`RawKeyEventDataAndroid.eventSource`][]
+estão acessíveis agora como [`KeyEvent.deviceType`][] em uma forma mais
+independente da plataforma.
 
-#### Migrating `isKeyPressed` and related functions
+#### Migrando `isKeyPressed` e funções relacionadas
 
-If the legacy code used the [`RawKeyEvent.isKeyPressed`][],
+Se o código legado usava as APIs [`RawKeyEvent.isKeyPressed`][],
 [`RawKeyEvent.isControlPressed`][], [`RawKeyEvent.isShiftPressed`][],
-[`RawKeyEvent.isAltPressed`][], or [`RawKeyEvent.isMetaPressed`][] APIs, there
-are now equivalent functions on the [`HardwareKeyboard`][] singleton instance,
-but are not available on [KeyEvent]. [`RawKeyEvent.isKeyPressed`][] is available
-as [`HardwareKeyboard.isLogicalKeyPressed`][].
+[`RawKeyEvent.isAltPressed`][] ou [`RawKeyEvent.isMetaPressed`][], agora
+existem funções equivalentes na instância singleton [`HardwareKeyboard`][],
+mas não estão disponíveis em [KeyEvent]. [`RawKeyEvent.isKeyPressed`][] está
+disponível como [`HardwareKeyboard.isLogicalKeyPressed`][].
 
-Before:
+Antes:
 
 ```dart
 KeyEventResult _handleKeyEvent(RawKeyEvent keyEvent) {
@@ -123,16 +123,16 @@ KeyEventResult _handleKeyEvent(RawKeyEvent keyEvent) {
       keyEvent.isShiftPressed ||
       keyEvent.isAltPressed ||
       keyEvent.isMetaPressed) {
-    print('Modifier pressed: $keyEvent');
+    print('Modificador pressionado: $keyEvent');
   }
   if (keyEvent.isKeyPressed(LogicalKeyboardKey.keyA)) {
-    print('Key A pressed.');
+    print('Tecla A pressionada.');
   }
   return KeyEventResult.ignored;
 }
 ```
 
-After:
+Depois:
 
 ```dart
 KeyEventResult _handleKeyEvent(KeyEvent _) {
@@ -140,30 +140,30 @@ KeyEventResult _handleKeyEvent(KeyEvent _) {
       HardwareKeyboard.instance.isShiftPressed ||
       HardwareKeyboard.instance.isAltPressed ||
       HardwareKeyboard.instance.isMetaPressed) {
-    print('Modifier pressed: $keyEvent');
+    print('Modificador pressionado: $keyEvent');
   }
   if (HardwareKeyboard.instance.isLogicalKeyPressed(LogicalKeyboardKey.keyA)) {
-    print('Key A pressed.');
+    print('Tecla A pressionada.');
   }
   return KeyEventResult.ignored;
 }
 ```
 
-#### Setting `onKey` for focus
+#### Configurando `onKey` para foco
 
-If the legacy code was using the [`Focus.onKey`][], [`FocusScope.onKey`][],
-[`FocusNode.onKey`][], or [`FocusScopeNode.onKey`][] parameters, then there is
-an equivalent [`Focus.onKeyEvent`][], [`FocusScope.onKeyEvent`][],
-[`FocusNode.onKeyEvent`][], or [`FocusScopeNode.onKeyEvent`][] parameter that
-supplies `KeyEvent`s instead of `RawKeyEvent`s.
+Se o código legado estava usando os parâmetros [`Focus.onKey`][],
+[`FocusScope.onKey`][], [`FocusNode.onKey`][] ou [`FocusScopeNode.onKey`][],
+então existe um parâmetro equivalente [`Focus.onKeyEvent`][],
+[`FocusScope.onKeyEvent`][], [`FocusNode.onKeyEvent`][] ou
+[`FocusScopeNode.onKeyEvent`][] que fornece `KeyEvent`s em vez de `RawKeyEvent`s.
 
-Before:
+Antes:
 
 ```dart
 Widget build(BuildContext context) {
   return Focus(
     onKey: (RawKeyEvent keyEvent) {
-      print('Key event: $keyEvent');
+      print('Evento de tecla: $keyEvent');
       return KeyEventResult.ignored;
     }
     child: child,
@@ -171,13 +171,13 @@ Widget build(BuildContext context) {
 }
 ```
 
-After:
+Depois:
 
 ```dart
 Widget build(BuildContext context) {
   return Focus(
     onKeyEvent: (KeyEvent keyEvent) {
-      print('Key event: $keyEvent');
+      print('Evento de tecla: $keyEvent');
       return KeyEventResult.ignored;
     }
     child: child,
@@ -185,68 +185,68 @@ Widget build(BuildContext context) {
 }
 ```
 
-#### Repeat key event handling
+#### Tratamento de eventos de repetição de tecla
 
-If you were relying on the [`RawKeyEvent.repeat`][] attribute to determine if a
-key was a repeated key event, that has now been separated into a separate
-[`KeyRepeatEvent`][] type.
+Se você estava confiando no atributo [`RawKeyEvent.repeat`][] para determinar se
+uma tecla era um evento de tecla repetido, isso agora foi separado em um tipo
+[`KeyRepeatEvent`][] separado.
 
-Before:
+Antes:
 
 ```dart
 KeyEventResult _handleKeyEvent(RawKeyEvent keyEvent) {
   if (keyEvent is RawKeyDownEvent) {
-    print('Key down: ${keyEvent.data.logicalKey.keyLabel}(${keyEvent.repeat ? ' (repeated)' : ''})');
+    print('Tecla pressionada: ${keyEvent.data.logicalKey.keyLabel}(${keyEvent.repeat ? ' (repetida)' : ''})');
   }
   return KeyEventResult.ignored;
 }
 ```
 
-After:
+Depois:
 
 ```dart
 KeyEventResult _handleKeyEvent(KeyEvent _) {
   if (keyEvent is KeyDownEvent || keyEvent is KeyRepeatEvent) {
-    print('Key down: ${keyEvent.logicalKey.keyLabel}(${keyEvent is KeyRepeatEvent ? ' (repeated)' : ''})');
+    print('Tecla pressionada: ${keyEvent.logicalKey.keyLabel}(${keyEvent is KeyRepeatEvent ? ' (repetida)' : ''})');
   }
   return KeyEventResult.ignored;
 }
 ```
 
-Though it is not a subclass of [`KeyDownEvent`][],
-a [`KeyRepeatEvent`][] is also a key down event.
-Don't assume that `keyEvent is! KeyDownEvent` only allows key up events.
-Check both `KeyDownEvent` and `KeyRepeatEvent`.
+Embora não seja uma subclasse de [`KeyDownEvent`][], um [`KeyRepeatEvent`][]
+também é um evento de "tecla pressionada". Não suponha que `keyEvent is!
+KeyDownEvent` só permite eventos de "tecla liberada". Verifique ambos
+`KeyDownEvent` e `KeyRepeatEvent`.
 
-## Timeline
+## Cronograma
 
-Landed in version: 3.18.0-7.0.pre<br>
-In stable release: 3.19.0
+Implementado na versão: 3.18.0-7.0.pre<br>
+Na versão estável: 3.19.0
 
-## References
+## Referências
 
-Replacement API documentation:
+Documentação da API de substituição:
 
-* [`Focus.onKeyEvent`][]
-* [`FocusNode.onKeyEvent`][]
-* [`FocusOnKeyEventCallback`][]
-* [`FocusScope.onKeyEvent`][]
-* [`FocusScopeNode.onKeyEvent`][]
-* [`HardwareKeyboard`][]
-* [`KeyboardListener`][]
-* [`KeyDownEvent`][]
-* [`KeyRepeatEvent`][]
-* [`KeyEvent`][]
-* [`KeyEventHandler`][]
-* [`KeyUpEvent`][]
+*   [`Focus.onKeyEvent`][]
+*   [`FocusNode.onKeyEvent`][]
+*   [`FocusOnKeyEventCallback`][]
+*   [`FocusScope.onKeyEvent`][]
+*   [`FocusScopeNode.onKeyEvent`][]
+*   [`HardwareKeyboard`][]
+*   [`KeyboardListener`][]
+*   [`KeyDownEvent`][]
+*   [`KeyRepeatEvent`][]
+*   [`KeyEvent`][]
+*   [`KeyEventHandler`][]
+*   [`KeyUpEvent`][]
 
-Relevant issues:
+Problemas relevantes:
 
-* [`RawKeyEvent` and `RawKeyboard`, et al should be deprecated and removed (Issue 136419)][]
+*   [`RawKeyEvent` e `RawKeyboard`, et al devem ser descontinuados e removidos (Issue 136419)][]
 
-Relevant PRs:
+PRs relevantes:
 
-* [Deprecate RawKeyEvent, et al. and exempt uses in the framework.][]
+*   [Descontinuar RawKeyEvent, et al. e isentar usos no framework.][]
 
 [`debugKeyEventSimulatorTransitModeOverride`]: {{site.api}}/flutter/services/debugKeyEventSimulatorTransitModeOverride-class.html
 [`Focus.onKey`]: {{site.api}}/flutter/services/Focus/onKey.html
@@ -302,4 +302,4 @@ Relevant PRs:
 [`RawKeyEventDataAndroid.eventSource`]: {{site.api}}/flutter/services/RawKeyEventDataAndroid/eventSource.html
 [`KeyEvent.deviceType`]: {{site.api}}/flutter/services/KeyEvent/deviceType.html
 [`RawKeyEvent` and `RawKeyboard`, et al should be deprecated and removed (Issue 136419)]: {{site.repo.flutter}}/issues/136419
-[Deprecate RawKeyEvent, et al. and exempt uses in the framework.]: {{site.repo.flutter}}/pull/136677
+[Descontinuar RawKeyEvent, et al. e isentar usos no framework.]: {{site.repo.flutter}}/pull/136677

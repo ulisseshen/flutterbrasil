@@ -1,21 +1,22 @@
 ---
-title: Deprecate MemoryAllocations in favor of FlutterMemoryAllocations
+ia-translate: true
+title: Descontinuar MemoryAllocations em favor de FlutterMemoryAllocations
 description: >-
-  MemoryAllocations is renamed to FlutterMemoryAllocations.
+  MemoryAllocations é renomeado para FlutterMemoryAllocations.
 ---
 
-## Summary
+## Resumo
 
-Disposables in pure Dart projects can't use `MemoryAllocations` in Flutter. 
-So, to be leak-trackable they need a Dart-only class.
-`MemoryAllocations` in Flutter is renamed to make the name
-available to a non-Flutter, Dart project.
+Disposables em projetos Dart puros não podem usar `MemoryAllocations` no Flutter.
+Então, para serem rastreáveis quanto a vazamentos, eles precisam de uma classe
+exclusivamente Dart. `MemoryAllocations` no Flutter é renomeado para tornar o nome
+disponível para um projeto Dart não-Flutter.
 
-## Migration guide
+## Guia de Migração
 
-Before:
+Antes:
 
-```dart 
+```dart
 if (kFlutterMemoryAllocationsEnabled) {
   MemoryAllocations.instance.dispatchObjectCreated(
     library: 'package:flutter/gestures.dart',
@@ -25,9 +26,9 @@ if (kFlutterMemoryAllocationsEnabled) {
 }
 ```
 
-After:
+Depois:
 
-```dart 
+```dart
 if (kFlutterMemoryAllocationsEnabled) {
   FlutterMemoryAllocations.instance.dispatchObjectCreated(
     library: 'package:flutter/gestures.dart',
@@ -37,15 +38,15 @@ if (kFlutterMemoryAllocationsEnabled) {
 }
 ```
 
-## Timeline
+## Cronograma
 
-Landed in version: 3.19.0-2.0.pre<br>
-Landed in stable: 3.22.0
+Implementado na versão: 3.19.0-2.0.pre<br>
+Implementado na versão estável: 3.22.0
 
-## References
+## Referências
 
-Relevant issues:
+Issues relevantes:
 
-* [Rename MemoryAllocations to FlutterMemoryAllocations (Issue 140622)][]
+* [Renomear MemoryAllocations para FlutterMemoryAllocations (Issue 140622)][]
 
-[Rename MemoryAllocations to FlutterMemoryAllocations (Issue 140622)]: {{site.repo.flutter}}/issues/140622
+[Renomear MemoryAllocations para FlutterMemoryAllocations (Issue 140622)]: {{site.repo.flutter}}/issues/140622

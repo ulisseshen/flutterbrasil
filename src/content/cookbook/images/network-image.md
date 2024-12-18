@@ -1,6 +1,7 @@
 ---
-title: Display images from the internet
-description: How to display images from the internet.
+ia-translate: true
+title: Exibir imagens da internet
+description: Como exibir imagens da internet.
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
@@ -8,22 +9,18 @@ js:
 
 <?code-excerpt path-base="cookbook/images/network_image"?>
 
-Displaying images is fundamental for most mobile apps.
-Flutter provides the [`Image`][] widget to
-display different types of images.
+Exibir imagens é fundamental para a maioria dos aplicativos móveis. O Flutter fornece o widget [`Image`][] para exibir diferentes tipos de imagens.
 
-To work with images from a URL, use the
-[`Image.network()`][] constructor.
+Para trabalhar com imagens de uma URL, use o construtor [`Image.network()`][].
 
 <?code-excerpt "lib/main.dart (ImageNetwork)" replace="/^body\: //g"?>
 ```dart
 Image.network('https://picsum.photos/250?image=9'),
 ```
 
-## Bonus: animated gifs
+## Bônus: GIFs animados
 
-One useful thing about the `Image` widget:
-It supports animated gifs.
+Uma coisa útil sobre o widget `Image`: ele suporta GIFs animados.
 
 <?code-excerpt "lib/gif.dart (Gif)" replace="/^return\ //g"?>
 ```dart
@@ -31,19 +28,16 @@ Image.network(
     'https://docs.flutter.dev/assets/images/dash/dash-fainting.gif');
 ```
 
-## Image fade in with placeholders
+## Imagem com efeito de fade-in e placeholders
 
-The default `Image.network` constructor doesn't handle more advanced
-functionality, such as fading images in after loading.
-To accomplish this task,
-check out [Fade in images with a placeholder][].
+O construtor padrão `Image.network` não lida com funcionalidades mais avançadas, como aplicar fade-in nas imagens após o carregamento. Para realizar essa tarefa, consulte [Efeito de fade-in em imagens com placeholder][].
 
-* [Fade in images with a placeholder][]
+* [Efeito de fade-in em imagens com placeholder][]
 
-## Interactive example
+## Exemplo interativo
 
 <?code-excerpt "lib/main.dart"?>
-```dartpad title="Flutter network images hands-on example in DartPad" run="true"
+```dartpad title="Exemplo prático de imagens de rede do Flutter no DartPad" run="true"
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -53,7 +47,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var title = 'Web Images';
+    var title = 'Imagens da Web';
 
     return MaterialApp(
       title: title,
@@ -69,10 +63,10 @@ class MyApp extends StatelessWidget {
 ```
 
 <noscript>
-  <img src="/assets/images/docs/cookbook/network-image.png" alt="Network image demo" class="site-mobile-screenshot" />
+  <img src="/assets/images/docs/cookbook/network-image.png" alt="Demonstração de imagem de rede" class="site-mobile-screenshot" />
 </noscript>
 
 
-[Fade in images with a placeholder]: /cookbook/images/fading-in-images
+[Efeito de fade-in em imagens com placeholder]: /cookbook/images/fading-in-images
 [`Image`]: {{site.api}}/flutter/widgets/Image-class.html
 [`Image.network()`]: {{site.api}}/flutter/widgets/Image/Image.network.html

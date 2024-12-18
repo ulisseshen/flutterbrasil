@@ -1,6 +1,7 @@
 ---
-title: Get started
-description: Get started developing your first app with Flutter!
-# This is a placeholder page (Firebase redirects this page's URL to another);
-# it is necessary to allow breadcrumbs to work.
+ia-translate: true
+title: Começar
+description: Comece a desenvolver seu primeiro aplicativo com Flutter!
+# Esta é uma página de espaço reservado (Firebase redireciona o URL desta página para outro);
+# é necessário para permitir que os breadcrumbs funcionem.
 ---

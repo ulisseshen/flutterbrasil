@@ -1,24 +1,25 @@
 ---
-title: Set up web development for Flutter
-description: Configure your system to develop Flutter for the web.
-short-title: Set up web development
+ia-translate: true
+title: Configurar o desenvolvimento web para Flutter
+description: Configure seu sistema para desenvolver Flutter para a web.
+short-title: Configurar o desenvolvimento web
 ---
 
-## Install a web browser
+## Instale um navegador web
 
 {% include docs/install/reqs/add-web.md %}
 
-## Check your development environment
-Run the `flutter doctor` command
-to validate your SDK and web browser installation:
+## Verifique seu ambiente de desenvolvimento
+Execute o comando `flutter doctor`
+para validar seu SDK e a instalação do navegador web:
 
 ```bash
 $ flutter doctor
 ```
 
-## Start building web apps
+## Comece a construir aplicativos web
 
-Follow [Building a web application with Flutter][]
-to get started building and running a web application with Flutter.
+Siga [Construindo um aplicativo web com Flutter][]
+para começar a construir e executar um aplicativo web com Flutter.
 
-[Building a web application with Flutter]: {{site.url}}/platform-integration/web/building
+[Construindo um aplicativo web com Flutter]: {{site.url}}/platform-integration/web/building

@@ -1,71 +1,82 @@
-# DevTools 2.34.1 release notes
+# Notas da versão do DevTools 2.34.1
 
-The 2.34.1 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](/tools/devtools).
+A versão 2.34.1 do Dart e Flutter DevTools inclui as seguintes
+alterações, entre outras melhorias gerais. Para saber mais sobre o
+DevTools, confira a [visão geral do DevTools](/tools/devtools).
 
-## General updates
+## Atualizações gerais
 
-* Fixed an issue preventing DevTools from connecting to Flutter apps that
-  are not launched from Flutter Tools. - [#6848](https://github.com/flutter/devtools/issues/6848)
-* Improved performance of the FlatTable. -
+* Corrigido um problema que impedia o DevTools de se conectar a aplicativos
+  Flutter que não são iniciados a partir do Flutter Tools. -
+  [#6848](https://github.com/flutter/devtools/issues/6848)
+* Melhor desempenho do FlatTable. -
   [#7391](https://github.com/flutter/devtools/pull/7391)
 
-## Inspector updates
+## Atualizações do Inspetor
 
-- Fixes an edge case where widgets from other packages could
-  show up in the inspector tree. - [#7353](https://github.com/flutter/devtools/pull/7353)
+- Corrigido um caso limite em que widgets de outros pacotes podiam aparecer
+  na árvore do inspetor. - [#7353](https://github.com/flutter/devtools/pull/7353)
 
-## Performance updates
-* Add a setting to include CPU samples in the Timeline. -
-  [#7333](https://github.com/flutter/devtools/pull/7333), [#7369](https://github.com/flutter/devtools/pull/7369)
+## Atualizações de desempenho
 
-    ![Timeline settings](/tools/devtools/release-notes/images-2.34.1/7369-timeline-settings.png "Timeline settings")
+* Adicionada uma configuração para incluir amostras de CPU na Timeline. -
+  [#7333](https://github.com/flutter/devtools/pull/7333),
+  [#7369](https://github.com/flutter/devtools/pull/7369)
 
-* Removed the legacy trace viewer.
-  The legacy trace viewer was replaced with the
-  embedded Perfetto trace viewer in DevTools version 2.21.1, but was
-  available behind a setting to ensure a smooth rollout.
-  This release of DevTools removes the legacy trace viewer entirely. - [#7316](https://github.com/flutter/devtools/pull/7316)
-* Updated the Perfetto trace viewer build. -
+    ![Configurações da Timeline](/tools/devtools/release-notes/images-2.34.1/7369-timeline-settings.png "Configurações da Timeline")
+
+* Removido o visualizador de rastreamento legado. O visualizador de
+  rastreamento legado foi substituído pelo visualizador de rastreamento
+  Perfetto incorporado na versão 2.21.1 do DevTools, mas estava disponível
+  por trás de uma configuração para garantir uma implementação tranquila.
+  Esta versão do DevTools remove o visualizador de rastreamento legado
+  completamente. - [#7316](https://github.com/flutter/devtools/pull/7316)
+* Atualizada a compilação do visualizador de rastreamento Perfetto. -
   [#7445](https://github.com/flutter/devtools/pull/7445),
   [#7456](https://github.com/flutter/devtools/pull/7456),
   [#7480](https://github.com/flutter/devtools/pull/7480)
-* Added a loading message to show when refreshing the timeline. - [#7463](https://github.com/flutter/devtools/pull/7463)
+* Adicionada uma mensagem de carregamento para mostrar ao atualizar a
+  timeline. - [#7463](https://github.com/flutter/devtools/pull/7463)
 
-    ![Loading message](/tools/devtools/release-notes/images-2.34.1/7463-overlay.png "Loading message")
+    ![Mensagem de carregamento](/tools/devtools/release-notes/images-2.34.1/7463-overlay.png "Mensagem de carregamento")
 
-## Memory updates
+## Atualizações de memória
 
-* Enabled export of snapshots and improved snapshotting performance. -
+* Habilitada a exportação de snapshots e melhorado o desempenho de
+  criação de snapshots. -
   [#7197](https://github.com/flutter/devtools/pull/7197),
   [#7439](https://github.com/flutter/devtools/pull/7439),
   [#7449](https://github.com/flutter/devtools/pull/7449)
 
-    ![Export snapshot](/tools/devtools/release-notes/images-2.34.1/7197-export.png "Export snapshot")
+    ![Exportar snapshot](/tools/devtools/release-notes/images-2.34.1/7197-export.png "Exportar snapshot")
 
-* Fixed failures during disconnect in tracing. - [#7440](https://github.com/flutter/devtools/pull/7440)
+* Corrigidas falhas durante a desconexão no rastreamento. -
+  [#7440](https://github.com/flutter/devtools/pull/7440)
 
-* Made class filter shared between
-  the panes `Profile Memory` and `Diff Snapshots`. - [#7462](https://github.com/flutter/devtools/pull/7462)
+* Feito o filtro de classe ser compartilhado entre os painéis
+  `Profile Memory` e `Diff Snapshots`. -
+  [#7462](https://github.com/flutter/devtools/pull/7462)
 
-## Network profiler updates
+## Atualizações do Network profiler
 
-* Improved Network profiler performance. - [#7266](https://github.com/flutter/devtools/pull/7266)
-* Fixed a bug where selected pending requests weren't
-  refreshing the tab once updated. - [#7266](https://github.com/flutter/devtools/pull/7266)
-* Fixed the JSON viewer so multiline strings are visible in their row, and
-  through a tooltip. - [#7389](https://github.com/flutter/devtools/pull/7389)
-* Fixed JsonViewer where all of the
-  expanded sections would snap closed. [#7367](https://github.com/flutter/devtools/pull/7367)
+* Melhor desempenho do Network profiler. -
+  [#7266](https://github.com/flutter/devtools/pull/7266)
+* Corrigido um bug em que as solicitações pendentes selecionadas não
+  atualizavam a guia após a atualização. -
+  [#7266](https://github.com/flutter/devtools/pull/7266)
+* Corrigido o visualizador JSON para que strings multilinhas sejam
+  visíveis em sua linha e por meio de uma dica de ferramenta. -
+  [#7389](https://github.com/flutter/devtools/pull/7389)
+* Corrigido o JsonViewer onde todas as seções expandidas fechavam
+  repentinamente. [#7367](https://github.com/flutter/devtools/pull/7367)
 
-## Deep Links tool updates
+## Atualizações da ferramenta Deep Links
 
-* Automatically populate a list of Flutter projects from
-  the connected IDE. - [#7415](https://github.com/flutter/devtools/pull/7415), [#7431](https://github.com/flutter/devtools/pull/7431)
+* Preenchimento automático de uma lista de projetos Flutter a partir do
+  IDE conectado. - [#7415](https://github.com/flutter/devtools/pull/7415),
+  [#7431](https://github.com/flutter/devtools/pull/7431)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes in this release, check out the
-[DevTools git log](https://github.com/flutter/devtools/tree/v2.34.1).
+Para encontrar uma lista completa das alterações nesta versão, consulte o
+[log do git do DevTools](https://github.com/flutter/devtools/tree/v2.34.1).

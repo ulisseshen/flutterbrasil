@@ -1,74 +1,75 @@
 ---
-title: <Job Title>
+ia-translate: true
+title: <Cargo>
 toc: false
 ---
 
 {% comment %}
-1. Make a copy of this document within the `src/jobs` directory
-2. Name it something representative of the role
-3. Remove the leading underscore (_) to allow the document to be published
-4. Specify the full job title in the front matter
-5. Update the sections with a TODO, removing the TODO when complete
-6. Adjust the "To apply" link if necessary
+1. Faça uma cópia deste documento dentro do diretório `src/jobs`
+2. Dê a ele um nome representativo do cargo
+3. Remova o sublinhado inicial (_) para permitir que o documento seja publicado
+4. Especifique o título completo do cargo no front matter
+5. Atualize as seções com um TODO, removendo o TODO quando concluído
+6. Ajuste o link "Para se candidatar", se necessário
 {% endcomment %}
 
-## About the team
+## Sobre a equipe
 
-<TODO: Area Description>
+<TODO: Descrição da Área>
 
-## About the position
+## Sobre a posição
 
-<TODO: Role Description>
+<TODO: Descrição do Cargo>
 
-## Our values
+## Nossos valores
 
-### Mentorship
+### Mentoria
 
-Upon joining Google, you will be paired with a formal mentor,
-who will help guide you in the process of ramping up, forging relationships,
-and learning the systems you'll need to do your job.
-Your manager can also help you find mentors who can coach you
-as you navigate your career at Google. In addition to formal mentors,
-we work and train together so that we are always learning from one another,
-and we celebrate and support the career progression of our team members.
+Ao ingressar no Google, você será emparelhado com um mentor formal,
+que irá guiá-lo no processo de integração, estabelecendo relacionamentos e
+aprendendo os sistemas que você precisará para fazer seu trabalho.
+Seu gerente também pode ajudá-lo a encontrar mentores que possam orientá-lo
+à medida que você avança em sua carreira no Google. Além de mentores formais,
+trabalhamos e treinamos juntos para que estejamos sempre aprendendo uns com os outros,
+e celebramos e apoiamos a progressão na carreira dos membros de nossa equipe.
 
-### Inclusion
+### Inclusão
 
-Here on the Flutter team and at Google, we embrace our differences
-and are [committed to furthering our culture of inclusion](https://flutter.dev/culture).
-In addition to groups like the [Flutteristas](https://flutteristas.org/),
-[Employee Resource Groups (ERGs)](https://diversity.google/commitments/)
-are employee-initiated networks for supporting underrepresented employees
-and their allies with shared values of creating belonging 
-across their communities and Google.
+Aqui na equipe Flutter e no Google, abraçamos nossas diferenças
+e estamos [comprometidos em promover nossa cultura de inclusão](https://flutter.dev/culture).
+Além de grupos como o [Flutteristas](https://flutteristas.org/),
+[Grupos de Recursos de Funcionários (ERGs)](https://diversity.google/commitments/)
+são redes iniciadas por funcionários para apoiar funcionários sub-representados
+e seus aliados com valores compartilhados de criação de pertencimento
+em suas comunidades e no Google.
 
-### Work-Life Balance
+### Equilíbrio entre vida pessoal e profissional
 
-Our team also puts a high value on work-life balance.
-Striking a healthy balance between your personal and professional life
-is crucial to your happiness and success here, which is why we aren't focused
-on how many hours you spend at work or online. Instead,
-we're happy to offer a flexible schedule so you can have a more productive and
-well-balanced life—both in and outside of work.
+Nossa equipe também valoriza muito o equilíbrio entre vida pessoal e profissional.
+Encontrar um equilíbrio saudável entre sua vida pessoal e profissional
+é crucial para sua felicidade e sucesso aqui, e é por isso que não estamos focados
+em quantas horas você passa no trabalho ou online. Em vez disso,
+temos o prazer de oferecer um horário flexível para que você possa ter uma vida mais produtiva e
+equilibrada — tanto dentro quanto fora do trabalho.
 
-## Job location
+## Local do trabalho
 
-<TODO: Location>
+<TODO: Localização>
 
-## Job responsibilities
+## Responsabilidades do trabalho
 
-<TODO: Responsibilities>
+<TODO: Responsabilidades>
 
-## Qualifications
+## Qualificações
 
-### Minimum qualifications
+### Qualificações mínimas
 
-<TODO: Minimum Qualifications>
+<TODO: Qualificações Mínimas>
 
-### Preferred qualifications
+### Qualificações preferenciais
 
-<TODO: Preferred Qualifications>
+<TODO: Qualificações Preferenciais>
 
-## To apply
+## Para se candidatar
 
-Please apply by [filling out the following form](https://flutter.dev/go/job).
+Inscreva-se [preenchendo o seguinte formulário](https://flutter.dev/go/job).

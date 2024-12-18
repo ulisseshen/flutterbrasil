@@ -1,26 +1,27 @@
 ---
-title: Introduce new ColorScheme roles for Material 3
+ia-translate: true
+title: Introduzir novas funções de ColorScheme para Material 3
 description: >-
-  'ColorScheme' introduces new color roles to
-  better align with Material Design 3.
-  The 'ColorScheme.fromSeed' method is also updated to
-  support the newly added colors.
+  'ColorScheme' introduz novas funções de cores para
+  melhor se alinhar com o Material Design 3.
+  O método 'ColorScheme.fromSeed' também é atualizado para
+  suportar as cores recém-adicionadas.
 ---
 
-## Summary
+## Resumo
 
-New color roles in `ColorScheme` include
-seven tone-based surfaces and containers, and twelve accent colors for
-primary, secondary, and tertiary groups.
-This update deprecates three existing color roles:
-`background`, `onBackground`, and `surfaceVariant`.
-The `ColorScheme` constructed by the updated `ColorScheme.fromSeed` method now
-generates different values compared to the previous version,
-adapting to the Material Design 3 guidelines.
+Novas funções de cores em `ColorScheme` incluem
+sete superfícies e containers baseados em tons, e doze cores de destaque para
+grupos primários, secundários e terciários.
+Esta atualização torna obsoletas três funções de cores existentes:
+`background`, `onBackground` e `surfaceVariant`.
+O `ColorScheme` construído pelo método `ColorScheme.fromSeed` atualizado agora
+gera valores diferentes em comparação com a versão anterior,
+adaptando-se às diretrizes do Material Design 3.
 
-## Background
+## Contexto
 
-The tone-based surface colors include: 
+As cores de superfície baseadas em tons incluem:
 
 - `surfaceBright`
 - `surfaceDim`
@@ -30,57 +31,57 @@ The tone-based surface colors include:
 - `surfaceContainerHigh`
 - `surfaceContainerHighest`
 
-These changes help eliminate the use of widgets' `surfaceTintColor`, and
-replaces the old opacity-based model that applied a tinted overlay
-on top of surfaces based on their elevation.  
+Estas mudanças ajudam a eliminar o uso de `surfaceTintColor` dos widgets, e
+substitui o antigo modelo baseado em opacidade que aplicava uma sobreposição
+colorida sobre as superfícies com base em sua elevação.
 
-The default `surfaceTintColor` for all widgets is now `null` and
-their default background color is now
-based on the new tone-based surface colors.
+O `surfaceTintColor` padrão para todos os widgets agora é `null` e
+sua cor de fundo padrão agora é
+baseada nas novas cores de superfície baseadas em tons.
 
-`ColorScheme.fromSeed` has also been updated to use the latest algorithm
-from the [Material color utilities][] package.
-This change prevents the constructed `ColorScheme` from being too bright,
-even if the source color looks bright and
-had a high chroma (contained little black, white, and shades of grey).
+`ColorScheme.fromSeed` também foi atualizado para usar o algoritmo mais recente
+do pacote [Material color utilities][].
+Essa mudança impede que o `ColorScheme` construído seja muito brilhante,
+mesmo que a cor de origem pareça brilhante e
+tenha um croma alto (continha pouco preto, branco e tons de cinza).
 
 [Material color utilities]: {{site.pub-pkg}}/material_color_utilities
 
-## Migration guide
+## Guia de migração
 
-The differences caused by the updated `ColorScheme.fromSeed` and
-the new color roles should be small and acceptable.
-However, when providing a brighter seed color to `ColorScheme.fromSeed`,
-it might construct a relatively darker version of `ColorScheme`.
-To force the output to still be bright,
-set `dynamicSchemeVariant: DynamicSchemeVariant.fidelity` in
-`ColorScheme.fromSeed`. For example:
+As diferenças causadas pelo `ColorScheme.fromSeed` atualizado e
+as novas funções de cores devem ser pequenas e aceitáveis.
+No entanto, ao fornecer uma cor inicial mais brilhante para `ColorScheme.fromSeed`,
+ele pode construir uma versão relativamente mais escura de `ColorScheme`.
+Para forçar a saída a ainda ser brilhante,
+defina `dynamicSchemeVariant: DynamicSchemeVariant.fidelity` em
+`ColorScheme.fromSeed`. Por exemplo:
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 ColorScheme.fromSeed(
-    seedColor: Color(0xFF0000FF), // Bright blue
+    seedColor: Color(0xFF0000FF), // Azul brilhante
 )
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 ColorScheme.fromSeed(
-    seedColor: Color(0xFF0000FF), // Bright blue
+    seedColor: Color(0xFF0000FF), // Azul brilhante
     dynamicSchemeVariant: DynamicSchemeVariant.fidelity,
 )
 ```
 
-Material Design 3 removes 3 colors.
+O Material Design 3 remove 3 cores.
 
-To configure the appearance of the material components,
-`background` should be replaced with `surface`,
-`onBackground` should be replaced with `onSurface`, and
-`surfaceVariant` should be migrated to `surfaceContainerHighest`.
+Para configurar a aparência dos componentes do material,
+`background` deve ser substituído por `surface`,
+`onBackground` deve ser substituído por `onSurface`, e
+`surfaceVariant` deve ser migrado para `surfaceContainerHighest`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 final ColorScheme colorScheme = ColorScheme();
@@ -97,7 +98,7 @@ MaterialApp(
 )
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 final ColorScheme colorScheme = ColorScheme();
@@ -114,12 +115,12 @@ MaterialApp(
 )
 ```
 
-Custom components that used to look up `ColorScheme.background`,
-`ColorScheme.onBackground`, and `ColorScheme.surfaceVariant` can look up
-`ColorScheme.surface`, `ColorScheme.onSurface` and
-`ColorScheme.surfaceContainerHighest` instead.
+Componentes personalizados que costumavam procurar `ColorScheme.background`,
+`ColorScheme.onBackground` e `ColorScheme.surfaceVariant` podem procurar
+`ColorScheme.surface`, `ColorScheme.onSurface` e
+`ColorScheme.surfaceContainerHighest` em vez disso.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 Color myColor1 = Theme.of(context).colorScheme.background;
@@ -127,7 +128,7 @@ Color myColor2 = Theme.of(context).colorScheme.onBackground;
 Color myColor3 = Theme.of(context).colorScheme.surfaceVariant;
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 Color myColor1 = Theme.of(context).colorScheme.surface;
@@ -135,26 +136,26 @@ Color myColor2 = Theme.of(context).colorScheme.onSurface;
 Color myColor3 = Theme.of(context).colorScheme.surfaceContainerHighest;
 ```
 
-## Timeline
+## Cronograma
 
-Landed in version: 3.21.0-4.0.pre<br>
-In stable release: 3.22.0
+Implementado na versão: 3.21.0-4.0.pre<br>
+Na versão estável: 3.22.0
 
-## References
+## Referências
 
-Relevant issues:
+Problemas relevantes:
 
-* [Support tone-based surface and surface container ColorScheme roles][]
-* [Support fidelity variant for ColorScheme.fromSeed][]
+* [Suporte para funções de ColorScheme de superfície baseada em tom e container de superfície][]
+* [Suporte para variante de fidelidade para ColorScheme.fromSeed][]
 
-Relevant PRs:
+PRs relevantes:
 
-* [Introduce tone-based surfaces and accent color add-ons - Part 1][]
-* [Introduce tone-based surfaces and accent color add-ons - Part 2][]
-* [Enhance ColorScheme.fromSeed with a new variant parameter][]
+* [Introduzir superfícies baseadas em tom e complementos de cores de destaque - Parte 1][]
+* [Introduzir superfícies baseadas em tom e complementos de cores de destaque - Parte 2][]
+* [Aprimorar ColorScheme.fromSeed com um novo parâmetro de variante][]
 
-[Support tone-based surface and surface container ColorScheme roles]: {{site.repo.flutter}}/issues/115912
-[Support fidelity variant for ColorScheme.fromSeed]: {{site.repo.flutter}}/issues/144649
-[Introduce tone-based surfaces and accent color add-ons - Part 1]: {{site.repo.flutter}}/pull/142654
-[Introduce tone-based surfaces and accent color add-ons - Part 2]: {{site.repo.flutter}}/pull/144273
-[Enhance ColorScheme.fromSeed with a new variant parameter]: {{site.repo.flutter}}/pull/144805
+[Suporte para funções de ColorScheme de superfície baseada em tom e container de superfície]: {{site.repo.flutter}}/issues/115912
+[Suporte para variante de fidelidade para ColorScheme.fromSeed]: {{site.repo.flutter}}/issues/144649
+[Introduzir superfícies baseadas em tom e complementos de cores de destaque - Parte 1]: {{site.repo.flutter}}/pull/142654
+[Introduzir superfícies baseadas em tom e complementos de cores de destaque - Parte 2]: {{site.repo.flutter}}/pull/144273
+[Aprimorar ColorScheme.fromSeed com um novo parâmetro de variante]: {{site.repo.flutter}}/pull/144805

@@ -1,155 +1,169 @@
 ---
-title: Create flavors of a Flutter app
+ia-translate: true
+title: Criando flavors de um aplicativo Flutter
 short-title: Flavors
 description: >
-  How to create build flavors specific to different
-  release types or development environments.
+  Como criar build flavors específicas para diferentes tipos de release ou ambientes de desenvolvimento.
 ---
 
-## What are flavors
+## O que são flavors
 
-Have you ever wondered how to set up different environments in your Flutter app?
-Flavors (known as _build configurations_ in iOS and macOS), allow you (the developer) to
-create separate environments for your app using the same code base.
-For example, you might have one flavor for your full-fledged production app,
-another as a limited "free" app, another for testing experimental features, and so on.
+Você já se perguntou como configurar diferentes ambientes em seu aplicativo
+Flutter?
+Flavors (conhecidas como _build configurations_ no iOS e macOS) permitem que
+você (o desenvolvedor) crie ambientes separados para seu aplicativo usando a
+mesma base de código.
+Por exemplo, você pode ter uma flavor para seu aplicativo de produção completo,
+outra como um aplicativo "gratuito" limitado, outra para testar recursos
+experimentais e assim por diante.
 
-Say you want to make both free and paid versions of your Flutter app.
-You can use flavors to set up both app versions
-without writing two separate apps.
-For example, the free version of the app has basic functionality and ads.
-In contrast, the paid version has basic app functionality, extra features,
-different styles for paid users, and no ads.
+Digamos que você queira fazer versões gratuitas e pagas do seu aplicativo
+Flutter.
+Você pode usar flavors para configurar ambas as versões do aplicativo
+sem escrever dois aplicativos separados.
+Por exemplo, a versão gratuita do aplicativo tem funcionalidade básica e
+anúncios.
+Em contraste, a versão paga tem funcionalidade básica do aplicativo, recursos
+extras, estilos diferentes para usuários pagos e nenhum anúncio.
 
-You also might use flavors for feature development.
-If you've built a new feature and want to try it out,
-you could set up a flavor to test it out.
-Your production code remains unaffected
-until you're ready to deploy your new feature.
+Você também pode usar flavors para o desenvolvimento de recursos.
+Se você criou um novo recurso e deseja experimentá-lo,
+você pode configurar uma flavor para testá-lo.
+Seu código de produção permanece inalterado
+até que você esteja pronto para implantar seu novo recurso.
 
-Flavors let you define compile-time configurations
-and set parameters that are read at runtime to customize
-your app's behavior.
+Flavors permitem que você defina configurações em tempo de compilação
+e defina parâmetros que são lidos em tempo de execução para personalizar
+o comportamento do seu aplicativo.
 
-This document guides you through setting up Flutter flavors for iOS, macOS, and Android.
+Este documento orienta você na configuração de flavors do Flutter para iOS,
+macOS e Android.
 
-## Environment set up
+## Configuração do ambiente
 
-Prerequisites:
+Pré-requisitos:
 
-* Xcode installed
-* An existing Flutter project
+* Xcode instalado
+* Um projeto Flutter existente
 
-To set up flavors in iOS and macOS, you'll define build configurations in Xcode.
+Para configurar flavors no iOS e macOS, você definirá as build configurations no
+Xcode.
 
-## Creating flavors in iOS and macOS
+## Criando flavors no iOS e macOS
 
 <ol>
 <li>
 
-Open your project in Xcode.
+Abra seu projeto no Xcode.
 
 </li>
 <li>
 
-Select **Product** > **Scheme** > **New Scheme** from the menu to
-add a new `Scheme`.
+Selecione **Product** > **Scheme** > **New Scheme** no menu para
+adicionar um novo `Scheme`.
 
-* A scheme describes how Xcode runs different actions.
-  For the purposes of this guide, the example _flavor_ and _scheme_ are
-  named `free`.
-  The build configurations in the `free` scheme
-  have the `-free` suffix.
+* Um scheme descreve como o Xcode executa diferentes ações.
+  Para os fins deste guia, o exemplo _flavor_ e _scheme_ são
+  nomeados `free`.
+  As build configurations no scheme `free`
+  têm o sufixo `-free`.
 
 </li>
 <li>
 
-Duplicate the build configurations to differentiate between the
-default configurations that are already available and the new configurations
-for the `free` scheme.
+Duplique as build configurations para diferenciar entre as
+configurações padrão que já estão disponíveis e as novas configurações
+para o scheme `free`.
 
-* Under the **Info** tab at the end of the **Configurations** dropdown list,
-  click the plus button and duplicate
-  each configuration name (Debug, Release, and Profile).
-  Duplicate the existing configurations, once for each environment.
+* Na guia **Info**, no final da lista suspensa **Configurations**,
+  clique no botão de adição e duplique
+  cada nome de configuração (Debug, Release e Profile).
+  Duplique as configurações existentes, uma vez para cada ambiente.
 
-![Step 3 Xcode image](/assets/images/docs/flavors/step3-ios-build-config.png){:width="100%"}
+![Imagem do Xcode - Etapa 3](/assets/images/docs/flavors/step3-ios-build-config.png){:width="100%"}
 
 :::note
-Your configurations should be based on your **Debug.xconfig** or **Release.xcconfig**
-file, not the **Pods-Runner.xcconfigs**. You can check this by expanding the configuration names.
+Suas configurações devem ser baseadas em seu arquivo **Debug.xconfig** ou
+**Release.xcconfig**, não no **Pods-Runner.xcconfigs**. Você pode verificar isso
+expandindo os nomes das configurações.
 :::
 
 </li>
 <li>
 
-To match the free flavor, add `-free`
-at the end of each new configuration name.
+Para corresponder à flavor free, adicione `-free`
+ao final de cada novo nome de configuração.
 
 </li>
 <li>
 
-Change the `free` scheme to match the build configurations already created.
+Altere o scheme `free` para corresponder às build configurations já criadas.
 
-* In the **Runner** project, click **Manage Schemes…** and a pop up window opens.
-* Double click the free scheme. In the next step
-  (as shown in the screenshot), you'll modify each scheme
-  to match its free build configuration:
+* No projeto **Runner**, clique em **Manage Schemes…** e uma janela pop-up
+  será aberta.
+* Clique duas vezes no scheme free. Na próxima etapa
+  (conforme mostrado na captura de tela), você modificará cada scheme
+  para corresponder à sua build configuration free:
 
-![Step 5 Xcode image](/assets/images/docs/flavors/step-5-ios-scheme-free.png){:width="100%"}
+![Imagem do Xcode - Etapa 5](/assets/images/docs/flavors/step-5-ios-scheme-free.png){:width="100%"}
 
 </li>
 </ol>
 
-## Using flavors in iOS and macOS
+## Usando flavors no iOS e macOS
 
-Now that you've set up your free flavor,
-you can, for example, add different product bundle identifiers per flavor.
-A _bundle identifier_ uniquely identifies your application.
-In this example, we set the **Debug-free** value to equal
+Agora que você configurou sua flavor free,
+você pode, por exemplo, adicionar diferentes identificadores de pacote do produto por flavor.
+Um _bundle identifier_ identifica exclusivamente seu aplicativo.
+Neste exemplo, definimos o valor de **Debug-free** como
 `com.flavor-test.free`.
 
 <ol>
 <li>
 
-Change the app bundle identifier to differentiate between schemes.
-In **Product Bundle Identifier**, append `.free` to each -free scheme value.
+Altere o identificador do pacote do aplicativo para diferenciar entre os
+schemes.
+Em **Product Bundle Identifier**, acrescente `.free` a cada valor de scheme
+-free.
 
-![Step 1 using flavors image.](/assets/images/docs/flavors/step-1-using-flavors-free.png){:width="100%"}
-
-</li>
-<li>
-
-In the **Build Settings**, set the **Product Name** value to match each flavor.
-For example, add Debug Free.
-
-![Step 2 using flavors image.](/assets/images/docs/flavors/step-2-using-flavors-free.png){:width="100%"}
+![Imagem - Etapa 1 usando flavors.](/assets/images/docs/flavors/step-1-using-flavors-free.png){:width="100%"}
 
 </li>
 <li>
 
-Add the display name to **Info.plist**. Update the **Bundle Display Name**
-value to `$(PRODUCT_NAME)`.
+Nas **Build Settings**, defina o valor do **Product Name** para corresponder a
+cada flavor.
+Por exemplo, adicione Debug Free.
 
-![Step 3 using flavors image.](/assets/images/docs/flavors/step3-using-flavors.png){:width="100%"}
+![Imagem - Etapa 2 usando flavors.](/assets/images/docs/flavors/step-2-using-flavors-free.png){:width="100%"}
+
+</li>
+<li>
+
+Adicione o nome de exibição ao **Info.plist**. Atualize o valor de **Bundle
+Display Name** para `$(PRODUCT_NAME)`.
+
+![Imagem - Etapa 3 usando flavors.](/assets/images/docs/flavors/step3-using-flavors.png){:width="100%"}
 
 </li>
 </ol>
 
-Now you have set up your flavor by making a `free` scheme
-in Xcode and setting the build configurations for that scheme.
+Agora você configurou sua flavor criando um scheme `free`
+no Xcode e definindo as build configurations para esse scheme.
 
-For more information, skip to the [Launching your app flavors][]
-section at the end of this document.
+Para obter mais informações, pule para a seção [Iniciando suas flavors de
+aplicativo][]
+no final deste documento.
 
-### Plugin configurations
+### Configurações de plugin
 
-If your app uses a Flutter plugin, you need to update
-`ios/Podfile` (if developing for iOS) and `macos/Podfile` (if developing for macOS).
+Se seu aplicativo usa um plugin do Flutter, você precisa atualizar
+`ios/Podfile` (se estiver desenvolvendo para iOS) e `macos/Podfile` (se estiver
+desenvolvendo para macOS).
 
-1. In `ios/Podfile` and `macos/Podfile`, change the default for
-   **Debug**, **Profile**, and **Release**
-   to match the Xcode build configurations for the `free` scheme.
+1. Em `ios/Podfile` e `macos/Podfile`, altere o padrão para
+   **Debug**, **Profile** e **Release**
+   para corresponder às build configurations do Xcode para o scheme `free`.
 
 ```ruby
 project 'Runner', {
@@ -159,24 +173,27 @@ project 'Runner', {
 }
 ```
 
-## Using flavors in Android
+## Usando flavors no Android
 
-Setting up flavors in Android can be done in your project's
-**build.gradle** file.
+A configuração de flavors no Android pode ser feita no arquivo **build.gradle**
+do seu projeto.
 
-1. Inside your Flutter project,
-   navigate to **android**/**app**/**build.gradle**.
+1. Dentro do seu projeto Flutter,
+   navegue até **android**/**app**/**build.gradle**.
 
-2. Create a [`flavorDimension`][] to group your added product flavors.
-   Gradle doesn't combine product flavors that share the same `dimension`.
+2. Crie uma [`flavorDimension`][] para agrupar suas flavors de produto
+   adicionadas.
+   O Gradle não combina flavors de produto que compartilham a mesma
+   `dimension`.
 
-3. Add a `productFlavors` object with the desired flavors along
-   with values for **dimension**, **resValue**,
-   and **applicationId** or **applicationIdSuffix**.
+3. Adicione um objeto `productFlavors` com as flavors desejadas junto
+   com os valores para **dimension**, **resValue**
+   e **applicationId** ou **applicationIdSuffix**.
 
-   * The name of the application for each build is located in **resValue**.
-   * If you specify a **applicationIdSuffix** instead of a **applicationId**,
-     it is appended to the "base" application id.
+   * O nome do aplicativo para cada build está localizado em **resValue**.
+   * Se você especificar um **applicationIdSuffix** em vez de um
+     **applicationId**,
+     ele é anexado ao "base" application id.
 
 {% tabs "android-build-language" %}
 {% tab "Kotlin" %}
@@ -219,18 +236,21 @@ android {
 
 [`flavorDimension`]: {{site.android-dev}}/studio/build/build-variants#flavor-dimensions
 
-## Setting up launch configurations
+## Configurando configurações de inicialização
 
-Next, add a **launch.json** file; this allows you to run the command
+Em seguida, adicione um arquivo **launch.json**; isso permite que você execute o
+comando
 `flutter run --flavor [environment name]`.
 
-In VSCode, set up the launch configurations as follows:
+No VSCode, configure as configurações de inicialização da seguinte forma:
 
-1. In the root directory of your project, add a folder called **.vscode**.
-2. Inside the **.vscode** folder, create a file named **launch.json**.
-3. In the **launch.json** file, add a configuration object for each flavor.
-   Each configuration has a **name**, **request**, **type**, **program**,
-   and **args** key.
+1. No diretório raiz do seu projeto, adicione uma pasta chamada **.vscode**.
+2. Dentro da pasta **.vscode**, crie um arquivo chamado **launch.json**.
+3. No arquivo **launch.json**, adicione um objeto de configuração para cada
+   flavor.
+   Cada configuração tem uma chave **name**, **request**, **type**,
+   **program**
+   e **args**.
 
 ```json
 {
@@ -248,39 +268,43 @@ In VSCode, set up the launch configurations as follows:
 }
 ```
 
-You can now run the terminal command
-`flutter run --flavor free` or you can set up a run
-configuration in your IDE.
+Agora você pode executar o comando do terminal
+`flutter run --flavor free` ou você pode configurar uma execução
+configuração em seu IDE.
 
 {% comment %}
-TODO: When available, add an app sample.
+TODO: Quando disponível, adicione um exemplo de aplicativo.
 {% endcomment -%}
 
-## Launching your app flavors
+## Iniciando suas flavors de aplicativo
 
-1. Once the flavors are set up, modify the Dart code in
-**lib** / **main.dart** to consume the flavors.
-2. Test the setup using `flutter run --flavor free`
-at the command line, or in your IDE.
+1. Depois que as flavors forem configuradas, modifique o código Dart em
+**lib** / **main.dart** para consumir as flavors.
+2. Teste a configuração usando `flutter run --flavor free`
+na linha de comando ou em seu IDE.
 
-For examples of build flavors for [iOS][], [macOS][], and [Android][],
-check out the integration test samples in the [Flutter repo][].
+Para exemplos de build flavors para [iOS][], [macOS][] e [Android][],
+confira os exemplos de teste de integração no [repositório do Flutter][].
 
-## Retrieving your app's flavor at runtime
+## Recuperando a flavor do seu aplicativo em tempo de execução
 
-From your Dart code, you can use the [`appFlavor`][] API to determine what
-flavor your app was built with.
+Do seu código Dart, você pode usar a API [`appFlavor`][] para determinar com qual
+flavor seu aplicativo foi construído.
 
-## Conditionally bundling assets based on flavor
+## Agrupando condicionalmente ativos com base na flavor
 
-If you aren't familiar with how to add assets to your app, see
-[Adding assets and images][].
+Se você não estiver familiarizado com como adicionar ativos ao seu aplicativo,
+consulte
+[Adicionando ativos e imagens][].
 
-If you have assets that are only used in a specific flavor in your app, you can
-configure them to only be bundled into your app when building for that flavor.
-This prevents your app bundle size from being bloated by unused assets.
+Se você tiver ativos que são usados apenas em uma flavor específica em seu
+aplicativo, você pode
+configurá-los para serem agrupados apenas em seu aplicativo ao construir para
+essa flavor.
+Isso evita que o tamanho do pacote do seu aplicativo seja inchado por ativos
+não utilizados.
 
-Here is an example:
+Aqui está um exemplo:
 
 ```yaml
 flutter:
@@ -294,36 +318,40 @@ flutter:
         - premium
 ```
 
-In this example, files within the `assets/common/` directory will always be bundled
-when app is built during `flutter run` or `flutter build`. Files within the
-`assets/free/` directory are bundled _only_ when the `--flavor` option is set
-to `free`. Similarly, files within the `assets/premium` directory are
-bundled _only_ if `--flavor` is set to `premium`.
+Neste exemplo, os arquivos dentro do diretório `assets/common/` sempre serão
+agrupados
+quando o aplicativo for construído durante `flutter run` ou `flutter build`.
+Arquivos dentro do
+diretório `assets/free/` são agrupados _somente_ quando a opção `--flavor` é
+definida
+como `free`. Da mesma forma, os arquivos dentro do diretório `assets/premium`
+são
+agrupados _somente_ se `--flavor` estiver definido como `premium`.
 
-## More information
+## Mais informações
 
-For more information on creating and using flavors, check out
-the following resources:
+Para obter mais informações sobre como criar e usar flavors, consulte
+os seguintes recursos:
 
 * [Build flavors in Flutter (Android and iOS) with different Firebase projects per flavor Flutter Ready to Go][]
 * [Flavoring Flutter Applications (Android & iOS)][]
 * [How to Setup Flutter & Firebase with Multiple Flavors using the FlutterFire CLI][flutterfireCLI]
 
-### Packages
+### Pacotes
 
-For packages that support creating flavors, check out the following:
+Para pacotes que suportam a criação de flavors, confira os seguintes:
 
 * [`flutter_flavor`][]
 * [`flutter_flavorizr`][]
 
-[Launching your app flavors]: /deployment/flavors/#launching-your-app-flavors
-[Flutter repo]: {{site.repo.flutter}}/blob/master/dev/integration_tests/flavors/lib/main.dart
+[Iniciando suas flavors de aplicativo]: /deployment/flavors/#launching-your-app-flavors
+[repositório do Flutter]: {{site.repo.flutter}}/blob/master/dev/integration_tests/flavors/lib/main.dart
 [iOS]: {{site.repo.flutter}}/tree/master/dev/integration_tests/flavors/ios
 [macOS]: {{site.repo.flutter}}/tree/master/dev/integration_tests/flavors/macos
 [iOS (Xcode)]: {{site.repo.flutter}}/tree/master/dev/integration_tests/flavors/ios
 [`appFlavor`]: {{site.api}}/flutter/services/appFlavor-constant.html
 [Android]: {{site.repo.flutter}}/tree/master/dev/integration_tests/flavors/android
-[Adding assets and images]: /ui/assets/assets-and-images
+[Adicionando ativos e imagens]: /ui/assets/assets-and-images
 [Build flavors in Flutter (Android and iOS) with different Firebase projects per flavor Flutter Ready to Go]: {{site.medium}}/@animeshjain/build-flavors-in-flutter-android-and-ios-with-different-firebase-projects-per-flavor-27c5c5dac10b
 [Flavoring Flutter Applications (Android & iOS)]: {{site.medium}}/flutter-community/flavoring-flutter-applications-android-ios-ea39d3155346
 [flutterfireCLI]: https://codewithandrea.com/articles/flutter-firebase-multiple-flavors-flutterfire-cli/

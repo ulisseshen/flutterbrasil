@@ -1,13 +1,14 @@
 ---
-title: Add macOS as a target platform for Flutter
-description: Configure your system to develop Flutter for macOS.
-short-title: Set up macOS development
+ia-translate: true
+title: Adicione o macOS como plataforma de destino para Flutter
+description: Configure seu sistema para desenvolver Flutter para macOS.
+short-title: Configurar desenvolvimento macOS
 target-list: [iOS, Android, web]
 ---
 
-To set up your development environment for targeting macOS,
-choose the guide that corresponds to the [Getting Started path][] you followed,
-or the platform you already have set up.
+Para configurar seu ambiente de desenvolvimento para direcionar o macOS,
+escolha o guia que corresponde ao [caminho de Introdução][] que você seguiu,
+ou a plataforma que você já tem configurada.
 
 <div class="card-grid">
 {% for target in target-list %}
@@ -29,7 +30,7 @@ or the platform you already have set up.
           <span class="material-symbols">laptop_mac</span>
         </span>
         <span class="text-muted d-block">
-        Make {{ target }} and macOS desktop apps
+        Crie aplicativos para {{ target }} e macOS desktop
         </span>
       </header>
     </div>
@@ -37,4 +38,4 @@ or the platform you already have set up.
 {% endfor %}
 </div>
 
-[Getting Started path]: /get-started/install
+[caminho de Introdução]: /get-started/install

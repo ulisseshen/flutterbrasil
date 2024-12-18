@@ -1,167 +1,167 @@
 ---
-title: Casual Games Toolkit
+ia-translate: true
+title: Kit de Ferramentas para Jogos Casuais
 description: >-
-  Learn about free & open source multiplatform 2D game development in Flutter.
+  Aprenda sobre o desenvolvimento de jogos 2D multiplataforma gratuitos e de código aberto em Flutter.
 ---
 
-The Flutter Casual Games Toolkit pulls together new and existing resources
-so you can accelerate development of games on mobile platforms.
+O Kit de Ferramentas para Jogos Casuais do Flutter reúne recursos novos e existentes
+para que você possa acelerar o desenvolvimento de jogos em plataformas móveis.
 
 :::recommend
-Check out the latest [game updates and resources for Flutter 3.22](#updates)!
+Confira as últimas [atualizações de jogos e recursos para Flutter 3.22](#updates)!
 :::
 
-This page outlines where you can find these available resources.
+Esta página descreve onde você pode encontrar esses recursos disponíveis.
 
-## Why Flutter for games?
+## Por que Flutter para jogos?
 
-The Flutter framework can create performant apps for six target platforms
-from the desktop to mobile devices to the web.
+O framework Flutter pode criar aplicativos de alto desempenho para seis plataformas
+de destino, desde desktops até dispositivos móveis e a web.
 
-With Flutter's benefits of cross-platform development, performance, and
-open source licensing, it makes a great choice for games.
+Com os benefícios do Flutter de desenvolvimento multiplataforma, desempenho e
+licenciamento de código aberto, ele é uma ótima opção para jogos.
 
-Casual games fall into two categories: turn-based games
-and real-time games.
-You might be familiar with both types of games,
-though perhaps you didn't think about them in quite this way.
+Jogos casuais se dividem em duas categorias: jogos baseados em turnos e jogos em tempo real.
+Você pode estar familiarizado com os dois tipos de jogos,
+embora talvez não tenha pensado neles dessa forma.
 
-_Turn-based games_ cover games meant for a mass market with
-simple rules and gameplay.
-This includes board games, card games, puzzles, and strategy games.
-These games respond to simple user input,
-like tapping on a card or entering a number or letter.
-These games are well suited for Flutter.
+_Jogos baseados em turnos_ abrangem jogos destinados a um mercado de massa com
+regras e jogabilidade simples.
+Isso inclui jogos de tabuleiro, jogos de cartas, quebra-cabeças e jogos de estratégia.
+Esses jogos respondem a entradas simples do usuário,
+como tocar em uma carta ou inserir um número ou letra.
+Esses jogos são adequados para Flutter.
 
-_Real-time games_ cover games a series of actions require real time responses.
-These include endless runner games, racing games, and so on.
-You might want to create a game with advanced features like collision detection,
-camera views, game loops, and the like.
-These types of games could use an open source game engine like the
-[Flame game engine][] built using Flutter.
+_Jogos em tempo real_ abrangem jogos em que uma série de ações exigem respostas em tempo real.
+Isso inclui jogos de corrida sem fim, jogos de corrida e assim por diante.
+Você pode querer criar um jogo com recursos avançados como detecção de colisão,
+visualizações de câmera, game loops e similares.
+Esses tipos de jogos podem usar um game engine de código aberto como o
+[Flame game engine][] construído usando Flutter.
 
-## What's included in the toolkit
+## O que está incluído no kit de ferramentas
 
-The Casual Games Toolkit provides the following free resources.
+O Kit de Ferramentas para Jogos Casuais fornece os seguintes recursos gratuitos.
 
-* A repository that includes three new game templates that provide
-  a starting point for building a casual game.
+* Um repositório que inclui três novos modelos de jogos que fornecem
+  um ponto de partida para construir um jogo casual.
 
-  1. A [base game template][basic-template]
-     that includes the basics for:
+  1. Um [modelo de jogo básico][basic-template]
+     que inclui o básico para:
 
-     * Main menu
-     * Navigation
-     * Settings
-     * Level selection
-     * Player progress
-     * Play session management
-     * Sound
-     * Themes
+     * Menu principal
+     * Navegação
+     * Configurações
+     * Seleção de nível
+     * Progresso do jogador
+     * Gerenciamento de sessão de jogo
+     * Som
+     * Temas
 
-  1. A [card game template][card-template]
-     that includes everything in the base template plus:
+  1. Um [modelo de jogo de cartas][card-template]
+     que inclui tudo no modelo base mais:
 
-     * Drag and drop
-     * Game state management
-     * Multiplayer integration hooks
+     * Arrastar e soltar
+     * Gerenciamento de estado do jogo
+     * Hooks de integração multijogador
 
-  1. An [endless runner template][runner-template] created in partnership
-     with the open source game engine, Flame. It implements:
+  1. Um [modelo de endless runner][runner-template] criado em parceria
+     com o game engine de código aberto, Flame. Ele implementa:
 
-     * A FlameGame base template
-     * Player steering
-     * Collision detection
-     * Parallax effects
-     * Spawning
-     * Different visual effects
+     * Um modelo base FlameGame
+     * Direção do jogador
+     * Detecção de colisão
+     * Efeitos de paralaxe
+     * Geração de objetos
+     * Diferentes efeitos visuais
 
-  1. A sample game built on top of the endless runner template,
-     called SuperDash. You can play the game on iOS, Android,
-     or [web][], [view the open source code repo][], or 
-     [read how the game was created in 6 weeks][].
+  1. Um jogo de amostra construído sobre o modelo de endless runner,
+     chamado SuperDash. Você pode jogar o jogo no iOS, Android ou
+     [web][], [visualizar o repositório de código aberto][], ou
+     [ler como o jogo foi criado em 6 semanas][].
 
-* Developer guides for integrating needed services.
-* A link to a [Flame Discord][game-discord] channel.
-  If you have a Discord account, use this [direct link][discord-direct].
+* Guias para desenvolvedores para integrar os serviços necessários.
+* Um link para um canal [Flame Discord][game-discord].
+  Se você tiver uma conta no Discord, use este [link direto][discord-direct].
 
-The included game templates and cookbook recipes make certain choices
-to accelerate development.
-They include specific packages, like `provider`, `google_mobile_ads`,
-`in_app_purchase`, `audioplayers`, `crashlytics`, and `games_services`.
-If you prefer other packages, you can change the code to use them.
+Os modelos de jogos incluídos e as receitas do cookbook fazem certas escolhas
+para acelerar o desenvolvimento.
+Eles incluem packages específicos, como `provider`, `google_mobile_ads`,
+`in_app_purchase`, `audioplayers`, `crashlytics` e `games_services`.
+Se você preferir outros packages, pode alterar o código para usá-los.
 
-The Flutter team understands that monetization might be a future consideration.
-Cookbook recipes for advertising and in-app purchases have been added.
+A equipe do Flutter entende que a monetização pode ser uma consideração futura.
+Receitas de cookbook para publicidade e compras no aplicativo foram adicionadas.
 
-As explained on the [Games][] page,
-you can leverage up to $900 in offers when you integrate Google services,
-such as [Cloud, Firebase][], and [Ads][], into your game.
+Conforme explicado na página [Games][],
+você pode aproveitar até US$ 900 em ofertas ao integrar os serviços do Google,
+como [Cloud, Firebase][] e [Ads][], em seu jogo.
 
 :::important
-You must connect your Firebase and GCP accounts to use credits for
-Firebase services and verify your business email during sign up to earn
-an additional $100 on top of the normal $300 credit.
-For the Ads offer, [check your region's eligibility][].
+Você deve conectar suas contas do Firebase e do GCP para usar créditos para
+serviços do Firebase e verificar seu e-mail comercial durante a inscrição para ganhar
+US$ 100 adicionais em cima do crédito normal de US$ 300.
+Para a oferta de anúncios, [verifique a elegibilidade da sua região][].
 :::
 
-## Get started
+## Comece
 
-Are you ready? To get started:
+Você está pronto? Para começar:
 
-1. If you haven't done so, [install Flutter][].
-1. [Clone the games repo][game-repo].
-1. Review the `README` file for the first type of game you want to create.
+1. Se você ainda não o fez, [instale o Flutter][].
+1. [Clone o repositório de jogos][game-repo].
+1. Revise o arquivo `README` para o primeiro tipo de jogo que você deseja criar.
 
-   * [basic game][basic-template-readme]
-   * [card game][card-template-readme]
-   * [runner game][runner-template-readme]
+   * [Jogo básico][basic-template-readme]
+   * [Jogo de cartas][card-template-readme]
+   * [Jogo de corrida][runner-template-readme]
 
-1. [Join the Flame community on Discord][game-discord]
-   (use the [direct link][discord-direct] if you already
-   have a Discord account).
-1. Review the codelabs and cookbook recipes.
+1. [Junte-se à comunidade Flame no Discord][game-discord]
+   (use o [link direto][discord-direct] se você já
+   tiver uma conta no Discord).
+1. Revise os codelabs e as receitas do cookbook.
 
-   * {{recipe-icon}} Build a [multiplayer game][multiplayer-recipe] with Cloud Firestore.
-   * {{codelab}} Build a [word puzzle][] with Flutter.—**NEW**
-   * {{codelab}} Build a [2D physics game][] with Flutter and Flame.—**NEW**
-   * {{codelab}} [Add sound and music][] to your Flutter game with SoLoud.—**NEW**
-   * {{recipe-icon}}Make your games more engaging
-     with [leaderboards and achievements][leaderboard-recipe].
-   * Monetize your games with {{recipe-icon}}[in-game ads][ads-recipe]
-     and {{codelab}} [in-app purchases][iap-recipe].
-   * Add user authentication flow to your game with
+   * {{recipe-icon}} Construa um [jogo multijogador][multiplayer-recipe] com o Cloud Firestore.
+   * {{codelab}} Construa um [quebra-cabeça de palavras][] com Flutter. — **NOVO**
+   * {{codelab}} Construa um [jogo de física 2D][] com Flutter e Flame. — **NOVO**
+   * {{codelab}} [Adicione som e música][] ao seu jogo Flutter com SoLoud. — **NOVO**
+   * {{recipe-icon}} Torne seus jogos mais envolventes
+     com [placar de líderes e conquistas][leaderboard-recipe].
+   * Monetize seus jogos com {{recipe-icon}}[anúncios no jogo][ads-recipe]
+     e {{codelab}} [compras no aplicativo][iap-recipe].
+   * Adicione um fluxo de autenticação de usuário ao seu jogo com
      {{recipe-icon}} [Firebase Authentication][firebase-auth].
-   * Collect analytics about crashes and errors inside your game
-     with {{recipe-icon}} [Firebase Crashlytics][firebase-crashlytics].
+   * Colete análises sobre falhas e erros dentro do seu jogo
+     com {{recipe-icon}} [Firebase Crashlytics][firebase-crashlytics].
 
-1. Set up accounts on AdMob, Firebase, and Cloud, as needed.
-1. Write your game!
-1. Deploy to both the Google Play and Apple stores.
+1. Configure as contas no AdMob, Firebase e Cloud, conforme necessário.
+1. Escreva seu jogo!
+1. Implante nas lojas Google Play e Apple.
 
-[Add sound and music]: {{site.codelabs}}/codelabs/flutter-codelab-soloud
-[2D physics game]: {{site.codelabs}}/codelabs/flutter-flame-forge2d
-[word puzzle]: {{site.codelabs}}/codelabs/flutter-word-puzzle
+[Adicione som e música]: {{site.codelabs}}/codelabs/flutter-codelab-soloud
+[jogo de física 2D]: {{site.codelabs}}/codelabs/flutter-flame-forge2d
+[quebra-cabeça de palavras]: {{site.codelabs}}/codelabs/flutter-word-puzzle
 
-## Example games
+## Jogos de exemplo
 
-For Google I/O 2022, both the Flutter team
-and Very Good Ventures created new games.
+Para o Google I/O 2022, tanto a equipe do Flutter
+quanto a Very Good Ventures criaram novos jogos.
 
-* VGV created the [I/O Pinball game][pinball-game] using the Flame engine.
-  To learn about this game,
-  check out [I/O Pinball Powered by Flutter and Firebase][] on Medium
-  and [play the game][pinball-game] in your browser.
+* A VGV criou o [jogo I/O Pinball][pinball-game] usando o engine Flame.
+  Para saber mais sobre este jogo,
+  confira [I/O Pinball Powered by Flutter and Firebase][] no Medium
+  e [jogue o jogo][pinball-game] no seu navegador.
 
-* The Flutter team created [I/O Flip][flip-game], a virtual [CCG].
-  To learn more about I/O Flip,
-  check out [How It's Made: I/O FLIP adds a twist to a classic card game with generative AI][flip-blog]
-  on the Google Developers blog and [play the game][flip-game] in your browser.
+* A equipe do Flutter criou o [I/O Flip][flip-game], um [CCG] virtual.
+  Para saber mais sobre o I/O Flip,
+  confira [Como foi feito: I/O FLIP adiciona um toque especial a um jogo de cartas clássico com IA generativa][flip-blog]
+  no blog Google Developers e [jogue o jogo][flip-game] no seu navegador.
 
-## Other resources
+## Outros recursos
 
-Once you feel ready to go beyond these games templates,
-investigate other resources that our community recommended.
+Depois de se sentir pronto para ir além desses modelos de jogos,
+investigue outros recursos que nossa comunidade recomendou.
 
 {% assign pkg-icon = '<span class="material-symbols">package_2</span>' %}
 {% assign doc-icon = '<span class="material-symbols">quick_reference_all</span>' %}
@@ -173,26 +173,26 @@ investigate other resources that our community recommended.
 {% assign api-icon = '<span class="material-symbols">api</span>' %}
 
 :::secondary
-{{pkg-icon}} Flutter package<br>
-{{api-icon}} API documentation<br>
+{{pkg-icon}} Package Flutter<br>
+{{api-icon}} Documentação da API<br>
 {{codelab}} Codelab <br>
-{{recipe-icon}} Cookbook recipe<br>
-{{tool-icon}} Desktop application<br>
-{{assets-icon}} Game assets<br>
-{{doc-icon}} Guide<br>
+{{recipe-icon}} Receita do Cookbook<br>
+{{tool-icon}} Aplicativo de desktop<br>
+{{assets-icon}} Assets de jogo<br>
+{{doc-icon}} Guia<br>
 :::
 
 <table class="table table-striped">
 <tr>
-<th>Feature</th>
-<th>Resources</th>
+<th>Recurso</th>
+<th>Recursos</th>
 </tr>
 
 <tr>
-<td>Animation and sprites</td>
+<td>Animação e sprites</td>
 <td>
 
-{{recipe-icon}} [Special effects][]<br>
+{{recipe-icon}} [Efeitos especiais][]<br>
 {{tool-icon}} [Spriter Pro][]<br>
 {{pkg-icon}} [rive][]<br>
 {{pkg-icon}} [spriteWidget][]
@@ -201,7 +201,7 @@ investigate other resources that our community recommended.
 </tr>
 
 <tr>
-<td>App review</td>
+<td>Avaliação do aplicativo</td>
 <td>
 
 {{pkg-icon}} [app_review][]
@@ -210,39 +210,39 @@ investigate other resources that our community recommended.
 </tr>
 
 <tr>
-<td>Audio</td>
+<td>Áudio</td>
 <td>
 
 {{pkg-icon}} [audioplayers][]<br>
-{{pkg-icon}} [flutter_soloud][]—**NEW**<br>
-{{codelab}}  [Add sound and music to your Flutter game with SoLoud][]—**NEW**
+{{pkg-icon}} [flutter_soloud][]—**NOVO**<br>
+{{codelab}}  [Adicione som e música ao seu jogo Flutter com SoLoud][]—**NOVO**
 
 </td>
 </tr>
 
 <tr>
-<td>Authentication</td>
+<td>Autenticação</td>
 <td>
 
-{{codelab}} [User Authentication using Firebase][firebase-auth]
+{{codelab}} [Autenticação de Usuário usando Firebase][firebase-auth]
 
 </td>
 </tr>
 
 <tr>
-<td>Cloud services</td>
+<td>Serviços de nuvem</td>
 <td>
 
-{{codelab}} [Add Firebase to your Flutter game][]
+{{codelab}} [Adicione o Firebase ao seu jogo Flutter][]
 
 </td>
 </tr>
 
 <tr>
-<td>Debugging</td>
+<td>Depuração</td>
 <td>
 
-{{doc-icon}} [Firebase Crashlytics overview][firebase-crashlytics]<br>
+{{doc-icon}} [Visão geral do Firebase Crashlytics][firebase-crashlytics]<br>
 {{pkg-icon}} [firebase_crashlytics][]
 
 </td>
@@ -258,7 +258,7 @@ investigate other resources that our community recommended.
 </tr>
 
 <tr>
-<td>Game assets<br>and asset tools</td>
+<td>Assets de jogo<br>e ferramentas de assets</td>
 <td>
 
 {{assets-icon}} [CraftPix][]<br>
@@ -280,17 +280,17 @@ investigate other resources that our community recommended.
 </tr>
 
 <tr>
-<td>Game features</td>
+<td>Recursos do jogo</td>
 <td>
 
-{{recipe-icon}} [Add achievements and leaderboards to your game][leaderboard-recipe]<br>
-{{recipe-icon}} [Add multiplayer support to your game][multiplayer-recipe]
+{{recipe-icon}} [Adicione conquistas e placares de líderes ao seu jogo][leaderboard-recipe]<br>
+{{recipe-icon}} [Adicione suporte multijogador ao seu jogo][multiplayer-recipe]
 
 </td>
 </tr>
 
 <tr>
-<td>Game services integration</td>
+<td>Integração de serviços de jogos</td>
 <td>
 
 {{pkg-icon}} [games_services][game-svc-pkg]
@@ -299,16 +299,16 @@ investigate other resources that our community recommended.
 </tr>
 
 <tr>
-<td>Legacy code</td>
+<td>Código legado</td>
 <td>
 
-{{codelab}} [Use the Foreign Function Interface in a Flutter plugin][]
+{{codelab}} [Use a Interface de Função Estrangeira em um plugin Flutter][]
 
 </td>
 </tr>
 
 <tr>
-<td>Level editor</td>
+<td>Editor de níveis</td>
 <td>
 
 {{tool-icon}} [Tiled][]
@@ -317,19 +317,19 @@ investigate other resources that our community recommended.
 </tr>
 
 <tr>
-<td>Monetization</td>
+<td>Monetização</td>
 <td>
 
-{{recipe-icon}} [Add advertising to your Flutter game][ads-recipe]<br>
-{{codelab}}  [Add AdMob ads to a Flutter app][]<br>
-{{codelab}}  [Add in-app purchases to your Flutter app][iap-recipe]<br>
-{{doc-icon}} [Gaming UX and Revenue Optimizations for Apps][] (PDF)
+{{recipe-icon}} [Adicione publicidade ao seu jogo Flutter][ads-recipe]<br>
+{{codelab}}  [Adicione anúncios AdMob a um aplicativo Flutter][]<br>
+{{codelab}}  [Adicione compras no aplicativo ao seu aplicativo Flutter][iap-recipe]<br>
+{{doc-icon}} [Otimizações de UX de jogos e receita para aplicativos][] (PDF)
 
 </td>
 </tr>
 
 <tr>
-<td>Persistence</td>
+<td>Persistência</td>
 <td>
 
 {{pkg-icon}} [shared_preferences][]<br>
@@ -340,21 +340,21 @@ investigate other resources that our community recommended.
 </tr>
 
 <tr>
-<td>Special effects</td>
+<td>Efeitos especiais</td>
 <td>
 
 {{api-icon}} [Paint API][]<br>
-{{recipe-icon}} [Special effects][]
+{{recipe-icon}} [Efeitos especiais][]
 
 </td>
 </tr>
 
 <tr>
-<td>User Experience</td>
+<td>Experiência do Usuário</td>
 <td>
 
-{{codelab}} [Build next generation UIs in Flutter][]<br>
-{{doc-icon}} [Best practices for optimizing Flutter web loading speed][]—**NEW**
+{{codelab}} [Crie UIs de última geração em Flutter][]<br>
+{{doc-icon}} [Melhores práticas para otimizar a velocidade de carregamento da web do Flutter][]—**NOVO**
 
 </td>
 </tr>
@@ -387,23 +387,23 @@ investigate other resources that our community recommended.
 [runner-template-readme]: {{games-gh}}/blob/main/templates/endless_runner/README.md
 [runner-template]: {{games-gh}}/tree/main/templates/endless_runner
 
-[Add AdMob ads to a Flutter app]: {{site.codelabs}}/codelabs/admob-ads-in-flutter
-[Build next generation UIs in Flutter]: {{site.codelabs}}/codelabs/flutter-next-gen-uis
+[Adicione anúncios AdMob a um aplicativo Flutter]: {{site.codelabs}}/codelabs/admob-ads-in-flutter
+[Crie UIs de última geração em Flutter]: {{site.codelabs}}/codelabs/flutter-next-gen-uis
 [firebase-crashlytics]: {{site.firebase}}/docs/crashlytics/get-started?platform=flutter
 [ads-recipe]: /cookbook/plugins/google-mobile-ads
 [iap-recipe]: {{site.codelabs}}/codelabs/flutter-in-app-purchases#0
 [leaderboard-recipe]: /cookbook/games/achievements-leaderboard
 [multiplayer-recipe]: /cookbook/games/firestore-multiplayer
 [firebase-auth]: {{site.firebase}}/codelabs/firebase-auth-in-flutter-apps#0
-[Use the Foreign Function Interface in a Flutter plugin]: {{site.codelabs}}/codelabs/flutter-ffigen
+[Use a Interface de Função Estrangeira em um plugin Flutter]: {{site.codelabs}}/codelabs/flutter-ffigen
 [bonfire-pkg]: {{site.pub}}/packages/bonfire
 [CraftPix]: https://craftpix.net
-[Add Firebase to your Flutter game]: {{site.firebase}}/docs/flutter/setup
+[Adicione o Firebase ao seu jogo Flutter]: {{site.firebase}}/docs/flutter/setup
 [GIMP]: https://www.gimp.org
 [Game Developer Studio]: https://www.gamedeveloperstudio.com
-[Gaming UX and Revenue Optimizations for Apps]: {{site.main-url}}/go/games-revenue
+[Otimizações de UX de jogos e receita para aplicativos]: {{site.main-url}}/go/games-revenue
 [Paint API]: {{site.api}}/flutter/dart-ui/Paint-class.html
-[Special effects]: /cookbook/effects
+[Efeitos especiais]: /cookbook/effects
 [Spriter Pro]: https://store.steampowered.com/app/332360/Spriter_Pro/
 [app_review]: {{site.pub-pkg}}/app_review
 [audioplayers]: {{site.pub-pkg}}/audioplayers
@@ -416,70 +416,70 @@ investigate other resources that our community recommended.
 [spriteWidget]: {{site.pub-pkg}}/spritewidget
 [sqflite]: {{site.pub-pkg}}/sqflite
 [win32_gamepad]: {{site.pub-pkg}}/win32_gamepad
-[read how the game was created in 6 weeks]: {{site.flutter-medium}}/how-we-built-the-new-super-dash-demo-in-flutter-and-flame-in-just-six-weeks-9c7aa2a5ad31
-[view the open source code repo]: {{site.github}}/flutter/super_dash
+[ler como o jogo foi criado em 6 semanas]: {{site.flutter-medium}}/how-we-built-the-new-super-dash-demo-in-flutter-and-flame-in-just-six-weeks-9c7aa2a5ad31
+[visualizar o repositório de código aberto]: {{site.github}}/flutter/super_dash
 [web]: https://superdash.flutter.dev/
 [Tiled]: https://www.mapeditor.org/
 [flutter_soloud]: {{site.pub-pkg}}/flutter_soloud
 [SoLoud codelab]: {{site.codelabs}}/codelabs/flutter-codelab-soloud
 
-## Games Toolkit updates for Flutter 3.22 {:#updates}
+## Atualizações do Kit de Ferramentas para Jogos para Flutter 3.22 {:#updates}
 
-The following codelabs and guides were added for
-the Flutter 3.22 release:
+Os seguintes codelabs e guias foram adicionados para
+a versão do Flutter 3.22:
 
-**Low-latency, high-performance sound**
-: In collaboration with the Flutter community ([@Marco Bavagnoli][]),
-  we've enabled the SoLoud audio engine.
-  This free and portable engine delivers the low-latency and
-  high-performance sound that's essential for many games.
-  To help you get started, check out the new codelab,
-  [Add sound and music to your Flutter game with SoLoud][],
-  dedicated to adding sound and music to your game.
+**Som de baixa latência e alto desempenho**
+: Em colaboração com a comunidade Flutter ([@Marco Bavagnoli][]),
+  habilitamos o engine de áudio SoLoud.
+  Este engine gratuito e portátil oferece a baixa latência e
+  som de alto desempenho que é essencial para muitos jogos.
+  Para ajudá-lo a começar, confira o novo codelab,
+  [Adicione som e música ao seu jogo Flutter com SoLoud][],
+  dedicado a adicionar som e música ao seu jogo.
 
-**Word puzzle games**
-: Check out the new codelab,
-  [Build a word puzzle with Flutter][],
-  focused on building word puzzle games.
-  This genre is perfect for exploring Flutter's UI capabilities,
-  and this codelab dives into using Flutter's background processing
-  to effortlessly generate expansive crossword-style grids of
-  interlocking words without compromising the user experience.
+**Jogos de quebra-cabeça de palavras**
+: Confira o novo codelab,
+  [Construa um quebra-cabeça de palavras com Flutter][],
+  focado na construção de jogos de quebra-cabeça de palavras.
+  Este gênero é perfeito para explorar os recursos de UI do Flutter,
+  e este codelab mergulha no uso do processamento em segundo plano do Flutter
+  para gerar sem esforço grades expansivas no estilo de palavras cruzadas de
+  palavras interligadas sem comprometer a experiência do usuário.
 
-**Forge 2D physics engine**
-: The new Forge2D codelab,
-  [Build a 2D physics game with Flutter and Flame][],
-  guides you through crafting game mechanics in a
-  Flutter and Flame game using a 2D physics simulation
-  along the lines of Box2D, called [Forge2D][].
+**Engine de física Forge 2D**
+: O novo codelab Forge2D,
+  [Construa um jogo de física 2D com Flutter e Flame][],
+  orienta você na criação de mecânicas de jogo em um
+  jogo Flutter e Flame usando uma simulação de física 2D
+  semelhante ao Box2D, chamado [Forge2D][].
 
-**Optimize loading speed for Flutter web-based games**
-: In the fast-paced world of web-based gaming,
-  a slow loading game is a major deterrent.
-  Players expect instant gratification and will
-  quickly abandon a game that doesn't load promptly.
-  Hence, we've published a guide,
-  [Best practices for optimizing Flutter web loading speed][],
-  authored by [Cheng Lin][],
-  to help you optimize your Flutter web-based games
-  and apps for lightning-fast loading speeds.
+**Otimize a velocidade de carregamento para jogos baseados na web do Flutter**
+: No mundo acelerado dos jogos baseados na web,
+  um jogo com carregamento lento é um grande impedimento.
+  Os jogadores esperam gratificação instantânea e irão
+  abandonar rapidamente um jogo que não carrega prontamente.
+  Portanto, publicamos um guia,
+  [Melhores práticas para otimizar a velocidade de carregamento da web do Flutter][],
+  escrito por [Cheng Lin][],
+  para ajudá-lo a otimizar seus jogos e
+  aplicativos baseados na web do Flutter para velocidades de carregamento extremamente rápidas.
 
 [@Marco Bavagnoli]: {{site.github}}/alnitak
-[Add sound and music to your Flutter game with SoLoud]: {{site.codelabs}}/codelabs/flutter-codelab-soloud
-[Best practices for optimizing Flutter web loading speed]: {{site.flutter-medium}}/best-practices-for-optimizing-flutter-web-loading-speed-7cc0df14ce5c
-[Build a word puzzle with Flutter]: {{site.codelabs}}/codelabs/flutter-word-puzzle
-[Build a 2D physics game with Flutter and Flame]: {{site.codelabs}}/codelabs/flutter-flame-forge2d
+[Adicione som e música ao seu jogo Flutter com SoLoud]: {{site.codelabs}}/codelabs/flutter-codelab-soloud
+[Melhores práticas para otimizar a velocidade de carregamento da web do Flutter]: {{site.flutter-medium}}/best-practices-for-optimizing-flutter-web-loading-speed-7cc0df14ce5c
+[Construa um quebra-cabeça de palavras com Flutter]: {{site.codelabs}}/codelabs/flutter-word-puzzle
+[Construa um jogo de física 2D com Flutter e Flame]: {{site.codelabs}}/codelabs/flutter-flame-forge2d
 [Cheng Lin]: {{site.medium}}/@mhclin113_26002
 [Forge2D]: {{site.pub-pkgs}}/forge2d
 
-## Other new resources
+## Outros novos recursos
 
-Check out the following videos:
+Confira os seguintes vídeos:
 
-* [Building multiplatform games with Flutter][gdc-talk], a talk
-  given at the [Game Developer Conference (GDC)][] 2024.
-* [How to build a physics-based game with Flutter and Flame's Forge2D][forge2d-video],
-  from Google I/O 2024.
+* [Construindo jogos multiplataforma com Flutter][gdc-talk], uma palestra
+  apresentada na [Game Developer Conference (GDC)][] 2024.
+* [Como construir um jogo baseado em física com Flutter e Forge2D do Flame][forge2d-video],
+  do Google I/O 2024.
 
 [Game Developer Conference (GDC)]: https://gdconf.com/
 [forge2d-video]: {{site.youtube-site}}/watch?v=nsnQJrYHHNQ

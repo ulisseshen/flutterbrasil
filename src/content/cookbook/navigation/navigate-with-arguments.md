@@ -1,6 +1,7 @@
 ---
-title: Pass arguments to a named route
-description: How to pass arguments to a named route.
+ia-translate: true
+title: Passar argumentos para uma rota nomeada
+description: Como passar argumentos para uma rota nomeada.
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
@@ -8,50 +9,49 @@ js:
 
 <?code-excerpt path-base="cookbook/navigation/navigate_with_arguments"?>
 
-The [`Navigator`][] provides the ability to navigate
-to a named route from any part of an app using
-a common identifier.
-In some cases, you might also need to pass arguments to a
-named route. For example, you might wish to navigate to the `/user` route and
-pass information about the user to that route.
+O [`Navigator`][] oferece a capacidade de navegar
+para uma rota nomeada de qualquer parte de um aplicativo usando
+um identificador comum.
+Em alguns casos, você também pode precisar passar argumentos para uma
+rota nomeada. Por exemplo, você pode querer navegar para a rota `/user` e
+passar informações sobre o usuário para essa rota.
 
 :::note
-Named routes are no longer recommended for most
-applications. For more information, see
-[Limitations][] in the [navigation overview][] page.
+Rotas nomeadas não são mais recomendadas para a maioria
+dos aplicativos. Para obter mais informações, consulte
+[Limitações][] na página de [visão geral da navegação][].
 :::
 
-[Limitations]: /ui/navigation#limitations
-[navigation overview]: /ui/navigation
+[Limitações]: /ui/navigation#limitations
+[visão geral da navegação]: /ui/navigation
 
-You can accomplish this task using the `arguments` parameter of the
-[`Navigator.pushNamed()`][] method. Extract the arguments using the
-[`ModalRoute.of()`][] method or inside an [`onGenerateRoute()`][]
-function provided to the [`MaterialApp`][] or [`CupertinoApp`][]
-constructor.
+Você pode realizar essa tarefa usando o parâmetro `arguments` do
+método [`Navigator.pushNamed()`][]. Extraia os argumentos usando o
+método [`ModalRoute.of()`][] ou dentro de uma função [`onGenerateRoute()`][]
+fornecida para o construtor [`MaterialApp`][] ou [`CupertinoApp`][].
 
-This recipe demonstrates how to pass arguments to a named
-route and read the arguments using `ModalRoute.of()`
-and `onGenerateRoute()` using the following steps:
+Esta receita demonstra como passar argumentos para uma rota nomeada
+e ler os argumentos usando `ModalRoute.of()`
+e `onGenerateRoute()` usando as seguintes etapas:
 
-  1. Define the arguments you need to pass.
-  2. Create a widget that extracts the arguments.
-  3. Register the widget in the `routes` table.
-  4. Navigate to the widget.
+  1. Defina os argumentos que você precisa passar.
+  2. Crie um widget que extraia os argumentos.
+  3. Registre o widget na tabela `routes`.
+  4. Navegue até o widget.
 
-## 1. Define the arguments you need to pass
+## 1. Defina os argumentos que você precisa passar
 
-First, define the arguments you need to pass to the new route.
-In this example, pass two pieces of data:
-The `title` of the screen and a `message`.
+Primeiro, defina os argumentos que você precisa passar para a nova rota.
+Neste exemplo, passe duas informações:
+O `title` da tela e uma `message`.
 
-To pass both pieces of data, create a class that stores this information.
+Para passar ambas as informações, crie uma classe que armazene essas informações.
 
 <?code-excerpt "lib/main.dart (ScreenArguments)"?>
 ```dart
-// You can pass any object to the arguments parameter.
-// In this example, create a class that contains both
-// a customizable title and message.
+// Você pode passar qualquer objeto para o parâmetro arguments.
+// Neste exemplo, crie uma classe que contenha ambos
+// um título e uma mensagem personalizáveis.
 class ScreenArguments {
   final String title;
   final String message;
@@ -60,18 +60,18 @@ class ScreenArguments {
 }
 ```
 
-## 2. Create a widget that extracts the arguments
+## 2. Crie um widget que extraia os argumentos
 
-Next, create a widget that extracts and displays the
-`title` and `message` from the `ScreenArguments`.
-To access the `ScreenArguments`,
-use the [`ModalRoute.of()`][] method.
-This method returns the current route with the arguments.
+Em seguida, crie um widget que extraia e exiba o
+`title` e a `message` de `ScreenArguments`.
+Para acessar o `ScreenArguments`,
+use o método [`ModalRoute.of()`][].
+Este método retorna a rota atual com os argumentos.
 
 <?code-excerpt "lib/main.dart (ExtractArgumentsScreen)"?>
 ```dart
-// A Widget that extracts the necessary arguments from
-// the ModalRoute.
+// Um Widget que extrai os argumentos necessários de
+// o ModalRoute.
 class ExtractArgumentsScreen extends StatelessWidget {
   const ExtractArgumentsScreen({super.key});
 
@@ -79,8 +79,8 @@ class ExtractArgumentsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Extract the arguments from the current ModalRoute
-    // settings and cast them as ScreenArguments.
+    // Extraia os argumentos das configurações do ModalRoute atual
+    // e converta-os como ScreenArguments.
     final args = ModalRoute.of(context)!.settings.arguments as ScreenArguments;
 
     return Scaffold(
@@ -95,13 +95,13 @@ class ExtractArgumentsScreen extends StatelessWidget {
 }
 ```
 
-## 3. Register the widget in the `routes` table
+## 3. Registre o widget na tabela `routes`
 
-Next, add an entry to the `routes` provided to the `MaterialApp` widget. The
-`routes` define which widget should be created based on the name of the route.
+Em seguida, adicione uma entrada às `routes` fornecidas ao widget `MaterialApp`. As
+`routes` definem qual widget deve ser criado com base no nome da rota.
 
 {% comment %}
-RegEx removes the return statement and adds the closing parenthesis at the end
+RegEx remove a declaração de retorno e adiciona o parêntese de fechamento no final
 {% endcomment %}
 <?code-excerpt "lib/main.dart (routes)" plaster="none" replace="/return //g;/^\);$/)/g"?>
 ```dart
@@ -113,68 +113,67 @@ MaterialApp(
 )
 ```
 
+## 4. Navegue até o widget
 
-## 4. Navigate to the widget
-
-Finally, navigate to the `ExtractArgumentsScreen`
-when a user taps a button using [`Navigator.pushNamed()`][].
-Provide the arguments to the route via the `arguments` property. The
-`ExtractArgumentsScreen` extracts the `title` and `message` from these
-arguments.
+Finalmente, navegue até `ExtractArgumentsScreen`
+quando um usuário tocar em um botão usando [`Navigator.pushNamed()`][].
+Forneça os argumentos para a rota através da propriedade `arguments`. O
+`ExtractArgumentsScreen` extrai o `title` e a `message` desses
+argumentos.
 
 <?code-excerpt "lib/main.dart (PushNamed)"?>
 ```dart
-// A button that navigates to a named route.
-// The named route extracts the arguments
-// by itself.
+// Um botão que navega para uma rota nomeada.
+// A rota nomeada extrai os argumentos
+// por si só.
 ElevatedButton(
   onPressed: () {
-    // When the user taps the button,
-    // navigate to a named route and
-    // provide the arguments as an optional
-    // parameter.
+    // Quando o usuário toca no botão,
+    // navegue para uma rota nomeada e
+    // forneça os argumentos como um parâmetro
+    // opcional.
     Navigator.pushNamed(
       context,
       ExtractArgumentsScreen.routeName,
       arguments: ScreenArguments(
         'Extract Arguments Screen',
-        'This message is extracted in the build method.',
+        'Esta mensagem é extraída no método build.',
       ),
     );
   },
-  child: const Text('Navigate to screen that extracts arguments'),
+  child: const Text('Navegar para a tela que extrai argumentos'),
 ),
 ```
 
-## Alternatively, extract the arguments using `onGenerateRoute`
+## Alternativamente, extraia os argumentos usando `onGenerateRoute`
 
-Instead of extracting the arguments directly inside the widget, you can also
-extract the arguments inside an [`onGenerateRoute()`][]
-function and pass them to a widget.
+Em vez de extrair os argumentos diretamente dentro do widget, você também pode
+extrair os argumentos dentro de uma função [`onGenerateRoute()`][]
+e passá-los para um widget.
 
-The `onGenerateRoute()` function creates the correct route based on the given
+A função `onGenerateRoute()` cria a rota correta com base no dado
 [`RouteSettings`][].
 
 {% comment %}
-RegEx removes the return statement, removed "routes" property and adds the closing parenthesis at the end
+RegEx remove a declaração de retorno, removeu a propriedade "routes" e adiciona o parêntese de fechamento no final
 {% endcomment %}
 
 ```dart
 MaterialApp(
-  // Provide a function to handle named routes.
-  // Use this function to identify the named
-  // route being pushed, and create the correct
-  // Screen.
+  // Forneça uma função para lidar com rotas nomeadas.
+  // Use esta função para identificar o nomeado
+  // rota sendo empurrada e crie a correta
+  // Tela.
   onGenerateRoute: (settings) {
-    // If you push the PassArguments route
+    // Se você empurrar a rota PassArguments
     if (settings.name == PassArgumentsScreen.routeName) {
-      // Cast the arguments to the correct
-      // type: ScreenArguments.
+      // Converta os argumentos para o correto
+      // tipo: ScreenArguments.
       final args = settings.arguments as ScreenArguments;
 
-      // Then, extract the required data from
-      // the arguments and pass the data to the
-      // correct screen.
+      // Em seguida, extraia os dados necessários de
+      // os argumentos e passe os dados para o
+      // tela correta.
       return MaterialPageRoute(
         builder: (context) {
           return PassArgumentsScreen(
@@ -184,23 +183,23 @@ MaterialApp(
         },
       );
     }
-    // The code only supports
-    // PassArgumentsScreen.routeName right now.
-    // Other values need to be implemented if we
-    // add them. The assertion here will help remind
-    // us of that higher up in the call stack, since
-    // this assertion would otherwise fire somewhere
-    // in the framework.
-    assert(false, 'Need to implement ${settings.name}');
+    // O código só suporta
+    // PassArgumentsScreen.routeName agora.
+    // Outros valores precisam ser implementados se nós
+    // adicioná-los. A asserção aqui ajudará a lembrar
+    // nós disso mais acima na pilha de chamadas, já que
+    // essa asserção de outra forma dispararia em algum lugar
+    // na estrutura.
+    assert(false, 'Precisa implementar ${settings.name}');
     return null;
   },
 )
 ```
 
-## Interactive example
+## Exemplo interativo
 
 <?code-excerpt "lib/main.dart"?>
-```dartpad title="Flutter complete navigation hands-on example in DartPad" run="true"
+```dartpad title="Exemplo prático completo de navegação Flutter no DartPad" run="true"
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -215,20 +214,20 @@ class MyApp extends StatelessWidget {
         ExtractArgumentsScreen.routeName: (context) =>
             const ExtractArgumentsScreen(),
       },
-      // Provide a function to handle named routes.
-      // Use this function to identify the named
-      // route being pushed, and create the correct
-      // Screen.
+      // Forneça uma função para lidar com rotas nomeadas.
+      // Use esta função para identificar o nomeado
+      // rota sendo empurrada e crie a correta
+      // Tela.
       onGenerateRoute: (settings) {
-        // If you push the PassArguments route
+        // Se você empurrar a rota PassArguments
         if (settings.name == PassArgumentsScreen.routeName) {
-          // Cast the arguments to the correct
-          // type: ScreenArguments.
+          // Converta os argumentos para o correto
+          // tipo: ScreenArguments.
           final args = settings.arguments as ScreenArguments;
 
-          // Then, extract the required data from
-          // the arguments and pass the data to the
-          // correct screen.
+          // Em seguida, extraia os dados necessários de
+          // os argumentos e passe os dados para o
+          // tela correta.
           return MaterialPageRoute(
             builder: (context) {
               return PassArgumentsScreen(
@@ -238,17 +237,17 @@ class MyApp extends StatelessWidget {
             },
           );
         }
-        // The code only supports
-        // PassArgumentsScreen.routeName right now.
-        // Other values need to be implemented if we
-        // add them. The assertion here will help remind
-        // us of that higher up in the call stack, since
-        // this assertion would otherwise fire somewhere
-        // in the framework.
-        assert(false, 'Need to implement ${settings.name}');
+        // O código só suporta
+        // PassArgumentsScreen.routeName agora.
+        // Outros valores precisam ser implementados se nós
+        // adicioná-los. A asserção aqui ajudará a lembrar
+        // nós disso mais acima na pilha de chamadas, já que
+        // essa asserção de outra forma dispararia em algum lugar
+        // na estrutura.
+        assert(false, 'Precisa implementar ${settings.name}');
         return null;
       },
-      title: 'Navigation with Arguments',
+      title: 'Navegação com Argumentos',
       home: const HomeScreen(),
     );
   }
@@ -261,52 +260,51 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home Screen'),
+        title: const Text('Tela Inicial'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // A button that navigates to a named route.
-            // The named route extracts the arguments
-            // by itself.
+            // Um botão que navega para uma rota nomeada.
+            // A rota nomeada extrai os argumentos
+            // por si só.
             ElevatedButton(
               onPressed: () {
-                // When the user taps the button,
-                // navigate to a named route and
-                // provide the arguments as an optional
-                // parameter.
+                // Quando o usuário toca no botão,
+                // navegue para uma rota nomeada e
+                // forneça os argumentos como um parâmetro
+                // opcional.
                 Navigator.pushNamed(
                   context,
                   ExtractArgumentsScreen.routeName,
                   arguments: ScreenArguments(
-                    'Extract Arguments Screen',
-                    'This message is extracted in the build method.',
+                    'Tela de Extração de Argumentos',
+                    'Esta mensagem é extraída no método build.',
                   ),
                 );
               },
-              child: const Text('Navigate to screen that extracts arguments'),
+              child: const Text('Navegar para a tela que extrai argumentos'),
             ),
-            // A button that navigates to a named route.
-            // For this route, extract the arguments in
-            // the onGenerateRoute function and pass them
-            // to the screen.
+            // Um botão que navega para uma rota nomeada.
+            // Para esta rota, extraia os argumentos em
+            // a função onGenerateRoute e passe-os
+            // para a tela.
             ElevatedButton(
               onPressed: () {
-                // When the user taps the button, navigate
-                // to a named route and provide the arguments
-                // as an optional parameter.
+                // Quando o usuário toca no botão, navegue
+                // para uma rota nomeada e forneça os argumentos
+                // como um parâmetro opcional.
                 Navigator.pushNamed(
                   context,
                   PassArgumentsScreen.routeName,
                   arguments: ScreenArguments(
-                    'Accept Arguments Screen',
-                    'This message is extracted in the onGenerateRoute '
-                        'function.',
+                    'Tela de Aceitação de Argumentos',
+                    'Esta mensagem é extraída na função onGenerateRoute.',
                   ),
                 );
               },
-              child: const Text('Navigate to a named that accepts arguments'),
+              child: const Text('Navegar para uma nomeada que aceita argumentos'),
             ),
           ],
         ),
@@ -315,8 +313,8 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-// A Widget that extracts the necessary arguments from
-// the ModalRoute.
+// Um Widget que extrai os argumentos necessários de
+// o ModalRoute.
 class ExtractArgumentsScreen extends StatelessWidget {
   const ExtractArgumentsScreen({super.key});
 
@@ -324,8 +322,8 @@ class ExtractArgumentsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Extract the arguments from the current ModalRoute
-    // settings and cast them as ScreenArguments.
+    // Extraia os argumentos das configurações do ModalRoute atual
+    // e converta-os como ScreenArguments.
     final args = ModalRoute.of(context)!.settings.arguments as ScreenArguments;
 
     return Scaffold(
@@ -339,20 +337,20 @@ class ExtractArgumentsScreen extends StatelessWidget {
   }
 }
 
-// A Widget that accepts the necessary arguments via the
-// constructor.
+// Um Widget que aceita os argumentos necessários através do
+// construtor.
 class PassArgumentsScreen extends StatelessWidget {
   static const routeName = '/passArguments';
 
   final String title;
   final String message;
 
-  // This Widget accepts the arguments as constructor
-  // parameters. It does not extract the arguments from
-  // the ModalRoute.
+  // Este Widget aceita os argumentos como construtor
+  // parâmetros. Ele não extrai os argumentos de
+  // o ModalRoute.
   //
-  // The arguments are extracted by the onGenerateRoute
-  // function provided to the MaterialApp widget.
+  // Os argumentos são extraídos pelo onGenerateRoute
+  // função fornecida ao widget MaterialApp.
   const PassArgumentsScreen({
     super.key,
     required this.title,
@@ -372,9 +370,9 @@ class PassArgumentsScreen extends StatelessWidget {
   }
 }
 
-// You can pass any object to the arguments parameter.
-// In this example, create a class that contains both
-// a customizable title and message.
+// Você pode passar qualquer objeto para o parâmetro arguments.
+// Neste exemplo, crie uma classe que contenha ambos
+// um título e uma mensagem personalizáveis.
 class ScreenArguments {
   final String title;
   final String message;
@@ -384,9 +382,8 @@ class ScreenArguments {
 ```
 
 <noscript>
-  <img src="/assets/images/docs/cookbook/navigate-with-arguments.gif" alt="Demonstrates navigating to different routes with arguments" class="site-mobile-screenshot" />
+  <img src="/assets/images/docs/cookbook/navigate-with-arguments.gif" alt="Demonstra a navegação para diferentes rotas com argumentos" class="site-mobile-screenshot" />
 </noscript>
-
 
 [`CupertinoApp`]: {{site.api}}/flutter/cupertino/CupertinoApp-class.html
 [`MaterialApp`]: {{site.api}}/flutter/material/MaterialApp-class.html

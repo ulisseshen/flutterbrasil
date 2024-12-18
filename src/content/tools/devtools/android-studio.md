@@ -1,45 +1,48 @@
 ---
-title: Run DevTools from Android Studio
-description: Learn how to launch and use DevTools from Android Studio.
+ia-translate: true
+title: Executar o DevTools do Android Studio
+description: Aprenda como iniciar e usar o DevTools no Android Studio.
 ---
 
-## Install the Flutter plugin
+## Instalar o plugin do Flutter
 
-Add the Flutter plugin if you don't already have it installed.
-This can be done using the normal **Plugins** page in the IntelliJ
-and Android Studio settings. Once that page is open,
-you can search the marketplace for the Flutter plugin.
+Adicione o plugin do Flutter caso ainda não o tenha instalado.
+Isso pode ser feito usando a página normal **Plugins** nas
+configurações do IntelliJ e Android Studio. Assim que essa
+página estiver aberta, você pode pesquisar o plugin do Flutter
+no marketplace.
 
-## Start an app to debug
+## Iniciar um app para depurar
 
-To open DevTools, you first need to run a Flutter app.
-This can be accomplished by opening a Flutter project,
-ensuring that you have a device connected,
-and clicking the **Run** or **Debug** toolbar buttons.
+Para abrir o DevTools, você primeiro precisa executar um app
+Flutter. Isso pode ser feito abrindo um projeto Flutter,
+garantindo que você tenha um dispositivo conectado e clicando
+nos botões da barra de ferramentas **Run** ou **Debug**.
 
-## Launch DevTools from the toolbar/menu
+## Iniciar o DevTools pela barra de ferramentas/menu
 
-Once an app is running,
-you can start DevTools using one of the following techniques:
+Assim que um app estiver em execução, você pode iniciar o
+DevTools usando uma das seguintes técnicas:
 
-* Select the **Open DevTools** toolbar action in the Run view.
-* Select the **Open DevTools** toolbar action in the Debug view.
-  (if debugging)
-* Select the **Open DevTools** action from the **More Actions**
-  menu in the Flutter Inspector view.
+* Selecione a ação da barra de ferramentas **Open DevTools** na
+  visualização Run.
+* Selecione a ação da barra de ferramentas **Open DevTools** na
+  visualização Debug (se estiver depurando).
+* Selecione a ação **Open DevTools** no menu **More Actions** na
+  visualização Flutter Inspector.
 
-![screenshot of Open DevTools button](/assets/images/docs/tools/devtools/android_studio_open_devtools.png){:width="100%"}
+![Captura de tela do botão Open DevTools](/assets/images/docs/tools/devtools/android_studio_open_devtools.png){:width="100%"}
 
-## Launch DevTools from an action
+## Iniciar o DevTools por uma ação
 
-You can also open DevTools from an IntelliJ action.
-Open the **Find Action...** dialog
-(on macOS, press <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>A</kbd>),
-and search for the **Open DevTools** action.
-When you select that action, the DevTools server
-launches and a browser instance opens pointing to the DevTools app.
+Você também pode abrir o DevTools por uma ação do IntelliJ.
+Abra o diálogo **Find Action...** (no macOS, pressione <kbd>Cmd</kbd> +
+<kbd>Shift</kbd> + <kbd>A</kbd>) e procure pela ação **Open
+DevTools**. Quando você selecionar essa ação, o servidor do
+DevTools é iniciado e uma instância do navegador é aberta
+apontando para o app DevTools.
 
-When opened with an IntelliJ action, DevTools is not connected
-to a Flutter app. You'll need to provide a service protocol port
-for a currently running app. You can do this using the inline
-**Connect to a running app** dialog.
+Quando aberto com uma ação do IntelliJ, o DevTools não está
+conectado a um app Flutter. Você precisará fornecer uma porta
+de protocolo de serviço para um app em execução. Você pode
+fazer isso usando o diálogo inline **Connect to a running app**.

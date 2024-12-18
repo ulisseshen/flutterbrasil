@@ -1,6 +1,7 @@
 ---
-title: Create a horizontal list
-description: How to implement a horizontal list.
+ia-translate: true
+title: Criar uma lista horizontal
+description: Como implementar uma lista horizontal.
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
@@ -8,17 +9,14 @@ js:
 
 <?code-excerpt path-base="cookbook/lists/horizontal_list"?>
 
-You might want to create a list that scrolls
-horizontally rather than vertically.
-The [`ListView`][] widget supports horizontal lists.
+Você pode querer criar uma lista que role horizontalmente em vez de verticalmente. O widget [`ListView`][] suporta listas horizontais.
 
-Use the standard `ListView` constructor, passing in a horizontal
-`scrollDirection`, which overrides the default vertical direction.
+Use o construtor padrão `ListView`, passando um `scrollDirection` horizontal, que sobrepõe a direção vertical padrão.
 
 <?code-excerpt "lib/main.dart (ListView)" replace="/^child\: //g"?>
 ```dart
 ListView(
-  // This next line does the trick.
+  // Esta próxima linha faz o truque.
   scrollDirection: Axis.horizontal,
   children: <Widget>[
     Container(
@@ -45,20 +43,20 @@ ListView(
 ),
 ```
 
-## Interactive example
+## Exemplo interativo
 
-:::note Desktop and web note
-This example works in the browser and on the desktop.
-However, as this list scrolls on the horizontal axis
-(left to right or right to left),
-hold <kbd>Shift</kbd> while using the mouse scroll wheel to scroll the list.
+:::note Nota para desktop e web
+Este exemplo funciona no navegador e no desktop.
+No entanto, como esta lista rola no eixo horizontal
+(da esquerda para a direita ou da direita para a esquerda),
+segure <kbd>Shift</kbd> enquanto usa a roda do mouse para rolar a lista.
 
-To learn more, read the [breaking change][] page on the
-default drag for scrolling devices.
+Para saber mais, leia a página sobre [mudança de comportamento][] no
+arraste padrão para dispositivos de rolagem.
 :::
 
 <?code-excerpt "lib/main.dart"?>
-```dartpad title="Flutter horizontal list hands-on example in DartPad" run="true"
+```dartpad title="Exemplo prático de lista horizontal do Flutter no DartPad" run="true"
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -68,7 +66,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const title = 'Horizontal List';
+    const title = 'Lista Horizontal';
 
     return MaterialApp(
       title: title,
@@ -80,7 +78,7 @@ class MyApp extends StatelessWidget {
           margin: const EdgeInsets.symmetric(vertical: 20),
           height: 200,
           child: ListView(
-            // This next line does the trick.
+            // Esta próxima linha faz o truque.
             scrollDirection: Axis.horizontal,
             children: <Widget>[
               Container(
@@ -113,8 +111,8 @@ class MyApp extends StatelessWidget {
 ```
 
 <noscript>
-  <img src="/assets/images/docs/cookbook/horizontal-list.gif" alt="Horizontal List Demo" class="site-mobile-screenshot" />
+  <img src="/assets/images/docs/cookbook/horizontal-list.gif" alt="Demonstração de Lista Horizontal" class="site-mobile-screenshot" />
 </noscript>
 
-[breaking change]: /release/breaking-changes/default-scroll-behavior-drag
+[mudança de comportamento]: /release/breaking-changes/default-scroll-behavior-drag
 [`ListView`]: {{site.api}}/flutter/widgets/ListView-class.html

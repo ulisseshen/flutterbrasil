@@ -1,14 +1,15 @@
 ---
-title: Transition of platform channel test interfaces to flutter_test package
+ia-translate: true
+title: Transição das interfaces de teste de canais de plataforma para o pacote flutter_test
 description: >
-   The setMockMessageHandler method related APIs have
-   moved from package:flutter to package:flutter_test
+   Os métodos setMockMessageHandler relacionados às APIs foram movidos
+   do package:flutter para o package:flutter_test
 ---
 
-## Summary
+## Sumário
 
-The following methods have been replaced by APIs
-in the `flutter_test` package:
+Os seguintes métodos foram substituídos por APIs no pacote
+`flutter_test`:
 
 * `BinaryMessenger.checkMessageHandler`
 * `BinaryMessenger.setMockMessageHandler`
@@ -18,160 +19,159 @@ in the `flutter_test` package:
 * `MethodChannel.setMockMethodCallHandler`
 * `MethodChannel.checkMockMethodCallHandler`
 
-The `onPlatformMessage` callback is no longer used
-by the Flutter framework.
+O callback `onPlatformMessage` não é mais usado
+pelo framework Flutter.
 
-## Context
+## Contexto
 
-As part of a refactoring of the low-level plugin
-communications architecture, we have moved from the
-previous `onPlatformMessage`/`handlePlatformMessage`
-logic to a per-channel buffering system implemented in
-the engine in the `ChannelBuffers` class.
-To maintain compatibility with existing code,
-the existing `BinaryMessenger.setMessageHandler` API
-has been refactored to use the new `ChannelBuffers` API.
+Como parte de uma refatoração da arquitetura de comunicação de plugin
+de baixo nível, passamos da lógica anterior
+`onPlatformMessage`/`handlePlatformMessage` para um sistema de
+buffering por canal implementado no engine na classe
+`ChannelBuffers`. Para manter a compatibilidade com o código
+existente, a API existente `BinaryMessenger.setMessageHandler`
+foi refatorada para usar a nova API `ChannelBuffers`.
 
-One difference between the `ChannelBuffers` API and the
-previous API is that the new API is more consistent in
-its approach to asynchrony. As a side-effect,
-the APIs around message passing are now entirely asynchronous.
+Uma diferença entre a API `ChannelBuffers` e a
+API anterior é que a nova API é mais consistente em sua
+abordagem à assincronia. Como efeito colateral,
+as APIs em torno da passagem de mensagens agora são inteiramente
+assíncronas.
 
-This posed a problem for the implementation of the legacy
-testing APIs which, for historical reasons,
-were previously in the `flutter` package.
-Since they relied on the underlying logic being partly synchronous,
-they required refactoring.
-To avoid adding even more test logic into the `flutter` package,
-a decision was made to move this logic to the `flutter_test` package.
+Isso representou um problema para a implementação das APIs de teste
+legadas que, por razões históricas, estavam anteriormente no
+pacote `flutter`. Como elas dependiam da lógica subjacente sendo
+parcialmente síncrona, elas exigiram refatoração.
+Para evitar adicionar ainda mais lógica de teste no pacote
+`flutter`, foi tomada a decisão de mover essa lógica para o pacote
+`flutter_test`.
 
-## Description of change
+## Descrição da mudança
 
-Specifically, the following APIs were affected:
+Especificamente, as seguintes APIs foram afetadas:
 
-* `BinaryMessenger.checkMessageHandler`: Obsolete.
-* `BinaryMessenger.setMockMessageHandler`: Replaced by
-  `TestDefaultBinaryMessenger.setMockMessageHandler`.
-* `BinaryMessenger.checkMockMessageHandler`: Replaced
-   by `TestDefaultBinaryMessenger.checkMockMessageHandler`.
-* `BasicMessageChannel.setMockMessageHandler`: Replaced
-   by `TestDefaultBinaryMessenger.setMockDecodedMessageHandler`.
-* `MethodChannel.checkMethodCallHandler`: Obsolete.
-* `MethodChannel.setMockMethodCallHandler`: Replaced by
+* `BinaryMessenger.checkMessageHandler`: Obsoleto.
+* `BinaryMessenger.setMockMessageHandler`: Substituído por
+   `TestDefaultBinaryMessenger.setMockMessageHandler`.
+* `BinaryMessenger.checkMockMessageHandler`: Substituído
+   por `TestDefaultBinaryMessenger.checkMockMessageHandler`.
+* `BasicMessageChannel.setMockMessageHandler`: Substituído
+   por `TestDefaultBinaryMessenger.setMockDecodedMessageHandler`.
+* `MethodChannel.checkMethodCallHandler`: Obsoleto.
+* `MethodChannel.setMockMethodCallHandler`: Substituído por
    `TestDefaultBinaryMessenger.setMockMethodCallHandler`.
-* `MethodChannel.checkMockMethodCallHandler`: Replaced
-   by `TestDefaultBinaryMessenger.checkMockMessageHandler`.
+* `MethodChannel.checkMockMethodCallHandler`: Substituído
+   por `TestDefaultBinaryMessenger.checkMockMessageHandler`.
 
-These replacements are only available to code using the
-new `TestDefaultBinaryMessengerBinding`
-(such as any code using `testWidgets` in a `flutter_test` test).
-There is no replacement for production code that was using
-these APIs, as they were not intended for production code use.
+Essas substituições estão disponíveis apenas para o código que
+utiliza o novo `TestDefaultBinaryMessengerBinding`
+(como qualquer código que use `testWidgets` em um teste
+`flutter_test`). Não há substituição para o código de produção que
+estava usando essas APIs, pois elas não se destinavam ao uso em
+código de produção.
 
-Tests using `checkMessageHandler` have no equivalent in the
-new API, since message handler registration is handled
-directly by the `ChannelBuffers` object, which does not
-expose the currently registered listener for a channel.
-(Tests verifying handler registration appear to be rare.)
+Testes que usam `checkMessageHandler` não têm equivalente na nova
+API, já que o registro do manipulador de mensagens é tratado
+diretamente pelo objeto `ChannelBuffers`, que não expõe o listener
+atualmente registrado para um canal. (Testes que verificam o
+registro do manipulador parecem ser raros.)
 
-Code that needs migrating may see errors such as the following:
+O código que precisa ser migrado pode ver erros como os seguintes:
 
 ```plaintext
-  error - The method 'setMockMessageHandler' isn't defined for the type 'BinaryMessenger' at test/sensors_test.dart:64:8 - (undefined_method)
+  error - O método 'setMockMessageHandler' não está definido para o tipo 'BinaryMessenger' em test/sensors_test.dart:64:8 - (undefined_method)
 
-  error • The method 'setMockMethodCallHandler' isn't defined for the type 'MethodChannel' • test/widgets/editable_text_test.dart:5623:30 • undefined_method
+  error • O método 'setMockMethodCallHandler' não está definido para o tipo 'MethodChannel' • test/widgets/editable_text_test.dart:5623:30 • undefined_method
 
-[error] The method 'setMockMessageHandler' isn't defined for the type 'BasicMessageChannel' (test/material/feedback_test.dart:37:36)
+[error] O método 'setMockMessageHandler' não está definido para o tipo 'BasicMessageChannel' (test/material/feedback_test.dart:37:36)
 ```
 
-In addition, the `onPlatformMessage` callback,
-which previously was hooked by the framework to
-receive messages from plugins, is no longer used
-(and will be removed in due course). As a result,
-calling this callback to inject messages into the
-framework no longer has an effect.
+Além disso, o callback `onPlatformMessage`, que anteriormente era
+conectado pelo framework para receber mensagens de plugins, não é
+mais usado (e será removido em breve). Como resultado,
+chamar esse callback para injetar mensagens no framework não tem mais
+efeito.
 
-## Migration guide
+## Guia de migração
 
-The `flutter_test` package provides some shims so that
-uses of the obsolete `setMock...` and `checkMock...`
-methods will continue to work.
-Tests that previously did not import
-`package:flutter_test/flutter_test.dart` can
-do so to enable these shims;
-this should be sufficient to migrate most code.
+O pacote `flutter_test` fornece alguns shims para que
+o uso dos métodos obsoletos `setMock...` e `checkMock...`
+continue funcionando. Testes que anteriormente não importavam
+`package:flutter_test/flutter_test.dart` podem
+fazê-lo para habilitar esses shims;
+isso deve ser suficiente para migrar a maior parte do código.
 
-These shim APIs are deprecated, however. Instead,
-in code using `WidgetTester` (for example, using `testWidgets`),
-it is recommended to use the following patterns to
-replace calls to those methods
-(where `tester` is the `WidgetTester` instance):
+Essas APIs de shim estão obsoletas, no entanto. Em vez disso,
+no código que usa `WidgetTester` (por exemplo, usando `testWidgets`),
+é recomendado usar os seguintes padrões para
+substituir as chamadas para esses métodos
+(onde `tester` é a instância `WidgetTester`):
 
 ```dart
-// old code
+// código antigo
 ServicesBinding.defaultBinaryMessenger.setMockMessageHandler(...);
 ServicesBinding.defaultBinaryMessenger.checkMockMessageHandler(...);
-// new code
+// código novo
 tester.binding.defaultBinaryMessenger.setMockMessageHandler(...);
 tester.binding.defaultBinaryMessenger.checkMockMessageHandler(...);
 ```
 
 ```dart
-// old code
+// código antigo
 myChannel.setMockMessageHandler(...);
 myChannel.checkMockMessageHandler(...);
-// new code
+// código novo
 tester.binding.defaultBinaryMessenger.setMockDecodedMessageHandler(myChannel, ...);
 tester.binding.defaultBinaryMessenger.checkMockMessageHandler(myChannel, ...);
 ```
 
 ```dart
-// old code
+// código antigo
 myMethodChannel.setMockMethodCallHandler(...);
 myMethodChannel.checkMockMethodCallHandler(...);
-// new code
+// código novo
 tester.binding.defaultBinaryMessenger.setMockMethodCallHandler(myMethodChannel, ...);
 tester.binding.defaultBinaryMessenger.checkMockMessageHandler(myMethodChannel, ...);
 ```
 
-Tests that use `package:test` and `test()`
-can be changed to use `package:flutter_test` and `testWidgets()`
-to get access to a `WidgetTester`.
+Testes que usam `package:test` e `test()`
+podem ser alterados para usar `package:flutter_test` e `testWidgets()`
+para obter acesso a um `WidgetTester`.
 
-Code that does not have access to a `WidgetTester` can refer to
+O código que não tem acesso a um `WidgetTester` pode se referir a
 `TestDefaultBinaryMessengerBinding.instance!.defaultBinaryMessenger`
-instead of `tester.binding.defaultBinaryMessenger`.
+em vez de `tester.binding.defaultBinaryMessenger`.
 
-Tests that do not use the default test widgets binding
+Testes que não usam o binding de widgets de teste padrão
 (`AutomatedTestWidgetsFlutterBinding`,
-which is initialized by `testWidgets`) can mix the
-`TestDefaultBinaryMessengerBinding` mixin into their
-binding to get the same results.
+que é inicializado por `testWidgets`) podem mixar o
+mixin `TestDefaultBinaryMessengerBinding` em seu
+binding para obter os mesmos resultados.
 
-Tests that manipulate `onPlatformMessage` will no longer
-function as designed. To send mock messages to the framework,
-consider using `ChannelBuffers.push`.
-There is no mechanism to intercept messages from the plugins
-and forward them to the framework in the new API.
-If your use case requires such a mechanism, please file a bug.
+Testes que manipulam `onPlatformMessage` não funcionarão mais
+como projetado. Para enviar mensagens mock para o framework,
+considere usar `ChannelBuffers.push`.
+Não há mecanismo para interceptar mensagens dos plugins
+e encaminhá-las para o framework na nova API.
+Se seu caso de uso exigir tal mecanismo, por favor, registre um bug.
 
-## Timeline
+## Cronograma
 
-Landed in version: 2.3.0-17.0.pre.1<br>
-In stable release: 2.5
+Implementado na versão: 2.3.0-17.0.pre.1<br>
+Na versão estável: 2.5
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`TestDefaultBinaryMessenger`][]
 * [`TestDefaultBinaryMessengerBinding`][]
 
-Relevant PR:
+PR relevante:
 
-* [PR #76288: Migrate to ChannelBuffers.push][]
+* [PR #76288: Migrar para ChannelBuffers.push][]
 
 [`TestDefaultBinaryMessenger`]: {{site.api}}/flutter/flutter_test/TestDefaultBinaryMessenger-class.html
 [`TestDefaultBinaryMessengerBinding`]: {{site.api}}/flutter/flutter_test/TestDefaultBinaryMessengerBinding-mixin.html
 
-[PR #76288: Migrate to ChannelBuffers.push]: {{site.repo.flutter}}/pull/76288
+[PR #76288: Migrar para ChannelBuffers.push]: {{site.repo.flutter}}/pull/76288

@@ -1,71 +1,77 @@
 ---
-title: Using HTML slots to render platform views in the web
+ia-translate: true
+title: Usando slots HTML para renderizar visualizações de plataforma na web
 description: >
-  iframes in Flutter web used to reload, because of
-  the way some DOM operations were made.
-  A change in the way Flutter web apps render platform views
-  makes them stable (preventing iframe reloads, and other problems
-  with video tags or forms potentially losing their state).
+  iframes no Flutter web costumavam recarregar, devido à forma como
+  algumas operações DOM eram feitas.
+  Uma mudança na forma como os aplicativos Flutter web renderizam visualizações
+  de plataforma os torna estáveis (impedindo recarregamentos de iframe e
+  outros problemas com tags de vídeo ou formulários que potencialmente
+  perdem seu estado).
 ---
 
-## Summary
+## Resumo
 
-Flutter now renders all web platform views in a consistent location of the DOM,
-as direct children of `flt-glass-pane` (regardless of the rendering backend:
-`html` or `canvaskit`). Platform views are then _"slotted"_ into the correct
-position of the App's DOM with standard HTML features.
+O Flutter agora renderiza todas as visualizações de plataforma web em um local
+consistente do DOM, como filhos diretos de `flt-glass-pane` (independentemente
+do backend de renderização: `html` ou `canvaskit`). As visualizações de
+plataforma são então _"encaixadas"_ na posição correta do DOM do App com
+recursos HTML padrão.
 
-Up until this change, Flutter web would change the styling of the rendered
-contents of a platform views to position/size it to the available space. **This
-is no longer the case.** Users can now decide how they want to utilize the space
-allocated to their platform view by the framework.
+Até esta alteração, o Flutter web mudava o estilo do conteúdo renderizado de
+visualizações de plataforma para posicioná-lo/dimensioná-lo para o espaço
+disponível. **Este não é mais o caso.** Os usuários agora podem decidir como
+desejam utilizar o espaço alocado para sua visualização de plataforma pelo
+framework.
 
-## Context
+## Contexto
 
-The Flutter framework frequently tweaks its render tree to optimize the paint
-operations that are ultimately made per frame. In the web, these render tree
-changes often result in DOM operations.
+O framework Flutter frequentemente ajusta sua árvore de renderização para
+otimizar as operações de pintura que são feitas por frame. Na web, essas
+mudanças na árvore de renderização geralmente resultam em operações DOM.
 
-Flutter web used to render its platform views ([`HtmlElementView` widgets][])
-directly into its corresponding position of the DOM.
+O Flutter web costumava renderizar suas visualizações de plataforma
+([widgets `HtmlElementView`][]) diretamente em sua posição correspondente no
+DOM.
 
-Using certain DOM elements as the "target" of some DOM operations causes those
-elements to lose their internal state. In practice, this means that `iframe`
-tags are going to reload, `video` players might restart, or an editable form
-might lose its edits.
+Usar certos elementos DOM como "alvo" de algumas operações DOM faz com que
+esses elementos percam seu estado interno. Na prática, isso significa que tags
+`iframe` vão recarregar, players de `video` podem reiniciar ou um formulário
+editável pode perder suas edições.
 
-Flutter now renders platform views using [slot elements][] inside of a single,
-app-wide [shadow root][]. Slot elements can be added/removed/moved around the
-Shadow DOM without affecting the underlying slotted content (which is rendered
-in a constant location)
+O Flutter agora renderiza visualizações de plataforma usando [elementos slot][]
+dentro de um único [shadow root][] em todo o aplicativo. Elementos slot podem
+ser adicionados/removidos/movidos no Shadow DOM sem afetar o conteúdo encaixado
+subjacente (que é renderizado em um local constante).
 
-This change was made to:
+Essa mudança foi feita para:
 
-* Stabilize the behavior of platform views in Flutter web.
-* Unify how platform views are rendered in the web for both rendering
-   backends (`html` and `canvaskit`).
-* Provide a predictable location in the DOM that allows developers to reliably
-   use CSS to style their platform views, and to use other standard DOM API,
-   such as `querySelector`, and `getElementById`.
+* Estabilizar o comportamento das visualizações de plataforma no Flutter web.
+* Unificar como as visualizações de plataforma são renderizadas na web para
+  ambos os backends de renderização (`html` e `canvaskit`).
+* Fornecer um local previsível no DOM que permita aos desenvolvedores usar CSS
+  de forma confiável para estilizar suas visualizações de plataforma e usar
+  outras APIs DOM padrão, como `querySelector` e `getElementById`.
 
-## Description of change
+## Descrição da mudança
 
-A Flutter web app is now rendered inside a common [shadow root][] in which
-[slot elements][] represent platform views. The actual content of
-each platform view is rendered as a **sibling of said shadow root**.
+Um aplicativo Flutter web agora é renderizado dentro de um [shadow root][]
+comum no qual [elementos slot][] representam visualizações de plataforma. O
+conteúdo real de cada visualização de plataforma é renderizado como um
+**irmão do dito shadow root**.
 
-### Before
+### Antes
 
 ```html
 ...
 
 <flt-glass-pane>
   ...
-  <div id="platform-view">Contents</div> <!-- canvaskit -->
-  <!-- OR -->
+  <div id="platform-view">Conteúdo</div> <!-- canvaskit -->
+  <!-- OU -->
   <flt-platform-view>
     #shadow-root
-    | <div id="platform-view">Contents</div> <!-- html -->
+    | <div id="platform-view">Conteúdo</div> <!-- html -->
   </flt-platform-view>
   ...
 </flt-glass-pane>
@@ -73,7 +79,7 @@ each platform view is rendered as a **sibling of said shadow root**.
 ...
 ```
 
-### After
+### Depois
 
 ```html
 ...
@@ -86,7 +92,7 @@ each platform view is rendered as a **sibling of said shadow root**.
   | </flt-platform-view-slot>
   | ...
   <flt-platform-view slot="platform-view-1">
-    <div id="platform-view">Contents</div>
+    <div id="platform-view">Conteúdo</div>
   </flt-platform-view>
   ...
 </flt-glass-pane>
@@ -94,50 +100,52 @@ each platform view is rendered as a **sibling of said shadow root**.
 ...
 ```
 
-After this change, when the framework needs to move DOM nodes around, it
-operates over `flt-platform-view-slot`s, which only contain a `slot` element.
-The slot _projects_ the contents defined in `flt-platform-view` elements outside
-the shadow root. `flt-platform-view` elements are never the target of DOM
-operations from the framework, thus preventing the reload issues.
+Após essa alteração, quando o framework precisa mover nós DOM, ele opera sobre
+`flt-platform-view-slot`s, que contêm apenas um elemento `slot`. O slot
+_projeta_ o conteúdo definido em elementos `flt-platform-view` fora do shadow
+root. Elementos `flt-platform-view` nunca são o alvo de operações DOM do
+framework, evitando assim os problemas de recarregamento.
 
-From an app's perspective, this change is transparent. **However**, this is
-considered a _breaking change_ because some tests make assumptions
-about the internal DOM of a Flutter web app, and break.
+Do ponto de vista de um aplicativo, essa mudança é transparente.
+**No entanto**, isso é considerado uma _mudança incompatível_ porque alguns
+testes fazem suposições sobre o DOM interno de um aplicativo Flutter web e
+quebram.
 
-## Migration guide
+## Guia de migração
 
-### Code
+### Código
 
-The engine may print a warning message to the console similar to:
-
-```bash
-Height of Platform View type: [$viewType] may not be set. Defaulting to `height: 100%`.
-Set `style.height` to any appropriate value to stop this message.
-```
-
-or:
+O engine pode imprimir uma mensagem de aviso no console semelhante a:
 
 ```bash
-Width of Platform View type: [$viewType] may not be set. Defaulting to `width: 100%`.
-Set `style.width` to any appropriate value to stop this message.
+A altura do tipo de visualização de plataforma: [$viewType] pode não ser definida. Usando `height: 100%` por padrão.
+Defina `style.height` para qualquer valor apropriado para interromper esta mensagem.
 ```
 
-Previously, the content returned by [`PlatformViewFactory` functions][] was
-resized and positioned by the framework. Instead, Flutter now sizes and
-positions `<flt-platform-view-slot>`, which is the parent of the slot where the
-content is projected.
+ou:
 
-To stop the warning above, platform views need to set the `style.width` and
-`style.height` of their root element to any appropriate (non-null) value.
+```bash
+A largura do tipo de visualização de plataforma: [$viewType] pode não ser definida. Usando `width: 100%` por padrão.
+Defina `style.width` para qualquer valor apropriado para interromper esta mensagem.
+```
 
-For example, to make the root `html.Element` fill all the available space
-allocated by the framework, set its `style.width` and `style.height` properties
-to `'100%'`:
+Anteriormente, o conteúdo retornado pelas funções [`PlatformViewFactory`][] era
+redimensionado e posicionado pelo framework. Em vez disso, o Flutter agora
+dimensiona e posiciona `<flt-platform-view-slot>`, que é o pai do slot onde o
+conteúdo é projetado.
+
+Para interromper o aviso acima, as visualizações de plataforma precisam definir
+`style.width` e `style.height` de seu elemento raiz para qualquer valor
+apropriado (não nulo).
+
+Por exemplo, para fazer com que o `html.Element` raiz preencha todo o espaço
+disponível alocado pelo framework, defina suas propriedades `style.width` e
+`style.height` como `'100%'`:
 
 ```dart
 ui.platformViewRegistry.registerViewFactory(viewType, (int viewId) {
   final html.Element htmlElement = html.DivElement()
-    // ..other props
+    // ..outras props
     ..style.width = '100%'
     ..style.height = '100%';
   // ...
@@ -145,45 +153,46 @@ ui.platformViewRegistry.registerViewFactory(viewType, (int viewId) {
 });
 ```
 
-If other techniques are used to lay out the platform view (like `inset: 0`) a
-value of `auto` for `width` and `height` is enough to stop the warning.
+Se outras técnicas forem usadas para organizar a visualização da plataforma
+(como `inset: 0`), um valor de `auto` para `width` e `height` é suficiente para
+interromper o aviso.
 
-Read more about [`CSS width`][] and [`CSS height`][].
+Leia mais sobre [`CSS width`][] e [`CSS height`][].
 
-### Tests
+### Testes
 
-After this change, user's test code does **not** need to deeply inspect the
-contents of the shadow root of the App. All of the platform view contents will
-be placed as direct children of `flt-glass-pane`, wrapped in a
-`flt-platform-view` element.
+Após essa alteração, o código de teste do usuário **não** precisa inspecionar
+profundamente o conteúdo do shadow root do aplicativo. Todo o conteúdo da
+visualização de plataforma será colocado como filhos diretos de
+`flt-glass-pane`, envolvido em um elemento `flt-platform-view`.
 
-Avoid looking inside the `flt-glass-pane` shadow root, it is considered a
-**"private implementation detail"**, and its markup can change at any time,
-without notice.
+Evite olhar dentro do shadow root `flt-glass-pane`, ele é considerado um
+**"detalhe de implementação privada"**, e sua marcação pode mudar a qualquer
+momento, sem aviso prévio.
 
-(See Relevant PRs below for examples of the "migrations" described above).
+(Veja PRs relevantes abaixo para exemplos das "migrações" descritas acima).
 
-## Timeline
+## Cronograma
 
-Landed in version: 2.3.0-16.0.pre<br>
-In stable release: 2.5
+Implementado na versão: 2.3.0-16.0.pre<br>
+Em versão estável: 2.5
 
-## References
+## Referências
 
-Design document:
+Documento de design:
 
-* [Using slot to embed web Platform Views][design doc]
+* [Usando slot para incorporar visualizações de plataforma web][design doc]
 
-Relevant issues:
+Problemas relevantes:
 
 * [Issue #80524][issue-80524]
 
-Relevant PRs:
+PRs relevantes:
 
-* [flutter/engine#25747][pull-25747]: Introduces the feature.
-* [flutter/flutter#82926][pull-82926]: Tweaks `flutter` tests.
-* [flutter/plugins#3964][pull-3964]: Tweaks to `plugins` code.
-* [flutter/packages#364][pull-364]: Tweaks to `packages` code.
+* [flutter/engine#25747][pull-25747]: Introduz o recurso.
+* [flutter/flutter#82926][pull-82926]: Ajustes em testes do `flutter`.
+* [flutter/plugins#3964][pull-3964]: Ajustes no código de `plugins`.
+* [flutter/packages#364][pull-364]: Ajustes no código de `packages`.
 
 [`CSS height`]: https://developer.mozilla.org/en-US/docs/Web/CSS/height
 [`CSS width`]: https://developer.mozilla.org/en-US/docs/Web/CSS/width
@@ -197,3 +206,4 @@ Relevant PRs:
 [pull-82926]: {{site.repo.flutter}}/pull/82926
 [shadow root]: https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot
 [slot elements]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot
+

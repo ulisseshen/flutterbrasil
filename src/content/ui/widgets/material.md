@@ -1,36 +1,38 @@
 ---
-title: Material component widgets
+ia-translate: true
+title: Widgets de componentes Material
 short-title: Material
-description: > 
-  A catalog of Flutter's widgets implementing Material 3 design guidelines.
+description: >
+  Um catálogo de widgets do Flutter que implementam as diretrizes de design
+  do Material 3.
 ---
 
-Flutter provides a variety of visual, behavioral, and motion-rich widgets
-that implement the [Material 3][] design specification.
-Material 3 is the default design language of Flutter,
-enabling you to design and build beautiful, usable apps
-that can adapt to any platform.
+O Flutter oferece uma variedade de widgets ricos em recursos visuais,
+comportamentais e de movimento que implementam a especificação de design
+[Material 3][]. Material 3 é a linguagem de design padrão do Flutter,
+permitindo que você projete e crie aplicativos bonitos e utilizáveis
+que podem se adaptar a qualquer plataforma.
 
 :::secondary
-The transition to Material 3 as the default was
-completed in Flutter 3.16.
+A transição para o Material 3 como padrão foi concluída
+no Flutter 3.16.
 
-To learn more about this transition, how to complete it for your own widgets,
-or how to temporarily opt-out, check out
-the [Migrate to Material 3][] migration guide.
+Para saber mais sobre essa transição, como concluí-la para seus
+próprios widgets ou como desativá-la temporariamente, confira
+o guia de migração [Migrar para o Material 3][].
 :::
 
-To catch these and other widgets in action,
-check out the [Material 3 demo][] web app.
+Para ver esses e outros widgets em ação,
+confira o aplicativo da web [demonstração do Material 3][].
 
 [Material 3]: https://m3.material.io/get-started
-[Migrate to Material 3]: /release/breaking-changes/material-3-migration
-[Material 3 demo]: https://flutter.github.io/samples/web/material_3_demo/
+[Migrar para o Material 3]: /release/breaking-changes/material-3-migration
+[demonstração do Material 3]: https://flutter.github.io/samples/web/material_3_demo/
 
-{% render docs/catalog-page-material.md, categoryName:"Material components", catalog:catalog %}
+{% render docs/catalog-page-material.md, categoryName:"Componentes Material", catalog:catalog %}
 
-Find more widgets in the [Material 2 widget catalog][]
-and other categories of the [widget catalog][].
+Encontre mais widgets no [catálogo de widgets Material 2][]
+e outras categorias do [catálogo de widgets][].
 
-[Material 2 widget catalog]: /ui/widgets/material2
-[widget catalog]: /ui/widgets
+[catálogo de widgets Material 2]: /ui/widgets/material2
+[catálogo de widgets]: /ui/widgets

@@ -1,29 +1,30 @@
 ---
-title: Rename MaterialState to WidgetState
+ia-translate: true
+title: Renomear MaterialState para WidgetState
 description: >-
-  MaterialState and its related APIs have been moved
-  outside of the Material library and renamed to
+  MaterialState e suas APIs relacionadas foram movidas para
+  fora da biblioteca Material e renomeadas para
   WidgetState.
 ---
 
-## Summary
+## Resumo
 
-`MaterialState`, and its related APIs, have been moved out
-of the Material library and renamed to `WidgetState`.
+`MaterialState`, e suas APIs relacionadas, foram movidas para
+fora da biblioteca Material e renomeadas para `WidgetState`.
 
-## Background
+## Contexto
 
-Previously, `MaterialState` provided logic for
-handling multiple different states a widget could have,
-like "hovered", "focused", and "disabled".
-Because this functionality is useful outside the Material library,
-namely for the base Widgets layer and Cupertino,
-it was decided to move it outside of Material.
-As part of the move, and to avoid future confusion,
-the different `MaterialState` classes have been renamed to `WidgetState`.
-The behavior of the two are the same.
+Anteriormente, `MaterialState` fornecia lógica para
+manipular vários estados diferentes que um widget poderia ter,
+como "hovered" (pairado), "focused" (focado) e "disabled" (desabilitado).
+Como essa funcionalidade é útil fora da biblioteca Material,
+nomeadamente para a camada base Widgets e Cupertino,
+decidiu-se movê-la para fora do Material.
+Como parte da mudança, e para evitar confusões futuras,
+as diferentes classes `MaterialState` foram renomeadas para `WidgetState`.
+O comportamento dos dois é o mesmo.
 
-| Before                          | Now                           |
+| Antes                          | Agora                           |
 |---------------------------------|-------------------------------|
 | `MaterialState`                 | `WidgetState`                 |
 | `MaterialStatePropertyResolver` | `WidgetStatePropertyResolver` |
@@ -36,19 +37,19 @@ The behavior of the two are the same.
 | `MaterialStatePropertyAll`      | `WidgetStatePropertyAll`      |
 | `MaterialStatesController`      | `WidgetStatesController`      |
 
-The classes `MaterialStateOutlineInputBorder` and
-`MaterialStateUnderlineInputBorder` were left in the
-Material library with no `WidgetState` equivalent, as
-they are specific to Material design.
+As classes `MaterialStateOutlineInputBorder` e
+`MaterialStateUnderlineInputBorder` foram deixadas na
+biblioteca Material sem um equivalente `WidgetState`, pois
+elas são específicas do Material design.
 
-## Migration guide
+## Guia de migração
 
-A [Flutter fix][] is available to help migrate the `MaterialState`
-classes to `WidgetState`.
+Um [Flutter fix][] está disponível para ajudar a migrar as classes
+`MaterialState` para `WidgetState`.
 
-To migrate, replace `MaterialState` with `WidgetState`.
+Para migrar, substitua `MaterialState` por `WidgetState`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 MaterialState selected = MaterialState.selected;
@@ -72,7 +73,7 @@ BorderSide side = MaterialStateBorderSide.resolveWith((Set<MaterialState> states
 });
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 WidgetState selected = WidgetState.selected;
@@ -96,21 +97,21 @@ BorderSide side = WidgetStateBorderSide.resolveWith((Set<WidgetState> states) {
 });
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.21.0-11.0.pre<br>
-In stable release: 3.22.0
+Implementado na versão: 3.21.0-11.0.pre<br>
+Na versão estável: 3.22.0
 
-## References
+## Referências
 
-Relevant issues:
+Problemas relevantes:
 
-* [Create widgets level support for State][]
+* [Criar suporte em nível de widgets para State][]
 
-Relevant PRs:
+PRs relevantes:
 
-* [Widget State Properties][]
+* [Propriedades de Estado do Widget][]
 
-[Create widgets level support for State]: {{site.repo.flutter}}/issues/138270
+[Criar suporte em nível de widgets para State]: {{site.repo.flutter}}/issues/138270
 [Flutter fix]: /tools/flutter-fix
-[Widget State Properties]: {{site.repo.flutter}}/pull/142151
+[Propriedades de Estado do Widget]: {{site.repo.flutter}}/pull/142151

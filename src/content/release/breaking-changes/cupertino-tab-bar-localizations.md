@@ -1,53 +1,53 @@
 ---
-title: CupertinoTabBar requires Localizations parent
+ia-translate: true
+title: CupertinoTabBar requer um pai Localizations
 description: >
-  In order to provide locale appropriate semantics, the
-  CupertinoTabBar requires a Localizations parent.
+  Para fornecer semântica apropriada à localidade, o
+  CupertinoTabBar requer um pai Localizations.
 ---
 
-## Summary
+## Resumo
 
-Instances of `CupertinoTabBar` must have a
-`Localizations`parent in order to provide a localized
-`Semantics` hint. Trying to instantiate a
-`CupertinoTabBar` without localizations
-results in an assertion such as the following:
+Instâncias de `CupertinoTabBar` devem ter um pai
+`Localizations` para fornecer uma dica de `Semantics`
+localizada. Tentar instanciar um `CupertinoTabBar` sem
+localizações resulta em uma asserção como a seguinte:
 
 ```plaintext
-CupertinoTabBar requires a Localizations parent in order to provide an appropriate Semantics hint
-for tab indexing. A CupertinoApp provides the DefaultCupertinoLocalizations, or you can
-instantiate your own Localizations.
+CupertinoTabBar requer um pai Localizations para fornecer uma dica Semantics apropriada
+para indexação de abas. Um CupertinoApp fornece o DefaultCupertinoLocalizations, ou você pode
+instanciar suas próprias Localizations.
 'package:flutter/src/cupertino/bottom_tab_bar.dart':
-Failed assertion: line 213 pos 7: 'localizations != null'
+Falha na asserção: linha 213 pos 7: 'localizations != null'
 ```
 
-## Context
+## Contexto
 
-To support localized semantics information,
-the `CupertinoTabBar` requires localizations.
+Para suportar informações de semântica localizada, o
+`CupertinoTabBar` requer localizações.
 
-Before this change, the `Semantics` hint provided
-to the `CupertinoTabBar` was a hard-coded String,
-'tab, $index of $total'. The content of the semantics
-hint was also updated from this original
-String to 'Tab $index of $total' in English.
+Antes dessa alteração, a dica de `Semantics` fornecida
+ao `CupertinoTabBar` era uma String codificada,
+'tab, $index de $total'. O conteúdo da dica de semântica
+também foi atualizado dessa String original para 'Tab $index
+de $total' em inglês.
 
-If your `CupertinoTabBar` is within the scope
-of a `CupertinoApp`, the `DefaultCupertinoLocalizations`
-is already instantiated and may suit your
-needs without having to make a change to your existing code.
+Se o seu `CupertinoTabBar` estiver dentro do escopo
+de um `CupertinoApp`, o `DefaultCupertinoLocalizations`
+já está instanciado e pode atender às suas
+necessidades sem ter que fazer uma alteração no seu código existente.
 
-If your `CupertinoTabBar` is not within a `CupertinoApp`,
-you may provide the localizations of
-your choosing using the `Localizations` widget.
+Se o seu `CupertinoTabBar` não estiver dentro de um `CupertinoApp`,
+você pode fornecer as localizações de
+sua escolha usando o widget `Localizations`.
 
-## Migration guide
+## Guia de migração
 
-If you are seeing a `'localizations != null'` assertion error,
-make sure locale information is being
-provided to your `CupertinoTabBar`.
+Se você estiver vendo um erro de asserção `'localizations != null'`,
+certifique-se de que as informações de localidade estão sendo
+fornecidas para o seu `CupertinoTabBar`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 import 'package:flutter/cupertino.dart';
@@ -77,7 +77,7 @@ class Foo extends StatelessWidget {
 }
 ```
 
-Code after migration (Providing localizations via the `CupertinoApp`):
+Código após a migração (Fornecendo localizações via o `CupertinoApp`):
 
 ```dart
 import 'package:flutter/cupertino.dart';
@@ -106,8 +106,8 @@ class Foo extends StatelessWidget {
 }
 ```
 
-Code after migration (Providing localizations by using
-the `Localizations` widget):
+Código após a migração (Fornecendo localizações usando o widget
+`Localizations`):
 
 ```dart
 import 'package:flutter/cupertino.dart';
@@ -144,33 +144,32 @@ class Foo extends StatelessWidget {
 }
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.18.0-9.0.pre<br>
-In stable release: 1.20.0
+Implementado na versão: 1.18.0-9.0.pre<br>
+Na versão estável: 1.20.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`CupertinoTabBar`][]
 * [`Localizations`][]
 * [`DefaultCupertinoLocalizations`][]
 * [`Semantics`][]
 * [`CupertinoApp`][]
-* [Internationalizing Flutter Apps][]
+* [Internacionalizando Aplicativos Flutter][]
 
+PRs relevantes:
 
-Relevant PR:
-
-* [PR 55336: Adding tabSemanticsLabel to CupertinoLocalizations][]
-* [PR 56582: Update Tab semantics in Cupertino to be the same as Material][]
+* [PR 55336: Adicionando tabSemanticsLabel ao CupertinoLocalizations][]
+* [PR 56582: Atualizar a semântica da Tab no Cupertino para ser a mesma do Material][]
 
 [`CupertinoTabBar`]: {{site.api}}/flutter/cupertino/CupertinoTabBar-class.html
 [`Localizations`]: {{site.api}}/flutter/widgets/Localizations-class.html
 [`DefaultCupertinoLocalizations`]: {{site.api}}/flutter/cupertino/DefaultCupertinoLocalizations-class.html
 [`Semantics`]: {{site.api}}/flutter/widgets/Semantics-class.html
 [`CupertinoApp`]: {{site.api}}/flutter/cupertino/CupertinoApp-class.html
-[Internationalizing Flutter Apps]: /ui/accessibility-and-internationalization/internationalization
-[PR 55336: Adding tabSemanticsLabel to CupertinoLocalizations]: {{site.repo.flutter}}/pull/55336
-[PR 56582: Update Tab semantics in Cupertino to be the same as Material]: {{site.repo.flutter}}/pull/56582#issuecomment-625497951
+[Internacionalizando Aplicativos Flutter]: /ui/accessibility-and-internationalization/internationalization
+[PR 55336: Adicionando tabSemanticsLabel ao CupertinoLocalizations]: {{site.repo.flutter}}/pull/55336
+[PR 56582: Atualizar a semântica da Tab no Cupertino para ser a mesma do Material]: {{site.repo.flutter}}/pull/56582#issuecomment-625497951

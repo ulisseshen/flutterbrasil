@@ -1,50 +1,51 @@
 ---
-title: Parse JSON in the background
-description: How to perform a task in the background.
+ia-translate: true
+title: Analisar JSON em Segundo Plano
+description: Como executar uma tarefa em segundo plano.
 ---
 
 <?code-excerpt path-base="cookbook/networking/background_parsing/"?>
 
-By default, Dart apps do all of their work on a single thread.
-In many cases, this model simplifies coding and is fast enough
-that it does not result in poor app performance or stuttering animations,
-often called "jank."
+Por padrão, os aplicativos Dart realizam todo o seu trabalho em uma única thread.
+Em muitos casos, este modelo simplifica a codificação e é rápido o suficiente
+para que não resulte em baixo desempenho do aplicativo ou animações gaguejantes,
+muitas vezes chamadas de "jank".
 
-However, you might need to perform an expensive computation,
-such as parsing a very large JSON document.
-If this work takes more than 16 milliseconds,
-your users experience jank.
+No entanto, você pode precisar executar uma computação dispendiosa,
+como analisar um documento JSON muito grande.
+Se este trabalho levar mais de 16 milissegundos,
+seus usuários experimentarão jank.
 
-To avoid jank, you need to perform expensive computations
-like this in the background.
-On Android, this means scheduling work on a different thread.
-In Flutter, you can use a separate [Isolate][].
-This recipe uses the following steps:
+Para evitar jank, você precisa executar computações dispendiosas
+como esta em segundo plano.
+No Android, isso significa agendar o trabalho em uma thread diferente.
+No Flutter, você pode usar um [Isolate][] separado.
+Esta receita usa as seguintes etapas:
 
-  1. Add the `http` package.
-  2. Make a network request using the `http` package.
-  3. Convert the response into a list of photos.
-  4. Move this work to a separate isolate.
+  1. Adicione o pacote `http`.
+  2. Faça uma requisição de rede usando o pacote `http`.
+  3. Converta a resposta em uma lista de fotos.
+  4. Mova este trabalho para um isolate separado.
 
-## 1. Add the `http` package
+## 1. Adicione o pacote `http`
 
-First, add the [`http`][] package to your project.
-The `http` package makes it easier to perform network
-requests, such as fetching data from a JSON endpoint.
+Primeiro, adicione o pacote [`http`][] ao seu projeto.
+O pacote `http` facilita a execução de requisições de rede,
+como buscar dados de um endpoint JSON.
 
-To add the `http` package as a dependency,
-run `flutter pub add`:
+Para adicionar o pacote `http` como uma dependência,
+execute `flutter pub add`:
 
 ```console
 $ flutter pub add http
 ```
 
-## 2. Make a network request
+## 2. Faça uma requisição de rede
 
-This example covers how to fetch a large JSON document
-that contains a list of 5000 photo objects from the
+Este exemplo aborda como buscar um grande documento JSON
+que contém uma lista de 5000 objetos de fotos do
 [JSONPlaceholder REST API][],
-using the [`http.get()`][] method.
+usando o método [`http.get()`][].
 
 <?code-excerpt "lib/main_step2.dart (fetchPhotos)"?>
 ```dart
@@ -54,22 +55,22 @@ Future<http.Response> fetchPhotos(http.Client client) async {
 ```
 
 :::note
-You're providing an `http.Client` to the function in this example.
-This makes the function easier to test and use in different environments.
+Você está fornecendo um `http.Client` para a função neste exemplo.
+Isso torna a função mais fácil de testar e usar em diferentes ambientes.
 :::
 
-## 3. Parse and convert the JSON into a list of photos
+## 3. Analise e converta o JSON em uma lista de fotos
 
-Next, following the guidance from the
-[Fetch data from the internet][] recipe,
-convert the `http.Response` into a list of Dart objects.
-This makes the data easier to work with.
+Em seguida, seguindo as orientações da receita
+[Buscar dados da internet][],
+converta o `http.Response` em uma lista de objetos Dart.
+Isso torna os dados mais fáceis de trabalhar.
 
-### Create a `Photo` class
+### Crie uma classe `Photo`
 
-First, create a `Photo` class that contains data about a photo.
-Include a `fromJson()` factory method to make it easy to create a
-`Photo` starting with a JSON object.
+Primeiro, crie uma classe `Photo` que contém dados sobre uma foto.
+Inclua um método factory `fromJson()` para facilitar a criação de uma
+`Photo` a partir de um objeto JSON.
 
 <?code-excerpt "lib/main_step3.dart (Photo)"?>
 ```dart
@@ -100,19 +101,19 @@ class Photo {
 }
 ```
 
-### Convert the response into a list of photos
+### Converta a resposta em uma lista de fotos
 
-Now, use the following instructions to update the
-`fetchPhotos()` function so that it returns a
+Agora, use as seguintes instruções para atualizar a
+função `fetchPhotos()` para que ela retorne um
 `Future<List<Photo>>`:
 
-  1. Create a `parsePhotos()` function that converts the response
-     body into a `List<Photo>`.
-  2. Use the `parsePhotos()` function in the `fetchPhotos()` function.
+  1. Crie uma função `parsePhotos()` que converta o corpo da resposta
+     em uma `List<Photo>`.
+  2. Use a função `parsePhotos()` na função `fetchPhotos()`.
 
 <?code-excerpt "lib/main_step3.dart (parsePhotos)"?>
 ```dart
-// A function that converts a response body into a List<Photo>.
+// Uma função que converte o corpo de uma resposta em uma List<Photo>.
 List<Photo> parsePhotos(String responseBody) {
   final parsed =
       (jsonDecode(responseBody) as List).cast<Map<String, dynamic>>();
@@ -124,22 +125,22 @@ Future<List<Photo>> fetchPhotos(http.Client client) async {
   final response = await client
       .get(Uri.parse('https://jsonplaceholder.typicode.com/photos'));
 
-  // Synchronously run parsePhotos in the main isolate.
+  // Execute parsePhotos de forma síncrona no isolate principal.
   return parsePhotos(response.body);
 }
 ```
 
-## 4. Move this work to a separate isolate
+## 4. Mova este trabalho para um isolate separado
 
-If you run the `fetchPhotos()` function on a slower device,
-you might notice the app freezes for a brief moment as it parses and
-converts the JSON. This is jank, and you want to get rid of it.
+Se você executar a função `fetchPhotos()` em um dispositivo mais lento,
+você pode notar que o aplicativo congela por um breve momento enquanto ele analisa e
+converte o JSON. Isso é jank, e você quer se livrar dele.
 
-You can remove the jank by moving the parsing and conversion
-to a background isolate using the [`compute()`][]
-function provided by Flutter. The `compute()` function runs expensive
-functions in a background isolate and returns the result. In this case,
-run the `parsePhotos()` function in the background.
+Você pode remover o jank movendo a análise e a conversão
+para um isolate em segundo plano usando a função [`compute()`][]
+fornecida pelo Flutter. A função `compute()` executa funções dispendiosas
+em um isolate em segundo plano e retorna o resultado. Neste caso,
+execute a função `parsePhotos()` em segundo plano.
 
 <?code-excerpt "lib/main.dart (fetchPhotos)"?>
 ```dart
@@ -147,27 +148,27 @@ Future<List<Photo>> fetchPhotos(http.Client client) async {
   final response = await client
       .get(Uri.parse('https://jsonplaceholder.typicode.com/photos'));
 
-  // Use the compute function to run parsePhotos in a separate isolate.
+  // Use a função compute para executar parsePhotos em um isolate separado.
   return compute(parsePhotos, response.body);
 }
 ```
 
-## Notes on working with isolates
+## Notas sobre como trabalhar com isolates
 
-Isolates communicate by passing messages back and forth. These messages can
-be primitive values, such as `null`, `num`, `bool`, `double`, or `String`, or
-simple objects such as the `List<Photo>` in this example.
+Isolates se comunicam passando mensagens de um lado para o outro. Essas mensagens podem
+ser valores primitivos, como `null`, `num`, `bool`, `double` ou `String`, ou
+objetos simples como `List<Photo>` neste exemplo.
 
-You might experience errors if you try to pass more complex objects,
-such as a `Future` or `http.Response` between isolates.
+Você pode experimentar erros se tentar passar objetos mais complexos,
+como um `Future` ou `http.Response` entre isolates.
 
-As an alternate solution, check out the [`worker_manager`][] or
-[`workmanager`][] packages for background processing.
+Como solução alternativa, confira os pacotes [`worker_manager`][] ou
+[`workmanager`][] para processamento em segundo plano.
 
 [`worker_manager`]:  {{site.pub}}/packages/worker_manager
 [`workmanager`]: {{site.pub}}/packages/workmanager
 
-## Complete example
+## Exemplo completo
 
 <?code-excerpt "lib/main.dart"?>
 ```dart
@@ -182,11 +183,11 @@ Future<List<Photo>> fetchPhotos(http.Client client) async {
   final response = await client
       .get(Uri.parse('https://jsonplaceholder.typicode.com/photos'));
 
-  // Use the compute function to run parsePhotos in a separate isolate.
+  // Use a função compute para executar parsePhotos em um isolate separado.
   return compute(parsePhotos, response.body);
 }
 
-// A function that converts a response body into a List<Photo>.
+// Uma função que converte o corpo de uma resposta em uma List<Photo>.
 List<Photo> parsePhotos(String responseBody) {
   final parsed =
       (jsonDecode(responseBody) as List).cast<Map<String, dynamic>>();
@@ -227,7 +228,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const appTitle = 'Isolate Demo';
+    const appTitle = 'Demonstração de Isolate';
 
     return const MaterialApp(
       title: appTitle,
@@ -265,7 +266,7 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return const Center(
-              child: Text('An error has occurred!'),
+              child: Text('Ocorreu um erro!'),
             );
           } else if (snapshot.hasData) {
             return PhotosList(photos: snapshot.data!);
@@ -300,10 +301,10 @@ class PhotosList extends StatelessWidget {
 }
 ```
 
-![Isolate demo](/assets/images/docs/cookbook/isolate.gif){:.site-mobile-screenshot}
+![Demonstração de Isolate](/assets/images/docs/cookbook/isolate.gif){:.site-mobile-screenshot}
 
 [`compute()`]: {{site.api}}/flutter/foundation/compute.html
-[Fetch data from the internet]: /cookbook/networking/fetch-data
+[Buscar dados da internet]: /cookbook/networking/fetch-data
 [`http`]: {{site.pub-pkg}}/http
 [`http.get()`]: {{site.pub-api}}/http/latest/http/get.html
 [Isolate]: {{site.api}}/flutter/dart-isolate/Isolate-class.html

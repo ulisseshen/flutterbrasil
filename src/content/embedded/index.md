@@ -1,48 +1,46 @@
 ---
-title: Embedded support for Flutter
+ia-translate: true
+title: Suporte Embarcado para Flutter
 description: >
-  Details of how Flutter supports the creation of embedded experiences.
+  Detalhes de como o Flutter suporta a criação de experiências embarcadas.
 ---
 
-If you would like to embed Flutter engine into a car,
-a refrigerator, a thermostat... you CAN! For example,
-you might embed Flutter in the following situations:
+Se você gostaria de embutir o motor do Flutter em um carro,
+uma geladeira, um termostato... você PODE! Por exemplo,
+você pode embutir o Flutter nas seguintes situações:
 
-* Using Flutter on an "embedded device",
-  typically a low-powered hardware device
-  such as a smart-display, a thermostat, or similar.
-* Embedding Flutter into a new operating system or
-  environment, for example a new mobile platform
-  or a new operating system.
+* Usar Flutter em um "dispositivo embarcado",
+  tipicamente um dispositivo de hardware de baixa potência
+  como um smart-display, um termostato ou similar.
+* Embutir Flutter em um novo sistema operacional ou
+  ambiente, por exemplo, uma nova plataforma móvel
+  ou um novo sistema operacional.
 
-The ability to embed Flutter, while stable,
-uses low-level API and is _not_ for beginners. 
-In addition to the resources listed below, you
-might consider joining [Discord][], where Flutter
-developers (including Google engineers) discuss
-various aspects of Flutter. The Flutter
-[community][] page has info on more community
-resources.
+A capacidade de embutir o Flutter, embora estável,
+usa API de baixo nível e _não_ é para iniciantes.
+Além dos recursos listados abaixo, você
+pode considerar participar do [Discord][], onde desenvolvedores
+Flutter (incluindo engenheiros do Google) discutem
+vários aspectos do Flutter. A página da [comunidade][] do Flutter
+tem informações sobre mais recursos da comunidade.
 
-* [Custom Flutter Engine Embedders][], on the Flutter wiki.
-* The doc comments in the
-  [Flutter engine `embedder.h` file][] on GitHub.
-* The [Flutter architectural overview][] on docs.flutter.dev.
-* A small, self-contained [Flutter Embedder Engine GLFW example][]
-  in the Flutter engine GitHub repo.
-* An exploration into [embedding Flutter in a terminal][] by
-  implementing Flutter's custom embedder API.
-* [Issue 31043][]: _Questions for porting flutter engine to
-  a new os_ might also be helpful.
+* [Custom Flutter Engine Embedders][], na wiki do Flutter.
+* Os comentários da documentação no
+  [arquivo `embedder.h` do motor do Flutter][] no GitHub.
+* A [visão geral da arquitetura do Flutter][] em docs.flutter.dev.
+* Um pequeno e autocontido [exemplo de Flutter Embedder Engine GLFW][]
+  no repositório do motor Flutter no GitHub.
+* Uma exploração sobre [embutir Flutter em um terminal][] através da
+  implementação da API custom embedder do Flutter.
+* [Issue 31043][]: _Perguntas para portar o motor do flutter para
+  um novo sistema operacional_ também pode ser útil.
 
 
 [community]: {{site.main-url}}/community
 [Discord]: https://discord.com/invite/N7Yshp4
 [Custom Flutter Engine Embedders]: {{site.repo.engine}}/blob/main/docs/Custom-Flutter-Engine-Embedders.md
-[Flutter architectural overview]: /resources/architectural-overview
-[Flutter engine `embedder.h` file]: {{site.repo.engine}}/blob/main/shell/platform/embedder/embedder.h
-[Flutter Embedder Engine GLFW example]: {{site.repo.engine}}/tree/main/examples/glfw#flutter-embedder-engine-glfw-example
-[embedding Flutter in a terminal]: https://github.com/jiahaog/flt
+[visão geral da arquitetura do Flutter]: /resources/architectural-overview
+[arquivo `embedder.h` do motor do Flutter]: {{site.repo.engine}}/blob/main/shell/platform/embedder/embedder.h
+[exemplo de Flutter Embedder Engine GLFW]: {{site.repo.engine}}/tree/main/examples/glfw#flutter-embedder-engine-glfw-example
+[embutir Flutter em um terminal]: https://github.com/jiahaog/flt
 [Issue 31043]: {{site.repo.flutter}}/issues/31043
-
-

@@ -1,40 +1,41 @@
 ---
-title: Handle scrolling
-description: How to handle scrolling in a widget test.
+ia-translate: true
+title: Lidar com rolagem
+description: Como lidar com rolagem em um teste de widget.
 ---
 
 <?code-excerpt path-base="cookbook/testing/widget/scrolling/"?>
 
-Many apps feature lists of content,
-from email clients to music apps and beyond.
-To verify that lists contain the expected content
-using widget tests,
-you need a way to scroll through lists to search for particular items.
+Muitos aplicativos apresentam listas de conteúdo,
+de clientes de e-mail a aplicativos de música e muito mais.
+Para verificar se as listas contêm o conteúdo esperado
+usando testes de widget,
+você precisa de uma maneira de percorrer as listas para procurar itens específicos.
 
-To scroll through lists via integration tests,
-use the methods provided by the [`WidgetTester`][] class,
-which is included in the [`flutter_test`][] package:
+Para percorrer listas por meio de testes de integração,
+use os métodos fornecidos pela classe [`WidgetTester`][],
+que está incluída no pacote [`flutter_test`][]:
 
-In this recipe, learn how to scroll through a list of items to
-verify a specific widget is being displayed,
-and the pros and cons of different approaches. 
+Nesta receita, aprenda como percorrer uma lista de itens para
+verificar se um widget específico está sendo exibido,
+e os prós e contras de diferentes abordagens.
 
-This recipe uses the following steps:
+Esta receita usa as seguintes etapas:
 
-1. Create an app with a list of items.
-2. Write a test that scrolls through the list.
-3. Run the test.
+1. Crie um aplicativo com uma lista de itens.
+2. Escreva um teste que percorra a lista.
+3. Execute o teste.
 
-## 1. Create an app with a list of items
+## 1. Crie um aplicativo com uma lista de itens
 
-This recipe builds an app that shows a long list of items.
-To keep this recipe focused on testing, use the app created in the
-[Work with long lists][] recipe.
-If you're unsure of how to work with long lists,
-see that recipe for an introduction.
+Esta receita cria um aplicativo que mostra uma longa lista de itens.
+Para manter esta receita focada em testes, use o aplicativo criado na
+receita [Trabalhar com listas longas][].
+Se você não tem certeza de como trabalhar com listas longas,
+consulte essa receita para uma introdução.
 
-Add keys to the widgets you want to interact with
-inside the integration tests.
+Adicione keys aos widgets com os quais você deseja interagir
+dentro dos testes de integração.
 
 <?code-excerpt "lib/main.dart"?>
 ```dart
@@ -53,7 +54,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const title = 'Long List';
+    const title = 'Lista Longa';
 
     return MaterialApp(
       title: title,
@@ -62,17 +63,17 @@ class MyApp extends StatelessWidget {
           title: const Text(title),
         ),
         body: ListView.builder(
-          // Add a key to the ListView. This makes it possible to
-          // find the list and scroll through it in the tests.
+          // Adicione uma key ao ListView. Isso possibilita
+          // encontrar a lista e percorre-la nos testes.
           key: const Key('long_list'),
           itemCount: items.length,
           itemBuilder: (context, index) {
             return ListTile(
               title: Text(
                 items[index],
-                // Add a key to the Text widget for each item. This makes
-                // it possible to look for a particular item in the list
-                // and verify that the text is correct
+                // Adicione uma key ao widget Text para cada item. Isso torna
+                // possível procurar um item específico na lista
+                // e verificar se o texto está correto
                 key: Key('item_${index}_text'),
               ),
             );
@@ -84,33 +85,32 @@ class MyApp extends StatelessWidget {
 }
 ```
 
+## 2. Escreva um teste que percorra a lista
 
-## 2. Write a test that scrolls through the list
+Agora, você pode escrever um teste. Neste exemplo, percorra a lista de itens e
+verifique se um item específico existe na lista. A classe [`WidgetTester`][]
+fornece o método [`scrollUntilVisible()`][], que percorre uma lista
+até que um widget específico esteja visível. Isso é útil porque a altura do
+itens na lista podem mudar dependendo do dispositivo.
 
-Now, you can write a test. In this example, scroll through the list of items and
-verify that a particular item exists in the list. The [`WidgetTester`][] class
-provides the [`scrollUntilVisible()`][] method, which scrolls through a list
-until a specific widget is visible. This is useful because the height of the
-items in the list can change depending on the device.
+Em vez de assumir que você conhece a altura de todos os itens
+em uma lista, ou que um widget específico é renderizado em todos os dispositivos,
+o método `scrollUntilVisible()` percorre repetidamente
+uma lista de itens até encontrar o que procura.
 
-Rather than assuming that you know the height of all the items
-in a list, or that a particular widget is rendered on all devices,
-the `scrollUntilVisible()` method repeatedly scrolls through
-a list of items until it finds what it's looking for.
-
-The following code shows how to use the `scrollUntilVisible()` method
-to look through the list for a particular item. This code lives in a
-file called `test/widget_test.dart`.
+O código a seguir mostra como usar o método `scrollUntilVisible()`
+para procurar na lista um item específico. Este código reside em um
+arquivo chamado `test/widget_test.dart`.
 
 <?code-excerpt "test/widget_test.dart (ScrollWidgetTest)"?>
 ```dart
 
-// This is a basic Flutter widget test.
+// Este é um teste de widget básico do Flutter.
 //
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility that Flutter provides. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
+// Para realizar uma interação com um widget em seu teste, use o WidgetTester
+// utilitário que o Flutter fornece. Por exemplo, você pode enviar toques e rolagens
+// gestos. Você também pode usar WidgetTester para encontrar widgets filhos no widget
+// árvore, leia o texto e verifique se os valores das propriedades do widget estão corretos.
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -118,8 +118,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:scrolling/main.dart';
 
 void main() {
-  testWidgets('finds a deep item in a long list', (tester) async {
-    // Build our app and trigger a frame.
+  testWidgets('encontra um item profundo em uma lista longa', (tester) async {
+    // Construa nosso aplicativo e acione um frame.
     await tester.pumpWidget(MyApp(
       items: List<String>.generate(10000, (i) => 'Item $i'),
     ));
@@ -127,22 +127,22 @@ void main() {
     final listFinder = find.byType(Scrollable);
     final itemFinder = find.byKey(const ValueKey('item_50_text'));
 
-    // Scroll until the item to be found appears.
+    // Role até que o item a ser encontrado apareça.
     await tester.scrollUntilVisible(
       itemFinder,
       500.0,
       scrollable: listFinder,
     );
 
-    // Verify that the item contains the correct text.
+    // Verifique se o item contém o texto correto.
     expect(itemFinder, findsOneWidget);
   });
 }
 ```
 
-## 3. Run the test
+## 3. Execute o teste
 
-Run the test using the following command from the root of the project:
+Execute o teste usando o seguinte comando a partir da raiz do projeto:
 
 ```console
 flutter test test/widget_test.dart
@@ -152,4 +152,4 @@ flutter test test/widget_test.dart
 [`WidgetTester`]: {{site.api}}/flutter/flutter_test/WidgetTester-class.html
 [`ListView.builder`]: {{site.api}}/flutter/widgets/ListView/ListView.builder.html
 [`scrollUntilVisible()`]: {{site.api}}/flutter/flutter_test/WidgetController/scrollUntilVisible.html
-[Work with long lists]: /cookbook/lists/long-lists
+[Trabalhar com listas longas]: /cookbook/lists/long-lists

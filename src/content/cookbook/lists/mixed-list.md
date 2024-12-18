@@ -1,6 +1,7 @@
 ---
-title: Create lists with different types of items
-description: How to implement a list that contains different types of assets.
+ia-translate: true
+title: Criar listas com diferentes tipos de itens
+description: Como implementar uma lista que contém diferentes tipos de elementos.
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
@@ -8,39 +9,39 @@ js:
 
 <?code-excerpt path-base="cookbook/lists/mixed_list/"?>
 
-You might need to create lists that display different types of content.
-For example, you might be working on a list that shows a heading
-followed by a few items related to the heading, followed by another heading,
-and so on.
+Pode ser necessário criar listas que exibam diferentes tipos de conteúdo.
+Por exemplo, você pode estar trabalhando em uma lista que mostra um cabeçalho
+seguido por alguns itens relacionados ao cabeçalho, seguido por outro cabeçalho,
+e assim por diante.
 
-Here's how you can create such a structure with Flutter:
+Veja como você pode criar essa estrutura com o Flutter:
 
-  1. Create a data source with different types of items.
-  2. Convert the data source into a list of widgets.
+  1. Crie uma fonte de dados com diferentes tipos de itens.
+  2. Converta a fonte de dados em uma lista de widgets.
 
-## 1. Create a data source with different types of items
+## 1. Crie uma fonte de dados com diferentes tipos de itens
 
-### Types of items
+### Tipos de itens
 
-To represent different types of items in a list, define
-a class for each type of item.
+Para representar diferentes tipos de itens em uma lista, defina
+uma classe para cada tipo de item.
 
-In this example, create an app that shows a header followed by five
-messages. Therefore, create three classes: `ListItem`, `HeadingItem`,
-and `MessageItem`.
+Neste exemplo, crie um aplicativo que mostre um cabeçalho seguido por cinco
+mensagens. Portanto, crie três classes: `ListItem`, `HeadingItem` e
+`MessageItem`.
 
 <?code-excerpt "lib/main.dart (ListItem)"?>
 ```dart
-/// The base class for the different types of items the list can contain.
+/// A classe base para os diferentes tipos de itens que a lista pode conter.
 abstract class ListItem {
-  /// The title line to show in a list item.
+  /// A linha de título a ser exibida em um item da lista.
   Widget buildTitle(BuildContext context);
 
-  /// The subtitle line, if any, to show in a list item.
+  /// A linha de subtítulo, se houver, a ser exibida em um item da lista.
   Widget buildSubtitle(BuildContext context);
 }
 
-/// A ListItem that contains data to display a heading.
+/// Um ListItem que contém dados para exibir um cabeçalho.
 class HeadingItem implements ListItem {
   final String heading;
 
@@ -58,7 +59,7 @@ class HeadingItem implements ListItem {
   Widget buildSubtitle(BuildContext context) => const SizedBox.shrink();
 }
 
-/// A ListItem that contains data to display a message.
+/// Um ListItem que contém dados para exibir uma mensagem.
 class MessageItem implements ListItem {
   final String sender;
   final String body;
@@ -73,14 +74,14 @@ class MessageItem implements ListItem {
 }
 ```
 
-### Create a list of items
+### Criar uma lista de itens
 
-Most of the time, you would fetch data from the internet or a local
-database and convert that data into a list of items.
+Na maioria das vezes, você buscaria dados da internet ou de um local
+banco de dados e converteria esses dados em uma lista de itens.
 
-For this example, generate a list of items to work with. The list
-contains a header followed by five messages. Each message has one
-of 3 types: `ListItem`, `HeadingItem`, or `MessageItem`.
+Para este exemplo, gere uma lista de itens para trabalhar. A lista
+contém um cabeçalho seguido por cinco mensagens. Cada mensagem tem um
+de 3 tipos: `ListItem`, `HeadingItem` ou `MessageItem`.
 
 <?code-excerpt "lib/main.dart (Items)" replace="/^items:/final items =/g;/^\),$/);/g"?>
 ```dart
@@ -92,22 +93,22 @@ final items = List<ListItem>.generate(
 );
 ```
 
-## 2. Convert the data source into a list of widgets
+## 2. Converter a fonte de dados em uma lista de widgets
 
-To convert each item into a widget,
-use the [`ListView.builder()`][] constructor.
+Para converter cada item em um widget,
+use o construtor [`ListView.builder()`][].
 
-In general, provide a builder function that checks for what type
-of item you're dealing with, and returns the appropriate widget
-for that type of item.
+Em geral, forneça uma função builder que verifique com qual tipo
+de item você está lidando e retorne o widget apropriado
+para esse tipo de item.
 
 <?code-excerpt "lib/main.dart (builder)" replace="/^body: //g;/^\),$/)/g"?>
 ```dart
 ListView.builder(
-  // Let the ListView know how many items it needs to build.
+  // Permita que o ListView saiba quantos itens ele precisa construir.
   itemCount: items.length,
-  // Provide a builder function. This is where the magic happens.
-  // Convert each item into a widget based on the type of item it is.
+  // Forneça uma função builder. É aqui que a mágica acontece.
+  // Converta cada item em um widget com base no tipo de item que ele é.
   itemBuilder: (context, index) {
     final item = items[index];
 
@@ -119,10 +120,10 @@ ListView.builder(
 )
 ```
 
-## Interactive example
+## Exemplo interativo
 
 <?code-excerpt "lib/main.dart"?>
-```dartpad title="Flutter create mixed lists hands-on example in DartPad" run="true"
+```dartpad title="Exemplo prático de criação de listas mistas no Flutter com DartPad" run="true"
 import 'package:flutter/material.dart';
 
 void main() {
@@ -145,7 +146,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const title = 'Mixed List';
+    const title = 'Lista Mista';
 
     return MaterialApp(
       title: title,
@@ -154,10 +155,10 @@ class MyApp extends StatelessWidget {
           title: const Text(title),
         ),
         body: ListView.builder(
-          // Let the ListView know how many items it needs to build.
+          // Permita que o ListView saiba quantos itens ele precisa construir.
           itemCount: items.length,
-          // Provide a builder function. This is where the magic happens.
-          // Convert each item into a widget based on the type of item it is.
+          // Forneça uma função builder. É aqui que a mágica acontece.
+          // Converta cada item em um widget com base no tipo de item que ele é.
           itemBuilder: (context, index) {
             final item = items[index];
 
@@ -172,16 +173,16 @@ class MyApp extends StatelessWidget {
   }
 }
 
-/// The base class for the different types of items the list can contain.
+/// A classe base para os diferentes tipos de itens que a lista pode conter.
 abstract class ListItem {
-  /// The title line to show in a list item.
+  /// A linha de título a ser exibida em um item da lista.
   Widget buildTitle(BuildContext context);
 
-  /// The subtitle line, if any, to show in a list item.
+  /// A linha de subtítulo, se houver, a ser exibida em um item da lista.
   Widget buildSubtitle(BuildContext context);
 }
 
-/// A ListItem that contains data to display a heading.
+/// Um ListItem que contém dados para exibir um cabeçalho.
 class HeadingItem implements ListItem {
   final String heading;
 
@@ -199,7 +200,7 @@ class HeadingItem implements ListItem {
   Widget buildSubtitle(BuildContext context) => const SizedBox.shrink();
 }
 
-/// A ListItem that contains data to display a message.
+/// Um ListItem que contém dados para exibir uma mensagem.
 class MessageItem implements ListItem {
   final String sender;
   final String body;
@@ -215,8 +216,7 @@ class MessageItem implements ListItem {
 ```
 
 <noscript>
-  <img src="/assets/images/docs/cookbook/mixed-list.png" alt="Mixed list demo" class="site-mobile-screenshot" />
+  <img src="/assets/images/docs/cookbook/mixed-list.png" alt="Demonstração de lista mista" class="site-mobile-screenshot" />
 </noscript>
-
 
 [`ListView.builder()`]: {{site.api}}/flutter/widgets/ListView/ListView.builder.html

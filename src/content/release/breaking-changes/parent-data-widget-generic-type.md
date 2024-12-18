@@ -1,49 +1,41 @@
 ---
-title: The generic type of ParentDataWidget changed to ParentData
-description: The ParentDataWidget is now bound to the ParentData type.
+ia-translate: true
+title: O tipo genérico de ParentDataWidget mudou para ParentData
+description: O ParentDataWidget agora está vinculado ao tipo ParentData.
 ---
 
-## Summary
+## Sumário
 
-The generic type of `ParentDataWidget` has changed from
-`RenderObjectWidget` to `ParentData`.
+O tipo genérico de `ParentDataWidget` mudou de
+`RenderObjectWidget` para `ParentData`.
 
-## Context
+## Contexto
 
-Prior to this change, a `ParentDataWidget` was bound
-to a specific `RenderObjectWidget` type as ancestor.
-For example, a `Positioned` widget could only be used
-within a `Stack` widget. With this change,
-a `ParentDataWidget` can be used with any
-`RenderObjectWidget` type as ancestor as long as
-the `RenderObject` of said `RenderObjectWidget`
-sets up the correct `ParentData` type. In this new world,
-the `Positioned` widget can be reused with a hypothetical
-new `SuperStack` widget.
+Antes desta mudança, um `ParentDataWidget` era vinculado a um tipo específico de `RenderObjectWidget` como ancestral. Por exemplo, um widget `Positioned` só poderia ser usado dentro de um widget `Stack`. Com esta mudança, um `ParentDataWidget` pode ser usado com qualquer tipo `RenderObjectWidget` como ancestral, desde que o `RenderObject` do referido `RenderObjectWidget` configure o tipo correto `ParentData`. Neste novo mundo, o widget `Positioned` pode ser reutilizado com um hipotético novo widget `SuperStack`.
 
-## Description of change
+## Descrição da mudança
 
-The generic type argument of `ParentDataWidget`
-has changed from `RenderObjectWidget` to `ParentData`,
-and a new debug property, `debugTypicalAncestorWidgetClass`,
-is added to `ParentDataWidget`.
-The latter is used for error messages to give users a
-better idea of the context a given `ParentDataWidget`
-is supposed to be used in.
+O argumento de tipo genérico de `ParentDataWidget`
+mudou de `RenderObjectWidget` para `ParentData`,
+e uma nova propriedade de debug, `debugTypicalAncestorWidgetClass`,
+é adicionada ao `ParentDataWidget`.
+A última é usada para mensagens de erro para dar aos usuários uma
+melhor ideia do contexto em que um dado `ParentDataWidget`
+deve ser usado.
 
-## Migration guide
+## Guia de migração
 
-You must migrate your code as described in this section
-if you're subclassing or implementing `ParentDataWidget`.
-If you do, the analyzer shows the following warnings when you
-upgrade to the Flutter version that includes this change:
+Você deve migrar seu código conforme descrito nesta seção
+se você estiver fazendo subclassing ou implementando `ParentDataWidget`.
+Se você o fizer, o analisador mostra os seguintes avisos quando você
+atualizar para a versão Flutter que inclui esta mudança:
 
 ```plaintext
   error • Missing concrete implementation of 'getter ParentDataWidget.debugTypicalAncestorWidgetClass' • lib/main.dart:114:7 • non_abstract_class_inherits_abstract_member
   error • 'FrogJar' doesn't extend 'ParentData' • lib/main.dart:114:41 • type_argument_not_matching_bounds
 ```
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 class FrogSize extends ParentDataWidget<FrogJar> {
@@ -77,10 +69,10 @@ class FrogJar extends RenderObjectWidget {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
-class FrogSize extends ParentDataWidget<FrogJarParentData> { // FrogJar changed to FrogJarParentData
+class FrogSize extends ParentDataWidget<FrogJarParentData> { // FrogJar mudou para FrogJarParentData
   FrogSize({
     Key key,
     required this.size,
@@ -102,33 +94,33 @@ class FrogSize extends ParentDataWidget<FrogJarParentData> { // FrogJar changed 
   }
 
   @override
-  Type get debugTypicalAncestorWidgetClass => FrogJar; // Newly added
+  Type get debugTypicalAncestorWidgetClass => FrogJar; // Adicionado recentemente
 }
 ```
 
-The generic type of the `ParentDataWidget` superclass
-changes from `FrogJar` (a `RenderObjectWidget`) to
-`FrogJarParentData` (the `ParentData` type that
-`FrogSize.applyParentData` wants to operate on).
-Additionally, the new `debugTypicalAncestorWidgetClass`
-is implemented for this `ParentDataWidget` subclass.
-It returns the type of a typical ancestor `RenderObjectWidget`
-for this `ParentDataWidget`. Most of the time,
-you just want to return the old generic type here
-(`FrogJar` in this example).
+O tipo genérico da superclasse `ParentDataWidget`
+muda de `FrogJar` (um `RenderObjectWidget`) para
+`FrogJarParentData` (o tipo `ParentData` que
+`FrogSize.applyParentData` quer operar).
+Além disso, o novo `debugTypicalAncestorWidgetClass`
+é implementado para esta subclasse `ParentDataWidget`.
+Ele retorna o tipo de um ancestral típico `RenderObjectWidget`
+para este `ParentDataWidget`. Na maioria das vezes,
+você só quer retornar o tipo genérico antigo aqui
+(`FrogJar` neste exemplo).
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.16.3<br>
-In stable release: 1.17
+Implementado na versão: 1.16.3<br>
+Em release estável: 1.17
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`ParentDataWidget`][]
 
-Relevant PR:
+PR relevante:
 
 * [Make ParentDataWidget usable with different ancestor RenderObjectWidget types][]
 

@@ -1,45 +1,31 @@
 ---
-title: TextSelectionTheme migration
+ia-translate: true
+title: Migração do TextSelectionTheme
 description: >
-  The default properties for text selection are migrating to TextSelectionTheme.
+  As propriedades padrão para seleção de texto estão migrando para TextSelectionTheme.
 ---
 
-## Summary
+## Resumo
 
-The `ThemeData` properties that controlled the look of
-selected text in Material widgets have been moved into
-their own `TextSelectionTheme`. These properties include
-`cursorColor`, `textSelectionColor`, and
-`textSelectionHandleColor`. The defaults for these
-properties have also been changed to match the Material
-Design specification.
+As propriedades de `ThemeData` que controlavam a aparência do texto selecionado em widgets Material foram movidas para seu próprio `TextSelectionTheme`. Essas propriedades incluem `cursorColor`, `textSelectionColor` e `textSelectionHandleColor`. Os padrões para essas propriedades também foram alterados para corresponder à especificação do Material Design.
 
-## Context
+## Contexto
 
-As part of the larger [Material Theme Updates][],
-we have introduced a new [Text Selection Theme][]
-used to specify the properties of selected text in
-`TextField` and `SelectableText` widgets.
-These replace several top-level properties of `ThemeData`
-and update their default values to match the Material
-Design specification. This document describes how
-applications can migrate to this new API.
+Como parte das maiores [Atualizações do Tema Material][], introduzimos um novo [Tema de Seleção de Texto][] usado para especificar as propriedades do texto selecionado nos widgets `TextField` e `SelectableText`. Estes substituem várias propriedades de nível superior de `ThemeData` e atualizam seus valores padrão para corresponder à especificação do Material Design. Este documento descreve como os aplicativos podem migrar para esta nova API.
 
-## Migration guide
+## Guia de migração
 
-If you are currently using the following properties of
-`ThemeData`, you need to update them to use the new
-equivalent properties on `ThemeData.textSelectionTheme`:
+Se você estiver usando as seguintes propriedades de `ThemeData`, precisará atualizá-las para usar as novas propriedades equivalentes em `ThemeData.textSelectionTheme`:
 
-| Before                               | After                                         |
-|--------------------------------------|-----------------------------------------------|
-| `ThemeData.cursorColor`              | `TextSelectionThemeData.cursorColor`          |
-| `ThemeData.textSelectionColor`       | `TextSelectionThemeData.selectionColor`       |
-| `ThemeData.textSelectionHandleColor` | `TextSelectionThemeData.selectionHandleColor` |
+| Antes                                   | Depois                                           |
+|-----------------------------------------|--------------------------------------------------|
+| `ThemeData.cursorColor`                 | `TextSelectionThemeData.cursorColor`            |
+| `ThemeData.textSelectionColor`          | `TextSelectionThemeData.selectionColor`         |
+| `ThemeData.textSelectionHandleColor`    | `TextSelectionThemeData.selectionHandleColor`   |
 
 <br/>
 
-**Code before migration:**
+**Código antes da migração:**
 
 ```dart
 ThemeData(
@@ -49,7 +35,7 @@ ThemeData(
 )
 ```
 
-**Code after migration:**
+**Código após a migração:**
 
 ```dart
 ThemeData(
@@ -61,16 +47,12 @@ ThemeData(
 )
 ```
 
-**Default changes**
+**Mudanças padrão**
 
-If you weren't using these properties explicitly,
-but depended on the previous default colors used
-for text selection you can add a new field to your
-`ThemeData` for your app to return to the old defaults
-as shown:
+Se você não estivesse usando essas propriedades explicitamente, mas dependesse das cores padrão anteriores usadas para a seleção de texto, você pode adicionar um novo campo ao seu `ThemeData` para que seu aplicativo volte aos padrões antigos, como mostrado:
 
 ```dart
-// Old defaults for a light theme
+// Padrões antigos para um tema claro
 ThemeData(
   textSelectionTheme: TextSelectionThemeData(
     cursorColor: const Color.fromRGBO(66, 133, 244, 1.0),
@@ -81,7 +63,7 @@ ThemeData(
 ```
 
 ```dart
-// Old defaults for a dark theme
+// Padrões antigos para um tema escuro
 ThemeData(
   textSelectionTheme: TextSelectionThemeData(
     cursorColor: const Color.fromRGBO(66, 133, 244, 1.0),
@@ -91,33 +73,30 @@ ThemeData(
 )
 ```
 
-If you are fine with the new defaults,
-but have failing golden file tests, you
-can update your master golden files using the
-following command:
+Se você estiver satisfeito com os novos padrões, mas tiver testes de arquivos golden falhando, você pode atualizar seus arquivos golden mestre usando o seguinte comando:
 
 ```console
 $ flutter test --update-goldens
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.23.0-4.0.pre<br>
-In stable release: 2.0.0
+Implementado na versão: 1.23.0-4.0.pre<br>
+Na versão estável: 2.0.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`TextSelectionThemeData`][]
 * [`ThemeData`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* [PR 62014: TextSelectionTheme support][]
+* [PR 62014: Suporte a TextSelectionTheme][]
 
-[Material Theme Updates]: /go/material-theme-system-updates
-[PR 62014: TextSelectionTheme support]: {{site.repo.flutter}}/pull/62014
-[Text Selection Theme]: /go/text-selection-theme
+[Atualizações do Tema Material]: /go/material-theme-system-updates
+[PR 62014: Suporte a TextSelectionTheme]: {{site.repo.flutter}}/pull/62014
+[Tema de Seleção de Texto]: /go/text-selection-theme
 [`TextSelectionThemeData`]: {{site.api}}/flutter/material/TextSelectionThemeData-class.html
 [`ThemeData`]: {{site.api}}/flutter/material/ThemeData-class.html

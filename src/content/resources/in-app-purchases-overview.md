@@ -1,18 +1,18 @@
 ---
-title: In-app purchases overview
+ia-translate: true
+title: Visão geral de compras no aplicativo
 description: >
-  Learn about the resources available for adding
-  in-app purchases to your Flutter app.
+  Aprenda sobre os recursos disponíveis para adicionar
+  compras no aplicativo ao seu app Flutter.
 ---
 
-![adding ads](/assets/images/docs/add-in-app-purchases.png)
+![adicionando anúncios](/assets/images/docs/add-in-app-purchases.png)
 
-Build in-app revenue with Google Play and App Store
-support for Flutter
+Gere receita no aplicativo com suporte do Google Play e da App Store para Flutter
 
-The the following resources can help get you started:
+Os seguintes recursos podem ajudar você a começar:
 
-* [Add in-app purchases to your Flutter app][] (codelab)
+* [Adicione compras no aplicativo ao seu app Flutter][] (codelab)
 
 
-[Add in-app purchases to your Flutter app]: {{site.codelabs}}/codelabs/flutter-in-app-purchases#0
+[Adicione compras no aplicativo ao seu app Flutter]: {{site.codelabs}}/codelabs/flutter-in-app-purchases#0

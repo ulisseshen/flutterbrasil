@@ -1,32 +1,33 @@
 ---
-title: ImageCache and ImageProvider changes
+ia-translate: true
+title: Mudanças em ImageCache e ImageProvider
 description: >
-  ImageCache requires implementers to override containsKey, and
-  ImageProvider has marked resolve as @nonVirtual.
+  ImageCache exige que implementadores sobrescrevam containsKey, e
+  ImageProvider marcou resolve como @nonVirtual.
 ---
 
-## Summary
+## Resumo
 
-`ImageCache` now has a method called `containsKey`.
-`ImageProvider` subclasses should not override `resolve`,
-but instead should implement new methods on `ImageProvider`.
-These changes were submitted as a single commit to the framework.
+`ImageCache` agora tem um método chamado `containsKey`.
+Subclasses de `ImageProvider` não devem sobrescrever `resolve`,
+mas, em vez disso, devem implementar novos métodos em `ImageProvider`.
+Essas mudanças foram submetidas como um único commit ao framework.
 
-## Description of change
+## Descrição da mudança
 
-The sections below describe the changes to `containsKey`
-and `ImageProvider`.
+As seções abaixo descrevem as mudanças em `containsKey`
+e `ImageProvider`.
 
-### containsKey change
+### Mudança em containsKey
 
-Clients of the `ImageCache`, such as a custom `ImageProvider`,
-may want to know if the cache is already tracking an image.
-Adding the `containsKey` method allows callers to discover
-this without calling a method like `putIfAbsent`,
-which can trigger an undesired call to `ImageProvider.load`.
+Clientes do `ImageCache`, como um `ImageProvider` customizado,
+podem querer saber se o cache já está rastreando uma imagem.
+Adicionar o método `containsKey` permite que os chamadores descubram
+isso sem chamar um método como `putIfAbsent`,
+que pode acionar uma chamada indesejada para `ImageProvider.load`.
 
-The default implementation checks both pending and cached
-image buckets.
+A implementação padrão verifica os buckets de imagens
+pendentes e em cache.
 
 ```dart
   bool containsKey(Object key) {
@@ -34,70 +35,70 @@ image buckets.
   }
 ```
 
-### ImageProvider changes
+### Mudanças em ImageProvider
 
-The `ImageProvider.resolve` method does some complicated
-error handling work that should not normally be overridden.
-It also previously did work to load the image into the
-image cache, by way of `ImageProvider.obtainKey` and
-`ImageProvider.load`. Subclasses had no opportunity to
-override this behavior without overriding `resolve`,
-and the ability to compose `ImageProvider`s is limited
-if multiple `ImageProvider`s expect to override `resolve`.
+O método `ImageProvider.resolve` realiza um trabalho complicado
+de tratamento de erros que normalmente não deve ser sobrescrito.
+Ele também anteriormente realizava o trabalho de carregar a imagem
+no cache de imagens, por meio de `ImageProvider.obtainKey` e
+`ImageProvider.load`. As subclasses não tinham oportunidade de
+sobrescrever esse comportamento sem sobrescrever `resolve`,
+e a capacidade de compor `ImageProvider`s é limitada
+se vários `ImageProvider`s esperam sobrescrever `resolve`.
 
-To solve this issue, `resolve` is now marked as non-virtual,
-and two new protected methods have been added: `createStream()`
-and `resolveStreamForKey()`.
-These methods allow subclasses to control most of the behavior
-of `resolve`, without having to duplicate all the error handling work.
-It also allows subclasses that compose `ImageProvider`s
-to be more confident that there is only one public entrypoint
-to the various chained providers.
+Para resolver este problema, `resolve` agora está marcado como não virtual,
+e dois novos métodos protegidos foram adicionados: `createStream()`
+e `resolveStreamForKey()`.
+Esses métodos permitem que as subclasses controlem a maior parte do comportamento
+de `resolve`, sem ter que duplicar todo o trabalho de tratamento de erros.
+Também permite que subclasses que compõem `ImageProvider`s
+tenham mais confiança de que existe apenas um ponto de entrada público
+para os vários provedores encadeados.
 
-## Migration guide
+## Guia de migração
 
-### ImageCache change
+### Mudança em ImageCache
 
-Before migration, the code would not have an override of `containsKey`.
+Antes da migração, o código não teria uma sobrescrita de `containsKey`.
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class MyImageCache implements ImageCache {
   @override
   bool containsKey(Object key) {
-    // Check if your custom cache is tracking this key.
+    // Verifique se seu cache customizado está rastreando esta chave.
   }
 
   ...
 }
 ```
 
-### ImageProvider change
+### Mudança em ImageProvider
 
-Code before the migration:
+Código antes da migração:
 
 ```dart
 class MyImageProvider extends ImageProvider<Object> {
   @override
   ImageStream resolve(ImageConfiguration configuration) {
-    // create stream
-    // set up error handling
-    // interact with ImageCache
-    // call obtainKey/load, etc.
+    // criar stream
+    // configurar o tratamento de erros
+    // interagir com ImageCache
+    // chamar obtainKey/load, etc.
   }
   ...
 }
 ```
 
-Code after the migration:
+Código após a migração:
 
 ```dart
 class MyImageProvider extends ImageProvider<Object> {
   @override
   ImageStream createStream(ImageConfiguration configuration) {
-    // Return stream, or use super.createStream(),
-    // which returns a new ImageStream.
+    // Retornar stream, ou usar super.createStream(),
+    // que retorna um novo ImageStream.
   }
 
   @override
@@ -107,35 +108,35 @@ class MyImageProvider extends ImageProvider<Object> {
     Object key,
     ImageErrorListener handleError,
   ) {
-    // Interact with the cache, use the key, potentially call `load`,
-    // and report any errors back through `handleError`.
+    // Interagir com o cache, usar a chave, potencialmente chamar `load`,
+    // e relatar quaisquer erros de volta através de `handleError`.
   }
   ...
 }
 
 ```
 
-## Timeline
+## Cronograma
 
-Landed in version: 1.16.3<br>
-In stable release: 1.17
+Incluído na versão: 1.16.3<br>
+Na versão estável: 1.17
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`ImageCache`][]
 * [`ImageProvider`][]
 * [`ScrollAwareImageProvider`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue #32143][]
 * [Issue #44510][]
 * [Issue #48305][]
 * [Issue #48775][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Defer image decoding when scrolling fast #49389][]
 

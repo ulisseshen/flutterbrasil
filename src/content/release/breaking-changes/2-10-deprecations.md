@@ -1,54 +1,55 @@
 ---
-title: Deprecated API removed after v2.10
+ia-translate: true
+title: API Deprecada Removida após a v2.10
 description: >
-  After reaching end of life, the following deprecated APIs
-  were removed from Flutter.
+  Após atingir o fim de vida, as seguintes APIs depreciadas
+  foram removidas do Flutter.
 ---
 
-## Summary
+## Sumário
 
-In accordance with Flutter's [Deprecation Policy][],
-deprecated APIs that reached end of life after the
-2.10 stable release have been removed.
+De acordo com a [Política de Depreciação][] do Flutter,
+APIs depreciadas que atingiram o fim de vida após o
+lançamento estável 2.10 foram removidas.
 
-All affected APIs have been compiled into this
-primary source to aid in migration. A
-[quick reference sheet][] is available as well.
+Todas as APIs afetadas foram compiladas nesta
+fonte primária para auxiliar na migração. Uma
+[folha de referência rápida][] também está disponível.
 
 
-[Deprecation Policy]: {{site.repo.flutter}}/blob/master/docs/contributing/Tree-hygiene.md#deprecations
-[quick reference sheet]: /go/deprecations-removed-after-2-10
+[Política de Depreciação]: {{site.repo.flutter}}/blob/master/docs/contributing/Tree-hygiene.md#deprecations
+[folha de referência rápida]: /go/deprecations-removed-after-2-10
 
-## Changes
+## Mudanças
 
-This section lists the deprecations by affected class.
+Esta seção lista as depreciações pela classe afetada.
 
 ---
 
-### `maxLengthEnforced` of `TextField` & related classes
+### `maxLengthEnforced` de `TextField` & classes relacionadas
 
-Supported by Flutter Fix: yes
+Suportado pelo Flutter Fix: sim
 
-`maxLengthEnforced` was deprecated in v1.25.
+`maxLengthEnforced` foi depreciado na v1.25.
 
-Use `maxLengthEnforcement` instead.
-Where `maxLengthEnforced` was true, replace with `MaxLengthEnforcement.enforce`.
-Where `maxLengthEnforced` was false, replace with `MaxLengthEnforcement.none`.
-This change allows more behaviors to be specified beyond the original binary
-choice, adding `MaxLengthEnforcement.truncateAfterCompositionEnds` as an
-additional option.
+Use `maxLengthEnforcement` em vez disso.
+Onde `maxLengthEnforced` era true, substitua por `MaxLengthEnforcement.enforce`.
+Onde `maxLengthEnforced` era false, substitua por `MaxLengthEnforcement.none`.
+Essa alteração permite que mais comportamentos sejam especificados além da escolha
+binária original, adicionando `MaxLengthEnforcement.truncateAfterCompositionEnds`
+como uma opção adicional.
 
-The following classes all have the same change of API:
+As seguintes classes têm todas a mesma alteração de API:
 
 - `TextField`
 - `TextFormField`
 - `CupertinoTextField`
 
-**Migration guide**
+**Guia de migração**
 
-[In-depth migration guide available][]
+[Guia de migração detalhado disponível][]
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 const TextField textField = TextField(maxLengthEnforced: true);
@@ -64,7 +65,7 @@ const CupertinoTextField cupertinoTextField = CupertinoTextField(maxLengthEnforc
 final lengthEnforced = cupertinoTextField.maxLengthEnforced;
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 const TextField textField = TextField(maxLengthEnforcement: MaxLengthEnforcement.enforce);
@@ -80,65 +81,65 @@ const CupertinoTextField cupertinoTextField = CupertinoTextField(maxLengthEnforc
 final lengthEnforced = cupertinoTextField.maxLengthEnforcement;
 ```
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 
 * [`TextField`][]
 * [`TextFormField`][]
 * [`CupertinoTextField`][]
 
-Relevant issues:
+Problemas relevantes:
 
 * [Issue 67898]({{site.repo.flutter}}/issues/67898)
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#68086]({{site.repo.flutter}}/pull/68086)
-* Removed in [#98539]({{site.repo.flutter}}/pull/98539)
+* Depreciado em [#68086]({{site.repo.flutter}}/pull/68086)
+* Removido em [#98539]({{site.repo.flutter}}/pull/98539)
 
-[In-depth migration guide available]: /release/breaking-changes/use-maxLengthEnforcement-instead-of-maxLengthEnforced
+[Guia de migração detalhado disponível]: /release/breaking-changes/use-maxLengthEnforcement-instead-of-maxLengthEnforced
 [`TextField`]: {{site.api}}/flutter/material/TextField-class.html
 [`TextFormField`]: {{site.api}}/flutter/material/TextFormField-class.html
 [`CupertinoTextField`]: {{site.api}}/flutter/cupertino/CupertinoTextField-class.html
 
 ---
 
-### `VelocityTracker` constructor
+### Construtor `VelocityTracker`
 
-Supported by Flutter Fix: yes
+Suportado pelo Flutter Fix: sim
 
-The default constructor for `VelocityTracker`was deprecated in v1.22.
+O construtor padrão para `VelocityTracker` foi depreciado na v1.22.
 
-The `VelocityTracker.withKind()` should be used instead. This allows for a
-`PointerDeviceKind` to be specified for the tracker. The previous default for
-`VelocityTracker.kind` was `PointerDeviceKind.touch`.
+O `VelocityTracker.withKind()` deve ser usado em vez disso. Isso permite que um
+`PointerDeviceKind` seja especificado para o rastreador. O padrão anterior para
+`VelocityTracker.kind` era `PointerDeviceKind.touch`.
 
-**Migration guide**
+**Guia de migração**
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 final VelocityTracker tracker = VelocityTracker();
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 final VelocityTracker tracker = VelocityTracker.withKind(PointerDeviceKind.touch);
 ```
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 
 * [`VelocityTracker`][]
 * [`PointerDeviceKind`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#66043]({{site.repo.flutter}}/pull/66043)
-* Removed in [#98541]({{site.repo.flutter}}/pull/98541)
+* Depreciado em [#66043]({{site.repo.flutter}}/pull/66043)
+* Removido em [#98541]({{site.repo.flutter}}/pull/98541)
 
 [`VelocityTracker`]: {{site.api}}/flutter/gestures/VelocityTracker-class.html
 [`PointerDeviceKind`]: {{site.api}}/flutter/dart-ui/PointerDeviceKind.html
@@ -147,67 +148,67 @@ Relevant PRs:
 
 ### `DayPicker` & `MonthPicker`
 
-Supported by Flutter Fix: no
+Suportado pelo Flutter Fix: não
 
-The `DayPicker` and `MonthPicker` widgets were first deprecated in v1.15, and
-then extended in v1.26.
+Os widgets `DayPicker` e `MonthPicker` foram depreciados pela primeira vez na
+v1.15 e, em seguida, estendidos na v1.26.
 
-They have been replaced by one comprehensive widget, `CalendarDatePicker`.
+Eles foram substituídos por um widget abrangente, `CalendarDatePicker`.
 
-These widgets were displayed using the `showDatePicker` method. This method was
-migrated to present the new `CalendarDatePicker` before this release, and so
-their final removal should not necessitate further action.
+Esses widgets foram exibidos usando o método `showDatePicker`. Este método foi
+migrado para apresentar o novo `CalendarDatePicker` antes deste lançamento, e
+assim sua remoção final não deve exigir nenhuma ação adicional.
 
-**References**
+**Referências**
 
-Design document:
+Documento de design:
 
-* [Material Date Picker Redesign][]
+* [Redesign do Seletor de Data Material][]
 
-API documentation:
+Documentação da API:
 
 * [`CalendarDatePicker`][]
 * [`showDatePicker`][]
 
-Relevant issues:
+Problemas relevantes:
 
 * [Issue 50133]({{site.repo.flutter}}/issues/50133)
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#50546]({{site.repo.flutter}}/issues/50546)
-* Removed in [#98543]({{site.repo.flutter}}/issues/98543)
+* Depreciado em [#50546]({{site.repo.flutter}}/issues/50546)
+* Removido em [#98543]({{site.repo.flutter}}/issues/98543)
 
-[Material Date Picker Redesign]: /go/material-date-picker-redesign
+[Redesign do Seletor de Data Material]: /go/material-date-picker-redesign
 [`CalendarDatePicker`]: {{site.api}}/flutter/material/CalendarDatePicker-class.html
 [`showDatePicker`]: {{site.api}}/flutter/material/showDatePicker.html
 
 ---
 
-### `FlatButton`, `RaisedButton`, & `OutlineButton`
+### `FlatButton`, `RaisedButton` e `OutlineButton`
 
-Supported by Flutter Fix: no
+Suportado pelo Flutter Fix: não
 
-The `FlatButton`, `RaisedButton`, and `OutlineButton` widgets were first
-deprecated in v1.20, and then extended in v1.26.
+Os widgets `FlatButton`, `RaisedButton` e `OutlineButton` foram depreciados
+pela primeira vez na v1.20 e, em seguida, estendidos na v1.26.
 
-They are replaced by new buttons, `TextButton`, `ElevatedButton`, and
-`OutlinedButton`. These new widgets also use new associated themes, rather than
-the generic `ButtonTheme`.
+Eles são substituídos por novos botões, `TextButton`, `ElevatedButton` e
+`OutlinedButton`. Esses novos widgets também usam novos temas associados, em vez
+do genérico `ButtonTheme`.
 
-| Old Widget      | Old Theme     | New Widget       | New Theme             |
-|-----------------|---------------|------------------|-----------------------|
-| `FlatButton`    | `ButtonTheme` | `TextButton`     | `TextButtonTheme`     |
-| `RaisedButton`  | `ButtonTheme` | `ElevatedButton` | `ElevatedButtonTheme` |
-| `OutlineButton` | `ButtonTheme` | `OutlinedButton` | `OutlinedButtonTheme` |
+| Widget Antigo     | Tema Antigo    | Novo Widget       | Novo Tema             |
+|-------------------|----------------|-------------------|-----------------------|
+| `FlatButton`      | `ButtonTheme`  | `TextButton`      | `TextButtonTheme`     |
+| `RaisedButton`    | `ButtonTheme`  | `ElevatedButton`  | `ElevatedButtonTheme` |
+| `OutlineButton`   | `ButtonTheme`  | `OutlinedButton`  | `OutlinedButtonTheme` |
 
 {:.table .table-striped .nowrap}
 
-**Migration guide**
+**Guia de migração**
 
-[In-depth migration guide available for detailed styling][]
+[Guia de migração detalhado disponível para estilização detalhada][]
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 FlatButton(
@@ -229,7 +230,7 @@ OutlineButton(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 TextButton(
@@ -251,13 +252,13 @@ OutlinedButton(
 );
 ```
 
-**References**
+**Referências**
 
-Design document:
+Documento de design:
 
-* [New Material buttons and themes][]
+* [Novos botões e temas Material][]
 
-API documentation:
+Documentação da API:
 
 * [`ButtonStyle`][]
 * [`ButtonStyleButton`][]
@@ -271,14 +272,14 @@ API documentation:
 * [`TextButtonTheme`][]
 * [`TextButtonThemeData`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* New API added in [#59702]({{site.repo.flutter}}/issues/59702)
-* Deprecated in [#73352]({{site.repo.flutter}}/issues/73352)
-* Removed in [#98546]({{site.repo.flutter}}/issues/98546)
+* Nova API adicionada em [#59702]({{site.repo.flutter}}/issues/59702)
+* Depreciado em [#73352]({{site.repo.flutter}}/issues/73352)
+* Removido em [#98546]({{site.repo.flutter}}/issues/98546)
 
-[In-depth migration guide available for detailed styling]: /release/breaking-changes/buttons
-[New Material buttons and themes]: /go/material-button-migration-guide
+[Guia de migração detalhado disponível para estilização detalhada]: /release/breaking-changes/buttons
+[Novos botões e temas Material]: /go/material-button-migration-guide
 [`ButtonStyle`]: {{site.api}}/flutter/material/ButtonStyle-class.html
 [`ButtonStyleButton`]: {{site.api}}/flutter/material/ButtonStyleButton-class.html
 [`ElevatedButton`]: {{site.api}}/flutter/material/ElevatedButton-class.html
@@ -293,24 +294,24 @@ Relevant PRs:
 
 ---
 
-### `Scaffold` `SnackBar` methods
+### Métodos `SnackBar` de `Scaffold`
 
-Supported by Flutter Fix: no
+Suportado pelo Flutter Fix: não
 
-The following `Scaffold` `SnackBar` methods were deprecated in v1.23.
+Os seguintes métodos `SnackBar` de `Scaffold` foram depreciados na v1.23.
 
 - `showSnackBar`
 - `removeCurrentSnackBar`
 - `hideCurrentSnackBar`
 
-The same named methods of the `ScaffoldMessenger` should be used instead. A
-default `ScaffoldMessenger` is already created in every `MaterialApp`.
+Os mesmos métodos nomeados do `ScaffoldMessenger` devem ser usados em vez disso.
+Um `ScaffoldMessenger` padrão já é criado em cada `MaterialApp`.
 
-**Migration guide**
+**Guia de migração**
 
-[In-depth migration guide available][]
+[Guia de migração detalhado disponível][]
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 Scaffold.of(context).showSnackBar(mySnackBar);
@@ -318,7 +319,7 @@ Scaffold.of(context).removeCurrentSnackBar(mySnackBar);
 Scaffold.of(context).hideCurrentSnackBar(mySnackBar);
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 ScaffoldMessenger.of(context).showSnackBar(mySnackBar);
@@ -326,36 +327,36 @@ ScaffoldMessenger.of(context).removeCurrentSnackBar(mySnackBar);
 ScaffoldMessenger.of(context).hideCurrentSnackBar(mySnackBar);
 ```
 
-**References**
+**Referências**
 
-Design document:
-* [ScaffoldMessenger Design][]
+Documento de design:
+* [Design do ScaffoldMessenger][]
 
-Video content:
+Conteúdo em vídeo:
 
-* [SnackBar Delivery][]
-* [Widget of the Week][]
+* [Entrega de SnackBar][]
+* [Widget da Semana][]
 
-API documentation:
+Documentação da API:
 
 * [`ScaffoldMessenger`][]
 * [`SnackBar`][]
 
-Relevant issues:
+Problemas relevantes:
 
 * [Issue 57218]({{site.repo.flutter}}/issues/57218)
 * [Issue 62921]({{site.repo.flutter}}/issues/62921)
 
-Relevant PRs:
+PRs relevantes:
 
-* New API added in [#64101]({{site.repo.flutter}}/issues/64101)
-* Deprecated in [#67947]({{site.repo.flutter}}/issues/67947)
-* Removed in [#98549]({{site.repo.flutter}}/issues/98549)
+* Nova API adicionada em [#64101]({{site.repo.flutter}}/issues/64101)
+* Depreciado em [#67947]({{site.repo.flutter}}/issues/67947)
+* Removido em [#98549]({{site.repo.flutter}}/issues/98549)
 
-[In-depth migration guide available]: /release/breaking-changes/scaffold-messenger
-[ScaffoldMessenger Design]: /go/scaffold-messenger
-[SnackBar Delivery]: https://youtu.be/sYG7HAGu_Eg?t=10271
-[Widget of the Week]: https://youtu.be/lytQi-slT5Y
+[Guia de migração detalhado disponível]: /release/breaking-changes/scaffold-messenger
+[Design do ScaffoldMessenger]: /go/scaffold-messenger
+[Entrega de SnackBar]: https://youtu.be/sYG7HAGu_Eg?t=10271
+[Widget da Semana]: https://youtu.be/lytQi-slT5Y
 [`ScaffoldMessenger`]: {{site.api}}/flutter/material/ScaffoldMessenger-class.html
 [`SnackBar`]: {{site.api}}/flutter/material/SnackBar-class.html
 
@@ -363,65 +364,65 @@ Relevant PRs:
 
 ### `RectangularSliderTrackShape.disabledThumbGapWidth`
 
-Supported by Flutter Fix: yes
+Suportado pelo Flutter Fix: sim
 
-The `RectangularSliderTrackShape.disabledThumbGapWidth` was first deprecated in
-v1.5, and then extended in v1.26.
+`RectangularSliderTrackShape.disabledThumbGapWidth` foi depreciado pela primeira
+vez na v1.5 e, em seguida, estendido na v1.26.
 
-This was no longer used by the framework, as the animation of the slider thumb
-no longer occurs when disabled.
+Isso não era mais usado pela estrutura, pois a animação do polegar do controle
+deslizante não ocorre mais quando desativado.
 
-**Migration guide**
+**Guia de migração**
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 RectangularSliderTrackShape(disabledThumbGapWidth: 2.0);
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 RectangularSliderTrackShape();
 ```
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 * [`RectangularSliderTrackShape`][]
 
-Relevant PRs:
-* Animation changed in [#30390]({{site.repo.flutter}}/issues/30390)
-* Deprecated in [#65246]({{site.repo.flutter}}/issues/65246)
-* Removed in [#98613]({{site.repo.flutter}}/issues/98613)
+PRs relevantes:
+* Animação alterada em [#30390]({{site.repo.flutter}}/issues/30390)
+* Depreciado em [#65246]({{site.repo.flutter}}/issues/65246)
+* Removido em [#98613]({{site.repo.flutter}}/issues/98613)
 
 [`RectangularSliderTrackShape`]: {{site.api}}/flutter/material/RectangularSliderTrackShape-class.html
 
 ---
 
-### Text selection of `ThemeData` to `TextSelectionThemeData`
+### Seleção de texto de `ThemeData` para `TextSelectionThemeData`
 
-Supported by Flutter Fix: yes
+Suportado pelo Flutter Fix: sim
 
-The following `ThemeData` members were first deprecated in v1.23, and extended
-in v1.26.
+Os seguintes membros `ThemeData` foram depreciados pela primeira vez na v1.23
+e estendidos na v1.26.
 
 - `useTextSelectionTheme`
 - `textSelectionColor`
 - `cursorColor`
 - `textSelectionHandleColor`
 
-These should be replaced by a more comprehensive `TextSelectionThemeData`,
-which is now specified in `ThemeData` itself.
+Eles devem ser substituídos por um `TextSelectionThemeData` mais abrangente, que
+agora é especificado no próprio `ThemeData`.
 
-The `useTextSelectionTheme` flag served as a temporary migration flag to
-distinguish the two APIs, it can be removed now.
+O sinalizador `useTextSelectionTheme` serviu como um sinalizador de migração
+temporário para distinguir as duas APIs, ele pode ser removido agora.
 
-**Migration guide**
+**Guia de migração**
 
-[In-depth migration guide available][]
+[Guia de migração detalhado disponível][]
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 ThemeData(
@@ -432,7 +433,7 @@ ThemeData(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 ThemeData(
@@ -444,77 +445,77 @@ ThemeData(
 );
 ```
 
-**References**
+**Referências**
 
-Design document:
+Documento de design:
 
-* [Text Selection Theme][]
+* [Tema de Seleção de Texto][]
 
-API documentation:
+Documentação da API:
 
 * [`ThemeData`][]
 * [`TextSelectionThemeData`][]
 
-Relevant issues:
+Problemas relevantes:
 
 * [Issue 17635]({{site.repo.flutter}}/issues/17635)
 * [Issue 56082]({{site.repo.flutter}}/issues/56082)
 * [Issue 61227]({{site.repo.flutter}}/issues/61227)
 
-Relevant PRs:
+PRs relevantes:
 
-* New API added in [#62014]({{site.repo.flutter}}/issues/62014)
-* Deprecated in [#66485]({{site.repo.flutter}}/issues/66482)
-* Removed in [#98578]({{site.repo.flutter}}/issues/98578)
+* Nova API adicionada em [#62014]({{site.repo.flutter}}/issues/62014)
+* Depreciado em [#66485]({{site.repo.flutter}}/issues/66482)
+* Removido em [#98578]({{site.repo.flutter}}/issues/98578)
 
-[In-depth migration guide available]: /release/breaking-changes/text-selection-theme
-[Text Selection Theme]: /go/text-selection-theme
+[Guia de migração detalhado disponível]: /release/breaking-changes/text-selection-theme
+[Tema de Seleção de Texto]: /go/text-selection-theme
 [`ThemeData`]: {{site.api}}/flutter/material/ThemeData-class.html
 [`TextSelectionThemeData`]: {{site.api}}/flutter/material/TextSelectionThemeData-class.html
 
 ---
 
-### `RenderEditable.onSelectionChanged` to `TextSelectionDelegate.textEditingValue`
+### `RenderEditable.onSelectionChanged` para `TextSelectionDelegate.textEditingValue`
 
-Supported by Flutter Fix: no
+Suportado pelo Flutter Fix: não
 
-`RenderEditable.onSelectionChanged` and `TextSelectionDelegate.textEditingValue`
-were deprecated in v1.26.
+`RenderEditable.onSelectionChanged` e `TextSelectionDelegate.textEditingValue`
+foram depreciados na v1.26.
 
-Instead of calling one or both of these methods, call
-`TextSelectionDelegate.userUpdateTextEditingValue`. This fixed a bug where the
-`TextInputFormatter` would receive the wrong selection value.
+Em vez de chamar um ou ambos esses métodos, chame
+`TextSelectionDelegate.userUpdateTextEditingValue`. Isso corrigiu um bug onde o
+`TextInputFormatter` receberia o valor de seleção errado.
 
-**Migration guide**
+**Guia de migração**
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 renderEditable.onSelectionChanged(selection, renderObject, cause);
 textSelectionDelegate.textEditingValue = value;
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 textSelectionDelegate.userUpdateTextEditingValue(value, cause);
 ```
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 
 * [`RenderEditable`][]
 * [`TextSelectionDelegate`][]
 
-Relevant issues:
+Problemas relevantes:
 
-* Resolved [#75505]({{site.repo.flutter}}/issues/75502)
+* Resolvido [#75505]({{site.repo.flutter}}/issues/75502)
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#75541]({{site.repo.flutter}}/issues/75541)
-* Removed in [#98582]({{site.repo.flutter}}/issues/98582)
+* Depreciado em [#75541]({{site.repo.flutter}}/issues/75541)
+* Removido em [#98582]({{site.repo.flutter}}/issues/98582)
 
 [`RenderEditable`]: {{site.api}}/flutter/rendering/RenderEditable-class.html
 [`TextSelectionDelegate`]: {{site.api}}/flutter/services/TextSelectionDelegate-mixin.html
@@ -523,49 +524,50 @@ Relevant PRs:
 
 ### `Stack.overflow`
 
-Supported by Flutter Fix: yes
+Suportado pelo Flutter Fix: sim
 
-`Stack.overflow`, as well as the `Overflow` enum were deprecated in v1.22.
+`Stack.overflow`, assim como o enum `Overflow` foram depreciados na v1.22.
 
-The replacement is `Stack.clipBehavior`, a change made as part of unifying clip
-behaviors and semantics across the framework. Where `Overflow.visible` was used,
-use `Clip.none`. Where `Overflow.clip` was used, use `Clip.hardEdge`.
+A substituição é `Stack.clipBehavior`, uma alteração feita como parte da
+unificação de comportamentos e semântica de clipe em toda a estrutura. Onde
+`Overflow.visible` era usado, use `Clip.none`. Onde `Overflow.clip` era usado,
+use `Clip.hardEdge`.
 
-**Migration guide**
+**Guia de migração**
 
-[In-depth migration guide available][]
+[Guia de migração detalhado disponível][]
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 const Stack stack = Stack(overflow: Overflow.visible);
 const Stack stack = Stack(overflow: Overflow.clip);
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 const Stack stack = Stack(clipBehavior: Clip.none);
 const Stack stack = Stack(clipBehavior: Clip.hardEdge);
 ```
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 
 * [`Stack`][]
 * [`Clip`][]
 
-Relevant issues:
+Problemas relevantes:
 
-* Resolved [#66030]({{site.repo.flutter}}/issues/66030)
+* Resolvido [#66030]({{site.repo.flutter}}/issues/66030)
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#66305]({{site.repo.flutter}}/issues/66305)
-* Removed in [#98583]({{site.repo.flutter}}/issues/98583)
+* Depreciado em [#66305]({{site.repo.flutter}}/issues/66305)
+* Removido em [#98583]({{site.repo.flutter}}/issues/98583)
 
-[In-depth migration guide available]: /release/breaking-changes/clip-behavior
+[Guia de migração detalhado disponível]: /release/breaking-changes/clip-behavior
 [`Stack`]: {{site.api}}/flutter/widgets/Stack-class.html
 [`Clip`]: {{site.api}}/flutter/dart-ui/Clip.html
 
@@ -573,51 +575,51 @@ Relevant PRs:
 
 ### `UpdateLiveRegionEvent`
 
-Supported by Flutter Fix: no
+Suportado pelo Flutter Fix: não
 
-The `SemanticsEvent` `UpdateLiveRegionEvent`, was first deprecated in v1.12, and
-then extended in v1.26.
+O `SemanticsEvent` `UpdateLiveRegionEvent` foi depreciado pela primeira vez
+na v1.12 e, em seguida, estendido na v1.26.
 
-This was never implemented by the framework, and any references should be
-removed.
+Isso nunca foi implementado pela estrutura e quaisquer referências devem ser
+removidas.
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 
 * [`SemanticsEvent`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#45940]({{site.repo.flutter}}/issues/45940)
-* Removed in [#98615]({{site.repo.flutter}}/issues/98615)
+* Depreciado em [#45940]({{site.repo.flutter}}/issues/45940)
+* Removido em [#98615]({{site.repo.flutter}}/issues/98615)
 
 [`SemanticsEvent`]: {{site.api}}/flutter/semantics/SemanticsEvent-class.html
 
 ---
 
-### `RenderObjectElement` methods
+### Métodos `RenderObjectElement`
 
-Supported by Flutter Fix: yes
+Suportado pelo Flutter Fix: sim
 
-The following `RenderObjectElement` methods were deprecated in v1.21.
+Os seguintes métodos `RenderObjectElement` foram depreciados na v1.21.
 
 - `insertChildRenderObject`
 - `moveChildRenderObject`
 - `removeChildRenderObject`
 
-These methods are replaced, respectively, by:
+Esses métodos são substituídos, respectivamente, por:
 
 - `insertRenderObjectChild`
 - `moveRenderObjectChild`
 - `removeRenderObjectChild`
 
-These changes were made as a soft breaking deprecation in order to change the
-function signature.
+Essas alterações foram feitas como uma depreciação de quebra suave para alterar
+a assinatura da função.
 
-**Migration guide**
+**Guia de migração**
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 element.insertChildRenderObject(child, slot);
@@ -625,7 +627,7 @@ element.moveChildRenderObject(child, slot);
 element.removeChildRenderObject(child);
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 element.insertRenderObjectChild(child, slot);
@@ -633,25 +635,25 @@ element.moveRenderObjectChild(child, oldSlot, newSlot);
 element.removeRenderObjectChild(child, slot);
 ```
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 
 * [`RenderObjectElement`][]
 
-Relevant issues:
+Problemas relevantes:
 
 * [Issue 63269]({{site.repo.flutter}}/issues/63269)
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#64254]({{site.repo.flutter}}/issues/64254)
-* Removed in [#98616]({{site.repo.flutter}}/issues/98616)
+* Depreciado em [#64254]({{site.repo.flutter}}/issues/64254)
+* Removido em [#98616]({{site.repo.flutter}}/issues/98616)
 
 [`RenderObjectElement`]: {{site.api}}/flutter/widgets/RenderObjectElement-class.html
 
 ---
 
-## Timeline
+## Linha do tempo
 
-In stable release: 3.0.0
+No lançamento estável: 3.0.0

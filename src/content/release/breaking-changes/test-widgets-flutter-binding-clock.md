@@ -1,34 +1,28 @@
 ---
-title: TestWidgetsFlutterBinding.clock change
-description: The Clock implementation now comes from package:clock.
+ia-translate: true
+title: Mudança em TestWidgetsFlutterBinding.clock
+description: A implementação de Clock agora vem do package:clock.
 ---
 
-## Summary
+## Resumo
 
-The `TestWidgetsFlutterBinding.clock` now comes from
-`package:clock` and not `package:quiver`.
+O `TestWidgetsFlutterBinding.clock` agora vem do `package:clock` e não do `package:quiver`.
 
-## Context
+## Contexto
 
-The `flutter_test` package is removing its dependency on
-the heavier weight `quiver` package in favor of a dependency
-on two more targeted and lighter weight packages,
-`clock` and `fake_async`.
+O pacote `flutter_test` está removendo sua dependência do pacote `quiver`, que é mais pesado, em favor de uma dependência de dois pacotes mais direcionados e leves, `clock` e `fake_async`.
 
-This can affect user code which grabs the clock from a
-`TestWidgetsFlutterBinding` and passes that to an API
-that expects a `Clock` from `package:quiver`,
-for example some code like this:
+Isso pode afetar o código do usuário que obtém o clock de um `TestWidgetsFlutterBinding` e o passa para uma API que espera um `Clock` do `package:quiver`, por exemplo, algum código como este:
 
 ```dart
-testWidgets('some test', (WidgetTester tester) {
-  someApiThatWantsAQuiverClock(tester.binding.clock);
+testWidgets('algum teste', (WidgetTester tester) {
+  algumaApiQueQuerUmQuiverClock(tester.binding.clock);
 });
 ```
 
-## Migration guide
+## Guia de migração
 
-The error you might see after this change looks something like this:
+O erro que você pode ver após essa alteração se parece com algo assim:
 
 ```plaintext
 Error: The argument type 'Clock/*1*/' can't be assigned to the parameter type 'Clock/*2*/'.
@@ -36,80 +30,66 @@ Error: The argument type 'Clock/*1*/' can't be assigned to the parameter type 'C
  - 'Clock/*2*/' is from 'package:quiver/time.dart' ('<pub-cache>/quiver/lib/time.dart').
 ```
 
-### Option #1: Create a package:quiver Clock from a package:clock Clock
+### Opção #1: Criar um `Clock` do package:quiver a partir de um `Clock` do package:clock
 
-The easiest migration is to create a `package:quiver` clock from the
-`package:clock` clock, which can be done by passing the `.now` function
-tearoff to the `Clock` constructor:
+A migração mais fácil é criar um clock do `package:quiver` a partir do clock do `package:clock`, o que pode ser feito passando a função `.now` para o construtor `Clock`:
 
-Code before migration:
+Código antes da migração:
 
 ```dart
-testWidgets('some test', (WidgetTester tester) {
-  someApiThatWantsAQuiverClock(tester.binding.clock);
+testWidgets('algum teste', (WidgetTester tester) {
+  algumaApiQueQuerUmQuiverClock(tester.binding.clock);
 });
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
-testWidgets('some test', (WidgetTester tester) {
-  someApiThatWantsAQuiverClock(Clock(tester.binding.clock.now));
+testWidgets('algum teste', (WidgetTester tester) {
+  algumaApiQueQuerUmQuiverClock(Clock(tester.binding.clock.now));
 });
 ```
 
-### Option #2: Change the api to accept a package:clock Clock
+### Opção #2: Alterar a API para aceitar um `Clock` do package:clock
 
-If you own the api you are calling,
-you may want to change it to accept a `Clock`
-from `package:clock`.
-This is a judgement call based on how many places are
-calling this API with something other than a clock
-retrieved from a `TestWidgetsFlutterBinding`.
+Se você é o dono da API que está chamando, você pode querer alterá-la para aceitar um `Clock` do `package:clock`. Esta é uma decisão baseada em quantos lugares estão chamando essa API com algo diferente de um clock recuperado de um `TestWidgetsFlutterBinding`.
 
-If you go this route, your call sites that are passing
-`tester.binding.clock` won't need to be modified,
-but other call sites will.
+Se você seguir esse caminho, seus locais de chamada que estão passando `tester.binding.clock` não precisarão ser modificados, mas outros locais de chamada precisarão.
 
-### Option #3: Change the API to accept a `DateTime function()`
+### Opção #3: Alterar a API para aceitar uma `função DateTime()`
 
-If you only use the `Clock` for its `now` function,
-and you control the API, then you can also change it
-to accept that function directly instead of a `Clock`.
-This makes it easily callable with either type of `Clock`,
-by passing a tearoff of the `now` method from either type of clock:
+Se você usa o `Clock` apenas para sua função `now`, e você controla a API, então você também pode alterá-la para aceitar essa função diretamente em vez de um `Clock`. Isso o torna facilmente chamável com qualquer tipo de `Clock`, passando uma referência do método `now` de qualquer tipo de clock:
 
-Calling code before migration:
+Código de chamada antes da migração:
 
 ```dart
-testWidgets('some test', (WidgetTester tester) {
-  someApiThatWantsAQuiverClock(tester.binding.clock);
+testWidgets('algum teste', (WidgetTester tester) {
+  algumaApiQueQuerUmQuiverClock(tester.binding.clock);
 });
 ```
 
-Calling code after migration:
+Código de chamada após a migração:
 
 ```dart
-testWidgets('some test', (WidgetTester tester) {
-  modifiedApiThatTakesANowFunction(tester.binding.clock.now);
+testWidgets('algum teste', (WidgetTester tester) {
+  apiModificadaQueRecebeUmaFuncaoNow(tester.binding.clock.now);
 });
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.18.0<br>
-In stable release: 1.20
+Incluído na versão: 1.18.0<br>
+Em lançamento estável: 1.20
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`TestWidgetsFlutterBinding`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* [PR 54125][]: remove flutter_test quiver dep,
-  use fake_async and clock instead
+* [PR 54125][]: remover a dependência do quiver de flutter_test, usar fake_async e clock em vez disso
 
 [`TestWidgetsFlutterBinding`]: {{site.api}}/flutter/flutter_test/TestWidgetsFlutterBinding-class.html
 [PR 54125]: {{site.repo.flutter}}/pull/54125

@@ -1,57 +1,62 @@
 ---
-title: Adding ImageProvider.loadBuffer
+ia-translate: true
+title: Adicionando ImageProvider.loadBuffer
 description: >
-  ImageProviders must now be implemented using the
-  new loadBuffer API instead of the existing load API.
+  ImageProviders agora devem ser implementados usando a
+  nova API loadBuffer em vez da API load existente.
 ---
 
-## Summary
+## Sumário
 
-* `ImageProvider` now has a method called `loadBuffer` that functions
-   similarly to `load`, except that it decodes from an `ui.ImmutableBuffer`.
-* `ui.ImmutableBuffer` can now be created directly from an asset key.
-* The `AssetBundle` classes can now load an `ui.ImmutableBuffer`.
-* The `PaintingBinding` now has a method called
-  `instantiateImageCodecFromBuffer`, which functions similarly to
+* `ImageProvider` agora tem um método chamado `loadBuffer` que funciona
+   de forma semelhante a `load`, exceto que ele decodifica de um `ui.ImmutableBuffer`.
+* `ui.ImmutableBuffer` agora pode ser criado diretamente de uma chave de asset.
+* As classes `AssetBundle` agora podem carregar um `ui.ImmutableBuffer`.
+* O `PaintingBinding` agora tem um método chamado
+  `instantiateImageCodecFromBuffer`, que funciona de forma semelhante a
   `instantiateImageCodec`.
-* `ImageProvider.load` is now deprecated, it will be removed in a future
-   release.
-* `PaintingBinding.instantiateImageCodec` is now deprecated, it will be removed
-   in a future release.
+* `ImageProvider.load` agora está obsoleto, ele será removido em uma versão
+   futura.
+* `PaintingBinding.instantiateImageCodec` agora está obsoleto, ele será removido
+   em uma versão futura.
 
-## Context
+## Contexto
 
-`ImageProvider.loadBuffer` is a new method that must be implemented in order to
-load images. This API allows asset-based image loading to be performed faster
-and with less memory impact on application.
+`ImageProvider.loadBuffer` é um novo método que deve ser implementado para
+carregar imagens. Esta API permite que o carregamento de imagens baseadas em
+assets seja realizado de forma mais rápida e com menor impacto na memória do
+aplicativo.
 
-## Description of change
+## Descrição da mudança
 
-When loading asset images, previously the image provider API required multiple
-copies of the compressed data. First, when opening the asset the data was
-copied into the external heap and exposed to Dart as a typed data array. Then
-that typed data array was eventually converted into an `ui.ImmutableBuffer`,
-which internally copies the data into a second structure for decoding.
+Ao carregar imagens de assets, anteriormente a API do provedor de imagens
+requeria múltiplas cópias dos dados compactados. Primeiro, ao abrir o asset, os
+dados eram copiados para o heap externo e expostos ao Dart como um array de
+dados tipados. Então, esse array de dados tipados era eventualmente convertido
+em um `ui.ImmutableBuffer`, que internamente copia os dados para uma segunda
+estrutura para decodificação.
 
-With the addition of `ui.ImmutableBuffer.fromAsset`, compressed image bytes can
-be loaded directly into the structure used for decoding. Using this approach
-requires changes to the byte loading pipeline of `ImageProvider`. This process
-is also faster, because it bypasses some additional scheduling overhead of the
-previous method channel based loader.
+Com a adição de `ui.ImmutableBuffer.fromAsset`, os bytes de imagem
+compactados podem ser carregados diretamente na estrutura usada para
+decodificação. Usar esta abordagem requer mudanças no pipeline de carregamento
+de bytes de `ImageProvider`. Este processo também é mais rápido, porque evita
+alguns overheads de agendamento adicionais do carregador anterior baseado em
+channel.
 
-`ImageProvider.loadBuffer` otherwise has the same contract as
-`ImageProvider.load`, except it provides a new decoding callback that expects
-an `ui.ImmutableBuffer` instead of a `Uint8List`. For `ImageProvider` classes
-that acquire bytes from places other than assets, the convenience method
-`ui.ImmutableBuffer.fromUint8List` can be used for compatibility.
+`ImageProvider.loadBuffer` tem o mesmo contrato que `ImageProvider.load`,
+exceto que ele fornece um novo callback de decodificação que espera um
+`ui.ImmutableBuffer` em vez de um `Uint8List`. Para as classes
+`ImageProvider` que adquirem bytes de locais que não sejam assets, o método de
+conveniência `ui.ImmutableBuffer.fromUint8List` pode ser usado para
+compatibilidade.
 
-## Migration guide
+## Guia de migração
 
-Classes that subclass `ImageProvider` must implement the `loadBuffer` method for
-loading assets. Classes that delegate to or call the methods of an
-`ImageProvider` directly must use `loadBuffer` instead of `load`.
+As classes que são subclasses de `ImageProvider` devem implementar o método
+`loadBuffer` para carregar assets. Classes que delegam ou chamam diretamente
+os métodos de um `ImageProvider` devem usar `loadBuffer` em vez de `load`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 class MyImageProvider extends ImageProvider<MyImageProvider> {
@@ -80,7 +85,7 @@ class MyDelegatingProvider extends ImageProvider<MyDelegatingProvider> {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class MyImageProvider extends ImageProvider<MyImageProvider> {
@@ -110,22 +115,22 @@ class MyDelegatingProvider extends ImageProvider<MyDelegatingProvider> {
 }
 ```
 
-In both cases you might choose to keep the
-previous implementation of `ImageProvider.load`
-to give users of your code time to migrate as well.
+Em ambos os casos, você pode optar por manter a
+implementação anterior de `ImageProvider.load`
+para dar aos usuários do seu código tempo para migrar também.
 
-## Timeline
+## Cronograma
 
-Landed in version: 3.1.0-0.0.pre.976<br>
-In stable release: 3.3.0
+Implementado na versão: 3.1.0-0.0.pre.976<br>
+Na versão estável: 3.3.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`ImmutableBuffer`]({{site.api}}/flutter/dart-ui/ImmutableBuffer-class.html)
 * [`ImageProvider`]({{site.api}}/flutter/painting/ImageProvider-class.html)
 
-Relevant PR:
+PR relevante:
 
-* [Use immutable buffer for loading asset images]({{site.repo.flutter}}/pull/103496)
+* [Usar buffer imutável para carregar imagens de assets]({{site.repo.flutter}}/pull/103496)

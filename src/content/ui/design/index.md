@@ -1,6 +1,7 @@
 ---
+ia-translate: true
 layout: toc
 title: Design & theming
-description: Content covering designing Flutter apps.
+description: Conteúdo cobrindo o design de aplicativos Flutter.
 sitemap: false
 ---

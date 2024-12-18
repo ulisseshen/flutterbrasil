@@ -1,43 +1,44 @@
 ---
-title: Material 3 Tokens Update in Flutter
+ia-translate: true
+title: Atualização de Tokens do Material 3 no Flutter
 description: >-
-  The latest Material Design 3 tokens(v6.1) have been applied to the Flutter
-  Material library.
+  Os tokens mais recentes do Material Design 3 (v6.1) foram aplicados à
+  biblioteca Material do Flutter.
 ---
 
-## Summary
+## Resumo
 
-The Material Design tokens updated the mapping of 4 color roles (only in Light
-mode) to be more visually appealing while retaining accessible contrast. Testing
-identified this change as [non-breaking] in Flutter, but some customers might
-notice this small change. The update affected the following color properties:
+Os tokens do Material Design atualizaram o mapeamento de 4 papéis de cores (apenas
+no modo Claro) para serem mais visualmente atraentes, mantendo o contraste
+acessível. Os testes identificaram essa mudança como [não-destrutiva] no Flutter,
+mas alguns clientes podem notar essa pequena alteração. A atualização afetou as
+seguintes propriedades de cor:
 
-* On-primary-container (Primary10 to Primary30)
-* On-secondary-container (Secondary10 to Secondary30)
-* On-tertiary-container (Tertiary10 to Tertiary30)
-* On-error-container (Error10 to Error30)
+* On-primary-container (Primary10 para Primary30)
+* On-secondary-container (Secondary10 para Secondary30)
+* On-tertiary-container (Tertiary10 para Tertiary30)
+* On-error-container (Error10 para Error30)
 
-Widgets that have been using these roles with their default value might look
-different.
+Widgets que têm usado esses papéis com seu valor padrão podem parecer diferentes.
 
-Additionally, the Material 3 tokens updated the border color of Chips from
-`ColorScheme.outline` to `ColorScheme.outlineVariant` to improve visual
-hierarchy between chips and buttons. Chips (`Chip`, `ActionChip`, `ChoiceChip`,
-`FilterChip`, and `InputChip`) that have been using the chip border tokens may
-look different.
+Além disso, os tokens do Material 3 atualizaram a cor da borda dos Chips de
+`ColorScheme.outline` para `ColorScheme.outlineVariant` para melhorar a hierarquia
+visual entre chips e botões. Chips (`Chip`, `ActionChip`, `ChoiceChip`,
+`FilterChip` e `InputChip`) que têm usado os tokens de borda de chip podem
+parecer diferentes.
 
-## Migration guide
+## Guia de migração
 
-The differences in the mappings of the color roles are small. Use
-`ColorScheme.copyWith` to revert to the original default colors:
+As diferenças nos mapeamentos dos papéis de cor são pequenas. Use
+`ColorScheme.copyWith` para reverter para as cores padrão originais:
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 final ColorScheme colors = ThemeData().colorScheme;
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 final ColorScheme colors = ThemeData().colorScheme.copyWith(
@@ -48,10 +49,10 @@ final ColorScheme colors = ThemeData().colorScheme.copyWith(
 );
 ```
 
-After applying the token update, the default border color of M3 chips looks
-lighter. Take `ActionChip` as an example:
+Após aplicar a atualização do token, a cor padrão da borda dos chips M3 parece
+mais clara. Tome `ActionChip` como exemplo:
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 final Widget chip = ActionChip(
@@ -60,7 +61,7 @@ final Widget chip = ActionChip(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 final Widget chip = ChipTheme(
@@ -76,27 +77,27 @@ final Widget chip = ChipTheme(
 );
 ```
 
-## Timeline
+## Cronograma
 
-Landed in version: 3.26.0-0.0.pre<br>
-In stable release: not yet
+Implementado na versão: 3.26.0-0.0.pre<br>
+Na versão estável: ainda não
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`ColorScheme`][]
 * [`ThemeData`][]
 * [`Chip`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* [Update tokens to v5.0.0][]
-* [Update tokens to v6.1.0][]
+* [Atualizar tokens para v5.0.0][]
+* [Atualizar tokens para v6.1.0][]
 
 [`ColorScheme`]: {{site.api}}/flutter/material/ColorScheme-class.html
 [`ThemeData`]: {{site.api}}/flutter/material/ThemeData-class.html
 [`Chip`]: {{site.api}}/flutter/material/Chip-class.html
-[Update tokens to v5.0.0]: {{site.repo.flutter}}/pull/153385
-[Update tokens to v6.1.0]: {{site.repo.flutter}}/pull/153722
-[non-breaking]: {{site.repo.flutter}}/flutter/blob/master/docs/contributing/Tree-hygiene.md#1-determine-if-your-change-is-a-breaking-change
+[Atualizar tokens para v5.0.0]: {{site.repo.flutter}}/pull/153385
+[Atualizar tokens para v6.1.0]: {{site.repo.flutter}}/pull/153722
+[não-destrutiva]: {{site.repo.flutter}}/flutter/blob/master/docs/contributing/Tree-hygiene.md#1-determine-if-your-change-is-a-breaking-change

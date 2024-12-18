@@ -1,40 +1,41 @@
 ---
-title: Navigator's page APIs breaking change
+ia-translate: true
+title: Mudança na API de página do Navigator
 description: >-
-  Replace Navigator's 'onPopPage' property with the 'onDidRemovePage' property.
+  Substitua a propriedade 'onPopPage' do Navigator pela propriedade 'onDidRemovePage'.
 ---
 
-## Summary
+## Resumo
 
-The [`Navigator`][] page APIs are refactored so that
-they can integrate with Flutter's other pop mechanisms.
+As APIs de página do [`Navigator`][] foram refatoradas para que
+possam se integrar com outros mecanismos de pop do Flutter.
 
-## Context
+## Contexto
 
-The `onPopPage` property was added for cleaning up pages after
-a page is about to be popped.
-To veto pop, you'd return `false` in the callback.
-This did not work well with other popping mechanisms in the framework,
-such as [`PopScope`][] and iOS back gestures.
+A propriedade `onPopPage` foi adicionada para limpar páginas após
+uma página estar prestes a ser removida (popped).
+Para vetar o pop, você retornaria `false` no callback.
+Isso não funcionava bem com outros mecanismos de pop no framework,
+como [`PopScope`][] e gestos de voltar do iOS.
 
-To integrate the framework's pop mechanisms together,
-the page APIs needed to be refactored.
+Para integrar os mecanismos de pop do framework,
+as APIs de página precisavam ser refatoradas.
 
-## Description of change
+## Descrição da mudança
 
-The `onDidRemovePage` property replaces the `onPopPage` property.
-You can no longer veto a pop in the `onDidRemovePage` property.
-Instead, you are only responsible for updating the [`pages`][].
+A propriedade `onDidRemovePage` substitui a propriedade `onPopPage`.
+Você não pode mais vetar um pop na propriedade `onDidRemovePage`.
+Em vez disso, você é o único responsável por atualizar as [`pages`][].
 
-The veto mechanism is now managed with the
-`Page.canPop` and `Page.onPopInvoked` properties.
-These function similar to how you use the `PopScope` widget.
+O mecanismo de veto agora é gerenciado com as
+propriedades `Page.canPop` e `Page.onPopInvoked`.
+Elas funcionam de maneira similar a como você usa o widget `PopScope`.
 
 [`pages`]: {{site.api}}/flutter/widgets/Navigator/pages.html
 
-## Migration guide
+## Guia de migração
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -65,7 +66,7 @@ void main() {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -89,23 +90,23 @@ void main() {
 }
 ```
 
-## Timeline
+## Cronograma
 
-Landed in version: 3.22.0-32.0.pre<br>
-In stable release: 3.24.0
+Implementado na versão: 3.22.0-32.0.pre<br>
+Na versão estável: 3.24.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`Navigator`][]
 * [`PopScope`][]
 
-Relevant issue:
+Issue relevante:
 
 * [Issue 137458][]
 
-Relevant PR:
+PR relevante:
 
 * [Refactors page API][]
 

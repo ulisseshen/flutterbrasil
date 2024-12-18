@@ -1,56 +1,58 @@
 ---
-title: Removing Notification.visitAncestor
+ia-translate: true
+title: Removendo Notification.visitAncestor
 description: >
-  Notifications only traverse ancestors that are notification listeners.
+  Notificações agora percorrem apenas ancestrais que são listeners de notificação.
 ---
 
-## Summary
+## Resumo
 
-Notifications are more efficient by traversing only ancestors that
-are notification listeners.
+As notificações são mais eficientes percorrendo apenas os ancestrais que
+são *listeners* de notificação.
 
-## Context
+## Contexto
 
-The notification API traversed the element tree in order to locate a
-notification receiver. This led to some unfortunate performance
-characteristics:
+A API de notificação percorria a árvore de elementos para localizar um
+receptor de notificação. Isso levava a algumas características de
+desempenho desfavoráveis:
 
-  * If there was no receiver for a given notification type, the entire element
-    tree above the notification dispatch point would be traversed and type
-    checked.
-  * For multiple notifications in a given frame (which is common for scroll
-    views) we ended up traversing the element tree multiple times.
+  * Se não houvesse receptor para um determinado tipo de notificação, toda
+    a árvore de elementos acima do ponto de envio da notificação seria
+    percorrida e o tipo verificado.
+  * Para várias notificações em um determinado *frame* (o que é comum para
+    *scroll views*), acabávamos percorrendo a árvore de elementos várias
+    vezes.
 
-If there were multiple or nested scroll views on a given page, the situation
-was worsened significantly - each scroll view would dispatch multiple
-notifications per frame. For example, in the Dart/Flutter Devtools flamegraph
-page, we found that about 30% of CPU time was spent dispatching notifications.
+Se houvesse múltiplas *scroll views* ou *scroll views* aninhadas em uma
+determinada página, a situação piorava significativamente - cada *scroll
+view* enviaria várias notificações por *frame*. Por exemplo, na página
+do *flamegraph* do Dart/Flutter Devtools, descobrimos que cerca de 30% do
+tempo da CPU era gasto no envio de notificações.
 
-In order to reduce the cost of dispatching notifications, we have changed
-notification dispatch so that it only visits ancestors that are notification
-listeners, reducing the number of elements visited per frame.
+Para reduzir o custo de envio de notificações, mudamos o envio de
+notificação para que ele visite apenas os ancestrais que são *listeners*
+de notificação, reduzindo o número de elementos visitados por *frame*.
 
-However, the old notification system exposed the fact that it traversed
-each element as part of its API via `Notification.visitAncestor`. This
-method is no longer supported as we no longer visit all ancestor elements.
+No entanto, o antigo sistema de notificação expôs o fato de que ele
+percorria cada elemento como parte de sua API através de
+`Notification.visitAncestor`. Este método não é mais suportado, pois não
+visitamos mais todos os elementos ancestrais.
 
-## Description of change
+## Descrição da mudança
 
-`Notification.visitAncestor` has been removed.
-Any classes that extend `Notification` should
-no longer override this method.
+`Notification.visitAncestor` foi removido. Quaisquer classes que estendam
+`Notification` não devem mais sobrescrever este método.
 
-**If you don't implement a custom Notification
-that overrides `Notification.visitAncestor`,
-then no changes are required.**
+**Se você não implementar uma `Notification` customizada que sobrescreva
+`Notification.visitAncestor`, então nenhuma mudança é necessária.**
 
-## Migration guide
+## Guia de migração
 
-If you have a subclass of `Notification` that overrides
-`Notification.visitAncestor`, then you must either delete the override or
-opt-into old style notification dispatch with the following code.
+Se você tiver uma subclasse de `Notification` que sobrescreva
+`Notification.visitAncestor`, então você deve deletar a sobrescrita ou
+optar pelo envio de notificação no estilo antigo com o seguinte código.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 import 'package:flutter/widgets.dart';
@@ -59,7 +61,7 @@ class MyNotification extends Notification {
 
   @override
   bool visitAncestor(Element element) {
-    print('Visiting $element');
+    print('Visitando $element');
     return super.visitAncestor(element);
   }
 }
@@ -69,7 +71,7 @@ void methodThatSendsNotification(BuildContext? context) {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 import 'package:flutter/widgets.dart';
@@ -77,7 +79,7 @@ import 'package:flutter/widgets.dart';
 class MyNotification extends Notification {
 
   bool visitAncestor(Element element) {
-    print('Visiting $element');
+    print('Visitando $element');
     if (element is ProxyElement) {
       final Widget widget = element.widget;
       if (widget is NotificationListener<MyNotification>) {
@@ -93,24 +95,24 @@ void methodThatSendsNotification(BuildContext? context) {
 }
 ```
 
-Note that this performs poorly compared to the
-new default behavior of `Notification.dispatch`.
+Observe que isso tem um desempenho ruim em comparação com o novo
+comportamento padrão de `Notification.dispatch`.
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 2.12.0-4.1<br>
-In stable release: 3.0.0
+Implementado na versão: 2.12.0-4.1<br>
+Na versão estável: 3.0.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
-* [`Notification`]({{site.api}}/flutter/widgets/Notification-class.html)
+*   [`Notification`]({{site.api}}/flutter/widgets/Notification-class.html)
 
-Relevant issues:
+*Issues* relevantes:
 
-* [Issue 97849]({{site.repo.flutter}}/issues/97849)
+*   [Issue 97849]({{site.repo.flutter}}/issues/97849)
 
-Relevant PRs:
+*PRs* relevantes:
 
-* [improve Notification API performance]({{site.repo.flutter}}/pull/98451)
+*   [melhorar o desempenho da API de notificação]({{site.repo.flutter}}/pull/98451)

@@ -1,6 +1,7 @@
 ---
-title: Update the UI based on orientation
-description: Respond to a change in the screen's orientation.
+ia-translate: true
+title: Atualizar a UI com base na orientação
+description: Responda a uma mudança na orientação da tela.
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
@@ -8,58 +9,41 @@ js:
 
 <?code-excerpt path-base="cookbook/design/orientation"?>
 
-In some situations,
-you want to update the display of an app when the user
-rotates the screen from portrait mode to landscape mode. For example,
-the app might show one item after the next in portrait mode,
-yet put those same items side-by-side in landscape mode.
+Em algumas situações, você quer atualizar a exibição de um aplicativo quando o usuário gira a tela do modo retrato para o modo paisagem. Por exemplo, o aplicativo pode mostrar um item após o outro no modo retrato, mas colocar esses mesmos itens lado a lado no modo paisagem.
 
-In Flutter, you can build different layouts depending
-on a given [`Orientation`][].
-In this example, build a list that displays two columns in
-portrait mode and three columns in landscape mode using the
-following steps:
+No Flutter, você pode construir layouts diferentes dependendo de uma dada [`Orientation`][]. Neste exemplo, construa uma lista que exiba duas colunas no modo retrato e três colunas no modo paisagem usando os seguintes passos:
 
-  1. Build a `GridView` with two columns.
-  2. Use an `OrientationBuilder` to change the number of columns.
+  1. Construa um `GridView` com duas colunas.
+  2. Use um `OrientationBuilder` para mudar o número de colunas.
 
-## 1. Build a `GridView` with two columns
+## 1. Construa um `GridView` com duas colunas
 
-First, create a list of items to work with.
-Rather than using a normal list,
-create a list that displays items in a grid.
-For now, create a grid with two columns.
+Primeiro, crie uma lista de itens para trabalhar. Em vez de usar uma lista normal, crie uma lista que exiba itens em uma grade. Por enquanto, crie uma grade com duas colunas.
 
 <?code-excerpt "lib/partials.dart (GridViewCount)"?>
 ```dart
 return GridView.count(
-  // A list with 2 columns
+  // Uma lista com 2 colunas
   crossAxisCount: 2,
   // ...
 );
 ```
 
-To learn more about working with `GridViews`,
-see the [Creating a grid list][] recipe.
+Para saber mais sobre como trabalhar com `GridViews`, veja a receita [Criando uma lista em grade][].
 
-## 2. Use an `OrientationBuilder` to change the number of columns
+## 2. Use um `OrientationBuilder` para mudar o número de colunas
 
-To determine the app's current `Orientation`, use the
-[`OrientationBuilder`][] widget.
-The `OrientationBuilder` calculates the current `Orientation` by
-comparing the width and height available to the parent widget,
-and rebuilds when the size of the parent changes.
+Para determinar a `Orientation` atual do aplicativo, use o widget [`OrientationBuilder`][]. O `OrientationBuilder` calcula a `Orientation` atual comparando a largura e a altura disponíveis para o widget pai e reconstrói quando o tamanho do pai muda.
 
-Using the `Orientation`, build a list that displays two columns in portrait
-mode, or three columns in landscape mode.
+Usando a `Orientation`, construa uma lista que exiba duas colunas no modo retrato ou três colunas no modo paisagem.
 
 <?code-excerpt "lib/partials.dart (OrientationBuilder)"?>
 ```dart
 body: OrientationBuilder(
   builder: (context, orientation) {
     return GridView.count(
-      // Create a grid with 2 columns in portrait mode,
-      // or 3 columns in landscape mode.
+      // Cria uma grade com 2 colunas no modo retrato,
+      // ou 3 colunas no modo paisagem.
       crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
     );
   },
@@ -67,16 +51,13 @@ body: OrientationBuilder(
 ```
 
 :::note
-If you're interested in the orientation of the screen,
-rather than the amount of space available to the parent,
-use `MediaQuery.of(context).orientation` instead of an
-`OrientationBuilder` widget.
+Se você estiver interessado na orientação da tela, em vez da quantidade de espaço disponível para o pai, use `MediaQuery.of(context).orientation` em vez de um widget `OrientationBuilder`.
 :::
 
-## Interactive example
+## Exemplo interativo
 
 <?code-excerpt "lib/main.dart"?>
-```dartpad title="Flutter app orientation hands-on example in DartPad" run="true"
+```dartpad title="Exemplo prático de orientação de aplicativo Flutter no DartPad" run="true"
 import 'package:flutter/material.dart';
 
 void main() {
@@ -88,7 +69,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const appTitle = 'Orientation Demo';
+    const appTitle = 'Demo de Orientação';
 
     return const MaterialApp(
       title: appTitle,
@@ -111,10 +92,10 @@ class OrientationList extends StatelessWidget {
       body: OrientationBuilder(
         builder: (context, orientation) {
           return GridView.count(
-            // Create a grid with 2 columns in portrait mode, or 3 columns in
-            // landscape mode.
+            // Cria uma grade com 2 colunas no modo retrato, ou 3 colunas no
+            // modo paisagem.
             crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
-            // Generate 100 widgets that display their index in the List.
+            // Gera 100 widgets que exibem seu índice na Lista.
             children: List.generate(100, (index) {
               return Center(
                 child: Text(
@@ -132,28 +113,23 @@ class OrientationList extends StatelessWidget {
 ```
 
 <noscript>
-  <img src="/assets/images/docs/cookbook/orientation.gif" alt="Orientation Demo" class="site-mobile-screenshot" />
+  <img src="/assets/images/docs/cookbook/orientation.gif" alt="Demo de Orientação" class="site-mobile-screenshot" />
 </noscript>
 
-## Locking device orientation
+## Bloqueando a orientação do dispositivo
 
-In the previous section, you learned 
-how to adapt the app UI to device orientation changes.
+Na seção anterior, você aprendeu como adaptar a UI do aplicativo a mudanças de orientação do dispositivo.
 
-Flutter also allows you to specify the orientations your app supports 
-using the values of [`DeviceOrientation`]. You can either:
+O Flutter também permite que você especifique as orientações que seu aplicativo suporta usando os valores de [`DeviceOrientation`]. Você pode:
 
-- Lock the app to a single orientation, like only the `portraitUp` position, or...
-- Allow multiple orientations, like both `portraitUp` and `portraitDown`, but not landscape.
+- Bloquear o aplicativo em uma única orientação, como apenas a posição `portraitUp`, ou...
+- Permitir múltiplas orientações, como `portraitUp` e `portraitDown`, mas não paisagem.
 
-In the application `main()` method,
-call [`SystemChrome.setPreferredOrientations()`]
-with the list of preferred orientations that your app supports.
+No método `main()` do aplicativo, chame [`SystemChrome.setPreferredOrientations()`] com a lista de orientações preferidas que seu aplicativo suporta.
 
-To lock the device to a single orientation, 
-you can pass a list with a single item.
+Para bloquear o dispositivo em uma única orientação, você pode passar uma lista com um único item.
 
-For a list of all the possible values, check out [`DeviceOrientation`].
+Para uma lista de todos os valores possíveis, confira [`DeviceOrientation`].
 
 <?code-excerpt "lib/orientation.dart (PreferredOrientations)"?>
 ```dart
@@ -166,8 +142,7 @@ void main() {
 }
 ```
 
-
-[Creating a grid list]: /cookbook/lists/grid-lists
+[Criando uma lista em grade]: /cookbook/lists/grid-lists
 [`DeviceOrientation`]: {{site.api}}/flutter/services/DeviceOrientation.html
 [`OrientationBuilder`]: {{site.api}}/flutter/widgets/OrientationBuilder-class.html
 [`Orientation`]: {{site.api}}/flutter/widgets/Orientation.html

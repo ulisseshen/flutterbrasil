@@ -1,36 +1,28 @@
 ---
-title: showAutocorrectionPromptRect method added to TextInputClient 
+ia-translate: true
+title: Método showAutocorrectionPromptRect adicionado a TextInputClient
 description: >
-  A new method, void showAutocorrectionPromptRect(int start, int end), 
-  was added to the TextInputClient interface
+  Um novo método, void showAutocorrectionPromptRect(int start, int end), 
+  foi adicionado à interface TextInputClient
 ---
 
-## Summary
+## Sumário
 
-A new method,`void showAutocorrectionPromptRect(int start, int end)`,
-was added to the `TextInputClient` interface.
+Um novo método, `void showAutocorrectionPromptRect(int start, int end)`,
+foi adicionado à interface `TextInputClient`.
 
-## Context
+## Contexto
 
-In order to display the iOS autocorrection highlight,
-the iOS text input plugin needed a way to inform the
-Flutter framework of the highlight's start and end position.
+Para exibir o destaque de autocorreção do iOS, o plugin de entrada de texto do iOS precisava de uma maneira de informar o framework Flutter sobre a posição inicial e final do destaque.
 
-## Description of change
+## Descrição da alteração
 
-A new method, `void showAutocorrectionPromptRect(int start, int end)`,
-was added to the `TextInputClient` interface. iOS calls this method
-when it finds a new potential autocorrect candidate
-in the current user input, or when the range of a previously
-highlighted candidate changes.
+Um novo método, `void showAutocorrectionPromptRect(int start, int end)`,
+foi adicionado à interface `TextInputClient`. O iOS chama esse método quando encontra um novo candidato potencial de autocorreção na entrada do usuário atual, ou quando o intervalo de um candidato previamente destacado é alterado.
 
-## Migration guide
+## Guia de migração
 
-If your application doesn't implement or subclass `TextInputClient`,
-no migration is needed. If your application doesn't target iOS,
-or the class that implemented the `textInputClient` interface doesn't 
-support autocorrect, you only need to add an empty implementation
-for the new method:
+Se o seu aplicativo não implementa ou cria subclasses de `TextInputClient`, nenhuma migração é necessária. Se o seu aplicativo não tem como alvo o iOS, ou a classe que implementou a interface `textInputClient` não oferece suporte à autocorreção, você só precisa adicionar uma implementação vazia para o novo método:
 
 ```dart
 class CustomTextInputClient implements TextInputClient {
@@ -38,20 +30,17 @@ class CustomTextInputClient implements TextInputClient {
 }
 ```
 
-Otherwise, if your app targets iOS and supports autocorrect on iOS,
-we recommend that you add a sensible implementation of
-`void showAutocorrectionPromptRect(int start, int end)` 
-to your `TextInputClient` subclass. 
+Caso contrário, se seu aplicativo tiver como alvo o iOS e oferecer suporte à autocorreção no iOS, recomendamos que você adicione uma implementação sensata de `void showAutocorrectionPromptRect(int start, int end)` à sua subclasse `TextInputClient`.
 
-Code after migration:
+Código após a migração:
 
 ```dart
-// Assume your `TextInputClient` is a `State` subclass, and it has a variable 
-// `_currentPromptRectRange` that controls the autocorrection highlight.
+// Suponha que seu `TextInputClient` seja uma subclasse `State`, e tenha uma variável
+// `_currentPromptRectRange` que controla o destaque de autocorreção.
 class CustomTextInputClient extends State<...> implements TextInputClient {
   @override
   void updateEditingValue(TextEditingValue value) {
-    // When the text changes, the highlight needs to be dismissed.
+    // Quando o texto muda, o destaque precisa ser descartado.
     if (value.text != _value.text) {
       setState(() {
         _currentPromptRectRange = null;
@@ -60,8 +49,8 @@ class CustomTextInputClient extends State<...> implements TextInputClient {
   }
 
   void _handleFocusChanged() {
-    // When this text input loses focus, the autocorrection highlight needs
-    // to be dismissed.
+    // Quando esta entrada de texto perde o foco, o destaque de autocorreção precisa
+    // ser descartado.
     if (!_hasFocus) {
       setState(() {
         _currentPromptRectRange = null;
@@ -71,9 +60,9 @@ class CustomTextInputClient extends State<...> implements TextInputClient {
 
   @override
   void showAutocorrectionPromptRect(int start, int end) {
-    // Updates the range of the highlight, as iOS requested.
-    // This method isn't called when iOS decides to
-    // dismiss the highlight.
+    // Atualiza o intervalo do destaque, conforme solicitado pelo iOS.
+    // Este método não é chamado quando o iOS decide
+    // descartar o destaque.
     setState(() {
       _currentPromptRectRange = TextRange(start: start, end: end);
     });
@@ -81,24 +70,23 @@ class CustomTextInputClient extends State<...> implements TextInputClient {
 }
 ```
 
-## Timeline
+## Cronograma
 
-In stable release: 1.20
+Na versão estável: 1.20
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`TextInputClient`][]
 
-Relevant issue:
+Issue relevante:
 
 * [Issue 12920][]
 
-Relevant PR:
+PR relevante:
 
-* [iOS UITextInput autocorrection prompt][]
-
+* [Prompt de autocorreção do iOS UITextInput][]
 
 [iOS UITextInput autocorrection prompt]: {{site.repo.flutter}}/pull/54119/
 [Issue 12920]: {{site.repo.flutter}}/issues/12920

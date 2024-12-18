@@ -1,113 +1,115 @@
 ---
-title: Paint.enableDithering is now true by default.
+ia-translate: true
+title: Paint.enableDithering agora é true por padrão.
 description: >-
-  Deprecation of user-configurable `Paint.enableDithering`.
+  Depreciação de `Paint.enableDithering` configurável pelo usuário.
 ---
 
-## Summary
+## Sumário
 
-[`Paint.enableDithering`][] is now `true` by default (previously, `false`),
-and is _deprecated_ pending removal - Flutter no longer supports
-user-configurable dithering settings.
+[`Paint.enableDithering`][] agora é `true` por padrão (anteriormente, `false`),
+e está _depreciado_ pendente de remoção - o Flutter não oferece mais suporte a
+configurações de dithering configuráveis pelo usuário.
 
-In addition, the dithering documentation states support is _only_ for gradients.
+Além disso, a documentação de dithering afirma que o suporte é _apenas_ para
+gradientes.
 
-## Background
+## Contexto
 
-[`Paint.enableDithering`][] was added as a global option in [PR 13868][] as
-a response to [Issue 44134][], which reported that gradients in Flutter had
-visible banding artifacts:
+[`Paint.enableDithering`][] foi adicionado como uma opção global no [PR 13868][]
+como uma resposta ao [Issue 44134][], que relatou que os gradientes no Flutter
+tinham artefatos visíveis de banding:
 
-> Gradients currently have a lot of color banding on all devices, and it looks
-> very weird when using the pulse animation too. A solution is to make the
-> gradients opaque, and to use dithered gradients with Skia. Dithered gradients
-> aren't currently exposed, so adding a dither parameter to dart:ui's Paint
-> class would be nice. We'd be able to manually draw our gradients with a
-> CustomPainter.
+> Atualmente, os gradientes apresentam muito banding de cores em todos os
+> dispositivos, e parece muito estranho quando se usa a animação de pulso também.
+> Uma solução é tornar os gradientes opacos e usar gradientes com dithering com
+> Skia. Os gradientes com dithering não são expostos atualmente, portanto,
+> adicionar um parâmetro de dithering à classe Paint do dart:ui seria bom.
+> Poderíamos desenhar manualmente nossos gradientes com um CustomPainter.
 
-![Example of banding](https://user-images.githubusercontent.com/30870216/210907719-4f4a1a8d-e28a-4d39-9e99-3635a26a0c74.png)
+![Exemplo de banding](https://user-images.githubusercontent.com/30870216/210907719-4f4a1a8d-e28a-4d39-9e99-3635a26a0c74.png)
 
-[Issue 118073][] reported that gradients in our new [Impeller][]
-backend displayed visible banding artifacts in some gradients.
-It was later discovered that Impeller didn't support the (rarely used)
-[`Paint.enableDithering`][] property.
+O [Issue 118073][] relatou que os gradientes em nosso novo backend [Impeller][]
+exibiam artefatos visíveis de banding em alguns gradientes. Mais tarde,
+descobriu-se que o Impeller não suportava a propriedade (raramente usada)
+[`Paint.enableDithering`][].
 
-After adding dithering support to Impeller ([PR 44181][], [PR 44331][],
-[PR 44522][]), and reviewing the performance impact of dithering (negligible),
-the following observations were made:
+Após adicionar suporte a dithering ao Impeller ([PR 44181][], [PR 44331][],
+[PR 44522][]) e revisar o impacto de desempenho do dithering (insignificante),
+as seguintes observações foram feitas:
 
-1. Consensus that gradients look good by default: [Issue 112498][].
-1. Having a global option was intended to be deprecated: [PR 13868][].
+1. Consenso de que os gradientes parecem bons por padrão: [Issue 112498][].
+2. Ter uma opção global tinha a intenção de ser descontinuada: [PR 13868][].
 
-This resulted in the following decisions:
+Isso resultou nas seguintes decisões:
 
-1. Make dithering enabled by default.
-1. Deprecate the global option.
-1. Remove the global option in a future release.
+1. Tornar o dithering habilitado por padrão.
+2. Descontinuar a opção global.
+3. Remover a opção global em uma versão futura.
 
-As part of that process, the ability for dithering to affect anything
-other than gradients was removed in [PR 44730][] and [PR 44912][].
-That was done to ease the process of migrating, because
-Impeller will never support dithering for anything but gradients.
+Como parte desse processo, a capacidade de o dithering afetar qualquer coisa
+que não fosse gradientes foi removida no [PR 44730][] e [PR 44912][]. Isso foi
+feito para facilitar o processo de migração, porque o Impeller nunca
+suportará dithering para nada além de gradientes.
 
-## Migration guide
+## Guia de migração
 
-Most users and libraries will not need to make any changes.
+A maioria dos usuários e bibliotecas não precisará fazer nenhuma alteração.
 
-For users that maintain golden tests, you might
-need to update your golden images to reflect the new default.
-For example, if you use [`matchesGoldenFile`][] to
-test a widget that contains a gradient:
+Para usuários que mantêm testes golden, pode ser necessário atualizar suas
+imagens golden para refletir o novo padrão. Por exemplo, se você usar
+[`matchesGoldenFile`][] para testar um widget que contenha um gradiente:
 
 ```console
 $ flutter test --update-goldens
 ```
 
-While this is not expected to be a common case, you can
-disable dithering temporarily by setting the `enableDithering` property in
-your `main()` method (either in an app or test):
+Embora não seja esperado que seja um caso comum, você pode desabilitar
+temporariamente o dithering definindo a propriedade `enableDithering` em seu
+método `main()` (em um aplicativo ou teste):
 
 ```dart diff
   void main() {
-+   // TODO: Remove this after XYZ.
++   // TODO: Remover isso depois de XYZ.
 +   Paint.enableDithering = false;
 
     runApp(MyApp());
   }
 ```
 
-As the plan is to _permanently_ remove the `enableDithering` property, please
-provide feedback in [Issue 112498][] if you have a use case that requires
-disabling dithering (due to performance, crashes).
+Como o plano é remover _permanentemente_ a propriedade `enableDithering`,
+forneça feedback no [Issue 112498][] se você tiver um caso de uso que exija
+desabilitar o dithering (devido a desempenho, falhas).
 
-If for some reason you _must_ draw gradients without dithering, you'll need to
-write your own custom shader. Describing that is out of the scope of this
-migration guide, but you can find some resources and examples:
+Se por algum motivo você _precisar_ desenhar gradientes sem dithering, você
+precisará escrever seu próprio shader personalizado. Descrever isso está fora
+do escopo deste guia de migração, mas você pode encontrar alguns recursos e
+exemplos:
 
-- [Writing and using fragment shaders][]
+- [Escrevendo e usando fragment shaders][]
 - [`hsl_linear_gradient.frag`][]
 
-**NOTE**: Flutter web does not support dithering: [Issue 134250][].
+**NOTA**: O Flutter web não suporta dithering: [Issue 134250][].
 
-## Timeline
+## Cronograma
 
-Landed in version: 3.14.0-0.1.pre<br>
-In stable release: 3.16
+Incluído na versão: 3.14.0-0.1.pre<br>
+Na versão estável: 3.16
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 - [`Paint.enableDithering`][]
 - [`matchesGoldenFile`]
 
-Relevant issues:
+Issues relevantes:
 
 - [Issue 44134][]
 - [Issue 112498][]
 - [Issue 118073][]
 
-Relevant PRs:
+PRs relevantes:
 
 - [PR 13868][]
 - [PR 44181][]
@@ -129,5 +131,5 @@ Relevant PRs:
 [Issue 112498]: {{site.repo.flutter}}/issues/112498
 [Issue 118073]: {{site.repo.flutter}}/issues/118073
 [Issue 134250]: {{site.repo.flutter}}/issues/134250
-[Writing and using fragment shaders]: /ui/design/graphics/fragment-shaders
+[Escrevendo e usando fragment shaders]: /ui/design/graphics/fragment-shaders
 [`hsl_linear_gradient.frag`]: https://github.com/jonahwilliams/awesome_gradients/blob/a4e09c47ef1760bd7073beb60f49dad8ede5bb2e/shaders/hsl_linear_gradient.frag

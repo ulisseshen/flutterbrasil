@@ -1,62 +1,63 @@
 ---
-title: Migration guide for material localized strings
+ia-translate: true
+title: Guia de migração para strings localizadas do material
 description: >
-  ReorderableListView's localized strings are moved from
-  material localizations to widgets localizations.
+  As strings localizadas de ReorderableListView foram movidas das
+  localizações de material para as localizações de widgets.
 ---
 
-## Summary
+## Sumário
 
-`ReorderableListView`'s localized strings were moved from
-material localizations to widgets localizations.
-These strings were deprecated in material localizations.
+As strings localizadas de `ReorderableListView` foram movidas das
+localizações de material para as localizações de widgets.
+Essas strings foram depreciadas nas localizações de material.
 
-## Context
+## Contexto
 
-[`ReorderableListView`][] uses these strings to annotate its semantics actions.
-To apply the same annotations to [`ReorderableList`][]
-and [`SliverReorderableList`][], they need to
-access these strings from widgets library.
+[`ReorderableListView`][] usa essas strings para anotar suas ações semânticas.
+Para aplicar as mesmas anotações em [`ReorderableList`][]
+e [`SliverReorderableList`][], eles precisam
+acessar essas strings da biblioteca de widgets.
 
-## Description of change
+## Descrição da mudança
 
-The [`MaterialLocalizations`][] strings for
+As strings [`MaterialLocalizations`][] para
 `reorderItemToStart`, `reorderItemToEnd`, `reorderItemUp`,
-`reorderItemDown`, `reorderItemLeft`, and `reorderItemRight` are deprecated and
-replaced by the same strings in [`WidgetsLocalizations`][].
+`reorderItemDown`, `reorderItemLeft` e `reorderItemRight` estão depreciadas e
+substituídas pelas mesmas strings em [`WidgetsLocalizations`][].
 
-## Migration guide
+## Guia de migração
 
-If you use these strings in your code,
-you can access them from `WidgetsLocalizations`instead.
+Se você usar essas strings em seu código,
+você pode acessá-las de `WidgetsLocalizations` em vez disso.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 MaterialLocalizations.of(context).reorderItemToStart;
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 WidgetsLocalizations.of(context).reorderItemToStart;
 ```
 
-If you override `MaterialLocalizations` or `WidgetsLocalizations`,
-make sure to remove the translations from the `MaterialLocalizations`
-subclass and move them to the `WidgetsLocalizations` subclass.
+Se você sobrescrever `MaterialLocalizations` ou `WidgetsLocalizations`,
+certifique-se de remover as traduções da subclasse `MaterialLocalizations`
+e movê-las para a subclasse `WidgetsLocalizations`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 class MaterialLocalizationsMyLanguage extends MaterialLocalizationsEn {
   // ...
   @override
-  String get reorderItemRight => 'my translation';
+  String get reorderItemRight => 'minha tradução';
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class MaterialLocalizationsMyLanguage extends MaterialLocalizationsEn {
@@ -66,21 +67,21 @@ class MaterialLocalizationsMyLanguage extends MaterialLocalizationsEn {
 class WidgetsLocalizationsMyLanguage extends WidgetsLocalizationsEn {
   // ...
   @override
-  String get reorderItemRight => 'my translation';
+  String get reorderItemRight => 'minha tradução';
 }
 ```
 
-## Timeline
+## Cronograma
 
-Landed in version: v3.10.0-2.0.pre<br>
-In stable release: 3.13.0
+Implementado na versão: v3.10.0-2.0.pre<br>
+Na versão estável: 3.13.0
 
-## References
+## Referências
 
-Relevant PR:
+PR relevante:
 
-* [PR 124711][]: Deprecates string for
-  ReorderableList in material_localizations.
+* [PR 124711][]: Deprecia string para
+  ReorderableList em material_localizations.
 
 [PR 124711]: {{site.repo.flutter}}/pull/124711
 [`ReorderableListView`]: {{site.api}}/flutter/material/ReorderableListView-class.html

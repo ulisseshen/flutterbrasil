@@ -1,43 +1,44 @@
 ---
-title: The RenderEditable needs to be laid out before hit testing
+ia-translate: true
+title: O RenderEditable precisa ser disposto antes do hit testing
 description: >
-  The hit testing of RenderEditable requires additional information
-  that is only available after the layout.
+  O hit testing do RenderEditable requer informações adicionais
+  que estão disponíveis apenas após o layout.
 ---
 
-## Summary
+## Resumo
 
-Instances of `RenderEditable` must be laid out before processing hit
-testing. Trying to hit-test a `RenderEditable` object before layout
-results in an assertion such as the following:
+Instâncias de `RenderEditable` devem ser dispostas antes de processar o hit
+testing. Tentar fazer hit-test em um objeto `RenderEditable` antes do layout
+resulta em uma asserção como a seguinte:
 
 ```plaintext
-Failed assertion: line 123 pos 45: '!debugNeedsLayout': is not true.
+Falha na asserção: linha 123 pos 45: '!debugNeedsLayout': não é verdadeiro.
 ```
 
-## Context
+## Contexto
 
-To support gesture recognizers in selectable text, the
-`RenderEditable` requires the layout information for its
-text spans to determine which text span receives the
-pointer event. (Before this change, `RenderEditable` objects 
-didn't take their text into account when evaluating hit tests.)
-To implement this, layout was made a prerequisite for performing
-hit testing on a `RenderEditable` object.
+Para dar suporte a recognizers de gestos em texto selecionável, o
+`RenderEditable` requer as informações de layout para seus
+spans de texto para determinar qual span de texto recebe o
+evento de ponteiro. (Antes desta mudança, objetos `RenderEditable`
+não levavam em consideração seu texto ao avaliar hit tests.)
+Para implementar isso, o layout foi tornado um pré-requisito para realizar
+hit testing em um objeto `RenderEditable`.
 
-In practice, this is rarely an issue. The widget library
-ensures that layout is performed before any hit test on all
-render objects. This problem is only likely to be seen in
-code that directly interacts with render objects, for
-example in tests of custom render objects.
+Na prática, isso raramente é um problema. A biblioteca de widgets
+garante que o layout seja realizado antes de qualquer hit test em todos
+os objetos de renderização. É provável que esse problema seja visto apenas em
+código que interage diretamente com objetos de renderização, por
+exemplo, em testes de objetos de renderização personalizados.
 
-## Migration guide
+## Guia de migração
 
-If you see the `'!debugNeedsLayout': is not true`
-assertion error while hit testing the `RenderEditable`,
-lay out the `RenderEditable` before doing so.
+Se você vir o erro de asserção `'!debugNeedsLayout': não é verdadeiro`
+ao fazer hit testing no `RenderEditable`,
+faça o layout do `RenderEditable` antes de fazê-lo.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 import 'package:flutter/rendering.dart';
@@ -45,7 +46,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  test('attach and detach correctly handle gesture', () {
+  test('attach e detach manipulam corretamente o gesto', () {
     final RenderEditable editable = RenderEditable(
       textDirection: TextDirection.ltr,
       offset: ViewportOffset.zero(),
@@ -55,8 +56,8 @@ void main() {
     );
     final PipelineOwner owner = PipelineOwner(onNeedVisualUpdate: () {});
     editable.attach(owner);
-    // This throws an assertion error because
-    // the RenderEditable hasn't been laid out.
+    // Isso lança um erro de asserção porque
+    // o RenderEditable não foi disposto.
     editable.handleEvent(const PointerDownEvent(),
         BoxHitTestEntry(editable, const Offset(10, 10)));
     editable.detach();
@@ -73,7 +74,7 @@ class FakeEditableTextState extends TextSelectionDelegate {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 import 'package:flutter/rendering.dart';
@@ -81,7 +82,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  test('attach and detach correctly handle gesture', () {
+  test('attach e detach manipulam corretamente o gesto', () {
     final RenderEditable editable = RenderEditable(
       textDirection: TextDirection.ltr,
       offset: ViewportOffset.zero(),
@@ -89,7 +90,7 @@ void main() {
       startHandleLayerLink: LayerLink(),
       endHandleLayerLink: LayerLink(),
     );
-    // Lay out the RenderEditable first.
+    // Primeiro, faça o layout do RenderEditable.
     editable.layout(BoxConstraints.loose(const Size(1000.0, 1000.0)));
     final PipelineOwner owner = PipelineOwner(onNeedVisualUpdate: () {});
     editable.attach(owner);
@@ -109,23 +110,23 @@ class FakeEditableTextState extends TextSelectionDelegate {
 }
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.18.0<br>
-In stable release: 1.20
+Implementado na versão: 1.18.0<br>
+Na versão estável: 1.20
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`RenderEditable`][]
 
-Relevant issue:
+Problema relevante:
 
-* [Issue 43494][]: SelectableText.rich used along with
-  TapGestureRecognizer isn't working
+* [Issue 43494][]: SelectableText.rich usado junto com
+  TapGestureRecognizer não está funcionando
 
-Relevant PR:
+PR relevante:
 
 * [PR 54479: Enable gesture recognizer in selectable rich text][]
 

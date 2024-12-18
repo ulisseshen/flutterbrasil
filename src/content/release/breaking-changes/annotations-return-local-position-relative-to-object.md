@@ -1,47 +1,48 @@
 ---
-title: AnnotatedRegionLayers return local position relative to clipping region
+ia-translate: true
+title: AnnotatedRegionLayers retornam a posição local relativa à região de recorte
 description: >
-  Provide annotation searches with reliable and meaningful local positions.
+  Fornece buscas de anotação com posições locais confiáveis e significativas.
 ---
 
-## Summary
+## Sumário
 
-The local position returned by `AnnotatedRegionLayers` in an
-annotation search has been changed to be relative to the clipping
-region instead of the layer. This makes the local position more
-meaningful and reliable, but breaks code that directly performs
-annotation searches and uses the local position.
+A posição local retornada por `AnnotatedRegionLayers` em uma
+busca de anotação foi alterada para ser relativa à região de recorte,
+em vez da camada. Isso torna a posição local mais
+significativa e confiável, mas quebra o código que realiza diretamente
+buscas de anotação e usa a posição local.
 
-## Context
+## Contexto
 
-Annotations are metadata that are assigned during the
-rendering phase to regions on the screen.
-Searching the annotations with a location gives the
-contextual information that contains that location.
-They are used to detect mouse events and the theme of app bars.
+Anotações são metadados que são atribuídos durante a
+fase de renderização para regiões na tela.
+Buscar as anotações com uma localização fornece a
+informação contextual que contém essa localização.
+Elas são usadas para detectar eventos de mouse e o tema de barras de app.
 
-When `localPosition` was first added to the search result,
-it was defined as relative to the layer that owned the annotation,
-which turned out to be a design mistake.
-The offset from the layer is meaningless and unreliable.
-For example, a `Transform` widget draws on the same layer
-with an offset if the transform matrix is a simple translation,
-or push a dedicated `TransformLayer` if the matrix is non-trivial.
-The former case keeps the previous coordinate origin
-(for example, the top left corner of the app),
-while the latter case moves the position origin since
-it's on a new layer. The two cases might not produce noticeable
-visual differences, since the extra layer might just be a scale of
-99%, despite that the annotation search returns different results.
-In order to make this local position reliable, we have to choose
-one of the results to stick to.
+Quando `localPosition` foi adicionado pela primeira vez ao resultado da busca,
+ele foi definido como relativo à camada que possuía a anotação,
+o que acabou sendo um erro de design.
+O deslocamento da camada não tem significado e é não confiável.
+Por exemplo, um widget `Transform` desenha na mesma camada
+com um deslocamento se a matriz de transformação for uma tradução simples,
+ou envia um `TransformLayer` dedicado se a matriz for não trivial.
+O primeiro caso mantém a origem da coordenada anterior
+(por exemplo, o canto superior esquerdo do aplicativo),
+enquanto o último caso move a origem da posição, já que
+está em uma nova camada. Os dois casos podem não produzir diferenças
+visuais perceptíveis, já que a camada extra pode ser apenas uma escala de
+99%, apesar de que a busca de anotação retorna resultados diferentes.
+Para tornar essa posição local confiável, temos que escolher
+um dos resultados para aderir.
 
-## Description of change
+## Descrição da mudança
 
-The `localPosition` returned by an `AnnotatedRegionLayer`
-is now the local position it received subtracted by `offset`,
-where `offset` is the location of the clipping area relative
-to the layer.
+O `localPosition` retornado por um `AnnotatedRegionLayer`
+é agora a posição local que ele recebeu subtraída por `offset`,
+onde `offset` é a localização da área de recorte relativa
+à camada.
 
 ```dart
 class AnnotatedRegionLayer<T> extends ContainerLayer {
@@ -51,7 +52,7 @@ class AnnotatedRegionLayer<T> extends ContainerLayer {
     if (/* shouldAddAnnotation */) {
       result.add(AnnotationEntry<S>(
         annotation: typedValue,
-        // Used to be:
+        // Costumava ser:
         // localPosition: localPosition,
         localPosition: localPosition - offset,
       ));
@@ -61,38 +62,38 @@ class AnnotatedRegionLayer<T> extends ContainerLayer {
 }
 ```
 
-Conceptually, this has changed how `AnnotatedRegionLayer.offset`
-and `size` are defined. They used to mean
-"the clipping rectangle that restricts the annotation search",
-while they now jointly represent
-"the region of the annotation object".
+Conceitualmente, isso mudou como `AnnotatedRegionLayer.offset`
+e `size` são definidos. Eles costumavam significar
+"o retângulo de recorte que restringe a busca de anotação",
+enquanto agora eles representam em conjunto
+"a região do objeto de anotação".
 
-## Migration guide
+## Guia de migração
 
-Code that is actively using this local position is probably
-directly interacting with layers, since using render objects or
-widgets have already made this result unreliable. In order to
-preserve the previous behavior, you can reimplement
-`AnnotatedRegionLayer` to return a local position without
-subtracting the offset.
+O código que está usando ativamente essa posição local provavelmente
+está interagindo diretamente com as camadas, já que o uso de objetos de renderização ou
+widgets já tornou esse resultado não confiável. Para
+preservar o comportamento anterior, você pode reimplementar
+`AnnotatedRegionLayer` para retornar uma posição local sem
+subtrair o offset.
 
-## Timeline
+## Cronologia
 
-Landed in version: 1.15.2<br>
-In stable release: 1.17
+Implementado na versão: 1.15.2<br>
+Na versão estável: 1.17
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`AnnotatedRegionLayer`][]
 * [`AnnotationEntry`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue #49568][]
 
-Relevant PR:
+PR relevante:
 
 * [Make Annotation's localPosition relative to object][]
 

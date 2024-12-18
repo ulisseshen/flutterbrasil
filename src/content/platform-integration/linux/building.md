@@ -1,42 +1,43 @@
 ---
-title: Build Linux apps with Flutter
-description: Platform-specific considerations when building for Linux with Flutter.
+ia-translate: true
+title: Criar aplicativos Linux com Flutter
+description: Considerações específicas da plataforma ao criar para Linux com Flutter.
 toc: true
-short-title: Linux development
+short-title: Desenvolvimento Linux
 ---
 
-This page discusses considerations unique to building
-Linux apps with Flutter, including shell integration
-and preparation of apps for distribution.
+Esta página discute considerações exclusivas para criar
+aplicativos Linux com Flutter, incluindo integração com shell
+e preparação de aplicativos para distribuição.
 
-## Integrate with Linux
+## Integrar com Linux
 
-The Linux programming interface,
-comprising library functions and system calls,
-is designed around the C language and ABI.
-Fortunately, Dart provides the `dart:ffi` package,
-which enables Dart programs to call into C libraries.
+A interface de programação do Linux,
+compreendendo funções de biblioteca e chamadas de sistema,
+é projetada em torno da linguagem C e ABI.
+Felizmente, o Dart fornece o pacote `dart:ffi`,
+que permite que programas Dart chamem bibliotecas C.
 
-Foreign Function Interfaces (FFI) allow Flutter apps to perform the
-following with native libraries:
+Interfaces de Função Estrangeira (FFI) permitem que aplicativos Flutter
+executem o seguinte com bibliotecas nativas:
 
-* allocate native memory with `malloc` or `calloc`
-* support pointers, structs, and callbacks
-* support Application Binary Interface (ABI) types like `long` and `size_t`
+* alocar memória nativa com `malloc` ou `calloc`
+* suportar ponteiros, structs e callbacks
+* suportar tipos de Interface Binária de Aplicação (ABI) como `long` e `size_t`
 
-To learn more about calling C libraries from Flutter,
-consult [C interop using `dart:ffi`][].
+Para saber mais sobre como chamar bibliotecas C do Flutter,
+consulte [Interoperação C usando `dart:ffi`][].
 
-Many apps benefit from using a package that wraps the underlying library
-calls in a more convenient, idiomatic Dart API.
-[Canonical has built a series of packages][Canonical]
-with a focus on enabling Dart and Flutter on Linux,
-including support for desktop notifications,
-dbus, network management, and Bluetooth.
+Muitos aplicativos se beneficiam ao usar um pacote que envolve as chamadas de biblioteca
+subjacentes em uma API Dart mais conveniente e idiomática.
+[A Canonical construiu uma série de pacotes][Canonical]
+com foco em habilitar Dart e Flutter no Linux,
+incluindo suporte para notificações de desktop,
+dbus, gerenciamento de rede e Bluetooth.
 
-In general, many other [packages support creating Linux apps][support-linux],
-including common packages such as [`url_launcher`],
-[`shared_preferences`], [`file_selector`], and [`path_provider`].
+Em geral, muitos outros [pacotes oferecem suporte à criação de aplicativos Linux][support-linux],
+incluindo pacotes comuns como [`url_launcher`],
+[`shared_preferences`], [`file_selector`] e [`path_provider`].
 
 [C interop using `dart:ffi`]: {{site.dart-site}}/guides/libraries/c-interop
 [Canonical]: {{site.pub}}/publishers/canonical.com/packages
@@ -46,49 +47,49 @@ including common packages such as [`url_launcher`],
 [`file_selector`]: {{site.pub-pkg}}/file_selector
 [`path_provider`]: {{site.pub-pkg}}/path_provider
 
-## Prepare Linux apps for distribution
+## Preparar aplicativos Linux para distribuição
 
-The executable binary can be found in your project under
-`build/linux/x64/<build mode>/bundle/`.
-Alongside your executable binary in the `bundle` directory,
-you can find two directories:
+O binário executável pode ser encontrado em seu projeto em
+`build/linux/x64/<modo de build>/bundle/`.
+Junto com o binário executável no diretório `bundle`,
+você pode encontrar dois diretórios:
 
-* `lib` contains the required `.so` library files
-* `data` contains the application's data assets, such as fonts or images
+* `lib` contém os arquivos de biblioteca `.so` necessários
+* `data` contém os recursos de dados do aplicativo, como fontes ou imagens
 
-In addition to these files, your application also relies on various
-operating system libraries against which it's been compiled.
-To see the full list of libraries,
-use the `ldd` command on your application's directory.
+Além desses arquivos, seu aplicativo também depende de várias
+bibliotecas do sistema operacional contra as quais foi compilado.
+Para ver a lista completa de bibliotecas,
+use o comando `ldd` no diretório do seu aplicativo.
 
-For example, assume you have a Flutter desktop application
-called `linux_desktop_test`.
-To inspect the its system library dependencies, use the following commands:
+Por exemplo, suponha que você tenha um aplicativo de desktop Flutter
+chamado `linux_desktop_test`.
+Para inspecionar suas dependências de biblioteca do sistema, use os seguintes comandos:
 
 ```console
 $ flutter build linux --release
 $ ldd build/linux/x64/release/bundle/linux_desktop_test
 ```
 
-To wrap up this application for distribution,
-include everything in the `bundle` directory
-and verify the target Linux system has all required system libraries.
+Para empacotar este aplicativo para distribuição,
+inclua tudo no diretório `bundle`
+e verifique se o sistema Linux de destino possui todas as bibliotecas de sistema necessárias.
 
-This might only require using the following command.
+Isso pode exigir apenas o uso do seguinte comando.
 
 ```console
 $ sudo apt-get install libgtk-3-0 libblkid1 liblzma5
 ```
 
-To learn how to publish a Linux application to the [Snap Store],
-consult [Build and release a Linux application to the Snap Store][].
+Para saber como publicar um aplicativo Linux no [Snap Store],
+consulte [Criar e lançar um aplicativo Linux para a Snap Store][].
 
-## Additional resources
+## Recursos adicionais
 
-To learn how to create Linux Debian (`.deb`) and RPM (`.rpm`)
-builds of your Flutter desktop app,
-consult the step-by-step [Linux packaging guide][linux_packaging_guide].
+Para saber como criar builds Linux Debian (`.deb`) e RPM (`.rpm`)
+do seu aplicativo de desktop Flutter,
+consulte o guia passo a passo [Guia de empacotamento Linux][linux_packaging_guide].
 
 [Snap Store]: https://snapcraft.io/store
-[Build and release a Linux application to the Snap Store]: /deployment/linux
+[Criar e lançar um aplicativo Linux para a Snap Store]: /deployment/linux
 [linux_packaging_guide]: https://medium.com/@fluttergems/packaging-and-distributing-flutter-desktop-apps-the-missing-guide-part-3-linux-24ef8d30a5b4

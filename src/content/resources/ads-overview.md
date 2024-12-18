@@ -1,30 +1,31 @@
 ---
-title: Ads overview
+ia-translate: true
+title: Visão geral de anúncios
 description: >
-  Learn about the resources available for adding
-  ads to your Flutter app.
+  Aprenda sobre os recursos disponíveis para adicionar
+  anúncios ao seu aplicativo Flutter.
 ---
 
-![adding ads](/assets/images/docs/add-ads.png)
+![adicionando anúncios](/assets/images/docs/add-ads.png)
 
-The Google Mobile Ads SDK for Flutter works with
-both AdMob and Ad Manager. It supports a variety
-of ads formats such as app open, banner, interstitial,
-native, rewarded, and rewarded interstitial formats,
-and features like mediation.
+O SDK do Google Mobile Ads para Flutter funciona com
+AdMob e Ad Manager. Ele suporta uma variedade
+de formatos de anúncios, como app open, banner, intersticial,
+nativo, recompensado e intersticial recompensado,
+e funcionalidades como mediação.
 
-Easily integrate Google AdMob and Ad Manager ads
-directly in your Flutter App
+Integre facilmente anúncios do Google AdMob e Ad Manager
+diretamente no seu aplicativo Flutter
 
-The the following resources can help get you started:
+Os seguintes recursos podem ajudar você a começar:
 
-* [Add ads to your mobile Flutter app or game][] (cookbook recipe)
-* [Adding AdMob ads to a Flutter app][] (codelab)
-* [Adding an AdMob banner and native inline ads to a Flutter app][] (codelab)
-* [How to support Google Mobile Ads (AdMob) mediation][mediation] (guide)
+* [Adicionar anúncios ao seu aplicativo ou jogo Flutter para dispositivos móveis][] (receita do cookbook)
+* [Adicionando anúncios do AdMob a um aplicativo Flutter][] (codelab)
+* [Adicionando um banner do AdMob e anúncios nativos inline a um aplicativo Flutter][] (codelab)
+* [Como suportar a mediação do Google Mobile Ads (AdMob)][mediation] (guia)
 
-Listed in alphabetical order,
-the following packages support AdMob mediation:
+Listados em ordem alfabética,
+os seguintes pacotes suportam a mediação do AdMob:
 
 * AppLovin ([gma_mediation_applovin][])
 * DT Exchange ([gma_mediation_dtexchange][])
@@ -36,9 +37,9 @@ the following packages support AdMob mediation:
 * Pangle ([gma_mediation_pangle][])
 * Unity ([gma_mediation_unity][])
 
-[Add ads to your mobile Flutter app or game]: /cookbook/plugins/google-mobile-ads
-[Adding AdMob ads to a Flutter app]: {{site.codelabs}}/codelabs/admob-ads-in-flutter#0
-[Adding an AdMob banner and native inline ads to a Flutter app]: {{site.codelabs}}/codelabs/admob-inline-ads-in-flutter#0
+[Adicionar anúncios ao seu aplicativo ou jogo Flutter para dispositivos móveis]: /cookbook/plugins/google-mobile-ads
+[Adicionando anúncios do AdMob a um aplicativo Flutter]: {{site.codelabs}}/codelabs/admob-ads-in-flutter#0
+[Adicionando um banner do AdMob e anúncios nativos inline a um aplicativo Flutter]: {{site.codelabs}}/codelabs/admob-inline-ads-in-flutter#0
 [gma_mediation_applovin]: {{site.pub-pkg}}/gma_mediation_applovin
 [gma_mediation_dtexchange]: {{site.pub-pkg}}/gma_mediation_dtexchange
 [gma_mediation_inmobi]: {{site.pub-pkg}}/gma_mediation_inmobi

@@ -1,79 +1,80 @@
 ---
-title: Embedding web content into a Flutter web app
-short-title: Web content in Flutter
-description: Learn how to load and display images on the web.
+ia-translate: true
+title: Incorporando conteúdo web em um aplicativo Flutter web
+short-title: Conteúdo web no Flutter
+description: Aprenda como carregar e exibir imagens na web.
 ---
 
-In some cases, Flutter web applications need to embed web content not
-rendered by Flutter. For example, embedding a `google_maps_flutter` view
-(which uses the Google Maps JavaScript SDK) or a `video_player`
-(which uses a standard `video` element).
+Em alguns casos, aplicativos Flutter web precisam incorporar conteúdo da web não
+renderizado pelo Flutter. Por exemplo, incorporar uma view `google_maps_flutter`
+(que usa o SDK JavaScript do Google Maps) ou um `video_player`
+(que usa um elemento `video` padrão).
 
-Flutter web can render arbitrary web content within the boundaries of a `Widget`,
-and the primitives used to implement the example packages mentioned previously,
-are available to all Flutter web applications.
+O Flutter web pode renderizar conteúdo web arbitrário dentro dos limites de um `Widget`,
+e as primitivas usadas para implementar os pacotes de exemplo mencionados anteriormente,
+estão disponíveis para todos os aplicativos Flutter web.
 
 ## `HtmlElementView`
 
-The `HtmlElementView` Flutter widget reserves a space in the layout to be
-filled with any HTML Element. It has two constructors:
+O widget Flutter `HtmlElementView` reserva um espaço no layout para ser
+preenchido com qualquer Elemento HTML. Ele possui dois construtores:
 
-* `HtmlElementView.fromTagName`.
-* `HtmlElementView` and `registerViewFactory`.
+*   `HtmlElementView.fromTagName`.
+*   `HtmlElementView` e `registerViewFactory`.
 
 ### `HtmlElementView.fromTagName`
 
-The [`HtmlElementView.fromTagName` constructor][] creates an HTML Element from
-its `tagName`, and provides an `onElementCreated` method to configure that
-element before it's injected into the DOM:
+O [`construtor HtmlElementView.fromTagName`][] cria um Elemento HTML a partir de
+sua `tagName` e fornece um método `onElementCreated` para configurar esse
+elemento antes que ele seja injetado no DOM:
 
 ```dart
-// Create a `video` tag, and set its `src` and some `style` properties...
+// Cria uma tag `video` e define seu `src` e algumas propriedades `style`...
 HtmlElementView.fromTag('video', onElementCreated: (Object video) {
   video as web.HTMLVideoElement;
   video.src = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';
   video.style.width = '100%';
   video.style.height = '100%';
-  // other customizations to the element...
+  // outras customizações do elemento...
 });
 ```
 
-To learn more about the way to interact with DOM APIs,
-check out the [`HTMLVideoElement` class] in [`package:web`][].
+Para saber mais sobre a forma de interagir com as APIs do DOM,
+confira a [`classe HTMLVideoElement`] em [`package:web`][].
 
-To learn more about the video `Object` that is cast to `web.HTMLVideoElement`,
-check out Dart's [JS Interoperability][] documentation.
+Para saber mais sobre o objeto `video` que é convertido para `web.HTMLVideoElement`,
+confira a documentação de [Interoperabilidade JS][] do Dart.
 
-[`HtmlElementView.fromTagName` constructor]: {{site.api}}/flutter/widgets/HtmlElementView/HtmlElementView.fromTagName.html
-[`HTMLVideoElement` class]: {{site.pub}}/documentation/web/latest/web/HTMLVideoElement-extension-type.html
+[`construtor HtmlElementView.fromTagName`]: {{site.api}}/flutter/widgets/HtmlElementView/HtmlElementView.fromTagName.html
+[`classe HTMLVideoElement`]: {{site.pub}}/documentation/web/latest/web/HTMLVideoElement-extension-type.html
 [`package:web`]: {{site.pub-pkg}}/web
 
-### `HtmlElementView` and `registerViewFactory`
+### `HtmlElementView` e `registerViewFactory`
 
-If you need more control over generating the HTML code you inject, you can use
-the primitives that Flutter uses to implement the `fromTagName` constructor. In
-this scenario, register your own HTML Element factory for each type of HTML
-content that needs to be added to your app.
+Se você precisar de mais controle sobre a geração do código HTML que você injeta, você pode usar
+as primitivas que o Flutter usa para implementar o construtor `fromTagName`. Neste
+cenário, registre sua própria fábrica de Elementos HTML para cada tipo de HTML
+conteúdo que precisa ser adicionado ao seu aplicativo.
 
-The resulting code is more verbose, and has two steps per platform view type:
+O código resultante é mais verboso e tem duas etapas por tipo de visualização de plataforma:
 
-1. Register the HTML Element Factory using
-`platformViewRegistry.registerViewFactory` provided by `dart:ui_web.`  
-2. Place the widget with the desired `viewType`  with
-`HtmlElementView('viewType')` in your app's widget tree.
+1.  Registre a Fábrica de Elementos HTML usando
+    `platformViewRegistry.registerViewFactory` fornecido por `dart:ui_web`.
+2.  Coloque o widget com o `viewType` desejado com
+    `HtmlElementView('viewType')` na árvore de widgets do seu aplicativo.
 
-For more details about this approach, check out
-[`HtmlElementView` widget][] docs.
+Para mais detalhes sobre esta abordagem, confira
+a documentação do [`widget HtmlElementView`][].
 
-[`HtmlElementView` widget]: {{site.api}}/flutter/widgets/HtmlElementView-class.html
+[`widget HtmlElementView`]: {{site.api}}/flutter/widgets/HtmlElementView-class.html
 
 ## `package:webview_flutter`
 
-Embedding a full HTML page inside a Flutter app is such a common feature, that
-the Flutter team offers a plugin to do so:
+Incorporar uma página HTML completa dentro de um aplicativo Flutter é um recurso tão comum, que
+a equipe do Flutter oferece um plugin para isso:
 
-* [`package:webview_flutter`][]
+*   [`package:webview_flutter`][]
 
-[JS Interoperability]: {{site.dart-site}}/interop/js-interop
+[Interoperabilidade JS]: {{site.dart-site}}/interop/js-interop
 [`package:webview_flutter`]: {{site.pub}}/packages/webview_flutter
 [`package:webview_flutter_web`]: {{site.pub}}/packages/webview_flutter_web

@@ -1,37 +1,38 @@
 ---
-title: Migration guide for ignoringSemantics in IgnorePointer and related classes
-description: Removal of ignoringSemantics in IgnorePointer and related classes.
+ia-translate: true
+title: Guia de migração para ignoringSemantics em IgnorePointer e classes relacionadas
+description: Remoção de ignoringSemantics em IgnorePointer e classes relacionadas.
 ---
 
-## Summary
+## Resumo
 
-The `IgnoringPointer` widget allows you to designate an area of the UI
-where you don't want to accept pointer events, for example, when
-you don't want to allow the user to enter text in a text field.
+O widget `IgnoringPointer` permite que você designe uma área da UI
+onde você não quer aceitar eventos de ponteiro, por exemplo, quando
+você não quer permitir que o usuário insira texto em um campo de texto.
 
-Previously, the `IgnorePointer` not only blocked pointer events but also
-dropped its subtree from the semantics tree. The `ignoreSemantics` parameter
-was introduced as a workaround to preserve the semantics tree when using
+Anteriormente, o `IgnorePointer` não apenas bloqueava eventos de ponteiro, mas também
+removia sua subárvore da árvore de semântica. O parâmetro `ignoreSemantics`
+foi introduzido como uma solução alternativa para preservar a árvore de semântica ao usar
 `IgnorePointer`s.
 
-The `IgnorePointer` behavior has changed in that it no longer drops
-the entire semantics subtree but merely blocks semantics actions in the 
-subtree. The `ignoringSemantics` workaround is no longer needed and is
-deprecated.
+O comportamento do `IgnorePointer` foi alterado de forma que ele não remove mais
+toda a subárvore de semântica, mas apenas bloqueia as ações de semântica na
+subárvore. A solução alternativa `ignoringSemantics` não é mais necessária e está
+obsoleta.
 
-This change also applies to the `AbsorbPointer` and
-`SliverIgnorePointer` widgets.
+Essa mudança também se aplica aos widgets `AbsorbPointer` e
+`SliverIgnorePointer`.
 
-## Description of change
+## Descrição da mudança
 
-`ignoringSemantics` was removed.
+`ignoringSemantics` foi removido.
 
-## Migration guide
+## Guia de migração
 
-If you set this parameter to true in these widgets, consider using
-`ExcludeSemantics` instead.
+Se você definiu este parâmetro como true nesses widgets, considere usar
+`ExcludeSemantics` em vez disso.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 IgnorePointer(
@@ -50,7 +51,7 @@ SliverIgnorePointer(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 ExcludeSemantics(
@@ -72,12 +73,12 @@ SliverIgnorePointer(
 );
 ```
 
-If you are previously using `IgnorePointer`s with `ignoringSemantics` set to `false`,
-you can achieve the same behavior by copying the follow widgets directly into your
-code and use.
+Se você estava usando `IgnorePointer`s com `ignoringSemantics` definido como `false`,
+você pode obter o mesmo comportamento copiando os seguintes widgets diretamente em seu
+código e usar.
 
 ```dart
-/// A widget ignores pointer events without modifying the semantics tree.
+/// Um widget ignora eventos de ponteiro sem modificar a árvore de semântica.
 class _IgnorePointerWithSemantics extends SingleChildRenderObjectWidget {
   const _IgnorePointerWithSemantics({
     super.child,
@@ -96,7 +97,7 @@ class _RenderIgnorePointerWithSemantics extends RenderProxyBox {
   bool hitTest(BoxHitTestResult result, { required Offset position }) => false;
 }
 
-/// A widget absorbs pointer events without modifying the semantics tree.
+/// Um widget absorve eventos de ponteiro sem modificar a árvore de semântica.
 class _AbsorbPointerWithSemantics extends SingleChildRenderObjectWidget {
   const _AbsorbPointerWithSemantics({
     super.child,
@@ -117,7 +118,7 @@ class _RenderAbsorbPointerWithSemantics extends RenderProxyBox {
   }
 }
 
-/// A sliver ignores pointer events without modifying the semantics tree.
+/// Um sliver ignora eventos de ponteiro sem modificar a árvore de semântica.
 class _SliverIgnorePointerWithSemantics extends SingleChildRenderObjectWidget {
   const _SliverIgnorePointerWithSemantics({
     super.child,
@@ -137,17 +138,17 @@ class _RenderSliverIgnorePointerWithSemantics extends RenderProxySliver {
 }
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.10.0-2.0.pre<br>
-In stable release: 3.13.0
+Implementado na versão: 3.10.0-2.0.pre<br>
+Na versão estável: 3.13.0
 
-## References
+## Referências
 
-Relevant PRs:
+PRs relevantes:
 
-* [PR 120619][]: Fixes IgnorePointer and AbsorbPointer to only block user
-  interactions in a11y.
+* [PR 120619][]: Corrige IgnorePointer e AbsorbPointer para bloquear apenas
+  interações do usuário em a11y.
 
 [PR 120619]: {{site.repo.flutter}}/pull/120619
 [`IgnorePointer`]: {{site.api}}/flutter/widgets/IgnorePointer-class.html

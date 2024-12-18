@@ -1,20 +1,21 @@
 ---
-title: Adding 'linux' and 'windows' to TargetPlatform enum
+ia-translate: true
+title: Adicionando 'linux' e 'windows' ao enum TargetPlatform
 description: >
-  Two new values were added to the TargetPlatform enum that could
-  require additional cases in switch statements that switch on a TargetPlatform.
+  Dois novos valores foram adicionados ao enum TargetPlatform que podem
+  exigir casos adicionais em declarações switch que alternam em um TargetPlatform.
 ---
 
-## Summary
+## Resumo
 
-Two new values were added to the [`TargetPlatform`][] enum
-that could require additional cases in switch statements that
-switch on a `TargetPlatform` and don't include a `default:` case.
+Dois novos valores foram adicionados ao enum [`TargetPlatform`][]
+que podem exigir casos adicionais em declarações switch que
+alternam em um `TargetPlatform` e não incluem um caso `default:`.
 
-## Context
+## Contexto
 
-Prior to this change, the `TargetPlatform` enum only contained four values,
-and was defined like this:
+Antes dessa alteração, o enum `TargetPlatform` continha apenas quatro valores
+e era definido da seguinte forma:
 
 ```dart
 enum TargetPlatform {
@@ -25,14 +26,14 @@ enum TargetPlatform {
 }
 ```
 
-A `switch` statement only needed to handle these cases,
-and desktop applications that wanted to run on Linux or
-Windows usually had a test like this in their
-`main()` method:
+Uma declaração `switch` só precisava lidar com esses casos,
+e aplicativos desktop que desejavam ser executados no Linux ou
+Windows geralmente tinham um teste como este em seu
+método `main()`:
 
 ```dart
-// Sets a platform override for desktop to avoid exceptions. See
-// https://docs.flutter.dev/desktop#target-platform-override for more info.
+// Define uma substituição de plataforma para desktop para evitar exceções. Veja
+// https://docs.flutter.dev/desktop#target-platform-override para mais informações.
 void _enablePlatformOverrideForDesktop() {
   if (!kIsWeb && (Platform.isWindows || Platform.isLinux)) {
     debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
@@ -45,121 +46,121 @@ void main() {
 }
 ```
 
-## Description of change
+## Descrição da mudança
 
-The `TargetPlatform` enum is now defined as:
+O enum `TargetPlatform` agora é definido como:
 
 ```dart
 enum TargetPlatform {
   android,
   fuchsia,
   iOS,
-  linux, // new value
+  linux, // novo valor
   macOS,
-  windows, // new value
+  windows, // novo valor
 }
 ```
 
-And the platform test setting
-[`debugDefaultTargetPlatformOverride`][] in `main()`
-is no longer required on Linux and Windows.
+E a configuração de teste de plataforma
+[`debugDefaultTargetPlatformOverride`][] em `main()`
+não é mais necessária no Linux e Windows.
 
-This can cause the Dart analyzer to give the
-[`missing_enum_constant_in_switch`][] warning for
-switch statements that don't include a `default` case.
-Writing a switch without a `default:` case is the
-recommended way to handle enums, since the analyzer
-can then help you find any cases that aren't handled.
+Isso pode fazer com que o analisador Dart forneça o aviso
+[`missing_enum_constant_in_switch`][] para declarações switch
+que não incluem um caso `default`. Escrever um switch sem um
+caso `default:` é a maneira recomendada de lidar com enums,
+já que o analisador pode então ajudá-lo a encontrar quaisquer casos
+que não sejam tratados.
 
-## Migration guide
+## Guia de migração
 
-In order to migrate to the new enum, and avoid the analyzer's
-`missing_enum_constant_in_switch` error, which looks like:
+Para migrar para o novo enum e evitar o erro do analisador
+`missing_enum_constant_in_switch`, que se parece com:
 
 ```plaintext
 warning: Missing case clause for 'linux'. (missing_enum_constant_in_switch at [package] path/to/file.dart:111)
 ```
 
-or:
+ou:
 
 ```plaintext
 warning: Missing case clause for 'windows'. (missing_enum_constant_in_switch at [package] path/to/file.dart:111)
 ```
 
-Modify your code as follows:
+Modifique seu código da seguinte forma:
 
-Code before migration:
-
-```dart
-void dance(TargetPlatform platform) {
-  switch (platform) {
-    case TargetPlatform.android:
-      // Do Android dance.
-      break;
-    case TargetPlatform.fuchsia:
-      // Do Fuchsia dance.
-      break;
-    case TargetPlatform.iOS:
-      // Do iOS dance.
-      break;
-    case TargetPlatform.macOS:
-      // Do macOS dance.
-      break;
-  }
-}
-```
-
-Code after migration:
+Código antes da migração:
 
 ```dart
 void dance(TargetPlatform platform) {
   switch (platform) {
     case TargetPlatform.android:
-      // Do Android dance.
+      // Faz a dança do Android.
       break;
     case TargetPlatform.fuchsia:
-      // Do Fuchsia dance.
+      // Faz a dança do Fuchsia.
       break;
     case TargetPlatform.iOS:
-      // Do iOS dance.
-      break;
-    case TargetPlatform.linux: // new case
-      // Do Linux dance.
+      // Faz a dança do iOS.
       break;
     case TargetPlatform.macOS:
-      // Do macOS dance.
-      break;
-    case TargetPlatform.windows: // new case
-      // Do Windows dance.
+      // Faz a dança do macOS.
       break;
   }
 }
 ```
 
-Having `default:` cases in such switch statements isn't
-recommended, because then the analyzer can't help you find
-all the cases that need to be handled.
+Código após a migração:
 
-Also, any tests like the one referenced above that set the
-`debugDefaultTargetPlatformOverride` are no longer needed
-for Linux and Windows applications.
+```dart
+void dance(TargetPlatform platform) {
+  switch (platform) {
+    case TargetPlatform.android:
+      // Faz a dança do Android.
+      break;
+    case TargetPlatform.fuchsia:
+      // Faz a dança do Fuchsia.
+      break;
+    case TargetPlatform.iOS:
+      // Faz a dança do iOS.
+      break;
+    case TargetPlatform.linux: // novo caso
+      // Faz a dança do Linux.
+      break;
+    case TargetPlatform.macOS:
+      // Faz a dança do macOS.
+      break;
+    case TargetPlatform.windows: // novo caso
+      // Faz a dança do Windows.
+      break;
+  }
+}
+```
 
-## Timeline
+Ter casos `default:` nessas declarações switch não é
+recomendado, porque então o analisador não pode ajudá-lo a
+encontrar todos os casos que precisam ser tratados.
 
-Landed in version: 1.15.4<br>
-In stable release: 1.17
+Além disso, quaisquer testes como o mencionado acima que definem o
+`debugDefaultTargetPlatformOverride` não são mais necessários
+para aplicativos Linux e Windows.
 
-## References
+## Cronograma
 
-API documentation:
+Incluído na versão: 1.15.4<br>
+Na versão estável: 1.17
+
+## Referências
+
+Documentação da API:
 
 * [`TargetPlatform`][]
 
-Relevant issues:
+Problemas relevantes:
 
 * [Issue #31366][]
 
-Relevant PR:
+PR relevante:
 
 * [Add Windows, and Linux as TargetPlatforms][]
 

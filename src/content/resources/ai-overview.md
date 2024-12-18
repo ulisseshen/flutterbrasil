@@ -1,32 +1,29 @@
 ---
-title: AI
+ia-translate: true
+title: IA
 description: >
-  Learn about the resources available for adding
-  generative AI to your Flutter application.
+  Aprenda sobre os recursos disponíveis para adicionar
+  IA generativa ao seu aplicativo Flutter.
 ---
 
-{% ytEmbed '1AuzJEiHjO4', 'Quick overview of the Google AI Dart SDK' %}
+{% ytEmbed '1AuzJEiHjO4', 'Visão geral rápida do Google AI Dart SDK' %}
 
-The Google AI Dart SDK enables you to use Google's
-state-of-the-art generative AI models (like Gemini)
-to build AI-powered features and applications.
+O Google AI Dart SDK permite que você use modelos de IA generativa de última geração do Google (como o Gemini) para criar recursos e aplicativos baseados em IA.
 
-Integrate features like advanced text generation,
-summarization, chat, and more to your Dart or Flutter
-apps with minimal setup, and deploy across multiple platforms.
+Integre funcionalidades como geração de texto avançada, sumarização, chat e muito mais aos seus aplicativos Dart ou Flutter com configuração mínima e implemente em várias plataformas.
 
-The following resources can help you get started:
+Os seguintes recursos podem ajudar você a começar:
 
-* [Get started with the Gemini API in Dart or Flutter apps][tutorial]
-* [Google Generative AI SDK for Dart and Flutter][pkg]
+* [Comece a usar a API Gemini em aplicativos Dart ou Flutter][tutorial]
+* [Google Generative AI SDK para Dart e Flutter][pkg]
 
 [pkg]: {{site.pub-pkg}}/google_generative_ai
 [tutorial]: https://ai.google.dev/gemini-api/docs/get-started/dart
 
-Also, check out the following videos from Google I/O 2024:
+Além disso, confira os seguintes vídeos do Google I/O 2024:
 
-* [Build generative AI agents with Vertex AI Agent Builder and Flutter][vertex-video]
-* [Gemini API and Flutter: Practical, AI-driven apps with Google AI tools][gemini-video]
+* [Crie agentes de IA generativa com o Vertex AI Agent Builder e Flutter][vertex-video]
+* [API Gemini e Flutter: aplicativos práticos orientados por IA com ferramentas de IA do Google][gemini-video]
 
 
 [gemini-video]: {{site.youtube-site}}/watch?v=B1RKFL6ASts

@@ -1,52 +1,53 @@
 ---
-title: Set up universal links for iOS
+ia-translate: true
+title: Configurar links universais para iOS
 description: >-
-   Learn how to set up universal links for an
-   iOS application built with Flutter.
+   Aprenda como configurar links universais para um
+   aplicativo iOS construído com Flutter.
 ---
 
-Deep linking allows an app user to launch an app with a URI.
-This URI contains scheme, host, and path,
-and opens the app to a specific screen.
+O deep linking permite que um usuário de aplicativo inicie um aplicativo com um URI.
+Este URI contém esquema, host e caminho,
+e abre o aplicativo para uma tela específica.
 
 :::note
-Did you know that Flutter DevTools provides a
-deep link validation tool for Android?
-An iOS version of the tool is in the works.
-Learn more and see a demo at [Validate deep links][].
+Você sabia que o Flutter DevTools fornece uma
+ferramenta de validação de deep link para Android?
+Uma versão iOS da ferramenta está em desenvolvimento.
+Saiba mais e veja uma demonstração em [Validar deep links][].
 :::
 
-[Validate deep links]: /tools/devtools/deep-links
+[Validar deep links]: /tools/devtools/deep-links
 
-A _universal link_, a type of deep link exclusive to iOS devices,
-uses only the `http` or `https` protocols.
+Um _link universal_, um tipo de deep link exclusivo para dispositivos iOS,
+usa apenas os protocolos `http` ou `https`.
 
-To set up universal links, you need to own a web domain.
-As a temporary solution,
-consider using [Firebase Hosting][] or [GitHub Pages][].
+Para configurar links universais, você precisa possuir um domínio da web.
+Como uma solução temporária,
+considere usar o [Firebase Hosting][] ou o [GitHub Pages][].
 
-## Create or modify a Flutter app
+## Criar ou modificar um aplicativo Flutter
 
-Write a Flutter app that can handle an incoming URL.
+Escreva um aplicativo Flutter que possa lidar com um URL de entrada.
 
-This example uses the [go_router][] package to handle the routing.
-The Flutter team maintains the `go_router` package.
-It provides a simple API to handle complex routing scenarios.
+Este exemplo usa o pacote [go_router][] para lidar com o roteamento.
+A equipe Flutter mantém o pacote `go_router`.
+Ele fornece uma API simples para lidar com cenários de roteamento complexos.
 
-1. To create a new application, type `flutter create <app-name>`.
+1. Para criar um novo aplicativo, digite `flutter create <nome-do-app>`.
 
     ```console
     $ flutter create deeplink_cookbook
     ```
 
-2. To include the `go_router` package as a dependency,
-   run `flutter pub add`:
+2. Para incluir o pacote `go_router` como uma dependência,
+   execute `flutter pub add`:
 
     ```console
     $ flutter pub add go_router
     ```
 
-3. To handle the routing, create a `GoRouter` object in the `main.dart` file:
+3. Para lidar com o roteamento, crie um objeto `GoRouter` no arquivo `main.dart`:
 
     ```dart title="main.dart"
     import 'package:flutter/material.dart';
@@ -54,19 +55,19 @@ It provides a simple API to handle complex routing scenarios.
     
     void main() => runApp(MaterialApp.router(routerConfig: router));
     
-    /// This handles '/' and '/details'.
+    /// Isso lida com '/' e '/details'.
     final router = GoRouter(
       routes: [
         GoRoute(
           path: '/',
           builder: (_, __) => Scaffold(
-            appBar: AppBar(title: const Text('Home Screen')),
+            appBar: AppBar(title: const Text('Tela Inicial')),
           ),
           routes: [
             GoRoute(
               path: 'details',
               builder: (_, __) => Scaffold(
-                appBar: AppBar(title: const Text('Details Screen')),
+                appBar: AppBar(title: const Text('Tela de Detalhes')),
               ),
             ),
           ],
@@ -75,66 +76,65 @@ It provides a simple API to handle complex routing scenarios.
     );
     ```
 
-## Adjust iOS build settings
+## Ajustar as configurações de build do iOS
 
-1. Launch Xcode.
+1. Inicie o Xcode.
 
-1. Open the `ios/Runner.xcworkspace` file inside the
-   Flutter project's `ios` folder.
+1. Abra o arquivo `ios/Runner.xcworkspace` dentro da
+   pasta `ios` do projeto Flutter.
 
   :::note
-  If you are using third-party plugins to handle deep links, 
-  such as [app_links][],
-  Flutter's default deeplink handler will
-  break these plugins. 
+  Se você estiver usando plugins de terceiros para lidar com deep links,
+  como [app_links][],
+  o manipulador de deeplink padrão do Flutter
+  quebrará esses plugins.
 
-  If you use a third-party plugin,
-  add the key and value pair `FlutterDeepLinkingEnabled` and `NO` to info.Plist.
+  Se você usa um plugin de terceiros,
+  adicione o par chave-valor `FlutterDeepLinkingEnabled` e `NO` ao info.Plist.
   :::
 
-### Add associated domains
+### Adicionar domínios associados
 
 :::warning
-Personal development teams don't support the Associated Domains
-capability. To add associated domains, choose the IDE tab.
+Equipes de desenvolvimento pessoal não suportam a funcionalidade de Domínios Associados. Para adicionar domínios associados, escolha a aba IDE.
 :::
 
 {% tabs %}
 {% tab "Xcode" %}
 
-1. Launch Xcode if necessary.
+1. Inicie o Xcode, se necessário.
 
-1. Click the top-level **Runner**.
+1. Clique no **Runner** de nível superior.
 
-1. In the Editor, click the **Runner** target.
+1. No Editor, clique no alvo **Runner**.
 
-1. Click **Signing & Capabilities**.
+1. Clique em **Signing & Capabilities**.
 
-1. To add a new domain, click **+ Capability** under
+1. Para adicionar um novo domínio, clique em **+ Capability** em
    **Signing & Capabilities**.
 
-1. Click **Associated Domains**.
+1. Clique em **Associated Domains**.
 
    <img
       src="/assets/images/docs/cookbook/set-up-universal-links-associated-domains.png"
-      alt="Xcode associated domains screenshot"
+      alt="Captura de tela de domínios associados do Xcode"
       width="100%" />
 
-1. In the **Associated Domains** section, click **+**.
+1. Na seção **Associated Domains**, clique em **+**.
 
-1. Enter `applinks:<web domain>`. Replace `<web domain>` with your own domain name.
+1. Insira `applinks:<domínio da web>`. Substitua `<domínio da web>` pelo seu próprio nome de domínio.
 
    <img
       src="/assets/images/docs/cookbook/set-up-universal-links-add-associated-domains.png"
-      alt="Xcode add associated domains screenshot"
+      alt="Captura de tela de adicionar domínios associados do Xcode"
       width="100%" />
 
 {% endtab %}
-{% tab "Other editors" %}
+{% tab "Outros editores" %}
 
-1. Open the `ios/Runner/Runner.entitlements` XML file in your preferred editor.
+1. Abra o arquivo XML `ios/Runner/Runner.entitlements` no seu editor preferido.
 
-1. Add an associated domain inside the `<dict>` tag.
+1. Adicione um domínio associado dentro da tag `<dict>`.
 
    ```xml
    <?xml version="1.0" encoding="UTF-8"?>
@@ -149,57 +149,57 @@ capability. To add associated domains, choose the IDE tab.
    </plist>
    ```
 
-1. Save the `ios/Runner/Runner.entitlements` file.
+1. Salve o arquivo `ios/Runner/Runner.entitlements`.
 
-To check that the associated domains you created are available,
-perform the following steps:
+Para verificar se os domínios associados que você criou estão disponíveis,
+execute as seguintes etapas:
 
-1. Launch Xcode if necessary.
+1. Inicie o Xcode, se necessário.
 
-1. Click the top-level **Runner**.
+1. Clique no **Runner** de nível superior.
 
-1. In the Editor, click the **Runner** target.
+1. No Editor, clique no alvo **Runner**.
 
-1. Click **Signing & Capabilities**.
-   The domains should appear in the
-   **Associated Domains** section.
+1. Clique em **Signing & Capabilities**.
+   Os domínios devem aparecer na
+   seção **Associated Domains**.
 
    <img
       src="/assets/images/docs/cookbook/set-up-universal-links-add-associated-domains.png"
-      alt="Xcode add associated domains screenshot"
+      alt="Captura de tela de adicionar domínios associados do Xcode"
       width="100%" />
 
 {% endtab %}
 {% endtabs %}
 
-You have finished configuring the application for deep linking.
+Você concluiu a configuração do aplicativo para deep linking.
 
-## Associate your app with your web domain
+## Associar seu aplicativo ao seu domínio da web
 
-You need to host an `apple-app-site-association` file in the web domain.
-This file tells the mobile browser which
-iOS application to open instead of the browser.
-To create the file, find the `appID` of the Flutter app you
-created in the previous section.
+Você precisa hospedar um arquivo `apple-app-site-association` no domínio da web.
+Este arquivo informa ao navegador móvel qual
+aplicativo iOS abrir em vez do navegador.
+Para criar o arquivo, encontre o `appID` do aplicativo Flutter que você
+criou na seção anterior.
 
-### Locate components of the `appID`
+### Localizar os componentes do `appID`
 
-Apple formats the `appID` as `<team id>.<bundle id>`.
+A Apple formata o `appID` como `<id da equipe>.<id do pacote>`.
 
-* Locate the bundle ID in the Xcode project.
-* Locate the team ID in the [developer account][].
+* Localize o ID do pacote no projeto Xcode.
+* Localize o ID da equipe na [conta de desenvolvedor][].
 
-**For example:** Given a team ID of `S8QB4VV633`
-and a bundle ID of `com.example.deeplinkCookbook`,
-you would enter an `appID` entry of
+**Por exemplo:** Dado um ID de equipe de `S8QB4VV633`
+e um ID de pacote de `com.example.deeplinkCookbook`,
+você inseriria uma entrada `appID` de
 `S8QB4VV633.com.example.deeplinkCookbook`.
 
-### Create and host `apple-app-site-association` JSON file
+### Criar e hospedar o arquivo JSON `apple-app-site-association`
 
-This file uses the JSON format.
-Don't include the `.json` file extension when you save this file.
-Per [Apple's documentation][apple-app-site-assoc],
-this file should resemble the following content:
+Este arquivo usa o formato JSON.
+Não inclua a extensão de arquivo `.json` ao salvar este arquivo.
+De acordo com a [documentação da Apple][apple-app-site-assoc],
+este arquivo deve se parecer com o seguinte conteúdo:
 
 ```json
 {
@@ -229,80 +229,80 @@ this file should resemble the following content:
 }
 ```
 
-1. Set one value in the `appIDs` array to
-   `<team id>.<bundle id>`.
+1. Defina um valor na matriz `appIDs` como
+   `<id da equipe>.<id do pacote>`.
 
-1. Set the `paths` array to `["*"]`.
-   The `paths` array specifies the allowed universal links.
-   Using the asterisk, `*` redirects every path to the Flutter app.
-   If needed, change the `paths` array value to a setting more
-   appropriate to your app.
+1. Defina a matriz `paths` como `["*"]`.
+   A matriz `paths` especifica os links universais permitidos.
+   Usando o asterisco, `*` redireciona todos os caminhos para o aplicativo Flutter.
+   Se necessário, altere o valor da matriz `paths` para uma configuração mais
+   apropriada para seu aplicativo.
 
-1. Host the file at a URL that resembles the following structure.
+1. Hospede o arquivo em um URL que se assemelhe à seguinte estrutura.
 
-   `<webdomain>/.well-known/apple-app-site-association`
+   `<domínio da web>/.well-known/apple-app-site-association`
 
-1. Verify that your browser can access this file.
-
-:::note
-If you have more than one scheme/flavor, you can
-add more than one `appID` into the `appIDs` field.
-:::
-
-## Test the universal link
-
-Test a universal link using a physical iOS device or the Simulator.
+1. Verifique se seu navegador pode acessar este arquivo.
 
 :::note
-It might take up to 24 hours before Apple's [Content Delivery Network][] (CDN)
-requests the `apple-app-site-association` (AASA) file from your web domain.
-Until the CDN requests the file, the universal link won't work.
-To bypass Apple's CDN, check out the [alternate mode section][].
+Se você tiver mais de um esquema/flavor, você pode
+adicionar mais de um `appID` no campo `appIDs`.
 :::
 
-1. Before testing,
-   install the Flutter app on the iOS device or Simulator,
-   Use `flutter run` on the desired device.
+## Testar o link universal
+
+Teste um link universal usando um dispositivo iOS físico ou o Simulador.
+
+:::note
+Pode levar até 24 horas antes que a [Rede de Entrega de Conteúdo][] (CDN) da Apple
+solicite o arquivo `apple-app-site-association` (AASA) do seu domínio da web.
+Até que a CDN solicite o arquivo, o link universal não funcionará.
+Para ignorar a CDN da Apple, consulte a [seção de modo alternativo][].
+:::
+
+1. Antes de testar,
+   instale o aplicativo Flutter no dispositivo iOS ou Simulador,
+   Use `flutter run` no dispositivo desejado.
 
    <img
        src="/assets/images/docs/cookbook/set-up-universal-links-simulator.png"
-       alt="Simulator screenshot"
+       alt="Captura de tela do Simulador"
        width="50%" />
 
-   When complete,
-   the Flutter app displays on the home screen of the 
-   iOS device or Simulator.
+   Quando concluído,
+   o aplicativo Flutter é exibido na tela inicial do
+   dispositivo iOS ou Simulador.
 
-1. If you test using the Simulator, use the Xcode CLI:
+1. Se você testar usando o Simulador, use o Xcode CLI:
 
    ```console
-   $ xcrun simctl openurl booted https://<web domain>/details
+   $ xcrun simctl openurl booted https://<domínio da web>/details
    ```
 
-1. If you test with a physical iOS device:
+1. Se você testar com um dispositivo iOS físico:
 
-   1. Launch the **Note** app.
-   1. Type the URL in the **Note** app.
-   1. Click the resulting link.
+   1. Inicie o aplicativo **Notas**.
+   1. Digite o URL no aplicativo **Notas**.
+   1. Clique no link resultante.
 
-   If successful, the Flutter app launches and displays its details screen.
- 
+   Se bem-sucedido, o aplicativo Flutter é iniciado e exibe sua tela de detalhes.
+
    <img
       src="/assets/images/docs/cookbook/set-up-universal-links-simulator-deeplinked.png"
-      alt="Deeplinked Simulator screenshot"
+      alt="Captura de tela do Simulador com deep link"
       width="50%" />
 
-[Content Delivery Network]: https://en.wikipedia.org/wiki/Content_delivery_network
+[Rede de Entrega de Conteúdo]: https://pt.wikipedia.org/wiki/Rede_de_distribui%C3%A7%C3%A3o_de_conte%C3%BAdo
 
-## Find the source code
+## Encontrar o código-fonte
 
-You can find the source code for the [deeplink_cookbook][]
-recipe in the GitHub repo.
+Você pode encontrar o código-fonte da receita [deeplink_cookbook][]
+no repositório do GitHub.
 
 [apple-app-site-assoc]: {{site.apple-dev}}/documentation/xcode/supporting-associated-domains
-[alternate mode section]: {{site.apple-dev}}/documentation/bundleresources/entitlements/com_apple_developer_associated-domains?language=objc
+[seção de modo alternativo]: {{site.apple-dev}}/documentation/bundleresources/entitlements/com_apple_developer_associated-domains?language=objc
 [deeplink_cookbook]: {{site.repo.organization}}/codelabs/tree/main/deeplink_cookbook
-[developer account]: {{site.apple-dev}}/account
+[conta de desenvolvedor]: {{site.apple-dev}}/account
 [Firebase Hosting]: {{site.firebase}}/docs/hosting
 [go_router]: {{site.pub-pkg}}/go_router
 [GitHub Pages]: https://pages.github.com

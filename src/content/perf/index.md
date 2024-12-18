@@ -1,97 +1,98 @@
 ---
-title: Performance
-description: Evaluating the performance of your app from several angles.
+ia-translate: true
+title: Desempenho
+description: Avaliando o desempenho do seu aplicativo de diversos ângulos.
 ---
 
-{% ytEmbed 'PKGguGUwSYE', 'Flutter performance tips | Flutter in Focus' %}
+{% ytEmbed 'PKGguGUwSYE', 'Dicas de desempenho do Flutter | Flutter em Foco' %}
 
 :::note
-If your app has a performance issue and you are
-trying to debug it, check out the DevTool's page
-on [Using the Performance view][].
+Se o seu aplicativo tiver um problema de desempenho e você estiver tentando
+depurá-lo, consulte a página do DevTool sobre
+[Usando a visualização de Desempenho][].
 :::
 
-[Using the Performance view]: /tools/devtools/performance
+[Usando a visualização de Desempenho]: /tools/devtools/performance
 
-What is performance? Why is performance important? How do I improve performance?
+O que é desempenho? Por que o desempenho é importante? Como melhoro o desempenho?
 
-Our goal is to answer those three questions (mainly the third one), and
-anything related to them. This document should serve as the single entry
-point or the root node of a tree of resources that addresses any questions
-that you have about performance.
+Nosso objetivo é responder a essas três perguntas (principalmente a terceira) e
+tudo relacionado a elas. Este documento deve servir como o ponto de entrada único
+ou o nó raiz de uma árvore de recursos que aborda todas as perguntas
+que você tem sobre desempenho.
 
-The answers to the first two questions are mostly philosophical,
-and not as helpful to many developers who visit this page with specific
-performance issues that need to be solved.
-Therefore, the answers to those
-questions are in the [appendix](/perf/appendix).
+As respostas para as duas primeiras perguntas são principalmente filosóficas e não
+tão úteis para muitos desenvolvedores que visitam esta página com problemas
+específicos de desempenho que precisam ser resolvidos.
+Portanto, as respostas a essas
+perguntas estão no [apêndice](/perf/appendix).
 
-To improve performance, you first need metrics: some measurable numbers to
-verify the problems and improvements.
-In the [metrics](/perf/metrics) page,
-you'll see which metrics are currently used,
-and which tools and APIs are available to get the metrics.
+Para melhorar o desempenho, você primeiro precisa de métricas: alguns números
+mensuráveis para verificar os problemas e as melhorias.
+Na página de [métricas](/perf/metrics),
+você verá quais métricas estão sendo usadas no momento e
+quais ferramentas e APIs estão disponíveis para obter as métricas.
 
-There is a list of [Frequently asked questions](/perf/faq),
-so you can find out if the questions you have or the problems you're having
-were already answered or encountered, and whether there are existing solutions.
-(Alternatively, you can check the Flutter GitHub issue database using the
-[performance][performance] label.)
+Há uma lista de [Perguntas frequentes](/perf/faq),
+para que você possa descobrir se as perguntas que você tem ou os problemas que
+está tendo já foram respondidos ou encontrados e se existem soluções.
+(Como alternativa, você pode verificar o banco de dados de issues do Flutter no
+GitHub usando a label [performance][performance].)
 
-Finally, the performance issues are divided into four categories. They
-correspond to the four labels that are used in the Flutter GitHub issue
-database: "[perf: speed][speed]", "[perf: memory][memory]",
-"[perf: app size][size]", "[perf: energy][energy]".
+Finalmente, os problemas de desempenho são divididos em quatro categorias. Elas
+correspondem às quatro labels que são usadas no banco de dados de issues do
+Flutter no GitHub: "[perf: velocidade][speed]", "[perf: memória][memory]",
+"[perf: tamanho do app][size]", "[perf: energia][energy]".
 
-The rest of the content is organized using those four categories.
-
-{% comment %}
-Let's put "speed" (rendering) first as it's the most popular performance issue
-category.
-{% endcomment -%}
-
-## Speed
-
-Are your animations janky (not smooth)? Learn how to
-evaluate and fix rendering issues.
-
-[Improving rendering performance](/perf/rendering-performance)
+O restante do conteúdo é organizado usando essas quatro categorias.
 
 {% comment %}
-Do your apps take a long time to open? We'll also cover the startup speed issue
-in some future pages.
+Vamos colocar "velocidade" (renderização) primeiro, pois é a categoria de
+problema de desempenho mais popular.
 {% endcomment -%}
+
+## Velocidade
+
+Suas animações estão travando (não suaves)? Aprenda como avaliar e corrigir
+problemas de renderização.
+
+[Melhorando o desempenho de renderização](/perf/rendering-performance)
 
 {% comment %}
-
-TODO(<https://github.com/flutter/website/issues/8249>): Reintroduce this article and add this link back.
-
-## Memory
-
-[Using memory wisely](/perf/memory)
-
+Seus aplicativos demoram muito para abrir? Também abordaremos o problema da
+velocidade de inicialização em algumas páginas futuras.
 {% endcomment -%}
-
-## App size
-
-How to measure your app's size. The smaller the size,
-the quicker it is to download.
-
-[Measuring your app's size][]
 
 {% comment %}
 
-TODO(<https://github.com/flutter/website/issues/8249>): Reintroduce this article and add this link back.
+TODO(<https://github.com/flutter/website/issues/8249>): Reintroduzir este artigo e adicionar este link de volta.
 
-## Energy
+## Memória
 
-How to ensure a longer battery life when running your app.
-
-[Preserving your battery](/perf/power)
+[Usando a memória com sabedoria](/perf/memory)
 
 {% endcomment -%}
 
-[Measuring your app's size]: /perf/app-size
+## Tamanho do aplicativo
+
+Como medir o tamanho do seu aplicativo. Quanto menor o tamanho, mais rápido é
+o download.
+
+[Medindo o tamanho do seu aplicativo][]
+
+{% comment %}
+
+TODO(<https://github.com/flutter/website/issues/8249>): Reintroduzir este artigo e adicionar este link de volta.
+
+## Energia
+
+Como garantir uma maior duração da bateria ao executar seu aplicativo.
+
+[Preservando sua bateria](/perf/power)
+
+{% endcomment -%}
+
+[Medindo o tamanho do seu aplicativo]: /perf/app-size
 
 [speed]: {{site.repo.flutter}}/issues?q=is%3Aopen+label%3A%22perf%3A+speed%22+sort%3Aupdated-asc+
 [energy]: {{site.repo.flutter}}/issues?q=is%3Aopen+label%3A%22perf%3A+energy%22+sort%3Aupdated-asc+

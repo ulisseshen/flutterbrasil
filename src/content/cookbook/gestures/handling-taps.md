@@ -1,6 +1,7 @@
 ---
-title: Handle taps
-description: How to handle tapping and dragging.
+ia-translate: true
+title: Lidar com toques
+description: Como lidar com toques e arrastes.
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
@@ -8,59 +9,50 @@ js:
 
 <?code-excerpt path-base="cookbook/gestures/handling_taps/"?>
 
-You not only want to display information to users,
-you want users to interact with your app.
-Use the [`GestureDetector`][] widget to respond
-to fundamental actions, such as tapping and dragging.
+Você não quer apenas exibir informações para os usuários, você quer que eles interajam com seu aplicativo. Use o widget [`GestureDetector`][] para responder a ações fundamentais, como tocar e arrastar.
 
 :::note
-To learn more, watch this short Widget of the Week video on
-the `GestureDetector` widget:
+Para saber mais, assista a este pequeno vídeo Widget of the Week sobre o widget `GestureDetector`:
 
 {% ytEmbed 'WhVXkCFPmK4', 'GestureDetector | Flutter widget of the week' %}
 :::
 
-This recipe shows how to make a custom button that shows
-a snackbar when tapped with the following steps:
+Esta receita mostra como criar um botão personalizado que exibe uma snackbar quando tocado com os seguintes passos:
 
-  1. Create the button.
-  2. Wrap it in a `GestureDetector` that an `onTap()` callback.
+  1. Crie o botão.
+  2. Envolva-o em um `GestureDetector` com um callback `onTap()`.
 
 <?code-excerpt "lib/main.dart (GestureDetector)" replace="/return //g;/^\);$/)/g"?>
 ```dart
-// The GestureDetector wraps the button.
+// O GestureDetector envolve o botão.
 GestureDetector(
-  // When the child is tapped, show a snackbar.
+  // Quando o filho é tocado, exibe uma snackbar.
   onTap: () {
     const snackBar = SnackBar(content: Text('Tap'));
 
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   },
-  // The custom button
+  // O botão personalizado
   child: Container(
     padding: const EdgeInsets.all(12),
     decoration: BoxDecoration(
       color: Colors.lightBlue,
       borderRadius: BorderRadius.circular(8),
     ),
-    child: const Text('My Button'),
+    child: const Text('Meu Botão'),
   ),
 )
 ```
 
-## Notes
+## Notas
 
-  1. For information on adding the Material ripple effect to your
-     button, see the [Add Material touch ripples][] recipe.
-  2. Although this example creates a custom button,
-     Flutter includes a handful of button implementations, such as:
-     [`ElevatedButton`][], [`TextButton`][], and
-     [`CupertinoButton`][].
+  1. Para informações sobre como adicionar o efeito ripple do Material ao seu botão, consulte a receita [Adicionar ripples de toque do Material][].
+  2. Embora este exemplo crie um botão personalizado, o Flutter inclui várias implementações de botões, como: [`ElevatedButton`][], [`TextButton`][], e [`CupertinoButton`][].
 
-## Interactive example
+## Exemplo interativo
 
 <?code-excerpt "lib/main.dart"?>
-```dartpad title="Flutter tap handling hands-on example in DartPad" run="true"
+```dartpad title="Exemplo prático de tratamento de toques no Flutter no DartPad" run="true"
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -70,7 +62,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const title = 'Gesture Demo';
+    const title = 'Demo de Gestos';
 
     return const MaterialApp(
       title: title,
@@ -102,22 +94,22 @@ class MyButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // The GestureDetector wraps the button.
+    // O GestureDetector envolve o botão.
     return GestureDetector(
-      // When the child is tapped, show a snackbar.
+      // Quando o filho é tocado, exibe uma snackbar.
       onTap: () {
         const snackBar = SnackBar(content: Text('Tap'));
 
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       },
-      // The custom button
+      // O botão personalizado
       child: Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           color: Colors.lightBlue,
           borderRadius: BorderRadius.circular(8),
         ),
-        child: const Text('My Button'),
+        child: const Text('Meu Botão'),
       ),
     );
   }
@@ -125,10 +117,10 @@ class MyButton extends StatelessWidget {
 ```
 
 <noscript>
-  <img src="/assets/images/docs/cookbook/handling-taps.gif" alt="Handle taps demo" class="site-mobile-screenshot" />
+  <img src="/assets/images/docs/cookbook/handling-taps.gif" alt="Demonstração de lidar com toques" class="site-mobile-screenshot" />
 </noscript>
 
-[Add Material touch ripples]: /cookbook/gestures/ripples
+[Adicionar ripples de toque do Material]: /cookbook/gestures/ripples
 [`CupertinoButton`]: {{site.api}}/flutter/cupertino/CupertinoButton-class.html
 [`TextButton`]: {{site.api}}/flutter/material/TextButton-class.html
 [`GestureDetector`]: {{site.api}}/flutter/widgets/GestureDetector-class.html

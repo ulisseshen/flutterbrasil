@@ -1,79 +1,63 @@
 ---
-title: Software Engineer III, Flutter (on mobile)
-short-title: Open SWE role
-description: Learn about and apply to this role!
+ia-translate: true
+title: Engenheiro de Software III, Flutter (em dispositivos móveis)
+short-title: Vaga aberta de SWE
+description: Saiba mais e candidate-se a esta vaga!
 toc: false
 ---
 
-## About the position
+## Sobre a posição
 
-Google's software engineers develop the next-generation technologies that change how billions of users connect, explore, and interact with information and one another. Our products need to handle information at massive scale, and extend well beyond web search. We're looking for engineers who bring fresh ideas from all areas, including information retrieval, distributed computing, large-scale system design, networking and data storage, security, artificial intelligence, natural language processing, UI design and mobile; the list goes on and is growing every day. As a software engineer, you will work on a specific project critical to Google’s needs with opportunities to switch teams and projects as you and our fast-paced business grow and evolve. We need our engineers to be versatile, display leadership qualities and be enthusiastic to take on new problems across the full-stack as we continue to push technology forward.
+Os engenheiros de software do Google desenvolvem as tecnologias de próxima geração que mudam a forma como bilhões de usuários se conectam, exploram e interagem com informações e uns com os outros. Nossos produtos precisam lidar com informações em grande escala e se estender muito além da pesquisa na web. Estamos procurando engenheiros que tragam ideias novas de todas as áreas, incluindo recuperação de informações, computação distribuída, design de sistemas em larga escala, redes e armazenamento de dados, segurança, inteligência artificial, processamento de linguagem natural, design de UI e dispositivos móveis; a lista continua e está crescendo a cada dia. Como engenheiro de software, você trabalhará em um projeto específico crucial para as necessidades do Google, com oportunidades de trocar de equipes e projetos à medida que você e nossos negócios em ritmo acelerado crescem e evoluem. Precisamos que nossos engenheiros sejam versáteis, demonstrem qualidades de liderança e sejam entusiastas para enfrentar novos problemas em toda a stack, à medida que continuamos a impulsionar a tecnologia.
 
-In this role, you will manage project priorities, deadlines, and deliverables. You will design, develop, test, deploy, maintain, and enhance software solutions.
+Nesta função, você gerenciará as prioridades do projeto, prazos e entregas. Você projetará, desenvolverá, testará, implantará, manterá e aprimorará soluções de software.
 
-The Core team builds the technical foundation behind Google’s flagship products. We are owners and advocates for the underlying design elements, developer platforms, product components, and infrastructure at Google. These are the essential building blocks for excellent, safe, and coherent experiences for our users and drive the pace of innovation for every developer. We look across Google’s products to build central solutions, break down technical barriers and strengthen existing systems. As the Core team, we have a mandate and a unique opportunity to impact important technical decisions across the company.
+A equipe Core constrói a base técnica por trás dos principais produtos do Google. Somos proprietários e defensores dos elementos de design subjacentes, plataformas de desenvolvedores, componentes de produtos e infraestrutura do Google. Estes são os blocos de construção essenciais para experiências excelentes, seguras e coerentes para nossos usuários e impulsionam o ritmo da inovação para todos os desenvolvedores. Analisamos os produtos do Google para construir soluções centrais, derrubar barreiras técnicas e fortalecer os sistemas existentes. Como equipe Core, temos um mandato e uma oportunidade única de impactar decisões técnicas importantes em toda a empresa.
 
-## Our values
+## Nossos valores
 
-### Mentorship
+### Mentoria
 
-Upon joining Google, you will be paired with a formal mentor,
-who will help guide you in the process of ramping up, forging relationships,
-and learning the systems you'll need to do your job.
-Your manager can also help you find mentors who can coach you
-as you navigate your career at Google. In addition to formal mentors,
-we work and train together so that we are always learning from one another,
-and we celebrate and support the career progression of our team members.
+Ao ingressar no Google, você será emparelhado com um mentor formal, que o ajudará no processo de integração, forjando relacionamentos e aprendendo os sistemas que você precisará para fazer seu trabalho. Seu gerente também pode ajudá-lo a encontrar mentores que possam orientá-lo ao navegar em sua carreira no Google. Além de mentores formais, trabalhamos e treinamos juntos para que estejamos sempre aprendendo uns com os outros, e celebramos e apoiamos a progressão na carreira de nossos membros da equipe.
 
-### Inclusion
+### Inclusão
 
-Here on the Flutter team and at Google, we embrace our differences
-and are [committed to furthering our culture of inclusion](https://flutter.dev/culture).
-In addition to groups like the [Flutteristas](https://flutteristas.org/),
-[Employee Resource Groups (ERGs)](https://diversity.google/commitments/)
-are employee-initiated networks for supporting underrepresented employees
-and their allies with shared values of creating belonging 
-across their communities and Google.
+Aqui na equipe Flutter e no Google, abraçamos nossas diferenças e estamos [comprometidos em promover nossa cultura de inclusão](https://flutter.dev/culture). Além de grupos como as [Flutteristas](https://flutteristas.org/), os [Grupos de Recursos de Funcionários (ERGs)](https://diversity.google/commitments/) são redes iniciadas por funcionários para apoiar funcionários sub-representados e seus aliados com valores compartilhados de criar pertencimento em suas comunidades e no Google.
 
-### Work-Life Balance
+### Equilíbrio entre vida pessoal e profissional
 
-Our team also puts a high value on work-life balance.
-Striking a healthy balance between your personal and professional life
-is crucial to your happiness and success here, which is why we aren't focused
-on how many hours you spend at work or online. Instead,
-we're happy to offer a flexible schedule so you can have a more productive and
-well-balanced life—both in and outside of work.
+Nossa equipe também valoriza muito o equilíbrio entre vida pessoal e profissional. Alcançar um equilíbrio saudável entre sua vida pessoal e profissional é crucial para sua felicidade e sucesso aqui, e é por isso que não estamos focados em quantas horas você passa no trabalho ou online. Em vez disso, temos o prazer de oferecer um horário flexível para que você possa ter uma vida mais produtiva e equilibrada - tanto dentro quanto fora do trabalho.
 
-## Job location
+## Localização da vaga
 
-Mexico City, CDMX, Mexico
+Cidade do México, CDMX, México
 
-## Job responsibilities
+## Responsabilidades da vaga
 
-* Design and build language and frameworks components to assist both Google and external developers build multi-platform applications.
-* Collaborate closely with cross-functional partners in user research, design, and product to understand educators needs and to translate them into the right technical decisions and systems.
-* Contribute to a diverse and inclusive team culture.
+* Projetar e construir componentes de linguagem e frameworks para auxiliar tanto o Google quanto desenvolvedores externos a criar aplicações multiplataforma.
+* Colaborar estreitamente com parceiros multifuncionais em pesquisa de usuários, design e produto para entender as necessidades dos educadores e traduzi-las nas decisões e sistemas técnicos corretos.
+* Contribuir para uma cultura de equipe diversificada e inclusiva.
 
-## Qualifications
+## Qualificações
 
-### Minimum qualifications
+### Qualificações mínimas
 
-* Bachelor’s degree or equivalent practical experience.
-* 2 years of experience with software development in one or more programming languages, or 1 year of experience with an advanced degree.
-* 2 years of experience with data structures or algorithms.
-* Experience in mobile application development.
-* Experience with Android application development.
-* Experience with iOS application development.
+* Bacharelado ou experiência prática equivalente.
+* 2 anos de experiência com desenvolvimento de software em uma ou mais linguagens de programação, ou 1 ano de experiência com um diploma avançado.
+* 2 anos de experiência com estruturas de dados ou algoritmos.
+* Experiência em desenvolvimento de aplicativos móveis.
+* Experiência com desenvolvimento de aplicativos Android.
+* Experiência com desenvolvimento de aplicativos iOS.
 
-### Preferred qualifications
+### Qualificações preferenciais
 
-* Master's degree or PhD in Computer Science, or a related technical field.
-* 1 year of experience in a technical leadership role.
-* Experience coding in Java, Go, Rust, or Python.
-* Experience in front-end coding tools and languages (e.g., Javascript/Typescript, Flutter, Dart, Angular).
-* Experience developing accessible technologies.
-* Ability to work well in a cross-functional team environment.
+* Mestrado ou doutorado em Ciência da Computação ou área técnica relacionada.
+* 1 ano de experiência em uma função de liderança técnica.
+* Experiência em programação em Java, Go, Rust ou Python.
+* Experiência em ferramentas e linguagens de programação front-end (por exemplo, Javascript/Typescript, Flutter, Dart, Angular).
+* Experiência no desenvolvimento de tecnologias acessíveis.
+* Capacidade de trabalhar bem em um ambiente de equipe multifuncional.
 
-## To apply
+## Para se candidatar
 
-Please apply via [this Google Careers page](https://www.google.com/about/careers/applications/jobs/results/91316052444488390).
+Candidate-se por meio [desta página de carreiras do Google](https://www.google.com/about/careers/applications/jobs/results/91316052444488390).

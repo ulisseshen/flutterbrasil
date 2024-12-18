@@ -1,47 +1,48 @@
 ---
+ia-translate: true
 title: Nullable CupertinoThemeData.brightness
 description: >
-  CupertinoThemeData.brightness is now nullable, and it
-  returns the value specified by the user (defaults to null) as is.
+  CupertinoThemeData.brightness agora aceita nulo e retorna o valor
+  especificado pelo usuário (o padrão é nulo) como está.
 ---
 
-## Summary
+## Sumário
 
-[`CupertinoThemeData.brightness`] is now nullable.
+[`CupertinoThemeData.brightness`] agora aceita nulo.
 
-## Context
+## Contexto
 
-[`CupertinoThemeData.brightness`][] is now used to
-override `MediaQuery.platformBrightness` for Cupertino widgets.
-Before this change, the [`CupertinoThemeData.brightness`][]
-getter returned `Brightness.light` when it was set to null.
+[`CupertinoThemeData.brightness`][] agora é usado para
+substituir `MediaQuery.platformBrightness` para widgets Cupertino.
+Antes desta mudança, o getter [`CupertinoThemeData.brightness`][]
+retornava `Brightness.light` quando era definido como nulo.
 
-## Description of change
+## Descrição da mudança
 
-Previously [`CupertinoThemeData.brightness`][]
-was implemented as a getter:
+Anteriormente, [`CupertinoThemeData.brightness`][]
+era implementado como um getter:
 
 ```dart
 Brightness get brightness => _brightness ?? Brightness.light;
 final Brightness _brightness;
 ```
 
-It is now a stored property:
+Agora é uma propriedade armazenada:
 
 ```dart
 final Brightness brightness;
 ```
 
-## Migration guide
+## Guia de migração
 
-Generally [`CupertinoThemeData.brightness`][]
-is rarely useful outside of the Flutter framework.
-To retrieve the brightness for Cupertino widgets,
-now use [`CupertinoTheme.brightnessOf`][] instead.
+Geralmente, [`CupertinoThemeData.brightness`][]
+raramente é útil fora do framework Flutter.
+Para recuperar o brilho para widgets Cupertino,
+agora use [`CupertinoTheme.brightnessOf`][] em vez disso.
 
-With this change, it is now possible to override
-`CupertinoThemeData.brightness` in a `CupertinoThemeData`
-subclass to change the brightness override. For example:
+Com esta mudança, agora é possível substituir
+`CupertinoThemeData.brightness` em uma subclasse `CupertinoThemeData`
+para mudar a substituição de brilho. Por exemplo:
 
 ```dart
 class AlwaysDarkCupertinoThemeData extends CupertinoThemeData {
@@ -49,36 +50,35 @@ class AlwaysDarkCupertinoThemeData extends CupertinoThemeData {
 }
 ```
 
-When a `CupertinoTheme` uses the above `CupertinoThemeData`,
-dark mode is enabled for all its Cupertino descendants
-that are affected by this `CupertinoTheme`.
+Quando um `CupertinoTheme` usa o `CupertinoThemeData` acima,
+o modo escuro é habilitado para todos os seus descendentes Cupertino
+que são afetados por este `CupertinoTheme`.
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.16.3<br>
-In stable release: 1.17
+Incluído na versão: 1.16.3<br>
+Na versão estável: 1.17
 
-## References
+## Referências
 
-Design doc:
+Documento de design:
 
-* [Make `CupertinoThemeData.brightness nullable`][]
+* [Tornar `CupertinoThemeData.brightness nullable`][]
 
-API documentation:
+Documentação da API:
 
 * [`CupertinoThemeData.brightness`][]
 
-Relevant issue:
+Issue relevante:
 
 * [Issue 47255][]
 
-Relevant PR:
+PR relevante:
 
-* [Let material `ThemeData` dictate brightness if `cupertinoOverrideTheme.brightness` is null][]
-
+* [Permitir que `ThemeData` material dite o brilho se `cupertinoOverrideTheme.brightness` for nulo][]
 
 [`CupertinoTheme.brightnessOf`]: {{site.api}}/flutter/cupertino/CupertinoTheme/brightnessOf.html
 [`CupertinoThemeData.brightness`]: {{site.api}}/flutter/cupertino/NoDefaultCupertinoThemeData/brightness.html
 [Issue 47255]: {{site.repo.flutter}}/issues/47255
-[Let material `ThemeData` dictate brightness if `cupertinoOverrideTheme.brightness` is null]: {{site.repo.flutter}}/pull/47249
-[Make `CupertinoThemeData.brightness nullable`]: /go/nullable-cupertinothemedata-brightness
+[Permitir que `ThemeData` material dite o brilho se `cupertinoOverrideTheme.brightness` for nulo]: {{site.repo.flutter}}/pull/47249
+[Tornar `CupertinoThemeData.brightness nullable`]: /go/nullable-cupertinothemedata-brightness

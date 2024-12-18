@@ -1,171 +1,171 @@
 ---
-title: Use the Flutter inspector
-description: Learn how to use the Flutter inspector to explore a Flutter app's widget tree.
+ia-translate: true
+title: Usar o inspetor do Flutter
+description: Aprenda a usar o inspetor do Flutter para explorar a árvore de widgets de um app Flutter.
 ---
 
 <?code-excerpt path-base="visual_debugging/"?>
 
 :::note
-The inspector works with all Flutter applications.
+O inspetor funciona com todos os aplicativos Flutter.
 :::
 
-## What is it?
+## O que é?
 
-The Flutter widget inspector is a powerful tool for visualizing and
-exploring Flutter widget trees. The Flutter framework uses widgets
-as the core building block for anything from controls
-(such as text, buttons, and toggles),
-to layout (such as centering, padding, rows, and columns).
-The inspector helps you visualize and explore Flutter widget
-trees, and can be used for the following:
+O inspetor de widgets do Flutter é uma ferramenta poderosa para visualizar e
+explorar árvores de widgets do Flutter. O framework Flutter usa widgets
+como blocos de construção essenciais para tudo, desde controles
+(como texto, botões e toggles),
+até layouts (como centralização, preenchimento, linhas e colunas).
+O inspetor ajuda você a visualizar e explorar a árvore de widgets do Flutter,
+e pode ser usado para o seguinte:
 
-* understanding existing layouts
-* diagnosing layout issues
+* entender layouts existentes
+* diagnosticar problemas de layout
 
-![Screenshot of the Flutter inspector window](/assets/images/docs/tools/devtools/inspector_screenshot.png){:width="100%"}
+![Captura de tela da janela do inspetor do Flutter](/assets/images/docs/tools/devtools/inspector_screenshot.png){:width="100%"}
 
-## Get started
+## Começar
 
-To debug a layout issue, run the app in [debug mode][] and
-open the inspector by clicking the **Flutter Inspector**
-tab on the DevTools toolbar.
+Para depurar um problema de layout, execute o aplicativo em [modo de depuração][] e
+abra o inspetor clicando na aba **Flutter Inspector** na barra de ferramentas do DevTools.
 
 :::note
-You can still access the Flutter inspector directly from
-Android Studio/IntelliJ, but you might prefer the
-more spacious view when running it from DevTools
-in a browser.
+Você ainda pode acessar o inspetor do Flutter diretamente do
+Android Studio/IntelliJ, mas talvez prefira a visualização
+mais espaçosa ao executá-lo a partir do DevTools
+em um navegador.
 :::
 
-### Debugging layout issues visually
+### Depurando problemas de layout visualmente
 
-The following is a guide to the features available in the
-inspector's toolbar. When space is limited, the icon is
-used as the visual version of the label.
+O seguinte é um guia para os recursos disponíveis na
+barra de ferramentas do inspetor. Quando o espaço é limitado, o ícone é
+usado como a versão visual do rótulo.
 
-![Select widget mode icon](/assets/images/docs/tools/devtools/select-widget-mode-icon.png){:width="20px"} **Select widget mode**
-: Enable this button in order to select
-  a widget on the device to inspect it. To learn more,
-  check out [Inspecting a widget](#inspecting-a-widget).
+![Ícone do modo de seleção de widget](/assets/images/docs/tools/devtools/select-widget-mode-icon.png){:width="20px"} **Modo de seleção de widget**
+: Habilite este botão para selecionar
+  um widget no dispositivo para inspecioná-lo. Para saber mais,
+  confira [Inspecionando um widget](#inspecionando-um-widget).
 
-![Refresh tree icon](/assets/images/docs/tools/devtools/refresh-tree-icon.png){:width="20px"} **Refresh tree**
-: Reload the current widget info.
+![Ícone de atualização da árvore](/assets/images/docs/tools/devtools/refresh-tree-icon.png){:width="20px"} **Atualizar árvore**
+: Recarrega as informações do widget atual.
 
-![Slow animations icon](/assets/images/docs/tools/devtools/slow-animations-icon.png){:width="20px"} **[Slow animations][]**
-: Run animations 5 times slower to help fine-tune them.
+![Ícone de animações lentas](/assets/images/docs/tools/devtools/slow-animations-icon.png){:width="20px"} **[Animações lentas][]**
+: Executa animações 5 vezes mais lentas para ajudar a ajustá-las.
 
-![Show guidelines mode icon](/assets/images/docs/tools/devtools/debug-paint-mode-icon.png){:width="20px"} **[Show guidelines][]**
-: Overlay guidelines to assist with fixing layout issues.
+![Ícone de modo de exibição de guias](/assets/images/docs/tools/devtools/debug-paint-mode-icon.png){:width="20px"} **[Exibir guias][]**
+: Sobrepõe guias para auxiliar na correção de problemas de layout.
 
-![Show baselines icon](/assets/images/docs/tools/devtools/paint-baselines-icon.png){:width="20px"} **[Show baselines][]**
-: Show baselines, which are used for aligning text.
-  Can be useful for checking if text is aligned.
+![Ícone de exibição de linhas de base](/assets/images/docs/tools/devtools/paint-baselines-icon.png){:width="20px"} **[Exibir linhas de base][]**
+: Exibe linhas de base, que são usadas para alinhar texto.
+  Pode ser útil para verificar se o texto está alinhado.
 
-![Highlight repaints icon](/assets/images/docs/tools/devtools/repaint-rainbow-icon.png){:width="20px"} **[Highlight repaints][]**
-: Show borders that change color when elements repaint.
-  Useful for finding unnecessary repaints.
+![Ícone de realce de repinturas](/assets/images/docs/tools/devtools/repaint-rainbow-icon.png){:width="20px"} **[Realçar repinturas][]**
+: Exibe bordas que mudam de cor quando os elementos são repintados.
+  Útil para encontrar repinturas desnecessárias.
 
-![Highlight oversized images icon](/assets/images/docs/tools/devtools/invert_oversized_images_icon.png){:width="20px"} **[Highlight oversized images][]**
-: Highlights images that are using too much memory
-  by inverting colors and flipping them.
+![Ícone de realce de imagens superdimensionadas](/assets/images/docs/tools/devtools/invert_oversized_images_icon.png){:width="20px"} **[Realçar imagens superdimensionadas][]**
+: Realça imagens que estão usando muita memória
+  invertendo as cores e espelhando-as.
 
-[Slow animations]: #slow-animations
-[Show guidelines]: #show-guidelines
-[Show baselines]: #show-baselines
-[Highlight repaints]: #highlight-repaints
-[Highlight oversized images]: #highlight-oversized-images
+[Animações lentas]: #animações-lentas
+[Exibir guias]: #exibir-guias
+[Exibir linhas de base]: #exibir-linhas-de-base
+[Realçar repinturas]: #realçar-repinturas
+[Realçar imagens superdimensionadas]: #realçar-imagens-superdimensionadas
 
-## Inspecting a widget
+## Inspecionando um widget
 
-You can browse the interactive widget tree to view nearby
-widgets and see their field values.
+Você pode navegar pela árvore de widgets interativa para visualizar widgets
+próximos e ver seus valores de campo.
 
-To locate individual UI elements in the widget tree,
-click the **Select Widget Mode** button in the toolbar.
-This puts the app on the device into a "widget select" mode.
-Click any widget in the app's UI; this selects the widget on the
-app's screen, and scrolls the widget tree to the corresponding node.
-Toggle the **Select Widget Mode** button again to exit
-widget select mode.
+Para localizar elementos de UI individuais na árvore de widgets,
+clique no botão **Modo de Seleção de Widget** na barra de ferramentas.
+Isso coloca o aplicativo no dispositivo em um modo de "seleção de widget".
+Clique em qualquer widget na UI do aplicativo; isso seleciona o widget na
+tela do aplicativo e rola a árvore de widgets para o nó correspondente.
+Alterne o botão **Modo de Seleção de Widget** novamente para sair
+do modo de seleção de widget.
 
-When debugging layout issues, the key fields to look at are the
-`size` and `constraints` fields. The constraints flow down the tree,
-and the sizes flow back up. For more information on how this works,
-see [Understanding constraints][].
+Ao depurar problemas de layout, os principais campos a serem observados são os
+campos `tamanho` e `restrições`. As restrições fluem pela árvore,
+e os tamanhos fluem de volta para cima. Para mais informações sobre como isso funciona,
+consulte [Entendendo restrições][].
 
-## Flutter Layout Explorer
+## Explorador de Layout do Flutter
 
-The Flutter Layout Explorer helps you to better understand
-Flutter layouts.
+O Explorador de Layout do Flutter ajuda você a entender melhor
+os layouts do Flutter.
 
-For an overview of what you can do with this tool, see
-the Flutter Explorer video:
+Para uma visão geral do que você pode fazer com essa ferramenta, veja
+o vídeo do Explorador do Flutter:
 
 {% ytEmbed 'Jakrc3Tn_y4', 'DevTools Layout Explorer' %}
 
-You might also find the following step-by-step article useful:
+Você também pode achar o seguinte artigo passo a passo útil:
 
-* [How to debug layout issues with the Flutter Inspector][debug-article]
+* [Como depurar problemas de layout com o Inspetor do Flutter][debug-article]
 
 [debug-article]: {{site.flutter-medium}}/how-to-debug-layout-issues-with-the-flutter-inspector-87460a7b9db
 
-### Use the Layout Explorer
+### Usar o Explorador de Layout
 
-From the Flutter Inspector, select a widget. The Layout Explorer
-supports both [flex layouts][] and fixed size layouts, and has
-specific tooling for both kinds.
+A partir do Inspetor do Flutter, selecione um widget. O Explorador de Layout
+suporta layouts [flex][] e layouts de tamanho fixo, e possui
+ferramentas específicas para ambos os tipos.
 
-#### Flex layouts
+#### Layouts flex
 
-When you select a flex widget (for example, [`Row`][], [`Column`][], [`Flex`][])
-or a direct child of a flex widget, the flex layout tool will
-appear in the Layout Explorer.
+Quando você seleciona um widget flex (por exemplo, [`Row`][], [`Column`][], [`Flex`][])
+ou um filho direto de um widget flex, a ferramenta de layout flex aparecerá
+no Explorador de Layout.
 
-The Layout Explorer visualizes how [`Flex`][] widgets and their
-children are laid out. The explorer identifies the main axis
-and cross axis, as well as the current alignment for each
-(for example, start, end, and spaceBetween).
-It also shows details like flex factor, flex fit, and layout
-constraints.
+O Explorador de Layout visualiza como os widgets [`Flex`][] e seus
+filhos são dispostos. O explorador identifica o eixo principal
+e o eixo cruzado, bem como o alinhamento atual para cada um
+(por exemplo, início, fim e spaceBetween).
+Ele também mostra detalhes como fator flex, ajuste flex e restrições
+de layout.
 
-Additionally, the explorer shows layout constraint violations
-and render overflow errors. Violated layout constraints
-are colored red, and overflow errors are presented in the
-standard  "yellow-tape" pattern, as you might see on a running
-device. These visualizations aim to improve understanding of
-why overflow errors occur as well as how to fix them.
+Além disso, o explorador mostra violações de restrições de layout
+e erros de estouro de renderização. Restrições de layout violadas
+são coloridas em vermelho, e erros de estouro são apresentados no
+padrão "fita amarela" padrão, como você pode ver em um dispositivo em execução.
+Essas visualizações visam melhorar a compreensão de
+por que ocorrem erros de estouro, bem como como corrigi-los.
 
-![The Layout Explorer showing errors and device inspector](/assets/images/docs/tools/devtools/layout_explorer_errors_and_device.gif){:width="100%"}
+![O Explorador de Layout mostrando erros e o inspetor do dispositivo](/assets/images/docs/tools/devtools/layout_explorer_errors_and_device.gif){:width="100%"}
 
-Clicking a widget in the layout explorer mirrors
-the selection on the on-device inspector. **Select Widget Mode**
-needs to be enabled for this. To enable it,
-click on the **Select Widget Mode** button in the inspector.
+Clicar em um widget no explorador de layout espelha
+a seleção no inspetor no dispositivo. O **Modo de Seleção de Widget**
+precisa estar habilitado para isso. Para habilitá-lo,
+clique no botão **Modo de Seleção de Widget** no inspetor.
 
-![The Select Widget Mode button in the inspector](/assets/images/docs/tools/devtools/select_widget_mode_button.png)
+![O botão Modo de Seleção de Widget no inspetor](/assets/images/docs/tools/devtools/select_widget_mode_button.png)
 
-For some properties, like flex factor, flex fit, and alignment,
-you can modify the value via dropdown lists in the explorer.
-When modifying a widget property, you see the new value reflected
-not only in the Layout Explorer, but also on the
-device running your Flutter app. The explorer animates
-on property changes so that the effect of the change is clear.
-Widget property changes made from the layout explorer don't
-modify your source code and are reverted on hot reload.
+Para algumas propriedades, como fator flex, ajuste flex e alinhamento,
+você pode modificar o valor por meio de listas suspensas no explorador.
+Ao modificar uma propriedade de widget, você verá o novo valor refletido
+não apenas no Explorador de Layout, mas também no
+dispositivo executando seu aplicativo Flutter. O explorador anima
+as alterações de propriedade para que o efeito da alteração seja claro.
+Alterações de propriedades de widget feitas a partir do explorador de layout
+não modificam seu código-fonte e são revertidas na recarga dinâmica.
 
-##### Interactive Properties
+##### Propriedades Interativas
 
-Layout Explorer supports modifying [`mainAxisAlignment`][],
-[`crossAxisAlignment`][], and [`FlexParentData.flex`][].
-In the future, we may add support for additional properties
-such as [`mainAxisSize`][], [`textDirection`][], and
+O Explorador de Layout suporta a modificação de [`mainAxisAlignment`][],
+[`crossAxisAlignment`][] e [`FlexParentData.flex`][].
+No futuro, podemos adicionar suporte para propriedades adicionais
+como [`mainAxisSize`][], [`textDirection`][] e
 [`FlexParentData.fit`][].
 
 ###### mainAxisAlignment
 
-![The Layout Explorer changing main axis alignment](/assets/images/docs/tools/devtools/layout_explorer_main_axis_alignment.gif){:width="100%"}
+![O Explorador de Layout alterando o alinhamento do eixo principal](/assets/images/docs/tools/devtools/layout_explorer_main_axis_alignment.gif){:width="100%"}
 
-Supported values:
+Valores suportados:
 
 * `MainAxisAlignment.start`
 * `MainAxisAlignment.end`
@@ -176,9 +176,9 @@ Supported values:
 
 ###### crossAxisAlignment
 
-![The Layout Explorer changing cross axis alignment](/assets/images/docs/tools/devtools/layout_explorer_cross_axis_alignment.gif){:width="100%"}
+![O Explorador de Layout alterando o alinhamento do eixo cruzado](/assets/images/docs/tools/devtools/layout_explorer_cross_axis_alignment.gif){:width="100%"}
 
-Supported values:
+Valores suportados:
 
 * `CrossAxisAlignment.start`
 * `CrossAxisAlignment.center`
@@ -187,43 +187,42 @@ Supported values:
 
 ###### FlexParentData.flex
 
-![The Layout Explorer changing flex factor](/assets/images/docs/tools/devtools/layout_explorer_flex.gif){:width="100%"}
+![O Explorador de Layout alterando o fator flex](/assets/images/docs/tools/devtools/layout_explorer_flex.gif){:width="100%"}
 
-Layout Explorer supports 7 flex options in the UI
-(null, 0, 1, 2, 3, 4, 5), but technically the flex
-factor of a flex widget's child can be any int.
+O Explorador de Layout suporta 7 opções flex na interface do usuário
+(null, 0, 1, 2, 3, 4, 5), mas tecnicamente o flex
+fator do filho de um widget flex pode ser qualquer int.
 
 ###### Flexible.fit
 
-![The Layout Explorer changing fit](/assets/images/docs/tools/devtools/layout_explorer_fit.gif){:width="100%"}
+![O Explorador de Layout alterando o ajuste](/assets/images/docs/tools/devtools/layout_explorer_fit.gif){:width="100%"}
 
-Layout Explorer supports the two different types of
-[`FlexFit`][]: `loose` and `tight`.
+O Explorador de Layout suporta os dois tipos diferentes de
+[`FlexFit`][]: `loose` e `tight`.
 
-#### Fixed size layouts
+#### Layouts de tamanho fixo
 
-When you select a fixed size widget that is not a child
-of a flex widget, fixed size layout information will appear
-in the Layout Explorer. You can see size, constraint, and padding
-information for both the selected widget and its nearest upstream
-RenderObject.
+Quando você seleciona um widget de tamanho fixo que não é filho
+de um widget flex, informações de layout de tamanho fixo aparecerão
+no Explorador de Layout. Você pode ver informações de tamanho, restrição e preenchimento
+tanto para o widget selecionado quanto para o RenderObject upstream mais próximo.
 
-![The Layout Explorer fixed size tool](/assets/images/docs/tools/devtools/layout_explorer_fixed_layout.png){:width="100%"}
+![A ferramenta de tamanho fixo do Explorador de Layout](/assets/images/docs/tools/devtools/layout_explorer_fixed_layout.png){:width="100%"}
 
-## Visual debugging
+## Depuração visual
 
-The Flutter Inspector provides several options for visually debugging your app.
+O Inspetor do Flutter fornece várias opções para depurar visualmente seu aplicativo.
 
-![Inspector visual debugging options](/assets/images/docs/tools/devtools/visual_debugging_options.png){:width="100%"}
+![Opções de depuração visual do inspetor](/assets/images/docs/tools/devtools/visual_debugging_options.png){:width="100%"}
 
-### Slow animations
+### Animações lentas
 
-When enabled, this option runs animations 5 times slower for easier visual
-inspection.
-This can be useful if you want to carefully observe and tweak an animation that
-doesn't look quite right.
+Quando habilitada, essa opção executa animações 5 vezes mais lentas para facilitar a
+inspeção visual.
+Isso pode ser útil se você quiser observar cuidadosamente e ajustar uma animação que
+não parece muito certa.
 
-This can also be set in code:
+Isso também pode ser definido no código:
 
 <?code-excerpt "lib/slow_animations.dart"?>
 ```dart
@@ -234,28 +233,28 @@ void setSlowAnimations() {
 }
 ```
 
-This slows the animations by 5x.
+Isso diminui as animações em 5x.
 
-#### See also
+#### Veja também
 
-The following links provide more info.
+Os links a seguir fornecem mais informações.
 
-* [Flutter documentation: timeDilation property]({{site.api}}/flutter/scheduler/timeDilation.html)
+* [Documentação do Flutter: propriedade timeDilation]({{site.api}}/flutter/scheduler/timeDilation.html)
 
-The following screen recordings show before and after slowing an animation.
+As gravações de tela a seguir mostram antes e depois de desacelerar uma animação.
 
-![Screen recording showing normal animation speed](/assets/images/docs/tools/devtools/debug-toggle-slow-animations-disabled.gif)
-![Screen recording showing slowed animation speed](/assets/images/docs/tools/devtools/debug-toggle-slow-animations-enabled.gif)
+![Gravação de tela mostrando a velocidade normal da animação](/assets/images/docs/tools/devtools/debug-toggle-slow-animations-disabled.gif)
+![Gravação de tela mostrando a velocidade da animação diminuída](/assets/images/docs/tools/devtools/debug-toggle-slow-animations-enabled.gif)
 
-### Show guidelines
+### Exibir guias
 
-This feature draws guidelines over your app that display render boxes, alignments,
-paddings, scroll views, clippings and spacers.
+Esse recurso desenha guias sobre seu aplicativo que exibem caixas de renderização,
+alinhamentos, preenchimentos, visualizações de rolagem, recortes e espaçadores.
 
-This tool can be used for better understanding your layout. For instance,
-by finding unwanted padding or understanding widget alignment.
+Essa ferramenta pode ser usada para entender melhor seu layout. Por exemplo,
+encontrando preenchimento indesejado ou entendendo o alinhamento do widget.
 
-You can also enable this in code:
+Você também pode habilitar isso no código:
 
 <?code-excerpt "lib/layout_guidelines.dart"?>
 ```dart
@@ -266,67 +265,67 @@ void showLayoutGuidelines() {
 }
 ```
 
-#### Render boxes
+#### Caixas de renderização
 
-Widgets that draw to the screen create a [render box][], the
-building blocks of Flutter layouts. They're shown with a bright blue border:
+Widgets que desenham na tela criam uma [caixa de renderização][], os
+blocos de construção dos layouts do Flutter. Eles são mostrados com uma borda azul brilhante:
 
-![Screenshot of render box guidelines](/assets/images/docs/tools/devtools/debug-toggle-guideline-render-box.png)
+![Captura de tela das diretrizes da caixa de renderização](/assets/images/docs/tools/devtools/debug-toggle-guideline-render-box.png)
 
-#### Alignments
+#### Alinhamentos
 
-Alignments are shown with yellow arrows. These arrows show the vertical
-and horizontal offsets of a widget relative to its parent.
-For example, this button's icon is shown as being centered by the four arrows:
+Os alinhamentos são mostrados com setas amarelas. Essas setas mostram os
+deslocamentos vertical e horizontal de um widget em relação ao seu pai.
+Por exemplo, o ícone deste botão é mostrado como sendo centralizado pelas quatro setas:
 
-![Screenshot of alignment guidelines](/assets/images/docs/tools/devtools/debug-toggle-guidelines-alignment.png)
+![Captura de tela das diretrizes de alinhamento](/assets/images/docs/tools/devtools/debug-toggle-guidelines-alignment.png)
 
-#### Padding
+#### Preenchimento
 
-Padding is shown with a semi-transparent blue background:
+O preenchimento é mostrado com um fundo azul semitransparente:
 
-![Screenshot of padding guidelines](/assets/images/docs/tools/devtools/debug-toggle-guidelines-padding.png)
+![Captura de tela das diretrizes de preenchimento](/assets/images/docs/tools/devtools/debug-toggle-guidelines-padding.png)
 
-#### Scroll views
+#### Visualizações de rolagem
 
-Widgets with scrolling contents (such as list views) are shown with green arrows:
+Widgets com conteúdo de rolagem (como visualizações de lista) são mostrados com setas verdes:
 
-![Screenshot of scroll view guidelines](/assets/images/docs/tools/devtools/debug-toggle-guidelines-scroll.png)
+![Captura de tela das diretrizes de visualização de rolagem](/assets/images/docs/tools/devtools/debug-toggle-guidelines-scroll.png)
 
-#### Clipping
+#### Recorte
 
-Clipping, for example when using the [ClipRect widget][], are shown
-with a dashed pink line with a scissors icon:
+O recorte, por exemplo, ao usar o [widget ClipRect][], é mostrado
+com uma linha rosa tracejada com um ícone de tesoura:
 
-[ClipRect widget]: {{site.api}}/flutter/widgets/ClipRect-class.html
+[widget ClipRect]: {{site.api}}/flutter/widgets/ClipRect-class.html
 
-![Screenshot of clip guidelines](/assets/images/docs/tools/devtools/debug-toggle-guidelines-clip.png)
+![Captura de tela das diretrizes de recorte](/assets/images/docs/tools/devtools/debug-toggle-guidelines-clip.png)
 
-#### Spacers
+#### Espaçadores
 
-Spacer widgets are shown with a grey background,
-such as this `SizedBox` without a child:
+Widgets espaçadores são mostrados com um fundo cinza,
+como este `SizedBox` sem um filho:
 
-![Screenshot of spacer guidelines](/assets/images/docs/tools/devtools/debug-toggle-guidelines-spacer.png)
+![Captura de tela das diretrizes de espaçador](/assets/images/docs/tools/devtools/debug-toggle-guidelines-spacer.png)
 
-### Show baselines
+### Exibir linhas de base
 
-This option makes all baselines visible.
-Baselines are horizontal lines used to position text.
+Esta opção torna todas as linhas de base visíveis.
+Linhas de base são linhas horizontais usadas para posicionar texto.
 
-This can be useful for checking whether text is precisely aligned vertically.
-For example, the text baselines in the following screenshot are slightly misaligned:
+Isso pode ser útil para verificar se o texto está alinhado verticalmente com precisão.
+Por exemplo, as linhas de base de texto na captura de tela a seguir estão ligeiramente desalinhadas:
 
-![Screenshot with show baselines enabled](/assets/images/docs/tools/devtools/debug-toggle-guidelines-baseline.png)
+![Captura de tela com exibir linhas de base habilitado](/assets/images/docs/tools/devtools/debug-toggle-guidelines-baseline.png)
 
-The [Baseline][] widget can be used to adjust baselines.
+O widget [Baseline][] pode ser usado para ajustar as linhas de base.
 
 [Baseline]: {{site.api}}/flutter/widgets/Baseline-class.html
 
-A line is drawn on any [render box][] that has a baseline set;
-alphabetic baselines are shown as green and ideographic as yellow.
+Uma linha é desenhada em qualquer [caixa de renderização][] que tenha uma linha de base definida;
+linhas de base alfabéticas são mostradas em verde e ideográficas em amarelo.
 
-You can also enable this in code:
+Você também pode habilitar isso no código:
 
 <?code-excerpt "lib/show_baselines.dart"?>
 ```dart
@@ -337,24 +336,24 @@ void showBaselines() {
 }
 ```
 
-### Highlight repaints
+### Realçar repinturas
 
-This option draws a border around all [render boxes][]
-that changes color every time that box repaints.
+Essa opção desenha uma borda ao redor de todas as [caixas de renderização][]
+que muda de cor toda vez que essa caixa é repintada.
 
-[render boxes]: {{site.api}}/flutter/rendering/RenderBox-class.html
+[caixas de renderização]: {{site.api}}/flutter/rendering/RenderBox-class.html
 
-This rotating rainbow of colors is useful for finding parts of your app
-that are repainting too often and potentially harming performance.
+Esse arco-íris rotativo de cores é útil para encontrar partes do seu aplicativo
+que estão sendo repintadas com muita frequência e, potencialmente, prejudicando o desempenho.
 
-For example, one small animation could be causing an entire page
-to repaint on every frame.
-Wrapping the animation in a [RepaintBoundary widget][] limits
-the repainting to just the animation.
+Por exemplo, uma pequena animação pode estar fazendo com que uma página inteira
+seja repintada em cada quadro.
+Envolver a animação em um [widget RepaintBoundary][] limita
+a repintura apenas à animação.
 
-[RepaintBoundary widget]: {{site.api}}/flutter/widgets/RepaintBoundary-class.html
+[widget RepaintBoundary]: {{site.api}}/flutter/widgets/RepaintBoundary-class.html
 
-Here the progress indicator causes its container to repaint:
+Aqui, o indicador de progresso faz com que seu contêiner seja repintado:
 
 <?code-excerpt "lib/highlight_repaints.dart (everything-repaints)"?>
 ```dart
@@ -373,10 +372,10 @@ class EverythingRepaintsPage extends StatelessWidget {
 }
 ```
 
-![Screen recording of a whole screen repainting](/assets/images/docs/tools/devtools/debug-toggle-guidelines-repaint-1.gif)
+![Gravação de tela de uma tela inteira sendo repintada](/assets/images/docs/tools/devtools/debug-toggle-guidelines-repaint-1.gif)
 
-Wrapping the progress indicator in a `RepaintBoundary` causes
-only that section of the screen to repaint:
+Envolver o indicador de progresso em um `RepaintBoundary` faz com que
+apenas essa seção da tela seja repintada:
 
 <?code-excerpt "lib/highlight_repaints.dart (area-repaints)"?>
 ```dart
@@ -397,13 +396,13 @@ class AreaRepaintsPage extends StatelessWidget {
 }
 ```
 
-![Screen recording of a just a progress indicator repainting](/assets/images/docs/tools/devtools/debug-toggle-guidelines-repaint-2.gif)
+![Gravação de tela de apenas um indicador de progresso sendo repintado](/assets/images/docs/tools/devtools/debug-toggle-guidelines-repaint-2.gif)
 
-`RepaintBoundary` widgets have tradeoffs. They can help with performance,
-but they also have an overhead of creating a new canvas,
-which uses additional memory.
+Os widgets `RepaintBoundary` têm compensações. Eles podem ajudar no desempenho,
+mas também têm uma sobrecarga de criação de um novo canvas,
+que usa memória adicional.
 
-You can also enable this option in code:
+Você também pode habilitar essa opção no código:
 
 <?code-excerpt "lib/highlight_repaints.dart (toggle)"?>
 ```dart
@@ -414,34 +413,34 @@ void highlightRepaints() {
 }
 ```
 
-### Highlight oversized images
+### Realçar imagens superdimensionadas
 
-This option highlights images that are too large by both inverting their colors
-and flipping them vertically:
+Essa opção realça imagens que são muito grandes invertendo suas cores
+e espelhando-as verticalmente:
 
-![A highlighted oversized image](/assets/images/docs/tools/devtools/debug-toggle-guidelines-oversized.png)
+![Uma imagem superdimensionada realçada](/assets/images/docs/tools/devtools/debug-toggle-guidelines-oversized.png)
 
-The highlighted images use more memory than is required;
-for example, a large 5MB image displayed at 100 by 100 pixels.
+As imagens realçadas usam mais memória do que o necessário;
+por exemplo, uma imagem grande de 5 MB exibida em 100 por 100 pixels.
 
-Such images can cause poor performance, especially on lower-end devices
-and when you have many images, as in a list view,
-this performance hit can add up.
-Information about each image is printed in the debug console:
+Tais imagens podem causar baixo desempenho, especialmente em dispositivos
+de baixo custo, e quando você tem muitas imagens, como em uma visualização
+de lista, esse impacto no desempenho pode aumentar.
+Informações sobre cada imagem são impressas no console de depuração:
 
 ```console
-dash.png has a display size of 213×392 but a decode size of 2130×392, which uses an additional 2542KB.
+dash.png tem um tamanho de exibição de 213×392, mas um tamanho de decodificação de 2130×392, o que usa 2542KB adicionais.
 ```
 
-Images are deemed too large if they use at least 128KB more than required.
+Imagens são consideradas muito grandes se usarem pelo menos 128 KB a mais do que o necessário.
 
-#### Fixing images
+#### Corrigindo imagens
 
-Wherever possible, the best way to fix this problem is resizing
-the image asset file so it's smaller.
+Sempre que possível, a melhor maneira de corrigir esse problema é redimensionar
+o arquivo de ativos de imagem para que seja menor.
 
-If this isn't possible, you can use the `cacheHeight` and `cacheWidth`
-parameters on the `Image` constructor:
+Se isso não for possível, você pode usar os parâmetros `cacheHeight` e `cacheWidth`
+no construtor `Image`:
 
 <?code-excerpt "lib/oversized_images.dart (resized-image)"?>
 ```dart
@@ -459,13 +458,13 @@ class ResizedImage extends StatelessWidget {
 }
 ```
 
-This makes the engine decode this image at the specified size,
-and reduces memory usage (decoding and storage is still more expensive
-than if the image asset itself was shrunk).
-The image is rendered to the constraints of the layout or width and height
-regardless of these parameters.
+Isso faz com que o mecanismo decodifique essa imagem no tamanho especificado
+e reduz o uso de memória (a decodificação e o armazenamento ainda são mais caros
+do que se o ativo de imagem em si fosse reduzido).
+A imagem é renderizada para as restrições do layout ou largura e altura,
+independentemente desses parâmetros.
 
-This property can also be set in code:
+Essa propriedade também pode ser definida no código:
 
 <?code-excerpt "lib/oversized_images.dart (toggle)"?>
 ```dart
@@ -474,77 +473,78 @@ void showOversizedImages() {
 }
 ```
 
-#### More information
+#### Mais informações
 
-You can learn more at the following link:
+Você pode saber mais no link a seguir:
 
-* [Flutter documentation: debugInvertOversizedImages]({{site.api}}/flutter/painting/debugInvertOversizedImages.html)
+* [Documentação do Flutter: debugInvertOversizedImages]({{site.api}}/flutter/painting/debugInvertOversizedImages.html)
 
-[render box]: {{site.api}}/flutter/rendering/RenderBox-class.html
+[caixa de renderização]: {{site.api}}/flutter/rendering/RenderBox-class.html
 
-## Details Tree
+## Árvore de detalhes
 
-Select the **Widget Details Tree** tab to display the details tree for the
-selected widget. From here, you can gather useful information about a
-widget's properties, render object, and children.
+Selecione a aba **Árvore de Detalhes do Widget** para exibir a árvore de detalhes
+para o widget selecionado. A partir daqui, você pode coletar informações úteis
+sobre as propriedades, o objeto de renderização e os filhos de um widget.
 
-![The Details Tree view](/assets/images/docs/tools/devtools/inspector_details_tree.png){:width="100%"}
+![A visualização da Árvore de Detalhes](/assets/images/docs/tools/devtools/inspector_details_tree.png){:width="100%"}
 
-## Track widget creation
+## Rastrear a criação de widget
 
-Part of the functionality of the Flutter inspector is based on
-instrumenting the application code in order to better understand
-the source locations where widgets are created. The source
-instrumentation allows the Flutter inspector to present the
-widget tree in a manner similar to how the UI was defined
-in your source code. Without it, the tree of nodes in the
-widget tree are much deeper, and it can be more difficult to
-understand how the runtime widget hierarchy corresponds to
-your application's UI.
+Parte da funcionalidade do Inspetor do Flutter é baseada na
+instrumentação do código do aplicativo, a fim de entender melhor
+os locais de origem onde os widgets são criados. A instrumentação
+de origem permite que o inspetor do Flutter apresente a
+árvore de widgets de maneira semelhante a como a UI foi definida
+em seu código-fonte. Sem ela, a árvore de nós na árvore de widgets
+é muito mais profunda, e pode ser mais difícil de
+entender como a hierarquia de widgets de tempo de execução corresponde
+à UI do seu aplicativo.
 
-You can disable this feature by passing `--no-track-widget-creation` to
-the `flutter run` command.
+Você pode desabilitar este recurso passando `--no-track-widget-creation`
+para o comando `flutter run`.
 
-Here are examples of what your widget tree might look like
-with and without track widget creation enabled.
+Aqui estão exemplos de como sua árvore de widgets pode ser
+com e sem o rastreamento de criação de widget habilitado.
 
-Track widget creation enabled (default):
+Rastreamento de criação de widget habilitado (padrão):
 
-![The widget tree with track widget creation enabled](/assets/images/docs/tools/devtools/track_widget_creation_enabled.png){:width="100%"}
+![A árvore de widgets com o rastreamento de criação de widget habilitado](/assets/images/docs/tools/devtools/track_widget_creation_enabled.png){:width="100%"}
 
-Track widget creation disabled (not recommended):
+Rastreamento de criação de widget desabilitado (não recomendado):
 
-![The widget tree with track widget creation disabled](/assets/images/docs/tools/devtools/track_widget_creation_disabled.png){:width="100%"}
+![A árvore de widgets com o rastreamento de criação de widget desabilitado](/assets/images/docs/tools/devtools/track_widget_creation_disabled.png){:width="100%"}
 
-This feature prevents otherwise-identical `const` Widgets from
-being considered equal in debug builds. For more details, see
-the discussion on [common problems when debugging][].
+Este recurso impede que widgets `const` que, de outra forma,
+seriam idênticos, sejam considerados iguais em builds de depuração.
+Para mais detalhes, veja a discussão sobre
+[problemas comuns ao depurar][].
 
-## Inspector settings
+## Configurações do inspetor
 
-![The Flutter Inspector Settings dialog](/assets/images/docs/tools/devtools/flutter_inspector_settings.png){:width="100%"}
+![A caixa de diálogo Configurações do Inspetor do Flutter](/assets/images/docs/tools/devtools/flutter_inspector_settings.png){:width="100%"}
 
-### Enable hover inspection
+### Habilitar inspeção ao passar o mouse
 
-Hovering over any widget displays its properties and values.
+Passar o mouse sobre qualquer widget exibe suas propriedades e valores.
 
-Toggling this value enables or disables the hover inspection functionality.
+Alternar esse valor habilita ou desabilita a funcionalidade de inspeção
+ao passar o mouse.
 
-### Package directories
+### Diretórios de pacote
 
-By default, DevTools limits the widgets displayed in the widget tree
-to those from the project's root directory, and those from Flutter. This
-filtering only applies to the widgets in the Inspector Widget Tree (left side
-of the Inspector)—not the Widget Details Tree (right side of the Inspector
-in the same tab view as the Layout Explorer).
-In the Widget Details Tree,
-you can see all widgets in the tree from all packages.
+Por padrão, o DevTools limita os widgets exibidos na árvore de widgets
+àqueles do diretório raiz do projeto e àqueles do Flutter. Este
+filtragem se aplica apenas aos widgets na Árvore de Widgets do Inspetor
+(lado esquerdo do Inspetor) – não na Árvore de Detalhes do Widget (lado
+direito do Inspetor na mesma visualização de aba que o Explorador de Layout).
+Na Árvore de Detalhes do Widget, você pode ver todos os widgets
+na árvore de todos os pacotes.
 
-In order to show other widgets,
-a parent directory of theirs must
-be added to the Package Directories.
+Para mostrar outros widgets,
+um diretório pai deles deve ser adicionado aos Diretórios de Pacote.
 
-For example, consider the following directory structure:
+Por exemplo, considere a seguinte estrutura de diretório:
 
 ```plaintext
 project_foo
@@ -554,35 +554,35 @@ project_foo
     widgets_B
 ```
 
-Running your app from `project_foo_app` displays only widgets from
-`project_foo/pkgs/project_foo_app` in the widget inspector tree.
+Executar seu aplicativo de `project_foo_app` exibe apenas widgets de
+`project_foo/pkgs/project_foo_app` na árvore do inspetor de widgets.
 
-To show widgets from `widgets_A` in the widget tree,
-add `project_foo/pkgs/widgets_A` to the package directories.
+Para mostrar widgets de `widgets_A` na árvore de widgets, adicione
+`project_foo/pkgs/widgets_A` aos diretórios de pacote.
 
-To display _all_ widgets from your project root in the widget tree,
-add `project_foo` to the package directories.
+Para exibir _todos_ os widgets da raiz do seu projeto na árvore de widgets,
+adicione `project_foo` aos diretórios de pacote.
 
-Changes to your package directories persist the next time the
-widget inspector is opened for the app.
+Alterações nos diretórios de pacote são mantidas na próxima vez que
+o inspetor de widgets for aberto para o aplicativo.
 
-## Other resources
+## Outros recursos
 
-For a demonstration of what's generally possible with the inspector,
-see the [DartConf 2018 talk][] demonstrating the IntelliJ version
-of the Flutter inspector.
+Para uma demonstração do que geralmente é possível com o inspetor,
+veja a [palestra do DartConf 2018][] demonstrando a versão do IntelliJ
+do inspetor do Flutter.
 
-To learn how to visually debug layout issues
-using DevTools, check out a guided
-[Flutter Inspector tutorial][inspector-tutorial].
+Para aprender como depurar visualmente problemas de layout
+usando o DevTools, confira um
+[tutorial guiado do Inspetor do Flutter][inspector-tutorial].
 
 [`Column`]: {{site.api}}/flutter/widgets/Column-class.html
-[common problems when debugging]: /testing/debugging
+[problemas comuns ao depurar]: /testing/debugging
 [`crossAxisAlignment`]: {{site.api}}/flutter/widgets/Flex/crossAxisAlignment.html
-[DartConf 2018 talk]: {{site.yt.watch}}?v=JIcmJNT9DNI
-[debug mode]: /testing/build-modes#debug
+[palestra do DartConf 2018]: {{site.yt.watch}}?v=JIcmJNT9DNI
+[modo de depuração]: /testing/build-modes#debug
 [`Flex`]: {{site.api}}/flutter/widgets/Flex-class.html
-[flex layouts]: {{site.api}}/flutter/widgets/Flex-class.html
+[layouts flex]: {{site.api}}/flutter/widgets/Flex-class.html
 [`FlexFit`]: {{site.api}}/flutter/rendering/FlexFit.html
 [`FlexParentData.fit`]: {{site.api}}/flutter/rendering/FlexParentData/fit.html
 [`FlexParentData.flex`]: {{site.api}}/flutter/rendering/FlexParentData/flex.html
@@ -590,5 +590,5 @@ using DevTools, check out a guided
 [`mainAxisSize`]: {{site.api}}/flutter/widgets/Flex/mainAxisSize.html
 [`Row`]: {{site.api}}/flutter/widgets/Row-class.html
 [`textDirection`]: {{site.api}}/flutter/widgets/Flex/textDirection.html
-[Understanding constraints]: /ui/layout/constraints
+[Entendendo restrições]: /ui/layout/constraints
 [inspector-tutorial]: {{site.medium}}/@fluttergems/mastering-dart-flutter-devtools-flutter-inspector-part-2-of-8-bbff40692fc7

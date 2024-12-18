@@ -1,55 +1,55 @@
 ---
-title: Trackpad gestures can trigger GestureRecognizer
+ia-translate: true
+title: Gestos do Trackpad podem Acionar o GestureRecognizer
 description: >
-  Trackpad gestures on most platforms now send `PointerPanZoom` sequences and
-  can trigger pan, drag, and scale `GestureRecognizer` callbacks. 
+  Gestos do trackpad na maioria das plataformas agora enviam sequências `PointerPanZoom` e
+  podem acionar callbacks `GestureRecognizer` de pan, arrastar e escalar.
 ---
 
-## Summary
+## Resumo
 
-Trackpad gestures on most platforms now send `PointerPanZoom` sequences and
-can trigger pan, drag, and scale `GestureRecognizer` callbacks.
+Gestos do trackpad na maioria das plataformas agora enviam sequências `PointerPanZoom` e
+podem acionar callbacks `GestureRecognizer` de pan, arrastar e escalar.
 
-## Context
+## Contexto
 
-Scrolling on Flutter Desktop prior to version 3.3.0 used `PointerScrollEvent`
-messages to represent discrete scroll deltas. This system worked well for mouse
-scroll wheels, but wasn't a good fit for trackpad scrolling. Trackpad scrolling
-is expected to cause momentum, which depends not only on the scroll deltas, but
-also the timing of when fingers are released from the trackpad.
-In addition, trackpad pinching-to-zoom could not be represented.
+A rolagem no Flutter Desktop anterior à versão 3.3.0 usava mensagens `PointerScrollEvent`
+para representar deltas de rolagem discretos. Este sistema funcionava bem para rodas de
+rolagem do mouse, mas não era uma boa opção para rolagem do trackpad. Espera-se que a
+rolagem do trackpad cause momentum, que depende não apenas dos deltas de rolagem, mas também
+do tempo em que os dedos são liberados do trackpad. Além disso, o movimento de pinça
+para zoom do trackpad não podia ser representado.
 
-Three new `PointerEvent`s have been introduced: `PointerPanZoomStartEvent`,
-`PointerPanZoomUpdateEvent`, and `PointerPanZoomEndEvent`.
-Relevant `GestureRecognizer`s have been updated to register interest in
-trackpad gesture sequences, and will emit `onDrag`, `onPan`, and/or
-`onScale` callbacks in response to movements
-of two or more fingers on the trackpad.
+Três novos `PointerEvent`s foram introduzidos: `PointerPanZoomStartEvent`,
+`PointerPanZoomUpdateEvent` e `PointerPanZoomEndEvent`. Os `GestureRecognizer`s
+relevantes foram atualizados para registrar o interesse em sequências de gestos do
+trackpad e emitirão callbacks `onDrag`, `onPan` e/ou `onScale` em resposta a
+movimentos de dois ou mais dedos no trackpad.
 
-This means both that code designed only for touch interactions might trigger upon
-trackpad interaction, and that code designed to handle all desktop scrolling
-might now only trigger upon mouse scrolling, and not trackpad scrolling.
+Isso significa que tanto o código projetado apenas para interações por toque pode ser
+acionado na interação com o trackpad, quanto o código projetado para lidar com toda a rolagem
+na área de trabalho pode agora ser acionado apenas na rolagem do mouse, e não na rolagem
+do trackpad.
 
-## Description of change
+## Descrição da alteração
 
-The Flutter engine has been updated on all possible platforms to recognize
-trackpad gestures and send them to the framework as `PointerPanZoom` events
-instead of as `PointerScrollSignal` events. `PointerScrollSignal` events will
-still be used to represent scrolling on a mouse wheel.
+O motor do Flutter foi atualizado em todas as plataformas possíveis para reconhecer gestos
+do trackpad e enviá-los para o framework como eventos `PointerPanZoom`, em vez de como
+eventos `PointerScrollSignal`. Os eventos `PointerScrollSignal` ainda serão usados
+para representar a rolagem em uma roda de mouse.
 
-Depending on the platform and specific trackpad model, the new system might not
-be used, if not enough data is provided to the Flutter engine by platform APIs.
-This includes on Windows, where trackpad gesture support is dependent on the
-trackpad's driver, and the Web platform, where not enough data is provided by
-browser APIs, and trackpad scrolling must still
-use the old `PointerScrollSignal` system.
+Dependendo da plataforma e do modelo específico do trackpad, o novo sistema pode não ser
+usado, se não forem fornecidos dados suficientes para o motor do Flutter pelas APIs da
+plataforma. Isso inclui no Windows, onde o suporte a gestos do trackpad depende do driver
+do trackpad, e na plataforma Web, onde não são fornecidos dados suficientes pelas APIs do
+navegador, e a rolagem do trackpad ainda deve usar o antigo sistema `PointerScrollSignal`.
 
-Developers should be prepared to receive both types of events and
-ensure their apps or packages handle them in the appropriate manner.
+Os desenvolvedores devem estar preparados para receber ambos os tipos de eventos e garantir
+que seus aplicativos ou pacotes os tratem da maneira apropriada.
 
-`Listener` now has three new callbacks: `onPointerPanZoomStart`,
-`onPointerPanZoomUpdate`, and `onPointerPanZoomEnd` which can
-be used to observe trackpad scrolling and zooming events.
+O `Listener` agora tem três novos callbacks: `onPointerPanZoomStart`,
+`onPointerPanZoomUpdate` e `onPointerPanZoomEnd` que podem ser usados para
+observar eventos de rolagem e zoom do trackpad.
 
 ```dart
 void main() => runApp(Foo());
@@ -78,21 +78,19 @@ class Foo extends StatelessWidget {
 }
 ```
 
-`PointerPanZoomUpdateEvent` contains a `pan` field to represent the cumulative
-pan of the current gesture, a `panDelta` field to represent the difference in
-pan since the last event, a `scale` event to represent the cumulative zoom
-of the current gesture, and a `rotation` event to
-represent the cumulative rotation (in radians) of the current gesture.
+`PointerPanZoomUpdateEvent` contém um campo `pan` para representar o pan cumulativo do
+gesto atual, um campo `panDelta` para representar a diferença no pan desde o último
+evento, um evento `scale` para representar o zoom cumulativo do gesto atual e um evento
+`rotation` para representar a rotação cumulativa (em radianos) do gesto atual.
 
-`GestureRecognizer`s now have methods to all the trackpad events from one
-continuous trackpad gesture. Calling the `addPointerPanZoom` method on a
-`GestureRecognizer` with a `PointerPanZoomStartEvent` will cause the recognizer
-to register its interest in that trackpad interaction, and resolve conflicts
-between multiple `GestureRecognizer`s that could potentially respond to the
-gesture.
+`GestureRecognizer`s agora têm métodos para todos os eventos do trackpad de um gesto
+contínuo do trackpad. Chamar o método `addPointerPanZoom` em um `GestureRecognizer`
+com um `PointerPanZoomStartEvent` fará com que o reconhecedor registre seu interesse
+nessa interação com o trackpad e resolva conflitos entre vários `GestureRecognizer`s
+que poderiam potencialmente responder ao gesto.
 
-The following example shows the proper use of `Listener` and `GestureRecognizer`
-to respond to trackpad interactions.
+O exemplo a seguir mostra o uso adequado de `Listener` e `GestureRecognizer` para
+responder a interações do trackpad.
 
 ```dart
 void main() => runApp(Foo());
@@ -132,9 +130,9 @@ class Foo extends StatefulWidget {
 }
 ```
 
-When using `GestureDetector`, this is done automatically, so code such as the
-following example will issue its gesture update callbacks in response to both
-touch and trackpad panning.
+Ao usar `GestureDetector`, isso é feito automaticamente, de modo que um código como o
+exemplo a seguir emitirá seus callbacks de atualização de gesto em resposta a movimentos
+de toque e pan do trackpad.
 
 ```dart
 void main() => runApp(Foo());
@@ -158,27 +156,26 @@ class Foo extends StatelessWidget {
 }
 ```
 
-## Migration guide
+## Guia de migração
 
-Migration steps depend on whether you want each gesture interaction in your
-app to be usable via a trackpad, or whether it should be restricted to only
-touch and mouse usage.
+As etapas de migração dependem se você deseja que cada interação de gesto em seu aplicativo
+seja utilizável por meio de um trackpad ou se ela deve ser restrita apenas ao uso de toque
+e mouse.
 
-### For gesture interactions suitable for trackpad usage
+### Para interações de gestos adequadas para uso no trackpad
 
-#### Using `GestureDetector`
+#### Usando `GestureDetector`
 
-No change is needed, `GestureDetector` automatically processes trackpad
-gesture events and triggers callbacks if recognized.
+Nenhuma alteração é necessária, `GestureDetector` processa automaticamente eventos de
+gesto do trackpad e aciona callbacks se reconhecido.
 
-#### Using `GestureRecognizer` and `Listener`
+#### Usando `GestureRecognizer` e `Listener`
 
-Ensure that `onPointerPanZoomStart` is passed through to
-each recognizer from the `Listener`.
-The `addPointerPanZoom` method of `GestureRecognizer must be called
-for it to show interest and start tracking each trackpad gesture.
+Certifique-se de que `onPointerPanZoomStart` seja passado para cada reconhecedor do
+`Listener`. O método `addPointerPanZoom` de `GestureRecognizer` deve ser chamado
+para que ele mostre interesse e comece a rastrear cada gesto do trackpad.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 void main() => runApp(Foo());
@@ -217,7 +214,7 @@ class Foo extends StatefulWidget {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 void main() => runApp(Foo());
@@ -257,13 +254,13 @@ class Foo extends StatefulWidget {
 }
 ```
 
-#### Using raw `Listener`
+#### Usando `Listener` bruto
 
-The following code using PointerScrollSignal will no longer be called upon all
-desktop scrolling. `PointerPanZoomUpdate` events should be captured to receive
-trackpad gesture data.
+O código a seguir usando PointerScrollSignal não será mais chamado em toda a rolagem da
+área de trabalho. Os eventos `PointerPanZoomUpdate` devem ser capturados para receber
+dados de gestos do trackpad.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 void main() => runApp(Foo());
@@ -283,7 +280,7 @@ class Foo extends StatelessWidget {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 void main() => runApp(Foo());
@@ -306,22 +303,20 @@ class Foo extends StatelessWidget {
 }
 ```
 
-Please note: Use of raw `Listener` in this way could
-cause conflicts with other gesture interactions as it
-doesn't participate in the gesture disambiguation arena.
+Observação: o uso de `Listener` bruto desta forma pode causar conflitos com outras
+interações de gestos, pois não participa da arena de desambiguação de gestos.
 
-### For gesture interactions not suitable for trackpad usage
+### Para interações de gestos não adequadas para uso no trackpad
 
-#### Using `GestureDetector`
+#### Usando `GestureDetector`
 
-If using Flutter 3.3.0, `RawGestureDetector` could be used
-instead of `GestureDetector` to ensure each `GestureRecognizer` created
-by the `GestureDetector` has `supportedDevices` set to
-exclude `PointerDeviceKind.trackpad`.
-Starting in version 3.4.0, there is a `supportedDevices` parameter
-directly on `GestureDetector`.
+Se estiver usando o Flutter 3.3.0, `RawGestureDetector` pode ser usado em vez de
+`GestureDetector` para garantir que cada `GestureRecognizer` criado pelo
+`GestureDetector` tenha `supportedDevices` definido para excluir
+`PointerDeviceKind.trackpad`. A partir da versão 3.4.0, existe um parâmetro
+`supportedDevices` diretamente em `GestureDetector`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 void main() => runApp(Foo());
@@ -345,10 +340,10 @@ class Foo extends StatelessWidget {
 }
 ```
 
-Code after migration (Flutter 3.3.0):
+Código após a migração (Flutter 3.3.0):
 
 ```dart
-// Example of code after the change.
+// Exemplo de código após a alteração.
 void main() => runApp(Foo());
 
 class Foo extends StatelessWidget {
@@ -364,7 +359,7 @@ class Foo extends StatelessWidget {
               PointerDeviceKind.mouse,
               PointerDeviceKind.stylus,
               PointerDeviceKind.invertedStylus,
-              // Do not include PointerDeviceKind.trackpad
+              // Não inclua PointerDeviceKind.trackpad
             }
           ),
           (recognizer) {
@@ -387,7 +382,7 @@ class Foo extends StatelessWidget {
 }
 ```
 
-Code after migration: (Flutter 3.4.0):
+Código após a migração (Flutter 3.4.0):
 
 ```dart
 void main() => runApp(Foo());
@@ -401,7 +396,7 @@ class Foo extends StatelessWidget {
         PointerDeviceKind.mouse,
         PointerDeviceKind.stylus,
         PointerDeviceKind.invertedStylus,
-        // Do not include PointerDeviceKind.trackpad
+        // Não inclua PointerDeviceKind.trackpad
       },
       onPanStart: (details) {
         debugPrint('onStart');
@@ -418,12 +413,12 @@ class Foo extends StatelessWidget {
 }
 ```
 
-#### Using `RawGestureRecognizer`
+#### Usando `RawGestureRecognizer`
 
-Explicitly ensure that `supportedDevices`
-doesn't include `PointerDeviceKind.trackpad`.
+Certifique-se explicitamente de que `supportedDevices` não inclua
+`PointerDeviceKind.trackpad`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 void main() => runApp(Foo());
@@ -456,10 +451,10 @@ class Foo extends StatelessWidget {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
-// Example of code after the change.
+// Exemplo de código após a alteração.
 void main() => runApp(Foo());
 
 class Foo extends StatelessWidget {
@@ -475,7 +470,7 @@ class Foo extends StatelessWidget {
               PointerDeviceKind.mouse,
               PointerDeviceKind.stylus,
               PointerDeviceKind.invertedStylus,
-              // Do not include PointerDeviceKind.trackpad
+              // Não inclua PointerDeviceKind.trackpad
             }
           ),
           (recognizer) {
@@ -498,12 +493,12 @@ class Foo extends StatelessWidget {
 }
 ```
 
-#### Using `GestureRecognizer` and `Listener`
+#### Usando `GestureRecognizer` e `Listener`
 
-After upgrading to Flutter 3.3.0, there won't be a change in behavior, as
-`addPointerPanZoom` must be called on each `GestureRecognizer` to allow
-it to track gestures. The following code won't receive pan gesture callbacks
-when the trackpad is scrolled:
+Após a atualização para o Flutter 3.3.0, não haverá alteração no comportamento, pois
+`addPointerPanZoom` deve ser chamado em cada `GestureRecognizer` para permitir que ele
+rastreie os gestos. O código a seguir não receberá callbacks de gestos de pan quando o
+trackpad for rolado:
 
 ```dart
 void main() => runApp(Foo());
@@ -536,51 +531,51 @@ class Foo extends StatefulWidget {
   Widget build(BuildContext context) {
     return Listener(
       onPointerDown: recognizer.addPointer,
-      // recognizer.addPointerPanZoom is not called
+      // recognizer.addPointerPanZoom não é chamado
       child: Container()
     );
   }
 }
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.3.0-0.0.pre<br>
-In stable release: 3.3.0
+Implementado na versão: 3.3.0-0.0.pre<br>
+Em lançamento estável: 3.3.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`GestureDetector`][]
 * [`RawGestureDetector`][]
 * [`GestureRecognizer`][]
 
-Design document:
+Documento de design:
 
-* [Flutter Trackpad Gestures][]
+* [Gestos do Trackpad Flutter][]
 
-Relevant issues:
+Problemas relevantes:
 
 * [Issue 23604][]
 
-Relevant PRs:
+PRs relevantes:
 
-* [Support trackpad gestures in framework][]
-* [iPad trackpad gestures][]
-* [Linux trackpad gestures][]
-* [Mac trackpad gestures][]
-* [Win32 trackpad gestures][]
-* [ChromeOS/Android trackpad gestures][]
+* [Suporte a gestos de trackpad no framework][]
+* [Gestos de trackpad do iPad][]
+* [Gestos de trackpad do Linux][]
+* [Gestos de trackpad do Mac][]
+* [Gestos de trackpad Win32][]
+* [Gestos de trackpad ChromeOS/Android][]
 
 [`GestureDetector`]: {{site.api}}/flutter/widgets/GestureDetector-class.html
 [`GestureRecognizer`]: {{site.api}}/flutter/gestures/GestureRecognizer-class.html
 [`RawGestureDetector`]: {{site.api}}/flutter/widgets/RawGestureDetector-class.html
-[Flutter Trackpad Gestures]: https://docs.google.com/document/d/1oRvebwjpsC3KlxN1gOYnEdxtNpQDYpPtUFAkmTUe-K8
+[Gestos do Trackpad Flutter]: https://docs.google.com/document/d/1oRvebwjpsC3KlxN1gOYnEdxtNpQDYpPtUFAkmTUe-K8
 [Issue 23604]: {{site.repo.flutter}}/issues/23604
-[Support trackpad gestures in framework]: {{site.repo.flutter}}/pull/89944
-[iPad trackpad gestures]: {{site.repo.engine}}/pull/31591
-[Linux trackpad gestures]: {{site.repo.engine}}/pull/31592
-[Mac trackpad gestures]: {{site.repo.engine}}/pull/31593
-[Win32 trackpad gestures]: {{site.repo.engine}}/pull/31594
-[ChromeOS/Android trackpad gestures]: {{site.repo.engine}}/pull/34060
+[Suporte a gestos de trackpad no framework]: {{site.repo.flutter}}/pull/89944
+[Gestos de trackpad do iPad]: {{site.repo.engine}}/pull/31591
+[Gestos de trackpad do Linux]: {{site.repo.engine}}/pull/31592
+[Gestos de trackpad do Mac]: {{site.repo.engine}}/pull/31593
+[Gestos de trackpad Win32]: {{site.repo.engine}}/pull/31594
+[Gestos de trackpad ChromeOS/Android]: {{site.repo.engine}}/pull/34060

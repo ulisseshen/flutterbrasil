@@ -1,48 +1,49 @@
 ---
-title: Container with color optimization
+ia-translate: true
+title: Container com otimização de cor
 description: >
-  A container with a color and no other background decoration
-  no longer builds the same child widgets.
+  Um container com uma cor e nenhuma outra decoração de fundo
+  não constrói mais os mesmos widgets filhos.
 ---
 
-## Summary
+## Sumário
 
-A new `ColoredBox` widget has been added to the framework,
-and the `Container` widget has been optimized to use it
-if a user specifies a `color` instead of a `decoration`.
+Um novo widget `ColoredBox` foi adicionado ao framework,
+e o widget `Container` foi otimizado para usá-lo
+se um usuário especificar uma `color` em vez de uma `decoration`.
 
-## Context
+## Contexto
 
-It is very common to use the `Container` widget as follows:
+É muito comum usar o widget `Container` da seguinte forma:
 
 ```dart
 return Container(color: Colors.red);
 ```
 
-Previously, this code resulted in a widget hierarchy that used a
-`BoxDecoration` to actually paint the background color.
-The `BoxDecoration` widget covers many cases other than
-just painting a background color,
-and is not as efficient as the new `ColoredBox` widget,
-which only paints a background color.
+Anteriormente, esse código resultava em uma hierarquia de widgets que usava uma
+`BoxDecoration` para realmente pintar a cor de fundo.
+O widget `BoxDecoration` abrange muitos casos além de
+apenas pintar uma cor de fundo,
+e não é tão eficiente quanto o novo widget `ColoredBox`,
+que apenas pinta uma cor de fundo.
 
-Widget tests that wanted to assert based on the color
-of a container in the widget tree would previously have
-to find the `BoxDecoration` to actually get
-the color of the container.
-Now, they are able to check the `color` property
-on the `Container` itself, unless a `BoxDecoration`
-was explicitly provided as the `decoration` property.
-It is still an error to supply both `color` and
-`decoration` to `Container`.
+Testes de widget que queriam fazer asserções com base na cor
+de um container na árvore de widgets anteriormente teriam
+que encontrar o `BoxDecoration` para realmente obter
+a cor do container.
+Agora, eles podem verificar a propriedade `color`
+no próprio `Container`, a menos que uma `BoxDecoration`
+tenha sido explicitamente fornecida como a propriedade `decoration`.
+Ainda é um erro fornecer `color` e
+`decoration` para `Container`.
 
-## Migration guide
+## Guia de migração
 
-Tests that assert on the color of a `Container`
-or that expected it to create a
-`BoxDecoration` need to be modified.
+Testes que fazem asserções sobre a cor de um `Container`
+ou que esperavam que ele criasse uma
+`BoxDecoration` precisam ser modificados.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 testWidgets('Container color', (WidgetTester tester) async {
@@ -50,12 +51,12 @@ testWidgets('Container color', (WidgetTester tester) async {
 
   final Container container = tester.widgetList<Container>().first;
   expect(container.decoration.color, Colors.red);
-  // Or, a test may have specifically looked for the BoxDecoration, e.g.:
+  // Ou, um teste pode ter procurado especificamente pelo BoxDecoration, por exemplo:
   expect(find.byType(BoxDecoration), findsOneWidget);
 });
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 testWidgets('Container color', (WidgetTester tester) async {
@@ -63,32 +64,32 @@ testWidgets('Container color', (WidgetTester tester) async {
 
   final Container container = tester.widgetList<Container>().first;
   expect(container.color, Colors.red);
-  // If your test needed to work directly with the BoxDecoration, it should
-  // instead look for the ColoredBox, e.g.:
+  // Se o seu teste precisava trabalhar diretamente com o BoxDecoration, ele deveria
+  // em vez disso, procurar pelo ColoredBox, por exemplo:
   expect(find.byType(BoxDecoration), findsNothing);
   expect(find.byType(ColoredBox), findsOneWidget);
 });
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.15.4<br>
-In stable release: 1.17
+Implementado na versão: 1.15.4<br>
+Na versão estável: 1.17
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`Container`][]
 * [`ColoredBox`][]
 * [`BoxDecoration`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue 9672][]
 * [Issue 28753][]
 
-Relevant PR:
+PR relevante:
 
 * [Colored box and container optimization #50979][]
 

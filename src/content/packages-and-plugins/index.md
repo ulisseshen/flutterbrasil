@@ -1,6 +1,7 @@
 ---
+ia-translate: true
 layout: toc
 title: Packages & plugins
 description: >
-  Content covering using and developing packages and plugins for Flutter apps.
+  Conteúdo cobrindo o uso e desenvolvimento de packages e plugins para apps Flutter.
 ---

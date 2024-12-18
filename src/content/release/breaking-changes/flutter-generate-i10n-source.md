@@ -1,38 +1,40 @@
 ---
-title: Localized messages are generated into source, not a synthetic package.
+ia-translate: true
+title: Mensagens localizadas são geradas no código-fonte, não em um pacote sintético.
 description: >-
-  When using `package:flutter_localizations`, the default generated location
-  (and eventually, only possible location) is within your source (`lib/`)
-  directory, and not the synthetic package `package:flutter_gen`.
+  Ao usar `package:flutter_localizations`, o local gerado padrão (e,
+  eventualmente, o único local possível) está dentro do seu diretório de
+  código-fonte (`lib/`) e não no pacote sintético `package:flutter_gen`.
 ---
 
-## Summary
+## Resumo
 
-The `flutter` tool will no longer generate a synthetic `package:flutter_gen`
-or modify the `package_config.json` of the application. Applications or tools
-that previously referenced `package:flutter_gen` will instead reference source
-files generated into the application directly.
+A ferramenta `flutter` não gerará mais um `package:flutter_gen` sintético
+nem modificará o `package_config.json` do aplicativo. Aplicativos ou
+ferramentas que antes faziam referência a `package:flutter_gen` agora farão
+referência a arquivos de código-fonte gerados diretamente no aplicativo.
 
-## Background
+## Contexto
 
-`flutter_gen` is a virtual (synthetic) package that is created by the `flutter`
-command-line tool to allow developers to import that package to access generated
-symbols and functionality, such as for
-[internationalization][Internationalizing Flutter apps]. As the package is not
-listed in an app's `pubspec.yaml`, and is created via re-writing the (generated)
-`package_config.json`, numerous problems have been created.
+`flutter_gen` é um pacote virtual (sintético) que é criado pela ferramenta de
+linha de comando `flutter` para permitir que desenvolvedores importem esse
+pacote para acessar símbolos e funcionalidades gerados, como para
+[internacionalização][Internationalizing Flutter apps]. Como o pacote não está
+listado no `pubspec.yaml` de um aplicativo e é criado por meio da reescrita
+do `package_config.json` (gerado), vários problemas foram criados.
 
-## Migration Guide
+## Guia de Migração
 
-This change only effects users that have the following in their `pubspec.yaml`:
+Essa alteração afeta apenas os usuários que têm o seguinte em seu
+`pubspec.yaml`:
 
 ```yaml
 flutter:
   generate: true
 ```
 
-A synthetic package (`package:flutter_gen`) is created and referenced by the
-application:
+Um pacote sintético (`package:flutter_gen`) é criado e referenciado pelo
+aplicativo:
 
 ```dart
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -44,44 +46,45 @@ const MaterialApp(
 );
 ```
 
-There are two ways to migrate away from importing `package:flutter_gen`:
+Existem duas maneiras de migrar da importação de `package:flutter_gen`:
 
-1. Specify `synthetic-package: false` in the accompanying [l10n.yaml][] file:
+1.  Especifique `synthetic-package: false` no arquivo [l10n.yaml][] que o
+    acompanha:
 
     ```yaml
     synthetic-package: false
 
-    # The files are generated into the path specified by `arb-dir`
+    # Os arquivos são gerados no caminho especificado por `arb-dir`
     arb-dir: lib/i18n
 
-    # Or, specifically provide an output path:
+    # Ou, forneça especificamente um caminho de saída:
     output-dir: lib/src/generated/i18n
     ```
 
-2. Enable the `explicit-package-dependencies` feature flag:
+2.  Ative o _feature flag_ `explicit-package-dependencies`:
 
     ```sh
     flutter config explicit-package-dependencies
     ```
 
-## Timeline
+## Cronograma
 
-Not released
+Não lançado
 
-Not released + 1, `package:flutter_gen` support will be removed.
+Não lançado + 1, o suporte a `package:flutter_gen` será removido.
 
-## References
+## Referências
 
-Relevant Issues:
+Problemas relevantes:
 
-- [Issue 73870][], where `package:flutter_gen` pub problems are first found.
-- [Issue 102983][], where `package:flutter_gen` problems are outlined.
-- [Issue 157819][], where `--implicit-pubspec-resolution` is discussed.
+- [Issue 73870][], onde os problemas do `package:flutter_gen` com o pub são
+  encontrados pela primeira vez.
+- [Issue 102983][], onde os problemas do `package:flutter_gen` são descritos.
+- [Issue 157819][], onde `--implicit-pubspec-resolution` é discutido.
 
-Relevant Articles:
+Artigos relevantes:
 
-- [Internationalizing Flutter apps][], the canonical documentation for the
-  feature.
+- [Internationalizing Flutter apps][], a documentação canônica para o recurso.
 
 [l10n.yaml]: https://docs.flutter.dev/ui/accessibility-and-internationalization/internationalization#configuring-the-l10n-yaml-file
 [Issue 73870]: https://github.com/flutter/flutter/issues/73870

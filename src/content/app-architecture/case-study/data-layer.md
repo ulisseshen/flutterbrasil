@@ -231,7 +231,7 @@ e retorna um `Result`. O `HomeViewModel` consome o `Result` e os dados que ele c
 por fim, chama `notifyListeners`,
 concluindo o ciclo.
 
-[repositórios]: /app-architecture/guide#repositorios
+[repositórios]: /app-architecture/guide#repositórios
 [serviços]: /app-architecture/guide#services
 [`APIClient`]: https://github.com/flutter/samples/blob/main/compass_app/app/lib/data/services/api/api_client.dart
 [`sealed`]: {{site.dart-site}}/language/class-modifiers#sealed

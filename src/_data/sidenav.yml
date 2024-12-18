@@ -79,12 +79,19 @@
   children:
     - title: AI
       children:
-      - title: Visão geral
-        permalink: /resources/ai-overview
-      - title: Começar com a API do Gemini
-        permalink: https://ai.google.dev/gemini-api/docs/get-started/dart
-      - title: Google AI Dart SDK (pub.dev)
-        permalink: https://pub.dev/packages/google_generative_ai
+      - title: Guia do AI Toolkit
+        permalink: /ai-toolkit
+        children:
+        - title: Visão geral
+          permalink: /ai-toolkit
+        - title: Experiência do usuário
+          permalink: /ai-toolkit/user-experience
+        - title: Integração de recursos
+          permalink: /ai-toolkit/feature-integration
+        - title: Provedores de LLM personalizados
+          permalink: /ai-toolkit/custom-llm-providers
+        - title: Exemplo de cliente de bate-papo
+          permalink: /ai-toolkit/chat-client-sample
       - title: Criar com Google AI Dart SDK (vídeo)
         permalink: https://www.youtube.com/watch?v=1AuzJEiHjO4
     - title: Firebase & Firestore

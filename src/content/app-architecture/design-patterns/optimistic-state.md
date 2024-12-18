@@ -12,7 +12,7 @@ js:
 ia-translate: true
 ---
 
-<?code-excerpt path-base="app-architecture/optimistic-state"?>
+<?code-excerpt path-base="app-architecture/optimistic_state"?>
 
 Ao construir experiências de usuário,
 a percepção de desempenho às vezes é tão importante quanto

@@ -907,8 +907,8 @@ Widget _buildGrid() => [!GridView!].extent(
 // The images are saved with names pic0.jpg, pic1.jpg...pic29.jpg.
 // The List.generate() constructor allows an easy way to create
 // a list when objects have a predictable naming pattern.
-List<Container> _buildGridTileList(int count) => List.generate(
-    count, (i) => Container(child: Image.asset('images/pic$i.jpg')));
+List<Widget> _buildGridTileList(int count) =>
+    List.generate(count, (i) => Image.asset('images/pic$i.jpg'));
 ```
 
 **Código Fonte:** [grid_and_list]({{examples}}/layout/grid_and_list)

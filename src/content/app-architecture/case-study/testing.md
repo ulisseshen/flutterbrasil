@@ -219,7 +219,7 @@ Para saber mais sobre como escrever mocks e fakes,
 confira exemplos no [diretório `testing` do aplicativo Compass][] ou
 leia a [documentação de testes do Flutter][].
 
-[use-cases]: /app-architecture/guide#optional-domain-layer
+[use-cases]: /app-architecture/guide#opcional-camada-de-domínio
 [`FakeBookingRepository`]: https://github.com/flutter/samples/blob/main/compass_app/app/testing/fakes/repositories/fake_booking_repository.dart
 [`BookingRepository`]: https://github.com/flutter/samples/tree/main/compass_app/app/lib/data/repositories/booking
 [seção da camada de dados]: /app-architecture/case-study/data-layer

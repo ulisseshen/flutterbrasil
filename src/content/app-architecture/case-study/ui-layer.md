@@ -628,10 +628,10 @@ Ao construir o aplicativo Compass, encontramos um bug que foi resolvido usando
 o padrão Command. [Leia sobre isso no GitHub][].
 :::
 
-[camada de UI]: /app-architecture/guide#ui-layer
+[camada de UI]: /app-architecture/guide#camada-de-ui
 [`View`]: /app-architecture/guide#views
 [`ViewModel`]: /app-architecture/guide#view-models
-[repositórios]: /app-architecture/guide#repositories
+[repositórios]: /app-architecture/guide#repositorios
 [comandos]: /app-architecture/guide#command-objects
 [`package:freezed`]: {{site.pub-pkg}}/freezed
 [`ChangeNotifier`]: {{site.api}}/flutter/foundation/ChangeNotifier-class.html

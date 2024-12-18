@@ -194,7 +194,7 @@ E se você observar bem, todas as arquiteturas não são MVVM de qualquer maneir
 [diretrizes de arquitetura de aplicativos]: /app-architecture/guide
 [camada de dados]: /app-architecture/case-study/data-layer
 [camada de UI]: /app-architecture/case-study/ui-layer
-[padrão Command]: /app-architecture/case-study/ui-layer#command-objects
+[padrão Command]: /app-architecture/case-study/ui-layer#objetos-de-comando
 [`ChangeNotifier`]: {{site.api}}/flutter/foundation/ChangeNotifier-class.html
 [`Listenable`]: {{site.api}}/flutter/foundation/Listenable-class.html
 [Injeção de Dependência]: /app-architecture/case-study/dependency-injection
@@ -204,7 +204,7 @@ E se você observar bem, todas as arquiteturas não são MVVM de qualquer maneir
 [`riverpod`]: {{site.pub-pkg}}/riverpod
 [`flutter_bloc`]: {{site.pub-pkg}}/flutter_bloc
 [`signals`]: {{site.pub-pkg}}/signals
-[Estrutura de pacotes eficaz]: /app-architecture/case-study#package-structure
+[Estrutura de pacotes eficaz]: /app-architecture/case-study#estrutura-do-pacote
 
 ## Feedback
 

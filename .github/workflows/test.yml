@@ -93,15 +93,15 @@ jobs:
         run: dart pub get
       - name: Build site
         run: dart run flutter_site build
+      - name: Check for broken Markdown link references
+        run: dart run flutter_site check-link-references
+      - name: Check for broken internal links
+        run: dart run flutter_site check-links
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
           name: build-artifacts
           path: _site
-      - name: Check for broken Markdown link references
-        run: dart run flutter_site check-link-references
-      - name: Check for broken internal links
-        run: dart run flutter_site check-links
      
 
   firebase-validate:

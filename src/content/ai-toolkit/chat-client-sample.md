@@ -1,45 +1,46 @@
 ---
-title: Chat client sample
+ia-translate: true
+title: Exemplo de cliente de chat
 description: >
-  Learn about the chat client sample included in the AI Toolkit.
+  Saiba mais sobre o exemplo de cliente de chat incluído no AI Toolkit.
 prev:
-  title: Custom LLM providers
+  title: Provedores de LLM personalizados
   path: /ai-toolkit/custom-llm-providers
 ---
 
-The AI Chat sample is meant to be a full-fledged chat app
-built using the Flutter AI Toolkit and Vertex AI for Firebase.
-In addition to all of the multi-shot, multi-media,
-streaming features that it gets from the AI Toolkit,
-the AI Chat sample shows how to store and manage
-multiple chats at once in your own apps.
-On desktop form-factors, the AI Chat sample looks like the following:
+O exemplo de AI Chat tem como objetivo ser um aplicativo de chat completo
+construído usando o Flutter AI Toolkit e o Vertex AI para Firebase.
+Além de todos os recursos de multi-disparo, multi-mídia e
+streaming que ele obtém do AI Toolkit,
+o exemplo de AI Chat mostra como armazenar e gerenciar
+vários chats de uma vez em seus próprios aplicativos.
+Em formatos de desktop, o exemplo de AI Chat se parece com o seguinte:
 
-![Desktop app UI](/assets/images/docs/ai-toolkit/desktop-pluto-convo.png)
+![UI do aplicativo de desktop](/assets/images/docs/ai-toolkit/desktop-pluto-convo.png)
 
 
-On mobile form-factors, it looks like this:
+Em formatos mobile, ele se parece com isto:
 
-![Mobile app UI](/assets/images/docs/ai-toolkit/mobile-pluto-convo.png)
+![UI do aplicativo mobile](/assets/images/docs/ai-toolkit/mobile-pluto-convo.png)
 
-The chats are stored in an authenticated
-Cloud Firestore database; any authenticated
-user can have as many chats as they like.
+Os chats são armazenados em um banco de dados autenticado do
+Cloud Firestore; qualquer usuário autenticado
+pode ter quantos chats quiser.
 
-In addition, for each new chat, while the user can
-manually title it whatever they like,
-the initial prompt and response is used to ask
-the LLM what an appropriate title should be.
-In fact, the titles of the chats in the
-screenshots in this page were set automatically.
+Além disso, para cada novo chat, embora o usuário possa
+manualmente dar o título que quiser,
+o prompt e a resposta iniciais são usados para perguntar
+ao LLM qual seria um título apropriado.
+Na verdade, os títulos dos chats nas
+capturas de tela desta página foram definidos automaticamente.
 
-To build and run the sample,
-follow the instructions in the [AI Chat README][].
+Para construir e executar o exemplo,
+siga as instruções no [README do AI Chat][].
 
 {% comment %}
-TODO: If Mit agrees, move this to an official Flutter repo
-  Chris didn't want to do it so close to release
+TODO: Se Mit concordar, mova isso para um repositório oficial do Flutter
+  Chris não queria fazer isso tão perto do lançamento
 {% endcomment %}
 
-[AI Chat README]: {{site.github}}/csells/flutter_ai_chat
+[README do AI Chat]: {{site.github}}/csells/flutter_ai_chat
 

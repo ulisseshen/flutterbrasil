@@ -221,7 +221,7 @@ aplicativo tenha as permissões necessárias:
 </li>
 </ol>
 
-## Examples
+## Exemplos
 
 Para executar os [aplicativos de exemplo][] no repositório,
 você precisará substituir os arquivos `example/lib/gemini_api_key.dart`

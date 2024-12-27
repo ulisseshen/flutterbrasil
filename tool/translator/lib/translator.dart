@@ -46,7 +46,7 @@ class Translator {
           Preserve a terminologia técnica no idioma original sempre que necessário para garantir clareza e precisão.  
           Nâo traduzir parao ingles os termos a seguir, pois são técnicos e recogniciveis: "design patterns".
           Certifique-se de que o texto traduzido seja fluido, claro e adequado para desenvolvedores brasileiros.
-          Caso o texto contenha links ou referências ancoradas, traduza os textos de exibição (anchors) para o português somente quando necessário para manter a coerência do conteúdo,
+          Sempre que texto contenha links ou referências ancoradas, traduza os textos de exibição (anchors) para o português,
           mas mantenha as URLs intactas no formato original. Não altere a estrutura ou os elementos específicos do Markdown, como cabeçalhos, listas e imagens.'''),
     );
   }

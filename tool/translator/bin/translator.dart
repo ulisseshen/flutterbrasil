@@ -23,10 +23,10 @@ void main(List<String> arguments) async {
         in directory.list(recursive: true, followLinks: false)) {
       if (entity is File && entity.path.endsWith('.md')) {
         final fileSizeKB = (await entity.length()) / 1024;
-        if (fileSizeKB > 40) {
+        // if (fileSizeKB > 40) {
           print(
               'File: ${entity.path}, Size: ${fileSizeKB.toStringAsFixed(2)} KB');
-        }
+        // }
       }
     }
     exit(0); // Finalizar após mostrar as informações

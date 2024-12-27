@@ -52,3 +52,6 @@ fonts.googleapis.com
 
 # robots
 http:///robots.txt
+
+/resources/design-docs
+/tools/devtools/release-notes/.*?

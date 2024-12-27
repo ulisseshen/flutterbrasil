@@ -124,6 +124,7 @@ jobs:
     name: Deploy to Firebase Hosting
     runs-on: ubuntu-latest
     needs: [linkcheck]
+    if: github.event_name != 'pull_request'
     steps:
       - name: Checkout code
         uses: actions/checkout@v2

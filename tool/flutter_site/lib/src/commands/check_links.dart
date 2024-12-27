@@ -72,10 +72,11 @@ Future<int> _checkLinks({bool checkExternal = false}) async {
       'QUIET',
     ],
     mode: ProcessStartMode.inheritStdio,
+    runInShell: true
   );
 
   // Give the emulator a few seconds to start up.
-  await Future<void>.delayed(const Duration(seconds: 5));
+  await Future<void>.delayed(const Duration(seconds: 15));
 
   try {
     // Check to see if the emulator is running.

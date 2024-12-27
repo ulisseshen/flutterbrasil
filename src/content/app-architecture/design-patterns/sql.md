@@ -59,7 +59,7 @@ e restaurada quando o usuário inicia o aplicativo.
 
 :::note
 O código-fonte completo e executável para este exemplo está
-disponível em [`/examples/cookbook/architecture/todo_data_service/`][].
+disponível em [`/examples/app-architecture/todo_data_service/`][].
 :::
 
 ## Armazenando dados complexos com SQL
@@ -484,7 +484,7 @@ TodoListScreen(
 [padrão MVVM]:/get-started/fundamentals/state-management#using-mvvm-for-your-applications-architecture
 [Persistir dados com SQLite]:/cookbook/persistence/sqlite
 [Arquitetura de armazenamento persistente: dados de chave-valor]:/app-architecture/design-patterns/key-value-data
-[`/examples/cookbook/architecture/todo_data_service/`]: {{site.repo.this}}/tree/main/examples/cookbook/architecture/todo_data_service/
+[`/examples/app-architecture/todo_data_service/`]: {{site.repo.this}}/tree/main/examples/cookbook/architecture/todo_data_service/
 [`sqflite_common_ffi_web`]:{{site.pub}}/packages/sqflite_common_ffi_web
 [`sqflite_common_ffi`]:{{site.pub}}/packages/sqflite_common_ffi
 [`sqflite`]:{{site.pub}}/packages/sqflite

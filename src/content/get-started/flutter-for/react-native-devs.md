@@ -1,51 +1,52 @@
 ---
-title: Flutter for React Native developers
-description: Learn how to apply React Native developer knowledge when building Flutter apps.
+ia-translate: true
+título: Flutter para Desenvolvedores React Native
+descrição: Aprenda como aplicar o conhecimento de desenvolvedor React Native ao construir aplicativos Flutter.
 ---
 
 <?code-excerpt path-base="get-started/flutter-for/react_native_devs"?>
 
-This document is for React Native (RN) developers looking to apply their
-existing RN knowledge to build mobile apps with Flutter. If you understand
-the fundamentals of the RN framework then you can use this document as a
-way to get started learning Flutter development.
+Este documento é para desenvolvedores React Native (RN) que procuram aplicar seus
+conhecimentos existentes em RN para construir aplicativos móveis com Flutter. Se você entende
+os fundamentos do framework RN, então você pode usar este documento como uma
+maneira de começar a aprender o desenvolvimento Flutter.
 
-This document can be used as a cookbook by jumping around and finding
-questions that are most relevant to your needs.
+Este documento pode ser usado como um livro de receitas, navegando e encontrando
+perguntas que são mais relevantes para suas necessidades.
 
-## Introduction to Dart for JavaScript Developers (ES6)
+## Introdução ao Dart para Desenvolvedores JavaScript (ES6)
 
-Like React Native, Flutter uses reactive-style views. However, while RN
-transpiles to native widgets, Flutter compiles all the way to native code.
-Flutter controls each pixel on the screen, which avoids performance problems
-caused by the need for a JavaScript bridge.
+Assim como o React Native, o Flutter usa visualizações em estilo reativo. No entanto, enquanto o RN
+transcompila para widgets nativos, o Flutter compila totalmente para código nativo.
+O Flutter controla cada pixel na tela, o que evita problemas de desempenho
+causados pela necessidade de uma ponte JavaScript.
 
-Dart is an easy language to learn and offers the following features:
+Dart é uma linguagem fácil de aprender e oferece os seguintes recursos:
 
-* Provides an open-source, scalable programming language for building web,
-  server, and mobile apps.
-* Provides an object-oriented, single inheritance language that uses a C-style
-  syntax that is AOT-compiled into native.
-* Transcompiles optionally into JavaScript.
-* Supports interfaces and abstract classes.
+* Fornece uma linguagem de programação de código aberto e escalável para construir web,
+  servidor e aplicativos móveis.
+* Fornece uma linguagem orientada a objetos, de herança única, que usa uma sintaxe de estilo C
+  que é compilada em AOT para nativo.
+* Transcompila opcionalmente para JavaScript.
+* Suporta interfaces e classes abstratas.
 
-A few examples of the differences between JavaScript and Dart are described
-below.
+Alguns exemplos das diferenças entre JavaScript e Dart são descritos
+abaixo.
 
-### Entry point
+### Ponto de entrada
 
-JavaScript doesn't have a pre-defined entry
-function&mdash;you define the entry point.
+JavaScript não possui uma função de entrada
+predefinida &mdash; você define o ponto de entrada.
 
 ```js
 // JavaScript
 function startHere() {
-  // Can be used as entry point
+  // Pode ser usado como ponto de entrada
 }
 ```
 
-In Dart, every app must have a top-level `main()` function that serves as the
-entry point to the app.
+Em Dart, todo aplicativo deve ter uma função `main()` de nível superior que serve como
+ponto de entrada para o aplicativo.
 
 <?code-excerpt "lib/main.dart (main)"?>
 ```dart
@@ -53,39 +54,39 @@ entry point to the app.
 void main() {}
 ```
 
-Try it out in [DartPad][DartPadA].
+Experimente no [DartPad][DartPadA].
 
-### Printing to the console
+### Imprimindo no console
 
-To print to the console in Dart, use `print()`.
+Para imprimir no console em Dart, use `print()`.
 
 ```js
 // JavaScript
-console.log('Hello world!');
+console.log('Olá mundo!');
 ```
 
 <?code-excerpt "lib/main.dart (print)"?>
 ```dart
 /// Dart
-print('Hello world!');
+print('Olá mundo!');
 ```
 
-Try it out in [DartPad][DartPadB].
+Experimente no [DartPad][DartPadB].
 
-### Variables
+### Variáveis
 
-Dart is type safe&mdash;it uses a combination of static type checking
-and runtime checks to ensure that a variable's value always matches
-the variable's static type. Although types are mandatory,
-some type annotations are optional because
-Dart performs type inference.
+Dart é type safe &mdash; ele usa uma combinação de verificação de tipo estática
+e verificações em tempo de execução para garantir que o valor de uma variável sempre corresponda
+ao tipo estático da variável. Embora os tipos sejam obrigatórios,
+algumas anotações de tipo são opcionais porque
+Dart realiza inferência de tipo.
 
-#### Creating and assigning variables
+#### Criando e atribuindo variáveis
 
-In JavaScript, variables cannot be typed.
+Em JavaScript, as variáveis não podem ser tipadas.
 
-In [Dart][], variables must either be explicitly
-typed or the type system must infer the proper type automatically.
+Em [Dart][], as variáveis devem ser explicitamente
+tipadas ou o sistema de tipos deve inferir o tipo adequado automaticamente.
 
 ```js
 // JavaScript
@@ -95,27 +96,27 @@ let name = 'JavaScript';
 <?code-excerpt "lib/main.dart (variables)"?>
 ```dart
 /// Dart
-/// Both variables are acceptable.
-String name = 'dart'; // Explicitly typed as a [String].
-var otherName = 'Dart'; // Inferred [String] type.
+/// Ambas as variáveis são aceitáveis.
+String name = 'dart'; // Explicitamente tipado como [String].
+var otherName = 'Dart'; // Tipo [String] inferido.
 ```
 
-Try it out in [DartPad][DartPadC].
+Experimente no [DartPad][DartPadC].
 
-For more information, see [Dart's Type System][].
+Para mais informações, consulte [Dart's Type System][].
 
-#### Default value
+#### Valor padrão
 
-In JavaScript, uninitialized variables are `undefined`.
+Em JavaScript, variáveis não inicializadas são `undefined`.
 
-In Dart, uninitialized variables have an initial value of `null`.
-Because numbers are objects in Dart, even uninitialized variables with
-numeric types have the value `null`.
+Em Dart, variáveis não inicializadas têm um valor inicial de `null`.
+Como os números são objetos em Dart, até mesmo variáveis não inicializadas com
+tipos numéricos têm o valor `null`.
 
 :::note
-As of 2.12, Dart supports [Sound Null Safety][],
-all underlying types are non-nullable by default,
-which must be initialized as a non-nullable value.
+A partir da versão 2.12, o Dart suporta [Sound Null Safety][],
+todos os tipos são não anuláveis por padrão,
+que devem ser inicializados como um valor não anulável.
 :::
 
 ```js
@@ -126,33 +127,33 @@ let name; // == undefined
 <?code-excerpt "lib/main.dart (null)"?>
 ```dart
 // Dart
-var name; // == null; raises a linter warning
+var name; // == null; gera um aviso do linter
 int? x; // == null
 ```
 
-Try it out in [DartPad][DartPadD].
+Experimente no [DartPad][DartPadD].
 
-For more information, see the documentation on
-[variables][].
+Para mais informações, consulte a documentação sobre
+[variáveis][].
 
-### Checking for null or zero
+### Verificando por nulo ou zero
 
-In JavaScript, values of 1 or any non-null objects
-are treated as `true` when using the `==` comparison operator.
+Em JavaScript, valores de 1 ou qualquer objeto não nulo
+são tratados como `true` ao usar o operador de comparação `==`.
 
 ```js
 // JavaScript
 let myNull = null;
 if (!myNull) {
-  console.log('null is treated as false');
+  console.log('nulo é tratado como falso');
 }
 let zero = 0;
 if (!zero) {
-  console.log('0 is treated as false');
+  console.log('0 é tratado como falso');
 }
 ```
 
-In Dart, only the boolean value `true` is treated as true.
+Em Dart, apenas o valor booleano `true` é tratado como verdadeiro.
 
 <?code-excerpt "lib/main.dart (true)"?>
 ```dart
@@ -160,16 +161,16 @@ In Dart, only the boolean value `true` is treated as true.
 var myNull;
 var zero = 0;
 if (zero == 0) {
-  print('use "== 0" to check zero');
+  print('use "== 0" para verificar zero');
 }
 ```
 
-Try it out in [DartPad][DartPadE].
+Experimente no [DartPad][DartPadE].
 
-### Functions
+### Funções
 
-Dart and JavaScript functions are generally similar.
-The primary difference is the declaration.
+As funções Dart e JavaScript são geralmente semelhantes.
+A principal diferença é a declaração.
 
 ```js
 // JavaScript
@@ -181,26 +182,26 @@ function fn() {
 <?code-excerpt "lib/main.dart (function)"?>
 ```dart
 /// Dart
-/// You can explicitly define the return type.
+/// Você pode definir explicitamente o tipo de retorno.
 bool fn() {
   return true;
 }
 ```
 
-Try it out in [DartPad][DartPadF].
+Experimente no [DartPad][DartPadF].
 
-For more information, see the documentation on
-[functions][].
+Para mais informações, consulte a documentação sobre
+[funções][].
 
-### Asynchronous programming
+### Programação assíncrona
 
 #### Futures
 
-Like JavaScript, Dart supports single-threaded execution. In JavaScript,
-the Promise object represents the eventual completion (or failure)
-of an asynchronous operation and its resulting value.
+Assim como o JavaScript, o Dart suporta execução em uma única thread. Em JavaScript,
+o objeto Promise representa a eventual conclusão (ou falha)
+de uma operação assíncrona e seu valor resultante.
 
-Dart uses [`Future`][] objects to handle this.
+Dart usa objetos [`Future`][] para lidar com isso.
 
 ```js
 // JavaScript
@@ -253,15 +254,15 @@ void main() {
 }
 ```
 
-For more information, see the documentation on
-[`Future`][] objects.
+Para mais informações, consulte a documentação sobre
+objetos [`Future`][].
 
-#### `async` and `await`
+#### `async` e `await`
 
-The `async` function declaration defines an asynchronous function.
+A declaração de função `async` define uma função assíncrona.
 
-In JavaScript, the `async` function returns a `Promise`.
-The `await` operator is used to wait for a `Promise`.
+Em JavaScript, a função `async` retorna uma `Promise`.
+O operador `await` é usado para aguardar uma `Promise`.
 
 ```js
 // JavaScript
@@ -288,9 +289,9 @@ async function main() {
 main();
 ```
 
-In Dart, an `async` function returns a `Future`,
-and the body of the function is scheduled for execution later.
-The `await` operator is used to wait for a `Future`.
+Em Dart, uma função `async` retorna um `Future`,
+e o corpo da função é agendado para execução posterior.
+O operador `await` é usado para aguardar um `Future`.
 
 <?code-excerpt "lib/async.dart"?>
 ```dart
@@ -308,10 +309,10 @@ class Example {
   }
 }
 
-/// An async function returns a `Future`.
-/// It can also return `void`, unless you use
-/// the `avoid_void_async` lint. In that case,
-/// return `Future<void>`.
+/// Uma função async retorna um `Future`.
+/// Ela também pode retornar `void`, a menos que você use
+/// o lint `avoid_void_async`. Nesse caso,
+/// retorne `Future<void>`.
 void main() async {
   final example = Example();
   try {
@@ -323,53 +324,53 @@ void main() async {
 }
 ```
 
-For more information, see the documentation for [async and await][].
+Para mais informações, consulte a documentação para [async e await][].
 
-## The basics
+## O básico
 
-### How do I create a Flutter app?
+### Como eu crio um aplicativo Flutter?
 
-To create an app using React Native,
-you would run `create-react-native-app` from the command line.
+Para criar um aplicativo usando React Native,
+você executaria `create-react-native-app` na linha de comando.
 
 ```console
 $ create-react-native-app <projectname>
 ```
 
-To create an app in Flutter, do one of the following:
+Para criar um aplicativo em Flutter, faça um dos seguintes:
 
-* Use an IDE with the Flutter and Dart plugins installed.
-* Use the `flutter create` command from the command line. Make sure that the
-  Flutter SDK is in your PATH.
+* Use uma IDE com os plugins Flutter e Dart instalados.
+* Use o comando `flutter create` na linha de comando. Certifique-se de que o
+  Flutter SDK está em seu PATH.
 
 ```console
 $ flutter create <projectname>
 ```
 
-For more information, see [Getting started][], which
-walks you through creating a button-click counter app.
-Creating a Flutter project builds all the files that you
-need to run a sample app on both Android and iOS devices.
+Para mais informações, consulte [Primeiros passos][], que
+orienta você na criação de um aplicativo de contador de cliques de botão.
+A criação de um projeto Flutter constrói todos os arquivos que você
+precisa para executar um aplicativo de exemplo em dispositivos Android e iOS.
 
-### How do I run my app?
+### Como eu executo meu aplicativo?
 
-In React Native, you would run `npm run` or `yarn run` from the project
-directory.
+Em React Native, você executaria `npm run` ou `yarn run` no
+diretório do projeto.
 
-You can run Flutter apps in a couple of ways:
+Você pode executar aplicativos Flutter de algumas maneiras:
 
-* Use the "run" option in an IDE with the Flutter and Dart plugins.
-* Use `flutter run` from the project's root directory.
+* Use a opção "run" em uma IDE com os plugins Flutter e Dart.
+* Use `flutter run` no diretório raiz do projeto.
 
-Your app runs on a connected device, the iOS simulator,
-or the Android emulator.
+Seu aplicativo é executado em um dispositivo conectado, no simulador iOS,
+ou no emulador Android.
 
-For more information, see the Flutter [Getting started][]
-documentation.
+Para mais informações, consulte a documentação
+[Primeiros passos][] do Flutter.
 
-### How do I import widgets?
+### Como eu importo widgets?
 
-In React Native, you need to import each required component.
+Em React Native, você precisa importar cada componente necessário.
 
 ```js
 // React Native
@@ -377,11 +378,11 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 ```
 
-In Flutter, to use widgets from the Material Design library,
-import the `material.dart` package. To use iOS style widgets,
-import the Cupertino library. To use a more basic widget set,
-import the Widgets library.
-Or, you can write your own widget library and import that.
+Em Flutter, para usar widgets da biblioteca Material Design,
+importe o pacote `material.dart`. Para usar widgets de estilo iOS,
+importe a biblioteca Cupertino. Para usar um conjunto de widgets mais básico,
+importe a biblioteca Widgets.
+Ou, você pode escrever sua própria biblioteca de widgets e importá-la.
 
 <?code-excerpt "lib/imports.dart (imports)"?>
 ```dart
@@ -391,15 +392,15 @@ import 'package:flutter/widgets.dart';
 import 'package:my_widgets/my_widgets.dart';
 ```
 
-Whichever widget package you import,
-Dart pulls in only the widgets that are used in your app.
+Qualquer que seja o pacote de widgets que você importe,
+Dart puxa apenas os widgets que são usados em seu aplicativo.
 
-For more information, see the [Flutter Widget Catalog][].
+Para mais informações, consulte o [Catálogo de Widgets do Flutter][].
 
-### What is the equivalent of the React Native "Hello world!" app in Flutter?
+### Qual é o equivalente do aplicativo "Hello world!" do React Native em Flutter?
 
-In React Native, the `HelloWorldApp` class extends `React.Component` and
-implements the render method by returning a view component.
+Em React Native, a classe `HelloWorldApp` estende `React.Component` e
+implementa o método de renderização retornando um componente de visualização.
 
 ```js
 // React Native
@@ -409,7 +410,7 @@ import { StyleSheet, Text, View } from 'react-native';
 const App = () => {
   return (
     <View style={styles.container}>
-      <Text>Hello world!</Text>
+      <Text>Olá mundo!</Text>
     </View>
   );
 };
@@ -426,10 +427,10 @@ const styles = StyleSheet.create({
 export default App;
 ```
 
-In Flutter, you can create an identical "Hello world!" app using the
-`Center` and `Text` widgets from the core widget library.
-The `Center` widget becomes the root of the widget tree and has one child,
-the `Text` widget.
+Em Flutter, você pode criar um aplicativo "Olá mundo!" idêntico usando os
+widgets `Center` e `Text` da biblioteca de widgets principal.
+O widget `Center` se torna a raiz da árvore de widgets e tem um filho,
+o widget `Text`.
 
 <?code-excerpt "lib/hello_world.dart"?>
 ```dart
@@ -440,7 +441,7 @@ void main() {
   runApp(
     const Center(
       child: Text(
-        'Hello, world!',
+        'Olá, mundo!',
         textDirection: TextDirection.ltr,
       ),
     ),
@@ -448,36 +449,36 @@ void main() {
 }
 ```
 
-The following images show the Android and iOS UI for the basic Flutter
-"Hello world!" app.
+As imagens a seguir mostram a interface do usuário Android e iOS para o
+aplicativo Flutter básico "Olá mundo!".
 
 {% include docs/android-ios-figure-pair.md image="react-native/hello-world-basic.png" alt="Hello world app" class="border" %}
 
-Now that you've seen the most basic Flutter app, the next section shows how to
-take advantage of Flutter's rich widget libraries to create a modern, polished
-app.
+Agora que você viu o aplicativo Flutter mais básico, a próxima seção mostra como
+aproveitar as ricas bibliotecas de widgets do Flutter para criar um aplicativo
+moderno e refinado.
 
-### How do I use widgets and nest them to form a widget tree?
+### Como eu uso widgets e os aninho para formar uma árvore de widgets?
 
-In Flutter, almost everything is a widget.
+Em Flutter, quase tudo é um widget.
 
-Widgets are the basic building blocks of an app's user interface.
-You compose widgets into a hierarchy, called a widget tree.
-Each widget nests inside a parent widget
-and inherits properties from its parent.
-Even the application object itself is a widget.
-There is no separate "application" object.
-Instead, the root widget serves this role.
+Widgets são os blocos de construção básicos da interface do usuário de um aplicativo.
+Você compõe widgets em uma hierarquia, chamada de árvore de widgets.
+Cada widget se aninha dentro de um widget pai
+e herda propriedades de seu pai.
+Até mesmo o próprio objeto do aplicativo é um widget.
+Não há um objeto "aplicação" separado.
+Em vez disso, o widget raiz serve para essa função.
 
-A widget can define:
+Um widget pode definir:
 
-* A structural element—like a button or menu
-* A stylistic element—like a font or color scheme
-* An aspect of layout—like padding or alignment
+* Um elemento estrutural &mdash; como um botão ou menu
+* Um elemento estilístico &mdash; como uma fonte ou esquema de cores
+* Um aspecto do layout &mdash; como preenchimento ou alinhamento
 
-The following example shows the "Hello world!" app using widgets from the
-Material library. In this example, the widget tree is nested inside the
-`MaterialApp` root widget.
+O exemplo a seguir mostra o aplicativo "Olá mundo!" usando widgets da
+biblioteca Material. Neste exemplo, a árvore de widgets está aninhada dentro do
+widget raiz `MaterialApp`.
 
 <?code-excerpt "lib/widget_tree.dart"?>
 ```dart
@@ -492,13 +493,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Welcome to Flutter',
+      title: 'Bem-vindo ao Flutter',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Welcome to Flutter'),
+          title: const Text('Bem-vindo ao Flutter'),
         ),
         body: const Center(
-          child: Text('Hello world'),
+          child: Text('Olá mundo'),
         ),
       ),
     );
@@ -506,38 +507,38 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-The following images show "Hello world!" built from Material Design widgets.
-You get more functionality for free than in the basic "Hello world!" app.
+As imagens a seguir mostram "Olá mundo!" construído com widgets do Material Design.
+Você obtém mais funcionalidade automaticamente  do que no aplicativo básico "Olá mundo!".
 
 {% include docs/android-ios-figure-pair.md image="react-native/hello-world.png" alt="Hello world app" %}
 
-When writing an app, you'll use two types of widgets:
-[`StatelessWidget`][] or [`StatefulWidget`][].
-A `StatelessWidget` is just what it sounds like&mdash;a
-widget with no state. A `StatelessWidget` is created once,
-and never changes its appearance.
-A `StatefulWidget` dynamically changes state based on data
-received, or user input.
+Ao escrever um aplicativo, você usará dois tipos de widgets:
+[`StatelessWidget`][] ou [`StatefulWidget`][].
+Um `StatelessWidget` é exatamente o que parece &mdash; um
+widget sem estado. Um `StatelessWidget` é criado uma vez,
+e nunca muda sua aparência.
+Um `StatefulWidget` muda dinamicamente o estado com base nos dados
+recebidos ou na entrada do usuário.
 
-The important difference between stateless and stateful
-widgets is that `StatefulWidget`s have a `State` object
-that stores state data and carries it over
-across tree rebuilds, so it's not lost.
+A diferença importante entre widgets stateless e stateful
+é que os `StatefulWidget`s têm um objeto `State`
+que armazena dados de estado e os transporta
+através de reconstruções da árvore, para que não sejam perdidos.
 
-In simple or basic apps it's easy to nest widgets,
-but as the code base gets larger and the app becomes complex,
-you should break deeply nested widgets into
-functions that return the widget or smaller classes.
-Creating separate functions
-and widgets allows you to reuse the components within the app.
+Em aplicativos simples ou básicos, é fácil aninhar widgets,
+mas à medida que a base de código fica maior e o aplicativo se torna complexo,
+você deve dividir widgets profundamente aninhados em
+funções que retornam o widget ou classes menores.
+Criar funções separadas
+e widgets permite que você reutilize os componentes dentro do aplicativo.
 
-### How do I create reusable components?
+### Como eu crio componentes reutilizáveis?
 
-In React Native, you would define a class to create a
-reusable component and then use `props` methods to set
-or return properties and values of the selected elements.
-In the example below, the `CustomCard` class is defined
-and then used inside a parent class.
+Em React Native, você definiria uma classe para criar um
+componente reutilizável e, em seguida, usaria métodos `props` para definir
+ou retornar propriedades e valores dos elementos selecionados.
+No exemplo abaixo, a classe `CustomCard` é definida
+e então usada dentro de uma classe pai.
 
 ```js
 // React Native
@@ -553,13 +554,13 @@ const CustomCard = ({ index, onPress }) => {
   );
 };
 
-// Usage
+// Uso
 <CustomCard onPress={this.onPress} index={item.key} />
 ```
 
-In Flutter, define a class to create a custom widget and then reuse the
-widget. You can also define and call a function that returns a
-reusable widget as shown in the `build` function in the following example.
+Em Flutter, defina uma classe para criar um widget personalizado e, em seguida, reutilize o
+widget. Você também pode definir e chamar uma função que retorna um
+widget reutilizável, como mostrado na função `build` no exemplo a seguir.
 
 <?code-excerpt "lib/components.dart (components)"?>
 ```dart
@@ -597,7 +598,7 @@ class UseCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /// Usage
+    /// Uso
     return CustomCard(
       index: index,
       onPress: () {
@@ -608,75 +609,74 @@ class UseCard extends StatelessWidget {
 }
 ```
 
-In the previous example, the constructor for the `CustomCard`
-class uses Dart's curly brace syntax `{ }` to indicate [named parameters][].
+No exemplo anterior, o construtor para a classe `CustomCard`
+usa a sintaxe de chaves `{ }` do Dart para indicar [parâmetros nomeados][].
 
-To require these fields, either remove the curly braces from
-the constructor, or add `required` to the constructor.
+Para exigir esses campos, remova as chaves do
+construtor ou adicione `required` ao construtor.
 
-The following screenshots show an example of the reusable
-`CustomCard` class.
+As capturas de tela a seguir mostram um exemplo da classe
+`CustomCard` reutilizável.
 
 {% include docs/android-ios-figure-pair.md image="react-native/custom-cards.png" alt="Custom cards" class="border" %}
 
-## Project structure and resources
+## Estrutura do projeto e recursos
 
-### Where do I start writing the code?
+### Onde eu começo a escrever o código?
 
-Start with the `lib/main.dart` file.
-It's autogenerated when you create a Flutter app.
+Comece com o arquivo `lib/main.dart`.
+Ele é gerado automaticamente quando você cria um aplicativo Flutter.
 
 <?code-excerpt "lib/examples.dart (main)"?>
 ```dart
 // Dart
 void main() {
-  print('Hello, this is the main function.');
+  print('Olá, esta é a função principal.');
 }
 ```
 
-In Flutter, the entry point file is
-`{project_name}/lib/main.dart` and execution
-starts from the `main` function.
+Em Flutter, o arquivo de ponto de entrada é
+`{project_name}/lib/main.dart` e a execução
+começa a partir da função `main`.
 
-### How are files structured in a Flutter app?
+### Como os arquivos são estruturados em um aplicativo Flutter?
 
-When you create a new Flutter project,
-it builds the following directory structure.
-You can customize it later, but this is where you start.
+Quando você cria um novo projeto Flutter,
+ele constrói a seguinte estrutura de diretório.
+Você pode personalizá-la posteriormente, mas é aqui que você começa.
 
 ```plaintext
 ┬
 └ project_name
   ┬
-  ├ android      - Contains Android-specific files.
-  ├ build        - Stores iOS and Android build files.
-  ├ ios          - Contains iOS-specific files.
-  ├ lib          - Contains externally accessible Dart source files.
+  ├ android      - Contém arquivos específicos do Android.
+  ├ build        - Armazena arquivos de build do iOS e Android.
+  ├ ios          - Contém arquivos específicos do iOS.
+  ├ lib          - Contém arquivos de origem Dart acessíveis externamente.
     ┬
-    └ src        - Contains additional source files.
-    └ main.dart  - The Flutter entry point and the start of a new app.
-                   This is generated automatically when you create a Flutter
-                    project.
-                   It's where you start writing your Dart code.
-  ├ test         - Contains automated test files.
-  └ pubspec.yaml - Contains the metadata for the Flutter app.
-                   This is equivalent to the package.json file in React Native.
+    └ src        - Contém arquivos de origem adicionais.
+    └ main.dart  - O ponto de entrada do Flutter e o início de um novo aplicativo.
+                   Isso é gerado automaticamente quando você cria um projeto Flutter.
+                   É onde você começa a escrever seu código Dart.
+  ├ test         - Contém arquivos de teste automatizados.
+  └ pubspec.yaml - Contém os metadados para o aplicativo Flutter.
+                   Isso é equivalente ao arquivo package.json no React Native.
 ```
 
-### Where do I put my resources and assets and how do I use them?
+### Onde eu coloco meus recursos e ativos (assets) e como eu os uso?
 
-A Flutter resource or asset is a file that is bundled and deployed
-with your app and is accessible at runtime.
-Flutter apps can include the following asset types:
+Um recurso ou ativo do Flutter é um arquivo que é empacotado e implantado
+com seu aplicativo e é acessível em tempo de execução.
+Os aplicativos Flutter podem incluir os seguintes tipos de assets:
 
-* Static data such as JSON files
-* Configuration files
-* Icons and images (JPEG, PNG, GIF, Animated GIF, WebP, Animated WebP, BMP,
-  and WBMP)
+* Dados estáticos, como arquivos JSON
+* Arquivos de configuração
+* Ícones e imagens (JPEG, PNG, GIF, GIF animado, WebP, WebP animado, BMP,
+  e WBMP)
 
-Flutter uses the `pubspec.yaml` file,
-located at the root of your project, to
-identify assets required by an app.
+Flutter usa o arquivo `pubspec.yaml`,
+localizado na raiz do seu projeto, para
+identificar assets exigidos por um aplicativo.
 
 ```yaml
 flutter:
@@ -685,29 +685,29 @@ flutter:
     - assets/background.png
 ```
 
-The `assets` subsection specifies files that should be included with the app.
-Each asset is identified by an explicit path
-relative to the `pubspec.yaml` file, where the asset file is located.
-The order in which the assets are declared does not matter.
-The actual directory used (`assets` in this case) does not matter.
-However, while assets can be placed in any app directory, it's a
-best practice to place them in the `assets` directory.
+A subseção `assets` especifica os arquivos que devem ser incluídos com o aplicativo.  
+Cada ativo é identificado por um caminho explícito relativo
+ao arquivo `pubspec.yaml`, onde o arquivo do ativo está localizado.  
+A ordem em que os ativos são declarados não importa.  
+O diretório utilizado (`assets`, neste caso) também não importa.  
+No entanto, embora os ativos possam ser colocados em qualquer diretório
+do aplicativo, é uma boa prática organizá-los no diretório `assets`.  
 
-During a build, Flutter places assets into a special archive
-called the *asset bundle*, which apps read from at runtime.
-When an asset's path is specified in the assets' section of `pubspec.yaml`,
-the build process looks for any files
-with the same name in adjacent subdirectories.
-These files are also included in the asset bundle
-along with the specified asset. Flutter uses asset variants
-when choosing resolution-appropriate images for your app.
+Durante a construção do aplicativo (build), o Flutter coloca os ativos em um
+arquivo especial chamado *asset bundle*, que os aplicativos acessam durante a execução.  
+Quando o caminho de um ativo é especificado na seção `assets` do `pubspec.yaml`,
+o processo de build procura por arquivos com o mesmo nome em subdiretórios relacionados.  
+Esses arquivos também são incluídos no *asset bundle* junto
+com o ativo especificado.  
+O Flutter utiliza variantes de ativos ao selecionar imagens
+com resoluções apropriadas para o aplicativo.  
 
-In React Native, you would add a static image by placing the image file
-in a source code directory and referencing it.
+No React Native, você adicionaria uma imagem estática colocando
+o arquivo de imagem em um diretório do código-fonte e referenciando-o.  
 
 ```js
 <Image source={require('./my-icon.png')} />
-// OR
+// OU
 <Image
   source={%raw%}{{
     url: 'https://reactnative.dev/img/tiny_logo.png'
@@ -715,112 +715,112 @@ in a source code directory and referencing it.
 />
 ```
 
-In Flutter, add a static image to your app
-using the `Image.asset` constructor in a widget's build method.
+Em Flutter, adicione uma imagem estática ao seu aplicativo
+usando o construtor `Image.asset` no método de construção de um widget.
 
 <?code-excerpt "lib/examples.dart (image-asset)" replace="/return //g"?>
 ```dart
 Image.asset('assets/background.png');
 ```
 
-For more information, see [Adding Assets and Images in Flutter][].
+Para mais informações, consulte [Adicionando Ativos e Imagens no Flutter][].
 
-### How do I load images over a network?
+### Como eu carrego imagens pela rede?
 
-In React Native, you would specify the `uri` in the
-`source` prop of the `Image` component and also provide the
-size if needed.
+Em React Native, você especificaria o `uri` na
+propriedade `source` do componente `Image` e também forneceria o
+tamanho, se necessário.
 
-In Flutter, use the `Image.network` constructor to include
-an image from a URL.
+Em Flutter, use o construtor `Image.network` para incluir
+uma imagem de um URL.
 
 <?code-excerpt "lib/examples.dart (image-network)" replace="/return //g"?>
 ```dart
 Image.network('https://docs.flutter.dev/assets/images/docs/owl.jpg');
 ```
 
-### How do I install packages and package plugins?
+### Como eu instalo pacotes e plugins de pacotes?
 
-Flutter supports using shared packages contributed by other developers to the
-Flutter and Dart ecosystems. This allows you to quickly build your app without
-having to develop everything from scratch. Packages that contain
-platform-specific code are known as package plugins.
+O Flutter suporta o uso de pacotes compartilhados contribuídos por outros
+desenvolvedores para os ecossistemas Flutter e Dart. Isso permite que você
+construa rapidamente seu aplicativo sem ter que desenvolver tudo do zero.
+Pacotes que contêm código específico da plataforma são conhecidos como plugins de pacotes.
 
-In React Native, you would use `yarn add {package-name}` or
-`npm install --save {package-name}` to install packages
-from the command line.
+Em React Native, você usaria `yarn add {package-name}` ou
+`npm install --save {package-name}` para instalar pacotes
+pela linha de comando.
 
-In Flutter, install a package using the following instructions:
+Em Flutter, instale um pacote usando as seguintes instruções:
 
-1. To add the `google_sign_in` package as a dependency, run `flutter pub add`:
+1. Para adicionar o pacote `google_sign_in` como uma dependência, execute `flutter pub add`:
 
 ```console
 $ flutter pub add google_sign_in
 ```
 
-2. Install the package from the command line by using `flutter pub get`.
-   If using an IDE, it often runs `flutter pub get` for you, or it might
-   prompt you to do so.
-3. Import the package into your app code as shown below:
+2. Instale o pacote a partir da linha de comando usando `flutter pub get`.
+   Se estiver usando uma IDE, ela geralmente executa `flutter pub get` para você, ou pode
+   solicitar que você o faça.
+3. Importe o pacote para o código do seu aplicativo, conforme mostrado abaixo:
 
 <?code-excerpt "lib/examples.dart (package-import)"?>
 ```dart
 import 'package:flutter/material.dart';
 ```
 
-For more information, see [Using Packages][] and
-[Developing Packages & Plugins][].
+Para mais informações, consulte [Usando Pacotes][] e
+[Desenvolvendo Pacotes e Plugins][].
 
-You can find many packages shared by Flutter developers in the
-[Flutter packages][] section of [pub.dev][].
+Você pode encontrar muitos pacotes compartilhados por desenvolvedores Flutter na
+seção [Pacotes Flutter][] do [pub.dev][].
 
-## Flutter widgets
+## Widgets Flutter
 
-In Flutter, you build your UI out of widgets that describe what their view
-should look like given their current configuration and state.
+Em Flutter, você constrói sua interface do usuário a partir de widgets que
+descrevem como sua visualização deve se parecer, dada sua configuração e estado atuais.
 
-Widgets are often composed of many small,
-single-purpose widgets that are nested to produce powerful effects.
-For example, the `Container` widget consists of
-several widgets responsible for layout, painting, positioning, and sizing.
-Specifically, the `Container` widget includes the `LimitedBox`,
-`ConstrainedBox`, `Align`, `Padding`, `DecoratedBox`, and `Transform` widgets.
-Rather than subclassing `Container` to produce a customized effect, you can
-compose these and other simple widgets in new and unique ways.
+Os widgets são frequentemente compostos por muitos widgets pequenos e
+de propósito único que são aninhados para produzir efeitos poderosos.
+Por exemplo, o widget `Container` consiste em
+vários widgets responsáveis pelo layout, pintura, posicionamento e dimensionamento.
+Especificamente, o widget `Container` inclui os widgets `LimitedBox`,
+`ConstrainedBox`, `Align`, `Padding`, `DecoratedBox` e `Transform`.
+Em vez de subclassificar `Container` para produzir um efeito personalizado, você pode
+compor esses e outros widgets simples de maneiras novas e exclusivas.
 
-The `Center` widget is another example of how you can control the layout.
-To center a widget, wrap it in a `Center` widget and then use layout
-widgets for alignment, row, columns, and grids.
-These layout widgets do not have a visual representation of their own.
-Instead, their sole purpose is to control some aspect of another
-widget's layout. To understand why a widget renders in a
-certain way, it's often helpful to inspect the neighboring widgets.
+O widget `Center` é outro exemplo de como você pode controlar o layout.
+Para centralizar um widget, envolva-o em um widget `Center` e, em seguida, use widgets de layout
+para alinhamento, linha, colunas e grades.
+Esses widgets de layout não têm uma representação visual própria.
+Em vez disso, seu único objetivo é controlar algum aspecto do layout de outro
+widget. Para entender por que um widget é renderizado de uma
+determinada maneira, geralmente é útil inspecionar os widgets vizinhos.
 
-For more information, see the [Flutter Technical Overview][].
+Para mais informações, consulte a [Visão Geral Técnica do Flutter][].
 
-For more information about the core widgets from the `Widgets` package,
-see [Flutter Basic Widgets][],
-the [Flutter Widget Catalog][],
-or the [Flutter Widget Index][].
+Para mais informações sobre os widgets principais do pacote `Widgets`,
+consulte [Widgets Básicos do Flutter][],
+o [Catálogo de Widgets do Flutter][]
+ou o [Índice de Widgets do Flutter][].
 
-## Views
+## Visualizações
 
-### What is the equivalent of the `View` container?
+### Qual é o equivalente do contêiner `View`?
 
-In React Native, `View` is a container that supports layout with `Flexbox`,
-style, touch handling, and accessibility controls.
+Em React Native, `View` é um contêiner que suporta layout com `Flexbox`,
+estilo, manipulação de toque e controles de acessibilidade.
 
-In Flutter, you can use the core layout widgets in the `Widgets`
-library, such as [`Container`][], [`Column`][],
-[`Row`][], and [`Center`][].
-For more information, see the [Layout Widgets][] catalog.
+Em Flutter, você pode usar os widgets de layout principais na biblioteca `Widgets`,
+como [`Container`][], [`Column`][],
+[`Row`][] e [`Center`][].
+Para mais informações, consulte o catálogo [Widgets de Layout][].
 
-### What is the equivalent of `FlatList` or `SectionList`?
+### Qual é o equivalente de `FlatList` ou `SectionList`?
 
-A `List` is a scrollable list of components arranged vertically.
+Uma `List` é uma lista rolável de componentes dispostos verticalmente.
 
-In React Native, `FlatList` or `SectionList` are used to render simple or
-sectioned lists.
+Em React Native, `FlatList` ou `SectionList` são usados para renderizar listas simples ou
+seccionadas.
 
 ```js
 // React Native
@@ -830,18 +830,18 @@ sectioned lists.
 />
 ```
 
-[`ListView`][] is Flutter's most commonly used scrolling widget.
-The default constructor takes an explicit list of children.
-[`ListView`][] is most appropriate for a small number of widgets.
-For a large or infinite list, use `ListView.builder`,
-which builds its children on demand and only builds
-those children that are visible.
+[`ListView`][] é o widget de rolagem mais comumente usado do Flutter.
+O construtor padrão leva uma lista explícita de filhos (children).
+[`ListView`][] é mais apropriado para um pequeno número de widgets.
+Para uma lista grande ou infinita, use `ListView.builder`,
+que constrói seus filhos sob demanda e constrói apenas
+aqueles filhos que são visíveis.
 
 <?code-excerpt "lib/examples.dart (list-view)"?>
 ```dart
 var data = [
-  'Hello',
-  'World',
+  'Olá',
+  'Mundo',
 ];
 return ListView.builder(
   itemCount: data.length,
@@ -853,13 +853,13 @@ return ListView.builder(
 
 {% include docs/android-ios-figure-pair.md image="react-native/flatlist.gif" alt="Flat list" class="border" %}
 
-To learn how to implement an infinite scrolling list, see the official
-[`infinite_list`][infinite_list] sample.
+Para aprender como implementar uma lista de rolagem infinita, consulte o exemplo oficial
+[`infinite_list`][infinite_list].
 
-### How do I use a Canvas to draw or paint?
+### Como eu uso um Canvas para desenhar ou pintar?
 
-In React Native, canvas components aren't present
-so third party libraries like `react-native-canvas` are used.
+Em React Native, os componentes de canvas não estão presentes,
+então bibliotecas de terceiros como `react-native-canvas` são usadas.
 
 ```js
 // React Native
@@ -881,14 +881,14 @@ const CanvasComp = () => {
 }
 ```
 
-In Flutter, you can use the [`CustomPaint`][]
-and [`CustomPainter`][] classes to draw to the canvas.
+Em Flutter, você pode usar as classes [`CustomPaint`][]
+e [`CustomPainter`][] para desenhar no canvas.
 
-The following example shows how to draw during the paint phase using the
-`CustomPaint` widget. It implements the abstract class, `CustomPainter`,
-and passes it to `CustomPaint`'s painter property.
-`CustomPaint` subclasses must implement the `paint()`
-and `shouldRepaint()` methods.
+O exemplo a seguir mostra como desenhar durante a fase de pintura usando o
+widget `CustomPaint`. Ele implementa a classe abstrata, `CustomPainter`,
+e a passa para a propriedade painter de `CustomPaint`.
+As subclasses `CustomPaint` devem implementar os métodos `paint()`
+e `shouldRepaint()`.
 
 <?code-excerpt "lib/examples.dart (custom-paint)"?>
 ```dart
@@ -927,13 +927,13 @@ class MyCanvasWidget extends StatelessWidget {
 
 ## Layouts
 
-### How do I use widgets to define layout properties?
+### Como eu uso widgets para definir propriedades de layout?
 
-In React Native, most of the layout can be done with the props
-that are passed to a specific component.
-For example, you could use the `style` prop on the `View` component
-in order to specify the flexbox properties.
-To arrange your components in a column, you would specify a prop such as:
+Em React Native, a maior parte do layout pode ser feita com as propriedades
+que são passadas para um componente específico.
+Por exemplo, você pode usar a propriedade `style` no componente `View`
+para especificar as propriedades do flexbox.
+Para organizar seus componentes em uma coluna, você especificaria uma propriedade como:
 `flexDirection: 'column'`.
 
 ```js
@@ -948,16 +948,16 @@ To arrange your components in a column, you would specify a prop such as:
 >
 ```
 
-In Flutter, the layout is primarily defined by widgets
-specifically designed to provide layout,
-combined with control widgets and their style properties.
+Em Flutter, o layout é definido principalmente por widgets
+projetados especificamente para fornecer layout,
+combinados com widgets de controle e suas propriedades de estilo.
 
-For example, the [`Column`][] and [`Row`][] widgets
-take an array of children and align them
-vertically and horizontally respectively.
-A [`Container`][] widget takes a combination of
-layout and styling properties, and a
-[`Center`][] widget centers its child widgets.
+Por exemplo, os widgets [`Column`][] e [`Row`][]
+recebem um array de filhos e os alinham
+verticalmente e horizontalmente, respectivamente.
+Um widget [`Container`][] recebe uma combinação de
+propriedades de layout e estilo, e um
+widget [`Center`][] centraliza seus widgets filhos.
 
 <?code-excerpt "lib/layouts.dart (column)"?>
 ```dart
@@ -986,23 +986,23 @@ Widget build(BuildContext context) {
   );
 ```
 
-Flutter provides a variety of layout widgets in its core widget library.
-For example, [`Padding`][], [`Align`][], and [`Stack`][].
+O Flutter fornece uma variedade de widgets de layout em sua biblioteca de widgets principal.
+Por exemplo, [`Padding`][], [`Align`][] e [`Stack`][].
 
-For a complete list, see [Layout Widgets][].
+Para uma lista completa, consulte [Widgets de Layout][].
 
 {% include docs/android-ios-figure-pair.md image="react-native/basic-layout.gif" alt="Layout" class="border" %}
 
-### How do I layer widgets?
+### Como sobrepor widgets?
 
-In React Native, components can be layered using `absolute` positioning.
+Em React Native, os componentes podem ser sobrepostos usando posicionamento `absolute`.
 
-Flutter uses the [`Stack`][]
-widget to arrange children widgets in layers.
-The widgets can entirely or partially overlap the base widget.
+O Flutter usa o widget [`Stack`][]
+para organizar widgets filhos em camadas.
+Os widgets podem sobrepor-se total ou parcialmente ao widget base.
 
-The `Stack` widget positions its children relative to the edges of its box.
-This class is useful if you simply want to overlap several children widgets.
+O widget `Stack` posiciona seus filhos em relação às bordas de sua caixa.
+Essa classe é útil se você simplesmente quiser sobrepor vários widgets filhos.
 
 <?code-excerpt "lib/layouts.dart (stack)"?>
 ```dart
@@ -1024,22 +1024,22 @@ Widget build(BuildContext context) {
   );
 ```
 
-The previous example uses `Stack` to overlay a Container
-(that displays its `Text` on a translucent black background)
-on top of a `CircleAvatar`.
-The Stack offsets the text using the alignment property
-and `Alignment` coordinates.
+O exemplo anterior usa `Stack` para sobrepor um Container
+(que exibe seu `Text` em um fundo preto translúcido)
+em cima de um `CircleAvatar`.
+O Stack desloca o texto usando a propriedade alignment
+e as coordenadas `Alignment`.
 
 {% include docs/android-ios-figure-pair.md image="react-native/stack.png" alt="Stack" class="border" %}
 
-For more information, see the [`Stack`][] class documentation.
+Para mais informações, veja a documentação da classe [`Stack`][].
 
-## Styling
+## Estilização
 
-### How do I style my components?
+### Como estilizar meus componentes?
 
-In React Native, inline styling and `stylesheets.create`
-are used to style components.
+Em React Native, estilização inline e `stylesheets.create`
+são usados para estilizar componentes.
 
 ```js
 // React Native
@@ -1059,10 +1059,10 @@ const styles = StyleSheet.create({
 });
 ```
 
-In Flutter, a `Text` widget can take a `TextStyle` class
-for its style property. If you want to use the same text
-style in multiple places, you can create a
-[`TextStyle`][] class and use it for multiple `Text` widgets.
+No Flutter, um widget `Text` pode receber uma classe `TextStyle`
+para sua propriedade style. Se você quiser usar o mesmo estilo de
+texto em vários lugares, você pode criar uma classe
+[`TextStyle`][] e usá-la para vários widgets `Text`.
 
 <?code-excerpt "lib/examples.dart (text-style)"?>
 ```dart
@@ -1091,26 +1091,26 @@ return const Center(
 
 {% include docs/android-ios-figure-pair.md image="react-native/flutterstyling.gif" alt="Styling" class="border" %}
 
-### How do I use `Icons` and `Colors`?
+### Como usar `Icons` e `Colors`?
 
-React Native doesn't include support for icons
-so third party libraries are used.
+React Native não inclui suporte para ícones,
+então bibliotecas de terceiros são usadas.
 
-In Flutter, importing the Material library also pulls in the
-rich set of [Material icons][] and [colors][].
+No Flutter, importar a biblioteca Material também traz um rico
+conjunto de [ícones do Material][] e [cores][].
 
 <?code-excerpt "lib/examples.dart (icon)"?>
 ```dart
 return const Icon(Icons.lightbulb_outline, color: Colors.redAccent);
 ```
 
-When using the `Icons` class,
-make sure to set `uses-material-design: true` in
-the project's `pubspec.yaml` file.
-This ensures that the `MaterialIcons` font,
-which displays the icons, is included in your app.
-In general, if you intend to use the Material library,
-you should include this line.
+Ao usar a classe `Icons`,
+certifique-se de definir `uses-material-design: true` no
+arquivo `pubspec.yaml` do projeto.
+Isso garante que a fonte `MaterialIcons`,
+que exibe os ícones, seja incluída no seu aplicativo.
+Em geral, se você pretende usar a biblioteca Material,
+você deve incluir esta linha.
 
 ```yaml
 name: my_awesome_application
@@ -1118,11 +1118,11 @@ flutter:
   uses-material-design: true
 ```
 
-Flutter's [Cupertino (iOS-style)][] package provides high
-fidelity widgets for the current iOS design language.
-To use the `CupertinoIcons` font,
-add a dependency for `cupertino_icons` in your project's 
-`pubspec.yaml` file.
+O pacote [Cupertino (estilo iOS)][] do Flutter fornece
+widgets de alta fidelidade para a linguagem de design atual do iOS.
+Para usar a fonte `CupertinoIcons`,
+adicione uma dependência para `cupertino_icons` no arquivo
+`pubspec.yaml` do seu projeto.
 
 ```yaml
 name: my_awesome_application
@@ -1130,15 +1130,15 @@ dependencies:
   cupertino_icons: ^1.0.8
 ```
 
-To globally customize the colors and styles of components,
-use `ThemeData` to specify default colors
-for various aspects of the theme.
-Set the theme property in `MaterialApp` to the `ThemeData` object.
-The [`Colors`][] class provides colors
-from the Material Design [color palette][].
+Para personalizar globalmente as cores e estilos dos componentes,
+use `ThemeData` para especificar cores padrão
+para vários aspectos do tema.
+Defina a propriedade theme em `MaterialApp` para o objeto `ThemeData`.
+A classe [`Colors`][] fornece cores
+da [paleta de cores][] do Material Design.
 
-The following example sets the color scheme from seed to `deepPurple`
-and the text selection to `red`.
+O exemplo a seguir define o esquema de cores da semente para
+`deepPurple` e a seleção de texto para `red`.
 
 <?code-excerpt "lib/examples.dart (swatch)"?>
 ```dart
@@ -1159,15 +1159,15 @@ class SampleApp extends StatelessWidget {
 }
 ```
 
-### How do I add style themes?
+### Como adicionar temas de estilo?
 
-In React Native, common themes are defined for
-components in stylesheets and then used in components.
+Em React Native, temas comuns são definidos para
+componentes em folhas de estilo e então usados em componentes.
 
-In Flutter, create uniform styling for almost everything
-by defining the styling in the [`ThemeData`][]
-class and passing it to the theme property in the
-[`MaterialApp`][] widget.
+No Flutter, crie um estilo uniforme para quase tudo
+definindo o estilo na classe [`ThemeData`][]
+e passando-o para a propriedade theme no
+widget [`MaterialApp`][].
 
 <?code-excerpt "lib/examples.dart (theme)"?>
 ```dart
@@ -1183,9 +1183,9 @@ Widget build(BuildContext context) {
 }
 ```
 
-A `Theme` can be applied even without using the `MaterialApp` widget.
-The [`Theme`][] widget takes a `ThemeData` in its `data` parameter
-and applies the `ThemeData` to all of its children widgets.
+Um `Theme` pode ser aplicado mesmo sem usar o widget `MaterialApp`.
+O widget [`Theme`][] recebe um `ThemeData` em seu parâmetro `data`
+e aplica o `ThemeData` a todos os seus widgets filhos.
 
 <?code-excerpt "lib/examples.dart (theme-data)"?>
 ```dart
@@ -1204,30 +1204,30 @@ Widget build(BuildContext context) {
 }
 ```
 
-## State management
+## Gerenciamento de estado
 
-State is information that can be read synchronously
-when a widget is built or information
-that might change during the lifetime of a widget.
-To manage app state in Flutter,
-use a [`StatefulWidget`][] paired with a State object.
+Estado é informação que pode ser lida de forma síncrona
+quando um widget é construído ou informação
+que pode mudar durante o tempo de vida de um widget.
+Para gerenciar o estado do aplicativo no Flutter,
+use um [`StatefulWidget`][] combinado com um objeto State.
 
-For more information on ways to approach managing state in Flutter,
-see [State management][].
+Para mais informações sobre formas de abordar o gerenciamento de estado no Flutter,
+veja [Gerenciamento de estado][].
 
-### The StatelessWidget
+### O StatelessWidget
 
-A `StatelessWidget` in Flutter is a widget
-that doesn't require a state change&mdash;
-it has no internal state to manage.
+Um `StatelessWidget` no Flutter é um widget
+que não requer uma mudança de estado&mdash;
+ele não tem estado interno para gerenciar.
 
-Stateless widgets are useful when the part of the user interface
-you are describing does not depend on anything other than the
-configuration information in the object itself and the
-[`BuildContext`][] in which the widget is inflated.
+Widgets sem estado (stateless widgets) são úteis quando a parte da interface do usuário
+que você está descrevendo não depende de nada além da
+informação de configuração no próprio objeto e do
+[`BuildContext`][] no qual o widget é renderizado.
 
-[`AboutDialog`][], [`CircleAvatar`][], and [`Text`][] are examples
-of stateless widgets that subclass [`StatelessWidget`][].
+[`AboutDialog`][], [`CircleAvatar`][] e [`Text`][] são exemplos
+de widgets stateless que são subclasses de [`StatelessWidget`][].
 
 <?code-excerpt "lib/stateless.dart"?>
 ```dart
@@ -1259,44 +1259,44 @@ class MyStatelessWidget extends StatelessWidget {
 }
 ```
 
-The previous example uses the constructor of the `MyStatelessWidget`
-class to pass the `text`, which is marked as `final`.
-This class extends `StatelessWidget`&mdash;it contains immutable data.
+O exemplo anterior usa o construtor da classe `MyStatelessWidget`
+para passar o `text`, que é marcado como `final`.
+Esta classe estende `StatelessWidget`&mdash;ela contém dados imutáveis.
 
-The `build` method of a stateless widget is typically called
-in only three situations:
+O método `build` de um widget stateless é tipicamente chamado
+em apenas três situações:
 
-* When the widget is inserted into a tree
-* When the widget's parent changes its configuration
-* When an [`InheritedWidget`][] it depends on, changes
+* Quando o widget é inserido em uma árvore
+* Quando o pai do widget muda sua configuração
+* Quando um [`InheritedWidget`][] do qual ele depende muda
 
-### The StatefulWidget
+### O StatefulWidget
 
-A [`StatefulWidget`][] is a widget that changes state.
-Use the `setState` method to manage the
-state changes for a `StatefulWidget`.
-A call to `setState()` tells the Flutter
-framework that something has changed in a state,
-which causes an app to rerun the `build()` method
-so that the app can reflect the change.
+Um [`StatefulWidget`][] é um widget que muda de estado.
+Use o método `setState` para gerenciar as
+mudanças de estado para um `StatefulWidget`.
+Uma chamada para `setState()` diz ao framework
+Flutter que algo mudou em um estado,
+o que faz com que um aplicativo execute novamente o método `build()`
+para que o aplicativo possa refletir a mudança.
 
-_State_ is information that can be read synchronously when a widget
-is built and might change during the lifetime of the widget.
-It's the responsibility of the widget implementer to ensure that
-the state object is promptly notified when the state changes.
-Use `StatefulWidget` when a widget can change dynamically.
-For example, the state of the widget changes by typing into a form,
-or moving a slider.
-Or, it can change over time—perhaps a data feed updates the UI.
+_Estado_ é informação que pode ser lida de forma síncrona quando um widget
+é construído e pode mudar durante o tempo de vida do widget.
+É responsabilidade do implementador do widget garantir que
+o objeto de estado seja prontamente notificado quando o estado mudar.
+Use `StatefulWidget` quando um widget puder mudar dinamicamente.
+Por exemplo, o estado do widget muda ao digitar em um formulário,
+ou ao mover um slider.
+Ou, ele pode mudar com o tempo—como quando um feed de dados atualiza a UI.
 
 [`Checkbox`][], [`Radio`][], [`Slider`][], [`InkWell`][],
-[`Form`][], and [`TextField`][]
-are examples of stateful widgets that subclass
+[`Form`][] e [`TextField`][]
+são exemplos de widgets stateful que são subclasses de
 [`StatefulWidget`][].
 
-The following example declares a `StatefulWidget`
-that requires a `createState()` method.
-This method creates the state object that manages the widget's state,
+O exemplo a seguir declara um `StatefulWidget`
+que requer um método `createState()`.
+Este método cria o objeto de estado que gerencia o estado do widget,
 `_MyStatefulWidgetState`.
 
 <?code-excerpt "lib/stateful.dart (stateful-widget)"?>
@@ -1314,11 +1314,11 @@ class MyStatefulWidget extends StatefulWidget {
 }
 ```
 
-The following state class, `_MyStatefulWidgetState`,
-implements the `build()` method for the widget.
-When the state changes, for example, when the user toggles
-the button, `setState()` is called with the new toggle value.
-This causes the framework to rebuild this widget in the UI.
+A seguinte classe de estado, `_MyStatefulWidgetState`,
+implementa o método `build()` para o widget.
+Quando o estado muda, por exemplo, quando o usuário alterna
+o botão, `setState()` é chamado com o novo valor de alternância.
+Isso faz com que o framework reconstrua este widget na UI.
 
 <?code-excerpt "lib/stateful.dart (stateful-widget-state)"?>
 ```dart

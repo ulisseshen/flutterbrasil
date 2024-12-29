@@ -134,7 +134,7 @@ int? x; // == null
 Experimente no [DartPad][DartPadD].
 
 Para mais informações, consulte a documentação sobre
-[variáveis][].
+[variáveis][variables].
 
 ### Verificando por nulo ou zero
 
@@ -191,7 +191,7 @@ bool fn() {
 Experimente no [DartPad][DartPadF].
 
 Para mais informações, consulte a documentação sobre
-[funções][].
+[funções][functions].
 
 ### Programação assíncrona
 
@@ -347,7 +347,7 @@ Para criar um aplicativo em Flutter, faça um dos seguintes:
 $ flutter create <projectname>
 ```
 
-Para mais informações, consulte [Primeiros passos][], que
+Para mais informações, consulte [Primeiros passos][Getting started], que
 orienta você na criação de um aplicativo de contador de cliques de botão.
 A criação de um projeto Flutter constrói todos os arquivos que você
 precisa para executar um aplicativo de exemplo em dispositivos Android e iOS.
@@ -366,7 +366,7 @@ Seu aplicativo é executado em um dispositivo conectado, no simulador iOS,
 ou no emulador Android.
 
 Para mais informações, consulte a documentação
-[Primeiros passos][] do Flutter.
+[Primeiros passos][Getting started] do Flutter.
 
 ### Como eu importo widgets?
 
@@ -395,7 +395,7 @@ import 'package:my_widgets/my_widgets.dart';
 Qualquer que seja o pacote de widgets que você importe,
 Dart puxa apenas os widgets que são usados em seu aplicativo.
 
-Para mais informações, consulte o [Catálogo de Widgets do Flutter][].
+Para mais informações, consulte o [Catálogo de Widgets do Flutter][Flutter Widget Catalog].
 
 ### Qual é o equivalente do aplicativo "Hello world!" do React Native em Flutter?
 
@@ -610,7 +610,7 @@ class UseCard extends StatelessWidget {
 ```
 
 No exemplo anterior, o construtor para a classe `CustomCard`
-usa a sintaxe de chaves `{ }` do Dart para indicar [parâmetros nomeados][].
+usa a sintaxe de chaves `{ }` do Dart para indicar [parâmetros nomeados][named parameters].
 
 Para exigir esses campos, remova as chaves do
 construtor ou adicione `required` ao construtor.
@@ -723,7 +723,7 @@ usando o construtor `Image.asset` no método de construção de um widget.
 Image.asset('assets/background.png');
 ```
 
-Para mais informações, consulte [Adicionando Ativos e Imagens no Flutter][].
+Para mais informações, consulte [Adicionando Ativos e Imagens no Flutter][Adding Assets and Images in Flutter].
 
 ### Como eu carrego imagens pela rede?
 
@@ -768,11 +768,11 @@ $ flutter pub add google_sign_in
 import 'package:flutter/material.dart';
 ```
 
-Para mais informações, consulte [Usando Pacotes][] e
-[Desenvolvendo Pacotes e Plugins][].
+Para mais informações, consulte [Usando Pacotes][Using Packages] e
+[Desenvolvendo Pacotes e Plugins][Developing Packages & Plugins].
 
 Você pode encontrar muitos pacotes compartilhados por desenvolvedores Flutter na
-seção [Pacotes Flutter][] do [pub.dev][].
+seção [Pacotes Flutter][Flutter packages] do [pub.dev][].
 
 ## Widgets Flutter
 
@@ -796,12 +796,12 @@ Em vez disso, seu único objetivo é controlar algum aspecto do layout de outro
 widget. Para entender por que um widget é renderizado de uma
 determinada maneira, geralmente é útil inspecionar os widgets vizinhos.
 
-Para mais informações, consulte a [Visão Geral Técnica do Flutter][].
+Para mais informações, consulte a [Visão Geral Técnica do Flutter][Flutter Technical Overview].
 
 Para mais informações sobre os widgets principais do pacote `Widgets`,
-consulte [Widgets Básicos do Flutter][],
-o [Catálogo de Widgets do Flutter][]
-ou o [Índice de Widgets do Flutter][].
+consulte [Widgets Básicos do Flutter][Flutter Basic Widgets],
+o [Catálogo de Widgets do Flutter][Flutter Widget Catalog]
+ou o [Índice de Widgets do Flutter][Flutter Widget Index].
 
 ## Visualizações
 
@@ -813,7 +813,7 @@ estilo, manipulação de toque e controles de acessibilidade.
 Em Flutter, você pode usar os widgets de layout principais na biblioteca `Widgets`,
 como [`Container`][], [`Column`][],
 [`Row`][] e [`Center`][].
-Para mais informações, consulte o catálogo [Widgets de Layout][].
+Para mais informações, consulte o catálogo [Widgets de Layout][Layout Widgets].
 
 ### Qual é o equivalente de `FlatList` ou `SectionList`?
 
@@ -989,7 +989,7 @@ Widget build(BuildContext context) {
 O Flutter fornece uma variedade de widgets de layout em sua biblioteca de widgets principal.
 Por exemplo, [`Padding`][], [`Align`][] e [`Stack`][].
 
-Para uma lista completa, consulte [Widgets de Layout][].
+Para uma lista completa, consulte [Widgets de Layout][Layout Widgets].
 
 {% include docs/android-ios-figure-pair.md image="react-native/basic-layout.gif" alt="Layout" class="border" %}
 
@@ -1097,7 +1097,7 @@ React Native não inclui suporte para ícones,
 então bibliotecas de terceiros são usadas.
 
 No Flutter, importar a biblioteca Material também traz um rico
-conjunto de [ícones do Material][] e [cores][].
+conjunto de [ícones do Material][Material icons] e [cores][colors].
 
 <?code-excerpt "lib/examples.dart (icon)"?>
 ```dart
@@ -1118,7 +1118,7 @@ flutter:
   uses-material-design: true
 ```
 
-O pacote [Cupertino (estilo iOS)][] do Flutter fornece
+O pacote [Cupertino (estilo iOS)][Cupertino (iOS-style)] do Flutter fornece
 widgets de alta fidelidade para a linguagem de design atual do iOS.
 Para usar a fonte `CupertinoIcons`,
 adicione uma dependência para `cupertino_icons` no arquivo
@@ -1135,7 +1135,7 @@ use `ThemeData` para especificar cores padrão
 para vários aspectos do tema.
 Defina a propriedade theme em `MaterialApp` para o objeto `ThemeData`.
 A classe [`Colors`][] fornece cores
-da [paleta de cores][] do Material Design.
+da [paleta de cores][color palette] do Material Design.
 
 O exemplo a seguir define o esquema de cores da semente para
 `deepPurple` e a seleção de texto para `red`.
@@ -1213,7 +1213,7 @@ Para gerenciar o estado do aplicativo no Flutter,
 use um [`StatefulWidget`][] combinado com um objeto State.
 
 Para mais informações sobre formas de abordar o gerenciamento de estado no Flutter,
-veja [Gerenciamento de estado][].
+veja [Gerenciamento de estado][State management].
 
 ### O StatelessWidget
 

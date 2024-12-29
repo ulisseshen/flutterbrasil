@@ -20,7 +20,7 @@ void main(List<String> arguments) async {
 
   if (showInfo) {
     await printDirectoryInfo(directory, maxKbSize);
-    exit(0);
+    exit(0); // Finalizar após mostrar as informações
   }
 
   final translateGreater = arguments.contains('-g');

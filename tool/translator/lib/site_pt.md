@@ -9,45 +9,35 @@ prev:
 next:
   title: Provedores de LLM personalizados
   path: /ai-toolkit/custom-llm-providers
-revised: true
 ---
 
 Além dos recursos que são fornecidos automaticamente pelo
-[`LlmChatView`][], vários pontos de integração
-permitem que seu aplicativo se misture perfeitamente
-com outros recursos para fornecer
-funcionalidades adicionais:
+[`LlmChatView`][], vários pontos de integração permitem que
+seu aplicativo se misture perfeitamente com outros recursos
+para fornecer funcionalidades adicionais:
 
-* **Mensagens de boas-vindas**: Exiba uma saudação inicial aos usuários.
-* **Sugestões de prompts**: Ofereça aos usuários prompts predefinidos para guiar as interações.
-* **Instruções do sistema**: Forneça ao LLM entradas específicas para influenciar suas respostas.
-* **Gerenciamento do histórico**: Todo provedor de LLM permite o gerenciamento do
-  histórico de chat, o que é útil para limpá-lo, alterá-lo dinamicamente e armazená-lo
-  entre as sessões.
-* **Serialização/desserialização de chat**: Armazene e recupere conversas entre
-  sessões do aplicativo.
-* **Widgets de resposta personalizados**: Introduza componentes de UI especializados
-  para apresentar respostas de LLM.
-* **Estilo personalizado**: Defina estilos visuais únicos para combinar a aparência
-  do chat com o aplicativo geral.
-* **Chat sem UI**: Interaja diretamente com os provedores de LLM sem afetar a sessão
-  de chat atual do usuário.
-* **Provedores de LLM personalizados**: Crie seu próprio provedor de LLM para
-  integração do chat com seu próprio backend de modelo.
-* **Redirecionamento de prompts**: Depure, registre ou redirecione mensagens
-  destinadas ao provedor para rastrear problemas ou rotear prompts dinamicamente.
+*   **Mensagens de boas-vindas**: Exiba uma saudação inicial aos usuários.
+*   **Sugestões de prompts**: Ofereça aos usuários prompts predefinidos para guiar as interações.
+*   **Instruções do sistema**: Forneça ao LLM entradas específicas para influenciar suas respostas.
+*   **Gerenciamento do histórico**: Todo provedor de LLM permite o gerenciamento do histórico de chat, o que é útil para limpá-lo, alterá-lo dinamicamente e armazená-lo entre as sessões.
+*   **Serialização/desserialização de chat**: Armazene e recupere conversas entre sessões do aplicativo.
+*   **Widgets de resposta personalizados**: Introduza componentes de UI especializados para apresentar respostas de LLM.
+*   **Estilo personalizado**: Defina estilos visuais únicos para combinar a aparência do chat com o aplicativo geral.
+*  **Chat sem UI**: Interaja diretamente com os provedores de LLM sem afetar a sessão de chat atual do usuário.
+*  **Provedores de LLM personalizados**: Crie seu próprio provedor de LLM para integração do chat com seu próprio backend de modelo.
+*   **Redirecionamento de prompts**: Depure, registre ou redirecione mensagens destinadas ao provedor para rastrear problemas ou rotear prompts dinamicamente.
 
 [`LlmChatView`]: {{site.pub-api}}/flutter_ai_toolkit/latest/flutter_ai_toolkit/LlmChatView-class.html
 
 ## Mensagens de boas-vindas
 
 A visualização de chat permite que você forneça uma mensagem
-de boas-vindas personalizada para definir o contexto para o usuário:
+de boas-vindas personalizada para definir o contexto para o
+usuário:
 
 ![Exemplo de mensagem de boas-vindas](/assets/images/docs/ai-toolkit/example-of-welcome-message.png)
 
-Você pode inicializar o `LlmChatView` com uma mensagem de boas-vindas
-definindo o parâmetro `welcomeMessage`:
+Você pode inicializar o `LlmChatView` com uma mensagem de boas-vindas definindo o parâmetro `welcomeMessage`:
 
 ```dart
 class ChatPage extends StatelessWidget {
@@ -69,15 +59,14 @@ class ChatPage extends StatelessWidget {
 }
 ```
 
-Para ver um exemplo completo de como definir a mensagem de boas-vindas,
-consulte o [exemplo de boas-vindas][].
+Para ver um exemplo completo de como definir a mensagem de boas-vindas, consulte o [exemplo de boas-vindas][].
 
 [exemplo de boas-vindas]: {{site.github}}/flutter/ai/blob/main/example/lib/welcome/welcome.dart
 
 ## Sugestões de prompts
 
 Você pode fornecer um conjunto de sugestões de prompts para dar
-ao usuário uma ideia do objetivo para o qual a sessão de chat foi otimizada:
+ao usuário uma ideia de para que a sessão de chat foi otimizada:
 
 ![Exemplo de sugestões de prompts](/assets/images/docs/ai-toolkit/example-of-suggested-prompts.png)
 
@@ -110,8 +99,7 @@ class ChatPage extends StatelessWidget {
 }
 ```
 
-Para ver um exemplo completo de como configurar sugestões para o usuário, dê uma
-olhada no [exemplo de sugestões][].
+Para ver um exemplo completo de como configurar sugestões para o usuário, dê uma olhada no [exemplo de sugestões][].
 
 [exemplo de sugestões]: {{site.github}}/flutter/ai/blob/main/example/lib/suggestions/suggestions.dart
 
@@ -140,8 +128,7 @@ Você é um assistente útil que gera receitas com base nos ingredientes e
 instruções fornecidas, bem como em minhas preferências alimentares, que são as seguintes:
 ${Settings.foodPreferences.isEmpty ? 'Não tenho nenhuma preferência alimentar' : Settings.foodPreferences}
 
-Você deve manter as coisas casuais e amigáveis. Você pode gerar várias receitas em uma única resposta,
-mas apenas se solicitado. ...
+Você deve manter as coisas casuais e amigáveis. Você pode gerar várias receitas em uma única resposta, mas apenas se solicitado. ...
 ''',
           ),
         ),
@@ -152,19 +139,22 @@ mas apenas se solicitado. ...
 
 Definir instruções do sistema é exclusivo para cada provedor;
 tanto o `GeminiProvider` quanto o `VertexProvider`
-permitem que você as forneça por meio do parâmetro `systemInstruction`.
+permitem que você as forneça por meio do parâmetro
+`systemInstruction`.
 
 Observe que, neste caso, estamos trazendo as preferências
 do usuário como parte da criação do provedor de LLM passado
 para o construtor `LlmChatView`. Definimos as instruções
 como parte do processo de criação cada vez que o usuário
 altera suas preferências. O aplicativo de receitas permite
-que o usuário altere suas preferências alimentares usando um drawer no scaffold:
+que o usuário altere suas preferências alimentares usando
+uma gaveta no scaffold:
 
 ![Exemplo de refinamento de prompt](/assets/images/docs/ai-toolkit/setting-food-preferences.png)
 
 Sempre que o usuário altera suas preferências alimentares,
-o aplicativo de receitas cria um novo modelo para usar as novas preferências:
+o aplicativo de receitas cria um novo modelo para usar as
+novas preferências:
 
 ```dart
 class _HomePageState extends State<HomePage> {
@@ -208,13 +198,14 @@ significa que você se inscreve/cancela a inscrição manualmente
 com os métodos `add` e `remove` ou o usa para construir uma
 instância da classe `ListenableBuilder`.
 
-O método `generateStream` chama o LLM base sem afetar
+O método `generateStream` chama o LLM subjacente sem afetar
 o histórico. Chamar o método `sendMessageStream` altera
 o histórico adicionando duas novas mensagens ao histórico do
 provedor — uma para a mensagem do usuário e uma para a resposta
 do LLM — quando a resposta é concluída. A visualização de chat
 usa `sendMessageStream` quando processa um prompt de chat do
-usuário e `generateStream` quando está processando a entrada de voz do usuário.
+usuário e `generateStream` quando está processando a entrada
+de voz do usuário.
 
 Para ver ou definir o histórico, você pode acessar a propriedade `history`:
 
@@ -223,7 +214,8 @@ void _clearHistory() => _provider.history = [];
 ```
 
 A capacidade de acessar o histórico de um provedor também
-é útil quando se trata de recriar um provedor, mantendo o histórico:
+é útil quando se trata de recriar um provedor, mantendo o
+histórico:
 
 ```dart
 class _HomePageState extends State<HomePage> {
@@ -237,14 +229,10 @@ class _HomePageState extends State<HomePage> {
 ```
 
 O método `_createProvider` cria um novo provedor com o
-histórico do provedor anterior _e_ as novas
-preferências do usuário.
-É perfeito para o usuário; eles podem continuar
-conversando, mas agora o LLM fornece respostas
-levando em consideração suas
-novas preferências alimentares.
-Por exemplo:
-
+histórico do provedor anterior _e_ as novas preferências do
+usuário. É perfeito para o usuário; eles podem continuar
+conversando, mas agora o LLM fornece respostas levando em
+consideração suas novas preferências alimentares. Por exemplo:
 
 ```dart
 class _HomePageState extends State<HomePage> {
@@ -259,8 +247,7 @@ class _HomePageState extends State<HomePage> {
 }
 ```
 
-Para ver o histórico em ação,
-confira o [aplicativo de exemplo de receitas][] e o [aplicativo de exemplo de histórico][].
+Para ver o histórico em ação, confira o [aplicativo de exemplo de receitas][] e o [aplicativo de exemplo de histórico][].
 
 [aplicativo de exemplo de histórico]: {{site.github}}/flutter/ai/blob/main/example/lib/history/history.dart
 [aplicativo de exemplo de receitas]: {{site.github}}/flutter/ai/tree/main/example/lib/recipes
@@ -269,10 +256,9 @@ confira o [aplicativo de exemplo de receitas][] e o [aplicativo de exemplo de hi
 
 Para salvar e restaurar o histórico de chat entre sessões de um
 aplicativo, é necessária a capacidade de serializar e desserializar
-cada prompt do usuário, incluindo os anexos,
-e cada resposta do LLM. Ambos os tipos de mensagens
-(os prompts do usuário e as respostas do LLM)
-são expostos na classe `ChatMessage`.
+cada prompt do usuário, incluindo os anexos, e cada resposta
+do LLM. Ambos os tipos de mensagens (os prompts do usuário e
+as respostas do LLM) são expostos na classe `ChatMessage`.
 A serialização pode ser realizada usando o método `toJson` de
 cada instância de `ChatMessage`.
 
@@ -315,11 +301,10 @@ Future<void> _loadHistory() async {
 }
 ```
 
-Para garantir um retorno rápido ao serializar,
-recomendamos escrever cada mensagem do usuário apenas uma vez.
-Caso contrário, o usuário deve esperar que seu aplicativo
-escreva todas as mensagens todas as vezes e,
-diante de anexos binários, isso
+Para garantir um retorno rápido ao serializar, recomendamos
+escrever cada mensagem do usuário apenas uma vez. Caso contrário,
+o usuário deve esperar que seu aplicativo escreva todas as
+mensagens todas as vezes e, diante de anexos binários, isso
 pode levar um tempo.
 
 Para ver isso em ação, consulte o [aplicativo de exemplo de histórico][].
@@ -332,12 +317,11 @@ Por padrão, a resposta do LLM exibida pela visualização de chat
 é formatada em Markdown. No entanto, em alguns casos, você
 deseja criar um widget personalizado para mostrar a resposta
 do LLM que seja específica e integrada ao seu aplicativo. Por
-exemplo, quando o usuário solicita uma receita no 
-[aplicativo de exemplo de receitas][], a resposta do LLM é usada para criar
+exemplo, quando o usuário solicita uma receita no [aplicativo de
+exemplo de receitas][], a resposta do LLM é usada para criar
 um widget específico para exibir receitas, como o resto do
 aplicativo, e para fornecer um botão **Adicionar** caso o
-usuário queira adicionar
-a receita ao seu banco de dados:
+usuário queira adicionar a receita ao seu banco de dados:
 
 ![Botão Adicionar receita](/assets/images/docs/ai-toolkit/add-recipe-button.png)
 
@@ -475,9 +459,8 @@ Este código inicializa o objeto `GenerationConfig` definindo
 o parâmetro `responseMimeType` para `'application/json'` e o
 parâmetro `responseSchema` para uma instância da classe
 `Schema` que define a estrutura do JSON que você está
-preparado para analisar. Além disso,
-é uma boa prática também pedir em JSON e fornecer
-uma descrição desse esquema JSON nas
+preparado para analisar. Além disso, é uma boa prática também
+pedir JSON e fornecer uma descrição desse esquema JSON nas
 instruções do sistema, o que fizemos aqui.
 
 Para ver isso em ação, confira o [aplicativo de exemplo de receitas][].
@@ -497,16 +480,15 @@ LlmChatView(
 ),
 ```
 
-Por exemplo, o [aplicativo de exemplo de estilos personalizados][custom-ex] usa
-esse recurso para implementar um aplicativo com um tema de Halloween:
+Por exemplo, o [aplicativo de exemplo de estilos personalizados][custom-ex] usa esse recurso para implementar um aplicativo com um tema de Halloween:
 
 ![Aplicativo de demonstração com tema de Halloween](/assets/images/docs/ai-toolkit/demo-app.png)
 
 Para obter uma lista completa dos estilos disponíveis na
 classe `LlmChatViewStyle`, consulte a [documentação de referência][].
-Para ver estilos personalizados em ação, além do
-[exemplo de estilos personalizados][custom-ex], confira o
-[exemplo de modo escuro][] e o [aplicativo de demonstração][].
+Para ver estilos personalizados em ação, além do [exemplo de
+estilos personalizados][custom-ex], confira o [exemplo de modo
+escuro][] e o [aplicativo de demonstração][].
 
 [custom-ex]: {{site.github}}/flutter/ai/blob/main/example/lib/custom_styles/custom_styles.dart
 [exemplo de modo escuro]: {{site.github}}/flutter/ai/blob/main/example/lib/dark_mode/dark_mode.dart
@@ -516,9 +498,8 @@ Para ver estilos personalizados em ação, além do
 ## Chat sem UI
 
 Você não precisa usar a visualização de chat para acessar a
-funcionalidade do provedor base.
-Além de poder simplesmente chamá-lo com qualquer
-interface proprietária que ele forneça,
+funcionalidade do provedor subjacente. Além de poder simplesmente
+chamá-lo com qualquer interface proprietária que ele forneça,
 você também pode usá-lo com a [interface LlmProvider][].
 
 [interface LlmProvider]: {{site.pub-api}}/flutter_ai_toolkit/latest/flutter_ai_toolkit/LlmProvider-class.html
@@ -596,18 +577,17 @@ também pode realizar a mesma coisa chamando `generateStream`,
 o que permite reutilizar um provedor existente sem afetar o
 histórico de chat.
 
-Para ver isso em ação,
-confira a [página Editar Receita][] do exemplo de receitas.
+Para ver isso em ação, confira a [página Editar Receita][] do exemplo de receitas.
 
 [página Editar Receita]: {{site.github}}/flutter/ai/blob/main/example/lib/recipes/pages/edit_recipe_page.dart
 
 ## Redirecionamento de prompts
 
 Se você quiser depurar, registrar ou manipular a conexão
-entre a visualização de chat e o provedor,
-você pode fazer isso com uma implementação de uma função[`LlmStreamGenerator`][].
-Em seguida, você passa essa função para o `LlmChatView`
-no parâmetro `messageSender`:
+entre a visualização de chat e o provedor subjacente, você
+pode fazer isso com uma implementação de uma função
+[`LlmStreamGenerator`][]. Em seguida, você passa essa função
+para o `LlmChatView` no parâmetro `messageSender`:
 
 [`LlmStreamGenerator`]: {{site.pub-api}}/flutter_ai_toolkit/latest/flutter_ai_toolkit/LlmStreamGenerator.html
 
@@ -651,10 +631,11 @@ class ChatPage extends StatelessWidget {
 
 Este exemplo registra os prompts do usuário e as respostas
 do LLM conforme eles vão e voltam. Ao fornecer uma função
-como `messageSender`, é sua responsabilidade chamar o provedor.
-Se você não o fizer, ele não receberá a mensagem. Essa capacidade permite que
-você faça coisas avançadas como rotear para um provedor dinamicamente ou a Geração
-Aumentada de Recuperação (RAG).
+como `messageSender`, é sua responsabilidade chamar o
+provedor subjacente. Se você não o fizer, ele não receberá
+a mensagem. Essa capacidade permite que você faça coisas
+avançadas como rotear para um provedor dinamicamente ou
+Geração Aumentada de Recuperação (RAG).
 
 Para ver isso em ação, consulte o [aplicativo de exemplo de registro][].
 

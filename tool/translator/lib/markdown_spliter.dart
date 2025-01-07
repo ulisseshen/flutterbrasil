@@ -8,7 +8,8 @@ class MarkdownSplitter {
 
   /// Divide o texto Markdown em partes respeitando os cabeçalhos ###.
   List<String> splitMarkdown(String content) {
-    final List<String> sections = content.split(RegExp(r'(?=^### )', multiLine: true));
+    final List<String> sections =
+        content.split(RegExp(r'(?=^### )', multiLine: true));
 
     String currentChunk = '';
     int currentSize = 0;
@@ -27,12 +28,12 @@ class MarkdownSplitter {
     }
 
     if (currentChunk.isNotEmpty) {
-    _partil.add(currentChunk);
+      _partil.add(currentChunk);
     }
     return _partil;
   }
 
-  String getEnterily(){
+  String getEnterily() {
     return _partil.join();
   }
 }

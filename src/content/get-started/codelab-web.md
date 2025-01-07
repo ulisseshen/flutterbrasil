@@ -1,7 +1,8 @@
 ---
-title: Write your first Flutter app on the web
-description: How to create a Flutter web app.
-short-title: Write your first web app
+ia-translate: true
+title: Escreva seu primeiro aplicativo Flutter na web
+description: Como criar um aplicativo Flutter para a web.
+short-title: Escreva seu primeiro aplicativo web
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
@@ -10,67 +11,67 @@ js:
 <?code-excerpt path-base="get-started/codelab_web"?>
 
 :::tip
-This codelab walks you through writing
-your first Flutter app on the web, specifically.
-You might prefer to try
-[another codelab][first_flutter_codelab]
-that takes a more generic approach.
-Note that the codelab on this page
-does work on mobile and desktop
-once you download and configure the appropriate tooling.
+Este codelab orienta você na escrita do seu
+primeiro aplicativo Flutter na web, especificamente.
+Você pode preferir experimentar
+[outro codelab][first_flutter_codelab]
+que adota uma abordagem mais genérica.
+Observe que o codelab nesta página
+funciona em dispositivos móveis e desktop
+assim que você baixar e configurar as ferramentas apropriadas.
 :::
 
-<img src="/assets/images/docs/get-started/sign-up.gif" alt="The web app that you'll be building." class='site-image-right'>
+<img src="/assets/images/docs/get-started/sign-up.gif" alt="O aplicativo web que você estará construindo." class='site-image-right'>
 
-This is a guide to creating your first Flutter **web** app.
-If you are familiar with object-oriented programming,
-and concepts such as variables, loops, and conditionals,
-you can complete this tutorial.
-You don't need previous experience with Dart,
-mobile, or web programming.
+Este é um guia para criar seu primeiro aplicativo Flutter **web**.
+Se você estiver familiarizado com programação orientada a objetos,
+e conceitos como variáveis, loops e condicionais,
+você pode concluir este tutorial.
+Você não precisa de experiência anterior com Dart,
+programação para celular ou web.
 
-## What you'll build {:.no_toc}
+## O que você vai construir  {:.no_toc}
 
-You'll implement a simple web app that displays a sign in screen.
-The screen contains three text fields:  first name,
-last name, and username. As the user fills out the fields,
-a progress bar animates along the top of the sign in area.
-When all three fields are filled in, the progress bar displays
-in green along the full width of the sign in area,
-and the **Sign up** button becomes enabled.
-Clicking the **Sign up** button causes a welcome screen
-to animate in from the bottom of the screen.
+Você implementará um aplicativo web simples que exibe uma tela de login.
+A tela contém três campos de texto: primeiro nome,
+sobrenome e nome de usuário. À medida que o usuário preenche os campos,
+uma barra de progresso é animada ao longo da parte superior da área de login.
+Quando todos os três campos são preenchidos, a barra de progresso é exibida
+em verde em toda a largura da área de login,
+e o botão **Sign up** é habilitado.
+Clicar no botão **Sign up** faz com que uma tela de boas-vindas
+seja animada a partir da parte inferior da tela.
 
-The animated GIF shows how the app works at the completion of this lab.
+O GIF animado mostra como o aplicativo funciona após a conclusão deste laboratório.
 
-:::secondary What you'll learn
-* How to write a Flutter app that looks natural on the web.
-* Basic structure of a Flutter app.
-* How to implement a Tween animation.
-* How to implement a stateful widget.
-* How to use the debugger to set breakpoints.
+:::secondary O que você vai aprender
+* Como escrever um aplicativo Flutter que pareça natural na web.
+* Estrutura básica de um aplicativo Flutter.
+* Como implementar uma animação Tween.
+* Como implementar um widget stateful.
+* Como usar o depurador para definir breakpoints.
 :::
 
-:::secondary What you'll use
-You need three pieces of software to complete this lab:
+:::secondary O que você vai usar
+Você precisa de três softwares para concluir este laboratório:
 
 * [Flutter SDK][]
-* [Chrome browser][]
-* [Text editor or IDE][editor]
+* [Navegador Chrome][]
+* [Editor de texto ou IDE][editor]
 
-While developing, run your web app in Chrome,
-so you can debug with Dart DevTools 
-(also call Flutter DevTools).
+Durante o desenvolvimento, execute seu aplicativo web no Chrome,
+para que você possa depurar com o Dart DevTools
+(também chamado de Flutter DevTools).
 :::
 
-## Step 0: Get the starter web app
+## Etapa 0: Obtenha o aplicativo web inicial
 
-You'll start with a simple web app that we provide for you.
+Você começará com um aplicativo web simples que fornecemos para você.
 
 <ol>
-<li>Enable web development.<br>
-At the command line, perform the following command to
-make sure that you have Flutter installed correctly.
+<li>Habilite o desenvolvimento web.<br>
+Na linha de comando, execute o seguinte comando para
+certificar-se de que o Flutter esteja instalado corretamente.
 
 ```console
 $ flutter doctor
@@ -87,23 +88,23 @@ Doctor summary (to see all details, run flutter doctor -v):
 • No issues found!
 ```
 
-If you see "flutter: command not found",
-then make sure that you have installed the
-[Flutter SDK][] and that it's in your path.
+Se você vir "flutter: command not found",
+certifique-se de ter instalado o
+[Flutter SDK][] e que ele está no seu path.
 
-It's okay if the Android toolchain, Android Studio,
-and the Xcode tools aren't installed,
-since the app is intended for the web only.
-If you later want this app to work on mobile,
-you'll need to do additional installation and setup.
+Não há problema se o conjunto de ferramentas Android, o Android Studio
+e as ferramentas Xcode não estiverem instalados,
+já que o aplicativo se destina apenas à web.
+Se você quiser que este aplicativo funcione em dispositivos móveis posteriormente,
+será necessário fazer instalação e configuração adicionais.
 </li>
 
 <li>
 
-List the devices.<br>
-To ensure that web _is_ installed,
-list the devices available.
-You should see something like the following:
+Liste os dispositivos.<br>
+Para garantir que a web _esteja_ instalada,
+liste os dispositivos disponíveis.
+Você deverá ver algo como o seguinte:
 
 ```console
 $ flutter devices
@@ -119,14 +120,14 @@ Chrome (web)                • chrome                               •
 web-javascript • Google Chrome 105.0.5195.125
 ```
 
-The **Chrome** device automatically starts Chrome and enables the use
-of the Flutter DevTools tooling.
+O dispositivo **Chrome** inicia automaticamente o Chrome e permite o uso
+das ferramentas do Flutter DevTools.
 
 </li>
 
 <li>
 
-The starting app is displayed in the following DartPad.
+O aplicativo inicial é exibido no seguinte DartPad.
 
 <?code-excerpt "lib/starter.dart" remove="prefer_final_fields"?>
 ```dartpad title="Flutter beginning getting started hands-on example in DartPad" run="true"
@@ -233,86 +234,86 @@ class _SignUpFormState extends State<SignUpForm> {
 ```
 
 :::important
-This page uses an embedded version of [DartPad][]
-to display examples and exercises.
-If you see empty boxes instead of DartPads,
-go to the [DartPad troubleshooting page][].
+Esta página usa uma versão incorporada do [DartPad][]
+para exibir exemplos e exercícios.
+Se você vir caixas vazias em vez de DartPads,
+vá para a [página de solução de problemas do DartPad][].
 :::
 
 </li>
 
 <li>
 
-Run the example.<br>
-Click the **Run** button to run the example.
-Note that you can type into the text fields,
-but the **Sign up** button is disabled.
+Execute o exemplo.<br>
+Clique no botão **Run** para executar o exemplo.
+Observe que você pode digitar nos campos de texto,
+mas o botão **Sign up** está desativado.
 
 </li>
 
 <li>
 
-Copy the code.<br>
-Click the clipboard icon in the upper right of the
-code pane to copy the Dart code to your clipboard.
+Copie o código.<br>
+Clique no ícone da área de transferência no canto superior direito do
+painel de código para copiar o código Dart para a sua área de transferência.
 
 </li>
 
 <li>
 
-Create a new Flutter project.<br>
-From your IDE, editor, or at the command line,
-[create a new Flutter project][] and name it `signin_example`.
+Crie um novo projeto Flutter.<br>
+Em seu IDE, editor ou na linha de comando,
+[crie um novo projeto Flutter][] e nomeie-o como `signin_example`.
 
 </li>
 
 <li>
 
-Replace the contents of `lib/main.dart`
-with the contents of the clipboard.
+Substitua o conteúdo de `lib/main.dart`
+pelo conteúdo da área de transferência.
 
 </li>
 </ol>
 
-### Observations {:.no_toc}
+### Observações  {:.no_toc}
 
-* The entire code for this example lives in the
-  `lib/main.dart` file.
-* If you know Java, the Dart language should feel very familiar.
-* All of the app's UI is created in Dart code.
-  For more information, see [Introduction to declarative UI][].
-* The app's UI adheres to [Material Design][],
-  a visual design language that runs on any device or platform.
-  You can customize the Material Design widgets,
-  but if you prefer something else,
-  Flutter also offers the Cupertino widget library,
-  which implements the current iOS design language.
-  Or you can create your own custom widget library.
-* In Flutter, almost everything is a [Widget][].
-  Even the app itself is a widget.
-  The app's UI can be described as a widget tree.
+* O código inteiro para este exemplo reside no
+  arquivo `lib/main.dart`.
+* Se você conhece Java, a linguagem Dart deve parecer muito familiar.
+* Toda a IU do aplicativo é criada em código Dart.
+  Para obter mais informações, consulte [Introdução à IU declarativa][].
+* A IU do aplicativo adere ao [Material Design][],
+  uma linguagem de design visual que é executada em qualquer dispositivo ou plataforma.
+  Você pode personalizar os widgets do Material Design,
+  mas se preferir algo diferente,
+  o Flutter também oferece a biblioteca de widgets Cupertino,
+  que implementa a linguagem de design iOS atual.
+  Ou você pode criar sua própria biblioteca de widgets personalizada.
+* No Flutter, quase tudo é um [Widget][].
+  Até mesmo o próprio aplicativo é um widget.
+  A IU do aplicativo pode ser descrita como uma árvore de widgets.
 
-## Step 1: Show the Welcome screen
+## Etapa 1: Mostrar a tela de boas-vindas
 
-The `SignUpForm` class is a stateful widget.
-This simply means that the widget stores information
-that can change, such as user input, or data from a feed.
-Since widgets themselves are immutable
-(can't be modified once created),
-Flutter stores state information in a companion class,
-called the `State` class. In this lab,
-all of your edits will be made to the private
-`_SignUpFormState` class.
+A classe `SignUpForm` é um widget stateful.
+Isso significa simplesmente que o widget armazena informações
+que podem mudar, como entrada do usuário ou dados de um feed.
+Como os próprios widgets são imutáveis
+(não podem ser modificados depois de criados),
+o Flutter armazena informações de estado em uma classe complementar,
+chamada classe `State`. Neste laboratório,
+todas as suas edições serão feitas no privado
+classe `_SignUpFormState`.
 
-:::tip Fun fact
-The Dart compiler enforces privacy for any identifier
-prefixed with an underscore. For more information,
-see the [Effective Dart Style Guide][].
+:::tip Curiosidade
+O compilador Dart impõe privacidade para qualquer identificador
+prefixado com um sublinhado. Para mais informações,
+consulte o [Guia de estilo Dart eficaz][].
 :::
 
-First, in your `lib/main.dart` file,
-add the following class definition for the
-`WelcomeScreen` widget after the `SignUpScreen` class:
+Primeiro, em seu arquivo `lib/main.dart`,
+adicione a seguinte definição de classe para o
+widget `WelcomeScreen` após a classe `SignUpScreen`:
 
 <?code-excerpt "lib/step1.dart (welcome-screen)"?>
 ```dart
@@ -333,30 +334,30 @@ class WelcomeScreen extends StatelessWidget {
 }
 ```
 
-Next, you will enable the button to display the screen
-and create a method to display it.
+Em seguida, você habilitará o botão para exibir a tela
+e criar um método para exibi-la.
 
 <ol>
 
 <li>
 
-Locate the `build()` method for the
-`_SignUpFormState` class. This is the part of the code
-that builds the SignUp button.
-Notice how the button is defined:
-It's a `TextButton` with a blue background,
-white text that says **Sign up** and, when pressed,
-does nothing.
+Localize o método `build()` para o
+classe `_SignUpFormState`. Esta é a parte do código
+que cria o botão SignUp.
+Observe como o botão é definido:
+É um `TextButton` com fundo azul,
+texto branco que diz **Sign up** e, quando pressionado,
+não faz nada.
 
 </li>
 
 <li>
 
-Update the `onPressed` property.<br>
-Change the `onPressed` property to call the (non-existent)
-method that will display the welcome screen.
+Atualize a propriedade `onPressed`.<br>
+Altere a propriedade `onPressed` para chamar o método (inexistente)
+que exibirá a tela de boas-vindas.
 
-Change `onPressed: null` to the following:
+Altere `onPressed: null` para o seguinte:
 
 <?code-excerpt "lib/step1.dart (on-pressed)"?>
 ```dart
@@ -367,10 +368,10 @@ onPressed: _showWelcomeScreen,
 
 <li>
 
-Add the `_showWelcomeScreen` method.<br>
-Fix the error reported by the analyzer that `_showWelcomeScreen`
-is not defined. Directly above the `build()` method,
-add the following function:
+Adicione o método `_showWelcomeScreen`.<br>
+Corrija o erro relatado pelo analisador de que `_showWelcomeScreen`
+não está definido. Diretamente acima do método `build()`,
+adicione a seguinte função:
 
 <?code-excerpt "lib/step1.dart (show-welcome-screen)"?>
 ```dart
@@ -383,10 +384,10 @@ void _showWelcomeScreen() {
 
 <li>
 
-Add the `/welcome` route.<br>
-Create the connection to show the new screen.
-In the `build()` method for `SignUpApp`,
-add the following route below `'/'`:
+Adicione a rota `/welcome`.<br>
+Crie a conexão para exibir a nova tela.
+No método `build()` para `SignUpApp`,
+adicione a seguinte rota abaixo de `'/'`:
 
 <?code-excerpt "lib/step1.dart (welcome-route)"?>
 ```dart
@@ -397,59 +398,59 @@ add the following route below `'/'`:
 
 <li>
 
-Run the app.<br>
-The **Sign up** button should now be enabled.
-Click it to bring up the welcome screen.
-Note how it animates in from the bottom.
-You get that behavior for free.
+Execute o aplicativo.<br>
+O botão **Sign up** agora deve estar habilitado.
+Clique nele para abrir a tela de boas-vindas.
+Observe como ele é animado a partir da parte inferior.
+Você obtém esse comportamento gratuitamente.
 
 </li>
 
 </ol>
 
-### Observations {:.no_toc}
+### Observações  {:.no_toc}
 
-* The `_showWelcomeScreen()` function is used in the `build()`
-  method as a callback function. Callback functions are often
-  used in Dart code and, in this case, this means
-  "call this method when the button is pressed".
-* The `const` keyword in front of the constructor is very
-  important. When Flutter encounters a constant widget, it
-  short-circuits most of the rebuilding work under the hood
-  making the rendering more efficient.
-* Flutter has only one `Navigator` object.
-  This widget manages Flutter's screens
-  (also called _routes_ or _pages_) inside a stack.
-  The screen at the top of the stack is the view that
-  is currently displayed. Pushing a new screen to this
-  stack switches the display to that new screen.
-  This is why the `_showWelcomeScreen` function pushes
-  the `WelcomeScreen` onto the Navigator's stack.
-  The user clicks the button and, voila,
-  the welcome screen appears. Likewise,
-  calling `pop()` on the `Navigator` returns to the
-  previous screen. Because Flutter's navigation is
-  integrated into the browser's navigation,
-  this happens implicitly when clicking the browser's
-  back arrow button.
+* A função `_showWelcomeScreen()` é usada no `build()`
+  método como uma função de callback. As funções de callback são frequentemente
+  usadas no código Dart e, neste caso, isso significa
+  "chamar este método quando o botão for pressionado".
+* A palavra-chave `const` na frente do construtor é muito
+  importante. Quando o Flutter encontra um widget constante, ele
+  curto-circuita a maior parte do trabalho de reconstrução sob o capô
+  tornando a renderização mais eficiente.
+* O Flutter tem apenas um objeto `Navigator`.
+  Este widget gerencia as telas do Flutter
+  (também chamadas de _rotas_ ou _páginas_) dentro de uma pilha.
+  A tela na parte superior da pilha é a visualização que
+  está sendo exibida no momento. Enviar uma nova tela para esta
+  pilha alterna a exibição para essa nova tela.
+  É por isso que a função `_showWelcomeScreen` envia
+  a `WelcomeScreen` para a pilha do Navigator.
+  O usuário clica no botão e, voilà,
+  a tela de boas-vindas aparece. Da mesma forma,
+  chamar `pop()` no `Navigator` retorna ao
+  tela anterior. Como a navegação do Flutter é
+  integrada à navegação do navegador,
+  isso acontece implicitamente ao clicar no navegador
+  botão de seta para trás.
 
-## Step 2: Enable sign in progress tracking
+## Etapa 2: Habilitar o rastreamento do progresso do login
 
-This sign in screen has three fields.
-Next, you will enable the ability to track the
-user's progress on filling in the form fields,
-and update the app's UI when the form is complete.
+Esta tela de login tem três campos.
+Em seguida, você habilitará a capacidade de rastrear o
+progresso do usuário no preenchimento dos campos do formulário,
+e atualize a interface do usuário do aplicativo quando o formulário for concluído.
 
 :::note
-This example does **not** validate the accuracy of the user input.
-That is something you can add later using form validation, if you like.
+Este exemplo **não** valida a precisão da entrada do usuário.
+Isso é algo que você pode adicionar posteriormente usando a validação de formulário, se desejar.
 :::
 
 <ol>
 <li>
 
-Add a method to update `_formProgress`.
-In the `_SignUpFormState` class, add a new method called
+Adicione um método para atualizar `_formProgress`.
+Na classe `_SignUpFormState`, adicione um novo método chamado
 `_updateFormProgress()`:
 
 <?code-excerpt "lib/step2.dart (update-form-progress)"?>
@@ -474,17 +475,17 @@ void _updateFormProgress() {
 }
 ```
 
-This method updates the `_formProgress` field based on
-the number of non-empty text fields.
+Este método atualiza o campo `_formProgress` com base em
+o número de campos de texto não vazios.
 
 </li>
 
 <li>
 
-Call `_updateFormProgress` when the form changes.<br>
-In the `build()` method of the `_SignUpFormState` class,
-add a callback to the `Form` widget's `onChanged` argument.
-Add the code below marked as NEW:
+Chame `_updateFormProgress` quando o formulário mudar.<br>
+No método `build()` da classe `_SignUpFormState`,
+adicione um callback ao argumento `onChanged` do widget `Form`.
+Adicione o código abaixo marcado como NOVO:
 
 <?code-excerpt "lib/step2.dart (on-changed)"?>
 ```dart
@@ -497,11 +498,11 @@ return Form(
 
 <li>
 
-Update the `onPressed` property (again).<br>
-In `step 1`, you modified the `onPressed` property for the
-**Sign up** button to display the welcome screen.
-Now, update that button to display the welcome
-screen only when the form is completely filled in:
+Atualize a propriedade `onPressed` (novamente).<br>
+Na `etapa 1`, você modificou a propriedade `onPressed` para o
+botão **Sign up** para exibir a tela de boas-vindas.
+Agora, atualize esse botão para exibir as boas-vindas
+tela somente quando o formulário estiver completamente preenchido:
 
 <?code-excerpt "lib/step2.dart (on-pressed)"?>
 ```dart
@@ -528,84 +529,84 @@ TextButton(
 
 <li>
 
-Run the app.<br>
-The **Sign up** button is initially disabled,
-but becomes enabled when all three text fields contain
-(any) text.
+Execute o aplicativo.<br>
+O botão **Sign up** está inicialmente desativado,
+mas fica habilitado quando todos os três campos de texto contêm
+(qualquer) texto.
 
 </li>
 </ol>
 
-### Observations {:.no_toc}
+### Observações  {:.no_toc}
 
-* Calling a widget's `setState()` method tells Flutter that the
-  widget needs to be updated on screen.
-  The framework then disposes of the previous immutable widget
-  (and its children), creates a new one
-  (with its accompanying child widget tree),
-  and renders it to screen. For this to work seamlessly,
-  Flutter needs to be fast.
-  The new widget tree must be created and rendered to screen
-  in less than 1/60th of a second to create a smooth visual
-  transition—especially for an animation.
-  Luckily Flutter _is_ fast.
-* The `progress` field is defined as a floating value,
-  and is updated in the `_updateFormProgress` method.
-  When all three fields are filled in, `_formProgress` is set to 1.0.
-  When `_formProgress` is set to 1.0, the `onPressed` callback is set to the
-  `_showWelcomeScreen` method. Now that its `onPressed` argument is non-null, the button is enabled.
-  Like most Material Design buttons in Flutter,
-  [TextButton][]s are disabled by default if their `onPressed` and `onLongPress` callbacks are null.
-* Notice that the `_updateFormProgress` passes a function to `setState()`.
-  This is called an anonymous
-  function and has the following syntax:
+* Chamar o método `setState()` de um widget informa ao Flutter que o
+  widget precisa ser atualizado na tela.
+  A estrutura então descarta o widget imutável anterior
+  (e seus filhos), cria um novo
+  (com sua árvore de widgets filho acompanhante),
+  e o renderiza na tela. Para que isso funcione perfeitamente,
+  O Flutter precisa ser rápido.
+  A nova árvore de widgets deve ser criada e renderizada na tela
+  em menos de 1/60 de segundo para criar um visual suave
+  transição — especialmente para uma animação.
+  Felizmente, o Flutter _é_ rápido.
+* O campo `progress` é definido como um valor flutuante,
+  e é atualizado no método `_updateFormProgress`.
+  Quando todos os três campos são preenchidos, `_formProgress` é definido como 1.0.
+  Quando `_formProgress` é definido como 1.0, o callback `onPressed` é definido para o
+  método `_showWelcomeScreen`. Agora que seu argumento `onPressed` não é nulo, o botão está habilitado.
+  Como a maioria dos botões do Material Design no Flutter,
+  [TextButton][]s são desativados por padrão se seus callbacks `onPressed` e `onLongPress` forem nulos.
+* Observe que o `_updateFormProgress` passa uma função para `setState()`.
+  Isso é chamado de anônimo
+  função e tem a seguinte sintaxe:
 
   ```dart
   methodName(() {...});
   ```
   
-  Where `methodName` is a named function that takes an anonymous
-  callback function as an argument.
-* The Dart syntax in the last step that displays the
-  welcome screen is:
+  Onde `methodName` é uma função nomeada que recebe um anônimo
+  função de callback como um argumento.
+* A sintaxe Dart na última etapa que exibe o
+  tela de boas-vindas é:
   <?code-excerpt "lib/step2.dart (ternary)" replace="/, \/\/ UPDATED//g"?>
   ```dart
   _formProgress == 1 ? _showWelcomeScreen : null
   ```
-  This is a Dart conditional assignment and has the syntax:
+  Esta é uma atribuição condicional do Dart e tem a sintaxe:
   `condition ? expression1 : expression2`.
-  If the expression `_formProgress == 1` is true, the entire expression results
-  in the value on the left hand side of the `:`, which is the
-  `_showWelcomeScreen` method in this case.
+  Se a expressão `_formProgress == 1` for verdadeira, toda a expressão resulta
+  no valor do lado esquerdo de `:`, que é o
+  método `_showWelcomeScreen` neste caso.
 
-## Step 2.5: Launch Dart DevTools
+## Etapa 2.5: Iniciar o Dart DevTools
 
-How do you debug a Flutter web app?
-It's not too different from debugging any Flutter app.
-You want to use [Dart DevTools][]!
-(Not to be confused with Chrome DevTools.)
+Como você depura um aplicativo web Flutter?
+Não é muito diferente de depurar qualquer aplicativo Flutter.
+Você deseja usar o [Dart DevTools][]!
+(Não confundir com o Chrome DevTools.)
 
-Our app currently has no bugs, but let's check it out anyway.
-The following instructions for launching DevTools applies to any workflow,
-but there is a shortcut if you're using IntelliJ.
-See the tip at the end of this section for more information.
+Nosso aplicativo atualmente não tem bugs, mas vamos dar uma olhada nele de qualquer maneira.
+As seguintes instruções para iniciar o DevTools se aplicam a qualquer fluxo de trabalho,
+mas há um atalho se você estiver usando o IntelliJ.
+Veja a dica no final desta seção para mais informações.
 
 <ol>
 <li>
 
-Run the app.<br>
-If your app isn't currently running, launch it.
-Select the **Chrome** device from the pull down
-and launch it from your IDE or,
-from the command line, use `flutter run -d chrome`.
+Execute o aplicativo.<br>
+Se seu aplicativo não estiver em execução no momento, inicie-o.
+Selecione o dispositivo **Chrome** no menu suspenso
+e inicie-o em seu IDE ou,
+na linha de comando, use `flutter run -d chrome`.
 
 </li>
 
 <li>
 
-Get the web socket info for DevTools.<br>
-At the command line, or in the IDE,
-you should see a message stating something like the following:
+Obtenha as informações do web socket para o DevTools.<br>
+Na linha de comando ou no IDE,
+você deve ver uma mensagem dizendo algo como o seguinte:
 
 ```console
 Launching lib/main.dart on Chrome in debug mode...
@@ -614,85 +615,85 @@ Attempting to connect to browser instance..
 Debug service listening on <b>ws://127.0.0.1:54998/pJqWWxNv92s=</b>
 ```
 
-Copy the address of the debug service, shown in bold.
-You will need that to launch DevTools.
+Copie o endereço do serviço de depuração, mostrado em negrito.
+Você precisará disso para iniciar o DevTools.
 
 </li>
 
 <li>
 
-Ensure that the Dart and Flutter plugins are installed.<br>
-If you are using an IDE,
-make sure you have the Flutter and Dart plugins set up,
-as described in the [VS Code][] and
-[Android Studio and IntelliJ][] pages.
-If you are working at the command line,
-launch the DevTools server as explained in the
-[DevTools command line][] page.
+Certifique-se de que os plugins Dart e Flutter estejam instalados.<br>
+Se você estiver usando um IDE,
+certifique-se de ter os plugins Flutter e Dart configurados,
+conforme descrito nas páginas [VS Code][] e
+[Android Studio e IntelliJ][].
+Se você estiver trabalhando na linha de comando,
+inicie o servidor DevTools conforme explicado no
+página [Linha de comando do DevTools][].
 
 </li>
 
 <li>
 
-Connect to DevTools.<br>
-When DevTools launches, you should see something
-like the following:
+Conecte-se ao DevTools.<br>
+Quando o DevTools for iniciado, você deverá ver algo
+como o seguinte:
 
 ```console
 Serving DevTools at http://127.0.0.1:9100
 ```
 
-Go to this URL in a Chrome browser. You should see the DevTools
-launch screen. It should look like the following:
+Vá para este URL em um navegador Chrome. Você deve ver o DevTools
+tela de lançamento. Deve ser parecido com o seguinte:
 
-![Screenshot of the DevTools launch screen](/assets/images/docs/get-started/devtools-launch-screen.png){:width="100%"}
+![Captura de tela da tela de lançamento do DevTools](/assets/images/docs/get-started/devtools-launch-screen.png){:width="100%"}
 
 </li>
 
 <li>
 
-Connect to running app.<br>
-Under **Connect to a running site**,
-paste the web socket (ws) location that you copied in step 2,
-and click **Connect**. You should now see Dart DevTools
-running successfully in your Chrome browser:
+Conecte-se ao aplicativo em execução.<br>
+Em **Connect to a running site**,
+cole o local do web socket (ws) que você copiou na etapa 2,
+e clique em **Connect**. Agora você deve ver o Dart DevTools
+executando com sucesso em seu navegador Chrome:
 
-![Screenshot of DevTools running screen](/assets/images/docs/get-started/devtools-running.png){:width="100%"}
+![Captura de tela da tela de execução do DevTools](/assets/images/docs/get-started/devtools-running.png){:width="100%"}
 
-Congratulations, you are now running Dart DevTools!
+Parabéns, agora você está executando o Dart DevTools!
 
 </li>
 </ol>
 
 :::note
-This is not the only way to launch DevTools.
-If you are using IntelliJ,
-you can open DevTools by going to
+Esta não é a única maneira de iniciar o DevTools.
+Se você estiver usando o IntelliJ,
+você pode abrir o DevTools acessando
 **Flutter Inspector** -> **More Actions** -> **Open DevTools**:
 
-![Screenshot of Flutter inspector with DevTools menu](/assets/images/docs/get-started/intellij-devtools.png){:width="100%"}
+![Captura de tela do inspetor do Flutter com o menu DevTools](/assets/images/docs/get-started/intellij-devtools.png){:width="100%"}
 :::
 
 <ol>
 <li>
 
-Set a breakpoint.<br>
-Now that you have DevTools running,
-select the **Debugger** tab in the blue bar along the top.
-The debugger pane appears and, in the lower left,
-see a list of libraries used in the example.
-Select `lib/main.dart` to display your Dart code
-in the center pane.
+Defina um breakpoint.<br>
+Agora que você tem o DevTools em execução,
+selecione a guia **Debugger** na barra azul na parte superior.
+O painel do depurador aparece e, no canto inferior esquerdo,
+veja uma lista de bibliotecas usadas no exemplo.
+Selecione `lib/main.dart` para exibir seu código Dart
+no painel central.
 
-![Screenshot of the DevTools debugger](/assets/images/docs/get-started/devtools-debugging.png){:width="100%"}
+![Captura de tela do depurador do DevTools](/assets/images/docs/get-started/devtools-debugging.png){:width="100%"}
 
 </li>
 
 <li>
 
-Set a breakpoint.<br>
-In the Dart code,
-scroll down to where `progress` is updated:
+Defina um breakpoint.<br>
+No código Dart,
+role para baixo até onde `progress` é atualizado:
 
 <?code-excerpt "lib/step2.dart (for-loop)"?>
 ```dart
@@ -703,70 +704,70 @@ for (final controller in controllers) {
 }
 ```
 
-Place a breakpoint on the line with the for loop by clicking to the
-left of the line number. The breakpoint now appears
-in the **Breakpoints** section to the left of the window.
+Coloque um breakpoint na linha com o loop for clicando no
+esquerda do número da linha. O breakpoint agora aparece
+na seção **Breakpoints** à esquerda da janela.
 
 </li>
 
 <li>
 
-Trigger the breakpoint.<br>
-In the running app, click one of the text fields to gain focus.
-The app hits the breakpoint and pauses.
-In the DevTools screen, you can see on the left
-the value of `progress`, which is 0. This is to be expected,
-since none of the fields are filled in.
-Step through the for loop to see
-the program execution.
+Acione o breakpoint.<br>
+No aplicativo em execução, clique em um dos campos de texto para ganhar foco.
+O aplicativo atinge o breakpoint e pausa.
+Na tela do DevTools, você pode ver à esquerda
+o valor de `progress`, que é 0. Isso é esperado,
+já que nenhum dos campos está preenchido.
+Percorra o loop for para ver
+a execução do programa.
 
 </li>
 
 <li>
 
-Resume the app.<br>
-Resume the app by clicking the green **Resume**
-button in the DevTools window.
+Retome o aplicativo.<br>
+Retome o aplicativo clicando no verde **Resume**
+botão na janela do DevTools.
 
 </li>
 
 <li>
 
-Delete the breakpoint.<br>
-Delete the breakpoint by clicking it again, and resume the app.
+Exclua o breakpoint.<br>
+Exclua o breakpoint clicando nele novamente e retome o aplicativo.
 
 </li>
 </ol>
 
-This gives you a tiny glimpse of what is possible using DevTools,
-but there is lots more! For more information,
-see the [DevTools documentation][].
+Isso dá a você um pequeno vislumbre do que é possível usando o DevTools,
+mas há muito mais! Para mais informações,
+consulte a [documentação do DevTools][].
 
-## Step 3: Add animation for sign in progress
+## Etapa 3: Adicionar animação para o progresso do login
 
-It's time to add animation! In this final step,
-you'll create the animation for the
-`LinearProgressIndicator` at the top of the sign in
-area. The animation has the following behavior:
+É hora de adicionar animação! Nesta etapa final,
+você criará a animação para o
+`LinearProgressIndicator` na parte superior do login
+área. A animação tem o seguinte comportamento:
 
-* When the app starts,
-  a tiny red bar appears across the top of the sign in area.
-* When one text field contains text,
-  the red bar turns orange and animates 0.15
-  of the way across the sign in area.
-* When two text fields contain text,
-  the orange bar turns yellow and animates half
-  of the way across the sign in area.
-* When all three text fields contain text,
-  the orange bar turns green and animates all the
-  way across the sign in area.
-  Also, the **Sign up** button becomes enabled.
+* Quando o aplicativo é iniciado,
+  uma pequena barra vermelha aparece na parte superior da área de login.
+* Quando um campo de texto contém texto,
+  a barra vermelha fica laranja e anima 0,15
+  do caminho pela área de login.
+* Quando dois campos de texto contêm texto,
+  a barra laranja fica amarela e anima metade
+  do caminho pela área de login.
+* Quando todos os três campos de texto contêm texto,
+  a barra laranja fica verde e anima tudo
+  o caminho pela área de login.
+  Além disso, o botão **Sign up** é habilitado.
 
 <ol>
 <li>
 
-Add an `AnimatedProgressIndicator`.<br>
-At the bottom of the file, add this widget:
+Adicione um `AnimatedProgressIndicator`.<br>
+Na parte inferior do arquivo, adicione este widget:
 
 <?code-excerpt "lib/step3.dart (animated-progress-indicator)"?>
 ```dart
@@ -837,17 +838,17 @@ class _AnimatedProgressIndicatorState extends State<AnimatedProgressIndicator>
 }
 ```
 
-The [`didUpdateWidget`][] function updates
-the `AnimatedProgressIndicatorState` whenever
-`AnimatedProgressIndicator` changes.
+A função [`didUpdateWidget`][] atualiza
+o `AnimatedProgressIndicatorState` sempre que
+`AnimatedProgressIndicator` muda.
 
 </li>
 
 <li>
 
-Use the new `AnimatedProgressIndicator`.<br>
-Then, replace the `LinearProgressIndicator` in the `Form`
-with this new `AnimatedProgressIndicator`:
+Use o novo `AnimatedProgressIndicator`.<br>
+Em seguida, substitua o `LinearProgressIndicator` no `Form`
+com este novo `AnimatedProgressIndicator`:
 
 <?code-excerpt "lib/step3.dart (use-animated-progress-indicator)"?>
 ```dart
@@ -859,25 +860,24 @@ child: Column(
     Padding(
 ```
 
-This widget uses an `AnimatedBuilder` to animate the
-progress indicator to the latest value.
+Este widget usa um `AnimatedBuilder` para animar o
+indicador de progresso para o valor mais recente.
 
 </li>
 
 <li>
 
-Run the app.<br>
-Type anything into the three fields to verify that
-the animation works, and that clicking the
-**Sign up** button brings up the **Welcome** screen.
+Execute o aplicativo.<br>
+Digite qualquer coisa nos três campos para verificar se
+a animação funciona e que clicar no
+botão **Sign up** abre a tela **Welcome**.
 
 </li>
 </ol>
-
-### Complete sample
+### Exemplo Completo
 
 <?code-excerpt "lib/main.dart"?>
-```dartpad title="Flutter complete getting started hands-on example in DartPad" run="true"
+```dartpad title="Exemplo prático completo de como começar com Flutter no DartPad" run="true"
 import 'package:flutter/material.dart';
 
 void main() => runApp(const SignUpApp());
@@ -923,7 +923,7 @@ class WelcomeScreen extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Text(
-          'Welcome!',
+          'Bem-vindo!',
           style: Theme.of(context).textTheme.displayMedium,
         ),
       ),
@@ -976,26 +976,26 @@ class _SignUpFormState extends State<SignUpForm> {
         mainAxisSize: MainAxisSize.min,
         children: [
           AnimatedProgressIndicator(value: _formProgress),
-          Text('Sign up', style: Theme.of(context).textTheme.headlineMedium),
+          Text('Cadastre-se', style: Theme.of(context).textTheme.headlineMedium),
           Padding(
             padding: const EdgeInsets.all(8),
             child: TextFormField(
               controller: _firstNameTextController,
-              decoration: const InputDecoration(hintText: 'First name'),
+              decoration: const InputDecoration(hintText: 'Primeiro nome'),
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(8),
             child: TextFormField(
               controller: _lastNameTextController,
-              decoration: const InputDecoration(hintText: 'Last name'),
+              decoration: const InputDecoration(hintText: 'Sobrenome'),
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(8),
             child: TextFormField(
               controller: _usernameTextController,
-              decoration: const InputDecoration(hintText: 'Username'),
+              decoration: const InputDecoration(hintText: 'Nome de usuário'),
             ),
           ),
           TextButton(
@@ -1012,7 +1012,7 @@ class _SignUpFormState extends State<SignUpForm> {
               }),
             ),
             onPressed: _formProgress == 1 ? _showWelcomeScreen : null,
-            child: const Text('Sign up'),
+            child: const Text('Cadastre-se'),
           ),
         ],
       ),
@@ -1087,38 +1087,30 @@ class _AnimatedProgressIndicatorState extends State<AnimatedProgressIndicator>
 }
 ```
 
-### Observations {:.no_toc}
+### Observações {:.no_toc}
 
-* You can use an `AnimationController` to run any animation.
-* `AnimatedBuilder` rebuilds the widget tree when the value
-  of an `Animation` changes.
-* Using a `Tween`, you can interpolate between almost any value,
-  in this case, `Color`.
+* Você pode usar um `AnimationController` para executar qualquer animação.
+* `AnimatedBuilder` reconstrói a árvore de widgets quando o valor de uma `Animation` muda.
+* Usando um `Tween`, você pode interpolar entre quase qualquer valor, neste caso, `Color`.
 
-## What next?
+## Próximos Passos?
 
-Congratulations!
-You have created your first web app using Flutter!
+Parabéns! Você criou seu primeiro aplicativo web usando Flutter!
 
-If you'd like to continue playing with this example,
-perhaps you could add form validation.
-For advice on how to do this,
-see the [Building a form with validation][]
-recipe in the [Flutter cookbook][].
+Se você quiser continuar explorando este exemplo, talvez possa adicionar validação de formulário. Para obter aconselhamento sobre como fazer isso, consulte a receita [Construindo um formulário com validação][] no [cookbook do Flutter][].
 
-For more information on Flutter web apps,
-Dart DevTools, or Flutter animations, see the following:
+Para mais informações sobre aplicativos web Flutter, Dart DevTools ou animações Flutter, consulte o seguinte:
 
-* [Animation docs][]
+* [Documentação sobre animações][]
 * [Dart DevTools][]
-* [Implicit animations][] codelab
-* [Web samples][]
+* Codelab de [Animações implícitas][]
+* [Exemplos Web][]
 
 [Android Studio and IntelliJ]: /tools/devtools/android-studio
-[Animation docs]: /ui/animations
-[Building a form with validation]: /cookbook/forms/validation
+[Documentação sobre animações]: /ui/animations
+[Construindo um formulário com validação]: /cookbook/forms/validation
 [Chrome browser]: https://www.google.com/chrome/?brand=CHBD&gclid=CjwKCAiAws7uBRAkEiwAMlbZjlVMZCxJDGAHjoSpoI_3z_HczSbgbMka5c9Z521R89cDoBM3zAluJRoCdCEQAvD_BwE&gclsrc=aw.ds
-[create a new Flutter project]: /get-started/test-drive
+[criar um novo projeto Flutter]: /get-started/test-drive
 [Dart DevTools]: /tools/devtools
 [DartPad]: {{site.dartpad}}
 [DevTools command line]: /tools/devtools/cli
@@ -1128,13 +1120,13 @@ Dart DevTools, or Flutter animations, see the following:
 [`didUpdateWidget`]: {{site.api}}/flutter/widgets/State/didUpdateWidget.html
 [editor]: /get-started/editor
 [Effective Dart Style Guide]: {{site.dart-site}}/guides/language/effective-dart/style#dont-use-a-leading-underscore-for-identifiers-that-arent-private
-[Flutter cookbook]: /cookbook
+[cookbook do Flutter]: /cookbook
 [Flutter SDK]: /get-started/install
-[Implicit animations]: /codelabs/implicit-animations
-[Introduction to declarative UI]: /get-started/flutter-for/declarative
+[Animações implícitas]: /codelabs/implicit-animations
+[Introdução à UI declarativa]: /get-started/flutter-for/declarative
 [Material Design]: {{site.material}}/get-started
 [TextButton]: {{site.api}}/flutter/material/TextButton-class.html
 [VS Code]: /tools/devtools/vscode
-[Web samples]: {{site.repo.samples}}/tree/main/web
+[Exemplos Web]: {{site.repo.samples}}/tree/main/web
 [Widget]: {{site.api}}/flutter/widgets/Widget-class.html
 [first_flutter_codelab]: /get-started/codelab

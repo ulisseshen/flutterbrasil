@@ -1,49 +1,50 @@
 ---
-title: Handling user input
-description: Learn how to handle user input in Flutter.
+ia-translate: true
+title: Manipulando a entrada do usuário
+description: Aprenda como manipular a entrada do usuário no Flutter.
 prev:
-  title: State management
+  title: Gerenciamento de estado
   path: /get-started/fundamentals/state-management
 next:
-  title: Networking and data
+  title: Rede e dados
   path: /get-started/fundamentals/networking
 ---
 
-Now that you know how to manage state in your
-Flutter app, how can you let users interact
-with your app and change its state?
+Agora que você sabe como gerenciar o estado em seu
+aplicativo Flutter, como você pode permitir que os usuários interajam
+com seu aplicativo e alterem seu estado?
 
-## Introduction to handling user input
+## Introdução ao tratamento da entrada do usuário
 
-As a multi-platform UI framework,
-there are many different ways for users
-to interact with a Flutter app.
-The resources in this section introduce
-you to some of the common widgets used
-for enabling user interaction within your app.
+Como um framework de UI multi-plataforma,
+existem muitas maneiras diferentes para os usuários
+interagirem com um aplicativo Flutter.
+Os recursos nesta seção apresentam
+alguns dos widgets comuns usados
+para habilitar a interação do usuário em seu aplicativo.
 
-Some user input mechanisms, like [scrolling][],
-have already been covered in [Layouts][].
+Alguns mecanismos de entrada do usuário, como [rolagem][],
+já foram abordados em [Layouts][].
 
-:::secondary About design system support
-Flutter ships with prebuilt components for two design systems as part of the SDK,
-[Material][] and [Cupertino][].
-For educational purposes, this page focuses on Material widgets, components that
-are stylized according to the [Material 3 design language][] specifications.
+:::secondary Sobre o suporte ao sistema de design
+O Flutter vem com componentes pré-construídos para dois sistemas de design como parte do SDK,
+[Material][] e [Cupertino][].
+Para fins educacionais, esta página se concentra nos widgets Material, componentes que
+são estilizados de acordo com as especificações da [linguagem de design Material 3][].
 
-The Flutter community on [pub.dev][], the package repository for Dart and Flutter,
-create and support additional design languages such as [Fluent UI][], [macOS UI][],
-and more. If the existing design system components don't quite fit what you need,
-Flutter lets you build your own custom widgets,
-which is covered at the end of this section.
-No matter which design system you choose, the principals on this page apply.
+A comunidade Flutter em [pub.dev][], o repositório de pacotes para Dart e Flutter,
+cria e suporta idiomas de design adicionais, como [Fluent UI][], [macOS UI][]
+e muito mais. Se os componentes do sistema de design existentes não se encaixam no que você precisa,
+o Flutter permite que você construa seus próprios widgets personalizados,
+o que é abordado no final desta seção.
+Não importa qual sistema de design você escolha, os princípios desta página se aplicam.
 :::
 
-> <span class="material-symbols" aria-hidden="true">menu_book</span> **Reference**: 
-> The [widget catalog][] has an inventory of commonly used widgets in the [Material][] and [Cupertino][] libraries.
+> <span class="material-symbols" aria-hidden="true">menu_book</span> **Referência**:
+> O [catálogo de widgets][] possui um inventário de widgets comumente usados ​​nas bibliotecas [Material][] e [Cupertino][].
 
-Next, we'll cover a few of the Material widgets that support common
-use cases for handling user input in your Flutter app.
+Em seguida, abordaremos alguns dos widgets Material que suportam casos de uso comuns
+para lidar com a entrada do usuário em seu aplicativo Flutter.
 
 [scrolling]: /get-started/fundamentals/layout#scrolling-widgets
 [pub.dev]: {{site.pub}}
@@ -55,65 +56,64 @@ use cases for handling user input in your Flutter app.
 [Fluent UI]: {{site.pub}}/packages/fluent_ui
 [macOS UI]: {{site.pub}}/packages/macos_ui
 
-## Buttons
+## Botões
 
-![A collection of Material 3 Buttons.](/assets/images/docs/fwe/user-input/material-buttons.png)
+![Uma coleção de botões Material 3.](/assets/images/docs/fwe/user-input/material-buttons.png)
 
-Buttons allow a user to initiate an action in the UI by clicking or tapping.
-The Material library provides a variety of button types that are functionally similar,
-but styled differently for various use cases, including:
+Botões permitem que um usuário inicie uma ação na UI clicando ou tocando.
+A biblioteca Material oferece uma variedade de tipos de botões que são funcionalmente semelhantes,
+mas estilizados de forma diferente para vários casos de uso, incluindo:
 
-- `ElevatedButton`: A button with some depth. Use elevated buttons to add
-  dimension to otherwise mostly flat layouts.
-- `FilledButton`: A filled button that should be used for
-  important, final actions that complete a flow,
-  like **Save**, **Join now**, or **Confirm**.
-- `Tonal Button`: A middle ground button between
-  `FilledButton` and `OutlinedButton`.
-  They're useful in contexts where a lower-priority button requires more
-  emphasis than an outline, like **Next**.
-- `OutlinedButton`: A button with text and a visible border.
-  These buttons contain actions that are important,
-  but aren't the primary action in an app.
-- `TextButton`: Clickable text, without a border.
-  Since text buttons don't have visible borders,
-  they must rely on their position
-  relative to other content for context.
-- `IconButton`: A button with an icon.
-- `FloatingActionButton`: An icon button that hovers over
-  content to promote a primary action.
+- `ElevatedButton`: Um botão com alguma profundidade. Use botões elevados para adicionar
+  dimensão a layouts que, de outra forma, são principalmente planos.
+- `FilledButton`: Um botão preenchido que deve ser usado para
+  ações importantes e finais que completam um fluxo,
+  como **Salvar**, **Inscreva-se agora** ou **Confirmar**.
+- `Tonal Button`: Um botão intermediário entre
+  `FilledButton` e `OutlinedButton`.
+  Eles são úteis em contextos onde um botão de prioridade mais baixa requer mais
+  ênfase do que um contorno, como **Próximo**.
+- `OutlinedButton`: Um botão com texto e uma borda visível.
+  Esses botões contêm ações que são importantes,
+  mas não são a ação principal em um aplicativo.
+- `TextButton`: Texto clicável, sem borda.
+  Como os botões de texto não possuem bordas visíveis,
+  eles devem depender de sua posição
+  em relação a outros conteúdos para contexto.
+- `IconButton`: Um botão com um ícone.
+- `FloatingActionButton`: Um botão de ícone que paira sobre
+  o conteúdo para promover uma ação principal.
 
-> <span class="material-symbols" aria-hidden="true">slideshow</span> **Video**: 
-> [FloatingActionButton (Widget of the Week)][]
+> <span class="material-symbols" aria-hidden="true">slideshow</span> **Vídeo**:
+> [FloatingActionButton (Widget da Semana)][]
 
-There are usually 3 main aspects to constructing a button:
-style, callback, and its child,
-as seen in the following `ElevatedButton` sample code:
-
+Geralmente, existem 3 aspectos principais para construir um botão:
+estilo, callback e seu filho,
+como visto no seguinte código de exemplo `ElevatedButton`:
 
 {% comment %}
 TODO(khanhnwin):
-WidgetStateProperty and styling in the design section of
-FWE. Of course, a button's appearance can be dependent on its state.
-You can style a button based on its state using `WidgetStateProperty`.
+WidgetStateProperty e estilo na seção de design de
+FWE. Claro, a aparência de um botão pode depender de seu estado.
+Você pode estilizar um botão com base em seu estado usando `WidgetStateProperty`.
 {% endcomment %}
 
-- A button's callback function, `onPressed`,
-  determines what happens when the button is clicked,
-  therefore, this function is where you update your app state.
-  If the callback is  `null`, the button is disabled and
-  nothing happens when a user presses the button.
+- A função de callback de um botão, `onPressed`,
+  determina o que acontece quando o botão é clicado,
+  portanto, é nessa função que você atualiza o estado do seu aplicativo.
+  Se o callback for `null`, o botão é desabilitado e
+  nada acontece quando um usuário pressiona o botão.
 
-- The button's `child`, which is displayed within the button's content area,
-  is usually text or an icon that indicates the button's purpose.
+- O `child` do botão, que é exibido na área de conteúdo do botão,
+  geralmente é um texto ou um ícone que indica o propósito do botão.
 
-- Finally, a button's `style` controls its appearance: color, border, and so on.
+- Finalmente, o `style` de um botão controla sua aparência: cor, borda e assim por diante.
 
 
 {% render docs/code-and-image.md,
 image:"fwe/user-input/ElevatedButton.gif",
-caption: "This figure shows an ElevatedButton with the text \"Enabled\" being clicked."
-alt: "A GIF of an elevated button with the text \"Enabled\""
+caption: "Esta figura mostra um ElevatedButton com o texto \"Habilitado\" sendo clicado."
+alt: "Um GIF de um botão elevado com o texto \"Habilitado\""
 code:"
 ```dart
 int count = 0;
@@ -129,87 +129,86 @@ Widget build(BuildContext context) {
         count += 1;
       });
     },
-    child: const Text('Enabled'),
+    child: const Text('Habilitado'),
   );
 }
 ```
 " %}
 
+<br>
+
+> <span class="material-symbols" aria-hidden="true">star</span> **Ponto de Verificação**:
+> Conclua este tutorial que ensina como construir um
+> botão "favorito": [Adicione interatividade ao seu aplicativo Flutter][]
 
 <br>
 
-> <span class="material-symbols" aria-hidden="true">star</span> **Checkpoint**: 
-> Complete this tutorial that teaches you how to build a
-> "favorite" button: [Add interactivity to your Flutter app][]
-
-<br>
-
-<span class="material-symbols" aria-hidden="true">menu_book</span> **API Docs**: [`ElevatedButton`][] • [`FilledButton`][] • [`OutlinedButton`][] • [`TextButton`][] • [`IconButton`][] • [`FloatingActionButton`][]
+<span class="material-symbols" aria-hidden="true">menu_book</span> **Documentação da API**: [`ElevatedButton`][] • [`FilledButton`][] • [`OutlinedButton`][] • [`TextButton`][] • [`IconButton`][] • [`FloatingActionButton`][]
 
 [`ElevatedButton`]: {{site.api}}/flutter/material/ElevatedButton-class.html
 [`FilledButton`]: {{site.api}}/flutter/material/FilledButton-class.html
 [`FloatingActionButton`]: {{site.api}}/flutter/material/FloatingActionButton-class.html
-[FloatingActionButton (Widget of the Week)]: {{site.youtube-site}}/watch/2uaoEDOgk_I?si=MQZcSp24oRaS_kiY
+[FloatingActionButton (Widget da Semana)]: {{site.youtube-site}}/watch/2uaoEDOgk_I?si=MQZcSp24oRaS_kiY
 [`IconButton`]: {{site.api}}/flutter/material/IconButton-class.html
 [`OutlinedButton`]: {{site.api}}/flutter/material/OutlinedButton-class.html
 [`TextButton`]: {{site.api}}/flutter/material/TextButton-class.html
-[Add interactivity to your Flutter app]: /ui/interactivity
+[Adicione interatividade ao seu aplicativo Flutter]: /ui/interactivity
 
-## Text
+## Texto
 
-Several widgets support text input.
+Vários widgets oferecem suporte à entrada de texto.
 
 ### `SelectableText`
 
-Flutter's `Text` widget displays text on the screen,
-but doesn't allow users to highlight or copy the text.
-`SelectableText` displays a string of _user-selectable_ text.
+O widget `Text` do Flutter exibe texto na tela,
+mas não permite que os usuários selecionem ou copiem o texto.
+`SelectableText` exibe uma string de texto _selecionável pelo usuário_.
 
 {% render docs/code-and-image.md,
 image:"fwe/user-input/SelectableText.gif",
-caption: "This figure shows a cursor highlighting a portion of a string of text."
-alt: 'A GIF of a cursor highlighting two lines of text from a paragraph.'
+caption: "Esta figura mostra um cursor destacando uma parte de uma string de texto."
+alt: 'Um GIF de um cursor destacando duas linhas de texto de um parágrafo.'
 code:"
 ```dart
 @override
 Widget build(BuildContext context) {
   return const SelectableText('''
-Two households, both alike in dignity,
-In fair Verona, where we lay our scene,
-From ancient grudge break to new mutiny,
-Where civil blood makes civil hands unclean.
-From forth the fatal loins of these two foes''');
+Duas famílias, ambas iguais em dignidade,
+Na bela Verona, onde situamos nossa cena,
+De antiga queixa, surge uma nova revolta,
+Onde sangue civil torna mãos civis impuras.
+Dos lombos fatais desses dois inimigos''');
 }
 ```
 " %}
 
-> <span class="material-symbols" aria-hidden="true">slideshow</span> **Video**: 
-> [SelectableText (Widget of the Week)][]
+> <span class="material-symbols" aria-hidden="true">slideshow</span> **Vídeo**:
+> [SelectableText (Widget da Semana)][]
 
-[SelectableText (Widget of the Week)]: {{site.youtube-site}}/watch?v=ZSU3ZXOs6hc
+[SelectableText (Widget da Semana)]: {{site.youtube-site}}/watch?v=ZSU3ZXOs6hc
 
 ### `RichText`
 
-`RichText` lets you display strings of rich text in your app.
-`TextSpan`, similar to `RichText`, allows you to display parts of text with
-different text styles. It's not for handling user input,
-but is useful if you're allowing users edit and format text.
+`RichText` permite que você exiba strings de rich text em seu aplicativo.
+`TextSpan`, semelhante a `RichText`, permite exibir partes de texto com
+estilos de texto diferentes. Não é para lidar com a entrada do usuário,
+mas é útil se você estiver permitindo que os usuários editem e formatem o texto.
 
 {% render docs/code-and-image.md,
 image:"fwe/user-input/RichText.png",
-caption: "This figure shows a string of text formatted with different text styles."
-alt: 'A screenshot of the text "Hello bold world!" with the word "bold" in bold font.'
+caption: "Esta figura mostra uma string de texto formatada com diferentes estilos de texto."
+alt: 'Uma captura de tela do texto "Olá mundo em negrito!" com a palavra "negrito" em negrito.'
 code:"
 ```dart
 @override
 Widget build(BuildContext context) {
   return RichText(
     text: TextSpan(
-      text: 'Hello ',
+      text: 'Olá ',
       style: DefaultTextStyle.of(context).style,
       children: const <TextSpan>[
-        TextSpan(text: 'bold', style: TextStyle(fontWeight: FontWeight.bold)),
-        TextSpan(text: ' world!'),
+        TextSpan(text: 'negrito', style: TextStyle(fontWeight: FontWeight.bold)),
+        TextSpan(text: ' mundo!'),
       ],
     ),
   );
@@ -217,48 +216,48 @@ Widget build(BuildContext context) {
 ```
 " %}
 
-> <span class="material-symbols" aria-hidden="true">slideshow</span> **Video**: 
-> [Rich Text (Widget of the Week)][]
+> <span class="material-symbols" aria-hidden="true">slideshow</span> **Vídeo**:
+> [Rich Text (Widget da Semana)][]
 
-> <span class="material-symbols" aria-hidden="true">flutter</span> **Demo**: 
-> [Rich Text Editor][]
+> <span class="material-symbols" aria-hidden="true">flutter</span> **Demonstração**:
+> [Editor de Rich Text][]
 
-> <span class="material-symbols" aria-hidden="true">code</span> **Code**: 
-> [Rich Text Editor code][]
+> <span class="material-symbols" aria-hidden="true">code</span> **Código**:
+> [Código do Editor de Rich Text][]
 
-[Rich Text (Widget of the Week)]: {{site.youtube-site}}/watch?v=rykDVh-QFfw
-[Rich Text Editor]: https://flutter.github.io/samples/rich_text_editor.html
-[Rich Text Editor code]: {{site.github}}/flutter/samples/tree/main/simplistic_editor
+[Rich Text (Widget da Semana)]: {{site.youtube-site}}/watch?v=rykDVh-QFfw
+[Editor de Rich Text]: https://flutter.github.io/samples/rich_text_editor.html
+[Código do Editor de Rich Text]: {{site.github}}/flutter/samples/tree/main/simplistic_editor
 
 ### `TextField`
 
-A `TextField` lets users enter text in text box using a hardware or
-onscreen keyboard.
+Um `TextField` permite que os usuários insiram texto em uma caixa de texto usando um hardware ou
+teclado na tela.
 
-`TextField`s have many different properties and configurations.
-A few of the highlights:
+`TextField`s têm muitas propriedades e configurações diferentes.
+Alguns dos destaques:
 
-- `InputDecoration` determines the text field's appearance,
-  such as color and border.
-- `controller`: A `TextEditingController` controls the text being edited.
-  Why might you need a controller?
-  By default, your app's users can type
-  into the text field, but if you want to programmatically control the `TextField`
-  and clear its value, for example, you'll need a `TextEditingController`.
-- `onChanged`: This callback function triggers when the user changes
-  the text field's value, such as when inserting or removing text.
-- `onSubmitted`: This callback is triggered when the user indicates that
-  they are done editing the text in the field;
-  for example, by tapping the "enter" key when the text field is in focus.
+- `InputDecoration` determina a aparência do campo de texto,
+  como cor e borda.
+- `controller`: Um `TextEditingController` controla o texto que está sendo editado.
+  Por que você pode precisar de um controller?
+  Por padrão, os usuários do seu aplicativo podem digitar
+  no campo de texto, mas se você quiser controlar programaticamente o `TextField`
+  e limpar seu valor, por exemplo, você precisará de um `TextEditingController`.
+- `onChanged`: Esta função de callback é acionada quando o usuário altera
+  o valor do campo de texto, como ao inserir ou remover texto.
+- `onSubmitted`: Este callback é acionado quando o usuário indica que
+  terminou de editar o texto no campo;
+  por exemplo, pressionando a tecla "enter" quando o campo de texto está em foco.
 
-The class supports other configurable properties, such as
-`obscureText` that turns each letter into a `readOnly` circle as its entered and
-`readOnly` which prevents the user from changing the text.
+A classe suporta outras propriedades configuráveis, como
+`obscureText` que transforma cada letra em um círculo `readOnly` conforme é digitada e
+`readOnly` que impede o usuário de alterar o texto.
 
 {% render docs/code-and-image.md,
 image:"fwe/user-input/TextField.gif",
-caption: "This figure shows text being typed into a TextField with a selected border and label."
-alt: "A GIF of a text field with the label \"Mascot Name\", purple focus border and the phrase \"Dash the hummingbird\" being typed in."
+caption: "Esta figura mostra o texto sendo digitado em um TextField com uma borda e rótulo selecionados."
+alt: "Um GIF de um campo de texto com o rótulo \"Nome do Mascote\", borda de foco roxa e a frase \"Dash, o beija-flor\" sendo digitada."
 code:"
 ```dart
 final TextEditingController _controller = TextEditingController();
@@ -269,43 +268,43 @@ Widget build(BuildContext context) {
     controller: _controller,
     decoration: const InputDecoration(
       border: OutlineInputBorder(),
-      labelText: 'Mascot Name',
+      labelText: 'Nome do Mascote',
     ),
   );
 }
 ```
 " %}
 
-> <span class="material-symbols" aria-hidden="true">star</span> **Checkpoint**: 
-> Complete this 4-part cookbook series that walks
-> you through how to create a text field,
-> retrieve its value, and update your app state:
-> 1. [Create and style a text field][]
-> 1. [Retrieve the value of a text field][]
-> 1. [Handle changes to a text field][]
-> 1. [Focus and text fields][].
+> <span class="material-symbols" aria-hidden="true">star</span> **Ponto de Verificação**:
+> Conclua esta série de receitas de 4 partes que orienta
+> você através de como criar um campo de texto,
+> recuperar seu valor e atualizar o estado do seu aplicativo:
+> 1. [Crie e estilize um campo de texto][]
+> 1. [Recupere o valor de um campo de texto][]
+> 1. [Manipule alterações em um campo de texto][]
+> 1. [Foco e campos de texto][].
 
-[Create and style a text field]: /cookbook/forms/text-input
-[Retrieve the value of a text field]: /cookbook/forms/retrieve-input
-[Handle changes to a text field]: /cookbook/forms/text-field-changes
-[Focus and text fields]: /cookbook/forms/focus
+[Crie e estilize um campo de texto]: /cookbook/forms/text-input
+[Recupere o valor de um campo de texto]: /cookbook/forms/retrieve-input
+[Manipule alterações em um campo de texto]: /cookbook/forms/text-field-changes
+[Foco e campos de texto]: /cookbook/forms/focus
 
-### Form
+### Formulário
 
-`Form` is an optional container for grouping together multiple
-form field widgets, such as `TextField`.
+`Form` é um contêiner opcional para agrupar vários
+widgets de campo de formulário, como `TextField`.
 
-Each individual form field should be wrapped in a `FormField`
-widget with the `Form` widget as a common ancestor.
-Convenience widgets exist that pre-wrap form field widgets in a
-`FormField` for you.
-For example, the `Form` widget version of `TextField` is `TextFormField`.
+Cada campo de formulário individual deve ser encapsulado em um widget `FormField`
+com o widget `Form` como um ancestral comum.
+Existem widgets convenientes que pré-encapsulam widgets de campo de formulário em um
+`FormField` para você.
+Por exemplo, a versão do widget `Form` de `TextField` é `TextFormField`.
 
-Using a `Form` provides access to a `FormState`,
-which lets you save, reset, and validate each `FormField`
-that descends from this `Form`.
-You can also provide a `GlobalKey` to identify a specific form,
-as shown in the following code:
+Usar um `Form` fornece acesso a um `FormState`,
+que permite salvar, redefinir e validar cada `FormField`
+que descende deste `Form`.
+Você também pode fornecer uma `GlobalKey` para identificar um formulário específico,
+como mostrado no seguinte código:
 
 ```dart
 final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -319,11 +318,11 @@ Widget build(BuildContext context) {
       children: <Widget>[
         TextFormField(
           decoration: const InputDecoration(
-            hintText: 'Enter your email',
+            hintText: 'Digite seu e-mail',
           ),
           validator: (String? value) {
             if (value == null || value.isEmpty) {
-              return 'Please enter some text';
+              return 'Por favor, insira algum texto';
             }
             return null;
           },
@@ -332,12 +331,12 @@ Widget build(BuildContext context) {
           padding: const EdgeInsets.symmetric(vertical: 16.0),
           child: ElevatedButton(
             onPressed: () {
-              // Validate returns true if the form is valid, or false otherwise.
+              // Validate retorna true se o formulário for válido ou false caso contrário.
               if (_formKey.currentState!.validate()) {
-                // Process data.
+                // Processar dados.
               }
             },
-            child: const Text('Submit'),
+            child: const Text('Enviar'),
           ),
         ),
       ],
@@ -346,66 +345,66 @@ Widget build(BuildContext context) {
 }
 ```
 
-> <span class="material-symbols" aria-hidden="true">star</span> **Checkpoint**:
-> Complete this tutorial to learn how to [build a form with validation][].
+> <span class="material-symbols" aria-hidden="true">star</span> **Ponto de Verificação**:
+> Conclua este tutorial para aprender como [construir um formulário com validação][].
 
-> <span class="material-symbols" aria-hidden="true">flutter</span> **Demo**: 
-> [Form app][]
+> <span class="material-symbols" aria-hidden="true">flutter</span> **Demonstração**:
+> [Aplicativo de Formulário][]
 
-> <span class="material-symbols" aria-hidden="true">code</span> **Code**: 
-> [Form app code][]
+> <span class="material-symbols" aria-hidden="true">code</span> **Código**:
+> [Código do aplicativo de Formulário][]
 
 <br>
 
-<span class="material-symbols" aria-hidden="true">menu_book</span> **API Docs**: [`TextField`][] • [`RichText`][] • [`SelectableText`][] • [`Form`][]
+<span class="material-symbols" aria-hidden="true">menu_book</span> **Documentação da API**: [`TextField`][] • [`RichText`][] • [`SelectableText`][] • [`Form`][]
 
-[Build a form with validation]: /cookbook/forms/validation
-[Form app]: https://flutter.github.io/samples/web/form_app/
-[Form app code]: {{site.github}}/flutter/samples/tree/main/form_app
+[Construir um formulário com validação]: /cookbook/forms/validation
+[Aplicativo de Formulário]: https://flutter.github.io/samples/web/form_app/
+[Código do aplicativo de Formulário]: {{site.github}}/flutter/samples/tree/main/form_app
 [`Form`]: {{site.api}}/flutter/widgets/Form-class.html
 [`TextField`]: {{site.api}}/flutter/material/TextField-class.html
 [`RichText`]: {{site.api}}/flutter/widgets/RichText-class.html
 [`SelectableText`]: {{site.api}}/flutter/material/SelectableText-class.html
 
-## Select a value from a group of options
+## Selecione um valor de um grupo de opções
 
-Provide a way to users to select from several options.
+Forneça uma maneira para os usuários selecionarem entre várias opções.
 
-### SegmentedButton
+### `SegmentedButton`
 
-`SegmentedButton` allows users to select from a
-minimal group of 2-5 items.
+`SegmentedButton` permite que os usuários selecionem de um
+grupo mínimo de 2 a 5 itens.
 
-The data type, `<T>`, can be a built-in type such as
-`int`, `String`, `bool` or an enum.
-A `SegmentedButton` has a few relevant properties:
+O tipo de dados, `<T>`, pode ser um tipo integrado, como
+`int`, `String`, `bool` ou um enum.
+Um `SegmentedButton` tem algumas propriedades relevantes:
 
-- `segments`, a list of `ButtonSegment`s, where each represents a "segment"
-   or option that the user can select.
-   Visually, each `ButtonSegment` can have an icon, text label, or both.
+- `segments`, uma lista de `ButtonSegment`s, onde cada um representa um "segmento"
+   ou opção que o usuário pode selecionar.
+   Visualmente, cada `ButtonSegment` pode ter um ícone, um rótulo de texto ou ambos.
 
-- `multiSelectionEnabled` indicates whether the user is allowed
-   to select multiple options. This property defaults to false.
+- `multiSelectionEnabled` indica se o usuário tem permissão para
+   selecionar várias opções. Esta propriedade tem como padrão false.
 
-- `selected` identifies the currently selected value(s).
-   **Note:** `selected` is of type of `Set<T>`, so if you're only
-   allowing users to select one value, that value must be
-  provided as a`Set` with a single element.
+- `selected` identifica o(s) valor(es) selecionado(s) atualmente.
+  **Nota:** `selected` é do tipo `Set<T>`, portanto, se você estiver apenas
+   permitindo que os usuários selecionem um valor, esse valor deve ser
+  fornecido como um `Set` com um único elemento.
 
-- The `onSelectionChanged` callback triggers when a user selects any segments.
-  It provides a list of the selected segments so you can update your app state.
+- O callback `onSelectionChanged` é acionado quando um usuário seleciona qualquer segmento.
+  Ele fornece uma lista dos segmentos selecionados para que você possa atualizar o estado do seu aplicativo.
 
-- Additional styling parameters allow you to modify the button's appearance.
-  For example, `style` takes a `ButtonStyle`,
-  providing a way to configure a `selectedIcon`.
+- Parâmetros de estilo adicionais permitem que você modifique a aparência do botão.
+  Por exemplo, `style` usa um `ButtonStyle`,
+  fornecendo uma maneira de configurar um `selectedIcon`.
 
 {% render docs/code-and-image.md,
 image:"fwe/user-input/segmented-button.gif",
-caption: "This figure shows a SegmentedButton, each segment with an icon and
-text representing its value."
-alt: "A GIF of a SegmentedButton with 4 segments: Day, Week, Month, and Year.
-Each has a calendar icon to represent its value and a text label.
-Day is first selected, then week and month, then year."
+caption: "Esta figura mostra um SegmentedButton, cada segmento com um ícone e
+texto representando seu valor."
+alt: "Um GIF de um SegmentedButton com 4 segmentos: Dia, Semana, Mês e Ano.
+Cada um tem um ícone de calendário para representar seu valor e um rótulo de texto.
+Dia é selecionado primeiro, depois semana e mês, depois ano."
 code:"
 
 ```dart
@@ -420,29 +419,29 @@ Widget build(BuildContext context) {
     segments: const <ButtonSegment<Calendar>>[
       ButtonSegment<Calendar>(
           value: Calendar.day,
-          label: Text('Day'),
+          label: Text('Dia'),
           icon: Icon(Icons.calendar_view_day)),
       ButtonSegment<Calendar>(
           value: Calendar.week,
-          label: Text('Week'),
+          label: Text('Semana'),
           icon: Icon(Icons.calendar_view_week)),
       ButtonSegment<Calendar>(
           value: Calendar.month,
-          label: Text('Month'),
+          label: Text('Mês'),
           icon: Icon(Icons.calendar_view_month)),
       ButtonSegment<Calendar>(
           value: Calendar.year,
-          label: Text('Year'),
+          label: Text('Ano'),
           icon: Icon(Icons.calendar_today)),
     ],
     selected: <Calendar>{calendarView},
     onSelectionChanged: (Set<Calendar> newSelection) {
       setState(() {
-        Suggested change
-        // By default there is only a single segment that can be
-        // selected at one time, so its value is always the first
-        // By default, only a single segment can be
-        // selected at one time, so its value is always the first
+        // Mudança sugerida
+        // Por padrão, há apenas um único segmento que pode ser
+        // selecionado por vez, então seu valor é sempre o primeiro
+        // Por padrão, apenas um único segmento pode ser
+        // selecionado por vez, então seu valor é sempre o primeiro
         calendarView = newSelection.first;
       });
     },
@@ -451,38 +450,37 @@ Widget build(BuildContext context) {
 ```
 " %}
 
-
 ### Chip
 
-`Chip` is a compact way of representing an
-attribute, text, entity, or action for a specific context.
-Specialized `Chip` widgets exist for specific use cases:
+`Chip` é uma forma compacta de representar um
+atributo, texto, entidade ou ação para um contexto específico.
+Existem widgets `Chip` especializados para casos de uso específicos:
 
-- [InputChip][] represents a complex piece of information,
-  such as an entity (person, place, or thing), or
-  conversational text, in a compact form.
-- [ChoiceChip][] allows a single selection from a set of options.
-  Choice chips contain related descriptive text or categories.
-- [FilterChip][] uses tags or descriptive words to filter content.
-- [ActionChip][] represents an action related to primary content.
+- [InputChip][] representa uma informação complexa,
+  como uma entidade (pessoa, lugar ou coisa) ou
+  texto conversacional, de forma compacta.
+- [ChoiceChip][] permite uma única seleção de um conjunto de opções.
+  Os chips de escolha contêm texto descritivo ou categorias relacionadas.
+- [FilterChip][] usa tags ou palavras descritivas para filtrar o conteúdo.
+- [ActionChip][] representa uma ação relacionada ao conteúdo principal.
 
-Every `Chip` widget requires a `label`.
-It can optionally have an `avatar` (such as an icon or a user's profile picture)
-and an `onDeleted` callback, which shows a delete icon that
-when triggered, deletes the chip.
-A `Chip` widget's appearance can also be customized by setting a
-number of optional parameters such as `shape`, `color`, and `iconTheme`.
+Cada widget `Chip` requer um `label`.
+Ele pode opcionalmente ter um `avatar` (como um ícone ou a foto do perfil de um usuário)
+e um callback `onDeleted`, que mostra um ícone de exclusão que
+quando acionado, exclui o chip.
+A aparência de um widget `Chip` também pode ser personalizada definindo um
+número de parâmetros opcionais, como `shape`, `color` e `iconTheme`.
 
-You will typically use `Wrap`, a widget that displays its children in
-multiple horizontal or vertical runs, to make sure your chips wrap and
-don't get cut off at the edge of your app.
+Normalmente, você usará `Wrap`, um widget que exibe seus filhos em
+várias execuções horizontais ou verticais, para garantir que seus chips se envolvam e
+não sejam cortados na borda do seu aplicativo.
 
 {% render docs/code-and-image.md,
 image:"fwe/user-input/chip.png",
-caption: "This figure shows two rows of Chip widgets, each containing a circular
-leading profile image and content text."
-alt: "A screenshot of 4 Chips split over two rows with a leading circular
-profile image with content text."
+caption: "Esta figura mostra duas linhas de widgets Chip, cada um contendo um círculo
+imagem de perfil principal e texto de conteúdo."
+alt: "Uma captura de tela de 4 Chips divididos em duas linhas com um círculo principal
+imagem de perfil com texto de conteúdo."
 code:"
 ```dart
 @override
@@ -503,17 +501,17 @@ Widget build(BuildContext context) {
           avatar: CircleAvatar(
               backgroundImage:
                   AssetImage('assets/images/dash_firefighter.png')),
-          label: Text('Firefighter Dash'),
+          label: Text('Dash Bombeiro'),
         ),
         Chip(
           avatar: CircleAvatar(
               backgroundImage: AssetImage('assets/images/dash_musician.png')),
-          label: Text('Musician Dash'),
+          label: Text('Dash Músico'),
         ),
         Chip(
           avatar: CircleAvatar(
               backgroundImage: AssetImage('assets/images/dash_artist.png')),
-          label: Text('Artist Dash'),
+          label: Text('Dash Artista'),
         ),
       ],
     ),
@@ -527,41 +525,40 @@ Widget build(BuildContext context) {
 [FilterChip]: {{site.api}}/flutter/material/FilterChip-class.html
 [ActionChip]: {{site.api}}/flutter/material/ActionChip-class.html
 
-
 ### `DropdownMenu`
 
-A `DropdownMenu` allows users to select a choice from a menu
-of options and places the selected text into a `TextField`.
-It also allows users to filter the menu items based on the text input.
+Um `DropdownMenu` permite que os usuários selecionem uma opção de um menu
+de opções e coloca o texto selecionado em um `TextField`.
+Ele também permite que os usuários filtrem os itens do menu com base na entrada de texto.
 
-Configuration parameters include the following:
+Os parâmetros de configuração incluem o seguinte:
 
-- `dropdownMenuEntries` provides a list of `DropdownMenuEntry`s that
-  describes each menu item.
-  The menu might contain information such as a text label, and
-  a leading or trailing icon.
-  (This is also the only required parameter.)
-- `TextEditingController` allows programmatically controlling the `TextField`.
-- The `onSelected` callback triggers when the user selects an option.
-- `initialSelection` allows you to configure the default value.
-- Additional parameters are also available for
-  customizing the widget's look and behavior.
+- `dropdownMenuEntries` fornece uma lista de `DropdownMenuEntry`s que
+   descreve cada item do menu.
+  O menu pode conter informações como um rótulo de texto e
+   um ícone inicial ou final.
+  (Este também é o único parâmetro obrigatório.)
+- `TextEditingController` permite o controle programático do `TextField`.
+- O callback `onSelected` é acionado quando o usuário seleciona uma opção.
+- `initialSelection` permite que você configure o valor padrão.
+- Parâmetros adicionais também estão disponíveis para
+  personalizar a aparência e o comportamento do widget.
 
 {% render docs/code-and-image.md,
 image:"fwe/user-input/dropdownmenu.gif",
-caption: "This figure shows a DropdownMenu widget with 5 value options. Each
-option's text color is styled to represent the color value."
-alt: "A GIF the DropdownMenu widget that is selected, it displays 5 options:
-Blue, Pink, Green, Orange, and Grey. The option text is displayed in the color
-of its value."
+caption: "Esta figura mostra um widget DropdownMenu com 5 opções de valor. Cada
+a cor do texto da opção é estilizada para representar o valor da cor."
+alt: "Um GIF do widget DropdownMenu que é selecionado, ele exibe 5 opções:
+Azul, Rosa, Verde, Laranja e Cinza. O texto da opção é exibido na cor
+de seu valor."
 code:"
 ```dart
 enum ColorLabel {
-  blue('Blue', Colors.blue),
-  pink('Pink', Colors.pink),
-  green('Green', Colors.green),
-  yellow('Orange', Colors.orange),
-  grey('Grey', Colors.grey);
+  blue('Azul', Colors.blue),
+  pink('Rosa', Colors.pink),
+  green('Verde', Colors.green),
+  yellow('Laranja', Colors.orange),
+  grey('Cinza', Colors.grey);
 
   const ColorLabel(this.label, this.color);
   final String label;
@@ -574,12 +571,12 @@ Widget build(BuildContext context) {
   return DropdownMenu<ColorLabel>(
     initialSelection: ColorLabel.green,
     controller: colorController,
-    // requestFocusOnTap is enabled/disabled by platforms when it is null.
-    // On mobile platforms, this is false by default. Setting this to true will
-    // trigger focus request on the text field and virtual keyboard will appear
-    // afterward. On desktop platforms however, this defaults to true.
+    // requestFocusOnTap é habilitado/desabilitado por plataformas quando é nulo.
+    // Em plataformas móveis, isso é false por padrão. Definir isso como true irá
+    // acionar a solicitação de foco no campo de texto e o teclado virtual aparecerá
+    // depois. Em plataformas de desktop, no entanto, o padrão é true.
     requestFocusOnTap: true,
-    label: const Text('Color'),
+    label: const Text('Cor'),
     onSelected: (ColorLabel? color) {
       setState(() {
         selectedColor = color;
@@ -591,7 +588,7 @@ Widget build(BuildContext context) {
             return DropdownMenuEntry<ColorLabel>(
               value: color,
               label: color.label,
-              enabled: color.label != 'Grey',
+              enabled: color.label != 'Cinza',
               style: MenuItemButton.styleFrom(
                 foregroundColor: color.color,
               ),
@@ -602,32 +599,31 @@ Widget build(BuildContext context) {
 ```
 " %}
 
-> <span class="material-symbols" aria-hidden="true">slideshow</span> **Video**: 
-> [DropdownMenu (Widget of the Week)][]
+> <span class="material-symbols" aria-hidden="true">slideshow</span> **Vídeo**:
+> [DropdownMenu (Widget da Semana)][]
 
-[DropdownMenu (Widget of the Week)]: {{site.youtube-site}}/watch?v=giV9AbM2gd8?si=E23hjg72cjMTe_mz
+[DropdownMenu (Widget da Semana)]: {{site.youtube-site}}/watch?v=giV9AbM2gd8?si=E23hjg72cjMTe_mz
 
 ### Slider
 
-The `Slider` widget lets a user adjust a value by moving an indicator,
-such as a volume bar.
+O widget `Slider` permite que um usuário ajuste um valor movendo um indicador,
+como uma barra de volume.
 
-Configuration parameters for the `Slider` widget:
+Parâmetros de configuração para o widget `Slider`:
 
-- `value` represents the slider's current value
-- `onChanged` is the callback that gets triggered when the handle is moved
-- `min` and `max` establish minimum and maximum values allowed by the slider
-- `divisions` establishes a discrete interval with which the user can move the
-  handle along the track.
-
+- `value` representa o valor atual do slider
+- `onChanged` é o callback que é acionado quando a alça é movida
+- `min` e `max` estabelecem os valores mínimo e máximo permitidos pelo slider
+- `divisions` estabelece um intervalo discreto com o qual o usuário pode mover o
+  manipule ao longo da faixa.
 
 {% render docs/code-and-image.md,
 image:"fwe/user-input/slider.gif",
-caption: "This figure shows a slider widget with a value ranging from 0.0 to 5.0
-broken up into 5 divisions. It shows the current value as a label as the dial 
-is dragged."
-alt: "A GIF of a slider that has the dial dragged left to right in increments 
-of 1, from 0.0 to 5.0"
+caption: "Esta figura mostra um widget slider com um valor que varia de 0,0 a 5,0
+dividido em 5 divisões. Ele mostra o valor atual como um rótulo conforme o dial
+é arrastado."
+alt: "Um GIF de um slider que tem o dial arrastado da esquerda para a direita em incrementos
+de 1, de 0,0 a 5,0"
 code:"
 ```dart
 double _currentVolume = 1;
@@ -649,50 +645,50 @@ Widget build(BuildContext context) {
 ```
 " %}
 
-> <span class="material-symbols" aria-hidden="true">slideshow</span> **Video**: 
-> [Slider, RangeSlider, CupertinoSlider (Widget of the Week)][]
+> <span class="material-symbols" aria-hidden="true">slideshow</span> **Vídeo**:
+> [Slider, RangeSlider, CupertinoSlider (Widget da Semana)][]
 
 <br>
 
-<span class="material-symbols" aria-hidden="true">menu_book</span> **API Docs:** [`SegmentedButton`][] • [`DropdownMenu`][] • [`Slider`][] • [`Chip`][]
+<span class="material-symbols" aria-hidden="true">menu_book</span> **Documentação da API:** [`SegmentedButton`][] • [`DropdownMenu`][] • [`Slider`][] • [`Chip`][]
 
-[Slider, RangeSlider, CupertinoSlider (Widget of the Week)]: {{site.youtube-site}}/watch?v=ufb4gIPDmEss
+[Slider, RangeSlider, CupertinoSlider (Widget da Semana)]: {{site.youtube-site}}/watch?v=ufb4gIPDmEss
 [`SegmentedButton`]: {{site.api}}/flutter/material/SegmentedButton-class.html
 [`DropdownMenu`]: {{site.api}}/flutter/material/DropdownMenu-class.html
 [`Slider`]: {{site.api}}/flutter/material/Slider-class.html
 [`Chip`]: {{site.api}}/flutter/material/Chip-class.html
 
-## Toggle between values
+## Alternar entre valores
 
-There are several ways that your UI can allow toggling between values.
+Existem várias maneiras pelas quais sua UI pode permitir a alternância entre valores.
 
-### Checkbox, Switch, and Radio
+### Checkbox, Switch e Radio
 
-Provide an option to toggle a single value on and off.
-The functional logic behind these widgets are the same,
-as all 3 are built on top of `ToggleableStateMixin`, though
-each provides slight presentation differences.:
+Forneça uma opção para alternar um único valor ligado e desligado.
+A lógica funcional por trás desses widgets é a mesma,
+pois todos os 3 são construídos em cima de `ToggleableStateMixin`, embora
+cada um fornece ligeiras diferenças de apresentação.:
 
-- `Checkbox` is a container that is empty when false or
-  filled with a checkmark when true.
-- `Switch` has a handle that is on the left when false and
-  slides to the right when true.
-- `Radio` is similar to a `Checkbox` in that it's a container that is
-  empty when false, but filled in when true.
+- `Checkbox` é um contêiner que está vazio quando false ou
+  preenchido com uma marca de seleção quando verdadeiro.
+- `Switch` tem um manipulo que fica à esquerda quando false e
+  desliza para a direita quando verdadeiro.
+- `Radio` é semelhante a um `Checkbox` em que é um contêiner que é
+  vazio quando false, mas preenchido quando verdadeiro.
 
-The configuration for `Checkbox` and `Switch` contain:
+A configuração para `Checkbox` e `Switch` contém:
 
-- a `value` that is `true` or `false`
-- and an `onChanged` callback which is triggered when
-  the user toggles the widget
+- um `value` que é `true` ou `false`
+- e um callback `onChanged` que é acionado quando
+  o usuário alterna o widget
 
 ### Checkbox
 
 {% render docs/code-and-image.md,
 image:"fwe/user-input/checkbox.gif",
-caption: "This figure shows a checkbox being checked and unchecked."
-alt: "A GIF that shows a pointer clicking a checkbox 
-and then clicking again to uncheck it."
+caption: "Esta figura mostra um checkbox sendo marcado e desmarcado."
+alt: "Um GIF que mostra um ponteiro clicando em um checkbox
+e depois clicando novamente para desmarcá-lo."
 code:"
 ```dart
 bool isChecked = false;
@@ -716,10 +712,10 @@ Widget build(BuildContext context) {
 
 {% render docs/code-and-image.md,
 image:"fwe/user-input/Switch.gif",
-caption: "This figure shows a Switch widget that is toggled on and off."
-alt: "A GIF of a Switch widget that is toggled on and off. In its off state,
-it is gray with dark gray borders. In its on state, 
-it is red with a light red border."
+caption: "Esta figura mostra um widget Switch que é ligado e desligado."
+alt: "Um GIF de um widget Switch que é ligado e desligado. Em seu estado desligado,
+é cinza com bordas cinza-escuras. Em seu estado ligado,
+é vermelho com uma borda vermelha clara."
 code:"
 ```dart
 bool light = true;
@@ -727,11 +723,11 @@ bool light = true;
 @override
 Widget build(BuildContext context) {
   return Switch(
-    // This bool value toggles the switch.
+    // Este valor booleano alterna o switch.
     value: light,
     activeColor: Colors.red,
     onChanged: (bool value) {
-      // This is called when the user toggles the switch.
+      // Isso é chamado quando o usuário alterna o switch.
       setState(() {
         light = value;
       });
@@ -740,26 +736,18 @@ Widget build(BuildContext context) {
 }
 ```
 " %}
-
 ### Radio
 
-A group of `Radio` buttons that allows the user to
-select between mutually exclusive values.
-When the user selects a radio button in a group,
-the other radio buttons are unselected.
+Um grupo de botões `Radio` que permite ao usuário selecionar entre valores mutuamente exclusivos. Quando o usuário seleciona um botão de rádio em um grupo, os outros botões de rádio são desmarcados.
 
-- A particular `Radio` button's `value` represent that button's value,
-- The selected value for a group of radio buttons is identified by
-  the `groupValue` parameter.
-- `Radio` also has an `onChanged` callback that
-  gets triggered when users click it, like `Switch` and `Checkbox`
+- O `value` de um botão `Radio` específico representa o valor desse botão,
+- O valor selecionado para um grupo de botões de rádio é identificado pelo parâmetro `groupValue`.
+- `Radio` também tem um callback `onChanged` que é acionado quando os usuários clicam nele, como `Switch` e `Checkbox`
 
 {% render docs/code-and-image.md,
 image:"fwe/user-input/Radio.gif",
-caption: "This figure shows a column of ListTiles containing a radio button and
-label, where only one radio button can be selected at a time."
-alt: "A GIF of 4 ListTiles in a column, each containing a leading Radio button
-and title text. The Radio buttons are selected in order from top to bottom."
+caption: "Esta figura mostra uma coluna de ListTiles contendo um botão de rádio e um rótulo, onde apenas um botão de rádio pode ser selecionado por vez.",
+alt: "Um GIF de 4 ListTiles em uma coluna, cada um contendo um botão Radio à esquerda e um texto de título. Os botões Radio são selecionados em ordem de cima para baixo.",
 code:"
 ```dart
 enum Character { musician, chef, firefighter, artist }
@@ -823,18 +811,14 @@ class _RadioExampleState extends State<RadioExample> {
 ```
 " %}
 
-#### Bonus: CheckboxListTile & SwitchListTile
+#### Bônus: CheckboxListTile & SwitchListTile
 
-These convenience widgets are the same checkbox and switch widgets,
-but support a label (as a `ListTile`).
+Esses widgets de conveniência são os mesmos widgets de checkbox e switch, mas suportam um rótulo (como um `ListTile`).
 
 {% render docs/code-and-image.md,
 image:"fwe/user-input/SpecialListTiles.gif",
-caption: "This figure shows a column containing a CheckboxListTile and
-a SwitchListTile being toggled."
-alt: "A ListTile with a leading icon, title text, and a trailing checkbox being
-checked and unchecked. It also shows a ListTile with a leading icon, title text
-and a switch being toggled on and off."
+caption: "Esta figura mostra uma coluna contendo um CheckboxListTile e um SwitchListTile sendo alternados.",
+alt: "Um ListTile com um ícone à esquerda, um texto de título e um checkbox à direita sendo marcado e desmarcado. Ele também mostra um ListTile com um ícone à esquerda, um texto de título e um switch sendo alternado ligado e desligado.",
 code:"
 ```dart
 double timeDilation = 1.0;
@@ -870,20 +854,20 @@ Widget build(BuildContext context) {
 ```
 " %}
 
-> <span class="material-symbols" aria-hidden="true">slideshow</span> **Video**: 
-> [CheckboxListTile (Widget of the Week)][]
+> <span class="material-symbols" aria-hidden="true">slideshow</span> **Vídeo**:
+> [CheckboxListTile (Widget da Semana)][]
 
-> <span class="material-symbols" aria-hidden="true">slideshow</span> **Video**: 
-> [SwitchListTile (Widget of the Week)][]
+> <span class="material-symbols" aria-hidden="true">slideshow</span> **Vídeo**:
+> [SwitchListTile (Widget da Semana)][]
 
 <br>
 
-<span class="material-symbols" aria-hidden="true">menu_book</span> **API Docs**: 
-[`Checkbox`][] • [`CheckboxListTile`][] • [`Switch`][] • [`SwitchListTile`][] • 
+<span class="material-symbols" aria-hidden="true">menu_book</span> **Documentação da API**:
+[`Checkbox`][] • [`CheckboxListTile`][] • [`Switch`][] • [`SwitchListTile`][] •
 [`Radio`][]
 
-[CheckboxListTile (Widget of the Week)]: {{site.youtube-site}}/watch?v=RkSqPAn9szs
-[SwitchListTile (Widget of the Week)]: {{site.youtube-site}}/watch?v=0igIjvtEWNU
+[CheckboxListTile (Widget da Semana)]: {{site.youtube-site}}/watch?v=RkSqPAn9szs
+[SwitchListTile (Widget da Semana)]: {{site.youtube-site}}/watch?v=0igIjvtEWNU
 
 [`Checkbox`]: {{site.api}}/flutter/material/Checkbox-class.html
 [`CheckboxListTile`]: {{site.api}}/flutter/material/CheckboxListTile-class.html
@@ -891,33 +875,23 @@ Widget build(BuildContext context) {
 [`SwitchListTile`]: {{site.api}}/flutter/material/SwitchListTile-class.html
 [`Radio`]: {{site.api}}/flutter/material/Radio-class.html
 
-## Select a date or time
+## Selecionar uma data ou hora
 
-Widgets are provided so the user can select a date and time.
+Widgets são fornecidos para que o usuário possa selecionar uma data e hora.
 
-There is a set of dialogs that enable users to select a date or time,
-as you'll see in the following sections.
-With the exception of differing date types -
-`DateTime` for dates vs `TimeOfDay` for time -
-these dialogs function similarly, you can configure them by providing:
+Há um conjunto de diálogos que permitem aos usuários selecionar uma data ou hora, como você verá nas seções a seguir. Com exceção dos diferentes tipos de data - `DateTime` para datas vs `TimeOfDay` para hora - esses diálogos funcionam de forma semelhante, você pode configurá-los fornecendo:
 
-- a default `initialDate` or `initialTime`
-- or an `initialEntryMode` that determines the picker UI that's displayed.
+- um `initialDate` ou `initialTime` padrão
+- ou um `initialEntryMode` que determina a interface do usuário do seletor que é exibida.
 
 ### DatePickerDialog
 
-This dialog allows the user to select a date or a range of dates.
-Activate by calling the `showDatePicker` function,
-which returns a `Future<DateTime>`,
-so don't forget to await the asynchronous function call!
+Este diálogo permite que o usuário selecione uma data ou um intervalo de datas. Ative chamando a função `showDatePicker`, que retorna um `Future<DateTime>`, então não se esqueça de aguardar a chamada de função assíncrona!
 
 {% render docs/code-and-image.md,
 image:"fwe/user-input/DatePicker.gif",
-caption: "This figure shows a DatePicker that is displayed when the
-\"Pick a date\" button is clicked."
-alt: "A GIF of a pointer clicking a button that says \"Pick a date\",
-then shows a date picker. The date Friday, August 30 is selected and the \"OK\"
-button is clicked."
+caption: "Esta figura mostra um DatePicker que é exibido quando o botão \"Escolher uma data\" é clicado.",
+alt: "Um GIF de um ponteiro clicando em um botão que diz \"Escolher uma data\", então mostra um seletor de data. A data sexta-feira, 30 de agosto é selecionada e o botão \"OK\" é clicado.",
 code:"
 ```dart
 DateTime? selectedDate;
@@ -929,7 +903,7 @@ Widget build(BuildContext context) {
   return Column(children: [
     Text(
       date == null
-          ? \"You haven\'t picked a date yet.\"
+          ? \"Você ainda não escolheu uma data.\"
           : DateFormat('MM-dd-yyyy').format(date),
     ),
     ElevatedButton.icon(
@@ -947,7 +921,7 @@ Widget build(BuildContext context) {
           selectedDate = pickedDate;
         });
       },
-      label: const Text('Pick a date'),
+      label: const Text('Escolher uma data'),
     )
   ]);
 }
@@ -956,19 +930,12 @@ Widget build(BuildContext context) {
 
 ### TimePickerDialog
 
-`TimePickerDialog` is a dialog that presents a time picker.
-It can be activated by calling the `showTimePicker()` function.
-Instead of returning a `Future<DateTime>`,
-`showTimePicker` instead returns a `Future<TimeOfDay>`.
-Once again, don't forget to await the function call!
+`TimePickerDialog` é um diálogo que apresenta um seletor de tempo. Ele pode ser ativado chamando a função `showTimePicker()`. Em vez de retornar um `Future<DateTime>`, `showTimePicker` retorna um `Future<TimeOfDay>`. Mais uma vez, não se esqueça de aguardar a chamada da função!
 
 {% render docs/code-and-image.md,
 image:"fwe/user-input/TimePicker.gif",
-caption: "This figure shows a TimePicker that is displayed when the 
-\"Pick a time\" button is clicked."
-alt: "A GIF of a pointer clicking a button that says \"Pick a time\", then shows
- a time picker. The time picker shows a circular clock as the cursor moves the 
- hour hand, then minute hand, selects PM, then the \"OK\" button is clicked."
+caption: "Esta figura mostra um TimePicker que é exibido quando o botão \"Escolher uma hora\" é clicado.",
+alt: "Um GIF de um ponteiro clicando em um botão que diz \"Escolher uma hora\", então mostra um seletor de hora. O seletor de hora mostra um relógio circular enquanto o cursor move o ponteiro das horas, depois o ponteiro dos minutos, seleciona PM e, em seguida, o botão \"OK\" é clicado.",
 code:"
 ```dart
 TimeOfDay? selectedTime;
@@ -979,7 +946,7 @@ Widget build(BuildContext context) {
 
   return Column(children: [
     Text(
-      time == null ? \"You haven't picked a time yet.\" : time.format(context),
+      time == null ? "Você ainda não escolheu uma hora." : time.format(context),
     ),
     ElevatedButton.icon(
       icon: const Icon(Icons.calendar_today),
@@ -994,7 +961,7 @@ Widget build(BuildContext context) {
           selectedTime = pickedTime;
         });
       },
-      label: const Text('Pick a date'),
+      label: const Text('Escolher uma data'),
     )
   ]);
 }
@@ -1002,43 +969,32 @@ Widget build(BuildContext context) {
 " %}
 
 :::tip
-Calling `showDatePicker()` and `showTimePicker()`
-is equivalent to calling `showDialog()` with `DatePickerDialog()` and 
-`TimePickerDialog()`, respectively.
-Internally, both functions use the `showDialog()` function with
-their respective `Dialog` widgets.
-To enable state restoration, you can also push
-`DatePickerDialog()` and `TimePickerDialog()` directly
-on to the `Navigator` stack.
+Chamar `showDatePicker()` e `showTimePicker()` é equivalente a chamar `showDialog()` com `DatePickerDialog()` e `TimePickerDialog()`, respectivamente. Internamente, ambas as funções usam a função `showDialog()` com seus respectivos widgets `Dialog`. Para habilitar a restauração do estado, você também pode colocar `DatePickerDialog()` e `TimePickerDialog()` diretamente na pilha do `Navigator`.
 :::
 
 <br>
 
-<span class="material-symbols" aria-hidden="true">menu_book</span> **API Docs:** 
+<span class="material-symbols" aria-hidden="true">menu_book</span> **Documentação da API:**
 [`showDatePicker`][] • [`showTimePicker`][]
 
 [`showDatePicker`]: {{site.api}}/flutter/material/showDatePicker.html
 [`showTimePicker`]: {{site.api}}/flutter/material/showTimePicker.html
 
-## Swipe & slide
+## Deslizar e arrastar
 
 ### [`Dismissible`][]
 
-A `Dismissible` is a widget that enables users to dismiss it by swiping.
-It has a number of configuration parameters, including:
+Um `Dismissible` é um widget que permite aos usuários dispensá-lo deslizando. Ele tem vários parâmetros de configuração, incluindo:
 
-- A `child` widget
-- An `onDismissed` callback that is triggered when the user swipes
-- Styling parameters such as `background`
-- It's important to include a `key` object as well so that they can be uniquely
-  identified from sibling `Dismissible` widgets in the widget tree.
+- Um widget `child`
+- Um callback `onDismissed` que é acionado quando o usuário desliza
+- Parâmetros de estilo como `background`
+- É importante incluir um objeto `key` também para que eles possam ser identificados exclusivamente de widgets `Dismissible` irmãos na árvore de widgets.
 
 {% render docs/code-and-image.md,
 image:"fwe/user-input/Dismissible.gif",
-caption: "This figure shows a list of Dismissible widgets that each contain a
-ListTile. Swiping across the ListTile reveals a green background makes the tile
-disappear."
-alt: "A screenshot of three widgets, spaced evenly from each other."
+caption: "Esta figura mostra uma lista de widgets Dismissible que contêm cada um um ListTile. Deslizar pelo ListTile revela um fundo verde faz o tile desaparecer.",
+alt: "Uma captura de tela de três widgets, espaçados uniformemente um do outro.",
 code:"
 ```dart
 List<int> items = List<int>.generate(100, (int index) => index);
@@ -1071,133 +1027,99 @@ Widget build(BuildContext context) {
 ```
 " %}
 
-> <span class="material-symbols" aria-hidden="true">slideshow</span> **Video**: 
-> [Dismissible (Widget of the Week)][]
+> <span class="material-symbols" aria-hidden="true">slideshow</span> **Vídeo**:
+> [Dismissible (Widget da Semana)][]
 
-> <span class="material-symbols" aria-hidden="true">star</span> **Checkpoint**: 
-> Complete this tutorial on how to [implement swipe to dismiss][] using the
-> dismissible widget.
+> <span class="material-symbols" aria-hidden="true">star</span> **Checkpoint**:
+> Complete este tutorial sobre como [implementar deslizar para dispensar][] usando o
+> widget dismissible.
 
 <br>
 
-<span class="material-symbols" aria-hidden="true">menu_book</span> **API Docs:**
+<span class="material-symbols" aria-hidden="true">menu_book</span> **Documentação da API:**
 [`Dismissible`][]
 
-[Dismissible (Widget of the Week)]: {{site.youtube-site}}/watch?v=iEMgjrfuc58?si=f0S7IdaA9PIWIYvl
-[Implement swipe to dismiss]: /cookbook/gestures/dismissible
+[Dismissible (Widget da Semana)]: {{site.youtube-site}}/watch?v=iEMgjrfuc58?si=f0S7IdaA9PIWIYvl
+[implementar deslizar para dispensar]: /cookbook/gestures/dismissible
 [`Dismissible`]: {{site.api}}/flutter/widgets/Dismissible-class.html
 
-## Looking for more widgets?
+## Procurando por mais widgets?
 
-This page features just a few of the common Material widgets that
-you can use for handling user input in your Flutter app.
-Check out the [Material Widget library][] and
-[Material Library API docs][] for a full list of widgets.
+Esta página apresenta apenas alguns dos widgets Material comuns que você pode usar para lidar com a entrada do usuário em seu aplicativo Flutter. Confira a [biblioteca de widgets Material][] e a [documentação da API da biblioteca Material][] para uma lista completa de widgets.
 
-> <span class="material-symbols" aria-hidden="true">flutter</span> **Demo**: 
-> See Flutter's [Material 3 Demo][] for a curated sample of user input widgets
-> available in the Material library.
+> <span class="material-symbols" aria-hidden="true">flutter</span> **Demonstração**:
+> Veja a [Demonstração do Material 3][] do Flutter para uma amostra selecionada de widgets de entrada do usuário disponíveis na biblioteca Material.
 
-If the Material and Cupertino libraries don't have a widget that
-does what you need, check out [pub.dev][] to find
-Flutter & Dart community-owned and maintained packages.
-For example, the [`flutter_slidable`][] package provides
-a `Slidable` widget that is more customizable than
-the `Dismissible` widget described in the previous section.
+Se as bibliotecas Material e Cupertino não tiverem um widget que faça o que você precisa, confira o [pub.dev][] para encontrar pacotes mantidos e de propriedade da comunidade Flutter & Dart. Por exemplo, o pacote [`flutter_slidable`][] fornece um widget `Slidable` que é mais personalizável do que o widget `Dismissible` descrito na seção anterior.
 
-> <span class="material-symbols" aria-hidden="true">slideshow</span> **Video**: 
-> [flutter_slidable (Package of the Week)][]
+> <span class="material-symbols" aria-hidden="true">slideshow</span> **Vídeo**:
+> [flutter_slidable (Pacote da Semana)][]
 
-[Material Widget Library]: /ui/widgets/material
-[Material Library API docs]: {{site.api}}/flutter/material/material-library.html
-[Material 3 Demo]: https://flutter.github.io/samples/web/material_3_demo/
+[Biblioteca de Widgets Material]: /ui/widgets/material
+[Documentação da API da Biblioteca Material]: {{site.api}}/flutter/material/material-library.html
+[Demonstração do Material 3]: https://flutter.github.io/samples/web/material_3_demo/
 
 [`flutter_slidable`]: {{site.pub}}/packages/flutter_slidable
-[flutter_slidable (Package of the Week)]: {{site.youtube-site}}/watch?v=QFcFEpFmNJ8
+[flutter_slidable (Pacote da Semana)]: {{site.youtube-site}}/watch?v=QFcFEpFmNJ8
 
-## Build interactive widgets with GestureDetector
+## Construir widgets interativos com GestureDetector
 
-Have you scoured the widget libraries, pub.dev, asked your coding friends,
-and still can't find a widget that
-fits the user interaction that you're looking for?
-You can build your own custom widget and
-make it interactive using `GestureDetector`.
+Você examinou as bibliotecas de widgets, o pub.dev, perguntou aos seus amigos programadores e ainda não consegue encontrar um widget que se encaixe na interação do usuário que você está procurando? Você pode construir seu próprio widget personalizado e torná-lo interativo usando `GestureDetector`.
 
-> <span class="material-symbols" aria-hidden="true">star</span> **Checkpoint**: 
-> Use this recipe as a starting point to create your own _custom_ button widget
-> that can [handle taps][].
+> <span class="material-symbols" aria-hidden="true">star</span> **Checkpoint**:
+> Use esta receita como ponto de partida para criar seu próprio widget de botão _personalizado_ que possa [manipular toques][].
 
-> <span class="material-symbols" aria-hidden="true">slideshow</span> **Video**: 
-> [GestureDetector (Widget of the Week)][]
+> <span class="material-symbols" aria-hidden="true">slideshow</span> **Vídeo**:
+> [GestureDetector (Widget da Semana)][]
 
-> <span class="material-symbols" aria-hidden="true">menu_book</span> **Reference**: 
-> Check out [Taps, drags, and other gestures][] which explains how to listen
-> for, and respond to, gestures in Flutter.
+> <span class="material-symbols" aria-hidden="true">menu_book</span> **Referência**:
+> Confira [Toques, arrastos e outros gestos][] que explicam como ouvir e responder a gestos no Flutter.
 
-> <span class="material-symbols" aria-hidden="true">slideshow</span> **Bonus Video**: 
-> Curious how Flutter's `GestureArena` turns raw user interaction data into
-> human recognizable concepts like taps, drags, and pinches?
-> Check out this video: [GestureArena (Decoding Flutter)][]
+> <span class="material-symbols" aria-hidden="true">slideshow</span> **Vídeo Bônus**:
+> Curioso sobre como o `GestureArena` do Flutter transforma dados brutos de interação do usuário em conceitos reconhecíveis pelo ser humano, como toques, arrastos e pinças? Confira este vídeo: [GestureArena (Decodificando o Flutter)][]
 
-[handle taps]: /cookbook/gestures/handling-taps
-[GestureDetector (Widget of the Week)]: {{site.youtube-site}}/watch?v=WhVXkCFPmK4
-[Taps, drags, and other gestures]: /ui/interactivity/gestures#gestures
-[GestureArena (Decoding Flutter)]: {{site.youtube-site}}/watch?v=Q85LBtBdi0U
+[manipular toques]: /cookbook/gestures/handling-taps
+[GestureDetector (Widget da Semana)]: {{site.youtube-site}}/watch?v=WhVXkCFPmK4
+[Toques, arrastos e outros gestos]: /ui/interactivity/gestures#gestures
+[GestureArena (Decodificando o Flutter)]: {{site.youtube-site}}/watch?v=Q85LBtBdi0U
 
-### Don't forget about accessibility!
+### Não se esqueça da acessibilidade!
 
-If you're building a custom widget,
-annotate its meaning with the `Semantics` widget.
-It provides descriptions and metadata to screen readers and
-other semantic analysis-based tools.
+Se você estiver construindo um widget personalizado, anote seu significado com o widget `Semantics`. Ele fornece descrições e metadados para leitores de tela e outras ferramentas baseadas em análise semântica.
 
-> <span class="material-symbols" aria-hidden="true">slideshow</span> **Video**: 
-> [Semantics (Flutter Widget of the Week)][]
-
+> <span class="material-symbols" aria-hidden="true">slideshow</span> **Vídeo**:
+> [Semantics (Widget da Semana do Flutter)][]
 
 <br>
 
-<span class="material-symbols" aria-hidden="true">menu_book</span> **API Docs**:
+<span class="material-symbols" aria-hidden="true">menu_book</span> **Documentação da API**:
 [`GestureDetector`][] • [`Semantics`][]
 
 [`GestureDetector`]: {{site.api}}/flutter/widgets/GestureDetector-class.html
 [`Semantics`]: {{site.api}}/flutter/widgets/Semantics-class.html
 
-## Testing
+## Testando
 
-Once you have finished building user interactions
-into your app, don't forget to write tests to
-ensure that everything works as expected!
+Depois de terminar de construir as interações do usuário em seu aplicativo, não se esqueça de escrever testes para garantir que tudo funcione como esperado!
 
-These tutorials walk you through writing tests that
-simulate user interactions in your app:
+Estes tutoriais o guiam na escrita de testes que simulam interações do usuário em seu aplicativo:
 
-> <span class="material-symbols" aria-hidden="true">star</span> **Checkpoint**: 
-> Follow this [tap, drag, and enter text][] cookbook article and learn how to
-> use `WidgetTester` to simulate and test user interactions in your app.
+> <span class="material-symbols" aria-hidden="true">star</span> **Checkpoint**:
+> Siga este artigo de cookbook [toque, arraste e insira texto][] e aprenda como usar `WidgetTester` para simular e testar as interações do usuário em seu aplicativo.
 
-> <span class="material-symbols" aria-hidden="true">bookmark</span> **Bonus Tutorial**: 
-> The [handle scrolling][] cookbook recipe shows you how to verify that
-> lists of widgets contain the expected content by
-> scrolling through the lists using widget tests.
+> <span class="material-symbols" aria-hidden="true">bookmark</span> **Tutorial Bônus**:
+> A receita do cookbook [manipular rolagem][] mostra como verificar se as listas de widgets contêm o conteúdo esperado rolando as listas usando testes de widget.
 
-[Semantics (Flutter Widget of the Week)]: {{site.youtube-site}}/watch?v=NvtMt_DtFrQ?si=o79BqAg9NAl8EE8_
-[Tap, drag, and enter text]: /cookbook/testing/widget/tap-drag
-[Handle scrolling]: /cookbook/testing/widget/scrolling
+[Semantics (Widget da Semana do Flutter)]: {{site.youtube-site}}/watch?v=NvtMt_DtFrQ?si=o79BqAg9NAl8EE8_
+[Toque, arraste e insira texto]: /cookbook/testing/widget/tap-drag
+[Manipular rolagem]: /cookbook/testing/widget/scrolling
 
-## Next: Networking
+## Próximo: Rede
 
-This page was an introduction to handling user input.
-Now that you know how to handle input from app users,
-you can make your app even more interesting by adding
-external data. In the next section,
-you'll learn now to fetch data for your app over a network,
-how to convert data to and from JSON, authentication,
-and other networking features.
+Esta página foi uma introdução ao tratamento da entrada do usuário. Agora que você sabe como lidar com a entrada de usuários do aplicativo, você pode tornar seu aplicativo ainda mais interessante adicionando dados externos. Na próxima seção, você aprenderá agora a buscar dados para seu aplicativo por meio de uma rede, como converter dados de e para JSON, autenticação e outros recursos de rede.
 
 ## Feedback
 
-As this section of the website is evolving,
-we [welcome your feedback][]!
+Como esta seção do site está evoluindo, nós [agradecemos seu feedback][]!
 
-[welcome your feedback]: https://google.qualtrics.com/jfe/form/SV_6A9KxXR7XmMrNsy?page="user-input"
+[agradecemos seu feedback]: https://google.qualtrics.com/jfe/form/SV_6A9KxXR7XmMrNsy?page="user-input"

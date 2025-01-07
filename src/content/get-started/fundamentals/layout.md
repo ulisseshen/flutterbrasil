@@ -1,130 +1,131 @@
 ---
+ia-translate: true
 title: Layouts
-description: Learn how to create layouts in Flutter.
+description: Aprenda como criar layouts no Flutter.
 prev:
   title: Widgets
   path: /get-started/fundamentals/widgets
 next:
-  title: State management
+  title: Gerenciamento de estado
   path: /get-started/fundamentals/state-management
 ---
 
-Given that Flutter is a UI toolkit,
-you'll spend a lot of time creating layouts
-with Flutter widgets. In this section,
-you'll learn how to build layouts with some of the
-most common layout widgets.
-You'll use Flutter DevTools (also
-called Dart DevTools) to understand how
-Flutter is creating your layout.
-Finally, you'll encounter and debug one of
-Flutter's most common layout errors,
-the dreaded "unbounded constraints" error.
+Dado que o Flutter é um kit de ferramentas de UI,
+você passará muito tempo criando layouts
+com widgets do Flutter. Nesta seção,
+você aprenderá como construir layouts com alguns dos
+widgets de layout mais comuns.
+Você usará o Flutter DevTools (também
+chamado de Dart DevTools) para entender como
+o Flutter está criando seu layout.
+Finalmente, você encontrará e depurará um dos
+erros de layout mais comuns do Flutter,
+o temido erro de "restrições ilimitadas".
 
-## Understanding layout in Flutter
+## Entendendo o layout no Flutter
 
-The core of Flutter's layout mechanism is widgets. 
-In Flutter, almost everything is a widget — even 
-layout models are widgets. 
-The images, icons, and text that you see in a 
-Flutter app are all widgets. 
-Things you don't see are also widgets, 
-such as the rows, columns, and grids that arrange,
-constrain, and align the visible widgets.
+O núcleo do mecanismo de layout do Flutter são os widgets.
+No Flutter, quase tudo é um widget — até mesmo
+os modelos de layout são widgets.
+As imagens, ícones e texto que você vê em um
+aplicativo Flutter são todos widgets.
+As coisas que você não vê também são widgets,
+como as linhas, colunas e grids que organizam,
+restringem e alinham os widgets visíveis.
 
-You create a layout by composing widgets to 
-build more complex widgets. For example, 
-the diagram below shows 3 icons with a label under
-each one, and the corresponding widget tree:
+Você cria um layout compondo widgets para
+construir widgets mais complexos. Por exemplo,
+o diagrama abaixo mostra 3 ícones com um rótulo embaixo
+de cada um e a árvore de widgets correspondente:
 
-<img src='/assets/images/docs/fwe/layout/simple_row_column_widget_tree.png' alt="A diagram that shows widget composition with a series of lines and nodes.">
+<img src='/assets/images/docs/fwe/layout/simple_row_column_widget_tree.png' alt="Um diagrama que mostra a composição de widgets com uma série de linhas e nós.">
 
-In this example, there's a row of 3 columns where 
-each column contains an icon and a label. 
-All layouts, no matter how complex, 
-are created by composing these layout widgets.
+Neste exemplo, há uma linha de 3 colunas onde
+cada coluna contém um ícone e um rótulo.
+Todos os layouts, não importa quão complexos,
+são criados compondo esses widgets de layout.
 
-### Constraints
+### Restrições
 
-Understanding constraints in Flutter is an
-important part of understanding
-how layout works in Flutter.
+Entender as restrições no Flutter é uma
+parte importante para entender
+como o layout funciona no Flutter.
 
-Layout, in a general sense, refers to the size of 
-the widgets and their positions on the screen. 
-The size and position of any given widget is 
-constrained by its parent; 
-it can't have any size it wants, 
-and it doesn't decide its own place on the screen.
-Instead, size and position are determined by 
-a conversation between a widget and its parent.
+Layout, em um sentido geral, refere-se ao tamanho dos
+widgets e suas posições na tela.
+O tamanho e a posição de qualquer widget são
+restringidos por seu pai;
+ele não pode ter o tamanho que quiser,
+e não decide seu próprio lugar na tela.
+Em vez disso, o tamanho e a posição são determinados por
+uma conversa entre um widget e seu pai.
 
-In the simplest example, 
-the layout conversation looks like this:
+No exemplo mais simples,
+a conversa de layout se parece com isso:
 
- 1. A widget receives its constraints from its parent. 
- 2. A constraint is just a set of 4 doubles: 
-    a minimum and maximum width, 
-    and a minimum and maximum height. 
- 3. The widget determines what size it should be
-    within those constraints, and passes its
-    width and height back to the parent. 
- 4. The parent looks at the size it wants to be and
-    how it should be aligned, 
-    and sets the widget's position accordingly. 
-    Alignment can be set explicitly, 
-    using a variety of widgets like `Center`, 
-    and the alignment properties on `Row` and `Column`.
+ 1. Um widget recebe suas restrições de seu pai.
+ 2. Uma restrição é apenas um conjunto de 4 doubles:
+    uma largura mínima e máxima,
+    e uma altura mínima e máxima.
+ 3. O widget determina qual tamanho deve ter
+    dentro dessas restrições e passa sua
+    largura e altura de volta para o pai.
+ 4. O pai olha para o tamanho que ele quer ter e
+    como ele deve ser alinhado,
+    e define a posição do widget de acordo.
+    O alinhamento pode ser definido explicitamente,
+    usando uma variedade de widgets como `Center`,
+    e as propriedades de alinhamento em `Row` e `Column`.
 
-In Flutter, this layout conversation is often 
-expressed with the simplified phrase, 
-"Constraints go down. Sizes go up. 
-Parent sets the position."
+No Flutter, essa conversa de layout é frequentemente
+expressa com a frase simplificada:
+"As restrições descem. Os tamanhos sobem.
+O pai define a posição."
 
-### Box types
+### Tipos de box
 
-In Flutter, widgets are rendered by their 
-underlying [`RenderBox`][] objects. 
-These objects determine how to handle the
-constraints they're passed.
+No Flutter, os widgets são renderizados por seus
+objetos [`RenderBox`][] subjacentes.
+Esses objetos determinam como lidar com as
+restrições que lhes são passadas.
 
-Generally, there are three kinds of boxes:
-* Those that try to be as big as possible. 
-For example, the boxes used by 
-[`Center`][] and [`ListView`][]. 
-* Those that try to be the same size as their
-children. For example, the boxes used by 
-[`Transform`][] and [`Opacity`][]
-* Those that try to be a particular size.
-For example, the boxes used by 
-[`Image`][] and [`Text`][].
+Geralmente, existem três tipos de boxes:
+* Aquelas que tentam ser o maior possível.
+Por exemplo, os boxes usados por
+[`Center`][] e [`ListView`][].
+* Aquelas que tentam ter o mesmo tamanho de seus
+filhos. Por exemplo, os boxes usados por
+[`Transform`][] e [`Opacity`][]
+* Aquelas que tentam ter um tamanho específico.
+Por exemplo, os boxes usados por
+[`Image`][] e [`Text`][].
 
-Some widgets, for example [`Container`][], 
-vary from type to type based on their 
-constructor arguments. 
-The `Container` constructor defaults to trying to
-be as big as possible, but if you give it a width,
-for instance, it tries to honor that and 
-be that particular size.
+Alguns widgets, por exemplo [`Container`][],
+variam de tipo para tipo com base em seus
+argumentos do construtor.
+O construtor `Container` tenta ser o maior possível por padrão,
+mas se você der uma largura,
+por exemplo, ele tenta honrar isso e
+ter esse tamanho específico.
 
-Others, for example [`Row`][] and [`Column`][] (flex boxes) 
-vary based on the constraints they are given. 
-Read more about flex boxes and constraints in
-the [Understanding Constraints article][].
+Outros, por exemplo, [`Row`][] e [`Column`][] (flex boxes)
+variam com base nas restrições que recebem.
+Leia mais sobre flex boxes e restrições no
+[artigo sobre como entender as restrições][].
 
-## Lay out a single widget
+## Organizar um único widget
 
-To lay out a single widget in Flutter, 
-wrap a visible widget, 
-such as `Text` or `Image` with a widget that 
-can change its position on a screen, 
-such as a `Center` widget.
+Para organizar um único widget no Flutter,
+envolva um widget visível,
+como `Text` ou `Image` com um widget que
+pode alterar sua posição em uma tela,
+como um widget `Center`.
 
 :::note Note
-The examples on the page use a widget called 
-`BorderedImage`. This is a custom widget, 
-and is used here to hide
-the code that isn't relevant to this topic.
+Os exemplos na página usam um widget chamado
+`BorderedImage`. Este é um widget personalizado,
+e é usado aqui para ocultar
+o código que não é relevante para este tópico.
 :::
 
 ```dart
@@ -135,31 +136,31 @@ Widget build(BuildContext context) {
 }
 ```
 
-The following figure shows a widget that isn't 
-aligned on the left, 
-and a widget that has been centered on the right.
+A figura a seguir mostra um widget que não está
+alinhado à esquerda,
+e um widget que foi centralizado à direita.
 
-<img src='/assets/images/docs/fwe/layout/center.png' alt="A screenshot of a centered widget and a screenshot of a widget that hasn't been centered.">
+<img src='/assets/images/docs/fwe/layout/center.png' alt="Uma captura de tela de um widget centralizado e uma captura de tela de um widget que não foi centralizado.">
 
-All layout widgets have either of the following:
-* A `child` property if they take a single 
-child—for example, `Center`, `Container`,
-or `Padding`.
-* A `children` property if they take a list 
-of widgets—for example, 
-`Row`, `Column`, `ListView`, or `Stack`.
+Todos os widgets de layout têm um dos seguintes:
+* Uma propriedade `child` se eles recebem um único
+filho — por exemplo, `Center`, `Container` ou
+`Padding`.
+* Uma propriedade `children` se eles recebem uma lista
+de widgets — por exemplo,
+`Row`, `Column`, `ListView` ou `Stack`.
 
 ### Container
 
-`Container` is a convenience widget that's 
-made up of several widgets responsible for layout,
-painting, positioning, and sizing. 
-In regard to layout, 
-it can be used to add padding and 
-margins to a widget. 
-There is also a `Padding` widget
-that could be used here to the same effect. 
-The following example uses a `Container`.
+`Container` é um widget de conveniência que é
+composto por vários widgets responsáveis pelo layout,
+pintura, posicionamento e dimensionamento.
+Em relação ao layout,
+ele pode ser usado para adicionar padding e
+margins a um widget.
+Há também um widget `Padding`
+que pode ser usado aqui com o mesmo efeito.
+O exemplo a seguir usa um `Container`.
 
 ```dart
 Widget build(BuildContext context) {
@@ -170,15 +171,15 @@ Widget build(BuildContext context) {
 }
 ```
 
-The following figure shows a widget without 
-padding on the left, 
-and a widget with padding on the right.
+A figura a seguir mostra um widget sem
+padding à esquerda,
+e um widget com padding à direita.
 
-<img src='/assets/images/docs/fwe/layout/padding.png' alt="A screenshot of a widget with padding and a screenshot of a widget without padding.">
+<img src='/assets/images/docs/fwe/layout/padding.png' alt="Uma captura de tela de um widget com padding e uma captura de tela de um widget sem padding.">
 
-To create more complex layouts in Flutter, 
-you can compose many widgets. 
-For example, you can combine `Container` and `Center`:
+Para criar layouts mais complexos no Flutter,
+você pode compor muitos widgets.
+Por exemplo, você pode combinar `Container` e `Center`:
 
 ```dart
 Widget build(BuildContext context) {
@@ -191,21 +192,21 @@ Widget build(BuildContext context) {
 }
 ```
 
-## Layout multiple widgets vertically or horizontally
+## Organizar vários widgets verticalmente ou horizontalmente
 
-One of the most common layout patterns is to 
-arrange widgets vertically or horizontally. 
-You can use a `Row` widget to arrange widgets 
-horizontally, 
-and a `Column` widget to arrange widgets vertically. 
-The first figure on this page used both.
+Um dos padrões de layout mais comuns é
+organizar widgets verticalmente ou horizontalmente.
+Você pode usar um widget `Row` para organizar widgets
+horizontalmente,
+e um widget `Column` para organizar widgets verticalmente.
+A primeira figura desta página usou ambos.
 
-This is the most basic example of using a `Row` widget.
+Este é o exemplo mais básico de uso de um widget `Row`.
 
-{% render docs/code-and-image.md, 
-image:"fwe/layout/row.png", 
-caption: "This figure shows a row widget with three children."
-alt: "A screenshot of a row widget with three children"
+{% render docs/code-and-image.md,
+image:"fwe/layout/row.png",
+caption: "Esta figura mostra um widget de linha com três filhos.",
+alt: "Uma captura de tela de um widget de linha com três filhos"
 code:"
 ```dart
 Widget build(BuildContext context) {
@@ -220,17 +221,17 @@ Widget build(BuildContext context) {
 ```
 " %}
 
-Each child of `Row` or `Column` can be 
-rows and columns themselves, 
-combining to make a complex layout.
-For example, you could add labels to each 
-of the images in the example above using columns.
+Cada filho de `Row` ou `Column` pode ser
+linhas e colunas em si,
+combinando para formar um layout complexo.
+Por exemplo, você pode adicionar rótulos a cada
+uma das imagens no exemplo acima usando colunas.
 
 
 {% render docs/code-and-image.md,
 image:"fwe/layout/nested_row_column.png",
-caption: "This figure shows a row widget with three children, each of which is a column."
-alt: "A screenshot of a row of three widgets, each of which has a label underneath it."
+caption: "Esta figura mostra um widget de linha com três filhos, cada um dos quais é uma coluna.",
+alt: "Uma captura de tela de uma linha de três widgets, cada um dos quais tem um rótulo embaixo."
 code:"
 ```dart
 Widget build(BuildContext context) {
@@ -261,35 +262,35 @@ Widget build(BuildContext context) {
 " %}
 
 
-### Align widgets within rows and columns
+### Alinhar widgets dentro de linhas e colunas
 
-In the following example, 
-the widgets are each 200 pixels wide, 
-and the viewport is 700 pixels wide. 
-The widgets are consequently aligned to the left, 
-one after the other, 
-with all the extra space on the right.
+No exemplo a seguir,
+os widgets têm cada um 200 pixels de largura,
+e a viewport tem 700 pixels de largura.
+Os widgets são consequentemente alinhados à esquerda,
+um após o outro,
+com todo o espaço extra à direita.
 
-<img src='/assets/images/docs/fwe/layout/left_alignment.png' alt="A diagram that shows three widgets laid out in a row. Each child widget is labeled as 200px wide, and the blank space on the right is labeled as 100px wide.">
+<img src='/assets/images/docs/fwe/layout/left_alignment.png' alt="Um diagrama que mostra três widgets dispostos em uma linha. Cada widget filho é rotulado como 200px de largura, e o espaço em branco à direita é rotulado como 100px de largura.">
 
-You control how a row or column aligns its
-children using the `mainAxisAlignment` and 
-`crossAxisAlignment` properties.
-For a row, the main axis runs horizontally and 
-the cross axis runs vertically. For a column, 
-the main axis runs
-vertically and the cross axis runs horizontally.
+Você controla como uma linha ou coluna alinha seus
+filhos usando as propriedades `mainAxisAlignment` e
+`crossAxisAlignment`.
+Para uma linha, o eixo principal corre horizontalmente e
+o eixo cruzado corre verticalmente. Para uma coluna,
+o eixo principal corre
+verticalmente e o eixo cruzado corre horizontalmente.
 
-<img src='/assets/images/docs/fwe/layout/axes_diagram.png' alt="A diagram that shows the direction of the main axis and cross axis in both rows and columns">
+<img src='/assets/images/docs/fwe/layout/axes_diagram.png' alt="Um diagrama que mostra a direção do eixo principal e do eixo cruzado em linhas e colunas">
 
-Setting the main axis alignment to `spaceEvenly` 
-divides the free horizontal space evenly between,
-before, and after each image.
+Definir o alinhamento do eixo principal para `spaceEvenly`
+divide o espaço horizontal livre uniformemente entre,
+antes e depois de cada imagem.
 
 {% render docs/code-and-image.md,
 image:"fwe/layout/space_evenly.png",
-caption: "This figure shows a row widget with three children, which are aligned with the MainAxisAlignment.spaceEvenly constant."
-alt: "A screenshot of three widgets, spaced evenly from each other."
+caption: "Esta figura mostra um widget de linha com três filhos, que são alinhados com a constante MainAxisAlignment.spaceEvenly.",
+alt: "Uma captura de tela de três widgets, espaçados uniformemente uns dos outros."
 code:"
 ```dart
 Widget build(BuildContext context) {
@@ -305,44 +306,44 @@ Widget build(BuildContext context) {
 ```
 " %}
 
-Columns work the same way as rows. 
-The following example shows a column of 3 images, 
-each is 100 pixels high. The height of the 
-render box (in this case, the entire screen) 
-is more than 300 pixels, 
-so setting the main axis alignment to `spaceEvenly` 
-divides the free vertical space evenly between,
-above, and below each image.
+Colunas funcionam da mesma forma que as linhas.
+O exemplo a seguir mostra uma coluna de 3 imagens,
+cada uma com 100 pixels de altura. A altura da
+render box (neste caso, a tela inteira)
+é mais do que 300 pixels,
+então definir o alinhamento do eixo principal para `spaceEvenly`
+divide o espaço vertical livre uniformemente entre,
+acima e abaixo de cada imagem.
 
-<img src='/assets/images/docs/fwe/layout/col_space_evenly.png' alt="A screenshot of a three widgets laid out vertically, using a column widget.">
+<img src='/assets/images/docs/fwe/layout/col_space_evenly.png' alt="Uma captura de tela de três widgets dispostos verticalmente, usando um widget de coluna.">
 
-The [`MainAxisAlignment`][] and [`CrossAxisAlignment`][] 
-enums offer a variety of constants for 
-controlling alignment.
+Os enums [`MainAxisAlignment`][] e [`CrossAxisAlignment`][]
+oferecem uma variedade de constantes para
+controlar o alinhamento.
 
-Flutter includes other widgets that can be used 
-for alignment, notably the `Align` widget.
+O Flutter inclui outros widgets que podem ser usados
+para alinhamento, notavelmente o widget `Align`.
 
-### Sizing widgets within rows and columns
+### Dimensionar widgets dentro de linhas e colunas
 
-When a layout is too large to fit a device, 
-a yellow and black striped pattern appears 
-along the affected edge. 
-In this example, the viewport is 400 pixels wide,
-and each child is 150 pixels wide.
+Quando um layout é muito grande para caber em um dispositivo,
+um padrão listrado amarelo e preto aparece
+ao longo da borda afetada.
+Neste exemplo, a viewport tem 400 pixels de largura,
+e cada filho tem 150 pixels de largura.
 
-<img src='/assets/images/docs/fwe/layout/overflowing_row.png' alt="A screenshot of a row of widgets that are wider than their viewport.">
+<img src='/assets/images/docs/fwe/layout/overflowing_row.png' alt="Uma captura de tela de uma linha de widgets que são mais largos do que sua viewport.">
 
-Widgets can be sized to fit within a 
-row or column by using the `Expanded` widget. 
-To fix the previous example where the row of 
-images is too wide for its render box, 
-wrap each image with an [`Expanded`][] widget.
+Os widgets podem ser dimensionados para caber em uma
+linha ou coluna usando o widget `Expanded`.
+Para corrigir o exemplo anterior onde a linha de
+imagens é muito larga para sua render box,
+envolva cada imagem com um widget [`Expanded`][].
 
 {% render docs/code-and-image.md,
 image:"fwe/layout/expanded_row.png",
-caption: "This figure shows a row widget with three children that are wrapped with `Expanded` widgets."
-alt: "A screenshot of three widgets, which take up exactly the amount of space available on the main axis. All three widgets are equal width."
+caption: "Esta figura mostra um widget de linha com três filhos que são envolvidos com widgets `Expanded`.",
+alt: "Uma captura de tela de três widgets, que ocupam exatamente a quantidade de espaço disponível no eixo principal. Todos os três widgets têm a mesma largura."
 code:"
 ```dart
 Widget build(BuildContext context) {
@@ -363,21 +364,21 @@ Widget build(BuildContext context) {
 ```
 " %}
 
-The `Expanded` widget can also dictate how much 
-space a widget should take up relative
-to its siblings. For example,
-perhaps you want a widget to occupy twice 
-as much space as its siblings. 
-For this, use the `Expanded` widgets `flex` property, 
-an integer that determines the flex factor 
-for a widget. The default flex factor is 1. 
-The following code sets the flex factor of the
-middle image to 2:
+O widget `Expanded` também pode ditar quanto
+espaço um widget deve ocupar em relação
+a seus irmãos. Por exemplo,
+talvez você queira que um widget ocupe o dobro
+do espaço de seus irmãos.
+Para isso, use a propriedade `flex` dos widgets `Expanded`,
+um número inteiro que determina o fator de flexibilidade
+para um widget. O fator de flexibilidade padrão é 1.
+O código a seguir define o fator de flexibilidade da
+imagem do meio para 2:
 
 {% render docs/code-and-image.md,
 image:"fwe/layout/flex_2_row.png",
-caption: "This figure shows a row widget with three children which are wrapped with `Expanded` widgets. The center child has it's `flex` property set to 2."
-alt: "A screenshot of three widgets, which take up exactly the amount of space available on the main axis. The widget in the center is twice as wide as the widgets on the left and right."
+caption: "Esta figura mostra um widget de linha com três filhos que são envolvidos com widgets `Expanded`. O filho central tem sua propriedade `flex` definida como 2.",
+alt: "Uma captura de tela de três widgets, que ocupam exatamente a quantidade de espaço disponível no eixo principal. O widget no centro tem o dobro da largura dos widgets à esquerda e à direita."
 code:"
 ```dart
 Widget build(BuildContext context) {
@@ -399,80 +400,80 @@ Widget build(BuildContext context) {
 ```
 " %}
 
-## DevTools and debugging layout
+## DevTools e depuração de layout
 
-In certain situations, 
-a box's constraint is unbounded, or infinite. 
-This means that either the maximum width or the
-maximum height is set to [`double.infinity`][]. 
-A box that tries to be as big as possible won't
-function usefully when given an 
-unbounded constraint and, in debug mode, 
-throws an exception.
+Em certas situações,
+a restrição de uma box é ilimitada ou infinita.
+Isso significa que a largura máxima ou a
+altura máxima está definida como [`double.infinity`][].
+Uma box que tenta ser o maior possível não
+funcionará de forma útil quando receber uma
+restrição ilimitada e, no modo de depuração,
+lança uma exceção.
 
-The most common case where a render box ends up
-with an unbounded constraint is within a 
-flex box ([`Row`][] or [`Column`][]), 
-and within a scrollable region 
-(such as [`ListView`][] and other [`ScrollView`][] subclasses). 
-`ListView`, for example, tries to expand to
-fit the space available in its cross-direction 
-(perhaps it's a vertically-scrolling
-block and tries to be as wide as its parent). 
-If you nest a vertically scrolling `ListView`
-inside a horizontally scrolling `ListView`,
-the inner list tries to be as wide as possible, 
-which is infinitely wide, since the outer one is
-scrollable in that direction.
+O caso mais comum em que uma render box acaba
+com uma restrição ilimitada é dentro de uma
+flex box ([`Row`][] ou [`Column`][]),
+e dentro de uma região rolável
+(como [`ListView`][] e outras subclasses de [`ScrollView`][]).
+`ListView`, por exemplo, tenta se expandir para
+caber no espaço disponível em sua direção cruzada
+(talvez seja um bloco de rolagem vertical
+e tente ser o mais largo possível que seu pai).
+Se você aninhar uma `ListView` de rolagem vertical
+dentro de uma `ListView` de rolagem horizontal,
+a lista interna tenta ser o mais larga possível,
+que é infinitamente larga, já que a externa é
+rolável nessa direção.
 
-Perhaps the most common error you'll run into 
-while building a Flutter application is due to 
-incorrectly using layout widgets, 
-and is referred to as the "unbounded constraints" 
-error.
+Talvez o erro mais comum que você encontrará
+ao construir um aplicativo Flutter seja devido ao
+uso incorreto de widgets de layout,
+e é referido como o erro de
+"restrições ilimitadas".
 
-If there was only one type error you should be 
-prepared to confront when you first start building
-Flutter apps, it would be this one.
+Se houvesse apenas um tipo de erro que você deveria estar
+preparado para enfrentar quando você começar a construir
+aplicativos Flutter pela primeira vez, seria esse.
 
-{% ytEmbed 'jckqXR5CrPI', 'Decoding Flutter: Unbounded height and width' %}
+{% ytEmbed 'jckqXR5CrPI', 'Decodificando Flutter: Altura e largura ilimitadas' %}
 
-:::note The Widget inspector
-Flutter has a robust suite of DevTools that
-help you work with any number of aspects of
-Flutter development.
-The "Widget Inspector" tool is particularly
-useful when building and debugging layouts (and working with widgets in general).
+:::note O inspetor de widgets
+O Flutter tem um conjunto robusto de DevTools que
+ajudam você a trabalhar com vários aspectos de
+desenvolvimento Flutter.
+A ferramenta "Inspetor de widgets" é particularmente
+útil ao construir e depurar layouts (e trabalhar com widgets em geral).
 
-[Learn more about the Flutter inspector][].
+[Saiba mais sobre o inspetor Flutter][].
 :::
 
-##  Scrolling widgets
+##  Widgets de rolagem
 
-Flutter has many built-in widgets that
-automatically scroll and also offers a variety of
-widgets that you can customize to
-create specific scrolling behavior.
-On this page, you'll see how to use the most common widget for
-making any page scrollable,
-as well as a widget for creating scrollable lists.
+O Flutter tem muitos widgets integrados que
+rolam automaticamente e também oferece uma variedade de
+widgets que você pode personalizar para
+criar um comportamento de rolagem específico.
+Nesta página, você verá como usar o widget mais comum para
+tornar qualquer página rolável,
+assim como um widget para criar listas roláveis.
 
 ### ListView
 
-`ListView` is a column-like widget that 
-automatically provides scrolling when its 
-content is longer than its render box.
-The most basic way to use a `ListView` is 
-very similar to using a `Column` or `Row`. 
-Unlike a column or row, 
-a `ListView` requires its children to take up 
-all the available space on the cross axis, 
-as shown in the example below. 
+`ListView` é um widget semelhante a uma coluna que
+fornece automaticamente a rolagem quando seu
+conteúdo é mais longo do que sua render box.
+A maneira mais básica de usar uma `ListView` é
+muito semelhante ao uso de uma `Column` ou `Row`.
+Ao contrário de uma coluna ou linha,
+uma `ListView` exige que seus filhos ocupem
+todo o espaço disponível no eixo cruzado,
+como mostrado no exemplo abaixo.
 
 {% render docs/code-and-image.md,
 image:"fwe/layout/basic_listview.png",
-caption: "This figure shows a ListView widget with three children."
-alt: "A screenshot of three widgets laid out vertically. They have expanded to take up all available space on the cross axis."
+caption: "Esta figura mostra um widget ListView com três filhos.",
+alt: "Uma captura de tela de três widgets dispostos verticalmente. Eles se expandiram para ocupar todo o espaço disponível no eixo cruzado."
 code:"
 ```dart
 Widget build(BuildContext context) {
@@ -487,23 +488,23 @@ Widget build(BuildContext context) {
 ```
 " %}
 
-`ListView`s are commonly used when you have an 
-unknown or very large (or infinite) number of list items. 
-When this is the case, 
-it's best to use the `ListView.builder` constructor. 
-The builder constructor only builds the 
-children that are currently visible on screen.
+As `ListView`s são comumente usadas quando você tem um
+número desconhecido ou muito grande (ou infinito) de itens de lista.
+Quando este for o caso,
+é melhor usar o construtor `ListView.builder`.
+O construtor builder constrói apenas os
+filhos que estão atualmente visíveis na tela.
 
-In the following example, 
-the `ListView` is displaying a list of to-do items. 
-The todo items are being fetched from a repository, 
-and therefore the number of todos is unknown.
+No exemplo a seguir,
+a `ListView` está exibindo uma lista de itens de tarefas pendentes.
+Os itens de tarefas pendentes estão sendo buscados de um repositório,
+e, portanto, o número de tarefas pendentes é desconhecido.
 
 
 {% render docs/code-and-image.md,
 image:"fwe/layout/listview_builder.png",
-caption: "This figure shows the ListView.builder constructor to display an unknown number of children."
-alt: "A screenshot of several widgets laid out vertically. They have expanded to take up all available space on the cross axis."
+caption: "Esta figura mostra o construtor ListView.builder para exibir um número desconhecido de filhos.",
+alt: "Uma captura de tela de vários widgets dispostos verticalmente. Eles se expandiram para ocupar todo o espaço disponível no eixo cruzado."
 code:"
 ```dart
 final List<ToDo> items = Repository.fetchTodos();
@@ -529,27 +530,27 @@ Widget build(BuildContext context) {
 ```
 " %}
 
-## Adaptive layouts
+## Layouts adaptativos
 
-Because Flutter is used to create mobile,
-tablet, desktop, _and_ web apps,
-it's likely you'll need to adjust your
-application to behave differently depending on
-things like screen size or input device.
-This is referred to as making an app
-_adaptive_ and _responsive_.
+Como o Flutter é usado para criar aplicativos para celular,
+tablet, desktop, _e_ web,
+é provável que você precise ajustar seu
+aplicativo para se comportar de forma diferente, dependendo de
+coisas como tamanho da tela ou dispositivo de entrada.
+Isso é chamado de tornar um aplicativo
+_adaptativo_ e _responsivo_.
 
-One of the most useful widgets in making 
-adaptive layouts is the [`LayoutBuilder`][] widget. 
-`LayoutBuilder` is one of many widgets that uses
-the "builder" pattern in Flutter.
+Um dos widgets mais úteis para fazer
+layouts adaptativos é o widget [`LayoutBuilder`][].
+`LayoutBuilder` é um dos muitos widgets que usa
+o padrão "builder" no Flutter.
 
-### The builder pattern
+### O padrão builder
 
-In Flutter, you'll find several widgets that use 
-the word "builder" in their names or 
-in their constructors. 
-The following list isn't exhaustive:
+No Flutter, você encontrará vários widgets que usam
+a palavra "builder" em seus nomes ou
+em seus construtores.
+A lista a seguir não é exaustiva:
 
 * [`ListView.builder`][]
 * [`GridView.builder`][]
@@ -557,51 +558,51 @@ The following list isn't exhaustive:
 * [`LayoutBuilder`][]
 * [`FutureBuilder`][]
 
-These different "builders" are useful for solving 
-different problems. For example, 
-the `ListView.builder` constructor is primarily used
-to lazily render items in a list, 
-while the `Builder` widget is useful for gaining 
-access to the `BuildContext` in deeply widget code.
+Esses diferentes "builders" são úteis para resolver
+diferentes problemas. Por exemplo,
+o construtor `ListView.builder` é usado principalmente
+para renderizar preguiçosamente os itens em uma lista,
+enquanto o widget `Builder` é útil para obter
+acesso ao `BuildContext` em código de widget profundo.
 
-Despite their different use cases, 
-these builders are unified by how they work. 
-Builder widgets and builder constructors all have 
-arguments called 'builder' 
-(or something similar, 
-like `itemBuilder` in the case of `ListView.builder`), 
-and the builder argument always accepts a
-callback. 
-This callback is a __builder function__. 
-Builder functions are callbacks that pass data to
-the parent widget, 
-and the parent widget uses those arguments to 
-build and return the child widget.
-Builder functions always pass in at least
-one argument–the build context–
-and generally at least one other argument.
+Apesar de seus diferentes casos de uso,
+esses builders são unificados por como eles funcionam.
+Widgets builder e construtores builder têm todos
+argumentos chamados 'builder'
+(ou algo semelhante,
+como `itemBuilder` no caso de `ListView.builder`),
+e o argumento builder sempre aceita um
+callback.
+Este callback é uma __função builder__.
+Funções builder são callbacks que passam dados para
+o widget pai,
+e o widget pai usa esses argumentos para
+construir e retornar o widget filho.
+Funções builder sempre passam pelo menos
+um argumento — o contexto de construção —
+e geralmente pelo menos um outro argumento.
 
-For example, the `LayoutBuilder` widget is used 
-to create responsive layouts based 
-on the size of the viewport. The builder callback
-body is passed the [`BoxConstraints`][] that it receives
-from its parent, along with the widgets 'BuildContext'. 
-With these constraints, you can return a different
-widget based on the available space.
+Por exemplo, o widget `LayoutBuilder` é usado
+para criar layouts responsivos com base
+no tamanho da viewport. O corpo do callback builder
+recebe o [`BoxConstraints`][] que recebe
+de seu pai, junto com o 'BuildContext' dos widgets.
+Com essas restrições, você pode retornar um widget diferente
+com base no espaço disponível.
 
-{% ytEmbed 'IYDVcriKjsw', 'LayoutBuilder (Flutter Widget of the Week)' %}
+{% ytEmbed 'IYDVcriKjsw', 'LayoutBuilder (Widget da Semana do Flutter)' %}
 
-In the following example, 
-the widget returned by the `LayoutBuilder` 
-changes based on whether the viewport is 
-less than or equal 600 pixels,
-or greater than 600 pixels.
+No exemplo a seguir,
+o widget retornado pelo `LayoutBuilder`
+muda com base em se a viewport é
+menor ou igual a 600 pixels,
+ou maior que 600 pixels.
 
 
 {% render docs/code-and-image.md,
 image:"fwe/layout/layout_builder.png",
-caption: "This figure shows a narrow layout, which lays out its children vertically, and a wider layout, which lays out its children in a grid."
-alt: "Two screenshots, in which one shows a narrow layout and the other shows a wide layout."
+caption: "Esta figura mostra um layout estreito, que organiza seus filhos verticalmente, e um layout mais amplo, que organiza seus filhos em uma grid.",
+alt: "Duas capturas de tela, nas quais uma mostra um layout estreito e a outra mostra um layout amplo."
 code:"
 ```dart
 Widget build(BuildContext context) {
@@ -618,20 +619,20 @@ Widget build(BuildContext context) {
 ```
 " %}
 
-Meanwhile, the `itemBuilder` callback on the 
-`ListView.builder` constructor is passed the 
-build context and an `int`.
-This callback is called once for every item 
-in the list, 
-and the int argument represents the index of the list item. 
-The first time the itemBuilder callback is called 
-when Flutter is building the UI, 
-the int passed to the function is 0, 
-the second time it's 1, and so on.
+Enquanto isso, o callback `itemBuilder` no
+construtor `ListView.builder` recebe o
+contexto de construção e um `int`.
+Este callback é chamado uma vez para cada item
+na lista,
+e o argumento int representa o índice do item da lista.
+A primeira vez que o callback itemBuilder é chamado
+quando o Flutter está construindo a UI,
+o int passado para a função é 0,
+a segunda vez é 1, e assim por diante.
 
-This allows you to provide specific configuration 
-based on the index. Recall the example above using
-the`ListView.builder` constructor:
+Isso permite que você forneça configurações específicas
+com base no índice. Lembre-se do exemplo acima usando
+o construtor`ListView.builder`:
 
 ```dart
 final List<ToDo> items = Repository.fetchTodos();
@@ -656,19 +657,19 @@ Widget build(BuildContext context) {
 }
 ```
 
-This example code uses the index that's 
-passed into the builder to grab the correct 
-todo from the list of items, 
-and then displays that todo's data in 
-the widget that is returned from the builder.
+Este código de exemplo usa o índice que é
+passado para o builder para obter a tarefa pendente correta
+da lista de itens,
+e então exibe os dados dessa tarefa pendente no
+widget que é retornado do builder.
 
-To exemplify this, 
-the following example changes the 
-background color of every other list item.
+Para exemplificar isso,
+o exemplo a seguir altera a
+cor de fundo de todos os outros itens da lista.
 
 {% render docs/code-and-image.md,
 image:"fwe/layout/alternating_list_items.png"
-caption:"This figure shows a `ListView`, in which its children have alternating background colors. The background colors were determined programmatically based on the index of the child within the `ListView`."
+caption:"Esta figura mostra um `ListView`, na qual seus filhos têm cores de fundo alternadas. As cores de fundo foram determinadas programaticamente com base no índice do filho dentro do `ListView`."
 code:"
 ```dart
 final List<ToDo> items = Repository.fetchTodos();
@@ -695,31 +696,31 @@ Widget build(BuildContext context) {
 ```
 " %}
 
-## Additional resources
+## Recursos adicionais
 
-* Common layout widgets and concepts
-  * Video: [OverlayPortal—Flutter Widget of the Week][]
-  * Video: [Stack—Flutter Widget of the Week][]
-  * Tutorial: [Layouts in Flutter][]
-  * Documentation: [Stack documentation][]
-* Sizing and positioning widgets
-  * Video: [Expanded—Flutter Widget of the Week][]
-  * Video: [Flexible—Flutter Widget of the Week][]
-  * Video: [Intrinsic widgets—Decoding Flutter][]
-* Scrollable widgets
-  * Example code: [Work with long lists][]
-  * Example code: [Create a horizontal list][]
-  * Example code: [Create a grid list][]
-  * Video: [ListView—Flutter Widget of the Week][]
-* Adaptive Apps
-  * Tutorial: [Adaptive Apps codelab][]
-  * Video: [MediaQuery—Flutter Widget of the Week][]
-  * Video: [Building platform adaptive apps][]
-  * Video: [Builder—Flutter Widget of the Week][]
+* Widgets e conceitos de layout comuns
+  * Vídeo: [OverlayPortal — Widget da Semana do Flutter][]
+  * Vídeo: [Stack — Widget da Semana do Flutter][]
+  * Tutorial: [Layouts no Flutter][]
+  * Documentação: [Documentação do Stack][]
+* Dimensionamento e posicionamento de widgets
+  * Vídeo: [Expanded — Widget da Semana do Flutter][]
+  * Vídeo: [Flexible — Widget da Semana do Flutter][]
+  * Vídeo: [Widgets Intrinsic — Decodificando o Flutter][]
+* Widgets roláveis
+  * Código de exemplo: [Trabalhar com listas longas][]
+  * Código de exemplo: [Criar uma lista horizontal][]
+  * Código de exemplo: [Criar uma lista em grid][]
+  * Vídeo: [ListView — Widget da Semana do Flutter][]
+* Aplicativos Adaptativos
+  * Tutorial: [Codelab de Aplicativos Adaptativos][]
+  * Vídeo: [MediaQuery — Widget da Semana do Flutter][]
+  * Vídeo: [Construindo aplicativos adaptativos de plataforma][]
+  * Vídeo: [Builder — Widget da Semana do Flutter][]
 
-### API reference
+### Referência da API
 
-The following resources explain individual APIs.
+Os recursos a seguir explicam APIs individuais.
 
 * [`Builder`][]
 * [`Row`][]
@@ -732,30 +733,30 @@ The following resources explain individual APIs.
 * [`MediaQuery`][]
 * [`LayoutBuilder`][]
 
-[Layouts in Flutter]: /ui/layout
-[Understanding constraints article]: /ui/layout/constraints
+[Layouts no Flutter]: /ui/layout
+[artigo sobre como entender as restrições]: /ui/layout/constraints
 [`RenderBox`]: {{site.api}}/flutter/rendering/RenderBox-class.html
-[Expanded—Flutter Widget of the Week]: {{site.youtube-site}}/watch?v=_rnZaagadyo
-[Flexible—Flutter Widget of the Week]: {{site.youtube-site}}/watch?v=CI7x0mAZiY0
-[Intrinsic widgets—Decoding Flutter]: {{site.youtube-site}}/watch?v=Si5XJ_IocEs
-[Build a Flutter Layout]: /ui/layout/tutorial
-[Basic scrolling]: /ui/layout/scrolling#basic-scrolling
-[Builder—Flutter Widget of the Week]: {{site.youtube-site}}/watch?v=xXNOkIuSYuA
-[ListView—Flutter Widget of the Week]: {{site.youtube-site}}/watch?v=KJpkjHGiI5A
-[Work with long lists]: /cookbook/lists/long-lists
-[Create a horizontal list]: /cookbook/lists/horizontal-list
-[Create a grid list]: /cookbook/lists/grid-lists
-[PageView—Flutter Widget of the Week]: {{site.youtube-site}}/watch?v=J1gE9xvph-A
-[Stack—Flutter Widget of the Week]: {{site.youtube-site}}/watch?v=liEGSeD3Zt8
-[Stack documentation]: /ui/layout#stack
-[OverlayPortal—Flutter Widget of the Week]: {{site.youtube-site}}/watch?v=S0Ylpa44OAQ
-[LayoutBuilder—Flutter Widget of the Week]: {{site.youtube-site}}/watch?v=IYDVcriKjsw
-[MediaQuery—Flutter Widget of the Week]: {{site.youtube-site}}/watch?v=A3WrA4zAaPw
-[Adaptive apps codelab]: {{site.codelabs}}/codelabs/flutter-adaptive-app
-[Building platform adaptive apps]: {{site.youtube-site}}/watch?v=RCdeSKVt7LI
-[Learn more about the Flutter inspector]: /tools/devtools/inspector
-[Unbounded height and width—Decoding Flutter]: {{site.youtube-site}}/watch?v=jckqXR5CrPI
-[2D Scrolling]: {{site.youtube-site}}/watch?v=ppEdTo-VGcg
+[Expanded — Widget da Semana do Flutter]: {{site.youtube-site}}/watch?v=_rnZaagadyo
+[Flexible — Widget da Semana do Flutter]: {{site.youtube-site}}/watch?v=CI7x0mAZiY0
+[Widgets Intrinsic — Decodificando o Flutter]: {{site.youtube-site}}/watch?v=Si5XJ_IocEs
+[Construir um Layout do Flutter]: /ui/layout/tutorial
+[Rolagem básica]: /ui/layout/scrolling#basic-scrolling
+[Builder — Widget da Semana do Flutter]: {{site.youtube-site}}/watch?v=xXNOkIuSYuA
+[ListView — Widget da Semana do Flutter]: {{site.youtube-site}}/watch?v=KJpkjHGiI5A
+[Trabalhar com listas longas]: /cookbook/lists/long-lists
+[Criar uma lista horizontal]: /cookbook/lists/horizontal-list
+[Criar uma lista em grid]: /cookbook/lists/grid-lists
+[PageView — Widget da Semana do Flutter]: {{site.youtube-site}}/watch?v=J1gE9xvph-A
+[Stack — Widget da Semana do Flutter]: {{site.youtube-site}}/watch?v=liEGSeD3Zt8
+[Documentação do Stack]: /ui/layout#stack
+[OverlayPortal — Widget da Semana do Flutter]: {{site.youtube-site}}/watch?v=S0Ylpa44OAQ
+[LayoutBuilder — Widget da Semana do Flutter]: {{site.youtube-site}}/watch?v=IYDVcriKjsw
+[MediaQuery — Widget da Semana do Flutter]: {{site.youtube-site}}/watch?v=A3WrA4zAaPw
+[Codelab de aplicativos adaptativos]: {{site.codelabs}}/codelabs/flutter-adaptive-app
+[Construindo aplicativos adaptativos de plataforma]: {{site.youtube-site}}/watch?v=RCdeSKVt7LI
+[Saiba mais sobre o inspetor Flutter]: /tools/devtools/inspector
+[Altura e largura ilimitadas — Decodificando o Flutter]: {{site.youtube-site}}/watch?v=jckqXR5CrPI
+[Rolagem 2D]: {{site.youtube-site}}/watch?v=ppEdTo-VGcg
 [`Builder`]: {{site.api}}/flutter/widgets/Builder-class.html
 [`Row`]: {{site.api}}/flutter/widgets/Row-class.html
 [`Column`]: {{site.api}}/flutter/widgets/Column-class.html
@@ -779,7 +780,7 @@ The following resources explain individual APIs.
 [`Builder`]: {{site.api}}/flutter/widgets/Builder-class.html
 [`ScrollView`]: {{site.api}}/flutter/widgets/Scrollview-class.html
 [`LayoutBuilder`]: {{site.api}}/flutter/widgets/LayoutBuilder-class.html
-[`BoxConstraints`]:{{site.api}}/flutter/rendering/BoxConstraints-class.html 
+[`BoxConstraints`]:{{site.api}}/flutter/rendering/BoxConstraints-class.html
 [`LayoutBuilder`]: {{site.api}}/flutter/widgets/LayoutBuilder-class.html
 [`FutureBuilder`]: {{site.api}}/flutter/widgets/FutureBuilder-class.html
 [`Container`]:{{site.api}}/flutter/widgets/Container-class.html
@@ -789,7 +790,7 @@ The following resources explain individual APIs.
 
 ## Feedback
 
-As this section of the website is evolving,
-we [welcome your feedback][]!
+Como esta seção do site está evoluindo,
+[agradecemos seu feedback][]!
 
-[welcome your feedback]: https://google.qualtrics.com/jfe/form/SV_6A9KxXR7XmMrNsy?page="layout"
+[agradecemos seu feedback]: https://google.qualtrics.com/jfe/form/SV_6A9KxXR7XmMrNsy?page="layout"

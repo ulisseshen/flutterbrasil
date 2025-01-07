@@ -1,103 +1,104 @@
 ---
-title: Set up an editor
-description: Configuring an IDE for Flutter.
+ia-translate: true
+title: Configurar um editor
+description: Configurando um IDE para Flutter.
 prev:
-  title: Set up Flutter
+  title: Configurar o Flutter
   path: /get-started/install
 next:
-  title: Create your first app
+  title: Crie seu primeiro aplicativo
   path: /get-started/codelab
 toc: false
 ---
 
-You can build apps with Flutter using any text editor or
-integrated development environment (IDE)
-combined with Flutter's command-line tools.
-The Flutter team recommends using an editor that supports
-a Flutter extension or plugin, like VS Code and Android Studio.
-These plugins provide code completion, syntax highlighting,
-widget editing assists, run & debug support, and more.
+Você pode criar aplicativos com Flutter usando qualquer editor de texto ou
+ambiente de desenvolvimento integrado (IDE)
+combinado com as ferramentas de linha de comando do Flutter.
+A equipe do Flutter recomenda usar um editor que suporte
+uma extensão ou plugin do Flutter, como VS Code e Android Studio.
+Esses plugins oferecem preenchimento de código, realce de sintaxe,
+assistências de edição de widget, suporte para executar e depurar e muito mais.
 
-You can add a supported plugin for Visual Studio Code,
-Android Studio, or IntelliJ IDEA Community, Educational,
-and Ultimate editions.
-The [Flutter plugin][] _only_ works with
-Android Studio and the listed editions of IntelliJ IDEA.
+Você pode adicionar um plugin compatível para Visual Studio Code,
+Android Studio ou IntelliJ IDEA Community, Educational,
+e edições Ultimate.
+O [plugin do Flutter][] _só_ funciona com
+Android Studio e as edições listadas do IntelliJ IDEA.
 
-(The [Dart plugin][] supports eight additional JetBrains IDEs.)
+(O [plugin do Dart][] suporta oito IDEs JetBrains adicionais.)
 
-[Flutter plugin]: https://plugins.jetbrains.com/plugin/9212-flutter
-[Dart plugin]: https://plugins.jetbrains.com/plugin/6351-dart
+[plugin do Flutter]: https://plugins.jetbrains.com/plugin/9212-flutter
+[plugin do Dart]: https://plugins.jetbrains.com/plugin/6351-dart
 
-Follow these procedures to add the Flutter plugin to VS Code,
-Android Studio, or IntelliJ.
+Siga estes procedimentos para adicionar o plugin do Flutter ao VS Code,
+Android Studio ou IntelliJ.
 
-If you choose another IDE, skip ahead
-to [Write your first Flutter app][].
+Se você escolher outro IDE, avance
+para [Escreva seu primeiro aplicativo Flutter][].
 
-[Write your first Flutter app]: /get-started/codelab
+[Escreva seu primeiro aplicativo Flutter]: /get-started/codelab
 
 {% tabs %}
 {% tab "Visual Studio Code" %}
 
-## Install VS Code
+## Instale o VS Code
 
-[VS Code][] is a code editor to build and debug apps.
-With the Flutter extension installed, you can compile, deploy, and debug
-Flutter apps.
+[VS Code][] é um editor de código para criar e depurar aplicativos.
+Com a extensão Flutter instalada, você pode compilar, implantar e depurar
+aplicativos Flutter.
 
-To install the latest version of VS Code,
-follow Microsoft's instructions for the relevant platform:
+Para instalar a versão mais recente do VS Code,
+siga as instruções da Microsoft para a plataforma relevante:
 
-- [Install on macOS][]
-- [Install on Windows][]
-- [Install on Linux][]
+- [Instalar no macOS][]
+- [Instalar no Windows][]
+- [Instalar no Linux][]
 
 [VS Code]: https://code.visualstudio.com/
-[Install on macOS]: https://code.visualstudio.com/docs/setup/mac
-[Install on Windows]: https://code.visualstudio.com/docs/setup/windows
-[Install on Linux]: https://code.visualstudio.com/docs/setup/linux
+[Instalar no macOS]: https://code.visualstudio.com/docs/setup/mac
+[Instalar no Windows]: https://code.visualstudio.com/docs/setup/windows
+[Instalar no Linux]: https://code.visualstudio.com/docs/setup/linux
 
-## Install the VS Code Flutter extension
+## Instalar a extensão Flutter do VS Code
 
-1. Start **VS Code**.
+1. Inicie o **VS Code**.
 
-1. Open a browser and go to the [Flutter extension][] page
-   on the Visual Studio Marketplace.
+1. Abra um navegador e vá para a página da [extensão Flutter][]
+   no Visual Studio Marketplace.
 
-1. Click **Install**.
-   Installing the Flutter extension also installs the Dart extension.
+1. Clique em **Instalar**.
+   A instalação da extensão Flutter também instala a extensão Dart.
 
-[Flutter extension]: https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter
+[extensão Flutter]: https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter
 
-## Validate your VS Code setup
+## Validar sua configuração do VS Code
 
-1. Go to **View** <span aria-label="and then">></span>
-   **Command Palette...**.
+1. Vá para **Exibir** <span aria-label="e então">></span>
+   **Paleta de comandos...**.
 
-   You can also press <kbd>Ctrl</kbd> / <kbd>Cmd</kbd> +
+   Você também pode pressionar <kbd>Ctrl</kbd> / <kbd>Cmd</kbd> +
    <kbd>Shift</kbd> + <kbd>P</kbd>.
 
-1. Type `doctor`.
+1. Digite `doctor`.
 
-1. Select **Flutter: Run Flutter Doctor**.
+1. Selecione **Flutter: Executar Flutter Doctor**.
 
-   Once you select this command, VS Code does the following.
+   Depois de selecionar este comando, o VS Code faz o seguinte.
 
-   - Opens the **Output** panel.
-   - Displays **flutter (flutter)** in the dropdown on the upper right
-     of this panel.
-   - Displays the output of Flutter Doctor command.
+   - Abre o painel **Saída**.
+   - Exibe **flutter (flutter)** no menu suspenso no canto superior direito
+     deste painel.
+   - Exibe a saída do comando Flutter Doctor.
 
 {% endtab %}
-{% tab "Android Studio and IntelliJ" %}
+{% tab "Android Studio e IntelliJ" %}
 
-## Install Android Studio or IntelliJ IDEA
+## Instale o Android Studio ou IntelliJ IDEA
 
-Android Studio and IntelliJ IDEA offer a complete,
-IDE experience once you install the Flutter plugin.
+Android Studio e IntelliJ IDEA oferecem uma experiência completa de
+IDE depois que você instala o plugin do Flutter.
 
-To install the latest version of the following IDEs, follow their instructions:
+Para instalar a versão mais recente dos seguintes IDEs, siga as instruções deles:
 
 - [Android Studio][]
 - [IntelliJ IDEA Community][]
@@ -107,63 +108,62 @@ To install the latest version of the following IDEs, follow their instructions:
 [IntelliJ IDEA Community]: https://www.jetbrains.com/idea/download/
 [IntelliJ IDEA Ultimate]: https://www.jetbrains.com/idea/download/
 
-## Install the Flutter plugin
+## Instalar o plugin do Flutter
 
-The installation instructions vary by platform.
+As instruções de instalação variam de acordo com a plataforma.
 
 ### macOS
 
-Use the following instructions for macOS:
+Use as seguintes instruções para macOS:
 
-1. Start Android Studio or IntelliJ.
+1. Inicie o Android Studio ou IntelliJ.
 
-1. From the macOS menu bar, go to **Android Studio** (or **IntelliJ**)
-   <span aria-label="and then">></span> **Settings...**.
+1. Na barra de menu do macOS, vá para **Android Studio** (ou **IntelliJ**)
+   <span aria-label="e então">></span> **Configurações...**.
 
-   You can also press <kbd>Cmd</kbd> + <kbd>,</kbd>.
+   Você também pode pressionar <kbd>Cmd</kbd> + <kbd>,</kbd>.
 
-   The **Preferences** dialog opens.
+   A caixa de diálogo **Preferências** é aberta.
 
-1. From the list at the left, select **Plugins**.
+1. Na lista à esquerda, selecione **Plugins**.
 
-1. From the top of this panel, select **Marketplace**.
+1. Na parte superior deste painel, selecione **Marketplace**.
 
-1. Type `flutter` in the plugins search field.
+1. Digite `flutter` no campo de pesquisa de plugins.
 
-1. Select the **Flutter** plugin.
+1. Selecione o plugin **Flutter**.
 
-1. Click **Install**.
+1. Clique em **Instalar**.
 
-1. Click **Yes** when prompted to install the plugin.
+1. Clique em **Sim** quando solicitado a instalar o plugin.
 
-1. Click **Restart** when prompted.
+1. Clique em **Reiniciar** quando solicitado.
 
-### Linux or Windows
+### Linux ou Windows
 
-Use the following instructions for Linux or Windows:
+Use as seguintes instruções para Linux ou Windows:
 
-1. Go to **File** <span aria-label="and then">></span>
-   **Settings**.
+1. Vá para **Arquivo** <span aria-label="e então">></span>
+   **Configurações**.
 
-   You can also press <kbd>Ctrl</kbd> + <kbd>Alt</kbd> +
+   Você também pode pressionar <kbd>Ctrl</kbd> + <kbd>Alt</kbd> +
    <kbd>S</kbd>.
 
-   The **Preferences** dialog opens.
+   A caixa de diálogo **Preferências** é aberta.
 
-1. From the list at the left, select **Plugins**.
+1. Na lista à esquerda, selecione **Plugins**.
 
-1. From the top of this panel, select **Marketplace**.
+1. Na parte superior deste painel, selecione **Marketplace**.
 
-1. Type `flutter` in the plugins search field.
+1. Digite `flutter` no campo de pesquisa de plugins.
 
-1. Select the **Flutter** plugin.
+1. Selecione o plugin **Flutter**.
 
-1. Click **Install**.
+1. Clique em **Instalar**.
 
-1. Click **Yes** when prompted to install the plugin.
+1. Clique em **Sim** quando solicitado a instalar o plugin.
 
-1. Click **Restart** when prompted.
+1. Clique em **Reiniciar** quando solicitado.
 
 {% endtab %}
 {% endtabs %}
-

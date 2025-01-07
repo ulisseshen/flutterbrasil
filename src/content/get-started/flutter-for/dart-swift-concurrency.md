@@ -1,82 +1,83 @@
 ---
-title: Flutter concurrency for Swift developers
+ia-translate: true
+title: Concorrência em Flutter para desenvolvedores Swift
 description: >
-  Leverage your Swift concurrency knowledge while learning Flutter and Dart.
+  Aproveite seu conhecimento de concorrência em Swift ao aprender Flutter e Dart.
 ---
 
 <?code-excerpt path-base="resources/dart_swift_concurrency"?>
 
-Both Dart and Swift support concurrent programming. 
-This guide should help you understand how
-concurrency works in Dart and how it compares to Swift.
-With this understanding, you can create
-high-performing iOS apps. 
+Tanto Dart quanto Swift suportam programação concorrente.
+Este guia deve ajudá-lo a entender como
+a concorrência funciona em Dart e como ela se compara ao Swift.
+Com este entendimento, você pode criar
+aplicativos iOS de alto desempenho.
 
-When developing in the Apple ecosystem, 
-some tasks might take a long time to complete. 
-These tasks include fetching or processing large amounts of data.
-iOS developers typically use Grand Central Dispatch (GCD)
-to schedule tasks using a shared thread pool.
-With GCD, developers add tasks to dispatch queues
-and GCD decides on which thread to execute them.
+Ao desenvolver no ecossistema Apple,
+algumas tarefas podem levar muito tempo para serem concluídas.
+Essas tarefas incluem buscar ou processar grandes quantidades de dados.
+Desenvolvedores iOS normalmente usam o Grand Central Dispatch (GCD)
+para agendar tarefas usando um pool de threads compartilhado.
+Com o GCD, os desenvolvedores adicionam tarefas a filas de despacho
+e o GCD decide em qual thread executá-las.
 
-But, GCD spins up threads to 
-handle remaining work items.
-This means you can end up with a large number of threads 
-and the system can become over committed.
-With Swift, the structured concurrency model reduced the number 
-of threads and context switches. 
-Now, each core has only one thread.
+Mas, o GCD inicia threads para
+lidar com os itens de trabalho restantes.
+Isso significa que você pode acabar com um grande número de threads
+e o sistema pode ficar sobrecarregado.
+Com Swift, o modelo de concorrência estruturada reduziu o número
+de threads e trocas de contexto.
+Agora, cada núcleo tem apenas uma thread.
 
-Dart has a single-threaded execution model, 
-with support for `Isolates`, an event loop, and asynchronous code. 
-An `Isolate` is Dart's implementation of a lightweight thread.
-Unless you spawn an `Isolate`, your Dart code runs in the 
-main UI thread driven by an event loop. 
-Flutter's event loop is 
-equivalent to the iOS main loop—in other words, 
-the Looper attached to the main thread.
+Dart tem um modelo de execução single-threaded,
+com suporte para `Isolates`, um loop de eventos e código assíncrono.
+Um `Isolate` é a implementação Dart de uma thread leve.
+A menos que você inicie um `Isolate`, seu código Dart é executado na
+thread principal da UI, acionada por um loop de eventos.
+O loop de eventos do Flutter é
+equivalente ao loop principal do iOS—em outras palavras,
+o Looper anexado à thread principal.
 
-Dart's single-threaded model doesn't mean 
-you are required to run everything 
-as a blocking operation that causes the UI to freeze. 
-Instead, use the asynchronous 
-features that the Dart language provides, 
-such as `async`/`await`.
+O modelo single-threaded do Dart não significa
+que você seja obrigado a executar tudo
+como uma operação de bloqueio que faz com que a UI trave.
+Em vez disso, use os recursos assíncronos
+que a linguagem Dart fornece,
+como `async`/`await`.
 
-## Asynchronous Programming
+## Programação Assíncrona
 
-An asynchronous operation allows other operations 
-to execute before it completes. 
-Both Dart and Swift support asynchronous functions 
-using the `async` and `await` keywords. 
-In both cases, `async` marks that a function 
-performs asynchronous work, 
-and `await` tells the system to await a result 
-from function. This means that the Dart VM _could_ 
-suspend the function, if necessary. 
-For more details on asynchronous programming, check out
-[Concurrency in Dart]({{site.dart-site}}/guides/language/concurrency).
+Uma operação assíncrona permite que outras operações
+se executem antes que ela seja concluída.
+Tanto Dart quanto Swift suportam funções assíncronas
+usando as palavras-chave `async` e `await`.
+Em ambos os casos, `async` marca que uma função
+executa trabalho assíncrono,
+e `await` diz ao sistema para aguardar um resultado
+da função. Isso significa que a VM Dart _poderia_
+suspender a função, se necessário.
+Para mais detalhes sobre programação assíncrona, confira
+[Concorrência em Dart]({{site.dart-site}}/guides/language/concurrency).
 
-### Leveraging the main thread/isolate
+### Utilizando a thread/isolate principal
 
-For Apple operating systems, the primary (also called the main) 
-thread is where the application begins running. 
-Rendering the user interface always happens on the main thread. 
-One difference between Swift and Dart is that  
-Swift might use different threads for different tasks, 
-and Swift doesn't guarantee which thread is used. 
-So, when dispatching UI updates in Swift, 
-you might need to ensure that the work occurs on the main thread. 
+Para sistemas operacionais Apple, a thread primária (também chamada de principal)
+é onde o aplicativo começa a ser executado.
+A renderização da interface do usuário sempre acontece na thread principal.
+Uma diferença entre Swift e Dart é que
+Swift pode usar threads diferentes para diferentes tarefas,
+e Swift não garante qual thread é usada.
+Portanto, ao despachar atualizações de UI em Swift,
+você pode precisar garantir que o trabalho ocorra na thread principal.
 
-Say you want to write a function that fetches the 
-weather asynchronously and 
-displays the results. 
+Digamos que você queira escrever uma função que busca a
+previsão do tempo de forma assíncrona e
+exibe os resultados.
 
-In GCD, to manually dispatch a process to the main thread, 
-you might do something like the following.  
+No GCD, para despachar manualmente um processo para a thread principal,
+você pode fazer algo como o seguinte.
 
-First, define the `Weather` `enum`:
+Primeiro, defina o `enum` `Weather`:
 
 ```swift
 enum Weather: String {
@@ -84,11 +85,11 @@ enum Weather: String {
 }
 ```
 
-Next, define the view model and mark it as an [`@Observable`][] 
-that publishes the `result` of type `Weather?`. 
-Use GCD to create a background `DispatchQueue` to 
-send the work to the pool of threads, and then dispatch 
-back to the main thread to update the `result`. 
+Em seguida, defina o view model e marque-o como um [`@Observable`][]
+que publica o `result` do tipo `Weather?`.
+Use o GCD para criar uma `DispatchQueue` em segundo plano para
+enviar o trabalho para o pool de threads e, em seguida, despachar
+de volta para a thread principal para atualizar o `result`.
 
 ```swift
 @Observable class ContentViewModel {
@@ -106,7 +107,7 @@ back to the main thread to update the `result`.
 }
 ```
 
-Finally, display the results:
+Finalmente, exiba os resultados:
 
 ```swift
 struct ContentView: View {
@@ -120,12 +121,12 @@ struct ContentView: View {
 }
 ```
 
-More recently, Swift introduced _actors_ to support 
-synchronization for shared, mutable state. 
-To ensure that work is performed on the main thread,
-define a view model class that is marked as a `@MainActor`, 
-with a `load()` function that internally calls an 
-asynchronous function using `Task`.   
+Mais recentemente, o Swift introduziu _atores_ para suportar
+sincronização para estado mutável compartilhado.
+Para garantir que o trabalho seja realizado na thread principal,
+defina uma classe view model que é marcada como um `@MainActor`,
+com uma função `load()` que internamente chama uma
+função assíncrona usando `Task`.
 
 ```swift
 @MainActor @Observable class ContentViewModel {
@@ -139,8 +140,8 @@ asynchronous function using `Task`.
 }
 ```
 
-Next, define the view model as a state using `@State`, 
-with a `load()` function that can be called by the view model:
+Em seguida, defina o view model como um estado usando `@State`,
+com uma função `load()` que pode ser chamada pelo view model:
 
 ```swift
 struct ContentView: View {
@@ -154,9 +155,9 @@ struct ContentView: View {
 }
 ```
 
-In Dart, all work runs on the main isolate by default. 
-To implement the same example in Dart, 
-first, create the `Weather` `enum`:
+Em Dart, todo o trabalho é executado no isolate principal por padrão.
+Para implementar o mesmo exemplo em Dart,
+primeiro, crie o `enum` `Weather`:
 
 <?code-excerpt "lib/async_weather.dart (weather)"?>
 ```dart
@@ -167,11 +168,11 @@ enum Weather {
 }
 ```
 
-Then, define a simple view model (similar to what was created in SwiftUI), 
-to fetch the weather. In Dart, a `Future` object represents a value to be
-provided in the future. A `Future` is similar to Swift's `@Observable`. 
-In this example, a function within the view model
-returns a `Future<Weather>` object:
+Em seguida, defina um view model simples (semelhante ao que foi criado no SwiftUI),
+para buscar o clima. Em Dart, um objeto `Future` representa um valor a ser
+fornecido no futuro. Um `Future` é semelhante ao `@Observable` do Swift.
+Neste exemplo, uma função dentro do view model
+retorna um objeto `Future<Weather>`:
 
 <?code-excerpt "lib/async_weather.dart (home-page-view-model)"?>
 ```dart
@@ -185,22 +186,22 @@ class HomePageViewModel {
 }
 ```
 
-The `load()` function in this example shares 
-similarities with the Swift code. 
-The Dart function is marked as `async` because
-it uses the `await` keyword.
+A função `load()` neste exemplo compartilha
+semelhanças com o código Swift.
+A função Dart é marcada como `async` porque
+usa a palavra-chave `await`.
 
-Additionally, a Dart function marked as `async`
-automatically returns a `Future`.
-In other words, you don't have to create a 
-`Future` instance manually 
-inside functions marked as `async`.
+Além disso, uma função Dart marcada como `async`
+retorna automaticamente um `Future`.
+Em outras palavras, você não precisa criar uma
+instância `Future` manualmente
+dentro de funções marcadas como `async`.
 
-For the last step, display the weather value. 
-In Flutter, [`FutureBuilder`]({{site.api}}/flutter/widgets/FutureBuilder-class.html) and 
-[`StreamBuilder`]({{site.api}}/flutter/widgets/StreamBuilder-class.html)  
-widgets are used to display the results of a Future in the UI. 
-The following example uses a `FutureBuilder`:
+Para a última etapa, exiba o valor do clima.
+No Flutter, os widgets [`FutureBuilder`]({{site.api}}/flutter/widgets/FutureBuilder-class.html) e
+[`StreamBuilder`]({{site.api}}/flutter/widgets/StreamBuilder-class.html)
+são usados para exibir os resultados de um Future na UI.
+O exemplo a seguir usa um `FutureBuilder`:
 
 <?code-excerpt "lib/async_weather.dart (home-page-widget)"?>
 ```dart
@@ -239,23 +240,23 @@ class HomePage extends StatelessWidget {
 }
 ```
 
-For the complete example, check out the
-[async_weather][] file on GitHub.
+Para o exemplo completo, confira o
+arquivo [async_weather][] no GitHub.
 
 [async_weather]: {{site.repo.this}}/examples/resources/dart_swift_concurrency/lib/async_weather.dart
 
-### Leveraging a background thread/isolate
+### Utilizando uma thread/isolate em segundo plano
 
-Flutter apps can run on a variety of multi-core hardware, 
-including devices running macOS and iOS. 
-To improve the performance of these applications, 
-you must sometimes run tasks on different cores
-concurrently. This is especially important 
-to avoid blocking UI rendering with long-running operations. 
+Aplicativos Flutter podem ser executados em uma variedade de hardware multi-core,
+incluindo dispositivos que executam macOS e iOS.
+Para melhorar o desempenho desses aplicativos,
+você deve, às vezes, executar tarefas em diferentes núcleos
+concorrentemente. Isso é especialmente importante
+para evitar o bloqueio da renderização da UI com operações de longa duração.
 
-In Swift, you can leverage GCD to run tasks on global queues
-with different quality of service class (qos) properties. 
-This indicates the task's priority.
+Em Swift, você pode usar o GCD para executar tarefas em filas globais
+com diferentes propriedades de classe de qualidade de serviço (qos).
+Isso indica a prioridade da tarefa.
 
 ```swift
 func parse(string: String, completion: @escaping ([String:Any]) -> Void) {
@@ -269,12 +270,12 @@ func parse(string: String, completion: @escaping ([String:Any]) -> Void) {
 }
 ```
 
-In Dart, you can offload computation to a worker isolate, 
-often called a background worker. 
-A common scenario spawns a simple worker isolate and 
-returns the results in a message when the worker exits. 
-As of Dart 2.19, you can use `Isolate.run()` to 
-spawn an isolate and run computations:
+Em Dart, você pode descarregar a computação para um isolate worker,
+geralmente chamado de worker em segundo plano.
+Um cenário comum gera um isolate worker simples e
+retorna os resultados em uma mensagem quando o worker é finalizado.
+A partir do Dart 2.19, você pode usar `Isolate.run()` para
+gerar um isolate e executar computações:
 
 ```dart
 void main() async {
@@ -286,15 +287,15 @@ void main() async {
 }
 ```
 
-In Flutter, you can also use the `compute` function 
-to spin up an isolate to run a callback function:
+No Flutter, você também pode usar a função `compute`
+para iniciar um isolate para executar uma função de callback:
 
 ```dart
 final jsonData = await compute(getNumberOfKeys, jsonString);
 ```
 
-In this case, the callback function is a top-level
-function as shown below:
+Neste caso, a função de callback é uma função top-level
+conforme mostrado abaixo:
 
 ```dart
 Map<String, dynamic> getNumberOfKeys(String jsonString) {
@@ -302,13 +303,13 @@ Map<String, dynamic> getNumberOfKeys(String jsonString) {
 }
 ```
 
-You can find more information on Dart at
-[Learning Dart as a Swift developer][],
-and more information on Flutter at
-[Flutter for SwiftUI developers][] or
-[Flutter for UIKit developers][].
+Você pode encontrar mais informações sobre Dart em
+[Aprendendo Dart como um desenvolvedor Swift][],
+e mais informações sobre Flutter em
+[Flutter para desenvolvedores SwiftUI][] ou
+[Flutter para desenvolvedores UIKit][].
 
-[Learning Dart as a Swift developer]: {{site.dart-site}}/guides/language/coming-from/swift-to-dart
-[Flutter for SwiftUI developers]: /get-started/flutter-for/swiftui-devs
-[Flutter for UIKit developers]: /get-started/flutter-for/uikit-devs
+[Aprendendo Dart como um desenvolvedor Swift]: {{site.dart-site}}/guides/language/coming-from/swift-to-dart
+[Flutter para desenvolvedores SwiftUI]: /get-started/flutter-for/swiftui-devs
+[Flutter para desenvolvedores UIKit]: /get-started/flutter-for/uikit-devs
 [`@Observable`]: https://developer.apple.com/documentation/observation/observable()

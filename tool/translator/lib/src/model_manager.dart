@@ -2,8 +2,11 @@ import 'dart:io';
 
 import 'model.dart';
 
+enum ModelType { translate, linker }
+
 class ModelManager {
-  ModelManager();
+  final ModelType type;
+  ModelManager(this.type);
 
   /// Método para obter o modelo de tradução
   TranslateModel getTranslateModel() {
@@ -11,8 +14,16 @@ class ModelManager {
   }
 
   /// Método para obter o modelo de link
-  LinkModel getLinkModel() {
-    return LinkModel(_fetchAPIKey());
+  GeminiModel getModel() {
+    if (type == ModelType.linker) {
+      return LinkModel(_fetchAPIKey());
+    }
+
+    if (type == ModelType.translate) {
+      return TranslateModel(_fetchAPIKey());
+    }
+
+    throw Exception("Model inválido");
   }
 
   String _fetchAPIKey() {

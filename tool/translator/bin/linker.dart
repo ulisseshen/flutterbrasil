@@ -1,11 +1,6 @@
-import 'dart:convert';
 import 'dart:io';
 import 'package:translator/linker_model.dart';
 import 'package:translator/src/model_manager.dart';
-import 'package:translator/translator.dart'; // O pacote translator será usado
-
-import 'src/tools.dart' as tools;
-import 'src/config.dart';
 
 import 'src/app.dart';
 
@@ -16,6 +11,7 @@ void main(List<String> arguments) async {
     args.printHelp();
     exit(0);
   }
+  final linker = LinkerProcessor(LinkerImp(ModelManager(ModelType.linker)));
 
   final multipleFiles = args.multipleFilePaths;
   if (multipleFiles != null && multipleFiles.isNotEmpty) {
@@ -27,12 +23,13 @@ void main(List<String> arguments) async {
       final file = File(filePath);
       final content = file
           .readAsStringSync(); // Usa readAsStringSync para evitar await aqui
-      final references = getReferences(content);
+      final references = LinkerProcessor.getReferences(content);
       return references
           .isNotEmpty; // Filtra arquivos com referências não vazias
     }).toList();
 
-    print('Alguns arquivos já estão ok: ${filteredFiles.length - multipleFiles.length}');
+    print(
+        'Alguns arquivos já estão ok: ${filteredFiles.length - multipleFiles.length}');
 
     final batches = _splitIntoBatches(filteredFiles, 10);
 
@@ -43,30 +40,23 @@ void main(List<String> arguments) async {
           final file = FileWrapper(filePath);
           final content = await file.readAsString();
 
-          final links = getLinks(content);
-          final references = getReferences(content);
+          final links = LinkerProcessor.getLinks(content);
+          final references = LinkerProcessor.getReferences(content);
 
           if (references.isEmpty) {
             print('>>> esse não precisa ${Utils.getFileName(file)}');
             return;
           }
-
-          final linker = LinkerImp(ModelManager());
           print('🔍 Processando arquivo: $filePath');
           print('  - Total de links encontrados: ${links.length}');
           print('  - Total de referências encontradas: ${references.length}');
 
-          final response = await linker.linker(links, references);
-          final processed = linker.reconciliate(content, response);
-
+          final processed = await linker.processFile(file);
           final linksReplacedInFile = links
               .where(
                 (link) => processed.contains(link),
               )
               .length;
-
-          // Exibir sumário individual para o arquivo
-          printSummary(file, response, linksReplacedInFile);
 
           // Salvar o conteúdo processado no arquivo
           await file.writeAsString(processed);
@@ -88,65 +78,11 @@ void main(List<String> arguments) async {
     print('  - Total de referências encontradas: $totalReferences');
     print('  - Total de links substituídos: $totalLinksReplaced');
   } else {
-    // Processamento único para um arquivo (como antes)
-    final file = FileWrapper(args.filePath!);
-    final content = await file.readAsString();
-
-    final links = getLinks(content);
-    final references = getReferences(content);
-
-    final linker = LinkerImp(ModelManager());
-    print('🔍 Processando arquivo único: ${args.filePath}');
-    print('  - Total de links encontrados: ${links.length}');
-    print('  - Total de referências encontradas: ${references.length}');
-
-    final response = await linker.linker(links, references);
-    final processed = linker.reconciliate(content, response);
-
-    final linksReplacedInFile = links
-        .where(
-          (link) => processed.contains(link),
-        )
-        .length;
-
-    // Exibir sumário individual
-    printSummary(file, response, linksReplacedInFile);
-
-    // Salvar o conteúdo processado no arquivo
+    final filePath = args.filePath;
+    final file = FileWrapper(filePath!);
+    final processed = await linker.processFile(file);
     await file.writeAsString(processed);
   }
-}
-
-List<String> getLinks(String content) {
-  final linkRegex = RegExp(r'(\[[^\]]+\]:)');
-  final links = <String>[];
-  for (final match in linkRegex.allMatches(content)) {
-    final text = match.group(1)!;
-    links.add(text);
-  }
-  return links;
-}
-
-List<String> getReferences(String content) {
-  final referenRegex = RegExp(r'(\[[^\]]+\]\[\])');
-  final references = <String>[];
-  for (final match in referenRegex.allMatches(content)) {
-    final text = match.group(1)!;
-    references.add(text);
-  }
-  return references;
-}
-
-void printSummary(
-  FileWrapper file,
-  String response,
-  int totalReplacements,
-) {
-  print('\n📊 Estatísticas de Links Substituídos:');
-  print('Arquivo processado: ${Utils.getFileName(file)}');
-  print('Total de links substituídos: $totalReplacements');
-  print(
-      'Total de alterações geradas na resposta: ${response.split('\n').length}');
 }
 
 List<List<T>> _splitIntoBatches<T>(List<T> list, int batchSize) {

@@ -1,9 +1,13 @@
+import 'package:google_generative_ai/google_generative_ai.dart';
+
 import 'package:test/test.dart';
 import 'package:translator/linker_model.dart';
+import 'package:translator/src/model.dart';
 import 'package:translator/src/model_manager.dart';
 
-class LinkerModelStub implements LinkerModel {
+import '../bin/src/app.dart';
 
+class LinkerModelStub implements LinkerModel {
   final String _stubbedResponse;
 
   LinkerModelStub(this._stubbedResponse);
@@ -13,14 +17,13 @@ class LinkerModelStub implements LinkerModel {
     // Captura o contexto para verificação.
     return Future.value(_stubbedResponse);
   }
-  
+
   @override
   String reconciliate(String originalText, String jsonResponse) {
     // TODO: implement reconciliate
     throw UnimplementedError();
   }
 }
-
 
 void main() {
   group('reconcileReferences', () {
@@ -44,7 +47,8 @@ void main() {
       ''';
 
       // Executa a função
-      final updatedText = LinkerImp(ModelManager()).reconciliate(originalText, jsonResponse);
+      final updatedText =
+          LinkerImp(ModelManager(ModelType.linker)).reconciliate(originalText, jsonResponse);
 
       // Valida o resultado
       expect(updatedText, expectedText);
@@ -68,7 +72,8 @@ void main() {
       final expectedText = originalText;
 
       // Executa a função
-      final updatedText = LinkerImp(ModelManager()).reconciliate(originalText, jsonResponse);
+      final updatedText =
+          LinkerImp(ModelManager(ModelType.linker)).reconciliate(originalText, jsonResponse);
 
       // Valida que o texto original permanece inalterado
       expect(updatedText, expectedText);
@@ -87,10 +92,82 @@ void main() {
       final expectedText = originalText;
 
       // Executa a função
-      final updatedText = LinkerImp(ModelManager()).reconciliate(originalText, jsonResponse);
+      final updatedText =
+          LinkerImp(ModelManager(ModelType.linker)).reconciliate(originalText, jsonResponse);
 
       // Valida que o texto original permanece inalterado
       expect(updatedText, expectedText);
     });
+
+    test('should replace references with \\n correctly', () async {
+
+      final file = FileWrapper('test/file.md');
+      // final originalText = file;
+      // Texto esperado
+      final expectedText = '''
+Flutter é um framework para construir aplicações multiplataforma que usa
+a linguagem de programação Dart. Para entender algumas diferenças entre a
+programação com Dart e a programação com Swift, consulte [Aprendendo Dart
+como um Desenvolvedor Swift][Learning Dart as a Swift Developer] e [Concorrência Flutter para desenvolvedores
+Swift][Flutter concurrency for Swift developers].
+
+Para saber mais maneiras de gerenciar o estado, confira [Gerenciamento de
+estado][State management].''';
+
+      final linker = LinkerProcessor(LinkerImp(MockModelManager()));
+
+
+
+      // Executa a função
+      final updatedText = await linker.processFile(file);
+
+      // Valida o resultado
+      expect(updatedText, expectedText);
+    });
   });
+}
+
+
+class MockModelManager extends ModelManager {
+  MockModelManager() : super(ModelType.linker);
+
+  @override
+  GeminiModel getModel() {
+    return MockLinkModel(
+      apiKey: '',
+      model: '',
+      systemInstruction: '',
+      generationConfig: GenerationConfig()
+    );
+  }
+
+  @override
+  TranslateModel getTranslateModel() {
+    // Caso precise de um mock para TranslateModel, implemente semelhante ao LinkModel
+    throw UnimplementedError();
+  }
+}
+
+class MockLinkModel extends GeminiModel {
+  MockLinkModel({required super.apiKey, required super.model, required super.systemInstruction, required super.generationConfig});
+
+  @override
+  Future<String> getResponse(String text) async {
+    return '''
+    [
+      {
+        "before": "[Aprendendo Dart\\ncomo um Desenvolvedor Swift][]",
+        "after": "[Aprendendo Dart\\ncomo um Desenvolvedor Swift][Learning Dart as a Swift Developer]"
+      },
+      {
+        "before": "[Concorrência Flutter para desenvolvedores\\nSwift][]",
+        "after": "[Concorrência Flutter para desenvolvedores\\nSwift][Flutter concurrency for Swift developers]"
+      },
+      {
+        "before": "[Gerenciamento de\\nestado][]",
+        "after": "[Gerenciamento de\\nestado][State management]"
+      }
+    ]
+    ''';
+  }
 }

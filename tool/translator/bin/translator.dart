@@ -1,10 +1,42 @@
 import 'dart:io';
 import 'package:translator/translator.dart'; // O pacote translator será usado
 
+import 'src/tools.dart' as tools;
+import 'src/config.dart';
+
+import 'src/app.dart';
+
 void main(List<String> arguments) async {
-  if (arguments.isEmpty) {
-    print('Usage: flutter-translate <directory> [--info]');
-    exit(1);
+  final args = AppArguments.parse(arguments);
+
+  if (args.showHelp) {
+    args.printHelp();
+    exit(0);
+  }
+
+  final fileProcessor = FileProcessorImpl(
+    TranslatorImp(),
+    MarkdownProcessorImpl(),
+  );
+
+  final fileCleaner = FileCleanerImpl();
+
+  if (args.useV2) {
+    return await tools
+        .ensureHeaderLinking(arguments.where((a) => a != '-v2').toList());
+  }
+
+  if (args.translateOneFile) {
+    final file = _getFileFromArgs(arguments);
+
+    if (!file.exists()) {
+      print('File does not exist: ${file.path}');
+      exit(1);
+    }
+    await fileProcessor.translateOne(
+        file, args.translateGreater, TranslatorImp(), args.useSecond);
+
+    return;
   }
 
   final directoryPath = arguments.first;
@@ -14,148 +46,137 @@ void main(List<String> arguments) async {
     exit(1);
   }
 
-  final showInfo = arguments.contains('--info');
+  String extension = '.md'; // Valor padrão
+  final extensionArgIndex = arguments.indexOf('-e');
+  if (extensionArgIndex != -1 && extensionArgIndex + 1 < arguments.length) {
+    extension = '.${arguments[extensionArgIndex + 1]}';
+    print('Nova extension: $extension');
+  }
 
-  if (showInfo) {
-    // Mostrar informações dos arquivos no diretório
-    print('Listing files in directory: $directoryPath');
-    await for (var entity
-        in directory.list(recursive: true, followLinks: false)) {
-      if (entity is File && entity.path.endsWith('.md')) {
-        final fileSizeKB = (await entity.length()) / 1024;
-        // if (fileSizeKB > 40) {
-          print(
-              'File: ${entity.path}, Size: ${fileSizeKB.toStringAsFixed(2)} KB');
-        // }
-      }
+  if (args.collectLinks) {
+    final allFiles =
+        await DirectoryProcessorImpl().collectAllFiles(directory, extension);
+    List<String> matches = [];
+    for (var file in allFiles) {
+      final m = await LinkProcessorImpl().collectAllAnchors(file);
+      matches.addAll(m);
     }
+
+    final outputFile = File('./matches_encontrados.txt');
+
+    matches.sort((a, b) => b.length.compareTo(a.length));
+
+    final excluded = Set.from(matches).toList();
+
+    await outputFile.writeAsString(excluded.join('\n'), mode: FileMode.write);
+
+    print('Matches encontrados e salvos em ${outputFile.path}');
+    print('Finalizado collectAllAnchors');
+
+    return;
+  }
+
+  if (args.showInfo) {
+    await printDirectoryInfo(directory, kMaxKbSize, extension);
     exit(0); // Finalizar após mostrar as informações
   }
 
-  int fileFoundCount = 0;
-  int skippedCount = 0;
-  int fileGreater = 0;
-  const int limiteSizeFile = 40;
-
-  // Contar os arquivos .md antes de começar a tradução
-  await for (var entity
-      in directory.list(recursive: true, followLinks: false)) {
-    if (entity is File && entity.path.endsWith('.md')) {
-      final content = await entity.readAsString();
-
-      if (content.contains('ia-translate: true')) {
-        skippedCount++; // Incrementar contador de arquivos ignorados
-        continue; // Ignorar este arquivo
-      }
-
-      // Verificar se o arquivo tem o header 'ia-translate: true'
-      final fileSizeKB = (await entity.length()) / 1024;
-      if (fileSizeKB > limiteSizeFile) {
-        print('Skipping file > ${limiteSizeFile}KB: ${entity.path}');
-        fileGreater++;
-        continue;
-      }
-
-      fileFoundCount++;
-    }
+  // Checando se o parâmetro -l foi passado
+  if (arguments.contains('-l')) {
+    await LinkProcessorImpl().replaceLinksInAllFiles(directory, extension);
+    return;
   }
 
-  print('arquivos encontrado: ${skippedCount + fileFoundCount + fileGreater}');
-  print('arquivos já traduzidos: $skippedCount');
-  print('arquivos maior que ${limiteSizeFile}kb: $fileGreater');
-  print('--- arquivos para traduzir: $fileFoundCount ---');
-  final translator = Translator();
-
-  final filesToTranslate = <File>[];
-  int totalSizeKB = 0;
-  // Contar arquivos e filtrar aqueles que devem ser traduzidos
-  await for (var entity
-      in directory.list(recursive: true, followLinks: false)) {
-    if (entity is File && entity.path.endsWith('.md')) {
-      final content = await entity.readAsString();
-
-      // Ignorar arquivos com `ia-translate: true`
-      if (content.contains('ia-translate: true')) {
-        print('Skipping file (ia-translate: true): ${entity.path}');
-        continue;
-      }
-
-      // Ignorar arquivos maiores que 75 KB
-      final fileSizeKB = (await entity.length()) / 1024;
-      if (fileSizeKB > limiteSizeFile) {
-        print('Skipping file > ${limiteSizeFile}KB: ${entity.path}');
-        continue;
-      }
-
-      filesToTranslate.add(entity);
-      totalSizeKB += fileSizeKB.round();
+  if (args.cleanMarkdown) {
+    final all = await fileCleaner.collectFilesToClean(directory, extension);
+    for (var i = 0; i < all.length; i++) {
+      final file = all[i];
+      final content = await file.readAsString();
+      final cleanedContent = FileCleanerImpl().ensureDontHaveMarkdown(content);
+      // Escrever o conteúdo atualizado no arquivo
+      await file.writeAsString(cleanedContent);
     }
+
+    final singularOrPlural = all.isEmpty || all.length > 1 ? 'S' : '';
+    print('🧹 ${all.length} ARQUIVO$singularOrPlural LIMPO$singularOrPlural');
+    return;
   }
 
-  int fileCount = 0;
+  final directoryProcessor = DirectoryProcessorImpl();
+  final filesToTranslate = await directoryProcessor.collectFilesToTranslate(
+    directory,
+    kMaxKbSize,
+    args.translateGreater,
+    extension,
+  );
 
   final stopwatchTotal = Stopwatch()..start();
 
-  // Processar arquivos em lotes de 10
-  const batchSize = 10;
-  for (var i = 0; i < filesToTranslate.length; i += batchSize) {
-    final batch = filesToTranslate.skip(i).take(batchSize).toList();
-
-    final stopwatchBatch = Stopwatch()..start();
-
-    try {
-      // Executar as traduções em paralelo
-      await Future.wait([
-        ...batch.map((file) async {
-          final fileSizeKB = (await file.length()) / 1024;
-          print(
-              'Processing file: ${file.path} (${fileSizeKB.toStringAsFixed(2)} KB)');
-          final stopwatchFile = Stopwatch()..start();
-
-          try {
-            final content = await file.readAsString();
-            final translated =
-                await translator.translate(content, onFirstModelError: () {
-              print(
-                  'Erro no primeiro modelo: ${file.path} (${fileSizeKB.toStringAsFixed(2)} KB)');
-              print('---');
-            });
-
-            final updatedContent = translated.replaceFirst(
-              '---',
-              '---\nia-translate: true',
-            );
-            await file.writeAsString(updatedContent);
-
-            // Incrementar contador de arquivos finalizados
-            fileCount++;
-            print(
-                '🚀 File $fileCount/${filesToTranslate.length} translated in ${stopwatchFile.elapsedMilliseconds} ms 🔥');
-            print('Arquivo traduzido: ${file.path}');
-            print('---');
-          } catch (e) {
-            print('❌ Error translating file ${file.path}: $e');
-          } finally {
-            stopwatchFile.stop();
-          }
-        }),
-        Future.delayed(Duration(minutes: 1))
-      ]);
-    } catch (e) {
-      print('❌ Error in batch processing: $e');
-    } finally {
-      print('Batch processed in ${stopwatchBatch.elapsedMilliseconds} ms');
-      stopwatchBatch.stop();
-    }
-  }
+  int fileCount = await fileProcessor.translateFiles(
+    filesToTranslate,
+    args.translateGreater,
+    useSecond: args.useSecond,
+  );
 
   stopwatchTotal.stop();
 
-  print('\n📔Translation Summary:');
+  final durationIsSeconds = stopwatchTotal.elapsed.inSeconds;
+  print('\n📔 Resumo da Tradução:');
   print('---------------------');
-  print('Total files translated: $fileCount');
-  print('Total size of files: ${totalSizeKB.toStringAsFixed(2)} KB');
-  print('Total translation time: ${stopwatchTotal.elapsed.inSeconds} seconds');
+  print('Total de arquivos traduzidos: $fileCount');
+  print('Tempo total de tradução: $durationIsSeconds segundos');
+  print('Tradução concluída para o diretório: ${directory.path}');
+}
 
-  print('Translation completed for directory: ${directory.path}');
+FileWrapper _getFileFromArgs(List<String> arguments) {
+  final fileArgIndex = arguments.indexOf('-f');
+  final filePath = arguments[fileArgIndex + 1];
+  final file = FileWrapper(filePath);
+  return file;
+}
+
+Future<void> printDirectoryInfo(
+    Directory directory, int maxKbSize, String extension) async {
+  // Mostrar informações dos arquivos no diretório
+  print('Listing files in directory: ${directory.path}');
+  await for (var entity
+      in directory.list(recursive: true, followLinks: false)) {
+    if (entity is File && entity.path.endsWith(extension)) {
+      final fileSizeKB = (await entity.length()) / 1024;
+      if (fileSizeKB > maxKbSize) {
+        print(
+            'File: ${entity.path}, Size: ${fileSizeKB.toStringAsFixed(2)} KB');
+      }
+    }
+  }
+}
+
+void printHelp() {
+  print('''
+Uso: flutter-translate <diretório> [opções]
+
+Opções:
+  <diretório>           O diretório a ser processado (obrigatório)
+  -h, --help            Exibe esta mensagem de ajuda
+  --info                Exibe informações sobre o diretório e o tamanho dos arquivos
+  -e <extensão>         Especifica a extensão dos arquivos a serem processados (padrão: .md)
+  -g                    Processa arquivos maiores que 28KB
+  -l                    Substitui todos os links nos arquivos Markdown
+  -c                    Limpa os arquivos Markdown removendo tags específicas
+
+Descrição:
+Esta ferramenta de linha de comando traduz arquivos Markdown no diretório especificado.
+
+Exemplos:
+  flutter-translate /caminho/para/diretorio       # Traduz arquivos .md no diretório
+  flutter-translate /caminho/para/diretorio --info # Exibe informações sobre os arquivos
+  flutter-translate /caminho/para/diretorio -e .txt # Traduz arquivos .txt
+  flutter-translate /caminho/para/diretorio -g     # Traduz apenas arquivos maiores que 28KB
+  flutter-translate /caminho/para/diretorio -l     # Substitui links em todos os arquivos Markdown
+  flutter-translate /caminho/para/diretorio -c     # Limpa arquivos Markdown
+
+Notas:
+  - Os arquivos serão processados apenas se contiverem a string 'ia-translate: true' em seus metadados.
+  - Use a opção '-e' para especificar uma extensão de arquivo personalizada (o padrão é .md).
+''');
 }

@@ -1,11 +1,12 @@
 ---
-title: Test drive
-description: How to create a templated Flutter app and use hot reload.
+ia-translate: true
+title: Teste Prático
+description: Como criar um aplicativo Flutter com um template e usar o hot reload.
 prev:
-  title: Set up Flutter
+  title: Configurar o Flutter
   path: /get-started/install
 next:
-  title: Write your first Flutter app
+  title: Escreva seu primeiro aplicativo Flutter
   path: /get-started/codelab
 toc: false
 ---
@@ -19,41 +20,40 @@ toc: false
    {% assign dirdl='%CSIDL_DEFAULT_DOWNLOADS%\' %}
 {% when "macOS" -%}
    {% assign path='~/development/' %}
-   {% assign terminal='the Terminal' %}
+   {% assign terminal='o Terminal' %}
    {% assign prompt1='$' %}
    {% assign prompt2='$' %}
    {% assign dirdl='~/Downloads/' %}
 {% else -%}
    {% assign path='~/development/' %}
-   {% assign terminal='a shell' %}
+   {% assign terminal='um shell' %}
    {% assign prompt1='$' %}
    {% assign prompt2='$' %}
    {% assign dirdl='~/Downloads/' %}
 {% endcase -%}
 
-## What you'll learn
+## O que você vai aprender
 
-1. How to create a new Flutter app from a sample template.
-1. How to run the new Flutter app.
-1. How to use "hot reload" after you make changes to the app.
+1. Como criar um novo aplicativo Flutter a partir de um template de amostra.
+2. Como executar o novo aplicativo Flutter.
+3. Como usar o "hot reload" depois de fazer alterações no aplicativo.
 
+Essas tarefas dependem de qual ambiente de desenvolvimento integrado (IDE) você usa.
 
-These tasks depend on which integrated development environment (IDE) you use.
+* **Opção 1** explica como programar com o Visual Studio Code e
+  sua extensão Flutter.
 
-* **Option 1** explains how to code with Visual Studio Code and
-  its Flutter extension.
+* **Opção 2** explica como programar com o Android Studio ou IntelliJ IDEA com
+  seu plugin Flutter.
 
-* **Option 2** explains how to code with Android Studio or IntelliJ IDEA with
-  its Flutter plugin.
+  O Flutter oferece suporte às edições IntelliJ IDEA Community, Educational e Ultimate.
 
-  Flutter supports IntelliJ IDEA Community, Educational, and Ultimate editions.
+* **Opção 3** explica como programar com um editor de sua escolha e usar
+  o terminal para compilar e depurar seu código.
 
-* **Option 3** explains how to code with an editor of your choice and use
-  the terminal to compile and debug your code.
+## Escolha seu IDE
 
-## Choose your IDE
-
-Select your preferred IDE for Flutter apps.
+Selecione seu IDE preferido para aplicativos Flutter.
 
 {% tabs %}
 {% tab "Visual Studio Code" %}
@@ -61,7 +61,7 @@ Select your preferred IDE for Flutter apps.
 {% include docs/install/test-drive/vscode.md %}
 
 {% endtab %}
-{% tab "Android Studio and IntelliJ" %}
+{% tab "Android Studio e IntelliJ" %}
 
 {% include docs/install/test-drive/androidstudio.md %}
 

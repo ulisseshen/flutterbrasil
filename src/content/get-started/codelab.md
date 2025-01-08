@@ -1,48 +1,40 @@
 ---
-title: Write your first Flutter app
-description: How to write an app in Flutter.
-short-title: Write your first app
+ia-translate: true
+title: Escreva seu primeiro aplicativo Flutter
+description: Como escrever um aplicativo em Flutter.
+short-title: Escreva seu primeiro aplicativo
 prev:
-  title: Set up Flutter
+  title: Configurar o Flutter
   path: /get-started/install
 next:
-  title: Learn more
+  title: Aprenda mais
   path: /get-started/learn-flutter
 toc: false
 ---
 
-You are now ready to start the "First Flutter app" codelab.
-In about an hour and a half,
-you will learn the basics of Flutter
-by creating an app
-that works on mobile, desktop, and web.
+Você agora está pronto para começar o codelab "Primeiro aplicativo Flutter". Em cerca de uma hora e meia, você aprenderá o básico de Flutter criando um aplicativo que funciona em dispositivos móveis, desktop e na web.
 
 <div class="juicy-button-container">
-  <img src="/assets/images/docs/get-started/codelab-goal-background.jpg" alt="The illustration of the initial and the resulting app that you will build in this codelab.">
+  <img src="/assets/images/docs/get-started/codelab-goal-background.jpg" alt="A ilustração do aplicativo inicial e do aplicativo resultante que você construirá neste codelab.">
 
   {%- comment %}
-    The &#9654; character below is the "black right-pointing triangle"
-    Unicode character.
-    The non-breaking space after it makes the button look nicer.
+    O caractere &#9654; abaixo é o caractere Unicode "triângulo preto apontando para a direita".
+    O espaço não separável depois dele faz o botão parecer mais agradável.
   {% endcomment -%}
   <a class="btn btn-primary"
      target="_blank"
      href="https://codelabs.developers.google.com/codelabs/flutter-codelab-first">
-    &#9654;&nbsp; Start codelab
+    &#9654;&nbsp; Iniciar codelab
   </a>
 
 </div>
 
 :::tip
-The codelab above walks you through writing your first Flutter
-app for all platforms &mdash; mobile, desktop and web.
-You might prefer to take
-[another codelab written specifically for the web][codelab-web].
+O codelab acima orienta você na escrita do seu primeiro aplicativo Flutter para todas as plataformas &mdash; mobile, desktop e web. Você pode preferir fazer [outro codelab escrito especificamente para a web][codelab-web].
 :::
 
 [codelab-web]: /get-started/codelab-web
 
-If you prefer an instructor-led version of this codelab,
-check out the following workshop:
+Se você preferir uma versão guiada por um instrutor deste codelab, confira o seguinte workshop:
 
-{% ytEmbed '8sAyPDLorek', 'Building your first Flutter app - with a Codelab!' %}
+{% ytEmbed '8sAyPDLorek', 'Construindo seu primeiro aplicativo Flutter - com um Codelab!' %}

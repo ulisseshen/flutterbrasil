@@ -1,6 +1,7 @@
 ---
-title: Choose your first type of app
-description: Configure your system to develop Flutter on ChromeOS.
+ia-translate: true
+title: Escolha seu primeiro tipo de app
+description: Configure seu sistema para desenvolver Flutter no ChromeOS.
 short-title: ChromeOS
 target-list: [Android, Web]
 js: [{url: '/assets/js/temp/chromeos-install-redirector.js'}]
@@ -27,7 +28,7 @@ js: [{url: '/assets/js/temp/chromeos-install-redirector.js'}]
         </span>
         <span class="text-muted text-nowrap">{{target}}</span>
         {% if icon == 'android' -%}
-          <div class="card-subtitle">Recommended</div>
+          <div class="card-subtitle">Recomendado</div>
         {% endif -%}
       </header>
     </div>
@@ -35,9 +36,6 @@ js: [{url: '/assets/js/temp/chromeos-install-redirector.js'}]
 {% endfor %}
 </div>
 
-Your choice informs which parts of Flutter tooling you configure
-to run your first Flutter app.
-You can set up additional platforms later.
-_If you don't have a preference, choose **{{rec-target}}**._
+Sua escolha informa quais partes do ferramental Flutter você configura para executar seu primeiro app Flutter. Você pode configurar plataformas adicionais depois. _Se você não tem preferência, escolha **{{rec-target}}**._
 
 {% render docs/china-notice.md %}

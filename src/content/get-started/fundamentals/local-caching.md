@@ -1,108 +1,117 @@
 ---
-title: Local caching
-description: Learn how to persist data locally.
+ia-translate: true
+title: Cache local
+description: Aprenda como persistir dados localmente.
 prev:
-  title: Networking and data
+  title: Rede e dados
   path: /get-started/fundamentals/networking
 next:
-  title: Learn more
+  title: Aprenda mais
   path: /get-started/learn-flutter
 ---
 
-Now that you've learned about how to load data from servers
-over the network, your Flutter app should feel more alive.
-However, just because you *can* load data from remote servers
-doesn't mean you always *should*. Sometimes, it's better to
-re-render the data you received from the previous network
-request rather than repeat it and make your user wait until
-it completes again. This technique of retaining application
-data to show again at a future time is called *caching*, and
-this page covers how to approach this task in your Flutter app.
+Agora que você aprendeu como carregar dados de servidores pela
+rede, seu aplicativo Flutter deve parecer mais vivo. No entanto,
+só porque você *pode* carregar dados de servidores remotos não
+significa que você sempre *deva*. Às vezes, é melhor renderizar
+novamente os dados que você recebeu da solicitação de rede
+anterior do que repeti-la e fazer seu usuário esperar até que
+ela seja concluída novamente. Essa técnica de retenção de dados
+do aplicativo para exibir novamente em um momento futuro é
+chamada de *caching*, e esta página aborda como abordar essa
+tarefa em seu aplicativo Flutter.
 
-## Introduction to caching
+## Introdução ao caching
 
-At its most basic, all caching strategies amount to the same
-three-step operation, represented with the following pseudocode:
+Em sua forma mais básica, todas as estratégias de caching
+se resumem à mesma operação de três etapas, representada com o
+seguinte pseudocódigo:
 
 ```dart
 Data? _cachedData;
 
 Future<Data> get data async {
-    // Step 1: Check whether your cache already contains the desired data
+    // Etapa 1: Verifique se seu cache já contém os dados desejados
     if (_cachedData == null) {
-        // Step 2: Load the data if the cache was empty
+        // Etapa 2: Carregue os dados se o cache estiver vazio
         _cachedData = await _readData();
     }
-    // Step 3: Return the value in the cache
+    // Etapa 3: Retorne o valor no cache
     return _cachedData!;
 }
 ```
 
-There are many interesting ways to vary this strategy,
-including the location of the cache, the extent to which you
-preemptively write values to, or "warm", the cache; and others.
+Existem muitas maneiras interessantes de variar essa estratégia,
+incluindo a localização do cache, a extensão em que você grava
+preventivamente os valores ou "aquece" o cache; e outros.
 
-## Common caching terminology
+## Terminologia comum de caching
 
-Caching comes with its own terminology, some of which is
-defined and explained below.
+O caching vem com sua própria terminologia, parte da qual é
+definida e explicada abaixo.
 
 **Cache hit**
-: An app is said to have had a cache hit when the cache already
-  contained their desired information and loading it from the
-  real source of truth was unnecessary.
+: Diz-se que um aplicativo teve um cache hit quando o cache já
+  continha as informações desejadas e o carregamento da fonte
+  real da verdade era desnecessário.
 
 **Cache miss**
-: An app is said to have had a cache miss when the cache was
-  empty and the desired data is loaded from the real source
-  of truth, and then saved to the cache for future reads.
+: Diz-se que um aplicativo teve um cache miss quando o cache
+  estava vazio e os dados desejados são carregados da fonte
+  real da verdade e, em seguida, salvos no cache para leituras
+  futuras.
 
-## Risks of caching data
+## Riscos de caching de dados
 
-An app is said to have a **stale cache** when the data within 
-the source of truth has changed, which puts the app at risk
-of rendering old, outdated information.
+Diz-se que um aplicativo tem um **cache desatualizado** quando os
+dados dentro da fonte da verdade foram alterados, o que coloca
+o aplicativo em risco de renderizar informações antigas e
+desatualizadas.
 
-All caching strategies run the risk of holding onto stale data.
-Unfortunately, the action of verifying the freshness of a cache
-often takes as much time to complete as fully loading the data
-in question. This means that most apps tend to only benefit
-from caching data if they trust the data to be fresh at runtime
-without verification.
+Todas as estratégias de caching correm o risco de manter dados
+desatualizados. Infelizmente, a ação de verificar a atualização
+de um cache geralmente leva tanto tempo para ser concluída quanto
+o carregamento completo dos dados em questão. Isso significa
+que a maioria dos aplicativos tende a se beneficiar do caching de
+dados apenas se confiarem que os dados estarão atualizados em
+tempo de execução, sem verificação.
 
-To deal with this, most caching systems include a time limit
-on any individual piece of cached data. After this time limit
-is exceeded, would-be cache hits are treated as cache misses
-until fresh data is loaded.
+Para lidar com isso, a maioria dos sistemas de caching inclui
+um limite de tempo em qualquer parte individual dos dados em
+cache. Depois que esse limite de tempo é excedido, os possíveis
+cache hits são tratados como cache misses até que dados novos
+sejam carregados.
 
-A popular joke among computer scientists is that "The two
-hardest things in computer science are cache invalidation,
-naming things, and off-by-one errors." 😄
+Uma piada popular entre os cientistas da computação é que "As
+duas coisas mais difíceis em ciência da computação são a
+invalidação de cache, a nomeação de coisas e os erros de
+deslocamento por um." 😄
 
-Despite the risks, almost every app in the world makes heavy
-use of data caching. The rest of this page explores multiple
-approaches to caching data in your Flutter app, but know that
-all of these approaches can be tweaked or combined for your
-situation.
+Apesar dos riscos, quase todos os aplicativos do mundo fazem
+uso intenso do caching de dados. O restante desta página explora
+várias abordagens para caching de dados em seu aplicativo
+Flutter, mas saiba que todas essas abordagens podem ser ajustadas
+ou combinadas para sua situação.
 
-## Caching data in local memory
+## Caching de dados na memória local
 
-The simplest and most performant caching strategy is an
-in-memory cache. The downside of this strategy is that,
-because the cache is only held in system memory, no data is
-retained beyond the session in which it is originally cached.
-(Of course, this "downside" also has the upside of automatically
-solving most stale cache problems!)
+A estratégia de caching mais simples e com melhor desempenho é um
+cache na memória. A desvantagem dessa estratégia é que, como o
+cache é mantido apenas na memória do sistema, nenhum dado é
+retido além da sessão em que foi armazenado em cache
+originalmente. (Claro, essa "desvantagem" também tem a vantagem
+de resolver automaticamente a maioria dos problemas de cache
+desatualizado!)
 
-Due to their simplicity, in-memory caches closely mimic
-the pseudocode seen above. That said, it is best to use proven
-design principles, like the [repository pattern][],
-to organize your code and prevent cache checks like the above
-from appearing all over your code base.
+Devido à sua simplicidade, os caches na memória imitam
+fielmente o pseudocódigo visto acima. Dito isso, é melhor usar
+princípios de design comprovados, como o [repository pattern][],
+para organizar seu código e evitar que verificações de cache
+como as acima apareçam em toda a sua base de código.
 
-Imagine a `UserRepository` class that is also tasked with
-caching users in memory to avoid duplicate network requests.
-Its implementation might look like this:
+Imagine uma classe `UserRepository` que também tem a tarefa de
+armazenar em cache os usuários na memória para evitar solicitações
+de rede duplicadas. Sua implementação pode ser assim:
 
 ```dart
 class UserRepository {
@@ -125,126 +134,136 @@ class UserRepository {
 }
 ```
 
-This `UserRepository` follows multiple proven design
-principles including:
+Este `UserRepository` segue vários princípios de design
+comprovados, incluindo:
 
-* [dependency injection][], which helps with testing
-* [loose coupling][], which protects surrounding code from
-its implementation details, and
-* [separation of concerns][], which prevents its implementation
-from juggling too many concerns.
+* [injeção de dependência][], o que ajuda nos testes
+* [acoplamento fraco][], que protege o código circundante de
+seus detalhes de implementação, e
+* [separação de responsabilidades][], que impede que sua
+implementação manipule muitas responsabilidades.
 
-And best of all, no matter how many times within a single session
-a user visits pages in your Flutter app that load a given user,
-the `UserRepository` class only loads that data over the network *once*.
+E o melhor de tudo, não importa quantas vezes em uma única
+sessão um usuário visite páginas em seu aplicativo Flutter que
+carregam um determinado usuário, a classe `UserRepository`
+carrega esses dados pela rede apenas *uma vez*.
 
-However, your users might eventually tire of waiting for data
-to load every time they relaunch your app. For that, you should
-choose from one of the persistent caching strategies found below.
+No entanto, seus usuários podem eventualmente se cansar de
+esperar que os dados sejam carregados cada vez que reiniciam
+seu aplicativo. Para isso, você deve escolher uma das
+estratégias de caching persistente encontradas abaixo.
 
-[dependency injection]: https://en.wikipedia.org/wiki/Dependency_injection
-[loose coupling]: https://en.wikipedia.org/wiki/Loose_coupling
-[repository Pattern]: https://medium.com/@pererikbergman/repository-design-pattern-e28c0f3e4a30
-[separation of concerns]: https://en.wikipedia.org/wiki/Separation_of_concerns
+[injeção de dependência]: https://en.wikipedia.org/wiki/Dependency_injection
+[acoplamento fraco]: https://en.wikipedia.org/wiki/Loose_coupling
+[repository pattern]: https://medium.com/@pererikbergman/repository-design-pattern-e28c0f3e4a30
+[separação de responsabilidades]: https://en.wikipedia.org/wiki/Separation_of_concerns
 
-## Persistent caches
+## Caches persistentes
 
-Caching data in memory will never see your precious cache
-outlive a user single session.
-To enjoy the performance benefits of cache hits on fresh
-launches of your application, you need to cache data somewhere
-on the device's hard drive.
+O caching de dados na memória nunca verá seu precioso cache
+sobreviver a uma única sessão do usuário.
+Para aproveitar os benefícios de desempenho dos cache hits em
+novos lançamentos de seu aplicativo, você precisa armazenar
+dados em cache em algum lugar no disco rígido do dispositivo.
 
-### Caching data with `shared_preferences`
+### Caching de dados com `shared_preferences`
 
-[`shared_preferences`][] is a Flutter plugin that wraps
-platform-specific [key-value storage][] on all six of Flutter's
-target platforms.
-Although these underlying platform key-value stores were designed
-for small data sizes, they are still suitable for a caching
-strategy for most applications.
-For a complete guide, see our other resources on using key-value stores.
+[`shared_preferences`][] é um plugin Flutter que envolve
+[armazenamento chave-valor][] específico da plataforma em todas
+as seis plataformas de destino do Flutter.
+Embora esses armazenamentos chave-valor de plataforma
+subjacentes tenham sido projetados para tamanhos de dados
+pequenos, eles ainda são adequados para uma estratégia de
+caching para a maioria dos aplicativos.
+Para um guia completo, consulte nossos outros recursos sobre o
+uso de armazenamentos chave-valor.
 
-* Cookbook: [Store key-value data on disk][]
-* Video: [Package of the Week: `shared_preferences`][]
+* Livro de receitas: [Armazenar dados chave-valor em disco][]
+* Vídeo: [Pacote da Semana: `shared_preferences`][]
 
-[key-value storage]: https://en.wikipedia.org/wiki/Key%E2%80%93value_database
-[Package of the Week: `shared_preferences`]: https://www.youtube.com/watch?v=sa_U0jffQII
+[armazenamento chave-valor]: https://en.wikipedia.org/wiki/Key%E2%80%93value_database
+[Pacote da Semana: `shared_preferences`]: https://www.youtube.com/watch?v=sa_U0jffQII
 [`shared_preferences`]: {{site.pub-pkg}}/shared_preferences
-[Store key-value data on disk]: /cookbook/persistence/key-value
+[Armazenar dados chave-valor em disco]: /cookbook/persistence/key-value
 
-### Caching data with the file system
+### Caching de dados com o sistema de arquivos
 
-If your Flutter app outgrows the low-throughput scenarios
-ideal for `shared_preferences`, you might be ready to explore
-caching data with your device's file system.
-For a more thorough guide, see our other resources on
-file system caching.
+Se seu aplicativo Flutter ultrapassar os cenários de baixa
+taxa de transferência ideais para `shared_preferences`, você
+pode estar pronto para explorar o caching de dados com o sistema
+de arquivos do seu dispositivo.
+Para um guia mais completo, consulte nossos outros recursos
+sobre caching do sistema de arquivos.
 
-* Cookbook: [Read and write files][]
+* Livro de receitas: [Ler e gravar arquivos][]
 
-[Read and write files]: /cookbook/persistence/reading-writing-files
+[Ler e gravar arquivos]: /cookbook/persistence/reading-writing-files
 
-### Caching data with an on-device database
+### Caching de dados com um banco de dados no dispositivo
 
-The final boss of local data caching is any strategy
-that uses a proper database to read and write data.
-Multiple flavors exist, including relational and
-non-relational databases.
-All approaches offer dramatically improved performance over
-simple files - especially for large datasets.
-For a more thorough guide, see the following resources:
+O chefe final do caching de dados local é qualquer estratégia
+que use um banco de dados adequado para ler e gravar dados.
+Existem vários tipos, incluindo bancos de dados relacionais e
+não relacionais.
+Todas as abordagens oferecem um desempenho drasticamente
+melhorado em relação a arquivos simples - especialmente para
+grandes conjuntos de dados.
+Para um guia mais completo, consulte os seguintes recursos:
 
-* Cookbook: [Persist data with SQLite][]
-* SQLite alternate: [`sqlite3` package][]
-* Drift, a relational database: [`drift` package][]
-* Hive, a non-relational database: [`hive` package][]
-* Isar, a non-relational database: [`isar` package][]
+* Livro de receitas: [Persistir dados com SQLite][]
+* Alternativa SQLite: [`sqlite3` package][]
+* Drift, um banco de dados relacional: [`drift` package][]
+* Hive, um banco de dados não relacional: [`hive` package][]
+* Isar, um banco de dados não relacional: [`isar` package][]
 
 [`drift` package]: {{site.pub-pkg}}/drift
 [`hive` package]: {{site.pub-pkg}}/hive
 [`isar` package]: {{site.pub-pkg}}/isar
-[Persist data with SQLite]: /cookbook/persistence/sqlite
+[Persistir dados com SQLite]: /cookbook/persistence/sqlite
 [`sqlite3` package]: {{site.pub-pkg}}/sqlite3
 
-## Caching images
+## Caching de imagens
 
-Caching images is a similar problem space to caching regular data,
-though with a one-size-fits-all solution.
-To direct your Flutter app to use the file system to store images,
-use the [`cached_network_image` package][].
+O caching de imagens é um espaço problemático semelhante ao
+caching de dados regulares, embora com uma solução única para
+todos.
+Para direcionar seu aplicativo Flutter para usar o sistema de
+arquivos para armazenar imagens, use o [`cached_network_image`
+package][].
 
-* Video: [Package of the Week: `cached_network_image`][]
+* Vídeo: [Pacote da Semana: `cached_network_image`][]
 
 {% comment %}
-TODO: My understanding is that we now recommend `Image.network` instead of cache_network_image.
+TODO: Meu entendimento é que agora recomendamos `Image.network` em vez de cache_network_image.
 {% endcomment %}
 
 [`cached_network_image` package]: {{site.pub-pkg}}/cached_network_image
-[Package of the Week: `cached_network_image`]: https://www.youtube.com/watch?v=fnHr_rsQwDA
+[Pacote da Semana: `cached_network_image`]: https://www.youtube.com/watch?v=fnHr_rsQwDA
 
-## State restoration
+## Restauração de estado
 
-Along with application data, you might also want to persist other
-aspects of a user's session, like their navigation stack, scroll
-positions, and even partial progress filling out forms. This
-pattern is called "state restoration", and is built in to Flutter.
+Juntamente com os dados do aplicativo, você também pode querer
+persistir outros aspectos da sessão de um usuário, como sua pilha
+de navegação, posições de rolagem e até mesmo o progresso
+parcial no preenchimento de formulários. Esse padrão é chamado
+de "restauração de estado" e está integrado ao Flutter.
 
-State restoration works by instructing the Flutter framework
-to sync data from its Element tree with the Flutter engine,
-which then caches it in platform-specific storage for future 
-sessions. To enable state restoration on Flutter for Android
-and iOS, see the following documentation:
+A restauração de estado funciona instruindo a estrutura Flutter
+a sincronizar os dados de sua árvore Element com o mecanismo
+Flutter, que então os armazena em cache no armazenamento
+específico da plataforma para sessões futuras. Para ativar a
+restauração de estado no Flutter para Android e iOS, consulte
+a seguinte documentação:
 
-* Android documentation: [Android state restoration][]
-* iOS documentation: [iOS state restoration][]
+* Documentação do Android: [Restauração de estado do Android][]
+* Documentação do iOS: [Restauração de estado do iOS][]
 
-[Android state restoration]: /platform-integration/android/restore-state-android
-[iOS state restoration]: /platform-integration/ios/restore-state-ios
+[Restauração de estado do Android]: /platform-integration/android/restore-state-android
+[Restauração de estado do iOS]: /platform-integration/ios/restore-state-ios
 
 ## Feedback
 
-As this section of the website is evolving, 
-we [welcome your feedback][]!
+Como esta seção do site está evoluindo,
+[agradecemos seu feedback][]!
 
-[welcome your feedback]: https://google.qualtrics.com/jfe/form/SV_6A9KxXR7XmMrNsy?page="local-caching"
+[agradecemos seu feedback]: https://google.qualtrics.com/jfe/form/SV_6A9KxXR7XmMrNsy?page="local-caching"

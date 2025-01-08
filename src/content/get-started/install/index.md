@@ -1,7 +1,8 @@
 ---
-title: Choose your development platform to get started
-short-title: Install
-description: Install Flutter and get started. Downloads available for Windows, macOS, Linux, and ChromeOS operating systems.
+ia-translate: true
+title: Escolha sua plataforma de desenvolvimento para começar
+short-title: Instalar
+description: Instale o Flutter e comece. Downloads disponíveis para sistemas operacionais Windows, macOS, Linux e ChromeOS.
 os-list: [Windows, macOS, Linux, ChromeOS]
 js: [{url: '/assets/js/page/install-current.js'}]
 ---

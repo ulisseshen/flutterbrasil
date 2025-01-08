@@ -16,27 +16,29 @@ class LinkerImp implements LinkerModel {
   Future<String> linker(List<String> links, List<String> references) async {
     final input =
         'references:\n${references.join('\n')}\n\nlinks:\n${links.join('\n')}';
-    print('input: $input');
     // Obtém o modelo para o processo de link
-    final model = modelManager.getLinkModel();
+    final model = modelManager.getModel();
     final response = await model.getResponse(input);
-    print('Reponse: $response');
     return response;
   }
 
   @override
   String reconciliate(String originalText, String jsonResponse) {
     try {
-      // Decodifica o JSON
+      originalText = normalizeLineBreaks(originalText);
       final replacements = jsonDecode(jsonResponse) as List<dynamic>;
 
       // Itera sobre os itens e substitui cada referência
       for (final replacement in replacements) {
-        final before = replacement['before'] as String?;
-        final after = replacement['after'] as String?;
+        String? before = replacement['before'] as String?;
+        String? after = replacement['after'] as String?;
 
         if (before == null || after == null) continue;
-        originalText = originalText.replaceAll(before, after);
+
+        if (!originalText.contains(before.trim())) {
+          print("O before $before nâo foi encontrado no texto original");
+        }
+        originalText = originalText.replaceAll(before.trim(), after);
       }
 
       return originalText;
@@ -45,5 +47,9 @@ class LinkerImp implements LinkerModel {
       print('Result $jsonResponse');
       rethrow;
     }
+  }
+
+  String normalizeLineBreaks(String text) {
+    return text.replaceAll('\r\n', '\n').replaceAll('\r', '\n');
   }
 }

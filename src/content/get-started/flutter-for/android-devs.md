@@ -13,7 +13,7 @@ como um pontapé inicial para o desenvolvimento Flutter.
 
 :::note
 Para integrar o código Flutter em seu aplicativo Android, veja
-[Adicionar Flutter a um aplicativo existente][].
+[Adicionar Flutter a um aplicativo existente][Adicionar Flutter a um aplicativo existente].
 :::
 
 Seu conhecimento e conjunto de habilidades Android são muito valiosos ao criar
@@ -33,7 +33,7 @@ encontrando as perguntas mais relevantes para suas necessidades.
 :::secondary
 Como a programação estilo react, ou _declarativa_, é diferente do
 estilo imperativo tradicional?
-Para uma comparação, veja [Introdução à UI declarativa][].
+Para uma comparação, veja [Introdução à UI declarativa][Introdução à UI declarativa].
 :::
 
 No Android, a `View` é a base de tudo que aparece na tela.
@@ -55,16 +55,16 @@ Como eles não são views em si e não estão desenhando nada diretamente,
 mas sim uma descrição da UI e sua semântica que são "infladas"
 em objetos de view reais por baixo dos panos.
 
-O Flutter inclui a biblioteca [Componentes Material][].
+O Flutter inclui a biblioteca [Componentes Material][Componentes Material].
 Estes são widgets que implementam as
-[diretrizes de Design Material][]. Design Material é um
-sistema de design flexível [otimizado para todas as plataformas][],
+[diretrizes de Design Material][Diretrizes de Design Material]. Design Material é um
+sistema de design flexível [otimizado para todas as plataformas][otimizado para todas as plataformas],
 incluindo iOS.
 
 Mas o Flutter é flexível e expressivo o suficiente para implementar qualquer
 linguagem de design. Por exemplo, no iOS, você pode usar os
-[widgets Cupertino][] para produzir uma interface que se parece com a
-[linguagem de design do iOS da Apple][].
+[widgets Cupertino][Widgets Cupertino] para produzir uma interface que se parece com a
+[linguagem de design do iOS da Apple][Linguagem de design iOS da Apple].
 
 ### Como eu atualizo os widgets?
 
@@ -210,7 +210,7 @@ Widget build(BuildContext context) {
 ```
 
 Você pode visualizar alguns dos layouts que o Flutter tem a oferecer no
-[catálogo de widgets][].
+[catálogo de widgets][catálogo de widgets].
 
 ### Como eu adiciono ou removo um componente do meu layout?
 
@@ -394,9 +394,9 @@ class _MyFadeTest extends State<MyFadeTest> with TickerProviderStateMixin {
 ```
 
 Para mais informações, veja
-[Widgets de Animação & Movimento][],
-o [tutorial de Animações][],
-e a [visão geral de Animações][].
+[Widgets de Animação & Movimento][Widgets de Animação e Movimento],
+o [tutorial de Animações][Tutorial de Animações],
+e a [visão geral de Animações][Visão geral de Animações].
 
 ### Como eu uso um Canvas para desenhar/pintar?
 
@@ -412,7 +412,7 @@ e `CustomPainter`,
 a última das quais implementa seu algoritmo para desenhar no canvas.
 
 Para aprender como implementar um pintor de assinatura no Flutter,
-veja a resposta de Collin em [Pintura Personalizada][].
+veja a resposta de Collin em [Pintura Personalizada][Pintura Personalizada].
 
 <?code-excerpt "lib/canvas.dart"?>
 ```dart
@@ -486,7 +486,7 @@ No Android, você normalmente cria uma subclasse de `View`, ou usa uma view
 pré-existente, para substituir e implementar métodos que alcançam o
 comportamento desejado.
 
-No Flutter, construa um widget personalizado por [composição][]
+No Flutter, construa um widget personalizado por [composição][composição]
 de widgets menores (em vez de estendê-los).
 É um pouco semelhante a implementar um `ViewGroup` personalizado
 no Android, onde todos os blocos de construção já existem,
@@ -529,12 +529,12 @@ Widget build(BuildContext context) {
 
 ## Intents
 
-### Qual é o equivalente de uma Intent no Flutter?
+### Qual é o equivalente de uma Intent no Flutter? {:#qual-e-o-equivalente-de-um-intent-no-flutter}
 
 No Android, existem dois principais casos de uso para `Intent`s: navegar entre
 Activities e se comunicar com componentes. O Flutter, por outro lado,
 não tem o conceito de intents, embora você ainda possa iniciar intents
-por meio de integrações nativas (usando [um plugin][]).
+por meio de integrações nativas (usando [um plugin][um plugin]).
 
 O Flutter realmente não tem um equivalente direto para activities e
 fragments; em vez disso, no Flutter, você navega entre telas, usando um
@@ -580,10 +580,10 @@ Navigator.of(context).pushNamed('/b');
 
 O outro caso de uso popular para `Intent`s é chamar componentes externos,
 como uma câmera ou seletor de arquivos. Para isso, você precisaria criar
-uma integração de plataforma nativa (ou usar um [plugin existente][]).
+uma integração de plataforma nativa (ou usar um [plugin existente][plugin existente]).
 
 Para aprender como construir uma integração de plataforma nativa,
-veja [desenvolvimento de pacotes e plugins][].
+veja [desenvolvimento de pacotes e plugins][desenvolvendo pacotes e plugins].
 
 ### Como eu lido com intents recebidos de aplicativos externos no Flutter?
 
@@ -760,7 +760,7 @@ sua localização, você pode `pop` a pilha com o resultado:
 Navigator.of(context).pop({'lat': 43.821757, 'long': -79.226392});
 ```
 
-## UI Assíncrona
+## UI Assíncrona {:#async-ui}
 
 ### Qual é o equivalente de runOnUiThread() no Flutter?
 
@@ -1113,7 +1113,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
 ### Qual é o equivalente do OkHttp no Flutter?
 
 Fazer uma chamada de rede no Flutter é fácil quando você usa o
-popular [`http` package][].
+popular [`http` package][`http` package].
 
 Embora o pacote http não tenha todos os recursos encontrados no OkHttp,
 ele abstrai grande parte da rede que você normalmente implementaria
@@ -1255,7 +1255,7 @@ Flutter têm apenas assets. Todos os recursos que estariam nas pastas
 O Flutter segue um formato simples baseado em densidade como o iOS.
 Os assets podem ser `1.0x`, `2.0x`, `3.0x` ou qualquer outro multiplicador.
 O Flutter não tem `dp`s, mas existem pixels lógicos, que são basicamente os
-mesmos que pixels independentes de dispositivo. O [`devicePixelRatio`][] do
+mesmos que pixels independentes de dispositivo. O [`devicePixelRatio`][`devicePixelRatio`] do
 Flutter expressa a proporção de pixels físicos em um único pixel lógico.
 
 O equivalente aos buckets de densidade do Android são:
@@ -1347,7 +1347,7 @@ Text(AppLocalizations.of(context)!.hello('John'));
 O Flutter tem suporte básico para acessibilidade no Android, embora esse
 recurso esteja em andamento.
 
-Consulte [Internacionalizando aplicativos Flutter][] para obter mais informações
+Consulte [Internacionalizando aplicativos Flutter][Internacionalizando aplicativos Flutter] para obter mais informações
 sobre isso.
 
 ### Qual é o equivalente de um arquivo Gradle? Como faço para adicionar dependências?
@@ -1361,7 +1361,7 @@ Embora existam arquivos Gradle na pasta `android` em seu projeto Flutter, use-os
 apenas se estiver adicionando dependências nativas necessárias para a
 integração por plataforma. Em geral, use `pubspec.yaml` para declarar
 dependências externas para usar no Flutter. Um bom lugar para encontrar pacotes
-Flutter é [pub.dev][].
+Flutter é [pub.dev][pub.dev].
 
 ## Activities e fragments
 
@@ -1376,9 +1376,9 @@ aplicativo. No Flutter, esses dois conceitos se enquadram no guarda-chuva de
 
 Para saber mais sobre a UI para a construção de Activities e Fragments,
 consulte o artigo do Medium, de contribuição da comunidade,
-[Flutter for Android Developers: How to design Activity UI in Flutter][].
+[Flutter for Android Developers: How to design Activity UI in Flutter][Flutter para Desenvolvedores Android: Como projetar a UI da Activity no Flutter].
 
-Como mencionado na seção [Intents][], telas no Flutter são representadas por
+Como mencionado na seção [Intents][Intents], telas no Flutter são representadas por
 `Widget`s, já que tudo é um widget no Flutter. Use um `Navigator` para se mover
 entre diferentes `Route`s que representam diferentes telas ou páginas, ou talvez
 diferentes estados ou renderizações dos mesmos dados.
@@ -1404,7 +1404,7 @@ entrada do usuário e está em execução em segundo plano. Isso é equivalente 
 Isso é equivalente a `onPostResume()` no Android.
 
 Para obter mais detalhes sobre o significado desses estados, consulte a
-documentação [`AppLifecycleStatus`][].
+documentação [`AppLifecycleStatus`][Documentação do `AppLifecycleStatus`].
 
 Como você deve ter percebido, apenas uma pequena minoria dos eventos de ciclo
 de vida da Activity estão disponíveis; enquanto a `FlutterActivity` captura
@@ -1518,7 +1518,7 @@ Widget build(BuildContext context) {
 
 Para saber mais sobre a construção de layouts lineares, consulte o artigo do
 Medium, de contribuição da comunidade,
-[Flutter for Android Developers: How to design LinearLayout in Flutter][].
+[Flutter for Android Developers: How to design LinearLayout in Flutter][Flutter para Desenvolvedores Android: Como projetar LinearLayout no Flutter].
 
 ### Qual é o equivalente de um RelativeLayout?
 
@@ -1530,7 +1530,7 @@ widgets Column, Row e Stack. Você pode especificar regras para os construtores
 de widgets sobre como os filhos são dispostos em relação ao pai.
 
 Para um bom exemplo de como construir um RelativeLayout no Flutter, consulte a
-resposta de Collin em [StackOverflow][].
+resposta de Collin em [StackOverflow][StackOverflow].
 
 ### Qual é o equivalente de um ScrollView?
 
@@ -2091,8 +2091,8 @@ widget `Text`. O parâmetro style de um widget `Text` usa um objeto
 ## Entrada de formulário
 
 Para obter mais informações sobre como usar formulários,
-veja [Recuperar o valor de um campo de texto][],
-do [Livro de receitas do Flutter][].
+veja [Recuperar o valor de um campo de texto][Recuperar o valor de um campo de texto],
+do [Livro de receitas do Flutter][Livro de receitas do Flutter].
 
 ### Qual é o equivalente de uma "dica" em uma Entrada?
 
@@ -2198,34 +2198,34 @@ class _SampleAppPageState extends State<SampleAppPage> {
 
 ### Como eu acesso o sensor GPS?
 
-Use o plugin da comunidade [`geolocator`][].
+Use o plugin da comunidade [`geolocator`][`geolocator`].
 
 ### Como eu acesso a câmera?
 
-O plugin [`image_picker`][] é popular
+O plugin [`image_picker`][`image_picker`] é popular
 para acessar a câmera.
 
 ### Como eu faço login com o Facebook?
 
 Para fazer login com o Facebook, use o
-plugin da comunidade [`flutter_facebook_login`][].
+plugin da comunidade [`flutter_facebook_login`][`flutter_facebook_login`].
 
 ### Como eu uso os recursos do Firebase?
 
 A maioria das funções do Firebase são cobertas por
-[plugins de primeira parte][].
+[plugins de primeira parte][plugins de primeira parte].
 Esses plugins são integrações de primeira parte,
 mantidos pela equipe do Flutter:
 
- * [`google_mobile_ads`][] para Google Mobile Ads para Flutter
- * [`firebase_analytics`][] para Firebase Analytics
- * [`firebase_auth`][] para Firebase Auth
- * [`firebase_database`][] para Firebase RTDB
- * [`firebase_storage`][] para Firebase Cloud Storage
- * [`firebase_messaging`][] para Firebase Messaging (FCM)
- * [`flutter_firebase_ui`][] para integrações rápidas do Firebase Auth
+ * [`google_mobile_ads`][`google_mobile_ads`] para Google Mobile Ads para Flutter
+ * [`firebase_analytics`][`firebase_analytics`] para Firebase Analytics
+ * [`firebase_auth`][`firebase_auth`] para Firebase Auth
+ * [`firebase_database`][`firebase_database`] para Firebase RTDB
+ * [`firebase_storage`][`firebase_storage`] para Firebase Cloud Storage
+ * [`firebase_messaging`][`firebase_messaging`] para Firebase Messaging (FCM)
+ * [`flutter_firebase_ui`][`flutter_firebase_ui`] para integrações rápidas do Firebase Auth
    (Facebook, Google, Twitter e e-mail)
- * [`cloud_firestore`][] para Firebase Cloud Firestore
+ * [`cloud_firestore`][`cloud_firestore`] para Firebase Cloud Firestore
 
 Você também pode encontrar alguns plugins Firebase de terceiros em
 pub.dev que cobrem áreas não diretamente cobertas pelos
@@ -2236,7 +2236,7 @@ plugins de primeira parte.
 Se houver funcionalidade específica da plataforma que o Flutter
 ou seus Plugins da comunidade estão faltando,
 você pode construir o seu próprio seguindo a
-página [desenvolvendo pacotes e plugins][].
+página [desenvolvendo pacotes e plugins][desenvolvendo pacotes e plugins].
 
 A arquitetura de plugin do Flutter, em poucas palavras, é muito parecida com o
 uso de um barramento de eventos no Android: você dispara uma mensagem e deixa o
@@ -2311,7 +2311,7 @@ No Android, você pode armazenar uma pequena coleção de pares de chave-valor u
 a API SharedPreferences.
 
 No Flutter, acesse essa funcionalidade usando o
-[plugin Shared_Preferences][].
+[plugin Shared_Preferences][plugin Shared_Preferences].
 Este plugin envolve a funcionalidade de ambos
 Preferências Compartilhadas e NSUserDefaults (o equivalente iOS).
 
@@ -2351,19 +2351,19 @@ que você pode consultar usando SQL.
 
 No Flutter, para macOS, Android ou iOS,
 acesse essa funcionalidade usando o
-plugin [SQFlite][].
+plugin [SQFlite][SQFlite].
 
 ## Depuração
 
 ### Quais ferramentas eu posso usar para depurar meu aplicativo no Flutter?
 
-Use o conjunto [DevTools][] para depurar aplicativos Flutter ou Dart.
+Use o conjunto [DevTools][DevTools] para depurar aplicativos Flutter ou Dart.
 
 O DevTools inclui suporte para criação de perfil, exame do heap, inspeção da
 árvore de widgets, registro de diagnósticos, depuração, observação de linhas de
 código executadas, depuração de vazamentos de memória e fragmentação de memória.
 Para mais informações, consulte a
-documentação do [DevTools][].
+documentação do [DevTools][DevTools].
 
 ## Notificações
 
@@ -2373,9 +2373,9 @@ No Android, você usa o Firebase Cloud Messaging para configurar
 notificações push para seu aplicativo.
 
 No Flutter, acesse essa funcionalidade usando o
-plugin [Firebase Messaging][].
+plugin [Firebase Messaging][Firebase Messaging].
 Para mais informações sobre como usar a API Firebase Cloud Messaging,
-consulte a documentação do plugin [`firebase_messaging`][].
+consulte a documentação do plugin [`firebase_messaging`][`firebase_messaging`].
 
 [Adicionar Flutter a um aplicativo existente]: /add-to-app
 [Widgets de Animação e Movimento]: /ui/widgets/animation

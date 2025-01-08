@@ -13,15 +13,15 @@ Ele explica como aplicar o conhecimento existente de UIKit ao Flutter.
 
 :::note
 Se você tiver experiência na criação de aplicativos com SwiftUI,
-confira [Flutter para desenvolvedores SwiftUI][] em vez disso.
+confira [Flutter para desenvolvedores SwiftUI][Flutter for SwiftUI developers] em vez disso.
 :::
 
 Flutter é um framework para criar aplicativos multiplataforma
 que usa a linguagem de programação Dart.
 Para entender algumas diferenças entre programar com Dart
 e programar com Swift,
-confira [Aprendendo Dart como um desenvolvedor Swift][]
-e [Concorrência do Flutter para desenvolvedores Swift][].
+confira [Aprendendo Dart como um desenvolvedor Swift][Learning Dart as a Swift Developer]
+e [Concorrência do Flutter para desenvolvedores Swift][Flutter concurrency for Swift developers].
 
 Seu conhecimento e experiência em iOS e UIKit
 são muito valiosos ao construir com o Flutter.
@@ -32,11 +32,11 @@ são muito valiosos ao construir com o Flutter.
 
 O Flutter também faz uma série de adaptações
 no comportamento do aplicativo quando executado no iOS.
-Para saber como, consulte [Adaptações de plataforma][].
+Para saber como, consulte [Adaptações de plataforma][Platform adaptations].
 
 :::tip
 Para integrar o código do Flutter em um aplicativo iOS **existente**,
-confira [Adicionar Flutter a um aplicativo existente][].
+confira [Adicionar Flutter a um aplicativo existente][Add Flutter to existing app].
 :::
 
 Use este guia como um livro de receitas.
@@ -54,7 +54,7 @@ Ele descreve como o Flutter funciona no iOS e como usar o Flutter para criar apl
 :::secondary
 Como a programação no estilo React, ou _declarativa_,
 é diferente do estilo imperativo tradicional?
-Para uma comparação, consulte [Introdução à UI declarativa][].
+Para uma comparação, consulte [Introdução à UI declarativa][Introduction to declarative UI].
 :::
 
 No UIKit, a maior parte do que você cria na UI é feita usando objetos view,
@@ -83,17 +83,17 @@ e não estão desenhando nada diretamente,
 mas sim uma descrição da UI e sua semântica
 que são "infladas" em objetos view reais sob o capô.
 
-O Flutter inclui a biblioteca [Componentes Material][].
+O Flutter inclui a biblioteca [Componentes Material][Material Components].
 Esses são widgets que implementam as
-[diretrizes do Material Design][].
+[diretrizes do Material Design][Material Design guidelines].
 Material Design é um sistema de design flexível
-[otimizado para todas as plataformas][], incluindo iOS.
+[otimizado para todas as plataformas][optimized for all platforms], incluindo iOS.
 
 Mas o Flutter é flexível e expressivo o suficiente
 para implementar qualquer linguagem de design.
-No iOS, você pode usar a biblioteca [widgets Cupertino][]
+No iOS, você pode usar a biblioteca [widgets Cupertino][Cupertino widgets]
 para produzir uma interface que se pareça com a
-[linguagem de design do iOS da Apple][].
+[linguagem de design do iOS da Apple][Apple's iOS design language].
 
 ### Atualizando widgets
 
@@ -235,7 +235,7 @@ Você pode adicionar preenchimento a qualquer widget,
 o que imita a funcionalidade das restrições no iOS.
 
 Você pode ver os layouts que o Flutter tem a oferecer
-no [catálogo de widgets][].
+no [catálogo de widgets][widget catalog].
 
 ### Removendo Widgets
 
@@ -415,8 +415,8 @@ class _MyFadeTest extends State<MyFadeTest>
 }
 ```
 
-Para obter mais informações, consulte [Widgets de animação e movimento][],
-o [tutorial de animações][], e a [visão geral de animações][].
+Para obter mais informações, consulte [Widgets de animação e movimento][Animation & Motion widgets],
+o [tutorial de animações][Animations tutorial], e a [visão geral de animações][Animations overview].
 
 ### Desenhando na tela
 
@@ -426,7 +426,7 @@ com duas outras classes que ajudam você a desenhar: `CustomPaint` e `CustomPain
 a última das quais implementa seu algoritmo para desenhar na tela.
 
 Para saber como implementar um desenhista de assinatura no Flutter,
-veja a resposta de Collin no [StackOverflow][].
+veja a resposta de Collin no [StackOverflow][StackOverflow].
 
 [StackOverflow]: {{site.so}}/questions/46241071/create-signature-area-for-mobile-app-in-dart-flutter
 
@@ -506,7 +506,7 @@ envolver um widget em um widget `Opacity` para conseguir isso.
 
 No UIKit, você normalmente cria uma subclasse de `UIView`, ou usa uma view pré-existente,
 para substituir e implementar métodos que alcancem o comportamento desejado.
-No Flutter, construa um widget personalizado [compondo][] widgets menores
+No Flutter, construa um widget personalizado [compondo][composing] widgets menores
 (em vez de estendê-los).
 
 Por exemplo, como você constrói um `CustomButton`
@@ -556,7 +556,7 @@ Embora haja um Podfile na pasta iOS em seu
 projeto Flutter, use-o somente se estiver adicionando
 dependências nativas necessárias para integração por plataforma.
 Em geral, use `pubspec.yaml` para declarar dependências externas no Flutter.
-Um bom lugar para encontrar ótimos pacotes para Flutter é em [pub.dev][].
+Um bom lugar para encontrar ótimos pacotes para Flutter é em [pub.dev][pub.dev].
 
 ## Navegação
 
@@ -572,7 +572,7 @@ para exibir.
 O Flutter tem uma implementação semelhante,
 usando um `Navigator` e `Rotas`.
 Uma `Rota` é uma abstração para uma "tela" ou "página" de um aplicativo,
-e um `Navigator` é um [widget][]
+e um `Navigator` é um [widget][widget]
 que gerencia rotas. Uma rota mapeia aproximadamente para um
 `UIViewController`. O navegador funciona de forma semelhante ao iOS
 `UINavigationController`, pois ele pode `push()` e `pop()`
@@ -635,7 +635,7 @@ você usa um esquema de URL específico.
 Para os aplicativos de nível de sistema, o esquema depende do aplicativo.
 Para implementar essa funcionalidade no Flutter,
 crie uma integração de plataforma nativa ou use um
-[plugin existente][], como [`url_launcher`][].
+[plugin existente][existing plugin], como [`url_launcher`][`url_launcher`].
 
 ### Voltar manualmente
 
@@ -650,7 +650,7 @@ if ([viewController isKindOfClass:[UINavigationController class]]) {
 ```
 
 Se isso não fizer o que você quer, você pode criar seu próprio
-[canal de plataforma][] para invocar código iOS arbitrário.
+[canal de plataforma][platform channel] para invocar código iOS arbitrário.
 
 ### Lidando com localização
 
@@ -676,7 +676,7 @@ Text(Strings.welcomeMessage);
 Por padrão, o Flutter oferece suporte apenas ao inglês americano para suas strings.
 Se você precisar adicionar suporte para outros idiomas,
 inclua o pacote `flutter_localizations`.
-Você também pode precisar adicionar o pacote [`intl`][] do Dart
+Você também pode precisar adicionar o pacote [`intl`][`intl`] do Dart
 para usar o maquinário i10n, como formatação de data/hora.
 
 ```yaml
@@ -729,20 +729,20 @@ para a cópia localizável do seu próprio aplicativo,
 se você quiser que esses sejam localizados também.
 
 Quando inicializado, o `WidgetsApp` (ou `MaterialApp`)
-cria um widget [`Localizations`][] para você,
+cria um widget [`Localizations`][`Localizations`] para você,
 com os delegates que você especifica.
 O local atual para o dispositivo está sempre acessível
 a partir do widget `Localizations` do contexto atual
-(na forma de um objeto `Locale`), ou usando o [`Window.locale`][].
+(na forma de um objeto `Locale`), ou usando o [`Window.locale`][`Window.locale`].
 
 Para acessar recursos localizados, use o método `Localizations.of()`
 para acessar uma classe de localizações específica que é fornecida por um determinado delegate.
-Use o pacote [`intl_translation`][] para extrair a cópia traduzível
-para arquivos [arb][] para traduzir e importá-los de volta para o aplicativo
+Use o pacote [`intl_translation`][`intl_translation`] para extrair a cópia traduzível
+para arquivos [arb][arb] para traduzir e importá-los de volta para o aplicativo
 para usá-los com `intl`.
 
 Para mais detalhes sobre internacionalização e localização no Flutter,
-consulte o [guia de internacionalização][], que tem código de exemplo
+consulte o [guia de internacionalização][internationalization guide], que tem código de exemplo
 com e sem o pacote `intl`.
 
 ## ViewControllers
@@ -794,7 +794,7 @@ não está respondendo à entrada do usuário, mas está em execução em segund
 A plataforma iOS não tem evento equivalente.
 
 Para mais detalhes sobre o significado desses estados, veja
-a documentação [`AppLifecycleState`][].
+a documentação [`AppLifecycleState`][`AppLifecycleState` documentation].
 
 ## Layouts
 
@@ -1110,7 +1110,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-Para obter documentos mais detalhados sobre como dispor widgets no Flutter, consulte o [tutorial de layout][].
+Para obter documentos mais detalhados sobre como dispor widgets no Flutter, consulte o [tutorial de layout][layout tutorial].
 
 ## Detecção de gestos e tratamento de eventos de toque
 
@@ -1274,7 +1274,7 @@ Pronto para uso, o Flutter vem com uma bela implementação do Material Design, 
 
 Para aproveitar ao máximo os componentes do Material em seu aplicativo, declare um widget de nível superior, `MaterialApp`, como o ponto de entrada para seu aplicativo. `MaterialApp` é um widget de conveniência que envolve vários widgets que são comumente exigidos para aplicativos que implementam o Material Design. Ele é construído sobre um `WidgetsApp` adicionando funcionalidades específicas do Material.
 
-Mas o Flutter é flexível e expressivo o suficiente para implementar qualquer linguagem de design. No iOS, você pode usar a [biblioteca Cupertino][] para produzir uma interface que adere às [Diretrizes de Interface Humana][]. Para o conjunto completo desses widgets, consulte a galeria de [widgets Cupertino][].
+Mas o Flutter é flexível e expressivo o suficiente para implementar qualquer linguagem de design. No iOS, você pode usar a [biblioteca Cupertino][Cupertino library] para produzir uma interface que adere às [Diretrizes de Interface Humana][Human Interface Guidelines]. Para o conjunto completo desses widgets, consulte a galeria de [widgets Cupertino][Cupertino widgets].
 
 Você também pode usar um `WidgetsApp` como seu widget de aplicativo, que fornece algumas das mesmas funcionalidades, mas não é tão rico quanto o `MaterialApp`.
 
@@ -1367,7 +1367,7 @@ assets:
  - my-assets/data.json
 ```
 
-E então acesse-o do código usando um [`AssetBundle`][]:
+E então acesse-o do código usando um [`AssetBundle`][`AssetBundle`]:
 
 <?code-excerpt "lib/asset_bundle.dart"?>
 ```dart
@@ -1379,7 +1379,7 @@ Future<String> loadAsset() async {
 }
 ```
 
-Para imagens, o Flutter segue um formato simples baseado em densidade como o iOS. Os ativos de imagem podem ser `1.0x`, `2.0x`, `3.0x` ou qualquer outro multiplicador. O [`devicePixelRatio`][] do Flutter expressa a proporção de pixels físicos em um único pixel lógico.
+Para imagens, o Flutter segue um formato simples baseado em densidade como o iOS. Os ativos de imagem podem ser `1.0x`, `2.0x`, `3.0x` ou qualquer outro multiplicador. O [`devicePixelRatio`][`devicePixelRatio`] do Flutter expressa a proporção de pixels físicos em um único pixel lógico.
 
 Os ativos estão localizados em qualquer pasta arbitrária - o Flutter não tem uma estrutura de pastas predefinida. Você declara os ativos (com localização) no arquivo `pubspec.yaml` e o Flutter os coleta.
 
@@ -1415,7 +1415,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-Para obter mais detalhes, consulte [Adicionando Ativos e Imagens no Flutter][].
+Para obter mais detalhes, consulte [Adicionando Ativos e Imagens no Flutter][Adding Assets and Images in Flutter].
 
 ## Entrada de formulário
 
@@ -1425,7 +1425,7 @@ Esta seção discute como usar formulários no Flutter e como eles se comparam c
 
 Dado como o Flutter usa widgets imutáveis com um estado separado, você pode estar se perguntando como a entrada do usuário se encaixa no cenário. No UIKit, você normalmente consulta os widgets para obter seus valores atuais quando é hora de enviar a entrada do usuário ou agir sobre ela. Como isso funciona no Flutter?
 
-Na prática, os formulários são tratados, como tudo no Flutter, por widgets especializados. Se você tiver um `TextField` ou um `TextFormField`, você pode fornecer um [`TextEditingController`][] para recuperar a entrada do usuário:
+Na prática, os formulários são tratados, como tudo no Flutter, por widgets especializados. Se você tiver um `TextField` ou um `TextFormField`, você pode fornecer um [`TextEditingController`][`TextEditingController`] para recuperar a entrada do usuário:
 
 <?code-excerpt "lib/form.dart (my-form-state)"?>
 ```dart
@@ -1472,7 +1472,7 @@ class _MyFormState extends State<MyForm> {
 }
 ```
 
-Você pode encontrar mais informações e a listagem completa do código em [Recuperar o valor de um campo de texto][], do [livro de receitas do Flutter][].
+Você pode encontrar mais informações e a listagem completa do código em [Recuperar o valor de um campo de texto][Retrieve the value of a text field], do [livro de receitas do Flutter][Flutter cookbook].
 
 ### Placeholder em um campo de texto
 
@@ -1887,7 +1887,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
 ### Fazendo requisições de rede
 
 Fazer uma chamada de rede no Flutter é fácil quando você
-usa o popular pacote [`http`][]. Isso abstrai
+usa o popular pacote [`http`][`http` package]. Isso abstrai
 muitas das redes que você normalmente implementaria
 sozinho, tornando simples fazer chamadas de rede.
 

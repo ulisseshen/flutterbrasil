@@ -55,8 +55,8 @@ O GIF animado mostra como o aplicativo funciona após a conclusão deste laborat
 :::secondary O que você vai usar
 Você precisa de três softwares para concluir este laboratório:
 
-* [Flutter SDK][]
-* [Navegador Chrome][]
+* [Flutter SDK][Flutter SDK]
+* [Navegador Chrome][Chrome browser]
 * [Editor de texto ou IDE][editor]
 
 Durante o desenvolvimento, execute seu aplicativo web no Chrome,
@@ -90,7 +90,7 @@ Doctor summary (to see all details, run flutter doctor -v):
 
 Se você vir "flutter: command not found",
 certifique-se de ter instalado o
-[Flutter SDK][] e que ele está no seu path.
+[Flutter SDK][Flutter SDK] e que ele está no seu path.
 
 Não há problema se o conjunto de ferramentas Android, o Android Studio
 e as ferramentas Xcode não estiverem instalados,
@@ -234,10 +234,10 @@ class _SignUpFormState extends State<SignUpForm> {
 ```
 
 :::important
-Esta página usa uma versão incorporada do [DartPad][]
+Esta página usa uma versão incorporada do [DartPad][DartPad]
 para exibir exemplos e exercícios.
 Se você vir caixas vazias em vez de DartPads,
-vá para a [página de solução de problemas do DartPad][].
+vá para a [página de solução de problemas do DartPad][DartPad troubleshooting page].
 :::
 
 </li>
@@ -263,7 +263,7 @@ painel de código para copiar o código Dart para a sua área de transferência.
 
 Crie um novo projeto Flutter.<br>
 Em seu IDE, editor ou na linha de comando,
-[crie um novo projeto Flutter][] e nomeie-o como `signin_example`.
+[crie um novo projeto Flutter][criar um novo projeto Flutter] e nomeie-o como `signin_example`.
 
 </li>
 
@@ -281,15 +281,15 @@ pelo conteúdo da área de transferência.
   arquivo `lib/main.dart`.
 * Se você conhece Java, a linguagem Dart deve parecer muito familiar.
 * Toda a IU do aplicativo é criada em código Dart.
-  Para obter mais informações, consulte [Introdução à IU declarativa][].
-* A IU do aplicativo adere ao [Material Design][],
+  Para obter mais informações, consulte [Introdução à IU declarativa][Introdução à UI declarativa].
+* A IU do aplicativo adere ao [Material Design][Material Design],
   uma linguagem de design visual que é executada em qualquer dispositivo ou plataforma.
   Você pode personalizar os widgets do Material Design,
   mas se preferir algo diferente,
   o Flutter também oferece a biblioteca de widgets Cupertino,
   que implementa a linguagem de design iOS atual.
   Ou você pode criar sua própria biblioteca de widgets personalizada.
-* No Flutter, quase tudo é um [Widget][].
+* No Flutter, quase tudo é um [Widget][Widget].
   Até mesmo o próprio aplicativo é um widget.
   A IU do aplicativo pode ser descrita como uma árvore de widgets.
 
@@ -308,7 +308,7 @@ classe `_SignUpFormState`.
 :::tip Curiosidade
 O compilador Dart impõe privacidade para qualquer identificador
 prefixado com um sublinhado. Para mais informações,
-consulte o [Guia de estilo Dart eficaz][].
+consulte o [Guia de estilo Dart eficaz][Effective Dart Style Guide].
 :::
 
 Primeiro, em seu arquivo `lib/main.dart`,
@@ -556,7 +556,7 @@ mas fica habilitado quando todos os três campos de texto contêm
   Quando `_formProgress` é definido como 1.0, o callback `onPressed` é definido para o
   método `_showWelcomeScreen`. Agora que seu argumento `onPressed` não é nulo, o botão está habilitado.
   Como a maioria dos botões do Material Design no Flutter,
-  [TextButton][]s são desativados por padrão se seus callbacks `onPressed` e `onLongPress` forem nulos.
+  [TextButton][TextButton]s são desativados por padrão se seus callbacks `onPressed` e `onLongPress` forem nulos.
 * Observe que o `_updateFormProgress` passa uma função para `setState()`.
   Isso é chamado de anônimo
   função e tem a seguinte sintaxe:
@@ -583,7 +583,7 @@ mas fica habilitado quando todos os três campos de texto contêm
 
 Como você depura um aplicativo web Flutter?
 Não é muito diferente de depurar qualquer aplicativo Flutter.
-Você deseja usar o [Dart DevTools][]!
+Você deseja usar o [Dart DevTools][Dart DevTools]!
 (Não confundir com o Chrome DevTools.)
 
 Nosso aplicativo atualmente não tem bugs, mas vamos dar uma olhada nele de qualquer maneira.
@@ -625,11 +625,11 @@ Você precisará disso para iniciar o DevTools.
 Certifique-se de que os plugins Dart e Flutter estejam instalados.<br>
 Se você estiver usando um IDE,
 certifique-se de ter os plugins Flutter e Dart configurados,
-conforme descrito nas páginas [VS Code][] e
-[Android Studio e IntelliJ][].
+conforme descrito nas páginas [VS Code][VS Code] e
+[Android Studio e IntelliJ][Android Studio and IntelliJ].
 Se você estiver trabalhando na linha de comando,
 inicie o servidor DevTools conforme explicado no
-página [Linha de comando do DevTools][].
+página [Linha de comando do DevTools][DevTools command line].
 
 </li>
 
@@ -741,7 +741,7 @@ Exclua o breakpoint clicando nele novamente e retome o aplicativo.
 
 Isso dá a você um pequeno vislumbre do que é possível usando o DevTools,
 mas há muito mais! Para mais informações,
-consulte a [documentação do DevTools][].
+consulte a [documentação do DevTools][DevTools documentation].
 
 ## Etapa 3: Adicionar animação para o progresso do login
 
@@ -838,7 +838,7 @@ class _AnimatedProgressIndicatorState extends State<AnimatedProgressIndicator>
 }
 ```
 
-A função [`didUpdateWidget`][] atualiza
+A função [`didUpdateWidget`][`didUpdateWidget`] atualiza
 o `AnimatedProgressIndicatorState` sempre que
 `AnimatedProgressIndicator` muda.
 
@@ -1097,14 +1097,14 @@ class _AnimatedProgressIndicatorState extends State<AnimatedProgressIndicator>
 
 Parabéns! Você criou seu primeiro aplicativo web usando Flutter!
 
-Se você quiser continuar explorando este exemplo, talvez possa adicionar validação de formulário. Para obter aconselhamento sobre como fazer isso, consulte a receita [Construindo um formulário com validação][] no [cookbook do Flutter][].
+Se você quiser continuar explorando este exemplo, talvez possa adicionar validação de formulário. Para obter aconselhamento sobre como fazer isso, consulte a receita [Construindo um formulário com validação][Construindo um formulário com validação] no [cookbook do Flutter][cookbook do Flutter].
 
 Para mais informações sobre aplicativos web Flutter, Dart DevTools ou animações Flutter, consulte o seguinte:
 
-* [Documentação sobre animações][]
-* [Dart DevTools][]
-* Codelab de [Animações implícitas][]
-* [Exemplos Web][]
+* [Documentação sobre animações][Documentação sobre animações]
+* [Dart DevTools][Dart DevTools]
+* Codelab de [Animações implícitas][Animações implícitas]
+* [Exemplos Web][Exemplos Web]
 
 [Android Studio and IntelliJ]: /tools/devtools/android-studio
 [Documentação sobre animações]: /ui/animations

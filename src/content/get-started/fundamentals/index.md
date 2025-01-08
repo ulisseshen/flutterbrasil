@@ -14,7 +14,7 @@ toc: false
 ## Encontre seu caminho com Flutter!
 
 Se você é novo no Flutter e já trabalhou
-no [seu primeiro codelab Flutter][],
+no [seu primeiro codelab Flutter][seu primeiro codelab Flutter],
 esta seção do site é para você!
 
 O objetivo aqui é guiá-lo através de alguns
@@ -39,18 +39,18 @@ páginas de assuntos nesta seção.
 Sugerimos que você trabalhe nos seguintes
 assuntos na ordem listada.
 
- 1. [Introdução ao Dart][] _(Opcional)_
-    Como você deve saber, o Flutter usa a [linguagem Dart][].
+ 1. [Introdução ao Dart][Introdução ao Dart] _(Opcional)_
+    Como você deve saber, o Flutter usa a [linguagem Dart][Dart language].
     Se você tem experiência com outras linguagens
     orientadas a objetos, como Java, C++ ou Swift,
     Dart deve parecer familiar para você.
     Atualmente,
     [Dart é uma das linguagens que mais cresce][dart-lang],
     em parte, graças ao Flutter.
- 2. [Fundamentos de widgets][]
+ 2. [Fundamentos de widgets][Fundamentos de widgets]
     Aprenda sobre um dos principais blocos de
     construção de um aplicativo Flutter, os widgets.
- 3. [Layout][]
+ 3. [Layout][Layout]
     O Flutter é diferente de outros frameworks
     de interface do usuário, pois você cria o layout
     programaticamente. Isso permite compor widgets,
@@ -59,25 +59,25 @@ assuntos na ordem listada.
     Também facilita o design de uma interface do
     usuário para otimizar qualquer tela onde seu
     aplicativo possa ser usado.
- 4. [Gerenciamento de estado][]
+ 4. [Gerenciamento de estado][Gerenciamento de estado]
     Aprenda como compartilhar o estado entre widgets e
     notificar outras partes do seu aplicativo quando
     o estado mudar. Veja como implementar MVVM no
     Flutter para gerenciar o estado de forma eficaz
     para aplicativos de pequeno a médio porte.
- 5. [Manipulação de entrada do usuário][]
+ 5. [Manipulação de entrada do usuário][Manipulação de entrada do usuário]
     Aprenda sobre os widgets do Flutter que suportam
     interatividade, como botões e texto. Além disso,
     aprenda como adicionar interatividade a um widget
     que ainda não a suporta.
- 6. [Rede e dados][]
+ 6. [Rede e dados][Rede e dados]
     Rede é um tópico muito amplo,
     portanto, esta seção se concentra na
     funcionalidade básica de rede, como recuperar
     ou enviar dados usando HTTP, como converter de
     e para JSON, como usar autenticação, como
     implementar assincronicidade e muito mais.
- 7. [Dados locais e cache][]
+ 7. [Dados locais e cache][Dados locais e cache]
     Aprenda sobre diferentes técnicas para
     armazenar em cache dados locais.
 
@@ -95,6 +95,6 @@ assuntos na ordem listada.
 ## Feedback
 
 Como esta seção do site está evoluindo,
-nós [agradecemos seu feedback][]!
+nós [agradecemos seu feedback][agradecemos seu feedback]!
 
 [agradecemos seu feedback]: https://google.qualtrics.com/jfe/form/SV_6A9KxXR7XmMrNsy?page="index"

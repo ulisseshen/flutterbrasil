@@ -73,7 +73,7 @@ class MyApp extends StatelessWidget {
 
 ### Como você cria uma página?
 
-Xamarin.Forms tem muitos tipos de páginas; `ContentPage` é a mais comum. Em Flutter, você especifica um widget de aplicativo que contém sua página raiz. Você pode usar um widget [`MaterialApp`][], que suporta o [Material Design][], ou pode usar um widget [`CupertinoApp`][], que suporta um aplicativo no estilo iOS, ou pode usar o [`WidgetsApp`][] de nível inferior, que você pode personalizar da maneira que quiser.
+Xamarin.Forms tem muitos tipos de páginas; `ContentPage` é a mais comum. Em Flutter, você especifica um widget de aplicativo que contém sua página raiz. Você pode usar um widget [`MaterialApp`][`MaterialApp`], que suporta o [Material Design][Material Design], ou pode usar um widget [`CupertinoApp`][`CupertinoApp`], que suporta um aplicativo no estilo iOS, ou pode usar o [`WidgetsApp`][`WidgetsApp`] de nível inferior, que você pode personalizar da maneira que quiser.
 
 [`CupertinoApp`]: {{site.api}}/flutter/cupertino/CupertinoApp-class.html
 [`MaterialApp`]: {{site.api}}/flutter/material/MaterialApp-class.html
@@ -173,16 +173,16 @@ Essa forma de gerar UI é diferente do Xamarin.Forms, mas há muitos benefícios
 ### Qual é o equivalente de uma Página ou Elemento em Flutter?
 
 :::secondary
-Como a programação no estilo react, ou _declarativa_, é diferente do estilo imperativo tradicional? Para uma comparação, veja [Introdução à UI declarativa][].
+Como a programação no estilo react, ou _declarativa_, é diferente do estilo imperativo tradicional? Para uma comparação, veja [Introdução à UI declarativa][Introdução à UI Declarativa].
 :::
 
 `ContentPage`, `TabbedPage`, `FlyoutPage` são todos os tipos de páginas que você pode usar em um aplicativo Xamarin.Forms. Essas páginas então conteriam `Element`s para exibir os vários controles. No Xamarin.Forms, um `Entry` ou `Button` são exemplos de um `Element`.
 
 Em Flutter, quase tudo é um widget. Uma `Page`, chamada de `Route` em Flutter, é um widget. Botões, barras de progresso e controladores de animação são todos widgets. Ao construir uma rota, você cria uma árvore de widgets.
 
-O Flutter inclui a biblioteca [Componentes Material][]. Estes são widgets que implementam as [diretrizes do Material Design][]. O Material Design é um sistema de design flexível [otimizado para todas as plataformas][], incluindo iOS.
+O Flutter inclui a biblioteca [Componentes Material][Componentes Material]. Estes são widgets que implementam as [diretrizes do Material Design][diretrizes de Material Design]. O Material Design é um sistema de design flexível [otimizado para todas as plataformas][otimizado para todas as plataformas], incluindo iOS.
 
-Mas o Flutter é flexível e expressivo o suficiente para implementar qualquer linguagem de design. Por exemplo, no iOS, você pode usar os [widgets Cupertino][] para produzir uma interface semelhante à [linguagem de design iOS da Apple][].
+Mas o Flutter é flexível e expressivo o suficiente para implementar qualquer linguagem de design. Por exemplo, no iOS, você pode usar os [widgets Cupertino][Widgets Cupertino] para produzir uma interface semelhante à [linguagem de design iOS da Apple][Linguagem de design iOS da Apple].
 
 ### Como faço para atualizar widgets?
 
@@ -297,7 +297,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-Você pode ver os layouts que o Flutter tem a oferecer no [catálogo de widgets][].
+Você pode ver os layouts que o Flutter tem a oferecer no [catálogo de widgets][catálogo de widgets].
 
 ### Como faço para adicionar ou remover um Elemento do meu layout?
 
@@ -454,7 +454,7 @@ class _MyFadeTest extends State<MyFadeTest> with TickerProviderStateMixin {
 }
 ```
 
-Para mais informações, veja [Widgets de Animação & Movimento][], o [tutorial de Animações][], e a [visão geral de Animações][].
+Para mais informações, veja [Widgets de Animação & Movimento][Widgets de Animação e Movimento], o [tutorial de Animações][Tutorial de animações], e a [visão geral de Animações][Visão geral de animações].
 
 ### Como faço para desenhar/pintar na tela?
 
@@ -462,7 +462,7 @@ Xamarin.Forms nunca teve uma maneira integrada de desenhar diretamente na tela. 
 
 Flutter tem duas classes que ajudam você a desenhar na canvas: `CustomPaint` e `CustomPainter`, o último dos quais implementa seu algoritmo para desenhar na canvas.
 
-Para aprender como implementar um painter de assinatura em Flutter, veja a resposta de Collin em [Custom Paint][].
+Para aprender como implementar um painter de assinatura em Flutter, veja a resposta de Collin em [Custom Paint][Custom Paint].
 
 [Custom Paint]: {{site.so}}/questions/46241071/create-signature-area-for-mobile-app-in-dart-flutter
 
@@ -541,13 +541,13 @@ class SignaturePainter extends CustomPainter {
 
 ### Onde está a opacidade do widget?
 
-No Xamarin.Forms, todos os `VisualElement`s têm uma Opacidade. Em Flutter, você precisa encapsular um widget em um [`widget Opacity`][] para conseguir isso.
+No Xamarin.Forms, todos os `VisualElement`s têm uma Opacidade. Em Flutter, você precisa encapsular um widget em um [`widget Opacity`][`Opacity` widget] para conseguir isso.
 
 ### Como faço para construir widgets personalizados?
 
 No Xamarin.Forms, você normalmente cria uma subclasse de `VisualElement` ou usa um `VisualElement` pré-existente para substituir e implementar métodos que alcançam o comportamento desejado.
 
-Em Flutter, crie um widget personalizado por meio de [composição][] de widgets menores (em vez de estendê-los). É um tanto semelhante à implementação de um controle personalizado com base em um `Grid` com vários `VisualElement`s adicionados, enquanto se estende com lógica personalizada.
+Em Flutter, crie um widget personalizado por meio de [composição][compondo] de widgets menores (em vez de estendê-los). É um tanto semelhante à implementação de um controle personalizado com base em um `Grid` com vários `VisualElement`s adicionados, enquanto se estende com lógica personalizada.
 
 Por exemplo, como você cria um `CustomButton` que recebe um rótulo no construtor? Crie um `CustomButton` que compõe um `ElevatedButton` com um rótulo, em vez de estender `ElevatedButton`:
 
@@ -586,7 +586,7 @@ Widget build(BuildContext context) {
 
 No Xamarin.Forms, a classe `NavigationPage` fornece uma experiência de navegação hierárquica onde o usuário pode navegar pelas páginas, para frente e para trás.
 
-Flutter tem uma implementação semelhante, usando um `Navigator` e `Routes`. Uma `Route` é uma abstração para uma `Page` de um aplicativo, e um `Navigator` é um [widget][] que gerencia rotas.
+Flutter tem uma implementação semelhante, usando um `Navigator` e `Routes`. Uma `Route` é uma abstração para uma `Page` de um aplicativo, e um `Navigator` é um [widget][widget] que gerencia rotas.
 
 Uma rota mapeia aproximadamente para uma `Page`. O navegador funciona de forma semelhante ao `NavigationPage` do Xamarin.Forms, pois pode `push()` e `pop()` rotas, dependendo se você deseja navegar para, ou voltar de, uma view.
 
@@ -622,7 +622,7 @@ Navigator.of(context).pushNamed('/b');
 
 O `Navigator` é uma pilha que gerencia as rotas do seu aplicativo. Empurrar uma rota para a pilha move para essa rota. Retirar uma rota da pilha, retorna à rota anterior. Isso é feito aguardando o `Future` retornado por `push()`.
 
-`async`/`await` é muito semelhante à implementação .NET e é explicado com mais detalhes em [Async UI][].
+`async`/`await` é muito semelhante à implementação .NET e é explicado com mais detalhes em [Async UI][UI Assíncrona].
 
 Por exemplo, para iniciar uma rota `location` que permite ao usuário selecionar sua localização, você pode fazer o seguinte:
 
@@ -642,9 +642,9 @@ Navigator.of(context).pop({'lat': 43.821757, 'long': -79.226392});
 
 No Xamarin.Forms, para enviar o usuário para outro aplicativo, você usa um esquema de URI específico, usando `Device.OpenUrl("mailto://")`.
 
-Para implementar esta funcionalidade em Flutter, crie uma integração de plataforma nativa ou use um [plugin existente][], como [`url_launcher`][], disponível com muitos outros pacotes no [pub.dev][].
+Para implementar esta funcionalidade em Flutter, crie uma integração de plataforma nativa ou use um [plugin existente][plugin existente], como [`url_launcher`][`url_launcher`], disponível com muitos outros pacotes no [pub.dev][pub.dev].
 
-## UI Assíncrona
+## UI Assíncrona {:#async-ui}
 
 ### Qual é o equivalente de Device.BeginOnMainThread() no Flutter?
 
@@ -968,7 +968,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
 
 No Xamarin.Forms, você usaria o `HttpClient`.
 Fazer uma chamada de rede no Flutter é fácil
-quando você usa o popular [`http` package][].
+quando você usa o popular [`http` package][`http` package].
 Isso abstrai muito do trabalho de rede
 que você normalmente implementaria sozinho,
 tornando simples fazer chamadas de rede.
@@ -1119,7 +1119,7 @@ O Flutter segue um formato simples baseado em densidade como o iOS.
 Os ativos podem ser `1.0x`, `2.0x`, `3.0x` ou qualquer outro multiplicador.
 O Flutter não tem `dp`s, mas existem pixels lógicos,
 que são basicamente os mesmos que pixels independentes de dispositivo.
-O [`devicePixelRatio`][] do Flutter expressa a razão
+O [`devicePixelRatio`][`devicePixelRatio`] do Flutter expressa a razão
 de pixels físicos em um único pixel lógico.
 
 O equivalente aos buckets de densidade do Android são:
@@ -1179,7 +1179,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-Informações mais detalhadas podem ser encontradas em [Adicionando ativos e imagens][].
+Informações mais detalhadas podem ser encontradas em [Adicionando ativos e imagens][Adicionando assets e imagens].
 
 ### Onde armazeno strings? Como eu gerencio a localização?
 
@@ -1205,7 +1205,7 @@ Text(Strings.welcomeMessage);
 Por padrão, o Flutter oferece suporte apenas ao inglês dos EUA para suas strings.
 Se você precisar adicionar suporte para outros idiomas,
 inclua o pacote `flutter_localizations`.
-Você também pode precisar adicionar o pacote [`intl`][] do Dart
+Você também pode precisar adicionar o pacote [`intl`][`intl`] do Dart
 para usar mecanismos i10n, como formatação de data/hora.
 
 ```yaml
@@ -1257,20 +1257,20 @@ para a cópia localizável do seu próprio aplicativo,
 se você quiser que eles também sejam localizados.
 
 Quando inicializado, o `WidgetsApp` (ou `MaterialApp`)
-cria um widget [`Localizations`][] para você,
+cria um widget [`Localizations`][`Localizations`] para você,
 com os delegates que você especificar.
 O local atual do dispositivo está sempre acessível
 a partir do widget `Localizations` do contexto atual
-(na forma de um objeto `Locale`), ou usando o [`Window.locale`][].
+(na forma de um objeto `Locale`), ou usando o [`Window.locale`][`Window.locale`].
 
 Para acessar recursos localizados, use o método `Localizations.of()`
 para acessar uma classe de localizações específica que é fornecida por um determinado delegate.
-Use o pacote [`intl_translation`][] para extrair a cópia traduzível
-para arquivos [arb][] para tradução e importá-los de volta para o aplicativo
+Use o pacote [`intl_translation`][`intl_translation`] para extrair a cópia traduzível
+para arquivos [arb][arb] para tradução e importá-los de volta para o aplicativo
 para usá-los com `intl`.
 
 Para mais detalhes sobre internacionalização e localização no Flutter,
-consulte o [guia de internacionalização][], que tem código de exemplo
+consulte o [guia de internacionalização][guia de internacionalização], que tem código de exemplo
 com e sem o pacote `intl`.
 
 ### Onde está meu arquivo de projeto?
@@ -1296,7 +1296,7 @@ para os respectivos sistemas de construção.
 
 Em geral, use `pubspec.yaml` para declarar
 dependências externas a serem usadas no Flutter.
-Um bom lugar para encontrar pacotes Flutter é no [pub.dev][].
+Um bom lugar para encontrar pacotes Flutter é no [pub.dev][pub.dev].
 
 ## Ciclo de vida do aplicativo
 
@@ -1326,7 +1326,7 @@ não está respondendo à entrada do usuário, mas está em execução em segund
 Este evento é exclusivo do Android.
 
 Para obter mais detalhes sobre o significado desses estados,
-consulte a documentação [`AppLifecycleStatus`][].
+consulte a documentação [`AppLifecycleStatus`][`AppLifecycleStatus` documentation].
 
 [`AppLifecycleStatus` documentation]: {{site.api}}/flutter/dart-ui/AppLifecycleState.html
 
@@ -2025,7 +2025,7 @@ está vinculado a uma propriedade em um `ViewModel`.
 A recuperação de informações no Flutter é tratada por widgets
 especializados e é diferente de como você está acostumado. Se você
 tiver um `TextField` ou um `TextFormField`, você pode fornecer um
-[`TextEditingController`][] para recuperar a entrada do usuário:
+[`TextEditingController`][`TextEditingController`] para recuperar a entrada do usuário:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -2081,7 +2081,7 @@ class _MyFormState extends State<MyForm> {
 ```
 
 Você pode encontrar mais informações e o código completo em
-[Recuperar o valor de um campo de texto][], do [livro de receitas do
+[Recuperar o valor de um campo de texto][Recuperar o valor de um campo de texto], do [livro de receitas do
 Flutter][].
 
 ### Qual é o equivalente a um Placeholder em um Entry?
@@ -2205,7 +2205,7 @@ nativa.
 
 Isso não significa que os aplicativos Flutter não possam interagir com
 essas APIs nativas ou com qualquer código nativo que você tenha. O
-Flutter fornece [canais de plataforma][] que se comunicam e trocam dados
+Flutter fornece [canais de plataforma][canais de plataforma] que se comunicam e trocam dados
 com o `ViewController` ou `Activity` que hospeda sua view do Flutter.
 Os canais de plataforma são essencialmente um mecanismo de mensagens
 assíncronas que une o código Dart com o `ViewController` ou `Activity`
@@ -2214,30 +2214,30 @@ usar canais de plataforma para executar um método no lado nativo ou para
 recuperar alguns dados dos sensores do dispositivo, por exemplo.
 
 Além de usar diretamente os canais de plataforma, você pode usar uma
-variedade de [plugins][] pré-fabricados que encapsulam o código nativo e
+variedade de [plugins][plugins] pré-fabricados que encapsulam o código nativo e
 Dart para um objetivo específico. Por exemplo, você pode usar um plugin
 para acessar o rolo da câmera e a câmera do dispositivo diretamente do
 Flutter, sem ter que escrever sua própria integração. Os plugins são
-encontrados em [pub.dev][], o repositório de pacotes de código aberto do
+encontrados em [pub.dev][pub.dev], o repositório de pacotes de código aberto do
 Dart e do Flutter. Alguns pacotes podem suportar integrações nativas no
 iOS, ou Android, ou ambos.
 
 Se você não conseguir encontrar um plugin no pub.dev que atenda às suas
-necessidades, você pode [escrever o seu próprio][], e [publicá-lo no
+necessidades, você pode [escrever o seu próprio][escreva o seu próprio], e [publicá-lo no
 pub.dev][].
 
 ### Como acesso o sensor GPS?
 
-Use o plugin da comunidade [`geolocator`][].
+Use o plugin da comunidade [`geolocator`][`geolocator`].
 
 ### Como acesso a câmera?
 
-O plugin [`camera`][] é popular para acessar a câmera.
+O plugin [`camera`][`camera`] é popular para acessar a câmera.
 
 ### Como faço login com o Facebook?
 
 Para fazer login com o Facebook, use o plugin da comunidade
-[`flutter_facebook_login`][].
+[`flutter_facebook_login`][`flutter_facebook_login`].
 
 ### Como uso os recursos do Firebase?
 
@@ -2245,15 +2245,15 @@ A maioria das funções do Firebase são cobertas por [plugins de
 primeiros][]. Esses plugins são integrações de primeira parte, mantidas
 pela equipe Flutter:
 
- * [`google_mobile_ads`][] para Google Mobile Ads para Flutter
- * [`firebase_analytics`][] para Firebase Analytics
- * [`firebase_auth`][] para Firebase Auth
- * [`firebase_database`][] para Firebase RTDB
- * [`firebase_storage`][] para Firebase Cloud Storage
- * [`firebase_messaging`][] para Firebase Messaging (FCM)
- * [`flutter_firebase_ui`][] para integrações rápidas do Firebase Auth
+ * [`google_mobile_ads`][`google_mobile_ads`] para Google Mobile Ads para Flutter
+ * [`firebase_analytics`][`firebase_analytics`] para Firebase Analytics
+ * [`firebase_auth`][`firebase_auth`] para Firebase Auth
+ * [`firebase_database`][`firebase_database`] para Firebase RTDB
+ * [`firebase_storage`][`firebase_storage`] para Firebase Cloud Storage
+ * [`firebase_messaging`][`firebase_messaging`] para Firebase Messaging (FCM)
+ * [`flutter_firebase_ui`][`flutter_firebase_ui`] para integrações rápidas do Firebase Auth
    (Facebook, Google, Twitter e e-mail)
- * [`cloud_firestore`][] para Firebase Cloud Firestore
+ * [`cloud_firestore`][`cloud_firestore`] para Firebase Cloud Firestore
 
 Você também pode encontrar alguns plugins do Firebase de terceiros no
 pub.dev que cobrem áreas não cobertas diretamente pelos plugins de
@@ -2263,7 +2263,7 @@ primeiros.
 
 Se houver funcionalidades específicas da plataforma que o Flutter ou seus
 plugins da comunidade estão faltando, você pode construir seu próprio
-seguindo a página [desenvolvimento de pacotes e plugins][].
+seguindo a página [desenvolvimento de pacotes e plugins][desenvolvimento de pacotes e plugins].
 
 A arquitetura de plugin do Flutter, em poucas palavras, é muito parecida
 com o uso de um barramento de eventos no Android: você dispara uma
@@ -2329,7 +2329,7 @@ Os desenvolvedores Xamarin.Forms provavelmente estarão familiarizados com o
 plugin `Xam.Plugins.Settings`.
 
 No Flutter, acesse a funcionalidade equivalente usando o plugin
-[`shared_preferences`][]. Este plugin envolve a funcionalidade de
+[`shared_preferences`][`shared_preferences`]. Este plugin envolve a funcionalidade de
 `UserDefaults` e o equivalente Android, `SharedPreferences`.
 
 ### Como acesso o SQLite no Flutter?
@@ -2338,19 +2338,19 @@ Em Xamarin.Forms, a maioria dos aplicativos usaria o plugin
 `sqlite-net-pcl` para acessar bancos de dados SQLite.
 
 No Flutter, no macOS, Android e iOS, acesse esta funcionalidade usando
-o plugin [`sqflite`][].
+o plugin [`sqflite`][`sqflite`].
 
 ## Depuração
 
 ### Quais ferramentas posso usar para depurar meu aplicativo no Flutter?
 
-Use o conjunto [DevTools][] para depurar aplicativos Flutter ou Dart.
+Use o conjunto [DevTools][DevTools] para depurar aplicativos Flutter ou Dart.
 
 O DevTools inclui suporte para criação de perfil, exame do heap,
 inspeção da árvore de widgets, registro de diagnósticos, depuração,
 observação de linhas de código executadas, depuração de vazamentos de
 memória e fragmentação de memória. Para obter mais informações, consulte
-a documentação do [DevTools][].
+a documentação do [DevTools][DevTools].
 
 ## Notificações
 
@@ -2360,9 +2360,9 @@ No Android, você usa o Firebase Cloud Messaging para configurar
 notificações push para seu aplicativo.
 
 No Flutter, acesse esta funcionalidade usando o plugin
-[`firebase_messaging`][]. Para obter mais informações sobre como usar a
+[`firebase_messaging`][`firebase_messaging`]. Para obter mais informações sobre como usar a
 API do Firebase Cloud Messaging, consulte a documentação do plugin
-[`firebase_messaging`][].
+[`firebase_messaging`][`firebase_messaging`].
 
 [Adicionando assets e imagens]: /ui/assets/assets-and-images
 [Widgets de Animação e Movimento]: /ui/widgets/animation

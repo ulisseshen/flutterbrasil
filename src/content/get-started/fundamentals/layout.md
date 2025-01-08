@@ -448,7 +448,7 @@ A ferramenta "Inspetor de widgets" é particularmente
 [Saiba mais sobre o inspetor Flutter][].
 :::
 
-##  Widgets de rolagem
+##  Widgets de rolagem {:#scrolling-widgets}
 
 O Flutter tem muitos widgets integrados que
 rolam automaticamente e também oferece uma variedade de

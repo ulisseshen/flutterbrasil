@@ -8,7 +8,7 @@ Esta página descreve alguns problemas comuns de instalação que novos usuário
 
 ## Obter o SDK do Flutter
 
-### Não é possível encontrar o comando `flutter`
+### Não é possível encontrar o comando `flutter` {:#unable-to-find-the-flutter-command}
 
 __Como é este problema?__
 
@@ -43,7 +43,7 @@ __Explicação e sugestões__
 
 No Windows, isso geralmente acontece quando o Flutter é instalado em um diretório como `C:\Program Files\` que requer privilégios elevados. Tente realocar o Flutter para uma pasta diferente, como `C:\src\flutter`.
 
-## Configuração do Android
+## Configuração do Android {:#android-setup}
 
 ### Ter várias versões do Java instaladas
 
@@ -123,7 +123,7 @@ Este problema está relacionado à rede. Tente as seguintes instruções para so
 *   Use uma VPN para ajudar a contornar quaisquer restrições que possam impedi-lo de se conectar à rede.
 *   Se você tentou todas essas etapas e ainda está recebendo o erro, imprima logs detalhados com o comando `flutter doctor -v` e peça ajuda em um dos [canais de suporte da comunidade][].
 
-## Suporte da comunidade
+## Suporte da comunidade {:#community-support}
 
 A comunidade Flutter é prestativa e acolhedora. Se nenhuma das sugestões acima resolver seu problema de instalação, considere pedir suporte em um dos seguintes canais:
 

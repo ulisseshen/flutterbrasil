@@ -14,14 +14,14 @@ existente de SwiftUI ao Flutter.
 
 :::note
 Se você, em vez disso, tiver experiência na criação de aplicativos para
-iOS com UIKit, veja [Flutter para desenvolvedores UIKit][].
+iOS com UIKit, veja [Flutter para desenvolvedores UIKit][Flutter for UIKit developers].
 :::
 
 Flutter é um framework para construir aplicações multiplataforma que usa
 a linguagem de programação Dart. Para entender algumas diferenças entre a
 programação com Dart e a programação com Swift, consulte [Aprendendo Dart
-como um Desenvolvedor Swift][] e [Concorrência Flutter para desenvolvedores
-Swift][].
+como um Desenvolvedor Swift][Learning Dart as a Swift Developer] e [Concorrência Flutter para desenvolvedores
+Swift][Flutter concurrency for Swift developers].
 
 Seu conhecimento e experiência em SwiftUI são muito valiosos ao construir
 com Flutter.
@@ -33,11 +33,11 @@ com Flutter.
 
 O Flutter também faz uma série de adaptações ao comportamento do
 aplicativo ao ser executado no iOS e macOS. Para saber como, consulte
-[Adaptações de plataforma][].
+[Adaptações de plataforma][Platform adaptations].
 
 :::tip
 Para integrar o código Flutter em um aplicativo iOS **existente**,
-confira [Adicionar Flutter a um aplicativo existente][].
+confira [Adicionar Flutter a um aplicativo existente][Add Flutter to existing app].
 :::
 
 Este documento pode ser usado como um livro de receitas, navegando e
@@ -149,25 +149,25 @@ UnconstrainedBox(
 <img src="/assets/images/docs/ui/layout/layout-14.png" alt="Quando os pais passam restrições ilimitadas para os filhos, e os filhos estão se expandindo, então há um aviso de estouro.">
 
 Para saber como as restrições funcionam no Flutter, consulte
-[Entendendo as restrições][].
+[Entendendo as restrições][Understanding constraints].
 
 ### Sistema de design
 
 Como o Flutter tem como alvo várias plataformas, seu aplicativo não
 precisa estar em conformidade com nenhum sistema de design. Embora este
-guia apresente widgets [Material][], seu aplicativo Flutter pode usar
+guia apresente widgets [Material][Material], seu aplicativo Flutter pode usar
 muitos sistemas de design diferentes:
 
 - Widgets Material personalizados
 - Widgets construídos pela comunidade
 - Seus próprios widgets personalizados
-- [Widgets Cupertino][] que seguem as Diretrizes de Interface Humana da
+- [Widgets Cupertino][Cupertino widgets] que seguem as Diretrizes de Interface Humana da
   Apple
 
 {% ytEmbed '3PdUaidHc-E', 'Biblioteca cupertino do Flutter para desenvolvedores iOS' %}
 
 Se você está procurando um ótimo aplicativo de referência que apresenta um
-sistema de design personalizado, confira [Wonderous][].
+sistema de design personalizado, confira [Wonderous][Wonderous].
 
 ## Conceitos básicos de UI
 
@@ -215,7 +215,7 @@ void main() {
 
 `App` é um widget. O método build descreve a parte da interface do
 usuário que ele representa. É comum iniciar seu aplicativo com uma classe
-[`WidgetApp`][], como [`CupertinoApp`][].
+[`WidgetApp`][`WidgetApp`], como [`CupertinoApp`][`CupertinoApp`].
 
 <?code-excerpt "lib/get_started.dart (myapp)"?>
 ```dart dartpad="42cf3026e1460ef618257684ee5af6a2"
@@ -254,12 +254,12 @@ class HomePage extends StatelessWidget {
 }
 ```
 
-Observe como o Flutter usa o widget [`Center`][]. O SwiftUI renderiza o
+Observe como o Flutter usa o widget [`Center`][`Center`]. O SwiftUI renderiza o
 conteúdo de uma view em seu centro por padrão. Esse nem sempre é o caso
 com o Flutter. `Scaffold` não renderiza seu widget `body` no centro da
 tela. Para centralizar o texto, envolva-o em um widget `Center`. Para
 aprender sobre diferentes widgets e seus comportamentos padrão, confira
-o [Catálogo de widgets][].
+o [Catálogo de widgets][widget catalog].
 
 ### Adicionando botões
 
@@ -286,7 +286,7 @@ CupertinoButton(
 ```
 
 O **Flutter** oferece acesso a uma variedade de botões com estilos
-predefinidos. A classe [`CupertinoButton`][] vem da biblioteca
+predefinidos. A classe [`CupertinoButton`][`CupertinoButton`] vem da biblioteca
 Cupertino. Os widgets na biblioteca Cupertino usam o sistema de design da
 Apple.
 
@@ -310,7 +310,7 @@ HStack {
 }
 ```
 
-O **Flutter** usa [`Row`][] em vez de `HStack`:
+O **Flutter** usa [`Row`][`Row`] em vez de `HStack`:
 
 <?code-excerpt "lib/row.dart (row)" replace="/child: //g;"?>
 ```dart dartpad="0365338f938427b01d72e37cea554f75"
@@ -344,7 +344,7 @@ VStack {
 ```
 
 O **Flutter** usa o mesmo código Dart do exemplo anterior, exceto que
-troca [`Column`][] por `Row`:
+troca [`Column`][`Column`] por `Row`:
 
 <?code-excerpt "lib/column.dart (column)" replace="/child: //g;"?>
 ```dart dartpad="d9a288be0c2a353296fc8825680b84b8"
@@ -435,7 +435,7 @@ O Flutter tem algumas ressalvas para listas:
 - O `itemBuilder` tem um parâmetro de índice que estará entre zero e um
   a menos que itemCount.
 
-O exemplo anterior retornou um widget [`ListTile`][] para cada item. O
+O exemplo anterior retornou um widget [`ListTile`][`ListTile`] para cada item. O
 widget `ListTile` inclui propriedades como `height` e `font-size`. Essas
 propriedades ajudam a construir uma lista. No entanto, o Flutter permite
 que você retorne quase qualquer widget que represente seus dados.
@@ -520,7 +520,7 @@ ScrollView {
 ```
 
 Para criar uma view de rolagem, o **Flutter** usa
-[`SingleChildScrollView`][]. No exemplo a seguir, a função `mockPerson`
+[`SingleChildScrollView`][`SingleChildScrollView`]. No exemplo a seguir, a função `mockPerson`
 simula instâncias da classe `Person` para criar o widget `PersonView`
 personalizado.
 
@@ -557,11 +557,11 @@ Você também pode ver se a classe de tamanho tem `.regular` ou
 Para criar views relativas no **Flutter**, você pode usar uma de duas
 opções:
 
-- Obtenha o objeto `BoxConstraints` na classe [`LayoutBuilder`][].
-- Use [`MediaQuery.of()`][] em suas funções de build para obter o
+- Obtenha o objeto `BoxConstraints` na classe [`LayoutBuilder`][`LayoutBuilder`].
+- Use [`MediaQuery.of()`][`MediaQuery.of()`] em suas funções de build para obter o
   tamanho e a orientação do seu aplicativo atual.
 
-Para saber mais, confira [Criando aplicativos responsivos e adaptativos][].
+Para saber mais, confira [Criando aplicativos responsivos e adaptativos][Creating responsive and adaptive apps].
 
 ### Gerenciando o estado
 
@@ -582,7 +582,7 @@ struct ContentView: View {
 **SwiftUI** também inclui várias opções para gerenciamento de estado mais
 complexo, como o protocolo `ObservableObject`.
 
-O **Flutter** gerencia o estado local usando um [`StatefulWidget`][].
+O **Flutter** gerencia o estado local usando um [`StatefulWidget`][`StatefulWidget`].
 Implemente um widget stateful com as seguintes duas classes:
 
 - uma subclasse de `StatefulWidget`
@@ -628,7 +628,7 @@ class _MyHomePageState extends State<MyHomePage> {
 ```
 
 Para saber mais maneiras de gerenciar o estado, confira [Gerenciamento de
-estado][].
+estado][State management].
 
 ### Animações
 
@@ -658,7 +658,7 @@ animação de widgets comuns. O Flutter nomeia esses widgets com o
 seguinte formato: `AnimatedFoo`.
 
 Por exemplo: para girar um botão, use a classe
-[`AnimatedRotation`][]. Isso anima o widget `Transform.rotate`.
+[`AnimatedRotation`][`AnimatedRotation`]. Isso anima o widget `Transform.rotate`.
 
 <?code-excerpt "lib/simple_animation.dart (animated-button)" replace="/child: //g;"?>
 ```dart dartpad="0ad0572cbf98ead2e5d31a2a94430f19"
@@ -678,7 +678,7 @@ AnimatedRotation(
 
 O Flutter permite que você crie animações implícitas personalizadas.
 Para compor um novo widget animado, use o
-[`TweenAnimationBuilder`][].
+[`TweenAnimationBuilder`][`TweenAnimationBuilder`].
 
 #### Animação Explícita
 
@@ -686,13 +686,13 @@ Para animações explícitas, o **SwiftUI** usa a função `withAnimation()`.
 
 O **Flutter** inclui widgets animados explicitamente com nomes
 formatados como `FooTransition`. Um exemplo seria a classe
-[`RotationTransition`][].
+[`RotationTransition`][`RotationTransition`].
 
 O Flutter também permite que você crie uma animação explícita
 personalizada usando `AnimatedWidget` ou `AnimatedBuilder`.
 
 Para saber mais sobre animações no Flutter, consulte
-[Visão geral de animações][].
+[Visão geral de animações][Animations overview].
 
 ### Desenhando na tela
 
@@ -702,7 +702,7 @@ tela.
 O **Flutter** tem uma API baseada na classe `Canvas`, com duas classes
 que ajudam você a desenhar:
 
-1. [`CustomPaint`][] que requer um painter:
+1. [`CustomPaint`][`CustomPaint`] que requer um painter:
 
     <?code-excerpt "lib/canvas.dart (custom-paint)" replace="/child: //g;"?>
     ```dart dartpad="978d64ee66d54177fb639f8a9f801039"
@@ -712,7 +712,7 @@ que ajudam você a desenhar:
     ),
     ```
 
-2. [`CustomPainter`][] que implementa seu algoritmo para desenhar na
+2. [`CustomPainter`][`CustomPainter`] que implementa seu algoritmo para desenhar na
    canvas.
 
     <?code-excerpt "lib/canvas.dart (custom-painter)"?>
@@ -774,7 +774,7 @@ NavigationStack(path: $path) {
 ```
 
 Se você tiver um aplicativo **Flutter** pequeno sem links complexos, use
-[`Navigator`][] com rotas nomeadas. Depois de definir suas rotas de
+[`Navigator`][`Navigator`] com rotas nomeadas. Depois de definir suas rotas de
 navegação, chame suas rotas de navegação usando seus nomes.
 
 1. Nomeie cada rota na classe passada para a função `runApp()`. O exemplo
@@ -864,9 +864,9 @@ navegação, chame suas rotas de navegação usando seus nomes.
     ```
 
 Para criar requisitos de navegação e roteamento mais avançados, use um
-pacote de roteamento como [go_router][].
+pacote de roteamento como [go_router][go_router].
 
-Para saber mais, confira [Navegação e roteamento][].
+Para saber mais, confira [Navegação e roteamento][Navigation and routing].
 
 ### Voltar manualmente
 
@@ -912,7 +912,7 @@ uma URL para outro aplicativo.
     }
 ```
 
-No **Flutter**, use o plugin [`url_launcher`][].
+No **Flutter**, use o plugin [`url_launcher`][`url_launcher`].
 
 <?code-excerpt "lib/openapp.dart (open-app-example)" replace="/child: //g;"?>
 ```dart dartpad="695beba25fa8120d89c9960cb222e276"
@@ -1090,21 +1090,21 @@ Depois de adicionar sua imagem, exiba-a usando o construtor `.asset()` do widget
 1. Lê a imagem dos recursos agrupados com seu aplicativo.
 1. Exibe a imagem na tela.
 
-Para revisar um exemplo completo, confira a documentação do [`Image`][].
+Para revisar um exemplo completo, confira a documentação do [`Image`][`Image`].
 
 ### Agrupando vídeos em aplicativos
 
 Em **SwiftUI**, você agrupa um arquivo de vídeo local com seu aplicativo em duas etapas.
 Primeiro, você importa o framework `AVKit` e, em seguida, instancia uma view `VideoPlayer`.
 
-Em **Flutter**, adicione o plugin [video_player][] ao seu projeto.
+Em **Flutter**, adicione o plugin [video_player][video_player] ao seu projeto.
 Este plugin permite que você crie um reprodutor de vídeo que funciona no Android, iOS e na web a partir da mesma base de código.
 
 1. Adicione o plugin ao seu aplicativo e adicione o arquivo de vídeo ao seu projeto.
 1. Adicione o recurso ao seu arquivo `pubspec.yaml`.
 1. Use a classe `VideoPlayerController` para carregar e reproduzir seu arquivo de vídeo.
 
-Para revisar um passo a passo completo, confira o [exemplo do video_player][].
+Para revisar um passo a passo completo, confira o [exemplo do video_player][video_player example].
 
 [Flutter for UIKit developers]: /get-started/flutter-for/uikit-devs
 [Add Flutter to existing app]: /add-to-app

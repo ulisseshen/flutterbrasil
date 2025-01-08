@@ -23,17 +23,17 @@ Os recursos nesta seção apresentam
 alguns dos widgets comuns usados
 para habilitar a interação do usuário em seu aplicativo.
 
-Alguns mecanismos de entrada do usuário, como [rolagem][],
-já foram abordados em [Layouts][].
+Alguns mecanismos de entrada do usuário, como [rolagem][scrolling],
+já foram abordados em [Layouts][Layouts].
 
 :::secondary Sobre o suporte ao sistema de design
 O Flutter vem com componentes pré-construídos para dois sistemas de design como parte do SDK,
-[Material][] e [Cupertino][].
+[Material][Material] e [Cupertino][Cupertino].
 Para fins educacionais, esta página se concentra nos widgets Material, componentes que
-são estilizados de acordo com as especificações da [linguagem de design Material 3][].
+são estilizados de acordo com as especificações da [linguagem de design Material 3][Material 3 design language].
 
-A comunidade Flutter em [pub.dev][], o repositório de pacotes para Dart e Flutter,
-cria e suporta idiomas de design adicionais, como [Fluent UI][], [macOS UI][]
+A comunidade Flutter em [pub.dev][pub.dev], o repositório de pacotes para Dart e Flutter,
+cria e suporta idiomas de design adicionais, como [Fluent UI][Fluent UI], [macOS UI][macOS UI]
 e muito mais. Se os componentes do sistema de design existentes não se encaixam no que você precisa,
 o Flutter permite que você construa seus próprios widgets personalizados,
 o que é abordado no final desta seção.
@@ -41,7 +41,7 @@ Não importa qual sistema de design você escolha, os princípios desta página 
 :::
 
 > <span class="material-symbols" aria-hidden="true">menu_book</span> **Referência**:
-> O [catálogo de widgets][] possui um inventário de widgets comumente usados ​​nas bibliotecas [Material][] e [Cupertino][].
+> O [catálogo de widgets][widget catalog] possui um inventário de widgets comumente usados ​​nas bibliotecas [Material][Material] e [Cupertino][Cupertino].
 
 Em seguida, abordaremos alguns dos widgets Material que suportam casos de uso comuns
 para lidar com a entrada do usuário em seu aplicativo Flutter.
@@ -85,7 +85,7 @@ mas estilizados de forma diferente para vários casos de uso, incluindo:
   o conteúdo para promover uma ação principal.
 
 > <span class="material-symbols" aria-hidden="true">slideshow</span> **Vídeo**:
-> [FloatingActionButton (Widget da Semana)][]
+> [FloatingActionButton (Widget da Semana)][FloatingActionButton (Widget da Semana)]
 
 Geralmente, existem 3 aspectos principais para construir um botão:
 estilo, callback e seu filho,
@@ -139,11 +139,11 @@ Widget build(BuildContext context) {
 
 > <span class="material-symbols" aria-hidden="true">star</span> **Ponto de Verificação**:
 > Conclua este tutorial que ensina como construir um
-> botão "favorito": [Adicione interatividade ao seu aplicativo Flutter][]
+> botão "favorito": [Adicione interatividade ao seu aplicativo Flutter][Adicione interatividade ao seu aplicativo Flutter]
 
 <br>
 
-<span class="material-symbols" aria-hidden="true">menu_book</span> **Documentação da API**: [`ElevatedButton`][] • [`FilledButton`][] • [`OutlinedButton`][] • [`TextButton`][] • [`IconButton`][] • [`FloatingActionButton`][]
+<span class="material-symbols" aria-hidden="true">menu_book</span> **Documentação da API**: [`ElevatedButton`][`ElevatedButton`] • [`FilledButton`][`FilledButton`] • [`OutlinedButton`][`OutlinedButton`] • [`TextButton`][`TextButton`] • [`IconButton`][`IconButton`] • [`FloatingActionButton`][`FloatingActionButton`]
 
 [`ElevatedButton`]: {{site.api}}/flutter/material/ElevatedButton-class.html
 [`FilledButton`]: {{site.api}}/flutter/material/FilledButton-class.html
@@ -183,7 +183,7 @@ Dos lombos fatais desses dois inimigos''');
 " %}
 
 > <span class="material-symbols" aria-hidden="true">slideshow</span> **Vídeo**:
-> [SelectableText (Widget da Semana)][]
+> [SelectableText (Widget da Semana)][SelectableText (Widget da Semana)]
 
 [SelectableText (Widget da Semana)]: {{site.youtube-site}}/watch?v=ZSU3ZXOs6hc
 
@@ -217,13 +217,13 @@ Widget build(BuildContext context) {
 " %}
 
 > <span class="material-symbols" aria-hidden="true">slideshow</span> **Vídeo**:
-> [Rich Text (Widget da Semana)][]
+> [Rich Text (Widget da Semana)][Rich Text (Widget da Semana)]
 
 > <span class="material-symbols" aria-hidden="true">flutter</span> **Demonstração**:
-> [Editor de Rich Text][]
+> [Editor de Rich Text][Editor de Rich Text]
 
 > <span class="material-symbols" aria-hidden="true">code</span> **Código**:
-> [Código do Editor de Rich Text][]
+> [Código do Editor de Rich Text][Código do Editor de Rich Text]
 
 [Rich Text (Widget da Semana)]: {{site.youtube-site}}/watch?v=rykDVh-QFfw
 [Editor de Rich Text]: https://flutter.github.io/samples/rich_text_editor.html
@@ -279,10 +279,10 @@ Widget build(BuildContext context) {
 > Conclua esta série de receitas de 4 partes que orienta
 > você através de como criar um campo de texto,
 > recuperar seu valor e atualizar o estado do seu aplicativo:
-> 1. [Crie e estilize um campo de texto][]
-> 1. [Recupere o valor de um campo de texto][]
-> 1. [Manipule alterações em um campo de texto][]
-> 1. [Foco e campos de texto][].
+> 1. [Crie e estilize um campo de texto][Crie e estilize um campo de texto]
+> 1. [Recupere o valor de um campo de texto][Recupere o valor de um campo de texto]
+> 1. [Manipule alterações em um campo de texto][Manipule alterações em um campo de texto]
+> 1. [Foco e campos de texto][Foco e campos de texto].
 
 [Crie e estilize um campo de texto]: /cookbook/forms/text-input
 [Recupere o valor de um campo de texto]: /cookbook/forms/retrieve-input
@@ -346,17 +346,17 @@ Widget build(BuildContext context) {
 ```
 
 > <span class="material-symbols" aria-hidden="true">star</span> **Ponto de Verificação**:
-> Conclua este tutorial para aprender como [construir um formulário com validação][].
+> Conclua este tutorial para aprender como [construir um formulário com validação][Construir um formulário com validação].
 
 > <span class="material-symbols" aria-hidden="true">flutter</span> **Demonstração**:
-> [Aplicativo de Formulário][]
+> [Aplicativo de Formulário][Aplicativo de Formulário]
 
 > <span class="material-symbols" aria-hidden="true">code</span> **Código**:
-> [Código do aplicativo de Formulário][]
+> [Código do aplicativo de Formulário][Código do aplicativo de Formulário]
 
 <br>
 
-<span class="material-symbols" aria-hidden="true">menu_book</span> **Documentação da API**: [`TextField`][] • [`RichText`][] • [`SelectableText`][] • [`Form`][]
+<span class="material-symbols" aria-hidden="true">menu_book</span> **Documentação da API**: [`TextField`][`TextField`] • [`RichText`][`RichText`] • [`SelectableText`][`SelectableText`] • [`Form`][`Form`]
 
 [Construir um formulário com validação]: /cookbook/forms/validation
 [Aplicativo de Formulário]: https://flutter.github.io/samples/web/form_app/
@@ -456,13 +456,13 @@ Widget build(BuildContext context) {
 atributo, texto, entidade ou ação para um contexto específico.
 Existem widgets `Chip` especializados para casos de uso específicos:
 
-- [InputChip][] representa uma informação complexa,
+- [InputChip][InputChip] representa uma informação complexa,
   como uma entidade (pessoa, lugar ou coisa) ou
   texto conversacional, de forma compacta.
-- [ChoiceChip][] permite uma única seleção de um conjunto de opções.
+- [ChoiceChip][ChoiceChip] permite uma única seleção de um conjunto de opções.
   Os chips de escolha contêm texto descritivo ou categorias relacionadas.
-- [FilterChip][] usa tags ou palavras descritivas para filtrar o conteúdo.
-- [ActionChip][] representa uma ação relacionada ao conteúdo principal.
+- [FilterChip][FilterChip] usa tags ou palavras descritivas para filtrar o conteúdo.
+- [ActionChip][ActionChip] representa uma ação relacionada ao conteúdo principal.
 
 Cada widget `Chip` requer um `label`.
 Ele pode opcionalmente ter um `avatar` (como um ícone ou a foto do perfil de um usuário)
@@ -600,7 +600,7 @@ Widget build(BuildContext context) {
 " %}
 
 > <span class="material-symbols" aria-hidden="true">slideshow</span> **Vídeo**:
-> [DropdownMenu (Widget da Semana)][]
+> [DropdownMenu (Widget da Semana)][DropdownMenu (Widget da Semana)]
 
 [DropdownMenu (Widget da Semana)]: {{site.youtube-site}}/watch?v=giV9AbM2gd8?si=E23hjg72cjMTe_mz
 
@@ -646,11 +646,11 @@ Widget build(BuildContext context) {
 " %}
 
 > <span class="material-symbols" aria-hidden="true">slideshow</span> **Vídeo**:
-> [Slider, RangeSlider, CupertinoSlider (Widget da Semana)][]
+> [Slider, RangeSlider, CupertinoSlider (Widget da Semana)][Slider, RangeSlider, CupertinoSlider (Widget da Semana)]
 
 <br>
 
-<span class="material-symbols" aria-hidden="true">menu_book</span> **Documentação da API:** [`SegmentedButton`][] • [`DropdownMenu`][] • [`Slider`][] • [`Chip`][]
+<span class="material-symbols" aria-hidden="true">menu_book</span> **Documentação da API:** [`SegmentedButton`][`SegmentedButton`] • [`DropdownMenu`][`DropdownMenu`] • [`Slider`][`Slider`] • [`Chip`][`Chip`]
 
 [Slider, RangeSlider, CupertinoSlider (Widget da Semana)]: {{site.youtube-site}}/watch?v=ufb4gIPDmEss
 [`SegmentedButton`]: {{site.api}}/flutter/material/SegmentedButton-class.html
@@ -855,16 +855,16 @@ Widget build(BuildContext context) {
 " %}
 
 > <span class="material-symbols" aria-hidden="true">slideshow</span> **Vídeo**:
-> [CheckboxListTile (Widget da Semana)][]
+> [CheckboxListTile (Widget da Semana)][CheckboxListTile (Widget da Semana)]
 
 > <span class="material-symbols" aria-hidden="true">slideshow</span> **Vídeo**:
-> [SwitchListTile (Widget da Semana)][]
+> [SwitchListTile (Widget da Semana)][SwitchListTile (Widget da Semana)]
 
 <br>
 
 <span class="material-symbols" aria-hidden="true">menu_book</span> **Documentação da API**:
-[`Checkbox`][] • [`CheckboxListTile`][] • [`Switch`][] • [`SwitchListTile`][] •
-[`Radio`][]
+[`Checkbox`][`Checkbox`] • [`CheckboxListTile`][`CheckboxListTile`] • [`Switch`][`Switch`] • [`SwitchListTile`][`SwitchListTile`] •
+[`Radio`][`Radio`]
 
 [CheckboxListTile (Widget da Semana)]: {{site.youtube-site}}/watch?v=RkSqPAn9szs
 [SwitchListTile (Widget da Semana)]: {{site.youtube-site}}/watch?v=0igIjvtEWNU
@@ -975,14 +975,14 @@ Chamar `showDatePicker()` e `showTimePicker()` é equivalente a chamar `showDial
 <br>
 
 <span class="material-symbols" aria-hidden="true">menu_book</span> **Documentação da API:**
-[`showDatePicker`][] • [`showTimePicker`][]
+[`showDatePicker`][`showDatePicker`] • [`showTimePicker`][`showTimePicker`]
 
 [`showDatePicker`]: {{site.api}}/flutter/material/showDatePicker.html
 [`showTimePicker`]: {{site.api}}/flutter/material/showTimePicker.html
 
 ## Deslizar e arrastar
 
-### [`Dismissible`][]
+### [`Dismissible`][`Dismissible`]
 
 Um `Dismissible` é um widget que permite aos usuários dispensá-lo deslizando. Ele tem vários parâmetros de configuração, incluindo:
 
@@ -1028,16 +1028,16 @@ Widget build(BuildContext context) {
 " %}
 
 > <span class="material-symbols" aria-hidden="true">slideshow</span> **Vídeo**:
-> [Dismissible (Widget da Semana)][]
+> [Dismissible (Widget da Semana)][Dismissible (Widget da Semana)]
 
 > <span class="material-symbols" aria-hidden="true">star</span> **Checkpoint**:
-> Complete este tutorial sobre como [implementar deslizar para dispensar][] usando o
+> Complete este tutorial sobre como [implementar deslizar para dispensar][implementar deslizar para dispensar] usando o
 > widget dismissible.
 
 <br>
 
 <span class="material-symbols" aria-hidden="true">menu_book</span> **Documentação da API:**
-[`Dismissible`][]
+[`Dismissible`][`Dismissible`]
 
 [Dismissible (Widget da Semana)]: {{site.youtube-site}}/watch?v=iEMgjrfuc58?si=f0S7IdaA9PIWIYvl
 [implementar deslizar para dispensar]: /cookbook/gestures/dismissible
@@ -1045,15 +1045,15 @@ Widget build(BuildContext context) {
 
 ## Procurando por mais widgets?
 
-Esta página apresenta apenas alguns dos widgets Material comuns que você pode usar para lidar com a entrada do usuário em seu aplicativo Flutter. Confira a [biblioteca de widgets Material][] e a [documentação da API da biblioteca Material][] para uma lista completa de widgets.
+Esta página apresenta apenas alguns dos widgets Material comuns que você pode usar para lidar com a entrada do usuário em seu aplicativo Flutter. Confira a [biblioteca de widgets Material][Biblioteca de Widgets Material] e a [documentação da API da biblioteca Material][Documentação da API da Biblioteca Material] para uma lista completa de widgets.
 
 > <span class="material-symbols" aria-hidden="true">flutter</span> **Demonstração**:
-> Veja a [Demonstração do Material 3][] do Flutter para uma amostra selecionada de widgets de entrada do usuário disponíveis na biblioteca Material.
+> Veja a [Demonstração do Material 3][Demonstração do Material 3] do Flutter para uma amostra selecionada de widgets de entrada do usuário disponíveis na biblioteca Material.
 
-Se as bibliotecas Material e Cupertino não tiverem um widget que faça o que você precisa, confira o [pub.dev][] para encontrar pacotes mantidos e de propriedade da comunidade Flutter & Dart. Por exemplo, o pacote [`flutter_slidable`][] fornece um widget `Slidable` que é mais personalizável do que o widget `Dismissible` descrito na seção anterior.
+Se as bibliotecas Material e Cupertino não tiverem um widget que faça o que você precisa, confira o [pub.dev][pub.dev] para encontrar pacotes mantidos e de propriedade da comunidade Flutter & Dart. Por exemplo, o pacote [`flutter_slidable`][`flutter_slidable`] fornece um widget `Slidable` que é mais personalizável do que o widget `Dismissible` descrito na seção anterior.
 
 > <span class="material-symbols" aria-hidden="true">slideshow</span> **Vídeo**:
-> [flutter_slidable (Pacote da Semana)][]
+> [flutter_slidable (Pacote da Semana)][flutter_slidable (Pacote da Semana)]
 
 [Biblioteca de Widgets Material]: /ui/widgets/material
 [Documentação da API da Biblioteca Material]: {{site.api}}/flutter/material/material-library.html
@@ -1067,16 +1067,16 @@ Se as bibliotecas Material e Cupertino não tiverem um widget que faça o que vo
 Você examinou as bibliotecas de widgets, o pub.dev, perguntou aos seus amigos programadores e ainda não consegue encontrar um widget que se encaixe na interação do usuário que você está procurando? Você pode construir seu próprio widget personalizado e torná-lo interativo usando `GestureDetector`.
 
 > <span class="material-symbols" aria-hidden="true">star</span> **Checkpoint**:
-> Use esta receita como ponto de partida para criar seu próprio widget de botão _personalizado_ que possa [manipular toques][].
+> Use esta receita como ponto de partida para criar seu próprio widget de botão _personalizado_ que possa [manipular toques][manipular toques].
 
 > <span class="material-symbols" aria-hidden="true">slideshow</span> **Vídeo**:
-> [GestureDetector (Widget da Semana)][]
+> [GestureDetector (Widget da Semana)][GestureDetector (Widget da Semana)]
 
 > <span class="material-symbols" aria-hidden="true">menu_book</span> **Referência**:
-> Confira [Toques, arrastos e outros gestos][] que explicam como ouvir e responder a gestos no Flutter.
+> Confira [Toques, arrastos e outros gestos][Toques, arrastos e outros gestos] que explicam como ouvir e responder a gestos no Flutter.
 
 > <span class="material-symbols" aria-hidden="true">slideshow</span> **Vídeo Bônus**:
-> Curioso sobre como o `GestureArena` do Flutter transforma dados brutos de interação do usuário em conceitos reconhecíveis pelo ser humano, como toques, arrastos e pinças? Confira este vídeo: [GestureArena (Decodificando o Flutter)][]
+> Curioso sobre como o `GestureArena` do Flutter transforma dados brutos de interação do usuário em conceitos reconhecíveis pelo ser humano, como toques, arrastos e pinças? Confira este vídeo: [GestureArena (Decodificando o Flutter)][GestureArena (Decodificando o Flutter)]
 
 [manipular toques]: /cookbook/gestures/handling-taps
 [GestureDetector (Widget da Semana)]: {{site.youtube-site}}/watch?v=WhVXkCFPmK4
@@ -1088,12 +1088,12 @@ Você examinou as bibliotecas de widgets, o pub.dev, perguntou aos seus amigos p
 Se você estiver construindo um widget personalizado, anote seu significado com o widget `Semantics`. Ele fornece descrições e metadados para leitores de tela e outras ferramentas baseadas em análise semântica.
 
 > <span class="material-symbols" aria-hidden="true">slideshow</span> **Vídeo**:
-> [Semantics (Widget da Semana do Flutter)][]
+> [Semantics (Widget da Semana do Flutter)][Semantics (Widget da Semana do Flutter)]
 
 <br>
 
 <span class="material-symbols" aria-hidden="true">menu_book</span> **Documentação da API**:
-[`GestureDetector`][] • [`Semantics`][]
+[`GestureDetector`][`GestureDetector`] • [`Semantics`][`Semantics`]
 
 [`GestureDetector`]: {{site.api}}/flutter/widgets/GestureDetector-class.html
 [`Semantics`]: {{site.api}}/flutter/widgets/Semantics-class.html
@@ -1105,10 +1105,10 @@ Depois de terminar de construir as interações do usuário em seu aplicativo, n
 Estes tutoriais o guiam na escrita de testes que simulam interações do usuário em seu aplicativo:
 
 > <span class="material-symbols" aria-hidden="true">star</span> **Checkpoint**:
-> Siga este artigo de cookbook [toque, arraste e insira texto][] e aprenda como usar `WidgetTester` para simular e testar as interações do usuário em seu aplicativo.
+> Siga este artigo de cookbook [toque, arraste e insira texto][Toque, arraste e insira texto] e aprenda como usar `WidgetTester` para simular e testar as interações do usuário em seu aplicativo.
 
 > <span class="material-symbols" aria-hidden="true">bookmark</span> **Tutorial Bônus**:
-> A receita do cookbook [manipular rolagem][] mostra como verificar se as listas de widgets contêm o conteúdo esperado rolando as listas usando testes de widget.
+> A receita do cookbook [manipular rolagem][Manipular rolagem] mostra como verificar se as listas de widgets contêm o conteúdo esperado rolando as listas usando testes de widget.
 
 [Semantics (Widget da Semana do Flutter)]: {{site.youtube-site}}/watch?v=NvtMt_DtFrQ?si=o79BqAg9NAl8EE8_
 [Toque, arraste e insira texto]: /cookbook/testing/widget/tap-drag
@@ -1120,6 +1120,6 @@ Esta página foi uma introdução ao tratamento da entrada do usuário. Agora qu
 
 ## Feedback
 
-Como esta seção do site está evoluindo, nós [agradecemos seu feedback][]!
+Como esta seção do site está evoluindo, nós [agradecemos seu feedback][agradecemos seu feedback]!
 
 [agradecemos seu feedback]: https://google.qualtrics.com/jfe/form/SV_6A9KxXR7XmMrNsy?page="user-input"

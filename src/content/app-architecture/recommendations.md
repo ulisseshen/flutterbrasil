@@ -64,8 +64,6 @@ que reflete o quão fortemente o time Flutter a recomenda.
   * [Código fonte do aplicativo Compass][] -
     Código fonte de um aplicativo Flutter robusto e completo que
     implementa muitas dessas recomendações.
-  * [Flutter skeleton][] -
-    Um template de aplicativo Flutter que inclui muitas dessas recomendações.
   * [very_good_cli][] -
     Um template de aplicativo Flutter feito por
     especialistas Flutter da Very Good Ventures.
@@ -95,7 +93,6 @@ que reflete o quão fortemente o time Flutter a recomenda.
 [Flutter Navigator API]: https://docs.flutter.dev/ui/navigation
 [pub.dev]: https://pub.dev
 [Código fonte do aplicativo Compass]: https://github.com/flutter/samples/tree/main/compass_app
-[Flutter skeleton]: https://github.com/flutter/flutter/blob/master/packages/flutter_tools/templates/skeleton/README.md.tmpl
 [very_good_cli]: https://cli.vgv.dev/
 [Documentação de arquitetura da Very Good Engineering]: https://engineering.verygood.ventures/architecture/
 [Passo a passo de gerenciamento de estado com ChangeNotifier]: /get-started/fwe/state-management

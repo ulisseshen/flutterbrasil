@@ -570,7 +570,7 @@ The localizations generation tool in
 class in the `intl` package to format
 numbers based on the locale and the desired format.
 
-The `int`, `double`, and `number` types can use any of the
+The `int`, `double`, and `num` types can use any of the
 following `NumberFormat` constructors:
 
 | Message "format" value   | Output for 1200000 |
@@ -1171,7 +1171,7 @@ const MaterialApp(
 
 [`add_language`]: {{site.repo.this}}/tree/{{site.branch}}/examples/internationalization/add_language/lib/main.dart
 
-[flutter_localizations README]: {{site.repo.flutter}}/blob/master/packages/flutter_localizations/lib/src/l10n/README.md
+[flutter_localizations README]: {{site.repo.flutter}}/blob/main/packages/flutter_localizations/lib/src/l10n/README.md
 [`GlobalMaterialLocalizations`]: {{site.api}}/flutter/flutter_localizations/GlobalMaterialLocalizations-class.html
 
 <a id="alternative-internationalization-workflows"></a>

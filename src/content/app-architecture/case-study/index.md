@@ -82,7 +82,7 @@ A organização do código beneficia e é beneficiada por uma arquitetura bem de
 
 Existem duas maneiras populares de organizar o código:
 
-1.  Por recurso - As classes necessárias para cada recurso são agrupadas. Por
+1.  Por feature (recurso) - As classes necessárias para cada recurso são agrupadas. Por
     exemplo, você pode ter um diretório `auth`, que conteria arquivos
     como `auth_viewmodel.dart`, `login_usecase.dart`, `logout_usecase.dart,
     `login_screen.dart`, `logout_button.dart`, etc.

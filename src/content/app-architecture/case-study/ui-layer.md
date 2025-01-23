@@ -577,7 +577,7 @@ a view quer renderizar. Isso chega ao *por que* o aplicativo Compass usa `Comman
 No método `Widget.build` da view,
 o comando é usado para renderizar condicionalmente diferentes widgets.
 
-```dart title=home_viewmodel.dart
+```dart title=home_screen.dart
 // ...
 child: ListenableBuilder(
   listenable: [!viewModel.load!],

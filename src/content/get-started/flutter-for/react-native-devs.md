@@ -2576,7 +2576,7 @@ correspondente e propriedades comuns de widgets.
 
 
 [`AboutDialog`]: {{site.api}}/flutter/material/AboutDialog-class.html
-[Adding Assets and Images in Flutter]: /ui/assets/assets-and-images
+[Adicionando Ativos e Imagens no Flutter]: /ui/assets/assets-and-images
 [`AlertDialog`]: {{site.api}}/flutter/material/AlertDialog-class.html
 [`Align`]: {{site.api}}/flutter/widgets/Align-class.html
 [`Animation`]: {{site.api}}/flutter/animation/Animation-class.html
@@ -2585,15 +2585,15 @@ correspondente e propriedades comuns de widgets.
 [`Axis`]: {{site.api}}/flutter/painting/Axis.html
 [`BuildContext`]: {{site.api}}/flutter/widgets/BuildContext-class.html
 [`Center`]: {{site.api}}/flutter/widgets/Center-class.html
-[color palette]: {{site.material2}}/design/color/the-color-system.html#color-theme-creation
-[colors]: {{site.api}}/flutter/material/Colors-class.html
+[paleta de cores]: {{site.material2}}/design/color/the-color-system.html#color-theme-creation
+[cores]: {{site.api}}/flutter/material/Colors-class.html
 [`Colors`]: {{site.api}}/flutter/material/Colors-class.html
 [`Column`]: {{site.api}}/flutter/widgets/Column-class.html
 [`Container`]: {{site.api}}/flutter/widgets/Container-class.html
 [`Checkbox`]: {{site.api}}/flutter/material/Checkbox-class.html
 [`CircleAvatar`]: {{site.api}}/flutter/material/CircleAvatar-class.html
 [`CircularProgressIndicator`]: {{site.api}}/flutter/material/CircularProgressIndicator-class.html
-[Cupertino (iOS-style)]: /ui/widgets/cupertino
+[Cupertino (estilo iOS)]: /ui/widgets/cupertino
 [`CustomPaint`]: {{site.api}}/flutter/widgets/CustomPaint-class.html
 [`CustomPainter`]: {{site.api}}/flutter/rendering/CustomPainter-class.html
 [Dart]: {{site.dart-site}}/dart-2
@@ -2606,34 +2606,34 @@ correspondente e propriedades comuns de widgets.
 [DartPadD]: {{site.dartpad}}/?id=57ec21faa8b6fe2326ffd74e9781a2c7
 [DartPadE]: {{site.dartpad}}/?id=c85038ad677963cb6dc943eb1a0b72e6
 [DartPadF]: {{site.dartpad}}/?id=5454e8bfadf3000179d19b9bc6be9918
-[Developing Packages & Plugins]: /packages-and-plugins/developing-packages
+[Desenvolvendo Pacotes e Plugins]: /packages-and-plugins/developing-packages
 [DevTools]: /tools/devtools
 [`Dismissible`]: {{site.api}}/flutter/widgets/Dismissible-class.html
 [`FadeTransition`]: {{site.api}}/flutter/widgets/FadeTransition-class.html
-[Flutter packages]: {{site.pub}}/flutter/
+[Pacotes Flutter]: {{site.pub}}/flutter/
 [Flutter Architectural Overview]: /resources/architectural-overview
-[Flutter Basic Widgets]: /ui/widgets/basics
-[Flutter Technical Overview]: /resources/architectural-overview
-[Flutter Widget Catalog]: /ui/widgets
-[Flutter Widget Index]: /reference/widgets
+[Widgets Básicos do Flutter]: /ui/widgets/basics
+[Visão Geral Técnica do Flutter]: /resources/architectural-overview
+[Catálogo de Widgets do Flutter]: /ui/widgets
+[Índice de Widgets do Flutter]: /reference/widgets
 [`FlutterLogo`]: {{site.api}}/flutter/material/FlutterLogo-class.html
 [`Form`]: {{site.api}}/flutter/widgets/Form-class.html
 [`TextButton`]: {{site.api}}/flutter/material/TextButton-class.html
-[functions]: {{site.dart-site}}/language/functions
+[funções]: {{site.dart-site}}/language/functions
 [`Future`]: {{site.dart-site}}/tutorials/language/futures
 [`GestureDetector`]: {{site.api}}/flutter/widgets/GestureDetector-class.html
-[Getting started]: /get-started
+[Primeiros passos]: /get-started
 [`Image`]: {{site.api}}/flutter/widgets/Image-class.html
 [`IndexedWidgetBuilder`]: {{site.api}}/flutter/widgets/IndexedWidgetBuilder.html
 [`InheritedWidget`]: {{site.api}}/flutter/widgets/InheritedWidget-class.html
 [`InkWell`]: {{site.api}}/flutter/material/InkWell-class.html
-[Layout Widgets]: /ui/widgets/layout
+[Widgets de Layout]: /ui/widgets/layout
 [`LinearProgressIndicator`]: {{site.api}}/flutter/material/LinearProgressIndicator-class.html
 [`ListTile`]: {{site.api}}/flutter/material/ListTile-class.html
 [`ListView`]: {{site.api}}/flutter/widgets/ListView-class.html
 [`ListView.builder`]: {{site.api}}/flutter/widgets/ListView/ListView.builder.html
 [Material Design]: {{site.material}}/styles
-[Material icons]: {{site.api}}/flutter/material/Icons-class.html
+[ícones do Material]: {{site.api}}/flutter/material/Icons-class.html
 [`MaterialApp`]: {{site.api}}/flutter/material/MaterialApp-class.html
 [`MaterialPageRoute`]: {{site.api}}/flutter/material/MaterialPageRoute-class.html
 [`ModalRoute`]: {{site.api}}/flutter/widgets/ModalRoute-class.html
@@ -2642,7 +2642,7 @@ correspondente e propriedades comuns de widgets.
 [`Navigator.pop`]: {{site.api}}/flutter/widgets/Navigator/pop.html
 [`Navigator.push`]: {{site.api}}/flutter/widgets/Navigator/push.html
 [`onSaved`]: {{site.api}}/flutter/widgets/FormField/onSaved.html
-[named parameters]: {{site.dart-site}}/language/functions#named-parameters
+[parâmetros nomeados]: {{site.dart-site}}/language/functions#named-parameters
 [`Padding`]: {{site.api}}/flutter/widgets/Padding-class.html
 [`PanResponder`]: https://facebook.github.io/react-native/docs/panresponder.html
 [pub.dev]: {{site.pub}}
@@ -2657,7 +2657,7 @@ correspondente e propriedades comuns de widgets.
 [`SingleTickerProviderStateMixin`]: {{site.api}}/flutter/widgets/SingleTickerProviderStateMixin-mixin.html
 [`Slider`]: {{site.api}}/flutter/material/Slider-class.html
 [`Stack`]: {{site.api}}/flutter/widgets/Stack-class.html
-[State management]: /data-and-backend/state-mgmt
+[Gerenciamento de estado]: /data-and-backend/state-mgmt
 [`StatefulWidget`]: {{site.api}}/flutter/widgets/StatefulWidget-class.html
 [`StatelessWidget`]: {{site.api}}/flutter/widgets/StatelessWidget-class.html
 [`Switch`]: {{site.api}}/flutter/material/Switch-class.html
@@ -2678,7 +2678,7 @@ correspondente e propriedades comuns de widgets.
 [`TickerProvider`]: {{site.api}}/flutter/scheduler/TickerProvider-class.html
 [`TickerProviderStateMixin`]: {{site.api}}/flutter/widgets/TickerProviderStateMixin-mixin.html
 [`Tween`]: {{site.api}}/flutter/animation/Tween-class.html
-[Using Packages]: /packages-and-plugins/using-packages
-[variables]: {{site.dart-site}}/language/variables
+[Usando Pacotes]: /packages-and-plugins/using-packages
+[variáveis]: {{site.dart-site}}/language/variables
 [`WidgetBuilder`]: {{site.api}}/flutter/widgets/WidgetBuilder.html
 [infinite_list]: {{site.repo.samples}}/tree/main/infinite_list

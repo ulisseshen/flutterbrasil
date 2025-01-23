@@ -1,19 +1,20 @@
-[![Flutter logo]](https://docs.flutter.dev)
+<!-- ia-translate: true -->
+[![Logotipo do Flutter]](https://docs.flutter.dev)
 
-[Flutter logo]: https://github.com/dart-lang/site-shared/blob/main/src/_assets/image/flutter/icon/64.png?raw=1
+[Logotipo do Flutter]: https://github.com/dart-lang/site-shared/blob/main/src/_assets/image/flutter/icon/64.png?raw=1
 
-# [Flutter][] documentation website 
+# Site de documentação do [Flutter][]
 
-The [documentation site][Flutter] for the [Flutter framework][],
-built with [Eleventy][] and hosted on [Firebase][].
+O [site de documentação][Flutter] para o [framework Flutter][],
+construído com [Eleventy][] e hospedado no [Firebase][].
 
-[Flutter framework]: https://flutter.dev
+[Framework Flutter]: https://flutter.dev
 [Eleventy]: https://11ty.dev/
 [Firebase]: https://firebase.google.com/
 
-[Build Status]: https://github.com/flutter/website/workflows/build/badge.svg
+[Status da Construção]: https://github.com/flutter/website/workflows/build/badge.svg
 [Flutter]: https://docs.flutter.dev/
-[Repo on GitHub Actions]: https://github.com/flutter/website/actions?query=workflow%3Abuild+branch%3Amain
+[Repositório no GitHub Actions]: https://github.com/flutter/website/actions?query=workflow%3Abuild+branch%3Amain
 
 <a href="https://idx.google.com/import?url=https%3A%2F%2Fgithub.com%2Fflutter%2Fwebsite">
   <picture>
@@ -25,350 +26,348 @@ built with [Eleventy][] and hosted on [Firebase][].
       srcset="https://cdn.idx.dev/btn/open_light_32.svg">
     <img
       height="32"
-      alt="Open in IDX"
+      alt="Abrir no IDX"
       src="https://cdn.idx.dev/btn/open_purple_32.svg">
   </picture>
 </a>
 
-## Issues, bugs, and requests
+## Problemas, bugs e solicitações
 
-We welcome contributions and feedback on our website. 
-Please file a request in our
-[issue tracker](https://github.com/flutter/website/issues/new/choose) 
-or create a [pull request](https://github.com/flutter/website/pulls). 
-For simple changes (such as tweaking some text), 
-it's easiest to make changes using the GitHub UI.
+Agradecemos contribuições e feedback em nosso site.
+Por favor, registre uma solicitação em nosso
+[rastreador de problemas](https://github.com/flutter/website/issues/new/choose)
+ou crie um [pull request](https://github.com/flutter/website/pulls).
+Para alterações simples (como ajustar algum texto),
+é mais fácil fazer as alterações usando a IU do GitHub.
 
-If you have an issue with the 
-API docs on [api.flutter.dev](https://api.flutter.dev), 
-please file those issues on 
-the [`flutter/flutter`](https://github.com/flutter/flutter/issues) repo, 
-not on this (`flutter/website`) repo. 
-The API docs are embedded in Flutter's source code, 
-so the engineering team handles those.
-
-
-## Before you submit a PR
-
-We love it when the community gets involved in improving our docs! 
-But here are a few notes to keep in mind before you submit a PR:
-
-- When triaging issues, 
-  we sometimes label an issue with the tag **PRs welcome**. 
-  But we welcome PRs on other issues as well&mdash;
-  it doesn't have to be tagged with that label.
-- Please don't run our docs through Grammarly (or similar) 
-  and submit those changes as a PR.
-- We follow the [Google Developer Documentation Style Guidelines][] —
-  for example, don't use "i.e." or "e.g.", 
-  avoid writing in first person,
-  and avoid writing in future tense.
-  You can start with the
-  [style guide highlights](https://developers.google.com/style/highlights) 
-  or the [word list](https://developers.google.com/style/word-list), 
-  or use the search bar that's at the top of every style guide page. 
-
-> We truly thank you for your willingness and helpfulness
-> in keeping the website docs up to date!
-
-[Google Developer Documentation Style Guidelines]: https://developers.google.com/style
+Se você tiver um problema com os
+docs da API em [api.flutter.dev](https://api.flutter.dev),
+por favor, registre esses problemas no
+repositório [`flutter/flutter`](https://github.com/flutter/flutter/issues),
+e não neste repositório (`flutter/website`).
+Os docs da API estão incorporados no código-fonte do Flutter,
+então a equipe de engenharia lida com eles.
 
 
-## Contributing
+## Antes de enviar um PR
 
-To update this site, fork the repo, make your changes,
-and generate a pull request.
-For small, contained changes (such as style and typo fixes),
-you probably don't need to build this site.
-Often you can make changes using the GitHub UI.
-If needed, we can stage the changes automatically in your pull request.
+Adoramos quando a comunidade se envolve na melhoria de nossos documentos!
+Mas aqui estão algumas coisas a ter em mente antes de enviar um PR:
 
-> [!IMPORTANT]  
-> If you are cloning this repository locally,
-> follow the below instruction on cloning with its submodule.
+- Ao analisar os problemas,
+  às vezes, marcamos um problema com a tag **PRs welcome** (PRs são bem-vindos).
+  Mas também aceitamos PRs em outros problemas -
+  não precisa ser marcado com essa tag.
+- Por favor, não execute nossos documentos pelo Grammarly (ou similar)
+  e envie essas alterações como um PR.
+- Seguimos as [Diretrizes de estilo de documentação do Google para desenvolvedores][] -
+  por exemplo, não use "i.e." ou "e.g.",
+  evite escrever na primeira pessoa,
+  e evite escrever no tempo futuro.
+  Você pode começar com os
+  [destaques do guia de estilo](https://developers.google.com/style/highlights)
+  ou a [lista de palavras](https://developers.google.com/style/word-list),
+  ou use a barra de pesquisa que está no topo de cada página do guia de estilo.
 
-If your change involves code samples, adds/removes pages, or affects navigation,
-do consider building and test your work before submitting.
+> Nós realmente agradecemos sua disposição e ajuda
+> em manter os documentos do site atualizados!
 
-If you want or need to build the site, follow the steps below.
+[Diretrizes de estilo de documentação do Google para desenvolvedores]: https://developers.google.com/style
 
-## Build the site
+## Contribuindo
 
-For changes beyond simple text and CSS tweaks,
-we recommend running the site locally to
-enable an edit-refresh cycle.
+Para atualizar este site, faça um fork do repositório, faça suas alterações
+e gere um pull request.
+Para pequenas alterações contidas (como correções de estilo e erros de digitação),
+você provavelmente não precisa construir este site.
+Muitas vezes, você pode fazer alterações usando a IU do GitHub.
+Se necessário, podemos organizar as alterações automaticamente em seu pull request.
 
-### Get the prerequisites
+> [!IMPORTANTE]
+> Se você estiver clonando este repositório localmente,
+> siga as instruções abaixo sobre como clonar com seu submódulo.
 
-Install the following tools to build and develop the site:
+Se a sua alteração envolver exemplos de código, adicionar/remover páginas ou afetar a navegação,
+considere construir e testar seu trabalho antes de enviar.
+
+Se você quiser ou precisar construir o site, siga as etapas abaixo.
+
+## Construir o site
+
+Para alterações além de pequenos ajustes de texto e CSS,
+recomendamos executar o site localmente para
+habilitar um ciclo de edição-atualização.
+
+### Obtenha os pré-requisitos
+
+Instale as seguintes ferramentas para construir e desenvolver o site:
 
 #### Flutter
 
-The latest stable release of Flutter, which includes Dart,
-is required to build the site and run its tooling.
-If you don't have Flutter or need to update, follow the
-instructions at [Install Flutter][] or [Upgrading Flutter][].
+A versão estável mais recente do Flutter, que inclui o Dart,
+é necessária para construir o site e executar suas ferramentas.
+Se você não tem o Flutter ou precisa atualizar, siga as
+instruções em [Instalar o Flutter][] ou [Atualizar o Flutter][].
 
-If you already have Flutter installed, verify it's on your path
-and already the latest stable version:
+Se você já tem o Flutter instalado, verifique se ele está no seu caminho
+e já é a versão estável mais recente:
 
 ```console
 flutter --version
 ```
 
-[Install Flutter]: https://docs.flutter.dev/get-started
-[Upgrading Flutter]: https://docs.flutter.dev/release/upgrade
+[Instalar o Flutter]: https://docs.flutter.dev/get-started
+[Atualizar o Flutter]: https://docs.flutter.dev/release/upgrade
 
 #### Node.js
 
-The **latest** stable LTS release of Node.js is required to build the site.
-If you don't have Node.js or need to update, download your
-computer's corresponding version and follow the instructions
-from the [Node.js download archive][].
-If you prefer, you can use a version manager such as [nvm][],
-and run `nvm install` from the repository's root directory.
+A versão LTS estável **mais recente** do Node.js é necessária para construir o site.
+Se você não tem o Node.js ou precisa atualizar, baixe a
+versão correspondente do seu computador e siga as instruções
+do [arquivo de download do Node.js][].
+Se preferir, você pode usar um gerenciador de versão como o [nvm][],
+e executar `nvm install` a partir do diretório raiz do repositório.
 
-If you already have Node installed, verify it's available on your path
-and already the latest stable version _(currently `22.12` or later)_:
+Se você já tem o Node instalado, verifique se ele está disponível em seu caminho
+e já é a versão estável mais recente _(atualmente `22.12` ou posterior)_:
 
 ```console
 node --version
 ```
 
-If your version is out of date,
-follow the update instructions for how you originally installed it.
+Se sua versão estiver desatualizada,
+siga as instruções de atualização de como você o instalou originalmente.
 
-[Node.js download archive]: https://nodejs.org/en/download/
+[arquivo de download do Node.js]: https://nodejs.org/en/download/
 [nvm]: https://github.com/nvm-sh/nvm
 
-### Clone this repo and its submodules
+### Clone este repositório e seus submódulos
 
-> [!NOTE]
-> This repository has git _submodules_, which affects how you clone it.
-> The GitHub documentation has general help on
-> [forking][] and [cloning][] repos.
+> [!NOTA]
+> Este repositório tem _submódulos_ git, o que afeta como você o clona.
+> A documentação do GitHub tem ajuda geral sobre
+> [forking][] e [clonagem][] de repositórios.
 
-If you're not a member of the Flutter organization,
-we recommend you **create a fork** of this repo under your own account,
-and then submit a PR from that fork.
+Se você não é membro da organização Flutter,
+recomendamos que você **crie um fork** deste repositório em sua própria conta,
+e então envie um PR desse fork.
 
-Once you have a fork (or you're a Flutter org member),
-_choose one_ of the following submodule-cloning techniques:
+Depois de ter um fork (ou você é um membro da organização Flutter),
+_escolha uma_ das seguintes técnicas de clonagem de submódulo:
 
-1. Clone the repo and its submodule at the same time
-   using the `--recurse-submodules` option:
+1. Clone o repositório e seu submódulo ao mesmo tempo
+   usando a opção `--recurse-submodules`:
 
    ```console
    git clone --recurse-submodules https://github.com/flutter/website.git
    ```
 
-2. If you've already cloned the repo without its submodule,
-   then run this command from the root of the repository:
+2. Se você já clonou o repositório sem seu submódulo,
+   então execute este comando a partir da raiz do repositório:
 
    ```console
    git submodule update --init --recursive
    ```
 
-> [!NOTE]
-> At any time during development
-> you can use the `git submodule` command to refresh submodules:
+> [!NOTA]
+> A qualquer momento durante o desenvolvimento
+> você pode usar o comando `git submodule` para atualizar os submódulos:
 >
 > ```console
 > git pull && git submodule update --init --recursive
 > ```
 
-[cloning]: https://docs.github.com/repositories/creating-and-managing-repositories/cloning-a-repository
+[clonagem]: https://docs.github.com/repositories/creating-and-managing-repositories/cloning-a-repository
 [forking]: https://docs.github.com/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
 
-## Set up your local environment and serve changes
+## Configure seu ambiente local e sirva as alterações
 
-Before you continue setting up the site infrastructure,
-verify the correct versions of Flutter and Node.js are set up and available by
-following the instructions in [Get the prerequisites](#get-the-prerequisites).
+Antes de continuar a configurar a infraestrutura do site,
+verifique se as versões corretas do Flutter e Node.js estão configuradas e disponíveis seguindo as instruções em [Obtenha os pré-requisitos](#get-the-prerequisites).
 
-1. _Optional:_ After cloning the repo and its submodules,
-   create a branch for your changes:
+1. _Opcional:_ Depois de clonar o repositório e seus submódulos,
+   crie um branch para suas alterações:
 
    ```console
-   git checkout -b <BRANCH_NAME>
+   git checkout -b <NOME_DO_BRANCH>
    ```
 
-2. From the root directory of the repository,
-   fetch the site's Dart dependencies.
+2. A partir do diretório raiz do repositório,
+   busque as dependências Dart do site.
 
    ```console
    dart pub get
    ```
 
-3. _Optional:_ We recommend you use `pnpm`, but you can also use `npm`.
-   Install `pnpm`, an alternative, efficient package manager for
-   npm packages. If you already have `pnpm`, verify you have the
-   latest stable version.
+3. _Opcional:_ Recomendamos que você use `pnpm`, mas você também pode usar `npm`.
+   Instale `pnpm`, um gerenciador de pacotes alternativo e eficiente para
+   pacotes npm. Se você já tem `pnpm`, verifique se tem a
+   versão estável mais recente.
 
    ```console
    node --version
    ```
 
-   If you don't already have `pnpm` installed, we recommend
-   using [`corepack`][] to install and manage `pnpm` versions,
-   since `corepack` is bundled with most installations of
-   Node. If you installed `node` using Homebrew, you'll need
-   to install corepack separately:
+   Se você ainda não tem o `pnpm` instalado, recomendamos
+   usar o [`corepack`][] para instalar e gerenciar as versões do `pnpm`,
+   já que o `corepack` é fornecido com a maioria das instalações do
+   Node. Se você instalou o `node` usando o Homebrew, precisará
+   instalar o corepack separadamente:
 
    ```console
    brew install corepack
    ```
 
-   If you haven't used `corepack` before, you'll need to
-   first enable it with `corepack enable`.
-   Then, to install the correct `pnpm` version, from the
-   root directory of the repository, run `corepack install`:
+   Se você não usou o `corepack` antes, precisará
+   primeiro habilitá-lo com `corepack enable`.
+   Em seguida, para instalar a versão correta do `pnpm`, a partir do
+   diretório raiz do repositório, execute `corepack install`:
 
    ```console
    corepack enable;
    corepack install
    ```
 
-   To install [`pnpm`][] without using `corepack`, you
-   can use your preferred [installation method][pnpm-install].
+   Para instalar [`pnpm`][] sem usar o `corepack`, você
+   pode usar seu [método de instalação][] preferido.
 
-5. _(optional)_ Once you have `pnpm` installed and setup,
-   fetch the site's npm dependencies using `pnpm install`.
-   We highly recommend you use `pnpm`, but you can also use `npm`.
+5. _(opcional)_ Depois de ter o `pnpm` instalado e configurado,
+   busque as dependências npm do site usando `pnpm install`.
+   Recomendamos que você use `pnpm`, mas você também pode usar `npm`.
 
    ```console
    pnpm install
    ```
    
-   Rerun `pnpm install` whenever you incorporate the
-   latest changes to the `main` branch or if you
-   experience dependency or import errors when building the site.
+   Execute `pnpm install` novamente sempre que incorporar as
+   últimas alterações no branch `main` ou se você
+   encontrar erros de dependência ou importação ao construir o site.
 
-6. From the root directory, run the `dash_site` tool to
-   validate your setup and learn about the available commands.
+6. A partir do diretório raiz, execute a ferramenta `dash_site` para
+   validar sua configuração e aprender sobre os comandos disponíveis.
 
    ```console
    ./dash_site --help
    ```
 
-7. From the root directory, serve the site locally.
+7. A partir do diretório raiz, sirva o site localmente.
 
    ```console
    ./dash_site serve
    ```
 
-   This command generates and serves the site on a
-   local port that's printed to your terminal.
+   Este comando gera e serve o site em uma
+   porta local que é impressa em seu terminal.
 
-8. View your changes in the browser by navigating to <http://localhost:4000>.
+8. Veja suas alterações no navegador navegando para <http://localhost:4000>.
 
-   Note the port might be different if `4000` is taken.
+   Observe que a porta pode ser diferente se `4000` estiver ocupada.
 
-   If you want to check the raw, generated HTML output and structure,
-   view the `_site` directory in a file explorer or an IDE.
+   Se você quiser verificar a saída e estrutura HTML bruta gerada,
+   veja o diretório `_site` em um explorador de arquivos ou IDE.
 
-9. Make your changes to the local repo.
+9. Faça suas alterações no repositório local.
 
-   The site should automatically rebuild on most changes, but if
-   something doesn't update, exit the process and rerun the command.
-   Improvements to this functionality are planned.
-   Please open a new issue to track the issue if this occurs.
+   O site deve ser reconstruído automaticamente na maioria das alterações, mas se
+   algo não atualizar, saia do processo e execute o comando novamente.
+   Melhorias nesta funcionalidade estão planejadas.
+   Por favor, abra um novo problema para acompanhar o problema se isso ocorrer.
 
-10. Commit your changes to the branch and submit your PR.
+10. Confirme suas alterações no branch e envie seu PR.
 
-   If your change is large, or you'd like to test it,
-   consider [validating your changes](#validate-your-changes).
+   Se sua alteração for grande, ou você gostaria de testá-la,
+   considere [validar suas alterações](#validate-your-changes).
 
-> [!TIP]
-> To find additional commands that you can run,
-> run `./dash_site --help` from the repository's root directory.
+> [!DICA]
+> Para encontrar comandos adicionais que você pode executar,
+> execute `./dash_site --help` a partir do diretório raiz do repositório.
 
 [`corepack`]: https://nodejs.org/api/corepack.html
 [`pnpm`]: https://pnpm.io/
-[pnpm-install]: https://pnpm.io/installation
+[método de instalação]: https://pnpm.io/installation
 
-## Validate your changes
+## Validar suas alterações
 
-### Check documentation and example code
+### Verifique a documentação e o código de exemplo
 
-If you've made changes to the code in the `/examples` or `/tool` directories,
-commit your work, then run the following command to
-verify it is up to date and matches the site standards.
+Se você fez alterações no código nos diretórios `/examples` ou `/tool`,
+confirme seu trabalho e execute o seguinte comando para
+verificar se ele está atualizado e corresponde aos padrões do site.
 
 ```console
 ./dash_site check-all
 ```
 
-If this script reports any errors or warnings,
-then address those issues and rerun the command.
-If you have any issues, leave a comment on your issue or pull request,
-and we'll try our best to help you.
-You can also chat with us on the `#hackers-devrel` channel
-on the [Flutter contributors Discord][]!
+Se este script relatar quaisquer erros ou avisos,
+então resolva esses problemas e execute o comando novamente.
+Se você tiver algum problema, deixe um comentário em seu problema ou pull request,
+e faremos o possível para ajudá-lo.
+Você também pode conversar conosco no canal `#hackers-devrel`
+no [Discord de contribuidores do Flutter][]!
 
-[Flutter contributors Discord]: https://github.com/flutter/flutter/blob/main/docs/contributing/Chat.md
+[Discord de contribuidores do Flutter]: https://github.com/flutter/flutter/blob/main/docs/contributing/Chat.md
 
-### Refresh code excerpts
+### Atualizar trechos de código
 
-A build that fails with the error
+Uma construção que falha com o erro
 `Error: Some code excerpts needed to be updated!`
-means that one or more code excerpts in the site Markdown files
-aren't identical to the code regions declared
-in the corresponding `.dart` files.
+significa que um ou mais trechos de código nos arquivos Markdown do site
+não são idênticos às regiões de código declaradas
+nos arquivos `.dart` correspondentes.
 
-The `.dart` files are the source of truth for code snippets,
-and the preceding `<?code-excerpt>` instructions in Markdown files specify
-how the snippets are copied from the `.dart` files. 
+Os arquivos `.dart` são a fonte da verdade para trechos de código,
+e as instruções `<?code-excerpt>` precedentes nos arquivos Markdown especificam
+como os trechos são copiados dos arquivos `.dart`.
 
-To resolve this error and update the Markdown snippets to match,
-from the root of the `website` directory,
-run `./dash_site refresh-excerpts`.
+Para resolver esse erro e atualizar os trechos Markdown para corresponder,
+a partir da raiz do diretório `website`,
+execute `./dash_site refresh-excerpts`.
 
-To learn more about creating, editing, and using code excerpts,
-check out the [excerpt updater package documentation][].
+Para saber mais sobre como criar, editar e usar trechos de código,
+confira a [documentação do pacote de atualização de trechos][].
 
-[excerpt updater package documentation]: https://github.com/dart-lang/site-shared/tree/main/pkgs/excerpter#readme
+[documentação do pacote de atualização de trechos]: https://github.com/dart-lang/site-shared/tree/main/pkgs/excerpter#readme
 
-## [Optional] Deploy to a staging site
+## [Opcional] Implantar em um site de staging
 
-Submitted pull requests can be automatically staged
-by a site maintainer.
-If you'd like to stage the site yourself though,
-you can build a full version and upload it to Firebase.
+Pull requests enviados podem ser automaticamente organizados
+por um mantenedor do site.
+Se você gostaria de organizar o site sozinho,
+você pode construir uma versão completa e carregá-la no Firebase.
 
-1. If you don't already have a Firebase project,
+1. Se você ainda não tem um projeto Firebase,
 
-  - Navigate to the [Firebase Console](https://console.firebase.google.com)
-    and create your own Firebase project (for example, `flutter-dev-staging`).
+  - Navegue até o [Console do Firebase](https://console.firebase.google.com)
+    e crie seu próprio projeto Firebase (por exemplo, `flutter-dev-staging`).
 
-  - Head back to your local terminal and verify that you are logged in.
+  - Volte para seu terminal local e verifique se você está logado.
 
     ```console
     firebase login
     ```
 
-  - Ensure that your project exists and activate that project:
+  - Certifique-se de que seu projeto existe e ative esse projeto:
 
     ```console
     firebase projects:list
-    firebase use <your-project>
+    firebase use <seu-projeto>
     ```
 
-2. From the root directory of the repository, build the site:
+2. A partir do diretório raiz do repositório, construa o site:
 
    ```console
    ./dash_site build
    ```
 
-   This builds the site and copies it to your local `_site` directory.
-   If that directory previously existed, it will be replaced.
+   Isso constrói o site e o copia para seu diretório local `_site`.
+   Se esse diretório existia anteriormente, ele será substituído.
 
-3. Deploy to your activated Firebase project's default hosting site:
+3. Implante no site de hospedagem padrão do seu projeto Firebase ativado:
 
    ```console
    firebase deploy --only hosting
    ```
 
-4. Navigate to your PR on GitHub and include the link of the staged version.
-   Do consider adding a reference to the commit you staged,
-   so that reviewers know if any further changes have been made.
+4. Navegue até o seu PR no GitHub e inclua o link da versão organizada.
+   Considere adicionar uma referência ao commit que você organizou,
+   para que os revisores saibam se alguma alteração adicional foi feita.

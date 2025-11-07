@@ -254,6 +254,7 @@ The different procedures are necessary due to bugs(which bugs?) in Xcode.
 Revisit these docs after future Xcode releases to see if they are fixed.
 {% endcomment -%}
 
+<a id="test-on-a-simulator"></a>
 ### Testar em um simulador
 
 1. Construa e execute o target da aplicação principal.

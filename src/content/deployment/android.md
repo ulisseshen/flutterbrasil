@@ -105,6 +105,7 @@ Por exemplo:
 [Getting Started guide for Android]: {{site.material}}/develop/android/mdc-android
 [maven-material]: https://maven.google.com/web/index.html#com.google.android.material:material
 
+<a id="signing-the-app"></a>
 <a id="sign-the-app"></a>
 ## Assinar o app
 

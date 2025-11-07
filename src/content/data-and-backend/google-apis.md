@@ -1,36 +1,37 @@
 ---
-title: Google APIs
-description: How to use Google APIs with Flutter.
+ia-translate: true
+title: APIs do Google
+description: Como usar APIs do Google com Flutter.
 ---
 
 <?code-excerpt path-base="googleapis/"?>
 
-The [Google APIs package][] exposes dozens of Google
-services that you can use from Dart projects.
+O [pacote Google APIs][Google APIs package] expõe dezenas de serviços do Google
+que você pode usar a partir de projetos Dart.
 
-This page describes how to use APIs that interact with
-end-user data by using Google authentication.
+Esta página descreve como usar APIs que interagem com
+dados do usuário final usando autenticação do Google.
 
-Examples of user-data APIs include
-[Calendar][], [Gmail][], [YouTube][], and Firebase.
+Exemplos de APIs de dados do usuário incluem
+[Calendar][], [Gmail][], [YouTube][] e Firebase.
 
 :::note
-The only APIs you should use directly from your Flutter
-project are those that access user data using Google authentication.
+As únicas APIs que você deve usar diretamente do seu projeto
+Flutter são aquelas que acessam dados do usuário usando autenticação do Google.
 
-APIs that require [service accounts][] **should not**
-be used directly from a Flutter application.
-Doing so requires shipping service credentials as part
-of your application, which is not secure.
-To use these APIs,
-we recommend creating an intermediate service.
+APIs que requerem [service accounts][] **não devem**
+ser usadas diretamente de um aplicativo Flutter.
+Fazer isso requer enviar credenciais de serviço como parte
+do seu aplicativo, o que não é seguro.
+Para usar essas APIs,
+recomendamos criar um serviço intermediário.
 :::
 
-To add authentication to Firebase explicitly, check out the
-[Add a user authentication flow to a Flutter app using FirebaseUI][fb-lab]
-codelab and the
-[Get Started with Firebase Authentication on Flutter][fb-auth] docs.
- 
+Para adicionar autenticação ao Firebase explicitamente, confira o
+codelab [Adicione um fluxo de autenticação de usuário a um app Flutter usando FirebaseUI][fb-lab]
+e a documentação
+[Comece com Firebase Authentication no Flutter][fb-auth].
+
 [fb-lab]: {{site.firebase}}/codelabs/firebase-auth-in-flutter-apps
 [Calendar]: {{site.pub-api}}/googleapis/latest/calendar_v3/calendar_v3-library.html
 [fb-auth]: {{site.firebase}}/docs/auth/flutter/start
@@ -39,35 +40,35 @@ codelab and the
 [service accounts]: https://cloud.google.com/iam/docs/service-account-overview
 [YouTube]: {{site.pub-api}}/googleapis/latest/youtube_v3/youtube_v3-library.html
 
-## Overview
+## Visão geral
 
-To use Google APIs, follow these steps:
+Para usar APIs do Google, siga estas etapas:
 
-1. Pick the desired API
-1. Enable the API
-1. Authenticate user with the required scopes
-1. Obtain an authenticated HTTP client
-1. Create and use the desired API class
+1. Escolha a API desejada
+1. Habilite a API
+1. Autentique o usuário com os escopos necessários
+1. Obtenha um cliente HTTP autenticado
+1. Crie e use a classe de API desejada
 
-## 1. Pick the desired API
+## 1. Escolha a API desejada
 
-The documentation for [package:googleapis][] lists
-each API as a separate Dart library&emdash;in a
-`name_version` format.
-Check out [`youtube_v3`][] as an example.
+A documentação do [package:googleapis][] lista
+cada API como uma biblioteca Dart separada&emdash;em um
+formato `name_version`.
+Confira [`youtube_v3`][] como exemplo.
 
-Each library might provide many types,
-but there is one _root_ class that ends in `Api`.
-For YouTube, it's [`YouTubeApi`][].
+Cada biblioteca pode fornecer muitos tipos,
+mas há uma classe _raiz_ que termina em `Api`.
+Para YouTube, é [`YouTubeApi`][].
 
-Not only is the `Api` class the one you need to
-instantiate (see step 3), but it also
-exposes the scopes that represent the permissions
-needed to use the API. For example,
-the [Constants section][] of the
-`YouTubeApi` class lists the available scopes.
-To request access to read (but not write) an end-users
-YouTube data, authenticate the user with
+A classe `Api` não é apenas a que você precisa
+instanciar (veja a etapa 3), mas também
+expõe os escopos que representam as permissões
+necessárias para usar a API. Por exemplo,
+a [seção Constants][Constants section] da
+classe `YouTubeApi` lista os escopos disponíveis.
+Para solicitar acesso de leitura (mas não escrita) aos dados
+do YouTube de um usuário final, autentique o usuário com
 [`youtubeReadonlyScope`][].
 
 <?code-excerpt "lib/main.dart (youtube-import)"?>
@@ -82,23 +83,23 @@ import 'package:googleapis/youtube/v3.dart';
 [`YouTubeApi`]: {{site.pub-api}}/googleapis/latest/youtube_v3/YouTubeApi-class.html
 [`youtubeReadonlyScope`]: {{site.pub-api}}/googleapis/latest/youtube_v3/YouTubeApi/youtubeReadonlyScope-constant.html
 
-## 2. Enable the API
+## 2. Habilite a API
 
-To use Google APIs you must have a Google account
-and a Google project. You also
-need to enable your desired API.
+Para usar APIs do Google, você deve ter uma conta do Google
+e um projeto do Google. Você também
+precisa habilitar a API desejada.
 
-This example enables [YouTube Data API v3][].
-For details, see the [getting started instructions][].
+Este exemplo habilita a [YouTube Data API v3][].
+Para detalhes, veja as [instruções de introdução][getting started instructions].
 
 [getting started instructions]: https://cloud.google.com/apis/docs/getting-started
 [YouTube Data API v3]: https://console.cloud.google.com/apis/library/youtube.googleapis.com
 
-## 3. Authenticate the user with the required scopes
+## 3. Autentique o usuário com os escopos necessários
 
-Use the [google_sign_in][gsi-pkg] package to
-authenticate users with their Google identity.
-Configure signin for each platform you want to support.
+Use o pacote [google_sign_in][gsi-pkg] para
+autenticar usuários com sua identidade do Google.
+Configure o signin para cada plataforma que você deseja suportar.
 
 <?code-excerpt "lib/main.dart (google-import)"?>
 ```dart
@@ -106,9 +107,9 @@ Configure signin for each platform you want to support.
 import 'package:google_sign_in/google_sign_in.dart';
 ```
 
-When instantiating the [`GoogleSignIn`][] class,
-provide the desired scopes as discussed
-in the previous section.
+Ao instanciar a classe [`GoogleSignIn`][],
+forneça os escopos desejados conforme discutido
+na seção anterior.
 
 <?code-excerpt "lib/main.dart (init)"?>
 ```dart
@@ -117,38 +118,38 @@ final _googleSignIn = GoogleSignIn(
 );
 ```
 
-Follow the instructions provided by
+Siga as instruções fornecidas por
 [`package:google_sign_in`][gsi-pkg]
-to allow a user to authenticate.
+para permitir que um usuário se autentique.
 
-Once authenticated,
-you must obtain an authenticated HTTP client.
+Uma vez autenticado,
+você deve obter um cliente HTTP autenticado.
 
 [gsi-pkg]: {{site.pub-pkg}}/google_sign_in
 [`GoogleSignIn`]: {{site.pub-api}}/google_sign_in/latest/google_sign_in/GoogleSignIn-class.html
 
-## 4. Obtain an authenticated HTTP client
+## 4. Obtenha um cliente HTTP autenticado
 
-The [extension_google_sign_in_as_googleapis_auth][]
-package provides an [extension method][] on `GoogleSignIn`
-called [`authenticatedClient`][].
+O pacote [extension_google_sign_in_as_googleapis_auth][]
+fornece um [extension method][] em `GoogleSignIn`
+chamado [`authenticatedClient`][].
 
 <?code-excerpt "lib/main.dart (auth-import)"?>
 ```dart
 import 'package:extension_google_sign_in_as_googleapis_auth/extension_google_sign_in_as_googleapis_auth.dart';
 ```
 
-Add a listener to [`onCurrentUserChanged`][]
-and when the event value isn't `null`,
-you can create an authenticated client.
+Adicione um listener ao [`onCurrentUserChanged`][]
+e quando o valor do evento não for `null`,
+você pode criar um cliente autenticado.
 
 <?code-excerpt "lib/main.dart (signin-call)"?>
 ```dart
 var httpClient = (await _googleSignIn.authenticatedClient())!;
 ```
 
-This [`Client`][] instance includes the necessary
-credentials when invoking Google API classes.
+Esta instância de [`Client`][] inclui as credenciais necessárias
+ao invocar classes de API do Google.
 
 [`authenticatedClient`]: {{site.pub-api}}/extension_google_sign_in_as_googleapis_auth/latest/extension_google_sign_in_as_googleapis_auth/GoogleApisGoogleSignInAuth/authenticatedClient.html
 [`Client`]: {{site.pub-api}}/http/latest/http/Client-class.html
@@ -156,10 +157,10 @@ credentials when invoking Google API classes.
 [extension method]: {{site.dart-site}}/guides/language/extension-methods
 [`onCurrentUserChanged`]: {{site.pub-api}}/google_sign_in/latest/google_sign_in/GoogleSignIn/onCurrentUserChanged.html
 
-## 5. Create and use the desired API class
+## 5. Crie e use a classe de API desejada
 
-Use the API to create the desired API type and call methods.
-For instance:
+Use a API para criar o tipo de API desejado e chamar métodos.
+Por exemplo:
 
 <?code-excerpt "lib/main.dart (playlist)"?>
 ```dart
@@ -171,11 +172,11 @@ var favorites = await youTubeApi.playlistItems.list(
 );
 ```
 
-## More information
+## Mais informações
 
-You might want to check out the following:
+Você pode querer conferir o seguinte:
 
-* The [`extension_google_sign_in_as_googleapis_auth` example][auth-ex]
-  is a working implementation of the concepts described on this page.
+* O [exemplo de `extension_google_sign_in_as_googleapis_auth`][auth-ex]
+  é uma implementação funcional dos conceitos descritos nesta página.
 
 [auth-ex]: {{site.pub-pkg}}/extension_google_sign_in_as_googleapis_auth/example

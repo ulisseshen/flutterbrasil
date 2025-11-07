@@ -1,40 +1,41 @@
 ---
-title: Create a scrolling parallax effect
-description: How to implement a scrolling parallax effect.
+title: Crie um efeito de rolagem parallax
+description: Como implementar um efeito de rolagem parallax.
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
+ia-translate: true
 ---
 
 <?code-excerpt path-base="cookbook/effects/parallax_scrolling"?>
 
-When you scroll a list of cards (containing images,
-for example) in an app, you might notice that those
-images appear to scroll more slowly than the rest of the
-screen. It almost looks as if the cards in the list
-are in the foreground, but the images themselves sit
-far off in the distant background. This effect is
-known as parallax.
+Quando você rola uma lista de cartões (contendo imagens,
+por exemplo) em um aplicativo, você pode notar que essas
+imagens parecem rolar mais lentamente do que o resto da
+tela. Quase parece que os cartões na lista
+estão em primeiro plano, mas as imagens em si ficam
+bem ao longe no fundo distante. Este efeito é
+conhecido como parallax.
 
-In this recipe, you create the parallax effect by building
-a list of cards (with rounded corners containing some text).
-Each card also contains an image.
-As the cards slide up the screen,
-the images within each card slide down.
+Nesta receita, você cria o efeito parallax construindo
+uma lista de cartões (com cantos arredondados contendo algum texto).
+Cada cartão também contém uma imagem.
+Conforme os cartões deslizam para cima na tela,
+as imagens dentro de cada cartão deslizam para baixo.
 
-The following animation shows the app's behavior:
+A animação a seguir mostra o comportamento do aplicativo:
 
-![Parallax scrolling](/assets/images/docs/cookbook/effects/ParallaxScrolling.gif){:.site-mobile-screenshot}
+![Rolagem parallax](/assets/images/docs/cookbook/effects/ParallaxScrolling.gif){:.site-mobile-screenshot}
 
-## Create a list to hold the parallax items
+## Crie uma lista para conter os itens parallax
 
-To display a list of parallax scrolling images,
-you must first display a list.
+Para exibir uma lista de imagens com rolagem parallax,
+você deve primeiro exibir uma lista.
 
-Create a new stateless widget called `ParallaxRecipe`.
-Within `ParallaxRecipe`, build a widget tree with a
-`SingleChildScrollView` and a `Column`, which forms
-a list.
+Crie um novo widget stateless chamado `ParallaxRecipe`.
+Dentro de `ParallaxRecipe`, construa uma árvore de widgets com um
+`SingleChildScrollView` e uma `Column`, que forma
+uma lista.
 
 <?code-excerpt "lib/excerpt1.dart (ParallaxRecipe)"?>
 ```dart
@@ -52,21 +53,21 @@ class ParallaxRecipe extends StatelessWidget {
 }
 ```
 
-## Display items with text and a static image
+## Exiba itens com texto e uma imagem estática
 
-Each list item displays a rounded-rectangle background
-image, representing one of seven locations in the world.
-Stacked on top of that background image is the
-name of the location and its country,
-positioned in the lower left. Between the
-background image and the text is a dark gradient,
-which improves the legibility
-of the text against the background.
+Cada item da lista exibe uma imagem de fundo de retângulo
+arredondado, representando um dos sete locais no mundo.
+Empilhado em cima dessa imagem de fundo está o
+nome do local e seu país,
+posicionados no canto inferior esquerdo. Entre a
+imagem de fundo e o texto há um gradiente escuro,
+que melhora a legibilidade
+do texto em relação ao fundo.
 
-Implement a stateless widget called `LocationListItem`
-that consists of the previously mentioned visuals.
-For now, use a static `Image` widget for the background.
-Later, you'll replace that widget with a parallax version.
+Implemente um widget stateless chamado `LocationListItem`
+que consiste nos visuais mencionados anteriormente.
+Por enquanto, use um widget `Image` estático para o fundo.
+Mais tarde, você substituirá esse widget por uma versão parallax.
 
 <?code-excerpt "lib/excerpt2.dart (LocationListItem)"?>
 ```dart
@@ -157,7 +158,7 @@ class LocationListItem extends StatelessWidget {
 }
 ```
 
-Next, add the list items to your `ParallaxRecipe` widget.
+Adicione os itens da lista ao seu widget `ParallaxRecipe`.
 
 <?code-excerpt "lib/excerpt3.dart (ParallaxRecipeItems)"?>
 ```dart
@@ -182,56 +183,56 @@ class ParallaxRecipe extends StatelessWidget {
 }
 ```
 
-You now have a typical, scrollable list of cards
-that displays seven unique locations in the world.
-In the next step, you add a parallax effect to the
-background image.
+Agora você tem uma lista típica de cartões roláveis
+que exibe sete locais únicos no mundo.
+No próximo passo, você adiciona um efeito parallax à
+imagem de fundo.
 
-## Implement the parallax effect
+## Implemente o efeito parallax
 
-A parallax scrolling effect is achieved by slightly
-pushing the background image in the opposite direction
-of the rest of the list. As the list items slide up
-the screen, each background image slides slightly downward.
-Conversely, as the list items slide down the screen,
-each background image slides slightly upward.
-Visually, this results in parallax.
+Um efeito de rolagem parallax é alcançado empurrando levemente
+a imagem de fundo na direção oposta
+ao resto da lista. Conforme os itens da lista deslizam para cima
+na tela, cada imagem de fundo desliza ligeiramente para baixo.
+Por outro lado, conforme os itens da lista deslizam para baixo na tela,
+cada imagem de fundo desliza ligeiramente para cima.
+Visualmente, isso resulta em parallax.
 
-The parallax effect depends on the list item's
-current position within its ancestor `Scrollable`.
-As the list item's scroll position changes, the position
-of the list item's background image must also change.
-This is an interesting problem to solve. The position
-of a list item within the `Scrollable` isn't
-available until Flutter's layout phase is complete.
-This means that the position of the background image
-must be determined in the paint phase, which comes after
-the layout phase. Fortunately, Flutter provides a widget
-called `Flow`, which is specifically designed to give you
-control over the transform of a child widget immediately
-before the widget is painted. In other words,
-you can intercept the painting phase and take control
-to reposition your child widgets however you want.
+O efeito parallax depende da posição atual do item da lista
+dentro de seu ancestral `Scrollable`.
+Conforme a posição de rolagem do item da lista muda, a posição
+da imagem de fundo do item da lista também deve mudar.
+Este é um problema interessante de resolver. A posição
+de um item da lista dentro do `Scrollable` não está
+disponível até que a fase de layout do Flutter esteja completa.
+Isso significa que a posição da imagem de fundo
+deve ser determinada na fase de pintura, que vem depois
+da fase de layout. Felizmente, o Flutter fornece um widget
+chamado `Flow`, que foi projetado especificamente para dar a você
+controle sobre a transformação de um widget filho imediatamente
+antes do widget ser pintado. Em outras palavras,
+você pode interceptar a fase de pintura e assumir o controle
+para reposicionar seus widgets filhos como quiser.
 
 :::note
-To learn more, check out this short
-Widget of the Week video on the `Flow` widget:
+Para saber mais, confira este breve
+vídeo Widget da Semana sobre o widget `Flow`:
 
 {% ytEmbed 'NG6pvXpnIso', 'Flow | Flutter widget of the week' %}
 :::
 
 :::note
-In cases where you need control over what a child paints,
-rather than where a child is painted,
-consider using a [`CustomPaint`][] widget.
+Nos casos em que você precisa controlar o que um filho pinta,
+em vez de onde um filho é pintado,
+considere usar um widget [`CustomPaint`][].
 
-In cases where you need control over the layout,
-painting, and hit testing, consider defining a
-custom [`RenderBox`][].
+Nos casos em que você precisa controlar o layout,
+pintura e teste de toque, considere definir um
+[`RenderBox`][] personalizado.
 :::
 
-Wrap your background `Image` widget with a
-[`Flow`][] widget.
+Envolva seu widget `Image` de fundo com um
+widget [`Flow`][].
 
 <?code-excerpt "lib/excerpt4.dart (BuildParallaxBackground)" replace="/\n    delegate: ParallaxFlowDelegate\(\),//g"?>
 ```dart
@@ -247,7 +248,7 @@ Widget _buildParallaxBackground(BuildContext context) {
 }
 ```
 
-Introduce a new `FlowDelegate` called `ParallaxFlowDelegate`.
+Introduza um novo `FlowDelegate` chamado `ParallaxFlowDelegate`.
 
 <?code-excerpt "lib/excerpt4.dart (BuildParallaxBackground)"?>
 ```dart
@@ -287,12 +288,12 @@ class ParallaxFlowDelegate extends FlowDelegate {
 }
 ```
 
-A `FlowDelegate` controls how its children are sized
-and where those children are painted. In this case,
-your `Flow` widget has only one child: the background image.
-That image must be exactly as wide as the `Flow` widget.
+Um `FlowDelegate` controla como seus filhos são dimensionados
+e onde esses filhos são pintados. Neste caso,
+seu widget `Flow` tem apenas um filho: a imagem de fundo.
+Essa imagem deve ser exatamente tão larga quanto o widget `Flow`.
 
-Return tight width constraints for your background image child.
+Retorne restrições de largura rígidas para seu filho de imagem de fundo.
 
 <?code-excerpt "lib/main.dart (TightWidth)"?>
 ```dart
@@ -304,32 +305,32 @@ BoxConstraints getConstraintsForChild(int i, BoxConstraints constraints) {
 }
 ```
 
-Your background images are now sized appropriately,
-but you still need to calculate the vertical position
-of each background image based on its scroll
-position, and then paint it.
+Suas imagens de fundo agora são dimensionadas adequadamente,
+mas você ainda precisa calcular a posição vertical
+de cada imagem de fundo com base em sua posição de rolagem,
+e então pintá-la.
 
-There are three critical pieces of information that
-you need to compute the desired position of a
-background image:
+Existem três informações críticas que
+você precisa para calcular a posição desejada de uma
+imagem de fundo:
 
-* The bounds of the ancestor `Scrollable`
-* The bounds of the individual list item
-* The size of the image after it's scaled down
-   to fit in the list item
+* Os limites do ancestral `Scrollable`
+* Os limites do item da lista individual
+* O tamanho da imagem após ser redimensionada
+   para caber no item da lista
 
-To look up the bounds of the `Scrollable`,
-you pass a `ScrollableState` into your `FlowDelegate`.
+Para procurar os limites do `Scrollable`,
+você passa um `ScrollableState` para seu `FlowDelegate`.
 
-To look up the bounds of your individual list item,
-pass your list item's `BuildContext` into your `FlowDelegate`.
+Para procurar os limites do seu item de lista individual,
+passe o `BuildContext` do seu item de lista para seu `FlowDelegate`.
 
-To look up the final size of your background image,
-assign a `GlobalKey` to your `Image` widget,
-and then you pass that `GlobalKey` into your
+Para procurar o tamanho final da sua imagem de fundo,
+atribua uma `GlobalKey` ao seu widget `Image`,
+e então você passa essa `GlobalKey` para seu
 `FlowDelegate`.
 
-Make this information available to `ParallaxFlowDelegate`.
+Disponibilize essas informações para `ParallaxFlowDelegate`.
 
 <?code-excerpt "lib/excerpt5.dart (global-key)" plaster="none"?>
 ```dart
@@ -371,8 +372,8 @@ class ParallaxFlowDelegate extends FlowDelegate {
 }
 ```
 
-Having all the information needed to implement
-parallax scrolling, implement the `shouldRepaint()` method.
+Tendo todas as informações necessárias para implementar
+rolagem parallax, implemente o método `shouldRepaint()`.
 
 <?code-excerpt "lib/main.dart (ShouldRepaint)"?>
 ```dart
@@ -384,10 +385,10 @@ bool shouldRepaint(ParallaxFlowDelegate oldDelegate) {
 }
 ```
 
-Now, implement the layout calculations for the parallax effect.
+Agora, implemente os cálculos de layout para o efeito parallax.
 
-First, calculate the pixel position of a list
-item within its ancestor `Scrollable`.
+Primeiro, calcule a posição em pixels de um item da lista
+dentro de seu ancestral `Scrollable`.
 
 <?code-excerpt "lib/excerpt5.dart (paint-children)" plaster="none"?>
 ```dart
@@ -402,11 +403,11 @@ void paintChildren(FlowPaintingContext context) {
 }
 ```
 
-Use the pixel position of the list item to calculate its
-percentage from the top of the `Scrollable`.
-A list item at the top of the scrollable area should
-produce 0%, and a list item at the bottom of the
-scrollable area should produce 100%.
+Use a posição em pixels do item da lista para calcular sua
+porcentagem a partir do topo do `Scrollable`.
+Um item da lista no topo da área rolável deve
+produzir 0%, e um item da lista na parte inferior da
+área rolável deve produzir 100%.
 
 <?code-excerpt "lib/excerpt5.dart (paint-children-2)"?>
 ```dart
@@ -428,11 +429,11 @@ void paintChildren(FlowPaintingContext context) {
 }
 ```
 
-Use the scroll percentage to calculate an `Alignment`.
-At 0%, you want `Alignment(0.0, -1.0)`,
-and at 100%, you want `Alignment(0.0, 1.0)`.
-These coordinates correspond to top and bottom
-alignment, respectively.
+Use a porcentagem de rolagem para calcular um `Alignment`.
+Em 0%, você quer `Alignment(0.0, -1.0)`,
+e em 100%, você quer `Alignment(0.0, 1.0)`.
+Essas coordenadas correspondem ao alinhamento superior e inferior,
+respectivamente.
 
 <?code-excerpt "lib/excerpt5.dart (paint-children-3)" plaster="none"?>
 ```dart
@@ -457,10 +458,10 @@ void paintChildren(FlowPaintingContext context) {
 }
 ```
 
-Use `verticalAlignment`, along with the size of the
-list item and the size of the background image,
-to produce a `Rect` that determines where the
-background image should be positioned.
+Use `verticalAlignment`, junto com o tamanho do
+item da lista e o tamanho da imagem de fundo,
+para produzir um `Rect` que determina onde a
+imagem de fundo deve ser posicionada.
 
 <?code-excerpt "lib/excerpt5.dart (paint-children-4)" plaster="none"?>
 ```dart
@@ -494,10 +495,10 @@ void paintChildren(FlowPaintingContext context) {
 }
 ```
 
-Using `childRect`, paint the background image with
-the desired translation transformation.
-It's this transformation over time that gives you the
-parallax effect.
+Usando `childRect`, pinte a imagem de fundo com
+a transformação de translação desejada.
+É essa transformação ao longo do tempo que dá a você o
+efeito parallax.
 
 <?code-excerpt "lib/excerpt5.dart (paint-children-5)" plaster="none" ?>
 ```dart
@@ -538,14 +539,14 @@ void paintChildren(FlowPaintingContext context) {
 }
 ```
 
-You need one final detail to achieve the parallax effect.
-The `ParallaxFlowDelegate` repaints when the inputs change,
-but the `ParallaxFlowDelegate` doesn't repaint every time
-the scroll position changes.
+Você precisa de um detalhe final para alcançar o efeito parallax.
+O `ParallaxFlowDelegate` repinta quando as entradas mudam,
+mas o `ParallaxFlowDelegate` não repinta toda vez que
+a posição de rolagem muda.
 
-Pass the `ScrollableState`'s `ScrollPosition` to
-the `FlowDelegate` superclass so that the `FlowDelegate`
-repaints every time the `ScrollPosition` changes.
+Passe a `ScrollPosition` do `ScrollableState` para
+o superclasse `FlowDelegate` para que o `FlowDelegate`
+repinte toda vez que a `ScrollPosition` mudar.
 
 <?code-excerpt "lib/main.dart (SuperScrollPosition)" replace="/;\n/;\n}/g"?>
 ```dart
@@ -558,15 +559,15 @@ class ParallaxFlowDelegate extends FlowDelegate {
 }
 ```
 
-Congratulations!
-You now have a list of cards with parallax,
-scrolling background images.
+Parabéns!
+Agora você tem uma lista de cartões com parallax,
+imagens de fundo rolantes.
 
-## Interactive example
+## Exemplo interativo
 
-Run the app:
+Execute o aplicativo:
 
-* Scroll up and down to observe the parallax effect.
+* Role para cima e para baixo para observar o efeito parallax.
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter parallax scrolling hands-on example in DartPad" run="true"

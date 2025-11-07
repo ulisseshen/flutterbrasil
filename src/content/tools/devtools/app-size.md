@@ -48,6 +48,7 @@ DevTools (see [launch instructions][]).
 
 ![Screenshot of app size access on landing page](/assets/images/docs/tools/devtools/app_size_access_landing_page.png){:width="100%"}
 
+<a id="analysis-tab"></a>
 ## Analysis tab
 
 The analysis tab allows you to inspect a single snapshot
@@ -74,6 +75,7 @@ generating size files.
 
 The treemap and table show the hierarchical data for your app's size.
 
+<a id="use-the-treemap"></a>
 #### Use the treemap
 
 A treemap is a visualization for hierarchical data.
@@ -197,6 +199,7 @@ This is an example where the call graph would give
 you a better understanding around why a piece of code is
 included in your application.
 
+<a id="diff-tab"></a>
 ## Diff tab
 
 The diff tab allows you to compare two snapshots of
@@ -230,6 +233,7 @@ only data that differs between the two imported size files.
 
 For questions about using the treemap, see [Use the treemap][] above.
 
+<a id="generating-size-files"></a>
 ## Generating size files
 
 To use the app size tool, you'll need to generate a

@@ -31,7 +31,8 @@
 {% for sub in category.subcategories -%}
   {% assign components = catalog.widgets | widget_filter: "subcategories", sub.name %}
   {% if components.size != 0 -%}
-  
+
+  <a id="{{ sub.name | slugify }}"></a>
   ## {{sub.name}}
 
   <div class="card-grid">

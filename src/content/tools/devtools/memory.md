@@ -267,6 +267,7 @@ However, leaks are more likely to cause memory issues,
 because even a small leak,
 if repeated many times, leads to a crash.
 
+<a id="memory-view-guide"></a>
 ## Memory view guide
 
 The DevTools memory view helps you investigate
@@ -290,6 +291,7 @@ has the following features:
 : Investigate a feature's memory management for
   a specified set of classes.
 
+<a id="expandable-chart"></a>
 ### Expandable chart
 
 The expandable chart provides the following features:
@@ -384,7 +386,7 @@ The quantities plotted on the y-axis are as follows:
 [heroku]: {{site.yt.watch}}?v=nkTUMVNelXA
 
 <a id="profile-tab" aria-hidden="true"></a>
-
+<a id="profile-memory-tab"></a>
 ### Profile Memory tab
 
 Use the **Profile Memory** tab to see current memory
@@ -395,6 +397,7 @@ Toggle **Refresh on GC**, to see allocation in real time.
 
 ![Screenshot of the profile tab page](/assets/images/docs/tools/devtools/profile-tab-2.png){:width="100%"}
 
+<a id="diff-snapshots-tab"></a>
 ### Diff Snapshots tab
 
 Use the **Diff Snapshots** tab to investigate a feature's
@@ -413,7 +416,7 @@ For a deeper analysis in Google Sheets
 or other tools, download the data in CSV format.
 
 <a id="trace-tab" aria-hidden="true"></a>
-
+<a id="trace-instances-tab"></a>
 ### Trace Instances tab
 
 Use the **Trace Instances** tab to investigate what methods

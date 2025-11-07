@@ -37,6 +37,7 @@ more spacious view when running it from DevTools
 in a browser.
 :::
 
+<a id="debugging-layout-issues-visually"></a>
 ### Debugging layout issues visually
 
 The following is a guide to the features available in the
@@ -75,6 +76,7 @@ used as the visual version of the label.
 [Highlight repaints]: #highlight-repaints
 [Highlight oversized images]: #highlight-oversized-images
 
+<a id="inspecting-a-widget"></a>
 ## Inspecting a widget
 
 You can browse the interactive widget tree to view nearby

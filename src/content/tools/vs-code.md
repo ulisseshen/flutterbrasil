@@ -149,6 +149,7 @@ Go to **Run** > **Start Without Debugging**.
 
 You can also press <kbd>Ctrl</kbd> + <kbd>F5</kbd>.
 
+<a id="run-app-with-breakpoints"></a>
 ### Run app with breakpoints
 
 1. If desired, set breakpoints in your source code.

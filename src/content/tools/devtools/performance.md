@@ -131,6 +131,7 @@ red:
 For more information on how to reduce shader compilation jank,
 check out [Reduce shader compilation jank on mobile][].
 
+<a id="frame-analysis-tab"></a>
 ## Frame analysis tab
 
 Selecting a janky frame (slow, colored in red)
@@ -141,6 +142,7 @@ that we have detected that might have contributed to the slow frame time.
 
 ![Screenshot of the frame analysis tab](/assets/images/docs/tools/devtools/frame-analysis-tab.png)
 
+<a id="timeline-events-tab"></a>
 ## Timeline events tab
 
 The timeline events chart shows all event tracing from your application.
@@ -241,6 +243,7 @@ to the jank you saw in your app.
 
 ![Screenshot of more debugging options](/assets/images/docs/tools/devtools/more-debugging-options.png)
 
+<a id="import-and-export"></a>
 ## Import and export
 
 DevTools supports importing and exporting performance snapshots.

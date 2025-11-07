@@ -124,6 +124,7 @@ mas atualmente não funciona devido a uma limitação conhecida (veja detalhes a
 
 [WasmGC]: {{site.github}}/WebAssembly/gc/tree/main/proposals/gc
 [Chromium and V8]: https://chromestatus.com/feature/6062715726462976
+[Chromium e V8]: https://chromestatus.com/feature/6062715726462976
 [support WasmGC]: https://bugs.webkit.org/show_bug.cgi?id=247394
 [issue]: https://bugzilla.mozilla.org/show_bug.cgi?id=1788206
 

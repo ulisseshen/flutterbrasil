@@ -1,7 +1,8 @@
 ---
-title: Basic widgets
+title: Widgets básicos
 short-title: Basics
-description: A catalog of Flutter's basic widgets.
+description: Um catálogo dos widgets básicos do Flutter.
+ia-translate: true
 ---
 
 {% render docs/catalog-page.md, categoryName:"Basics", catalog:catalog %}

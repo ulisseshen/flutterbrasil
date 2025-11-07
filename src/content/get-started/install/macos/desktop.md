@@ -1,12 +1,13 @@
 ---
-title: Start building Flutter native desktop apps on macOS
-description: Configure your system to develop Flutter desktop apps on macOS.
-short-title: Make macOS desktop apps
+title: Comece a construir apps Flutter desktop nativos no macOS
+description: Configure seu sistema para desenvolver apps Flutter desktop no macOS.
+short-title: Crie apps desktop macOS
+ia-translate: true
 target: desktop
 config: macOSDesktop
 devos: macOS
 next:
-  title: Create your first app
+  title: Crie seu primeiro app
   path: /get-started/codelab
 ---
 

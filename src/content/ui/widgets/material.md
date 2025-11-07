@@ -1,27 +1,28 @@
 ---
-title: Material component widgets
+title: Widgets de componentes Material
 short-title: Material
-description: > 
-  A catalog of Flutter's widgets implementing Material 3 design guidelines.
+description: >
+  Um catálogo dos widgets do Flutter que implementam as diretrizes de design do Material 3.
+ia-translate: true
 ---
 
-Flutter provides a variety of visual, behavioral, and motion-rich widgets
-that implement the [Material 3][] design specification.
-Material 3 is the default design language of Flutter,
-enabling you to design and build beautiful, usable apps
-that can adapt to any platform.
+O Flutter fornece uma variedade de widgets visuais, comportamentais e ricos em movimento
+que implementam a especificação de design [Material 3][].
+O Material 3 é a linguagem de design padrão do Flutter,
+permitindo que você projete e construa aplicativos bonitos e utilizáveis
+que podem se adaptar a qualquer plataforma.
 
 :::secondary
-The transition to Material 3 as the default was
-completed in Flutter 3.16.
+A transição para o Material 3 como padrão foi
+concluída no Flutter 3.16.
 
-To learn more about this transition, how to complete it for your own widgets,
-or how to temporarily opt-out, check out
-the [Migrate to Material 3][] migration guide.
+Para saber mais sobre essa transição, como completá-la para seus próprios widgets,
+ou como optar temporariamente por não participar, confira
+o guia de migração [Migrate to Material 3][].
 :::
 
-To catch these and other widgets in action,
-check out the [Material 3 demo][] web app.
+Para ver esses e outros widgets em ação,
+confira o aplicativo web [Material 3 demo][].
 
 [Material 3]: https://m3.material.io/get-started
 [Migrate to Material 3]: /release/breaking-changes/material-3-migration
@@ -29,8 +30,8 @@ check out the [Material 3 demo][] web app.
 
 {% render docs/catalog-page-material.md, categoryName:"Material components", catalog:catalog %}
 
-Find more widgets in the [Material 2 widget catalog][]
-and other categories of the [widget catalog][].
+Encontre mais widgets no [catálogo de widgets Material 2][Material 2 widget catalog]
+e em outras categorias do [catálogo de widgets][widget catalog].
 
 [Material 2 widget catalog]: /ui/widgets/material2
 [widget catalog]: /ui/widgets

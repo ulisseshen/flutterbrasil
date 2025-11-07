@@ -1,25 +1,26 @@
 ---
-title: Fade in images with a placeholder
-description: How to fade images into view.
+title: Fazer fade in de images com um placeholder
+description: Como fazer fade de images.
+ia-translate: true
 ---
 
 <?code-excerpt path-base="cookbook/images/fading_in_images"?>
 
-When displaying images using the default `Image` widget,
-you might notice they simply pop onto the screen as they're loaded.
-This might feel visually jarring to your users.
+Ao exibir images usando o widget padrão `Image`,
+você pode notar que elas simplesmente aparecem na tela conforme são carregadas.
+Isso pode parecer visualmente perturbador para seus usuários.
 
-Instead, wouldn't it be nice to display a placeholder at first,
-and images would fade in as they're loaded? Use the
-[`FadeInImage`][] widget for exactly this purpose.
+Em vez disso, não seria legal exibir um placeholder primeiro,
+e as images fariam fade in conforme são carregadas? Use o
+widget [`FadeInImage`][] exatamente para esse propósito.
 
-`FadeInImage` works with images of any type: in-memory, local assets,
-or images from the internet.
+`FadeInImage` funciona com images de qualquer tipo: in-memory, assets locais,
+ou images da internet.
 
 ## In-Memory
 
-In this example, use the [`transparent_image`][]
-package for a simple transparent placeholder.
+Neste exemplo, use o pacote [`transparent_image`][]
+para um placeholder transparente simples.
 
 <?code-excerpt "lib/memory_main.dart (MemoryNetwork)" replace="/^child\: //g"?>
 ```dart
@@ -29,7 +30,7 @@ FadeInImage.memoryNetwork(
 ),
 ```
 
-### Complete example
+### Exemplo completo
 
 <?code-excerpt "lib/memory_main.dart"?>
 ```dart
@@ -72,11 +73,11 @@ class MyApp extends StatelessWidget {
 
 ![Fading In Image Demo](/assets/images/docs/cookbook/fading-in-images.gif){:.site-mobile-screenshot}
 
-## From asset bundle
+## Do asset bundle
 
-You can also consider using local assets for placeholders.
-First, add the asset to the project's `pubspec.yaml` file
-(for more details, see [Adding assets and images][]):
+Você também pode considerar usar assets locais para placeholders.
+Primeiro, adicione o asset ao arquivo `pubspec.yaml` do projeto
+(para mais detalhes, veja [Adding assets and images][]):
 
 ```yaml diff
   flutter:
@@ -84,7 +85,7 @@ First, add the asset to the project's `pubspec.yaml` file
 +     - assets/loading.gif
 ```
 
-Then, use the [`FadeInImage.assetNetwork()`][] constructor:
+Então, use o construtor [`FadeInImage.assetNetwork()`][]:
 
 <?code-excerpt "lib/asset_main.dart (AssetNetwork)" replace="/^child\: //g"?>
 ```dart
@@ -94,7 +95,7 @@ FadeInImage.assetNetwork(
 ),
 ```
 
-### Complete example
+### Exemplo completo
 
 <?code-excerpt "lib/asset_main.dart"?>
 ```dart

@@ -1,37 +1,38 @@
 ---
-title: Handle changes to a text field
-description: How to detect changes to a text field.
+title: Lidar com mudanças em um text field
+description: Como detectar mudanças em um text field.
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
+ia-translate: true
 ---
 
 <?code-excerpt path-base="cookbook/forms/text_field_changes/"?>
 
-In some cases, it's useful to run a callback function every time the text
-in a text field changes. For example, you might want to build a search
-screen with autocomplete functionality where you want to update the
-results as the user types.
+Em alguns casos, é útil executar uma função de callback toda vez que o texto
+em um text field muda. Por exemplo, você pode querer construir uma tela de busca
+com funcionalidade de autocompletar onde você quer atualizar os
+resultados conforme o usuário digita.
 
-How do you run a callback function every time the text changes?
-With Flutter, you have two options:
+Como executar uma função de callback toda vez que o texto muda?
+Com Flutter, você tem duas opções:
 
-  1. Supply an `onChanged()` callback to a `TextField` or a `TextFormField`.
-  2. Use a `TextEditingController`.
+  1. Fornecer um callback `onChanged()` para um `TextField` ou um `TextFormField`.
+  2. Usar um `TextEditingController`.
 
-## 1. Supply an `onChanged()` callback to a `TextField` or a `TextFormField`
+## 1. Fornecer um callback `onChanged()` para um `TextField` ou um `TextFormField`
 
-The simplest approach is to supply an [`onChanged()`][] callback to a
-[`TextField`][] or a [`TextFormField`][].
-Whenever the text changes, the callback is invoked.
+A abordagem mais simples é fornecer um callback [`onChanged()`][] para um
+[`TextField`][] ou um [`TextFormField`][].
+Sempre que o texto muda, o callback é invocado.
 
-In this example, print the current value and length of the text field 
-to the console every time the text changes.
+Neste exemplo, imprima o valor atual e o comprimento do text field
+no console toda vez que o texto mudar.
 
-It's important to use [characters][] when dealing with user input,
-as text may contain complex characters.
-This ensures that every character is counted correctly
-as they appear to the user.
+É importante usar [characters][] ao lidar com entrada de usuário,
+pois o texto pode conter caracteres complexos.
+Isso garante que cada caractere seja contado corretamente
+como aparece para o usuário.
 
 <?code-excerpt "lib/main.dart (TextField1)"?>
 ```dart
@@ -42,23 +43,23 @@ TextField(
 ),
 ```
 
-## 2. Use a `TextEditingController`
+## 2. Usar um `TextEditingController`
 
-A more powerful, but more elaborate approach, is to supply a
-[`TextEditingController`][] as the [`controller`][]
-property of the `TextField` or a `TextFormField`.
+Uma abordagem mais poderosa, mas mais elaborada, é fornecer um
+[`TextEditingController`][] como propriedade [`controller`][]
+do `TextField` ou um `TextFormField`.
 
-To be notified when the text changes, listen to the controller
-using the [`addListener()`][] method using the following steps:
+Para ser notificado quando o texto muda, escute o controller
+usando o método [`addListener()`][] com os seguintes passos:
 
-  1. Create a `TextEditingController`.
-  2. Connect the `TextEditingController` to a text field.
-  3. Create a function to print the latest value.
-  4. Listen to the controller for changes.
+  1. Criar um `TextEditingController`.
+  2. Conectar o `TextEditingController` a um text field.
+  3. Criar uma função para imprimir o último valor.
+  4. Escutar o controller para mudanças.
 
-### Create a `TextEditingController`
+### Criar um `TextEditingController`
 
-Create a `TextEditingController`:
+Crie um `TextEditingController`:
 
 <?code-excerpt "lib/main_step1.dart (Step1)" remove="return Container();"?>
 ```dart
@@ -93,16 +94,16 @@ class _MyCustomFormState extends State<MyCustomForm> {
 ```
 
 :::note
-Remember to dispose of the `TextEditingController` when it's no
-longer needed. This ensures that you discard any resources used
-by the object.
+Lembre-se de descartar o `TextEditingController` quando ele não for
+mais necessário. Isso garante que você descarte quaisquer recursos usados
+pelo objeto.
 :::
 
-### Connect the `TextEditingController` to a text field
+### Conectar o `TextEditingController` a um text field
 
-Supply the `TextEditingController` to either a `TextField`
-or a `TextFormField`. Once you wire these two classes together,
-you can begin listening for changes to the text field.
+Forneça o `TextEditingController` para um `TextField`
+ou um `TextFormField`. Uma vez que você conecta essas duas classes,
+você pode começar a escutar mudanças no text field.
 
 <?code-excerpt "lib/main.dart (TextField2)"?>
 ```dart
@@ -111,11 +112,11 @@ TextField(
 ),
 ```
 
-### Create a function to print the latest value
+### Criar uma função para imprimir o último valor
 
-You need a function to run every time the text changes.
-Create a method in the `_MyCustomFormState` class that prints
-out the current value of the text field.
+Você precisa de uma função para executar toda vez que o texto muda.
+Crie um método na classe `_MyCustomFormState` que imprime
+o valor atual do text field.
 
 <?code-excerpt "lib/main.dart (printLatestValue)"?>
 ```dart
@@ -125,15 +126,15 @@ void _printLatestValue() {
 }
 ```
 
-### Listen to the controller for changes
+### Escutar o controller para mudanças
 
-Finally, listen to the `TextEditingController` and call the
-`_printLatestValue()` method when the text changes. Use the
-[`addListener()`][] method for this purpose.
+Finalmente, escute o `TextEditingController` e chame o
+método `_printLatestValue()` quando o texto mudar. Use o
+método [`addListener()`][] para este propósito.
 
-Begin listening for changes when the
-`_MyCustomFormState` class is initialized,
-and stop listening when the `_MyCustomFormState` is disposed.
+Comece a escutar mudanças quando a
+classe `_MyCustomFormState` for inicializada,
+e pare de escutar quando a `_MyCustomFormState` for descartada.
 
 <?code-excerpt "lib/main.dart (init-state)"?>
 ```dart
@@ -157,7 +158,7 @@ void dispose() {
 }
 ```
 
-## Interactive example
+## Exemplo interativo
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter text field change hands-on example in DartPad" run="true"

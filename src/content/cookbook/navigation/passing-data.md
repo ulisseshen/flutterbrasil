@@ -1,33 +1,34 @@
 ---
-title: Send data to a new screen
-description: How to pass data to a new route.
+title: Enviar dados para uma nova tela
+description: Como passar dados para uma nova rota.
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
+ia-translate: true
 ---
 
 <?code-excerpt path-base="cookbook/navigation/passing_data"?>
 
-Often, you not only want to navigate to a new screen,
-but also pass data to the screen as well.
-For example, you might want to pass information about
-the item that's been tapped.
+Frequentemente, você não quer apenas navegar para uma nova tela,
+mas também passar dados para a tela.
+Por exemplo, você pode querer passar informações sobre
+o item que foi tocado.
 
-Remember: Screens are just widgets.
-In this example, create a list of todos.
-When a todo is tapped, navigate to a new screen (widget) that
-displays information about the todo.
-This recipe uses the following steps:
+Lembre-se: Telas são apenas widgets.
+Neste exemplo, crie uma lista de todos.
+Quando um todo é tocado, navegue para uma nova tela (widget) que
+exibe informações sobre o todo.
+Esta receita usa os seguintes passos:
 
-  1. Define a todo class.
-  2. Display a list of todos.
-  3. Create a detail screen that can display information about a todo.
-  4. Navigate and pass data to the detail screen.
+  1. Definir uma classe todo.
+  2. Exibir uma lista de todos.
+  3. Criar uma tela de detalhes que pode exibir informações sobre um todo.
+  4. Navegar e passar dados para a tela de detalhes.
 
-## 1. Define a todo class
+## 1. Definir uma classe todo
 
-First, you need a simple way to represent todos. For this example,
-create a class that contains two pieces of data: the title and description.
+Primeiro, você precisa de uma maneira simples de representar todos. Para este exemplo,
+crie uma classe que contém dois pedaços de dados: o título e a descrição.
 
 <?code-excerpt "lib/main.dart (Todo)"?>
 ```dart
@@ -39,14 +40,14 @@ class Todo {
 }
 ```
 
-## 2. Create a list of todos
+## 2. Criar uma lista de todos
 
-Second, display a list of todos. In this example, generate
-20 todos and show them using a ListView.
-For more information on working with lists,
-see the [Use lists][] recipe.
+Segundo, exiba uma lista de todos. Neste exemplo, gere
+20 todos e mostre-os usando um ListView.
+Para mais informações sobre como trabalhar com listas,
+veja a receita [Use lists][].
 
-### Generate the list of todos
+### Gerar a lista de todos
 
 <?code-excerpt "lib/main.dart (Generate)" replace="/^todos:/final todos =/g/^\),$/);/g"?>
 ```dart
@@ -59,7 +60,7 @@ final todos = List.generate(
 );
 ```
 
-### Display the list of todos using a ListView
+### Exibir a lista de todos usando um ListView
 
 <?code-excerpt "lib/main_todoscreen.dart (ListViewBuilder)" replace="/^body: //g;/^\),$/)/g"?>
 ```dart
@@ -73,18 +74,18 @@ ListView.builder(
 )
 ```
 
-So far, so good.
-This generates 20 todos and displays them in a ListView.
+Até agora, tudo bem.
+Isso gera 20 todos e os exibe em um ListView.
 
-## 3. Create a Todo screen to display the list
+## 3. Criar uma tela Todo para exibir a lista
 
-For this, we create a `StatelessWidget`. We call it `TodosScreen`.
-Since the contents of this page won't change during runtime,
-we'll have to require the list
-of todos within the scope of this widget.
+Para isso, criamos um `StatelessWidget`. Chamamos de `TodosScreen`.
+Como o conteúdo desta página não mudará durante a execução,
+teremos que exigir a lista
+de todos dentro do escopo deste widget.
 
-We pass in our `ListView.builder` as body of the widget we're returning to `build()`.
-This'll render the list on to the screen for you to get going!
+Passamos nosso `ListView.builder` como body do widget que estamos retornando para `build()`.
+Isso renderizará a lista na tela para você começar!
 
 <?code-excerpt "lib/main_todoscreen.dart (TodosScreen)"?>
 ```dart
@@ -114,17 +115,17 @@ class TodosScreen extends StatelessWidget {
 }
 ```
 
-With Flutter's default styling, you're good to go without sweating about 
-things that you'd like to do later on!
+Com o estilo padrão do Flutter, você pode começar sem se preocupar com
+coisas que você gostaria de fazer mais tarde!
 
-## 4. Create a detail screen to display information about a todo
+## 4. Criar uma tela de detalhes para exibir informações sobre um todo
 
-Now, create the second screen. The title of the screen contains the
-title of the todo, and the body of the screen shows the description.
+Agora, crie a segunda tela. O título da tela contém o
+título do todo, e o corpo da tela mostra a descrição.
 
-Since the detail screen is a normal `StatelessWidget`,
-require the user to enter a `Todo` in the UI.
-Then, build the UI using the given todo.
+Como a tela de detalhes é um `StatelessWidget` normal,
+exija que o usuário insira um `Todo` na UI.
+Em seguida, construa a UI usando o todo fornecido.
 
 <?code-excerpt "lib/main.dart (detail)"?>
 ```dart
@@ -151,16 +152,16 @@ class DetailScreen extends StatelessWidget {
 }
 ```
 
-## 5. Navigate and pass data to the detail screen
+## 5. Navegar e passar dados para a tela de detalhes
 
-With a `DetailScreen` in place,
-you're ready to perform the Navigation.
-In this example, navigate to the `DetailScreen` when a user
-taps a todo in the list. Pass the todo to the `DetailScreen`.
+Com um `DetailScreen` no lugar,
+você está pronto para realizar a navegação.
+Neste exemplo, navegue para o `DetailScreen` quando um usuário
+toca em um todo na lista. Passe o todo para o `DetailScreen`.
 
-To capture the user's tap in the `TodosScreen`, write an [`onTap()`][]
-callback for the `ListTile` widget. Within the `onTap()` callback,
-use the [`Navigator.push()`][] method.
+Para capturar o toque do usuário no `TodosScreen`, escreva um callback [`onTap()`][]
+para o widget `ListTile`. Dentro do callback `onTap()`,
+use o método [`Navigator.push()`][].
 
 <?code-excerpt "lib/main.dart (builder)"?>
 ```dart
@@ -185,7 +186,7 @@ body: ListView.builder(
 ),
 ```
 
-### Interactive example
+### Exemplo interativo
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter passing data hands-on example in DartPad" run="true"
@@ -272,13 +273,13 @@ class DetailScreen extends StatelessWidget {
 }
 ```
 
-## Alternatively, pass the arguments using RouteSettings
+## Alternativamente, passe os argumentos usando RouteSettings
 
-Repeat the first two steps.
+Repita os dois primeiros passos.
 
-### Create a detail screen to extract the arguments
+### Criar uma tela de detalhes para extrair os argumentos
 
-Next, create a detail screen that extracts and displays the title and description from the `Todo`. To access the `Todo`, use the [`ModalRoute.of()`][] method. This method returns the current route with the arguments.
+Em seguida, crie uma tela de detalhes que extrai e exibe o título e a descrição do `Todo`. Para acessar o `Todo`, use o método [`ModalRoute.of()`][]. Este método retorna a rota atual com os argumentos.
 
 <?code-excerpt "lib/main_routesettings.dart (DetailScreen)"?>
 ```dart
@@ -303,12 +304,12 @@ class DetailScreen extends StatelessWidget {
 }
 ```
 
-### Navigate and pass the arguments to the detail screen
+### Navegar e passar os argumentos para a tela de detalhes
 
-Finally, navigate to the `DetailScreen` when a user taps
-a `ListTile` widget using `Navigator.push()`.
-Pass the arguments as part of the [`RouteSettings`][].
-The `DetailScreen` extracts these arguments.
+Finalmente, navegue para o `DetailScreen` quando um usuário toca
+em um widget `ListTile` usando `Navigator.push()`.
+Passe os argumentos como parte do [`RouteSettings`][].
+O `DetailScreen` extrai esses argumentos.
 
 <?code-excerpt "lib/main_routesettings.dart (builder)" replace="/^body: //g;/^\),$/)/g"?>
 ```dart
@@ -338,7 +339,7 @@ ListView.builder(
 )
 ```
 
-### Complete example
+### Exemplo completo
 
 <?code-excerpt "lib/main_routesettings.dart"?>
 ```dart

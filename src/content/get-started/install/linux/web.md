@@ -1,12 +1,13 @@
 ---
-title: Start building Flutter web apps on Linux
-description: Configure your system to develop Flutter web apps on Linux.
-short-title: Make web apps
+title: Comece a construir apps Flutter web no Linux
+description: Configure seu sistema para desenvolver apps Flutter web no Linux.
+short-title: Crie apps web
+ia-translate: true
 target: Web
 config: LinuxWeb
 devos: Linux
 next:
-  title: Create your first app
+  title: Crie seu primeiro app
   path: /get-started/codelab
 ---
 

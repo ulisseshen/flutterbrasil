@@ -1,19 +1,20 @@
 ---
-title: Create a horizontal list
-description: How to implement a horizontal list.
+title: Criar uma lista horizontal
+description: Como implementar uma lista horizontal.
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
+ia-translate: true
 ---
 
 <?code-excerpt path-base="cookbook/lists/horizontal_list"?>
 
-You might want to create a list that scrolls
-horizontally rather than vertically.
-The [`ListView`][] widget supports horizontal lists.
+Você pode querer criar uma lista que role
+horizontalmente em vez de verticalmente.
+O widget [`ListView`][] suporta listas horizontais.
 
-Use the standard `ListView` constructor, passing in a horizontal
-`scrollDirection`, which overrides the default vertical direction.
+Use o construtor padrão `ListView`, passando um
+`scrollDirection` horizontal, que substitui a direção vertical padrão.
 
 <?code-excerpt "lib/main.dart (ListView)" replace="/^child\: //g"?>
 ```dart
@@ -45,16 +46,16 @@ ListView(
 ),
 ```
 
-## Interactive example
+## Exemplo interativo
 
-:::note Desktop and web note
-This example works in the browser and on the desktop.
-However, as this list scrolls on the horizontal axis
-(left to right or right to left),
-hold <kbd>Shift</kbd> while using the mouse scroll wheel to scroll the list.
+:::note Nota para Desktop e web
+Este exemplo funciona no navegador e no desktop.
+No entanto, como esta lista rola no eixo horizontal
+(esquerda para direita ou direita para esquerda),
+segure <kbd>Shift</kbd> enquanto usa a roda de rolagem do mouse para rolar a lista.
 
-To learn more, read the [breaking change][] page on the
-default drag for scrolling devices.
+Para saber mais, leia a página de [breaking change][] sobre o
+drag padrão para dispositivos de rolagem.
 :::
 
 <?code-excerpt "lib/main.dart"?>

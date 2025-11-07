@@ -1,7 +1,8 @@
 ---
-title: Write your first Flutter app
-description: How to write an app in Flutter.
-short-title: Write your first app
+ia-translate: true
+title: Escreva seu primeiro app Flutter
+description: Como escrever um app em Flutter.
+short-title: Escreva seu primeiro app
 prev:
   title: Set up Flutter
   path: /get-started/install
@@ -11,11 +12,11 @@ next:
 toc: false
 ---
 
-You are now ready to start the "First Flutter app" codelab.
-In about an hour and a half,
-you will learn the basics of Flutter
-by creating an app
-that works on mobile, desktop, and web.
+Você está pronto para começar o codelab "Primeiro app Flutter".
+Em cerca de uma hora e meia,
+você aprenderá o básico de Flutter
+criando um app
+que funciona em dispositivos móveis, desktop e web.
 
 <div class="juicy-button-container">
   <img src="/assets/images/docs/get-started/codelab-goal-background.jpg" alt="The illustration of the initial and the resulting app that you will build in this codelab.">
@@ -28,21 +29,22 @@ that works on mobile, desktop, and web.
   <a class="btn btn-primary"
      target="_blank"
      href="https://codelabs.developers.google.com/codelabs/flutter-codelab-first">
-    &#9654;&nbsp; Start codelab
+    &#9654;&nbsp; Iniciar codelab
   </a>
 
 </div>
 
 :::tip
-The codelab above walks you through writing your first Flutter
-app for all platforms &mdash; mobile, desktop and web.
-You might prefer to take
-[another codelab written specifically for the web][codelab-web].
+O codelab acima guia você através da escrita do seu primeiro app Flutter
+para todas as plataformas &mdash; mobile, desktop e web.
+Você pode preferir fazer
+[outro codelab escrito especificamente para web][codelab-web].
 :::
 
 [codelab-web]: /get-started/codelab-web
 
-If you prefer an instructor-led version of this codelab,
-check out the following workshop:
+Se você prefere uma versão guiada por instrutor deste codelab,
+confira o seguinte workshop:
 
 {% ytEmbed '8sAyPDLorek', 'Building your first Flutter app - with a Codelab!' %}
+

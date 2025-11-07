@@ -1,40 +1,41 @@
 ---
-title: Handle scrolling
-description: How to handle scrolling in a widget test.
+title: Lidar com rolagem
+description: Como lidar com rolagem em um teste de widget.
+ia-translate: true
 ---
 
 <?code-excerpt path-base="cookbook/testing/widget/scrolling/"?>
 
-Many apps feature lists of content,
-from email clients to music apps and beyond.
-To verify that lists contain the expected content
-using widget tests,
-you need a way to scroll through lists to search for particular items.
+Muitos aplicativos apresentam listas de conteúdo,
+de clientes de e-mail a aplicativos de música e além.
+Para verificar que listas contêm o conteúdo esperado
+usando testes de widget,
+você precisa de uma maneira de rolar através de listas para procurar por itens específicos.
 
-To scroll through lists via integration tests,
-use the methods provided by the [`WidgetTester`][] class,
-which is included in the [`flutter_test`][] package:
+Para rolar através de listas via testes de integração,
+use os métodos fornecidos pela classe [`WidgetTester`][],
+que está incluída no pacote [`flutter_test`][]:
 
-In this recipe, learn how to scroll through a list of items to
-verify a specific widget is being displayed,
-and the pros and cons of different approaches. 
+Nesta receita, aprenda como rolar através de uma lista de itens para
+verificar que um widget específico está sendo exibido,
+e os prós e contras de diferentes abordagens.
 
-This recipe uses the following steps:
+Esta receita usa as seguintes etapas:
 
-1. Create an app with a list of items.
-2. Write a test that scrolls through the list.
-3. Run the test.
+1. Criar um aplicativo com uma lista de itens.
+2. Escrever um teste que rola através da lista.
+3. Executar o teste.
 
-## 1. Create an app with a list of items
+## 1. Criar um aplicativo com uma lista de itens
 
-This recipe builds an app that shows a long list of items.
-To keep this recipe focused on testing, use the app created in the
-[Work with long lists][] recipe.
-If you're unsure of how to work with long lists,
-see that recipe for an introduction.
+Esta receita cria um aplicativo que mostra uma longa lista de itens.
+Para manter esta receita focada em testes, use o aplicativo criado na
+receita [Work with long lists][].
+Se você não tem certeza de como trabalhar com listas longas,
+consulte aquela receita para uma introdução.
 
-Add keys to the widgets you want to interact with
-inside the integration tests.
+Adicione keys aos widgets com os quais você quer interagir
+dentro dos testes de integração.
 
 <?code-excerpt "lib/main.dart"?>
 ```dart
@@ -85,22 +86,22 @@ class MyApp extends StatelessWidget {
 ```
 
 
-## 2. Write a test that scrolls through the list
+## 2. Escrever um teste que rola através da lista
 
-Now, you can write a test. In this example, scroll through the list of items and
-verify that a particular item exists in the list. The [`WidgetTester`][] class
-provides the [`scrollUntilVisible()`][] method, which scrolls through a list
-until a specific widget is visible. This is useful because the height of the
-items in the list can change depending on the device.
+Agora, você pode escrever um teste. Neste exemplo, role através da lista de itens e
+verifique que um item específico existe na lista. A classe [`WidgetTester`][]
+fornece o método [`scrollUntilVisible()`][], que rola através de uma lista
+até que um widget específico esteja visível. Isso é útil porque a altura dos
+itens na lista pode mudar dependendo do dispositivo.
 
-Rather than assuming that you know the height of all the items
-in a list, or that a particular widget is rendered on all devices,
-the `scrollUntilVisible()` method repeatedly scrolls through
-a list of items until it finds what it's looking for.
+Ao invés de assumir que você conhece a altura de todos os itens
+em uma lista, ou que um widget específico é renderizado em todos os dispositivos,
+o método `scrollUntilVisible()` rola repetidamente através de
+uma lista de itens até encontrar o que está procurando.
 
-The following code shows how to use the `scrollUntilVisible()` method
-to look through the list for a particular item. This code lives in a
-file called `test/widget_test.dart`.
+O código a seguir mostra como usar o método `scrollUntilVisible()`
+para procurar através da lista por um item específico. Este código fica em um
+arquivo chamado `test/widget_test.dart`.
 
 <?code-excerpt "test/widget_test.dart (ScrollWidgetTest)"?>
 ```dart
@@ -140,9 +141,9 @@ void main() {
 }
 ```
 
-## 3. Run the test
+## 3. Executar o teste
 
-Run the test using the following command from the root of the project:
+Execute o teste usando o seguinte comando a partir da raiz do projeto:
 
 ```console
 flutter test test/widget_test.dart

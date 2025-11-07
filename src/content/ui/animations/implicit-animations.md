@@ -1,42 +1,43 @@
 ---
-title: Implicit animations
-description: Where to find more information on using implicit animations in Flutter.
+title: Animações implícitas
+description: Onde encontrar mais informações sobre o uso de animações implícitas no Flutter.
+ia-translate: true
 ---
 
-With Flutter's [animation library][],
-you can add motion and create visual effects
-for the widgets in your UI.
-One part of the library is an assortment of widgets
-that manage animations for you.
-These widgets are collectively referred to as _implicit animations_,
-or _implicitly animated widgets_, deriving their name from the
-[`ImplicitlyAnimatedWidget`][] class that they implement.
-The following set of resources provide many ways to learn
-about implicit animations in Flutter.
+Com a [animation library][] do Flutter,
+você pode adicionar movimento e criar efeitos visuais
+para os widgets na sua UI.
+Uma parte da biblioteca é um conjunto de widgets
+que gerenciam animações para você.
+Esses widgets são coletivamente chamados de _animações implícitas_,
+ou _widgets implicitamente animados_, derivando seu nome da
+classe [`ImplicitlyAnimatedWidget`][] que eles implementam.
+O conjunto de recursos a seguir fornece muitas maneiras de aprender
+sobre animações implícitas no Flutter.
 
-## Documentation
+## Documentação
 
 [Implicit animations codelab][]
-: Jump right into the code!
-  This codelab uses interactive examples
-  and step-by-step instructions to teach you
-  how to use implicit animations.
+: Mergulhe direto no código!
+  Este codelab usa exemplos interativos
+  e instruções passo a passo para ensinar você
+  a usar animações implícitas.
 
 [`AnimatedContainer` sample][]
-: A step-by-step recipe from the [Flutter cookbook][]
-  for using the [`AnimatedContainer`][]
-  implicitly animated widget.
+: Uma receita passo a passo do [Flutter cookbook][]
+  para usar o widget implicitamente animado
+  [`AnimatedContainer`][].
 
 [`ImplicitlyAnimatedWidget`][] API page
-: All implicit animations extend the `ImplicitlyAnimatedWidget` class.
+: Todas as animações implícitas estendem a classe `ImplicitlyAnimatedWidget`.
 
-## Flutter in Focus videos
+## Vídeos Flutter in Focus
 
-Flutter in Focus videos feature 5-10 minute tutorials
-with real code that cover techniques
-that every Flutter dev needs to know from top to bottom.
-The following videos cover topics
-that are relevant to implicit animations.
+Os vídeos Flutter in Focus apresentam tutoriais de 5 a 10 minutos
+com código real que cobrem técnicas
+que todo desenvolvedor Flutter precisa saber de cima a baixo.
+Os vídeos a seguir cobrem tópicos
+relevantes para animações implícitas.
 
 {% ytEmbed 'IVTjpW3W33s', 'Flutter implicit animation basics' %}
 
@@ -44,20 +45,20 @@ that are relevant to implicit animations.
 
 ## The Boring Show
 
-Watch the Boring Show to follow Google Engineers build apps
-from scratch in Flutter. The following episode covers
-using implicit animations in a news aggregator app.
+Assista ao Boring Show para acompanhar engenheiros do Google construindo aplicativos
+do zero no Flutter. O episódio a seguir cobre
+o uso de animações implícitas em um aplicativo agregador de notícias.
 
 {% ytEmbed '8ehlWchLVlQ', 'Adding implicit animations to a news application' %}
 
-## Widget of the Week videos
+## Vídeos Widget of the Week
 
-A weekly series of short animated videos each showing
-the important features of one particular widget.
-In about 60 seconds, you'll see real code for each
-widget with a demo about how it works.
-The following Widget of the Week videos cover
-implicitly animated widgets:
+Uma série semanal de vídeos animados curtos, cada um mostrando
+os recursos importantes de um widget específico.
+Em cerca de 60 segundos, você verá código real para cada
+widget com uma demonstração de como ele funciona.
+Os vídeos Widget of the Week a seguir cobrem
+widgets implicitamente animados:
 
 {% assign animated-widgets = 'AnimatedOpacity, AnimatedPadding, AnimatedPositioned, AnimatedSwitcher' | split: ", " %}
 {% assign animated-urls = 'QZAvjqOqiLY, PY2m0fhGNz4, hC3s2YdtWt8, 2W7POjFb88g' | split: ", " %}

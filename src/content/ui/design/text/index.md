@@ -1,6 +1,7 @@
 ---
 layout: toc
 title: Text
-description: Content covering how to add and customize text in Flutter appw.
+description: Conteúdo cobrindo como adicionar e customizar texto em aplicativos Flutter.
 sitemap: false
+ia-translate: true
 ---

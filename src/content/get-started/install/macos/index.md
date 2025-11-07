@@ -1,7 +1,8 @@
 ---
-title: Choose your first type of app
-description: Configure your system to develop Flutter on macOS.
+title: Escolha seu primeiro tipo de app
+description: Configure seu sistema para desenvolver Flutter no macOS.
 short-title: macOS
+ia-translate: true
 target-list: [iOS, Android, Web, Desktop]
 js: [{url: '/assets/js/temp/macos-install-redirector.js'}]
 ---
@@ -48,9 +49,9 @@ js: [{url: '/assets/js/temp/macos-install-redirector.js'}]
 {% endfor %}
 </div>
 
-Your choice informs which parts of Flutter tooling you configure
-to run your first Flutter app.
-You can set up additional platforms later.
-_If you don't have a preference, choose **{{rec-target}}**._
+Sua escolha determina quais partes das ferramentas Flutter você configura
+para executar seu primeiro app Flutter.
+Você pode configurar plataformas adicionais mais tarde.
+_Se você não tem preferência, escolha **{{rec-target}}**._
 
 {% render docs/china-notice.md %}

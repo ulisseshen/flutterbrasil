@@ -1,46 +1,47 @@
 ---
-title: Animate a page route transition
-description: How to animate from one page to another.
+title: Animar uma transição de rota de página
+description: Como animar de uma página para outra.
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
+ia-translate: true
 ---
 
 <?code-excerpt path-base="cookbook/animation/page_route_animation/"?>
 
-A design language, such as Material, defines standard behaviors when
-transitioning between routes (or screens). Sometimes, though, a custom
-transition between screens can make an app more unique. To help,
-[`PageRouteBuilder`][] provides an [`Animation`] object.
-This `Animation` can be used with [`Tween`][] and
-[`Curve`][] objects to customize the transition animation.
-This recipe shows how to transition between
-routes by animating the new route into view from
-the bottom of the screen.
+Uma linguagem de design, como Material, define comportamentos padrão ao
+fazer transições entre rotas (ou telas). Às vezes, porém, uma transição
+personalizada entre telas pode tornar um app mais único. Para ajudar,
+[`PageRouteBuilder`][] fornece um objeto [`Animation`].
+Este `Animation` pode ser usado com [`Tween`][] e
+objetos [`Curve`][] para personalizar a animação de transição.
+Esta receita mostra como fazer transições entre
+rotas animando a nova rota para aparecer
+da parte inferior da tela.
 
-To create a custom page route transition, this recipe uses the following steps:
+Para criar uma transição de rota de página personalizada, esta receita usa os seguintes passos:
 
-1. Set up a PageRouteBuilder
-2. Create a `Tween`
-3. Add an `AnimatedWidget`
-4. Use a `CurveTween`
-5. Combine the two `Tween`s
+1. Configurar um PageRouteBuilder
+2. Criar um `Tween`
+3. Adicionar um `AnimatedWidget`
+4. Usar um `CurveTween`
+5. Combinar os dois `Tween`s
 
-## 1. Set up a PageRouteBuilder
+## 1. Configurar um PageRouteBuilder
 
-To start, use a [`PageRouteBuilder`][] to create a [`Route`][].
-`PageRouteBuilder` has two callbacks, one to build the content of the route
-(`pageBuilder`), and one to build the route's transition (`transitionsBuilder`).
+Para começar, use um [`PageRouteBuilder`][] para criar uma [`Route`][].
+`PageRouteBuilder` tem dois callbacks, um para construir o conteúdo da rota
+(`pageBuilder`), e um para construir a transição da rota (`transitionsBuilder`).
 
 :::note
-The `child` parameter in transitionsBuilder is the widget returned from
-pageBuilder. The `pageBuilder` function is only called the first time the
-route is built. The framework can avoid extra work because `child` stays the
-same throughout the transition.
+O parâmetro `child` em transitionsBuilder é o widget retornado de
+pageBuilder. A função `pageBuilder` é chamada apenas na primeira vez que a
+rota é construída. O framework pode evitar trabalho extra porque `child` permanece o
+mesmo durante a transição.
 :::
 
-The following example creates two routes: a home route with a "Go!" button, and
-a second route titled "Page 2".
+O exemplo a seguir cria duas rotas: uma rota inicial com um botão "Go!", e
+uma segunda rota intitulada "Page 2".
 
 <?code-excerpt "lib/starter.dart (Starter)"?>
 ```dart
@@ -97,18 +98,18 @@ class Page2 extends StatelessWidget {
 }
 ```
 
-## 2. Create a Tween
+## 2. Criar um Tween
 
-To make the new page animate in from the bottom, it should animate from
-`Offset(0,1)` to `Offset(0, 0)` (usually defined using the `Offset.zero`
-constructor). In this case, the Offset is a 2D vector for the
-['FractionalTranslation'][] widget.
-Setting the `dy` argument to 1 represents a vertical translation one
-full height of the page.
+Para fazer a nova página animar da parte inferior, ela deve animar de
+`Offset(0,1)` para `Offset(0, 0)` (geralmente definido usando o construtor `Offset.zero`).
+Neste caso, o Offset é um vetor 2D para o widget
+['FractionalTranslation'][].
+Definir o argumento `dy` para 1 representa uma translação vertical de
+uma altura completa da página.
 
-The `transitionsBuilder` callback has an `animation` parameter. It's an
-`Animation<double>` that produces values between 0 and 1. Convert the
-`Animation<double>` into an `Animation<Offset>` using a Tween:
+O callback `transitionsBuilder` tem um parâmetro `animation`. É um
+`Animation<double>` que produz valores entre 0 e 1. Converta o
+`Animation<double>` em um `Animation<Offset>` usando um Tween:
 
 <?code-excerpt "lib/starter.dart (step1)"?>
 ```dart
@@ -121,15 +122,15 @@ transitionsBuilder: (context, animation, secondaryAnimation, child) {
 },
 ```
 
-## 3. Use an AnimatedWidget
+## 3. Usar um AnimatedWidget
 
-Flutter has a set of widgets extending [`AnimatedWidget`][]
-that rebuild themselves when the value of the animation changes. For instance,
-SlideTransition takes an `Animation<Offset>` and translates its child (using a
-FractionalTranslation widget) whenever the value of the animation changes.
+O Flutter tem um conjunto de widgets que estendem [`AnimatedWidget`][]
+que se reconstroem quando o valor da animação muda. Por exemplo,
+SlideTransition recebe um `Animation<Offset>` e translada seu child (usando um
+widget FractionalTranslation) sempre que o valor da animação muda.
 
-AnimatedWidget Return a [`SlideTransition`][]
-with the `Animation<Offset>` and the child widget:
+AnimatedWidget Retorne um [`SlideTransition`][]
+com o `Animation<Offset>` e o widget child:
 
 <?code-excerpt "lib/starter.dart (step2)"?>
 ```dart
@@ -146,17 +147,17 @@ transitionsBuilder: (context, animation, secondaryAnimation, child) {
 },
 ```
 
-## 4. Use a CurveTween
+## 4. Usar um CurveTween
 
-Flutter provides a selection of easing curves that
-adjust the rate of the animation over time.
-The [`Curves`][] class
-provides a predefined set of commonly used curves.
-For example, `Curves.easeOut`
-makes the animation start quickly and end slowly.
+O Flutter fornece uma seleção de curvas de aceleração que
+ajustam a taxa da animação ao longo do tempo.
+A classe [`Curves`][]
+fornece um conjunto predefinido de curvas comumente usadas.
+Por exemplo, `Curves.easeOut`
+faz a animação começar rapidamente e terminar lentamente.
 
-To use a Curve, create a new [`CurveTween`][]
-and pass it a Curve:
+Para usar uma Curve, crie um novo [`CurveTween`][]
+e passe uma Curve:
 
 <?code-excerpt "lib/starter.dart (step3)"?>
 ```dart
@@ -164,12 +165,12 @@ var curve = Curves.ease;
 var curveTween = CurveTween(curve: curve);
 ```
 
-This new Tween still produces values from 0 to 1. In the next step, it will be
-combined the `Tween<Offset>` from step 2.
+Este novo Tween ainda produz valores de 0 a 1. No próximo passo, ele será
+combinado com o `Tween<Offset>` do passo 2.
 
-## 5. Combine the two Tweens
+## 5. Combinar os dois Tweens
 
-To combine the tweens,
+Para combinar os tweens,
 use [`chain()`][]:
 
 <?code-excerpt "lib/main.dart (Tween)"?>
@@ -181,8 +182,8 @@ const curve = Curves.ease;
 var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 ```
 
-Then use this tween by passing it to `animation.drive()`. This creates a new
-`Animation<Offset>` that can be given to the `SlideTransition` widget:
+Então use este tween passando-o para `animation.drive()`. Isso cria um novo
+`Animation<Offset>` que pode ser dado ao widget `SlideTransition`:
 
 <?code-excerpt "lib/main.dart (SlideTransition)"?>
 ```dart
@@ -192,17 +193,17 @@ return SlideTransition(
 );
 ```
 
-This new Tween (or Animatable) produces `Offset` values by first evaluating the
-`CurveTween`, then evaluating the `Tween<Offset>.` When the animation runs, the
-values are computed in this order:
+Este novo Tween (ou Animatable) produz valores `Offset` primeiro avaliando o
+`CurveTween`, e então avaliando o `Tween<Offset>.` Quando a animação executa, os
+valores são computados nesta ordem:
 
-1. The animation (provided to the transitionsBuilder callback) produces values
-   from 0 to 1.
-2. The CurveTween maps those values to new values between 0 and 1 based on its
-   curve.
-3. The `Tween<Offset>` maps the `double` values to `Offset` values.
+1. A animação (fornecida ao callback transitionsBuilder) produz valores
+   de 0 a 1.
+2. O CurveTween mapeia esses valores para novos valores entre 0 e 1 com base em sua
+   curva.
+3. O `Tween<Offset>` mapeia os valores `double` para valores `Offset`.
 
-Another way to create an `Animation<Offset>` with an easing curve is to use a
+Outra maneira de criar um `Animation<Offset>` com uma curva de aceleração é usar um
 `CurvedAnimation`:
 
 <?code-excerpt "lib/starter.dart (step4)" replace="/^\},$/}/g"?>
@@ -225,7 +226,7 @@ transitionsBuilder: (context, animation, secondaryAnimation, child) {
 }
 ```
 
-## Interactive example
+## Exemplo interativo
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter page routing hands-on example in DartPad" run="true"

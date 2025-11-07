@@ -1,16 +1,17 @@
 ---
-title: Uninstall Flutter
-description: How to remove the Flutter SDK.
+title: Desinstalar o Flutter
+description: Como remover o Flutter SDK.
+ia-translate: true
 toc: false
 os-list: [Windows, macOS, Linux, ChromeOS]
 ---
 
-To remove all of Flutter from your development machine,
-delete the directories that store Flutter and its configuration files.
+Para remover todo o Flutter da sua máquina de desenvolvimento,
+delete os diretórios que armazenam o Flutter e seus arquivos de configuração.
 
-## Uninstall the Flutter SDK
+## Desinstalar o Flutter SDK
 
-Select your development platform from the following tabs.
+Selecione sua plataforma de desenvolvimento das seguintes abas.
 
 {% tabs %}
 
@@ -74,59 +75,59 @@ Select your development platform from the following tabs.
 {% endcapture %}
 {% endcase -%}
 
-This guide presumes that you installed Flutter in `{{path}}` on {{os}}.
+Este guia presume que você instalou o Flutter em `{{path}}` no {{os}}.
 
-To uninstall the SDK, remove the `flutter` directory.
+Para desinstalar o SDK, remova o diretório `flutter`.
 
 ```console
 {{prompt}} {{rm-sdk}}
 ```
 
-## Remove configuration and package directories {:.no_toc}
+## Remover diretórios de configuração e pacotes {:.no_toc}
 
-Flutter and Dart install additional directories in your home directory.
-These contain configuration files and package downloads.
-Each of the following procedures are _optional_.
+Flutter e Dart instalam diretórios adicionais no seu diretório home.
+Estes contêm arquivos de configuração e downloads de pacotes.
+Cada um dos procedimentos a seguir é _opcional_.
 
-### Remove Flutter configuration files {:.no_toc}
+### Remover arquivos de configuração do Flutter {:.no_toc}
 
-If you don't want to preserve your Flutter configuration,
-remove the following directories from your home directory.
+Se você não quer preservar sua configuração do Flutter,
+remova os seguintes diretórios do seu diretório home.
 
 ```plaintext
 {{ flutter-files | strip }}
 ```
 
-To remove these directories, run the following command.
+Para remover estes diretórios, execute o seguinte comando.
 
 ```console
 {{rm-flutter-files | strip}}
 ```
 
-### Remove Dart configuration files {:.no_toc}
+### Remover arquivos de configuração do Dart {:.no_toc}
 
-If you don't want to preserve your Dart configuration,
-remove the following directories from your home directory.
+Se você não quer preservar sua configuração do Dart,
+remova os seguintes diretórios do seu diretório home.
 
 ```plaintext
 {{ dart-files | strip}}
 ```
 
-To remove these directories, run the following command.
+Para remover estes diretórios, execute o seguinte comando.
 
 ```console
 {{rm-dart-files | strip}}
 ```
 
-### Remove pub package files {:.no_toc}
+### Remover arquivos de pacotes pub {:.no_toc}
 
 :::important
-If you want to remove Flutter but not Dart,
-don't complete this section.
+Se você quer remover o Flutter mas não o Dart,
+não complete esta seção.
 :::
 
-If you don't want to preserve your pub packages,
-remove the `.pub-cache` directory from your home directory.
+Se você não quer preservar seus pacotes pub,
+remova o diretório `.pub-cache` do seu diretório home.
 
 ```console
 {{rm-pub-dir | strip}}
@@ -142,8 +143,8 @@ remove the `.pub-cache` directory from your home directory.
 
 {% endtabs %}
 
-## Reinstall Flutter
+## Reinstalar o Flutter
 
-You can [reinstall Flutter](/get-started/install) at any time.
-If you removed the configuration directories,
-reinstalling Flutter restores them to default settings.
+Você pode [reinstalar o Flutter](/get-started/install) a qualquer momento.
+Se você removeu os diretórios de configuração,
+reinstalar o Flutter os restaura para as configurações padrão.

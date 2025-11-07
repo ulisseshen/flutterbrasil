@@ -1,6 +1,7 @@
 ---
 title: Lists
-description: A catalog of recipes for handling lists in your Flutter app.
+description: Um catálogo de receitas para lidar com lists no seu aplicativo Flutter.
+ia-translate: true
 ---
 
 {% include docs/cookbook-group-index.md %}

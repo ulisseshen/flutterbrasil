@@ -1,12 +1,13 @@
 ---
-title: Start building Flutter Android apps on ChromeOS
-description: Configure your system to develop Flutter mobile apps on ChromeOS and Android.
-short-title: ChromeOS Android development
+title: Comece a construir apps Flutter Android no ChromeOS
+description: Configure seu sistema para desenvolver apps Flutter mobile no ChromeOS e Android.
+short-title: Desenvolvimento Android no ChromeOS
+ia-translate: true
 target: Android
 config: ChromeOSAndroid
 devos: ChromeOS
 next:
-  title: Create your first app
+  title: Crie seu primeiro app
   path: /get-started/codelab
 ---
 

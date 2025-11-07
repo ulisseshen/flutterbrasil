@@ -1,6 +1,7 @@
 ---
-title: Test drive
-description: How to create a templated Flutter app and use hot reload.
+ia-translate: true
+title: Experimente
+description: Como criar um app Flutter a partir de um template e usar hot reload.
 prev:
   title: Set up Flutter
   path: /get-started/install
@@ -31,29 +32,29 @@ toc: false
    {% assign dirdl='~/Downloads/' %}
 {% endcase -%}
 
-## What you'll learn
+## O que você vai aprender
 
-1. How to create a new Flutter app from a sample template.
-1. How to run the new Flutter app.
-1. How to use "hot reload" after you make changes to the app.
+1. Como criar um novo app Flutter a partir de um template de exemplo.
+1. Como executar o novo app Flutter.
+1. Como usar "hot reload" depois de fazer mudanças no app.
 
 
-These tasks depend on which integrated development environment (IDE) you use.
+Essas tarefas dependem de qual ambiente de desenvolvimento integrado (IDE) você usa.
 
-* **Option 1** explains how to code with Visual Studio Code and
-  its Flutter extension.
+* **Opção 1** explica como programar com Visual Studio Code e
+  sua extensão Flutter.
 
-* **Option 2** explains how to code with Android Studio or IntelliJ IDEA with
-  its Flutter plugin.
+* **Opção 2** explica como programar com Android Studio ou IntelliJ IDEA com
+  seu plugin Flutter.
 
-  Flutter supports IntelliJ IDEA Community, Educational, and Ultimate editions.
+  Flutter suporta as edições Community, Educational e Ultimate do IntelliJ IDEA.
 
-* **Option 3** explains how to code with an editor of your choice and use
-  the terminal to compile and debug your code.
+* **Opção 3** explica como programar com um editor de sua escolha e usar
+  o terminal para compilar e depurar seu código.
 
-## Choose your IDE
+## Escolha sua IDE
 
-Select your preferred IDE for Flutter apps.
+Selecione sua IDE preferida para apps Flutter.
 
 {% tabs %}
 {% tab "Visual Studio Code" %}
@@ -72,3 +73,4 @@ Select your preferred IDE for Flutter apps.
 
 {% endtab %}
 {% endtabs %}
+

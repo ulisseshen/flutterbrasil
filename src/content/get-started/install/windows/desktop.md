@@ -1,12 +1,13 @@
 ---
-title: Start building Flutter native desktop apps on Windows
-description: Configure your system to develop Flutter desktop apps on Windows.
-short-title: Make Windows desktop apps
+title: Comece a construir apps Flutter desktop nativos no Windows
+description: Configure seu sistema para desenvolver apps Flutter desktop no Windows.
+short-title: Crie apps desktop Windows
+ia-translate: true
 target: desktop
 config: WindowsDesktop
 devos: Windows
 next:
-  title: Create your first app
+  title: Crie seu primeiro app
   path: /get-started/codelab
 ---
 

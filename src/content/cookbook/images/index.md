@@ -1,6 +1,7 @@
 ---
 title: Images
-description: A catalog of recipes for handling images in your Flutter app.
+description: Um catálogo de receitas para lidar com images no seu aplicativo Flutter.
+ia-translate: true
 ---
 
 {% include docs/cookbook-group-index.md %}

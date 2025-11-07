@@ -1,12 +1,13 @@
 ---
-title: Start building Flutter Android apps on Linux
-description: Configure your system to develop Flutter mobile apps on Linux and Android.
-short-title: Make Android apps
+title: Comece a construir apps Flutter Android no Linux
+description: Configure seu sistema para desenvolver apps Flutter mobile no Linux e Android.
+short-title: Crie apps Android
+ia-translate: true
 target: Android
 config: LinuxAndroid
 devos: Linux
 next:
-  title: Create your first app
+  title: Crie seu primeiro app
   path: /get-started/codelab
 ---
 

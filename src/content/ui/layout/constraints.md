@@ -6,6 +6,7 @@ js:
   - defer: true
     url: /assets/js/inject_dartpad.js
 show_translate: true
+ia-translate: true
 ---
 
 <?code-excerpt path-base="layout/constraints/"?>

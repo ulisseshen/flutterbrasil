@@ -1,12 +1,13 @@
 ---
-title: Start building Flutter native desktop apps on Linux
-description: Configure your system to develop Flutter desktop apps on Linux.
-short-title: Make Linux desktop apps
+title: Comece a construir apps Flutter desktop nativos no Linux
+description: Configure seu sistema para desenvolver apps Flutter desktop no Linux.
+short-title: Crie apps desktop Linux
+ia-translate: true
 target: desktop
 config: LinuxDesktop
 devos: Linux
 next:
-  title: Create your first app
+  title: Crie seu primeiro app
   path: /get-started/codelab
 ---
 

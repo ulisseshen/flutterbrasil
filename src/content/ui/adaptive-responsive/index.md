@@ -1,62 +1,63 @@
 ---
-title: Adaptive and responsive design in Flutter
+ia-translate: true
+title: Design adaptativo e responsivo no Flutter
 description: >-
-  It's important to create an app,
-  whether for mobile or web,
-  that responds to size and orientation changes
-  and maximizes the use of each platform.
-short-title: Adaptive design
+  É importante criar um app,
+  seja para mobile ou web,
+  que responda a mudanças de tamanho e orientação
+  e maximize o uso de cada plataforma.
+short-title: Design adaptativo
 ---
 
 ![List of supported platforms](/assets/images/docs/ui/adaptive-responsive/platforms.png)
 
-One of Flutter's primary goals is to create a framework
-that allows you to develop apps from a single codebase
-that look and feel great on any platform.
+Um dos principais objetivos do Flutter é criar um framework
+que permita desenvolver apps a partir de uma única base de código
+que tenham ótima aparência e funcionamento em qualquer plataforma.
 
-This means that your app might appear on screens of
-many different sizes, from a watch, to a foldable
-phone with two screens, to a high definition monitor.
-And your input device might be a physical or
-virtual keyboard, a mouse, a touchscreen, or
-any number of other devices.
+Isso significa que seu app pode aparecer em telas de
+vários tamanhos diferentes, desde um relógio até um telefone
+dobrável com duas telas, até um monitor de alta definição.
+E seu dispositivo de entrada pode ser um teclado físico ou
+virtual, um mouse, uma tela sensível ao toque ou
+qualquer número de outros dispositivos.
 
-Two terms that describe these design concepts
-are _adaptive_ and _responsive_. Ideally,
-you'd want your app to be _both_ but what,
-exactly, does this mean?
+Dois termos que descrevem esses conceitos de design
+são _adaptativo_ e _responsivo_. Idealmente,
+você gostaria que seu app fosse _ambos_, mas o que
+exatamente isso significa?
 
-## What is responsive vs adaptive?
+## O que é responsivo vs adaptativo?
 
-An easy way to think about it is that responsive design
-is about fitting the UI _into_ the space and
-adaptive design is about the UI being _usable_ in
-the space.
+Uma maneira fácil de pensar sobre isso é que o design responsivo
+se trata de encaixar a UI _no_ espaço e
+o design adaptativo se trata da UI ser _usável_ no
+espaço.
 
-So, a responsive app adjusts the placement of design
-elements to _fit_ the available space. And an
-adaptive app selects the appropriate layout and
-input devices to be usable _in_ the available space.
-For example, should a tablet UI use bottom navigation or
-side-panel navigation?
+Então, um app responsivo ajusta a posição dos elementos de design
+para _se encaixar_ no espaço disponível. E um
+app adaptativo seleciona o layout apropriado e
+dispositivos de entrada para ser usável _no_ espaço disponível.
+Por exemplo, uma UI de tablet deve usar navegação inferior ou
+navegação por painel lateral?
 
 :::note
-Often adaptive and responsive concepts are
-collapsed into a single term. Most often,
-_adaptive design_ is used to refer to both
-adaptive and responsive.
+Frequentemente os conceitos adaptativos e responsivos são
+agrupados em um único termo. Na maioria das vezes,
+_design adaptativo_ é usado para se referir tanto a
+design adaptativo quanto responsivo.
 :::
 
-This section covers various aspects of adaptive and
-responsive design:
+Esta seção cobre vários aspectos de design adaptativo e
+responsivo:
 
-* [General approach][]
+* [Abordagem geral][General approach]
 * [SafeArea & MediaQuery][]
-* [Large screens & foldables][]
-* [User input & accessibility][]
-* [Capabilities & policies][]
-* [Best practices for adaptive apps][]
-* [Additional resources][]
+* [Telas grandes e dobráveis][Large screens & foldables]
+* [Entrada do usuário e acessibilidade][User input & accessibility]
+* [Capacidades e políticas][Capabilities & policies]
+* [Melhores práticas para apps adaptativos][Best practices for adaptive apps]
+* [Recursos adicionais][Additional resources]
 
 [Additional resources]: /ui/adaptive-responsive/more-info
 [Best practices for adaptive apps]: /ui/adaptive-responsive/best-practices
@@ -67,8 +68,8 @@ responsive design:
 [User input & accessibility]: /ui/adaptive-responsive/input
 
 :::note
-You might also check out the Google I/O 2024 talk about
-this subject.
+Você também pode conferir a palestra do Google I/O 2024 sobre
+este assunto.
 
 {% ytEmbed 'LeKLGzpsz9I', 'How to build adaptive UI with Flutter' %}
 :::

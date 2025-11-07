@@ -1,67 +1,68 @@
 ---
-title: Create gradient chat bubbles
-description: How to implement gradient chat bubbles.
+title: Criar balões de chat com gradiente
+description: Como implementar balões de chat com gradiente.
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
+ia-translate: true
 ---
 
 <?code-excerpt path-base="cookbook/effects/gradient_bubbles"?>
 
 {% include docs/deprecated.md %}
 
-Traditional chat apps display messages in chat bubbles
-with solid color backgrounds. Modern chat apps display
-chat bubbles with gradients that are based 
-on the bubbles' position on the screen.
-In this recipe, you'll modernize the chat UI by implementing
-gradient backgrounds for the chat bubbles.
+Apps de chat tradicionais exibem mensagens em balões de chat
+com cores de fundo sólidas. Apps de chat modernos exibem
+balões de chat com gradientes que são baseados
+na posição dos balões na tela.
+Nesta receita, você modernizará a UI de chat implementando
+fundos com gradiente para os balões de chat.
 
-The following animation shows the app's behavior:
+A animação a seguir mostra o comportamento do app:
 
-![Scrolling the gradient chat bubbles](/assets/images/docs/cookbook/effects/GradientBubbles.gif){:.site-mobile-screenshot}
+![Rolando os balões de chat com gradiente](/assets/images/docs/cookbook/effects/GradientBubbles.gif){:.site-mobile-screenshot}
 
-## Understand the challenge
+## Entender o desafio
 
-The traditional chat bubble solution probably uses a
-`DecoratedBox` or a similar widget to paint a rounded
-rectangle behind each chat message. That approach is 
-great for a solid color or even for a gradient that
-repeats in every chat bubble. However, modern,
-full-screen, gradient bubble backgrounds require 
-a different approach. The full-screen gradient,
-combined with bubbles scrolling up and down the screen,
-requires an approach that allows you to make painting 
-decisions based on layout information.
+A solução tradicional de balão de chat provavelmente usa um
+`DecoratedBox` ou um widget similar para pintar um retângulo
+arredondado atrás de cada mensagem de chat. Essa abordagem é
+ótima para uma cor sólida ou até para um gradiente que
+se repete em cada balão de chat. No entanto, fundos de balão
+modernos com gradiente de tela cheia requerem
+uma abordagem diferente. O gradiente de tela cheia,
+combinado com balões rolando para cima e para baixo na tela,
+requer uma abordagem que permita tomar decisões de pintura
+com base em informações de layout.
 
-Each bubble's gradient requires knowledge of the
-bubble's location on the screen. This means that
-the painting behavior requires access to layout information.
-Such painting behavior isn't possible with typical widgets 
-because widgets like `Container` and `DecoratedBox`
-make decisions about background colors before layout occurs,
-not after. In this case, because you require custom painting
-behavior, but you don't require custom layout behavior 
-or custom hit test behavior, a [`CustomPainter`][] is
-a great choice to get the job done. 
+O gradiente de cada balão requer conhecimento da
+localização do balão na tela. Isso significa que
+o comportamento de pintura requer acesso às informações de layout.
+Tal comportamento de pintura não é possível com widgets típicos
+porque widgets como `Container` e `DecoratedBox`
+tomam decisões sobre cores de fundo antes do layout ocorrer,
+não depois. Neste caso, como você requer comportamento de pintura
+personalizado, mas não requer comportamento de layout personalizado
+ou comportamento de teste de toque personalizado, um [`CustomPainter`][]
+é uma ótima escolha para realizar o trabalho.
 
 :::note
-In cases where you need control over the child layout,
-but you don't need control over the painting or hit testing,
-consider using a [`Flow`][] widget.
+Em casos onde você precisa de controle sobre o layout dos filhos,
+mas não precisa de controle sobre a pintura ou teste de toque,
+considere usar um widget [`Flow`][].
 
-In cases where you need control over the layout,
-painting, _and_ hit testing, 
-consider defining a custom [`RenderBox`][].
+Em casos onde você precisa de controle sobre o layout,
+pintura _e_ teste de toque,
+considere definir um [`RenderBox`][] personalizado.
 :::
 
-## Replace original background widget
+## Substituir o widget de fundo original
 
-Replace the widget responsible for drawing the
-background with a new stateless widget called
-`BubbleBackground`. Include a `colors` property to 
-represent the full-screen gradient that should be
-applied to the bubble.
+Substitua o widget responsável por desenhar o
+fundo por um novo widget stateless chamado
+`BubbleBackground`. Inclua uma propriedade `colors` para
+representar o gradiente de tela cheia que deve ser
+aplicado ao balão.
 
 <?code-excerpt "lib/bubble_background.dart (BubbleBackground)" replace="/return //g"?>
 ```dart
@@ -85,13 +86,13 @@ BubbleBackground(
 );
 ```
 
-## Create a custom painter
+## Criar um custom painter
 
-Next, introduce an implementation for `BubbleBackground`
-as a stateless widget. For now, define the `build()`
-method to return a `CustomPaint` with a `CustomPainter`
-called `BubblePainter`. `BubblePainter` is used to paint 
-the bubble gradients.
+Em seguida, introduza uma implementação para `BubbleBackground`
+como um widget stateless. Por enquanto, defina o método `build()`
+para retornar um `CustomPaint` com um `CustomPainter`
+chamado `BubblePainter`. `BubblePainter` é usado para pintar
+os gradientes dos balões.
 
 <?code-excerpt "lib/bubble_painter_empty.dart (BubblePainterEmpty)"?>
 ```dart
@@ -137,14 +138,14 @@ class BubblePainter extends CustomPainter {
 }
 ```
 
-## Provide access to scrolling information
+## Fornecer acesso às informações de rolagem
 
-The `CustomPainter` requires the information necessary
-to determine where its bubble is within the `ListView`'s bounds,
-also known as the `Viewport`. Determining the location requires
-a reference to the ancestor `ScrollableState` 
-and a reference to the `BubbleBackground`'s
-`BuildContext`. Provide each of those to the `CustomPainter`.
+O `CustomPainter` requer as informações necessárias
+para determinar onde seu balão está dentro dos limites do `ListView`,
+também conhecido como `Viewport`. Determinar a localização requer
+uma referência ao `ScrollableState` ancestral
+e uma referência ao `BuildContext` do `BubbleBackground`.
+Forneça cada um deles ao `CustomPainter`.
 
 <?code-excerpt "lib/bubble_painter.dart (ScrollableContext)" replace="/painter: //g"?>
 ```dart
@@ -179,17 +180,17 @@ class BubblePainter extends CustomPainter {
 }
 ```
 
-## Paint a full-screen bubble gradient
+## Pintar um gradiente de balão de tela cheia
 
-The `CustomPainter` now has the desired gradient colors,
-a reference to the containing `ScrollableState`,
-and a reference to this bubble's `BuildContext`.
-This is all the information that the `CustomPainter` needs to 
-paint the full-screen bubble gradients.
-Implement the `paint()` method to calculate the position
-of the bubble, configure a shader with the given colors, 
-and then use a matrix translation to offset the shader
-based on the bubble's position within the `Scrollable`.
+O `CustomPainter` agora tem as cores de gradiente desejadas,
+uma referência ao `ScrollableState` contido,
+e uma referência ao `BuildContext` deste balão.
+Esta é toda a informação que o `CustomPainter` precisa para
+pintar os gradientes de balão de tela cheia.
+Implemente o método `paint()` para calcular a posição
+do balão, configurar um shader com as cores fornecidas,
+e então usar uma transformação de matriz para deslocar o shader
+com base na posição do balão dentro do `Scrollable`.
 
 <?code-excerpt "lib/bubble_background.dart (BubblePainter)"?>
 ```dart
@@ -235,26 +236,26 @@ class BubblePainter extends CustomPainter {
 }
 ```
 
-Congratulations! You now have a modern, chat bubble UI.
+Parabéns! Agora você tem uma UI de balão de chat moderna.
 
 :::note
-Each bubble's gradient changes as the user
-scrolls because the `BubbleBackground` widget
-invokes `Scrollable.of(context)`. This method 
-sets up an implicit dependency on the ancestor
-`ScrollableState`, which causes the `BubbleBackground`
-widget to rebuild every time the user scrolls 
-up or down. See the [`InheritedWidget`][] documentation
-for more information about these types of dependencies.
+O gradiente de cada balão muda conforme o usuário
+rola porque o widget `BubbleBackground`
+invoca `Scrollable.of(context)`. Este método
+estabelece uma dependência implícita no `ScrollableState`
+ancestral, o que faz com que o widget `BubbleBackground`
+seja reconstruído toda vez que o usuário rola
+para cima ou para baixo. Veja a documentação do [`InheritedWidget`][]
+para mais informações sobre esses tipos de dependências.
 :::
 
-## Interactive example
+## Exemplo interativo
 
-Run the app:
+Execute o app:
 
-* Scroll up and down to observe the gradient effect.
-* Chat bubbles located at the bottom of the screen
-  have a darker gradient color than the ones at the top.
+* Role para cima e para baixo para observar o efeito de gradiente.
+* Balões de chat localizados na parte inferior da tela
+  têm uma cor de gradiente mais escura do que os que estão no topo.
 
 <!-- start dartpad -->
 <?code-excerpt "lib/main.dart"?>
@@ -507,18 +508,18 @@ class MessageGenerator {
 }
 ```
 
-## Recap
+## Recapitulação
 
-The fundamental challenge when painting based on the
-scroll position, or the screen position in general,
-is that the painting behavior must occur after the
-layout phase is complete. `CustomPaint` is a unique
-widget that allows you to execute custom painting
-behaviors after the layout phase is complete.
-If you execute the painting behaviors after the layout phase, 
-then you can base your painting decisions on the layout
-information, such as the position of the `CustomPaint`
-widget within a `Scrollable` or within the screen.
+O desafio fundamental ao pintar com base na
+posição de rolagem, ou na posição da tela em geral,
+é que o comportamento de pintura deve ocorrer após a
+fase de layout estar completa. `CustomPaint` é um
+widget único que permite executar comportamentos de pintura
+personalizados após a fase de layout estar completa.
+Se você executar os comportamentos de pintura após a fase de layout,
+então pode basear suas decisões de pintura nas informações
+de layout, como a posição do widget `CustomPaint`
+dentro de um `Scrollable` ou dentro da tela.
 
 [cloning the example code]: {{site.github}}/flutter/codelabs
 [`CustomPainter`]: {{site.api}}/flutter/rendering/CustomPainter-class.html

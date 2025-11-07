@@ -1,36 +1,37 @@
 ---
-title: Create a staggered menu animation
-description: How to implement a staggered menu animation.
+title: Criar uma animação de menu escalonada
+description: Como implementar uma animação de menu escalonada.
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
+ia-translate: true
 ---
 
 <?code-excerpt path-base="cookbook/effects/staggered_menu_animation"?>
 
-A single app screen might contain multiple animations.
-Playing all of the animations at the same time can be
-overwhelming. Playing the animations one after the other
-can take too long. A better option is to stagger the animations. 
-Each animation begins at a different time,
-but the animations overlap to create a shorter duration.
-In this recipe, you build a drawer menu with animated 
-content that is staggered and has a button that pops
-in at the bottom.
+Uma única tela de app pode conter múltiplas animações.
+Reproduzir todas as animações ao mesmo tempo pode ser
+avassalador. Reproduzir as animações uma após a outra
+pode levar muito tempo. Uma opção melhor é escalonar as animações.
+Cada animação começa em um momento diferente,
+mas as animações se sobrepõem para criar uma duração mais curta.
+Nesta receita, você construirá um menu drawer com conteúdo
+animado que é escalonado e tem um botão que aparece
+na parte inferior.
 
-The following animation shows the app's behavior:
+A animação a seguir mostra o comportamento do app:
 
 ![Staggered Menu Animation Example](/assets/images/docs/cookbook/effects/StaggeredMenuAnimation.gif){:.site-mobile-screenshot}
 
-## Create the menu without animations
+## Criar o menu sem animações
 
-The drawer menu displays a list of titles,
-followed by a Get started button at 
-the bottom of the menu.
+O menu drawer exibe uma lista de títulos,
+seguida por um botão Get started na
+parte inferior do menu.
 
-Define a stateful widget called `Menu`
-that displays the list and button 
-in static locations.
+Defina um widget stateful chamado `Menu`
+que exibe a lista e o botão
+em localizações estáticas.
 
 <?code-excerpt "lib/step1.dart (step1)"?>
 ```dart
@@ -127,14 +128,14 @@ class _MenuState extends State<Menu> {
 }
 ```
 
-## Prepare for animations
+## Preparar para animações
 
-Control of the animation timing requires an
+O controle do tempo da animação requer um
 `AnimationController`.
 
-Add the `SingleTickerProviderStateMixin`
-to the `MenuState` class. Then, declare and
-instantiate an `AnimationController`.
+Adicione o `SingleTickerProviderStateMixin`
+à classe `MenuState`. Então, declare e
+instancie um `AnimationController`.
 
 <?code-excerpt "lib/step2.dart (animation-controller)" plaster="none"?>
 ```dart
@@ -158,10 +159,10 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
 }
 ```
 
-The length of the delay before every animation is
-up to you. Define the animation delays,
-individual animation durations, and the total 
-animation duration.
+A duração do atraso antes de cada animação é
+de sua escolha. Defina os atrasos de animação,
+durações de animação individuais e a duração
+total da animação.
 
 <?code-excerpt "lib/animation_delays.dart (delays)" plaster="none"?>
 ```dart
@@ -178,35 +179,35 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
 }
 ```
 
-In this case, all the animations are delayed by 50 ms.
-After that, list items begin to appear.
-Each list item's appearance is delayed by 50 ms after the 
-previous list item begins to slide in.
-Each list item takes 250 ms to slide from right to left.
-After the last list item begins to slide in,
-the button at the bottom waits another 150 ms to pop in.
-The button animation takes 500 ms.
+Neste caso, todas as animações são atrasadas em 50 ms.
+Depois disso, os itens da lista começam a aparecer.
+O aparecimento de cada item da lista é atrasado em 50 ms após o
+item anterior começar a deslizar.
+Cada item da lista leva 250 ms para deslizar da direita para a esquerda.
+Depois que o último item da lista começa a deslizar,
+o botão na parte inferior espera mais 150 ms para aparecer.
+A animação do botão leva 500 ms.
 
-With each delay and animation duration defined,
-the total duration is calculated so that it can be
-used to calculate the individual animation times.
+Com cada atraso e duração de animação definidos,
+a duração total é calculada para que possa ser
+usada para calcular os tempos de animação individuais.
 
-The desired animation times are shown in the following diagram:
+Os tempos de animação desejados são mostrados no diagrama a seguir:
 
 ![Animation Timing Diagram](/assets/images/docs/cookbook/effects/TimingDiagram.png){:.site-mobile-screenshot}
 
-To animate a value during a subsection of a larger animation,
-Flutter provides the `Interval` class.
-An `Interval` takes a start time percentage and an end 
-time percentage. That `Interval` can then be used to
-animate a value between those start and end times,
-instead of using the entire animation's start and 
-end times. For example, given an animation that takes 1 second, 
-an interval from 0.2 to 0.5 would start at 200 ms
-(20%) and end at 500 ms (50%). 
+Para animar um valor durante uma subseção de uma animação maior,
+o Flutter fornece a classe `Interval`.
+Um `Interval` recebe uma porcentagem de tempo inicial e uma
+porcentagem de tempo final. Esse `Interval` pode então ser usado para
+animar um valor entre esses tempos inicial e final,
+em vez de usar os tempos inicial e final de toda a animação.
+Por exemplo, dada uma animação que leva 1 segundo,
+um intervalo de 0.2 a 0.5 começaria em 200 ms
+(20%) e terminaria em 500 ms (50%).
 
-Declare and calculate each list item's `Interval` and the 
-bottom button `Interval`.
+Declare e calcule o `Interval` de cada item da lista e o
+`Interval` do botão inferior.
 
 <?code-excerpt "lib/step3.dart (step3)" plaster="none"?>
 ```dart
@@ -249,11 +250,11 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
 }
 ```
 
-## Animate the list items and button
+## Animar os itens da lista e o botão
 
-The staggered animation plays as soon as the menu becomes visible.
+A animação escalonada é reproduzida assim que o menu se torna visível.
 
-Start the animation in `initState()`.
+Inicie a animação em `initState()`.
 
 <?code-excerpt "lib/step4.dart (init-state)"?>
 ```dart
@@ -270,12 +271,12 @@ void initState() {
 }
 ```
 
-Each list item slides from right to left and
-fades in at the same time.
+Cada item da lista desliza da direita para a esquerda e
+aparece gradualmente ao mesmo tempo.
 
-Use the list item's `Interval` and an `easeOut`
-curve to animate the opacity and translation
-values for each list item.
+Use o `Interval` do item da lista e uma curva `easeOut`
+para animar os valores de opacidade e translação
+para cada item da lista.
 
 <?code-excerpt "lib/step4.dart (build-list-items)"?>
 ```dart
@@ -318,9 +319,9 @@ List<Widget> _buildListItems() {
 }
 ```
 
-Use the same approach to animate the opacity and
-scale of the bottom button. This time, use an
-`elasticOut` curve to give the button a springy effect.
+Use a mesma abordagem para animar a opacidade e
+escala do botão inferior. Desta vez, use uma
+curva `elasticOut` para dar ao botão um efeito saltitante.
 
 <?code-excerpt "lib/step4.dart (build-get-started)"?>
 ```dart
@@ -366,12 +367,12 @@ Widget _buildGetStartedButton() {
 }
 ```
 
-Congratulations!
-You have an animated menu where the appearance of each 
-list item is staggered, followed by a bottom button that
-pops into place.
+Parabéns!
+Agora você tem um menu animado onde o aparecimento de cada
+item da lista é escalonado, seguido por um botão inferior que
+aparece no lugar.
 
-## Interactive example
+## Exemplo interativo
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter staggered menu animation hands-on example in DartPad" run="true"

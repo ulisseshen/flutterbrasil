@@ -1,7 +1,8 @@
 ---
-title: Layout widgets
+title: Widgets de layout
 short-title: Layout
-description: A catalog of Flutter's widgets for building layouts.
+description: Um catálogo dos widgets do Flutter para construção de layouts.
+ia-translate: true
 ---
 
 {% render docs/catalog-page.md, categoryName:"Layout", catalog:catalog %}

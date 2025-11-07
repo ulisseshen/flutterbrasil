@@ -1,12 +1,13 @@
 ---
-title: Start building Flutter web apps on Windows
-description: Configure your system to develop Flutter web apps on Windows.
-short-title: Make web apps
+title: Comece a construir apps Flutter web no Windows
+description: Configure seu sistema para desenvolver apps Flutter web no Windows.
+short-title: Crie apps web
+ia-translate: true
 target: web
 config: WindowsWeb
 devos: Windows
 next:
-  title: Create your first app
+  title: Crie seu primeiro app
   path: /get-started/codelab
 ---
 

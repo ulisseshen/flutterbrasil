@@ -1,12 +1,13 @@
 ---
-title: Start building Flutter web apps on ChromeOS
-description: Configure your system to develop Flutter web apps on ChromeOS.
-short-title: Web app
+title: Comece a construir apps Flutter web no ChromeOS
+description: Configure seu sistema para desenvolver apps Flutter web no ChromeOS.
+short-title: App web
+ia-translate: true
 target: Web
 config: ChromeOSWeb
 devos: ChromeOS
 next:
-  title: Create your first app
+  title: Crie seu primeiro app
   path: /get-started/codelab
 ---
 

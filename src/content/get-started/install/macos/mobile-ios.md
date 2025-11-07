@@ -1,12 +1,13 @@
 ---
-title: Start building Flutter iOS apps on macOS
-description: Configure your system to develop Flutter mobile apps on macOS and iOS.
-short-title: Make iOS apps
+title: Comece a construir apps Flutter iOS no macOS
+description: Configure seu sistema para desenvolver apps Flutter mobile no macOS e iOS.
+short-title: Crie apps iOS
+ia-translate: true
 target: iOS
 config: macOSiOS
 devos: macOS
 next:
-  title: Create your first app
+  title: Crie seu primeiro app
   path: /get-started/codelab
 ---
 

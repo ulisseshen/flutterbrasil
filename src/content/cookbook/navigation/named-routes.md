@@ -1,46 +1,47 @@
 ---
-title: Navigate with named routes
-description: How to implement named routes for navigating between screens.
+title: Navegar com rotas nomeadas
+description: Como implementar rotas nomeadas para navegar entre telas.
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
+ia-translate: true
 ---
 
 <?code-excerpt path-base="cookbook/navigation/named_routes"?>
 
 :::note
-Named routes are no longer recommended for most
-applications. For more information, see
-[Limitations][] in the [navigation overview][] page.
+Rotas nomeadas não são mais recomendadas para a maioria
+das aplicações. Para mais informações, veja
+[Limitações][] na página [visão geral de navegação][].
 :::
 
-[Limitations]: /ui/navigation#limitations
-[navigation overview]: /ui/navigation
+[Limitações]: /ui/navigation#limitations
+[visão geral de navegação]: /ui/navigation
 
-In the [Navigate to a new screen and back][] recipe,
-you learned how to navigate to a new screen by creating a new route and
-pushing it to the [`Navigator`][].
+Na receita [Navegar para uma nova tela e voltar][],
+você aprendeu como navegar para uma nova tela criando uma nova rota e
+enviando-a para o [`Navigator`][].
 
-However, if you need to navigate to the same screen in many parts
-of your app, this approach can result in code duplication.
-The solution is to define a _named route_,
-and use the named route for navigation.
+No entanto, se você precisa navegar para a mesma tela em muitas partes
+do seu app, essa abordagem pode resultar em duplicação de código.
+A solução é definir uma _rota nomeada_,
+e usar a rota nomeada para navegação.
 
-To work with named routes,
-use the [`Navigator.pushNamed()`][] function.
-This example replicates the functionality from the original recipe,
-demonstrating how to use named routes using the following steps:
+Para trabalhar com rotas nomeadas,
+use a função [`Navigator.pushNamed()`][].
+Este exemplo replica a funcionalidade da receita original,
+demonstrando como usar rotas nomeadas usando os seguintes passos:
 
-  1. Create two screens.
-  2. Define the routes.
-  3. Navigate to the second screen using `Navigator.pushNamed()`.
-  4. Return to the first screen using `Navigator.pop()`.
+  1. Criar duas telas.
+  2. Definir as rotas.
+  3. Navegar para a segunda tela usando `Navigator.pushNamed()`.
+  4. Retornar à primeira tela usando `Navigator.pop()`.
 
-## 1. Create two screens
+## 1. Criar duas telas
 
-First, create two screens to work with. The first screen contains a
-button that navigates to the second screen. The second screen contains a
-button that navigates back to the first.
+Primeiro, crie duas telas para trabalhar. A primeira tela contém um
+botão que navega para a segunda tela. A segunda tela contém um
+botão que navega de volta para a primeira.
 
 <?code-excerpt "lib/main_original.dart"?>
 ```dart
@@ -89,15 +90,15 @@ class SecondScreen extends StatelessWidget {
 }
 ```
 
-## 2. Define the routes
+## 2. Definir as rotas
 
-Next, define the routes by providing additional properties
-to the [`MaterialApp`][] constructor: the `initialRoute`
-and the `routes` themselves.
+Em seguida, defina as rotas fornecendo propriedades adicionais
+ao construtor [`MaterialApp`][]: a `initialRoute`
+e as próprias `routes`.
 
-The `initialRoute` property defines which route the app should start with.
-The `routes` property defines the available named routes and the widgets
-to build when navigating to those routes.
+A propriedade `initialRoute` define com qual rota o app deve começar.
+A propriedade `routes` define as rotas nomeadas disponíveis e os widgets
+a serem construídos ao navegar para essas rotas.
 
 {% comment %}
 RegEx removes the trailing comma
@@ -119,18 +120,17 @@ MaterialApp(
 ```
 
 :::warning
-When using `initialRoute`, **don't** define a `home` property.
+Ao usar `initialRoute`, **não** defina uma propriedade `home`.
 :::
 
-## 3. Navigate to the second screen
+## 3. Navegar para a segunda tela
 
-With the widgets and routes in place, trigger navigation by using the
-[`Navigator.pushNamed()`][] method.
-This tells Flutter to build the widget defined in the
-`routes` table and launch the screen.
+Com os widgets e rotas no lugar, acione a navegação usando o
+método [`Navigator.pushNamed()`][].
+Isso diz ao Flutter para construir o widget definido na
+tabela `routes` e lançar a tela.
 
-In the `build()` method of the `FirstScreen` widget, update the `onPressed()`
-callback:
+No método `build()` do widget `FirstScreen`, atualize o callback `onPressed()`:
 
 {% comment %}
 RegEx removes the trailing comma
@@ -144,10 +144,10 @@ onPressed: () {
 }
 ```
 
-## 4. Return to the first screen
+## 4. Retornar à primeira tela
 
-To navigate back to the first screen, use the
-[`Navigator.pop()`][] function.
+Para navegar de volta à primeira tela, use a
+função [`Navigator.pop()`][].
 
 {% comment %}
 RegEx removes the trailing comma
@@ -162,7 +162,7 @@ onPressed: () {
 }
 ```
 
-## Interactive example
+## Exemplo interativo
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter Named Routes hands-on example in DartPad" run="true"
@@ -239,7 +239,7 @@ class SecondScreen extends StatelessWidget {
 
 
 [`MaterialApp`]: {{site.api}}/flutter/material/MaterialApp-class.html
-[Navigate to a new screen and back]: /cookbook/navigation/navigation-basics
+[Navegar para uma nova tela e voltar]: /cookbook/navigation/navigation-basics
 [`Navigator`]: {{site.api}}/flutter/widgets/Navigator-class.html
 [`Navigator.pop()`]: {{site.api}}/flutter/widgets/Navigator/pop.html
 [`Navigator.pushNamed()`]: {{site.api}}/flutter/widgets/Navigator/pushNamed.html

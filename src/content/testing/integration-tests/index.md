@@ -368,6 +368,7 @@ complete as seguintes tarefas.
 
 ---
 
+<a id="test-in-a-web-browser"></a>
 ### Testar em um navegador web
 
 {% comment %}

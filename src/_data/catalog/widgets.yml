@@ -1,22 +1,23 @@
+# ia-translate: true
 - name: AbsorbPointer
   description: >-
-    A widget that absorbs pointers during hit testing. When absorbing is true,
-    this widget prevents its subtree from receiving pointer events by
-    terminating hit testing at itself. It still consumes space during layout and
-    paints its child as usual. It just prevents its children from being the
-    target of located events, because it returns true from RenderBox.hitTest.
+    Um widget que absorve ponteiros durante o teste de toque. Quando absorbing é
+    true, este widget impede que sua subárvore receba eventos de ponteiro ao
+    terminar o teste de toque em si mesmo. Ele ainda consome espaço durante o
+    layout e pinta seu filho normalmente. Apenas impede que seus filhos sejam o
+    alvo de eventos localizados, porque retorna true de RenderBox.hitTest.
   categories: []
   subcategories:
-    - 'Touch interactions'
+    - 'Interações de toque'
   link: https://api.flutter.dev/flutter/widgets/AbsorbPointer-class.html
 - name: AlertDialog
   description: >-
-    Hovering containers that prompt app users to provide more data or make a
-    decision.
+    Contêineres flutuantes que solicitam aos usuários do app fornecer mais dados
+    ou tomar uma decisão.
   categories: []
   subcategories:
-    - 'Containment'
-    - 'Dialogs, alerts, and panels'
+    - 'Contenção'
+    - 'Diálogos, alertas e painéis'
   link: https://api.flutter.dev/flutter/material/AlertDialog-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-3-dialog.png
@@ -24,11 +25,11 @@
     src: /assets/images/docs/widget-catalog/material-3-coral.png
 - name: Align
   description: >-
-    A widget that aligns its child within itself and optionally sizes itself
-    based on the child's size.
+    Um widget que alinha seu filho dentro de si mesmo e opcionalmente
+    dimensiona-se com base no tamanho do filho.
   categories: []
   subcategories:
-    - 'Single-child layout widgets'
+    - 'Widgets de layout de filho único'
   link: https://api.flutter.dev/flutter/widgets/Align-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><defs><marker id='arrow-align'
@@ -44,129 +45,129 @@
     stroke='#f50057' stroke-width='2' marker-end='url(#arrow-align)'/></svg>
 - name: AlignTransition
   description: >-
-    Animated version of an Align that animates its Align.alignment property.
+    Versão animada de um Align que anima sua propriedade Align.alignment.
   categories:
-    - 'Animation and motion'
+    - 'Animação e movimento'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/AlignTransition-class.html
 - name: AnimatedAlign
   description: >-
-    Animated transition that moves the child's position over a given duration
-    whenever the given alignment changes.
+    Transição animada que move a posição do filho durante um período determinado
+    sempre que o alinhamento fornecido muda.
   categories:
-    - 'Animation and motion'
+    - 'Animação e movimento'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/AnimatedAlign-class.html
 - name: AnimatedBuilder
   description: >-
-    A general-purpose widget for building animations. AnimatedBuilder is useful
-    for more complex widgets that wish to include animation as part of a larger
-    build function. To use AnimatedBuilder, simply construct the widget and pass
-    it a builder function.
+    Um widget de uso geral para construir animações. AnimatedBuilder é útil para
+    widgets mais complexos que desejam incluir animação como parte de uma função
+    build maior. Para usar AnimatedBuilder, simplesmente construa o widget e
+    passe-lhe uma função builder.
   categories:
-    - 'Animation and motion'
+    - 'Animação e movimento'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/AnimatedBuilder-class.html
 - name: AnimatedContainer
   description: >-
-    A container that gradually changes its values over a period of time.
+    Um contêiner que muda gradualmente seus valores durante um período de tempo.
   categories:
-    - 'Animation and motion'
+    - 'Animação e movimento'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/AnimatedContainer-class.html
 - name: AnimatedCrossFade
   description: >-
-    A widget that cross-fades between two given children and animates itself
-    between their sizes.
+    Um widget que faz um cross-fade entre dois filhos fornecidos e se anima
+    entre seus tamanhos.
   categories:
-    - 'Animation and motion'
+    - 'Animação e movimento'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/AnimatedCrossFade-class.html
 - name: AnimatedDefaultTextStyle
   description: >-
-    Animated version of DefaultTextStyle which automatically transitions the
-    default text style (the text style to apply to descendant Text widgets
-    without explicit style) over a given duration whenever the given style
-    changes.
+    Versão animada de DefaultTextStyle que transiciona automaticamente o estilo
+    de texto padrão (o estilo de texto a ser aplicado aos widgets Text
+    descendentes sem estilo explícito) durante um período determinado sempre que
+    o estilo fornecido muda.
   categories:
-    - 'Animation and motion'
+    - 'Animação e movimento'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/AnimatedDefaultTextStyle-class.html
 - name: AnimatedList
   description: >-
-    A scrolling container that animates items when they are inserted or removed.
+    Um contêiner com rolagem que anima itens quando são inseridos ou removidos.
   categories:
-    - 'Animation and motion'
+    - 'Animação e movimento'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/AnimatedList-class.html
 - name: AnimatedListState
   description: >-
-    The state for a scrolling container that animates items when they are
-    inserted or removed.
+    O estado de um contêiner com rolagem que anima itens quando são inseridos ou
+    removidos.
   categories:
-    - 'Animation and motion'
+    - 'Animação e movimento'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/AnimatedListState-class.html
 - name: AnimatedModalBarrier
   description: >-
-    A widget that prevents the user from interacting with widgets behind itself.
+    Um widget que impede que o usuário interaja com widgets atrás dele.
   categories:
-    - 'Animation and motion'
+    - 'Animação e movimento'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/AnimatedModalBarrier-class.html
 - name: AnimatedOpacity
   description: >-
-    Animated version of Opacity which automatically transitions the child's
-    opacity over a given duration whenever the given opacity changes.
+    Versão animada de Opacity que transiciona automaticamente a opacidade do
+    filho durante um período determinado sempre que a opacidade fornecida muda.
   categories:
-    - 'Animation and motion'
+    - 'Animação e movimento'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/AnimatedOpacity-class.html
 - name: AnimatedPhysicalModel
   description: >-
-    Animated version of PhysicalModel.
+    Versão animada de PhysicalModel.
   categories:
-    - 'Animation and motion'
+    - 'Animação e movimento'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/AnimatedPhysicalModel-class.html
 - name: AnimatedPositioned
   description: >-
-    Animated version of Positioned which automatically transitions the child's
-    position over a given duration whenever the given position changes.
+    Versão animada de Positioned que transiciona automaticamente a posição do
+    filho durante um período determinado sempre que a posição fornecida muda.
   categories:
-    - 'Animation and motion'
+    - 'Animação e movimento'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/AnimatedPositioned-class.html
 - name: AnimatedSize
   description: >-
-    Animated widget that automatically transitions its size over a given
-    duration whenever the given child's size changes.
+    Widget animado que transiciona automaticamente seu tamanho durante um
+    período determinado sempre que o tamanho do filho fornecido muda.
   categories:
-    - 'Animation and motion'
+    - 'Animação e movimento'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/AnimatedSize-class.html
 - name: AnimatedWidget
   description: >-
-    A widget that rebuilds when the given Listenable changes value.
+    Um widget que reconstrói quando o Listenable fornecido muda de valor.
   categories:
-    - 'Animation and motion'
+    - 'Animação e movimento'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/AnimatedWidget-class.html
 - name: ImplicitlyAnimatedWidget
   description: >-
-    An abstract class for building widgets that animate changes to their
-    properties.
+    Uma classe abstrata para construir widgets que animam mudanças em suas
+    propriedades.
   categories:
-    - 'Animation and motion'
+    - 'Animação e movimento'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/ImplicitlyAnimatedWidget-class.html
 - name: AppBar
-  description: Container that displays content and actions at the top of a screen.
+  description: Contêiner que exibe conteúdo e ações no topo de uma tela.
   categories:
-    - 'Basics'
+    - 'Básicos'
   subcategories:
-    - 'Navigation'
-    - 'App structure and navigation'
+    - 'Navegação'
+    - 'Estrutura e navegação do app'
   link: https://api.flutter.dev/flutter/material/AppBar-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-3-top-app-bar.png
@@ -174,10 +175,11 @@
     src: /assets/images/docs/widget-catalog/material-3-bubbles.png
 - name: AspectRatio
   description: >-
-    A widget that attempts to size the child to a specific aspect ratio.
+    Um widget que tenta dimensionar o filho para uma proporção de aspecto
+    específica.
   categories: []
   subcategories:
-    - 'Single-child layout widgets'
+    - 'Widgets de layout de filho único'
   link: https://api.flutter.dev/flutter/widgets/AspectRatio-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><defs><marker id='arrow-aspect-ratio'
@@ -191,49 +193,49 @@
     marker-end='url(#arrow-aspect-ratio)'/></svg>
 - name: AssetBundle
   description: >-
-    Asset bundles contain resources, such as images and strings, that can be
-    used by an application. Access to these resources is asynchronous so that
-    they can be transparently loaded over a network (e.g., from a
-    NetworkAssetBundle) or from the local file system without blocking the
-    application's user interface.
+    Asset bundles contêm recursos, como imagens e strings, que podem ser
+    usados por uma aplicação. O acesso a esses recursos é assíncrono para que
+    possam ser carregados de forma transparente através de uma rede (por exemplo, de um
+    NetworkAssetBundle) ou do sistema de arquivos local sem bloquear a
+    interface de usuário da aplicação.
   categories:
-    - 'Assets, images, and icons'
+    - 'Assets, imagens e ícones'
   subcategories: []
   link: https://api.flutter.dev/flutter/services/AssetBundle-class.html
 - name: Autocomplete
   description: >-
-    A widget for helping the user make a selection by entering some text and
-    choosing from among a list of options.
+    Um widget para ajudar o usuário a fazer uma seleção digitando algum texto e
+    escolhendo entre uma lista de opções.
   categories:
-    - 'Input'
+    - 'Entrada'
   subcategories: []
   link: https://api.flutter.dev/flutter/material/Autocomplete-class.html
 - name: BackdropFilter
   description: >-
-    A widget that applies a filter to the existing painted content and then
-    paints a child. This effect is relatively expensive, especially if the
-    filter is non-local, such as a blur.
+    Um widget que aplica um filtro ao conteúdo pintado existente e então
+    pinta um filho. Este efeito é relativamente custoso, especialmente se o
+    filtro não é local, como um desfoque.
   categories:
-    - 'Painting and effects'
+    - 'Pintura e efeitos'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/BackdropFilter-class.html
 - name: Badge
   description: >-
-    Icon-like block that conveys dynamic content such as counts or status. It
-    can include labels or numbers.
+    Bloco semelhante a um ícone que transmite conteúdo dinâmico como contagens ou status. Pode
+    incluir rótulos ou números.
   categories: []
   subcategories:
-    - 'Communication'
+    - 'Comunicação'
   link: https://api.flutter.dev/flutter/material/Badge-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-3-badge.png
   hoverBackground:
     src: /assets/images/docs/widget-catalog/material-3-coral.png
 - name: Baseline
-  description: Container that positions its child according to the child's baseline.
+  description: Contêiner que posiciona seu filho de acordo com a linha de base do filho.
   categories: []
   subcategories:
-    - 'Single-child layout widgets'
+    - 'Widgets de layout de filho único'
   link: https://api.flutter.dev/flutter/widgets/Baseline-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><defs><marker id='arrow-baseline'
@@ -250,21 +252,21 @@
     font-family='Roboto' font-size='25' fill='#3b75ad'>Abc </text></svg>
 - name: Bottom app bar
   description: >-
-    Container that displays navigation and key actions at the bottom of a
-    screen.
+    Contêiner que exibe navegação e ações principais na parte inferior de uma
+    tela.
   categories: []
   subcategories:
-    - 'Navigation'
+    - 'Navegação'
   link: https://api.flutter.dev/flutter/material/BottomAppBar-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-3-bottom-app-bar.png
   hoverBackground:
     src: /assets/images/docs/widget-catalog/material-3-bubbles.png
 - name: Bottom sheet
-  description: Containers that anchor supplementary content to the bottom of the screen.
+  description: Contêineres que ancoram conteúdo suplementar na parte inferior da tela.
   categories: []
   subcategories:
-    - 'Containment'
+    - 'Contenção'
   link: https://api.flutter.dev/flutter/material/BottomSheet-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-3-bottom-sheet.png
@@ -272,33 +274,33 @@
     src: /assets/images/docs/widget-catalog/material-3-coral.png
 - name: BottomNavigationBar
   description: >-
-    Container that includes tools to explore and switch between top-level views
-    in a single tap.
+    Contêiner que inclui ferramentas para explorar e alternar entre visualizações de nível superior
+    com um único toque.
   categories: []
   subcategories:
-    - 'App structure and navigation'
+    - 'Estrutura e navegação do app'
   link: https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-bottom-navigation-bar.png
 - name: BottomSheet
   description: >-
-    Bottom sheets slide up from the bottom of the screen to reveal more content.
-    You can call showBottomSheet() to implement a persistent bottom sheet or
-    showModalBottomSheet() to implement a modal bottom sheet.
+    Bottom sheets deslizam para cima a partir da parte inferior da tela para revelar mais conteúdo.
+    Você pode chamar showBottomSheet() para implementar um bottom sheet persistente ou
+    showModalBottomSheet() para implementar um bottom sheet modal.
   categories: []
   subcategories:
-    - 'Dialogs, alerts, and panels'
+    - 'Diálogos, alertas e painéis'
   link: https://api.flutter.dev/flutter/material/BottomSheet-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-bottom-sheets.png
 - name: Card
   description: >-
-    Container for short, related pieces of content displayed in a box with
-    rounded corners and a drop shadow.
+    Contêiner para pedaços curtos e relacionados de conteúdo exibidos em uma caixa com
+    cantos arredondados e uma sombra projetada.
   categories: []
   subcategories:
-    - 'Containment'
-    - 'Information displays'
+    - 'Contenção'
+    - 'Exibições de informação'
   link: https://api.flutter.dev/flutter/material/Card-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-3-card.png
@@ -306,10 +308,10 @@
     src: /assets/images/docs/widget-catalog/material-3-coral.png
 - name: Center
   description: >-
-    Alignment block that centers its child within itself.
+    Bloco de alinhamento que centraliza seu filho dentro de si mesmo.
   categories: []
   subcategories:
-    - 'Single-child layout widgets'
+    - 'Widgets de layout de filho único'
   link: https://api.flutter.dev/flutter/widgets/Center-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><defs><marker id='arrow-center'
@@ -327,12 +329,12 @@
     marker-end='url(#arrow-center)'/></svg>
 - name: Checkbox
   description: >-
-    Form control that app users can set or clear to select one or more options
-    from a set.
+    Controle de formulário que os usuários do app podem marcar ou desmarcar para selecionar uma ou mais opções
+    de um conjunto.
   categories: []
   subcategories:
-    - 'Selection'
-    - 'Input and selections'
+    - 'Seleção'
+    - 'Entrada e seleções'
   link: https://api.flutter.dev/flutter/material/Checkbox-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-3-checkbox.png
@@ -340,30 +342,30 @@
     src: /assets/images/docs/widget-catalog/material-3-leaves.png
 - name: Chip
   description: >-
-    Small blocks that simplify entering information, making selections,
-    filtering content, or triggering actions.
+    Blocos pequenos que simplificam a entrada de informações, a realização de seleções,
+    a filtragem de conteúdo ou o acionamento de ações.
   categories: []
   subcategories:
-    - 'Selection'
-    - 'Information displays'
+    - 'Seleção'
+    - 'Exibições de informação'
   link: https://api.flutter.dev/flutter/material/Chip-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-3-chip.png
   hoverBackground:
     src: /assets/images/docs/widget-catalog/material-3-leaves.png
 - name: CircularProgressIndicator
-  description: Circular progress indicator that spins to indicate a busy application.
+  description: Indicador de progresso circular que gira para indicar uma aplicação ocupada.
   categories: []
   subcategories:
-    - 'Information displays'
+    - 'Exibições de informação'
   link: https://api.flutter.dev/flutter/material/CircularProgressIndicator-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-circular-progress-indicator.png
 - name: ClipOval
   description: >-
-    A widget that clips its child using an oval.
+    Um widget que recorta seu filho usando um oval.
   categories:
-    - 'Painting and effects'
+    - 'Pintura e efeitos'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/ClipOval-class.html
   vector: >-
@@ -375,16 +377,16 @@
     clip-path='url(#clip-oval)'/></svg>
 - name: ClipPath
   description: >-
-    A widget that clips its child using a path.
+    Um widget que recorta seu filho usando um caminho.
   categories:
-    - 'Painting and effects'
+    - 'Pintura e efeitos'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/ClipPath-class.html
 - name: ClipRect
   description: >-
-    A widget that clips its child using a rectangle.
+    Um widget que recorta seu filho usando um retângulo.
   categories:
-    - 'Painting and effects'
+    - 'Pintura e efeitos'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/ClipRect-class.html
   vector: >-
@@ -395,11 +397,11 @@
     height='60' fill='#ffffff'/><rect x='30' y='10' width='60' height='50'
     fill='#4dd0e1' clip-path='url(#clip-rect)'/></svg>
 - name: Column
-  description: Layout a list of child widgets in the vertical direction.
+  description: Organiza uma lista de widgets filhos na direção vertical.
   categories:
-    - 'Basics'
+    - 'Básicos'
   subcategories:
-    - 'Multi-child layout widgets'
+    - 'Widgets de layout de múltiplos filhos'
   link: https://api.flutter.dev/flutter/widgets/Column-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><rect x='0' y='0' width='100' height='100'
@@ -409,11 +411,11 @@
     fill='#4dd0e1'/></svg>
 - name: Common buttons
   description: >-
-    Clickable blocks that start an action, such as sending an email, sharing a
-    document, or liking a comment.
+    Blocos clicáveis que iniciam uma ação, como enviar um e-mail, compartilhar um
+    documento ou curtir um comentário.
   categories: []
   subcategories:
-    - 'Actions'
+    - 'Ações'
   link: https://api.flutter.dev/flutter/material/ButtonStyle-class.html#material-3-button-types
   image:
     src: /assets/images/docs/widget-catalog/material-3-buttons.png
@@ -421,10 +423,10 @@
     src: /assets/images/docs/widget-catalog/material-3-leaves.png
 - name: ConstrainedBox
   description: >-
-    A widget that imposes additional constraints on its child.
+    Um widget que impõe restrições adicionais ao seu filho.
   categories: []
   subcategories:
-    - 'Single-child layout widgets'
+    - 'Widgets de layout de filho único'
   link: https://api.flutter.dev/flutter/widgets/ConstrainedBox-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><defs><marker id='arrow-constrained-box'
@@ -451,12 +453,11 @@
     marker-end='url(#arrow-constrained-box)'/></svg>
 - name: Container
   categories:
-    - 'Basics'
+    - 'Básicos'
   subcategories:
-    - 'Single-child layout widgets'
+    - 'Widgets de layout de filho único'
   description: >-
-    A convenience widget that combines common painting, positioning, and sizing
-    widgets.
+    Um widget de conveniência que combina widgets comuns de pintura, posicionamento e dimensionamento.
   link: https://api.flutter.dev/flutter/widgets/Container-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><defs><marker id='arrow-container-1'
@@ -492,7 +493,7 @@
     marker-end='url(#arrow-container-2)'/></svg>
 - name: CupertinoActionSheet
   description: >-
-    An iOS-style modal bottom action sheet to choose an option among many.
+    Uma folha de ações inferior modal no estilo iOS para escolher uma opção entre muitas.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -501,7 +502,7 @@
     src: /assets/images/docs/widget-catalog/cupertino-action-sheet.png
 - name: CupertinoActionSheetAction
   description: >-
-    A button typically used in a CupertinoActionSheet.
+    Um botão tipicamente usado em um CupertinoActionSheet.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -510,7 +511,7 @@
     src: /assets/images/docs/widget-catalog/cupertino-action-sheet.png
 - name: CupertinoActivityIndicator
   description: >-
-    An iOS-style activity indicator. Displays a circular 'spinner'.
+    Um indicador de atividade no estilo iOS. Exibe um 'spinner' circular.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -519,8 +520,8 @@
     src: /assets/images/docs/widget-catalog/cupertino-activity-indicator.png
 - name: CupertinoAdaptiveTextSelectionToolbar
   description: >-
-    The default Cupertino context menu for text selection for the current
-    platform with the given children.
+    O menu de contexto Cupertino padrão para seleção de texto para a
+    plataforma atual com os filhos fornecidos.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -529,7 +530,7 @@
     src: /assets/images/docs/widget-catalog/CupertinoAdaptiveTextSelectionToolbar.png
 - name: CupertinoAlertDialog
   description: >-
-    An iOS-style alert dialog.
+    Um diálogo de alerta no estilo iOS.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -538,7 +539,7 @@
     src: /assets/images/docs/widget-catalog/cupertino-alert-dialog.png
 - name: CupertinoApp
   description: >-
-    An application that uses Cupertino design.
+    Uma aplicação que usa o design Cupertino.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -547,7 +548,7 @@
     src: /assets/images/docs/widget-catalog/CupertinoApp.png
 - name: CupertinoButton
   description: >-
-    An iOS-style button.
+    Um botão no estilo iOS.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -556,7 +557,7 @@
     src: /assets/images/docs/widget-catalog/cupertino-button.png
 - name: CupertinoCheckBox
   description: >-
-    A macOS-style checkbox.
+    Uma caixa de seleção no estilo macOS.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -565,8 +566,8 @@
     src: /assets/images/docs/widget-catalog/CupertinoCheckbox.png
 - name: CupertinoColors
   description: >-
-    A palette of Color constants that describe colors commonly used when
-    matching the iOS platform aesthetics.
+    Uma paleta de constantes de cores que descrevem cores comumente usadas ao
+    corresponder à estética da plataforma iOS.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -575,8 +576,8 @@
     src: /assets/images/docs/widget-catalog/CupertinoColors.png
 - name: CupertinoContextMenu
   description: >-
-    An iOS-style full-screen modal route that opens when the child is
-    long-pressed. Used to display relevant actions for your content.
+    Uma rota modal de tela cheia no estilo iOS que abre quando o filho é
+    pressionado longamente. Usada para exibir ações relevantes para seu conteúdo.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -585,7 +586,7 @@
     src: /assets/images/docs/widget-catalog/cupertino-context-menu.png
 - name: CupertinoContextMenuAction
   description: >-
-    A button in a ContextMenuSheet.
+    Um botão em um ContextMenuSheet.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -594,7 +595,7 @@
     src: /assets/images/docs/widget-catalog/CupertinoContextMenuAction.png
 - name: CupertinoDatePicker
   description: >-
-    An iOS-style date or date and time picker.
+    Um seletor de data ou data e hora no estilo iOS.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -602,14 +603,14 @@
   image:
     src: /assets/images/docs/widget-catalog/CupertinoDatePicker.png
 - name: CupertinoDesktopTextSelectionControls
-  description: Desktop Cupertino styled text selection controls.
+  description: Controles de seleção de texto no estilo Cupertino para desktop.
   categories:
     - 'Cupertino'
   subcategories: []
   link: https://api.flutter.dev/flutter/cupertino/CupertinoDesktopTextSelectionControls-class.html
 - name: CupertinoDesktopTextSelectionToolbar
   description: >-
-    A macOS-style text selection toolbar.
+    Uma barra de ferramentas de seleção de texto no estilo macOS.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -618,7 +619,7 @@
     src: /assets/images/docs/widget-catalog/CupertinoDesktopTextSelectionToolbar.png
 - name: CupertinoDesktopTextSelectionToolbarButton
   description: >-
-    A button in the style of the macOS context menu buttons.
+    Um botão no estilo dos botões de menu de contexto do macOS.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -627,7 +628,7 @@
     src: /assets/images/docs/widget-catalog/CupertinoDesktopTextSelectionToolbarButton.png
 - name: CupertinoDialogAction
   description: >-
-    A button typically used in a CupertinoAlertDialog.
+    Um botão tipicamente usado em um CupertinoAlertDialog.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -636,22 +637,22 @@
     src: /assets/images/docs/widget-catalog/cupertino-dialog-action.png
 - name: CupertinoDialogRoute
   description: >-
-    A dialog route that shows an iOS-style dialog.
+    Uma rota de diálogo que exibe um diálogo no estilo iOS.
   categories:
     - 'Cupertino'
   subcategories: []
   link: https://api.flutter.dev/flutter/cupertino/CupertinoDialogRoute-class.html
 - name: CupertinoDynamicColor
   description: >-
-    A Color subclass that represents a family of colors, and the correct
-    effective color in the color family.
+    Uma subclasse de Color que representa uma família de cores, e a cor
+    efetiva correta na família de cores.
   categories:
     - 'Cupertino'
   subcategories: []
   link: https://api.flutter.dev/flutter/cupertino/CupertinoDynamicColor-class.html
 - name: CupertinoFormRow
   description: >-
-    An iOS-style form row.
+    Uma linha de formulário no estilo iOS.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -660,7 +661,7 @@
     src: /assets/images/docs/widget-catalog/CupertinoFormRow.png
 - name: CupertinoFormSection
   description: >-
-    An iOS-style form section.
+    Uma seção de formulário no estilo iOS.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -669,7 +670,7 @@
     src: /assets/images/docs/widget-catalog/CupertinoFormSection.png
 - name: CupertinoFullscreenDialogTransition
   description: >-
-    An iOS-style transition used for summoning fullscreen dialogs.
+    Uma transição no estilo iOS usada para invocar diálogos de tela cheia.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -677,13 +678,13 @@
   image:
     src: /assets/images/docs/widget-catalog/cupertino-fullscreen-dialog-transition.png
 - name: CupertinoThemeData
-  description: Styling specifications for a CupertinoTheme.
+  description: Especificações de estilo para um CupertinoTheme.
   categories:
     - 'Cupertino'
   subcategories: []
   link: https://api.flutter.dev/flutter/cupertino/CupertinoThemeData-class.html
 - name: CupertinoListSection
-  description: Container that uses the iOS style to display a scrollable view.
+  description: Contêiner que usa o estilo iOS para exibir uma visualização rolável.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -692,7 +693,7 @@
     src: /assets/images/docs/widget-catalog/cupertino-list-section.png
 - name: CupertinoListTile
   description: >-
-    A block that uses the iOS style to create a row in a list.
+    Um bloco que usa o estilo iOS para criar uma linha em uma lista.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -701,8 +702,8 @@
     src: /assets/images/docs/widget-catalog/cupertino-list-tile.png
 - name: CupertinoListTileChevron
   description: >-
-    A typical iOS trailing widget used to denote that a CupertinoListTile is a
-    button with an action.
+    Um widget final típico do iOS usado para indicar que um CupertinoListTile é um
+    botão com uma ação.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -710,23 +711,23 @@
   image:
     src: /assets/images/docs/widget-catalog/CupertinoListTileChevron.png
 - name: CupertinoLocalizations
-  description: Defines the localized resource values used by the Cupertino widgets.
+  description: Define os valores de recursos localizados usados pelos widgets Cupertino.
   categories:
     - 'Cupertino'
   subcategories: []
   link: https://api.flutter.dev/flutter/cupertino/CupertinoLocalizations-class.html
 - name: CupertinoMagnifier
   description: >-
-    A RawMagnifier used for magnifying text in cases where a user's finger may
-    be blocking the point of interest, like a selection handle.
+    Um RawMagnifier usado para ampliar texto em casos onde o dedo do usuário pode
+    estar bloqueando o ponto de interesse, como uma alça de seleção.
   categories:
     - 'Cupertino'
   subcategories: []
   link: https://api.flutter.dev/flutter/cupertino/CupertinoMagnifier-class.html
 - name: CupertinoModalPopupRoute
   description: >-
-    A route that shows a modal iOS-style popup that
-    slides up from the bottom of the screen.
+    Uma rota que exibe um popup modal no estilo iOS que desliza para cima a partir da parte inferior
+    da tela.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -734,8 +735,8 @@
     https://api.flutter.dev/flutter/cupertino/CupertinoModalPopupRoute-class.html
 - name: CupertinoNavigationBar
   description: >-
-    Container at the top of a screen that uses the iOS style.
-    Many developers use this with `CupertinoPageScaffold`.
+    Contêiner no topo de uma tela que usa o estilo iOS. Muitos desenvolvedores
+    usam isso com `CupertinoPageScaffold`.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -744,7 +745,7 @@
     src: /assets/images/docs/widget-catalog/cupertino-nav-bar.png
 - name: CupertinoNavigationBarBackButton
   description: >-
-    A nav bar back button typically used in CupertinoNavigationBar.
+    Um botão de voltar da barra de navegação tipicamente usado em CupertinoNavigationBar.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -753,28 +754,28 @@
     src: /assets/images/docs/widget-catalog/CupertinoNavigationBarBackButton.png
 - name: CupertinoPage
   description: >-
-    A page that creates a cupertino style PageRoute.
+    Uma página que cria uma PageRoute no estilo cupertino.
   categories:
     - 'Cupertino'
   subcategories: []
   link: https://api.flutter.dev/flutter/cupertino/CupertinoPage-class.html
 - name: CupertinoPageRoute
   description: >-
-    A modal route that replaces the entire screen with an iOS transition.
+    Uma rota modal que substitui a tela inteira com uma transição iOS.
   categories:
     - 'Cupertino'
   subcategories: []
   link: https://api.flutter.dev/flutter/cupertino/CupertinoPageRoute-class.html
 - name: CupertinoPageScaffold
   description: >-
-    Basic iOS style page layout structure.
-    Positions a navigation bar and content on a background.
+    Estrutura de layout de página básica no estilo iOS. Posiciona uma barra de navegação e
+    conteúdo sobre um fundo.
   categories:
     - 'Cupertino'
   subcategories: []
   link: https://api.flutter.dev/flutter/cupertino/CupertinoPageScaffold-class.html
 - name: CupertinoPageTransition
-  description: Provides an iOS-style page transition animation.
+  description: Fornece uma animação de transição de página no estilo iOS.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -783,7 +784,7 @@
     src: /assets/images/docs/widget-catalog/cupertino-page-transition.png
 - name: CupertinoPicker
   description: >-
-    An iOS-style picker control. Used to select an item in a short list.
+    Um controle de seleção no estilo iOS. Usado para selecionar um item em uma lista curta.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -792,22 +793,22 @@
     src: /assets/images/docs/widget-catalog/CupertinoPicker.png
 - name: CupertinoPickerDefaultSelectionOverlay
   description: >-
-    A default selection overlay for CupertinoPickers.
+    Uma sobreposição de seleção padrão para CupertinoPickers.
   categories:
     - 'Cupertino'
   subcategories: []
   link: https://api.flutter.dev/flutter/cupertino/CupertinoPickerDefaultSelectionOverlay-class.html
 - name: CupertinoPopupSurface
   description: >-
-    Rounded rectangle surface that looks like an iOS popup surface, such as an
-    alert dialog or action sheet.
+    Superfície de retângulo arredondado que se parece com uma superfície de popup do iOS, como um
+    diálogo de alerta ou folha de ações.
   categories:
     - 'Cupertino'
   subcategories: []
   link: https://api.flutter.dev/flutter/cupertino/CupertinoPopupSurface-class.html
 - name: CupertinoRadio
   description: >-
-    A macOS-style radio button.
+    Um botão de rádio no estilo macOS.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -816,8 +817,8 @@
     src: /assets/images/docs/widget-catalog/CupertinoRadio.png
 - name: CupertinoScrollbar
   description: >-
-    An iOS-style scrollbar that indicates which portion of a scrollable widget
-    is currently visible.
+    Uma barra de rolagem no estilo iOS que indica qual porção de um widget rolável
+    está visível no momento.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -825,14 +826,14 @@
   image:
     src: /assets/images/docs/widget-catalog/cupertino-scrollbar.png
 - name: CupertinoScrollBehavior
-  description: Describes how Scrollable widgets behave for CupertinoApps.
+  description: Descreve como os widgets Scrollable se comportam para CupertinoApps.
   categories:
     - 'Cupertino'
   subcategories: []
   link: https://api.flutter.dev/flutter/cupertino/CupertinoScrollBehavior-class.html
 - name: CupertinoSearchTextField
   description: >-
-    An iOS-style search field.
+    Um campo de busca no estilo iOS.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -841,8 +842,8 @@
     src: /assets/images/docs/widget-catalog/cupertino-search-field.png
 - name: CupertinoSegmentedControl
   description: >-
-    An iOS-style segmented control. Used to select mutually exclusive options in
-    a horizontal list.
+    Um controle segmentado no estilo iOS. Usado para selecionar opções mutuamente exclusivas em
+    uma lista horizontal.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -850,7 +851,7 @@
   image:
     src: /assets/images/docs/widget-catalog/cupertino-segmented-control.png
 - name: CupertinoSlider
-  description: Used to select from a range of values.
+  description: Usado para selecionar a partir de um intervalo de valores.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -859,8 +860,7 @@
     src: /assets/images/docs/widget-catalog/cupertino-slider.png
 - name: CupertinoSlidingSegmentedControl
   description: >-
-    An iOS-13-style segmented control. Used to select mutually exclusive options
-    in a horizontal list.
+    Um controle segmentado no estilo iOS-13. Usado para selecionar opções mutuamente exclusivas em uma lista horizontal.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -869,24 +869,24 @@
     src: /assets/images/docs/widget-catalog/cupertino-sliding-segmented-control.png
 - name: CupertinoSliverNavigationBar
   description: >-
-    A navigation bar with iOS-11-style large titles using slivers.
+    Uma barra de navegação com títulos grandes no estilo iOS-11 usando slivers.
   categories:
     - 'Cupertino'
   subcategories:
-    - 'Sliver widgets'
+    - 'Widgets sliver'
   link: https://api.flutter.dev/flutter/cupertino/CupertinoSliverNavigationBar-class.html
   image:
     src: /assets/images/docs/widget-catalog/cupertino-sliver-navigation-bar.png
 - name: CupertinoSliverRefreshControl
   description: >-
-    A sliver widget implementing the iOS-style pull to refresh content control.
+    Um widget sliver implementando o controle de conteúdo pull to refresh no estilo iOS.
   categories:
     - 'Cupertino'
   subcategories:
-    - 'Sliver widgets'
+    - 'Widgets sliver'
   link: https://api.flutter.dev/flutter/cupertino/CupertinoSliverRefreshControl-class.html
 - name: CupertinoSpellCheckSuggestionsToolbar
-  description: The default spell check suggestions toolbar for iOS.
+  description: A barra de ferramentas de sugestões de verificação ortográfica padrão para iOS.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -895,7 +895,7 @@
     src: /assets/images/docs/widget-catalog/CupertinoSpellCheckSuggestionsToolbar.png
 - name: CupertinoSwitch
   description: >-
-    An iOS-style switch. Used to toggle the on/off state of a single setting.
+    Um interruptor no estilo iOS. Usado para alternar o estado ligado/desligado de uma única configuração.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -904,7 +904,7 @@
     src: /assets/images/docs/widget-catalog/cupertino-switch.png
 - name: CupertinoTabBar
   description: >-
-    An iOS-style bottom tab bar. Typically used with CupertinoTabScaffold.
+    Uma barra de abas inferior no estilo iOS. Tipicamente usada com CupertinoTabScaffold.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -913,14 +913,13 @@
     src: /assets/images/docs/widget-catalog/cupertino-tab-bar.png
 - name: CupertinoTabController
   description: >-
-    Coordinates tab selection between a CupertinoTabBar and
-    a CupertinoTabScaffold.
+    Coordena a seleção de abas entre um CupertinoTabBar e um CupertinoTabScaffold.
   categories:
     - 'Cupertino'
   subcategories: []
   link: https://api.flutter.dev/flutter/cupertino/CupertinoTabController-class.html
 - name: CupertinoTabScaffold
-  description: Tabbed iOS app structure. Positions a tab bar on top of tabs of content.
+  description: Estrutura de app iOS com abas. Posiciona uma barra de abas sobre as abas de conteúdo.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -929,8 +928,7 @@
     src: /assets/images/docs/widget-catalog/cupertino-tab-scaffold.png
 - name: CupertinoTabView
   description: >-
-    Root content of a tab that supports parallel navigation between tabs.
-    Typically used with CupertinoTabScaffold.
+    Conteúdo raiz de uma aba que suporta navegação paralela entre abas. Tipicamente usado com CupertinoTabScaffold.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -939,7 +937,7 @@
     src: /assets/images/docs/widget-catalog/cupertino-tab-view.png
 - name: CupertinoTextField
   description: >-
-    An iOS-style text field.
+    Um campo de texto no estilo iOS.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -948,8 +946,7 @@
     src: /assets/images/docs/widget-catalog/cupertino-textfield.png
 - name: CupertinoTextFormFieldRow
   description: >-
-    Creates a CupertinoFormRow containing a FormField that wraps a
-    CupertinoTextField.
+    Cria um CupertinoFormRow contendo um FormField que envolve um CupertinoTextField.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -958,8 +955,7 @@
     src: /assets/images/docs/widget-catalog/CupertinoTextFormFieldRow.png
 - name: CupertinoTextMagnifier
   description: >-
-    A CupertinoMagnifier used for magnifying text in cases where a user's finger
-    may be blocking the point of interest, like a selection handle.
+    Um CupertinoMagnifier usado para ampliar texto em casos onde o dedo do usuário pode estar bloqueando o ponto de interesse, como uma alça de seleção.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -967,14 +963,14 @@
   image:
     src: /assets/images/docs/widget-catalog/CupertinoTextMagnifier.png
 - name: CupertinoTextSelectionControls
-  description: iOS-style text selection controls.
+  description: Controles de seleção de texto no estilo iOS.
   categories:
     - 'Cupertino'
   subcategories: []
   link: https://api.flutter.dev/flutter/cupertino/CupertinoTextSelectionControls-class.html
 - name: CupertinoTextSelectionToolbar
   description: >-
-    An iOS-style text selection toolbar.
+    Uma barra de ferramentas de seleção de texto no estilo iOS.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -983,7 +979,7 @@
     src: /assets/images/docs/widget-catalog/CupertinoTextSelectionToolbar.png
 - name: CupertinoTextSelectionToolbarButton
   description: >-
-    A button in the style of the iOS text selection toolbar buttons.
+    Um botão no estilo dos botões da barra de ferramentas de seleção de texto do iOS.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -991,27 +987,27 @@
   image:
     src: /assets/images/docs/widget-catalog/CupertinoTextSelectionToolbarButton.png
 - name: CupertinoTextThemeData
-  description: Cupertino typography theme in a CupertinoThemeData.
+  description: Tema de tipografia Cupertino em um CupertinoThemeData.
   categories:
     - 'Cupertino'
   subcategories: []
   link: https://api.flutter.dev/flutter/cupertino/CupertinoTextThemeData-class.html
 - name: CupertinoTheme
   description: >-
-    Applies a visual styling theme to descendant Cupertino widgets.
+    Aplica um tema de estilo visual aos widgets Cupertino descendentes.
   categories:
     - 'Cupertino'
   subcategories: []
   link: https://api.flutter.dev/flutter/cupertino/CupertinoTheme-class.html
 - name: CupertinoThumbPainter
-  description: Paints an iOS-style slider thumb or switch thumb.
+  description: Pinta um indicador de controle deslizante ou interruptor no estilo iOS.
   categories:
     - 'Cupertino'
   subcategories: []
   link: https://api.flutter.dev/flutter/cupertino/CupertinoThumbPainter-class.html
 - name: CupertinoTimerPicker
   description: >-
-    An iOS-style countdown timer picker.
+    Um seletor de temporizador de contagem regressiva no estilo iOS.
   categories:
     - 'Cupertino'
   subcategories: []
@@ -1020,16 +1016,16 @@
     src: /assets/images/docs/widget-catalog/CupertinoTimerPicker.png
 - name: CustomMultiChildLayout
   description: >-
-    A widget that uses a delegate to size and position multiple children.
+    Um widget que usa um delegado para dimensionar e posicionar múltiplos filhos.
   categories: []
   subcategories:
-    - 'Multi-child layout widgets'
+    - 'Widgets de layout de múltiplos filhos'
   link: https://api.flutter.dev/flutter/widgets/CustomMultiChildLayout-class.html
 - name: CustomPaint
   description: >-
-    A widget that provides a canvas on which to draw during the paint phase.
+    Um widget que fornece uma tela na qual desenhar durante a fase de pintura.
   categories:
-    - 'Painting and effects'
+    - 'Pintura e efeitos'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/CustomPaint-class.html
   vector: >-
@@ -1041,47 +1037,44 @@
     transform='rotate(-25)'/></svg>
 - name: CarouselView
   description: >-
-    A Material carousel widget that presents a scrollable
-    list of items, each of which can dynamically change
-    size based on the chosen layout.
+    Um widget carrossel Material que apresenta uma lista rolável de itens, cada um dos quais pode mudar dinamicamente de tamanho com base no layout escolhido.
   categories:
-    - 'Scrolling'
+    - 'Rolagem'
   subcategories:
-    - 'Multi-child layout widgets'
+    - 'Widgets de layout de múltiplos filhos'
   link: https://main-api.flutter.dev/flutter/material/CarouselView-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-carousel.png
 - name: CustomScrollView
   description: >-
-    A ScrollView that creates custom scroll effects using slivers.
+    Um ScrollView que cria efeitos de rolagem personalizados usando slivers.
   categories:
-    - 'Scrolling'
+    - 'Rolagem'
   subcategories:
-    - 'Sliver widgets'
+    - 'Widgets sliver'
   link: https://api.flutter.dev/flutter/widgets/CustomScrollView-class.html
 - name: CustomSingleChildLayout
   description: >-
-    A widget that defers the layout of its single child to a delegate.
+    Um widget que delega o layout de seu único filho a um delegado.
   categories: []
   subcategories:
-    - 'Single-child layout widgets'
+    - 'Widgets de layout de filho único'
   link: https://api.flutter.dev/flutter/widgets/CustomSingleChildLayout-class.html
 - name: DataTable
   description: >-
-    Data tables display sets of raw data. They usually appear in desktop
-    enterprise products. The DataTable widget implements this component.
+    Tabelas de dados exibem conjuntos de dados brutos. Elas geralmente aparecem em produtos empresariais de desktop. O widget DataTable implementa este componente.
   categories: []
   subcategories:
-    - 'Information displays'
+    - 'Exibições de informação'
   link: https://api.flutter.dev/flutter/material/DataTable-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-data-table.png
 - name: DatePicker
-  description: Calendar interface used to select a date or a range of dates.
+  description: Interface de calendário usada para selecionar uma data ou um intervalo de datas.
   categories: []
   subcategories:
-    - 'Selection'
-    - 'Input and selections'
+    - 'Seleção'
+    - 'Entrada e seleções'
   link: https://api.flutter.dev/flutter/material/showDatePicker.html
   image:
     src: /assets/images/docs/widget-catalog/material-3-date-picker.png
@@ -1089,9 +1082,9 @@
     src: /assets/images/docs/widget-catalog/material-3-leaves.png
 - name: DecoratedBox
   description: >-
-    A widget that paints a Decoration either before or after its child paints.
+    Um widget que pinta uma Decoration antes ou depois que seu filho pinta.
   categories:
-    - 'Painting and effects'
+    - 'Pintura e efeitos'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/DecoratedBox-class.html
   vector: >-
@@ -1110,38 +1103,39 @@
     Animated version of a DecoratedBox that animates the different properties of
     its Decoration.
   categories:
-    - 'Animation and motion'
+    - 'Animação e movimento'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/DecoratedBoxTransition-class.html
 - name: DefaultTextStyle
-  description: The text style to apply to descendant Text widgets without explicit style.
+  description: O estilo de texto a ser aplicado aos widgets Text descendentes sem estilo explícito.
   categories:
-    - 'Text'
+    - 'Texto'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/DefaultTextStyle-class.html
 - name: DefaultTextStyleTransition
   description: >-
-    Animated version of a DefaultTextStyle that animates the different properties of its TextStyle.
+    Animated version of a DefaultTextStyle that animates the different
+    properties of its TextStyle.
   categories:
-    - 'Animation and motion'
+    - 'Animação e movimento'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/DefaultTextStyleTransition-class.html
 - name: Dismissible
   description: >-
-    A widget that can be dismissed by dragging in the indicated direction.
+    Um widget que pode ser dispensado arrastando na direção indicada.
     Dragging or flinging this widget in the DismissDirection causes the child to
     slide out of view. Following the slide animation, if resizeDuration is
     non-null, the Dismissible widget animates its height (or width, whichever is
     perpendicular to the dismiss direction) to zero over the resizeDuration.
   categories: []
   subcategories:
-    - 'Touch interactions'
+    - 'Interações de toque'
   link: https://api.flutter.dev/flutter/widgets/Dismissible-class.html
 - name: Divider
   description: Thin line that groups content in lists and containers.
   categories: []
   subcategories:
-    - 'Containment'
+    - 'Contenção'
     - 'Layout'
   link: https://api.flutter.dev/flutter/material/Divider-class.html
   image:
@@ -1150,35 +1144,26 @@
     src: /assets/images/docs/widget-catalog/material-3-coral.png
 - name: DragTarget
   description: >-
-    A widget that receives data when a Draggable widget is dropped. When a
-    draggable is dragged on top of a drag target, the drag target is asked
-    whether it will accept the data the draggable is carrying. If the user does
-    drop the draggable on top of the drag target (and the drag target has
-    indicated that it will accept the draggable's data), then the drag target is
-    asked to accept the draggable's data.
+    Um widget que recebe dados quando um widget Draggable é solto. Quando um arrastável é arrastado sobre um alvo de arrastar, o alvo de arrastar é perguntado se aceitará os dados que o arrastável está carregando. Se o usuário soltar o arrastável sobre o alvo de arrastar (e o alvo de arrastar indicou que aceitará os dados do arrastável), então o alvo de arrastar é solicitado a aceitar os dados do arrastável.
   categories: []
   subcategories:
-    - 'Touch interactions'
+    - 'Interações de toque'
   link: https://api.flutter.dev/flutter/widgets/DragTarget-class.html
 - name: Draggable
   description: >-
-    A widget that can be dragged from to a DragTarget. When a draggable widget
-    recognizes the start of a drag gesture, it displays a feedback widget that
-    tracks the user's finger across the screen. If the user lifts their finger
-    while on top of a DragTarget, that target is given the opportunity to accept
-    the data carried by the draggable.
+    Um widget que pode ser arrastado para um DragTarget. Quando um widget arrastável reconhece o início de um gesto de arrastar, ele exibe um widget de feedback que rastreia o dedo do usuário pela tela. Se o usuário levantar o dedo enquanto estiver sobre um DragTarget, esse alvo recebe a oportunidade de aceitar os dados carregados pelo arrastável.
   categories: []
   subcategories:
-    - 'Touch interactions'
+    - 'Interações de toque'
   link: https://api.flutter.dev/flutter/widgets/Draggable-class.html
 - name: DraggableScrollableSheet
   description: >-
     A container for a Scrollable that responds to drag gestures by resizing the
     scrollable until a limit is reached, and then scrolling.
   categories:
-    - 'Scrolling'
+    - 'Rolagem'
   subcategories:
-    - 'Touch interactions'
+    - 'Interações de toque'
   link: https://api.flutter.dev/flutter/widgets/DraggableScrollableSheet-class.html
 - name: Drawer
   description: >-
@@ -1186,7 +1171,7 @@
     Scaffold to show navigation links in an application.
   categories: []
   subcategories:
-    - 'App structure and navigation'
+    - 'Estrutura e navegação do app'
   link: https://api.flutter.dev/flutter/material/Drawer-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-drawer.png
@@ -1196,7 +1181,7 @@
     selecting another item.
   categories: []
   subcategories:
-    - 'Buttons'
+    - 'Botões'
   link: https://api.flutter.dev/flutter/material/DropdownButton-class.html
   image:
     src: https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B7WCemMG6e0VakJ6a0F2MFJaaDQ/components_menus.png
@@ -1205,28 +1190,26 @@
     A Material Design elevated button. A filled button whose material elevates
     when pressed.
   categories:
-    - 'Basics'
+    - 'Básicos'
   subcategories:
-    - 'Buttons'
+    - 'Botões'
   link: https://api.flutter.dev/flutter/material/ElevatedButton-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-elevated-button.png
 - name: ExcludeSemantics
   description: >-
-    A widget that drops all the semantics of its descendants. This can be used
-    to hide subwidgets that would otherwise be reported but that would only be
-    confusing. For example, the Material Components Chip widget hides the avatar
+    Um widget que descarta toda a semântica de seus descendentes. Isso pode ser usado para ocultar subwidgets que de outra forma seriam relatados, mas que apenas causariam confusão. For example, the Material Components Chip widget hides the avatar
     since it is redundant with the chip label.
   categories:
-    - 'Accessibility'
+    - 'Acessibilidade'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/ExcludeSemantics-class.html
 - name: Expanded
   categories: []
   subcategories:
-    - 'Single-child layout widgets'
+    - 'Widgets de layout de filho único'
   description: >-
-    A widget that expands a child of a Row, Column, or Flex.
+    Um widget que expande um filho de um Row, Column ou Flex.
   link: https://api.flutter.dev/flutter/widgets/Expanded-class.html
 - name: ExpansionPanel
   description: >-
@@ -1234,29 +1217,29 @@
     element. The ExpansionPanel widget implements this component.
   categories: []
   subcategories:
-    - 'Dialogs, alerts, and panels'
+    - 'Diálogos, alertas e painéis'
   link: https://api.flutter.dev/flutter/material/ExpansionPanel-class.html
   image:
     src: https://material-design.storage.googleapis.com/publish/material_v_9/0B7WCemMG6e0VOXF3eEJ3azZMSjg/components_expansion_panels.png
 - name: FadeTransition
   description: >-
-    Animates the opacity of a widget.
+    Anima a opacidade de um widget.
   categories:
-    - 'Animation and motion'
+    - 'Animação e movimento'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/FadeTransition-class.html
 - name: FittedBox
   description: Scales and positions its child within itself according to fit.
   categories: []
   subcategories:
-    - 'Single-child layout widgets'
+    - 'Widgets de layout de filho único'
   link: https://api.flutter.dev/flutter/widgets/FittedBox-class.html
 - name: FloatingActionButton
-  description: Clickable block containing an icon that keeps a key action always in reach.
+  description: Bloco clicável contendo um ícone que mantém uma ação principal sempre ao alcance.
   categories: []
   subcategories:
-    - 'Actions'
-    - 'Buttons'
+    - 'Ações'
+    - 'Botões'
   link: https://api.flutter.dev/flutter/material/FloatingActionButton-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-3-floating-action-button.png
@@ -1264,12 +1247,12 @@
     src: /assets/images/docs/widget-catalog/material-3-leaves.png
 - name: Extended FloatingActionButton
   description: >-
-    Clickable block that triggers an action. These wider blocks can fit a text
-    label and provide a larger target area.
+    Bloco clicável que aciona uma ação. Esses blocos mais largos podem caber um rótulo de texto
+    e fornecer uma área de destino maior.
   categories: []
   subcategories:
-    - 'Actions'
-    - 'Buttons'
+    - 'Ações'
+    - 'Botões'
   link: https://api.flutter.dev/flutter/material/FloatingActionButton/FloatingActionButton.extended.html
   image:
     src: /assets/images/docs/widget-catalog/material-3-extended-fab.png
@@ -1277,16 +1260,16 @@
     src: /assets/images/docs/widget-catalog/material-3-leaves.png
 - name: Flow
   description: >-
-    A widget that implements the flow layout algorithm.
+    Um widget que implementa o algoritmo de layout de fluxo.
   categories: []
   subcategories:
-    - 'Multi-child layout widgets'
+    - 'Widgets de layout de múltiplos filhos'
   link: https://api.flutter.dev/flutter/widgets/Flow-class.html
 - name: FlutterLogo
   description: >-
-    The Flutter logo, in widget form. This widget respects the IconTheme.
+    O logotipo do Flutter, em forma de widget. Este widget respeita o IconTheme.
   categories:
-    - 'Basics'
+    - 'Básicos'
   subcategories: []
   link: https://api.flutter.dev/flutter/material/FlutterLogo-class.html
 - name: Form
@@ -1294,90 +1277,88 @@
     An optional container for grouping together multiple form field widgets
     (e.g. TextField widgets).
   categories:
-    - 'Input'
+    - 'Entrada'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/Form-class.html
 - name: FormField
   description: >-
-    A single form field.
-    This widget maintains the current state of the form field, so that
-    updates and validation errors are visually reflected in the UI.
+    A single form field. This widget maintains the current state of the form
+    field, so that updates and validation errors are visually reflected in the
+    UI.
   categories:
-    - 'Input'
+    - 'Entrada'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/FormField-class.html
 - name: FractionalTranslation
   description: >-
-    A widget that applies a translation expressed as a fraction of the box's
-    size before painting its child.
+    Um widget que aplica uma translação expressa como uma fração do tamanho da
+    caixa antes de pintar seu filho.
   categories:
-    - 'Painting and effects'
+    - 'Pintura e efeitos'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/FractionalTranslation-class.html
 - name: FractionallySizedBox
   description: >-
-    A widget that sizes its child to a fraction of the total available space.
+    Um widget que dimensiona seu filho para uma fração do espaço total disponível.
     For more details about the layout algorithm, see
     RenderFractionallySizedOverflowBox.
   categories: []
   subcategories:
-    - 'Single-child layout widgets'
+    - 'Widgets de layout de filho único'
   link: https://api.flutter.dev/flutter/widgets/FractionallySizedBox-class.html
 - name: FutureBuilder
   description: >-
-    Widget that builds itself based on the latest snapshot of interaction with a
-    Future.
+    Widget que se constrói com base no último instantâneo de interação com um Future.
   categories:
     - 'Async'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/FutureBuilder-class.html
 - name: GestureDetector
   description: >-
-    A widget that detects gestures. Attempts to recognize gestures that
-    correspond to its non-null callbacks. If this widget has a child, it defers
+    Um widget que detecta gestos. Tenta reconhecer gestos que correspondem aos seus callbacks não nulos. If this widget has a child, it defers
     to that child for its sizing behavior. If it does not have a child, it grows
     to fit the parent instead.
   categories: []
   subcategories:
-    - 'Touch interactions'
+    - 'Interações de toque'
   link: https://api.flutter.dev/flutter/widgets/GestureDetector-class.html
 - name: GridView
   description: >-
     A grid list consists of a repeated pattern of cells arrayed in a vertical
     and horizontal layout. The GridView widget implements this component.
   categories:
-    - 'Scrolling'
+    - 'Rolagem'
   subcategories:
-    - 'Information displays'
-    - 'Multi-child layout widgets'
+    - 'Exibições de informação'
+    - 'Widgets de layout de múltiplos filhos'
   link: https://api.flutter.dev/flutter/widgets/GridView-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-grid-view.png
 - name: Hero
   description: >-
-    A widget that marks its child as being a candidate for hero animations.
+    Um widget que marca seu filho como sendo um candidato para animações hero.
   categories:
-    - 'Animation and motion'
+    - 'Animação e movimento'
   subcategories:
-    - 'Routing'
+    - 'Roteamento'
   link: https://api.flutter.dev/flutter/widgets/Hero-class.html
 - name: Icon
   description: >-
     A Material Design icon.
   categories:
-    - 'Basics'
-    - 'Assets, images, and icons'
+    - 'Básicos'
+    - 'Assets, imagens e ícones'
   subcategories:
-    - 'Information displays'
+    - 'Exibições de informação'
   link: https://api.flutter.dev/flutter/widgets/Icon-class.html
   image:
     src: https://flutter.github.io/assets-for-api-docs/assets/widgets/icon.png
 - name: IconButton
-  description: Clickable icons to prompt app users to take supplementary actions.
+  description: Ícones clicáveis para solicitar que os usuários do app realizem ações suplementares.
   categories: []
   subcategories:
-    - 'Actions'
-    - 'Buttons'
+    - 'Ações'
+    - 'Botões'
   link: https://api.flutter.dev/flutter/material/IconButton-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-3-icon-button.png
@@ -1385,22 +1366,19 @@
     src: /assets/images/docs/widget-catalog/material-3-leaves.png
 - name: IgnorePointer
   description: >-
-    A widget that is invisible during hit testing. When ignoring is true, this
-    widget (and its subtree) is invisible to hit testing. It still consumes
-    space during layout and paints its child as usual. It just cannot be the
-    target of located events, because it returns false from RenderBox.hitTest.
+    Um widget que é invisível durante o teste de toque. Quando ignoring é true, este widget (e sua subárvore) é invisível ao teste de toque. Ele ainda consome espaço durante o layout e pinta seu filho normalmente. Apenas não pode ser o alvo de eventos localizados, porque retorna false de RenderBox.hitTest.
   categories: []
   subcategories:
-    - 'Touch interactions'
+    - 'Interações de toque'
   link: https://api.flutter.dev/flutter/widgets/IgnorePointer-class.html
 - name: Image
   description: >-
-    A widget that displays an image.
+    Um widget que exibe uma imagem.
   categories:
-    - 'Basics'
-    - 'Assets, images, and icons'
+    - 'Básicos'
+    - 'Assets, imagens e ícones'
   subcategories:
-    - 'Information displays'
+    - 'Exibições de informação'
   link: https://api.flutter.dev/flutter/widgets/Image-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><rect x='0' y='0' width='100' height='100'
@@ -1412,42 +1390,42 @@
     A Stack that shows a single child from a list of children.
   categories: []
   subcategories:
-    - 'Multi-child layout widgets'
+    - 'Widgets de layout de múltiplos filhos'
   link: https://api.flutter.dev/flutter/widgets/IndexedStack-class.html
 - name: InteractiveViewer
   description: >-
-    A widget that enables pan and zoom interactions with its child.
+    Um widget que habilita interações de panorâmica e zoom com seu filho.
   categories: []
   subcategories:
-    - 'Touch interactions'
+    - 'Interações de toque'
   link: https://api.flutter.dev/flutter/widgets/InteractiveViewer-class.html
 - name: IntrinsicHeight
   description: >-
-    A widget that sizes its child to the child's intrinsic height.
+    Um widget que dimensiona seu filho para a altura intrínseca do filho.
   categories: []
   subcategories:
-    - 'Single-child layout widgets'
+    - 'Widgets de layout de filho único'
   link: https://api.flutter.dev/flutter/widgets/IntrinsicHeight-class.html
 - name: IntrinsicWidth
   description: >-
-    A widget that sizes its child to the child's intrinsic width.
+    Um widget que dimensiona seu filho para a largura intrínseca do filho.
   categories: []
   subcategories:
-    - 'Single-child layout widgets'
+    - 'Widgets de layout de filho único'
   link: https://api.flutter.dev/flutter/widgets/IntrinsicWidth-class.html
 - name: LayoutBuilder
   description: >-
     Builds a widget tree that can depend on the parent widget's size.
   categories: []
   subcategories:
-    - 'Multi-child layout widgets'
+    - 'Widgets de layout de múltiplos filhos'
   link: https://api.flutter.dev/flutter/widgets/LayoutBuilder-class.html
 - name: LimitedBox
   description: >-
     A box that limits its size only when it's unconstrained.
   categories: []
   subcategories:
-    - 'Single-child layout widgets'
+    - 'Widgets de layout de filho único'
   link: https://api.flutter.dev/flutter/widgets/LimitedBox-class.html
 - name: LinearProgressIndicator
   description: >-
@@ -1455,8 +1433,8 @@
     app or submitting a form, completes.
   categories: []
   subcategories:
-    - 'Communication'
-    - 'Information displays'
+    - 'Comunicação'
+    - 'Exibições de informação'
   link: https://api.flutter.dev/flutter/material/LinearProgressIndicator-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-3-progress-indicator.png
@@ -1468,7 +1446,7 @@
     leading or trailing icon.
   categories: []
   subcategories:
-    - 'Containment'
+    - 'Contenção'
     - 'Layout'
   link: https://api.flutter.dev/flutter/material/ListTile-class.html
   image:
@@ -1477,11 +1455,10 @@
     src: /assets/images/docs/widget-catalog/material-3-coral.png
 - name: ListBody
   description: >-
-    A widget that arranges its children sequentially along a given axis, forcing
-    them to the dimension of the parent in the other axis.
+    Um widget que organiza seus filhos sequencialmente ao longo de um eixo dado, forçando-os à dimensão do pai no outro eixo.
   categories: []
   subcategories:
-    - 'Multi-child layout widgets'
+    - 'Widgets de layout de múltiplos filhos'
   link: https://api.flutter.dev/flutter/widgets/ListBody-class.html
 - name: ListView
   description: >-
@@ -1490,9 +1467,9 @@
     direction. In the cross axis, the children are required to fill the
     ListView.
   categories:
-    - 'Scrolling'
+    - 'Rolagem'
   subcategories:
-    - 'Multi-child layout widgets'
+    - 'Widgets de layout de múltiplos filhos'
   link: https://api.flutter.dev/flutter/widgets/ListView-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-list-tile.png
@@ -1500,36 +1477,36 @@
   description: Makes its child draggable starting from long press.
   categories: []
   subcategories:
-    - 'Touch interactions'
+    - 'Interações de toque'
   link: https://api.flutter.dev/flutter/widgets/LongPressDraggable-class.html
 - name: MaterialApp
   description: >-
-    A convenience widget that wraps a number of widgets that are commonly
-    required for applications implementing Material Design.
+    Um widget de conveniência que envolve vários widgets que são comumente
+    necessários para aplicações que implementam Material Design.
   categories: []
   subcategories:
-    - 'App structure and navigation'
+    - 'Estrutura e navegação do app'
   link: https://api.flutter.dev/flutter/material/MaterialApp-class.html
   image:
     src: https://storage.googleapis.com/material-design/publish/material_v_11/assets/0Bx4BSt6jniD7Y1huOXVQdlFPMmM/materialdesign_introduction.png
 - name: MatrixTransition
   description: >-
-    Animates the Matrix4 of a transformed widget.
+    Anima o Matrix4 de um widget transformado.
   categories:
-    - 'Animation and motion'
+    - 'Animação e movimento'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/MatrixTransition-class.html
 - name: MediaQuery
   description: Establishes a subtree in which media queries resolve to the given data.
   categories:
-    - 'Styling'
+    - 'Estilização'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/MediaQuery-class.html
 - name: Menu
-  description: Container that displays a list of choices on a temporary surface.
+  description: Contêiner que exibe uma lista de opções em uma superfície temporária.
   categories: []
   subcategories:
-    - 'Selection'
+    - 'Seleção'
   link: https://api.flutter.dev/flutter/material/MenuAnchor-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-3-menu.png
@@ -1537,9 +1514,9 @@
     src: /assets/images/docs/widget-catalog/material-3-leaves.png
 - name: MergeSemantics
   description: >-
-    A widget that merges the semantics of its descendants.
+    Um widget que mescla a semântica de seus descendentes.
   categories:
-    - 'Accessibility'
+    - 'Acessibilidade'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/MergeSemantics-class.html
 - name: NavigationBar
@@ -1548,7 +1525,7 @@
     an app.
   categories: []
   subcategories:
-    - 'Navigation'
+    - 'Navegação'
   link: https://api.flutter.dev/flutter/material/NavigationBar-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-3-navigation-bar.png
@@ -1556,11 +1533,11 @@
     src: /assets/images/docs/widget-catalog/material-3-bubbles.png
 - name: NavigationDrawer
   description: >-
-    Container that slides from the leading edge of the app to navigate to other
-    sections in an app.
+    Contêiner que desliza a partir da borda frontal do app para navegar para outras
+    seções em um app.
   categories: []
   subcategories:
-    - 'Navigation'
+    - 'Navegação'
   link: https://api.flutter.dev/flutter/material/NavigationDrawer-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-3-navigation-drawer.png
@@ -1572,7 +1549,7 @@
     navigate to parts of an app.
   categories: []
   subcategories:
-    - 'Navigation'
+    - 'Navegação'
   link: https://api.flutter.dev/flutter/material/NavigationRail-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-3-navigation-rail.png
@@ -1580,46 +1557,44 @@
     src: /assets/images/docs/widget-catalog/material-3-bubbles.png
 - name: Navigator
   description: >-
-    A widget that manages a set of child widgets with a stack discipline. Many
-    apps have a navigator near the top of their widget hierarchy to display
-    their logical history using an Overlay with the most recently visited pages
-    visually on top of the older pages. Using this pattern lets the navigator
-    visually transition from one page to another by moving the widgets around in
-    the overlay. Similarly, the navigator can be used to show a dialog by
-    positioning the dialog widget above the current page.
+    Um widget que gerencia um conjunto de widgets filhos com uma disciplina de pilha. Muitos
+    apps têm um navegador perto do topo de sua hierarquia de widgets para exibir
+    seu histórico lógico usando um Overlay com as páginas visitadas mais recentemente
+    visualmente no topo das páginas mais antigas. Usar este padrão permite que o navegador
+    transite visualmente de uma página para outra movendo os widgets na
+    sobreposição. Similarmente, o navegador pode ser usado para mostrar um diálogo
+    posicionando o widget de diálogo acima da página atual.
   categories: []
   subcategories:
-    - 'Routing'
+    - 'Roteamento'
   link: https://api.flutter.dev/flutter/widgets/Navigator-class.html
 - name: NestedScrollView
   description: >-
     A scrolling view inside of which can be nested other scrolling views, with
     their scroll positions being intrinsically linked.
   categories:
-    - 'Scrolling'
+    - 'Rolagem'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/NestedScrollView-class.html
 - name: NotificationListener
   description: >-
-    A widget that listens for Notifications bubbling up the tree.
+    Um widget que escuta Notifications borbulhando pela árvore.
   categories:
-    - 'Scrolling'
+    - 'Rolagem'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/NotificationListener-class.html
 - name: Offstage
   description: >-
-    A widget that lays the child out as if it was in the tree, but without
-    painting anything, without making the child available for hit testing, and
-    without taking any room in the parent.
+    Um widget que faz o layout do filho como se estivesse na árvore, mas sem pintar nada, sem tornar o filho disponível para teste de toque e sem ocupar nenhum espaço no pai.
   categories: []
   subcategories:
-    - 'Single-child layout widgets'
+    - 'Widgets de layout de filho único'
   link: https://api.flutter.dev/flutter/widgets/Offstage-class.html
 - name: Opacity
   description: >-
-    A widget that makes its child partially transparent.
+    Um widget que torna seu filho parcialmente transparente.
   categories:
-    - 'Painting and effects'
+    - 'Pintura e efeitos'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/Opacity-class.html
   vector: >-
@@ -1633,25 +1608,24 @@
     border.
   categories: []
   subcategories:
-    - 'Buttons'
+    - 'Botões'
   link: https://api.flutter.dev/flutter/material/OutlinedButton-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-outlined-button.png
 - name: OverflowBox
   description: >-
-    A widget that imposes different constraints on its child than it gets from
-    its parent, possibly allowing the child to overflow the parent.
+    Um widget que impõe restrições diferentes ao seu filho do que recebe de seu pai, possivelmente permitindo que o filho transborde o pai.
   categories: []
   subcategories:
-    - 'Single-child layout widgets'
+    - 'Widgets de layout de filho único'
   link: https://api.flutter.dev/flutter/widgets/OverflowBox-class.html
 - name: Padding
   description: >-
-    A widget that insets its child by the given padding.
+    Um widget que inseta seu filho pelo preenchimento fornecido.
   categories:
-    - 'Styling'
+    - 'Estilização'
   subcategories:
-    - 'Single-child layout widgets'
+    - 'Widgets de layout de filho único'
   link: https://api.flutter.dev/flutter/widgets/Padding-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><defs><marker id='arrow-padding'
@@ -1673,24 +1647,22 @@
   description: >-
     A scrollable list that works page by page.
   categories:
-    - 'Scrolling'
+    - 'Rolagem'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/PageView-class.html
 - name: Placeholder
   description: >-
-    A widget that draws a box that represents where other widgets will one day
-    be added.
+    Um widget que desenha uma caixa que representa onde outros widgets serão adicionados um dia.
   categories:
-    - 'Basics'
+    - 'Básicos'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/Placeholder-class.html
 - name: PopupMenuButton
   description: >-
-    Displays a menu when pressed and calls onSelected when the menu is dismissed
-    because an item was selected.
+    Exibe um menu quando pressionado e chama onSelected quando o menu é dispensado porque um item foi selecionado.
   categories: []
   subcategories:
-    - 'Buttons'
+    - 'Botões'
   link: https://api.flutter.dev/flutter/material/PopupMenuButton-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-popup-menu-button.png
@@ -1700,17 +1672,16 @@
     transition the child's position from a start position to and end position
     over the lifetime of the animation.
   categories:
-    - 'Animation and motion'
+    - 'Animação e movimento'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/PositionedTransition-class.html
 - name: Radio
   description: >-
-    Form control that app users can set or clear to select only one option from
-    a set.
+    Controle de formulário que os usuários do app podem marcar ou desmarcar para selecionar apenas uma opção de um conjunto.
   categories: []
   subcategories:
-    - 'Selection'
-    - 'Input and selections'
+    - 'Seleção'
+    - 'Entrada e seleções'
   link: https://api.flutter.dev/flutter/material/Radio-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-3-radio-button.png
@@ -1718,73 +1689,73 @@
     src: /assets/images/docs/widget-catalog/material-3-leaves.png
 - name: RawImage
   description: >-
-    A widget that displays a dart:ui.Image directly.
+    Um widget que exibe um dart:ui.Image diretamente.
   categories:
-    - 'Assets, images, and icons'
+    - 'Assets, imagens e ícones'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/RawImage-class.html
 - name: KeyboardListener
   description: >-
-    A widget that calls a callback whenever the user presses or releases a key
-    on a keyboard.
+    Um widget que chama um callback sempre que o usuário pressiona ou libera uma tecla em um teclado.
   categories:
-    - 'Input'
+    - 'Entrada'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/KeyboardListener-class.html
 - name: RefreshIndicator
   description: >-
     A Material Design pull-to-refresh wrapper for scrollables.
   categories:
-    - 'Scrolling'
+    - 'Rolagem'
   subcategories: []
   link: https://api.flutter.dev/flutter/material/RefreshIndicator-class.html
   image:
     src: https://storage.googleapis.com/material-design/publish/material_v_12/assets/0B7WCemMG6e0VS2kzSmZwNnNKQVk/patterns-swipe-to-refresh.png
 - name: RelativePositionedTransition
   description: >-
-    Animated version of Positioned which transitions the child's position based on the value of rect relative to a bounding box with the specified size.
+    Animated version of Positioned which transitions the child's position based
+    on the value of rect relative to a bounding box with the specified size.
   categories:
-    - 'Animation and motion'
+    - 'Animação e movimento'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/RelativePositionedTransition-class.html
 - name: ReorderableListView
   description: >-
     A list whose items the user can interactively reorder by dragging.
   categories:
-    - 'Scrolling'
+    - 'Rolagem'
   subcategories: []
   link: https://api.flutter.dev/flutter/material/ReorderableListView-class.html
 - name: RichText
   description: >-
-    The RichText widget displays text that uses multiple different styles. The
-    text to display is described using a tree of TextSpan objects, each of which
-    has an associated style that is used for that subtree. The text might break
-    across multiple lines or might all be displayed on the same line depending
-    on the layout constraints.
+    O widget RichText exibe texto que usa múltiplos estilos diferentes. O
+    texto a ser exibido é descrito usando uma árvore de objetos TextSpan, cada um dos quais
+    tem um estilo associado que é usado para essa subárvore. O texto pode quebrar
+    em várias linhas ou pode ser todo exibido na mesma linha dependendo
+    das restrições de layout.
   categories:
-    - 'Text'
+    - 'Texto'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/RichText-class.html
 - name: RotatedBox
   description: >-
-    A widget that rotates its child by a integral number of quarter turns.
+    Um widget que gira seu filho por um número inteiro de quartos de volta.
   categories:
-    - 'Painting and effects'
+    - 'Pintura e efeitos'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/RotatedBox-class.html
 - name: RotationTransition
   description: >-
-    Animates the rotation of a widget.
+    Anima a rotação de um widget.
   categories:
-    - 'Animation and motion'
+    - 'Animação e movimento'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/RotationTransition-class.html
 - name: Row
-  description: Layout a list of child widgets in the horizontal direction.
+  description: Organiza uma lista de widgets filhos na direção horizontal.
   categories:
-    - 'Basics'
+    - 'Básicos'
   subcategories:
-    - 'Multi-child layout widgets'
+    - 'Widgets de layout de múltiplos filhos'
   link: https://api.flutter.dev/flutter/widgets/Row-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><rect x='0' y='0' width='100' height='100'
@@ -1797,23 +1768,23 @@
     Implements the basic Material Design visual layout structure. This class
     provides APIs for showing drawers, snack bars, and bottom sheets.
   categories:
-    - 'Basics'
+    - 'Básicos'
   subcategories:
-    - 'App structure and navigation'
+    - 'Estrutura e navegação do app'
   link: https://api.flutter.dev/flutter/material/Scaffold-class.html
   image:
     src: https://storage.googleapis.com/material-design/publish/material_v_11/assets/0Bx4BSt6jniD7T0hfM01sSmRyTG8/layout_structure_regions_mobile.png
 - name: ScaleTransition
   description: >-
-    Animates the scale of transformed widget.
+    Anima a escala de um widget transformado.
   categories:
-    - 'Animation and motion'
+    - 'Animação e movimento'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/ScaleTransition-class.html
 - name: ScrollConfiguration
   description: Controls how Scrollable widgets behave in a subtree.
   categories:
-    - 'Scrolling'
+    - 'Rolagem'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/ScrollConfiguration-class.html
 - name: Scrollable
@@ -1822,16 +1793,16 @@
     including gesture recognition, but does not have an opinion about how the
     viewport, which actually displays the children, is constructed.
   categories:
-    - 'Scrolling'
+    - 'Rolagem'
   subcategories:
-    - 'Touch interactions'
+    - 'Interações de toque'
   link: https://api.flutter.dev/flutter/widgets/Scrollable-class.html
 - name: Scrollbar
   description: >-
     A Material Design scrollbar. A scrollbar indicates which portion of a
     Scrollable widget is actually visible.
   categories:
-    - 'Scrolling'
+    - 'Rolagem'
   subcategories: []
   link: https://api.flutter.dev/flutter/material/Scrollbar-class.html
 - name: SegmentedButton
@@ -1840,7 +1811,7 @@
     switch views, or sort elements.
   categories: []
   subcategories:
-    - 'Actions'
+    - 'Ações'
   link: https://api.flutter.dev/flutter/material/SegmentedButton-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-3-segmented-button.png
@@ -1848,11 +1819,10 @@
     src: /assets/images/docs/widget-catalog/material-3-leaves.png
 - name: Semantics
   description: >-
-    A widget that annotates the widget tree with a description of the meaning of
-    the widgets. Used by accessibility tools, search engines, and other semantic
+    Um widget que anota a árvore de widgets com uma descrição do significado dos widgets. Used by accessibility tools, search engines, and other semantic
     analysis software to determine the meaning of the application.
   categories:
-    - 'Accessibility'
+    - 'Acessibilidade'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/Semantics-class.html
 - name: SimpleDialog
@@ -1862,7 +1832,7 @@
     actions (such as adding an account).
   categories: []
   subcategories:
-    - 'Dialogs, alerts, and panels'
+    - 'Diálogos, alertas e painéis'
   link: https://api.flutter.dev/flutter/material/SimpleDialog-class.html
   image:
     src: https://material-design.storage.googleapis.com/publish/material_v_9/0B7WCemMG6e0VVGNnN3NvMGdoQTg/components_dialogs.png
@@ -1873,14 +1843,14 @@
     clock face in a time picker, but you need to make sure it can be scrolled if
     the container gets too small in one axis (the scroll direction).
   categories:
-    - 'Scrolling'
+    - 'Rolagem'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/SingleChildScrollView-class.html
 - name: SizeTransition
   description: >-
-    Animates its own size and clips and aligns the child.
+    Anima seu próprio tamanho e recorta e alinha o filho.
   categories:
-    - 'Animation and motion'
+    - 'Animação e movimento'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/SizeTransition-class.html
 - name: SizedBox
@@ -1891,7 +1861,7 @@
     will size itself to match the child's size in that dimension.
   categories: []
   subcategories:
-    - 'Single-child layout widgets'
+    - 'Widgets de layout de filho único'
   link: https://api.flutter.dev/flutter/widgets/SizedBox-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><defs><marker id='arrow-sized-box'
@@ -1907,25 +1877,25 @@
     marker-end='url(#arrow-sized-box)'/></svg>
 - name: SizedOverflowBox
   description: >-
-    A widget that is a specific size but passes its original constraints through
-    to its child, which will probably overflow.
+    Um widget que tem um tamanho específico, mas passa suas restrições originais
+    para seu filho, que provavelmente transbordará.
   categories: []
   subcategories:
-    - 'Single-child layout widgets'
+    - 'Widgets de layout de filho único'
   link: https://api.flutter.dev/flutter/widgets/SizedOverflowBox-class.html
 - name: SlideTransition
   description: >-
-    Animates the position of a widget relative to its normal position.
+    Anima a posição de um widget em relação à sua posição normal.
   categories:
-    - 'Animation and motion'
+    - 'Animação e movimento'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/SlideTransition-class.html
 - name: Slider
-  description: Form control that enables selecting a range of values.
+  description: Controle de formulário que permite selecionar um intervalo de valores.
   categories: []
   subcategories:
-    - 'Selection'
-    - 'Input and selections'
+    - 'Seleção'
+    - 'Entrada e seleções'
   link: https://api.flutter.dev/flutter/material/Slider-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-3-slider.png
@@ -1936,8 +1906,8 @@
     A material design app bar that integrates with a CustomScrollView.
   categories: []
   subcategories:
-    - 'App structure and navigation'
-    - 'Sliver widgets'
+    - 'Estrutura e navegação do app'
+    - 'Widgets sliver'
   link: https://api.flutter.dev/flutter/material/SliverAppBar-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-app-bar.png
@@ -1946,20 +1916,20 @@
     A delegate that supplies children for slivers using a builder callback.
   categories: []
   subcategories:
-    - 'Sliver widgets'
+    - 'Widgets sliver'
   link: https://api.flutter.dev/flutter/widgets/SliverChildBuilderDelegate-class.html
 - name: SliverChildListDelegate
   description: >-
     A delegate that supplies children for slivers using an explicit list.
   categories: []
   subcategories:
-    - 'Sliver widgets'
+    - 'Widgets sliver'
   link: https://api.flutter.dev/flutter/widgets/SliverChildListDelegate-class.html
 - name: SliverFadeTransition
   description: >-
-    Animates the opacity of a sliver widget.
+    Anima a opacidade de um widget sliver.
   categories:
-    - 'Animation and motion'
+    - 'Animação e movimento'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/SliverFadeTransition-class.html
 - name: SliverFixedExtentList
@@ -1968,14 +1938,14 @@
     a linear array.
   categories: []
   subcategories:
-    - 'Sliver widgets'
+    - 'Widgets sliver'
   link: https://api.flutter.dev/flutter/widgets/SliverFixedExtentList-class.html
 - name: SliverGrid
   description: >-
     A sliver that places multiple box children in a two dimensional arrangement.
   categories: []
   subcategories:
-    - 'Sliver widgets'
+    - 'Widgets sliver'
   link: https://api.flutter.dev/flutter/widgets/SliverGrid-class.html
 - name: SliverList
   description: >-
@@ -1983,14 +1953,14 @@
     axis.
   categories: []
   subcategories:
-    - 'Sliver widgets'
+    - 'Widgets sliver'
   link: https://api.flutter.dev/flutter/widgets/SliverList-class.html
 - name: SliverPadding
   description: >-
-    A sliver that applies padding on each side of another sliver.
+    Um sliver que aplica preenchimento em cada lado de outro sliver.
   categories: []
   subcategories:
-    - 'Sliver widgets'
+    - 'Widgets sliver'
   link: https://api.flutter.dev/flutter/widgets/SliverPadding-class.html
 - name: SliverPersistentHeader
   description: >-
@@ -1998,22 +1968,22 @@
     viewport opposite the sliver's GrowthDirection.
   categories: []
   subcategories:
-    - 'Sliver widgets'
+    - 'Widgets sliver'
   link: https://api.flutter.dev/flutter/widgets/SliverPersistentHeader-class.html
 - name: SliverToBoxAdapter
   description: >-
     A sliver that contains a single box widget.
   categories: []
   subcategories:
-    - 'Sliver widgets'
+    - 'Widgets sliver'
   link: https://api.flutter.dev/flutter/widgets/SliverToBoxAdapter-class.html
 - name: SnackBar
   description: >-
     Brief messages about app processes that display at the bottom of the screen.
   categories: []
   subcategories:
-    - 'Communication'
-    - 'Dialogs, alerts, and panels'
+    - 'Comunicação'
+    - 'Diálogos, alertas e painéis'
   link: https://api.flutter.dev/flutter/material/SnackBar-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-3-snackbar.png
@@ -2027,7 +1997,7 @@
   categories:
     - 'Stack'
   subcategories:
-    - 'Multi-child layout widgets'
+    - 'Widgets de layout de múltiplos filhos'
   link: https://api.flutter.dev/flutter/widgets/Stack-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><rect x='0' y='0' width='100' height='100'
@@ -2038,8 +2008,7 @@
     fill='#f50057'/></svg>
 - name: Stepper
   description: >-
-    A Material Design stepper widget that displays progress through a sequence
-    of steps.
+    Um widget stepper Material Design que exibe o progresso através de uma sequência de etapas.
   categories: []
   subcategories:
     - 'Layout'
@@ -2048,18 +2017,17 @@
     src: https://material-design.storage.googleapis.com/publish/material_v_9/0B7WCemMG6e0VTndyUnNCR2tQREE/components_steppers.png
 - name: StreamBuilder
   description: >-
-    Widget that builds itself based on the latest snapshot of interaction with a
-    Stream.
+    Widget que se constrói com base no último instantâneo de interação com um Stream.
   categories:
     - 'Async'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/StreamBuilder-class.html
 - name: Switch
-  description: Toggle control that changes the state of a single item to on or off.
+  description: Controle de alternância que muda o estado de um único item para ligado ou desligado.
   categories: []
   subcategories:
-    - 'Selection'
-    - 'Input and selections'
+    - 'Seleção'
+    - 'Entrada e seleções'
   link: https://api.flutter.dev/flutter/material/Switch-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-3-switch.png
@@ -2071,8 +2039,8 @@
     sets, and other interactions.
   categories: []
   subcategories:
-    - 'Navigation'
-    - 'App structure and navigation'
+    - 'Navegação'
+    - 'Estrutura e navegação do app'
   link: https://api.flutter.dev/flutter/material/TabBar-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-3-tab-bar.png
@@ -2084,7 +2052,7 @@
     selected tab. Typically used in conjunction with a TabBar.
   categories: []
   subcategories:
-    - 'App structure and navigation'
+    - 'Estrutura e navegação do app'
   link: https://api.flutter.dev/flutter/material/TabBarView-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-tab-bar.png
@@ -2092,32 +2060,31 @@
   description: Coordinates tab selection between a TabBar and a TabBarView.
   categories: []
   subcategories:
-    - 'App structure and navigation'
+    - 'Estrutura e navegação do app'
   link: https://api.flutter.dev/flutter/material/TabController-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-tab-bar.png
 - name: TabPageSelector
   description: >-
-    Displays a row of small circular indicators, one per tab. The selected tab's
-    indicator is highlighted. Often used in conjunction with a TabBarView.
+    Exibe uma linha de pequenos indicadores circulares, um por aba. O indicador da aba selecionada é destacado. Often used in conjunction with a TabBarView.
   categories: []
   subcategories:
-    - 'App structure and navigation'
+    - 'Estrutura e navegação do app'
   link: https://api.flutter.dev/flutter/material/TabPageSelector-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-tab-bar.png
 - name: Table
-  description: Displays child widgets in rows and columns.
+  description: Exibe widgets filhos em linhas e colunas.
   categories: []
   subcategories:
-    - 'Multi-child layout widgets'
+    - 'Widgets de layout de múltiplos filhos'
   link: https://api.flutter.dev/flutter/widgets/Table-class.html
 - name: Text
   description: >-
-    A run of text with a single style.
+    Uma sequência de texto com um único estilo.
   categories:
-    - 'Basics'
-    - 'Text'
+    - 'Básicos'
+    - 'Texto'
   subcategories: []
   link: https://api.flutter.dev/flutter/widgets/Text-class.html
   vector: >-
@@ -2131,7 +2098,7 @@
     outline.
   categories: []
   subcategories:
-    - 'Buttons'
+    - 'Botões'
   link: https://api.flutter.dev/flutter/material/TextButton-class.html
   image:
     src: https://material-design.storage.googleapis.com/publish/material_v_9/0B7WCemMG6e0VNDg3V3ZjU2hsNGc/components_buttons_usage3.png
@@ -2140,8 +2107,8 @@
     Box into which app users can enter text. They appear in forms and dialogs.
   categories: []
   subcategories:
-    - 'Text inputs'
-    - 'Input and selections'
+    - 'Entradas de texto'
+    - 'Entrada e seleções'
   link: https://api.flutter.dev/flutter/material/TextField-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-3-text-field.png
@@ -2152,14 +2119,14 @@
     Applies a theme to descendant widgets. A theme describes the colors and
     typographic choices of an application.
   categories:
-    - 'Styling'
+    - 'Estilização'
   subcategories: []
   link: https://api.flutter.dev/flutter/material/Theme-class.html
 - name: TimePicker
   description: Clock interface used to select and set a specific time.
   categories: []
   subcategories:
-    - 'Selection'
+    - 'Seleção'
   link: https://api.flutter.dev/flutter/material/showTimePicker.html
   image:
     src: /assets/images/docs/widget-catalog/material-3-time-picker.png
@@ -2173,17 +2140,17 @@
     appropriate action).
   categories: []
   subcategories:
-    - 'Information displays'
+    - 'Exibições de informação'
   link: https://api.flutter.dev/flutter/material/Tooltip-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-tooltip.png
 - name: Transform
   description: >-
-    A widget that applies a transformation before painting its child.
+    Um widget que aplica uma transformação antes de pintar seu filho.
   categories:
-    - 'Painting and effects'
+    - 'Pintura e efeitos'
   subcategories:
-    - 'Single-child layout widgets'
+    - 'Widgets de layout de filho único'
   link: https://api.flutter.dev/flutter/widgets/Transform-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><rect x='0' y='0' width='100' height='100'
@@ -2197,14 +2164,14 @@
     required for an application.
   categories: []
   subcategories:
-    - 'App structure and navigation'
+    - 'Estrutura e navegação do app'
   link: https://api.flutter.dev/flutter/widgets/WidgetsApp-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-widgets-app.png
 - name: Wrap
   description: >-
-    A widget that displays its children in multiple horizontal or vertical runs.
+    Um widget que exibe seus filhos em múltiplas execuções horizontais ou verticais.
   categories: []
   subcategories:
-    - 'Multi-child layout widgets'
+    - 'Widgets de layout de múltiplos filhos'
   link: https://api.flutter.dev/flutter/widgets/Wrap-class.html

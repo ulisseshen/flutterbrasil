@@ -1,93 +1,94 @@
-- name: Basics
+# ia-translate: true
+- name: Básicos
   description: >-
-    Widgets to know before building your first Flutter app.
+    Widgets para conhecer antes de construir seu primeiro app Flutter.
   priority: high
   id: basics
-- name: Material components
+- name: Componentes Material
   description: >-
-    Visual, behavioral, and motion-rich widgets implementing the
-    Material 3 design specification.
+    Widgets visuais, comportamentais e ricos em movimento que implementam a
+    especificação de design Material 3.
   subcategories:
-    - name: 'Actions'
+    - name: 'Ações'
       color: '#D9E7CB'
-    - name: 'Communication'
+    - name: 'Comunicação'
       color: '#F9DBDA'
-    - name: 'Containment'
+    - name: 'Contenção'
       color: '#F9DBDA'
-    - name: 'Navigation'
+    - name: 'Navegação'
       color: '#E5E4C2'
-    - name: 'Selection'
+    - name: 'Seleção'
       color: '#D9E7CB'
-    - name: 'Text inputs'
+    - name: 'Entradas de texto'
       color: '#E5E4C2'
   id: material
-- name: Material 2 components
-  description: Widgets implementing the Material 2 design guidelines.
+- name: Componentes Material 2
+  description: Widgets que implementam as diretrizes de design Material 2.
   subcategories:
-    - name: 'App structure and navigation'
-    - name: 'Buttons'
-    - name: 'Input and selections'
-    - name: 'Dialogs, alerts, and panels'
-    - name: 'Information displays'
+    - name: 'Estrutura de app e navegação'
+    - name: 'Botões'
+    - name: 'Entrada e seleções'
+    - name: 'Diálogos, alertas e painéis'
+    - name: 'Exibições de informação'
     - name: 'Layout'
   id: material2
 - name: Cupertino
   description: >-
-    Beautiful and high-fidelity widgets that align with
-    Apple's Human Interface Guidelines for iOS and macOS.
+    Widgets bonitos e de alta fidelidade que se alinham com as
+    Diretrizes de Interface Humana da Apple para iOS e macOS.
   id: cupertino
 - name: Layout
   description: >-
-    Arrange other widgets columns, rows, grids, and many other layouts.
+    Organize outros widgets em colunas, linhas, grades e muitos outros layouts.
   subcategories:
-    - name: 'Single-child layout widgets'
+    - name: 'Widgets de layout de filho único'
       description: >-
-        Widgets that take a single child and manipulate the
-        layout of the child.
-    - name: 'Multi-child layout widgets'
+        Widgets que recebem um único filho e manipulam o
+        layout do filho.
+    - name: 'Widgets de layout de múltiplos filhos'
       description: >-
-        These widgets take multiple children and arrange them in different ways.
-    - name: 'Sliver widgets'
+        Esses widgets recebem múltiplos filhos e os organizam de diferentes maneiras.
+    - name: 'Widgets Sliver'
       description: >-
-        These widgets take a portion of a CustomScrollView and
-        apply a layout to that portion.
+        Esses widgets recebem uma porção de um CustomScrollView e
+        aplicam um layout a essa porção.
   id: layout
 - name: Text
-  description: Display and style text.
+  description: Exiba e estilize texto.
   id: text
-- name: 'Assets, images, and icons'
-  description: Manage assets, display images, and show icons.
+- name: 'Assets, imagens e ícones'
+  description: Gerencie assets, exiba imagens e mostre ícones.
   id: assets
 - name: Input
   description: >-
-    Take user input in addition to input widgets in
-    Material components and Cupertino.
+    Receba entrada do usuário além dos widgets de entrada em
+    componentes Material e Cupertino.
   id: input
-- name: Animation and motion
-  description: Bring animations to your app.
+- name: Animação e movimento
+  description: Traga animações para seu app.
   id: animation
-- name: Interaction models
-  description: Respond to touch events and route users to different views.
+- name: Modelos de interação
+  description: Responda a eventos de toque e direcione usuários para diferentes visualizações.
   subcategories:
-    - name: 'Touch interactions'
-    - name: 'Routing'
+    - name: 'Interações de toque'
+    - name: 'Roteamento'
   id: interaction
-- name: Styling
+- name: Estilização
   description: >-
-    Manage the theme of your app, make your app responsive to screen sizes, or
-    add padding.
+    Gerencie o tema do seu app, torne seu app responsivo a tamanhos de tela ou
+    adicione preenchimento.
   id: styling
-- name: Painting and effects
+- name: Pintura e efeitos
   description: >-
-    These widgets apply visual effects to the children without
-    changing their layout, size, or position.
+    Esses widgets aplicam efeitos visuais aos filhos sem
+    alterar seu layout, tamanho ou posição.
   id: painting
 - name: Async
-  description: Widgets supporting async patterns in your Flutter apps.
+  description: Widgets que suportam padrões async em seus apps Flutter.
   id: async
-- name: Scrolling
-  description: Scroll multiple widgets as children of the parent.
+- name: Rolagem
+  description: Role múltiplos widgets como filhos do pai.
   id: scrolling
-- name: Accessibility
-  description: Make your app accessible.
+- name: Acessibilidade
+  description: Torne seu app acessível.
   id: accessibility

@@ -1,136 +1,135 @@
 ---
-title: Flutter for UIKit developers
-description: Learn how to apply iOS and UIKit developer knowledge when building Flutter apps.
+ia-translate: true
+title: Flutter para desenvolvedores UIKit
+description: Aprenda como aplicar conhecimento de desenvolvimento iOS e UIKit ao construir apps Flutter.
 ---
 
 <?code-excerpt path-base="get-started/flutter-for/ios_devs"?>
 
-iOS developers with experience using UIKit
-who want to write mobile apps using Flutter
-should review this guide.
-It explains how to apply existing UIKit knowledge to Flutter.
+Desenvolvedores iOS com experiência usando UIKit
+que querem escrever apps mobile usando Flutter
+devem revisar este guia.
+Ele explica como aplicar conhecimento existente de UIKit ao Flutter.
 
 :::note
-If you have experience building apps with SwiftUI,
-check out [Flutter for SwiftUI developers][] instead.
+Se você tem experiência construindo apps com SwiftUI,
+confira [Flutter for SwiftUI developers][] ao invés.
 :::
 
-Flutter is a framework for building cross-platform applications
-that uses the Dart programming language.
-To understand some differences between programming with Dart
-and programming with Swift,
-check out [Learning Dart as a Swift Developer][]
-and [Flutter concurrency for Swift developers][].
+Flutter é um framework para construir aplicações cross-platform
+que usa a linguagem de programação Dart.
+Para entender algumas diferenças entre programar com Dart
+e programar com Swift,
+confira [Learning Dart as a Swift Developer][]
+e [Flutter concurrency for Swift developers][].
 
-Your iOS and UIKit knowledge and experience
-are highly valuable when building with Flutter.
+Seu conhecimento e experiência com iOS e UIKit
+são altamente valiosos ao construir com Flutter.
 {% comment %}
   TODO: Add talk about plugin system for interacting with OS and hardware
   when [iOS and Apple hardware interactions with Flutter][] is released.
 {% endcomment -%}
 
-Flutter also makes a number of adaptations
-to app behavior when running on iOS.
-To learn how, see [Platform adaptations][].
+Flutter também faz uma série de adaptações
+ao comportamento do app quando rodando no iOS.
+Para aprender como, veja [Platform adaptations][].
 
 :::tip
-To integrate Flutter code into an **existing** iOS app,
-check out [Add Flutter to existing app][].
+Para integrar código Flutter em um app iOS **existente**,
+confira [Add Flutter to existing app][].
 :::
 
-Use this guide as a cookbook.
-Jump around and find questions that address your most relevant needs.
+Use este guia como um livro de receitas.
+Pule por aí e encontre questões que abordem suas necessidades mais relevantes.
 
 ## Overview
 
-As an introduction, watch the following video.
-It outlines how Flutter works on iOS and how to use Flutter to build iOS apps.
+Como introdução, assista ao seguinte vídeo.
+Ele delineia como o Flutter funciona no iOS e como usar Flutter para construir apps iOS.
 
 {% ytEmbed 'ceMsPBbcEGg', 'Flutter for iOS developers', false, true %}
 
 ### Views vs. Widgets
 
 :::secondary
-How is react-style, or _declarative_,
-programming different from the
-traditional imperative style?
-For a comparison, see [Introduction to declarative UI][].
+Como a programação estilo-react, ou _declarativa_,
+é diferente do estilo imperativo tradicional?
+Para uma comparação, veja [Introduction to declarative UI][].
 :::
 
-In UIKit, most of what you create in the UI is done using view objects,
-which are instances of the `UIView` class.
-These can act as containers for other `UIView` classes,
-which form your layout.
+No UIKit, a maior parte do que você cria na UI é feita usando objetos view,
+que são instâncias da classe `UIView`.
+Estas podem atuar como contêineres para outras classes `UIView`,
+que formam seu layout.
 
-In Flutter, the rough equivalent to a `UIView` is a `Widget`.
-Widgets don't map exactly to iOS views,
-but while you're getting acquainted with how Flutter works
-you can think of them as "the way you declare and construct UI".
+No Flutter, o equivalente aproximado de uma `UIView` é um `Widget`.
+Widgets não mapeiam exatamente para views iOS,
+mas enquanto você está se familiarizando com como o Flutter funciona
+você pode pensar neles como "a maneira como você declara e constrói UI".
 
-However, these have a few differences to a `UIView`.
-To start, widgets have a different lifespan: they are immutable
-and only exist until they need to be changed.
-Whenever widgets or their state change,
-Flutter's framework creates a new tree of widget instances.
-In comparison, a UIKit view is not recreated when it changes,
-but rather it's a mutable entity that is drawn once
-and doesn't redraw until it is invalidated using `setNeedsDisplay()`.
+No entanto, estes têm algumas diferenças em relação a uma `UIView`.
+Para começar, widgets têm um ciclo de vida diferente: eles são imutáveis
+e só existem até que precisem ser alterados.
+Sempre que widgets ou seu estado mudam,
+o framework do Flutter cria uma nova árvore de instâncias de widget.
+Em comparação, uma view UIKit não é recriada quando muda,
+mas sim é uma entidade mutável que é desenhada uma vez
+e não redesenha até ser invalidada usando `setNeedsDisplay()`.
 
-Furthermore, unlike `UIView`, Flutter's widgets are lightweight,
-in part due to their immutability.
-Because they aren't views themselves,
-and aren't directly drawing anything,
-but rather are a description of the UI and its semantics
-that get "inflated" into actual view objects under the hood.
+Além disso, diferente de `UIView`, os widgets do Flutter são leves,
+em parte devido à sua imutabilidade.
+Porque eles não são views por si mesmos,
+e não estão desenhando nada diretamente,
+mas sim são uma descrição da UI e sua semântica
+que são "inflados" em objetos view reais nos bastidores.
 
-Flutter includes the [Material Components][] library.
-These are widgets that implement the
+Flutter inclui a biblioteca [Material Components][].
+Estes são widgets que implementam as
 [Material Design guidelines][].
-Material Design is a flexible design system
-[optimized for all platforms][], including iOS.
+Material Design é um sistema de design flexível
+[optimized for all platforms][], incluindo iOS.
 
-But Flutter is flexible and expressive enough
-to implement any design language.
-On iOS, you can use the [Cupertino widgets][]
-library to produce an interface that looks like
+Mas Flutter é flexível e expressivo o suficiente
+para implementar qualquer linguagem de design.
+No iOS, você pode usar a biblioteca [Cupertino widgets][]
+para produzir uma interface que se parece com a
 [Apple's iOS design language][].
 
-### Updating widgets
+### Atualizando widgets
 
-To update your views in UIKit, you directly mutate them.
-In Flutter, widgets are immutable and not updated directly.
-Instead, you have to manipulate the widget's state.
+Para atualizar suas views no UIKit, você as muta diretamente.
+No Flutter, widgets são imutáveis e não são atualizados diretamente.
+Ao invés, você tem que manipular o estado do widget.
 
-This is where the concept of Stateful vs Stateless widgets
-comes in. A `StatelessWidget` is just what it sounds
-like&mdash;a widget with no state attached.
+É aqui que entra o conceito de widgets Stateful vs Stateless.
+Um `StatelessWidget` é exatamente o que parece&mdash;um widget sem estado anexado.
 
-`StatelessWidgets` are useful when the part of the user interface you are
-describing does not depend on anything other than the initial configuration
-information in the widget.
+`StatelessWidgets` são úteis quando a parte da interface de usuário que você está
+descrevendo não depende de nada além das informações de configuração inicial
+no widget.
 
-For example, with UIKit, this is similar to placing a `UIImageView`
-with your logo as the `image`. If the logo is not changing during runtime,
-use a `StatelessWidget` in Flutter.
+Por exemplo, com UIKit, isso é similar a colocar uma `UIImageView`
+com seu logo como a `image`. Se o logo não está mudando durante runtime,
+use um `StatelessWidget` no Flutter.
 
-If you want to dynamically change the UI based on data received
-after making an HTTP call, use a `StatefulWidget`.
-After the HTTP call has completed, tell the Flutter framework
-that the widget's `State` is updated, so it can update the UI.
+Se você quer mudar dinamicamente a UI baseado em dados recebidos
+após fazer uma chamada HTTP, use um `StatefulWidget`.
+Após a chamada HTTP ter completado, diga ao framework Flutter
+que o `State` do widget foi atualizado, para que ele possa atualizar a UI.
 
-The important difference between stateless and
-stateful widgets is that `StatefulWidget`s have a `State` object
-that stores state data and carries it over across tree rebuilds,
-so it's not lost.
+A diferença importante entre widgets stateless e
+stateful é que `StatefulWidget`s têm um objeto `State`
+que armazena dados de estado e os carrega através de reconstruções da árvore,
+para que não sejam perdidos.
 
-If you are in doubt, remember this rule:
-if a widget changes outside of the `build` method
-(because of runtime user interactions, for example),
-it's stateful.
-If the widget never changes, once built, it's stateless.
-However, even if a widget is stateful, the containing parent widget
-can still be stateless if it isn't itself reacting to those changes
-(or other inputs).
+Se você estiver em dúvida, lembre-se desta regra:
+se um widget muda fora do método `build`
+(por causa de interações de usuário em runtime, por exemplo),
+ele é stateful.
+Se o widget nunca muda, uma vez construído, ele é stateless.
+No entanto, mesmo se um widget é stateful, o widget pai contêiner
+ainda pode ser stateless se ele mesmo não está reagindo àquelas mudanças
+(ou outras entradas).
 
 The following example shows how to use a `StatelessWidget`.
 A common`StatelessWidget` is the `Text` widget.

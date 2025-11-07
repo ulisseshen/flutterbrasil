@@ -13,7 +13,7 @@ você pode abrir uma issue ou um pull request usando os botões no topo da pági
 
 ## Obter o Flutter SDK
 
-
+<a id="unable-to-find-the-flutter-command"></a>
 ### Não é possível encontrar o comando `flutter`
 
 __Como é esse problema?__
@@ -62,6 +62,7 @@ em um diretório como
 Tente relocar o Flutter para uma pasta diferente,
 como `C:\src\flutter`.
 
+<a id="android-setup"></a>
 ## Configuração do Android
 
 ### Tendo múltiplas versões do Java instaladas
@@ -174,6 +175,7 @@ Tente as seguintes instruções para solucionar o problema:
   com o comando `flutter doctor -v` e peça ajuda em
   um dos [canais de suporte da comunidade][community support channels].
 
+<a id="community-support"></a>
 ## Suporte da comunidade
 
 A comunidade Flutter é prestativa e acolhedora.

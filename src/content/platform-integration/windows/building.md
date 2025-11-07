@@ -202,6 +202,7 @@ Aqui estão algumas opções:
 * Colete todas as peças necessárias
   e construa seu próprio arquivo zip.
 
+<a id="msix-packaging"></a>
 ### Empacotamento MSIX
 
 [MSIX][], o novo formato de pacote de aplicação Windows,

@@ -185,6 +185,7 @@ Você pode entrar, sair e passar por instruções Dart, fazer hot reload ou reto
 
 {:.table .table-striped}
 
+<a id="update-test-flutter-app"></a>
 ## Atualizar app Flutter de teste
 
 Para o restante deste guia, você precisa atualizar o

@@ -46,6 +46,7 @@ Você pode ir direto ao código em
 Se você quiser experimentar diferentes formas de gerenciar estado,
 pule para [Gerenciando estado][Managing state].
 
+<a id="stateful-and-stateless-widgets"></a>
 ## Widgets stateful e stateless
 
 Um widget é stateful ou stateless. Se um widget pode
@@ -73,6 +74,7 @@ Quando o estado do widget muda,
 o objeto de estado chama `setState()`,
 dizendo ao framework para redesenhar o widget.
 
+<a id="creating-a-stateful-widget"></a>
 ## Criando um widget stateful
 
 :::secondary Qual é o ponto?
@@ -310,6 +312,7 @@ Se você ainda tiver dúvidas, consulte qualquer um dos
 O restante desta página cobre várias maneiras de gerenciar o estado de um widget
 e lista outros widgets interativos disponíveis.
 
+<a id="managing-state"></a>
 ## Gerenciando estado
 
 :::secondary Qual é o ponto?

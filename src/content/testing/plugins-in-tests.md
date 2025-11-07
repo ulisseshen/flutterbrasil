@@ -112,6 +112,7 @@ você deve mockar a dependência que usa o plugin em vez disso.
 
 [federated plugin]: /packages-and-plugins/developing-packages#federated-plugins
 
+<a id="mock-the-platform-channel"></a>
 ## Mockar o canal de plataforma
 
 Se o plugin usa [platform channels][],

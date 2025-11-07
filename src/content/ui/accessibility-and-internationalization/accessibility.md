@@ -50,6 +50,7 @@ Além de testar esses tópicos específicos, recomendamos usar scanners de acess
     3. No Chrome, a aba "Elements" tem uma sub-aba "Accessibility"
        que pode ser usada para inspecionar os dados exportados para a árvore de semântica
 
+<a id="large-fonts"></a>
 ## Fontes grandes
 
 Tanto o Android quanto o iOS contêm configurações do sistema para configurar os tamanhos de fonte desejados usados pelos apps. Os widgets de texto do Flutter respeitam essa configuração do sistema operacional ao determinar os tamanhos de fonte.
@@ -69,6 +70,7 @@ As duas capturas de tela a seguir mostram o template padrão de app Flutter rend
   </div>
 </div>
 
+<a id="screen-readers"></a>
 ## Leitores de tela
 
 Para mobile, leitores de tela ([TalkBack][], [VoiceOver][]) permitem que usuários com deficiência visual obtenham feedback falado sobre o conteúdo da tela e interajam com a UI usando gestos no mobile e atalhos de teclado no desktop. Ative o VoiceOver ou TalkBack no seu dispositivo móvel e navegue pelo seu app.
@@ -153,6 +155,7 @@ Quando há texto em seu app que deve ser pronunciado com uma voz específica, in
 [Flutter Gallery]: {{site.gallery-archive}}
 [`TextSpan.locale`]: {{site.api}}/flutter/painting/TextSpan/locale.html
 
+<a id="sufficient-contrast"></a>
 ## Contraste suficiente
 
 O contraste de cores suficiente torna o texto e as imagens mais fáceis de ler. Além de beneficiar usuários com várias deficiências visuais, o contraste de cores suficiente ajuda todos os usuários ao visualizar uma interface em dispositivos em condições extremas de iluminação, como quando exposto à luz solar direta ou em uma tela com baixo brilho.

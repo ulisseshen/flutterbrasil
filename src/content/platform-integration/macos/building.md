@@ -73,6 +73,7 @@ App Store.
 [on distributing an application through the App Store]: https://help.apple.com/xcode/mac/current/#/dev067853c94
 [Build and release a macOS app]: /deployment/macos
 
+<a id="entitlements-and-the-app-sandbox"></a>
 ## Entitlements e o App Sandbox
 
 Builds do macOS são configurados por padrão para serem assinados,
@@ -88,6 +89,7 @@ tais como:
 Então você deve configurar _entitlements_ específicos no Xcode.
 A seção a seguir mostra como fazer isso.
 
+<a id="setting-up-entitlements"></a>
 ### Configurando entitlements
 
 Gerenciar configurações de sandbox é feito nos

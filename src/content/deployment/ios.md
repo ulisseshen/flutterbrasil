@@ -134,6 +134,7 @@ Se você alterou o `Deployment Target` no seu projeto Xcode,
 abra `ios/Flutter/AppframeworkInfo.plist` no seu app Flutter
 e atualize o valor `MinimumOSVersion` para corresponder.
 
+<a id="add-an-app-icon"></a>
 ## Adicione um ícone de app
 
 Quando um novo app Flutter é criado, um conjunto de ícones placeholder é criado.
@@ -168,6 +169,7 @@ Durante o desenvolvimento, você tem compilado, depurado e testado
 com builds _debug_. Quando estiver pronto para enviar seu app aos usuários
 na App Store ou no TestFlight, você precisa preparar um build _release_.
 
+<a id="update-the-apps-build-and-version-numbers"></a>
 ### Atualize os números de build e versão do app
 
 O número de versão padrão do app é `1.0.0`.

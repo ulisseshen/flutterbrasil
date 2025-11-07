@@ -25,6 +25,7 @@ overhead de depuração que permite hot reload
 e depuração em nível de código-fonte. Como tal, não é representativo de um app de produção
 que os usuários finais baixam.
 
+<a id="checking-the-total-size"></a>
 ## Verificando o tamanho total
 
 Um build de release padrão, como um criado por `flutter build apk` ou
@@ -35,6 +36,7 @@ seu pacote de upload para direcionar o dispositivo específico do usuário e o h
 como filtrar assets direcionados ao DPI do telefone, filtrar
 bibliotecas nativas direcionadas à arquitetura de CPU do telefone.
 
+<a id="estimating-total-size"></a>
 ### Estimando o tamanho total
 
 Para obter o tamanho aproximado mais próximo em cada plataforma, use as seguintes
@@ -111,6 +113,7 @@ IPAs são geralmente maiores que APKs conforme explicado
 em [How big is the Flutter engine?][], uma
 seção no [FAQ][] do Flutter.
 
+<a id="breaking-down-the-size"></a>
 ## Detalhando o tamanho
 
 A partir da versão 1.22 do Flutter e versão 0.9.1 do DevTools,

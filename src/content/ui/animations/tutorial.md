@@ -402,6 +402,7 @@ confira [Cascade notation][]
 na [documentação da linguagem Dart][].
 :::
 
+<a id="simplifying-with-animatedwidget"></a>
 ###  Simplificando com Animated&shy;Widget
 
 :::secondary Qual é o ponto?
@@ -581,6 +582,7 @@ no início ou no final. Isso cria um efeito de "respiração":
 
 **Código-fonte do app:** [animate3][]
 
+<a id="refactoring-with-animatedbuilder"></a>
 ### Refatorando com AnimatedBuilder
 
 :::secondary Qual é o ponto?

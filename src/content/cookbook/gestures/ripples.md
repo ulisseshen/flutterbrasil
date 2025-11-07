@@ -1,23 +1,24 @@
 ---
-title: Add Material touch ripples
-description: How to implement ripple animations.
+title: Adicionar ripples de toque Material
+description: Como implementar animações ripple.
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
+ia-translate: true
 ---
 
 <?code-excerpt path-base="cookbook/gestures/ripples/"?>
 
-Widgets that follow the Material Design guidelines display
-a ripple animation when tapped.
+Widgets que seguem as diretrizes do Material Design exibem
+uma animação ripple quando tocados.
 
-Flutter provides the [`InkWell`][]
-widget to perform this effect.
-Create a ripple effect using the following steps:
+O Flutter fornece o widget [`InkWell`][]
+para executar este efeito.
+Crie um efeito ripple usando os seguintes passos:
 
-  1. Create a widget that supports tap.
-  2. Wrap it in an `InkWell` widget to manage tap callbacks and
-     ripple animations.
+  1. Criar um widget que suporte toque.
+  2. Envolvê-lo em um widget `InkWell` para gerenciar callbacks de toque e
+     animações ripple.
 
 <?code-excerpt "lib/main.dart (InkWell)" replace="/return //g;/^\);$/)/g"?>
 ```dart
@@ -36,7 +37,7 @@ InkWell(
 )
 ```
 
-## Interactive example
+## Exemplo interativo
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter Material ripples hands-on example in DartPad" run="true"

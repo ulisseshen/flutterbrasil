@@ -1,40 +1,41 @@
 ---
-title: Flutter for Xamarin.Forms developers
-description: Learn how to apply Xamarin.Forms developer knowledge when building Flutter apps.
+ia-translate: true
+title: Flutter para desenvolvedores Xamarin.Forms
+description: Aprenda como aplicar conhecimento de desenvolvedor Xamarin.Forms ao construir apps Flutter.
 ---
 
 <?code-excerpt path-base="get-started/flutter-for/xamarin_devs"?>
 
-This document is meant for Xamarin.Forms developers
-looking to apply their existing knowledge
-to build mobile apps with Flutter.
-If you understand the fundamentals of the Xamarin.Forms framework,
-then you can use this document as a jump start to Flutter development.
+Este documento é destinado para desenvolvedores Xamarin.Forms
+que buscam aplicar seu conhecimento existente
+para construir apps móveis com Flutter.
+Se você entende os fundamentos do framework Xamarin.Forms,
+então você pode usar este documento como um ponto de partida para o desenvolvimento Flutter.
 
-Your Android and iOS knowledge and skill set
-are valuable when building with Flutter,
-because Flutter relies on the native operating system configurations,
-similar to how you would configure your native Xamarin.Forms projects.
-The Flutter Frameworks is also similar to how you create a single UI,
-that is used on multiple platforms.
+Seu conhecimento e conjunto de habilidades Android e iOS
+são valiosos ao construir com Flutter,
+porque o Flutter depende das configurações nativas do sistema operacional,
+similar a como você configuraria seus projetos nativos Xamarin.Forms.
+O Flutter Frameworks também é similar a como você cria uma única UI,
+que é usada em múltiplas plataformas.
 
-This document can be used as a cookbook by jumping around
-and finding questions that are most relevant to your needs.
+Este documento pode ser usado como um livro de receitas pulando
+e encontrando questões que são mais relevantes para suas necessidades.
 
-## Project setup
+## Configuração de projeto
 
-### How does the app start?
+### Como o app inicia?
 
-For each platform in Xamarin.Forms,
-you call the `LoadApplication` method,
-which creates a new application and starts your app.
+Para cada plataforma no Xamarin.Forms,
+você chama o método `LoadApplication`,
+que cria uma nova aplicação e inicia seu app.
 
 ```csharp
 LoadApplication(new App());
 ```
 
-In Flutter, the default main entry point is
-`main` where you load your Flutter app.
+No Flutter, o ponto de entrada principal padrão é
+`main` onde você carrega seu app Flutter.
 
 <?code-excerpt "lib/main.dart (main)"?>
 ```dart
@@ -43,8 +44,8 @@ void main() {
 }
 ```
 
-In Xamarin.Forms, you assign a `Page` to the
-`MainPage` property in the `Application` class.
+No Xamarin.Forms, você atribui uma `Page` à
+propriedade `MainPage` na classe `Application`.
 
 ```csharp
 public class App : Application
@@ -64,8 +65,8 @@ public class App : Application
 }
 ```
 
-In Flutter, "everything is a widget", even the application itself.
-The following example shows `MyApp`, a simple application `Widget`.
+No Flutter, "tudo é um widget", até a aplicação em si.
+O exemplo a seguir mostra `MyApp`, um `Widget` de aplicação simples.
 
 <?code-excerpt "lib/main.dart (my-app)"?>
 ```dart
@@ -85,15 +86,15 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-### How do you create a page?
+### Como você cria uma página?
 
-Xamarin.Forms has many types of pages;
-`ContentPage` is the most common.
-In Flutter, you specify an application widget that holds your root page.
-You can use a [`MaterialApp`][] widget, which supports [Material Design][],
-or you can use a [`CupertinoApp`][] widget, which supports an iOS-style app,
-or you can use the lower level [`WidgetsApp`][],
-which you can customize in any way you want.
+Xamarin.Forms tem muitos tipos de páginas;
+`ContentPage` é a mais comum.
+No Flutter, você especifica um widget de aplicação que contém sua página raiz.
+Você pode usar um widget [`MaterialApp`][], que suporta [Material Design][],
+ou você pode usar um widget [`CupertinoApp`][], que suporta um app estilo iOS,
+ou você pode usar o [`WidgetsApp`][] de nível mais baixo,
+que você pode personalizar da maneira que quiser.
 
 [`CupertinoApp`]: {{site.api}}/flutter/cupertino/CupertinoApp-class.html
 [`MaterialApp`]: {{site.api}}/flutter/material/MaterialApp-class.html

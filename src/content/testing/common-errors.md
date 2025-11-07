@@ -1,44 +1,45 @@
 ---
-title: Common Flutter errors
-description: How to recognize and resolve common Flutter framework errors.
+ia-translate: true
+title: Erros comuns do Flutter
+description: Como reconhecer e resolver erros comuns do framework Flutter.
 ---
 
 <?code-excerpt path-base="testing/common_errors"?>
 
-## Introduction
+## Introdução
 
-This page explains several frequently-encountered Flutter
-framework errors (including layout errors) and gives suggestions
-on how to resolve them.
-This is a living document with more errors to be added in
-future revisions, and your contributions are welcomed.
-Feel free to [open an issue][] or [submit a pull request][] to
-make this page more useful to you and the Flutter community.
+Esta página explica vários erros frequentemente encontrados do
+framework Flutter (incluindo erros de layout) e dá sugestões
+sobre como resolvê-los.
+Este é um documento vivo com mais erros a serem adicionados em
+revisões futuras, e suas contribuições são bem-vindas.
+Sinta-se à vontade para [abrir um issue][open an issue] ou [enviar um pull request][submit a pull request] para
+tornar esta página mais útil para você e a comunidade Flutter.
 
 [open an issue]: {{site.repo.this}}/issues/new/choose
 [submit a pull request]: {{site.repo.this}}/pulls
 
-## A solid red or grey screen when running your app
+## Uma tela vermelha ou cinza sólida ao executar seu app
 
-Typically called a "red (or grey) screen of death",
-this is sometimes how Flutter lets
-you know that there's an error.
+Tipicamente chamada de "tela vermelha (ou cinza) da morte",
+às vezes é assim que o Flutter permite
+que você saiba que há um erro.
 
-The red screen can appear when the app runs in
-debug or profile mode. The grey screen can appear
-when the app runs in release mode.
+A tela vermelha pode aparecer quando o app executa em
+modo debug ou profile. A tela cinza pode aparecer
+quando o app executa em modo release.
 
-Generally, these errors occur when there's an
-uncaught exception (and you might need another
-try-catch block), or when there is some rendering error,
-such as an overflow error.
+Geralmente, esses erros ocorrem quando há uma
+exceção não capturada (e você pode precisar de outro
+bloco try-catch), ou quando há algum erro de renderização,
+como um erro de overflow.
 
-The following articles provide some useful insights
-on debugging this sort of error:
+Os seguintes artigos fornecem alguns insights úteis
+sobre depuração deste tipo de erro:
 
-* [Flutter errors demystified][] by Abishek
-* [Understanding and addressing the grey screen in Flutter][] by Christopher Nwosu-Madueke
-* [Flutter stuck on white screen][] by Kesar Bhimani
+* [Flutter errors demystified][] por Abishek
+* [Understanding and addressing the grey screen in Flutter][] por Christopher Nwosu-Madueke
+* [Flutter stuck on white screen][] por Kesar Bhimani
 
 [Flutter errors demystified]: {{site.medium}}/@hpatilabhi10/flutter-errors-demystified-red-screen-errors-vs-debug-console-errors-acb3b8ed2625
 [Flutter stuck on white screen]: https://www.dhiwise.com/post/flutter-stuck-on-white-screen-understanding-and-fixing
@@ -46,15 +47,15 @@ on debugging this sort of error:
 
 ## 'A RenderFlex overflowed…'
 
-RenderFlex overflow is one of the most frequently
-encountered Flutter framework errors,
-and you've probably run into it already.
+RenderFlex overflow é um dos erros mais frequentemente
+encontrados do framework Flutter,
+e você provavelmente já o encontrou.
 
-**What does the error look like?**
+**Como é o erro?**
 
-When it happens, yellow and black stripes appear,
-indicating the area of overflow in the app UI.
-In addition, an error message displays in the debug console:
+Quando isso acontece, listras amarelas e pretas aparecem,
+indicando a área de overflow na UI do app.
+Além disso, uma mensagem de erro é exibida no console de debug:
 
 ```plaintext
 The following assertion was thrown during layout:
@@ -65,18 +66,18 @@ The relevant error-causing widget was
     Row      lib/errors/renderflex_overflow_column.dart:23
 
 The overflowing RenderFlex has an orientation of Axis.horizontal.
-The edge of the RenderFlex that is overflowing has been marked in the rendering 
-with a yellow and black striped pattern. This is usually caused by the contents 
+The edge of the RenderFlex that is overflowing has been marked in the rendering
+with a yellow and black striped pattern. This is usually caused by the contents
 being too big for the RenderFlex.
 (Additional lines of this message omitted)
 ```
 
-**How might you run into this error?**
+**Como você pode encontrar este erro?**
 
-The error often occurs when a `Column` or `Row` has a
-child widget that isn't constrained in its size.
-For example,
-the code snippet below demonstrates a common scenario:
+O erro frequentemente ocorre quando uma `Column` ou `Row` tem um
+widget filho que não está restrito em seu tamanho.
+Por exemplo,
+o trecho de código abaixo demonstra um cenário comum:
 
 <?code-excerpt "lib/renderflex_overflow.dart (problem)"?>
 ```dart
@@ -103,35 +104,35 @@ Widget build(BuildContext context) {
 }
 ```
 
-In the above example,
-the `Column` tries to be wider than the space the `Row`
-(its parent) can allocate to it, causing an overflow error.
-Why does the `Column` try to do that?
-To understand this layout behavior, you need to know
-how Flutter framework performs layout:
+No exemplo acima,
+a `Column` tenta ser mais larga do que o espaço que a `Row`
+(seu pai) pode alocar para ela, causando um erro de overflow.
+Por que a `Column` tenta fazer isso?
+Para entender esse comportamento de layout, você precisa saber
+como o framework Flutter executa o layout:
 
-"_To perform layout, Flutter walks the render tree in a depth-first traversal
-and **passes down size constraints** from parent to child… Children respond by
-**passing up a size** to their parent object within the constraints the parent
-established._" – [Flutter architectural overview][]
+"_Para executar o layout, o Flutter percorre a árvore de renderização em uma travessia de profundidade primeiro
+e **passa constraints de tamanho** de pai para filho... Os filhos respondem
+**passando um tamanho** para seu objeto pai dentro das constraints que o pai
+estabeleceu._" – [Flutter architectural overview][]
 
-In this case, the `Row` widget doesn't constrain the
-size of its children, nor does the `Column` widget.
-Lacking constraints from its parent widget, the second
-`Text` widget tries to be as wide as all the characters
-it needs to display. The self-determined width of the
-`Text` widget then gets adopted by the `Column`, which
-clashes with the maximum amount of horizontal space its parent,
-the `Row` widget, can provide.
+Neste caso, o widget `Row` não restringe o
+tamanho de seus filhos, nem o widget `Column`.
+Faltando constraints de seu widget pai, o segundo
+widget `Text` tenta ser tão largo quanto todos os caracteres
+que precisa exibir. A largura auto-determinada do
+widget `Text` então é adotada pela `Column`, que
+entra em conflito com a quantidade máxima de espaço horizontal que seu pai,
+o widget `Row`, pode fornecer.
 
 [Flutter architectural overview]: /resources/architectural-overview#layout-and-rendering
 
-**How to fix it?**
+**Como corrigi-lo?**
 
-Well, you need to make sure the `Column` won't attempt
-to be wider than it can be. To achieve this,
-you need to constrain its width. One way to do it is to
-wrap the `Column` in an `Expanded` widget:
+Bem, você precisa ter certeza de que a `Column` não tentará
+ser mais larga do que pode ser. Para conseguir isso,
+você precisa restringir sua largura. Uma maneira de fazer isso é
+envolver a `Column` em um widget `Expanded`:
 
 <?code-excerpt "lib/renderflex_overflow.dart (solution)"?>
 ```dart
@@ -147,17 +148,17 @@ return const Row(
 );
 ```
 
-Another way is to wrap the `Column` in a `Flexible` widget
-and specify a `flex` factor. In fact,
-the `Expanded` widget is equivalent to the `Flexible` widget
-with a `flex` factor of 1.0, as [its source code][] shows.
-To further understand how to use the `Flex` widget in Flutter layouts,
-check out [this 90-second Widget of the Week video][flexible-video]
-on the `Flexible` widget.
+Outra maneira é envolver a `Column` em um widget `Flexible`
+e especificar um fator `flex`. Na verdade,
+o widget `Expanded` é equivalente ao widget `Flexible`
+com um fator `flex` de 1.0, como [seu código fonte][] mostra.
+Para entender melhor como usar o widget `Flex` em layouts Flutter,
+confira [este vídeo de 90 segundos Widget of the Week][flexible-video]
+sobre o widget `Flexible`.
 
-**Further information:**
+**Mais informações:**
 
-The resources linked below provide further information about this error.
+Os recursos vinculados abaixo fornecem mais informações sobre este erro.
 
 * [Flexible (Flutter Widget of the Week)][flexible-video]
 * [How to debug layout issues with the Flutter Inspector][medium-article]
@@ -170,29 +171,29 @@ The resources linked below provide further information about this error.
 
 ## 'RenderBox was not laid out'
 
-While this error is pretty common,
-it's often a side effect of a primary error
-occurring earlier in the rendering pipeline.
+Embora este erro seja bastante comum,
+geralmente é um efeito colateral de um erro primário
+ocorrendo mais cedo no pipeline de renderização.
 
-**What does the error look like?**
+**Como é o erro?**
 
-The message shown by the error looks like this:
+A mensagem mostrada pelo erro se parece com isto:
 
 ```plaintext
-RenderBox was not laid out: 
+RenderBox was not laid out:
 RenderViewport#5a477 NEEDS-LAYOUT NEEDS-PAINT NEEDS-COMPOSITING-BITS-UPDATE
 ```
 
-**How might you run into this error?**
+**Como você pode encontrar este erro?**
 
-Usually, the issue is related to violation of box constraints,
-and it needs to be solved by providing more information
-to Flutter about how you'd like to constrain the widgets in question.
-You can learn more about how constraints work
-in Flutter on the [Understanding constraints][] page.
+Geralmente, o problema está relacionado à violação de box constraints,
+e precisa ser resolvido fornecendo mais informações
+ao Flutter sobre como você gostaria de restringir os widgets em questão.
+Você pode aprender mais sobre como as constraints funcionam
+no Flutter na página [Understanding constraints][].
 
-The `RenderBox was not laid out` error is often
-caused by one of two other errors:
+O erro `RenderBox was not laid out` é frequentemente
+causado por um de dois outros erros:
 
 * 'Vertical viewport was given unbounded height'
 * 'An InputDecorator...cannot have an unbounded width'
@@ -201,35 +202,35 @@ caused by one of two other errors:
 
 ## 'Vertical viewport was given unbounded height'
 
-This is another common layout error you could run into
-while creating a UI in your Flutter app.
+Este é outro erro de layout comum que você pode encontrar
+ao criar uma UI no seu app Flutter.
 
-**What does the error look like?**
+**Como é o erro?**
 
-The message shown by the error looks like this:
+A mensagem mostrada pelo erro se parece com isto:
 
 ```plaintext
 The following assertion was thrown during performResize():
 Vertical viewport was given unbounded height.
 
-Viewports expand in the scrolling direction to fill their container. 
-In this case, a vertical viewport was given an unlimited amount of 
-vertical space in which to expand. This situation typically happens when a 
+Viewports expand in the scrolling direction to fill their container.
+In this case, a vertical viewport was given an unlimited amount of
+vertical space in which to expand. This situation typically happens when a
 scrollable widget is nested inside another scrollable widget.
 (Additional lines of this message omitted)
 ```
 
-**How might you run into this error?**
+**Como você pode encontrar este erro?**
 
-The error is often caused when a `ListView`
-(or other kinds of scrollable widgets such as `GridView`)
-is placed inside a `Column`. A `ListView` takes all
-the vertical space available to it,
-unless it's constrained by its parent widget.
-However, a `Column` doesn't impose any constraint
-on its children's height by default.
-The combination of the two behaviors leads to the failure of
-determining the size of the `ListView`.
+O erro é frequentemente causado quando uma `ListView`
+(ou outros tipos de widgets roláveis como `GridView`)
+é colocada dentro de uma `Column`. Uma `ListView` ocupa todo
+o espaço vertical disponível para ela,
+a menos que seja restrita por seu widget pai.
+No entanto, uma `Column` não impõe nenhuma constraint
+na altura de seus filhos por padrão.
+A combinação dos dois comportamentos leva à falha de
+determinar o tamanho da `ListView`.
 
 <?code-excerpt "lib/unbounded_height.dart (problem)"?>
 ```dart
@@ -256,13 +257,13 @@ Widget build(BuildContext context) {
 }
 ```
 
-**How to fix it?**
+**Como corrigi-lo?**
 
-To fix this error, specify how tall the `ListView` should be.
-To make it as tall as the remaining space in the `Column`,
-wrap it using an `Expanded` widget (as shown in the following example).
-Otherwise, specify an absolute height using a `SizedBox`
-widget or a relative height using a `Flexible` widget.
+Para corrigir este erro, especifique quão alta a `ListView` deve ser.
+Para torná-la tão alta quanto o espaço restante na `Column`,
+envolva-a usando um widget `Expanded` (como mostrado no exemplo a seguir).
+Caso contrário, especifique uma altura absoluta usando um widget `SizedBox`
+ou uma altura relativa usando um widget `Flexible`.
 
 <?code-excerpt "lib/unbounded_height.dart (solution)"?>
 ```dart
@@ -291,40 +292,40 @@ Widget build(BuildContext context) {
 }
 ```
 
-**Further information:**
+**Mais informações:**
 
-The resources linked below provide
-further information about this error.
+Os recursos vinculados abaixo fornecem
+mais informações sobre este erro.
 
 * [How to debug layout issues with the Flutter Inspector][medium-article]
 * [Understanding constraints][]
 
 ## 'An InputDecorator...cannot have an unbounded width'
 
-The error message suggests that it's also related
-to box constraints, which are important to understand
-to avoid many of the most common Flutter framework errors.
+A mensagem de erro sugere que também está relacionada
+a box constraints, que são importantes para entender
+para evitar muitos dos erros mais comuns do framework Flutter.
 
-**What does the error look like?**
+**Como é o erro?**
 
-The message shown by the error looks like this:
+A mensagem mostrada pelo erro se parece com isto:
 
 ```plaintext
 The following assertion was thrown during performLayout():
-An InputDecorator, which is typically created by a TextField, cannot have an 
+An InputDecorator, which is typically created by a TextField, cannot have an
 unbounded width.
-This happens when the parent widget does not provide a finite width constraint. 
-For example, if the InputDecorator is contained by a `Row`, then its width must 
-be constrained. An `Expanded` widget or a SizedBox can be used to constrain the 
+This happens when the parent widget does not provide a finite width constraint.
+For example, if the InputDecorator is contained by a `Row`, then its width must
+be constrained. An `Expanded` widget or a SizedBox can be used to constrain the
 width of the InputDecorator or the TextField that contains it.
 (Additional lines of this message omitted)
 ```
 
-**How might you run into the error?**
+**Como você pode encontrar o erro?**
 
-This error occurs, for example, when a `Row` contains a
-`TextFormField` or a `TextField` but the latter has
-no width constraint.
+Este erro ocorre, por exemplo, quando uma `Row` contém um
+`TextFormField` ou um `TextField` mas este último não tem
+constraint de largura.
 
 <?code-excerpt "lib/unbounded_width.dart (problem)"?>
 ```dart
@@ -344,12 +345,12 @@ Widget build(BuildContext context) {
 }
 ```
 
-**How to fix it?**
+**Como corrigi-lo?**
 
-As suggested by the error message,
-fix this error by constraining the text field
-using either an `Expanded` or `SizedBox` widget.
-The following example demonstrates using an `Expanded` widget:
+Como sugerido pela mensagem de erro,
+corrija este erro restringindo o campo de texto
+usando um widget `Expanded` ou `SizedBox`.
+O exemplo a seguir demonstra usando um widget `Expanded`:
 
 <?code-excerpt "lib/unbounded_width.dart (solution)"?>
 ```dart
@@ -371,79 +372,79 @@ Widget build(BuildContext context) {
 
 ## 'Incorrect use of ParentData widget'
 
-This error is about missing an expected parent widget.
+Este erro é sobre estar faltando um widget pai esperado.
 
-**What does the error look like?**
+**Como é o erro?**
 
-The message shown by the error looks like this:
+A mensagem mostrada pelo erro se parece com isto:
 
 ```plaintext
 The following assertion was thrown while looking for parent data:
 Incorrect use of ParentDataWidget.
 (Some lines of this message omitted)
-Usually, this indicates that at least one of the offending ParentDataWidgets 
+Usually, this indicates that at least one of the offending ParentDataWidgets
 listed above is not placed directly inside a compatible ancestor widget.
 ```
 
-**How might you run into the error?**
+**Como você pode encontrar o erro?**
 
-While Flutter's widgets are generally flexible
-in how they can be composed together in a UI,
-a small subset of those widgets expect specific parent widgets.
-When this expectation can't be satisfied in your widget tree,
-you're likely to encounter this error.
+Embora os widgets do Flutter sejam geralmente flexíveis
+em como podem ser compostos juntos em uma UI,
+um pequeno subconjunto desses widgets espera widgets pais específicos.
+Quando essa expectativa não pode ser satisfeita na sua árvore de widgets,
+você provavelmente encontrará este erro.
 
-Here is an _incomplete_ list of widgets that expect
-specific parent widgets within the Flutter framework.
-Feel free to submit a PR (using the doc icon in
-the top right corner of the page) to expand this list.
+Aqui está uma lista _incompleta_ de widgets que esperam
+widgets pais específicos dentro do framework Flutter.
+Sinta-se à vontade para enviar um PR (usando o ícone de documento no
+canto superior direito da página) para expandir esta lista.
 
-| Widget                                |  Expected parent widget(s) |
+| Widget                                |  Widget pai esperado(s) |
 |:--------------------------------------|---------------------------:|
-| `Flexible`                            | `Row`, `Column`, or `Flex` |
-| `Expanded` (a specialized `Flexible`) | `Row`, `Column`, or `Flex` |
+| `Flexible`                            | `Row`, `Column`, ou `Flex` |
+| `Expanded` (um `Flexible` especializado) | `Row`, `Column`, ou `Flex` |
 | `Positioned`                          |                    `Stack` |
 | `TableCell`                           |                    `Table` |
 
-**How to fix it?**
+**Como corrigi-lo?**
 
-The fix should be obvious once you know
-which parent widget is missing.
+A correção deve ser óbvia uma vez que você saiba
+qual widget pai está faltando.
 
 ## 'setState called during build'
 
-The `build` method in your Flutter code isn't
-a good place to call `setState`,
-either directly or indirectly.
+O método `build` no seu código Flutter não é
+um bom lugar para chamar `setState`,
+direta ou indiretamente.
 
-**What does the error look like?**
+**Como é o erro?**
 
-When the error occurs,
-the following message is displayed in the console:
+Quando o erro ocorre,
+a seguinte mensagem é exibida no console:
 
 ```plaintext
-The following assertion was thrown building DialogPage(dirty, dependencies: 
-[_InheritedTheme, _LocalizationsScope-[GlobalKey#59a8e]], 
+The following assertion was thrown building DialogPage(dirty, dependencies:
+[_InheritedTheme, _LocalizationsScope-[GlobalKey#59a8e]],
 state: _DialogPageState#f121e):
 setState() or markNeedsBuild() called during build.
 
-This Overlay widget cannot be marked as needing to build because the framework 
+This Overlay widget cannot be marked as needing to build because the framework
 is already in the process of building widgets.
 (Additional lines of this message omitted)
 ```
 
-**How might you run into the error?**
+**Como você pode encontrar o erro?**
 
-In general, this error occurs when the `setState`
-method is called within the `build` method.
+Em geral, este erro ocorre quando o método `setState`
+é chamado dentro do método `build`.
 
-A common scenario where this error occurs is when
-attempting to trigger a `Dialog` from within the
-`build` method. This is often motivated by the need to
-immediately show information to the user,
-but `setState` should never be called from a `build` method.
+Um cenário comum onde este erro ocorre é ao
+tentar acionar um `Dialog` de dentro do
+método `build`. Isso é frequentemente motivado pela necessidade de
+mostrar informações imediatamente ao usuário,
+mas `setState` nunca deve ser chamado de um método `build`.
 
-The following snippet seems to be a common culprit of this error:
+O seguinte trecho parece ser um culpado comum deste erro:
 
 <?code-excerpt "lib/set_state_build.dart (problem)"?>
 ```dart
@@ -467,22 +468,22 @@ Widget build(BuildContext context) {
 }
 ```
 
-This code doesn't make an explicit call to `setState`,
-but it's called by `showDialog`.
-The `build` method isn't the right place to call
-`showDialog` because `build` can be called by the
-framework for every frame, for example, during an animation.
+Este código não faz uma chamada explícita para `setState`,
+mas é chamado por `showDialog`.
+O método `build` não é o lugar certo para chamar
+`showDialog` porque `build` pode ser chamado pelo
+framework a cada frame, por exemplo, durante uma animação.
 
-**How to fix it?**
+**Como corrigi-lo?**
 
-One way to avoid this error is to use the `Navigator` API
-to trigger the dialog as a route. In the following example,
-there are two pages. The second page has a
-dialog to be displayed upon entry.
-When the user requests the second page by
-clicking a button on the first page,
-the `Navigator` pushes two routes–one
-for the second page and another for the dialog.
+Uma maneira de evitar este erro é usar a API `Navigator`
+para acionar o diálogo como uma rota. No exemplo a seguir,
+existem duas páginas. A segunda página tem um
+diálogo a ser exibido na entrada.
+Quando o usuário solicita a segunda página
+clicando em um botão na primeira página,
+o `Navigator` empurra duas rotas–uma
+para a segunda página e outra para o diálogo.
 
 <?code-excerpt "lib/set_state_build.dart (solution)"?>
 ```dart
@@ -520,26 +521,26 @@ class FirstScreen extends StatelessWidget {
 
 ## `The ScrollController is attached to multiple scroll views`
 
-This error can occur when multiple scrolling
-widgets (such as `ListView`) appear on the
-screen at the same time. It's more likely for
-this error to occur on a web or desktop app,
-than a mobile app since it's rare to encounter
-this scenario on mobile.
+Este erro pode ocorrer quando múltiplos widgets
+de rolagem (como `ListView`) aparecem na
+tela ao mesmo tempo. É mais provável que
+este erro ocorra em um app web ou desktop,
+do que em um app mobile, já que é raro encontrar
+este cenário no mobile.
 
-For more information and to learn how to fix,
-check out the following video on
+Para mais informações e para aprender como corrigir,
+confira o seguinte vídeo sobre
 [`PrimaryScrollController`][controller-video]:
 
 {% ytEmbed '33_0ABjFJUU', 'PrimaryScrollController | Decoding Flutter', true %}
 
 [controller-video]: {{site.api}}/flutter/widgets/PrimaryScrollController-class.html
 
-## References
+## Referências
 
-To learn more about how to debug errors,
-especially layout errors in Flutter,
-check out the following resources:
+Para aprender mais sobre como depurar erros,
+especialmente erros de layout no Flutter,
+confira os seguintes recursos:
 
 * [How to debug layout issues with the Flutter Inspector][medium-article]
 * [Understanding constraints][]

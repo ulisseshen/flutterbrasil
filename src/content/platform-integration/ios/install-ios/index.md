@@ -1,13 +1,14 @@
 ---
-title: Add iOS as a target platform for Flutter
-description: Configure your system to develop Flutter for iOS.
-short-title: Set up iOS development
+ia-translate: true
+title: Adicionar iOS como plataforma de destino para Flutter
+description: Configure seu sistema para desenvolver Flutter para iOS.
+short-title: Configurar desenvolvimento iOS
 target-list: [macOS, Android, web]
 ---
 
-To set up your development environment for targeting iOS,
-choose the guide that corresponds to the [Getting Started path][] you followed,
-or the platform you already have set up.
+Para configurar seu ambiente de desenvolvimento para iOS,
+escolha o guia que corresponde ao [caminho Getting Started][Getting Started path] que você seguiu,
+ou a plataforma que você já configurou.
 
 <div class="card-grid">
 {% for target in target-list %}

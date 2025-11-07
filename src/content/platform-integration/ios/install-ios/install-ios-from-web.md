@@ -1,17 +1,18 @@
 ---
-title: Add iOS as a target platform from web start
-description: Configure your system to develop Flutter mobile apps on iOS.
-short-title: Starting from web
+ia-translate: true
+title: Adicionar iOS como plataforma de destino partindo da web
+description: Configure seu sistema para desenvolver apps Flutter mobile no iOS.
+short-title: Partindo da web
 ---
 
-To add iOS as a Flutter app target for macOS, follow this procedure.
+Para adicionar iOS como destino de app Flutter no macOS, siga este procedimento.
 
-## Install Xcode
+## Instalar Xcode
 
-1. Allocate a minimum of 26 GB of storage for Xcode.
-   Consider allocating 42 GB of storage for an optimal configuration.
-1. Install [Xcode][] {{site.appnow.xcode}} to debug and compile native
-   Swift or ObjectiveC code.
+1. Aloque um mínimo de 26 GB de armazenamento para o Xcode.
+   Considere alocar 42 GB de armazenamento para uma configuração ideal.
+1. Instale o [Xcode][] {{site.appnow.xcode}} para debugar e compilar código nativo
+   Swift ou ObjectiveC.
 
 {% include docs/install/compiler/xcode.md target='iOS' devos='macOS' attempt="first" -%}
 

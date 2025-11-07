@@ -1,53 +1,54 @@
 ---
-title: Host native iOS views in your Flutter app with platform views
-short-title: iOS platform views
+ia-translate: true
+title: Hospede views nativas iOS no seu app Flutter com platform views
+short-title: Platform views iOS
 description: >-
-  Learn how to host native iOS views in your Flutter app with platform views.
+  Aprenda como hospedar views nativas iOS no seu app Flutter com platform views.
 ---
 
 <?code-excerpt path-base="platform_integration/platform_views"?>
 
-Platform views allow you to embed native views in a Flutter app,
-so you can apply transforms, clips, and opacity to the native view
-from Dart.
+Platform views permitem que você incorpore views nativas em um app Flutter,
+para que você possa aplicar transformações, clipes e opacidade à view nativa
+a partir do Dart.
 
-This allows you, for example, to use the native
-Google Maps from the Android and iOS SDKs
-directly inside your Flutter app.
+Isso permite que você, por exemplo, use o
+Google Maps nativo dos SDKs Android e iOS
+diretamente dentro do seu app Flutter.
 
 :::note
-This page discusses how to host your own native iOS views
-within a Flutter app.
-If you'd like to embed native Android views in your Flutter app,
-see [Hosting native Android views][].
-If you'd like to embed native macOS views in your Flutter app,
-see [Hosting native macOS views][].
+Esta página discute como hospedar suas próprias views nativas iOS
+dentro de um app Flutter.
+Se você deseja incorporar views nativas Android no seu app Flutter,
+veja [Hosting native Android views][].
+Se você deseja incorporar views nativas macOS no seu app Flutter,
+veja [Hosting native macOS views][].
 :::
 
 [Hosting native Android views]: /platform-integration/android/platform-views
 [Hosting native macOS views]: /platform-integration/macos/platform-views
 
 
-iOS only uses Hybrid composition,
-which means that the native
-`UIView` is appended to the view hierarchy.
+O iOS usa apenas Hybrid composition,
+o que significa que a
+`UIView` nativa é anexada à hierarquia de views.
 
-To create a platform view on iOS,
-use the following instructions:
+Para criar uma platform view no iOS,
+use as seguintes instruções:
 
-## On the Dart side
+## No lado Dart
 
-On the Dart side, create a `Widget`
-and add the build implementation,
-as shown in the following steps.
+No lado Dart, crie um `Widget`
+e adicione a implementação do build,
+conforme mostrado nas etapas a seguir.
 
-In the Dart widget file, make changes similar to those 
-shown in `native_view_example.dart`:
+No arquivo do widget Dart, faça alterações semelhantes às mostradas
+em `native_view_example.dart`:
 
 <ol>
 <li>
 
-Add the following imports:
+Adicione as seguintes importações:
 
 <?code-excerpt "lib/native_view_example_3.dart (import)"?>
 ```dart
@@ -59,7 +60,7 @@ import 'package:flutter/services.dart';
 
 <li>
 
-Implement a `build()` method:
+Implemente um método `build()`:
 
 <?code-excerpt "lib/native_view_example_3.dart (ios-composition)"?>
 ```dart
@@ -81,22 +82,22 @@ Widget build(BuildContext context) {
 </li>
 </ol>
 
-For more information, see the API docs for:
+Para mais informações, veja a documentação da API para:
 [`UIKitView`][].
 
 [`UIKitView`]: {{site.api}}/flutter/widgets/UiKitView-class.html
 
-## On the platform side
+## No lado da plataforma
 
-On the platform side, use either Swift or Objective-C:
+No lado da plataforma, use Swift ou Objective-C:
 
 {% tabs "darwin-language" %}
 {% tab "Swift" %}
 
-Implement the factory and the platform view.
-The `FLNativeViewFactory` creates the platform view,
-and the platform view provides a reference to the `UIView`.
-For example, `FLNativeView.swift`:
+Implemente a factory e a platform view.
+A `FLNativeViewFactory` cria a platform view,
+e a platform view fornece uma referência à `UIView`.
+Por exemplo, `FLNativeView.swift`:
 
 ```swift
 import Flutter
@@ -159,11 +160,11 @@ class FLNativeView: NSObject, FlutterPlatformView {
 }
 ```
 
-Finally, register the platform view.
-This can be done in an app or a plugin.
+Finalmente, registre a platform view.
+Isso pode ser feito em um app ou em um plugin.
 
-For app registration,
-modify the App's `AppDelegate.swift`:
+Para registro no app,
+modifique o `AppDelegate.swift` do App:
 
 ```swift
 import Flutter
@@ -188,9 +189,9 @@ import UIKit
 }
 ```
 
-For plugin registration,
-modify the plugin's main file
-(for example, `FLPlugin.swift`):
+Para registro no plugin,
+modifique o arquivo principal do plugin
+(por exemplo, `FLPlugin.swift`):
 
 ```swift
 import Flutter
@@ -207,8 +208,8 @@ class FLPlugin: NSObject, FlutterPlugin {
 {% endtab %}
 {% tab "Objective-C" %}
 
-In Objective-C, add the headers for the factory and the platform view.
-For example, as shown in `FLNativeView.h`:
+Em Objective-C, adicione os headers para a factory e a platform view.
+Por exemplo, como mostrado em `FLNativeView.h`:
 
 ```objc
 #import <Flutter/Flutter.h>
@@ -228,10 +229,10 @@ For example, as shown in `FLNativeView.h`:
 @end
 ```
 
-Implement the factory and the platform view.
-The `FLNativeViewFactory` creates the platform view,
-and the platform view provides a reference to the
-`UIView`. For example, `FLNativeView.m`:
+Implemente a factory e a platform view.
+A `FLNativeViewFactory` cria a platform view,
+e a platform view fornece uma referência à
+`UIView`. Por exemplo, `FLNativeView.m`:
 
 ```objc
 #import "FLNativeView.h"
@@ -285,11 +286,11 @@ and the platform view provides a reference to the
 @end
 ```
 
-Finally, register the platform view.
-This can be done in an app or a plugin.
+Finalmente, registre a platform view.
+Isso pode ser feito em um app ou em um plugin.
 
-For app registration,
-modify the App's `AppDelegate.m`:
+Para registro no app,
+modifique o `AppDelegate.m` do App:
 
 ```objc
 #import "AppDelegate.h"
@@ -316,9 +317,9 @@ modify the App's `AppDelegate.m`:
 @end
 ```
 
-For plugin registration,
-modify the main plugin file
-(for example, `FLPlugin.m`):
+Para registro no plugin,
+modifique o arquivo principal do plugin
+(por exemplo, `FLPlugin.m`):
 
 ```objc
 #import <Flutter/Flutter.h>
@@ -341,7 +342,7 @@ modify the main plugin file
 {% endtab %}
 {% endtabs %}
 
-For more information, see the API docs for:
+Para mais informações, veja a documentação da API para:
 
 * [`FlutterPlatformViewFactory`][]
 * [`FlutterPlatformView`][]
@@ -351,11 +352,11 @@ For more information, see the API docs for:
 [`FlutterPlatformViewFactory`]: {{site.api}}/ios-embedder/protocol_flutter_platform_view_factory-p.html
 [`PlatformView`]: {{site.api}}/javadoc/io/flutter/plugin/platform/PlatformView.html
 
-## Putting it together
+## Juntando tudo
 
-When implementing the `build()` method in Dart,
-you can use [`defaultTargetPlatform`][]
-to detect the platform, and decide which widget to use:
+Ao implementar o método `build()` em Dart,
+você pode usar [`defaultTargetPlatform`][]
+para detectar a plataforma e decidir qual widget usar:
 
 <?code-excerpt "lib/native_view_example_3.dart (together-widget)"?>
 ```dart
@@ -380,26 +381,26 @@ Widget build(BuildContext context) {
 
 ## Performance
 
-Platform views in Flutter come with performance trade-offs.
+Platform views no Flutter vêm com trade-offs de performance.
 
-For complex cases, there are some techniques that can be used 
-to mitigate performance issues.
+Para casos complexos, existem algumas técnicas que podem ser usadas
+para mitigar problemas de performance.
 
-For example, you could use a placeholder texture while an 
-animation is happening in Dart. 
-In other words, if an animation is slow while a platform view is rendered, 
-then consider taking a screenshot of the native view and
-rendering it as a texture.
+Por exemplo, você pode usar uma textura de placeholder enquanto uma
+animação está acontecendo em Dart.
+Em outras palavras, se uma animação estiver lenta enquanto uma platform view é renderizada,
+então considere tirar um screenshot da view nativa e
+renderizá-la como uma textura.
 
-## Composition limitations
+## Limitações de composição
 
-There are some limitations when composing iOS Platform Views.
+Existem algumas limitações ao compor iOS Platform Views.
 
-- The [`ShaderMask`][] and [`ColorFiltered`][] widgets are not supported.
-- The [`BackdropFilter`][] widget is supported,
-  but there are some limitations on how it can be used. 
-  For more details, check out the
-  [iOS Platform View Backdrop Filter Blur design doc][design-doc].
+- Os widgets [`ShaderMask`][] e [`ColorFiltered`][] não são suportados.
+- O widget [`BackdropFilter`][] é suportado,
+  mas existem algumas limitações sobre como ele pode ser usado.
+  Para mais detalhes, confira o
+  [documento de design iOS Platform View Backdrop Filter Blur][design-doc].
 
 [`ShaderMask`]: {{site.api}}/flutter/foundation/ShaderMask.html
 [`ColorFiltered`]: {{site.api}}/flutter/foundation/ColorFiltered.html

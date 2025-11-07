@@ -57,21 +57,21 @@ Desenvolvedores chamam esse tipo de código de _framework declarativo_.
 
 ### Views vs. Widgets
 
-**SwiftUI** represents UI components as _views_.
-You configure views using _modifiers_.
+**SwiftUI** representa componentes de UI como _views_.
+Você configura views usando _modifiers_.
 
 ```swift
 Text("Hello, World!") // <-- This is a View
   .padding(10)        // <-- This is a modifier of that View
 ```
 
-**Flutter** represents UI components as _widgets_.
+**Flutter** representa componentes de UI como _widgets_.
 
-Both views and widgets only exist until they need to be changed.
-These languages call this property _immutability_.
-SwiftUI represents a UI component property as a View modifier.
-By contrast, Flutter uses widgets for both UI components and
-their properties.
+Tanto views quanto widgets só existem até que precisem ser alterados.
+Essas linguagens chamam essa propriedade de _imutabilidade_.
+SwiftUI representa uma propriedade de componente de UI como um View modifier.
+Por contraste, Flutter usa widgets tanto para componentes de UI quanto para
+suas propriedades.
 
 ```dart
 Padding(                         // <-- This is a Widget
@@ -80,52 +80,52 @@ Padding(                         // <-- This is a Widget
 )));
 ```
 
-To compose layouts, both SwiftUI and Flutter nest UI components
-within one another.
-SwiftUI nests Views while Flutter nests Widgets.
+Para compor layouts, tanto SwiftUI quanto Flutter aninham componentes de UI
+dentro uns dos outros.
+SwiftUI aninha Views enquanto Flutter aninha Widgets.
 
-### Layout process
+### Processo de layout
 
-**SwiftUI** lays out views using the following process:
+**SwiftUI** faz layout de views usando o seguinte processo:
 
-1. The parent view proposes a size to its child view.
-1. All subsequent child views:
-    - propose a size to _their_ child's view
-    - ask that child what size it wants
-1. Each parent view renders its child view at the returned size.
+1. A view pai propõe um tamanho para sua view filha.
+1. Todas as views filhas subsequentes:
+    - propõem um tamanho para _sua_ view filha
+    - perguntam a esse filho que tamanho ele quer
+1. Cada view pai renderiza sua view filha no tamanho retornado.
 
-**Flutter** differs somewhat with its process:
+**Flutter** difere um pouco com seu processo:
 
-1. The parent widget passes constraints down to its children.
-   Constraints include minimum and maximum values for height and width.
-1. The child tries to decide its size. It repeats the same process with its own
-   list of children:
-    - It informs its child of the child's constraints.
-    - It asks its child what size it wishes to be.
+1. O widget pai passa constraints para seus filhos.
+   Constraints incluem valores mínimos e máximos para altura e largura.
+1. O filho tenta decidir seu tamanho. Ele repete o mesmo processo com sua própria
+   lista de filhos:
+    - Ele informa seu filho das constraints do filho.
+    - Ele pergunta ao seu filho que tamanho ele deseja ser.
 
-1. The parent lays out the child.
-    - If the requested size fits in the constraints,
-      the parent uses that size.
-    - If the requested size doesn't fit in the constraints,
-      the parent limits the height, width, or both to fit in
-      its constraints.
+1. O pai faz o layout do filho.
+    - Se o tamanho solicitado cabe nas constraints,
+      o pai usa esse tamanho.
+    - Se o tamanho solicitado não cabe nas constraints,
+      o pai limita a altura, largura, ou ambos para caber em
+      suas constraints.
 
-Flutter differs from SwiftUI because the parent component can override
-the child's desired size. The widget cannot have any size it wants.
-It also cannot know or decide its position on screen as its parent
-makes that decision.
+Flutter difere do SwiftUI porque o componente pai pode sobrescrever
+o tamanho desejado do filho. O widget não pode ter qualquer tamanho que quiser.
+Ele também não pode saber ou decidir sua posição na tela já que seu pai
+toma essa decisão.
 
-To force a child widget to render at a specific size,
-the parent must set tight constraints.
-A constraint becomes tight when its constraint's minimum size value
-equals its maximum size value.
+Para forçar um widget filho a renderizar em um tamanho específico,
+o pai deve definir tight constraints.
+Uma constraint se torna tight quando o valor de tamanho mínimo da constraint
+é igual ao seu valor de tamanho máximo.
 
-In **SwiftUI**, views might expand to the available space or
-limit their size to that of its content.
-**Flutter** widgets behave in similar manner.
+No **SwiftUI**, views podem expandir para o espaço disponível ou
+limitar seu tamanho àquele de seu conteúdo.
+Widgets **Flutter** se comportam de maneira similar.
 
-However, in Flutter parent widgets can offer unbounded constraints.
-Unbounded constraints set their maximum values to infinity.
+No entanto, no Flutter widgets pais podem oferecer unbounded constraints.
+Unbounded constraints definem seus valores máximos como infinito.
 
 ```dart
 UnboundedBox(

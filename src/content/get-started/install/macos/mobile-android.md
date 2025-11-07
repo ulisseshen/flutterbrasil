@@ -1,12 +1,13 @@
 ---
-title: Start building Flutter Android apps on macOS
-description: Configure your system to develop Flutter mobile apps on macOS and Android.
-short-title: Make Android apps
+title: Comece a construir apps Flutter Android no macOS
+description: Configure seu sistema para desenvolver apps Flutter mobile no macOS e Android.
+short-title: Crie apps Android
+ia-translate: true
 target: Android
 config: macOSAndroid
 devos: macOS
 next:
-  title: Create your first app
+  title: Crie seu primeiro app
   path: /get-started/codelab
 ---
 

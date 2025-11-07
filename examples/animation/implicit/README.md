@@ -17,4 +17,4 @@ within the [Implicit animations codelab][].
   in the [`analysis_options.yaml`](analysis_options.yaml) file since the
   diffing infrastructure currently can't handle the `ignore` for it.
 
-[Implicit animations codelab]: https://docs.flutter.dev/codelabs/implicit-animations
+[Implicit animations codelab]: https://docs.flutterbrasil.dev/codelabs/implicit-animations

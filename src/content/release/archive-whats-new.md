@@ -1,7 +1,7 @@
 ---
 title: Archive of What's new
 description: >-
-  A list of previous what's new updates on docs.flutter.dev
+  A list of previous what's new updates on docs.flutterbrasil.dev
   and related documentation sites.
 ---
 
@@ -189,7 +189,7 @@ programming in Dart 3][].
 
 In addition to new docs since the last release,
 we have been incrementally releasing a revamped
-version of the docs.flutter.dev website.
+version of the docs.flutterbrasil.dev website.
 Specifically, we have reorganized (flattened) the
 information architecture (IA) and have
 incorporated some of our most popular cookbook

@@ -1,7 +1,7 @@
 ---
 title: What's new in the docs
 description: >-
-  A list of what's new on docs.flutter.dev and related documentation sites.
+  A list of what's new on docs.flutterbrasil.dev and related documentation sites.
 ---
 
 This page contains current and recent announcements

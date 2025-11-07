@@ -15,7 +15,7 @@ final class BuildSiteCommand extends Command<int> {
     argParser.addFlag(
       _releaseFlag,
       defaultsTo: false,
-      help: 'Build a release build for docs.flutter.dev. '
+      help: 'Build a release build for docs.flutterbrasil.dev. '
           'Optimizes site resources.',
     );
   }

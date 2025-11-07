@@ -29,7 +29,7 @@ Ele suporta gifs animados.
 <?code-excerpt "lib/gif.dart (Gif)" replace="/^return\ //g"?>
 ```dart
 Image.network(
-    'https://docs.flutter.dev/assets/images/dash/dash-fainting.gif');
+    'https://docs.flutterbrasil.dev/assets/images/dash/dash-fainting.gif');
 ```
 
 ## Fade in de image com placeholders

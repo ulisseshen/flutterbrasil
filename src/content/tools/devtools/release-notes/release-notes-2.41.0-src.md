@@ -13,7 +13,7 @@ To learn more about DevTools, check out the
 
 ## Inspector updates
 
-* Added an option to the [new Inspector's](https://docs.flutter.dev/tools/devtools/release-notes/release-notes-2.40.2#inspector-updates)
+* Added an option to the [new Inspector's](https://docs.flutterbrasil.dev/tools/devtools/release-notes/release-notes-2.40.2#inspector-updates)
   settings to allow auto-refreshing the widget tree after a hot-reload. - [#8483](https://github.com/flutter/devtools/pull/8483)
 
 ## Network profiler updates

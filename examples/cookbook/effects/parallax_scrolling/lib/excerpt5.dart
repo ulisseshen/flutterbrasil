@@ -211,7 +211,7 @@ class Location {
 }
 
 const urlPrefix =
-    'https://docs.flutter.dev/cookbook/img-files/effects/parallax';
+    'https://docs.flutterbrasil.dev/cookbook/img-files/effects/parallax';
 
 const locations = [
   Location(

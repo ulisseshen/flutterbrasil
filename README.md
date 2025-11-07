@@ -1,5 +1,5 @@
 <!-- ia-translate: true -->
-[![Logotipo do Flutter]](https://docs.flutter.dev)
+[![Logotipo do Flutter]](https://docs.flutterbrasil.dev)
 
 [Logotipo do Flutter]: https://github.com/dart-lang/site-shared/blob/main/src/_assets/image/flutter/icon/64.png?raw=1
 
@@ -13,7 +13,7 @@ construído com [Eleventy][] e hospedado no [Firebase][].
 [Firebase]: https://firebase.google.com/
 
 [Status da Construção]: https://github.com/flutter/website/workflows/build/badge.svg
-[Flutter]: https://docs.flutter.dev/
+[Flutter]: https://docs.flutterbrasil.dev/
 [Repositório no GitHub Actions]: https://github.com/flutter/website/actions?query=workflow%3Abuild+branch%3Amain
 
 <a href="https://idx.google.com/import?url=https%3A%2F%2Fgithub.com%2Fflutter%2Fwebsite">
@@ -116,8 +116,8 @@ e já é a versão estável mais recente:
 flutter --version
 ```
 
-[Instalar o Flutter]: https://docs.flutter.dev/get-started
-[Atualizar o Flutter]: https://docs.flutter.dev/release/upgrade
+[Instalar o Flutter]: https://docs.flutterbrasil.dev/get-started
+[Atualizar o Flutter]: https://docs.flutterbrasil.dev/release/upgrade
 
 #### Node.js
 

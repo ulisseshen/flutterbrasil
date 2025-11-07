@@ -75,7 +75,7 @@ function toSimpleDate(input: string | Date): string {
 
 function activeNavForPage(pageUrlPath: string, activeNav: any) {
   // Split the path for this page, dropping everything before the path:
-  // Example: docs.flutter.dev/cookbook/networking/update-data ->
+  // Example: docs.flutterbrasil.dev/cookbook/networking/update-data ->
   // [cookbook, networking, update-data]
   const parts = pageUrlPath.toLowerCase().split('/').slice(1);
   let currentPathPairs = activeNav;

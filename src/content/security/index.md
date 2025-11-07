@@ -78,7 +78,7 @@ and release a beta or hotfix for any major security issues
 found in the most recent stable version of our SDK. 
 
 Any vulnerability reported for flutter websites like
-docs.flutter.dev doesn't require a release and will be
+docs.flutterbrasil.dev doesn't require a release and will be
 fixed in the website itself.
 
 ## Bug Bounty programs

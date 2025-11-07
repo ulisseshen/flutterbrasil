@@ -3,7 +3,7 @@
 The 2.23.1 release of the Dart and Flutter DevTools
 includes the following changes among other general improvements.
 To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutter.dev/tools/devtools).
+[DevTools overview](https://docs.flutterbrasil.dev/tools/devtools).
 
 ## General updates
 
@@ -32,7 +32,7 @@ To learn more about DevTools, check out the
 * Persist a user's preference for whether the
   Flutter Frames chart should be shown by default -
   [#5339](https://github.com/flutter/devtools/pull/5339)
-* Point users to [Impeller](https://docs.flutter.dev/perf/impeller) when
+* Point users to [Impeller](https://docs.flutterbrasil.dev/perf/impeller) when
   shader compilation jank is detected on an iOS device -
   [#5455](https://github.com/flutter/devtools/pull/5455)
 * Remove the CPU profiler from the legacy trace viewer -

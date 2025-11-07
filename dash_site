@@ -6,7 +6,7 @@ REQUIRED_PNPM_VERSION="9.12"
 
 # Check that the 'dart' command is available on the user's path.
 if ! command -v dart &> /dev/null; then
-  echo "Dart not found. To learn how to setup Dart and Flutter, follow the instructions at https://docs.flutter.dev/get-started."
+  echo "Dart not found. To learn how to setup Dart and Flutter, follow the instructions at https://docs.flutterbrasil.dev/get-started."
   exit 1
 fi
 

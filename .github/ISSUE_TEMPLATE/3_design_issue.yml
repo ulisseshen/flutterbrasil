@@ -1,5 +1,5 @@
 name: Site design or user experience issue
-description: How can we improve the page design, style, or structure of docs.flutter.dev?
+description: How can we improve the page design, style, or structure of docs.flutterbrasil.dev?
 labels: [infra.design, from.user]
 body:
   - type: textarea
@@ -40,5 +40,5 @@ body:
       label: I would like to fix this problem.
       description: Let us know if you want to try fixing this yourself.
       options:
-        - label: I will try and fix this problem on docs.flutter.dev.
+        - label: I will try and fix this problem on docs.flutterbrasil.dev.
           required: false

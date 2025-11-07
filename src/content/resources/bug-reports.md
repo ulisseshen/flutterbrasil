@@ -1,42 +1,43 @@
 ---
-title: Create useful bug reports
+ia-translate: true
+title: Criar relatórios de bugs úteis
 description: >
-  Where to file bug reports and enhancement requests for 
-  flutter and the website.
+  Onde relatar bugs e solicitar melhorias para o
+  Flutter e o site.
 ---
 
-The instructions in this document detail the current steps
-required to provide the most actionable bug reports for
-crashes and other bad behavior. Each step is optional but
-will greatly improve how quickly issues are diagnosed and addressed.
-We appreciate your effort in sending us as much feedback as possible.
+As instruções neste documento detalham as etapas atuais
+necessárias para fornecer os relatórios de bugs mais acionáveis para
+crashes e outros comportamentos ruins. Cada etapa é opcional, mas
+irá melhorar muito a rapidez com que os problemas são diagnosticados e tratados.
+Apreciamos seu esforço em nos enviar o máximo de feedback possível.
 
-## Create an issue on GitHub
+## Criar uma issue no GitHub
 
-* To report a Flutter crash or bug,
-  [create an issue in the flutter/flutter project][Flutter issue].
-* To report a problem with the website,
-  [create an issue in the flutter/website project][Website issue].
+* Para relatar um crash ou bug do Flutter,
+  [crie uma issue no projeto flutter/flutter][Flutter issue].
+* Para relatar um problema com o site,
+  [crie uma issue no projeto flutter/website][Website issue].
 
-## Provide a minimal reproducible code sample
+## Fornecer um exemplo de código mínimo reproduzível
 
-Create a minimal Flutter app that shows the problem you are facing,
-and paste it into the GitHub issue.
+Crie um app Flutter mínimo que mostre o problema que você está enfrentando
+e cole-o na issue do GitHub.
 
-To create it you can use `flutter create bug` command and update
-the `main.dart` file.
+Para criá-lo, você pode usar o comando `flutter create bug` e atualizar
+o arquivo `main.dart`.
 
-Alternatively, you can use [DartPad][], which is capable
-of creating and running small Flutter apps.
+Alternativamente, você pode usar o [DartPad][], que é capaz
+de criar e executar pequenos apps Flutter.
 
-If your problem goes out of what can be placed in a single file, for example
-you have a problem with native channels, you can upload the full code of
-the reproduction into a separate repository and link it.
+Se o seu problema vai além do que pode ser colocado em um único arquivo, por exemplo,
+você tem um problema com canais nativos, você pode fazer upload do código completo da
+reprodução em um repositório separado e vinculá-lo.
 
-## Provide some Flutter diagnostics
+## Fornecer diagnósticos do Flutter
 
-* Run `flutter doctor -v` in your project directory and paste
-  the results into the GitHub issue:
+* Execute `flutter doctor -v` no diretório do seu projeto e cole
+  os resultados na issue do GitHub:
 
 ```plaintext
 [✓] Flutter (Channel stable, 1.22.3, on Mac OS X 10.15.7 19H2, locale en-US)
@@ -71,37 +72,37 @@ the reproduction into a separate repository and link it.
     • iPhone (mobile) • 00000000-0000000000000000 • ios • iOS 14.0
 ```
 
-## Run the command in verbose mode
+## Executar o comando em modo verbose
 
-Follow these steps only if your issue is related to the
-`flutter` tool.
+Siga essas etapas apenas se o seu problema estiver relacionado à
+ferramenta `flutter`.
 
-* All Flutter commands accept the `--verbose` flag.
-  If attached to the issue, the output from this command
-  might aid in diagnosing the problem.
-* Attach the results of the command to the GitHub issue.
+* Todos os comandos do Flutter aceitam a flag `--verbose`.
+  Se anexada à issue, a saída deste comando
+  pode ajudar no diagnóstico do problema.
+* Anexe os resultados do comando à issue do GitHub.
 ![flutter verbose](/assets/images/docs/verbose_flag.png){:width="100%"}
 
-## Provide the most recent logs
+## Fornecer os logs mais recentes
 
-* Logs for the currently connected device are accessed
-  using `flutter logs`.
-* If the crash is reproducible, clear the logs
-  (⌘ + k on Mac), reproduce the crash and copy the
-  newly generated logs into a file attached to the bug report.
-* If you are getting exceptions thrown by the framework,
-  include all the output between and including the dashed
-  lines of the first such exception.
+* Os logs do dispositivo atualmente conectado são acessados
+  usando `flutter logs`.
+* Se o crash for reproduzível, limpe os logs
+  (⌘ + k no Mac), reproduza o crash e copie os
+  logs recém-gerados em um arquivo anexado ao relatório de bug.
+* Se você estiver recebendo exceções lançadas pelo framework,
+  inclua toda a saída entre e incluindo as linhas
+  tracejadas da primeira exceção.
 ![flutter logs](/assets/images/docs/logs.png){:width="100%"}
 
-## Provide the crash report
+## Fornecer o relatório de crash
 
-* When the iOS simulator crashes,
-  a crash report is generated in `~/Library/Logs/DiagnosticReports/`.
-* When an iOS device crashes,
-  a crash report is generated in `~/Library/Logs/CrashReporter/MobileDevice`.
-* Find the report corresponding to the crash (usually the latest)
-  and attach it to the GitHub issue.
+* Quando o simulador iOS trava,
+  um relatório de crash é gerado em `~/Library/Logs/DiagnosticReports/`.
+* Quando um dispositivo iOS trava,
+  um relatório de crash é gerado em `~/Library/Logs/CrashReporter/MobileDevice`.
+* Encontre o relatório correspondente ao crash (geralmente o mais recente)
+  e anexe-o à issue do GitHub.
 ![crash report](/assets/images/docs/crash_reports.png){:width="100%"}
 
 

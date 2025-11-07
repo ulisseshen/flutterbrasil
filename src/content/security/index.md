@@ -1,131 +1,132 @@
 ---
-title: Security
+ia-translate: true
+title: Segurança
 description: >-
-  An overview of the Flutter's team philosophy and processes for security.
+  Uma visão geral da filosofia e processos da equipe Flutter para segurança.
 show_breadcrumbs: false
 ---
 
-The Flutter team takes the security of Flutter and the applications
-created with it seriously. This page describes how to report any
-vulnerabilities you might find, and lists best practices to minimize
-the risk of introducing a vulnerability.
+A equipe Flutter leva a sério a segurança do Flutter e dos aplicativos
+criados com ele. Esta página descreve como relatar quaisquer
+vulnerabilidades que você possa encontrar e lista as melhores práticas para minimizar
+o risco de introduzir uma vulnerabilidade.
 
-## Security philosophy
+## Filosofia de segurança
 
-Flutter security strategy is based on five key pillars:
+A estratégia de segurança do Flutter é baseada em cinco pilares principais:
 
-* **Identify**: Track and prioritize key security risks by
-  identifying core assets, key threats, and vulnerabilities. 
-* **Detect**: Detect and identify vulnerabilities using
-  techniques and tools like vulnerability scanning,
-  static application security testing, and fuzzing.
-* **Protect**: Eliminate risks by mitigating known
-  vulnerabilities and protect critical assets against source threats.
-* **Respond**: Define processes to report, triage, and
-  respond to vulnerabilities or attacks.
-* **Recover**: Build capabilities to contain and recover
-  from an incident with minimal impact.
+* **Identificar**: Rastrear e priorizar os principais riscos de segurança
+  identificando ativos principais, ameaças chave e vulnerabilidades.
+* **Detectar**: Detectar e identificar vulnerabilidades usando
+  técnicas e ferramentas como varredura de vulnerabilidades,
+  teste de segurança de aplicações estáticas e fuzzing.
+* **Proteger**: Eliminar riscos mitigando vulnerabilidades conhecidas
+  e proteger ativos críticos contra ameaças de origem.
+* **Responder**: Definir processos para relatar, triar e
+  responder a vulnerabilidades ou ataques.
+* **Recuperar**: Construir capacidades para conter e recuperar
+  de um incidente com impacto mínimo.
 
-## Reporting vulnerabilities
+## Relatar vulnerabilidades
 
-Before reporting a security vulnerability found
-by a static analysis tool,
-consider checking our list of [known false positives][].
+Antes de relatar uma vulnerabilidade de segurança encontrada
+por uma ferramenta de análise estática,
+considere verificar nossa lista de [falsos positivos conhecidos][known false positives].
 
-To report a vulnerability, email `security@flutter.dev`
-with a description of the issue,
-the steps you took to create the issue,
-affected versions, and if known, mitigations for the issue.
+Para relatar uma vulnerabilidade, envie um e-mail para `security@flutter.dev`
+com uma descrição do problema,
+as etapas que você seguiu para criar o problema,
+versões afetadas e, se conhecido, mitigações para o problema.
 
-We should reply within three working days.
+Devemos responder dentro de três dias úteis.
 
-We use GitHub's security advisory feature to track
-open security issues. You should expect a close collaboration
-as we work to resolve the issue that you have reported. 
+Usamos o recurso de aviso de segurança do GitHub para rastrear
+problemas de segurança abertos. Você deve esperar uma colaboração próxima
+enquanto trabalhamos para resolver o problema que você relatou.
 
-Please reach out to `security@flutter.dev` again if
-you don't receive prompt attention and regular updates.
-You might also reach out to the team using our public
-[Discord chat channels][]; however, when reporting an issue,
-e-mail `security@flutter.dev`.
-To avoid revealing information about vulnerabilities
-in public that could put users at risk,
-**don't post to Discord or file a GitHub issue**.
+Entre em contato com `security@flutter.dev` novamente se
+você não receber atenção rápida e atualizações regulares.
+Você também pode entrar em contato com a equipe usando nossos
+[canais de chat públicos do Discord][Discord chat channels]; no entanto, ao relatar um problema,
+envie um e-mail para `security@flutter.dev`.
+Para evitar revelar informações sobre vulnerabilidades
+em público que possam colocar os usuários em risco,
+**não poste no Discord ou abra uma issue no GitHub**.
 
-For more details on how we handle security vulnerabilities,
-see our [security policy][].
+Para mais detalhes sobre como lidamos com vulnerabilidades de segurança,
+consulte nossa [política de segurança][security policy].
 
 [Discord chat channels]: {{site.repo.flutter}}/blob/main/docs/contributing/Chat.md
 [known false positives]: /reference/security-false-positives
 [security policy]: {{site.repo.flutter}}/security/policy
 
-##  Flagging existing issues as security-related
+## Sinalizar issues existentes como relacionadas à segurança
 
-If you believe that an existing issue is security-related,
-we ask that you send an email to `security@flutter.dev`. 
-The email should include the issue ID and a short description
-of why it should be handled according to this security policy.
+Se você acredita que uma issue existente está relacionada à segurança,
+pedimos que você envie um e-mail para `security@flutter.dev`.
+O e-mail deve incluir o ID da issue e uma breve descrição
+de por que ela deve ser tratada de acordo com esta política de segurança.
 
-## Supported versions
+## Versões suportadas
 
-We commit to publishing security updates for the version of
-Flutter currently on the `stable` branch.
+Comprometemo-nos a publicar atualizações de segurança para a versão do
+Flutter atualmente na branch `stable`.
 
-## Expectations
+## Expectativas
 
-We treat security issues equivalent to a P0 priority level
-and release a beta or hotfix for any major security issues
-found in the most recent stable version of our SDK. 
+Tratamos problemas de segurança equivalentes ao nível de prioridade P0
+e lançamos uma versão beta ou hotfix para quaisquer problemas graves de segurança
+encontrados na versão estável mais recente do nosso SDK.
 
-Any vulnerability reported for flutter websites like
-docs.flutter.dev doesn't require a release and will be
-fixed in the website itself.
+Qualquer vulnerabilidade relatada para sites do Flutter como
+docs.flutter.dev não requer um lançamento e será
+corrigida no próprio site.
 
-## Bug Bounty programs
+## Programas Bug Bounty
 
-Contributing teams can include Flutter within the scope
-of their bug bounty programs. To have your program listed,
-contact `security@flutter.dev`.
+Equipes contribuidoras podem incluir o Flutter dentro do escopo
+de seus programas de bug bounty. Para ter seu programa listado,
+entre em contato com `security@flutter.dev`.
 
-Google considers Flutter to be in scope for the
+O Google considera o Flutter dentro do escopo do
 [Google Open Source Software Vulnerability Reward Program][google-oss-vrp].
-For expediency, reporters should contact `security@flutter.dev`
-before using Google's vulnerability reporting flow.
+Para agilidade, os relatores devem entrar em contato com `security@flutter.dev`
+antes de usar o fluxo de relatório de vulnerabilidades do Google.
 
 [google-oss-vrp]: https://bughunters.google.com/open-source-security
 
-## Receiving security updates
+## Receber atualizações de segurança
 
-The best way to receive security updates is to subscribe to the 
-[flutter-announce][] mailing list or watch updates to the
-[Discord channel][]. We also announce security updates in the
-technical release blog post.
+A melhor maneira de receber atualizações de segurança é assinar a
+lista de e-mails [flutter-announce][] ou acompanhar atualizações no
+[canal do Discord][Discord channel]. Também anunciamos atualizações de segurança no
+post do blog de lançamento técnico.
 
 [Discord channel]: https://discord.gg/BS8KZyg
 [flutter-announce]: {{site.groups}}/forum/#!forum/flutter-announce
 
-## Best practices
+## Melhores práticas
 
-* **Keep current with the latest Flutter SDK releases.**
-  We regularly update Flutter, and these updates might fix security
-  defects discovered in previous versions.
+* **Mantenha-se atualizado com os últimos lançamentos do Flutter SDK.**
+  Atualizamos regularmente o Flutter, e essas atualizações podem corrigir defeitos
+  de segurança descobertos em versões anteriores.
 
-* **Keep your application's dependencies up to date.**
-  Make sure you [upgrade your package dependencies][]
-  to keep the dependencies up to date.
-  Avoid pinning to specific versions
-  for your dependencies and, if you do, make sure you check
-  periodically to see if your dependencies have had security updates,
-  and update the pin accordingly.
+* **Mantenha as dependências da sua aplicação atualizadas.**
+  Certifique-se de [atualizar as dependências dos seus packages][upgrade your package dependencies]
+  para manter as dependências atualizadas.
+  Evite fixar versões específicas
+  para suas dependências e, se o fizer, certifique-se de verificar
+  periodicamente se suas dependências tiveram atualizações de segurança
+  e atualize a fixação de acordo.
 
-* **Keep your copy of Flutter up to date.**
-  Private, customized versions of Flutter tend
-  to fall behind the current version and might not
-  include important security fixes and enhancements.
-  Instead, routinely update your copy of Flutter.
-  If you're making changes to improve Flutter,
-  be sure to update your fork and consider sharing your
-  changes with the community.
+* **Mantenha sua cópia do Flutter atualizada.**
+  Versões privadas e personalizadas do Flutter tendem
+  a ficar para trás da versão atual e podem não
+  incluir correções e melhorias de segurança importantes.
+  Em vez disso, atualize rotineiramente sua cópia do Flutter.
+  Se você está fazendo alterações para melhorar o Flutter,
+  certifique-se de atualizar seu fork e considere compartilhar suas
+  alterações com a comunidade.
 
 [upgrade your package dependencies]: /release/upgrade
 

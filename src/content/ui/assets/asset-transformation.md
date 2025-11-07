@@ -1,16 +1,17 @@
 ---
-title: Transforming assets at build time
-description: How to set up automatic transformation of images (and other assets) in your Flutter app.
-short-title: Asset transformation
+title: Transformando assets em tempo de build
+description: Como configurar a transformação automática de imagens (e outros assets) em seu app Flutter.
+short-title: Transformação de assets
+ia-translate: true
 ---
 
-You can configure your project to automatically transform assets
-at build time using compatible Dart packages.
+Você pode configurar seu projeto para transformar automaticamente assets
+em tempo de build usando pacotes Dart compatíveis.
 
-## Specifying asset transformations
+## Especificando transformações de assets
 
-In the `pubspec.yaml` file, list the assets to be transformed and the associated
-transformer package.
+No arquivo `pubspec.yaml`, liste os assets a serem transformados e o pacote
+transformador associado.
 
 ```yaml
 flutter:
@@ -20,10 +21,10 @@ flutter:
         - package: vector_graphics_compiler
 ```
 
-With this configuration, `assets/logo.svg` is transformed by the
-[`vector_graphics_compiler`][] package as it is copied to the build output. This
-package precompiles SVG files into an optimized binary files that can be
-displayed using the [`vector_graphics`][] package, like so:
+Com essa configuração, `assets/logo.svg` é transformado pelo
+pacote [`vector_graphics_compiler`][] enquanto é copiado para a saída do build. Este
+pacote pré-compila arquivos SVG em arquivos binários otimizados que podem ser
+exibidos usando o pacote [`vector_graphics`][], assim:
 
 <?code-excerpt "ui/assets_and_images/lib/logo.dart (TransformedAsset)"?>
 ```dart
@@ -34,10 +35,10 @@ const Widget logo = VectorGraphic(
 );
 ```
 
-### Passing arguments to asset transformers
+### Passando argumentos para transformadores de assets
 
-To pass a string of arguments to an asset transformer,
-also specify that in the pubspec:
+Para passar uma string de argumentos para um transformador de assets,
+especifique isso também no pubspec:
 
 ```yaml
 flutter:
@@ -48,11 +49,11 @@ flutter:
           args: ['--tessellate', '--font-size=14']
 ```
 
-### Chaining asset transformers
+### Encadeando transformadores de assets
 
-Asset transformers can be chained and are applied in
-the order they are declared.
-Consider the following example using imaginary packages:
+Transformadores de assets podem ser encadeados e são aplicados na
+ordem em que são declarados.
+Considere o seguinte exemplo usando pacotes imaginários:
 
 ```yaml
 flutter:
@@ -63,32 +64,32 @@ flutter:
         - package: png_optimizer
 ```
 
-Here, `bird.png` is transformed by the `grayscale_filter` package.
-The output is then transformed by the `png_optimizer` package before being
-bundled into the built app.
+Aqui, `bird.png` é transformado pelo pacote `grayscale_filter`.
+A saída é então transformada pelo pacote `png_optimizer` antes de ser
+empacotado no app construído.
 
-## Writing asset transformer packages
+## Escrevendo pacotes transformadores de assets
 
-An asset transformer is a Dart [command-line app][] that is invoked with
-`dart run` with at least two arguments: `--input`, which contains the path to
-the file to transform and `--output`, which is the location where the
-transformer code must write its output to.
+Um transformador de assets é um [app de linha de comando][command-line app] Dart que é invocado com
+`dart run` com pelo menos dois argumentos: `--input`, que contém o caminho para
+o arquivo a ser transformado e `--output`, que é o local onde o
+código do transformador deve escrever sua saída.
 
-If the transformer finishes with a non-zero exit code, the application build
-fails with error message explaining that transformation of the asset failed.
-Anything written to the [`stderr`] stream of the process by the transformer is
-included in the error message.
+Se o transformador terminar com um código de saída diferente de zero, o build da aplicação
+falha com uma mensagem de erro explicando que a transformação do asset falhou.
+Qualquer coisa escrita no stream [`stderr`] do processo pelo transformador é
+incluída na mensagem de erro.
 
-During the invocation of the transformer, the `FLUTTER_BUILD_MODE`
-environment variable will be set to the CLI name of the build mode being used.
-For example, if you run your app with `flutter run -d macos --release`, then
-`FLUTTER_BUILD_MODE` will be set to `release`.
+Durante a invocação do transformador, a variável de ambiente `FLUTTER_BUILD_MODE`
+será definida para o nome CLI do modo de build sendo usado.
+Por exemplo, se você executar seu app com `flutter run -d macos --release`, então
+`FLUTTER_BUILD_MODE` será definido como `release`.
 
-## Sample
+## Exemplo
 
-For a sample Flutter project that uses asset transformation and includes a custom
-Dart package that is used as a transformer, check out the
-[asset_transformers project in the Flutter samples repo][].
+Para um projeto Flutter de exemplo que usa transformação de assets e inclui um pacote
+Dart personalizado que é usado como transformador, confira o
+[projeto asset_transformers no repositório de exemplos do Flutter][asset_transformers project in the Flutter samples repo].
 
 [command-line app]: {{site.dart-site}}/tutorials/server/cmdline
 [asset_transformers project in the Flutter samples repo]: {{site.repo.samples}}/tree/main/asset_transformation

@@ -1,6 +1,7 @@
 ---
 layout: toc
-title: Input & forms
-description: Content covering handling input and adding forms to Flutter apps.
+title: Entrada & formulários
+description: Conteúdo cobrindo manipulação de entrada e adição de formulários a apps Flutter.
 sitemap: false
+ia-translate: true
 ---

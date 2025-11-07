@@ -649,7 +649,7 @@ antes de desabilitar o acesso.
 [`Fragment`]: {{site.android-dev}}/guide/components/fragments
 [`FlutterFragment`]: {{site.api}}/javadoc/io/flutter/embedding/android/FlutterFragment.html
 [using a `FlutterActivity`]: /add-to-app/android/add-flutter-screen
-[usar uma `FlutterActivity`]: /add-to-app/android/add-flutter-screen
+[usar uma <code>FlutterActivity</code>]: /add-to-app/android/add-flutter-screen
 [`FlutterEngine`]: {{site.api}}/javadoc/io/flutter/embedding/engine/FlutterEngine.html
 [`FlutterEngineCache`]: {{site.api}}/javadoc/io/flutter/embedding/engine/FlutterEngineCache.html
 [splash screen guide]: /platform-integration/android/splash-screen

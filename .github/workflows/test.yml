@@ -67,7 +67,6 @@ jobs:
         run: dart pub get
       - name: Check if excerpts are up to date
         run: dart run flutter_site refresh-excerpts --fail-on-update --dry-run
-        continue-on-error: ${{ matrix.experimental }}
 
   linkcheck:
     name: Build site and check links

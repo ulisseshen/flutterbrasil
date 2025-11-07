@@ -132,6 +132,7 @@ escuro:
 Para mais informações sobre como reduzir jank de compilação de shader,
 confira [Reduzir jank de compilação de shader em mobile][Reduce shader compilation jank on mobile].
 
+<a id="frame-analysis-tab"></a>
 ## Aba de análise de frame
 
 Selecionar um frame janky (lento, colorido em vermelho)
@@ -142,6 +143,7 @@ que detectamos que podem ter contribuído para o tempo de frame lento.
 
 ![Screenshot of the frame analysis tab](/assets/images/docs/tools/devtools/frame-analysis-tab.png)
 
+<a id="timeline-events-tab"></a>
 ## Aba de eventos de timeline
 
 O gráfico de eventos de timeline mostra todo o rastreamento de eventos da sua aplicação.
@@ -242,6 +244,7 @@ para o jank que você viu no seu app.
 
 ![Screenshot of more debugging options](/assets/images/docs/tools/devtools/more-debugging-options.png)
 
+<a id="import-and-export"></a>
 ## Importar e exportar
 
 DevTools suporta importação e exportação de snapshots de performance.

@@ -269,6 +269,7 @@ No entanto, vazamentos são mais propensos a causar problemas de memória,
 porque mesmo um pequeno vazamento,
 se repetido muitas vezes, leva a uma falha.
 
+<a id="memory-view-guide"></a>
 ## Guia da visualização Memory
 
 A visualização de memória DevTools ajuda você a investigar
@@ -292,6 +293,7 @@ tem os seguintes recursos:
 : Investigue o gerenciamento de memória de um recurso para
   um conjunto especificado de classes.
 
+<a id="expandable-chart"></a>
 ### Gráfico expansível
 
 O gráfico expansível fornece os seguintes recursos:
@@ -386,7 +388,7 @@ As quantidades plotadas no eixo y são as seguintes:
 [heroku]: {{site.yt.watch}}?v=nkTUMVNelXA
 
 <a id="profile-tab" aria-hidden="true"></a>
-
+<a id="profile-memory-tab"></a>
 ### Aba Profile Memory
 
 Use a aba **Profile Memory** para ver a alocação de memória
@@ -397,6 +399,7 @@ Alterne **Refresh on GC**, para ver alocação em tempo real.
 
 ![Screenshot of the profile tab page](/assets/images/docs/tools/devtools/profile-tab-2.png){:width="100%"}
 
+<a id="diff-snapshots-tab"></a>
 ### Aba Diff Snapshots
 
 Use a aba **Diff Snapshots** para investigar o gerenciamento
@@ -415,7 +418,7 @@ Para uma análise mais profunda no Google Sheets
 ou outras ferramentas, baixe os dados em formato CSV.
 
 <a id="trace-tab" aria-hidden="true"></a>
-
+<a id="trace-instances-tab"></a>
 ### Aba Trace Instances
 
 Use a aba **Trace Instances** para investigar quais métodos

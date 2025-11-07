@@ -49,6 +49,7 @@ DevTools (veja [instruções de inicialização][launch instructions]).
 
 ![Screenshot of app size access on landing page](/assets/images/docs/tools/devtools/app_size_access_landing_page.png){:width="100%"}
 
+<a id="analysis-tab"></a>
 ## Aba Analysis
 
 A aba analysis permite que você inspecione um único snapshot
@@ -75,6 +76,7 @@ gerar arquivos de tamanho.
 
 O treemap e a tabela mostram os dados hierárquicos para o tamanho do seu app.
 
+<a id="use-the-treemap"></a>
 #### Usar o treemap
 
 Um treemap é uma visualização para dados hierárquicos.
@@ -198,6 +200,7 @@ Este é um exemplo onde o gráfico de chamada lhe daria
 um melhor entendimento sobre por que um pedaço de código está
 incluído na sua aplicação.
 
+<a id="diff-tab"></a>
 ## Aba Diff
 
 A aba diff permite que você compare dois snapshots de
@@ -231,6 +234,7 @@ apenas dados que diferem entre os dois arquivos de tamanho importados.
 
 Para perguntas sobre usar o treemap, veja [Usar o treemap][Use the treemap] acima.
 
+<a id="generating-size-files"></a>
 ## Gerando arquivos de tamanho
 
 Para usar a ferramenta de tamanho de app, você precisará gerar um

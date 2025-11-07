@@ -105,6 +105,7 @@ Para aprender mais sobre publicação de packages, confira a
 
 [Dart documentation on publishing packages]: {{site.dart-site}}/tools/pub/publishing
 
+<a id="known-trusted-community-run-mirror-sites"></a>
 ## Sites espelho conhecidos e confiáveis mantidos pela comunidade
 
 A equipe Flutter não pode garantir disponibilidade de longo prazo de nenhum mirror.

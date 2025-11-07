@@ -1,6 +1,7 @@
 ---
-title: Testing
-description: A catalog of recipes showcasing testing your Flutter app.
+title: Testes
+description: Um catálogo de receitas mostrando como testar seu aplicativo Flutter.
+ia-translate: true
 ---
 
 ## Integration

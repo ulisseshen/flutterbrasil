@@ -134,8 +134,8 @@ UnboundedBox(
 )
 ```
 
-If the child expands and it has unbounded constraints,
-Flutter returns an overflow warning:
+Se o filho expandir e tiver unbounded constraints,
+Flutter retorna um aviso de overflow:
 
 ```dart
 UnconstrainedBox(
@@ -145,36 +145,36 @@ UnconstrainedBox(
 
 <img src="/assets/images/docs/ui/layout/layout-14.png" alt="When parents pass unbounded constraints to children, and the children are expanding, then there is an overflow warning.">
 
-To learn how constraints work in Flutter,
-see [Understanding constraints][].
+Para aprender como constraints funcionam no Flutter,
+veja [Understanding constraints][].
 
-### Design system
+### Sistema de design
 
-Because Flutter targets multiple platforms, your app doesn't need
-to conform to any design system.
-Though this guide features [Material][] widgets,
-your Flutter app can use many different design systems:
+Como o Flutter tem como alvo múltiplas plataformas, seu app não precisa
+se conformar a nenhum sistema de design.
+Embora este guia apresente widgets [Material][],
+seu app Flutter pode usar muitos sistemas de design diferentes:
 
 - Custom Material widgets
 - Community built widgets
-- Your own custom widgets
-- [Cupertino widgets][] that follow Apple's Human Interface Guidelines
+- Seus próprios widgets personalizados
+- [Cupertino widgets][] que seguem as Apple's Human Interface Guidelines
 
 {% ytEmbed '3PdUaidHc-E', 'Flutter\'s cupertino library for iOS developers' %}
 
-If you're looking for a great reference app that features a
-custom design system, check out [Wonderous][].
+Se você está procurando um ótimo app de referência que apresenta um
+sistema de design personalizado, confira [Wonderous][].
 
-## UI Basics
+## Básicos de UI
 
-This section covers the basics of UI development in
-Flutter and how it compares to SwiftUI.
-This includes how to start developing your app, display static text,
-create buttons, react to on-press events, display lists, grids, and more.
+Esta seção cobre os básicos de desenvolvimento de UI no
+Flutter e como ele se compara ao SwiftUI.
+Isso inclui como começar a desenvolver seu app, exibir texto estático,
+criar botões, reagir a eventos de pressionar, exibir listas, grids, e mais.
 
-### Getting started
+### Começando
 
-In **SwiftUI**, you use `App` to start your app.
+No **SwiftUI**, você usa `App` para iniciar seu app.
 
 ```swift
 @main
@@ -187,8 +187,8 @@ struct MyApp: App {
 }
 ```
 
-Another common SwiftUI practice places the app body within a `struct`
-that conforms to the `View` protocol as follows:
+Outra prática comum do SwiftUI coloca o corpo do app dentro de uma `struct`
+que conforma ao protocolo `View` da seguinte forma:
 
 ```swift
 struct HomePage: View {
@@ -198,8 +198,8 @@ struct HomePage: View {
 }
 ```
 
-To start your **Flutter** app, pass in an instance of your app to
-the `runApp` function.
+Para iniciar seu app **Flutter**, passe uma instância de seu app para
+a função `runApp`.
 
 <?code-excerpt "lib/get_started.dart (main)"?>
 ```dart dartpad="42cf3026e1460ef618257684ee5af6a2"
@@ -208,10 +208,10 @@ void main() {
 }
 ```
 
-`App` is a widget. The build method describes the part of the
-user interface it represents.
-It's common to begin your app with a [`WidgetApp`][] class,
-like [`CupertinoApp`][].
+`App` é um widget. O método build descreve a parte da interface de usuário
+que ele representa.
+É comum começar seu app com uma classe [`WidgetApp`][],
+como [`CupertinoApp`][].
 
 <?code-excerpt "lib/get_started.dart (myapp)"?>
 ```dart dartpad="42cf3026e1460ef618257684ee5af6a2"
@@ -229,8 +229,8 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-The widget used in `HomePage` might begin with the `Scaffold` class.
-`Scaffold` implements a basic layout structure for an app.
+O widget usado em `HomePage` pode começar com a classe `Scaffold`.
+`Scaffold` implementa uma estrutura de layout básica para um app.
 
 <?code-excerpt "lib/get_started.dart (homepage)"?>
 ```dart dartpad="42cf3026e1460ef618257684ee5af6a2"
@@ -250,17 +250,17 @@ class HomePage extends StatelessWidget {
 }
 ```
 
-Note how Flutter uses the [`Center`][] widget.
-SwiftUI renders a view's contents in its center by default.
-That's not always the case with Flutter.
-`Scaffold` doesn't render its `body` widget at the center of the screen.
-To center the text, wrap it in a `Center` widget.
-To learn about different widgets and their default behaviors, check out
-the [Widget catalog][].
+Note como o Flutter usa o widget [`Center`][].
+SwiftUI renderiza o conteúdo de uma view em seu centro por padrão.
+Esse não é sempre o caso com Flutter.
+`Scaffold` não renderiza seu widget `body` no centro da tela.
+Para centralizar o texto, envolva-o em um widget `Center`.
+Para aprender sobre widgets diferentes e seus comportamentos padrão, confira
+o [Widget catalog][].
 
-### Adding Buttons
+### Adicionando Botões
 
-In **SwiftUI**, you use the `Button` struct to create a button.
+No **SwiftUI**, você usa o struct `Button` para criar um botão.
 
 ```swift
 Button("Do something") {
@@ -269,8 +269,8 @@ Button("Do something") {
 }
 ```
 
-To achieve the same result in **Flutter**,
-use the `CupertinoButton` class:
+Para alcançar o mesmo resultado no **Flutter**,
+use a classe `CupertinoButton`:
 
 <?code-excerpt "lib/text_button.dart (text-button)" replace="/child: //g;"?>
 ```dart dartpad="3c9b9a4de431b86725197a7fc2c84158"
@@ -282,21 +282,21 @@ CupertinoButton(
 ),
 ```
 
-**Flutter** gives you access to a variety of buttons with predefined styles.
-The [`CupertinoButton`][] class comes from the Cupertino library.
-Widgets in the Cupertino library use Apple's design system.
+**Flutter** te dá acesso a uma variedade de botões com estilos predefinidos.
+A classe [`CupertinoButton`][] vem da biblioteca Cupertino.
+Widgets na biblioteca Cupertino usam o sistema de design da Apple.
 
-### Aligning components horizontally
+### Alinhando componentes horizontalmente
 
-In **SwiftUI**, stack views play a big part in designing your layouts.
-Two separate structures allow you to create stacks:
+No **SwiftUI**, stack views têm um papel importante ao projetar seus layouts.
+Duas estruturas separadas permitem que você crie stacks:
 
-1. `HStack` for horizontal stack views
+1. `HStack` para horizontal stack views
 
-2. `VStack` for vertical stack views
+2. `VStack` para vertical stack views
 
-The following SwiftUI view adds a globe image and
-text to a horizontal stack view:
+A seguinte view SwiftUI adiciona uma imagem de globo e
+texto a uma horizontal stack view:
 
 ```swift
 HStack {
@@ -305,7 +305,7 @@ HStack {
 }
 ```
 
-**Flutter** uses [`Row`][] rather than `HStack`:
+**Flutter** usa [`Row`][] ao invés de `HStack`:
 
 <?code-excerpt "lib/row.dart (row)" replace="/child: //g;"?>
 ```dart dartpad="0365338f938427b01d72e37cea554f75"
@@ -318,18 +318,18 @@ Row(
 ),
 ```
 
-The `Row` widget requires a `List<Widget>` in the `children` parameter.
-The `mainAxisAlignment` property tells Flutter how to position children
-with extra space. `MainAxisAlignment.center` positions children in the
-center of the main axis. For `Row`, the main axis is the horizontal
-axis.
+O widget `Row` requer uma `List<Widget>` no parâmetro `children`.
+A propriedade `mainAxisAlignment` diz ao Flutter como posicionar filhos
+com espaço extra. `MainAxisAlignment.center` posiciona filhos no
+centro do eixo principal. Para `Row`, o eixo principal é o eixo
+horizontal.
 
-### Aligning components vertically
+### Alinhando componentes verticalmente
 
-The following examples build on those in the previous section.
+Os exemplos seguintes constroem sobre aqueles da seção anterior.
 
-In **SwiftUI**, you use `VStack` to arrange the components into a
-vertical pillar.
+No **SwiftUI**, você usa `VStack` para organizar os componentes em uma
+pilha vertical.
 
 ```swift
 VStack {
@@ -338,8 +338,8 @@ VStack {
 }
 ```
 
-**Flutter** uses the same Dart code from the previous example,
-except it swaps [`Column`][] for `Row`:
+**Flutter** usa o mesmo código Dart do exemplo anterior,
+exceto que troca [`Column`][] por `Row`:
 
 <?code-excerpt "lib/column.dart (column)" replace="/child: //g;"?>
 ```dart dartpad="d9a288be0c2a353296fc8825680b84b8"
@@ -352,13 +352,13 @@ Column(
 ),
 ```
 
-### Displaying a list view
+### Exibindo uma list view
 
-In **SwiftUI**, you use the `List` base component to display sequences
-of items.
-To display a sequence of model objects, make sure that the user can
-identify your model objects.
-To make an object identifiable, use the `Identifiable` protocol.
+No **SwiftUI**, você usa o componente base `List` para exibir sequências
+de itens.
+Para exibir uma sequência de objetos modelo, certifique-se de que o usuário possa
+identificar seus objetos modelo.
+Para tornar um objeto identificável, use o protocolo `Identifiable`.
 
 ```swift
 struct Person: Identifiable {
@@ -383,9 +383,9 @@ struct ListWithPersons: View {
 }
 ```
 
-This resembles how **Flutter** prefers to build its list widgets.
-Flutter doesn't need the list items to be identifiable.
-You set the number of items to display then build a widget for each item.
+Isso se assemelha a como **Flutter** prefere construir seus widgets de lista.
+Flutter não precisa que os itens da lista sejam identificáveis.
+Você define o número de itens a exibir e então constrói um widget para cada item.
 
 <?code-excerpt "lib/list.dart (simple-list)"?>
 ```dart dartpad="67426fd4f9c38c0c1db96b1af65598f2"
@@ -419,26 +419,26 @@ class HomePage extends StatelessWidget {
 }
 ```
 
-Flutter has some caveats for lists:
+Flutter tem algumas ressalvas para listas:
 
-- The [`ListView`] widget has a builder method.
-  This works like the `ForEach` within SwiftUI's `List` struct.
+- O widget [`ListView`] tem um método builder.
+  Isso funciona como o `ForEach` dentro do struct `List` do SwiftUI.
 
-- The `itemCount` parameter of the `ListView` sets how many items
-  the `ListView` displays.
+- O parâmetro `itemCount` do `ListView` define quantos itens
+  o `ListView` exibe.
 
-- The `itemBuilder` has an index parameter that will be between zero
-  and one less than itemCount.
+- O `itemBuilder` tem um parâmetro index que estará entre zero
+  e um a menos que itemCount.
 
-The previous example returned a [`ListTile`][] widget for each item.
-The `ListTile` widget includes properties like `height` and `font-size`.
-These properties help build a list. However, Flutter allows you to return
-almost any widget that represents your data.
+O exemplo anterior retornou um widget [`ListTile`][] para cada item.
+O widget `ListTile` inclui propriedades como `height` e `font-size`.
+Essas propriedades ajudam a construir uma lista. No entanto, Flutter permite que você retorne
+quase qualquer widget que represente seus dados.
 
-### Displaying a grid
+### Exibindo um grid
 
-When constructing non-conditional grids in **SwiftUI**,
-you use `Grid` with `GridRow`.
+Ao construir grids não-condicionais no **SwiftUI**,
+você usa `Grid` com `GridRow`.
 
 ```swift
 Grid {
@@ -455,10 +455,10 @@ Grid {
 }
 ```
 
-To display grids in **Flutter**, use the [`GridView`] widget.
-This widget has various constructors. Each constructor has
-a similar goal, but uses different input parameters.
-The following example uses the `.builder()` initializer:
+Para exibir grids no **Flutter**, use o widget [`GridView`].
+Este widget tem vários construtores. Cada construtor tem
+um objetivo similar, mas usa parâmetros de entrada diferentes.
+O exemplo seguinte usa o inicializador `.builder()`:
 
 <?code-excerpt "lib/grid.dart (grid-example)"?>
 ```dart dartpad="d6b9174f33db94164e457b3da80da933"
@@ -490,21 +490,21 @@ class HomePage extends StatelessWidget {
 }
 ```
 
-The `SliverGridDelegateWithFixedCrossAxisCount` delegate determines
-various parameters that the grid uses to lay out its components.
-This includes `crossAxisCount` that dictates the number of items
-displayed on each row.
+O delegate `SliverGridDelegateWithFixedCrossAxisCount` determina
+vários parâmetros que o grid usa para fazer layout de seus componentes.
+Isso inclui `crossAxisCount` que dita o número de itens
+exibidos em cada linha.
 
-How SwiftUI's `Grid` and Flutter's `GridView` differ in that `Grid`
-requires `GridRow`. `GridView` uses the delegate to decide how the
-grid should lay out its components.
+Como o `Grid` do SwiftUI e o `GridView` do Flutter diferem em que `Grid`
+requer `GridRow`. `GridView` usa o delegate para decidir como o
+grid deve fazer layout de seus componentes.
 
-### Creating a scroll view
+### Criando uma scroll view
 
-In **SwiftUI**, you use `ScrollView` to create custom scrolling
-components.
-The following example displays a series of `PersonView` instances
-in a scrollable fashion.
+No **SwiftUI**, você usa `ScrollView` para criar componentes
+de rolagem personalizados.
+O exemplo seguinte exibe uma série de instâncias `PersonView`
+de forma rolável.
 
 ```swift
 ScrollView {
@@ -516,9 +516,9 @@ ScrollView {
 }
 ```
 
-To create a scrolling view, **Flutter** uses [`SingleChildScrollView`][].
-In the following example, the function `mockPerson` mocks instances
-of the `Person` class to create the custom `PersonView` widget.
+Para criar uma view de rolagem, **Flutter** usa [`SingleChildScrollView`][].
+No exemplo seguinte, a função `mockPerson` simula instâncias
+da classe `Person` para criar o widget personalizado `PersonView`.
 
 <?code-excerpt "lib/scroll.dart (scroll-example)" replace="/body: //g;"?>
 ```dart dartpad="a75740320989ed04020d95502a0de34e"
@@ -535,30 +535,30 @@ SingleChildScrollView(
 ),
 ```
 
-### Responsive and adaptive design
+### Design responsivo e adaptativo
 
-In **SwiftUI**, you use `GeometryReader` to create relative view sizes.
+No **SwiftUI**, você usa `GeometryReader` para criar tamanhos de view relativos.
 
-For example, you could:
+Por exemplo, você poderia:
 
-- Multiply `geometry.size.width` by some factor to set the _width_.
-- Use `GeometryReader` as a breakpoint to change the design of your app.
+- Multiplicar `geometry.size.width` por algum fator para definir a _width_.
+- Usar `GeometryReader` como um breakpoint para mudar o design de seu app.
 
-You can also see if the size class has `.regular` or `.compact`
-using `horizontalSizeClass`.
+Você também pode ver se a size class tem `.regular` ou `.compact`
+usando `horizontalSizeClass`.
 
-To create relative views in **Flutter**, you can use one of two options:
+Para criar views relativas no **Flutter**, você pode usar uma de duas opções:
 
-- Get the `BoxConstraints` object in the [`LayoutBuilder`][] class.
-- Use the [`MediaQuery.of()`][] in your build functions
-  to get the size and orientation of your current app.
+- Obter o objeto `BoxConstraints` na classe [`LayoutBuilder`][].
+- Usar o [`MediaQuery.of()`][] em suas funções build
+  para obter o tamanho e orientação de seu app atual.
 
-To learn more, check out [Creating responsive and adaptive apps][].
+Para aprender mais, confira [Creating responsive and adaptive apps][].
 
-### Managing state
+### Gerenciando estado
 
-In **SwiftUI**, you use the `@State` property wrapper to represent the
-internal state of a SwiftUI view.
+No **SwiftUI**, você usa o property wrapper `@State` para representar o
+estado interno de uma view SwiftUI.
 
 ```swift
 struct ContentView: View {
@@ -571,20 +571,20 @@ struct ContentView: View {
   }}
 ```
 
-**SwiftUI** also includes several options for more complex state
-management such as the `ObservableObject` protocol.
+**SwiftUI** também inclui várias opções para gerenciamento de estado
+mais complexo, como o protocolo `ObservableObject`.
 
-**Flutter** manages local state using a [`StatefulWidget`][].
-Implement a stateful widget with the following two classes:
+**Flutter** gerencia estado local usando um [`StatefulWidget`][].
+Implemente um stateful widget com as duas classes seguintes:
 
-- a subclass of `StatefulWidget`
-- a subclass of `State`
+- uma subclasse de `StatefulWidget`
+- uma subclasse de `State`
 
-The `State` object stores the widget's state.
-To change a widget's state, call `setState()` from the `State` subclass
-to tell the framework to redraw the widget.
+O objeto `State` armazena o estado do widget.
+Para mudar o estado de um widget, chame `setState()` da subclasse `State`
+para dizer ao framework para redesenhar o widget.
 
-The following example shows a part of a counter app:
+O exemplo seguinte mostra parte de um app contador:
 
 <?code-excerpt "lib/state.dart (state)"?>
 ```dart dartpad="34815ab7d6ee0c5a45c82597df444450"
@@ -619,22 +619,22 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 ```
 
-To learn more ways to manage state, check out [State management][].
+Para aprender mais maneiras de gerenciar estado, confira [State management][].
 
-### Animations
+### Animações
 
-Two main types of UI animations exist.
+Existem dois tipos principais de animações de UI.
 
-- Implicit that animated from a current value to a new target.
-- Explicit that animates when asked.
+- Implícita que anima de um valor atual para um novo alvo.
+- Explícita que anima quando solicitada.
 
-#### Implicit Animation
+#### Animação Implícita
 
-SwiftUI and Flutter take a similar approach to animation.
-In both frameworks, you specify parameters like `duration`, and `curve`.
+SwiftUI e Flutter adotam uma abordagem similar para animação.
+Em ambos os frameworks, você especifica parâmetros como `duration` e `curve`.
 
-In **SwiftUI**, you use the `animate()` modifier to handle implicit
-animation.
+No **SwiftUI**, você usa o modifier `animate()` para lidar com animação
+implícita.
 
 ```swift
 Button("Tap me!"){
@@ -644,12 +644,12 @@ Button("Tap me!"){
 .animation(.easeIn(duration: 1))
 ```
 
-**Flutter** includes widgets for implicit animation.
-This simplifies animating common widgets.
-Flutter names these widgets with the following format: `AnimatedFoo`.
+**Flutter** inclui widgets para animação implícita.
+Isso simplifica animar widgets comuns.
+Flutter nomeia esses widgets com o seguinte formato: `AnimatedFoo`.
 
-For example: To rotate a button, use the [`AnimatedRotation`][] class.
-This animates the `Transform.rotate` widget.
+Por exemplo: Para rotacionar um botão, use a classe [`AnimatedRotation`][].
+Isso anima o widget `Transform.rotate`.
 
 <?code-excerpt "lib/simple_animation.dart (animated-button)" replace="/child: //g;"?>
 ```dart dartpad="0ad0572cbf98ead2e5d31a2a94430f19"
@@ -667,31 +667,31 @@ AnimatedRotation(
 ),
 ```
 
-Flutter allows you to create custom implicit animations.
-To compose a new animated widget, use the [`TweenAnimationBuilder`][].
+Flutter permite que você crie animações implícitas personalizadas.
+Para compor um novo widget animado, use o [`TweenAnimationBuilder`][].
 
-#### Explicit Animation
+#### Animação Explícita
 
-For explicit animations, **SwiftUI** uses the `withAnimation()` function.
+Para animações explícitas, **SwiftUI** usa a função `withAnimation()`.
 
-**Flutter** includes explicitly animated widgets with names formatted
-like `FooTransition`.
-One example would be the [`RotationTransition`][] class.
+**Flutter** inclui widgets explicitamente animados com nomes formatados
+como `FooTransition`.
+Um exemplo seria a classe [`RotationTransition`][].
 
-Flutter also allows you to create a custom explicit animation using
-`AnimatedWidget` or `AnimatedBuilder`.
+Flutter também permite que você crie uma animação explícita personalizada usando
+`AnimatedWidget` ou `AnimatedBuilder`.
 
-To learn more about animations in Flutter, see [Animations overview][].
+Para aprender mais sobre animações no Flutter, veja [Animations overview][].
 
-### Drawing on the Screen
+### Desenhando na tela
 
-In **SwiftUI**, you use `CoreGraphics` to draw lines and shapes to the
-screen.
+No **SwiftUI**, você usa `CoreGraphics` para desenhar linhas e formas na
+tela.
 
-**Flutter** has an API based on the `Canvas` class,
-with two classes that help you draw:
+**Flutter** tem uma API baseada na classe `Canvas`,
+com duas classes que ajudam você a desenhar:
 
-1. [`CustomPaint`][] that requires a painter:
+1. [`CustomPaint`][] que requer um painter:
 
     <?code-excerpt "lib/canvas.dart (custom-paint)" replace="/child: //g;"?>
     ```dart dartpad="978d64ee66d54177fb639f8a9f801039"
@@ -701,15 +701,15 @@ with two classes that help you draw:
     ),
     ```
 
-2. [`CustomPainter`][] that implements your algorithm to draw to the canvas.
+2. [`CustomPainter`][] que implementa seu algoritmo para desenhar no canvas.
 
     <?code-excerpt "lib/canvas.dart (custom-painter)"?>
     ```dart dartpad="978d64ee66d54177fb639f8a9f801039"
     class SignaturePainter extends CustomPainter {
       SignaturePainter(this.points);
-    
+
       final List<Offset?> points;
-    
+
       @override
       void paint(Canvas canvas, Size size) {
         final Paint paint = Paint()
@@ -722,28 +722,28 @@ with two classes that help you draw:
           }
         }
       }
-    
+
       @override
       bool shouldRepaint(SignaturePainter oldDelegate) =>
           oldDelegate.points != points;
     }
     ```
 
-## Navigation
+## Navegação
 
-This section explains how to navigate between pages of an app,
-the push and pop mechanism, and more.
+Esta seção explica como navegar entre páginas de um app,
+o mecanismo de push e pop, e mais.
 
-### Navigating between pages
+### Navegando entre páginas
 
-Developers build iOS and macOS apps with different pages called
+Desenvolvedores constroem apps iOS e macOS com diferentes páginas chamadas
 _navigation routes_.
 
-In **SwiftUI**, the `NavigationStack` represents this stack of pages.
+No **SwiftUI**, o `NavigationStack` representa esta pilha de páginas.
 
-The following example creates an app that displays a list of persons.
-To display a person's details in a new navigation link,
-tap on that person.
+O exemplo seguinte cria um app que exibe uma lista de pessoas.
+Para exibir os detalhes de uma pessoa em um novo navigation link,
+toque naquela pessoa.
 
 ```swift
 NavigationStack(path: $path) {
@@ -761,25 +761,25 @@ NavigationStack(path: $path) {
     }
 ```
 
-If you have a small **Flutter** app without complex linking,
-use [`Navigator`][] with named routes.
-After defining your navigation routes,
-call your navigation routes using their names.
+Se você tem um app **Flutter** pequeno sem linking complexo,
+use [`Navigator`][] com named routes.
+Após definir suas navigation routes,
+chame suas navigation routes usando seus nomes.
 
-1. Name each route in the class passed to the `runApp()` function.
-   The following example uses `App`:
+1. Nomeie cada route na classe passada para a função `runApp()`.
+   O exemplo seguinte usa `App`:
 
     <?code-excerpt "lib/navigation.dart (routes)"?>
     ```dart dartpad="d8b22d4dcbefdc8a2e21f1382cf7dc2a"
     // Defines the route name as a constant
     // so that it's reusable.
     const detailsPageRouteName = '/details';
-    
+
     class App extends StatelessWidget {
       const App({
         super.key,
       });
-    
+
       @override
       Widget build(BuildContext context) {
         return CupertinoApp(
@@ -794,9 +794,9 @@ call your navigation routes using their names.
     }
     ```
 
-   The following sample generates a list of persons using
-   `mockPersons()`. Tapping a person pushes the person's detail page
-   to the `Navigator` using `pushNamed()`.
+   O exemplo seguinte gera uma lista de pessoas usando
+   `mockPersons()`. Tocar em uma pessoa empurra a página de detalhes da pessoa
+   para o `Navigator` usando `pushNamed()`.
 
     <?code-excerpt "lib/navigation.dart (list-view)" replace="/child: //g;"?>
     ```dart dartpad="d8b22d4dcbefdc8a2e21f1382cf7dc2a"
@@ -826,16 +826,16 @@ call your navigation routes using their names.
     ),
     ```
 
-1. Define the `DetailsPage` widget that displays the details of
-   each person. In Flutter, you can pass arguments into the
-   widget when navigating to the new route.
-   Extract the arguments using `ModalRoute.of()`:
+1. Defina o widget `DetailsPage` que exibe os detalhes de
+   cada pessoa. No Flutter, você pode passar argumentos para o
+   widget ao navegar para a nova route.
+   Extraia os argumentos usando `ModalRoute.of()`:
 
     <?code-excerpt "lib/navigation.dart (details-page)"?>
     ```dart dartpad="d8b22d4dcbefdc8a2e21f1382cf7dc2a"
     class DetailsPage extends StatelessWidget {
       const DetailsPage({super.key});
-    
+
       @override
       Widget build(BuildContext context) {
         // Read the person instance from the arguments.
@@ -852,15 +852,15 @@ call your navigation routes using their names.
     }
     ```
 
-To create more advanced navigation and routing requirements,
-use a routing package such as [go_router][].
+Para criar requisitos de navegação e roteamento mais avançados,
+use um pacote de roteamento como [go_router][].
 
-To learn more, check out [Navigation and routing][].
+Para aprender mais, confira [Navigation and routing][].
 
-### Manually pop back
+### Fazendo pop back manualmente
 
-In **SwiftUI**, you use the `dismiss` environment value to pop-back to
-the previous screen.
+No **SwiftUI**, você usa o valor de ambiente `dismiss` para fazer pop-back para
+a tela anterior.
 
 ```swift
 Button("Pop back") {
@@ -868,7 +868,7 @@ Button("Pop back") {
       }
 ```
 
-In **Flutter**, use the `pop()` function of the `Navigator` class:
+No **Flutter**, use a função `pop()` da classe `Navigator`:
 
 <?code-excerpt "lib/popback.dart (pop-back)"?>
 ```dart dartpad="3c125ab2dfba9f4178aeaeb8619c5bea"
@@ -882,10 +882,10 @@ TextButton(
 ),
 ```
 
-### Navigating to another app
+### Navegando para outro app
 
-In **SwiftUI**, you use the `openURL` environment variable to open a
-URL to another application.
+No **SwiftUI**, você usa a variável de ambiente `openURL` para abrir uma
+URL para outra aplicação.
 
 ```swift
 @Environment(\.openURL) private var openUrl
@@ -901,7 +901,7 @@ URL to another application.
     }
 ```
 
-In **Flutter**, use the [`url_launcher`][] plugin.
+No **Flutter**, use o plugin [`url_launcher`][].
 
 <?code-excerpt "lib/openapp.dart (open-app-example)" replace="/child: //g;"?>
 ```dart dartpad="695beba25fa8120d89c9960cb222e276"
@@ -917,21 +917,21 @@ CupertinoButton(
 ),
 ```
 
-## Themes, styles, and media
+## Temas, estilos e mídia
 
-You can style Flutter apps with little effort.
-Styling includes switching between light and dark themes,
-changing the design of your text and UI components,
-and more. This section covers how to style your apps.
+Você pode estilizar apps Flutter com pouco esforço.
+Estilização inclui alternar entre temas claro e escuro,
+mudar o design de seu texto e componentes de UI,
+e mais. Esta seção cobre como estilizar seus apps.
 
-### Using dark mode
+### Usando dark mode
 
-In **SwiftUI**, you call the `preferredColorScheme()`
-function on a `View` to use dark mode.
+No **SwiftUI**, você chama a função `preferredColorScheme()`
+em uma `View` para usar dark mode.
 
-In **Flutter**, you can control light and dark mode at the app-level.
-To control the brightness mode, use the `theme` property
-of the `App` class:
+No **Flutter**, você pode controlar modo claro e escuro no nível do app.
+Para controlar o modo de brilho, use a propriedade `theme`
+da classe `App`:
 
 <?code-excerpt "lib/cupertino_themes.dart (theme)" replace="/return //g;"?>
 ```dart dartpad="18790cfaa8441085994373a4bc4f46b0"
@@ -943,11 +943,11 @@ const CupertinoApp(
 );
 ```
 
-### Styling text
+### Estilizando texto
 
-In **SwiftUI**, you use modifier functions to style text.
-For example, to change the font of a `Text` string,
-use the `font()` modifier:
+No **SwiftUI**, você usa funções modifier para estilizar texto.
+Por exemplo, para mudar a fonte de uma string `Text`,
+use o modifier `font()`:
 
 ```swift
 Text("Hello, world!")
@@ -955,8 +955,8 @@ Text("Hello, world!")
   .foregroundColor(.yellow)
 ```
 
-To style text in **Flutter**, add a `TextStyle` widget as the value
-of the `style` parameter of the `Text` widget.
+Para estilizar texto no **Flutter**, adicione um widget `TextStyle` como o valor
+do parâmetro `style` do widget `Text`.
 
 <?code-excerpt "lib/cupertino_themes.dart (styling-text)" replace="/child: //g;"?>
 ```dart dartpad="18790cfaa8441085994373a4bc4f46b0"
@@ -970,9 +970,9 @@ Text(
 ),
 ```
 
-### Styling buttons
+### Estilizando botões
 
-In **SwiftUI**, you use modifier functions to style buttons.
+No **SwiftUI**, você usa funções modifier para estilizar botões.
 
 ```swift
 Button("Do something") {
@@ -984,14 +984,14 @@ Button("Do something") {
 }
 ```
 
-To style button widgets in **Flutter**, set the style of its child,
-or modify properties on the button itself.
+Para estilizar widgets de botão no **Flutter**, defina o estilo de seu filho,
+ou modifique propriedades no próprio botão.
 
-In the following example:
+No exemplo seguinte:
 
-- The `color` property of `CupertinoButton` sets its `color`.
-- The `color` property of the child `Text` widget sets the button
-  text color.
+- A propriedade `color` de `CupertinoButton` define sua `color`.
+- A propriedade `color` do widget filho `Text` define a cor do
+  texto do botão.
 
 <?code-excerpt "lib/stylingbutton.dart (styling-button)"?>
 ```dart dartpad="f8b6622f526fc5c7d5adadf1e071c28f"
@@ -1010,11 +1010,11 @@ child: CupertinoButton(
 ),
 ```
 
-### Using custom fonts
+### Usando fontes personalizadas
 
-In **SwiftUI**, you can use a custom font in your app in two steps.
-First, add the font file to your SwiftUI project. After adding the file,
-use the `.font()` modifier to apply it to your UI components.
+No **SwiftUI**, você pode usar uma fonte personalizada em seu app em dois passos.
+Primeiro, adicione o arquivo de fonte ao seu projeto SwiftUI. Após adicionar o arquivo,
+use o modifier `.font()` para aplicá-lo aos seus componentes de UI.
 
 ```swift
 Text("Hello")
@@ -1026,16 +1026,16 @@ Text("Hello")
   )
 ```
 
-In **Flutter**, you control your resources with a file
-named `pubspec.yaml`. This file is platform agnostic.
-To add a custom font to your project, follow these steps:
+No **Flutter**, você controla seus recursos com um arquivo
+chamado `pubspec.yaml`. Este arquivo é agnóstico de plataforma.
+Para adicionar uma fonte personalizada ao seu projeto, siga estes passos:
 
-1. Create a folder called `fonts` in the project's root directory.
-   This optional step helps to organize your fonts.
-1. Add your `.ttf`, `.otf`, or `.ttc` font file into the `fonts` folder.
-1. Open the `pubspec.yaml` file within the project.
-1. Find the `flutter` section.
-1. Add your custom font(s) under the `fonts` section.
+1. Crie uma pasta chamada `fonts` no diretório raiz do projeto.
+   Este passo opcional ajuda a organizar suas fontes.
+1. Adicione seu arquivo de fonte `.ttf`, `.otf`, ou `.ttc` na pasta `fonts`.
+1. Abra o arquivo `pubspec.yaml` dentro do projeto.
+1. Encontre a seção `flutter`.
+1. Adicione sua(s) fonte(s) personalizada(s) sob a seção `fonts`.
 
     ```yaml
     flutter:
@@ -1045,8 +1045,8 @@ To add a custom font to your project, follow these steps:
             - asset: fonts/BungeeSpice-Regular.ttf
     ```
 
-After you add the font to your project, you can use it as in the
-following example:
+Após adicionar a fonte ao seu projeto, você pode usá-la como no
+exemplo seguinte:
 
 <?code-excerpt "lib/stylingbutton.dart (custom-font)" replace="/middle: //g;"?>
 ```dart
@@ -1060,20 +1060,20 @@ Text(
 ```
 
 :::note
-To download custom fonts to use in your apps,
-check out [Google Fonts](https://fonts.google.com).
+Para baixar fontes personalizadas para usar em seus apps,
+confira [Google Fonts](https://fonts.google.com).
 :::
 
-### Bundling images in apps
+### Empacotando imagens em apps
 
-In **SwiftUI**, you first add the image files to `Assets.xcassets`,
-then use the `Image` view to display the images.
+No **SwiftUI**, você primeiro adiciona os arquivos de imagem a `Assets.xcassets`,
+então usa a view `Image` para exibir as imagens.
 
-To add images in **Flutter**, follow a method similar to how you added
-custom fonts.
+Para adicionar imagens no **Flutter**, siga um método similar a como você adicionou
+fontes personalizadas.
 
-1. Add an `images` folder to the root directory.
-1. Add this asset to the `pubspec.yaml` file.
+1. Adicione uma pasta `images` ao diretório raiz.
+1. Adicione este asset ao arquivo `pubspec.yaml`.
 
     ```yaml
     flutter:
@@ -1081,32 +1081,32 @@ custom fonts.
         - images/Blueberries.jpg
     ```
 
-After adding your image, display it using the `Image` widget's
-`.asset()` constructor. This constructor:
+Após adicionar sua imagem, exiba-a usando o construtor
+`.asset()` do widget `Image`. Este construtor:
 
-1. Instantiates the given image using the provided path.
-1. Reads the image from the assets bundled with your app.
-1. Displays the image on the screen.
+1. Instancia a imagem dada usando o caminho fornecido.
+1. Lê a imagem dos assets empacotados com seu app.
+1. Exibe a imagem na tela.
 
-To review a complete example, check out the [`Image`][] docs.
+Para revisar um exemplo completo, confira a documentação de [`Image`][].
 
-### Bundling videos in apps
+### Empacotando vídeos em apps
 
-In **SwiftUI**, you bundle a local video file with your app in two
-steps.
-First, you import the `AVKit` framework, then you instantiate a
-`VideoPlayer` view.
+No **SwiftUI**, você empacota um arquivo de vídeo local com seu app em dois
+passos.
+Primeiro, você importa o framework `AVKit`, então você instancia uma
+view `VideoPlayer`.
 
-In **Flutter**, add the [video_player][] plugin to your project.
-This plugin allows you to create a video player that works on
-Android, iOS, and on the web from the same codebase.
+No **Flutter**, adicione o plugin [video_player][] ao seu projeto.
+Este plugin permite que você crie um video player que funciona no
+Android, iOS, e na web a partir da mesma codebase.
 
-1. Add the plugin to your app and add the video file to your project.
-1. Add the asset to your `pubspec.yaml` file.
-1. Use the `VideoPlayerController` class to load and play your video
-   file.
+1. Adicione o plugin ao seu app e adicione o arquivo de vídeo ao seu projeto.
+1. Adicione o asset ao seu arquivo `pubspec.yaml`.
+1. Use a classe `VideoPlayerController` para carregar e reproduzir seu arquivo
+   de vídeo.
 
-To review a complete walkthrough, check out the [video_player example][].
+Para revisar um passo-a-passo completo, confira o [video_player example][].
 
 [Flutter for UIKit developers]: /get-started/flutter-for/uikit-devs
 [Add Flutter to existing app]: /add-to-app

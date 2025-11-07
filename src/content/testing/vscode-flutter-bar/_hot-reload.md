@@ -1,1 +1,1 @@
-![Small yellow lightning bolt that indicates reloading the UI of a Flutter app without resetting any state values](/assets/images/docs/testing/debugging/vscode-ui/icons/hot-reload.png)
+![Pequeno raio amarelo que indica recarregar a UI de um app Flutter sem redefinir nenhum valor de state](/assets/images/docs/testing/debugging/vscode-ui/icons/hot-reload.png)

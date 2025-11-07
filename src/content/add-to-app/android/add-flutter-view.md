@@ -1,94 +1,93 @@
 ---
-title: Add a Flutter View to an Android app
-short-title: Integrate via FlutterView
-description: Learn how to perform advanced integrations via Flutter Views.
+ia-translate: true
+title: Adicione uma Flutter View a um app Android
+short-title: Integre via FlutterView
+description: Aprenda como realizar integrações avançadas via Flutter Views.
 ---
 
 :::warning
-Integrating via a [FlutterView]({{site.api}}/javadoc/io/flutter/embedding/android/FlutterView.html)
-is advanced usage and requires manually creating custom, application specific
-bindings.
+Integrar via [FlutterView]({{site.api}}/javadoc/io/flutter/embedding/android/FlutterView.html)
+é um uso avançado e requer criar manualmente bindings customizados e específicos da aplicação.
 :::
 
-Integrating via a [FlutterView]({{site.api}}/javadoc/io/flutter/embedding/android/FlutterView.html)
-requires a bit more work than via FlutterActivity and FlutterFragment previously
-described.
+Integrar via [FlutterView]({{site.api}}/javadoc/io/flutter/embedding/android/FlutterView.html)
+requer um pouco mais de trabalho do que via FlutterActivity e FlutterFragment descritos anteriormente.
 
-Fundamentally, the Flutter framework on the Dart side requires access to various
-activity-level events and lifecycles to function. Since the FlutterView (which
-is an [android.view.View]({{site.android-dev}}/reference/android/view/View.html))
-can be added to any activity which is owned by the developer's application
-and since the FlutterView doesn't have access to activity level events, the
-developer must bridge those connections manually to the [FlutterEngine]({{site.api}}/javadoc/io/flutter/embedding/engine/FlutterEngine.html).
+Fundamentalmente, o framework Flutter no lado Dart requer acesso a vários
+eventos e ciclos de vida a nível de activity para funcionar. Como o FlutterView (que
+é um [android.view.View]({{site.android-dev}}/reference/android/view/View.html))
+pode ser adicionado a qualquer activity que é de propriedade da aplicação do desenvolvedor
+e como o FlutterView não tem acesso a eventos a nível de activity, o
+desenvolvedor deve fazer a ponte dessas conexões manualmente para o [FlutterEngine]({{site.api}}/javadoc/io/flutter/embedding/engine/FlutterEngine.html).
 
-How you choose to feed your application's activities' events to the FlutterView
-will be specific to your application.
+Como você escolhe alimentar os eventos das activities de sua aplicação para o FlutterView
+será específico para sua aplicação.
 
-## A sample
+## Um exemplo
 
 <img src='/assets/images/docs/development/add-to-app/android/add-flutter-view/add-view-sample.gif'
 class="mw-100" alt="Add Flutter View sample video">
 
-Unlike the guides for FlutterActivity and FlutterFragment, the FlutterView
-integration could be better demonstrated with a sample project.
+Ao contrário dos guias para FlutterActivity e FlutterFragment, a integração
+FlutterView pode ser melhor demonstrada com um projeto de exemplo.
 
-A sample project is at [https://github.com/flutter/samples/tree/main/add_to_app/android_view]({{site.repo.samples}}/tree/main/add_to_app/android_view)
-to document a simple FlutterView integration where FlutterViews are used
-for some of the cells in a RecycleView list of cards as seen in the gif above.
+Um projeto de exemplo está em [https://github.com/flutter/samples/tree/main/add_to_app/android_view]({{site.repo.samples}}/tree/main/add_to_app/android_view)
+para documentar uma integração simples de FlutterView onde FlutterViews são usados
+para algumas das células em uma lista RecycleView de cards como visto no gif acima.
 
-## General approach
+## Abordagem geral
 
-The general gist of the FlutterView-level integration is that you
-must recreate the various interactions between your Activity, the
+A essência geral da integração a nível de FlutterView é que você
+deve recriar as várias interações entre sua Activity, o
 [`FlutterView`]({{site.api}}/javadoc/io/flutter/embedding/android/FlutterView.html)
-and the
+e o
 [`FlutterEngine`]({{site.api}}/javadoc/io/flutter/embedding/engine/FlutterEngine.html)
-present in the [`FlutterActivityAndFragmentDelegate`](https://cs.opensource.google/flutter/engine/+/main:shell/platform/android/io/flutter/embedding/android/FlutterActivityAndFragmentDelegate.java)
-in your own application's code.
-The connections made in the
+presente no [`FlutterActivityAndFragmentDelegate`](https://cs.opensource.google/flutter/engine/+/main:shell/platform/android/io/flutter/embedding/android/FlutterActivityAndFragmentDelegate.java)
+no código de sua própria aplicação.
+As conexões feitas no
 [`FlutterActivityAndFragmentDelegate`](https://cs.opensource.google/flutter/engine/+/main:shell/platform/android/io/flutter/embedding/android/FlutterActivityAndFragmentDelegate.java)
-are done automatically when using a
+são feitas automaticamente ao usar uma
 [`FlutterActivity`]({{site.api}}/javadoc/io/flutter/embedding/android/FlutterActivity.html)
-or a
+ou um
 [`FlutterFragment`]({{site.api}}/javadoc/io/flutter/embedding/android/FlutterFragment.html),
-but since the [`FlutterView`]({{site.api}}/javadoc/io/flutter/embedding/android/FlutterView.html)
-in this case is being added to an `Activity` or `Fragment` in your application,
-you must recreate the connections manually.
-Otherwise, the [`FlutterView`]({{site.api}}/javadoc/io/flutter/embedding/android/FlutterView.html)
-won't render anything or have other missing functionalities.
+mas como o [`FlutterView`]({{site.api}}/javadoc/io/flutter/embedding/android/FlutterView.html)
+neste caso está sendo adicionado a uma `Activity` ou `Fragment` em sua aplicação,
+você deve recriar as conexões manualmente.
+Caso contrário, o [`FlutterView`]({{site.api}}/javadoc/io/flutter/embedding/android/FlutterView.html)
+não renderizará nada ou terá outras funcionalidades ausentes.
 
-A sample
+Uma classe de exemplo
 [`FlutterViewEngine`]({{site.repo.samples}}/blob/main/add_to_app/android_view/android_view/app/src/main/java/dev/flutter/example/androidView/FlutterViewEngine.kt)
-class shows one such possible implementation of an application-specific
-connection between an `Activity`, a
+mostra uma possível implementação de uma conexão específica da aplicação
+entre uma `Activity`, um
 [`FlutterView`]({{site.api}}/javadoc/io/flutter/embedding/android/FlutterView.html)
-and a [FlutterEngine]({{site.api}}/javadoc/io/flutter/embedding/engine/FlutterEngine.html).
+e um [FlutterEngine]({{site.api}}/javadoc/io/flutter/embedding/engine/FlutterEngine.html).
 
-### APIs to implement
+### APIs a implementar
 
-The absolute minimum implementation needed for Flutter
-to draw anything at all is to:
+A implementação mínima absoluta necessária para o Flutter
+desenhar qualquer coisa é:
 
-* Call [`attachToFlutterEngine`]({{site.api}}/javadoc/io/flutter/embedding/android/FlutterView.html#attachToFlutterEngine-io.flutter.embedding.engine.FlutterEngine-)
-  when the
+* Chamar [`attachToFlutterEngine`]({{site.api}}/javadoc/io/flutter/embedding/android/FlutterView.html#attachToFlutterEngine-io.flutter.embedding.engine.FlutterEngine-)
+  quando o
   [`FlutterView`]({{site.api}}/javadoc/io/flutter/embedding/android/FlutterView.html)
-  is added to a resumed `Activity`'s view hierarchy and is visible; and
-* Call [`appIsResumed`]({{site.api}}/javadoc/io/flutter/embedding/engine/systemchannels/LifecycleChannel.html#appIsResumed--)
-  on the [`FlutterEngine`]({{site.api}}/javadoc/io/flutter/embedding/engine/FlutterEngine.html)'s
-  `lifecycleChannel` field when the `Activity` hosting the
+  é adicionado à hierarquia de view de uma `Activity` resumida e está visível; e
+* Chamar [`appIsResumed`]({{site.api}}/javadoc/io/flutter/embedding/engine/systemchannels/LifecycleChannel.html#appIsResumed--)
+  no campo `lifecycleChannel` do [`FlutterEngine`]({{site.api}}/javadoc/io/flutter/embedding/engine/FlutterEngine.html)
+  quando a `Activity` hospedando o
   [`FlutterView`]({{site.api}}/javadoc/io/flutter/embedding/android/FlutterView.html)
-  is visible.
+  está visível.
 
-The reverse
+O inverso
 [`detachFromFlutterEngine`]({{site.api}}/javadoc/io/flutter/embedding/android/FlutterView.html#detachFromFlutterEngine--)
-and other lifecycle methods on the
-[`LifecycleChannel`]({{site.api}}/javadoc/io/flutter/embedding/engine/systemchannels/LifecycleChannel.html)
-class must also be called to not leak resources when the
-`FlutterView` or `Activity` is no longer visible.
+e outros métodos de ciclo de vida na
+classe [`LifecycleChannel`]({{site.api}}/javadoc/io/flutter/embedding/engine/systemchannels/LifecycleChannel.html)
+também devem ser chamados para não vazar recursos quando o
+`FlutterView` ou `Activity` não está mais visível.
 
-In addition, see the remaining implementation in the
-[`FlutterViewEngine`]({{site.repo.samples}}/blob/main/add_to_app/android_view/android_view/app/src/main/java/dev/flutter/example/androidView/FlutterViewEngine.kt)
-demo class or in the
+Além disso, consulte a implementação restante na
+classe demo [`FlutterViewEngine`]({{site.repo.samples}}/blob/main/add_to_app/android_view/android_view/app/src/main/java/dev/flutter/example/androidView/FlutterViewEngine.kt)
+ou no
 [`FlutterActivityAndFragmentDelegate`](https://cs.opensource.google/flutter/engine/+/main:shell/platform/android/io/flutter/embedding/android/FlutterActivityAndFragmentDelegate.java)
-to ensure a correct functioning of other features such as clipboards,
-system UI overlay, plugins, and so on.
+para garantir um funcionamento correto de outros recursos como clipboards,
+overlay de UI do sistema, plugins, e assim por diante.

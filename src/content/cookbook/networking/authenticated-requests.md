@@ -1,20 +1,21 @@
 ---
-title: Make authenticated requests
-description: How to fetch authorized data from a web service.
+title: Faça requisições autenticadas
+description: Como buscar dados autorizados de um serviço web.
+ia-translate: true
 ---
 
 <?code-excerpt path-base="cookbook/networking/authenticated_requests/"?>
 
-To fetch data from most web services, you need to provide
-authorization. There are many ways to do this,
-but perhaps the most common uses the `Authorization` HTTP header.
+Para buscar dados da maioria dos serviços web, você precisa fornecer
+autorização. Existem muitas maneiras de fazer isso,
+mas talvez a mais comum use o header HTTP `Authorization`.
 
-## Add authorization headers
+## Adicione headers de autorização
 
-The [`http`][] package provides a
-convenient way to add headers to your requests.
-Alternatively, use the [`HttpHeaders`][]
-class from the `dart:io` library.
+O pacote [`http`][] fornece uma
+maneira conveniente de adicionar headers às suas requisições.
+Alternativamente, use a classe [`HttpHeaders`][]
+da biblioteca `dart:io`.
 
 <?code-excerpt "lib/main.dart (get)"?>
 ```dart
@@ -27,10 +28,10 @@ final response = await http.get(
 );
 ```
 
-## Complete example
+## Exemplo completo
 
-This example builds upon the
-[Fetching data from the internet][] recipe.
+Este exemplo se baseia na
+receita [Fetching data from the internet][].
 
 <?code-excerpt "lib/main.dart"?>
 ```dart

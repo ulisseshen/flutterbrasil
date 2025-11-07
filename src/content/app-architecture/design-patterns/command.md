@@ -78,7 +78,7 @@ class HomeViewModel extends ChangeNotifier {
   User? get user => // ...
   // ···
   void load() {
-    // carregar usuário
+    // load user
   }
   // ···
 }
@@ -101,7 +101,7 @@ class HomeViewModel extends ChangeNotifier {
   Exception? get error => // ...
 
   void load() {
-    // carregar usuário
+    // load user
   }
   // ···
 }
@@ -132,7 +132,7 @@ void load() {
   if (running) {
     return;
   }
-  // carregar usuário
+  // load user
 }
 
 ```
@@ -156,11 +156,11 @@ class HomeViewModel extends ChangeNotifier {
   Exception? get errorEdit => // ...
 
   void load() {
-    // carregar usuário
+    // load user
   }
 
   void edit(String name) {
-    // editar usuário
+    // edit user
   }
 }
 ```
@@ -202,7 +202,7 @@ void dispose() {
 ```dart
 void _onViewModelChanged() {
   if (widget.viewModel.error != null) {
-    // Mostrar Snackbar
+    // Show Snackbar
   }
 }
 ```
@@ -215,7 +215,7 @@ caso contrário, esta ação acontecerá cada vez que `notifyListeners()` for ch
 void _onViewModelChanged() {
   if (widget.viewModel.error != null) {
     widget.viewModel.clearError();
-    // Mostrar Snackbar
+    // Show Snackbar
   }
 }
 ```
@@ -245,11 +245,11 @@ class Command extends ChangeNotifier {
   void Function() _action;
 
   void execute() {
-    // executar _action
+    // run _action
   }
 
   void clear() {
-    // limpar estado
+    // clear state
   }
 }
 ```
@@ -270,7 +270,7 @@ class HomeViewModel extends ChangeNotifier {
   late final Command load;
 
   void _load() {
-    // carregar usuário
+    // load user
   }
 }
 ```
@@ -402,7 +402,7 @@ void dispose() {
 void _onViewModelChanged() {
   if (widget.viewModel.load.error != null) {
     widget.viewModel.load.clear();
-    // Mostrar Snackbar
+    // Show Snackbar
   }
 }
 ```
@@ -425,7 +425,7 @@ body: ListenableBuilder(
 
     if (widget.viewModel.load.error != null) {
       return Center(
-        child: Text('Erro: ${widget.viewModel.load.error}'),
+        child: Text('Error: ${widget.viewModel.load.error}'),
       );
     }
 
@@ -459,11 +459,11 @@ class HomeViewModel2 extends ChangeNotifier {
   late final Command delete;
 
   Future<void> _load() async {
-    // carregar usuário
+    // load user
   }
 
   Future<void> _delete() async {
-    // deletar usuário
+    // delete user
   }
 }
 ```
@@ -483,18 +483,18 @@ class HomeViewModel extends ChangeNotifier {
 
   User? get user => // ...
 
-  // Command0 aceita 0 argumentos
+  // Command0 accepts 0 arguments
   late final Command0 load;
 
-  // Command1 aceita 1 argumento
+  // Command1 accepts 1 argument
   late final Command1 edit;
 
   Future<void> _load() async {
-    // carregar usuário
+    // load user
   }
 
   Future<void> _edit(String name) async {
-    // editar usuário
+    // edit user
   }
 }
 ```
@@ -534,62 +534,62 @@ import 'package:flutter/foundation.dart';
 
 import 'result.dart';
 
-/// Define uma ação de comando que retorna um [Result] do tipo [T].
-/// Usado por [Command0] para ações sem argumentos.
+/// Defines a command action that returns a [Result] of type [T].
+/// Used by [Command0] for actions without arguments.
 typedef CommandAction0<T> = Future<Result<T>> Function();
 
-/// Define uma ação de comando que retorna um [Result] do tipo [T].
-/// Recebe um argumento do tipo [A].
-/// Usado por [Command1] para ações com um argumento.
+/// Defines a command action that returns a [Result] of type [T].
+/// Takes an argument of type [A].
+/// Used by [Command1] for actions with one argument.
 typedef CommandAction1<T, A> = Future<Result<T>> Function(A);
 
-/// Facilita a interação com um view model.
+/// Facilitates interaction with a view model.
 ///
-/// Encapsula uma ação,
-/// expõe seus estados de execução e erro,
-/// e garante que ele não possa ser iniciado novamente até que termine.
+/// Encapsulates an action,
+/// exposes its running and error states,
+/// and ensures that it can't be launched again until it finishes.
 ///
-/// Use [Command0] para ações sem argumentos.
-/// Use [Command1] para ações com um argumento.
+/// Use [Command0] for actions without arguments.
+/// Use [Command1] for actions with one argument.
 ///
-/// As ações devem retornar um [Result] do tipo [T].
+/// Actions must return a [Result] of type [T].
 ///
-/// Consuma o resultado da ação ouvindo as mudanças,
-/// então chame [clearResult] quando o estado for consumido.
+/// Consume the action result by listening to changes,
+/// then call to [clearResult] when the state is consumed.
 abstract class Command<T> extends ChangeNotifier {
   bool _running = false;
 
-  /// Indica se a ação está em execução.
+  /// Whether the action is running.
   bool get running => _running;
 
   Result<T>? _result;
 
-  /// Indica se a ação foi concluída com um erro.
+  /// Whether the action completed with an error.
   bool get error => _result is Error;
 
-  /// Indica se a ação foi concluída com sucesso.
+  /// Whether the action completed successfully.
   bool get completed => _result is Ok;
 
-  /// O resultado da ação mais recente.
+  /// The result of the most recent action.
   ///
-  /// Retorna `null` se a ação estiver em execução ou for concluída com um erro.
+  /// Returns `null` if the action is running or completed with an error.
   Result<T>? get result => _result;
 
-  /// Limpa o resultado da ação mais recente.
+  /// Clears the most recent action's result.
   void clearResult() {
     _result = null;
     notifyListeners();
   }
 
-  /// Executa a [ação] fornecida, notificando os listeners e
-  /// definindo os estados de execução e resultado conforme necessário.
+  /// Execute the provided [action], notifying listeners and
+  /// setting the running and result states as necessary.
   Future<void> _execute(CommandAction0<T> action) async {
-    // Garante que a ação não possa ser iniciada várias vezes.
-    // ex: evitar vários toques em um botão
+    // Ensure the action can't launch multiple times.
+    // e.g. avoid multiple taps on button
     if (_running) return;
 
-    // Notifica os listeners.
-    // ex: o botão mostra o estado de carregamento
+    // Notify listeners.
+    // e.g. button shows loading state
     _running = true;
     _result = null;
     notifyListeners();
@@ -603,27 +603,27 @@ abstract class Command<T> extends ChangeNotifier {
   }
 }
 
-/// Um [Command] que não aceita argumentos.
+/// A [Command] that accepts no arguments.
 final class Command0<T> extends Command<T> {
-  /// Cria um [Command0] com o [CommandAction0] fornecido.
+  /// Creates a [Command0] with the provided [CommandAction0].
   Command0(this._action);
 
   final CommandAction0<T> _action;
 
-  /// Executa a ação.
+  /// Executes the action.
   Future<void> execute() async {
     await _execute(() => _action());
   }
 }
 
-/// Um [Command] que aceita um argumento.
+/// A [Command] that accepts one argument.
 final class Command1<T, A> extends Command<T> {
-  /// Cria um [Command1] com o [CommandAction1] fornecido.
+  /// Creates a [Command1] with the provided [CommandAction1].
   Command1(this._action);
 
   final CommandAction1<T, A> _action;
 
-  /// Executa a ação com o [argumento] especificado.
+  /// Executes the action with the specified [argument].
   Future<void> execute(A argument) async {
     await _execute(() => _action(argument));
   }

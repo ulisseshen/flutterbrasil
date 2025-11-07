@@ -60,12 +60,12 @@ se conecta a um serviço remoto usando chamadas HTTP REST.
 <?code-excerpt "lib/data/services/api_client_service.dart (ApiClientService)"?>
 ```dart
 class ApiClientService {
-  /// executa solicitação de rede GET para obter um UserProfile
+  /// performs GET network request to obtain a UserProfile
   Future<UserProfile> getUserProfile() async {
     // ···
   }
 
-  /// executa solicitação de rede PUT para atualizar um UserProfile
+  /// performs PUT network request to update a UserProfile
   Future<void> putUserProfile(UserProfile userProfile) async {
     // ···
   }
@@ -78,13 +78,13 @@ semelhante ao encontrado na receita [Arquitetura de armazenamento persistente: S
 <?code-excerpt "lib/data/services/database_service.dart (DatabaseService)"?>
 ```dart
 class DatabaseService {
-  /// Busca o UserProfile do banco de dados.
-  /// Retorna null se o perfil de usuário não for encontrado.
+  /// Fetches the UserProfile from the database.
+  /// Returns null if the user profile is not found.
   Future<UserProfile?> fetchUserProfile() async {
     // ···
   }
 
-  /// Atualiza UserProfile no banco de dados.
+  /// Update UserProfile in the database.
   Future<void> updateUserProfile(UserProfile userProfile) async {
     // ···
   }
@@ -129,12 +129,12 @@ class UserProfileViewModel extends ChangeNotifier {
   UserProfile? get userProfile => _userProfile;
   // ···
 
-  /// Carrega o perfil de usuário do banco de dados ou da rede
+  /// Load the user profile from the database or the network
   Future<void> load() async {
     // ···
   }
 
-  /// Salva o perfil de usuário com o novo nome
+  /// Save the user profile with the new name
   Future<void> save(String newName) async {
     // ···
   }
@@ -172,24 +172,24 @@ retorna o `UserProfile` armazenado localmente do `DatabaseService`.
 ```dart
 Future<UserProfile> getUserProfile() async {
   try {
-    // Busca o perfil de usuário da API
+    // Fetch the user profile from the API
     final apiUserProfile = await _apiClientService.getUserProfile();
-    // Atualiza o banco de dados com o resultado da API
+    //Update the database with the API result
     await _databaseService.updateUserProfile(apiUserProfile);
 
     return apiUserProfile;
   } catch (e) {
-    // Se a chamada de rede falhou,
-    // busca o perfil de usuário do banco de dados
+    // If the network call failed,
+    // fetch the user profile from the database
     final databaseUserProfile = await _databaseService.fetchUserProfile();
 
-    // Se o perfil de usuário nunca foi buscado da API
-    // será nulo, então lança um erro
+    // If the user profile was never fetched from the API
+    // it will be null, so throw an  error
     if (databaseUserProfile != null) {
       return databaseUserProfile;
     } else {
-      // Trata o erro
-      throw Exception('Perfil de usuário não encontrado');
+      // Handle the error
+      throw Exception('User profile not found');
     }
   }
 }
@@ -220,22 +220,22 @@ para que possa ser exibido para o usuário.
 <?code-excerpt "lib/data/repositories/user_profile_repository.dart (getUserProfile)"?>
 ```dart
 Stream<UserProfile> getUserProfile() async* {
-  // Busca o perfil de usuário do banco de dados
+  // Fetch the user profile from the database
   final userProfile = await _databaseService.fetchUserProfile();
-  // Retorna o resultado do banco de dados se ele existir
+  // Returns the database result if it exists
   if (userProfile != null) {
     yield userProfile;
   }
 
-  // Busca o perfil de usuário da API
+  // Fetch the user profile from the API
   try {
     final apiUserProfile = await _apiClientService.getUserProfile();
-    // Atualiza o banco de dados com o resultado da API
+    //Update the database with the API result
     await _databaseService.updateUserProfile(apiUserProfile);
-    // Retorna o resultado da API
+    // Return the API result
     yield apiUserProfile;
   } catch (e) {
-    // Trata o erro
+    // Handle the error
   }
 }
 ```
@@ -255,7 +255,7 @@ Future<void> load() async {
     _userProfile = userProfile;
     notifyListeners();
   }, onError: (error) {
-    // tratar erro
+    // handle error
   }).asFuture();
 }
 ```
@@ -270,12 +270,12 @@ e requer um mecanismo de sincronização que possa manter os dados atualizados.
 <?code-excerpt "lib/data/repositories/user_profile_repository.dart (getUserProfileLocal)" replace="/Local//g;/Read//g"?>
 ```dart
 Future<UserProfile> getUserProfile() async {
-  // Busca o perfil de usuário do banco de dados
+  // Fetch the user profile from the database
   final userProfile = await _databaseService.fetchUserProfile();
 
-  // Retorna o resultado do banco de dados se ele existir
+  // Return the database result if it exists
   if (userProfile == null) {
-    throw Exception('Dados não encontrados');
+    throw Exception('Data not found');
   }
 
   return userProfile;
@@ -283,13 +283,13 @@ Future<UserProfile> getUserProfile() async {
 
 Future<void> sync() async {
   try {
-    // Busca o perfil de usuário da API
+    // Fetch the user profile from the API
     final userProfile = await _apiClientService.getUserProfile();
 
-    // Atualiza o banco de dados com o resultado da API
+    // Update the database with the API result
     await _databaseService.updateUserProfile(userProfile);
   } catch (e) {
-    // Tentar novamente mais tarde
+    // Try again later
   }
 }
 ```
@@ -335,14 +335,14 @@ armazena os dados no banco de dados.
 ```dart
 Future<void> updateUserProfile(UserProfile userProfile) async {
   try {
-    // Atualiza a API com o perfil de usuário
+    // Update the API with the user profile
     await _apiClientService.putUserProfile(userProfile);
 
-    // Apenas se a chamada API foi bem-sucedida
-    // atualiza o banco de dados com o perfil de usuário
+    // Only if the API call was successful
+    // update the database with the user profile
     await _databaseService.updateUserProfile(userProfile);
   } catch (e) {
-    // Trata o erro
+    // Handle the error
   }
 }
 ```
@@ -361,14 +361,14 @@ e então tenta enviá-los para o serviço API depois que ele foi armazenado loca
 <?code-excerpt "lib/data/repositories/user_profile_repository.dart (updateUserProfileOffline)" replace="/Offline//g"?>
 ```dart
 Future<void> updateUserProfile(UserProfile userProfile) async {
-  // Atualiza o banco de dados com o perfil de usuário
+  // Update the database with the user profile
   await _databaseService.updateUserProfile(userProfile);
 
   try {
-    // Atualiza a API com o perfil de usuário
+    // Update the API with the user profile
     await _apiClientService.putUserProfile(userProfile);
   } catch (e) {
-    // Trata o erro
+    // Handle the error
   }
 }
 ```
@@ -414,22 +414,22 @@ e se ele exigir sincronização, ele é enviado para o serviço API.
 ```dart
 Future<void> sync() async {
   try {
-    // Busca o perfil de usuário do banco de dados
+    // Fetch the user profile from the database
     final userProfile = await _databaseService.fetchUserProfile();
 
-    // Verifica se o perfil de usuário requer sincronização
+    // Check if the user profile requires synchronization
     if (userProfile == null || userProfile.synchronized) {
       return;
     }
 
-    // Atualiza a API com o perfil de usuário
+    // Update the API with the user profile
     await _apiClientService.putUserProfile(userProfile);
 
-    // Define o perfil de usuário como sincronizado
+    // Set the user profile as synchronized
     await _databaseService
         .updateUserProfile(userProfile.copyWith(synchronized: true));
   } catch (e) {
-    // Tentar novamente mais tarde
+    // Try again later
   }
 }
 ```

@@ -387,7 +387,7 @@ A classe `_TapboxAState`:
 ```dart
 import 'package:flutter/material.dart';
 
-// TapboxA gerencia seu próprio estado.
+// TapboxA manages its own state.
 
 //------------------------- TapboxA ----------------------------------
 
@@ -485,7 +485,7 @@ A classe TapboxB:
 ```dart
 import 'package:flutter/material.dart';
 
-// ParentWidget gerencia o estado para TapboxB.
+// ParentWidget manages the state for TapboxB.
 
 //------------------------ ParentWidget --------------------------------
 

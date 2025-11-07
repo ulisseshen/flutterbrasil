@@ -108,7 +108,7 @@ funções de tabela dentro de `void main() async {}`.
 ```dart
 // Avoid errors caused by flutter upgrade.
 // Importing 'package:flutter/widgets.dart' is required.
- WidgetsFlutterBinding.ensureInitialized();
+WidgetsFlutterBinding.ensureInitialized();
 // Open the database and store the reference.
 final database = openDatabase(
   // Set the path to the database. Note: Using the `join` function from the

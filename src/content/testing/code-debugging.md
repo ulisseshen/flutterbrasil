@@ -707,7 +707,7 @@ use utilitários [Timeline][] do `dart:developer`.
     <?code-excerpt "lib/perf_trace.dart"?>
     ```dart
     import 'dart:developer';
-
+    
     void main() {
       Timeline.startSync('interesting function');
       // iWonderHowLongThisTakes();

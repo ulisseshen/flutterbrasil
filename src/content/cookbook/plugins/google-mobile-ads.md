@@ -150,7 +150,7 @@ Você precisa inicializar o Mobile Ads SDK antes de carregar anúncios.
     void main() async {
       WidgetsFlutterBinding.ensureInitialized();
       unawaited(MobileAds.instance.initialize());
-
+    
       runApp(const MyApp());
     }
     ```

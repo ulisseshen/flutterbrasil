@@ -131,10 +131,10 @@ No entanto, mesmo se um widget é stateful, o widget pai contêiner
 ainda pode ser stateless se ele mesmo não está reagindo àquelas mudanças
 (ou outras entradas).
 
-The following example shows how to use a `StatelessWidget`.
-A common`StatelessWidget` is the `Text` widget.
-If you look at the implementation of the `Text` widget,
-you'll find it subclasses `StatelessWidget`.
+O exemplo seguinte mostra como usar um `StatelessWidget`.
+Um `StatelessWidget` comum é o widget `Text`.
+Se você olhar a implementação do widget `Text`,
+você verá que ele faz subclasse de `StatelessWidget`.
 
 <?code-excerpt "lib/text_widget.dart (text-widget)" replace="/return const //g"?>
 ```dart
@@ -144,17 +144,17 @@ Text(
 );
 ```
 
-If you look at the code above, you might notice that the `Text` widget
-carries no explicit state with it. It renders what is passed in its
-constructors and nothing more.
+Se você olhar o código acima, você pode notar que o widget `Text`
+não carrega nenhum estado explícito com ele. Ele renderiza o que é passado em seus
+construtores e nada mais.
 
-But, what if you want to make "I Like Flutter" change dynamically,
-for example when clicking a `FloatingActionButton`?
+Mas, e se você quiser fazer "I Like Flutter" mudar dinamicamente,
+por exemplo ao clicar em um `FloatingActionButton`?
 
-To achieve this, wrap the `Text` widget in a `StatefulWidget` and
-update it when the user clicks the button.
+Para alcançar isso, envolva o widget `Text` em um `StatefulWidget` e
+atualize-o quando o usuário clicar no botão.
 
-For example:
+Por exemplo:
 
 <?code-excerpt "lib/text_widget.dart (stateful-widget)"?>
 ```dart
@@ -205,14 +205,14 @@ class _SampleAppPageState extends State<SampleAppPage> {
 }
 ```
 
-### Widget layout
+### Layout de widget
 
-In UIKit, you might use a Storyboard file
-to organize your views and set constraints,
-or you might set your constraints programmatically in your view controllers.
-In Flutter, declare your layout in code by composing a widget tree.
+No UIKit, você pode usar um arquivo Storyboard
+para organizar suas views e definir constraints,
+ou pode definir suas constraints programaticamente em seus view controllers.
+No Flutter, declare seu layout em código compondo uma árvore de widgets.
 
-The following example shows how to display a simple widget with padding:
+O exemplo seguinte mostra como exibir um widget simples com padding:
 
 <?code-excerpt "lib/layout.dart (simple-widget)"?>
 ```dart
@@ -231,25 +231,25 @@ Widget build(BuildContext context) {
 }
 ```
 
-You can add padding to any widget,
-which mimics the functionality of constraints in iOS.
+Você pode adicionar padding a qualquer widget,
+o que imita a funcionalidade de constraints no iOS.
 
-You can view the layouts that Flutter has to offer
-in the [widget catalog][].
+Você pode visualizar os layouts que o Flutter tem a oferecer
+no [widget catalog][].
 
-### Removing Widgets
+### Removendo Widgets
 
-In UIKit, you call `addSubview()` on the parent,
-or `removeFromSuperview()` on a child view
-to dynamically add or remove child views.
-In Flutter, because widgets are immutable,
-there is no direct equivalent to `addSubview()`.
-Instead, you can pass a function to the parent
-that returns a widget, and control that child's creation
-with a boolean flag.
+No UIKit, você chama `addSubview()` no pai,
+ou `removeFromSuperview()` em uma view filha
+para adicionar ou remover views filhas dinamicamente.
+No Flutter, porque widgets são imutáveis,
+não há equivalente direto para `addSubview()`.
+Ao invés, você pode passar uma função ao pai
+que retorna um widget, e controlar a criação daquele filho
+com uma flag booleana.
 
-The following example shows how to toggle between two widgets
-when the user clicks the `FloatingActionButton`:
+O exemplo seguinte mostra como alternar entre dois widgets
+quando o usuário clica no `FloatingActionButton`:
 
 <?code-excerpt "lib/layout.dart (toggle-widget)"?>
 ```dart
@@ -313,35 +313,35 @@ class _SampleAppPageState extends State<SampleAppPage> {
 }
 ```
 
-### Animations
+### Animações
 
-In UIKit, you create an animation by calling the
-`animate(withDuration:animations:)` method on a view.
-In Flutter, use the animation library
-to wrap widgets inside an animated widget.
+No UIKit, você cria uma animação chamando o
+método `animate(withDuration:animations:)` em uma view.
+No Flutter, use a biblioteca de animação
+para envolver widgets dentro de um widget animado.
 
-In Flutter, use an `AnimationController`, which is an `Animation<double>`
-that can pause, seek, stop, and reverse the animation.
-It requires a `Ticker` that signals when vsync happens
-and produces a linear interpolation
-between 0 and 1 on each frame while it's running.
-You then create one or more
-`Animation`s and attach them to the controller.
+No Flutter, use um `AnimationController`, que é um `Animation<double>`
+que pode pausar, buscar, parar e reverter a animação.
+Ele requer um `Ticker` que sinaliza quando vsync acontece
+e produz uma interpolação linear
+entre 0 e 1 em cada frame enquanto está rodando.
+Você então cria uma ou mais
+`Animation`s e as anexa ao controller.
 
-For example, you might use `CurvedAnimation`
-to implement an animation along an interpolated curve.
-In this sense, the controller is the "master" source
-of the animation progress
-and the `CurvedAnimation` computes the curve
-that replaces the controller's default linear motion.
-Like widgets, animations in Flutter work with composition.
+Por exemplo, você pode usar `CurvedAnimation`
+para implementar uma animação ao longo de uma curva interpolada.
+Neste sentido, o controller é a fonte "mestre"
+do progresso da animação
+e o `CurvedAnimation` computa a curva
+que substitui o movimento linear padrão do controller.
+Como widgets, animações no Flutter funcionam com composição.
 
-When building the widget tree you assign the `Animation` to an animated
-property of a widget, such as the opacity of a `FadeTransition`,
-and tell the controller to start the animation.
+Ao construir a árvore de widgets você atribui a `Animation` a uma propriedade
+animada de um widget, como a opacidade de um `FadeTransition`,
+e diz ao controller para iniciar a animação.
 
-The following example shows how to write a `FadeTransition` that
-fades the widget into a logo when you press the `FloatingActionButton`:
+O exemplo seguinte mostra como escrever um `FadeTransition` que
+faz fade do widget para um logo quando você pressiona o `FloatingActionButton`:
 
 <?code-excerpt "lib/animation.dart"?>
 ```dart
@@ -415,18 +415,18 @@ class _MyFadeTest extends State<MyFadeTest>
 }
 ```
 
-For more information, see [Animation & Motion widgets][],
-the [Animations tutorial][], and the [Animations overview][].
+Para mais informações, veja [Animation & Motion widgets][],
+o [Animations tutorial][], e a [Animations overview][].
 
-### Drawing on the screen
+### Desenhando na tela
 
-In UIKit, you use `CoreGraphics` to draw lines and shapes to the
-screen. Flutter has a different API based on the `Canvas` class,
-with two other classes that help you draw: `CustomPaint` and `CustomPainter`,
-the latter of which implements your algorithm to draw to the canvas.
+No UIKit, você usa `CoreGraphics` para desenhar linhas e formas na
+tela. Flutter tem uma API diferente baseada na classe `Canvas`,
+com duas outras classes que ajudam você a desenhar: `CustomPaint` e `CustomPainter`,
+sendo a última que implementa seu algoritmo para desenhar no canvas.
 
-To learn how to implement a signature painter in Flutter,
-see Collin's answer on [StackOverflow][].
+Para aprender como implementar um signature painter no Flutter,
+veja a resposta do Collin no [StackOverflow][].
 
 [StackOverflow]: {{site.so}}/questions/46241071/create-signature-area-for-mobile-app-in-dart-flutter
 
@@ -496,23 +496,23 @@ class SignaturePainter extends CustomPainter {
 }
 ```
 
-### Widget opacity
+### Opacidade de widget
 
-In UIKit, everything has `.opacity` or `.alpha`.
-In Flutter, most of the time you need to
-wrap a widget in an `Opacity` widget to accomplish this.
+No UIKit, tudo tem `.opacity` ou `.alpha`.
+No Flutter, na maioria das vezes você precisa
+envolver um widget em um widget `Opacity` para conseguir isso.
 
-### Custom Widgets
+### Widgets Personalizados
 
-In UIKit, you typically subclass `UIView`, or use a pre-existing view,
-to override and implement methods that achieve the desired behavior.
-In Flutter, build a custom widget by [composing][] smaller widgets
-(instead of extending them).
+No UIKit, você tipicamente faz subclasse de `UIView`, ou usa uma view pré-existente,
+para sobrescrever e implementar métodos que alcançam o comportamento desejado.
+No Flutter, construa um widget personalizado [composing][] widgets menores
+(ao invés de estendê-los).
 
-For example, how do you build a `CustomButton`
-that takes a label in the constructor?
-Create a CustomButton that composes a `ElevatedButton` with a label,
-rather than by extending `ElevatedButton`:
+Por exemplo, como você constrói um `CustomButton`
+que recebe um label no construtor?
+Crie um CustomButton que compõe um `ElevatedButton` com um label,
+ao invés de estender `ElevatedButton`:
 
 <?code-excerpt "lib/custom.dart (custom-button)"?>
 ```dart
@@ -531,8 +531,8 @@ class CustomButton extends StatelessWidget {
 }
 ```
 
-Then use `CustomButton`,
-just as you'd use any other Flutter widget:
+Então use `CustomButton`,
+assim como você usaria qualquer outro widget Flutter:
 
 <?code-excerpt "lib/custom.dart (use-custom-button)"?>
 ```dart
@@ -544,46 +544,46 @@ Widget build(BuildContext context) {
 }
 ```
 
-### Managing dependencies
+### Gerenciando dependências
 
-In iOS, you add dependencies with CocoaPods by adding to your `Podfile`.
-Flutter uses Dart's build system and the Pub package manager
-to handle dependencies. The tools delegate the building of the
-native Android and iOS wrapper apps to the
-respective build systems.
+No iOS, você adiciona dependências com CocoaPods adicionando ao seu `Podfile`.
+Flutter usa o sistema de build do Dart e o gerenciador de pacotes Pub
+para lidar com dependências. As ferramentas delegam a construção dos
+apps wrapper nativos Android e iOS para os
+respectivos sistemas de build.
 
-While there is a Podfile in the iOS folder in your
-Flutter project, only use this if you are adding native
-dependencies needed for per-platform integration.
-In general, use `pubspec.yaml` to declare external dependencies in Flutter.
-A good place to find great packages for Flutter is on [pub.dev][].
+Embora exista um Podfile na pasta iOS no seu
+projeto Flutter, use-o apenas se você estiver adicionando
+dependências nativas necessárias para integração por plataforma.
+Em geral, use `pubspec.yaml` para declarar dependências externas no Flutter.
+Um bom lugar para encontrar ótimos pacotes para Flutter é no [pub.dev][].
 
-## Navigation
+## Navegação
 
-This section of the document discusses navigation
-between pages of an app, the push and pop mechanism, and more.
+Esta seção do documento discute navegação
+entre páginas de um app, o mecanismo de push e pop, e mais.
 
-### Navigating between pages
+### Navegando entre páginas
 
-In UIKit, to travel between view controllers, you can use a
-`UINavigationController` that manages the stack of view controllers
-to display.
+No UIKit, para viajar entre view controllers, você pode usar um
+`UINavigationController` que gerencia a pilha de view controllers
+para exibir.
 
-Flutter has a similar implementation,
-using a `Navigator` and `Routes`.
-A `Route` is an abstraction for a "screen" or "page" of an app,
-and a `Navigator` is a [widget][]
-that manages routes. A route roughly maps to a
-`UIViewController`. The navigator works in a similar way to the iOS
-`UINavigationController`, in that it can `push()` and `pop()`
-routes depending on whether you want to navigate to, or back from, a view.
+Flutter tem uma implementação similar,
+usando um `Navigator` e `Routes`.
+Uma `Route` é uma abstração para uma "screen" ou "page" de um app,
+e um `Navigator` é um [widget][]
+que gerencia routes. Uma route mapeia aproximadamente para um
+`UIViewController`. O navigator funciona de maneira similar ao
+`UINavigationController` do iOS, em que ele pode fazer `push()` e `pop()`
+de routes dependendo se você quer navegar para, ou voltar de, uma view.
 
-To navigate between pages, you have a couple options:
+Para navegar entre páginas, você tem algumas opções:
 
-* Specify a `Map` of route names.
-* Directly navigate to a route.
+* Especificar um `Map` de nomes de route.
+* Navegar diretamente para uma route.
 
-The following example builds a `Map.`
+O exemplo seguinte constrói um `Map.`
 
 <?code-excerpt "lib/intent.dart (map)"?>
 ```dart
@@ -601,46 +601,46 @@ void main() {
 }
 ```
 
-Navigate to a route by `push`ing its name to the `Navigator`.
+Navegue para uma route fazendo `push` do seu nome para o `Navigator`.
 
 <?code-excerpt "lib/intent.dart (push)"?>
 ```dart
 Navigator.of(context).pushNamed('/b');
 ```
 
-The `Navigator` class handles routing in Flutter and is used to get
-a result back from a route that you have pushed on the stack.
-This is done by `await`ing on the `Future` returned by `push()`.
+A classe `Navigator` lida com roteamento no Flutter e é usada para obter
+um resultado de volta de uma route que você fez push na pilha.
+Isso é feito fazendo `await` no `Future` retornado por `push()`.
 
-For example, to start a `location` route that lets the user select their
-location, you might do the following:
+Por exemplo, para iniciar uma route `location` que permite ao usuário selecionar sua
+localização, você pode fazer o seguinte:
 
 <?code-excerpt "lib/intent.dart (push-await)"?>
 ```dart
 Object? coordinates = await Navigator.of(context).pushNamed('/location');
 ```
 
-And then, inside your `location` route, once the user has selected their
-location, `pop()` the stack with the result:
+E então, dentro de sua route `location`, uma vez que o usuário selecionou sua
+localização, faça `pop()` na pilha com o resultado:
 
 <?code-excerpt "lib/intent.dart (pop)"?>
 ```dart
 Navigator.of(context).pop({'lat': 43.821757, 'long': -79.226392});
 ```
 
-### Navigating to another app
+### Navegando para outro app
 
-In UIKit, to send the user to another application,
-you use a specific URL scheme.
-For the system level apps, the scheme depends on the app.
-To implement this functionality in Flutter,
-create a native platform integration, or use an
-[existing plugin][], such as [`url_launcher`][].
+No UIKit, para enviar o usuário para outra aplicação,
+você usa um esquema de URL específico.
+Para apps de nível de sistema, o esquema depende do app.
+Para implementar esta funcionalidade no Flutter,
+crie uma integração de plataforma nativa, ou use um
+[existing plugin][], como [`url_launcher`][].
 
-### Manually pop back
+### Fazendo pop back manualmente
 
-Calling `SystemNavigator.pop()` from your Dart code
-invokes the following iOS code:
+Chamar `SystemNavigator.pop()` do seu código Dart
+invoca o seguinte código iOS:
 
 ```objc
 UIViewController* viewController = [UIApplication sharedApplication].keyWindow.rootViewController;
@@ -649,15 +649,15 @@ if ([viewController isKindOfClass:[UINavigationController class]]) {
 }
 ```
 
-If that doesn't do what you want, you can create your own
-[platform channel][] to invoke arbitrary iOS code.
+Se isso não fizer o que você quer, você pode criar seu próprio
+[platform channel][] para invocar código iOS arbitrário.
 
-### Handling localization
+### Lidando com localização
 
-Unlike iOS, which has the `Localizable.strings` file,
-Flutter doesn't currently have a dedicated system for handling strings.
-At the moment, the best practice is to declare your copy text
-in a class as static fields and access them from there. For example:
+Diferente do iOS, que tem o arquivo `Localizable.strings`,
+Flutter atualmente não tem um sistema dedicado para lidar com strings.
+No momento, a melhor prática é declarar seu texto de cópia
+em uma classe como campos estáticos e acessá-los de lá. Por exemplo:
 
 <?code-excerpt "lib/string_examples.dart (strings)"?>
 ```dart
@@ -666,18 +666,18 @@ class Strings {
 }
 ```
 
-You can access your strings as such:
+Você pode acessar suas strings assim:
 
 <?code-excerpt "lib/string_examples.dart (access-string)" replace="/const //g; /return //g;"?>
 ```dart
 Text(Strings.welcomeMessage);
 ```
 
-By default, Flutter only supports US English for its strings.
-If you need to add support for other languages,
-include the `flutter_localizations` package.
-You might also need to add Dart's [`intl`][]
-package to use i10n machinery, such as date/time formatting.
+Por padrão, Flutter suporta apenas inglês americano para suas strings.
+Se você precisa adicionar suporte para outras línguas,
+inclua o pacote `flutter_localizations`.
+Você também pode precisar adicionar o pacote [`intl`][] do Dart
+para usar maquinário i10n, como formatação de data/hora.
 
 ```yaml
 dependencies:
@@ -686,9 +686,9 @@ dependencies:
   intl: any # Use version of intl from flutter_localizations.
 ```
 
-To use the `flutter_localizations` package,
-specify the `localizationsDelegates` and
-`supportedLocales` on the app widget:
+Para usar o pacote `flutter_localizations`,
+especifique os `localizationsDelegates` e
+`supportedLocales` no widget app:
 
 <?code-excerpt "lib/localizations_example.dart"?>
 ```dart

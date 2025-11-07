@@ -31,6 +31,7 @@ Para obter uma visão geral melhor do mecanismo de layout, comece com
 
 [Switzerland Tourism]: https://www.myswitzerland.com/en-us/destinations/lake-oeschinen
 [Flutter's approach to layout]: /ui/layout
+[Abordagem do Flutter para layout]: /ui/layout
 
 ## Diagramar o layout
 

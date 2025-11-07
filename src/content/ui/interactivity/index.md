@@ -791,6 +791,8 @@ App Wonderous [app em execução][wonderous-app], [repositório][wonderous-repo]
 [`Icon`]: {{site.api}}/flutter/widgets/Icon-class.html
 [`InkWell`]: {{site.api}}/flutter/material/InkWell-class.html
 [iOS simulator]: /get-started/install/macos/mobile-ios#configure-your-target-ios-device
+[simulador iOS]: /get-started/install/macos/mobile-ios#configure-your-target-ios-device
+[emulador Android]: /get-started/install/windows/mobile?tab=virtual#configure-your-target-android-device
 [building layouts tutorial]: /ui/layout/tutorial
 [community]: {{site.main-url}}/community
 [Handle taps]: /cookbook/gestures/handling-taps

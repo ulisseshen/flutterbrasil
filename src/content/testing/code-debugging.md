@@ -786,6 +786,7 @@ Para adicionar uma sobreposição a aplicações não-Material, adicione um widg
 [Profiling Flutter performance]: /perf/ui-performance
 [The performance overlay]: /perf/ui-performance#the-performance-overlay
 [Timeline events tab]: /tools/devtools/performance#timeline-events-tab
+[aba Timeline events]: /tools/devtools/performance#timeline-events-tab
 [Timeline]: {{site.dart.api}}/dart-developer/Timeline-class.html
 [`Center`]: {{site.api}}/flutter/widgets/Center-class.html
 [`CupertinoApp`]: {{site.api}}/flutter/cupertino/CupertinoApp-class.html

@@ -43,7 +43,7 @@ Um _unit test_ testa uma única função, método ou classe.
 O objetivo de um unit test é verificar a corretude de uma
 unidade de lógica sob uma variedade de condições.
 Dependências externas da unidade sob teste são geralmente
-[mockadas][/cookbook/testing/unit/mocking].
+[mockadas](/cookbook/testing/unit/mocking).
 Unit tests geralmente não leem ou escrevem
 no disco, renderizam na tela ou recebem ações do usuário de
 fora do processo executando o teste.

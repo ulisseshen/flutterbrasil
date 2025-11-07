@@ -1,6 +1,7 @@
 ---
 title: Animation
-description: A catalog of recipes for adding animations to your Flutter app.
+description: Um catálogo de receitas para adicionar animações ao seu app Flutter.
+ia-translate: true
 ---
 
 {% include docs/cookbook-group-index.md %}

@@ -1,42 +1,43 @@
 ---
 title: Deep linking
-description: Navigate to routes when the app receives a new URL.
+description: Navegue para rotas quando o app recebe uma nova URL.
+ia-translate: true
 ---
-Deep links are links that not only open an app, but also take the
-user to a specific location "deep" inside the app. For example,
-a deep link from an advertisement for a pair of sneakers might open
-a shopping app and display the product page for those particular shoes.
+Deep links são links que não apenas abrem um app, mas também levam o
+usuário para uma localização específica "dentro" do app. Por exemplo,
+um deep link de um anúncio de um par de tênis pode abrir
+um app de compras e exibir a página do produto para aqueles tênis específicos.
 
-Flutter supports deep linking on iOS, Android, and the web.
-Opening a URL displays that screen in your app.
-With the following steps,
-you can launch and display routes by using named routes
-(either with the [`routes`][routes] parameter or
-[`onGenerateRoute`][onGenerateRoute]), or by
-using the [`Router`][Router] widget.
+O Flutter suporta deep linking no iOS, Android e na web.
+Abrir uma URL exibe aquela tela no seu app.
+Com os seguintes passos,
+você pode iniciar e exibir rotas usando rotas nomeadas
+(seja com o parâmetro [`routes`][routes] ou
+[`onGenerateRoute`][onGenerateRoute]), ou usando
+o widget [`Router`][Router].
 
 :::note
-Named routes are no longer recommended for most
-applications. For more information, see
-[Limitations][] in the [navigation overview][] page.
+Rotas nomeadas não são mais recomendadas para a maioria
+das aplicações. Para mais informações, veja
+[Limitações][Limitations] na página de [visão geral de navegação][navigation overview].
 :::
 
 [Limitations]: /ui/navigation#limitations
 [navigation overview]: /ui/navigation
 
-If you're running the app in a web browser, there's no additional setup
-required. Route paths are handled in the same way as an iOS or Android deep
-link. By default, web apps read the deep link path from the url fragment using
-the pattern: `/#/path/to/app/screen`, but this can be changed by
-[configuring the URL strategy][] for your app.
+Se você está rodando o app em um navegador web, não há configuração adicional
+necessária. Caminhos de rota são tratados da mesma forma que um deep
+link do iOS ou Android. Por padrão, apps web leem o caminho do deep link a partir do fragmento da url usando
+o padrão: `/#/path/to/app/screen`, mas isso pode ser mudado
+[configurando a estratégia de URL][configuring the URL strategy] para o seu app.
 
-If you are a visual learner, check out the following video:
+Se você aprende melhor visualmente, confira o seguinte vídeo:
 
 {% ytEmbed 'KNAb2XL7k2g', 'Deep linking in Flutter' %}
 
-## Get started
+## Começando
 
-To get started, see our cookbooks for Android and iOS:
+Para começar, veja nossos cookbooks para Android e iOS:
 
 <div class="card-grid">
   <a class="card" href="/cookbook/navigation/set-up-app-links">
@@ -55,41 +56,41 @@ To get started, see our cookbooks for Android and iOS:
   </a>
 </div>
 
-## Migrating from plugin-based deep linking
+## Migrando de deep linking baseado em plugin
 
-If you have written a plugin to handle deep links, as described in
+Se você escreveu um plugin para lidar com deep links, como descrito em
 [Deep Links and Flutter applications][plugin-linking]
-(a free article on Medium),
-you should opt out the Flutter's default deep link handler.
-To do this, set `FlutterDeepLinkingEnabled` to false in `Info.plist` _or_
-`flutter_deeplinking_enabled` to false in `AndroidManifest.xml`.
+(um artigo gratuito no Medium),
+você deve desabilitar o manipulador padrão de deep link do Flutter.
+Para fazer isso, defina `FlutterDeepLinkingEnabled` como false no `Info.plist` _ou_
+`flutter_deeplinking_enabled` como false no `AndroidManifest.xml`.
 
-## Behavior
+## Comportamento
 
-The behavior varies slightly based on the platform and whether the app is
-launched and running.
+O comportamento varia ligeiramente com base na plataforma e se o app está
+iniciado e rodando.
 
-| Platform / Scenario      | Using Navigator                                                     | Using Router                                                                                                                                                                                               |
+| Plataforma / Cenário     | Usando Navigator                                                    | Usando Router                                                                                                                                                                                              |
 |--------------------------|---------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| iOS (not launched)       | App gets initialRoute ("/") and a short time after gets a pushRoute | App gets initialRoute ("/") and a short time after uses the RouteInformationParser to parse the route and call RouterDelegate.setNewRoutePath, which configures the Navigator with the corresponding Page. |
-| Android - (not launched) | App gets initialRoute containing the route ("/deeplink")            | App gets initialRoute ("/deeplink") and passes it to the RouteInformationParser to parse the route and call RouterDelegate.setNewRoutePath, which configures the Navigator with the corresponding Pages.   |
-| iOS (launched)           | pushRoute is called                                                 | Path is parsed, and the Navigator is configured with a new set of Pages.                                                                                                                                   |
-| Android (launched)       | pushRoute is called                                                 | Path is parsed, and the Navigator is configured with a new set of Pages.                                                                                                                                   |
+| iOS (não iniciado)       | App recebe initialRoute ("/") e logo após recebe um pushRoute | App recebe initialRoute ("/") e logo após usa o RouteInformationParser para analisar a rota e chamar RouterDelegate.setNewRoutePath, que configura o Navigator com a Page correspondente. |
+| Android - (não iniciado) | App recebe initialRoute contendo a rota ("/deeplink")            | App recebe initialRoute ("/deeplink") e passa para o RouteInformationParser para analisar a rota e chamar RouterDelegate.setNewRoutePath, que configura o Navigator com as Pages correspondentes.   |
+| iOS (iniciado)           | pushRoute é chamado                                                 | O caminho é analisado, e o Navigator é configurado com um novo conjunto de Pages.                                                                                                                                   |
+| Android (iniciado)       | pushRoute é chamado                                                 | O caminho é analisado, e o Navigator é configurado com um novo conjunto de Pages.                                                                                                                                   |
 
 {:.table .table-striped}
 
-When using the [`Router`][Router] widget,
-your app has the ability to replace the
-current set of pages when a new deep link
-is opened while the app is running.
+Quando usando o widget [`Router`][Router],
+seu app tem a habilidade de substituir o
+conjunto atual de páginas quando um novo deep link
+é aberto enquanto o app está rodando.
 
-## To learn more
+## Para saber mais
 
-* [Learning Flutter's new navigation and routing system][] provides an
-introduction to the Router system.
-* [Deep dive into Flutter deep linking][io-dl] video from Google I/O 2023
+* [Learning Flutter's new navigation and routing system][] fornece uma
+introdução ao sistema Router.
+* [Deep dive into Flutter deep linking][io-dl] vídeo do Google I/O 2023
 * [Flutter Deep Linking: The Ultimate Guide][],
-   a step-by-step tutorial showing how to implement deep links in Flutter.
+   um tutorial passo a passo mostrando como implementar deep links no Flutter.
 
 [io-dl]: {{site.yt.watch}}?v=6RxuDcs6jVw&t=3s
 [Learning Flutter's new navigation and routing system]: {{site.flutter-medium}}/learning-flutters-new-navigation-and-routing-system-7c9068155ade

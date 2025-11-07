@@ -145,3 +145,30 @@ jobs:
           channelId: live
           projectId: transliteradu
           target: docs-flutterbrasil
+
+  firebase-deploy-preview:
+    name: Deploy Preview to Firebase Hosting
+    runs-on: ubuntu-latest
+    needs: [linkcheck, firebase-validate]
+    if: github.event_name == 'pull_request'
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifacts
+          path: _site
+
+      - name: Deploy Preview to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+          channelId: pr-${{ github.event.number }}
+          projectId: transliteradu
+          target: docs-flutterbrasil

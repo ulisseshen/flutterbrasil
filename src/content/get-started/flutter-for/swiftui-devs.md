@@ -1,48 +1,49 @@
 ---
-title: Flutter for SwiftUI Developers
-description: Learn how to apply SwiftUI developer knowledge when building Flutter apps.
+ia-translate: true
+title: Flutter para desenvolvedores SwiftUI
+description: Aprenda como aplicar conhecimento de desenvolvimento SwiftUI ao construir apps Flutter.
 ---
 
 <?code-excerpt path-base="get-started/flutter-for/ios_devs"?>
 
 {% assign sample_path = "blob/main/examples/get-started/flutter-for/ios_devs" %}
 
-SwiftUI developers who want to write mobile apps using Flutter
-should review this guide.
-It explains how to apply existing SwiftUI knowledge to Flutter.
+Desenvolvedores SwiftUI que querem escrever apps mobile usando Flutter
+devem revisar este guia.
+Ele explica como aplicar conhecimento existente de SwiftUI ao Flutter.
 
 :::note
-If you instead have experience building apps for iOS with UIKit,
-see [Flutter for UIKit developers][].
+Se você tem experiência construindo apps para iOS com UIKit,
+veja [Flutter for UIKit developers][].
 :::
 
-Flutter is a framework for building cross-platform applications
-that uses the Dart programming language.
-To understand some differences between programming with Dart
-and programming with Swift, see [Learning Dart as a Swift Developer][]
-and [Flutter concurrency for Swift developers][].
+Flutter é um framework para construir aplicações cross-platform
+que usa a linguagem de programação Dart.
+Para entender algumas diferenças entre programar com Dart
+e programar com Swift, veja [Learning Dart as a Swift Developer][]
+e [Flutter concurrency for Swift developers][].
 
-Your SwiftUI knowledge and experience
-are highly valuable when building with Flutter.
+Seu conhecimento e experiência com SwiftUI
+são altamente valiosos ao construir com Flutter.
 {% comment %}
   TODO: Add talk about plugin system for interacting with OS and hardware
   when [iOS and Apple hardware interactions with Flutter][] is released.
 {% endcomment %}
 
-Flutter also makes a number of adaptations
-to app behavior when running on iOS and macOS.
-To learn how, see [Platform adaptations][].
+Flutter também faz um número de adaptações
+ao comportamento do app quando rodando em iOS e macOS.
+Para aprender como, veja [Platform adaptations][].
 
 :::tip
-To integrate Flutter code into an **existing** iOS app,
-check out [Add Flutter to existing app][].
+Para integrar código Flutter em um app iOS **existente**,
+confira [Add Flutter to existing app][].
 :::
 
-This document can be used as a cookbook by jumping around
-and finding questions that are most relevant to your needs.
-This guide embeds sample code.
-By using the "Open in DartPad" button that appears on hover or focus,
-you can open and run some of the examples on DartPad.
+Este documento pode ser usado como um livro de receitas pulando por aí
+e encontrando questões que são mais relevantes às suas necessidades.
+Este guia incorpora código de exemplo.
+Usando o botão "Open in DartPad" que aparece ao passar o mouse ou focar,
+você pode abrir e executar alguns dos exemplos no DartPad.
 
 ## Overview
 

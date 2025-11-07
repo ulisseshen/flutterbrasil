@@ -1,29 +1,30 @@
 ---
-title: Tutorials
-description: A list of Flutter tutorials.
+ia-translate: true
+title: Tutoriais
+description: Uma lista de tutoriais do Flutter.
 ---
 
-The **Flutter tutorials** teach you how to use the Flutter framework to
-build mobile applications for iOS and Android.
+Os **tutoriais do Flutter** ensinam como usar o framework Flutter para
+construir aplicações mobile para iOS e Android.
 
-Choose from the following:
+Escolha entre os seguintes:
 
 * [Building layouts](/ui/layout/tutorial)
-: How to build layouts using Flutter's layout mechanism. Once you've learned
-  basic principles, you'll build the layout for a sample screenshot.
+: Como construir layouts usando o mecanismo de layout do Flutter. Depois de aprender
+  os princípios básicos, você construirá o layout de uma screenshot de exemplo.
 
 * [Adding interactivity to your Flutter app](/ui/interactivity)
-: You'll extend the simple layout app created in
-  "Building Layouts in Flutter" to make an icon tappable.
-  Different ways of managing a widget's state are also discussed.
+: Você estenderá o app de layout simples criado em
+  "Building Layouts in Flutter" para tornar um ícone clicável.
+  Diferentes maneiras de gerenciar o estado de um widget também são discutidas.
 
 * [Animations in Flutter](/ui/animations/tutorial)
-: Explains the fundamental classes in the Flutter animation package
+: Explica as classes fundamentais no package de animação do Flutter
   (controllers, Animatable, curves, listeners, builders),
-  as it guides you through a progression of tween animations using
-  different aspects of the animation APIs.
+  enquanto guia você por uma progressão de animações tween usando
+  diferentes aspectos das APIs de animação.
 
 * [Internationalizing Flutter apps](/ui/accessibility-and-internationalization/internationalization)
-: Learn how to internationalize your Flutter application. A guide through
-  the widgets and classes that enable apps to display their
-  content using the user's language and formatting conventions.
+: Aprenda como internacionalizar sua aplicação Flutter. Um guia através
+  dos widgets e classes que permitem que apps exibam seu
+  conteúdo usando o idioma e convenções de formatação do usuário.

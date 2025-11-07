@@ -1,47 +1,48 @@
 ---
-title: Bootstrap into Dart
-description: How to get started with the Dart programming language.
+ia-translate: true
+title: Introdução ao Dart
+description: Como começar com a linguagem de programação Dart.
 ---
 
-New to the [Dart][] language?
-We compiled our favorite resources to
-help you quickly learn Dart.
-Many people have reported that
-[Dart is easy and fun to learn][].
-We hope these resources make Dart easy for
-you to learn, too.
+Novo na linguagem [Dart][]?
+Compilamos nossos recursos favoritos para
+ajudá-lo a aprender Dart rapidamente.
+Muitas pessoas relataram que
+[Dart é fácil e divertido de aprender][Dart is easy and fun to learn].
+Esperamos que esses recursos tornem o Dart fácil para
+você aprender também.
 
 [Language tour][]
-: Your best introduction to the Dart language.
-  Learn about Dart's features such as _strong types_,
+: Sua melhor introdução à linguagem Dart.
+  Aprenda sobre os recursos do Dart como _strong types_,
   _closures_, _libraries_, _lexical scoping_,
   _top-level functions_, _named parameters_,
-  _async / await_, and lots more.
+  _async / await_ e muito mais.
 
 [Library tour][]
-: A good overview of Dart's powerful core libraries.
-  Learn about Dart's support for collections, async,
-  math, numbers, strings, JSON, and more.
+: Uma boa visão geral das poderosas bibliotecas principais do Dart.
+  Aprenda sobre o suporte do Dart para collections, async,
+  math, numbers, strings, JSON e mais.
 
 [Learning Dart as a JavaScript developer][]
-: Use your JavaScript knowledge to get up and running quickly with Dart.
-  Learn about the key similarities and differences between the languages
-  as well as concepts and conventions not present in vanilla JavaScript.
+: Use seu conhecimento de JavaScript para começar rapidamente com Dart.
+  Aprenda sobre as principais semelhanças e diferenças entre as linguagens
+  assim como conceitos e convenções não presentes no JavaScript vanilla.
 
 [Effective Dart][]
-: Guides for style, authoring documentation, usage,
-  and more.
+: Guias para estilo, autoria de documentação, uso
+  e mais.
 
 [Asynchronous programming: futures, async, await][] codelab
-: Learn how to write asynchronous code using
-  futures and the `async` and `await` keywords.
+: Aprenda como escrever código assíncrono usando
+  futures e as palavras-chave `async` e `await`.
 
 [Asynchronous programming: streams][]
-: Learn how to use streams to perform asynchronous
-  I/O and event handling.
+: Aprenda como usar streams para realizar I/O assíncrono
+  e tratamento de eventos.
 
-Want to learn more and perhaps contribute?
-Check out the [Dart community][].
+Quer aprender mais e talvez contribuir?
+Confira a [Dart community][].
 
 
 

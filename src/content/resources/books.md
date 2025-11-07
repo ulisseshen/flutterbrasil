@@ -1,25 +1,26 @@
 ---
-title: Books about Flutter
-description: Extra, extra! Here's a collection of books about Flutter.
+ia-translate: true
+title: Livros sobre Flutter
+description: Extra, extra! Aqui está uma coleção de livros sobre Flutter.
 toc: false
 ---
 
-Here's a collection of books about Flutter,
-in alphabetical order.
-If you find another one that we should add,
-[file an issue][] and (feel free to)
-submit a PR ([sample][]) to add it yourself.
+Aqui está uma coleção de livros sobre Flutter,
+em ordem alfabética.
+Se você encontrar outro que devamos adicionar,
+[file an issue][] e (fique à vontade para)
+enviar um PR ([sample][]) para adicioná-lo você mesmo.
 
-Also, check the Flutter version that the book
-was written under. Anything published before
-Flutter 3.10/Dart 3 (May 2023),
-won't reflect the latest version of Dart and
-might not include null safety;
-anything published before Flutter 3.16 (November 2023)
-won't reflect that Material 3 is now
-Flutter's default theme.
-See the [what's new][]
-page to view Flutter's latest release.
+Além disso, verifique a versão do Flutter para a qual o livro
+foi escrito. Qualquer coisa publicada antes do
+Flutter 3.10/Dart 3 (maio de 2023),
+não refletirá a versão mais recente do Dart e
+pode não incluir null safety;
+qualquer coisa publicada antes do Flutter 3.16 (novembro de 2023)
+não refletirá que o Material 3 agora é
+o tema padrão do Flutter.
+Veja a página [what's new][]
+para visualizar o lançamento mais recente do Flutter.
 
 [file an issue]: {{site.repo.this}}/issues/new
 [sample]: {{site.repo.this}}/pull/6019
@@ -30,7 +31,7 @@ page to view Flutter's latest release.
 {% endfor -%}
 
 <p>
-  The following sections have more information about each book.
+  As seções a seguir têm mais informações sobre cada livro.
 </p>
 
 {% for book in books %}
@@ -50,4 +51,3 @@ by {{book.authors | array_to_sentence_string}}
 </div>
 </div>
 {% endfor %}
-

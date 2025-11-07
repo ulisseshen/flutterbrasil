@@ -1,13 +1,14 @@
 ---
-title: Online courses
-description: An index of online courses teaching Flutter development.
+ia-translate: true
+title: Cursos online
+description: Um índice de cursos online ensinando desenvolvimento Flutter.
 ---
 
-Learn how to build Flutter apps with these video courses.
-Before signing up for a course, verify that it includes
-up-to-date information, such as null-safe Dart code.
-These courses are listed alphabetically.
-To include your course, [submit a PR][]:
+Aprenda como construir apps Flutter com esses cursos em vídeo.
+Antes de se inscrever em um curso, verifique se ele inclui
+informações atualizadas, como código Dart com null safety.
+Esses cursos estão listados em ordem alfabética.
+Para incluir seu curso, [submit a PR][]:
 
 * [20 Hour Dart & Flutter YT Course For Beginners][] by Rivaan Ranawat
 * [The Best Flutter Course on the Internet][] by Tadas Petra & Robert Brunhage

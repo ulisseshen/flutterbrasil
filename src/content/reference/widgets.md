@@ -1,20 +1,21 @@
 ---
-title: Flutter widget index
-description: An alphabetical list of Flutter widgets.
+ia-translate: true
+title: Índice de widgets do Flutter
+description: Uma lista alfabética de widgets do Flutter.
 short-title: Widgets
 show_breadcrumbs: false
 ---
 
 {% assign sorted = catalog.widgets | sort:'name' -%}
 
-This is an alphabetical list of many of the widgets that
-are bundled with Flutter.
-You can also [browse widgets by category][catalog].
+Esta é uma lista alfabética de muitos dos widgets que
+vêm incluídos com o Flutter.
+Você também pode [navegar widgets por categoria][catalog].
 
-You might also want to check out our Widget of the Week video series
-on the [Flutter YouTube channel]({{site.social.youtube}}). Each short
-episode features a different Flutter widget. For more video series, see
-our [videos](/resources/videos) page.
+Você também pode querer conferir nossa série de vídeos Widget of the Week
+no [canal do Flutter no YouTube]({{site.social.youtube}}). Cada episódio curto
+apresenta um widget Flutter diferente. Para mais séries de vídeo, veja
+nossa página de [vídeos](/resources/videos).
 
 {% ytEmbed 'b_sQ9bMltGU', 'Introducing the Flutter Widget of the Week' %}
 

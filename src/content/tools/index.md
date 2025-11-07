@@ -1,6 +1,7 @@
 ---
+ia-translate: true
 layout: toc
-title: Tools & techniques
-short-title: Tools
-description: Content covering Tools that support developing Flutter apps.
+title: Ferramentas e técnicas
+short-title: Ferramentas
+description: Conteúdo que cobre ferramentas que auxiliam no desenvolvimento de apps Flutter.
 ---

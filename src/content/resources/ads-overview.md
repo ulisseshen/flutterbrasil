@@ -1,30 +1,31 @@
 ---
-title: Ads overview
+ia-translate: true
+title: Visão geral de anúncios
 description: >
-  Learn about the resources available for adding
-  ads to your Flutter app.
+  Aprenda sobre os recursos disponíveis para adicionar
+  anúncios ao seu app Flutter.
 ---
 
 ![adding ads](/assets/images/docs/add-ads.png)
 
-The Google Mobile Ads SDK for Flutter works with
-both AdMob and Ad Manager. It supports a variety
-of ads formats such as app open, banner, interstitial,
-native, rewarded, and rewarded interstitial formats,
-and features like mediation.
+O Google Mobile Ads SDK para Flutter funciona com
+AdMob e Ad Manager. Ele suporta uma variedade
+de formatos de anúncios como app open, banner, interstitial,
+native, rewarded e rewarded interstitial,
+e recursos como mediação.
 
-Easily integrate Google AdMob and Ad Manager ads
-directly in your Flutter App
+Integre facilmente anúncios do Google AdMob e Ad Manager
+diretamente no seu app Flutter
 
-The the following resources can help get you started:
+Os seguintes recursos podem ajudá-lo a começar:
 
 * [Add ads to your mobile Flutter app or game][] (cookbook recipe)
 * [Adding AdMob ads to a Flutter app][] (codelab)
 * [Adding an AdMob banner and native inline ads to a Flutter app][] (codelab)
 * [How to support Google Mobile Ads (AdMob) mediation][mediation] (guide)
 
-Listed in alphabetical order,
-the following packages support AdMob mediation:
+Listados em ordem alfabética,
+os seguintes packages suportam mediação do AdMob:
 
 * AppLovin ([gma_mediation_applovin][])
 * DT Exchange ([gma_mediation_dtexchange][])

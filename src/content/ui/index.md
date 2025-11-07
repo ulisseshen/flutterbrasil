@@ -2,7 +2,7 @@
 title: Construindo interfaces de usuário com Flutter
 short-title: UI
 description: Introdução ao desenvolvimento de interfaces de usuário no Flutter.
-
+ia-translate: true
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js

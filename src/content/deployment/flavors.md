@@ -257,6 +257,7 @@ configuration no seu IDE.
 TODO: When available, add an app sample.
 {% endcomment -%}
 
+<a id="launching-your-app-flavors"></a>
 ## Iniciando seus flavors de app
 
 1. Uma vez que os flavors estão configurados, modifique o código Dart em
@@ -272,6 +273,7 @@ confira as amostras de teste de integração no [repositório Flutter][Flutter r
 Do seu código Dart, você pode usar a API [`appFlavor`][] para determinar com qual
 flavor seu app foi compilado.
 
+<a id="conditionally-bundling-assets-based-on-flavor"></a>
 ## Agrupando assets condicionalmente com base no flavor
 
 Se você não está familiarizado com como adicionar assets ao seu app, veja

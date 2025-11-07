@@ -59,6 +59,7 @@ executa automaticamente para você no framework.
 [`defaultTargetPlatform`]: {{site.api}}/flutter/foundation/defaultTargetPlatform.html
 [pigeon]: {{site.pub-pkg}}/pigeon
 
+<a id="channels-and-platform-threading"></a>
 ## Visão geral da arquitetura: platform channels {:#architecture}
 
 Mensagens são passadas entre o client (UI)

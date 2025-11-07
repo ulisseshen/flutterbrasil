@@ -7,6 +7,7 @@ description: Aprenda como adicionar uma única tela Flutter ao seu app iOS exist
 
 Este guia descreve como adicionar uma única tela Flutter a um app iOS existente.
 
+<a id="start-a-flutterengine-and-flutterviewcontroller"></a>
 ## Inicie um FlutterEngine e FlutterViewController
 
 Para iniciar uma tela Flutter de um app iOS existente, você inicia um
@@ -285,6 +286,7 @@ padrão da sua biblioteca Dart padrão seria executada ao chamar `run` no
 {% endtab %}
 {% endtabs %}
 
+<a id="alternatively-create-a-flutterviewcontroller-with-an-implicit-flutterengine"></a>
 ### _Alternativamente_ - Crie um FlutterViewController com um FlutterEngine implícito
 
 Como alternativa ao exemplo anterior, você pode deixar o
@@ -688,7 +690,7 @@ flutterEngine.run(withEntrypoint: "myOtherEntrypoint", libraryURI: "other_file.d
 {% endtab %}
 {% endtabs %}
 
-
+<a id="route"></a>
 ### Rota
 
 A partir do Flutter versão 1.22, uma rota inicial pode ser definida para seu

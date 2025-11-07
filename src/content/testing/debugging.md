@@ -30,6 +30,7 @@ aplicações Flutter. Aqui estão algumas das ferramentas disponíveis:
 
 [`flutter_gdb`]: {{site.repo.flutter}}/blob/main/engine/src/flutter/sky/tools/flutter_gdb
 
+<a id="other-resources"></a>
 ## Outros recursos
 
 Você pode achar os seguintes documentos úteis:

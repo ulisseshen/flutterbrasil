@@ -41,6 +41,7 @@ receita de cookbook. Para usar Ad Manager, siga a
 [documentação do Ad Manager]({{site.developers}}/ad-manager/mobile-ads-sdk/flutter/quick-start).
 :::
 
+<a id="1-get-admob-app-ids"></a>
 ## 1. Obter IDs de App do AdMob
 
 1.  Vá para [AdMob](https://admob.google.com/) e configure uma

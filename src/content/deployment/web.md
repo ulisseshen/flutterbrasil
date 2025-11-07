@@ -1,147 +1,147 @@
 ---
-title: Build and release a web app
-description: How to prepare for and release a web app.
+ia-translate: true
+title: Compilar e lançar um app web
+description: Como preparar e lançar um app web.
 short-title: Web
 ---
 
-During a typical development cycle,
-you test an app using `flutter run -d chrome`
-(for example) at the command line.
-This builds a _debug_ version of your app.
+Durante um ciclo de desenvolvimento típico,
+você testa um app usando `flutter run -d chrome`
+(por exemplo) na linha de comando.
+Isso compila uma versão _debug_ do seu app.
 
-This page helps you prepare a _release_ version
-of your app and covers the following topics:
+Esta página ajuda você a preparar uma versão _release_
+do seu app e cobre os seguintes tópicos:
 
-* [Building the app for release](#building-the-app-for-release)
-* [Deploying to the web](#deploying-to-the-web)
-* [Deploying to Firebase Hosting](#deploying-to-firebase-hosting)
-* [Handling images on the web](#handling-images-on-the-web)
-* [Choosing a build mode and a renderer](#choosing-a-build-mode-and-a-renderer)
-* [Minification](#minification)
+* [Compilando o app para release](#building-the-app-for-release)
+* [Implantando na web](#deploying-to-the-web)
+* [Implantando no Firebase Hosting](#deploying-to-firebase-hosting)
+* [Manipulando imagens na web](#handling-images-on-the-web)
+* [Escolhendo um modo de build e um renderizador](#choosing-a-build-mode-and-a-renderer)
+* [Minificação](#minification)
 
-## Building the app for release
+## Compilando o app para release
 
-Build the app for deployment using the `flutter build web` command. 
+Compile o app para implantação usando o comando `flutter build web`.
 
 ```console
 flutter build web
 ```
 
-This
-generates the app, including the assets, and places the files into the
-`/build/web` directory of the project.
+Isso
+gera o app, incluindo os assets, e coloca os arquivos no
+diretório `/build/web` do projeto.
 
-To validate the release build of your app,
-launch a web server (for example,
+Para validar a compilação release do seu app,
+inicie um servidor web (por exemplo,
 `python -m http.server 8000`,
-or by using the [dhttpd][] package),
-and open the /build/web directory. Navigate to
-`localhost:8000` in your browser
-(given the python SimpleHTTPServer example)
-to view the release version of your app.
+ou usando o pacote [dhttpd][]),
+e abra o diretório /build/web. Navegue para
+`localhost:8000` no seu navegador
+(dado o exemplo do SimpleHTTPServer do python)
+para ver a versão release do seu app.
 
-## Additional build flags
-You might need to deploy a profile or debug build for testing.
-To do this, pass the `--profile` or `--debug` flag
-to the `flutter build web` command.
-Profile builds are specialized for performance profiling using Chrome DevTools,
-and debug builds can be used to configure dart2js
-to respect assertions and change the optimization level (using the `-O` flag.)
+## Flags de build adicionais
+Você pode precisar implantar uma compilação profile ou debug para testes.
+Para fazer isso, passe a flag `--profile` ou `--debug`
+para o comando `flutter build web`.
+Compilações profile são especializadas para criação de perfil de desempenho usando Chrome DevTools,
+e compilações debug podem ser usadas para configurar o dart2js
+para respeitar assertions e alterar o nível de otimização (usando a flag `-O`.)
 
-## Choosing a build mode and a renderer
+## Escolhendo um modo de build e um renderizador
 
-Flutter web provides two build modes (default and WebAssembly) and two renderers
-(`canvaskit` and `skwasm`).
+O Flutter web fornece dois modos de build (padrão e WebAssembly) e dois renderizadores
+(`canvaskit` e `skwasm`).
 
-For more information, see [Web renderers][].
+Para mais informações, veja [Renderizadores web][Web renderers].
 
-## Deploying to the web
+## Implantando na web
 
-When you are ready to deploy your app,
-upload the release bundle
-to Firebase, the cloud, or a similar service.
-Here are a few possibilities, but there are
-many others:
+Quando você estiver pronto para implantar seu app,
+faça upload do bundle de release
+para Firebase, nuvem, ou um serviço similar.
+Aqui estão algumas possibilidades, mas existem
+muitas outras:
 
 * [Firebase Hosting][]
 * [GitHub Pages][]
 * [Google Cloud Hosting][]
 
-## Deploying to Firebase Hosting
+## Implantando no Firebase Hosting
 
-You can use the Firebase CLI to build and release your Flutter app with Firebase
+Você pode usar o Firebase CLI para compilar e lançar seu app Flutter com Firebase
 Hosting.
 
-### Before you begin
+### Antes de começar
 
-To get started, [install or update][install-firebase-cli] the Firebase CLI:
+Para começar, [instale ou atualize][install-firebase-cli] o Firebase CLI:
 
 ```console
 npm install -g firebase-tools
 ```
 
-### Initialize Firebase
+### Inicializar Firebase
 
-1. Enable the web frameworks preview to the [Firebase framework-aware CLI][]:
+1. Habilite a visualização de frameworks web no [CLI consciente de frameworks do Firebase][Firebase framework-aware CLI]:
 
     ```console
     firebase experiments:enable webframeworks
     ```
 
-2. In an empty directory or an existing Flutter project, run the initialization
-command:
+2. Em um diretório vazio ou em um projeto Flutter existente, execute o comando de inicialização:
 
     ```console
     firebase init hosting
     ```
 
-3. Answer `yes` when asked if you want to use a web framework.
+3. Responda `yes` quando perguntado se você quer usar um framework web.
 
-4. If you're in an empty directory,
-    you'll be asked to choose your web framework. Choose `Flutter Web`.
+4. Se você estiver em um diretório vazio,
+    será perguntado para escolher seu framework web. Escolha `Flutter Web`.
 
-5. Choose your hosting source directory; this could be an existing flutter app.
+5. Escolha seu diretório fonte de hospedagem; este pode ser um app Flutter existente.
 
-6. Select a region to host your files.
+6. Selecione uma região para hospedar seus arquivos.
 
-7. Choose whether to set up automatic builds and deploys with GitHub.
+7. Escolha se deseja configurar builds e deploys automáticos com GitHub.
 
-8. Deploy the app to Firebase Hosting:
+8. Faça deploy do app para Firebase Hosting:
 
     ```console
     firebase deploy
     ```
 
-    Running this command automatically runs `flutter build web --release`,
-    so you don't have to build your app in a separate step.
+    Executar este comando automaticamente executa `flutter build web --release`,
+    então você não precisa compilar seu app em uma etapa separada.
 
-To learn more, visit the official [Firebase Hosting][] documentation for
-Flutter on the web.
+Para saber mais, visite a documentação oficial do [Firebase Hosting][] para
+Flutter na web.
 
-## Handling images on the web
+## Manipulando imagens na web
 
-The web supports the standard `Image` widget to display images.
-By design, web browsers run untrusted code without harming the host computer.
-This limits what you can do with images compared to mobile and desktop platforms.
+A web suporta o widget `Image` padrão para exibir imagens.
+Por design, navegadores web executam código não confiável sem prejudicar o computador host.
+Isso limita o que você pode fazer com imagens em comparação com plataformas mobile e desktop.
 
-For more information, see [Displaying images on the web][].
+Para mais informações, veja [Exibindo imagens na web][Displaying images on the web].
 
-## Minification
+## Minificação
 
-To improve app start-up the compiler reduces the size of the compiled code by
-removing unused code (known as _tree shaking_), and by renaming code symbols to
-shorter strings (e.g. by renaming `AlignmentGeometryTween` to something like
-`ab`). Which of these two optimizations are applied depends on the build mode:
+Para melhorar a inicialização do app, o compilador reduz o tamanho do código compilado
+removendo código não utilizado (conhecido como _tree shaking_), e renomeando símbolos de código para
+strings mais curtas (por exemplo, renomeando `AlignmentGeometryTween` para algo como
+`ab`). Quais dessas duas otimizações são aplicadas depende do modo de build:
 
-| Type of web app build | Code minified? | Tree shaking performed? |
+| Tipo de build web app | Código minificado? | Tree shaking realizado? |
 |-----------------------|----------------|-------------------------|
 | debug                 | No             | No                      |
 | profile               | No             | Yes                     |
 | release               | Yes            | Yes                     |
 
-## Embedding a Flutter app into an HTML page
+## Incorporando um app Flutter em uma página HTML
 
-See [Embedding Flutter web][].
+Veja [Incorporando Flutter web][Embedding Flutter web].
 
 [Embedding Flutter web]: /platform-integration/web/embedding-flutter-web
 

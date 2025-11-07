@@ -1,48 +1,49 @@
 ---
-title: Learn Flutter
-description: Resources to help you learn Flutter.
+ia-translate: true
+title: Aprenda Flutter
+description: Recursos para ajudá-lo a aprender Flutter.
 toc: false
 ---
 
-## For new Flutter developers
+## Para novos desenvolvedores Flutter
 
-If you're brand new to Flutter, 
-we suggest you complete the following resources 
-in order:
+Se você é completamente novo em Flutter,
+sugerimos que complete os seguintes recursos
+nesta ordem:
 
- 1. [Dart language overview][]
-    Flutter uses the Dart language. 
-    If you have experience with other
-    object-oriented languages, like Java, C++, or 
-    Swift, Dart should feel familiar to you, 
-    and you might be comfortable skipping this section.
- 2. [Write your first Flutter app][] 
-    This codelab introduces the basics of Flutter 
-    by creating an app that works on mobile, 
-    desktop, and web.
- 3. [Learn the fundamentals][] 
-    This is an opinionated set of documentation for
-    the new Flutter developer. It guides you 
-    through some of the most important pieces of 
-    building Flutter applications.
+ 1. [Visão geral da linguagem Dart][Dart language overview]
+    Flutter usa a linguagem Dart.
+    Se você tem experiência com outras
+    linguagens orientadas a objetos, como Java, C++ ou
+    Swift, Dart deve parecer familiar,
+    e você pode se sentir confortável pulando esta seção.
+ 2. [Escreva seu primeiro app Flutter][Write your first Flutter app]
+    Este codelab apresenta o básico de Flutter
+    criando um app que funciona em dispositivos móveis,
+    desktop e web.
+ 3. [Aprenda os fundamentos][Learn the fundamentals]
+    Este é um conjunto opinativo de documentação para
+    o novo desenvolvedor Flutter. Ele guia você
+    através de algumas das partes mais importantes da
+    construção de aplicações Flutter.
 
-## Apply your existing knowledge
+## Aplique seu conhecimento existente
 
-* [Flutter for Android developers][]
-* [Flutter for SwiftUI developers][]
-* [Flutter for UIKit developers][]
-* [Flutter for React Native developers][]
-* [Flutter for web developers][]
-* [Flutter for Xamarin.Forms developers][]
+* [Flutter para desenvolvedores Android][Flutter for Android developers]
+* [Flutter para desenvolvedores SwiftUI][Flutter for SwiftUI developers]
+* [Flutter para desenvolvedores UIKit][Flutter for UIKit developers]
+* [Flutter para desenvolvedores React Native][Flutter for React Native developers]
+* [Flutter para desenvolvedores web][Flutter for web developers]
+* [Flutter para desenvolvedores Xamarin.Forms][Flutter for Xamarin.Forms developers]
 
-## Other resources
+## Outros recursos
 
-* [Flutter samples][]
-* [Flutter cookbook][]
-* [Flutter API Docs][]
+* [Exemplos Flutter][Flutter samples]
+* [Cookbook Flutter][Flutter cookbook]
+* [Documentação da API Flutter][Flutter API Docs]
 
-Reach out to us on our [mailing list][]. 
-We'd love to hear from you!
+Entre em contato conosco em nossa [lista de discussão][mailing list].
+Adoraríamos ouvir de você!
 
 Happy Fluttering!
 
@@ -59,3 +60,4 @@ Happy Fluttering!
 [Learn the fundamentals]: /get-started/fundamentals
 [mailing list]: mailto:{{site.email}}
 [Write your first Flutter app]: /get-started/codelab
+

@@ -1,86 +1,87 @@
 ---
-title: Web support for Flutter
+ia-translate: true
+title: Suporte web para Flutter
 short-title: Web
-description: Details of how Flutter supports the creation of web experiences.
+description: Detalhes de como Flutter suporta a criação de experiências web.
 ---
 
-Flutter delivers the same experiences on the web as on mobile.
+Flutter entrega as mesmas experiências na web que no mobile.
 
-Building on the portability of Dart, the power of the web platform, the
-flexibility of the Flutter framework, and the performance of WebAssembly,
-you can build apps for iOS, Android, and the browser from the same codebase.
-The web is just another device target for your app.
+Construindo na portabilidade do Dart, no poder da plataforma web, na
+flexibilidade do framework Flutter e na performance do WebAssembly,
+você pode construir apps para iOS, Android e o navegador a partir da mesma base de código.
+A web é apenas mais um dispositivo de destino para seu app.
 
-To get started, visit [Building a web application with Flutter][].
+Para começar, visite [Building a web application with Flutter][].
 
 ## Powered by WebAssembly
-Dart and Flutter can compile to WebAssembly,
-a binary instruction format that enables fast apps on all major browsers.
+Dart e Flutter podem compilar para WebAssembly,
+um formato de instrução binária que habilita apps rápidos em todos os principais navegadores.
 
-For a glimpse into the benefits of using WebAssembly,
-check out the following video.
+Para um vislumbre dos benefícios de usar WebAssembly,
+confira o vídeo a seguir.
 
 {% ytEmbed 'lpnKWK-KEYs?start=1712', 'What\'s new in Flutter - WebAssembly' %}
 
-## How it works
-Adding web support to Flutter involved implementing Flutter's
-core drawing layer on top of standard browser APIs, in addition
-to compiling Dart to JavaScript, instead of the ARM machine code that
-is used for mobile applications. Using a combination of DOM, Canvas,
-and WebAssembly, Flutter can provide a portable, high-quality,
-and performant user experience across modern browsers.
-We implemented the core drawing layer completely in Dart
-and used Dart's optimized JavaScript compiler to compile the
-Flutter core and framework along with your application
-into a single, minified source file that can be deployed to
-any web server.
+## Como funciona
+Adicionar suporte web ao Flutter envolveu implementar a
+camada de desenho core do Flutter sobre APIs padrão do navegador, além
+de compilar Dart para JavaScript, em vez do código de máquina ARM que
+é usado para aplicações mobile. Usando uma combinação de DOM, Canvas
+e WebAssembly, Flutter pode fornecer uma experiência de usuário portável, de alta qualidade
+e performática através de navegadores modernos.
+Implementamos a camada de desenho core completamente em Dart
+e usamos o compilador JavaScript otimizado do Dart para compilar o
+core e framework do Flutter junto com sua aplicação
+em um único arquivo fonte minificado que pode ser implantado em
+qualquer servidor web.
 
 <img src="/assets/images/docs/arch-overview/web-arch.png"
 alt="Flutter architecture for web"
 width="100%">
 
-## What types of apps can I build?
-While you can do a lot on the web,
-Flutter's web support is most valuable in the
-following scenarios:
+## Que tipos de apps eu posso construir?
+Embora você possa fazer muito na web,
+o suporte web do Flutter é mais valioso nos
+seguintes cenários:
 
 **Single Page Application**
-: Flutter's web support enables complex standalone web apps that are rich with
-  graphics and interactive content to reach end users on a wide variety of
-  devices.
+: O suporte web do Flutter habilita apps web complexos e independentes que são ricos em
+  gráficos e conteúdo interativo para alcançar usuários finais em uma ampla variedade de
+  dispositivos.
 
-**Existing mobile applications**
-: Web support for Flutter provides a browser-based delivery model for existing
-  Flutter mobile apps.
+**Aplicações mobile existentes**
+: Suporte web para Flutter fornece um modelo de entrega baseado em navegador para
+  apps Flutter mobile existentes.
 
-Not every HTML scenario is ideally suited for Flutter at this time.
-For example, text-rich, flow-based, static content such as blog articles
-benefit from the document-centric model that the web is built around,
-rather than the app-centric services that a UI framework like Flutter
-can deliver. However, you _can_ use Flutter to embed interactive
-experiences into these websites.
+Nem todo cenário HTML é idealmente adequado para Flutter neste momento.
+Por exemplo, conteúdo rico em texto, baseado em fluxo e estático, como artigos de blog,
+se beneficia do modelo centrado em documento que a web é construída,
+em vez dos serviços centrados em app que um framework de UI como Flutter
+pode entregar. No entanto, você _pode_ usar Flutter para incorporar
+experiências interativas nesses websites.
 
-## Get started
+## Comece
 
-The following resources can help you get started:
+Os seguintes recursos podem ajudá-lo a começar:
 
-* To add web support to an existing app, or to create a
-  new app that includes web support, see
+* Para adicionar suporte web a um app existente, ou para criar um
+  novo app que inclua suporte web, veja
   [Building a web application with Flutter][].
-* To learn about Flutter's different web renderers (CanvasKit and Skwasm), see
+* Para aprender sobre os diferentes web renderers do Flutter (CanvasKit e Skwasm), veja
   [Web renderers][]
-* To learn how to create a responsive Flutter
-  app, see [Creating responsive apps][].
-* To view commonly asked questions and answers, see the
+* Para aprender como criar um app Flutter
+  responsivo, veja [Creating responsive apps][].
+* Para ver perguntas frequentes e respostas, veja o
   [web FAQ][].
-* To see code examples,
-  check out the [web samples for Flutter][].
-* To see a Flutter web app demo, check out the [Wonderous app][].
-* To learn about deploying a web app, see
+* Para ver exemplos de código,
+  confira os [web samples for Flutter][].
+* Para ver uma demo de app Flutter web, confira o [app Wonderous][Wonderous app].
+* Para aprender sobre implantar um app web, veja
   [Preparing an app for web release][].
-* [File an issue][] on the main Flutter repo.
-* You can chat and ask web-related questions on the
-  **#help** channel on [Discord][].
+* [Registre um issue][File an issue] no repositório principal do Flutter.
+* Você pode conversar e fazer perguntas relacionadas à web no
+  canal **#help** no [Discord][].
 
 [Building a web application with Flutter]: /platform-integration/web/building
 [Creating responsive apps]: /ui/adaptive-responsive

@@ -1,83 +1,84 @@
 ---
-title: Using Actions and Shortcuts
-description: How to use Actions and Shortcuts in your Flutter app.
+title: Usando Actions e Shortcuts
+description: Como usar Actions e Shortcuts no seu app Flutter.
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
+ia-translate: true
 ---
 
-This page describes how to bind physical keyboard events to actions in the user
-interface. For instance, to define keyboard shortcuts in your application, this
-page is for you.
+Esta página descreve como vincular eventos físicos do teclado a ações na interface
+do usuário. Por exemplo, para definir atalhos de teclado em sua aplicação, esta
+página é para você.
 
-## Overview
+## Visão geral
 
-For a GUI application to do anything, it has to have actions: users want to tell
-the application to _do_ something. Actions are often simple functions that
-directly perform the action (such as set a value or save a file). In a larger
-application, however, things are more complex: the code for invoking the action,
-and the code for the action itself might need to be in different places.
-Shortcuts (key bindings) might need definition at a level that knows nothing
-about the actions they invoke.
+Para uma aplicação GUI fazer qualquer coisa, ela precisa ter ações: os usuários querem dizer
+à aplicação para _fazer_ algo. Ações geralmente são funções simples que
+executam diretamente a ação (como definir um valor ou salvar um arquivo). Em uma aplicação maior,
+no entanto, as coisas são mais complexas: o código para invocar a ação,
+e o código para a ação em si podem precisar estar em lugares diferentes.
+Atalhos (vinculações de teclas) podem precisar de definição em um nível que não sabe nada
+sobre as ações que invocam.
 
-That's where Flutter's actions and shortcuts system comes in. It allows
-developers to define actions that fulfill intents bound to them. In this
-context, an intent is a generic action that the user wishes to perform, and an
-[`Intent`][] class instance represents these user intents in Flutter. An
-`Intent` can be general purpose, fulfilled by different actions in different
-contexts. An [`Action`][] can be a simple callback (as in the case of
-the [`CallbackAction`][]) or something more complex that integrates with entire
-undo/redo architectures (for example) or other logic.
+É aí que entra o sistema de actions e shortcuts do Flutter. Ele permite
+que desenvolvedores definam ações que cumprem intents vinculados a elas. Neste
+contexto, um intent é uma ação genérica que o usuário deseja realizar, e uma
+instância da classe [`Intent`][] representa essas intenções do usuário no Flutter. Um
+`Intent` pode ser de propósito geral, cumprido por diferentes ações em diferentes
+contextos. Uma [`Action`][] pode ser um callback simples (como no caso do
+[`CallbackAction`][]) ou algo mais complexo que se integra com arquiteturas inteiras
+de desfazer/refazer (por exemplo) ou outra lógica.
 
-![Using Shortcuts Diagram][]{:width="100%"}
+![Diagrama de uso de Shortcuts][Using Shortcuts Diagram]{:width="100%"}
 
-[`Shortcuts`][] are key bindings that activate by pressing a key or combination
-of keys. The key combinations reside in a table with their bound intent. When
-the `Shortcuts` widget invokes them, it sends their matching intent to the
-actions subsystem for fulfillment.
+[`Shortcuts`][] são vinculações de teclas que são ativadas ao pressionar uma tecla ou combinação
+de teclas. As combinações de teclas residem em uma tabela com seus intents vinculados. Quando
+o widget `Shortcuts` os invoca, ele envia seu intent correspondente ao
+subsistema de actions para cumprimento.
 
-To illustrate the concepts in actions and shortcuts, this article creates a
-simple app that allows a user to select and copy text in a text field using both
-buttons and shortcuts.
+Para ilustrar os conceitos em actions e shortcuts, este artigo cria um
+app simples que permite ao usuário selecionar e copiar texto em um campo de texto usando tanto
+botões quanto atalhos.
 
-### Why separate Actions from Intents?
+### Por que separar Actions de Intents?
 
-You might wonder: why not just map a key combination directly to an action?  Why
-have intents at all? This is because it is useful to have a separation of
-concerns between where the key mapping definitions are (often at a high level),
-and where the action definitions are (often at a low level), and because it is
-important to be able to have a single key combination map to an intended
-operation in an app, and have it adapt automatically to whichever action
-fulfills that intended operation for the focused context.
+Você pode se perguntar: por que não mapear uma combinação de teclas diretamente para uma ação? Por que
+ter intents? Isso é porque é útil ter uma separação de
+preocupações entre onde as definições de mapeamento de teclas estão (geralmente em um nível alto),
+e onde as definições de ação estão (geralmente em um nível baixo), e porque é
+importante ser capaz de ter uma única combinação de teclas mapeada para uma operação pretendida
+em um app, e fazer com que ela se adapte automaticamente a qualquer ação
+que cumpra essa operação pretendida para o contexto focado.
 
-For instance, Flutter has an `ActivateIntent` widget that maps each type of
-control to its corresponding version of an `ActivateAction` (and that executes
-the code that activates the control). This code often needs fairly private
-access to do its work. If the extra layer of indirection that `Intent`s provide
-didn't exist, it would be necessary to elevate the definition of the actions to
-where the defining instance of the `Shortcuts` widget could see them, causing
-the shortcuts to have more knowledge than necessary about which action to
-invoke, and to have access to or provide state that it wouldn't necessarily have
-or need otherwise. This allows your code to separate the two concerns to be more
-independent.
+Por exemplo, o Flutter tem um widget `ActivateIntent` que mapeia cada tipo de
+controle para sua versão correspondente de um `ActivateAction` (e que executa
+o código que ativa o controle). Este código geralmente precisa de acesso bastante privado
+para fazer seu trabalho. Se a camada extra de indireção que os `Intent`s fornecem
+não existisse, seria necessário elevar a definição das ações para
+onde a instância definidora do widget `Shortcuts` pudesse vê-las, causando
+os shortcuts a ter mais conhecimento do que o necessário sobre qual ação
+invocar, e a ter acesso ou fornecer estado que não teria necessariamente
+ou precisaria de outra forma. Isso permite que seu código separe as duas preocupações para serem mais
+independentes.
 
-Intents configure an action so that the same action can serve multiple uses. An
-example of this is `DirectionalFocusIntent`, which takes a direction to move
-the focus in, allowing the `DirectionalFocusAction` to know which direction to
-move the focus. Just be careful: don't pass state in the `Intent` that applies
-to all  invocations of an `Action`: that kind of state should be passed to the
-constructor of the `Action` itself, to keep the `Intent` from needing to know
-too much.
+Intents configuram uma ação para que a mesma ação possa servir múltiplos usos. Um
+exemplo disso é `DirectionalFocusIntent`, que recebe uma direção para mover
+o foco, permitindo que o `DirectionalFocusAction` saiba em qual direção
+mover o foco. Apenas tenha cuidado: não passe estado no `Intent` que se aplica
+a todas as invocações de uma `Action`: esse tipo de estado deve ser passado ao
+construtor da própria `Action`, para evitar que o `Intent` precise saber
+demais.
 
-### Why not use callbacks?
+### Por que não usar callbacks?
 
-You also might wonder: why not just use a callback instead of an `Action`
-object? The main reason is that it's useful for actions to decide whether they
-are enabled by implementing `isEnabled`. Also, it is often helpful if the key
-bindings, and the implementation of those bindings, are in different places.
+Você também pode se perguntar: por que não usar apenas um callback em vez de um objeto `Action`?
+A principal razão é que é útil para as ações decidirem se estão
+habilitadas implementando `isEnabled`. Além disso, muitas vezes é útil se as
+vinculações de teclas e a implementação dessas vinculações estiverem em lugares diferentes.
 
-If all you need are callbacks without the flexibility of `Actions` and
-`Shortcuts`, you can use the [`CallbackShortcuts`][] widget:
+Se tudo o que você precisa são callbacks sem a flexibilidade de `Actions` e
+`Shortcuts`, você pode usar o widget [`CallbackShortcuts`][]:
 
 <?code-excerpt "ui/actions_and_shortcuts/lib/samples.dart (callback-shortcuts)"?>
 ```dart
@@ -108,18 +109,17 @@ Widget build(BuildContext context) {
 
 ## Shortcuts
 
-As you'll see below, actions are useful on their own, but the most common use
-case involves binding them to a keyboard shortcut. This is what the `Shortcuts`
-widget is for.
+Como você verá abaixo, actions são úteis por si só, mas o caso de uso mais comum
+envolve vinculá-las a um atalho de teclado. É para isso que serve o widget `Shortcuts`.
 
-It is inserted into the widget hierarchy to define key combinations that
-represent the user's intent when that key combination is pressed. To convert
-that intended purpose for the key combination into a concrete action, the
-`Actions` widget used to map the `Intent` to an `Action`. For instance, you can
-define a `SelectAllIntent`, and bind it to your own `SelectAllAction` or to your
-`CanvasSelectAllAction`, and from that one key binding, the system invokes
-either one, depending on which part of your application has focus. Let's see how
-the key binding part works:
+Ele é inserido na hierarquia de widgets para definir combinações de teclas que
+representam a intenção do usuário quando essa combinação de teclas é pressionada. Para converter
+essa finalidade pretendida para a combinação de teclas em uma ação concreta, o
+widget `Actions` é usado para mapear o `Intent` a uma `Action`. Por exemplo, você pode
+definir um `SelectAllIntent` e vinculá-lo ao seu próprio `SelectAllAction` ou ao seu
+`CanvasSelectAllAction`, e a partir dessa única vinculação de tecla, o sistema invoca
+qualquer um deles, dependendo de qual parte da sua aplicação tem foco. Vamos ver como
+funciona a parte de vinculação de teclas:
 
 <?code-excerpt "ui/actions_and_shortcuts/lib/samples.dart (shortcuts)"?>
 ```dart
@@ -149,37 +149,37 @@ Widget build(BuildContext context) {
 }
 ```
 
-The map given to a `Shortcuts` widget maps a `LogicalKeySet` (or a
-`ShortcutActivator`, see note below) to an `Intent` instance. The logical key
-set defines a set of one or more keys, and the intent indicates the intended
-purpose of the keypress. The `Shortcuts` widget looks up key presses in the map,
-to find an `Intent` instance, which it gives to the action's `invoke()` method.
+O mapa dado a um widget `Shortcuts` mapeia um `LogicalKeySet` (ou um
+`ShortcutActivator`, veja nota abaixo) para uma instância de `Intent`. O conjunto de teclas lógicas
+define um conjunto de uma ou mais teclas, e o intent indica o propósito pretendido
+do pressionamento de tecla. O widget `Shortcuts` procura pressionamentos de teclas no mapa,
+para encontrar uma instância de `Intent`, que ele passa para o método `invoke()` da action.
 
 :::note
-`ShortcutActivator` is a replacement for `LogicalKeySet`.
-It allows for more flexible and correct activation of shortcuts.
-`LogicalKeySet` is a `ShortcutActivator`, of course, but
-there is also `SingleActivator`, which takes a single key and the
-optional modifiers to be pressed before the key.
-Then there is `CharacterActivator`, which activates a shortcut based on the
-character produced by a key sequence, instead of the logical keys themselves.
-`ShortcutActivator` is also meant to be subclassed to allow for
-custom ways of activating shortcuts from key events.
+`ShortcutActivator` é uma substituição para `LogicalKeySet`.
+Ele permite ativação mais flexível e correta de atalhos.
+`LogicalKeySet` é um `ShortcutActivator`, é claro, mas
+também existe `SingleActivator`, que recebe uma única tecla e os
+modificadores opcionais a serem pressionados antes da tecla.
+Depois há `CharacterActivator`, que ativa um atalho baseado no
+caractere produzido por uma sequência de teclas, em vez das teclas lógicas em si.
+`ShortcutActivator` também é destinado a ser subclasseado para permitir
+formas personalizadas de ativar atalhos a partir de eventos de teclas.
 :::
 
-### The ShortcutManager
+### O ShortcutManager
 
-The shortcut manager, a longer-lived object than the `Shortcuts` widget, passes
-on key events when it receives them. It contains the logic for deciding how to
-handle the keys, the logic for walking up the tree to find other shortcut
-mappings, and maintains a map of key combinations to intents.
+O gerenciador de atalhos, um objeto de vida mais longa que o widget `Shortcuts`, passa
+eventos de teclas quando os recebe. Ele contém a lógica para decidir como
+lidar com as teclas, a lógica para percorrer a árvore para encontrar outros mapeamentos
+de atalhos, e mantém um mapa de combinações de teclas para intents.
 
-While the default behavior of the `ShortcutManager` is usually desirable, the
-`Shortcuts` widget takes a `ShortcutManager` that you can subclass to customize
-its functionality.
+Embora o comportamento padrão do `ShortcutManager` seja geralmente desejável, o
+widget `Shortcuts` aceita um `ShortcutManager` que você pode subclassear para personalizar
+sua funcionalidade.
 
-For example, if you wanted to log each key that a `Shortcuts` widget handled,
-you could make a `LoggingShortcutManager`:
+Por exemplo, se você quiser registrar cada tecla que um widget `Shortcuts` processou,
+você poderia fazer um `LoggingShortcutManager`:
 
 <?code-excerpt "ui/actions_and_shortcuts/lib/samples.dart (logging-shortcut-manager)"?>
 ```dart
@@ -195,21 +195,21 @@ class LoggingShortcutManager extends ShortcutManager {
 }
 ```
 
-Now, every time the `Shortcuts` widget handles a shortcut, it prints out the key
-event and relevant context.
+Agora, toda vez que o widget `Shortcuts` processar um atalho, ele imprime o evento de tecla
+e o contexto relevante.
 
 ## Actions
 
-`Actions` allow for the definition of operations that the application can
-perform by invoking them with an `Intent`. Actions can be enabled or disabled,
-and receive the intent instance that invoked them as an argument to allow
-configuration by the intent.
+`Actions` permitem a definição de operações que a aplicação pode
+realizar invocando-as com um `Intent`. Actions podem ser habilitadas ou desabilitadas,
+e recebem a instância de intent que as invocou como argumento para permitir
+configuração pelo intent.
 
-### Defining actions
+### Definindo actions
 
-Actions, in their simplest form, are just subclasses of `Action<Intent>` with an
-`invoke()` method. Here's a simple action that simply invokes a function on the
-provided model:
+Actions, em sua forma mais simples, são apenas subclasses de `Action<Intent>` com um
+método `invoke()`. Aqui está uma action simples que simplesmente invoca uma função no
+modelo fornecido:
 
 <?code-excerpt "ui/actions_and_shortcuts/lib/samples.dart (select-all-action)"?>
 ```dart
@@ -223,15 +223,15 @@ class SelectAllAction extends Action<SelectAllIntent> {
 }
 ```
 
-Or, if it's too much of a bother to create a new class, use a `CallbackAction`:
+Ou, se for muito trabalhoso criar uma nova classe, use um `CallbackAction`:
 
 <?code-excerpt "ui/actions_and_shortcuts/lib/samples.dart (callback-action)"?>
 ```dart
 CallbackAction(onInvoke: (intent) => model.selectAll());
 ```
 
-Once you have an action, you add it to your application using the [`Actions`][]
-widget, which takes a map of `Intent` types to `Action`s:
+Uma vez que você tem uma action, você a adiciona à sua aplicação usando o widget [`Actions`][],
+que recebe um mapa de tipos de `Intent` para `Action`s:
 
 <?code-excerpt "ui/actions_and_shortcuts/lib/samples.dart (select-all-usage)"?>
 ```dart
@@ -246,20 +246,20 @@ Widget build(BuildContext context) {
 }
 ```
 
-The `Shortcuts` widget uses the `Focus` widget's context and `Actions.invoke` to
-find which action to invoke. If the `Shortcuts` widget doesn't find a matching
-intent type in the first `Actions` widget encountered, it considers the next
-ancestor `Actions` widget, and so on, until it reaches the root of the widget
-tree, or finds a matching intent type and invokes the corresponding action.
+O widget `Shortcuts` usa o contexto do widget `Focus` e `Actions.invoke` para
+encontrar qual action invocar. Se o widget `Shortcuts` não encontrar um tipo de intent correspondente
+no primeiro widget `Actions` encontrado, ele considera o próximo
+widget ancestral `Actions`, e assim por diante, até atingir a raiz da árvore de
+widgets, ou encontrar um tipo de intent correspondente e invocar a action correspondente.
 
-### Invoking Actions
+### Invocando Actions
 
-The actions system has several ways to invoke actions.  By far the most common
-way is through the use of a `Shortcuts` widget covered in the previous section,
-but there are other ways to interrogate the actions subsystem and invoke an
-action. It's possible to invoke actions that are not bound to keys.
+O sistema de actions tem várias maneiras de invocar actions. De longe, a maneira mais comum
+é através do uso de um widget `Shortcuts` coberto na seção anterior,
+mas existem outras maneiras de interrogar o subsistema de actions e invocar uma
+action. É possível invocar actions que não estão vinculadas a teclas.
 
-For instance, to find an action associated with an intent, you can use:
+Por exemplo, para encontrar uma action associada a um intent, você pode usar:
 
 <?code-excerpt "ui/actions_and_shortcuts/lib/samples.dart (maybe-find)"?>
 ```dart
@@ -267,13 +267,13 @@ Action<SelectAllIntent>? selectAll =
     Actions.maybeFind<SelectAllIntent>(context);
 ```
 
-This returns an `Action` associated with the `SelectAllIntent` type if one is
-available in the given `context`.  If one isn't available, it returns null. If
-an associated `Action` should always be available, then use `find` instead of
-`maybeFind`, which throws an exception when it doesn't find a matching `Intent`
-type.
+Isso retorna uma `Action` associada ao tipo `SelectAllIntent` se uma estiver
+disponível no `context` dado. Se não estiver disponível, retorna null. Se uma
+`Action` associada sempre deve estar disponível, então use `find` em vez de
+`maybeFind`, que lança uma exceção quando não encontra um tipo de `Intent`
+correspondente.
 
-To invoke the action (if it exists), call:
+Para invocar a action (se ela existir), chame:
 
 <?code-excerpt "ui/actions_and_shortcuts/lib/samples.dart (invoke-action)"?>
 ```dart
@@ -284,7 +284,7 @@ if (selectAll != null) {
 }
 ```
 
-Combine that into one call with the following:
+Combine isso em uma única chamada com o seguinte:
 
 <?code-excerpt "ui/actions_and_shortcuts/lib/samples.dart (maybe-invoke)"?>
 ```dart
@@ -292,14 +292,14 @@ Object? result =
     Actions.maybeInvoke<SelectAllIntent>(context, const SelectAllIntent());
 ```
 
-Sometimes you want to invoke an action as a
-result of pressing a button or another control.
-You can do this with the `Actions.handler` function.
-If the intent has a mapping to an enabled action,
-the `Actions.handler` function creates a handler closure.
-However, if it doesn't have a mapping, it returns `null`.
-This allows the button to be disabled if
-there is no enabled action that matches in the context.
+Às vezes você quer invocar uma action como
+resultado de pressionar um botão ou outro controle.
+Você pode fazer isso com a função `Actions.handler`.
+Se o intent tiver um mapeamento para uma action habilitada,
+a função `Actions.handler` cria um closure de handler.
+No entanto, se não tiver um mapeamento, ela retorna `null`.
+Isso permite que o botão seja desabilitado se
+não houver action habilitada que corresponda no contexto.
 
 <?code-excerpt "ui/actions_and_shortcuts/lib/samples.dart (handler)"?>
 ```dart
@@ -322,47 +322,47 @@ Widget build(BuildContext context) {
 }
 ```
 
-The `Actions` widget only invokes actions when `isEnabled(Intent intent)`
-returns true, allowing the action to decide if the dispatcher should consider it
-for invocation.  If the action isn't enabled, then the `Actions` widget gives
-another enabled action higher in the widget hierarchy (if it exists) a chance to
-execute.
+O widget `Actions` só invoca actions quando `isEnabled(Intent intent)`
+retorna true, permitindo que a action decida se o dispatcher deve considerá-la
+para invocação. Se a action não estiver habilitada, então o widget `Actions` dá
+a outra action habilitada mais acima na hierarquia de widgets (se existir) uma chance de
+executar.
 
-The previous example uses a `Builder` because `Actions.handler` and
-`Actions.invoke` (for example) only finds actions in the provided `context`, and
-if the example passes the `context` given to the `build` function, the framework
-starts looking _above_ the current widget.  Using a `Builder` allows the
-framework to find the actions defined in the same `build` function.
+O exemplo anterior usa um `Builder` porque `Actions.handler` e
+`Actions.invoke` (por exemplo) só encontram actions no `context` fornecido, e
+se o exemplo passar o `context` dado à função `build`, o framework
+começa a procurar _acima_ do widget atual. Usar um `Builder` permite que o
+framework encontre as actions definidas na mesma função `build`.
 
-You can invoke an action without needing a `BuildContext`, but since the
-`Actions` widget requires a context to find an enabled action to invoke, you
-need to provide one, either by creating your own `Action` instance, or by
-finding one in an appropriate context with `Actions.find`.
+Você pode invocar uma action sem precisar de um `BuildContext`, mas como o
+widget `Actions` requer um contexto para encontrar uma action habilitada para invocar, você
+precisa fornecer um, seja criando sua própria instância de `Action`, ou
+encontrando uma em um contexto apropriado com `Actions.find`.
 
-To invoke the action, pass the action to the `invoke` method on an
-`ActionDispatcher`, either one you created yourself, or one retrieved from an
-existing `Actions` widget using the `Actions.of(context)` method. Check whether
-the action is enabled before calling `invoke`. Of course, you can also just call
-`invoke` on the action itself, passing an `Intent`, but then you opt out of any
-services that an action dispatcher might provide (like logging, undo/redo, and
-so on).
+Para invocar a action, passe a action para o método `invoke` em um
+`ActionDispatcher`, seja um que você criou, ou um recuperado de um
+widget `Actions` existente usando o método `Actions.of(context)`. Verifique se
+a action está habilitada antes de chamar `invoke`. É claro, você também pode simplesmente chamar
+`invoke` na própria action, passando um `Intent`, mas então você opta por não usar quaisquer
+serviços que um dispatcher de action possa fornecer (como registro, desfazer/refazer e
+assim por diante).
 
-### Action dispatchers
+### Dispatchers de action
 
-Most of the time, you just want to invoke an action, have it do its thing, and
-forget about it. Sometimes, however, you might want to log the executed actions.
+Na maioria das vezes, você só quer invocar uma action, fazê-la fazer sua coisa e
+esquecer dela. Às vezes, no entanto, você pode querer registrar as actions executadas.
 
-This is where replacing the default `ActionDispatcher` with a custom dispatcher
-comes in.  You pass your `ActionDispatcher` to the `Actions` widget, and it
-invokes actions from any `Actions` widgets below that one that doesn't set a
-dispatcher of its own.
+É aqui que substituir o `ActionDispatcher` padrão por um dispatcher personalizado
+entra. Você passa seu `ActionDispatcher` ao widget `Actions`, e ele
+invoca actions de quaisquer widgets `Actions` abaixo daquele que não define um
+dispatcher próprio.
 
-The first thing `Actions` does when invoking an action is look up the
-`ActionDispatcher` and pass the action to it for invocation. If there is none,
-it creates a default `ActionDispatcher` that simply invokes the action.
+A primeira coisa que `Actions` faz ao invocar uma action é procurar o
+`ActionDispatcher` e passar a action para ele para invocação. Se não houver nenhum,
+ele cria um `ActionDispatcher` padrão que simplesmente invoca a action.
 
-If you want a log of all the actions invoked, however, you can create your own
-`LoggingActionDispatcher` to do the job:
+Se você quiser um log de todas as actions invocadas, no entanto, você pode criar seu próprio
+`LoggingActionDispatcher` para fazer o trabalho:
 
 <?code-excerpt "ui/actions_and_shortcuts/lib/samples.dart (logging-action-dispatcher)"?>
 ```dart
@@ -391,7 +391,7 @@ class LoggingActionDispatcher extends ActionDispatcher {
 }
 ```
 
-Then you pass that to your top-level `Actions` widget:
+Então você passa isso para seu widget `Actions` de nível superior:
 
 <?code-excerpt "ui/actions_and_shortcuts/lib/samples.dart (logging-action-dispatcher-usage)"?>
 ```dart
@@ -415,23 +415,23 @@ Widget build(BuildContext context) {
 }
 ```
 
-This logs every action as it executes, like so:
+Isso registra cada action conforme ela é executada, assim:
 
 ```console
 flutter: Action invoked: SelectAllAction#906fc(SelectAllIntent#a98e3) from Builder(dependencies: _[ActionsMarker])
 ```
 
-## Putting it together
+## Juntando tudo
 
-The combination of `Actions` and `Shortcuts` is powerful: you can define generic
-intents that map to specific actions at the widget level. Here's a simple app
-that illustrates the concepts described above. The app creates a text field that
-also has "select all" and "copy to clipboard" buttons next to it. The buttons
-invoke actions to accomplish their work. All the invoked actions and
-shortcuts are logged.
+A combinação de `Actions` e `Shortcuts` é poderosa: você pode definir intents
+genéricos que mapeiam para actions específicas no nível do widget. Aqui está um app simples
+que ilustra os conceitos descritos acima. O app cria um campo de texto que
+também tem botões "select all" e "copy to clipboard" ao lado dele. Os botões
+invocam actions para realizar seu trabalho. Todas as actions e
+shortcuts invocados são registrados.
 
 <?code-excerpt "ui/actions_and_shortcuts/lib/copyable_text.dart"?>
-```dartpad title="Copyable text DartPad hands-on example" run="true"
+```dartpad title="Exemplo prático do DartPad de texto copiável" run="true"
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

@@ -4,6 +4,7 @@ short-title: Layout
 description: Aprenda como funciona o mecanismo de layout do Flutter e como construir um layout.
 diff2html: true
 show_translate: true
+ia-translate: true
 ---
 
 {% assign api = site.api | append: '/flutter' -%}

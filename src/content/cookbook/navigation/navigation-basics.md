@@ -1,45 +1,46 @@
 ---
-title: Navigate to a new screen and back
-description: How to navigate between routes.
+title: Navegar para uma nova tela e voltar
+description: Como navegar entre rotas.
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
+ia-translate: true
 ---
 
 <?code-excerpt path-base="cookbook/navigation/navigation_basics"?>
 
-Most apps contain several screens for displaying different types of
-information.
-For example, an app might have a screen that displays products.
-When the user taps the image of a product, a new screen displays
-details about the product.
+A maioria dos apps contém várias telas para exibir diferentes tipos de
+informação.
+Por exemplo, um app pode ter uma tela que exibe produtos.
+Quando o usuário toca na imagem de um produto, uma nova tela exibe
+detalhes sobre o produto.
 
-:::note Terminology
-In Flutter, _screens_ and _pages_ are called _routes_.
-The remainder of this recipe refers to routes.
+:::note Terminologia
+No Flutter, _screens_ e _pages_ são chamadas de _routes_.
+O restante desta receita se refere a routes.
 :::
 
-In Android, a route is equivalent to an `Activity`.
-In iOS, a route is equivalent to a `ViewController`.
-In Flutter, a route is just a widget.
+No Android, uma route é equivalente a uma `Activity`.
+No iOS, uma route é equivalente a um `ViewController`.
+No Flutter, uma route é apenas um widget.
 
-This recipe uses the [`Navigator`][] to navigate to a new route.
+Esta receita usa o [`Navigator`][] para navegar para uma nova route.
 
-The next few sections show how to navigate between two routes,
-using these steps:
+As próximas seções mostram como navegar entre duas routes,
+usando os seguintes passos:
 
-  1. Create two routes.
-  2. Navigate to the second route using Navigator.push().
-  3. Return to the first route using Navigator.pop().
+  1. Criar duas routes.
+  2. Navegar para a segunda route usando Navigator.push().
+  3. Retornar à primeira route usando Navigator.pop().
 
-## 1. Create two routes
+## 1. Criar duas routes
 
-First, create two routes to work with. Since this is a basic example,
-each route contains only a single button. Tapping the button on the
-first route navigates to the second route. Tapping the button on the
-second route returns to the first route.
+Primeiro, crie duas routes para trabalhar. Como este é um exemplo básico,
+cada route contém apenas um único botão. Tocar no botão da
+primeira route navega para a segunda route. Tocar no botão da
+segunda route retorna à primeira route.
 
-First, set up the visual structure:
+Primeiro, configure a estrutura visual:
 
 <?code-excerpt "lib/main_step1.dart (first-second-routes)"?>
 ```dart
@@ -86,17 +87,17 @@ class SecondRoute extends StatelessWidget {
 }
 ```
 
-## 2. Navigate to the second route using Navigator.push()
+## 2. Navegar para a segunda route usando Navigator.push()
 
-To switch to a new route, use the [`Navigator.push()`][]
-method. The `push()` method adds a `Route` to the stack of routes managed by
-the `Navigator`. Where does the `Route` come from?
-You can create your own, or use a [`MaterialPageRoute`][],
-which is useful because it transitions to the
-new route using a platform-specific animation.
+Para mudar para uma nova route, use o método [`Navigator.push()`][].
+O método `push()` adiciona uma `Route` à pilha de routes gerenciada pelo
+`Navigator`. De onde vem a `Route`?
+Você pode criar sua própria, ou usar um [`MaterialPageRoute`][],
+que é útil porque faz a transição para a
+nova route usando uma animação específica da plataforma.
 
-In the `build()` method of the `FirstRoute` widget,
-update the `onPressed()` callback:
+No método `build()` do widget `FirstRoute`,
+atualize o callback `onPressed()`:
 
 <?code-excerpt "lib/main_step2.dart (first-route-on-pressed)" replace="/^\},$/}/g"?>
 ```dart
@@ -109,15 +110,15 @@ onPressed: () {
 }
 ```
 
-## 3. Return to the first route using Navigator.pop()
+## 3. Retornar à primeira route usando Navigator.pop()
 
-How do you close the second route and return to the first?
-By using the [`Navigator.pop()`][] method.
-The `pop()` method removes the current `Route` from the stack of
-routes managed by the `Navigator`.
+Como você fecha a segunda route e retorna à primeira?
+Usando o método [`Navigator.pop()`][].
+O método `pop()` remove a `Route` atual da pilha de
+routes gerenciada pelo `Navigator`.
 
-To implement a return to the original route, update the `onPressed()`
-callback in the `SecondRoute` widget:
+Para implementar um retorno à route original, atualize o callback `onPressed()`
+no widget `SecondRoute`:
 
 <?code-excerpt "lib/main_step2.dart (second-route-on-pressed)" replace="/^\},$/}/g"?>
 ```dart
@@ -127,7 +128,7 @@ onPressed: () {
 }
 ```
 
-## Interactive example
+## Exemplo interativo
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter navigation hands-on example in DartPad" run="true"
@@ -190,31 +191,31 @@ class SecondRoute extends StatelessWidget {
   <img src="/assets/images/docs/cookbook/navigation-basics.gif" alt="Navigation Basics Demo" class="site-mobile-screenshot" />
 </noscript>
 
-## Navigation with CupertinoPageRoute
+## Navegação com CupertinoPageRoute
 
-In the previous example you learned how to navigate between screens
-using the [`MaterialPageRoute`][] from [Material Components][].
-However, in Flutter you are not limited to Material design language,
-instead, you also have access to [Cupertino][] (iOS-style) widgets.
+No exemplo anterior você aprendeu como navegar entre telas
+usando o [`MaterialPageRoute`][] de [Material Components][].
+No entanto, no Flutter você não está limitado à linguagem de design Material,
+ao invés disso, você também tem acesso a widgets [Cupertino][] (estilo iOS).
 
-Implementing navigation with Cupertino widgets follows the same steps
-as when using [`MaterialPageRoute`][], 
-but instead you use [`CupertinoPageRoute`][]
-which provides an iOS-style transition animation.
+Implementar navegação com widgets Cupertino segue os mesmos passos
+que ao usar [`MaterialPageRoute`][],
+mas ao invés disso você usa [`CupertinoPageRoute`][]
+que fornece uma animação de transição no estilo iOS.
 
-In the following example, these widgets have been replaced:
+No exemplo a seguir, esses widgets foram substituídos:
 
-- [`MaterialApp`][] replaced by [`CupertinoApp`].
-- [`Scaffold`][] replaced by [`CupertinoPageScaffold`][].
-- [`ElevatedButton`][] replaced by [`CupertinoButton`][].
+- [`MaterialApp`][] substituído por [`CupertinoApp`].
+- [`Scaffold`][] substituído por [`CupertinoPageScaffold`][].
+- [`ElevatedButton`][] substituído por [`CupertinoButton`][].
 
-This way, the example follows the current iOS design language.
+Desta forma, o exemplo segue a linguagem de design atual do iOS.
 
 :::secondary
-You don't need to replace all Material widgets with Cupertino versions
-to use [`CupertinoPageRoute`][]
-since Flutter allows you to mix and match Material and Cupertino widgets
-depending on your needs.
+Você não precisa substituir todos os widgets Material por versões Cupertino
+para usar [`CupertinoPageRoute`][]
+já que o Flutter permite que você misture widgets Material e Cupertino
+dependendo das suas necessidades.
 :::
 
 <?code-excerpt "lib/main_cupertino.dart"?>
@@ -278,25 +279,25 @@ class SecondRoute extends StatelessWidget {
   <img src="/assets/images/docs/cookbook/navigation-basics-cupertino.gif" alt="Navigation Basics Cupertino Demo" class="site-mobile-screenshot" />
 </noscript>
 
-## Additional navigation methods
+## Métodos adicionais de navegação
 
-The recipe in this topic shows you one way to navigate to a new screen and
-back to the previous scene, using the [`push`] and [`pop`] methods in the
-[`Navigator`] class, but there are several other `Navigator` static methods that
-you can use. Here are a few of them:
+A receita neste tópico mostra uma maneira de navegar para uma nova tela e
+voltar para a cena anterior, usando os métodos [`push`] e [`pop`] na
+classe [`Navigator`], mas existem vários outros métodos estáticos do `Navigator` que
+você pode usar. Aqui estão alguns deles:
 
-*   [`pushAndRemoveUntil`]: Adds a navigation route to the stack and then removes
-    the most recent routes from the stack until a condition is met.
-*   [`pushReplacement`]: Replaces the current route on the top of the
-    stack with a new one.
-*   [`replace`]: Replace a route on the stack with another route.
-*   [`replaceRouteBelow`]: Replace the route below a specific route on the stack.
-*   [`popUntil`]: Removes the most recent routes that were added to the stack of
-    navigation routes until a condition is met.
-*   [`removeRoute`]: Remove a specific route from the stack.
-*   [`removeRouteBelow`]: Remove the route below a specific route on the
-    stack.
-*   [`restorablePush`]: Restore a route that was removed from the stack.
+*   [`pushAndRemoveUntil`]: Adiciona uma rota de navegação à pilha e então remove
+    as rotas mais recentes da pilha até que uma condição seja atendida.
+*   [`pushReplacement`]: Substitui a rota atual no topo da
+    pilha por uma nova.
+*   [`replace`]: Substitui uma rota na pilha por outra rota.
+*   [`replaceRouteBelow`]: Substitui a rota abaixo de uma rota específica na pilha.
+*   [`popUntil`]: Remove as rotas mais recentes que foram adicionadas à pilha de
+    rotas de navegação até que uma condição seja atendida.
+*   [`removeRoute`]: Remove uma rota específica da pilha.
+*   [`removeRouteBelow`]: Remove a rota abaixo de uma rota específica da
+    pilha.
+*   [`restorablePush`]: Restaura uma rota que foi removida da pilha.
 
 [Cupertino]: {{site.docs}}/ui/widgets/cupertino
 [Material Components]: {{site.docs}}/ui/widgets/material
@@ -314,7 +315,7 @@ you can use. Here are a few of them:
 [`popUntil`]: {{site.api}}/flutter/widgets/Navigator/popUntil.html
 [`push`]: {{site.api}}/flutter/widgets/Navigator/push.html
 [`pushAndRemoveUntil`]: {{site.api}}/flutter/widgets/Navigator/pushAndRemoveUntil.html
-[`pushReplacement`]: {{site.api}}/flutter/widgets/Navigator/pushReplacement.html 
+[`pushReplacement`]: {{site.api}}/flutter/widgets/Navigator/pushReplacement.html
 [`removeRoute`]: {{site.api}}/flutter/widgets/Navigator/removeRoute.html
 [`removeRouteBelow`]: {{site.api}}/flutter/widgets/Navigator/removeRouteBelow.html
 [`replace`]: {{site.api}}/flutter/widgets/Navigator/replace.html

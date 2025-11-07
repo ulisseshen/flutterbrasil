@@ -1,31 +1,32 @@
 ---
-title: Return data from a screen
-description: How to return data from a new screen.
+title: Retornar dados de uma tela
+description: Como retornar dados de uma nova tela.
 js:
   - defer: true
     url: /assets/js/inject_dartpad.js
+ia-translate: true
 ---
 
 <?code-excerpt path-base="cookbook/navigation/returning_data/"?>
 
-In some cases, you might want to return data from a new screen.
-For example, say you push a new screen that presents two options to a user.
-When the user taps an option, you want to inform the first screen
-of the user's selection so that it can act on that information.
+Em alguns casos, você pode querer retornar dados de uma nova tela.
+Por exemplo, digamos que você empurra uma nova tela que apresenta duas opções para um usuário.
+Quando o usuário toca em uma opção, você quer informar a primeira tela
+da seleção do usuário para que ela possa agir sobre essa informação.
 
-You can do this with the [`Navigator.pop()`][]
-method using the following steps:
+Você pode fazer isso com o método [`Navigator.pop()`][]
+usando os seguintes passos:
 
-  1. Define the home screen
-  2. Add a button that launches the selection screen
-  3. Show the selection screen with two buttons
-  4. When a button is tapped, close the selection screen
-  5. Show a snackbar on the home screen with the selection
+  1. Definir a tela inicial
+  2. Adicionar um botão que lança a tela de seleção
+  3. Mostrar a tela de seleção com dois botões
+  4. Quando um botão é tocado, fechar a tela de seleção
+  5. Mostrar um snackbar na tela inicial com a seleção
 
-## 1. Define the home screen
+## 1. Definir a tela inicial
 
-The home screen displays a button. When tapped,
-it launches the selection screen.
+A tela inicial exibe um botão. Quando tocado,
+ela lança a tela de seleção.
 
 <?code-excerpt "lib/main_step2.dart (HomeScreen)"?>
 ```dart
@@ -47,12 +48,12 @@ class HomeScreen extends StatelessWidget {
 }
 ```
 
-## 2. Add a button that launches the selection screen
+## 2. Adicionar um botão que lança a tela de seleção
 
-Now, create the SelectionButton, which does the following:
+Agora, crie o SelectionButton, que faz o seguinte:
 
-  * Launches the SelectionScreen when it's tapped.
-  * Waits for the SelectionScreen to return a result.
+  * Lança o SelectionScreen quando é tocado.
+  * Aguarda o SelectionScreen retornar um resultado.
 
 <?code-excerpt "lib/main_step2.dart (SelectionButton)"?>
 ```dart
@@ -86,15 +87,15 @@ class _SelectionButtonState extends State<SelectionButton> {
 }
 ```
 
-## 3. Show the selection screen with two buttons
+## 3. Mostrar a tela de seleção com dois botões
 
-Now, build a selection screen that contains two buttons.
-When a user taps a button,
-that app closes the selection screen and lets the home
-screen know which button was tapped.
+Agora, construa uma tela de seleção que contém dois botões.
+Quando um usuário toca em um botão,
+o app fecha a tela de seleção e permite que a tela inicial
+saiba qual botão foi tocado.
 
-This step defines the UI.
-The next step adds code to return data.
+Este passo define a UI.
+O próximo passo adiciona código para retornar dados.
 
 <?code-excerpt "lib/main_step2.dart (SelectionScreen)"?>
 ```dart
@@ -137,15 +138,15 @@ class SelectionScreen extends StatelessWidget {
 }
 ```
 
-## 4. When a button is tapped, close the selection screen
+## 4. Quando um botão é tocado, fechar a tela de seleção
 
-Now, update the `onPressed()` callback for both of the buttons.
-To return data to the first screen,
-use the [`Navigator.pop()`][] method,
-which accepts an optional second argument called `result`.
-Any result is returned to the `Future` in the SelectionButton.
+Agora, atualize o callback `onPressed()` para ambos os botões.
+Para retornar dados para a primeira tela,
+use o método [`Navigator.pop()`][],
+que aceita um segundo argumento opcional chamado `result`.
+Qualquer resultado é retornado para o `Future` no SelectionButton.
 
-### Yep button
+### Botão Yep
 
 <?code-excerpt "lib/main.dart (Yep)" replace="/^child: //g;/^\),$/)/g"?>
 ```dart
@@ -158,7 +159,7 @@ ElevatedButton(
 )
 ```
 
-### Nope button
+### Botão Nope
 
 <?code-excerpt "lib/main.dart (Nope)" replace="/^child: //g;/^\),$/)/g"?>
 ```dart
@@ -171,13 +172,13 @@ ElevatedButton(
 )
 ```
 
-## 5. Show a snackbar on the home screen with the selection
+## 5. Mostrar um snackbar na tela inicial com a seleção
 
-Now that you're launching a selection screen and awaiting the result,
-you'll want to do something with the information that's returned.
+Agora que você está lançando uma tela de seleção e aguardando o resultado,
+você vai querer fazer algo com a informação que é retornada.
 
-In this case, show a snackbar displaying the result by using the
-`_navigateAndDisplaySelection()` method in `SelectionButton`:
+Neste caso, mostre um snackbar exibindo o resultado usando o
+método `_navigateAndDisplaySelection()` em `SelectionButton`:
 
 <?code-excerpt "lib/main.dart (navigateAndDisplay)"?>
 ```dart
@@ -203,7 +204,7 @@ Future<void> _navigateAndDisplaySelection(BuildContext context) async {
 }
 ```
 
-## Interactive example
+## Exemplo interativo
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter Return from Data hands-on example in DartPad" run="true"

@@ -1,1 +1,1 @@
-![Small blue magnifying class with the Flutter logo inside it that opens the Widget inspector](/assets/images/docs/testing/debugging/vscode-ui/icons/inspector.png)
+![Pequena lupa azul com o logo do Flutter dentro dela que abre o Widget inspector](/assets/images/docs/testing/debugging/vscode-ui/icons/inspector.png)

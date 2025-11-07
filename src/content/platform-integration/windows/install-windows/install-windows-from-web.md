@@ -1,19 +1,20 @@
 ---
-title: Add Windows as a target platform for Flutter from Web start
-description: Configure your system to develop Flutter apps on Windows desktop.
-short-title: Starting from Web
+ia-translate: true
+title: Adicionar Windows como plataforma de destino para Flutter partindo da Web
+description: Configure seu sistema para desenvolver apps Flutter em Windows desktop.
+short-title: Partindo da Web
 ---
 
-To add Windows desktop as a Flutter app target, follow this procedure.
+Para adicionar Windows desktop como destino de app Flutter, siga este procedimento.
 
-## Install and configure Visual Studio
+## Instalar e configurar Visual Studio
 
-1. Allocate a minimum of 26 GB of storage for Visual Studio.
-   Consider allocating 10 GB of storage for an optimal configuration.
-1. Install [Visual Studio 2022][] to debug and compile native C++ Windows code.
-   Make sure to install the **Desktop development with C++** workload.
-   This enables building Windows app including all of its default components.
-   **Visual Studio** is an IDE separate from **[Visual Studio _Code_][]**.
+1. Aloque um mínimo de 26 GB de armazenamento para Visual Studio.
+   Considere alocar 10 GB de armazenamento para uma configuração ideal.
+1. Instale o [Visual Studio 2022][] para debugar e compilar código nativo C++ Windows.
+   Certifique-se de instalar a workload **Desktop development with C++**.
+   Isso habilita a construção de apps Windows incluindo todos os seus componentes padrão.
+   **Visual Studio** é uma IDE separada do **[Visual Studio _Code_][]**.
 
 {% include docs/install/flutter-doctor.md target='Windows' devos='Windows' config='WindowsDesktopWeb' %}
 

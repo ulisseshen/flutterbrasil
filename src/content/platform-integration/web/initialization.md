@@ -1,20 +1,21 @@
 ---
-title: Flutter web app initialization
-description: Customize how Flutter apps are initialized on the web.
+ia-translate: true
+title: Inicialização de apps Flutter web
+description: Personalize como apps Flutter são inicializados na web.
 ---
 
-This page details the initialization process for Flutter web apps and
-how it can be customized.
+Esta página detalha o processo de inicialização para apps Flutter web e
+como ele pode ser personalizado.
 
 ## Bootstrapping
 
-The `flutter build web` command produces
-a script called `flutter_bootstrap.js` in
-the build output directory (`build/web`).
-This file contains the JavaScript code needed to initialize and
-run your Flutter app.
-You can use this script by placing an async-script tag for it in
-your `index.html` file in the `web` subdirectory of your Flutter app:
+O comando `flutter build web` produz
+um script chamado `flutter_bootstrap.js` no
+diretório de saída da build (`build/web`).
+Este arquivo contém o código JavaScript necessário para inicializar e
+executar seu app Flutter.
+Você pode usar este script colocando uma tag async-script para ele em
+seu arquivo `index.html` no subdiretório `web` do seu app Flutter:
 
 ```html highlightLines=3
 <html>
@@ -24,10 +25,10 @@ your `index.html` file in the `web` subdirectory of your Flutter app:
 </html>
 ```
 
-Alternatively, you can inline the entire contents of
-the `flutter_bootstrap.js` file by inserting the
-template token `{% raw %}{{flutter_bootstrap_js}}{% endraw %}` in
-your `index.html` file:
+Alternativamente, você pode incorporar todo o conteúdo do
+arquivo `flutter_bootstrap.js` inserindo o
+token de template `{% raw %}{{flutter_bootstrap_js}}{% endraw %}` no
+seu arquivo `index.html`:
 
 ```html highlightLines=4
 <html>
@@ -39,60 +40,60 @@ your `index.html` file:
 </html>
 ```
 
-The `{% raw %}{{flutter_bootstrap_js}}{% endraw %}` token is
-replaced with the contents of the `flutter_bootstrap.js` file when
-the `index.html` file is copied to the
-output directory (`build/web`) during the build step.
+O token `{% raw %}{{flutter_bootstrap_js}}{% endraw %}` é
+substituído pelo conteúdo do arquivo `flutter_bootstrap.js` quando
+o arquivo `index.html` é copiado para o
+diretório de saída (`build/web`) durante a etapa de build.
 
 <a id="customizing-initialization" aria-hidden="true"></a>
 
-## Customize initialization
+## Personalize a inicialização
 
-By default, `flutter build web` generates a `flutter_bootstrap.js` file that
-does a simple initialization of your Flutter app.
-However, in some scenarios, you might have a reason to
-customize this initialization process, such as:
+Por padrão, `flutter build web` gera um arquivo `flutter_bootstrap.js` que
+faz uma inicialização simples do seu app Flutter.
+No entanto, em alguns cenários, você pode ter uma razão para
+personalizar este processo de inicialização, como:
 
-* Setting a custom Flutter configuration for your app.
-* Changing the settings for the Flutter service worker.
-* Writing custom JavaScript code to
-  run at different stages of the startup process.
+* Configurar uma configuração Flutter customizada para seu app.
+* Alterar as configurações do service worker do Flutter.
+* Escrever código JavaScript customizado para
+  executar em diferentes estágios do processo de inicialização.
 
-To write your own custom bootstrapping logic instead of
-using the default script produced by the build step, you can
-place a `flutter_bootstrap.js` file in the `web` subdirectory of your project,
-which is copied over and used instead of
-the default script produced by the build.
-This file is also templated, and you can insert several special tokens that
-the build step substitutes at build time when copying
-the `flutter_bootstrap.js` file to the output directory.
-The following table lists the tokens that the build step will
-substitute in either the `flutter_bootstrap.js` or `index.html` files:
+Para escrever sua própria lógica de bootstrapping customizada em vez de
+usar o script padrão produzido pela etapa de build, você pode
+colocar um arquivo `flutter_bootstrap.js` no subdiretório `web` do seu projeto,
+que é copiado e usado em vez do
+script padrão produzido pela build.
+Este arquivo também é transformado em template, e você pode inserir vários tokens especiais que
+a etapa de build substitui no momento da build ao copiar
+o arquivo `flutter_bootstrap.js` para o diretório de saída.
+A tabela a seguir lista os tokens que a etapa de build irá
+substituir nos arquivos `flutter_bootstrap.js` ou `index.html`:
 
-| Token | Replaced with |
+| Token | Substituído por |
 |---|---|
-| `{% raw %}{{flutter_js}}{% endraw %}` | The JavaScript code that makes the `FlutterLoader` object available in the `_flutter.loader` global variable. (See the `_flutter.loader.load() API` section below for more details.) |
-| `{% raw %}{{flutter_build_config}}{% endraw %}` | A JavaScript statement that sets metadata produced by the build process which gives the `FlutterLoader` information needed to properly bootstrap your application. |
-| `{% raw %}{{flutter_service_worker_version}}{% endraw %}` | A unique number representing the build version of the service worker, which can be passed as part of the service worker configuration (see the "Service Worker Settings" table below). |
-| `{% raw %}{{flutter_bootstrap_js}}{% endraw %}` | As mentioned above, this inlines the contents of the `flutter_bootstrap.js` file directly into the `index.html` file. Note that this token can only be used in the `index.html` and not the `flutter_bootstrap.js` file itself. |
+| `{% raw %}{{flutter_js}}{% endraw %}` | O código JavaScript que torna o objeto `FlutterLoader` disponível na variável global `_flutter.loader`. (Veja a seção `_flutter.loader.load() API` abaixo para mais detalhes.) |
+| `{% raw %}{{flutter_build_config}}{% endraw %}` | Uma declaração JavaScript que define metadados produzidos pelo processo de build que dá ao `FlutterLoader` informações necessárias para inicializar adequadamente sua aplicação. |
+| `{% raw %}{{flutter_service_worker_version}}{% endraw %}` | Um número único representando a versão de build do service worker, que pode ser passado como parte da configuração do service worker (veja a tabela "Service Worker Settings" abaixo). |
+| `{% raw %}{{flutter_bootstrap_js}}{% endraw %}` | Como mencionado acima, isso incorpora o conteúdo do arquivo `flutter_bootstrap.js` diretamente no arquivo `index.html`. Note que este token só pode ser usado no `index.html` e não no próprio arquivo `flutter_bootstrap.js`. |
 
 {:.table}
 
 <a id="write-a-custom-flutter_bootstrap-js" aria-hidden="true"></a>
 
-## Write a custom bootstrap script {:#custom-bootstrap-js}
+## Escreva um script bootstrap customizado {:#custom-bootstrap-js}
 
-Any custom `flutter_bootstrap.js` script needs to have three components in
-order to successfully start your Flutter app:
+Qualquer script `flutter_bootstrap.js` customizado precisa ter três componentes para
+iniciar com sucesso seu app Flutter:
 
-* A `{% raw %}{{flutter_js}}{% endraw %}` token,
-  to make `_flutter.loader` available.
-* A `{% raw %}{{flutter_build_config}}{% endraw %}` token,
-  which provides information about the build to the
-  `FlutterLoader` needed to start your app.
-* A call to `_flutter.loader.load()`, which actually starts the app.
+* Um token `{% raw %}{{flutter_js}}{% endraw %}`,
+  para tornar `_flutter.loader` disponível.
+* Um token `{% raw %}{{flutter_build_config}}{% endraw %}`,
+  que fornece informações sobre a build para o
+  `FlutterLoader` necessárias para iniciar seu app.
+* Uma chamada para `_flutter.loader.load()`, que realmente inicia o app.
 
-The most basic `flutter_bootstrap.js` file would look something like this:
+O arquivo `flutter_bootstrap.js` mais básico seria algo assim:
 
 ```js
 {% raw %}{{flutter_js}}{% endraw %}
@@ -101,41 +102,41 @@ The most basic `flutter_bootstrap.js` file would look something like this:
 _flutter.loader.load();
 ```
 
-## Customize the Flutter Loader
+## Personalize o Flutter Loader
 
-The `_flutter.loader.load()` JavaScript API can be invoked with optional
-arguments to customize initialization behavior:
+A API JavaScript `_flutter.loader.load()` pode ser invocada com
+argumentos opcionais para personalizar o comportamento de inicialização:
 
-| Name                    | Description                                                                                                                   | JS&nbsp;type |
-|-------------------------|-------------------------------------------------------------------------------------------------------------------------------|--------------|
-| `config`                | The Flutter configuration of your app.                                                                                        | `Object`     |
-| `onEntrypointLoaded`    | The function called when the engine is ready to be initialized. Receives an `engineInitializer` object as its only parameter. | `Function`   |
+| Nome                    | Descrição                                                                                                                   | Tipo&nbsp;JS |
+|-------------------------|-----------------------------------------------------------------------------------------------------------------------------|--------------|
+| `config`                | A configuração Flutter do seu app.                                                                                        | `Object`     |
+| `onEntrypointLoaded`    | A função chamada quando o engine está pronto para ser inicializado. Recebe um objeto `engineInitializer` como seu único parâmetro. | `Function`   |
 
 {:.table}
 
-The `config` argument is an object that can have the following optional fields:
+O argumento `config` é um objeto que pode ter os seguintes campos opcionais:
 
-| Name | Description | Dart&nbsp;type |
+| Nome | Descrição | Tipo&nbsp;Dart |
 |---|---|---|
-|`assetBase`| The base URL of the `assets` directory of the app. Add this when Flutter loads from a different domain or subdirectory than the actual web app. You might need this when you embed Flutter web into another app, or when you deploy its assets to a CDN. |`String`|
-|`canvasKitBaseUrl`| The base URL from where `canvaskit.wasm` is downloaded. |`String`|
-|`canvasKitVariant`| The CanvasKit variant to download. Your options cover:<br><br>1. `auto`: Downloads the optimal variant for the browser. The option defaults to this value.<br>2. `full`: Downloads the full variant of CanvasKit that works in all browsers.<br>3. `chromium`: Downloads a smaller variant of CanvasKit that uses Chromium compatible APIs. **_Warning_**: Don't use the `chromium` option unless you plan on only using Chromium-based browsers. |`String`|
-|`canvasKitForceCpuOnly`| When `true`, forces CPU-only rendering in CanvasKit (the engine won't use WebGL). |`bool`|
-|`canvasKitMaximumSurfaces`| The maximum number of overlay surfaces that the CanvasKit renderer can use. |`double`|
-|`debugShowSemanticNodes`| If `true`, Flutter visibly renders the semantics tree onscreen (for debugging).  |`bool`|
-|`entryPointBaseUrl`| The base URL of your Flutter app's entrypoint. Defaults to "/".  |`String`|
-|`hostElement`| HTML Element into which Flutter renders the app. When not set, Flutter web takes over the whole page. |`HtmlElement`|
-|`renderer`| Specifies the [web renderer][web-renderers] for the current Flutter application, either `"canvaskit"` or `"skwasm"`. |`String`|
+|`assetBase`| A URL base do diretório `assets` do app. Adicione isso quando Flutter carrega de um domínio ou subdiretório diferente do web app real. Você pode precisar disso ao incorporar Flutter web em outro app, ou quando fazer deploy de seus assets para um CDN. |`String`|
+|`canvasKitBaseUrl`| A URL base de onde `canvaskit.wasm` é baixado. |`String`|
+|`canvasKitVariant`| A variante CanvasKit a ser baixada. Suas opções cobrem:<br><br>1. `auto`: Baixa a variante ideal para o browser. A opção usa este valor como padrão.<br>2. `full`: Baixa a variante completa do CanvasKit que funciona em todos os browsers.<br>3. `chromium`: Baixa uma variante menor do CanvasKit que usa APIs compatíveis com Chromium. **_Aviso_**: Não use a opção `chromium` a menos que você planeje usar apenas browsers baseados em Chromium. |`String`|
+|`canvasKitForceCpuOnly`| Quando `true`, força renderização somente por CPU no CanvasKit (o engine não usará WebGL). |`bool`|
+|`canvasKitMaximumSurfaces`| O número máximo de superfícies de overlay que o renderizador CanvasKit pode usar. |`double`|
+|`debugShowSemanticNodes`| Se `true`, Flutter renderiza visivelmente a árvore de semântica na tela (para debugging).  |`bool`|
+|`entryPointBaseUrl`| A URL base do entrypoint do seu app Flutter. O padrão é "/".  |`String`|
+|`hostElement`| Elemento HTML no qual Flutter renderiza o app. Quando não definido, Flutter web assume a página inteira. |`HtmlElement`|
+|`renderer`| Especifica o [renderizador web][web-renderers] para a aplicação Flutter atual, seja `"canvaskit"` ou `"skwasm"`. |`String`|
 
 {:.table}
 
 [web-renderers]: /platform-integration/web/renderers
 
-## Example: Customizing Flutter configuration based on URL query parameters
+## Exemplo: Personalizando a configuração Flutter com base em parâmetros de query da URL
 
-The following example shows a custom `flutter_bootstrap.js` that allows
-the user to select a renderer by providing a `renderer` query parameter,
-e.g. `?renderer=skwasm`, in the URL of their website:
+O exemplo a seguir mostra um `flutter_bootstrap.js` customizado que permite
+ao usuário selecionar um renderizador fornecendo um parâmetro de query `renderer`,
+por exemplo `?renderer=skwasm`, na URL do seu site:
 
 ```js
 {% raw %}{{flutter_js}}{% endraw %}
@@ -149,49 +150,49 @@ _flutter.loader.load({
 });
 ```
 
-This script evaluates the `URLSearchParams` of the page to determine whether
-the user passed a `renderer` query parameter and then
-changes the user configuration of the Flutter app.
+Este script avalia os `URLSearchParams` da página para determinar se
+o usuário passou um parâmetro de query `renderer` e então
+altera a configuração do usuário do app Flutter.
 
-## The onEntrypointLoaded callback
+## O callback onEntrypointLoaded
 
-You can also pass an `onEntrypointLoaded` callback into the `load` API in order
-to perform custom logic at different parts of the initialization process.
-The initialization process is split into the following stages:
+Você também pode passar um callback `onEntrypointLoaded` na API `load` para
+executar lógica customizada em diferentes partes do processo de inicialização.
+O processo de inicialização é dividido nos seguintes estágios:
 
-**Loading the entrypoint script**
-: The `load` function calls the `onEntrypointLoaded` callback once the
-  Service Worker is initialized, and the `main.dart.js` entrypoint has
-  been downloaded and run by the browser.
-  Flutter also calls `onEntrypointLoaded` on
-  every hot restart during development.
+**Carregando o script de entrypoint**
+: A função `load` chama o callback `onEntrypointLoaded` uma vez que o
+  Service Worker é inicializado, e o entrypoint `main.dart.js` foi
+  baixado e executado pelo browser.
+  Flutter também chama `onEntrypointLoaded` em
+  cada hot restart durante o desenvolvimento.
 
-**Initializing the Flutter engine**
-: The `onEntrypointLoaded` callback receives an
-  **engine initializer** object as its only parameter.
-  Use the engine initializer `initializeEngine()` function to
-  set the run-time configuration, like `multiViewEnabled: true`,
-  and start the Flutter web engine.
+**Inicializando o engine Flutter**
+: O callback `onEntrypointLoaded` recebe um
+  objeto **engine initializer** como seu único parâmetro.
+  Use a função `initializeEngine()` do engine initializer para
+  definir a configuração de tempo de execução, como `multiViewEnabled: true`,
+  e iniciar o engine Flutter web.
 
-**Running the app**
-: The `initializeEngine()` function returns a [`Promise`][js-promise]
-  that resolves with an **app runner** object. The app runner has a
-  single method, `runApp()`, that runs the Flutter app.
+**Executando o app**
+: A função `initializeEngine()` retorna uma [`Promise`][js-promise]
+  que resolve com um objeto **app runner**. O app runner tem um
+  único método, `runApp()`, que executa o app Flutter.
 
-**Adding views to (or removing views from) an app**
-: The `runApp()` method returns a **flutter app** object.
-  In multi-view mode, the `addView` and `removeView`
-  methods can be used to manage app views from the host app.
-  To learn more, check out [Embedded mode][embedded-mode].
+**Adicionando views a (ou removendo views de) um app**
+: O método `runApp()` retorna um objeto **flutter app**.
+  No modo multi-view, os métodos `addView` e `removeView`
+  podem ser usados para gerenciar views de app a partir do app host.
+  Para aprender mais, confira [Modo incorporado][embedded-mode].
 
 [embedded-mode]: {{site.docs}}/platform-integration/web/embedding-flutter-web/#embedded-mode
 [js-promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 
-## Example: Display a progress indicator
+## Exemplo: Exibir um indicador de progresso
 
-To give the user of your application feedback
-during the initialization process,
-use the hooks provided for each stage to update the DOM:
+Para dar feedback ao usuário de sua aplicação
+durante o processo de inicialização,
+use os hooks fornecidos para cada estágio para atualizar o DOM:
 
 ```js
 {% raw %}{{flutter_js}}{% endraw %}

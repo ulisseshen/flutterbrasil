@@ -1,18 +1,19 @@
 ---
-title: Add Android as a target platform for Flutter from Web on macOS start
-description: Configure your Mac to develop Flutter mobile apps for Android.
-short-title: Starting from Web on macOS
+ia-translate: true
+title: Adicionar Android como plataforma de destino para Flutter a partir do início Web no macOS
+description: Configure seu Mac para desenvolver apps mobile Flutter para Android.
+short-title: Partindo do Web no macOS
 ---
 
-To add Android as a Flutter app target for macOS, follow this procedure.
+Para adicionar Android como destino de app Flutter para macOS, siga este procedimento.
 
-## Install Android Studio
+## Instalar Android Studio
 
-1. Allocate a minimum of 7.5 GB of storage for Android Studio.
-   Consider allocating 10 GB of storage for an optimal configuration.
-1. Install [Android Studio][] {{site.appmin.android_studio}} or later
-   to debug and compile Java or Kotlin code for Android.
-   Flutter requires the full version of Android Studio.
+1. Aloque um mínimo de 7.5 GB de armazenamento para o Android Studio.
+   Considere alocar 10 GB de armazenamento para uma configuração ideal.
+1. Instale o [Android Studio][] {{site.appmin.android_studio}} ou posterior
+   para depurar e compilar código Java ou Kotlin para Android.
+   O Flutter requer a versão completa do Android Studio.
 
 {% include docs/install/compiler/android.md target='macos' devos='macOS' attempt="first" -%}
 

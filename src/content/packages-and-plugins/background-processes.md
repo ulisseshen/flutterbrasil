@@ -1,30 +1,30 @@
 ---
+ia-translate: true
 title: Background processes
-description: Where to find more information on implementing background processes in Flutter.
+description: Onde encontrar mais informações sobre implementação de background processes no Flutter.
 ---
 
-Have you ever wanted to execute Dart code in the
-background—even if your app wasn't the currently active app?
-Perhaps you wanted to implement a process that watches the time,
-or that catches camera movement.
-In Flutter, you can execute Dart code in the background.
+Você já quis executar código Dart em background—mesmo se seu app não fosse o app atualmente ativo?
+Talvez você quisesse implementar um processo que observa o tempo,
+ou que captura movimentos da câmera.
+No Flutter, você pode executar código Dart em background.
 
-The mechanism for this feature involves setting up an isolate.
-_Isolates_ are Dart's model for multithreading,
-though an isolate differs from a conventional thread
-in that it doesn't share memory with the main program.
-You'll set up your isolate for background execution using
-callbacks and a callback dispatcher.
+O mecanismo para este recurso envolve configurar um isolate.
+_Isolates_ são o modelo de multithreading do Dart,
+embora um isolate difira de uma thread convencional
+por não compartilhar memória com o programa principal.
+Você configurará seu isolate para execução em background usando
+callbacks e um callback dispatcher.
 
-Additionally, the [WorkManager] plugin enables persistent background processing 
-that keeps tasks scheduled through app restarts and system reboots. 
+Adicionalmente, o plugin [WorkManager][] habilita processamento persistente em background
+que mantém tarefas agendadas através de reinicializações do app e do sistema.
 
-For more information and a geofencing example that uses background
-execution of Dart code, see the Medium article by Ben Konyi,
+Para mais informações e um exemplo de geofencing que usa execução
+em background de código Dart, veja o artigo no Medium por Ben Konyi,
 [Executing Dart in the Background with Flutter Plugins and
-Geofencing][background-processes].  At the end of this article,
-you'll find links to example code, and relevant documentation for Dart,
-iOS, and Android.
- 
+Geofencing][background-processes]. No final deste artigo,
+você encontrará links para código de exemplo e documentação relevante para Dart,
+iOS e Android.
+
 [background-processes]: {{site.flutter-medium}}/executing-dart-in-the-background-with-flutter-plugins-and-geofencing-2b3e40a1a124
-[WorkManager]: {{site.pub-pkg}}/workmanager 
+[WorkManager]: {{site.pub-pkg}}/workmanager

@@ -1,13 +1,14 @@
 ---
-title: Add iOS as a target platform from macOS start
-description: Configure your system to develop Flutter mobile apps on iOS.
-short-title: Starting from macOS
+ia-translate: true
+title: Adicionar iOS como plataforma de destino partindo do macOS
+description: Configure seu sistema para desenvolver apps Flutter mobile no iOS.
+short-title: Partindo do macOS
 ---
 
-To add iOS as a Flutter app target for macOS, follow this procedure.
+Para adicionar iOS como destino de app Flutter no macOS, siga este procedimento.
 
-This procedure presumes you installed [Xcode][] {{site.appnow.xcode}}
-when your Flutter getting started path began with macOS.
+Este procedimento pressupõe que você instalou o [Xcode][] {{site.appnow.xcode}}
+quando seu caminho de início com Flutter começou com macOS.
 
 {% include docs/install/compiler/xcode.md target='iOS' devos='macOS' attempt="next" -%}
 

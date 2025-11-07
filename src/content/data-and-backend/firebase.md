@@ -1,45 +1,46 @@
 ---
+ia-translate: true
 title: Firebase
-description: How to use Firebase and Firestore with Flutter.
+description: Como usar Firebase e Firestore com Flutter.
 ---
 
-Firebase is a Backend-as-a-Service (BaaS) app development platform
-that provides hosted backend services such as a realtime database,
-cloud storage, authentication, crash reporting, machine learning,
-remote configuration, and hosting for your static files.
+Firebase é uma plataforma de desenvolvimento de apps Backend-as-a-Service (BaaS)
+que fornece serviços de backend hospedados, como banco de dados em tempo real,
+armazenamento em nuvem, autenticação, relatório de erros, machine learning,
+configuração remota e hospedagem para seus arquivos estáticos.
 
-## Flutter and Firebase resources
+## Recursos de Flutter e Firebase
 
-Firebase supports Flutter. To learn more,
-check out the following resources.
+Firebase oferece suporte ao Flutter. Para saber mais,
+confira os seguintes recursos.
 
-### Documentation
+### Documentação
 
-* [Getting started with Firebase and Flutter][started]
-* [Firebase plugins][]
+* [Introdução ao Firebase e Flutter][started]
+* [Plugins Firebase][Firebase plugins]
 
-### Blog Posts
+### Postagens do Blog
 
-[Use Firebase to host your Flutter app on the web][article]
+[Use Firebase para hospedar seu app Flutter na web][article]
 
-### Tutorials
+### Tutoriais
 
-Get to know Firebase for Flutter
+Conheça o Firebase para Flutter
 * [tutorial][codelab1]
-* [video workshop][workshop]
+* [workshop em vídeo][workshop]
 
-## Flutter and Firebase community resources
+## Recursos da comunidade Flutter e Firebase
 
-The Flutter community created the following useful resources.
+A comunidade Flutter criou os seguintes recursos úteis.
 
-### Blog Posts
+### Postagens do Blog
 
-[Building chat app with Flutter and Firebase][chat app]
+[Construindo um app de chat com Flutter e Firebase][chat app]
 
-### Videos
+### Vídeos
 
-* [Using Firestore as a backend to your Flutter app][video]
-* [Live Coding Firebase Authentication with Flutter][video2]
+* [Usando Firestore como backend para seu app Flutter][video]
+* [Live Coding Firebase Authentication com Flutter][video2]
 * [Flutter & Firebase Auth 01][video3]
 * [Flutter: Firebase Tutorial Part 1 - Auth and Sign in][video4]
 

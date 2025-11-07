@@ -1,63 +1,64 @@
 ---
+ia-translate: true
 title: Web renderers
-description: Choosing build modes and renderers for a Flutter web app.
+description: Escolhendo modos de build e renderers para um app Flutter web.
 ---
 
-Flutter web offers two _build modes_, and two _renderers_.
-The two build modes are the **default** and **WebAssembly**,
-and the two renderers are **canvaskit** and **skwasm**.
+Flutter web oferece dois _modos de build_ e dois _renderers_.
+Os dois modos de build são o **default** e **WebAssembly**,
+e os dois renderers são **canvaskit** e **skwasm**.
 
-Flutter chooses the build mode when building the app,
-and determines which renderers are available at runtime.
+Flutter escolhe o modo de build ao construir o app,
+e determina quais renderers estão disponíveis em runtime.
 
-For a default build,
-Flutter chooses the `canvaskit` renderer at runtime.
-For a WebAssembly build,
-Flutter chooses the `skwasm` renderer at runtime,
-and falls back to `canvaskit` if the browser doesn't support `skwasm`.
+Para um build padrão,
+Flutter escolhe o renderer `canvaskit` em runtime.
+Para um build WebAssembly,
+Flutter escolhe o renderer `skwasm` em runtime,
+e faz fallback para `canvaskit` se o navegador não suportar `skwasm`.
 
-## Build modes
+## Modos de build
 
-### Default build mode
+### Modo de build padrão
 
-Flutter chooses the default mode when the
-`flutter run` or `flutter build web` commands are
-used without passing `--wasm`, or when passing `--no-wasm`.
+Flutter escolhe o modo padrão quando os
+comandos `flutter run` ou `flutter build web` são
+usados sem passar `--wasm`, ou ao passar `--no-wasm`.
 
-This build mode only uses the `canvaskit` renderer.
+Este modo de build usa apenas o renderer `canvaskit`.
 
-To run in a Chrome using the default build mode:
+Para executar no Chrome usando o modo de build padrão:
 
 ```console
 flutter run -d chrome
 ```
 
-To build your app for release using the default build mode:
+Para construir seu app para release usando o modo de build padrão:
 
 ```console
 flutter build web
 ```
 
-### WebAssembly build mode
+### Modo de build WebAssembly
 
-This mode is enabled by passing `--wasm` to `flutter run` and
-`flutter build web` commands.
+Este modo é habilitado passando `--wasm` para os comandos `flutter run` e
+`flutter build web`.
 
-This mode makes both `skwasm` and `canvaskit` available. `skwasm` requires
-[WasmGC][], which is not yet supported by all modern browsers.
-Therefore, at runtime Flutter chooses `skwasm` if garbage collection is
-supported, and falls back to `canvaskit` if not. This allows apps compiled in the
-WebAssembly mode to still run in all modern browsers.
+Este modo torna tanto `skwasm` quanto `canvaskit` disponíveis. `skwasm` requer
+[WasmGC][], que ainda não é suportado por todos os navegadores modernos.
+Portanto, em runtime Flutter escolhe `skwasm` se garbage collection é
+suportado, e faz fallback para `canvaskit` se não. Isso permite que apps compilados no
+modo WebAssembly ainda executem em todos os navegadores modernos.
 
-The `--wasm` flag is not supported by non-web platforms.
+A flag `--wasm` não é suportada por plataformas não-web.
 
-To run in Chrome using the WebAssembly mode:
+Para executar no Chrome usando o modo WebAssembly:
 
 ```console
 flutter run -d chrome --wasm
 ```
 
-To build your app for release using the WebAssembly mode:
+Para construir seu app para release usando o modo WebAssembly:
 
 ```console
 flutter build web --wasm
@@ -65,56 +66,56 @@ flutter build web --wasm
 
 ## Renderers
 
-Flutter has two renderers (`canvaskit` and `skwasm`)
-that re-implement the Flutter engine to run the browser. 
-The renderer converts UI primitives (stored as `Scene` objects) into
+Flutter tem dois renderers (`canvaskit` e `skwasm`)
+que reimplementam o engine Flutter para executar no navegador.
+O renderer converte primitivas de UI (armazenadas como objetos `Scene`) em
 pixels.
 
 ### canvaskit
 
-The `canvaskit` renderer is compatible with all modern browsers, and is the 
-renderer that is used in the _default_ build mode.
+O renderer `canvaskit` é compatível com todos os navegadores modernos, e é o
+renderer que é usado no modo de build _default_.
 
-It includes a copy of Skia compiled to WebAssembly, which adds
-about 1.5MB in download size.
+Ele inclui uma cópia do Skia compilada para WebAssembly, o que adiciona
+cerca de 1.5MB no tamanho de download.
 
 ### skwasm
 
-The `skwasm` renderer is a more compact version of Skia
-that is compiled to WebAssembly and supports rendering on a separate thread.
+O renderer `skwasm` é uma versão mais compacta do Skia
+que é compilada para WebAssembly e suporta renderização em uma thread separada.
 
-This renderer must be used with the _WebAssembly_ build mode,
-which compiles the Dart code to WebAssembly.
+Este renderer deve ser usado com o modo de build _WebAssembly_,
+que compila o código Dart para WebAssembly.
 
-To take advantage of multiple threads,
-the web server must meet the [SharedArrayBuffer security requirements][].
-In this mode,
-Flutter uses a dedicated [web worker][] to offload part of the rendering
-workload to a separate thread,
-taking advantage of multiple CPU cores.
-If the browser does not meet these requirements,
-the `skwasm` renderer runs in a single-threaded configuration.
+Para tirar vantagem de múltiplas threads,
+o servidor web deve atender aos [requisitos de segurança SharedArrayBuffer][SharedArrayBuffer security requirements].
+Neste modo,
+Flutter usa um [web worker][] dedicado para descarregar parte da carga de trabalho de renderização
+para uma thread separada,
+tirando vantagem de múltiplos núcleos de CPU.
+Se o navegador não atender a esses requisitos,
+o renderer `skwasm` executa em uma configuração single-threaded.
 
-This renderer includes a more compact version of Skia compiled to WebAssembly,
-adding about 1.1MB in download size.
+Este renderer inclui uma versão mais compacta do Skia compilada para WebAssembly,
+adicionando cerca de 1.1MB no tamanho de download.
 
-## Choosing a renderer at runtime
+## Escolhendo um renderer em runtime
 
-By default, when building in WebAssembly mode, Flutter will decide when to
-use `skwasm`, and when to fallback to `canvaskit`. This can be overridden by
-passing a configuration object to the loader, as follows:
+Por padrão, ao construir no modo WebAssembly, Flutter decidirá quando
+usar `skwasm`, e quando fazer fallback para `canvaskit`. Isso pode ser sobrescrito
+passando um objeto de configuração para o loader, da seguinte forma:
 
- 1. Build the app with the `--wasm` flag to make both `skwasm` and `canvaskit`
-    renderers available to the app.
- 1. Set up custom web app initialization as described in
+ 1. Construa o app com a flag `--wasm` para tornar tanto os renderers `skwasm` quanto `canvaskit`
+    disponíveis para o app.
+ 1. Configure a inicialização customizada do web app conforme descrito em
     [Write a custom `flutter_bootstrap.js`][custom-bootstrap].
- 1. Prepare a configuration object with the `renderer` property set to
-    `"canvaskit"` or `"skwasm"`.
- 1. Pass your prepared config object as the `config` property of
-    a new object to the `_flutter.loader.load` method that is
-    provided by the earlier injected code.
+ 1. Prepare um objeto de configuração com a propriedade `renderer` definida como
+    `"canvaskit"` ou `"skwasm"`.
+ 1. Passe seu objeto config preparado como a propriedade `config` de
+    um novo objeto para o método `_flutter.loader.load` que é
+    fornecido pelo código injetado anteriormente.
 
-Example:
+Exemplo:
 
 ```html highlightLines=9-14
 <body>
@@ -135,41 +136,41 @@ Example:
 </body>
 ```
 
-The web renderer can't be changed after calling the `load` method. Therefore,
-any decisions about which renderer to use, must be made prior to calling
+O web renderer não pode ser mudado após chamar o método `load`. Portanto,
+quaisquer decisões sobre qual renderer usar devem ser feitas antes de chamar
 `_flutter.loader.load`.
 
 [custom-bootstrap]: /platform-integration/web/initialization#custom-bootstrap-js
 [customizing-web-init]: /platform-integration/web/initialization
 
-## Choosing which build mode to use
+## Escolhendo qual modo de build usar
 
-To compile Dart to WebAssembly,
-your app and its plugins / packages must meet the following requirements:
+Para compilar Dart para WebAssembly,
+seu app e seus plugins / pacotes devem atender aos seguintes requisitos:
 
-- **Use new JS Interop** - 
-  The code must only use the new JS interop library `dart:js_interop`. Old-style
-  `dart:js`, `dart:js_util`, and `package:js` are no longer supported.
-- **Use new Web APIs** -
-  Code using Web APIs must use the new `package:web` instead of `dart:html`.
-- **Number compatibility** -
-  WebAssembly implements Dart's numeric types `int` and `double` exactly the
-  same as the Dart VM. In JavaScript these types are emulated using the JS
-  `Number` type. It is possible that your code accidentally or purposefully
-  relies on the JS behavior for numbers. If so, such code needs to be updated to
-  behave correctly with the Dart VM behavior.
+- **Usar novo JS Interop** -
+  O código deve usar apenas a nova biblioteca de interop JS `dart:js_interop`. O estilo antigo
+  `dart:js`, `dart:js_util` e `package:js` não são mais suportados.
+- **Usar novas Web APIs** -
+  Código usando Web APIs deve usar o novo `package:web` em vez de `dart:html`.
+- **Compatibilidade de números** -
+  WebAssembly implementa os tipos numéricos `int` e `double` do Dart exatamente da
+  mesma forma que a Dart VM. No JavaScript, esses tipos são emulados usando o
+  tipo `Number` do JS. É possível que seu código acidental ou propositalmente
+  dependa do comportamento JS para números. Se for o caso, tal código precisa ser atualizado para
+  se comportar corretamente com o comportamento da Dart VM.
 
-Use these tips to decide which mode to use:
+Use estas dicas para decidir qual modo usar:
 
-* **Package support** - Choose the default mode if your app relies on plugins and packages that do
-  not yet support WebAssembly.
+* **Suporte de pacotes** - Escolha o modo padrão se seu app depende de plugins e pacotes que
+  ainda não suportam WebAssembly.
 * **Performance** -
-  Choose the WebAssembly mode if your app's code and packages are compatible
-  with WebAssembly and app performance is important. `skwasm` has noticeably
-  better app start-up time and frame performance compared to `canvaskit`.
-  `skwasm` is particularly effective in multi-threaded mode, so consider
-  configuring the server such that it meets the
-  [SharedArrayBuffer security requirements][].
+  Escolha o modo WebAssembly se o código do seu app e pacotes são compatíveis
+  com WebAssembly e a performance do app é importante. `skwasm` tem visivelmente
+  melhor tempo de inicialização do app e performance de frame comparado ao `canvaskit`.
+  `skwasm` é particularmente efetivo no modo multi-threaded, então considere
+  configurar o servidor de forma que ele atenda aos
+  [requisitos de segurança SharedArrayBuffer][SharedArrayBuffer security requirements].
 
 [canvaskit]: https://skia.org/docs/user/modules/canvaskit/
 [file an issue]: {{site.repo.flutter}}/issues/new?title=[web]:+%3Cdescribe+issue+here%3E&labels=%E2%98%B8+platform-web&body=Describe+your+issue+and+include+the+command+you%27re+running,+flutter_web%20version,+browser+version

@@ -1,100 +1,101 @@
 ---
-title: Flutter performance profiling
-subtitle: Where to look when your Flutter app drops frames in the UI.
-description: Diagnosing UI performance issues in Flutter.
+ia-translate: true
+title: Criação de perfil de desempenho do Flutter
+subtitle: Onde procurar quando seu app Flutter perde frames na UI.
+description: Diagnosticando problemas de desempenho de UI no Flutter.
 ---
 
 {% render docs/performance.md %}
 
-:::secondary What you'll learn
-* Flutter aims to provide 60 frames per second (fps) performance,
-  or 120 fps performance on devices capable of 120Hz updates.
-* For 60fps, frames need to render approximately every 16ms.
-* Jank occurs when the UI doesn't render smoothly. For example,
-  every so often, a frame takes 10 times longer to render,
-  so it gets dropped, and the animation visibly jerks.
+:::secondary O que você aprenderá
+* Flutter visa fornecer desempenho de 60 frames por segundo (fps),
+  ou desempenho de 120 fps em dispositivos capazes de atualizações de 120Hz.
+* Para 60fps, frames precisam renderizar aproximadamente a cada 16ms.
+* Jank ocorre quando a UI não renderiza suavemente. Por exemplo,
+  de vez em quando, um frame leva 10 vezes mais tempo para renderizar,
+  então ele é descartado, e a animação visivelmente trava.
 :::
 
-It's been said that "a _fast_ app is great,
-but a _smooth_ app is even better."
-If your app isn't rendering smoothly,
-how do you fix it? Where do you begin?
-This guide shows you where to start,
-steps to take, and tools that can help.
+Foi dito que "um app _rápido_ é ótimo,
+mas um app _suave_ é ainda melhor."
+Se seu app não está renderizando suavemente,
+como você conserta isso? Por onde você começa?
+Este guia mostra onde começar,
+passos a seguir, e ferramentas que podem ajudar.
 
 :::note
-* An app's performance is determined by more than one measure.
-  Performance sometimes refers to raw speed, but also to the UI's
-  smoothness and lack of stutter. Other examples of performance
-  include I/O or network speed. This page primarily focuses on the
-  second type of performance (UI smoothness), but you can use most
-  of the same tools to diagnose other performance problems.
-* To perform tracing inside your Dart code, see [Tracing Dart code][]
-  in the [Debugging][] page.
+* O desempenho de um app é determinado por mais de uma medida.
+  Desempenho às vezes se refere à velocidade bruta, mas também à
+  suavidade da UI e falta de gagueira. Outros exemplos de desempenho
+  incluem velocidade de I/O ou rede. Esta página foca principalmente no
+  segundo tipo de desempenho (suavidade da UI), mas você pode usar a maioria
+  das mesmas ferramentas para diagnosticar outros problemas de desempenho.
+* Para realizar rastreamento dentro do seu código Dart, veja [Tracing Dart code][]
+  na página [Debugging][].
 :::
 
 [Debugging]: /testing/debugging
 [Tracing Dart code]: /testing/code-debugging#trace-dart-code-performance
 
-## Diagnosing performance problems
+## Diagnosticando problemas de desempenho
 
-To diagnose an app with performance problems, you'll enable
-the performance overlay to look at the UI and raster threads.
-Before you begin, make sure that you're running in
-[profile mode][], and that you're not using an emulator.
-For best results, you might choose the slowest device that
-your users might use.
+Para diagnosticar um app com problemas de desempenho, você habilitará
+o overlay de desempenho para olhar as threads de UI e raster.
+Antes de começar, certifique-se de que está executando em
+[modo profile][profile mode], e que não está usando um emulador.
+Para melhores resultados, você pode escolher o dispositivo mais lento que
+seus usuários possam usar.
 
 [profile mode]: /testing/build-modes#profile
 
-### Connect to a physical device
+### Conecte a um dispositivo físico
 
-Almost all performance debugging for Flutter applications
-should be conducted on a physical Android or iOS device,
-with your Flutter application running in [profile mode][].
-Using debug mode, or running apps on simulators
-or emulators, is generally not indicative of the final
-behavior of release mode builds.
-_You should consider checking performance
-on the slowest device that your users might reasonably use._
+Quase toda depuração de desempenho para aplicações Flutter
+deve ser conduzida em um dispositivo físico Android ou iOS,
+com sua aplicação Flutter executando em [modo profile][profile mode].
+Usar modo debug, ou executar apps em simuladores
+ou emuladores, geralmente não é indicativo do
+comportamento final de builds de release mode.
+_Você deve considerar verificar o desempenho
+no dispositivo mais lento que seus usuários possam razoavelmente usar._
 
-:::secondary Why you should run on a real device
-* Simulators and emulators don't use the same hardware, so their
-  performance characteristics are different&mdash;some operations are
-  faster on simulators than real devices, and some are slower.
-* Debug mode enables additional checks (such as asserts) that don't run
-  in profile or release builds, and these checks can be expensive.
-* Debug mode also executes code in a different way than release mode.
-  The debug build compiles the Dart code "just in time" (JIT) as the
-  app runs, but profile and release builds are pre-compiled to native
-  instructions (also called "ahead of time", or AOT) before the app is
-  loaded onto the device. JIT can cause the app to pause for JIT
-  compilation, which itself can cause jank.
+:::secondary Por que você deve executar em um dispositivo real
+* Simuladores e emuladores não usam o mesmo hardware, então suas
+  características de desempenho são diferentes&mdash;algumas operações são
+  mais rápidas em simuladores do que em dispositivos reais, e algumas são mais lentas.
+* O modo debug habilita verificações adicionais (como asserts) que não executam
+  em builds profile ou release, e essas verificações podem ser caras.
+* O modo debug também executa código de forma diferente do modo release.
+  O build de debug compila o código Dart "just in time" (JIT) enquanto o
+  app executa, mas builds profile e release são pré-compilados para instruções
+  nativas (também chamadas de "ahead of time", ou AOT) antes do app ser
+  carregado no dispositivo. JIT pode fazer o app pausar para compilação JIT,
+  o que por si só pode causar jank.
 :::
 
-### Run in profile mode
+### Execute em modo profile
 
-Flutter's profile mode compiles and launches your application
-almost identically to release mode, but with just enough additional
-functionality to allow debugging performance problems.
-For example, profile mode provides tracing information to the
-profiling tools.
+O modo profile do Flutter compila e inicia sua aplicação
+quase identicamente ao modo release, mas com apenas funcionalidade adicional
+suficiente para permitir depuração de problemas de desempenho.
+Por exemplo, modo profile fornece informações de rastreamento para as
+ferramentas de profiling.
 
 :::note
-Dart/Flutter DevTools can't connect to a
-Flutter web app running in profile mode.
-Use Chrome DevTools to
-[generate timeline events][] for a web app.
+Dart/Flutter DevTools não pode se conectar a um
+app Flutter web executando em modo profile.
+Use Chrome DevTools para
+[gerar eventos de timeline][generate timeline events] para um app web.
 :::
 
 [generate timeline events]: {{site.developers}}/web/tools/chrome-devtools/evaluate-performance/performance-reference
 
 
-Launch the app in profile mode as follows:
+Inicie o app em modo profile da seguinte forma:
 
-* In VS Code, open your `launch.json` file, and set the
-  `flutterMode` property to `profile`
-  (when done profiling, change it back to `release` or `debug`):
+* No VS Code, abra seu arquivo `launch.json`, e defina a
+  propriedade `flutterMode` para `profile`
+  (quando terminar o profiling, mude de volta para `release` ou `debug`):
 
   ```json
   "configurations": [
@@ -106,134 +107,134 @@ Launch the app in profile mode as follows:
     }
   ]
   ```
-* In Android Studio and IntelliJ, use the
-  **Run > Flutter Run main.dart in Profile Mode** menu item.
-* From the command line, use the `--profile` flag:
+* No Android Studio e IntelliJ, use o
+  item de menu **Run > Flutter Run main.dart in Profile Mode**.
+* A partir da linha de comando, use a flag `--profile`:
 
   ```console
   $ flutter run --profile
   ```
 
-For more information on the different modes,
-see [Flutter's build modes][].
+Para mais informações sobre os diferentes modos,
+veja [modos de build do Flutter][Flutter's build modes].
 
-You'll begin by opening DevTools and viewing
-the performance overlay, as discussed in the next section.
+Você começará abrindo DevTools e visualizando
+o overlay de desempenho, conforme discutido na próxima seção.
 
 [Flutter's build modes]: /testing/build-modes
 
-## Launch DevTools
+## Lance DevTools
 
-DevTools provides features like profiling, examining the heap,
-displaying code coverage, enabling the performance overlay,
-and a step-by-step debugger.
-DevTools' [Timeline view][] allows you to investigate the
-UI performance of your application on a frame-by-frame basis.
+DevTools fornece recursos como profiling, exame do heap,
+exibição de cobertura de código, habilitação do overlay de desempenho,
+e um debugger passo a passo.
+A [visualização Timeline][Timeline view] do DevTools permite que você investigue o
+desempenho da UI da sua aplicação frame a frame.
 
-Once your app is running in profile mode,
-[launch DevTools][].
+Uma vez que seu app esteja executando em modo profile,
+[lance DevTools][launch DevTools].
 
 [launch DevTools]: /tools/devtools
 [Timeline view]: /tools/devtools/performance
 
 <a id="the-performance-overlay" aria-hidden="true"></a>
 
-## The performance overlay {:#performance-overlay}
+## O overlay de desempenho {:#performance-overlay}
 
-The performance overlay displays statistics in two graphs
-that show where time is being spent in your app. If the UI
-is janky (skipping frames), these graphs help you figure out why.
-The graphs display on top of your running app, but they aren't
-drawn like a normal widget&mdash;the Flutter engine itself
-paints the overlay and only minimally impacts performance.
-Each graph represents the last 300 frames for that thread.
+O overlay de desempenho exibe estatísticas em dois gráficos
+que mostram onde o tempo está sendo gasto no seu app. Se a UI
+está travando (pulando frames), esses gráficos ajudam você a descobrir por quê.
+Os gráficos são exibidos em cima do seu app em execução, mas não são
+desenhados como um widget normal&mdash;o próprio motor Flutter
+pinta o overlay e impacta minimamente o desempenho.
+Cada gráfico representa os últimos 300 frames para aquela thread.
 
-This section describes how to enable the performance overlay
-and use it to diagnose the cause of jank in your application.
-The following screenshot shows the performance overlay running
-on the Flutter Gallery example:
+Esta seção descreve como habilitar o overlay de desempenho
+e usá-lo para diagnosticar a causa do jank na sua aplicação.
+A seguinte captura de tela mostra o overlay de desempenho executando
+no exemplo Flutter Gallery:
 
 ![Screenshot of overlay showing zero jank](/assets/images/docs/tools/devtools/performance-overlay-green.png)
-<br>Performance overlay showing the raster thread (top),
-and UI thread (bottom).<br>The vertical green bars
-represent the current frame.
+<br>Overlay de desempenho mostrando a thread raster (topo),
+e thread UI (embaixo).<br>As barras verdes verticais
+representam o frame atual.
 
-## Interpreting the graphs
+## Interpretando os gráficos
 
-The top graph (marked "GPU") shows the time spent by 
-the raster thread, the bottom one graph shows the time 
-spent by the UI thread.
-The white lines across the graphs show 16ms increments
-along the vertical axis; if the graph ever goes over one
-of these lines then you are running at less than 60Hz.
-The horizontal axis represents frames. The graph is
-only updated when your application paints,
-so if it's idle the graph stops moving.
+O gráfico superior (marcado "GPU") mostra o tempo gasto pela
+thread raster, o gráfico inferior mostra o tempo
+gasto pela thread UI.
+As linhas brancas através dos gráficos mostram incrementos de 16ms
+ao longo do eixo vertical; se o gráfico alguma vez passar de uma
+dessas linhas, então você está executando a menos de 60Hz.
+O eixo horizontal representa frames. O gráfico é
+atualizado apenas quando sua aplicação pinta,
+então se estiver ocioso o gráfico para de se mover.
 
-The overlay should always be viewed in [profile mode][],
-since [debug mode][] performance is intentionally sacrificed
-in exchange for expensive asserts that are intended to aid
-development, and thus the results are misleading.
+O overlay sempre deve ser visualizado em [modo profile][profile mode],
+já que o desempenho do [modo debug][debug mode] é intencionalmente sacrificado
+em troca de asserts caros que são destinados a auxiliar
+o desenvolvimento, e portanto os resultados são enganosos.
 
-Each frame should be created and displayed within 1/60th of
-a second (approximately 16ms). A frame exceeding this limit
-(in either graph) fails to display, resulting in jank,
-and a vertical red bar appears in one or both of the graphs.
-If a red bar appears in the UI graph, the Dart code is too
-expensive. If a red vertical bar appears in the GPU graph,
-the scene is too complicated to render quickly.
+Cada frame deve ser criado e exibido dentro de 1/60 de
+segundo (aproximadamente 16ms). Um frame excedendo este limite
+(em qualquer gráfico) falha em exibir, resultando em jank,
+e uma barra vermelha vertical aparece em um ou ambos os gráficos.
+Se uma barra vermelha aparece no gráfico UI, o código Dart é muito
+caro. Se uma barra vermelha vertical aparece no gráfico GPU,
+a cena é muito complicada para renderizar rapidamente.
 
 ![Screenshot of performance overlay showing jank with red bars](/assets/images/docs/tools/devtools/performance-overlay-jank.png)
-<br>The vertical red bars indicate that the current frame is
-expensive to both render and paint.<br>When both graphs
-display red, start by diagnosing the UI thread.
+<br>As barras vermelhas verticais indicam que o frame atual é
+caro tanto para renderizar quanto para pintar.<br>Quando ambos os gráficos
+exibem vermelho, comece diagnosticando a thread UI.
 
 [debug mode]: /testing/build-modes#debug
 
-## Flutter's threads
+## Threads do Flutter
 
-Flutter uses several threads to do its work, though
-only two of the threads are shown in the overlay.
-All of your Dart code runs on the UI thread.
-Although you have no direct access to any other thread,
-your actions on the UI thread have performance consequences
-on other threads.
+Flutter usa várias threads para fazer seu trabalho, embora
+apenas duas das threads sejam mostradas no overlay.
+Todo seu código Dart executa na thread UI.
+Embora você não tenha acesso direto a nenhuma outra thread,
+suas ações na thread UI têm consequências de desempenho
+em outras threads.
 
-**Platform thread**
-: The platform's main thread. Plugin code runs here.
-  For more information, see the [UIKit][] documentation for iOS,
-  or the [MainThread][] documentation for Android.
-  This thread is not shown in the performance overlay.
+**Thread de plataforma**
+: A thread principal da plataforma. Código de plugin executa aqui.
+  Para mais informações, veja a documentação [UIKit][] para iOS,
+  ou a documentação [MainThread][] para Android.
+  Esta thread não é mostrada no overlay de desempenho.
 
-**UI thread**
-: The UI thread executes Dart code in the Dart VM.
-  This thread includes code that you wrote, and code executed by
-  Flutter's framework on your app's behalf.
-  When your app creates and displays a scene, the UI thread creates
-  a _layer tree_, a lightweight object containing device-agnostic
-  painting commands, and sends the layer tree to the raster thread to
-  be rendered on the device. _Don't block this thread!_
-  Shown in the bottom row of the performance overlay.
+**Thread UI**
+: A thread UI executa código Dart na Dart VM.
+  Esta thread inclui código que você escreveu, e código executado pelo
+  framework Flutter em nome do seu app.
+  Quando seu app cria e exibe uma cena, a thread UI cria
+  uma _layer tree_, um objeto leve contendo comandos de
+  pintura independentes de dispositivo, e envia a layer tree para a thread raster para
+  ser renderizada no dispositivo. _Não bloqueie esta thread!_
+  Mostrada na linha inferior do overlay de desempenho.
 
-**Raster thread**
-: The raster thread takes the layer tree and displays
-  it by talking to the GPU (graphic processing unit).
-  You cannot directly access the raster thread or its data but,
-  if this thread is slow, it's a result of something you've done
-  in the Dart code. Skia and Impeller, the graphics libraries,
-  run on this thread.
-  Shown in the top row of the performance overlay.
-  Note that while the raster thread rasterizes for the GPU,
-  the thread itself runs on the CPU.
+**Thread raster**
+: A thread raster pega a layer tree e exibe
+  ela conversando com a GPU (unidade de processamento gráfico).
+  Você não pode acessar diretamente a thread raster ou seus dados mas,
+  se esta thread está lenta, é resultado de algo que você fez
+  no código Dart. Skia e Impeller, as bibliotecas gráficas,
+  executam nesta thread.
+  Mostrada na linha superior do overlay de desempenho.
+  Note que enquanto a thread raster rasteriza para a GPU,
+  a thread em si executa na CPU.
 
-**I/O thread**
-: Performs expensive tasks (mostly I/O) that would
-  otherwise block either the UI or raster threads.
-  This thread is not shown in the performance overlay.
-    
-For links to more information and videos,
-see [The Framework architecture][] in the
-[Flutter wiki][], and the community article,
+**Thread I/O**
+: Realiza tarefas caras (principalmente I/O) que de outra forma
+  bloqueariam a thread UI ou raster.
+  Esta thread não é mostrada no overlay de desempenho.
+
+Para links para mais informações e vídeos,
+veja [The Framework architecture][] no
+[wiki do Flutter][Flutter wiki], e o artigo da comunidade,
 [The Layer Cake][].
 
 [Flutter wiki]: {{site.repo.flutter}}/tree/main/docs
@@ -242,172 +243,172 @@ see [The Framework architecture][] in the
 [The Layer Cake]: {{site.medium}}/flutter-community/the-layer-cake-widgets-elements-renderobjects-7644c3142401
 [UIKit]: {{site.apple-dev}}/documentation/uikit
 
-### Displaying the performance overlay
+### Exibindo o overlay de desempenho
 
-You can toggle display of the performance overlay as follows:
+Você pode alternar a exibição do overlay de desempenho da seguinte forma:
 
-* Using the Flutter inspector
-* From the command line
-* Programmatically
+* Usando o Flutter inspector
+* A partir da linha de comando
+* Programaticamente
 
-#### Using the Flutter inspector
+#### Usando o Flutter inspector
 
-The easiest way to enable the PerformanceOverlay widget is
-from the Flutter inspector, which is available in the
-[Inspector view][] in [DevTools][]. Simply click the
-**Performance Overlay** button to toggle the overlay
-on your running app.
+A maneira mais fácil de habilitar o widget PerformanceOverlay é
+a partir do Flutter inspector, que está disponível na
+[visualização Inspector][Inspector view] no [DevTools][]. Simplesmente clique no
+botão **Performance Overlay** para alternar o overlay
+no seu app em execução.
 
 [Inspector view]: /tools/devtools/inspector
 
-#### From the command line
+#### A partir da linha de comando
 
-Toggle the performance overlay using the **P** key from
-the command line.
+Alterne o overlay de desempenho usando a tecla **P** a partir
+da linha de comando.
 
-#### Programmatically
+#### Programaticamente
 
-To enable the overlay programmatically, see
-[Performance overlay][], a section in the
-[Debugging Flutter apps programmatically][] page.
+Para habilitar o overlay programaticamente, veja
+[Performance overlay][], uma seção na
+página [Debugging Flutter apps programmatically][].
 
 [Debugging Flutter apps programmatically]: /testing/code-debugging
 [Performance overlay]: /testing/code-debugging#add-performance-overlay
 
-## Identifying problems in the UI graph
+## Identificando problemas no gráfico UI
 
-If the performance overlay shows red in the UI graph,
-start by profiling the Dart VM, even if the GPU graph
-also shows red.
+Se o overlay de desempenho mostra vermelho no gráfico UI,
+comece criando um perfil da Dart VM, mesmo se o gráfico GPU
+também mostra vermelho.
 
-## Identifying problems in the GPU graph
+## Identificando problemas no gráfico GPU
 
-Sometimes a scene results in a layer tree that is easy to construct,
-but expensive to render on the raster thread. When this happens,
-the UI graph has no red, but the GPU graph shows red.
-In this case, you'll need to figure out what your code is doing
-that is causing rendering code to be slow. Specific kinds of workloads
-are more difficult for the GPU. They might involve unnecessary calls
-to [`saveLayer`][], intersecting opacities with multiple objects,
-and clips or shadows in specific situations.
+Às vezes uma cena resulta em uma layer tree que é fácil de construir,
+mas cara para renderizar na thread raster. Quando isso acontece,
+o gráfico UI não tem vermelho, mas o gráfico GPU mostra vermelho.
+Neste caso, você precisará descobrir o que seu código está fazendo
+que está causando o código de renderização a ser lento. Tipos específicos de cargas de trabalho
+são mais difíceis para a GPU. Eles podem envolver chamadas desnecessárias
+a [`saveLayer`][], opacidades se intersectando com múltiplos objetos,
+e clips ou sombras em situações específicas.
 
-If you suspect that the source of the slowness is during an animation,
-click the **Slow Animations** button in the Flutter inspector
-to slow animations down by 5x.
-If you want more control on the speed, you can also do this
-[programmatically][].
+Se você suspeita que a fonte da lentidão é durante uma animação,
+clique no botão **Slow Animations** no Flutter inspector
+para diminuir as animações em 5x.
+Se você quer mais controle sobre a velocidade, você também pode fazer isso
+[programaticamente][programmatically].
 
-Is the slowness on the first frame, or on the whole animation?
-If it's the whole animation, is clipping causing the slow down?
-Maybe there's an alternative way of drawing the scene that doesn't
-use clipping. For example, overlay opaque corners onto a square
-instead of clipping to a rounded rectangle.
-If it's a static scene that's being faded, rotated, or otherwise
-manipulated, a [`RepaintBoundary`][] might help.
+A lentidão está no primeiro frame, ou em toda a animação?
+Se é toda a animação, clipping está causando a desaceleração?
+Talvez haja uma forma alternativa de desenhar a cena que não
+use clipping. Por exemplo, sobreponha cantos opacos em um quadrado
+em vez de aplicar clipping a um retângulo arredondado.
+Se é uma cena estática que está sendo esmaecida, rotacionada, ou de outra forma
+manipulada, um [`RepaintBoundary`][] pode ajudar.
 
 [programmatically]: /testing/code-debugging#debug-animation-issues
 [`RepaintBoundary`]: {{site.api}}/flutter/widgets/RepaintBoundary-class.html
 [`saveLayer`]: {{site.api}}/flutter/dart-ui/Canvas/saveLayer.html
 
-#### Checking for offscreen layers
+#### Verificando por layers offscreen
 
-The [`saveLayer`][] method is one of the most expensive methods in
-the Flutter framework. It's useful when applying post-processing
-to the scene, but it can slow your app and should be avoided if
-you don't need it.  Even if you don't call `saveLayer` explicitly,
-implicit calls might happen on your behalf, for example when specifying
-[`Clip.antiAliasWithSaveLayer`][] (typically as a `clipBehavior`).
+O método [`saveLayer`][] é um dos métodos mais caros no
+framework Flutter. É útil ao aplicar pós-processamento
+à cena, mas pode deixar seu app lento e deve ser evitado se
+você não precisar dele. Mesmo se você não chamar `saveLayer` explicitamente,
+chamadas implícitas podem acontecer em seu nome, por exemplo ao especificar
+[`Clip.antiAliasWithSaveLayer`][] (tipicamente como um `clipBehavior`).
 
-For example,
-perhaps you have a group of objects with opacities that are rendered
-using `saveLayer`. In this case, it's probably more performant to
-apply an opacity to each individual widget, rather than a parent
-widget higher up in the widget tree. The same goes for
-other potentially expensive operations, such as clipping or shadows.
+Por exemplo,
+talvez você tenha um grupo de objetos com opacidades que são renderizados
+usando `saveLayer`. Neste caso, provavelmente é mais performante
+aplicar opacidade a cada widget individual, em vez de um widget
+pai mais alto na árvore de widgets. O mesmo vale para
+outras operações potencialmente caras, como clipping ou sombras.
 
 :::note
-Opacity, clipping, and shadows are not, in themselves,
-a bad idea. However, applying them to the top of the
-widget tree might cause extra calls to `saveLayer`,
-and needless processing.
+Opacity, clipping e sombras não são, em si mesmas,
+uma má ideia. No entanto, aplicá-las ao topo da
+árvore de widgets pode causar chamadas extras a `saveLayer`,
+e processamento desnecessário.
 :::
 
-When you encounter calls to `saveLayer`,
-ask yourself these questions:
+Quando você encontrar chamadas a `saveLayer`,
+pergunte a si mesmo essas questões:
 
-* Does the app need this effect?
-* Can any of these calls be eliminated?
-* Can I apply the same effect to an individual element instead of a group?
+* O app precisa deste efeito?
+* Alguma dessas chamadas pode ser eliminada?
+* Posso aplicar o mesmo efeito a um elemento individual em vez de um grupo?
 
 [`Clip.antiAliasWithSaveLayer`]: {{site.api}}/flutter/dart-ui/Clip.html
 
-#### Checking for non-cached images
+#### Verificando por imagens não cacheadas
 
-Caching an image with [`RepaintBoundary`][] is good,
-_when it makes sense_.
+Fazer cache de uma imagem com [`RepaintBoundary`][] é bom,
+_quando faz sentido_.
 
-One of the most expensive operations,
-from a resource perspective,
-is rendering a texture using an image file.
-First, the compressed image
-is fetched from persistent storage.
-The image is decompressed into host memory (GPU memory),
-and transferred to device memory (RAM).
+Uma das operações mais caras,
+de uma perspectiva de recursos,
+é renderizar uma textura usando um arquivo de imagem.
+Primeiro, a imagem comprimida
+é buscada do armazenamento persistente.
+A imagem é descomprimida em memória do host (memória GPU),
+e transferida para memória do dispositivo (RAM).
 
-In other words, image I/O can be expensive.
-The cache provides snapshots of complex hierarchies so
-they are easier to render in subsequent frames.
-_Because raster cache entries are expensive to
-construct and take up loads of GPU memory,
-cache images only where absolutely necessary._
+Em outras palavras, I/O de imagem pode ser caro.
+O cache fornece snapshots de hierarquias complexas para que
+sejam mais fáceis de renderizar em frames subsequentes.
+_Como entradas de cache raster são caras para
+construir e ocupam muita memória GPU,
+faça cache de imagens apenas onde absolutamente necessário._
 
-### Viewing the widget rebuild profiler
+### Visualizando o profiler de reconstrução de widgets
 
-The Flutter framework is designed to make it hard to create
-applications that are not 60fps and smooth. Often, if you have jank,
-it's because there is a simple bug causing more of the UI to be
-rebuilt each frame than required. The Widget rebuild profiler
-helps you debug and fix performance problems due to these sorts
-of bugs.
+O framework Flutter é projetado para tornar difícil criar
+aplicações que não sejam 60fps e suaves. Frequentemente, se você tem jank,
+é porque há um bug simples causando mais da UI a ser
+reconstruída a cada frame do que o necessário. O profiler de reconstrução de widgets
+ajuda você a depurar e corrigir problemas de desempenho devido a esses tipos
+de bugs.
 
-You can view the widget rebuilt counts for the current screen and
-frame in the Flutter plugin for Android Studio and IntelliJ.
-For details on how to do this, see [Show performance data][]
+Você pode visualizar as contagens de reconstrução de widgets para a tela e
+frame atuais no plugin Flutter para Android Studio e IntelliJ.
+Para detalhes sobre como fazer isso, veja [Show performance data][]
 
 [Show performance data]: /tools/android-studio#show-performance-data
 
 ## Benchmarking
 
-You can measure and track your app's performance by writing
-benchmark tests. The Flutter Driver library provides support
-for benchmarking. Using this integration test framework,
-you can generate metrics to track the following:
+Você pode medir e rastrear o desempenho do seu app escrevendo
+testes de benchmark. A biblioteca Flutter Driver fornece suporte
+para benchmarking. Usando este framework de teste de integração,
+você pode gerar métricas para rastrear o seguinte:
 
 * Jank
-* Download size
-* Battery efficiency
-* Startup time
+* Tamanho de download
+* Eficiência de bateria
+* Tempo de inicialização
 
-Tracking these benchmarks allows you to be informed when a
-regression is introduced that adversely affects performance.
+Rastrear esses benchmarks permite que você seja informado quando uma
+regressão é introduzida que afeta adversamente o desempenho.
 
-For more information, check out [Integration testing][].
+Para mais informações, confira [Integration testing][].
 
 [Integration testing]: /testing/integration-tests
 
-## Other resources
+## Outros recursos
 
-The following resources provide more information on using
-Flutter's tools and debugging in Flutter:
+Os seguintes recursos fornecem mais informações sobre usar
+as ferramentas do Flutter e depuração no Flutter:
 
 * [Debugging][]
 * [Flutter inspector][]
-* [Flutter inspector talk][], presented at DartConf 2018
-* [Why Flutter Uses Dart][], an article on Hackernoon
-* [Why Flutter uses Dart][video], a video on the Flutter channel
-* [DevTools][devtools]: performance tooling for Dart and Flutter apps
-* [Flutter API][] docs, particularly the [`PerformanceOverlay`][] class,
-  and the [dart:developer][] package
+* [Flutter inspector talk][], apresentado no DartConf 2018
+* [Why Flutter Uses Dart][], um artigo no Hackernoon
+* [Why Flutter uses Dart][video], um vídeo no canal Flutter
+* [DevTools][devtools]: ferramentas de desempenho para apps Dart e Flutter
+* Documentação da [Flutter API][], particularmente a classe [`PerformanceOverlay`][],
+  e o pacote [dart:developer][]
 
 [dart:developer]: {{site.api}}/flutter/dart-developer/dart-developer-library.html
 [devtools]: /tools/devtools

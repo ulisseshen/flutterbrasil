@@ -1,51 +1,52 @@
 ---
-title: Add a Flutter screen to an iOS app
-short-title: Add a Flutter screen
-description: Learn how to add a single Flutter screen to your existing iOS app.
+ia-translate: true
+title: Adicione uma tela Flutter a um app iOS
+short-title: Adicione uma tela Flutter
+description: Aprenda como adicionar uma única tela Flutter ao seu app iOS existente.
 ---
 
-This guide describes how to add a single Flutter screen to an existing iOS app.
+Este guia descreve como adicionar uma única tela Flutter a um app iOS existente.
 
-## Start a FlutterEngine and FlutterViewController
+## Inicie um FlutterEngine e FlutterViewController
 
-To launch a Flutter screen from an existing iOS app, you start a
-[`FlutterEngine`][] and a [`FlutterViewController`][].
+Para iniciar uma tela Flutter de um app iOS existente, você inicia um
+[`FlutterEngine`][] e um [`FlutterViewController`][].
 
 :::note
-The `FlutterEngine` serves as a host to the Dart VM and your Flutter runtime,
-and the `FlutterViewController` attaches to a `FlutterEngine` to pass 
-input events into Flutter and to display frames rendered by the
+O `FlutterEngine` serve como um host para a Dart VM e seu runtime Flutter,
+e o `FlutterViewController` se anexa a um `FlutterEngine` para passar
+eventos de entrada para o Flutter e exibir frames renderizados pelo
 `FlutterEngine`.
 :::
 
-The `FlutterEngine` might have the same lifespan as your
-`FlutterViewController` or outlive your `FlutterViewController`.
+O `FlutterEngine` pode ter o mesmo tempo de vida do seu
+`FlutterViewController` ou sobreviver ao seu `FlutterViewController`.
 
 :::tip
-It's generally recommended to pre-warm a long-lived
-`FlutterEngine` for your application because:
+É geralmente recomendado pré-aquecer um `FlutterEngine`
+de longa duração para sua aplicação porque:
 
-* The first frame appears faster when showing the `FlutterViewController`.
-* Your Flutter and Dart state will outlive one `FlutterViewController`.
-* Your application and your plugins can interact with Flutter and your Dart
-  logic before showing the UI.
+* O primeiro frame aparece mais rápido ao mostrar o `FlutterViewController`.
+* Seu estado Flutter e Dart sobreviverá a um `FlutterViewController`.
+* Sua aplicação e seus plugins podem interagir com o Flutter e sua lógica Dart
+  antes de mostrar a UI.
 :::
 
-See [Loading sequence and performance][]
-for more analysis on the latency and memory
-trade-offs of pre-warming an engine.
+Consulte [Sequência de carregamento e desempenho][Loading sequence and performance]
+para mais análise sobre as trocas de latência e memória
+de pré-aquecer um engine.
 
-### Create a FlutterEngine
+### Crie um FlutterEngine
 
-Where you create a `FlutterEngine` depends on your host app.
+Onde você cria um `FlutterEngine` depende do seu app hospedeiro.
 
 {% tabs "darwin-framework" %}
 {% tab "SwiftUI" %}
 
-In this example, we create a `FlutterEngine` object inside a SwiftUI [`Observable`][] 
-object called `FlutterDependencies`. 
-Pre-warm the engine by calling `run()`, and then inject this object 
-into a `ContentView` using the `environment()` view modifier. 
+Neste exemplo, criamos um objeto `FlutterEngine` dentro de um objeto SwiftUI [`Observable`][]
+chamado `FlutterDependencies`.
+Pré-aqueça o engine chamando `run()`, e então injete este objeto
+em uma `ContentView` usando o modificador de view `environment()`.
 
  ```swift title="MyApp.swift"
 import SwiftUI
@@ -80,9 +81,9 @@ struct MyApp: App {
 {% endtab %}
 {% tab "UIKit-Swift" %}
 
-As an example, we demonstrate creating a
-`FlutterEngine`, exposed as a property, on app startup in
-the app delegate.
+Como exemplo, demonstramos a criação de um
+`FlutterEngine`, exposto como uma propriedade, na inicialização do app no
+delegado do app.
 
 ```swift title="AppDelegate.swift"
 import UIKit
@@ -107,8 +108,8 @@ class AppDelegate: FlutterAppDelegate { // More on the FlutterAppDelegate.
 {% endtab %}
 {% tab "UIKit-ObjC" %}
 
-The following example demonstrates creating a `FlutterEngine`, 
-exposed as a property, on app startup in the app delegate.
+O exemplo a seguir demonstra a criação de um `FlutterEngine`,
+exposto como uma propriedade, na inicialização do app no delegado do app.
 
 ```objc title="AppDelegate.h"
 @import UIKit;
@@ -143,17 +144,17 @@ exposed as a property, on app startup in the app delegate.
 {% endtab %}
 {% endtabs %}
 
-### Show a FlutterViewController with your FlutterEngine
+### Mostre um FlutterViewController com seu FlutterEngine
 
 {% tabs "darwin-framework" %}
 {% tab "SwiftUI" %}
 
-The following example shows a generic `ContentView` with a 
-[`NavigationLink`][] hooked to a flutter screen. 
-First, create a `FlutterViewControllerRepresentable` to represent the 
-`FlutterViewController`. The `FlutterViewController` constructor takes 
-the pre-warmed `FlutterEngine` as an argument, which is injected through
-the view environment. 
+O exemplo a seguir mostra uma `ContentView` genérica com um
+[`NavigationLink`][] conectado a uma tela flutter.
+Primeiro, crie um `FlutterViewControllerRepresentable` para representar o
+`FlutterViewController`. O construtor `FlutterViewController` recebe
+o `FlutterEngine` pré-aquecido como argumento, que é injetado através
+do ambiente da view.
 
 ```swift title="ContentView.swift"
 import SwiftUI
@@ -162,14 +163,14 @@ import Flutter
 struct FlutterViewControllerRepresentable: UIViewControllerRepresentable {
   // Flutter dependencies are passed in through the view environment.
   @Environment(FlutterDependencies.self) var flutterDependencies
-  
+
   func makeUIViewController(context: Context) -> some UIViewController {
     return FlutterViewController(
       engine: flutterDependencies.flutterEngine,
       nibName: nil,
       bundle: nil)
   }
-  
+
   func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
 }
 
@@ -184,20 +185,20 @@ struct ContentView: View {
 }
 ```
 
-Now, you have a Flutter screen embedded in your iOS app.
+Agora, você tem uma tela Flutter incorporada no seu app iOS.
 
 :::note
-In this example, your Dart `main()` entrypoint function runs 
-when the `FlutterDependencies` observable is initialized. 
+Neste exemplo, sua função de entrypoint Dart `main()` é executada
+quando o observable `FlutterDependencies` é inicializado.
 :::
 
 {% endtab %}
 {% tab "UIKit-Swift" %}
 
-The following example shows a generic `ViewController` with a
-`UIButton` hooked to present a [`FlutterViewController`][].
-The `FlutterViewController` uses the `FlutterEngine` instance
-created in the `AppDelegate`.
+O exemplo a seguir mostra um `ViewController` genérico com um
+`UIButton` conectado para apresentar um [`FlutterViewController`][].
+O `FlutterViewController` usa a instância `FlutterEngine` criada
+no `AppDelegate`.
 
 ```swift title="ViewController.swift"
 import UIKit
@@ -225,23 +226,22 @@ class ViewController: UIViewController {
 }
 ```
 
-Now, you have a Flutter screen embedded in your iOS app.
+Agora, você tem uma tela Flutter incorporada no seu app iOS.
 
 :::note
-Using the previous example, the default `main()`
-entrypoint function of your default Dart library
-would run when calling `run` on the
-`FlutterEngine` created in the `AppDelegate`.
+Usando o exemplo anterior, a função de entrypoint `main()`
+padrão da sua biblioteca Dart padrão seria executada ao chamar `run` no
+`FlutterEngine` criado no `AppDelegate`.
 :::
 
 
 {% endtab %}
 {% tab "UIKit-ObjC" %}
 
-The following example shows a generic `ViewController` with a
-`UIButton` hooked to present a [`FlutterViewController`][].
-The `FlutterViewController` uses the `FlutterEngine` instance
-created in the `AppDelegate`.
+O exemplo a seguir mostra um `ViewController` genérico com um
+`UIButton` conectado para apresentar um [`FlutterViewController`][].
+O `FlutterViewController` usa a instância `FlutterEngine` criada
+no `AppDelegate`.
 
 ```objc title="ViewController.m"
 @import Flutter;
@@ -273,36 +273,35 @@ created in the `AppDelegate`.
 @end
 ```
 
-Now, you have a Flutter screen embedded in your iOS app.
+Agora, você tem uma tela Flutter incorporada no seu app iOS.
 
 :::note
-Using the previous example, the default `main()`
-entrypoint function of your default Dart library
-would run when calling `run` on the
-`FlutterEngine` created in the `AppDelegate`.
+Usando o exemplo anterior, a função de entrypoint `main()`
+padrão da sua biblioteca Dart padrão seria executada ao chamar `run` no
+`FlutterEngine` criado no `AppDelegate`.
 :::
 
 
 {% endtab %}
 {% endtabs %}
 
-### _Alternatively_ - Create a FlutterViewController with an implicit FlutterEngine
+### _Alternativamente_ - Crie um FlutterViewController com um FlutterEngine implícito
 
-As an alternative to the previous example, you can let the
-`FlutterViewController` implicitly create its own `FlutterEngine` without
-pre-warming one ahead of time.
+Como alternativa ao exemplo anterior, você pode deixar o
+`FlutterViewController` criar implicitamente seu próprio `FlutterEngine` sem
+pré-aquecer um com antecedência.
 
-This is not usually recommended because creating a
-`FlutterEngine` on-demand could introduce a noticeable
-latency between when the `FlutterViewController` is
-presented and when it renders its first frame. This could, however, be
-useful if the Flutter screen is rarely shown, when there are no good
-heuristics to determine when the Dart VM should be started, and when Flutter
-doesn't need to persist state between view controllers.
+Isso geralmente não é recomendado porque criar um
+`FlutterEngine` sob demanda pode introduzir uma
+latência perceptível entre quando o `FlutterViewController` é
+apresentado e quando ele renderiza seu primeiro frame. Isso pode, no entanto, ser
+útil se a tela Flutter é raramente mostrada, quando não há boas
+heurísticas para determinar quando a Dart VM deve ser iniciada, e quando o Flutter
+não precisa persistir estado entre view controllers.
 
-To let the `FlutterViewController` present without an existing
-`FlutterEngine`, omit the `FlutterEngine` construction, and create the
-`FlutterViewController` without an engine reference.
+Para deixar o `FlutterViewController` apresentar sem um
+`FlutterEngine` existente, omita a construção do `FlutterEngine`, e crie o
+`FlutterViewController` sem uma referência ao engine.
 
 {% tabs "darwin-framework" %}
 {% tab "SwiftUI" %}
@@ -318,7 +317,7 @@ struct FlutterViewControllerRepresentable: UIViewControllerRepresentable {
       nibName: nil,
       bundle: nil)
   }
-  
+
   func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
 }
 
@@ -360,26 +359,26 @@ func showFlutter() {
 {% endtab %}
 {% endtabs %}
 
-See [Loading sequence and performance][]
-for more explorations on latency and memory usage.
+Consulte [Sequência de carregamento e desempenho][Loading sequence and performance]
+para mais explorações sobre latência e uso de memória.
 
-## Using the FlutterAppDelegate
+## Usando o FlutterAppDelegate
 
-Letting your application's `UIApplicationDelegate` subclass
-`FlutterAppDelegate` is recommended but not required.
+Deixar o `UIApplicationDelegate` da sua aplicação ser subclasse de
+`FlutterAppDelegate` é recomendado mas não obrigatório.
 
-The `FlutterAppDelegate` performs functions such as:
+O `FlutterAppDelegate` executa funções como:
 
-* Forwarding application callbacks such as [`openURL`][]
-  to plugins such as [local_auth][].
-* Keeping the Flutter connection open 
-  in debug mode when the phone screen locks.
+* Encaminhar callbacks de aplicação como [`openURL`][]
+  para plugins como [local_auth][].
+* Manter a conexão Flutter aberta
+  em modo debug quando a tela do telefone bloqueia.
 
-### Creating a FlutterAppDelegate subclass
-Creating a subclass of the `FlutterAppDelegate` in UIKit apps was shown 
-in the [Start a FlutterEngine and FlutterViewController section][]. 
-In a SwiftUI app, you can create a subclass of the 
-`FlutterAppDelegate` and annotate it with the [`Observable()`][] macro as follows:
+### Criando uma subclasse FlutterAppDelegate
+Criar uma subclasse do `FlutterAppDelegate` em apps UIKit foi mostrado
+na [seção Inicie um FlutterEngine e FlutterViewController][Start a FlutterEngine and FlutterViewController section].
+Em um app SwiftUI, você pode criar uma subclasse do
+`FlutterAppDelegate` e anotá-la com a macro [`Observable()`][] da seguinte forma:
 
 ```swift title="MyApp.swift"
 import SwiftUI
@@ -415,7 +414,7 @@ struct MyApp: App {
 }
 ```
 
-Then, in your view, the `AppDelegate` is accessible through the view environment.
+Então, em sua view, o `AppDelegate` é acessível através do ambiente da view.
 
 ```swift title="ContentView.swift"
 import SwiftUI
@@ -424,14 +423,14 @@ import Flutter
 struct FlutterViewControllerRepresentable: UIViewControllerRepresentable {
   // Access the AppDelegate through the view environment.
   @Environment(AppDelegate.self) var appDelegate
-  
+
   func makeUIViewController(context: Context) -> some UIViewController {
     return FlutterViewController(
       engine: appDelegate.flutterEngine,
       nibName: nil,
       bundle: nil)
   }
-  
+
   func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
 }
 
@@ -446,14 +445,14 @@ struct ContentView: View {
 }
 ```
 
-### If you can't directly make FlutterAppDelegate a subclass
+### Se você não pode fazer FlutterAppDelegate uma subclasse diretamente
 
-If your app delegate can't directly make `FlutterAppDelegate` a subclass,
-make your app delegate implement the `FlutterAppLifeCycleProvider`
-protocol in order to make sure your plugins receive the necessary callbacks.
-Otherwise, plugins that depend on these events might have undefined behavior.
+Se o seu delegado de app não pode fazer `FlutterAppDelegate` uma subclasse diretamente,
+faça seu delegado de app implementar o protocolo `FlutterAppLifeCycleProvider`
+para garantir que seus plugins recebam os callbacks necessários.
+Caso contrário, plugins que dependem desses eventos podem ter comportamento indefinido.
 
-For instance:
+Por exemplo:
 
 {% tabs "darwin-language" %}
 {% tab "Swift" %}
@@ -531,7 +530,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, FlutterAppLifeCycleProvid
 @end
 ```
 
-The implementation should delegate mostly to a
+A implementação deve delegar principalmente para um
 `FlutterPluginAppLifeCycleDelegate`:
 
 ```objc title="AppDelegate.m"
@@ -636,27 +635,27 @@ performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult result))comp
 {% endtab %}
 {% endtabs %}
 
-## Launch options
+## Opções de inicialização
 
-The examples demonstrate running Flutter using the default launch settings.
+Os exemplos demonstram executar o Flutter usando as configurações de inicialização padrão.
 
-In order to customize your Flutter runtime,
-you can also specify the Dart entrypoint, library, and route.
+Para personalizar seu runtime Flutter,
+você também pode especificar o entrypoint Dart, biblioteca e rota.
 
-### Dart entrypoint
+### Entrypoint Dart
 
-Calling `run` on a `FlutterEngine`, by default,
-runs the `main()` Dart function
-of your `lib/main.dart` file.
+Chamar `run` em um `FlutterEngine`, por padrão,
+executa a função Dart `main()`
+do seu arquivo `lib/main.dart`.
 
-You can also run a different entrypoint function by using
-[`runWithEntrypoint`][] with an `NSString` specifying
-a different Dart function.
+Você também pode executar uma função de entrypoint diferente usando
+[`runWithEntrypoint`][] com uma `NSString` especificando
+uma função Dart diferente.
 
 :::note
-Dart entrypoint functions other than `main()`
-must be annotated with the following in order to
-not be [tree-shaken][] away when compiling:
+Funções de entrypoint Dart diferentes de `main()`
+devem ser anotadas com o seguinte para
+não serem [eliminadas por tree-shaking][tree-shaken] ao compilar:
 
 ```dart
 @pragma('vm:entry-point')
@@ -664,13 +663,13 @@ void myOtherEntrypoint() { ... };
 ```
 :::
 
-### Dart library
+### Biblioteca Dart
 
-In addition to specifying a Dart function, you can specify an entrypoint
-function in a specific file.
+Além de especificar uma função Dart, você pode especificar uma função de entrypoint
+em um arquivo específico.
 
-For instance the following runs `myOtherEntrypoint()`
-in `lib/other_file.dart` instead of `main()` in `lib/main.dart`:
+Por exemplo, o seguinte executa `myOtherEntrypoint()`
+em `lib/other_file.dart` em vez de `main()` em `lib/main.dart`:
 
 {% tabs "darwin-language" %}
 {% tab "Swift" %}
@@ -690,10 +689,10 @@ flutterEngine.run(withEntrypoint: "myOtherEntrypoint", libraryURI: "other_file.d
 {% endtabs %}
 
 
-### Route
+### Rota
 
-Starting in Flutter version 1.22, an initial route can be set for your Flutter
-[`WidgetsApp`][] when constructing the FlutterEngine or the
+A partir do Flutter versão 1.22, uma rota inicial pode ser definida para seu
+[`WidgetsApp`][] Flutter ao construir o FlutterEngine ou o
 FlutterViewController.
 
 {% tabs "darwin-language" %}
@@ -719,11 +718,11 @@ FlutterEngine *flutterEngine = [[FlutterEngine alloc] init];
 {% endtab %}
 {% endtabs %}
 
-This code sets your `dart:ui`'s [`PlatformDispatcher.defaultRouteName`][]
-to `"/onboarding"` instead of `"/"`.
+Este código define o [`PlatformDispatcher.defaultRouteName`][] do `dart:ui`
+para `"/onboarding"` em vez de `"/"`.
 
-Alternatively, to construct a FlutterViewController directly without pre-warming
-a FlutterEngine:
+Alternativamente, para construir um FlutterViewController diretamente sem pré-aquecer
+um FlutterEngine:
 
 {% tabs "darwin-language" %}
 {% tab "Swift" %}
@@ -748,23 +747,23 @@ FlutterViewController* flutterViewController =
 {% endtabs %}
 
 :::tip
-In order to imperatively change your current Flutter
-route from the platform side after the `FlutterEngine`
-is already running, use [`pushRoute()`][]
-or [`popRoute()`] on the `FlutterViewController`.
+Para mudar imperativamente sua rota Flutter atual
+do lado da plataforma depois que o `FlutterEngine`
+já está em execução, use [`pushRoute()`][]
+ou [`popRoute()`] no `FlutterViewController`.
 
-To pop the iOS route from the Flutter side,
-call [`SystemNavigator.pop()`][].
+Para fazer pop da rota iOS do lado Flutter,
+chame [`SystemNavigator.pop()`][].
 :::
 
-See [Navigation and routing][] for more about Flutter's routes.
+Consulte [Navegação e roteamento][Navigation and routing] para mais sobre rotas do Flutter.
 
-### Other
+### Outros
 
-The previous example only illustrates a few ways to customize
-how a Flutter instance is initiated. Using [platform channels][],
-you're free to push data or prepare your Flutter environment
-in any way you'd like, before presenting the Flutter UI using a
+O exemplo anterior ilustra apenas algumas maneiras de personalizar
+como uma instância Flutter é iniciada. Usando [platform channels][],
+você é livre para enviar dados ou preparar seu ambiente Flutter
+da maneira que quiser, antes de apresentar a UI Flutter usando um
 `FlutterViewController`.
 
 

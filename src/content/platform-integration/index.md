@@ -1,6 +1,7 @@
 ---
+ia-translate: true
 layout: toc
-title: Platform integration
+title: Integração com plataformas
 description: >
-  Content covering integration with different platforms in Flutter apps.
+  Conteúdo sobre integração com diferentes plataformas em apps Flutter.
 ---

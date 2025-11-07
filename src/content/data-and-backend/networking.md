@@ -1,21 +1,22 @@
 ---
-title: Networking
-description: Internet network calls in Flutter.
+ia-translate: true
+title: Rede
+description: Chamadas de rede de internet no Flutter.
 ---
 
-## Cross-platform http networking
+## Rede http multiplataforma
 
-The [`http`][] package provides the simplest way to issue http requests. This
-package is supported on Android, iOS, macOS, Windows, Linux and the web.
+O [pacote `http`][`http`] fornece a maneira mais simples de emitir requisições http. Este
+pacote é suportado em Android, iOS, macOS, Windows, Linux e web.
 
-## Platform notes
+## Notas de plataforma
 
-Some platforms require additional steps, as detailed below.
+Algumas plataformas exigem etapas adicionais, conforme detalhado abaixo.
 
 ### Android
 
-Android apps must [declare their use of the internet][declare] in the Android
-manifest (`AndroidManifest.xml`):
+Apps Android devem [declarar seu uso da internet][declare] no
+manifesto Android (`AndroidManifest.xml`):
 
 ```xml
 <manifest xmlns:android...>
@@ -27,22 +28,22 @@ manifest (`AndroidManifest.xml`):
 
 ### macOS
 
-macOS apps must allow network access in the relevant `*.entitlements` files. 
+Apps macOS devem permitir acesso à rede nos arquivos `*.entitlements` relevantes.
 
 ```xml
 <key>com.apple.security.network.client</key>
 <true/>
 ```
 
-Learn more about [setting up entitlements][].
+Saiba mais sobre [configuração de entitlements][setting up entitlements].
 
 [setting up entitlements]: /platform-integration/macos/building#setting-up-entitlements
 
-## Samples
+## Exemplos
 
-For a practical sample of various networking tasks (incl. fetching data,
-WebSockets, and parsing data in the background) see the 
-[networking cookbook](/cookbook#networking).
+Para um exemplo prático de várias tarefas de rede (incluindo busca de dados,
+WebSockets e análise de dados em background) veja o
+[cookbook de rede](/cookbook#networking).
 
 [declare]: {{site.android-dev}}/training/basics/network-ops/connecting
 [`http`]: {{site.pub-pkg}}/http

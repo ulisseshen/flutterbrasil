@@ -1,26 +1,27 @@
 ---
-title: Integrate a Flutter module into your Android project
-short-title: Integrate Flutter
-description: Learn how to integrate a Flutter module into your existing Android project.
+ia-translate: true
+title: Integre um módulo Flutter ao seu projeto Android
+short-title: Integre Flutter
+description: Aprenda como integrar um módulo Flutter ao seu projeto Android existente.
 ---
 
-Flutter can be embedded into your existing Android
-application piecemeal, as a source code Gradle
-subproject or as AARs.
+O Flutter pode ser incorporado ao seu aplicativo
+Android existente de forma incremental, como um subprojeto
+Gradle de código-fonte ou como AARs.
 
-The integration flow can be done using the Android Studio
-IDE with the [Flutter plugin][] or manually.
+O fluxo de integração pode ser feito usando a
+IDE Android Studio com o [plugin Flutter][Flutter plugin] ou manualmente.
 
 :::warning
-Your existing Android app might support architectures
-such as `mips` or `x86`. Flutter currently [only supports][]
-building ahead-of-time (AOT) compiled libraries
-for `x86_64`, `armeabi-v7a`, and `arm64-v8a`.
+Seu app Android existente pode suportar arquiteturas
+como `mips` ou `x86`. O Flutter atualmente [suporta apenas][only supports]
+a construção de bibliotecas compiladas ahead-of-time (AOT)
+para `x86_64`, `armeabi-v7a` e `arm64-v8a`.
 
-Consider using the [`abiFilters`][] Android Gradle
-Plugin API to limit the supported architectures in your APK.
-Doing this avoids a missing `libflutter.so` runtime crash,
-for example:
+Considere usar a API [`abiFilters`][] do Android Gradle
+Plugin para limitar as arquiteturas suportadas em seu APK.
+Fazer isso evita um crash de runtime de `libflutter.so` ausente,
+por exemplo:
 
 {% tabs "android-build-language" %}
 {% tab "Kotlin" %}
@@ -55,119 +56,119 @@ android {
 {% endtab %}
 {% endtabs %}
 
-The Flutter engine also has an `x86_64` version.
-When using an emulator in debug Just-In-Time (JIT) mode,
-the Flutter module still runs correctly.
+O engine Flutter também tem uma versão `x86_64`.
+Ao usar um emulador em modo debug Just-In-Time (JIT),
+o módulo Flutter ainda é executado corretamente.
 :::
 
-## Integrate your Flutter module
+## Integre seu módulo Flutter
 
 {% tabs %}
 {% tab "With Android Studio" %}
 
-### Integrate with Android Studio {:.no_toc}
+### Integre com Android Studio {:.no_toc}
 
-The Android Studio IDE can help integrate your Flutter module.
-Using Android Studio, you can edit both your Android and Flutter code
-in the same IDE.
+A IDE Android Studio pode ajudar a integrar seu módulo Flutter.
+Usando o Android Studio, você pode editar tanto seu código Android quanto Flutter
+na mesma IDE.
 
-You can also use IntelliJ Flutter plugin functionality like
-Dart code completion, hot reload, and widget inspector.
+Você também pode usar funcionalidades do plugin Flutter do IntelliJ como
+autocompletar código Dart, hot reload e widget inspector.
 
-To build your app, the Android Studio plugin configures your
-Android project to add your Flutter module as a dependency.
+Para construir seu app, o plugin do Android Studio configura seu
+projeto Android para adicionar seu módulo Flutter como uma dependência.
 
-1. Open your Android project in Android Studio.
+1. Abra seu projeto Android no Android Studio.
 
-1. Go to **File** > **New** > **New Project...**.
-    The **New Project** dialog displays.
+1. Vá para **File** > **New** > **New Project...**.
+    O diálogo **New Project** é exibido.
 
-1. Click **Flutter**.
+1. Clique em **Flutter**.
 
-1. If asked to provide your **Flutter SDK path**, do so and click **Next**.
+1. Se solicitado a fornecer seu **Flutter SDK path**, faça isso e clique em **Next**.
 
-1. Complete the configuration of your Flutter module.
+1. Complete a configuração do seu módulo Flutter.
 
-    * If you have an existing project:
-
-        {: type="a"}
-        1. To choose an existing project, click **...**
-           to the right of the **Project location** box.
-        1. Navigate to your Flutter project directory.
-        1. Click **Open**.
-
-    * If you need to create a new Flutter project:
+    * Se você tem um projeto existente:
 
         {: type="a"}
-        1. Complete the configuration dialog.
-        1. In the **Project type** menu, select **Module**.
+        1. Para escolher um projeto existente, clique em **...**
+           à direita da caixa **Project location**.
+        1. Navegue até o diretório do seu projeto Flutter.
+        1. Clique em **Open**.
 
-1. Click **Finish**.
+    * Se você precisa criar um novo projeto Flutter:
+
+        {: type="a"}
+        1. Complete o diálogo de configuração.
+        1. No menu **Project type**, selecione **Module**.
+
+1. Clique em **Finish**.
 
 :::tip
-By default, your project's Project pane might show the 'Android' view.
-If you can't see your new Flutter files in the Project pane,
-set your Project pane to display **Project Files**.
-This shows all files without filtering.
+Por padrão, o painel Project do seu projeto pode mostrar a visualização 'Android'.
+Se você não consegue ver seus novos arquivos Flutter no painel Project,
+configure seu painel Project para exibir **Project Files**.
+Isso mostra todos os arquivos sem filtragem.
 :::
 
 {% endtab %}
 {% tab "Without Android Studio" %}
 
-### Integrate without Android Studio {:.no_toc}
+### Integre sem Android Studio {:.no_toc}
 
-To integrate a Flutter module with an existing Android app
-manually, without using Flutter's Android Studio plugin,
-follow these steps:
+Para integrar um módulo Flutter com um app Android existente
+manualmente, sem usar o plugin Android Studio do Flutter,
+siga estes passos:
 
-#### Create a Flutter module
+#### Crie um módulo Flutter
 
-Let's assume that you have an existing Android app at
-`some/path/MyApp`, and that you want your Flutter
-project as a sibling:
+Vamos assumir que você tem um app Android existente em
+`some/path/MyApp`, e que você quer seu projeto
+Flutter como um irmão:
 
 ```console
 cd some/path/
 flutter create -t module --org com.example flutter_module
 ```
 
-This creates a `some/path/flutter_module/` Flutter module project
-with some Dart code to get you started and an `.android/`
-hidden subfolder. The `.android` folder contains an
-Android project that can both help you run a barebones
-standalone version of your Flutter module via `flutter run`
-and it's also a wrapper that helps bootstrap the Flutter
-module an embeddable Android library.
+Isso cria um projeto de módulo Flutter `some/path/flutter_module/`
+com algum código Dart para você começar e uma subpasta
+oculta `.android/`. A pasta `.android` contém um
+projeto Android que pode tanto ajudá-lo a executar uma versão
+standalone básica do seu módulo Flutter via `flutter run`
+quanto também é um wrapper que ajuda a fazer o bootstrap do módulo
+Flutter em uma biblioteca Android incorporável.
 
 :::note
-Add custom Android code to your own existing
-application's project or a plugin,
-not to the module in `.android/`.
-Changes made in your module's `.android/`
-directory won't appear in your existing Android
-project using the module.
+Adicione código Android personalizado ao projeto de sua própria
+aplicação existente ou a um plugin,
+não ao módulo em `.android/`.
+Mudanças feitas no diretório `.android/` do seu módulo
+não aparecerão em seu projeto Android existente
+usando o módulo.
 
-Do not source control the `.android/` directory
-since it's autogenerated. Before building the
-module on a new machine, run `flutter pub get`
-in the `flutter_module` directory first to regenerate
-the `.android/` directory before building the
-Android project using the Flutter module.
+Não coloque o diretório `.android/` no controle de versão,
+pois ele é gerado automaticamente. Antes de construir o
+módulo em uma nova máquina, execute `flutter pub get`
+no diretório `flutter_module` primeiro para regenerar
+o diretório `.android/` antes de construir o
+projeto Android usando o módulo Flutter.
 :::
 
 :::note
-To avoid Dex merging issues, `flutter.androidPackage` should
-not be identical to your host app's package name.
+Para evitar problemas de mesclagem Dex, `flutter.androidPackage` não deve
+ser idêntico ao nome do pacote do seu app hospedeiro.
 :::
 
-#### Java version requirement
+#### Requisito de versão Java
 
-Flutter requires your project to declare compatibility with Java 11 or later.
+O Flutter requer que seu projeto declare compatibilidade com Java 11 ou posterior.
 
-Before attempting to connect your Flutter module project
-to your host Android app, ensure that your host Android
-app declares the following source compatibility within your
-app's `build.gradle` file, under the `android { }` block.
+Antes de tentar conectar seu projeto de módulo Flutter
+ao seu app Android hospedeiro, certifique-se de que seu app
+Android hospedeiro declara a seguinte compatibilidade de fonte dentro do
+arquivo `build.gradle` do seu app, sob o bloco `android { }`.
 
 ```groovy title="MyApp/app/build.gradle"
 android {
@@ -179,16 +180,16 @@ android {
 }
 ```
 
-#### Centralize repository settings
+#### Centralize configurações de repositório
 
-Starting with Gradle 7, Android recommends using centralized repository
-declarations in `settings.gradle` instead of project or module level
-declarations in `build.gradle` files.
+A partir do Gradle 7, o Android recomenda usar declarações de repositório
+centralizadas em `settings.gradle` em vez de declarações de nível de projeto
+ou módulo em arquivos `build.gradle`.
 
-Before attempting to connect your Flutter module project to your
-host Android app, make the following changes.
+Antes de tentar conectar seu projeto de módulo Flutter ao seu
+app Android hospedeiro, faça as seguintes mudanças.
 
-1. Remove the `repositories` block in all of your app's `build.gradle` files.
+1. Remova o bloco `repositories` em todos os arquivos `build.gradle` do seu app.
 
    ```groovy
    // Remove the following block, starting on the next line
@@ -199,8 +200,8 @@ host Android app, make the following changes.
    // ...to the previous line
    ```
 
-1. Add the `dependencyResolutionManagement` displayed in this step to the
-   `settings.gradle` file.
+1. Adicione o `dependencyResolutionManagement` exibido neste passo ao
+   arquivo `settings.gradle`.
 
    ```groovy
    dependencyResolutionManagement {
@@ -215,49 +216,49 @@ host Android app, make the following changes.
 {% endtab %}
 {% endtabs %}
 
-## Add the Flutter module as a dependency
+## Adicione o módulo Flutter como uma dependência
 
-Add the Flutter module as a dependency of your
-existing app in Gradle. You can achieve this in two ways.
+Adicione o módulo Flutter como uma dependência do seu
+app existente no Gradle. Você pode fazer isso de duas maneiras.
 
 1. **Android archive**
-    The AAR mechanism creates generic Android AARs as
-    intermediaries that packages your Flutter module.
-    This is good when your downstream app builders don't
-    want to have the Flutter SDK installed. But,
-    it adds one more build step if you build frequently.
+    O mecanismo AAR cria AARs Android genéricos como
+    intermediários que empacotam seu módulo Flutter.
+    Isso é bom quando seus construtores de app downstream não
+    querem ter o Flutter SDK instalado. Mas,
+    adiciona mais um passo de build se você constrói frequentemente.
 
-1. **Module source code**
-    The source code subproject mechanism is a convenient
-    one-click build process, but requires the Flutter SDK.
-    This is the mechanism used by the Android Studio IDE plugin.
+1. **Código-fonte do módulo**
+    O mecanismo de subprojeto de código-fonte é um
+    processo de build de um clique conveniente, mas requer o Flutter SDK.
+    Este é o mecanismo usado pelo plugin IDE do Android Studio.
 
 {% tabs %}
 {% tab "Android Archive" %}
 
-### Depend on the Android Archive (AAR) {:.no_toc}
+### Dependa do Android Archive (AAR) {:.no_toc}
 
-This option packages your Flutter library as a generic local
-Maven repository composed of AARs and POMs artifacts.
-This option allows your team to build the host app without
-installing the Flutter SDK. You can then distribute the
-artifacts from a local or remote repository.
+Esta opção empacota sua biblioteca Flutter como um repositório
+Maven local genérico composto de artefatos AARs e POMs.
+Esta opção permite que sua equipe construa o app hospedeiro sem
+instalar o Flutter SDK. Você pode então distribuir os
+artefatos de um repositório local ou remoto.
 
-Let's assume you built a Flutter module at
-`some/path/flutter_module`, and then run:
+Vamos assumir que você construiu um módulo Flutter em
+`some/path/flutter_module`, e então execute:
 
 ```console
 cd some/path/flutter_module
 flutter build aar
 ```
 
-Then, follow the on-screen instructions to integrate.
+Em seguida, siga as instruções na tela para integrar.
 
 {% render docs/app-figure.md, image:"development/add-to-app/android/project-setup/build-aar-instructions.png" %}
 
-More specifically, this command creates
-(by default all debug/profile/release modes)
-a [local repository][], with the following files:
+Mais especificamente, este comando cria
+(por padrão todos os modos debug/profile/release)
+um [repositório local][local repository], com os seguintes arquivos:
 
 ```plaintext
 build/host/outputs/repo
@@ -266,12 +267,12 @@ build/host/outputs/repo
         └── flutter_module
             ├── flutter_release
             │   ├── 1.0
-            │   │   ├── flutter_release-1.0.aar
-            │   │   ├── flutter_release-1.0.aar.md5
-            │   │   ├── flutter_release-1.0.aar.sha1
-            │   │   ├── flutter_release-1.0.pom
-            │   │   ├── flutter_release-1.0.pom.md5
-            │   │   └── flutter_release-1.0.pom.sha1
+            │   │   ├── flutter_release-1.0.aar
+            │   │   ├── flutter_release-1.0.aar.md5
+            │   │   ├── flutter_release-1.0.aar.sha1
+            │   │   ├── flutter_release-1.0.pom
+            │   │   ├── flutter_release-1.0.pom.md5
+            │   │   └── flutter_release-1.0.pom.sha1
             │   ├── maven-metadata.xml
             │   ├── maven-metadata.xml.md5
             │   └── maven-metadata.xml.sha1
@@ -281,11 +282,11 @@ build/host/outputs/repo
                 └── ...
 ```
 
-To depend on the AAR, the host app must be able
-to find these files.
+Para depender do AAR, o app hospedeiro deve ser capaz
+de encontrar esses arquivos.
 
-To do that, edit `settings.gradle` in your host app
-so that it includes the local repository and the dependency:
+Para fazer isso, edite `settings.gradle` em seu app hospedeiro
+para que ele inclua o repositório local e a dependência:
 
 {% tabs "settings.gradle.kts" %}
 {% tab "Kotlin" %}
@@ -321,7 +322,7 @@ dependencyResolutionManagement {
         maven {
             url = uri("https://storage.googleapis.com/download.flutter.io")
         }
-        // ...to before this line  
+        // ...to before this line
     }
 }
 ```
@@ -331,13 +332,13 @@ dependencyResolutionManagement {
 
 <br>
 
-### Kotlin DSL based Android Project
+### Projeto Android baseado em Kotlin DSL
 
-After an `aar` build of a Kotlin DSL-based Android project,
-follow these steps to add the flutter_module.
+Após uma build `aar` de um projeto Android baseado em Kotlin DSL,
+siga estes passos para adicionar o flutter_module.
 
-Include the flutter module as a dependency in 
-the Android project's `app/build.gradle` file.
+Inclua o módulo flutter como uma dependência no
+arquivo `app/build.gradle` do projeto Android.
 
 ```kotlin title="MyApp/app/build.gradle.kts"
 android {
@@ -361,8 +362,8 @@ dependencies {
 }
 ```
 
-The `profileImplementation` ID is a custom `configuration` to be
-implemented in the `app/build.gradle` file of a host project.
+O ID `profileImplementation` é uma `configuration` personalizada a ser
+implementada no arquivo `app/build.gradle` de um projeto hospedeiro.
 
 ```kotlin title="host-project/app/build.gradle.kts"
 configurations {
@@ -383,14 +384,14 @@ dependencyResolutionManagement {
 ```
 
 :::important
-If you're located in China, use a mirror site rather than the
-`storage.googleapis.com` domain. To learn more about mirror sites,
-check out [Using Flutter in China][] page.
+Se você está localizado na China, use um site espelho em vez do
+domínio `storage.googleapis.com`. Para saber mais sobre sites espelho,
+consulte a página [Usando Flutter na China][Using Flutter in China].
 :::
 
 :::tip
-You can also build an AAR for your Flutter module in Android Studio using
-the `Build > Flutter > Build AAR` menu.
+Você também pode construir um AAR para seu módulo Flutter no Android Studio usando
+o menu **Build > Flutter > Build AAR**.
 
 {% render docs/app-figure.md, image:"development/add-to-app/android/project-setup/ide-build-aar.png" %}
 :::
@@ -398,33 +399,33 @@ the `Build > Flutter > Build AAR` menu.
 {% endtab %}
 {% tab "Module source code" %}
 
-### Depend on the module's source code {:.no_toc}
+### Dependa do código-fonte do módulo {:.no_toc}
 
-This option enables a one-step build for both your
-Android project and Flutter project. This option is
-convenient when you work on both parts simultaneously
-and rapidly iterate, but your team must install the
-Flutter SDK to build the host app.
+Esta opção habilita uma build de uma etapa para tanto seu
+projeto Android quanto seu projeto Flutter. Esta opção é
+conveniente quando você trabalha em ambas as partes simultaneamente
+e itera rapidamente, mas sua equipe deve instalar o
+Flutter SDK para construir o app hospedeiro.
 
 :::tip
-By default, the host app provides the `:app` Gradle project.
-To change the name of this project, set
-`flutter.hostAppProjectName` in the Flutter module's
-`gradle.properties` file.
-Include this project in the host app's `settings.gradle` file.
+Por padrão, o app hospedeiro fornece o projeto Gradle `:app`.
+Para mudar o nome deste projeto, configure
+`flutter.hostAppProjectName` no arquivo
+`gradle.properties` do módulo Flutter.
+Inclua este projeto no arquivo `settings.gradle` do app hospedeiro.
 :::
 
-#### Updating `settings.gradle`
+#### Atualizando `settings.gradle`
 
-Include the Flutter module as a subproject in the host app's
-`settings.gradle`. This example assumes `flutter_module` and `MyApp`
-exist in the same directory
+Inclua o módulo Flutter como um subprojeto no
+`settings.gradle` do app hospedeiro. Este exemplo assume que `flutter_module` e `MyApp`
+existem no mesmo diretório
 
-If you are using Kotlin, apply the following changes:
+Se você está usando Kotlin, aplique as seguintes mudanças:
 
 ```kotlin title="MyApp/settings.gradle.kts"
 // Include the host app project. Assumed existing content.
-include(":app")            
+include(":app")
 // Replace "flutter_module" with whatever package_name you supplied when you ran:
 // `$ flutter create -t module [package_name]
 val filePath = settingsDir.parentFile.toString() + "/flutter_module/.android/include_flutter.groovy"
@@ -432,14 +433,14 @@ apply(from = File(filePath))
 ```
 
 :::warning
-The ability to invoke `include_flutter.groovy` from Kotlin code
-requires Flutter 3.27.
-To determine your current Flutter version,
-run `flutter --version`. If it isn't at least version 3.27,
-consider changing to either the `main` or `beta` channels.
+A capacidade de invocar `include_flutter.groovy` do código Kotlin
+requer Flutter 3.27.
+Para determinar sua versão atual do Flutter,
+execute `flutter --version`. Se não for pelo menos a versão 3.27,
+considere mudar para os canais `main` ou `beta`.
 :::
 
-If you are using Groovy, apply the following changes:
+Se você está usando Groovy, aplique as seguintes mudanças:
 
 ```groovy title="MyApp/settings.gradle"
 // Include the host app project.
@@ -449,15 +450,15 @@ def filePath = settingsDir.parentFile.toString() + "/flutter_module/.android/inc
 apply from: filePath                              // new
 ```
 
-The binding and script evaluation allows the Flutter
-module to `include` itself (as `:flutter`) and any
-Flutter plugins used by the module (such as `:package_info` and `:video_player`)
-in the evaluation context of your `settings.gradle`.
+O binding e avaliação de script permite que o módulo
+Flutter `include` a si mesmo (como `:flutter`) e quaisquer
+plugins Flutter usados pelo módulo (como `:package_info` e `:video_player`)
+no contexto de avaliação do seu `settings.gradle`.
 
-#### Updating `app/build.gradle`
+#### Atualizando `app/build.gradle`
 
-Introduce an `implementation` dependency on the Flutter
-module from your app:
+Introduza uma dependência `implementation` no módulo
+Flutter do seu app:
 
 ```groovy title="MyApp/app/build.gradle"
 dependencies {
@@ -466,15 +467,15 @@ dependencies {
 ```
 
 :::note
-This code is identical between Groovy and Kotlin.
+Este código é idêntico entre Groovy e Kotlin.
 :::
 
 {% endtab %}
 {% endtabs %}
 
-Your app now includes the Flutter module as a dependency.
+Seu app agora inclui o módulo Flutter como uma dependência.
 
-Continue to the [Adding a Flutter screen to an Android app][] guide.
+Continue para o guia [Adicionando uma tela Flutter a um app Android][Adding a Flutter screen to an Android app].
 
 [`abiFilters`]: {{site.android-dev}}/reference/tools/gradle-api/4.2/com/android/build/api/dsl/Ndk#abiFilters:kotlin.collections.MutableSet
 [Adding a Flutter screen to an Android app]: /add-to-app/android/add-flutter-screen

@@ -1,5 +1,6 @@
 ---
 layout: toc
-title: Serialization
-description: Content covering serialization in Flutter apps.
+ia-translate: true
+title: Serialização
+description: Conteúdo sobre serialização em apps Flutter.
 ---

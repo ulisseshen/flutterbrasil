@@ -1,49 +1,50 @@
 ---
-title: Add a Flutter Fragment to an Android app
-short-title: Add a Flutter Fragment
-description: Learn how to add a Flutter Fragment to your existing Android app.
+ia-translate: true
+title: Adicione um Flutter Fragment a um app Android
+short-title: Adicione um Flutter Fragment
+description: Aprenda como adicionar um Flutter Fragment ao seu app Android existente.
 ---
 
 <img src='/assets/images/docs/development/add-to-app/android/add-flutter-fragment/add-flutter-fragment_header.png'
 class="mw-100" alt="Add Flutter Fragment Header">
 
-This guide describes how to add a Flutter `Fragment` to an existing
-Android app.  In Android, a [`Fragment`][] represents a modular
-piece of a larger UI. A `Fragment` might be used to present
-a sliding drawer, tabbed content, a page in a `ViewPager`,
-or it might simply represent a normal screen in a
-single-`Activity` app. Flutter provides a [`FlutterFragment`][]
-so that developers can present a Flutter experience any place
-that they can use a regular `Fragment`.
+Este guia descreve como adicionar um `Fragment` Flutter a um app
+Android existente. No Android, um [`Fragment`][] representa uma
+parte modular de uma UI maior. Um `Fragment` pode ser usado para apresentar
+uma gaveta deslizante, conteúdo com abas, uma página em um `ViewPager`,
+ou pode simplesmente representar uma tela normal em um
+app de `Activity` única. O Flutter fornece um [`FlutterFragment`][]
+para que desenvolvedores possam apresentar uma experiência Flutter em qualquer lugar
+que eles possam usar um `Fragment` regular.
 
-If an `Activity` is equally applicable for your application needs,
-consider [using a `FlutterActivity`][] instead of a
-`FlutterFragment`, which is quicker and easier to use.
+Se uma `Activity` é igualmente aplicável às suas necessidades de aplicação,
+considere [usar uma `FlutterActivity`][] em vez de um
+`FlutterFragment`, que é mais rápido e fácil de usar.
 
-`FlutterFragment` allows developers to control the following
-details of the Flutter experience within the `Fragment`:
+`FlutterFragment` permite que desenvolvedores controlem os seguintes
+detalhes da experiência Flutter dentro do `Fragment`:
 
- * Initial Flutter route
- * Dart entrypoint to execute
- * Opaque vs translucent background
- * Whether `FlutterFragment` should control its surrounding `Activity`
- * Whether a new [`FlutterEngine`][] or a cached `FlutterEngine` should be used
+ * Rota inicial do Flutter
+ * Entrypoint Dart a executar
+ * Fundo opaco vs translúcido
+ * Se `FlutterFragment` deve controlar sua `Activity` envolvente
+ * Se um novo [`FlutterEngine`][] ou um `FlutterEngine` em cache deve ser usado
 
-`FlutterFragment` also comes with a number of calls that
-must be forwarded from its surrounding `Activity`.
-These calls allow Flutter to react appropriately to OS events.
+`FlutterFragment` também vem com várias chamadas que
+devem ser encaminhadas de sua `Activity` envolvente.
+Essas chamadas permitem que o Flutter reaja apropriadamente a eventos do OS.
 
-All varieties of `FlutterFragment`, and its requirements,
-are described in this guide.
+Todas as variedades de `FlutterFragment`, e seus requisitos,
+são descritas neste guia.
 
-## Add a `FlutterFragment` to an `Activity` with a new `FlutterEngine`
+## Adicione um `FlutterFragment` a uma `Activity` com um novo `FlutterEngine`
 
-The first thing to do to use a `FlutterFragment` is to add it to a host
-`Activity`.
+A primeira coisa a fazer para usar um `FlutterFragment` é adicioná-lo a uma
+`Activity` hospedeira.
 
-To add a `FlutterFragment` to a host `Activity`, instantiate and
-attach an instance of `FlutterFragment` in `onCreate()` within the
-`Activity`, or at another time that works for your app:
+Para adicionar um `FlutterFragment` a uma `Activity` hospedeira, instancie e
+anexe uma instância de `FlutterFragment` em `onCreate()` dentro da
+`Activity`, ou em outro momento que funcione para seu app:
 
 {% tabs "android-language" %}
 {% tab "Kotlin" %}
@@ -145,13 +146,13 @@ public class MyActivity extends FragmentActivity {
 {% endtab %}
 {% endtabs %}
 
-The previous code is sufficient to render a Flutter UI
-that begins with a call to your `main()` Dart entrypoint,
-an initial Flutter route of `/`, and a new `FlutterEngine`.
-However, this code is not sufficient to achieve all expected
-Flutter behavior. Flutter depends on various OS signals that
-must  be forwarded from your host `Activity` to `FlutterFragment`.
-These calls are shown in the following example:
+O código anterior é suficiente para renderizar uma UI Flutter
+que começa com uma chamada para seu entrypoint Dart `main()`,
+uma rota inicial do Flutter de `/`, e um novo `FlutterEngine`.
+No entanto, este código não é suficiente para alcançar todo o
+comportamento esperado do Flutter. O Flutter depende de vários sinais do OS que
+devem ser encaminhados de sua `Activity` hospedeira para `FlutterFragment`.
+Essas chamadas são mostradas no exemplo a seguir:
 
 {% tabs "android-language" %}
 {% tab "Kotlin" %}
@@ -271,28 +272,27 @@ public class MyActivity extends FragmentActivity {
 {% endtab %}
 {% endtabs %}
 
-With the OS signals forwarded to Flutter,
-your `FlutterFragment` works as expected.
-You have now added a `FlutterFragment` to your existing Android app.
+Com os sinais do OS encaminhados para o Flutter,
+seu `FlutterFragment` funciona como esperado.
+Você agora adicionou um `FlutterFragment` ao seu app Android existente.
 
-The simplest integration path uses a new `FlutterEngine`,
-which comes with a non-trivial initialization time,
-leading to a blank UI until Flutter is
-initialized and rendered the first time.
-Most of this time overhead can be avoided by using
-a cached, pre-warmed `FlutterEngine`, which is discussed next.
+O caminho de integração mais simples usa um novo `FlutterEngine`,
+que vem com um tempo de inicialização não trivial,
+levando a uma UI em branco até que o Flutter seja
+inicializado e renderizado pela primeira vez.
+A maior parte desse overhead de tempo pode ser evitada usando
+um `FlutterEngine` em cache e pré-aquecido, que é discutido a seguir.
 
-## Using a pre-warmed `FlutterEngine`
+## Usando um `FlutterEngine` pré-aquecido
 
-By default, a `FlutterFragment` creates its own instance
-of a `FlutterEngine`, which requires non-trivial warm-up time.
-This means your user sees a blank `Fragment` for a brief moment.
-You can mitigate most of this warm-up time by
-using an existing, pre-warmed instance of `FlutterEngine`.
+Por padrão, um `FlutterFragment` cria sua própria instância
+de um `FlutterEngine`, que requer um tempo de aquecimento não trivial.
+Isso significa que seu usuário vê um `Fragment` em branco por um breve momento.
+Você pode mitigar a maior parte desse tempo de aquecimento usando
+uma instância existente e pré-aquecida de `FlutterEngine`.
 
-To use a pre-warmed `FlutterEngine` in a `FlutterFragment`,
-instantiate a `FlutterFragment` with the `withCachedEngine()`
-factory method.  
+Para usar um `FlutterEngine` pré-aquecido em um `FlutterFragment`,
+instancie um `FlutterFragment` com o método de fábrica `withCachedEngine()`.
 
 {% tabs "android-language" %}
 {% tab "Kotlin" %}
@@ -345,37 +345,37 @@ FlutterFragment.withCachedEngine("my_engine_id").build();
 {% endtab %}
 {% endtabs %}
 
-`FlutterFragment` internally knows about [`FlutterEngineCache`][]
-and retrieves the pre-warmed `FlutterEngine` based on the ID
-given to `withCachedEngine()`.
+`FlutterFragment` internamente conhece sobre [`FlutterEngineCache`][]
+e recupera o `FlutterEngine` pré-aquecido com base no ID
+fornecido para `withCachedEngine()`.
 
-By providing a pre-warmed `FlutterEngine`,
-as previously shown, your app renders the
-first Flutter frame as quickly as possible.
+Ao fornecer um `FlutterEngine` pré-aquecido,
+como mostrado anteriormente, seu app renderiza o
+primeiro frame Flutter o mais rápido possível.
 
-#### Initial route with a cached engine
+#### Rota inicial com um engine em cache
 
 {% include docs/add-to-app/android-initial-route-cached-engine.md %}
 
-## Display a splash screen
+## Exiba uma splash screen
 
-The initial display of Flutter content requires some wait time,
-even if a pre-warmed `FlutterEngine` is used.
-To help improve the user experience around
-this brief waiting period, Flutter supports the
-display of a splash screen (also known as "launch screen") until Flutter
-renders its first frame. For instructions about how to show a launch
-screen, see the [splash screen guide][].
+A exibição inicial do conteúdo Flutter requer algum tempo de espera,
+mesmo se um `FlutterEngine` pré-aquecido for usado.
+Para ajudar a melhorar a experiência do usuário em torno
+desse breve período de espera, o Flutter suporta a
+exibição de uma splash screen (também conhecida como "launch screen") até que o Flutter
+renderize seu primeiro frame. Para instruções sobre como mostrar uma launch
+screen, consulte o [guia de splash screen][splash screen guide].
 
-## Run Flutter with a specified initial route
+## Execute o Flutter com uma rota inicial especificada
 
-An Android app might contain many independent Flutter experiences,
-running in different `FlutterFragment`s, with different
-`FlutterEngine`s. In these scenarios,
-it's common for each Flutter experience to begin with different
-initial routes (routes other than `/`).
-To facilitate this, `FlutterFragment`'s `Builder`
-allows you to specify a desired initial route, as shown:
+Um app Android pode conter muitas experiências Flutter independentes,
+executando em diferentes `FlutterFragment`s, com diferentes
+`FlutterEngine`s. Nesses cenários,
+é comum que cada experiência Flutter comece com diferentes
+rotas iniciais (rotas diferentes de `/`).
+Para facilitar isso, o `Builder` de `FlutterFragment`
+permite que você especifique uma rota inicial desejada, como mostrado:
 
 {% tabs "android-language" %}
 {% tab "Kotlin" %}
@@ -401,22 +401,22 @@ FlutterFragment flutterFragment = FlutterFragment.withNewEngine()
 {% endtabs %}
 
 :::note
-`FlutterFragment`'s initial route property has no effect when a pre-warmed
-`FlutterEngine` is used because the pre-warmed `FlutterEngine` already
-chose an initial route. The initial route can be chosen explicitly when
-pre-warming a `FlutterEngine`.
+A propriedade de rota inicial de `FlutterFragment` não tem efeito quando um
+`FlutterEngine` pré-aquecido é usado porque o `FlutterEngine` pré-aquecido já
+escolheu uma rota inicial. A rota inicial pode ser escolhida explicitamente ao
+pré-aquecer um `FlutterEngine`.
 :::
 
-## Run Flutter from a specified entrypoint
+## Execute o Flutter de um entrypoint especificado
 
-Similar to varying initial routes, different
-`FlutterFragment`s might want to execute different
-Dart entrypoints. In a typical Flutter app, there is only one
-Dart entrypoint: `main()`, but you can define other entrypoints.
+Semelhante a rotas iniciais variadas, diferentes
+`FlutterFragment`s podem querer executar diferentes
+entrypoints Dart. Em um app Flutter típico, há apenas um
+entrypoint Dart: `main()`, mas você pode definir outros entrypoints.
 
-`FlutterFragment` supports specification of the desired
-Dart entrypoint to execute for the given Flutter experience.
-To specify an entrypoint, build `FlutterFragment`, as shown:
+`FlutterFragment` suporta a especificação do
+entrypoint Dart desejado a ser executado para a experiência Flutter fornecida.
+Para especificar um entrypoint, construa `FlutterFragment`, como mostrado:
 
 {% tabs "android-language" %}
 {% tab "Kotlin" %}
@@ -439,35 +439,35 @@ FlutterFragment flutterFragment = FlutterFragment.withNewEngine()
 {% endtab %}
 {% endtabs %}
 
-The `FlutterFragment` configuration results in the execution
-of a Dart entrypoint called `mySpecialEntrypoint()`.
-Notice that the parentheses `()` are
-not included in the `dartEntrypoint` `String` name.
+A configuração de `FlutterFragment` resulta na execução
+de um entrypoint Dart chamado `mySpecialEntrypoint()`.
+Observe que os parênteses `()` não estão
+incluídos no nome `String` de `dartEntrypoint`.
 
 :::note
-`FlutterFragment`'s Dart entrypoint property has no effect
-when a pre-warmed `FlutterEngine` is used because the
-pre-warmed `FlutterEngine` already executed a Dart entrypoint.
-The Dart entrypoint can be chosen explicitly when pre-warming
-a `FlutterEngine`.
+A propriedade de entrypoint Dart de `FlutterFragment` não tem efeito
+quando um `FlutterEngine` pré-aquecido é usado porque o
+`FlutterEngine` pré-aquecido já executou um entrypoint Dart.
+O entrypoint Dart pode ser escolhido explicitamente ao pré-aquecer
+um `FlutterEngine`.
 :::
 
-## Control `FlutterFragment`'s render mode
+## Controle o modo de renderização de `FlutterFragment`
 
-`FlutterFragment` can either use a `SurfaceView` to render its
-Flutter content, or it can use a `TextureView`.
-The default is `SurfaceView`, which is significantly
-better for performance than `TextureView`. However, `SurfaceView`
-can't be interleaved in the middle of an Android `View` hierarchy.
-A `SurfaceView` must either be the bottommost `View` in the hierarchy,
-or the topmost `View` in the hierarchy.
-Additionally, on Android versions before Android N,
-`SurfaceView`s can't be animated because their layout and rendering
-aren't synchronized with the rest of the `View` hierarchy.
-If either of these use cases are requirements for your app,
-then you need to use `TextureView` instead of `SurfaceView`.
-Select a `TextureView` by building a `FlutterFragment` with a
-`texture` `RenderMode`:
+`FlutterFragment` pode usar um `SurfaceView` para renderizar seu
+conteúdo Flutter, ou pode usar um `TextureView`.
+O padrão é `SurfaceView`, que é significativamente
+melhor para desempenho do que `TextureView`. No entanto, `SurfaceView`
+não pode ser intercalado no meio de uma hierarquia de `View` do Android.
+Um `SurfaceView` deve ser a `View` mais inferior na hierarquia,
+ou a `View` mais superior na hierarquia.
+Além disso, em versões do Android anteriores ao Android N,
+`SurfaceView`s não podem ser animados porque seu layout e renderização
+não estão sincronizados com o restante da hierarquia de `View`.
+Se qualquer um desses casos de uso são requisitos para seu app,
+então você precisa usar `TextureView` em vez de `SurfaceView`.
+Selecione um `TextureView` construindo um `FlutterFragment` com um
+`RenderMode` de `texture`:
 
 {% tabs "android-language" %}
 {% tab "Kotlin" %}
@@ -502,40 +502,40 @@ FlutterFragment flutterFragment = FlutterFragment.withCachedEngine("my_engine_id
 {% endtab %}
 {% endtabs %}
 
-Using the configuration shown, the resulting `FlutterFragment`
-renders its UI to a `TextureView`.
+Usando a configuração mostrada, o `FlutterFragment` resultante
+renderiza sua UI para um `TextureView`.
 
-## Display a `FlutterFragment` with transparency
+## Exiba um `FlutterFragment` com transparência
 
-By default, `FlutterFragment` renders with an opaque background,
-using a `SurfaceView`. (See "Control `FlutterFragment`'s render
-mode.") That background is black for any pixels that aren't
- painted by Flutter. Rendering with an opaque background is
-the preferred rendering mode for performance reasons.
-Flutter rendering with transparency on Android negatively
-affects performance. However, there are many designs that
-require transparent pixels in the Flutter experience that
-show through to the underlying Android UI. For this reason,
-Flutter supports translucency in a `FlutterFragment`.
+Por padrão, `FlutterFragment` renderiza com um fundo opaco,
+usando um `SurfaceView`. (Consulte "Controle o modo de renderização de
+`FlutterFragment`.") Esse fundo é preto para quaisquer pixels que não são
+pintados pelo Flutter. Renderizar com um fundo opaco é
+o modo de renderização preferido por razões de desempenho.
+Renderização Flutter com transparência no Android afeta negativamente
+o desempenho. No entanto, existem muitos designs que
+requerem pixels transparentes na experiência Flutter que
+aparecem através da UI Android subjacente. Por esse motivo,
+o Flutter suporta translucidez em um `FlutterFragment`.
 
 :::note
-Both `SurfaceView` and `TextureView` support transparency.
-However, when a `SurfaceView` is instructed to render with
-transparency, it positions itself at a higher z-index than
-all other Android `View`s, which means it appears
-above all other `View`s. This is a limitation of `SurfaceView`.
-If it's acceptable to render your Flutter experience on top
-of all other content, then `FlutterFragment`'s default
-`RenderMode` of `surface` is the `RenderMode` that you
-should use. However, if you need to display Android `View`s both
-above and below your Flutter experience, then you must specify a
-`RenderMode` of `texture`.
-See "Control `FlutterFragment`'s render mode"
-for information about controlling the `RenderMode`.
+Tanto `SurfaceView` quanto `TextureView` suportam transparência.
+No entanto, quando um `SurfaceView` é instruído a renderizar com
+transparência, ele se posiciona em um z-index mais alto do que
+todas as outras `View`s do Android, o que significa que aparece
+acima de todas as outras `View`s. Esta é uma limitação de `SurfaceView`.
+Se é aceitável renderizar sua experiência Flutter em cima
+de todo o outro conteúdo, então o `RenderMode` padrão de
+`FlutterFragment` de `surface` é o `RenderMode` que você
+deve usar. No entanto, se você precisa exibir `View`s do Android tanto
+acima quanto abaixo de sua experiência Flutter, então você deve especificar um
+`RenderMode` de `texture`.
+Consulte "Controle o modo de renderização de `FlutterFragment`"
+para informações sobre como controlar o `RenderMode`.
 :::
 
-To enable transparency for a `FlutterFragment`,
-build it with the following configuration:
+Para habilitar transparência para um `FlutterFragment`,
+construa-o com a seguinte configuração:
 
 {% tabs "android-language" %}
 {% tab "Kotlin" %}
@@ -570,36 +570,36 @@ FlutterFragment flutterFragment = FlutterFragment.withCachedEngine("my_engine_id
 {% endtab %}
 {% endtabs %}
 
-## The relationship between `FlutterFragment` and its `Activity`
+## O relacionamento entre `FlutterFragment` e sua `Activity`
 
-Some apps choose to use `Fragment`s as entire Android screens.
-In these apps, it would be reasonable for a `Fragment` to
-control system chrome like Android's status bar,
-navigation bar, and orientation.
+Alguns apps escolhem usar `Fragment`s como telas inteiras do Android.
+Nesses apps, seria razoável para um `Fragment`
+controlar o chrome do sistema como a barra de status do Android,
+barra de navegação e orientação.
 
 <img src='/assets/images/docs/development/add-to-app/android/add-flutter-fragment/add-flutter-fragment_fullscreen.png'
  class="mw-100" alt="Fullscreen Flutter">
 
-In other apps, `Fragment`s are used to represent only
-a portion of a UI. A `FlutterFragment` might be used to
-implement the inside of a drawer, a video player,
-or a single card. In these situations, it would be
-inappropriate for the `FlutterFragment` to affect
-Android's system chrome because there are other UI
-pieces within the same `Window`.
+Em outros apps, `Fragment`s são usados para representar apenas
+uma porção de uma UI. Um `FlutterFragment` pode ser usado para
+implementar o interior de uma gaveta, um reprodutor de vídeo,
+ou um único card. Nessas situações, seria
+inapropriado para o `FlutterFragment` afetar
+o chrome do sistema do Android porque há outras peças de UI
+dentro da mesma `Window`.
 
 <img src='/assets/images/docs/development/add-to-app/android/add-flutter-fragment/add-flutter-fragment_partial-ui.png'
  class="mw-100" alt="Flutter as Partial UI">
 
-`FlutterFragment` comes with a concept that helps
-differentiate between the case when a `FlutterFragment`
-should be able to control its host `Activity`, and the
-cases when a `FlutterFragment` should only affect its
-own behavior. To prevent a `FlutterFragment` from
-exposing its `Activity` to Flutter plugins, and to
-prevent Flutter from controlling the `Activity`'s system UI,
-use the `shouldAttachEngineToActivity()` method in
-`FlutterFragment`'s `Builder`, as shown:
+`FlutterFragment` vem com um conceito que ajuda
+a diferenciar entre o caso quando um `FlutterFragment`
+deve ser capaz de controlar sua `Activity` hospedeira, e os
+casos quando um `FlutterFragment` deve afetar apenas seu
+próprio comportamento. Para evitar que um `FlutterFragment`
+exponha sua `Activity` aos plugins Flutter, e para
+evitar que o Flutter controle a UI do sistema da `Activity`,
+use o método `shouldAttachEngineToActivity()` no
+`Builder` de `FlutterFragment`, como mostrado:
 
 {% tabs "android-language" %}
 {% tab "Kotlin" %}
@@ -634,16 +634,16 @@ FlutterFragment flutterFragment = FlutterFragment.withCachedEngine("my_engine_id
 {% endtab %}
 {% endtabs %}
 
-Passing `false` to the `shouldAttachEngineToActivity()`
-`Builder` method prevents Flutter from interacting with
-the surrounding `Activity`. The default value is `true`,
-which allows Flutter and Flutter plugins to interact with the
-surrounding `Activity`.
+Passar `false` para o método `Builder`
+`shouldAttachEngineToActivity()` impede que o Flutter interaja com
+a `Activity` envolvente. O valor padrão é `true`,
+que permite ao Flutter e aos plugins Flutter interagir com a
+`Activity` envolvente.
 
 :::note
-Some plugins might expect or require an `Activity` reference.
-Ensure that none of your plugins require an `Activity`
-before you disable access.
+Alguns plugins podem esperar ou exigir uma referência de `Activity`.
+Certifique-se de que nenhum de seus plugins requer uma `Activity`
+antes de desabilitar o acesso.
 :::
 
 [`Fragment`]: {{site.android-dev}}/guide/components/fragments

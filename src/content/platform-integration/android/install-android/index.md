@@ -1,13 +1,14 @@
 ---
-title: Add Android as a target platform for Flutter
-description: Configure your system to develop Flutter for Android.
-short-title: Set up Android development
+ia-translate: true
+title: Adicionar Android como plataforma de destino para Flutter
+description: Configure seu sistema para desenvolver Flutter para Android.
+short-title: Configurar desenvolvimento Android
 target-list: [Windows, 'web on Windows', Linux, 'web on Linux', macOS, 'web on macOS', iOS, 'web on ChromeOS']
 ---
 
-To set up your development environment for targeting Android,
-choose the guide that corresponds to the [Getting Started path][] you followed,
-or the platform you already have set up.
+Para configurar seu ambiente de desenvolvimento para direcionar Android,
+escolha o guia que corresponde ao caminho [Getting Started path][] que você seguiu,
+ou a plataforma que você já configurou.
 
 <div class="card-grid">
 {% for target in target-list %}

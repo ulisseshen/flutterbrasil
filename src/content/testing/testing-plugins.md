@@ -1,89 +1,90 @@
 ---
-title: Testing plugins
-description: Learn how to test your plugin package.
+ia-translate: true
+title: Testar plugins
+description: Aprenda como testar seu pacote de plugin.
 ---
 
-All of the [usual types of Flutter tests][] apply to
-plugin packages as well, but because plugins contain
-native code they often also require other kinds of tests
-to test all of their functionality.
+Todos os [tipos usuais de testes Flutter][usual types of Flutter tests] se aplicam a
+pacotes de plugins também, mas como plugins contêm
+código nativo, eles frequentemente também requerem outros tipos de testes
+para testar toda sua funcionalidade.
 
 [usual types of Flutter tests]: /testing/overview
 
 :::note
-To learn how to test your plugin code, read on.
-To learn how to avoid crashes from a plugin when
-testing your Flutter app, check out
+Para aprender como testar o código do seu plugin, continue lendo.
+Para aprender como evitar crashes de um plugin ao
+testar seu app Flutter, confira
 [Plugins in Flutter tests][].
 :::
 
 [Plugins in Flutter tests]: /testing/plugins-in-tests
 
-## Types of plugin tests
+## Tipos de testes de plugins
 
-To see examples of each of these types of tests, you can
-[create a new plugin from the plugin template][plugin-tests]
-and look in the indicated directories.
+Para ver exemplos de cada um desses tipos de testes, você pode
+[criar um novo plugin a partir do template de plugin][plugin-tests]
+e olhar nos diretórios indicados.
 
-* <strong>Dart [unit tests][] and [widget tests][]</strong>.
-  These tests allow you to test the Dart portion of your plugin
-  just as you would test the Dart code of a non-plugin package.
-  However, the plugin's native code [won't be loaded][],
-  so any calls to platform channels need to be [mocked in tests][].
+* <strong>Dart [unit tests][] e [widget tests][]</strong>.
+  Esses testes permitem que você teste a porção Dart do seu plugin
+  assim como você testaria o código Dart de um pacote que não seja plugin.
+  No entanto, o código nativo do plugin [não será carregado][won't be loaded],
+  então quaisquer chamadas a canais de plataforma precisam ser [mockadas em testes][mocked in tests].
 
-  See the `test` directory for an example.
+  Veja o diretório `test` para um exemplo.
 
 * <strong>Dart [integration tests][]</strong>.
-  Since integration tests run in the context of a
-  Flutter application (the example app),
-  they can test both the Dart and native code,
-  as well as the interaction between them.
-  They are also useful for unit testing web implementation
-  code that needs to run in a browser.
+  Como integration tests executam no contexto de
+  uma aplicação Flutter (o app de exemplo),
+  eles podem testar tanto o código Dart quanto o nativo,
+  bem como a interação entre eles.
+  Eles também são úteis para unit testing de código de implementação web
+  que precisa executar em um navegador.
 
-  These are often the most important tests for a plugin.
-  However, Dart integration tests can't interact with native UI,
-  such as native dialogs or the contents of platform views.
+  Esses são frequentemente os testes mais importantes para um plugin.
+  No entanto, Dart integration tests não podem interagir com UI nativa,
+  como diálogos nativos ou o conteúdo de platform views.
 
-  See the  `example/integration_test` directory for an example.
+  Veja o diretório `example/integration_test` para um exemplo.
 
 * <strong>Native unit tests.</strong>
-  Just as Dart unit tests can test the Dart portions
-  of a plugin in isolation, native unit tests can
-  test the native parts in isolation.
-  Each platform has its own native unit test system,
-  and the tests are written in the same native languages
-  as the code it is testing.
+  Assim como Dart unit tests podem testar as porções Dart
+  de um plugin isoladamente, native unit tests podem
+  testar as partes nativas isoladamente.
+  Cada plataforma tem seu próprio sistema de unit test nativo,
+  e os testes são escritos nas mesmas linguagens nativas
+  que o código que está sendo testado.
 
-  Native unit tests can be especially valuable
-  if you need to mock out APIs wrapped by your plugin code,
-  which isn't possible in a Dart integration test.
+  Native unit tests podem ser especialmente valiosos
+  se você precisa mockar APIs envolvidas pelo código do seu plugin,
+  o que não é possível em um Dart integration test.
 
-  You can set up and use any native test frameworks
-  you are familiar with for each platform,
-  but the following are already configured in the plugin template:
+  Você pode configurar e usar quaisquer frameworks de teste nativos
+  com os quais você está familiarizado para cada plataforma,
+  mas os seguintes já estão configurados no template de plugin:
 
   * <strong>Android</strong>:
-    [JUnit][] tests can be found in `android/src/test/`.
+    Testes [JUnit][] podem ser encontrados em `android/src/test/`.
 
-  * <strong>iOS</strong> and <strong>macOS</strong>:
-    [XCTest][] tests can be found in `example/ios/RunnerTests/`
-    and `example/macos/RunnerTests/` respectively.
-    These are in the example directory,
-    not the top-level package directory,
-    because they are run via the example app's project.
+  * <strong>iOS</strong> e <strong>macOS</strong>:
+    Testes [XCTest][] podem ser encontrados em `example/ios/RunnerTests/`
+    e `example/macos/RunnerTests/` respectivamente.
+    Estes estão no diretório example,
+    não no diretório do pacote de nível superior,
+    porque eles são executados via projeto do app de exemplo.
 
-  * <strong>Linux</strong> and <strong>Windows</strong>:
-    [GoogleTest][] tests can be found in `linux/test/`
-    and `windows/test/`, respectively.
+  * <strong>Linux</strong> e <strong>Windows</strong>:
+    Testes [GoogleTest][] podem ser encontrados em `linux/test/`
+    e `windows/test/`, respectivamente.
 
-Other types of tests, which aren't currently pre-configured
-in the template, are <strong>native UI tests</strong>.
-Running your application under a native UI testing framework,
-such as [Espresso][] or [XCUITest][],
-enables tests that interact with both native and Flutter UI elements,
-so can be useful if your plugin can't be tested without
-native UI interactions.
+Outros tipos de testes, que não estão atualmente pré-configurados
+no template, são <strong>native UI tests</strong>.
+Executar sua aplicação sob um framework de teste de UI nativo,
+como [Espresso][] ou [XCUITest][],
+habilita testes que interagem com elementos de UI tanto nativos quanto Flutter,
+então podem ser úteis se seu plugin não pode ser testado sem
+interações de UI nativa.
 
 
 [Espresso]: {{site.repo.packages}}/tree/main/packages/espresso
@@ -98,112 +99,111 @@ native UI interactions.
 [XCTest]: {{site.apple-dev}}/documentation/xctest
 [XCUITest]: {{site.apple-dev}}/library/archive/documentation/DeveloperTools/Conceptual/testing_with_xcode/chapters/09-ui_testing.html
 
-## Running tests
+## Executar testes
 
 ### Dart unit tests
 
-These can be run like any other Flutter unit tests,
-either from your preferred Flutter IDE,
-or using `flutter test`.
+Esses podem ser executados como qualquer outro Flutter unit tests,
+seja do seu IDE Flutter preferido,
+ou usando `flutter test`.
 
 ### Integration tests
 
-For information on running this type of test, check out the
-[integration test documentation][].
-The commands must be run in the `example` directory.
+Para informações sobre execução deste tipo de teste, confira a
+[documentação de integration test][integration test documentation].
+Os comandos devem ser executados no diretório `example`.
 
 [integration test documentation]: /cookbook/testing/integration/introduction
 
 ### Native unit tests
 
-For all platforms, you need to build the example
-application at least once before running the unit tests,
-to ensure that all of the platform-specific build
-files have been created.
+Para todas as plataformas, você precisa compilar a aplicação de exemplo
+pelo menos uma vez antes de executar os unit tests,
+para garantir que todos os arquivos de build
+específicos da plataforma foram criados.
 
 <strong>Android JUnit</strong><br>
 
-If you have the example opened as an Android project
-in Android Studio, you can run the unit tests using
-the [Android Studio test UI][].
+Se você tem o exemplo aberto como um projeto Android
+no Android Studio, você pode executar os unit tests usando
+a [UI de teste do Android Studio][Android Studio test UI].
 
-To run the tests from the command line,
-use the following command in the `example/android` directory:
+Para executar os testes da linha de comando,
+use o seguinte comando no diretório `example/android`:
 
 ```sh
 ./gradlew testDebugUnitTest
 ```
 
-<strong>iOS and macOS XCTest</strong><br>
+<strong>iOS e macOS XCTest</strong><br>
 
-If you have the example app opened in Xcode,
-you can run the unit tests using the [Xcode Test UI][].
+Se você tem o app de exemplo aberto no Xcode,
+você pode executar os unit tests usando a [UI de Teste do Xcode][Xcode Test UI].
 
-To run the tests from the command line,
-use the following command in the `example/ios` (for iOS)
-or `example/macos` (for macOS) directory:
+Para executar os testes da linha de comando,
+use o seguinte comando no diretório `example/ios` (para iOS)
+ou `example/macos` (para macOS):
 
 ```sh
 xcodebuild test -workspace Runner.xcworkspace -scheme Runner -configuration Debug
 ```
 
-For iOS tests, you might need to first open
-`Runner.xcworkspace` in Xcode to configure code signing.
+Para testes iOS, você pode precisar primeiro abrir
+`Runner.xcworkspace` no Xcode para configurar a assinatura de código.
 
 <strong>Linux GoogleTest</strong><br>
 
-To run the tests from the command line,
-use the following command in the example directory,
-replacing "my_plugin" with your plugin project name:
+Para executar os testes da linha de comando,
+use o seguinte comando no diretório example,
+substituindo "my_plugin" pelo nome do projeto do seu plugin:
 
 ```sh
 build/linux/plugins/x64/debug/my_plugin/my_plugin_test
 ```
 
-If you built the example app in release mode rather than
-debug, replace "debug" with "release".
+Se você compilou o app de exemplo no modo release ao invés de
+debug, substitua "debug" por "release".
 
 <strong>Windows GoogleTest</strong><br>
 
-If you have the example app opened in Visual Studio,
-you can run the unit tests using the [Visual Studio test UI][].
+Se você tem o app de exemplo aberto no Visual Studio,
+você pode executar os unit tests usando a [UI de teste do Visual Studio][Visual Studio test UI].
 
-To run the tests from the command line,
-use the following command in the example directory,
-replacing "my_plugin" with your plugin project name:
+Para executar os testes da linha de comando,
+use o seguinte comando no diretório example,
+substituindo "my_plugin" pelo nome do projeto do seu plugin:
 
 ```sh
 build/windows/plugins/my_plugin/Debug/my_plugin_test.exe
 ```
 
-If you built the example app in release mode rather
-than debug, replace "Debug" with "Release".
+Se você compilou o app de exemplo no modo release ao invés
+de debug, substitua "Debug" por "Release".
 
-## What types of tests to add
+## Quais tipos de testes adicionar
 
-The [general advice for testing Flutter projects][general advice]
-applies to plugins as well.
-Some extra considerations for plugin testing:
+O [conselho geral para testar projetos Flutter][general advice]
+se aplica a plugins também.
+Algumas considerações extras para testes de plugins:
 
-* Since only integration tests can test the communication
-  between Dart and the native languages,
-  try to have at least one integration test of each
-  platform channel call.
+* Como apenas integration tests podem testar a comunicação
+  entre Dart e as linguagens nativas,
+  tente ter pelo menos um integration test de cada
+  chamada de canal de plataforma.
 
-* If some flows can't be tested using integration
-  tests—for example if they require interacting with
-  native UI or mocking device state—consider writing
-  "end to end" tests of the two halves using unit tests:
+* Se alguns fluxos não podem ser testados usando integration
+  tests—por exemplo, se eles requerem interação com
+  UI nativa ou mockar o estado do dispositivo—considere escrever
+  testes "end to end" das duas metades usando unit tests:
 
-  * Native unit tests that set up the necessary mocks,
-    then call into the method channel entry point
-    with a synthesized call and validate the method response.
+  * Native unit tests que configuram os mocks necessários,
+    então chamam o ponto de entrada do canal de método
+    com uma chamada sintetizada e validam a resposta do método.
 
-  * Dart unit tests that mock the platform channel,
-    then call the plugin's public API and validate the results.
+  * Dart unit tests que mockam o canal de plataforma,
+    então chamam a API pública do plugin e validam os resultados.
 
 [Android Studio test UI]: {{site.android-dev}}/studio/test/test-in-android-studio
 [general advice]: /testing/overview
 [Visual Studio test UI]: https://learn.microsoft.com/en-us/visualstudio/test/getting-started-with-unit-testing?view=vs-2022&tabs=dotnet%2Cmstest#run-unit-tests
 [Xcode Test UI]: {{site.apple-dev}}/library/archive/documentation/DeveloperTools/Conceptual/testing_with_xcode/chapters/05-running_tests.html
-

@@ -716,104 +716,104 @@ class MyWidget extends StatelessWidget {
 }
 ```
 
-The delegates contain the actual localized values,
-while the `supportedLocales` defines which locales the app supports.
-The above example uses a `MaterialApp`,
-so it has both a `GlobalWidgetsLocalizations`
-for the base widgets localized values,
-and a `MaterialWidgetsLocalizations` for the Material widgets localizations.
-If you use `WidgetsApp` for your app, you don't need the latter.
-Note that these two delegates contain "default" values,
-but you'll need to provide one or more delegates
-for your own app's localizable copy,
-if you want those to be localized too.
+Os delegates contêm os valores localizados reais,
+enquanto o `supportedLocales` define quais locales o app suporta.
+O exemplo acima usa um `MaterialApp`,
+então ele tem tanto um `GlobalWidgetsLocalizations`
+para os valores localizados dos widgets base,
+quanto um `MaterialWidgetsLocalizations` para as localizações dos widgets Material.
+Se você usar `WidgetsApp` para seu app, você não precisa do último.
+Note que estes dois delegates contêm valores "padrão",
+mas você precisará fornecer um ou mais delegates
+para o texto localizável do seu próprio app,
+se você quiser que eles também sejam localizados.
 
-When initialized, the `WidgetsApp` (or `MaterialApp`)
-creates a [`Localizations`][] widget for you,
-with the delegates you specify.
-The current locale for the device is always accessible
-from the `Localizations` widget from the current context
-(in the form of a `Locale` object), or using the [`Window.locale`][].
+Quando inicializado, o `WidgetsApp` (ou `MaterialApp`)
+cria um widget [`Localizations`][] para você,
+com os delegates que você especificar.
+O locale atual para o dispositivo é sempre acessível
+do widget `Localizations` do contexto atual
+(na forma de um objeto `Locale`), ou usando o [`Window.locale`][].
 
-To access localized resources, use the `Localizations.of()` method
-to access a specific localizations class that is provided by a given delegate.
-Use the [`intl_translation`][] package to extract translatable copy
-to [arb][] files for translating, and importing them back into the app
-for using them with `intl`.
+Para acessar recursos localizados, use o método `Localizations.of()`
+para acessar uma classe de localizações específica que é fornecida por um delegate dado.
+Use o pacote [`intl_translation`][] para extrair texto traduzível
+para arquivos [arb][] para tradução, e importá-los de volta ao app
+para usá-los com `intl`.
 
-For further details on internationalization and localization in Flutter,
-see the [internationalization guide][], which has sample code
-with and without the `intl` package.
+Para mais detalhes sobre internacionalização e localização no Flutter,
+veja o [internationalization guide][], que tem código de exemplo
+com e sem o pacote `intl`.
 
 ## ViewControllers
 
-This section of the document discusses the equivalent
-of ViewController in Flutter and how to listen to
-lifecycle events.
+Esta seção do documento discute o equivalente
+de ViewController no Flutter e como escutar
+eventos de ciclo de vida.
 
-### Equivalent of ViewController in Flutter
+### Equivalente de ViewController no Flutter
 
-In UIKit, a `ViewController` represents a portion of user interface,
-most commonly used for a screen or section.
-These are composed together to build complex user interfaces,
-and help scale your application's UI.
-In Flutter, this job falls to Widgets.
-As mentioned in the Navigation section,
-screens in Flutter are represented by Widgets since
-"everything is a widget!"
-Use a `Navigator` to move between different `Route`s
-that represent different screens or pages,
-or maybe different states or renderings of the same data.
+No UIKit, um `ViewController` representa uma porção da interface do usuário,
+mais comumente usado para uma tela ou seção.
+Eles são compostos juntos para construir interfaces de usuário complexas,
+e ajudam a escalar a UI da sua aplicação.
+No Flutter, esse trabalho é atribuído aos Widgets.
+Como mencionado na seção de Navegação,
+telas no Flutter são representadas por Widgets já que
+"tudo é um widget!"
+Use um `Navigator` para mover entre diferentes `Route`s
+que representam diferentes telas ou páginas,
+ou talvez diferentes estados ou renderizações dos mesmos dados.
 
-### Listening to lifecycle events
+### Escutando eventos de ciclo de vida
 
-In UIKit, you can override methods to the `ViewController`
-to capture lifecycle methods for the view itself,
-or register lifecycle callbacks in the `AppDelegate`.
-In Flutter, you have neither concept, but you can instead
-listen to lifecycle events by hooking into
-the `WidgetsBinding` observer and listening to
-the `didChangeAppLifecycleState()` change event.
+No UIKit, você pode sobrescrever métodos do `ViewController`
+para capturar métodos de ciclo de vida para a view em si,
+ou registrar callbacks de ciclo de vida no `AppDelegate`.
+No Flutter, você não tem nenhum desses conceitos, mas pode
+escutar eventos de ciclo de vida conectando-se ao
+observer do `WidgetsBinding` e escutando o
+evento de mudança `didChangeAppLifecycleState()`.
 
-The observable lifecycle events are:
+Os eventos de ciclo de vida observáveis são:
 
 **`inactive`**
-: The application is in an inactive state and is not receiving
-user input. This event only works on iOS,
-as there is no equivalent event on Android.
+: A aplicação está em um estado inativo e não está recebendo
+entrada do usuário. Este evento funciona apenas no iOS,
+pois não há evento equivalente no Android.
 
 **`paused`**
-: The application is not currently visible to the user,
-is not responding to user input, but is running in the background.
+: A aplicação não está visível para o usuário no momento,
+não está respondendo à entrada do usuário, mas está executando em segundo plano.
 
 **`resumed`**
-: The application is visible and responding to user input.
+: A aplicação está visível e respondendo à entrada do usuário.
 
 **`suspending`**
-: The application is suspended momentarily.
-The iOS platform has no equivalent event.
+: A aplicação está suspensa momentaneamente.
+A plataforma iOS não tem evento equivalente.
 
-For more details on the meaning of these states, see
+Para mais detalhes sobre o significado desses estados, veja a
 [`AppLifecycleState` documentation][].
 
 ## Layouts
 
-This section discusses different layouts in Flutter
-and how they compare with UIKit.
+Esta seção discute diferentes layouts no Flutter
+e como eles se comparam com o UIKit.
 
-### Displaying a list view
+### Exibindo uma list view
 
-In UIKit, you might show a list in
-either a `UITableView` or a `UICollectionView`.
-In Flutter, you have a similar implementation using a `ListView`.
-In UIKit, these views have delegate methods
-for deciding the number of rows,
-the cell for each index path, and the size of the cells.
+No UIKit, você pode mostrar uma lista em
+um `UITableView` ou um `UICollectionView`.
+No Flutter, você tem uma implementação semelhante usando um `ListView`.
+No UIKit, essas views têm métodos delegate
+para decidir o número de linhas,
+a célula para cada index path, e o tamanho das células.
 
-Due to Flutter's immutable widget pattern,
-you pass a list of widgets to your `ListView`,
-and Flutter takes care of making sure that
-scrolling is fast and smooth.
+Devido ao padrão de widget imutável do Flutter,
+você passa uma lista de widgets para seu `ListView`,
+e o Flutter se encarrega de garantir que a
+rolagem seja rápida e suave.
 
 <?code-excerpt "lib/listview.dart"?>
 ```dart
@@ -867,11 +867,11 @@ class _SampleAppPageState extends State<SampleAppPage> {
 }
 ```
 
-### Detecting what was clicked
+### Detectando o que foi clicado
 
-In UIKit, you implement the delegate method,
+No UIKit, você implementa o método delegate,
 `tableView:didSelectRowAtIndexPath:`.
-In Flutter, use the touch handling provided by the passed-in widgets.
+No Flutter, use o tratamento de toque fornecido pelos widgets passados.
 
 <?code-excerpt "lib/list_item_tapped.dart"?>
 ```dart
@@ -933,27 +933,27 @@ class _SampleAppPageState extends State<SampleAppPage> {
 }
 ```
 
-### Dynamically updating ListView
+### Atualizando ListView dinamicamente
 
-In UIKit, you update the data for the list view,
-and notify the table or collection view using the
-`reloadData` method.
+No UIKit, você atualiza os dados para a list view,
+e notifica a table ou collection view usando o
+método `reloadData`.
 
-In Flutter, if you update the list of widgets inside a `setState()`,
-you quickly see that your data doesn't change visually.
-This is because when `setState()` is called,
-the Flutter rendering engine looks at the widget tree
-to see if anything has changed.
-When it gets to your `ListView`, it performs an `==` check,
-and determines that the two `ListView`s are the same.
-Nothing has changed, so no update is required.
+No Flutter, se você atualizar a lista de widgets dentro de um `setState()`,
+você rapidamente verá que seus dados não mudam visualmente.
+Isso ocorre porque quando `setState()` é chamado,
+o motor de renderização do Flutter olha para a árvore de widgets
+para ver se algo mudou.
+Quando chega ao seu `ListView`, ele executa uma verificação `==`,
+e determina que os dois `ListView`s são iguais.
+Nada mudou, então nenhuma atualização é necessária.
 
-For a simple way to update your `ListView`,
-create a new `List` inside of `setState()`,
-and copy the data from the old list to the new list.
-While this approach is simple,
-it is not recommended for large data sets,
-as shown in the next example.
+Para uma forma simples de atualizar seu `ListView`,
+crie uma nova `List` dentro de `setState()`,
+e copie os dados da lista antiga para a nova lista.
+Embora essa abordagem seja simples,
+ela não é recomendada para grandes conjuntos de dados,
+como mostrado no próximo exemplo.
 
 <?code-excerpt "lib/listview_dynamic.dart"?>
 ```dart
@@ -1024,10 +1024,10 @@ class _SampleAppPageState extends State<SampleAppPage> {
 }
 ```
 
-The recommended, efficient,
-and effective way to build a list uses a `ListView.Builder`.
-This method is great when you have a dynamic
-list or a list with very large amounts of data.
+A forma recomendada, eficiente,
+e eficaz de construir uma lista usa um `ListView.Builder`.
+Este método é ótimo quando você tem uma lista
+dinâmica ou uma lista com grandes quantidades de dados.
 
 <?code-excerpt "lib/listview_builder.dart"?>
 ```dart
@@ -1101,26 +1101,26 @@ class _SampleAppPageState extends State<SampleAppPage> {
 }
 ```
 
-Instead of creating a `ListView`, create a `ListView.builder`
-that takes two key parameters: the initial length of the list,
-and an `ItemBuilder` function.
+Em vez de criar um `ListView`, crie um `ListView.builder`
+que recebe dois parâmetros-chave: o comprimento inicial da lista,
+e uma função `ItemBuilder`.
 
-The `ItemBuilder` function is similar to the `cellForItemAt`
-delegate method in an iOS table or collection view,
-as it takes a position, and returns the
-cell you want rendered at that position.
+A função `ItemBuilder` é similar ao método delegate `cellForItemAt`
+em uma table ou collection view do iOS,
+pois recebe uma posição, e retorna a
+célula que você quer renderizada naquela posição.
 
-Finally, but most importantly, notice that the `onTap()` function
-doesn't recreate the list anymore, but instead `.add`s to it.
+Finalmente, mas mais importante, observe que a função `onTap()`
+não recria mais a lista, mas em vez disso faz `.add` nela.
 
-### Creating a scroll view
+### Criando uma scroll view
 
-In UIKit, you wrap your views in a `ScrollView` that
-allows a user to scroll your content if needed.
+No UIKit, você envolve suas views em um `ScrollView` que
+permite que um usuário role seu conteúdo se necessário.
 
-In Flutter the easiest way to do this is using the `ListView` widget.
-This acts as both a `ScrollView` and an iOS `TableView`,
-as you can lay out widgets in a vertical format.
+No Flutter a forma mais fácil de fazer isso é usando o widget `ListView`.
+Isso age tanto como um `ScrollView` quanto como um `TableView` do iOS,
+pois você pode organizar widgets em um formato vertical.
 
 <?code-excerpt "lib/layout.dart (list-view)"?>
 ```dart
@@ -1137,24 +1137,24 @@ Widget build(BuildContext context) {
 }
 ```
 
-For more detailed docs on how to lay out widgets in Flutter,
-see the [layout tutorial][].
+Para documentação mais detalhada sobre como organizar widgets no Flutter,
+veja o [layout tutorial][].
 
-## Gesture detection and touch event handling
+## Detecção de gestos e tratamento de eventos de toque
 
-This section discusses how to detect gestures
-and handle different events in Flutter,
-and how they compare with UIKit.
+Esta seção discute como detectar gestos
+e tratar diferentes eventos no Flutter,
+e como eles se comparam com o UIKit.
 
-### Adding a click listener
+### Adicionando um click listener
 
-In UIKit, you attach a `GestureRecognizer` to a view to
-handle click events.
-In Flutter, there are two ways of adding touch listeners:
+No UIKit, você anexa um `GestureRecognizer` a uma view para
+tratar eventos de clique.
+No Flutter, há duas maneiras de adicionar listeners de toque:
 
-1. If the widget supports event detection, pass a function to it,
-   and handle the event in the function. For example, the
-   `ElevatedButton` widget has an `onPressed` parameter:
+1. Se o widget suporta detecção de eventos, passe uma função para ele,
+   e trate o evento na função. Por exemplo, o
+   widget `ElevatedButton` tem um parâmetro `onPressed`:
 
   <?code-excerpt "lib/events.dart (on-pressed)"?>
    ```dart
@@ -1169,9 +1169,9 @@ In Flutter, there are two ways of adding touch listeners:
   }
    ```
 
-2. If the Widget doesn't support event detection,
-   wrap the widget in a GestureDetector and pass a function
-   to the `onTap` parameter.
+2. Se o Widget não suporta detecção de eventos,
+   envolva o widget em um GestureDetector e passe uma função
+   para o parâmetro `onTap`.
 
   <?code-excerpt "lib/events.dart (on-tap)"?>
    ```dart
@@ -1196,73 +1196,73 @@ In Flutter, there are two ways of adding touch listeners:
   }
    ```
 
-### Handling other gestures
+### Tratando outros gestos
 
-Using `GestureDetector` you can listen
-to a wide range of gestures such as:
+Usando `GestureDetector` você pode escutar
+uma ampla variedade de gestos tais como:
 
 * **Tapping**
 
   **`onTapDown`**
-  : A pointer that might cause a tap has contacted the
-  screen at a particular location.
+  : Um ponteiro que pode causar um tap entrou em contato com a
+  tela em uma localização específica.
 
   **`onTapUp`**
-  : A pointer that triggers a tap has stopped contacting the
-  screen at a particular location.
+  : Um ponteiro que aciona um tap parou de entrar em contato com a
+  tela em uma localização específica.
 
   **`onTap`**
-  : A tap has occurred.
+  : Um tap ocorreu.
 
   **`onTapCancel`**
-  : The pointer that previously triggered the `onTapDown`
-  won't cause a tap.
+  : O ponteiro que anteriormente acionou o `onTapDown`
+  não causará um tap.
 
 * **Double tapping**
 
   **`onDoubleTap`**
-  : The user tapped the screen at the same location twice in
-  quick succession.
+  : O usuário tocou a tela na mesma localização duas vezes em
+  sucessão rápida.
 
 * **Long pressing**
 
   **`onLongPress`**
-  : A pointer has remained in contact with the screen
-  at the same location for a long period of time.
+  : Um ponteiro permaneceu em contato com a tela
+  na mesma localização por um longo período de tempo.
 
 * **Vertical dragging**
 
   **`onVerticalDragStart`**
-  : A pointer has contacted the screen and might begin to
-  move vertically.
+  : Um ponteiro entrou em contato com a tela e pode começar a
+  mover verticalmente.
 
   **`onVerticalDragUpdate`**
-  : A pointer in contact with the screen
-  has moved further in the vertical direction.
+  : Um ponteiro em contato com a tela
+  se moveu mais na direção vertical.
 
   **`onVerticalDragEnd`**
-  : A pointer that was previously in contact with the
-  screen and moving vertically is no longer in contact
-  with the screen and was moving at a specific velocity
-  when it stopped contacting the screen.
+  : Um ponteiro que estava anteriormente em contato com a
+  tela e se movendo verticalmente não está mais em contato
+  com a tela e estava se movendo a uma velocidade específica
+  quando parou de entrar em contato com a tela.
 
 * **Horizontal dragging**
 
   **`onHorizontalDragStart`**
-  : A pointer has contacted the screen and might begin
-  to move horizontally.
+  : Um ponteiro entrou em contato com a tela e pode começar
+  a mover horizontalmente.
 
   **`onHorizontalDragUpdate`**
-  : A pointer in contact with the screen
-  has moved further in the horizontal direction.
+  : Um ponteiro em contato com a tela
+  se moveu mais na direção horizontal.
 
   **`onHorizontalDragEnd`**
-  : A pointer that was previously in contact with the
-  screen and moving horizontally is no longer in
-  contact with the screen.
+  : Um ponteiro que estava anteriormente em contato com a
+  tela e se movendo horizontalmente não está mais em
+  contato com a tela.
 
-The following example shows a `GestureDetector`
-that rotates the Flutter logo on a double tap:
+O exemplo a seguir mostra um `GestureDetector`
+que rotaciona o logo do Flutter em um toque duplo:
 
 <?code-excerpt "lib/events.dart (sample-app)"?>
 ```dart
@@ -1316,43 +1316,43 @@ class _SampleAppState extends State<SampleApp>
 }
 ```
 
-## Themes, styles, and media
+## Temas, estilos e mídia
 
-Flutter applications are easy to style; you can switch
-between light and dark themes,
-change the style of your text and UI components,
-and more. This section covers aspects of styling your Flutter apps
-and compares how you might do the same in UIKit.
+Aplicações Flutter são fáceis de estilizar; você pode alternar
+entre temas claro e escuro,
+mudar o estilo do seu texto e componentes de UI,
+e muito mais. Esta seção cobre aspectos de estilização dos seus apps Flutter
+e compara como você poderia fazer o mesmo no UIKit.
 
-### Using a theme
+### Usando um tema
 
-Out of the box, Flutter comes with a beautiful implementation
-of Material Design, which takes care of a lot of styling and
-theming needs that you would typically do.
+Pronto para uso, o Flutter vem com uma bela implementação
+do Material Design, que cuida de muitas necessidades de estilização e
+tematização que você normalmente faria.
 
-To take full advantage of Material Components in your app,
-declare a top-level widget, `MaterialApp`,
-as the entry point to your application.
-`MaterialApp` is a convenience widget that wraps a number
-of widgets that are commonly required for applications
-implementing Material Design.
-It builds upon a `WidgetsApp` by adding Material specific functionality.
+Para aproveitar ao máximo os Material Components no seu app,
+declare um widget de nível superior, `MaterialApp`,
+como o ponto de entrada para sua aplicação.
+`MaterialApp` é um widget de conveniência que envolve vários
+widgets que são comumente necessários para aplicações
+implementando Material Design.
+Ele é construído sobre um `WidgetsApp` adicionando funcionalidade específica do Material.
 
-But Flutter is flexible and expressive enough to implement
-any design language. On iOS, you can use the
-[Cupertino library][] to produce an interface that adheres to the
+Mas o Flutter é flexível e expressivo o suficiente para implementar
+qualquer linguagem de design. No iOS, você pode usar a
+[Cupertino library][] para produzir uma interface que adere às
 [Human Interface Guidelines][].
-For the full set of these widgets,
-see the [Cupertino widgets][] gallery.
+Para o conjunto completo desses widgets,
+veja a galeria [Cupertino widgets][].
 
-You can also use a `WidgetsApp` as your app widget,
-which provides some of the same functionality,
-but is not as rich as `MaterialApp`.
+Você também pode usar um `WidgetsApp` como seu widget de app,
+que fornece algumas das mesmas funcionalidades,
+mas não é tão rico quanto o `MaterialApp`.
 
-To customize the colors and styles of any child components,
-pass a `ThemeData` object to the `MaterialApp` widget.
-For example, in the code below,
-the color scheme from seed is set to deepPurple and divider color is grey.
+Para personalizar as cores e estilos de qualquer componente filho,
+passe um objeto `ThemeData` para o widget `MaterialApp`.
+Por exemplo, no código abaixo,
+o esquema de cores a partir da semente é definido como deepPurple e a cor do divisor é cinza.
 
 <?code-excerpt "lib/theme.dart (theme)"?>
 ```dart
@@ -1375,13 +1375,13 @@ class SampleApp extends StatelessWidget {
 }
 ```
 
-### Using custom fonts
+### Usando fontes personalizadas
 
-In UIKit, you import any `ttf` font files into your project
-and create a reference in the `info.plist` file.
-In Flutter, place the font file in a folder
-and reference it in the `pubspec.yaml` file,
-similar to how you import images.
+No UIKit, você importa quaisquer arquivos de fonte `ttf` para seu projeto
+e cria uma referência no arquivo `info.plist`.
+No Flutter, coloque o arquivo de fonte em uma pasta
+e referencie-o no arquivo `pubspec.yaml`,
+de forma similar a como você importa imagens.
 
 ```yaml
 fonts:
@@ -1391,7 +1391,7 @@ fonts:
       - style: italic
 ```
 
-Then assign the font to your `Text` widget:
+Então atribua a fonte ao seu widget `Text`:
 
 <?code-excerpt "lib/text.dart (custom-font)"?>
 ```dart
@@ -1411,11 +1411,11 @@ Widget build(BuildContext context) {
 }
 ```
 
-### Styling text
+### Estilizando texto
 
-Along with fonts, you can customize other styling elements on a `Text` widget.
-The style parameter of a `Text` widget takes a `TextStyle` object,
-where you can customize many parameters, such as:
+Junto com fontes, você pode personalizar outros elementos de estilo em um widget `Text`.
+O parâmetro style de um widget `Text` recebe um objeto `TextStyle`,
+onde você pode personalizar muitos parâmetros, tais como:
 
 * `color`
 * `decoration`
@@ -1432,27 +1432,27 @@ where you can customize many parameters, such as:
 * `textBaseline`
 * `wordSpacing`
 
-### Bundling images in apps
+### Empacotando imagens em apps
 
-While iOS treats images and assets as distinct items,
-Flutter apps have only assets. Resources that are
-placed in the `Images.xcasset` folder on iOS,
-are placed in an assets' folder for Flutter.
-As with iOS, assets are any type of file, not just images.
-For example, you might have a JSON file located in the `my-assets` folder:
+Enquanto o iOS trata imagens e assets como itens distintos,
+apps Flutter têm apenas assets. Recursos que são
+colocados na pasta `Images.xcasset` no iOS,
+são colocados em uma pasta de assets no Flutter.
+Assim como no iOS, assets são qualquer tipo de arquivo, não apenas imagens.
+Por exemplo, você pode ter um arquivo JSON localizado na pasta `my-assets`:
 
 ```plaintext
 my-assets/data.json
 ```
 
-Declare the asset in the `pubspec.yaml` file:
+Declare o asset no arquivo `pubspec.yaml`:
 
 ```yaml
 assets:
  - my-assets/data.json
 ```
 
-And then access it from code using an [`AssetBundle`][]:
+E então acesse-o do código usando um [`AssetBundle`][]:
 
 <?code-excerpt "lib/asset_bundle.dart"?>
 ```dart
@@ -1464,20 +1464,20 @@ Future<String> loadAsset() async {
 }
 ```
 
-For images, Flutter follows a simple density-based format like iOS.
-Image assets might be `1.0x`, `2.0x`, `3.0x`, or any other multiplier.
-Flutter's [`devicePixelRatio`][] expresses the ratio
-of physical pixels in a single logical pixel.
+Para imagens, o Flutter segue um formato simples baseado em densidade como o iOS.
+Assets de imagem podem ser `1.0x`, `2.0x`, `3.0x`, ou qualquer outro multiplicador.
+O [`devicePixelRatio`][] do Flutter expressa a razão
+de pixels físicos em um único pixel lógico.
 
-Assets are located in any arbitrary folder&mdash;
-Flutter has no predefined folder structure.
-You declare the assets (with location) in
-the `pubspec.yaml` file, and Flutter picks them up.
+Assets estão localizados em qualquer pasta arbitrária&mdash;
+o Flutter não tem estrutura de pastas predefinida.
+Você declara os assets (com localização) no
+arquivo `pubspec.yaml`, e o Flutter os pega.
 
-For example, to add an image called `my_icon.png` to your Flutter
-project, you might decide to store it in a folder arbitrarily called `images`.
-Place the base image (1.0x) in the `images` folder, and the
-other variants in sub-folders named after the appropriate ratio multiplier:
+Por exemplo, para adicionar uma imagem chamada `my_icon.png` ao seu projeto
+Flutter, você pode decidir armazená-la em uma pasta arbitrariamente chamada `images`.
+Coloque a imagem base (1.0x) na pasta `images`, e as
+outras variantes em subpastas nomeadas após o multiplicador de razão apropriado:
 
 ```plaintext
 images/my_icon.png       // Base: 1.0x image
@@ -1485,21 +1485,21 @@ images/2.0x/my_icon.png  // 2.0x image
 images/3.0x/my_icon.png  // 3.0x image
 ```
 
-Next, declare these images in the `pubspec.yaml` file:
+Em seguida, declare essas imagens no arquivo `pubspec.yaml`:
 
 ```yaml
 assets:
  - images/my_icon.png
 ```
 
-You can now access your images using `AssetImage`:
+Agora você pode acessar suas imagens usando `AssetImage`:
 
 <?code-excerpt "lib/images.dart (asset-image)"?>
 ```dart
 image: AssetImage('images/a_dot_burr.png'),
 ```
 
-or directly in an `Image` widget:
+ou diretamente em um widget `Image`:
 
 <?code-excerpt "lib/images.dart (image-asset)"?>
 ```dart
@@ -1509,26 +1509,26 @@ Widget build(BuildContext context) {
 }
 ```
 
-For more details, see
+Para mais detalhes, veja
 [Adding Assets and Images in Flutter][].
 
-## Form input
+## Entrada de formulário
 
-This section discusses how to use forms in Flutter
-and how they compare with UIKit.
+Esta seção discute como usar formulários no Flutter
+e como eles se comparam com o UIKit.
 
-### Retrieving user input
+### Recuperando entrada do usuário
 
-Given how Flutter uses immutable widgets with a separate state,
-you might be wondering how user input fits into the picture.
-In UIKit, you usually query the widgets for their current values
-when it's time to submit the user input, or action on it.
-How does that work in Flutter?
+Dado como o Flutter usa widgets imutáveis com um estado separado,
+você pode estar se perguntando como a entrada do usuário se encaixa na imagem.
+No UIKit, você geralmente consulta os widgets por seus valores atuais
+quando é hora de enviar a entrada do usuário, ou agir sobre ela.
+Como isso funciona no Flutter?
 
-In practice forms are handled, like everything in Flutter,
-by specialized widgets. If you have a `TextField` or a
-`TextFormField`, you can supply a [`TextEditingController`][]
-to retrieve user input:
+Na prática, formulários são tratados, como tudo no Flutter,
+por widgets especializados. Se você tem um `TextField` ou um
+`TextFormField`, você pode fornecer um [`TextEditingController`][]
+para recuperar a entrada do usuário:
 
 <?code-excerpt "lib/form.dart (my-form-state)"?>
 ```dart
@@ -1575,15 +1575,15 @@ class _MyFormState extends State<MyForm> {
 }
 ```
 
-You can find more information and the full code listing in
+Você pode encontrar mais informações e a listagem completa do código em
 [Retrieve the value of a text field][],
-from the [Flutter cookbook][].
+do [Flutter cookbook][].
 
-### Placeholder in a text field
+### Placeholder em um text field
 
-In Flutter, you can easily show a "hint" or a placeholder text
-for your field by adding an `InputDecoration` object
-to the decoration constructor parameter for the `Text` widget:
+No Flutter, você pode facilmente mostrar um "hint" ou um texto placeholder
+para seu campo adicionando um objeto `InputDecoration`
+ao parâmetro de construtor decoration para o widget `Text`:
 
 <?code-excerpt "lib/form.dart (input-hint)" replace="/return const //g;/;//g"?>
 ```dart
@@ -1594,14 +1594,14 @@ Center(
 )
 ```
 
-### Showing validation errors
+### Mostrando erros de validação
 
-Just as you would with a "hint", pass an `InputDecoration` object
-to the decoration constructor for the `Text` widget.
+Assim como você faria com um "hint", passe um objeto `InputDecoration`
+para o construtor decoration para o widget `Text`.
 
-However, you don't want to start off by showing an error.
-Instead, when the user has entered invalid data,
-update the state, and pass a new `InputDecoration` object.
+No entanto, você não quer começar mostrando um erro.
+Em vez disso, quando o usuário inseriu dados inválidos,
+atualize o estado, e passe um novo objeto `InputDecoration`.
 
 <?code-excerpt "lib/validation_errors.dart"?>
 ```dart
@@ -1672,32 +1672,32 @@ class _SampleAppPageState extends State<SampleAppPage> {
 }
 ```
 
-## Threading & asynchronicity
+## Threading & assincronia
 
-This section discusses concurrency in Flutter and
-how it compares with UIKit.
+Esta seção discute concorrência no Flutter e
+como ela se compara com o UIKit.
 
-### Writing asynchronous code
+### Escrevendo código assíncrono
 
-Dart has a single-threaded execution model,
-with support for `Isolate`s
-(a way to run Dart code on another thread),
-an event loop, and asynchronous programming.
-Unless you spawn an `Isolate`,
-your Dart code runs in the main UI thread and is
-driven by an event loop. Flutter's event loop is
-equivalent to the iOS main loop&mdash;that is,
-the `Looper` that is attached to the main thread.
+Dart tem um modelo de execução single-threaded,
+com suporte para `Isolate`s
+(uma forma de executar código Dart em outra thread),
+um event loop, e programação assíncrona.
+A menos que você gere um `Isolate`,
+seu código Dart executa na thread principal de UI e é
+dirigido por um event loop. O event loop do Flutter é
+equivalente ao main loop do iOS&mdash;ou seja,
+o `Looper` que está anexado à thread principal.
 
-Dart's single-threaded model doesn't mean you are
-required to run everything as a blocking operation
-that causes the UI to freeze. Instead,
-use the asynchronous facilities that the Dart language provides,
-such as `async`/`await`, to perform asynchronous work.
+O modelo single-threaded do Dart não significa que você é
+obrigado a executar tudo como uma operação bloqueante
+que faz a UI congelar. Em vez disso,
+use as facilidades assíncronas que a linguagem Dart fornece,
+tais como `async`/`await`, para executar trabalho assíncrono.
 
-For example, you can run network code without causing the
-UI to hang by using `async`/`await` and letting Dart do
-the heavy lifting:
+Por exemplo, você pode executar código de rede sem fazer a
+UI travar usando `async`/`await` e deixando o Dart fazer
+o trabalho pesado:
 
 <?code-excerpt "lib/async.dart (load-data)"?>
 ```dart
@@ -1710,13 +1710,13 @@ Future<void> loadData() async {
 }
 ```
 
-Once the `await`ed network call is done,
-update the UI by calling `setState()`,
-which triggers a rebuild of the widget subtree
-and updates the data.
+Uma vez que a chamada de rede com `await` é concluída,
+atualize a UI chamando `setState()`,
+que aciona uma reconstrução da subárvore de widgets
+e atualiza os dados.
 
-The following example loads data asynchronously and
-displays it in a `ListView`:
+O exemplo a seguir carrega dados assincronamente e
+os exibe em um `ListView`:
 
 <?code-excerpt "lib/async.dart"?>
 ```dart
@@ -1789,23 +1789,23 @@ class _SampleAppPageState extends State<SampleAppPage> {
 }
 ```
 
-Refer to the next section for more information on doing work
-in the background, and how Flutter differs from iOS.
+Consulte a próxima seção para mais informações sobre fazer trabalho
+em segundo plano, e como o Flutter difere do iOS.
 
-### Moving to the background thread
+### Movendo para a thread de segundo plano
 
-Since Flutter is single threaded and runs an event loop
-(like Node.js), you don't have to worry about
-thread management or spawning background threads.
-If you're doing I/O-bound work,
-such as disk access or a network call,
-then you can safely use `async`/`await` and you're done.
-If, on the other hand, you need to do computationally intensive
-work that keeps the CPU busy, you want to move it to an
-`Isolate` to avoid blocking the event loop.
+Como o Flutter é single threaded e executa um event loop
+(como Node.js), você não precisa se preocupar sobre
+gerenciamento de threads ou gerar threads de segundo plano.
+Se você está fazendo trabalho vinculado a I/O,
+como acesso a disco ou uma chamada de rede,
+então você pode usar `async`/`await` com segurança e está pronto.
+Se, por outro lado, você precisa fazer trabalho computacionalmente intensivo
+que mantém a CPU ocupada, você quer movê-lo para um
+`Isolate` para evitar bloquear o event loop.
 
-For I/O-bound work, declare the function as an `async` function,
-and `await` on long-running tasks inside the function:
+Para trabalho vinculado a I/O, declare a função como uma função `async`,
+e use `await` em tarefas de longa duração dentro da função:
 
 <?code-excerpt "lib/async.dart (load-data)"?>
 ```dart
@@ -1818,24 +1818,24 @@ Future<void> loadData() async {
 }
 ```
 
-This is how you typically do network or database calls,
-which are both I/O operations.
+É assim que você normalmente faz chamadas de rede ou banco de dados,
+que são ambas operações de I/O.
 
-However, there are times when you might be processing
-a large amount of data and your UI hangs.
-In Flutter, use `Isolate`s to take advantage of
-multiple CPU cores to do long-running or
-computationally intensive tasks.
+No entanto, há momentos em que você pode estar processando
+uma grande quantidade de dados e sua UI trava.
+No Flutter, use `Isolate`s para tirar vantagem de
+múltiplos núcleos de CPU para fazer tarefas de longa duração ou
+computacionalmente intensivas.
 
-Isolates are separate execution threads that do not share
-any memory with the main execution memory heap.
-This means you can't access variables from the main thread,
-or update your UI by calling `setState()`.
-Isolates are true to their name, and cannot share memory
-(in the form of static fields, for example).
+Isolates são threads de execução separadas que não compartilham
+nenhuma memória com o heap de memória de execução principal.
+Isso significa que você não pode acessar variáveis da thread principal,
+ou atualizar sua UI chamando `setState()`.
+Isolates são fiéis ao seu nome, e não podem compartilhar memória
+(na forma de campos estáticos, por exemplo).
 
-The following example shows, in a simple isolate,
-how to share data back to the main thread to update the UI.
+O exemplo a seguir mostra, em um isolate simples,
+como compartilhar dados de volta para a thread principal para atualizar a UI.
 
 <?code-excerpt "lib/isolates.dart (load-data)"?>
 ```dart
@@ -1882,14 +1882,14 @@ Future<List<Map<String, dynamic>>> sendReceive(SendPort port, String msg) {
 }
 ```
 
-Here, `dataLoader()` is the `Isolate` that runs in
-its own separate execution thread.
-In the isolate, you can perform more CPU intensive
-processing (parsing a big JSON, for example),
-or perform computationally intensive math,
-such as encryption or signal processing.
+Aqui, `dataLoader()` é o `Isolate` que executa em
+sua própria thread de execução separada.
+No isolate, você pode executar processamento
+mais intensivo de CPU (analisar um JSON grande, por exemplo),
+ou executar matemática computacionalmente intensiva,
+como criptografia ou processamento de sinais.
 
-You can run the full example below:
+Você pode executar o exemplo completo abaixo:
 
 <?code-excerpt "lib/isolates.dart"?>
 ```dart
@@ -2018,21 +2018,21 @@ class _SampleAppPageState extends State<SampleAppPage> {
 }
 ```
 
-### Making network requests
+### Fazendo requisições de rede
 
-Making a network call in Flutter is easy when you
-use the popular [`http` package][]. This abstracts
-away a lot of the networking that you might normally
-implement yourself, making it simple to make network calls.
+Fazer uma chamada de rede no Flutter é fácil quando você
+usa o popular [`http` package][]. Isso abstrai
+muito da rede que você normalmente
+implementaria você mesmo, tornando simples fazer chamadas de rede.
 
-To add the `http` package as a dependency, run `flutter pub add`:
+Para adicionar o pacote `http` como uma dependência, execute `flutter pub add`:
 
 ```console
 flutter pub add http
 ```
 
-To make a network call,
-call `await` on the `async` function `http.get()`:
+Para fazer uma chamada de rede,
+chame `await` na função `async` `http.get()`:
 
 <?code-excerpt "lib/progress.dart (load-data)"?>
 ```dart
@@ -2045,21 +2045,21 @@ Future<void> loadData() async {
 }
 ```
 
-### Showing the progress on long-running tasks
+### Mostrando o progresso em tarefas de longa duração
 
-In UIKit, you typically use a `UIProgressView`
-while executing a long-running task in the background.
+No UIKit, você normalmente usa um `UIProgressView`
+enquanto executa uma tarefa de longa duração em segundo plano.
 
-In Flutter, use a `ProgressIndicator` widget.
-Show the progress programmatically by controlling
-when it's rendered through a boolean flag.
-Tell Flutter to update its state before your long-running task starts,
-and hide it after it ends.
+No Flutter, use um widget `ProgressIndicator`.
+Mostre o progresso programaticamente controlando
+quando ele é renderizado através de uma flag booleana.
+Diga ao Flutter para atualizar seu estado antes que sua tarefa de longa duração comece,
+e esconda-o depois que ela terminar.
 
-In the example below, the build function is separated into three different
-functions. If `showLoadingDialog` is `true`
-(when `widgets.length == 0`), then render the `ProgressIndicator`.
-Otherwise, render the `ListView` with the data returned from a network call.
+No exemplo abaixo, a função build é separada em três funções
+diferentes. Se `showLoadingDialog` é `true`
+(quando `widgets.length == 0`), então renderize o `ProgressIndicator`.
+Caso contrário, renderize o `ListView` com os dados retornados de uma chamada de rede.
 
 <?code-excerpt "lib/progress.dart"?>
 ```dart

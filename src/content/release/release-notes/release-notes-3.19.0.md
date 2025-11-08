@@ -2,6 +2,7 @@
 title: Flutter 3.19.0 release notes
 short-title: 3.19.0 release notes
 description: Release notes for Flutter 3.19.0.
+ia-translate: true
 ---
 
 This page has release notes for 3.19.0.

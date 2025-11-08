@@ -296,7 +296,7 @@ import 'package:flutter/services.dart';
 <?code-excerpt "platform_channels/lib/platform_channels.dart (my-home-page-state)"?>
 ```dart
 class _MyHomePageState extends State<MyHomePage> {
-  static const platform = MethodChannel('samples.flutterbrasil.dev/battery');
+  static const platform = MethodChannel('samples.flutter.dev/battery');
   // Get battery level.
 ```
 

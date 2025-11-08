@@ -1,16 +1,17 @@
 ---
-title: Required Kotlin version 
+ia-translate: true
+title: Versão necessária do Kotlin
 description: >
-    Flutter apps built for the Android platform
-    now require Kotlin 1.5.31 or greater.
+    Apps Flutter compilados para a plataforma Android
+    agora requerem Kotlin 1.5.31 ou superior.
 ---
 
-## Summary
+## Resumo
 
-To build a Flutter app for Android, Kotlin 1.5.31 or greater is required.
+Para compilar um app Flutter para Android, é necessário Kotlin 1.5.31 ou superior.
 
-If your app uses a lower version,
-you will receive the following error message:
+Se seu app usar uma versão inferior,
+você receberá a seguinte mensagem de erro:
 
 ```plaintext noHighlight
 ┌─ Flutter Fix ────────────────────────────────────────────────────────────┐
@@ -24,20 +25,20 @@ you will receive the following error message:
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-## Context
+## Contexto
 
-Flutter added support for [foldable devices][1] on Android.
-This required adding an AndroidX dependency to the Flutter embedding that
-requires apps to use Kotlin 1.5.31 or greater.
+O Flutter adicionou suporte para [dispositivos dobráveis][1] no Android.
+Isso exigiu adicionar uma dependência AndroidX ao embedding do Flutter que
+requer que os apps usem Kotlin 1.5.31 ou superior.
 
-## Description of change
+## Descrição da mudança
 
-A Flutter app compiled for Android now includes the Gradle dependency
+Um app Flutter compilado para Android agora inclui a dependência Gradle
 `androidx.window:window-java`.
 
-## Migration guide
+## Guia de migração
 
-Open `<app-src>/android/build.gradle`, and change `ext.kotlin_version`:
+Abra `<app-src>/android/build.gradle`, e altere `ext.kotlin_version`:
 
 ```groovy diff
   buildscript {
@@ -45,14 +46,14 @@ Open `<app-src>/android/build.gradle`, and change `ext.kotlin_version`:
 +     ext.kotlin_version = '1.5.31'
 ```
 
-## Timeline
+## Cronograma
 
-Landed in version: v2.9.0 beta<br>
-In stable release: 2.10
+Adicionado na versão: v2.9.0 beta<br>
+Na versão stable: 2.10
 
-## References
+## Referências
 
-Relevant PR:
+PR relevante:
 
 * [PR 29585: Display Features support][]
 

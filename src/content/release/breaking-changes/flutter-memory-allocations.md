@@ -1,21 +1,22 @@
 ---
-title: Deprecate MemoryAllocations in favor of FlutterMemoryAllocations
+ia-translate: true
+title: Depreciar MemoryAllocations em favor de FlutterMemoryAllocations
 description: >-
-  MemoryAllocations is renamed to FlutterMemoryAllocations.
+  MemoryAllocations foi renomeado para FlutterMemoryAllocations.
 ---
 
-## Summary
+## Resumo
 
-Disposables in pure Dart projects can't use `MemoryAllocations` in Flutter. 
-So, to be leak-trackable they need a Dart-only class.
-`MemoryAllocations` in Flutter is renamed to make the name
-available to a non-Flutter, Dart project.
+Disposables em projetos Dart puros não podem usar `MemoryAllocations` no Flutter.
+Então, para serem rastreáveis quanto a vazamentos de memória, eles precisam de uma classe somente-Dart.
+`MemoryAllocations` no Flutter foi renomeado para disponibilizar o nome
+para um projeto Dart não-Flutter.
 
-## Migration guide
+## Guia de migração
 
-Before:
+Antes:
 
-```dart 
+```dart
 if (kFlutterMemoryAllocationsEnabled) {
   MemoryAllocations.instance.dispatchObjectCreated(
     library: 'package:flutter/gestures.dart',
@@ -25,9 +26,9 @@ if (kFlutterMemoryAllocationsEnabled) {
 }
 ```
 
-After:
+Depois:
 
-```dart 
+```dart
 if (kFlutterMemoryAllocationsEnabled) {
   FlutterMemoryAllocations.instance.dispatchObjectCreated(
     library: 'package:flutter/gestures.dart',
@@ -37,14 +38,14 @@ if (kFlutterMemoryAllocationsEnabled) {
 }
 ```
 
-## Timeline
+## Cronograma
 
-Landed in version: 3.19.0-2.0.pre<br>
-Landed in stable: 3.22.0
+Adicionado na versão: 3.19.0-2.0.pre<br>
+Na versão stable: 3.22.0
 
-## References
+## Referências
 
-Relevant issues:
+Issues relevantes:
 
 * [Rename MemoryAllocations to FlutterMemoryAllocations (Issue 140622)][]
 

@@ -427,7 +427,7 @@ investigue outros recursos que nossa comunidade recomendou.
 [flutter_soloud]: {{site.pub-pkg}}/flutter_soloud
 [SoLoud codelab]: {{site.codelabs}}/codelabs/flutter-codelab-soloud
 
-## Atualizações do Games Toolkit para Flutter 3.22 {:#updates}
+## Atualizações do Games Toolkit para Flutter 3.22 {#updates}
 
 Os seguintes codelabs e guias foram adicionados para
 o lançamento do Flutter 3.22:

@@ -41,7 +41,7 @@ seu fluxo de trabalho de desenvolvimento existente baseado em IDE ou linha de co
 <a id="how-do-i-install-devtools"></a>
 <a id="install-devtools"></a>
 
-## Como executar DevTools {:#start}
+## Como executar DevTools {#start}
 
 Veja as páginas [VS Code][], [Android Studio/IntelliJ][] ou
 [linha de comando][command line] para instruções sobre como executar DevTools.

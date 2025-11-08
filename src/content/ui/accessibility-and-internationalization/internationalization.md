@@ -32,7 +32,7 @@ Você pode encontrar o código-fonte para este exemplo em [`gen_l10n_example`][]
 
 [`gen_l10n_example`]: {{site.repo.this}}/tree/{{site.branch}}/examples/internationalization/gen_l10n_example
 
-### Configurando um app internacionalizado: o pacote Flutter<wbr>_localizations {:#setting-up}
+### Configurando um app internacionalizado: o pacote Flutter<wbr>_localizations {#setting-up}
 
 Por padrão, o Flutter fornece apenas localizações em inglês americano. Para adicionar suporte para outros idiomas, uma aplicação deve especificar propriedades adicionais de `MaterialApp` (ou `CupertinoApp`) e incluir um pacote chamado `flutter_localizations`. A partir de dezembro de 2023, este pacote suporta [{{languageCount}} idiomas][language-count] e variantes de idiomas.
 

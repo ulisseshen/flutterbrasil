@@ -81,7 +81,7 @@ substituir nos arquivos `flutter_bootstrap.js` ou `index.html`:
 
 <a id="write-a-custom-flutter_bootstrap-js" aria-hidden="true"></a>
 
-## Escreva um script bootstrap customizado {:#custom-bootstrap-js}
+## Escreva um script bootstrap customizado {#custom-bootstrap-js}
 
 Qualquer script `flutter_bootstrap.js` customizado precisa ter três componentes para
 iniciar com sucesso seu app Flutter:

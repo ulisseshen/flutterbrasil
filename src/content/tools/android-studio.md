@@ -19,7 +19,7 @@ description: >
 Siga as instruções de [Configurar um editor](/get-started/editor?tab=androidstudio)
 para instalar os plugins Dart e Flutter.
 
-### Atualizando os plugins {:#updating}
+### Atualizando os plugins {#updating}
 
 Atualizações dos plugins são lançadas regularmente.
 Você deve receber um aviso na IDE quando uma atualização estiver disponível.
@@ -320,7 +320,7 @@ não clique no botão Stop, simplesmente clique novamente no botão Run (se em u
 de execução) ou no botão Debug (se em uma sessão de depuração), ou shift-clique no botão 'hot
 reload'.
 
-## Editando código Android no Android Studio com suporte completo de IDE {:#android-ide}
+## Editando código Android no Android Studio com suporte completo de IDE {#android-ide}
 
 Abrir o diretório raiz de um projeto Flutter não expõe todos os arquivos Android
 para a IDE. Apps Flutter contêm um subdiretório chamado `android`. Se você
@@ -359,7 +359,7 @@ erro de build quando você abrir o projeto `android`. Execute `flutter pub get` 
 diretório raiz do app e reconstrua o projeto selecionando **Build > Make**
 para corrigi-lo.
 
-## Editando código Android no IntelliJ IDEA {:#edit-android-code}
+## Editando código Android no IntelliJ IDEA {#edit-android-code}
 
 Para habilitar a edição de código Android no IntelliJ IDEA, você precisa configurar o
 local do Android SDK:

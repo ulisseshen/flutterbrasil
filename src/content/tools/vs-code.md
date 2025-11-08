@@ -20,7 +20,7 @@ Siga as instruções em [Configurar um editor][Set up an editor] para
 instalar as extensões Dart e Flutter
 (também chamadas de plugins).
 
-### Atualizando a extensão {:#updating}
+### Atualizando a extensão {#updating}
 
 Atualizações das extensões são lançadas regularmente.
 Por padrão, o VS Code atualiza automaticamente as extensões quando
@@ -371,7 +371,7 @@ Ao registrar novos issues, inclua a saída do [flutter doctor][].
 
 [Command Palette]: https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette
 [DevTools]: /tools/devtools
-[flutter doctor]: /resources/bug-reports/#provide-some-flutter-diagnostics
+[flutter doctor]: /resources/bug-reports#provide-some-flutter-diagnostics
 [Flutter inspector]: /tools/devtools/inspector
 [Flutter's build modes]: /testing/build-modes
 [Hot reload]: /tools/hot-reload

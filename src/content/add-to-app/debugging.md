@@ -64,7 +64,7 @@ To detach, press "d"; to quit, press "q".
 
 [debugging functionalities]: /testing/debugging
 
-## Debug sem conexão USB {:#wireless-debugging}
+## Debug sem conexão USB {#wireless-debugging}
 
 Para fazer debug do seu app via Wi-Fi em um dispositivo iOS ou Android,
 use `flutter attach`.

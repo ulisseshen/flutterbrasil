@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:vector_math/vector_math_64.dart' hide Colors;
 
 // #docregion text-style
 TextStyle bold24Roboto = const TextStyle(
@@ -229,7 +228,7 @@ class Scaling extends StatelessWidget {
     child: Center(
       child: /*[[highlight]]*/ Transform(
         alignment: Alignment.center,
-        transform: Matrix4.identity()..scale(1.5, 1.5, 1.5),
+        transform: Matrix4.identity()..scaleByDouble(1.5),
         child: /*[[/highlight]]*/ Container(
           // red box
           padding: const EdgeInsets.all(16),

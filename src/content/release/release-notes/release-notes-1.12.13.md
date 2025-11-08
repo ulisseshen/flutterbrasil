@@ -1236,7 +1236,7 @@ We increased our support for web, moving it from the dev channel to the beta cha
 
 [42531]({{site.repo.flutter}}/pull/42531) Print correct hostname when web server is launched
 
-[42676]({{site.repo.flutter}}/pull/42676) [web] Update web runner message with flutter.dev/web
+[42676]({{site.repo.flutter}}/pull/42676) [web] Update web runner message with flutterbrasil.dev/web
 
 [42701]({{site.repo.flutter}}/pull/42701) serve correct content type from debug server
 

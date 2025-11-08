@@ -42,7 +42,7 @@ ia-translate: true
     Use "for example" or "such as", and similar.
   * For links, use the macros where possible.
     See the examples at the end of this template,
-    but don't use "github.com" or "api.flutter.dev" or
+    but don't use "github.com" or "api.flutterbrasil.dev" or
     "pub.dev" in your URLs. Use the {{site.github}},
     {{site.api}}, or {{site.pub}} macros.
   * AVOID "will" when possible, in other words,
@@ -147,7 +147,7 @@ Reverted in version: xxx  (OPTIONAL, delete if not used)
   cause the GitHubActions (GHA) linkcheck to fail.
   Remove the comment tags once you fill this in with
   real links. Only use the "main-api" include if
-  you link to "main-api.flutter.dev"; prefer our
+  you link to "main-api.flutterbrasil.dev"; prefer our
   stable documentation if possible.
 
 {% include docs/main-api.md %}

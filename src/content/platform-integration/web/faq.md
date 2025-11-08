@@ -30,7 +30,7 @@ Em geral, Flutter é voltado para experiências de aplicações dinâmicas. O
 suporte web do Flutter não é exceção. Flutter web prioriza performance, fidelidade e
 consistência. Isso significa que a saída da aplicação não se alinha com o que os motores de
 busca precisam para indexar adequadamente. Para conteúdo web que é estático ou semelhante a documento,
-recomendamos usar HTML—assim como fazemos em [flutter.dev]({{site.main-url}}),
+recomendamos usar HTML—assim como fazemos em [flutterbrasil.dev]({{site.main-url}}),
 [dart.dev]({{site.dart-site}}), e [pub.dev]({{site.pub}}). Você também deve
 considerar separar sua experiência de aplicação principal—criada em Flutter—de
 sua landing page, conteúdo de marketing e conteúdo de ajuda—criados usando

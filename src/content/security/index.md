@@ -33,7 +33,7 @@ Antes de relatar uma vulnerabilidade de segurança encontrada
 por uma ferramenta de análise estática,
 considere verificar nossa lista de [falsos positivos conhecidos][known false positives].
 
-Para relatar uma vulnerabilidade, envie um e-mail para `security@flutter.dev`
+Para relatar uma vulnerabilidade, envie um e-mail para `security@flutterbrasil.dev`
 com uma descrição do problema,
 as etapas que você seguiu para criar o problema,
 versões afetadas e, se conhecido, mitigações para o problema.
@@ -44,11 +44,11 @@ Usamos o recurso de aviso de segurança do GitHub para rastrear
 problemas de segurança abertos. Você deve esperar uma colaboração próxima
 enquanto trabalhamos para resolver o problema que você relatou.
 
-Entre em contato com `security@flutter.dev` novamente se
+Entre em contato com `security@flutterbrasil.dev` novamente se
 você não receber atenção rápida e atualizações regulares.
 Você também pode entrar em contato com a equipe usando nossos
 [canais de chat públicos do Discord][Discord chat channels]; no entanto, ao relatar um problema,
-envie um e-mail para `security@flutter.dev`.
+envie um e-mail para `security@flutterbrasil.dev`.
 Para evitar revelar informações sobre vulnerabilidades
 em público que possam colocar os usuários em risco,
 **não poste no Discord ou abra uma issue no GitHub**.
@@ -63,7 +63,7 @@ consulte nossa [política de segurança][security policy].
 ## Sinalizar issues existentes como relacionadas à segurança
 
 Se você acredita que uma issue existente está relacionada à segurança,
-pedimos que você envie um e-mail para `security@flutter.dev`.
+pedimos que você envie um e-mail para `security@flutterbrasil.dev`.
 O e-mail deve incluir o ID da issue e uma breve descrição
 de por que ela deve ser tratada de acordo com esta política de segurança.
 
@@ -86,11 +86,11 @@ corrigida no próprio site.
 
 Equipes contribuidoras podem incluir o Flutter dentro do escopo
 de seus programas de bug bounty. Para ter seu programa listado,
-entre em contato com `security@flutter.dev`.
+entre em contato com `security@flutterbrasil.dev`.
 
 O Google considera o Flutter dentro do escopo do
 [Google Open Source Software Vulnerability Reward Program][google-oss-vrp].
-Para agilidade, os relatores devem entrar em contato com `security@flutter.dev`
+Para agilidade, os relatores devem entrar em contato com `security@flutterbrasil.dev`
 antes de usar o fluxo de relatório de vulnerabilidades do Google.
 
 [google-oss-vrp]: https://bughunters.google.com/open-source-security

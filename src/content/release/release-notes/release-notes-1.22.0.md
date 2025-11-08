@@ -2769,7 +2769,7 @@ For information about subsequent bug-fix releases, see our [CHANGELOG][]
 [65234](https://github.com/flutter/flutter/pull/65234) Update create templates to 1.0.0 (cla: yes, tool)
 
 
-[65426](https://github.com/flutter/flutter/pull/65426) [flutter_tools] remove advice about running sdkmanager directly in favor of directing to flutter.dev (cla: yes, tool, waiting for tree to go green)
+[65426](https://github.com/flutter/flutter/pull/65426) [flutter_tools] remove advice about running sdkmanager directly in favor of directing to flutterbrasil.dev (cla: yes, tool, waiting for tree to go green)
 
 
 [65435](https://github.com/flutter/flutter/pull/65435) [flutter_tools] alternate the name of the dill file used for hot restart (cla: yes, tool)
@@ -7046,7 +7046,7 @@ There were 934 pull requests.
 
 [65416](https://github.com/flutter/flutter/pull/65416) Re-land ScaffoldMessenger (cla: yes, f: material design, framework, waiting for tree to go green)
 
-[65426](https://github.com/flutter/flutter/pull/65426) [flutter_tools] remove advice about running sdkmanager directly in favor of directing to flutter.dev (cla: yes, tool, waiting for tree to go green)
+[65426](https://github.com/flutter/flutter/pull/65426) [flutter_tools] remove advice about running sdkmanager directly in favor of directing to flutterbrasil.dev (cla: yes, tool, waiting for tree to go green)
 
 [65434](https://github.com/flutter/flutter/pull/65434) [devicelab] Remove ~/.gradle after each devicelab task run (cla: yes, team, waiting for tree to go green)
 

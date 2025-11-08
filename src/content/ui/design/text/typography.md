@@ -53,9 +53,9 @@ Todas as escalas tipográficas específicas da plataforma que o Flutter expõe e
 contidas na classe [`Typography`][]. Geralmente, você não precisará
 referenciar essa classe diretamente, pois o `TextTheme` será localizado para sua plataforma de destino.
 
-[`TextTheme`]: https://api.flutter.dev/flutter/material/TextTheme-class.html
-[`TextStyle`]: https://api.flutter.dev/flutter/painting/TextStyle-class.html
-[`Typography`]: https://api.flutter.dev/flutter/material/Typography-class.html
+[`TextTheme`]: https://api.flutterbrasil.dev/flutter/material/TextTheme-class.html
+[`TextStyle`]: https://api.flutterbrasil.dev/flutter/painting/TextStyle-class.html
+[`Typography`]: https://api.flutterbrasil.dev/flutter/material/Typography-class.html
 
 ## Fontes variáveis
 

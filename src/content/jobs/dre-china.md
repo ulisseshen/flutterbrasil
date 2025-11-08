@@ -88,4 +88,4 @@ Requisitos de idioma:
 ## Para se candidatar
 
 Por favor, candidate-se
-[preenchendo o seguinte formulário](https://flutter.dev/go/job).
+[preenchendo o seguinte formulário](https://flutterbrasil.dev/go/job).

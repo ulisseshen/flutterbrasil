@@ -284,7 +284,7 @@ Os lados client e host de um channel são conectados através
 de um nome de channel passado no construtor do channel.
 Todos os nomes de channel usados em um único app devem
 ser únicos; prefixe o nome do channel com um 'prefixo de
-domínio' único, por exemplo: `samples.flutter.dev/battery`.
+domínio' único, por exemplo: `samples.flutterbrasil.dev/battery`.
 
 <?code-excerpt "platform_channels/lib/platform_channels.dart (import)"?>
 ```dart
@@ -296,7 +296,7 @@ import 'package:flutter/services.dart';
 <?code-excerpt "platform_channels/lib/platform_channels.dart (my-home-page-state)"?>
 ```dart
 class _MyHomePageState extends State<MyHomePage> {
-  static const platform = MethodChannel('samples.flutter.dev/battery');
+  static const platform = MethodChannel('samples.flutterbrasil.dev/battery');
   // Get battery level.
 ```
 
@@ -385,7 +385,7 @@ import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 
 class MainActivity: FlutterActivity() {
-  private val CHANNEL = "samples.flutter.dev/battery"
+  private val CHANNEL = "samples.flutterbrasil.dev/battery"
 
   override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
     super.configureFlutterEngine(flutterEngine)
@@ -498,7 +498,7 @@ import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.plugin.common.MethodChannel;
 
 public class MainActivity extends FlutterActivity {
-  private static final String CHANNEL = "samples.flutter.dev/battery";
+  private static final String CHANNEL = "samples.flutterbrasil.dev/battery";
 
   @Override
   public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) {
@@ -622,7 +622,7 @@ Adicione suporte para Swift na configuração padrão do template que usa Object
 
 Sobrescreva a função `application:didFinishLaunchingWithOptions:` e crie
 um `FlutterMethodChannel` vinculado ao nome do channel
-`samples.flutter.dev/battery`:
+`samples.flutterbrasil.dev/battery`:
 
 ```swift title="AppDelegate.swift"
 @UIApplicationMain
@@ -632,7 +632,7 @@ um `FlutterMethodChannel` vinculado ao nome do channel
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
     let controller : FlutterViewController = window?.rootViewController as! FlutterViewController
-    let batteryChannel = FlutterMethodChannel(name: "samples.flutter.dev/battery",
+    let batteryChannel = FlutterMethodChannel(name: "samples.flutterbrasil.dev/battery",
                                               binaryMessenger: controller.binaryMessenger)
     batteryChannel.setMethodCallHandler({
       [weak self] (call: FlutterMethodCall, result: FlutterResult) -> Void in
@@ -716,7 +716,7 @@ que foi usado no lado client do Flutter.
   FlutterViewController* controller = (FlutterViewController*)self.window.rootViewController;
 
   FlutterMethodChannel* batteryChannel = [FlutterMethodChannel
-                                          methodChannelWithName:@"samples.flutter.dev/battery"
+                                          methodChannelWithName:@"samples.flutterbrasil.dev/battery"
                                           binaryMessenger:controller.binaryMessenger];
 
   [batteryChannel setMethodCallHandler:^(FlutterMethodCall* call, FlutterResult result) {
@@ -819,7 +819,7 @@ após `#include "flutter_window.h"`:
 
 Edite o método `FlutterWindow::OnCreate` e crie
 um `flutter::MethodChannel` vinculado ao nome do channel
-`samples.flutter.dev/battery`:
+`samples.flutterbrasil.dev/battery`:
 
 ```cpp title="flutter_window.cpp"
 bool FlutterWindow::OnCreate() {
@@ -827,7 +827,7 @@ bool FlutterWindow::OnCreate() {
   RegisterPlugins(flutter_controller_->engine());
 
   flutter::MethodChannel<> channel(
-      flutter_controller_->engine()->messenger(), "samples.flutter.dev/battery",
+      flutter_controller_->engine()->messenger(), "samples.flutterbrasil.dev/battery",
       &flutter::StandardMethodCodec::GetInstance());
   channel.SetMethodCallHandler(
       [](const flutter::MethodCall<>& call,
@@ -923,7 +923,7 @@ import IOKit.ps
 ```
 
 Crie um `FlutterMethodChannel` vinculado ao nome do channel
-`samples.flutter.dev/battery` no método `awakeFromNib`:
+`samples.flutterbrasil.dev/battery` no método `awakeFromNib`:
 
 ```swift title="MainFlutterWindow.swift"
   override func awakeFromNib() {
@@ -931,7 +931,7 @@ Crie um `FlutterMethodChannel` vinculado ao nome do channel
     self.setFrame(windowFrame, display: true)
   
     let batteryChannel = FlutterMethodChannel(
-      name: "samples.flutter.dev/battery",
+      name: "samples.flutterbrasil.dev/battery",
       binaryMessenger: flutterViewController.engine.binaryMessenger)
     batteryChannel.setMethodCallHandler { (call, result) in
       // This method is invoked on the UI thread.
@@ -1049,7 +1049,7 @@ static void my_application_dispose(GObject* object) {
 
 Edite o método `my_application_activate` e inicialize
 `battery_channel` usando o nome do channel
-`samples.flutter.dev/battery`, logo após a chamada a
+`samples.flutterbrasil.dev/battery`, logo após a chamada a
 `fl_register_plugins`:
 
 ```c title="runner/my_application.cc"
@@ -1060,7 +1060,7 @@ static void my_application_activate(GApplication* application) {
   g_autoptr(FlStandardMethodCodec) codec = fl_standard_method_codec_new();
   self->battery_channel = fl_method_channel_new(
       fl_engine_get_binary_messenger(fl_view_get_engine(view)),
-      "samples.flutter.dev/battery", FL_METHOD_CODEC(codec));
+      "samples.flutterbrasil.dev/battery", FL_METHOD_CODEC(codec));
   fl_method_channel_set_method_call_handler(
       self->battery_channel, battery_method_call_handler, self, nullptr);
 

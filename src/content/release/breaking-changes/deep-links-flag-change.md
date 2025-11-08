@@ -57,7 +57,7 @@ Versão stable: 3.27
 
 Documento de design:
 
-- [flutter.dev/go/deep-link-flag-migration]({{site.main-url}}/go/deep-link-flag-migration)
+- [flutterbrasil.dev/go/deep-link-flag-migration]({{site.main-url}}/go/deep-link-flag-migration)
 
 PR relevante:
 

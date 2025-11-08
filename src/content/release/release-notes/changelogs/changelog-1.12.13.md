@@ -204,7 +204,7 @@ From Sun Aug 19 17:37:00 2019 -0700 to Mon Nov 25 12:05:00 2019 -0800
 
 [39147](https://github.com/flutter/flutter/pull/39147) Downgrade the AndroidX warning (cla: yes, tool)
 
-[39150](https://github.com/flutter/flutter/pull/39150) Mention conduct@flutter.dev (cla: yes, waiting for tree to go green)
+[39150](https://github.com/flutter/flutter/pull/39150) Mention conduct@flutterbrasil.dev (cla: yes, waiting for tree to go green)
 
 [39156](https://github.com/flutter/flutter/pull/39156) Added Scaffold.extendBodyBehindAppBar (cla: yes, f: material design, framework)
 
@@ -1292,7 +1292,7 @@ From Sun Aug 19 17:37:00 2019 -0700 to Mon Nov 25 12:05:00 2019 -0800
 
 [42668](https://github.com/flutter/flutter/pull/42668) dispose devices on cleanupAtFinish() for run_cold.dart (cla: yes, tool, waiting for tree to go green)
 
-[42676](https://github.com/flutter/flutter/pull/42676) [web] Update web runner message with flutter.dev/web (cla: yes, tool, waiting for tree to go green)
+[42676](https://github.com/flutter/flutter/pull/42676) [web] Update web runner message with flutterbrasil.dev/web (cla: yes, tool, waiting for tree to go green)
 
 [42683](https://github.com/flutter/flutter/pull/42683) Optimize focus operations by caching descendants and ancestors. (cla: yes, f: material design, framework)
 

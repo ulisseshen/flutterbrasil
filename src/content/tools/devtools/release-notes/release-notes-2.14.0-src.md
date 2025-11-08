@@ -1,63 +1,63 @@
-# DevTools 2.14.0 release notes
+# Notas de lançamento do DevTools 2.14.0
 
-The 2.14.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutter.dev/tools/devtools).
+A versão 2.14.0 do Dart e Flutter DevTools
+inclui as seguintes alterações entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](https://docs.flutter.dev/tools/devtools).
 
-## General updates
+## Atualizações gerais
 
-* Added a link to the new DevTools
-  [Discord channel](https://discord.com/channels/608014603317936148/958862085297672282)
-  in the About DevTools dialog -
+* Adicionado link para o novo
+  [canal do Discord](https://discord.com/channels/608014603317936148/958862085297672282) do DevTools
+  no diálogo About DevTools -
   [#4102](https://github.com/flutter/devtools/pull/4102)
 
   ![about-devtools](/tools/devtools/release-notes/images-2.14.0/image1.png "about devtools")
 
-## Network updates
+## Atualizações do Network
 
-* Added "Copy as URL" and "Copy as cURL" actions for
-  selected requests in the network profiler
-  (special thanks to [@jankuss](https://github.com/jankuss)!) -
+* Adicionadas ações "Copy as URL" e "Copy as cURL" para
+  requisições selecionadas no network profiler
+  (agradecimento especial a [@jankuss](https://github.com/jankuss)!) -
   [#4113](https://github.com/flutter/devtools/pull/4113)
 
   ![network-request-copy-actions](/tools/devtools/release-notes/images-2.14.0/image2.png "network request copy actions")
 
-## Flutter inspector updates
+## Atualizações do Flutter inspector
 
-* Added a setting to control whether hovering over a widget
-  in the inspector displays its properties and values in a hover card -
+* Adicionada configuração para controlar se passar o mouse sobre um widget
+  no inspector exibe suas propriedades e valores em um cartão de hover -
   [#4090](https://github.com/flutter/devtools/pull/4090)
 
-## Debugger updates
+## Atualizações do Debugger
 
-* Added auto complete suggestions in the console
-  (special thanks to [@jankuss](https://github.com/jankuss)!) -
+* Adicionadas sugestões de auto completar no console
+  (agradecimento especial a [@jankuss](https://github.com/jankuss)!) -
   [#4062](https://github.com/flutter/devtools/pull/4062)
 
   ![auto-complete-suggestions](/tools/devtools/release-notes/images-2.14.0/image3.png "auto complete suggestions")
 
-* Added the option to copy the full file path for a selected library -
+* Adicionada opção para copiar o caminho completo do arquivo para uma biblioteca selecionada -
   [#4147](https://github.com/flutter/devtools/pull/4147)
-* Fixed formatting in the debugger exception menu -
+* Corrigida formatação no menu de exceções do debugger -
   [#4066](https://github.com/flutter/devtools/pull/4066)
 
-## Memory updates
+## Atualizações do Memory
 
-* Fixed formatting for memory values in the heap tree view -
+* Corrigida formatação para valores de memória na visualização em árvore do heap -
   [#4153](https://github.com/flutter/devtools/pull/4153)
-* Fixed a bug that was preventing GC events from
-  showing up in the memory chart -
+* Corrigido um bug que estava impedindo eventos de GC de
+  aparecer no gráfico de memória -
   [#4131](https://github.com/flutter/devtools/pull/4131)
 
-## Performance updates
+## Atualizações do Performance
 
-* Warn users that the rendering layer toggles in the
-  "More Debugging Options" menu are not available for profile mode apps -
+* Aviso aos usuários de que os toggles de camada de renderização no
+  menu "More Debugging Options" não estão disponíveis para apps em profile mode -
   [#4075](https://github.com/flutter/devtools/pull/4075)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes since the previous release,
-check out
-[the diff on GitHub](https://github.com/flutter/devtools/compare/v2.13.1...v2.14.0).
+Para encontrar uma lista completa de alterações desde a versão anterior,
+confira
+[o diff no GitHub](https://github.com/flutter/devtools/compare/v2.13.1...v2.14.0).

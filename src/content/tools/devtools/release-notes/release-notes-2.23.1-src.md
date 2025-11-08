@@ -1,112 +1,112 @@
-# DevTools 2.23.1 release notes
+# Notas de lançamento do DevTools 2.23.1
 
-The 2.23.1 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutter.dev/tools/devtools).
+A versão 2.23.1 do Dart e Flutter DevTools
+inclui as seguintes alterações entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](https://docs.flutter.dev/tools/devtools).
 
-## General updates
+## Atualizações gerais
 
-* Update DevTools to the new Material 3 design -
+* Atualização do DevTools para o novo design Material 3 -
   [#5429](https://github.com/flutter/devtools/pull/5429)
-* Use the default Flutter service worker -
+* Uso do service worker padrão do Flutter -
   [#5331](https://github.com/flutter/devtools/pull/5331)
-* Added the new verbose logging feature for helping us debug user issues -
+* Adicionada nova funcionalidade de logging verboso para nos ajudar a depurar problemas de usuários -
   [#5404](https://github.com/flutter/devtools/pull/5404)
 
   ![verbose logging](/tools/devtools/release-notes/images-2.23.1/verbose-logging.png "verbose_logging")
 
-* Fix a bug where some asynchronous errors were not being reported -
+* Corrigido bug onde alguns erros assíncronos não estavam sendo reportados -
   [#5456](https://github.com/flutter/devtools/pull/5456)
-* Added support for viewing data after an app disconnects for
-  screens that support offline viewing
-  (currently only the Performance and CPU profiler pages) -
+* Adicionado suporte para visualizar dados após um app desconectar para
+  telas que suportam visualização offline
+  (atualmente apenas as páginas Performance e CPU profiler) -
   [#5509](https://github.com/flutter/devtools/pull/5509)
-* Include settings button in the footer of the embedded view -
+* Incluído botão de configurações no rodapé da visualização incorporada -
   [#5528](https://github.com/flutter/devtools/pull/5528)
 
-## Performance updates
+## Atualizações do Performance
 
-* Fix a performance regression in timeline event processing -
+* Corrigida regressão de desempenho no processamento de eventos da timeline -
   [#5460](https://github.com/flutter/devtools/pull/5460)
-* Persist a user's preference for whether the
-  Flutter Frames chart should be shown by default -
+* Persistência da preferência do usuário sobre se o
+  gráfico Flutter Frames deve ser exibido por padrão -
   [#5339](https://github.com/flutter/devtools/pull/5339)
-* Point users to [Impeller](https://docs.flutter.dev/perf/impeller) when
-  shader compilation jank is detected on an iOS device -
+* Direcionamento de usuários para [Impeller](https://docs.flutter.dev/perf/impeller) quando
+  jank de compilação de shader é detectado em um dispositivo iOS -
   [#5455](https://github.com/flutter/devtools/pull/5455)
-* Remove the CPU profiler from the legacy trace viewer -
+* Removido o CPU profiler do visualizador de trace legado -
   [#5539](https://github.com/flutter/devtools/pull/5539)
 
-## CPU profiler updates
+## Atualizações do CPU profiler
 
-* Add a Method Table to the CPU profiler -
+* Adicionada Tabela de Métodos ao CPU profiler -
   [#5366](https://github.com/flutter/devtools/pull/5366)
 
   ![Method table](/tools/devtools/release-notes/images-2.23.1/cpu-method-table.png "method_table")
 
-* Improve the performance of data processing in the CPU profiler -
+* Melhorado o desempenho do processamento de dados no CPU profiler -
   [#5468](https://github.com/flutter/devtools/pull/5468),
   [#5533](https://github.com/flutter/devtools/pull/5533),
   [#5535](https://github.com/flutter/devtools/pull/5535)
-* Polish and performance improvements for the CPU profile flame chart -
+* Polimento e melhorias de desempenho para o gráfico flame do perfil de CPU -
   [#5529](https://github.com/flutter/devtools/pull/5529)
-* Add ability to inspect statistics for a CPU profile -
+* Adicionada capacidade de inspecionar estatísticas para um perfil de CPU -
   [#5340](https://github.com/flutter/devtools/pull/5340)
-* Fix a bug where Native stack frames were missing their name -
+* Corrigido bug onde stack frames nativos estavam faltando seu nome -
   [#5344](https://github.com/flutter/devtools/pull/5344)
-* Fix an error in total and self time calculations for the bottom up tree -
+* Corrigido erro nos cálculos de tempo total e tempo próprio para a árvore bottom up -
   [#5348](https://github.com/flutter/devtools/pull/5348)
-* Add support for zooming and navigating the flame chart
-  with ,AOE keys (helpful for Dvorak users) -
+* Adicionado suporte para zoom e navegação no gráfico flame
+  com teclas ,AOE (útil para usuários de Dvorak) -
   [#5545](https://github.com/flutter/devtools/pull/5545)
 
-## Memory updates
+## Atualizações do Memory
 
-* Fix filtering bug in the "Trace Instances" view -
+* Corrigido bug de filtragem na visualização "Trace Instances" -
   [#5406](https://github.com/flutter/devtools/pull/5406)
-* Enabled evaluation and browsing for instances in heap snapshot -
+* Habilitada avaliação e navegação para instâncias em snapshot do heap -
   [#5542](https://github.com/flutter/devtools/pull/5542)
-* Fix heap snapshot failure -
+* Corrigida falha no snapshot do heap -
   [#5520](https://github.com/flutter/devtools/pull/5520)
-* Stop displaying external sizes in the allocation profile -
+* Parada de exibição de tamanhos externos no perfil de alocação -
   [#5555](https://github.com/flutter/devtools/pull/5555)
-* Expose totals for memory in heap snapshot -
+* Expostos totais para memória em snapshot do heap -
   [#5593](https://github.com/flutter/devtools/pull/5593)
 
-## Debugger updates
+## Atualizações do Debugger
 
-* Fix a bug where variable inspection
-  for instances sometimes showed no children -
+* Corrigido bug onde inspeção de variáveis
+  para instâncias às vezes não mostrava filhos -
   [#5356](https://github.com/flutter/devtools/pull/5356)
-* Hide "search in file" dialog if the "file search" dialog is open -
+* Ocultação do diálogo "search in file" se o diálogo "file search" estiver aberto -
   [#5393](https://github.com/flutter/devtools/pull/5393)
-* Fix file search bug where last letter disappeared when
-  searching at end of file name -
+* Corrigido bug de busca de arquivo onde a última letra desaparecia ao
+  buscar no final do nome do arquivo -
   [#5397](https://github.com/flutter/devtools/pull/5397)
-* Add search icon in file bar to make file search more discoverable -
+* Adicionado ícone de busca na barra de arquivo para tornar a busca de arquivo mais descobrível -
   [#5351](https://github.com/flutter/devtools/issues/5351)
-* Allow expression evaluation when pausing in JS for web apps -
+* Permitida avaliação de expressões ao pausar em JS para apps web -
   [#5427](https://github.com/flutter/devtools/pull/5427)
-* Update syntax highlighting to
+* Atualização do destaque de sintaxe para
   [dart-lang/dart-syntax-highlight v1.2.0](https://github.com/dart-lang/dart-syntax-highlight/blob/master/CHANGELOG.md#120-2023-01-30) -
   [#5477](https://github.com/flutter/devtools/pull/5477)
-* Debugger panel respects "dense mode" -
+* Painel do debugger respeita "dense mode" -
   [#5517](https://github.com/flutter/devtools/pull/5517)
 
-## Network profiler updates
+## Atualizações do Network profiler
 
-* Fix a bug viewing JSON responses with null values -
+* Corrigido bug ao visualizar respostas JSON com valores nulos -
   [#5424](https://github.com/flutter/devtools/pull/5424)
-* Fix a bug where JSON requests were shown in plain text,
-  instead of the formatted JSON viewer -
+* Corrigido bug onde requisições JSON eram mostradas em texto simples,
+  em vez do visualizador JSON formatado -
   [#5463](https://github.com/flutter/devtools/pull/5463)
-* Fix a UI issue where the copy button on the response or request tab
-  would let you copy while still loading the data -
+* Corrigido problema de UI onde o botão de copiar na aba de resposta ou requisição
+  permitia copiar enquanto ainda carregando os dados -
   [#5476](https://github.com/flutter/devtools/pull/5476)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes since the previous release,
-check out
-[the diff on GitHub](https://github.com/flutter/devtools/compare/v2.22.2...v2.23.1).
+Para encontrar uma lista completa de alterações desde a versão anterior,
+confira
+[o diff no GitHub](https://github.com/flutter/devtools/compare/v2.22.2...v2.23.1).

@@ -1,13 +1,13 @@
-# DevTools 2.28.1 release notes
+# Notas de lançamento do DevTools 2.28.1
 
-The 2.28.1 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutter.dev/tools/devtools).
+A versão 2.28.1 do Dart e Flutter DevTools
+inclui as seguintes alterações entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](https://docs.flutter.dev/tools/devtools).
 
-## General updates
+## Atualizações gerais
 
-* Added support for DevTools extensions.
+* Adicionado support for DevTools extensions.
   This means if you are debugging an app that depends on `package:foo`,
   and `package:foo` provides a DevTools extension,
   you will see a "Foo" tab display in DevTools
@@ -18,33 +18,33 @@ To learn more about DevTools, check out the
 
 ![Example DevTools extension](/tools/devtools/release-notes/images-2.28.1/example_devtools_extension.png "Example DevTools extension for package:foo_package")
 
-* Fixed theming bug in isolate selector -
+* Corrigido theming bug in isolate selector -
   [#6403](https://github.com/flutter/devtools/pull/6403)
-* Fixed isolate bug where main isolate was not reselecting on hot restart -
+* Corrigido isolate bug where main isolate was not reselecting on hot restart -
   [#6436](https://github.com/flutter/devtools/pull/6436)
 * Show the hot reload button for Dart server apps that support hot reload -
   [#6341](https://github.com/flutter/devtools/pull/6341)
-* Fixed exceptions on hot restart -
+* Corrigido exceptions on hot restart -
   [#6451](https://github.com/flutter/devtools/pull/6451),
   [#6450](https://github.com/flutter/devtools/pull/6450)
 
-## Inspector updates
+## Atualizações do Inspector
 
-* Fixed bug where inspector service calls were done on the selected isolate,
+* Corrigido bug where inspector service calls were done on the selected isolate,
   instead of the main isolate -
   [#6434](https://github.com/flutter/devtools/pull/6434)
 
-## Logging updates
+## Atualizações do Logging
 
-* Improved responsiveness of the top bar on the Logging view -
+* Melhorado responsiveness of the top bar on the Logging view -
   [#6281](https://github.com/flutter/devtools/pull/6281)
 
-* Added the ability to copy filtered logs -
+* Adicionado the ability to copy filtered logs -
   [#6260](https://github.com/flutter/devtools/pull/6260)
 
   ![The copy button on the Logging view to the right of the filter tool](/tools/devtools/release-notes/images-2.28.1/logger_copy.png "The Logging view copy button")
 
-## Full commit history
+## Histórico completo de commits
 
 To find a complete list of changes in this release, check out the
 [DevTools git log](https://github.com/flutter/devtools/tree/v2.28.1).

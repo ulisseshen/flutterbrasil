@@ -1,6 +1,7 @@
 ---
-short-title: 2.9.1 release notes
-description: Release notes for Dart and Flutter DevTools version 2.9.1.
+ia-translate: true
+short-title: Notas da versão 2.9.1
+description: Notas de lançamento do Dart e Flutter DevTools versão 2.9.1.
 toc: false
 ---
 

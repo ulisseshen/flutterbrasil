@@ -1,93 +1,93 @@
-# DevTools 2.8.0 release notes
+# Notas de lançamento do DevTools 2.8.0
 
-The 2.8.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutter.dev/tools/devtools).
+A versão 2.8.0 do Dart e Flutter DevTools
+inclui as seguintes alterações entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](https://docs.flutter.dev/tools/devtools).
 
-## General updates
+## Atualizações gerais
 
-* Improvements for initial page load time -
+* Melhorias no tempo de carregamento inicial da página -
   [#3325](https://github.com/flutter/devtools/pull/3325)
-* Performance improvements for connecting DevTools to a device,
-  particularly impactful for low-memory devices -
+* Melhorias de desempenho ao conectar o DevTools a um dispositivo,
+  particularmente impactante para dispositivos com pouca memória -
   [#3468](https://github.com/flutter/devtools/pull/3468)
-* For users on Flutter 2.8.0 or greater (or Dart 2.15.0 or greater),
-  DevTools should now be launched via the `dart devtools` command
-  instead of running `pub global activate devtools`.
-  DevTools 2.8.0 will be the last version of DevTools shipped on pub,
-  and all future versions of DevTools will be shipped as part of the Dart SDK.
-  If you see this warning,
-  be sure to open DevTools via `dart devtools` instead of from pub:
+* Para usuários no Flutter 2.8.0 ou superior (ou Dart 2.15.0 ou superior),
+  o DevTools agora deve ser iniciado através do comando `dart devtools`
+  em vez de executar `pub global activate devtools`.
+  O DevTools 2.8.0 será a última versão do DevTools enviada no pub,
+  e todas as versões futuras do DevTools serão enviadas como parte do Dart SDK.
+  Se você vir este aviso,
+  certifique-se de abrir o DevTools via `dart devtools` em vez de pelo pub:
 
   ![dart devtools warning dialog](/tools/devtools/release-notes/images-2.8.0/image1.png "dart devtools warning dialog")
 
-## Performance updates
+## Atualizações do Performance
 
-* Added a new "Enhance Tracing" feature to help users diagnose UI jank
-  stemming from expensive Build, Layout, and Paint operations.
+* Adicionada nova funcionalidade "Enhance Tracing" para ajudar usuários a diagnosticar jank na UI
+  originado de operações de Build, Layout e Paint caras.
 
   ![Enhance tracing](/tools/devtools/release-notes/images-2.8.0/image2.png "Enhance tracing")
-  
-  The expected workflow is as such:
-  
-  1. User is investigating UI jank in the performance page
-  2. User notices a long Build, Layout, and/or Paint event
-  3. User turns on the respective tracking toggle in the "Enhance Tracing" feature
-  4. User reproduces the UI jank in their app
-  5. User looks at the new set of Timeline events, which should now have
-     additional child events for widgets built, render objects laid out,
-     and/or render objects painted
+
+  O fluxo de trabalho esperado é o seguinte:
+
+  1. Usuário está investigando jank na UI na página de performance
+  2. Usuário nota um evento de Build, Layout e/ou Paint longo
+  3. Usuário ativa o respectivo toggle de rastreamento na funcionalidade "Enhance Tracing"
+  4. Usuário reproduz o jank na UI em seu app
+  5. Usuário olha o novo conjunto de eventos do Timeline, que agora deve ter
+     eventos filhos adicionais para widgets construídos, render objects organizados,
+     e/ou render objects pintados
 
   ![Timeline events](/tools/devtools/release-notes/images-2.8.0/image3.png "Timeline events")
 
-* Added new "More debugging options" feature to allow for disabling
-  rendering layers for Clip, Opacity, and Physical Shapes.
+* Adicionada nova funcionalidade "More debugging options" para permitir desabilitar
+  camadas de renderização para Clip, Opacity e Physical Shapes.
 
   ![More debugging options](/tools/devtools/release-notes/images-2.8.0/image4.png "More debugging options")
-  
-  The expected workflow is as such:
-  
-  1. User is investigating UI jank in the performance page
-  2. User notices a lot of janky frames and suspects it could be due to
-     excessive use of clipping, opacity, or physical shapes.
-  3. User turns off the respective render layer toggle in the "More
-     debugging options" feature
-  4. User reproduces the UI jank in their app
-  5. If the UI jank is reduced with a rendering layer turned off,
-     the user should try to optimize their app to use
-     less clipping/opacity/physical shape effects.
-     If the UI jank is not reduced,
-     the user now knows that the performance problem
-     is not due to these UI effects.
 
-## Debugger updates
+  O fluxo de trabalho esperado é o seguinte:
 
-* Replaced the "Libraries" pane with a "File Explorer" pane -
-  [#3448](https://github.com/flutter/devtools/pull/3448). 
-  The "File Explorer" pane has two components:
+  1. Usuário está investigando jank na UI na página de performance
+  2. Usuário nota muitos frames com jank e suspeita que pode ser devido ao
+     uso excessivo de clipping, opacity ou physical shapes.
+  3. Usuário desativa o respectivo toggle de camada de renderização na funcionalidade "More
+     debugging options"
+  4. Usuário reproduz o jank na UI em seu app
+  5. Se o jank na UI for reduzido com uma camada de renderização desativada,
+     o usuário deve tentar otimizar seu app para usar
+     menos efeitos de clipping/opacity/physical shape.
+     Se o jank na UI não for reduzido,
+     o usuário agora sabe que o problema de desempenho
+     não é devido a esses efeitos de UI.
 
-  1. A tree view of the libraries present in your application.
-     You can use the File Explorer to find and open a library,
-     or you can use the existing <kbd>Ctrl</kbd> / <kbd>Cmd</kbd> +
-     <kbd>P</kbd> keyboard shortcut to search for a file.
-  1. A new "Outline" view that shows the structure of the selected library.
-     This view will show classes, members, methods, etc.,
-     and when an item is selected,
-     the source view will jump to the respective line of code
-     for the selected item.
+## Atualizações do Debugger
+
+* Substituído o painel "Libraries" por um painel "File Explorer" -
+  [#3448](https://github.com/flutter/devtools/pull/3448).
+  O painel "File Explorer" tem dois componentes:
+
+  1. Uma visualização em árvore das bibliotecas presentes em sua aplicação.
+     Você pode usar o File Explorer para encontrar e abrir uma biblioteca,
+     ou pode usar o atalho de teclado existente <kbd>Ctrl</kbd> / <kbd>Cmd</kbd> +
+     <kbd>P</kbd> para procurar um arquivo.
+  1. Uma nova visualização "Outline" que mostra a estrutura da biblioteca selecionada.
+     Esta visualização mostrará classes, membros, métodos, etc.,
+     e quando um item é selecionado,
+     a visualização do código irá pular para a respectiva linha de código
+     do item selecionado.
 
   ![Outline view selected library](/tools/devtools/release-notes/images-2.8.0/image5.png "Outline view selected library")
 
-* Performance improvements to expression evaluation auto complete -
+* Melhorias de desempenho no auto completar de avaliação de expressões -
   [#3463](https://github.com/flutter/devtools/pull/3463)
-* Fixed a bug with keyboard shortcuts -
+* Corrigido um bug com atalhos de teclado -
   [#3458](https://github.com/flutter/devtools/pull/3458)
-* UI polish - [#3421](https://github.com/flutter/devtools/pull/3421),
+* Polimento de UI - [#3421](https://github.com/flutter/devtools/pull/3421),
   [#3449](https://github.com/flutter/devtools/pull/3449)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes since the previous release,
-check out
-[the diff on GitHub](https://github.com/flutter/devtools/compare/v2.7.0...v2.8.0).
+Para encontrar uma lista completa de alterações desde a versão anterior,
+confira
+[o diff no GitHub](https://github.com/flutter/devtools/compare/v2.7.0...v2.8.0).

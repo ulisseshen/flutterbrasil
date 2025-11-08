@@ -1,50 +1,50 @@
-# DevTools 2.15.0 release notes
+# Notas de lançamento do DevTools 2.15.0
 
-The 2.15.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutter.dev/tools/devtools).
+A versão 2.15.0 do Dart e Flutter DevTools
+inclui as seguintes alterações entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](https://docs.flutter.dev/tools/devtools).
 
-## General updates
+## Atualizações gerais
 
-* The DevTools 2.15 release includes improvements to all tables in
-  DevTools (logging view, network profiler, CPU profiler, and so on) -
+* A versão 2.15 do DevTools inclui melhorias em todas as tabelas do
+  DevTools (visualização de logging, network profiler, CPU profiler e assim por diante) -
   [#4175](https://github.com/flutter/devtools/pull/4175)
 
-## Performance updates
+## Atualizações do Performance
 
-* Added outlines to each layer displayed in the Raster Metrics tool -
+* Adicionados contornos a cada camada exibida na ferramenta Raster Metrics -
   [#4192](https://github.com/flutter/devtools/pull/4192)
 
   ![raster-metrics-layer-outlines](/tools/devtools/release-notes/images-2.15.0/image1.png "raster metrics layer outlines")
 
-* Fix a bug with loading offline data -
+* Corrigido um bug com carregamento de dados offline -
   [#4189](https://github.com/flutter/devtools/pull/4189)
 
-## Network updates
+## Atualizações do Network
 
-* Added a Json viewer with syntax highlighting for network responses -
+* Adicionado visualizador Json com destaque de sintaxe para respostas de rede -
   [#4167](https://github.com/flutter/devtools/pull/4167)
 
   ![network-response-json-viewer](/tools/devtools/release-notes/images-2.15.0/image2.png "network response json viewer")
 
-* Added the ability to copy network responses -
+* Adicionada capacidade de copiar respostas de rede -
   [#4190](https://github.com/flutter/devtools/pull/4190)
 
-## Memory updates
+## Atualizações do Memory
 
-* Added the ability to select a different isolate from the DevTools footer -
+* Adicionada capacidade de selecionar um isolate diferente no rodapé do DevTools -
   [#4173](https://github.com/flutter/devtools/pull/4173)
-* Made the automatic snapshotting feature a configurable setting -
+* Tornada a funcionalidade de snapshot automático uma configuração ajustável -
   [#4200](https://github.com/flutter/devtools/pull/4200)
 
 ## CPU profiler
 
-* Stop manually truncating source URIs in the profiler tables -
+* Parada de truncar manualmente URIs de origem nas tabelas do profiler -
   [#4166](https://github.com/flutter/devtools/pull/4166)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes since the previous release,
-check out
-[the diff on GitHub](https://github.com/flutter/devtools/compare/v2.14.0...v2.15.0).
+Para encontrar uma lista completa de alterações desde a versão anterior,
+confira
+[o diff no GitHub](https://github.com/flutter/devtools/compare/v2.14.0...v2.15.0).

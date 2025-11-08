@@ -155,7 +155,7 @@ das declarações de assets nos exemplos anteriores:
 return const Image(image: AssetImage('assets/background.png'));
 ```
 
-### Assets de imagens com resolução adaptável {#resolution-aware}
+### Assets de imagens com resolução adaptável {:#resolution-aware}
 
 O Flutter pode carregar imagens com resolução apropriada para
 a [proporção de pixels do dispositivo][device pixel ratio] atual.
@@ -214,7 +214,7 @@ se largura e altura não forem especificadas.
 [MaterialApp][] ou [CupertinoApp][] como ancestral do seu [`AssetImage`][].
 :::
 
-#### Empacotamento de assets de imagens com resolução adaptável {#resolution-aware-bundling}
+#### Empacotamento de assets de imagens com resolução adaptável {:#resolution-aware-bundling}
 
 Você só precisa especificar o asset principal ou seu diretório pai
 na seção `assets` do `pubspec.yaml`.
@@ -231,7 +231,7 @@ ao carregar imagens. (Se você trabalhar com algumas das classes
 de nível mais baixo, como [`ImageStream`][] ou [`ImageCache`][],
 você também notará parâmetros relacionados à escala.)
 
-### Imagens assets em dependências de pacotes {#from-packages}
+### Imagens assets em dependências de pacotes {:#from-packages}
 
 Para carregar uma imagem de uma dependência de [pacote][package],
 o argumento `package` deve ser fornecido para [`AssetImage`][].

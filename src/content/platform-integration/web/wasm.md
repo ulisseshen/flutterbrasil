@@ -146,7 +146,7 @@ Todos os navegadores no iOS são obrigados a usar WebKit,
 e não podem usar seu próprio engine de navegador.
 :::
 
-## Usando bibliotecas de interop JS compatíveis {#js-interop-wasm}
+## Usando bibliotecas de interop JS compatíveis {:#js-interop-wasm}
 
 Para suportar compilação para Wasm, Dart mudou
 como habilita interop com APIs do navegador e JavaScript.

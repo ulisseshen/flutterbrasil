@@ -359,7 +359,7 @@ Verifique os seguintes valores:
 [applicationtag]: {{site.android-dev}}/guide/topics/manifest/application-element
 [permissiontag]: {{site.android-dev}}/guide/topics/manifest/uses-permission-element
 
-## Revisar ou alterar a configuração de build do Gradle {#review-the-gradle-build-configuration}
+## Revisar ou alterar a configuração de build do Gradle {:#review-the-gradle-build-configuration}
 
 Para verificar a configuração de build do Android,
 revise o bloco `android` no

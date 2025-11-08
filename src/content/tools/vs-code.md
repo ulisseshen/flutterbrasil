@@ -20,7 +20,7 @@ Siga as instruções em [Configurar um editor][Set up an editor] para
 instalar as extensões Dart e Flutter
 (também chamadas de plugins).
 
-### Atualizando a extensão {#updating}
+### Atualizando a extensão {:#updating}
 
 Atualizações das extensões são lançadas regularmente.
 Por padrão, o VS Code atualiza automaticamente as extensões quando

@@ -84,7 +84,7 @@ Não recomendamos usar este canal já que
 A documentação mais recente para o branch **main**
 está em: <https://main-api.flutterbrasil.dev>
 
-### Mudando canais {#switching-flutter-channels}
+### Mudando canais {:#switching-flutter-channels}
 
 Para visualizar seu canal atual, use o seguinte comando:
 

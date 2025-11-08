@@ -365,7 +365,7 @@ opções adicionais de dependência estão disponíveis:
 Os exemplos a seguir percorrem os passos necessários para
 usar packages.
 
-### Example: Using the css_colors package {#css-example}
+### Example: Using the css_colors package {:#css-example}
 
 O package [`css_colors`][]
 define constantes de cor para cores CSS, então use as constantes
@@ -423,7 +423,7 @@ Para usar este package:
 
 1. Execute o app. O fundo do app deve agora estar laranja.
 
-### Example: Using the url_launcher package to launch the browser {#url-example}
+### Example: Using the url_launcher package to launch the browser {:#url-example}
 
 O plugin package [`url_launcher`][] habilita abrir
 o navegador padrão na plataforma móvel para exibir

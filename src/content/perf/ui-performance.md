@@ -139,7 +139,7 @@ Uma vez que seu app esteja executando em modo profile,
 
 <a id="the-performance-overlay" aria-hidden="true"></a>
 
-## O overlay de desempenho {#performance-overlay}
+## O overlay de desempenho {:#performance-overlay}
 
 O overlay de desempenho exibe estatísticas em dois gráficos
 que mostram onde o tempo está sendo gasto no seu app. Se a UI

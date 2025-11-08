@@ -60,7 +60,7 @@ executa automaticamente para você no framework.
 [pigeon]: {{site.pub-pkg}}/pigeon
 
 <a id="channels-and-platform-threading"></a>
-## Visão geral da arquitetura: platform channels {#architecture}
+## Visão geral da arquitetura: platform channels {:#architecture}
 
 Mensagens são passadas entre o client (UI)
 e host (plataforma) usando platform
@@ -92,7 +92,7 @@ com a plataforma agindo como client para métodos implementados em Dart.
 Para um exemplo concreto, confira o plugin [`quick_actions`][].
 :::
 
-### Suporte a tipos de dados e codecs do platform channel {#codec}
+### Suporte a tipos de dados e codecs do platform channel {:#codec}
 
 Os platform channels padrão usam um codec de mensagem padrão que suporta
 serialização binária eficiente de valores simples tipo JSON, como booleans,
@@ -232,7 +232,7 @@ lado da plataforma e vice-versa:
 {% endtab %}
 {% endtabs %}
 
-## Exemplo: Chamando código específico da plataforma usando platform channels {#example}
+## Exemplo: Chamando código específico da plataforma usando platform channels {:#example}
 
 O código a seguir demonstra como chamar
 uma API específica da plataforma para recuperar e exibir
@@ -260,7 +260,7 @@ Para iOS com Swift,
 veja [`/examples/platform_channel_swift/`][].
 :::
 
-### Passo 1: Criar um novo projeto de app {#example-project}
+### Passo 1: Criar um novo projeto de app {:#example-project}
 
 Comece criando um novo app:
 
@@ -272,7 +272,7 @@ use as flags `-i` e/ou `-a`:
 
 * Em um terminal execute: `flutter create -i objc -a java batterylevel`
 
-### Passo 2: Criar o client Flutter da plataforma {#example-client}
+### Passo 2: Criar o client Flutter da plataforma {:#example-client}
 
 A classe `State` do app mantém o estado atual do app.
 Estenda isso para manter o estado atual da bateria.
@@ -1127,7 +1127,7 @@ Agora você deve poder executar a aplicação no Linux.
 Se seu dispositivo não tem uma bateria,
 ele exibe 'Battery level not available'.
 
-## Platform channels typesafe usando Pigeon {#pigeon}
+## Platform channels typesafe usando Pigeon {:#pigeon}
 
 O exemplo anterior usa `MethodChannel`
 para comunicação entre o host e o client,
@@ -1198,7 +1198,7 @@ Future<void> onClick() async {
 }
 ```
 
-## Separar código específico da plataforma do código UI {#separate}
+## Separar código específico da plataforma do código UI {:#separate}
 
 Se você espera usar seu código específico da plataforma
 em múltiplos apps Flutter, você pode considerar
@@ -1206,7 +1206,7 @@ separar o código em um platform plugin localizado
 em um diretório fora da sua aplicação principal.
 Veja [developing packages][] para detalhes.
 
-## Publicar código específico da plataforma como um pacote {#publish}
+## Publicar código específico da plataforma como um pacote {:#publish}
 
 Para compartilhar seu código específico da plataforma com outros desenvolvedores
 no ecossistema Flutter, veja [publishing packages][].

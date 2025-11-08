@@ -19,7 +19,7 @@ description: >
 Siga as instruções de [Configurar um editor](/get-started/editor?tab=androidstudio)
 para instalar os plugins Dart e Flutter.
 
-### Atualizando os plugins {#updating}
+### Atualizando os plugins {:#updating}
 
 Atualizações dos plugins são lançadas regularmente.
 Você deve receber um aviso na IDE quando uma atualização estiver disponível.
@@ -62,7 +62,7 @@ difere entre Android Studio e IntelliJ.
     [defina o domínio da empresa](#set-the-company-domain).
  1. Clique em **Finish**.
 
-#### Defina o domínio da empresa {#set-the-company-domain}
+#### Defina o domínio da empresa {:#set-the-company-domain}
 
 Ao criar um novo app, alguns plugins de IDE do Flutter solicitam um
 nome de organização em ordem de domínio reverso,
@@ -147,7 +147,7 @@ Você precisa conectar um dispositivo, ou iniciar um simulador, para prosseguir.
  1. Clique no **Play icon** na barra de ferramentas, ou invoque **Run > Run**.
     O painel inferior **Run** mostra a saída de logs.
 
-### Executar app com breakpoints {#run-app-with-breakpoints}
+### Executar app com breakpoints {:#run-app-with-breakpoints}
 
  1. Se desejar, defina breakpoints no seu código-fonte.
  1. Clique no **Debug icon** na barra de ferramentas, ou invoque **Run > Debug**.
@@ -163,7 +163,7 @@ Flutter oferece um ciclo de desenvolvimento de primeira classe, permitindo que v
 das suas alterações quase instantaneamente com o recurso _Stateful Hot Reload_.
 Para saber mais, consulte [Hot reload][].
 
-### Mostrar dados de desempenho {#show-performance-data}
+### Mostrar dados de desempenho {:#show-performance-data}
 
 :::note
 Para examinar problemas de desempenho no Flutter, consulte a
@@ -320,7 +320,7 @@ não clique no botão Stop, simplesmente clique novamente no botão Run (se em u
 de execução) ou no botão Debug (se em uma sessão de depuração), ou shift-clique no botão 'hot
 reload'.
 
-## Editando código Android no Android Studio com suporte completo de IDE {#android-ide}
+## Editando código Android no Android Studio com suporte completo de IDE {:#android-ide}
 
 Abrir o diretório raiz de um projeto Flutter não expõe todos os arquivos Android
 para a IDE. Apps Flutter contêm um subdiretório chamado `android`. Se você
@@ -359,7 +359,7 @@ erro de build quando você abrir o projeto `android`. Execute `flutter pub get` 
 diretório raiz do app e reconstrua o projeto selecionando **Build > Make**
 para corrigi-lo.
 
-## Editando código Android no IntelliJ IDEA {#edit-android-code}
+## Editando código Android no IntelliJ IDEA {:#edit-android-code}
 
 Para habilitar a edição de código Android no IntelliJ IDEA, você precisa configurar o
 local do Android SDK:

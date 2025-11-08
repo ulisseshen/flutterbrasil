@@ -78,7 +78,7 @@ Apenas o código envolvido na reconstrução dos widgets
 é automaticamente executado novamente. As funções `main()` e `initState()`,
 por exemplo, não são executadas novamente.
 
-## Casos especiais {#special-cases}
+## Casos especiais {:#special-cases}
 
 As próximas seções descrevem cenários específicos que envolvem
 hot reload. Em alguns casos, pequenas alterações no código Dart

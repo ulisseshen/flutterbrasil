@@ -260,7 +260,7 @@ do Flutter, leia a [visão geral arquitetural][architectural overview].
 [architecture diagram]: https://docs.google.com/presentation/d/1cw7A4HbvM_Abv320rVgPVGiUP2msVs7tfGbkgdrTy0I/edit#slide=id.gbb3c3233b_0_162
 [Impeller]: /perf/impeller
 
-### Como Flutter roda meu código no Android? {#run-android}
+### Como Flutter roda meu código no Android? {:#run-android}
 
 O código C e C++ da engine são compilados com o NDK do Android.
 O código Dart (tanto do SDK quanto o seu)
@@ -280,7 +280,7 @@ canto superior direito do seu app ao rodar neste modo,
 para lembrá-lo que o desempenho não é característico do
 app de release finalizado.
 
-### Como Flutter roda meu código no iOS? {#run-ios}
+### Como Flutter roda meu código no iOS? {:#run-ios}
 
 O código C e C++ da engine são compilados com LLVM.
 O código Dart (tanto do SDK quanto o seu)
@@ -378,7 +378,7 @@ e Windows.
 para apps cliente. O framework gráfico subjacente
 e a máquina virtual Dart são implementados em C/C++.
 
-### Por que Flutter escolheu usar Dart? {#why-did-flutter-choose-to-use-dart}
+### Por que Flutter escolheu usar Dart? {:#why-did-flutter-choose-to-use-dart}
 
 Durante a fase inicial de desenvolvimento,
 o time Flutter olhou para muitas
@@ -460,7 +460,7 @@ _Alocação rápida_
 Flutter pode rodar código Dart que não importa direta ou
 transitivamente `dart:mirrors` ou `dart:html`.
 
-### Quão grande é a Flutter engine? {#how-big-is-the-flutter-engine}
+### Quão grande é a Flutter engine? {:#how-big-is-the-flutter-engine}
 
 Em março de 2021, medimos o tamanho de download de um
 [app Flutter mínimo][minimal Flutter app] (sem Material Components,
@@ -528,7 +528,7 @@ Apps Flutter rodam usando código compilado nativamente&mdash;nenhum
 interpretador está envolvido.
 Isso significa que apps Flutter iniciam rapidamente.
 
-### Que tipo de ciclos de desenvolvedor posso esperar? Quanto tempo entre edição e refresh? {#hot-reload}
+### Que tipo de ciclos de desenvolvedor posso esperar? Quanto tempo entre edição e refresh? {:#hot-reload}
 
 Flutter implementa um ciclo de desenvolvedor de _hot reload_. Você pode esperar
 tempos de reload abaixo de um segundo, em um dispositivo ou emulador/simulador.
@@ -560,7 +560,7 @@ Você pode compilar e deployar seu app Flutter para iOS, Android,
 [desktop]: /platform-integration/desktop
 [web]: /platform-integration/web
 
-### Em que dispositivos e versões de SO Flutter roda? {#what-devices-and-os-versions-does-flutter-run-on}
+### Em que dispositivos e versões de SO Flutter roda? {:#what-devices-and-os-versions-does-flutter-run-on}
 
 * Suportamos e testamos rodar Flutter em uma variedade
   de plataformas de baixo a alto desempenho. Para uma lista detalhada
@@ -859,7 +859,7 @@ Para IntelliJ, use as entradas de menu
 [hot reload]: #hot-reload
 [iOS]: #run-ios
 
-### Que paradigma de programação o framework do Flutter usa? {#what-programming-paradigm-does-flutters-framework-use}
+### Que paradigma de programação o framework do Flutter usa? {:#what-programming-paradigm-does-flutters-framework-use}
 
 Flutter é um ambiente de programação multi-paradigma.
 Muitas técnicas de programação desenvolvidas nas últimas décadas

@@ -736,7 +736,8 @@ uma imagem de um URL.
 
 <?code-excerpt "lib/examples.dart (image-network)" replace="/return //g"?>
 ```dart
-Image.network('https://docs.flutterbrasil.dev/assets/images/docs/owl.jpg');
+Image.network(
+    'https://docs.flutterbrasil.dev/assets/images/docs/owl.jpg');
 ```
 
 ### Como eu instalo pacotes e plugins de pacotes?

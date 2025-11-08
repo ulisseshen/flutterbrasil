@@ -43,7 +43,7 @@ final class BuildSiteCommand extends Command<int> {
         'PRODUCTION': '$productionRelease',
         'OPTIMIZE': '$productionRelease',
       },
-       runInShell: true,
+      runInShell: true,
     );
 
     await stdout.addStream(process.stdout);

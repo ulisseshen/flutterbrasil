@@ -58,22 +58,21 @@ Future<int> _checkLinks({bool checkExternal = false}) async {
 
   print('Starting the Firebase hosting emulator asynchronously...');
   final emulatorProcess = await Process.start(
-    'npm',
-    const [
-      'exec',
-      '--',
-      'firebase',
-      'emulators:start',
-      '--only',
-      'hosting',
-      '--project',
-      'default',
-      '--log-verbosity',
-      'QUIET',
-    ],
-    mode: ProcessStartMode.inheritStdio,
-    runInShell: true
-  );
+      'npm',
+      const [
+        'exec',
+        '--',
+        'firebase',
+        'emulators:start',
+        '--only',
+        'hosting',
+        '--project',
+        'default',
+        '--log-verbosity',
+        'QUIET',
+      ],
+      mode: ProcessStartMode.inheritStdio,
+      runInShell: true);
 
   // Give the emulator a few seconds to start up.
   await Future<void>.delayed(const Duration(seconds: 15));

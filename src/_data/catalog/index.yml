@@ -48,7 +48,7 @@
     - name: 'Widgets de layout de múltiplos filhos'
       description: >-
         Esses widgets recebem múltiplos filhos e os organizam de diferentes maneiras.
-    - name: 'Widgets Sliver'
+    - name: 'Widgets sliver'
       description: >-
         Esses widgets recebem uma porção de um CustomScrollView e
         aplicam um layout a essa porção.

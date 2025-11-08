@@ -3,20 +3,21 @@ title: showAutocorrectionPromptRect method added to TextInputClient
 description: >
   A new method, void showAutocorrectionPromptRect(int start, int end), 
   was added to the TextInputClient interface
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 A new method,`void showAutocorrectionPromptRect(int start, int end)`,
 was added to the `TextInputClient` interface.
 
-## Context
+## Contexto
 
 In order to display the iOS autocorrection highlight,
 the iOS text input plugin needed a way to inform the
 Flutter framework of the highlight's start and end position.
 
-## Description of change
+## Descrição da mudança
 
 A new method, `void showAutocorrectionPromptRect(int start, int end)`,
 was added to the `TextInputClient` interface. iOS calls this method
@@ -24,7 +25,7 @@ when it finds a new potential autocorrect candidate
 in the current user input, or when the range of a previously
 highlighted candidate changes.
 
-## Migration guide
+## Guia de migração
 
 If your application doesn't implement or subclass `TextInputClient`,
 no migration is needed. If your application doesn't target iOS,
@@ -43,7 +44,7 @@ we recommend that you add a sensible implementation of
 `void showAutocorrectionPromptRect(int start, int end)` 
 to your `TextInputClient` subclass. 
 
-Code after migration:
+Código após a migração:
 
 ```dart
 // Assume your `TextInputClient` is a `State` subclass, and it has a variable 
@@ -81,21 +82,21 @@ class CustomTextInputClient extends State<...> implements TextInputClient {
 }
 ```
 
-## Timeline
+## Linha do tempo
 
-In stable release: 1.20
+Na versão estável: 1.20
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`TextInputClient`][]
 
-Relevant issue:
+Issues relevantes:
 
 * [Issue 12920][]
 
-Relevant PR:
+PRs relevantes:
 
 * [iOS UITextInput autocorrection prompt][]
 

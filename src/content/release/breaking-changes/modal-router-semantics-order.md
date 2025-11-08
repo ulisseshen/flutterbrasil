@@ -3,15 +3,16 @@ title: Semantics Order of the Overlay Entries in Modal Routes
 description: >
   The scope of the modal route has a higher semantics
   traverse order than its modal barrier.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 We changed the semantics traverse order of the overlay entries in modal routes.
 Accessibility talk back or voice over now focuses the scope of a modal route
 first instead of its modal barrier.
 
-## Context
+## Contexto
 
 The modal route has two overlay entries, the scope and the modal barrier. The
 scope is the actual content of the modal route, and the modal barrier is the
@@ -21,7 +22,7 @@ accessibility focusable because users can tap the modal barrier to pop the
 modal route. This change specifically made the accessibility to focus the scope
 first before the modal barrier.
 
-## Description of change
+## Descrição da mudança
 
 We added additional semantics node above both
 the overlay entries of modal routes.
@@ -29,13 +30,13 @@ Those semantics nodes denote the semantics
 traverse order of these two overlay entries.
 This also changed the structure of semantics tree.
 
-## Migration guide
+## Guia de migração
 
 If your tests start failing due to semantics tree changes after the update,
 you can migrate your code by expecting a new node on above of the modal route
 overlay entries.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 import 'dart:ui';
@@ -85,7 +86,7 @@ SemanticsNode getChild(SemanticsNode node) {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 import 'dart:ui';
@@ -135,23 +136,23 @@ SemanticsNode getChild(SemanticsNode node) {
 }
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.19.0<br>
-In stable release: 1.20
+Lançado na versão: 1.19.0<br>
+Na versão estável: 1.20
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`ModalRoute`][]
 * [`OverlayEntry`][]
 
-Relevant issue:
+Issues relevantes:
 
 * [Issue 46625][]
 
-Relevant PR:
+PRs relevantes:
 
 * [PR 59290][]
 

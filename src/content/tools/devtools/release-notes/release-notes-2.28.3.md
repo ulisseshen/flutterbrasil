@@ -1,6 +1,7 @@
 ---
-short-title: 2.28.3 release notes
-description: Release notes for Dart and Flutter DevTools version 2.28.3.
+ia-translate: true
+short-title: Notas da versão 2.28.3
+description: Notas de lançamento do Dart e Flutter DevTools versão 2.28.3.
 toc: false
 ---
 

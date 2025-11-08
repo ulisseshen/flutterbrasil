@@ -1,13 +1,14 @@
 ---
 title: Customizing tabs alignment using the new TabBar.tabAlignment property
 description: Introducing the TabBar.tabAlignment property.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 Using `TabBar.tabAlignment` to customize the alignment of tabs in a `TabBar`.
 
-## Context
+## Contextoo
 
 The `TabBar.tabAlignment` property sets where a Material 3 `TabBar` places tabs.
 The `TabAlignment` enum has the following values:
@@ -36,7 +37,7 @@ To change this alignment, set the
 `TabBar.tabAlignment` property for widget level customization.
 Or, set the `TabBarThemeData.tabAlignment` property for app level customization.
 
-## Description of change
+## Descrição da mudança
 
 When you set `TabBar.isScrollable` and `ThemeData.useMaterial3` to `true`,
 the tabs in a scrollable `TabBar` defaults to `TabAlignment.startOffset`.
@@ -46,7 +47,7 @@ This changes the previous behavior.
 The tabs were aligned to the start of the scrollable `TabBar`
 when more tabs needed to display than the width allowed.
 
-## Migration guide
+## Guia de migração
 
 A Material 3 scrollable `TabBar` uses `TabAlignment.startOffset` as
 the default tab alignment.
@@ -59,7 +60,7 @@ This change also removed the `52.0` pixel offset.
 The following code snippets show how to use `TabBar.tabAlignment` to
 align tabs to the start of the scrollable `TabBar`:
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 TabBar(
@@ -71,7 +72,7 @@ TabBar(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 TabBar(
@@ -84,20 +85,20 @@ TabBar(
 );
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.13.0-17.0.pre<br>
-In stable release: 3.16
+Lançado na versão: 3.13.0-17.0.pre<br>
+Na versão estável: 3.16
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`TabBar`][]
 * [`TabBar.tabAlignment`][]
 * [`TabAlignment`][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Introduce `TabBar.tabAlignment`][]
 * [Fix Material 3 Scrollable `TabBar`][]

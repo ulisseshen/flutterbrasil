@@ -1,26 +1,27 @@
 ---
-title: Videos
+ia-translate: true
+title: Vídeos
 description: >
-  Available videos on various aspects of developing in Flutter.
+  Vídeos disponíveis sobre vários aspectos do desenvolvimento em Flutter.
 ---
 
-These Flutter videos, produced both internally
-at Google and by the Flutter community,
-might help if you are a visual learner.
+Estes vídeos sobre Flutter, produzidos internamente
+no Google e pela comunidade Flutter,
+podem ajudar se você é um aprendiz visual.
 
-Note that many people make Flutter videos.
-This page shows some that we like,
-but there are many others, including
-some in different languages.
+Observe que muitas pessoas fazem vídeos sobre Flutter.
+Esta página mostra alguns que gostamos,
+mas existem muitos outros, incluindo
+alguns em diferentes idiomas.
 
 ---
 
-## Series
+## Séries
 
 ### Flutter Forward
 
-Even if you couldn't make it to Nairobi for the in-person
-event, you can enjoy the content created for Flutter Forward!
+Mesmo que você não tenha conseguido ir a Nairobi para o
+evento presencial, você pode aproveitar o conteúdo criado para o Flutter Forward!
 
 {% ytEmbed 'zKQYGKAe5W8?start=2778', 'Flutter Forward 2023 Livestream' %}
 
@@ -28,17 +29,17 @@ event, you can enjoy the content created for Flutter Forward!
 
 [Flutter Forward playlist]: {{site.yt.playlist}}PLjxrf2q8roU3LvrdR8Hv_phLrTj0xmjnD
 
-### Get ready for Flutter Forward
+### Prepare-se para o Flutter Forward
 
-Flutter Forward occurred on Jan 25th, 2023 in Nairobi, Kenya.
-Before the event, the Flutter team provided 17 days of Flutter
-featuring new content and activities leading up to the event.
-This playlist contains these and other pre-event videos relating to
+O Flutter Forward ocorreu em 25 de janeiro de 2023 em Nairobi, Quênia.
+Antes do evento, a equipe Flutter forneceu 17 dias de Flutter
+apresentando novos conteúdos e atividades que antecederam o evento.
+Esta playlist contém esses e outros vídeos pré-evento relacionados ao
 Flutter Forward.
 
 {% ytEmbed 'hpgkrUPRBjc?start=6', 'Prepare for Flutter Forward 2023 - 17 days of Flutter' %}
 
-**17 Days of Flutter!**
+**17 Dias de Flutter!**
 
 [Get ready for Flutter Forward playlist][]
 
@@ -47,19 +48,19 @@ Flutter Forward.
 ### Learning to Fly
 
 :::note
-Season 2 of Learning to Fly has been released as part
-of the 17 Days of Flutter, leading up to the 3.7
-release! [Season 2][] centers around creating a platform
-game, DoodleDash, using the Flame engine.
+A temporada 2 de Learning to Fly foi lançada como parte
+dos 17 Dias de Flutter, antecedendo o lançamento da versão 3.7!
+A [Season 2][] é centrada na criação de um jogo de
+plataforma, DoodleDash, usando o engine Flame.
 :::
 
 [Season 2]: {{site.yt.watch}}?v=ILTx1Wa33Z0
 
-Follow along with Khanh's journey as she learns Flutter.
-From ideation down to the moments of confusion,
-learn alongside her as she asks important questions like:
-"What is the best way to build out a theme? How to approach using fonts?"
-And more!
+Acompanhe a jornada de Khanh enquanto ela aprende Flutter.
+Desde a idealização até os momentos de confusão,
+aprenda junto com ela enquanto ela faz perguntas importantes como:
+"Qual é a melhor maneira de construir um tema? Como abordar o uso de fontes?"
+E mais!
 
 {% ytEmbed 'CkcvVZZEsJE', 'Building my first Flutter app | Learning to Fly' %}
 
@@ -67,20 +68,20 @@ And more!
 
 [Learning to Fly playlist]: {{site.yt.playlist}}PLjxrf2q8roU3X18pAQWLyCJaa79RpqWnn
 
-Here are some of the series offered on the
-[flutterdev YouTube channel][].
-For more information, check out _all_
-of the [Flutter channel's playlists][].
+Aqui estão algumas das séries oferecidas no
+[canal do YouTube flutterdev][flutterdev YouTube channel].
+Para mais informações, confira _todas_
+as [playlists do canal Flutter][Flutter channel's playlists].
 
 [Flutter channel's playlists]: {{site.social.youtube}}/playlists
 [flutterdev YouTube channel]: {{site.social.youtube}}
 
 ### Decoding Flutter
 
-This series focuses on tips, tricks, best practices,
-and general advice on getting the most out of Flutter.
-In the comments section for this series,
-you can submit suggestions future episodes.
+Esta série foca em dicas, truques, melhores práticas
+e conselhos gerais sobre como tirar o máximo proveito do Flutter.
+Na seção de comentários desta série,
+você pode enviar sugestões para episódios futuros.
 
 {% ytEmbed 'QIW35-vcA2o', 'Introducing Decoding Flutter - Flutter best practices' %}
 
@@ -90,8 +91,8 @@ you can submit suggestions future episodes.
 
 ### Flutter widget of the week
 
-Do you have 60 seconds?
-Each one-minute video highlights a Flutter widget.
+Você tem 60 segundos?
+Cada vídeo de um minuto destaca um widget Flutter.
 
 {% ytEmbed 'b_sQ9bMltGU', 'Introducing Flutter widget of the week' %}
 
@@ -101,8 +102,8 @@ Each one-minute video highlights a Flutter widget.
 
 ### Flutter package of the week
 
-If you have another minute (or two),
-each of these videos highlights a Flutter package.
+Se você tiver mais um minuto (ou dois),
+cada um desses vídeos destaca um package Flutter.
 
 {% ytEmbed 'QFcFEpFmNJ8', 'Introducing Flutter package of the week' %}
 
@@ -112,9 +113,9 @@ each of these videos highlights a Flutter package.
 
 ### The Boring Flutter show
 
-This series features Flutter programmers coding,
-unscripted and in real time. Mistakes, solutions
-(some of them correct), and snazzy intro music included.
+Esta série apresenta programadores Flutter codificando,
+sem roteiro e em tempo real. Erros, soluções
+(algumas delas corretas) e música de introdução elegante incluídas.
 
 {% ytEmbed 'vqPG1tU6-c0', 'Introducing The Boring Show - Flutter live coding' %}
 
@@ -124,8 +125,8 @@ unscripted and in real time. Mistakes, solutions
 
 ### Flutter at Google I/O 2022
 
-Google I/O 2022 is over, but you can still catch
-the great Flutter content!
+O Google I/O 2022 acabou, mas você ainda pode assistir
+o ótimo conteúdo sobre Flutter!
 
 {% ytEmbed 'w_ezWG1yKQQ', 'What\'s new in Flutter at Google I/O 2022' %}
 
@@ -135,22 +136,22 @@ the great Flutter content!
 
 ### Flutter Engage 2021
 
-[Flutter Engage 2021][] was a day-long event that
-officially launched Flutter 2.
+O [Flutter Engage 2021][] foi um evento de um dia que
+lançou oficialmente o Flutter 2.
 
 [Flutter Engage 2021]: https://events.flutter.dev/
 
-Check out the Flutter Engage 2021 highlights reel.
+Confira os destaques do Flutter Engage 2021.
 
 {% ytEmbed 'IdrCyS7EF8M', 'Top 10 highlights from Flutter Engage 2021' %}
 
-Watch recordings of the sessions on the Flutter YouTube channel.
+Assista às gravações das sessões no canal do Flutter no YouTube.
 
 {% ytEmbed 'zSbsIiluixw', 'Flutter Engage 2021 keynote' %}
 
 [Flutter Engage 2021 playlist][]
 
-Watch recordings of the sessions offered by the Flutter community.
+Assista às gravações das sessões oferecidas pela comunidade Flutter.
 
 {% ytEmbed '-_de6IfY2RU', 'Choreographing transitions with Flutter\'s animation framework' %}
 
@@ -161,7 +162,7 @@ Watch recordings of the sessions offered by the Flutter community.
 
 ### Flutter in focus
 
-Five-to-ten minute tutorials (more or less) on using Flutter.
+Tutoriais de cinco a dez minutos (mais ou menos) sobre como usar Flutter.
 
 {% ytEmbed 'wgTBLj7rMPM', 'Introducing Flutter in Focus - Flutter tutorials' %}
 
@@ -169,9 +170,9 @@ Five-to-ten minute tutorials (more or less) on using Flutter.
 
 [Flutter in focus playlist]: {{site.yt.playlist}}PLjxrf2q8roU2HdJQDjJzOeO6J3FoFLWr2
 
-## Conference talks
+## Palestras em conferências
 
-Here are a some Flutter talks given at various conferences.
+Aqui estão algumas palestras sobre Flutter apresentadas em várias conferências.
 
 {% ytEmbed 'd_m5csmrf7I', 'Pragmatic state management in Flutter' %}
 
@@ -179,11 +180,11 @@ Here are a some Flutter talks given at various conferences.
 
 [Conference talks playlist]: {{site.yt.playlist}}PLjxrf2q8roU1UJ0OEpANodVMVm1GeE7Ti
 
-## Flutter developer stories
+## Histórias de desenvolvedores Flutter
 
-Videos showing how various customers, such as Abbey Road Studio, Hamilton,
-and Alibaba, have used Flutter to create beautiful compelling apps with
-millions of downloads.
+Vídeos mostrando como vários clientes, como Abbey Road Studio, Hamilton
+e Alibaba, usaram o Flutter para criar apps atraentes e bonitos com
+milhões de downloads.
 
 {% ytEmbed '_ACWeGGBP4E', 'Flutter developer stories' %}
 

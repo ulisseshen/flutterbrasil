@@ -2,6 +2,7 @@
 title: Flutter 2.5.0 release notes
 short-title: 2.5.0 release notes
 description: Release notes for Flutter 2.5.0.
+ia-translate: true
 ---
 This page has release notes for 2.5.0.
 For information about subsequent bug-fix releases, see our [CHANGELOG][]

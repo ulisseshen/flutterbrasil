@@ -2,6 +2,7 @@
 title: Flutter 3.7.0 release notes
 short-title: 3.7.0 release notes
 description: Release notes for Flutter 3.7.0.
+ia-translate: true
 ---
 This page has release notes for 3.7.0.
 For information about subsequent bug-fix releases,

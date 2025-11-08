@@ -3,14 +3,15 @@ title: Default `PrimaryScrollController` on Desktop
 description: >
   The `PrimaryScrollController` will no longer attach to
   vertical `ScrollView`s automatically on Desktop.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 The `PrimaryScrollController` API has been updated to no longer automatically
 attach to vertical `ScrollView`s on desktop platforms.
 
-## Context
+## Contexto
 
 Prior to this change, `ScrollView.primary` would default to true if a
 `ScrollView` had an `Axis.vertical` scroll direction and a `ScrollController`
@@ -29,7 +30,7 @@ with this pattern, resulting in an often unhelpful error message. To remedy this
 the `PrimaryScrollController` has been updated with additional parameters as
 well as better error messaging across multiple widgets that depend on it.
 
-## Description of change
+## Descrição da mudança
 
 The previous implementation of `ScrollView` resulted in `primary` being true by
 default for all vertical `ScrollView`s that did not already have a
@@ -100,9 +101,9 @@ Now, on desktop platforms, users need to specify `primary: true` to
 designate which `ScrollView` is the fallback to receive unhandled keyboard
 `Shortcuts`.
 
-## Migration guide
+## Guia de migração
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 // These side-by-side ListViews would throw errors from Scrollbars and
@@ -137,7 +138,7 @@ Scaffold(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 // These side-by-side ListViews will no longer throw errors, but for
@@ -174,14 +175,14 @@ Scaffold(
 );
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.3.0-0.0.pre<br>
-In stable release: 3.3
+Lançado na versão: 3.3.0-0.0.pre<br>
+Na versão estável: 3.3
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`PrimaryScrollController`][]
 * [`ScrollView`][]
@@ -189,15 +190,15 @@ API documentation:
 * [`ScrollIntent`][]
 * [`Scrollbar`][]
 
-Design document:
+Documento de design:
 
 * [Updating PrimaryScrollController][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue #100264][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Updating PrimaryScrollController for Desktop][]
 

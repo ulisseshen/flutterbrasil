@@ -3,9 +3,10 @@ title: Updated Material 3 progress indicators
 description: >-
   The `LinearProgressIndicator` and `CircularProgressIndicator` widgets
   have been updated to match the Material 3 Design specifications.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 The `LinearProgressIndicator` and `CircularProgressIndicator` have
 been updated to match the Material 3 Design specifications.
@@ -15,7 +16,7 @@ the active and inactive tracks, a stop indicator, and rounded corners.
 The `CircularProgressIndicator` changes include a gap between
 the active and inactive tracks, and rounded stroke cap.
 
-## Context
+## Contexto
 
 The Material 3 Design specifications for the `LinearProgressIndicator` and
 `CircularProgressIndicator` were updated in December 2023.
@@ -26,7 +27,7 @@ set the `LinearProgressIndicator.year2023` and
 This is done to ensure that existing apps aren't affected by
 the updated design spec.
 
-## Description of change
+## Descrição da mudança
 
 The `LinearProgressIndicator` and `CircularProgressIndicator` widgets each
 have a `year2023` flag that can be set to `false` to
@@ -43,7 +44,7 @@ the stop indicator isn't shown.
 When [`CircularProgressIndicator.year2023`][] is set to `false`,
 the progress indicator has a track gap and rounded stroke cap.
 
-## Migration guide
+## Guia de migração
 
 To opt into the updated design spec for the `LinearProgressIndicator`,
 set the `year2023` flag to `false`:
@@ -65,25 +66,25 @@ CircularProgressIndicator(
 ),
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.28.0-0.1.pre<br>
-In stable release: Not yet
+Lançado na versão: 3.28.0-0.1.pre<br>
+Na versão estável: Not yet
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 - [`LinearProgressIndicator`][]
 - [`CircularProgressIndicator`][]
 - [`LinearProgressIndicator.year2023`][]
 - [`CircularProgressIndicator.year2023`][]
 
-Relevant issues:
+Issues relevantes:
 
 - [Update both `ProgressIndicator` for Material 3 redesign][]
 
-Relevant PRs:
+PRs relevantes:
 
 - [Update Material 3 `LinearProgressIndicator` for new visual style][]
 - [Update Material 3 `CircularProgressIndicator` for new visual style][]

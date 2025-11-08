@@ -3,9 +3,10 @@ title: Adding ImageProvider.loadBuffer
 description: >
   ImageProviders must now be implemented using the
   new loadBuffer API instead of the existing load API.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 * `ImageProvider` now has a method called `loadBuffer` that functions
    similarly to `load`, except that it decodes from an `ui.ImmutableBuffer`.
@@ -19,13 +20,13 @@ description: >
 * `PaintingBinding.instantiateImageCodec` is now deprecated, it will be removed
    in a future release.
 
-## Context
+## Contexto
 
 `ImageProvider.loadBuffer` is a new method that must be implemented in order to
 load images. This API allows asset-based image loading to be performed faster
 and with less memory impact on application.
 
-## Description of change
+## Descrição da mudança
 
 When loading asset images, previously the image provider API required multiple
 copies of the compressed data. First, when opening the asset the data was
@@ -45,13 +46,13 @@ an `ui.ImmutableBuffer` instead of a `Uint8List`. For `ImageProvider` classes
 that acquire bytes from places other than assets, the convenience method
 `ui.ImmutableBuffer.fromUint8List` can be used for compatibility.
 
-## Migration guide
+## Guia de migração
 
 Classes that subclass `ImageProvider` must implement the `loadBuffer` method for
 loading assets. Classes that delegate to or call the methods of an
 `ImageProvider` directly must use `loadBuffer` instead of `load`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 class MyImageProvider extends ImageProvider<MyImageProvider> {
@@ -80,7 +81,7 @@ class MyDelegatingProvider extends ImageProvider<MyDelegatingProvider> {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class MyImageProvider extends ImageProvider<MyImageProvider> {
@@ -114,18 +115,18 @@ In both cases you might choose to keep the
 previous implementation of `ImageProvider.load`
 to give users of your code time to migrate as well.
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.1.0-0.0.pre.976<br>
-In stable release: 3.3.0
+Lançado na versão: 3.1.0-0.0.pre.976<br>
+Na versão estável: 3.3.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`ImmutableBuffer`]({{site.api}}/flutter/dart-ui/ImmutableBuffer-class.html)
 * [`ImageProvider`]({{site.api}}/flutter/painting/ImageProvider-class.html)
 
-Relevant PR:
+PRs relevantes:
 
 * [Use immutable buffer for loading asset images]({{site.repo.flutter}}/pull/103496)

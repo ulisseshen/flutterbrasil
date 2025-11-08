@@ -1,6 +1,7 @@
 ---
 title: AndroidX migration
 description: How to migrate existing Flutter projects to AndroidX.
+ia-translate: true
 ---
 
 :::note

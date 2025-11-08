@@ -1,14 +1,15 @@
 ---
 title: Rebuild optimization for OverlayEntries and Routes
 description: OverlayEntries only rebuild on explicit state changes.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 This optimization improves performance for route transitions,
 but it may uncover missing calls to `setState` in your app.
 
-## Context
+## Contextoo
 
 Prior to this change, an `OverlayEntry` would rebuild when
 a new opaque entry was added on top of it or removed above it.
@@ -24,7 +25,7 @@ If an opaque `Route` is pushed on top or removed from above another
 `Route`, the `Route`s below the opaque `Route`
 no longer rebuilds unnecessarily.
 
-## Description of change
+## Descrição da mudança
 
 In most cases, this change doesn't require any changes to your code.
 However, if your app was erroneously relying on the implicit
@@ -36,7 +37,7 @@ widget tree: Prior to this change,
 the `OverlayEntry`s were wrapped in a `Stack` widget.
 The explicit `Stack` widget was removed from the widget hierarchy.
 
-## Migration guide
+## Guia de migração
 
 If you're seeing issues after upgrading to a Flutter version
 that included this change, audit your code for missing calls to
@@ -45,7 +46,7 @@ that included this change, audit your code for missing calls to
 implicitly modifying the state and it should be wrapped in an
 explicit `setState` call.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 class FooState extends State<Foo> {
@@ -63,7 +64,7 @@ class FooState extends State<Foo> {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class FooState extends State<Foo> {
@@ -83,14 +84,14 @@ class FooState extends State<Foo> {
 }
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.16.3<br>
-In stable release: 1.17
+Lançado na versão: 1.16.3<br>
+Na versão estável: 1.17
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`setState`][]
 * [`OverlayEntry`][]
@@ -99,11 +100,11 @@ API documentation:
 * [`Route`][]
 * [`OverlayRoute`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue 45797][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Do not rebuild Routes when a new opaque Route is pushed on top][]
 * [Reland "Do not rebuild Routes when a new opaque Route is pushed on top"][]

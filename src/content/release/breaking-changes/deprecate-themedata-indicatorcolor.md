@@ -1,37 +1,38 @@
 ---
-title: Deprecate `ThemeData.indicatorColor` in favor of
+title: Depreciar `ThemeData.indicatorColor` em favor de
   `TabBarThemeData.indicatorColor`
 description: >-
-  The `ThemeData.indicatorColor` parameter has been replaced by
+  O parâmetro `ThemeData.indicatorColor` foi substituído por
   `TabBarThemeData.indicatorColor`.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
-The [`ThemeData.indicatorColor`][] parameter was deprecated in favor of
-the [`TabBarThemeData.indicatorColor`][] parameter.
+O parâmetro [`ThemeData.indicatorColor`][] foi depreciado em favor do
+parâmetro [`TabBarThemeData.indicatorColor`][].
 
-## Context
+## Contexto
 
-The defaults for the [`TabBar`][] widget can be overridden with a
-component-specific theme like [`TabBarThemeData`][].
-Previously, the `ThemeData.indicatorColor` parameter was used to
-override the default tab bar indicator color in Material Design 2,
-which was made redundant by [`TabBarThemeData`][].
+Os padrões do widget [`TabBar`][] podem ser sobrescritos com um
+tema específico de componente como [`TabBarThemeData`][].
+Anteriormente, o parâmetro `ThemeData.indicatorColor` era usado para
+sobrescrever a cor padrão do indicador da tab bar no Material Design 2,
+o que foi tornado redundante pelo [`TabBarThemeData`][].
 
-## Description of change
+## Descrição da mudança
 
-The [`ThemeData.indicatorColor`][] is deprecated in
-favor of a component-specific theme.
-Use [`TabBarThemeData`][] to override the default indicator color.
+O [`ThemeData.indicatorColor`][] está depreciado em
+favor de um tema específico de componente.
+Use [`TabBarThemeData`][] para sobrescrever a cor padrão do indicador.
 
-## Migration guide
+## Guia de migração
 
-Replace [`ThemeData.indicatorColor`][] with
-[`TabBarThemeData.indicatorColor`][] to override the default tab bar
-indicator color when [`ThemeData.useMaterial3`][] flag is set to `false`.
+Substitua [`ThemeData.indicatorColor`][] por
+[`TabBarThemeData.indicatorColor`][] para sobrescrever a cor padrão do indicador
+da tab bar quando a flag [`ThemeData.useMaterial3`][] estiver definida como `false`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 theme: ThemeData(
@@ -40,7 +41,7 @@ theme: ThemeData(
 ),
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 theme: ThemeData(
@@ -49,14 +50,14 @@ theme: ThemeData(
 ),
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: Not yet<br>
-In stable release: Not yet
+Implementado na versão: Ainda não<br>
+Na versão estável: Ainda não
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 - [`ThemeData.indicatorColor`][]
 - [`ThemeData.useMaterial3`][]
@@ -64,11 +65,11 @@ API documentation:
 - [`TabBarThemeData`][]
 - [`TabBar`][]
 
-Relevant issues:
+Issues relevantes:
 
 - [Issue #91772][]
 
-Relevant PRs:
+PRs relevantes:
 
 - [Deprecate `ThemeData.indicatorColor` in favor of `TabBarThemeData.indicatorColor`][]
 

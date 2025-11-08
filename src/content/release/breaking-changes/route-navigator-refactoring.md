@@ -3,16 +3,17 @@ title: Route and Navigator Refactoring
 description: >
   Some APIs and function signatures of the
   Route and Navigator classes have changed.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 The `Route` class no longer manages its overlay entries in overlay,
 and its `install()` method no longer has an `insertionPoint` parameter.
 The `isInitialRoute` property in `RouteSetting` has been deprecated,
 and `Navigator.pop()` no longer returns a value.
 
-## Context
+## Contexto
 
 We refactored the navigator APIs to prepare for the new page API
 and the introduction of the `Router` widget as outlined in
@@ -21,7 +22,7 @@ This refactoring introduced some function signature changes
 in order to make the existing navigator APIs continue to work
 with the new page API.
 
-## Description of change
+## Descrição da mudança
 
 The boolean return value of `Navigator.pop()` was not well
 defined, and the user could achieve the same result by calling
@@ -43,7 +44,7 @@ Finally, we removed the `isInitialRoute` property from
 `onGenerateInitialRoutes` API for full control of
 initial routes generation.
 
-## Migration guide
+## Guia de migração
 
 Case 1: An app depends on `pop()` returning a boolean value.
 
@@ -120,18 +121,18 @@ MaterialApp(
 )
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.16.3<br>
-In stable release: 1.17
+Lançado na versão: 1.16.3<br>
+Na versão estável: 1.17
 
-## References
+## Referências
 
 Design doc:
 
 * [Router][]
 
-API documentation:
+Documentação da API:
 
 * [`Route`][]
 * [`Route.install`][]
@@ -140,11 +141,11 @@ API documentation:
 * [`Navigator.pop`][]
 * [`Navigator.canPop`][]
 
-Relevant issue:
+Issues relevantes:
 
 * [Issue 45938: Router][]
 
-Relevant PR:
+PRs relevantes:
 
 * [PR 44930][] - Refactor the imperative api to continue working in the new navigation system
 

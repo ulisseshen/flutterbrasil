@@ -3,28 +3,29 @@ title: ThemeData's toggleableActiveColor property has been deprecated
 description: >
   Material Widgets that use toggleableActiveColor property
   are migrated to use Material ColorScheme.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 The Material widgets `Switch`, `SwitchListTile`, `Checkbox`,
 `CheckboxListTile`, `Radio`, `RadioListTile` now use
 `ColorScheme.secondary` color for their toggleable widget.
 `ThemeData.toggleableActiveColor` is deprecated and will eventually be removed.
 
-## Context
+## Contexto
 
 The migration of widgets that depend on `ThemeData.toggleableActiveColor`
 to `ColorScheme.secondary` caused  the `toggleableActiveColor` property
 to be unnecessary. This property will eventually be removed, as per Flutter's
 [deprecation policy](/release/compatibility-policy#deprecation-policy).
 
-## Description of change
+## Descrição da mudança
 
 The widgets using `ThemeData.toggleableActiveColor` color for the
 active/selected state now use `ColorScheme.secondary`.
 
-## Migration guide
+## Guia de migração
 
 Toggleable widgets' active/selected color can generally be customized in 3 ways:
 
@@ -33,7 +34,7 @@ Toggleable widgets' active/selected color can generally be customized in 3 ways:
    `CheckboxThemeData`, and `RadioThemeData`.
 3. By customizing the widget's color properties.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 MaterialApp(
@@ -42,7 +43,7 @@ MaterialApp(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 final ThemeData theme = ThemeData();
@@ -99,22 +100,22 @@ MaterialApp(
 )
 ```
 
-## Timeline
+## Linha do tempo
 
-In stable release: 3.7
+Na versão estável: 3.7
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`ThemeData.toggleableActiveColor`][]
 * [`ColorScheme.secondary`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [`Switch` widget color doesn't use `ColorScheme`][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Deprecate `toggleableActiveColor`][].
 

@@ -2,9 +2,10 @@
 title: The ThemeData.useMaterial3 flag is true by default
 description: >-
    The ThemeData.useMaterial3 flag is now set to true by default.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 The Material library has been updated to match
 the latest Material Design spec.
@@ -38,7 +39,7 @@ all the new components and compare them with Material 2.
 [`ThemeData.segmentedButtonTheme`]: {{site.api}}/flutter/material/ThemeData/segmentedButtonTheme.html
 [`ThemeData.snackBarTheme`]: {{site.api}}/flutter/material/ThemeData/snackBarTheme.html
 
-## Migration guide
+## Guia de migração
 
 Prior to the 3.16 release, the changes were "opt-in"
 using the `useMaterial3` theme property on `ThemeData`.
@@ -61,27 +62,27 @@ For more details, check out the [Material 3 umbrella issue][] on GitHub.
 
 [`NavigationBar`]: {{site.api}}/flutter/material/NavigationBar-class.html
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.13.0-4.0.pre<br>
-In stable release: 3.16
+Lançado na versão: 3.13.0-4.0.pre<br>
+Na versão estável: 3.16
 
-## References
+## Referências
 
 Documentation:
 
 * [Material Design for Flutter][]
 
-API documentation:
+Documentação da API:
 
 * [`ThemeData.useMaterial3`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Material 3 umbrella issue][]
 * [Add support for M3 motion][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Change the default for `ThemeData.useMaterial3` to true][]
 * [Updated `ThemeData.useMaterial3` API doc, default is true][]

@@ -1,9 +1,10 @@
 ---
 title: Dialogs' Default BorderRadius
 description: The default BorderRadius of Dialog widgets is changing.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 Instances of `Dialog`, as well as
 `SimpleDialog`, `AlertDialog`, and `showTimePicker`,
@@ -13,7 +14,7 @@ This matches the current specifications of Material Design.
 Prior to this change, the default behavior for
 `Dialog.shape`'s `BorderRadius` was 2.0 pixels.
 
-## Context
+## Contextoo
 
 `Dialog`s and their associated subclasses
 (`SimpleDialog`, `AlertDialog`, and `showTimePicker`), appears
@@ -27,7 +28,7 @@ or you can update your code to maintain the original behavior.
 The `showDatePicker` dialog already matched
 this specification and is unaffected by this change.
 
-## Migration guide
+## Guia de migração
 
 If you prefer to maintain the old shape, you can use
 the shape property of your `Dialog` to specify the original 2 pixel radius.
@@ -69,14 +70,14 @@ you can update your master golden files using this command:
 flutter test --update-goldens
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.20.0-0.0.pre<br>
-In stable release: 1.20
+Lançado na versão: 1.20.0-0.0.pre<br>
+Na versão estável: 1.20
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`Dialog`][]
 * [`SimpleDialog`][]
@@ -84,7 +85,7 @@ API documentation:
 * [`showTimePicker`][]
 * [`showDatePicker`][]
 
-Relevant PR:
+PRs relevantes:
 
 * [PR 58829: Matching Material Spec for Dialog shape][]
 

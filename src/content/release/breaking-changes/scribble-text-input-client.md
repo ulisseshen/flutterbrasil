@@ -3,21 +3,22 @@ title: Scribble Text Input Client
 description: >
   Add new methods to the TextInputClient interface to allow Scribble
   to insert or remove text placeholders and show the toolbar.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 Adds three methods, `showToolbar`, `insertTextPlaceholder`, and
 `removeTextPlaceholder` to the `TextInputClient` interface to allow the iOS 14
 Scribble feature to insert and remove text placeholders and show the toolbar.
 
-## Context
+## Contexto
 
 As of iOS 14, iPads support the Scribble feature when using the Apple Pencil.
 This feature allows users to use the pencil to interact with text fields to
 add, delete, select, and modify text.
 
-## Description of change
+## Descrição da mudança
 
 In native text widgets, the text toolbar is shown when a user uses the pencil
 to select text on an iPad running iOS 14 or higher.
@@ -33,7 +34,7 @@ called `TextInputClient.insertTextPlaceholder` and
 Multiline text inputs should have placeholders that provide vertical space,
 while single line inputs should provide horizontal space.
 
-## Migration guide
+## Guia de migração
 
 If you previously implemented `TextEditingClient`, you must override
 `showToolbar`, `insertTextPlaceholder`, and `removeTextPlaceholder` to either
@@ -42,7 +43,7 @@ support these Scribble features or provide an empty implementation.
 To migrate, implement `showToolbar`, `insertTextPlaceholder`, and
 `removeTextPlaceholder`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 class MyCustomTextInputClient implements TextInputClient {
@@ -50,7 +51,7 @@ class MyCustomTextInputClient implements TextInputClient {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class MyCustomTextInputClient implements TextInputClient {
@@ -72,22 +73,22 @@ class MyCustomTextInputClient implements TextInputClient {
 }
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 2.9.0-1.0.pre<br>
-In stable release: 2.10
+Lançado na versão: 2.9.0-1.0.pre<br>
+Na versão estável: 2.10
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`TextInputClient`]({{site.api}}/flutter/services/TextInputClient-class.html)
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue 61278]({{site.repo.flutter}}/issues/61278)
 
-Relevant PRs:
+PRs relevantes:
 
 * [24224: Support Scribble Handwriting (engine)][]
 * [75472: Support Scribble Handwriting][]

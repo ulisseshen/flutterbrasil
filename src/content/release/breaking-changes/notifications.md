@@ -2,14 +2,15 @@
 title: Removing Notification.visitAncestor
 description: >
   Notifications only traverse ancestors that are notification listeners.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 Notifications are more efficient by traversing only ancestors that
 are notification listeners.
 
-## Context
+## Contexto
 
 The notification API traversed the element tree in order to locate a
 notification receiver. This led to some unfortunate performance
@@ -34,7 +35,7 @@ However, the old notification system exposed the fact that it traversed
 each element as part of its API via `Notification.visitAncestor`. This
 method is no longer supported as we no longer visit all ancestor elements.
 
-## Description of change
+## Descrição da mudança
 
 `Notification.visitAncestor` has been removed.
 Any classes that extend `Notification` should
@@ -44,13 +45,13 @@ no longer override this method.
 that overrides `Notification.visitAncestor`,
 then no changes are required.**
 
-## Migration guide
+## Guia de migração
 
 If you have a subclass of `Notification` that overrides
 `Notification.visitAncestor`, then you must either delete the override or
 opt-into old style notification dispatch with the following code.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 import 'package:flutter/widgets.dart';
@@ -69,7 +70,7 @@ void methodThatSendsNotification(BuildContext? context) {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 import 'package:flutter/widgets.dart';
@@ -96,21 +97,21 @@ void methodThatSendsNotification(BuildContext? context) {
 Note that this performs poorly compared to the
 new default behavior of `Notification.dispatch`.
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 2.12.0-4.1<br>
-In stable release: 3.0.0
+Lançado na versão: 2.12.0-4.1<br>
+Na versão estável: 3.0.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`Notification`]({{site.api}}/flutter/widgets/Notification-class.html)
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue 97849]({{site.repo.flutter}}/issues/97849)
 
-Relevant PRs:
+PRs relevantes:
 
 * [improve Notification API performance]({{site.repo.flutter}}/pull/98451)

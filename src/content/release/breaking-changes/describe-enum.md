@@ -1,91 +1,92 @@
 ---
-title: Migration guide for describeEnum and EnumProperty
-description: Learn about the removal of describeEnum and how to migrate.
+title: Guia de migração para describeEnum e EnumProperty
+description: Aprenda sobre a remoção de describeEnum e como migrar.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
-The global method `describeEnum` has been deprecated. Previous uses
-of `describeEnum(Enum.something)` should use
-`Enum.something.name` instead.
+O método global `describeEnum` foi depreciado. Usos anteriores
+de `describeEnum(Enum.something)` devem usar
+`Enum.something.name` em vez disso.
 
-The class `EnumProperty` was modified to
-extend `<T extends Enum?>` instead of `<T>`. 
-Existing uses of `EnumProperty<NotAnEnum>` should
-use `DiagnosticsProperty<NotAnEnum>` instead.
+A classe `EnumProperty` foi modificada para
+estender `<T extends Enum?>` em vez de `<T>`.
+Usos existentes de `EnumProperty<NotAnEnum>` devem
+usar `DiagnosticsProperty<NotAnEnum>` em vez disso.
 
-## Context
+## Contexto
 
-Dart 2.17 introduced [enhanced enums][], which added `Enum` as a type.
-As a result, all enums got a `name` getter, which made `describeEnum`
-redundant. Before that, enum classes were often analyzed using an
+O Dart 2.17 introduziu [enums aprimorados][enhanced enums], que adicionaram `Enum` como um tipo.
+Como resultado, todos os enums ganharam um getter `name`, o que tornou `describeEnum`
+redundante. Antes disso, classes enum eram frequentemente analisadas usando um
 `EnumProperty`.
 
-The `describeEnum` method was used to convert an enum value to a string,
-since `Enum.something.toString()` would produce `Enum.something` instead
-of `something`, which a lot of users wanted. Now, the `name` getter does this.
+O método `describeEnum` era usado para converter um valor enum em uma string,
+já que `Enum.something.toString()` produziria `Enum.something` em vez
+de `something`, que muitos usuários queriam. Agora, o getter `name` faz isso.
 
-The `describeEnum` function is being deprecated,
-so the `EnumProperty` class is updated to only accept `Enum` objects.
+A função `describeEnum` está sendo depreciada,
+então a classe `EnumProperty` é atualizada para aceitar apenas objetos `Enum`.
 
 [enhanced enums]: {{site.dart-site}}/language/enums#declaring-enhanced-enums
 
-## Description of change
+## Descrição da mudança
 
-Remove `describeEnum`.
+Remover `describeEnum`.
 
-- Replace `describeEnum(Enum.something)` with `Enum.something.name`.
+- Substitua `describeEnum(Enum.something)` por `Enum.something.name`.
 
-The `EnumProperty` now expects null or an `Enum`;
-you can no longer pass it a non-`Enum` class.
+O `EnumProperty` agora espera null ou um `Enum`;
+você não pode mais passar uma classe não-`Enum`.
 
-## Migration guide
+## Guia de migração
 
-If you previously used `describeEnum(Enum.field)` to access the
-string value from an enum, you can now call `Enum.field.name`.
+Se você usou anteriormente `describeEnum(Enum.field)` para acessar o
+valor string de um enum, agora pode chamar `Enum.field.name`.
 
-If you previously used `EnumProperty<NotAnEnum>`, you can
-now use the generic `DiagnosticsProperty<NotAnEnum>`.
+Se você usou anteriormente `EnumProperty<NotAnEnum>`, agora pode
+usar o genérico `DiagnosticsProperty<NotAnEnum>`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 enum MyEnum { paper, rock }
 
-print(describeEnum(MyEnum.paper)); // output: paper
+print(describeEnum(MyEnum.paper)); // saída: paper
 
-// TextInputType is not an Enum
+// TextInputType não é um Enum
 properties.add(EnumProperty<TextInputType>( ... ));
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 enum MyEnum { paper, rock }
 
-print(MyEnum.paper.name); // output: paper
+print(MyEnum.paper.name); // saída: paper
 
-// TextInputType is not an Enum
+// TextInputType não é um Enum
 properties.add(DiagnosticsProperty<TextInputType>( ... ));
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.14.0-2.0.pre<br>
-In stable release: 3.16
+Implementado na versão: 3.14.0-2.0.pre<br>
+Na versão estável: 3.16
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`describeEnum`][]
 * [`EnumProperty`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Cleanup SemanticsFlag and SemanticsAction issue][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Deprecate `describeEnum` PR][]
 

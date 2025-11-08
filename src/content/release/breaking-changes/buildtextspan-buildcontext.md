@@ -3,9 +3,10 @@ title: Added BuildContext parameter to TextEditingController.buildTextSpan
 description: >
   A BuildContext parameter is added to TextEditingController.buildTextSpan so
   inheritors that override buildTextSpan can access inherited widgets.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 A `BuildContext` parameter was added to `TextEditingController.buildTextSpan`.
 
@@ -16,7 +17,7 @@ parameter to the signature to make it a valid override.
 Callers of `TextEditingController.buildTextSpan`
 need to pass a `BuildContext` to the call.
 
-## Context
+## Contexto
 
 `TextEditingController.buildTextSpan` is called by `EditableText`
 on its controller to create the `TextSpan` that it renders.
@@ -30,7 +31,7 @@ Any state that is required by `buildTextSpan`
 needed to be passed into the class that extends
 `TextEditingController`.
 
-## Description of change
+## Descrição da mudança
 
 With the `BuildContext` available, users can access
 `InheritedWidgets` inside `buildTextSpan`
@@ -72,14 +73,14 @@ class HighlightTextEditingController extends TextEditingController {
 }
 ```
 
-## Migration guide
+## Guia de migração
 
 ### Overriding `TextEditingController.buildTextSpan`
 
 Add a `required BuildContext context` parameter to the
 signature of the `buildTextSpan` override.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 class MyTextEditingController {
@@ -96,7 +97,7 @@ Example error message before migration:
 'MyTextEditingController.buildTextSpan' ('TextSpan Function({TextStyle? style, required bool withComposing})') isn't a valid override of 'TextEditingController.buildTextSpan' ('TextSpan Function({required BuildContext context, TextStyle? style, required bool withComposing})').
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class MyTextEditingController {
@@ -112,7 +113,7 @@ class MyTextEditingController {
 Pass a named parameter 'context' of type
 `BuildContext` to the call.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 TextEditingController controller = /* ... */;
@@ -126,7 +127,7 @@ The named parameter 'context' is required, but there's no corresponding argument
 Try adding the required argument.
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 BuildContext context = /* ... */;
@@ -134,22 +135,22 @@ TextEditingController controller = /* ... */;
 TextSpan span = controller.buildTextSpan(context: context, withComposing: false);
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.26.0<br>
-In stable release: 2.0.0
+Lançado na versão: 1.26.0<br>
+Na versão estável: 2.0.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`TextEditingController.buildTextSpan`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue #72343][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Reland "Add BuildContext parameter to TextEditingController.buildTextSpan" #73510][]
 * [Revert "Add BuildContext parameter to TextEditingController.buildTextSpan" #73503][]

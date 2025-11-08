@@ -1,14 +1,15 @@
 ---
 title: The generic type of ParentDataWidget changed to ParentData
 description: The ParentDataWidget is now bound to the ParentData type.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 The generic type of `ParentDataWidget` has changed from
 `RenderObjectWidget` to `ParentData`.
 
-## Context
+## Contextoo
 
 Prior to this change, a `ParentDataWidget` was bound
 to a specific `RenderObjectWidget` type as ancestor.
@@ -21,7 +22,7 @@ sets up the correct `ParentData` type. In this new world,
 the `Positioned` widget can be reused with a hypothetical
 new `SuperStack` widget.
 
-## Description of change
+## Descrição da mudança
 
 The generic type argument of `ParentDataWidget`
 has changed from `RenderObjectWidget` to `ParentData`,
@@ -31,7 +32,7 @@ The latter is used for error messages to give users a
 better idea of the context a given `ParentDataWidget`
 is supposed to be used in.
 
-## Migration guide
+## Guia de migração
 
 You must migrate your code as described in this section
 if you're subclassing or implementing `ParentDataWidget`.
@@ -43,7 +44,7 @@ upgrade to the Flutter version that includes this change:
   error • 'FrogJar' doesn't extend 'ParentData' • lib/main.dart:114:41 • type_argument_not_matching_bounds
 ```
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 class FrogSize extends ParentDataWidget<FrogJar> {
@@ -77,7 +78,7 @@ class FrogJar extends RenderObjectWidget {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class FrogSize extends ParentDataWidget<FrogJarParentData> { // FrogJar changed to FrogJarParentData
@@ -117,18 +118,18 @@ for this `ParentDataWidget`. Most of the time,
 you just want to return the old generic type here
 (`FrogJar` in this example).
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.16.3<br>
-In stable release: 1.17
+Lançado na versão: 1.16.3<br>
+Na versão estável: 1.17
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`ParentDataWidget`][]
 
-Relevant PR:
+PRs relevantes:
 
 * [Make ParentDataWidget usable with different ancestor RenderObjectWidget types][]
 

@@ -3,15 +3,16 @@ title: Replace AnimationSheetBuilder.display with collate
 description: >
   AnimationSheetBuilder.display and sheetSize
   are deprecated in favor of collate.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 The `AnimationSheetBuilder.display` and `sheetSize`
 methods are deprecated, and should be replaced with
 `AnimationSheetBuilder.collate`.
 
-## Context
+## Contexto
 
 [`AnimationSheetBuilder`][] is a testing utility
 class that records frames of an animating widget,
@@ -34,7 +35,7 @@ block of the exactly same color to represent 1 actual
 pixel, making the image 9 times as large as necessary
 (before PNG compression).
 
-## Description of change
+## Descrição da mudança
 
 The following changes have been made to the
 [`AnimationSheetBuilder`][] class:
@@ -42,7 +43,7 @@ The following changes have been made to the
 * 'display' is deprecated and shouldn't be used
 * 'sheetSize' is deprecated and shouldn't be used
 
-## Migration guide
+## Guia de migração
 
 To migrate to the new API, change the process of setting
 surface size and displaying the widget into
@@ -81,7 +82,7 @@ animationSheet.collate(7)
 
 ### Migrate code
 
-Code before migration:
+Código antes da migração:
 
 ```dart
   testWidgets('Indeterminate CircularProgressIndicator', (WidgetTester tester) async {
@@ -139,19 +140,19 @@ are invalidated, which should all be updated. The new
 images should be identical to the old ones except
 1/3 in scale.
 
-## Timeline
+## Linha do tempo
 
-Landed in version: v2.3.0-13.0.pre<br>
-In stable release: 2.5
+Lançado na versão: v2.3.0-13.0.pre<br>
+Na versão estável: 2.5
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`AnimationSheetBuilder`][]
 * [`AnimationSheetBuilder.collate`][]
 
-Relevant PR:
+PRs relevantes:
 
 * [Test WidgetTester handling test pointers][]
 

@@ -1,37 +1,38 @@
 ---
-title: Make PageView.controller nullable
+ia-translate: true
+title: Tornar PageView.controller nullable
 description: >-
-  PageView.controller is now nullable.
+  PageView.controller agora é nullable.
 ---
 
-## Summary
+## Resumo
 
-If a controller isn't provided in the constructor,
-the `controller` member is `null`. This makes
-`PageView` and its `controller` property consistent with other widgets.
+Se um controller não for fornecido no construtor,
+o membro `controller` é `null`. Isso torna
+`PageView` e sua propriedade `controller` consistentes com outros widgets.
 
-## Migration guide
+## Guia de migração
 
-Before:
+Antes:
 
 ```dart
 pageView.controller.page
 ```
 
-After:
+Depois:
 
 ```dart
 pageView.controller!.page
 ```
 
-## Timeline
+## Cronograma
 
-Landed in version: 3.19.0-12.0.pre<br>
-In stable release: 3.22.0
+Adicionado na versão: 3.19.0-12.0.pre<br>
+Na versão stable: 3.22.0
 
-## References
+## Referências
 
-Relevant issues:
+Issues relevantes:
 
 * [PageView uses global controller, that is never disposed. (Issue 141119)][]
 

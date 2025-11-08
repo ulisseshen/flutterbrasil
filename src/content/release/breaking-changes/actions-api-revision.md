@@ -2,9 +2,10 @@
 title: Actions API revision
 description: >
   Removes need for FocusNode in invocations, map Intent types to Actions.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 In Flutter an [`Intent`][] is an object that's typically bound
 to a keyboard key combination using the [`Shortcuts`][] widget.
@@ -21,7 +22,7 @@ In the current API, actions are mapped from the type of the `Intent`
 to an `Action` instance (with a `Map<Type, Action>`),
 and they are not created anew for each invocation.
 
-## Context
+## Contexto
 
 The original Actions API design was oriented towards invoking actions from
 widgets, and having those actions act in the context of the widget.
@@ -61,7 +62,7 @@ isEnabled(Intent intent) instead][], and are
 described in detail in [the design
 doc](/go/actions-and-shortcuts-design-revision).
 
-## Description of change
+## Descrição da mudança
 
 Here are the changes made to address the above problems:
 
@@ -108,7 +109,7 @@ error: The getter 'key' isn't defined for the type 'NextFocusAction'. (undefined
 error: The argument type 'Map<LocalKey, dynamic>' can't be assigned to the parameter type 'Map<Type, Action<Intent>>'. (argument_type_not_assignable at [main] lib/main.dart:418)
 ```
 
-## Migration guide
+## Guia de migração
 
 Significant changes area required to update existing code
 to the new API.
@@ -124,7 +125,7 @@ and `SelectAction`, do the following:
   `Shortcuts` mapping, rather than an `Intent(TheAction.key)`
   instance.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 class MyWidget extends StatelessWidget {
@@ -146,7 +147,7 @@ class MyWidget extends StatelessWidget {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class MyWidget extends StatelessWidget {
@@ -175,7 +176,7 @@ you've defined, and replace them with `Intent` subclasses,
 as well as changing the type of the argument to the `actions`
 argument of the `Actions` widget.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 class MyAction extends Action {
@@ -209,7 +210,7 @@ class MyWidget extends StatelessWidget {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 // You may need to create new Intent subclasses if you used
@@ -262,7 +263,7 @@ for each invocation. This state is returned to the caller of
 `Actions.invoke`, or `ActionDispatcher.invokeAction`,
 depending on how the action is invoked.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 class MyIntent extends Intent {
@@ -287,7 +288,7 @@ class MyAction extends Action {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class MyIntent extends Intent {
@@ -305,14 +306,14 @@ class MyAction extends Action<MyIntent> {
 }
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.18<br>
-In stable release: 1.20
+Lançado na versão: 1.18<br>
+Na versão estável: 1.20
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`Action`][]
 * [`ActionDispatcher`][]
@@ -320,11 +321,11 @@ API documentation:
 * [`Intent`][]
 * [`Shortcuts`][]
 
-Relevant issue:
+Issues relevantes:
 
 * [Issue 53276][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Revise Action API][]
 * [Make Action.enabled be isEnabled(Intent intent) instead][]

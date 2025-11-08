@@ -3,15 +3,16 @@ title: Container with color optimization
 description: >
   A container with a color and no other background decoration
   no longer builds the same child widgets.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 A new `ColoredBox` widget has been added to the framework,
 and the `Container` widget has been optimized to use it
 if a user specifies a `color` instead of a `decoration`.
 
-## Context
+## Contexto
 
 It is very common to use the `Container` widget as follows:
 
@@ -36,13 +37,13 @@ was explicitly provided as the `decoration` property.
 It is still an error to supply both `color` and
 `decoration` to `Container`.
 
-## Migration guide
+## Guia de migração
 
 Tests that assert on the color of a `Container`
 or that expected it to create a
 `BoxDecoration` need to be modified.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 testWidgets('Container color', (WidgetTester tester) async {
@@ -55,7 +56,7 @@ testWidgets('Container color', (WidgetTester tester) async {
 });
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 testWidgets('Container color', (WidgetTester tester) async {
@@ -70,25 +71,25 @@ testWidgets('Container color', (WidgetTester tester) async {
 });
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.15.4<br>
-In stable release: 1.17
+Lançado na versão: 1.15.4<br>
+Na versão estável: 1.17
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`Container`][]
 * [`ColoredBox`][]
 * [`BoxDecoration`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue 9672][]
 * [Issue 28753][]
 
-Relevant PR:
+PRs relevantes:
 
 * [Colored box and container optimization #50979][]
 

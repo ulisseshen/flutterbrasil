@@ -3,23 +3,24 @@ title: Deprecate `ButtonBar` in favor of `OverflowBar`
 description: >-
   The ButtonBar widget has been replaced by
   a more efficient widget, OverflowBar.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 The `ButtonBar` widget was deprecated in favor of
 the more efficient `OverflowBar` widget.
 As a result, `ThemeData.buttonBarTheme` and
 `ButtonBarTheme` were also deprecated.
 
-## Context
+## Contexto
 
 The `ButtonBar` widget lays out its children in a row and
 in a column if there is not enough horizontal space.
 The `OverflowBar` widget does the same, but it's
 not tied to the Material library and is part of the core `widgets.dart` library.
 
-## Description of change
+## Descrição da mudança
 
 - Replace `ButtonBar` widget with `OverflowBar` widget.
 - By default, `ButtonBar` aligns its children to the end of the layout, while
@@ -36,7 +37,7 @@ not tied to the Material library and is part of the core `widgets.dart` library.
   when there is not enough horizontal space.
 - If it is specified, remove `ButtonBarThemeData` from `ThemeData`.
 
-## Migration guide
+## Guia de migração
 
 Replace `ButtonBar` with `OverflowBar`, override the default alignment if
 necessary, replace `ButtonBar.buttonPadding` with `Padding` widget and
@@ -127,23 +128,23 @@ OverflowBar(
 ),
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.22.0-2.0.pre<br>
-In stable release: 3.24.0
+Lançado na versão: 3.22.0-2.0.pre<br>
+Na versão estável: 3.24.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 - [`OverflowBar`][]
 - [`ButtonBar`][]
 
-Relevant issues:
+Issues relevantes:
 
 - [Issue #127955][]
 
-Relevant PRs:
+PRs relevantes:
 
 - [Deprecate `ButtonBar`, `ButtonBarThemeData`, and `ThemeData.buttonBarTheme`][]
 

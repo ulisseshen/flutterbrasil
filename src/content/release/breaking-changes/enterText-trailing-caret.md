@@ -3,14 +3,15 @@ title: Change the enterText method to move the caret to the end of the input tex
 description: >
   WidgetTester.enterText and TestTextInput.enterText now
   move the caret to the end of the input text.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 The `WidgetTester.enterText` and `TestTextInput.enterText` methods
 now move the caret to the end of the input text.
 
-## Context
+## Contexto
 
 The caret indicates the insertion point within the current text in an
 active input field. Typically, when a new character is entered, the
@@ -26,14 +27,14 @@ set the selection to an invalid range (-1, -1), indicating there's
 no selection or caret. This contradicts the typical behavior of an
 input field.
 
-## Description of change
+## Descrição da mudança
 
 In addition to replacing the text with the supplied text,
 `WidgetTester.enterText` and `TestTextInput.enterText` now set the
 selection to `TextSelection.collapsed(offset: text.length)`, instead
 of `TextSelection.collapsed(offset: -1)`.
 
-## Migration guide
+## Guia de migração
 
 It should be very uncommon for tests to have to rely on the
 previous behavior of `enterText`, since usually the selection
@@ -61,13 +62,13 @@ the previous behavior can be achieved using`updateEditingValue`:
 
 ### `TestTextInput.enterText`
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 await testTextInput.enterText(text);
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 await testTextInput.updateEditingValue(TextEditingValue(
@@ -77,13 +78,13 @@ await testTextInput.updateEditingValue(TextEditingValue(
 
 ### `WidgetTester.enterText`
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 await tester.enterText(finder, text);
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 await tester.showKeyboard(finder);
@@ -93,23 +94,23 @@ await tester.updateEditingValue(TextEditingValue(
 await tester.idle();
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 2.1.0-13.0.pre<br>
-In stable release: 2.5
+Lançado na versão: 2.1.0-13.0.pre<br>
+Na versão estável: 2.5
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`WidgetTester.enterText`][]
 * [`TestTextInput.enterText`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue 79494][]
 
-Relevant PR:
+PRs relevantes:
 
 * [enterText to move the caret to the end][]
 

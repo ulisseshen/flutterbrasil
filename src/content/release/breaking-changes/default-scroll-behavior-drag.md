@@ -3,16 +3,17 @@ title: Default drag scrolling devices
 description: >
   ScrollBehaviors will now configure what
   PointerDeviceKinds can drag Scrollables.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 `ScrollBehavior`s now allow or disallow drag scrolling from specified
 `PointerDeviceKind`s. `ScrollBehavior.dragDevices`, by default,
 allows scrolling widgets to be dragged by all `PointerDeviceKind`s
 except for `PointerDeviceKind.mouse`.
 
-## Context
+## Contexto
 
 Prior to this change, all `PointerDeviceKind`s could drag a `Scrollable` widget.
 This did not match developer expectations when interacting with Flutter
@@ -23,7 +24,7 @@ Now, the inherited `ScrollBehavior` manages which devices can drag scrolling wid
 as specified by `ScrollBehavior.dragDevices`. This set of `PointerDeviceKind`s are
 allowed to drag.
 
-## Description of change
+## Descrição da mudança
 
 This change fixed the unexpected ability to scroll by dragging with a mouse.
 
@@ -57,11 +58,11 @@ be used to filter gestures.
 The introduction of `supportedDevices` makes it possible for more
 than one valid `PointerDeviceKind`.
 
-## Migration guide
+## Guia de migração
 
 ### Setting a custom `ScrollBehavior` for your application
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 MaterialApp(
@@ -69,7 +70,7 @@ MaterialApp(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class MyCustomScrollBehavior extends MaterialScrollBehavior {
@@ -91,7 +92,7 @@ MaterialApp(
 
 ### Setting a custom `ScrollBehavior` for a specific widget
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 final ScrollController controller = ScrollController();
@@ -103,7 +104,7 @@ ListView.builder(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class MyCustomScrollBehavior extends MaterialScrollBehavior {
@@ -131,7 +132,7 @@ ScrollConfiguration(
 
 ### Copy and modify existing `ScrollBehavior`
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 final ScrollController controller = ScrollController();
@@ -143,7 +144,7 @@ ListView.builder(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 // ScrollBehavior can be copied and adjusted.
@@ -164,7 +165,7 @@ ScrollConfiguration(
 
 ### Migrate `GestureDetector`s from `kind` to `supportedDevices`
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 VerticalDragGestureRecognizer(
@@ -172,7 +173,7 @@ VerticalDragGestureRecognizer(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 VerticalDragGestureRecognizer(
@@ -180,14 +181,14 @@ VerticalDragGestureRecognizer(
 );
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 2.3.0-12.0.pre<br>
-In stable release: 2.5
+Lançado na versão: 2.3.0-12.0.pre<br>
+Na versão estável: 2.5
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`ScrollConfiguration`][]
 * [`ScrollBehavior`][]
@@ -196,11 +197,11 @@ API documentation:
 * [`PointerDeviceKind`][]
 * [`GestureDetector`][]
 
-Relevant issue:
+Issues relevantes:
 
 * [Issue #71322][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Reject mouse drags by default in scrollables][]
 * [Deprecate GestureDetector.kind in favor of new supportedDevices][]

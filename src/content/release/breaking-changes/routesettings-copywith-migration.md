@@ -1,45 +1,46 @@
 ---
-title: Migration guide for RouteSettings copyWith
-description: Removal of RouteSettings copyWith and how to migrate
+ia-translate: true
+title: Guia de migração para copyWith de RouteSettings
+description: Remoção de RouteSettings copyWith e como migrar
 ---
 
-## Summary
+## Resumo
 
-The `RouteSettings.copyWith` method is removed, and apps that use
-it need to use the constructor to create a new `RouteSettings`
-instance instead.
+O método `RouteSettings.copyWith` foi removido, e apps que o usam
+precisam usar o construtor para criar uma nova instância `RouteSettings`
+em vez disso.
 
-## Context
+## Contexto
 
-With the introduction of the [`Page`][] class,
-the `RouteSettings.copyWith` was no longer a viable API.
+Com a introdução da classe [`Page`][],
+o `RouteSettings.copyWith` não era mais uma API viável.
 
-## Description of change
+## Descrição da mudança
 
-`RouteSettings.copyWith` was removed
+`RouteSettings.copyWith` foi removido
 
-## Migration guide
+## Guia de migração
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 RouteSettings newSettings = oldSettings.copyWith(name: 'new name');
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 RouteSettings newSettings = RouteSettings(name: 'new name', arguments: oldSettings.arguments);
 ```
 
-## Timeline
+## Cronograma
 
-Landed in version: 3.5.0-9.0.pre-137-gc6f6095acd<br>
-In stable release: 3.7
+Adicionado na versão: 3.5.0-9.0.pre-137-gc6f6095acd<br>
+Na versão stable: 3.7
 
-## References
+## Referências
 
-Relevant PRs:
+PRs relevantes:
 
 * [PR 113860][]: Removes RouteSetting.copyWith.
 

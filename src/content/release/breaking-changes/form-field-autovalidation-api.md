@@ -1,9 +1,10 @@
 ---
 title: The new Form, FormField auto-validation API
 description: Gives more control in how to auto validate a Form and a FormField.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 The previous auto validation API for the `Form` and
 `FormField` widgets didn't control when auto validation
@@ -12,7 +13,7 @@ always happened on first build when the widget was first
 visible to the user, and you weren't able to control
 when the auto validation should happen.
 
-## Context
+## Contextoo
 
 Due to the original API not allowing developers to change
 the auto validation behavior for validating only when
@@ -21,7 +22,7 @@ that allows developers to configure how they want
 auto validation to behave for the `Form` and `FormField`
 widgets.
 
-## Description of change
+## Descrição da mudança
 
 The following changes were made:
 
@@ -30,7 +31,7 @@ The following changes were made:
   an Enum that accepts values from the `AutovalidateMode`
   Enum class, is added.
 
-## Migration guide
+## Guia de migração
 
 To migrate to the new auto validation API you need to
 replace the usage of the deprecated `autovalidate`
@@ -40,7 +41,7 @@ If you want the same behavior as before you can use:
 This makes your `Form` and `FormField` widgets auto
 validate on first build and every time it changes.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 class MyWidget extends StatelessWidget {
@@ -56,7 +57,7 @@ class MyWidget extends StatelessWidget {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class MyWidget extends StatelessWidget {
@@ -72,18 +73,18 @@ class MyWidget extends StatelessWidget {
 }
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.21.0-5.0.pre<br>
-In stable release: 1.22
+Lançado na versão: 1.21.0-5.0.pre<br>
+Na versão estável: 1.22
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`AutovalidateMode`]({{site.api}}/flutter/widgets/AutovalidateMode.html)
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue 56363]({{site.repo.flutter}}/issues/56363)
 * [Issue 18885]({{site.repo.flutter}}/issues/18885)
@@ -91,7 +92,7 @@ Relevant issues:
 * [Issue 36154]({{site.repo.flutter}}/issues/36154)
 * [Issue 48876]({{site.repo.flutter}}/issues/48876)
 
-Relevant PRs:
+PRs relevantes:
 
 * [PR 56365: FormField should autovalidate only if its
   content was changed]({{site.github}}/flutter/pull/56365)

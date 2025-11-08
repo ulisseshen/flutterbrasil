@@ -2,14 +2,15 @@
 title: ImageCache large images
 description: >
   Stop increasing the ImageCache maxByteSize to accommodate large images.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 The `maxByteSize` of the `ImageCache` is no longer
 automatically made larger to accommodate large images.
 
-## Context
+## Contexto
 
 Previously, when loading images into the `ImageCache`
 that had larger byte sizes than the `ImageCache`'s `maxByteSize`,
@@ -18,7 +19,7 @@ to accommodate those images.
 This logic sometimes led to bloated `maxByteSize` values that
 made working in memory-limited systems more difficult.
 
-## Description of change
+## Descrição da mudança
 
 The following "before" and "after" pseudocode demonstrates
 the changes made to the `ImageCache` algorithm:
@@ -50,7 +51,7 @@ void onLoadImage(Image image) {
 }
 ```
 
-## Migration guide
+## Guia de migração
 
 There might be situations where the `ImageCache`
 is thrashing with the new logic where it wasn't previously,
@@ -67,24 +68,24 @@ This can be remedied by one of the following approaches:
    and create a new binding that serves up your subclass
    of `ImageCache` (see the [`image_cache.dart`][] source).
 
-## Timeline
+## Linha do tempo
 
 The old algorithm is no longer supported.
 
-Landed in version: 1.16.3<br>
-In stable release: 1.17
+Lançado na versão: 1.16.3<br>
+Na versão estável: 1.17
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`ImageCache`][]
 
-Relevant issue:
+Issues relevantes:
 
 * [Issue 45643][]
 
-Relevant PR:
+PRs relevantes:
 
 * [Stopped increasing the cache size to accommodate large images][]
 

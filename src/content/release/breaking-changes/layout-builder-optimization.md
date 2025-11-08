@@ -2,14 +2,15 @@
 title: LayoutBuilder optimization
 description: >
   LayoutBuilder and SliverLayoutBuilder call the builder function less often.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 This guide explains how to migrate Flutter applications after
 [the LayoutBuilder optimization][1].
 
-## Context
+## Contexto
 
 [LayoutBuilder][2] and [SliverLayoutBuilder][3] call
 the [builder][4] function more often than necessary to
@@ -32,7 +33,7 @@ The app may exhibit some combination of the following symptoms:
 * The UI of a widget is missing.
 * The UI of a widget is not updating.
 
-## Description of change
+## Descrição da mudança
 
 Prior to the optimization the builder function passed to `LayoutBuilder` or
 `SliverLayoutBuilder` was called when any one of the following happened:
@@ -55,7 +56,7 @@ happens by accident. You meant to add `setState`, but you forgot because the app
 continued functioning as you wanted, and therefore nothing reminded you to add
 it.
 
-## Migration guide
+## Guia de migração
 
 Look for usages of `LayoutBuilder` and `SliverLayoutBuilder` and make sure to
 call `setState` any time the widget state changes.
@@ -278,22 +279,22 @@ animation.addListener(() {
 });
 ```
 
-## Timeline
+## Linha do tempo
 
 This change was released in Flutter v1.20.0.
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`LayoutBuilder`][2]
 * [`SliverLayoutBuilder`][3]
 
-Relevant issue:
+Issues relevantes:
 
 * [Issue 6469][8]
 
-Relevant PR:
+PRs relevantes:
 
 * [LayoutBuilder: skip calling builder when constraints are the same][6]
 

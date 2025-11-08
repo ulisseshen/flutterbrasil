@@ -1,93 +1,94 @@
 ---
-title: Flutter release notes
-short-title: Release notes
-description: Release notes for Flutter for prior releases.
+ia-translate: true
+title: Notas de versão do Flutter
+short-title: Notas de versão
+description: Notas de versão do Flutter para versões anteriores.
 ---
 
-This page links to announcements and release notes for
-releases to the stable channel.
+Esta página contém links para anúncios e notas de versão de
+releases para o canal stable.
 
 :::note
-For information about bug-fix releases,
-check out the Flutter [CHANGELOG][].
+Para informações sobre releases de correções de bugs,
+confira o [CHANGELOG][] do Flutter.
 :::
 
 * 3.27.0
-  * [3.27.0 announcement][]
-  * [3.27.0 release notes & change log][]
-  * [3.27.0 breaking changes & migrations][]
+  * [Anúncio da versão 3.27.0][3.27.0 announcement]
+  * [Notas de versão e changelog da 3.27.0][3.27.0 release notes & change log]
+  * [Breaking changes e migrações da 3.27.0][3.27.0 breaking changes & migrations]
 * 3.24.0
-  * [3.24.0 announcement][]
-  * [3.24.0 release notes & change log][]
-  * [3.24.0 breaking changes & migrations][]
+  * [Anúncio da versão 3.24.0][3.24.0 announcement]
+  * [Notas de versão e changelog da 3.24.0][3.24.0 release notes & change log]
+  * [Breaking changes e migrações da 3.24.0][3.24.0 breaking changes & migrations]
 * 3.22.0
-  * [3.22.0 announcement][]
-  * [3.22.0 release notes & change log][]
-  * [3.22.0 breaking changes & migrations][]
+  * [Anúncio da versão 3.22.0][3.22.0 announcement]
+  * [Notas de versão e changelog da 3.22.0][3.22.0 release notes & change log]
+  * [Breaking changes e migrações da 3.22.0][3.22.0 breaking changes & migrations]
 * 3.19.0
-  * [3.19.0 announcement][]
-  * [3.19.0 release notes & change log][]
-  * [3.19.0 breaking changes & migrations][]
+  * [Anúncio da versão 3.19.0][3.19.0 announcement]
+  * [Notas de versão e changelog da 3.19.0][3.19.0 release notes & change log]
+  * [Breaking changes e migrações da 3.19.0][3.19.0 breaking changes & migrations]
 * 3.16.0
-  * [3.16.0 announcement][]
-  * [3.16.0 release notes & change log][]
-  * [3.16.0 breaking changes & migrations][]
+  * [Anúncio da versão 3.16.0][3.16.0 announcement]
+  * [Notas de versão e changelog da 3.16.0][3.16.0 release notes & change log]
+  * [Breaking changes e migrações da 3.16.0][3.16.0 breaking changes & migrations]
 * 3.13.0
-  * [3.13.0 announcement][]
-  * [3.13.0 release notes & change log][]
-  * [3.13.0 breaking changes & migrations][]
+  * [Anúncio da versão 3.13.0][3.13.0 announcement]
+  * [Notas de versão e changelog da 3.13.0][3.13.0 release notes & change log]
+  * [Breaking changes e migrações da 3.13.0][3.13.0 breaking changes & migrations]
 * 3.10.0
-  * [3.10.0 announcement][]
-  * [3.10.0 release notes & change log][]
-  * [3.10.0 breaking changes & migrations][]
+  * [Anúncio da versão 3.10.0][3.10.0 announcement]
+  * [Notas de versão e changelog da 3.10.0][3.10.0 release notes & change log]
+  * [Breaking changes e migrações da 3.10.0][3.10.0 breaking changes & migrations]
 * 3.7.0
-  * [3.7.0 announcement][]
-  * [3.7.0 release notes & change log][]
-  * [3.7.0 breaking changes & migrations][]
+  * [Anúncio da versão 3.7.0][3.7.0 announcement]
+  * [Notas de versão e changelog da 3.7.0][3.7.0 release notes & change log]
+  * [Breaking changes e migrações da 3.7.0][3.7.0 breaking changes & migrations]
 * 3.3.0
-  * [3.3.0 announcement][]
-  * [3.3.0 release notes & change log][]
-  * [3.3.0 breaking changes & migrations][]
+  * [Anúncio da versão 3.3.0][3.3.0 announcement]
+  * [Notas de versão e changelog da 3.3.0][3.3.0 release notes & change log]
+  * [Breaking changes e migrações da 3.3.0][3.3.0 breaking changes & migrations]
 * 3.0.0
-  * [3.0.0 announcement][]
-  * [3.0.0 release notes & change log][]
-  * [3.0.0 breaking changes & migrations][]
+  * [Anúncio da versão 3.0.0][3.0.0 announcement]
+  * [Notas de versão e changelog da 3.0.0][3.0.0 release notes & change log]
+  * [Breaking changes e migrações da 3.0.0][3.0.0 breaking changes & migrations]
 * 2.10.0
-  * [2.10.0 announcement][]
-  * [2.10.0 release notes & change log][]
-  * [2.10.0 breaking changes & migrations][]
+  * [Anúncio da versão 2.10.0][2.10.0 announcement]
+  * [Notas de versão e changelog da 2.10.0][2.10.0 release notes & change log]
+  * [Breaking changes e migrações da 2.10.0][2.10.0 breaking changes & migrations]
 * 2.8.0
-  * [2.8.0 announcement][]
-  * [2.8.0 release notes & change log][]
+  * [Anúncio da versão 2.8.0][2.8.0 announcement]
+  * [Notas de versão e changelog da 2.8.0][2.8.0 release notes & change log]
 * 2.5.0
-  * [2.5.0 announcement][]
-  * [2.5.0 release notes & change log][]
-  * [2.5.0 breaking changes & migrations][]
+  * [Anúncio da versão 2.5.0][2.5.0 announcement]
+  * [Notas de versão e changelog da 2.5.0][2.5.0 release notes & change log]
+  * [Breaking changes e migrações da 2.5.0][2.5.0 breaking changes & migrations]
 * 2.2.0
-  * [2.2.0 announcement][]
-  * [2.2.0 release notes & change log][]
-  * [2.2.0 breaking changes & migrations][]
+  * [Anúncio da versão 2.2.0][2.2.0 announcement]
+  * [Notas de versão e changelog da 2.2.0][2.2.0 release notes & change log]
+  * [Breaking changes e migrações da 2.2.0][2.2.0 breaking changes & migrations]
 * 2.0.0
-  * [2.0.0 announcement][]
-  * [2.0.0 release notes & change log][]
-  * [2.0.0 breaking changes & migrations][]
+  * [Anúncio da versão 2.0.0][2.0.0 announcement]
+  * [Notas de versão e changelog da 2.0.0][2.0.0 release notes & change log]
+  * [Breaking changes e migrações da 2.0.0][2.0.0 breaking changes & migrations]
 * 1.22.0
-  * [1.22.0 announcement][]
-  * [1.22.0 release notes & change log][]
-  * [1.22.0 breaking changes & migrations][]
+  * [Anúncio da versão 1.22.0][1.22.0 announcement]
+  * [Notas de versão e changelog da 1.22.0][1.22.0 release notes & change log]
+  * [Breaking changes e migrações da 1.22.0][1.22.0 breaking changes & migrations]
 * 1.20.0
-  * [1.20.0 announcement][]
-  * [1.20.0 release notes & change log][]
-  * [1.20.0 breaking changes & migrations][]
+  * [Anúncio da versão 1.20.0][1.20.0 announcement]
+  * [Notas de versão e changelog da 1.20.0][1.20.0 release notes & change log]
+  * [Breaking changes e migrações da 1.20.0][1.20.0 breaking changes & migrations]
 * 1.17.0
-  * [1.17.0 announcement][]
-  * [1.17.0 release notes and change log][]
-  * [1.17.0 breaking changes & migrations][]
+  * [Anúncio da versão 1.17.0][1.17.0 announcement]
+  * [Notas de versão e changelog da 1.17.0][1.17.0 release notes and change log]
+  * [Breaking changes e migrações da 1.17.0][1.17.0 breaking changes & migrations]
 * 1.12.13
-  * [1.12.13 announcement][]
-  * [1.12.13 release notes and change log][]
-* Earlier
-  * [Archived release notes][]
+  * [Anúncio da versão 1.12.13][1.12.13 announcement]
+  * [Notas de versão e changelog da 1.12.13][1.12.13 release notes and change log]
+* Versões anteriores
+  * [Notas de versão arquivadas][Archived release notes]
 
 [3.27.0 announcement]: {{site.flutter-medium}}/whats-new-in-flutter-3-27-28341129570c
 [3.27.0 release notes & change log]: /release/release-notes/release-notes-3.27.0

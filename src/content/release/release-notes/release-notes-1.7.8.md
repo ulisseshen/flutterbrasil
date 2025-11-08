@@ -2,6 +2,7 @@
 title: Flutter 1.7.8 release notes
 short-title: 1.7.8 release notes
 description: Release notes for Flutter 1.7.8.
+ia-translate: true
 ---
 
 The 1.7.8 release is a follow-on to the 1.5.4 stable release in May,

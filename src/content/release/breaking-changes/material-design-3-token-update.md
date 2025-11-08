@@ -3,9 +3,10 @@ title: Material 3 tokens update in Flutter
 description: >-
   The latest Material Design 3 tokens (v6.1) have been applied to
   the Flutter Material library.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 The Material Design tokens updated the mapping of
 4 color roles in light mode to be more
@@ -28,18 +29,18 @@ improve visual hierarchy between chips and buttons.
 Chips (`Chip`, `ActionChip`, `ChoiceChip`, `FilterChip`, and `InputChip`) that
 have been using the chip border tokens may look different.
 
-## Migration guide
+## Guia de migração
 
 The differences in the mappings of the color roles are small.
 Use `ColorScheme.copyWith` to revert to the original default colors:
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 final ColorScheme colors = ThemeData().colorScheme;
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 final ColorScheme colors = ThemeData().colorScheme.copyWith(
@@ -54,7 +55,7 @@ After applying the token update,
 the default border color of M3 chips looks lighter.
 Take `ActionChip` as an example:
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 final chip = ActionChip(
@@ -63,7 +64,7 @@ final chip = ActionChip(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 final chip = ChipTheme(
@@ -79,20 +80,20 @@ final chip = ChipTheme(
 );
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.26.0-0.0.pre<br>
-In stable release: 3.27
+Lançado na versão: 3.26.0-0.0.pre<br>
+Na versão estável: 3.27
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`ColorScheme`][]
 * [`ThemeData`][]
 * [`Chip`][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Update tokens to v5.0.0][]
 * [Update tokens to v6.1.0][]

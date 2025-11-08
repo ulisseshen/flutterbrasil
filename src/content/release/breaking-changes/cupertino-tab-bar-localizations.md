@@ -3,9 +3,10 @@ title: CupertinoTabBar requires Localizations parent
 description: >
   In order to provide locale appropriate semantics, the
   CupertinoTabBar requires a Localizations parent.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 Instances of `CupertinoTabBar` must have a
 `Localizations`parent in order to provide a localized
@@ -21,7 +22,7 @@ instantiate your own Localizations.
 Failed assertion: line 213 pos 7: 'localizations != null'
 ```
 
-## Context
+## Contexto
 
 To support localized semantics information,
 the `CupertinoTabBar` requires localizations.
@@ -41,13 +42,13 @@ If your `CupertinoTabBar` is not within a `CupertinoApp`,
 you may provide the localizations of
 your choosing using the `Localizations` widget.
 
-## Migration guide
+## Guia de migração
 
 If you are seeing a `'localizations != null'` assertion error,
 make sure locale information is being
 provided to your `CupertinoTabBar`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 import 'package:flutter/cupertino.dart';
@@ -144,14 +145,14 @@ class Foo extends StatelessWidget {
 }
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.18.0-9.0.pre<br>
-In stable release: 1.20.0
+Lançado na versão: 1.18.0-9.0.pre<br>
+Na versão estável: 1.20.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`CupertinoTabBar`][]
 * [`Localizations`][]
@@ -161,7 +162,7 @@ API documentation:
 * [Internationalizing Flutter Apps][]
 
 
-Relevant PR:
+PRs relevantes:
 
 * [PR 55336: Adding tabSemanticsLabel to CupertinoLocalizations][]
 * [PR 56582: Update Tab semantics in Cupertino to be the same as Material][]

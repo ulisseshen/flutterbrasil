@@ -3,15 +3,16 @@ title: Adding 'linux' and 'windows' to TargetPlatform enum
 description: >
   Two new values were added to the TargetPlatform enum that could
   require additional cases in switch statements that switch on a TargetPlatform.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 Two new values were added to the [`TargetPlatform`][] enum
 that could require additional cases in switch statements that
 switch on a `TargetPlatform` and don't include a `default:` case.
 
-## Context
+## Contexto
 
 Prior to this change, the `TargetPlatform` enum only contained four values,
 and was defined like this:
@@ -45,7 +46,7 @@ void main() {
 }
 ```
 
-## Description of change
+## Descrição da mudança
 
 The `TargetPlatform` enum is now defined as:
 
@@ -71,7 +72,7 @@ Writing a switch without a `default:` case is the
 recommended way to handle enums, since the analyzer
 can then help you find any cases that aren't handled.
 
-## Migration guide
+## Guia de migração
 
 In order to migrate to the new enum, and avoid the analyzer's
 `missing_enum_constant_in_switch` error, which looks like:
@@ -88,7 +89,7 @@ warning: Missing case clause for 'windows'. (missing_enum_constant_in_switch at 
 
 Modify your code as follows:
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 void dance(TargetPlatform platform) {
@@ -109,7 +110,7 @@ void dance(TargetPlatform platform) {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 void dance(TargetPlatform platform) {
@@ -144,22 +145,22 @@ Also, any tests like the one referenced above that set the
 `debugDefaultTargetPlatformOverride` are no longer needed
 for Linux and Windows applications.
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.15.4<br>
-In stable release: 1.17
+Lançado na versão: 1.15.4<br>
+Na versão estável: 1.17
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`TargetPlatform`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue #31366][]
 
-Relevant PR:
+PRs relevantes:
 
 * [Add Windows, and Linux as TargetPlatforms][]
 

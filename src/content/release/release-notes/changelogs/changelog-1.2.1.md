@@ -2,6 +2,7 @@
 title: Change log for Flutter 1.2.2 
 short-title: 1.2.2 change log
 description: Change log for Flutter 1.2.2 containing a list of all PRs merged for this release.
+ia-translate: true
 ---
 
 

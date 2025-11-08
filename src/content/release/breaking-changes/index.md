@@ -224,6 +224,7 @@ Eles estão ordenados por versão e listados em ordem alfabética:
 [Trackpad gestures can trigger GestureRecognizer]: /release/breaking-changes/trackpad-gestures
 [Migrate a Windows project to set version information]: /release/breaking-changes/windows-version-information
 
+<a id="released-in-flutter-3" aria-hidden="true"></a>
 ### Lançado no Flutter 3
 
 * [Deprecated API removed after v2.10][]

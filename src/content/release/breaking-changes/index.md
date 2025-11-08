@@ -224,6 +224,7 @@ Eles estão ordenados por versão e listados em ordem alfabética:
 [Trackpad gestures can trigger GestureRecognizer]: /release/breaking-changes/trackpad-gestures
 [Migrate a Windows project to set version information]: /release/breaking-changes/windows-version-information
 
+<a id="released-in-flutter-3" aria-hidden="true"></a>
 ### Lançado no Flutter 3
 
 * [Deprecated API removed after v2.10][]
@@ -289,6 +290,7 @@ A seguinte mudança incompatível foi revertida na versão 2.2:
 
 [Default Scrollbars on Desktop]: /release/breaking-changes/default-desktop-scrollbars
 
+<a id="released-in-flutter-2" aria-hidden="true"></a>
 ### Lançado no Flutter 2
 
 * [Added BuildContext parameter to TextEditingController.buildTextSpan][]

@@ -1,6 +1,8 @@
 @use '../base/variables' as *;
 @use '../vendor/bootstrap';
 
+// Updated banner styles to match official Flutter docs structure
+#site-banner,
 .site-banner {
   background-color: $flutter-color-blue;
   color: $site-color-white;
@@ -26,28 +28,28 @@
       color: $flutter-color-blue-on-dark;
     }
   }
+}
 
-  // customizations per banner
+// Chevron decorations for default banner
+#site-banner,
+.site-banner.site-banner--default {
+  &:before,
+  &:after {
+    background-image: url('/assets/images/flutter-chevron-bg.svg');
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    content: '';
+    height: 100%;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
 
-  &.site-banner--default {
-    &:before,
-    &:after {
-      background-image: url('/assets/images/flutter-chevron-bg.svg');
-      background-position: right center;
-      background-repeat: no-repeat;
-      background-size: auto 100%;
-      content: '';
-      height: 100%;
-      left: 0;
-      pointer-events: none;
-      position: absolute;
-      top: 0;
-      width: 100%;
-    }
-
-    &:before {
-      transform: scaleX(-1);
-    }
+  &:before {
+    transform: scaleX(-1);
   }
 }
 

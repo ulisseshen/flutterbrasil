@@ -1,8 +1,10 @@
 {% comment %}
-  For headings use h3 elements.
+  The banner content is configured in src/_data/banner.yml
 {% endcomment -%}
-<div class="site-banner site-banner--default" role="alert">
-Construa apps de alta qualidade e ricos em recursos com a nova extensão Flutter para Gemini CLI.
-<a href="https://developers.googleblog.com/en/the-gemini-developer-competition-is-here/">Saiba mais</a>
+<div id="site-banner" role="alert">
+  <p>
+    {{ banner.text }}
+    <a href="{{ banner.link.url }}"{% if banner.link.newTab %} target="_blank"{% endif %}>{{ banner.link.text }}</a>
+  </p>
 </div>
 

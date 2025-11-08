@@ -1,10 +1,11 @@
 ---
-title: Flutter and Dart team job openings
-short-title: Open jobs
-description: Open job listings for the Flutter and Dart teams.
+ia-translate: true
+title: Vagas abertas na equipe Flutter e Dart
+short-title: Vagas abertas
+description: Listagem de vagas abertas para as equipes Flutter e Dart.
 ---
 
-## Current openings
+## Vagas atuais
 
 #### Mainland China
 * [Developer Relations Engineer](/jobs/dre-china)

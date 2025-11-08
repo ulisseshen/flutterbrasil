@@ -1,90 +1,91 @@
 ---
+ia-translate: true
 title: Flutter Developer Relations Engineer - China (Contractor)
 short-title: DRE - China
 description: >-
-  Learn about and apply to the DRE contracting position in
-  Mainland China on the Flutter team.
+  Saiba mais e candidate-se à posição de contratado DRE em
+  Mainland China na equipe Flutter.
 toc: false
 ---
 
 Location: Mainland China
 
-## About the position
+## Sobre a posição
 
-We are looking for a contractor who can support
-customers based in China, in Chinese,
-and from a local timezone.
+Estamos procurando um contratado que possa apoiar
+clientes baseados na China, em chinês,
+e em um fuso horário local.
 
-## Job location
+## Localização da vaga
 
 Mainland China
 
-## Job responsibilities
+## Responsabilidades da vaga
 
-Managing relationships with large Chinese customers
+Gerenciar relacionamentos com grandes clientes chineses
 
-* Actively manage relationships with existing P1
-  Chinese customers to understand their needs,
-  provide technical support, escalate top issues
-  to the Flutter eng team, deliver technical presentations,
-  and enhance Flutter usage within these companies.
-* Develop new Chinese Flutter customers who hold
-  strategic importance to Google.
+* Gerenciar ativamente relacionamentos com clientes
+  chineses P1 existentes para entender suas necessidades,
+  fornecer suporte técnico, escalar principais problemas
+  para a equipe de engenharia Flutter, realizar apresentações técnicas,
+  e aumentar o uso de Flutter dentro dessas empresas.
+* Desenvolver novos clientes Flutter chineses que tenham
+  importância estratégica para o Google.
 
-Bridging between Chinese contributors and the Flutter eng team
+Ponte entre contribuidores chineses e a equipe de engenharia Flutter
 
-* Act as a zeroth customer,
-  help Flutter team understand how large
-  Chinese customers are using Flutter,
-  and if new features are meeting their needs.
-* Help Flutter be more accessible for Chinese customers
-  (For example, understand customer pain points in contributing
-  to Flutter repo, identify the ideal communication channel,
-  tooling and platforms for Chinese customers to engage with
-  Flutter eng team.)
-* Mentor Chinese contributors
-  (especially large enterprise customers)
-  to submit quality PRs to the Flutter repo.
-* Review PRs, provide feedback,
-  and sponsor contribution access to quality PR contributors.
+* Atuar como um cliente zero,
+  ajudar a equipe Flutter a entender como grandes
+  clientes chineses estão usando Flutter,
+  e se novos recursos estão atendendo suas necessidades.
+* Ajudar Flutter a ser mais acessível para clientes chineses
+  (Por exemplo, entender pontos problemáticos dos clientes ao contribuir
+  para o repositório Flutter, identificar o canal de comunicação ideal,
+  ferramentas e plataformas para clientes chineses se envolverem com
+  a equipe de engenharia Flutter.)
+* Orientar contribuidores chineses
+  (especialmente grandes clientes empresariais)
+  a enviar PRs de qualidade para o repositório Flutter.
+* Revisar PRs, fornecer feedback,
+  e patrocinar acesso de contribuição para contribuidores de PR de qualidade.
 
-Community support
+Suporte à comunidade
 
-* Deliver Flutter presentation at technical events in
-  China. (Such as Google Developer Summit.)
-* Coordinate with Flutter DevRel and marketing in
-  launching Flutter-related events in China.
-* Overview the localization process of Flutter
-  learning content, sample projects, video tutorials
-  for Chinese-speaking developers, etc
-* Support and grow China GDEs.
+* Realizar apresentações de Flutter em eventos técnicos na
+  China. (Como o Google Developer Summit.)
+* Coordenar com DevRel e marketing Flutter no
+  lançamento de eventos relacionados a Flutter na China.
+* Supervisionar o processo de localização de conteúdo de
+  aprendizado Flutter, projetos de exemplo, tutoriais em vídeo
+  para desenvolvedores que falam chinês, etc.
+* Apoiar e expandir GDEs da China.
 
-## Qualifications
+## Qualificações
 
-### Minimum qualifications
+### Qualificações mínimas
 
-* 3 years of software engineering experience,
-  including at least 1-year experience coding in
-  Flutter and Dart.
-* Experience with the Android and iOS platform and ecosystem.
+* 3 anos de experiência em engenharia de software,
+  incluindo pelo menos 1 ano de experiência programando em
+  Flutter e Dart.
+* Experiência com as plataformas e ecossistemas Android e iOS.
 
-Language requirements:
+Requisitos de idioma:
 
-* Chinese verbal and written communication: Native level
-* English written communication: Advanced level
-* English verbal communication: Medium level
+* Comunicação verbal e escrita em chinês: Nível nativo
+* Comunicação escrita em inglês: Nível avançado
+* Comunicação verbal em inglês: Nível médio
 
-### Preferred qualifications
+### Qualificações preferenciais
 
-* Experience working with,
-  and contributing to open-source software repo.
-* Experience working in a support or consulting
-  relationship with customers.
-* Experience delivering public speeches,
-  writing blog posts and articles,
-  and interacting with developer communities.
+* Experiência trabalhando com,
+  e contribuindo para repositórios de software open-source.
+* Experiência trabalhando em um relacionamento de suporte ou consultoria
+  com clientes.
+* Experiência realizando palestras públicas,
+  escrevendo posts de blog e artigos,
+  e interagindo com comunidades de desenvolvedores.
 
-## To apply
+## Para se candidatar
 
-Please apply by
-[filling out the following form](https://flutter.dev/go/job).
+Por favor, candidate-se
+[preenchendo o seguinte formulário](https://flutter.dev/go/job).

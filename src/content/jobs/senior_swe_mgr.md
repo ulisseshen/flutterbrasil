@@ -1,78 +1,79 @@
 ---
+ia-translate: true
 title: Senior Software Engineering Manager, Core
-short-title: Open manager role
-description: Learn about and apply to this role!
+short-title: Vaga de gerente aberta
+description: Saiba mais e candidate-se a esta vaga!
 toc: false
 ---
 
-## About the position
+## Sobre a posição
 
-Like Google's own ambitions, the work of a Software Engineer goes beyond just Search. Software Engineering Managers have not only the technical expertise to take on and provide technical leadership to major projects, but also manage a team of Engineers. You not only optimize your own code but make sure Engineers are able to optimize theirs. As a Software Engineering Manager you manage your project goals, contribute to product strategy and help develop your team. Teams work all across the company, in areas such as information retrieval, artificial intelligence, natural language processing, distributed computing, large-scale system design, networking, security, data compression, user interface design; the list goes on and is growing every day. Operating with scale and speed, our exceptional software engineers are just getting started -- and as a manager, you guide the way.
+Como as próprias ambições do Google, o trabalho de um Software Engineer vai além de apenas Search. Software Engineering Managers não apenas têm a expertise técnica para assumir e fornecer liderança técnica para grandes projetos, mas também gerenciam uma equipe de Engineers. Você não apenas otimiza seu próprio código, mas garante que os Engineers sejam capazes de otimizar os deles. Como Software Engineering Manager, você gerencia os objetivos do seu projeto, contribui para a estratégia do produto e ajuda a desenvolver sua equipe. As equipes trabalham em toda a empresa, em áreas como recuperação de informações, inteligência artificial, processamento de linguagem natural, computação distribuída, design de sistemas em larga escala, redes, segurança, compressão de dados, design de interface do usuário; a lista continua e está crescendo todos os dias. Operando com escala e velocidade, nossos excepcionais engenheiros de software estão apenas começando -- e como gerente, você guia o caminho.
 
-With technical and leadership expertise, you manage engineers across multiple teams and locations, a large product budget and oversee the deployment of large-scale projects across multiple sites internationally.
+Com expertise técnica e de liderança, você gerencia engenheiros em várias equipes e localizações, um grande orçamento de produto e supervisiona a implantação de projetos em larga escala em vários sites internacionalmente.
 
-We empower developers to build multi-platform, full-stack applications and services augmented by AI using technologies such as Firebase, Project IDX, Checks, Gemini and Google Cloud Services. We look beyond the horizon, across all of Google’s products, to forge central solutions that dismantle technical barriers and enhance system robustness. We have some of the most vibrant and active Open Source communities in the world, such as Go, Flutter, and Dart, which help us innovate and deliver value to professional developers and enterprises across the globe.
-The Core team builds the technical foundation behind Google’s flagship products. We are owners and advocates for the underlying design elements, developer platforms, product components, and infrastructure at Google. These are the essential building blocks for excellent, safe, and coherent experiences for our users and drive the pace of innovation for every developer. We look across Google’s products to build central solutions, break down technical barriers and strengthen existing systems. As the Core team, we have a mandate and a unique opportunity to impact important technical decisions across the company.
+Capacitamos desenvolvedores a construir aplicações e serviços multi-plataforma e full-stack aumentados por IA usando tecnologias como Firebase, Project IDX, Checks, Gemini e Google Cloud Services. Olhamos além do horizonte, através de todos os produtos do Google, para forjar soluções centrais que desmantelam barreiras técnicas e melhoram a robustez do sistema. Temos algumas das comunidades Open Source mais vibrantes e ativas do mundo, como Go, Flutter e Dart, que nos ajudam a inovar e entregar valor para desenvolvedores profissionais e empresas em todo o globo.
+A equipe Core constrói a fundação técnica por trás dos produtos principais do Google. Somos proprietários e defensores dos elementos de design subjacentes, plataformas de desenvolvedor, componentes de produto e infraestrutura no Google. Estes são os blocos de construção essenciais para experiências excelentes, seguras e coerentes para nossos usuários e impulsionam o ritmo de inovação para cada desenvolvedor. Olhamos através dos produtos do Google para construir soluções centrais, derrubar barreiras técnicas e fortalecer sistemas existentes. Como equipe Core, temos um mandato e uma oportunidade única de impactar decisões técnicas importantes em toda a empresa.
 
-## Our values
+## Nossos valores
 
-### Mentorship
+### Mentoria
 
-Upon joining Google, you will be paired with a formal mentor,
-who will help guide you in the process of ramping up, forging relationships,
-and learning the systems you'll need to do your job.
-Your manager can also help you find mentors who can coach you
-as you navigate your career at Google. In addition to formal mentors,
-we work and train together so that we are always learning from one another,
-and we celebrate and support the career progression of our team members.
+Ao ingressar no Google, você será pareado com um mentor formal,
+que ajudará a guiá-lo no processo de integração, forjando relacionamentos,
+e aprendendo os sistemas que você precisará para fazer seu trabalho.
+Seu gerente também pode ajudá-lo a encontrar mentores que podem orientá-lo
+enquanto você navega sua carreira no Google. Além de mentores formais,
+trabalhamos e treinamos juntos para que estejamos sempre aprendendo uns com os outros,
+e celebramos e apoiamos a progressão de carreira dos membros da nossa equipe.
 
-### Inclusion
+### Inclusão
 
-Here on the Flutter team and at Google, we embrace our differences
-and are [committed to furthering our culture of inclusion](https://flutter.dev/culture).
-In addition to groups like the [Flutteristas](https://flutteristas.org/),
+Aqui na equipe Flutter e no Google, abraçamos nossas diferenças
+e estamos [comprometidos em promover nossa cultura de inclusão](https://flutter.dev/culture).
+Além de grupos como as [Flutteristas](https://flutteristas.org/),
 [Employee Resource Groups (ERGs)](https://diversity.google/commitments/)
-are employee-initiated networks for supporting underrepresented employees
-and their allies with shared values of creating belonging 
-across their communities and Google.
+são redes iniciadas por funcionários para apoiar funcionários sub-representados
+e seus aliados com valores compartilhados de criar pertencimento
+em suas comunidades e no Google.
 
-### Work-Life Balance
+### Equilíbrio Trabalho-Vida
 
-Our team also puts a high value on work-life balance.
-Striking a healthy balance between your personal and professional life
-is crucial to your happiness and success here, which is why we aren't focused
-on how many hours you spend at work or online. Instead,
-we're happy to offer a flexible schedule so you can have a more productive and
-well-balanced life—both in and outside of work.
+Nossa equipe também valoriza muito o equilíbrio trabalho-vida.
+Encontrar um equilíbrio saudável entre sua vida pessoal e profissional
+é crucial para sua felicidade e sucesso aqui, e é por isso que não focamos
+em quantas horas você passa no trabalho ou online. Em vez disso,
+estamos felizes em oferecer um cronograma flexível para que você possa ter uma vida mais produtiva e
+bem equilibrada—tanto dentro quanto fora do trabalho.
 
-## Job location
+## Localização da vaga
 
 Mexico City, CDMX, Mexico
 
-## Job responsibilities
+## Responsabilidades da vaga
 
-* Set and communicate team priorities that support the broader organization's goals. Align strategy, processes, and decision-making across teams.
-* Set clear expectations with individuals based on their level and role and aligned to the broader organization's goals. Meet regularly with individuals to discuss performance and development and provide feedback and coaching.
-* Develop the long-term technical goal and roadmap within, and often beyond, the scope of the teams. Evolve the roadmap to meet anticipated future requirements and infrastructure needs.
-* Oversee systems designs within the scope of the broader area, and review product or system development code to solve ambiguous problems.
-* Review code developed by other engineers and provide feedback to ensure best practices (e.g., style guidelines, checking code in, accuracy, testability, and efficiency).
+* Definir e comunicar prioridades da equipe que apoiem os objetivos da organização mais ampla. Alinhar estratégia, processos e tomada de decisões entre equipes.
+* Definir expectativas claras com indivíduos baseadas em seu nível e função e alinhadas aos objetivos da organização mais ampla. Reunir-se regularmente com indivíduos para discutir desempenho e desenvolvimento e fornecer feedback e orientação.
+* Desenvolver o objetivo técnico de longo prazo e roadmap dentro, e frequentemente além, do escopo das equipes. Evoluir o roadmap para atender requisitos futuros antecipados e necessidades de infraestrutura.
+* Supervisionar designs de sistemas dentro do escopo da área mais ampla, e revisar código de desenvolvimento de produto ou sistema para resolver problemas ambíguos.
+* Revisar código desenvolvido por outros engenheiros e fornecer feedback para garantir melhores práticas (por exemplo, diretrizes de estilo, checagem de código, precisão, testabilidade e eficiência).
 
-## Qualifications
+## Qualificações
 
-### Minimum qualifications
+### Qualificações mínimas
 
-* Bachelor's degree or equivalent practical experience.
-* 8 years of experience with software development in one or more programming languages (e.g., Python, C, C++, Java, JavaScript).
-* 5 years of experience in a technical leadership role; overseeing projects, with 5 years of experience in a people management, supervision/team leadership role.
+* Bacharelado ou experiência prática equivalente.
+* 8 anos de experiência com desenvolvimento de software em uma ou mais linguagens de programação (por exemplo, Python, C, C++, Java, JavaScript).
+* 5 anos de experiência em função de liderança técnica; supervisionando projetos, com 5 anos de experiência em gestão de pessoas, função de supervisão/liderança de equipe.
 
-### Preferred qualifications
+### Qualificações preferenciais
 
-* Master's degree or PhD in Computer Science or related technical field.
-* 5 years of experience working in a complex, matrixed organization.
-* Experience delivering developer tools, languages, AI Agents and ML models.
-* Experience in building and deploying full-stack applications and servers.
-* Experience in developer focused products aimed at improving developer productivity.
+* Mestrado ou PhD em Ciência da Computação ou campo técnico relacionado.
+* 5 anos de experiência trabalhando em uma organização complexa e matricial.
+* Experiência entregando ferramentas de desenvolvedor, linguagens, AI Agents e modelos ML.
+* Experiência em construir e implantar aplicações full-stack e servidores.
+* Experiência em produtos focados em desenvolvedor visando melhorar a produtividade do desenvolvedor.
 
-## To apply
+## Para se candidatar
 
-Please apply via [this Google Careers page](https://www.google.com/about/careers/applications/jobs/results/119322545533919942).
+Por favor, candidate-se via [esta página do Google Careers](https://www.google.com/about/careers/applications/jobs/results/119322545533919942).

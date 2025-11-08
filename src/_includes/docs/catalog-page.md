@@ -33,7 +33,7 @@
   {% if components.size != 0 -%}
 
   <a id="{{ sub.name | slugify }}"></a>
-  {% if sub.name == 'Widgets Sliver' %}
+  {% if sub.name | downcase == 'widgets sliver' %}
   <a id="sliver-widgets"></a>
   {% endif %}
   ## {{sub.name}}

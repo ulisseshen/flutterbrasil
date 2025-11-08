@@ -80,7 +80,7 @@ Para mais informações, confira
 e as [classes Sliver][].
 
 [`CustomScrollView`]: {{site.api}}/flutter/widgets/CustomScrollView-class.html
-[classes Sliver]: /ui/widgets/layout#sliver-widgets
+[classes Sliver]: /ui/widgets/layout#widgets-sliver
 [Usando slivers para obter rolagem sofisticada]: /ui/layout/scrolling/slivers
 
 ## Widgets de rolagem aninhados

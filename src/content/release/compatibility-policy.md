@@ -37,7 +37,7 @@ mudanças incompatíveis.
 [flutter-announce]: {{site.groups}}/forum/#!forum/flutter-announce
 [guides for migrating code]: /release/breaking-changes
 
-## Política de descontinuação {:#deprecation-policy}
+## Política de descontinuação {#deprecation-policy}
 
 Iremos, ocasionalmente, descontinuar certas APIs ao invés de
 quebrá-las abruptamente da noite para o dia. Isso é independente de nossa política de compatibilidade

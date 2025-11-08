@@ -46,7 +46,7 @@ o widget anima a propriedade do valor antigo para o novo.
 Dessa forma, animações implícitas trocam controle por conveniência&mdash;elas
 gerenciam efeitos de animação para que você não precise fazer isso.
 
-## Exemplo: Efeito de fade-in de texto {:#example-fade-in-text-effect}
+## Exemplo: Efeito de fade-in de texto {#example-fade-in-text-effect}
 
 O exemplo a seguir mostra como adicionar um efeito de fade-in à UI existente
 usando um widget implicitamente animado chamado [AnimatedOpacity][].
@@ -57,7 +57,7 @@ consiste em uma tela inicial de [Material App][] contendo:
 - Um botão **Show details** que não faz nada quando clicado.
 - Texto de descrição da coruja na fotografia.
 
-### Fade-in (código inicial) {:#fade-in-starter-code}
+### Fade-in (código inicial) {#fade-in-starter-code}
 
 Para ver o exemplo, clique em **Run**:
 
@@ -177,7 +177,7 @@ Você só precisa definir os valores inicial e final de `opacity`.
 O widget `AnimatedOpacity` gerencia tudo no meio.
 :::
 
-### Fade-in (completo) {:#fade-in-complete}
+### Fade-in (completo) {#fade-in-complete}
 
 Aqui está o exemplo com as alterações completas que você fez.
 Execute este exemplo e clique em **Show details** para disparar a animação.
@@ -220,7 +220,7 @@ Ele começa com uma tela inicial de [Material App][] que contém:
   cada vez que você executar o exemplo.
 - Um botão **Change** que não faz nada quando clicado.
 
-### Mudança de forma (código inicial) {:#shape-shifting-starter-code}
+### Mudança de forma (código inicial) {#shape-shifting-starter-code}
 
 Para iniciar o exemplo, clique em **Run**.
 
@@ -331,7 +331,7 @@ entre os valores antigos e novos:
   ),
 ```
 
-### Mudança de forma (completo) {:#shape-shifting-complete}
+### Mudança de forma (completo) {#shape-shifting-complete}
 
 Aqui está o exemplo com as alterações completas que você fez.
 Execute o código e clique em **Change** para disparar a animação.

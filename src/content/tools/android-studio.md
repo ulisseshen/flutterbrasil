@@ -62,7 +62,7 @@ difere entre Android Studio e IntelliJ.
     [defina o domínio da empresa](#set-the-company-domain).
  1. Clique em **Finish**.
 
-#### Defina o domínio da empresa {#set-the-company-domain}
+#### Defina o domínio da empresa {:#set-the-company-domain}
 
 Ao criar um novo app, alguns plugins de IDE do Flutter solicitam um
 nome de organização em ordem de domínio reverso,
@@ -147,7 +147,7 @@ Você precisa conectar um dispositivo, ou iniciar um simulador, para prosseguir.
  1. Clique no **Play icon** na barra de ferramentas, ou invoque **Run > Run**.
     O painel inferior **Run** mostra a saída de logs.
 
-### Executar app com breakpoints {#run-app-with-breakpoints}
+### Executar app com breakpoints {:#run-app-with-breakpoints}
 
  1. Se desejar, defina breakpoints no seu código-fonte.
  1. Clique no **Debug icon** na barra de ferramentas, ou invoque **Run > Debug**.
@@ -163,7 +163,7 @@ Flutter oferece um ciclo de desenvolvimento de primeira classe, permitindo que v
 das suas alterações quase instantaneamente com o recurso _Stateful Hot Reload_.
 Para saber mais, consulte [Hot reload][].
 
-### Mostrar dados de desempenho {#show-performance-data}
+### Mostrar dados de desempenho {:#show-performance-data}
 
 :::note
 Para examinar problemas de desempenho no Flutter, consulte a

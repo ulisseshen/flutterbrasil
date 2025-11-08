@@ -49,7 +49,7 @@ Be aware of the following:
 [Android release notes]: {{site.android-dev}}/about/versions/15/behavior-changes-15#edge-to-edge
 [`SystemChrome.setEnabledSystemUIMode`]: {{site.api}}/flutter/services/SystemChrome/setEnabledSystemUIMode.html
 
-## Guia de migração {#migration-guide}
+## Guia de migração {:#migration-guide}
 
 To opt out of edge-to-edge on SDK 15, specify
 the new style attribute in each activity that requires it.

@@ -405,7 +405,7 @@ Para testar em um navegador web, execute os seguintes passos.
 
    ```console
    $ chromedriver --version
-   ChromeDriver 124.0.6367.60 (8771130bd84f76d855ae42fbe02752b03e352f17-refs/branch-heads/6367@{#798})
+   ChromeDriver 124.0.6367.60 (8771130bd84f76d855ae42fbe02752b03e352f17-refs/branch-heads/6367@{:#798})
    ```
 
 1. No diretório do projeto `counter_app`,

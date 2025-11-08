@@ -228,7 +228,7 @@ class Scaling extends StatelessWidget {
     child: Center(
       child: /*[[highlight]]*/ Transform(
         alignment: Alignment.center,
-        transform: Matrix4.identity()..scale(1.5),
+        transform: Matrix4.diagonal3Values(1.5, 1.5, 1.5),
         child: /*[[/highlight]]*/ Container(
           // red box
           padding: const EdgeInsets.all(16),

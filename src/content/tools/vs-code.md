@@ -371,7 +371,7 @@ Ao registrar novos issues, inclua a saída do [flutter doctor][].
 
 [Command Palette]: https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette
 [DevTools]: /tools/devtools
-[flutter doctor]: /resources/bug-reports/#provide-some-flutter-diagnostics
+[flutter doctor]: /resources/bug-reports#provide-some-flutter-diagnostics
 [Flutter inspector]: /tools/devtools/inspector
 [Flutter's build modes]: /testing/build-modes
 [Hot reload]: /tools/hot-reload

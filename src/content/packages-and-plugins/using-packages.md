@@ -477,7 +477,7 @@ Para usar este plugin:
       const DemoPage({super.key});
     
       void launchURL() {
-        launchUrl(p.toUri('https://flutterbrasil.dev'));
+        launchUrl(p.toUri('https://flutter.dev'));
       }
     
       @override

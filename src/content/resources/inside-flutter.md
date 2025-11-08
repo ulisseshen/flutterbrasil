@@ -149,7 +149,7 @@ uma tabela hash de `InheritedWidget`s em cada elemento. Tipicamente, muitos
 elementos referenciarão a mesma tabela hash, que muda apenas em
 elementos que introduzem um novo `InheritedWidget`.
 
-### Reconciliação linear {#linear-reconciliation}
+### Reconciliação linear {:#linear-reconciliation}
 
 Ao contrário da crença popular, o Flutter não emprega um algoritmo de tree-diffing.
 Em vez disso, o framework decide se reutiliza elementos examinando
@@ -325,7 +325,7 @@ do protocolo de layout sliver para produzir apenas aqueles filhos que estão rea
 visíveis através do viewport, independentemente de se aqueles filhos pertencem
 ao cabeçalho, à lista ou à grid[^6].
 
-### Construindo widgets sob demanda {#building-widgets-on-demand}
+### Construindo widgets sob demanda {:#building-widgets-on-demand}
 
 Se o Flutter tivesse um pipeline estrito _build-then-layout-then-paint_,
 o acima seria insuficiente para implementar uma lista de rolagem

@@ -32,8 +32,9 @@
   {% assign components = catalog.widgets | widget_filter: "subcategories", sub.name %}
   {% if components.size != 0 -%}
 
+  {% assign lower_name = sub.name | downcase %}
   <a id="{{ sub.name | slugify }}"></a>
-  {% if sub.name | downcase == 'widgets sliver' %}
+  {% if lower_name == 'widgets sliver' %}
   <a id="sliver-widgets"></a>
   {% endif %}
   ## {{sub.name}}

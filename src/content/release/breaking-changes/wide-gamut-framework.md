@@ -2,14 +2,15 @@
 title: Migration guide for wide gamut Color
 description: >-
   Changes to support wide gamut color and migration instructions.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 The API for the [`Color`][] class in `dart:ui` is changing to
 support [wide gamut color spaces][].
 
-## Context
+## Contexto
 
 The Flutter engine [already supports wide gamut color][] with [Impeller][], and
 the support is now being added [to the framework][].
@@ -21,7 +22,7 @@ render all of those colors on iOS Impeller, and
 the `Color` class is better prepared for future color spaces or
 changes to color component bit depth.
 
-## Description of change
+## Descrição da mudança
 
 Changes to [`Color`][]:
 
@@ -34,7 +35,7 @@ Changes to [`ColorSpace`][]:
 
  1. Adds a `displayP3` property.
 
-## Migration guide
+## Guia de migração
 
 ### 8-bit unsigned integer constructors
 
@@ -172,25 +173,25 @@ expect(calculateColor(), const Color(0xffff00ff));
 expect(calculateColor(), isSameColorAs(const Color(0xffff00ff)));
 ```
 
-## Timeline
+## Linha do tempo
 
 ### Phase 1 - New API introduction, old API deprecation
 
-Landed in version: 3.26.0-0.1.pre<br>
-In stable release: 3.27.0
+Lançado na versão: 3.26.0-0.1.pre<br>
+Na versão estável: 3.27.0
 
 ### Phase 2 - Old API removal
 
-Landed in version: Not yet<br>
-In stable release: Not yet
+Lançado na versão: Not yet<br>
+Na versão estável: Not yet
 
-## References
+## Referências
 
-Relevant issue:
+Issues relevantes:
 
 * [issue 127855][]: Implement wide gamut color support in the Framework
 
-Relevant PRs:
+PRs relevantes:
 
 * [PR 54737][]: Framework wide color
 

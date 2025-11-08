@@ -2,9 +2,10 @@
 title: AnnotatedRegionLayers return local position relative to clipping region
 description: >
   Provide annotation searches with reliable and meaningful local positions.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 The local position returned by `AnnotatedRegionLayers` in an
 annotation search has been changed to be relative to the clipping
@@ -12,7 +13,7 @@ region instead of the layer. This makes the local position more
 meaningful and reliable, but breaks code that directly performs
 annotation searches and uses the local position.
 
-## Context
+## Contexto
 
 Annotations are metadata that are assigned during the
 rendering phase to regions on the screen.
@@ -36,7 +37,7 @@ visual differences, since the extra layer might just be a scale of
 In order to make this local position reliable, we have to choose
 one of the results to stick to.
 
-## Description of change
+## Descrição da mudança
 
 The `localPosition` returned by an `AnnotatedRegionLayer`
 is now the local position it received subtracted by `offset`,
@@ -67,7 +68,7 @@ and `size` are defined. They used to mean
 while they now jointly represent
 "the region of the annotation object".
 
-## Migration guide
+## Guia de migração
 
 Code that is actively using this local position is probably
 directly interacting with layers, since using render objects or
@@ -76,23 +77,23 @@ preserve the previous behavior, you can reimplement
 `AnnotatedRegionLayer` to return a local position without
 subtracting the offset.
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.15.2<br>
-In stable release: 1.17
+Lançado na versão: 1.15.2<br>
+Na versão estável: 1.17
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`AnnotatedRegionLayer`][]
 * [`AnnotationEntry`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue #49568][]
 
-Relevant PR:
+PRs relevantes:
 
 * [Make Annotation's localPosition relative to object][]
 

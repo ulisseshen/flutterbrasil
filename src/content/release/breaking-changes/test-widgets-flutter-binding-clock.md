@@ -1,14 +1,15 @@
 ---
 title: TestWidgetsFlutterBinding.clock change
 description: The Clock implementation now comes from package:clock.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 The `TestWidgetsFlutterBinding.clock` now comes from
 `package:clock` and not `package:quiver`.
 
-## Context
+## Contextoo
 
 The `flutter_test` package is removing its dependency on
 the heavier weight `quiver` package in favor of a dependency
@@ -26,7 +27,7 @@ testWidgets('some test', (WidgetTester tester) {
 });
 ```
 
-## Migration guide
+## Guia de migração
 
 The error you might see after this change looks something like this:
 
@@ -42,7 +43,7 @@ The easiest migration is to create a `package:quiver` clock from the
 `package:clock` clock, which can be done by passing the `.now` function
 tearoff to the `Clock` constructor:
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 testWidgets('some test', (WidgetTester tester) {
@@ -50,7 +51,7 @@ testWidgets('some test', (WidgetTester tester) {
 });
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 testWidgets('some test', (WidgetTester tester) {
@@ -95,18 +96,18 @@ testWidgets('some test', (WidgetTester tester) {
 });
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.18.0<br>
-In stable release: 1.20
+Lançado na versão: 1.18.0<br>
+Na versão estável: 1.20
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`TestWidgetsFlutterBinding`][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [PR 54125][]: remove flutter_test quiver dep,
   use fake_async and clock instead

@@ -2,9 +2,10 @@
 title: Route transition record and transition delegate updates
 description: >
   Changes to the rule on how transition delegate resolve route transition.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 A new boolean getter `isWaitingForExitingDecision` was added
 to the route transition record and the `isEntering` getter
@@ -15,7 +16,7 @@ route actually needs an explicit decision on how to transition
 off the screen. If you try to make a decision for an existing route
 that _isn't_ waiting for a decision, Flutter throws an assertion error.
 
-## Context
+## Contexto
 
 When the navigator receives a new list of pages, it tries to update its
 current routes stack to match the list. However, it requires explicit
@@ -34,7 +35,7 @@ The `isEntering` getter is also renamed to
 `isWaitingForEnteringDecision` to be more descriptive,
 and also to make the naming more consistent.
 
-## Migration guide
+## Guia de migração
 
 If you implement your own transition delegate, you need to check the
 exiting routes using the getter `isWaitingForExitingDecision` before you
@@ -42,7 +43,7 @@ call `markForPop`, `markForComplete`, or `markForRemove` on them.
 You also need to rename all the references from `isEntering` to
 `isWaitingForEnteringDecision`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 import 'package:flutter/widgets.dart';
@@ -79,7 +80,7 @@ class NoAnimationTransitionDelegate extends TransitionDelegate<void> {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 import 'package:flutter/widgets.dart';
@@ -120,24 +121,24 @@ class NoAnimationTransitionDelegate extends TransitionDelegate<void> {
 }
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.18.0<br>
-In stable release: 1.20
+Lançado na versão: 1.18.0<br>
+Na versão estável: 1.20
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`Navigator`][]
 * [`TransitionDelegate`][]
 * [`RouteTransitionRecord`][]
 
-Relevant issue:
+Issues relevantes:
 
 * [Issue 45938: Navigator 2.0][]
 
-Relevant PR:
+PRs relevantes:
 
 * [PR 55998][]: Fixes the navigator pages update crash
   when there is still a route waiting

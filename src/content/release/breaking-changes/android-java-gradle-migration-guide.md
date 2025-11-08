@@ -3,9 +3,10 @@ title: Android Java Gradle migration guide
 description: >
   How to migrate your Android app if you experience
   a run or build error from Gradle.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 If you've recently upgraded Android Studio to the Flamingo
 release and have either run or built an existing Android app,

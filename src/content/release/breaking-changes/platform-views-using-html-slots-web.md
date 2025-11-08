@@ -6,9 +6,10 @@ description: >
   A change in the way Flutter web apps render platform views
   makes them stable (preventing iframe reloads, and other problems
   with video tags or forms potentially losing their state).
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 Flutter now renders all web platform views in a consistent location of the DOM,
 as direct children of `flt-glass-pane` (regardless of the rendering backend:
@@ -20,7 +21,7 @@ contents of a platform views to position/size it to the available space. **This
 is no longer the case.** Users can now decide how they want to utilize the space
 allocated to their platform view by the framework.
 
-## Context
+## Contexto
 
 The Flutter framework frequently tweaks its render tree to optimize the paint
 operations that are ultimately made per frame. In the web, these render tree
@@ -48,7 +49,7 @@ This change was made to:
    use CSS to style their platform views, and to use other standard DOM API,
    such as `querySelector`, and `getElementById`.
 
-## Description of change
+## Descrição da mudança
 
 A Flutter web app is now rendered inside a common [shadow root][] in which
 [slot elements][] represent platform views. The actual content of
@@ -104,7 +105,7 @@ From an app's perspective, this change is transparent. **However**, this is
 considered a _breaking change_ because some tests make assumptions
 about the internal DOM of a Flutter web app, and break.
 
-## Migration guide
+## Guia de migração
 
 ### Code
 
@@ -163,22 +164,22 @@ without notice.
 
 (See Relevant PRs below for examples of the "migrations" described above).
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 2.3.0-16.0.pre<br>
-In stable release: 2.5
+Lançado na versão: 2.3.0-16.0.pre<br>
+Na versão estável: 2.5
 
-## References
+## Referências
 
-Design document:
+Documento de design:
 
 * [Using slot to embed web Platform Views][design doc]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue #80524][issue-80524]
 
-Relevant PRs:
+PRs relevantes:
 
 * [flutter/engine#25747][pull-25747]: Introduces the feature.
 * [flutter/flutter#82926][pull-82926]: Tweaks `flutter` tests.

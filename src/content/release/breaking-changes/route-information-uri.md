@@ -1,14 +1,15 @@
 ---
 title: Migration guide for `RouteInformation.location`
 description: Deprecation of `RouteInformation.location` and its related APIs.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 `RouteInformation.location` and related APIs were deprecated
 in the favor of `RouteInformation.uri`.
 
-## Context
+## Contextoo
 
 The [`RouteInformation`][] needs the authority information to
 handle mobile deeplinks from different web domains.
@@ -17,40 +18,40 @@ the entire deeplink information and route-related parameters
 were converted to the full [`Uri`][] format.
 This led to deprecation of incompatible APIs.
 
-## Description of change
+## Descrição da mudança
 
 * The `RouteInformation.location` was replaced by `RouteInformation.uri`.
 * The `WidgetBindingObserver.didPushRoute` was deprecated.
 * The `location` parameter of `SystemNavigator.routeInformationUpdated` was
   replaced by the newly added `uri` parameter.
 
-## Migration guide
+## Guia de migração
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 const RouteInformation myRoute = RouteInformation(location: '/myroute');
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 final RouteInformation myRoute = RouteInformation(uri: Uri.parse('/myroute'));
 ```
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 final String myPath = myRoute.location;
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 final String myPath = myRoute.uri.path;
 ```
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 class MyObserverState extends State<MyWidget> with WidgetsBindingObserver {
@@ -59,7 +60,7 @@ class MyObserverState extends State<MyWidget> with WidgetsBindingObserver {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class MyObserverState extends State<MyWidget> with WidgetsBindingObserver {
@@ -76,26 +77,26 @@ class MyObserverState extends State<MyWidget> with WidgetsBindingObserver {
 }
 ```
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 SystemNavigator.routeInformationUpdated(location: '/myLocation');
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 SystemNavigator.routeInformationUpdated(uri: Uri.parse('/myLocation'));
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.10.0-13.0.pre<br>
-In stable release: 3.13.0
+Lançado na versão: 3.10.0-13.0.pre<br>
+Na versão estável: 3.13.0
 
-## References
+## Referências
 
-Relevant PRs:
+PRs relevantes:
 
 * [PR 119968][]: Implement url support for
   RouteInformation and didPushRouteInformation.

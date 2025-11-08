@@ -3,14 +3,15 @@ title: Updated default text styles for menus
 description: >-
   The default text styles for menus are updated to
   match the Material 3 specification.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 The default text styles used for menus are updated
 to match the Material 3 specification.
 
-## Context
+## Contexto
 
 The default text style for `MenuItemButton` (a widget used
 in a `MenuBar`, and in a menu created with `MenuAnchor`), 
@@ -20,7 +21,7 @@ updated to match the Material 3 specification.
 Likewise, the default text style for the `DropdownMenu`s `TextField` is updated
 to match the Material 3 specification.
 
-## Description of change
+## Descrição da mudança
 
 The default text style for `MenuItemButton` (a widget used
 in a `MenuBar`, and in a menu created with `MenuAnchor`), 
@@ -30,14 +31,14 @@ and `DropdownMenuEntry` (in the `DropdownMenu`) is updated from
 The default text style for the `DropdownMenu`s `TextField` is updated from
 `TextTheme.labelLarge` to `TextTheme.bodyLarge` for Material 3.
 
-## Migration guide
+## Guia de migração
 
 A `MenuItemButton` for Material 3 uses
 `TextTheme.labelLarge` as the default text style. 
 To use the previous default text style, set the `TextTheme.bodyLarge` text style
 in the `MenuItemButton.style` or `MenuButtonThemeData.style` properties.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 MenuItemButton(
@@ -54,7 +55,7 @@ menuButtonTheme: MenuButtonThemeData(
 ),
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 MenuItemButton(
@@ -80,7 +81,7 @@ To use the previous default text style,
 set the `TextTheme.labelLarge` text style in 
 the `DropdownMenu.textStyle` or `DropdownMenuThemeData.textStyle` properties.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 DropdownMenu<ColorLabel>(
@@ -102,7 +103,7 @@ dropdownMenuTheme: DropdownMenuThemeData(
 ),
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 DropdownMenu<ColorLabel>(
@@ -134,7 +135,7 @@ To use the previous default text style, set the
 `TextTheme.bodyLarge` text style in
 the `DropdownMenuEntry.style` or `MenuButtonThemeData.style` properties.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 DropdownMenuEntry<ColorLabel>(
@@ -151,7 +152,7 @@ menuButtonTheme: MenuButtonThemeData(
 ),
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 DropdownMenuEntry<ColorLabel>(
@@ -171,14 +172,14 @@ menuButtonTheme: MenuButtonThemeData(
 ),
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.14.0-11.0.pre<br>
-In stable release: 3.16
+Lançado na versão: 3.14.0-11.0.pre<br>
+Na versão estável: 3.16
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`MenuBar`][]
 * [`MenuAnchor`][]
@@ -189,7 +190,7 @@ API documentation:
 * [`DropdownMenuTheme`][]
 * [`TextTheme`][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Update default menu text styles for Material 3][]
 

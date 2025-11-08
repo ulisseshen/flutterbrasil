@@ -3,9 +3,10 @@ title: The RenderEditable needs to be laid out before hit testing
 description: >
   The hit testing of RenderEditable requires additional information
   that is only available after the layout.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 Instances of `RenderEditable` must be laid out before processing hit
 testing. Trying to hit-test a `RenderEditable` object before layout
@@ -15,7 +16,7 @@ results in an assertion such as the following:
 Failed assertion: line 123 pos 45: '!debugNeedsLayout': is not true.
 ```
 
-## Context
+## Contexto
 
 To support gesture recognizers in selectable text, the
 `RenderEditable` requires the layout information for its
@@ -31,13 +32,13 @@ render objects. This problem is only likely to be seen in
 code that directly interacts with render objects, for
 example in tests of custom render objects.
 
-## Migration guide
+## Guia de migração
 
 If you see the `'!debugNeedsLayout': is not true`
 assertion error while hit testing the `RenderEditable`,
 lay out the `RenderEditable` before doing so.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 import 'package:flutter/rendering.dart';
@@ -73,7 +74,7 @@ class FakeEditableTextState extends TextSelectionDelegate {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 import 'package:flutter/rendering.dart';
@@ -109,23 +110,23 @@ class FakeEditableTextState extends TextSelectionDelegate {
 }
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.18.0<br>
-In stable release: 1.20
+Lançado na versão: 1.18.0<br>
+Na versão estável: 1.20
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`RenderEditable`][]
 
-Relevant issue:
+Issues relevantes:
 
 * [Issue 43494][]: SelectableText.rich used along with
   TapGestureRecognizer isn't working
 
-Relevant PR:
+PRs relevantes:
 
 * [PR 54479: Enable gesture recognizer in selectable rich text][]
 

@@ -3,9 +3,10 @@ title: Accessibility traversal order of tooltip changed
 description: >-
   The Tooltip widget's message now immediately follows the
   Tooltip widget's child during accessibility traversal.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 During accessibility focus traversal, `Tooltip.message` is
 visited immediately after `Tooltip.child`.
@@ -22,7 +23,7 @@ an `OverlayEntry` when long pressed.
 As a result, `Tooltip.message` was not immediately after
 `Tooltip.child` in the semantics tree.
 
-## Migration guide
+## Guia de migração
 
 This change moved the tooltip message in the semantics tree.
 You might see accessibility test failures if
@@ -125,18 +126,18 @@ SemanticsNode#0
          textDirection: ltr
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.16.0-11.0.pre<br>
-In stable release: 3.19.0
+Lançado na versão: 3.16.0-11.0.pre<br>
+Na versão estável: 3.19.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`Tooltip`][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [OverlayPortal.overlayChild contributes semantics to OverlayPortal instead of Overlay][]
 

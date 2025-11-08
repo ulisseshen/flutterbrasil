@@ -3,6 +3,7 @@ title: Replace with title of breaking change
 description: >-
   Brief description similar to the "context" section below. 
   Text should break at 80 chars or less.
+ia-translate: true
 ---
 
 {% comment %}
@@ -20,7 +21,7 @@ description: >-
     in this template is the *Timeline* section.
     I won't approve/merge the PR until the "landed in"
     release info is provided. For example:
-    `Landed in version: 1.21.0-5.0.pre<br>`.
+    `Lançado na versão: 1.21.0-5.0.pre<br>`.
     Do NOT list the PR in this section. Also, don't
     fill in the "stable" release info unless it's
     already in a published stable release.
@@ -36,7 +37,7 @@ description: >-
     Assume you've done it, and that they're looking
     back to figure out how to migrate their code.
   * Use sentence case for headings and titles.
-    (`## Migration guide`, NOT `Migration Guide`)
+    (`## Guia de migração`, NOT `Migration Guide`)
   * DON'T use the abbreviation `i.e.` or `e.g.`.
     Use "for example" or "such as", and similar.
   * For links, use the macros where possible.
@@ -56,7 +57,7 @@ description: >-
     final PR.
 {% endcomment %}
 
-## Summary
+## Resumo
 
 {% comment %}
   A brief (one- to three-line) summary that gives
@@ -88,7 +89,7 @@ description: >-
   error messages. THIS IS VERY IMPORTANT FOR DISCOVERY!
 {% endcomment %}
 
-## Migration guide
+## Guia de migração
 
 {% comment %}
   A description of how to make the change.
@@ -100,13 +101,13 @@ description: >-
   developer.
 {% endcomment %}
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 // Example of code before the change.
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 // Example of code after the change.
@@ -119,7 +120,7 @@ Code after migration:
   the API has changed and linking to this guide.
 {% endcomment %}
 
-## Timeline
+## Linha do tempo
 
 {% comment %}
   The version # of the SDK where this change was
@@ -135,11 +136,11 @@ Code after migration:
   that line.
 {% endcomment %}
 
-Landed in version: xxx<br>
-In stable release: Not yet
+Lançado na versão: xxx<br>
+Na versão estável: Not yet
 Reverted in version: xxx  (OPTIONAL, delete if not used)
 
-## References
+## Referências
 
 {% comment %}
   These links are commented out because they
@@ -151,16 +152,16 @@ Reverted in version: xxx  (OPTIONAL, delete if not used)
 
 {% include docs/main-api.md %}
 
-API documentation:
+Documentação da API:
 
 * [`ClassName`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue xxxx][]
 * [Issue yyyy][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [PR title #1][]
 * [PR title #2][]

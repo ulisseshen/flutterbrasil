@@ -1,9 +1,10 @@
 ---
 title: New Buttons and Button Themes
 description: The basic material button classes have been replaced.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 A new set of basic material button widgets and themes have been added
 to Flutter. The original classes have been deprecated and will
@@ -26,7 +27,7 @@ properties are defined with `MaterialStateProperty`, which means that
 their value can depend on the button's state.
 
 
-## Context
+## Contextoo
 
 Rather than try and evolve the existing button classes and their theme
 in-place, we have introduced new replacement button widgets and
@@ -210,7 +211,7 @@ properties, like colors, for all of the button's possible states -
 like pressed, hovered, disabled, and focused.
 
 
-## Migration guide
+## Guia de migração
 
 Use the following information to migrate your buttons to the
 new API.
@@ -637,14 +638,14 @@ OutlinedButton(
 )
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.20.0-0.0.pre<br>
-In stable release: 2.0.0
+Lançado na versão: 1.20.0-0.0.pre<br>
+Na versão estável: 2.0.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`ButtonStyle`][]
 * [`ButtonStyleButton`][]
@@ -658,7 +659,7 @@ API documentation:
 * [`TextButtonTheme`][]
 * [`TextButtonThemeData`][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [PR 59702: New Button Universe][]
 * [PR 73352: Deprecated obsolete Material classes: FlatButton, RaisedButton, OutlineButton][]

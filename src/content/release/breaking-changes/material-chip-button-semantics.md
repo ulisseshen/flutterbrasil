@@ -1,14 +1,15 @@
 ---
 title: Material Chip button semantics
 description: Interactive Material Chips are now semantically marked as buttons.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 Flutter now applies the semantic label of `button` to
 all interactive [Material Chips][] for accessibility purposes.
 
-## Context
+## Contextoo
 
 Interactive Material Chips (namely [`ActionChip`][],
 [`ChoiceChip`][], [`FilterChip`][], and [`InputChip`][])
@@ -26,7 +27,7 @@ tools may have had a subpar experience,
 unless you implemented a workaround by manually adding the
 missing semantics to the Chip widgets in your app.
 
-## Description of change
+## Descrição da mudança
 
 The outermost [`Semantics`][] widget that wraps all
 Chip classes to describe their semantic properties
@@ -52,7 +53,7 @@ For the non-interactive information [`Chip`][]:
 * The [`enabled`][`SemanticsProperties.enabled`] property
   is set to `null`.
 
-## Migration guide
+## Guia de migração
 
 **You might not need to perform any migration.**
 This change only affects you if you worked around
@@ -74,7 +75,7 @@ but the same process applies to [`ActionChip`][],
 
 **Case 1: Remove the `Semantics` widget.**
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 Widget myInputChip = InputChip(
@@ -86,7 +87,7 @@ Widget myInputChip = InputChip(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 Widget myInputChip = InputChip(
@@ -97,7 +98,7 @@ Widget myInputChip = InputChip(
 
 **Case 2: Remove `button:true` from the `Semantics` widget.**
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 Widget myInputChip = InputChip(
@@ -110,7 +111,7 @@ Widget myInputChip = InputChip(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 Widget myInputChip = InputChip(
@@ -122,14 +123,14 @@ Widget myInputChip = InputChip(
 );
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.23.0-7.0.pre<br>
-In stable release: 2.0.0
+Lançado na versão: 1.23.0-7.0.pre<br>
+Na versão estável: 2.0.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`ActionChip`][]
 * [`Chip`][]
@@ -142,12 +143,12 @@ API documentation:
 * [`SemanticsProperties.button`][]
 * [`SemanticsProperties.enabled`][]
 
-Relevant issue:
+Issues relevantes:
 
 * [Issue 58010][]: InputChip doesn't announce any
   action for a11y on iOS
 
-Relevant PRs:
+PRs relevantes:
 
 * [PR 60141][]: Tweaking Material Chip a11y semantics
   to match buttons

@@ -4,9 +4,10 @@ description: >-
   The ability to control back navigation at the time that a back gesture is
   received has been replaced with an ahead-of-time navigation API in order to
   support Android 14's Predictive Back feature.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 To support Android 14's Predictive Back feature,
 a set of ahead-of-time APIs have replaced just-in-time navigation APIs,
@@ -104,7 +105,7 @@ void didChangeDependencies() {
 }
 ```
 
-## Migration guide
+## Guia de migração
 
 ### Migrating from `WillPopScope` to `PopScope`
 
@@ -112,7 +113,7 @@ The direct replacement of the `WillPopScope` widget is the `PopScope` widget.
 In many cases, logic that was being run at the time of the back gesture in
 `onWillPop` can be done at build time and set to `canPop`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 WillPopScope(
@@ -123,7 +124,7 @@ WillPopScope(
 ),
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 PopScope(
@@ -139,7 +140,7 @@ that while `onWillPop` was called before the pop
 was handled and had the ability to cancel it,
 `onPopInvoked` is called after the pop is finished being handled.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 WillPopScope(
@@ -151,7 +152,7 @@ WillPopScope(
 ),
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 PopScope(
@@ -171,7 +172,7 @@ It's possible to do this using `PopScope` as well,
 but there is now a wrapper widget that makes this even easier:
 `NavigatorPopHandler`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 WillPopScope(
@@ -183,7 +184,7 @@ WillPopScope(
 )
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 NavigatorPopHandler(
@@ -211,7 +212,7 @@ Migrating is identical to migrating from
 that pops could be canceled. Now that that's no longer true,
 this logic has been simplified to a synchronous getter.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 if (await myRoute.willPop() == RoutePopDisposition.doNotPop) {
@@ -219,7 +220,7 @@ if (await myRoute.willPop() == RoutePopDisposition.doNotPop) {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 if (myRoute.popDisposition == RoutePopDisposition.doNotPop) {
@@ -242,7 +243,7 @@ information necessary to `ModalRoute`. Anyone writing their own `PopScope`
 should implement `PopEntry` and register and unregister their widget with
 its enclosing `ModalRoute`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 @override
@@ -258,7 +259,7 @@ void didChangeDependencies() {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 @override
@@ -285,7 +286,7 @@ existence of `PopScope` widgets. The definitive
 logic of whether a `ModalRoute` has popping blocked
 by a `PopScope` widget is baked into `ModalRoute.popDisposition`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 if (_route.hasScopedWillPopCallback) {
@@ -293,7 +294,7 @@ if (_route.hasScopedWillPopCallback) {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 if (_route.popDisposition == RoutePopDisposition.doNotPop) {
@@ -307,7 +308,7 @@ if (_route.popDisposition == RoutePopDisposition.doNotPop) {
 dialog when a back gesture was received. 
 This can still be done with `PopScope` in a similar pattern.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 WillPopScope(
@@ -319,7 +320,7 @@ WillPopScope(
 )
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 return PopScope(
@@ -357,14 +358,14 @@ return PopScope(
   1. Run the app and perform a back gesture (swipe from the
      left side of the screen).
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.14.0-7.0.pre<br>
-In stable release: 3.16
+Lançado na versão: 3.14.0-7.0.pre<br>
+Na versão estável: 3.16
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`PopScope`][]
 * [`NavigatorPopHandler`][]
@@ -377,11 +378,11 @@ API documentation:
 * [`ModalRoute.registerPopEntry`][]
 * [`ModalRoute.unregisterPopEntry`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue 109513][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Predictive Back support for root routes][]
 * [Platform channel for predictive back][]

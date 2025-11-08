@@ -5,9 +5,10 @@ description: >-
   are deprecated, pending removal, and the web rendering backends (including
   both CanvasKit and skWasm) now use `GoldenFileComparator` and
   `goldenFileComparator` directly.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 The `flutter_test` package and `flutter` tool will no longer use the
 [`webGoldenComparator`][] top-level variable, and instead use the original
@@ -22,7 +23,7 @@ the HTML-backend of Flutter web, as it was not possible to create an encoded
 PNG (byte buffer), and a new API was needed. As [the HTML backend is being
 deprecated and removed][Issue 145954], this separate API is no longer necessary.
 
-## Migration guide
+## Guia de migração
 
 For most users, no changes are required (other than migrating off the HTML
 backend, which is not covered here), the `flutter` tool will automatically
@@ -74,18 +75,18 @@ class MyGenericGoldenComparator extends GoldenFileComparator {
 }
 ```
 
-## Timeline
+## Linha do tempo
 
 Not released
 
-## References
+## Referências
 
 Relevant Issues:
 
 - [Issue 145954][], where the HTML renderer was deprecated.
 - [Issue 160261][], where it was proposed to consolidate `GoldenFileComparator` and `WebGoldenComparator`.
 
-Relevant PRs:
+PRs relevantes:
 
 - [PR 161196][], where `WebGoldenComparator` was deprecated and the `flutter` CLI started using `goldenFileComparator`.
 

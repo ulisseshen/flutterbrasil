@@ -3,15 +3,16 @@ title: Deprecate textScaleFactor in favor of TextScaler
 description: >-
   The new class, TextScaler, replaces the textScaleFactor scalar in
   preparation for Android 14 nonlinear text scaling support.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 In preparation for adopting the [Android 14 nonlinear font scaling][] feature, 
 all occurrences of `textScaleFactor` in the Flutter framework have been 
 deprecated and replaced by `TextScaler`. 
 
-## Context
+## Contexto
 
 Many platforms allow users to scale textual contents up or down globally in
 system preferences. In the past, the scaling strategy was captured as a single 
@@ -28,7 +29,7 @@ The [Replaces `textScaleFactor` with `TextScaler`][] pull request introduced a
 new class `TextScaler` to replace `textScaleFactor` in preparation for this new
 feature. Nonlinear text scaling is introduced in a different pull request. 
 
-## Description of change
+## Descrição da mudança
 
 Introducing a new interface `TextScaler`, which
 represents a text scaling strategy.
@@ -95,7 +96,7 @@ in the following APIs:
 | `SelectableText.rich({ double? TextScaleFactor = 1.0 })` constructor argument | 'textScaleFactor' is deprecated and shouldn't be used. |
 | `SelectableText.textScaleFactor` getter                                       | 'textScaleFactor' is deprecated and shouldn't be used. |
 
-## Migration guide
+## Guia de migração
 
 Widgets provided by the Flutter framework are already migrated.
 Migration is needed only if you're using any of the
@@ -277,14 +278,14 @@ runApp(
 This trick uses the deprecated `textScaleFactor` API and will stop working once
 it's removed from the Flutter API.
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.13.0-4.0.pre<br>
-In stable release: 3.16
+Lançado na versão: 3.13.0-4.0.pre<br>
+Na versão estável: 3.16
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`TextScaler`][]
 * [`MediaQuery.textScalerOf`][]
@@ -292,11 +293,11 @@ API documentation:
 * [`MediaQuery.withNoTextScaling`][]
 * [`MediaQuery.withClampedTextScaling`][] 
 
-Relevant issues:
+Issues relevantes:
 
 * [New font scaling system (Issue 116231)][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Replaces `textScaleFactor` with `TextScaler`][]
 

@@ -3,9 +3,10 @@ title: ThemeData's accent properties have been deprecated
 description: >
   The ThemeData accentColor, accentColorBrightness, accentIconTheme, and
   accentTextTheme properties have been deprecated.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 The ThemeData [accentColor][], [accentColorBrightness][], [accentIconTheme][]
 and [accentTextTheme][] properties have been deprecated.
@@ -17,7 +18,7 @@ The `ColorScheme`'s [secondary color][] is now typically used instead of
 `accentColor` and the [onSecondary color][] is used when a contrasting
 color is needed.
 
-## Context
+## Contexto
 
 This was a small part of the [Material Theme System Updates][] project.
 
@@ -38,13 +39,13 @@ with component-specific themes like [`FloatingActionButtonThemeData`][] or
 handful of component types and only in some situations, which made it
 difficult to understand the implications of overriding them.
 
-## Description of change
+## Descrição da mudança
 
 The ThemeData accentColor, accentColorBrightness, accentIconTheme and
 accentTextTheme properties have been deprecated because the Material
 library no longer uses them.
 
-## Migration guide
+## Guia de migração
 
 ### Application theme
 
@@ -55,7 +56,7 @@ To configure the appearance of the material components in about the
 same way as before, specify the color scheme's secondary color
 instead of accentColor.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 MaterialApp(
@@ -64,7 +65,7 @@ MaterialApp(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 final ThemeData theme = ThemeData();
@@ -86,13 +87,13 @@ If a contrasting color is needed then use [`ColorScheme.onSecondary`][].
 Custom components that used to look up the theme's accentColor, can look up
 the `ColorScheme.secondary` instead.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 Color myColor = Theme.of(context).accentColor;
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 Color myColor = Theme.of(context).colorScheme.secondary;
@@ -113,13 +114,13 @@ well with the accent color (now `ColorScheme.secondaryColor`).
 To get the same result now, specify the text style's color as
 `ColorScheme.onSecondary`:
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 TextStyle style = Theme.of(context).accentTextTheme.headline1;
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 final ThemeData theme = Theme.of(context);
@@ -135,14 +136,14 @@ within a [`FloatingActionButton`][]. It's now possible to configure the icon
 color directly or with the [`FloatingActionButtonThemeData`][]. See
 [FloatingActionButton and ThemeData's accent properties][].
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 2.3.0-0.1.pre<br>
-In stable release: 2.5
+Lançado na versão: 2.3.0-0.1.pre<br>
+Na versão estável: 2.5
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`ColorScheme`][]
 * [`FloatingActionButton`][]
@@ -152,11 +153,11 @@ API documentation:
 * [`Theme`][]
 * [`ThemeData`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue #56918][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [PR #81336][]
 

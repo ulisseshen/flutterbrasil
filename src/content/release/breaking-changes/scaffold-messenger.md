@@ -2,15 +2,16 @@
 title: SnackBars managed by the ScaffoldMessenger
 description: >
   SnackBars are now managed by the ScaffoldMessenger, and persist across routes.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 The `SnackBar` API within the `Scaffold` is now handled by the
 `ScaffoldMessenger`, one of which is
 available by default within the context of a `MaterialApp`.
 
-## Context
+## Contexto
 
 Prior to this change, `SnackBar`s would be shown by calling
 on the `Scaffold` within the current `BuildContext`.
@@ -30,7 +31,7 @@ By default, a root `ScaffoldMessenger` is included in the `MaterialApp`,
 but you can create your own controlled scope for the `ScaffoldMessenger`
 to further control _which_ `Scaffold`s receive your `SnackBar`s.
 
-## Description of change
+## Descrição da mudança
 
 The previous approach called upon the `Scaffold` to show a `SnackBar`.
 
@@ -107,9 +108,9 @@ Typically, the ScaffoldMessenger widget is introduced by the MaterialApp
 at the top of your application widget tree.
 ```
 
-## Migration guide
+## Guia de migração
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 // The ScaffoldState of the current context was used for managing SnackBars.
@@ -133,7 +134,7 @@ scaffoldKey.currentState.removeCurrentSnackBar(mySnackBar);
 
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 // The ScaffoldMessengerState of the current context is used for managing SnackBars.
@@ -170,26 +171,26 @@ rootScaffoldMessengerKey.currentState.hideCurrentSnackBar(mySnackBar);
 rootScaffoldMessengerKey.currentState.removeCurrentSnackBar(mySnackBar);
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.23.0-13.0.pre<br>
-In stable release: 2.0.0
+Lançado na versão: 1.23.0-13.0.pre<br>
+Na versão estável: 2.0.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`Scaffold`][]
 * [`ScaffoldMessenger`][]
 * [`SnackBar`][]
 * [`MaterialApp`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue #57218][]
 * [Issue #62921][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [ScaffoldMessenger][]
 * [ScaffoldMessenger Migration][]

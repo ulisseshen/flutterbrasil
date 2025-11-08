@@ -2,6 +2,7 @@
 title: Migrating from flutter_driver
 description: >-
   Learn how to migrate existing flutter_driver tests to integration_test.
+ia-translate: true
 ---
 
 <?code-excerpt path-base="integration_test_migration/"?>

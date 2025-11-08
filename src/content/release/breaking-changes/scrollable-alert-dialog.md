@@ -1,9 +1,10 @@
 ---
 title: Scrollable AlertDialog (No longer deprecated)
 description: AlertDialog should scroll automatically when it overflows.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 :::note
 `AlertDialog.scrollable` is no longer deprecated because there is
@@ -14,7 +15,7 @@ to true if you want a scrollable `AlertDialog`.
 
 An `AlertDialog` now scrolls automatically when it overflows.
 
-## Context
+## Contextoo
 
 Before this change,
 when an `AlertDialog` widget's contents were too tall,
@@ -26,7 +27,7 @@ This resulted in the following issues:
   actions. If the content overflowed, obscuring the buttons,
   users might be unaware of their existence.
 
-## Description of change
+## Descrição da mudança
 
 The previous approach listed the title and content
 widgets consecutively in a `Column` widget.
@@ -91,7 +92,7 @@ Column(
 ),
 ```
 
-## Migration guide
+## Guia de migração
 
 You might see the following issues as a result of this change:
 
@@ -137,7 +138,7 @@ flutter:              label: "Huge content"
   but should be removed if unintended, since
   it might cause confusion.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 AlertDialog(
@@ -155,7 +156,7 @@ AlertDialog(
 )
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 AlertDialog(
@@ -168,26 +169,26 @@ AlertDialog(
 )
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.16.3<br>
-In stable release: 1.17
+Lançado na versão: 1.16.3<br>
+Na versão estável: 1.17
 
-## References
+## Referências
 
 Design doc:
 
 * [Scrollable `AlertDialog`][]
 
-API documentation:
+Documentação da API:
 
 * [`AlertDialog`][]
 
-Relevant issue:
+Issues relevantes:
 
 * [Overflow exceptions with maximum accessibility font size][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Update to `AlertDialog.scrollable`][]
 * [Original attempt to implement scrollable `AlertDialog`][]

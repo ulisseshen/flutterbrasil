@@ -2,14 +2,15 @@
 title: Navigator's page APIs breaking change
 description: >-
   Replace Navigator's 'onPopPage' property with the 'onDidRemovePage' property.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
 The [`Navigator`][] page APIs are refactored so that
 they can integrate with Flutter's other pop mechanisms.
 
-## Context
+## Contexto
 
 The `onPopPage` property was added for cleaning up pages after
 a page is about to be popped.
@@ -20,7 +21,7 @@ such as [`PopScope`][] and iOS back gestures.
 To integrate the framework's pop mechanisms together,
 the page APIs needed to be refactored.
 
-## Description of change
+## Descrição da mudança
 
 The `onDidRemovePage` property replaces the `onPopPage` property.
 You can no longer veto a pop in the `onDidRemovePage` property.
@@ -32,9 +33,9 @@ These function similar to how you use the `PopScope` widget.
 
 [`pages`]: {{site.api}}/flutter/widgets/Navigator/pages.html
 
-## Migration guide
+## Guia de migração
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -65,7 +66,7 @@ void main() {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -89,23 +90,23 @@ void main() {
 }
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.22.0-32.0.pre<br>
-In stable release: 3.24.0
+Lançado na versão: 3.22.0-32.0.pre<br>
+Na versão estável: 3.24.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`Navigator`][]
 * [`PopScope`][]
 
-Relevant issue:
+Issues relevantes:
 
 * [Issue 137458][]
 
-Relevant PR:
+PRs relevantes:
 
 * [Refactors page API][]
 

@@ -1,22 +1,22 @@
-# DevTools 2.11.2 release notes
+# Notas de lançamento do DevTools 2.11.2
 
-The 2.11.2 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutterbrasil.dev/tools/devtools).
+A versão 2.11.2 do Dart e Flutter DevTools
+inclui as seguintes alterações entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## General updates
+## Atualizações gerais
 
 * This release included a lot of cleanup and reduction in technical debt.
 
-## CPU profiler updates
+## Atualizações do CPU profiler
 
 * Added the source line number to file uris in CPU profiles -
   [#3718](https://github.com/flutter/devtools/pull/3718)
 
   ![cpu stack frame line numbers](/tools/devtools/release-notes/images-2.11.2/image1.png "cpu stack frame line numbers")
 
-## Debugger updates
+## Atualizações do Debugger
 
 * File opener UX improvements, including support for clicking
   the source file name to open the file search window -
@@ -28,8 +28,8 @@ To learn more about DevTools, check out the
 
   ![debugger file explorer scrolling](/tools/devtools/release-notes/images-2.11.2/image2.gif "debugger file explorer scrolling")
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes since the previous release,
-check out
-[the diff on GitHub](https://github.com/flutter/devtools/compare/v2.10.0...v2.11.2).
+Para encontrar uma lista completa de alterações desde a versão anterior,
+confira
+[o diff no GitHub](https://github.com/flutter/devtools/compare/v2.10.0...v2.11.2).

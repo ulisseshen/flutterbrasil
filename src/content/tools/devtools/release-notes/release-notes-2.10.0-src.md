@@ -1,9 +1,9 @@
-# DevTools 2.10.0 release notes
+# Notas de lançamento do DevTools 2.10.0
 
-The 2.10.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutterbrasil.dev/tools/devtools).
+A versão 2.10.0 do Dart e Flutter DevTools
+inclui as seguintes alterações entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
 ## Flutter inspector updates
 
@@ -14,13 +14,13 @@ To learn more about DevTools, check out the
 
   ![inspector search](/tools/devtools/release-notes/images-2.10.0/image1.png "inspector_search")
 
-## CPU profiler updates
+## Atualizações do CPU profiler
 
 * Fix a null reference in the CPU profiler
   when loading an offline snapshot -
   [#3596](https://github.com/flutter/devtools/pull/3596)
 
-## Debugger updates
+## Atualizações do Debugger
 
 * Added support for multi-token file search, and 
   improved search match prioritization to
@@ -35,8 +35,8 @@ To learn more about DevTools, check out the
   filtering logs more than once -
   [#3588](https://github.com/flutter/devtools/pull/3588)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes since the previous release,
-check out
-[the diff on GitHub](https://github.com/flutter/devtools/compare/v2.9.2...v2.10.0).
+Para encontrar uma lista completa de alterações desde a versão anterior,
+confira
+[o diff no GitHub](https://github.com/flutter/devtools/compare/v2.9.2...v2.10.0).

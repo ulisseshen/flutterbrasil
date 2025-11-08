@@ -1,11 +1,11 @@
-# DevTools 2.21.1 release notes
+# Notas de lançamento do DevTools 2.21.1
 
-The 2.21.1 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutterbrasil.dev/tools/devtools).
+A versão 2.21.1 do Dart e Flutter DevTools
+inclui as seguintes alterações entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Performance updates
+## Atualizações de Performance
 
 * Replace the DevTools timeline trace viewer with
   the [Perfetto](https://perfetto.dev/) trace viewer - 
@@ -18,7 +18,7 @@ To learn more about DevTools, check out the
   [#4929](https://github.com/flutter/devtools/pull/4929)
 * UI polish and cleanup - [#4889](https://github.com/flutter/devtools/pull/4889)
 
-## Memory updates
+## Atualizações de Memory
 
 * Improve usability of snapshot diffing -
   [#5015](https://github.com/flutter/devtools/pull/5015)
@@ -34,7 +34,7 @@ To learn more about DevTools, check out the
 * Retire broken import/export feature -
   [#5135](https://github.com/flutter/devtools/pull/5135)
 
-## Debugger updates
+## Atualizações do Debugger
 
 * Added support for viewing profiler hits in
   the debugger script viewer -
@@ -42,7 +42,7 @@ To learn more about DevTools, check out the
 * Added support for inspecting records -
   [#5084](https://github.com/flutter/devtools/pull/5084)
 
-## General updates
+## Atualizações gerais
 
 * Fix several issues in syntax highlighting that would
   color variable names that contain reserved words incorrectly and
@@ -62,8 +62,8 @@ To learn more about DevTools, check out the
 * Fix conflicting colors in light theme -
   [#5067](https://github.com/flutter/devtools/pull/5067)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes since the previous release,
-check out
-[the diff on GitHub](https://github.com/flutter/devtools/compare/v2.20.0...v2.21.1).
+Para encontrar uma lista completa de alterações desde a versão anterior,
+confira
+[o diff no GitHub](https://github.com/flutter/devtools/compare/v2.20.0...v2.21.1).

@@ -1,11 +1,11 @@
-# DevTools 2.17.0 release notes
+# Notas de lançamento do DevTools 2.17.0
 
-The 2.17.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutterbrasil.dev/tools/devtools).
+A versão 2.17.0 do Dart e Flutter DevTools
+inclui as seguintes alterações entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Inspector updates
+## Atualizações do Inspector
 
 * Added support for manually setting the package directories for your app.
   If you've ever loaded the Inspector and noticed that
@@ -23,7 +23,7 @@ To learn more about DevTools, check out the
 
   ![frame_analysis](/tools/devtools/release-notes/images-2.17.0/package_directories.png "package directories")
 
-## Performance updates
+## Atualizações de Performance
 
 * Added a **Frame Analysis** tab to the Performance page.
   When analyzing a janky Flutter frame,
@@ -37,8 +37,8 @@ To learn more about DevTools, check out the
 
   ![frame_analysis](/tools/devtools/release-notes/images-2.17.0/frame_analysis.png "frame analysis")
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes since the previous release,
-check out
-[the diff on GitHub](https://github.com/flutter/devtools/compare/v2.16.0...v2.17.0).
+Para encontrar uma lista completa de alterações desde a versão anterior,
+confira
+[o diff no GitHub](https://github.com/flutter/devtools/compare/v2.16.0...v2.17.0).

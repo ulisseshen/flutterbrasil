@@ -1,17 +1,17 @@
-# DevTools 2.15.0 release notes
+# Notas de lançamento do DevTools 2.15.0
 
-The 2.15.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutterbrasil.dev/tools/devtools).
+A versão 2.15.0 do Dart e Flutter DevTools
+inclui as seguintes alterações entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## General updates
+## Atualizações gerais
 
 * The DevTools 2.15 release includes improvements to all tables in
   DevTools (logging view, network profiler, CPU profiler, and so on) -
   [#4175](https://github.com/flutter/devtools/pull/4175)
 
-## Performance updates
+## Atualizações de Performance
 
 * Added outlines to each layer displayed in the Raster Metrics tool -
   [#4192](https://github.com/flutter/devtools/pull/4192)
@@ -31,7 +31,7 @@ To learn more about DevTools, check out the
 * Added the ability to copy network responses -
   [#4190](https://github.com/flutter/devtools/pull/4190)
 
-## Memory updates
+## Atualizações de Memory
 
 * Added the ability to select a different isolate from the DevTools footer -
   [#4173](https://github.com/flutter/devtools/pull/4173)
@@ -43,8 +43,8 @@ To learn more about DevTools, check out the
 * Stop manually truncating source URIs in the profiler tables -
   [#4166](https://github.com/flutter/devtools/pull/4166)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes since the previous release,
-check out
-[the diff on GitHub](https://github.com/flutter/devtools/compare/v2.14.0...v2.15.0).
+Para encontrar uma lista completa de alterações desde a versão anterior,
+confira
+[o diff no GitHub](https://github.com/flutter/devtools/compare/v2.14.0...v2.15.0).

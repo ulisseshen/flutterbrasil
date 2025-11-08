@@ -1,22 +1,22 @@
-# DevTools 2.24.0 release notes
+# Notas de lançamento do DevTools 2.24.0
 
-The 2.24.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutterbrasil.dev/tools/devtools).
+A versão 2.24.0 do Dart e Flutter DevTools
+inclui as seguintes alterações entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## General updates
+## Atualizações gerais
 
 * Improve the overall performance of DevTools tables -
   [#5664](https://github.com/flutter/devtools/pull/5664),
   [#5696](https://github.com/flutter/devtools/pull/5696)
 
-## CPU profiler updates
+## Atualizações do CPU profiler
 
 * Fix bug with CPU flame chart selection and tooltips -
   [#5676](https://github.com/flutter/devtools/pull/5676)
 
-## Debugger updates
+## Atualizações do Debugger
 
 * Improve support for inspecting
   `UserTag` and `MirrorReferent` instances -
@@ -38,8 +38,8 @@ To learn more about DevTools, check out the
 * Prevent file names and source code from getting out of sync -
   [#5827](https://github.com/flutter/devtools/pull/5827)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes since the previous release,
-check out
-[the diff on GitHub](https://github.com/flutter/devtools/compare/v2.23.1...v2.24.0).
+Para encontrar uma lista completa de alterações desde a versão anterior,
+confira
+[o diff no GitHub](https://github.com/flutter/devtools/compare/v2.23.1...v2.24.0).

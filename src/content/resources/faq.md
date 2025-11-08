@@ -460,7 +460,7 @@ _Alocação rápida_
 Flutter pode rodar código Dart que não importa direta ou
 transitivamente `dart:mirrors` ou `dart:html`.
 
-### Quão grande é a Flutter engine?
+### Quão grande é a Flutter engine? {:#how-big-is-the-flutter-engine}
 
 Em março de 2021, medimos o tamanho de download de um
 [app Flutter mínimo][minimal Flutter app] (sem Material Components,
@@ -560,7 +560,7 @@ Você pode compilar e deployar seu app Flutter para iOS, Android,
 [desktop]: /platform-integration/desktop
 [web]: /platform-integration/web
 
-### Em que dispositivos e versões de SO Flutter roda?
+### Em que dispositivos e versões de SO Flutter roda? {:#what-devices-and-os-versions-does-flutter-run-on}
 
 * Suportamos e testamos rodar Flutter em uma variedade
   de plataformas de baixo a alto desempenho. Para uma lista detalhada

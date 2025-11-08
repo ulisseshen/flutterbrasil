@@ -34,7 +34,7 @@ Se o seu problema vai além do que pode ser colocado em um único arquivo, por e
 você tem um problema com canais nativos, você pode fazer upload do código completo da
 reprodução em um repositório separado e vinculá-lo.
 
-## Fornecer diagnósticos do Flutter
+## Fornecer diagnósticos do Flutter {:#provide-some-flutter-diagnostics}
 
 * Execute `flutter doctor -v` no diretório do seu projeto e cole
   os resultados na issue do GitHub:

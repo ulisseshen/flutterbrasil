@@ -1,47 +1,48 @@
 ---
-title: The forgetChild() method must call super
+title: O método forgetChild() deve chamar super
 description: >
-    Any element subclasses that override forgetChild are required to call super.
+    Quaisquer subclasses de element que sobrescrevem forgetChild são obrigadas a chamar super.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
-A recent global key duplication detection refactor now requires
-`Element` subclasses that override the `forgetChild()` to call `super()`.
+Uma recente refatoração de detecção de duplicação de chave global agora requer
+que subclasses de `Element` que sobrescrevem o `forgetChild()` chamem `super()`.
 
-## Context
+## Contexto
 
-When encountering a global key duplication that will be
-cleaned up by an element rebuild later,
-we must not report global key duplication.
-Our previous implementation threw an error as soon as
-duplication was detected, and didn't wait for the rebuild if the
-element with the duplicated global key would have rebuilt.
+Ao encontrar uma duplicação de chave global que será
+limpa por uma reconstrução de elemento posteriormente,
+não devemos reportar duplicação de chave global.
+Nossa implementação anterior lançava um erro assim que
+a duplicação era detectada, e não esperava pela reconstrução se o
+elemento com a chave global duplicada fosse ser reconstruído.
 
-The new implementation keeps track of all global
-key duplications during a build cycle, and only verifies global
-key duplication at the end of the that cycle instead of
-throwing an error immediately. As part of the refactoring,
-we implemented a mechanism to remove previous global key
-duplication in `forgetChild` if the rebuild had happened.
-This, however, requires all `Element` subclasses that
-override `forgetChild` to call the `super` method.
+A nova implementação mantém rastreamento de todas as
+duplicações de chave global durante um ciclo de build, e apenas verifica
+duplicação de chave global no final desse ciclo em vez de
+lançar um erro imediatamente. Como parte da refatoração,
+implementamos um mecanismo para remover duplicação de chave global
+anterior em `forgetChild` se a reconstrução tivesse acontecido.
+Isso, no entanto, requer que todas as subclasses de `Element` que
+sobrescrevem `forgetChild` chamem o método `super`.
 
-## Description of change
+## Descrição da mudança
 
-The `forgetChild` of abstract class `Element` has a base
-implementation to remove global key reservation,
-and it is enforced by the `@mustCallSuper` meta tag.
-All subclasses that override the method have to call `super`;
-otherwise, the analyzer shows a linting error and
-global key duplication detection might throw an unexpected error.
+O `forgetChild` da classe abstrata `Element` tem uma implementação
+base para remover reserva de chave global,
+e é enforçado pela meta tag `@mustCallSuper`.
+Todas as subclasses que sobrescrevem o método têm que chamar `super`;
+caso contrário, o analyzer mostra um erro de linting e
+a detecção de duplicação de chave global pode lançar um erro inesperado.
 
-## Migration guide
+## Guia de migração
 
-In the following example, an app's `Element`
-subclass overrides the `forgetChild` method.
+No exemplo seguinte, a subclasse `Element` de um aplicativo
+sobrescreve o método `forgetChild`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 class CustomElement extends Element {
@@ -53,7 +54,7 @@ class CustomElement extends Element {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class CustomElement extends Element {
@@ -66,23 +67,23 @@ class CustomElement extends Element {
 }
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.16.3<br>
-In stable release: 1.17
+Implementado na versão: 1.16.3<br>
+Na versão estável: 1.17
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`Element`][]
 * [`forgetChild()`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue 43780][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [PR 43790: Fix global key error][]
 

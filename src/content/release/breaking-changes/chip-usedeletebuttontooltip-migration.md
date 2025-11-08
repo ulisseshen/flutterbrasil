@@ -1,43 +1,44 @@
 ---
-title: Migrate useDeleteButtonTooltip to deleteButtonTooltipMessage of Chips
+title: Migrar useDeleteButtonTooltip para deleteButtonTooltipMessage de Chips
 description: >
-  Deprecated useDeleteButtonTooltip of chips that have
-  a delete button in favor of deleteButtonTooltipMessage.
+  useDeleteButtonTooltip de chips que têm
+  um botão delete depreciado em favor de deleteButtonTooltipMessage.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
-Using `useDeleteButtonTooltip` of any chip that has a delete button gives a
-deprecation warning, or no longer exists when referenced. This includes the
-`Chip`, `InputChip`, and `RawChip` widgets.
+Usar `useDeleteButtonTooltip` de qualquer chip que tem um botão delete dá um
+aviso de depreciação, ou não existe mais quando referenciado. Isso inclui os
+widgets `Chip`, `InputChip` e `RawChip`.
 
-## Context
+## Contexto
 
-The `useDeleteButtonTooltip` of `Chip`, `InputChip`, and `RawChip` widgets is
-deprecated in favor of `deleteButtonTooltipMessage`, as the latter can be used
-to disable the tooltip of the chip's delete button.
+O `useDeleteButtonTooltip` dos widgets `Chip`, `InputChip` e `RawChip` está
+depreciado em favor de `deleteButtonTooltipMessage`, já que o último pode ser usado
+para desabilitar o tooltip do botão delete do chip.
 
-## Description of change
+## Descrição da mudança
 
-The `deleteButtonTooltipMessage` property provides a message to the
-tooltip on the delete button of the chip widgets.
-Subsequently, a change was made such that providing an empty string to this
-property disables the tooltip.
+A propriedade `deleteButtonTooltipMessage` fornece uma mensagem para o
+tooltip no botão delete dos widgets chip.
+Subsequentemente, foi feita uma mudança de forma que fornecer uma string vazia para esta
+propriedade desabilita o tooltip.
 
-To avoid redundancy of the API, this change deprecated `useDeleteButtonTooltip`,
-which was introduced for this exact functionality. A [Flutter fix][] is
-available to help you migrate existing code from `useDeleteButtonTooltip` to
-`deleteButtonTooltipMessage`, if you explicitly disabled the tooltip.
+Para evitar redundância da API, esta mudança depreciou `useDeleteButtonTooltip`,
+que foi introduzido para exatamente esta funcionalidade. Um [Flutter fix][] está
+disponível para ajudá-lo a migrar código existente de `useDeleteButtonTooltip` para
+`deleteButtonTooltipMessage`, se você desabilitou explicitamente o tooltip.
 
-## Migration guide
+## Guia de migração
 
-By default, the tooltip of the delete button is always enabled.
-To explicitly disable the tooltip, provide an empty string to the
-`deleteButtonTooltipMessage` property.
-The following code snippets show the migration changes, which are applicable for
-`Chip`, `InputChip`, and `RawChip` widgets:
+Por padrão, o tooltip do botão delete está sempre habilitado.
+Para desabilitar explicitamente o tooltip, forneça uma string vazia para a
+propriedade `deleteButtonTooltipMessage`.
+Os seguintes trechos de código mostram as mudanças de migração, que são aplicáveis para
+widgets `Chip`, `InputChip` e `RawChip`:
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 Chip(
@@ -53,7 +54,7 @@ RawChip(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 Chip(
@@ -68,20 +69,20 @@ RawChip(
 );
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 2.11.0-0.1.pre<br>
-In stable release: 3.0.0
+Implementado na versão: 2.11.0-0.1.pre<br>
+Na versão estável: 3.0.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`Chip`][]
 * [`InputChip`][]
 * [`RawChip`][]
 
-Relevant PR:
+PR relevante:
 
 * [Deprecate `useDeleteButtonTooltip` for Chips][]
 

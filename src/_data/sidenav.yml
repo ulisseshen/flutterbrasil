@@ -648,8 +648,6 @@
       permalink: /perf/ui-performance
     - title: Perfil de desempenho para web
       permalink: /perf/web-performance
-    - title: Travamento de compilação de shader (jank)
-      permalink: /perf/shader
     - title: Métricas de desempenho
       permalink: /perf/metrics
     - title: Concorrência e isolates

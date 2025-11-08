@@ -503,7 +503,7 @@ Para fazer isso, veja [Medindo o tamanho do seu app][Measuring your app's size].
 
 [apkanalyzer]: {{site.android-dev}}/studio/command-line/apkanalyzer
 [built into Android Studio]: {{site.android-dev}}/studio/build/apk-analyzer
-[deprecated bitcode in Xcode 14]: {{site.apple-dev}}/documentation/xcode-release-notes/xcode-14-release-notes
+[deprecou bitcode no Xcode 14]: {{site.apple-dev}}/documentation/xcode-release-notes/xcode-14-release-notes
 [iOS App Store Specific Considerations]: {{site.apple-dev}}/library/archive/qa/qa1795/_index.html#//apple_ref/doc/uid/DTS40014195-CH1-APP_STORE_CONSIDERATIONS
 [Measuring your app's size]: /perf/app-size
 [minimal Flutter app]: {{site.repo.flutter}}/tree/75228a59dacc24f617272f7759677e242bbf74ec/examples/hello_world

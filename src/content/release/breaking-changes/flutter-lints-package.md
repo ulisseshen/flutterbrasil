@@ -29,7 +29,7 @@ evolving it without breaking existing projects. Since the package builds on
 Dart's [`package:lints`][] it also aligns the lints recommended for Flutter
 projects with the rest of the Dart ecosystem.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Follow these steps to migrate your Flutter project to use the latest recommended
 lints from `package:flutter_lints`:

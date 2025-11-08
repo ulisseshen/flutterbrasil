@@ -378,7 +378,7 @@ e Windows.
 para apps cliente. O framework gráfico subjacente
 e a máquina virtual Dart são implementados em C/C++.
 
-### Por que Flutter escolheu usar Dart?
+### Por que Flutter escolheu usar Dart? {:#why-did-flutter-choose-to-use-dart}
 
 Durante a fase inicial de desenvolvimento,
 o time Flutter olhou para muitas
@@ -859,7 +859,7 @@ Para IntelliJ, use as entradas de menu
 [hot reload]: #hot-reload
 [iOS]: #run-ios
 
-### Que paradigma de programação o framework do Flutter usa?
+### Que paradigma de programação o framework do Flutter usa? {:#what-programming-paradigm-does-flutters-framework-use}
 
 Flutter é um ambiente de programação multi-paradigma.
 Muitas técnicas de programação desenvolvidas nas últimas décadas

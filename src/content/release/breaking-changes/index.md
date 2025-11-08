@@ -57,7 +57,7 @@ Eles estão ordenados por versão e listados em ordem alfabética:
 [Updated Material 3 progress indicators]: /release/breaking-changes/updated-material-3-progress-indicators
 [`.flutter-plugins-dependencies` replaces `.flutter-plugins`]: /release/breaking-changes/flutter-plugins-configuration
 
-<a id="released-in-flutter-327" aria-hidden="true"></a>
+<a id="released-in-flutter-3-27" aria-hidden="true"></a>
 ### Lançado no Flutter 3.27
 
 * [`Color` wide gamut support][]
@@ -74,7 +74,7 @@ Eles estão ordenados por versão e listados em ordem alfabética:
 [Remove invalid parameters for `InputDecoration.collapsed`]: /release/breaking-changes/input-decoration-collapsed
 [Set default for SystemUiMode to Edge-to-Edge]: /release/breaking-changes/default-systemuimode-edge-to-edge
 
-<a id="released-in-flutter-324" aria-hidden="true"></a>
+<a id="released-in-flutter-3-24" aria-hidden="true"></a>
 ### Lançado no Flutter 3.24
 
 * [Navigator's page APIs breaking change][]
@@ -87,7 +87,7 @@ Eles estão ordenados por versão e listados em ordem alfabética:
 [Deprecate `ButtonBar` in favor of `OverflowBar`]: /release/breaking-changes/deprecate-buttonbar
 [New APIs for Android plugins that render to a `Surface`]: /release/breaking-changes/android-surface-plugins
 
-<a id="released-in-flutter-322" aria-hidden="true"></a>
+<a id="released-in-flutter-3-22" aria-hidden="true"></a>
 ### Lançado no Flutter 3.22
 
 * [Deprecated API removed after v3.19][]
@@ -104,7 +104,7 @@ Eles estão ordenados por versão e listados em ordem alfabética:
 [Nullable `PageView.controller`]: /release/breaking-changes/pageview-controller
 [Rename `MemoryAllocations` to `FlutterMemoryAllocations`]: /release/breaking-changes/flutter-memory-allocations
 
-<a id="released-in-flutter-319" aria-hidden="true"></a>
+<a id="released-in-flutter-3-19" aria-hidden="true"></a>
 ### Lançado no Flutter 3.19
 
 * [Deprecated API removed after v3.16][]
@@ -119,7 +119,7 @@ Eles estão ordenados por versão e listados em ordem alfabética:
 [Default multitouch scrolling]: /release/breaking-changes/multi-touch-scrolling
 [Accessibility traversal order of tooltip changed]: /release/breaking-changes/tooltip-semantics-order
 
-<a id="released-in-flutter-316" aria-hidden="true"></a>
+<a id="released-in-flutter-3-16" aria-hidden="true"></a>
 ### Lançado no Flutter 3.16
 
 * [Migrating to Material 3][]
@@ -150,7 +150,7 @@ Eles estão ordenados por versão e listados em ordem alfabética:
 [Windows: External windows should notify Flutter engine of lifecycle changes]: /release/breaking-changes/win-lifecycle-process-function
 [Windows build path changed to add the target architecture]: /release/breaking-changes/windows-build-architecture
 
-<a id="released-in-flutter-313" aria-hidden="true"></a>
+<a id="released-in-flutter-3-13" aria-hidden="true"></a>
 ### Lançado no Flutter 3.13
 
 * [Added missing `dispose()` for some disposable objects in Flutter][]
@@ -173,7 +173,7 @@ Eles estão ordenados por versão e listados em ordem alfabética:
 [Migrate a Windows project to ensure the window is shown]: /release/breaking-changes/windows-show-window-migration
 [Updated `Checkbox.fillColor` behavior]: /release/breaking-changes/checkbox-fillColor
 
-<a id="released-in-flutter-310" aria-hidden="true"></a>
+<a id="released-in-flutter-3-10" aria-hidden="true"></a>
 ### Lançado no Flutter 3.10
 
 * [Dart 3 changes in Flutter v3.10 and later][]
@@ -192,7 +192,7 @@ Eles estão ordenados por versão e listados em ordem alfabética:
 [Require one data variant for `ClipboardData` constructor]: /release/breaking-changes/clipboard-data-required
 ["Zone mismatch" message]: /release/breaking-changes/zone-errors
 
-<a id="released-in-flutter-37" aria-hidden="true"></a>
+<a id="released-in-flutter-3-7" aria-hidden="true"></a>
 ### Lançado no Flutter 3.7
 
 * [Deprecated API removed after v3.3][]
@@ -211,7 +211,7 @@ Eles estão ordenados por versão e listados em ordem alfabética:
 [ThemeData's toggleableActiveColor property has been deprecated]: /release/breaking-changes/toggleable-active-color
 [Migrate a Windows project to support dark title bars]: /release/breaking-changes/windows-dark-mode
 
-<a id="released-in-flutter-33" aria-hidden="true"></a>
+<a id="released-in-flutter-3-3" aria-hidden="true"></a>
 ### Lançado no Flutter 3.3
 
 * [Adding ImageProvider.loadBuffer][]
@@ -234,7 +234,7 @@ Eles estão ordenados por versão e listados em ordem alfabética:
 [Page transitions replaced by ZoomPageTransitionsBuilder]: /release/breaking-changes/page-transition-replaced-by-ZoomPageTransitionBuilder
 [Migrate useDeleteButtonTooltip to deleteButtonTooltipMessage of Chips]: /release/breaking-changes/chip-usedeletebuttontooltip-migration
 
-<a id="released-in-flutter-210" aria-hidden="true"></a>
+<a id="released-in-flutter-2-10" aria-hidden="true"></a>
 ### Lançado no Flutter 2.10
 
 * [Deprecated API removed after v2.5][]
@@ -247,7 +247,7 @@ Eles estão ordenados por versão e listados em ordem alfabética:
 [Required Kotlin version]: /release/breaking-changes/kotlin-version
 [Scribble Text Input Client]: /release/breaking-changes/scribble-text-input-client
 
-<a id="released-in-flutter-25" aria-hidden="true"></a>
+<a id="released-in-flutter-2-5" aria-hidden="true"></a>
 ### Lançado no Flutter 2.5
 
 * [Default drag scrolling devices][]
@@ -282,13 +282,14 @@ A seguinte mudança incompatível foi revertida na versão 2.2:
 
 [Network Policy on iOS and Android]: /release/breaking-changes/network-policy-ios-android
 
-<a id="released-in-flutter-22" aria-hidden="true"></a>
+<a id="released-in-flutter-2-2" aria-hidden="true"></a>
 ### Lançado no Flutter 2.2
 
 * [Default Scrollbars on Desktop][]
 
 [Default Scrollbars on Desktop]: /release/breaking-changes/default-desktop-scrollbars
 
+<a id="released-in-flutter-2" aria-hidden="true"></a>
 ### Lançado no Flutter 2
 
 * [Added BuildContext parameter to TextEditingController.buildTextSpan][]
@@ -317,7 +318,7 @@ A seguinte mudança incompatível foi revertida na versão 2.2:
 [Use maxLengthEnforcement instead of maxLengthEnforced]: /release/breaking-changes/use-maxLengthEnforcement-instead-of-maxLengthEnforced
 [Transition of platform channel test interfaces to flutter_test package]: /release/breaking-changes/mock-platform-channels
 
-<a id="released-in-flutter-122" aria-hidden="true"></a>
+<a id="released-in-flutter-1-22" aria-hidden="true"></a>
 ### Lançado no Flutter 1.22
 
 * [Android v1 embedding app and plugin creation deprecation][]
@@ -329,7 +330,7 @@ A seguinte mudança incompatível foi revertida na versão 2.2:
 [Cupertino icons 1.0.0]: /release/breaking-changes/cupertino-icons-1.0.0
 [The new Form, FormField auto-validation API]: /release/breaking-changes/form-field-autovalidation-api
 
-<a id="released-in-flutter-120" aria-hidden="true"></a>
+<a id="released-in-flutter-1-20" aria-hidden="true"></a>
 ### Lançado no Flutter 1.20
 
 * [Actions API revision][]
@@ -358,7 +359,7 @@ A seguinte mudança incompatível foi revertida na versão 2.2:
 [TextField requires MaterialLocalizations]: /release/breaking-changes/text-field-material-localizations
 [The Route Transition record and Transition delegate updates]: /release/breaking-changes/route-transition-record-and-transition-delegate
 
-<a id="released-in-flutter-117" aria-hidden="true"></a>
+<a id="released-in-flutter-1-17" aria-hidden="true"></a>
 ### Lançado no Flutter 1.17
 
 * [Adding 'linux' and 'windows' to TargetPlatform enum][]

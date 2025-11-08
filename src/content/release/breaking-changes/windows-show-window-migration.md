@@ -1,27 +1,28 @@
 ---
-title: Migrate a Windows project to ensure the window is shown
-description: How to update a Windows project to ensure the window is shown
+ia-translate: true
+title: Migrar um projeto Windows para garantir que a janela seja exibida
+description: Como atualizar um projeto Windows para garantir que a janela seja exibida
 ---
 
-Flutter 3.13 fixed a [bug][] that could result in the window not being shown.
-Windows projects created using Flutter 3.7 or Flutter 3.10 need to be migrated
-to fix this issue.
+O Flutter 3.13 corrigiu um [bug][] que poderia resultar na janela não sendo exibida.
+Projetos Windows criados usando Flutter 3.7 ou Flutter 3.10 precisam ser migrados
+para corrigir este problema.
 
 [bug]: {{site.repo.flutter}}/issues/119415
 
-## Migration steps
+## Passos de migração
 
-Verify you are on Flutter version 3.13 or newer using `flutter --version`.
-If needed, use `flutter upgrade` to update to the latest version of the
+Verifique que você está no Flutter versão 3.13 ou mais recente usando `flutter --version`.
+Se necessário, use `flutter upgrade` para atualizar para a versão mais recente do
 Flutter SDK.
 
-Projects that have not modified their `windows/runner/flutter_window.cpp` file
-will be migrated automatically by `flutter run` or `flutter build windows`.
+Projetos que não modificaram seu arquivo `windows/runner/flutter_window.cpp`
+serão migrados automaticamente por `flutter run` ou `flutter build windows`.
 
-Projects that have modified their `windows/runner/flutter_window.cpp` file might
-need to migrate manually.
+Projetos que modificaram seu arquivo `windows/runner/flutter_window.cpp` podem
+precisar migrar manualmente.
 
-Code before migration:
+Código antes da migração:
 
 ```cpp
 flutter_controller_->engine()->SetNextFrameCallback([&]() {
@@ -29,7 +30,7 @@ flutter_controller_->engine()->SetNextFrameCallback([&]() {
 });
 ```
 
-Code after migration:
+Código após a migração:
 
 ```cpp
 flutter_controller_->engine()->SetNextFrameCallback([&]() {
@@ -42,10 +43,10 @@ flutter_controller_->engine()->SetNextFrameCallback([&]() {
 flutter_controller_->ForceRedraw();
 ```
 
-## Example
+## Exemplo
 
-[PR 995][] shows the migration work for the
-[Flutter Gallery][] app.
+[PR 995][] mostra o trabalho de migração para o
+app [Flutter Gallery][].
 
 [PR 995]: {{site.repo.gallery-archive}}/pull/995/files
 [Flutter Gallery]: {{site.gallery-archive}}

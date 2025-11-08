@@ -1,46 +1,46 @@
-# DevTools 2.9.2 release notes
+# Notas de lançamento do DevTools 2.9.2
 
-The 2.9.2 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutterbrasil.dev/tools/devtools).
+A versão 2.9.2 do Dart e Flutter DevTools
+inclui as seguintes alterações entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## General updates
+## Atualizações gerais
 
-* Take our 2022 DevTools survey! Provide your feedback and help us improve
-  your development experience. This survey prompt will show up directly in
-  DevTools sometime in mid-February.
+* Participe da nossa pesquisa do DevTools 2022! Forneça seu feedback e nos ajude a melhorar
+  sua experiência de desenvolvimento. Este prompt de pesquisa aparecerá diretamente no
+  DevTools em meados de fevereiro.
 
   ![survey prompt](/tools/devtools/release-notes/images-2.9.2/image1.png "survey_prompt")
 
-  *Note*: If you are having issues launching the survey, please make
-  sure you have upgraded to the latest Flutter stable branch 2.10.
-  There was a bug in DevTools (fixed in
-  [#3574](https://github.com/flutter/devtools/pull/3574)) that
-  prevented the survey from being able to be opened, and unless you
-  are on Flutter 2.10, this bug will still be present._
+  *Nota*: Se você estiver tendo problemas para iniciar a pesquisa, certifique-se
+  de ter atualizado para o branch stable mais recente do Flutter 2.10.
+  Houve um bug no DevTools (corrigido em
+  [#3574](https://github.com/flutter/devtools/pull/3574)) que
+  impedia que a pesquisa pudesse ser aberta, e a menos que você
+  esteja no Flutter 2.10, este bug ainda estará presente._
 
-* General bug fixes and improvements -
+* Correções de bugs gerais e melhorias -
   [#3528](https://github.com/flutter/devtools/pull/3528),
   [#3531](https://github.com/flutter/devtools/pull/3531),
   [#3532](https://github.com/flutter/devtools/pull/3532),
   [#3539](https://github.com/flutter/devtools/pull/3539)
 
-## Performance updates
+## Atualizações de Performance
 
-* Added frame numbers to x-axis the Flutter frames chart -
+* Adicionados números de frame ao eixo x do gráfico de frames do Flutter -
   [#3526](https://github.com/flutter/devtools/pull/3526)
 
   ![frame numbers](/tools/devtools/release-notes/images-2.9.2/image2.png "frame_numbers")
 
-## Debugger updates
+## Atualizações do Debugger
 
-* Fix a bug where the File Explorer in the Debugger did not show contents
-  after a hot restart -
+* Corrigido um bug onde o File Explorer no Debugger não mostrava conteúdo
+  após um hot restart -
   [#3527](https://github.com/flutter/devtools/pull/3527)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes since the previous release,
-check out
-[the diff on GitHub](https://github.com/flutter/devtools/compare/v2.9.1...v2.9.2).
+Para encontrar uma lista completa de alterações desde a versão anterior,
+confira
+[o diff no GitHub](https://github.com/flutter/devtools/compare/v2.9.1...v2.9.2).

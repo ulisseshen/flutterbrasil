@@ -6,7 +6,7 @@ ia-translate: true
 ---
 
 _This page is a dump of the old Changelog page from the Flutter wiki up until
-[Flutter release notes](./) were published in flutter.dev._
+[Flutter release notes](./) were published in flutterbrasil.dev._
 
 ## Mudanças through and including 1.0.0
 
@@ -86,7 +86,7 @@ _This page is a dump of the old Changelog page from the Flutter wiki up until
 
 ### v0.9.2
 
-* [#21540](https://github.com/flutter/flutter/pull/21540) added a `transform()` method to [`Animatable`](https://api.flutter.dev/flutter/animation/Animatable-class.html). It is implemented by `Tween` (the main subclass of `Animatable`) but classes that subclass `Animatable` directly will need to implement it. Typically the existing `evaluate()` method can be changed to implement `transform()` instead, using the value given by the argument to `transform()` rather than the current value of the animation provided to `evaluate()`. `evaluate()` now has a default implementation that defers to `transform()`.
+* [#21540](https://github.com/flutter/flutter/pull/21540) added a `transform()` method to [`Animatable`](https://api.flutterbrasil.dev/flutter/animation/Animatable-class.html). It is implemented by `Tween` (the main subclass of `Animatable`) but classes that subclass `Animatable` directly will need to implement it. Typically the existing `evaluate()` method can be changed to implement `transform()` instead, using the value given by the argument to `transform()` rather than the current value of the animation provided to `evaluate()`. `evaluate()` now has a default implementation that defers to `transform()`.
 
 ## Mudanças in v0.8.2 (since v0.7.3) - beta 8
 
@@ -226,7 +226,7 @@ To follow our investigation, see [Dart issue 32936](https://github.com/dart-lang
 
 * [#15416](https://github.com/flutter/flutter/pull/15416) removed `package:http` from Flutter and replaced all usages with the `HttpClient` from `dart:io`. If you use `package:http` you must add it as a dependency in your `pubspec.yaml` to continue using it.
 
-  `createHttpClient()` was also removed after being marked deprecated. To change how the framework creates http clients, you can use [HttpOverrides](https://api.flutter.dev/flutter/dart-io/HttpOverrides-class.html) from `dart:io` to provide your own `createHttpClient()` callback globally or per zone.
+  `createHttpClient()` was also removed after being marked deprecated. To change how the framework creates http clients, you can use [HttpOverrides](https://api.flutterbrasil.dev/flutter/dart-io/HttpOverrides-class.html) from `dart:io` to provide your own `createHttpClient()` callback globally or per zone.
 
   More details are available [in the announcement](https://groups.google.com/forum/#!topic/flutter-dev/AnqDqgQ6vus).
 
@@ -298,7 +298,7 @@ To follow our investigation, see [Dart issue 32936](https://github.com/dart-lang
 
 ### v0.1.9
 
-* [#14901](https://github.com/flutter/flutter/pull/14901) A [Slider](https://api.flutter.dev/flutter/material/Slider-class.html) visual update changed the colors, opacities, and the value indicator shape and behavior. It also removed the "`thumbOpenAtMin`" flag from the Slider class, which is no longer needed, and can be emulated by the custom thumb shape support.
+* [#14901](https://github.com/flutter/flutter/pull/14901) A [Slider](https://api.flutterbrasil.dev/flutter/material/Slider-class.html) visual update changed the colors, opacities, and the value indicator shape and behavior. It also removed the "`thumbOpenAtMin`" flag from the Slider class, which is no longer needed, and can be emulated by the custom thumb shape support.
 
 ## Mudanças in v0.1.5 (since v0.1.4) - beta 1.1
 

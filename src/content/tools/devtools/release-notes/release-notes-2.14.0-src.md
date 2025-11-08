@@ -1,11 +1,11 @@
-# DevTools 2.14.0 release notes
+# Notas de lançamento do DevTools 2.14.0
 
-The 2.14.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutterbrasil.dev/tools/devtools).
+A versão 2.14.0 do Dart e Flutter DevTools
+inclui as seguintes alterações entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## General updates
+## Atualizações gerais
 
 * Added a link to the new DevTools
   [Discord channel](https://discord.com/channels/608014603317936148/958862085297672282)
@@ -29,7 +29,7 @@ To learn more about DevTools, check out the
   in the inspector displays its properties and values in a hover card -
   [#4090](https://github.com/flutter/devtools/pull/4090)
 
-## Debugger updates
+## Atualizações do Debugger
 
 * Added auto complete suggestions in the console
   (special thanks to [@jankuss](https://github.com/jankuss)!) -
@@ -42,7 +42,7 @@ To learn more about DevTools, check out the
 * Fixed formatting in the debugger exception menu -
   [#4066](https://github.com/flutter/devtools/pull/4066)
 
-## Memory updates
+## Atualizações de Memory
 
 * Fixed formatting for memory values in the heap tree view -
   [#4153](https://github.com/flutter/devtools/pull/4153)
@@ -50,14 +50,14 @@ To learn more about DevTools, check out the
   showing up in the memory chart -
   [#4131](https://github.com/flutter/devtools/pull/4131)
 
-## Performance updates
+## Atualizações de Performance
 
 * Warn users that the rendering layer toggles in the
   "More Debugging Options" menu are not available for profile mode apps -
   [#4075](https://github.com/flutter/devtools/pull/4075)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes since the previous release,
-check out
-[the diff on GitHub](https://github.com/flutter/devtools/compare/v2.13.1...v2.14.0).
+Para encontrar uma lista completa de alterações desde a versão anterior,
+confira
+[o diff no GitHub](https://github.com/flutter/devtools/compare/v2.13.1...v2.14.0).

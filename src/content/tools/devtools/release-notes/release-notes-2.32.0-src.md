@@ -1,11 +1,11 @@
-# DevTools 2.32.0 release notes
+# Notas de lançamento do DevTools 2.32.0
 
-The 2.32.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutterbrasil.dev/tools/devtools).
+A versão 2.32.0 do Dart e Flutter DevTools
+inclui as seguintes alterações entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## General updates
+## Atualizações gerais
 
 * Improved overall usability by making the DevTools UI more dense.
   This significantly improves the user experience when using
@@ -15,19 +15,19 @@ To learn more about DevTools, check out the
   Logging, Network, and CPU profiler pages - [#7027](https://github.com/flutter/devtools/pull/7027)
 * Add a DevTools server interaction for getting the DTD uri. - [#7054](https://github.com/flutter/devtools/pull/7054)
 
-## Memory updates
+## Atualizações de Memory
 
 * Supported allocation tracing for Flutter profile builds and
   Dart AOT compiled applications. - [#7058](https://github.com/flutter/devtools/pull/7058)
 * Supported import of memory snapshots. - [#6974](https://github.com/flutter/devtools/pull/6974)
 
-## Debugger updates
+## Atualizações do Debugger
 
 * Highlighted `extension type` as a declaration keyword,
   highlight the `$` in identifier interpolation as part of the interpolation,
   and properly highlight comments within type arguments. - [#6837](https://github.com/flutter/devtools/pull/6837)
 
-## Logging updates
+## Atualizações de Logging
 
 * Added toggle filters to filter out noisy Flutter and Dart logs - [#7026](https://github.com/flutter/devtools/pull/7026)
 
@@ -53,7 +53,7 @@ To learn more about DevTools, check out the
 * Showed DevTools extensions as an option from the
   debug sessions DevTools dropdown, when available. [#6709](https://github.com/flutter/devtools/pull/6709)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes in this release, check out the
-[DevTools git log](https://github.com/flutter/devtools/tree/v2.32.0).
+Para encontrar uma lista completa de alterações nesta versão, confira
+[o log do git do DevTools](https://github.com/flutter/devtools/tree/v2.32.0).

@@ -481,7 +481,7 @@ and [Introducing Dart 3 alpha][].
   * Global selection improvements - ChunHeng Tai (chtai)
   * magnification property (who owns this? - I asked Justin)
     No docs yet (other than API docs)
-    <https://main-api.flutter.dev/flutter/material/TextField/magnifierConfiguration.html>
+    <https://main-api.flutterbrasil.dev/flutter/material/TextField/magnifierConfiguration.html>
   * Implementing iOS PlatformView BackdropFilter. (Blur) - Leigha and Chris Yang
     <https://docs.google.com/document/d/1V7Jc_RGaknrBBPPBBKB8lT7f3PKhYr8sin35MSMFAf4/edit>
   * Memory management updates - Zach Anderson
@@ -903,7 +903,7 @@ and the [Flutter 2 release notes][].
   for mobile and web.
 * Updated the [Creating responsive and adaptive apps][]
   page.
-* Many pages (including all codelabs on flutter.dev)
+* Many pages (including all codelabs on flutterbrasil.dev)
   and examples are updated to be null safe.
 * Added two new add to app pages:
   * [Using multiple Flutter instances][]
@@ -989,7 +989,7 @@ publication since the last stable release:
 Flutter 1.22 is live! For details, see
 [Announcing Flutter 1.22][].
 
-**Docs updated or added to flutter.dev since the 1.20 release**
+**Docs updated or added to flutterbrasil.dev since the 1.20 release**
 
 * Updated the [Developing for iOS 14][] page with
   details about targeting iOS 14 with Flutter, including some
@@ -1059,7 +1059,7 @@ publication since the last stable release:
 Flutter 1.20 is live! For details,
 see [Announcing Flutter 1.20][].
 
-**Docs updated or added to flutter.dev**
+**Docs updated or added to flutterbrasil.dev**
 
 * [Flutter architectural overview][], a deep dive into Flutter's
   architecture, was added to the site just a few days after the
@@ -1393,7 +1393,7 @@ New and updated docs on the site include:
   page is updated to discuss how to build an Android release
   using an app bundle, as well as how to create separate APK
   files for both 32-bit and 64-bit devices.
-* The [DevTools][] docs are migrated to flutter.dev.
+* The [DevTools][] docs are migrated to flutterbrasil.dev.
   If you haven't tried this browser-based suite
   of debugging, performance, memory, and inspection tools that
   work with both Flutter and Dart apps and can be launched from

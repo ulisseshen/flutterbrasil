@@ -385,7 +385,7 @@ investigue outros recursos que nossa comunidade recomendou.
 [flip-game]: https://flip.withgoogle.com/#/
 [game-discord]: https://discord.gg/qUyQFVbV45
 [game-repo]: {{games-gh}}
-[pinball-game]: https://pinball.flutter.dev/#/
+[pinball-game]: https://pinball.flutterbrasil.dev/#/
 [runner-template-readme]: {{games-gh}}/blob/main/templates/endless_runner/README.md
 [runner-template]: {{games-gh}}/tree/main/templates/endless_runner
 
@@ -422,7 +422,7 @@ investigue outros recursos que nossa comunidade recomendou.
 [ler como o jogo foi criado em 6 semanas]: {{site.flutter-medium}}/how-we-built-the-new-super-dash-demo-in-flutter-and-flame-in-just-six-weeks-9c7aa2a5ad31
 [view the open source code repo]: {{site.github}}/flutter/super_dash
 [ver o repositório de código aberto]: {{site.github}}/flutter/super_dash
-[web]: https://superdash.flutter.dev/
+[web]: https://superdash.flutterbrasil.dev/
 [Tiled]: https://www.mapeditor.org/
 [flutter_soloud]: {{site.pub-pkg}}/flutter_soloud
 [SoLoud codelab]: {{site.codelabs}}/codelabs/flutter-codelab-soloud

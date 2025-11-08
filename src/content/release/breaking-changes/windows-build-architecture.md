@@ -54,11 +54,11 @@ Na versão stable: 3.16
 
 Documento de design:
 
-* [flutter.dev/go/windows-arm64][]
+* [flutterbrasil.dev/go/windows-arm64][]
 
 Pull requests relevantes:
 
 * [Introduce architecture subdirectory for Windows build][]
 
-[flutter.dev/go/windows-arm64]: {{site.main-url}}/go/windows-arm64
+[flutterbrasil.dev/go/windows-arm64]: {{site.main-url}}/go/windows-arm64
 [Introduce architecture subdirectory for Windows build]: {{site.repo.flutter}}/pull/131843

@@ -1,11 +1,11 @@
-# DevTools 2.28.1 release notes
+# Notas de lançamento do DevTools 2.28.1
 
-The 2.28.1 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutterbrasil.dev/tools/devtools).
+A versão 2.28.1 do Dart e Flutter DevTools
+inclui as seguintes alterações entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## General updates
+## Atualizações gerais
 
 * Added support for DevTools extensions.
   This means if you are debugging an app that depends on `package:foo`,
@@ -28,13 +28,13 @@ To learn more about DevTools, check out the
   [#6451](https://github.com/flutter/devtools/pull/6451),
   [#6450](https://github.com/flutter/devtools/pull/6450)
 
-## Inspector updates
+## Atualizações do Inspector
 
 * Fixed bug where inspector service calls were done on the selected isolate,
   instead of the main isolate -
   [#6434](https://github.com/flutter/devtools/pull/6434)
 
-## Logging updates
+## Atualizações de Logging
 
 * Improved responsiveness of the top bar on the Logging view -
   [#6281](https://github.com/flutter/devtools/pull/6281)
@@ -44,7 +44,7 @@ To learn more about DevTools, check out the
 
   ![The copy button on the Logging view to the right of the filter tool](/tools/devtools/release-notes/images-2.28.1/logger_copy.png "The Logging view copy button")
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes in this release, check out the
-[DevTools git log](https://github.com/flutter/devtools/tree/v2.28.1).
+Para encontrar uma lista completa de alterações nesta versão, confira
+[o log do git do DevTools](https://github.com/flutter/devtools/tree/v2.28.1).

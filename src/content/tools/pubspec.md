@@ -1,59 +1,60 @@
 ---
-title: "Flutter and the pubspec file"
-description: "Describes the Flutter-only fields in the pubspec file."
+ia-translate: true
+title: "Flutter e o arquivo pubspec"
+description: "Descreve os campos exclusivos do Flutter no arquivo pubspec."
 ---
 
 :::note
-This page is primarily aimed at folks who write
-Flutter apps. If you write packages or plugins, 
-(perhaps you want to create a federated plugin),
-you should check out the
-[Developing packages and plugins][] page.
+Esta página é voltada principalmente para pessoas que escrevem
+apps Flutter. Se você escreve packages ou plugins,
+(talvez você queira criar um plugin federado),
+você deve consultar a página
+[Developing packages and plugins][].
 :::
 
-Every Flutter project includes a `pubspec.yaml` file,
-often referred to as _the pubspec_.
-A basic pubspec is generated when you create
-a new Flutter project. It's located at the top
-of the project tree and contains metadata about
-the project that the Dart and Flutter tooling
-needs to know. The pubspec is written in
-[YAML][], which is human readable, but be aware
-that _white space (tabs v spaces) matters_.
+Todo projeto Flutter inclui um arquivo `pubspec.yaml`,
+frequentemente chamado de _the pubspec_.
+Um pubspec básico é gerado quando você cria
+um novo projeto Flutter. Ele está localizado no topo
+da árvore do projeto e contém metadados sobre
+o projeto que as ferramentas Dart e Flutter
+precisam saber. O pubspec é escrito em
+[YAML][], que é legível por humanos, mas esteja ciente
+de que _espaços em branco (tabs v espaços) importam_.
 
 [YAML]: https://yaml.org/
 
-The pubspec file specifies dependencies
-that the project requires, such as particular packages
-(and their versions), fonts, or image files.
-It also specifies other requirements, such as 
-dependencies on developer packages (like
-testing or mocking packages), or particular
-constraints on the version of the Flutter SDK. 
+O arquivo pubspec especifica dependências
+que o projeto requer, como packages específicos
+(e suas versões), fontes ou arquivos de imagem.
+Ele também especifica outros requisitos, como
+dependências de packages de desenvolvedor (como
+packages de teste ou mock), ou restrições
+específicas na versão do Flutter SDK.
 
-Fields common to both Dart and Flutter projects
-are described in [the pubspec file][] on [dart.dev][].
-This page lists _Flutter-specific_ fields
-that are only valid for a Flutter project.
+Campos comuns a projetos Dart e Flutter
+são descritos em [the pubspec file][] em [dart.dev][].
+Esta página lista campos _específicos do Flutter_
+que são válidos apenas para um projeto Flutter.
 
 :::note
-The first time you build your project, it
-creates a `pubspec.lock` file that contains
-specific versions of the included packages.
-This ensures that you get the same version
-the next time the project is built.
+A primeira vez que você compila seu projeto, ele
+cria um arquivo `pubspec.lock` que contém
+versões específicas dos packages incluídos.
+Isso garante que você obtenha a mesma versão
+na próxima vez que o projeto for compilado.
 :::
 
 [the pubspec file]: {{site.dart-site}}/tools/pub/pubspec
 [dart.dev]: {{site.dart-site}}
 
-When you create a new project with the
-`flutter create` command (or by using the
-equivalent button in your IDE), it creates
-a pubspec for a basic Flutter app.
+Quando você cria um novo projeto com o
+comando `flutter create` (ou usando o
+botão equivalente na sua IDE), ele cria
+um pubspec para um app Flutter básico.
 
-Here is an example of a Flutter project pubspec file.
-The Flutter only fields are highlighted.
+Aqui está um exemplo de um arquivo pubspec de projeto Flutter.
+Os campos exclusivos do Flutter estão destacados.
 
 ```yaml
 name: <project name>
@@ -102,23 +103,23 @@ dev_dependencies:
         [!- asset: fonts/TrajanPro_Bold.ttf!]
           [!weight: 700!]
 ```
- 
+
 ## Assets
 
-Common types of assets include static data
-(for example, JSON files), configuration files,
-icons, and images (JPEG, WebP, GIF,
-animated WebP/GIF, PNG, BMP, and WBMP).
+Tipos comuns de assets incluem dados estáticos
+(por exemplo, arquivos JSON), arquivos de configuração,
+ícones e imagens (JPEG, WebP, GIF,
+WebP/GIF animado, PNG, BMP e WBMP).
 
-Besides listing the images that are included in the
-app package, an image asset can also refer to one or more
-resolution-specific "variants". For more information,
-see the [resolution aware][] section of the
-[Assets and images][] page.
-For information on adding assets from package
-dependencies, see the
+Além de listar as imagens incluídas no
+pacote do app, um asset de imagem também pode se referir a uma ou mais
+"variantes" específicas de resolução. Para mais informações,
+consulte a seção [resolution aware][] da
+página [Assets and images][].
+Para informações sobre como adicionar assets de dependências de
+packages, consulte a seção
 [asset images in package dependencies][]
-section in the same page.
+na mesma página.
 
 [Assets and images]: /ui/assets/assets-and-images
 [asset images in package dependencies]: /ui/assets/assets-and-images#from-packages
@@ -126,31 +127,31 @@ section in the same page.
 
 ## Fonts
 
-As shown in the above example,
-each entry in the fonts section should have a
-`family` key with the font family name,
-and a `fonts` key with a list specifying the
-asset and other descriptors for the font.
+Conforme mostrado no exemplo acima,
+cada entrada na seção fonts deve ter uma
+chave `family` com o nome da família da fonte,
+e uma chave `fonts` com uma lista especificando o
+asset e outros descritores para a fonte.
 
-For examples of using fonts
-see the [Use a custom font][] and
-[Export fonts from a package][] recipes in the
+Para exemplos de uso de fontes
+consulte as receitas [Use a custom font][] e
+[Export fonts from a package][] no
 [Flutter cookbook][].
 
 [Export fonts from a package]: /cookbook/design/package-fonts
 [Flutter cookbook]: /cookbook
 [Use a custom font]: /cookbook/design/fonts
 
-## More information
+## Mais informações
 
-For more information on packages, plugins,
-and pubspec files, see the following:
+Para mais informações sobre packages, plugins,
+e arquivos pubspec, consulte o seguinte:
 
-* [Creating packages][] on dart.dev
-* [Glossary of package terms][] on dart.dev
-* [Package dependencies][] on dart.dev
+* [Creating packages][] em dart.dev
+* [Glossary of package terms][] em dart.dev
+* [Package dependencies][] em dart.dev
 * [Using packages][]
-* [What not to commit][] on dart.dev
+* [What not to commit][] em dart.dev
 
 [Creating packages]: {{site.dart-site}}/guides/libraries/create-library-packages
 [Developing packages and plugins]: /packages-and-plugins/developing-packages

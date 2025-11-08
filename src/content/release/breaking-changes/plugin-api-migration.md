@@ -33,7 +33,7 @@ Flutter isn't attached to any activities.
 
 In other words, plugins using the old API might produce undefined
 behaviors when embedding Flutter into an Android app.
-Most of the [Flutter plugins][] provided by the flutter.dev
+Most of the [Flutter plugins][] provided by the flutterbrasil.dev
 team have been migrated already. (Learn how to become a
 [verified publisher][] on pub.dev!) For an example of
 a plugin that uses the new APIs, see the

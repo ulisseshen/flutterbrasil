@@ -23,7 +23,7 @@ Cupertino com Flutter,
 confira os seguintes recursos:
 
 * O [catálogo de widgets Cupertino][Cupertino widget catalog] (principalmente visual)
-  no doc.flutter.dev
+  no doc.flutterbrasil.dev
 * A página da [biblioteca Cupertino][Cupertino library] na documentação da API
 * Os [exemplos da API Cupertino][Cupertino API examples] no repositório
   flutter/flutter. ([Instruções][Instructions]) Por exemplo,

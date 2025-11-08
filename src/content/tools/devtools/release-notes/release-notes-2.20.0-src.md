@@ -1,11 +1,11 @@
-# DevTools 2.20.0 release notes
+# Notas de lançamento do DevTools 2.20.0
 
-The 2.20.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutterbrasil.dev/tools/devtools).
+A versão 2.20.0 do Dart e Flutter DevTools
+inclui as seguintes alterações entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## CPU profiler updates
+## Atualizações do CPU profiler
 
 * Add support for grouping samples by tag -
   [#4693](https://github.com/flutter/devtools/pull/4693)
@@ -24,7 +24,7 @@ To learn more about DevTools, check out the
   ![sampling rate](/tools/devtools/release-notes/images-2.20.0/4803.png "sampling rate")
 
 
-## Memory updates
+## Atualizações de Memory
 
 * Retire the **Analysis** tab -
   [#4714](https://github.com/flutter/devtools/pull/4714)
@@ -37,7 +37,7 @@ To learn more about DevTools, check out the
 
   ![diff](/tools/devtools/release-notes/images-2.20.0/4714.png "Diff in Memory tab")
 
-## Debugger updates
+## Atualizações do Debugger
 
 * Support for inspecting more types of instances in the variables viewer
   (Expandos, Types, TypeArguments, Parameters, Closures + closure Contexts, 
@@ -55,8 +55,8 @@ To learn more about DevTools, check out the
   (thanks to @leungpuikuen!) -
   [#4602](https://github.com/flutter/devtools/pull/4602)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes since the previous release,
-check out
-[the diff on GitHub](https://github.com/flutter/devtools/compare/v2.19.0...v2.20.0).
+Para encontrar uma lista completa de alterações desde a versão anterior,
+confira
+[o diff no GitHub](https://github.com/flutter/devtools/compare/v2.19.0...v2.20.0).

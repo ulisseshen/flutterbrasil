@@ -53,7 +53,7 @@ A integração contínua para os plugins e pacotes da equipe do Flutter
 inclui testes contra a última versão **stable**.
 
 A documentação mais recente para o branch **stable**
-está em: <https://api.flutter.dev>
+está em: <https://api.flutterbrasil.dev>
 
 ### O canal **beta**
 
@@ -82,9 +82,9 @@ Não recomendamos usar este canal já que
 é mais provável que contenha regressões sérias.
 
 A documentação mais recente para o branch **main**
-está em: <https://main-api.flutter.dev>
+está em: <https://main-api.flutterbrasil.dev>
 
-### Mudando canais
+### Mudando canais {#switching-flutter-channels}
 
 Para visualizar seu canal atual, use o seguinte comando:
 

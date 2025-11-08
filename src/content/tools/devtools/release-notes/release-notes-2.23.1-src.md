@@ -1,11 +1,11 @@
-# DevTools 2.23.1 release notes
+# Notas de lançamento do DevTools 2.23.1
 
-The 2.23.1 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutterbrasil.dev/tools/devtools).
+A versão 2.23.1 do Dart e Flutter DevTools
+inclui as seguintes alterações entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## General updates
+## Atualizações gerais
 
 * Update DevTools to the new Material 3 design -
   [#5429](https://github.com/flutter/devtools/pull/5429)
@@ -25,7 +25,7 @@ To learn more about DevTools, check out the
 * Include settings button in the footer of the embedded view -
   [#5528](https://github.com/flutter/devtools/pull/5528)
 
-## Performance updates
+## Atualizações de Performance
 
 * Fix a performance regression in timeline event processing -
   [#5460](https://github.com/flutter/devtools/pull/5460)
@@ -38,7 +38,7 @@ To learn more about DevTools, check out the
 * Remove the CPU profiler from the legacy trace viewer -
   [#5539](https://github.com/flutter/devtools/pull/5539)
 
-## CPU profiler updates
+## Atualizações do CPU profiler
 
 * Add a Method Table to the CPU profiler -
   [#5366](https://github.com/flutter/devtools/pull/5366)
@@ -61,7 +61,7 @@ To learn more about DevTools, check out the
   with ,AOE keys (helpful for Dvorak users) -
   [#5545](https://github.com/flutter/devtools/pull/5545)
 
-## Memory updates
+## Atualizações de Memory
 
 * Fix filtering bug in the "Trace Instances" view -
   [#5406](https://github.com/flutter/devtools/pull/5406)
@@ -74,7 +74,7 @@ To learn more about DevTools, check out the
 * Expose totals for memory in heap snapshot -
   [#5593](https://github.com/flutter/devtools/pull/5593)
 
-## Debugger updates
+## Atualizações do Debugger
 
 * Fix a bug where variable inspection
   for instances sometimes showed no children -
@@ -94,7 +94,7 @@ To learn more about DevTools, check out the
 * Debugger panel respects "dense mode" -
   [#5517](https://github.com/flutter/devtools/pull/5517)
 
-## Network profiler updates
+## Atualizações do Network profiler
 
 * Fix a bug viewing JSON responses with null values -
   [#5424](https://github.com/flutter/devtools/pull/5424)
@@ -105,8 +105,8 @@ To learn more about DevTools, check out the
   would let you copy while still loading the data -
   [#5476](https://github.com/flutter/devtools/pull/5476)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes since the previous release,
-check out
-[the diff on GitHub](https://github.com/flutter/devtools/compare/v2.22.2...v2.23.1).
+Para encontrar uma lista completa de alterações desde a versão anterior,
+confira
+[o diff no GitHub](https://github.com/flutter/devtools/compare/v2.22.2...v2.23.1).

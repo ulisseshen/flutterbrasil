@@ -1,16 +1,16 @@
-# DevTools 2.22.2 release notes
+# Notas de lançamento do DevTools 2.22.2
 
-The 2.22.2 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutterbrasil.dev/tools/devtools).
+A versão 2.22.2 do Dart e Flutter DevTools
+inclui as seguintes alterações entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## General updates
+## Atualizações gerais
 
 - Prevent crashes if there is no main isolate -
   [#5232](https://github.com/flutter/devtools/pull/5232)
 
-## CPU profiler updates
+## Atualizações do CPU profiler
 
 - Display stack frame URI inline with method name to
   ensure the URI is always visible in deeply nested trees -
@@ -21,7 +21,7 @@ To learn more about DevTools, check out the
 - Add the ability to filter by method name or source URI -
   [#5204](https://github.com/flutter/devtools/pull/5204)
 
-## Memory updates
+## Atualizações de Memory
 
 - Change filter default to show only project and 3rd party dependencies -
   [#5201](https://github.com/flutter/devtools/pull/5201).
@@ -38,7 +38,7 @@ To learn more about DevTools, check out the
 
   ![persisted](/tools/devtools/release-notes/images-2.22.2/5290.png "persisted")
 
-## Debugger updates
+## Atualizações do Debugger
 
 - Add support for browser navigation history when
   navigating using the File Explorer -
@@ -57,13 +57,13 @@ To learn more about DevTools, check out the
   ![set](/tools/devtools/release-notes/images-2.22.2/5323.png "set")
 
 
-## Network profiler updates
+## Atualizações do Network profiler
 
 - Improve reliability and performance of the Network tab -
   [#5056](https://github.com/flutter/devtools/pull/5056)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes since the previous release,
-check out
-[the diff on GitHub](https://github.com/flutter/devtools/compare/v2.21.1...v2.22.2).
+Para encontrar uma lista completa de alterações desde a versão anterior,
+confira
+[o diff no GitHub](https://github.com/flutter/devtools/compare/v2.21.1...v2.22.2).

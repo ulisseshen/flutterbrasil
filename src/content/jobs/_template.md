@@ -36,7 +36,7 @@ e celebramos e apoiamos a progressão de carreira dos membros da nossa equipe.
 ### Inclusão
 
 Aqui na equipe Flutter e no Google, abraçamos nossas diferenças
-e estamos [comprometidos em promover nossa cultura de inclusão](https://flutter.dev/culture).
+e estamos [comprometidos em promover nossa cultura de inclusão](https://flutterbrasil.dev/culture).
 Além de grupos como as [Flutteristas](https://flutteristas.org/),
 [Employee Resource Groups (ERGs)](https://diversity.google/commitments/)
 são redes iniciadas por funcionários para apoiar funcionários sub-representados
@@ -72,4 +72,4 @@ bem equilibrada—tanto dentro quanto fora do trabalho.
 
 ## Para se candidatar
 
-Por favor, candidate-se [preenchendo o seguinte formulário](https://flutter.dev/go/job).
+Por favor, candidate-se [preenchendo o seguinte formulário](https://flutterbrasil.dev/go/job).

@@ -1,23 +1,23 @@
-# DevTools 2.42.0 release notes
+# Notas de lançamento do DevTools 2.42.0
 
-The 2.42.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](/tools/devtools/overview).
+A versão 2.42.0 do Dart e Flutter DevTools
+inclui as seguintes alterações entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](/tools/devtools/overview).
 
-## General updates
+## Atualizações gerais
 
-* Added "View licenses" shortcut to the About dialog. - [#8610](https://github.com/flutter/devtools/pull/8610)
+* Adicionado atalho "View licenses" ao diálogo About. - [#8610](https://github.com/flutter/devtools/pull/8610)
 
-## Inspector updates
+## Atualizações do Inspector
 
-* Enabled the new inspector by default. This can be disabled in the inspector settings. - [#8650](https://github.com/flutter/devtools/pull/8650)
+* Habilitado o novo inspector por padrão. Isso pode ser desabilitado nas configurações do inspector. - [#8650](https://github.com/flutter/devtools/pull/8650)
     ![Legacy inspector setting](/tools/devtools/release-notes/images-2.42.0/legacy_inspector_setting.png "Legacy inspector setting")
-* Fixed an issue where selecting an implementation widget on the device while implementation widgets were hidden in the [new inspector](https://docs.flutterbrasil.dev/tools/devtools/release-notes/release-notes-2.40.1#inspector-updates) showed an error. - [#8625](https://github.com/flutter/devtools/pull/8625)
-* Enabled auto-refreshes of the widget tree on hot-reloads and navigation events by default. This can be disabled in the inspector settings. - [#8646](https://github.com/flutter/devtools/pull/8646)
+* Corrigido um problema onde selecionar um widget de implementação no dispositivo enquanto widgets de implementação estavam ocultos no [novo inspector](https://docs.flutterbrasil.dev/tools/devtools/release-notes/release-notes-2.40.1#inspector-updates) mostrava um erro. - [#8625](https://github.com/flutter/devtools/pull/8625)
+* Habilitadas atualizações automáticas da árvore de widgets em hot-reloads e eventos de navegação por padrão. Isso pode ser desabilitado nas configurações do inspector. - [#8646](https://github.com/flutter/devtools/pull/8646)
     ![Auto-refresh setting](/tools/devtools/release-notes/images-2.42.0/inspector_auto_refresh_setting.png "Inspector auto-refresh setting")
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes in this release, check out the
-[DevTools git log](https://github.com/flutter/devtools/tree/v2.42.0).
+Para encontrar uma lista completa de alterações nesta versão, confira
+[o log do git do DevTools](https://github.com/flutter/devtools/tree/v2.42.0).

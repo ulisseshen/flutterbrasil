@@ -140,7 +140,7 @@ aplicação. Descrevemos como Flutter interopera com outro código em um nível 
 plataforma, antes de dar um breve resumo de como o suporte web do Flutter difere de
 outros alvos.
 
-## Anatomia de um app
+## Anatomia de um app {#anatomy-of-an-app}
 
 O diagrama a seguir dá uma visão geral das peças
 que compõem um app Flutter regular gerado por `flutter create`.
@@ -323,7 +323,7 @@ Esta abordagem fornece vários benefícios:
   aplicação parece e se sente a mesma em todas as versões do SO, mesmo se o SO
   mudou as implementações de seus controles.
 
-### Composição
+### Composição {#composition}
 
 Widgets são tipicamente compostos de muitos outros widgets pequenos e de propósito único que
 se combinam para produzir efeitos poderosos.
@@ -436,7 +436,7 @@ o pai pode criar uma nova instância do filho a qualquer momento sem perder o
 estado persistente do filho. O framework faz todo o trabalho de encontrar e reutilizar
 objetos de state existentes quando apropriado.
 
-### Gerenciamento de estado
+### Gerenciamento de estado {#state-management}
 
 Então, se muitos widgets podem conter estado, como o estado é gerenciado e passado pelo
 sistema?
@@ -661,7 +661,7 @@ totalmente descartável enquanto cacheia sua representação subjacente. Ao cami
 pelos widgets que mudaram, Flutter pode reconstruir apenas as partes da
 árvore de elementos que requerem reconfiguração.
 
-### Layout e renderização
+### Layout e renderização {#layout-and-rendering}
 
 Seria uma aplicação rara que desenhasse apenas um único widget. Uma parte importante
 de qualquer framework de UI é, portanto, a habilidade de fazer layout eficientemente de uma hierarquia

@@ -68,7 +68,7 @@ console.log('Olá mundo!');
 <?code-excerpt "lib/main.dart (print)"?>
 ```dart
 /// Dart
-print('Olá mundo!');
+print('Hello world!');
 ```
 
 Experimente no [DartPad][DartPadB].
@@ -96,9 +96,9 @@ let name = 'JavaScript';
 <?code-excerpt "lib/main.dart (variables)"?>
 ```dart
 /// Dart
-/// Ambas as variáveis são aceitáveis.
-String name = 'dart'; // Explicitamente tipado como [String].
-var otherName = 'Dart'; // Tipo [String] inferido.
+/// Both variables are acceptable.
+String name = 'dart'; // Explicitly typed as a [String].
+var otherName = 'Dart'; // Inferred [String] type.
 ```
 
 Experimente no [DartPad][DartPadC].
@@ -127,7 +127,7 @@ let name; // == undefined
 <?code-excerpt "lib/main.dart (null)"?>
 ```dart
 // Dart
-var name; // == null; gera um aviso do linter
+var name; // == null; raises a linter warning
 int? x; // == null
 ```
 
@@ -161,7 +161,7 @@ Em Dart, apenas o valor booleano `true` é tratado como verdadeiro.
 var myNull;
 var zero = 0;
 if (zero == 0) {
-  print('use "== 0" para verificar zero');
+  print('use "== 0" to check zero');
 }
 ```
 
@@ -182,7 +182,7 @@ function fn() {
 <?code-excerpt "lib/main.dart (function)"?>
 ```dart
 /// Dart
-/// Você pode definir explicitamente o tipo de retorno.
+/// You can explicitly define the return type.
 bool fn() {
   return true;
 }
@@ -309,10 +309,10 @@ class Example {
   }
 }
 
-/// Uma função async retorna um `Future`.
-/// Ela também pode retornar `void`, a menos que você use
-/// o lint `avoid_void_async`. Nesse caso,
-/// retorne `Future<void>`.
+/// An async function returns a `Future`.
+/// It can also return `void`, unless you use
+/// the `avoid_void_async` lint. In that case,
+/// return `Future<void>`.
 void main() async {
   final example = Example();
   try {
@@ -441,7 +441,7 @@ void main() {
   runApp(
     const Center(
       child: Text(
-        'Olá, mundo!',
+        'Hello, world!',
         textDirection: TextDirection.ltr,
       ),
     ),
@@ -493,13 +493,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Bem-vindo ao Flutter',
+      title: 'Welcome to Flutter',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Bem-vindo ao Flutter'),
+          title: const Text('Welcome to Flutter'),
         ),
         body: const Center(
-          child: Text('Olá mundo'),
+          child: Text('Hello world'),
         ),
       ),
     );
@@ -598,7 +598,7 @@ class UseCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /// Uso
+    /// Usage
     return CustomCard(
       index: index,
       onPress: () {
@@ -631,7 +631,7 @@ Ele é gerado automaticamente quando você cria um aplicativo Flutter.
 ```dart
 // Dart
 void main() {
-  print('Olá, esta é a função principal.');
+  print('Hello, this is the main function.');
 }
 ```
 
@@ -736,7 +736,7 @@ uma imagem de um URL.
 
 <?code-excerpt "lib/examples.dart (image-network)" replace="/return //g"?>
 ```dart
-Image.network('https://docs.flutter.dev/assets/images/docs/owl.jpg');
+Image.network('https://docs.flutterbrasil.dev/assets/images/docs/owl.jpg');
 ```
 
 ### Como eu instalo pacotes e plugins de pacotes?
@@ -840,8 +840,8 @@ aqueles filhos que são visíveis.
 <?code-excerpt "lib/examples.dart (list-view)"?>
 ```dart
 var data = [
-  'Olá',
-  'Mundo',
+  'Hello',
+  'World',
 ];
 return ListView.builder(
   itemCount: data.length,
@@ -1990,12 +1990,12 @@ em um [`GestureDetector`][].
 Widget build(BuildContext context) {
   return GestureDetector(
     child: Scaffold(
-      appBar: AppBar(title: const Text('Gestos')),
+      appBar: AppBar(title: const Text('Gestures')),
       body: const Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text('Tap, Long Press, Deslize Horizontalmente ou Verticalmente'),
+          Text('Tap, Long Press, Swipe Horizontally or Vertically'),
         ],
       )),
     ),
@@ -2006,10 +2006,10 @@ Widget build(BuildContext context) {
       print('Long Pressed');
     },
     onVerticalDragEnd: (value) {
-      print('Deslizado Verticalmente');
+      print('Swiped Vertically');
     },
     onHorizontalDragEnd: (value) {
-      print('Deslizado Horizontalmente');
+      print('Swiped Horizontally');
     },
   );
 }
@@ -2129,19 +2129,19 @@ Widget build(BuildContext context) {
     TextField(
       controller: _controller,
       decoration: const InputDecoration(
-        hintText: 'Digite algo',
-        labelText: 'Campo de Texto',
+        hintText: 'Type something',
+        labelText: 'Text Field',
       ),
     ),
     ElevatedButton(
-      child: const Text('Enviar'),
+      child: const Text('Submit'),
       onPressed: () {
         showDialog(
             context: context,
             builder: (context) {
               return AlertDialog(
-                title: const Text('Alerta'),
-                content: Text('Você digitou ${_controller.text}'),
+                title: const Text('Alert'),
+                content: Text('You typed ${_controller.text}'),
               );
             });
       },
@@ -2185,14 +2185,14 @@ Widget build(BuildContext context) {
             if (value != null && value.contains('@')) {
               return null;
             }
-            return 'Não é um e-mail válido.';
+            return 'Not a valid email.';
           },
           onSaved: (val) {
             _email = val;
           },
           decoration: const InputDecoration(
-            hintText: 'Digite seu e-mail',
-            labelText: 'E-mail',
+            hintText: 'Enter your email',
+            labelText: 'Email',
           ),
         ),
         ElevatedButton(
@@ -2218,8 +2218,8 @@ void _submit() {
       context: context,
       builder: (context) {
         return AlertDialog(
-            title: const Text('Alerta'),
-            content: Text('Email: $_email, senha: $_password'));
+            title: const Text('Alert'),
+            content: Text('Email: $_email, password: $_password'));
       },
     );
   }
@@ -2262,7 +2262,7 @@ if (platform == TargetPlatform.android) {
 if (platform == TargetPlatform.fuchsia) {
   return 'fuchsia';
 }
-return 'não reconhecido ';
+return 'not recognized ';
 ```
 
 ## Depuração

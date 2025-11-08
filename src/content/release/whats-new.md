@@ -2,7 +2,7 @@
 ia-translate: true
 title: Novidades na documentação
 description: >-
-  Uma lista de novidades em docs.flutter.dev e sites de documentação relacionados.
+  Uma lista de novidades em docs.flutterbrasil.dev e sites de documentação relacionados.
 ---
 
 Esta página contém anúncios atuais e recentes

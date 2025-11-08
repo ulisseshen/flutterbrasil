@@ -79,7 +79,7 @@ e lançamos uma versão beta ou hotfix para quaisquer problemas graves de segura
 encontrados na versão estável mais recente do nosso SDK.
 
 Qualquer vulnerabilidade relatada para sites do Flutter como
-docs.flutter.dev não requer um lançamento e será
+docs.flutterbrasil.dev não requer um lançamento e será
 corrigida no próprio site.
 
 ## Programas Bug Bounty

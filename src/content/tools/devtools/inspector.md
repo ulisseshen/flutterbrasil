@@ -38,6 +38,7 @@ visualização mais espaçosa ao executá-lo do DevTools
 em um navegador.
 :::
 
+<a id="debugging-layout-issues-visually"></a>
 ### Depurando problemas de layout visualmente
 
 A seguir está um guia para os recursos disponíveis na
@@ -76,6 +77,7 @@ usado como a versão visual do rótulo.
 [Highlight repaints]: #highlight-repaints
 [Highlight oversized images]: #highlight-oversized-images
 
+<a id="inspecting-a-widget"></a>
 ## Inspecionando um widget
 
 Você pode navegar pela árvore interativa de widgets para visualizar widgets próximos

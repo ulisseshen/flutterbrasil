@@ -150,7 +150,7 @@ e passa o valor do controlador de texto.
 FilledButton.icon(
   onPressed: () =>
       widget.viewModel.add.execute(_controller.text),
-  label: const Text('Adicionar'),
+  label: const Text('Add'),
   icon: const Icon(Icons.add),
 )
 ```
@@ -191,7 +191,7 @@ Quando a ação é concluída, o `TextEditingController` é limpo.
 <?code-excerpt "lib/ui/todo_list/widgets/todo_list_screen.dart (Add)"?>
 ```dart
 void _onAdd() {
-  // Limpa o campo de texto quando o comando de adição é concluído.
+  // Clear the text field when the add command completes.
   if (widget.viewModel.add.completed) {
     widget.viewModel.add.clearResult();
     _controller.clear();
@@ -249,10 +249,10 @@ e uma descrição de tarefa, representada por uma `String`.
 @freezed
 class Todo with _$Todo {
   const factory Todo({
-    /// O identificador exclusivo do item ToDo.
+    /// The unique identifier of the Todo item.
     required int id,
 
-    /// A descrição da tarefa do item ToDo.
+    /// The task description of the Todo item.
     required String task,
   }) = _Todo;
 }
@@ -408,7 +408,7 @@ Future<Result<void>> delete(int id) async {
     final rowsDeleted = await _database!
         .delete(_kTableTodo, where: '$_kColumnId = ?', whereArgs: [id]);
     if (rowsDeleted == 0) {
-      return Result.error(Exception('Nenhum todo encontrado com id $id'));
+      return Result.error(Exception('No todo found with id $id'));
     }
     return Result.ok(null);
   } on Exception catch (e) {
@@ -441,15 +441,15 @@ que é ele próprio passado para o `MainApp` como uma dependência de argumento 
 void main() {
   late DatabaseService databaseService;
   if (kIsWeb) {
-    throw UnsupportedError('Plataforma não suportada');
+    throw UnsupportedError('Platform not supported');
   } else if (Platform.isLinux || Platform.isWindows || Platform.isMacOS) {
-    // Inicializa FFI SQLite
+    // Initialize FFI SQLite
     sqfliteFfiInit();
     databaseService = DatabaseService(
       databaseFactory: databaseFactoryFfi,
     );
   } else {
-    // Usa SQLite nativo padrão
+    // Use default native SQLite
     databaseService = DatabaseService(
       databaseFactory: databaseFactory,
     );

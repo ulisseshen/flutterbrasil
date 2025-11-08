@@ -31,6 +31,7 @@ Para obter uma visão geral melhor do mecanismo de layout, comece com
 
 [Switzerland Tourism]: https://www.myswitzerland.com/en-us/destinations/lake-oeschinen
 [Flutter's approach to layout]: /ui/layout
+[Abordagem do Flutter para layout]: /ui/layout
 
 ## Diagramar o layout
 
@@ -131,12 +132,12 @@ Nesta seção, crie o código básico do app Flutter para iniciar seu app.
    <?code-excerpt "lib/main.dart (all)"?>
    ```dart
    import 'package:flutter/material.dart';
-
+   
    void main() => runApp(const MyApp());
-
+   
    class MyApp extends StatelessWidget {
      const MyApp({super.key});
-
+   
      @override
      Widget build(BuildContext context) {
        const String appTitle = 'Flutter layout demo';

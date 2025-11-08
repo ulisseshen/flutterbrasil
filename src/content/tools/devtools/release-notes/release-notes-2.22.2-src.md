@@ -1,69 +1,69 @@
-# Notas de lançamento do DevTools 2.22.2
+# DevTools 2.22.2 release notes
 
-A versão 2.22.2 do Dart e Flutter DevTools
-inclui as seguintes alterações entre outras melhorias gerais.
-Para saber mais sobre o DevTools, confira a
-[visão geral do DevTools](https://docs.flutter.dev/tools/devtools).
+The 2.22.2 release of the Dart and Flutter DevTools
+includes the following changes among other general improvements.
+To learn more about DevTools, check out the
+[DevTools overview](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Atualizações gerais
+## General updates
 
-- Prevenção de crashes se não houver isolate principal -
+- Prevent crashes if there is no main isolate -
   [#5232](https://github.com/flutter/devtools/pull/5232)
 
-## Atualizações do CPU profiler
+## CPU profiler updates
 
-- Exibição de URI do stack frame inline com nome do método para
-  garantir que a URI esteja sempre visível em árvores profundamente aninhadas -
+- Display stack frame URI inline with method name to
+  ensure the URI is always visible in deeply nested trees -
   [#5181](https://github.com/flutter/devtools/pull/5181)
 
   ![inline uri](/tools/devtools/release-notes/images-2.22.2/5181.png "inline uri")
 
-- Adicionada capacidade de filtrar por nome do método ou URI de origem -
+- Add the ability to filter by method name or source URI -
   [#5204](https://github.com/flutter/devtools/pull/5204)
 
-## Atualizações do Memory
+## Memory updates
 
-- Alterado padrão do filtro para mostrar apenas projeto e dependências de terceiros -
+- Change filter default to show only project and 3rd party dependencies -
   [#5201](https://github.com/flutter/devtools/pull/5201).
 
   ![filter default](/tools/devtools/release-notes/images-2.22.2/5201.png "filter default")
 
-- Suporte para avaliação de expressões no console para aplicação em execução -
+- Support expression evaluation in console for running application -
   [#5248](https://github.com/flutter/devtools/pull/5248).
 
   ![evaluation](/tools/devtools/release-notes/images-2.22.2/5248.png "evaluation")
 
-- Adicionada coluna `Persisted` para comparação de memória -
+- Add column `Persisted` for memory diffing -
   [#5290](https://github.com/flutter/devtools/pull/5290)
 
   ![persisted](/tools/devtools/release-notes/images-2.22.2/5290.png "persisted")
 
-## Atualizações do Debugger
+## Debugger updates
 
-- Adicionado suporte para histórico de navegação do navegador ao
-  navegar usando o File Explorer -
+- Add support for browser navigation history when
+  navigating using the File Explorer -
   [#4906](https://github.com/flutter/devtools/pull/4906)
-- Designados campos posicionais para tipos `Record`
-  com a sintaxe getter começando em `$1` -
+- Designate positional fields for `Record` types
+  with the getter syntax beginning at `$1` -
   [#5272](https://github.com/flutter/devtools/pull/5272)
-- Corrigida inspeção de variáveis para instâncias de `Map` e `List` -
+- Fix variable inspection for `Map` and `List` instances -
   [#5320](https://github.com/flutter/devtools/pull/5320)
 
   ![map and list](/tools/devtools/release-notes/images-2.22.2/5320.png "map and list")
 
-- Corrigida inspeção de variáveis para instâncias de `Set` -
+- Fix variable inspection for `Set` instances -
   [#5323](https://github.com/flutter/devtools/pull/5323)
 
   ![set](/tools/devtools/release-notes/images-2.22.2/5323.png "set")
 
 
-## Atualizações do Network profiler
+## Network profiler updates
 
-- Melhorada confiabilidade e desempenho da aba Network -
+- Improve reliability and performance of the Network tab -
   [#5056](https://github.com/flutter/devtools/pull/5056)
 
-## Histórico completo de commits
+## Full commit history
 
-Para encontrar uma lista completa de alterações desde a versão anterior,
-confira
-[o diff no GitHub](https://github.com/flutter/devtools/compare/v2.21.1...v2.22.2).
+To find a complete list of changes since the previous release,
+check out
+[the diff on GitHub](https://github.com/flutter/devtools/compare/v2.21.1...v2.22.2).

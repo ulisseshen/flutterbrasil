@@ -381,6 +381,7 @@ Para aprender mais sobre objetos `Listenable`, confira os seguintes recursos:
 * Documentação da API: [`ValueListenableBuilder`][]
 * Documentação da API: [`InheritedNotifier`][]
 
+<a id="using-mvvm-for-your-applications-architecture"></a>
 ## Usando MVVM para a arquitetura da sua aplicação
 
 Agora que entendemos como compartilhar estado

@@ -79,6 +79,7 @@ Configuração dos outros atributos é melhor gerenciada por um widget [`Focus`]
 [`FocusScope`][], a menos que você não esteja usando-os, ou esteja implementando sua própria
 versão deles.
 
+<a id="best-practices-for-creating-focusnode-objects"></a>
 ### Melhores práticas para criar objetos FocusNode
 
 Alguns prós e contras sobre usar esses objetos incluem:
@@ -149,6 +150,7 @@ está solicitando o unfocus. O `WidgetsApp` (do qual `MaterialApp` e
 problema se você estiver usando esses.
 :::
 
+<a id="focus-widget"></a>
 ## Widget Focus
 
 O widget `Focus` possui e gerencia um nó de foco, e é o cavalo de batalha do
@@ -236,6 +238,7 @@ class _MyCustomWidgetState extends State<MyCustomWidget> {
 }
 ```
 
+<a id="key-events"></a>
 ### Eventos de tecla
 
 Se você deseja escutar eventos de tecla em uma subárvore,
@@ -297,6 +300,7 @@ seria melhor implementada usando um `TextInputFormatter`, mas a técnica ainda p
 ser útil: o widget `Shortcuts` usa este método para manipular atalhos antes
 que se tornem entrada de texto, por exemplo.
 
+<a id="controlling-what-gets-focus"></a>
 ### Controlando o que obtém foco
 
 Um dos principais aspectos do foco é controlar o que pode receber foco e como.
@@ -334,6 +338,7 @@ Definir o atributo `autofocus` em dois nós que pertencem a diferentes escopos d
 é bem definido: cada um se torna o widget focado quando seu
 escopo correspondente é focado.
 
+<a id="change-notifications"></a>
 ### Notificações de mudança
 
 O callback `Focus.onFocusChanged` pode ser usado para obter notificações de que o
@@ -445,6 +450,7 @@ design requer uma ordem diferente daquela que o algoritmo de ordenação padrão
 chega. Para esses casos, existem outros mecanismos para alcançar a
 ordem desejada.
 
+<a id="focustraversalgroup-widget"></a>
 ### Widget FocusTraversalGroup
 
 O widget [`FocusTraversalGroup`][] deve ser colocado na árvore ao redor de subárvores de widgets

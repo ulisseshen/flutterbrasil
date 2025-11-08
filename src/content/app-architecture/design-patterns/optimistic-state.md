@@ -164,12 +164,12 @@ ao `SubscriptionRepository` com o seguinte código:
 <?code-excerpt "lib/main.dart (SubscriptionRepository)"?>
 ```dart
 class SubscriptionRepository {
-  /// Simula uma solicitação de rede e então falha.
+  /// Simulates a network request and then fails.
   Future<void> subscribe() async {
-    // Simula uma solicitação de rede
+    // Simulate a network request
     await Future.delayed(const Duration(seconds: 1));
-    // Falha após um segundo
-    throw Exception('Falha ao se inscrever');
+    // Fail after one second
+    throw Exception('Failed to subscribe');
   }
 }
 ```
@@ -190,10 +190,10 @@ adicione os seguintes membros públicos ao `SubscribeButtonViewModel`:
 
 <?code-excerpt "lib/main.dart (States)"?>
 ```dart
-// Indica se o usuário está inscrito
+// Whether the user is subscribed
 bool subscribed = false;
 
-// Indica se a ação de inscrição falhou
+// Whether the subscription action has failed
 bool error = false;
 ```
 
@@ -212,26 +212,26 @@ Em seguida, implemente um método `subscribe()` assíncrono:
 
 <?code-excerpt "lib/main.dart (subscribe)"?>
 ```dart
-// Ação de inscrição
+// Subscription action
 Future<void> subscribe() async {
-  // Ignora toques quando inscrito
+  // Ignore taps when subscribed
   if (subscribed) {
     return;
   }
 
-  // Estado otimista.
-  // Será revertido se a inscrição falhar.
+  // Optimistic state.
+  // It will be reverted if the subscription fails.
   subscribed = true;
-  // Notifica os listeners para atualizar a UI
+  // Notify listeners to update the UI
   notifyListeners();
 
   try {
     await subscriptionRepository.subscribe();
   } catch (e) {
-    print('Falha ao se inscrever: $e');
-    // Reverte para o estado anterior
+    print('Failed to subscribe: $e');
+    // Revert to the previous state
     subscribed = false;
-    // Define o estado de erro
+    // Set the error state
     error = true;
   } finally {
     notifyListeners();
@@ -260,7 +260,7 @@ O `SubscribeButtonViewModel` completo deve ser assim:
 <?code-excerpt "lib/main.dart (ViewModelFull)"?>
 ```dart
 /// Subscribe button View Model.
-/// Manipula a ação de inscrição e expõe o estado para a inscrição.
+/// Handles the subscribe action and exposes the state to the subscription.
 class SubscribeButtonViewModel extends ChangeNotifier {
   SubscribeButtonViewModel({
     required this.subscriptionRepository,
@@ -268,32 +268,32 @@ class SubscribeButtonViewModel extends ChangeNotifier {
 
   final SubscriptionRepository subscriptionRepository;
 
-  // Indica se o usuário está inscrito
+  // Whether the user is subscribed
   bool subscribed = false;
 
-  // Indica se a ação de inscrição falhou
+  // Whether the subscription action has failed
   bool error = false;
 
-  // Ação de inscrição
+  // Subscription action
   Future<void> subscribe() async {
-    // Ignora toques quando inscrito
+    // Ignore taps when subscribed
     if (subscribed) {
       return;
     }
 
-    // Estado otimista.
-    // Será revertido se a inscrição falhar.
+    // Optimistic state.
+    // It will be reverted if the subscription fails.
     subscribed = true;
-    // Notifica os listeners para atualizar a UI
+    // Notify listeners to update the UI
     notifyListeners();
 
     try {
       await subscriptionRepository.subscribe();
     } catch (e) {
-      print('Falha ao se inscrever: $e');
-      // Reverte para o estado anterior
+      print('Failed to subscribe: $e');
+      // Revert to the previous state
       subscribed = false;
-      // Define o estado de erro
+      // Set the error state
       error = true;
     } finally {
       notifyListeners();
@@ -323,8 +323,8 @@ Widget build(BuildContext context) {
             ? SubscribeButtonStyle.subscribed
             : SubscribeButtonStyle.unsubscribed,
         child: widget.viewModel.subscribed
-            ? const Text('Inscrito')
-            : const Text('Inscrever-se'),
+            ? const Text('Subscribed')
+            : const Text('Subscribe'),
       );
     },
   );
@@ -384,16 +384,16 @@ void dispose() {
 
 <?code-excerpt "lib/main.dart (listener2)"?>
 ```dart
-/// Ouve as mudanças do ViewModel.
+/// Listen to ViewModel changes.
 void _onViewModelChange() {
-  // Se a ação de inscrição falhou
+  // If the subscription action has failed
   if (widget.viewModel.error) {
-    // Redefine o estado de erro
+    // Reset the error state
     widget.viewModel.error = false;
-    // Mostra uma mensagem de erro
+    // Show an error message
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
-        content: Text('Falha ao se inscrever'),
+        content: Text('Failed to subscribe'),
       ),
     );
   }
@@ -458,7 +458,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // Este widget é a raiz do seu aplicativo.
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -475,8 +475,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
-/// Um botão que simula uma ação de inscrição.
-/// Por exemplo, inscrever-se em um boletim informativo ou um canal de streaming.
+/// A button that simulates a subscription action.
+/// For example, subscribing to a newsletter or a streaming channel.
 class SubscribeButton extends StatefulWidget {
   const SubscribeButton({
     super.key,
@@ -514,23 +514,23 @@ class _SubscribeButtonState extends State<SubscribeButton> {
               ? SubscribeButtonStyle.subscribed
               : SubscribeButtonStyle.unsubscribed,
           child: widget.viewModel.subscribed
-              ? const Text('Inscrito')
-              : const Text('Inscrever-se'),
+              ? const Text('Subscribed')
+              : const Text('Subscribe'),
         );
       },
     );
   }
 
-  /// Ouve as mudanças do ViewModel.
+  /// Listen to ViewModel changes.
   void _onViewModelChange() {
-    // Se a ação de inscrição falhou
+    // If the subscription action has failed
     if (widget.viewModel.error) {
-      // Redefine o estado de erro
+      // Reset the error state
       widget.viewModel.error = false;
-      // Mostra uma mensagem de erro
+      // Show an error message
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Falha ao se inscrever'),
+          content: Text('Failed to subscribe'),
         ),
       );
     }
@@ -548,7 +548,7 @@ class SubscribeButtonStyle {
 }
 
 /// Subscribe button View Model.
-/// Manipula a ação de inscrição e expõe o estado para a inscrição.
+/// Handles the subscribe action and exposes the state to the subscription.
 class SubscribeButtonViewModel extends ChangeNotifier {
   SubscribeButtonViewModel({
     required this.subscriptionRepository,
@@ -556,32 +556,32 @@ class SubscribeButtonViewModel extends ChangeNotifier {
 
   final SubscriptionRepository subscriptionRepository;
 
-  // Indica se o usuário está inscrito
+  // Whether the user is subscribed
   bool subscribed = false;
 
-  // Indica se a ação de inscrição falhou
+  // Whether the subscription action has failed
   bool error = false;
 
-  // Ação de inscrição
+  // Subscription action
   Future<void> subscribe() async {
-    // Ignora toques quando inscrito
+    // Ignore taps when subscribed
     if (subscribed) {
       return;
     }
 
-    // Estado otimista.
-    // Será revertido se a inscrição falhar.
+    // Optimistic state.
+    // It will be reverted if the subscription fails.
     subscribed = true;
-    // Notifica os listeners para atualizar a UI
+    // Notify listeners to update the UI
     notifyListeners();
 
     try {
       await subscriptionRepository.subscribe();
     } catch (e) {
-      print('Falha ao se inscrever: $e');
-      // Reverte para o estado anterior
+      print('Failed to subscribe: $e');
+      // Revert to the previous state
       subscribed = false;
-      // Define o estado de erro
+      // Set the error state
       error = true;
     } finally {
       notifyListeners();
@@ -589,14 +589,14 @@ class SubscribeButtonViewModel extends ChangeNotifier {
   }
 }
 
-/// Repositório de inscrições.
+/// Repository of subscriptions.
 class SubscriptionRepository {
-  /// Simula uma solicitação de rede e então falha.
+  /// Simulates a network request and then fails.
   Future<void> subscribe() async {
-    // Simula uma solicitação de rede
+    // Simulate a network request
     await Future.delayed(const Duration(seconds: 1));
-    // Falha após um segundo
-    throw Exception('Falha ao se inscrever');
+    // Fail after one second
+    throw Exception('Failed to subscribe');
   }
 }
 ```

@@ -113,6 +113,7 @@ Para resumir:
   * As diretrizes da Apple dizem [tente suportar ambas as orientações][aim to support both orientations]
 
 [an accessibility issue]: https://www.w3.org/WAI/WCAG21/Understanding/orientation.html
+[um problema de acessibilidade]: https://www.w3.org/WAI/WCAG21/Understanding/orientation.html
 [aim to support both orientations]: https://www.w3.org/WAI/WCAG21/Understanding/orientation.html
 [lowest level]:  {{site.android-dev}}/docs/quality-guidelines/large-screen-app-quality#T3-8
 [override a locked screen]: {{site.android-dev}}/guide/topics/large-screens/large-screen-compatibility-mode#per-app_overrides

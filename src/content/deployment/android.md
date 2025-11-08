@@ -35,6 +35,7 @@ diretório do seu app.
 
 [play]: {{site.android-dev}}/distribute
 
+<a id="add-a-launcher-icon"></a>
 ## Adicionar um ícone do launcher
 
 Quando um novo app Flutter é criado, ele tem um ícone de launcher padrão.
@@ -65,6 +66,7 @@ Alternativamente, você pode fazer isso manualmente usando os seguintes passos:
 [configuration qualifiers]: {{site.android-dev}}/guide/topics/resources/providing-resources#AlternativeResources
 [applicationtag]: {{site.android-dev}}/guide/topics/manifest/application-element
 
+<a id="enable-material-components"></a>
 ## Habilitar Material Components
 
 Se seu app usa [platform views][], você pode querer habilitar
@@ -104,6 +106,7 @@ Por exemplo:
 [maven-material]: https://maven.google.com/web/index.html#com.google.android.material:material
 
 <a id="signing-the-app"></a>
+<a id="sign-the-app"></a>
 ## Assinar o app
 
 Para publicar na Play Store, você precisa
@@ -254,6 +257,7 @@ Para saber mais sobre como assinar seu app, confira
 
 [Sign your app]: {{site.android-dev}}/studio/publish/app-signing.html#generate-key
 
+<a id="shrink-your-code-with-r8"></a>
 ## Reduzir seu código com R8
 
 [R8][] é o novo code shrinker do Google.
@@ -273,6 +277,7 @@ Para saber mais, confira [Shrink, obfuscate, and optimize your app][].
 [R8]: {{site.android-dev}}/studio/build/shrink-code
 [Shrink, obfuscate, and optimize your app]: {{site.android-dev}}/studio/build/shrink-code
 
+<a id="enable-multidex-support"></a>
 ## Habilitar suporte multidex
 
 Ao escrever apps grandes ou fazer uso de plugins grandes,
@@ -325,6 +330,7 @@ confira a [documentação oficial do Android][multidex-docs].
 [multidex-keep]: {{site.android-dev}}/studio/build/multidex#keep
 [multidex-docs]: {{site.android-dev}}/studio/build/multidex
 
+<a id="review-the-app-manifest"></a>
 ## Revisar o manifesto do app
 
 Revise o arquivo padrão [App Manifest][manifest].
@@ -424,6 +430,7 @@ Você pode renomear essas propriedades para
 [internal version number]: {{site.android-dev}}/studio/publish/versioning
 [gradlebuild]: {{site.android-dev}}/studio/build/#module-level
 
+<a id="build-the-app-for-release"></a>
 ## Compilar o app para release
 
 Você tem dois formatos de release possíveis ao
@@ -494,6 +501,7 @@ Esta seção descreve duas.
 
 [upload-bundle]: {{site.android-dev}}/studio/publish/upload-bundle
 
+<a id="build-an-apk"></a>
 ### Compilar um APK
 
 Embora app bundles sejam preferidos em relação a APKs,
@@ -537,11 +545,13 @@ Da linha de comando:
 1. Digite `cd [project]`.
 1. Execute `flutter install`.
 
+<a id="publish-to-the-google-play-store"></a>
 ## Publicar na Google Play Store
 
 Para instruções detalhadas sobre como publicar seu app na Google Play Store,
 confira a documentação de [lançamento do Google Play][play].
 
+<a id="update-the-apps-version-number"></a>
 ## Atualizar o número de versão do app
 
 O número de versão padrão do app é `1.0.0`.
@@ -570,6 +580,7 @@ atualizar `versionName` e `versionCode` no arquivo `local.properties`.
 
 [Version your app]: {{site.android-dev}}/studio/publish/versioning
 
+<a id="android-release-faq"></a>
 ## FAQ de release Android
 
 Aqui estão algumas perguntas comuns sobre implantação para

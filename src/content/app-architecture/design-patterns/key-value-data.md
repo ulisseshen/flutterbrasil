@@ -89,7 +89,7 @@ class ThemeSwitch extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Row(
         children: [
-          const Text('Modo Escuro'),
+          const Text('Dark Mode'),
           ListenableBuilder(
             listenable: viewmodel,
             builder: (context, _) {
@@ -143,14 +143,14 @@ class ThemeSwitchViewModel extends ChangeNotifier {
 
   bool _isDarkMode = false;
 
-  /// Se verdadeiro, mostra o modo escuro
+  /// If true show dark mode
   bool get isDarkMode => _isDarkMode;
 
   late Command0 load;
 
   late Command0 toggle;
 
-  /// Carrega a configuração de tema atual do repositório
+  /// Load the current theme setting from the repository
   Future<Result<void>> _load() async {
     try {
       final result = await _themeRepository.isDarkMode();
@@ -165,7 +165,7 @@ class ThemeSwitchViewModel extends ChangeNotifier {
     }
   }
 
-  /// Alterna a configuração de tema
+  /// Toggle the theme setting
   Future<Result<void>> _toggle() async {
     try {
       _isDarkMode = !_isDarkMode;
@@ -213,7 +213,7 @@ class ThemeRepository {
 
   final SharedPreferencesService _service;
 
-  /// Obtém se o modo escuro está ativado
+  /// Get if dark mode is enabled
   Future<Result<bool>> isDarkMode() async {
     try {
       final value = await _service.isDarkMode();
@@ -223,7 +223,7 @@ class ThemeRepository {
     }
   }
 
-  /// Define o modo escuro
+  /// Set dark mode
   Future<Result<void>> setDarkMode(bool value) async {
     try {
       await _service.setDarkMode(value);
@@ -234,8 +234,8 @@ class ThemeRepository {
     }
   }
 
-  /// Stream que emite alterações de configuração de tema.
-  /// ViewModels devem chamar [isDarkMode] para obter a configuração de tema atual.
+  /// Stream that emits theme config changes.
+  /// ViewModels should call [isDarkMode] to get the current theme setting.
   Stream<bool> observeDarkMode() => _darkModeController.stream;
 }
 ```
@@ -334,7 +334,7 @@ class MainAppViewModel extends ChangeNotifier {
         _isDarkMode = result.value;
       }
     } on Exception catch (_) {
-      // tratar erro
+      // handle error
     } finally {
       notifyListeners();
     }

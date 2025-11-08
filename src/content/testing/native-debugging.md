@@ -57,7 +57,7 @@ fazer debug do seu próprio projeto Flutter também.
     Wrote 129 files.
 
     All done!
-    You can find general documentation for Flutter at: https://docs.flutter.dev/
+    You can find general documentation for Flutter at: https://docs.flutterbrasil.dev/
     Detailed API documentation is available at: https://api.flutter.dev/
     If you prefer video documentation, consider: https://www.youtube.com/c/flutterdev
 
@@ -185,6 +185,7 @@ Você pode entrar, sair e passar por instruções Dart, fazer hot reload ou reto
 
 {:.table .table-striped}
 
+<a id="update-test-flutter-app"></a>
 ## Atualizar app Flutter de teste
 
 Para o restante deste guia, você precisa atualizar o
@@ -266,7 +267,7 @@ app Flutter de teste. Esta atualização adiciona código nativo para fazer debu
       Widget build(BuildContext context) {
         final Uri toLaunch = Uri(
             scheme: 'https',
-            host: 'docs.flutter.dev',
+            host: 'docs.flutterbrasil.dev',
             path: 'testing/native-debugging');
         return Scaffold(
           appBar: AppBar(

@@ -292,7 +292,7 @@ class CircleListItem extends StatelessWidget {
         ),
         child: ClipOval(
           child: Image.network(
-            'https://docs.flutter.dev/cookbook'
+            'https://docs.flutterbrasil.dev/cookbook'
             '/img-files/effects/split-check/Avatar1.jpg',
             fit: BoxFit.cover,
           ),
@@ -337,7 +337,7 @@ class CardListItem extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(16),
           child: Image.network(
-            'https://docs.flutter.dev/cookbook'
+            'https://docs.flutterbrasil.dev/cookbook'
             '/img-files/effects/split-check/Food1.jpg',
             fit: BoxFit.cover,
           ),

@@ -1,144 +1,145 @@
-- category: Separation of concerns
+# ia-translate: true
+- category: Separação de responsabilidades
   description: |
-    You should separate your app into a UI layer and a data layer. Within those layers, you should further separate logic into classes by responsibility.
+    Você deve separar seu app em uma camada de UI e uma camada de dados. Dentro dessas camadas, você deve separar ainda mais a lógica em classes por responsabilidade.
   recommendations:
-    - recommendation: Use clearly defined data and UI layers.
+    - recommendation: Use camadas de dados e UI claramente definidas.
       description: |
-        Separation of concerns is the most important architectural principle. 
-        The data layer exposes application data to the rest of the app, and contains most of the business logic in your application.
-        The UI layer displays application data and listens for user events from users. The UI layer contains separate classes for UI logic and widgets.
+        Separação de responsabilidades é o princípio arquitetural mais importante.
+        A camada de dados expõe os dados da aplicação para o resto do app e contém a maior parte da lógica de negócio em sua aplicação.
+        A camada de UI exibe os dados da aplicação e escuta eventos de usuários. A camada de UI contém classes separadas para lógica de UI e widgets.
       confidence: strong
 
-    - recommendation: Use the repository pattern in the data layer.
+    - recommendation: Use o repository pattern na camada de dados.
       description: |
-        The repository pattern is a software design pattern that isolates the data access logic from the rest of the application. 
-        It creates an abstraction layer between the application's business logic and the underlying data storage mechanisms (databases, APIs, file systems, etc.).
-        In practice, this means creating Repository classes and Service classes.
+        O repository pattern é um padrão de design de software que isola a lógica de acesso a dados do resto da aplicação.
+        Ele cria uma camada de abstração entre a lógica de negócio da aplicação e os mecanismos de armazenamento de dados subjacentes (bancos de dados, APIs, sistemas de arquivos, etc.).
+        Na prática, isso significa criar classes Repository e classes Service.
       confidence: strong
 
-    - recommendation: Use ViewModels and Views in the UI layer. (MVVM)
+    - recommendation: Use ViewModels e Views na camada de UI. (MVVM)
       description: |
-        Separation of concerns is the most important architectural principle. 
-        This particular separation makes your code much less error prone because your widgets remain "dumb".
+        Separação de responsabilidades é o princípio arquitetural mais importante.
+        Esta separação em particular torna seu código muito menos propenso a erros porque seus widgets permanecem "burros".
       confidence: strong
 
-    - recommendation: Use `ChangeNotifiers` and `Listenables` to handle widget updates.
+    - recommendation: Use `ChangeNotifiers` e `Listenables` para lidar com atualizações de widgets.
       description: |
-        The `ChangeNotifier` API is part of the Flutter SDK, and is a convenient way to have your widgets observe changes in your ViewModels.
+        A API `ChangeNotifier` faz parte do Flutter SDK e é uma maneira conveniente de fazer seus widgets observarem mudanças em seus ViewModels.
       confidence: conditional
       confidence-description: |
-        There are many options to handle state-management, and ultimately the decision comes down to personal preference.
-        Read about [our ChangeNotifier recommendation][] or [other popular options][].
+        Existem muitas opções para lidar com gerenciamento de estado, e no final a decisão se resume à preferência pessoal.
+        Leia sobre [nossa recomendação de ChangeNotifier][our ChangeNotifier recommendation] ou [outras opções populares][other popular options].
 
-    - recommendation: Do not put logic in widgets.
+    - recommendation: Não coloque lógica em widgets.
       description: |
-        Logic should be encapsulated in methods on the ViewModel. The only logic a view should contain is:
-        * Simple if-statements to show and hide widgets based on a flag or nullable field in the ViewModel
-        * Animation logic that relies on the widget to calculate
-        * Layout logic based on device information, like screen size or orientation.
-        * Simple routing logic
+        A lógica deve ser encapsulada em métodos no ViewModel. A única lógica que uma view deve conter é:
+        * Declarações if simples para mostrar e ocultar widgets com base em uma flag ou campo nullable no ViewModel
+        * Lógica de animação que depende do widget para calcular
+        * Lógica de layout baseada em informações do dispositivo, como tamanho da tela ou orientação.
+        * Lógica de roteamento simples
       confidence: strong
 
-    - recommendation: Use a domain layer.
+    - recommendation: Use uma camada de domínio.
       description: |
-        A domain layer is only needed if your application has exceeding complex logic that crowds your ViewModels, 
-        or if you find yourself repeating logic in ViewModels. 
-        In very large apps, use-cases are useful, but in most apps they add unnecessary overhead.
+        Uma camada de domínio só é necessária se sua aplicação tiver lógica extremamente complexa que sobrecarrega seus ViewModels,
+        ou se você se encontrar repetindo lógica em ViewModels.
+        Em apps muito grandes, use-cases são úteis, mas na maioria dos apps eles adicionam overhead desnecessário.
       confidence: conditional
       confidence-description: |
-        Use in apps with complex logic requirements.
+        Use em apps com requisitos de lógica complexa.
 
-- category: Handling data
+- category: Manipulação de dados
   description: |
-    Handling data with care makes your code easier to understand, less error prone, and
-    prevents malformed or unexpected data from being created.
+    Manipular dados com cuidado torna seu código mais fácil de entender, menos propenso a erros e
+    previne que dados malformados ou inesperados sejam criados.
   recommendations:
-    - recommendation: Use unidirectional data flow.
+    - recommendation: Use fluxo de dados unidirecional.
       description: |
-        Data updates should only flow from the data layer to the UI layer. 
-        Interactions in the UI layer are sent to the data layer where they're processed.
+        Atualizações de dados devem fluir apenas da camada de dados para a camada de UI.
+        Interações na camada de UI são enviadas para a camada de dados onde são processadas.
       confidence: strong
 
-    - recommendation: Use `Commands` to handle events from user interaction.
+    - recommendation: Use `Commands` para lidar com eventos de interação do usuário.
       description: |
-        Commands prevent rendering errors in your app, and standardize how the UI layer sends events to the data layer. 
-        Read about commands in the [architecture case study][].
+        Commands previnem erros de renderização em seu app e padronizam como a camada de UI envia eventos para a camada de dados.
+        Leia sobre commands no [estudo de caso de arquitetura][architecture case study].
       confidence: recommend
 
-    - recommendation: Use immutable data models.
+    - recommendation: Use modelos de dados imutáveis.
       description: |
-        Immutable data is crucial in making sure that data only updates in the model.
+        Dados imutáveis são cruciais para garantir que os dados sejam atualizados apenas no modelo.
       confidence: strong
 
-    - recommendation: Use freezed or built_value to generate immutable data models.
+    - recommendation: Use freezed ou built_value para gerar modelos de dados imutáveis.
       description: |
-        You can use packages to help generate useful functionality in your data models, [freezed][] or [built_value][]. 
-        These can generate common model methods like JSON ser/des, deep equality checking and copy methods. 
-        These code generation packages can add significant build time to your applications if you have a lot of models.
+        Você pode usar pacotes para ajudar a gerar funcionalidades úteis em seus modelos de dados, [freezed][] ou [built_value][].
+        Estes podem gerar métodos de modelo comuns como serialização/desserialização JSON, verificação de igualdade profunda e métodos de cópia.
+        Esses pacotes de geração de código podem adicionar tempo de compilação significativo às suas aplicações se você tiver muitos modelos.
       confidence: recommend
 
-    - recommendation: Create separate API models and domain models.
+    - recommendation: Crie modelos de API e modelos de domínio separados.
       description: |
-        Using separate models adds verbosity, but prevents complexity in ViewModels and use-cases.
+        Usar modelos separados adiciona verbosidade, mas previne complexidade em ViewModels e use-cases.
       confidence: conditional
-      confidence-description: Use in large apps.
+      confidence-description: Use em apps grandes.
 
-- category: App structure
+- category: Estrutura do app
   description: |
-    Well organized code benefits both the health of the app itself, and the team working on the code.
+    Código bem organizado beneficia tanto a saúde do app em si quanto a equipe trabalhando no código.
   recommendations:
 
-    - recommendation: Use dependency injection.
+    - recommendation: Use injeção de dependência.
       description: |
-        Dependency injection prevents your app from having globally accessible objects, which makes your code less error prone. 
-        We recommend you use the [provider](https://pub.dev/packages/provider) package to handle dependency injection.
+        Injeção de dependência previne que seu app tenha objetos globalmente acessíveis, o que torna seu código menos propenso a erros.
+        Recomendamos que você use o pacote [provider](https://pub.dev/packages/provider) para lidar com injeção de dependência.
       confidence: strong
 
-    - recommendation: Use [go_router](https://pub.dev/packages/go_router) for navigation.
+    - recommendation: Use [go_router](https://pub.dev/packages/go_router) para navegação.
       description: |
-        Go_router is the preferred way to write 90% of Flutter applications. 
-        There are some specific use-cases that go_router doesn't solve, 
-        in which case you can use the [Flutter Navigator API][] directly or try other packages found on [pub.dev][].
+        Go_router é a maneira preferida de escrever 90% das aplicações Flutter.
+        Existem alguns casos de uso específicos que go_router não resolve,
+        nos quais você pode usar a [API Navigator do Flutter][Flutter Navigator API] diretamente ou experimentar outros pacotes encontrados em [pub.dev][].
       confidence: recommend
 
-    - recommendation: Use standardized naming conventions for classes, files and directories.
+    - recommendation: Use convenções de nomenclatura padronizadas para classes, arquivos e diretórios.
       description: |
-        We recommend naming classes for the architectural component they represent. 
-        For example, you may have the following classes:
-        
+        Recomendamos nomear classes pelo componente arquitetural que elas representam.
+        Por exemplo, você pode ter as seguintes classes:
+
         * HomeViewModel
         * HomeScreen
         * UserRepository
         * ClientApiService
-  
-        For clarity, we do not recommend using names that can be confused with objects from the Flutter SDK. 
-        For example, you should put your shared widgets in a directory called `ui/core/`, 
-        rather than a directory called `/widgets`.
+
+        Para maior clareza, não recomendamos usar nomes que possam ser confundidos com objetos do Flutter SDK.
+        Por exemplo, você deve colocar seus widgets compartilhados em um diretório chamado `ui/core/`,
+        em vez de um diretório chamado `/widgets`.
       confidence: recommend
 
-    - recommendation: Use abstract repository classes
+    - recommendation: Use classes de repository abstratas
       description: |
-        Repository classes are the sources of truth for all data in your app, 
-        and facilitate communication with external APIs. 
-        Creating abstract repository classes allows you to create different implementations, 
-        which can be used for different app environments, such as "development" and "staging".
+        Classes de repository são as fontes de verdade para todos os dados em seu app,
+        e facilitam a comunicação com APIs externas.
+        Criar classes de repository abstratas permite que você crie diferentes implementações,
+        que podem ser usadas para diferentes ambientes do app, como "development" e "staging".
       confidence: strong
 
-- category: Testing
+- category: Testes
   description: |
-    Good testing practices makes your app flexible. 
-    It also makes it straightforward and low risk to add new logic and new UI.
+    Boas práticas de testes tornam seu app flexível.
+    Também tornam simples e de baixo risco adicionar nova lógica e nova UI.
   recommendations:
 
-    - recommendation: Test architectural components separately, and together.
+    - recommendation: Teste componentes arquiteturais separadamente e em conjunto.
       description: |
-        * Write unit tests for every service, repository and ViewModel class. These tests should test the logic of every method individually.
-        * Write widget tests for views. Testing routing and dependency injection are particularly important.
+        * Escreva testes unitários para cada classe de service, repository e ViewModel. Esses testes devem testar a lógica de cada método individualmente.
+        * Escreva testes de widget para views. Testar roteamento e injeção de dependência são particularmente importantes.
       confidence: strong
 
-    - recommendation: Make fakes for testing (and write code that takes advantage of fakes.)
+    - recommendation: Crie fakes para testes (e escreva código que aproveite os fakes.)
       description: |
-       Fakes aren't concerned with the inner workings of any given method as much 
-       as they're concerned with inputs and outputs. If you have this in mind while writing application code, 
-       you're forced to write modular, lightweight functions and classes with well defined inputs and outputs.
+       Fakes não estão preocupados com o funcionamento interno de qualquer método em particular tanto quanto
+       estão preocupados com entradas e saídas. Se você tem isso em mente ao escrever código de aplicação,
+       você é forçado a escrever funções e classes modulares e leves com entradas e saídas bem definidas.
       confidence: strong

@@ -283,6 +283,7 @@ inicializado e renderizado pela primeira vez.
 A maior parte desse overhead de tempo pode ser evitada usando
 um `FlutterEngine` em cache e pré-aquecido, que é discutido a seguir.
 
+<a id="using-a-pre-warmed-flutterengine"></a>
 ## Usando um `FlutterEngine` pré-aquecido
 
 Por padrão, um `FlutterFragment` cria sua própria instância
@@ -649,6 +650,7 @@ antes de desabilitar o acesso.
 [`Fragment`]: {{site.android-dev}}/guide/components/fragments
 [`FlutterFragment`]: {{site.api}}/javadoc/io/flutter/embedding/android/FlutterFragment.html
 [using a `FlutterActivity`]: /add-to-app/android/add-flutter-screen
+[usar uma `FlutterActivity`]: /add-to-app/android/add-flutter-screen
 [`FlutterEngine`]: {{site.api}}/javadoc/io/flutter/embedding/engine/FlutterEngine.html
 [`FlutterEngineCache`]: {{site.api}}/javadoc/io/flutter/embedding/engine/FlutterEngineCache.html
 [splash screen guide]: /platform-integration/android/splash-screen

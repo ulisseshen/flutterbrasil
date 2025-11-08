@@ -281,6 +281,7 @@ Se o overlay de desempenho mostra vermelho no gráfico UI,
 comece criando um perfil da Dart VM, mesmo se o gráfico GPU
 também mostra vermelho.
 
+<a id="identifying-problems-in-the-gpu-graph"></a>
 ## Identificando problemas no gráfico GPU
 
 Às vezes uma cena resulta em uma layer tree que é fácil de construir,

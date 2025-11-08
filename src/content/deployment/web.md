@@ -20,6 +20,7 @@ do seu app e cobre os seguintes tópicos:
 * [Escolhendo um modo de build e um renderizador](#choosing-a-build-mode-and-a-renderer)
 * [Minificação](#minification)
 
+<a id="building-the-app-for-release"></a>
 ## Compilando o app para release
 
 Compile o app para implantação usando o comando `flutter build web`.
@@ -49,6 +50,7 @@ Compilações profile são especializadas para criação de perfil de desempenho
 e compilações debug podem ser usadas para configurar o dart2js
 para respeitar assertions e alterar o nível de otimização (usando a flag `-O`.)
 
+<a id="choosing-a-build-mode-and-a-renderer"></a>
 ## Escolhendo um modo de build e um renderizador
 
 O Flutter web fornece dois modos de build (padrão e WebAssembly) e dois renderizadores
@@ -56,6 +58,7 @@ O Flutter web fornece dois modos de build (padrão e WebAssembly) e dois renderi
 
 Para mais informações, veja [Renderizadores web][Web renderers].
 
+<a id="deploying-to-the-web"></a>
 ## Implantando na web
 
 Quando você estiver pronto para implantar seu app,
@@ -68,6 +71,7 @@ muitas outras:
 * [GitHub Pages][]
 * [Google Cloud Hosting][]
 
+<a id="deploying-to-firebase-hosting"></a>
 ## Implantando no Firebase Hosting
 
 Você pode usar o Firebase CLI para compilar e lançar seu app Flutter com Firebase
@@ -118,6 +122,7 @@ npm install -g firebase-tools
 Para saber mais, visite a documentação oficial do [Firebase Hosting][] para
 Flutter na web.
 
+<a id="handling-images-on-the-web"></a>
 ## Manipulando imagens na web
 
 A web suporta o widget `Image` padrão para exibir imagens.
@@ -126,6 +131,7 @@ Isso limita o que você pode fazer com imagens em comparação com plataformas m
 
 Para mais informações, veja [Exibindo imagens na web][Displaying images on the web].
 
+<a id="minification"></a>
 ## Minificação
 
 Para melhorar a inicialização do app, o compilador reduz o tamanho do código compilado

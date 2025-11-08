@@ -159,6 +159,7 @@ Os passos necessários para publicação MSIX se assemelham ao seguinte
   run: msstore publish -v
 ```
 
+<a id="updating-the-apps-version-number"></a>
 ## Atualizando o número de versão do app
 
 Para apps publicados na Microsoft Store,

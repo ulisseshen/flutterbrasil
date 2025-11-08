@@ -46,6 +46,7 @@ Você pode ir direto ao código em
 Se você quiser experimentar diferentes formas de gerenciar estado,
 pule para [Gerenciando estado][Managing state].
 
+<a id="stateful-and-stateless-widgets"></a>
 ## Widgets stateful e stateless
 
 Um widget é stateful ou stateless. Se um widget pode
@@ -73,6 +74,7 @@ Quando o estado do widget muda,
 o objeto de estado chama `setState()`,
 dizendo ao framework para redesenhar o widget.
 
+<a id="creating-a-stateful-widget"></a>
 ## Criando um widget stateful
 
 :::secondary Qual é o ponto?
@@ -310,6 +312,7 @@ Se você ainda tiver dúvidas, consulte qualquer um dos
 O restante desta página cobre várias maneiras de gerenciar o estado de um widget
 e lista outros widgets interativos disponíveis.
 
+<a id="managing-state"></a>
 ## Gerenciando estado
 
 :::secondary Qual é o ponto?
@@ -387,7 +390,7 @@ A classe `_TapboxAState`:
 ```dart
 import 'package:flutter/material.dart';
 
-// TapboxA gerencia seu próprio estado.
+// TapboxA manages its own state.
 
 //------------------------- TapboxA ----------------------------------
 
@@ -485,7 +488,7 @@ A classe TapboxB:
 ```dart
 import 'package:flutter/material.dart';
 
-// ParentWidget gerencia o estado para TapboxB.
+// ParentWidget manages the state for TapboxB.
 
 //------------------------ ParentWidget --------------------------------
 
@@ -791,6 +794,8 @@ App Wonderous [app em execução][wonderous-app], [repositório][wonderous-repo]
 [`Icon`]: {{site.api}}/flutter/widgets/Icon-class.html
 [`InkWell`]: {{site.api}}/flutter/material/InkWell-class.html
 [iOS simulator]: /get-started/install/macos/mobile-ios#configure-your-target-ios-device
+[simulador iOS]: /get-started/install/macos/mobile-ios#configure-your-target-ios-device
+[emulador Android]: /get-started/install/windows/mobile?tab=virtual#configure-your-target-android-device
 [building layouts tutorial]: /ui/layout/tutorial
 [community]: {{site.main-url}}/community
 [Handle taps]: /cookbook/gestures/handling-taps

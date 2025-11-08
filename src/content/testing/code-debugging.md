@@ -20,6 +20,7 @@ confira [`flutter_gdb`][].
 
 [`flutter_gdb`]: {{site.repo.flutter}}/blob/main/engine/src/flutter/sky/tools/flutter_gdb
 
+<a id="add-logging-to-your-application"></a>
 ## Adicionar logging à sua aplicação
 
 :::note
@@ -606,6 +607,7 @@ Qualquer função ou método no framework Flutter que comece com
 
 [cjk]: https://en.wikipedia.org/wiki/CJK_characters
 
+<a id="debug-animation-issues"></a>
 ## Depurar problemas de animação
 
 :::note
@@ -688,6 +690,7 @@ Você também pode gerar stack traces sob demanda.
 Para imprimir seus próprios stack traces, adicione a função `debugPrintStack()`
 ao seu app.
 
+<a id="trace-dart-code-performance"></a>
 ### Rastrear desempenho do código Dart
 
 :::note
@@ -707,7 +710,7 @@ use utilitários [Timeline][] do `dart:developer`.
     <?code-excerpt "lib/perf_trace.dart"?>
     ```dart
     import 'dart:developer';
-
+    
     void main() {
       Timeline.startSync('interesting function');
       // iWonderHowLongThisTakes();
@@ -722,6 +725,7 @@ use utilitários [Timeline][] do `dart:developer`.
 Para garantir que as características de desempenho em tempo de execução correspondam proximamente às
 do seu produto final, execute seu app no [modo profile][].
 
+<a id="add-performance-overlay"></a>
 ### Adicionar sobreposição de desempenho
 
 :::note
@@ -786,6 +790,7 @@ Para adicionar uma sobreposição a aplicações não-Material, adicione um widg
 [Profiling Flutter performance]: /perf/ui-performance
 [The performance overlay]: /perf/ui-performance#the-performance-overlay
 [Timeline events tab]: /tools/devtools/performance#timeline-events-tab
+[aba Timeline events]: /tools/devtools/performance#timeline-events-tab
 [Timeline]: {{site.dart.api}}/dart-developer/Timeline-class.html
 [`Center`]: {{site.api}}/flutter/widgets/Center-class.html
 [`CupertinoApp`]: {{site.api}}/flutter/cupertino/CupertinoApp-class.html

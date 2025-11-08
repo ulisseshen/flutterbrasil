@@ -542,7 +542,9 @@ Para mais informações, veja os seguintes recursos:
 [pubspec file]: https://raw.githubusercontent.com/google/json_serializable.dart/master/example/pubspec.yaml
 [reflection]: https://en.wikipedia.org/wiki/Reflection_(computer_programming)
 [Serializing JSON manually using dart:convert]: #manual-encoding
+[Serializando JSON manualmente usando dart:convert]: #manual-encoding
 [Serializing JSON using code generation libraries]: #code-generation
+[Serializando JSON usando bibliotecas de geração de código]: #code-generation
 [tree shaking]: https://en.wikipedia.org/wiki/Tree_shaking
 [Dive into Dart's patterns and records]: {{site.codelabs}}/codelabs/dart-patterns-records
 [how to parse JSON in Dart/Flutter]: https://codewithandrea.com/articles/parse-json-dart/

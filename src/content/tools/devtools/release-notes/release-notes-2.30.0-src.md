@@ -1,18 +1,18 @@
-# Notas de lançamento do DevTools 2.30.0
+# DevTools 2.30.0 release notes
 
-A versão 2.30.0 do Dart e Flutter DevTools
-inclui as seguintes alterações entre outras melhorias gerais.
-Para saber mais sobre o DevTools, confira a
-[visão geral do DevTools](https://docs.flutter.dev/tools/devtools).
+The 2.30.0 release of the Dart and Flutter DevTools
+includes the following changes among other general improvements.
+To learn more about DevTools, check out the
+[DevTools overview](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Atualizações do Performance
+## Performance updates
 
-* Adicionar an indicator of the rendering engine to the Flutter Frames chart. -
+* Add an indicator of the rendering engine to the Flutter Frames chart. -
   [#6771](https://github.com/flutter/devtools/pull/6771)
 
   ![Flutter rendering engine text](/tools/devtools/release-notes/images-2.30.0/flutter_frames_engine_text.png "Text describing the current flutter rendering engine")
 
-* Melhorar messaging when we do not have analysis data available for a
+* Improve messaging when we do not have analysis data available for a
   Flutter frame. - [#6768](https://github.com/flutter/devtools/pull/6768)
 
 ## VS Code Sidebar updates
@@ -26,7 +26,7 @@ Para saber mais sobre o DevTools, confira a
   that opens DevTools in an external browser window even when VS Code settings
   are set to usually use embedded DevTools. - [#6736](https://github.com/flutter/devtools/pull/6736)
 
-## Histórico completo de commits
+## Full commit history
 
 To find a complete list of changes in this release, check out the
 [DevTools git log](https://github.com/flutter/devtools/tree/v2.30.0).

@@ -574,6 +574,7 @@ toque duplo e mostra a barra de ferramentas de seleção.
   </div>
 </div>
 
+<a id="ui-components"></a>
 ## Componentes de UI
 
 Esta seção inclui recomendações preliminares sobre como adaptar
@@ -612,6 +613,7 @@ Portanto, recomendamos que você siga as convenções da plataforma.
 [`Slider.adaptive()`]: {{site.api}}/flutter/material/Slider/Slider.adaptive.html
 [`CircularProgressIndicator.adaptive()`]: {{site.api}}/flutter/material/CircularProgressIndicator/CircularProgressIndicator.adaptive.html
 
+<a id="top-app-bar-and-navigation-bar"></a>
 ### Barra de aplicativo superior e barra de navegação
 
 Desde o Android 12, a UI padrão para barras de aplicativo
@@ -687,6 +689,7 @@ amostras de código adicionais e uma explicação mais detalhada na
 [hig-appbar]: {{site.apple-dev}}/design/human-interface-guidelines/components/navigation-and-search/navigation-bars/
 [appbar-post]: {{site.repo.uxr}}/discussions/93
 
+<a id="bottom-navigation-bars"></a>
 ### Barras de navegação inferior
 
 Desde o Android 12, a UI padrão para barras de navegação

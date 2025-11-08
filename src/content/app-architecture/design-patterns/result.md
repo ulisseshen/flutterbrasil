@@ -80,7 +80,7 @@ class ApiClientService {
         final stringData = await response.transform(utf8.decoder).join();
         return UserProfile.fromJson(jsonDecode(stringData));
       } else {
-        throw const HttpException('Resposta inválida');
+        throw const HttpException('Invalid response');
       }
     } finally {
       client.close();
@@ -120,7 +120,7 @@ class UserProfileViewModel extends ChangeNotifier {
       _userProfile = await userProfileRepository.getUserProfile();
       notifyListeners();
     } on Exception catch (exception) {
-      // tratar exceção
+      // handle exception
     }
   }
 }
@@ -169,38 +169,38 @@ Uma implementação completa está no final desta página.
 
 <?code-excerpt "lib/simple_result.dart"?>
 ```dart
-/// Classe de utilitário que simplifica o tratamento de erros.
+/// Utility class that simplifies handling errors.
 ///
-/// Retorne um [Result] de uma função para indicar sucesso ou falha.
+/// Return a [Result] from a function to indicate success or failure.
 ///
-/// Um [Result] é um [Ok] com um valor do tipo [T]
-/// ou um [Error] com uma [Exception].
+/// A [Result] is either an [Ok] with a value of type [T]
+/// or an [Error] with an [Exception].
 ///
-/// Use [Result.ok] para criar um resultado bem-sucedido com um valor do tipo [T].
-/// Use [Result.error] para criar um resultado de erro com uma [Exception].
+/// Use [Result.ok] to create a successful result with a value of type [T].
+/// Use [Result.error] to create an error result with an [Exception].
 sealed class Result<T> {
   const Result();
 
-  /// Cria uma instância de Result contendo um valor
+  /// Creates an instance of Result containing a value
   factory Result.ok(T value) => Ok(value);
 
-  /// Cria uma instância de Result contendo um erro
+  /// Create an instance of Result containing an error
   factory Result.error(Exception error) => Error(error);
 }
 
-/// Subclasse de Result para valores
+/// Subclass of Result for values
 final class Ok<T> extends Result<T> {
   const Ok(this.value);
 
-  /// Valor retornado no resultado
+  /// Returned value in result
   final T value;
 }
 
-/// Subclasse de Result para erros
+/// Subclass of Result for errors
 final class Error<T> extends Result<T> {
   const Error(this.error);
 
-  /// Erro retornado no resultado
+  /// Returned error in result
   final Exception error;
 }
 ```
@@ -254,7 +254,7 @@ class ApiClientService {
         final stringData = await response.transform(utf8.decoder).join();
         return Result.ok(UserProfile.fromJson(jsonDecode(stringData)));
       } else {
-        return const Result.error(HttpException('Resposta inválida'));
+        return const Result.error(HttpException('Invalid response'));
       }
     } on Exception catch (exception) {
       return Result.error(exception);
@@ -346,7 +346,7 @@ class UserProfileRepository {
       try {
         return await _databaseService.createTemporaryUser();
       } catch (e) {
-        throw Exception('Falha ao obter o perfil de usuário');
+        throw Exception('Failed to get user profile');
       }
     }
   }
@@ -376,7 +376,7 @@ Future<Result<UserProfile>> getUserProfile() async {
     return databaseResult;
   }
 
-  return Result.error(Exception('Falha ao obter o perfil de usuário'));
+  return Result.error(Exception('Failed to get user profile'));
 }
 ```
 
@@ -409,17 +409,17 @@ como os pacotes [`result_dart`][], [`result_type`][] e [`multiple_result`][].
 
 <?code-excerpt "lib/result.dart (Result)"?>
 ```dart
-/// Classe de utilitário que simplifica o tratamento de erros.
+/// Utility class that simplifies handling errors.
 ///
-/// Retorne um [Result] de uma função para indicar sucesso ou falha.
+/// Return a [Result] from a function to indicate success or failure.
 ///
-/// Um [Result] é um [Ok] com um valor do tipo [T]
-/// ou um [Error] com uma [Exception].
+/// A [Result] is either an [Ok] with a value of type [T]
+/// or an [Error] with an [Exception].
 ///
-/// Use [Result.ok] para criar um resultado bem-sucedido com um valor do tipo [T].
-/// Use [Result.error] para criar um resultado de erro com uma [Exception].
+/// Use [Result.ok] to create a successful result with a value of type [T].
+/// Use [Result.error] to create an error result with an [Exception].
 ///
-/// Avalie o resultado usando uma instrução switch:
+/// Evaluate the result using a switch statement:
 /// ```dart
 /// switch (result) {
 ///   case Ok(): {
@@ -433,29 +433,29 @@ como os pacotes [`result_dart`][], [`result_type`][] e [`multiple_result`][].
 sealed class Result<T> {
   const Result();
 
-  /// Cria um [Result] bem-sucedido, concluído com o [value] especificado.
+  /// Creates a successful [Result], completed with the specified [value].
   const factory Result.ok(T value) = Ok._;
 
-  /// Cria um [Result] de erro, concluído com o [error] especificado.
+  /// Creates an error [Result], completed with the specified [error].
   const factory Result.error(Exception error) = Error._;
 }
 
-/// Um [Result] bem-sucedido com um [value] retornado.
+/// A successful [Result] with a returned [value].
 final class Ok<T> extends Result<T> {
   const Ok._(this.value);
 
-  /// O valor retornado deste resultado.
+  /// The returned value of this result.
   final T value;
 
   @override
   String toString() => 'Result<$T>.ok($value)';
 }
 
-/// Um [Result] de erro com um [error] resultante.
+/// An error [Result] with a resulting [error].
 final class Error<T> extends Result<T> {
   const Error._(this.error);
 
-  /// O erro resultante deste resultado.
+  /// The resulting error of this result.
   final Exception error;
 
   @override

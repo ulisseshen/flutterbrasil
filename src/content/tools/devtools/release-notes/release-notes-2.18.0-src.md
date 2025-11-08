@@ -1,73 +1,73 @@
-# Notas de lançamento do DevTools 2.18.0
+# DevTools 2.18.0 release notes
 
-A versão 2.18.0 do Dart e Flutter DevTools
-inclui as seguintes alterações entre outras melhorias gerais.
-Para saber mais sobre o DevTools, confira a
-[visão geral do DevTools](https://docs.flutter.dev/tools/devtools).
+The 2.18.0 release of the Dart and Flutter DevTools
+includes the following changes among other general improvements.
+To learn more about DevTools, check out the
+[DevTools overview](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Atualizações do Inspector
+## Inspector updates
 
-- Comportamento de rolagem automática melhorado ao encaixar um widget em foco -
+- Auto scrolling behavior improved when snapping a widget into focus -
   [#4283](https://github.com/flutter/devtools/pull/4283)
-- Corrigido problema onde o widget inspector não carregava ao
-  conectar a um app pausado -
+- Fix issue where widget inspector wouldn't load when
+  connecting to a paused app -
   [#4527](https://github.com/flutter/devtools/pull/4527)
-- Melhorados cartões de hover do widget inspector para mostrar progresso enquanto aguarda dados -
+- Improve widget inspector hover cards to show progress while waiting for data -
   [#4488](https://github.com/flutter/devtools/pull/4488)
 
-## Atualizações do Performance
+## Performance updates
 
-- Corrigido problema onde a barra de rolagem saía de sincronia com o conteúdo do frame -
+- Fix issue where scrollbar would go out of sync with the frame content -
   [#4503](https://github.com/flutter/devtools/pull/4503)
-- Adicionado suporte offline para estatísticas de raster -
+- Add offline support for raster stats -
   [#4491](https://github.com/flutter/devtools/pull/4491)
-- Adicionada coluna 'Rendering time' à aba Raster Metrics -
+- Add 'Rendering time' column to Raster Metrics tab -
   [#4474](https://github.com/flutter/devtools/pull/4474)
 
   ![render-time-column](/tools/devtools/release-notes/images-2.18.0/render-time-column.png "Rendering time column in the Raster Metrics tab")
 
-## Atualizações do CPU profiler
+## CPU profiler updates
 
-- Corrigido crash quando um frame vazio é filtrado -
+- Fix crash when an empty frame is filtered -
   [#4502](https://github.com/flutter/devtools/pull/4502)
-- Corrigidos bugs nas árvores de perfil de CPU -
+- Fix bugs in CPU profile trees -
   [#4413](https://github.com/flutter/devtools/pull/4413)
-- Limpeza de UI - [#4404](https://github.com/flutter/devtools/pull/4404)
+- UI Cleanup - [#4404](https://github.com/flutter/devtools/pull/4404)
 
-## Atualizações do Memory
+## Memory updates
 
-- Adicionadas sub-abas Profile e Allocation Tracing -
+- Add Profile and Allocation Tracing sub-tabs -
   [#4523](https://github.com/flutter/devtools/pull/4523)
 
   ![profile](/tools/devtools/release-notes/images-2.18.0/profile.png "Profile in Memory tab")
 
   ![allocation-tracing](/tools/devtools/release-notes/images-2.18.0/allocation-tracing.png "Allocation Tracing in Memory tab")
 
-- Implementada visualização de snapshot -
+- Implement snapshot visualization -
   [#4473](https://github.com/flutter/devtools/pull/4473)
 
-## Atualizações do Debugger
+## Debugger updates
 
-- Corrigido bug para abridor de arquivo e busca -
+- Fix bug for file opener and search -
   [#4525](https://github.com/flutter/devtools/pull/4525)
-- Corrigida área rolável da visualização de código -
+- Fix the code view's scrollable area -
   [#4448](https://github.com/flutter/devtools/pull/4448)
-- Permitido destaque de sintaxe em capturas aninhadas no parser -
+- Allow syntax highlighting on nested captures in parser -
   [#4427](https://github.com/flutter/devtools/pull/4427)
 
-## Atualizações do Network profiler
+## Network profiler updates
 
-- Quando na aba Network, gravações de rede agora continuam funcionando
-  após o app fazer hot restart -
+- When on the Network tab, network recordings now continue working
+  after the app hot restarts -
   [#4438](https://github.com/flutter/devtools/pull/4438)
 
-## Atualizações do Logging
+## Logging updates
 
-- Mensagens de log de fontes não-stdout agora são mostradas -
+- Log messages from non-stdout sources are now shown -
   [#4487](https://github.com/flutter/devtools/pull/4487)
 
-## Histórico completo de commits
+## Full commit history
 
-Para encontrar uma lista completa de alterações desde a versão anterior,
-confira
-[o diff no GitHub](https://github.com/flutter/devtools/compare/v2.17.0...v2.18.0).
+To find a complete list of changes since the previous release,
+check out
+[the diff on GitHub](https://github.com/flutter/devtools/compare/v2.17.0...v2.18.0).

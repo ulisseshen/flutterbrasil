@@ -54,6 +54,7 @@ considere usar gestos (como discutido abaixo) em vez disso.
 [`PointerMoveEvent`]: {{site.api}}/flutter/gestures/PointerMoveEvent-class.html
 [`PointerUpEvent`]: {{site.api}}/flutter/gestures/PointerUpEvent-class.html
 
+<a id="gestures"></a>
 ## Gestos
 
 Gestos representam ações semânticas (por exemplo, toque, arrasto,

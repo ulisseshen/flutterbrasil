@@ -165,6 +165,7 @@ Os recursos vinculados abaixo fornecem mais informações sobre este erro.
 * [Understanding constraints][]
 
 [its source code]: {{site.repo.flutter}}/blob/c8e42b47f5ea8b5ff7bf2f2b0a2a8e765f1aa51d/packages/flutter/lib/src/widgets/basic.dart#L5166-L5174
+[seu código fonte]: {{site.repo.flutter}}/blob/c8e42b47f5ea8b5ff7bf2f2b0a2a8e765f1aa51d/packages/flutter/lib/src/widgets/basic.dart#L5166-L5174
 [flexible-video]: {{site.yt.watch}}?v=CI7x0mAZiY0
 [medium-article]: {{site.flutter-medium}}/how-to-debug-layout-issues-with-the-flutter-inspector-87460a7b9db#738b
 [Understanding constraints]: /ui/layout/constraints

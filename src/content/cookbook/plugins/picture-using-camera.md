@@ -80,7 +80,7 @@ Em seguida, obtenha uma lista de câmeras disponíveis usando o plugin `camera`.
 ```dart
 // Ensure that plugin services are initialized so that `availableCameras()`
 // can be called before `runApp()`
- WidgetsFlutterBinding.ensureInitialized();
+WidgetsFlutterBinding.ensureInitialized();
 
 // Obtain a list of the available cameras on the device.
 final cameras = await availableCameras();

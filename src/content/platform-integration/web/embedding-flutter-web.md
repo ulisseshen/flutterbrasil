@@ -14,6 +14,7 @@ de diferentes formas. Escolha uma das seguintes dependendo do seu caso de uso:
 [full page mode]: #full-page-mode
 [embedded mode]: #embedded-mode
 
+<a id="full-page-mode"></a>
 ## Modo de página inteira
 
 No modo de página inteira, a aplicação Flutter web assume o controle de toda a
@@ -56,6 +57,7 @@ confira a documentação do [Inline Frame element][] no MDN.
 
 [Inline Frame element]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
 
+<a id="embedded-mode"></a>
 ## Modo incorporado
 
 Aplicações Flutter web também podem renderizar conteúdo em um número arbitrário de
@@ -91,6 +93,7 @@ _flutter.loader.load({
 });
 ```
 
+<a id="manage-flutter-views-from-js"></a>
 ### Gerencie views Flutter a partir do JS
 
 Para adicionar ou remover views, use o objeto `app` retornado pelo método `runApp`:

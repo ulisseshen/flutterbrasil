@@ -148,6 +148,7 @@ Widget build(BuildContext context) {
 Hot reload o app e o widget `CalendarDatePicker` deve ser renderizado novamente em espanhol.
 
 <a id="adding-localized-messages"></a>
+<a id="adding-your-own-localized-messages"></a>
 ### Adicionando suas próprias mensagens localizadas
 
 Após adicionar o pacote `flutter_localizations`, você pode configurar a localização. Para adicionar texto localizado à sua aplicação, complete as seguintes instruções:
@@ -281,6 +282,7 @@ Ao usar o VS Code, adicione a [extensão arb-editor][]. Esta extensão adiciona 
 :::
 
 [arb-editor extension]: https://marketplace.visualstudio.com/items?itemName=Google.arb-editor
+[extensão arb-editor]: https://marketplace.visualstudio.com/items?itemName=Google.arb-editor
 
 Você também pode incluir valores da aplicação em uma mensagem com sintaxe especial que usa um _placeholder_ para gerar um método em vez de um getter. Um placeholder, que deve ser um nome de identificador Dart válido, torna-se um parâmetro posicional no método gerado no código `AppLocalizations`. Defina um nome de placeholder envolvendo-o em chaves da seguinte forma:
 
@@ -605,6 +607,7 @@ MaterialApp(
 [`localeResolutionCallback`]: {{site.api}}/flutter/widgets/LocaleResolutionCallback.html
 [`supportedLocales`]: {{site.api}}/flutter/material/MaterialApp/supportedLocales.html
 
+<a id="configuring-the-l10n-yaml-file"></a>
 ### Configurando o arquivo l10n.yaml
 
 O arquivo `l10n.yaml` permite que você configure a ferramenta `gen-l10n` para especificar o seguinte:
@@ -728,6 +731,7 @@ class DemoLocalizations {
 Uma classe baseada no pacote `intl` importa um catálogo de mensagens gerado que fornece a função `initializeMessages()` e o armazenamento de apoio por locale para `Intl.message()`. O catálogo de mensagens é produzido por uma [ferramenta `intl`](#dart-tools) que analisa o código-fonte para classes que contêm chamadas `Intl.message()`. Neste caso, seria apenas a classe `DemoLocalizations`.
 
 [an example]: {{site.repo.this}}/tree/{{site.branch}}/examples/internationalization/minimal
+[um exemplo]: {{site.repo.this}}/tree/{{site.branch}}/examples/internationalization/minimal
 [`intl`]: {{site.pub-pkg}}/intl
 [`Intl.message()`]: {{site.pub-api}}/intl/latest/intl/Intl/message.html
 

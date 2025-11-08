@@ -1,42 +1,43 @@
 ---
-title: Updated Material 3 `Slider`
+title: Atualização do `Slider` do Material 3
 description: >-
-  The `Slider` widget has been updated to match the
-  Material 3 Design specifications.
+  O widget `Slider` foi atualizado para corresponder às
+  especificações de design do Material 3.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
-The `Slider` has been updated to match the Material 3 Design specifications.
+O `Slider` foi atualizado para corresponder às especificações de design do Material 3.
 
-The `Slider` changes include an updated height,
-a gap between the active and inactive track, and
-a stop indicator to show the end value of the inactive track.
-Pressing the thumb adjusts its width, and the track adjusts its shape.
-The new value indicator shape is a rounded rectangle.
-New color mappings have also been introduced for some of the `Slider` shapes.
+As mudanças no `Slider` incluem uma altura atualizada,
+uma lacuna entre a trilha ativa e inativa, e
+um indicador de parada para mostrar o valor final da trilha inativa.
+Pressionar o controle deslizante ajusta sua largura, e a trilha ajusta sua forma.
+A nova forma do indicador de valor é um retângulo arredondado.
+Novos mapeamentos de cores também foram introduzidos para algumas das formas do `Slider`.
 
-## Context
+## Contexto
 
-The Material 3 Design specs for the `Slider` were updated in December 2023.
-To opt into the 2024 design spec, set the `Slider.year2023` flag to `false`.
-This is done to ensure that existing apps aren't affected by
-the updated design specifications.
+As especificações de design do Material 3 para o `Slider` foram atualizadas em dezembro de 2023.
+Para aderir à especificação de design de 2024, defina a flag `Slider.year2023` como `false`.
+Isso é feito para garantir que os aplicativos existentes não sejam afetados pelas
+especificações de design atualizadas.
 
-## Description of change
+## Descrição da mudança
 
-The `Slider` widget has a `year2023` flag that can be set to `false` to
-opt in to the updated design spec.
-The default value for the `year2023` flag is `true`,
-which means that the `Slider` uses the previous 2023 design specifications.
+O widget `Slider` tem uma flag `year2023` que pode ser definida como `false` para
+aderir à especificação de design atualizada.
+O valor padrão para a flag `year2023` é `true`,
+o que significa que o `Slider` usa as especificações de design anteriores de 2023.
 
-When [`Slider.year2023`][] is set to `false`,
-the slider uses the updated design specifications.
+Quando [`Slider.year2023`][] é definido como `false`,
+o slider usa as especificações de design atualizadas.
 
-## Migration guide
+## Guia de migração
 
-To opt into the updated design spec for the `Slider`,
-set the `year2023` flag to `false`:
+Para aderir à especificação de design atualizada para o `Slider`,
+defina a flag `year2023` como `false`:
 
 ```dart highlightLines=2
 Slider(
@@ -50,23 +51,23 @@ Slider(
 ),
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.28.0-0.1.pre<br>
-In stable release: Not yet
+Implementado na versão: 3.28.0-0.1.pre<br>
+Na versão estável: Ainda não
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`Slider`][]
 * [`Slider.year2023`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Update `Slider` for Material 3 redesign][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Introduce new Material 3 `Slider` shapes][]
 

@@ -1,81 +1,82 @@
 ---
-title: iOS FlutterViewController splashScreenView made nullable
+title: splashScreenView do FlutterViewController do iOS tornado nullable
 description: >
-  FlutterViewController splashScreenView changed from nonnull to nullable.
+  splashScreenView do FlutterViewController alterado de nonnull para nullable.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
-The `FlutterViewController` property `splashScreenView` has
-been changed from `nonnull` to `nullable`.
+A propriedade `splashScreenView` do `FlutterViewController` foi
+alterada de `nonnull` para `nullable`.
 
-Old declaration of `splashScreenView`:
+Declaração antiga de `splashScreenView`:
 
 ```objc
 @property(strong, nonatomic) UIView* splashScreenView;
 ```
 
-New declaration of `splashScreenView`:
+Nova declaração de `splashScreenView`:
 
 ```objc
 @property(strong, nonatomic, nullable) UIView* splashScreenView;
 ```
 
-## Context
+## Contexto
 
-Prior to this change, on iOS the `splashScreenView` property returned `nil`
-when no splash screen view was set, and
-setting the property to `nil` removed the splash screen view.
-However, the `splashScreenView` API was incorrectly marked `nonnull`. 
-This property is most often used when transitioning to
-Flutter views in iOS add-to-app scenarios.
+Antes desta mudança, no iOS a propriedade `splashScreenView` retornava `nil`
+quando nenhuma view de splash screen estava definida, e
+definir a propriedade como `nil` removia a view de splash screen.
+No entanto, a API `splashScreenView` estava incorretamente marcada como `nonnull`.
+Esta propriedade é mais frequentemente usada ao fazer transição para
+views do Flutter em cenários de add-to-app no iOS.
 
-## Description of change
+## Descrição da mudança
 
-While it was possible in Objective-C to work around the
-incorrect `nonnull` annotation by setting `splashScreenView` to
-a `nil` `UIView`, in Swift this caused a compilation error:
+Embora fosse possível em Objective-C contornar a
+anotação `nonnull` incorreta definindo `splashScreenView` como
+uma `UIView` `nil`, em Swift isso causava um erro de compilação:
 
 ```plaintext
 error build: Value of optional type 'UIView?' must be unwrapped to a value of type 'UIView'
 ```
 
-[PR #34743][] updates the property attribute to `nullable`.
-It can return `nil` and can be set to `nil` to
-remove the view in both Objective-C and Swift.
+A [PR #34743][] atualiza o atributo da propriedade para `nullable`.
+Ela pode retornar `nil` e pode ser definida como `nil` para
+remover a view tanto em Objective-C quanto em Swift.
 
-## Migration guide
+## Guia de migração
 
-If `splashScreenView` is stored in a `UIView` variable in Swift,
-update to an optional type `UIView?`.
+Se `splashScreenView` for armazenada em uma variável `UIView` em Swift,
+atualize para um tipo opcional `UIView?`.
 
-Code before migration:
+Código antes da migração:
 
 ```swift
   var splashScreenView = UIView()
   var flutterEngine = FlutterEngine(name: "my flutter engine")
   let flutterViewController = FlutterViewController(engine: flutterEngine, nibName: nil, bundle: nil)
-  splashScreenView = flutterViewController.splashScreenView // compilation error: Value of optional type 'UIView?' must be unwrapped to a value of type 'UIView'
+  splashScreenView = flutterViewController.splashScreenView // erro de compilação: Value of optional type 'UIView?' must be unwrapped to a value of type 'UIView'
 ```
 
-Code after migration:
+Código após a migração:
 
 ```swift
   var splashScreenView : UIView? = UIView()
   var flutterEngine = FlutterEngine(name: "my flutter engine")
   let flutterViewController = FlutterViewController(engine: flutterEngine, nibName: nil, bundle: nil)
-  let splashScreenView = flutterViewController.splashScreenView // compiles successfully
+  let splashScreenView = flutterViewController.splashScreenView // compila com sucesso
   if let splashScreenView = splashScreenView {
   }
 ```
 
-## Timeline
+## Linha do tempo
 
-In stable release: 3.7
+Na versão estável: 3.7
 
-## References
+## Referências
 
-Relevant PR:
+PR relevante:
 
 * [Make splashScreenView of FlutterViewController nullable][]
 

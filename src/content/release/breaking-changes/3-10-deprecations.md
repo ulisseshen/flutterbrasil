@@ -1,33 +1,34 @@
 ---
-title: Deprecated API removed after v3.10
+title: API depreciada removida após v3.10
 description: >
-  After reaching end of life, the following deprecated APIs
-  were removed from Flutter.
+  Após atingir o fim da vida útil, as seguintes APIs depreciadas
+  foram removidas do Flutter.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
-In accordance with Flutter's [Deprecation Policy][],
-deprecated APIs that reached end of life after the
-3.10 stable release have been removed.
+De acordo com a [Política de Depreciação][Deprecation Policy] do Flutter,
+APIs depreciadas que atingiram o fim da vida útil após a
+3.10 versão estável foram removidas.
 
-All affected APIs have been compiled into this
-primary source to aid in migration. A
-[quick reference sheet][] is available as well.
+Todas as APIs afetadas foram compiladas nesta
+fonte primária para auxiliar na migração. A
+[folha de referência rápida][quick reference sheet] também está disponível.
 
 [Deprecation Policy]: {{site.repo.flutter}}/blob/main/docs/contributing/Tree-hygiene.md#deprecations
 [quick reference sheet]: /go/deprecations-removed-after-3-10
 
-## Changes
+## Mudanças
 
 This section lists the deprecations, listed by the package and affected class.
 
 ### ThemeData.fixTextFieldOutlineLabel
 
 Package: flutter
-Supported by Flutter Fix: yes
+Suportado pelo Flutter Fix: sim
 
-`ThemeData.fixTextFieldOutlineLabel` was deprecated in v2.5.
+`ThemeData.fixTextFieldOutlineLabel` foi depreciado na v2.5.
 References to this property can be removed.
 
 The `fixTextFieldOutlineLabel` was a temporary migration flag that allowed users
@@ -35,9 +36,9 @@ to gracefully migrate to a new behavior rather than experiencing a hard break.
 Before deprecating, this property was transitioned to the new default from the
 fix to the label for text fields.
 
-**Migration guide**
+**Guia de migração**
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 var themeData = ThemeData(
@@ -45,23 +46,23 @@ var themeData = ThemeData(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 var themeData = ThemeData(
 );
 ```
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 
 * [`ThemeData`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#87281][]
-* Removed in [#125893][]
+* Depreciado em [#87281][]
+* Removido em [#125893][]
 
 [`ThemeData`]: {{site.api}}/flutter/material/ThemeData-class.html
 
@@ -73,9 +74,9 @@ Relevant PRs:
 ### OverscrollIndicatorNotification.disallowGlow
 
 Package: flutter
-Supported by Flutter Fix: yes
+Suportado pelo Flutter Fix: sim
 
-`OverscrollIndicatorNotification.disallowGlow` was deprecated in v2.5.
+`OverscrollIndicatorNotification.disallowGlow` foi depreciado na v2.5.
 The replacement is the `disallowIndicator` method.
 
 The `disallowIndicator` was created as a replacement for the original method
@@ -84,9 +85,9 @@ the `GlowingOverscrollIndicator` was the only kind to dispatch
 `OverscrollIndicatorNotification`s, and so the method was updated to better
 reflect multiple kinds of indicators.
 
-**Migration guide**
+**Guia de migração**
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 bool _handleOverscrollIndicatorNotification(OverscrollIndicatorNotification notification) {
@@ -95,7 +96,7 @@ bool _handleOverscrollIndicatorNotification(OverscrollIndicatorNotification noti
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 bool _handleOverscrollIndicatorNotification(OverscrollIndicatorNotification notification) {
@@ -104,18 +105,18 @@ bool _handleOverscrollIndicatorNotification(OverscrollIndicatorNotification noti
 }
 ```
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 
 * [`OverscrollIndicatorNotification`][]
 * [`StretchingOverscrollIndicator`][]
 * [`GlowingOverscrollIndicator`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#87839][]
-* Removed in [#127042][]
+* Depreciado em [#87839][]
+* Removido em [#127042][]
 
 [`OverscrollIndicatorNotification`]: {{site.api}}/flutter/widgets/OverscrollIndicatorNotification-class.html
 [`StretchingOverscrollIndicator`]: {{site.api}}/flutter/widgets/StretchingOverscrollIndicator-class.html
@@ -129,7 +130,7 @@ Relevant PRs:
 ### ColorScheme primaryVariant & secondaryVariant
 
 Package: flutter
-Supported by Flutter Fix: yes
+Suportado pelo Flutter Fix: sim
 
 `ColorScheme.primaryVariant` and `ColorScheme.secondaryVariant` were deprecated
 in v2.6. The replacements are the `ColorScheme.primaryContainer` and
@@ -139,9 +140,9 @@ These changes were made to align with the updated Material Design specification
 for `ColorScheme`. The updates to `ColorScheme` are covered more extensively in 
 the [ColorScheme for Material 3][] design document.
 
-**Migration guide**
+**Guia de migração**
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 var colorScheme = ColorScheme(
@@ -152,7 +153,7 @@ var primaryColor = colorScheme.primaryVariant;
 var secondaryColor = colorScheme.secondaryVariant;
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 var colorScheme = ColorScheme(
@@ -163,20 +164,20 @@ var primaryColor = colorScheme.primaryContainer;
 var secondaryColor = colorScheme.secondaryContainer;
 ```
 
-**References**
+**Referências**
 
 Design Document:
 
 * [ColorScheme for Material 3][]
 
-API documentation:
+Documentação da API:
 
 * [`ColorScheme`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#93427][]
-* Removed in [#127124][]
+* Depreciado em [#93427][]
+* Removido em [#127124][]
 
 [ColorScheme for Material 3]: /go/colorscheme-m3
 
@@ -190,9 +191,9 @@ Relevant PRs:
 ### ThemeData.primaryColorBrightness
 
 Package: flutter
-Supported by Flutter Fix: yes
+Suportado pelo Flutter Fix: sim
 
-`ThemeData.primaryColorBrightness` was deprecated in v2.6, and has not been used
+`ThemeData.primaryColorBrightness` foi depreciado na v2.6, and has not been used
 by the framework since then. References should be removed. The `Brightness` is
 now extrapolated from the `ThemeData.primaryColor` if `ThemeData.brightness` has
 not been explicitly provided.
@@ -202,9 +203,9 @@ Design guidelines. The overall update to the theming system, including the
 removal of `primaryColorBrightness` is discussed more extensively in the
 [Material Theme System Updates][] design document.
 
-**Migration guide**
+**Guia de migração**
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 var themeData = ThemeData(
@@ -212,29 +213,29 @@ var themeData = ThemeData(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 var themeData = ThemeData(
 );
 ```
 
-**References**
+**Referências**
 
 Design Document:
 
 * [Material Theme System Updates][]
 
-API documentation:
+Documentação da API:
 
 * [`Theme`][]
 * [`ThemeData`][]
 * [`Brightness`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#93396][]
-* Removed in [#127238][]
+* Depreciado em [#93396][]
+* Removido em [#127238][]
 
 [Material Theme System Updates]: /go/material-theme-system-updates
 
@@ -250,10 +251,10 @@ Relevant PRs:
 ### RawScrollbar & subclasses updates
 
 Package: flutter
-Supported by Flutter Fix: yes
+Suportado pelo Flutter Fix: sim
 
 The `isAlwaysShown` property of `RawScrollbar`, `Scrollbar`,
-`ScrollbarThemeData` and `CupertinoScrollbar` was deprecated in v2.9. The
+`ScrollbarThemeData` and `CupertinoScrollbar` foi depreciado na v2.9. The
 replacement in all cases is `thumbVisibility`.
 
 This change was made since `isAlwaysShown` always referred to the scrollbar
@@ -270,9 +271,9 @@ kind of states, including and beyond just hovering. The use of
 configuring widgets based on their state, rather than enumerating properties for
 every permutation of interactive states.
 
-**Migration guide**
+**Guia de migração**
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 var rawScrollbar = RawScrollbar(
@@ -290,7 +291,7 @@ var scrollbarThemeData = ScrollbarThemeData(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 var rawScrollbar = RawScrollbar(
@@ -310,9 +311,9 @@ var scrollbarThemeData = ScrollbarThemeData(
 );
 ```
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 
 * [`RawScrollbar`][]
 * [`Scrollbar`][]
@@ -321,11 +322,11 @@ API documentation:
 * [`MaterialStateProperty`][]
 * [`MaterialState`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#96957][]
-* Deprecated in [#97173][]
-* Removed in [#127351][]
+* Depreciado em [#96957][]
+* Depreciado em [#97173][]
+* Removido em [#127351][]
 
 
 [`RawScrollbar`]: {{site.api}}/flutter/widgets/RawScrollbar-class.html
@@ -344,7 +345,7 @@ Relevant PRs:
 ### AnimationSheetBuilder display & sheetSize
 
 Package: flutter_test
-Supported by Flutter Fix: yes
+Suportado pelo Flutter Fix: sim
 
 The `display` and `sheetSize` methods of `AnimationSheetBuilder` were deprecated
 in v2.3. The replacement is the `collate` method.
@@ -356,11 +357,11 @@ The `collate` function directly puts the images together and asynchronously
 returns an image. It requires less boilerplate, and outputs smaller images
 without any compromise to quality.
 
-**Migration guide**
+**Guia de migração**
 
-[In-depth migration guide available]
+[Guia de migração detalhado disponível]
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 final AnimationSheetBuilder animationSheet = AnimationSheetBuilder(
@@ -388,7 +389,7 @@ await expectLater(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 final AnimationSheetBuilder animationSheet = AnimationSheetBuilder(
@@ -411,18 +412,18 @@ await expectLater(
 );
 ```
 
-[In-depth migration guide available]: /release/breaking-changes/animation-sheet-builder-display
+[Guia de migração detalhado disponível]: /release/breaking-changes/animation-sheet-builder-display
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 
 * [`AnimationSheetBuilder`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#83337][]
-* Removed in [#129657][]
+* Depreciado em [#83337][]
+* Removido em [#129657][]
 
 [`AnimationSheetBuilder`]: {{site.api}}/flutter/flutter_test/AnimationSheetBuilder-class.html
 
@@ -436,7 +437,7 @@ Relevant PRs:
 ### flutter_test timeout logic
 
 Package: flutter_test
-Supported by Flutter Fix: no
+Suportado pelo Flutter Fix: não
 
 The following APIs related to timeout logic in tests were deprecated
 in v2.6. There are no replacements, and references should be removed, except for
@@ -456,34 +457,34 @@ customers.
 Since being deprecated, use of these parameters have had no effect on tests, so
 removing references should have no effect on existing code bases.
 
-**Migration guide**
+**Guia de migração**
 
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 testWidgets('Test', (_) {}, initialTimeout:  Duration(seconds: 5));
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 testWidgets('Test', (_) {}, timeout:  Timeout(Duration(seconds: 5)));
 ```
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 
 * [`testWidgets`][]
 * [`TestWidgetsFlutterBinding`][]
 * [`AutomatedTestWidgetsFlutterBinding`][]
 * [`LiveTestWidgetsFlutterBinding`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#89952][]
-* Removed in [#129663][]
+* Depreciado em [#89952][]
+* Removido em [#129663][]
 
 [`testWidgets`]: {{site.api}}/flutter/flutter_test/testWidgets.html
 [`TestWidgetsFlutterBinding`]: {{site.api}}/flutter/flutter_test/TestWidgetsFlutterBinding-class.html
@@ -495,6 +496,6 @@ Relevant PRs:
 
 ---
 
-## Timeline
+## Linha do tempo
 
-In stable release: 3.13.0
+Na versão estável: 3.13.0

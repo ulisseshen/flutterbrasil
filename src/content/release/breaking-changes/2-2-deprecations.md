@@ -1,30 +1,31 @@
 ---
-title: Deprecated API removed after v2.2
+title: API depreciada removida após v2.2
 description: >
-  After reaching end of life, the following deprecated APIs
-  were removed from Flutter.
+  Após atingir o fim da vida útil, as seguintes APIs depreciadas
+  foram removidas do Flutter.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
-In accordance with Flutter's [Deprecation Policy][],
-deprecated APIs that reached end of life after the
-2.2 stable release have been removed.
+De acordo com a [Política de Depreciação][Deprecation Policy] do Flutter,
+APIs depreciadas que atingiram o fim da vida útil após a
+versão estável 2.2 foram removidas.
 
-All affected APIs have been compiled into this
-primary source to aid in migration. A
-[quick reference sheet][] is available as well.
+Todas as APIs afetadas foram compiladas nesta
+fonte primária para auxiliar na migração. Uma
+[folha de referência rápida][quick reference sheet] também está disponível.
 
 [Deprecation Policy]: {{site.repo.flutter}}/blob/main/docs/contributing/Tree-hygiene.md#deprecations
 [quick reference sheet]: /go/deprecations-removed-after-2-2
 
-## Changes
+## Mudanças
 
-This section lists the deprecations, listed by the affected class.
+Esta seção lista as depreciações, organizadas pela classe afetada.
 
 ### `hasFloatingPlaceholder` of `InputDecoration` & `InputDecorationTheme`
 
-Supported by Flutter Fix: yes
+Suportado pelo Flutter Fix: sim
 
 `hasFloatingPlaceholder` was deprecated in v1.13.2.
 Use `floatingLabelBehavior` instead.
@@ -33,9 +34,9 @@ Where `useFloatingPlaceholder` was false, replace with `FloatingLabelBehavior.ne
 This change allows more behaviors to be specified beyond the original binary
 choice, adding `FloatingLabelBehavior.always` as an additional option.
 
-**Migration guide**
+**Guia de migração**
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 // InputDecoration
@@ -63,7 +64,7 @@ inputDecorationTheme.copyWith(hasFloatingPlaceholder: false);
 inputDecorationTheme.copyWith(hasFloatingPlaceholder: true);
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 // InputDecoration
@@ -91,22 +92,22 @@ inputDecorationTheme.copyWith(floatingLabelBehavior: FloatingLabelBehavior.never
 inputDecorationTheme.copyWith(floatingLabelBehavior: FloatingLabelBehavior.auto);
 ```
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 
 * [`InputDecoration`][]
 * [`InputDecorationTheme`][]
 * [`FloatingLabelBehavior`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [InputDecoration: option to always float label][]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#46115][]
-* Removed in [#83923][]
+* Depreciado em [#46115][]
+* Removido em [#83923][]
 
 [`InputDecoration`]: {{site.api}}/flutter/material/InputDecoration-class.html
 [`InputDecorationTheme`]: {{site.api}}/flutter/material/InputDecorationTheme-class.html
@@ -119,7 +120,7 @@ Relevant PRs:
 
 ### `TextTheme`
 
-Supported by Flutter Fix: yes
+Suportado pelo Flutter Fix: sim
 
 Several `TextStyle` properties of `TextTheme` were deprecated in v1.13.8. They
 are listed in the following table alongside the appropriate replacement in the
@@ -138,9 +139,9 @@ new API.
 | body1 | bodyText2 |
 | subtitle | subtitle2 |
 
-**Migration guide**
+**Guia de migração**
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 // TextTheme
@@ -195,7 +196,7 @@ style = textTheme.subtitle;
 style = textTheme.overline;
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 // TextTheme
@@ -248,24 +249,24 @@ style = textTheme.subtitle2;
 style = textTheme.overline;
 ```
 
-**References**
+**Referências**
 
-Design document:
+Documento de design:
 
 * [Update the TextTheme API][]
 
-API documentation:
+Documentação da API:
 
 * [`TextTheme`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Migrate TextTheme to 2018 APIs][]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#48547][]
-* Removed in [#83924][]
+* Depreciado em [#48547][]
+* Removido em [#83924][]
 
 [Update the TextTheme API]: /go/update-text-theme-api
 [`TextTheme`]: {{site.api}}/flutter/material/TextTheme-class.html
@@ -277,23 +278,23 @@ Relevant PRs:
 
 ### Default `Typography`
 
-Supported by Flutter Fix: no
+Suportado pelo Flutter Fix: não
 
 The default `Typography` was deprecated in v1.13.8.
 The prior default returned the text styles of the 2014 Material Design specification.
 This will now result in `TextStyle`s reflecting the 2018 Material Design specification.
 For the former, use the `material2014` constructor.
 
-**Migration guide**
+**Guia de migração**
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 // Formerly returned 2014 TextStyle spec
 Typography();
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 // Use 2018 TextStyle spec, either by default or explicitly.
@@ -304,24 +305,24 @@ Typography.material2018();
 Typography.material2014();
 ```
 
-**References**
+**Referências**
 
-Design document:
+Documento de design:
 
 * [Update the TextTheme API][]
 
-API documentation:
+Documentação da API:
 
 * [`Typography`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Migrate TextTheme to 2018 APIs][]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#48547][]
-* Removed in [#83924][]
+* Depreciado em [#48547][]
+* Removido em [#83924][]
 
 [Update the TextTheme API]: /go/update-text-theme-api
 [`Typography`]: {{site.api}}/flutter/material/Typography-class.html
@@ -331,6 +332,6 @@ Relevant PRs:
 
 ---
 
-## Timeline
+## Linha do tempo
 
-In stable release: 2.5
+Na versão estável: 2.5

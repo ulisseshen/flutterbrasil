@@ -1,33 +1,34 @@
 ---
-title: Deprecated API removed after v2.5
+title: API depreciada removida após v2.5
 description: >
-  After reaching end of life, the following deprecated APIs
-  were removed from Flutter.
+  Após atingir o fim da vida útil, as seguintes APIs depreciadas
+  foram removidas do Flutter.
+ia-translate: true
 ---
 
-## Summary
+## Resumo
 
-In accordance with Flutter's [Deprecation Policy][],
-deprecated APIs that reached end of life after the
-2.5 stable release have been removed.
+De acordo com a [Política de Depreciação][Deprecation Policy] do Flutter,
+APIs depreciadas que atingiram o fim da vida útil após a
+versão estável 2.5 foram removidas.
 
-All affected APIs have been compiled into this
-primary source to aid in migration. A
-[quick reference sheet][] is available as well.
+Todas as APIs afetadas foram compiladas nesta
+fonte primária para auxiliar na migração. Uma
+[folha de referência rápida][quick reference sheet] também está disponível.
 
 
 [Deprecation Policy]: {{site.repo.flutter}}/blob/main/docs/contributing/Tree-hygiene.md#deprecations
 [quick reference sheet]: /go/deprecations-removed-after-2-5
 
-## Changes
+## Mudanças
 
-This section lists the deprecations by affected class.
+Esta seção lista as depreciações por classe afetada.
 
 ---
 
 ### `autovalidate` of `Form` & related classes
 
-Supported by Flutter Fix: yes
+Suportado pelo Flutter Fix: sim
 
 `autovalidate` was deprecated in v1.19.
 
@@ -44,11 +45,11 @@ The following classes all have the same change of API:
 - `DropdownButtonFormField`
 - `TextFormField`
 
-**Migration guide**
+**Guia de migração**
 
 [In-depth migration guide available][]
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 const Form form = Form(autovalidate: true);
@@ -66,7 +67,7 @@ const DropdownButtonFormField dropDownButtonFormField = DropdownButtonFormField(
 const DropdownButtonFormField dropdownButtonFormField = DropdownButtonFormField(autovalidate: false);
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 const Form form = Form(autovalidateMode: AutovalidateMode.always);
@@ -86,9 +87,9 @@ const DropdownButtonFormField dropdownButtonFormField = DropdownButtonFormField(
 
 [In-depth migration guide available]: /release/breaking-changes/form-field-autovalidation-api
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 
 * [`Form`][]
 * [`FormField`][]
@@ -96,7 +97,7 @@ API documentation:
 * [`DropdownButtonFormField`][]
 * [`AutovalidateMode`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue 56363]({{site.repo.flutter}}/issues/56363)
 * [Issue 18885]({{site.repo.flutter}}/issues/18885)
@@ -104,10 +105,10 @@ Relevant issues:
 * [Issue 36154]({{site.repo.flutter}}/issues/36154)
 * [Issue 48876]({{site.repo.flutter}}/issues/48876)
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#59766]({{site.repo.flutter}}/pull/59766)
-* Removed in [#90292]({{site.repo.flutter}}/pull/90292)
+* Depreciado em [#59766]({{site.repo.flutter}}/pull/59766)
+* Removido em [#90292]({{site.repo.flutter}}/pull/90292)
 
 [`Form`]: {{site.api}}/flutter/widgets/Form-class.html
 [`FormField`]: {{site.api}}/flutter/widgets/FormField-class.html
@@ -119,7 +120,7 @@ Relevant PRs:
 
 ### `FloatingHeaderSnapConfiguration.vsync`
 
-Supported by Flutter Fix: no
+Suportado pelo Flutter Fix: não
 
 The `TickerProvider` `vsync` property of `FloatingHeaderSnapConfiguration` was
 deprecated in v1.19.
@@ -127,9 +128,9 @@ deprecated in v1.19.
 The `vsync` for the animation should instead be specified using
 `SliverPersistentHeaderDelegate.vsync`.
 
-**Migration guide**
+**Guia de migração**
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 class MySliverPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
@@ -137,7 +138,7 @@ class MySliverPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class MySliverPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
@@ -147,26 +148,26 @@ class MySliverPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
 
 ```
 
-**References**
+**Referências**
 
-Design document:
+Documento de design:
 
 * [Control SliverPersistentHeader's showOnScreen Behavior][]
 
-API documentation:
+Documentação da API:
 
 * [`FloatingHeaderSnapConfiguration`][]
 * [`SliverPersistentHeaderDelegate`][]
 * [`TickerProvider`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue 25507]({{site.repo.flutter}}/issues/25507)
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#56413]({{site.repo.flutter}}/pull/56413)
-* Removed in [#90293]({{site.repo.flutter}}/pull/90293)
+* Depreciado em [#56413]({{site.repo.flutter}}/pull/56413)
+* Removido em [#90293]({{site.repo.flutter}}/pull/90293)
 
 [Control SliverPersistentHeader's showOnScreen Behavior]: https://docs.google.com/document/d/1BZhxy176uUnqOCnXdnHM1XetS9mw9WIyUAOE-dgVdUM/edit?usp=sharing
 [`FloatingHeaderSnapConfiguration`]: {{site.api}}/flutter/rendering/FloatingHeaderSnapConfiguration-class.html
@@ -177,16 +178,16 @@ Relevant PRs:
 
 ### `AndroidViewController` & subclasses' `id`
 
-Supported by Flutter Fix: yes
+Suportado pelo Flutter Fix: sim
 
 The `id` of `AndroidViewController`, `TextureAndroidViewController`, and
 `SurfaceAndroidViewController`, was deprecated in v1.20.
 
 For all of these use cases, `viewId` should be used instead.
 
-**Migration guide**
+**Guia de migração**
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 final SurfaceAndroidViewController surfaceController = SurfaceAndroidViewController(
@@ -209,7 +210,7 @@ final TextureAndroidViewController textureController = TextureAndroidViewControl
 viewId = textureController.id;
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 final SurfaceAndroidViewController surfaceController = SurfaceAndroidViewController(
@@ -232,26 +233,26 @@ final TextureAndroidViewController textureController = TextureAndroidViewControl
 viewId = textureController.viewId;
 ```
 
-**References**
+**Referências**
 
-Design document:
+Documento de design:
 
 * [Flutter Hybrid Composition][]
 
-API documentation:
+Documentação da API:
 
 * [`AndroidViewController`][]
 * [`TextureAndroidViewController`][]
 * [`SurfaceAndroidViewController`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue 55218]({{site.repo.flutter}}/issues/55218)
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#60320]({{site.repo.flutter}}/issues/60320)
-* Removed in [#90294]({{site.repo.flutter}}/issues/90294)
+* Depreciado em [#60320]({{site.repo.flutter}}/issues/60320)
+* Removido em [#90294]({{site.repo.flutter}}/issues/90294)
 
 [Flutter Hybrid Composition]: {{site.repo.flutter}}/blob/main/docs/platforms/Hybrid-Composition.md
 [`AndroidViewController`]: {{site.api}}/flutter/services/AndroidViewController-class.html
@@ -262,7 +263,7 @@ Relevant PRs:
 
 ### `BlacklistingTextInputFormatter` & `WhitelistingTextInputFormatter`
 
-Supported by Flutter Fix: no
+Suportado pelo Flutter Fix: não
 
 The entire classes of `BlacklistingTextInputFormatter` and
 `WhitelistingTextInoutFormatter` were deprecated in v1.20.
@@ -270,9 +271,9 @@ The entire classes of `BlacklistingTextInputFormatter` and
 Their functionality has been rewritten into a single class,
 `FilteringTextInputFormatter`.
 
-**Migration guide**
+**Guia de migração**
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 formatter = BlacklistingTextInputFormatter(pattern, replacementString: 'replacedPattern');
@@ -283,7 +284,7 @@ formatter = WhitelistingTextInputFormatter.digitsOnly;
 pattern = formatter.whitelistedPattern;
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 formatter = FilteringTextInputFormatter.deny(pattern, replacementString: 'replacedPattern');
@@ -294,16 +295,16 @@ formatter = FilteringTextInputFormatter.digitsOnly;
 pattern = formatter.filterPattern;
 ```
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 
 * [`FilteringTextInputFormatter`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#59120]({{site.repo.flutter}}/issues/59120)
-* Removed in [#90296]({{site.repo.flutter}}/issues/90296)
+* Depreciado em [#59120]({{site.repo.flutter}}/issues/59120)
+* Removido em [#90296]({{site.repo.flutter}}/issues/90296)
 
 [`FilteringTextInputFormatter`]: {{site.api}}/flutter/services/FilteringTextInputFormatter-class.html
 
@@ -311,18 +312,18 @@ Relevant PRs:
 
 ### `BottomNavigationBarItem.title`
 
-Supported by Flutter Fix: yes
+Suportado pelo Flutter Fix: sim
 
 The `title` of `BottomNavigationBarItem` was deprecated in v1.19.
 The `label` property should be used instead. This migration allows for better
 text scaling, and presents built-in `Tooltip`s for the `BottomNavigationBarItem`
 in the context of a `BottomNavigationBar`.
 
-**Migration guide**
+**Guia de migração**
 
 [In-depth migration guide available][]
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 const BottomNavigationBarItem bottomNavigationBarItem = BottomNavigationBarItem(title: myTitle);
@@ -330,7 +331,7 @@ const BottomNavigationBarItem bottomNavigationBarItem = BottomNavigationBarItem(
 bottomNavigationBarItem.title;
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 const BottomNavigationBarItem bottomNavigationBarItem = BottomNavigationBarItem(label: myTitle);
@@ -338,21 +339,21 @@ const BottomNavigationBarItem bottomNavigationBarItem = BottomNavigationBarItem(
 bottomNavigationBarItem.label;
 ```
 
-**References**
+**Referências**
 
-Design document:
+Documento de design:
 * [BottomNavigationBarItem title][]
 
-API documentation:
+Documentação da API:
 
 * [`BottomNavigationBarItem`][]
 * [`BottomNavigationBar`][]
 * [`Tooltip`][]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#59127]({{site.repo.flutter}}/issues/59127)
-* Removed in [#90295]({{site.repo.flutter}}/issues/90295)
+* Depreciado em [#59127]({{site.repo.flutter}}/issues/59127)
+* Removido em [#90295]({{site.repo.flutter}}/issues/90295)
 
 [In-depth migration guide available]: /release/breaking-changes/bottom-navigation-title-to-label
 [BottomNavigationBarItem title]: /go/bottom-navigation-bar-title-deprecation
@@ -373,7 +374,7 @@ The following APIs have been removed:
 These APIs were marked deprecated [in Dart 2.0][dart-deprecated], and did not
 work correctly in any Dart 2.x release.
 
-**Migration guide**
+**Guia de migração**
 
 These `packageRoot` APIs have been replaced by a new set of `packageConfig` APIs,
 which you should migrate to.
@@ -404,9 +405,9 @@ dependencies:
   platform: ^3.1.0
 ```
 
-**References**
+**Referências**
 
-Relevant PRs:
+PRs relevantes:
 
 * Removed from the Dart libraries in [#47769][]
 * Removed from `package:platform` in [PR #38][]
@@ -425,6 +426,6 @@ Relevant PRs:
 
 ---
 
-## Timeline
+## Linha do tempo
 
-In stable release: 2.10
+Na versão estável: 2.10

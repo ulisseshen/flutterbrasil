@@ -11,8 +11,8 @@
 The following link(s) take you to the
 [latest docs][] on the master channel.
 You can find the docs for the stable
-channel at [api.flutter.dev][].
+channel at [api.flutterbrasil.dev][].
 :::
 
-[api.flutter.dev]: {{site.api}}
+[api.flutterbrasil.dev]: {{site.api}}
 [latest docs]: {{site.main-api}}

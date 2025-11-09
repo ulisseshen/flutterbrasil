@@ -1,7 +1,7 @@
 name: gallery
 description: >-
   Legacy examples referenced in "Layouts in Flutter":
-  https://docs.flutter.dev/ui/layout.
+  https://docs.flutterbrasil.dev/ui/layout.
 version: 1.0.0
 
 resolution: workspace

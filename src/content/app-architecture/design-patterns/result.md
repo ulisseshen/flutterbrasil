@@ -461,7 +461,7 @@ final class Error<T> extends Result<T> {
 }
 ```
 
-[Error handling documentation]: https://dart.dev/language/error-handling
+[Error handling documentation]: https://dartbrasil.dev/language/error-handling
 [Flutter architecture guidelines]: /app-architecture
 [Compass App example]: {{site.repo.samples}}/tree/main/compass_app
 [pub.dev]: {{site.pub}}

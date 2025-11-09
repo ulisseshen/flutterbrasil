@@ -267,7 +267,7 @@ From Wed May 1 16:56:00 2019 -0700 to Thu Jul 18 08:04:00 2019 -0700
 
 [32638](https://github.com/flutter/flutter/pull/32638) Fix apidocs in _WidgetsAppState.basicLocaleListResolution (cla: yes, d: api docs, framework)
 
-[32641](https://github.com/flutter/flutter/pull/32641) Updating dart.dev related links (cla: yes, d: api docs, framework)
+[32641](https://github.com/flutter/flutter/pull/32641) Updating dartbrasil.dev related links (cla: yes, d: api docs, framework)
 
 [32654](https://github.com/flutter/flutter/pull/32654) Tabs code/doc cleanup (cla: yes, f: material design, framework)
 
@@ -877,7 +877,7 @@ From Wed May 1 16:56:00 2019 -0700 to Thu Jul 18 08:04:00 2019 -0700
 
 [34376](https://github.com/flutter/flutter/pull/34376) Add missing pieces for 'driver' support on macOS (cla: yes, tool)
 
-[34388](https://github.com/flutter/flutter/pull/34388) Change API doc link to api.dart.dev (cla: yes, d: api docs, framework)
+[34388](https://github.com/flutter/flutter/pull/34388) Change API doc link to api.dartbrasil.dev (cla: yes, d: api docs, framework)
 
 [34417](https://github.com/flutter/flutter/pull/34417) Include raw value in Diagnostics json for basic types (a: tests, cla: yes, framework)
 

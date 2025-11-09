@@ -102,7 +102,7 @@ em particular, sua lista de [outros recursos][Other resources].
 
 Para mais informações sobre o uso de DevTools com
 apps de linha de comando Dart, veja a
-[documentação do DevTools em dart.dev]({{site.dart-site}}/tools/dart-devtools).
+[documentação do DevTools em dartbrasil.dev]({{site.dart-site}}/tools/dart-devtools).
 
 [Android Studio/IntelliJ]: /tools/devtools/android-studio
 [VS Code]: /tools/devtools/vscode

@@ -19,7 +19,7 @@ class DemoPage extends StatelessWidget {
   const DemoPage({super.key});
 
   void launchURL() {
-    launchUrl(Uri.parse('https://flutter.dev'));
+    launchUrl(Uri.parse('https://flutterbrasil.dev'));
   }
 
   @override

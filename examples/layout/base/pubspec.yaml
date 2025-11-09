@@ -1,6 +1,6 @@
 name: layout_base
 description: >
-  Sample app from "Building Layouts", https://docs.flutter.dev/development/ui/layout.
+  Sample app from "Building Layouts", https://docs.flutterbrasil.dev/development/ui/layout.
 version: 1.0.0
 
 resolution: workspace

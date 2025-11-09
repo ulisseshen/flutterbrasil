@@ -57,8 +57,8 @@ você está depurando seu próprio projeto Flutter também.
     Wrote 129 files.
 
     All done!
-    You can find general documentation for Flutter at: https://docs.flutter.dev/
-    Detailed API documentation is available at: https://api.flutter.dev/
+    You can find general documentation for Flutter at: https://docs.flutterbrasil.dev/
+    Detailed API documentation is available at: https://api.flutterbrasil.dev/
     If you prefer video documentation, consider: https://www.youtube.com/c/flutterdev
 
     In order to run your application, type:
@@ -266,7 +266,7 @@ app Flutter de teste. Esta atualização adiciona código nativo para depurar.
       Widget build(BuildContext context) {
         final Uri toLaunch = Uri(
             scheme: 'https',
-            host: 'docs.flutter.dev',
+            host: 'docs.flutterbrasil.dev',
             path: 'testing/native-debugging');
         return Scaffold(
           appBar: AppBar(

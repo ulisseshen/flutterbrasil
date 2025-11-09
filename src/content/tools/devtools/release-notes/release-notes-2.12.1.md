@@ -10,7 +10,7 @@ showToc: false
 A versão 2.12.1 do Dart e Flutter DevTools
 inclui as seguintes mudanças, entre outras melhorias gerais.
 Para saber mais sobre o DevTools, confira a
-[visão geral do DevTools](https://docs.flutter.dev/tools/devtools).
+[visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
 ## Atualizações gerais
 
@@ -26,7 +26,7 @@ Para saber mais sobre o DevTools, confira a
 * Adicionados links de documentação aos menus
   "Enhance Tracing" e "More debugging options".
   Leia a
-  [documentação de enhance tracing](https://docs.flutter.dev/tools/devtools/performance#enhance-tracing)
+  [documentação de enhance tracing](https://docs.flutterbrasil.dev/tools/devtools/performance#enhance-tracing)
   para saber mais sobre esses recursos -
   [#3934](https://github.com/flutter/devtools/pull/3934),
   [#3936](https://github.com/flutter/devtools/pull/3936)

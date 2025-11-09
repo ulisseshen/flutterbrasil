@@ -24,7 +24,7 @@ repo do [Flutter documentation website](https://github.com/flutter/website/),
 mesmo que seja apenas para corrigir um erro de digitação.
 
 Para maneiras de se envolver na comunidade Flutter ou para aprender sobre nós,
-visite a página [Flutter community](https://flutter.dev/community).
+visite a página [Flutter community](https://flutterbrasil.dev/community).
 
 # Maneiras de contribuir
 
@@ -32,7 +32,7 @@ Nós encorajamos você a se conectar e participar da conversa.
 
 Uma maneira fácil de enviar feedback é dar "joinha" em issues importantes para você
 no issue tracker do [Flutter SDK and API docs][issues],
-ou do [docs.flutter.dev website][doc-issues].
+ou do [docs.flutterbrasil.dev website][doc-issues].
 
 Outras maneiras de contribuir:
 
@@ -43,11 +43,11 @@ Outras maneiras de contribuir:
 * [Relatar bugs e solicitar funcionalidades][issues]
 * [Relatar bugs na documentação da API][issues]
 * [Enviar PRs para o Flutter SDK][PRs]
-* [Solicitar documentação para docs.flutter.dev][doc-issues]
-* [Enviar PRs para docs.flutter.dev][doc-PRs]
+* [Solicitar documentação para docs.flutterbrasil.dev][doc-issues]
+* [Enviar PRs para docs.flutterbrasil.dev][doc-PRs]
 * [Nos siga no Twitter: @flutterdev](https://twitter.com/flutterdev/)
-* [Leia o blog do Flutter](https://blog.flutter.dev)
-* [Inscreva-se para futuros estudos de UX sobre Flutter](https://flutter.dev/research-signup)
+* [Leia o blog do Flutter](https://blog.flutterbrasil.dev)
+* [Inscreva-se para futuros estudos de UX sobre Flutter](https://flutterbrasil.dev/research-signup)
 * [Participe do subreddit para acompanhar as últimas novidades da
    comunidade Flutter][reddit]
 * [Participe do Discord para se conectar com outros desenvolvedores

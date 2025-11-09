@@ -33,7 +33,7 @@ então você não precisa instalar o Dart separadamente.
 :::
 
 O exemplo a seguir é um pequeno programa que
-busca dados de dart.dev,
+busca dados de dartbrasil.dev,
 decodifica o json retornado,
 e imprime no console.
 Se você está confiante na sua habilidade de
@@ -58,7 +58,7 @@ class Package {
 }
 
 void main() async {
-  final httpPackageUrl = Uri.https('dart.dev', '/f/packages/http.json');
+  final httpPackageUrl = Uri.https('dartbrasil.dev', '/f/packages/http.json');
   final httpPackageResponse = await http.get(httpPackageUrl);
   if (httpPackageResponse.statusCode != 200) {
     print('Failed to retrieve the http package!');

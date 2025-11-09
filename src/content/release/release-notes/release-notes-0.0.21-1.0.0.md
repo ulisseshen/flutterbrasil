@@ -7,7 +7,7 @@ skipTemplateRendering: true
 ---
 
 _Esta página é um dump da antiga página de Changelog da wiki do Flutter até que
-as [notas de release do Flutter](./) foram publicadas em flutter.dev._
+as [notas de release do Flutter](./) foram publicadas em flutterbrasil.dev._
 
 ## Mudanças até e incluindo 1.0.0
 
@@ -87,7 +87,7 @@ as [notas de release do Flutter](./) foram publicadas em flutter.dev._
 
 ### v0.9.2
 
-* [#21540](https://github.com/flutter/flutter/pull/21540) adicionou um método `transform()` ao [`Animatable`](https://api.flutter.dev/flutter/animation/Animatable-class.html). Ele é implementado por `Tween` (a principal subclasse de `Animatable`), mas classes que fazem subclasse de `Animatable` diretamente precisarão implementá-lo. Tipicamente o método `evaluate()` existente pode ser alterado para implementar `transform()` ao invés, usando o valor dado pelo argumento para `transform()` ao invés do valor atual da animação fornecido para `evaluate()`. `evaluate()` agora tem uma implementação padrão que delega para `transform()`.
+* [#21540](https://github.com/flutter/flutter/pull/21540) adicionou um método `transform()` ao [`Animatable`](https://api.flutterbrasil.dev/flutter/animation/Animatable-class.html). Ele é implementado por `Tween` (a principal subclasse de `Animatable`), mas classes que fazem subclasse de `Animatable` diretamente precisarão implementá-lo. Tipicamente o método `evaluate()` existente pode ser alterado para implementar `transform()` ao invés, usando o valor dado pelo argumento para `transform()` ao invés do valor atual da animação fornecido para `evaluate()`. `evaluate()` agora tem uma implementação padrão que delega para `transform()`.
 
 ## Mudanças em v0.8.2 (desde v0.7.3) - beta 8
 
@@ -108,7 +108,7 @@ as [notas de release do Flutter](./) foram publicadas em flutter.dev._
 ## Mudanças em v0.6.0 (desde v0.5.1) - beta 6
 
 ### v0.6.0
-* Dart SDK atualizado para uma build Dart 2 (2.1.0-dev.0.0). Autores de packages e plugins devem garantir que seus arquivos `pubspec.yaml` incluam uma restrição de Dart SDK com limite superior de `<3.0.0`. Veja o [post Getting ready for Dart 2](https://blog.dart.dev/getting-ready-for-dart-2-and-making-your-packages-look-great-on-the-pub-site-118464d7f59d) para detalhes.
+* Dart SDK atualizado para uma build Dart 2 (2.1.0-dev.0.0). Autores de packages e plugins devem garantir que seus arquivos `pubspec.yaml` incluam uma restrição de Dart SDK com limite superior de `<3.0.0`. Veja o [post Getting ready for Dart 2](https://blog.dartbrasil.dev/getting-ready-for-dart-2-and-making-your-packages-look-great-on-the-pub-site-118464d7f59d) para detalhes.
 * [#19025](https://github.com/flutter/flutter/pull/19025) renomeou `CupertinoRefreshControl` para `CupertinoSliverRefreshControl` para consistência.
 * [#19317](https://github.com/flutter/flutter/pull/19317) Adiciona cursorWidth e cursorRadius ao cursor do TextField (Material).
 * [#20116](https://github.com/flutter/flutter/pull/20116) reduziu tamanhos de binários de release em ~2MB
@@ -227,7 +227,7 @@ Para acompanhar nossa investigação, veja [Dart issue 32936](https://github.com
 
 * [#15416](https://github.com/flutter/flutter/pull/15416) removeu `package:http` do Flutter e substituiu todos os usos pelo `HttpClient` de `dart:io`. Se você usa `package:http` você deve adicioná-lo como uma dependência em seu `pubspec.yaml` para continuar usando.
 
-  `createHttpClient()` também foi removido após ser marcado como deprecado. Para alterar como o framework cria clientes http, você pode usar [HttpOverrides](https://api.flutter.dev/flutter/dart-io/HttpOverrides-class.html) de `dart:io` para fornecer seu próprio callback `createHttpClient()` globalmente ou por zona.
+  `createHttpClient()` também foi removido após ser marcado como deprecado. Para alterar como o framework cria clientes http, você pode usar [HttpOverrides](https://api.flutterbrasil.dev/flutter/dart-io/HttpOverrides-class.html) de `dart:io` para fornecer seu próprio callback `createHttpClient()` globalmente ou por zona.
 
   Mais detalhes estão disponíveis [no anúncio](https://groups.google.com/forum/#!topic/flutter-dev/AnqDqgQ6vus).
 
@@ -299,7 +299,7 @@ Para acompanhar nossa investigação, veja [Dart issue 32936](https://github.com
 
 ### v0.1.9
 
-* [#14901](https://github.com/flutter/flutter/pull/14901) Uma atualização visual do [Slider](https://api.flutter.dev/flutter/material/Slider-class.html) alterou as cores, opacidades e o shape e comportamento do indicador de valor. Também removeu a flag "`thumbOpenAtMin`" da classe Slider, que não é mais necessária, e pode ser emulada pelo suporte a shape customizado de thumb.
+* [#14901](https://github.com/flutter/flutter/pull/14901) Uma atualização visual do [Slider](https://api.flutterbrasil.dev/flutter/material/Slider-class.html) alterou as cores, opacidades e o shape e comportamento do indicador de valor. Também removeu a flag "`thumbOpenAtMin`" da classe Slider, que não é mais necessária, e pode ser emulada pelo suporte a shape customizado de thumb.
 
 ## Mudanças em v0.1.5 (desde v0.1.4) - beta 1.1
 

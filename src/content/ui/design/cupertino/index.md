@@ -53,7 +53,7 @@ package with Flutter,
 check out the following resources:
 
 * The (mostly visual) [Cupertino widget catalog][]
-  on doc.flutter.dev
+  on doc.flutterbrasil.dev
 * The [Cupertino library][] page in the API docs
 * The [Cupertino API examples][] on the flutter/flutter
   repo. ([Instructions][]) For example,

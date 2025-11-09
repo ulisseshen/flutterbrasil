@@ -10,7 +10,7 @@ showToc: false
 A versão 2.20.0 do Dart e Flutter DevTools
 inclui as seguintes alterações entre outras melhorias gerais.
 Para saber mais sobre DevTools, confira a
-[visão geral do DevTools](https://docs.flutter.dev/tools/devtools).
+[visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
 ## Atualizações do CPU profiler
 

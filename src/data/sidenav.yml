@@ -96,7 +96,7 @@
       permalink: /release/compatibility-policy
     - divider
     - title: Flutter blog
-      permalink: https://blog.flutter.dev
+      permalink: https://blog.flutterbrasil.dev
     - title: What's new in the docs
       permalink: /release/whats-new
 
@@ -900,4 +900,4 @@
         - title: flutter CLI
           permalink: /reference/flutter-cli
         - title: API docs
-          permalink: https://api.flutter.dev
+          permalink: https://api.flutterbrasil.dev

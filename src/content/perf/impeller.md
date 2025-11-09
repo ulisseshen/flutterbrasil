@@ -55,7 +55,7 @@ a página [Posso usar Impeller?][Can I use Impeller?].
 
 ### iOS
 
-Desde o [Flutter 3.29](https://blog.flutter.dev/whats-new-in-flutter-3-29-f90c380c2317), Impeller é o **padrão no iOS** sem capacidade de
+Desde o [Flutter 3.29](https://blog.flutterbrasil.dev/whats-new-in-flutter-3-29-f90c380c2317), Impeller é o **padrão no iOS** sem capacidade de
 alternar para Skia.
 
 ### Android

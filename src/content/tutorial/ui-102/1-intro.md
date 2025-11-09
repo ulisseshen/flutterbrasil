@@ -1,78 +1,79 @@
 ---
-title: Advanced UI features
+ia-translate: true
+title: Recursos avançados de UI
 description: |
-  A gentle introduction into advanced UI features: adaptive layouts, slivers, scrolling, navigation.
+  Uma introdução suave aos recursos avançados de UI: layouts adaptativos, slivers, rolagem, navegação.
 permalink: /tutorial/set-up-ui-102/
 sitemap: false
 ---
 
-In this third installment of the Flutter tutorial series, you'll use
-Flutter's Cupertino library to build a partial clone of the iOS
-Contacts app.
+Nesta terceira parte da série de tutoriais do Flutter, você usará
+a biblioteca Cupertino do Flutter para construir um clone parcial do app de
+Contatos do iOS.
 
 <img src='/assets/images/docs/tutorial/rolodex_complete.png'
 width="100%" alt="A screenshot of the completed Rolodex contact
 management app showing a list of contacts organized alphabetically.">
 
-By the end of this tutorial, you'll have learned how to create
-adaptive layouts, implement comprehensive theming, build navigation
-patterns, and use advanced scrolling techniques.
+Ao final deste tutorial, você terá aprendido como criar
+layouts adaptativos, implementar temas abrangentes, construir padrões de navegação
+e usar técnicas avançadas de rolagem.
 
-## What you'll learn
+## O que você aprenderá
 
-This tutorial explores the following topics:
+Este tutorial explora os seguintes tópicos:
 
-* Building responsive layouts with `LayoutBuilder`.
-* Using advanced scrolling with slivers and search.
-* Implementing stack-based navigation patterns.
-* Creating comprehensive themes with `CupertinoThemeData`.
-* Supporting both light and dark themes.
-* Creating an iOS-style UI using Cupertino widgets.
+* Construir layouts responsivos com `LayoutBuilder`.
+* Usar rolagem avançada com slivers e busca.
+* Implementar padrões de navegação baseados em pilha.
+* Criar temas abrangentes com `CupertinoThemeData`.
+* Suportar temas claro e escuro.
+* Criar uma UI no estilo iOS usando widgets Cupertino.
 
-This tutorial assumes that you've completed the previous Flutter tutorials
-and are comfortable with basic widget composition, state management,
-and the Flutter project structure.
+Este tutorial assume que você completou os tutoriais anteriores do Flutter
+e está confortável com composição básica de widgets, gerenciamento de estado
+e a estrutura de projeto do Flutter.
 
-## Create a new Flutter project
+## Crie um novo projeto Flutter
 
-To build a Flutter app, you first need a Flutter project. You can
-create a new app with the [Flutter CLI tool][], which is installed as part of the
-Flutter SDK.
+Para construir um app Flutter, você primeiro precisa de um projeto Flutter. Você pode
+criar um novo app com a [ferramenta CLI do Flutter][Flutter CLI tool], que é instalada como parte do
+SDK do Flutter.
 
-Open your terminal or command prompt, and run the following command to
-create a new Flutter project:
+Abra seu terminal ou prompt de comando, e execute o seguinte comando para
+criar um novo projeto Flutter:
 
 ```shell
 $ flutter create rolodex --empty
 ```
 
-This command creates a new Flutter project that uses the minimal "empty" template.
+Este comando cria um novo projeto Flutter que usa o template mínimo "empty".
 
-## Add the Cupertino Icons dependency
+## Adicione a dependência Cupertino Icons
 
-This project uses the [`cupertino_icons` package][], an official Flutter package.  Add it as a dependency by running the following command:
+Este projeto usa o [pacote `cupertino_icons`][`cupertino_icons` package], um pacote oficial do Flutter. Adicione-o como uma dependência executando o seguinte comando:
 
 ```shell
 $ flutter pub add cupertino_icons
 ```
 
-## Set up the project structure
+## Configure a estrutura do projeto
 
-First, create the basic directory structure for your app. In your project's
-`lib` directory, create the following folders:
+Primeiro, crie a estrutura básica de diretórios para seu app. No diretório
+`lib` do seu projeto, crie as seguintes pastas:
 
 ```shell
 $ cd rolodex
 $ mkdir lib/data lib/screens lib/theme
 ```
 
-This command creates folders to organize your code into logical
-sections: data models, screen widgets, and theme configuration.
+Este comando cria pastas para organizar seu código em seções
+lógicas: modelos de dados, widgets de tela e configuração de tema.
 
-## Replace the starter code
+## Substitua o código inicial
 
-In your IDE, open the `lib/main.dart` file, and replace its entire
-contents with the following starter code:
+Na sua IDE, abra o arquivo `lib/main.dart`, e substitua todo o seu
+conteúdo pelo seguinte código inicial:
 
 ```dart
 import 'package:flutter/cupertino.dart';
@@ -104,31 +105,31 @@ class RolodexApp extends StatelessWidget {
 }
 ```
 
-Unlike the previous two tutorials, this app uses `CupertinoApp`
-instead of `MaterialApp`. The Cupertino design system provides
-iOS-style widgets and styling, which is perfect for building apps that
-feel native on Apple devices.
+Diferentemente dos dois tutoriais anteriores, este app usa `CupertinoApp`
+em vez de `MaterialApp`. O sistema de design Cupertino fornece
+widgets e estilização no estilo iOS, o que é perfeito para construir apps que
+pareçam nativos em dispositivos Apple.
 
-## Run your app
+## Execute seu app
 
-In your terminal at the root of your Flutter app, run the following command:
+No seu terminal na raiz do seu app Flutter, execute o seguinte comando:
 
 ```shell
 $ flutter run -d chrome
 ```
 
-The app builds and launches in a new instance of Chrome. It displays
-"Hello Rolodex!" in the center of the screen.
+O app é compilado e inicia em uma nova instância do Chrome. Ele exibe
+"Hello Rolodex!" no centro da tela.
 
-## Create the data models
+## Crie os modelos de dados
 
-Before building the UI, create the data structures and sample data that
-the app will use. This section is lightly explained because it's not
-the focus of this tutorial.
+Antes de construir a UI, crie as estruturas de dados e dados de exemplo que
+o app usará. Esta seção é explicada levemente porque não é
+o foco deste tutorial.
 
-### `Contact` data
+### Dados de `Contact`
 
-Create a new file, `lib/data/contact.dart`, and add the basic `Contact` class:
+Crie um novo arquivo, `lib/data/contact.dart`, e adicione a classe `Contact` básica:
 
 ```dart
 // lib/data/contact.dart
@@ -320,13 +321,13 @@ final Set<Contact> allContacts = <Contact>{
 
 ```
 
-This sample data includes contacts with and without middle names and
-suffixes. This gives you a variety of data to work with as you build the UI.
+Estes dados de exemplo incluem contatos com e sem nomes do meio e
+sufixos. Isso lhe dá uma variedade de dados para trabalhar enquanto você constrói a UI.
 
-### `ContactGroup` data
+### Dados de `ContactGroup`
 
-Now, create the contact groups that organize your contacts into lists.
-Create a new file, `lib/data/contact_group.dart`, and add the `ContactGroup` class:
+Agora, crie os grupos de contatos que organizam seus contatos em listas.
+Crie um novo arquivo, `lib/data/contact_group.dart`, e adicione a classe `ContactGroup`:
 
 ```dart
 // lib/data/contact_group.dart
@@ -385,10 +386,10 @@ class ContactGroup {
 }
 ```
 
-A `ContactGroup` represents a collection of contacts, like "All Contacts"
-or "Favorites".
+Um `ContactGroup` representa uma coleção de contatos, como "All Contacts"
+ou "Favorites".
 
-Add the following helper code and sample data to the same file:
+Adicione o seguinte código auxiliar e dados de exemplo ao mesmo arquivo:
 
 ```dart
 // lib/data/contact_group.dart
@@ -443,10 +444,10 @@ List<ContactGroup> generateSeedData() {
 }
 ```
 
-This code creates three sample groups and a function to generate the initial
-data for the app.
+Este código cria três grupos de exemplo e uma função para gerar os
+dados iniciais para o app.
 
-Finally, add a class that manages state changes:
+Finalmente, adicione uma classe que gerencia mudanças de estado:
 
 ```dart
 // lib/data/contact_group.dart
@@ -472,14 +473,14 @@ class ContactGroupsModel {
 }
 ```
 
-If you aren't familiar with `ValueNotifier`, you should
-[complete the previous tutorial][] before continuing,
-which covers state management.
+Se você não está familiarizado com `ValueNotifier`, você deve
+[completar o tutorial anterior][complete the previous tutorial] antes de continuar,
+que cobre gerenciamento de estado.
 
-## Connect the data to your app
+## Conecte os dados ao seu app
 
-Update your `main.dart` to include the global state and import the new
-data file:
+Atualize seu `main.dart` para incluir o estado global e importar o novo
+arquivo de dados:
 
 ```dart
 // lib/main.dart
@@ -511,8 +512,8 @@ class RolodexApp extends StatelessWidget {
 }
 ```
 
-With all of the extraneous code out of the way, in the next lesson,
-you'll start building the app in earnest.
+Com todo o código extra fora do caminho, na próxima lição,
+você começará a construir o app de verdade.
 
 [Flutter CLI tool]: /reference/flutter-cli
 [complete the previous tutorial]: /tutorial/set-up-state-app

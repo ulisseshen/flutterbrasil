@@ -1,38 +1,39 @@
 ---
-title: Plugins in Flutter tests
-shortTitle: Plugin tests
-description: Adding plugin as part of your Flutter tests.
+ia-translate: true
+title: Plugins em testes Flutter
+shortTitle: Testes de plugin
+description: Adicionando plugin como parte de seus testes Flutter.
 ---
 
 :::note
-To learn how to avoid crashes from a plugin when
-testing your Flutter app, read on.
-To learn how to test your plugin code, check out
-[Testing plugins][].
+Para aprender como evitar crashes de um plugin ao
+testar seu app Flutter, continue lendo.
+Para aprender como testar o código do seu plugin, confira
+[Testing plugins][Testing plugins].
 :::
 
 [Testing plugins]: /testing/testing-plugins
 
-Almost all [Flutter plugins][] have two parts:
+Quase todos os [Flutter plugins][Flutter plugins] têm duas partes:
 
-* Dart code, which provides the API your code calls.
-* Code written in a platform-specific (or "host") language,
-  such as Kotlin or Swift, which implements those APIs.
+* Código Dart, que fornece a API que seu código chama.
+* Código escrito em uma linguagem específica de plataforma (ou "host"),
+  como Kotlin ou Swift, que implementa essas APIs.
 
-In fact, the native (or host) language code distinguishes
-a plugin package from a standard package.
+Na verdade, o código em linguagem nativa (ou host) distingue
+um package de plugin de um package padrão.
 
 [Flutter plugins]: /packages-and-plugins/using-packages
 
-Building and registering the host portion of a plugin
-is part of the Flutter application build process,
-so plugins only work when your code is running
-in your application, such as with `flutter run`
-or when running [integration tests][].
-When running [Dart unit tests][] or
-[widget tests][], the host code isn't available.
-If the code you are testing calls any plugins,
-this often results in errors like the following:
+Compilar e registrar a porção host de um plugin
+faz parte do processo de build da aplicação Flutter,
+então os plugins só funcionam quando seu código está rodando
+em sua aplicação, como com `flutter run`
+ou ao executar [integration tests][integration tests].
+Ao executar [Dart unit tests][Dart unit tests] ou
+[widget tests][widget tests], o código host não está disponível.
+Se o código que você está testando chama quaisquer plugins,
+isso geralmente resulta em erros como o seguinte:
 
 ```console
 MissingPluginException(No implementation found for method someMethodName on channel some_channel_name)
@@ -43,110 +44,110 @@ MissingPluginException(No implementation found for method someMethodName on chan
 [widget tests]: {{site.api}}/flutter/flutter_test/flutter_test-library.html
 
 :::note
-Plugin implementations that [only use Dart][]
-will work in unit tests. This is an implementation
-detail of the plugin, however,
-so tests shouldn't rely on it.
+Implementações de plugin que [only use Dart][only use Dart]
+funcionarão em unit tests. Este é um detalhe de implementação
+do plugin, no entanto,
+então os testes não devem depender disso.
 :::
 
 [only use Dart]: /packages-and-plugins/developing-packages#dart-only-platform-implementations
 
-When unit testing code that uses plugins,
-there are several options to avoid this exception.
-The following solutions are listed in order of preference.
+Ao fazer unit testing de código que usa plugins,
+existem várias opções para evitar essa exceção.
+As seguintes soluções estão listadas em ordem de preferência.
 
 ## Wrap the plugin
 
-In most cases, the best approach is to wrap plugin
-calls in your own API,
-and provide a way of [mocking][] your own API in tests.
+Na maioria dos casos, a melhor abordagem é encapsular as chamadas do plugin
+em sua própria API,
+e fornecer uma maneira de fazer [mocking][mocking] da sua própria API em testes.
 
-This has several advantages:
+Isso tem várias vantagens:
 
-* If the plugin API changes,
-  you won't need to update your tests.
-* You are only testing your own code,
-  so your tests can't fail due to behavior of
-  a plugin you're using.
-* You can use the same approach regardless of
-  how the plugin is implemented,
-  or even for non-plugin package dependencies.
+* Se a API do plugin mudar,
+  você não precisará atualizar seus testes.
+* Você está testando apenas seu próprio código,
+  então seus testes não podem falhar devido ao comportamento de
+  um plugin que você está usando.
+* Você pode usar a mesma abordagem independentemente de
+  como o plugin é implementado,
+  ou até mesmo para dependências de packages que não são plugins.
 
 [mocking]: /cookbook/testing/unit/mocking
 
 ## Mock the plugin's public API
 
-If the plugin's API is already based on class instances,
-you can mock it directly, with the following caveats:
+Se a API do plugin já é baseada em instâncias de classe,
+você pode fazer mock dela diretamente, com as seguintes ressalvas:
 
-* This won't work if the plugin uses
-  non-class functions or static methods.
-* Tests will need to be updated when
-  the plugin API changes.
+* Isso não funcionará se o plugin usar
+  funções que não são de classe ou métodos estáticos.
+* Os testes precisarão ser atualizados quando
+  a API do plugin mudar.
 
 ## Mock the plugin's platform interface
 
-If the plugin is a [federated plugin][],
-it will include a platform interface that allows
-registering implementations of its internal logic.
-You can register a mock of that platform interface
-implementation instead of the public API with the
-following caveats:
+Se o plugin é um [federated plugin][federated plugin],
+ele incluirá uma platform interface que permite
+registrar implementações de sua lógica interna.
+Você pode registrar um mock dessa implementação de platform interface
+ao invés da API pública com as
+seguintes ressalvas:
 
-* This won't work if the plugin isn't federated.
-* Your tests will include part of the plugin's code,
-  so plugin behavior could cause problems for your tests.
-  For instance, if a plugin writes files as part of an
-  internal cache, your test behavior might change
-  based on whether you had run the test previously.
-* Tests might need to be updated when the platform interface changes.
+* Isso não funcionará se o plugin não for federado.
+* Seus testes incluirão parte do código do plugin,
+  então o comportamento do plugin pode causar problemas para seus testes.
+  Por exemplo, se um plugin grava arquivos como parte de um
+  cache interno, o comportamento do seu teste pode mudar
+  com base em se você executou o teste anteriormente.
+* Os testes podem precisar ser atualizados quando a platform interface mudar.
 
-An example of when this might be necessary is
-mocking the implementation of a plugin used by
-a package that you rely on,
-rather than your own code,
-so you can't change how it's called.
-However, if possible,
-you should mock the dependency that uses the plugin instead.
+Um exemplo de quando isso pode ser necessário é
+fazer mock da implementação de um plugin usado por
+um package do qual você depende,
+em vez do seu próprio código,
+então você não pode mudar como ele é chamado.
+No entanto, se possível,
+você deve fazer mock da dependência que usa o plugin em vez disso.
 
 [federated plugin]: /packages-and-plugins/developing-packages#federated-plugins
 
 ## Mock the platform channel
 
-If the plugin uses [platform channels][],
-you can mock the platform channels using
-[`TestDefaultBinaryMessenger`][].
-This should only be used if, for some reason,
-none of the methods above are available,
-as it has several drawbacks:
+Se o plugin usa [platform channels][platform channels],
+você pode fazer mock dos platform channels usando
+[`TestDefaultBinaryMessenger`][`TestDefaultBinaryMessenger`].
+Isso só deve ser usado se, por algum motivo,
+nenhum dos métodos acima estiver disponível,
+pois possui várias desvantagens:
 
-* Only implementations that use platform channels
-  can be mocked. This means that if some implementations
-  don't use platform channels,
-  your tests will unexpectedly use
-  real implementations when run on some platforms.
-* Platform channels are usually internal implementation
-  details of plugins.
-  They might change substantially even
-  in a bugfix update to a plugin,
-  breaking your tests unexpectedly.
-* Platform channels might differ in each implementation
-  of a federated plugin. For instance,
-  you might set up mock platform channels to
-  make tests pass on a Windows machine,
-  then find that they fail if run on macOS or Linux.
-* Platform channels aren't strongly typed.
-  For example, method channels often use dictionaries
-  and you have to read the plugin's implementation
-  to know what the key strings and value types are.
+* Apenas implementações que usam platform channels
+  podem ser mockadas. Isso significa que se algumas implementações
+  não usarem platform channels,
+  seus testes usarão inesperadamente
+  implementações reais quando executados em algumas plataformas.
+* Platform channels são geralmente detalhes de implementação
+  internos de plugins.
+  Eles podem mudar substancialmente até mesmo
+  em uma atualização de correção de bug de um plugin,
+  quebrando seus testes inesperadamente.
+* Platform channels podem diferir em cada implementação
+  de um federated plugin. Por exemplo,
+  você pode configurar mock platform channels para
+  fazer os testes passarem em uma máquina Windows,
+  e então descobrir que eles falham se executados no macOS ou Linux.
+* Platform channels não são fortemente tipados.
+  Por exemplo, method channels frequentemente usam dicionários
+  e você tem que ler a implementação do plugin
+  para saber quais são as strings de chave e tipos de valor.
 
-Because of these limitations, `TestDefaultBinaryMessenger`
-is mainly useful in the internal tests
-of plugin implementations,
-rather than tests of code using plugins.
+Devido a essas limitações, `TestDefaultBinaryMessenger`
+é principalmente útil nos testes internos
+de implementações de plugins,
+em vez de testes de código usando plugins.
 
-You might also want to check out
-[Testing plugins][].
+Você também pode querer conferir
+[Testing plugins][Testing plugins].
 
 [platform channels]: /platform-integration/platform-channels
 [`TestDefaultBinaryMessenger`]: {{site.api}}/flutter/flutter_test/TestDefaultBinaryMessenger-class.html

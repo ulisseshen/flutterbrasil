@@ -1,181 +1,181 @@
 ---
-title: Understanding Flutter's keyboard focus system
-description: How to use the focus system in your Flutter app.
+ia-translate: true
+title: Entendendo o sistema de foco de teclado do Flutter
+description: Como usar o sistema de foco no seu app Flutter.
 ---
 
-This article explains how to control where keyboard input is directed. If you
-are implementing an application that uses a physical keyboard, such as most
-desktop and web applications, this page is for you. If your app won't be used
-with a physical keyboard, you can skip this.
+Este artigo explica como controlar para onde a entrada de teclado é direcionada. Se você
+está implementando uma aplicação que usa um teclado físico, como a maioria
+das aplicações desktop e web, esta página é para você. Se seu app não será usado
+com um teclado físico, você pode pular isto.
 
-## Overview
+## Visão geral
 
-Flutter comes with a focus system that directs the keyboard input to a
-particular part of an application. In order to do this, users "focus" the input
-onto that part of an application by tapping or clicking the desired UI element.
-Once that happens, text entered with the keyboard flows to that part of the
-application until the focus moves to another part of the application.  Focus can
-also be moved by pressing a particular keyboard shortcut, which is typically
-bound to <kbd>Tab</kbd>, so it is sometimes called "tab traversal".
+Flutter vem com um sistema de foco que direciona a entrada de teclado para uma
+parte específica de uma aplicação. Para fazer isso, os usuários "focam" a entrada
+nessa parte da aplicação tocando ou clicando no elemento de UI desejado.
+Uma vez que isso acontece, o texto digitado com o teclado flui para essa parte da
+aplicação até que o foco se mova para outra parte da aplicação. O foco também pode
+ser movido pressionando um atalho de teclado específico, que é tipicamente
+vinculado a <kbd>Tab</kbd>, então às vezes é chamado de "tab traversal".
 
-This page explores the APIs used to perform these operations on a Flutter
-application, and how the focus system works. We have noticed that there is some
-confusion among developers about how to define and use [`FocusNode`][] objects.
-If that describes your experience, skip ahead to the [best practices for
-creating `FocusNode` objects](#best-practices-for-creating-focusnode-objects).
+Esta página explora as APIs usadas para realizar essas operações em uma aplicação
+Flutter, e como o sistema de foco funciona. Notamos que há alguma
+confusão entre desenvolvedores sobre como definir e usar objetos [`FocusNode`][`FocusNode`].
+Se isso descreve sua experiência, pule para as [melhores práticas para
+criar objetos `FocusNode`](#best-practices-for-creating-focusnode-objects).
 
-### Focus use cases
+### Casos de uso de foco
 
-Some examples of situations where you might need to know how to use the focus
-system:
+Alguns exemplos de situações onde você pode precisar saber como usar o sistema de foco:
 
-- [Receiving/handling key events](#key-events)
-- [Implementing a custom component that needs to be focusable](#focus-widget)
-- [Receiving notifications when the focus changes](#change-notifications)
-- [Changing or defining the "tab order" of focus traversal in an application](#focustraversalpolicy)
-- [Defining groups of controls that should be traversed together](#focustraversalgroup-widget)
-- [Preventing some controls in an application from being focusable](#controlling-what-gets-focus)
+- [Receber/manipular eventos de tecla](#key-events)
+- [Implementar um componente personalizado que precisa ser focável](#focus-widget)
+- [Receber notificações quando o foco muda](#change-notifications)
+- [Mudar ou definir a "ordem de tab" de focus traversal em uma aplicação](#focustraversalpolicy)
+- [Definir grupos de controles que devem ser percorridos juntos](#focustraversalgroup-widget)
+- [Impedir que alguns controles em uma aplicação sejam focáveis](#controlling-what-gets-focus)
 
-## Glossary
+## Glossário
 
-Below are terms, as Flutter uses them, for elements of the focus system. The
-various classes that implement some of these concepts are introduced below.
+Abaixo estão termos, como Flutter os usa, para elementos do sistema de foco. As
+várias classes que implementam alguns desses conceitos são apresentadas abaixo.
 
-- **Focus tree** - A tree of focus nodes that typically sparsely mirrors the
-  widget tree, representing all the widgets that can receive focus.
-- **Focus node** - A single node in a focus tree. This node can receive the
-  focus, and is said to "have focus" when it is part of the focus chain. It
-  participates in handling key events only when it has focus.
-- **Primary focus** - The farthest focus node from the root of the focus tree
-  that has focus. This is the focus node where key events start propagating to
-  the primary focus node and its ancestors.
-- **Focus chain** - An ordered list of focus nodes that starts at the primary
-  focus node and follows the branches of the focus tree to the root of the
-  focus tree.
-- **Focus scope** - A special focus node whose job is to contain a group of
-  other focus nodes, and allow only those nodes to receive focus. It contains
-  information about which nodes were previously focused in its subtree.
-- **Focus traversal** - The process of moving from one focusable node to
-  another in a predictable order. This is typically seen in applications when
-  the user presses <kbd>Tab</kbd> to move to the next focusable control or
-  field.
+- **Focus tree** - Uma árvore de nós de foco que tipicamente esparsamente espelha a
+  árvore de widgets, representando todos os widgets que podem receber foco.
+- **Focus node** - Um único nó em uma árvore de foco. Este nó pode receber o
+  foco, e é dito que "tem foco" quando faz parte da cadeia de foco. Ele
+  participa do tratamento de eventos de tecla apenas quando tem foco.
+- **Primary focus** - O nó de foco mais distante da raiz da árvore de foco
+  que tem foco. Este é o nó de foco onde os eventos de tecla começam a propagar para
+  o nó de foco primário e seus ancestrais.
+- **Focus chain** - Uma lista ordenada de nós de foco que começa no nó de foco
+  primário e segue os ramos da árvore de foco até a raiz da
+  árvore de foco.
+- **Focus scope** - Um nó de foco especial cujo trabalho é conter um grupo de
+  outros nós de foco, e permitir apenas que esses nós recebam foco. Ele contém
+  informações sobre quais nós foram anteriormente focados em sua subárvore.
+- **Focus traversal** - O processo de mover de um nó focável para
+  outro em uma ordem previsível. Isso é tipicamente visto em aplicações quando
+  o usuário pressiona <kbd>Tab</kbd> para mover para o próximo controle focável ou
+  campo.
 
-## FocusNode and FocusScopeNode
+## FocusNode e FocusScopeNode
 
-The `FocusNode` and [`FocusScopeNode`][] objects implement the
-mechanics of the focus system. They are long-lived objects (longer than widgets,
-similar to render objects) that hold the focus state and attributes so that they
-are persistent between builds of the widget tree. Together, they form
-the focus tree data structure.
+Os objetos `FocusNode` e [`FocusScopeNode`][`FocusScopeNode`] implementam a
+mecânica do sistema de foco. Eles são objetos de longa vida (mais longos que widgets,
+similares a render objects) que mantêm o estado e atributos de foco para que sejam
+persistentes entre builds da árvore de widgets. Juntos, eles formam
+a estrutura de dados da árvore de foco.
 
-They were originally intended to be developer-facing objects used to control
-some aspects of the focus system, but over time they have evolved to mostly
-implement details of the focus system. In order to prevent breaking existing
-applications, they still contain public interfaces for their attributes. But, in
-general, the thing for which they are most useful is to act as a relatively
-opaque handle, passed to a descendant widget in order to call `requestFocus()`
-on an ancestor widget, which requests that a descendant widget obtain focus.
-Setting of the other attributes is best managed by a [`Focus`][] or
-[`FocusScope`][] widget, unless you are not using them, or implementing your own
-version of them.
+Eles foram originalmente destinados a ser objetos voltados para o desenvolvedor usados para controlar
+alguns aspectos do sistema de foco, mas ao longo do tempo evoluíram para implementar principalmente
+detalhes do sistema de foco. Para evitar quebrar aplicações existentes,
+eles ainda contêm interfaces públicas para seus atributos. Mas, em
+geral, a coisa para a qual eles são mais úteis é agir como um manipulador relativamente
+opaco, passado para um widget descendente para chamar `requestFocus()`
+em um widget ancestral, que solicita que um widget descendente obtenha foco.
+Definir os outros atributos é melhor gerenciado por um widget [`Focus`][`Focus`] ou
+[`FocusScope`][`FocusScope`], a menos que você não esteja usando-os, ou implementando sua própria
+versão deles.
 
-### Best practices for creating FocusNode objects
+### Melhores práticas para criar objetos FocusNode {:#best-practices-for-creating-focusnode-objects}
 
-Some dos and don'ts around using these objects include:
+Algumas coisas a fazer e não fazer sobre usar esses objetos incluem:
 
-- Don't allocate a new `FocusNode` for each build.  This can cause
-  memory leaks, and occasionally causes a loss of focus when the widget
-  rebuilds while the node has focus.
-- Do create `FocusNode` and `FocusScopeNode` objects in a stateful widget.
-  `FocusNode` and `FocusScopeNode` need to be disposed of when you're done
-  using them, so they should only be created inside of a stateful widget's
-  state object, where you can override `dispose` to dispose of them.
-- Don't use the same `FocusNode` for multiple widgets. If you do, the
-  widgets will fight over managing the attributes of the node, and you
-  probably won't get what you expect.
-- Do set the `debugLabel` of a focus node widget to help with diagnosing
-  focus issues.
-- Don't set the `onKeyEvent` callback on a `FocusNode` or `FocusScopeNode` if
-  they are being managed by a `Focus` or `FocusScope` widget.
-  If you want an `onKeyEvent` handler, then add a new `Focus` widget
-  around the widget subtree you would like to listen to, and
-  set the `onKeyEvent` attribute of the widget to your handler.
-  Set `canRequestFocus: false` on the widget if
-  you also don't want it to be able to take primary focus.
-  This is because the `onKeyEvent` attribute on the `Focus` widget can be
-  set to something else in a subsequent build, and if that happens,
-  it overwrites the `onKeyEvent` handler you set on the node.
-- Do call `requestFocus()` on a node to request that it receives the
-  primary focus, especially from an ancestor that has passed a node it owns to
-  a descendant where you want to focus.
-- Do use `focusNode.requestFocus()`. It is not necessary to call
-  `FocusScope.of(context).requestFocus(focusNode)`. The
-  `focusNode.requestFocus()` method is equivalent and more performant.
+- Não aloque um novo `FocusNode` para cada build. Isso pode causar
+  vazamentos de memória, e ocasionalmente causa uma perda de foco quando o widget
+  reconstrói enquanto o nó tem foco.
+- Crie objetos `FocusNode` e `FocusScopeNode` em um stateful widget.
+  `FocusNode` e `FocusScopeNode` precisam ser descartados quando você terminar
+  de usá-los, então eles devem ser criados apenas dentro do objeto state de um stateful widget,
+  onde você pode sobrescrever `dispose` para descartá-los.
+- Não use o mesmo `FocusNode` para múltiplos widgets. Se você fizer isso, os
+  widgets lutarão para gerenciar os atributos do nó, e você
+  provavelmente não obterá o que espera.
+- Defina o `debugLabel` de um widget de nó de foco para ajudar a diagnosticar
+  problemas de foco.
+- Não defina o callback `onKeyEvent` em um `FocusNode` ou `FocusScopeNode` se
+  eles estiverem sendo gerenciados por um widget `Focus` ou `FocusScope`.
+  Se você quiser um handler `onKeyEvent`, então adicione um novo widget `Focus`
+  em torno da subárvore de widgets que você gostaria de ouvir, e
+  defina o atributo `onKeyEvent` do widget para seu handler.
+  Defina `canRequestFocus: false` no widget se
+  você também não quiser que ele possa tomar o foco primário.
+  Isso ocorre porque o atributo `onKeyEvent` no widget `Focus` pode ser
+  definido para outra coisa em uma build subsequente, e se isso acontecer,
+  ele sobrescreve o handler `onKeyEvent` que você definiu no nó.
+- Chame `requestFocus()` em um nó para solicitar que ele receba o
+  foco primário, especialmente de um ancestral que passou um nó que possui para
+  um descendente onde você deseja focar.
+- Use `focusNode.requestFocus()`. Não é necessário chamar
+  `FocusScope.of(context).requestFocus(focusNode)`. O
+  método `focusNode.requestFocus()` é equivalente e mais performático.
 
 ### Unfocusing
 
-There is an API for telling a node to "give up the focus", named
-`FocusNode.unfocus()`. While it does remove focus from the node, it is important
-to realize that there really is no such thing as "unfocusing" all nodes. If a
-node is unfocused, then it must pass the focus somewhere else, since there is
-_always_ a primary focus. The node that receives the focus when a node calls
-`unfocus()` is either the nearest `FocusScopeNode`, or a previously focused node
-in that scope, depending upon the `disposition` argument given to `unfocus()`.
-If you would like more control over where the focus goes when you remove it from
-a node, explicitly focus another node instead of calling `unfocus()`, or use the
-focus traversal mechanism to find another node with the `focusInDirection`,
-`nextFocus`, or `previousFocus` methods on `FocusNode`.
+Há uma API para dizer a um nó para "desistir do foco", chamada
+`FocusNode.unfocus()`. Embora ela remova o foco do nó, é importante
+perceber que realmente não existe tal coisa como "desfazer o foco" de todos os nós. Se um
+nó perde o foco, então ele deve passar o foco para outro lugar, já que há
+_sempre_ um foco primário. O nó que recebe o foco quando um nó chama
+`unfocus()` é ou o `FocusScopeNode` mais próximo, ou um nó anteriormente focado
+nesse escopo, dependendo do argumento `disposition` dado a `unfocus()`.
+Se você quiser mais controle sobre para onde o foco vai quando você o remove de
+um nó, foque explicitamente outro nó em vez de chamar `unfocus()`, ou use o
+mecanismo de focus traversal para encontrar outro nó com os métodos `focusInDirection`,
+`nextFocus`, ou `previousFocus` em `FocusNode`.
 
-When calling `unfocus()`, the `disposition` argument allows two modes for
-unfocusing: [`UnfocusDisposition.scope`][] and
-`UnfocusDisposition.previouslyFocusedChild`. The default is `scope`, which gives
-the focus to the nearest parent focus scope. This means that if the focus is
-thereafter moved to the next node with `FocusNode.nextFocus`, it starts with the
-"first" focusable item in the scope.
+Ao chamar `unfocus()`, o argumento `disposition` permite dois modos para
+desfazer o foco: [`UnfocusDisposition.scope`][`UnfocusDisposition.scope`] e
+`UnfocusDisposition.previouslyFocusedChild`. O padrão é `scope`, que dá
+o foco ao escopo de foco pai mais próximo. Isso significa que se o foco é
+posteriormente movido para o próximo nó com `FocusNode.nextFocus`, ele começa com o
+"primeiro" item focável no escopo.
 
-The `previouslyFocusedChild` disposition will search the scope to find the
-previously focused child and request focus on it. If there is no previously
-focused child, it is equivalent to `scope`.
+A disposition `previouslyFocusedChild` pesquisará o escopo para encontrar o
+filho anteriormente focado e solicitar foco nele. Se não houver filho
+anteriormente focado, é equivalente a `scope`.
 
-:::secondary Beware
-If there is no other scope, then focus moves to the root scope node of
-the focus system, `FocusManager.rootScope`. This is generally not desirable, as
-the root scope doesn't have a `context` for the framework to determine which
-node should be focused next. If you find that your application suddenly loses
-the ability to navigate by using focus traversal, this is probably what has
-happened.  To fix it, add a `FocusScope` as an ancestor to the focus node that
-is requesting the unfocus. The `WidgetsApp` (from which `MaterialApp` and
-`CupertinoApp` are derived) has its own `FocusScope`, so this should not be an
-issue if you are using those.
+:::secondary Cuidado
+Se não houver outro escopo, então o foco se move para o nó de escopo raiz do
+sistema de foco, `FocusManager.rootScope`. Isso geralmente não é desejável, pois
+o escopo raiz não tem um `context` para o framework determinar qual
+nó deve ser focado em seguida. Se você descobrir que sua aplicação de repente perde
+a capacidade de navegar usando focus traversal, isso é provavelmente o que aconteceu.
+Para corrigir, adicione um `FocusScope` como ancestral do nó de foco que
+está solicitando o unfocus. O `WidgetsApp` (do qual `MaterialApp` e
+`CupertinoApp` são derivados) tem seu próprio `FocusScope`, então isso não deve ser um
+problema se você estiver usando esses.
 :::
 
 ## Focus widget
 
-The `Focus` widget owns and manages a focus node, and is the workhorse of the
-focus system.  It manages the attaching and detaching of the focus node it owns
-from the focus tree, manages the attributes and callbacks of the focus node, and
-has static functions to enable discovery of focus nodes attached to the widget
-tree.
+O widget `Focus` possui e gerencia um nó de foco, e é o cavalo de batalha do
+sistema de foco. Ele gerencia a anexação e desanexação do nó de foco que possui
+da árvore de foco, gerencia os atributos e callbacks do nó de foco, e
+tem funções estáticas para permitir a descoberta de nós de foco anexados à árvore
+de widgets.
 
-In its simplest form, wrapping the `Focus` widget around a widget subtree allows
-that widget subtree to obtain focus as part of the focus traversal process, or
-whenever `requestFocus` is called on the `FocusNode` passed to it. When combined
-with a gesture detector that calls `requestFocus`, it can receive focus when
-tapped or clicked.
+Em sua forma mais simples, envolver o widget `Focus` em torno de uma subárvore de widgets permite
+que essa subárvore de widgets obtenha foco como parte do processo de focus traversal, ou
+sempre que `requestFocus` for chamado no `FocusNode` passado a ele. Quando combinado
+com um detector de gestos que chama `requestFocus`, ele pode receber foco quando
+tocado ou clicado.
 
-You might pass a `FocusNode` object to the `Focus` widget to manage, but if you
-don't, it creates its own. The main reason to create your own
-`FocusNode` is to be able to call `requestFocus()`
-on the node to control the focus from a parent widget. Most of the other
-functionality of a `FocusNode` is best accessed by changing the attributes of
-the `Focus` widget itself.
+Você pode passar um objeto `FocusNode` para o widget `Focus` gerenciar, mas se você
+não o fizer, ele cria o seu próprio. A razão principal para criar seu próprio
+`FocusNode` é poder chamar `requestFocus()`
+no nó para controlar o foco de um widget pai. A maioria das outras
+funcionalidades de um `FocusNode` é melhor acessada mudando os atributos do
+próprio widget `Focus`.
 
-The `Focus` widget is used in most of Flutter's own controls to implement their
-focus functionality.
+O widget `Focus` é usado na maioria dos controles do próprio Flutter para implementar sua
+funcionalidade de foco.
 
-Here is an example showing how to use the `Focus` widget to make a custom
-control focusable. It creates a container with text that reacts to receiving the
-focus.
+Aqui está um exemplo mostrando como usar o widget `Focus` para tornar um
+controle personalizado focável. Ele cria um container com texto que reage ao receber o
+foco.
 
 <?code-excerpt "ui/focus/lib/custom_control_example.dart"?>
 ```dart
@@ -238,25 +238,25 @@ class _MyCustomWidgetState extends State<MyCustomWidget> {
 
 ### Key events
 
-If you wish to listen for key events in a subtree,
-set the `onKeyEvent` attribute of the `Focus` widget to
-be a handler that either just listens to the key, or
-handles the key and stops its propagation to other widgets.
+Se você deseja ouvir eventos de tecla em uma subárvore,
+defina o atributo `onKeyEvent` do widget `Focus` para
+ser um handler que ou apenas ouve a tecla, ou
+manipula a tecla e para sua propagação para outros widgets.
 
-Key events start at the focus node with primary focus.
-If that node doesn't return `KeyEventResult.handled` from
-its `onKeyEvent` handler, then its parent focus node is given the event.
-If the parent doesn't handle it, it goes to its parent,
-and so on, until it reaches the root of the focus tree.
-If the event reaches the root of the focus tree without being handled, then
-it is returned to the platform to give to
-the next native control in the application
-(in case the Flutter UI is part of a larger native application UI).
-Events that are handled are not propagated to other Flutter widgets,
-and they are also not propagated to native widgets.
+Os eventos de tecla começam no nó de foco com foco primário.
+Se esse nó não retornar `KeyEventResult.handled` de
+seu handler `onKeyEvent`, então seu nó de foco pai recebe o evento.
+Se o pai não o manipular, ele vai para seu pai,
+e assim por diante, até atingir a raiz da árvore de foco.
+Se o evento atingir a raiz da árvore de foco sem ser manipulado, então
+ele é retornado à plataforma para dar ao
+próximo controle nativo na aplicação
+(caso a UI Flutter seja parte de uma UI de aplicação nativa maior).
+Eventos que são manipulados não são propagados para outros widgets Flutter,
+e eles também não são propagados para widgets nativos.
 
-Here's an example of a `Focus` widget that absorbs every key that
-its subtree doesn't handle, without being able to be the primary focus:
+Aqui está um exemplo de um widget `Focus` que absorve cada tecla que
+sua subárvore não manipula, sem poder ser o foco primário:
 
 <?code-excerpt "ui/focus/lib/samples.dart (absorb-keys)"?>
 ```dart
@@ -270,12 +270,12 @@ Widget build(BuildContext context) {
 }
 ```
 
-Focus key events are processed before text entry events, so handling a key event
-when the focus widget surrounds a text field prevents that key from being
-entered into the text field.
+Os eventos de tecla de foco são processados antes dos eventos de entrada de texto, então manipular um evento de tecla
+quando o widget de foco envolve um campo de texto impede que essa tecla seja
+inserida no campo de texto.
 
-Here's an example of a widget that won't allow the letter "a" to be typed into
-the text field:
+Aqui está um exemplo de um widget que não permitirá que a letra "a" seja digitada no
+campo de texto:
 
 <?code-excerpt "ui/focus/lib/samples.dart (no-letter-a)"?>
 ```dart
@@ -292,71 +292,71 @@ Widget build(BuildContext context) {
 }
 ```
 
-If the intent is input validation, this example's functionality would probably
-be better implemented using a `TextInputFormatter`, but the technique can still
-be useful: the `Shortcuts` widget uses this method to handle shortcuts before
-they become text input, for instance.
+Se a intenção é validação de entrada, a funcionalidade deste exemplo provavelmente
+seria melhor implementada usando um `TextInputFormatter`, mas a técnica ainda pode
+ser útil: o widget `Shortcuts` usa este método para manipular atalhos antes
+que eles se tornem entrada de texto, por exemplo.
 
-### Controlling what gets focus
+### Controlando o que recebe foco {:#controlling-what-gets-focus}
 
-One of the main aspects of focus is controlling what can receive focus and how.
-The attributes `canRequestFocus`, `skipTraversal,` and `descendantsAreFocusable`
-control how this node and its descendants participate in the focus process.
+Um dos aspectos principais do foco é controlar o que pode receber foco e como.
+Os atributos `canRequestFocus`, `skipTraversal,` e `descendantsAreFocusable`
+controlam como este nó e seus descendentes participam do processo de foco.
 
-If the `skipTraversal` attribute true, then this focus node doesn't participate
-in focus traversal. It is still focusable if `requestFocus` is called on its
-focus node, but is otherwise skipped when the focus traversal system is looking
-for the next thing to focus on.
+Se o atributo `skipTraversal` for true, então este nó de foco não participa
+do focus traversal. Ele ainda é focável se `requestFocus` for chamado em seu
+nó de foco, mas é pulado quando o sistema de focus traversal está procurando
+a próxima coisa para focar.
 
-The `canRequestFocus` attribute, unsurprisingly, controls whether or not the
-focus node that this `Focus` widget manages can be used to request focus. If
-this attribute is false, then calling `requestFocus` on the node has no effect.
-It also implies that this node is skipped for focus traversal, since it can't
-request focus.
+O atributo `canRequestFocus`, sem surpresa, controla se o
+nó de foco que este widget `Focus` gerencia pode ser usado para solicitar foco. Se
+este atributo for false, então chamar `requestFocus` no nó não tem efeito.
+Também implica que este nó é pulado para focus traversal, já que não pode
+solicitar foco.
 
-The `descendantsAreFocusable` attribute controls whether the descendants of this
-node can receive focus, but still allows this node to receive focus.  This
-attribute can be used to turn off focusability for an entire widget subtree.
-This is how the `ExcludeFocus` widget works: it's just a `Focus` widget with
-this attribute set.
+O atributo `descendantsAreFocusable` controla se os descendentes deste
+nó podem receber foco, mas ainda permite que este nó receba foco. Este
+atributo pode ser usado para desativar a focabilidade de uma subárvore inteira de widgets.
+É assim que o widget `ExcludeFocus` funciona: é apenas um widget `Focus` com
+este atributo definido.
 
 ### Autofocus
 
-Setting the `autofocus` attribute of a `Focus` widget tells the widget to
-request the focus the first time the focus scope it belongs to is focused.  If
-more than one widget has `autofocus` set, then it is arbitrary which one
-receives the focus, so try to only set it on one widget per focus scope.
+Definir o atributo `autofocus` de um widget `Focus` diz ao widget para
+solicitar o foco na primeira vez que o escopo de foco ao qual pertence é focado. Se
+mais de um widget tiver `autofocus` definido, então é arbitrário qual
+recebe o foco, então tente definir apenas em um widget por escopo de foco.
 
-The `autofocus` attribute only takes effect if there isn't already a focus in
-the scope that the node belongs to.
+O atributo `autofocus` só tem efeito se ainda não houver um foco no
+escopo ao qual o nó pertence.
 
-Setting the `autofocus` attribute on two nodes that belong to different focus
-scopes is well defined: each one becomes the focused widget when their
-corresponding scopes are focused.
+Definir o atributo `autofocus` em dois nós que pertencem a diferentes escopos de foco
+é bem definido: cada um se torna o widget focado quando seus
+escopos correspondentes são focados.
 
-### Change notifications
+### Notificações de mudança {:#change-notifications}
 
-The `Focus.onFocusChanged` callback can be used to get notifications that the
-focus state for a particular node has changed. It notifies if the node is added
-to or removed from the focus chain, which means it gets notifications even if it
-isn't the primary focus. If you only want to know if you have received the
-primary focus, check and see if `hasPrimaryFocus` is true on the focus node.
+O callback `Focus.onFocusChanged` pode ser usado para obter notificações de que o
+estado de foco de um nó específico mudou. Ele notifica se o nó é adicionado
+ou removido da cadeia de foco, o que significa que recebe notificações mesmo se não
+for o foco primário. Se você só quer saber se recebeu o
+foco primário, verifique se `hasPrimaryFocus` é true no nó de foco.
 
-### Obtaining the FocusNode
+### Obtendo o FocusNode
 
-Sometimes, it is useful to obtain the focus node of a `Focus` widget to
-interrogate its attributes.
+Às vezes, é útil obter o nó de foco de um widget `Focus` para
+interrogar seus atributos.
 
-To access the focus node from an ancestor of the `Focus` widget, create and pass
-in a `FocusNode` as the `Focus` widget's `focusNode` attribute. Because it needs
-to be disposed of, the focus node you pass needs to be owned by a stateful
-widget, so don't just create one each time it is built.
+Para acessar o nó de foco de um ancestral do widget `Focus`, crie e passe
+um `FocusNode` como atributo `focusNode` do widget `Focus`. Como ele precisa
+ser descartado, o nó de foco que você passa precisa ser de propriedade de um stateful
+widget, então não crie um cada vez que for construído.
 
-If you need access to the focus node from the descendant of a `Focus` widget,
-you can call `Focus.of(context)` to obtain the focus node of the nearest `Focus
-`widget to the given context. If you need to obtain the `FocusNode` of a `Focus`
-widget within the same build function, use a [`Builder`][] to make sure you have
-the correct context. This is shown in the following example:
+Se você precisa acessar o nó de foco do descendente de um widget `Focus`,
+você pode chamar `Focus.of(context)` para obter o nó de foco do widget `Focus`
+mais próximo do contexto fornecido. Se você precisa obter o `FocusNode` de um widget `Focus`
+dentro da mesma função build, use um [`Builder`][`Builder`] para garantir que você tenha
+o contexto correto. Isso é mostrado no exemplo a seguir:
 
 <?code-excerpt "ui/focus/lib/samples.dart (builder)"?>
 ```dart
@@ -376,96 +376,96 @@ Widget build(BuildContext context) {
 
 ### Timing
 
-One of the details of the focus system is that when focus is requested, it only
-takes effect after the current build phase completes.  This means that focus
-changes are always delayed by one frame, because changing focus can
-cause arbitrary parts of the widget tree to rebuild, including ancestors of the
-widget currently requesting focus. Because descendants cannot dirty their
-ancestors, it has to happen between frames, so that any needed changes can
-happen on the next frame.
+Um dos detalhes do sistema de foco é que quando o foco é solicitado, ele só
+tem efeito após a fase de build atual ser concluída. Isso significa que mudanças de foco
+são sempre atrasadas em um frame, porque mudar o foco pode
+causar a reconstrução de partes arbitrárias da árvore de widgets, incluindo ancestrais do
+widget que está atualmente solicitando foco. Como descendentes não podem sujar seus
+ancestrais, isso tem que acontecer entre frames, para que quaisquer mudanças necessárias possam
+acontecer no próximo frame.
 
 ## FocusScope widget
 
-The `FocusScope` widget is a special version of the `Focus` widget that manages
-a `FocusScopeNode` instead of a `FocusNode`.  The `FocusScopeNode` is a special
-node in the focus tree that serves as a grouping mechanism for the focus nodes
-in a subtree. Focus traversal stays within a focus scope unless a node outside
-of the scope is explicitly focused.
+O widget `FocusScope` é uma versão especial do widget `Focus` que gerencia
+um `FocusScopeNode` em vez de um `FocusNode`. O `FocusScopeNode` é um
+nó especial na árvore de foco que serve como um mecanismo de agrupamento para os nós de foco
+em uma subárvore. O focus traversal permanece dentro de um escopo de foco a menos que um nó fora
+do escopo seja explicitamente focado.
 
-The focus scope also keeps track of the current focus and history of the nodes
-focused within its subtree.  That way, if a node releases focus or is removed
-when it had focus, the focus can be returned to the node that had focus
-previously.
+O escopo de foco também mantém o controle do foco atual e do histórico dos nós
+focados dentro de sua subárvore. Dessa forma, se um nó libera o foco ou é removido
+quando tinha foco, o foco pode ser retornado ao nó que tinha foco
+anteriormente.
 
-Focus scopes also serve as a place to return focus to if none of the descendants
-have focus.  This allows the focus traversal code to have a starting context for
-finding the next (or first) focusable control to move to.
+Os escopos de foco também servem como um lugar para retornar o foco se nenhum dos descendentes
+tiver foco. Isso permite que o código de focus traversal tenha um contexto inicial para
+encontrar o próximo (ou primeiro) controle focável para mover.
 
-If you focus a focus scope node, it first attempts to focus the current, or most
-recently focused node in its subtree, or the node in its subtree that requested
-autofocus (if any).  If there is no such node, it receives the focus itself.
+Se você focar um nó de escopo de foco, ele primeiro tenta focar o nó atual, ou mais
+recentemente focado em sua subárvore, ou o nó em sua subárvore que solicitou
+autofocus (se houver). Se não houver tal nó, ele recebe o foco ele mesmo.
 
 ## FocusableActionDetector widget
 
-The [`FocusableActionDetector`][] is a widget that combines the functionality of
-[`Actions`][], [`Shortcuts`][], [`MouseRegion`][] and a `Focus` widget to create
-a detector that defines actions and key bindings, and provides callbacks for
-handling focus and hover highlights. It is what Flutter controls use to
-implement all of these aspects of the controls. It is just implemented using the
-constituent widgets, so if you don't need all of its functionality, you can just
-use the ones you need, but it is a convenient way to build these behaviors into
-your custom controls.
+O [`FocusableActionDetector`][`FocusableActionDetector`] é um widget que combina a funcionalidade de
+[`Actions`][`Actions`], [`Shortcuts`][`Shortcuts`], [`MouseRegion`][`MouseRegion`] e um widget `Focus` para criar
+um detector que define actions e key bindings, e fornece callbacks para
+manipular destaques de foco e hover. É o que os controles Flutter usam para
+implementar todos esses aspectos dos controles. Ele é apenas implementado usando os
+widgets constituintes, então se você não precisar de toda a sua funcionalidade, pode apenas
+usar os que você precisa, mas é uma maneira conveniente de construir esses comportamentos em
+seus controles personalizados.
 
 :::note
-To learn more, watch this short Widget of the Week video on
-the `FocusableActionDetector` widget:
+Para saber mais, assista este curto vídeo Widget of the Week sobre
+o widget `FocusableActionDetector`:
 
 <YouTubeEmbed id="R84AGg0lKs8" title="FocusableActionDetector - Flutter widget of the week"></YouTubeEmbed>
 :::
 
-## Controlling focus traversal
+## Controlando o focus traversal
 
-Once an application has the ability to focus, the next thing many apps want to
-do is to allow the user to control the focus using the keyboard or another input
-device. The most common example of this is "tab traversal" where the user
-presses <kbd>Tab</kbd> to go to the "next" control. Controlling what "next"
-means is the subject of this section. This kind of traversal is provided by
-Flutter by default.
+Uma vez que uma aplicação tem a capacidade de focar, a próxima coisa que muitos apps querem
+fazer é permitir que o usuário controle o foco usando o teclado ou outro dispositivo de entrada.
+O exemplo mais comum disso é "tab traversal" onde o usuário
+pressiona <kbd>Tab</kbd> para ir para o controle "seguinte". Controlar o que "seguinte"
+significa é o assunto desta seção. Este tipo de traversal é fornecido pelo
+Flutter por padrão.
 
-In a simple grid layout, it's fairly easy to decide which control is next. If
-you're not at the end of the row, then it's the one to the right (or left for
-right-to-left locales). If you are at the end of a row, it's the first control
-in the next row. Unfortunately, applications are rarely laid out in grids, so
-more guidance is often needed.
+Em um layout de grade simples, é bastante fácil decidir qual controle é o próximo. Se
+você não está no final da linha, então é o da direita (ou esquerda para
+locales da direita para a esquerda). Se você está no final de uma linha, é o primeiro controle
+na próxima linha. Infelizmente, as aplicações raramente são dispostas em grades, então
+mais orientação é frequentemente necessária.
 
-The default algorithm in Flutter ([`ReadingOrderTraversalPolicy`][]) for focus
-traversal is pretty good: It gives the right answer for most applications.
-However, there are always pathological cases, or cases where the context or
-design requires a different order than the one the default ordering algorithm
-arrives at. For those cases, there are other mechanisms for achieving the
-desired order.
+O algoritmo padrão no Flutter ([`ReadingOrderTraversalPolicy`][`ReadingOrderTraversalPolicy`]) para focus
+traversal é bastante bom: Ele dá a resposta certa para a maioria das aplicações.
+No entanto, sempre há casos patológicos, ou casos onde o contexto ou
+design requer uma ordem diferente daquela que o algoritmo de ordenação padrão
+chega. Para esses casos, existem outros mecanismos para alcançar a
+ordem desejada.
 
 ### FocusTraversalGroup widget
 
-The [`FocusTraversalGroup`][] widget should be placed in the tree around widget
-subtrees that should be fully traversed before moving on to another widget or
-group of widgets. Just grouping widgets into related groups is often enough to
-resolve many tab traversal ordering problems. If not, the group can also be
-given a [`FocusTraversalPolicy`][] to determine the ordering within the group.
+O widget [`FocusTraversalGroup`][`FocusTraversalGroup`] deve ser colocado na árvore em torno de
+subárvores de widgets que devem ser totalmente percorridas antes de mover para outro widget ou
+grupo de widgets. Apenas agrupar widgets em grupos relacionados é frequentemente suficiente para
+resolver muitos problemas de ordenação de tab traversal. Se não, o grupo também pode receber
+uma [`FocusTraversalPolicy`][`FocusTraversalPolicy`] para determinar a ordenação dentro do grupo.
 
-The default [`ReadingOrderTraversalPolicy`][] is usually sufficient, but in
-cases where more control over ordering is needed, an
-[`OrderedTraversalPolicy`][] can be used. The `order` argument of the
-[`FocusTraversalOrder`][] widget wrapped around the focusable components
-determines the order. The order can be any subclass of [`FocusOrder`][], but
-[`NumericFocusOrder`][] and [`LexicalFocusOrder`][] are provided.
+A [`ReadingOrderTraversalPolicy`][`ReadingOrderTraversalPolicy`] padrão geralmente é suficiente, mas em
+casos onde mais controle sobre a ordenação é necessário, uma
+[`OrderedTraversalPolicy`][`OrderedTraversalPolicy`] pode ser usada. O argumento `order` do
+widget [`FocusTraversalOrder`][`FocusTraversalOrder`] envolvido em torno dos componentes focáveis
+determina a ordem. A ordem pode ser qualquer subclasse de [`FocusOrder`][`FocusOrder`], mas
+[`NumericFocusOrder`][`NumericFocusOrder`] e [`LexicalFocusOrder`][`LexicalFocusOrder`] são fornecidas.
 
-If none of the provided focus traversal policies are sufficient for your
-application, you could also write your own policy and use it to determine any
-custom ordering you want.
+Se nenhuma das políticas de focus traversal fornecidas for suficiente para sua
+aplicação, você também poderia escrever sua própria política e usá-la para determinar qualquer
+ordenação personalizada que você quiser.
 
-Here's an example of how to use the `FocusTraversalOrder` widget to traverse a
-row of buttons in the order TWO, ONE, THREE using `NumericFocusOrder`.
+Aqui está um exemplo de como usar o widget `FocusTraversalOrder` para percorrer uma
+linha de botões na ordem TWO, ONE, THREE usando `NumericFocusOrder`.
 
 <?code-excerpt "ui/focus/lib/samples.dart (ordered-button-row)"?>
 ```dart
@@ -503,41 +503,41 @@ class OrderedButtonRow extends StatelessWidget {
 
 ### FocusTraversalPolicy
 
-The `FocusTraversalPolicy` is the object that determines which widget is next,
-given a request and the current focus node. The requests (member functions) are
-things like `findFirstFocus`, `findLastFocus`, `next`, `previous`, and
+O `FocusTraversalPolicy` é o objeto que determina qual widget é o próximo,
+dado uma solicitação e o nó de foco atual. As solicitações (funções membro) são
+coisas como `findFirstFocus`, `findLastFocus`, `next`, `previous`, e
 `inDirection`.
 
-`FocusTraversalPolicy` is the abstract base class for concrete policies, like
-`ReadingOrderTraversalPolicy`,  `OrderedTraversalPolicy` and the
-[`DirectionalFocusTraversalPolicyMixin`][] classes.
+`FocusTraversalPolicy` é a classe base abstrata para políticas concretas, como
+`ReadingOrderTraversalPolicy`, `OrderedTraversalPolicy` e as
+classes [`DirectionalFocusTraversalPolicyMixin`][`DirectionalFocusTraversalPolicyMixin`].
 
-In order to use a `FocusTraversalPolicy`, you give one to a
-`FocusTraversalGroup`, which determines the widget subtree in which the policy
-will be effective. The member functions of the class are rarely called directly:
-they are meant to be used by the focus system.
+Para usar um `FocusTraversalPolicy`, você o dá a um
+`FocusTraversalGroup`, que determina a subárvore de widgets na qual a política
+será efetiva. As funções membro da classe raramente são chamadas diretamente:
+elas são destinadas a ser usadas pelo sistema de foco.
 
-## The focus manager
+## O focus manager
 
-The [`FocusManager`][] maintains the current primary focus for the system. It
-only has a few pieces of API that are useful to users of the focus system. One
-is the `FocusManager.instance.primaryFocus` property, which contains the
-currently focused focus node and is also accessible from the global
-`primaryFocus` field.
+O [`FocusManager`][`FocusManager`] mantém o foco primário atual para o sistema. Ele
+só tem algumas partes de API que são úteis para usuários do sistema de foco. Uma
+é a propriedade `FocusManager.instance.primaryFocus`, que contém o
+nó de foco atualmente focado e também é acessível do campo global
+`primaryFocus`.
 
-Other useful properties are `FocusManager.instance.highlightMode` and
-`FocusManager.instance.highlightStrategy`. These are used by widgets that need
-to switch between a "touch" mode and a "traditional" (mouse and keyboard) mode
-for their focus highlights. When a user is using touch to navigate, the focus
-highlight is usually hidden, and when they switch to a mouse or keyboard, the
-focus highlight needs to be shown again so they know what is focused. The
-`hightlightStrategy` tells the focus manager how to interpret changes in the
-usage mode of the device: it can either automatically switch between the two
-based on the most recent input events, or it can be locked in touch or
-traditional modes. The provided widgets in Flutter already know how to use this
-information, so you only need it if you're writing your own controls from
-scratch. You can use `addHighlightModeListener` callback to listen for changes
-in the highlight mode.
+Outras propriedades úteis são `FocusManager.instance.highlightMode` e
+`FocusManager.instance.highlightStrategy`. Estas são usadas por widgets que precisam
+alternar entre um modo "touch" e um modo "tradicional" (mouse e teclado)
+para seus destaques de foco. Quando um usuário está usando toque para navegar, o destaque de foco
+geralmente é ocultado, e quando eles mudam para um mouse ou teclado, o
+destaque de foco precisa ser mostrado novamente para que eles saibam o que está focado. O
+`hightlightStrategy` diz ao focus manager como interpretar mudanças no
+modo de uso do dispositivo: ele pode alternar automaticamente entre os dois
+com base nos eventos de entrada mais recentes, ou pode ser bloqueado nos modos touch ou
+tradicional. Os widgets fornecidos no Flutter já sabem como usar esta
+informação, então você só precisa dela se estiver escrevendo seus próprios controles do
+zero. Você pode usar o callback `addHighlightModeListener` para ouvir mudanças
+no modo de destaque.
 
 [`Actions`]: {{site.api}}/flutter/widgets/Actions-class.html
 [`Builder`]: {{site.api}}/flutter/widgets/Builder-class.html

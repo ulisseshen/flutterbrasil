@@ -1,11 +1,10 @@
-Replace `plugin_name` throughout this guide with the name of your plugin.
-The example below uses `ios`, replace `ios` with `macos`/`darwin` as applicable.
+Substitua `plugin_name` ao longo deste guia pelo nome do seu plugin.
+O exemplo abaixo usa `ios`, substitua `ios` por `macos`/`darwin` conforme aplicável.
 
-1. [Turn on the Swift Package Manager feature][enableSPM].
+1. [Ative o recurso Swift Package Manager][enableSPM].
 
-1. Start by creating a directory under the `ios`, `macos`, and/or `darwin`
-   directories.
-   Name this new directory the name of the platform package.
+1. Comece criando um diretório sob os diretórios `ios`, `macos`, e/ou `darwin`.
+   Nomeie este novo diretório com o nome do pacote de plataforma.
 
    ```plaintext highlightLines=3
    plugin_name/ios/
@@ -13,13 +12,13 @@ The example below uses `ios`, replace `ios` with `macos`/`darwin` as applicable.
    └── plugin_name/
    ```
 
-1. Within this new directory, create the following files/directories:
+1. Dentro deste novo diretório, crie os seguintes arquivos/diretórios:
 
-   - `Package.swift` (file)
-   - `Sources` (directory)
-   - `Sources/plugin_name` (directory)
+   - `Package.swift` (arquivo)
+   - `Sources` (diretório)
+   - `Sources/plugin_name` (diretório)
 
-   Your plugin should look like:
+   Seu plugin deve se parecer com:
 
    ```plaintext highlightLines=4-5
    plugin_name/ios/
@@ -29,7 +28,7 @@ The example below uses `ios`, replace `ios` with `macos`/`darwin` as applicable.
       └── Sources/plugin_name/
    ```
 
-1. Use the following template in the `Package.swift` file:
+1. Use o seguinte template no arquivo `Package.swift`:
 
    ```swift title="Package.swift"
    // swift-tools-version: 5.9
@@ -75,7 +74,7 @@ The example below uses `ios`, replace `ios` with `macos`/`darwin` as applicable.
    )
    ```
 
-1. Update the [supported platforms][] in your `Package.swift` file.
+1. Atualize as [plataformas suportadas][supported platforms] no seu arquivo `Package.swift`.
 
    ```swift title="Package.swift"
        platforms: [
@@ -89,7 +88,7 @@ The example below uses `ios`, replace `ios` with `macos`/`darwin` as applicable.
 
    [supported platforms]: https://developer.apple.com/documentation/packagedescription/supportedplatform
 
-1. Update the package, library, and target names in your `Package.swift` file.
+1. Atualize os nomes do pacote, biblioteca e alvo no seu arquivo `Package.swift`.
 
    ```swift title="Package.swift"
    let package = Package(
@@ -128,13 +127,13 @@ The example below uses `ios`, replace `ios` with `macos`/`darwin` as applicable.
    ```
 
    :::note
-   If the plugin name contains `_`, the library name must be a `-` separated
-   version of the plugin name.
+   Se o nome do plugin contiver `_`, o nome da biblioteca deve ser uma versão
+   separada por `-` do nome do plugin.
    :::
 
-1. If your plugin has a [`PrivacyInfo.xcprivacy` file][], move it to
-   `ios/plugin_name/Sources/plugin_name/PrivacyInfo.xcprivacy` and uncomment
-   the resource in the `Package.swift` file.
+1. Se seu plugin tiver um [arquivo `PrivacyInfo.xcprivacy`][`PrivacyInfo.xcprivacy` file], mova-o para
+   `ios/plugin_name/Sources/plugin_name/PrivacyInfo.xcprivacy` e descomente
+   o recurso no arquivo `Package.swift`.
 
    ```swift title="Package.swift"
                resources: [
@@ -151,18 +150,18 @@ The example below uses `ios`, replace `ios` with `macos`/`darwin` as applicable.
                ],
    ```
 
-1. Move any resource files from `ios/Assets` to
-   `ios/plugin_name/Sources/plugin_name` (or a subdirectory).
-   Add the resource files to your `Package.swift` file, if applicable.
-   For more instructions, see
+1. Mova quaisquer arquivos de recursos de `ios/Assets` para
+   `ios/plugin_name/Sources/plugin_name` (ou um subdiretório).
+   Adicione os arquivos de recursos ao seu arquivo `Package.swift`, se aplicável.
+   Para mais instruções, veja
    [https://developer.apple.com/documentation/xcode/bundling-resources-with-a-swift-package](https://developer.apple.com/documentation/xcode/bundling-resources-with-a-swift-package).
 
-1. Move all files from `ios/Classes` to `ios/plugin_name/Sources/plugin_name`.
+1. Mova todos os arquivos de `ios/Classes` para `ios/plugin_name/Sources/plugin_name`.
 
-1. The `ios/Assets`, `ios/Resources`, and `ios/Classes` directories should now
-   be empty and can be deleted.
+1. Os diretórios `ios/Assets`, `ios/Resources` e `ios/Classes` agora devem
+   estar vazios e podem ser deletados.
 
-1. If your plugin uses [Pigeon][], update your Pigeon input file.
+1. Se seu plugin usa [Pigeon][Pigeon], atualize seu arquivo de entrada Pigeon.
 
    ```dart title="pigeons/messages.dart" diff
      kotlinOptions: KotlinOptions(),
@@ -173,28 +172,28 @@ The example below uses `ios`, replace `ios` with `macos`/`darwin` as applicable.
      swiftOptions: SwiftOptions(),
    ```
 
-1. Update your `Package.swift` file with any customizations you might need.
+1. Atualize seu arquivo `Package.swift` com quaisquer personalizações que você precise.
 
-   1. Open the `ios/plugin_name/` directory in Xcode.
+   1. Abra o diretório `ios/plugin_name/` no Xcode.
 
-   1. In Xcode, open your `Package.swift` file.
-      Verify Xcode doesn't produce any warnings or errors for this file.
+   1. No Xcode, abra seu arquivo `Package.swift`.
+      Verifique se o Xcode não produz avisos ou erros para este arquivo.
 
       :::tip
-      If Xcode doesn't show any files, quit Xcode (**Xcode > Quit Xcode**) and
-      reopen.
+      Se o Xcode não mostrar nenhum arquivo, saia do Xcode (**Xcode > Quit Xcode**) e
+      reabra.
 
-      If Xcode doesn't update after you make a change, try clicking
+      Se o Xcode não atualizar após você fazer uma alteração, tente clicar em
       **File > Packages > Reset Package Caches**.
       :::
 
-   1. If your `ios/plugin_name.podspec` file has [CocoaPods `dependency`][]s,
-      add the corresponding [Swift Package Manager dependencies][] to your
-      `Package.swift` file.
+   1. Se seu arquivo `ios/plugin_name.podspec` tiver [dependências][CocoaPods `dependency`] CocoaPods,
+      adicione as [dependências Swift Package Manager][Swift Package Manager dependencies] correspondentes ao seu
+      arquivo `Package.swift`.
 
-   1. If your package must be linked explicitly `static` or `dynamic`
-      ([not recommended by Apple][]), update the [Product][] to define the
-      type:
+   1. Se seu pacote deve ser vinculado explicitamente como `static` ou `dynamic`
+      ([não recomendado pela Apple][not recommended by Apple]), atualize o [Product][Product] para definir o
+      tipo:
 
       ```swift title="Package.swift"
       products: [
@@ -202,16 +201,16 @@ The example below uses `ios`, replace `ios` with `macos`/`darwin` as applicable.
       ],
       ```
 
-   1. Make any other customizations. For more information on how to write a
-      `Package.swift` file, see
+   1. Faça quaisquer outras personalizações. Para mais informações sobre como escrever um
+      arquivo `Package.swift`, veja
       [https://developer.apple.com/documentation/packagedescription](https://developer.apple.com/documentation/packagedescription).
 
       :::tip
-      If you add targets to your `Package.swift` file, use unique names.
-      This avoids conflicts with targets from other packages.
+      Se você adicionar alvos ao seu arquivo `Package.swift`, use nomes únicos.
+      Isso evita conflitos com alvos de outros pacotes.
       :::
 
-1. Update your `ios/plugin_name.podspec` to point to new paths.
+1. Atualize seu `ios/plugin_name.podspec` para apontar para novos caminhos.
 
    ```ruby title="ios/plugin_name.podspec" diff
    - s.source_files = 'Classes/**/*.swift'
@@ -220,7 +219,7 @@ The example below uses `ios`, replace `ios` with `macos`/`darwin` as applicable.
    + s.resource_bundles = {'plugin_name_privacy' => ['plugin_name/Sources/plugin_name/PrivacyInfo.xcprivacy']}
    ```
 
-1. Update loading of resources from bundle to use [`Bundle.module`][].
+1. Atualize o carregamento de recursos do pacote para usar [`Bundle.module`][`Bundle.module`].
 
    ```swift
    #if SWIFT_PACKAGE
@@ -231,49 +230,49 @@ The example below uses `ios`, replace `ios` with `macos`/`darwin` as applicable.
    ```
 
    :::note
-   `Bundle.module` only works if there are resources
-   [defined in the `Package.swift` file][Bundling resources] or
-   [automatically included by Xcode][Xcode resource detection]).
-   Otherwise, using `Bundle.module` results in an error.
+   `Bundle.module` só funciona se houver recursos
+   [definidos no arquivo `Package.swift`][Bundling resources] ou
+   [automaticamente incluídos pelo Xcode][Xcode resource detection]).
+   Caso contrário, usar `Bundle.module` resulta em um erro.
    :::
 
-1. If your `.gitignore` doesn't include `.build/` and `.swiftpm/` directories,
-   you'll want to update your `.gitignore` to include:
+1. Se seu `.gitignore` não incluir os diretórios `.build/` e `.swiftpm/`,
+   você vai querer atualizar seu `.gitignore` para incluir:
 
     ```text title=".gitignore"
     .build/
     .swiftpm/
     ```
 
-    Commit your plugin's changes to your version control system.
+    Commite as alterações do seu plugin no seu sistema de controle de versão.
 
-1. Verify the plugin still works with CocoaPods.
+1. Verifique se o plugin ainda funciona com CocoaPods.
 
-   1. Turn off Swift Package Manager.
+   1. Desative o Swift Package Manager.
 
       ```sh
       flutter config --no-enable-swift-package-manager
       ```
 
-   1. Navigate to the plugin's example app.
+   1. Navegue até o app de exemplo do plugin.
 
       ```sh
       cd path/to/plugin/example/
       ```
 
-   1. Ensure the plugin's example app builds and runs.
+   1. Certifique-se de que o app de exemplo do plugin compila e executa.
 
       ```sh
       flutter run
       ```
 
-   1. Navigate to the plugin's top-level directory.
+   1. Navegue até o diretório de nível superior do plugin.
 
       ```sh
       cd path/to/plugin/
       ```
 
-   1. Run CocoaPods validation lints.
+   1. Execute os lints de validação do CocoaPods.
 
       ```sh
       pod lib lint ios/plugin_name.podspec  --configuration=Debug --skip-tests --use-modular-headers --use-libraries
@@ -283,50 +282,50 @@ The example below uses `ios`, replace `ios` with `macos`/`darwin` as applicable.
       pod lib lint ios/plugin_name.podspec  --configuration=Debug --skip-tests --use-modular-headers
       ```
 
-1. Verify the plugin works with Swift Package Manager.
+1. Verifique se o plugin funciona com Swift Package Manager.
 
-   1. Turn on Swift Package Manager.
+   1. Ative o Swift Package Manager.
 
        ```sh
        flutter config --enable-swift-package-manager
        ```
 
-   1. Navigate to the plugin's example app.
+   1. Navegue até o app de exemplo do plugin.
 
       ```sh
       cd path/to/plugin/example/
       ```
 
-   1. Ensure the plugin's example app builds and runs.
+   1. Certifique-se de que o app de exemplo do plugin compila e executa.
 
       ```sh
       flutter run
       ```
 
       :::note
-      Using the Flutter CLI to run the plugin's example app with the
-      Swift Package Manager feature turned on migrates the project to add
-      Swift Package Manager integration.
+      Usar a CLI do Flutter para executar o app de exemplo do plugin com o
+      recurso Swift Package Manager ativado migra o projeto para adicionar
+      integração ao Swift Package Manager.
 
-      This raises the example app's Flutter SDK requirement to version 3.24 or
-      higher.
+      Isso aumenta o requisito do Flutter SDK do app de exemplo para a versão 3.24 ou
+      superior.
 
-      If you'd like to run the example app using an older Flutter SDK version,
-      do not commit the migration's changes to your version control system.
-      If needed, you can always
-      [undo the Swift Package Manager migration][removeSPM].
+      Se você quiser executar o app de exemplo usando uma versão mais antiga do Flutter SDK,
+      não commite as alterações da migração no seu sistema de controle de versão.
+      Se necessário, você sempre pode
+      [desfazer a migração do Swift Package Manager][removeSPM].
       :::
 
-   1. Open the plugin's example app in Xcode.
-      Ensure that **Package Dependencies** shows in the left
-      **Project Navigator**.
+   1. Abra o app de exemplo do plugin no Xcode.
+      Certifique-se de que **Package Dependencies** apareça no
+      **Project Navigator** à esquerda.
 
-1. Verify tests pass.
+1. Verifique se os testes passam.
 
-   * **If your plugin has native unit tests (XCTest), make sure you also
-     [update unit tests in the plugin's example app][].**
+   * **Se seu plugin tiver testes unitários nativos (XCTest), certifique-se de também
+     [atualizar os testes unitários no app de exemplo do plugin][update unit tests in the plugin's example app].**
 
-   * Follow instructions for [testing plugins][].
+   * Siga as instruções para [testar plugins][testing plugins].
 
 [enableSPM]: /packages-and-plugins/swift-package-manager/for-plugin-authors#how-to-turn-on-swift-package-manager
 [`PrivacyInfo.xcprivacy` file]: https://developer.apple.com/documentation/bundleresources/privacy_manifest_files

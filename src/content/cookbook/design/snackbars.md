@@ -1,33 +1,34 @@
 ---
-title: Display a snackbar
-description: How to implement a snackbar to display messages.
+ia-translate: true
+title: Exibir uma snackbar
+description: Como implementar uma snackbar para exibir mensagens.
 ---
 
 <?code-excerpt path-base="cookbook/design/snackbars/"?>
 
-It can be useful to briefly inform your users when certain actions
-take place. For example, when a user swipes away a message in a list,
-you might want to inform them that the message has been deleted.
-You might even want to give them an option to undo the action.
+Pode ser útil informar brevemente seus usuários quando certas ações
+ocorrem. Por exemplo, quando um usuário desliza uma mensagem em uma lista,
+você pode querer informá-lo que a mensagem foi deletada.
+Você pode até querer dar a eles uma opção de desfazer a ação.
 
-In Material Design, this is the job of a [`SnackBar`][].
-This recipe implements a snackbar using the following steps:
+No Material Design, este é o trabalho de uma [`SnackBar`][].
+Esta receita implementa uma snackbar usando os seguintes passos:
 
-  1. Create a `Scaffold`.
-  2. Display a `SnackBar`.
-  3. Provide an optional action.
+  1. Criar um `Scaffold`.
+  2. Exibir uma `SnackBar`.
+  3. Fornecer uma ação opcional.
 
-## 1. Create a `Scaffold`
+## 1. Criar um `Scaffold`
 
-When creating apps that follow the Material Design guidelines,
-give your apps a consistent visual structure.
-In this example, display the `SnackBar` at the bottom of the screen,
-without overlapping other important
-widgets, such as the `FloatingActionButton`.
+Ao criar apps que seguem as diretrizes do Material Design,
+dê aos seus apps uma estrutura visual consistente.
+Neste exemplo, exiba a `SnackBar` na parte inferior da tela,
+sem sobrepor outros widgets importantes,
+como o `FloatingActionButton`.
 
-The [`Scaffold`][] widget, from the [material library][],
-creates this visual structure and ensures that important
-widgets don't overlap.
+O widget [`Scaffold`][], da [biblioteca material][material library],
+cria esta estrutura visual e garante que widgets importantes
+não se sobreponham.
 
 <?code-excerpt "lib/partial.dart (Scaffold)"?>
 ```dart
@@ -40,10 +41,10 @@ return MaterialApp(
 );
 ```
 
-## 2. Display a `SnackBar`
+## 2. Exibir uma `SnackBar`
 
-With the `Scaffold` in place, display a `SnackBar`.
-First, create a `SnackBar`, then display it using `ScaffoldMessenger`.
+Com o `Scaffold` no lugar, exiba uma `SnackBar`.
+Primeiro, crie uma `SnackBar`, depois a exiba usando `ScaffoldMessenger`.
 
 <?code-excerpt "lib/partial.dart (DisplaySnackBar)"?>
 ```dart
@@ -55,22 +56,22 @@ ScaffoldMessenger.of(context).showSnackBar(snackBar);
 ```
 
 :::note
-To learn more, watch this short Widget of the Week video on
-the `ScaffoldMessenger` widget:
+Para saber mais, assista este pequeno vídeo Widget of the Week sobre
+o widget `ScaffoldMessenger`:
 
 <YouTubeEmbed id="lytQi-slT5Y" title="ScaffoldMessenger | Flutter widget of the week"></YouTubeEmbed>
 :::
 
-## 3. Provide an optional action
+## 3. Fornecer uma ação opcional
 
-You might want to provide an action to the user when
-the SnackBar is displayed.
-For example, if the user accidentally deletes a message,
-they might use an optional action in the SnackBar to recover
-the message.
+Você pode querer fornecer uma ação ao usuário quando
+a SnackBar é exibida.
+Por exemplo, se o usuário acidentalmente deletar uma mensagem,
+ele pode usar uma ação opcional na SnackBar para recuperar
+a mensagem.
 
-Here's an example of providing
-an additional `action` to the `SnackBar` widget:
+Aqui está um exemplo de fornecer
+uma `action` adicional ao widget `SnackBar`:
 
 <?code-excerpt "lib/main.dart (SnackBarAction)"?>
 ```dart
@@ -85,16 +86,16 @@ final snackBar = SnackBar(
 );
 ```
 
-## Interactive example
+## Exemplo interativo
 
 :::note
-In this example, the SnackBar displays when a user taps a button.
-For more information on working with user input,
-see the [Gestures][] section of the cookbook.
+Neste exemplo, a SnackBar é exibida quando um usuário toca em um botão.
+Para mais informações sobre trabalhar com entrada do usuário,
+veja a seção [Gestures][] do cookbook.
 :::
 
 <?code-excerpt "lib/main.dart"?>
-```dartpad title="Flutter snackbar hands-on example in DartPad" run="true"
+```dartpad title="Exemplo prático de snackbar Flutter no DartPad" run="true"
 import 'package:flutter/material.dart';
 
 void main() => runApp(const SnackBarDemo());

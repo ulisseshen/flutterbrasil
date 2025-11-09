@@ -1,68 +1,69 @@
 ---
-title: Building macOS apps with Flutter
-description: Platform-specific considerations for building for macOS with Flutter.
-shortTitle: macOS development
+ia-translate: true
+title: Criando apps macOS com Flutter
+description: Considerações específicas da plataforma para criar apps macOS com Flutter.
+shortTitle: Desenvolvimento macOS
 ---
 
-This page discusses considerations unique to building
-macOS apps with Flutter, including shell integration
-and distribution of macOS apps through the Apple Store.
+Esta página discute considerações exclusivas para criar
+apps macOS com Flutter, incluindo integração com o shell
+e distribuição de apps macOS através da Apple Store.
 
-## Integrating with macOS look and feel
+## Integrando com a aparência do macOS {:#integrating-with-macos-look-and-feel}
 
-While you can use any visual style or theme you choose
-to build a macOS app, you might want to adapt your app
-to more fully align with the macOS look and feel.
-Flutter includes the [Cupertino] widget set,
-which provides a set of widgets for
-the current iOS design language.
-Many of these widgets, including sliders,
-switches and segmented controls,
-are also appropriate for use on macOS.
+Embora você possa usar qualquer estilo visual ou tema que escolher
+para criar um app macOS, você pode querer adaptar seu app
+para alinhar mais completamente com a aparência do macOS.
+Flutter inclui o conjunto de widgets [Cupertino][Cupertino],
+que fornece um conjunto de widgets para
+a linguagem de design atual do iOS.
+Muitos desses widgets, incluindo sliders,
+switches e controles segmentados,
+também são apropriados para uso no macOS.
 
-Alternatively, you might find the [macos_ui][]
-package a good fit for your needs.
-This package provides widgets and themes that
-implement the macOS design language,
-including a `MacosWindow` frame and scaffold,
-toolbars, pulldown and
-pop-up buttons, and modal dialogs.
+Alternativamente, você pode achar que o pacote [macos_ui][macos_ui]
+é adequado para suas necessidades.
+Este pacote fornece widgets e temas que
+implementam a linguagem de design do macOS,
+incluindo um frame e scaffold `MacosWindow`,
+toolbars, botões pulldown e
+pop-up, e diálogos modais.
 
 [Cupertino]: /ui/widgets/cupertino
 [macos_ui]: {{site.pub}}/packages/macos_ui
 
-## Building macOS apps
+## Criando apps macOS
 
-To distribute your macOS application, you can either
-[distribute it through the macOS App Store][],
-or you can distribute the `.app` itself,
-perhaps from your own website.
-You need to notarize your macOS application before
-distributing it outside the macOS App Store.
+Para distribuir sua aplicação macOS, você pode
+[distribuí-la através da macOS App Store][distribute it through the macOS App Store],
+ou pode distribuir o `.app` em si,
+talvez a partir do seu próprio site.
+Você precisa notarizar sua aplicação macOS antes
+de distribuí-la fora da macOS App Store.
 
-The first step in both of the above processes
-involves working with your application inside of Xcode.
-To be able to compile your application from inside of
-Xcode you first need to build the application for release
-using the `flutter build` command, then open the
-Flutter macOS Runner application.
+O primeiro passo em ambos os processos acima
+envolve trabalhar com sua aplicação dentro do Xcode.
+Para poder compilar sua aplicação de dentro do
+Xcode, você primeiro precisa criar a aplicação para release
+usando o comando `flutter build`, e então abrir a
+aplicação Flutter macOS Runner.
 
 ```bash
 flutter build macos
 open macos/Runner.xcworkspace
 ```
 
-Once inside of Xcode, follow either Apple's
-[documentation on notarizing macOS Applications][], or
-[on distributing an application through the App Store][].
-You should also read through the
-[macOS-specific support](#entitlements-and-the-app-sandbox)
-section below to understand how entitlements,
-the App Sandbox, and the Hardened Runtime
-impact your distributable application.
+Uma vez dentro do Xcode, siga a
+[documentação da Apple sobre notarização de aplicações macOS][documentation on notarizing macOS Applications], ou
+[sobre distribuição de uma aplicação através da App Store][on distributing an application through the App Store].
+Você também deve ler a
+seção de [suporte específico para macOS](#entitlements-and-the-app-sandbox)
+abaixo para entender como os entitlements,
+o App Sandbox e o Hardened Runtime
+impactam sua aplicação distribuível.
 
-[Build and release a macOS app][] provides a more detailed
-step-by-step walkthrough of releasing a Flutter app to the
+[Build and release a macOS app][Build and release a macOS app] fornece um passo a passo
+mais detalhado de como publicar um app Flutter na
 App Store.
 
 [distribute it through the macOS App Store]: {{site.apple-dev}}/macos/submit/
@@ -70,54 +71,54 @@ App Store.
 [on distributing an application through the App Store]: https://help.apple.com/xcode/mac/current/#/dev067853c94
 [Build and release a macOS app]: /deployment/macos
 
-## Entitlements and the App Sandbox
+## Entitlements e o App Sandbox {:#entitlements-and-the-app-sandbox}
 
-macOS builds are configured by default to be signed,
-and sandboxed with App Sandbox.
-This means that if you want to confer specific
-capabilities or services on your macOS app,
-such as the following:
+As builds macOS são configuradas por padrão para serem assinadas
+e isoladas com App Sandbox.
+Isso significa que se você quiser conceder capacidades
+ou serviços específicos ao seu app macOS,
+como os seguintes:
 
-* Accessing the internet
-* Capturing movies and images from the built-in camera
-* Accessing files
+* Acessar a internet
+* Capturar filmes e imagens da câmera integrada
+* Acessar arquivos
 
-Then you must set up specific _entitlements_ in Xcode.
-The following section tells you how to do this.
+Então você deve configurar _entitlements_ específicos no Xcode.
+A seção a seguir mostra como fazer isso.
 
-### Setting up entitlements
+### Configurando entitlements {:#setting-up-entitlements}
 
-Managing sandbox settings is done in the
-`macos/Runner/*.entitlements` files. When editing
-these files, you shouldn't remove the original
-`Runner-DebugProfile.entitlements` exceptions
-(that support incoming network connections and JIT),
-as they're necessary for the `debug` and `profile`
-modes to function correctly.
+O gerenciamento das configurações de sandbox é feito nos
+arquivos `macos/Runner/*.entitlements`. Ao editar
+esses arquivos, você não deve remover as exceções
+originais do `Runner-DebugProfile.entitlements`
+(que suportam conexões de rede de entrada e JIT),
+pois elas são necessárias para que os modos
+`debug` e `profile` funcionem corretamente.
 
-If you're used to managing entitlement files through
-the **Xcode capabilities UI**, be aware that the capabilities
-editor updates only one of the two files or,
-in some cases, it creates a whole new entitlements
-file and switches the project to use it for all configurations.
-Either scenario causes issues. We recommend that you
-edit the files directly. Unless you have a very specific
-reason, you should always make identical changes to both files.
+Se você está acostumado a gerenciar arquivos de entitlement através
+da **UI de capabilities do Xcode**, saiba que o editor de capabilities
+atualiza apenas um dos dois arquivos ou,
+em alguns casos, cria um arquivo de entitlements
+completamente novo e muda o projeto para usá-lo em todas as configurações.
+Qualquer um dos cenários causa problemas. Recomendamos que você
+edite os arquivos diretamente. A menos que você tenha um motivo
+muito específico, você deve sempre fazer alterações idênticas em ambos os arquivos.
 
-If you keep the App Sandbox enabled (which is required if you
-plan to distribute your application in the [App Store][]),
-you need to manage entitlements for your application
-when you add certain plugins or other native functionality.
-For instance, using the [`file_chooser`][] plugin
-requires adding either the
-`com.apple.security.files.user-selected.read-only` or
-`com.apple.security.files.user-selected.read-write` entitlement.
-Another common entitlement is
+Se você mantiver o App Sandbox habilitado (o que é necessário se você
+planeja distribuir sua aplicação na [App Store][App Store]),
+você precisa gerenciar entitlements para sua aplicação
+quando adicionar certos plugins ou outras funcionalidades nativas.
+Por exemplo, usar o plugin [`file_chooser`][`file_chooser`]
+requer adicionar o entitlement
+`com.apple.security.files.user-selected.read-only` ou
+`com.apple.security.files.user-selected.read-write`.
+Outro entitlement comum é
 `com.apple.security.network.client`,
-which you must add if you make any network requests.
+que você deve adicionar se fizer qualquer solicitação de rede.
 
-Without the `com.apple.security.network.client` entitlement,
-for example, network requests fail with a message such as:
+Sem o entitlement `com.apple.security.network.client`,
+por exemplo, as solicitações de rede falham com uma mensagem como:
 
 ```console
 flutter: SocketException: Connection failed
@@ -126,21 +127,21 @@ address = example.com, port = 443
 ```
 
 :::important
-The `com.apple.security.network.server`
-entitlement, which allows incoming network connections,
-is enabled by default only for `debug` and `profile`
-builds to enable communications between Flutter tools
-and a running app. If you need to allow incoming
-network requests in your application,
-you must add the `com.apple.security.network.server`
-entitlement to `Runner-Release.entitlements` as well,
-otherwise your application will work correctly for debug or
-profile testing, but will fail with release builds.
+O entitlement `com.apple.security.network.server`,
+que permite conexões de rede de entrada,
+é habilitado por padrão apenas para builds `debug` e `profile`
+para permitir comunicações entre as ferramentas Flutter
+e um app em execução. Se você precisa permitir
+solicitações de rede de entrada em sua aplicação,
+você deve adicionar o entitlement `com.apple.security.network.server`
+ao `Runner-Release.entitlements` também,
+caso contrário sua aplicação funcionará corretamente para testes
+de debug ou profile, mas falhará com builds de release.
 :::
 
-For more information on these topics,
-see [App Sandbox][] and [Entitlements][]
-on the Apple Developer site.
+Para mais informações sobre esses tópicos,
+veja [App Sandbox][App Sandbox] e [Entitlements][Entitlements]
+no site Apple Developer.
 
 [App Sandbox]: {{site.apple-dev}}/documentation/security/app_sandbox
 [App Store]: {{site.apple-dev}}/app-store/submissions/
@@ -149,24 +150,24 @@ on the Apple Developer site.
 
 ## Hardened Runtime
 
-If you choose to distribute your application outside
-of the App Store, you need to notarize your application
-for compatibility with macOS.
-This requires enabling the Hardened Runtime option.
-Once you have enabled it, you need a valid signing
-certificate in order to build.
+Se você escolher distribuir sua aplicação fora
+da App Store, você precisa notarizar sua aplicação
+para compatibilidade com macOS.
+Isso requer habilitar a opção Hardened Runtime.
+Uma vez que você a tenha habilitado, você precisa de um certificado
+de assinatura válido para poder fazer build.
 
-By default, the entitlements file allows JIT for
-debug builds but, as with App Sandbox, you might
-need to manage other entitlements.
-If you have both App Sandbox and Hardened
-Runtime enabled, you might need to add multiple
-entitlements for the same resource.
-For instance, microphone access would require both
-`com.apple.security.device.audio-input` (for Hardened Runtime)
-and `com.apple.security.device.microphone` (for App Sandbox).
+Por padrão, o arquivo de entitlements permite JIT para
+builds de debug mas, assim como com o App Sandbox, você pode
+precisar gerenciar outros entitlements.
+Se você tiver tanto App Sandbox quanto Hardened
+Runtime habilitados, você pode precisar adicionar múltiplos
+entitlements para o mesmo recurso.
+Por exemplo, acesso ao microfone exigiria tanto
+`com.apple.security.device.audio-input` (para Hardened Runtime)
+quanto `com.apple.security.device.microphone` (para App Sandbox).
 
-For more information on this topic,
-see [Hardened Runtime][] on the Apple Developer site.
+Para mais informações sobre este tópico,
+veja [Hardened Runtime][Hardened Runtime] no site Apple Developer.
 
 [Hardened Runtime]: {{site.apple-dev}}/documentation/security/hardened_runtime

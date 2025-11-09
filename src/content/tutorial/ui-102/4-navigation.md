@@ -1,17 +1,18 @@
 ---
-title: Stack-based navigation
-description: Learn how to navigate from one page to another in a Flutter app
+ia-translate: true
+title: Navegação baseada em pilha
+description: Aprenda como navegar de uma página para outra em um app Flutter
 permalink: /tutorial/stack-based-navigation/
 sitemap: false
 ---
 
-Now that you understand slivers and scrolling, you can implement
-navigation between screens. In this lesson, you'll update the
-small-screen view such that when a contact group is tapped, it
-navigates to the contact list for that group.
+Agora que você entende slivers e rolagem, você pode implementar
+navegação entre telas. Nesta lição, você atualizará a
+view de tela pequena de modo que quando um grupo de contatos for tocado, ele
+navegue para a lista de contatos daquele grupo.
 
-First, revert changes in the adaptive layout widget so that it
-displays the ContactGroupsPage by default on small screens.
+Primeiro, reverta as mudanças no widget de layout adaptativo para que ele
+exiba o ContactGroupsPage por padrão em telas pequenas.
 
 ```dart
 // lib/screens/adaptive_layout.dart
@@ -42,15 +43,15 @@ class _AdaptiveLayoutState extends State<AdaptiveLayout> {
 }
 ```
 
-## Add navigation to contact groups
+## Adicione navegação aos grupos de contatos
 
-The `ContactGroupsPage` already uses a `_ContactGroupsView`
-and provides it with a callback. That callback needs to be updated to
-navigate when a group is tapped, rather than printing the group to the
+O `ContactGroupsPage` já usa um `_ContactGroupsView`
+e fornece a ele um callback. Esse callback precisa ser atualizado para
+navegar quando um grupo é tocado, em vez de imprimir o grupo no
 console.
 
-Ensure that the `onListSelected` callback in
-`lib/screens/contact_groups.dart` is implemented as follows:
+Certifique-se de que o callback `onListSelected` em
+`lib/screens/contact_groups.dart` está implementado da seguinte forma:
 
 ```dart
 // lib/screens/contact_groups.dart
@@ -72,28 +73,28 @@ class ContactGroupsPage extends StatelessWidget {
 }
 ```
 
-This small code block contains the most important new information on this page.
+Este pequeno bloco de código contém a informação nova mais importante desta página.
 
-`Navigator.of(context)` retrieves the nearest `Navigator` widget from
-the widget tree. The `push` method adds a new route to the
-navigator's stack, and displays the widget returned from the `builder` property.
+`Navigator.of(context)` recupera o widget `Navigator` mais próximo da
+árvore de widgets. O método `push` adiciona uma nova rota à
+pilha do navegador, e exibe o widget retornado da propriedade `builder`.
 
-This is the most basic implementation of using stack-based navigation,
-where new screens are pushed on top of the current screen. To navigate
-back to the previous screen, you'd use the `Navigator.pop` method.
+Esta é a implementação mais básica de uso de navegação baseada em pilha,
+onde novas telas são empilhadas em cima da tela atual. Para navegar
+de volta para a tela anterior, você usaria o método `Navigator.pop`.
 
-`CupertinoPageRoute` creates iOS-style page transitions with the following features:
-- A slide-in animation from the right.
-- Automatic back button support.
-- Proper title handling.
-- Swipe-to-go-back gesture support.
+`CupertinoPageRoute` cria transições de página no estilo iOS com os seguintes recursos:
+- Uma animação de deslizamento da direita.
+- Suporte automático de botão de voltar.
+- Tratamento adequado de título.
+- Suporte a gesto de deslizar-para-voltar.
 
-## Create the sidebar component for large screens
+## Crie o componente de barra lateral para telas grandes
 
-For large screens, you need a sidebar that doesn't navigate but
-instead updates the main content area. Thanks to the refactoring in
-the previous step, creating this component is simple. Add this widget
-to the bottom of `lib/screens/contact_groups.dart`:
+Para telas grandes, você precisa de uma barra lateral que não navegue mas
+em vez disso atualize a área de conteúdo principal. Graças à refatoração na
+etapa anterior, criar este componente é simples. Adicione este widget
+ao final de `lib/screens/contact_groups.dart`:
 
 ```dart
 // lib/screens/contact_groups.dart
@@ -121,17 +122,17 @@ class ContactGroupsSidebar extends StatelessWidget {
 }
 ```
 
-This sidebar component reuses the `_ContactGroupsView` and provides a
-different callback. Instead of navigating, it calls `onListSelected`
-with the ID of the tapped list. It also passes the `selectedListId` to
-`_ContactGroupsView` so that the selected item can be highlighted.
+Este componente de barra lateral reutiliza o `_ContactGroupsView` e fornece um
+callback diferente. Em vez de navegar, ele chama `onListSelected`
+com o ID da lista tocada. Ele também passa o `selectedListId` para
+`_ContactGroupsView` para que o item selecionado possa ser destacado.
 
-## Create the detail view for large screens
+## Crie a view de detalhe para telas grandes
 
-For the large screen layout, you need a detail view that doesn't show
-navigation controls. Just like the sidebar, this is easy to create by
-reusing the `_ContactListView`. Add this widget to the bottom of your
-`contacts.dart` file:
+Para o layout de tela grande, você precisa de uma view de detalhe que não mostre
+controles de navegação. Assim como a barra lateral, isto é fácil de criar
+reutilizando o `_ContactListView`. Adicione este widget ao final do seu
+arquivo `contacts.dart`:
 
 ```dart
 // lib/screens/contacts.dart
@@ -154,15 +155,15 @@ class ContactListDetail extends StatelessWidget {
 }
 ```
 
-The detail view reuses `_ContactListView` and sets
-`automaticallyImplyLeading: false` to hide the back button, as
-navigation is handled by the sidebar.
+A view de detalhe reutiliza `_ContactListView` e define
+`automaticallyImplyLeading: false` para esconder o botão de voltar, já que
+a navegação é tratada pela barra lateral.
 
-## Connect the sidebar to the adaptive layout
+## Conecte a barra lateral ao layout adaptativo
 
-Now, connect the sidebar to your adaptive layout. Update your
-`adaptive_layout.dart` to import the necessary files and update the
-large screen layout:
+Agora, conecte a barra lateral ao seu layout adaptativo. Atualize seu
+`adaptive_layout.dart` para importar os arquivos necessários e atualizar o
+layout de tela grande:
 
 ```dart
 // lib/screens/adaptive_layout.dart
@@ -171,7 +172,7 @@ import 'package:rolodex/screens/contact_groups.dart';
 import 'package:rolodex/screens/contacts.dart';
 ```
 
-Then update the `_buildLargeScreenLayout` method:
+Então atualize o método `_buildLargeScreenLayout`:
 
 ```dart
 // lib/screens/adaptive_layout.dart
@@ -203,23 +204,23 @@ Widget _buildLargeScreenLayout() {
 }
 ```
 
-This code creates the classic menu-detail layout where the sidebar
-controls the content of the detail area.
+Este código cria o layout clássico menu-detalhe onde a barra lateral
+controla o conteúdo da área de detalhe.
 
-## Test the adaptive navigation behavior
+## Teste o comportamento de navegação adaptativa
 
-Hot reload your app and test the navigation:
+Faça hot reload do seu app e teste a navegação:
 
-**Small screens (< 600px width):**
-- Tap contact groups to navigate to contact details.
-- Use the back button or swipe gesture to return.
-- This is a classic stack-based navigation flow.
+**Telas pequenas (largura < 600px):**
+- Toque nos grupos de contatos para navegar para detalhes de contatos.
+- Use o botão de voltar ou gesto de deslizar para retornar.
+- Este é um fluxo clássico de navegação baseada em pilha.
 
-**Large screens (> 600px width):**
-- Click contact groups in the sidebar to update the detail view.
-- There is no navigation stack. The selection updates the content area.
-- This is a master-detail interface pattern.
+**Telas grandes (largura > 600px):**
+- Clique nos grupos de contatos na barra lateral para atualizar a view de detalhe.
+- Não há pilha de navegação. A seleção atualiza a área de conteúdo.
+- Este é um padrão de interface mestre-detalhe.
 
-The app automatically chooses the appropriate navigation pattern based
-on screen size. This provides an optimal experience on both phones and
+O app escolhe automaticamente o padrão de navegação apropriado baseado
+no tamanho da tela. Isso fornece uma experiência ideal tanto em telefones quanto em
 tablets.

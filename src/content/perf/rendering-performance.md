@@ -1,59 +1,60 @@
 ---
-title: Improving rendering performance
-description: How to measure and evaluate your app's rendering performance.
+ia-translate: true
+title: Melhorando a performance de renderização
+description: Como medir e avaliar a performance de renderização do seu app.
 ---
 
 {% render "docs/performance.md" %}
 
-Rendering animations in your app is one of the most cited
-topics of interest when it comes to measuring performance.
-Thanks in part to Flutter's Skia engine and its ability
-to quickly create and dispose of widgets,
-Flutter applications are performant by default,
-so you only need to avoid common pitfalls to achieve
-excellent performance.
+Renderizar animações em seu app é um dos tópicos mais citados
+de interesse quando se trata de medir performance.
+Graças em parte ao engine Skia do Flutter e sua capacidade
+de criar e descartar widgets rapidamente,
+aplicações Flutter são performáticas por padrão,
+então você só precisa evitar armadilhas comuns para alcançar
+excelente performance.
 
-## General advice
+## Conselhos gerais
 
-If you see janky (non-smooth) animations, make
-**sure** that you are profiling performance with an
-app built in _profile_ mode.
-The default Flutter build creates an app in _debug_ mode,
-which is not indicative of release performance.
-For information,
-see [Flutter's build modes][].
+Se você vê animações travadas (não suaves), certifique-se
+de que você está fazendo profiling de performance com um
+app construído em modo _profile_.
+O build padrão do Flutter cria um app em modo _debug_,
+que não é indicativo de performance de release.
+Para informações,
+veja [modos de build do Flutter][Flutter's build modes].
 
-A couple common pitfalls:
+Algumas armadilhas comuns:
 
-* Rebuilding far more of the UI than expected each frame.
-  To track widget rebuilds, see [Show performance data][].
-* Building a large list of children directly, rather than
-  using a ListView.
+* Reconstruir muito mais da UI do que o esperado em cada frame.
+  Para rastrear rebuilds de widgets, veja [Mostrar dados de performance][Show performance data].
+* Construir uma lista grande de filhos diretamente, ao invés de
+  usar um ListView.
 
-For more information on evaluating performance
-including information on common pitfalls,
-see the following docs:
+Para mais informações sobre avaliar performance
+incluindo informações sobre armadilhas comuns,
+veja os seguintes docs:
 
-* [Performance best practices][]
-* [Flutter performance profiling][]
+* [Melhores práticas de performance][Performance best practices]
+* [Profiling de performance do Flutter][Flutter performance profiling]
 
-## Mobile-only advice
+## Conselhos apenas para mobile
 
-Do you see noticeable jank on your mobile app, but only on the first run of an
-animation? To avoid this, make sure you're using Flutter's default
-graphic renderer, [Impeller][].
+Você vê jank notável no seu app mobile, mas apenas na primeira execução de uma
+animação? Para evitar isso, certifique-se de que está usando o
+renderizador gráfico padrão do Flutter, [Impeller][Impeller].
 
 [Impeller]: /perf/impeller
 
-## Web-only advice
+## Conselhos apenas para web
 
-The following series of articles cover what the Flutter Material
-team learned when improving performance of the Flutter Gallery
-app on the web:
+A seguinte série de artigos cobre o que a equipe Flutter Material
+aprendeu ao melhorar a performance do app Flutter Gallery
+na web:
 
-* [Optimizing performance in Flutter web apps with tree shaking and deferred loading][shaking]
-* [Improving perceived performance with image placeholders, precaching, and disabled navigation transitions][images]
-* [Building performant Flutter widgets][]
+* [Otimizando performance em apps Flutter web com tree shaking e deferred loading][shaking]
+* [Melhorando a performance percebida com placeholders de imagem, pré-caching e transições de navegação desabilitadas][images]
+* [Construindo widgets Flutter performáticos][Building performant Flutter widgets]
 
 
 [Building performant Flutter widgets]: {{site.flutter-blog}}/building-performant-flutter-widgets-3b2558aa08fa

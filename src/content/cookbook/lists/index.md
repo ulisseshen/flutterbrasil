@@ -1,6 +1,7 @@
 ---
-title: Flutter lists cookbook
-shortTitle: Lists
-description: A catalog of recipes for handling lists in your Flutter app.
+ia-translate: true
+title: Cookbook de listas do Flutter
+shortTitle: Listas
+description: Um catálogo de receitas para trabalhar com listas no seu app Flutter.
 layout: toc
 ---

@@ -1,6 +1,7 @@
 ---
-title: Widget testing
+ia-translate: true
+title: Testes de widget
 breadcrumb: Widget
-description: A catalog of recipes for adding widget testing to your Flutter app.
+description: Um catálogo de receitas para adicionar testes de widget ao seu app Flutter.
 layout: toc
 ---

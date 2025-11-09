@@ -1,6 +1,7 @@
 ---
-title: Flutter forms cookbook
-shortTitle: Forms
-description: A catalog of Flutter form recipes.
+ia-translate: true
+title: Cookbook de formulários Flutter
+shortTitle: Formulários
+description: Um catálogo de receitas de formulários Flutter.
 layout: toc
 ---

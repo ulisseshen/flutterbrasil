@@ -1,62 +1,63 @@
 ---
-title: DevTools 2.33.0 release notes
-shortTitle: 2.33.0 release notes
+ia-translate: true
+title: Notas de versão do DevTools 2.33.0
+shortTitle: Notas de versão 2.33.0
 breadcrumb: 2.33.0
-description: Release notes for Dart and Flutter DevTools version 2.33.0.
+description: Notas de versão para o Dart e Flutter DevTools versão 2.33.0.
 showToc: false
 ---
 
-The 2.33.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](/tools/devtools).
+A versão 2.33.0 do Dart e Flutter DevTools
+inclui as seguintes alterações entre outras melhorias gerais.
+Para saber mais sobre DevTools, confira a
+[visão geral do DevTools](/tools/devtools).
 
-## General updates
+## Atualizações gerais
 
-* Improved overall usability by making the DevTools UI more dense.
-  This significantly improves the user experience when using
-  DevTools embedded in an IDE. - [#7030](https://github.com/flutter/devtools/pull/7030)
-* Removed the "Dense mode" setting. - [#7086](https://github.com/flutter/devtools/pull/7086)
-* Added support for filtering with regular expressions in
-  the Logging, Network, and CPU profiler pages. - [#7027](https://github.com/flutter/devtools/pull/7027)
-* Add a DevTools server interaction for getting the DTD URI. - [#7054](https://github.com/flutter/devtools/pull/7054), [#7164](https://github.com/flutter/devtools/pull/7164)
-* Enabled expression evaluation with scope for the web,
-  allowing evaluation of inspected widgets. - [#7144](https://github.com/flutter/devtools/pull/7144)
-* Update `package:vm_service` constraint to `^14.0.0`. - [#6953](https://github.com/flutter/devtools/pull/6953)
-* Onboarding DevTools to [`package:unified_analytics`](https://pub.dev/packages/unified_analytics) for
-  unified telemetry logging across Flutter and Dart tooling. - [#7084](https://github.com/flutter/devtools/pull/7084)
+* Melhorada usabilidade geral tornando a UI do DevTools mais densa.
+  Isso melhora significativamente a experiência do usuário ao usar
+  DevTools incorporado em uma IDE. - [#7030](https://github.com/flutter/devtools/pull/7030)
+* Removida a configuração "Dense mode". - [#7086](https://github.com/flutter/devtools/pull/7086)
+* Adicionado suporte para filtragem com expressões regulares nas
+  páginas Logging, Network e CPU profiler. - [#7027](https://github.com/flutter/devtools/pull/7027)
+* Adicionada uma interação de servidor DevTools para obter a URI DTD. - [#7054](https://github.com/flutter/devtools/pull/7054), [#7164](https://github.com/flutter/devtools/pull/7164)
+* Habilitada avaliação de expressão com escopo para a web,
+  permitindo avaliação de widgets inspecionados. - [#7144](https://github.com/flutter/devtools/pull/7144)
+* Atualizada restrição de `package:vm_service` para `^14.0.0`. - [#6953](https://github.com/flutter/devtools/pull/6953)
+* Integração do DevTools ao [`package:unified_analytics`](https://pub.dev/packages/unified_analytics) para
+  logging de telemetria unificado entre ferramentas Flutter e Dart. - [#7084](https://github.com/flutter/devtools/pull/7084)
 
-## Debugger updates
+## Atualizações do Debugger
 
-* Fixed off by one error causing profiler hits to be
-  rendered on the wrong lines. - [#7178](https://github.com/flutter/devtools/pull/7178)
-* Improved contrast of line numbers when
-  displaying code coverage hits in dark mode. - [#7178](https://github.com/flutter/devtools/pull/7178)
-* Improved contrast of profiling details when
-  displaying profiler hits in dark mode. - [#7178](https://github.com/flutter/devtools/pull/7178)
-* Fixed syntax highlighting for comments when
-  the source file uses `\r\n` line endings [#7190](https://github.com/flutter/devtools/pull/7190)
-* Re-establish breakpoints after a hot-restart. - [#7205](https://github.com/flutter/devtools/pull/7205)
+* Corrigido erro de off by one causando hits do profiler serem
+  renderizados nas linhas erradas. - [#7178](https://github.com/flutter/devtools/pull/7178)
+* Melhorado contraste de números de linha ao
+  exibir hits de cobertura de código no modo escuro. - [#7178](https://github.com/flutter/devtools/pull/7178)
+* Melhorado contraste de detalhes de profiling ao
+  exibir hits do profiler no modo escuro. - [#7178](https://github.com/flutter/devtools/pull/7178)
+* Corrigido syntax highlighting para comentários quando
+  o arquivo fonte usa finais de linha `\r\n` [#7190](https://github.com/flutter/devtools/pull/7190)
+* Reestabelecer breakpoints após um hot-restart. - [#7205](https://github.com/flutter/devtools/pull/7205)
 
-## VS Code Sidebar updates
+## Atualizações do VS Code Sidebar
 
-* Do not show DevTools release notes in the Flutter sidebar. - [#7166](https://github.com/flutter/devtools/pull/7166)
+* Não mostrar notas de versão do DevTools na sidebar do Flutter. - [#7166](https://github.com/flutter/devtools/pull/7166)
 
-## DevTools Extension updates
+## Atualizações de DevTools Extension
 
-* Added support for connecting to the Dart Tooling Daemon from
-  the simulated DevTools environment. - [#7133](https://github.com/flutter/devtools/pull/7133)
-* Added help buttons to the VM Service and DTD connection text fields in
-  the simulated DevTools environment. - [#7133](https://github.com/flutter/devtools/pull/7133)
-* Fixed an issue with not detecting extensions for
-  test files in subdirectories. - [#7174](https://github.com/flutter/devtools/pull/7174)
-* Added an example of creating an extension for a pure Dart package. - [#7196](https://github.com/flutter/devtools/pull/7196)
-* Updated the `README.md` and `example/README.md` with
-  more complete documentation. - [#7237](https://github.com/flutter/devtools/pull/7237), [#7261](https://github.com/flutter/devtools/pull/7261)
-* Added a `devtools_extensions validate` command to
-  validate extension requirements during development. - [#7257](https://github.com/flutter/devtools/pull/7257)
+* Adicionado suporte para conectar ao Dart Tooling Daemon do
+  ambiente DevTools simulado. - [#7133](https://github.com/flutter/devtools/pull/7133)
+* Adicionados botões de ajuda aos campos de texto de conexão VM Service e DTD no
+  ambiente DevTools simulado. - [#7133](https://github.com/flutter/devtools/pull/7133)
+* Corrigido um problema com não detectar extensões para
+  arquivos de teste em subdiretórios. - [#7174](https://github.com/flutter/devtools/pull/7174)
+* Adicionado um exemplo de criação de uma extensão para um pacote Dart puro. - [#7196](https://github.com/flutter/devtools/pull/7196)
+* Atualizados `README.md` e `example/README.md` com
+  documentação mais completa. - [#7237](https://github.com/flutter/devtools/pull/7237), [#7261](https://github.com/flutter/devtools/pull/7261)
+* Adicionado um comando `devtools_extensions validate` para
+  validar requisitos de extensão durante o desenvolvimento. - [#7257](https://github.com/flutter/devtools/pull/7257)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes in this release, check out the
-[DevTools git log](https://github.com/flutter/devtools/tree/v2.33.0).
+Para encontrar uma lista completa de alterações nesta versão, confira o
+[log git do DevTools](https://github.com/flutter/devtools/tree/v2.33.0).

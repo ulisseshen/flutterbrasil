@@ -1,29 +1,30 @@
 ---
-title: Simple animations
-description: Learn the simplest way to implement animations in Flutter.
+ia-translate: true
+title: Animações simples
+description: Aprenda a maneira mais simples de implementar animações no Flutter.
 permalink: /tutorial/animations/
 sitemap: false
 ---
 
-Flutter provides a rich set of animation APIs, and the simplest way to
-start using them is with **implicit animations**. "Implicit
-animations" refers to a group of widgets that automatically animate
-changes to their properties without you needing to manage any
-behavior.
+Flutter fornece um rico conjunto de APIs de animação, e a maneira mais simples de
+começar a usá-las é com **animações implícitas**. "Animações
+implícitas" refere-se a um grupo de widgets que automaticamente animam
+mudanças em suas propriedades sem que você precise gerenciar nenhum
+comportamento.
 
-In this lesson, you'll learn about one of the most common and
-versatile implicit animation widgets: [`AnimatedContainer`][]. With
-just two additional lines of code, the background color of each `Tile`
-animates to a new color in about half a second.
+Nesta lição, você aprenderá sobre um dos widgets de animação implícita mais comuns e
+versáteis: [`AnimatedContainer`][]. Com
+apenas duas linhas adicionais de código, a cor de fundo de cada `Tile`
+anima para uma nova cor em cerca de meio segundo.
 
-## Convert `Container` to `AnimatedContainer`
+## Converta `Container` para `AnimatedContainer`
 
-Currently, the `Tile.build`  method returns  a `Container` to display
-a letter. When the `hitType` changes, like from `HitType.none`
-to `HitType.hit`, the background color of the tile changes
-instantly (from white to green, in this example).
+Atualmente, o método `Tile.build` retorna um `Container` para exibir
+uma letra. Quando o `hitType` muda, como de `HitType.none`
+para `HitType.hit`, a cor de fundo do tile muda
+instantaneamente (de branco para verde, neste exemplo).
 
-Here's the current `Tile` widget code for reference:
+Aqui está o código atual do widget `Tile` para referência:
 
 ```dart
 class Tile extends StatelessWidget {
@@ -57,16 +58,16 @@ class Tile extends StatelessWidget {
 }
 ```
 
-To make the color change animate smoothly, replace the `Container`
-widget with an `AnimatedContainer`.
+Para fazer a mudança de cor animar suavemente, substitua o widget `Container`
+por um `AnimatedContainer`.
 
-An `AnimatedContainer` is like a `Container`, but it automatically
-animates changes to its properties over a specified `duration`. When
-properties like `color`, `height`, `width`, `decoration`, or
-`alignment` change, `AnimatedContainer` interpolates between the old
-and new values, creating a smooth transition.
+Um `AnimatedContainer` é como um `Container`, mas automaticamente
+anima mudanças em suas propriedades ao longo de uma `duration` especificada. Quando
+propriedades como `color`, `height`, `width`, `decoration` ou
+`alignment` mudam, `AnimatedContainer` interpola entre os valores antigos
+e novos, criando uma transição suave.
 
-Modify your `Tile` widget as follows:
+Modifique seu widget `Tile` da seguinte forma:
 
 ```dart
 class Tile extends StatelessWidget {
@@ -101,25 +102,25 @@ class Tile extends StatelessWidget {
 }
 ```
 
-**`duration`** is a required property that specifies how long the
-animation should take. In this example, `Duration(milliseconds: 500)`
-means the color transition will take half of one second. You can also
-specify seconds, minutes, and many other units of time.
+**`duration`** é uma propriedade obrigatória que especifica quanto tempo a
+animação deve levar. Neste exemplo, `Duration(milliseconds: 500)`
+significa que a transição de cor levará meio segundo. Você também pode
+especificar segundos, minutos e muitas outras unidades de tempo.
 
-Now, when the `hitType` changes and the `Tile` widget rebuilds
-(because `setState` was called in `GamePage`), the color of the tile
-will smoothly animate from its old color to the new one over the
-specified duration.
+Agora, quando o `hitType` muda e o widget `Tile` reconstrói
+(porque `setState` foi chamado em `GamePage`), a cor do tile
+animará suavemente de sua cor antiga para a nova ao longo da
+duração especificada.
 
-## Adjust the curve
+## Ajuste a curva
 
-You can add a bit of customization to an implicit animation by passing
-it a [`Curve`][].  Different curves will change the speed of the animation
-at different points throughout the animation.
+Você pode adicionar um pouco de customização a uma animação implícita passando
+uma [`Curve`][]. Diferentes curvas mudarão a velocidade da animação
+em diferentes pontos ao longo da animação.
 
 {%- comment %} TODO(ewindmill) diagram {%- endcomment %}
 
-To change the `Curve` of this animation, update the the code to the following:
+Para mudar a `Curve` desta animação, atualize o código para o seguinte:
 
 ```dart
 class Tile extends StatelessWidget {
@@ -156,15 +157,15 @@ class Tile extends StatelessWidget {
 }
 ```
 
-There are many different curves defined by the Flutter SDK, so feel
-free to try them out by passing different types to the
-`AnimatedContainer.curve` property.
+Existem muitas curvas diferentes definidas pelo Flutter SDK, então sinta-se
+livre para experimentá-las passando diferentes tipos para a
+propriedade `AnimatedContainer.curve`.
 
-Implicit animations like `AnimatedContainer` are powerful because you
-just tell the widget what the new state should be, and it handles the
-"how" of the animation. For complex, custom animations, you can write
-your own animated widgets. If you’re curious, read the
-[animations tutorial](https://docs.flutter.dev/ui/animations/tutorial).
+Animações implícitas como `AnimatedContainer` são poderosas porque você
+apenas diz ao widget qual deve ser o novo estado, e ele lida com o
+"como" da animação. Para animações complexas e customizadas, você pode escrever
+seus próprios widgets animados. Se você está curioso, leia o
+[tutorial de animações][animations tutorial].
 
 [`AnimatedContainer`]: {{site.api}}/flutter/widgets/AnimatedContainer-class.html
 [`Curve`]: {{site.curve}}/flutter/animation/Curves-class.html

@@ -1,32 +1,33 @@
 ---
-title: Implicit animations
-description: Where to find more information on using implicit animations in Flutter.
+ia-translate: true
+title: Animações implícitas
+description: Onde encontrar mais informações sobre o uso de animações implícitas no Flutter.
 ---
 
-With Flutter's [animation library][],
-you can add motion and create visual effects
-for the widgets in your UI.
-One part of the library is an assortment of widgets
-that manage animations for you.
-These widgets are collectively referred to as _implicit animations_,
-or _implicitly animated widgets_, deriving their name from the
-[`ImplicitlyAnimatedWidget`][] class that they implement.
-The following set of resources provide many ways to learn
-about implicit animations in Flutter.
+Com a [biblioteca de animação][animation library] do Flutter,
+você pode adicionar movimento e criar efeitos visuais
+para os widgets em sua UI.
+Uma parte da biblioteca é um conjunto de widgets
+que gerenciam animações para você.
+Esses widgets são coletivamente referidos como _animações implícitas_,
+ou _widgets implicitamente animados_, derivando seu nome da
+classe [`ImplicitlyAnimatedWidget`][`ImplicitlyAnimatedWidget`] que eles implementam.
+O seguinte conjunto de recursos fornece muitas maneiras de aprender
+sobre animações implícitas no Flutter.
 
 ## Documentation
 
-[Animations in Flutter codelab][]
-: Learn about implicit and explicit animations 
-  and get hands-on experience adding implicit animations
-  to a complete Flutter app.
+[Codelab de Animações no Flutter][Animations in Flutter codelab]
+: Aprenda sobre animações implícitas e explícitas
+  e ganhe experiência prática adicionando animações implícitas
+  a um app Flutter completo.
 
-[`AnimatedContainer` sample][]
-: A step-by-step recipe for using the
-  [`AnimatedContainer`][] implicitly animated widget.
+[Exemplo de `AnimatedContainer`][`AnimatedContainer` sample]
+: Uma receita passo a passo para usar o
+  widget implicitamente animado [`AnimatedContainer`][`AnimatedContainer`].
 
-[`ImplicitlyAnimatedWidget`][] API page
-: All implicit animations extend the `ImplicitlyAnimatedWidget` class.
+Página da API [`ImplicitlyAnimatedWidget`][`ImplicitlyAnimatedWidget`]
+: Todas as animações implícitas estendem a classe `ImplicitlyAnimatedWidget`.
 
 [Animations in Flutter codelab]: {{site.codelabs}}/advanced-flutter-animations
 [`AnimatedContainer` sample]: /cookbook/animation/animated-container
@@ -34,11 +35,11 @@ about implicit animations in Flutter.
 
 ## Flutter in Focus videos
 
-Flutter in Focus videos feature 5-10 minute tutorials
-with real code that cover techniques
-that every Flutter dev needs to know from top to bottom.
-The following videos cover topics
-that are relevant to implicit animations.
+Os vídeos Flutter in Focus apresentam tutoriais de 5 a 10 minutos
+com código real que cobrem técnicas
+que todo desenvolvedor Flutter precisa saber de cima a baixo.
+Os seguintes vídeos cobrem tópicos
+que são relevantes para animações implícitas.
 
 <YouTubeEmbed id="IVTjpW3W33s" title="Flutter implicit animation basics"></YouTubeEmbed>
 
@@ -46,20 +47,20 @@ that are relevant to implicit animations.
 
 ## The Boring Show
 
-Watch the Boring Show to follow Google Engineers build apps
-from scratch in Flutter. The following episode covers
-using implicit animations in a news aggregator app.
+Assista ao Boring Show para acompanhar Engenheiros do Google construindo apps
+do zero no Flutter. O seguinte episódio cobre
+o uso de animações implícitas em um app agregador de notícias.
 
 <YouTubeEmbed id="8ehlWchLVlQ" title="Adding implicit animations to a news application"></YouTubeEmbed>
 
 ## Widget of the Week videos
 
-A weekly series of short animated videos each showing
-the important features of one particular widget.
-In about 60 seconds, you'll see real code for each
-widget with a demo about how it works.
-The following Widget of the Week videos cover
-implicitly animated widgets:
+Uma série semanal de vídeos animados curtos, cada um mostrando
+as características importantes de um widget específico.
+Em cerca de 60 segundos, você verá código real para cada
+widget com uma demonstração sobre como ele funciona.
+Os seguintes vídeos Widget of the Week cobrem
+widgets implicitamente animados:
 
 {% assign animatedWidgets = 'AnimatedOpacity, AnimatedPadding, AnimatedPositioned, AnimatedSwitcher' | split: ", " %}
 {% assign animatedUrls = 'QZAvjqOqiLY, PY2m0fhGNz4, hC3s2YdtWt8, 2W7POjFb88g' | split: ", " %}

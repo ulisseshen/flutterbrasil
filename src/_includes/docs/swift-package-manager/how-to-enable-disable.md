@@ -1,4 +1,4 @@
-## Como ativar o Swift Package Manager
+## Como ativar o Swift Package Manager {:#how-to-turn-on-swift-package-manager}
 
 O suporte ao Swift Package Manager do Flutter está desativado por padrão.
 Para ativá-lo:
@@ -28,7 +28,7 @@ do app.
 O Flutter volta a usar CocoaPods para dependências que ainda não suportam Swift
 Package Manager.
 
-## Como desativar o Swift Package Manager
+## Como desativar o Swift Package Manager {:#how-to-turn-off-swift-package-manager}
 
 :::secondary Autores de plugins
 Autores de plugins precisam ativar e desativar o suporte ao Swift Package Manager

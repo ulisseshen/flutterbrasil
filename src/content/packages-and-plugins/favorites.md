@@ -1,55 +1,56 @@
 ---
-title: Flutter Favorite program
-description: Guidelines for identifying a plugin or package as a Flutter Favorite.
+ia-translate: true
+title: Programa Flutter Favorite
+description: Diretrizes para identificar um plugin ou pacote como Flutter Favorite.
 ---
 
 ![The Flutter Favorite program logo](/assets/images/docs/development/packages-and-plugins/FlutterFavoriteLogo.png){:width="20%"}
 
-The aim of the **Flutter Favorite** program is to identify
-packages and plugins that you should first consider when
-building your app.
-This is not a guarantee of quality or suitability to your
-particular situation&mdash;you should always perform your
-own evaluation of packages and plugins for your project.
+O objetivo do programa **Flutter Favorite** é identificar
+pacotes e plugins que você deve considerar primeiro ao
+construir seu app.
+Isso não é uma garantia de qualidade ou adequação à sua
+situação particular&mdash;você deve sempre realizar sua
+própria avaliação de pacotes e plugins para seu projeto.
 
-You can see the complete list of
-[Flutter Favorite packages][] on pub.dev.
+Você pode ver a lista completa de
+[pacotes Flutter Favorite][Flutter Favorite packages] no pub.dev.
 
 :::note
-If you came here looking for the Happy Paths recommendations,
-we have discontinued that project in favor of Flutter Favorites.
+Se você veio aqui procurando pelas recomendações Happy Paths,
+descontinuamos esse projeto em favor do Flutter Favorites.
 :::
 
-## Metrics
+## Métricas
 
-Flutter Favorite packages have passed high quality standards
-using the following metrics:
+Pacotes Flutter Favorite passaram por padrões de alta qualidade
+usando as seguintes métricas:
 
-* [Overall package score][]
-* **Permissive license**,
-  including (but not limited to)
-  Apache, Artistic, BSD, CC BY, MIT, MS-PL and W3C
-* GitHub **version tag** matches the current version from
-  pub.dev, so you can see exactly what source is in the package
-* Feature **completeness**&mdash;and not marked as incomplete
-  (for example, with labels like "beta" or "under construction")
-* [Verified publisher][]
-* General **usability** when it comes to the overview,
-  docs, sample/example code, and API quality
-* Good **runtime behavior** in terms of CPU and memory usage
-* High quality **dependencies**
+* [Pontuação geral do pacote][Overall package score]
+* **Licença permissiva**,
+  incluindo (mas não limitado a)
+  Apache, Artistic, BSD, CC BY, MIT, MS-PL e W3C
+* A **tag de versão** do GitHub corresponde à versão atual do
+  pub.dev, para que você possa ver exatamente qual código-fonte está no pacote
+* **Completude** de recursos&mdash;e não marcado como incompleto
+  (por exemplo, com rótulos como "beta" ou "em construção")
+* [Publicador verificado][Verified publisher]
+* **Usabilidade** geral quando se trata da visão geral,
+  documentos, código de exemplo e qualidade da API
+* Bom **comportamento em runtime** em termos de uso de CPU e memória
+* **Dependências** de alta qualidade
 
-## Flutter Ecosystem  Committee
+## Comitê do Ecossistema Flutter
 
-The Flutter Ecosystem Committee is comprised of Flutter
-team members and Flutter community members spread
-across its ecosystem.
-One of their jobs is to decide when a package
-has met the quality bar to become a Flutter Favorite.
+O Comitê do Ecossistema Flutter é composto por membros
+do time Flutter e membros da comunidade Flutter espalhados
+por seu ecossistema.
+Uma de suas funções é decidir quando um pacote
+atingiu o nível de qualidade para se tornar um Flutter Favorite.
 
-The current committee members
-(ordered alphabetically by last name)
-are as follows:
+Os membros atuais do comitê
+(ordenados alfabeticamente por sobrenome)
+são os seguintes:
 
 * Pooja Bhaumik
 * Hillel Coren
@@ -59,65 +60,65 @@ are as follows:
 * John Ryan
 * Diego Velasquez
 
-If you'd like to nominate a package or plugin as a
-potential future Flutter Favorite, or would like
-to bring any other issues to the attention of the committee,
-[send the committee][] an email.
+Se você gostaria de nomear um pacote ou plugin como um
+potencial futuro Flutter Favorite, ou gostaria de
+trazer quaisquer outras questões à atenção do comitê,
+[envie um email ao comitê][send the committee].
 
-## Flutter Favorite usage guidelines
+## Diretrizes de uso do Flutter Favorite
 
-Flutter Favorite packages are labeled as such on pub.dev
-by the Flutter team.
-If you own a package that has been designated as a Flutter Favorite,
-you must adhere to the following guidelines:
+Pacotes Flutter Favorite são rotulados como tal no pub.dev
+pelo time Flutter.
+Se você possui um pacote que foi designado como Flutter Favorite,
+você deve aderir às seguintes diretrizes:
 
-* Flutter Favorite package authors can place the Flutter Favorite
-  logo in the package's GitHub README, on the package's
-  pub.dev **Overview** tab,
-  and on social media as related to posts about that package.
-* We encourage you to use the **#FlutterFavorite**
-  hashtag in social media.
-* When using the Flutter Favorite logo,
-  the author must link to (this) Flutter Favorite landing page,
-  to provide context for the designation.
-* If a Flutter Favorite package loses its Flutter Favorite status,
-  the author will be notified,
-  at which point the author must immediately remove all uses
-  of "Flutter Favorite" and the Flutter Favorite logo from
-  the affected package.
-* Don't alter, distort,
-  or modify the Flutter Favorite logo in any way,
-  including displaying the logo with color variations
-  or unapproved visual elements.
-* Don't display the Flutter Favorite logo in a manner that
-  is misleading, unfair, defamatory, infringing, libelous,
-  disparaging, obscene, or otherwise objectionable to Google.
+* Autores de pacotes Flutter Favorite podem colocar o logo
+  Flutter Favorite no README do GitHub do pacote, na aba
+  **Overview** do pub.dev do pacote,
+  e em mídias sociais relacionadas a posts sobre esse pacote.
+* Encorajamos você a usar a hashtag **#FlutterFavorite**
+  em mídias sociais.
+* Ao usar o logo Flutter Favorite,
+  o autor deve linkar para (esta) página inicial do Flutter Favorite,
+  para fornecer contexto para a designação.
+* Se um pacote Flutter Favorite perder seu status de Flutter Favorite,
+  o autor será notificado,
+  momento em que o autor deve imediatamente remover todos os usos
+  de "Flutter Favorite" e do logo Flutter Favorite do
+  pacote afetado.
+* Não altere, distorça
+  ou modifique o logo Flutter Favorite de forma alguma,
+  incluindo exibir o logo com variações de cor
+  ou elementos visuais não aprovados.
+* Não exiba o logo Flutter Favorite de uma maneira que
+  seja enganosa, injusta, difamatória, infratora, difamatória,
+  depreciativa, obscena ou de outra forma questionável ao Google.
 
-## What's next
+## Próximos passos
 
-You should expect the list of Flutter Favorite packages
-to grow and change as the ecosystem continues to thrive.
-The committee will continue working with package authors
-to increase quality, as well as consider other areas of the
-ecosystem that could benefit from the Flutter Favorite program,
-such as tools, consulting firms, and prolific Flutter contributors.
+Você deve esperar que a lista de pacotes Flutter Favorite
+cresça e mude à medida que o ecossistema continue prosperando.
+O comitê continuará trabalhando com autores de pacotes
+para aumentar a qualidade, bem como considerar outras áreas do
+ecossistema que poderiam se beneficiar do programa Flutter Favorite,
+como ferramentas, empresas de consultoria e colaboradores prolíficos do Flutter.
 
-As the Flutter ecosystem grows,
-we'll be looking at expanding the set of metrics,
-which might include the following:
+À medida que o ecossistema Flutter cresce,
+estaremos buscando expandir o conjunto de métricas,
+que pode incluir o seguinte:
 
-* Use of the [pubspec.yaml format][] that clearly
-  indicates which platforms a plugin supports.
-* Support for the latest stable version of Flutter.
-* Support for AndroidX.
-* Support for multiple platforms, such as web, macOS,
+* Uso do [formato pubspec.yaml][pubspec.yaml format] que claramente
+  indica quais plataformas um plugin suporta.
+* Suporte para a versão estável mais recente do Flutter.
+* Suporte para AndroidX.
+* Suporte para múltiplas plataformas, como web, macOS,
   Windows, Linux, etc.
-* Integration as well as unit test coverage.
+* Cobertura de testes de integração e unitários.
 
 ## Flutter Favorites
 
-You can see the complete list of
-[Flutter Favorite packages][] on pub.dev.
+Você pode ver a lista completa de
+[pacotes Flutter Favorite][Flutter Favorite packages] no pub.dev.
 
 
 [send the committee]: mailto:flutter-committee@googlegroups.com

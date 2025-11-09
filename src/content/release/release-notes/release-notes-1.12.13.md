@@ -1144,7 +1144,7 @@ check out this [TweenAnimationBuilder video](https://www.youtube.com/watch?reloa
 
 ## Web
 
-We increased our support for web, moving it from the dev channel to the beta channel. For more details, please check [web support blog post](https://blog.flutterbrasil.dev/web-support-for-flutter-goes-beta-35b64a1217c0).
+We increased our support for web, moving it from the dev channel to the beta channel. For more details, please check [web support blog post](https://blog.flutter.dev/web-support-for-flutter-goes-beta-35b64a1217c0).
 
 [37819]({{site.repo.flutter}}/pull/37819) Add HtmlElementView (the Flutter Web platform view)
 

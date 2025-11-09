@@ -46,7 +46,7 @@ Outras maneiras de contribuir:
 * [Solicitar documentação para docs.flutterbrasil.dev][doc-issues]
 * [Enviar PRs para docs.flutterbrasil.dev][doc-PRs]
 * [Nos siga no Twitter: @flutterdev](https://twitter.com/flutterdev/)
-* [Leia o blog do Flutter](https://blog.flutterbrasil.dev)
+* [Leia o blog do Flutter](https://blog.flutter.dev)
 * [Inscreva-se para futuros estudos de UX sobre Flutter](https://flutterbrasil.dev/research-signup)
 * [Participe do subreddit para acompanhar as últimas novidades da
    comunidade Flutter][reddit]

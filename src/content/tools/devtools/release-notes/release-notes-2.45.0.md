@@ -1,54 +1,55 @@
 ---
-title: DevTools 2.45.0 release notes
-shortTitle: 2.45.0 release notes
+ia-translate: true
+title: Notas de lançamento do DevTools 2.45.0
+shortTitle: Notas de lançamento 2.45.0
 breadcrumb: 2.45.0
-description: Release notes for Dart and Flutter DevTools version 2.45.0.
+description: Notas de lançamento da versão 2.45.0 do Dart e Flutter DevTools.
 showToc: false
 ---
 
-The 2.45.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](/tools/devtools/overview).
+A versão 2.45.0 do Dart e Flutter DevTools
+inclui as seguintes mudanças, entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](/tools/devtools/overview).
 
-## General updates
+## Atualizações gerais
 
-* Added a memory pressure warning that allows you to reduce the memory usage of
-  DevTools in order to avoid an OOM crash. -
+* Adicionado um aviso de pressão de memória que permite reduzir o uso de memória do
+  DevTools para evitar uma falha OOM. -
   [#8989](https://github.com/flutter/devtools/pull/8989),
   [#8997](https://github.com/flutter/devtools/pull/8997),
   [#8998](https://github.com/flutter/devtools/pull/8998)
 
-* Fix a bug with the review history on disconnect experience. -
+* Corrigido um bug com o histórico de revisão na experiência de desconexão. -
   [#8985](https://github.com/flutter/devtools/pull/8985)
 
-* Fixed bug where DevTools would automatically resume instead of
-  pausing on breakpoint on connection. -
+* Corrigido bug onde o DevTools retomava automaticamente em vez de
+  pausar no breakpoint na conexão. -
   [#8991](https://github.com/flutter/devtools/pull/8991)
 
-* Prevented text inputs from stealing focus from the IDE. -
+* Impedido que campos de texto roubassem o foco da IDE. -
   [#9091](https://github.com/flutter/devtools/pull/9091)
 
-## Inspector updates
+## Atualizações do Inspector
 
-* Fixed bug where errors in the inspector tree (e.g. RenderFlex overflow
-  errors) were not removed after a hot-reload. -
+* Corrigido bug onde erros na árvore do inspector (por exemplo, erros de overflow do RenderFlex)
+  não eram removidos após um hot-reload. -
   [#9106](https://github.com/flutter/devtools/pull/9106)
 
-## Debugger updates
+## Atualizações do Debugger
 
-* Combine the Pause and Resume buttons into a single button. -
+* Combinados os botões Pause e Resume em um único botão. -
   [#9095](https://github.com/flutter/devtools/pull/9095)
 
-## Deep links tool updates
+## Atualizações da ferramenta Deep links
 
-* Fixed an issue with Windows file paths showing incorrectly in the Deep Links
-  page [#9027](https://github.com/flutter/devtools/pull/9027).
+* Corrigido um problema com caminhos de arquivo do Windows sendo exibidos incorretamente na página
+  Deep Links [#9027](https://github.com/flutter/devtools/pull/9027).
 
-* Fixed an issue with the Deep Links page crashing when no iOS configuration is
-  present [#9027](https://github.com/flutter/devtools/pull/9027).
+* Corrigido um problema com a página Deep Links falhando quando nenhuma configuração do iOS está
+  presente [#9027](https://github.com/flutter/devtools/pull/9027).
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes in this release, check out the
-[DevTools git log](https://github.com/flutter/devtools/tree/v2.45.0).
+Para encontrar uma lista completa de mudanças neste lançamento, confira o
+[log do git do DevTools](https://github.com/flutter/devtools/tree/v2.45.0).

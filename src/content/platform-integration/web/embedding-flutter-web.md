@@ -91,7 +91,7 @@ _flutter.loader.load({
 });
 ```
 
-### Gerenciar views Flutter a partir do JS
+### Gerenciar views Flutter a partir do JS {:#manage-flutter-views-from-js}
 
 Para adicionar ou remover views, use o objeto `app` retornado pelo método `runApp`:
 

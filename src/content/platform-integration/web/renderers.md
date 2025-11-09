@@ -64,7 +64,7 @@ Para compilar seu app para lançamento usando o modo WebAssembly:
 flutter build web --wasm
 ```
 
-## Renderizadores
+## Renderizadores {:#renderers}
 
 Flutter tem dois renderizadores (`canvaskit` e `skwasm`)
 que reimplementam o engine Flutter para rodar no navegador.

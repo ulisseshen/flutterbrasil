@@ -9,7 +9,7 @@ Esta página discute considerações exclusivas para construir
 apps Linux com Flutter, incluindo integração com o shell
 e preparação de apps para distribuição.
 
-## Integre com Linux
+## Integre com Linux {:#integrate-with-linux}
 
 A interface de programação Linux,
 composta por funções de biblioteca e chamadas de sistema,
@@ -46,7 +46,7 @@ incluindo pacotes comuns como [`url_launcher`],
 [`file_selector`]: {{site.pub-pkg}}/file_selector
 [`path_provider`]: {{site.pub-pkg}}/path_provider
 
-## Prepare apps Linux para distribuição
+## Prepare apps Linux para distribuição {:#prepare-linux-apps-for-distribution}
 
 O binário executável pode ser encontrado em seu projeto em
 `build/linux/x64/<build mode>/bundle/`.

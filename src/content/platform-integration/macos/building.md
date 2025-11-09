@@ -9,7 +9,7 @@ Esta página discute considerações exclusivas para criar
 apps macOS com Flutter, incluindo integração com o shell
 e distribuição de apps macOS através da Apple Store.
 
-## Integrando com a aparência do macOS
+## Integrando com a aparência do macOS {:#integrating-with-macos-look-and-feel}
 
 Embora você possa usar qualquer estilo visual ou tema que escolher
 para criar um app macOS, você pode querer adaptar seu app
@@ -71,7 +71,7 @@ App Store.
 [on distributing an application through the App Store]: https://help.apple.com/xcode/mac/current/#/dev067853c94
 [Build and release a macOS app]: /deployment/macos
 
-## Entitlements e o App Sandbox
+## Entitlements e o App Sandbox {:#entitlements-and-the-app-sandbox}
 
 As builds macOS são configuradas por padrão para serem assinadas
 e isoladas com App Sandbox.
@@ -86,7 +86,7 @@ como os seguintes:
 Então você deve configurar _entitlements_ específicos no Xcode.
 A seção a seguir mostra como fazer isso.
 
-### Configurando entitlements
+### Configurando entitlements {:#setting-up-entitlements}
 
 O gerenciamento das configurações de sandbox é feito nos
 arquivos `macos/Runner/*.entitlements`. Ao editar

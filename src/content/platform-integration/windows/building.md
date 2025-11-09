@@ -10,7 +10,7 @@ apps Windows com Flutter, incluindo integração com o shell
 e distribuição de apps Windows através da
 Microsoft Store no Windows.
 
-## Integrando com o Windows
+## Integrando com o Windows {:#integrating-with-windows}
 
 A interface de programação do Windows combina APIs Win32 tradicionais,
 interfaces COM e bibliotecas Windows Runtime mais modernas.
@@ -58,7 +58,7 @@ incluindo pacotes comuns como [`url_launcher`], [`shared_preferences`], [`file_s
 [`file_selector`]: {{site.pub-pkg}}/file_selector
 [`path_provider`]: {{site.pub-pkg}}/path_provider
 
-## Suportando as diretrizes de UI do Windows
+## Suportando as diretrizes de UI do Windows {:#supporting-windows-ui-guidelines}
 
 Embora você possa usar qualquer estilo visual ou tema que escolher,
 incluindo Material, alguns autores de apps podem desejar construir
@@ -85,7 +85,7 @@ que corresponda ao resto do seu app.
 [fluentui_system_icons]: {{site.pub}}/packages/fluentui_system_icons
 [bitsdojo_window]: {{site.pub}}/packages/bitsdojo_window
 
-## Personalizando a aplicação host do Windows
+## Personalizando a aplicação host do Windows {:#customizing-the-windows-host-application}
 
 Quando você cria um app Windows, o Flutter gera uma
 pequena aplicação C++ que hospeda o Flutter.
@@ -180,7 +180,7 @@ Siga estas etapas:
 1. Use a barra de ferramentas para alternar entre configurações Debug e Release
    conforme apropriado.
 
-## Distribuindo apps Windows
+## Distribuindo apps Windows {:#distributing-windows-apps}
 
 Existem várias abordagens que você pode usar para
 distribuir sua aplicação Windows.
@@ -201,7 +201,7 @@ Aqui estão algumas opções:
 * Colete todas as peças necessárias
   e construa seu próprio arquivo zip.
 
-### Empacotamento MSIX
+### Empacotamento MSIX {:#msix-packaging}
 
 [MSIX][MSIX], o novo formato de pacote de aplicação Windows,
 fornece um formato de empacotamento e instalador modernos.

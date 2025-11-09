@@ -1,42 +1,43 @@
 ---
-title: Navigate to a new screen and back
-description: How to navigate between routes.
+ia-translate: true
+title: Navegar para uma nova tela e voltar
+description: Como navegar entre rotas.
 ---
 
 <?code-excerpt path-base="cookbook/navigation/navigation_basics"?>
 
-Most apps contain several screens for displaying different
-types of information. For example, an app might have a
-screen that displays products. When the user taps the image
-of a product, a new screen displays details about the
-product.
+A maioria dos apps contém várias telas para exibir diferentes
+tipos de informação. Por exemplo, um app pode ter uma
+tela que exibe produtos. Quando o usuário toca na imagem
+de um produto, uma nova tela exibe detalhes sobre o
+produto.
 
-:::note Terminology
-In Flutter, _screens_ and _pages_ are called _routes_.
-The remainder of this recipe refers to routes.
+:::note Terminologia
+No Flutter, _screens_ e _pages_ são chamadas de _routes_.
+O restante desta receita se refere a routes.
 :::
 
-In Android, a route is equivalent to an `Activity`.
-In iOS, a route is equivalent to a `ViewController`.
-In Flutter, a route is just a widget.
+No Android, uma route é equivalente a uma `Activity`.
+No iOS, uma route é equivalente a um `ViewController`.
+No Flutter, uma route é apenas um widget.
 
-This recipe uses the [`Navigator`][] to navigate to a new route.
+Esta receita usa o [`Navigator`][] para navegar para uma nova route.
 
-The next few sections show how to navigate between two routes,
-using these steps:
+As próximas seções mostram como navegar entre duas routes,
+usando esses passos:
 
-  1. Create two routes.
-  2. Navigate to the second route using `Navigator.push()`.
-  3. Return to the first route using `Navigator.pop()`.
+  1. Criar duas routes.
+  2. Navegar para a segunda route usando `Navigator.push()`.
+  3. Retornar para a primeira route usando `Navigator.pop()`.
 
-## 1. Create two routes
+## 1. Criar duas routes
 
-First, create two routes to work with. Since this is a basic example,
-each route contains only a single button. Tapping the button on the
-first route navigates to the second route. Tapping the button on the
-second route returns to the first route.
+Primeiro, crie duas routes para trabalhar. Como este é um exemplo básico,
+cada route contém apenas um único botão. Tocar no botão na
+primeira route navega para a segunda route. Tocar no botão na
+segunda route retorna para a primeira route.
 
-First, set up the visual structure:
+Primeiro, configure a estrutura visual:
 
 <Tabs key="target-os">
 
@@ -132,18 +133,18 @@ class SecondRoute extends StatelessWidget {
 
 </Tabs>
 
-## 2. Navigate to the second route using Navigator.push()
+## 2. Navegar para a segunda route usando Navigator.push()
 
-To switch to a new route, use the [`Navigator.push()`][]
-method. The `push()` method adds a `Route` to the stack of routes managed by
-the `Navigator`. Where does the `Route` come from?
-You can create your own, or use  a platform-specific route
-such as [`MaterialPageRoute`][] or [`CupertinoPageRoute`][].
-A platform-specific route is useful because it transitions
-to the new route using a platform-specific animation.
+Para mudar para uma nova route, use o método [`Navigator.push()`][].
+O método `push()` adiciona uma `Route` à pilha de routes gerenciadas pelo
+`Navigator`. De onde vem a `Route`?
+Você pode criar a sua própria, ou usar uma route específica de plataforma
+como [`MaterialPageRoute`][] ou [`CupertinoPageRoute`][].
+Uma route específica de plataforma é útil porque ela transiciona
+para a nova route usando uma animação específica de plataforma.
 
-In the `build()` method of the `FirstRoute` widget,
-update the `onPressed()` callback:
+No método `build()` do widget `FirstRoute`,
+atualize o callback `onPressed()`:
 
 <Tabs key="target-os">
 
@@ -183,15 +184,15 @@ onPressed: () {
 
 </Tabs>
 
-## 3. Return to the first route using Navigator.pop()
+## 3. Retornar para a primeira route usando Navigator.pop()
 
-How do you close the second route and return to the first?
-By using the [`Navigator.pop()`][] method.
-The `pop()` method removes the current `Route` from the stack of
-routes managed by the `Navigator`.
+Como você fecha a segunda route e retorna para a primeira?
+Usando o método [`Navigator.pop()`][].
+O método `pop()` remove a `Route` atual da pilha de
+routes gerenciadas pelo `Navigator`.
 
-To implement a return to the original route, update the `onPressed()`
-callback in the `SecondRoute` widget:
+Para implementar um retorno para a route original, atualize o callback `onPressed()`
+no widget `SecondRoute`:
 
 <?code-excerpt "lib/main_step2.dart (second-route-on-pressed)" replace="/^\},$/}/g"?>
 ```dart
@@ -201,7 +202,7 @@ onPressed: () {
 }
 ```
 
-## Interactive example
+## Exemplo interativo
 
 <Tabs key="target-os">
 
@@ -327,25 +328,25 @@ class SecondRoute extends StatelessWidget {
 
 </Tabs>
 
-## Additional navigation methods
+## Métodos adicionais de navegação
 
-The recipe in this topic shows you one way to navigate to a new screen and
-back to the previous scene, using the [`push`] and [`pop`] methods in the
-[`Navigator`] class, but there are several other `Navigator` static methods that
-you can use. Here are a few of them:
+A receita neste tópico mostra uma maneira de navegar para uma nova tela e
+voltar para a cena anterior, usando os métodos [`push`] e [`pop`] na
+classe [`Navigator`], mas existem vários outros métodos estáticos do `Navigator` que
+você pode usar. Aqui estão alguns deles:
 
-*   [`pushAndRemoveUntil`]: Adds a navigation route to the stack and then removes
-    the most recent routes from the stack until a condition is met.
-*   [`pushReplacement`]: Replaces the current route on the top of the
-    stack with a new one.
-*   [`replace`]: Replace a route on the stack with another route.
-*   [`replaceRouteBelow`]: Replace the route below a specific route on the stack.
-*   [`popUntil`]: Removes the most recent routes that were added to the stack of
-    navigation routes until a condition is met.
-*   [`removeRoute`]: Remove a specific route from the stack.
-*   [`removeRouteBelow`]: Remove the route below a specific route on the
-    stack.
-*   [`restorablePush`]: Restore a route that was removed from the stack.
+*   [`pushAndRemoveUntil`]: Adiciona uma rota de navegação à pilha e então remove
+    as rotas mais recentes da pilha até que uma condição seja atendida.
+*   [`pushReplacement`]: Substitui a rota atual no topo da
+    pilha por uma nova.
+*   [`replace`]: Substitui uma rota na pilha por outra rota.
+*   [`replaceRouteBelow`]: Substitui a rota abaixo de uma rota específica na pilha.
+*   [`popUntil`]: Remove as rotas mais recentes que foram adicionadas à pilha de
+    rotas de navegação até que uma condição seja atendida.
+*   [`removeRoute`]: Remove uma rota específica da pilha.
+*   [`removeRouteBelow`]: Remove a rota abaixo de uma rota específica na
+    pilha.
+*   [`restorablePush`]: Restaura uma rota que foi removida da pilha.
 
 [Cupertino]: {{site.docs}}/ui/widgets/cupertino
 [Material Components]: {{site.docs}}/ui/widgets/material

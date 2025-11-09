@@ -1,52 +1,53 @@
 ---
-title: Build and release a Linux app to the Snap Store
-description: How to prepare for and release a Linux app to the Snap store.
+ia-translate: true
+title: Compilar e lançar um app Linux na Snap Store
+description: Como preparar e lançar um app Linux na Snap Store.
 shortTitle: Linux
 ---
 
-During a typical development cycle,
-you test an app using `flutter run` at the command line,
-or by using the **Run** and **Debug**
-options in your IDE. By default,
-Flutter builds a _debug_ version of your app.
+Durante um ciclo típico de desenvolvimento,
+você testa um app usando `flutter run` na linha de comando,
+ou usando as opções **Run** e **Debug**
+no seu IDE. Por padrão,
+Flutter compila uma versão _debug_ do seu app.
 
-When you're ready to prepare a _release_ version of your app,
-for example to [publish to the Snap Store][snap] or an
-[alternative channel](#additional-deployment-resources),
-this page can help.
+Quando estiver pronto para preparar uma versão _release_ do seu app,
+por exemplo para [publicar na Snap Store][snap] ou um
+[canal alternativo](#additional-deployment-resources),
+esta página pode ajudar.
 
-## Prerequisites
+## Pré-requisitos
 
-To build and publish to the Snap Store, you need the
-following components:
+Para compilar e publicar na Snap Store, você precisa dos
+seguintes componentes:
 
-* [Ubuntu][] OS, 18.04 LTS (or higher)
-* [Snapcraft][] command line tool
-* [LXD container manager][]
+* SO [Ubuntu][], 18.04 LTS (ou superior)
+* Ferramenta de linha de comando [Snapcraft][]
+* [Gerenciador de container LXD][LXD container manager]
 
-## Set up the build environment
+## Configurar o ambiente de build
 
-Use the following instructions to set up your build environment.
+Use as seguintes instruções para configurar seu ambiente de build.
 
-### Install snapcraft
+### Instalar snapcraft
 
-At the command line, run the following:
+Na linha de comando, execute o seguinte:
 
 ```console
 $ sudo snap install snapcraft --classic
 ```
 
-### Install LXD
+### Instalar LXD
 
-To install LXD, use the following command:
+Para instalar LXD, use o seguinte comando:
 
 ```console
 $ sudo snap install lxd
 ```
 
-LXD is required during the snap build process.
-Once installed, LXD needs to be configured for use.
-The default answers are suitable for most use cases.
+LXD é necessário durante o processo de build do snap.
+Uma vez instalado, LXD precisa ser configurado para uso.
+As respostas padrão são adequadas para a maioria dos casos de uso.
 
 ```console
 $ sudo lxd init
@@ -67,7 +68,7 @@ Would you like stale cached images to be updated automatically? (yes/no) [defaul
 Would you like a YAML "lxd init" preseed to be printed? (yes/no) [default=no]:
 ```
 
-On the first run, LXD might not be able to connect to its socket:
+Na primeira execução, LXD pode não conseguir conectar ao seu socket:
 
 ```console
 An error occurred when trying to communicate with the 'LXD'
@@ -75,29 +76,29 @@ provider: cannot connect to the LXD socket
 ('/var/snap/lxd/common/lxd/unix.socket').
 ```
 
-This means you need to add your username to the LXD
-(lxd) group, so log out of your session and then log back in:
+Isso significa que você precisa adicionar seu nome de usuário ao grupo LXD
+(lxd), então saia da sua sessão e faça login novamente:
 
 ```console
 $ sudo usermod -a -G lxd <your username>
 ```
 
-## Overview of snapcraft
+## Visão geral do snapcraft
 
-The `snapcraft` tool builds snaps based on the instructions
-listed in a `snapcraft.yaml` file.
-To get a basic understanding of snapcraft and its
-core concepts, take a look at the [Snap documentation][]
-and the [Introduction to snapcraft][].
-Additional links and information are listed at the
-bottom of this page.
+A ferramenta `snapcraft` compila snaps baseada nas instruções
+listadas em um arquivo `snapcraft.yaml`.
+Para obter uma compreensão básica do snapcraft e seus
+conceitos principais, dê uma olhada na [documentação Snap][Snap documentation]
+e na [Introdução ao snapcraft][Introduction to snapcraft].
+Links e informações adicionais estão listados na
+parte inferior desta página.
 
-## Flutter snapcraft.yaml example
+## Exemplo Flutter snapcraft.yaml
 
-Place the YAML file in your Flutter
-project under `<project root>/snap/snapcraft.yaml`.
-(And remember that YAML files are sensitive to white space!)
-For example:
+Coloque o arquivo YAML no seu projeto
+Flutter em `<project root>/snap/snapcraft.yaml`.
+(E lembre-se que arquivos YAML são sensíveis a espaço em branco!)
+Por exemplo:
 
 ```yaml
 name: super-cool-app
@@ -130,13 +131,13 @@ parts:
     flutter-target: lib/main.dart # The main entry-point file of the application
 ```
 
-The following sections explain the various pieces of the YAML file.
+As seguintes seções explicam as várias partes do arquivo YAML.
 
-### Metadata
+### Metadados
 
-This section of the `snapcraft.yaml` file defines and
-describes the application. The snap version is
-derived (adopted) from the build section.
+Esta seção do arquivo `snapcraft.yaml` define e
+descreve a aplicação. A versão snap é
+derivada (adotada) da seção build.
 
 ```yaml
 name: super-cool-app
@@ -145,9 +146,9 @@ summary: Super Cool App
 description: Super Cool App that does everything!
 ```
 
-### Grade, confinement, and base
+### Grade, confinement, e base
 
-This section defines how the snap is built.
+Esta seção define como o snap é compilado.
 
 ```yaml
 confinement: strict
@@ -156,27 +157,27 @@ grade: stable
 ```
 
 **Grade**
-: Specifies the quality of the snap; this is relevant for
-  the publication step later.
+: Especifica a qualidade do snap; isso é relevante para
+  o passo de publicação posterior.
 
 **Confinement**
-: Specifies what level of system resource access the snap
-  will have once installed on the end-user system.
-  Strict confinement limits the application access to
-  specific resources (defined by plugs in the `app` section).
+: Especifica qual nível de acesso a recursos do sistema o snap
+  terá uma vez instalado no sistema do usuário final.
+  Confinamento estrito limita o acesso da aplicação a
+  recursos específicos (definidos por plugs na seção `app`).
 
 **Base**
-: Snaps are designed to be self-contained applications,
-  and therefore, they require their own private core root
-  filesystem known as `base`. The `base` keyword specifies
-  the version used to provide the minimal set of common libraries,
-  and mounted as the root filesystem for the application at runtime.
+: Snaps são projetados para serem aplicações auto-contidas,
+  e portanto, eles requerem seu próprio sistema de arquivos raiz
+  privado conhecido como `base`. A palavra-chave `base` especifica
+  a versão usada para fornecer o conjunto mínimo de bibliotecas comuns,
+  e montada como o sistema de arquivos raiz para a aplicação em runtime.
 
 ### Apps
 
-This section defines the application(s) that exist inside the snap.
-There can be one or more applications per snap. This example
-has a single application&mdash;super_cool_app.
+Esta seção define a(s) aplicação(ões) que existe(m) dentro do snap.
+Pode haver uma ou mais aplicações por snap. Este exemplo
+tem uma única aplicação&mdash;super_cool_app.
 
 ```yaml
 apps:
@@ -186,48 +187,48 @@ apps:
 ```
 
 **Command**
-: Points to the binary, relative to the snap's root,
-  and runs when the snap is invoked.
+: Aponta para o binário, relativo à raiz do snap,
+  e executa quando o snap é invocado.
 
 **Extensions**
-: A list of one or more extensions. Snapcraft extensions
-  are reusable components that can expose sets of libraries
-  and tools to a snap at build and runtime,
-  without the developer needing to have specific knowledge
-  of included frameworks. The `gnome` extension exposes
-  the GTK 3 libraries to the Flutter snap. This ensures a
-  smaller footprint and better integration with the system.
+: Uma lista de uma ou mais extensões. Extensões Snapcraft
+  são componentes reutilizáveis que podem expor conjuntos de bibliotecas
+  e ferramentas para um snap em tempo de build e runtime,
+  sem que o desenvolvedor precise ter conhecimento específico
+  de frameworks incluídos. A extensão `gnome` expõe
+  as bibliotecas GTK 3 para o snap Flutter. Isso garante uma
+  pegada menor e melhor integração com o sistema.
 
 
 **Plugs**
-: A list of one or more plugs for system interfaces.
-  These are required to provide necessary functionality
-  when snaps are strictly confined. This Flutter snap needs
-  access to the network.
+: Uma lista de um ou mais plugs para interfaces do sistema.
+  Estes são necessários para fornecer funcionalidade necessária
+  quando snaps são estritamente confinados. Este snap Flutter precisa
+  de acesso à rede.
 
-**DBus interface**
-: The [DBus interface][] provides a way for snaps to
-  communicate over DBus. The snap providing the DBus
-  service declares a slot with the well-known DBus name
-  and which bus it uses. Snaps wanting to communicate
-  with the providing snap's service declare a plug for
-  the providing snap. Note that a snap declaration is
-  needed for your snap to be delivered via the snap store
-  and claim this well-known DBus name (simply upload the
-  snap to the store and request a manual review and
-  a reviewer will take a look).
+**Interface DBus**
+: A [interface DBus][DBus interface] fornece uma maneira para snaps se
+  comunicarem via DBus. O snap que fornece o serviço DBus
+  declara um slot com o nome DBus conhecido
+  e qual barramento ele usa. Snaps que querem se comunicar
+  com o serviço do snap provedor declaram um plug para
+  o snap provedor. Note que uma declaração snap é
+  necessária para que seu snap seja entregue via snap store
+  e reivindique este nome DBus conhecido (simplesmente faça upload do
+  snap para a store e solicite uma revisão manual e
+  um revisor dará uma olhada).
 
-  When a providing snap is installed, snapd will
-  generate security policy that will allow it to
-  listen on the well-known DBus name on the specified
-  bus. If the system bus is specified, snapd will also
-  generate DBus bus policy that allows 'root' to own
-  the name and any user to communicate with the
-  service. Non-snap processes are allowed to
-  communicate with the providing snap following
-  traditional permissions checks. Other (consuming)
-  snaps might only communicate with the providing
-  snap by connecting the snaps' interface.
+  Quando um snap provedor é instalado, snapd irá
+  gerar política de segurança que permitirá que ele
+  escute no nome DBus conhecido no barramento
+  especificado. Se o barramento do sistema for especificado, snapd também
+  gerará política de barramento DBus que permite que 'root' possua
+  o nome e qualquer usuário se comunique com o
+  serviço. Processos não-snap têm permissão para
+  se comunicar com o snap provedor seguindo
+  verificações de permissão tradicionais. Outros snaps (consumidores)
+  só podem se comunicar com o snap provedor
+  conectando a interface dos snaps.
 
 ```plaintext
 dbus-super-cool-app: # adjust accordingly to your app name
@@ -238,22 +239,22 @@ dbus-super-cool-app: # adjust accordingly to your app name
 
 ### Parts
 
-This section defines the sources required to
-assemble the snap.
+Esta seção define as fontes necessárias para
+montar o snap.
 
-Parts can be downloaded and built automatically using plugins.
-Similar to extensions, snapcraft can use various plugins
-(such as Python, C, Java, and Ruby) to assist in the
-building process. Snapcraft also has some special plugins.
+Parts podem ser baixadas e compiladas automaticamente usando plugins.
+Similar a extensões, snapcraft pode usar vários plugins
+(como Python, C, Java, e Ruby) para auxiliar no
+processo de compilação. Snapcraft também tem alguns plugins especiais.
 
-**nil** plugin
-: Performs no action and the actual build process is
-  handled using a manual override.
+**plugin nil**
+: Não executa nenhuma ação e o processo de build real é
+  tratado usando uma sobrescrita manual.
 
-**flutter** plugin
-: Provides the necessary Flutter SDK tools so you can
-  use it without having to manually download and set up
-  the build tools.
+**plugin flutter**
+: Fornece as ferramentas Flutter SDK necessárias para que você possa
+  usá-las sem ter que baixar e configurar manualmente
+  as ferramentas de build.
 
 ```yaml
 parts:
@@ -264,25 +265,25 @@ parts:
 ```
 
 
-## Desktop file and icon
+## Arquivo desktop e ícone
 
 
-Desktop entry files are used to add an application
-to the desktop menu. These files specify the name and
-icon of your application, the categories it belongs to,
-related search keywords and more. These files have the
-extension .desktop and follow the XDG Desktop Entry
-Specification version 1.1.
+Arquivos de entrada desktop são usados para adicionar uma aplicação
+ao menu desktop. Estes arquivos especificam o nome e
+ícone da sua aplicação, as categorias a que pertence,
+palavras-chave de busca relacionadas e mais. Estes arquivos têm a
+extensão .desktop e seguem a XDG Desktop Entry
+Specification versão 1.1.
 
-### Flutter super-cool-app.desktop example
+### Exemplo Flutter super-cool-app.desktop
 
-Place the .desktop file in your Flutter project
-under `<project root>/snap/gui/super-cool-app.desktop`.
+Coloque o arquivo .desktop no seu projeto Flutter
+em `<project root>/snap/gui/super-cool-app.desktop`.
 
-**Notice**: icon and .desktop file name must be the same as your app name in
-yaml file!
+**Aviso**: ícone e nome do arquivo .desktop devem ser os mesmos que o nome do seu app no
+arquivo yaml!
 
-For example:
+Por exemplo:
 
 ```yaml
 [Desktop Entry]
@@ -295,91 +296,91 @@ Type=Application
 Categories=Education; # Adjust accordingly your snap category.
 ```
 
-Place your icon with .png extension in your Flutter
-project under `<project root>/snap/gui/super-cool-app.png`.
+Coloque seu ícone com extensão .png no seu projeto
+Flutter em `<project root>/snap/gui/super-cool-app.png`.
 
 
-## Build the snap
+## Compilar o snap
 
-Once the `snapcraft.yaml` file is complete,
-run `snapcraft` as follows from the root directory
-of the project.
+Uma vez que o arquivo `snapcraft.yaml` está completo,
+execute `snapcraft` da seguinte forma a partir do diretório raiz
+do projeto.
 
-To use the Multipass VM backend:
+Para usar o backend Multipass VM:
 
 ```console
 $ snapcraft
 ```
 
-To use the LXD container backend:
+Para usar o backend de container LXD:
 
 ```console
 $ snapcraft --use-lxd
 ```
 
-## Test the snap
+## Testar o snap
 
-Once the snap is built, you'll have a `<name>.snap` file
-in your root project directory.
+Uma vez que o snap é compilado, você terá um arquivo `<name>.snap`
+no diretório raiz do seu projeto.
 
 $ sudo snap install ./super-cool-app_0.1.0_amd64.snap --dangerous
 
-## Publish
+## Publicar
 
-You can now publish the snap.
-The process consists of the following:
+Você pode agora publicar o snap.
+O processo consiste do seguinte:
 
-1. Create a developer account at [snapcraft.io][], if you
-   haven't already done so.
-1. Register the app's name. Registration can be done
-   either using the Snap Store Web UI portal, or from the
-   command line, as follows:
+1. Crie uma conta de desenvolvedor em [snapcraft.io][], se você
+   ainda não o fez.
+1. Registre o nome do app. O registro pode ser feito
+   usando o portal Web UI da Snap Store, ou da
+   linha de comando, da seguinte forma:
    ```console
    $ snapcraft login
    $ snapcraft register
    ```
-1. Release the app. After reading the next section
-   to learn about selecting a Snap Store channel,
-   push the snap to the store:
+1. Lance o app. Depois de ler a próxima seção
+   para aprender sobre selecionar um canal da Snap Store,
+   envie o snap para a store:
    ```console
    $ snapcraft upload --release=<channel> <file>.snap
    ```
 
-### Snap Store channels
+### Canais da Snap Store
 
-The Snap Store uses channels to differentiate among
-different versions of snaps.
+A Snap Store usa canais para diferenciar entre
+diferentes versões de snaps.
 
-The `snapcraft upload` command uploads the snap file to
-the store. However, before you run this command,
-you need to learn about the different release channels.
-Each channel consists of three components:
+O comando `snapcraft upload` faz upload do arquivo snap para
+a store. No entanto, antes de executar este comando,
+você precisa aprender sobre os diferentes canais de lançamento.
+Cada canal consiste de três componentes:
 
 **Track**
-: All snaps must have a default track called latest.
-  This is the implied track unless specified otherwise.
+: Todos os snaps devem ter uma track padrão chamada latest.
+  Esta é a track implícita a menos que especificado de outra forma.
 
 **Risk**
-: Defines the readiness of the application.
-  The risk levels used in the snap store are:
-  `stable`, `candidate`, `beta`, and `edge`.
+: Define a prontidão da aplicação.
+  Os níveis de risco usados na snap store são:
+  `stable`, `candidate`, `beta`, e `edge`.
 
 **Branch**
-: Allows creation of short-lived snap
-  sequences to test bug-fixes.
+: Permite criação de sequências snap
+  de curta duração para testar correções de bugs.
 
-### Snap Store automatic review
+### Revisão automática da Snap Store
 
-The Snap Store runs several automated checks against
-your snap. There might also be a manual review,
-depending on how the snap was built, and if there are
-any specific security concerns. If the checks pass
-without errors, the snap becomes available in the store.
+A Snap Store executa várias verificações automatizadas contra
+seu snap. Também pode haver uma revisão manual,
+dependendo de como o snap foi compilado, e se há
+quaisquer preocupações de segurança específicas. Se as verificações passarem
+sem erros, o snap fica disponível na store.
 
-## Additional snapcraft resources
+## Recursos adicionais de snapcraft
 
-You can learn more from the following links on the
-[snapcraft.io][] site:
+Você pode aprender mais a partir dos seguintes links no
+site [snapcraft.io][]:
 
 * [Channels][]
 * [Environment variables][]
@@ -389,20 +390,20 @@ You can learn more from the following links on the
 * [Snapcraft extensions][]
 * [Supported plugins][]
 
-## Additional deployment resources
+## Recursos adicionais de deployment
 
 ### [fastforge][]
 
-> An all-in-one Flutter application packaging and distribution tool,
-providing you with a one-stop solution to meet various distribution needs.
+> Uma ferramenta de empacotamento e distribuição de aplicações Flutter tudo-em-um,
+fornecendo uma solução única para atender várias necessidades de distribuição.
 
-Supports popular packaging formats like, appimage, deb, pacman, rpm, and more.
+Suporta formatos de empacotamento populares como, appimage, deb, pacman, rpm, e mais.
 
 ### [flatpak-flutter][]
 
-> Flatpak manifest tooling for the offline build of Flutter apps.
+> Ferramentas de manifesto Flatpak para o build offline de apps Flutter.
 
-Supports Flatpak preparation for publishing on [Flathub][].
+Suporta preparação Flatpak para publicação no [Flathub][].
 
 
 [Environment variables]: https://snapcraft.io/docs/environment-variables

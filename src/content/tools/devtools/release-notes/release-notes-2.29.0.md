@@ -1,58 +1,59 @@
 ---
-title: DevTools 2.29.0 release notes
-shortTitle: 2.29.0 release notes
+ia-translate: true
+title: Notas de versão do DevTools 2.29.0
+shortTitle: Notas de versão 2.29.0
 breadcrumb: 2.29.0
-description: Release notes for Dart and Flutter DevTools version 2.29.0.
+description: Notas de versão para o Dart e Flutter DevTools versão 2.29.0.
 showToc: false
 ---
 
-The 2.29.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutter.dev/tools/devtools).
+A versão 2.29.0 do Dart e Flutter DevTools
+inclui as seguintes alterações entre outras melhorias gerais.
+Para saber mais sobre DevTools, confira a
+[visão geral do DevTools](https://docs.flutter.dev/tools/devtools).
 
-## General updates
+## Atualizações gerais
 
-* Fix a bug with service extension states not
-  being cleared on app disconnect. - [#6547](https://github.com/flutter/devtools/pull/6547)
+* Corrigido um bug com estados de service extension não
+  sendo limpos na desconexão do app. - [#6547](https://github.com/flutter/devtools/pull/6547)
 
-* Improved styling of bottom status bar when connected to an app. - [#6525](https://github.com/flutter/devtools/pull/6525)
+* Melhorado estilo da barra de status inferior quando conectado a um app. - [#6525](https://github.com/flutter/devtools/pull/6525)
 
-* Added a workaround to fix copy button functionality in VSCode. - [#6598](https://github.com/flutter/devtools/pull/6598)
+* Adicionado um workaround para corrigir funcionalidade do botão copiar no VSCode. - [#6598](https://github.com/flutter/devtools/pull/6598)
 
-## Performance updates
+## Atualizações de Performance
 
-* Added an option in the "Enhance Tracing" menu for tracking platform channel
-  activity. This is useful for apps with plugins. - [#6515](https://github.com/flutter/devtools/pull/6515)
+* Adicionada uma opção no menu "Enhance Tracing" para rastrear atividade de
+  platform channel. Isso é útil para apps com plugins. - [#6515](https://github.com/flutter/devtools/pull/6515)
 
   ![Track platform channels setting](/assets/images/docs/tools/devtools/release-notes/images-2.29.0/track_platform_channels.png "Track platform channels setting")
 
-* Made the Performance screen available when there is no connected app.
-  Performance data that was previously saved from DevTools can be
-  reloaded for viewing from this screen. - [#6567](https://github.com/flutter/devtools/pull/6567)
+* Tornado a tela Performance disponível quando não há app conectado.
+  Dados de performance salvos anteriormente do DevTools podem ser
+  recarregados para visualização nesta tela. - [#6567](https://github.com/flutter/devtools/pull/6567)
 
-* Added an "Open" button to the Performance controls for
-  loading data that was previously saved from DevTools. - [#6567](https://github.com/flutter/devtools/pull/6567)
+* Adicionado um botão "Open" aos controles de Performance para
+  carregar dados salvos anteriormente do DevTools. - [#6567](https://github.com/flutter/devtools/pull/6567)
 
   ![Open file button on the performance screen](/assets/images/docs/tools/devtools/release-notes/images-2.29.0/open_file_performance_screen.png "Open file button on the performance screen")
 
-## CPU profiler updates
+## Atualizações do CPU profiler
 
-* Tree guidelines are now always enabled for the
-  "Bottom Up" and "Call Tree" tabs. - [#6534](https://github.com/flutter/devtools/pull/6534)
+* Linhas guia de árvore agora sempre habilitadas para as
+  abas "Bottom Up" e "Call Tree". - [#6534](https://github.com/flutter/devtools/pull/6534)
 
-* Made the CPU profiler screen available when there is no connected app.
-  CPU profiles that were previously saved from DevTools can be
-  reloaded for viewing from this screen. - [#6567](https://github.com/flutter/devtools/pull/6567)
+* Tornado a tela do CPU profiler disponível quando não há app conectado.
+  Perfis de CPU salvos anteriormente do DevTools podem ser
+  recarregados para visualização nesta tela. - [#6567](https://github.com/flutter/devtools/pull/6567)
 
-* Added an "Open" button to the CPU profiler controls for loading data that
-  was previously saved from DevTools. - [#6567](https://github.com/flutter/devtools/pull/6567)
+* Adicionado um botão "Open" aos controles do CPU profiler para carregar dados
+  salvos anteriormente do DevTools. - [#6567](https://github.com/flutter/devtools/pull/6567)
 
-## Network profiler updates
+## Atualizações do Network profiler
 
-* Network statuses now show with an error color when the request failed. - [#6527](https://github.com/flutter/devtools/pull/6527)
+* Status de rede agora são mostrados com uma cor de erro quando a requisição falhou. - [#6527](https://github.com/flutter/devtools/pull/6527)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes in this release, check out the
-[DevTools git log](https://github.com/flutter/devtools/tree/v2.29.0).
+Para encontrar uma lista completa de alterações nesta versão, confira o
+[log git do DevTools](https://github.com/flutter/devtools/tree/v2.29.0).

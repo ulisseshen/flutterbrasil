@@ -1,42 +1,43 @@
 ---
-title: DevTools 2.28.3 release notes
-shortTitle: 2.28.3 release notes
+ia-translate: true
+title: Notas de versão do DevTools 2.28.3
+shortTitle: Notas de versão 2.28.3
 breadcrumb: 2.28.3
-description: Release notes for Dart and Flutter DevTools version 2.28.3.
+description: Notas de versão para o Dart e Flutter DevTools versão 2.28.3.
 showToc: false
 ---
 
-The 2.28.3 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutter.dev/tools/devtools).
+A versão 2.28.3 do Dart e Flutter DevTools
+inclui as seguintes alterações entre outras melhorias gerais.
+Para saber mais sobre DevTools, confira a
+[visão geral do DevTools](https://docs.flutter.dev/tools/devtools).
 
-This was a cherry-pick release on top of DevTools 2.28.2.
-To learn about the improvements included in DevTools 2.28.2, please read the
-[release notes](/tools/devtools/release-notes/release-notes-2.28.2).
+Esta foi uma versão cherry-pick em cima do DevTools 2.28.2.
+Para saber sobre as melhorias incluídas no DevTools 2.28.2, por favor leia as
+[notas de versão](/tools/devtools/release-notes/release-notes-2.28.2).
 
-## General updates
+## Atualizações gerais
 
-* Added a link to the new "Dive in to DevTools" YouTube
-  [video](https://www.youtube.com/watch?v=_EYk-E29edo) in the bottom status bar.
-  This video provides a brief tutorial for each DevTools screen.
+* Adicionado um link para o novo [vídeo](https://www.youtube.com/watch?v=_EYk-E29edo)
+  "Dive in to DevTools" no YouTube na barra de status inferior.
+  Este vídeo fornece um tutorial breve para cada tela do DevTools.
   [#6554](https://github.com/flutter/devtools/pull/6554)
 
   ![Link to watch a DevTools tutorial video](/assets/images/docs/tools/devtools/release-notes/images-2.28.3/watch_tutorial_link.png "Link to watch a DevTools tutorial video")
 
-* Added a workaround to fix copy button functionality in VSCode. - [#6598](https://github.com/flutter/devtools/pull/6598)
+* Adicionado um workaround para corrigir funcionalidade do botão copiar no VSCode. - [#6598](https://github.com/flutter/devtools/pull/6598)
 
-## Performance updates
+## Atualizações de Performance
 
-* Disable the Raster Stats tool for the Impeller backend
-  since it is not supported. - [#6616](https://github.com/flutter/devtools/pull/6616)
+* Desabilitada a ferramenta Raster Stats para o backend Impeller
+  já que não é suportado. - [#6616](https://github.com/flutter/devtools/pull/6616)
 
-## VS Code Sidebar updates
+## Atualizações do VS Code Sidebar
 
-* When using VS Code with a light theme, the embedded sidebar provided by
-  DevTools will now also show in the light theme. - [#6581](https://github.com/flutter/devtools/pull/6581)
+* Ao usar VS Code com um tema claro, a sidebar incorporada fornecida pelo
+  DevTools agora também será mostrada no tema claro. - [#6581](https://github.com/flutter/devtools/pull/6581)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes in this release, check out the
-[DevTools git log](https://github.com/flutter/devtools/tree/v2.28.3).
+Para encontrar uma lista completa de alterações nesta versão, confira o
+[log git do DevTools](https://github.com/flutter/devtools/tree/v2.28.3).

@@ -1,20 +1,21 @@
 ---
-title: Create a grid list
-description: How to implement a grid list.
+ia-translate: true
+title: Criar uma lista em grade
+description: Como implementar uma lista em grade.
 ---
 
 <?code-excerpt path-base="cookbook/lists/grid_lists"?>
 
-In some cases, you might want to display your items as a grid rather than
-a normal list of items that come one after the next.
-For this task, use the [`GridView`][] widget.
+Em alguns casos, você pode querer exibir seus itens como uma grade em vez de
+uma lista normal de itens que vêm um após o outro.
+Para esta tarefa, use o widget [`GridView`][`GridView`].
 
-The simplest way to get started using grids is by using the
-[`GridView.count()`][] constructor,
-because it allows you to specify how many rows or columns you'd like.
+A maneira mais simples de começar a usar grades é usando o
+construtor [`GridView.count()`][`GridView.count()`],
+porque ele permite que você especifique quantas linhas ou colunas você deseja.
 
-To visualize how `GridView` works,
-generate a list of 100 widgets that display their index in the list.
+Para visualizar como `GridView` funciona,
+gere uma lista de 100 widgets que exibem seu índice na lista.
 
 <?code-excerpt "lib/main.dart (GridView)" replace="/^body\: //g"?>
 ```dart
@@ -35,7 +36,7 @@ GridView.count(
 ),
 ```
 
-## Interactive example
+## Exemplo interativo
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter GridView hands-on example in DartPad" run="true"

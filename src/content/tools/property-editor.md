@@ -1,36 +1,37 @@
 ---
+ia-translate: true
 title: Flutter Property Editor
-description: Learn how to use the Flutter Property Editor to view and modify the properties of your widgets.
+description: Aprenda como usar o Flutter Property Editor para visualizar e modificar as propriedades de seus widgets.
 ---
 
 :::note
-The Flutter Property Editor requires Flutter version 3.32 or higher.
+O Flutter Property Editor requer Flutter versão 3.32 ou superior.
 :::
 
-## What is it?
+## O que é isso?
 
-The Flutter Property Editor is a powerful IDE-tool that lets you view and modify
-widget properties directly from a visual interface.
+O Flutter Property Editor é uma poderosa ferramenta de IDE que permite visualizar e modificar
+propriedades de widgets diretamente de uma interface visual.
 
-It allows you to quickly discover and modify your widgets' existing and
-available constructor arguments, eliminating the need to jump-to-definition or
-manually edit the source code. Furthermore, its integration with the Flutter
-inspector and hot reload enables you to view changes in real time, speeding up
-UI development and iteration.
+Ele permite que você descubra e modifique rapidamente os argumentos de construtor existentes e
+disponíveis de seus widgets, eliminando a necessidade de ir para a definição ou
+editar manualmente o código-fonte. Além disso, sua integração com o Flutter
+inspector e hot reload permite que você visualize mudanças em tempo real, acelerando
+o desenvolvimento e iteração de UI.
 
 ![Flutter Property Editor](/assets/images/docs/tools/devtools/property-editor-text-widget.png){:width="500px"}
 
-## How to access the Flutter Property Editor
+## Como acessar o Flutter Property Editor
 
-1.  Open the Flutter Property Editor in your supported IDE ([VS Code][],
-    [Android Studio/IntelliJ][]).
+1.  Abra o Flutter Property Editor em sua IDE compatível ([VS Code][VS Code],
+    [Android Studio/IntelliJ][Android Studio/IntelliJ]).
 
-2.  Locate a [widget constructor invocation][] in your Flutter code.
+2.  Localize uma [invocação de construtor de widget][widget constructor invocation] em seu código Flutter.
 
-3.  Move your cursor anywhere inside the widget constructor invocation.
+3.  Mova seu cursor para qualquer lugar dentro da invocação do construtor do widget.
 
-    For example, in the following `build` method, place your cursor anywhere
-    between the `T` of `Text` and the ending parenthesis `)` after
+    Por exemplo, no seguinte método `build`, coloque seu cursor em qualquer lugar
+    entre o `T` de `Text` e o parêntese de fechamento `)` após
     `TextOverflow.clip`:
 
     ```dart
@@ -43,194 +44,194 @@ UI development and iteration.
     }
     ```
 
-4.  The Flutter Property Editor panel automatically updates to display the
-    properties of the widget at your cursor location.
+4.  O painel Flutter Property Editor atualiza automaticamente para exibir as
+    propriedades do widget na localização do seu cursor.
 
 [VS Code]: /tools/vs-code#property-editor
 [Android Studio/IntelliJ]: /tools/android-studio#property-editor
 [widget constructor invocation]: /get-started/fundamentals/widgets
 
-### Runtime usage
+### Uso em tempo de execução
 
-#### Integration with the Flutter inspector
+#### Integração com o Flutter inspector
 
-The Flutter Property Editor can be used in conjunction with the
-[Flutter inspector][] to inspect your widgets simultaneously in both tools.
+O Flutter Property Editor pode ser usado em conjunto com o
+[Flutter inspector][Flutter inspector] para inspecionar seus widgets simultaneamente em ambas as ferramentas.
 
-1.  From your preferred IDE, run and debug your Flutter application.
-    * [VS Code instructions][]
-    * [Android Studio/IntelliJ instructions][]
+1.  A partir de sua IDE preferida, execute e depure sua aplicação Flutter.
+    * [Instruções do VS Code][VS Code instructions]
+    * [Instruções do Android Studio/IntelliJ][Android Studio/IntelliJ instructions]
 
-2.  Open the [Flutter inspector][] in your IDE.
+2.  Abra o [Flutter inspector][Flutter inspector] em sua IDE.
 
-You can then use the Flutter inspector to load a widget in the Flutter Property Editor by either:
+Você pode então usar o Flutter inspector para carregar um widget no Flutter Property Editor de duas formas:
 
-1. Selecting a widget in tree:
-    * Click on a widget in the [inspector's widget tree][].
+1. Selecionando um widget na árvore:
+    * Clique em um widget na [árvore de widgets do inspector][inspector's widget tree].
 
-2. Selecting a widget in your app:
-    * Enable ["Select Widget Mode"][] in the inspector.
-    * Click on a widget in your running application.
+2. Selecionando um widget em seu app:
+    * Habilite o ["Select Widget Mode"][Select Widget Mode] no inspector.
+    * Clique em um widget em sua aplicação em execução.
 
-Both actions will automatically:
-- Jump to the widget's declaration in your source code.
-- Load the selected widget in the Flutter Property Editor.
+Ambas as ações irão automaticamente:
+- Ir para a declaração do widget em seu código-fonte.
+- Carregar o widget selecionado no Flutter Property Editor.
 
 [VS Code instructions]: /tools/devtools/vscode/#run-and-debug
 [Android Studio/IntelliJ instructions]: /tools/devtools/android-studio/#run-and-debug
 [Flutter inspector]: /tools/devtools/inspector
 [inspector's widget tree]: /tools/devtools/inspector#flutter-widget-tree
-["Select Widget Mode"]: /tools/devtools/inspector#inspecting-a-widget
+[Select Widget Mode]: /tools/devtools/inspector#inspecting-a-widget
 
-#### Integration with hot reload
+#### Integração com hot reload
 
-The Flutter Property Editor can be used in conjunction
-with hot reload to view changes in real time.
+O Flutter Property Editor pode ser usado em conjunto
+com hot reload para visualizar mudanças em tempo real.
 
-1. From your preferred IDE, enable autosave and hot reloads on save.
+1. A partir de sua IDE preferida, habilite autosave e hot reloads ao salvar.
 
     **VS Code**
 
-    Add the following to your `.vscode/settings.json` file:
+    Adicione o seguinte ao seu arquivo `.vscode/settings.json`:
 
     ```json
     "files.autoSave": "afterDelay",
     "dart.flutterHotReloadOnSave": "all",
     ```
 
-    **Android Studio and IntelliJ**
+    **Android Studio e IntelliJ**
 
-    * Open `Settings > Tools > Actions on Save` and select
+    * Abra `Settings > Tools > Actions on Save` e selecione
      `Configure autosave options`.
-        - Check the option to `Save files if the IDE is idle for X seconds`.
-        - **Recommended:** Set a small delay duration. For example, 2 seconds.
+        - Marque a opção para `Save files if the IDE is idle for X seconds`.
+        - **Recomendado:** Defina uma duração de delay pequena. Por exemplo, 2 segundos.
 
-    * Open `Settings > Languages & Frameworks > Flutter`.
-        - Check the option to `Perform hot reload on save`.
+    * Abra `Settings > Languages & Frameworks > Flutter`.
+        - Marque a opção para `Perform hot reload on save`.
 
-2.  Run and debug your Flutter application.
-    * [VS Code instructions][]
-    * [Android Studio/IntelliJ instructions][]
+2.  Execute e depure sua aplicação Flutter.
+    * [Instruções do VS Code][VS Code instructions]
+    * [Instruções do Android Studio/IntelliJ][Android Studio/IntelliJ instructions]
 
-3.  Any changes you make from the Flutter Property Editor are automatically
-    reflected in your running app.
+3.  Quaisquer mudanças que você fizer no Flutter Property Editor são automaticamente
+    refletidas em seu app em execução.
 
-## Feature set
+## Conjunto de recursos
 
-The Flutter Property Editor comes equipped with several features designed to
-speed up the development process.
+O Flutter Property Editor vem equipado com vários recursos projetados para
+acelerar o processo de desenvolvimento.
 
-### Viewing widget documentation
+### Visualizando documentação de widget
 
-When a widget is selected in the Flutter Property Editor, its documentation is
-displayed at the top. This allows you to quickly read the widget documentation,
-without needing to jump-to-definition or search online.
+Quando um widget é selecionado no Flutter Property Editor, sua documentação é
+exibida no topo. Isso permite que você leia rapidamente a documentação do widget,
+sem precisar ir para a definição ou pesquisar online.
 
-By default, the widget documentation is truncated. Click on "Show more" to
-expand the widget documentation.
+Por padrão, a documentação do widget é truncada. Clique em "Show more" para
+expandir a documentação do widget.
 
 :::tip
-To see the documentation for your app's custom widgets in the Flutter Property
-Editor, make sure to follow the [Dart style guide][].
+Para ver a documentação para widgets customizados de seu app no Flutter Property
+Editor, certifique-se de seguir o [guia de estilo Dart][Dart style guide].
 :::
 
 ![Flutter Property Editor gif displaying the documentation for a Text widget](/assets/images/docs/tools/devtools/property-editor-documentation.gif)
 
 [Dart style guide]: {{site.dart-site}}/effective-dart/documentation
 
-### Editing widget properties
+### Editando propriedades de widget
 
-The Flutter Property Editor contains input fields tailored to the type of each
-constructor argument.
+O Flutter Property Editor contém campos de entrada adaptados ao tipo de cada
+argumento de construtor.
 
-- **string, double, and int properties:**
-    * These are represented by text input fields.
-    * Simply type the new value into the field.
-    * Press ••Tab•• or ••Enter•• to apply the edit directly to your source code.
+- **propriedades string, double e int:**
+    * Estas são representadas por campos de entrada de texto.
+    * Simplesmente digite o novo valor no campo.
+    * Pressione ••Tab•• ou ••Enter•• para aplicar a edição diretamente ao seu código-fonte.
 
-- **boolean and enum properties:**
-    * These are represented by dropdown menus.
-    * Click the dropdown to see the available options (`true`/`false` for
-      booleans, or the various enum values).
-    * Select the desired value from the list to apply it to your code.
+- **propriedades boolean e enum:**
+    * Estas são representadas por menus dropdown.
+    * Clique no dropdown para ver as opções disponíveis (`true`/`false` para
+      booleanos, ou os vários valores enum).
+    * Selecione o valor desejado da lista para aplicá-lo ao seu código.
 
-- **object properties (for example, `TextStyle`, `EdgeInsets`, `Color`):**
-    * Currently not supported. The Flutter Property Editor does not yet allow
-      direct editing of complex object properties. You will need to edit these
-      directly in your source code.
+- **propriedades de objeto (por exemplo, `TextStyle`, `EdgeInsets`, `Color`):**
+    * Atualmente não suportado. O Flutter Property Editor ainda não permite
+      edição direta de propriedades de objeto complexo. Você precisará editar estas
+      diretamente em seu código-fonte.
 
-### Understanding the property inputs
+### Compreendendo as entradas de propriedade
 
-Each property input in the Flutter Property Editor is accompanied by information
-to help you understand its usage.
+Cada entrada de propriedade no Flutter Property Editor é acompanhada de informações
+para ajudá-lo a entender seu uso.
 
-- **Type and name:** The **type** (for example, `StackFit`) and the **name**
-  (for example, `fit`) of the constructor parameter are displayed as a label
-  for each input field.
+- **Tipo e nome:** O **tipo** (por exemplo, `StackFit`) e o **nome**
+  (por exemplo, `fit`) do parâmetro de construtor são exibidos como um rótulo
+  para cada campo de entrada.
 
     ![Type and name label for a property input](/assets/images/docs/tools/devtools/property-editor-name-type.png){:width="500px"}
 
-- **Info tooltip (ⓘ):**
-    * Hovering over the info icon next to a property input displays a tooltip.
-    * The information in the tooltip includes:
-        * The default value of the property, if one is defined in the widget's constructor.
-        * Any documentation for that property.
+- **Tooltip de informação (ⓘ):**
+    * Passar o mouse sobre o ícone de informação ao lado de uma entrada de propriedade exibe um tooltip.
+    * A informação no tooltip inclui:
+        * O valor padrão da propriedade, se um for definido no construtor do widget.
+        * Qualquer documentação para essa propriedade.
 
     ![Info tooltip for a property input](/assets/images/docs/tools/devtools/property-editor-tooltip.png){:width="600px"}
 
-* **"Set" and "default" labels:**
-    * The **"set"** label appears next to an input if the property has been
-      explicitly set in your source code. This means there is a corresponding
-      argument provided in the widget constructor call.
-    * The **"default"** label appears next to an input if the current property
-      value matches the default parameter value as defined in the widget.
+* **Rótulos "Set" e "default":**
+    * O rótulo **"set"** aparece ao lado de uma entrada se a propriedade foi
+      explicitamente definida em seu código-fonte. Isso significa que há um
+      argumento correspondente fornecido na chamada do construtor do widget.
+    * O rótulo **"default"** aparece ao lado de uma entrada se o valor atual da propriedade
+      corresponde ao valor de parâmetro padrão conforme definido no widget.
 
     :::tip
-    If a property input has both a "set" and a "default" label, it means you
-    have explicitly provided a value in your code, but this value is the same as
-    the widget's default value for that property. In such cases, you can safely
-    remove this argument from your code to make it more concise, as the widget
-    will use the default value anyway.
+    Se uma entrada de propriedade tem tanto um rótulo "set" quanto "default", significa que você
+    forneceu explicitamente um valor em seu código, mas este valor é o mesmo que
+    o valor padrão do widget para essa propriedade. Nesses casos, você pode remover com segurança
+    este argumento de seu código para torná-lo mais conciso, já que o widget
+    usará o valor padrão de qualquer forma.
     :::
 
     !["Set" and "default" labels for a property input](/assets/images/docs/tools/devtools/property-editor-labels.png){:width="500px"}
 
-### Filtering properties
+### Filtrando propriedades
 
-For widgets with many properties, the filter bar can help to quickly locate
-properties of interest.
+Para widgets com muitas propriedades, a barra de filtro pode ajudar a localizar rapidamente
+propriedades de interesse.
 
-* **Filter by text:**
-    * Simply type into the filter bar. The list of properties will dynamically
-      update to show only those that match your input.
-    * You can filter by a property's name, its current value, or its type. For
-      example:
-        * Typing "main" would filter to `mainAxisAlignment`, `mainAxisSize`, or
-          other properties with "main" in their name.
-        * Typing "true" would filter to all boolean properties currently set to
+* **Filtrar por texto:**
+    * Simplesmente digite na barra de filtro. A lista de propriedades será atualizada dinamicamente
+      para mostrar apenas aquelas que correspondem à sua entrada.
+    * Você pode filtrar pelo nome de uma propriedade, seu valor atual ou seu tipo. Por
+      exemplo:
+        * Digitar "main" filtraria para `mainAxisAlignment`, `mainAxisSize`, ou
+          outras propriedades com "main" em seu nome.
+        * Digitar "true" filtraria para todas as propriedades booleanas atualmente definidas como
           `true`.
-        * Typing "double" would filter to all properties of type `double`.
+        * Digitar "double" filtraria para todas as propriedades do tipo `double`.
 
     ![Filter input with filtering by text highlighted](/assets/images/docs/tools/devtools/property-editor-filter-text.png){:width="500px"}
 
-* **Filter by "set" properties:**
-    * Use the filter menu button to open the filter options. Check "Only
+* **Filtrar por propriedades "set":**
+    * Use o botão de menu de filtro para abrir as opções de filtro. Marque "Only
       include properties that are set in the code."
-    * This hides all properties that have not been explicitly set in your
-      code, allowing you to focus only on the properties you have explicitly set.
+    * Isso oculta todas as propriedades que não foram explicitamente definidas em seu
+      código, permitindo que você se concentre apenas nas propriedades que você definiu explicitamente.
 
     ![Filter input with filter menu button highlighted](/assets/images/docs/tools/devtools/property-editor-filter-menu-button.png){:width="500px"}
 
-* **Filter with a regex:**
-    * The regex toggle (an `*` icon button) allows you to toggle on regex mode
-      for the filter input.
-    * When enabled, your filter text will be interpreted as a regular
-      expression.
+* **Filtrar com uma regex:**
+    * O toggle de regex (um botão com ícone `*`) permite alternar o modo regex
+      para a entrada de filtro.
+    * Quando habilitado, seu texto de filtro será interpretado como uma expressão
+      regular.
 
     ![Filter input with regex toggle highlighted](/assets/images/docs/tools/devtools/property-editor-filter-regex-toggle.png){:width="500px"}
 
-* **Clear the current filter:**
-    * The clear button (an `X` icon button) clears out any active filters,
-      displaying all properties of the widget again.
+* **Limpar o filtro atual:**
+    * O botão limpar (um botão com ícone `X`) limpa quaisquer filtros ativos,
+      exibindo todas as propriedades do widget novamente.
 
     ![Filter input with clear button highlighted](/assets/images/docs/tools/devtools/property-editor-filter-clear-button.png){:width="500px"}

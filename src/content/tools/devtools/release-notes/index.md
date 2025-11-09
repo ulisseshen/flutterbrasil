@@ -1,23 +1,24 @@
 ---
-title: DevTools release notes
-breadcrumb: Release notes
-description: Learn about the latest changes in Dart and Flutter DevTools.
+ia-translate: true
+title: Notas de versão do DevTools
+breadcrumb: Notas de versão
+description: Aprenda sobre as últimas mudanças no Dart e Flutter DevTools.
 showToc: false
 ---
 
-This page summarizes the changes in official stable releases of DevTools.
-To view a complete list of changes, check out the
-[DevTools git log]({{site.repo.organization}}/devtools/commits/master).
+Esta página resume as mudanças nas versões estáveis oficiais do DevTools.
+Para ver uma lista completa de mudanças, confira o
+[log do git do DevTools]({{site.repo.organization}}/devtools/commits/master).
 
-The Dart and Flutter SDKs include DevTools.
-To check your current version of DevTools,
-run the following on your command line:
+O Dart e Flutter SDKs incluem o DevTools.
+Para verificar sua versão atual do DevTools,
+execute o seguinte na sua linha de comando:
 
 ```console
 $ dart devtools --version
 ```
 
-### Release notes
+### Notas de versão
 
 {% comment %}
 When adding the release notes for a new DevTools release,

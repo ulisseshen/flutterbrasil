@@ -1,89 +1,90 @@
 ---
-title: Use the debugger
-description: How to use DevTools' source-level debugger.
+ia-translate: true
+title: Use o debugger
+description: Como usar o debugger de nível de fonte do DevTools.
 ---
 
 :::note
-DevTools hides the Debugger tab if the app was launched
-from VS Code because VS Code has a built-in debugger.
+DevTools oculta a aba Debugger se o app foi iniciado
+do VS Code porque o VS Code tem um debugger integrado.
 :::
 
-## Getting started
+## Começando
 
-DevTools includes a full source-level debugger,
-supporting breakpoints, stepping, and variable inspection.
+DevTools inclui um debugger completo de nível de fonte,
+suportando breakpoints, stepping e inspeção de variáveis.
 
-When you open the debugger tab, you should see the source for the main
-entry-point for your app loaded in the debugger.
+Quando você abre a aba debugger, você deve ver o código-fonte para o
+ponto de entrada principal do seu app carregado no debugger.
 
-In order to browse around more of your application sources, click **Libraries**
-(top right) or press <kbd>Ctrl</kbd> / <kbd>Cmd</kbd> + <kbd>P</kbd>.
-This opens the libraries window and allows you
-to search for other source files.
+Para navegar por mais fontes da sua aplicação, clique em **Libraries**
+(canto superior direito) ou pressione <kbd>Ctrl</kbd> / <kbd>Cmd</kbd> + <kbd>P</kbd>.
+Isso abre a janela de bibliotecas e permite que você
+pesquise por outros arquivos de código-fonte.
 
 ![Screenshot of the debugger tab](/assets/images/docs/tools/devtools/debugger_screenshot.png){:width="100%"}
 
-## Setting breakpoints
+## Definindo breakpoints
 
-To set a breakpoint, click the left margin (the line number ruler)
-in the source area. Clicking once sets a breakpoint, which should
-also show up in the **Breakpoints** area on the left. Clicking
-again removes the breakpoint.
+Para definir um breakpoint, clique na margem esquerda (a régua de número de linha)
+na área de código-fonte. Clicar uma vez define um breakpoint, que também
+deve aparecer na área **Breakpoints** à esquerda. Clicar
+novamente remove o breakpoint.
 
-## The call stack and variable areas
+## As áreas de call stack e variáveis
 
-When your application encounters a breakpoint, it pauses there,
-and the DevTools debugger shows the paused execution location
-in the source area. In addition, the `Call stack` and `Variables`
-areas populate with the current call stack for the paused isolate,
-and the local variables for the selected frame. Selecting other
-frames in the `Call stack` area changes the contents of the variables.
+Quando sua aplicação encontra um breakpoint, ela pausa ali,
+e o debugger DevTools mostra o local de execução pausado
+na área de código-fonte. Além disso, as áreas `Call stack` e `Variables`
+são preenchidas com a call stack atual para o isolate pausado,
+e as variáveis locais para o frame selecionado. Selecionar outros
+frames na área `Call stack` altera o conteúdo das variáveis.
 
-Within the `Variables` area, you can inspect individual objects by
-toggling them open to see their fields. Hovering over an object
-in the `Variables` area calls `toString()` for that object and
-displays the result.
+Dentro da área `Variables`, você pode inspecionar objetos individuais
+alternando-os abertos para ver seus campos. Passar o mouse sobre um objeto
+na área `Variables` chama `toString()` para aquele objeto e
+exibe o resultado.
 
-## Stepping through source code
+## Percorrendo o código-fonte
 
-When paused, the three stepping buttons become active.
+Quando pausado, os três botões de stepping ficam ativos.
 
-* Use **Step in** to step into a method invocation, stopping at
-  the first executable line in that invoked method.
-* Use **Step over** to step over a method invocation;
-  this steps through source lines in the current method.
-* Use **Step out** to step out of the current method,
-  without stopping at any intermediary lines.
+* Use **Step in** para entrar em uma invocação de método, parando na
+  primeira linha executável naquele método invocado.
+* Use **Step over** para passar por cima de uma invocação de método;
+  isso percorre linhas de código-fonte no método atual.
+* Use **Step out** para sair do método atual,
+  sem parar em nenhuma linha intermediária.
 
-In addition, the **Resume** button continues regular
-execution of the application.
+Além disso, o botão **Resume** continua a
+execução regular da aplicação.
 
-## Console output
+## Saída do console
 
-Console output for the running app (stdout and stderr) is
-displayed in the console, below the source code area.
-You can also see the output in the [Logging view][].
+A saída do console para o app em execução (stdout e stderr) é
+exibida no console, abaixo da área de código-fonte.
+Você também pode ver a saída na [view Logging][Logging view].
 
-## Breaking on exceptions
+## Quebrando em exceções
 
-To adjust the stop-on-exceptions behavior, toggle the
-**Ignore** dropdown at the top of the debugger view.
+Para ajustar o comportamento de stop-on-exceptions, alterne o
+dropdown **Ignore** no topo da view do debugger.
 
-Breaking on unhandled excepts only pauses execution if the
-breakpoint is considered uncaught by the application code.
-Breaking on all exceptions causes the debugger to pause
-whether or not the breakpoint was caught by application code.
+Quebrar em exceções não tratadas apenas pausa a execução se o
+breakpoint for considerado não capturado pelo código da aplicação.
+Quebrar em todas as exceções faz com que o debugger pause
+independentemente de o breakpoint ter sido capturado ou não pelo código da aplicação.
 
-## Known issues
+## Problemas conhecidos
 
-When performing a hot restart for a Flutter application,
-user breakpoints are cleared.
+Ao realizar um hot restart para uma aplicação Flutter,
+os breakpoints do usuário são limpos.
 
 [Logging view]: /tools/devtools/logging
 
-## Other resources
+## Outros recursos
 
-For more information on debugging and profiling, see the
-[Debugging][] page.
+Para mais informações sobre debugging e profiling, veja a
+página [Debugging][Debugging].
 
 [Debugging]: /testing/debugging

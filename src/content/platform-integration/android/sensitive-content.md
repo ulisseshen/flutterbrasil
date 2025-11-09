@@ -1,39 +1,40 @@
 ---
-title: Protect your app's sensitive content
-shortTitle: Sensitive content
+ia-translate: true
+title: Proteja o conteúdo sensível do seu app
+shortTitle: Conteúdo sensível
 description: >-
-  Learn how to protect sensitive content in your Flutter app.
+  Aprenda como proteger conteúdo sensível em seu app Flutter.
 ---
 
-This feature is available on Android API 35+, and you can try it out by using
-the [`SensitiveContent`] widget. See the guide below for details.
+Este recurso está disponível no Android API 35+, e você pode experimentá-lo usando
+o widget [`SensitiveContent`][SensitiveContent]. Veja o guia abaixo para detalhes.
 
-## About the `SensitiveContent` widget
+## Sobre o widget `SensitiveContent`
 
-You can use the `SensitiveContent` widget in your app to set the content
-sensitivity of a child `Widget` to one of the following [`ContentSensitivity`]
-values: `notSensitive`, `sensitive`, or `autoSensitive`. The mode that you
-choose helps to determine if the device screen should be obscured
-(blacked out) during media projection to protect users’ sensitive data.
+Você pode usar o widget `SensitiveContent` em seu app para definir a sensibilidade
+de conteúdo de um `Widget` filho para um dos seguintes valores [`ContentSensitivity`][ContentSensitivity]:
+`notSensitive`, `sensitive`, ou `autoSensitive`. O modo que você
+escolher ajuda a determinar se a tela do dispositivo deve ser obscurecida
+(apagada) durante projeção de mídia para proteger os dados sensíveis dos usuários.
 
-You can have as many `SensitiveContent` widgets in your app as you wish,
-but if _any_ one of those widgets has a `sensitive` content value, then the
-screen will be obscured during media projection. Thus, for most use cases,
-using multiple `SensitiveContent` widgets provides no advantage over having
-one `SensitiveContent` widget in your app’s widget tree. This feature is
-available on Android API 35+ and has no effect on lower API versions and
-other platforms.
+Você pode ter quantos widgets `SensitiveContent` em seu app desejar,
+mas se _qualquer_ um desses widgets tiver um valor de conteúdo `sensitive`, então a
+tela será obscurecida durante projeção de mídia. Assim, para a maioria dos casos de uso,
+usar múltiplos widgets `SensitiveContent` não fornece vantagem sobre ter
+um widget `SensitiveContent` na árvore de widgets do seu app. Este recurso está
+disponível no Android API 35+ e não tem efeito em versões de API inferiores e
+outras plataformas.
 
 :::note
-The `autoSensitive` value isn't supported as of Flutter 3.35 and behaves
-the same as `notSensitive`. See the [Issue #160879][] for more information.
+O valor `autoSensitive` não é suportado a partir do Flutter 3.35 e se comporta
+da mesma forma que `notSensitive`. Veja a [Issue #160879][Issue #160879] para mais informações.
 :::
 
-## Using the `SensitiveContent` widget
+## Usando o widget `SensitiveContent`
 
-Given some content that you want to protect from media screen share
-(for example, a `MySensitiveContent()` widget), you can wrap it with the
-`SensitiveContent` widget as shown in the following example:
+Dado algum conteúdo que você deseja proteger do compartilhamento de tela de mídia
+(por exemplo, um widget `MySensitiveContent()`), você pode envolvê-lo com o
+widget `SensitiveContent` como mostrado no seguinte exemplo:
 
 ```dart
 class MyWidget extends StatelessWidget {
@@ -47,16 +48,16 @@ class MyWidget extends StatelessWidget {
 }
 ```
 
-When running on Android API 34 and below, the screen will not be obscured
-during media projection. The widget will exist in the tree but has no other
-effect, and you do not need to avoid usages of `SensitiveContent` on platforms
-that do not support this feature.
+Quando rodando no Android API 34 e abaixo, a tela não será obscurecida
+durante projeção de mídia. O widget existirá na árvore mas não tem outro
+efeito, e você não precisa evitar usos de `SensitiveContent` em plataformas
+que não suportam este recurso.
 
-## For more information
+## Para mais informações
 
-For more information, visit the [`SensitiveContent`][]
-and [`ContentSensitivity`][] API docs.
+Para mais informações, visite a documentação da API [`SensitiveContent`][SensitiveContent]
+e [`ContentSensitivity`][ContentSensitivity].
 
-[`SensitiveContent`]: {{site.api}}/flutter/widgets/SensitiveContent-class.html
-[`ContentSensitivity`]: {{site.api}}/flutter/services/ContentSensitivity.html
+[SensitiveContent]: {{site.api}}/flutter/widgets/SensitiveContent-class.html
+[ContentSensitivity]: {{site.api}}/flutter/services/ContentSensitivity.html
 [Issue #160879]: {{site.github}}/flutter/flutter/issues/160879

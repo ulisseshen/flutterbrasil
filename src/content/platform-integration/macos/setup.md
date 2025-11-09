@@ -1,82 +1,83 @@
 ---
-title: Set up macOS development
+ia-translate: true
+title: Configurar desenvolvimento macOS
 description: >-
-  Configure your development environment to
-  run, build, and deploy Flutter apps for macOS devices.
+  Configure seu ambiente de desenvolvimento para
+  executar, compilar e implantar apps Flutter para dispositivos macOS.
 ---
 
-Learn how to set up your development environment
-to run, build, and deploy Flutter apps for the macOS desktop platform.
+Aprenda como configurar seu ambiente de desenvolvimento
+para executar, compilar e implantar apps Flutter para a plataforma desktop macOS.
 
 :::note
-If you haven't set up Flutter already,
-visit and follow the [Get started with Flutter][] guide first.
+Se você ainda não configurou Flutter,
+visite e siga o guia [Começando com Flutter][Get started with Flutter] primeiro.
 
-If you've already installed Flutter,
-ensure that it's [up to date][].
+Se você já instalou Flutter,
+certifique-se de que está [atualizado][up to date].
 :::
 
 [Get started with Flutter]: /get-started
 [up to date]: /install/upgrade
 
-## Set up tooling {: #set-up-tooling}
+## Configurar ferramentas {: #set-up-tooling}
 
-With Xcode, you can run Flutter apps on macOS as well as
-compile and debug native Swift and Objective-C code.
+Com Xcode, você pode executar apps Flutter no macOS assim como
+compilar e debugar código nativo Swift e Objective-C.
 
- 1. <h3>Install Xcode</h3>
+ 1. <h3>Instalar Xcode</h3>
 
-    If you haven't done so already,
-    [install and set up the latest version of Xcode][xcode].
+    Se você ainda não o fez,
+    [instale e configure a versão mais recente do Xcode][xcode].
 
-    If you've already installed Xcode,
-    update it to the latest version using the
-    same installation method you used originally.
+    Se você já instalou Xcode,
+    atualize-o para a versão mais recente usando o
+    mesmo método de instalação que você usou originalmente.
 
- 1. <h3>Set up Xcode command-line tools</h3>
+ 1. <h3>Configurar ferramentas de linha de comando do Xcode</h3>
 
-    To configure the Xcode command-line tools to use
-    the version of Xcode you installed,
-    run the following command in your preferred terminal:
+    Para configurar as ferramentas de linha de comando do Xcode para usar
+    a versão do Xcode que você instalou,
+    execute o seguinte comando em seu terminal preferido:
 
     ```console
     $ sudo sh -c 'xcode-select -s /Applications/Xcode.app/Contents/Developer && xcodebuild -runFirstLaunch'
     ```
 
-    If you downloaded Xcode elsewhere or need to use a different version,
-    replace `/Applications/Xcode.app` with the path to there instead.
+    Se você baixou Xcode em outro lugar ou precisa usar uma versão diferente,
+    substitua `/Applications/Xcode.app` pelo caminho para lá.
 
- 1. <h3>Agree to the Xcode licenses</h3>
+ 1. <h3>Aceitar as licenças do Xcode</h3>
 
-    After you've set up Xcode and configured its command-line tools,
-    agree to the Xcode licenses.
+    Depois de ter configurado Xcode e suas ferramentas de linha de comando,
+    aceite as licenças do Xcode.
 
-    1. Open your preferred terminal.
+    1. Abra seu terminal preferido.
 
-    1. Run the following command to review and sign the Xcode licenses.
+    1. Execute o seguinte comando para revisar e assinar as licenças do Xcode.
 
        ```console
        $ sudo xcodebuild -license
        ```
 
-    1. Read and agree to all necessary licenses.
+    1. Leia e aceite todas as licenças necessárias.
 
-       Before agreeing to the terms of each license,
-       read each with care.
+       Antes de concordar com os termos de cada licença,
+       leia cada uma com cuidado.
 
-       Once you've accepted all the necessary licenses successfully,
-       the command should output how to review the licenses.
+       Uma vez que você tenha aceitado todas as licenças necessárias com sucesso,
+       o comando deve exibir como revisar as licenças.
 
- 1. <h3>Install CocoaPods</h3>
+ 1. <h3>Instalar CocoaPods</h3>
 
-    To support [Flutter plugins][] that use native macOS code,
-    install the latest version of [CocoaPods][].
+    Para suportar [plugins Flutter][Flutter plugins] que usam código nativo macOS,
+    instale a versão mais recente do [CocoaPods][CocoaPods].
 
-    Install CocoaPods following the
-    [CocoaPods installation guide][].
+    Instale CocoaPods seguindo o
+    [guia de instalação do CocoaPods][CocoaPods installation guide].
 
-    If you've already installed CocoaPods,
-    update it following the [CocoaPods update guide][].
+    Se você já instalou CocoaPods,
+    atualize-o seguindo o [guia de atualização do CocoaPods][CocoaPods update guide].
 
 {: .steps}
 
@@ -86,53 +87,53 @@ compile and debug native Swift and Objective-C code.
 [CocoaPods installation guide]: https://guides.cocoapods.org/using/getting-started.html#installation
 [CocoaPods update guide]: https://guides.cocoapods.org/using/getting-started.html#updating-cocoapods
 
-## Validate your setup {: #validate-setup}
+## Validar sua configuração {: #validate-setup}
 
- 1. <h3>Check for toolchain issues</h3>
+ 1. <h3>Verificar problemas na toolchain</h3>
 
-    To check for any issues with your macOS development setup,
-    run the `flutter doctor` command in your preferred terminal:
+    Para verificar quaisquer problemas com sua configuração de desenvolvimento macOS,
+    execute o comando `flutter doctor` em seu terminal preferido:
 
     ```console
     $ flutter doctor -v
     ```
 
-    If you see any errors or tasks to complete
-    under the **Xcode** section,
-    complete and resolve them, then
-    run `flutter doctor -v` again to verify any changes.
+    Se você ver quaisquer erros ou tarefas a completar
+    na seção **Xcode**,
+    complete e resolva-os, então
+    execute `flutter doctor -v` novamente para verificar quaisquer alterações.
 
- 1. <h3>Check for macOS devices</h3>
+ 1. <h3>Verificar dispositivos macOS</h3>
 
-    To ensure Flutter can find and connect to your macOS device correctly,
-    run `flutter devices` in your preferred terminal:
+    Para garantir que Flutter possa encontrar e conectar ao seu dispositivo macOS corretamente,
+    execute `flutter devices` em seu terminal preferido:
 
     ```console
     $ flutter devices
     ```
 
-    If you set everything up correctly,
-    there should be at least one entry with the platform marked as **macos**.
+    Se você configurou tudo corretamente,
+    deve haver pelo menos uma entrada com a plataforma marcada como **macos**.
 
- 1. <h3>Troubleshoot setup issues</h3>
+ 1. <h3>Solucionar problemas de configuração</h3>
 
-    If you need help resolving any setup issues,
-    check out [Install and setup troubleshooting][].
+    Se você precisar de ajuda para resolver quaisquer problemas de configuração,
+    consulte [Solução de problemas de instalação e configuração][Install and setup troubleshooting].
 
-    If you still have issues or questions,
-    reach out on one of the Flutter [community][] channels.
+    Se você ainda tiver problemas ou perguntas,
+    entre em contato em um dos canais da [comunidade][community] Flutter.
 
 {: .steps}
 
 [Install and setup troubleshooting]: /install/troubleshoot
 [community]: {{site.main-url}}/community
 
-## Start developing for macOS {: #start-developing}
+## Começar a desenvolver para macOS {: #start-developing}
 
-Congratulations!
-Now that you've set up macOS desktop development for Flutter,
-you can continue your Flutter learning journey while testing on macOS
-or begin expanding integration with macOS.
+Parabéns!
+Agora que você configurou o desenvolvimento desktop macOS para Flutter,
+você pode continuar sua jornada de aprendizado Flutter enquanto testa no macOS
+ou começar a expandir a integração com macOS.
 
 <div class="card-grid link-cards">
   <div class="card filled-card list-card">

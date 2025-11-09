@@ -1,36 +1,37 @@
 ---
-title: Set up a web development configuration file
-shortTitle: Web development configuration
+ia-translate: true
+title: Configurar um arquivo de configuração de desenvolvimento web
+shortTitle: Configuração de desenvolvimento web
 description: >-
-  Centralize web development settings including a development proxy
+  Centralize configurações de desenvolvimento web incluindo um proxy de desenvolvimento
 ---
 
-# Set up a web development configuration file
-**By Sydney Bao**
+# Configurar um arquivo de configuração de desenvolvimento web
+**Por Sydney Bao**
 
-Flutter web includes a development server that defaults to
-serving your application in the `localhost` domain using HTTP
-on a randomly assigned port. While command-line arguments offer
-a quick way to modify the server's behavior,
-this document focuses on a more structured approach:
-defining your server's behavior through a centralized `web_dev_config.yaml` file.
-This configuration file allows you to
-customize server settings&emdash;host, port, HTTPS settings, and
-proxy rules&emdash;ensuring a consistent development environment.
+Flutter web inclui um servidor de desenvolvimento que por padrão
+serve sua aplicação no domínio `localhost` usando HTTP
+em uma porta atribuída aleatoriamente. Embora argumentos de linha de comando ofereçam
+uma maneira rápida de modificar o comportamento do servidor,
+este documento foca em uma abordagem mais estruturada:
+definir o comportamento do seu servidor através de um arquivo `web_dev_config.yaml` centralizado.
+Este arquivo de configuração permite que você
+personalize configurações do servidor&emdash;host, porta, configurações HTTPS, e
+regras de proxy&emdash;garantindo um ambiente de desenvolvimento consistente.
 
-## Create a configuration file
+## Criar um arquivo de configuração
 
-Add a `web_dev_config.yaml` file to the root directory of your Flutter project.
-If you haven't set up a Flutter project,
-visit [Building a web application with Flutter][] to get started.
+Adicione um arquivo `web_dev_config.yaml` ao diretório raiz do seu projeto Flutter.
+Se você ainda não configurou um projeto Flutter,
+visite [Construindo uma aplicação web com Flutter][Building a web application with Flutter] para começar.
 
 [Building a web application with Flutter]: /platform-integration/web/building
 
-## Add configuration settings
+## Adicionar configurações
 
-### Basic server configuration
+### Configuração básica do servidor
 
-You can define the host, port, and HTTPS settings for your development server.
+Você pode definir o host, porta e configurações HTTPS para seu servidor de desenvolvimento.
 
 ```yaml title="web_dev_config.yaml"
 server:
@@ -41,9 +42,9 @@ server:
     cert-key-path: "/path/to/key.pem" # Path <string> to TLS certificate key
 ```
 
-### Custom headers
+### Headers personalizados
 
-You can also inject custom HTTP headers into the development server's responses.
+Você também pode injetar headers HTTP personalizados nas respostas do servidor de desenvolvimento.
 
 ```yaml title="web_dev_config.yaml"
 server:
@@ -54,13 +55,13 @@ server:
       value: "no-cache, no-store, must-revalidate"
 ```
 
-### Proxy configuration
+### Configuração de proxy
 
-Requests are matched in order from the `web_dev_config.yaml` file.
+Requisições são correspondidas em ordem do arquivo `web_dev_config.yaml`.
 
-#### Basic string proxy
+#### Proxy de string básico
 
-Use the `prefix` field for simple path prefix matching.
+Use o campo `prefix` para correspondência simples de prefixo de caminho.
 
 ```yaml title="web_dev_config.yaml"
 server:
@@ -75,20 +76,20 @@ server:
       replace: ""
 ```
 
-**Explanation:**
+**Explicação:**
 
-*   A request to `/users/names` is
-    forwarded to `http://localhost:5000/users/names`.
-*   A request to `/data/2023/` is
-    forwarded to `http://localhost:3000/report/2023`
-    because `replace: “/report/”` replaces the `/data/` prefix.
-*   A request to `/products/item/123` is
-    forwarded to `http://localhost:4000/item/123` because `replace: ""`
-    removes the `/products/` prefix by replacing it with an empty string.
+*   Uma requisição para `/users/names` é
+    encaminhada para `http://localhost:5000/users/names`.
+*   Uma requisição para `/data/2023/` é
+    encaminhada para `http://localhost:3000/report/2023`
+    porque `replace: "/report/"` substitui o prefixo `/data/`.
+*   Uma requisição para `/products/item/123` é
+    encaminhada para `http://localhost:4000/item/123` porque `replace: ""`
+    remove o prefixo `/products/` substituindo-o por uma string vazia.
 
-#### Advanced regex proxy
+#### Proxy regex avançado
 
-You can also use the `regex` field for more flexible and complex matching.
+Você também pode usar o campo `regex` para correspondência mais flexível e complexa.
 
 ```yaml title="web_dev_config.yaml"
 server:
@@ -100,17 +101,17 @@ server:
       replace: "/$2?apiVersion=$1" # Allows capture groups (optional)
 ```
 
-**Explanation:**
+**Explicação:**
 
-*   A request to `/users/123/` matches the first rule exactly,
-    so it is forwarded to `http://localhost:5000/users/123/`.
-*   A request to `/api/v1/users/profile/` starts with the second rule path
-    so it is forwarded to `http://localhost:4000/users/profile/?apiVersion=v1`.
+*   Uma requisição para `/users/123/` corresponde exatamente à primeira regra,
+    então é encaminhada para `http://localhost:5000/users/123/`.
+*   Uma requisição para `/api/v1/users/profile/` começa com o caminho da segunda regra
+    então é encaminhada para `http://localhost:4000/users/profile/?apiVersion=v1`.
 
-## Configuration precedence
+## Precedência de configuração
 
-Remember the order of precedence for settings:
+Lembre-se da ordem de precedência para configurações:
 
-1. **Command-line arguments** (such as `--web-hostname`, `--web-port`)
-2. **`web_dev_config.yaml` settings**
-3. **Built-in default values**
+1. **Argumentos de linha de comando** (como `--web-hostname`, `--web-port`)
+2. **Configurações do `web_dev_config.yaml`**
+3. **Valores padrão integrados**

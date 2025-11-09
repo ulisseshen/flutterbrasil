@@ -1,20 +1,21 @@
 ---
-title: Use lists
-description: How to implement a list.
+ia-translate: true
+title: Use listas
+description: Como implementar uma lista.
 ---
 
 <?code-excerpt path-base="cookbook/lists/basic_list"?>
 
-Displaying lists of data is a fundamental pattern for mobile apps.
-Flutter includes the [`ListView`][]
-widget to make working with lists a breeze.
+Exibir listas de dados é um padrão fundamental para apps mobile.
+O Flutter inclui o widget [`ListView`][`ListView`]
+para facilitar o trabalho com listas.
 
-## Create a ListView
+## Crie um ListView
 
-Using the standard `ListView` constructor is
-perfect for lists that contain only a few items.
-The built-in [`ListTile`][]
-widget is a way to give items a visual structure.
+Usar o construtor padrão do `ListView` é
+perfeito para listas que contêm apenas alguns itens.
+O widget [`ListTile`][`ListTile`] integrado
+é uma forma de dar aos itens uma estrutura visual.
 
 <?code-excerpt "lib/main.dart (ListView)" replace="/^body\: //g"?>
 ```dart
@@ -27,7 +28,7 @@ ListView(
 ),
 ```
 
-## Interactive example
+## Exemplo interativo
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter lists hands-on example in DartPad" run="true"

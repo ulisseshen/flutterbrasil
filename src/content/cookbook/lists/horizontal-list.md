@@ -1,16 +1,17 @@
 ---
-title: Create a horizontal list
-description: How to implement a horizontal list.
+ia-translate: true
+title: Criar uma lista horizontal
+description: Como implementar uma lista horizontal.
 ---
 
 <?code-excerpt path-base="cookbook/lists/horizontal_list"?>
 
-You might want to create a list that scrolls
-horizontally rather than vertically.
-The [`ListView`][] widget supports horizontal lists.
+Você pode querer criar uma lista que rola
+horizontalmente em vez de verticalmente.
+O widget [`ListView`][`ListView`] suporta listas horizontais.
 
-Use the standard `ListView` constructor, passing in a horizontal
-`scrollDirection`, which overrides the default vertical direction.
+Use o construtor padrão `ListView`, passando uma
+`scrollDirection` horizontal, que sobrescreve a direção vertical padrão.
 
 <?code-excerpt "lib/main.dart (list-view)" replace="/^child\: //g"?>
 ```dart highlightLines=2
@@ -25,7 +26,7 @@ ListView(
 
 [`ListView`]: {{site.api}}/flutter/widgets/ListView-class.html
 
-## Interactive example
+## Exemplo interativo
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter horizontal list hands-on example in DartPad" run="true"

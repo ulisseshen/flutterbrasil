@@ -1,4 +1,4 @@
-O exemplo a seguir assume que você deseja gerar os
+O seguinte exemplo assume que você deseja gerar os
 frameworks em `/path/to/MyApp/Flutter/`.
 
 ```console
@@ -7,7 +7,7 @@ $ flutter build ios-framework --output=/path/to/MyApp/Flutter/
 
 Execute isso _toda vez_ que você alterar o código no seu módulo Flutter.
 
-A estrutura do projeto resultante deve se assemelhar a esta árvore de diretórios.
+A estrutura de projeto resultante deve se assemelhar a esta árvore de diretórios.
 
 ```plaintext
 /path/to/MyApp/
@@ -15,8 +15,8 @@ A estrutura do projeto resultante deve se assemelhar a esta árvore de diretóri
     ├── Debug/
     │   ├── Flutter.xcframework
     │   ├── App.xcframework
-    │   ├── FlutterPluginRegistrant.xcframework (somente se você tiver plugins com código de plataforma iOS)
-    │   └── example_plugin.xcframework (cada plugin é um framework separado)
+    │   ├── FlutterPluginRegistrant.xcframework (only if you have plugins with iOS platform code)
+    │   └── example_plugin.xcframework (each plugin is a separate framework)
     ├── Profile/
     │   ├── Flutter.xcframework
     │   ├── App.xcframework
@@ -30,9 +30,9 @@ A estrutura do projeto resultante deve se assemelhar a esta árvore de diretóri
 ```
 
 :::warning
-Sempre use os pacotes `Flutter.xcframework` e `App.xcframework`
+Sempre use os bundles `Flutter.xcframework` e `App.xcframework`
 localizados no mesmo diretório.
-Misturar importações de `.xcframework` de diferentes diretórios
+Misturar importações `.xcframework` de diretórios diferentes
 (como `Profile/Flutter.xcframework` com `Debug/App.xcframework`)
 causa travamentos em tempo de execução.
 :::

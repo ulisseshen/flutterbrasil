@@ -1,142 +1,143 @@
 ---
-title: Set up Android development
+ia-translate: true
+title: Configure o desenvolvimento Android
 description: >-
-  Configure your development environment to
-  run, build, and deploy Flutter apps for Android devices.
+  Configure seu ambiente de desenvolvimento para
+  executar, fazer build e implantar apps Flutter para dispositivos Android.
 ---
 
-Learn how to set up your development environment
-to run, build, and deploy Flutter apps for Android devices.
+Aprenda como configurar seu ambiente de desenvolvimento
+para executar, fazer build e implantar apps Flutter para dispositivos Android.
 
 :::note
-If you haven't set up Flutter already,
-visit and follow the [Get started with Flutter][] guide first.
+Se você ainda não configurou o Flutter,
+visite e siga o guia [Get started with Flutter][Get started with Flutter] primeiro.
 
-If you've already installed Flutter,
-ensure that it's [up to date][].
+Se você já instalou o Flutter,
+certifique-se de que está [atualizado][up to date].
 :::
 
 [Get started with Flutter]: /get-started
 [up to date]: /install/upgrade
 
-## Choose your development platform {: #dev-platform}
+## Escolha sua plataforma de desenvolvimento {: #dev-platform}
 
-The instructions on this page are configured to cover
-setting up Android development on a **Windows**{:.selected-os-text} device.
+As instruções nesta página estão configuradas para cobrir
+a configuração do desenvolvimento Android em um dispositivo **Windows**{:.selected-os-text}.
 
-If you'd like to follow the instructions for a different OS,
-please select one of the following.
+Se você gostaria de seguir as instruções para um sistema operacional diferente,
+por favor selecione um dos seguintes.
 
 <OSSelector />
 
-## Set up Android tooling {: #set-up-tooling}
+## Configure as ferramentas Android {: #set-up-tooling}
 
-With Android Studio, you can run Flutter apps on
-a physical Android device or an Android Emulator.
+Com o Android Studio, você pode executar apps Flutter em
+um dispositivo Android físico ou um Android Emulator.
 
-If you haven't done so already,
-install and set up the latest stable version of [Android Studio][].
+Se você ainda não fez isso,
+instale e configure a última versão estável do [Android Studio][Android Studio].
 
- 1. <h3>Install prerequisites libraries</h3>
+ 1. <h3>Instale bibliotecas de pré-requisitos</h3>
 
-    If you're developing on Linux, first install the
-    [prerequisite collection of 32-bit libraries][64bit-libs]
-    that Android Studio requires.
+    Se você está desenvolvendo no Linux, primeiro instale a
+    [coleção de pré-requisitos de bibliotecas de 32 bits][64bit-libs]
+    que o Android Studio requer.
     {: .linux-only}
 
- 1. <h3>Install Android Studio</h3>
+ 1. <h3>Instale o Android Studio</h3>
 
-    If you haven't done so already, [install and set up][as-install]
-    the latest stable version of [Android Studio][].
+    Se você ainda não fez isso, [instale e configure][as-install]
+    a última versão estável do [Android Studio][Android Studio].
 
-    If you already have Android Studio installed,
-    ensure that it's [up to date][as-update].
+    Se você já tem o Android Studio instalado,
+    certifique-se de que está [atualizado][as-update].
 
- 1. <h3>Install Android SDK and tools</h3>
+ 1. <h3>Instale Android SDK e ferramentas</h3>
 
-    1. Launch **Android Studio**.
+    1. Inicie o **Android Studio**.
 
-    1. Open the **SDK Manager** settings dialog.
+    1. Abra o diálogo de configurações **SDK Manager**.
 
-       1. If the **Welcome to Android Studio** dialog is open,
-          click the **More Actions** button that follows the
-          **New Project** and **Open** buttons,
-          then click **SDK Manager** from the dropdown menu.
+       1. Se o diálogo **Welcome to Android Studio** estiver aberto,
+          clique no botão **More Actions** que segue os
+          botões **New Project** e **Open**,
+          então clique em **SDK Manager** no menu dropdown.
 
-       1. If you have a project open,
-          go to **Tools** <span aria-label="and then">></span> **SDK Manager**.
-
-       {: type="a"}
-
-    1. If the **SDK Platforms** tab is not open, switch to it.
-
-    1. Verify that the first entry with an **API Level** of
-       **36** has been selected.
-
-       If the **Status** column displays
-       **Update available** or **Not installed**:
-
-       1. Select the checkbox for that entry or row.
-
-       1. Click **Apply**.
-
-       1. When the **Confirm Change** dialog displays, click **OK**.
-
-          The **SDK Component Installer** dialog displays with a
-          progress indicator.
-
-       1. When the installation finishes, click **Finish**.
+       1. Se você tem um projeto aberto,
+          vá para **Tools** <span aria-label="and then">></span> **SDK Manager**.
 
        {: type="a"}
 
-    1. Switch to the **SDK Tools** tab.
+    1. Se a aba **SDK Platforms** não estiver aberta, mude para ela.
 
-    1. Verify that the following SDK Tools have been selected:
+    1. Verifique se a primeira entrada com um **API Level** de
+       **36** foi selecionada.
+
+       Se a coluna **Status** exibir
+       **Update available** ou **Not installed**:
+
+       1. Selecione a checkbox para essa entrada ou linha.
+
+       1. Clique em **Apply**.
+
+       1. Quando o diálogo **Confirm Change** aparecer, clique em **OK**.
+
+          O diálogo **SDK Component Installer** aparece com um
+          indicador de progresso.
+
+       1. Quando a instalação terminar, clique em **Finish**.
+
+       {: type="a"}
+
+    1. Mude para a aba **SDK Tools**.
+
+    1. Verifique se as seguintes SDK Tools foram selecionadas:
 
        - **Android SDK Build-Tools**
        - **Android SDK Command-line Tools**
        - **Android Emulator**
        - **Android SDK Platform-Tools**
 
-    1. If the **Status** column for any of the preceding tools displays
-       **Update available** or **Not installed**:
+    1. Se a coluna **Status** para qualquer uma das ferramentas anteriores exibir
+       **Update available** ou **Not installed**:
 
-       1. Select the checkbox for the necessary tools.
+       1. Selecione a checkbox para as ferramentas necessárias.
 
-       1. Click **Apply**.
+       1. Clique em **Apply**.
 
-       1. When the **Confirm Change** dialog displays, click **OK**.
+       1. Quando o diálogo **Confirm Change** aparecer, clique em **OK**.
 
-          The **SDK Component Installer** dialog displays with a
-          progress indicator.
+          O diálogo **SDK Component Installer** aparece com um
+          indicador de progresso.
 
-       1. When the installation finishes, click **Finish**.
+       1. Quando a instalação terminar, clique em **Finish**.
 
        {: type="a"}
 
-   1. <h3>Agree to the Android licenses</h3>
+   1. <h3>Aceite as licenças Android</h3>
 
-      Before you can use Flutter and after you install all prerequisites,
-      agree to the licenses of the Android SDK platform.
+      Antes de poder usar o Flutter e após instalar todos os pré-requisitos,
+      aceite as licenças da plataforma Android SDK.
 
-      1. Open your preferred terminal.
+      1. Abra seu terminal preferido.
 
-      1. Run the following command to review and sign the SDK licenses.
+      1. Execute o seguinte comando para revisar e assinar as licenças do SDK.
 
          ```console
          $ flutter doctor --android-licenses
          ```
 
-      1. Read and accept any necessary licenses.
+      1. Leia e aceite quaisquer licenças necessárias.
 
-         If you haven't accepted each of the SDK licenses previously,
-         you'll need to review and agree to them before developing for Android.
+         Se você não aceitou cada uma das licenças do SDK anteriormente,
+         você precisará revisá-las e concordar com elas antes de desenvolver para Android.
 
-         Before agreeing to the terms of each license,
-         read each with care.
+         Antes de concordar com os termos de cada licença,
+         leia cada uma com cuidado.
 
-         Once you've accepted all the necessary licenses successfully,
-         you should see output similar to the following:
+         Uma vez que você aceitou todas as licenças necessárias com sucesso,
+         você deve ver uma saída similar à seguinte:
 
          ```console
          All SDK package licenses accepted.
@@ -149,85 +150,85 @@ install and set up the latest stable version of [Android Studio][].
 [as-install]: https://developer.android.com/studio/install
 [as-update]: https://developer.android.com/studio/intro/update
 
-## Set up an Android device {: #set-up-devices}
+## Configure um dispositivo Android {: #set-up-devices}
 
-You can debug Flutter apps on physical Android devices or
-by running them on an Android emulator.
+Você pode debugar apps Flutter em dispositivos Android físicos ou
+executando-os em um emulador Android.
 
 <Tabs key="android-emulator-or-not">
 <Tab name="Android emulator">
 
-To set up your development environment to
-run a Flutter app on an Android emulator, follow these steps:
+Para configurar seu ambiente de desenvolvimento para
+executar um app Flutter em um emulador Android, siga estas etapas:
 
- 1. <h3>Set up your development device</h3>
+ 1. <h3>Configure seu dispositivo de desenvolvimento</h3>
 
-    Enable [VM acceleration][] on your development computer.
+    Habilite [aceleração de VM][VM acceleration] em seu computador de desenvolvimento.
 
- 1. <h3>Set up a new emulator</h3>
+ 1. <h3>Configure um novo emulador</h3>
 
-    1. Start **Android Studio**.
+    1. Inicie o **Android Studio**.
 
-    1. Open the **Device Manager** settings dialog.
+    1. Abra o diálogo de configurações **Device Manager**.
 
-       1. If the **Welcome to Android Studio** dialog is open,
-          click the **More Actions** button that follows the
-          **New Project** and **Open** buttons,
-          then select **Virtual Device Manager** from the dropdown menu.
+       1. Se o diálogo **Welcome to Android Studio** estiver aberto,
+          clique no botão **More Actions** que segue os
+          botões **New Project** e **Open**,
+          então selecione **Virtual Device Manager** no menu dropdown.
 
-       1. If you have a project open,
-          go to **Tools** <span aria-label="and then">></span>
+       1. Se você tem um projeto aberto,
+          vá para **Tools** <span aria-label="and then">></span>
           **Device Manager**.
 
        {: type="a"}
 
-    1. Click the **Create Virtual Device** button that appears as a `+` icon.
+    1. Clique no botão **Create Virtual Device** que aparece como um ícone `+`.
 
-       The **Virtual Device Configuration** dialog displays.
+       O diálogo **Virtual Device Configuration** é exibido.
 
-    1. Select either **Phone** or **Tablet** under **Form Factor**.
+    1. Selecione **Phone** ou **Tablet** em **Form Factor**.
 
-    1. Select a device definition. You can browse or search for the device.
+    1. Selecione uma definição de dispositivo. Você pode navegar ou pesquisar pelo dispositivo.
 
-    1. Click **Next**.
+    1. Clique em **Next**.
 
-    1. If the option is provided,
-       select either **x86 Images** or **ARM Images** depending on
-       if your development computer is an x64 or Arm64 device.
+    1. Se a opção for fornecida,
+       selecione **x86 Images** ou **ARM Images** dependendo de
+       se seu computador de desenvolvimento é um dispositivo x64 ou Arm64.
 
-    1. Select one system image for the Android version you want to emulate.
+    1. Selecione uma imagem de sistema para a versão Android que você quer emular.
 
-       1. If the desired image has a **Download** icon to the left
-          of the system image name, click it.
+       1. Se a imagem desejada tem um ícone **Download** à esquerda
+          do nome da imagem do sistema, clique nele.
 
-          The **SDK Component Installer** dialog displays with a
-          progress indicator.
+          O diálogo **SDK Component Installer** é exibido com um
+          indicador de progresso.
 
-       1. When the download completes, click **Finish**.
+       1. Quando o download completar, clique em **Finish**.
 
        {: type="a"}
 
-    1. Click **Additional settings** in the top tab bar and
-       scroll to **Emulated Performance**.
+    1. Clique em **Additional settings** na barra de abas superior e
+       role até **Emulated Performance**.
 
-    1. From the **Graphics acceleration** dropdown menu,
-       select an option that mentions **Hardware**.
+    1. No menu dropdown **Graphics acceleration**,
+       selecione uma opção que mencione **Hardware**.
 
-       This enables [hardware acceleration][], improving render performance.
+       Isso habilita [aceleração de hardware][hardware acceleration], melhorando a performance de renderização.
 
-    1. Verify your virtual device configuration.
-       If it is correct, click **Finish**.
+    1. Verifique sua configuração de dispositivo virtual.
+       Se estiver correta, clique em **Finish**.
 
-       To learn more about virtual devices,
-       check out [Create and manage virtual devices][].
+       Para aprender mais sobre dispositivos virtuais,
+       confira [Create and manage virtual devices][Create and manage virtual devices].
 
- 1. <h3>Try running the emulator</h3>
+ 1. <h3>Tente executar o emulador</h3>
 
-    In the **Device Manager** dialog,
-    click the **Run** icon to the right of your desired virtual device.
+    No diálogo **Device Manager**,
+    clique no ícone **Run** à direita do seu dispositivo virtual desejado.
 
-    The emulator should start up and display the default canvas for
-    your selected Android OS version and device.
+    O emulador deve iniciar e exibir o canvas padrão para
+    sua versão de sistema operacional Android selecionada e dispositivo.
 
 {: .steps}
 
@@ -238,43 +239,43 @@ run a Flutter app on an Android emulator, follow these steps:
 </Tab>
 <Tab name="Physical device">
 
-To set up your development environment to
-run a Flutter app on a physical Android device, follow these steps:
+Para configurar seu ambiente de desenvolvimento para
+executar um app Flutter em um dispositivo Android físico, siga estas etapas:
 
- 1. <h3>Configure your device</h3>
+ 1. <h3>Configure seu dispositivo</h3>
 
-    Enable **Developer options** and **USB debugging** on your device
-    as described in [Configure on-device developer options][].
+    Habilite **Developer options** e **USB debugging** em seu dispositivo
+    como descrito em [Configure on-device developer options][Configure on-device developer options].
 
- 1. <h3>Enable wireless debugging</h3>
+ 1. <h3>Habilite depuração sem fio</h3>
 
-    To leverage wireless debugging,
-    enable **Wireless debugging** on your device as described in
-    [Connect to your device using Wi-Fi][].
+    Para aproveitar a depuração sem fio,
+    habilite **Wireless debugging** em seu dispositivo como descrito em
+    [Connect to your device using Wi-Fi][Connect to your device using Wi-Fi].
     {: .windows-only}
 
- 1. <h3>Install platform prerequisites</h3>
+ 1. <h3>Instale pré-requisitos de plataforma</h3>
 
-    If you're developing on Windows, first install the necessary
-    USB driver for your particular device as described in
-    [Install OEM USB drivers][].
+    Se você está desenvolvendo no Windows, primeiro instale o
+    driver USB necessário para seu dispositivo particular como descrito em
+    [Install OEM USB drivers][Install OEM USB drivers].
 
- 1. <h3>Connect your device</h3>
+ 1. <h3>Conecte seu dispositivo</h3>
 
-    Plug your device into your computer.
-    If your device prompts you,
-    authorize your computer to access your Android device.
+    Conecte seu dispositivo ao seu computador.
+    Se seu dispositivo solicitar,
+    autorize seu computador a acessar seu dispositivo Android.
 
- 1. <h3>Verify the device connection</h3>
+ 1. <h3>Verifique a conexão do dispositivo</h3>
 
-    To verify that Flutter recognizes your connected Android device,
-    run `flutter devices` in your preferred terminal:
+    Para verificar se o Flutter reconhece seu dispositivo Android conectado,
+    execute `flutter devices` em seu terminal preferido:
 
     ```console
     $ flutter devices
     ```
 
-    Your device should be found and show up as a connected device.
+    Seu dispositivo deve ser encontrado e aparecer como um dispositivo conectado.
 
 {: .steps}
 
@@ -285,54 +286,54 @@ run a Flutter app on a physical Android device, follow these steps:
 </Tab>
 </Tabs>
 
-## Validate your setup {: #validate-setup}
+## Valide sua configuração {: #validate-setup}
 
- 1. <h3>Check for toolchain issues</h3>
+ 1. <h3>Verifique problemas na toolchain</h3>
 
-    To check for any issues with your Android development setup,
-    run the `flutter doctor` command in your preferred terminal:
+    Para verificar quaisquer problemas com sua configuração de desenvolvimento Android,
+    execute o comando `flutter doctor` em seu terminal preferido:
 
     ```console
     $ flutter doctor
     ```
 
-    If you see any errors or tasks to complete under
-    the **Android toolchain** or **Android Studio** sections,
+    Se você ver quaisquer erros ou tarefas a completar nas
+    seções **Android toolchain** ou **Android Studio**,
 
-    Complete any mentioned tasks and then
-    run `flutter doctor` again to verify any changes.
+    Complete quaisquer tarefas mencionadas e então
+    execute `flutter doctor` novamente para verificar quaisquer alterações.
 
- 1. <h3>Check for Android devices</h3>
+ 1. <h3>Verifique dispositivos Android</h3>
 
-    To ensure you set up your emulator and/or physical Android device correctly,
-    run `flutter emulators` and `flutter devices` in your preferred terminal:
+    Para garantir que você configurou seu emulador e/ou dispositivo Android físico corretamente,
+    execute `flutter emulators` e `flutter devices` em seu terminal preferido:
 
     ```console
     $ flutter emulators && flutter devices
     ```
 
-    Depending on if you set up an emulator or a device,
-    at least one should output an entry with the platform marked as **android**.
+    Dependendo se você configurou um emulador ou um dispositivo,
+    pelo menos um deve exibir uma entrada com a plataforma marcada como **android**.
 
- 1. <h3>Troubleshoot setup issues</h3>
+ 1. <h3>Solucione problemas de configuração</h3>
 
-    If you need help resolving any setup issues,
-    check out [Install and setup troubleshooting][].
+    Se você precisa de ajuda para resolver quaisquer problemas de configuração,
+    confira [Install and setup troubleshooting][Install and setup troubleshooting].
 
-    If you still have issues or questions,
-    reach out on one of the Flutter [community][] channels.
+    Se você ainda tem problemas ou perguntas,
+    entre em contato em um dos canais da [comunidade][community] Flutter.
 
 {: .steps}
 
 [Install and setup troubleshooting]: /install/troubleshoot#android-setup
 [community]: {{site.main-url}}/community
 
-## Start developing for Android {: #start-developing}
+## Comece a desenvolver para Android {: #start-developing}
 
-Congratulations!
-Now that you've set up Android development for Flutter,
-you can continue your Flutter learning journey while testing on Android
-or begin improving integration with Android.
+Parabéns!
+Agora que você configurou o desenvolvimento Android para Flutter,
+você pode continuar sua jornada de aprendizado Flutter enquanto testa no Android
+ou começar a melhorar a integração com Android.
 
 <div class="card-grid link-cards">
   <div class="card filled-card list-card">
@@ -340,24 +341,24 @@ or begin improving integration with Android.
       <img src="/assets/images/decorative/pointing-the-way.png" height="160" aria-hidden="true" alt="Dash helping you explore Flutter learning resources.">
     </div>
     <div class="card-header">
-      <span class="card-title">Continue learning Flutter</span>
+      <span class="card-title">Continue aprendendo Flutter</span>
     </div>
     <div class="card-content">
       <ul>
         <li>
-          <a class="text-button" href="/get-started/codelab">Write your first app</a>
+          <a class="text-button" href="/get-started/codelab">Escreva seu primeiro app</a>
         </li>
         <li>
-          <a class="text-button" href="/get-started/fundamentals">Learn the fundamentals</a>
+          <a class="text-button" href="/get-started/fundamentals">Aprenda os fundamentos</a>
         </li>
         <li>
-          <a class="text-button" href="https://www.youtube.com/watch?v=b_sQ9bMltGU&list=PLjxrf2q8roU23XGwz3Km7sQZFTdB996iG">Explore Flutter widgets</a>
+          <a class="text-button" href="https://www.youtube.com/watch?v=b_sQ9bMltGU&list=PLjxrf2q8roU23XGwz3Km7sQZFTdB996iG">Explore widgets Flutter</a>
         </li>
         <li>
-          <a class="text-button" href="/reference/learning-resources">Check out samples</a>
+          <a class="text-button" href="/reference/learning-resources">Confira exemplos</a>
         </li>
         <li>
-          <a class="text-button" href="/resources/bootstrap-into-dart">Learn about Dart</a>
+          <a class="text-button" href="/resources/bootstrap-into-dart">Aprenda sobre Dart</a>
         </li>
       </ul>
     </div>
@@ -367,24 +368,24 @@ or begin improving integration with Android.
       <img src="/assets/images/decorative/flutter-on-phone.svg" height="160" aria-hidden="true" alt="A representation of Flutter on multiple devices.">
     </div>
     <div class="card-header">
-      <span class="card-title">Build for Android</span>
+      <span class="card-title">Construa para Android</span>
     </div>
     <div class="card-content">
       <ul>
         <li>
-          <a class="text-button" href="/deployment/android">Build and deploy to Android</a>
+          <a class="text-button" href="/deployment/android">Faça build e implante para Android</a>
         </li>
         <li>
-          <a class="text-button" href="/platform-integration/android/c-interop">Bind to native Android code</a>
+          <a class="text-button" href="/platform-integration/android/c-interop">Vincule a código Android nativo</a>
         </li>
         <li>
-          <a class="text-button" href="/platform-integration/android/splash-screen">Add a splash screen</a>
+          <a class="text-button" href="/platform-integration/android/splash-screen">Adicione uma splash screen</a>
         </li>
         <li>
-          <a class="text-button" href="/platform-integration/android/platform-views">Embed native Android views</a>
+          <a class="text-button" href="/platform-integration/android/platform-views">Incorpore views Android nativas</a>
         </li>
         <li>
-          <a class="text-button" href="/platform-integration/android/predictive-back">Support predictive back</a>
+          <a class="text-button" href="/platform-integration/android/predictive-back">Suporte predictive back</a>
         </li>
       </ul>
     </div>

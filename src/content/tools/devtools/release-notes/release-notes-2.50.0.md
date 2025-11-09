@@ -1,23 +1,24 @@
 ---
-title: DevTools 2.50.0 release notes
-shortTitle: 2.50.0 release notes
+ia-translate: true
+title: Notas de lançamento do DevTools 2.50.0
+shortTitle: Notas de lançamento 2.50.0
 breadcrumb: 2.50.0
-description: Release notes for Dart and Flutter DevTools version 2.50.0.
+description: Notas de lançamento da versão 2.50.0 do Dart e Flutter DevTools.
 showToc: false
 ---
 
-The 2.50.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](/tools/devtools/overview).
+A versão 2.50.0 do Dart e Flutter DevTools
+inclui as seguintes mudanças, entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](/tools/devtools/overview).
 
-## CPU profiler updates
+## Atualizações do CPU profiler
 
-- Deleted the "Profile app start up" button in favor of the new Dart/Flutter
-  `--profile-startup` CLI flags. -
+- Removido o botão "Profile app start up" em favor das novas flags de CLI
+  `--profile-startup` do Dart/Flutter. -
   [#9358](https://github.com/flutter/devtools/pull/9358)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes in this release, check out the
-[DevTools git log](https://github.com/flutter/devtools/tree/v2.50.0).
+Para encontrar uma lista completa de mudanças neste lançamento, confira o
+[log do git do DevTools](https://github.com/flutter/devtools/tree/v2.50.0).

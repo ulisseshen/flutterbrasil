@@ -1,107 +1,108 @@
 ---
-title: Flutter and Dart DevTools
+ia-translate: true
+title: Flutter e Dart DevTools
 breadcrumb: DevTools
-description: How to use Flutter DevTools with Flutter.
+description: Como usar Flutter DevTools com Flutter.
 ---
 
-## What is DevTools?
+## O que é DevTools?
 
-DevTools is a suite of performance and debugging tools
-for Dart and Flutter.
-_Flutter DevTools_ and _Dart DevTools_ refer to the
-same set of tools.
+DevTools é um conjunto de ferramentas de desempenho e debugging
+para Dart e Flutter.
+_Flutter DevTools_ e _Dart DevTools_ referem-se ao
+mesmo conjunto de ferramentas.
 
 ![Dart DevTools Screens](/assets/images/docs/tools/devtools/dart-devtools.webp){:width="100%"}
 
-For a video introduction to DevTools, check out
-the following deep dive and use-case walkthrough:
+Para uma introdução em vídeo ao DevTools, confira
+o seguinte mergulho profundo e passo a passo de casos de uso:
 
 <YouTubeEmbed id="_EYk-E29edo" title="Dive in to Flutter and Dart DevTools"></YouTubeEmbed>
 
-## What can I do with DevTools?
+## O que posso fazer com DevTools?
 
-Here are some of the things you can do with DevTools:
+Aqui estão algumas das coisas que você pode fazer com DevTools:
 
-* Inspect the UI layout and state of a Flutter app.
-* Diagnose UI jank performance issues in a Flutter app.
-* CPU profiling for a Flutter or Dart app.
-* Network profiling for a Flutter app.
-* Source-level debugging of a Flutter or Dart app.
-* Debug memory issues in a Flutter or Dart
-  command-line app.
-* View general log and diagnostics information
-  about a running Flutter or Dart
-  command-line app.
-* Analyze code and app size.
-* Validate deep links in your Android or iOS app.
+* Inspecionar o layout e estado da UI de um app Flutter.
+* Diagnosticar problemas de desempenho de jank da UI em um app Flutter.
+* Profiling de CPU para um app Flutter ou Dart.
+* Profiling de rede para um app Flutter.
+* Debugging em nível de código-fonte de um app Flutter ou Dart.
+* Depurar problemas de memória em um app de
+  linha de comando Flutter ou Dart.
+* Visualizar informações gerais de log e diagnóstico
+  sobre um app de linha de comando Flutter ou Dart
+  em execução.
+* Analisar código e tamanho de app.
+* Validar deep links no seu app Android ou iOS.
 
-We expect you to use DevTools in conjunction with
-your existing IDE or command-line based development workflow.
+Esperamos que você use DevTools em conjunto com
+seu fluxo de trabalho de desenvolvimento existente baseado em IDE ou linha de comando.
 
 <a id="how-do-i-install-devtools"></a>
 <a id="install-devtools"></a>
 
-## How to launch DevTools {:#start}
+## Como iniciar DevTools {:#start}
 
-You can launch DevTools with the following tools:
+Você pode iniciar DevTools com as seguintes ferramentas:
 
-* [VS Code][]
-* [Android Studio/IntelliJ][]
-* [command line][]
+* [VS Code][VS Code]
+* [Android Studio/IntelliJ][Android Studio/IntelliJ]
+* [linha de comando][command line]
 
-## Troubleshooting some standard issues
+## Solucionando alguns problemas comuns
 
-**Question**: My app looks janky or stutters.
-  How do I fix it?
+**Pergunta**: Meu app parece janky ou trava.
+  Como eu corrijo isso?
 
-**Answer**: Performance issues can cause [UI frames][]
-  to be janky and/or slow down some operations.
+**Resposta**: Problemas de desempenho podem causar [frames de UI][UI frames]
+  janky e/ou tornar algumas operações mais lentas.
 
-  1. To detect which code impacts concrete late frames,
-     start at [Performance > Timeline][].
-  2. To learn which code takes the most CPU time in
-     the background, use the [CPU profiler][].
+  1. Para detectar qual código impacta frames atrasados concretos,
+     comece em [Performance > Timeline][Performance > Timeline].
+  2. Para saber qual código consome mais tempo de CPU em
+     segundo plano, use o [profiler de CPU][CPU profiler].
 
-For more information, check out the
-[Performance][] page.
+Para mais informações, confira a
+página [Performance][Performance].
 
-**Question**: I see a lot of garbage collection (GC) events occurring.
-  Is this a problem?
+**Pergunta**: Vejo muitos eventos de garbage collection (GC) ocorrendo.
+  Isso é um problema?
 
-**Answer**: Frequent GC events might display on
-  the DevTools > Memory > Memory chart. In most cases,
-  it's not a problem.
+**Resposta**: Eventos GC frequentes podem aparecer no
+  gráfico DevTools > Memory > Memory. Na maioria dos casos,
+  não é um problema.
 
-If your app has frequent background activity with some idle time,
-Flutter might use that opportunity to collect the created objects
-without performance impact.
+Se seu app tem atividade frequente em segundo plano com algum tempo ocioso,
+Flutter pode usar essa oportunidade para coletar os objetos criados
+sem impacto no desempenho.
 
 [CPU profiler]: /tools/devtools/cpu-profiler
 [Performance]: /perf
 [Performance > Timeline]: /tools/devtools/performance#timeline-events-tab
 [UI frames]: /perf/ui-performance
 
-## Providing feedback
+## Fornecendo feedback
 
-Please give DevTools a try, provide feedback, and file issues
-in the [DevTools issue tracker][]. Thanks!
+Por favor, experimente DevTools, forneça feedback e registre problemas
+no [rastreador de problemas do DevTools][DevTools issue tracker]. Obrigado!
 
-## DevTools versioning
+## Versionamento do DevTools
 
-DevTools is distributed as part of the Flutter SDK. To get access to the latest
-DevTools functionality, run `flutter upgrade` to get the most up-to-date version
-of Flutter. To access DevTools features before they hit the Flutter `stable`
-channel, consider switching to the `beta` or `main` channels.
+DevTools é distribuído como parte do Flutter SDK. Para obter acesso à
+funcionalidade mais recente do DevTools, execute `flutter upgrade` para obter a versão
+mais atualizada do Flutter. Para acessar recursos do DevTools antes de chegarem ao
+canal `stable` do Flutter, considere mudar para os canais `beta` ou `main`.
 
-## Other resources
+## Outros recursos
 
-For more information on debugging and profiling
-Flutter apps, see the [Debugging][] page and,
-in particular, its list of [other resources][].
+Para mais informações sobre debugging e profiling
+de apps Flutter, veja a página [Debugging][Debugging] e,
+em particular, sua lista de [outros recursos][Other resources].
 
-For more information on using DevTools with
-Dart command-line apps, see the
-[DevTools documentation on dart.dev]({{site.dart-site}}/tools/dart-devtools).
+Para mais informações sobre o uso de DevTools com
+apps de linha de comando Dart, veja a
+[documentação do DevTools em dart.dev]({{site.dart-site}}/tools/dart-devtools).
 
 [Android Studio/IntelliJ]: /tools/devtools/android-studio
 [VS Code]: /tools/devtools/vscode

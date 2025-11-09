@@ -1,18 +1,18 @@
 
-Flutter can't handle [common dependencies with xcframeworks][common].
-If both the host app and the Flutter module's plugin define the
-same pod dependency and you integrate Flutter module using this option,
-errors result.
-These errors include issues like `Multiple commands produce
+O Flutter não pode lidar com [dependências comuns com xcframeworks][common].
+Se tanto o app host quanto o plugin do módulo Flutter definem a
+mesma dependência pod e você integra o módulo Flutter usando esta opção,
+erros ocorrem.
+Esses erros incluem problemas como `Multiple commands produce
 'CommonDependency.framework'`.
 
-To work around this issue, link every plugin source in its `podspec` file
-from the Flutter module to the host app's `Podfile`.
-Link the source instead of the plugins' `xcframework` framework.
-The next section explains how to [produce that framework][ios-framework].
+Para contornar este problema, linke todo código-fonte de plugin em seu arquivo `podspec`
+do módulo Flutter ao `Podfile` do app host.
+Linke o código-fonte em vez do framework `xcframework` dos plugins.
+A próxima seção explica como [produzir esse framework][ios-framework].
 
-To prevent the error that occurs when common dependencies exist,
-use `flutter build ios-framework` with the `--no-plugins` flag.
+Para prevenir o erro que ocorre quando dependências comuns existem,
+use `flutter build ios-framework` com a flag `--no-plugins`.
 
 [common]: https://github.com/flutter/flutter/issues/130220
 [ios-framework]: https://github.com/flutter/flutter/issues/114692

@@ -1,8 +1,9 @@
 ---
-title: Painting and effect widgets
+ia-translate: true
+title: Widgets de pintura e efeitos
 shortTitle: Painting
 description: >
-  A catalog of Flutter's widgets that provide effects and custom painting.
+  Um catálogo de widgets Flutter que fornecem efeitos e pintura personalizada.
 widgetCategory: Painting and effects
 layout: widget-catalog-page
 ---

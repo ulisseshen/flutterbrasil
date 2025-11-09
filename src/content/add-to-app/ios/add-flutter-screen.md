@@ -7,7 +7,7 @@ description: Aprenda como adicionar uma única tela Flutter ao seu app iOS exist
 
 Este guia descreve como adicionar uma única tela Flutter a um app iOS existente.
 
-## Inicie um FlutterEngine e FlutterViewController
+## Inicie um FlutterEngine e FlutterViewController {:#start-a-flutterengine-and-flutterviewcontroller}
 
 Para iniciar uma tela Flutter de um app iOS existente, você inicia um
 [`FlutterEngine`][`FlutterEngine`] e um [`FlutterViewController`][`FlutterViewController`].
@@ -364,7 +364,7 @@ func showFlutter() {
 Veja [Sequência de carregamento e desempenho][Loading sequence and performance]
 para mais explorações sobre latência e uso de memória.
 
-## Usando o FlutterAppDelegate
+## Usando o FlutterAppDelegate {:#using-the-flutterappdelegate}
 
 Deixar o `UIApplicationDelegate` do seu aplicativo fazer subclasse de
 `FlutterAppDelegate` é recomendado, mas não obrigatório.
@@ -690,7 +690,7 @@ flutterEngine.run(withEntrypoint: "myOtherEntrypoint", libraryURI: "other_file.d
 </Tabs>
 
 
-### Rota
+### Rota {:#route}
 
 A partir da versão 1.22 do Flutter, uma rota inicial pode ser definida para seu
 [`WidgetsApp`][`WidgetsApp`] Flutter ao construir o FlutterEngine ou o

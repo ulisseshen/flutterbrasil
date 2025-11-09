@@ -282,7 +282,7 @@ inicializado e renderizado pela primeira vez.
 A maior parte dessa sobrecarga de tempo pode ser evitada usando
 um `FlutterEngine` em cache e pré-aquecido, que é discutido a seguir.
 
-## Usando um `FlutterEngine` pré-aquecido
+## Usando um `FlutterEngine` pré-aquecido {:#using-a-pre-warmed-flutterengine}
 
 Por padrão, um `FlutterFragment` cria sua própria instância
 de um `FlutterEngine`, que requer um tempo de aquecimento não trivial.

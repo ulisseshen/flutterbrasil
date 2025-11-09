@@ -117,7 +117,7 @@ Para adicionar Flutter a um app existente, construa-o normalmente, depois siga a
 [VanillaJS]: http://vanilla-js.com/
 [embedding instructions]: {{site.docs}}/platform-integration/web/embedding-flutter-web#embedded-mode
 
-## Começando
+## Começando {:#get-started}
 
 Para começar, veja nosso guia de integração de projeto para
 Android e iOS:

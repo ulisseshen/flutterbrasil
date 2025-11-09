@@ -135,7 +135,7 @@ consulte [Depurando seu módulo add-to-app][Debugging your add-to-app module].
 </Tabs>
 
 
-## Definir permissões de privacidade de rede local
+## Definir permissões de privacidade de rede local {:#set-local-network-privacy-permissions}
 
 No iOS 14 e posterior, habilite o serviço Dart multicast DNS na
 versão **Debug** do seu app iOS.

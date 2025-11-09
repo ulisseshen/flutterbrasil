@@ -1,40 +1,41 @@
 ---
-title: Large screen devices
+ia-translate: true
+title: Dispositivos de tela grande
 description: >-
-  Things to keep in mind when adapting apps
-  to large screens.
-shortTitle: Large screens
+  Coisas para ter em mente ao adaptar apps
+  para telas grandes.
+shortTitle: Telas grandes
 ---
 
 <?code-excerpt path-base="ui/adaptive_app_demos"?>
 
-This page provides guidance on optimizing your
-app to improve its behavior on large screens.
+Esta página fornece orientação sobre otimizar seu
+app para melhorar seu comportamento em telas grandes.
 
-Flutter, like Android, defines [large screens][] as tablets,
-foldables, and ChromeOS devices running Android. Flutter
-_also_ defines large screen devices as web, desktop,
-and iPads.
+Flutter, como Android, define [large screens][large screens] como tablets,
+dobráveis, e dispositivos ChromeOS executando Android. Flutter
+_também_ define dispositivos de tela grande como web, desktop,
+e iPads.
 
-:::secondary Why do large screens matter, in particular?
-Demand for large screens continues to increase.
-As of January 2024,
-more than [270 million active large screen][large screens]
-and foldable devices run on Android and more than
-[14.9 million iPad users][].
+:::secondary Por que telas grandes importam, em particular?
+A demanda por telas grandes continua a aumentar.
+Em janeiro de 2024,
+mais de [270 milhões de telas grandes ativas][large screens]
+e dispositivos dobráveis rodam em Android e mais de
+[14.9 milhões de usuários de iPad][14.9 million iPad users].
 
-When your app supports large screens,
-it also receives other benefits.
-Optimizing your app to fill the screen.
-For example, it:
+Quando seu app suporta telas grandes,
+ele também recebe outros benefícios.
+Otimizar seu app para preencher a tela.
+Por exemplo, isso:
 
-* Improves your app's user engagement metrics.
-* Increases your app's visibility in the Play Store.
-  Recent [Play Store updates][] show ratings by
-  device type and indicates when an app lacks
-  large screen support.
-* Ensures that your app meets iPadOS submission
-  guidelines and is [accepted in the App Store][].
+* Melhora as métricas de engajamento do usuário do seu app.
+* Aumenta a visibilidade do seu app na Play Store.
+  [Atualizações recentes da Play Store][Play Store updates] mostram classificações por
+  tipo de dispositivo e indicam quando um app carece de
+  suporte a telas grandes.
+* Garante que seu app atenda às diretrizes de envio do iPadOS
+  e seja [aceito na App Store][accepted in the App Store].
 :::
 
 [14.9 million iPad users]: https://www.statista.com/statistics/299632/tablet-shipments-apple/
@@ -42,153 +43,153 @@ For example, it:
 [large screens]: {{site.android-dev}}/guide/topics/large-screens/get-started-with-large-screens
 [Play Store updates]: {{site.android-dev}}/2022/03/helping-users-discover-quality-apps-on.html
 
-## Layout with GridView
+## Layout com GridView {:#layout-with-gridview}
 
-Consider the following screenshots of an app.
-The app displays its UI in a `ListView`.
-The image on the left shows the app running
-on a mobile device. The image on the right shows the
-app running on a large screen device
-_before the advice on this page was applied_.
+Considere as seguintes capturas de tela de um app.
+O app exibe sua UI em um `ListView`.
+A imagem à esquerda mostra o app rodando
+em um dispositivo móvel. A imagem à direita mostra o
+app rodando em um dispositivo de tela grande
+_antes do conselho nesta página ser aplicado_.
 
 ![Sample of large screen](/assets/images/docs/ui/adaptive-responsive/large-screen.png){:width="90%"}
 
-This is not optimal.
+Isso não é ideal.
 
-The [Android Large Screen App Quality Guidelines][guidelines]
-and the [iOS equivalent][]
-say that neither text nor boxes should take up the
-full screen width. How to solve this in an adaptive way?
+As [Diretrizes de Qualidade de App de Tela Grande do Android][guidelines]
+e o [equivalente do iOS][iOS equivalent]
+dizem que nem texto nem caixas devem ocupar toda a
+largura da tela. Como resolver isso de forma adaptativa?
 
 [guidelines]: https://developer.android.com/docs/quality-guidelines/large-screen-app-quality
 [iOS equivalent]: https://developer.apple.com/design/human-interface-guidelines/designing-for-ipados
 
-A common solution uses `GridView`, as shown in the next section.
+Uma solução comum usa `GridView`, como mostrado na próxima seção.
 
 ### GridView
 
-You can use the `GridView` widget to transform
-your existing `ListView` into more reasonably-sized items.
+Você pode usar o widget `GridView` para transformar
+seu `ListView` existente em itens de tamanho mais razoável.
 
-`GridView` is similar to the [`ListView`][] widget,
-but instead of handling only a list of widgets arranged linearly,
-`GridView` can arrange widgets in a two-dimensional array.
+`GridView` é similar ao widget [`ListView`][`ListView`],
+mas em vez de lidar apenas com uma lista de widgets organizados linearmente,
+`GridView` pode organizar widgets em um array bidimensional.
 
-`GridView` also has constructors that are similar to `ListView`.
-The `ListView` default constructor maps to `GridView.count`,
-and `ListView.builder` is similar to `GridView.builder`.
+`GridView` também tem construtores que são similares ao `ListView`.
+O construtor padrão do `ListView` mapeia para `GridView.count`,
+e `ListView.builder` é similar a `GridView.builder`.
 
-`GridView` has some additional constructors for more custom layouts.
-To learn more, visit the [`GridView`][] API page.
+`GridView` tem alguns construtores adicionais para layouts mais customizados.
+Para saber mais, visite a página da API [`GridView`][`GridView`].
 
 [`GridView`]: {{site.api}}/flutter/widgets/GridView-class.html
 [`ListView`]: {{site.api}}/flutter/widgets/ListView-class.html
 
-For example, if your original app used a `ListView.builder`,
-swap that out for a `GridView.builder`.
-If your app has a large number of items,
-it's recommended to use this builder constructor to only
-build the item widgets that are actually visible.
+Por exemplo, se seu app original usava um `ListView.builder`,
+troque por um `GridView.builder`.
+Se seu app tem um grande número de itens,
+é recomendado usar este construtor builder para apenas
+construir os widgets de item que estão realmente visíveis.
 
-Most of the parameters in the constructor are the same between
-the two widgets, so it's a straightforward swap.
-However, you need to figure out what to set for the `gridDelegate`.
+A maioria dos parâmetros no construtor são os mesmos entre
+os dois widgets, então é uma troca direta.
+No entanto, você precisa descobrir o que definir para o `gridDelegate`.
 
-Flutter provides powerful premade `gridDelegates`
-that you can use, namely:
+Flutter fornece `gridDelegates` pré-fabricados poderosos
+que você pode usar, a saber:
 
-[`SliverGridDelegateWithFixedCrossAxisCount`][]
-: Lets you assign a specific number of columns to your grid.
+[`SliverGridDelegateWithFixedCrossAxisCount`][`SliverGridDelegateWithFixedCrossAxisCount`]
+: Permite que você atribua um número específico de colunas à sua grade.
 
-[`SliverGridDelegateWithMaxCrossAxisExtent`][]
-: Lets you define a max item width.
+[`SliverGridDelegateWithMaxCrossAxisExtent`][`SliverGridDelegateWithMaxCrossAxisExtent`]
+: Permite que você defina uma largura máxima de item.
 
 [`SliverGridDelegateWithFixedCrossAxisCount`]: {{site.api}}/flutter/rendering/SliverGridDelegateWithFixedCrossAxisCount-class.html
 [`SliverGridDelegateWithMaxCrossAxisExtent`]:  {{site.api}}/flutter/rendering/SliverGridDelegateWithMaxCrossAxisExtent-class.html
 
 :::secondary
-Don't use the grid delegate for these classes that lets
-you set the column count directly and then hardcode
-the number of columns based on whether the device
-is a tablet, or whatever.
-The number of columns should be based on the size of
-the window and not the size of the physical device.
+Não use o grid delegate para essas classes que permitem
+definir a contagem de colunas diretamente e então codificar
+o número de colunas com base em se o dispositivo
+é um tablet, ou qualquer outra coisa.
+O número de colunas deve ser baseado no tamanho da
+janela e não no tamanho do dispositivo físico.
 
-This distinction is important because many mobile
-devices support multi-window mode, which can
-cause your app to be rendered in a space smaller than
-the physical size of the display. Also, Flutter apps
-can run on web and desktop, which might be sized in many ways.
-**For this reason, use `MediaQuery` to get the app window size
-rather than the physical device size.**
+Esta distinção é importante porque muitos dispositivos
+móveis suportam modo de várias janelas, que pode
+fazer com que seu app seja renderizado em um espaço menor do que
+o tamanho físico da tela. Além disso, apps Flutter
+podem rodar na web e desktop, que podem ser dimensionados de muitas maneiras.
+**Por esta razão, use `MediaQuery` para obter o tamanho da janela do app
+em vez do tamanho do dispositivo físico.**
 :::
 
-### Other solutions
+### Outras soluções
 
-Another way to approach these situations is to
-use the `maxWidth` property of `BoxConstraints`.
-This involves the following:
+Outra maneira de abordar essas situações é
+usar a propriedade `maxWidth` de `BoxConstraints`.
+Isso envolve o seguinte:
 
-* Wrap the `GridView`in a `ConstrainedBox` and give
-  it a `BoxConstraints` with a maximum width set.
-* Use a `Container` instead of a `ConstrainedBox`
-  if you want other functionality like setting the
-  background color.
+* Envolva o `GridView` em um `ConstrainedBox` e dê
+  a ele um `BoxConstraints` com uma largura máxima definida.
+* Use um `Container` em vez de um `ConstrainedBox`
+  se você quiser outra funcionalidade como definir a
+  cor de fundo.
 
-For choosing the maximum width value,
-consider using the values recommended
-by Material 3 in the [Applying layout][] guide.
+Para escolher o valor de largura máxima,
+considere usar os valores recomendados
+pelo Material 3 no guia [Applying layout][Applying layout].
 
 [Applying layout]: https://m3.material.io/foundations/layout/applying-layout/window-size-classes
 
-## Foldables
+## Dobráveis
 
-As mentioned previously, Android and Flutter both
-recommend in their design guidance **not**
-to lock screen orientation,
-but some apps lock screen orientation anyway.
-Be aware that this can cause problems when running your
-app on a foldable device.
+Como mencionado anteriormente, Android e Flutter ambos
+recomendam em suas orientações de design **não**
+bloquear a orientação da tela,
+mas alguns apps bloqueiam a orientação da tela de qualquer maneira.
+Esteja ciente de que isso pode causar problemas ao executar seu
+app em um dispositivo dobrável.
 
-When running on a foldable, the app might look ok
-when the device is folded. But when unfolding,
-you might find the app letterboxed.
+Quando rodando em um dobrável, o app pode parecer ok
+quando o dispositivo está dobrado. Mas ao desdobrar,
+você pode encontrar o app em letterbox.
 
-As described in the [SafeArea & MediaQuery][sa-mq] page,
-letterboxing means that the app's window is locked to
-the center of the screen while the window is
-surrounded with black.
+Como descrito na página [SafeArea & MediaQuery][sa-mq],
+letterbox significa que a janela do app está bloqueada no
+centro da tela enquanto a janela está
+cercada por preto.
 
 [sa-mq]: /ui/adaptive-responsive/safearea-mediaquery
 
-Why can this happen?
+Por que isso pode acontecer?
 
-This can happen when using `MediaQuery` to figure out
-the window size for your app. When the device is folded,
-orientation is restricted to portrait mode.
-Under the hood, `setPreferredOrientations` causes
-Android to use a portrait compatibility mode and the app
-is displayed in a letterboxed state.
-In the letterboxed state, `MediaQuery` never receives
-the larger window size that allows the UI to expand.
+Isso pode acontecer ao usar `MediaQuery` para descobrir
+o tamanho da janela para seu app. Quando o dispositivo está dobrado,
+a orientação é restrita ao modo retrato.
+Por baixo dos panos, `setPreferredOrientations` faz com que
+o Android use um modo de compatibilidade retrato e o app
+é exibido em um estado de letterbox.
+No estado de letterbox, `MediaQuery` nunca recebe
+o tamanho de janela maior que permite que a UI se expanda.
 
-You can solve this in one of two ways:
+Você pode resolver isso de duas maneiras:
 
-* Support all orientations.
-* Use the dimensions of the _physical display_.
-  In fact, this is one of the _few_ situations where
-  you would use the physical display dimensions and
-  _not_ the window dimensions.
+* Suporte todas as orientações.
+* Use as dimensões da _tela física_.
+  Na verdade, esta é uma das _poucas_ situações onde
+  você usaria as dimensões da tela física e
+  _não_ as dimensões da janela.
 
-How to obtain the physical screen dimensions?
+Como obter as dimensões da tela física?
 
-You can use the [`Display`][] API, introduced in
-Flutter 3.13, which contains the size,
-pixel ratio, and the refresh rate of the physical device.
+Você pode usar a API [`Display`][`Display`], introduzida no
+Flutter 3.13, que contém o tamanho,
+proporção de pixels, e a taxa de atualização do dispositivo físico.
 
 [`Display`]: {{site.api}}/flutter/dart-ui/Display-class.html
 
-The following sample code retrieves a `Display` object:
+O seguinte código de exemplo recupera um objeto `Display`:
 
 ```dart
 /// AppState object.
@@ -205,48 +206,48 @@ void didChangeMetrics() {
 }
 ```
 
-The important thing is to find the display of the
-view that you care about. This creates a forward-looking
-API that should handle current _and_ future multi-display
-and multi-view devices.
+O importante é encontrar a tela da
+visualização que você se importa. Isso cria uma API
+com visão de futuro que deve lidar com dispositivos
+de múltiplas telas _e_ múltiplas visualizações atuais e futuros.
 
-## Adaptive input
+## Entrada adaptativa
 
-Adding support for more screens, also means
-expanding input controls.
+Adicionar suporte para mais telas, também significa
+expandir controles de entrada.
 
-Android guidelines describe three tiers of large format device support.
+As diretrizes do Android descrevem três níveis de suporte a dispositivos de formato grande.
 
 ![3 tiers of large format device support](/assets/images/docs/ui/adaptive-responsive/large-screen-guidelines.png){:width="90%"}
 
-Tier 3, the lowest level of support,
-includes support for mouse and stylus input
-([Material 3 guidelines][m3-guide], [Apple guidelines][]).
+O nível 3, o nível mais baixo de suporte,
+inclui suporte para entrada de mouse e stylus
+([diretrizes Material 3][m3-guide], [diretrizes da Apple][Apple guidelines]).
 
-If your app uses Material 3 and its buttons and selectors,
-then your app already has built-in support for
-various additional input states.
+Se seu app usa Material 3 e seus botões e seletores,
+então seu app já tem suporte integrado para
+vários estados de entrada adicionais.
 
-But what if you have a custom widget?
-Check out the [User input][] page for
-guidance on adding
-[input support for widgets][].
+Mas e se você tem um widget customizado?
+Confira a página [User input][User input] para
+orientação sobre adicionar
+[suporte de entrada para widgets][input support for widgets].
 
 [Apple guidelines]: https://developer.apple.com/design/human-interface-guidelines/designing-for-ipados#Best-practices
 [input support for widgets]: /ui/adaptive-responsive/input#custom-widgets
 [m3-guide]: {{site.android-dev}}/docs/quality-guidelines/large-screen-app-quality
 [User input]: /ui/adaptive-responsive/input
 
-### Navigation
+### Navegação
 
-Navigation can create unique challenges when working with a variety of
-differently-sized devices. Generally, you want to switch between
-a [`BottomNavigationBar`][] and a [`NavigationRail`] depending on
-available screen space.
+A navegação pode criar desafios únicos ao trabalhar com uma variedade de
+dispositivos de tamanhos diferentes. Geralmente, você quer alternar entre
+um [`BottomNavigationBar`][`BottomNavigationBar`] e um [`NavigationRail`][`NavigationRail`] dependendo do
+espaço de tela disponível.
 
-For more information (and corresponding example code),
-check out [Problem: Navigation rail][], a section in the
-[Developing Flutter apps for Large screens][article] article.
+Para mais informações (e código de exemplo correspondente),
+confira [Problem: Navigation rail][Problem: Navigation rail], uma seção no
+artigo [Developing Flutter apps for Large screens][article].
 
 [article]: {{site.flutter-blog}}/developing-flutter-apps-for-large-screens-53b7b0e17f10
 [`BottomNavigationBar`]: {{site.api}}/flutter/material/BottomNavigationBar-class.html

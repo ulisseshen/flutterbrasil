@@ -1,6 +1,7 @@
 ---
-title: Flutter effects cookbook
-shortTitle: Effects
-description: A catalog of recipes for adding effects to your Flutter app.
+ia-translate: true
+title: Cookbook de efeitos Flutter
+shortTitle: Efeitos
+description: Um catálogo de receitas para adicionar efeitos ao seu app Flutter.
 layout: toc
 ---

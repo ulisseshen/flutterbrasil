@@ -1,34 +1,35 @@
 ---
-title: Create a typing indicator
-description: How to implement a typing indicator.
+ia-translate: true
+title: Criar um indicador de digitação
+description: Como implementar um indicador de digitação.
 ---
 
 <?code-excerpt path-base="cookbook/effects/typing_indicator"?>
 
 {% render "docs/deprecated.md" %}
 
-Modern chat apps display indicators when other users
-are actively typing responses. These indicators help
-prevent rapid and conflicting responses between you
-and the other person. In this recipe, you build a
-speech bubble typing indicator that animates in and out of view.
+Apps de chat modernos exibem indicadores quando outros usuários
+estão digitando respostas ativamente. Esses indicadores ajudam
+a prevenir respostas rápidas e conflitantes entre você
+e a outra pessoa. Nesta receita, você constrói um
+indicador de digitação em forma de balão de fala que anima para dentro e para fora da visualização.
 
-The following animation shows the app's behavior:
+A animação a seguir mostra o comportamento do app:
 
 ![The typing indicator is turned on and off](/assets/images/docs/cookbook/effects/TypingIndicator.webp){:.site-mobile-screenshot}
 
-## Define the typing indicator widget
+## Definir o widget indicador de digitação
 
-The typing indicator exists within its own widget so that
-it can be used anywhere in your app. As with any widget
-that controls animations, the typing indicator needs to
-be a stateful widget. The widget accepts a boolean value
-that determines whether the indicator is visible.
-This speech-bubble-typing indicator accepts a color
-for the bubbles and two colors for the light and dark
-phases of the flashing circles within the large speech bubble.
+O indicador de digitação existe dentro de seu próprio widget para que
+possa ser usado em qualquer lugar do seu app. Como qualquer widget
+que controla animações, o indicador de digitação precisa ser
+um stateful widget. O widget aceita um valor booleano
+que determina se o indicador está visível.
+Este indicador de digitação em forma de balão de fala aceita uma cor
+para os balões e duas cores para as fases clara e escura
+dos círculos piscantes dentro do grande balão de fala.
 
-Define a new stateful widget called `TypingIndicator`.
+Defina um novo stateful widget chamado `TypingIndicator`.
 
 <?code-excerpt "lib/excerpt1.dart (typing-indicator)"?>
 ```dart
@@ -59,27 +60,27 @@ class _TypingIndicatorState extends State<TypingIndicator> {
 }
 ```
 
-## Make room for the typing indicator
+## Abrir espaço para o indicador de digitação
 
-The typing indicator doesn't occupy any space when it
-isn't displayed. Therefore, the indicator needs to grow
-in height when it appears, and shrink in height
-when it disappears.
+O indicador de digitação não ocupa nenhum espaço quando não
+está exibido. Portanto, o indicador precisa crescer
+em altura quando aparece, e diminuir em altura
+quando desaparece.
 
-The height of the typing indicator could be the natural
-height of the speech bubbles within the typing indicator.
-However, the speech bubbles expand with an elastic curve.
-This elasticity would be too visually jarring if it quickly
-pushed all the conversation messages up or down. Instead,
-the height of the typing indicator animates on its own,
-smoothly expanding before the bubbles appear.
-When the bubbles disappear, the height smoothly contracts to zero.
-This behavior requires an [explicit animation][] for the
-height of the typing indicator.
+A altura do indicador de digitação poderia ser a altura natural
+dos balões de fala dentro do indicador de digitação.
+No entanto, os balões de fala expandem com uma curva elástica.
+Esta elasticidade seria visualmente muito perturbadora se rapidamente
+empurrasse todas as mensagens da conversa para cima ou para baixo. Em vez disso,
+a altura do indicador de digitação anima por conta própria,
+expandindo suavemente antes que os balões apareçam.
+Quando os balões desaparecem, a altura contrai suavemente para zero.
+Este comportamento requer uma [explicit animation][explicit animation] para a
+altura do indicador de digitação.
 
-Define an animation for the height of the typing indicator,
-and then apply that animated value to the `SizedBox`
-widget within the typing indicator.
+Defina uma animação para a altura do indicador de digitação,
+e então aplique esse valor animado ao widget `SizedBox`
+dentro do indicador de digitação.
 
 <?code-excerpt "lib/excerpt2.dart (typing-indicator-state)"?>
 ```dart
@@ -148,50 +149,50 @@ class _TypingIndicatorState extends State<TypingIndicator>
 }
 ```
 
-The `TypingIndicator` runs an animation forward or backward
-depending on whether the incoming `showIndicator` variable
-is `true` or `false`, respectively.
+O `TypingIndicator` executa uma animação para frente ou para trás
+dependendo se a variável `showIndicator` recebida
+é `true` ou `false`, respectivamente.
 
-The animation that controls the height uses different
-animation curves depending on its direction.
-When the animation moves forward, it needs to quickly make
-space for the speech bubbles. For this reason,
-the forward curve runs the entire height animation within
-the first 40% of the overall appearance animation.
-When the animation reverses, it needs to give the speech bubbles
-enough time to disappear before contracting the height.
-An ease-out curve that uses all the available time is a
-good way to accomplish this behavior.
+A animação que controla a altura usa diferentes
+curvas de animação dependendo de sua direção.
+Quando a animação avança, ela precisa rapidamente abrir
+espaço para os balões de fala. Por esta razão,
+a curva para frente executa toda a animação de altura dentro
+dos primeiros 40% da animação de aparecimento geral.
+Quando a animação reverte, ela precisa dar aos balões de fala
+tempo suficiente para desaparecer antes de contrair a altura.
+Uma curva ease-out que usa todo o tempo disponível é uma
+boa maneira de alcançar este comportamento.
 
 :::note
-The `AnimatedBuilder` widget rebuilds the `SizedBox`
-widget as the `_indicatorSpaceAnimation` changes.
-The alternative to using `AnimatedBuilder` is to
-invoke `setState()` every time the animation changes,
-and then rebuild the entire widget tree within `TypingIndicator`.
-Invoking `setState()` in this manner is acceptable,
-but as other widgets are added to this widget tree,
-rebuilding the entire tree just to change the height
-of the `SizedBox` widget wastes CPU cycles.
+O widget `AnimatedBuilder` reconstrói o widget `SizedBox`
+conforme o `_indicatorSpaceAnimation` muda.
+A alternativa ao uso de `AnimatedBuilder` é
+invocar `setState()` toda vez que a animação muda,
+e então reconstruir toda a árvore de widgets dentro de `TypingIndicator`.
+Invocar `setState()` desta maneira é aceitável,
+mas conforme outros widgets são adicionados a esta árvore de widgets,
+reconstruir a árvore inteira apenas para mudar a altura
+do widget `SizedBox` desperdiça ciclos de CPU.
 :::
 
-## Animate the speech bubbles
+## Animar os balões de fala
 
-The typing indicator displays three speech bubbles.
-The first two bubbles are small and round. The third
-bubble is oblong and contains a few flashing circles.
-These bubbles are staggered in position from the lower
-left of the available space.
+O indicador de digitação exibe três balões de fala.
+Os dois primeiros balões são pequenos e redondos. O terceiro
+balão é oblongo e contém alguns círculos piscantes.
+Estes balões são escalonados em posição a partir do canto inferior
+esquerdo do espaço disponível.
 
-Each bubble appears by animating its scale from 0% to 100%,
-and each bubble does this at slightly different times so
-that it looks like each bubble appears after the one before it.
-This is called a [staggered animation][].
+Cada balão aparece animando sua escala de 0% a 100%,
+e cada balão faz isso em momentos ligeiramente diferentes para que
+pareça que cada balão aparece após o anterior.
+Isso é chamado de [staggered animation][staggered animation].
 
-Paint the three bubbles in the desired positions from the
-lower left. Then, animate the scale of the bubbles
-so that the bubbles are staggered whenever the `showIndicator`
-property changes.
+Pinte os três balões nas posições desejadas a partir do
+canto inferior esquerdo. Então, anime a escala dos balões
+para que os balões sejam escalonados sempre que a propriedade `showIndicator`
+mudar.
 
 <?code-excerpt "lib/excerpt3.dart (bubbles)"?>
 ```dart
@@ -400,17 +401,17 @@ class StatusBubble extends StatelessWidget {
 }
 ```
 
-## Animate the flashing circles
+## Animar os círculos piscantes
 
-Within the large speech bubble, the typing indicator
-displays three small circles that flash repeatedly.
-Each circle flashes at a slightly different time,
-giving the impression that a single light source is
-moving behind each circle. This flashing animation
-repeats indefinitely.
+Dentro do grande balão de fala, o indicador de digitação
+exibe três pequenos círculos que piscam repetidamente.
+Cada círculo pisca em um momento ligeiramente diferente,
+dando a impressão de que uma única fonte de luz está
+se movendo por trás de cada círculo. Esta animação piscante
+se repete indefinidamente.
 
-Introduce a repeating `AnimationController` to
-implement the circle flashing and pass it to the
+Introduza um `AnimationController` repetitivo para
+implementar o piscar dos círculos e passá-lo para o
 `StatusBubble`.
 
 <?code-excerpt "lib/excerpt4.dart (animation-controller)"?>
@@ -616,17 +617,17 @@ that takes up a portion of the overall animation time.
 The position of these intervals generates the visual
 effect of a single light source moving behind the three dots.
 
-Congratulations! You now have a typing indicator that lets users
-know when someone else is typing. The indicator animates in and out,
-and displays a repeating animation while the other user is typing.
+Parabéns! Agora você tem um indicador de digitação que permite aos usuários
+saber quando outra pessoa está digitando. O indicador anima para dentro e para fora,
+e exibe uma animação repetitiva enquanto o outro usuário está digitando.
 
-## Interactive example
+## Exemplo interativo
 
-Run the app:
+Execute o app:
 
-* Click the round on/off switch at the bottom
-  of the screen to turn the typing indicator bubble
-  on and off.
+* Clique no interruptor on/off redondo na parte inferior
+  da tela para ligar e desligar o balão do indicador
+  de digitação.
 
 <!-- Start DartPad -->
 

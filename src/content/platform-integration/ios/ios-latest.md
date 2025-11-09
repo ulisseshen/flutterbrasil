@@ -1,27 +1,28 @@
 ---
-title: Flutter on latest iOS
+ia-translate: true
+title: Flutter no iOS mais recente
 description: >-
-  Learn about Flutter's support for and compatibility with
-  the latest releases of iOS.
+  Saiba mais sobre o suporte e compatibilidade do Flutter
+  com as versões mais recentes do iOS.
 ---
 
-Flutter supports iOS 26.
+Flutter suporta iOS 26.
 
-For information on the status of specific iOS features
-that Flutter hasn't yet fully implemented,
-visit the following issues in the flutter/flutter repo.
+Para informações sobre o status de recursos específicos do iOS
+que o Flutter ainda não implementou completamente,
+visite as seguintes issues no repositório flutter/flutter.
 
-* Flutter support for liquid glass: [Issue 170310][]
-* Eye tracking of a Flutter app: [Issue 153573][]
-* Hover typing feature: [Issue 152715][]
-* iOS formatting menu: [Issue 150068][]
-* iOS-style zoom page transition: [Issue 150588][]
-* iPad-style tab bar: [Issue 150950][]
-* iPhone mirroring when viewing a Flutter app: [Issue 152711][]
-* Large content viewer: [Issue 152715][]
-* Add "Translate" button to the context edit menu: [Issue 150392][]
-* Virtual trackpad feature: [Issue 152715][]
-* Writing tools text input feature: [Issue 150965][], [Issue 150452][]
+* Suporte Flutter para liquid glass: [Issue 170310][Issue 170310]
+* Eye tracking de um app Flutter: [Issue 153573][Issue 153573]
+* Recurso de hover typing: [Issue 152715][Issue 152715]
+* Menu de formatação iOS: [Issue 150068][Issue 150068]
+* Transição de página com zoom estilo iOS: [Issue 150588][Issue 150588]
+* Barra de abas estilo iPad: [Issue 150950][Issue 150950]
+* Espelhamento de iPhone ao visualizar um app Flutter: [Issue 152711][Issue 152711]
+* Visualizador de conteúdo grande: [Issue 152715][Issue 152715]
+* Adicionar botão "Translate" ao menu de edição de contexto: [Issue 150392][Issue 150392]
+* Recurso de trackpad virtual: [Issue 152715][Issue 152715]
+* Recurso de entrada de texto com ferramentas de escrita: [Issue 150965][Issue 150965], [Issue 150452][Issue 150452]
 
 [Issue 150068]: {{site.repo.flutter}}/issues/150068
 [Issue 150392]: {{site.repo.flutter}}/issues/150392

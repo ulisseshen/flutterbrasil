@@ -1,7 +1,8 @@
 ---
-title: Animation and motion widgets
-shortTitle: Animation
-description: A catalog of Flutter's animation widgets.
+ia-translate: true
+title: Widgets de animação e movimento
+shortTitle: Animação
+description: Um catálogo dos widgets de animação do Flutter.
 widgetCategory: Animation and motion
 layout: widget-catalog-page
 ---

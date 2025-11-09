@@ -1,109 +1,110 @@
 ---
-title: Flutter release notes
-shortTitle: Release notes
-description: Release notes for Flutter for prior releases.
+ia-translate: true
+title: Notas de versão do Flutter
+shortTitle: Notas de versão
+description: Notas de versão do Flutter para versões anteriores.
 ---
 
-This page links to announcements and release notes for
-releases to the stable channel.
+Esta página contém links para anúncios e notas de versão para
+lançamentos no canal stable.
 
 :::note
-For information about bug-fix releases,
-check out the Flutter [CHANGELOG][].
+Para informações sobre versões de correção de bugs,
+consulte o [CHANGELOG][CHANGELOG] do Flutter.
 :::
 
-* 3.38.0 _(Tentative)_
-  {% comment %} * [3.38.0 announcement][] {% endcomment %}
-  {% comment %} * [3.38.0 release notes & change log][] {% endcomment %}
-  * [3.38.0 breaking changes & migrations][]
+* 3.38.0 _(Tentativo)_
+  {% comment %} * [3.38.0 announcement][3.38.0 announcement] {% endcomment %}
+  {% comment %} * [3.38.0 release notes & change log][3.38.0 release notes & change log] {% endcomment %}
+  * [3.38.0 breaking changes & migrations][3.38.0 breaking changes & migrations]
 * 3.35.0
-  * [3.35.0 announcement][]
-  * [3.35.0 release notes & change log][]
-  * [3.35.0 breaking changes & migrations][]
+  * [3.35.0 announcement][3.35.0 announcement]
+  * [3.35.0 release notes & change log][3.35.0 release notes & change log]
+  * [3.35.0 breaking changes & migrations][3.35.0 breaking changes & migrations]
 * 3.32.0
-  * [3.32.0 announcement][]
-  * [3.32.0 release notes & change log][]
-  * [3.32.0 breaking changes & migrations][]
+  * [3.32.0 announcement][3.32.0 announcement]
+  * [3.32.0 release notes & change log][3.32.0 release notes & change log]
+  * [3.32.0 breaking changes & migrations][3.32.0 breaking changes & migrations]
 * 3.29.0
-  * [3.29.0 announcement][]
-  * [3.29.0 release notes & change log][]
-  * [3.29.0 breaking changes & migrations][]
+  * [3.29.0 announcement][3.29.0 announcement]
+  * [3.29.0 release notes & change log][3.29.0 release notes & change log]
+  * [3.29.0 breaking changes & migrations][3.29.0 breaking changes & migrations]
 * 3.27.0
-  * [3.27.0 announcement][]
-  * [3.27.0 release notes & change log][]
-  * [3.27.0 breaking changes & migrations][]
+  * [3.27.0 announcement][3.27.0 announcement]
+  * [3.27.0 release notes & change log][3.27.0 release notes & change log]
+  * [3.27.0 breaking changes & migrations][3.27.0 breaking changes & migrations]
 * 3.24.0
-  * [3.24.0 announcement][]
-  * [3.24.0 release notes & change log][]
-  * [3.24.0 breaking changes & migrations][]
+  * [3.24.0 announcement][3.24.0 announcement]
+  * [3.24.0 release notes & change log][3.24.0 release notes & change log]
+  * [3.24.0 breaking changes & migrations][3.24.0 breaking changes & migrations]
 * 3.22.0
-  * [3.22.0 announcement][]
-  * [3.22.0 release notes & change log][]
-  * [3.22.0 breaking changes & migrations][]
+  * [3.22.0 announcement][3.22.0 announcement]
+  * [3.22.0 release notes & change log][3.22.0 release notes & change log]
+  * [3.22.0 breaking changes & migrations][3.22.0 breaking changes & migrations]
 * 3.19.0
-  * [3.19.0 announcement][]
-  * [3.19.0 release notes & change log][]
-  * [3.19.0 breaking changes & migrations][]
+  * [3.19.0 announcement][3.19.0 announcement]
+  * [3.19.0 release notes & change log][3.19.0 release notes & change log]
+  * [3.19.0 breaking changes & migrations][3.19.0 breaking changes & migrations]
 * 3.16.0
-  * [3.16.0 announcement][]
-  * [3.16.0 release notes & change log][]
-  * [3.16.0 breaking changes & migrations][]
+  * [3.16.0 announcement][3.16.0 announcement]
+  * [3.16.0 release notes & change log][3.16.0 release notes & change log]
+  * [3.16.0 breaking changes & migrations][3.16.0 breaking changes & migrations]
 * 3.13.0
-  * [3.13.0 announcement][]
-  * [3.13.0 release notes & change log][]
-  * [3.13.0 breaking changes & migrations][]
+  * [3.13.0 announcement][3.13.0 announcement]
+  * [3.13.0 release notes & change log][3.13.0 release notes & change log]
+  * [3.13.0 breaking changes & migrations][3.13.0 breaking changes & migrations]
 * 3.10.0
-  * [3.10.0 announcement][]
-  * [3.10.0 release notes & change log][]
-  * [3.10.0 breaking changes & migrations][]
+  * [3.10.0 announcement][3.10.0 announcement]
+  * [3.10.0 release notes & change log][3.10.0 release notes & change log]
+  * [3.10.0 breaking changes & migrations][3.10.0 breaking changes & migrations]
 * 3.7.0
-  * [3.7.0 announcement][]
-  * [3.7.0 release notes & change log][]
-  * [3.7.0 breaking changes & migrations][]
+  * [3.7.0 announcement][3.7.0 announcement]
+  * [3.7.0 release notes & change log][3.7.0 release notes & change log]
+  * [3.7.0 breaking changes & migrations][3.7.0 breaking changes & migrations]
 * 3.3.0
-  * [3.3.0 announcement][]
-  * [3.3.0 release notes & change log][]
-  * [3.3.0 breaking changes & migrations][]
+  * [3.3.0 announcement][3.3.0 announcement]
+  * [3.3.0 release notes & change log][3.3.0 release notes & change log]
+  * [3.3.0 breaking changes & migrations][3.3.0 breaking changes & migrations]
 * 3.0.0
-  * [3.0.0 announcement][]
-  * [3.0.0 release notes & change log][]
-  * [3.0.0 breaking changes & migrations][]
+  * [3.0.0 announcement][3.0.0 announcement]
+  * [3.0.0 release notes & change log][3.0.0 release notes & change log]
+  * [3.0.0 breaking changes & migrations][3.0.0 breaking changes & migrations]
 * 2.10.0
-  * [2.10.0 announcement][]
-  * [2.10.0 release notes & change log][]
-  * [2.10.0 breaking changes & migrations][]
+  * [2.10.0 announcement][2.10.0 announcement]
+  * [2.10.0 release notes & change log][2.10.0 release notes & change log]
+  * [2.10.0 breaking changes & migrations][2.10.0 breaking changes & migrations]
 * 2.8.0
-  * [2.8.0 announcement][]
-  * [2.8.0 release notes & change log][]
+  * [2.8.0 announcement][2.8.0 announcement]
+  * [2.8.0 release notes & change log][2.8.0 release notes & change log]
 * 2.5.0
-  * [2.5.0 announcement][]
-  * [2.5.0 release notes & change log][]
-  * [2.5.0 breaking changes & migrations][]
+  * [2.5.0 announcement][2.5.0 announcement]
+  * [2.5.0 release notes & change log][2.5.0 release notes & change log]
+  * [2.5.0 breaking changes & migrations][2.5.0 breaking changes & migrations]
 * 2.2.0
-  * [2.2.0 announcement][]
-  * [2.2.0 release notes & change log][]
-  * [2.2.0 breaking changes & migrations][]
+  * [2.2.0 announcement][2.2.0 announcement]
+  * [2.2.0 release notes & change log][2.2.0 release notes & change log]
+  * [2.2.0 breaking changes & migrations][2.2.0 breaking changes & migrations]
 * 2.0.0
-  * [2.0.0 announcement][]
-  * [2.0.0 release notes & change log][]
-  * [2.0.0 breaking changes & migrations][]
+  * [2.0.0 announcement][2.0.0 announcement]
+  * [2.0.0 release notes & change log][2.0.0 release notes & change log]
+  * [2.0.0 breaking changes & migrations][2.0.0 breaking changes & migrations]
 * 1.22.0
-  * [1.22.0 announcement][]
-  * [1.22.0 release notes & change log][]
-  * [1.22.0 breaking changes & migrations][]
+  * [1.22.0 announcement][1.22.0 announcement]
+  * [1.22.0 release notes & change log][1.22.0 release notes & change log]
+  * [1.22.0 breaking changes & migrations][1.22.0 breaking changes & migrations]
 * 1.20.0
-  * [1.20.0 announcement][]
-  * [1.20.0 release notes & change log][]
-  * [1.20.0 breaking changes & migrations][]
+  * [1.20.0 announcement][1.20.0 announcement]
+  * [1.20.0 release notes & change log][1.20.0 release notes & change log]
+  * [1.20.0 breaking changes & migrations][1.20.0 breaking changes & migrations]
 * 1.17.0
-  * [1.17.0 announcement][]
-  * [1.17.0 release notes and change log][]
-  * [1.17.0 breaking changes & migrations][]
+  * [1.17.0 announcement][1.17.0 announcement]
+  * [1.17.0 release notes and change log][1.17.0 release notes and change log]
+  * [1.17.0 breaking changes & migrations][1.17.0 breaking changes & migrations]
 * 1.12.13
-  * [1.12.13 announcement][]
-  * [1.12.13 release notes and change log][]
+  * [1.12.13 announcement][1.12.13 announcement]
+  * [1.12.13 release notes and change log][1.12.13 release notes and change log]
 * Earlier
-  * [Archived release notes][]
+  * [Archived release notes][Archived release notes]
 
 [3.38.0 breaking changes & migrations]: /release/breaking-changes#released-in-flutter-3-38
 [3.35.0 announcement]: {{site.flutter-blog}}/whats-new-in-flutter-3-35-c58ef72e3766

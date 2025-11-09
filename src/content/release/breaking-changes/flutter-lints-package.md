@@ -3,10 +3,11 @@ title: Introducing package:flutter_lints
 description: >
   Migrate to package:flutter_lints to get the latest set of
   recommended lints, which encourage good coding practices.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 The [`package:flutter_lints`][] defines the latest set of recommended lints
 that encourage good coding practices for Flutter apps, packages, and plugins.
@@ -14,7 +15,7 @@ Projects created with `flutter create` using Flutter version 2.5 or newer are
 already enabled to use the latest set of recommended lints. Projects created
 prior to that version can upgrade to it with the instructions in this guide.
 
-## Contexto
+## Context
 
 Prior to the introduction of `package:flutter_lints`, the Flutter framework
 shipped with a set of lints defined in [`analysis_options_user.yaml`][] that was
@@ -29,7 +30,7 @@ evolving it without breaking existing projects. Since the package builds on
 Dart's [`package:lints`][] it also aligns the lints recommended for Flutter
 projects with the rest of the Dart ecosystem.
 
-## Guia de migração {:#migration-guide}
+## Migration guide
 
 Follow these steps to migrate your Flutter project to use the latest recommended
 lints from `package:flutter_lints`:
@@ -100,12 +101,12 @@ linter:
 # https://dart.dev/guides/language/analysis-options
 ```
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 2.3.0-12.0.pre<br>
-Na versão estável: 2.5
+Landed in version: 2.3.0-12.0.pre<br>
+In stable release: 2.5
 
-## Referências
+## References
 
 Documentation:
 
@@ -113,11 +114,11 @@ Documentation:
 * [Package dependencies][]
 * [Customizing static analysis][]
 
-Issues relevantes:
+Relevant issue:
 
 * [Issue 78432 - Update lint set for Flutter applications][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [Add flutter_lints package][]
 * [Integrate package:flutter_lints into templates][]

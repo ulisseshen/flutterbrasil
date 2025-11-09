@@ -1,37 +1,38 @@
 ---
-ia-translate: true
-title: Revertendo a dependência entre as camadas scheduler e services
-description: A camada services agora depende da camada scheduler.
+title: Reversing the dependency between the scheduler and services layer
+description: The services layer now depends on the scheduler layer.
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
 
-A camada services agora depende da camada scheduler.
-Anteriormente, o oposto era verdadeiro. Isso pode afetar você
-se você definiu bindings personalizados sobrescrevendo
-o `SchedulerBinding` ou `ServicesBinding` do Flutter.
+## Summary
 
-## Contexto
+The services layer now depends on the scheduler layer.
+Previously, the opposite was true. This may affect you
+if you have defined custom bindings overriding
+Flutter's `SchedulerBinding` or `ServicesBinding`.
 
-Antes desta mudança, a camada scheduler era dependente
-da camada services. Esta mudança reverte a cadeia de dependência
-e permite que a camada services faça uso das
-primitivas de agendamento na camada scheduler. Por exemplo,
-serviços na camada services agora podem agendar tarefas usando
+## Context
+
+Prior to this change, the scheduler layer was dependent
+on the services layer. This change reverses the dependency
+chain and allows the services layer to make use of the
+scheduling primitives in the scheduler layer. For example,
+services in the services layer can now schedule tasks by using
 `SchedulerBinding.scheduleTask`.
 
-## Descrição da mudança
+## Description of change
 
-A mudança afeta apenas usuários que estão definindo seus próprios
-bindings personalizados baseados no `SchedulerBinding`
-e `ServicesBinding` do Flutter.
+The change only affects users who are defining their own
+custom bindings based on Flutter's `SchedulerBinding`
+and `ServicesBinding`.
 
-## Guia de migração
+## Migration guide
 
-Antes desta mudança, o `ServiceBinding` tinha que ser definido antes do
-`SchedulerBinding`. Com esta mudança, é o contrário:
+Prior to this change, the `ServiceBinding` had to be defined before the
+`SchedulerBinding`. With this change, it is the other way around:
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 class FooBinding extends BindingBase with ServicesBinding, SchedulerBinding {
@@ -39,7 +40,7 @@ class FooBinding extends BindingBase with ServicesBinding, SchedulerBinding {
 }
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 class FooBinding extends BindingBase with SchedulerBinding, ServicesBinding {
@@ -47,19 +48,19 @@ class FooBinding extends BindingBase with SchedulerBinding, ServicesBinding {
 }
 ```
 
-## Cronograma
+## Timeline
 
-Adicionado na versão: 1.18.0<br>
-Na versão stable: 1.20
+Landed in version: 1.18.0<br>
+In stable release: 1.20
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`ServicesBinding`][]
 * [`SchedulerBinding`][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [Reverse dependency between services and scheduler][]
 * [Revert bindings dependency workaround][]

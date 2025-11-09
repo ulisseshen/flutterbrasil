@@ -1,8 +1,7 @@
 ---
-ia-translate: true
 title: Visual Studio Code
-short-title: VS Code
-description: Como desenvolver apps Flutter no Visual Studio Code.
+shortTitle: VS Code
+description: How to develop Flutter apps in Visual Studio Code.
 ---
 
 <ul class="nav nav-tabs" id="ide-tabs" role="tablist">
@@ -14,183 +13,227 @@ description: Como desenvolver apps Flutter no Visual Studio Code.
   </li>
 </ul>
 
-## Instalação e configuração
+<a id="installation-and-setup" aria-hidden="true"></a>
 
-Siga as instruções em [Configurar um editor][Set up an editor] para
-instalar as extensões Dart e Flutter
-(também chamadas de plugins).
+## Installation and setup {: #setup}
 
-### Atualizando a extensão {:#updating}
+[VS Code][] is a code editor to build and debug apps.
+With the Flutter extension installed, you can compile, deploy, and debug
+Flutter apps.
 
-Atualizações das extensões são lançadas regularmente.
-Por padrão, o VS Code atualiza automaticamente as extensões quando
-atualizações estão disponíveis.
+To install the latest version of VS Code,
+follow Microsoft's instructions for the relevant platform:
 
-Para instalar atualizações manualmente:
+- [Install on macOS][]
+- [Install on Windows][]
+- [Install on Linux][]
 
-1. Clique em **Extensions** na barra lateral.
-1. Se a extensão Flutter tiver uma atualização disponível,
-   clique em **Update** e depois em **Reload**.
-1. Reinicie o VS Code.
+[VS Code]: https://code.visualstudio.com/
+[Install on macOS]: https://code.visualstudio.com/docs/setup/mac
+[Install on Windows]: https://code.visualstudio.com/docs/setup/windows
+[Install on Linux]: https://code.visualstudio.com/docs/setup/linux
 
-## Criando projetos
+### Install the Flutter extension {: #install-extension}
 
-Existem algumas maneiras de criar um novo projeto.
+1. Start **VS Code**.
 
-### Criando um novo projeto
+1. Open a browser and go to the [Flutter extension][] page
+   on the Visual Studio Marketplace.
 
-Para criar um novo projeto Flutter a partir do
-template de app inicial do Flutter:
+1. Click **Install**.
+   Installing the Flutter extension also installs the Dart extension.
 
-1. Vá para **View** <span aria-label="and then">></span>
+[Flutter extension]: https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter
+
+### Validate your VS Code setup {: #validate-setup}
+
+1. Go to **View** <span aria-label="and then">></span>
    **Command Palette...**.
 
-   Você também pode pressionar <kbd>Ctrl</kbd> / <kbd>Cmd</kbd> +
+   You can also press <kbd>Ctrl</kbd> / <kbd>Cmd</kbd> +
    <kbd>Shift</kbd> + <kbd>P</kbd>.
 
-1. Digite `flutter`.
-1. Selecione **Flutter: New Project**.
-1. Pressione <kbd>Enter</kbd>.
-1. Selecione **Application**.
-1. Pressione <kbd>Enter</kbd>.
-1. Selecione um **Project location**.
-1. Digite o **Project name** desejado.
+1. Type `doctor`.
 
-### Abrindo um projeto a partir de código-fonte existente
+1. Select **Flutter: Run Flutter Doctor**.
 
-Para abrir um projeto Flutter existente:
+   Once you select this command, VS Code does the following:
 
-1. Vá para **File** <span aria-label="and then">></span> **Open**.
+   - Opens the **Output** panel.
+   - Displays **flutter (flutter)** in the dropdown on the upper right
+     of this panel.
+   - Displays the output of `flutter doctor` command.
 
-   Você também pode pressionar <kbd>Ctrl</kbd> / <kbd>Cmd</kbd> + <kbd>O</kbd>
+### Updating the extension {:#updating}
 
-1. Navegue até o diretório que contém seus
-   arquivos de código-fonte Flutter existentes.
-1. Clique em **Open**.
+Updates to the extensions are shipped on a regular basis.
+By default, VS Code automatically updates extensions when
+updates are available.
 
-## Editando código e visualizando problemas
+To install updates yourself:
 
-A extensão Flutter realiza análise de código.
-A análise de código pode:
+1. Click **Extensions** in the Side Bar.
+1. If the Flutter extension has an available update,
+   click **Update** and then **Reload**.
+1. Restart VS Code.
 
-- Destacar sintaxe da linguagem
-- Completar código baseado em análise de tipos rica
-- Navegar para declarações de tipos
+## Creating projects
 
-  - Vá para **Go** <span aria-label="and then">></span> **Go to Definition**.
-  - Você também pode pressionar <kbd>F12</kbd>.
+There are a couple ways to create a new project.
 
-- Encontrar usos de tipos.
+### Creating a new project
 
-  - Pressione <kbd>Shift</kbd> + <kbd>F12</kbd>.
+To create a new Flutter project from the Flutter
+starter app template:
 
-- Visualizar todos os problemas atuais do código-fonte.
+1. Go to **View** <span aria-label="and then">></span>
+   **Command Palette...**.
 
-  - Vá para **View** <span aria-label="and then">></span> **Problems**.
-  - Você também pode pressionar <kbd>Ctrl</kbd> / <kbd>Cmd</kbd> +
+   You can also press <kbd>Ctrl</kbd> / <kbd>Cmd</kbd> +
+   <kbd>Shift</kbd> + <kbd>P</kbd>.
+
+1. Type `flutter`.
+1. Select the **Flutter: New Project**.
+1. Press <kbd>Enter</kbd>.
+1. Select **Application**.
+1. Press <kbd>Enter</kbd>.
+1. Select a **Project location**.
+1. Enter your desired **Project name**.
+
+### Opening a project from existing source code
+
+To open an existing Flutter project:
+
+1. Go to **File** <span aria-label="and then">></span> **Open**.
+
+   You can also press <kbd>Ctrl</kbd> / <kbd>Cmd</kbd> + <kbd>O</kbd>
+
+1. Browse to the directory holding your existing
+   Flutter source code files.
+1. Click **Open**.
+
+## Editing code and viewing issues
+
+The Flutter extension performs code analysis.
+The code analysis can:
+
+- Highlight language syntax
+- Complete code based on rich type analysis
+- Navigate to type declarations
+
+  - Go to **Go** <span aria-label="and then">></span> **Go to Definition**.
+  - You can also press <kbd>F12</kbd>.
+
+- Find type usages.
+
+  - Press <kbd>Shift</kbd> + <kbd>F12</kbd>.
+
+- View all current source code problems.
+
+  - Go to **View** <span aria-label="and then">></span> **Problems**.
+  - You can also press <kbd>Ctrl</kbd> / <kbd>Cmd</kbd> +
     <kbd>Shift</kbd> + <kbd>M</kbd>.
-  - O painel Problems exibe quaisquer problemas de análise:<br>
-    ![Problems pane](/assets/images/docs/tools/vs-code/problems.png){:.mw-100 .pt-1}
+  - The Problems pane displays any analysis issues:<br>
+    ![Problems pane](/assets/images/docs/tools/vs-code/problems.png)
 
-## Executando e depurando
-
-:::note
-Você pode depurar seu app de algumas maneiras.
-
-- Usando [DevTools][], um conjunto de ferramentas de depuração e profiling
-  que executam em um navegador.
-- Usando os recursos de depuração integrados do VS Code,
-  como definir breakpoints.
-
-As instruções abaixo descrevem recursos disponíveis no VS Code.
-Para informações sobre como executar e usar DevTools, veja
-[Executando DevTools do VS Code][Running DevTools from VS Code] na documentação do [DevTools][].
-:::
-
-Comece a depuração clicando em **Run > Start Debugging**
-na janela principal do IDE, ou pressione <kbd>F5</kbd>.
-
-### Selecionando um dispositivo de destino
-
-Quando um projeto Flutter está aberto no VS Code,
-você deve ver um conjunto de entradas específicas do Flutter na barra de status,
-incluindo uma versão do Flutter SDK e um
-nome de dispositivo (ou a mensagem **No Devices**):<br>
-![VS Code status bar][]{:.mw-100 .pt-1}
+## Running and debugging
 
 :::note
-- Se você não ver um número de versão do Flutter ou informações do dispositivo,
-  seu projeto pode não ter sido detectado como um projeto Flutter.
-  Certifique-se de que a pasta que contém seu `pubspec.yaml` esteja
-  dentro de uma **Workspace Folder** do VS Code.
-- Se a barra de status mostrar **No Devices**, o Flutter não conseguiu
-  descobrir nenhum dispositivo ou simulador iOS ou Android conectado.
-  Você precisa conectar um dispositivo ou iniciar um simulador ou emulador
-  para prosseguir.
+You can debug your app in a couple of ways.
+
+- Using [DevTools][], a suite of debugging and profiling
+  tools that run in a browser.
+- Using VS Code's built-in debugging features,
+  such as setting breakpoints.
+
+The instructions below describe features available in VS Code.
+For information on launching and using DevTools, see
+[Running DevTools from VS Code][] in the [DevTools][] docs.
 :::
 
-A extensão Flutter seleciona automaticamente o último dispositivo conectado.
-No entanto, se você tiver múltiplos dispositivos/simuladores conectados, clique em
-**device** na barra de status para ver uma lista de opções
-no topo da tela. Selecione o dispositivo que deseja usar para
-executar ou depurar.
+Start debugging by clicking **Run > Start Debugging**
+from the main IDE window, or press <kbd>F5</kbd>.
+
+### Selecting a target device
+
+When a Flutter project is open in VS Code,
+you should see a set of Flutter specific entries in the status bar,
+including a Flutter SDK version and a
+device name (or the message **No Devices**):<br>
+![VS Code status bar][]
+
+:::note
+- If you do not see a Flutter version number or device info,
+  your project might not have been detected as a Flutter project.
+  Ensure that the folder that contains your `pubspec.yaml` is
+  inside a VS Code **Workspace Folder**.
+- If the status bar reads **No Devices**, Flutter has not been
+  able to discover any connected iOS or Android devices or simulators.
+  You need to connect a device, or start a simulator or emulator,
+  to proceed.
+:::
+
+The Flutter extension automatically selects the last device connected.
+However, if you have multiple devices/simulators connected, click
+**device** in the status bar to see a pick-list
+at the top of the screen. Select the device you want to use for
+running or debugging.
 
 :::secondary
-**Você está desenvolvendo para macOS ou iOS remotamente usando
-Visual Studio Code Remote?** Se sim, você pode precisar desbloquear
-manualmente o keychain. Para mais informações, veja esta
-[pergunta no StackExchange][question on StackExchange].
+**Are you developing for macOS or iOS remotely using
+Visual Studio Code Remote?** If so, you might need to manually
+unlock the keychain. For more information, see this
+[question on StackExchange][].
 :::
 
 [question on StackExchange]: https://superuser.com/questions/270095/when-i-ssh-into-os-x-i-dont-have-my-keychain-when-i-use-terminal-i-do/363840#363840
 
-### Executar app sem breakpoints
+### Run app without breakpoints
 
-Vá para **Run** > **Start Without Debugging**.
+Go to **Run** > **Start Without Debugging**.
 
-Você também pode pressionar <kbd>Ctrl</kbd> + <kbd>F5</kbd>.
+You can also press <kbd>Ctrl</kbd> + <kbd>F5</kbd>.
 
-<a id="run-app-with-breakpoints"></a>
-### Executar app com breakpoints
+### Run app with breakpoints
 
-1. Se desejar, defina breakpoints no seu código-fonte.
-1. Clique em **Run** <span aria-label="and then">></span> **Start Debugging**.
-   Você também pode pressionar <kbd>F5</kbd>.
-   A barra de status fica laranja para mostrar que você está em uma sessão de depuração.<br>
-   ![Debug console](/assets/images/docs/tools/vs-code/debug_console.png){:.mw-100 .pt-1}
+1. If desired, set breakpoints in your source code.
+1. Click **Run** <span aria-label="and then">></span> **Start Debugging**.
+   You can also press <kbd>F5</kbd>.
+   The status bar turns orange to show you are in a debug session.<br>
+   ![Debug console](/assets/images/docs/tools/vs-code/debug_console.png)
 
-   - A **Debug Sidebar** à esquerda mostra stack frames e variáveis.
-   - O painel **Debug Console** na parte inferior mostra saída de log detalhada.
-   - A depuração é baseada em uma configuração de lançamento padrão.
-     Para personalizar, clique na engrenagem no topo da
-     **Debug Sidebar** para criar um arquivo `launch.json`.
-     Você pode então modificar os valores.
+   - The left **Debug Sidebar** shows stack frames and variables.
+   - The bottom **Debug Console** pane shows detailed logging output.
+   - Debugging is based on a default launch configuration.
+     To customize, click the cog at the top of the
+     **Debug Sidebar** to create a `launch.json` file.
+     You can then modify the values.
 
-### Executar app em modo debug, profile ou release
+### Run app in debug, profile, or release mode
 
-O Flutter oferece muitos modos de compilação diferentes para executar seu app.
-Você pode ler mais sobre eles em [Modos de compilação do Flutter][Flutter's build modes].
+Flutter offers many different build modes to run your app in.
+You can read more about them in [Flutter's build modes][].
 
-1. Abra o arquivo `launch.json` no VS Code.
+1. Open the `launch.json` file in VS Code.
 
-   Se você não tiver um arquivo `launch.json`:
+   If you don't have a `launch.json` file:
 
    {: type="a"}
-   1. Vá para **View** <span aria-label="and then">></span> **Run**.
+   1. Go to **View** <span aria-label="and then">></span> **Run**.
 
-      Você também pode pressionar <kbd>Ctrl</kbd> / <kbd>Cmd</kbd> +
+      You can also press <kbd>Ctrl</kbd> / <kbd>Cmd</kbd> +
       <kbd>Shift</kbd> + <kbd>D</kbd>
 
-      O painel **Run and Debug** será exibido.
+      The **Run and Debug** panel displays.
 
-   1. Clique em **create a launch.json file**.
+   1. Click **create a launch.json file**.
 
-1. Na seção `configurations`,
-   altere a propriedade `flutterMode` para
-   o modo de compilação que você deseja segmentar.
+1. In the `configurations` section,
+   change the `flutterMode` property to
+   the build mode you want to target.
 
-   Por exemplo, se você quiser executar em modo debug,
-   seu `launch.json` pode se parecer com isso:
+   For example, if you want to run in debug mode,
+   your `launch.json` might look like this:
 
     ```json
     "configurations": [
@@ -203,180 +246,196 @@ Você pode ler mais sobre eles em [Modos de compilação do Flutter][Flutter's b
     ]
     ```
 
-1. Execute o app através do painel **Run**.
+1. Run the app through the **Run** panel.
 
-## Ciclo de desenvolvimento de edição e atualização rápida
+## Fast edit and refresh development cycle
 
-O Flutter oferece um ciclo de desenvolvimento de primeira classe permitindo que você
-veja o efeito de suas mudanças quase instantaneamente com o
-recurso _Stateful Hot Reload_.
-Para aprender mais, confira [Hot reload][].
+Flutter offers a best-in-class developer cycle enabling you
+to see the effect of your changes almost instantly with the
+_Stateful Hot Reload_ feature.
+To learn more, check out [Hot reload][].
 
-## Depuração avançada
+## Advanced debugging
 
-Você pode achar as seguintes dicas de depuração avançada úteis:
+You might find the following advanced debugging tips useful:
 
-### Depurando problemas de layout visual
+### Debugging visual layout issues
 
-Durante uma sessão de depuração,
-vários comandos de depuração adicionais são adicionados à
-[Command Palette][] e ao [Flutter inspector][].
-Quando o espaço é limitado, o ícone é usado como a versão
-visual do rótulo.
+During a debug session,
+several additional debugging commands are added to the
+[Command Palette][] and to the [Flutter inspector][].
+When space is limited, the icon is used as the visual
+version of the label.
 
-**Toggle Baseline Painting** ![Baseline painting icon](/assets/images/docs/tools/devtools/paint-baselines-icon.png){:width="20px"}
-: Faz com que cada RenderBox pinte uma linha em cada uma de suas baselines.
+**Toggle Baseline Painting** ![Baseline painting icon](/assets/images/docs/tools/devtools/paint-baselines-icon.png){:.theme-icon width="20px"}
+: Causes each RenderBox to paint a line at each of its baselines.
 
-**Toggle Repaint Rainbow** ![Repaint rainbow icon](/assets/images/docs/tools/devtools/repaint-rainbow-icon.png){:width="20px"}
-: Mostra cores rotativas em camadas ao repintar.
+**Toggle Repaint Rainbow** ![Repaint rainbow icon](/assets/images/docs/tools/devtools/repaint-rainbow-icon.png){:.theme-icon width="20px"}
+: Shows rotating colors on layers when repainting.
 
-**Toggle Slow Animations** ![Slow animations icon](/assets/images/docs/tools/devtools/slow-animations-icon.png){:width="20px"}
-: Desacelera animações para permitir inspeção visual.
+**Toggle Slow Animations** ![Slow animations icon](/assets/images/docs/tools/devtools/slow-animations-icon.png){:.theme-icon width="20px"}
+: Slows down animations to enable visual inspection.
 
 **Toggle Debug Mode Banner** ![Debug mode banner icon](/assets/images/docs/tools/devtools/debug-mode-banner-icon.png){:width="20px"}
-: Oculta o banner de modo debug mesmo ao executar uma compilação de debug.
+: Hides the debug mode banner even when running a debug build.
 
-### Depurando bibliotecas externas
+### Debugging external libraries
 
-Por padrão, a depuração de uma biblioteca externa está desabilitada
-na extensão Flutter. Para habilitar:
+By default, debugging an external library is disabled
+in the Flutter extension. To enable:
 
-1. Selecione **Settings > Extensions > Dart Configuration**.
-2. Marque a opção `Debug External Libraries`.
+1. Select **Settings > Extensions > Dart Configuration**.
+2. Check the `Debug External Libraries` option.
 
-## Dicas de edição para código Flutter
+## Editing tips for Flutter code
 
-Se você tiver dicas adicionais que devemos compartilhar, [nos avise][let us know]!
+If you have additional tips we should share, [let us know][]!
 
-### Assists e quick fixes
+### Assists & quick fixes
 
-Assists são mudanças de código relacionadas a um determinado identificador de código.
-Vários deles estão disponíveis quando o cursor está posicionado em um
-identificador de widget Flutter, como indicado pelo ícone de lâmpada amarela.
-Para invocar o assist, clique na lâmpada como mostrado na captura de tela a seguir:
+Assists are code changes related to a certain code identifier.
+A number of these are available when the cursor is placed on a
+Flutter widget identifier, as indicated by the yellow lightbulb icon.
+To invoke the assist, click the lightbulb as shown in the following screenshot:
 
 ![Code assists](/assets/images/docs/tools/vs-code/assists.png){:width="467px"}
 
-Você também pode pressionar <kbd>Ctrl</kbd> / <kbd>Cmd</kbd> + <kbd>.</kbd>
+You can also press <kbd>Ctrl</kbd> / <kbd>Cmd</kbd> + <kbd>.</kbd>
 
-Quick fixes são semelhantes,
-apenas são mostrados quando um pedaço de código tem um erro e podem
-ajudar a corrigi-lo.
+Quick fixes are similar,
+only they are shown with a piece of code has an error and they
+can assist in correcting it.
 
 **Wrap with new widget assist**
-: Isso pode ser usado quando você tem um widget que deseja envolver
-  em um widget circundante, por exemplo, se você quiser envolver um
-  widget em um `Row` ou `Column`.
+: This can be used when you have a widget that you want to wrap
+  in a surrounding widget, for example if you want to wrap a
+  widget in a `Row` or `Column`.
 
 **Wrap widget list with new widget assist**
-: Semelhante ao assist acima, mas para envolver uma lista existente
-  de widgets em vez de um widget individual.
+: Similar to the assist above, but for wrapping an existing
+  list of widgets rather than an individual widget.
 
 **Convert child to children assist**
-: Altera um argumento child para um argumento children,
-  e envolve o valor do argumento em uma lista.
+: Changes a child argument to a children argument,
+  and wraps the argument value in a list.
 
 **Convert StatelessWidget to StatefulWidget assist**
-: Altera a implementação de um `StatelessWidget` para a de
-  um `StatefulWidget`, criando a classe `State` e movendo
-  o código para lá.
+: Changes the implementation of a `StatelessWidget` to that of
+  a `StatefulWidget`, by creating the `State` class and moving
+  the code there.
 
 ### Snippets
 
-Snippets podem ser usados para acelerar a entrada de estruturas de código típicas.
-Eles são invocados digitando seu prefixo
-e depois selecionando na janela de conclusão de código:
+Snippets can be used to speed up entering typical code structures.
+They are invoked by typing their prefix,
+and then selecting from the code completion window:
 ![Snippets](/assets/images/docs/tools/vs-code/snippets.png){:width="100%"}
 
-A extensão Flutter inclui os seguintes snippets:
+The Flutter extension includes the following snippets:
 
-- Prefixo `stless`: Cria uma nova subclasse de `StatelessWidget`.
-- Prefixo `stful`: Cria uma nova subclasse de `StatefulWidget`
-  e sua subclasse State associada.
-- Prefixo `stanim`: Cria uma nova subclasse de `StatefulWidget`,
-  e sua subclasse State associada incluindo um campo inicializado
-  com um `AnimationController`.
+- Prefix `stless`: Create a new subclass of -StatelessWidget`.
+- Prefix `stful`: Create a new subclass of `StatefulWidget`
+  and its associated State subclass.
+- Prefix `stanim`: Create a new subclass of `StatefulWidget`,
+  and its associated State subclass including a field initialized
+  with an `AnimationController`.
 
-A extensão Dart inclui os seguintes snippets:
+The Dart extension includes the following snippets:
 
-| Prefixo | Descrição | Exemplo de código |
+| Prefix | Description | Code Example |
 |---|---|---|
-| `main` | Insere uma função main, usada como ponto de entrada. | `void main(List<String> args) {  }` |
-| `try` | Insere um bloco try/catch. | `try {  } catch (e) {  }` |
-| `if` | Insere uma instrução if. | `if (condition) {  }` |
-| `ife` | Insere uma instrução if com um bloco else. | `if (condition) {  } else {  }` |
-| `switch` | Insere uma instrução switch. | `switch (variable) { case value1:  break; case value2:  break; default:  }` |
-| `for` | Insere um loop for. | `for (var i = 0; i < 10; i++) {  }` |
-| `fori` | Insere um loop for-in. | `for (var item in list) {  }` |
-| `while` | Insere um loop while. | `while (condition) {  }` |
-| `do` | Insere um loop do-while. | `do {  } while (condition);` |
-| `fun` | Insere uma definição de função. | `void myFunction(String name) {  }` |
-| `class` | Insere uma definição de classe. | `class MyClass {  }` |
-| `typedef` | Insere um typedef. | `typedef MyFunction = void Function(String);` |
-| `test` | Insere um bloco de teste. | `test('My test description', () {  });` |
-| `group` | Insere um bloco de grupo de teste. | `group('My test group', () {  });` |
+| `main` | Insert a main function, used as an entry point. | `void main(List<String> args) {  }` |
+| `try` | Insert a try/catch block. | `try {  } catch (e) {  }` |
+| `if` | Insert an if statement. | `if (condition) {  }` |
+| `ife` | Insert an if statement with an else block. | `if (condition) {  } else {  }` |
+| `switch` | Insert a switch statement. | `switch (variable) { case value1:  break; case value2:  break; default:  }` |
+| `for` | Insert a for loop. | `for (var i = 0; i < 10; i++) {  }` |
+| `fori` | Insert a for-in loop. | `for (var item in list) {  }` |
+| `while` | Insert a while loop. | `while (condition) {  }` |
+| `do` | Insert a do-while loop. | `do {  } while (condition);` |
+| `fun` | Insert a function definition. | `void myFunction(String name) {  }` |
+| `class` | Insert a class definition. | `class MyClass {  }` |
+| `typedef` | Insert a typedef. | `typedef MyFunction = void Function(String);` |
+| `test` | Insert a test block. | `test('My test description', () {  });` |
+| `group` | Insert a test group block. | `group('My test group', () {  });` |
 
-Você também pode definir snippets personalizados executando
-**Configure User Snippets** a partir da [Command Palette][].
+You can also define custom snippets by executing
+**Configure User Snippets** from the [Command Palette][].
 
-### Atalhos de teclado
+### Keyboard shortcuts
 
 **Hot reload**
-: Para realizar um hot reload durante uma sessão de depuração,
-  clique em **Hot Reload** na **Debug Toolbar**.
+: To perform a hot reload during a debug session,
+  click **Hot Reload** on the **Debug Toolbar**.
 
-  Você também pode pressionar <kbd>Ctrl</kbd> + <kbd>F5</kbd>
-  (<kbd>Cmd</kbd> + <kbd>F5</kbd> no macOS).
+  You can also press <kbd>Ctrl</kbd> + <kbd>F5</kbd>
+  (<kbd>Cmd</kbd> + <kbd>F5</kbd>  on macOS).
 
-  Mapeamentos de teclado podem ser alterados executando o
-  comando **Open Keyboard Shortcuts** a partir da [Command Palette][].
+  Keyboard mappings can be changed by executing the
+  **Open Keyboard Shortcuts** command from the [Command Palette][].
 
 ### Hot reload vs. hot restart
 
-Hot reload funciona injetando arquivos de código-fonte atualizados na
-Dart VM (Virtual Machine) em execução. Isso inclui não apenas
-adicionar novas classes, mas também adicionar métodos e campos a
-classes existentes e alterar funções existentes.
-Alguns tipos de mudanças de código não podem sofrer hot reload:
+Hot reload works by injecting updated source code files into the
+running Dart VM (Virtual Machine). This includes not only
+adding new classes, but also adding methods and fields to
+existing classes, and changing existing functions.
+A few types of code changes cannot be hot reloaded though:
 
-- Inicializadores de variáveis globais
-- Inicializadores de campos estáticos
-- O método `main()` do app
+- Global variable initializers
+- Static field initializers
+- The `main()` method of the app
 
-Para essas mudanças, reinicie seu app sem
-encerrar sua sessão de depuração. Para realizar um hot restart,
-execute o comando **Flutter: Hot Restart** a partir da [Command Palette][].
+For these changes, restart your app without
+ending your debugging session. To perform a hot restart,
+run the **Flutter: Hot Restart** command from the [Command Palette][].
 
-Você também pode pressionar
+You can also press
 <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>F5</kbd>
-ou <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>F5</kbd> no macOS.
+or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>F5</kbd> on macOS.
 
-## Solução de problemas
+## Flutter Property Editor {: #property-editor}
 
-### Problemas conhecidos e feedback
+The Flutter Property Editor is a powerful tool provided by the [Flutter
+extension][] that lets you view and modify widget properties directly from its
+visual interface.
 
-Todos os bugs conhecidos são rastreados no issue tracker:
-[Rastreador de issues do GitHub das extensões Dart e Flutter][issue tracker].
-Agradecemos feedback,
-tanto sobre bugs/issues quanto solicitações de recursos.
+### How to open the Flutter Property Editor in VS Code
 
-Antes de registrar novos issues:
+1. Click on the Flutter Property Editor **icon** ![Flutter Property Editor VS Code icon](/assets/images/docs/tools/devtools/property-editor-icon-vscode.png){:width="20px"} in the VS Code sidebar.
+2. The Flutter Property Editor will load in the side panel.
+3. Please refer to the Flutter Property Editor [documentation][] for a detailed usage guide.
 
-- Faça uma busca rápida nos issue trackers para ver se o
-  problema já está sendo rastreado.
-- Certifique-se de estar [atualizado](#updating) com a versão
-  mais recente do plugin.
+![Flutter Property Editor side panel in VS Code](/assets/images/docs/tools/devtools/property-editor-vscode.png){:width="600px"}
 
-Ao registrar novos issues, inclua a saída do [flutter doctor][].
+[Flutter extension]: https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter
+[documentation]: /tools/property-editor
+
+## Troubleshooting
+
+### Known issues and feedback
+
+All known bugs are tracked in the issue tracker:
+[Dart and Flutter extensions GitHub issue tracker][issue tracker].
+We welcome feedback,
+both on bugs/issues and feature requests.
+
+Prior to filing new issues:
+
+- Do a quick search in the issue trackers to see if the
+  issue is already tracked.
+- Make sure you are [up to date](#updating) with the most recent
+  version of the plugin.
+
+When filing new issues, include [flutter doctor][] output.
 
 [Command Palette]: https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette
 [DevTools]: /tools/devtools
-[flutter doctor]: /resources/bug-reports#provide-some-flutter-diagnostics
+[flutter doctor]: /resources/bug-reports/#provide-some-flutter-diagnostics
 [Flutter inspector]: /tools/devtools/inspector
 [Flutter's build modes]: /testing/build-modes
 [Hot reload]: /tools/hot-reload
 [let us know]: {{site.repo.this}}/issues/new
 [issue tracker]: {{site.github}}/Dart-Code/Dart-Code/issues
 [Running DevTools from VS Code]: /tools/devtools/vscode
-[Set up an editor]: /get-started/editor?tab=vscode
 [VS Code status bar]: /assets/images/docs/tools/vs-code/device_status_bar.png

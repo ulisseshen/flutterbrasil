@@ -3,17 +3,18 @@ title: Route and Navigator Refactoring
 description: >
   Some APIs and function signatures of the
   Route and Navigator classes have changed.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 The `Route` class no longer manages its overlay entries in overlay,
 and its `install()` method no longer has an `insertionPoint` parameter.
 The `isInitialRoute` property in `RouteSetting` has been deprecated,
 and `Navigator.pop()` no longer returns a value.
 
-## Contexto
+## Context
 
 We refactored the navigator APIs to prepare for the new page API
 and the introduction of the `Router` widget as outlined in
@@ -22,14 +23,14 @@ This refactoring introduced some function signature changes
 in order to make the existing navigator APIs continue to work
 with the new page API.
 
-## Descrição da mudança
+## Description of change
 
 The boolean return value of `Navigator.pop()` was not well
 defined, and the user could achieve the same result by calling
 `Navigator.canPop()`.
 Since the API for `Navigator.canPop()` was better defined,
 we simplified `Navigator.pop()` to not return a boolean value.
- 
+
 On the other hand, the navigator requires the ability
 to manually rearrange entries in the overlay to allow
 the user to change the route history in the new API.
@@ -44,7 +45,7 @@ Finally, we removed the `isInitialRoute` property from
 `onGenerateInitialRoutes` API for full control of
 initial routes generation.
 
-## Guia de migração
+## Migration guide
 
 Case 1: An app depends on `pop()` returning a boolean value.
 
@@ -121,18 +122,18 @@ MaterialApp(
 )
 ```
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 1.16.3<br>
-Na versão estável: 1.17
+Landed in version: 1.16.3<br>
+In stable release: 1.17
 
-## Referências
+## References
 
 Design doc:
 
 * [Router][]
 
-Documentação da API:
+API documentation:
 
 * [`Route`][]
 * [`Route.install`][]
@@ -141,11 +142,11 @@ Documentação da API:
 * [`Navigator.pop`][]
 * [`Navigator.canPop`][]
 
-Issues relevantes:
+Relevant issue:
 
 * [Issue 45938: Router][]
 
-PRs relevantes:
+Relevant PR:
 
 * [PR 44930][] - Refactor the imperative api to continue working in the new navigation system
 

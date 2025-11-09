@@ -3,10 +3,11 @@ title: TextField requires a MaterialLocalizations widget
 description: >
   TextField now throws an assert error if there is
   no MaterialLocalizations widget in the widget tree.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 Instances of `TextField` must have a
 `MaterialLocalizations` present in the widget tree.
@@ -23,7 +24,7 @@ The specific widget that could not find a MaterialLocalizations ancestor was:
   TextField
 ```
 
-## Contexto
+## Context
 
 If the `TextField` descends from a `MaterialApp`, the
 `DefaultMaterialLocalizations` is already instantiated
@@ -33,7 +34,7 @@ If the `TextField` doesn't descend from `MaterialApp`,
 you can use a `Localizations` widget to
 provide your own localizations.
 
-## Guia de migração
+## Migration guide
 
 If you see an assertion error, make sure that
 locale information is available to the `TextField`,
@@ -41,7 +42,7 @@ either through an ancestor `MaterialApp`
 (that automatically provides `Localizations`), or
 by creating your own `Localizations` widget.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -113,14 +114,14 @@ class Foo extends StatelessWidget {
 }
 ```
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 1.20.0-1.0.pre<br>
-Na versão estável: 1.20
+Landed in version: 1.20.0-1.0.pre<br>
+In stable release: 1.20
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`TextField`][]
 * [`Localizations`][]
@@ -129,7 +130,7 @@ Documentação da API:
 * [`MaterialApp`][]
 * [Internationalizing Flutter apps][]
 
-PRs relevantes:
+Relevant PR:
 
 * [PR 58831: Assert debugCheckHasMaterialLocalizations on TextField][]
 
@@ -138,5 +139,5 @@ PRs relevantes:
 [`MaterialLocalizations`]: {{site.api}}/flutter/material/MaterialLocalizations-class.html
 [`DefaultMaterialLocalizations`]: {{site.api}}/flutter/material/DefaultMaterialLocalizations-class.html
 [`MaterialApp`]: {{site.api}}/flutter/material/MaterialApp-class.html
-[Internationalizing Flutter apps]: /ui/accessibility-and-internationalization/internationalization
+[Internationalizing Flutter apps]: /ui/internationalization
 [PR 58831: Assert debugCheckHasMaterialLocalizations on TextField]: {{site.repo.flutter}}/pull/58831

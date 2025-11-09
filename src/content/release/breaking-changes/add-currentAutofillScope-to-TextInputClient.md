@@ -3,10 +3,11 @@ title: Adding TextInputClient.currentAutofillScope property
 description: >
   A new getter TextInputClient.currentAutofillScope was
   added to the TextInputClient interface for autofill support.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 A new getter, `TextInputClient.currentAutofillScope`, was added to the
 `TextInputClient` interface; all `TextInputClient` subclasses must
@@ -18,7 +19,7 @@ fields. For example, a "username" field can trigger an
 autofill that fills both itself and the "password"
 field associated with it.
 
-## Contexto
+## Context
 
 On many platforms, autofill services are capable of
 autofilling multiple input fields in a single autofill attempt.
@@ -31,7 +32,7 @@ fields logically connected to it.
 input fields that are logically connected to this `TextInputClient`,
 and can be autofilled together.
 
-## Descrição da mudança
+## Description of change
 
 `TextInputClient` now has an additional getter that returns
 the `AutofillScope` that this client belongs to.
@@ -49,7 +50,7 @@ If you see the error message "missing concrete implementation of
 'getter TextInputClient.currentAutofillScope'" while compiling
 a Flutter app, follow the migration steps listed below.
 
-## Guia de migração
+## Migration guide
 
 If you're not planning to add multifield autofill
 support to your `TextInputClient` subclass,
@@ -77,23 +78,23 @@ class CustomTextFieldState extends State<CustomTextField> implements TextInputCl
 
 For more information, check out [`AutofillGroup`][].
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 1.18.0<br>
-Na versão estável: 1.20
+Landed in version: 1.18.0<br>
+In stable release: 1.20
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`AutofillGroup`][]
 * [`TextInputClient.currentAutofillScope`][]
 
-Issues relevantes:
+Relevant issue:
 
 * [Issue 13015: Autofill support][]
 
-PRs relevantes:
+Relevant PR:
 
 * [Framework PR that added autofill support][]
 

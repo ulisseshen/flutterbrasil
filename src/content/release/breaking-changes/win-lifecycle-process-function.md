@@ -1,37 +1,38 @@
 ---
-ia-translate: true
-title: Introdução de FlutterEngine::ProcessExternalWindowMessage
+title: Introduction of FlutterEngine::ProcessExternalWindowMessage
 description: >-
-  Janelas externas devem chamar ProcessExternalWindowMessage para
-  serem consideradas para eventos de ciclo de vida da aplicação.
+  External windows should call ProcessExternalWindowMessage to
+  be considered for application lifecycle events.
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
 
-Quando você adiciona janelas externas ao seu app Flutter,
-você precisa incluí-las na lógica de ciclo de vida do app Windows.
-Para incluir a janela, sua função `WndProc` deve invocar
+## Summary
+
+When you add any external windows to your Flutter app,
+you need to include them in the Window's app lifecycle logic.
+To include the window, its `WndProc` function should invoke
 `FlutterEngine::ProcessExternalWindowMessage`.
 
-## Quem é afetado
+## Who is affected
 
-Aplicações Windows construídas com Flutter 3.13 ou mais recente que
-abrem janelas não-Flutter.
+Windows applications built against Flutter 3.13 or newer that
+open non-Flutter windows.
 
-## Descrição da mudança
+## Description of change
 
-Implementar o ciclo de vida da aplicação no Windows envolve ouvir mensagens do Window
-para atualizar o estado do ciclo de vida. Para que janelas adicionais
-não-Flutter afetem o estado do ciclo de vida, elas devem encaminhar suas
-mensagens de janela para `FlutterEngine::ProcessExternalWindowMessage` de suas
-funções `WndProc`. Esta função retorna um `std::optional<LRESULT>`, que
-é `std::nullopt` quando a mensagem é recebida, mas não consumida. Quando o
-resultado retornado tem um valor, a mensagem foi consumida, e o processamento
-adicional em `WndProc` deve cessar.
+Implementing application lifecycle on Windows involves listening for Window
+messages in order to update the lifecycle state. In order for additional
+non-Flutter windows to affect the lifecycle state, they must forward their
+window messages to `FlutterEngine::ProcessExternalWindowMessage` from their
+`WndProc` functions. This function returns an `std::optional<LRESULT>`, which
+is `std::nullopt` when the message is received, but not consumed. When the
+returned result has a value, the message has been consumed, and further
+processing in `WndProc` should cease.
 
-## Guia de migração
+## Migration guide
 
-O seguinte exemplo de procedimento `WndProc` invoca
+The following example `WndProc` procedure invokes
 `FlutterEngine::ProcessExternalWindowMessage`:
 
 ```cpp
@@ -44,14 +45,14 @@ LRESULT Window::Messagehandler(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam
 }
 ```
 
-## Cronograma
+## Timeline
 
-Adicionado na versão: 3.14.0-3.0.pre<br>
-Na versão stable: 3.16
+Landed in version: 3.14.0-3.0.pre<br>
+In stable release: 3.16
 
-## Referências
+## References
 
-PRs relevantes:
+Relevant PRs:
 
 * [Reintroduce Windows lifecycle with guard for posthumous OnWindowStateEvent][]
 

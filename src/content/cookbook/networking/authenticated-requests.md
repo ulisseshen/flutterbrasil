@@ -1,37 +1,34 @@
 ---
-title: Faça requisições autenticadas
-description: Como buscar dados autorizados de um serviço web.
-ia-translate: true
+title: Make authenticated requests
+description: How to fetch authorized data from a web service.
 ---
 
 <?code-excerpt path-base="cookbook/networking/authenticated_requests/"?>
 
-Para buscar dados da maioria dos serviços web, você precisa fornecer
-autorização. Existem muitas maneiras de fazer isso,
-mas talvez a mais comum use o header HTTP `Authorization`.
+To fetch data from most web services, you need to provide
+authorization. There are many ways to do this,
+but perhaps the most common uses the `Authorization` HTTP header.
 
-## Adicione headers de autorização
+## Add authorization headers
 
-O pacote [`http`][] fornece uma
-maneira conveniente de adicionar headers às suas requisições.
-Alternativamente, use a classe [`HttpHeaders`][]
-da biblioteca `dart:io`.
+The [`http`][] package provides a
+convenient way to add headers to your requests.
+Alternatively, use the [`HttpHeaders`][]
+class from the `dart:io` library.
 
 <?code-excerpt "lib/main.dart (get)"?>
 ```dart
 final response = await http.get(
   Uri.parse('https://jsonplaceholder.typicode.com/albums/1'),
   // Send authorization headers to the backend.
-  headers: {
-    HttpHeaders.authorizationHeader: 'Basic your_api_token_here',
-  },
+  headers: {HttpHeaders.authorizationHeader: 'Basic your_api_token_here'},
 );
 ```
 
-## Exemplo completo
+## Complete example
 
-Este exemplo se baseia na
-receita [Fetching data from the internet][].
+This example builds upon the
+[Fetching data from the internet][] recipe.
 
 <?code-excerpt "lib/main.dart"?>
 ```dart
@@ -45,9 +42,7 @@ Future<Album> fetchAlbum() async {
   final response = await http.get(
     Uri.parse('https://jsonplaceholder.typicode.com/albums/1'),
     // Send authorization headers to the backend.
-    headers: {
-      HttpHeaders.authorizationHeader: 'Basic your_api_token_here',
-    },
+    headers: {HttpHeaders.authorizationHeader: 'Basic your_api_token_here'},
   );
   final responseJson = jsonDecode(response.body) as Map<String, dynamic>;
 
@@ -59,24 +54,15 @@ class Album {
   final int id;
   final String title;
 
-  const Album({
-    required this.userId,
-    required this.id,
-    required this.title,
-  });
+  const Album({required this.userId, required this.id, required this.title});
 
   factory Album.fromJson(Map<String, dynamic> json) {
     return switch (json) {
-      {
-        'userId': int userId,
-        'id': int id,
-        'title': String title,
-      } =>
-        Album(
-          userId: userId,
-          id: id,
-          title: title,
-        ),
+      {'userId': int userId, 'id': int id, 'title': String title} => Album(
+        userId: userId,
+        id: id,
+        title: title,
+      ),
       _ => throw const FormatException('Failed to load album.'),
     };
   }

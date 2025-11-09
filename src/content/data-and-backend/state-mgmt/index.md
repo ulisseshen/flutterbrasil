@@ -1,6 +1,5 @@
 ---
 layout: toc
-ia-translate: true
-title: Gerenciamento de estado
-description: Conteúdo sobre gerenciamento de estado em apps Flutter.
+title: State management
+description: Content covering state management in Flutter apps.
 ---

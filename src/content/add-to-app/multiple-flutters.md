@@ -1,93 +1,92 @@
 ---
-ia-translate: true
-title: Múltiplas telas ou views Flutter
-short-title: Adicione múltiplos Flutters
+title: Multiple Flutter screens or views
+shortTitle: Add multiple Flutters
 description: >
-  Como integrar múltiplas instâncias do
-  engine, telas ou views Flutter à sua aplicação.
+  How to integrate multiple instances of
+  Flutter engine, screens, or views to your application.
 ---
 
-## Cenários
+## Scenarios
 
-Se você está integrando Flutter a um app existente,
-ou migrando gradualmente um app existente para usar Flutter,
-você pode se encontrar querendo adicionar múltiplas
-instâncias Flutter ao mesmo projeto.
-Em particular, isso pode ser útil nos
-seguintes cenários:
+If you're integrating Flutter into an existing app,
+or gradually migrating an existing app to use Flutter,
+you might find yourself wanting to add multiple
+Flutter instances to the same project.
+In particular, this can be useful in the
+following scenarios:
 
-* Uma aplicação onde a tela Flutter integrada não é um nó folha do
-  grafo de navegação, e a pilha de navegação pode ser uma mistura híbrida de
-  nativo -> Flutter -> nativo -> Flutter.
-* Uma tela onde múltiplas views Flutter parciais de tela podem ser integradas
-  e visíveis ao mesmo tempo.
+* An application where the integrated Flutter screen is not a leaf node of
+  the navigation graph, and the navigation stack might be a hybrid mixture of
+  native -> Flutter -> native -> Flutter.
+* A screen where multiple partial screen Flutter views might be integrated
+  and visible at once.
 
-A vantagem de usar múltiplas instâncias Flutter é que cada
-instância é independente e mantém sua própria pilha de navegação
-interna, UI e estados de aplicação. Isso simplifica a
-responsabilidade geral do código da aplicação para manter estado e melhora a modularidade. Mais detalhes sobre os
-cenários que motivam o uso de múltiplos Flutters podem ser encontrados em
-[flutterbrasil.dev/go/multiple-flutters][].
+The advantage of using multiple Flutter instances is that each
+instance is independent and maintains its own internal navigation
+stack, UI, and application states. This simplifies the overall application code's
+responsibility for state keeping and improves modularity. More details on the
+scenarios motivating the usage of multiple Flutters can be found at
+[flutter.dev/go/multiple-flutters][].
 
-O Flutter é otimizado para este cenário, com um baixo custo incremental
-de memória (~180kB) para adicionar instâncias Flutter adicionais. Este custo fixo de
-redução permite que o padrão de múltiplas instâncias Flutter seja usado mais liberalmente
-em sua integração add-to-app.
+Flutter is optimized for this scenario, with a low incremental
+memory cost (~180kB) for adding additional Flutter instances. This fixed cost
+reduction allows the multiple Flutter instance pattern to be used more liberally
+in your add-to-app integration.
 
-## Componentes
+## Components
 
-A API principal para adicionar múltiplas instâncias Flutter tanto no Android quanto no iOS
-é baseada em uma nova classe `FlutterEngineGroup` ([API Android][Android API], [API iOS][iOS API])
-para construir `FlutterEngine`s, em vez dos construtores de `FlutterEngine`
-usados anteriormente.
+The primary API for adding multiple Flutter instances on both Android and iOS
+is based on a new `FlutterEngineGroup` class ([Android API][], [iOS API][])
+to construct `FlutterEngine`s, rather than the `FlutterEngine`
+constructors used previously.
 
-Enquanto a API `FlutterEngine` era direta e mais fácil de consumir, os
-`FlutterEngine`s gerados do mesmo `FlutterEngineGroup` têm a vantagem de desempenho
-de compartilhar muitos dos recursos comuns e reutilizáveis, como o contexto
-GPU, métricas de fonte e snapshot do grupo de isolate, levando a uma latência de
-renderização inicial mais rápida e menor footprint de memória.
+Whereas the `FlutterEngine` API was direct and easier to consume, the
+`FlutterEngine` spawned from the same `FlutterEngineGroup` have the performance
+advantage of sharing many of the common, reusable resources such as the GPU
+context, font metrics, and isolate group snapshot, leading to a faster initial
+rendering latency and lower memory footprint.
 
-* `FlutterEngine`s gerados de `FlutterEngineGroup` podem ser usados para
-   conectar a classes de UI como [`FlutterActivity`][] ou [`FlutterViewController`][]
-   da mesma forma que `FlutterEngine`s em cache normalmente construídos.
+* `FlutterEngine`s spawned from `FlutterEngineGroup` can be used to
+   connect to UI classes like [`FlutterActivity`][] or [`FlutterViewController`][]
+   in the same way as normally constructed cached `FlutterEngine`s.
 
-* O primeiro `FlutterEngine` gerado do `FlutterEngineGroup` não precisa
-  continuar sobrevivendo para que `FlutterEngine`s subsequentes compartilhem
-  recursos, desde que haja pelo menos 1 `FlutterEngine` vivo em todos os
-  momentos.
+* The first `FlutterEngine` spawned from the `FlutterEngineGroup` doesn't need
+  to continue surviving in order for subsequent `FlutterEngine`s to share
+  resources as long as there's at least 1 living `FlutterEngine` at all
+  times.
 
-* Criar o primeiro `FlutterEngine` de um `FlutterEngineGroup` tem
-  as mesmas [características de desempenho][performance characteristics] que construir um
-  `FlutterEngine` usando os construtores anteriormente.
+* Creating the very first `FlutterEngine` from a `FlutterEngineGroup` has
+  the same [performance characteristics][] as constructing a
+  `FlutterEngine` using the constructors did previously.
 
-* Quando todos os `FlutterEngine`s de um `FlutterEngineGroup` são destruídos, o próximo
-  `FlutterEngine` criado tem as mesmas características de desempenho que o
-  primeiro engine.
+* When all `FlutterEngine`s from a `FlutterEngineGroup` are destroyed, the next
+  `FlutterEngine` created has the same performance characteristics as the very
+  first engine.
 
-* O `FlutterEngineGroup` em si não precisa viver além de todos os engines
-  gerados. Destruir o `FlutterEngineGroup` não afeta os engines gerados
-  existentes, mas remove a capacidade de gerar `FlutterEngine`s adicionais
-  que compartilham recursos com engines gerados existentes.
+* The `FlutterEngineGroup` itself doesn't need to live beyond all of the spawned
+  engines. Destroying the `FlutterEngineGroup` doesn't affect existing spawned
+  `FlutterEngine`s but does remove the ability to spawn additional
+  `FlutterEngine`s that share resources with existing spawned engines.
 
-## Comunicação
+## Communication
 
-A comunicação entre instâncias Flutter é tratada usando [platform channels][]
-(ou [Pigeon][]) através da plataforma hospedeira. Para ver nosso roadmap sobre comunicação,
-ou outro trabalho planejado para aprimorar múltiplas instâncias Flutter, confira a
+Communication between Flutter instances is handled using [platform channels][]
+(or [Pigeon][]) through the host platform. To see our roadmap on communication,
+or other planned work on enhancing multiple Flutter instances, check out
 [Issue 72009][].
 
-## Exemplos
+## Samples
 
-Você pode encontrar um exemplo demonstrando como usar `FlutterEngineGroup`
-tanto no Android quanto no iOS no [GitHub][].
+You can find a sample demonstrating how to use `FlutterEngineGroup`
+on both Android and iOS on [GitHub][].
 
-{% render docs/app-figure.md, image:"development/add-to-app/multiple-flutters-sample.gif", alt:"A sample demonstrating multiple-Flutters" %}
+<DashImage figure image="development/add-to-app/multiple-flutters-sample.webp" alt="A sample demonstrating multiple-Flutters" />
 
 [GitHub]: {{site.repo.samples}}/tree/main/add_to_app/multiple_flutters
 [`FlutterActivity`]: {{site.api}}/javadoc/io/flutter/embedding/android/FlutterActivity.html
 [`FlutterViewController`]: {{site.api}}/ios-embedder/interface_flutter_view_controller.html
 [performance characteristics]: /add-to-app/performance
-[flutterbrasil.dev/go/multiple-flutters]: /go/multiple-flutters
+[flutter.dev/go/multiple-flutters]: /go/multiple-flutters
 [Issue 72009]: {{site.repo.flutter}}/issues/72009
 [Pigeon]: {{site.pub}}/packages/pigeon
 [platform channels]: /platform-integration/platform-channels

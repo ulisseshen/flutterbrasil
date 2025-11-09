@@ -40,9 +40,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sample App'),
-      ),
+      appBar: AppBar(title: const Text('Sample App')),
       body: ListView.builder(
         itemCount: widgets.length,
         itemBuilder: (context, position) {
@@ -64,9 +62,10 @@ class _SampleAppPageState extends State<SampleAppPage> {
     final dataURL = Uri.parse('https://jsonplaceholder.typicode.com/posts');
     final response = await http.get(dataURL);
     setState(() {
-      widgets =
-          (jsonDecode(response.body) as List).cast<Map<String, Object?>>();
+      widgets = (jsonDecode(response.body) as List)
+          .cast<Map<String, Object?>>();
     });
   }
+
   // #enddocregion load-data
 }

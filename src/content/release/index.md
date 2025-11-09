@@ -1,7 +1,6 @@
 ---
-ia-translate: true
-title: Mantenha-se atualizado
-description: Arquivo do Flutter, versões e mudanças incompatíveis.
+title: Stay up to date
+description: Flutter archive, releases, and breaking changes.
 layout: toc
 sitemap: false
 ---

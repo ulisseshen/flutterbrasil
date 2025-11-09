@@ -3,15 +3,16 @@ title: Change the enterText method to move the caret to the end of the input tex
 description: >
   WidgetTester.enterText and TestTextInput.enterText now
   move the caret to the end of the input text.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 The `WidgetTester.enterText` and `TestTextInput.enterText` methods
 now move the caret to the end of the input text.
 
-## Contexto
+## Context
 
 The caret indicates the insertion point within the current text in an
 active input field. Typically, when a new character is entered, the
@@ -27,14 +28,14 @@ set the selection to an invalid range (-1, -1), indicating there's
 no selection or caret. This contradicts the typical behavior of an
 input field.
 
-## Descrição da mudança
+## Description of change
 
 In addition to replacing the text with the supplied text,
 `WidgetTester.enterText` and `TestTextInput.enterText` now set the
 selection to `TextSelection.collapsed(offset: text.length)`, instead
 of `TextSelection.collapsed(offset: -1)`.
 
-## Guia de migração
+## Migration guide
 
 It should be very uncommon for tests to have to rely on the
 previous behavior of `enterText`, since usually the selection
@@ -43,32 +44,32 @@ your tests to adopt the `enterText` change.**
 
 Common test failures this change may introduce includes:
 
-- Golden test failures: 
+- Golden test failures:
 
   The caret appears at the end of the text, as opposed to before
   the text prior to the change.
-  
+
 - Different `TextEditingValue.selection` after calling `enterText`:
 
-  The text field's `TextEditingValue` now has a collapsed 
-  selection with a non-negative offset, as opposed to 
+  The text field's `TextEditingValue` now has a collapsed
+  selection with a non-negative offset, as opposed to
   `TextSelection.collapsed(offset: -1)` prior to the change.
-  For instance, you may see 
+  For instance, you may see
   `expect(controller.value.selection.baseOffset, -1);`
   failing after `enterText` calls.
 
 If your tests have to rely on setting the selection to invalid,
-the previous behavior can be achieved using`updateEditingValue`:  
+the previous behavior can be achieved using`updateEditingValue`:
 
 ### `TestTextInput.enterText`
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 await testTextInput.enterText(text);
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 await testTextInput.updateEditingValue(TextEditingValue(
@@ -78,13 +79,13 @@ await testTextInput.updateEditingValue(TextEditingValue(
 
 ### `WidgetTester.enterText`
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 await tester.enterText(finder, text);
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 await tester.showKeyboard(finder);
@@ -94,23 +95,23 @@ await tester.updateEditingValue(TextEditingValue(
 await tester.idle();
 ```
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 2.1.0-13.0.pre<br>
-Na versão estável: 2.5
+Landed in version: 2.1.0-13.0.pre<br>
+In stable release: 2.5
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`WidgetTester.enterText`][]
 * [`TestTextInput.enterText`][]
 
-Issues relevantes:
+Relevant issues:
 
 * [Issue 79494][]
 
-PRs relevantes:
+Relevant PR:
 
 * [enterText to move the caret to the end][]
 

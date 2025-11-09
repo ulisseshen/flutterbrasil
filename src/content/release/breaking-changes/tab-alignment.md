@@ -1,14 +1,15 @@
 ---
 title: Customizing tabs alignment using the new TabBar.tabAlignment property
 description: Introducing the TabBar.tabAlignment property.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 Using `TabBar.tabAlignment` to customize the alignment of tabs in a `TabBar`.
 
-## Contextoo
+## Context
 
 The `TabBar.tabAlignment` property sets where a Material 3 `TabBar` places tabs.
 The `TabAlignment` enum has the following values:
@@ -37,7 +38,7 @@ To change this alignment, set the
 `TabBar.tabAlignment` property for widget level customization.
 Or, set the `TabBarThemeData.tabAlignment` property for app level customization.
 
-## Descrição da mudança
+## Description of change
 
 When you set `TabBar.isScrollable` and `ThemeData.useMaterial3` to `true`,
 the tabs in a scrollable `TabBar` defaults to `TabAlignment.startOffset`.
@@ -47,7 +48,7 @@ This changes the previous behavior.
 The tabs were aligned to the start of the scrollable `TabBar`
 when more tabs needed to display than the width allowed.
 
-## Guia de migração
+## Migration guide
 
 A Material 3 scrollable `TabBar` uses `TabAlignment.startOffset` as
 the default tab alignment.
@@ -60,7 +61,7 @@ This change also removed the `52.0` pixel offset.
 The following code snippets show how to use `TabBar.tabAlignment` to
 align tabs to the start of the scrollable `TabBar`:
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 TabBar(
@@ -72,7 +73,7 @@ TabBar(
 );
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 TabBar(
@@ -85,20 +86,20 @@ TabBar(
 );
 ```
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 3.13.0-17.0.pre<br>
-Na versão estável: 3.16
+Landed in version: 3.13.0-17.0.pre<br>
+In stable release: 3.16
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`TabBar`][]
 * [`TabBar.tabAlignment`][]
 * [`TabAlignment`][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [Introduce `TabBar.tabAlignment`][]
 * [Fix Material 3 Scrollable `TabBar`][]

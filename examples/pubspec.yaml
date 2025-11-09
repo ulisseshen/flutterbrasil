@@ -2,7 +2,7 @@ name: flutter_docs_examples
 publish_to: none
 
 environment:
-  sdk: ^3.6.0
+  sdk: ^3.9.0
 
 workspace:
   - _animation/basic_hero_animation
@@ -19,7 +19,6 @@ workspace:
   - animation/animate3
   - animation/animate4
   - animation/animate5
-  - animation/implicit
   - app-architecture/command
   - app-architecture/offline_first
   - app-architecture/optimistic_state
@@ -91,11 +90,11 @@ workspace:
   - cookbook/testing/unit/mocking
   - cookbook/testing/widget/finders
   - cookbook/testing/widget/introduction
+  - cookbook/testing/widget/orientation_tests
   - cookbook/testing/widget/scrolling
   - cookbook/testing/widget/tap_drag
   - data-and-backend/json
   - deployment/obfuscate
-  - get-started/codelab_web
   - get-started/flutter-for/android_devs
   - get-started/flutter-for/declarative
   - get-started/flutter-for/ios_devs
@@ -106,8 +105,8 @@ workspace:
   - integration_test
   - integration_test_migration
   - internationalization/add_language
-#  - internationalization/gen_l10n_example
-#  - internationalization/intl_example
+  - internationalization/gen_l10n_example
+  - internationalization/intl_example
   - internationalization/minimal
   - layout/base
   - layout/card_and_stack
@@ -151,4 +150,4 @@ workspace:
   - visual_debugging
 
 dev_dependencies:
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0

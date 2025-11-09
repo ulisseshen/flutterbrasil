@@ -2,15 +2,16 @@
 title: Default Scrollbars on Desktop
 description: >
   ScrollBehaviors will now automatically build Scrollbars on Desktop platforms.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 `ScrollBehavior`s now automatically apply `Scrollbar`s to
 scrolling widgets on desktop platforms - Mac, Windows and Linux.
 
-## Contexto
+## Context
 
 Prior to this change, `Scrollbar`s were applied to scrolling widgets
 manually by the developer across all platforms. This did not match
@@ -31,10 +32,10 @@ what is built around the scrollable.
 Furthermore, `ScrollBehavior` subclasses `MaterialScrollBehavior` and
 `CupertinoScrollBehavior` have been made public, allowing developers to extend
 and build upon the other existing `ScrollBehavior`s in the framework. These
-subclasses were previously private. 
+subclasses were previously private.
 
 
-## Descrição da mudança
+## Description of change
 
 The previous approach called on developers to create their own `Scrollbar`s on
 all platforms. In some use cases, a `ScrollController` would need to be provided
@@ -93,7 +94,7 @@ control and configure this feature.
 
 - Extend `ScrollBehavior`, `MaterialScrollBehavior`,
   or `CupertinoScrollBehavior` to modify the default behavior.
-  
+
   - With your own `ScrollBehavior`, you can apply it app-wide by setting
     `MaterialApp.scrollBehavior` or `CupertinoApp.scrollBehavior`.
   - Or, if you wish to only apply it to specific widgets, add a
@@ -109,11 +110,11 @@ Your scrollable widgets then inherits this and reflects this behavior.
     provide a modified copy of the existing `ScrollBehavior` in
     the current context using `copyWith`.
 
-## Guia de migração
+## Migration guide
 
 ### Removing manual `Scrollbar`s on desktop
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 final ScrollController controller = ScrollController();
@@ -128,7 +129,7 @@ Scrollbar(
 );
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 final ScrollController controller = ScrollController();
@@ -157,7 +158,7 @@ switch (currentPlatform) {
 
 ### Setting a custom `ScrollBehavior` for your application
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 // MaterialApps previously had a private ScrollBehavior.
@@ -166,7 +167,7 @@ MaterialApp(
 );
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 // MaterialApps previously had a private ScrollBehavior.
@@ -184,7 +185,7 @@ MaterialApp(
 
 ### Setting a custom `ScrollBehavior` for a specific widget
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 final ScrollController controller = ScrollController();
@@ -196,7 +197,7 @@ ListView.builder(
 );
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 // MaterialApps previously had a private ScrollBehavior.
@@ -220,7 +221,7 @@ ScrollConfiguration(
 
 ### Copy and modify existing `ScrollBehavior`
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 final ScrollController controller = ScrollController();
@@ -232,7 +233,7 @@ ListView.builder(
 );
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 // ScrollBehavior can be copied and adjusted.
@@ -248,14 +249,14 @@ ScrollConfiguration(
 );
 ```
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 2.2.0-10.0.pre<br>
-Na versão estável: 2.2.0
+Landed in version: 2.2.0-10.0.pre<br>
+In stable release: 2.2.0
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`ScrollConfiguration`][]
 * [`ScrollBehavior`][]
@@ -264,12 +265,12 @@ Documentação da API:
 * [`Scrollbar`][]
 * [`CupertinoScrollbar`][]
 
-Issues relevantes:
+Relevant issues:
 
 * [Issue #40107][]
 * [Issue #70866][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [Exposing ScrollBehaviors for app-wide settings][]
 * [Automatically applying Scrollbars on desktop platforms with configurable ScrollBehaviors][]

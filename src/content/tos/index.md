@@ -1,35 +1,34 @@
 ---
-ia-translate: true
-title: Termos de Serviço
-description: Os termos de serviço para o site Flutter.
-show_breadcrumbs: false
+title: Terms of Service
+description: The terms of service for the Flutter website.
+showBreadcrumbs: false
 ---
 
-O site Flutter (o "Site") é hospedado pelo Google. Ao usar e/ou
-visitar o Site, você concorda em estar vinculado aos
-[Termos de Serviço][Terms of Service] gerais do Google e à [Política de Privacidade][Privacy Policy].
+The Flutter website (the "Website") is hosted by Google. By using and / or
+visiting the Website, you consent to be bound by Google's general
+[Terms of Service][] and [Privacy Policy][].
 
-O nome "Flutter" e o logotipo Flutter
+The "Flutter" name and the Flutter logo
 <img src="/assets/images/branding/flutter/logo/square.svg" width="24px" alt="Flutter logo" class="text-icon">
-(as "Marcas Flutter") são marcas registradas de propriedade do Google e não estão incluídas
-nos assets licenciados sob a Creative Commons Attribution 4.0
-International License. O Google concede a você uma licença limitada não transferível,
-não exclusiva e sem royalties para usar as Marcas Flutter
-sujeita à sua conformidade com as [Diretrizes de Marca Flutter](/brand).
-Exceto conforme estabelecido acima, nada aqui concede ou deve ser considerado
-como concedendo a você qualquer direito, título ou interesse nas Marcas Flutter.
+(the "Flutter Marks") are trademarks owned by Google and are not included
+within the assets licensed under the Creative Commons Attribution 4.0
+International License.  Google grants you a non-transferable,
+non-exclusive, royalty-free limited license to use the Flutter Marks
+subject to your compliance with the [Flutter Brand Guidelines](/brand).
+Except as set forth above, nothing herein grants or should be deemed
+to grant to you any right, title or interest in or to the Flutter Marks.
 
-Conforme observado acima, o Google possui as marcas registradas do Flutter,
-mas nós as licenciamos para que possam ser usadas pela comunidade de desenvolvedores para apoiar o Flutter
-SDK, incluindo através de materiais de treinamento e outro conteúdo da comunidade.
+As noted above, Google owns the Flutter trademarks, but we license them
+so they can be used by the developer community to support the Flutter
+SDK, including through training materials and other community content.
 
-Ao mesmo tempo, é importante garantir que as pessoas não
-usem as marcas de maneiras que possam causar confusão ou de outra forma usar indevidamente
-as marcas, então preparamos [diretrizes de marca](/brand) que descrevem os
-usos permitidos das marcas. Nosso objetivo ao proteger as marcas registradas do Flutter
-é beneficiar toda a comunidade garantindo que as marcas sejam usadas apenas
-de maneiras consistentes com a missão do Google de fornecer um SDK gratuito e de
-código aberto.
+At the same time, it's important to make sure that people don't
+use the marks in ways that could cause confusion or otherwise misuse
+the marks, so we have prepared [brand guidelines](/brand) that describe the
+allowed uses of the marks. Our goal in protecting the Flutter trademarks
+is to benefit the entire community by ensuring that the marks are only used
+in ways that are consistent with Google's mission to provide a free and open
+source SDK.
 
 [Terms of Service]: https://policies.google.com/terms
 [Privacy Policy]: https://policies.google.com/privacy

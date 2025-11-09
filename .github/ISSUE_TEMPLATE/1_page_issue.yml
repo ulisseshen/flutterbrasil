@@ -1,5 +1,5 @@
 name: Page issue
-description: Help improve the content or quality of a docs.flutterbrasil.dev page
+description: Help improve the content or quality of a docs.flutter.dev page
 labels: [from.page-issue]
 body:
   - type: markdown
@@ -7,7 +7,7 @@ body:
       value: |
           Found a typo? You can fix it yourself!
 
-          1. Click the page icon to the left of the bug icon you clicked
+          1. Click the _View source_ link to the left of the _report an issue_ link you clicked
              to come to this form. The GitHub page source should display.
           1. Click the pencil icon displayed above the source code.
           1. Fix the typo.
@@ -20,7 +20,7 @@ body:
     id: page-url
     attributes:
       label: Page URL
-      placeholder: "Add the address of this page. An example would be https://docs.flutterbrasil.dev/guides"
+      placeholder: "Add the address of this page. An example would be https://docs.flutter.dev/guides"
     validations:
       required: true
   - type: input
@@ -64,5 +64,5 @@ body:
       label: I would like to fix this problem.
       description: Let us know if you want to try fixing this yourself.
       options:
-        - label: I will try and fix this problem on docs.flutterbrasil.dev.
+        - label: I will try and fix this problem on docs.flutter.dev.
           required: false

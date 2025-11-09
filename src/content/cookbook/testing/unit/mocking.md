@@ -1,82 +1,82 @@
 ---
-title: Simular dependências usando Mockito
+title: Mock dependencies using Mockito
 description: >
-  Use o pacote Mockito para imitar o comportamento de serviços para testes.
-short-title: Mocking
-ia-translate: true
+  Use the Mockito package to mimic the behavior of services for testing.
+shortTitle: Mocking
 ---
 
 <?code-excerpt path-base="cookbook/testing/unit/mocking"?>
 
-Às vezes, testes unitários podem depender de classes que buscam dados de
-web services ou bancos de dados ativos. Isso é inconveniente por algumas razões:
+Sometimes, unit tests might depend on classes that fetch data from live
+web services or databases. This is inconvenient for a few reasons:
 
-  * Chamar serviços ativos ou bancos de dados desacelera a execução dos testes.
-  * Um teste que passa pode começar a falhar se um web service ou banco de dados retornar
-    resultados inesperados. Isso é conhecido como um "flaky test."
-  * É difícil testar todos os cenários possíveis de sucesso e falha
-    usando um web service ou banco de dados ativo.
+  * Calling live services or databases slows down test execution.
+  * A passing test might start failing if a web service or database returns
+    unexpected results. This is known as a "flaky test."
+  * It is difficult to test all possible success and failure scenarios
+    by using a live web service or database.
 
-Portanto, ao invés de depender de um web service ou banco de dados ativo,
-você pode "simular" essas dependências. Mocks permitem emular um web service
-ou banco de dados ativo e retornar resultados específicos dependendo
-da situação.
+Therefore, rather than relying on a live web service or database,
+you can "mock" these dependencies. Mocks allow emulating a live
+web service or database and return specific results depending
+on the situation.
 
-Falando de forma geral, você pode simular dependências criando uma
-implementação alternativa de uma classe. Escreva essas implementações alternativas
-manualmente ou faça uso do pacote [Mockito package][] como um atalho.
+Generally speaking, you can mock dependencies by creating an alternative
+implementation of a class. Write these alternative implementations by
+hand or make use of the [Mockito package][] as a shortcut.
 
-Esta receita demonstra os conceitos básicos de simulação com o
-pacote Mockito usando as seguintes etapas:
+This recipe demonstrates the basics of mocking with the
+Mockito package using the following steps:
 
-  1. Adicionar as dependências do pacote.
-  2. Criar uma função para testar.
-  3. Criar um arquivo de teste com um mock `http.Client`.
-  4. Escrever um teste para cada condição.
-  5. Executar os testes.
+  1. Add the package dependencies.
+  2. Create a function to test.
+  3. Create a test file with a mock `http.Client`.
+  4. Write a test for each condition.
+  5. Run the tests.
 
-Para mais informações, consulte a documentação do [Mockito package][].
+For more information, see the [Mockito package][] documentation.
 
-## 1. Adicionar as dependências do pacote
+## 1. Add the package dependencies
 
-Para usar o pacote `mockito`, adicione-o ao
-arquivo `pubspec.yaml` junto com a dependência `flutter_test` na
-seção `dev_dependencies`.
+To use the `mockito` package, add it to the
+`pubspec.yaml` file along with the `flutter_test` dependency in the
+`dev_dependencies` section.
 
-Este exemplo também usa o pacote `http`,
-então defina essa dependência na seção `dependencies`.
+This example also uses the `http` package,
+so define that dependency in the `dependencies` section.
 
-`mockito: 5.0.0` suporta null safety do Dart graças à geração de código.
-Para executar a geração de código necessária, adicione a dependência `build_runner`
-na seção `dev_dependencies`.
+`mockito: 5.0.0` supports Dart's null safety thanks to code generation.
+To run the required code generation, add the `build_runner` dependency
+in the `dev_dependencies` section.
 
-Para adicionar as dependências, execute `flutter pub add`:
+To add the dependencies, run `flutter pub add`:
 
 ```console
 $ flutter pub add http dev:mockito dev:build_runner
 ```
 
-## 2. Criar uma função para testar
+## 2. Create a function to test
 
-Neste exemplo, teste unitário da função `fetchAlbum` da
-receita [Fetch data from the internet][].
-Para testar esta função, faça duas alterações:
+In this example, unit test the `fetchAlbum` function from the
+[Fetch data from the internet][] recipe.
+To test this function, make two changes:
 
-  1. Fornecer um `http.Client` para a função. Isso permite fornecer o
-     `http.Client` correto dependendo da situação.
-     Para projetos Flutter e server-side, forneça um `http.IOClient`.
-     Para aplicativos de navegador, forneça um `http.BrowserClient`.
-     Para testes, forneça um mock `http.Client`.
-  2. Usar o `client` fornecido para buscar dados da internet,
-     ao invés do método estático `http.get()`, que é difícil de simular.
+  1. Provide an `http.Client` to the function. This allows providing the
+     correct `http.Client` depending on the situation.
+     For Flutter and server-side projects, provide an `http.IOClient`.
+     For Browser apps, provide an `http.BrowserClient`.
+     For tests, provide a mock `http.Client`.
+  2. Use the provided `client` to fetch data from the internet,
+     rather than the static `http.get()` method, which is difficult to mock.
 
-A função agora deve se parecer com isto:
+The function should now look like this:
 
 <?code-excerpt "lib/main.dart (fetchAlbum)"?>
 ```dart
 Future<Album> fetchAlbum(http.Client client) async {
-  final response = await client
-      .get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1'));
+  final response = await client.get(
+    Uri.parse('https://jsonplaceholder.typicode.com/albums/1'),
+  );
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
@@ -90,26 +90,27 @@ Future<Album> fetchAlbum(http.Client client) async {
 }
 ```
 
-No código do seu aplicativo, você pode fornecer um `http.Client` para o método `fetchAlbum`
-diretamente com `fetchAlbum(http.Client())`. `http.Client()` cria um
-`http.Client` padrão.
+In your app code, you can provide an `http.Client` to the `fetchAlbum` method
+directly with `fetchAlbum(http.Client())`. `http.Client()` creates a default
+`http.Client`.
 
-## 3. Criar um arquivo de teste com um mock `http.Client`
+## 3. Create a test file with a mock `http.Client`
 
-Em seguida, crie um arquivo de teste.
+Next, create a test file.
 
-Seguindo o conselho da receita [Introduction to unit testing][],
-crie um arquivo chamado `fetch_album_test.dart` na pasta raiz `test`.
+Following the advice in the [Introduction to unit testing][] recipe,
+create a file called `fetch_album_test.dart` in the root `test` folder.
 
-Adicione a anotação `@GenerateMocks([http.Client])` à função main
-para gerar uma classe `MockClient` com `mockito`.
+Add the annotation
+`@GenerateMocks([], customMocks: [MockSpec<http.Client>(as: #MockHttpClient)])`
+to the main function to generate a `MockHttpClient` class with `mockito`.
 
-A classe `MockClient` gerada implementa a classe `http.Client`.
-Isso permite que você passe o `MockClient` para a função `fetchAlbum`,
-e retorne diferentes respostas http em cada teste.
+The generated `MockHttpClient` class implements the `http.Client` class.
+This allows you to pass the `MockHttpClient` to the `fetchAlbum` function,
+and return different http responses in each test.
 
-Os mocks gerados serão localizados em `fetch_album_test.mocks.dart`.
-Importe este arquivo para usá-los.
+The generated mocks will be located in `fetch_album_test.mocks.dart`.
+Import this file to use them.
 
 <?code-excerpt "test/fetch_album_test.dart (mockClient)" plaster="none"?>
 ```dart
@@ -119,28 +120,30 @@ import 'package:mockito/annotations.dart';
 
 // Generate a MockClient using the Mockito package.
 // Create new instances of this class in each test.
-@GenerateMocks([http.Client])
+// Note: Naming the generated mock `MockHttpClient` to avoid confusion with
+// `MockClient` from `package:http/testing.dart`.
+@GenerateMocks([], customMocks: [MockSpec<http.Client>(as: #MockHttpClient)])
 void main() {
 }
 ```
 
-Em seguida, gere os mocks executando o seguinte comando:
+Next, generate the mocks running the following command:
 
 ```console
 $ dart run build_runner build
 ```
 
-## 4. Escrever um teste para cada condição
+## 4. Write a test for each condition
 
-A função `fetchAlbum()` faz uma de duas coisas:
+The `fetchAlbum()` function does one of two things:
 
-  1. Retorna um `Album` se a chamada http for bem-sucedida
-  2. Lança uma `Exception` se a chamada http falhar
+  1. Returns an `Album` if the http call succeeds
+  2. Throws an `Exception` if the http call fails
 
-Portanto, você quer testar essas duas condições.
-Use a classe `MockClient` para retornar uma resposta "Ok"
-para o teste de sucesso, e uma resposta de erro para o teste sem sucesso.
-Teste essas condições usando a função `when()` fornecida pelo
+Therefore, you want to test these two conditions.
+Use the `MockHttpClient` class to return an "Ok" response
+for the success test, and an error response for the unsuccessful test.
+Test these conditions using the `when()` function provided by
 Mockito:
 
 <?code-excerpt "test/fetch_album_test.dart"?>
@@ -155,30 +158,34 @@ import 'fetch_album_test.mocks.dart';
 
 // Generate a MockClient using the Mockito package.
 // Create new instances of this class in each test.
-@GenerateMocks([http.Client])
+// Note: Naming the generated mock `MockHttpClient` to avoid confusion with
+// `MockClient` from `package:http/testing.dart`.
+@GenerateMocks([], customMocks: [MockSpec<http.Client>(as: #MockHttpClient)])
 void main() {
   group('fetchAlbum', () {
     test('returns an Album if the http call completes successfully', () async {
-      final client = MockClient();
+      final client = MockHttpClient();
 
       // Use Mockito to return a successful response when it calls the
       // provided http.Client.
-      when(client
-              .get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1')))
-          .thenAnswer((_) async =>
-              http.Response('{"userId": 1, "id": 2, "title": "mock"}', 200));
+      when(
+        client.get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1')),
+      ).thenAnswer(
+        (_) async =>
+            http.Response('{"userId": 1, "id": 2, "title": "mock"}', 200),
+      );
 
       expect(await fetchAlbum(client), isA<Album>());
     });
 
     test('throws an exception if the http call completes with an error', () {
-      final client = MockClient();
+      final client = MockHttpClient();
 
       // Use Mockito to return an unsuccessful response when it calls the
       // provided http.Client.
-      when(client
-              .get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1')))
-          .thenAnswer((_) async => http.Response('Not Found', 404));
+      when(
+        client.get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1')),
+      ).thenAnswer((_) async => http.Response('Not Found', 404));
 
       expect(fetchAlbum(client), throwsException);
     });
@@ -186,19 +193,19 @@ void main() {
 }
 ```
 
-## 5. Executar os testes
+## 5. Run the tests
 
-Agora que você tem uma função `fetchAlbum()` com testes em vigor,
-execute os testes.
+Now that you have a `fetchAlbum()` function with tests in place,
+run the tests.
 
 ```console
 $ flutter test test/fetch_album_test.dart
 ```
 
-Você também pode executar testes dentro do seu editor favorito seguindo as
-instruções na receita [Introduction to unit testing][].
+You can also run tests inside your favorite editor by following the
+instructions in the [Introduction to unit testing][] recipe.
 
-## Exemplo completo
+## Complete example
 
 ##### lib/main.dart
 
@@ -211,8 +218,9 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 Future<Album> fetchAlbum(http.Client client) async {
-  final response = await client
-      .get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1'));
+  final response = await client.get(
+    Uri.parse('https://jsonplaceholder.typicode.com/albums/1'),
+  );
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
@@ -267,9 +275,7 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Fetch Data Example'),
-        ),
+        appBar: AppBar(title: const Text('Fetch Data Example')),
         body: Center(
           child: FutureBuilder<Album>(
             future: futureAlbum,
@@ -305,30 +311,34 @@ import 'fetch_album_test.mocks.dart';
 
 // Generate a MockClient using the Mockito package.
 // Create new instances of this class in each test.
-@GenerateMocks([http.Client])
+// Note: Naming the generated mock `MockHttpClient` to avoid confusion with
+// `MockClient` from `package:http/testing.dart`.
+@GenerateMocks([], customMocks: [MockSpec<http.Client>(as: #MockHttpClient)])
 void main() {
   group('fetchAlbum', () {
     test('returns an Album if the http call completes successfully', () async {
-      final client = MockClient();
+      final client = MockHttpClient();
 
       // Use Mockito to return a successful response when it calls the
       // provided http.Client.
-      when(client
-              .get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1')))
-          .thenAnswer((_) async =>
-              http.Response('{"userId": 1, "id": 2, "title": "mock"}', 200));
+      when(
+        client.get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1')),
+      ).thenAnswer(
+        (_) async =>
+            http.Response('{"userId": 1, "id": 2, "title": "mock"}', 200),
+      );
 
       expect(await fetchAlbum(client), isA<Album>());
     });
 
     test('throws an exception if the http call completes with an error', () {
-      final client = MockClient();
+      final client = MockHttpClient();
 
       // Use Mockito to return an unsuccessful response when it calls the
       // provided http.Client.
-      when(client
-              .get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1')))
-          .thenAnswer((_) async => http.Response('Not Found', 404));
+      when(
+        client.get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1')),
+      ).thenAnswer((_) async => http.Response('Not Found', 404));
 
       expect(fetchAlbum(client), throwsException);
     });
@@ -336,12 +346,12 @@ void main() {
 }
 ```
 
-## Resumo
+## Summary
 
-Neste exemplo, você aprendeu como usar Mockito para testar funções ou classes
-que dependem de web services ou bancos de dados. Esta é apenas uma breve introdução à
-biblioteca Mockito e ao conceito de simulação. Para mais informações,
-consulte a documentação fornecida pelo [Mockito package][].
+In this example, you've learned how to use Mockito to test functions or classes
+that depend on web services or databases. This is only a short introduction to
+the Mockito library and the concept of mocking. For more information,
+see the documentation provided by the [Mockito package][].
 
 
 [Fetch data from the internet]: /cookbook/networking/fetch-data

@@ -3,16 +3,17 @@ title: Semantics Order of the Overlay Entries in Modal Routes
 description: >
   The scope of the modal route has a higher semantics
   traverse order than its modal barrier.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 We changed the semantics traverse order of the overlay entries in modal routes.
 Accessibility talk back or voice over now focuses the scope of a modal route
 first instead of its modal barrier.
 
-## Contexto
+## Context
 
 The modal route has two overlay entries, the scope and the modal barrier. The
 scope is the actual content of the modal route, and the modal barrier is the
@@ -22,7 +23,7 @@ accessibility focusable because users can tap the modal barrier to pop the
 modal route. This change specifically made the accessibility to focus the scope
 first before the modal barrier.
 
-## Descrição da mudança
+## Description of change
 
 We added additional semantics node above both
 the overlay entries of modal routes.
@@ -30,13 +31,13 @@ Those semantics nodes denote the semantics
 traverse order of these two overlay entries.
 This also changed the structure of semantics tree.
 
-## Guia de migração
+## Migration guide
 
 If your tests start failing due to semantics tree changes after the update,
 you can migrate your code by expecting a new node on above of the modal route
 overlay entries.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 import 'dart:ui';
@@ -86,7 +87,7 @@ SemanticsNode getChild(SemanticsNode node) {
 }
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 import 'dart:ui';
@@ -136,23 +137,23 @@ SemanticsNode getChild(SemanticsNode node) {
 }
 ```
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 1.19.0<br>
-Na versão estável: 1.20
+Landed in version: 1.19.0<br>
+In stable release: 1.20
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`ModalRoute`][]
 * [`OverlayEntry`][]
 
-Issues relevantes:
+Relevant issue:
 
 * [Issue 46625][]
 
-PRs relevantes:
+Relevant PR:
 
 * [PR 59290][]
 

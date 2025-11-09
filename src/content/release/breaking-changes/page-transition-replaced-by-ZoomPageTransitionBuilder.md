@@ -1,17 +1,18 @@
 ---
 title: Page transitions replaced by ZoomPageTransitionsBuilder
 description: Using the latest page transition instead of the old one.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 In order to ensure that libraries follow the latest OEM behavior,
 the default page transition builders now use
 `ZoomPageTransitionsBuilder` on all platforms (excluding iOS and macOS)
 instead of `FadeUpwardsPageTransitionsBuilder`.
 
-## Contextoo
+## Context
 
 The `FadeUpwardsPageTransitionsBuilder` (provided with the first
 Flutter release), defined a page transition that's
@@ -32,7 +33,7 @@ When the current `TargetPlatform` doesn't have
 `ZoomPageTransitionsBuilder` is used as the default.
 
 [Style guide for Flutter repo]: {{site.repo.flutter}}/blob/main/docs/contributing/Style-guide-for-Flutter-repo.md
-## Descrição da mudança
+## Description of change
 
 `PageTransitionsBuilder`s defined in
 `PageTransitionsTheme._defaultBuilders` have changed from
@@ -40,13 +41,13 @@ When the current `TargetPlatform` doesn't have
 `ZoomPageTransitionsBuilder` for `TargetPlatform.android`,
 `TargetPlatform.linux` and `TargetPlatform.windows`.
 
-## Guia de migração
+## Migration guide
 
 If you want to switch back to the previous page transition builder
 (`FadeUpwardsPageTransitionsBuilder`), you should define builders
 explicitly for the target platforms.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 MaterialApp(
@@ -54,7 +55,7 @@ MaterialApp(
 )
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 MaterialApp(
@@ -122,24 +123,24 @@ final Finder finder = find.descendant(
 Widgets that typically need to migrate the finder scope are:
 `Transform`, `FadeTransition`, `ScaleTransition`, and `ColoredBox`.
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 2.13.0-1.0.pre<br>
-Na versão estável: 3.0.0
+Landed in version: 2.13.0-1.0.pre<br>
+In stable release: 3.0.0
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`ZoomPageTransitionsBuilder`][]
 * [`FadeUpwardsPageTransitionsBuilder`][]
 * [`PageTransitionsTheme`][]
 
-Issues relevantes:
+Relevant issues:
 
 * [Issue 43277][]
 
-PRs relevantes:
+Relevant PR:
 
 * [PR 100812][]
 

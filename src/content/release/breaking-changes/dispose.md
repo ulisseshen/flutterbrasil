@@ -1,49 +1,50 @@
 ---
-ia-translate: true
-title: Adicionado dispose() ausente para alguns objetos descartáveis no Flutter
+title: Added missing `dispose()` for some disposable objects in Flutter
 description: >
-  'dispose()' pode falhar por causa de descarte duplo.
+  'dispose()' might fail because of double disposal.
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
 
-Chamadas ausentes a 'dispose()' foram adicionadas para alguns objetos descartáveis.
-Por exemplo, ContextMenuController não descartava OverlayEntry,
-e EditableTextState não descartava TextSelectionOverlay.
+## Summary
 
-Se algum outro código também invocar 'dispose()' para o objeto,
-e o objeto está protegido contra descarte duplo,
-o segundo 'dispose()' falha com a seguinte mensagem de erro:
+Missing calls to 'dispose()' are added for some disposable objects.
+For example, ContextMenuController did not dispose OverlayEntry,
+and EditableTextState did not dispose TextSelectionOverlay.
+
+If some other code also invokes 'dispose()' for the object,
+and the object is protected from double disposal,
+the second 'dispose()' fails with the following error message:
 
 `Once you have called dispose() on a <class name>, it can no longer be used.`
 
-## Contexto
+## Background
 
-A convenção é que o proprietário de um objeto deve descartá-lo.
+The convention is that the owner of an object should dispose of it.
 
-Esta convenção foi quebrada em alguns lugares:
-proprietários não estavam descartando os objetos descartáveis.
-O problema foi corrigido adicionando uma chamada a `dispose()`.
-No entanto, se o objeto está protegido contra descarte duplo,
-isso pode causar falhas ao executar no modo debug
-e `dispose()` é chamado em outro lugar no objeto.
+This convention was broken in some places:
+owners were not disposing the disposable objects.
+The issue was fixed by adding a call to `dispose()`.
+However, if the object is protected from double disposal,
+this can cause failures when running in debug mode
+and `dispose()` is called elsewhere on the object.
 
-## Guia de migração
+## Migration guide
 
-Se você encontrar o seguinte erro, atualize seu código para
-chamar `dispose()` apenas nos casos em que seu código criou o objeto.
+If you encounter the following error, update your code to
+call `dispose()` only in cases when your code created the object.
 
 ```plaintext
 Once you have called dispose() on a <class name>, it can no longer be used.
 ```
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 x.dispose();
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 if (xIsCreatedByMe) {
@@ -51,15 +52,15 @@ if (xIsCreatedByMe) {
 }
 ```
 
-Para localizar o descarte incorreto, verifique a pilha de chamadas do erro. Se a pilha de chamadas apontar para `dispose`
-no seu código, este descarte está incorreto e deve ser corrigido.
+To locate the incorrect disposal, check the call stack of the error. If the call stack points to `dispose`
+in your code, this disposal is incorrect and should be fixed.
 
-Se o erro ocorrer no código do Flutter, `dispose()` foi
-chamado incorretamente na primeira vez.
+If the error occurs in Flutter code, `dispose()` was
+called incorrectly the first time.
 
-Você pode localizar a chamada incorreta temporariamente chamando `print(StackTrace.current)`
-no corpo do método falhado `dispose`.
+You can locate the incorrect call by temporary calling `print(StackTrace.current)`
+in the body of the failed method `dispose`.
 
-## Cronograma
+## Timeline
 
-Veja o progresso e status [na issue de rastreamento]({{site.repo.flutter}}/issues/134787).
+See the progress and status [in the tracking issue]({{site.repo.flutter}}/issues/134787).

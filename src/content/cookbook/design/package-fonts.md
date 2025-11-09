@@ -1,35 +1,34 @@
 ---
-title: Exporte fontes de um pacote
-description: Como exportar fontes de um pacote.
-ia-translate: true
+title: Export fonts from a package
+description: How to export fonts from a package.
 ---
 
 <?code-excerpt path-base="cookbook/design/package_fonts"?>
 
-Em vez de declarar uma fonte como parte de um aplicativo,
-você pode declarar uma fonte como parte de um pacote separado.
-Esta é uma maneira conveniente de compartilhar a mesma fonte em
-vários projetos diferentes,
-ou para desenvolvedores que publicam seus pacotes no [pub.dev][].
-Esta receita usa os seguintes passos:
+Rather than declaring a font as part of an app,
+you can declare a font as part of a separate package.
+This is a convenient way to share the same font across
+several different projects,
+or for coders publishing their packages to [pub.dev][].
+This recipe uses the following steps:
 
-  1. Adicionar uma fonte a um pacote.
-  2. Adicionar o pacote e a fonte ao aplicativo.
-  3. Usar a fonte.
+  1. Add a font to a package.
+  2. Add the package and font to the app.
+  3. Use the font.
 
 :::note
-Confira o pacote [google_fonts][] para acesso direto
-a quase 1000 famílias de fontes de código aberto.
+Check out the [google_fonts][] package for direct access
+to almost 1000 open-sourced font families.
 :::
 
-## 1. Adicionar uma fonte a um pacote
+## 1. Add a font to a package
 
-Para exportar uma fonte de um pacote, você precisa importar os arquivos de fonte para a
-pasta `lib` do projeto do pacote. Você pode colocar arquivos de fonte diretamente na
-pasta `lib` ou em um subdiretório, como `lib/fonts`.
+To export a font from a package, you need to import the font files into the
+`lib` folder of the package project. You can place font files directly in the
+`lib` folder or in a subdirectory, such as `lib/fonts`.
 
-Neste exemplo, suponha que você tenha uma biblioteca Flutter chamada
-`awesome_package` com fontes vivendo em uma pasta `lib/fonts`.
+In this example, assume you've got a Flutter library called
+`awesome_package` with fonts living in a `lib/fonts` folder.
 
 ```plaintext
 awesome_package/
@@ -40,29 +39,29 @@ awesome_package/
       Raleway-Italic.ttf
 ```
 
-## 2. Adicionar o pacote e fontes ao aplicativo
+## 2. Add the package and fonts to the app
 
-Agora você pode usar as fontes no pacote
-atualizando o `pubspec.yaml` no diretório raiz do *aplicativo*.
+Now you can use the fonts in the package by
+updating the `pubspec.yaml` in the *app's* root directory.
 
-### Adicionar o pacote ao aplicativo
+### Add the package to the app
 
-Para adicionar o pacote `awesome_package` como uma dependência,
-execute `flutter pub add`:
+To add the `awesome_package` package as a dependency,
+run `flutter pub add`:
 
 ```console
 $ flutter pub add awesome_package
 ```
 
-### Declarar os assets de fonte
+### Declare the font assets
 
-Agora que você importou o pacote, diga ao Flutter onde
-encontrar as fontes do `awesome_package`.
+Now that you've imported the package, tell Flutter where to
+find the fonts from the `awesome_package`.
 
-Para declarar fontes de pacote, prefixe o caminho para a fonte com
+To declare package fonts, prefix the path to the font with
 `packages/awesome_package`.
-Isso diz ao Flutter para procurar na pasta `lib`
-do pacote pela fonte.
+This tells Flutter to look in the `lib` folder
+of the package for the font.
 
 ```yaml
 flutter:
@@ -76,27 +75,25 @@ flutter:
 
 <a id="use" aria-hidden="true"></a>
 
-## 3. Usar a fonte
+## 3. Use the font
 
-Use um [`TextStyle`][] para alterar a aparência do texto.
-Para usar fontes de pacote, declare qual fonte você gostaria de usar e
-a qual pacote a fonte pertence.
+Use a [`TextStyle`][] to change the appearance of text.
+To use package fonts, declare which font you'd like to use and
+which package the font belongs to.
 
 <?code-excerpt "lib/main.dart (TextStyle)"?>
 ```dart
 child: Text(
   'Using the Raleway font from the awesome_package',
-  style: TextStyle(
-    fontFamily: 'Raleway',
-  ),
+  style: TextStyle(fontFamily: 'Raleway'),
 ),
 ```
 
-## Exemplo completo
+## Complete example
 
-### Fontes
+### Fonts
 
-As fontes Raleway e RobotoMono foram baixadas do
+The Raleway and RobotoMono fonts were downloaded from
 [Google Fonts][].
 
 ### `pubspec.yaml`
@@ -137,10 +134,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Package Fonts',
-      home: MyHomePage(),
-    );
+    return const MaterialApp(title: 'Package Fonts', home: MyHomePage());
   }
 }
 
@@ -156,9 +150,7 @@ class MyHomePage extends StatelessWidget {
         // This Text widget uses the Raleway font.
         child: Text(
           'Using the Raleway font from the awesome_package',
-          style: TextStyle(
-            fontFamily: 'Raleway',
-          ),
+          style: TextStyle(fontFamily: 'Raleway'),
         ),
       ),
     );

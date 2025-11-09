@@ -1,51 +1,48 @@
 ---
-title: Passar argumentos para uma rota nomeada
-description: Como passar argumentos para uma rota nomeada.
-js:
-  - defer: true
-    url: /assets/js/inject_dartpad.js
-ia-translate: true
+title: Pass arguments to a named route
+description: How to pass arguments to a named route.
 ---
 
 <?code-excerpt path-base="cookbook/navigation/navigate_with_arguments"?>
 
-O [`Navigator`][] oferece a capacidade de navegar
-para uma rota nomeada de qualquer parte de um app usando
-um identificador comum.
-Em alguns casos, você também pode precisar passar argumentos para uma
-rota nomeada. Por exemplo, você pode querer navegar para a rota `/user` e
-passar informações sobre o usuário para essa rota.
+The [`Navigator`][] provides the ability to navigate
+to a named route from any part of an app using
+a common identifier.
+In some cases, you might also need to pass arguments to a
+named route. For example, you might wish to navigate to the `/user` route and
+pass information about the user to that route.
 
 :::note
-Rotas nomeadas não são mais recomendadas para a maioria
-das aplicações. Para mais informações, veja
-[Limitations][] na página [navigation overview][].
+Named routes are no longer recommended for most
+applications. For more information, see
+[Limitations][] in the [navigation overview][] page.
 :::
 
 [Limitations]: /ui/navigation#limitations
 [navigation overview]: /ui/navigation
 
-Você pode realizar essa tarefa usando o parâmetro `arguments` do
-método [`Navigator.pushNamed()`][]. Extraia os argumentos usando o
-método [`ModalRoute.of()`][] ou dentro de uma função [`onGenerateRoute()`][]
-fornecida ao construtor [`MaterialApp`][] ou [`CupertinoApp`][].
+You can accomplish this task using the `arguments` parameter of the
+[`Navigator.pushNamed()`][] method. Extract the arguments using the
+[`ModalRoute.of()`][] method or inside an [`onGenerateRoute()`][]
+function provided to the [`MaterialApp`][] or [`CupertinoApp`][]
+constructor.
 
-Esta receita demonstra como passar argumentos para uma rota nomeada
-e ler os argumentos usando `ModalRoute.of()`
-e `onGenerateRoute()` seguindo os seguintes passos:
+This recipe demonstrates how to pass arguments to a named
+route and read the arguments using `ModalRoute.of()`
+and `onGenerateRoute()` using the following steps:
 
-  1. Defina os argumentos que você precisa passar.
-  2. Crie um widget que extrai os argumentos.
-  3. Registre o widget na tabela `routes`.
-  4. Navegue para o widget.
+  1. Define the arguments you need to pass.
+  2. Create a widget that extracts the arguments.
+  3. Register the widget in the `routes` table.
+  4. Navigate to the widget.
 
-## 1. Defina os argumentos que você precisa passar
+## 1. Define the arguments you need to pass
 
-Primeiro, defina os argumentos que você precisa passar para a nova rota.
-Neste exemplo, passe dois pedaços de dados:
-O `title` da tela e uma `message`.
+First, define the arguments you need to pass to the new route.
+In this example, pass two pieces of data:
+The `title` of the screen and a `message`.
 
-Para passar ambos os pedaços de dados, crie uma classe que armazena essas informações.
+To pass both pieces of data, create a class that stores this information.
 
 <?code-excerpt "lib/main.dart (ScreenArguments)"?>
 ```dart
@@ -60,13 +57,13 @@ class ScreenArguments {
 }
 ```
 
-## 2. Crie um widget que extrai os argumentos
+## 2. Create a widget that extracts the arguments
 
-Em seguida, crie um widget que extrai e exibe o
-`title` e a `message` de `ScreenArguments`.
-Para acessar o `ScreenArguments`,
-use o método [`ModalRoute.of()`][].
-Este método retorna a rota atual com os argumentos.
+Next, create a widget that extracts and displays the
+`title` and `message` from the `ScreenArguments`.
+To access the `ScreenArguments`,
+use the [`ModalRoute.of()`][] method.
+This method returns the current route with the arguments.
 
 <?code-excerpt "lib/main.dart (ExtractArgumentsScreen)"?>
 ```dart
@@ -84,21 +81,17 @@ class ExtractArgumentsScreen extends StatelessWidget {
     final args = ModalRoute.of(context)!.settings.arguments as ScreenArguments;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(args.title),
-      ),
-      body: Center(
-        child: Text(args.message),
-      ),
+      appBar: AppBar(title: Text(args.title)),
+      body: Center(child: Text(args.message)),
     );
   }
 }
 ```
 
-## 3. Registre o widget na tabela `routes`
+## 3. Register the widget in the `routes` table
 
-Em seguida, adicione uma entrada às `routes` fornecidas ao widget `MaterialApp`. As
-`routes` definem qual widget deve ser criado com base no nome da rota.
+Next, add an entry to the `routes` provided to the `MaterialApp` widget. The
+`routes` define which widget should be created based on the name of the route.
 
 {% comment %}
 RegEx removes the return statement and adds the closing parenthesis at the end
@@ -114,13 +107,13 @@ MaterialApp(
 ```
 
 
-## 4. Navegue para o widget
+## 4. Navigate to the widget
 
-Finalmente, navegue para o `ExtractArgumentsScreen`
-quando um usuário tocar em um botão usando [`Navigator.pushNamed()`][].
-Forneça os argumentos para a rota através da propriedade `arguments`. O
-`ExtractArgumentsScreen` extrai o `title` e a `message` desses
-argumentos.
+Finally, navigate to the `ExtractArgumentsScreen`
+when a user taps a button using [`Navigator.pushNamed()`][].
+Provide the arguments to the route via the `arguments` property. The
+`ExtractArgumentsScreen` extracts the `title` and `message` from these
+arguments.
 
 <?code-excerpt "lib/main.dart (PushNamed)"?>
 ```dart
@@ -146,14 +139,14 @@ ElevatedButton(
 ),
 ```
 
-## Alternativamente, extraia os argumentos usando `onGenerateRoute`
+## Alternatively, extract the arguments using `onGenerateRoute`
 
-Em vez de extrair os argumentos diretamente dentro do widget, você também pode
-extrair os argumentos dentro de uma função [`onGenerateRoute()`][]
-e passá-los para um widget.
+Instead of extracting the arguments directly inside the widget, you can also
+extract the arguments inside an [`onGenerateRoute()`][]
+function and pass them to a widget.
 
-A função `onGenerateRoute()` cria a rota correta com base no
-[`RouteSettings`][] fornecido.
+The `onGenerateRoute()` function creates the correct route based on the given
+[`RouteSettings`][].
 
 {% comment %}
 RegEx removes the return statement, removed "routes" property and adds the closing parenthesis at the end
@@ -197,7 +190,7 @@ MaterialApp(
 )
 ```
 
-## Exemplo interativo
+## Interactive example
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter complete navigation hands-on example in DartPad" run="true"
@@ -260,9 +253,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home Screen'),
-      ),
+      appBar: AppBar(title: const Text('Home Screen')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -329,12 +320,8 @@ class ExtractArgumentsScreen extends StatelessWidget {
     final args = ModalRoute.of(context)!.settings.arguments as ScreenArguments;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(args.title),
-      ),
-      body: Center(
-        child: Text(args.message),
-      ),
+      appBar: AppBar(title: Text(args.title)),
+      body: Center(child: Text(args.message)),
     );
   }
 }
@@ -362,12 +349,8 @@ class PassArgumentsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
-      body: Center(
-        child: Text(message),
-      ),
+      appBar: AppBar(title: Text(title)),
+      body: Center(child: Text(message)),
     );
   }
 }
@@ -384,7 +367,7 @@ class ScreenArguments {
 ```
 
 <noscript>
-  <img src="/assets/images/docs/cookbook/navigate-with-arguments.gif" alt="Demonstrates navigating to different routes with arguments" class="site-mobile-screenshot" />
+  <img src="/assets/images/docs/cookbook/navigate-with-arguments.webp" alt="Demonstrates navigating to different routes with arguments" class="site-mobile-screenshot" />
 </noscript>
 
 

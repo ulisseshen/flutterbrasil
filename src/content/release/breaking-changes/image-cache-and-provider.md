@@ -3,17 +3,18 @@ title: ImageCache and ImageProvider changes
 description: >
   ImageCache requires implementers to override containsKey, and
   ImageProvider has marked resolve as @nonVirtual.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 `ImageCache` now has a method called `containsKey`.
 `ImageProvider` subclasses should not override `resolve`,
 but instead should implement new methods on `ImageProvider`.
 These changes were submitted as a single commit to the framework.
 
-## Descrição da mudança
+## Description of change
 
 The sections below describe the changes to `containsKey`
 and `ImageProvider`.
@@ -55,13 +56,13 @@ It also allows subclasses that compose `ImageProvider`s
 to be more confident that there is only one public entrypoint
 to the various chained providers.
 
-## Guia de migração
+## Migration guide
 
 ### ImageCache change
 
 Before migration, the code would not have an override of `containsKey`.
 
-Código após a migração:
+Code after migration:
 
 ```dart
 class MyImageCache implements ImageCache {
@@ -116,27 +117,27 @@ class MyImageProvider extends ImageProvider<Object> {
 
 ```
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 1.16.3<br>
-Na versão estável: 1.17
+Landed in version: 1.16.3<br>
+In stable release: 1.17
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`ImageCache`][]
 * [`ImageProvider`][]
 * [`ScrollAwareImageProvider`][]
 
-Issues relevantes:
+Relevant issues:
 
 * [Issue #32143][]
 * [Issue #44510][]
 * [Issue #48305][]
 * [Issue #48775][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [Defer image decoding when scrolling fast #49389][]
 

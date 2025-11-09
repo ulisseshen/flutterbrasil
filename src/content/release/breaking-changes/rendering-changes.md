@@ -1,74 +1,75 @@
 ---
-title: Mudanças notáveis de renderização e layout após v3.7
-description: Mudanças de quebra não relacionadas à API feitas após o Flutter v3.7.
-ia-translate: true
+title: Notable rendering and layout changes after v3.7
+description: Non-API related breaking changes made after Flutter v3.7.
 ---
 
-## Mudanças
+{% render "docs/breaking-changes.md" %}
 
-Esta seção lista as mudanças de quebra notáveis não relacionadas à API.
+## Changes
 
-### (Afeta apenas testes) `FlutterTest` agora é a fonte de teste padrão
+This section lists the notable non-API breaking changes.
 
-A fonte `FlutterTest` substituiu `Ahem` como a fonte padrão em testes: quando
-`fontFamily` não é especificada, ou as famílias de fontes especificadas não estão registradas,
-os testes usam a fonte `FlutterTest` para renderizar texto. A fonte `Ahem` ainda está
-disponível em testes se especificada como a `fontFamily` a ser usada.
+### (Only Affects Tests) `FlutterTest` is now the default test font
 
-A fonte `FlutterTest` produz métricas de fonte e glifo mais precisas do que `Ahem`,
-e as métricas são geralmente agnósticas ao motor de fontes.
-Confira a página wiki [Flutter Test Fonts][]
-para mais detalhes sobre a fonte de teste.
+The `FlutterTest` font replaced `Ahem` as the default font in tests: when
+`fontFamily` isn't specified, or the font families specified are not registered,
+tests use the `FlutterTest` font to render text. The `Ahem` font is still
+available in tests if specified as the `fontFamily` to use.
 
-**Diferenças**
+The `FlutterTest` font produces more precise font and glyph metrics than `Ahem`,
+and the metrics are generally font-engine agnostic.
+Check out the [Flutter Test Fonts][]
+wiki page for more details about the test font.
 
-A fonte `FlutterTest` parece quase idêntica à antiga padrão `Ahem`: o
-glifo para a maioria dos caracteres é uma caixa que preenche o quadrado em. As diferenças
-notáveis entre a fonte `FlutterTest` e a fonte `Ahem` são:
+**Differences**
 
-**1. Localização da linha de base diferente**
+The `FlutterTest` font looks almost identical to the old default `Ahem`: the
+glyph for most characters is a box that fills the em square. The notable
+differences between the `FlutterTest` font and `Ahem` font are:
 
-A ascensão e descida da fonte `FlutterTest` são 0.75 em e 0.25 em, enquanto
-as da `Ahem` são 0.8 em e 0.2 em, respectivamente.
+**1. Different baseline location**
 
-No exemplo de mudança de imagem golden abaixo, os blocos brancos são texto renderizado
-usando `Ahem` e `FlutterTest`. O segundo caractere é mais alto na nova fonte
-já que tem uma descida maior.
+The `FlutterTest` font's ascent and descent are 0.75 em and 0.25 em, while
+`Ahem`'s are 0.8 em and 0.2 em, respectively.
 
-| Before (`Ahem`) | After | Animated Diff |
-| :---: | :---: | :---: |
-| ![before](assets/material.ink_sparkle.bottom_right.0_masterImage.png) | ![after](assets/material.ink_sparkle.bottom_right.0_testImage.png) | ![baseline_animated](assets/baseline.gif) |
+In the example golden image change below, the white blocks are text rendered
+using `Ahem` and `FlutterTest`. The second character is taller in the new font
+since it has a larger descent.
 
-**2. Posição de decoração diferente**
+| Before (`Ahem`) | After |               Animated Diff               |
+| :---: | :---: |:-----------------------------------------:|
+| ![before](/assets/images/docs/breaking-changes/material.ink_sparkle.bottom_right.0_masterImage.png) | ![after](/assets/images/docs/breaking-changes/material.ink_sparkle.bottom_right.0_testImage.png) | ![baseline_animated](/assets/images/docs/breaking-changes/baseline.gif) |
 
-A localização do sublinhado é ligeiramente mais alta em `FlutterTest` do que em `Ahem`.
+**2. Different decoration position**
 
-No exemplo de mudança de imagem golden abaixo, as 3 linhas de blocos brancos são texto
-renderizado usando `Ahem` e `FlutterTest`. As linhas tracejadas azuis indicam as
-posições de [TextDecoration.overline]/[TextDecoration.lineThrough]/[TextDecoration.underline]
-para cada linha.
+The underline location is slightly higher in `FlutterTest` than `Ahem`.
 
-| Before (`Ahem`) | After | Animated Diff |
-| :---: | :---: | :---: |
-| ![before](assets/widgets.text_golden.Decoration.1_masterImage.png) | ![after](assets/widgets.text_golden.Decoration.1_testImage.png) |  ![baseline_animated](assets/underline.gif) |
+In the example golden image change below, the 3 lines of white blocks are text
+rendered using `Ahem` and `FlutterTest`. The blue dashed lines indicate the
+[TextDecoration.overline]/[TextDecoration.lineThrough]/[TextDecoration.underline]
+positions for each line.
 
-**3. O glifo usado para caracteres não mapeados é ligeiramente diferente**
+| Before (`Ahem`) | After |               Animated Diff                |
+| :---: | :---: |:------------------------------------------:|
+| ![before](/assets/images/docs/breaking-changes/widgets.text_golden.Decoration.1_masterImage.png) | ![after](/assets/images/docs/breaking-changes/widgets.text_golden.Decoration.1_testImage.png) | ![baseline_animated](/assets/images/docs/breaking-changes/underline.gif) |
 
-Caracteres não mapeados são renderizados como caixas vazias em ambas as fontes, com
-uma pequena diferença:
+**3. The glyph used for unmapped characters are slightly different**
 
-| Before (`Ahem`) | After | Diff |
-| :---: | :---: | :---: |
-| ![before](assets/material.floating_action_button_test.clip_masterImage.png) | ![after](assets/material.floating_action_button_test.clip_testImage.png) | ![not_def_animated](assets/not_def.gif) |
+Unmapped characters are rendered as hollow boxes in both fonts, with
+a slight difference:
 
-## Referências
+| Before (`Ahem`) | After |                  Diff                   |
+| :---: | :---: |:---------------------------------------:|
+| ![before](/assets/images/docs/breaking-changes/material.floating_action_button_test.clip_masterImage.png) | ![after](/assets/images/docs/breaking-changes/material.floating_action_button_test.clip_testImage.png) | ![not_def_animated](/assets/images/docs/breaking-changes/not_def.gif) |
 
-PRs relevantes:
+## References
 
-* A fonte `FlutterTest` foi adicionada em: [Add new test font]({{site.repo.engine}}/pull/39809)
-* A fonte `FlutterTest` foi tornada padrão em: [Make FlutterTest the default test font]({{site.repo.engine}}/pull/40188)
+Relevant PRs:
 
-Página wiki:
+* The `FlutterTest` font was added in: [Add new test font]({{site.repo.engine}}/pull/39809)
+* The `FlutterTest` font was made the default in: [Make FlutterTest the default test font]({{site.repo.engine}}/pull/40188)
+
+Wiki page:
 
 * [Flutter Test Fonts][]
 

@@ -1,47 +1,37 @@
 ---
-ia-translate: true
-title: Depurar apps Flutter
-description: Como depurar seu app Flutter.
+title: Debug Flutter apps
+description: How to debug your Flutter app.
 ---
 
 <?code-excerpt path-base="testing/debugging"?>
 
-Há uma ampla variedade de ferramentas e recursos para ajudar a depurar
-aplicações Flutter. Aqui estão algumas das ferramentas disponíveis:
+There's a wide variety of tools and features to help debug
+Flutter applications. Here are some of the available tools:
 
-* [VS Code][](recomendado) e [Android Studio/IntelliJ][],
-  (habilitado com os plugins Flutter e Dart)
-  suportam um depurador integrado em nível de código fonte com
-  a capacidade de definir breakpoints, percorrer o código,
-  e examinar valores.
-* [DevTools][], uma suite de ferramentas de desempenho e profiling
-  que executam em um navegador.
-* [Flutter inspector][], um inspetor de widgets disponível
-  no DevTools, e também diretamente do Android Studio
-  e IntelliJ (habilitado com o plugin Flutter).
-  O inspetor permite que você examine uma representação visual
-  da árvore de widgets, inspecione
-  widgets individuais e seus valores de propriedade,
-  habilite a sobreposição de desempenho, e mais.
-* Se você está procurando uma maneira de usar GDB para depurar remotamente o
-  engine Flutter executando dentro de um processo de app Android,
-  confira [`flutter_gdb`][].
+* [VS Code][] (recommended) and [Android Studio/IntelliJ][],
+  (enabled with the Flutter and Dart plugins)
+  support a built-in source-level debugger with
+  the ability to set breakpoints, step through code,
+  and examine values.
+* [DevTools][], a suite of performance and profiling
+  tools that run in a browser.
+* [Flutter inspector][], a widget inspector available
+  in DevTools, and also directly from Android Studio
+  and IntelliJ (enabled with the Flutter plugin).
+  The inspector allows you to examine a visual
+  representation of the widget tree, inspect
+  individual widgets and their property values,
+  enable the performance overlay, and more.
 
+## Other resources
 
-[`flutter_gdb`]: {{site.repo.flutter}}/blob/main/engine/src/flutter/sky/tools/flutter_gdb
-
-<a id="other-resources"></a>
-## Outros recursos
-
-Você pode achar os seguintes documentos úteis:
+You might find the following docs useful:
 
 * [Performance best practices][]
 * [Flutter performance profiling][]
 * [Use a native debugger][]
 * [Flutter's modes][]
 * [Debugging Flutter apps programmatically][]
-
-[Flutter enabled IDE/editor]: /get-started/editor
 
 [Debugging Flutter apps programmatically]: /testing/code-debugging
 [Flutter's modes]: /testing/build-modes

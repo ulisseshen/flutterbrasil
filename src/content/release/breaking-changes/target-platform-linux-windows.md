@@ -3,16 +3,17 @@ title: Adding 'linux' and 'windows' to TargetPlatform enum
 description: >
   Two new values were added to the TargetPlatform enum that could
   require additional cases in switch statements that switch on a TargetPlatform.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 Two new values were added to the [`TargetPlatform`][] enum
 that could require additional cases in switch statements that
 switch on a `TargetPlatform` and don't include a `default:` case.
 
-## Contexto
+## Context
 
 Prior to this change, the `TargetPlatform` enum only contained four values,
 and was defined like this:
@@ -33,7 +34,7 @@ Windows usually had a test like this in their
 
 ```dart
 // Sets a platform override for desktop to avoid exceptions. See
-// https://docs.flutterbrasil.dev/desktop#target-platform-override for more info.
+// https://docs.flutter.dev/desktop#target-platform-override for more info.
 void _enablePlatformOverrideForDesktop() {
   if (!kIsWeb && (Platform.isWindows || Platform.isLinux)) {
     debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
@@ -46,7 +47,7 @@ void main() {
 }
 ```
 
-## Descrição da mudança
+## Description of change
 
 The `TargetPlatform` enum is now defined as:
 
@@ -72,7 +73,7 @@ Writing a switch without a `default:` case is the
 recommended way to handle enums, since the analyzer
 can then help you find any cases that aren't handled.
 
-## Guia de migração
+## Migration guide
 
 In order to migrate to the new enum, and avoid the analyzer's
 `missing_enum_constant_in_switch` error, which looks like:
@@ -89,7 +90,7 @@ warning: Missing case clause for 'windows'. (missing_enum_constant_in_switch at 
 
 Modify your code as follows:
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 void dance(TargetPlatform platform) {
@@ -110,7 +111,7 @@ void dance(TargetPlatform platform) {
 }
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 void dance(TargetPlatform platform) {
@@ -145,22 +146,22 @@ Also, any tests like the one referenced above that set the
 `debugDefaultTargetPlatformOverride` are no longer needed
 for Linux and Windows applications.
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 1.15.4<br>
-Na versão estável: 1.17
+Landed in version: 1.15.4<br>
+In stable release: 1.17
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`TargetPlatform`][]
 
-Issues relevantes:
+Relevant issues:
 
 * [Issue #31366][]
 
-PRs relevantes:
+Relevant PR:
 
 * [Add Windows, and Linux as TargetPlatforms][]
 

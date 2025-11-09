@@ -1,167 +1,167 @@
 ---
-title: Lista com itens espaçados
-description: Como criar uma lista com itens espaçados ou expandidos
-js:
-  - defer: true
-    url: /assets/js/inject_dartpad.js
-ia-translate: true
+title: List with spaced items
+description: How to create a list with spaced or expanded items
 ---
 
 <?code-excerpt path-base="cookbook/lists/spaced_items/"?>
 
-Talvez você queira criar uma lista onde todos os itens da lista
-são espaçados uniformemente, para que os itens ocupem o espaço visível.
-Por exemplo, os quatro itens na imagem a seguir são espaçados uniformemente,
-com "Item 0" no topo, e "Item 3" na parte inferior.
+Perhaps you want to create a list where all list items
+are spaced evenly, so that the items take up the visible space.
+For example, the four items in the following image are spaced evenly,
+with "Item 0" at the top, and "Item 3" at the bottom.
 
 ![Spaced items](/assets/images/docs/cookbook/spaced-items-1.png){:.site-mobile-screenshot}
 
-Ao mesmo tempo, você pode querer permitir que os usuários
-rolem pela lista quando a lista de itens não couber,
-talvez porque um dispositivo seja muito pequeno, um usuário redimensionou uma janela,
-ou o número de itens excede o tamanho da tela.
+At the same time, you might want to allow users
+to scroll through the list when the list of items won't fit,
+maybe because a device is too small, a user resized a window,
+or the number of items exceeds the screen size.
 
 ![Scrollable items](/assets/images/docs/cookbook/spaced-items-2.png){:.site-mobile-screenshot}
 
-Normalmente, você usa [`Spacer`][] para ajustar o espaçamento entre widgets,
-ou [`Expanded`][] para expandir um widget para preencher o espaço disponível.
-No entanto, essas soluções não são possíveis dentro de widgets roláveis,
-porque eles precisam de uma restrição de altura finita.
+Typically, you use [`Spacer`][] to tune the spacing between widgets,
+or [`Expanded`][] to expand a widget to fill the available space.
+However, these solutions are not possible inside scrollable widgets,
+because they need a finite height constraint.
 
-Esta receita demonstra como usar [`LayoutBuilder`][] e [`ConstrainedBox`][]
-para espaçar os itens da lista uniformemente quando há espaço suficiente, e para permitir
-que os usuários rolem quando não há espaço suficiente,
-usando os seguintes passos:
+This recipe demonstrates how to use [`LayoutBuilder`][] and [`ConstrainedBox`][]
+to space out list items evenly when there is enough space, and to allow
+users to scroll when there is not enough space,
+using the following steps:
 
-  1. Adicionar um [`LayoutBuilder`][] com um [`SingleChildScrollView`][].
-  2. Adicionar um [`ConstrainedBox`][] dentro do [`SingleChildScrollView`][].
-  3. Criar uma [`Column`][] com itens espaçados.
+  1. Add a [`LayoutBuilder`][] with a [`SingleChildScrollView`][].
+  2. Add a [`ConstrainedBox`][] inside the [`SingleChildScrollView`][].
+  3. Create a [`Column`][] with spaced items.
 
-## 1. Adicionar um `LayoutBuilder` com um `SingleChildScrollView`
+## 1. Add a `LayoutBuilder` with a `SingleChildScrollView`
 
-Comece criando um [`LayoutBuilder`][]. Você precisa fornecer
-uma função callback `builder` com dois parâmetros:
+Start by creating a [`LayoutBuilder`][]. You need to provide
+a `builder` callback function with two parameters:
 
-  1. O [`BuildContext`][] fornecido pelo [`LayoutBuilder`][].
-  2. As [`BoxConstraints`][] do widget pai.
+  1. The [`BuildContext`][] provided by the [`LayoutBuilder`][].
+  2. The [`BoxConstraints`][] of the parent widget.
 
-Nesta receita, você não usará o [`BuildContext`][],
-mas precisará das [`BoxConstraints`][] no próximo passo.
+In this recipe, you won't be using the [`BuildContext`][],
+but you will need the [`BoxConstraints`][] in the next step.
 
-Dentro da função `builder`, retorne um [`SingleChildScrollView`][].
-Este widget garante que o widget filho possa ser rolado,
-mesmo quando o contêiner pai é muito pequeno.
+Inside the `builder` function, return a [`SingleChildScrollView`][].
+This widget ensures that the child widget can be scrolled,
+even when the parent container is too small.
 
 <?code-excerpt "lib/spaced_list.dart (builder)"?>
 ```dart
-LayoutBuilder(builder: (context, constraints) {
-  return SingleChildScrollView(
-    child: Placeholder(),
-  );
-});
+LayoutBuilder(
+  builder: (context, constraints) {
+    return SingleChildScrollView(child: Placeholder());
+  },
+);
 ```
 
-## 2. Adicionar um `ConstrainedBox` dentro do `SingleChildScrollView`
+## 2. Add a `ConstrainedBox` inside the `SingleChildScrollView`
 
-Neste passo, adicione um [`ConstrainedBox`][]
-como filho do [`SingleChildScrollView`][].
+In this step, add a [`ConstrainedBox`][]
+as the child of the [`SingleChildScrollView`][].
 
-O widget [`ConstrainedBox`][] impõe restrições adicionais ao seu filho.
+The [`ConstrainedBox`][] widget imposes additional constraints to its child.
 
-Configure a restrição definindo o parâmetro `minHeight` como sendo
-o `maxHeight` das restrições do [`LayoutBuilder`][].
+Configure the constraint by setting the `minHeight` parameter to be
+the `maxHeight` of the [`LayoutBuilder`][] constraints.
 
-Isso garante que o widget filho
-seja restringido a ter uma altura mínima igual ao espaço disponível
-fornecido pelas restrições do [`LayoutBuilder`][],
-ou seja, a altura máxima das [`BoxConstraints`][].
+This ensures that the child widget
+is constrained to have a minimum height equal to the available
+space provided by the [`LayoutBuilder`][] constraints,
+namely the maximum height of the [`BoxConstraints`][].
 
 <?code-excerpt "lib/spaced_list.dart (constrainedBox)"?>
 ```dart
-LayoutBuilder(builder: (context, constraints) {
-  return SingleChildScrollView(
-    child: ConstrainedBox(
-      constraints: BoxConstraints(minHeight: constraints.maxHeight),
-      child: Placeholder(),
-    ),
-  );
-});
+LayoutBuilder(
+  builder: (context, constraints) {
+    return SingleChildScrollView(
+      child: ConstrainedBox(
+        constraints: BoxConstraints(minHeight: constraints.maxHeight),
+        child: Placeholder(),
+      ),
+    );
+  },
+);
 ```
 
-No entanto, você não define o parâmetro `maxHeight`,
-porque precisa permitir que o filho seja maior
-que o tamanho do [`LayoutBuilder`][],
-caso os itens não caibam na tela.
+However, you don't set the `maxHeight` parameter,
+because you need to allow the child to be larger
+than the [`LayoutBuilder`][] size,
+in case the items don't fit the screen.
 
-## 3. Criar uma `Column` com itens espaçados
+## 3. Create a `Column` with spaced items
 
-Finalmente, adicione uma [`Column`][] como filho do [`ConstrainedBox`][].
+Finally, add a [`Column`][] as the child of the [`ConstrainedBox`][].
 
-Para espaçar os itens uniformemente,
-defina o `mainAxisAlignment` como `MainAxisAlignment.spaceBetween`.
+To space the items evenly,
+set the `mainAxisAlignment` to `MainAxisAlignment.spaceBetween`.
 
 <?code-excerpt "lib/spaced_list.dart (column)"?>
 ```dart
-LayoutBuilder(builder: (context, constraints) {
-  return SingleChildScrollView(
-    child: ConstrainedBox(
-      constraints: BoxConstraints(minHeight: constraints.maxHeight),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          ItemWidget(text: 'Item 1'),
-          ItemWidget(text: 'Item 2'),
-          ItemWidget(text: 'Item 3'),
-        ],
-      ),
-    ),
-  );
-});
-```
-
-Alternativamente, você pode usar o widget [`Spacer`][]
-para ajustar o espaçamento entre os itens,
-ou o widget [`Expanded`][], se você quiser que um widget ocupe mais espaço do que outros.
-
-Para isso, você tem que envolver a [`Column`] com um widget [`IntrinsicHeight`][],
-que força o widget [`Column`][] a ter um tamanho mínimo em altura,
-em vez de expandir infinitamente.
-
-<?code-excerpt "lib/spaced_list.dart (intrinsic)"?>
-```dart
-LayoutBuilder(builder: (context, constraints) {
-  return SingleChildScrollView(
-    child: ConstrainedBox(
-      constraints: BoxConstraints(minHeight: constraints.maxHeight),
-      child: IntrinsicHeight(
+LayoutBuilder(
+  builder: (context, constraints) {
+    return SingleChildScrollView(
+      child: ConstrainedBox(
+        constraints: BoxConstraints(minHeight: constraints.maxHeight),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ItemWidget(text: 'Item 1'),
-            Spacer(),
             ItemWidget(text: 'Item 2'),
-            Expanded(
-              child: ItemWidget(text: 'Item 3'),
-            ),
+            ItemWidget(text: 'Item 3'),
           ],
         ),
       ),
-    ),
-  );
-});
+    );
+  },
+);
+```
+
+Alternatively, you can use the [`Spacer`][] widget
+to tune the spacing between the items,
+or the [`Expanded`][] widget, if you want one widget to take more space than others.
+
+For that, you have to wrap the [`Column`] with an [`IntrinsicHeight`][] widget,
+which forces the [`Column`][] widget to size itself to a minimum height,
+instead of expanding infinitely.
+
+<?code-excerpt "lib/spaced_list.dart (intrinsic)"?>
+```dart
+LayoutBuilder(
+  builder: (context, constraints) {
+    return SingleChildScrollView(
+      child: ConstrainedBox(
+        constraints: BoxConstraints(minHeight: constraints.maxHeight),
+        child: IntrinsicHeight(
+          child: Column(
+            children: [
+              ItemWidget(text: 'Item 1'),
+              Spacer(),
+              ItemWidget(text: 'Item 2'),
+              Expanded(child: ItemWidget(text: 'Item 3')),
+            ],
+          ),
+        ),
+      ),
+    );
+  },
+);
 ```
 
 :::tip
-Experimente com diferentes dispositivos, redimensionando o aplicativo,
-ou redimensionando a janela do navegador, e veja como a lista de itens se adapta
-ao espaço disponível.
+Play around with different devices, resizing the app,
+or resizing the browser window, and see how the item list adapts
+to the available space.
 :::
 
-## Exemplo interativo
+## Interactive example
 
-Este exemplo mostra uma lista de itens que são espaçados uniformemente dentro de uma coluna.
-A lista pode ser rolada para cima e para baixo quando os itens não cabem na tela.
-O número de itens é definido pela variável `items`,
-altere este valor para ver o que acontece quando os itens não cabem na tela.
+This example shows a list of items that are spaced evenly within a column.
+The list can be scrolled up and down when the items don't fit the screen.
+The number of items is defined by the variable `items`,
+change this value to see what happens when the items won't fit the screen.
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter Spaced Items hands-on example in DartPad" run="true"
@@ -182,42 +182,39 @@ class SpacedItemsList extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         cardTheme: CardThemeData(color: Colors.blue.shade50),
-        useMaterial3: true,
       ),
       home: Scaffold(
-        body: LayoutBuilder(builder: (context, constraints) {
-          return SingleChildScrollView(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(minHeight: constraints.maxHeight),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: List.generate(
-                    items, (index) => ItemWidget(text: 'Item $index')),
+        body: LayoutBuilder(
+          builder: (context, constraints) {
+            return SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: List.generate(
+                    items,
+                    (index) => ItemWidget(text: 'Item $index'),
+                  ),
+                ),
               ),
-            ),
-          );
-        }),
+            );
+          },
+        ),
       ),
     );
   }
 }
 
 class ItemWidget extends StatelessWidget {
-  const ItemWidget({
-    super.key,
-    required this.text,
-  });
+  const ItemWidget({super.key, required this.text});
 
   final String text;
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: SizedBox(
-        height: 100,
-        child: Center(child: Text(text)),
-      ),
+      child: SizedBox(height: 100, child: Center(child: Text(text))),
     );
   }
 }

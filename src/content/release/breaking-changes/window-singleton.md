@@ -1,19 +1,20 @@
 ---
 title: The window singleton is deprecated
 description: >
-  In preparation for supporting multiple views and 
+  In preparation for supporting multiple views and
   multiple windows the window singleton has been deprecated.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 In preparation for supporting multiple views and multiple windows, the `window`
 singleton has been deprecated. Code previously relying on the `window` singleton
 needs to look up the specific view it wants to operate on via the `View.of` API
 or interact with the `PlatformDispatcher` directly.
 
-## Contexto
+## Context
 
 Originally, Flutter assumed that an application would only consist of a single
 view (the `window`) into which content can be drawn. In a multi-view world, this
@@ -22,7 +23,7 @@ been deprecated. Instead, applications and libraries that relied on these APIs
 must choose a specific view they want to operate on and
 migrate to new multi-view compatible APIs as outlined in this migration guide.
 
-## Descrição da mudança
+## Description of change
 
 The APIs that have been deprecated as part of this change are:
 
@@ -83,7 +84,7 @@ together replace the functionality of `TestWindow`.
   properties such as the platform's locale, whether certain system features
   are available, etc.
 
-## Guia de migração
+## Migration guide
 
 Instead of accessing the static `window` property, application and library code
 that has access to a `BuildContext` should use `View.of` to look up the
@@ -91,7 +92,7 @@ that has access to a `BuildContext` should use `View.of` to look up the
 the `PlatformDispatcher` accessible from the view via the `platformDispatcher`
 getter.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 Widget build(BuildContext context) {
@@ -101,7 +102,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 Widget build(BuildContext context) {
@@ -114,7 +115,7 @@ Widget build(BuildContext context) {
 If no `BuildContext` is available, the `PlatformDispatcher` exposed by the
 bindings can be consulted directly.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 double getTextScaleFactor() {
@@ -122,7 +123,7 @@ double getTextScaleFactor() {
 }
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 double getTextScaleFactor() {
@@ -142,7 +143,7 @@ accessors should be used instead.
 concise by using setters with the same name as their related getter instead of
 setters with the `TestValue` suffix.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 testWidget('test name', (WidgetTester tester) async {
@@ -183,7 +184,7 @@ methods has changed from `clear<property>TestValue` and `clearAllTestValues` to
 
 ##### Resetting individual properties
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 testWidget('test name', (WidgetTester tester) async {
@@ -217,7 +218,7 @@ testWidget('test name', (WidgetTester tester) async {
 
 ##### Resetting all properties at once
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 testWidget('test name', (WidgetTester tester) async {
@@ -240,7 +241,7 @@ test setters as did `TestWindow`, so migration of platform-specific properties
 mainly consists of calling the same setters on the new
 `WidgetTester.platformDispatcher` accessor.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 testWidgets('test name', (WidgetTester tester) async {
@@ -258,7 +259,7 @@ testWidgets('test name', (WidgetTester tester) async {
 });
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 testWidgets('test name', (WidgetTester tester) async {
@@ -284,7 +285,7 @@ mainly of changing from the `binding.window` accessor to the
 
 ##### Resetting individual properties
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 testWidgets('test name', (WidgetTester tester) async {
@@ -302,7 +303,7 @@ testWidgets('test name', (WidgetTester tester) async {
 });
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 testWidgets('test name', (WidgetTester tester) async {
@@ -322,7 +323,7 @@ testWidgets('test name', (WidgetTester tester) async {
 
 ##### Resetting all properties at once
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 testWidgets('test name', (WidgetTester tester) async {
@@ -330,7 +331,7 @@ testWidgets('test name', (WidgetTester tester) async {
 });
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 testWidgets('test name', (WidgetTester tester) async {
@@ -338,14 +339,14 @@ testWidgets('test name', (WidgetTester tester) async {
 });
 ```
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 3.9.0-13.0.pre.20<br>
-Na versão estável: 3.10.0
+Landed in version: 3.9.0-13.0.pre.20<br>
+In stable release: 3.10.0
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`View.of`][]
 * [`FlutterView`][]
@@ -354,13 +355,13 @@ Documentação da API:
 * [`TestFlutterView`][]
 * [`TestWidgetsFlutterBinding.window`][]
 
-Issues relevantes:
+Relevant issues:
 
 * [Issue 116929][]
 * [Issue 117481][]
 * [Issue 121915][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [Deprecate SingletonFlutterWindow and global window singleton][]
 * [Deprecate BindingBase.window][]

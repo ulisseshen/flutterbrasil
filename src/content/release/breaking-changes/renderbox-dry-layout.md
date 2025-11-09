@@ -3,10 +3,11 @@ title: Dry layout support for RenderBox
 description: >
   The method "computeDryLayout" was added to the RenderBox protocol to
   correctly calculate its intrinsic size in certain situations.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 A new method named `computeDryLayout` was added to the `RenderBox` protocol.
 Subclasses of `RenderBox` are expected to implement it to correctly report
@@ -14,7 +15,7 @@ their desired size given a set of `BoxConstraints` during intrinsic
 calculations. Subclasses that implement `computeDryLayout` no longer need to
 override `performResize`.
 
-## Contexto
+## Context
 
 A new method, `computeDryLayout`, was added to the `RenderBox` protocol to
 correctly calculate the intrinsic sizes of a `RenderParagraph` with `WidgetSpan`
@@ -25,7 +26,7 @@ calculates the resulting size and doesn't place the children. The
 `computeDryLayout` method is part of the intrinsics protocol (see also
 [`RenderBox.computeMinIntrinsicWidth`][] and friends).
 
-## Descrição da mudança
+## Description of change
 
 Subclasses of `RenderBox` need to override the new `computeDryLayout` method
 if they are used as a descendant of a `RenderObject` that may query the intrinsic
@@ -36,7 +37,7 @@ The default implementation of `RenderBox.performResize` also uses the size
 computed by `computeDryLayout` to perform the resize. Overriding `performResize`
 is therefore no longer necessary.
 
-## Guia de migração
+## Migration guide
 
 Subclasses that already override `performResize` can be migrated by simply
 changing the function signature from `void performResize()` to
@@ -44,7 +45,7 @@ changing the function signature from `void performResize()` to
 calculated size instead of assigning it to the `size` setter. The old
 implementation of `performResize` can be removed.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
   @override
@@ -53,7 +54,7 @@ Código antes da migração:
   }
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
   // This replaces the old performResize method.
@@ -86,14 +87,14 @@ if the size of a `RenderBox` depends on the baseline metrics of its children.
   }
 ```
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 1.25.0-4.0.pre<br>
-Na versão estável: 2.0.0
+Landed in version: 1.25.0-4.0.pre<br>
+In stable release: 2.0.0
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`RenderBox`][]
 * [`computeMinInstrinsicWidth`][]
@@ -103,11 +104,11 @@ Documentação da API:
 * [`RenderWrap`][]
 * [`RenderParagraph`][]
 
-Issues relevantes:
+Relevant issues:
 
 * [Issue 48679][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [Fixes Intrinsics for RenderParagraph and RenderWrap][]
 

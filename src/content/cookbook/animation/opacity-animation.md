@@ -1,60 +1,52 @@
 ---
-title: Fazer fade in e fade out de um widget
-description: Como fazer fade in e fade out de um widget.
-js:
-  - defer: true
-    url: /assets/js/inject_dartpad.js
-ia-translate: true
+title: Fade a widget in and out
+description: How to fade a widget in and out.
 ---
 
 <?code-excerpt path-base="cookbook/animation/opacity_animation/"?>
 
-Desenvolvedores de UI frequentemente precisam mostrar e esconder elementos na tela.
-No entanto, fazer elementos aparecerem e desaparecerem rapidamente da tela pode
-parecer abrupto para os usuários finais. Em vez disso,
-faça fade in e fade out dos elementos com uma animação de opacidade para criar
-uma experiência suave.
+UI developers often need to show and hide elements on screen.
+However, quickly popping elements on and off the screen can
+feel jarring to end users. Instead,
+fade elements in and out with an opacity animation to create
+a smooth experience.
 
-O widget [`AnimatedOpacity`][] facilita a realização de animações de opacidade.
-Esta receita usa os seguintes passos:
+The [`AnimatedOpacity`][] widget makes it easy to perform opacity
+animations. This recipe uses the following steps:
 
-  1. Criar uma caixa para fazer fade in e fade out.
-  2. Definir um `StatefulWidget`.
-  3. Exibir um botão que alterna a visibilidade.
-  4. Fazer fade in e fade out da caixa.
+  1. Create a box to fade in and out.
+  2. Define a `StatefulWidget`.
+  3. Display a button that toggles the visibility.
+  4. Fade the box in and out.
 
-## 1. Criar uma caixa para fazer fade in e fade out
+## 1. Create a box to fade in and out
 
-Primeiro, crie algo para fazer fade in e fade out. Para este exemplo,
-desenhe uma caixa verde na tela.
+First, create something to fade in and out. For this example,
+draw a green box on screen.
 
 <?code-excerpt "lib/main.dart (Container)" replace="/^child: //g;/\),$/)/g"?>
 ```dart
-Container(
-  width: 200,
-  height: 200,
-  color: Colors.green,
-)
+Container(width: 200, height: 200, color: Colors.green)
 ```
 
-## 2. Definir um `StatefulWidget`
+## 2. Define a `StatefulWidget`
 
-Agora que você tem uma caixa verde para animar,
-você precisa de uma maneira de saber se a caixa deve estar visível.
-Para fazer isso, use um [`StatefulWidget`][].
+Now that you have a green box to animate,
+you need a way to know whether the box should be visible.
+To accomplish this, use a [`StatefulWidget`][].
 
-Um `StatefulWidget` é uma classe que cria um objeto `State`.
-O objeto `State` armazena alguns dados sobre o app e fornece uma maneira de
-atualizar esses dados. Ao atualizar os dados,
-você também pode pedir ao Flutter para reconstruir a UI com essas mudanças.
+A `StatefulWidget` is a class that creates a `State` object.
+The `State` object holds some data about the app and provides a way to
+update that data. When updating the data,
+you can also ask Flutter to rebuild the UI with those changes.
 
-Neste caso, você tem um dado:
-um booleano representando se o botão está visível.
+In this case, you have one piece of data:
+a boolean representing whether the button is visible.
 
-Para construir um `StatefulWidget`, crie duas classes: Um
-`StatefulWidget` e uma classe `State` correspondente.
-Dica profissional: Os plugins do Flutter para Android Studio e VSCode incluem
-o snippet `stful` para gerar rapidamente este código.
+To construct a `StatefulWidget`, create two classes: A
+`StatefulWidget` and a corresponding `State` class.
+Pro tip: The Flutter plugins for Android Studio and VSCode include
+the `stful` snippet to quickly generate this code.
 
 <?code-excerpt "lib/starter.dart (Starter)" remove="return Container();"?>
 ```dart
@@ -63,10 +55,7 @@ o snippet `stful` para gerar rapidamente este código.
 class MyHomePage extends StatefulWidget {
   final String title;
 
-  const MyHomePage({
-    super.key,
-    required this.title,
-  });
+  const MyHomePage({super.key, required this.title});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -85,21 +74,21 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 ```
 
-## 3. Exibir um botão que alterna a visibilidade
+## 3. Display a button that toggles the visibility
 
-Agora que você tem alguns dados para determinar se a caixa verde
-deve estar visível, você precisa de uma maneira de atualizar esses dados.
-Neste exemplo, se a caixa estiver visível, esconda-a.
-Se a caixa estiver escondida, mostre-a.
+Now that you have some data to determine whether the green box
+should be visible, you need a way to update that data.
+In this example, if the box is visible, hide it.
+If the box is hidden, show it.
 
-Para lidar com isso, exiba um botão. Quando um usuário pressionar o botão,
-inverta o booleano de true para false, ou de false para true.
-Faça essa mudança usando [`setState()`][],
-que é um método na classe `State`.
-Isso diz ao Flutter para reconstruir o widget.
+To handle this, display a button. When a user presses the button,
+flip the boolean from true to false, or false to true.
+Make this change using [`setState()`][],
+which is a method on the `State` class.
+This tells Flutter to rebuild the widget.
 
-Para mais informações sobre como trabalhar com entrada do usuário,
-veja a seção [Gestures][] do cookbook.
+For more information on working with user input,
+see the [Gestures][] section of the cookbook.
 
 <?code-excerpt "lib/main.dart (FAB)" replace="/^floatingActionButton: //g;/^\),$/)/g"?>
 ```dart
@@ -116,17 +105,17 @@ FloatingActionButton(
 )
 ```
 
-## 4. Fazer fade in e fade out da caixa
+## 4. Fade the box in and out
 
-Você tem uma caixa verde na tela e um botão para alternar a visibilidade
-para `true` ou `false`. Como fazer fade in e fade out da caixa? Com um
-widget [`AnimatedOpacity`][].
+You have a green box on screen and a button to toggle the visibility
+to `true` or `false`. How to fade the box in and out? With an
+[`AnimatedOpacity`][] widget.
 
-O widget `AnimatedOpacity` requer três argumentos:
+The `AnimatedOpacity` widget requires three arguments:
 
-* `opacity`: Um valor de 0.0 (invisível) a 1.0 (totalmente visível).
-* `duration`: Quanto tempo a animação deve levar para ser concluída.
-* `child`: O widget a ser animado. Neste caso, a caixa verde.
+* `opacity`: A value from 0.0 (invisible) to 1.0 (fully visible).
+* `duration`: How long the animation should take to complete.
+* `child`: The widget to animate. In this case, the green box.
 
 <?code-excerpt "lib/main.dart (AnimatedOpacity)" replace="/^child: //g;/^\),$/)/g"?>
 ```dart
@@ -136,15 +125,11 @@ AnimatedOpacity(
   opacity: _visible ? 1.0 : 0.0,
   duration: const Duration(milliseconds: 500),
   // The green box must be a child of the AnimatedOpacity widget.
-  child: Container(
-    width: 200,
-    height: 200,
-    color: Colors.green,
-  ),
+  child: Container(width: 200, height: 200, color: Colors.green),
 )
 ```
 
-## Exemplo interativo
+## Interactive example
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Implicit Animation Opacity DartPad hands-on example" run="true"
@@ -168,10 +153,7 @@ class MyApp extends StatelessWidget {
 // The StatefulWidget's job is to take data and create a State class.
 // In this case, the widget takes a title, and creates a _MyHomePageState.
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({
-    super.key,
-    required this.title,
-  });
+  const MyHomePage({super.key, required this.title});
 
   final String title;
 
@@ -188,9 +170,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+      appBar: AppBar(title: Text(widget.title)),
       body: Center(
         child: AnimatedOpacity(
           // If the widget is visible, animate to 0.0 (invisible).
@@ -198,11 +178,7 @@ class _MyHomePageState extends State<MyHomePage> {
           opacity: _visible ? 1.0 : 0.0,
           duration: const Duration(milliseconds: 500),
           // The green box must be a child of the AnimatedOpacity widget.
-          child: Container(
-            width: 200,
-            height: 200,
-            color: Colors.green,
-          ),
+          child: Container(width: 200, height: 200, color: Colors.green),
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -222,10 +198,10 @@ class _MyHomePageState extends State<MyHomePage> {
 ```
 
 <noscript>
-  <img src="/assets/images/docs/cookbook/fade-in-out.gif" alt="Fade In and Out Demo" class="site-mobile-screenshot" />
+  <img src="/assets/images/docs/cookbook/fade-in-out.webp" alt="Fade In and Out Demo" class="site-mobile-screenshot" />
 </noscript>
 
 [`AnimatedOpacity`]: {{site.api}}/flutter/widgets/AnimatedOpacity-class.html
-[Gestures]: /cookbook#gestures
+[Gestures]: /cookbook/gestures
 [`StatefulWidget`]: {{site.api}}/flutter/widgets/StatefulWidget-class.html
 [`setState()`]: {{site.api}}/flutter/widgets/State/setState.html

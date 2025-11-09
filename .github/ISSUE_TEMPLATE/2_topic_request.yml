@@ -1,12 +1,12 @@
 name: Topic request
-description: What information should be on docs.flutterbrasil.dev but isn't covered well (or at all)?
+description: What information should be on docs.flutter.dev but isn't covered well (or at all)?
 labels: [co.request, from.user]
 body:
   - type: textarea
     id: problem
     attributes:
       label: What information needs to be added?
-      placeholder: Provide a clear and concise description of what you expected to find on docs.flutterbrasil.dev, but didn't.
+      placeholder: Provide a clear and concise description of what you expected to find on docs.flutter.dev, but didn't.
     validations:
       required: true
   - type: textarea
@@ -22,5 +22,5 @@ body:
       label: I would like to fix this problem.
       description: Let us know if you want to try fixing this yourself.
       options:
-        - label: I will try and fix this problem on docs.flutterbrasil.dev.
+        - label: I will try and fix this problem on docs.flutter.dev.
           required: false

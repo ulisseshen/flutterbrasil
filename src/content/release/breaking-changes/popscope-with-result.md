@@ -3,10 +3,11 @@ title: Generic types in PopScope
 description: >-
   Added a generic type to the PopScope class and updated
   the onPopInvoked function signature.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 Added a generic type to the [`PopScope`][] class and replaced
 the [`onPopInvoked`][] with a new method [`onPopInvokedWithResult`][].
@@ -15,25 +16,25 @@ The new method takes a boolean `didPop` and a `result` as position parameters.
 Also replaced the [`Form.onPopInvoked`] with [`Form.onPopInvokedWithResult`][]
 for the same reason.
 
-## Contexto
+## Context
 
 Previously, `PopScope` didn't have a way to access
 the pop result when `onPopInvoked` was called.
 The generic type is added to the `PopScope` class so that
 the new method `onPopInvokedWithResult` can access the type-safe result.
 
-## Descrição da mudança
+## Description of change
 
 Added a generic type (`<T>`) to the `PopScope` class and
-a new method `onPopInvokedWithResult`. 
+a new method `onPopInvokedWithResult`.
 The `onPopInvoked` property was deprecated in favor of `onPopInvokedWithResult`.
 
 Also added a new method `onPopInvokedWithResult`
 to `Form` to replace `onPopInvoked`.
 
-## Guia de migração
+## Migration guide
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -71,7 +72,7 @@ void main() {
 }
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -117,14 +118,14 @@ consider using `PopScope<int>`.
 If the `PopScope` widgets are shared across multiple routes with
 different types, you can use `PopScope<Object?>` to catch all possible types.
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 3.22.0-26.0.pre<br>
-Na versão estável: 3.24.0
+Landed in version: 3.22.0-26.0.pre<br>
+In stable release: 3.24.0
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`PopScope`][]
 * [`onPopInvoked`][]
@@ -133,11 +134,11 @@ Documentação da API:
 * [`Form.onPopInvoked`][]
 * [`Form.onPopInvokedWithResult`][]
 
-Issues relevantes:
+Relevant issue:
 
 * [Issue 137458][]
 
-PRs relevantes:
+Relevant PR:
 
 * [Add generic type for result in PopScope][] _(reverted)_
 * [Reapply new PopScope API][] _(final reland)_

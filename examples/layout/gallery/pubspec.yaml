@@ -1,12 +1,12 @@
 name: gallery
 description: >-
   Legacy examples referenced in "Layouts in Flutter":
-  https://docs.flutterbrasil.dev/ui/layout.
+  https://docs.flutter.dev/ui/layout.
 version: 1.0.0
 
 resolution: workspace
 environment:
-  sdk: ^3.6.0
+  sdk: ^3.9.0
 
 dependencies:
   animations: ^2.0.11

@@ -4,10 +4,11 @@ description: >-
   The ability to control back navigation at the time that a back gesture is
   received has been replaced with an ahead-of-time navigation API in order to
   support Android 14's Predictive Back feature.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 To support Android 14's Predictive Back feature,
 a set of ahead-of-time APIs have replaced just-in-time navigation APIs,
@@ -105,7 +106,7 @@ void didChangeDependencies() {
 }
 ```
 
-## Guia de migração
+## Migration guide
 
 ### Migrating from `WillPopScope` to `PopScope`
 
@@ -113,7 +114,7 @@ The direct replacement of the `WillPopScope` widget is the `PopScope` widget.
 In many cases, logic that was being run at the time of the back gesture in
 `onWillPop` can be done at build time and set to `canPop`.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 WillPopScope(
@@ -124,7 +125,7 @@ WillPopScope(
 ),
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 PopScope(
@@ -140,7 +141,7 @@ that while `onWillPop` was called before the pop
 was handled and had the ability to cancel it,
 `onPopInvoked` is called after the pop is finished being handled.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 WillPopScope(
@@ -152,7 +153,7 @@ WillPopScope(
 ),
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 PopScope(
@@ -172,7 +173,7 @@ It's possible to do this using `PopScope` as well,
 but there is now a wrapper widget that makes this even easier:
 `NavigatorPopHandler`.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 WillPopScope(
@@ -184,7 +185,7 @@ WillPopScope(
 )
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 NavigatorPopHandler(
@@ -212,7 +213,7 @@ Migrating is identical to migrating from
 that pops could be canceled. Now that that's no longer true,
 this logic has been simplified to a synchronous getter.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 if (await myRoute.willPop() == RoutePopDisposition.doNotPop) {
@@ -220,7 +221,7 @@ if (await myRoute.willPop() == RoutePopDisposition.doNotPop) {
 }
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 if (myRoute.popDisposition == RoutePopDisposition.doNotPop) {
@@ -243,7 +244,7 @@ information necessary to `ModalRoute`. Anyone writing their own `PopScope`
 should implement `PopEntry` and register and unregister their widget with
 its enclosing `ModalRoute`.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 @override
@@ -259,7 +260,7 @@ void didChangeDependencies() {
 }
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 @override
@@ -286,7 +287,7 @@ existence of `PopScope` widgets. The definitive
 logic of whether a `ModalRoute` has popping blocked
 by a `PopScope` widget is baked into `ModalRoute.popDisposition`.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 if (_route.hasScopedWillPopCallback) {
@@ -294,7 +295,7 @@ if (_route.hasScopedWillPopCallback) {
 }
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 if (_route.popDisposition == RoutePopDisposition.doNotPop) {
@@ -305,10 +306,10 @@ if (_route.popDisposition == RoutePopDisposition.doNotPop) {
 ### Migrating a back confirmation dialog
 
 `WillPopScope` was sometimes used to show a confirmation
-dialog when a back gesture was received. 
+dialog when a back gesture was received.
 This can still be done with `PopScope` in a similar pattern.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 WillPopScope(
@@ -320,7 +321,7 @@ WillPopScope(
 )
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 return PopScope(
@@ -358,17 +359,15 @@ return PopScope(
   1. Run the app and perform a back gesture (swipe from the
      left side of the screen).
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 3.14.0-7.0.pre<br>
-Na versão estável: 3.16
+Landed in version: 3.14.0-7.0.pre<br>
+In stable release: 3.16
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
-* [`PopScope`][]
-* [`NavigatorPopHandler`][]
 * [`PopScope`][]
 * [`NavigatorPopHandler`][]
 * [`PopEntry`][]
@@ -378,11 +377,11 @@ Documentação da API:
 * [`ModalRoute.registerPopEntry`][]
 * [`ModalRoute.unregisterPopEntry`][]
 
-Issues relevantes:
+Relevant issues:
 
 * [Issue 109513][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [Predictive Back support for root routes][]
 * [Platform channel for predictive back][]

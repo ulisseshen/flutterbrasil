@@ -1,34 +1,33 @@
 ---
-title: API depreciada removida após v3.7
+title: Deprecated API removed after v3.7
 description: >
-  Após atingir o fim da vida útil, as seguintes APIs depreciadas
-  foram removidas do Flutter.
-ia-translate: true
+  After reaching end of life, the following deprecated APIs
+  were removed from Flutter.
 ---
 
-## Resumo
+## Summary
 
-De acordo com a [Política de Depreciação][Deprecation Policy] do Flutter,
-APIs depreciadas que atingiram o fim da vida útil após a
-3.7 versão estável foram removidas.
+In accordance with Flutter's [Deprecation Policy][],
+deprecated APIs that reached end of life after the
+3.7 stable release have been removed.
 
-Todas as APIs afetadas foram compiladas nesta
-fonte primária para auxiliar na migração. A
-[folha de referência rápida][quick reference sheet] também está disponível.
+All affected APIs have been compiled into this
+primary source to aid in migration. A
+[quick reference sheet][] is available as well.
 
 [Deprecation Policy]: {{site.repo.flutter}}/blob/main/docs/contributing/Tree-hygiene.md#deprecations
 [quick reference sheet]: /go/deprecations-removed-after-3-7
 
-## Mudanças
+## Changes
 
-Esta seção lista as depreciações, organizadas pela classe afetada.
+This section lists the deprecations, listed by the affected class.
 
 ### `GestureRecognizer.kind` & subclasses
 
-Suportado pelo Flutter Fix: sim
+Supported by Flutter Fix: yes
 
-`GestureRecognizer.kind` foi depreciado na v2.3.
-Use `GestureRecognizer.supportedDevices` no lugar.
+`GestureRecognizer.kind` was deprecated in v2.3.
+Use `GestureRecognizer.supportedDevices` instead.
 
 This same change affects all subclasses of `GestureRecognizer`:
 
@@ -52,17 +51,17 @@ This same change affects all subclasses of `GestureRecognizer`:
 This change allowed for multiple devices to be recognized for a gesture, rather
 than the single option `kind` provided.
 
-**Guia de migração**
+**Migration guide**
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 var myRecognizer = GestureRecognizer(
-  kind: PointerDeviceKind.mouse,  
+  kind: PointerDeviceKind.mouse,
 );
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 var myRecognizer = GestureRecognizer(
@@ -71,9 +70,9 @@ var myRecognizer = GestureRecognizer(
 
 ```
 
-**Referências**
+**References**
 
-Documentação da API:
+API documentation:
 
 * [`GestureRecognizer`][]
 * [`EagerGestureRecognizer`][]
@@ -93,10 +92,10 @@ Documentação da API:
 * [`PrimaryPointerGestureRecognizer`][]
 * [`ScaleGestureRecognizer`][]
 
-PRs relevantes:
+Relevant PRs:
 
-* Depreciado em [#81858][]
-* Removido em [#119572][]
+* Deprecated in [#81858][]
+* Removed in [#119572][]
 
 [`GestureRecognizer`]: {{site.api}}/flutter/gestures/GestureRecognizer-class.html
 [`EagerGestureRecognizer`]: {{site.api}}/flutter/gestures/EagerGestureRecognizer-class.html
@@ -124,7 +123,7 @@ PRs relevantes:
 
 ### `ThemeData` `accentColor`, `accentColorBrightness`, `accentColorTextTheme`, `accentColorIconTheme`, and `buttonColor`
 
-Suportado pelo Flutter Fix: sim
+Supported by Flutter Fix: yes
 
 The `accentColor`, `accentColorBrightness`, `accentColorTextTheme`,
 `accentColorIconTheme`, and `buttonColor` properties of `ThemeData` were
@@ -143,7 +142,7 @@ Uses of `ThemeData.accentColor` should be replaced with
 
 ## Migration guide
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 var myTheme = ThemeData(
@@ -154,7 +153,7 @@ var myTheme = ThemeData(
 var color = myTheme.accentColor;
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 var myTheme = ThemeData(
@@ -169,23 +168,23 @@ var myTheme = ThemeData(
 var color = myTheme.colorScheme.secondary;
 ```
 
-**Referências**
+**References**
 
 * [Accent color migration guide][]
 
-Documentação da API:
+API documentation:
 
 * [`ThemeData`][]
 * [`ColorScheme`][]
 
-Issues relevantes:
+Relevant issues:
 
 * [#56639][]
 * [#84748][]
 * [#56918][]
 * [#91772][]
 
-PRs relevantes:
+Relevant PRs:
 
 Deprecated in:
 
@@ -219,7 +218,7 @@ Removed in:
 
 ### `AppBar`, `SliverAppBar`, and `AppBarTheme` updates
 
-Suportado pelo Flutter Fix: sim
+Supported by Flutter Fix: yes
 
 In v2.4, several changes were made ot the app bar classes and their themes to
 better align with Material Design. Several properties were deprecated at that
@@ -234,9 +233,9 @@ For `AppBar`, `SliverAppBar` and `AppBarTheme`:
 Additionally, `AppBarTheme.color` was removed, with `AppBarTheme.backgroundColor`
 as its replacement.
 
-**Guia de migração**
+**Migration guide**
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 var toolbarTextStyle = TextStyle(...);
@@ -252,7 +251,7 @@ AppBar(
 AppBarTheme(color: Colors.blue);
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 var toolbarTextStyle = TextStyle(...);
@@ -265,15 +264,15 @@ AppBar(
 AppBarTheme(backgroundColor: Colors.blue);
 ```
 
-**Referências**
+**References**
 
-Documentação da API:
+API documentation:
 
 * [`AppBar`][]
 * [`SliverAppBar`][]
 * [`AppBarTheme`][]
 
-Issues relevantes:
+Relevant issues:
 
 * [#86127][]
 * [#70645][]
@@ -315,7 +314,7 @@ Removed in:
 
 ### `SystemChrome.setEnabledSystemUIOverlays`
 
-Suportado pelo Flutter Fix: sim
+Supported by Flutter Fix: yes
 
 In v2.3, `SystemChrome.setEnabledSystemUIOVerlays`, the static method for
 setting device system level overlays like status and navigation bars, was
@@ -328,9 +327,9 @@ Manually setting overlays, instead of choosing a specific mode, is still
 supported through `SystemUiMode.manual`, allowing developers to pass the same
 list of overlays as before.
 
-**Guia de migração**
+**Migration guide**
 
-Código antes da migração:
+Code before migration:
 ```dart
 SystemChrome.setEnabledSystemUIOverlays(<SystemUiOverlay>[
   SystemUiOverlay.top,
@@ -338,7 +337,7 @@ SystemChrome.setEnabledSystemUIOverlays(<SystemUiOverlay>[
 ]);
 ```
 
-Código após a migração:
+Code after migration:
 ```dart
 SystemChrome.setEnabledSystemUIMode(
   SystemUiMode.manual,
@@ -349,13 +348,13 @@ SystemChrome.setEnabledSystemUIMode(
 );
 ```
 
-**Referências**
+**References**
 
-Documentação da API:
+API documentation:
 
 * [`SystemChrome`][]
 
-Issues relevantes:
+Relevant issues:
 
 * [#35748][]
 * [#40974][]
@@ -384,36 +383,36 @@ Removed in:
 
 ### `SystemNavigator.routeUpdated`
 
-Suportado pelo Flutter Fix: sim
+Supported by Flutter Fix: yes
 
-In v2.3, `SystemNavigator.routeUpdated` foi depreciado na favor of
+In v2.3, `SystemNavigator.routeUpdated` was deprecated in favor of
 `SystemNavigator.routeInformationUpdated`.
 
 Instead of having two ways to update the engine about the current route, the
 change moved everything to one API, which separately selects the single-entry
 history mode if a `Navigator` that reports routes is created.
 
-**Guia de migração**
+**Migration guide**
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 SystemNavigator.routeUpdated(routeName: 'foo', previousRouteName: 'bar');
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 SystemNavigator.routeInformationUpdated(location: 'foo');
 ```
 
-**Referências**
+**References**
 
-Documentação da API:
+API documentation:
 
 * [`SystemNavigator`][]
 
-Issues relevantes:
+Relevant issues:
 
 * [#82574][]
 
@@ -435,7 +434,7 @@ Removed in:
 
 ### `AnimatedSize.vsync`
 
-Suportado pelo Flutter Fix: sim
+Supported by Flutter Fix: yes
 
 In v2.2, `AnimatedSize.vsyc` was deprecated. This property was no longer
 necessary after `AnimatedSize` was converted to a `StatefulWidget` whose `State`
@@ -444,9 +443,9 @@ leak.
 
 Uses of `vsync` should be removed, as `AnimatedSize` now handles this property.
 
-**Guia de migração**
+**Migration guide**
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 AnimatedSize(
@@ -455,7 +454,7 @@ AnimatedSize(
 );
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 AnimatedSize(
@@ -463,9 +462,9 @@ AnimatedSize(
 );
 ```
 
-**Referências**
+**References**
 
-Documentação da API:
+API documentation:
 
 * [`AnimatedSize`][]
 
@@ -485,6 +484,6 @@ Removed in:
 
 ---
 
-## Linha do tempo
+## Timeline
 
-Na versão estável: 3.10
+In stable release: 3.10

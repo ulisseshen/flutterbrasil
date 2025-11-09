@@ -3,10 +3,11 @@ title: Raw images on Web uses correct origin and colors
 description: >
   Raw images directly decoded by calling the Web engine functions now
   uses the correct pixel format and starts from the top left corner.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 How raw images are rendered on Web has been corrected
 and is now consistent with that on other platforms.
@@ -16,7 +17,7 @@ causing the resulting images to be upside-down
 and incorrectly colored
 (whose red and blue channels are swapped.)
 
-## Contexto
+## Context
 
 The "pixel stream" that Flutter uses internally
 has always been defined as the same format:
@@ -37,7 +38,7 @@ red, and alpha channels of the first pixel instead.)
 This bug has been fixed by [engine#29593][],
 but apps and libraries have to correct how their data are generated.
 
-## Descrição da mudança
+## Description of change
 
 The `pixels` argument of `ui.ImageDescriptor.raw` or `ui.decodeImageFromPixels`
 now uses the correct pixel order described by `format`,
@@ -47,7 +48,7 @@ Images rendered by directly calling these two functions
 Legacy code that invokes these functions directly might
 find their images upside down and colored incorrectly.
 
-## Guia de migração
+## Migration guide
 
 If the app uses the latest version of Flutter and experiences this situation,
 the most direct solution is to manually flip the image, and use the alternate
@@ -55,7 +56,7 @@ pixel format. However, this is unlikely the most optimized solution,
 since such pixel data are usually constructed from other sources,
 allowing flipping during the construction process.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 import 'dart:typed_data';
@@ -76,7 +77,7 @@ Future<ui.Image> parseMyImage(Uint8List image, int width, int height) async {
 }
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 import 'dart:typed_data';
@@ -116,7 +117,7 @@ and a pre-patch one.
 In that case, you can decide whether the behavior has been changed
 by letting it decode a single pixel first.
 
-Código após a migração:
+Code after migration:
 
 ```dart
 Uint8List verticallyFlipImage(Uint8List sourceBytes, int width, int height) {
@@ -146,24 +147,24 @@ Future<ui.Image> parseMyImage(Uint8List image, int width, int height) async {
 }
 ```
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 2.9.0-0.0.pre<br>
-Na versão estável: 2.10
+Landed in version: 2.9.0-0.0.pre<br>
+In stable release: 2.10
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`decodeImageFromPixels`][]
 * [`ImageDescriptor.raw`][]
 
-Issues relevantes:
+Relevant issues:
 
 * [Web: Regression in Master - PDF display distorted due to change in BMP Encoder][]
 * [Web: ImageDescriptor.raw flips and inverts images (partial reason included)][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [Web: Reland: Fix BMP encoder][]
 * [Clarify ImageDescriptor.raw pixel order and add version detector][]

@@ -3,16 +3,17 @@ title: TextInputClient currentTextEditingValue
 description: >
   Add a new field to the TextInputClient interface to
   get the current TextEditingValue from a client.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 Add a field, `currentTextEditingValue`, to the `TextInputClient`
 interface to get the current value of an editable text field
 from a platform client.
 
-## Contexto
+## Context
 
 The `TextInputClient` class is used by the Flutter framework to
 communicate with platform code about the current state of text
@@ -24,7 +25,7 @@ the app can ask the framework for the last known state.
 In order to obtain this information,
 the `TextEditingValue` was surfaced for the `TextInputClient`.
 
-## Descrição da mudança
+## Description of change
 
 On some supported platforms, the application can be moved into
 the background where it is expected to consume fewer resources.
@@ -61,7 +62,7 @@ This is how a `TextInputFormatter` generally works,
 or what happens when Dart code directly sets
 `TextEditingController.value`.
 
-## Guia de migração
+## Migration guide
 
 If you previously implemented or extended `TextEditingClient`,
 you must now add the appropriate override for `currentTextEditingValue`.
@@ -83,7 +84,7 @@ This allows you to add the new member with an
 in the framework. Later, you can remove the
 temporary interface definition.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 class _MyCustomTextWidgetState extends State<MyCustomWidget> implements TextEditingClient {
@@ -106,7 +107,7 @@ class _MyCustomTextWidgetState extends State<MyCustomWidget> implements TextEdit
 }
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 class _MyCustomTextWidgetState extends State<MyCustomWidget> implements TextEditingClient {
@@ -132,25 +133,25 @@ class _MyCustomTextWidgetState extends State<MyCustomWidget> implements TextEdit
 }
 ```
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 1.16.3<br>
-Na versão estável: 1.17
+Landed in version: 1.16.3<br>
+In stable release: 1.17
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`TextInput`][]
 * [`TextInputClient`][]
 * [`EditableText`][]
 * [`SystemChannels.textInput`][]
 
-Issues relevantes:
+Relevant issue:
 
 * [Issue 47137][]
 
-PRs relevantes:
+Relevant PR:
 
 * [Fix requestExistingInputState response][]
 

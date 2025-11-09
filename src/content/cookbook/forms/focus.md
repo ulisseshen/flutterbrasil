@@ -1,36 +1,32 @@
 ---
-title: Focus e text fields
-description: Como funciona o focus com text fields.
-js:
-  - defer: true
-    url: /assets/js/inject_dartpad.js
-ia-translate: true
+title: Focus and text fields
+description: How focus works with text fields.
 ---
 
 <?code-excerpt path-base="cookbook/forms/focus/"?>
 
-Quando um text field é selecionado e está aceitando entrada de dados,
-dizemos que ele tem "focus".
-Geralmente, usuários movem o focus para um text field tocando nele,
-e desenvolvedores movem o focus para um text field programaticamente
-usando as ferramentas descritas nesta receita.
+When a text field is selected and accepting input,
+it is said to have "focus."
+Generally, users shift focus to a text field by tapping,
+and developers shift focus to a text field programmatically by
+using the tools described in this recipe.
 
-Gerenciar o focus é uma ferramenta fundamental para criar forms com um fluxo
-intuitivo. Por exemplo, digamos que você tem uma tela de busca com um text field.
-Quando o usuário navega para a tela de busca,
-você pode definir o focus para o text field do termo de busca.
-Isso permite que o usuário comece a digitar assim que a tela
-estiver visível, sem precisar tocar manualmente no text field.
+Managing focus is a fundamental tool for creating forms with an intuitive
+flow. For example, say you have a search screen with a text field.
+When the user navigates to the search screen,
+you can set the focus to the text field for the search term.
+This allows the user to start typing as soon as the screen
+is visible, without needing to manually tap the text field.
 
-Nesta receita, aprenda como dar focus
-a um text field assim que ele estiver visível,
-bem como dar focus a um text field
-quando um botão for tocado.
+In this recipe, learn how to give the focus
+to a text field as soon as it's visible,
+as well as how to give focus to a text field
+when a button is tapped.
 
-## Dar focus a um text field assim que ele estiver visível
+## Focus a text field as soon as it's visible
 
-Para dar focus a um text field assim que ele estiver visível,
-use a propriedade `autofocus`.
+To give focus to a text field as soon as it's visible,
+use the `autofocus` property.
 
 ```dart
 TextField(
@@ -38,33 +34,33 @@ TextField(
 );
 ```
 
-Para mais informações sobre como lidar com entrada de dados e criar text fields,
-veja a seção [Forms][] do cookbook.
+For more information on handling input and creating text fields,
+see the [Forms][] section of the cookbook.
 
-## Dar focus a um text field quando um botão for tocado
+## Focus a text field when a button is tapped
 
-Em vez de mover imediatamente o focus para um text field específico,
-você pode precisar dar focus a um text field em um momento posterior.
-No mundo real, você também pode precisar dar focus a um text field específico
-em resposta a uma chamada de API ou erro de validação.
-Neste exemplo, dê focus a um text field depois que o usuário
-pressionar um botão usando os seguintes passos:
+Rather than immediately shifting focus to a specific text field,
+you might need to give focus to a text field at a later point in time.
+In the real world, you might also need to give focus to a specific
+text field in response to an API call or a validation error.
+In this example, give focus to a text field after the user
+presses a button using the following steps:
 
-  1. Criar um `FocusNode`.
-  2. Passar o `FocusNode` para um `TextField`.
-  3. Dar focus ao `TextField` quando um botão for tocado.
+  1. Create a `FocusNode`.
+  2. Pass the `FocusNode` to a `TextField`.
+  3. Give focus to the `TextField` when a button is tapped.
 
-### 1. Criar um `FocusNode`
+### 1. Create a `FocusNode`
 
-Primeiro, crie um [`FocusNode`][].
-Use o `FocusNode` para identificar um `TextField` específico na
-"árvore de focus" do Flutter. Isso permite que você dê focus ao `TextField`
-nos próximos passos.
+First, create a [`FocusNode`][].
+Use the `FocusNode` to identify a specific `TextField` in Flutter's
+"focus tree." This allows you to give focus to the `TextField`
+in the next steps.
 
-Como focus nodes são objetos de longa duração, gerencie o ciclo de vida
-usando um objeto `State`. Use as instruções a seguir para criar
-uma instância de `FocusNode` dentro do método `initState()` de uma
-classe `State`, e limpe-o no método `dispose()`:
+Since focus nodes are long-lived objects, manage the lifecycle
+using a `State` object. Use the following instructions to create
+a `FocusNode` instance inside the `initState()` method of a
+`State` class, and clean it up in the `dispose()` method:
 
 <?code-excerpt "lib/starter.dart (Starter)" remove="return Container();"?>
 ```dart
@@ -105,26 +101,24 @@ class _MyCustomFormState extends State<MyCustomForm> {
 }
 ```
 
-### 2. Passar o `FocusNode` para um `TextField`
+### 2. Pass the `FocusNode` to a `TextField`
 
-Agora que você tem um `FocusNode`,
-passe-o para um `TextField` específico no método `build()`.
+Now that you have a `FocusNode`,
+pass it to a specific `TextField` in the `build()` method.
 
 <?code-excerpt "lib/step2.dart (Build)"?>
 ```dart
 @override
 Widget build(BuildContext context) {
-  return TextField(
-    focusNode: myFocusNode,
-  );
+  return TextField(focusNode: myFocusNode);
 }
 ```
 
-### 3. Dar focus ao `TextField` quando um botão for tocado
+### 3. Give focus to the `TextField` when a button is tapped
 
-Finalmente, dê focus ao text field quando o usuário tocar em um floating
-action button. Use o método [`requestFocus()`][] para realizar
-esta tarefa.
+Finally, focus the text field when the user taps a floating
+action button. Use the [`requestFocus()`][] method to perform
+this task.
 
 <?code-excerpt "lib/step3.dart (FloatingActionButton)" replace="/^floatingActionButton\: //g"?>
 ```dart
@@ -135,7 +129,7 @@ FloatingActionButton(
 ),
 ```
 
-## Exemplo interativo
+## Interactive example
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter text focus hands-on example in DartPad" run="true"
@@ -148,10 +142,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Text Field Focus',
-      home: MyCustomForm(),
-    );
+    return const MaterialApp(title: 'Text Field Focus', home: MyCustomForm());
   }
 }
 
@@ -188,22 +179,16 @@ class _MyCustomFormState extends State<MyCustomForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Text Field Focus'),
-      ),
+      appBar: AppBar(title: const Text('Text Field Focus')),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
             // The first text field is focused on as soon as the app starts.
-            const TextField(
-              autofocus: true,
-            ),
+            const TextField(autofocus: true),
             // The second text field is focused on when a user taps the
             // FloatingActionButton.
-            TextField(
-              focusNode: myFocusNode,
-            ),
+            TextField(focusNode: myFocusNode),
           ],
         ),
       ),
@@ -220,13 +205,13 @@ class _MyCustomFormState extends State<MyCustomForm> {
 ```
 
 <noscript>
-  <img src="/assets/images/docs/cookbook/focus.gif" alt="Text Field Focus Demo" class="site-mobile-screenshot" />
+  <img src="/assets/images/docs/cookbook/focus.webp" alt="Text Field Focus Demo" class="site-mobile-screenshot" />
 </noscript>
 
 
 [fix has landed]: {{site.repo.flutter}}/pull/50372
 [`FocusNode`]: {{site.api}}/flutter/widgets/FocusNode-class.html
-[Forms]: /cookbook#forms
+[Forms]: /cookbook/forms
 [flutter/flutter@bf551a3]: {{site.repo.flutter}}/commit/bf551a31fe7ef45c854a219686b6837400bfd94c
 [Issue 52221]: {{site.repo.flutter}}/issues/52221
 [`requestFocus()`]: {{site.api}}/flutter/widgets/FocusNode/requestFocus.html

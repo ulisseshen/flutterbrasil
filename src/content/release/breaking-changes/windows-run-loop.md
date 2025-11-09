@@ -1,37 +1,38 @@
 ---
-ia-translate: true
-title: Migrar um projeto Windows para o run loop idiomático
-description: Como atualizar um projeto Windows para usar o run loop idiomático
+title: Migrate a Windows project to the idiomatic run loop
+description: How to update a Windows project to use the idiomatic run loop
 ---
 
-O Flutter 2.5 substituiu o run loop dos apps Windows por uma
-message pump idiomática do Windows para reduzir o uso de CPU.
+{% render "docs/breaking-changes.md" %}
 
-Projetos criados antes do Flutter versão 2.5 precisam ser
-migrados para obter essa melhoria. Você deve seguir os
-passos de migração abaixo se o arquivo `windows/runner/run_loop.h`
-existir no seu projeto.
+Flutter 2.5 replaced Windows apps' run loop with an idiomatic
+Windows message pump to reduce CPU usage.
 
-## Passos de migração
+Projects created before Flutter version 2.5 need to be
+migrated to get this improvement. You should follow the
+migration steps below if the `windows/runner/run_loop.h`
+file exists in your project.
+
+## Migration steps
 
 :::note
-Como parte desta migração, você deve recriar seu projeto Windows,
-o que sobrescreverá quaisquer alterações personalizadas nos
-arquivos da pasta `windows/runner`. Os passos a seguir
-incluem instruções para este cenário.
+As part of this migration, you must recreate your Windows project,
+which clobbers any custom changes to the
+files in the `windows/runner` folder.  The following steps
+include instructions for this scenario.
 :::
 
-Seu projeto pode ser atualizado usando estes passos:
+Your project can be updated using these steps:
 
-1. Verifique que você está no Flutter versão 2.5 ou mais recente usando `flutter --version`
-2. Se necessário, use `flutter upgrade` para atualizar para a versão mais recente do
+1. Verify you are on Flutter version 2.5 or newer using `flutter --version`
+2. If needed, use `flutter upgrade` to update to the latest version of the
 Flutter SDK
-3. Faça backup do seu projeto com git (ou seu sistema de controle de versão preferido),
-   pois você precisará reaplicar quaisquer alterações locais que fez (se houver) ao seu
-   projeto em um passo posterior
-4. Delete todos os arquivos na pasta `windows/runner`
-5. Execute `flutter create --platforms=windows .` para recriar o projeto Windows
-6. Revise as alterações nos arquivos da pasta `windows/runner`
-7. Reaplique quaisquer alterações personalizadas feitas aos arquivos na
-pasta `windows/runner` antes desta migração
-8. Verifique que seu app compila usando `flutter build windows`
+3. Backup your project with git (or your preferred version control system),
+   since you need to reapply any local changes you've made (if any) to your
+   project in a later step
+4. Delete all files under the `windows/runner` folder
+5. Run `flutter create --platforms=windows .` to recreate the Windows project
+6. Review the changes to files in the `windows/runner` folder
+7. Reapply any custom changes made to the files in the
+`windows/runner` folder prior to this migration
+8. Verify that your app builds using `flutter build windows`

@@ -1,38 +1,34 @@
 ---
-title: Crie um indicador de digitação
-description: Como implementar um indicador de digitação.
-js:
-  - defer: true
-    url: /assets/js/inject_dartpad.js
-ia-translate: true
+title: Create a typing indicator
+description: How to implement a typing indicator.
 ---
 
 <?code-excerpt path-base="cookbook/effects/typing_indicator"?>
 
-{% include docs/deprecated.md %}
+{% render "docs/deprecated.md" %}
 
-Aplicativos de chat modernos exibem indicadores quando outros usuários
-estão ativamente digitando respostas. Esses indicadores ajudam
-a prevenir respostas rápidas e conflitantes entre você
-e a outra pessoa. Nesta receita, você constrói um
-indicador de digitação em balão de fala que anima para dentro e para fora da visualização.
+Modern chat apps display indicators when other users
+are actively typing responses. These indicators help
+prevent rapid and conflicting responses between you
+and the other person. In this recipe, you build a
+speech bubble typing indicator that animates in and out of view.
 
-A animação a seguir mostra o comportamento do aplicativo:
+The following animation shows the app's behavior:
 
-![O indicador de digitação é ligado e desligado](/assets/images/docs/cookbook/effects/TypingIndicator.gif){:.site-mobile-screenshot}
+![The typing indicator is turned on and off](/assets/images/docs/cookbook/effects/TypingIndicator.webp){:.site-mobile-screenshot}
 
-## Defina o widget do indicador de digitação
+## Define the typing indicator widget
 
-O indicador de digitação existe dentro de seu próprio widget para que
-possa ser usado em qualquer lugar no seu aplicativo. Como qualquer widget
-que controla animações, o indicador de digitação precisa ser
-um widget stateful. O widget aceita um valor booleano
-que determina se o indicador é visível.
-Este indicador de digitação em balão de fala aceita uma cor
-para os balões e duas cores para as fases clara e escura
-dos círculos piscantes dentro do balão de fala grande.
+The typing indicator exists within its own widget so that
+it can be used anywhere in your app. As with any widget
+that controls animations, the typing indicator needs to
+be a stateful widget. The widget accepts a boolean value
+that determines whether the indicator is visible.
+This speech-bubble-typing indicator accepts a color
+for the bubbles and two colors for the light and dark
+phases of the flashing circles within the large speech bubble.
 
-Defina um novo widget stateful chamado `TypingIndicator`.
+Define a new stateful widget called `TypingIndicator`.
 
 <?code-excerpt "lib/excerpt1.dart (typing-indicator)"?>
 ```dart
@@ -63,27 +59,27 @@ class _TypingIndicatorState extends State<TypingIndicator> {
 }
 ```
 
-## Abra espaço para o indicador de digitação
+## Make room for the typing indicator
 
-O indicador de digitação não ocupa nenhum espaço quando não
-está sendo exibido. Portanto, o indicador precisa crescer
-em altura quando aparece, e encolher em altura
-quando desaparece.
+The typing indicator doesn't occupy any space when it
+isn't displayed. Therefore, the indicator needs to grow
+in height when it appears, and shrink in height
+when it disappears.
 
-A altura do indicador de digitação poderia ser a altura
-natural dos balões de fala dentro do indicador de digitação.
-No entanto, os balões de fala se expandem com uma curva elástica.
-Esta elasticidade seria muito visualmente chocante se rapidamente
-empurrasse todas as mensagens da conversa para cima ou para baixo. Em vez disso,
-a altura do indicador de digitação anima por conta própria,
-expandindo suavemente antes que os balões apareçam.
-Quando os balões desaparecem, a altura se contrai suavemente para zero.
-Este comportamento requer uma [explicit animation][] para a
-altura do indicador de digitação.
+The height of the typing indicator could be the natural
+height of the speech bubbles within the typing indicator.
+However, the speech bubbles expand with an elastic curve.
+This elasticity would be too visually jarring if it quickly
+pushed all the conversation messages up or down. Instead,
+the height of the typing indicator animates on its own,
+smoothly expanding before the bubbles appear.
+When the bubbles disappear, the height smoothly contracts to zero.
+This behavior requires an [explicit animation][] for the
+height of the typing indicator.
 
-Defina uma animação para a altura do indicador de digitação,
-e então aplique esse valor animado ao widget `SizedBox`
-dentro do indicador de digitação.
+Define an animation for the height of the typing indicator,
+and then apply that animated value to the `SizedBox`
+widget within the typing indicator.
 
 <?code-excerpt "lib/excerpt2.dart (typing-indicator-state)"?>
 ```dart
@@ -96,18 +92,13 @@ class _TypingIndicatorState extends State<TypingIndicator>
   void initState() {
     super.initState();
 
-    _appearanceController = AnimationController(
-      vsync: this,
-    );
+    _appearanceController = AnimationController(vsync: this);
 
     _indicatorSpaceAnimation = CurvedAnimation(
       parent: _appearanceController,
       curve: const Interval(0.0, 0.4, curve: Curves.easeOut),
       reverseCurve: const Interval(0.0, 1.0, curve: Curves.easeOut),
-    ).drive(Tween<double>(
-      begin: 0.0,
-      end: 60.0,
-    ));
+    ).drive(Tween<double>(begin: 0.0, end: 60.0));
 
     if (widget.showIndicator) {
       _showIndicator();
@@ -150,59 +141,57 @@ class _TypingIndicatorState extends State<TypingIndicator>
     return AnimatedBuilder(
       animation: _indicatorSpaceAnimation,
       builder: (context, child) {
-        return SizedBox(
-          height: _indicatorSpaceAnimation.value,
-        );
+        return SizedBox(height: _indicatorSpaceAnimation.value);
       },
     );
   }
 }
 ```
 
-O `TypingIndicator` executa uma animação para frente ou para trás
-dependendo se a variável `showIndicator` recebida
-é `true` ou `false`, respectivamente.
+The `TypingIndicator` runs an animation forward or backward
+depending on whether the incoming `showIndicator` variable
+is `true` or `false`, respectively.
 
-A animação que controla a altura usa diferentes
-curvas de animação dependendo de sua direção.
-Quando a animação se move para frente, ela precisa rapidamente abrir
-espaço para os balões de fala. Por esta razão,
-a curva para frente executa toda a animação de altura dentro
-dos primeiros 40% da animação de aparência geral.
-Quando a animação inverte, ela precisa dar aos balões de fala
-tempo suficiente para desaparecer antes de contrair a altura.
-Uma curva ease-out que usa todo o tempo disponível é uma
-boa maneira de realizar este comportamento.
+The animation that controls the height uses different
+animation curves depending on its direction.
+When the animation moves forward, it needs to quickly make
+space for the speech bubbles. For this reason,
+the forward curve runs the entire height animation within
+the first 40% of the overall appearance animation.
+When the animation reverses, it needs to give the speech bubbles
+enough time to disappear before contracting the height.
+An ease-out curve that uses all the available time is a
+good way to accomplish this behavior.
 
 :::note
-O widget `AnimatedBuilder` reconstrói o widget `SizedBox`
-conforme a `_indicatorSpaceAnimation` muda.
-A alternativa ao uso de `AnimatedBuilder` é
-invocar `setState()` toda vez que a animação muda,
-e então reconstruir toda a árvore de widgets dentro de `TypingIndicator`.
-Invocar `setState()` desta maneira é aceitável,
-mas conforme outros widgets são adicionados a esta árvore de widgets,
-reconstruir toda a árvore apenas para mudar a altura
-do widget `SizedBox` desperdiça ciclos de CPU.
+The `AnimatedBuilder` widget rebuilds the `SizedBox`
+widget as the `_indicatorSpaceAnimation` changes.
+The alternative to using `AnimatedBuilder` is to
+invoke `setState()` every time the animation changes,
+and then rebuild the entire widget tree within `TypingIndicator`.
+Invoking `setState()` in this manner is acceptable,
+but as other widgets are added to this widget tree,
+rebuilding the entire tree just to change the height
+of the `SizedBox` widget wastes CPU cycles.
 :::
 
-## Anime os balões de fala
+## Animate the speech bubbles
 
-O indicador de digitação exibe três balões de fala.
-Os dois primeiros balões são pequenos e redondos. O terceiro
-balão é oblongo e contém alguns círculos piscantes.
-Esses balões são escalonados em posição a partir do canto
-inferior esquerdo do espaço disponível.
+The typing indicator displays three speech bubbles.
+The first two bubbles are small and round. The third
+bubble is oblong and contains a few flashing circles.
+These bubbles are staggered in position from the lower
+left of the available space.
 
-Cada balão aparece animando sua escala de 0% a 100%,
-e cada balão faz isso em momentos ligeiramente diferentes para
-que pareça que cada balão aparece após o anterior.
-Isso é chamado de [staggered animation][].
+Each bubble appears by animating its scale from 0% to 100%,
+and each bubble does this at slightly different times so
+that it looks like each bubble appears after the one before it.
+This is called a [staggered animation][].
 
-Pinte os três balões nas posições desejadas a partir do
-canto inferior esquerdo. Em seguida, anime a escala dos balões
-para que os balões sejam escalonados sempre que a propriedade `showIndicator`
-mudar.
+Paint the three bubbles in the desired positions from the
+lower left. Then, animate the scale of the bubbles
+so that the bubbles are staggered whenever the `showIndicator`
+property changes.
 
 <?code-excerpt "lib/excerpt3.dart (bubbles)"?>
 ```dart
@@ -227,9 +216,8 @@ class _TypingIndicatorState extends State<TypingIndicator>
   void initState() {
     super.initState();
 
-    _appearanceController = AnimationController(
-      vsync: this,
-    )..addListener(() {
+    _appearanceController = AnimationController(vsync: this)
+      ..addListener(() {
         setState(() {});
       });
 
@@ -237,10 +225,7 @@ class _TypingIndicatorState extends State<TypingIndicator>
       parent: _appearanceController,
       curve: const Interval(0.0, 0.4, curve: Curves.easeOut),
       reverseCurve: const Interval(0.0, 1.0, curve: Curves.easeOut),
-    ).drive(Tween<double>(
-      begin: 0.0,
-      end: 60.0,
-    ));
+    ).drive(Tween<double>(begin: 0.0, end: 60.0));
 
     _smallBubbleAnimation = CurvedAnimation(
       parent: _appearanceController,
@@ -299,10 +284,7 @@ class _TypingIndicatorState extends State<TypingIndicator>
     return AnimatedBuilder(
       animation: _indicatorSpaceAnimation,
       builder: (context, child) {
-        return SizedBox(
-          height: _indicatorSpaceAnimation.value,
-          child: child,
-        );
+        return SizedBox(height: _indicatorSpaceAnimation.value, child: child);
       },
       child: Stack(
         children: [
@@ -310,19 +292,13 @@ class _TypingIndicatorState extends State<TypingIndicator>
             animation: _smallBubbleAnimation,
             left: 8,
             bottom: 8,
-            bubble: CircleBubble(
-              size: 8,
-              bubbleColor: widget.bubbleColor,
-            ),
+            bubble: CircleBubble(size: 8, bubbleColor: widget.bubbleColor),
           ),
           AnimatedBubble(
             animation: _mediumBubbleAnimation,
             left: 10,
             bottom: 10,
-            bubble: CircleBubble(
-              size: 16,
-              bubbleColor: widget.bubbleColor,
-            ),
+            bubble: CircleBubble(size: 16, bubbleColor: widget.bubbleColor),
           ),
           AnimatedBubble(
             animation: _largeBubbleAnimation,
@@ -356,10 +332,7 @@ class CircleBubble extends StatelessWidget {
     return Container(
       width: size,
       height: size,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: bubbleColor,
-      ),
+      decoration: BoxDecoration(shape: BoxShape.circle, color: bubbleColor),
     );
   }
 }
@@ -427,17 +400,17 @@ class StatusBubble extends StatelessWidget {
 }
 ```
 
-## Anime os círculos piscantes
+## Animate the flashing circles
 
-Dentro do balão de fala grande, o indicador de digitação
-exibe três pequenos círculos que piscam repetidamente.
-Cada círculo pisca em um momento ligeiramente diferente,
-dando a impressão de que uma única fonte de luz está
-se movendo por trás de cada círculo. Esta animação piscante
-se repete indefinidamente.
+Within the large speech bubble, the typing indicator
+displays three small circles that flash repeatedly.
+Each circle flashes at a slightly different time,
+giving the impression that a single light source is
+moving behind each circle. This flashing animation
+repeats indefinitely.
 
-Introduza um `AnimationController` repetitivo para
-implementar o piscar dos círculos e passe-o para o
+Introduce a repeating `AnimationController` to
+implement the circle flashing and pass it to the
 `StatusBubble`.
 
 <?code-excerpt "lib/excerpt4.dart (animation-controller)"?>
@@ -501,10 +474,7 @@ class _TypingIndicatorState extends State<TypingIndicator>
     return AnimatedBuilder(
       animation: _indicatorSpaceAnimation,
       builder: (context, child) {
-        return SizedBox(
-          height: _indicatorSpaceAnimation.value,
-          child: child,
-        );
+        return SizedBox(height: _indicatorSpaceAnimation.value, child: child);
       },
       child: Stack(
         children: [
@@ -512,19 +482,13 @@ class _TypingIndicatorState extends State<TypingIndicator>
             animation: _smallBubbleAnimation,
             left: 8,
             bottom: 8,
-            bubble: CircleBubble(
-              size: 8,
-              bubbleColor: widget.bubbleColor,
-            ),
+            bubble: CircleBubble(size: 8, bubbleColor: widget.bubbleColor),
           ),
           AnimatedBubble(
             animation: _mediumBubbleAnimation,
             left: 10,
             bottom: 10,
-            bubble: CircleBubble(
-              size: 16,
-              bubbleColor: widget.bubbleColor,
-            ),
+            bubble: CircleBubble(size: 16, bubbleColor: widget.bubbleColor),
           ),
           AnimatedBubble(
             animation: _largeBubbleAnimation,
@@ -644,24 +608,25 @@ class FlashingCircle extends StatelessWidget {
 }
 ```
 
-Cada círculo calcula sua cor usando uma função seno (`sin`)
-para que a cor mude gradualmente nos pontos
-mínimo e máximo. Além disso,
-cada círculo anima sua cor dentro de um intervalo especificado
-que ocupa uma porção do tempo total da animação.
-A posição desses intervalos gera o
-efeito visual de uma única fonte de luz se movendo por trás dos três pontos.
+Each circle calculates its color using a sine (`sin`)
+function so that the color changes gradually at the
+minimum and maximum points. Additionally,
+each circle animates its color within a specified interval
+that takes up a portion of the overall animation time.
+The position of these intervals generates the visual
+effect of a single light source moving behind the three dots.
 
-Parabéns! Agora você tem um indicador de digitação que permite aos usuários
-saber quando alguém está digitando. O indicador anima para dentro e para fora,
-e exibe uma animação repetitiva enquanto o outro usuário está digitando.
+Congratulations! You now have a typing indicator that lets users
+know when someone else is typing. The indicator animates in and out,
+and displays a repeating animation while the other user is typing.
 
-## Exemplo interativo
+## Interactive example
 
-Execute o aplicativo:
+Run the app:
 
-* Clique no interruptor redondo de ligar/desligar na parte inferior
-  da tela para ligar e desligar o balão indicador de digitação.
+* Click the round on/off switch at the bottom
+  of the screen to turn the typing indicator bubble
+  on and off.
 
 <!-- Start DartPad -->
 
@@ -684,9 +649,7 @@ void main() {
 const _backgroundColor = Color(0xFF333333);
 
 class ExampleIsTyping extends StatefulWidget {
-  const ExampleIsTyping({
-    super.key,
-  });
+  const ExampleIsTyping({super.key});
 
   @override
   State<ExampleIsTyping> createState() => _ExampleIsTypingState();
@@ -699,9 +662,7 @@ class _ExampleIsTypingState extends State<ExampleIsTyping> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: _backgroundColor,
-      appBar: AppBar(
-        title: const Text('Typing Indicator'),
-      ),
+      appBar: AppBar(title: const Text('Typing Indicator')),
       body: Column(
         children: [
           Expanded(
@@ -719,9 +680,7 @@ class _ExampleIsTypingState extends State<ExampleIsTyping> {
           ),
           Align(
             alignment: Alignment.bottomLeft,
-            child: TypingIndicator(
-              showIndicator: _isSomeoneTyping,
-            ),
+            child: TypingIndicator(showIndicator: _isSomeoneTyping),
           ),
           Container(
             color: Colors.grey,
@@ -782,9 +741,8 @@ class _TypingIndicatorState extends State<TypingIndicator>
   void initState() {
     super.initState();
 
-    _appearanceController = AnimationController(
-      vsync: this,
-    )..addListener(() {
+    _appearanceController = AnimationController(vsync: this)
+      ..addListener(() {
         setState(() {});
       });
 
@@ -792,10 +750,7 @@ class _TypingIndicatorState extends State<TypingIndicator>
       parent: _appearanceController,
       curve: const Interval(0.0, 0.4, curve: Curves.easeOut),
       reverseCurve: const Interval(0.0, 1.0, curve: Curves.easeOut),
-    ).drive(Tween<double>(
-      begin: 0.0,
-      end: 60.0,
-    ));
+    ).drive(Tween<double>(begin: 0.0, end: 60.0));
 
     _smallBubbleAnimation = CurvedAnimation(
       parent: _appearanceController,
@@ -862,10 +817,7 @@ class _TypingIndicatorState extends State<TypingIndicator>
     return AnimatedBuilder(
       animation: _indicatorSpaceAnimation,
       builder: (context, child) {
-        return SizedBox(
-          height: _indicatorSpaceAnimation.value,
-          child: child,
-        );
+        return SizedBox(height: _indicatorSpaceAnimation.value, child: child);
       },
       child: Stack(
         children: [
@@ -873,19 +825,13 @@ class _TypingIndicatorState extends State<TypingIndicator>
             animation: _smallBubbleAnimation,
             left: 8,
             bottom: 8,
-            bubble: CircleBubble(
-              size: 8,
-              bubbleColor: widget.bubbleColor,
-            ),
+            bubble: CircleBubble(size: 8, bubbleColor: widget.bubbleColor),
           ),
           AnimatedBubble(
             animation: _mediumBubbleAnimation,
             left: 10,
             bottom: 10,
-            bubble: CircleBubble(
-              size: 16,
-              bubbleColor: widget.bubbleColor,
-            ),
+            bubble: CircleBubble(size: 16, bubbleColor: widget.bubbleColor),
           ),
           AnimatedBubble(
             animation: _largeBubbleAnimation,
@@ -920,10 +866,7 @@ class CircleBubble extends StatelessWidget {
     return Container(
       width: size,
       height: size,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: bubbleColor,
-      ),
+      decoration: BoxDecoration(shape: BoxShape.circle, color: bubbleColor),
     );
   }
 }
@@ -1062,10 +1005,7 @@ class FlashingCircle extends StatelessWidget {
 }
 
 class FakeMessage extends StatelessWidget {
-  const FakeMessage({
-    super.key,
-    required this.isBig,
-  });
+  const FakeMessage({super.key, required this.isBig});
 
   final bool isBig;
 

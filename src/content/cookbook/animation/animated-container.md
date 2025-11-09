@@ -1,48 +1,44 @@
 ---
-title: Animar as propriedades de um container
-description: Como animar propriedades de um container usando animações implícitas.
-js:
-  - defer: true
-    url: /assets/js/inject_dartpad.js
-ia-translate: true
+title: Animate the properties of a container
+description: How to animate properties of a container using implicit animations.
 ---
 
 <?code-excerpt path-base="cookbook/animation/animated_container/"?>
 
-A classe [`Container`][] fornece uma maneira conveniente
-de criar um widget com propriedades específicas:
-largura, altura, cor de fundo, padding, bordas e muito mais.
+The [`Container`][] class provides a convenient way
+to create a widget with specific properties:
+width, height, background color, padding, borders, and more.
 
-Animações simples geralmente envolvem mudar essas propriedades ao longo do tempo.
-Por exemplo,
-você pode querer animar a cor de fundo de cinza para verde para
-indicar que um item foi selecionado pelo usuário.
+Simple animations often involve changing these properties over time.
+For example,
+you might want to animate the background color from grey to green to
+indicate that an item has been selected by the user.
 
-Para animar essas propriedades,
-o Flutter fornece o widget [`AnimatedContainer`][].
-Assim como o widget `Container`, `AnimatedContainer` permite que você defina
-a largura, altura, cores de fundo e muito mais. No entanto, quando o
-`AnimatedContainer` é reconstruído com novas propriedades, ele automaticamente
-anima entre os valores antigos e novos. No Flutter, esses tipos de
-animações são conhecidas como "animações implícitas".
+To animate these properties,
+Flutter provides the [`AnimatedContainer`][] widget.
+Like the `Container` widget, `AnimatedContainer` allows you to define
+the width, height, background colors, and more. However, when the
+`AnimatedContainer` is rebuilt with new properties, it automatically
+animates between the old and new values. In Flutter, these types of
+animations are known as "implicit animations."
 
-Esta receita descreve como usar um `AnimatedContainer` para animar o tamanho,
-cor de fundo e raio da borda quando o usuário toca em um botão
-usando os seguintes passos:
+This recipe describes how to use an `AnimatedContainer` to animate the size,
+background color, and border radius when the user taps a button
+using the following steps:
 
-  1. Criar um StatefulWidget com propriedades padrão.
-  2. Construir um `AnimatedContainer` usando as propriedades.
-  3. Iniciar a animação reconstruindo com novas propriedades.
+  1. Create a StatefulWidget with default properties.
+  2. Build an `AnimatedContainer` using the properties.
+  3. Start the animation by rebuilding with new properties.
 
-## 1. Criar um StatefulWidget com propriedades padrão
+## 1. Create a StatefulWidget with default properties
 
-Para começar, crie as classes [`StatefulWidget`][] e [`State`][].
-Use a classe State personalizada para definir as propriedades que mudam ao longo do
-tempo. Neste exemplo, isso inclui a largura, altura, cor e raio da
-borda. Você também pode definir o valor padrão de cada propriedade.
+To start, create [`StatefulWidget`][] and [`State`][] classes.
+Use the custom State class to define the properties that change over
+time. In this example, that includes the width, height, color, and border
+radius. You can also define the default value of each property.
 
-Essas propriedades pertencem a uma classe `State` personalizada para que elas
-possam ser atualizadas quando o usuário toca em um botão.
+These properties belong to a custom `State` class so they
+can be updated when the user taps a button.
 
 <?code-excerpt "lib/starter.dart (Starter)" remove="return Container();"?>
 ```dart
@@ -68,11 +64,11 @@ class _AnimatedContainerAppState extends State<AnimatedContainerApp> {
 }
 ```
 
-## 2. Construir um `AnimatedContainer` usando as propriedades
+## 2. Build an `AnimatedContainer` using the properties
 
-Em seguida, construa o `AnimatedContainer` usando as propriedades definidas no
-passo anterior. Além disso, forneça uma `duration` que define quanto tempo
-a animação deve durar.
+Next, build the `AnimatedContainer` using the properties defined in the
+previous step. Furthermore, provide a `duration` that defines how long
+the animation should run.
 
 <?code-excerpt "lib/main.dart (AnimatedContainer)" replace="/^child: //g;/^\),$/)/g"?>
 ```dart
@@ -91,20 +87,20 @@ AnimatedContainer(
 )
 ```
 
-## 3. Iniciar a animação reconstruindo com novas propriedades
+## 3. Start the animation by rebuilding with new properties
 
-Finalmente, inicie a animação reconstruindo o
-`AnimatedContainer` com as novas propriedades.
-Como disparar uma reconstrução?
-Use o método [`setState()`][].
+Finally, start the animation by rebuilding the
+`AnimatedContainer` with the new properties.
+How to trigger a rebuild?
+Use the [`setState()`][] method.
 
-Adicione um botão ao app. Quando o usuário tocar no botão, atualize
-as propriedades com uma nova largura, altura, cor de fundo e raio da borda
-dentro de uma chamada para `setState()`.
+Add a button to the app. When the user taps the button, update
+the properties with a new width, height, background color and border radius
+inside a call to `setState()`.
 
-Um app real normalmente faz transições entre valores fixos (por exemplo,
-de um fundo cinza para um fundo verde). Para este app,
-gere novos valores cada vez que o usuário tocar no botão.
+A real app typically transitions between fixed values (for example,
+from a grey to a green background). For this app,
+generate new values each time the user taps the button.
 
 <?code-excerpt "lib/main.dart (FAB)" replace="/^floatingActionButton: //g;/^\),$/)/g"?>
 ```dart
@@ -129,15 +125,16 @@ FloatingActionButton(
       );
 
       // Generate a random border radius.
-      _borderRadius =
-          BorderRadius.circular(random.nextInt(100).toDouble());
+      _borderRadius = BorderRadius.circular(
+        random.nextInt(100).toDouble(),
+      );
     });
   },
   child: const Icon(Icons.play_arrow),
 )
 ```
 
-## Exemplo interativo
+## Interactive example
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter animated container hands-on example in DartPad" run="true"
@@ -166,9 +163,7 @@ class _AnimatedContainerAppState extends State<AnimatedContainerApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('AnimatedContainer Demo'),
-        ),
+        appBar: AppBar(title: const Text('AnimatedContainer Demo')),
         body: Center(
           child: AnimatedContainer(
             // Use the properties stored in the State class.
@@ -205,8 +200,9 @@ class _AnimatedContainerAppState extends State<AnimatedContainerApp> {
               );
 
               // Generate a random border radius.
-              _borderRadius =
-                  BorderRadius.circular(random.nextInt(100).toDouble());
+              _borderRadius = BorderRadius.circular(
+                random.nextInt(100).toDouble(),
+              );
             });
           },
           child: const Icon(Icons.play_arrow),
@@ -218,7 +214,7 @@ class _AnimatedContainerAppState extends State<AnimatedContainerApp> {
 ```
 
 <noscript>
-  <img src="/assets/images/docs/cookbook/animated-container.gif" alt="AnimatedContainer demo showing a box growing and shrinking in size while changing color and border radius" class="site-mobile-screenshot" />
+  <img src="/assets/images/docs/cookbook/animated-container.webp" alt="AnimatedContainer demo showing a box growing and shrinking in size while changing color and border radius" class="site-mobile-screenshot" />
 </noscript>
 
 

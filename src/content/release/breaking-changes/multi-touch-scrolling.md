@@ -3,17 +3,18 @@ title: Default multitouch scrolling
 description: >
   ScrollBehaviors will now configure how Scrollables respond to
   multitouch gestures.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
 
-`ScrollBehavior`s now allow or disallow scrolling speeds to be affected by the 
+## Summary
+
+`ScrollBehavior`s now allow or disallow scrolling speeds to be affected by the
 number of pointers on the screen. `ScrollBehavior.multitouchDragStrategy`, by
 default, prevents multiple pointers interacting wih the scrollable at the same
 time from affecting the speed of scrolling.
 
-## Contexto
+## Context
 
 Prior to this change, for each pointer dragging a `Scrollable` widget, the
 scroll speed would increase. This did not match platform expectations when
@@ -23,7 +24,7 @@ Now, the inherited `ScrollBehavior` manages how multiple pointers affect
 scrolling widgets as specified by `ScrollBehavior.multitouchDragStrategy`. This
 enum, `MultitouchDragStrategy`, can also be configured for the prior behavior.
 
-## Descrição da mudança
+## Description of change
 
 This change fixed the unexpected ability to increase scroll speeds by dragging
 with more than one finger.
@@ -53,11 +54,11 @@ To accommodate the new configuration
 `DragGestureRecognizer` was updated to support `MultitouchDragStrategy` as well
 in other dragging contexts.
 
-## Guia de migração
+## Migration guide
 
 ### Setting a custom `ScrollBehavior` for your application
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 MaterialApp(
@@ -65,7 +66,7 @@ MaterialApp(
 );
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 class MyCustomScrollBehavior extends MaterialScrollBehavior {
@@ -83,7 +84,7 @@ MaterialApp(
 
 ### Setting a custom `ScrollBehavior` for a specific widget
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 final ScrollController controller = ScrollController();
@@ -95,7 +96,7 @@ ListView.builder(
 );
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 class MyCustomScrollBehavior extends MaterialScrollBehavior {
@@ -119,7 +120,7 @@ ScrollConfiguration(
 
 ### Copy and modify existing `ScrollBehavior`
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 final ScrollController controller = ScrollController();
@@ -131,7 +132,7 @@ ListView.builder(
 );
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 // ScrollBehavior can be copied and adjusted.
@@ -149,14 +150,14 @@ ScrollConfiguration(
 );
 ```
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 3.18.0-4.0.pre<br>
-Na versão estável: 3.19.0
+Landed in version: 3.18.0-4.0.pre<br>
+In stable release: 3.19.0
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`ScrollConfiguration`][]
 * [`ScrollBehavior`][]
@@ -165,11 +166,11 @@ Documentação da API:
 * [`MultitouchDragStrategy`][]
 * [`DragGestureRecognizer`][]
 
-Issues relevantes:
+Relevant issue:
 
 * [Issue #11884][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [Introduce multi-touch drag strategies for DragGestureRecognizer][]
 

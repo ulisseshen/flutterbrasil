@@ -1,6 +1,5 @@
 ---
-ia-translate: true
 layout: toc
-title: Testes e depuração
-description: Conteúdo cobrindo testes e depuração de apps Flutter.
+title: Testing & debugging
+description: Content covering testing and debugging Flutter apps.
 ---

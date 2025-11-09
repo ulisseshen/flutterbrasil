@@ -1,6 +1,5 @@
 ---
-ia-translate: true
 layout: toc
 title: Linux
-description: Conteúdo sobre integração com Linux em apps Flutter.
+description: Content covering integration with Linux in Flutter apps.
 ---

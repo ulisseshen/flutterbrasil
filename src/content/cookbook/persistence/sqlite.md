@@ -1,62 +1,61 @@
 ---
-title: Persistir dados com SQLite
-description: Como usar SQLite para armazenar e recuperar dados.
-ia-translate: true
+title: Persist data with SQLite
+description: How to use SQLite to store and retrieve data.
 ---
 
 <?code-excerpt path-base="cookbook/persistence/sqlite/"?>
 
 :::note
-Este guia usa o [sqflite package][].
-Este pacote suporta apenas apps que rodam em
-macOS, iOS ou Android.
+This guide uses the [sqflite package][].
+This package only supports apps that run on
+macOS, iOS, or Android.
 :::
 
 [sqflite package]: {{site.pub-pkg}}/sqflite
 
-Se você está escrevendo um app que precisa persistir e consultar grandes quantidades de dados no
-dispositivo local, considere usar um banco de dados ao invés de um arquivo local ou
-armazenamento de chave-valor. Em geral, bancos de dados fornecem inserções, atualizações,
-e consultas mais rápidas comparado a outras soluções de persistência local.
+If you are writing an app that needs to persist and query large amounts of data on
+the local device, consider using a database instead of a local file or
+key-value store. In general, databases provide faster inserts, updates,
+and queries compared to other local persistence solutions.
 
-Apps Flutter podem fazer uso de bancos de dados SQLite através do
-plugin [`sqflite`][] disponível no pub.dev.
-Esta receita demonstra o básico de usar `sqflite`
-para inserir, ler, atualizar e remover dados sobre vários Dogs.
+Flutter apps can make use of the SQLite databases via the
+[`sqflite`][] plugin available on pub.dev.
+This recipe demonstrates the basics of using `sqflite`
+to insert, read, update, and remove data about various Dogs.
 
-Se você é novo no SQLite e instruções SQL, revise o
-[SQLite Tutorial][] para aprender o básico antes
-de completar esta receita.
+If you are new to SQLite and SQL statements, review the
+[SQLite Tutorial][] to learn the basics before
+completing this recipe.
 
-Esta receita usa os seguintes passos:
+This recipe uses the following steps:
 
-  1. Adicionar as dependências.
-  2. Definir o modelo de dados `Dog`.
-  3. Abrir o banco de dados.
-  4. Criar a tabela `dogs`.
-  5. Inserir um `Dog` no banco de dados.
-  6. Recuperar a lista de dogs.
-  7. Atualizar um `Dog` no banco de dados.
-  7. Deletar um `Dog` do banco de dados.
+  1. Add the dependencies.
+  2. Define the `Dog` data model.
+  3. Open the database.
+  4. Create the `dogs` table.
+  5. Insert a `Dog` into the database.
+  6. Retrieve the list of dogs.
+  7. Update a `Dog` in the database.
+  7. Delete a `Dog` from the database.
 
-## 1. Adicionar as dependências
+## 1. Add the dependencies
 
-Para trabalhar com bancos de dados SQLite, importe os pacotes `sqflite` e
-`path`.
+To work with SQLite databases, import the `sqflite` and
+`path` packages.
 
-  * O pacote `sqflite` fornece classes e funções para
-    interagir com um banco de dados SQLite.
-  * O pacote `path` fornece funções para
-    definir a localização para armazenar o banco de dados em disco.
+  * The `sqflite` package provides classes and functions to
+    interact with a SQLite database.
+  * The `path` package provides functions to
+    define the location for storing the database on disk.
 
-Para adicionar os pacotes como uma dependência,
-execute `flutter pub add`:
+To add the packages as a dependency,
+run `flutter pub add`:
 
 ```console
 $ flutter pub add sqflite path
 ```
 
-Certifique-se de importar os pacotes no arquivo em que você trabalhará.
+Make sure to import the packages in the file you'll be working in.
 
 <?code-excerpt "lib/main.dart (imports)"?>
 ```dart
@@ -67,12 +66,12 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 ```
 
-## 2. Definir o modelo de dados Dog
+## 2. Define the Dog data model
 
-Antes de criar a tabela para armazenar informações sobre Dogs, reserve alguns momentos para
-definir os dados que precisam ser armazenados. Para este exemplo, defina uma classe Dog
-que contém três pedaços de dados:
-Um `id` único, o `name`, e a `age` de cada dog.
+Before creating the table to store information on Dogs, take a few moments to
+define the data that needs to be stored. For this example, define a Dog class
+that contains three pieces of data:
+A unique `id`, the `name`, and the `age` of each dog.
 
 <?code-excerpt "lib/step2.dart"?>
 ```dart
@@ -81,27 +80,23 @@ class Dog {
   final String name;
   final int age;
 
-  const Dog({
-    required this.id,
-    required this.name,
-    required this.age,
-  });
+  const Dog({required this.id, required this.name, required this.age});
 }
 ```
 
-## 3. Abrir o banco de dados
+## 3. Open the database
 
-Antes de ler e escrever dados no banco de dados, abra uma conexão
-com o banco de dados. Isso envolve dois passos:
+Before reading and writing data to the database, open a connection
+to the database. This involves two steps:
 
-  1. Defina o caminho para o arquivo de banco de dados usando `getDatabasesPath()` do
-  pacote `sqflite`, combinado com a função `join` do pacote `path`.
-  2. Abra o banco de dados com a função `openDatabase()` do `sqflite`.
+  1. Define the path to the database file using `getDatabasesPath()` from the
+  `sqflite` package, combined with the `join` function from the `path` package.
+  2. Open the database with the `openDatabase()` function from `sqflite`.
 
 :::note
-Para usar a palavra-chave `await`, o código deve ser colocado
-dentro de uma função `async`. Você deve colocar todas as seguintes
-funções de tabela dentro de `void main() async {}`.
+In order to use the keyword `await`, the code must be placed
+inside an `async` function. You should place all the following
+table functions inside `void main() async {}`.
 :::
 
 <?code-excerpt "lib/step3.dart (openDatabase)"?>
@@ -118,23 +113,23 @@ final database = openDatabase(
 );
 ```
 
-## 4. Criar a tabela `dogs`
+## 4. Create the `dogs` table
 
-Em seguida, crie uma tabela para armazenar informações sobre vários Dogs.
-Para este exemplo, crie uma tabela chamada `dogs` que define os dados
-que podem ser armazenados. Cada `Dog` contém um `id`, `name` e `age`.
-Portanto, estes são representados como três colunas na tabela `dogs`.
+Next, create a table to store information about various Dogs.
+For this example, create a table called `dogs` that defines the data
+that can be stored. Each `Dog` contains an `id`, `name`, and `age`.
+Therefore, these are represented as three columns in the `dogs` table.
 
-  1. O `id` é um `int` Dart, e é armazenado como um `INTEGER` SQLite
-     Datatype. Também é uma boa prática usar um `id` como a chave primária
-     da tabela para melhorar os tempos de consulta e atualização.
-  2. O `name` é uma `String` Dart, e é armazenado como um `TEXT` SQLite
+  1. The `id` is a Dart `int`, and is stored as an `INTEGER` SQLite
+     Datatype. It is also good practice to use an `id` as the primary
+     key for the table to improve query and update times.
+  2. The `name` is a Dart `String`, and is stored as a `TEXT` SQLite
      Datatype.
-  3. A `age` também é um `int` Dart, e é armazenado como um `INTEGER`
+  3. The `age` is also a Dart `int`, and is stored as an `INTEGER`
      Datatype.
 
-Para mais informações sobre os Datatypes disponíveis que podem ser armazenados em um
-banco de dados SQLite, veja a [official SQLite Datatypes documentation][].
+For more information about the available Datatypes that can be stored in a
+SQLite database, see the [official SQLite Datatypes documentation][].
 
 <?code-excerpt "lib/main.dart (openDatabase)"?>
 ```dart
@@ -156,16 +151,16 @@ final database = openDatabase(
 );
 ```
 
-## 5. Inserir um Dog no banco de dados
+## 5. Insert a Dog into the database
 
-Agora que você tem um banco de dados com uma tabela adequada para armazenar informações
-sobre vários dogs, é hora de ler e escrever dados.
+Now that you have a database with a table suitable for storing information
+about various dogs, it's time to read and write data.
 
-Primeiro, insira um `Dog` na tabela `dogs`. Isso envolve dois passos:
+First, insert a `Dog` into the `dogs` table. This involves two steps:
 
-1. Converter o `Dog` em um `Map`
-2. Usar o método [`insert()`][] para armazenar o
-   `Map` na tabela `dogs`.
+1. Convert the `Dog` into a `Map`
+2. Use the [`insert()`][] method to store the
+   `Map` in the `dogs` table.
 
 <?code-excerpt "lib/main.dart (Dog)"?>
 ```dart
@@ -174,20 +169,12 @@ class Dog {
   final String name;
   final int age;
 
-  Dog({
-    required this.id,
-    required this.name,
-    required this.age,
-  });
+  Dog({required this.id, required this.name, required this.age});
 
   // Convert a Dog into a Map. The keys must correspond to the names of the
   // columns in the database.
   Map<String, Object?> toMap() {
-    return {
-      'id': id,
-      'name': name,
-      'age': age,
-    };
+    return {'id': id, 'name': name, 'age': age};
   }
 
   // Implement toString to make it easier to see information about
@@ -221,22 +208,18 @@ Future<void> insertDog(Dog dog) async {
 <?code-excerpt "lib/main.dart (fido)"?>
 ```dart
 // Create a Dog and add it to the dogs table
-var fido = Dog(
-  id: 0,
-  name: 'Fido',
-  age: 35,
-);
+var fido = Dog(id: 0, name: 'Fido', age: 35);
 
 await insertDog(fido);
 ```
 
-## 6. Recuperar a lista de Dogs
+## 6. Retrieve the list of Dogs
 
-Agora que um `Dog` está armazenado no banco de dados, consulte o banco de dados
-para um dog específico ou uma lista de todos os dogs. Isso envolve dois passos:
+Now that a `Dog` is stored in the database, query the database
+for a specific dog or a list of all dogs. This involves two steps:
 
-  1. Execute uma `query` contra a tabela `dogs`. Isso retorna um `List<Map>`.
-  2. Converta o `List<Map>` em um `List<Dog>`.
+  1. Run a `query` against the `dogs` table. This returns a `List<Map>`.
+  2. Convert the `List<Map>` into a `List<Dog>`.
 
 <?code-excerpt "lib/main.dart (dogs)"?>
 ```dart
@@ -250,11 +233,8 @@ Future<List<Dog>> dogs() async {
 
   // Convert the list of each dog's fields into a list of `Dog` objects.
   return [
-    for (final {
-          'id': id as int,
-          'name': name as String,
-          'age': age as int,
-        } in dogMaps)
+    for (final {'id': id as int, 'name': name as String, 'age': age as int}
+        in dogMaps)
       Dog(id: id, name: name, age: age),
   ];
 }
@@ -266,17 +246,17 @@ Future<List<Dog>> dogs() async {
 print(await dogs()); // Prints a list that include Fido.
 ```
 
-## 7. Atualizar um `Dog` no banco de dados
+## 7. Update a `Dog` in the database
 
-Depois de inserir informações no banco de dados,
-você pode querer atualizar essa informação em um momento posterior.
-Você pode fazer isso usando o método [`update()`][]
-da biblioteca `sqflite`.
+After inserting information into the database,
+you might want to update that information at a later time.
+You can do this by using the [`update()`][]
+method from the `sqflite` library.
 
-Isso envolve dois passos:
+This involves two steps:
 
-  1. Converter o Dog em um Map.
-  2. Usar uma cláusula `where` para garantir que você atualize o Dog correto.
+  1. Convert the Dog into a Map.
+  2. Use a `where` clause to ensure you update the correct Dog.
 
 <?code-excerpt "lib/main.dart (update)"?>
 ```dart
@@ -299,11 +279,7 @@ Future<void> updateDog(Dog dog) async {
 <?code-excerpt "lib/main.dart (update2)"?>
 ```dart
 // Update Fido's age and save it to the database.
-fido = Dog(
-  id: fido.id,
-  name: fido.name,
-  age: fido.age + 7,
-);
+fido = Dog(id: fido.id, name: fido.name, age: fido.age + 7);
 await updateDog(fido);
 
 // Print the updated results.
@@ -311,22 +287,22 @@ print(await dogs()); // Prints Fido with age 42.
 ```
 
 :::warning
-Sempre use `whereArgs` para passar argumentos para uma instrução `where`.
-Isso ajuda a proteger contra ataques de injeção SQL.
+Always use `whereArgs` to pass arguments to a `where` statement.
+This helps safeguard against SQL injection attacks.
 
-Não use interpolação de string, como `where: "id = ${dog.id}"`!
+Do not use string interpolation, such as `where: "id = ${dog.id}"`!
 :::
 
 
-## 8. Deletar um `Dog` do banco de dados
+## 8. Delete a `Dog` from the database
 
-Além de inserir e atualizar informações sobre Dogs,
-você também pode remover dogs do banco de dados. Para deletar dados,
-use o método [`delete()`][] da biblioteca `sqflite`.
+In addition to inserting and updating information about Dogs,
+you can also remove dogs from the database. To delete data,
+use the [`delete()`][] method from the `sqflite` library.
 
-Nesta seção, crie uma função que pega um id e deleta o dog com
-um id correspondente do banco de dados. Para fazer isso funcionar, você deve fornecer uma cláusula `where`
-para limitar os registros sendo deletados.
+In this section, create a function that takes an id and deletes the dog with
+a matching id from the database. To make this work, you must provide a `where`
+clause to limit the records being deleted.
 
 <?code-excerpt "lib/main.dart (deleteDog)"?>
 ```dart
@@ -345,14 +321,14 @@ Future<void> deleteDog(int id) async {
 }
 ```
 
-## Exemplo
+## Example
 
-Para executar o exemplo:
+To run the example:
 
-  1. Crie um novo projeto Flutter.
-  2. Adicione os pacotes `sqflite` e `path` ao seu `pubspec.yaml`.
-  3. Cole o código a seguir em um novo arquivo chamado `lib/db_test.dart`.
-  4. Execute o código com `flutter run lib/db_test.dart`.
+  1. Create a new Flutter project.
+  2. Add the `sqflite` and `path` packages to your `pubspec.yaml`.
+  3. Paste the following code into a new file called `lib/db_test.dart`.
+  4. Run the code with `flutter run lib/db_test.dart`.
 
 <?code-excerpt "lib/main.dart"?>
 ```dart
@@ -410,11 +386,8 @@ void main() async {
 
     // Convert the list of each dog's fields into a list of `Dog` objects.
     return [
-      for (final {
-            'id': id as int,
-            'name': name as String,
-            'age': age as int,
-          } in dogMaps)
+      for (final {'id': id as int, 'name': name as String, 'age': age as int}
+          in dogMaps)
         Dog(id: id, name: name, age: age),
     ];
   }
@@ -449,11 +422,7 @@ void main() async {
   }
 
   // Create a Dog and add it to the dogs table
-  var fido = Dog(
-    id: 0,
-    name: 'Fido',
-    age: 35,
-  );
+  var fido = Dog(id: 0, name: 'Fido', age: 35);
 
   await insertDog(fido);
 
@@ -461,11 +430,7 @@ void main() async {
   print(await dogs()); // Prints a list that include Fido.
 
   // Update Fido's age and save it to the database.
-  fido = Dog(
-    id: fido.id,
-    name: fido.name,
-    age: fido.age + 7,
-  );
+  fido = Dog(id: fido.id, name: fido.name, age: fido.age + 7);
   await updateDog(fido);
 
   // Print the updated results.
@@ -483,20 +448,12 @@ class Dog {
   final String name;
   final int age;
 
-  Dog({
-    required this.id,
-    required this.name,
-    required this.age,
-  });
+  Dog({required this.id, required this.name, required this.age});
 
   // Convert a Dog into a Map. The keys must correspond to the names of the
   // columns in the database.
   Map<String, Object?> toMap() {
-    return {
-      'id': id,
-      'name': name,
-      'age': age,
-    };
+    return {'id': id, 'name': name, 'age': age};
   }
 
   // Implement toString to make it easier to see information about
@@ -512,6 +469,6 @@ class Dog {
 [`delete()`]: {{site.pub-api}}/sqflite_common/latest/sqlite_api/DatabaseExecutor/delete.html
 [`insert()`]: {{site.pub-api}}/sqflite_common/latest/sqlite_api/DatabaseExecutor/insert.html
 [`sqflite`]: {{site.pub-pkg}}/sqflite
-[SQLite Tutorial]: http://www.sqlitetutorial.net/
+[SQLite Tutorial]: https://www.sqlitetutorial.net/
 [official SQLite Datatypes documentation]: https://www.sqlite.org/datatype3.html
 [`update()`]: {{site.pub-api}}/sqflite_common/latest/sqlite_api/DatabaseExecutor/update.html

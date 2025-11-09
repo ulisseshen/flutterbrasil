@@ -1,46 +1,45 @@
 ---
-ia-translate: true
-title: Faça debug do seu módulo add-to-app
-short-title: Debugging
-description: Como executar, fazer debug e hot reload do seu módulo Flutter add-to-app.
+title: Debug your add-to-app module
+shortTitle: Debugging
+description: How to run, debug, and hot reload your add-to-app Flutter module.
 ---
 
-Uma vez que você integrou o módulo Flutter ao seu projeto e usou
-as APIs de plataforma do Flutter para executar o engine Flutter e/ou UI,
-você pode então construir e executar seu app Android ou iOS da mesma forma
-que você executa apps Android ou iOS normais.
+Once you've integrated the Flutter module to your project and used
+Flutter's platform APIs to run the Flutter engine and/or UI,
+you can then build and run your Android or iOS app the same way
+you run normal Android or iOS apps.
 
-O Flutter agora alimenta a UI onde quer que seu código inclua
-`FlutterActivity` ou `FlutterViewController`.
+Flutter now powers the UI wherever your code includes
+`FlutterActivity` or `FlutterViewController`.
 
-## Visão geral
+## Overview
 
-Você pode estar acostumado a ter seu conjunto de ferramentas de debug
-Flutter favoritas disponíveis ao executar `flutter run` ou um comando equivalente
-de uma IDE. Mas você também pode usar todas as suas [funcionalidades de debug][debugging functionalities]
-do Flutter, como hot reload, overlays de desempenho, DevTools e definição de
-breakpoints em cenários add-to-app.
+You might be used to having your suite of favorite Flutter debugging tools
+available when running `flutter run` or an equivalent command from an IDE.
+But you can also use all your Flutter [debugging functionalities][] such as
+hot reload, performance overlays, DevTools, and setting breakpoints in
+add-to-app scenarios.
 
-O comando `flutter attach` fornece essas funcionalidades.
-Para executar este comando, você pode usar as ferramentas CLI do SDK, VS Code
-ou IntelliJ IDEA ou Android Studio.
+The `flutter attach` command provides these functionalities.
+To run this command, you can use the SDK's CLI tools, VS Code
+or IntelliJ IDEA or Android Studio.
 
-O comando `flutter attach` se conecta assim que você executa seu `FlutterEngine`.
-Ele permanece anexado até você descartar seu `FlutterEngine`.
-Você pode invocar `flutter attach` antes de iniciar seu engine.
-O comando `flutter attach` aguarda a próxima Dart VM disponível que
-seu engine hospeda.
+The `flutter attach` command connects once you run your `FlutterEngine`.
+It remains attached until you dispose your `FlutterEngine`.
+You can invoke `flutter attach` before starting your engine.
+The `flutter attach` command waits for the next available Dart VM that
+your engine hosts.
 
-## Debug pelo Terminal
+## Debug from the Terminal
 
-Para anexar pelo terminal, execute `flutter attach`.
-Para selecionar um dispositivo de destino específico, adicione `-d <deviceId>`.
+To attach from the terminal, run `flutter attach`.
+To select a specific target device, add `-d <deviceId>`.
 
 ```console
 $ flutter attach
 ```
 
-O comando deve imprimir uma saída semelhante à seguinte:
+The command should print output resembling the following:
 
 ```console
 Syncing files to device iPhone 15 Pro...
@@ -48,74 +47,69 @@ Syncing files to device iPhone 15 Pro...
 
 To hot reload the changes while running, press "r".
 To hot restart (and rebuild state). press "R".
-An Observatory debugger and profiler on iPhone 15 Pro is available at:
-http://127.0.0.1:65525/EXmCgco5zjo=/
-For a more detailed help message, press "h".
-To detach, press "d"; to quit, press "q".
 ```
 
-## Debug extensão iOS no Xcode e VS Code
+## Debug iOS extension in Xcode and VS Code
 
-{% include docs/debug/debug-flow-ios.md add='launch' %}
+{% render "docs/debug/debug-flow-ios.md", add:'launch' %}
 
-## Debug extensão Android no Android Studio
+## Debug Android extension in Android Studio
 
-{% include docs/debug/debug-flow-androidstudio-as-start.md %}
+{% render "docs/debug/debug-flow-androidstudio-as-start.md" %}
 
 [debugging functionalities]: /testing/debugging
 
-## Debug sem conexão USB {:#wireless-debugging}
+## Debug without USB connection {:#wireless-debugging}
 
-Para fazer debug do seu app via Wi-Fi em um dispositivo iOS ou Android,
+To debug your app over Wi-Fi on an iOS or Android device,
 use `flutter attach`.
 
-### Debug via Wi-Fi em dispositivos iOS
+### Debug over Wi-Fi on iOS devices
 
-Para um alvo iOS, complete os seguintes passos:
+For an iOS target, complete the follow steps:
 
-1. Verifique se seu dispositivo se conecta ao Xcode via Wi-Fi
-   conforme descrito no [guia de configuração iOS][iOS setup guide].
+1. Verify your device connects to Xcode over Wi-Fi
+   as described in the [iOS setup guide][].
 
-1. Em sua máquina de desenvolvimento macOS,
-   abra **Xcode** <span aria-label="and then">></span>
+1. On your macOS development machine,
+   open **Xcode** <span aria-label="and then">></span>
    **Product** <span aria-label="and then">></span>
    **Scheme** <span aria-label="and then">></span>
    **Edit Scheme...**.
 
-   Você também pode pressionar <kbd>Cmd</kbd> + <kbd><</kbd>.
+   You can also press <kbd>Cmd</kbd> + <kbd><</kbd>.
 
-1. Clique em **Run**.
+1. Click **Run**.
 
-1. Clique em **Arguments**.
+1. Click **Arguments**.
 
-1. Em **Arguments Passed On Launch**, clique em **+**.
+1. In **Arguments Passed On Launch**, Click **+**.
 
    {:type="a"}
-   1. Se sua máquina de desenvolvimento usa IPv4, adicione `--vm-service-host=0.0.0.0`.
+   1. If your dev machine uses IPv4, add `--vm-service-host=0.0.0.0`.
 
-   1. Se sua máquina de desenvolvimento usa IPv6, adicione `--vm-service-host=::0`.
+   1. If your dev machine uses IPv6, add `--vm-service-host=::0`.
 
-   {% render docs/app-figure.md, img-class:"site-mobile-screenshot border", image:"development/add-to-app/debugging/wireless-port.png",
-   caption:"Arguments Passed On Launch with an IPv4 network added", width:"100%" %}
+   <DashImage figure img-class="site-mobile-screenshot border" image="development/add-to-app/debugging/wireless-port.png" caption="Arguments Passed On Launch with an IPv4 network added", width="100%" />
 
-#### Para determinar se você está em uma rede IPv6
+#### To determine if you're on an IPv6 network
 
-1. Abra **Settings** <span aria-label="and then">></span> **Wi-Fi**.
+1. Open **Settings** <span aria-label="and then">></span> **Wi-Fi**.
 
-1. Clique em sua rede conectada.
+1. Click on your connected network.
 
-1. Clique em **Details...**
+1. Click **Details...**
 
-1. Clique em **TCP/IP**.
+1. Click **TCP/IP**.
 
-1. Verifique se há uma seção **IPv6 address**.
+1. Check for an **IPv6 address** section.
 
-   {% render docs/app-figure.md, img-class:"site-mobile-screenshot border", image:"development/add-to-app/ipv6.png", caption:"WiFi dialog box for macOS System Settings", width:"60%" %}
+   <DashImage figure img-class="site-mobile-screenshot border" image="development/add-to-app/ipv6.png" caption="WiFi dialog box for macOS System Settings" width="60%" />
 
-### Debug via Wi-Fi em dispositivos Android
+### Debug over Wi-Fi on Android devices
 
-Verifique se seu dispositivo se conecta ao Android Studio via Wi-Fi
-conforme descrito no [guia de configuração Android][Android setup guide].
+Verify your device connects to Android Studio over Wi-Fi
+as described in the [Android setup guide][].
 
-[iOS setup guide]: /get-started/install/macos/mobile-ios
-[Android setup guide]: /get-started/install/macos/mobile-android?tab=physical#configure-your-target-android-device
+[iOS setup guide]: /platform-integration/ios/setup
+[Android setup guide]: /platform-integration/android/setup#set-up-devices

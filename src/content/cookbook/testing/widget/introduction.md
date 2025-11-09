@@ -1,49 +1,46 @@
 ---
-title: Uma introdução a testes de widget
-description: Aprenda mais sobre testes de widget no Flutter.
-short-title: Introdução
-ia-translate: true
+title: An introduction to widget testing
+description: Learn more about widget testing in Flutter.
+shortTitle: Introduction
 ---
 
 <?code-excerpt path-base="cookbook/testing/widget/introduction/"?>
 
-{% assign api = site.api | append: '/flutter' -%}
+In the [introduction to unit testing][] recipe,
+you learned how to test Dart classes using the `test` package.
+To test widget classes, you need a few additional tools provided by the
+[`flutter_test`][] package, which ships with the Flutter SDK.
 
-Na receita [introduction to unit testing][],
-você aprendeu como testar classes Dart usando o pacote `test`.
-Para testar classes de widget, você precisa de algumas ferramentas adicionais fornecidas pelo
-pacote [`flutter_test`][], que vem com o Flutter SDK.
+The `flutter_test` package provides the following tools for
+testing widgets:
 
-O pacote `flutter_test` fornece as seguintes ferramentas para
-testar widgets:
+  * The [`WidgetTester`][] allows building and interacting
+    with widgets in a test environment.
+  * The [`testWidgets()`][] function automatically
+    creates a new `WidgetTester` for each test case,
+    and is used in place of the normal `test()` function.
+  * The [`Finder`][] classes allow searching for widgets
+    in the test environment.
+  * Widget-specific [`Matcher`][] constants help verify
+   whether a `Finder` locates a widget or
+    multiple widgets in the test environment.
 
-  * O [`WidgetTester`][] permite construir e interagir
-    com widgets em um ambiente de teste.
-  * A função [`testWidgets()`][] cria automaticamente
-    um novo `WidgetTester` para cada caso de teste,
-    e é usada no lugar da função `test()` normal.
-  * As classes [`Finder`][] permitem procurar por widgets
-    no ambiente de teste.
-  * Constantes [`Matcher`][] específicas de widget ajudam a verificar
-   se um `Finder` localiza um widget ou
-    múltiplos widgets no ambiente de teste.
+If this sounds overwhelming, don't worry. Learn how all of these pieces fit
+together throughout this recipe, which uses the following steps:
 
-Se isso parecer sobrecarregante, não se preocupe. Aprenda como todas essas peças se encaixam
-ao longo desta receita, que usa as seguintes etapas:
+  1. Add the `flutter_test` dependency.
+  2. Create a widget to test.
+  3. Create a `testWidgets` test.
+  4. Build the widget using the `WidgetTester`.
+  5. Search for the widget using a `Finder`.
+  6. Verify the widget using a `Matcher`.
 
-  1. Adicionar a dependência `flutter_test`.
-  2. Criar um widget para testar.
-  3. Criar um teste `testWidgets`.
-  4. Construir o widget usando o `WidgetTester`.
-  5. Procurar pelo widget usando um `Finder`.
-  6. Verificar o widget usando um `Matcher`.
+## 1. Add the `flutter_test` dependency
 
-## 1. Adicionar a dependência `flutter_test`
-
-Antes de escrever testes, inclua a dependência `flutter_test`
-na seção `dev_dependencies` do arquivo `pubspec.yaml`.
-Se estiver criando um novo projeto Flutter com as ferramentas de linha de comando ou
-um editor de código, esta dependência já deve estar no lugar.
+Before writing tests, include the `flutter_test`
+dependency in the `dev_dependencies` section of the `pubspec.yaml` file.
+If creating a new Flutter project with the command line tools or
+a code editor, this dependency should already be in place.
 
 ```yaml
 dev_dependencies:
@@ -51,19 +48,15 @@ dev_dependencies:
     sdk: flutter
 ```
 
-## 2. Criar um widget para testar
+## 2. Create a widget to test
 
-Em seguida, crie um widget para testar. Para esta receita,
-crie um widget que exibe um `title` e uma `message`.
+Next, create a widget for testing. For this recipe,
+create a widget that displays a `title` and `message`.
 
 <?code-excerpt "test/main_test.dart (widget)"?>
 ```dart
 class MyWidget extends StatelessWidget {
-  const MyWidget({
-    super.key,
-    required this.title,
-    required this.message,
-  });
+  const MyWidget({super.key, required this.title, required this.message});
 
   final String title;
   final String message;
@@ -73,28 +66,24 @@ class MyWidget extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       home: Scaffold(
-        appBar: AppBar(
-          title: Text(title),
-        ),
-        body: Center(
-          child: Text(message),
-        ),
+        appBar: AppBar(title: Text(title)),
+        body: Center(child: Text(message)),
       ),
     );
   }
 }
 ```
 
-## 3. Criar um teste `testWidgets`
+## 3. Create a `testWidgets` test
 
-Com um widget para testar, comece escrevendo seu primeiro teste.
-Use a função [`testWidgets()`][] fornecida pelo
-pacote `flutter_test` para definir um teste.
-A função `testWidgets` permite definir um
-teste de widget e cria um `WidgetTester` para trabalhar.
+With a widget to test, begin by writing your first test.
+Use the [`testWidgets()`][] function provided by the
+`flutter_test` package to define a test.
+The `testWidgets` function allows you to define a
+widget test and creates a `WidgetTester` to work with.
 
-Este teste verifica que `MyWidget` exibe um título e mensagem fornecidos.
-Ele tem o título correspondente e será preenchido na próxima seção.
+This test verifies that `MyWidget` displays a given title and message.
+It is titled accordingly, and it will be populated in the next section.
 
 <?code-excerpt "test/main_step3_test.dart (main)"?>
 ```dart
@@ -108,14 +97,14 @@ void main() {
 }
 ```
 
-## 4. Construir o widget usando o `WidgetTester`
+## 4. Build the widget using the `WidgetTester`
 
-Em seguida, construa `MyWidget` dentro do ambiente de teste usando o
-método [`pumpWidget()`][] fornecido por `WidgetTester`.
-O método `pumpWidget` constrói e renderiza o widget fornecido.
+Next, build `MyWidget` inside the test environment by using the
+[`pumpWidget()`][] method provided by `WidgetTester`.
+The `pumpWidget` method builds and renders the provided widget.
 
-Crie uma instância de `MyWidget` que exibe "T" como o título
-e "M" como a mensagem.
+Create a `MyWidget` instance that displays "T" as the title
+and "M" as the message.
 
 <?code-excerpt "test/main_step4_test.dart (main)"?>
 ```dart
@@ -127,51 +116,51 @@ void main() {
 }
 ```
 
-### Notas sobre os métodos pump()
+### Notes about the pump() methods
 
-Após a chamada inicial para `pumpWidget()`, o `WidgetTester` fornece
-maneiras adicionais de reconstruir o mesmo widget. Isso é útil se você estiver
-trabalhando com um `StatefulWidget` ou animações.
+After the initial call to `pumpWidget()`, the `WidgetTester` provides
+additional ways to rebuild the same widget. This is useful if you're
+working with a `StatefulWidget` or animations.
 
-Por exemplo, tocar em um botão chama `setState()`, mas o Flutter não
-reconstruirá automaticamente seu widget no ambiente de teste.
-Use um dos seguintes métodos para pedir ao Flutter para reconstruir o widget.
+For example, tapping a button calls `setState()`, but Flutter won't
+automatically rebuild your widget in the test environment.
+Use one of the following methods to ask Flutter to rebuild the widget.
 
 [`tester.pump(Duration duration)`][]
-: Agenda um frame e aciona uma reconstrução do widget.
-  Se uma `Duration` for especificada, ela avança o relógio por
-  essa quantidade e agenda um frame. Não agenda
-  múltiplos frames mesmo se a duração for maior que um
-  único frame.
+: Schedules a frame and triggers a rebuild of the widget.
+  If a `Duration` is specified, it advances the clock by
+  that amount and schedules a frame. It does not schedule
+  multiple frames even if the duration is longer than a
+  single frame.
 
 :::note
-Para iniciar a animação, você precisa chamar `pump()`
-uma vez (sem duração especificada) para iniciar o ticker.
-Sem isso, a animação não inicia.
+To kick off the animation, you need to call `pump()`
+once (with no duration specified) to start the ticker.
+Without it, the animation does not start.
 :::
 
 [`tester.pumpAndSettle()`][]
-: Chama repetidamente `pump()` com a duração especificada até
-  que não haja mais frames agendados.
-  Isso, essencialmente, espera que todas as animações sejam concluídas.
+: Repeatedly calls `pump()` with the given duration until
+  there are no longer any frames scheduled.
+  This, essentially, waits for all animations to complete.
 
-Esses métodos fornecem controle refinado sobre o ciclo de vida de build,
-o que é particularmente útil durante os testes.
+These methods provide fine-grained control over the build lifecycle,
+which is particularly useful while testing.
 
-## 5. Procurar por nosso widget usando um `Finder`
+## 5. Search for our widget using a `Finder`
 
-Com um widget no ambiente de teste, procure
-através da árvore de widgets pelo `title` e pela `message`
-usando widgets Text com um `Finder`. Isso permite a verificação de que
-os widgets estão sendo exibidos corretamente.
+With a widget in the test environment, search
+through the widget tree for the `title` and `message`
+Text widgets using a `Finder`. This allows verification that
+the widgets are being displayed correctly.
 
-Para este propósito, use o método [`find()`][] de nível superior
-fornecido pelo pacote `flutter_test` para criar os `Finders`.
-Como você sabe que está procurando por widgets `Text`, use o
-método [`find.text()`][].
+For this purpose, use the top-level [`find()`][]
+method provided by the `flutter_test` package to create the `Finders`.
+Since you know you're looking for `Text` widgets, use the
+[`find.text()`][] method.
 
-Para mais informações sobre classes `Finder`, consulte a receita
-[Finding widgets in a widget test][].
+For more information about `Finder` classes, see the
+[Finding widgets in a widget test][] recipe.
 
 <?code-excerpt "test/main_step5_test.dart (main)"?>
 ```dart
@@ -186,16 +175,16 @@ void main() {
 }
 ```
 
-## 6. Verificar o widget usando um `Matcher`
+## 6. Verify the widget using a `Matcher`
 
-Finalmente, verifique se os widgets Text `title` e `message` aparecem na tela
-usando as constantes `Matcher` fornecidas pelo `flutter_test`.
-Classes `Matcher` são uma parte central do pacote `test`,
-e fornecem uma maneira comum de verificar se um determinado
-valor atende às expectativas.
+Finally, verify the title and message `Text` widgets appear on screen
+using the `Matcher` constants provided by `flutter_test`.
+`Matcher` classes are a core part of the `test` package,
+and provide a common way to verify a given
+value meets expectations.
 
-Garanta que os widgets apareçam na tela exatamente uma vez.
-Para este propósito, use o `Matcher` [`findsOneWidget`][].
+Ensure that the widgets appear on screen exactly one time.
+For this purpose, use the [`findsOneWidget`][] `Matcher`.
 
 <?code-excerpt "test/main_step6_test.dart (main)"?>
 ```dart
@@ -213,24 +202,24 @@ void main() {
 }
 ```
 
-### Matchers adicionais
+### Additional Matchers
 
-Além de `findsOneWidget`, `flutter_test` fornece matchers adicionais
-para casos comuns.
+In addition to `findsOneWidget`, `flutter_test` provides additional
+matchers for common cases.
 
 [`findsNothing`][]
-: Verifica que nenhum widget é encontrado.
+: Verifies that no widgets are found.
 
 [`findsWidgets`][]
-: Verifica que um ou mais widgets são encontrados.
+: Verifies that one or more widgets are found.
 
 [`findsNWidgets`][]
-: Verifica que um número específico de widgets são encontrados.
+: Verifies that a specific number of widgets are found.
 
 [`matchesGoldenFile`][]
-: Verifica que a renderização de um widget corresponde a uma imagem bitmap específica ("teste de golden file").
+: Verifies that a widget's rendering matches a particular bitmap image ("golden file" testing).
 
-## Exemplo completo
+## Complete example
 
 <?code-excerpt "test/main_test.dart"?>
 ```dart
@@ -257,11 +246,7 @@ void main() {
 }
 
 class MyWidget extends StatelessWidget {
-  const MyWidget({
-    super.key,
-    required this.title,
-    required this.message,
-  });
+  const MyWidget({super.key, required this.title, required this.message});
 
   final String title;
   final String message;
@@ -271,12 +256,8 @@ class MyWidget extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       home: Scaffold(
-        appBar: AppBar(
-          title: Text(title),
-        ),
-        body: Center(
-          child: Text(message),
-        ),
+        appBar: AppBar(title: Text(title)),
+        body: Center(child: Text(message)),
       ),
     );
   }
@@ -284,20 +265,20 @@ class MyWidget extends StatelessWidget {
 ```
 
 
-[`find()`]: {{api}}/flutter_test/find-constant.html
-[`find.text()`]: {{api}}/flutter_test/CommonFinders/text.html
-[`findsNothing`]: {{api}}/flutter_test/findsNothing-constant.html
-[`findsOneWidget`]: {{api}}/flutter_test/findsOneWidget-constant.html
-[`findsNWidgets`]: {{api}}/flutter_test/findsNWidgets.html
-[`findsWidgets`]: {{api}}/flutter_test/findsWidgets-constant.html
-[`matchesGoldenFile`]: {{api}}/flutter_test/matchesGoldenFile.html
-[`Finder`]: {{api}}/flutter_test/Finder-class.html
+[`find()`]: {{site.api}}/flutter/flutter_test/find-constant.html
+[`find.text()`]: {{site.api}}/flutter/flutter_test/CommonFinders/text.html
+[`findsNothing`]: {{site.api}}/flutter/flutter_test/findsNothing-constant.html
+[`findsOneWidget`]: {{site.api}}/flutter/flutter_test/findsOneWidget-constant.html
+[`findsNWidgets`]: {{site.api}}/flutter/flutter_test/findsNWidgets.html
+[`findsWidgets`]: {{site.api}}/flutter/flutter_test/findsWidgets-constant.html
+[`matchesGoldenFile`]: {{site.api}}/flutter/flutter_test/matchesGoldenFile.html
+[`Finder`]: {{site.api}}/flutter/flutter_test/Finder-class.html
 [Finding widgets in a widget test]: /cookbook/testing/widget/finders
-[`flutter_test`]: {{api}}/flutter_test/flutter_test-library.html
+[`flutter_test`]: {{site.api}}/flutter/flutter_test/flutter_test-library.html
 [introduction to unit testing]: /cookbook/testing/unit/introduction
-[`Matcher`]: {{api}}/package-matcher_matcher/Matcher-class.html
-[`pumpWidget()`]: {{api}}/flutter_test/WidgetTester/pumpWidget.html
-[`tester.pump(Duration duration)`]: {{api}}/flutter_test/TestWidgetsFlutterBinding/pump.html
-[`tester.pumpAndSettle()`]: {{api}}/flutter_test/WidgetTester/pumpAndSettle.html
-[`testWidgets()`]: {{api}}/flutter_test/testWidgets.html
-[`WidgetTester`]: {{api}}/flutter_test/WidgetTester-class.html
+[`Matcher`]: {{site.api}}/flutter/package-matcher_matcher/Matcher-class.html
+[`pumpWidget()`]: {{site.api}}/flutter/flutter_test/WidgetTester/pumpWidget.html
+[`tester.pump(Duration duration)`]: {{site.api}}/flutter/flutter_test/TestWidgetsFlutterBinding/pump.html
+[`tester.pumpAndSettle()`]: {{site.api}}/flutter/flutter_test/WidgetTester/pumpAndSettle.html
+[`testWidgets()`]: {{site.api}}/flutter/flutter_test/testWidgets.html
+[`WidgetTester`]: {{site.api}}/flutter/flutter_test/WidgetTester-class.html

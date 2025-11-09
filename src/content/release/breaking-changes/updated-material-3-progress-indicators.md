@@ -3,10 +3,11 @@ title: Updated Material 3 progress indicators
 description: >-
   The `LinearProgressIndicator` and `CircularProgressIndicator` widgets
   have been updated to match the Material 3 Design specifications.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 The `LinearProgressIndicator` and `CircularProgressIndicator` have
 been updated to match the Material 3 Design specifications.
@@ -16,7 +17,7 @@ the active and inactive tracks, a stop indicator, and rounded corners.
 The `CircularProgressIndicator` changes include a gap between
 the active and inactive tracks, and rounded stroke cap.
 
-## Contexto
+## Context
 
 The Material 3 Design specifications for the `LinearProgressIndicator` and
 `CircularProgressIndicator` were updated in December 2023.
@@ -27,7 +28,7 @@ set the `LinearProgressIndicator.year2023` and
 This is done to ensure that existing apps aren't affected by
 the updated design spec.
 
-## Descrição da mudança
+## Description of change
 
 The `LinearProgressIndicator` and `CircularProgressIndicator` widgets each
 have a `year2023` flag that can be set to `false` to
@@ -44,7 +45,7 @@ the stop indicator isn't shown.
 When [`CircularProgressIndicator.year2023`][] is set to `false`,
 the progress indicator has a track gap and rounded stroke cap.
 
-## Guia de migração
+## Migration guide
 
 To opt into the updated design spec for the `LinearProgressIndicator`,
 set the `year2023` flag to `false`:
@@ -54,6 +55,21 @@ LinearProgressIndicator(
   year2023: false,
   value: 0.5,
 ),
+```
+
+To update your entire app to use the updated `LinearProgressIndicator` design,
+set the `ProgressIndicatorThemeData.year2023` property to `false` in your
+`MaterialApp`:
+
+```dart highlightLines=2
+return MaterialApp(
+  theme: ThemeData(progressIndicatorTheme: const ProgressIndicatorThemeData(year2023: false)),
+        // ...
+        LinearProgressIndicator(
+          year2023: false,
+          value: 0.5,
+        ),
+        // ...
 ```
 
 To opt into the updated design spec for the `CircularProgressIndicator`,
@@ -66,25 +82,40 @@ CircularProgressIndicator(
 ),
 ```
 
-## Linha do tempo
+To update your entire app to use the updated `CircularProgressIndicator` design,
+set the `ProgressIndicatorThemeData.year2023` property to `false` in your
+`MaterialApp`:
 
-Lançado na versão: 3.28.0-0.1.pre<br>
-Na versão estável: Not yet
+```dart highlightLines=2
+return MaterialApp(
+  theme: ThemeData(progressIndicatorTheme: const ProgressIndicatorThemeData(year2023: false)),
+        // ...
+        CircularProgressIndicator(
+          year2023: false,
+          value: 0.5,
+        ),
+        // ...
+```
 
-## Referências
+## Timeline
 
-Documentação da API:
+Landed in version: 3.28.0-0.1.pre<br>
+In stable release: 3.29
+
+## References
+
+API documentation:
 
 - [`LinearProgressIndicator`][]
 - [`CircularProgressIndicator`][]
 - [`LinearProgressIndicator.year2023`][]
 - [`CircularProgressIndicator.year2023`][]
 
-Issues relevantes:
+Relevant issues:
 
 - [Update both `ProgressIndicator` for Material 3 redesign][]
 
-PRs relevantes:
+Relevant PRs:
 
 - [Update Material 3 `LinearProgressIndicator` for new visual style][]
 - [Update Material 3 `CircularProgressIndicator` for new visual style][]

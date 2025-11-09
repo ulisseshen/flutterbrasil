@@ -3,10 +3,11 @@ title: Transition of platform channel test interfaces to flutter_test package
 description: >
    The setMockMessageHandler method related APIs have
    moved from package:flutter to package:flutter_test
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 The following methods have been replaced by APIs
 in the `flutter_test` package:
@@ -22,7 +23,7 @@ in the `flutter_test` package:
 The `onPlatformMessage` callback is no longer used
 by the Flutter framework.
 
-## Contexto
+## Context
 
 As part of a refactoring of the low-level plugin
 communications architecture, we have moved from the
@@ -46,7 +47,7 @@ they required refactoring.
 To avoid adding even more test logic into the `flutter` package,
 a decision was made to move this logic to the `flutter_test` package.
 
-## Descrição da mudança
+## Description of change
 
 Specifically, the following APIs were affected:
 
@@ -92,7 +93,7 @@ receive messages from plugins, is no longer used
 calling this callback to inject messages into the
 framework no longer has an effect.
 
-## Guia de migração
+## Migration guide
 
 The `flutter_test` package provides some shims so that
 uses of the obsolete `setMock...` and `checkMock...`
@@ -156,19 +157,19 @@ There is no mechanism to intercept messages from the plugins
 and forward them to the framework in the new API.
 If your use case requires such a mechanism, please file a bug.
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 2.3.0-17.0.pre.1<br>
-Na versão estável: 2.5
+Landed in version: 2.3.0-17.0.pre.1<br>
+In stable release: 2.5
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`TestDefaultBinaryMessenger`][]
 * [`TestDefaultBinaryMessengerBinding`][]
 
-PRs relevantes:
+Relevant PR:
 
 * [PR #76288: Migrate to ChannelBuffers.push][]
 

@@ -1,43 +1,51 @@
 ---
-ia-translate: true
-title: Ofuscar código Dart
-description: Como remover nomes de funções e classes do seu binário Dart.
+title: Obfuscate Dart code
+description: How to remove function and class names from your Dart binary.
 ---
 
 <?code-excerpt path-base="deployment/obfuscate"?>
 
-## O que é ofuscação de código?
+## What is code obfuscation?
 
-[Ofuscação de código][Code obfuscation] é o processo de modificar o
-binário de um app para torná-lo mais difícil de ser compreendido por humanos.
-A ofuscação oculta nomes de funções e classes no seu
-código Dart compilado, substituindo cada símbolo por
-outro símbolo, tornando difícil para um atacante
-fazer engenharia reversa do seu app proprietário.
-
-**A ofuscação de código do Flutter funciona
-apenas em uma [release build][].**
+[Code obfuscation][] is the process of modifying an
+app's binary to make it harder for humans to understand.
+Obfuscation hides function and class names in your
+compiled Dart code, replacing each symbol with
+another symbol, making it difficult for an attacker
+to reverse engineer your proprietary app.
 
 [Code obfuscation]: https://en.wikipedia.org/wiki/Obfuscation_(software)
-[release build]: /testing/build-modes#release
 
-## Limitações
+## Limitations and warnings {: #limitations}
 
-Note que ofuscar seu código _não_
-criptografa recursos nem protege contra
-engenharia reversa.
-Ele apenas renomeia símbolos com nomes mais obscuros.
+**Flutter's code obfuscation works
+only on a [release build][].**
 
 :::warning
-É uma **prática de segurança ruim**
-armazenar segredos em um app.
+It is a **poor security practice** to
+store secrets in an app.
 :::
 
-## Alvos suportados
+Obfuscating your code does _not_
+encrypt resources nor does it protect against
+reverse engineering.
+It only renames symbols with more obscure names.
 
-Os seguintes alvos de build
-suportam o processo de ofuscação
-descrito nesta página:
+Web apps don't support obfuscation.
+A web app can be [minified][], which provides a similar result.
+When you build a release version of a Flutter web app,
+the web compiler minifies the app. To learn more,
+see [Build and release a web app][].
+
+[release build]: /testing/build-modes#release
+[Build and release a web app]: /deployment/web
+[minified]: https://en.wikipedia.org/wiki/Minification_(programming)
+
+## Supported targets
+
+The following build targets
+support the obfuscation process
+described on this page:
 
 * `aar`
 * `apk`
@@ -50,105 +58,111 @@ descrito nesta página:
 * `macos-framework`
 * `windows`
 
-:::note
-Apps web não suportam ofuscação.
-Um app web pode ser [minificado][minified], o que fornece um resultado similar.
-Quando você compila uma versão release de um app Flutter web,
-o compilador web minifica o app. Para saber mais,
-veja [Compilar e lançar um app web][Build and release a web app].
-:::
-
-[Build and release a web app]: /deployment/web
-[minified]: https://en.wikipedia.org/wiki/Minification_(programming)
-
-## Ofuscar seu app
-
-Para ofuscar seu app, use o comando `flutter build`
-em modo release
-com as opções `--obfuscate` e  `--split-debug-info`.
-A opção `--split-debug-info` especifica o diretório
-onde o Flutter gera os arquivos de debug.
-No caso da ofuscação, ele gera um mapa de símbolos.
-Por exemplo:
+For detailed information about the command line options
+available for a build target, run the following
+command. The `--obfuscate` and  `--split-debug-info` options should
+be listed in the output. If they aren't, you'll need to
+install a newer version of Flutter to obfuscate your code.
 
 ```console
-$ flutter build apk --obfuscate --split-debug-info=/<project-name>/<directory>
+$ flutter build <build-target> -h
 ```
+   *  `<build-target>`: The build target. For example,
+      `apk`.
 
-Depois de ofuscar seu binário, **salve
-o arquivo de símbolos**. Você precisará dele se mais tarde
-quiser desofuscar um stack trace.
+## Obfuscate your app
 
-:::tip
-A opção `--split-debug-info` também pode ser usada sem `--obfuscate`
-para extrair símbolos do programa Dart, reduzindo o tamanho do código.
-Para saber mais sobre tamanho de app, veja [Medindo o tamanho do seu app][Measuring your app's size].
-:::
+To obfuscate your app and create a symbol map, use the
+`flutter build` command in release mode
+with the `--obfuscate` and `--split-debug-info` options.
+If you want to debug your obfuscated
+app in the future, you will need the symbol map.
 
-[Measuring your app's size]: /perf/app-size
+1. Run the following command to obfuscate your app and
+   generate a SYMBOLS file:
 
-Para informações detalhadas sobre essas flags, execute
-o comando de ajuda para seu alvo específico, por exemplo:
+   ```console
+   $ flutter build <build-target> \
+      --obfuscate \
+      --split-debug-info=/<symbols-directory>
+   ```
+
+   *  `<build-target>`: The build target. For example,
+      `apk`.
+   *  `<symbols-directory>`: The directory where the SYMBOLS
+      file should be placed. For example,
+      `out/android`.
+
+1. Once you've obfuscated your binary, **backup
+   the SYMBOLS file**. You might need this if you lose
+   your original SYMBOLs file and you
+   want to de-obfuscate a stack trace.
+
+## Read an obfuscated stack trace
+
+To debug a stack trace created by an obfuscated app,
+use the following steps to make it human readable:
+
+1. Find the matching SYMBOLS file.
+   For example, a crash from an Android arm64
+   device would need `app.android-arm64.symbols`.
+
+1. Provide both the stack trace (stored in a file)
+   and the SYMBOLS file to the `flutter symbolize` command.
+
+   ```console
+   $ flutter symbolize \
+      -i <stack-trace-file> \
+      -d <obfuscated-symbols-file>
+   ```
+
+   *  `<stack-trace-file>`: The file path for the
+      stacktrace. For example, `???`.
+   *  `<obfuscated-symbols-file>`: The file path for the
+      symbols file that contains the obfuscated symbols.
+      For example, `out/android/app.android-arm64.symbols`.
+
+   For more information about the `symbolize` command,
+   run `flutter symbolize -h`.
+
+## Read an obfuscated name
+
+You can generate a JSON file that contains
+an obfuscation map. An obfuscation map is a JSON array with
+pairs of original names and obfuscated names. For example,
+`["MaterialApp", "ex", "Scaffold", "ey"]`, where
+`ex` is the obfuscated name of `MaterialApp`.
+
+To generate an obfuscation map, use the following command:
 
 ```console
-$ flutter build apk -h
+$ flutter build <build-target> \
+   --obfuscate \
+   --split-debug-info=/<symbols-directory> \
+   --extra-gen-snapshot-options=--save-obfuscation-map=/<obfuscation-map-file>
 ```
 
-Se essas flags não estiverem listadas na saída,
-execute `flutter --version` para verificar sua versão do Flutter.
+*  `<build-target>`: The build target. For example,
+   `apk`.
+*  `<symbols-directory>`: The directory where the symbols
+   should be placed. For example, `out/android`
+*  `<obfuscation-map-file>`: The file path where the
+   JSON obfuscation map should be placed. For example,
+   `out/android/map.json`
 
-## Ler um stack trace ofuscado
+## Caveat
 
-Para depurar um stack trace criado por um app ofuscado,
-use os seguintes passos para torná-lo legível para humanos:
+Be aware of the following when coding an app that will
+eventually be an obfuscated binary.
 
-1. Encontre o arquivo de símbolos correspondente.
-   Por exemplo, uma falha de um dispositivo Android arm64
-   precisaria de `app.android-arm64.symbols`.
+* Code that relies on matching specific class, function,
+  or library names will fail.
+  For example, the following call to `expect()` won't
+  work in an obfuscated binary:
 
-1. Forneça tanto o stack trace (armazenado em um arquivo)
-   quanto o arquivo de símbolos para o comando `flutter symbolize`.
-   Por exemplo:
-
-   ```console
-   $ flutter symbolize -i <stack trace file> -d out/android/app.android-arm64.symbols
+   <?code-excerpt "lib/main.dart (Expect)"?>
+   ```dart
+   expect(foo.runtimeType.toString(), equals('Foo'));
    ```
 
-   Para mais informações sobre o comando `symbolize`,
-   execute `flutter symbolize -h`.
-
-## Ler um nome ofuscado
-
-Para tornar legível um nome que um app ofuscou,
-use os seguintes passos:
-
-1. Para salvar o mapa de ofuscação de nomes no momento da compilação do app,
-   use `--extra-gen-snapshot-options=--save-obfuscation-map=/<your-path>`.
-   Por exemplo:
-
-   ```console
-   $ flutter build apk --obfuscate --split-debug-info=/<project-name>/<directory> --extra-gen-snapshot-options=--save-obfuscation-map=/<your-path>
-   ```
-
-1. Para recuperar o nome, use o mapa de ofuscação gerado.
-   O mapa de ofuscação é um array JSON plano com pares de
-   nomes originais e nomes ofuscados. Por exemplo,
-   `["MaterialApp", "ex", "Scaffold", "ey"]`, onde `ex`
-   é o nome ofuscado de `MaterialApp`.
-
-## Ressalva
-
-Esteja ciente do seguinte ao codificar um app que
-eventualmente será um binário ofuscado.
-
-* Código que depende de correspondência de nomes específicos de classe, função,
-  ou biblioteca falhará.
-  Por exemplo, a seguinte chamada a `expect()` não
-  funcionará em um binário ofuscado:
-
-<?code-excerpt "lib/main.dart (Expect)"?>
-```dart
-expect(foo.runtimeType.toString(), equals('Foo'));
-```
-
-* Nomes de Enum não são ofuscados atualmente.
+* Enum names are not obfuscated currently.

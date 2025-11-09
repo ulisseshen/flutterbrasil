@@ -1,8 +1,6 @@
 ---
-title: Games
-description: Um catálogo de receitas para ajudá-lo a criar games com Flutter.
-ia-translate: true
+title: Flutter games cookbook
+shortTitle: Games
+description: A catalog of recipes to help you build games with Flutter.
+layout: toc
 ---
-
-{% include docs/cookbook-group-index.md -%}
-- [Adicionar anúncios ao seu app ou game Flutter para dispositivos móveis](/cookbook/plugins/google-mobile-ads)

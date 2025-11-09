@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import '../viewmodel/todo_list_viewmodel.dart';
 
 class TodoListScreen extends StatefulWidget {
-  const TodoListScreen({
-    super.key,
-    required this.viewModel,
-  });
+  const TodoListScreen({super.key, required this.viewModel});
 
   final TodoListViewModel viewModel;
 
@@ -88,7 +85,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
     );
   }
 
-// #docregion Add
+  // #docregion Add
   void _onAdd() {
     // Clear the text field when the add command completes.
     if (widget.viewModel.add.completed) {
@@ -96,5 +93,6 @@ class _TodoListScreenState extends State<TodoListScreen> {
       _controller.clear();
     }
   }
-// #enddocregion Add
+
+  // #enddocregion Add
 }

@@ -1,8 +1,7 @@
 ---
-title: Widgets de entrada
-short-title: Input
-description: Um catálogo dos widgets de entrada do Flutter.
-ia-translate: true
+title: Input widgets
+shortTitle: Input
+description: A catalog of Flutter's input widgets.
+widgetCategory: Input
+layout: widget-catalog-page
 ---
-
-{% render docs/catalog-page.md, categoryName:"Input", catalog:catalog %}

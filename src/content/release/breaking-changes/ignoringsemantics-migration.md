@@ -1,10 +1,11 @@
 ---
 title: Migration guide for ignoringSemantics in IgnorePointer and related classes
 description: Removal of ignoringSemantics in IgnorePointer and related classes.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 The `IgnoringPointer` widget allows you to designate an area of the UI
 where you don't want to accept pointer events, for example, when
@@ -16,23 +17,23 @@ was introduced as a workaround to preserve the semantics tree when using
 `IgnorePointer`s.
 
 The `IgnorePointer` behavior has changed in that it no longer drops
-the entire semantics subtree but merely blocks semantics actions in the 
+the entire semantics subtree but merely blocks semantics actions in the
 subtree. The `ignoringSemantics` workaround is no longer needed and is
 deprecated.
 
 This change also applies to the `AbsorbPointer` and
 `SliverIgnorePointer` widgets.
 
-## Descrição da mudança
+## Description of change
 
 `ignoringSemantics` was removed.
 
-## Guia de migração
+## Migration guide
 
 If you set this parameter to true in these widgets, consider using
 `ExcludeSemantics` instead.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 IgnorePointer(
@@ -51,7 +52,7 @@ SliverIgnorePointer(
 );
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 ExcludeSemantics(
@@ -138,14 +139,14 @@ class _RenderSliverIgnorePointerWithSemantics extends RenderProxySliver {
 }
 ```
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 3.10.0-2.0.pre<br>
-Na versão estável: 3.13.0
+Landed in version: 3.10.0-2.0.pre<br>
+In stable release: 3.13.0
 
-## Referências
+## References
 
-PRs relevantes:
+Relevant PRs:
 
 * [PR 120619][]: Fixes IgnorePointer and AbsorbPointer to only block user
   interactions in a11y.

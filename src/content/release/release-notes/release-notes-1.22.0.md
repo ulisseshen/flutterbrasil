@@ -1,8 +1,8 @@
 ---
 title: Flutter 1.22.0 release notes
-short-title: 1.22.0 release notes
+shortTitle: 1.22.0 release notes
 description: Release notes for Flutter 1.22.0.
-ia-translate: true
+skipTemplateRendering: true
 ---
 
 This page has release notes for 1.22.0.
@@ -10,7 +10,7 @@ For information about subsequent bug-fix releases, see our [CHANGELOG][]
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/master/CHANGELOG.md
 
-## Merged PRs by labels for `flutter/flutter` 
+## Merged PRs by labels for `flutter/flutter`
 
 ### framework - 428 pull request(s)
 
@@ -2769,7 +2769,7 @@ For information about subsequent bug-fix releases, see our [CHANGELOG][]
 [65234](https://github.com/flutter/flutter/pull/65234) Update create templates to 1.0.0 (cla: yes, tool)
 
 
-[65426](https://github.com/flutter/flutter/pull/65426) [flutter_tools] remove advice about running sdkmanager directly in favor of directing to flutterbrasil.dev (cla: yes, tool, waiting for tree to go green)
+[65426](https://github.com/flutter/flutter/pull/65426) [flutter_tools] remove advice about running sdkmanager directly in favor of directing to flutter.dev (cla: yes, tool, waiting for tree to go green)
 
 
 [65435](https://github.com/flutter/flutter/pull/65435) [flutter_tools] alternate the name of the dill file used for hot restart (cla: yes, tool)
@@ -4694,7 +4694,7 @@ For information about subsequent bug-fix releases, see our [CHANGELOG][]
 
 
 
-## Merged PRs by labels for `flutter/engine` 
+## Merged PRs by labels for `flutter/engine`
 
 
 
@@ -5356,7 +5356,7 @@ For information about subsequent bug-fix releases, see our [CHANGELOG][]
 
 
 
-## Merged PRs by labels for `flutter/plugins` 
+## Merged PRs by labels for `flutter/plugins`
 
 
 
@@ -7046,7 +7046,7 @@ There were 934 pull requests.
 
 [65416](https://github.com/flutter/flutter/pull/65416) Re-land ScaffoldMessenger (cla: yes, f: material design, framework, waiting for tree to go green)
 
-[65426](https://github.com/flutter/flutter/pull/65426) [flutter_tools] remove advice about running sdkmanager directly in favor of directing to flutterbrasil.dev (cla: yes, tool, waiting for tree to go green)
+[65426](https://github.com/flutter/flutter/pull/65426) [flutter_tools] remove advice about running sdkmanager directly in favor of directing to flutter.dev (cla: yes, tool, waiting for tree to go green)
 
 [65434](https://github.com/flutter/flutter/pull/65434) [devicelab] Remove ~/.gradle after each devicelab task run (cla: yes, team, waiting for tree to go green)
 
@@ -8055,5 +8055,3 @@ There were 65 pull requests.
 [3010](https://github.com/flutter/plugins/pull/3010) [url_launcher_web] Fix a typo in a test name and fix quote consistency (cla: yes, waiting for test harness)
 
 [3011](https://github.com/flutter/plugins/pull/3011) [google_maps_flutter] Fix typo in google_maps_flutter/example/map_ui.dart (cla: yes)
-
-

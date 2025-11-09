@@ -1,17 +1,16 @@
 ---
-ia-translate: true
-title: Recursos adicionais
+title: Additional resources
 description: >-
-  Outros recursos que você pode achar úteis
-  ao escrever apps adaptativos.
-short-title: Aprender
+  Other resources that you might find useful
+  when writing adaptive apps.
+shortTitle: Learn
 ---
 
-## Exemplos
+## Examples
 
-Se você gostaria de ver como os conceitos adaptativos e responsivos
-(conforme descritos nestas páginas) se unem,
-confira o código-fonte dos seguintes apps:
+If you'd like to see how the adaptive and responsive
+concepts (as described in these pages) come together.
+check out the source code for the following apps:
 
 * [Wonderous][]
 * [Flutter adaptive demo][]
@@ -19,21 +18,21 @@ confira o código-fonte dos seguintes apps:
 [Flutter adaptive demo]: {{site.github}}/gskinnerTeam/flutter-adaptive-demo
 [Wonderous]: {{site.github}}/gskinnerTeam/flutter-wonderous-app
 
-## Saiba mais sobre os princípios básicos de usabilidade
+## Learn more about basic usability principles
 
-Claro, estas páginas não constituem uma
-lista exaustiva das coisas que você pode considerar.
-Quanto mais sistemas operacionais, fatores de forma
-e dispositivos de entrada você suportar, mais difícil
-se torna especificar cada permutação no design.
+Of course, these pages don't constitute an
+exhaustive list of the things you might consider.
+The more operating systems, form factors,
+and input devices you support, the more difficult
+it becomes to spec out every permutation in design.
 
-Dedicar tempo para aprender princípios básicos de usabilidade como
-desenvolvedor capacita você a tomar melhores decisões,
-reduz iterações de ida e volta com
-design durante a produção, e resulta em
-maior produtividade com melhores resultados.
+Taking time to learn basic usability principles as a
+developer empowers you to make better decisions,
+reduces back-and-forth iterations with
+design during production, and results in
+improved productivity with better outcomes.
 
-Aqui estão alguns recursos que você pode achar úteis:
+Here are some resources that you might find useful:
 
 * [Android large screen guidelines][]
 * [Material guidelines on applying layout][]
@@ -45,7 +44,7 @@ Aqui estão alguns recursos que você pode achar úteis:
 * [Responsive design techniques (Microsoft)][]
 * [Machine sizes and breakpoints (Microsoft)][]
 * [How to build Adaptive UI with Flutter][],
-  um vídeo do Google I/O 2024.
+  a Google I/O 2024 video.
 
 [Android large screen guidelines]: {{site.android-dev}}/docs/quality-guidelines/large-screen-app-quality
 [Build high quality apps (Android)]: {{site.android-dev}}/quality

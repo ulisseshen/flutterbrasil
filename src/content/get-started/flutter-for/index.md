@@ -1,11 +1,10 @@
 ---
-ia-translate: true
-title: Aprenda Flutter vindo de outra plataforma
-short-title: Flutter para
+title: Learn Flutter when coming from another platform
+shortTitle: Flutter for
 sitemap: false
 description: >-
-  Utilize sua experiência desenvolvendo em outra plataforma
-  para aprender o básico de Flutter!
+  Utilize your background developing for another platform
+  to learn the basics of Flutter!
 # This is a placeholder page (Firebase redirects this page's URL to another);
 # it is necessary to allow breadcrumbs to work.
 ---

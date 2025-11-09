@@ -1,164 +1,163 @@
 ---
-ia-translate: true
-title: Concorrência e isolates
-description: Multithreading em Flutter usando isolates Dart.
+title: Concurrency and isolates
+description: Multithreading in Flutter using Dart isolates.
 ---
 
 <?code-excerpt path-base="perf/concurrency/isolates/"?>
 
-Todo código Dart executa em [isolates]({{site.dart-site}}/language/concurrency),
-que são similares a threads,
-mas diferem pois isolates têm sua própria memória isolada.
-Eles não compartilham estado de forma alguma,
-e só podem se comunicar por mensagens.
-Por padrão,
-apps Flutter fazem todo seu trabalho em um único isolate –
-o isolate principal (main isolate).
-Na maioria dos casos, esse modelo permite programação mais simples e
-é rápido o suficiente para que a UI da aplicação não se torne não responsiva.
+All Dart code runs in [isolates]({{site.dart-site}}/language/concurrency),
+which are similar to threads,
+but differ in that isolates have their own isolated memory.
+They do not share state in any way,
+and can only communicate by messaging.
+By default,
+Flutter apps do all of their work on a single isolate –
+the main isolate.
+In most cases, this model allows for simpler programming and
+is fast enough that the application's UI doesn't become unresponsive.
 
-Às vezes, porém,
-aplicações precisam realizar computações excepcionalmente grandes
-que podem causar "UI jank" (movimento travado).
-Se seu app está experimentando jank por essa razão,
-você pode mover essas computações para um isolate auxiliar.
-Isso permite que o ambiente de runtime subjacente
-execute a computação concorrentemente
-com o trabalho do isolate principal da UI
-e aproveita dispositivos multi-core.
+Sometimes though,
+applications need to perform exceptionally large computations
+that can cause "UI jank" (jerky motion).
+If your app is experiencing jank for this reason,
+you can move these computations to a helper isolate.
+This allows the underlying runtime environment
+to run the computation concurrently
+with the main UI isolate's work
+and takes advantage of multi-core devices.
 
-Cada isolate tem sua própria memória
-e seu próprio event loop.
-O event loop processa
-eventos na ordem em que são adicionados a uma fila de eventos.
-No isolate principal,
-esses eventos podem ser qualquer coisa desde lidar com um usuário tocando na UI,
-até executar uma função,
-até pintar um frame na tela.
-A figura a seguir mostra um exemplo de fila de eventos
-com 3 eventos esperando para serem processados.
+Each isolate has its own memory
+and its own event loop.
+The event loop processes
+events in the order that they're added to an event queue.
+On the main isolate,
+these events can be anything from handling a user tapping in the UI,
+to executing a function,
+to painting a frame on the screen.
+The following figure shows an example event queue
+with 3 events waiting to be processed.
 
-![The main isolate diagram](/assets/images/docs/development/concurrency/basics-main-isolate.png){:width="50%"}
+![The main isolate diagram](/assets/images/docs/development/concurrency/basics-main-isolate.png){:width="50%" .diagram-wrap}
 
-Para renderização suave,
-Flutter adiciona um evento "paint frame" à fila de eventos
-60 vezes por segundo (para um dispositivo de 60Hz).
-Se esses eventos não forem processados a tempo,
-a aplicação experimenta UI jank,
-ou pior,
-se torna completamente não responsiva.
+For smooth rendering,
+Flutter adds a "paint frame" event to the event queue
+60 times per second(for a 60Hz device).
+If these events aren't processed on time,
+the application experiences UI jank,
+or worse,
+become unresponsive altogether.
 
-![Event jank diagram](/assets/images/docs/development/concurrency/event-jank.png){:width="50%"}
+![Event jank diagram](/assets/images/docs/development/concurrency/event-jank.png){:width="60%" .diagram-wrap}
 
-Sempre que um processo não pode ser completado em um frame gap,
-o tempo entre dois frames,
-é uma boa ideia transferir o trabalho para outro isolate
-para garantir que o isolate principal possa produzir 60 frames por segundo.
-Quando você cria um isolate no Dart,
-ele pode processar o trabalho concorrentemente com o isolate principal,
-sem bloqueá-lo.
+Whenever a process can't be completed in a frame gap,
+the time between two frames,
+it's a good idea to offload the work to another isolate
+to ensure that the main isolate can produce 60 frames per second.
+When you spawn an isolate in Dart,
+it can process the work concurrently with the main isolate,
+without blocking it.
 
-Você pode ler mais sobre como isolates
-e o event loop funcionam no Dart na
-[página de concorrência][concurrency page] da documentação
-do Dart.
+You can read more about how isolates
+and the event loop work in Dart on
+the [concurrency page][] of the Dart
+documentation.
 
 [concurrency page]: {{site.dart-site}}/language/concurrency
 
-{% ytEmbed 'vl_AaCgudcY', 'Isolates and the event loop | Flutter in Focus' %}
+<YouTubeEmbed id="vl_AaCgudcY" title="Isolates and the event loop | Flutter in Focus"></YouTubeEmbed>
 
-## Casos de uso comuns para isolates
+## Common use cases for isolates
 
-Há apenas uma regra rígida para quando você deve usar isolates,
-e é quando grandes computações estão fazendo sua aplicação Flutter
-experimentar UI jank.
-Esse jank acontece quando há qualquer computação que leva mais tempo do que
-o frame gap do Flutter.
+There is only one hard rule for when you should use isolates,
+and that's when large computations are causing your Flutter application
+to experience UI jank.
+This jank happens when there is any computation that takes longer than
+Flutter's frame gap.
 
-![Event jank diagram](/assets/images/docs/development/concurrency/event-jank.png){:width="50%"}
+![Event jank diagram](/assets/images/docs/development/concurrency/event-jank.png){:width="60%" .diagram-wrap}
 
-Qualquer processo _poderia_ levar mais tempo para completar,
-dependendo da implementação
-e dos dados de entrada,
-tornando impossível criar uma lista exaustiva de
-quando você precisa considerar usar isolates.
+Any process _could_ take longer to complete,
+depending on the implementation
+and the input data,
+making it impossible to create an exhaustive list of
+when you need to consider using isolates.
 
-Dito isso, isolates são comumente usados para o seguinte:
+That said, isolates are commonly used for the following:
 
-- Ler dados de um banco de dados local
-- Enviar notificações push
-- Analisar e decodificar arquivos de dados grandes
-- Processar ou comprimir fotos, arquivos de áudio e arquivos de vídeo
-- Converter arquivos de áudio e vídeo
-- Quando você precisa de suporte assíncrono ao usar FFI
-- Aplicar filtragem a listas complexas ou sistemas de arquivos
+- Reading data from a local database
+- Sending push notifications
+- Parsing and decoding large data files
+- Processing or compressing photos, audio files, and video files
+- Converting audio and video files
+- When you need asynchronous support while using FFI
+- Applying filtering to complex lists or filesystems
 
-## Passagem de mensagens entre isolates
+## Message passing between isolates
 
-Os isolates do Dart são uma implementação do [modelo Actor][Actor model].
-Eles só podem se comunicar uns com os outros por passagem de mensagens,
-que é feita com [objetos `Port`][`Port` objects].
-Quando mensagens são "passadas" entre si,
-elas são geralmente copiadas do isolate remetente para o
-isolate receptor.
-Isso significa que qualquer valor passado para um isolate,
-mesmo se modificado nesse isolate,
-não muda o valor no isolate original.
+Dart's isolates are an implementation of the [Actor model][].
+They can only communicate with each other by message passing,
+which is done with [`Port` objects][].
+When messages are "passed" between each other,
+they are generally copied from the sending isolate to the
+receiving isolate.
+This means that any value passed to an isolate,
+even if mutated on that isolate,
+doesn't change the value on the original isolate.
 
-Os únicos [objetos que não são copiados quando passados][objects that aren't copied when passed] para um isolate
-são objetos imutáveis que não podem ser alterados de qualquer forma,
-como uma String ou um byte não modificável.
-Quando você passa um objeto imutável entre isolates,
-uma referência a esse objeto é enviada através da porta,
-em vez do objeto ser copiado,
-para melhor desempenho.
-Como objetos imutáveis não podem ser atualizados,
-isso efetivamente retém o comportamento do modelo actor.
+The only [objects that aren't copied when passed][] to an isolate
+are immutable objects that can't be changed anyway,
+such a String or an unmodifiable byte.
+When you pass an immutable object between isolates,
+a reference to that object is sent across the port,
+rather than the object being copied,
+for better performance.
+Because immutable objects can't be updated,
+this effectively retains the actor model behavior.
 
 [`Port` objects]: {{site.dart.api}}/dart-isolate/ReceivePort-class.html
 [objects that aren't copied when passed]: {{site.dart.api}}/dart-isolate/SendPort/send.html
 
-Uma exceção a esta regra é
-quando um isolate sai ao enviar uma mensagem usando o método `Isolate.exit`.
-Como o isolate remetente não existirá após enviar a mensagem,
-ele pode passar a propriedade da mensagem de um isolate para o outro,
-garantindo que apenas um isolate possa acessar a mensagem.
+An exception to this rule is
+when an isolate exits when it sends a message using the `Isolate.exit` method.
+Because the sending isolate won't exist after sending the message,
+it can pass ownership of the message from one isolate to the other,
+ensuring that only one isolate can access the message.
 
-As duas primitivas de nível mais baixo que enviam mensagens são `SendPort.send`,
-que faz uma cópia de uma mensagem mutável ao enviá-la,
-e `Isolate.exit`,
-que envia a referência para a mensagem.
-Tanto `Isolate.run` quanto `compute`
-usam `Isolate.exit` nos bastidores.
+The two lowest-level primitives that send messages are `SendPort.send`,
+which makes a copy of a mutable message as it sends,
+and `Isolate.exit`,
+which sends the reference to the message.
+Both `Isolate.run` and `compute`
+use `Isolate.exit` under the hood.
 
-## Isolates de curta duração
+## Short-lived isolates
 
-A maneira mais fácil de mover um processo para um isolate no Flutter é com
-o método `Isolate.run`.
-Este método cria um isolate,
-passa um callback para o isolate criado para iniciar alguma computação,
-retorna um valor da computação,
-e então desliga o isolate quando a computação está completa.
-Tudo isso acontece concorrentemente com o isolate principal,
-e não o bloqueia.
+The easiest way to move a process to an isolate in Flutter is with
+the `Isolate.run` method.
+This method spawns an isolate,
+passes a callback to the spawned isolate to start some computation,
+returns a value from the computation,
+and then shuts the isolate down when the computation is complete.
+This all happens concurrently with the main isolate,
+and doesn't block it.
 
-![Isolate diagram](/assets/images/docs/development/concurrency/isolate-bg-worker.png){:width="50%"}
+![Isolate diagram](/assets/images/docs/development/concurrency/isolate-bg-worker.png){:width="70%" .diagram-wrap}
 
-O método `Isolate.run` requer um único argumento,
-uma função de callback,
-que é executada no novo isolate.
-A assinatura de função deste callback deve ter exatamente
-um argumento obrigatório e sem nome.
-Quando a computação completa,
-ela retorna o valor do callback de volta para o isolate principal,
-e sai do isolate criado.
+The `Isolate.run` method requires a single argument,
+a callback function,
+that is run on the new isolate.
+This callback's function signature must have exactly
+one required, unnamed argument.
+When the computation completes,
+it returns the callback's value back to the main isolate,
+and exits the spawned isolate.
 
-Por exemplo,
-considere este código que carrega um blob JSON grande de um arquivo,
-e converte esse JSON em objetos Dart customizados.
-Se o processo de decodificação json não fosse transferido para um novo isolate,
-este método faria com que a UI
-se tornasse não responsiva por vários segundos.
+For example,
+consider this code that loads a large JSON blob from a file,
+and converts that JSON into custom Dart objects.
+If the json decoding process wasn't off loaded to a new isolate,
+this method would cause the UI to
+become unresponsive for several seconds.
 
 <?code-excerpt "lib/main.dart (isolate-run)"?>
 ```dart
@@ -174,83 +173,83 @@ Future<List<Photo>> getPhotos() async {
 }
 ```
 
-Para um passo a passo completo de usar Isolates para
-analisar JSON em segundo plano, veja [esta receita do cookbook][this cookbook recipe].
+For a complete walkthrough of using Isolates to
+parse JSON in the background, see [this cookbook recipe][].
 
 [this cookbook recipe]: /cookbook/networking/background-parsing
 
-## Isolates stateful de longa duração
+## Stateful, longer-lived isolates
 
-Isolates de curta duração são convenientes de usar,
-mas há overhead de desempenho necessário para criar novos isolates,
-e para copiar objetos de um isolate para outro.
-Se você está fazendo a mesma computação usando `Isolate.run` repetidamente,
-você pode ter melhor desempenho criando isolates que não saem imediatamente.
+Short-live isolates are convenient to use,
+but there is performance overhead required to spawn new isolates,
+and to copy objects from one isolate to another.
+If you're doing the same computation using `Isolate.run` repeatedly,
+you might have better performance by creating isolates that don't exit immediately.
 
-Para fazer isso, você pode usar um punhado de APIs de nível mais baixo relacionadas a isolates que
-`Isolate.run` abstrai:
+To do this, you can use a handful of lower-level isolate-related APIs that
+`Isolate.run` abstracts:
 
-- [`Isolate.spawn()`][] e [`Isolate.exit()`][]
-- [`ReceivePort`][] e [`SendPort`][]
-- Método [`send()`][]
+- [`Isolate.spawn()`][] and [`Isolate.exit()`][]
+- [`ReceivePort`][] and [`SendPort`][]
+- [`send()`][] method
 
-Quando você usa o método `Isolate.run`,
-o novo isolate desliga imediatamente após
-retornar uma única mensagem para o isolate principal.
-Às vezes, você precisará de isolates de longa duração,
-e que possam passar múltiplas mensagens entre si ao longo do tempo.
-No Dart, você pode fazer isso com a API Isolate
-e Ports.
-Esses isolates de longa duração são coloquialmente conhecidos como _background workers_.
+When you use the `Isolate.run` method,
+the new isolate immediately shuts down after it
+returns a single message to the main isolate.
+Sometimes, you'll need isolates that are long lived,
+and can pass multiple messages to each other over time.
+In Dart, you can accomplish this with the Isolate API
+and Ports.
+These long-lived isolates are colloquially known as _background workers_.
 
-Isolates de longa duração são úteis quando você tem um processo específico que
-precisa ser executado repetidamente durante a vida útil de sua aplicação,
-ou se você tem um processo que executa durante um período de tempo
-e precisa produzir múltiplos valores de retorno para o isolate principal.
+Long-lived isolates are useful when you have a specific process that either
+needs to be run repeatedly throughout the lifetime of your application,
+or if you have a process that runs over a period of time
+and needs to yield multiple return values to the main isolate.
 
-Ou, você pode usar [worker_manager][] para gerenciar isolates de longa duração.
+Or, you might use [worker_manager][] to manage long-lived isolates.
 
 [worker_manager]: {{site.pub-pkg}}/worker_manager
 
-### ReceivePorts e SendPorts
+### ReceivePorts and SendPorts
 
-Configure comunicação de longa duração entre isolates com duas classes
-(além de Isolate):
-[`ReceivePort`][] e [`SendPort`][].
-Essas portas são a única forma de isolates se comunicarem entre si.
+Set up long-lived communication between isolates with two classes
+(in addition to Isolate):
+[`ReceivePort`][] and [`SendPort`][].
+These ports are the only way isolates can communicate with each other.
 
-`Ports` se comportam similarmente a `Streams`,
-em que o `StreamController`
-ou `Sink` é criado em um isolate,
-e o listener é configurado no outro isolate.
-Nesta analogia,
-o `StreamController` é chamado de `SendPort`,
-e você pode "adicionar" mensagens com o método `send()`.
-`ReceivePort`s são os listeners,
-e quando esses listeners recebem uma nova mensagem,
-eles chamam um callback fornecido com a mensagem como argumento.
+`Ports` behave similarly to `Streams`,
+in which the `StreamController`
+or `Sink` is created in one isolate,
+and the listener is set up in the other isolate.
+In this analogy,
+the `StreamConroller` is called a `SendPort`,
+and you can "add" messages with the `send()` method.
+`ReceivePort`s are the listeners,
+and when these listeners receive a new message,
+they call a provided callback with the message as an argument.
 
-Para uma explicação aprofundada sobre configurar comunicação bidirecional
-entre o isolate principal
-e um isolate worker,
-siga os exemplos na [documentação do Dart][Dart documentation].
+For an in-depth explanation on setting up two-way
+communication between the main isolate
+and a worker isolate,
+follow the examples in the [Dart documentation][].
 
 [Dart documentation]: {{site.dart-site}}/language/concurrency
 
-## Usando plugins de plataforma em isolates
+## Using platform plugins in isolates
 
-A partir do Flutter 3.7, você pode usar plugins de plataforma em isolates de segundo plano.
-Isso abre muitas possibilidades para transferir computações pesadas,
-dependentes de plataforma para um isolate que não bloqueará sua UI.
-Por exemplo, imagine que você está criptografando dados
-usando uma API nativa do host
-(como uma API Android no Android, uma API iOS no iOS, e assim por diante).
-Anteriormente, [marshaling de dados][marshaling data] para a plataforma host poderia desperdiçar tempo da thread da UI,
-e agora pode ser feito em um isolate de segundo plano.
+As of Flutter 3.7, you can use platform plugins in background isolates.
+This opens many possibilities to offload heavy,
+platform-dependent computations to an isolate that won't block your UI.
+For example, imagine you're encrypting data
+using a native host API
+(such as an Android API on Android, an iOS API on iOS, and so on).
+Previously, [marshaling data][] to the host platform could waste UI thread time,
+and can now be done in a background isolate.
 
-Isolates de canal de plataforma usam a API [`BackgroundIsolateBinaryMessenger`][].
-O seguinte trecho mostra um exemplo de usar
-o pacote `shared_preferences` em um isolate de segundo plano.
+Platform channel isolates use the [`BackgroundIsolateBinaryMessenger`][] API.
+The following snippet shows an example of using
+the `shared_preferences` package in a background isolate.
 
 <?code-excerpt "lib/isolate_binary_messenger.dart"?>
 ```dart
@@ -276,78 +275,78 @@ Future<void> _isolateMain(RootIsolateToken rootIsolateToken) async {
 }
 ```
 
-## Limitações dos Isolates
+## Limitations of Isolates
 
-Se você está vindo para o Dart de uma linguagem com multithreading,
-é razoável esperar que isolates se comportem como threads,
-mas esse não é o caso.
-Isolates têm seus próprios campos globais,
-e só podem se comunicar com passagem de mensagens,
-garantindo que objetos mutáveis em um isolate sejam sempre acessíveis
-apenas em um único isolate.
-Portanto, isolates são limitados por seu acesso à sua própria memória.
-Por exemplo,
-se você tem uma aplicação com uma variável global mutável chamada `configuration`,
-ela é copiada como um novo campo global em um isolate criado.
-Se você modificar essa variável no isolate criado,
-ela permanece intocada no isolate principal.
-Isso é verdade mesmo se você passar o objeto `configuration` como uma mensagem
-para o novo isolate.
-É assim que isolates são destinados a funcionar,
-e é importante ter isso em mente quando você considera usar isolates.
+If you're coming to Dart from a language with multithreading,
+it's reasonable to expect isolates to behave like threads,
+but that isn't the case.
+Isolates have their own global fields,
+and can only communicate with message passing,
+ensuring that mutable objects in an isolate are only ever accessible
+in a single isolate.
+Therefore, isolates are limited by their access to their own memory.
+For example,
+if you have an application with a global mutable variable called `configuration`,
+it is copied as a new global field in a spawned isolate.
+If you mutate that variable in the spawned isolate,
+it remains untouched in the main isolate.
+This is true even if you pass the `configuration` object as a message
+to the new isolate.
+This is how isolates are meant to function,
+and it's important to keep in mind when you consider using isolates.
 
-### Plataformas web e compute
+### Web platforms and compute
 
-Plataformas web Dart, incluindo Flutter web,
-não suportam isolates.
-Se você está visando a web com seu app Flutter,
-você pode usar o método `compute` para garantir que seu código compile.
-O método [`compute()`][] executa a computação na
-main thread na web,
-mas cria uma nova thread em dispositivos móveis.
-Em plataformas móveis e desktop
+Dart web platforms, including Flutter web,
+don't support isolates.
+If you're targeting the web with your Flutter app,
+you can use the `compute` method to ensure your code compiles.
+The [`compute()`][] method runs the computation on
+the main thread on the web,
+but spawns a new thread on mobile devices.
+On mobile and desktop platforms
 `await compute(fun, message)`
-é equivalente a `await Isolate.run(() => fun(message))`.
+is equivalent to `await Isolate.run(() => fun(message))`.
 
-Para mais informações sobre concorrência na web,
-confira a [documentação de concorrência][concurrency documentation] em dart.dev.
+For more information on concurrency on the web,
+check out the [concurrency documentation][] on dart.dev.
 
 [concurrency documentation]: {{site.dart-site}}/language/concurrency
 
-### Sem acesso ao `rootBundle` ou métodos `dart:ui`
+### No `rootBundle` access or `dart:ui` methods
 
-Todas as tarefas de UI e o próprio Flutter estão acoplados ao isolate principal.
-Portanto,
-você não pode acessar assets usando `rootBundle` em isolates criados,
-nem pode realizar qualquer trabalho de widget
-ou UI em isolates criados.
+All UI tasks and Flutter itself are coupled to the main isolate.
+Therefore,
+you can't access assets using `rootBundle` in spawned isolates,
+nor can you perform any widget
+or UI work in spawned isolates.
 
-### Mensagens limitadas de plugin da plataforma host para Flutter
+### Limited plugin messages from host platform to Flutter
 
-Com canais de plataforma de isolate de segundo plano,
-você pode usar canais de plataforma em isolates para enviar mensagens para a plataforma host
-(por exemplo, Android ou iOS),
-e receber respostas a essas mensagens.
-No entanto, você não pode receber mensagens não solicitadas da plataforma host.
+With background isolate platform channels,
+you can use platform channels in isolates to send messages to the host platform
+(for example Android or iOS),
+and receive responses to those messages.
+However, you can't receive unsolicited messages from the host platform.
 
-Como exemplo,
-você não pode configurar um listener Firestore de longa duração em um isolate de segundo plano,
-porque Firestore usa canais de plataforma para enviar atualizações para Flutter,
-que não são solicitadas.
-Você pode, no entanto, consultar Firestore para uma resposta em segundo plano.
+As an example,
+you can't set up a long-lived Firestore listener in a background isolate,
+because Firestore uses platform channels to push updates to Flutter,
+which are unsolicited.
+You can, however, query Firestore for a response in the background.
 
-## Mais informações
+## More information
 
-Para mais informações sobre isolates, confira os seguintes recursos:
+For more information on isolates, check out the following resources:
 
-- Se você está usando muitos isolates, considere a classe [IsolateNameServer][] no Flutter,
-ou o pacote pub que clona a funcionalidade para aplicações Dart que não usam
+- If you're using many isolates, consider the [IsolateNameServer][] class in Flutter,
+or the pub package that clones the functionality for Dart applications not using
 Flutter.
-- Isolates do Dart são uma implementação do [modelo Actor][Actor model].
-- [isolate_agents][] é um pacote que abstrai Ports e facilita a criação de isolates de longa duração.
-- Leia mais sobre o anúncio da API `BackgroundIsolateBinaryMessenger` [aqui][announcement].
+- Dart's Isolates are an implementation of the [Actor model][].
+- [isolate_agents][] is a package that abstracts Ports and make it easier to create long-lived isolates.
+- Read more about the `BackgroundIsolateBinaryMessenger` API [announcement][].
 
-[announcement]: {{site.flutter-medium}}/introducing-background-isolate-channels-7a299609cad8
+[announcement]: {{site.flutter-blog}}/introducing-background-isolate-channels-7a299609cad8
 [Actor model]: https://en.wikipedia.org/wiki/Actor_model
 [isolate_agents]: {{site.medium}}/@gaaclarke/isolate-agents-easy-isolates-for-flutter-6d75bf69a2e7
 [marshaling data]: https://en.wikipedia.org/wiki/Marshalling_(computer_science)

@@ -1,9 +1,8 @@
 ---
-ia-translate: true
-title: Adicionando uma launch screen ao seu app iOS
-short-title: Launch screen
-description: Aprenda como adicionar uma launch screen ao seu app iOS.
-toc: false
+title: Adding a launch screen to your iOS app
+shortTitle: Launch screen
+description: Learn how to add a launch screen to your iOS app.
+showToc: false
 ---
 
 {% comment %}
@@ -11,32 +10,32 @@ Consider introducing an image here similar to the android splash-screen one:
 https://github.com/flutter/website/issues/8357
 {% endcomment -%}
 
-[Launch screens][] fornecem uma experiência inicial simples enquanto seu app iOS carrega.
-Elas preparam o cenário para sua aplicação, enquanto permitem tempo para que o mecanismo do app
-carregue e seu app inicialize.
+[Launch screens][] provide a simple initial experience while your iOS app loads.
+They set the stage for your application, while allowing time for the app engine
+to load and your app to initialize.
 
 [Launch screens]: {{site.apple-dev}}/design/human-interface-guidelines/launching#Launch-screens
 
-Todos os apps submetidos à Apple App Store
-[devem fornecer uma launch screen][apple-requirement]
-com um storyboard do Xcode.
+All apps submitted to the Apple App Store
+[must provide a launch screen][apple-requirement]
+with an Xcode storyboard.
 
-## Personalizar a launch screen
+## Customize the launch screen
 
-O template padrão do Flutter inclui um
-storyboard do Xcode chamado `LaunchScreen.storyboard`
-que pode ser personalizado com seus próprios assets.
-Por padrão, o storyboard exibe uma imagem em branco,
-mas você pode mudar isso. Para fazer isso,
-abra o projeto Xcode do app Flutter
-digitando `open ios/Runner.xcworkspace`
-a partir da raiz do diretório do seu app.
-Em seguida, selecione `Runner/Assets.xcassets`
-no Project Navigator e
-solte as imagens desejadas no conjunto de imagens `LaunchImage`.
+The default Flutter template includes an Xcode
+storyboard named `LaunchScreen.storyboard`
+that can be customized with your own assets.
+By default, the storyboard displays a blank image,
+but you can change this. To do so,
+open the Flutter app's Xcode project
+by typing `open ios/Runner.xcworkspace`
+from the root of your app directory.
+Then select `Runner/Assets.xcassets`
+from the Project Navigator and
+drop in the desired images to the `LaunchImage` image set.
 
-A Apple fornece orientação detalhada para launch screens como
-parte das [Human Interface Guidelines][].
+Apple provides detailed guidance for launch screens as
+part of the [Human Interface Guidelines][].
 
 [apple-requirement]: {{site.apple-dev}}/documentation/xcode/specifying-your-apps-launch-screen
 [Human Interface Guidelines]: {{site.apple-dev}}/design/human-interface-guidelines/patterns/launching#launch-screens

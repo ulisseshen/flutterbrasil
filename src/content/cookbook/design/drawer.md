@@ -1,80 +1,72 @@
 ---
-title: Adicione um drawer a uma tela
-description: Como implementar um Drawer do Material.
-js:
-  - defer: true
-    url: /assets/js/inject_dartpad.js
-ia-translate: true
+title: Add a drawer to a screen
+description: How to implement a Material Drawer.
 ---
 
 <?code-excerpt path-base="cookbook/design/drawer"?>
 
-Em aplicativos que usam Material Design,
-existem duas opções principais para navegação: tabs e drawers.
-Quando não há espaço suficiente para suportar tabs,
-os drawers fornecem uma alternativa prática.
+In apps that use Material Design,
+there are two primary options for navigation: tabs and drawers.
+When there is insufficient space to support tabs,
+drawers provide a handy alternative.
 
-No Flutter, use o widget [`Drawer`][] em combinação com um
-[`Scaffold`][] para criar um layout com um drawer do Material Design.
-Esta receita usa os seguintes passos:
+In Flutter, use the [`Drawer`][] widget in combination with a
+[`Scaffold`][] to create a layout with a Material Design drawer.
+This recipe uses the following steps:
 
-  1. Criar um `Scaffold`.
-  2. Adicionar um drawer.
-  3. Preencher o drawer com itens.
-  4. Fechar o drawer programaticamente.
+  1. Create a `Scaffold`.
+  2. Add a drawer.
+  3. Populate the drawer with items.
+  4. Close the drawer programmatically.
 
-## 1. Criar um `Scaffold`
+## 1. Create a `Scaffold`
 
-Para adicionar um drawer ao aplicativo, envolva-o em um widget [`Scaffold`][].
-O widget `Scaffold` fornece uma estrutura visual consistente para aplicativos que
-seguem as Diretrizes de Material Design.
-Ele também suporta componentes especiais do Material Design,
-como Drawers, AppBars e SnackBars.
+To add a drawer to the app, wrap it in a [`Scaffold`][] widget.
+The `Scaffold` widget provides a consistent visual structure to apps that
+follow the Material Design Guidelines.
+It also supports special Material Design
+components, such as Drawers, AppBars, and SnackBars.
 
-Neste exemplo, crie um `Scaffold` com um `drawer`:
+In this example, create a `Scaffold` with a `drawer`:
 
 <?code-excerpt "lib/drawer.dart (DrawerStart)" replace="/null, //g"?>
 ```dart
 Scaffold(
-  appBar: AppBar(
-    title: const Text('AppBar without hamburger button'),
-  ),
+  appBar: AppBar(title: const Text('AppBar without hamburger button')),
   drawer: // Add a Drawer here in the next step.
 );
 ```
 
-## 2. Adicionar um drawer
+## 2. Add a drawer
 
-Agora adicione um drawer ao `Scaffold`. Um drawer pode ser qualquer widget,
-mas muitas vezes é melhor usar o widget `Drawer` da
-[biblioteca material][material library],
-que adere à especificação Material Design.
+Now add a drawer to the `Scaffold`. A drawer can be any widget,
+but it's often best to use the `Drawer` widget from the
+[material library][],
+which adheres to the Material Design spec.
 
 <?code-excerpt "lib/drawer.dart (DrawerEmpty)" replace="/null, //g"?>
 ```dart
 Scaffold(
-  appBar: AppBar(
-    title: const Text('AppBar with hamburger button'),
-  ),
+  appBar: AppBar(title: const Text('AppBar with hamburger button')),
   drawer: Drawer(
     child: // Populate the Drawer in the next step.
   ),
 );
 ```
 
-## 3. Preencher o drawer com itens
+## 3. Populate the drawer with items
 
-Agora que você tem um `Drawer` no lugar, adicione conteúdo a ele.
-Para este exemplo, use um [`ListView`][].
-Embora você possa usar um widget `Column`,
-`ListView` é útil porque permite que os usuários rolem
-pelo drawer se o
-conteúdo ocupar mais espaço do que a tela suporta.
+Now that you have a `Drawer` in place, add content to it.
+For this example, use a [`ListView`][].
+While you could use a `Column` widget,
+`ListView` is handy because it allows users to scroll
+through the drawer if the
+content takes more space than the screen supports.
 
-Preencha o `ListView` com um [`DrawerHeader`][]
-e dois widgets [`ListTile`][].
-Para mais informações sobre trabalhar com Listas,
-consulte as [receitas de lista][list recipes].
+Populate the `ListView` with a [`DrawerHeader`][]
+and two [`ListTile`][] widgets.
+For more information on working with Lists,
+see the [list recipes][].
 
 <?code-excerpt "lib/drawer.dart (DrawerListView)"?>
 ```dart
@@ -87,9 +79,7 @@ Drawer(
     padding: EdgeInsets.zero,
     children: [
       const DrawerHeader(
-        decoration: BoxDecoration(
-          color: Colors.blue,
-        ),
+        decoration: BoxDecoration(color: Colors.blue),
         child: Text('Drawer Header'),
       ),
       ListTile(
@@ -111,13 +101,13 @@ Drawer(
 );
 ```
 
-## 4. Abrir o drawer programaticamente
+## 4. Open the drawer programmatically
 
-Normalmente, você não precisa escrever nenhum código para abrir um `drawer`,
-porque quando o widget `leading` é null, a implementação padrão no `AppBar` é `DrawerButton`.
+Typically, you don't need to write any code to open a `drawer`,
+Because when the `leading` widget is null, the default implementation in `AppBar` is `DrawerButton`.
 
-Mas se você quiser ter controle livre do `drawer`.
-Você pode fazer isso usando o `Builder` para chamar `Scaffold.of(context).openDrawer()`.
+But if you want to have free control of the `drawer`.
+You can do this by using the `Builder` call `Scaffold.of(context).openDrawer()`.
 
 <?code-excerpt "lib/drawer.dart (DrawerOpen)" replace="/null, //g"?>
 ```dart
@@ -141,13 +131,13 @@ Scaffold(
 );
 ```
 
-## 5. Fechar o drawer programaticamente
+## 5. Close the drawer programmatically
 
-Depois que um usuário tocar em um item, você pode querer fechar o drawer.
-Você pode fazer isso usando o [`Navigator`][].
+After a user taps an item, you might want to close the drawer.
+You can do this by using the [`Navigator`][].
 
-Quando um usuário abre o drawer, o Flutter adiciona o drawer à pilha de navegação.
-Portanto, para fechar o drawer, chame `Navigator.pop(context)`.
+When a user opens the drawer, Flutter adds the drawer to the navigation
+stack. Therefore, to close the drawer, call `Navigator.pop(context)`.
 
 <?code-excerpt "lib/drawer.dart (CloseDrawer)"?>
 ```dart
@@ -162,16 +152,16 @@ ListTile(
 ),
 ```
 
-## Exemplo interativo
+## Interactive example
 
-Este exemplo mostra um [`Drawer`][] como ele é usado dentro de um widget [`Scaffold`][].
-O [`Drawer`][] tem três itens [`ListTile`][].
-A função `_onItemTapped` altera o índice do item selecionado
-e exibe o texto correspondente no centro do `Scaffold`.
+This example shows a [`Drawer`][] as it is used within a [`Scaffold`][] widget.
+The [`Drawer`][] has three [`ListTile`][] items.
+The `_onItemTapped` function changes the selected item's index
+and displays the corresponding text in the center of the `Scaffold`.
 
 :::note
-Para mais informações sobre implementar navegação,
-confira a seção [Navegação][Navigation] do cookbook.
+For more information on implementing navigation,
+check out the [Navigation][] section of the cookbook.
 :::
 
 <?code-excerpt "lib/main.dart"?>
@@ -205,21 +195,14 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const TextStyle optionStyle = TextStyle(
+    fontSize: 30,
+    fontWeight: FontWeight.bold,
+  );
   static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
+    Text('Index 0: Home', style: optionStyle),
+    Text('Index 1: Business', style: optionStyle),
+    Text('Index 2: School', style: optionStyle),
   ];
 
   void _onItemTapped(int index) {
@@ -244,9 +227,7 @@ class _MyHomePageState extends State<MyHomePage> {
           },
         ),
       ),
-      body: Center(
-        child: _widgetOptions[_selectedIndex],
-      ),
+      body: Center(child: _widgetOptions[_selectedIndex]),
       drawer: Drawer(
         // Add a ListView to the drawer. This ensures the user can scroll
         // through the options in the drawer if there isn't enough vertical
@@ -256,9 +237,7 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: EdgeInsets.zero,
           children: [
             const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
+              decoration: BoxDecoration(color: Colors.blue),
               child: Text('Drawer Header'),
             ),
             ListTile(
@@ -306,10 +285,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
 [`Drawer`]: {{site.api}}/flutter/material/Drawer-class.html
 [`DrawerHeader`]: {{site.api}}/flutter/material/DrawerHeader-class.html
-[list recipes]: /cookbook#lists
+[list recipes]: /cookbook/lists
 [`ListTile`]: {{site.api}}/flutter/material/ListTile-class.html
 [`ListView`]: {{site.api}}/flutter/widgets/ListView-class.html
 [material library]: {{site.api}}/flutter/material/material-library.html
 [`Navigator`]: {{site.api}}/flutter/widgets/Navigator-class.html
 [`Scaffold`]: {{site.api}}/flutter/material/Scaffold-class.html
-[Navigation]: /cookbook#navigation
+[Navigation]: /cookbook/navigation

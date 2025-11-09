@@ -1,64 +1,65 @@
 ---
-ia-translate: true
-title: Caminho de build do Windows alterado para adicionar a arquitetura de destino
+title: Windows build path changed to add the target architecture
 description: >-
-  Em preparação para suportar Windows no Arm64,
-  o caminho de build do Windows foi atualizado para incluir a arquitetura de destino.
+  In preparation for supporting Windows on Arm64,
+  the Windows build path was updated to include the target architecture.
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
 
-Executáveis compilados para apps Flutter Windows agora estão localizados em pastas
-dependentes da arquitetura.
+## Summary
 
-## Contexto
+Built executables for Flutter Windows apps are now located in architecture
+dependent folders.
 
-Em preparação para suportar Windows no Arm64, o caminho de build do Windows foi
-atualizado para adicionar a arquitetura de destino do build.
+## Context
 
-Anteriormente, builds do Flutter para Windows assumiam uma arquitetura de destino x64.
+In preparation for supporting Windows on Arm64, the Windows build path was
+updated to add the build's target architecture.
 
-## Guia de migração
+Previously, Flutter builds for Windows assumed an x64 target architecture.
 
-Você pode precisar atualizar sua infraestrutura para usar o novo caminho de
-build do Flutter Windows.
+## Migration guide
 
-Exemplo de caminho de build antes da migração:
+You may need to update your infrastructure to use the new Flutter Windows
+build path.
+
+Example build path before the migration:
 
 ```plaintext
 build\windows\runner\Release\hello_world.exe
 ```
 
-Exemplo de caminho de build após a migração se direcionando para x64:
+Example build path after the migration if targeting x64:
 
 ```plaintext
 build\windows\x64\runner\Release\hello_world.exe
 ```
 
-Exemplo de caminho de build após a migração se direcionando para Arm64:
+Example build path after the migration if targeting Arm64:
 
 ```plaintext
 build\windows\arm64\runner\Release\hello_world.exe
 ```
 
-Se você usar [`package:msix`][], atualize para a versão 3.16.7 ou mais recente.
+If you use [`package:msix`][], update to version 3.16.7 or newer.
 
 [`package:msix`]: {{site.pub-pkg}}/msix
 
-## Cronograma
+## Timeline
 
-Adicionado na versão: 3.15.0-0.0.pre<br>
-Na versão stable: 3.16
+Landed in version: 3.15.0-0.0.pre<br>
+In stable release: 3.16
 
-## Referências
+## References
 
-Documento de design:
+Design document:
 
-* [flutterbrasil.dev/go/windows-arm64][]
+* [flutter.dev/go/windows-arm64][]
 
-Pull requests relevantes:
+Relevant pull requests:
 
 * [Introduce architecture subdirectory for Windows build][]
 
-[flutterbrasil.dev/go/windows-arm64]: {{site.main-url}}/go/windows-arm64
+[flutter.dev/go/windows-arm64]: {{site.main-url}}/go/windows-arm64
 [Introduce architecture subdirectory for Windows build]: {{site.repo.flutter}}/pull/131843

@@ -1,334 +1,363 @@
 ---
-ia-translate: true
-title: Criar flavors de um app Flutter
-short-title: Flavors
+title: Set up Flutter flavors for Android
+shortTitle: Flavors (Android)
 description: >
-  Como criar flavors de build específicos para diferentes
-  tipos de release ou ambientes de desenvolvimento.
+  How to create build flavors specific to different
+  release types or development environments.
 ---
 
-## O que são flavors
+This guide shows you how to create Flutter flavors for an
+Android app.
 
-Você já se perguntou como configurar diferentes ambientes no seu app Flutter?
-Flavors (conhecidos como _build configurations_ no iOS e macOS), permitem que você (o desenvolvedor)
-crie ambientes separados para seu app usando a mesma base de código.
-Por exemplo, você pode ter um flavor para seu app de produção completo,
-outro como um app "gratuito" limitado, outro para testar recursos experimentais, e assim por diante.
+## Overview
 
-Digamos que você queira fazer versões gratuitas e pagas do seu app Flutter.
-Você pode usar flavors para configurar ambas as versões do app
-sem escrever dois apps separados.
-Por exemplo, a versão gratuita do app tem funcionalidades básicas e anúncios.
-Em contraste, a versão paga tem funcionalidades básicas do app, recursos extras,
-estilos diferentes para usuários pagos e sem anúncios.
+A Flutter flavor when used with Android represents a unified
+term for various platform-specific features. For example, a
+flavor could determine which icon, app name, API key,
+feature flag, and logging level is associated with a
+specific version of your app.
 
-Você também pode usar flavors para desenvolvimento de recursos.
-Se você construiu um novo recurso e quer experimentá-lo,
-você pode configurar um flavor para testá-lo.
-Seu código de produção permanece inalterado
-até que você esteja pronto para implantar seu novo recurso.
+If you want to create Flutter flavors for an Android app,
+you can do this in Flutter. In Android, a Flutter flavor is
+referred to as a [_product flavor_][].
 
-Flavors permitem que você defina configurações em tempo de compilação
-e defina parâmetros que são lidos em tempo de execução para personalizar
-o comportamento do seu app.
+The following illustrates an example of the Android
+[_build variants_] that are created when an Android app has
+two product flavors (`staging`, `production`) and two build
+types (`debug`, `release`):
 
-Este documento guia você através da configuração de flavors Flutter para iOS, macOS e Android.
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Product flavors</th>
+      <th>Build types</th>
+      <th>Resulting build variants</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>staging</td>
+      <td>debug</td>
+      <td>
+        stagingDebug</br>
+        stagingRelease</br>
+      </td>
+    </tr>
+    <tr>
+      <td>production</td>
+      <td>release</td>
+      <td>
+        productionDebug</br>
+        productionRelease</br>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-## Configuração do ambiente
+[_product flavor_]: https://developer.android.com/build/build-variants#product-flavors
+[_build variants_]: https://developer.android.com/build/build-variants
 
-Pré-requisitos:
+## Configure your product flavors {: #using-flavors-in-android }
 
-* Xcode instalado
-* Um projeto Flutter existente
+Complete the following steps to add two Android product
+flavors called `staging` and `production` to a new Flutter
+project called `flavors_example`, and then test your project
+to make sure that the flavors work as expected.
 
-Para configurar flavors no iOS e macOS, você definirá build configurations no Xcode.
+1.  Create a new Flutter project called `flavors_example`
+    with Kotlin as the preferred Android language. By
+    default, the project includes the `debug` and
+    `release` Android build types.
 
-## Criando flavors no iOS e macOS
+    ```console title="console"
+    $ flutter create --android-language kotlin flavors_example
+    ```
 
-<ol>
-<li>
+1.  Add the product flavors called `staging` and
+    `production` to the `flavors_example` project.
 
-Abra seu projeto no Xcode.
+    * In the `flavors_example` project, navigate to the
+      `android/app/` directory and open `build.gradle.kts`.
 
-</li>
-<li>
+    * Add the `flavorsDimension` property and the
+      `productFlavors` properties inside of the
+      `android {} block`. Make sure that the `android {}`
+      block also contains the default
+      `debug` and `release` build types:
 
-Selecione **Product** > **Scheme** > **New Scheme** do menu para
-adicionar um novo `Scheme`.
+      ```kotlin title="build.gradle.kts"
+      android {
+          ...
+          buildTypes {
+            getByName("debug") {...}
+            getByName("release") {...}
+          }
+          ...
+          flavorDimensions += "default"
+          productFlavors {
+              create("staging") {
+                  dimension = "default"
+                  applicationIdSuffix = ".staging"
+              }
+              create("production") {
+                  dimension = "default"
+                  applicationIdSuffix = ".production"
+              }
+          }
+      }
+      ```
 
-* Um scheme descreve como o Xcode executa diferentes ações.
-  Para os propósitos deste guia, o exemplo de _flavor_ e _scheme_ são
-  nomeados `free`.
-  As build configurations no scheme `free`
-  têm o sufixo `-free`.
+1.  To make sure that you've set up everything correctly,
+    run your app on the Android product flavors. You won't
+    see any differences because the configuration settings
+    haven't changed, but you do want to make sure that the
+    app can run.
 
-</li>
-<li>
+    * Start an Android emulator or connect a physical device
+      with developer options enabled.
 
-Duplique as build configurations para diferenciar entre as
-configurações padrão que já estão disponíveis e as novas configurações
-para o scheme `free`.
+    * In the console, navigate to the `flavors_example`
+      directory and enter the following command to test the
+      `staging` flavor:
 
-* Sob a aba **Info** no final da lista suspensa **Configurations**,
-  clique no botão de mais e duplique
-  cada nome de configuração (Debug, Release e Profile).
-  Duplique as configurações existentes, uma para cada ambiente.
+      ```console title="console"
+      $ flutter run --flavor staging
+      ```
 
-![Step 3 Xcode image](/assets/images/docs/flavors/step3-ios-build-config.png){:width="100%"}
+    * Repeat the previous step for the `production` flavor.
 
-:::note
-Suas configurações devem ser baseadas no seu arquivo **Debug.xconfig** ou **Release.xcconfig**,
-não nos **Pods-Runner.xcconfigs**. Você pode verificar isso expandindo os nomes de configuração.
-:::
+1.  If everything runs, you're ready to customize your
+    configurations. For more information, see
+    [Customize configurations][].
 
-</li>
-<li>
+[Customize configurations]: #customize-configurations
 
-Para corresponder ao flavor free, adicione `-free`
-no final de cada novo nome de configuração.
+## Launch a flavor {: #launching-your-app-flavors }
 
-</li>
-<li>
+After you've created the product flavors for an Android app,
+you can launch a specific product flavor through Flutter.
 
-Altere o scheme `free` para corresponder às build configurations já criadas.
+You can launch a product flavor with the Flutter CLI using
+the following steps:
 
-* No projeto **Runner**, clique em **Manage Schemes…** e uma janela pop-up abre.
-* Dê duplo clique no scheme free. Na próxima etapa
-  (como mostrado na captura de tela), você modificará cada scheme
-  para corresponder à sua build configuration free:
+1.  Start an Android emulator or connect a physical device
+    with developer options enabled.
 
-![Step 5 Xcode image](/assets/images/docs/flavors/step-5-ios-scheme-free.png){:width="100%"}
+1. In the console, navigate to the `flavors_example`
+directory and enter the following command:
 
-</li>
-</ol>
-
-## Usando flavors no iOS e macOS
-
-Agora que você configurou seu flavor free,
-você pode, por exemplo, adicionar diferentes identificadores de pacote de produto por flavor.
-Um _bundle identifier_ identifica exclusivamente sua aplicação.
-Neste exemplo, definimos o valor **Debug-free** igual a
-`com.flavor-test.free`.
-
-<ol>
-<li>
-
-Altere o bundle identifier do app para diferenciar entre schemes.
-Em **Product Bundle Identifier**, anexe `.free` a cada valor de scheme -free.
-
-![Step 1 using flavors image.](/assets/images/docs/flavors/step-1-using-flavors-free.png){:width="100%"}
-
-</li>
-<li>
-
-Nas **Build Settings**, defina o valor **Product Name** para corresponder a cada flavor.
-Por exemplo, adicione Debug Free.
-
-![Step 2 using flavors image.](/assets/images/docs/flavors/step-2-using-flavors-free.png){:width="100%"}
-
-</li>
-<li>
-
-Adicione o nome de exibição ao **Info.plist**. Atualize o valor **Bundle Display Name**
-para `$(PRODUCT_NAME)`.
-
-![Step 3 using flavors image.](/assets/images/docs/flavors/step3-using-flavors.png){:width="100%"}
-
-</li>
-</ol>
-
-Agora você configurou seu flavor criando um scheme `free`
-no Xcode e definindo as build configurations para esse scheme.
-
-Para mais informações, pule para a seção [Iniciando seus flavors de app][Launching your app flavors]
-no final deste documento.
-
-### Configurações de plugin
-
-Se seu app usa um plugin Flutter, você precisa atualizar
-`ios/Podfile` (se desenvolvendo para iOS) e `macos/Podfile` (se desenvolvendo para macOS).
-
-1. Em `ios/Podfile` e `macos/Podfile`, altere o padrão para
-   **Debug**, **Profile**, e **Release**
-   para corresponder às build configurations do Xcode para o scheme `free`.
-
-```ruby
-project 'Runner', {
-  'Debug-free' => :debug,
-  'Profile-free' => :release,
-  'Release-free' => :release,
-}
+```console title="console"
+$ flutter (run | build <subcommand>) --flavor <flavor_name>
 ```
 
-## Usando flavors no Android
+* `(run | build <subcommand>)`: Replace this with one of the following:
+  * `run`: Runs the app in debug mode.
+  * `build`: Builds either an APK or an appbundle.
+    * `<subcommand>`: Either `apk` or `appbundle`.
 
-Configurar flavors no Android pode ser feito no arquivo
-**build.gradle** do seu projeto.
+* `<flavor_name>`: Replace this with the name of your Android
+  product flavor (for example: `staging`, `production`).
 
-1. Dentro do seu projeto Flutter,
-   navegue até **android**/**app**/**build.gradle**.
+Example:
 
-2. Crie uma [`flavorDimension`][] para agrupar seus product flavors adicionados.
-   O Gradle não combina product flavors que compartilham a mesma `dimension`.
-
-3. Adicione um objeto `productFlavors` com os flavors desejados junto
-   com valores para **dimension**, **resValue**,
-   e **applicationId** ou **applicationIdSuffix**.
-
-   * O nome da aplicação para cada build está localizado em **resValue**.
-   * Se você especificar um **applicationIdSuffix** em vez de um **applicationId**,
-     ele é anexado ao application id "base".
-
-{% tabs "android-build-language" %}
-{% tab "Kotlin" %}
-
-```kotlin title="build.gradle.kts"
-android {
-    // ...
-    flavorDimensions += "default"
-
-    productFlavors {
-        create("free") {
-            dimension = "default"
-            resValue(type = "string", name = "app_name", value = "free flavor example")
-            applicationIdSuffix = ".free"
-        }
-    }
-}
+```console title="console"
+$ flutter build apk --flavor staging
 ```
 
-{% endtab %}
-{% tab "Groovy" %}
+## Customize configurations
 
-```groovy title="build.gradle"
-android {
-    // ...
-    flavorDimensions "default"
+After you've added product flavors, you can customize them
+for your Android app.
 
-    productFlavors {
-        free {
-            dimension "default"
-            resValue "string", "app_name", "free flavor example"
-            applicationIdSuffix ".free"
-        }
-    }
-}
-```
+### Create a distinct app display name
 
-{% endtab %}
-{% endtabs %}
+If you have multiple product flavors, a distinct app name
+can quickly identify which flavor your deployed app is
+using.
 
-[`flavorDimension`]: {{site.android-dev}}/studio/build/build-variants#flavor-dimensions
+![Distinct app names in menu](/assets/images/docs/flavors/flavors-android-app-names-1.png){:width="40%"}
 
-## Configurando launch configurations
+The following steps show how to add distinct app display
+names for two product flavors called `staging` and
+`production` in a project called `flavors_example`.
 
-Em seguida, adicione um arquivo **launch.json**; isso permite que você execute o comando
-`flutter run --flavor [environment name]`.
+1.  Update `build.gradle.kts` in your IDE:
 
-No VSCode, configure as launch configurations da seguinte forma:
+    * In the `flavors_example` project, navigate to the
+      `android/app/` directory and open `build.gradle.kts`.
 
-1. No diretório raiz do seu projeto, adicione uma pasta chamada **.vscode**.
-2. Dentro da pasta **.vscode**, crie um arquivo chamado **launch.json**.
-3. No arquivo **launch.json**, adicione um objeto de configuração para cada flavor.
-   Cada configuração tem uma chave **name**, **request**, **type**, **program**,
-   e **args**.
+    * In the `flavorsDimension` block, add a `resValue()`
+      property called `app_name` to the `staging` and
+      `production` flavors:
 
-```json
-{
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "free",
-      "request": "launch",
-      "type": "dart",
-      "program": "lib/main_development.dart",
-      "args": ["--flavor", "free", "--target", "lib/main_free.dart" ]
-    }
-  ],
-  "compounds": []
-}
-```
+      ```kotlin title="build.gradle.kts"
+      android {
+          ...
+          flavorDimensions += "default"
+          productFlavors {
+              create("staging") {
+                  dimension = "default"
+                  resValue(
+                      type = "string",
+                      name = "app_name",
+                      value = "Flavors staging")
+                  applicationIdSuffix = ".staging"
+              }
+              create("production") {
+                  dimension = "default"
+                  resValue(
+                      type = "string",
+                      name = "app_name",
+                      value = "Flavors production")
+                  applicationIdSuffix = ".production"
+              }
+          }
+      ```
 
-Você pode agora executar o comando do terminal
-`flutter run --flavor free` ou pode configurar uma run
-configuration no seu IDE.
+1.  Update `AndroidManifest.xml` in your IDE:
 
-{% comment %}
-TODO: When available, add an app sample.
-{% endcomment -%}
+    * In the `flavors_example` project, navigate to
+      `android/app/src/main` and open `AndroidManifest.xml`.
 
-<a id="launching-your-app-flavors"></a>
-## Iniciando seus flavors de app
+    * Replace the value for `android:label` with
+      `@string/app_name`.
 
-1. Uma vez que os flavors estão configurados, modifique o código Dart em
-**lib** / **main.dart** para consumir os flavors.
-2. Teste a configuração usando `flutter run --flavor free`
-na linha de comando, ou no seu IDE.
+      ```xml title="AndroidManifest.xml"
+      <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+          <application
+            android:label="@string/app_name"
+            ...
+          />
+      />
+      ```
 
-Para exemplos de build flavors para [iOS][], [macOS][], e [Android][],
-confira as amostras de teste de integração no [repositório Flutter][Flutter repo].
+1.  Launch the app for each product flavor (`staging`,
+    `production`) and check to make sure that the
+    app display name has changed for each.
 
-## Recuperando o flavor do seu app em tempo de execução
+    * To launch a product flavor, see the steps in
+      [Launch a flavor][].
 
-Do seu código Dart, você pode usar a API [`appFlavor`][] para determinar com qual
-flavor seu app foi compilado.
+    * In the Android App Emulator, go to the list of apps.
+      You should see one for `Flavors p...` and
+      `Flavors s...`.
 
-<a id="conditionally-bundling-assets-based-on-flavor"></a>
-## Agrupando assets condicionalmente com base no flavor
+    * To see more information for `Flavors p...` or
+      `Flavors s...`, long-press the icon for one of them
+      and and select `App info`.
 
-Se você não está familiarizado com como adicionar assets ao seu app, veja
-[Adicionando assets e imagens][Adding assets and images].
+[Launch a flavor]: #launching-your-app-flavors
 
-Se você tem assets que são usados apenas em um flavor específico no seu app, você pode
-configurá-los para serem agrupados apenas no seu app ao compilar para esse flavor.
-Isso evita que o tamanho do bundle do seu app seja inflado por assets não utilizados.
+### Create distinct icons
 
-Aqui está um exemplo:
+If you have multiple product flavors, a distinct icon for
+each configuration can help you quickly identify which
+flavor your deployed app is using.
 
-```yaml
-flutter:
-  assets:
-    - assets/common/
-    - path: assets/free/
-      flavors:
-        - free
-    - path: assets/premium/
-      flavors:
-        - premium
-```
+![Distinct icons](/assets/images/docs/flavors/flavors-android-icons.png){:width="40%"}
 
-Neste exemplo, arquivos dentro do diretório `assets/common/` sempre serão agrupados
-quando o app for compilado durante `flutter run` ou `flutter build`. Arquivos dentro do
-diretório `assets/free/` são agrupados _apenas_ quando a opção `--flavor` é definida
-como `free`. Similarmente, arquivos dentro do diretório `assets/premium` são
-agrupados _apenas_ se `--flavor` for definido como `premium`.
+The following steps show how to add a distinct icon for two
+product flavors called `staging` and `production` in a
+project called `flavors_example`.
 
-## Mais informações
+1.  Prepare your icons:
 
-Para mais informações sobre criar e usar flavors, confira
-os seguintes recursos:
+    * Design your `staging` icon and `production` icon in
+      the design tool of your choice.
 
-* [Build flavors in Flutter (Android and iOS) with different Firebase projects per flavor Flutter Ready to Go][]
-* [Flavoring Flutter Applications (Android & iOS)][]
+    * Generate versions of the `staging` icon and
+      `production` icon in the following sizes and them in
+      `PNG` format:
+
+      * mipmap-mdpi (48x48 pixels)
+      * mipmap-hdpi (72x72 pixels)
+      * mipmap-xhdpi (96x96 pixels)
+      * mipmap-xxhdpi (144x144 pixels)
+      * mipmap-xxxhdpi (192x192 pixels)
+
+    :::note
+    You can use a tool like [App Icon Generator][]
+    to generate the versions of your icons.
+    :::
+
+1.  Create flavor-specific resource directories:
+
+    * Navigate to the `android/app/src` directory.
+
+    * Create a directory called `staging/res`.
+
+    * Navigate to the `staging/res` directory.
+
+    * Create the following `mipmap` directories and move the
+      versions of the `staging` icon into them:
+
+      * `mipmap-mdpi/48x48_staging.png`
+      * `mipmap-hdpi/72x72_staging.png`
+      * `mipmap-xhdpi/96x96_staging.png`
+      * `mipmap-xxhdpi/144x144_staging.png`
+      * `mipmap-xxxhdpi/192x192_staging.png`
+
+    * Repeat the previous steps for the `production` flavor
+      directories and icons.
+
+    * Rename all of the icons to `ic_launcher.png`.
+
+1.  Double-check the configurations in `AndroidManifest.xml`
+    in your IDE:
+
+    * In the `flavors_example` project, navigate to
+      `android/app/src/main` and open `AndroidManifest.xml`.
+
+    * Make sure that the value for `android:icon` is
+      `@mipmap/ic_launcher`.
+
+1.  Launch the app for each product flavor (`staging`,
+    `production`) and check to make sure that the app icon
+    has changed for each. To launch a product flavor, see
+    the steps in [Launch a flavor][].
+
+[Launch a flavor]: #launching-your-app-flavors
+[App Icon Generator]: https://www.appicon.co/
+
+### Bundle assets
+
+If you have assets that are only used in a specific flavor
+in your app, you can configure them to only be bundled into
+your app when launching that flavor. This prevents your
+app bundle size from being bloated by unused assets. To
+bundle assets for each flavor, add the `flavors` subfield
+to the `assets` field in your project's pubspec. To learn
+more, see the [`assets` field][] in
+[Flutter pubspec options][].
+
+[`assets` field]: /tools/pubspec#assets
+[Flutter pubspec options]: /tools/pubspec
+
+### Set a default flavor
+
+You can have your app use a specific flavor when you
+launch your app without specifying a flavor. To do this,
+you need to add the `default-flavor` field to your project's
+pubspec. To learn more, see the [`default-flavor` field][]
+in [Flutter pubspec options][].
+
+[`default-flavor` field]: /tools/pubspec#default-flavor-field
+
+### Add unique build settings
+
+If you have additional build settings that you would like to
+configure for a specific Android product flavor, see
+Android's [Configure build variants][].
+
+[Configure build variants]: https://developer.android.com/build/build-variants
+
+## More information
+
+For more information on creating and using flavors, check out
+the following resources:
+
+* [Build flavors in Flutter (Android and iOS) with Firebase][]
 * [How to Setup Flutter & Firebase with Multiple Flavors using the FlutterFire CLI][flutterfireCLI]
 
-### Pacotes
-
-Para pacotes que suportam a criação de flavors, confira o seguinte:
-
-* [`flutter_flavor`][]
-* [`flutter_flavorizr`][]
-
-[Launching your app flavors]: /deployment/flavors/#launching-your-app-flavors
-[Flutter repo]: {{site.repo.flutter}}/blob/main/dev/integration_tests/flavors/lib/main.dart
-[iOS]: {{site.repo.flutter}}/tree/main/dev/integration_tests/flavors/ios
-[macOS]: {{site.repo.flutter}}/tree/main/dev/integration_tests/flavors/macos
-[iOS (Xcode)]: {{site.repo.flutter}}/tree/main/dev/integration_tests/flavors/ios
-[`appFlavor`]: {{site.api}}/flutter/services/appFlavor-constant.html
-[Android]: {{site.repo.flutter}}/tree/main/dev/integration_tests/flavors/android
-[Adding assets and images]: /ui/assets/assets-and-images
-[Build flavors in Flutter (Android and iOS) with different Firebase projects per flavor Flutter Ready to Go]: {{site.medium}}/@animeshjain/build-flavors-in-flutter-android-and-ios-with-different-firebase-projects-per-flavor-27c5c5dac10b
-[Flavoring Flutter Applications (Android & iOS)]: {{site.medium}}/flutter-community/flavoring-flutter-applications-android-ios-ea39d3155346
+[Build flavors in Flutter (Android and iOS) with Firebase]: {{site.medium}}/@animeshjain/build-flavors-in-flutter-android-and-ios-with-different-firebase-projects-per-flavor-27c5c5dac10b
 [flutterfireCLI]: https://codewithandrea.com/articles/flutter-firebase-multiple-flavors-flutterfire-cli/
-[`flutter_flavor`]: {{site.pub}}/packages/flutter_flavor
-[`flutter_flavorizr`]: {{site.pub}}/packages/flutter_flavorizr

@@ -1,61 +1,60 @@
 ---
-title: Uma introdução a testes unitários
-description: Como escrever testes unitários.
-short-title: Introdução
-ia-translate: true
+title: An introduction to unit testing
+description: How to write unit tests.
+shortTitle: Introduction
 ---
 
 <?code-excerpt path-base="cookbook/testing/unit/counter_app"?>
 
-Como você pode garantir que seu aplicativo continue funcionando conforme você
-adiciona mais recursos ou altera a funcionalidade existente?
-Escrevendo testes.
+How can you ensure that your app continues to work as you
+add more features or change existing functionality?
+By writing tests.
 
-Testes unitários são úteis para verificar o comportamento de uma única função,
-método ou classe. O pacote [`test`][] fornece a
-estrutura central para escrever testes unitários, e o pacote [`flutter_test`][]
-fornece utilitários adicionais para testar widgets.
+Unit tests are handy for verifying the behavior of a single function,
+method, or class. The [`test`][] package provides the
+core framework for writing unit tests, and the [`flutter_test`][]
+package provides additional utilities for testing widgets.
 
-Esta receita demonstra os recursos principais fornecidos pelo pacote `test`
-usando as seguintes etapas:
+This recipe demonstrates the core features provided by the `test` package
+using the following steps:
 
-  1. Adicionar a dependência `test` ou `flutter_test`.
-  2. Criar um arquivo de teste.
-  3. Criar uma classe para testar.
-  4. Escrever um `test` para nossa classe.
-  5. Combinar múltiplos testes em um `group`.
-  6. Executar os testes.
+  1. Add the `test` or `flutter_test` dependency.
+  2. Create a test file.
+  3. Create a class to test.
+  4. Write a `test` for our class.
+  5. Combine multiple tests in a `group`.
+  6. Run the tests.
 
-Para mais informações sobre o pacote test,
-consulte a [documentação do pacote test][test package documentation].
+For more information about the test package,
+see the [test package documentation][].
 
-## 1. Adicionar a dependência de teste
+## 1. Add the test dependency
 
-O pacote `test` fornece a funcionalidade principal para
-escrever testes em Dart. Esta é a melhor abordagem ao
-escrever pacotes consumidos por aplicativos web, server e Flutter.
+The `test` package provides the core functionality for
+writing tests in Dart. This is the best approach when
+writing packages consumed by web, server, and Flutter apps.
 
-Para adicionar o pacote `test` como uma dependência de desenvolvimento,
-execute `flutter pub add`:
+To add the `test` package as a dev dependency,
+run `flutter pub add`:
 
 ```console
 $ flutter pub add dev:test
 ```
 
-## 2. Criar um arquivo de teste
+## 2. Create a test file
 
-Neste exemplo, crie dois arquivos: `counter.dart` e `counter_test.dart`.
+In this example, create two files: `counter.dart` and `counter_test.dart`.
 
-O arquivo `counter.dart` contém uma classe que você quer testar e
-reside na pasta `lib`. O arquivo `counter_test.dart` contém
-os testes em si e fica dentro da pasta `test`.
+The `counter.dart` file contains a class that you want to test and
+resides in the `lib` folder. The `counter_test.dart` file contains
+the tests themselves and lives inside the `test` folder.
 
-Em geral, arquivos de teste devem residir dentro de uma pasta `test`
-localizada na raiz do seu aplicativo ou pacote Flutter.
-Arquivos de teste devem sempre terminar com `_test.dart`,
-esta é a convenção usada pelo executor de testes ao procurar por testes.
+In general, test files should reside inside a `test` folder
+located at the root of your Flutter application or package.
+Test files should always end with `_test.dart`,
+this is the convention used by the test runner when searching for tests.
 
-Quando você terminar, a estrutura de pastas deve se parecer com isto:
+When you're finished, the folder structure should look like this:
 
 ```plaintext
 counter_app/
@@ -65,12 +64,12 @@ counter_app/
     counter_test.dart
 ```
 
-## 3. Criar uma classe para testar
+## 3. Create a class to test
 
-Em seguida, você precisa de uma "unidade" para testar. Lembre-se: "unidade" é outro nome para uma
-função, método ou classe. Para este exemplo, crie uma classe `Counter`
-dentro do arquivo `lib/counter.dart`. Ela é responsável por incrementar
-e decrementar um `value` começando em `0`.
+Next, you need a "unit" to test. Remember: "unit" is another name for a
+function, method, or class. For this example, create a `Counter` class
+inside the `lib/counter.dart` file. It is responsible for incrementing
+and decrementing a `value` starting at `0`.
 
 <?code-excerpt "lib/counter.dart"?>
 ```dart
@@ -83,16 +82,16 @@ class Counter {
 }
 ```
 
-**Nota:** Por simplicidade, este tutorial não segue a abordagem "Test Driven
-Development". Se você está mais confortável com esse estilo de
-desenvolvimento, você sempre pode seguir essa rota.
+**Note:** For simplicity, this tutorial does not follow the "Test Driven
+Development" approach. If you're more comfortable with that style of
+development, you can always go that route.
 
-## 4. Escrever um teste para nossa classe
+## 4. Write a test for our class
 
-Dentro do arquivo `counter_test.dart`, escreva o primeiro teste unitário. Testes são
-definidos usando a função `test` de nível superior, e você pode verificar se os resultados
-estão corretos usando a função `expect` de nível superior.
-Ambas as funções vêm do pacote `test`.
+Inside the `counter_test.dart` file, write the first unit test. Tests are
+defined using the top-level `test` function, and you can check if the results
+are correct by using the top-level `expect` function.
+Both of these functions come from the `test` package.
 
 <?code-excerpt "test/counter_test.dart"?>
 ```dart
@@ -111,12 +110,12 @@ void main() {
 }
 ```
 
-## 5. Combinar múltiplos testes em um `group`
+## 5. Combine multiple tests in a `group`
 
-Se você quiser executar uma série de testes relacionados,
-use a função [`group`][] do pacote `flutter_test` para categorizar os testes.
-Uma vez colocados em um grupo, você pode executar `flutter test` em todos os testes
-daquele grupo com um único comando.
+If you want to run a series of related tests,
+use the `flutter_test` package [`group`][] function to categorize the tests.
+Once put into a group, you can call `flutter test` on all tests in
+that group with one command.
 
 <?code-excerpt "test/group.dart"?>
 ```dart
@@ -148,48 +147,48 @@ void main() {
 }
 ```
 
-## 6. Executar os testes
+## 6. Run the tests
 
-Agora que você tem uma classe `Counter` com testes em vigor,
-você pode executar os testes.
+Now that you have a `Counter` class with tests in place,
+you can run the tests.
 
-### Executar testes usando IntelliJ ou VSCode
+### Run tests using IntelliJ or VSCode
 
-Os plugins Flutter para IntelliJ e VSCode suportam a execução de testes.
-Esta é frequentemente a melhor opção ao escrever testes porque fornece o
-loop de feedback mais rápido, bem como a capacidade de definir breakpoints.
+The Flutter plugins for IntelliJ and VSCode support running tests.
+This is often the best option while writing tests because it provides the
+fastest feedback loop as well as the ability to set breakpoints.
 
 - **IntelliJ**
 
-  1. Abra o arquivo `counter_test.dart`
-  1. Vá para **Run** > **Run 'tests in counter_test.dart'**.
-     Você também pode pressionar o atalho de teclado apropriado para sua plataforma.
+  1. Open the `counter_test.dart` file
+  1. Go to **Run** > **Run 'tests in counter_test.dart'**.
+     You can also press the appropriate keyboard shortcut for your platform.
 
 - **VSCode**
 
-  1. Abra o arquivo `counter_test.dart`
-  1. Vá para **Run** > **Start Debugging**.
-     Você também pode pressionar o atalho de teclado apropriado para sua plataforma.
+  1. Open the `counter_test.dart` file
+  1. Go to **Run** > **Start Debugging**.
+     You can also press the appropriate keyboard shortcut for your platform.
 
-### Executar testes em um terminal
+### Run tests in a terminal
 
-Para executar todos os testes do terminal,
-execute o seguinte comando a partir da raiz do projeto:
+To run the all tests from the terminal,
+run the following command from the root of the project:
 
 ```console
 flutter test test/counter_test.dart
 ```
 
-Para executar todos os testes que você colocou em um `group`,
-execute o seguinte comando a partir da raiz do projeto:
+To run all tests you put into one `group`,
+run the following command from the root of the project:
 
 ```console
 flutter test --plain-name "Test start, increment, decrement"
 ```
 
-Este exemplo usa o `group` criado na **seção 5**.
+This example uses the `group` created in **section 5**.
 
-Para aprender mais sobre testes unitários, você pode executar este comando:
+To learn more about unit tests, you can execute this command:
 
 ```console
 flutter test --help

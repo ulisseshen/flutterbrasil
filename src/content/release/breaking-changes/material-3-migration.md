@@ -2,10 +2,11 @@
 title: Migrate to Material 3
 description: >-
   Learn how to migrate your Flutter app's UI from Material 2 to Material 3.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 The Material library has been updated to match the Material 3 Design spec.
 Changes include new components and component themes, updated component visuals,
@@ -13,7 +14,7 @@ and much more. Many of these updates are seamless. You'll see the new version
 of an affected widget when recompiling your app against the 3.16 (or later)
 release. But some manual work is also required to complete the migration.
 
-## Guia de migração
+## Migration guide
 
 Prior to the 3.16 release, you could opt in to the Material 3 changes by
 setting the `useMaterial3` flag to true. As of the Flutter 3.16 release
@@ -38,7 +39,7 @@ When updating to the 3.16 release, your UI might look a little strange
 without the correct `ColorScheme`. To fix this, migrate to the
 `ColorScheme` generated from the `ColorScheme.fromSeed` constructor.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 theme: ThemeData(
@@ -46,7 +47,7 @@ theme: ThemeData(
 ),
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 theme: ThemeData(
@@ -71,7 +72,7 @@ To return your app's UI to its previous behavior (which we don't recommend):
 * Set  `Colors.grey[850]!`to `ColorScheme.background`
   (when the theme is `Brightness.dark`).
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 theme: ThemeData(
@@ -79,7 +80,7 @@ theme: ThemeData(
 ),
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 theme: ThemeData(
@@ -108,7 +109,7 @@ to `ColorScheme.surfaceTint` in the theme. To differentiate a widget's shadow
 from the content (when it has no shadow), set the `ColorScheme.shadow` color to
 the `shadowColor` property in the widget theme without a default shadow color.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 theme: ThemeData(
@@ -116,7 +117,7 @@ theme: ThemeData(
 ),
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 theme: ThemeData(
@@ -136,7 +137,7 @@ styled itself with `ColorScheme.primary` for the background and
 `ColorScheme.onPrimary` for the foreground. To achieve the same visuals, switch
 to the new `FilledButton` widget without the elevation changes or drop shadow.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 ElevatedButton(
@@ -145,7 +146,7 @@ ElevatedButton(
 ),
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 ElevatedButton(
@@ -171,7 +172,7 @@ wrapped the text into two lines. However, the 3.16 release wraps the text into
 three lines. If you must achieve the previous behavior, adjust the text style
 and, if necessary, the letter spacing.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 ConstrainedBox(
@@ -183,7 +184,7 @@ ConstrainedBox(
 ),
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 ConstrainedBox(
@@ -209,7 +210,7 @@ Replace the Material 2 style [`BottomNavigationBar`][] widget with the new
 [`NavigationBar`][] widget. It's slightly taller, contains pill-shaped
 navigation indicators, and uses new color mappings.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 BottomNavigationBar(
@@ -230,7 +231,7 @@ BottomNavigationBar(
 ),
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 NavigationBar(
@@ -257,7 +258,7 @@ Check out the complete sample on
 Replace the [`Drawer`][] widget with [`NavigationDrawer`][], which provides
 pill-shaped navigation indicators, rounded corners, and new color mappings.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 Drawer(
@@ -289,7 +290,7 @@ Drawer(
 ),
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 NavigationDrawer(
@@ -384,7 +385,7 @@ AppBar(
 uses fully rounded corners, differs in layout height and
 size, and uses a Dart `Set` to determine selected items.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 enum Weather { cloudy, rainy, sunny }
@@ -400,7 +401,7 @@ ToggleButtons(
 ),
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 enum Weather { cloudy, rainy, sunny }
@@ -486,25 +487,25 @@ Check out the complete sample on
 [`ActionChip.elevated`]: {{site.api}}/flutter/material/ActionChip/ActionChip.elevated.html
 [`Dialog.fullscreen`]: {{site.api}}/flutter/material/Dialog/Dialog.fullscreen.html
 
-## Linha do tempo
+## Timeline
 
-Na versão estável: 3.16
+In stable release: 3.16
 
-## Referências
+## References
 
 Documentation:
 
 * [Material Design for Flutter][]
 
-Documentação da API:
+API documentation:
 
 * [`ThemeData.useMaterial3`][]
 
-Issues relevantes:
+Relevant issues:
 
 * [Material 3 umbrella issue][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [Change the default for `ThemeData.useMaterial3` to true][]
 * [Updated `ThemeData.useMaterial3` API doc, default is true][]

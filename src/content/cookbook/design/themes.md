@@ -1,60 +1,54 @@
 ---
-title: Use temas para compartilhar cores e estilos de fonte
-short-title: Temas
-description: Como compartilhar cores e estilos de fonte por todo um aplicativo usando Temas.
-js:
-  - defer: true
-    url: /assets/js/inject_dartpad.js
-ia-translate: true
+title: Use themes to share colors and font styles
+shortTitle: Themes
+description: How to share colors and font styles throughout an app using Themes.
 ---
 
 <?code-excerpt path-base="cookbook/design/themes"?>
 
 :::note
-Esta receita usa o suporte do Flutter para [Material 3][] e
-o pacote [google_fonts][]. A partir do lançamento do Flutter 3.16,
-Material 3 é o tema padrão do Flutter.
+This recipe uses Flutter's support for [Material 3][] and
+the [google_fonts][] package. As of the Flutter 3.16 release,
+Material 3 is Flutter's default theme.
 :::
 
 [Material 3]: /ui/design/material
 [google_fonts]: {{site.pub-pkg}}/google_fonts
 
-Para compartilhar cores e estilos de fonte por todo um aplicativo, use temas.
+To share colors and font styles throughout an app, use themes.
 
-Você pode definir temas em todo o aplicativo.
-Você pode estender um tema para alterar o estilo de um tema para um componente.
-Cada tema define as cores, tipo de estilo e outros parâmetros
-aplicáveis para o tipo de componente Material.
+You can define app-wide themes.
+You can extend a theme to change a theme style for one component.
+Each theme defines the colors, type style, and other parameters
+applicable for the type of Material component.
 
-O Flutter aplica o estilo na seguinte ordem:
+Flutter applies styling in the following order:
 
-1. Estilos aplicados ao widget específico.
-1. Temas que substituem o tema pai imediato.
-1. Tema principal para todo o aplicativo.
+1. Styles applied to the specific widget.
+1. Themes that override the immediate parent theme.
+1. Main theme for the entire app.
 
-Depois de definir um `Theme`, use-o dentro de seus próprios widgets.
-Os widgets Material do Flutter usam seu tema para definir as cores de fundo
-e estilos de fonte para barras de aplicativo, botões, caixas de seleção e muito mais.
+After you define a `Theme`, use it within your own widgets.
+Flutter's Material widgets use your theme to set the background
+colors and font styles for app bars, buttons, checkboxes, and more.
 
-## Criar um tema de aplicativo
+## Create an app theme
 
-Para compartilhar um `Theme` em todo o seu aplicativo, defina a propriedade `theme`
-no construtor do seu `MaterialApp`.
-Esta propriedade aceita uma instância de [`ThemeData`][].
+To share a `Theme` across your entire app, set the `theme` property
+to your `MaterialApp` constructor.
+This property takes a [`ThemeData`][] instance.
 
-A partir do lançamento do Flutter 3.16, Material 3 é o
-tema padrão do Flutter.
+As of the Flutter 3.16 release, Material 3 is Flutter's
+default theme.
 
-Se você não especificar um tema no construtor,
-o Flutter cria um tema padrão para você.
+If you don't specify a theme in the constructor,
+Flutter creates a default theme for you.
 
 <?code-excerpt "lib/main.dart (MaterialApp)" replace="/return //g"?>
 ```dart
 MaterialApp(
   title: appName,
   theme: ThemeData(
-    useMaterial3: true,
-
     // Define the default brightness and colors.
     colorScheme: ColorScheme.fromSeed(
       seedColor: Colors.purple,
@@ -78,115 +72,98 @@ MaterialApp(
       displaySmall: GoogleFonts.pacifico(),
     ),
   ),
-  home: const MyHomePage(
-    title: appName,
-  ),
+  home: const MyHomePage(title: appName),
 );
 ```
 
-A maioria das instâncias de `ThemeData` definem valores para as duas propriedades seguintes. Essas propriedades afetam todo o aplicativo.
+Most instances of `ThemeData` set values for the following two properties. These properties affect the entire app.
 
-1. [`colorScheme`][] define as cores.
-1. [`textTheme`][] define o estilo de texto.
+1. [`colorScheme`][] defines the colors.
+1. [`textTheme`][] defines text styling.
 
 [`colorScheme`]: {{site.api}}/flutter/material/ThemeData/colorScheme.html
 [`textTheme`]: {{site.api}}/flutter/material/ThemeData/textTheme.html
 
-Para saber quais cores, fontes e outras propriedades você pode definir,
-confira a documentação do [`ThemeData`][].
+To learn what colors, fonts, and other properties, you can define,
+check out the [`ThemeData`][] documentation.
 
-## Aplicar um tema
+## Apply a theme
 
-Para aplicar seu novo tema, use o método `Theme.of(context)`
-ao especificar as propriedades de estilo de um widget.
-Estas podem incluir, mas não estão limitadas a, `style` e `color`.
+To apply your new theme, use the `Theme.of(context)` method
+when specifying a widget's styling properties.
+These can include, but are not limited to, `style` and `color`.
 
-O método `Theme.of(context)` procura na árvore de widgets e recupera
-o `Theme` mais próximo na árvore.
-Se você tiver um `Theme` independente, ele é aplicado.
-Se não, o Flutter aplica o tema do aplicativo.
+The `Theme.of(context)` method looks up the widget tree and retrieves
+the nearest `Theme` in the tree.
+If you have a standalone `Theme`, that's applied.
+If not, Flutter applies the app's theme.
 
-No exemplo a seguir, o construtor `Container` usa essa técnica para definir sua `color`.
+In the following example, the `Container` constructor uses this technique to set its `color`.
 
 <?code-excerpt "lib/main.dart (Container)" replace="/^child: //g"?>
 ```dart
 Container(
-  padding: const EdgeInsets.symmetric(
-    horizontal: 12,
-    vertical: 12,
-  ),
+  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
   color: Theme.of(context).colorScheme.primary,
   child: Text(
     'Text with a background color',
     // ···
     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-          color: Theme.of(context).colorScheme.onPrimary,
-        ),
+      color: Theme.of(context).colorScheme.onPrimary,
+    ),
   ),
 ),
 ```
 
-## Substituir um tema
+## Override a theme
 
-Para substituir o tema geral em parte de um aplicativo,
-envolva essa seção do aplicativo em um widget `Theme`.
+To override the overall theme in part of an app,
+wrap that section of the app in a `Theme` widget.
 
-Você pode substituir um tema de duas maneiras:
+You can override a theme in two ways:
 
-1. Criar uma instância única de `ThemeData`.
-2. Estender o tema pai.
+1. Create a unique `ThemeData` instance.
+2. Extend the parent theme.
 
-### Definir uma instância única de `ThemeData`
+### Set a unique `ThemeData` instance
 
-Se você quiser que um componente do seu aplicativo ignore o tema geral,
-crie uma instância de `ThemeData`.
-Passe essa instância para o widget `Theme`.
+If you want a component of your app to ignore the overall theme,
+create a `ThemeData` instance.
+Pass that instance to the `Theme` widget.
 
 <?code-excerpt "lib/main.dart (Theme)"?>
 ```dart
 Theme(
   // Create a unique theme with `ThemeData`.
-  data: ThemeData(
-    colorScheme: ColorScheme.fromSeed(
-      seedColor: Colors.pink,
-    ),
-  ),
-  child: FloatingActionButton(
-    onPressed: () {},
-    child: const Icon(Icons.add),
-  ),
+  data: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink)),
+  child: FloatingActionButton(onPressed: () {}, child: const Icon(Icons.add)),
 );
 ```
 
-### Estender o tema pai
+### Extend the parent theme
 
-Em vez de substituir tudo, considere estender o tema pai.
-Para estender um tema, use o método [`copyWith()`][].
+Instead of overriding everything, consider extending the parent theme.
+To extend a theme, use the [`copyWith()`][] method.
 
 <?code-excerpt "lib/main.dart (ThemeCopyWith)"?>
 ```dart
 Theme(
   // Find and extend the parent theme using `copyWith`.
   // To learn more, check out the section on `Theme.of`.
-  data: Theme.of(context).copyWith(
-    colorScheme: ColorScheme.fromSeed(
-      seedColor: Colors.pink,
-    ),
-  ),
-  child: const FloatingActionButton(
-    onPressed: null,
-    child: Icon(Icons.add),
-  ),
+  data: Theme.of(
+    context,
+  ).copyWith(colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink)),
+  child: const FloatingActionButton(onPressed: null, child: Icon(Icons.add)),
 );
 ```
 
-## Assista a um vídeo sobre `Theme`
+## Watch a video on `Theme`
 
-Para saber mais, assista a este breve vídeo Widget of the Week sobre o widget `Theme`:
+To learn more, watch this short Widget of the Week video on the `Theme` widget:
 
-{% ytEmbed 'oTvQDJOBXmM', 'Theme | Flutter widget of the week' %}
+<YouTubeEmbed id="oTvQDJOBXmM" title="Theme | Flutter widget of the week"></YouTubeEmbed>
 
-## Experimente um exemplo interativo
+## Try an interactive example
 
 <?code-excerpt "lib/main.dart (FullApp)"?>
 ```dartpad title="Flutter themes hands-on example in DartPad" run="true"
@@ -209,8 +186,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: appName,
       theme: ThemeData(
-        useMaterial3: true,
-
         // Define the default brightness and colors.
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.purple,
@@ -239,9 +214,7 @@ class MyApp extends StatelessWidget {
           displaySmall: GoogleFonts.pacifico(),
         ),
       ),
-      home: const MyHomePage(
-        title: appName,
-      ),
+      home: const MyHomePage(title: appName),
     );
   }
 }
@@ -255,18 +228,17 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title,
-            style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                  color: Theme.of(context).colorScheme.onSecondary,
-                )),
+        title: Text(
+          title,
+          style: Theme.of(context).textTheme.titleLarge!.copyWith(
+            color: Theme.of(context).colorScheme.onSecondary,
+          ),
+        ),
         backgroundColor: Theme.of(context).colorScheme.secondary,
       ),
       body: Center(
         child: Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 12,
-            vertical: 12,
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
           color: Theme.of(context).colorScheme.primary,
           child: Text(
             'Text with a background color',
@@ -274,8 +246,8 @@ class MyHomePage extends StatelessWidget {
             //           or change the Theme.of(context).textTheme
             //           to "displayLarge" or "displaySmall".
             style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                  color: Theme.of(context).colorScheme.onPrimary,
-                ),
+              color: Theme.of(context).colorScheme.onPrimary,
+            ),
           ),
         ),
       ),

@@ -1,46 +1,42 @@
 ---
-title: Arrastar um elemento de UI
-description: Como implementar um elemento de UI arrastável.
-js:
-  - defer: true
-    url: /assets/js/inject_dartpad.js
-ia-translate: true
+title: Drag a UI element
+description: How to implement a draggable UI element.
 ---
 
 <?code-excerpt path-base="cookbook/effects/drag_a_widget"?>
 
-Arrastar e soltar é uma interação comum em aplicativos móveis.
-Quando o usuário pressiona longamente (às vezes chamado de _touch & hold_)
-em um widget, outro widget aparece abaixo do
-dedo do usuário, e o usuário arrasta o widget para um
-local final e o libera.
-Nesta receita, você vai construir uma interação de arrastar e soltar
-onde o usuário pressiona longamente em uma escolha de comida,
-e então arrasta essa comida para a foto do cliente que
-está pagando por ela.
+Drag and drop is a common mobile app interaction.
+As the user long presses (sometimes called _touch & hold_)
+on a widget, another widget appears beneath the
+user's finger, and the user drags the widget to a
+final location and releases it.
+In this recipe, you'll build a drag-and-drop interaction
+where the user long presses on a choice of food,
+and then drags that food to the picture of the customer who
+is paying for it.
 
-A seguinte animação mostra o comportamento do aplicativo:
+The following animation shows the app's behavior:
 
-![Pedindo a comida arrastando para a pessoa](/assets/images/docs/cookbook/effects/DragAUIElement.gif){:.site-mobile-screenshot}
+![Ordering the food by dragging it to the person](/assets/images/docs/cookbook/effects/DragAUIElement.webp){:.site-mobile-screenshot}
 
-Esta receita começa com uma lista pré-construída de itens de menu e
-uma linha de clientes.
-O primeiro passo é reconhecer uma pressão longa
-e exibir uma foto arrastável de um item de menu.
+This recipe begins with a prebuilt list of menu items and
+a row of customers.
+The first step is to recognize a long press
+and display a draggable photo of a menu item.
 
-## Pressionar e arrastar
+## Press and drag
 
-Flutter fornece um widget chamado [`LongPressDraggable`][]
-que fornece exatamente o comportamento que você precisa para iniciar
-uma interação de arrastar e soltar. Um `LongPressDraggable`
-widget reconhece quando uma pressão longa ocorre e então
-exibe um novo widget perto do dedo do usuário.
-Conforme o usuário arrasta, o widget segue o dedo do usuário.
-`LongPressDraggable` dá a você controle total sobre o
-widget que o usuário arrasta.
+Flutter provides a widget called [`LongPressDraggable`][]
+that provides the exact behavior that you need to begin
+a drag-and-drop interaction. A `LongPressDraggable`
+widget recognizes when a long press occurs and then
+displays a new widget near the user's finger.
+As the user drags, the widget follows the user's finger.
+`LongPressDraggable` gives you full control over the
+widget that the user drags.
 
-Cada item da lista de menu é exibido com um
-widget `MenuListItem` personalizado.
+Each menu list item is displayed with a custom
+`MenuListItem` widget.
 
 <?code-excerpt "lib/main.dart (MenuListItem)" replace="/^child: //g;/^\),$/)/g"?>
 ```dart
@@ -51,7 +47,7 @@ MenuListItem(
 )
 ```
 
-Envolva o widget `MenuListItem` com um widget `LongPressDraggable`.
+Wrap the `MenuListItem` widget with a `LongPressDraggable` widget.
 
 <?code-excerpt "lib/main.dart (LongPressDraggable)" replace="/^return //g;/^\),$/)/g"?>
 ```dart
@@ -70,42 +66,42 @@ LongPressDraggable<Item>(
 );
 ```
 
-Neste caso, quando o usuário pressiona longamente no
-widget `MenuListItem`, o widget `LongPressDraggable`
-exibe um `DraggingListItem`.
-Este `DraggingListItem` exibe uma foto do
-item de comida selecionado, centralizado abaixo
-do dedo do usuário.
+In this case, when the user long presses on the
+`MenuListItem` widget, the `LongPressDraggable`
+widget displays a `DraggingListItem`.
+This `DraggingListItem` displays a photo of the
+selected food item, centered beneath
+the user's finger.
 
-A propriedade `dragAnchorStrategy` é definida como
+The `dragAnchorStrategy` property is set to
 [`pointerDragAnchorStrategy`][].
-Este valor de propriedade instrui `LongPressDraggable`
-a basear a posição do `DraggableListItem` no
-dedo do usuário. Conforme o usuário move o dedo,
-o `DraggableListItem` se move com ele.
+This property value instructs `LongPressDraggable`
+to base the `DraggableListItem`'s position on the
+user's finger. As the user moves a finger,
+the `DraggableListItem` moves with it.
 
-Arrastar e soltar é de pouca utilidade se nenhuma informação
-é transmitida quando o item é solto.
-Por esta razão, `LongPressDraggable` recebe um parâmetro `data`.
-Neste caso, o tipo de `data` é `Item`,
-que contém informações sobre o
-item de comida do menu que o usuário pressionou.
+Dragging and dropping is of little use if no information
+is transmitted when the item is dropped.
+For this reason, `LongPressDraggable` takes a `data` parameter.
+In this case, the type of `data` is `Item`,
+which holds information about the
+food menu item that the user pressed on.
 
-O `data` associado a um `LongPressDraggable`
-é enviado para um widget especial chamado `DragTarget`,
-onde o usuário libera o gesto de arrastar.
-Você implementará o comportamento de soltar a seguir.
+The `data` associated with a `LongPressDraggable`
+is sent to a special widget called `DragTarget`,
+where the user releases the drag gesture.
+You'll implement the drop behavior next.
 
-## Soltar o arrastável
+## Drop the draggable
 
-O usuário pode soltar um `LongPressDraggable` onde quiser,
-mas soltar o arrastável não tem efeito a menos que seja solto
-em cima de um `DragTarget`. Quando o usuário solta um arrastável em
-cima de um widget `DragTarget`, o widget `DragTarget`
-pode aceitar ou rejeitar os dados do arrastável.
+The user can drop a `LongPressDraggable` wherever they choose,
+but dropping the draggable has no effect unless it's dropped
+on top of a `DragTarget`. When the user drops a draggable on
+top of a `DragTarget` widget, the `DragTarget` widget
+can either accept or reject the data from the draggable.
 
-Nesta receita, o usuário deve soltar um item de menu em um
-widget `CustomerCart` para adicionar o item de menu ao carrinho do usuário.
+In this recipe, the user should drop a menu item on a
+`CustomerCart` widget to add the menu item to the user's cart.
 
 <?code-excerpt "lib/main.dart (CustomerCart)" replace="/^return //g;/^\),$/)/g"?>
 ```dart
@@ -116,7 +112,7 @@ CustomerCart(
 );
 ```
 
-Envolva o widget `CustomerCart` com um widget `DragTarget`.
+Wrap the `CustomerCart` widget with a `DragTarget` widget.
 
 <?code-excerpt "lib/main.dart (DragTarget)" replace="/^child: //g;/^\),$/)/g"?>
 ```dart
@@ -129,78 +125,74 @@ DragTarget<Item>(
     );
   },
   onAcceptWithDetails: (details) {
-    _itemDroppedOnCustomerCart(
-      item: details.data,
-      customer: customer,
-    );
+    _itemDroppedOnCustomerCart(item: details.data, customer: customer);
   },
 )
 ```
 
-O `DragTarget` exibe seu widget existente e
-também coordena com `LongPressDraggable` para reconhecer
-quando o usuário arrasta um arrastável em cima do `DragTarget`.
-O `DragTarget` também reconhece quando o usuário solta
-um arrastável em cima do widget `DragTarget`.
+The `DragTarget` displays your existing widget and
+also coordinates with `LongPressDraggable` to recognize
+when the user drags a draggable on top of the `DragTarget`.
+The `DragTarget` also recognizes when the user drops
+a draggable on top of the `DragTarget` widget.
 
-Quando o usuário arrasta um arrastável sobre o widget `DragTarget`,
-`candidateItems` contém os itens de dados que o usuário está arrastando.
-Isso permite que você altere a aparência do seu widget
-quando o usuário está arrastando sobre ele. Neste caso,
-o widget `Customer` fica vermelho sempre que quaisquer itens são arrastados sobre o
-widget `DragTarget`. A aparência visual vermelha é configurada com a
-propriedade `highlighted` dentro do widget `CustomerCart`.
+When the user drags a draggable on the `DragTarget` widget,
+`candidateItems` contains the data items that the user is dragging.
+This draggable allows you to change what your widget looks
+like when the user is dragging over it. In this case,
+the `Customer` widget turns red whenever any items are dragged above the
+`DragTarget` widget. The red visual appearance is configured with the
+`highlighted` property within the `CustomerCart` widget.
 
-Quando o usuário solta um arrastável no widget `DragTarget`,
-o callback `onAcceptWithDetails` é invocado. É quando você
-decide se aceita ou não os dados que foram soltos.
-Neste caso, o item é sempre aceito e processado.
-Você pode escolher inspecionar o item recebido para tomar uma
-decisão diferente.
+When the user drops a draggable on the `DragTarget` widget,
+the `onAcceptWithDetails` callback is invoked. This is when you get
+to decide whether or not to accept the data that was dropped.
+In this case, the item is always accepted and processed.
+You might choose to inspect the incoming item to make a
+different decision.
 
-Observe que o tipo de item solto no `DragTarget`
-deve corresponder ao tipo de item arrastado do `LongPressDraggable`.
-Se os tipos não forem compatíveis, então
-o método `onAcceptWithDetails` não é invocado.
+Notice that the type of item dropped on `DragTarget`
+must match the type of the item dragged from `LongPressDraggable`.
+If the types are not compatible, then
+the `onAcceptWithDetails` method isn't invoked.
 
-Com um widget `DragTarget` configurado para aceitar seus
-dados desejados, agora você pode transmitir dados de uma parte
-da sua UI para outra arrastando e soltando.
+With a `DragTarget` widget configured to accept your
+desired data, you can now transmit data from one part
+of your UI to another by dragging and dropping.
 
-No próximo passo,
-você atualiza o carrinho do cliente com o item de menu solto.
+In the next step,
+you update the customer's cart with the dropped menu item.
 
-## Adicionar um item de menu a um carrinho
+## Add a menu item to a cart
 
-Cada cliente é representado por um objeto `Customer`,
-que mantém um carrinho de itens e um preço total.
+Each customer is represented by a `Customer` object,
+which maintains a cart of items and a price total.
 
 <?code-excerpt "lib/main.dart (CustomerClass)"?>
 ```dart
 class Customer {
-  Customer({
-    required this.name,
-    required this.imageProvider,
-    List<Item>? items,
-  }) : items = items ?? [];
+  Customer({required this.name, required this.imageProvider, List<Item>? items})
+    : items = items ?? [];
 
   final String name;
   final ImageProvider imageProvider;
   final List<Item> items;
 
   String get formattedTotalItemPrice {
-    final totalPriceCents =
-        items.fold<int>(0, (prev, item) => prev + item.totalPriceCents);
+    final totalPriceCents = items.fold<int>(
+      0,
+      (prev, item) => prev + item.totalPriceCents,
+    );
     return '\$${(totalPriceCents / 100.0).toStringAsFixed(2)}';
   }
 }
 ```
 
-O widget `CustomerCart` exibe a foto do cliente,
-nome, total e contagem de itens com base em uma instância `Customer`.
+The `CustomerCart` widget displays the customer's photo,
+name, total, and item count based on a `Customer` instance.
 
-Para atualizar o carrinho de um cliente quando um item de menu é solto,
-adicione o item solto ao objeto `Customer` associado.
+To update a customer's cart when a menu item is dropped,
+add the dropped item to the associated `Customer` object.
 
 <?code-excerpt "lib/main.dart (AddCart)"?>
 ```dart
@@ -214,32 +206,32 @@ void _itemDroppedOnCustomerCart({
 }
 ```
 
-O método `_itemDroppedOnCustomerCart` é invocado em
-`onAcceptWithDetails()` quando o usuário solta um item de menu em um
-widget `CustomerCart`. Ao adicionar o item solto ao
-objeto `customer`, e invocar `setState()` para causar uma
-atualização de layout, a UI se atualiza com o novo total de preço e
-contagem de itens do cliente.
+The `_itemDroppedOnCustomerCart` method is invoked in
+`onAcceptWithDetails()` when the user drops a menu item on a
+`CustomerCart` widget. By adding the dropped item to the
+`customer` object, and invoking `setState()` to cause a
+layout update, the UI refreshes with the new customer's
+price total and item count.
 
-Parabéns! Você tem uma interação de arrastar e soltar
-que adiciona itens de comida ao carrinho de compras de um cliente.
+Congratulations! You have a drag-and-drop interaction
+that adds food items to a customer's shopping cart.
 
-## Exemplo interativo
+## Interactive example
 
-Execute o aplicativo:
+Run the app:
 
-* Role pelos itens de comida.
-* Pressione e segure em um com seu
-  dedo ou clique e segure com o
+* Scroll through the food items.
+* Press and hold on one with your
+  finger or click and hold with the
   mouse.
-* Enquanto segura, a imagem do item de comida
-  aparecerá acima da lista.
-* Arraste a imagem e solte-a em uma das
-  pessoas na parte inferior da tela.
-  O texto abaixo da imagem atualiza para
-  refletir a cobrança para essa pessoa.
-  Você pode continuar adicionando itens de comida
-  e ver as cobranças se acumularem.
+* While holding, the food item's image
+  will appear above the list.
+* Drag the image and drop it on one of the
+  people at the bottom of the screen.
+  The text under the image updates to
+  reflect the charge for that person.
+  You can continue to add food items
+  and watch the charges accumulate.
 
 <!-- Start DartPad -->
 
@@ -256,27 +248,27 @@ void main() {
   );
 }
 
+const _urlPrefix =
+    'https://docs.flutter.dev/assets/images/exercise/effects/split-check';
+
 const List<Item> _items = [
   Item(
     name: 'Spinach Pizza',
     totalPriceCents: 1299,
     uid: '1',
-    imageProvider: NetworkImage('https://docs.flutterbrasil.dev'
-        '/cookbook/img-files/effects/split-check/Food1.jpg'),
+    imageProvider: NetworkImage('$_urlPrefix/Food1.jpg'),
   ),
   Item(
     name: 'Veggie Delight',
     totalPriceCents: 799,
     uid: '2',
-    imageProvider: NetworkImage('https://docs.flutterbrasil.dev'
-        '/cookbook/img-files/effects/split-check/Food2.jpg'),
+    imageProvider: NetworkImage('$_urlPrefix/Food2.jpg'),
   ),
   Item(
     name: 'Chicken Parmesan',
     totalPriceCents: 1499,
     uid: '3',
-    imageProvider: NetworkImage('https://docs.flutterbrasil.dev'
-        '/cookbook/img-files/effects/split-check/Food3.jpg'),
+    imageProvider: NetworkImage('$_urlPrefix/Food3.jpg'),
   ),
 ];
 
@@ -293,18 +285,15 @@ class _ExampleDragAndDropState extends State<ExampleDragAndDrop>
   final List<Customer> _people = [
     Customer(
       name: 'Makayla',
-      imageProvider: const NetworkImage('https://docs.flutterbrasil.dev'
-          '/cookbook/img-files/effects/split-check/Avatar1.jpg'),
+      imageProvider: const NetworkImage('$_urlPrefix/Avatar1.jpg'),
     ),
     Customer(
       name: 'Nathan',
-      imageProvider: const NetworkImage('https://docs.flutterbrasil.dev'
-          '/cookbook/img-files/effects/split-check/Avatar2.jpg'),
+      imageProvider: const NetworkImage('$_urlPrefix/Avatar2.jpg'),
     ),
     Customer(
       name: 'Emilio',
-      imageProvider: const NetworkImage('https://docs.flutterbrasil.dev'
-          '/cookbook/img-files/effects/split-check/Avatar3.jpg'),
+      imageProvider: const NetworkImage('$_urlPrefix/Avatar3.jpg'),
     ),
   ];
 
@@ -334,10 +323,10 @@ class _ExampleDragAndDropState extends State<ExampleDragAndDrop>
       title: Text(
         'Order Food',
         style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-              fontSize: 36,
-              color: const Color(0xFFF64209),
-              fontWeight: FontWeight.bold,
-            ),
+          fontSize: 36,
+          color: const Color(0xFFF64209),
+          fontWeight: FontWeight.bold,
+        ),
       ),
       backgroundColor: const Color(0xFFF7F7F7),
       elevation: 0,
@@ -350,9 +339,7 @@ class _ExampleDragAndDropState extends State<ExampleDragAndDrop>
         SafeArea(
           child: Column(
             children: [
-              Expanded(
-                child: _buildMenuList(),
-              ),
+              Expanded(child: _buildMenuList()),
               _buildPeopleRow(),
             ],
           ),
@@ -366,22 +353,16 @@ class _ExampleDragAndDropState extends State<ExampleDragAndDrop>
       padding: const EdgeInsets.all(16),
       itemCount: _items.length,
       separatorBuilder: (context, index) {
-        return const SizedBox(
-          height: 12,
-        );
+        return const SizedBox(height: 12);
       },
       itemBuilder: (context, index) {
         final item = _items[index];
-        return _buildMenuItem(
-          item: item,
-        );
+        return _buildMenuItem(item: item);
       },
     );
   }
 
-  Widget _buildMenuItem({
-    required Item item,
-  }) {
+  Widget _buildMenuItem({required Item item}) {
     return LongPressDraggable<Item>(
       data: item,
       dragAnchorStrategy: pointerDragAnchorStrategy,
@@ -399,22 +380,15 @@ class _ExampleDragAndDropState extends State<ExampleDragAndDrop>
 
   Widget _buildPeopleRow() {
     return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 8,
-        vertical: 20,
-      ),
-      child: Row(
-        children: _people.map(_buildPersonWithDropZone).toList(),
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 20),
+      child: Row(children: _people.map(_buildPersonWithDropZone).toList()),
     );
   }
 
   Widget _buildPersonWithDropZone(Customer customer) {
     return Expanded(
       child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 6,
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 6),
         child: DragTarget<Item>(
           builder: (context, candidateItems, rejectedItems) {
             return CustomerCart(
@@ -424,10 +398,7 @@ class _ExampleDragAndDropState extends State<ExampleDragAndDrop>
             );
           },
           onAcceptWithDetails: (details) {
-            _itemDroppedOnCustomerCart(
-              item: details.data,
-              customer: customer,
-            );
+            _itemDroppedOnCustomerCart(item: details.data, customer: customer);
           },
         ),
       ),
@@ -458,10 +429,7 @@ class CustomerCart extends StatelessWidget {
         borderRadius: BorderRadius.circular(22),
         color: highlighted ? const Color(0xFFF64209) : Colors.white,
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 12,
-            vertical: 24,
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 24),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -479,10 +447,9 @@ class CustomerCart extends StatelessWidget {
               Text(
                 customer.name,
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      color: textColor,
-                      fontWeight:
-                          hasItems ? FontWeight.normal : FontWeight.bold,
-                    ),
+                  color: textColor,
+                  fontWeight: hasItems ? FontWeight.normal : FontWeight.bold,
+                ),
               ),
               Visibility(
                 visible: hasItems,
@@ -495,22 +462,22 @@ class CustomerCart extends StatelessWidget {
                     Text(
                       customer.formattedTotalItemPrice,
                       style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            color: textColor,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
+                        color: textColor,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     const SizedBox(height: 4),
                     Text(
                       '${customer.items.length} item${customer.items.length != 1 ? 's' : ''}',
                       style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                            color: textColor,
-                            fontSize: 12,
-                          ),
+                        color: textColor,
+                        fontSize: 12,
+                      ),
                     ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -554,10 +521,7 @@ class MenuListItem extends StatelessWidget {
                     curve: Curves.easeInOut,
                     height: isDepressed ? 115 : 120,
                     width: isDepressed ? 115 : 120,
-                    child: Image(
-                      image: photoProvider,
-                      fit: BoxFit.cover,
-                    ),
+                    child: Image(image: photoProvider, fit: BoxFit.cover),
                   ),
                 ),
               ),
@@ -569,17 +533,17 @@ class MenuListItem extends StatelessWidget {
                 children: [
                   Text(
                     name,
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontSize: 18,
-                        ),
+                    style: Theme.of(
+                      context,
+                    ).textTheme.titleMedium?.copyWith(fontSize: 18),
                   ),
                   const SizedBox(height: 10),
                   Text(
                     price,
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                        ),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
                   ),
                 ],
               ),
@@ -613,10 +577,7 @@ class DraggingListItem extends StatelessWidget {
           width: 150,
           child: Opacity(
             opacity: 0.85,
-            child: Image(
-              image: photoProvider,
-              fit: BoxFit.cover,
-            ),
+            child: Image(image: photoProvider, fit: BoxFit.cover),
           ),
         ),
       ),
@@ -641,19 +602,18 @@ class Item {
 }
 
 class Customer {
-  Customer({
-    required this.name,
-    required this.imageProvider,
-    List<Item>? items,
-  }) : items = items ?? [];
+  Customer({required this.name, required this.imageProvider, List<Item>? items})
+    : items = items ?? [];
 
   final String name;
   final ImageProvider imageProvider;
   final List<Item> items;
 
   String get formattedTotalItemPrice {
-    final totalPriceCents =
-        items.fold<int>(0, (prev, item) => prev + item.totalPriceCents);
+    final totalPriceCents = items.fold<int>(
+      0,
+      (prev, item) => prev + item.totalPriceCents,
+    );
     return '\$${(totalPriceCents / 100.0).toStringAsFixed(2)}';
   }
 }

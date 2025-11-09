@@ -1,38 +1,34 @@
 ---
-title: Animar um widget entre telas
-description: Como animar um widget de uma tela para outra
-js:
-  - defer: true
-    url: /assets/js/inject_dartpad.js
-ia-translate: true
+title: Animate a widget across screens
+description: How to animate a widget from one screen to another
 ---
 
 <?code-excerpt path-base="cookbook/navigation/hero_animations"?>
 
-Muitas vezes é útil guiar os usuários através de um app enquanto eles navegam de tela
-para tela. Uma técnica comum para conduzir os usuários através de um app é animar um
-widget de uma tela para a próxima. Isso cria uma âncora visual conectando
-as duas telas.
+It's often helpful to guide users through an app as they navigate from screen
+to screen. A common technique to lead users through an app is to animate a
+widget from one screen to the next. This creates a visual anchor connecting
+the two screens.
 
-Use o widget [`Hero`][]
-para animar um widget de uma tela para a próxima.
-Esta receita usa os seguintes passos:
+Use the [`Hero`][] widget
+to animate a widget from one screen to the next.
+This recipe uses the following steps:
 
-  1. Criar duas telas mostrando a mesma imagem.
-  2. Adicionar um widget `Hero` à primeira tela.
-  3. Adicionar um widget `Hero` à segunda tela.
+  1. Create two screens showing the same image.
+  2. Add a `Hero` widget to the first screen.
+  3. Add a `Hero` widget to the second screen.
 
-## 1. Criar duas telas mostrando a mesma imagem
+## 1. Create two screens showing the same image
 
-Neste exemplo, exiba a mesma imagem em ambas as telas.
-Anime a imagem da primeira tela para a segunda tela quando
-o usuário tocar na imagem. Por enquanto, crie a estrutura visual;
-lide com animações nos próximos passos.
+In this example, display the same image on both screens.
+Animate the image from the first screen to the second screen when
+the user taps the image. For now, create the visual structure;
+handle animations in the next steps.
 
 :::note
-Este exemplo se baseia nas receitas
-[Navegar para uma nova tela e voltar][]
-e [Lidar com toques][].
+This example builds upon the
+[Navigate to a new screen and back][]
+and [Handle taps][] recipes.
 :::
 
 <?code-excerpt "lib/main_original.dart"?>
@@ -45,18 +41,19 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Main Screen'),
-      ),
+      appBar: AppBar(title: const Text('Main Screen')),
       body: GestureDetector(
         onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return const DetailScreen();
-          }));
+          Navigator.push(
+            context,
+            MaterialPageRoute<void>(
+              builder: (context) {
+                return const DetailScreen();
+              },
+            ),
+          );
         },
-        child: Image.network(
-          'https://picsum.photos/250?image=9',
-        ),
+        child: Image.network('https://picsum.photos/250?image=9'),
       ),
     );
   }
@@ -73,9 +70,7 @@ class DetailScreen extends StatelessWidget {
           Navigator.pop(context);
         },
         child: Center(
-          child: Image.network(
-            'https://picsum.photos/250?image=9',
-          ),
+          child: Image.network('https://picsum.photos/250?image=9'),
         ),
       ),
     );
@@ -83,18 +78,18 @@ class DetailScreen extends StatelessWidget {
 }
 ```
 
-## 2. Adicionar um widget `Hero` à primeira tela
+## 2. Add a `Hero` widget to the first screen
 
-Para conectar as duas telas juntas com uma animação, envolva
-o widget `Image` em ambas as telas em um widget `Hero`.
-O widget `Hero` requer dois argumentos:
+To connect the two screens together with an animation, wrap
+the `Image` widget on both screens in a `Hero` widget.
+The `Hero` widget requires two arguments:
 
 `tag`
-: Um objeto que identifica o `Hero`.
-  Deve ser o mesmo em ambas as telas.
+: An object that identifies the `Hero`.
+  It must be the same on both screens.
 
 `child`
-: O widget para animar entre telas.
+: The widget to animate across screens.
 
 {% comment %}
 RegEx removes the first "child" property name and removed the trailing comma at the end
@@ -103,20 +98,18 @@ RegEx removes the first "child" property name and removed the trailing comma at 
 ```dart
 Hero(
   tag: 'imageHero',
-  child: Image.network(
-    'https://picsum.photos/250?image=9',
-  ),
+  child: Image.network('https://picsum.photos/250?image=9'),
 )
 ```
 
-## 3. Adicionar um widget `Hero` à segunda tela
+## 3. Add a `Hero` widget to the second screen
 
-Para completar a conexão com a primeira tela,
-envolva a `Image` na segunda tela com um widget `Hero`
-que tem a mesma `tag` do `Hero` na primeira tela.
+To complete the connection with the first screen,
+wrap the `Image` on the second screen with a `Hero`
+widget that has the same `tag` as the `Hero` in the first screen.
 
-Após aplicar o widget `Hero` à segunda tela,
-a animação entre telas simplesmente funciona.
+After applying the `Hero` widget to the second screen,
+the animation between screens just works.
 
 {% comment %}
 RegEx removes the first "child" property name and removed the trailing comma at the end
@@ -125,21 +118,19 @@ RegEx removes the first "child" property name and removed the trailing comma at 
 ```dart
 Hero(
   tag: 'imageHero',
-  child: Image.network(
-    'https://picsum.photos/250?image=9',
-  ),
+  child: Image.network('https://picsum.photos/250?image=9'),
 )
 ```
 
 
 :::note
-Este código é idêntico ao que você tem na primeira tela.
-Como uma boa prática, crie um widget reutilizável em vez de
-repetir código. Este exemplo usa código idêntico para ambos
-widgets, por simplicidade.
+This code is identical to what you have on the first screen.
+As a best practice, create a reusable widget instead of
+repeating code. This example uses identical code for both
+widgets, for simplicity.
 :::
 
-## Exemplo interativo
+## Interactive example
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter Hero animation hands-on example in DartPad" run="true"
@@ -152,10 +143,7 @@ class HeroApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Transition Demo',
-      home: MainScreen(),
-    );
+    return const MaterialApp(title: 'Transition Demo', home: MainScreen());
   }
 }
 
@@ -165,20 +153,21 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Main Screen'),
-      ),
+      appBar: AppBar(title: const Text('Main Screen')),
       body: GestureDetector(
         onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return const DetailScreen();
-          }));
+          Navigator.push(
+            context,
+            MaterialPageRoute<void>(
+              builder: (context) {
+                return const DetailScreen();
+              },
+            ),
+          );
         },
         child: Hero(
           tag: 'imageHero',
-          child: Image.network(
-            'https://picsum.photos/250?image=9',
-          ),
+          child: Image.network('https://picsum.photos/250?image=9'),
         ),
       ),
     );
@@ -198,9 +187,7 @@ class DetailScreen extends StatelessWidget {
         child: Center(
           child: Hero(
             tag: 'imageHero',
-            child: Image.network(
-              'https://picsum.photos/250?image=9',
-            ),
+            child: Image.network('https://picsum.photos/250?image=9'),
           ),
         ),
       ),
@@ -210,10 +197,10 @@ class DetailScreen extends StatelessWidget {
 ```
 
 <noscript>
-  <img src="/assets/images/docs/cookbook/hero.gif" alt="Hero demo" class="site-mobile-screenshot" />
+  <img src="/assets/images/docs/cookbook/hero.webp" alt="Hero demo" class="site-mobile-screenshot" />
 </noscript>
 
 
-[Lidar com toques]: /cookbook/gestures/handling-taps
+[Handle taps]: /cookbook/gestures/handling-taps
 [`Hero`]: {{site.api}}/flutter/widgets/Hero-class.html
-[Navegar para uma nova tela e voltar]: /cookbook/navigation/navigation-basics
+[Navigate to a new screen and back]: /cookbook/navigation/navigation-basics

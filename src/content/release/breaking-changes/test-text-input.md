@@ -1,75 +1,76 @@
 ---
-ia-translate: true
-title: Reset de estado do TestTextInput
-description: O estado de TestTextInput agora é resetado entre testes.
+title: TestTextInput state reset
+description: TestTextInput state is now reset between tests.
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
 
-O estado de uma instância `TestTextInput`,
-um stub para o teclado na tela do sistema,
-agora é resetado entre testes.
+## Summary
 
-## Contexto
+The state of a `TestTextInput` instance,
+a stub for the system's onscreen keyboard,
+is now reset between tests.
 
-O framework de teste do Flutter usa uma classe chamada `TestTextInput`
-para rastrear e manipular o estado de edição em um teste de widgets.
-Testes individuais podem fazer chamadas que modificam o estado
-interno deste objeto, às vezes indiretamente (como
-ao definir seus próprios handlers em `SystemChannels.textInput`).
-Testes subsequentes podem então verificar o estado de
-`WidgetTester.testTextInput` e obter valores inesperados.
+## Context
 
-## Descrição da mudança
+The Flutter test framework uses a class called `TestTextInput`
+to track and manipulate editing state in a widgets test.
+Individual tests can make calls that modify the internal
+state of this object, sometimes indirectly (such as
+by setting their own handlers on `SystemChannels.textInput`).
+Subsequent tests might then check the state of
+`WidgetTester.testTextInput` and get unexpected values.
 
-O estado de `WidgetTester.testTextInput`
-agora é resetado antes de executar um teste `testWidgets`.
+## Description of change
 
-## Guia de migração
+The state of `WidgetTester.testTextInput`
+is now reset before running a `testWidgets` test.
 
-Testes que dependiam de estado sujo de um teste executado
-anteriormente devem ser atualizados. Por exemplo, o seguinte teste,
-de `packages/flutter/test/material/text_field_test.dart`
-no teste `'Controller can update server'`,
-anteriormente passava por causa de uma combinação de estado sujo
-de testes anteriores e uma falha em realmente definir o estado
-nos casos onde deveria ter sido definido.
+## Migration guide
 
-Código antes da migração:
+Tests that relied on dirty state from a previously run
+test must be updated. For example, the following test,
+from `packages/flutter/test/material/text_field_test.dart`
+in the `'Controller can update server'` test,
+previously passed because of a combination of dirty state
+from previous tests and a failure to actually set state
+in cases where it should have been set.
 
-Em um `widgetsTest`, antes de realmente alterar texto em um
-widget de edição de texto, esta chamada poderia ter sucedido:
+Code before migration:
+
+In a `widgetsTest`, before actually changing text on a
+text editing widget, this call might have succeeded:
 
 ```dart
     expect(tester.testTextInput.editingState['text'], isEmpty);
 ```
 
-Código após a migração:
+Code after migration:
 
-Remova a chamada completamente, ou considere usar o
-seguinte para afirmar que o estado ainda não foi modificado:
+Either remove the call entirely, or consider using the
+following to assert that the state hasn't been modified yet:
 
 ```dart
     expect(tester.testTextInput.editingState, isNull);
 ```
 
-## Cronograma
+## Timeline
 
-Adicionado na versão: 1.16.3<br>
-Na versão stable: 1.17
+Landed in version: 1.16.3<br>
+In stable release: 1.17
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`TestTextInput`][]
 * [`WidgetTester`][]
 
-Issue relevante:
+Relevant issue:
 
 * [Randomize test order to avoid global state][]
 
-PR relevante:
+Relevant PR:
 
 * [Reset state between tests][]
 

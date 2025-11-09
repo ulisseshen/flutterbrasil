@@ -1,18 +1,19 @@
 ---
 title: Migrate `of` to non-nullable return values, and add `maybeOf`
 description: >
-  To eliminate nullOk parameters to help with API sanity
+  To eliminate nullOk parameters to help with API clarity
   in the face of null safety.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 This migration guide describes conversion of code that uses various static `of`
 functions to retrieve information from a context that used to return nullable
 values, but now return non-nullable values.
 
-## Contexto
+## Context
 
 Flutter has a common pattern of allowing lookup of some types of widgets
 (typically [`InheritedWidget`][]s, but also others) using static member
@@ -35,7 +36,7 @@ value was not present (still called `of`), and one that returned a nullable
 value that didn't throw an exception, and returned null if the value was not
 present (a new method called `maybeOf`).
 
-## Descrição da mudança
+## Description of change
 
 The change modified these static `of` APIs to return non-nullable values.
 If a value is not found, they will also now assert in debug mode, and
@@ -73,19 +74,19 @@ simply return null if the value is not found, without throwing any exceptions.
 * [`Scrollable.maybeOf`]
 * [`ScrollNotificationObserver.maybeOf`]
 
-## Guia de migração
+## Migration guide
 
 To modify your code to use the new form of the APIs, first convert all
 instances of the original static `of` functions (where its nullability is
 important) to use the `maybeOf` form instead.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 ScrollController? controller = Scrollable.of(context);
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 ScrollController? controller = Scrollable.maybeOf(context);
@@ -95,13 +96,13 @@ Then, for instances where the code calls the `of` API followed by
 an exclamation point, just remove the exclamation point: it can
 no longer return a nullable value.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 ScrollController controller = Scrollable.of(context)!;
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 ScrollController controller = Scrollable.of(context);
@@ -118,17 +119,17 @@ The following can also be helpful:
 * [`unnecessary_nullable_for_final_variable_declarations`][] (analysis option)
   finds unnecessary question mark operators on `final` and `const` variables
 
-## Linha do tempo
+## Timeline
 
-Na versão estável: 3.7
+In stable release: 3.7
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`Material.of`][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [Add `maybeOf` for all the cases when `of` returns nullable][]
 * [Add `Overlay.maybeOf`, make `Overlay.of` return a non-nullable instance][]

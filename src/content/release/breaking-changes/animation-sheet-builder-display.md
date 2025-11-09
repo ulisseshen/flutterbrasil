@@ -3,16 +3,17 @@ title: Replace AnimationSheetBuilder.display with collate
 description: >
   AnimationSheetBuilder.display and sheetSize
   are deprecated in favor of collate.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 The `AnimationSheetBuilder.display` and `sheetSize`
 methods are deprecated, and should be replaced with
 `AnimationSheetBuilder.collate`.
 
-## Contexto
+## Context
 
 [`AnimationSheetBuilder`][] is a testing utility
 class that records frames of an animating widget,
@@ -35,7 +36,7 @@ block of the exactly same color to represent 1 actual
 pixel, making the image 9 times as large as necessary
 (before PNG compression).
 
-## Descrição da mudança
+## Description of change
 
 The following changes have been made to the
 [`AnimationSheetBuilder`][] class:
@@ -43,7 +44,7 @@ The following changes have been made to the
 * 'display' is deprecated and shouldn't be used
 * 'sheetSize' is deprecated and shouldn't be used
 
-## Guia de migração
+## Migration guide
 
 To migrate to the new API, change the process of setting
 surface size and displaying the widget into
@@ -73,7 +74,7 @@ tester.binding.setSurfaceSize(animationSheet.sheetSize(600));
 ```
 
 * The frames per row should be the result of the two
-  numbers divided, rounded down. For example, 
+  numbers divided, rounded down. For example,
   600 / 80 = 7 (rounded down), therefore
 
 ```dart
@@ -82,7 +83,7 @@ animationSheet.collate(7)
 
 ### Migrate code
 
-Código antes da migração:
+Code before migration:
 
 ```dart
   testWidgets('Indeterminate CircularProgressIndicator', (WidgetTester tester) async {
@@ -140,19 +141,19 @@ are invalidated, which should all be updated. The new
 images should be identical to the old ones except
 1/3 in scale.
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: v2.3.0-13.0.pre<br>
-Na versão estável: 2.5
+Landed in version: v2.3.0-13.0.pre<br>
+In stable release: 2.5
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`AnimationSheetBuilder`][]
 * [`AnimationSheetBuilder.collate`][]
 
-PRs relevantes:
+Relevant PR:
 
 * [Test WidgetTester handling test pointers][]
 

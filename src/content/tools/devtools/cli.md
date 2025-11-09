@@ -1,69 +1,69 @@
 ---
-ia-translate: true
-title: Executar DevTools da linha de comando
-description: Aprenda como executar e usar DevTools da linha de comando.
+title: Run DevTools from the command line
+description: Learn how to launch and use DevTools from the command line.
 ---
 
-Para executar DevTools pela CLI,
-você deve ter `dart` no seu path.
-Então, para iniciar DevTools, execute o comando `dart devtools`.
+To run DevTools from the CLI,
+you must have `dart` on your path.
+Then to launch DevTools, run the `dart devtools` command.
 
-Para atualizar DevTools, atualize o Flutter.
-Se um Dart SDK mais recente
-(que está incluído no Flutter SDK)
-incluir uma versão mais recente de DevTools,
-executar `dart devtools` automaticamente inicia esta versão.
-Se `which dart` apontar para um Dart SDK que _não_ está
-incluído no seu Flutter SDK, atualizar aquele
-Dart SDK não atualizará a versão do Flutter.
+To upgrade DevTools, upgrade Flutter.
+If a newer Dart SDK
+(which is included in the Flutter SDK)
+has a newer version of DevTools,
+running `dart devtools` automatically launches this version.
+If `which dart` points to a Dart SDK _not_
+included in your Flutter SDK, updating that
+Dart SDK won't update the Flutter version.
 
-Quando você executa DevTools pela linha de comando,
-você deve ver uma saída parecida com:
+When you run DevTools from the command line,
+you should see output that looks something like:
 
 ```plaintext
 Serving DevTools at http://127.0.0.1:9100
 ```
 
-## Iniciar uma aplicação para depurar
+## Start an application to debug
 
-Em seguida, inicie um app para conectar.
-Pode ser uma aplicação Flutter
-ou uma aplicação Dart de linha de comando.
-O comando abaixo especifica um app Flutter:
+Next, start an app to connect to.
+This can be either a Flutter application
+or a Dart command-line application.
+The command below specifies a Flutter app:
 
 ```console
 cd path/to/flutter/app
 flutter run
 ```
 
-Você precisa ter um dispositivo conectado, ou um simulador aberto,
-para que `flutter run` funcione. Quando o app iniciar, você verá uma
-mensagem no seu terminal parecida com a seguinte:
+You need to have a device connected, or a simulator open,
+for `flutter run` to work. Once the app starts,
+you'll see a message in your terminal that looks like
+the following:
 
 ```console
-An Observatory debugger and profiler on macOS is available at:
-http://127.0.0.1:52129/QjqebSY4lQ8=/
-The Flutter DevTools debugger and profiler on macOS is available at:
-http://127.0.0.1:9100?uri=http://127.0.0.1:52129/QjqebSY4lQ8=/
+A Dart VM Service on macOS is available at:
+http://127.0.0.1:51830/u37pq71Re0k=/
+The Flutter DevTools debugger and profiler on macOS
+is available at:
+http://127.0.0.1:9100?uri=http://127.0.0.1:51830/u37pq71Re0k=/
 ```
 
-Abra a instância DevTools conectada ao seu app
-abrindo o segundo link no Chrome.
+Open the DevTools instance connected to your app
+by opening the second link in Chrome.
 
-Esta URL contém um token de segurança,
-então é diferente para cada execução do seu app.
-Isso significa que se você parar sua aplicação e executá-la novamente,
-você precisa conectar ao DevTools novamente com a nova URL.
+This URL contains a security token,
+so it's different for each run of your app.
+This means that if you stop your application and re-run it,
+you need to connect to DevTools again with the new URL.
 
-## Conectar a uma nova instância do app
+## Connect to a new app instance
 
-Se seu app parar de executar
-ou você abriu DevTools manualmente,
-você deve ver um diálogo **Connect**:
+If your app stops running
+or you opened DevTools manually,
+you should see a **Connect** dialog:
 
 ![Screenshot of the DevTools connect dialog](/assets/images/docs/tools/devtools/connect_dialog.png){:width="100%"}
 
-Você pode conectar manualmente DevTools a uma nova instância do app
-copiando o link Observatory que você obteve ao executar seu app,
-como `http://127.0.0.1:52129/QjqebSY4lQ8=/`
-e colando-o no diálogo de conexão:
+You can manually connect DevTools to a new app instance
+by copying the link you got from running your app,
+such as ` http://127.0.0.1:51830/u37pq71Re0k=/`

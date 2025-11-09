@@ -1,297 +1,295 @@
 ---
-title: Visão geral da API de animações
-short-title: Visão geral da API
-description: Uma visão geral dos conceitos de animação.
-ia-translate: true
+title: Animations API overview
+shortTitle: API overview
+description: An overview of animation concepts.
 ---
 
-O sistema de animação no Flutter é baseado em objetos
-[`Animation`][] tipados. Widgets podem incorporar
-essas animações em suas funções build diretamente,
-lendo seu valor atual e ouvindo suas
-mudanças de estado, ou podem usar as animações como base de
-animações mais elaboradas que eles passam para
-outros widgets.
+The animation system in Flutter is based on typed
+[`Animation`][] objects. Widgets can either
+incorporate these animations in their build
+functions directly by reading their current value and listening to their
+state changes or they can use the animations as the basis of more elaborate
+animations that they pass along to other widgets.
 
 ## Animation
 
-O bloco de construção principal do sistema de animação é a
-classe [`Animation`][]. Uma Animation representa um valor
-de um tipo específico que pode mudar ao longo da vida útil
-da animação. A maioria dos widgets que realizam uma animação
-recebem um objeto `Animation` como parâmetro,
-do qual eles leem o valor atual da animação
-e ao qual eles ouvem mudanças nesse valor.
+The primary building block of the animation system is the
+[`Animation`][] class. An animation represents a value
+of a specific type that can change over the lifetime of
+the animation. Most widgets that perform an animation
+receive an `Animation` object as a parameter,
+from which they read the current value of the animation
+and to which they listen for changes to that value.
 
 ### `addListener`
 
-Sempre que o valor da animação muda,
-a animação notifica todos os listeners adicionados com
-[`addListener`][]. Normalmente, um objeto [`State`][]
-que ouve uma animação chama
-[`setState`][] em si mesmo em seu callback de listener
-para notificar o sistema de widgets que ele precisa
-reconstruir com o novo valor da animação.
+Whenever the animation's value changes,
+the animation notifies all the listeners added with
+[`addListener`][]. Typically, a [`State`][]
+object that listens to an animation calls
+[`setState`][] on itself in its listener callback
+to notify the widget system that it needs to
+rebuild with the new value of the animation.
 
-Esse padrão é tão comum que existem dois widgets
-que ajudam os widgets a reconstruir quando as animações mudam de valor:
-[`AnimatedWidget`][] e [`AnimatedBuilder`][].
-O primeiro, `AnimatedWidget`, é mais útil para
-widgets animados stateless. Para usar `AnimatedWidget`,
-simplesmente crie uma subclasse dele e implemente a função [`build`][].
-O segundo, `AnimatedBuilder`, é útil para widgets mais complexos
-que desejam incluir uma animação como parte de uma função build maior.
-Para usar `AnimatedBuilder`, simplesmente construa o widget
-e passe a ele uma função `builder`.
+This pattern is so common that there are two widgets
+that help widgets rebuild when animations change value:
+[`AnimatedWidget`][] and [`AnimatedBuilder`][].
+The first, `AnimatedWidget`, is most useful for
+stateless animated widgets. To use `AnimatedWidget`,
+simply subclass it and implement the [`build`][] function.
+The second, `AnimatedBuilder`, is useful for more complex widgets
+that wish to include an animation as part of a larger build function.
+To use `AnimatedBuilder`, simply construct the widget
+and pass it a `builder` function.
 
 ### `addStatusListener`
 
-As animações também fornecem um [`AnimationStatus`][],
-que indica como a animação evoluirá ao longo do tempo.
-Sempre que o status da animação muda,
-a animação notifica todos os listeners adicionados com
-[`addStatusListener`][]. Normalmente, as animações começam
-no status `dismissed`, o que significa que estão
-no início de seu intervalo. Por exemplo,
-animações que progridem de 0.0 a 1.0
-estarão `dismissed` quando seu valor for 0.0.
-Uma animação pode então executar `forward` (de 0.0 a 1.0)
-ou talvez em `reverse` (de 1.0 a 0.0).
-Eventualmente, se a animação atingir o final de seu intervalo
-(1.0), a animação atinge o status `completed`.
+Animations also provide an [`AnimationStatus`][],
+which indicates how the animation will evolve over time.
+Whenever the animation's status changes,
+the animation notifies all the listeners added with
+[`addStatusListener`][]. Typically, animations start
+out in the `dismissed` status, which means they're
+at the beginning of their range. For example,
+animations that progress from 0.0 to 1.0
+will be `dismissed` when their value is 0.0.
+An animation might then run `forward` (from 0.0 to 1.0)
+or perhaps in `reverse` (from 1.0 to 0.0).
+Eventually, if the animation reaches the end of its range
+(1.0), the animation reaches the `completed` status.
 
 ## Animation&shy;Controller
 
-Para criar uma animação, primeiro crie um [`AnimationController`][].
-Além de ser uma animação em si, um `AnimationController`
-permite que você controle a animação. Por exemplo,
-você pode dizer ao controller para reproduzir a animação
-[`forward`][] ou [`stop`][] a animação.
-Você também pode [`fling`][] animações,
-que usam uma simulação física, como uma mola,
-para conduzir a animação.
+To create an animation, first create an [`AnimationController`][].
+As well as being an animation itself, an `AnimationController`
+lets you control the animation. For example,
+you can tell the controller to play the animation
+[`forward`][] or [`stop`][] the animation.
+You can also [`fling`][] animations,
+which uses a physical simulation, such as a spring,
+to drive the animation.
 
-Uma vez que você criou um animation controller,
-você pode começar a construir outras animações com base nele.
-Por exemplo, você pode criar uma [`ReverseAnimation`][]
-que espelha a animação original mas roda na
-direção oposta (de 1.0 a 0.0).
-Da mesma forma, você pode criar uma [`CurvedAnimation`][]
-cujo valor é ajustado por uma [`Curve`][].
+Once you've created an animation controller,
+you can start building other animations based on it.
+For example, you can create a [`ReverseAnimation`][]
+that mirrors the original animation but runs in the
+opposite direction (from 1.0 to 0.0).
+Similarly, you can create a [`CurvedAnimation`][]
+whose value is adjusted by a [`Curve`][].
 
 ## Tweens
 
-Para animar além do intervalo de 0.0 a 1.0, você pode usar um
-[`Tween<T>`][], que interpola entre seus
-valores [`begin`][] e [`end`][]. Muitos tipos têm
-subclasses `Tween` específicas que fornecem interpolação específica do tipo.
-Por exemplo, [`ColorTween`][] interpola entre cores e
-[`RectTween`][] interpola entre retângulos.
-Você pode definir suas próprias interpolações criando
-sua própria subclasse de `Tween` e substituindo sua
-função [`lerp`][].
+To animate beyond the 0.0 to 1.0 interval, you can use a
+[`Tween<T>`][], which interpolates between its
+[`begin`][] and [`end`][] values. Many types have specific
+`Tween` subclasses that provide type-specific interpolation.
+For example, [`ColorTween`][] interpolates between colors and
+[`RectTween`][] interpolates between rects.
+You can define your own interpolations by creating
+your own subclass of `Tween` and overriding its
+[`lerp`][] function.
 
-Por si só, um tween apenas define como interpolar
-entre dois valores. Para obter um valor concreto para o
-quadro atual de uma animação, você também precisa de uma
-animação para determinar o estado atual.
-Existem duas maneiras de combinar um tween
-com uma animação para obter um valor concreto:
+By itself, a tween just defines how to interpolate
+between two values. To get a concrete value for the
+current frame of an animation, you also need an
+animation to determine the current state.
+There are two ways to combine a tween
+with an animation to get a concrete value:
 
-1. Você pode [`evaluate`][] o tween no valor atual
-   de uma animação. Esta abordagem é mais útil
-   para widgets que já estão ouvindo a animação e, portanto,
-   reconstruindo sempre que a animação muda de valor.
+1. You can [`evaluate`][] the tween at the current
+   value of an animation. This approach is most useful
+   for widgets that are already listening to the animation and hence
+   rebuilding whenever the animation changes value.
 
-2. Você pode [`animate`][] o tween com base na animação.
-   Em vez de retornar um único valor, a função animate
-   retorna uma nova `Animation` que incorpora o tween.
-   Esta abordagem é mais útil quando você deseja dar a
-   animação recém-criada a outro widget,
-   que pode então ler o valor atual que incorpora
-   o tween, bem como ouvir mudanças no valor.
+2. You can [`animate`][] the tween based on the animation.
+   Rather than returning a single value, the animate function
+   returns a new `Animation` that incorporates the tween.
+   This approach is most useful when you want to give the
+   newly created animation to another widget,
+   which can then read the current value that incorporates
+   the tween as well as listen for changes to the value.
 
-## Arquitetura
+## Architecture
 
-As animações são, na verdade, construídas a partir de vários blocos de construção principais.
+Animations are actually built from a number of core building blocks.
 
 ### Scheduler
 
-O [`SchedulerBinding`][] é uma classe singleton
-que expõe as primitivas de agendamento do Flutter.
+The [`SchedulerBinding`][] is a singleton class
+that exposes the Flutter scheduling primitives.
 
-Para esta discussão, a primitiva chave são os callbacks de quadro.
-Cada vez que um quadro precisa ser mostrado na tela,
-o mecanismo do Flutter aciona um callback "begin frame" que
-o scheduler multiplexa para todos os listeners registrados usando
-[`scheduleFrameCallback()`][]. Todos esses callbacks recebem
-o carimbo de data/hora oficial do quadro, na
-forma de uma `Duration` de alguma época arbitrária. Como todos os
-callbacks têm o mesmo carimbo de data/hora, quaisquer animações acionadas desses
-callbacks parecerão estar exatamente sincronizadas, mesmo
-que levem alguns milissegundos para serem executadas.
+For this discussion, the key primitive is the frame callbacks.
+Each time a frame needs to be shown on the screen,
+Flutter's engine triggers a "begin frame" callback that
+the scheduler multiplexes to all the listeners registered using
+[`scheduleFrameCallback()`][]. All these callbacks are
+given the official time stamp of the frame, in
+the form of a `Duration` from some arbitrary epoch. Since all the
+callbacks have the same time, any animations triggered from these
+callbacks will appear to be exactly synchronised even
+if they take a few milliseconds to be executed.
 
 ### Tickers
 
-A classe [`Ticker`][] se conecta ao
-mecanismo [`scheduleFrameCallback()`][]
-do scheduler para invocar um callback a cada tick.
+The [`Ticker`][] class hooks into the scheduler's
+[`scheduleFrameCallback()`][]
+mechanism to invoke a callback every tick.
 
-Um `Ticker` pode ser iniciado e parado. Quando iniciado,
-ele retorna um `Future` que será resolvido quando for parado.
+A `Ticker` can be started and stopped. When started,
+it returns a `Future` that will resolve when it is stopped.
 
-A cada tick, o `Ticker` fornece ao callback a
-duração desde o primeiro tick após ele ter sido iniciado.
+Each tick, the `Ticker` provides the callback with the
+duration since the first tick after it was started.
 
-Como os tickers sempre dão seu tempo decorrido relativo ao primeiro
-tick após terem sido iniciados; os tickers estão todos sincronizados. Se você
-iniciar três tickers em momentos diferentes entre dois ticks, eles
-ainda assim estarão sincronizados com o mesmo tempo de início, e
-subsequentemente darão ticks em sincronia. Como pessoas em um ponto de ônibus,
-todos os tickers esperam por um evento que ocorre regularmente
-(o tick) para começar a se mover (contar tempo).
+Because tickers always give their elapsed time relative to the first
+tick after they were started; tickers are all synchronised. If you
+start three tickers at different times between two ticks, they will all
+nonetheless be synchronised with the same starting time, and will
+subsequently tick in lockstep. Like people at a bus-stop,
+all the tickers wait for a regularly occurring event
+(the tick) to begin moving (counting time).
 
 ### Simulations
 
-A classe abstrata [`Simulation`][] mapeia um
-valor de tempo relativo (um tempo decorrido) para um
-valor double, e tem uma noção de conclusão.
+The [`Simulation`][] abstract class maps a
+relative time value (an elapsed time) to a
+double value, and has a notion of completion.
 
-Em princípio, as simulações são stateless, mas na prática
-algumas simulações (por exemplo,
-[`BouncingScrollSimulation`][] e
+In principle simulations are stateless but in practice
+some simulations (for example,
+[`BouncingScrollSimulation`][] and
 [`ClampingScrollSimulation`][])
-mudam de estado de forma irreversível quando consultadas.
+change state irreversibly when queried.
 
-Existem [várias implementações concretas][]
-da classe `Simulation` para diferentes efeitos.
+There are [various concrete implementations][]
+of the `Simulation` class for different effects.
 
 ### Animatables
 
-A classe abstrata [`Animatable`][] mapeia um
-double para um valor de um tipo específico.
+The [`Animatable`][] abstract class maps a
+double to a value of a particular type.
 
-As classes `Animatable` são stateless e imutáveis.
+`Animatable` classes are stateless and immutable.
 
 #### Tweens
 
-A classe abstrata [`Tween<T>`][] mapeia um valor
-double nominalmente no intervalo 0.0-1.0 para um valor tipado
-(por exemplo, uma `Color`, ou outro double).
-É um `Animatable`.
+The [`Tween<T>`][] abstract class maps a double
+value nominally in the range 0.0-1.0 to a typed value
+(for example, a `Color`, or another double).
+It is an `Animatable`.
 
-Ela tem uma noção de um tipo de saída (`T`),
-um valor `begin` e um valor `end` desse tipo,
-e uma maneira de interpolar (`lerp`) entre os valores begin
-e end para um determinado valor de entrada (o double nominalmente no
-intervalo 0.0-1.0).
+It has a notion of an output type (`T`),
+a `begin` value and an `end` value of that type,
+and a way to interpolate (`lerp`) between the begin
+and end values for a given input value (the double nominally in
+the range 0.0-1.0).
 
-As classes `Tween` são stateless e imutáveis.
+`Tween` classes are stateless and immutable.
 
 #### Composing animatables
 
-Passar um `Animatable<double>` (o pai) para o método
-`chain()` de um `Animatable` cria uma nova subclasse `Animatable` que aplica o
-mapeamento do pai e depois o mapeamento do filho.
+Passing an `Animatable<double>` (the parent) to an `Animatable`'s
+`chain()` method creates a new `Animatable` subclass that applies the
+parent's mapping then the child's mapping.
 
 ### Curves
 
-A classe abstrata [`Curve`][] mapeia doubles
-nominalmente no intervalo 0.0-1.0 para doubles
-nominalmente no intervalo 0.0-1.0.
+The [`Curve`][] abstract class maps doubles
+nominally in the range 0.0-1.0 to doubles
+nominally in the range 0.0-1.0.
 
-As classes `Curve` são stateless e imutáveis.
+`Curve` classes are stateless and immutable.
 
 ### Animations
 
-A classe abstrata [`Animation`][] fornece um
-valor de um determinado tipo, um conceito de direção de animação
-e status de animação, e uma interface de listener para
-registrar callbacks que são invocados quando o valor ou status mudam.
+The [`Animation`][] abstract class provides a
+value of a given type, a concept of animation
+direction and animation status, and a listener interface to
+register callbacks that get invoked when the value or status change.
 
-Algumas subclasses de `Animation` têm valores que nunca mudam
+Some subclasses of `Animation` have values that never change
 ([`kAlwaysCompleteAnimation`][], [`kAlwaysDismissedAnimation`][],
-[`AlwaysStoppedAnimation`][]); registrar callbacks nelas
-não tem efeito, pois os callbacks nunca são chamados.
+[`AlwaysStoppedAnimation`][]); registering callbacks on
+these has no effect as the callbacks are never called.
 
-A variante `Animation<double>` é especial porque pode ser usada para
-representar um double nominalmente no intervalo 0.0-1.0, que é a entrada
-esperada pelas classes `Curve` e `Tween`, bem como algumas subclasses
-adicionais de `Animation`.
+The `Animation<double>` variant is special because it can be used to
+represent a double nominally in the range 0.0-1.0, which is the input
+expected by `Curve` and `Tween` classes, as well as some further
+subclasses of `Animation`.
 
-Algumas subclasses de `Animation` são stateless,
-meramente encaminhando listeners para seus pais.
-Algumas são muito stateful.
+Some `Animation` subclasses are stateless,
+merely forwarding listeners to their parents.
+Some are very stateful.
 
 #### Composable animations
 
-A maioria das subclasses de `Animation` recebe um
-`Animation<double>` "pai" explícito. Elas são conduzidas por esse pai.
+Most `Animation` subclasses take an explicit "parent"
+`Animation<double>`. They are driven by that parent.
 
-A subclasse `CurvedAnimation` recebe uma classe `Animation<double>` (o
-pai) e algumas classes `Curve` (as curvas forward e reverse)
-como entrada, e usa o valor do pai como entrada para as
-curvas para determinar sua saída. `CurvedAnimation` é imutável e
+The `CurvedAnimation` subclass takes an `Animation<double>` class (the
+parent) and a couple of `Curve` classes (the forward and reverse
+curves) as input, and uses the value of the parent as input to the
+curves to determine its output. `CurvedAnimation` is immutable and
 stateless.
 
-A subclasse `ReverseAnimation` recebe uma
-classe `Animation<double>` como seu pai e inverte
-todos os valores da animação. Ela assume que o pai
-está usando um valor nominalmente no intervalo 0.0-1.0 e retorna
-um valor no intervalo 1.0-0.0. O status e a direção da animação
-pai também são invertidos. `ReverseAnimation` é imutável e
+The `ReverseAnimation` subclass takes an
+`Animation<double>` class as its parent and reverses
+all the values of the animation. It assumes the parent
+is using a value nominally in the range 0.0-1.0 and returns
+a value in the range 1.0-0.0. The status and direction of the parent
+animation are also reversed. `ReverseAnimation` is immutable and
 stateless.
 
-A subclasse `ProxyAnimation` recebe uma classe `Animation<double>` como
-seu pai e meramente encaminha o estado atual desse pai.
-No entanto, o pai é mutável.
+The `ProxyAnimation` subclass takes an `Animation<double>` class as
+its parent and merely forwards the current state of that parent.
+However, the parent is mutable.
 
-A subclasse `TrainHoppingAnimation` recebe dois pais,
-e alterna entre eles quando seus valores se cruzam.
+The `TrainHoppingAnimation` subclass takes two parents,
+and switches between them when their values cross.
 
 #### Animation controllers
 
-O [`AnimationController`][] é uma
-`Animation<double>` stateful que usa um `Ticker` para se dar vida.
-Ele pode ser iniciado e parado. A cada tick, ele pega o tempo
-decorrido desde que foi iniciado e o passa para uma `Simulation` para obter
-um valor. Esse é então o valor que ele relata. Se a `Simulation`
-relatar que naquele momento ela terminou, então o controller para
-a si mesmo.
+The [`AnimationController`][] is a stateful
+`Animation<double>` that uses a `Ticker` to give itself life.
+It can be started and stopped. At each tick, it takes the time
+elapsed since it was started and passes it to a `Simulation` to obtain
+a value. That is then the value it reports. If the `Simulation`
+reports that at that time it has ended, then the controller stops
+itself.
 
-O animation controller pode receber um limite inferior e superior para
-animar entre, e uma duração.
+The animation controller can be given a lower and upper bound to
+animate between, and a duration.
 
-No caso simples (usando `forward()` ou `reverse()`), o animation controller simplesmente faz uma
-interpolação linear do limite inferior para o limite superior (ou vice-versa,
-para a direção reversa) durante a duração determinada.
+In the simple case (using `forward()` or `reverse()`), the animation controller simply does a linear
+interpolation from the lower bound to the upper bound (or vice versa,
+for the reverse direction) over the given duration.
 
-Ao usar `repeat()`, o animation controller usa uma
-interpolação linear entre os limites dados durante a duração dada, mas
-não para.
+When using `repeat()`, the animation controller uses a linear
+interpolation between the given bounds over the given duration, but
+does not stop.
 
-Ao usar `animateTo()`, o animation controller faz uma
-interpolação linear durante a duração dada do valor atual para o
-alvo dado. Se nenhuma duração for dada ao método, a duração padrão
-do controller e o intervalo descrito pelo limite
-inferior e limite superior do controller é usado para determinar a velocidade da
-animação.
+When using `animateTo()`, the animation controller does a linear
+interpolation over the given duration from the current value to the
+given target. If no duration is given to the method, the default
+duration of the controller and the range described by the controller's
+lower bound and upper bound is used to determine the velocity of the
+animation.
 
-Ao usar `fling()`, uma `Force` é usada para criar uma
-simulação específica que é então usada para conduzir o controller.
+When using `fling()`, a `Force` is used to create a specific
+simulation which is then used to drive the controller.
 
-Ao usar `animateWith()`, a simulação dada é usada para conduzir o
+When using `animateWith()`, the given simulation is used to drive the
 controller.
 
-Esses métodos todos retornam o future que o `Ticker` fornece e
-que será resolvido quando o controller parar ou mudar de
-simulação.
+These methods all return the future that the `Ticker` provides and
+which will resolve when the controller next stops or changes
+simulation.
 
 #### Attaching animatables to animations
 
-Passar uma `Animation<double>` (o novo pai) para o método
-`animate()` de um `Animatable` cria uma nova subclasse `Animation` que age como
-o `Animatable`, mas é conduzida pelo pai dado.
+Passing an `Animation<double>` (the new parent) to an `Animatable`'s
+`animate()` method creates a new `Animation` subclass that acts like
+the `Animatable` but is driven from the given parent.
 
 
 [`addListener`]: {{site.api}}/flutter/animation/Animation/addListener.html
@@ -328,4 +326,4 @@ o `Animatable`, mas é conduzida pelo pai dado.
 [`stop`]: {{site.api}}/flutter/animation/AnimationController/stop.html
 [`Ticker`]: {{site.api}}/flutter/scheduler/Ticker-class.html
 [`Tween<T>`]: {{site.api}}/flutter/animation/Tween-class.html
-[várias implementações concretas]: {{site.api}}/flutter/physics/physics-library.html
+[various concrete implementations]: {{site.api}}/flutter/physics/physics-library.html

@@ -1,50 +1,49 @@
 ---
-ia-translate: true
-title: Use um debugger de linguagem nativa
-short-title: debuggers
-description: Como conectar um debugger nativo ao seu app Flutter em execução.
+title: Use a native language debugger
+shortTitle: debuggers
+description: How to connect a native debugger to your running Flutter app.
 ---
 
 <?code-excerpt path-base="testing/native_debugging"?>
 
 :::note
-Este guia pressupõe que você entende debugging em geral,
-instalou Flutter e git, e tem familiaridade
-com a linguagem Dart, bem como uma das seguintes
-linguagens: Java, Kotlin, Swift ou Objective-C.
+This guide presumes you understand general debugging,
+have installed Flutter and git, and have familiarity
+with the Dart language as well as one of the following
+languages: Java, Kotlin, Swift, or Objective-C.
 :::
 
-Se você escreve apps Flutter apenas com código Dart,
-você pode fazer debug do seu código usando o debugger do seu IDE.
-A equipe do Flutter recomenda VS Code.
+If you write Flutter apps only with Dart code,
+you can debug your code using your IDE's debugger.
+The Flutter team recommends VS Code.
 
-Se você escreve um plugin específico de plataforma ou
-usa bibliotecas específicas de plataforma, você pode fazer debug
-dessa parte do seu código com um debugger nativo.
+If you write a platform-specific plugin or
+use platform-specific libraries, you can debug
+that portion of your code with a native debugger.
 
-- Para fazer debug de código iOS ou macOS escrito em Swift ou Objective-C,
-  você pode usar Xcode.
-- Para fazer debug de código Android escrito em Java ou Kotlin,
-  você pode usar Android Studio.
-- Para fazer debug de código Windows escrito em C++, você pode usar Visual Studio.
+- To debug iOS or macOS code written in Swift or Objective-C,
+  you can use Xcode.
+- To debug Android code written in Java or Kotlin,
+  you can use Android Studio.
+- To debug Windows code written in C++, you can use Visual Studio.
 
-Este guia mostra como você pode conectar _dois_
-debuggers ao seu app Dart, um para Dart e um para o código nativo.
+This guide shows you how you can connect _two_
+debuggers to your Dart app, one for Dart, and one for the native code.
 
-## Fazer debug de código Dart
+## Debug Dart code
 
-Este guia descreve como usar VS Code para fazer debug do seu app Flutter.
-Você também pode usar o seu IDE preferido com os
-plugins Flutter e Dart instalados e configurados.
+This guide describes how to use VS Code to debug your Flutter app.
+You can also use your preferred IDE with the
+Flutter and Dart plugins installed and configured.
 
-## Fazer debug de código Dart usando VS Code
+## Debug Dart code using VS Code
 
-O procedimento a seguir explica como usar o debugger Dart
-com o app Flutter de exemplo padrão.
-Os componentes em destaque no VS Code funcionam e aparecem ao
-fazer debug do seu próprio projeto Flutter também.
+The following procedure explains how to use the Dart debugger
+with the default sample Flutter app.
+The featured components in VS Code work and appear when
+debugging your own Flutter project as well.
 
-1. Crie um app Flutter básico.
+1. Create a basic Flutter app.
 
     ```console
     $ flutter create my_app
@@ -57,8 +56,8 @@ fazer debug do seu próprio projeto Flutter também.
     Wrote 129 files.
 
     All done!
-    You can find general documentation for Flutter at: https://docs.flutterbrasil.dev/
-    Detailed API documentation is available at: https://api.flutterbrasil.dev/
+    You can find general documentation for Flutter at: https://docs.flutter.dev/
+    Detailed API documentation is available at: https://api.flutter.dev/
     If you prefer video documentation, consider: https://www.youtube.com/c/flutterdev
 
     In order to run your application, type:
@@ -73,130 +72,129 @@ fazer debug do seu próprio projeto Flutter também.
     $ cd my_app
     ```
 
-1. Abra o arquivo `lib\main.dart` no app Flutter usando
+1. Open the `lib\main.dart` file in the Flutter app using
    VS Code.
 
-1. Clique no ícone de bug
+1. Click the bug icon
    (![VS Code's bug icon to trigger the debugging mode of a Flutter app](/assets/images/docs/testing/debugging/vscode-ui/icons/debug.png)).
-   Isso abre os seguintes painéis no VS Code:
+   This opens the following panes in VS Code:
 
    - **Debug**
    - **Debug Console**
    - **Widget Inspector**
 
-   A primeira vez que você executa o debugger leva mais tempo.
+   The first time you run the debugger takes the longest.
 
-{% comment %}
+   {% comment %}
    ![VS Code window with debug panes opened](/assets/images/docs/testing/debugging/vscode-ui/screens/vscode-debugger.png){:width="100%"}
-{% endcomment %}
+   {% endcomment %}
 
-1. Teste o debugger.
+1. Test the debugger.
 
-   a. Em `main.dart`, clique nesta linha:
+   a. In `main.dart`, click on this line:
 
       ```dart
       _counter++;
       ```
 
-   b. Pressione <kbd>Shift</kbd> + <kbd>F9</kbd>.
-      Isso adiciona um breakpoint onde a
-      variável `_counter` é incrementada.
+   b. Press <kbd>Shift</kbd> + <kbd>F9</kbd>.
+      This adds a breakpoint where the
+      `_counter` variable increments.
 
-   c. No app, clique no botão **+**
-      para incrementar o contador. O app pausa.
+   c. In the app, click the **+** button
+      to increment the counter. The app pauses.
 
-{% comment %}
+      {% comment %}
       ![Flutter test app paused](/assets/images/docs/testing/debugging/native/macos/basic-app.png){:width="50%"}
       <div class="figure-caption">
 
       Default Flutter app as rendered on macOS.
 
       </div>
-{% endcomment %}
+      {% endcomment %}
 
-    d. Neste ponto, VS Code exibe:
+    d. At this point, VS Code displays:
 
-      - Em **Editor Groups**:
-        - O breakpoint destacado em `main.dart`
-        - A hierarquia de widgets para o app Flutter
-          na **Widget Tree** do **Widget Inspector**
-      - Na **side bar**:
-        - O estado do app na seção **Call Stack**
-        - O valor da variável local `this` na seção **Variables**
-      - No **panel**:
-        - O log do app Flutter no **Debug console**
+      - In the **Editor Groups**:
+        - The highlighted breakpoint in `main.dart`
+        - The widget hierarchy for the Flutter app
+          in the **Widget Tree** of the **Widget Inspector**
+      - In the **side bar**:
+        - The state of the app in the **Call Stack** section
+        - The value of the `this` local variable in the **Variables** section
+      - In the **panel**:
+        - The log of the Flutter app in the **Debug console**
 
-{% comment %}
+      {% comment %}
       ![VS Code window with Flutter app paused](/assets/images/docs/testing/debugging/vscode-ui/screens/vscode-debugger-paused.png){:width="100%"}
-{% endcomment %}
+      {% endcomment %}
 
-### Debugger Flutter do VS Code
+### VS Code Flutter debugger
 
-O plugin Flutter para VS Code adiciona vários componentes
-à interface do usuário do VS Code.
+The Flutter plugin for VS Code adds a number of components
+to the VS Code user interface.
 
-#### Mudanças na interface do VS Code
+#### Changes to VS Code interface
 
-Quando iniciado, o debugger Flutter adiciona ferramentas de debugging à
-interface do VS Code.
+When launched, the Flutter debugger adds debugging tools to the
+VS Code interface.
 
-A captura de tela e a tabela a seguir explicam o propósito de cada ferramenta.
+The following screenshot and table explain the purpose of each tool.
 
 ![VS Code with the Flutter plugin UI additions](/assets/images/docs/testing/debugging/vscode-ui/screens/debugger-parts.png)
 
-| Cor em Destaque na Captura | Barra, Painel ou Aba | Conteúdo                                                                                      |
-|----------------------------|----------------------|-----------------------------------------------------------------------------------------------|
-| **Amarelo**                | Variables            | Lista de valores atuais de variáveis no app Flutter                                           |
-|                            | Watch                | Lista de itens que você escolheu rastrear no app Flutter                                      |
-|                            | Call Stack           | Pilha de sub-rotinas ativas no app Flutter                                                    |
-|                            | Breakpoints          | Lista de exceções e breakpoints definidos que você configurou                                 |
-| **Verde**                  | `<Flutter files>`    | Arquivos que você está editando                                                               |
-| **Rosa**                   | Widget Inspector     | Hierarquia de widgets no app Flutter em execução                                              |
-| **Azul**                   | Layout Explorer      | Visual de como o Flutter posicionou o widget que você selecionou no Widget Inspector          |
-|                            | Widget Details Tree  | Lista de propriedades do widget selecionado no Widget Inspector                               |
-| **Laranja**                | Problems             | Lista de problemas que o analisador Dart encontrou no arquivo Dart atual                      |
-|                            | Output               | Resposta que o app Flutter retorna ao construir um app                                        |
-|                            | Debug Console        | Logs ou mensagens de erro que o app Flutter gera durante o debugging                          |
-|                            | Terminal             | Prompt de shell do sistema contido no VS Code                                                 |
+| Highlight Color in Screenshot | Bar, Panel, or Tab  | Contents                                                                          |
+|-------------------------------|---------------------|-----------------------------------------------------------------------------------|
+| **Yellow**                    | Variables           | List of current values of variables in the Flutter app                            |
+|                               | Watch               | List of items you chose to track in the Flutter app                               |
+|                               | Call Stack          | Stack of active subroutines in the Flutter app                                    |
+|                               | Breakpoints         | List of exceptions and set breakpoints that you set                               |
+| **Green**                     | `<Flutter files>`   | Files that you are editing                                                        |
+| **Pink**                      | Widget Inspector    | Hierarchy of widgets in the running Flutter app                                   |
+| **Blue**                      | Layout Explorer     | Visual of how Flutter placed the widget you selected in the Widget Inspector      |
+|                               | Widget Details Tree | List of properties of the widget selected in the Widget Inspector                 |
+| **Orange**                    | Problems            | List of issues the Dart analyzer found in the current Dart file                   |
+|                               | Output              | Response that the Flutter app returns when building an app                        |
+|                               | Debug Console       | Logs or error messages that the Flutter app generates while debugging             |
+|                               | Terminal            | System shell prompt contained in VS Code                                          |
 
 {:.table .table-striped}
 
-Para alterar onde o painel (em **laranja**) aparece no VS Code,
-vá para **View** > **Appearance** > **Panel Position**.
+To change where the panel (in **orange**) appears in VS Code,
+go to **View** > **Appearance** > **Panel Position**.
 
-#### Barra de ferramentas de debugging Flutter do VS Code
+#### VS Code Flutter debugging toolbar
 
-A barra de ferramentas permite que você faça debug usando qualquer debugger.
-Você pode entrar, sair e passar por instruções Dart, fazer hot reload ou retomar o app.
+The toolbar allows you to debug using any debugger.
+You can step in, out, and over Dart statements, hot reload, or resume the app.
 
 ![Flutter debugger toolbar in VS Code](/assets/images/docs/testing/debugging/vscode-ui/screens/debug-toolbar.png)
 
-| Ícone                                               | Ação                         | Atalho de teclado padrão                              |
-|-----------------------------------------------------|------------------------------|-------------------------------------------------------|
-| {% render docs/vscode-flutter-bar/play.md %}        | Start or Resume              | <kbd>F5</kbd>                                         |
-| {% render docs/vscode-flutter-bar/pause.md %}       | Pause                        | <kbd>F6</kbd>                                         |
-| {% render docs/vscode-flutter-bar/step-over.md %}   | Step Over                    | <kbd>F10</kbd>                                        |
-| {% render docs/vscode-flutter-bar/step-into.md %}   | Step Into                    | <kbd>F11</kbd>                                        |
-| {% render docs/vscode-flutter-bar/step-out.md %}    | Step Out                     | <kbd>Shift</kbd> + <kbd>F11</kbd>                     |
-| {% render docs/vscode-flutter-bar/hot-reload.md %}  | Hot Reload                   | <kbd>Ctrl</kbd> + <kbd>F5</kbd>                       |
-| {% render docs/vscode-flutter-bar/hot-restart.md %} | Hot Restart                  | <kbd>Shift</kbd> + <kbd>Special</kbd> + <kbd>F5</kbd> |
-| {% render docs/vscode-flutter-bar/stop.md %}        | Stop                         | <kbd>Shift</kbd> + <kbd>F5</kbd>                      |
-| {% render docs/vscode-flutter-bar/inspector.md %}   | Open Widget Inspector        |                                                       |
+| Icon                                                | Action                | Default keyboard shortcut                             |
+|-----------------------------------------------------|-----------------------|-------------------------------------------------------|
+| {% render "docs/vscode-flutter-bar/play.md" %}        | Start or Resume       | <kbd>F5</kbd>                                         |
+| {% render "docs/vscode-flutter-bar/pause.md" %}       | Pause                 | <kbd>F6</kbd>                                         |
+| {% render "docs/vscode-flutter-bar/step-over.md" %}   | Step Over             | <kbd>F10</kbd>                                        |
+| {% render "docs/vscode-flutter-bar/step-into.md" %}   | Step Into             | <kbd>F11</kbd>                                        |
+| {% render "docs/vscode-flutter-bar/step-out.md" %}    | Step Out              | <kbd>Shift</kbd> + <kbd>F11</kbd>                     |
+| {% render "docs/vscode-flutter-bar/hot-reload.md" %}  | Hot Reload            | <kbd>Ctrl</kbd> + <kbd>F5</kbd>                       |
+| {% render "docs/vscode-flutter-bar/hot-restart.md" %} | Hot Restart           | <kbd>Shift</kbd> + <kbd>Special</kbd> + <kbd>F5</kbd> |
+| {% render "docs/vscode-flutter-bar/stop.md" %}        | Stop                  | <kbd>Shift</kbd> + <kbd>F5</kbd>                      |
+| {% render "docs/vscode-flutter-bar/inspector.md" %}   | Open Widget Inspector |                                                       |
 
 {:.table .table-striped}
 
-<a id="update-test-flutter-app"></a>
-## Atualizar app Flutter de teste
+## Update test Flutter app
 
-Para o restante deste guia, você precisa atualizar o
-app Flutter de teste. Esta atualização adiciona código nativo para fazer debug.
+For the remainder of this guide, you need to update the
+test Flutter app. This update adds native code to debug.
 
-1. Abra o arquivo `lib/main.dart` usando o seu IDE preferido.
+1. Open the `lib/main.dart` file using your preferred IDE.
 
-1. Substitua o conteúdo de `main.dart` pelo código a seguir.
+1. Replace the contents of `main.dart` with the following code.
 
     <details>
-    <summary>Expandir para ver o código Flutter deste exemplo</summary>
+    <summary>Expand to see Flutter code for this example</summary>
 
     ```dart title="lib/main.dart"
     // Copyright 2023 The Flutter Authors. All rights reserved.
@@ -267,7 +265,7 @@ app Flutter de teste. Esta atualização adiciona código nativo para fazer debu
       Widget build(BuildContext context) {
         final Uri toLaunch = Uri(
             scheme: 'https',
-            host: 'docs.flutterbrasil.dev',
+            host: 'docs.flutter.dev',
             path: 'testing/native-debugging');
         return Scaffold(
           appBar: AppBar(
@@ -306,15 +304,15 @@ app Flutter de teste. Esta atualização adiciona código nativo para fazer debu
 
     </details>
 
-1. Para adicionar o pacote `url_launcher` como uma dependência,
-   execute `flutter pub add`:
+1. To add the `url_launcher` package as a dependency,
+   run `flutter pub add`:
 
     ```console
     $ flutter pub add url_launcher
     ```
 
     ```console
-    Resolving dependencies... 
+    Resolving dependencies...
       collection 1.17.1 (1.17.2 available)
     + flutter_web_plugins 0.0.0 from sdk flutter
       matcher 0.12.15 (0.12.16 available)
@@ -334,10 +332,10 @@ app Flutter de teste. Esta atualização adiciona código nativo para fazer debu
     Changed 10 dependencies!
     ```
 
-1. Para verificar o que mudou na base de código:
+1. To check what changed with the codebase:
 
    {: type="a"}
-   1. No Linux ou macOS, execute este comando `find`.
+   1. In Linux or macOS, run this `find` command.
 
       ```console
       $ find ./ -mmin -120
@@ -356,13 +354,13 @@ app Flutter de teste. Esta atualização adiciona código nativo para fazer debu
       ./windows/flutter/generated_plugin_registrant.cc
       ./windows/flutter/generated_plugins.cmake
       ```
-   1. No Windows, execute este comando no prompt de comando.
+   1. In Windows, run this command in the command prompt.
 
-      ```powershell
+      ```ps
       Get-ChildItem C:\dev\example\ -Rescurse | Where-Object {$_.LastWriteTime -gt (Get-Date).AddDays(-1)}
       ```
 
-      ```powershell
+      ```ps
       C:\dev\example\ios\Flutter\
 
 
@@ -405,73 +403,73 @@ app Flutter de teste. Esta atualização adiciona código nativo para fazer debu
                       8/1/2025   9:15 AM                generated_plugins.cmake
       ```
 
-Instalar `url_launcher` adicionou arquivos de configuração e arquivos de código
-para todas as plataformas de destino no diretório do app Flutter.
+Installing `url_launcher` added config files and code files
+for all target platforms in the Flutter app directory.
 
-## Fazer debug de código Dart e código de linguagem nativa ao mesmo tempo
+## Debug Dart and native language code at the same time
 
-Esta seção explica como fazer debug do código Dart no seu app Flutter
-e qualquer código nativo com seu debugger regular.
-Essa capacidade permite que você aproveite o hot reload do Flutter
-ao editar código nativo.
+This section explains how to debug the Dart code in your Flutter app
+and any native code with its regular debugger.
+This capability allows you to leverage Flutter's hot reload
+when editing native code.
 
-### Fazer debug de código Dart e Android usando Android Studio
+### Debug Dart and Android code using Android Studio
 
-Para fazer debug de código Android nativo, você precisa de um app Flutter que contenha
-código Android. Nesta seção, você aprende como conectar
-os debuggers Dart, Java e Kotlin ao seu app.
-Você não precisa de VS Code para fazer debug de código Dart e Android.
-Este guia inclui as instruções do VS Code para ser consistente
-com os guias do Xcode e Visual Studio.
+To debug native Android code, you need a Flutter app that contains
+Android code. In this section, you learn how to connect
+the Dart, Java, and Kotlin debuggers to your app.
+You don't need VS Code to debug both Dart and Android code.
+This guide includes the VS Code instructions to be consistent
+with the Xcode and Visual Studio guides.
 
-Esta seção usa o mesmo app Flutter de exemplo `url_launcher` criado
-em [Atualizar app Flutter de teste](#update-test-flutter-app).
+These section uses the same example Flutter `url_launcher` app created
+in [Update test Flutter app](#update-test-flutter-app).
 
-{% include docs/debug/debug-flow-android.md %}
+{% render "docs/debug/debug-flow-android.md" %}
 
-### Fazer debug de código Dart e iOS usando Xcode
+### Debug Dart and iOS code using Xcode
 
-Para fazer debug de código iOS, você precisa de um app Flutter que contenha código iOS.
-Nesta seção, você aprende a conectar dois debuggers ao seu app:
-Flutter via VS Code e Xcode. Você precisa executar tanto o VS Code quanto o Xcode.
+To debug iOS code, you need a Flutter app that contains iOS code.
+In this section, you learn to connect two debuggers to your app:
+Flutter via VS Code and Xcode. You need to run both VS Code and Xcode.
 
-Esta seção usa o mesmo app Flutter de exemplo `url_launcher` criado
-em [Atualizar app Flutter de teste](#update-test-flutter-app).
+These section uses the same example Flutter `url_launcher` app created
+in [Update test Flutter app](#update-test-flutter-app).
 
-{% include docs/debug/debug-flow-ios.md %}
+{% render "docs/debug/debug-flow-ios.md" %}
 
-### Fazer debug de código Dart e macOS usando Xcode
+### Debug Dart and macOS code using Xcode
 
-Para fazer debug de código macOS, você precisa de um app Flutter que contenha código macOS.
-Nesta seção, você aprende a conectar dois debuggers ao seu app:
-Flutter via VS Code e Xcode. Você precisa executar tanto o VS Code quanto o Xcode.
+To debug macOS code, you need a Flutter app that contains macOS code.
+In this section, you learn to connect two debuggers to your app:
+Flutter via VS Code and Xcode. You need to run both VS Code and Xcode.
 
-Esta seção usa o mesmo app Flutter de exemplo `url_launcher` criado
-em [Atualizar app Flutter de teste](#update-test-flutter-app).
+These section uses the same example Flutter `url_launcher` app created
+in [Update test Flutter app](#update-test-flutter-app).
 
-{% include docs/debug/debug-flow-macos.md %}
+{% render "docs/debug/debug-flow-macos.md" %}
 
-### Fazer debug de código Dart e C++ usando Visual Studio
+### Debug Dart and C++ code using Visual Studio
 
-Para fazer debug de código C++, você precisa de um app Flutter que contenha código C++.
-Nesta seção, você aprende a conectar dois debuggers ao seu app:
-Flutter via VS Code e Visual Studio.
-Você precisa executar tanto o VS Code quanto o Visual Studio.
+To debug C++ code, you need a Flutter app that contains C++ code.
+In this section, you learn to connect two debuggers to your app:
+Flutter via VS Code and Visual Studio.
+You need to run both VS Code and Visual Studio.
 
-Esta seção usa o mesmo app Flutter de exemplo `url_launcher` criado
-em [Atualizar app Flutter de teste](#update-test-flutter-app).
+These section uses the same example Flutter `url_launcher` app created
+in [Update test Flutter app](#update-test-flutter-app).
 
-{% include docs/debug/debug-flow-windows.md %}
+{% render "docs/debug/debug-flow-windows.md" %}
 
-## Recursos
+## Resources
 
-Confira os seguintes recursos sobre debugging Flutter, iOS, Android,
-macOS e Windows:
+Check out the following resources on debugging Flutter, iOS, Android,
+macOS and Windows:
 
 ### Flutter
 
 - [Debugging Flutter apps][]
-- [Flutter inspector][] e a documentação do [DevTools][]
+- [Flutter inspector][] and the [DevTools][] docs
 - [Performance profiling][]
 
 [Debugging Flutter apps]: /testing/debugging
@@ -479,15 +477,15 @@ macOS e Windows:
 
 ### Android
 
-Você pode encontrar os seguintes recursos de debugging em
+You can find the following debugging resources on
 [developer.android.com][].
 
 - [Debug your app][]
 - [Android Debug Bridge (adb)][]
 
-### iOS e macOS
+### iOS and macOS
 
-Você pode encontrar os seguintes recursos de debugging em
+You can find the following debugging resources on
 [developer.apple.com][].
 
 - [Debugging][]
@@ -495,7 +493,7 @@ Você pode encontrar os seguintes recursos de debugging em
 
 ### Windows
 
-Você pode encontrar recursos de debugging em [Microsoft Learn][].
+You can find debugging resources on [Microsoft Learn][].
 
 - [Visual Studio Debugger][]
 - [Learn to debug C++ code using Visual Studio][]

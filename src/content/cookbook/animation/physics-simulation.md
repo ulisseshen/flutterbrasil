@@ -1,31 +1,28 @@
 ---
-title: Animar um widget usando uma simulação de física
-description: Como implementar uma animação de física.
-js:
-  - defer: true
-    url: /assets/js/inject_dartpad.js
-ia-translate: true
+title: Animate a widget using a physics simulation
+description: How to implement a physics animation.
 ---
 
 <?code-excerpt path-base="cookbook/animation/physics_simulation/"?>
 
-Simulações de física podem fazer as interações do app parecerem realistas e interativas.
-Por exemplo, você pode querer animar um widget para agir como se estivesse preso a
-uma mola ou caindo com gravidade.
+Physics simulations can make app interactions feel realistic and interactive.
+For example, you might want to animate a widget to act as if it were attached to
+a spring or falling with gravity.
 
-Esta receita demonstra como mover um widget de um ponto arrastado de volta para o
-centro usando uma simulação de mola.
+This recipe demonstrates how to move a widget from a dragged point back to the
+center using a spring simulation.
 
-Esta receita usa estes passos:
+This recipe uses these steps:
 
-1. Configurar um animation controller
-2. Mover o widget usando gestos
-3. Animar o widget
-4. Calcular a velocidade para simular um movimento de mola
+1. Set up an animation controller
+2. Move the widget using gestures
+3. Animate the widget
+4. Calculate the velocity to simulate a springing motion
 
-## Passo 1: Configurar um animation controller
 
-Comece com um stateful widget chamado `DraggableCard`:
+## Step 1: Set up an animation controller
+
+Start with a stateful widget called `DraggableCard`:
 
 <?code-excerpt "lib/starter.dart"?>
 ```dart
@@ -42,11 +39,7 @@ class PhysicsCardDragDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: const DraggableCard(
-        child: FlutterLogo(
-          size: 128,
-        ),
-      ),
+      body: const DraggableCard(child: FlutterLogo(size: 128)),
     );
   }
 }
@@ -73,24 +66,20 @@ class _DraggableCardState extends State<DraggableCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      child: Card(
-        child: widget.child,
-      ),
-    );
+    return Align(child: Card(child: widget.child));
   }
 }
 ```
 
-Faça a classe `_DraggableCardState` estender de
+Make the `_DraggableCardState` class extend from
 [SingleTickerProviderStateMixin][].
-Então construa um [AnimationController][] em
-`initState` e defina `vsync` como `this`.
+Then construct an [AnimationController][] in
+`initState` and set `vsync` to `this`.
 
 :::note
-Estender `SingleTickerProviderStateMixin` permite que o objeto state seja um
-`TickerProvider` para o `AnimationController`. Para mais informações, veja a
-documentação para [TickerProvider][].
+Extending `SingleTickerProviderStateMixin` allows the state object to be a
+`TickerProvider` for the `AnimationController`. For more information, see the
+documentation for [TickerProvider][].
 :::
 
 ```dart diff
@@ -113,10 +102,10 @@ documentação para [TickerProvider][].
     }
 ```
 
-## Passo 2: Mover o widget usando gestos
+## Step 2: Move the widget using gestures
 
-Faça o widget se mover quando for arrastado, e adicione um campo [Alignment][] à
-classe `_DraggableCardState`:
+Make the widget move when it's dragged, and add an [Alignment][] field to the
+`_DraggableCardState` class:
 
 ```dart diff
   class _DraggableCardState extends State<DraggableCard>
@@ -125,10 +114,10 @@ classe `_DraggableCardState`:
 +   Alignment _dragAlignment = Alignment.center;
 ```
 
-Adicione um [GestureDetector][] que lida com os callbacks `onPanDown`, `onPanUpdate`, e
-`onPanEnd`. Para ajustar o alinhamento, use um [MediaQuery][] para obter o
-tamanho do widget, e divida por 2. (Isso converte unidades de "pixels arrastados" para
-coordenadas que [Align][] usa.) Então, defina o `alignment` do widget `Align` como
+Add a [GestureDetector][] that handles the `onPanDown`, `onPanUpdate`, and
+`onPanEnd` callbacks. To adjust the alignment, use a [MediaQuery][] to get the
+size of the widget, and divide by 2. (This converts units of "pixels dragged" to
+coordinates that [Align][] uses.) Then, set the `Align` widget's `alignment` to
 `_dragAlignment`:
 
 ```dart diff
@@ -159,13 +148,13 @@ coordenadas que [Align][] usa.) Então, defina o `alignment` do widget `Align` c
   }
 ```
 
-## Passo 3: Animar o widget
+## Step 3: Animate the widget
 
-Quando o widget é solto, ele deve voltar para o centro.
+When the widget is released, it should spring back to the center.
 
-Adicione um campo `Animation<Alignment>` e um método `_runAnimation`. Este
-método define um `Tween` que interpola entre o ponto para o qual o widget foi
-arrastado e o ponto no centro.
+Add an `Animation<Alignment>` field and an `_runAnimation` method. This
+method defines a `Tween` that interpolates between the point the widget was
+dragged to, to the point in the center.
 
 ```dart diff
   class _DraggableCardState extends State<DraggableCard>
@@ -179,18 +168,15 @@ arrastado e o ponto no centro.
 ```dart
 void _runAnimation() {
   _animation = _controller.drive(
-    AlignmentTween(
-      begin: _dragAlignment,
-      end: Alignment.center,
-    ),
+    AlignmentTween(begin: _dragAlignment, end: Alignment.center),
   );
   _controller.reset();
   _controller.forward();
 }
 ```
 
-Em seguida, atualize `_dragAlignment` quando o `AnimationController` produzir um
-valor:
+Next, update `_dragAlignment` when the `AnimationController` produces a
+value:
 
 ```dart diff
   @override
@@ -206,19 +192,17 @@ valor:
   }
 ```
 
-Em seguida, faça o widget `Align` usar o campo `_dragAlignment`:
+Next, make the `Align` widget use the `_dragAlignment` field:
 
 <?code-excerpt "lib/step3.dart (align)"?>
 ```dart
 child: Align(
   alignment: _dragAlignment,
-  child: Card(
-    child: widget.child,
-  ),
+  child: Card(child: widget.child),
 ),
 ```
 
-Finalmente, atualize o `GestureDetector` para gerenciar o animation controller:
+Finally, update the `GestureDetector` to manage the animation controller:
 
 ```dart diff
   return GestureDetector(
@@ -236,28 +220,28 @@ Finalmente, atualize o `GestureDetector` para gerenciar o animation controller:
     child: Align(
 ```
 
-## Passo 4: Calcular a velocidade para simular um movimento de mola
+## Step 4: Calculate the velocity to simulate a springing motion
 
-O último passo é fazer um pouco de matemática, para calcular a velocidade do widget
-depois que ele terminou de ser arrastado. Isso é para que o widget realisticamente
-continue nessa velocidade antes de ser encaixado de volta. (O método `_runAnimation`
-já define a direção definindo o alinhamento de início e fim da animação.)
+The last step is to do a little math, to calculate the velocity of the widget
+after it's finished being dragged. This is so that the widget realistically
+continues at that speed before being snapped back. (The `_runAnimation` method
+already sets the direction by setting the animation's start and end alignment.)
 
-Primeiro, importe o package `physics`:
+First, import the `physics` package:
 
 <?code-excerpt "lib/main.dart (import)"?>
 ```dart
 import 'package:flutter/physics.dart';
 ```
 
-O callback `onPanEnd` fornece um objeto [DragEndDetails][]. Este objeto
-fornece a velocidade do ponteiro quando ele parou de contatar a tela. A
-velocidade está em pixels por segundo, mas o widget `Align` não usa pixels. Ele
-usa valores de coordenadas entre [-1.0, -1.0] e [1.0, 1.0], onde [0.0, 0.0]
-representa o centro. O `size` calculado no passo 2 é usado para converter pixels
-para valores de coordenadas nesta faixa.
+The `onPanEnd` callback provides a [DragEndDetails][] object. This object
+provides the velocity of the pointer when it stopped contacting the screen. The
+velocity is in pixels per second, but the `Align` widget doesn't use pixels. It
+uses coordinate values between [-1.0, -1.0] and [1.0, 1.0], where [0.0, 0.0]
+represents the center. The `size` calculated in step 2 is used to convert pixels
+to coordinate values in this range.
 
-Finalmente, `AnimationController` tem um método `animateWith()` que pode receber uma
+Finally, `AnimationController` has an `animateWith()` method that can be given a
 [SpringSimulation][]:
 
 <?code-excerpt "lib/main.dart (runAnimation)"?>
@@ -265,10 +249,7 @@ Finalmente, `AnimationController` tem um método `animateWith()` que pode recebe
 /// Calculates and runs a [SpringSimulation].
 void _runAnimation(Offset pixelsPerSecond, Size size) {
   _animation = _controller.drive(
-    AlignmentTween(
-      begin: _dragAlignment,
-      end: Alignment.center,
-    ),
+    AlignmentTween(begin: _dragAlignment, end: Alignment.center),
   );
   // Calculate the velocity relative to the unit interval, [0,1],
   // used by the animation controller.
@@ -277,11 +258,7 @@ void _runAnimation(Offset pixelsPerSecond, Size size) {
   final unitsPerSecond = Offset(unitsPerSecondX, unitsPerSecondY);
   final unitVelocity = unitsPerSecond.distance;
 
-  const spring = SpringDescription(
-    mass: 30,
-    stiffness: 1,
-    damping: 1,
-  );
+  const spring = SpringDescription(mass: 1, stiffness: 1, damping: 1);
 
   final simulation = SpringSimulation(spring, 0, 1, -unitVelocity);
 
@@ -289,7 +266,7 @@ void _runAnimation(Offset pixelsPerSecond, Size size) {
 }
 ```
 
-Não se esqueça de chamar `_runAnimation()` com a velocidade e tamanho:
+Don't forget to call `_runAnimation()`  with the velocity and size:
 
 <?code-excerpt "lib/main.dart (onPanEnd)"?>
 ```dart
@@ -299,11 +276,11 @@ onPanEnd: (details) {
 ```
 
 :::note
-Agora que o animation controller usa uma simulação, seu argumento `duration`
-não é mais necessário.
+Now that the animation controller uses a simulation, its `duration` argument
+is no longer required.
 :::
 
-## Exemplo Interativo
+## Interactive Example
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter physics simulation hands-on example in DartPad" run="true"
@@ -321,11 +298,7 @@ class PhysicsCardDragDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: const DraggableCard(
-        child: FlutterLogo(
-          size: 128,
-        ),
-      ),
+      body: const DraggableCard(child: FlutterLogo(size: 128)),
     );
   }
 }
@@ -357,10 +330,7 @@ class _DraggableCardState extends State<DraggableCard>
   /// Calculates and runs a [SpringSimulation].
   void _runAnimation(Offset pixelsPerSecond, Size size) {
     _animation = _controller.drive(
-      AlignmentTween(
-        begin: _dragAlignment,
-        end: Alignment.center,
-      ),
+      AlignmentTween(begin: _dragAlignment, end: Alignment.center),
     );
     // Calculate the velocity relative to the unit interval, [0,1],
     // used by the animation controller.
@@ -369,11 +339,7 @@ class _DraggableCardState extends State<DraggableCard>
     final unitsPerSecond = Offset(unitsPerSecondX, unitsPerSecondY);
     final unitVelocity = unitsPerSecond.distance;
 
-    const spring = SpringDescription(
-      mass: 30,
-      stiffness: 1,
-      damping: 1,
-    );
+    const spring = SpringDescription(mass: 1, stiffness: 1, damping: 1);
 
     final simulation = SpringSimulation(spring, 0, 1, -unitVelocity);
 
@@ -418,9 +384,7 @@ class _DraggableCardState extends State<DraggableCard>
       },
       child: Align(
         alignment: _dragAlignment,
-        child: Card(
-          child: widget.child,
-        ),
+        child: Card(child: widget.child),
       ),
     );
   }
@@ -428,7 +392,7 @@ class _DraggableCardState extends State<DraggableCard>
 ```
 
 <noscript>
-  <img src="/assets/images/docs/cookbook/animation-physics-card-drag.gif" alt="Demo showing a widget being dragged and snapped back to the center" class="site-mobile-screenshot" />
+  <img src="/assets/images/docs/cookbook/animation-physics-card-drag.webp" alt="Demo showing a widget being dragged and snapped back to the center" class="site-mobile-screenshot" />
 </noscript>
 
 [Align]: {{site.api}}/flutter/widgets/Align-class.html

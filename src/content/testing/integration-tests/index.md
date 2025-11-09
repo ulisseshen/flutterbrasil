@@ -1,58 +1,49 @@
 ---
-ia-translate: true
-title: Verifique a funcionalidade do app com um teste de integração
-description: Aprenda como escrever testes de integração
+title: Check app functionality with an integration test
+description: Learn how to write integration tests
 ---
 
 <?code-excerpt path-base="testing/integration_tests/how_to"?>
 
-Esta receita descreve como usar o
-pacote [`integration_test`][] para executar testes de integração.
-O Flutter SDK inclui o pacote `integration_test`.
-Testes de integração usando este pacote têm as seguintes
-propriedades.
+## Introduction
 
-* Use o comando `flutter drive` para executar testes
-  em um dispositivo físico ou emulador.
-* Execute no [Firebase Test Lab][],
-  para automatizar testes em uma variedade de dispositivos.
-* Use APIs do [flutter_test][] para permitir que testes sejam escritos em um estilo similar aos [widget tests][]
+This guide describes how to run integration tests with your Flutter app. With
+it, you'll learn how to do the following:
 
-Nesta receita, aprenda como testar um app contador.
+* Set up integration tests.
+* Verify if an app displays specific text.
+* Tap specific widgets.
+* Run integration tests.
 
-* como configurar testes de integração
-* como verificar se um app exibe texto específico
-* como tocar em widgets específicos
-* como executar testes de integração
+The guide references the `counter_app` project that comes with
+Flutter and the Flutter [`integration_test`][] package. The
+`integration_test` package lets you:
 
-Esta receita usa os seguintes passos:
+* Use the `flutter drive` command to run tests on a physical device or emulator.
+* Run on [Firebase Test Lab][], to automate testing on a variety of devices.
+* Use [flutter_test][] APIs to write tests in a style similar to
+  [widget tests][].
 
-  1. Criar um app para testar.
-  2. Adicionar a dependência `integration_test`.
-  3. Criar os arquivos de teste.
-  4. Escrever o teste de integração.
-  5. Executar o teste de integração.
+## Create a new app to test
 
-## Criar um novo app para testar
+Integration testing requires an app to test.
+This example uses the built-in **Counter App** example
+that Flutter produces when you run the `flutter create` command.
+The counter app allows a user to tap on a button to increase a counter.
 
-Testes de integração requerem um app para testar.
-Este exemplo usa o exemplo integrado **Counter App**
-que o Flutter produz quando você executa o comando `flutter create`.
-O app contador permite que um usuário toque em um botão para aumentar um contador.
-
-1. Para criar uma instância do app Flutter integrado,
-   execute o seguinte comando no seu terminal:
+1. To create an instance of the built-in Flutter app,
+   run the following command in your terminal:
 
    ```console
    $ flutter create counter_app
    ```
 
-1. Mude para o diretório `counter_app`.
+1. Change into the `counter_app` directory.
 
-1. Abra `lib/main.dart` no seu IDE preferido.
+1. Open `lib/main.dart` in your preferred IDE.
 
-1. Adicione um parâmetro `key` ao widget `floatingActionButton()`
-   com uma instância de uma classe `Key` com um valor de string `increment`.
+1. Add a `key` parameter to the `floatingActionButton()` widget
+   with an instance of a `Key` class with a string value of `increment`.
 
    ```dart
     floatingActionButton: FloatingActionButton(
@@ -63,10 +54,10 @@ O app contador permite que um usuário toque em um botão para aumentar um conta
     ),
    ```
 
-1. Salve o seu arquivo `lib/main.dart`.
+1. Save your `lib/main.dart` file.
 
-Após essas mudanças,
-o arquivo `lib/main.dart` deve se parecer com o código a seguir.
+After these changes,
+the `lib/main.dart` file should resemble the following code.
 
 <?code-excerpt "lib/main.dart"?>
 ```dart title="lib/main.dart"
@@ -107,16 +98,12 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+      appBar: AppBar(title: Text(widget.title)),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
+            const Text('You have pushed the button this many times:'),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
@@ -137,18 +124,18 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 ```
 
-## Adicionar a dependência `integration_test`
+## Add the `integration_test` dependency
 
-Você precisa adicionar os pacotes de teste ao seu novo app.
+You need to add the testing packages to your new app.
 
-Para adicionar os pacotes `integration_test` e `flutter_test` como
-`dev_dependencies` usando `sdk: flutter`, execute o seguinte comando.
+To add `integration_test` and `flutter_test` packages as
+`dev_dependencies` using `sdk: flutter`, run following command.
 
 ```console
 $ flutter pub add 'dev:integration_test:{"sdk":"flutter"}'
 ```
 
-Saída:
+Output:
 
 ```console
 Building flutter tool...
@@ -168,7 +155,7 @@ Changed 8 dependencies!
 Try `flutter pub outdated` for more information.
 ```
 
-Arquivo `pubspec.yaml` atualizado:
+Updated `pubspec.yaml` file:
 
 ```yaml title="pubspec.yaml"
 # ...
@@ -176,21 +163,21 @@ dev_dependencies:
   # ... added dependencies
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
   [!integration_test:!]
     [!sdk: flutter!]
 # ...
 ```
 
-## Criar os arquivos de teste de integração
+## Create the integration test files
 
-Testes de integração residem em um diretório separado dentro
-do seu projeto Flutter.
+Integration tests reside in a separate directory inside
+your Flutter project.
 
-1. Crie um novo diretório chamado `integration_test`.
-1. Adicione um arquivo vazio chamado `app_test.dart` nesse diretório.
+1. Create a new directory named `integration_test`.
+1. Add empty file named `app_test.dart` in that directory.
 
-A árvore de diretórios resultante deve se parecer com o seguinte:
+The resulting directory tree should resemble the following:
 
 ```plaintext
 counter_app/
@@ -200,19 +187,19 @@ counter_app/
     app_test.dart
 ```
 
-## Escrever o teste de integração
+## Write the integration test
 
-O arquivo de teste de integração consiste em um arquivo de código Dart
-com dependências em `integration_test`, `flutter_test`,
-e o arquivo Dart do seu app.
+The integration test file consists of a Dart code file
+with dependencies on `integration_test`, `flutter_test`,
+and your app's Dart file.
 
-1. Abra o seu arquivo `integration_test/app_test.dart` no seu IDE preferido.
+1. Open your `integration_test/app_test.dart` file in your preferred IDE.
 
-1. Copie o código a seguir e cole-o no seu
-   arquivo `integration_test/app_test.dart`.
-   O último import deve apontar para o arquivo `main.dart`
-   do seu `counter_app`.
-   (Este `import` aponta para o app de exemplo chamado `introduction`.)
+1. Copy the following code and paste it into your
+   `integration_test/app_test.dart` file.
+   The last import should point to the `main.dart` file
+   of your `counter_app`.
+   (This `import` points to the example app called `introduction`.)
 
     <?code-excerpt "integration_test/counter_test.dart (initial)" replace="/introduction/counter_app/g"?>
     ```dart title="integration_test/counter_test.dart"
@@ -225,8 +212,9 @@ e o arquivo Dart do seu app.
       IntegrationTestWidgetsFlutterBinding.ensureInitialized();
     
       group('end-to-end test', () {
-        testWidgets('tap on the floating action button, verify counter',
-            (tester) async {
+        testWidgets('tap on the floating action button, verify counter', (
+          tester,
+        ) async {
           // Load app widget.
           await tester.pumpWidget(const MyApp());
     
@@ -249,40 +237,40 @@ e o arquivo Dart do seu app.
     }
     ```
 
-Este exemplo passa por três etapas:
+This example goes through three steps:
 
-1. Inicializar `IntegrationTestWidgetsFlutterBinding`.
-   Este serviço singleton executa testes em um dispositivo físico.
+1. Initialize `IntegrationTestWidgetsFlutterBinding`.
+   This singleton service executes tests on a physical device.
 
-2. Interagir e testar widgets usando a classe `WidgetTester`.
+2. Interact and test widgets using the `WidgetTester` class.
 
-3. Testar os cenários importantes.
+3. Test the important scenarios.
 
-## Executar testes de integração
+## Run integration tests
 
-Os testes de integração executados variam dependendo da
-plataforma na qual você testa.
+The integration tests that run vary depending on the
+platform on which you test.
 
-* Para testar uma plataforma desktop, use a linha de comando ou um sistema de CI.
-* Para testar uma plataforma mobile, use a linha de comando ou Firebase Test Lab.
-* Para testar em um navegador web, use a linha de comando.
+* To test a desktop platform, use the command line or a CI system.
+* To test a mobile platform, use the command line or Firebase Test Lab.
+* To test in a web browser, use the command line.
 
 ---
 
-### Testar em uma plataforma desktop
+### Test on a desktop platform
 
 <details markdown="1">
-<summary>Expandir se você testa apps Linux usando um sistema de CI</summary>
+<summary>Expand if you test Linux apps using a CI system</summary>
 
-Para testar um app Linux, seu sistema de CI deve invocar um servidor X primeiro.
-No GitHub Action, GitLab Runner ou arquivo de configuração similar,
-configure o teste de integração para funcionar _com_ a ferramenta `xvfb-run`.
+To test a Linux app, your CI system must invoke an X server first.
+In the GitHub Action, GitLab Runner, or similar configuration file,
+set the integration test to work _with_ the `xvfb-run` tool.
 
-Fazer isso invoca um sistema X Window no qual o Flutter pode
-iniciar e testar seu app Linux.
+Doing this invokes an X Window system into which Flutter can
+launch and test your Linux app.
 
-Como exemplo usando GitHub Actions, seu `jobs.setup.steps` deve
-incluir um passo semelhante ao seguinte:
+As an example using GitHub Actions, your `jobs.setup.steps` should
+include a step resembling the following:
 
 ```yaml
       - name: Run Integration Tests
@@ -291,10 +279,10 @@ incluir um passo semelhante ao seguinte:
           run: flutter test integration_test -d linux -r github
 ```
 
-Isso inicia o teste de integração dentro de uma X Window.
+This starts the integration test within an X Window.
 
-Se você não configurar sua integração dessa forma,
-o Flutter retorna um erro.
+If you don't configure your integration in this way,
+Flutter returns an error.
 
 ```console
 Building Linux application...
@@ -303,55 +291,84 @@ Error waiting for a debug connection: The log reader stopped unexpectedly, or ne
 
 </details>
 
-Para testar em uma plataforma macOS, Windows ou Linux,
-complete as seguintes tarefas.
+To test on a macOS, Windows, or Linux platform,
+complete the following tasks.
 
-1. Execute o seguinte comando a partir da raiz do projeto.
+1. Run the following command from the root of the project.
 
    ```console
    $ flutter test integration_test/app_test.dart
    ```
 
-1. Se for oferecida uma escolha de plataforma para testar,
-   escolha a plataforma desktop.
-   Digite `1` para escolher a plataforma desktop.
+1. If offered a choice of platform to test,
+   choose the desktop platform.
+   Type `1` to choose the desktop platform.
 
-Com base na plataforma, o resultado do comando deve se parecer com a seguinte saída.
+Based on platform, the command result should resemble the following output.
 
-{% tabs %}
-{% tab "Windows" %}
+<Tabs key="dev-os">
+<Tab name="Windows">
 
-{% render docs/test/integration/windows-example.md %}
+{% render "docs/test/integration/windows-example.md" %}
 
-{% endtab %}
-{% tab "macOS" %}
+</Tab>
+<Tab name="macOS">
 
-{% render docs/test/integration/macos-example.md %}
+{% render "docs/test/integration/macos-example.md" %}
 
-{% endtab %}
-{% tab "Linux" %}
+</Tab>
+<Tab name="Linux">
 
-{% render docs/test/integration/linux-example.md %}
+{% render "docs/test/integration/linux-example.md" %}
 
-{% endtab %}
-{% endtabs %}
+</Tab>
+</Tabs>
 
 ---
 
-### Testar em um dispositivo mobile
+### Test on an Android device
 
-Para testar em um dispositivo iOS ou Android real,
-complete as seguintes tarefas.
+To test on a real Android device,
+complete the following tasks.
 
-1. Conecte o dispositivo.
+1.  Connect the Android device.
 
-1. Execute o seguinte comando a partir da raiz do projeto.
+1.  Run the following command from the root of the project.
+
+    ```console
+    $ flutter test integration_test/app_test.dart
+    ```
+
+    The result should resemble the following output.
+
+    ```console
+    $ flutter test integration_test/app_test.dart
+    00:04 +0: loading /path/to/counter_app/integration_test/app_test.dart
+    00:15 +0: loading /path/to/counter_app/integration_test/app_test.dart
+    00:18 +0: loading /path/to/counter_app/integration_test/app_test.dart   2,387ms
+    Installing build/app/outputs/flutter-apk/app.apk...  612ms
+    00:21 +1: All tests passed!
+    ```
+
+1.  Verify that the test removed the Counter App when it finished.
+    If not, subsequent tests fail. If needed, press on the app and choose
+    **Remove App** from the context menu.
+
+---
+
+### Test on an iOS device
+
+To test on a real iOS device, complete the following tasks.
+
+1. Connect the iOS device.
+
+1. Run the following command from the root of the project.
 
    ```console
    $ flutter test integration_test/app_test.dart
    ```
 
-   O resultado deve se parecer com a seguinte saída. Este exemplo usa iOS.
+   The result should resemble the following output.
 
    ```console
    $ flutter test integration_test/app_test.dart
@@ -362,14 +379,13 @@ complete as seguintes tarefas.
    00:21 +1: All tests passed!
    ```
 
-1. Verifique se o teste removeu o Counter App quando terminou.
-   Caso contrário, testes subsequentes falham. Se necessário, pressione no app e escolha
-   **Remove App** do menu de contexto.
+1. Verify that the test removed the Counter App when it finished.
+   If not, subsequent tests fail. If needed, press on the app and choose
+   **Remove App** from the context menu.
 
 ---
 
-<a id="test-in-a-web-browser"></a>
-### Testar em um navegador web
+### Test in a web browser
 
 {% comment %}
 TODO(ryjohn): Add back after other WebDriver versions are supported:
@@ -386,38 +402,38 @@ and download the corresponding web driver:
 * Edge [Download EdgeDriver][]
 {% endcomment -%}
 
-Para testar em um navegador web, execute os seguintes passos.
+To test in a web browser, perform the following steps.
 
-1. Instale [ChromeDriver][] no diretório de sua escolha.
+1. Install [ChromeDriver][] into the directory of your choice.
 
    ```console
    $ npx @puppeteer/browsers install chromedriver@stable
    ```
 
-   Para simplificar a instalação, este comando usa a
-   biblioteca Node [`@puppeteer/browsers`][puppeteer].
+   To simplify the install, this command uses the
+   [`@puppeteer/browsers`][puppeteer] Node library.
 
    [puppeteer]: https://www.npmjs.com/package/@puppeteer/browsers
 
-1. Adicione o caminho para ChromeDriver à sua variável de ambiente `$PATH`.
+1. Add the path to ChromeDriver to your `$PATH` environment variable.
 
-1. Verifique se a instalação do ChromeDriver foi bem-sucedida.
+1. Verify the ChromeDriver install succeeded.
 
    ```console
    $ chromedriver --version
-   ChromeDriver 124.0.6367.60 (8771130bd84f76d855ae42fbe02752b03e352f17-refs/branch-heads/6367@{:#798})
+   ChromeDriver 124.0.6367.60 (8771130bd84f76d855ae42fbe02752b03e352f17-refs/branch-heads/6367@{#798})
    ```
 
-1. No diretório do projeto `counter_app`,
-   crie um novo diretório chamado `test_driver`.
+1. In your `counter_app` project directory,
+   create a new directory named `test_driver`.
 
    ```console
    $ mkdir test_driver
    ```
 
-1. Neste diretório, crie um novo arquivo chamado `integration_test.dart`.
+1. In this directory, create a new file named `integration_test.dart`.
 
-1. Copie o código a seguir e cole-o no seu arquivo `integration_test.dart`.
+1. Copy the following code and paste it into your `integration_test.dart` file.
 
    <?code-excerpt "test_driver/integration_test.dart"?>
    ```dart title="test_driver/integration_test.dart"
@@ -426,13 +442,13 @@ Para testar em um navegador web, execute os seguintes passos.
    Future<void> main() => integrationDriver();
    ```
 
-1. Inicie `chromedriver` da seguinte forma:
+1. Launch `chromedriver` as follows:
 
    ```console
    $ chromedriver --port=4444
    ```
 
-1. A partir da raiz do projeto, execute o seguinte comando:
+1. From the root of the project, run the following command:
 
    ```console
    $ flutter drive \
@@ -441,7 +457,7 @@ Para testar em um navegador web, execute os seguintes passos.
      -d chrome
    ```
 
-   A resposta deve se parecer com a seguinte saída:
+   The response should resemble the following output:
 
    ```console
    Resolving dependencies...
@@ -466,8 +482,8 @@ Para testar em um navegador web, execute os seguintes passos.
    Application finished.
    ```
 
-   Para executar isso como um teste headless, execute `flutter drive`
-   com a opção `-d web-server`:
+   To run this as a headless test, run `flutter drive`
+   with `-d web-server` option:
 
    ```console
    $ flutter drive \
@@ -476,119 +492,144 @@ Para testar em um navegador web, execute os seguintes passos.
      -d web-server
    ```
 
-Para saber mais, consulte a página wiki
-[Running Flutter driver tests with web][].
+To learn more, see the
+[Running Flutter driver tests with web][] wiki page.
 
 ---
 
-### Testar usando o Firebase Test Lab
+### Test in Firebase Test Lab (Android)
 
-Para testar ambos os targets Android e iOS,
-você pode usar o Firebase Test Lab.
+You can use Firebase Test Lab to test Android targets.
 
-#### Configuração Android
+#### Android setup
 
-Siga as instruções na seção [Android Device Testing][]
-do README.
+Follow the instructions in the [Android Device Testing][]
+section of the README.
 
-#### Configuração iOS
+#### Test Lab project setup
 
-Siga as instruções na seção [iOS Device Testing][]
-do README.
+1. Launch your [Firebase Console][].
 
-#### Configuração do projeto Test Lab
+1. Create a new Firebase project if necessary.
 
-1. Inicie o seu [Firebase Console][].
+1. Navigate to **Quality > Test Lab**.
 
-1. Crie um novo projeto Firebase se necessário.
+   <img src='/assets/images/docs/integration-test/test-lab-1.png' alt="Firebase Test Lab Console">
 
-1. Navegue até **Quality > Test Lab**.
+#### Upload an Android APK
 
-   <img src='/assets/images/docs/integration-test/test-lab-1.png' class="mw-100" alt="Firebase Test Lab Console">
+Complete the following steps to upload an Android APK.
 
-#### Fazer upload de um APK Android
+1.  Create an APK using Gradle.
 
-1. Crie um APK usando Gradle.
+    ```console
+    // Go to the Android directory which contains the gradlew script
+    $ pushd android
 
-   ```console
-   $ pushd android
-   # flutter build generates files in android/ for building the app
-   flutter build apk
-   ./gradlew app:assembleAndroidTest
-   ./gradlew app:assembleDebug -Ptarget=integration_test/<name>_test.dart
-   $ popd
-   ```
+    // Build a debug APK for Flutter with gradlew
+    // Note that a standard --release build will not include package:integration_test
+    $ flutter build apk --debug
 
-   Onde `<name>_test.dart` é o arquivo criado na
-   seção **Project Setup**.
+    // Build an Android test APK
+    $ ./gradlew app:assembleAndroidTest
 
-:::note
-Para usar `--dart-define` com `gradlew`:
+    // Build a debug APK by passing in an integration test
+    $ ./gradlew app:assembleDebug -Ptarget=integration_test/<name>_test.dart
+    ```
 
-1. Codifique todos os parâmetros com `base64`.
-1. Passe os parâmetros para gradle em uma lista separada por vírgulas.
+    *  `<name>_test.dart`: The file created in the **Project Setup** section.
 
-   ```console
-   ./gradlew project:task -Pdart-defines="{base64   (key=value)},[...]"
-   ```
+  1.  If needed, pass parameters into the integration test as a comma-separated
+      list. Encode all parameters as `base64`.
 
-:::
+      ```console
+      $ ./gradlew project:task -Pdart-defines="{base64 (key=value)}[, ...]"
+      ```
 
-Para iniciar um teste Robo e executar outros testes, arraste o APK "debug" de
-`<flutter_project_directory>/build/app/outputs/apk/debug`
-para o target **Android Robo Test** na página web.
+      * `(key=value)}[, ...]`: Replace this with a comma-separated list of
+        key value pairs.
 
-<img src='/assets/images/docs/integration-test/test-lab-2.png' class="mw-100" alt="Firebase Test Lab upload">
+  1.  Return to your previous directory.
 
-1. Clique em **Run a test**.
+      ```console
+      $ popd
+      ```
 
-1. Selecione o tipo de teste **Instrumentation**.
+For additional instructions, see the
+[Firebase Test Lab section of the README][].
 
-1. Adicione o App APK à caixa **App APK or AAB**.
+#### Start Robo test
 
-   `<flutter_project_directory>/build/app/outputs/apk/debug/<file>.apk`
+To use Robo test to run integration tests, complete the following steps.
 
-1. Adicione o Test APK à caixa **Test APK**.
+1.  Drag the debug APK from
+    `<flutter_project_directory>/build/app/outputs/apk/debug`
+    into the **Android Robo Test** target on the web page. For example:
 
-   `<flutter_project_directory>/build/app/outputs/apk/androidTest/debug/<file>.apk`
+    <img src='/assets/images/docs/integration-test/test-lab-2.png' alt="Firebase Test Lab upload">
 
-<img src='/assets/images/docs/integration-test/test-lab-3.png' class="mw-100" alt="Firebase Test Lab upload two APKs">
+1.  Click **Run a test**.
 
-Se ocorrer uma falha, clique no ícone vermelho para ver a saída:
+1.  Select the **Instrumentation** test type.
 
-<img src='/assets/images/docs/integration-test/test-lab-4.png' class="mw-100" alt="Firebase Test Lab test results">
+1.  Add the App APK to the **App APK or AAB** box.
 
-#### Fazer upload de um APK Android pela linha de comando
+    `<flutter_project_directory>/build/app/outputs/apk/debug/<file>.apk`
 
-Consulte a [seção Firebase Test Lab do README][Firebase Test Lab section of the README]
-para instruções sobre como fazer upload dos APKs pela linha de comando.
+1.  Add the Test APK to the **Test APK** box.
 
-#### Fazer upload de testes Xcode
+    `<flutter_project_directory>/build/app/outputs/apk/androidTest/debug/<file>.apk`
 
-Para aprender como fazer upload do arquivo .zip,
-consulte as [instruções do Firebase TestLab iOS][Firebase TestLab iOS instructions]
-na seção Firebase TestLab do Firebase Console.
+    <img src='/assets/images/docs/integration-test/test-lab-3.png' alt="Firebase Test Lab upload two APKs">
 
-#### Fazer upload de testes Xcode pela linha de comando
+1.  If a failure occurs, click the red icon to view the output:
 
-Para aprender como fazer upload do arquivo .zip pela linha de comando,
-consulte a seção [iOS Device Testing][] no README.
+    <img src='/assets/images/docs/integration-test/test-lab-4.png' alt="Firebase Test Lab test results">
+
+---
+
+### Test in Firebase Test Lab (iOS)
+
+You can use Firebase Test Lab to test iOS targets.
+
+#### iOS setup
+
+Follow the [iOS Device Testing instructions][].
+
+#### Test Lab project setup
+
+1. Launch your [Firebase Console][].
+
+1. Create a new Firebase project if necessary.
+
+1. Navigate to **Quality > Test Lab**.
+
+   <img src='/assets/images/docs/integration-test/test-lab-1.png' alt="Firebase Test Lab Console">
+
+#### Upload Xcode tests through the Firebase Console
+
+To learn how to upload tests from a ZIP file, using the
+Firebase Test Lab Console, consult the [Firebase Test Lab iOS instructions][].
+
+#### Upload Xcode tests to Firebase Console with the command line
+
+To learn how to upload tests from a ZIP file from the command line to the
+Firebase Test Lab Console, consult the [iOS Device Testing instructions][].
 
 [`integration_test`]: {{site.repo.flutter}}/tree/main/packages/integration_test#integration_test
 [Android Device Testing]: {{site.repo.flutter}}/tree/main/packages/integration_test#android-device-testing
 [ChromeDriver]: https://googlechromelabs.github.io/chrome-for-testing/
 [Download EdgeDriver]: https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
 [Download GeckoDriver]: {{site.github}}/mozilla/geckodriver/releases
-[Firebase Console]: http://console.firebase.google.com/
+[Firebase Console]: https://console.firebase.google.com/
 [Firebase Test Lab section of the README]: {{site.repo.flutter}}/tree/main/packages/integration_test#firebase-test-lab
 [Firebase Test Lab]: {{site.firebase}}/docs/test-lab
-[Firebase TestLab iOS instructions]: {{site.firebase}}/docs/test-lab/ios/firebase-console
+[Firebase Test Lab iOS instructions]: {{site.firebase}}/docs/test-lab/ios/firebase-console
 [flutter_test]: {{site.api}}/flutter/flutter_test/flutter_test-library.html
 [Integration testing]: /testing/integration-tests
-[iOS Device Testing]: {{site.repo.flutter}}/tree/main/packages/integration_test#ios-device-testing
+[iOS Device Testing instructions]: {{site.repo.flutter}}/tree/main/packages/integration_test#ios-device-testing
 [Running Flutter driver tests with web]: {{site.repo.flutter}}/blob/main/docs/contributing/testing/Running-Flutter-Driver-tests-with-Web.md
 [widget tests]: /testing/overview#widget-tests
-
 [flutter_driver]: {{site.api}}/flutter/flutter_driver/flutter_driver-library.html
 [integration_test usage]: {{site.repo.flutter}}/tree/main/packages/integration_test#usage
 [samples]: {{site.repo.samples}}

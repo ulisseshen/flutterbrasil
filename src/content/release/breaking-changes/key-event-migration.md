@@ -4,16 +4,17 @@ description: >-
   The raw key event subsystem has been superseded by the key event subsystem,
   and APIs that use RawKeyEvent and RawKeyboard are converted to KeyEvent and
   HardwareKeyboard.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 For some time now (years), Flutter has had two key event systems implemented.
 The new system reached parity with the old platform-specific raw key event
 system, and the raw system has been deprecated.
 
-## Contexto
+## Context
 
 In the original key event subsystem, handling each platform's quirks in the
 framework and in client apps caused overly complex code, and the old system
@@ -45,7 +46,7 @@ the intention of eventually deprecating the raw system. That time has arrived,
 and application developers should migrate their code to avoid breaking changes
 that will occur when the deprecated APIs are removed.
 
-## Descrição da mudança
+## Description of change
 
 Below are the APIs that have been deprecated.
 
@@ -90,7 +91,7 @@ their functionality is no longer offered.
 * [`RawKeyEventHandler`][]
 * [`ServicesBinding.keyEventManager`][]
 
-## Guia de migração
+## Migration guide
 
 The Flutter framework libraries have already been migrated.
 If your code uses any of the classes or methods listed in
@@ -219,14 +220,14 @@ a [`KeyRepeatEvent`][] is also a key down event.
 Don't assume that `keyEvent is! KeyDownEvent` only allows key up events.
 Check both `KeyDownEvent` and `KeyRepeatEvent`.
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 3.18.0-7.0.pre<br>
-Na versão estável: 3.19.0
+Landed in version: 3.18.0-7.0.pre<br>
+In stable release: 3.19.0
 
-## Referências
+## References
 
-Replacement Documentação da API:
+Replacement API documentation:
 
 * [`Focus.onKeyEvent`][]
 * [`FocusNode.onKeyEvent`][]
@@ -241,11 +242,11 @@ Replacement Documentação da API:
 * [`KeyEventHandler`][]
 * [`KeyUpEvent`][]
 
-Issues relevantes:
+Relevant issues:
 
 * [`RawKeyEvent` and `RawKeyboard`, et al should be deprecated and removed (Issue 136419)][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [Deprecate RawKeyEvent, et al. and exempt uses in the framework.][]
 

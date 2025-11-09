@@ -4,10 +4,11 @@ description: >-
   The deprecated `.flutter-plugins` tool file output has been replaced by
   `.flutter-plugins-dependencies`, and any build scripts or references to it
   must also be updated.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 The `flutter` tool will no longer output the `.flutter-plugins` metadata file,
 and only output `.flutter-plugins-dependencies`.
@@ -58,7 +59,7 @@ Generating both files is a source of technical debt that
 complicates new feature sets, such as
 not bundling `dev_dependency` plugins in a release app.
 
-## Guia de migração
+## Migration guide
 
 Most Flutter developers don't parse or use this file, but
 build configurations might, including the `settings.gradle` file as
@@ -125,28 +126,28 @@ To smoke test whether your build relies on a `.flutter-plugins` file,
 you can use the feature flag `explicit-package-dependencies`:
 
 ```console
-$ flutter config explicit-package-dependencies
+$ flutter config --explicit-package-dependencies
 ```
 
 Any build tools or scripts that might rely on the `.flutter-plugins` file
 being output will now fail.
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: Not yet<br>
-Stable release: Not yet
+Landed in version: 3.28.0-0.0.pre<br>
+Stable release: 3.32
 
 One stable release after this change lands,
 `.flutter-plugins` will no longer be generated.
 
-## Referências
+## References
 
 Relevant Issues:
 
 - [Issue 48918][], where `.flutter-plugins` was (in 2020)
   slated for deprecation.
 
-PRs relevantes:
+Relevant PRs:
 
 - [PR 45379][], where `.flutter-plugins-dependencies` was originally added.
 - [PR 157388][], where a warning was added to the Flutter Android build scripts.

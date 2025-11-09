@@ -1,71 +1,67 @@
 ---
-title: Tratamento de erros com objetos Result
-description: "Melhore o tratamento de erros entre classes com objetos Result."
+title: Error handling with Result objects
+description: "Improve error handling across classes with Result objects."
 contentTags:
   - error handling
   - services
 iconPath: /assets/images/docs/app-architecture/design-patterns/result-icon.svg
 order: 5
-js:
-  - defer: true
-    url: /assets/js/inject_dartpad.js
-ia-translate: true
 ---
 
 <?code-excerpt path-base="app-architecture/result"?>
 
-O Dart fornece um mecanismo de tratamento de erros integrado
-com a capacidade de lançar e capturar exceções.
+Dart provides a built-in error handling mechanism
+with the ability to throw and catch exceptions.
 
-Conforme mencionado na [documentação de tratamento de erros][],
-as exceções do Dart são exceções não tratadas.
-Isso significa que os métodos que lançam exceções não precisam declará-las,
-e os métodos de chamada também não são obrigados a capturá-las.
+As mentioned in the [Error handling documentation][],
+Dart's exceptions are unhandled exceptions.
+This means that methods that throw exceptions don’t need to declare them,
+and calling methods aren't required to catch them either.
 
-Isso pode levar a situações em que as exceções não são tratadas adequadamente.
-Em projetos grandes,
-os desenvolvedores podem se esquecer de capturar exceções,
-e as diferentes camadas e componentes do aplicativo
-podem lançar exceções que não são documentadas.
-Isso pode levar a erros e falhas.
+This can lead to situations where exceptions are not handled properly.
+In large projects,
+developers might forget to catch exceptions,
+and the different application layers and components
+could throw exceptions that aren’t documented.
+This can lead to errors and crashes.
 
-Neste guia,
-você aprenderá sobre essa limitação
-e como atenuá-la usando o padrão _result_.
+In this guide,
+you will learn about this limitation
+and how to mitigate it using the _result_ pattern.
 
-## Fluxo de erro em aplicativos Flutter
+## Error flow in Flutter applications
 
-Os aplicativos que seguem as [diretrizes de arquitetura do Flutter][]
-geralmente são compostos por view models,
-repositórios e serviços, entre outras partes.
-Quando uma função em um desses componentes falha,
-ele deve comunicar o erro ao componente de chamada.
+Applications following the [Flutter architecture guidelines][]
+are usually composed of view models,
+repositories, and services, among other parts.
+When a function in one of these components fails,
+it should communicate the error to the calling component.
 
-Normalmente, isso é feito com exceções.
-Por exemplo,
-um serviço de cliente API que não consegue se comunicar com o servidor remoto
-pode lançar uma Exceção de Erro HTTP.
-O componente de chamada,
-por exemplo, um Repositório,
-teria que capturar esta exceção
-ou ignorá-la e deixar o view model de chamada tratá-la.
+Typically, that's done with exceptions.
+For example,
+an API client service failing to communicate with the remote server
+might throw an HTTP Error Exception.
+The calling component,
+for example a Repository,
+would have to either capture this exception
+or ignore it and let the calling view model handle it.
 
-Isso pode ser observado no exemplo a seguir. Considere estas classes:
+This can be observed in the following example. Consider these classes:
 
-- Um serviço, `ApiClientService`, executa chamadas de API para um serviço remoto.
-- Um repositório, `UserProfileRepository`,
-  fornece o `UserProfile` fornecido pelo `ApiClientService`.
-- Um view model, `UserProfileViewModel`, usa o `UserProfileRepository`.
+- A service, `ApiClientService`, performs API calls to a remote service.
+- A repository, `UserProfileRepository`,
+  provides the `UserProfile` provided by the `ApiClientService`.
+- A view model, `UserProfileViewModel`, uses the `UserProfileRepository`.
 
-O `ApiClientService` contém um método, `getUserProfile`,
-que lança exceções em determinadas situações:
+The `ApiClientService` contains a method, `getUserProfile`,
+that throws exceptions in certain situations:
 
-- O método lança uma `HttpException` se o código de resposta não for 200.
-- O método de análise JSON lança uma exceção
-  se a resposta não estiver formatada corretamente.
-- O cliente HTTP pode lançar uma exceção devido a problemas de rede.
+- The method throws an `HttpException` if the response code isn’t 200.
+- The JSON parsing method throws an exception
+  if the response isn't formatted correctly.
+- The HTTP client might throw an exception due to networking issues.
 
-O código a seguir testa uma variedade de possíveis exceções:
+The following code tests for a variety of possible exceptions:
 
 <?code-excerpt "lib/no_result.dart (ApiClientService)"?>
 ```dart
@@ -89,9 +85,9 @@ class ApiClientService {
 }
 ```
 
-O `UserProfileRepository` não precisa lidar
-com as exceções do `ApiClientService`.
-Neste exemplo, ele apenas retorna o valor do cliente API.
+The `UserProfileRepository` doesn’t need to handle
+the exceptions from the `ApiClientService`.
+In this example, it just returns the value from the API Client.
 
 <?code-excerpt "lib/no_result.dart (UserProfileRepository)"?>
 ```dart
@@ -104,11 +100,11 @@ class UserProfileRepository {
 }
 ```
 
-Finalmente, o `UserProfileViewModel`
-deve capturar todas as exceções e tratar os erros.
+Finally, the `UserProfileViewModel`
+should capture all exceptions and handle the errors.
 
-Isso pode ser feito envolvendo
-a chamada para o `UserProfileRepository` com um try-catch:
+This can be done by wrapping
+the call to the `UserProfileRepository` with a try-catch:
 
 <?code-excerpt "lib/no_result.dart (UserProfileViewModel)"?>
 ```dart
@@ -126,10 +122,10 @@ class UserProfileViewModel extends ChangeNotifier {
 }
 ```
 
-Na realidade, um desenvolvedor pode se esquecer de capturar exceções adequadamente e
-acabar com o seguinte código.
-Ele compila e é executado, mas falha se
-uma das exceções mencionadas anteriormente ocorrer:
+In reality, a developer might forget to properly capture exceptions and
+end up with the following code.
+It compiles and runs, but crashes if
+one of the exceptions mentioned previously occurs:
 
 <?code-excerpt "lib/no_result.dart (UserProfileViewModelNoTryCatch)" replace="/NoTryCatch//g"?>
 ```dart
@@ -143,29 +139,29 @@ class UserProfileViewModel extends ChangeNotifier {
 }
 ```
 
-Você pode tentar resolver isso documentando o `ApiClientService`,
-avisando sobre as possíveis exceções que ele pode lançar.
-No entanto, como o view model não usa o serviço diretamente,
-outros desenvolvedores que trabalham no código podem perder essa informação.
+You can attempt to solve this by documenting the `ApiClientService`,
+warning about the possible exceptions it might throw.
+However, since the view model doesn’t use the service directly,
+other developers working in the codebase might miss this information.
 
-## Usando o padrão result
+## Using the result pattern
 
-Uma alternativa para lançar exceções
-é envolver a saída da função em um objeto `Result`.
+An alternative to throwing exceptions
+is to wrap the function output in a `Result` object.
 
-Quando a função é executada com sucesso,
-o `Result` contém o valor retornado.
-No entanto, se a função não for concluída com sucesso,
-o objeto `Result` contém o erro.
+When the function runs successfully,
+the `Result` contains the returned value.
+However, if the function does not complete successfully,
+the `Result` object contains the error.
 
-Um `Result` é uma classe [`sealed`][]
-que pode ser uma subclasse de `Ok` ou da classe `Error`.
-Retorne o valor bem-sucedido com a subclasse `Ok`,
-e o erro capturado com a subclasse `Error`.
+A `Result` is a [`sealed`][] class
+that can either subclass `Ok` or the `Error` class.
+Return the successful value with the subclass `Ok`,
+and the captured error with the subclass `Error`.
 
-O código a seguir mostra uma amostra da classe `Result` que
-foi simplificado para fins de demonstração.
-Uma implementação completa está no final desta página.
+The following code shows a sample `Result` class that
+has been simplified for demo purposes.
+A full implementation is at the end of this page.
 
 <?code-excerpt "lib/simple_result.dart"?>
 ```dart
@@ -205,18 +201,18 @@ final class Error<T> extends Result<T> {
 }
 ```
 
-Neste exemplo,
-a classe `Result` usa um tipo genérico `T` para representar qualquer valor de retorno,
-que pode ser um tipo Dart primitivo como `String` ou um `int` ou uma classe personalizada como `UserProfile`.
+In this example,
+the `Result` class uses a generic type `T` to represent any return value,
+which can be a primitive Dart type like `String` or an `int` or a custom class like `UserProfile`.
 
-### Criando um objeto `Result`
+### Creating a `Result` object
 
-Para funções que usam a classe `Result` para retornar valores,
-em vez de um valor,
-a função retorna um objeto `Result` contendo o valor.
+For functions using the `Result` class to return values,
+instead of a value,
+the function returns a `Result` object containing the value.
 
-Por exemplo, no `ApiClientService`,
-`getUserProfile` é alterado para retornar um `Result`:
+For example, in the `ApiClientService`,
+`getUserProfile` is changed to return a `Result`:
 
 <?code-excerpt "lib/main.dart (ApiClientService1)"?>
 ```dart
@@ -229,17 +225,17 @@ class ApiClientService {
 }
 ```
 
-Em vez de retornar o `UserProfile` diretamente,
-ele retorna um objeto `Result` contendo um `UserProfile`.
+Instead of returning the `UserProfile` directly,
+it returns a `Result` object containing a `UserProfile`.
 
-Para facilitar o uso da classe `Result`,
-ele contém dois construtores nomeados, `Result.ok` e `Result.error`.
-Use-os para construir o `Result` dependendo da saída desejada.
-Além disso, capture quaisquer exceções lançadas pelo código
-e envolva-as no objeto `Result`.
+To facilitate using the `Result` class,
+it contains two named constructors, `Result.ok` and `Result.error`.
+Use them to construct the `Result` depending on desired output.
+As well, capture any exceptions thrown by the code
+and wrap them into the `Result` object.
 
-Por exemplo, aqui o método `getUserProfile()`
-foi alterado para usar a classe `Result`:
+For example, here the `getUserProfile()` method
+has been changed to use the `Result` class:
 
 <?code-excerpt "lib/main.dart (ApiClientService2)"?>
 ```dart
@@ -265,18 +261,18 @@ class ApiClientService {
 }
 ```
 
-A instrução de retorno original foi substituída
-por uma instrução que retorna o valor usando `Result.ok`.
-O `throw HttpException()`
-foi substituído por uma instrução que retorna `Result.error(HttpException())`,
-envolvendo o erro em um `Result`.
-Além disso, o método é envolvido com um bloco `try-catch`
-para capturar quaisquer exceções lançadas pelo cliente Http
-ou o analisador JSON em um `Result.error`.
+The original return statement was replaced
+with a statement that returns the value using `Result.ok`.
+The `throw HttpException()`
+was replaced with a statement that returns `Result.error(HttpException())`,
+wrapping the error into a `Result`.
+As well, the method is wrapped with a `try-catch` block
+to capture any exceptions thrown by the Http client
+or the JSON parser into a `Result.error`.
 
-A classe do repositório também precisa ser modificada,
-e em vez de retornar um `UserProfile` diretamente,
-agora ele retorna um `Result<UserProfile>`.
+The repository class also needs to be modified,
+and instead of returning a `UserProfile` directly,
+now it returns a `Result<UserProfile>`.
 
 <?code-excerpt "lib/main.dart (getUserProfile1)" replace="/1//g"?>
 ```dart
@@ -285,14 +281,14 @@ Future<Result<UserProfile>> getUserProfile() async {
 }
 ```
 
-### Desembrulhando o objeto Result
+### Unwrapping the Result object
 
-Agora, o view model não recebe o `UserProfile` diretamente,
-mas recebe um `Result` contendo um `UserProfile`.
+Now the view model doesn't receive the `UserProfile` directly,
+but instead it receives a `Result` containing a `UserProfile`.
 
-Isso força o desenvolvedor a implementar o view model
-para desembrulhar o `Result` para obter o `UserProfile`,
-e evita ter exceções não capturadas.
+This forces the developer implementing the view model
+to unwrap the `Result` to obtain the `UserProfile`,
+and avoids having uncaught exceptions.
 
 <?code-excerpt "lib/main.dart (UserProfileViewModel)"?>
 ```dart
@@ -316,23 +312,23 @@ class UserProfileViewModel extends ChangeNotifier {
 }
 ```
 
-A classe `Result` é implementada usando uma classe `sealed`,
-o que significa que ela só pode ser do tipo `Ok` ou `Error`.
-Isso permite que o código avalie o resultado com um
-[resultado ou expressão switch][].
+The `Result` class is implemented using a `sealed` class,
+meaning it can only be of type `Ok` or `Error`.
+This allows the code to evaluate the result with a
+[switch result or expression][].
 
-No caso `Ok<UserProfile>`,
-obtenha o valor usando a propriedade `value`.
+In the `Ok<UserProfile>` case,
+obtain the value using the `value` property.
 
-No caso `Error<UserProfile>`,
-obtenha o objeto de erro usando a propriedade `error`.
+In the `Error<UserProfile>` case,
+obtain the error object using the `error` property.
 
-## Melhorando o fluxo de controle
+## Improving control flow
 
-Envolver o código em um bloco `try-catch` garante que
-exceções lançadas sejam capturadas e não propagadas para outras partes do código.
+Wrapping code in a `try-catch` block ensures that
+thrown exceptions are caught and not propagated to other parts of the code.
 
-Considere o código a seguir.
+Consider the following code.
 
 <?code-excerpt "lib/no_result.dart (UserProfileRepository2)" replace="/2//g"?>
 ```dart
@@ -353,15 +349,16 @@ class UserProfileRepository {
 }
 ```
 
-Neste método, o `UserProfileRepository`
-tenta obter o `UserProfile`
-usando o `ApiClientService`.
-Se falhar, ele tenta criar um usuário temporário em um `DatabaseService`.
+In this method, the `UserProfileRepository`
+attempts to obtain the `UserProfile`
+using the `ApiClientService`.
+If it fails, it tries to create a temporary user in a `DatabaseService`.
 
-Como o método de qualquer serviço pode falhar,
-o código deve capturar as exceções em ambos os casos.
+Because either service method can fail,
+the code must catch the exceptions in both cases.
 
-Isso pode ser melhorado usando o padrão `Result`:
+This can be improved using the `Result` pattern:
+
 
 <?code-excerpt "lib/main.dart (getUserProfile)"?>
 ```dart
@@ -380,31 +377,31 @@ Future<Result<UserProfile>> getUserProfile() async {
 }
 ```
 
-Neste código, se o objeto `Result` for uma instância `Ok`,
-então a função retorna esse objeto;
-caso contrário, retorna `Result.Error`.
+In this code, if the `Result` object is an `Ok` instance,
+then the function returns that object;
+otherwise, it returns `Result.Error`.
 
-## Juntando tudo
+## Putting it all together
 
-Neste guia, você aprendeu
-como usar uma classe `Result` para retornar valores de resultado.
+In this guide, you have learned
+how to use a `Result` class to return result values.
 
-Os principais pontos são:
+The key takeaways are:
 
-- As classes `Result` forçam o método de chamada a verificar se há erros,
-  reduzindo a quantidade de bugs causados por exceções não capturadas.
-- As classes `Result` ajudam a melhorar o fluxo de controle em comparação com os blocos try-catch.
-- As classes `Result` são `sealed` e só podem retornar instâncias `Ok` ou `Error`,
-  permitindo que o código as desembrulhe com uma instrução switch.
+- `Result` classes force the calling method to check for errors,
+  reducing the amount of bugs caused by uncaught exceptions.
+- `Result` classes help improve control flow compared to try-catch blocks.
+- `Result` classes are `sealed` and can only return `Ok` or `Error` instances,
+  allowing the code to unwrap them with a switch statement.
 
-Abaixo você pode encontrar a classe `Result` completa
-conforme implementada no [exemplo do aplicativo Compass][]
-para as [diretrizes de arquitetura do Flutter][].
+Below you can find the full `Result` class
+as implemented in the [Compass App example][]
+for the [Flutter architecture guidelines][].
 
 :::note
-Verifique [pub.dev][] para diferentes
-implementações prontas para uso da classe `Result`,
-como os pacotes [`result_dart`][], [`result_type`][] e [`multiple_result`][].
+Check [pub.dev][] for different ready-to-use
+implementations of the `Result` class,
+such as the [`result_dart`][], [`result_type`][], and [`multiple_result`][] packages.
 :::
 
 <?code-excerpt "lib/result.dart (Result)"?>
@@ -463,12 +460,12 @@ final class Error<T> extends Result<T> {
 }
 ```
 
-[documentação de tratamento de erros]: {{site.dart-site}}/language/error-handling
-[diretrizes de arquitetura do Flutter]: /app-architecture
-[exemplo do aplicativo Compass]: {{site.repo.samples}}/tree/main/compass_app
+[Error handling documentation]: https://dart.dev/language/error-handling
+[Flutter architecture guidelines]: /app-architecture
+[Compass App example]: {{site.repo.samples}}/tree/main/compass_app
 [pub.dev]: {{site.pub}}
 [`result_dart`]: {{site.pub-pkg}}/result_dart
 [`result_type`]: {{site.pub-pkg}}/result_type
 [`multiple_result`]: {{site.pub-pkg}}/multiple_result
 [`sealed`]: {{site.dart-site}}/language/class-modifiers#sealed
-[resultado ou expressão switch]: {{site.dart-site}}/language/branches#switch-statements
+[switch result or expression]: {{site.dart-site}}/language/branches#switch-statements

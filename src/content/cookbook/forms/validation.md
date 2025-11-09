@@ -1,47 +1,44 @@
 ---
-title: Construir um form com validação
-description: Como construir um form que valida entrada de dados.
-js:
-  - defer: true
-    url: /assets/js/inject_dartpad.js
-ia-translate: true
+title: Build a form with validation
+description: How to build a form that validates input.
 ---
 
 <?code-excerpt path-base="cookbook/forms/validation"?>
 
-Apps frequentemente requerem que os usuários insiram informações em um text field.
-Por exemplo, você pode requerer que os usuários façam login com um endereço de email
-e combinação de senha.
+Apps often require users to enter information into a text field.
+For example, you might require users to log in with an email address
+and password combination.
 
-Para tornar apps seguros e fáceis de usar, verifique se as
-informações que o usuário forneceu são válidas. Se o usuário preencheu corretamente
-o form, processe a informação. Se o usuário enviar informações incorretas,
-exiba uma mensagem de erro amigável informando o que deu errado.
+To make apps secure and easy to use, check whether the
+information the user has provided is valid. If the user has correctly filled
+out the form, process the information. If the user submits incorrect
+information, display a friendly error message letting them know what went
+wrong.
 
-Neste exemplo, aprenda como adicionar validação a um form que tem
-um único text field usando os seguintes passos:
+In this example, learn how to add validation to a form that has
+a single text field using the following steps:
 
-  1. Criar um `Form` com uma `GlobalKey`.
-  2. Adicionar um `TextFormField` com lógica de validação.
-  3. Criar um botão para validar e enviar o form.
+  1. Create a `Form` with a `GlobalKey`.
+  2. Add a `TextFormField` with validation logic.
+  3. Create a button to validate and submit the form.
 
-## 1. Criar um `Form` com uma `GlobalKey`
+## 1. Create a `Form` with a `GlobalKey`
 
-Crie um [`Form`][].
-O widget `Form` atua como um container para agrupar e
-validar múltiplos form fields.
+Create a [`Form`][].
+The `Form` widget acts as a container for grouping and
+validating multiple form fields.
 
-Ao criar o form, forneça uma [`GlobalKey`][].
-Isso atribui um identificador único ao seu `Form`.
-Também permite que você valide o form posteriormente.
+When creating the form, provide a [`GlobalKey`][].
+This assigns a unique identifier to your `Form`.
+It also allows you to validate the form later.
 
-Crie o form como um `StatefulWidget`.
-Isso permite que você crie uma única `GlobalKey<FormState>()`.
-Você pode então armazená-la como uma variável e acessá-la em diferentes pontos.
+Create the form as a `StatefulWidget`.
+This allows you to create a unique `GlobalKey<FormState>()` once.
+You can then store it as a variable and access it at different points.
 
-Se você fez isso como um `StatelessWidget`, você precisaria armazenar essa chave *em algum lugar*.
-Como isso é caro em termos de recursos, você não gostaria de gerar uma nova
-`GlobalKey` cada vez que executar o método `build`.
+If you made this a `StatelessWidget`, you'd need to store this key *somewhere*.
+As it is resource expensive, you wouldn't want to generate a new
+`GlobalKey` each time you run the `build` method.
 
 <?code-excerpt "lib/form.dart"?>
 ```dart
@@ -83,29 +80,29 @@ class MyCustomFormState extends State<MyCustomForm> {
 ```
 
 :::tip
-Usar uma `GlobalKey` é a maneira recomendada de acessar um form.
-No entanto, se você tem uma árvore de widgets mais complexa,
-você pode usar o método [`Form.of()`][] para
-acessar o form dentro de widgets aninhados.
+Using a `GlobalKey` is the recommended way to access a form.
+However, if you have a more complex widget tree,
+you can use the [`Form.of()`][] method to
+access the form within nested widgets.
 :::
 
-## 2. Adicionar um `TextFormField` com lógica de validação
+## 2. Add a `TextFormField` with validation logic
 
-Embora o `Form` esteja no lugar,
-ele não tem uma maneira para os usuários inserirem texto.
-Esse é o trabalho de um [`TextFormField`][].
-O widget `TextFormField` renderiza um text field de material design
-e pode exibir erros de validação quando eles ocorrem.
+Although the `Form` is in place,
+it doesn't have a way for users to enter text.
+That's the job of a [`TextFormField`][].
+The `TextFormField` widget renders a material design text field
+and can display validation errors when they occur.
 
-Valide a entrada fornecendo uma função `validator()` ao
-`TextFormField`. Se a entrada do usuário não for válida,
-a função `validator` retorna uma `String` contendo
-uma mensagem de erro.
-Se não houver erros, o validator deve retornar null.
+Validate the input by providing a `validator()` function to the
+`TextFormField`. If the user's input isn't valid,
+the `validator` function returns a `String` containing
+an error message.
+If there are no errors, the validator must return null.
 
-Para este exemplo, crie um `validator` que garanta que o
-`TextFormField` não esteja vazio. Se estiver vazio,
-retorne uma mensagem de erro amigável.
+For this example, create a `validator` that ensures the
+`TextFormField` isn't empty. If it is empty,
+return a friendly error message.
 
 <?code-excerpt "lib/main.dart (TextFormField)"?>
 ```dart
@@ -120,14 +117,14 @@ TextFormField(
 ),
 ```
 
-## 3. Criar um botão para validar e enviar o form
+## 3. Create a button to validate and submit the form
 
-Agora que você tem um form com um text field,
-forneça um botão que o usuário pode tocar para enviar a informação.
+Now that you have a form with a text field,
+provide a button that the user can tap to submit the information.
 
-Quando o usuário tentar enviar o form, verifique se o form é válido.
-Se for, exiba uma mensagem de sucesso.
-Se não for (o text field não tem conteúdo), exiba a mensagem de erro.
+When the user attempts to submit the form, check if the form is valid.
+If it is, display a success message.
+If it isn't (the text field has no content) display the error message.
 
 <?code-excerpt "lib/main.dart (ElevatedButton)" replace="/^child\: //g"?>
 ```dart
@@ -146,21 +143,21 @@ ElevatedButton(
 ),
 ```
 
-### Como isso funciona?
+### How does this work?
 
-Para validar o form, use a `_formKey` criada no
-passo 1. Você pode usar o acessor `_formKey.currentState`
-para acessar o [`FormState`][],
-que é criado automaticamente pelo Flutter ao construir um `Form`.
+To validate the form, use the `_formKey` created in
+step 1. You can use the `_formKey.currentState`
+accessor to access the [`FormState`][],
+which is automatically created by Flutter when building a `Form`.
 
-A classe `FormState` contém o método `validate()`.
-Quando o método `validate()` é chamado, ele executa a função `validator()`
-para cada text field no form.
-Se tudo parecer bem, o método `validate()` retorna `true`.
-Se algum text field contiver erros, o método `validate()`
-reconstrói o form para exibir quaisquer mensagens de erro e retorna `false`.
+The `FormState` class contains the `validate()` method.
+When the `validate()` method is called, it runs the `validator()`
+function for each text field in the form.
+If everything looks good, the `validate()` method returns `true`.
+If any text field contains errors, the `validate()` method
+rebuilds the form to display any error messages and returns `false`.
 
-## Exemplo interativo
+## Interactive example
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter form validation hands-on example in DartPad" run="true"
@@ -178,9 +175,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: appTitle,
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text(appTitle),
-        ),
+        appBar: AppBar(title: const Text(appTitle)),
         body: const MyCustomForm(),
       ),
     );
@@ -248,11 +243,11 @@ class MyCustomFormState extends State<MyCustomForm> {
 ```
 
 <noscript>
-  <img src="/assets/images/docs/cookbook/form-validation.gif" alt="Form Validation Demo" class="site-mobile-screenshot" />
+  <img src="/assets/images/docs/cookbook/form-validation.webp" alt="Form Validation Demo" class="site-mobile-screenshot" />
 </noscript>
 
-Para aprender como recuperar esses valores, confira a
-receita [Retrieve the value of a text field][].
+To learn how to retrieve these values, check out the
+[Retrieve the value of a text field][] recipe.
 
 
 [Retrieve the value of a text field]: /cookbook/forms/retrieve-input

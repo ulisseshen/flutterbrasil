@@ -1,115 +1,180 @@
 ---
-ia-translate: true
-title: Construindo uma aplicação web com Flutter
-description: Instruções para criar um app Flutter para a web.
-short-title: Desenvolvimento web
+title: Building a web application with Flutter
+description: Instructions for creating a Flutter app for the web.
+shortTitle: Web development
 ---
 
-Esta página fornece uma visão geral de como configurar, executar e construir uma
-aplicação web usando Flutter.
+This page provides an overview of how to configure, run, and build a web
+application using Flutter.
 
-## Requisitos
+## Requirements
 
-Antes de poder construir uma aplicação web com Flutter,
-certifique-se de ter o [Flutter SDK][] e um navegador web instalados.
-Veja as instruções [Set up web development for Flutter][Setup-web]
-para detalhes.
+Before you can build a web application with Flutter,
+make sure that you have the [Flutter SDK][] and a web browser installed.
+See the [Set up web development for Flutter][Setup-web] instructions
+for details.
 
-## Configurar um projeto Flutter
+## Set up a Flutter project
 
-Para configurar seu projeto, você pode criar um novo projeto Flutter ou adicionar suporte web
-a um projeto existente.
+To set up your project, you can create a
+new Flutter project or add web support
+to an existing project.
 
-### Criar um novo projeto
+### Create a new project
 
-Para criar um novo app que inclua suporte web, execute o seguinte comando:
+To create a new app that includes web support, run the following command:
 
 ```console
 $ flutter create my_app
 ```
 
-### Adicionar suporte web a um projeto existente
+### Add web support to an existing project
 
-Se você já tem um projeto, execute o comando `flutter create` no diretório do seu projeto:
+If you already have a project,
+run the `flutter create` command in your project directory:
 
 ```console
 $ flutter create . --platforms web
 ```
 
-Isso cria um diretório `web/` contendo os assets web usados para inicializar
-e executar seu app Flutter.
+This creates a `web/` directory containing the web assets used to bootstrap
+and run your Flutter app.
 
-## Executar seu app
+## Run your app
 
-Selecione [Chrome][] como o dispositivo de destino do seu app para executar e debugar um app Flutter web:
+See the following sections to run your app.
+
+### Run your app from the command line
+
+Select [Chrome][] as your app's target device to run and debug
+a Flutter web app:
 
 ```console
 $ flutter run -d chrome
 ```
 
-Você também pode escolher Chrome como um dispositivo de destino na sua IDE.
+You can also choose Chrome as a target device in your IDE.
 
-Se preferir, você pode usar o tipo de dispositivo `edge` no Windows, ou usar `web-server` para
-navegar para uma URL local no navegador de sua escolha.
+If you prefer, you can use the `edge` device type on Windows,
+or use `web-server` to
+navigate to a local URL in the browser of your choice.
 
-:::warning
-**Hot reload não é suportado em um navegador web**.
-Atualmente, Flutter só suporta **hot restart**, que reinicia seu app
-sem atualizar a página web.
+<a id="hot-reload-web" aria-hidden="true" ></a>
+
+:::note Hot reload on the web
+As of the Flutter 3.35 release,
+hot reload is enabled by default on the web.
+[Hot restart][] is still available as well.
+
+If you discover any issues we ask that you file a bug
+using our [Web Hot Reload issue template][].
+Note this is in the Dart SDK repository where it's easier
+for us to track issues. Known issues can be seen in the
+associated [GitHub project][].
 :::
 
-### Executar seu app usando WebAssembly
+### Run your app using WebAssembly
 
-Você pode passar a flag `--wasm` para executar seu app usando WebAssembly:
+You can pass the `--wasm` flag to run your app using WebAssembly:
 
 ```console
 $ flutter run -d chrome --wasm
 ```
 
-Flutter web oferece múltiplos modos de build e renderers. Para mais informações,
-veja [Web renderers][].
+Flutter web offers multiple build modes and renderers.
+For more information, see [Web renderers][].
 
-## Construir seu app
+### Disable hot reload in VS Code
 
-Execute o seguinte comando para gerar um build de release:
+To temporarily disable hot reload support from VS Code,
+update your [`launch.json` file][] file with
+the flag `--no-web-experimental-hot-reload`.
+
+```plaintext
+"configurations": [
+    ...
+    {
+      "name": "Flutter for web (hot reload disabled)",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "args": [
+        "-d",
+        "chrome",
+        "--no-web-experimental-hot-reload",
+      ]
+    }
+  ]
+```
+
+### Disable hot reload from the command line
+
+If you use `flutter run` from the command line,
+you can temporarily disable hot reload on the web with the
+following command:
+
+```console
+flutter run -d chrome --no-web-experimental-hot-reload
+```
+
+### Use hot reload in DartPad
+
+Hot reload is also enabled in DartPad with a new "Reload" button.
+The feature is only available if Flutter is detected
+in the running application. You can begin a hot reloadable
+session by selecting a sample app provided by DartPad.
+
+[Hot restart]: /tools/hot-reload
+[How to switch channels]: /install/upgrade#switching-flutter-channels
+[`launch.json` file]: https://code.visualstudio.com/docs/debugtest/debugging-configuration
+[Web Hot Reload issue template]: {{site.github}}/dart-lang/sdk/issues/new?template=5_web_hot_reload.yml
+[GitHub project]: {{site.github}}/orgs/dart-lang/projects/107/views/1
+
+## Build your app
+
+See the following sections to build your app.
+
+### Build your app from the command line
+
+Run the following command to generate a release build:
 
 ```console
 $ flutter build web
 ```
 
-### Construir seu app usando WebAssembly
-Você também pode passar a flag `--wasm` para construir seu app usando WebAssembly:
+### Build your app using WebAssembly
+You can also pass the `--wasm` flag to build your app using WebAssembly:
 
 ```console
 $ flutter build web --wasm
 ```
 
-Isso popula um diretório `build/web`
-com arquivos construídos, incluindo um diretório `assets`,
-que precisam ser servidos juntos.
+This populates a `build/web` directory
+with built files, including an `assets` directory,
+which need to be served together.
 
-Para saber mais sobre como implantar esses assets na web, veja
+To learn more about how to deploy these assets to the web, see
 [Build and release a web app][].
-Para respostas a outras perguntas comuns, veja o [Web FAQ][].
+For answers to other common questions, see the [Web FAQ][].
 
-## Debug
+## Debugging
 
-Use [Flutter DevTools][] para as seguintes tarefas:
+Use [Flutter DevTools][] for the following tasks:
 
 * [Debugging][]
 * [Logging][]
 * [Running Flutter inspector][]
 
-Use [Chrome DevTools][] para as seguintes tarefas:
+Use [Chrome DevTools][] for the following tasks:
 
 * [Generating event timeline][]
-* [Analyzing performance][]&mdash;certifique-se de usar um
-  build profile
+* [Analyzing performance][]&mdash;make sure to use a
+  profile build
 
-## Testes
+## Testing
 
-Use [widget tests][Widget tests] ou testes de integração. Para saber mais sobre
-executar testes de integração em um navegador, veja a página [Integration testing][].
+Use [widget tests][Widget tests] or integration tests. To learn more about
+running integration tests in a browser, see the [Integration testing][] page.
 
 [Analyzing performance]: {{site.developers}}/web/tools/chrome-devtools/evaluate-performance
 [Build and release a web app]: /deployment/web
@@ -117,12 +182,12 @@ executar testes de integração em um navegador, veja a página [Integration tes
 [Chrome]: https://www.google.com/chrome/
 [Debugging]: /tools/devtools/debugger
 [Flutter DevTools]: /tools/devtools
-[Flutter SDK]: /get-started/install
+[Flutter SDK]: /get-started
 [Generating event timeline]: {{site.developers}}/web/tools/chrome-devtools/evaluate-performance/performance-reference
 [Integration testing]: /testing/integration-tests#test-in-a-web-browser
 [Logging]: /tools/devtools/logging
 [Running Flutter inspector]: /tools/devtools/inspector
-[Setup-web]: {{site.url}}/platform-integration/web/install-web
+[Setup-web]: {{site.url}}/platform-integration/web/setup
 [Web FAQ]: /platform-integration/web/faq
 [Web renderers]: /platform-integration/web/renderers
 [Widget tests]: /testing/overview#widget-tests

@@ -3,10 +3,11 @@ title: The RenderEditable needs to be laid out before hit testing
 description: >
   The hit testing of RenderEditable requires additional information
   that is only available after the layout.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 Instances of `RenderEditable` must be laid out before processing hit
 testing. Trying to hit-test a `RenderEditable` object before layout
@@ -16,12 +17,12 @@ results in an assertion such as the following:
 Failed assertion: line 123 pos 45: '!debugNeedsLayout': is not true.
 ```
 
-## Contexto
+## Context
 
 To support gesture recognizers in selectable text, the
 `RenderEditable` requires the layout information for its
 text spans to determine which text span receives the
-pointer event. (Before this change, `RenderEditable` objects 
+pointer event. (Before this change, `RenderEditable` objects
 didn't take their text into account when evaluating hit tests.)
 To implement this, layout was made a prerequisite for performing
 hit testing on a `RenderEditable` object.
@@ -32,13 +33,13 @@ render objects. This problem is only likely to be seen in
 code that directly interacts with render objects, for
 example in tests of custom render objects.
 
-## Guia de migração
+## Migration guide
 
 If you see the `'!debugNeedsLayout': is not true`
 assertion error while hit testing the `RenderEditable`,
 lay out the `RenderEditable` before doing so.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 import 'package:flutter/rendering.dart';
@@ -74,7 +75,7 @@ class FakeEditableTextState extends TextSelectionDelegate {
 }
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 import 'package:flutter/rendering.dart';
@@ -110,23 +111,23 @@ class FakeEditableTextState extends TextSelectionDelegate {
 }
 ```
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 1.18.0<br>
-Na versão estável: 1.20
+Landed in version: 1.18.0<br>
+In stable release: 1.20
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`RenderEditable`][]
 
-Issues relevantes:
+Relevant issue:
 
 * [Issue 43494][]: SelectableText.rich used along with
   TapGestureRecognizer isn't working
 
-PRs relevantes:
+Relevant PR:
 
 * [PR 54479: Enable gesture recognizer in selectable rich text][]
 

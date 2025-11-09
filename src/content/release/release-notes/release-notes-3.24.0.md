@@ -1,15 +1,15 @@
 ---
 title: Flutter 3.24.0 release notes
-short-title: 3.24.0 release notes
+shortTitle: 3.24.0 release notes
 description: Release notes for Flutter 3.24.0.
-ia-translate: true
+skipTemplateRendering: true
 ---
 
 This page has release notes for 3.24.0.
 For information about subsequent bug-fix releases,
 check out the Flutter [CHANGELOG][].
 
-[CHANGELOG]: {{site.repo.flutter}}/blob/main/CHANGELOG.md
+[CHANGELOG]: https://github.com/flutter/flutter/blob/main/CHANGELOG.md
 
 ## Flutter framework
 
@@ -511,7 +511,7 @@ check out the Flutter [CHANGELOG][].
 * [Reland] Fix `SegmentedButton` clipping when drawing segments (#149739) by @TahaTesser in [150090](https://github.com/flutter/flutter/pull/150090)
 * Reland: Request focus if accessibility focus is given to a Focus widget (#142942) by @gspencergoog in [149840](https://github.com/flutter/flutter/pull/149840)
 * Replace InputDecorator M3 golden test by @bleroux in [150111](https://github.com/flutter/flutter/pull/150111)
-* Update framework and flutter fix flutterbrasil.dev/docs links by @parlough in [150174](https://github.com/flutter/flutter/pull/150174)
+* Update framework and flutter fix flutter.dev/docs links by @parlough in [150174](https://github.com/flutter/flutter/pull/150174)
 * [Reland] Introduce `ChipAnimationStyle` to override default chips animations durations by @TahaTesser in [149876](https://github.com/flutter/flutter/pull/149876)
 * Update doc for `ColorScheme.surface` by @QuncCccccc in [150212](https://github.com/flutter/flutter/pull/150212)
 * Validate the `contrastLevel` during `ColorScheme` creation by @parlough in [150176](https://github.com/flutter/flutter/pull/150176)
@@ -525,10 +525,10 @@ check out the Flutter [CHANGELOG][].
 * Test InputDecoration API examples by @NobodyForNothing in [148560](https://github.com/flutter/flutter/pull/148560)
 * [material/menu_anchor.dart] Remove _MenuAnchorState from parent when disposed. by @davidhicks980 in [149586](https://github.com/flutter/flutter/pull/149586)
 * Make popup menu hardcoded padding configurable by @bleroux in [150506](https://github.com/flutter/flutter/pull/150506)
-* Update flutterbrasil.dev links from misc packages to more permanent destinations by @parlough in [150532](https://github.com/flutter/flutter/pull/150532)
+* Update flutter.dev links from misc packages to more permanent destinations by @parlough in [150532](https://github.com/flutter/flutter/pull/150532)
 * [a11y] Update semantics in bottom_navigation_bar.dart by @hangyujin in [150576](https://github.com/flutter/flutter/pull/150576)
 * Fix a number of broken doc comment references by @srawlins in [150540](https://github.com/flutter/flutter/pull/150540)
-* Update flutterbrasil.dev links from framework to more permanent destinations by @parlough in [150531](https://github.com/flutter/flutter/pull/150531)
+* Update flutter.dev links from framework to more permanent destinations by @parlough in [150531](https://github.com/flutter/flutter/pull/150531)
 * Linkify 'see also' sections by @goderbauer in [150734](https://github.com/flutter/flutter/pull/150734)
 * Fix collapsed InputDecorator minimum height by @bleroux in [150770](https://github.com/flutter/flutter/pull/150770)
 * Reland fix inputDecorator hint color on M3 by @bleroux in [150278](https://github.com/flutter/flutter/pull/150278)
@@ -546,7 +546,7 @@ check out the Flutter [CHANGELOG][].
 * Support mdns when attaching to proxied devices. by @chingjun in [146021](https://github.com/flutter/flutter/pull/146021)
 * Convert ProjectMigration and ProjectMigrator to be async by @vashworth in [146537](https://github.com/flutter/flutter/pull/146537)
 * Control flow collections: `flutter_tools/` by @nate-thegrate in [147450](https://github.com/flutter/flutter/pull/147450)
-* Switch to more reliable flutterbrasil.dev link destinations in the tool by @parlough in [150587](https://github.com/flutter/flutter/pull/150587)
+* Switch to more reliable flutter.dev link destinations in the tool by @parlough in [150587](https://github.com/flutter/flutter/pull/150587)
 * [tool] when writing to openssl as a part of macOS/iOS code-signing, flush the stdin stream before closing it by @andrewkolos in [150120](https://github.com/flutter/flutter/pull/150120)
 
 ### Android

@@ -1,140 +1,139 @@
 ---
-title: Use uma fonte personalizada
-description: Como usar fontes personalizadas.
-ia-translate: true
+title: Use a custom font
+description: How to use custom fonts.
 ---
 
 <?code-excerpt path-base="cookbook/design/fonts/"?>
 
-:::secondary O que você aprenderá
-* Como escolher uma fonte.
-* Como importar arquivos de fonte.
-* Como definir uma fonte como padrão.
-* Como usar uma fonte em um determinado widget.
+:::secondary What you'll learn
+* How to choose a font.
+* How to import font files.
+* How to set a font as a default.
+* How to use a font in a given widget.
 :::
 
-Embora Android e iOS ofereçam fontes de sistema de alta qualidade,
-os designers querem suporte para fontes personalizadas.
-Você pode ter uma fonte personalizada de um designer,
-ou talvez tenha baixado uma fonte do [Google Fonts][].
+Although Android and iOS offer high quality system fonts,
+designers want support for custom fonts.
+You might have a custom-built font from a designer,
+or perhaps you downloaded a font from [Google Fonts][].
 
-Um typeface é a coleção de glifos ou formas que compreendem
-um determinado estilo de letras.
-Uma font é uma representação desse typeface em um determinado peso ou variação.
-Roboto é um typeface e Roboto Bold é uma font.
+A typeface is the collection of glyphs or shapes that comprise
+a given style of lettering.
+A font is one representation of that typeface at a given weight or variation.
+Roboto is a typeface and Roboto Bold is a font.
 
-O Flutter permite que você aplique uma fonte personalizada em todo um aplicativo ou em widgets individuais.
-Esta receita cria um aplicativo que usa fontes personalizadas com os seguintes passos.
+Flutter lets you apply a custom font across an entire app or to individual widgets.
+This recipe creates an app that uses custom fonts with the following steps.
 
-1. Escolha suas fontes.
-1. Importe os arquivos de fonte.
-1. Declare a fonte no pubspec.
-1. Defina uma fonte como padrão.
-1. Use uma fonte em um widget específico.
+1. Choose your fonts.
+1. Import the font files.
+1. Declare the font in the pubspec.
+1. Set a font as the default.
+1. Use a font in a specific widget.
 
-Você não precisa seguir cada passo enquanto avança.
-O guia oferece arquivos de exemplo completos no final.
+You don't need to follow each step as you go.
+The guide offers completed example files at the end.
 
 :::note
-Este guia faz as seguintes pressuposições:
+This guide makes the following presumptions:
 
-1. Você [configurou seu ambiente Flutter][set up your Flutter environment].
-1. Você [criou um novo aplicativo Flutter][new-flutter-app] chamado `custom_fonts`.
-   Se você ainda não concluiu essas etapas, faça isso antes de continuar
-   com este guia.
-1. Você está executando os comandos fornecidos em um shell macOS ou Linux
-   e usando `vi`. Você pode substituir qualquer editor de texto por `vi`.
-   Usuários do Windows devem usar os comandos e caminhos apropriados ao
-   executar as etapas.
-1. Você está adicionando as fontes Raleway e RobotoMono ao seu aplicativo Flutter.
+1. You've [set up your Flutter environment][].
+1. You've [created a new Flutter app][new-flutter-app] named `custom_fonts`.
+   If you haven't completed these steps yet, do so before continuing
+   with this guide.
+1. You're performing the provided commands in a macOS or Linux shell
+   and using `vi`. You can substitute any text editor for `vi`.
+   Windows users should use the appropriate commands and paths when
+   performing the steps.
+1. You're adding the Raleway and RobotoMono fonts to your Flutter app.
 :::
 
-[set up your Flutter environment]: /get-started/install
-[new-flutter-app]: /get-started/test-drive
+[set up your Flutter environment]: /get-started
+[new-flutter-app]: /reference/create-new-app
 
-## Escolher uma fonte
+## Choose a font
 
-Sua escolha de fonte deve ser mais do que uma preferência.
-Considere quais formatos de arquivo funcionam com o Flutter e
-como a fonte pode afetar as opções de design e o desempenho do aplicativo.
+Your choice of font should be more than a preference.
+Consider which file formats work with Flutter and
+how the font could affect design options and app performance.
 
-#### Escolha um formato de fonte suportado
+#### Pick a supported font format
 
-O Flutter suporta os seguintes formatos de fonte:
+Flutter supports the following font formats:
 
-* Coleções de fontes OpenType: `.ttc`
-* Fontes TrueType: `.ttf`
-* Fontes OpenType: `.otf`
+* OpenType font collections: `.ttc`
+* TrueType fonts: `.ttf`
+* OpenType fonts: `.otf`
 
-O Flutter não suporta fontes no Web Open Font Format,
-`.woff` e `.woff2`, em plataformas desktop.
+Flutter does not support fonts in the Web Open Font Format,
+`.woff` and `.woff2`, on desktop platforms.
 
-#### Escolha fontes por seus benefícios específicos
+#### Choose fonts for their specific benefits
 
-Poucas fontes concordam sobre o que é um tipo de arquivo de fonte ou qual usa menos espaço.
-A principal diferença entre tipos de arquivo de fonte envolve como o formato
-codifica os glifos no arquivo.
-A maioria dos arquivos de fonte TrueType e OpenType têm capacidades semelhantes, pois
-pegaram emprestados uns dos outros à medida que os formatos e fontes melhoraram ao longo do tempo.
+Few sources agree on what a font file type is or which uses less space.
+The key difference between font file types involves how the format
+encodes the glyphs in the file.
+Most TrueType and OpenType font files have similar capabilities as they
+borrowed from each other as the formats and fonts improved over time.
 
-Qual fonte você deve usar depende das seguintes considerações.
+Which font you should use depends on the following considerations.
 
-* Quanta variação você precisa para fontes em seu aplicativo?
-* Quanto tamanho de arquivo você pode aceitar que as fontes usem em seu aplicativo?
-* Quantos idiomas você precisa suportar em seu aplicativo?
+* How much variation you need for fonts in your app?
+* How much file size you can accept fonts using in your app?
+* How many languages you need to support in your app?
 
-Pesquise quais opções uma determinada fonte oferece,
-como mais de um peso ou estilo por arquivo de fonte,
-[capacidade de fonte variável][variable-fonts],
-a disponibilidade de vários arquivos de fonte para vários pesos de fonte,
-ou mais de uma largura por fonte.
+Research what options a given font offers,
+like more than one weight or style per font file,
+[variable font capability][variable-fonts],
+the availability of multiple font files for a multiple font weights,
+or more than one width per font.
 
-Escolha o typeface ou família de fontes que atende às necessidades de design do seu aplicativo.
+Choose the typeface or font family that meets the design needs of your app.
 
 :::secondary
-Para saber como obter acesso direto a mais de 1.000 famílias de fontes de código aberto,
-confira o pacote [google_fonts][].
+To learn how to get direct access to over 1,000 open-sourced font families,
+check out the [google_fonts][] package.
 
-{% ytEmbed '8Vzv2CdbEY0', 'google_fonts | Flutter package of the week' %}
+<YouTubeEmbed id="8Vzv2CdbEY0" title="google_fonts | Flutter package of the week"></YouTubeEmbed>
 
-Para aprender sobre outra abordagem para usar fontes personalizadas que permite
-reutilizar uma fonte em vários projetos,
-confira [Exportar fontes de um pacote][Export fonts from a package].
+To learn about another approach to using custom fonts that allows you to
+re-use one font over multiple projects,
+check out [Export fonts from a package][].
 :::
 
-## Importar os arquivos de fonte
+## Import the font files
 
-Para trabalhar com uma fonte, importe seus arquivos de fonte para seu projeto Flutter.
+To work with a font, import its font files into your Flutter project.
 
-Para importar arquivos de fonte, execute as seguintes etapas.
+To import font files, perform the following steps.
 
-1. Se necessário, para corresponder às etapas restantes neste guia,
-   altere o nome do seu aplicativo Flutter para `custom_fonts`.
+1. If necessary, to match the remaining steps in this guide,
+   change the name of your Flutter app to `custom_fonts`.
 
    ```console
    $ mv /path/to/my_app /path/to/custom_fonts
    ```
 
-1. Navegue até a raiz do seu projeto Flutter.
+1. Navigate to the root of your Flutter project.
 
    ```console
    $ cd /path/to/custom_fonts
    ```
 
-1. Crie um diretório `fonts` na raiz do seu projeto Flutter.
+1. Create a `fonts` directory at the root of your Flutter project.
 
    ```console
    $ mkdir fonts
    ```
 
-1. Mova ou copie os arquivos de fonte em uma pasta `fonts` ou `assets`
-   na raiz do seu projeto Flutter.
+1. Move or copy the font files in a `fonts` or `assets`
+   folder at the root of your Flutter project.
 
    ```console
    $ cp ~/Downloads/*.ttf ./fonts
    ```
 
-A estrutura de pastas resultante deve se parecer com o seguinte:
+The resulting folder structure should resemble the following:
 
 ```plaintext
 custom_fonts/
@@ -145,24 +144,24 @@ custom_fonts/
   |- RobotoMono-Bold.ttf
 ```
 
-## Declarar a fonte no arquivo pubspec.yaml
+## Declare the font in the pubspec.yaml file
 
-Depois de baixar uma fonte,
-inclua uma definição de fonte no arquivo `pubspec.yaml`.
-Esta definição de fonte também especifica qual arquivo de fonte deve ser usado para
-renderizar um determinado peso ou estilo em seu aplicativo.
+After you've downloaded a font,
+include a font definition in the `pubspec.yaml` file.
+This font definition also specifies which font file should be used to
+render a given weight or style in your app.
 
-### Definir fontes no arquivo `pubspec.yaml`
+### Define fonts in the `pubspec.yaml` file
 
-Para adicionar arquivos de fonte ao seu aplicativo Flutter, complete as seguintes etapas.
+To add font files to your Flutter app, complete the following steps.
 
-1. Abra o arquivo `pubspec.yaml` na raiz do seu projeto Flutter.
+1. Open the `pubspec.yaml` file at the root of your Flutter project.
 
    ```console
    $ vi pubspec.yaml
    ```
 
-1. Cole o seguinte bloco YAML após a declaração `flutter`.
+1. Paste the following YAML block after the `flutter` declaration.
 
    ```yaml
      fonts:
@@ -178,92 +177,92 @@ Para adicionar arquivos de fonte ao seu aplicativo Flutter, complete as seguinte
              weight: 700
    ```
 
-Este arquivo `pubspec.yaml` define o estilo itálico para a
-família de fontes `Raleway` como o arquivo de fonte `Raleway-Italic.ttf`.
-Quando você define `style: TextStyle(fontStyle: FontStyle.italic)`,
-o Flutter troca `Raleway-Regular` por `Raleway-Italic`.
+This `pubspec.yaml` file defines the italic style for the
+`Raleway` font family as the `Raleway-Italic.ttf` font file.
+When you set `style: TextStyle(fontStyle: FontStyle.italic)`,
+Flutter swaps `Raleway-Regular` with `Raleway-Italic`.
 
-O valor `family` define o nome do typeface.
-Você usa esse nome na propriedade [`fontFamily`][] de um objeto [`TextStyle`][].
+The `family` value sets the name of the typeface.
+You use this name in the [`fontFamily`][] property of a [`TextStyle`][] object.
 
-O valor de um `asset` é um caminho relativo do arquivo `pubspec.yaml`
-para o arquivo de fonte.
-Esses arquivos contêm os contornos para os glifos na fonte.
-Ao construir o aplicativo,
-o Flutter inclui esses arquivos no pacote de assets do aplicativo.
+The value of an `asset` is a relative path from the `pubspec.yaml` file
+to the font file.
+These files contain the outlines for the glyphs in the font.
+When building the app,
+Flutter includes these files in the app's asset bundle.
 
-### Incluir arquivos de fonte para cada fonte
+### Include font files for each font
 
-Diferentes typefaces implementam arquivos de fonte de maneiras diferentes.
-Se você precisar de um typeface com uma variedade de pesos e estilos de fonte,
-escolha e importe arquivos de fonte que representem essa variedade.
+Different typefaces implement font files in different ways.
+If you need a typeface with a variety of font weights and styles,
+choose and import font files that represent that variety.
 
-Quando você importa um arquivo de fonte que não inclui várias fontes
-dentro dele ou capacidades de fonte variável,
-não use a propriedade `style` ou `weight` para ajustar como elas são exibidas.
-Se você usar essas propriedades em um arquivo de fonte regular,
-o Flutter tenta _simular_ a aparência.
-O resultado visual parecerá bem diferente de usar o arquivo de fonte correto.
+When you import a font file that doesn't include either multiple fonts
+within it or variable font capabilities,
+don't use the `style` or `weight` property to adjust how they display.
+If you do use those properties on a regular font file,
+Flutter attempts to _simulate_ the look.
+The visual result will look quite different from using the correct font file.
 
-### Definir estilos e pesos com arquivos de fonte
+### Set styles and weights with font files
 
-Quando você declara quais arquivos de fonte representam estilos ou pesos de uma fonte,
-você pode aplicar as propriedades `style` ou `weight`.
+When you declare which font files represent styles or weights of a font,
+you can apply the `style` or `weight` properties.
 
-#### Definir peso da fonte
+#### Set font weight
 
-A propriedade `weight` especifica o peso dos contornos no
-arquivo como um múltiplo inteiro de 100, entre 100 e 900.
-Esses valores correspondem ao [`FontWeight`][] e podem ser usados na
-propriedade [`fontWeight`][fontWeight property] de um objeto [`TextStyle`][].
+The `weight` property specifies the weight of the outlines in
+the file as an integer multiple of 100, between 100 and 900.
+These values correspond to the [`FontWeight`][] and can be used in the
+[`fontWeight`][fontWeight property] property of a [`TextStyle`][] object.
 
-No `pubspec.yaml` mostrado neste guia,
-você definiu `RobotoMono-Bold` como o peso `700` da família de fontes.
-Para usar a fonte `RobotoMono-Bold` que você adicionou ao seu aplicativo,
-defina `fontWeight` como `FontWeight.w700` em seu widget `TextStyle`.
+In the `pubspec.yaml` shown in this guide,
+you defined `RobotoMono-Bold` as the `700` weight of the font family.
+To use the `RobotoMono-Bold` font that you added to your app,
+set `fontWeight` to `FontWeight.w700` in your `TextStyle` widget.
 
-Se você não tivesse adicionado `RobotoMono-Bold` ao seu aplicativo,
-o Flutter tenta fazer a fonte parecer negrito.
-O texto então pode parecer um pouco mais escuro.
+If you hadn't added `RobotoMono-Bold` to your app,
+Flutter attempts to make the font look bold.
+The text then might appear to be somewhat darker.
 
-Você não pode usar a propriedade `weight` para substituir o peso da fonte.
-Você não pode definir `RobotoMono-Bold` para nenhum outro peso além de `700`.
-Se você definir `TextStyle(fontFamily: 'RobotoMono', fontWeight: FontWeight.w900)`,
-a fonte exibida ainda renderizaria tão negrito quanto `RobotoMono-Bold` parece.
+You can't use the `weight` property to override the weight of the font.
+You can't set `RobotoMono-Bold` to any other weight than `700`.
+If you set `TextStyle(fontFamily: 'RobotoMono', fontWeight: FontWeight.w900)`,
+the displayed font would still render as however bold `RobotoMono-Bold` looks.
 
-#### Definir estilo da fonte
+#### Set font style
 
-A propriedade `style` especifica se os glifos no arquivo de fonte são exibidos como
-`italic` ou `normal`.
-Esses valores correspondem ao [`FontStyle`][].
-Você pode usar esses estilos na propriedade [`fontStyle`][fontStyle property]
-de um objeto [`TextStyle`][].
+The `style` property specifies whether the glyphs in the font file display as
+either `italic` or `normal`.
+These values correspond to the [`FontStyle`][].
+You can use these styles in the [`fontStyle`][fontStyle property] property
+of a [`TextStyle`][] object.
 
-No `pubspec.yaml` mostrado neste guia,
-você definiu `Raleway-Italic` como estando no estilo `italic`.
-Para usar a fonte `Raleway-Italic` que você adicionou ao seu aplicativo,
-defina `style: TextStyle(fontStyle: FontStyle.italic)`.
-O Flutter troca `Raleway-Regular` por `Raleway-Italic` ao renderizar.
+In the `pubspec.yaml` shown in this guide,
+you defined `Raleway-Italic` as being in the `italic` style.
+To use the `Raleway-Italic` font that you added to your app,
+set `style: TextStyle(fontStyle: FontStyle.italic)`.
+Flutter swaps `Raleway-Regular` with `Raleway-Italic` when rendering.
 
-Se você não tivesse adicionado `Raleway-Italic` ao seu aplicativo,
-o Flutter tenta fazer a fonte _parecer_ itálica.
-O texto então pode parecer estar inclinado para a direita.
+If hadn't added `Raleway-Italic` to your app,
+Flutter attempts to make the font _look_ italic.
+The text then might appear to be leaning to the right.
 
-Você não pode usar a propriedade `style` para substituir os glifos de uma fonte.
-Se você definir `TextStyle(fontFamily: 'Raleway', fontStyle: FontStyle.normal)`,
-a fonte exibida ainda renderizaria como itálica.
-O estilo `regular` de uma fonte itálica _é_ itálico.
+You can't use the `style` property to override the glyphs of a font.
+If you set `TextStyle(fontFamily: 'Raleway', fontStyle: FontStyle.normal)`,
+the displayed font would still render as italic.
+The `regular` style of an italic font _is_ italic.
 
-## Definir uma fonte como padrão
+## Set a font as the default
 
-Para aplicar uma fonte ao texto, você pode definir a fonte como a fonte padrão do aplicativo
-em seu `theme`.
+To apply a font to text, you can set the font as the app's default font
+in its `theme`.
 
-Para definir uma fonte padrão, defina a propriedade `fontFamily` no `theme` do aplicativo.
-Corresponda o valor de `fontFamily` ao nome `family` declarado no
-arquivo `pubspec.yaml`.
+To set a default font, set the `fontFamily` property in the app's `theme`.
+Match the `fontFamily` value to the `family` name declared in the
+`pubspec.yaml` file.
 
-O resultado se pareceria com o seguinte código.
+The result would resemble the following code.
 
 <?code-excerpt "lib/main.dart (MaterialApp)"?>
 ```dart
@@ -275,20 +274,20 @@ return MaterialApp(
 );
 ```
 
-Para saber mais sobre temas,
-confira a receita [Usando Temas para compartilhar cores e estilos de fonte][Using Themes to share colors and font styles].
+To learn more about themes,
+check out the [Using Themes to share colors and font styles][] recipe.
 
-## Definir a fonte em um widget específico
+## Set the font in a specific widget
 
-Para aplicar a fonte a um widget específico como um widget `Text`,
-forneça um [`TextStyle`][] ao widget.
+To apply the font to a specific widget like a `Text` widget,
+provide a [`TextStyle`][] to the widget.
 
-Para este guia,
-tente aplicar a fonte `RobotoMono` a um único widget `Text`.
-Corresponda o valor de `fontFamily` ao nome `family` declarado no
-arquivo `pubspec.yaml`.
+For this guide,
+try to apply the `RobotoMono` font to a single `Text` widget.
+Match the `fontFamily` value to the `family` name declared in the
+`pubspec.yaml` file.
 
-O resultado se pareceria com o seguinte código.
+The result would resemble the following code.
 
 <?code-excerpt "lib/main.dart (Text)"?>
 ```dart
@@ -299,28 +298,28 @@ child: Text(
 ```
 
 :::important
-Se um objeto [`TextStyle`][] especifica um peso ou estilo sem um
-arquivo de fonte correspondente, o mecanismo usa um arquivo genérico para a fonte
-e tenta extrapolar contornos para o peso e estilo solicitados.
+If a [`TextStyle`][] object specifies a weight or style without a
+corresponding font file, the engine uses a generic file for the font
+and attempts to extrapolate outlines for the requested weight and style.
 
-Evite depender dessa capacidade. Importe o arquivo de fonte adequado em vez disso.
+Avoid relying on this capability. Import the proper font file instead.
 :::
 
-## Experimente o exemplo completo
+## Try the complete example
 
-### Baixar fontes
+### Download fonts
 
-Baixe os arquivos de fonte Raleway e RobotoMono do [Google Fonts][].
+Download the Raleway and RobotoMono font files from [Google Fonts][].
 
-### Atualizar o arquivo `pubspec.yaml`
+### Update the `pubspec.yaml` file
 
-1. Abra o arquivo `pubspec.yaml` na raiz do seu projeto Flutter.
+1. Open the `pubspec.yaml` file at the root of your Flutter project.
 
    ```console
    $ vi pubspec.yaml
    ```
 
-1. Substitua seu conteúdo pelo seguinte YAML.
+1. Replace its contents with the following YAML.
 
    ```yaml
    name: custom_fonts
@@ -349,15 +348,15 @@ Baixe os arquivos de fonte Raleway e RobotoMono do [Google Fonts][].
      uses-material-design: true
    ```
 
-### Use este arquivo `main.dart`
+### Use this `main.dart` file
 
-1. Abra o arquivo `main.dart` no diretório `lib/` do seu projeto Flutter.
+1. Open the `main.dart` file in the `lib/` directory of your Flutter project.
 
    ```console
    $ vi lib/main.dart
    ```
 
-1. Substitua seu conteúdo pelo seguinte código Dart.
+1. Replace its contents with the following Dart code.
 
    <?code-excerpt "lib/main.dart"?>
    ```dart
@@ -399,7 +398,7 @@ Baixe os arquivos de fonte Raleway e RobotoMono do [Google Fonts][].
    }
    ```
 
-O aplicativo Flutter resultante deve exibir a seguinte tela.
+The resulting Flutter app should display the following screen.
 
 ![Custom Fonts Demo](/assets/images/docs/cookbook/fonts.png){:.site-mobile-screenshot}
 

@@ -1,50 +1,49 @@
 ---
-ia-translate: true
-title: Comece a pensar de forma declarativa
-description: Como pensar sobre programação declarativa.
+title: Start thinking declaratively
+description: How to think about declarative programming.
 prev:
   title: Intro
-  path: /development/data-and-backend/state-mgmt
+  path: /data-and-backend/state-mgmt
 next:
   title: Ephemeral versus app state
-  path: /development/data-and-backend/state-mgmt/ephemeral-vs-app
+  path: /data-and-backend/state-mgmt/ephemeral-vs-app
 ---
 
-Se você está vindo para o Flutter de um framework imperativo
-(como Android SDK ou iOS UIKit), você precisa começar
-a pensar sobre desenvolvimento de apps de uma nova perspectiva.
+If you're coming to Flutter from an imperative framework
+(such as Android SDK or iOS UIKit), you need to start
+thinking about app development from a new perspective.
 
-Muitas suposições que você pode ter não se aplicam ao Flutter. Por exemplo, no
-Flutter está tudo bem reconstruir partes da sua UI do zero em vez de modificá-la.
-O Flutter é rápido o suficiente para fazer isso, mesmo em cada frame se necessário.
+Many assumptions that you might have don't apply to Flutter. For example, in
+Flutter it's okay to rebuild parts of your UI from scratch instead of modifying
+it. Flutter is fast enough to do that, even on every frame if needed.
 
-Flutter é _declarativo_. Isso significa que o Flutter constrói sua interface de usuário para
-refletir o estado atual do seu app:
+Flutter is _declarative_. This means that Flutter builds its user interface to
+reflect the current state of your app:
 
-<img src='/assets/images/docs/development/data-and-backend/state-mgmt/ui-equals-function-of-state.png' width="100%" alt="A mathematical formula of UI = f(state). 'UI' is the layout on the screen. 'f' is your build methods. 'state' is the application state.">
+<img src='/assets/images/docs/development/data-and-backend/state-mgmt/ui-equals-function-of-state.png' width="100%" class="diagram-wrap" alt="A mathematical formula of UI = f(state). 'UI' is the layout on the screen. 'f' is your build methods. 'state' is the application state.">
 
 {% comment %}
 Source drawing for the png above: : https://docs.google.com/drawings/d/1RDcR5LyFtzhpmiT5-UupXBeos2Ban5cUTU0-JujS3Os/edit?usp=sharing
 {% endcomment %}
 
-Quando o estado do seu app muda
-(por exemplo, o usuário alterna um switch na tela de configurações),
-você altera o estado, e isso aciona uma redesenho da interface de usuário.
-Não há mudança imperativa da própria UI
-(como `widget.setText`)&mdash;você altera o estado,
-e a UI é reconstruída do zero.
+When the state of your app changes
+(for example, the user flips a switch in the settings screen),
+you change the state, and that triggers a redraw of the user interface.
+There is no imperative changing of the UI itself
+(like `widget.setText`)&mdash;you change the state,
+and the UI rebuilds from scratch.
 
-Leia mais sobre a abordagem declarativa para programação de UI
-no [guia de introdução][get started guide].
+Read more about the declarative approach to UI programming
+in the [get started guide][].
 
-O estilo declarativo de programação de UI tem muitos benefícios.
-Notavelmente, há apenas um caminho de código para qualquer estado da UI.
-Você descreve como a UI deve parecer
-para qualquer estado dado, uma vez&mdash;e pronto.
+The declarative style of UI programming has many benefits.
+Remarkably, there is only one code path for any state of the UI.
+You describe what the UI should look
+like for any given state, once&mdash;and that is it.
 
-No início,
-este estilo de programação pode não parecer tão intuitivo quanto o
-estilo imperativo. É por isso que esta seção está aqui. Continue lendo.
+At first,
+this style of programming might not seem as intuitive as the
+imperative style. This is why this section is here. Read on.
 
 
 [get started guide]: /get-started/flutter-for/declarative

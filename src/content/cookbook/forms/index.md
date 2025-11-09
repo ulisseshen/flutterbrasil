@@ -1,7 +1,6 @@
 ---
-title: Forms
-description: Um catálogo de receitas sobre forms do Flutter.
-ia-translate: true
+title: Flutter forms cookbook
+shortTitle: Forms
+description: A catalog of Flutter form recipes.
+layout: toc
 ---
-
-{% include docs/cookbook-group-index.md %}

@@ -1,50 +1,49 @@
 ---
-ia-translate: true
-title: Executar DevTools do VS Code
-description: Aprenda como executar e usar DevTools do VS Code.
+title: Run DevTools from VS Code
+description: Learn how to launch and use DevTools from VS Code.
 ---
 
-## Adicionar as extensões do VS Code
+## Add the VS Code extensions
 
-Para usar DevTools do VS Code, você precisa da [extensão Dart][Dart extension].
-Se você estiver depurando aplicações Flutter, você também deve instalar
-a [extensão Flutter][Flutter extension].
+To use the DevTools from VS Code, you need the [Dart extension][].
+If you're debugging Flutter applications, you should also install
+the [Flutter extension][].
 
-## Iniciar uma aplicação para depurar
+## Start an application to debug {: #run-and-debug}
 
-Inicie uma sessão de depuração para sua aplicação abrindo a pasta raiz
-do seu projeto (aquela que contém `pubspec.yaml`)
-no VS Code e clicando em **Run > Start Debugging** (`F5`).
+Start a debug session for your application by opening the root
+folder of your project (the one containing `pubspec.yaml`)
+in VS Code and clicking **Run > Start Debugging** (`F5`).
 
-## Executar DevTools
+## Launch DevTools
 
-Quando a sessão de depuração estiver ativa e a aplicação tiver iniciado,
-os comandos **Open DevTools** ficam disponíveis na
-paleta de comandos do VS Code (`F1`):
+Once the debug session is active and the application has started,
+the **Open DevTools** commands become available in the
+VS Code command palette (`F1`):
 
 ![Screenshot showing Open DevTools commands](/assets/images/docs/tools/vs-code/vscode_command.png){:width="100%"}
 
-A ferramenta escolhida será aberta embutida dentro do VS Code.
+The chosen tool will be opened embedded inside VS Code.
 
 ![Screenshot showing DevTools embedded in VS Code](/assets/images/docs/tools/vs-code/vscode_embedded.png){:width="100%"}
 
-Você pode optar por ter DevTools sempre aberto
-em um navegador com a configuração `dart.embedDevTools`,
-e controlar se ele abre como uma janela completa ou
-em uma nova coluna ao lado do seu editor atual com a
-configuração `dart.devToolsLocation`.
+You can choose to have DevTools always opened
+in a browser with the `dart.embedDevTools` setting,
+and control whether it opens as a full window or
+in a new column next to your current editor with the
+`dart.devToolsLocation` setting.
 
-Uma lista completa de configurações Dart/Flutter está disponível em
+A full list of Dart/Flutter settings are available on
 [dartcode.org](https://dartcode.org/docs/settings/)
-ou no
-[editor de configurações do VS Code](https://code.visualstudio.com/docs/getstarted/settings#_settings-editor).
-Algumas configurações recomendadas para Dart/Flutter no VS Code
-também podem ser encontradas em
+or in the
+[VS Code settings editor](https://code.visualstudio.com/docs/getstarted/settings#_settings-editor).
+Some recommendation settings for Dart/Flutter in VS Code
+can also be found on
 [dartcode.org](https://dartcode.org/docs/recommended-settings/).
 
-Você também pode ver se DevTools está em execução
-e executá-lo em um navegador pela área de status do idioma
-(o ícone `{}` próximo a **Dart** na barra de status).
+You can also see whether DevTools is running
+and launch it in a browser from the language status area
+(the `{}` icon next to **Dart** in the status bar).
 
 ![Screenshot showing DevTools in the VS Code language status area](/assets/images/docs/tools/vs-code/vscode_status_bar.png){:width="100%"}
 

@@ -1,28 +1,26 @@
 ---
-ia-translate: true
-title: Adicione uma tela Flutter a um app Android
-short-title: Adicione uma tela Flutter
+title: Add a Flutter screen to an Android app
+shortTitle: Add a Flutter screen
 description: >
-  Aprenda como adicionar uma única tela Flutter ao seu app Android existente.
+  Learn how to add a single Flutter screen to your existing Android app.
 ---
 
-Este guia descreve como adicionar uma única tela Flutter a um
-app Android existente. Uma tela Flutter pode ser adicionada como uma tela normal
-e opaca, ou como uma tela transparente e translúcida.
-Ambas as opções são descritas neste guia.
+This guide describes how to add a single Flutter screen to an
+existing Android app. A Flutter screen can be added as a normal,
+opaque screen, or as a see-through, translucent screen.
+Both options are described in this guide.
 
-## Adicione uma tela Flutter normal
+## Add a normal Flutter screen
 
-<img src='/assets/images/docs/development/add-to-app/android/add-flutter-screen/add-single-flutter-screen_header.png'
-class="mw-100" alt="Add Flutter Screen Header">
+<img src='/assets/images/docs/development/add-to-app/android/add-flutter-screen/add-single-flutter-screen_header.png' alt="Add Flutter Screen Header">
 
-### Passo 1: Adicione FlutterActivity ao AndroidManifest.xml
+### Step 1: Add FlutterActivity to AndroidManifest.xml
 
-O Flutter fornece [`FlutterActivity`][] para exibir uma
-experiência Flutter dentro de um app Android. Como qualquer outra [`Activity`][],
-`FlutterActivity` deve ser registrada em seu
-`AndroidManifest.xml`. Adicione o seguinte XML ao seu
-arquivo `AndroidManifest.xml` sob sua tag `application`:
+Flutter provides [`FlutterActivity`][] to display a Flutter
+experience within an Android app. Like any other [`Activity`][],
+`FlutterActivity` must be registered in your
+`AndroidManifest.xml`. Add the following XML to your
+`AndroidManifest.xml` file under your `application` tag:
 
 ```xml
 <activity
@@ -34,30 +32,30 @@ arquivo `AndroidManifest.xml` sob sua tag `application`:
   />
 ```
 
-A referência a `@style/LaunchTheme` pode ser substituída
-por qualquer tema Android que você queira aplicar à sua `FlutterActivity`.
-A escolha do tema determina as cores aplicadas ao
-chrome do sistema Android, como a barra de navegação do Android, e à
-cor de fundo da `FlutterActivity` logo antes
-que a UI do Flutter se renderize pela primeira vez.
+The reference to `@style/LaunchTheme` can be replaced
+by any Android theme that want to apply to your `FlutterActivity`.
+The choice of theme dictates the colors applied to
+Android's system chrome, like Android's navigation bar, and to
+the background color of the `FlutterActivity` just before
+the Flutter UI renders itself for the first time.
 
-### Passo 2: Inicie FlutterActivity
+### Step 2: Launch FlutterActivity
 
-Com `FlutterActivity` registrada em seu arquivo de manifesto,
-adicione código para iniciar `FlutterActivity` de qualquer ponto
-em seu app que você desejar. O exemplo a seguir mostra
-`FlutterActivity` sendo iniciada de um `OnClickListener`.
+With `FlutterActivity` registered in your manifest file,
+add code to launch `FlutterActivity` from whatever point
+in your app that you'd like. The following example shows
+`FlutterActivity` being launched from an `OnClickListener`.
 
 :::note
-Certifique-se de usar o seguinte import:
+Make sure to use the following import:
 
 ```java
 import io.flutter.embedding.android.FlutterActivity;
 ```
 :::
 
-{% tabs "android-language" %}
-{% tab "Jetpack Compose" %}
+<Tabs key="android-framework">
+<Tab name="Jetpack Compose">
 
 ```kotlin title="ExistingActivity.kt"
 MyButton(onClick = {
@@ -74,8 +72,8 @@ fun MyButton(onClick: () -> Unit) {
 }
 ```
 
-{% endtab %}
-{% tab "Kotlin" %}
+</Tab>
+<Tab name="Kotlin">
 
 ```kotlin title="ExistingActivity.kt"
 myButton.setOnClickListener {
@@ -85,8 +83,8 @@ myButton.setOnClickListener {
 }
 ```
 
-{% endtab %}
-{% tab "Java" %}
+</Tab>
+<Tab name="Java">
 
 ```java title="ExistingActivity.java"
 myButton.setOnClickListener(new OnClickListener() {
@@ -99,19 +97,19 @@ myButton.setOnClickListener(new OnClickListener() {
 });
 ```
 
-{% endtab %}
-{% endtabs %}
+</Tab>
+</Tabs>
 
-O exemplo anterior assume que seu entrypoint Dart
-é chamado `main()`, e sua rota inicial do Flutter é '/'.
-O entrypoint Dart não pode ser alterado usando `Intent`,
-mas a rota inicial pode ser alterada usando `Intent`.
-O exemplo a seguir demonstra como iniciar uma
-`FlutterActivity` que inicialmente renderiza uma
-rota personalizada no Flutter.
+The previous example assumes that your Dart entrypoint
+is called `main()`, and your initial Flutter route is '/'.
+The Dart entrypoint can't be changed using `Intent`,
+but the initial route can be changed using `Intent`.
+The following example demonstrates how to launch a
+`FlutterActivity` that initially renders a custom
+route in Flutter.
 
-{% tabs "android-language" %}
-{% tab "Jetpack Compose" %}
+<Tabs key="android-framework">
+<Tab name="Jetpack Compose">
 
 ```kotlin title="ExistingActivity.kt"
 MyButton(onClick = {
@@ -131,8 +129,8 @@ fun MyButton(onClick: () -> Unit) {
 }
 ```
 
-{% endtab %}
-{% tab "Kotlin" %}
+</Tab>
+<Tab name="Kotlin">
 
 ```kotlin title="ExistingActivity.kt"
 myButton.setOnClickListener {
@@ -145,8 +143,8 @@ myButton.setOnClickListener {
 }
 ```
 
-{% endtab %}
-{% tab "Java" %}
+</Tab>
+<Tab name="Java">
 
 ```java title="ExistingActivity.java"
 myButton.addOnClickListener(new OnClickListener() {
@@ -162,37 +160,37 @@ myButton.addOnClickListener(new OnClickListener() {
 });
 ```
 
-{% endtab %}
-{% endtabs %}
+</Tab>
+</Tabs>
 
-Substitua `"/my_route"` pela sua rota inicial desejada.
+Replace `"/my_route"` with your desired initial route.
 
-O uso do método de fábrica `withNewEngine()`
-configura uma `FlutterActivity` que internamente cria
-sua própria instância de [`FlutterEngine`][]. Isso vem com um
-tempo de inicialização não trivial. A abordagem alternativa
-é instruir `FlutterActivity` a usar um `FlutterEngine`
-em cache e pré-aquecido, o que minimiza o
-tempo de inicialização do Flutter. Essa abordagem é discutida a seguir.
+The use of the `withNewEngine()` factory method
+configures a `FlutterActivity` that internally create
+its own [`FlutterEngine`][] instance. This comes with a
+non-trivial initialization time. The alternative approach
+is to instruct `FlutterActivity` to use a pre-warmed,
+cached `FlutterEngine`, which minimizes Flutter's
+initialization time. That approach is discussed next.
 
-### Passo 3: (Opcional) Use um FlutterEngine em cache
+### Step 3: (Optional) Use a cached FlutterEngine
 
-Toda `FlutterActivity` cria seu próprio `FlutterEngine`
-por padrão. Cada `FlutterEngine` tem um tempo de
-aquecimento não trivial. Isso significa que iniciar uma
-`FlutterActivity` padrão vem com um breve atraso antes que sua
-experiência Flutter se torne visível. Para minimizar esse atraso,
-você pode aquecer um `FlutterEngine` antes de chegar à
-sua `FlutterActivity`, e então você pode usar
-seu `FlutterEngine` pré-aquecido em vez disso.
+Every `FlutterActivity` creates its own `FlutterEngine`
+by default. Each `FlutterEngine` has a non-trivial
+warm-up time. This means that launching a standard
+`FlutterActivity` comes with a brief delay before your Flutter
+experience becomes visible. To minimize this delay,
+you can warm up a `FlutterEngine` before arriving at
+your `FlutterActivity`, and then you can use
+your pre-warmed `FlutterEngine` instead.
 
-Para pré-aquecer um `FlutterEngine`, encontre um local
-razoável em seu app para instanciar um `FlutterEngine`.
-O exemplo a seguir pré-aquece arbitrariamente um
-`FlutterEngine` na classe `Application`:
+To pre-warm a `FlutterEngine`, find a reasonable
+location in your app to instantiate a `FlutterEngine`.
+The following example arbitrarily pre-warms a
+`FlutterEngine` in the `Application` class:
 
-{% tabs "android-language" %}
-{% tab "Kotlin" %}
+<Tabs key="android-language">
+<Tab name="Kotlin">
 
 ```kotlin title="MyApplication.kt"
 class MyApplication : Application() {
@@ -217,8 +215,8 @@ class MyApplication : Application() {
 }
 ```
 
-{% endtab %}
-{% tab "Java" %}
+</Tab>
+<Tab name="Java">
 
 ```java title="MyApplication.java"
 public class MyApplication extends Application {
@@ -243,37 +241,37 @@ public class MyApplication extends Application {
 }
 ```
 
-{% endtab %}
-{% endtabs %}
+</Tab>
+</Tabs>
 
-O ID passado para o [`FlutterEngineCache`][] pode ser o que você quiser.
-Certifique-se de passar o mesmo ID para qualquer `FlutterActivity`
-ou [`FlutterFragment`][] que deva usar o `FlutterEngine` em cache.
-Usar `FlutterActivity` com um `FlutterEngine` em cache
-é discutido a seguir.
+The ID passed to the [`FlutterEngineCache`][] can be whatever you want.
+Make sure that you pass the same ID to any `FlutterActivity`
+or [`FlutterFragment`][] that should use the cached `FlutterEngine`.
+Using `FlutterActivity` with a cached `FlutterEngine`
+is discussed next.
 
 :::note
-Para aquecer um `FlutterEngine`, você deve executar um
-entrypoint Dart. Tenha em mente que no momento em que
-`executeDartEntrypoint()` é invocado,
-seu método de entrypoint Dart começa a executar.
-Se seu entrypoint Dart invoca `runApp()`
-para executar um app Flutter, então seu app Flutter se comporta como se
-estivesse rodando em uma janela de tamanho zero até que este
-`FlutterEngine` seja anexado a uma `FlutterActivity`,
-`FlutterFragment` ou `FlutterView`. Certifique-se de que seu app
-se comporta apropriadamente entre o momento em que você o aquece e
-o momento em que você exibe o conteúdo Flutter.
+To warm up a `FlutterEngine`, you must execute a Dart
+entrypoint. Keep in mind that the moment
+`executeDartEntrypoint()` is invoked,
+your Dart entrypoint method begins executing.
+If your Dart entrypoint invokes `runApp()`
+to run a Flutter app, then your Flutter app behaves as if it
+were running in a window of zero size until this
+`FlutterEngine` is attached to a `FlutterActivity`,
+`FlutterFragment`, or `FlutterView`. Make sure that your app
+behaves appropriately between the time you warm it up and
+the time you display Flutter content.
 :::
 
-Com um `FlutterEngine` em cache e pré-aquecido, agora você precisa
-instruir sua `FlutterActivity` a usar o `FlutterEngine`
-em cache em vez de criar um novo.
-Para realizar isso, use o builder `withCachedEngine()` de
-`FlutterActivity`:
+With a pre-warmed, cached `FlutterEngine`, you now need
+to instruct your `FlutterActivity` to use the cached
+`FlutterEngine` instead of creating a new one.
+To accomplish this, use `FlutterActivity`'s `withCachedEngine()`
+builder:
 
-{% tabs "android-language" %}
-{% tab "Kotlin" %}
+<Tabs key="android-language">
+<Tab name="Kotlin">
 
 ```kotlin title="ExistingActivity.kt"
 myButton.setOnClickListener {
@@ -285,8 +283,8 @@ myButton.setOnClickListener {
 }
 ```
 
-{% endtab %}
-{% tab "Java" %}
+</Tab>
+<Tab name="Java">
 
 ```java title="ExistingActivity.java"
 myButton.addOnClickListener(new OnClickListener() {
@@ -301,70 +299,69 @@ myButton.addOnClickListener(new OnClickListener() {
 });
 ```
 
-{% endtab %}
-{% endtabs %}
+</Tab>
+</Tabs>
 
-Ao usar o método de fábrica `withCachedEngine()`,
-passe o mesmo ID que você usou ao fazer cache do
-`FlutterEngine` desejado.
+When using the `withCachedEngine()` factory method,
+pass the same ID that you used when caching the desired
+`FlutterEngine`.
 
-Agora, quando você iniciar `FlutterActivity`,
-há significativamente menos atraso na
-exibição do conteúdo Flutter.
+Now, when you launch `FlutterActivity`,
+there is significantly less delay in
+the display of Flutter content.
 
 :::note
-Ao usar um `FlutterEngine` em cache, esse `FlutterEngine` sobrevive a qualquer
-`FlutterActivity` ou `FlutterFragment` que o exibe. Tenha em
-mente que o código Dart começa a executar assim que você pré-aquece o
-`FlutterEngine`, e continua executando após a destruição de sua
-`FlutterActivity`/`FlutterFragment`. Para parar a execução e limpar recursos,
-obtenha seu `FlutterEngine` do `FlutterEngineCache` e destrua o
-`FlutterEngine` com `FlutterEngine.destroy()`.
+When using a cached `FlutterEngine`, that `FlutterEngine` outlives any
+`FlutterActivity` or `FlutterFragment` that displays it. Keep in
+mind that Dart code begins executing as soon as you pre-warm the
+`FlutterEngine`, and continues executing after the destruction of your
+`FlutterActivity`/`FlutterFragment`. To stop executing and clear resources,
+obtain your `FlutterEngine` from the `FlutterEngineCache` and destroy the
+`FlutterEngine` with `FlutterEngine.destroy()`.
 :::
 
 :::note
-O desempenho de runtime não é a única razão pela qual você pode
-pré-aquecer e fazer cache de um `FlutterEngine`.
-Um `FlutterEngine` pré-aquecido executa código Dart independente
-de uma `FlutterActivity`, o que permite que tal `FlutterEngine`
-seja usado para executar código Dart arbitrário a qualquer momento.
-Lógica de aplicação não-UI pode ser executada em um `FlutterEngine`,
-como networking e cache de dados, e em comportamento em segundo plano
-dentro de um `Service` ou em outro lugar. Ao usar um `FlutterEngine`
-para executar comportamento em segundo plano, certifique-se de aderir a todas as
-restrições do Android sobre execução em segundo plano.
+Runtime performance isn't the only reason that you might
+pre-warm and cache a `FlutterEngine`.
+A pre-warmed `FlutterEngine` executes Dart code independent
+from a `FlutterActivity`, which allows such a `FlutterEngine`
+to be used to execute arbitrary Dart code at any moment.
+Non-UI application logic can be executed in a `FlutterEngine`,
+like networking and data caching, and in background behavior
+within a `Service` or elsewhere. When using a `FlutterEngine`
+to execute behavior in the background, be sure to adhere to all
+Android restrictions on background execution.
 :::
 
 :::note
-As builds debug/release do Flutter têm características de desempenho
-drasticamente diferentes. Para avaliar o desempenho
-do Flutter, use uma build de release.
+Flutter's debug/release builds have drastically different
+performance characteristics. To evaluate the performance
+of Flutter, use a release build.
 :::
 
-#### Rota inicial com um engine em cache
+#### Initial route with a cached engine
 
-{% include docs/add-to-app/android-initial-route-cached-engine.md %}
+{% render "docs/add-to-app/android-initial-route-cached-engine.md" %}
 
-## Adicione uma tela Flutter translúcida
+## Add a translucent Flutter screen
 
-<img src='/assets/images/docs/development/add-to-app/android/add-flutter-screen/add-single-flutter-screen-transparent_header.png'
-class="mw-100" alt="Add Flutter Screen With Translucency Header">
+<img src='/assets/images/docs/development/add-to-app/android/add-flutter-screen/add-single-flutter-screen-transparent_header.png' alt="Add Flutter Screen With Translucency Header">
 
-A maioria das experiências Flutter em tela cheia são opacas.
-No entanto, alguns apps gostariam de implantar uma tela
-Flutter que se parece com um modal, por exemplo,
-um diálogo ou bottom sheet. O Flutter suporta
-`FlutterActivity`s translúcidas out of the box.
+Most full-screen Flutter experiences are opaque.
+However, some apps would like to deploy a Flutter
+screen that looks like a modal, for example,
+a dialog or bottom sheet. Flutter supports translucent
+`FlutterActivity`s out of the box.
 
-Para tornar sua `FlutterActivity` translúcida,
-faça as seguintes alterações no processo regular de
-criar e iniciar uma `FlutterActivity`.
+To make your `FlutterActivity` translucent,
+make the following changes to the regular process of
+creating and launching a `FlutterActivity`.
 
-### Passo 1: Use um tema com translucidez
+### Step 1: Use a theme with translucency
 
-O Android requer uma propriedade de tema especial para `Activity`s que renderizam
-com um fundo translúcido. Crie ou atualize um tema Android com a
-seguinte propriedade:
+Android requires a special theme property for `Activity`s that render
+with a translucent background. Create or update an Android theme with the
+following property:
 
 ```xml
 <style name="MyTheme" parent="@style/MyParentTheme">
@@ -372,7 +369,7 @@ seguinte propriedade:
 </style>
 ```
 
-Em seguida, aplique o tema translúcido à sua `FlutterActivity`.
+Then, apply the translucent theme to your `FlutterActivity`.
 
 ```xml
 <activity
@@ -384,17 +381,17 @@ Em seguida, aplique o tema translúcido à sua `FlutterActivity`.
   />
 ```
 
-Sua `FlutterActivity` agora suporta translucidez.
-Em seguida, você precisa iniciar sua `FlutterActivity`
-com suporte explícito para transparência.
+Your `FlutterActivity` now supports translucency.
+Next, you need to launch your `FlutterActivity`
+with explicit transparency support.
 
-### Passo 2: Inicie FlutterActivity com transparência
+### Step 2: Start FlutterActivity with transparency
 
-Para iniciar sua `FlutterActivity` com um fundo transparente,
-passe o `BackgroundMode` apropriado para o `IntentBuilder`:
+To launch your `FlutterActivity` with a transparent background,
+pass the appropriate `BackgroundMode` to the `IntentBuilder`:
 
-{% tabs "android-language" %}
-{% tab "Kotlin" %}
+<Tabs key="android-language">
+<Tab name="Kotlin">
 
 ```kotlin title="ExistingActivity.kt"
 // Using a new FlutterEngine.
@@ -414,8 +411,8 @@ startActivity(
 );
 ```
 
-{% endtab %}
-{% tab "Java" %}
+</Tab>
+<Tab name="Java">
 
 ```java title="ExistingActivity.java"
 // Using a new FlutterEngine.
@@ -435,16 +432,16 @@ startActivity(
 );
 ```
 
-{% endtab %}
-{% endtabs %}
+</Tab>
+</Tabs>
 
-Você agora tem uma `FlutterActivity` com um fundo transparente.
+You now have a `FlutterActivity` with a transparent background.
 
 :::note
-Certifique-se de que seu conteúdo Flutter também inclui um
-fundo translúcido. Se sua UI Flutter pinta uma
-cor de fundo sólida, então ainda parecerá como
-se sua `FlutterActivity` tivesse um fundo opaco.
+Make sure that your Flutter content also includes a
+translucent background. If your Flutter UI paints a
+solid background color, then it still appears as
+though your `FlutterActivity` has an opaque background.
 :::
 
 [`FlutterActivity`]: {{site.api}}/javadoc/io/flutter/embedding/android/FlutterActivity.html

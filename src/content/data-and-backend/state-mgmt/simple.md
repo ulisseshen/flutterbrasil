@@ -1,76 +1,75 @@
 ---
-ia-translate: true
-title: Gerenciamento de estado de app simples
-description: Uma forma simples de gerenciamento de estado.
+title: Simple app state management
+description: A simple form of state management.
 prev:
   title: Ephemeral versus app state
-  path: /development/data-and-backend/state-mgmt/ephemeral-vs-app
+  path: /data-and-backend/state-mgmt/ephemeral-vs-app
 next:
   title: List of approaches
-  path: /development/data-and-backend/state-mgmt/options
+  path: /data-and-backend/state-mgmt/options
 ---
 
 <?code-excerpt path-base="state_mgmt/simple/"?>
 
-Agora que você sabe sobre [programação de UI declarativa][declarative UI programming]
-e a diferença entre [estado efêmero e estado do app][ephemeral and app state],
-você está pronto para aprender sobre gerenciamento simples de estado do app.
+Now that you know about [declarative UI programming][]
+and the difference between [ephemeral and app state][],
+you are ready to learn about simple app state management.
 
-Nesta página, vamos usar o pacote `provider`.
-Se você é novo no Flutter e não tem uma razão forte para escolher
-outra abordagem (Redux, Rx, hooks, etc.), esta é provavelmente a abordagem
-com a qual você deve começar. O pacote `provider` é fácil de entender
-e não usa muito código.
-Ele também usa conceitos que são aplicáveis em todas as outras abordagens.
+On this page, we are going to be using the `provider` package.
+If you are new to Flutter and you don't have a strong reason to choose
+another approach (Redux, Rx, hooks, etc.), this is probably the approach
+you should start with. The `provider` package is easy to understand
+and it doesn't use much code.
+It also uses concepts that are applicable in every other approach.
 
-Dito isto, se você tem uma forte experiência em
-gerenciamento de estado de outros frameworks reativos,
-você pode encontrar pacotes e tutoriais listados na [página de opções][options page].
+That said, if you have a strong background in
+state management from other reactive frameworks,
+you can find packages and tutorials listed on the [options page][].
 
-## Nosso exemplo
+## Our example
 
-<img src='/assets/images/docs/development/data-and-backend/state-mgmt/model-shopper-screencast.gif' alt='An animated gif showing a Flutter app in use. It starts with the user on a login screen. They log in and are taken to the catalog screen, with a list of items. The click on several items, and as they do so, the items are marked as "added". The user clicks on a button and gets taken to the cart view. They see the items there. They go back to the catalog, and the items they bought still show "added". End of animation.' class='site-image-right'>
+<img src='/assets/images/docs/development/data-and-backend/state-mgmt/model-shopper-screencast.webp' alt='An animated gif showing a Flutter app in use. It starts with the user on a login screen. They log in and are taken to the catalog screen, with a list of items. The click on several items, and as they do so, the items are marked as "added". The user clicks on a button and gets taken to the cart view. They see the items there. They go back to the catalog, and the items they bought still show "added". End of animation.' class='site-image-right' style="max-height: 24rem;">
 
-Para ilustração, considere o seguinte app simples.
+For illustration, consider the following simple app.
 
-O app tem duas telas separadas: um catálogo,
-e um carrinho (representados pelos widgets `MyCatalog`
-e `MyCart`, respectivamente). Poderia ser um app de compras,
-mas você pode imaginar a mesma estrutura em um app simples de rede social
-(substitua catálogo por "mural" e carrinho por "favoritos").
+The app has two separate screens: a catalog,
+and a cart (represented by the `MyCatalog`,
+and `MyCart` widgets, respectively). It could be a shopping app,
+but you can imagine the same structure in a simple social networking
+app (replace catalog for "wall" and cart for "favorites").
 
-A tela de catálogo inclui uma app bar customizada (`MyAppBar`)
-e uma visualização de rolagem de muitos itens de lista (`MyListItems`).
+The catalog screen includes a custom app bar (`MyAppBar`)
+and a scrolling view of many list items (`MyListItems`).
 
-Aqui está o app visualizado como uma árvore de widgets.
+Here's the app visualized as a widget tree.
 
-<img src='/assets/images/docs/development/data-and-backend/state-mgmt/simple-widget-tree.png' width="100%" alt="A widget tree with MyApp at the top, and  MyCatalog and MyCart below it. MyCart area leaf nodes, but MyCatalog have two children: MyAppBar and a list of MyListItems.">
+<img src='/assets/images/docs/development/data-and-backend/state-mgmt/simple-widget-tree.png' width="100%" class="diagram-wrap" alt="A widget tree with MyApp at the top, and  MyCatalog and MyCart below it. MyCart area leaf nodes, but MyCatalog have two children: MyAppBar and a list of MyListItems.">
 
 {% comment %}
   Source drawing for the png above: https://docs.google.com/drawings/d/1KXxAl_Ctxc-avhR4uE58BXBM6Tyhy0pQMCsSMFHVL_0/edit?zx=y4m1lzbhsrvx
 {% endcomment %}
 
-Então temos pelo menos 5 subclasses de `Widget`. Muitas delas precisam
-de acesso ao estado que "pertence" a outro lugar. Por exemplo, cada
-`MyListItem` precisa ser capaz de adicionar a si mesmo ao carrinho.
-Também pode querer ver se o item atualmente exibido
-já está no carrinho.
+So we have at least 5 subclasses of `Widget`. Many of them need
+access to state that "belongs" elsewhere. For example, each
+`MyListItem` needs to be able to add itself to the cart.
+It might also want to see whether the currently displayed item
+is already in the cart.
 
-Isso nos leva à nossa primeira pergunta: onde devemos colocar o estado
-atual do carrinho?
+This takes us to our first question: where should we put the current
+state of the cart?
 
 
-## Elevando o estado
+## Lifting state up
 
-No Flutter,
-faz sentido manter o estado acima dos widgets que o usam.
+In Flutter,
+it makes sense to keep the state above the widgets that use it.
 
-Por quê? Em frameworks declarativos como o Flutter, se você quer mudar a UI,
-você tem que reconstruí-la. Não há uma maneira fácil de ter
-`MyCart.updateWith(somethingNew)`. Em outras palavras, é difícil
-mudar imperativamente um widget de fora, chamando um método nele.
-E mesmo se você pudesse fazer isso funcionar, você estaria lutando contra o
-framework em vez de deixá-lo ajudá-lo.
+Why? In declarative frameworks like Flutter, if you want to change the UI,
+you have to rebuild it. There is no easy way to have
+`MyCart.updateWith(somethingNew)`. In other words, it's hard to
+imperatively change a widget from outside, by calling a method on it.
+And even if you could make this work, you would be fighting the
+framework instead of letting it help you.
 
 ```dart
 // BAD: DO NOT DO THIS
@@ -80,9 +79,9 @@ void myTapHandler() {
 }
 ```
 
-Mesmo se você conseguir fazer o código acima funcionar,
-você teria que lidar
-com o seguinte no widget `MyCart`:
+Even if you get the above code to work,
+you would then have to deal
+with the following in the `MyCart` widget:
 
 ```dart
 // BAD: DO NOT DO THIS
@@ -97,15 +96,15 @@ void updateWith(Item item) {
 }
 ```
 
-Você precisaria levar em consideração o estado atual da UI
-e aplicar os novos dados a ela. É difícil evitar bugs dessa maneira.
+You would need to take into consideration the current state of the UI
+and apply the new data to it. It's hard to avoid bugs this way.
 
-No Flutter, você constrói um novo widget toda vez que seu conteúdo muda.
-Em vez de `MyCart.updateWith(somethingNew)` (uma chamada de método)
-você usa `MyCart(contents)` (um construtor). Como você só pode
-construir novos widgets nos métodos build de seus pais,
-se você quer mudar `contents`, ele precisa viver no pai de `MyCart`
-ou acima.
+In Flutter, you construct a new widget every time its contents change.
+Instead of `MyCart.updateWith(somethingNew)` (a method call)
+you use `MyCart(contents)` (a constructor). Because you can only
+construct new widgets in the build methods of their parents,
+if you want to change `contents`, it needs to live in `MyCart`'s
+parent or above.
 
 <?code-excerpt "lib/src/provider.dart (my-tap-handler)"?>
 ```dart
@@ -116,7 +115,7 @@ void myTapHandler(BuildContext context) {
 }
 ```
 
-Agora `MyCart` tem apenas um caminho de código para construir qualquer versão da UI.
+Now `MyCart` has only one code path for building any version of the UI.
 
 <?code-excerpt "lib/src/provider.dart (build)"?>
 ```dart
@@ -130,34 +129,34 @@ Widget build(BuildContext context) {
 }
 ```
 
-No nosso exemplo, `contents` precisa viver em `MyApp`. Sempre que mudar,
-ele reconstrói `MyCart` de cima (mais sobre isso depois). Por causa disso,
-`MyCart` não precisa se preocupar com ciclo de vida&mdash;ele apenas declara
-o que mostrar para qualquer `contents` dado. Quando isso muda, o antigo
-widget `MyCart` desaparece e é completamente substituído pelo novo.
+In our example, `contents` needs to live in `MyApp`. Whenever it changes,
+it rebuilds `MyCart` from above (more on that later). Because of this,
+`MyCart` doesn't need to worry about lifecycle&mdash;it just declares
+what to show for any given `contents`. When that changes, the old
+`MyCart` widget disappears and is completely replaced by the new one.
 
-<img src='/assets/images/docs/development/data-and-backend/state-mgmt/simple-widget-tree-with-cart.png' width="100%" alt="Same widget tree as above, but now we show a small 'cart' badge next to MyApp, and there are two arrows here. One comes from one of the MyListItems to the 'cart', and another one goes from the 'cart' to the MyCart widget.">
+<img src='/assets/images/docs/development/data-and-backend/state-mgmt/simple-widget-tree-with-cart.png' width="100%" class="diagram-wrap" alt="Same widget tree as above, but now we show a small 'cart' badge next to MyApp, and there are two arrows here. One comes from one of the MyListItems to the 'cart', and another one goes from the 'cart' to the MyCart widget.">
 
 {% comment %}
   Source drawing for the png above: https://docs.google.com/drawings/d/1ErMyaX4fwfbIW9ABuPAlHELLGMsU6cdxPDFz_elsS9k/edit?zx=j42inp8903pt
 {% endcomment %}
 
-Isso é o que queremos dizer quando dizemos que os widgets são imutáveis.
-Eles não mudam&mdash;eles são substituídos.
+This is what we mean when we say that widgets are immutable.
+They don't change&mdash;they get replaced.
 
-Agora que sabemos onde colocar o estado do carrinho, vamos ver como
-acessá-lo.
+Now that we know where to put the state of the cart, let's see how
+to access it.
 
-## Acessando o estado
+## Accessing the state
 
-Quando um usuário clica em um dos itens do catálogo,
-ele é adicionado ao carrinho. Mas como o carrinho vive acima de `MyListItem`,
-como fazemos isso?
+When a user clicks on one of the items in the catalog,
+it's added to the cart. But since the cart lives above `MyListItem`,
+how do we do that?
 
-Uma opção simples é fornecer um callback que `MyListItem` pode chamar
-quando é clicado. As funções do Dart são objetos de primeira classe,
-então você pode passá-las da maneira que quiser. Então, dentro
-de `MyCatalog` você pode definir o seguinte:
+A simple option is to provide a callback that `MyListItem` can call
+when it is clicked. Dart's functions are first class objects,
+so you can pass them around any way you want. So, inside
+`MyCatalog` you can define the following:
 
 <?code-excerpt "lib/src/passing_callbacks.dart (methods)"?>
 ```dart
@@ -174,35 +173,35 @@ void myTapCallback(Item item) {
 }
 ```
 
-Isso funciona bem, mas para um estado do app que você precisa modificar de
-muitos lugares diferentes, você teria que passar muitos
-callbacks&mdash;o que fica velho muito rapidamente.
+This works okay, but for an app state that you need to modify from
+many different places, you'd have to pass around a lot of
+callbacks&mdash;which gets old pretty quickly.
 
-Felizmente, o Flutter tem mecanismos para widgets fornecerem dados e
-serviços aos seus descendentes (em outras palavras, não apenas seus filhos,
-mas quaisquer widgets abaixo deles). Como você esperaria do Flutter,
-onde _Tudo é um Widget™_, esses mecanismos são apenas tipos especiais
-de widgets&mdash;`InheritedWidget`, `InheritedNotifier`,
-`InheritedModel` e mais. Não vamos cobrir esses aqui,
-porque são um pouco de baixo nível para o que estamos tentando fazer.
+Fortunately, Flutter has mechanisms for widgets to provide data and
+services to their descendants (in other words, not just their children,
+but any widgets below them). As you would expect from Flutter,
+where _Everything is a Widget™_, these mechanisms are just special
+kinds of widgets&mdash;`InheritedWidget`, `InheritedNotifier`,
+`InheritedModel`, and more. We won't be covering those here,
+because they are a bit low-level for what we're trying to do.
 
-Em vez disso, vamos usar um pacote que funciona com os widgets de baixo
-nível, mas é simples de usar. Ele se chama `provider`.
+Instead, we are going to use a package that works with the low-level
+widgets but is simple to use. It's called `provider`.
 
-Antes de trabalhar com `provider`,
-não esqueça de adicionar a dependência a ele no seu `pubspec.yaml`.
+Before working with `provider`,
+don't forget to add the dependency on it to your `pubspec.yaml`.
 
-Para adicionar o pacote `provider` como uma dependência, execute `flutter pub add`:
+To add the `provider` package as a dependency, run `flutter pub add`:
 
 ```console
 $ flutter pub add provider
 ```
 
-Agora você pode fazer `import 'package:provider/provider.dart';`
-e começar a construir.
+Now you can `import 'package:provider/provider.dart';`
+and start building.
 
-Com `provider`, você não precisa se preocupar com callbacks ou
-`InheritedWidgets`. Mas você precisa entender 3 conceitos:
+With `provider`, you don't need to worry about callbacks or
+`InheritedWidgets`. But you do need to understand 3 concepts:
 
 * ChangeNotifier
 * ChangeNotifierProvider
@@ -211,19 +210,19 @@ Com `provider`, você não precisa se preocupar com callbacks ou
 
 ## ChangeNotifier
 
-`ChangeNotifier` é uma classe simples incluída no Flutter SDK que fornece
-notificação de mudança aos seus ouvintes. Em outras palavras, se algo é
-um `ChangeNotifier`, você pode se inscrever em suas mudanças. (É uma forma de
-Observable, para aqueles familiarizados com o termo.)
+`ChangeNotifier` is a simple class included in the Flutter SDK which provides
+change notification to its listeners. In other words, if something is
+a `ChangeNotifier`, you can subscribe to its changes. (It is a form of
+Observable, for those familiar with the term.)
 
-No `provider`, `ChangeNotifier` é uma maneira de encapsular o estado da sua aplicação.
-Para apps muito simples, você se vira com um único `ChangeNotifier`.
-Em apps complexos, você terá vários modelos e, portanto, vários
-`ChangeNotifiers`. (Você não precisa usar `ChangeNotifier` com `provider`
-de forma alguma, mas é uma classe fácil de trabalhar.)
+In `provider`, `ChangeNotifier` is one way to encapsulate your application
+state. For very simple apps, you get by with a single `ChangeNotifier`.
+In complex ones, you'll have several models, and therefore several
+`ChangeNotifiers`. (You don't need to use `ChangeNotifier` with `provider`
+at all, but it's an easy class to work with.)
 
-No nosso exemplo de app de compras, queremos gerenciar o estado do carrinho em um
-`ChangeNotifier`. Criamos uma nova classe que o estende, assim:
+In our shopping app example, we want to manage the state of the cart in a
+`ChangeNotifier`. We create a new class that extends it, like so:
 
 <?code-excerpt "lib/src/provider.dart (model)" replace="/ChangeNotifier/[!$&!]/g;/notifyListeners/[!$&!]/g"?>
 ```dart
@@ -254,15 +253,15 @@ class CartModel extends [!ChangeNotifier!] {
 }
 ```
 
-O único código específico para `ChangeNotifier` é a chamada
-a `notifyListeners()`. Chame este método sempre que o modelo mudar de uma forma
-que possa mudar a UI do seu app. Todo o resto em `CartModel` é o
-próprio modelo e sua lógica de negócios.
+The only code that is specific to `ChangeNotifier` is the call
+to `notifyListeners()`. Call this method any time the model changes in a way
+that might change your app's UI. Everything else in `CartModel` is the
+model itself and its business logic.
 
-`ChangeNotifier` faz parte de `flutter:foundation` e não depende de
-nenhuma classe de nível superior no Flutter. É facilmente testável (você nem precisa
-usar [testes de widget][widget testing] para isso). Por exemplo,
-aqui está um teste unitário simples de `CartModel`:
+`ChangeNotifier` is part of `flutter:foundation` and doesn't depend on
+any higher-level classes in Flutter. It's easily testable (you don't even need
+to use [widget testing][] for it). For example,
+here's a simple unit test of `CartModel`:
 
 <?code-excerpt "test/model_test.dart (test)"?>
 ```dart
@@ -282,16 +281,16 @@ test('adding item increases total cost', () {
 
 ## ChangeNotifierProvider
 
-`ChangeNotifierProvider` é o widget que fornece uma instância de
-um `ChangeNotifier` para seus descendentes. Ele vem do pacote `provider`.
+`ChangeNotifierProvider` is the widget that provides an instance of
+a `ChangeNotifier` to its descendants. It comes from the `provider` package.
 
-Já sabemos onde colocar `ChangeNotifierProvider`: acima dos widgets que
-precisam acessá-lo. No caso de `CartModel`, isso significa em algum lugar
-acima de `MyCart` e `MyCatalog`.
+We already know where to put `ChangeNotifierProvider`: above the widgets that
+need to access it. In the case of `CartModel`, that means somewhere
+above both `MyCart` and `MyCatalog`.
 
-Você não quer colocar `ChangeNotifierProvider` mais alto do que o necessário
-(porque você não quer poluir o escopo). Mas no nosso caso,
-o único widget que está acima de `MyCart` e `MyCatalog` é `MyApp`.
+You don't want to place `ChangeNotifierProvider` higher than necessary
+(because you don't want to pollute the scope). But in our case,
+the only widget that is on top of both `MyCart` and `MyCatalog` is `MyApp`.
 
 <?code-excerpt "lib/main.dart (main)" replace="/ChangeNotifierProvider/[!$&!]/g"?>
 ```dart
@@ -305,12 +304,12 @@ void main() {
 }
 ```
 
-Observe que estamos definindo um builder que cria uma nova instância
-de `CartModel`. `ChangeNotifierProvider` é inteligente o suficiente para _não_ reconstruir
-`CartModel` a menos que seja absolutamente necessário. Ele também chama automaticamente
-`dispose()` em `CartModel` quando a instância não é mais necessária.
+Note that we're defining a builder that creates a new instance
+of `CartModel`. `ChangeNotifierProvider` is smart enough _not_ to rebuild
+`CartModel` unless absolutely necessary. It also automatically calls
+`dispose()` on `CartModel` when the instance is no longer needed.
 
-Se você quiser fornecer mais de uma classe, pode usar `MultiProvider`:
+If you want to provide more than one class, you can use `MultiProvider`:
 
 <?code-excerpt "lib/main.dart (multi-provider-main)" replace="/multiProviderMain/main/g;/MultiProvider/[!$&!]/g"?>
 ```dart
@@ -329,10 +328,10 @@ void main() {
 
 ## Consumer
 
-Agora que `CartModel` é fornecido aos widgets no nosso app através da
-declaração `ChangeNotifierProvider` no topo, podemos começar a usá-lo.
+Now that `CartModel` is provided to widgets in our app through the
+`ChangeNotifierProvider` declaration at the top, we can start using it.
 
-Isso é feito através do widget `Consumer`.
+This is done through the `Consumer` widget.
 
 <?code-excerpt "lib/src/provider.dart (descendant)" replace="/Consumer/[!$&!]/g"?>
 ```dart
@@ -343,30 +342,30 @@ return [!Consumer!]<CartModel>(
 );
 ```
 
-Devemos especificar o tipo do modelo que queremos acessar.
-Neste caso, queremos `CartModel`, então escrevemos
-`Consumer<CartModel>`. Se você não especificar o genérico (`<CartModel>`),
-o pacote `provider` não será capaz de ajudá-lo. `provider` é baseado em tipos,
-e sem o tipo, ele não sabe o que você quer.
+We must specify the type of the model that we want to access.
+In this case, we want `CartModel`, so we write
+`Consumer<CartModel>`. If you don't specify the generic (`<CartModel>`),
+the `provider` package won't be able to help you. `provider` is based on types,
+and without the type, it doesn't know what you want.
 
-O único argumento obrigatório do widget `Consumer`
-é o builder. Builder é uma função que é chamada sempre que o
-`ChangeNotifier` muda. (Em outras palavras, quando você chama `notifyListeners()`
-no seu modelo, todos os métodos builder de todos os
-widgets `Consumer` correspondentes são chamados.)
+The only required argument of the `Consumer` widget
+is the builder. Builder is a function that is called whenever the
+`ChangeNotifier` changes. (In other words, when you call `notifyListeners()`
+in your model, all the builder methods of all the corresponding
+`Consumer` widgets are called.)
 
-O builder é chamado com três argumentos. O primeiro é `context`,
-que você também obtém em todo método build.
+The builder is called with three arguments. The first one is `context`,
+which you also get in every build method.
 
-O segundo argumento da função builder é a instância do
-`ChangeNotifier`. É o que estávamos pedindo em primeiro lugar.
-Você pode usar os dados no modelo para definir como a UI deve parecer
-em qualquer momento dado.
+The second argument of the builder function is the instance of
+the `ChangeNotifier`. It's what we were asking for in the first place.
+You can use the data in the model to define what the UI should look like
+at any given point.
 
-O terceiro argumento é `child`, que está lá para otimização.
-Se você tiver uma grande subárvore de widgets sob seu `Consumer`
-que _não_ muda quando o modelo muda, você pode construí-la
-uma vez e obtê-la através do builder.
+The third argument is `child`, which is there for optimization.
+If you have a large widget subtree under your `Consumer`
+that _doesn't_ change when the model changes, you can construct it
+once and get it through the builder.
 
 <?code-excerpt "lib/src/performance.dart (child)" replace="/\bchild\b/[!$&!]/g"?>
 ```dart
@@ -374,7 +373,7 @@ return Consumer<CartModel>(
   builder: (context, cart, [!child!]) => Stack(
     children: [
       // Use SomeExpensiveWidget here, without rebuilding every time.
-      if ([!child!] != null) [!child!],
+      ?[!child!],
       Text('Total price: ${cart.totalPrice}'),
     ],
   ),
@@ -383,9 +382,9 @@ return Consumer<CartModel>(
 );
 ```
 
-É uma boa prática colocar seus widgets `Consumer` o mais profundo possível na árvore.
-Você não quer reconstruir grandes porções da UI
-só porque algum detalhe em algum lugar mudou.
+It is best practice to put your `Consumer` widgets as deep in the tree
+as possible. You don't want to rebuild large portions of the UI
+just because some detail somewhere changed.
 
 <?code-excerpt "lib/src/performance.dart (non-leaf-descendant)"?>
 ```dart
@@ -403,7 +402,7 @@ return Consumer<CartModel>(
 );
 ```
 
-Em vez disso:
+Instead:
 
 <?code-excerpt "lib/src/performance.dart (leaf-descendant)"?>
 ```dart
@@ -423,39 +422,39 @@ return HumongousWidget(
 
 ### Provider.of
 
-Às vezes, você não precisa realmente dos _dados_ no modelo para mudar a
-UI, mas ainda precisa acessá-lo. Por exemplo, um botão `ClearCart`
-quer permitir que o usuário remova tudo do carrinho.
-Ele não precisa exibir o conteúdo do carrinho,
-apenas precisa chamar o método `clear()`.
+Sometimes, you don't really need the _data_ in the model to change the
+UI but you still need to access it. For example, a `ClearCart`
+button wants to allow the user to remove everything from the cart.
+It doesn't need to display the contents of the cart,
+it just needs to call the `clear()` method.
 
-Poderíamos usar `Consumer<CartModel>` para isso,
-mas isso seria um desperdício. Estaríamos pedindo ao framework para
-reconstruir um widget que não precisa ser reconstruído.
+We could use `Consumer<CartModel>` for this,
+but that would be wasteful. We'd be asking the framework to
+rebuild a widget that doesn't need to be rebuilt.
 
-Para este caso de uso, podemos usar `Provider.of`,
-com o parâmetro `listen` definido como `false`.
+For this use case, we can use `Provider.of`,
+with the `listen` parameter set to `false`.
 
 <?code-excerpt "lib/src/performance.dart (non-rebuilding)" replace="/listen: false/[!$&!]/g"?>
 ```dart
 Provider.of<CartModel>(context, [!listen: false!]).removeAll();
 ```
 
-Usar a linha acima em um método build não fará com que este widget
-reconstrua quando `notifyListeners` for chamado.
+Using the above line in a build method won't cause this widget to
+rebuild when `notifyListeners` is called.
 
 
-## Juntando tudo
+## Putting it all together
 
-Você pode [conferir o exemplo][check out the example] abordado neste artigo.
-Se você quer algo mais simples,
-veja como o app Counter simples fica quando
-[construído com `provider`][built with `provider`].
+You can [check out the example][] covered in this article.
+If you want something simpler,
+see what the simple Counter app looks like when
+[built with `provider`][].
 
-Seguindo estes artigos, você melhorou muito
-sua capacidade de criar aplicações baseadas em estado.
-Tente construir um aplicativo com `provider` você mesmo para
-dominar essas habilidades.
+By following along with these articles, you've greatly
+improved your ability to create state-based applications.
+Try building an application with `provider` yourself to
+master these skills.
 
 [built with `provider`]: {{site.repo.samples}}/tree/main/provider_counter
 [check out the example]: {{site.repo.samples}}/tree/main/provider_shopper

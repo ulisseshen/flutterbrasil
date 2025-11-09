@@ -1,150 +1,229 @@
 ---
-title: Colocar uma app bar flutuante acima de uma lista
-description: Como colocar uma app bar flutuante acima de uma lista.
-js:
-  - defer: true
-    url: /assets/js/inject_dartpad.js
-ia-translate: true
+title: Place a floating app bar above a list
+description: How to place a floating app bar or navigation bar above a list.
 ---
 
 <?code-excerpt path-base="cookbook/lists/floating_app_bar/"?>
 
-Para facilitar aos usuários visualizar uma lista de itens,
-você pode querer ocultar a app bar conforme o usuário rola para baixo na lista.
-Isso é especialmente verdadeiro se seu aplicativo exibe uma app bar "alta"
-que ocupa muito espaço vertical.
+This guide describes how to place a floating app bar or
+navigation bar above a list in a Flutter app.
 
-Normalmente, você cria uma app bar fornecendo uma propriedade `appBar` ao
-widget `Scaffold`. Isso cria uma app bar fixa que sempre permanece acima
-do `body` do `Scaffold`.
+## Overview
 
-Mover a app bar de um widget `Scaffold` para um
-[`CustomScrollView`][] permite que você crie uma app bar
-que rola para fora da tela conforme você rola através de uma
-lista de itens contidos dentro do `CustomScrollView`.
+To make it easier for users to view a list of items,
+you might want to minimize the app bar (navigation bar), as
+the user scrolls down the list.
 
-Esta receita demonstra como usar um `CustomScrollView` para exibir uma lista de
-itens com uma app bar no topo que rola para fora da tela conforme o usuário rola
-para baixo na lista usando os seguintes passos:
+Moving the app bar into a [`CustomScrollView`][] allows you
+to create an app bar that can be minimized or scroll
+offscreen as you scroll through a list of items contained
+inside the `CustomScrollView`.
 
-  1. Criar um `CustomScrollView`.
-  2. Usar `SliverAppBar` para adicionar uma app bar flutuante.
-  3. Adicionar uma lista de itens usando uma `SliverList`.
+This recipe demonstrates how to use a `CustomScrollView` to
+display a list of items with an app bar on top that
+minimizes as the user scrolls down the list using the
+following steps:
 
-## 1. Criar um `CustomScrollView`
+  1. Create a `CustomScrollView`.
+  2. Add a floating app bar to `CustomScrollView`.
+  3. Add a list of items to `CustomScrollView`.
 
-Para criar uma app bar flutuante, coloque a app bar dentro de um
-`CustomScrollView` que também contém a lista de itens.
-Isso sincroniza a posição de rolagem da app bar e da lista de itens.
-Você pode pensar no widget `CustomScrollView` como uma `ListView`
-que permite misturar e combinar diferentes tipos de listas roláveis
-e widgets juntos.
+## 1. Create a `CustomScrollView`
 
-As listas roláveis e widgets fornecidos ao
-`CustomScrollView` são conhecidos como _slivers_. Existem vários tipos
-de slivers, como `SliverList`, `SliverGrid`, e `SliverAppBar`.
-De fato, os widgets `ListView` e `GridView` usam os widgets `SliverList` e
-`SliverGrid` para implementar rolagem.
+To create a floating app bar, place the app bar inside a
+`CustomScrollView` that also contains the list of items.
+This synchronizes the scroll position of the app bar and the
+list of items. You might think of the `CustomScrollView`
+widget as a `ListView` that allows you to mix and match
+different types of scrollable lists and widgets together.
 
-Para este exemplo, crie um `CustomScrollView` que contém um
-`SliverAppBar` e uma `SliverList`. Além disso, remova quaisquer app bars
-que você fornece ao widget `Scaffold`.
+The scrollable lists and widgets provided to the
+`CustomScrollView` are known as _slivers_. There are several
+types of slivers, such as `SliverList`, `SliverGrid`, and
+`SliverAppBar`. In fact, the `ListView` and `GridView`
+widgets use the `SliverList` and `SliverGrid` widgets to
+implement scrolling.
 
-<?code-excerpt "lib/starter.dart (CustomScrollView)" replace="/^return const //g"?>
+For this example, create a `CustomScrollView` that contains
+a `SliverList`. Also, remove the app bar property from your
+code if it exists.
+
+<Tabs key="device-type-tabs">
+
+<Tab name="Material widgets">
+
+<?code-excerpt "lib/starter_material.dart (CustomScrollView)" replace="/^return const //g"?>
 ```dart
-Scaffold(
-  // No appBar property provided, only the body.
-  body: CustomScrollView(
+MaterialApp(
+  title: 'Floating App Bar',
+  home: Scaffold(
+    // No app bar property provided yet.
+    body: CustomScrollView(
       // Add the app bar and list of items as slivers in the next steps.
-      slivers: <Widget>[]),
+      slivers: <Widget>[],
+    ),
+  ),
 );
 ```
 
-### 2. Usar `SliverAppBar` para adicionar uma app bar flutuante
+</Tab>
 
-A seguir, adicione uma app bar ao [`CustomScrollView`][].
-O Flutter fornece o widget [`SliverAppBar`][] que,
-muito parecido com o widget normal `AppBar`,
-usa o `SliverAppBar` para exibir um título,
-tabs, images e muito mais.
+<Tab name="Cupertino widgets">
 
-No entanto, o `SliverAppBar` também oferece a capacidade de criar uma
-app bar "flutuante" que rola para fora da tela conforme o usuário rola para baixo na lista.
-Além disso, você pode configurar o `SliverAppBar` para encolher e
-expandir conforme o usuário rola.
-
-Para criar este efeito:
-
-  1. Comece com uma app bar que exibe apenas um título.
-  2. Defina a propriedade `floating` como `true`.
-     Isso permite que os usuários revelem rapidamente a app bar quando
-     rolam para cima na lista.
-  3. Adicione um widget `flexibleSpace` que preenche o
-     `expandedHeight` disponível.
-
-<?code-excerpt "lib/step2.dart (SliverAppBar)" replace="/^body: //g;/^\),$/)/g"?>
+<?code-excerpt "lib/starter_cupertino.dart (CustomScrollView)" replace="/^return const //g"?>
 ```dart
-CustomScrollView(
-  slivers: [
-    // Add the app bar to the CustomScrollView.
-    SliverAppBar(
-      // Provide a standard title.
-      title: Text(title),
-      // Allows the user to reveal the app bar if they begin scrolling
-      // back up the list of items.
-      floating: true,
-      // Display a placeholder widget to visualize the shrinking size.
-      flexibleSpace: Placeholder(),
-      // Make the initial height of the SliverAppBar larger than normal.
-      expandedHeight: 200,
+CupertinoApp(
+  title: 'Floating Navigation Bar',
+  home: CupertinoPageScaffold(
+    // No navigation bar property provided yet.
+    child: CustomScrollView(
+      // Add the navigation bar and list of items as slivers in the next steps.
+      slivers: <Widget>[],
     ),
-  ],
-)
+  ),
+);
+```
+
+</Tab>
+
+</Tabs>
+
+
+## 2. Add a floating app bar
+
+Next, add an app bar to the [`CustomScrollView`][].
+
+<Tabs key="device-type-tabs">
+
+<Tab name="Material widgets">
+
+Flutter provides the [`SliverAppBar`][] widget which,
+much like the normal `AppBar` widget,
+uses the `SliverAppBar` to display a title,
+tabs, images and more.
+
+However, the `SliverAppBar` also gives you the ability to
+create a "floating" app bar that shrinks and floats when
+you're not at the top of the page.
+
+To create this effect:
+
+  1. Start with an app bar that displays only a title.
+  2. Set the `pinned` property to `true`.
+  3. Add a `flexibleSpace` widget that fills the available
+     `expandedHeight`.
+
+<?code-excerpt "lib/step2_material.dart (SliverAppBar)" replace="/^body: //g;/^\),$/)/g"?>
+```dart
+slivers: [
+  // Add the app bar to the CustomScrollView.
+  SliverAppBar(
+    // Provide a standard title.
+    title: Text('Floating App Bar'),
+    // Pin the app bar when scrolling.
+    pinned: true,
+    // Display a placeholder widget to visualize the shrinking size.
+    flexibleSpace: Placeholder(),
+    // Make the initial height of the SliverAppBar larger than normal.
+    expandedHeight: 200,
+  ),
+],
 ```
 
 :::tip
-Experimente as
-[várias propriedades que você pode passar ao widget `SliverAppBar`][],
-e use hot reload para ver os resultados. Por exemplo, use um widget `Image`
-para a propriedade `flexibleSpace` para criar uma imagem de fundo que
-encolhe em tamanho conforme é rolada para fora da tela.
+Play around with the
+[various properties you can pass to the `SliverAppBar` widget][],
+and use hot reload to see the results. For example, use an
+`Image` widget for the `flexibleSpace` property to create a
+background image that shrinks in size as it's scrolled offscreen.
 :::
 
+</Tab>
 
-### 3. Adicionar uma lista de itens usando uma `SliverList`
+<Tab name="Cupertino widgets">
 
-Agora que você tem a app bar no lugar, adicione uma lista de itens ao
-`CustomScrollView`. Você tem duas opções: uma [`SliverList`][]
-ou uma [`SliverGrid`][].  Se você precisa exibir uma lista de itens um após o outro,
-use o widget `SliverList`.
-Se você precisa exibir uma lista em grade, use o widget `SliverGrid`.
+Flutter provides the [`CupertinoSliverNavigationBar`][]
+widget, which lets you have a "floating" navigation
+bar that shrinks when you scroll down and floats when
+you're not at the top of the page.
 
-Os widgets `SliverList` e `SliverGrid` recebem um parâmetro obrigatório: um
-[`SliverChildDelegate`][], que fornece uma lista
-de widgets para `SliverList` ou `SliverGrid`.
-Por exemplo, o [`SliverChildBuilderDelegate`][]
-permite que você crie uma lista de itens que são construídos preguiçosamente conforme você rola,
-assim como o widget `ListView.builder`.
+To create this effect:
 
-<?code-excerpt "lib/main.dart (SliverList)" replace="/^\),$/)/g"?>
+  1. Add `CupertinoSliverNavigationBar` to
+     `CustomScrollView`.
+  2. Start with an app bar that displays only a title.
+
+<?code-excerpt "lib/step2_cupertino.dart (SliverAppBar)" replace="/^body: //g;/^\),$/)/g"?>
+```dart
+slivers: [
+  // Add the navigation bar to the CustomScrollView.
+  CupertinoSliverNavigationBar(
+    // Provide a standard title.
+    largeTitle: Text('Floating App Bar'),
+  ),
+],
+```
+
+</Tab>
+
+</Tabs>
+
+
+## 3. Add a list of items
+
+Now that you have the app bar in place, add a list of items
+to the `CustomScrollView`. You have two options: a
+[`SliverList`][] or a [`SliverGrid`][].  If you need to
+display a list of items one after the other, use the
+`SliverList` widget. If you need to display a grid list, use
+the `SliverGrid` widget.
+
+<Tabs key="device-type-tabs">
+
+<Tab name="Material widgets">
+
+<?code-excerpt "lib/main_material.dart (SliverList)" replace="/^\),$/)/g"?>
 ```dart
 // Next, create a SliverList
-SliverList(
-  // Use a delegate to build items as they're scrolled on screen.
-  delegate: SliverChildBuilderDelegate(
-    // The builder function returns a ListTile with a title that
-    // displays the index of the current item.
-    (context, index) => ListTile(title: Text('Item #$index')),
-    // Builds 1000 ListTiles
-    childCount: 1000,
-  ),
+SliverList.builder(
+  // The builder function returns a ListTile with a title that
+  // displays the index of the current item.
+  itemBuilder: (context, index) =>
+      ListTile(title: Text('Item #$index')),
+  // Builds 50 ListTiles
+  itemCount: 50,
 )
 ```
 
-## Exemplo interativo
+</Tab>
 
-<?code-excerpt "lib/main.dart"?>
-```dartpad title="Flutter Floating AppBar hands-on example in DartPad" run="true"
+<Tab name="Cupertino widgets">
+
+<?code-excerpt "lib/main_cupertino.dart (SliverList)" replace="/^\),$/)/g"?>
+```dart
+// Next, create a SliverList
+SliverList.builder(
+  // The builder function returns a CupertinoListTile with a title
+  // that displays the index of the current item.
+  itemBuilder: (context, index) =>
+      CupertinoListTile(title: Text('Item #$index')),
+  // Builds 50 CupertinoListTile
+  itemCount: 50,
+)
+```
+
+</Tab>
+
+</Tabs>
+
+## Interactive example
+
+<Tabs key="device-type-tabs">
+
+<Tab name="Material widgets">
+
+<?code-excerpt "lib/main_material.dart"?>
+```dartpad title="Flutter floating app bar hands-on example in DartPad" run="false"
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -159,7 +238,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: title,
       home: Scaffold(
-        // No appbar provided to the Scaffold, only a body with a
+        // No app bar provided to Scaffold, only a body with a
         // CustomScrollView.
         body: CustomScrollView(
           slivers: [
@@ -167,24 +246,21 @@ class MyApp extends StatelessWidget {
             const SliverAppBar(
               // Provide a standard title.
               title: Text(title),
-              // Allows the user to reveal the app bar if they begin scrolling
-              // back up the list of items.
-              floating: true,
+              // Pin the app bar when scrolling
+              pinned: true,
               // Display a placeholder widget to visualize the shrinking size.
               flexibleSpace: Placeholder(),
               // Make the initial height of the SliverAppBar larger than normal.
               expandedHeight: 200,
             ),
             // Next, create a SliverList
-            SliverList(
-              // Use a delegate to build items as they're scrolled on screen.
-              delegate: SliverChildBuilderDelegate(
-                // The builder function returns a ListTile with a title that
-                // displays the index of the current item.
-                (context, index) => ListTile(title: Text('Item #$index')),
-                // Builds 1000 ListTiles
-                childCount: 1000,
-              ),
+            SliverList.builder(
+              // The builder function returns a ListTile with a title that
+              // displays the index of the current item.
+              itemBuilder: (context, index) =>
+                  ListTile(title: Text('Item #$index')),
+              // Builds 50 ListTiles
+              itemCount: 50,
             ),
           ],
         ),
@@ -195,14 +271,68 @@ class MyApp extends StatelessWidget {
 ```
 
 <noscript>
-  <img src="/assets/images/docs/cookbook/floating-app-bar.gif" alt="Use list demo" class="site-mobile-screenshot"/>
+  <img src="/assets/images/docs/cookbook/floating-app-bar.webp" alt="Use floating app bar demo" class="site-mobile-screenshot"/>
 </noscript>
 
+</Tab>
 
+<Tab name="Cupertino widgets">
+
+<?code-excerpt "lib/main_cupertino.dart"?>
+```dartpad title="Flutter floating navigation bar hands-on example in DartPad" run="false"
+import 'package:flutter/cupertino.dart';
+
+void main() => runApp(const MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    const title = 'Floating Navigation Bar';
+
+    return CupertinoApp(
+      title: title,
+      home: CupertinoPageScaffold(
+        // No navigation bar provided to CupertinoPageScaffold,
+        // only a body with a CustomScrollView.
+        child: CustomScrollView(
+          slivers: [
+            // Add the navigation bar to the CustomScrollView.
+            const CupertinoSliverNavigationBar(
+              // Provide a standard title.
+              largeTitle: Text(title),
+            ),
+            // Next, create a SliverList
+            SliverList.builder(
+              // The builder function returns a CupertinoListTile with a title
+              // that displays the index of the current item.
+              itemBuilder: (context, index) =>
+                  CupertinoListTile(title: Text('Item #$index')),
+              // Builds 50 CupertinoListTile
+              itemCount: 50,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+```
+
+<noscript>
+  <img src="/assets/images/docs/cookbook/floating-app-bar.webp" alt="Use floating nav bar demo" class="site-mobile-screenshot"/>
+</noscript>
+
+</Tab>
+
+</Tabs>
+
+[`CupertinoSliverNavigationBar`]: {{site.api}}/flutter/cupertino/CupertinoSliverNavigationBar-class.html
 [`CustomScrollView`]: {{site.api}}/flutter/widgets/CustomScrollView-class.html
 [`SliverAppBar`]: {{site.api}}/flutter/material/SliverAppBar-class.html
 [`SliverChildBuilderDelegate`]: {{site.api}}/flutter/widgets/SliverChildBuilderDelegate-class.html
 [`SliverChildDelegate`]: {{site.api}}/flutter/widgets/SliverChildDelegate-class.html
 [`SliverGrid`]: {{site.api}}/flutter/widgets/SliverGrid-class.html
 [`SliverList`]: {{site.api}}/flutter/widgets/SliverList-class.html
-[várias propriedades que você pode passar ao widget `SliverAppBar`]: {{site.api}}/flutter/material/SliverAppBar/SliverAppBar.html
+[various properties you can pass to the `SliverAppBar` widget]: {{site.api}}/flutter/material/SliverAppBar/SliverAppBar.html

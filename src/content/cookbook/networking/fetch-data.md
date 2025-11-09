@@ -1,41 +1,42 @@
 ---
-title: Fetch data from the internet
-description: How to fetch data over the internet using the http package.
+ia-translate: true
+title: Buscar dados da internet
+description: Como buscar dados pela internet usando o pacote http.
 ---
 
 <?code-excerpt path-base="cookbook/networking/fetch_data/"?>
 
-Fetching data from the internet is necessary for most apps.
-Luckily, Dart and Flutter provide tools, such as the
-`http` package, for this type of work.
+Buscar dados da internet é necessário para a maioria dos apps.
+Felizmente, Dart e Flutter fornecem ferramentas, como o
+pacote `http`, para este tipo de trabalho.
 
 :::note
-You should avoid directly using `dart:io` or `dart:html`
-to make HTTP requests.
-Those libraries are platform-dependent
-and tied to a single implementation.
+Você deve evitar usar diretamente `dart:io` ou `dart:html`
+para fazer requisições HTTP.
+Essas bibliotecas são dependentes de plataforma
+e vinculadas a uma única implementação.
 :::
 
-This recipe uses the following steps:
+Esta receita usa as seguintes etapas:
 
-  1. Add the `http` package.
-  2. Make a network request using the `http` package.
-  3. Convert the response into a custom Dart object.
-  4. Fetch and display the data with Flutter.
+  1. Adicionar o pacote `http`.
+  2. Fazer uma requisição de rede usando o pacote `http`.
+  3. Converter a resposta em um objeto Dart customizado.
+  4. Buscar e exibir os dados com Flutter.
 
-## 1. Add the `http` package
+## 1. Adicionar o pacote `http`
 
-The [`http`][] package provides the
-simplest way to fetch data from the internet.
+O pacote [`http`][] fornece a
+maneira mais simples de buscar dados da internet.
 
-To add the `http` package as a dependency,
-run `flutter pub add`:
+Para adicionar o pacote `http` como uma dependência,
+execute `flutter pub add`:
 
 ```console
 $ flutter pub add http
 ```
 
-Import the http package.
+Importe o pacote http.
 
 <?code-excerpt "lib/main.dart (Http)"?>
 ```dart
@@ -44,10 +45,10 @@ import 'package:http/http.dart' as http;
 
 {% render "docs/cookbook/networking/internet-permission.md" %}
 
-## 2. Make a network request
+## 2. Fazer uma requisição de rede
 
-This recipe covers how to fetch a sample album from the
-[JSONPlaceholder][] using the [`http.get()`][] method.
+Esta receita cobre como buscar um álbum de exemplo do
+[JSONPlaceholder][] usando o método [`http.get()`][].
 
 <?code-excerpt "lib/main_step1.dart (fetchAlbum)"?>
 ```dart
@@ -56,29 +57,29 @@ Future<http.Response> fetchAlbum() {
 }
 ```
 
-The `http.get()` method returns a `Future` that contains a `Response`.
+O método `http.get()` retorna uma `Future` que contém uma `Response`.
 
-* [`Future`][] is a core Dart class for working with
-  async operations. A Future object represents a potential
-  value or error that will be available at some time in the future.
-* The `http.Response` class contains the data received from a successful
-  http call.
+* [`Future`][] é uma classe central do Dart para trabalhar com
+  operações assíncronas. Um objeto Future representa um valor potencial
+  ou erro que estará disponível em algum momento no futuro.
+* A classe `http.Response` contém os dados recebidos de uma
+  chamada http bem-sucedida.
 
-## 3. Convert the response into a custom Dart object
+## 3. Converter a resposta em um objeto Dart customizado
 
-While it's easy to make a network request, working with a raw
-`Future<http.Response>` isn't very convenient.
-To make your life easier,
-convert the `http.Response` into a Dart object.
+Embora seja fácil fazer uma requisição de rede, trabalhar com uma
+`Future<http.Response>` bruta não é muito conveniente.
+Para facilitar sua vida,
+converta a `http.Response` em um objeto Dart.
 
-### Create an `Album` class
+### Criar uma classe `Album`
 
-First, create an `Album` class that contains the data from the
-network request. It includes a factory constructor that
-creates an `Album` from JSON.
+Primeiro, crie uma classe `Album` que contém os dados da
+requisição de rede. Ela inclui um construtor factory que
+cria um `Album` a partir de JSON.
 
-Converting JSON using [pattern matching][] is only one option.
-For more information, see the full article on
+Converter JSON usando [pattern matching][] é apenas uma opção.
+Para mais informações, veja o artigo completo sobre
 [JSON and serialization][].
 
 <?code-excerpt "lib/main.dart (Album)"?>
@@ -103,22 +104,22 @@ class Album {
 }
 ```
 
-### Convert the `http.Response` to an `Album`
+### Converter a `http.Response` para um `Album`
 
-Now, use the following steps to update the `fetchAlbum()`
-function to return a `Future<Album>`:
+Agora, use as seguintes etapas para atualizar a função `fetchAlbum()`
+para retornar uma `Future<Album>`:
 
-  1. Convert the response body into a JSON `Map` with
-     the `dart:convert` package.
-  2. If the server does return an OK response with a status code of
-     200, then convert the JSON `Map` into an `Album`
-     using the `fromJson()` factory method.
-  3. If the server does not return an OK response with a status code of 200,
-     then throw an exception.
-     (Even in the case of a "404 Not Found" server response,
-     throw an exception. Do not return `null`.
-     This is important when examining
-     the data in `snapshot`, as shown below.)
+  1. Converter o corpo da resposta em um `Map` JSON com
+     o pacote `dart:convert`.
+  2. Se o servidor retornar uma resposta OK com um código de status
+     200, então converter o `Map` JSON em um `Album`
+     usando o método factory `fromJson()`.
+  3. Se o servidor não retornar uma resposta OK com um código de status 200,
+     então lançar uma exceção.
+     (Mesmo no caso de uma resposta do servidor "404 Not Found",
+     lançar uma exceção. Não retornar `null`.
+     Isso é importante ao examinar
+     os dados em `snapshot`, como mostrado abaixo.)
 
 <?code-excerpt "lib/main.dart (fetchAlbum)"?>
 ```dart
@@ -139,20 +140,19 @@ Future<Album> fetchAlbum() async {
 }
 ```
 
-Hooray!
-Now you've got a function that fetches an album from the internet.
+Oba!
+Agora você tem uma função que busca um álbum da internet.
 
-## 4. Fetch the data
+## 4. Buscar os dados
 
-Call the `fetchAlbum()` method in either the
-[`initState()`][] or [`didChangeDependencies()`][]
-methods.
+Chame o método `fetchAlbum()` em um dos métodos
+[`initState()`][] ou [`didChangeDependencies()`][].
 
-The `initState()` method is called exactly once and then never again.
-If you want to have the option of reloading the API in response to an
-[`InheritedWidget`][] changing, put the call into the
-`didChangeDependencies()` method.
-See [`State`][] for more details.
+O método `initState()` é chamado exatamente uma vez e depois nunca mais.
+Se você quiser ter a opção de recarregar a API em resposta a um
+[`InheritedWidget`][] mudando, coloque a chamada no
+método `didChangeDependencies()`.
+Veja [`State`][] para mais detalhes.
 
 <?code-excerpt "lib/main.dart (State)"?>
 ```dart
@@ -168,34 +168,34 @@ class _MyAppState extends State<MyApp> {
 }
 ```
 
-This Future is used in the next step.
+Esta Future é usada na próxima etapa.
 
-## 5. Display the data
+## 5. Exibir os dados
 
-To display the data on screen, use the
-[`FutureBuilder`][] widget.
-The `FutureBuilder` widget comes with Flutter and
-makes it easy to work with asynchronous data sources.
+Para exibir os dados na tela, use o
+widget [`FutureBuilder`][].
+O widget `FutureBuilder` vem com Flutter e
+facilita o trabalho com fontes de dados assíncronas.
 
-You must provide two parameters:
+Você deve fornecer dois parâmetros:
 
-  1. The `Future` you want to work with.
-     In this case, the future returned from
-     the `fetchAlbum()` function.
-  2. A `builder` function that tells Flutter
-     what to render, depending on the
-     state of the `Future`: loading, success, or error.
+  1. A `Future` com a qual você quer trabalhar.
+     Neste caso, a future retornada da
+     função `fetchAlbum()`.
+  2. Uma função `builder` que diz ao Flutter
+     o que renderizar, dependendo do
+     estado da `Future`: carregando, sucesso ou erro.
 
-Note that `snapshot.hasData` only returns `true`
-when the snapshot contains a non-null data value.
+Note que `snapshot.hasData` retorna `true` apenas
+quando o snapshot contém um valor de dados não-nulo.
 
-Because `fetchAlbum` can only return non-null values,
-the function should throw an exception
-even in the case of a "404 Not Found" server response.
-Throwing an exception sets the `snapshot.hasError` to `true`
-which can be used to display an error message.
+Como `fetchAlbum` só pode retornar valores não-nulos,
+a função deve lançar uma exceção
+mesmo no caso de uma resposta do servidor "404 Not Found".
+Lançar uma exceção define `snapshot.hasError` como `true`
+o que pode ser usado para exibir uma mensagem de erro.
 
-Otherwise, the spinner will be displayed.
+Caso contrário, o spinner será exibido.
 
 <?code-excerpt "lib/main.dart (FutureBuilder)" replace="/^child: //g;/^\),$/)/g"?>
 ```dart
@@ -214,30 +214,30 @@ FutureBuilder<Album>(
 )
 ```
 
-## Why is fetchAlbum() called in initState()?
+## Por que fetchAlbum() é chamado em initState()?
 
-Although it's convenient,
-it's not recommended to put an API call in a `build()` method.
+Embora seja conveniente,
+não é recomendado colocar uma chamada de API em um método `build()`.
 
-Flutter calls the `build()` method every time it needs
-to change anything in the view,
-and this happens surprisingly often.
-The `fetchAlbum()` method, if placed inside `build()`, is repeatedly
-called on each rebuild causing the app to slow down.
+Flutter chama o método `build()` toda vez que precisa
+mudar algo na visualização,
+e isso acontece surpreendentemente com frequência.
+O método `fetchAlbum()`, se colocado dentro de `build()`, é repetidamente
+chamado a cada reconstrução, fazendo com que o app fique lento.
 
-Storing the `fetchAlbum()` result in a state variable ensures that
-the `Future` is executed only once and then cached for subsequent
-rebuilds.
+Armazenar o resultado de `fetchAlbum()` em uma variável de estado garante que
+a `Future` seja executada apenas uma vez e então armazenada em cache para
+reconstruções subsequentes.
 
-## Testing
+## Testes
 
-For information on how to test this functionality,
-see the following recipes:
+Para informações sobre como testar esta funcionalidade,
+veja as seguintes receitas:
 
   * [Introduction to unit testing][]
   * [Mock dependencies using Mockito][]
 
-## Complete example
+## Exemplo completo
 
 <?code-excerpt "lib/main.dart"?>
 ```dart

@@ -74,7 +74,7 @@ for new projects.
 # check for errors, warnings, and lints.
 #
 # The issues identified by the analyzer are surfaced in the UI of Dart-enabled
-# IDEs (https://dart.dev/tools#ides-and-editors). The analyzer can also be
+# IDEs (https://dartbrasil.dev/tools#ides-and-editors). The analyzer can also be
 # invoked from the command line by running `flutter analyze`.
 
 # The following line activates a set of recommended lints for Flutter apps,
@@ -98,7 +98,7 @@ linter:
     # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
 
 # Additional information about this file can be found at
-# https://dart.dev/guides/language/analysis-options
+# https://dartbrasil.dev/guides/language/analysis-options
 ```
 
 ## Timeline

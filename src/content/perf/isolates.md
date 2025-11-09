@@ -311,7 +311,7 @@ Em plataformas móveis e desktop
 é equivalente a `await Isolate.run(() => fun(message))`.
 
 Para mais informações sobre concurrency na web,
-confira a [documentação de concurrency][concurrency documentation] em dart.dev.
+confira a [documentação de concurrency][concurrency documentation] em dartbrasil.dev.
 
 [concurrency documentation]: {{site.dart-site}}/language/concurrency
 

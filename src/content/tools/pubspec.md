@@ -32,13 +32,13 @@ que o projeto requer, tais como:
 + Restrições específicas na versão do Flutter SDK
 
 Campos comuns a projetos Dart e Flutter
-são descritos em [the pubspec file][the pubspec file] em [dart.dev][dart.dev].
+são descritos em [the pubspec file][the pubspec file] em [dartbrasil.dev][dartbrasil.dev].
 Esta página lista campos e packages _específicos do Flutter_
 que são válidos apenas para um projeto Flutter.
 
 [YAML]: https://yaml.org/
 [the pubspec file]: {{site.dart-site}}/tools/pub/pubspec
-[dart.dev]: {{site.dart-site}}
+[dartbrasil.dev]: {{site.dart-site}}
 
 ## Exemplo
 
@@ -691,11 +691,11 @@ dependencies:
 Para mais informações sobre packages, plugins,
 e arquivos pubspec, veja o seguinte:
 
-* [Creating packages][Creating packages] em dart.dev
-* [Glossary of package terms][Glossary of package terms] em dart.dev
-* [Package dependencies][Package dependencies] em dart.dev
+* [Creating packages][Creating packages] em dartbrasil.dev
+* [Glossary of package terms][Glossary of package terms] em dartbrasil.dev
+* [Package dependencies][Package dependencies] em dartbrasil.dev
 * [Using packages][Using packages]
-* [What not to commit][What not to commit] em dart.dev
+* [What not to commit][What not to commit] em dartbrasil.dev
 
 [Creating packages]: {{site.dart-site}}/guides/libraries/create-library-packages
 [Developing packages and plugins]: /packages-and-plugins/developing-packages

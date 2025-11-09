@@ -84,7 +84,7 @@ final class DashFooter extends StatelessComponent {
               ],
             ),
             a(
-              href: 'https://bsky.app/profile/flutter.dev',
+              href: 'https://bsky.app/profile/flutterbrasil.dev',
               target: Target.blank,
               attributes: {
                 'rel': 'noopener',

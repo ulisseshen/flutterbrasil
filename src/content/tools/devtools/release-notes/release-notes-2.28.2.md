@@ -10,7 +10,7 @@ showToc: false
 A versão 2.28.2 do Dart e Flutter DevTools
 inclui as seguintes alterações entre outras melhorias gerais.
 Para saber mais sobre DevTools, confira a
-[visão geral do DevTools](https://docs.flutter.dev/tools/devtools).
+[visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
 Esta foi uma versão cherry-pick em cima do DevTools 2.28.1.
 Para saber sobre as melhorias incluídas no DevTools 2.28.1, por favor leia as

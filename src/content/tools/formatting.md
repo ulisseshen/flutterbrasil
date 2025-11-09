@@ -58,6 +58,6 @@ $ dart format path1 path2 [...]
 ```
 
 Para aprender mais sobre o formatador Dart,
-confira a documentação do dart.dev sobre [`dart format`][`dart format`].
+confira a documentação do dartbrasil.dev sobre [`dart format`][`dart format`].
 
 [`dart format`]: {{site.dart-site}}/tools/dart-format

@@ -20,7 +20,7 @@ Para saber mais sobre DevTools, confira a
 
 ## Atualizações do Inspector
 
-* Adicionada uma opção às configurações do [novo Inspector](https://docs.flutter.dev/tools/devtools/release-notes/release-notes-2.40.2#inspector-updates)
+* Adicionada uma opção às configurações do [novo Inspector](https://docs.flutterbrasil.dev/tools/devtools/release-notes/release-notes-2.40.2#inspector-updates)
   para permitir atualização automática da árvore de widgets após um hot-reload. - [#8483](https://github.com/flutter/devtools/pull/8483)
 
 ## Atualizações do Network profiler

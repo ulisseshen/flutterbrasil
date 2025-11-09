@@ -2188,7 +2188,7 @@ Artigo original por Marcelo Glasberg
 Marcelo originalmente publicou este conteúdo como
 [Flutter: The Advanced Layout Rule Even Beginners Must Know][article]
 no Medium. Nós adoramos e pedimos que ele nos permitisse publicar
-no docs.flutter.dev, ao que ele graciosamente concordou. Obrigado, Marcelo!
+no docs.flutterbrasil.dev, ao que ele graciosamente concordou. Obrigado, Marcelo!
 Você pode encontrar Marcelo no [GitHub][GitHub] e [pub.dev][pub.dev].
 
 Também, obrigado a [Simon Lightfoot][Simon Lightfoot] por criar a

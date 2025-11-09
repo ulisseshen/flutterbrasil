@@ -54,7 +54,7 @@ Generating both files is a source of technical debt.
 Most Flutter developers don't parse or use this file, but
 custom tools or CI configurations might.
 
-For example, the Flutter team's own `api.flutter.dev` generation script:
+For example, the Flutter team's own `api.flutterbrasil.dev` generation script:
 
 ```dart title="post_processe_docs.dart"
 final File versionFile = File('version');

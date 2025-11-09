@@ -13,7 +13,7 @@ class MyHomePage extends StatefulWidget {
 
 // #docregion my-home-page-state
 class _MyHomePageState extends State<MyHomePage> {
-  static const platform = MethodChannel('samples.flutter.dev/battery');
+  static const platform = MethodChannel('samples.flutterbrasil.dev/battery');
   // #docregion get-battery
   // Get battery level.
   // #enddocregion my-home-page-state

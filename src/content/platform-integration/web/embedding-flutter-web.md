@@ -293,7 +293,7 @@ final initialData = ui_web.views.getInitialData(viewId) as YourJsInteropType;
 
 Para aprender como definir a classe `YourJsInteropType` para mapear o objeto `initialData`
 passado do JS para que seja type-safe no seu programa Dart, consulte:
-[JS Interoperability][JS Interoperability] no dart.dev.
+[JS Interoperability][JS Interoperability] no dartbrasil.dev.
 
 [JS Interoperability]: {{site.dart-site}}/interop/js-interop
 

@@ -1,7 +1,7 @@
 name: lakes_interactive
 description: >-
   Sample app from "Adding interactivity":
-  https://docs.flutter.dev/ui/interactivity.
+  https://docs.flutterbrasil.dev/ui/interactivity.
 version: 1.0.0
 
 resolution: workspace

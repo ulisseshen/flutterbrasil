@@ -57,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     final Uri toLaunch = Uri(
       scheme: 'https',
-      host: 'docs.flutter.dev',
+      host: 'docs.flutterbrasil.dev',
       path: 'testing/native-debugging',
     );
     return Scaffold(

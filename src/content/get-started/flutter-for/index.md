@@ -1,10 +1,10 @@
 ---
-title: Learn Flutter when coming from another platform
-shortTitle: Flutter for
+title: Aprenda Flutter vindo de outra plataforma
+shortTitle: Flutter para
 sitemap: false
 description: >-
-  Utilize your background developing for another platform
-  to learn the basics of Flutter!
-# This is a placeholder page (Firebase redirects this page's URL to another);
-# it is necessary to allow breadcrumbs to work.
+  Utilize sua experiência desenvolvendo para outra plataforma
+  para aprender o básico de Flutter!
+# Esta é uma página placeholder (Firebase redireciona a URL desta página para outra);
+# é necessária para permitir que breadcrumbs funcionem.
 ---

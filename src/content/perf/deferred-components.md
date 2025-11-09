@@ -654,4 +654,4 @@ recurso de entrega da Play store.
 [release or profile mode]: /testing/build-modes
 [step 3.3]: #step-3.3
 [android-app-bundle]: {{site.android-dev}}/guide/app-bundle
-[dart-def-import]: https://dart.dev/language/libraries#lazily-loading-a-library
+[dart-def-import]: https://dartbrasil.dev/language/libraries#lazily-loading-a-library

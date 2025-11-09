@@ -22,7 +22,7 @@ Para saber mais sobre DevTools, confira a
 
 * Habilitado o novo inspector por padrão. Isso pode ser desabilitado nas configurações do inspector. - [#8650](https://github.com/flutter/devtools/pull/8650)
   ![Legacy inspector setting](/assets/images/docs/tools/devtools/release-notes/images-2.42.3/legacy_inspector_setting.png "Legacy inspector setting")
-* Corrigido um problema onde selecionar um widget de implementação no dispositivo enquanto widgets de implementação estavam ocultos no [novo inspector](https://docs.flutter.dev/tools/devtools/release-notes/release-notes-2.40.1#inspector-updates) mostrava um erro. - [#8625](https://github.com/flutter/devtools/pull/8625)
+* Corrigido um problema onde selecionar um widget de implementação no dispositivo enquanto widgets de implementação estavam ocultos no [novo inspector](https://docs.flutterbrasil.dev/tools/devtools/release-notes/release-notes-2.40.1#inspector-updates) mostrava um erro. - [#8625](https://github.com/flutter/devtools/pull/8625)
 * Habilitadas atualizações automáticas da árvore de widgets em hot-reloads e eventos de navegação por padrão. Isso pode ser desabilitado nas configurações do inspector. - [#8646](https://github.com/flutter/devtools/pull/8646)
   ![Auto-refresh setting](/assets/images/docs/tools/devtools/release-notes/images-2.42.3/inspector_auto_refresh_setting.png "Inspector auto-refresh setting")
 

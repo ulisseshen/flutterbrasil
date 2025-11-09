@@ -31,7 +31,7 @@ class TrailingContent extends StatelessComponent {
 
     final currentFlutterVersion =
         siteData['currentFlutterVersion'] as String? ?? '';
-    final siteUrl = siteData['url'] as String? ?? 'https://docs.flutter.dev';
+    final siteUrl = siteData['url'] as String? ?? 'https://docs.flutterbrasil.dev';
 
     final fullPageUrl = '$siteUrl$pageUrl';
     final String issueUrl;

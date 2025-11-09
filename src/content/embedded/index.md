@@ -28,7 +28,7 @@ da comunidade.
 * [Custom Flutter Engine Embedders][Custom Flutter Engine Embedders], na wiki do Flutter.
 * Os comentários de documentação no
   [arquivo `embedder.h` do Flutter engine][Flutter engine `embedder.h` file] no GitHub.
-* A [visão geral arquitetural do Flutter][Flutter architectural overview] em docs.flutter.dev.
+* A [visão geral arquitetural do Flutter][Flutter architectural overview] em docs.flutterbrasil.dev.
 * Um pequeno e independente [exemplo Flutter Embedder Engine GLFW][Flutter Embedder Engine GLFW example]
   no repositório GitHub do Flutter engine.
 * Uma exploração sobre [incorporar Flutter em um terminal][embedding Flutter in a terminal] ao

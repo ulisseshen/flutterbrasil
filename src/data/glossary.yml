@@ -44,9 +44,9 @@
     including [`StatelessWidget`][], which have no mutable state, and
     [`StatefulWidget`][], which have a persistent [state][] that can be updated.
 
-    [`StatelessWidget`]: https://api.flutter.dev/flutter/widgets/StatelessWidget-class.html
-    [`StatefulWidget`]: https://api.flutter.dev/flutter/widgets/StatefulWidget-class.html
-    [state]: https://api.flutter.dev/flutter/widgets/State-class.html
+    [`StatelessWidget`]: https://api.flutterbrasil.dev/flutter/widgets/StatelessWidget-class.html
+    [`StatefulWidget`]: https://api.flutterbrasil.dev/flutter/widgets/StatefulWidget-class.html
+    [state]: https://api.flutterbrasil.dev/flutter/widgets/State-class.html
   related_links:
     - text: "Fundamentals: Widgets"
       link: "/get-started/fundamentals/widgets"
@@ -55,7 +55,7 @@
       link: "/ui/widgets"
       type: "doc"
     - text: "Widget class"
-      link: "https://api.flutter.dev/flutter/widgets/Widget-class.html"
+      link: "https://api.flutterbrasil.dev/flutter/widgets/Widget-class.html"
       type: "api"
   labels:
     - "ui"

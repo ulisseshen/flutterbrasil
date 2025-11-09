@@ -10,7 +10,7 @@ showToc: false
 A versão 2.11.2 do Dart e Flutter DevTools
 inclui as seguintes mudanças, entre outras melhorias gerais.
 Para saber mais sobre o DevTools, confira a
-[visão geral do DevTools](https://docs.flutter.dev/tools/devtools).
+[visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
 ## Atualizações gerais
 

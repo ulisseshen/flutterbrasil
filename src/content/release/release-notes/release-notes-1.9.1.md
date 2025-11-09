@@ -397,7 +397,7 @@ A maior mudança em texto e acessibilidade para esta versão é o novo suporte a
 
 ## Web (prévia técnica)
 
-O trabalho continua adicionando à prévia técnica do suporte à plataforma web no Flutter nesta versão, incluindo uma flag para informar se um app está sendo executado na web. Para ver em ação, confira [main.dart](https://github.com/csells/flutter_mazegen/blob/master/lib/main.dart) no [exemplo flutter_mazegen](https://github.com/csells/flutter_mazegen/). Para saber mais, veja [Flutter para web](https://docs.flutter.dev/web).
+O trabalho continua adicionando à prévia técnica do suporte à plataforma web no Flutter nesta versão, incluindo uma flag para informar se um app está sendo executado na web. Para ver em ação, confira [main.dart](https://github.com/csells/flutter_mazegen/blob/master/lib/main.dart) no [exemplo flutter_mazegen](https://github.com/csells/flutter_mazegen/). Para saber mais, veja [Flutter para web](https://docs.flutterbrasil.dev/web).
 
 [36135](https://github.com/flutter/flutter/pull/36135) add a kIsWeb constant to foundation
 
@@ -434,7 +434,7 @@ O trabalho continua adicionando à prévia técnica do suporte à plataforma web
 
 ## Desktop (experimental)
 
-Continuamos avançando com o suporte experimental para a plataforma desktop no Flutter. Se você quiser participar do experimento, veja [Flutter Desktop shells](https://docs.flutter.dev/desktop).
+Continuamos avançando com o suporte experimental para a plataforma desktop no Flutter. Se você quiser participar do experimento, veja [Flutter Desktop shells](https://docs.flutterbrasil.dev/desktop).
 
 [32770](https://github.com/flutter/flutter/pull/32770) Dismiss modal with any button press
 

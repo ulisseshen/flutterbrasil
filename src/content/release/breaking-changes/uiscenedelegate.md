@@ -127,7 +127,7 @@ move that logic to `didInitializeImplicitFlutterEngine`.
 
     // Create method channels with `engineBridge.applicationRegistrar.messenger()`
     let batteryChannel = FlutterMethodChannel(
-      name: "samples.flutter.dev/battery",
+      name: "samples.flutterbrasil.dev/battery",
       binaryMessenger: engineBridge.applicationRegistrar.messenger()
     )
 
@@ -143,7 +143,7 @@ move that logic to `didInitializeImplicitFlutterEngine`.
 
     // Create method channels with `engineBridge.applicationRegistrar.messenger`
     FlutterMethodChannel* batteryChannel = [FlutterMethodChannel
-                                          methodChannelWithName:@"samples.flutter.dev/battery"
+                                          methodChannelWithName:@"samples.flutterbrasil.dev/battery"
                                           binaryMessenger:engineBridge.applicationRegistrar.messenger];
 
     // Create platform views with `engineBridge.applicationRegistrar.messenger`
@@ -589,8 +589,8 @@ environment:
 :::warning
 The below Flutter APIs are available in the 3.38.0-0.1.pre beta, but are not
 yet available on stable. You might consider publishing a
-[prerelease](https://dart.dev/tools/pub/publishing#publishing-prereleases) or
-[preview](https://dart.dev/tools/pub/publishing#publish-preview-versions)
+[prerelease](https://dartbrasil.dev/tools/pub/publishing#publishing-prereleases) or
+[preview](https://dartbrasil.dev/tools/pub/publishing#publish-preview-versions)
 version of your plugin to migrate early.
 :::
 

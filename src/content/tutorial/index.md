@@ -68,7 +68,7 @@ e portanto é a maneira mais rápida de começar a usar Flutter.
    3. [Scrolling e slivers][Scrolling and slivers]
    4. [Navegação baseada em Stack][Stack based navigation]
 
-[Learn Dart tutorial]: https://dart.dev/
+[Learn Dart tutorial]: https://dartbrasil.dev/
 [installing Flutter on your machine]: /get-started
 [Firebase Studio]: https://firebase.studio/
 [Chrome]: https://www.google.com/chrome/

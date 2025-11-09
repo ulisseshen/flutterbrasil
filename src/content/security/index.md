@@ -50,7 +50,7 @@ colocar os usuários em risco.
 
 Você deve esperar uma colaboração próxima conforme trabalhamos para resolver
 a vulnerabilidade de segurança que você reportou. Por favor, entre em contato com
-security@flutter.dev apenas se você não receber uma resposta
+security@flutterbrasil.dev apenas se você não receber uma resposta
 a um relatório g.co/vulnz dentro dos 5 dias úteis mencionados acima.
 
 Para mais detalhes sobre como lidamos com vulnerabilidades de segurança,
@@ -64,7 +64,7 @@ veja nossa [política de segurança][security policy].
 
 Se você acredita que um issue existente do GitHub está relacionado à segurança,
 pedimos que você reporte o issue para g.co/vulnz e envie um
-email para security@flutter.dev. O email deve incluir o
+email para security@flutterbrasil.dev. O email deve incluir o
 ID do issue do GitHub e uma breve descrição de por que ele deve ser
 tratado de acordo com esta política de segurança.
 
@@ -87,7 +87,7 @@ encontrado na versão stable mais recente do nosso SDK, o que for
 mais conveniente.
 
 Qualquer vulnerabilidade reportada para sites flutter como
-docs.flutter.dev não requer um lançamento e será
+docs.flutterbrasil.dev não requer um lançamento e será
 corrigida no próprio site.
 
 ## Programas de Bug Bounty
@@ -95,7 +95,7 @@ corrigida no próprio site.
 Equipes não-Google que usam ou contribuem para o Flutter também são
 bem-vindas a incluir Flutter no escopo de seus programas de bug
 bounty. Para ter seu programa listado, por favor,
-contate `security@flutter.dev`.
+contate `security@flutterbrasil.dev`.
 
 O Google considera o Flutter dentro do escopo do
 [Google Open Source Software Vulnerability Reward Program][google-oss-vrp].

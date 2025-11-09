@@ -104,10 +104,10 @@ que reflete quão fortemente a equipe Flutter as recomenda.
 [Separation-of-concerns]: https://en.wikipedia.org/wiki/Separation_of_concerns
 [architecture case study]: /app-architecture/guide
 [our ChangeNotifier recommendation]: /get-started/fwe/state-management
-[other popular options]: https://docs.flutter.dev/data-and-backend/state-mgmt/options
+[other popular options]: https://docs.flutterbrasil.dev/data-and-backend/state-mgmt/options
 [freezed]: https://pub.dev/packages/freezed
 [built_value]: https://pub.dev/packages/built_value
-[Flutter Navigator API]: https://docs.flutter.dev/ui/navigation
+[Flutter Navigator API]: https://docs.flutterbrasil.dev/ui/navigation
 [pub.dev]: https://pub.dev
 [Compass app source code]: https://github.com/flutter/samples/tree/main/compass_app
 [very_good_cli]: https://cli.vgv.dev/

@@ -197,4 +197,4 @@ Limitações web:
 [iOS Framework]: {{site.apple-dev}}/library/archive/documentation/MacOSX/Conceptual/BPFrameworks/Concepts/WhatAreFrameworks.html
 [maintained by the Flutter team]: {{site.repo.packages}}/tree/main/packages
 [multiple Flutters]: /add-to-app/multiple-flutters
-[FlutterView]: https://api.flutter.dev/flutter/dart-ui/FlutterView-class.html
+[FlutterView]: https://api.flutterbrasil.dev/flutter/dart-ui/FlutterView-class.html

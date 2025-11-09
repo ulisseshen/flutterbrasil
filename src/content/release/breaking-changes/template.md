@@ -1,10 +1,11 @@
 ---
 title: Replace with title of breaking change
 description: >-
-  Brief description similar to the "context" section below. 
+  Brief description similar to the "context" section below.
   Text should break at 80 chars or less.
-ia-translate: true
 ---
+
+{% render "docs/breaking-changes.md" %}
 
 {% comment %}
   PLEASE READ THESE GENERAL INSTRUCTIONS:
@@ -17,16 +18,14 @@ ia-translate: true
     Ideally, submit a PR once you have confirmed
     info on the version number where the breaking
     change landed.
-  * One of the most important things to fill out 
+  * One of the most important things to fill out
     in this template is the *Timeline* section.
-    I won't approve/merge the PR until the "landed in"
-    release info is provided. For example:
-    `Lançado na versão: 1.21.0-5.0.pre<br>`.
+    For example: `Landed in version: 1.21.0-5.0.pre<br>`.
     Do NOT list the PR in this section. Also, don't
     fill in the "stable" release info unless it's
     already in a published stable release.
-    After a stable release, I go through and confirm
-    that updates have made it to stable and I then
+    After a stable release, we confirm
+    that updates have made it to stable and then
     update the breaking change and the index file.
   * The text in this page should be backwards looking,
     so write about previous behavior in past tense,
@@ -37,12 +36,12 @@ ia-translate: true
     Assume you've done it, and that they're looking
     back to figure out how to migrate their code.
   * Use sentence case for headings and titles.
-    (`## Guia de migração`, NOT `Migration Guide`)
+    (`## Migration guide`, NOT `Migration Guide`)
   * DON'T use the abbreviation `i.e.` or `e.g.`.
     Use "for example" or "such as", and similar.
   * For links, use the macros where possible.
     See the examples at the end of this template,
-    but don't use "github.com" or "api.flutterbrasil.dev" or
+    but don't use "github.com" or "api.flutter.dev" or
     "pub.dev" in your URLs. Use the {{site.github}},
     {{site.api}}, or {{site.pub}} macros.
   * AVOID "will" when possible, in other words,
@@ -57,7 +56,7 @@ ia-translate: true
     final PR.
 {% endcomment %}
 
-## Resumo
+## Summary
 
 {% comment %}
   A brief (one- to three-line) summary that gives
@@ -89,7 +88,7 @@ ia-translate: true
   error messages. THIS IS VERY IMPORTANT FOR DISCOVERY!
 {% endcomment %}
 
-## Guia de migração
+## Migration guide
 
 {% comment %}
   A description of how to make the change.
@@ -101,13 +100,13 @@ ia-translate: true
   developer.
 {% endcomment %}
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 // Example of code before the change.
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 // Example of code after the change.
@@ -120,7 +119,7 @@ Código após a migração:
   the API has changed and linking to this guide.
 {% endcomment %}
 
-## Linha do tempo
+## Timeline
 
 {% comment %}
   The version # of the SDK where this change was
@@ -136,32 +135,32 @@ Código após a migração:
   that line.
 {% endcomment %}
 
-Lançado na versão: xxx<br>
-Na versão estável: Not yet
+Landed in version: xxx<br>
+In stable release: Not yet
 Reverted in version: xxx  (OPTIONAL, delete if not used)
 
-## Referências
+## References
 
 {% comment %}
   These links are commented out because they
   cause the GitHubActions (GHA) linkcheck to fail.
   Remove the comment tags once you fill this in with
   real links. Only use the "main-api" include if
-  you link to "main-api.flutterbrasil.dev"; prefer our
+  you link to "main-api.flutter.dev"; prefer our
   stable documentation if possible.
 
-{% include docs/main-api.md %}
+{% render "docs/main-api.md", site: site %}
 
-Documentação da API:
+API documentation:
 
 * [`ClassName`][]
 
-Issues relevantes:
+Relevant issues:
 
 * [Issue xxxx][]
 * [Issue yyyy][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [PR title #1][]
 * [PR title #2][]
@@ -186,7 +185,7 @@ PRs relevantes:
 [`ClassName`]: {{site.api}}/flutter/[link_to_relevant_page].html
 
 <!-- Master channel link: -->
-{% include docs/main-api.md %}
+{% render "docs/main-api.md", site: site %}
 
 [`ClassName`]: {{site.main-api}}/flutter/[link_to_relevant_page].html
 

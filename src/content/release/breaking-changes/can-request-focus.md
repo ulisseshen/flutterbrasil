@@ -1,37 +1,38 @@
 ---
-title: TextField.canRequestFocus depreciado
+title: Deprecated TextField.canRequestFocus
 description: >-
-  O parâmetro canRequestFocus do TextField está depreciado e substituído pelo
-  parâmetro canRequestFocus de seu FocusNode.
-ia-translate: true
+  The TextField canRequestFocus parameter is deprecated and replaced by the
+  canRequestFocus parameter of its FocusNode.
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
 
-`TextField.canRequestFocus` está depreciado.
-A mesma funcionalidade pode ser alcançada definindo o
-parâmetro `canRequestFocus` do `FocusNode` do `TextField`.
+## Summary
 
-## Contexto
+`TextField.canRequestFocus` is deprecated.
+The same functionality can be achieved by setting the
+`canRequestFocus` parameter of the `TextField`'s `FocusNode`.
 
-`TextField.canRequestFocus` foi adicionado para suportar `DropdownMenu`, que
-tem um `TextField` que às vezes não é interativo. No entanto, a mesma
-funcionalidade pode ser alcançada definindo o parâmetro `canRequestFocus` de um
-`FocusNode` do `TextField`. `DropdownMenu` foi migrado para esta abordagem,
-e outros casos de uso devem seguir o mesmo padrão.
+## Background
 
-Aplicativos que usam `TextField.canRequestFocus` exibem o seguinte erro quando executados
-em modo debug: "Use `focusNode` instead.". Especificamente, isso significa que os usuários
-devem passar um `FocusNode` para `TextField.focusNode` com o
-parâmetro `FocusNode.canRequestFocus` definido.
+`TextField.canRequestFocus` was added to support `DropdownMenu`, which
+has a `TextField` that sometimes isn't interactive. However, the same
+functionality can be achieved by setting the `canRequestFocus` parameter of a
+`TextField`'s `FocusNode`. `DropdownMenu` has been migrated to this approach,
+and other use cases should follow the same pattern.
 
-## Guia de migração
+Apps that use `TextField.canRequestFocus` display the following error when run
+in debug mode: "Use `focusNode` instead.". Specifically, this means that users
+should pass a `FocusNode` to `TextField.focusNode` with the
+`FocusNode.canRequestFocus` parameter set.
 
-Para migrar, remova o parâmetro `TextField.canRequestFocus`. Crie um
-`FocusNode` com o parâmetro `FocusNode.canRequestFocus` definido para o valor desejado,
-e passe-o para `TextField.focusNode`.
+## Migration guide
 
-Código antes da migração:
+To migrate, remove the `TextField.canRequestFocus` parameter. Create a
+`FocusNode` with the `FocusNode.canRequestFocus` parameter set to the desired
+value, and pass that to `TextField.focusNode`.
+
+Code before migration:
 
 ```dart
 class _MyWidgetState extends State<MyWidget> {
@@ -44,7 +45,7 @@ class _MyWidgetState extends State<MyWidget> {
 }
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 class _MyWidgetState extends State<MyWidget> {
@@ -59,26 +60,26 @@ class _MyWidgetState extends State<MyWidget> {
 }
 ```
 
-## Linha do tempo
+## Timeline
 
-Implementado na versão: Revertido, aguardando reimplementação<br>
-Na versão estável: Ainda não
+Landed in version: Reverted, waiting to reland<br>
+In stable release: Not yet
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`DropdownMenu`][]
 * [`FocusNode.canRequestFocus`][]
 * [`TextField.canRequestFocus`][]
 * [`TextField.focusNode`][]
 
-Issues relevantes:
+Relevant issues:
 
 * [Broken selection on TextField if canRequestFocus: false][]
 * [DropdownMenu Disable text input][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [Add requestFocusOnTap to DropdownMenu][]
 * [Replace TextField.canRequestFocus with TextField.focusNode.canRequestFocus][]

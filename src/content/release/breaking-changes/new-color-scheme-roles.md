@@ -5,10 +5,11 @@ description: >-
   better align with Material Design 3.
   The 'ColorScheme.fromSeed' method is also updated to
   support the newly added colors.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 New color roles in `ColorScheme` include
 seven tone-based surfaces and containers, and twelve accent colors for
@@ -21,7 +22,7 @@ adapting to the Material Design 3 guidelines.
 
 ## Background
 
-The tone-based surface colors include: 
+The tone-based surface colors include:
 
 - `surfaceBright`
 - `surfaceDim`
@@ -33,7 +34,7 @@ The tone-based surface colors include:
 
 These changes help eliminate the use of widgets' `surfaceTintColor`, and
 replaces the old opacity-based model that applied a tinted overlay
-on top of surfaces based on their elevation.  
+on top of surfaces based on their elevation.
 
 The default `surfaceTintColor` for all widgets is now `null` and
 their default background color is now
@@ -47,7 +48,7 @@ had a high chroma (contained little black, white, and shades of grey).
 
 [Material color utilities]: {{site.pub-pkg}}/material_color_utilities
 
-## Guia de migração
+## Migration guide
 
 The differences caused by the updated `ColorScheme.fromSeed` and
 the new color roles should be small and acceptable.
@@ -57,7 +58,7 @@ To force the output to still be bright,
 set `dynamicSchemeVariant: DynamicSchemeVariant.fidelity` in
 `ColorScheme.fromSeed`. For example:
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 ColorScheme.fromSeed(
@@ -65,7 +66,7 @@ ColorScheme.fromSeed(
 )
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 ColorScheme.fromSeed(
@@ -81,7 +82,7 @@ To configure the appearance of the material components,
 `onBackground` should be replaced with `onSurface`, and
 `surfaceVariant` should be migrated to `surfaceContainerHighest`.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 final ColorScheme colorScheme = ColorScheme();
@@ -98,7 +99,7 @@ MaterialApp(
 )
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 final ColorScheme colorScheme = ColorScheme();
@@ -120,7 +121,7 @@ Custom components that used to look up `ColorScheme.background`,
 `ColorScheme.surface`, `ColorScheme.onSurface` and
 `ColorScheme.surfaceContainerHighest` instead.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 Color myColor1 = Theme.of(context).colorScheme.background;
@@ -128,7 +129,7 @@ Color myColor2 = Theme.of(context).colorScheme.onBackground;
 Color myColor3 = Theme.of(context).colorScheme.surfaceVariant;
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 Color myColor1 = Theme.of(context).colorScheme.surface;
@@ -136,19 +137,19 @@ Color myColor2 = Theme.of(context).colorScheme.onSurface;
 Color myColor3 = Theme.of(context).colorScheme.surfaceContainerHighest;
 ```
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 3.21.0-4.0.pre<br>
-Na versão estável: 3.22.0
+Landed in version: 3.21.0-4.0.pre<br>
+In stable release: 3.22.0
 
-## Referências
+## References
 
-Issues relevantes:
+Relevant issues:
 
 * [Support tone-based surface and surface container ColorScheme roles][]
 * [Support fidelity variant for ColorScheme.fromSeed][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [Introduce tone-based surfaces and accent color add-ons - Part 1][]
 * [Introduce tone-based surfaces and accent color add-ons - Part 2][]

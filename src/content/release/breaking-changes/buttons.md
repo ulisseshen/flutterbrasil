@@ -1,10 +1,11 @@
 ---
-title: New Buttons and Button Themes
+title: New Buttons and Button themes
 description: The basic material button classes have been replaced.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 A new set of basic material button widgets and themes have been added
 to Flutter. The original classes have been deprecated and will
@@ -27,7 +28,7 @@ properties are defined with `MaterialStateProperty`, which means that
 their value can depend on the button's state.
 
 
-## Contextoo
+## Context
 
 Rather than try and evolve the existing button classes and their theme
 in-place, we have introduced new replacement button widgets and
@@ -211,7 +212,7 @@ properties, like colors, for all of the button's possible states -
 like pressed, hovered, disabled, and focused.
 
 
-## Guia de migração
+## Migration guide
 
 Use the following information to migrate your buttons to the
 new API.
@@ -229,7 +230,7 @@ like a default `FlatButton`:
 
 ```dart
 final ButtonStyle flatButtonStyle = TextButton.styleFrom(
-  foregroundColor Colors.black87,
+  foregroundColor: Colors.black87,
   minimumSize: Size(88, 36),
   padding: EdgeInsets.symmetric(horizontal: 16),
   shape: const RoundedRectangleBorder(
@@ -249,7 +250,7 @@ Similarly, to make an `ElevatedButton` look like a default `RaisedButton`:
 ```dart
 final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
   foregroundColor: Colors.black87,
-  backgroundColor Colors.grey[300],
+  backgroundColor: Colors.grey[300],
   minimumSize: Size(88, 36),
   padding: EdgeInsets.symmetric(horizontal: 16),
   shape: const RoundedRectangleBorder(
@@ -638,14 +639,14 @@ OutlinedButton(
 )
 ```
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 1.20.0-0.0.pre<br>
-Na versão estável: 2.0.0
+Landed in version: 1.20.0-0.0.pre<br>
+In stable release: 2.0.0
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`ButtonStyle`][]
 * [`ButtonStyleButton`][]
@@ -659,7 +660,7 @@ Documentação da API:
 * [`TextButtonTheme`][]
 * [`TextButtonThemeData`][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [PR 59702: New Button Universe][]
 * [PR 73352: Deprecated obsolete Material classes: FlatButton, RaisedButton, OutlineButton][]

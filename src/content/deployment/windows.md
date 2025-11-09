@@ -1,147 +1,146 @@
 ---
-ia-translate: true
-title: Compilar e lançar um app desktop Windows
-description: Como lançar um app Flutter na Microsoft Store.
-short-title: windows
+title: Build and release a Windows desktop app
+description: How to release a Flutter app to the Microsoft Store.
+shortTitle: windows
 ---
 
-Uma abordagem conveniente para distribuir apps Windows
-é a [Microsoft Store][microsoftstore].
-Este guia fornece um passo a passo
-de como empacotar e implantar um app Flutter dessa maneira.
+One convenient approach to distributing Windows apps
+is the [Microsoft Store][microsoftstore].
+This guide provides a step-by-step walkthrough
+of packaging and deploying a Flutter app in this way.
 
 :::note
-Você não é obrigado a publicar apps Windows através da
-Microsoft Store, particularmente se preferir mais controle
-sobre a experiência de distribuição ou não quiser lidar
-com o processo de certificação. A documentação da Microsoft
-inclui mais informações sobre abordagens de instalação tradicionais,
-incluindo [Windows Installer][msidocs].
+You are not required to publish Windows apps through the
+Microsoft Store, particularly if you prefer more control
+over the distribution experience or don't want to deal
+with the certification process. The Microsoft documentation
+includes more information about traditional installation
+approaches, including [Windows Installer][msidocs].
 :::
 
-## Preliminares
+## Preliminaries
 
-Antes de começar o processo de lançamento
-de um app desktop Flutter Windows para a Microsoft Store,
-primeiro confirme que ele satisfaz as [Políticas da Microsoft Store][storepolicies].
+Before beginning the process of releasing
+a Flutter Windows desktop app to the Microsoft Store,
+first confirm that it satisfies [Microsoft Store Policies][storepolicies].
 
-Além disso, você deve se juntar à
-[Microsoft Partner Network][microsoftpartner] para poder enviar apps.
+Also, you must join the
+[Microsoft Partner Network][microsoftpartner] to be able to submit apps.
 
-## Configurar sua aplicação no Partner Center
+## Set up your application in the Partner Center
 
-Gerencie o ciclo de vida de uma aplicação no
+Manage an application's life cycle in the
 [Microsoft Partner Center][microsoftpartner].
 
-Primeiro, reserve o nome da aplicação e
-garanta que os direitos necessários ao nome existam.
-Uma vez que o nome é reservado, a aplicação
-será provisionada para serviços (como
-notificações push), e você pode começar a adicionar complementos.
+First, reserve the application name and
+ensure that the required rights to the name exist.
+Once the name is reserved, the application
+will be provisioned for services (such as
+push notifications), and you can start adding add-ons.
 
-Opções como preço, disponibilidade,
-classificações etárias e categoria têm que ser
-configuradas junto com a primeira submissão
-e são automaticamente retidas
-para as submissões subsequentes.
+Options such as pricing, availability,
+age ratings, and category have to be
+configured together with the first submission
+and are automatically retained
+for the subsequent submissions.
 
-## Empacotamento e implantação
+## Packaging and deployment
 
-Para publicar uma aplicação na Microsoft Store,
-você deve primeiro empacotá-la.
-Os formatos válidos são **.msix**, **.msixbundle**,
+In order to publish an application to Microsoft Store,
+you must first package it.
+The valid formats are **.msix**, **.msixbundle**,
 **.msixupload**, **.appx**, **.appxbundle**,
-**.appxupload**, e **.xap**.
+**.appxupload**, and **.xap**.
 
-### Empacotamento manual e implantação para a Microsoft Store
+### Manual packaging and deployment for the Microsoft Store
 
-Confira [empacotamento MSIX][msix packaging]
-para aprender sobre empacotamento
-de aplicações desktop Flutter Windows.
+Check out [MSIX packaging][msix packaging]
+to learn about packaging
+Flutter Windows desktop applications.
 
-Note que cada produto tem uma identidade única,
-que a Store atribui.
+Note that each product has a unique identity,
+which the Store assigns.
 
-Se o pacote está sendo construído manualmente,
-você precisa incluir os detalhes de identidade dele
-manualmente durante o empacotamento.
-As informações essenciais podem ser recuperadas
-do Partner Center usando as seguintes instruções:
+If the package is being built manually,
+you have to include its identity details
+manually during the packaging.
+The essential information can be retrieved
+from the Partner Center using the following instructions:
 
-1. No Partner Center, navegue até a aplicação.
-2. Selecione **Product management**.
-3. Recupere o nome de identidade do pacote, editor,
-   e nome de exibição do editor clicando em **Product identity**.
+1. In the Partner Center, navigate to the application.
+2. Select **Product management**.
+3. Retrieve the package identity name, publisher,
+   and publisher display name by clicking **Product identity**.
 
-Após empacotar manualmente a aplicação,
-envie-a manualmente para o
+After manually packaging the application,
+manually submit it to the
 [Microsoft Partner Center][microsoftpartner].
-Você pode fazer isso criando uma nova submissão,
-navegando para **Packages**,
-e fazendo upload do pacote de aplicação criado.
+You can do this by creating a new submission,
+navigating to **Packages**,
+and uploading the created application package.
 
-### Implantação contínua
+### Continuous deployment
 
-Além de criar e implantar manualmente o pacote,
-você pode automatizar o processo de build, empacotamento, versionamento,
-e implantação usando ferramentas CI/CD após ter enviado
-a aplicação para a Microsoft Store pela primeira vez.
+In addition to manually creating and deploying the package,
+you can automate the build, package, versioning,
+and deployment process using CI/CD tooling after having submitted
+the application to the Microsoft Store for the first time.
 
 #### Codemagic CI/CD
 
-[Codemagic CI/CD][codemagic] usa o
-[pacote pub `msix`][msix package] para empacotar
-aplicações desktop Flutter Windows.
+[Codemagic CI/CD][codemagic] uses the
+[`msix` pub package][msix package] to package
+Flutter Windows desktop applications.
 
-Para aplicações Flutter, use o
+For Flutter applications, use either the
 [Codemagic Workflow Editor][cmworkfloweditor]
-ou [codemagic.yaml][cmyaml]
-para empacotar a aplicação e implantá-la
-no Microsoft Partner Center.
-Opções adicionais (como a lista de
-capacidades e recursos de idioma
-contidos no pacote)
-podem ser configuradas usando este pacote.
+or [codemagic.yaml][cmyaml]
+to package the application and deploy it
+to the Microsoft Partner Center.
+Additional options (such as the list of
+capabilities and language resources
+contained in the package)
+can be configured using this package.
 
-Para publicação, o Codemagic usa a
-[API de submissão do Partner Center][partnercenterapi];
-então, o Codemagic requer
-[associar as contas Azure Active Directory
-e Partner Center][azureadassociation].
+For publishing, Codemagic uses the
+[Partner Center submission API][partnercenterapi];
+so, Codemagic requires
+[associating the Azure Active Directory
+and Partner Center accounts][azureadassociation].
 
 #### GitHub Actions CI/CD
 
-O GitHub Actions pode usar o
+GitHub Actions can use the
 [Microsoft Dev Store CLI](https://learn.microsoft.com/windows/apps/publish/msstore-dev-cli/overview)
-para empacotar aplicações em um MSIX e publicá-las na Microsoft Store.
-A [setup-msstore-cli](https://github.com/microsoft/setup-msstore-cli)
-GitHub Action instala a cli para que a Action possa usá-la para empacotamento
-e publicação.
+to package applications into an MSIX and publish them to the Microsoft Store.
+The [setup-msstore-cli](https://github.com/microsoft/setup-msstore-cli)
+GitHub Action installs the cli so that the Action can use it for packaging
+and publishing.
 
-Como o empacotamento do MSIX usa o
-[pacote pub `msix`][msix package], o `pubspec.yaml` do projeto
-deve conter um nó `msix_config` apropriado.
+As packaging the MSIX uses the
+[`msix` pub package][msix package], the project's `pubspec.yaml`
+must contain an appropriate `msix_config` node.
 
-Você deve criar um diretório Azure AD a partir do Dev Center com
-[permissão de administrador global](https://azure.microsoft.com/documentation/articles/active-directory-assign-admin-roles/).
+You must create an Azure AD directory from the Dev Center with
+[global administrator permission](https://azure.microsoft.com/documentation/articles/active-directory-assign-admin-roles/).
 
-A GitHub Action requer segredos de ambiente do partner center.
-`AZURE_AD_TENANT_ID`, `AZURE_AD_ClIENT_ID`, e `AZURE_AD_CLIENT_SECRET`
-são visíveis no Dev Center seguindo as instruções para a
+The GitHub Action requires environment secrets from the partner center.
+`AZURE_AD_TENANT_ID`, `AZURE_AD_ClIENT_ID`, and `AZURE_AD_CLIENT_SECRET`
+are visible on the Dev Center following the instructions for the
 [Windows Store Publish Action](https://github.com/marketplace/actions/windows-store-publish#obtaining-your-credentials).
-Você também precisa do segredo `SELLER_ID`, que pode ser encontrado no Dev Center
-em **Account Settings** > **Organization Profile** > **Legal Info**.
+You also need the `SELLER_ID` secret, which can be found in the Dev Center
+under **Account Settings** > **Organization Profile** > **Legal Info**.
 
-A aplicação já deve estar presente no Microsoft Dev Center com pelo
-menos uma submissão completa, e `msstore init` deve ser executado uma vez dentro
-do repositório antes que a Action possa ser realizada. Uma vez completo, executar
+The application must already be present in the Microsoft Dev Center with at
+least one complete submission, and `msstore init` must be run once within
+the repository before the Action can be performed. Once complete, running
 [`msstore package .`](https://learn.microsoft.com/windows/apps/publish/msstore-dev-cli/package-command)
-e
+and
 [`msstore publish`](https://learn.microsoft.com/windows/apps/publish/msstore-dev-cli/publish-command)
-em uma GitHub Action empacota a
-aplicação em um MSIX e faz upload para uma nova submissão no dev center.
+in a GitHub Action packages the
+application into an MSIX and uploads it to a new submission on the dev center.
 
-Os passos necessários para publicação MSIX se assemelham ao seguinte
+The steps necessary for MSIX publishing resemble the following
 
 ```yaml
 - uses: microsoft/setup-msstore-cli@v1
@@ -159,97 +158,96 @@ Os passos necessários para publicação MSIX se assemelham ao seguinte
   run: msstore publish -v
 ```
 
-<a id="updating-the-apps-version-number"></a>
-## Atualizando o número de versão do app
+## Updating the app's version number
 
-Para apps publicados na Microsoft Store,
-o número de versão deve ser definido durante o
-processo de empacotamento.
+For apps published to the Microsoft Store,
+the version number must be set during the
+packaging process.
 
-O número de versão padrão do app é `1.0.0.0`.
+The default version number of the app is `1.0.0.0`.
 
 :::note
-Apps da Microsoft Store não têm permissão para ter um
-número de Versão com um número de revisão diferente de zero.
-Portanto, o último número da versão deve
-permanecer zero para todos os lançamentos.
-Certifique-se de seguir as
-[diretrizes de versionamento][windowspackageversioning] da Microsoft.
+Microsoft Store apps are not allowed to have a
+Version with a revision number other than zero.
+Therefore, the last number of the version must
+remain zero for all releases.
+Ensure that you follow Microsoft's
+[versioning guidelines][windowspackageversioning].
 :::
 
-Para apps não publicados na Microsoft Store, você
-pode definir as versões de arquivo e produto do executável do app.
-A versão de arquivo padrão do executável é `1.0.0.1`,
-e sua versão de produto padrão é `1.0.0+1`. Para atualizar essas,
-navegue até o arquivo `pubspec.yaml` e atualize a
-seguinte linha:
+For apps not published to the Microsoft Store, you
+can set the app's executable's file and product versions.
+The executable's default file version is `1.0.0.1`,
+and its default product version is `1.0.0+1`. To update these,
+navigate to the `pubspec.yaml` file and update the
+following line:
 
 ```yaml
 version: 1.0.0+1
 ```
 
-O nome do build são três números separados por pontos,
-seguidos por um número de build opcional que é separado
-por um `+`. No exemplo acima, o nome do build é `1.0.0`
-e o número do build é `1`.
+The build name is three numbers separated by dots,
+followed by an optional build number that is separated
+by a `+`. In the example above, the build name is `1.0.0`
+and the build number is `1`.
 
-O nome do build se torna os três primeiros números das
-versões de arquivo e produto, enquanto o número do build se torna
-o quarto número das versões de arquivo e produto.
+The build name becomes the first three numbers of the
+file and product versions, while the build number becomes
+the fourth number of the file and product versions.
 
-Tanto o nome do build quanto o número podem ser substituídos em
-`flutter build windows` especificando `--build-name` e
-`--build-number`, respectivamente.
+Both the build name and number can be overridden in
+`flutter build windows` by specifying `--build-name` and
+`--build-number`, respectively.
 
 :::note
-Projetos Flutter criados antes do Flutter 3.3
-precisam ser atualizados para definir as informações de versão
-do executável. Para mais informações,
-consulte o [guia de migração de versão][version migration guide].
+Flutter projects created before Flutter 3.3
+need to be updated to set the executable's version
+information. For more information,
+refer to the [version migration guide][].
 :::
 
-## Adicionar ícones de app
+## Add app icons
 
-Para atualizar o ícone de uma aplicação desktop Flutter Windows
-antes de empacotar, use as
-seguintes instruções:
+To update the icon of a Flutter Windows
+desktop application before packaging use the
+following instructions:
 
-1. No projeto Flutter, navegue até
+1. In the Flutter project, navigate to
    **windows\runner\resources**.
-2. Substitua o **app_icon.ico** pelo ícone desejado.
-3. Se o nome do ícone for diferente de **app_icon.ico**,
-   proceda para alterar o valor **IDI_APP_ICON** no
-   arquivo **windows\runner\Runner.rc** para apontar para o novo caminho.
+2. Replace the **app_icon.ico** with the desired icon.
+3. If the name of the icon is other than **app_icon.ico**,
+   proceed to change the **IDI_APP_ICON** value in the
+   **windows\runner\Runner.rc** file to point to the new path.
 
-Ao empacotar com o [pacote pub `msix`][msix package],
-o caminho do logo também pode ser configurado dentro do arquivo `pubspec.yaml`.
+When packaging with the [`msix` pub package][msix package],
+the logo path can also be configured inside the `pubspec.yaml` file.
 
-Para atualizar a imagem da aplicação na listagem da Store,
-navegue até a etapa Store listing da submissão
-e selecione Store logos.
-A partir daí, você pode fazer upload do logo com
-o tamanho de 300 x 300 pixels.
+To update the application image in the Store listing,
+navigate to the Store listing step of the submission
+and select Store logos.
+From there, you can upload the logo with
+the size of 300 x 300 pixels.
 
-Todas as imagens enviadas são retidas para submissões subsequentes.
+All uploaded images are retained for subsequent submissions.
 
-## Validando o pacote da aplicação
+## Validating the application package
 
-Antes da publicação na Microsoft Store,
-primeiro valide o pacote da aplicação localmente.
+Before publication to the Microsoft Store,
+first validate the application package locally.
 
 [Windows App Certification Kit][windowsappcertification]
-é uma ferramenta incluída no
+is a tool included in the
 Windows Software Development Kit (SDK).
 
-Para validar a aplicação:
+To validate the application:
 
-1. Inicie o Windows App Cert Kit.
-2. Selecione o pacote desktop Flutter Windows
+1. Launch Windows App Cert Kit.
+2. Select the Flutter Windows desktop package
    (**.msix**, **.msixbundle**, etc.).
-3. Escolha um destino para o relatório de teste.
+3. Choose a destination for the test report.
 
-O relatório pode conter avisos e informações importantes,
-mesmo se a certificação passar.
+The report might contain important warnings and information,
+even if the certification passes.
 
 [azureadassociation]: https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center
 [cmworkfloweditor]: https://docs.codemagic.io/flutter-publishing/publishing-to-microsoft-store/

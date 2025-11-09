@@ -1,12 +1,12 @@
 name: lakes_interactive
 description: >-
   Sample app from "Adding interactivity":
-  https://docs.flutterbrasil.dev/ui/interactivity.
+  https://docs.flutter.dev/ui/interactivity.
 version: 1.0.0
 
 resolution: workspace
 environment:
-  sdk: ^3.6.0
+  sdk: ^3.9.0
 
 dependencies:
   flutter:

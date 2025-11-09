@@ -2,10 +2,11 @@
 title: Removal of AssetManifest.json
 description: >-
     Built Flutter apps will no longer include an AssetManifest.json asset file.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 Flutter apps included an asset file named `AssetManifest.json`.
 This file effectively contains a list of assets.
@@ -18,7 +19,7 @@ no longer generate it in a future release of Flutter.
 If your app's code needs to get a list of available assets,
 use the [`AssetManifest`][] API instead.
 
-## Guia de migração
+## Migration guide
 
 ### Reading asset manifest from Flutter application code
 
@@ -80,20 +81,25 @@ Reading this file isn't an officially supported workflow.
 The contents or format of the file might change in
 a future Flutter release without an announcement.
 
-## Linha do tempo
+## Timeline
 
 `AssetManifest.json` will no longer be generated starting with
 the fourth stable release after 3.19 or one year after the release of 3.19,
 whichever comes later.
 
-## Referências
+## References
 
-Issues relevantes:
+Relevant issues:
 
 * When building a Flutter app, the flutter tool generates an
   `AssetManifest.json` file that's unused by the framework [(Issue #143577)][]
+
+Relevant PR:
+
+* [Remove deprecated `AssetManifest.json` file][PR 172594]
 
 [`AssetBundle`]: {{site.api}}/flutter/services/AssetBundle-class.html
 [`AssetManifest`]: {{site.api}}/flutter/services/AssetManifest-class.html
 [(Issue #143577)]: {{site.repo.flutter}}/issues/143577
 [`standard_message_codec`]: {{site.pub-pkg}}/standard_message_codec
+[PR 172594]: {{site.repo.flutter}}/pull/172594

@@ -3,15 +3,16 @@ title: TextField FocusNode attach location change
 description: >
   EditableText.focusNode is no longer attached to
   EditableTextState's BuildContext.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 `EditableText.focusNode` is now attached to
 a dedicated `Focus` widget below `EditableText`.
 
-## Contexto
+## Context
 
 A text input field widget (`TextField`, for example)
 typically owns a `FocusNode`.
@@ -35,7 +36,7 @@ below the `BuildContext` of the `EditableTextState`) couldn't handle
 shortcuts even when that `EditableText` was focused, for
 the reason stated above.
 
-## Descrição da mudança
+## Description of change
 
 `EditableTextState` now creates a dedicated `Focus` widget to
 host `EditableText.focusNode`.
@@ -51,7 +52,7 @@ tell if a `FocusNode` is associated with a text input field.
 This change does not break any builds but can introduce runtime issues, or
 cause existing tests to fail.
 
-## Guia de migração
+## Migration guide
 
 The `EditableText` widget takes a `FocusNode` as a parameter, which was
 previously attached to its `EditableText`'s `BuildContext`. If you are relying
@@ -63,7 +64,7 @@ field or a selectable text field like so:
 
 Then please read on and consider following the migration steps to avoid breakages.
 
-If you're not sure whether a codebase needs migration, 
+If you're not sure whether a codebase needs migration,
 search for `is EditableText`, `as EditableText`, `is EditableTextState`, and
 `as EditableTextState` and verify if any of the search results are doing
 a typecheck or typecast on a `FocusNode.context`.
@@ -76,7 +77,7 @@ invoke from the given `FocusNode`, fire an `Intent` from that `BuildContext`.
 For instance, if you wish to update the text of the currently focused
 `TextField` to a specific value, see the following example:
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 final Widget? focusedWidget = primaryFocus?.context?.widget;
@@ -85,7 +86,7 @@ if (focusedWidget is EditableText) {
 }
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 final BuildContext? focusedContext = primaryFocus?.context;
@@ -97,18 +98,18 @@ if (focusedContext != null) {
 For a comprehensive list of `Intent`s supported by the `EditableText` widget,
 refer to the documentation of the `EditableText` widget.
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 2.6.0-12.0.pre<br>
-Na versão estável: 2.10.0
+Landed in version: 2.6.0-12.0.pre<br>
+In stable release: 2.10.0
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`EditableText`][]
 
-PRs relevantes:
+Relevant PR:
 
 * [Move text editing Actions to EditableTextState][]
 

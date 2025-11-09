@@ -1,44 +1,41 @@
 ---
-title: Criar uma grid list
-description: Como implementar uma grid list.
-js:
-  - defer: true
-    url: /assets/js/inject_dartpad.js
-ia-translate: true
+title: Create a grid list
+description: How to implement a grid list.
 ---
 
 <?code-excerpt path-base="cookbook/lists/grid_lists"?>
 
-Em alguns casos, você pode querer exibir seus itens como uma grade em vez de
-uma lista normal de itens que vêm um após o outro.
-Para esta tarefa, use o widget [`GridView`][].
+In some cases, you might want to display your items as a grid rather than
+a normal list of items that come one after the next.
+For this task, use the [`GridView`][] widget.
 
-A maneira mais simples de começar a usar grades é usando o
-construtor [`GridView.count()`][],
-porque permite que você especifique quantas linhas ou colunas você gostaria.
+The simplest way to get started using grids is by using the
+[`GridView.count()`][] constructor,
+because it allows you to specify how many rows or columns you'd like.
 
-Para visualizar como `GridView` funciona,
-gere uma lista de 100 widgets que exibem seu índice na lista.
+To visualize how `GridView` works,
+generate a list of 100 widgets that display their index in the list.
 
 <?code-excerpt "lib/main.dart (GridView)" replace="/^body\: //g"?>
 ```dart
 GridView.count(
-  // Create a grid with 2 columns. If you change the scrollDirection to
-  // horizontal, this produces 2 rows.
+  // Create a grid with 2 columns.
+  // If you change the scrollDirection to horizontal,
+  // this produces 2 rows.
   crossAxisCount: 2,
-  // Generate 100 widgets that display their index in the List.
+  // Generate 100 widgets that display their index in the list.
   children: List.generate(100, (index) {
     return Center(
       child: Text(
         'Item $index',
-        style: Theme.of(context).textTheme.headlineSmall,
+        style: TextTheme.of(context).headlineSmall,
       ),
     );
   }),
 ),
 ```
 
-## Exemplo interativo
+## Interactive example
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter GridView hands-on example in DartPad" run="true"
@@ -58,19 +55,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: title,
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text(title),
-        ),
+        appBar: AppBar(title: const Text(title)),
         body: GridView.count(
-          // Create a grid with 2 columns. If you change the scrollDirection to
-          // horizontal, this produces 2 rows.
+          // Create a grid with 2 columns.
+          // If you change the scrollDirection to horizontal,
+          // this produces 2 rows.
           crossAxisCount: 2,
-          // Generate 100 widgets that display their index in the List.
+          // Generate 100 widgets that display their index in the list.
           children: List.generate(100, (index) {
             return Center(
               child: Text(
                 'Item $index',
-                style: Theme.of(context).textTheme.headlineSmall,
+                style: TextTheme.of(context).headlineSmall,
               ),
             );
           }),
@@ -82,7 +78,7 @@ class MyApp extends StatelessWidget {
 ```
 
 <noscript>
-  <img src="/assets/images/docs/cookbook/grid-list.gif" alt="Grid List Demo" class="site-mobile-screenshot" />
+  <img src="/assets/images/docs/cookbook/grid-list.webp" alt="Grid List Demo" class="site-mobile-screenshot" />
 </noscript>
 
 [`GridView`]: {{site.api}}/flutter/widgets/GridView-class.html

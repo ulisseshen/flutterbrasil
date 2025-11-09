@@ -30,7 +30,7 @@ We encourage you to reach out and join the conversation.
 
 An easy way to send feedback is to "thumbs up" issues important to you
 in either the issue tracker for the [Flutter SDK and API docs][issues],
-or the [docs.flutterbrasil.dev website][doc-issues].
+or the [docs.flutter.dev website][doc-issues].
 
 Other ways you can contribute:
 
@@ -41,10 +41,10 @@ Other ways you can contribute:
 * [Report bugs and request features][issues]
 * [Report API docs bugs][issues]
 * [Submit PRs to the Flutter SDK][PRs]
-* [Request docs for docs.flutterbrasil.dev][doc-issues]
-* [Submit PRs to docs.flutterbrasil.dev][doc-PRs]
+* [Request docs for docs.flutter.dev][doc-issues]
+* [Submit PRs to docs.flutter.dev][doc-PRs]
 * [Follow us on Twitter: @flutterdev](https://twitter.com/flutterdev/)
-* [Read the Flutter Publication on Medium](https://medium.com/flutter)
+* [Read the Flutter blog](https://blog.flutter.dev)
 * [Sign up to Future UX Studies on Flutter](https://flutter.dev/research-signup)
 * [Join the subreddit to keep up with the latest in the Flutter
    community][reddit]

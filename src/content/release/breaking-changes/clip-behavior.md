@@ -2,16 +2,17 @@
 title: Clip Behavior
 description: >
   Flutter unifies clipBehavior and defaults to not clip in most cases.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 Flutter now defaults to _not_ clip except for a few specialized widgets
 (such as `ClipRect`). To override the no-clip default,
 explicitly set `clipBehavior` in widgets constructions.
 
-## Contexto
+## Context
 
 Flutter used to be slow because of clips. For example,
 the Flutter gallery app benchmark had an average frame
@@ -65,7 +66,7 @@ for most widgets to save performance, except the following:
 * `NestedScrollView` defaults to `Clip.hardEdge`
 * `ShrinkWrappingViewport` defaults to `Clip.hardEdge`
 
-## Guia de migração
+## Migration guide
 
 You have 4 choices for migrating your code:
 
@@ -100,7 +101,7 @@ For the `ListWheelViewport` widget, if you previously specified
 `Clip.none` for `clipToSize = false` and
 `Clip.hardEdge` for `clipToSize = true`.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
     await tester.pumpWidget(
@@ -121,7 +122,7 @@ Código antes da migração:
     );
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
     await tester.pumpWidget(
@@ -142,24 +143,24 @@ Código após a migração:
     );
 ```
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: _various_<br>
-Na versão estável: 2.0.0
+Landed in version: _various_<br>
+In stable release: 2.0.0
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`Clip`][]
 
-Issues relevantes:
+Relevant issues:
 
 * [Issue 13736][]
 * [Issue 18057][]
 * [Issue 21830][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [PR 5420][]: Remove unnecessary saveLayer
 * [PR 18576][]: Add Clip enum to Material and related widgets

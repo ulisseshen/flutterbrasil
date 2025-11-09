@@ -1,12 +1,13 @@
 ---
 title: A new way to customize context menus
 description: >
-  Several hard-coded parameters for customizing context menus have 
+  Several hard-coded parameters for customizing context menus have
   now been replaced by a generic widget builder.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 Context menus, or text selection toolbars, are the menus that show up when long
 pressing or right clicking on text in Flutter, and they show options like
@@ -16,7 +17,7 @@ possible to narrowly customize them using `ToolbarOptions` and
 like everything else in Flutter, and the specific configuration parameters have
 been deprecated.
 
-## Contexto
+## Context
 
 Previously, it was possible to disable buttons from the context menus using
 `TextSelectionControls`, but any customization beyond that required copying and
@@ -24,7 +25,7 @@ editing hundreds of lines of custom classes in the framework. Now, all of this
 has been replaced by a simple builder function, `contextMenuBuilder`, which
 allows any Flutter widget to be used as a context menu.
 
-## Descrição da mudança
+## Description of change
 
 Context menus are now built from the `contextMenuBuilder` parameter, which has
 been added to all text-editing and text-selection widgets. If one is not
@@ -72,7 +73,7 @@ on GitHub.
 All related deprecated features were flagged with the deprecation warning "Use
 `contextMenuBuilder` instead."
 
-## Guia de migração
+## Migration guide
 
 In general, any previous changes to context menus that have been deprecated now
 require the use of the `contextMenuBuilder` parameter on the relevant
@@ -316,19 +317,19 @@ repository in
 [`custom_menu_page.dart`]({{site.repo.samples}}/blob/main/context_menus/lib/custom_menu_page.dart)
 on GitHub.
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 3.6.0-0.0.pre<br>
-Na versão estável: 3.7.0
+Landed in version: 3.6.0-0.0.pre<br>
+In stable release: 3.7.0
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`TextField.contextMenuBuilder`]({{site.api}}/flutter/material/TextField/contextMenuBuilder.html)
 * [`AdaptiveTextSelectionToolbar`]({{site.api}}/flutter/material/AdaptiveTextSelectionToolbar-class.html)
 
-Issues relevantes:
+Relevant issues:
 
 * [Simple custom text selection toolbars]({{site.repo.flutter}}/issues/73574)
 * [Right click menu outside of text fields]({{site.repo.flutter}}/issues/98272)
@@ -339,7 +340,7 @@ Issues relevantes:
 * [Disable context menu from browser]({{site.repo.flutter}}/issues/78671)
 * [Custom context menus don't show up for Flutter web]({{site.repo.flutter}}/issues/84219)
 
-PRs relevantes:
+Relevant PRs:
 
 * [ContextMenus]({{site.repo.flutter}}/pull/107193)
 * [Ability to disable the browser's context menu on web]({{site.repo.flutter}}/pull/118194)

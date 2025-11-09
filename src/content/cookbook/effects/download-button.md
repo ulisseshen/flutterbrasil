@@ -1,43 +1,37 @@
 ---
-title: Criar um botão de download
-description: Como implementar um botão de download.
-js:
-  - defer: true
-    url: /assets/js/inject_dartpad.js
-ia-translate: true
+title: Create a download button
+description: How to implement a download button.
 ---
 
 <?code-excerpt path-base="cookbook/effects/download_button"?>
 
-Aplicativos estão cheios de botões que executam comportamentos de longa duração.
-Por exemplo, um botão pode acionar um download,
-que inicia um processo de download, recebe dados ao longo do tempo,
-e então fornece acesso ao recurso baixado.
-É útil mostrar ao usuário o progresso de um
-processo de longa duração, e o próprio botão é um bom lugar
-para fornecer este feedback. Nesta receita,
-você construirá um botão de download que transiciona através de
-múltiplos estados visuais, baseado no status de um download de aplicativo.
+Apps are filled with buttons that execute long-running behaviors.
+For example, a button might trigger a download,
+which starts a download process, receives data over time,
+and then provides access to the downloaded asset.
+It's helpful to show the user the progress of a
+long-running process, and the button itself is a good place
+to provide this feedback. In this recipe,
+you'll build a download button that transitions through
+multiple visual states, based on the status of an app download.
 
-A seguinte animação mostra o comportamento do aplicativo:
+The following animation shows the app's behavior:
 
-![O botão de download passa por seus estágios](/assets/images/docs/cookbook/effects/DownloadButton.gif){:.site-mobile-screenshot}
+![The download button cycles through its stages](/assets/images/docs/cookbook/effects/DownloadButton.webp){:.site-mobile-screenshot}
 
-## Definir um novo widget stateless
+## Define a new stateless widget
 
-Seu widget de botão precisa mudar sua aparência ao longo do tempo.
-Portanto, você precisa implementar seu botão com um
-widget stateless personalizado.
+Your button widget needs to change its appearance over time.
+Therefore, you need to implement your button with a custom
+stateless widget.
 
-Defina um novo widget stateless chamado `DownloadButton`.
+Define a new stateless widget called `DownloadButton`.
 
 <?code-excerpt "lib/stateful_widget.dart (DownloadButton)"?>
 ```dart
 @immutable
 class DownloadButton extends StatelessWidget {
-  const DownloadButton({
-    super.key,
-  });
+  const DownloadButton({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -47,31 +41,24 @@ class DownloadButton extends StatelessWidget {
 }
 ```
 
-## Definir os possíveis estados visuais do botão
+## Define the button's possible visual states
 
-A apresentação visual do botão de download é baseada em um
-status de download fornecido. Defina os possíveis estados do
-download, e então atualize `DownloadButton` para aceitar
-um `DownloadStatus` e um `Duration` para quanto tempo o botão
-deve levar para animar de um status para outro.
+The download button's visual presentation is based on a
+given download status. Define the possible states of
+the download, and then update `DownloadButton` to accept
+a `DownloadStatus` and a `Duration` for how long the button
+should take to animate from one status to another.
 
 <?code-excerpt "lib/visual_states.dart (VisualStates)"?>
 ```dart
-enum DownloadStatus {
-  notDownloaded,
-  fetchingDownload,
-  downloading,
-  downloaded,
-}
+enum DownloadStatus { notDownloaded, fetchingDownload, downloading, downloaded }
 
 @immutable
 class DownloadButton extends StatelessWidget {
   const DownloadButton({
     super.key,
     required this.status,
-    this.transitionDuration = const Duration(
-      milliseconds: 500,
-    ),
+    this.transitionDuration = const Duration(milliseconds: 500),
   });
 
   final DownloadStatus status;
@@ -86,47 +73,47 @@ class DownloadButton extends StatelessWidget {
 ```
 
 :::note
-Cada vez que você define um widget personalizado,
-você deve decidir se todas as informações relevantes
-são fornecidas àquele widget
-de seu pai ou se aquele widget orquestra
-o comportamento do aplicativo dentro de si mesmo.
-Por exemplo, `DownloadButton` poderia receber o
-`DownloadStatus` atual de seu pai,
-ou o `DownloadButton` poderia orquestrar o
-processo de download em si dentro de seu objeto `State`.
-Para a maioria dos widgets, a melhor resposta é passar as informações relevantes
-para o widget de seu pai,
-ao invés de gerenciar o comportamento dentro do widget.
-Ao passar todas as informações relevantes,
-você garante maior reusabilidade para o widget,
-testes mais fáceis, e mudanças mais fáceis no comportamento
-do aplicativo no futuro.
+Each time you define a custom widget,
+you must decide whether all relevant
+information is provided to that widget
+from its parent or if that widget orchestrates
+the application behavior within itself.
+For example, `DownloadButton` could receive the
+current `DownloadStatus` from its parent,
+or the `DownloadButton` could orchestrate the
+download process itself within its `State` object.
+For most widgets, the best answer is to pass the relevant
+information into the widget from its parent,
+rather than manage behavior within the widget.
+By passing in all the relevant information,
+you ensure greater reusability for the widget,
+easier testing, and easier changes to application
+behavior in the future.
 :::
 
-## Exibir a forma do botão
+## Display the button shape
 
-O botão de download muda sua forma baseado no status de
-download. O botão exibe um retângulo arredondado cinza durante
-os estados `notDownloaded` e `downloaded`.
-O botão exibe um círculo transparente durante os
-estados `fetchingDownload` e `downloading`.
+The download button changes its shape based on the download
+status. The button displays a grey, rounded rectangle during
+the `notDownloaded` and `downloaded` states.
+The button displays a transparent circle during the
+`fetchingDownload` and `downloading` states.
 
-Baseado no `DownloadStatus` atual,
-construa um `AnimatedContainer` com uma
-`ShapeDecoration` que exibe um retângulo
-arredondado ou um círculo.
+Based on the current `DownloadStatus`,
+build an `AnimatedContainer` with a
+`ShapeDecoration` that displays a rounded
+rectangle or a circle.
 
-Considere definir a árvore de widgets da forma em um
-widget `Stateless` separado para que o método `build()`
-principal permaneça simples, permitindo as adições
-que seguem. Ao invés de criar uma função para retornar um widget,
-como `Widget _buildSomething() {}`, sempre prefira criar um
-`StatelessWidget` ou um `StatefulWidget` que é mais performático. Mais
-considerações sobre isso podem ser encontradas na [documentação]({{site.api}}/flutter/widgets/StatelessWidget-class.html)
-ou em um vídeo dedicado no canal [YouTube]({{site.yt.watch}}?v=IOyq-eTRhvo) do Flutter.
+Consider defining the shape's widget tree in a separated
+`Stateless` widget so that the main `build()`
+method remains simple, allowing for the additions
+that follow. Instead of creating a function to return a widget,
+like `Widget _buildSomething() {}`, always prefer creating a
+`StatelessWidget` or a `StatefulWidget` which is more performant. More
+considerations on this can be found in the [documentation]({{site.api}}/flutter/widgets/StatelessWidget-class.html)
+or in a dedicated video in the Flutter [YouTube channel]({{site.yt.watch}}?v=IOyq-eTRhvo).
 
-Por enquanto, o child de `AnimatedContainer` é apenas um `SizedBox` porque voltaremos a ele em outro passo.
+For now, the `AnimatedContainer` child is just a `SizedBox` because we will come back at it in another step.
 
 <?code-excerpt "lib/display.dart (Display)"?>
 ```dart
@@ -135,9 +122,7 @@ class DownloadButton extends StatelessWidget {
   const DownloadButton({
     super.key,
     required this.status,
-    this.transitionDuration = const Duration(
-      milliseconds: 500,
-    ),
+    this.transitionDuration = const Duration(milliseconds: 500),
   });
 
   final DownloadStatus status;
@@ -201,29 +186,29 @@ class ButtonShapeWidget extends StatelessWidget {
 }
 ```
 
-Você pode se perguntar por que você precisa de um widget `ShapeDecoration`
-para um círculo transparente, dado que é invisível.
-O propósito do círculo invisível é orquestrar
-a animação desejada. O `AnimatedContainer` começa com um retângulo
-arredondado. Quando o `DownloadStatus` muda para `fetchingDownload`,
-o `AnimatedContainer` precisa animar de um retângulo arredondado
-para um círculo, e então desaparecer conforme a animação ocorre.
-A única maneira de implementar esta animação é definir tanto
-a forma inicial de um retângulo arredondado quanto a
-forma final de um círculo. Mas, você não quer que o círculo
-final seja visível, então você o torna transparente,
-o que causa um desaparecimento animado.
+You might wonder why you need a `ShapeDecoration`
+widget for a transparent circle, given that it's invisible.
+The purpose of the invisible circle is to orchestrate
+the desired animation. The `AnimatedContainer` begins with a rounded
+rectangle. When the `DownloadStatus` changes to `fetchingDownload`,
+the `AnimatedContainer` needs to animate from a rounded rectangle
+to a circle, and then fade out as the animation takes place.
+The only way to implement this animation is to define both
+the beginning shape of a rounded rectangle and the
+ending shape of a circle. But, you don't want the final
+circle to be visible, so you make it transparent,
+which causes an animated fade-out.
 
-## Exibir o texto do botão
+## Display the button text
 
-O `DownloadButton` exibe `GET` durante a
-fase `notDownloaded`, `OPEN` durante a fase `downloaded`,
-e nenhum texto entre elas.
+The `DownloadButton` displays `GET` during the
+`notDownloaded` phase, `OPEN` during the `downloaded`
+phase, and no text in between.
 
-Adicione widgets para exibir texto durante cada fase de download,
-e anime a opacidade do texto entre elas. Adicione a árvore de widgets de texto
-como um child do `AnimatedContainer` no
-widget wrapper do botão.
+Add widgets to display text during each download phase,
+and animate the text's opacity in between. Add the text
+widget tree as a child of the `AnimatedContainer` in the
+button wrapper widget.
 
 <?code-excerpt "lib/display_text.dart (DisplayText)"?>
 ```dart
@@ -272,9 +257,9 @@ class ButtonShapeWidget extends StatelessWidget {
             isDownloaded ? 'OPEN' : 'GET',
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: CupertinoColors.activeBlue,
-                ),
+              fontWeight: FontWeight.bold,
+              color: CupertinoColors.activeBlue,
+            ),
           ),
         ),
       ),
@@ -283,18 +268,18 @@ class ButtonShapeWidget extends StatelessWidget {
 }
 ```
 
-## Exibir um spinner enquanto busca o download
+## Display a spinner while fetching download
 
-Durante a fase `fetchingDownload`, o `DownloadButton`
-exibe um spinner radial. Este spinner aparece gradualmente da
-fase `notDownloaded` e desaparece gradualmente para
-a fase `fetchingDownload`.
+During the `fetchingDownload` phase, the `DownloadButton`
+displays a radial spinner. This spinner fades in from
+the `notDownloaded` phase and fades out to
+the `fetchingDownload` phase.
 
-Implemente um spinner radial que fica em cima da forma
-do botão e aparece e desaparece nos momentos apropriados.
+Implement a radial spinner that sits on top of the button
+shape and fades in and out at the appropriate times.
 
-Removemos o construtor do `ButtonShapeWidget` para manter o
-foco em seu método build e o widget `Stack` que adicionamos.
+We have removed the `ButtonShapeWidget`'s constructor to keep the
+focus on its build method and the `Stack` widget we've added.
 
 <?code-excerpt "lib/spinner.dart (Spinner)"?>
 ```dart
@@ -328,20 +313,20 @@ Widget build(BuildContext context) {
 }
 ```
 
-## Exibir o progresso e um botão de parar enquanto baixa
+## Display the progress and a stop button while downloading
 
-Após a fase `fetchingDownload` está a fase `downloading`.
-Durante a fase `downloading`, o `DownloadButton`
-substitui o spinner de progresso radial por uma
-barra de progresso radial crescente. O `DownloadButton` também exibe um ícone de botão
-de parar para que o usuário possa cancelar um download em progresso.
+After the `fetchingDownload` phase is the `downloading` phase.
+During the `downloading` phase, the `DownloadButton`
+replaces the radial progress spinner with a growing
+radial progress bar. The `DownloadButton` also displays a stop
+button icon so that the user can cancel an in-progress download.
 
-Adicione uma propriedade de progresso ao widget `DownloadButton`,
-e então atualize a exibição de progresso para mudar para uma barra
-de progresso radial durante a fase `downloading`.
+Add a progress property to the `DownloadButton` widget,
+and then update the progress display to switch to a radial
+progress bar during the `downloading` phase.
 
-Em seguida, adicione um ícone de botão de parar no centro da
-barra de progresso radial.
+Next, add a stop button icon at the center of the
+radial progress bar.
 
 <?code-excerpt "lib/stop.dart (StopIcon)"?>
 ```dart
@@ -386,17 +371,17 @@ Widget build(BuildContext context) {
 }
 ```
 
-## Adicionar callbacks de toque no botão
+## Add button tap callbacks
 
-O último detalhe que seu `DownloadButton` precisa são os
-comportamentos do botão. O botão deve fazer coisas quando o usuário toca nele.
+The last detail that your `DownloadButton` needs is the
+button behavior. The button must do things when the user taps it.
 
-Adicione propriedades de widget para callbacks para iniciar um download,
-cancelar um download e abrir um download.
+Add widget properties for callbacks to start a download,
+cancel a download, and open a download.
 
-Finalmente, envolva a árvore de widgets existente de `DownloadButton`
-com um widget `GestureDetector`, e encaminhe o
-evento de toque para a propriedade de callback correspondente.
+Finally, wrap `DownloadButton`'s existing widget tree
+with a `GestureDetector` widget, and forward the
+tap event to the corresponding callback property.
 
 <?code-excerpt "lib/button_taps.dart (TapCallbacks)"?>
 ```dart
@@ -453,24 +438,24 @@ class DownloadButton extends StatelessWidget {
 }
 ```
 
-Parabéns! Você tem um botão que muda sua exibição
-dependendo de em qual fase o botão está: não baixado,
-buscando download, baixando, e baixado.
-Agora, o usuário pode tocar para iniciar um download, tocar para cancelar um
-download em progresso, e tocar para abrir um download completo.
+Congratulations! You have a button that changes its display
+depending on which phase the button is in: not downloaded,
+fetching download, downloading, and downloaded.
+Now, the user can tap to start a download, tap to cancel an
+in-progress download, and tap to open a completed download.
 
-## Exemplo interativo
+## Interactive example
 
-Execute o aplicativo:
+Run the app:
 
-* Clique no botão **GET** para iniciar um
-  download simulado.
-* O botão muda para um indicador de progresso
-  para simular um download em progresso.
-* Quando o download simulado estiver completo, o
-  botão transiciona para **OPEN**, para indicar
-  que o aplicativo está pronto para o usuário
-  abrir o recurso baixado.
+* Click the **GET** button to kick off a
+  simulated download.
+* The button changes to a progress indicator
+  to simulate an in-progress download.
+* When the simulated download is complete, the
+  button transitions to **OPEN**, to indicate
+  that the app is ready for the user
+  to open the downloaded asset.
 
 <!-- start dartpad -->
 
@@ -506,18 +491,18 @@ class _ExampleCupertinoDownloadButtonState
     super.initState();
     _downloadControllers = List<DownloadController>.generate(
       20,
-      (index) => SimulatedDownloadController(onOpenDownload: () {
-        _openDownload(index);
-      }),
+      (index) => SimulatedDownloadController(
+        onOpenDownload: () {
+          _openDownload(index);
+        },
+      ),
     );
   }
 
   void _openDownload(int index) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Open App ${index + 1}'),
-      ),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text('Open App ${index + 1}')));
   }
 
   @override
@@ -526,7 +511,7 @@ class _ExampleCupertinoDownloadButtonState
       appBar: AppBar(title: const Text('Apps')),
       body: ListView.separated(
         itemCount: _downloadControllers.length,
-        separatorBuilder: (_, __) => const Divider(),
+        separatorBuilder: (_, _) => const Divider(),
         itemBuilder: _buildListItem,
       ),
     );
@@ -581,17 +566,11 @@ class DemoAppIcon extends StatelessWidget {
           height: 80,
           child: DecoratedBox(
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Colors.red, Colors.blue],
-              ),
+              gradient: LinearGradient(colors: [Colors.red, Colors.blue]),
               borderRadius: BorderRadius.all(Radius.circular(20)),
             ),
             child: Center(
-              child: Icon(
-                Icons.ac_unit,
-                color: Colors.white,
-                size: 40,
-              ),
+              child: Icon(Icons.ac_unit, color: Colors.white, size: 40),
             ),
           ),
         ),
@@ -600,12 +579,7 @@ class DemoAppIcon extends StatelessWidget {
   }
 }
 
-enum DownloadStatus {
-  notDownloaded,
-  fetchingDownload,
-  downloading,
-  downloaded,
-}
+enum DownloadStatus { notDownloaded, fetchingDownload, downloading, downloaded }
 
 abstract class DownloadController implements ChangeNotifier {
   DownloadStatus get downloadStatus;
@@ -622,9 +596,9 @@ class SimulatedDownloadController extends DownloadController
     DownloadStatus downloadStatus = DownloadStatus.notDownloaded,
     double progress = 0.0,
     required VoidCallback onOpenDownload,
-  })  : _downloadStatus = downloadStatus,
-        _progress = progress,
-        _onOpenDownload = onOpenDownload;
+  }) : _downloadStatus = downloadStatus,
+       _progress = progress,
+       _onOpenDownload = onOpenDownload;
 
   DownloadStatus _downloadStatus;
   @override
@@ -834,9 +808,9 @@ class ButtonShapeWidget extends StatelessWidget {
             isDownloaded ? 'OPEN' : 'GET',
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: CupertinoColors.activeBlue,
-                ),
+              fontWeight: FontWeight.bold,
+              color: CupertinoColors.activeBlue,
+            ),
           ),
         ),
       ),
@@ -869,9 +843,11 @@ class ProgressIndicatorWidget extends StatelessWidget {
             backgroundColor: isDownloading
                 ? CupertinoColors.lightBackgroundGray
                 : Colors.transparent,
-            valueColor: AlwaysStoppedAnimation(isFetching
-                ? CupertinoColors.lightBackgroundGray
-                : CupertinoColors.activeBlue),
+            valueColor: AlwaysStoppedAnimation(
+              isFetching
+                  ? CupertinoColors.lightBackgroundGray
+                  : CupertinoColors.activeBlue,
+            ),
             strokeWidth: 2,
             value: isFetching ? null : progress,
           );

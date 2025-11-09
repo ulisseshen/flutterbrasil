@@ -1,58 +1,57 @@
 ---
-ia-translate: true
-title: Manipular erros no Flutter
-description: Como controlar mensagens de erro e logging de erros
+title: Handling errors in Flutter
+description: How to control error messages and logging of errors
 ---
 
 <?code-excerpt path-base="testing/errors"?>
 
-O framework Flutter captura erros que ocorrem durante callbacks
-acionados pelo próprio framework, incluindo erros encontrados
-durante as fases de build, layout e pintura. Erros que não ocorrem
-dentro dos callbacks do Flutter não podem ser capturados pelo framework,
-mas você pode manipulá-los configurando um manipulador de erros no
+The Flutter framework catches errors that occur during callbacks
+triggered by the framework itself, including errors encountered
+during the build, layout, and paint phases. Errors that don't occur
+within Flutter's callbacks can't be caught by the framework,
+but you can handle them by setting up an error handler on the
 [`PlatformDispatcher`][].
 
-Todos os erros capturados pelo Flutter são roteados para o
-manipulador [`FlutterError.onError`][]. Por padrão,
-isso chama [`FlutterError.presentError`][],
-que despeja o erro nos logs do dispositivo.
-Ao executar de um IDE, o inspetor sobrescreve esse
-comportamento para que os erros também possam ser roteados para o console
-do IDE, permitindo que você inspecione os
-objetos mencionados na mensagem.
+All errors caught by Flutter are routed to the
+[`FlutterError.onError`][] handler. By default,
+this calls [`FlutterError.presentError`][],
+which dumps the error to the device logs.
+When running from an IDE, the inspector overrides this
+behavior so that errors can also be routed to the IDE's
+console, allowing you to inspect the
+objects mentioned in the message.
 
 :::note
-Considere chamar [`FlutterError.presentError`][]
-do seu manipulador de erros personalizado para ver
-os logs no console também.
+Consider calling [`FlutterError.presentError`][]
+from your custom error handler in order to see
+the logs in the console as well.
 :::
 
-Quando um erro ocorre durante a fase de build,
-o callback [`ErrorWidget.builder`][] é
-invocado para construir o widget que é usado
-em vez daquele que falhou. Por padrão,
-no modo debug isso mostra uma mensagem de erro em vermelho,
-e no modo release isso mostra um fundo cinza.
+When an error occurs during the build phase,
+the [`ErrorWidget.builder`][] callback is
+invoked to build the widget that is used
+instead of the one that failed. By default,
+in debug mode this shows an error message in red,
+and in release mode this shows a gray background.
 
-Quando erros ocorrem sem um callback Flutter na pilha de chamadas,
-eles são manipulados pelo callback de erro do `PlatformDispatcher`. Por padrão,
-isso apenas imprime erros e não faz mais nada.
+When errors occur without a Flutter callback on the call stack,
+they are handled by the `PlatformDispatcher`'s error callback. By default,
+this only prints errors and does nothing else.
 
-Você pode personalizar esses comportamentos,
-tipicamente configurando-os para valores na
-sua função `void main()`.
+You can customize these behaviors,
+typically by setting them to values in
+your `void main()` function.
 
-Abaixo, cada tipo de manipulação de erro é explicado. No final
-há um trecho de código que manipula todos os tipos de erros. Embora
-você possa apenas copiar e colar o trecho, recomendamos que você
-primeiro se familiarize com cada um dos tipos de erro.
+Below each error type handling is explained. At the bottom
+there's a code snippet which handles all types of errors. Even
+though you can just copy-paste the snippet, we recommend you
+to first get acquainted with each of the error types.
 
-## Erros capturados pelo Flutter
+## Errors caught by Flutter
 
-Por exemplo, para fazer sua aplicação sair imediatamente sempre que um
-erro for capturado pelo Flutter no modo release, você poderia usar o
-seguinte manipulador:
+For example, to make your application quit immediately any time an
+error is caught by Flutter in release mode, you could use the
+following handler:
 
 <?code-excerpt "lib/quit_immediate.dart (on-error-main)"?>
 ```dart
@@ -73,18 +72,18 @@ void main() {
 ```
 
 :::note
-A constante de nível superior [`kReleaseMode`][] indica
-se o app foi compilado no modo release.
+The top-level [`kReleaseMode`][] constant indicates
+whether the app was compiled in release mode.
 :::
 
-Este manipulador também pode ser usado para reportar erros a um serviço de logging.
-Para mais detalhes, veja nosso capítulo de cookbook para
-[reportar erros a um serviço][reporting errors to a service].
+This handler can also be used to report errors to a logging service.
+For more details, see our cookbook chapter for
+[reporting errors to a service][].
 
-## Definir um widget de erro personalizado para erros da fase de build
+## Define a custom error widget for build phase errors
 
-Para definir um widget de erro personalizado que é exibido sempre que
-o builder falha ao construir um widget, use [`MaterialApp.builder`][].
+To define a customized error widget that displays whenever
+the builder fails to build a widget, use [`MaterialApp.builder`][].
 
 <?code-excerpt "lib/excerpts.dart (custom-error)"?>
 ```dart
@@ -108,11 +107,11 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-## Erros não capturados pelo Flutter
+## Errors not caught by Flutter
 
-Considere um callback `onPressed` que invoca uma função assíncrona,
-como `MethodChannel.invokeMethod` (ou praticamente qualquer plugin).
-Por exemplo:
+Consider an `onPressed` callback that invokes an asynchronous function,
+such as `MethodChannel.invokeMethod` (or pretty much any plugin).
+For example:
 
 <?code-excerpt "lib/excerpts.dart (on-pressed)" replace="/return //g;/^\);$/)/g"?>
 ```dart
@@ -125,10 +124,10 @@ OutlinedButton(
 )
 ```
 
-Se `invokeMethod` lançar um erro, ele não será encaminhado para `FlutterError.onError`.
-Em vez disso, é encaminhado para o `PlatformDispatcher`.
+If `invokeMethod` throws an error, it won't be forwarded to `FlutterError.onError`.
+Instead, it's forwarded to the `PlatformDispatcher`.
 
-Para capturar tal erro, use [`PlatformDispatcher.instance.onError`][].
+To catch such an error, use [`PlatformDispatcher.instance.onError`][].
 
 <?code-excerpt "lib/excerpts.dart (catch-error)"?>
 ```dart
@@ -145,11 +144,11 @@ void main() {
 }
 ```
 
-## Manipular todos os tipos de erros
+## Handling all types of errors
 
-Digamos que você queira sair da aplicação em qualquer exceção e exibir
-um widget de erro personalizado sempre que a construção de um widget falha - você pode basear
-sua manipulação de erros no próximo trecho de código:
+Say you want to exit application on any exception and to display
+a custom error widget whenever a widget building fails - you can base
+your errors handling on next code snippet:
 
 <?code-excerpt "lib/main.dart (all-errors)"?>
 ```dart

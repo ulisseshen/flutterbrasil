@@ -1,48 +1,47 @@
 ---
-ia-translate: true
-title: Métricas de desempenho
-description: Métricas do Flutter, e quais ferramentas e APIs são usadas para obtê-las
+title: Performance metrics
+description: Flutter metrics, and which tools and APIs are used to get them
 ---
 
-* Tempo de inicialização até o primeiro frame
-  * Verifique o tempo quando
+* Startup time to the first frame
+  * Check the time when
     [WidgetsBinding.instance.firstFrameRasterized][firstFrameRasterized]
-    for true.
-  * Veja o
-    [painel de desempenho](https://flutter-flutter-perf.skia.org/e/?queries=sub_result%3DtimeToFirstFrameRasterizedMicros).
+    is true.
+  * See the
+    [perf dashboard](https://flutter-flutter-perf.skia.org/e/?queries=sub_result%3DtimeToFirstFrameRasterizedMicros).
 
-* buildDuration, rasterDuration e totalSpan do frame
-  * Veja [`FrameTiming`]({{site.api}}/flutter/dart-ui/FrameTiming-class.html)
-    na documentação da API.
+* Frame buildDuration, rasterDuration, and totalSpan
+  * See [`FrameTiming`]({{site.api}}/flutter/dart-ui/FrameTiming-class.html)
+    in the API docs.
 
-* Estatísticas de `buildDuration` do frame (`*_frame_build_time_millis`)
-  * Recomendamos monitorar quatro estatísticas: média, percentil 90,
-    percentil 99 e pior tempo de build de frame.
-  * Veja, por exemplo, [métricas][transition_build] para o teste
-    `flutter_gallery__transition_perf`.
+* Statistics of frame `buildDuration` (`*_frame_build_time_millis`)
+  * We recommend monitoring four stats: average, 90th percentile, 99th
+    percentile, and worst frame build time.
+  * See, for example, [metrics][transition_build] for the
+    `flutter_gallery__transition_perf` test.
 
-* Estatísticas de `rasterDuration` do frame (`*_frame_build_time_millis`)
-  * Recomendamos monitorar quatro estatísticas: média, percentil 90,
-    percentil 99 e pior tempo de build de frame.
-  * Veja, por exemplo, [métricas][transition_raster] para o teste
-    `flutter_gallery__transition_perf`.
+* Statistics of frame `rasterDuration` (`*_frame_build_time_millis`)
+  * We recommend monitoring four stats: average, 90th percentile, 99th
+    percentile, and worst frame build time.
+  * See, for example, [metrics][transition_raster] for the
+    `flutter_gallery__transition_perf` test.
 
-* Uso de CPU/GPU (uma boa aproximação para uso de energia)
-  * O uso está atualmente disponível apenas através de eventos de trace. Veja
+* CPU/GPU usage (a good approximation for energy use)
+  * The usage is currently only available through trace events. See
     [profiling_summarizer.dart][profiling_summarizer].
-  * Veja [métricas][cpu_gpu] para o teste `simple_animation_perf_ios`.
+  * See [metrics][cpu_gpu] for the `simple_animation_perf_ios` test.
 
-* release_size_bytes para medir aproximadamente o tamanho de um app Flutter
-  * Veja os testes [basic_material_app_android][], [basic_material_app_ios][],
+* release_size_bytes to approximately measure the size of a Flutter app
+  * See the [basic_material_app_android][], [basic_material_app_ios][],
     [hello_world_android][], [hello_world_ios][], [flutter_gallery_android][],
-    e [flutter_gallery_ios][].
-  * Veja [métricas][size_perf] no dashboard.
-  * Para informações sobre como medir o tamanho com mais precisão,
-    veja a página [tamanho do app](/perf/app-size).
+    and [flutter_gallery_ios][] tests.
+  * See [metrics][size_perf] in the dashboard.
+  * For info on how to measure the size more accurately,
+    see the [app size](/perf/app-size) page.
 
-Para uma lista completa de métricas de desempenho que o Flutter mede por commit, visite
-os seguintes sites, clique em **Query** e filtre os campos **test** e
-**sub_result**:
+For a complete list of performance metrics Flutter measures per commit, visit
+the following sites, click **Query**, and filter the **test** and
+**sub_result** fields:
 
   * [https://flutter-flutter-perf.skia.org/e/](https://flutter-flutter-perf.skia.org/e/)
   * [https://flutter-engine-perf.skia.org/e/](https://flutter-engine-perf.skia.org/e/)

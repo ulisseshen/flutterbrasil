@@ -1,30 +1,30 @@
 ---
 title: Flutter Changelog 0.0.21 - 1.0.0
-short-title: Flutter Changelog up to 1.0.0
+shortTitle: Flutter Changelog up to 1.0.0
 description: Archived Changelog wiki page, containing release information between Flutter 0.0.21 and 1.0.0.
-ia-translate: true
+skipTemplateRendering: true
 ---
 
 _This page is a dump of the old Changelog page from the Flutter wiki up until
-[Flutter release notes](./) were published in flutterbrasil.dev._
+[Flutter release notes](./) were published in flutter.dev._
 
-## Mudanças through and including 1.0.0
+## Changes through and including 1.0.0
 
 * Skia and engine rolls to address the following:
   * [video_player image distortion problem after last flutter update 0.11.3](https://github.com/flutter/flutter/issues/24402)
   * [Green, flickering bar over camera preview](https://github.com/flutter/flutter/issues/24289)
   * [Image rendering issues on Adreno 3xx devices after upgrade from 0.9.4 to 0.10.2](https://github.com/flutter/flutter/issues/24517)
-* Engine rolls to fix 
+* Engine rolls to fix
   * [Prepend [NSLocale currentLocale] for first locale on iOS to ensure countryCode exists. Allow language-only locales.](https://github.com/flutter/engine/issues/6995)
   * [Changes to unblock Fuchsia roll](https://github.com/flutter/engine/issues/6949)
 * Various fixes to tooling for documentation, documentation, and documentation accompanying the templates.
 
-## Mudanças since v0.10.2
+## Changes since v0.10.2
 * [flutter/engine#6883](https://github.com/flutter/engine/pull/6883) - FlutterViewController will no longer load your app's splash screen by default.  The implementation of that has been moved to a new method `loadDefaultSplashScreenView`.
-* [#23755](https://github.com/flutter/flutter/pull/23755) Removed direct dependency of flutter_test on `package:test`. Flutter now requires test version 1.5.1 and mockito version 4.0.0. 
+* [#23755](https://github.com/flutter/flutter/pull/23755) Removed direct dependency of flutter_test on `package:test`. Flutter now requires test version 1.5.1 and mockito version 4.0.0.
 
   ### Breaking change:
-  This requires adding an explicit dependency to your pubspec.yaml: 
+  This requires adding an explicit dependency to your pubspec.yaml:
   ```yaml
   dev_dependencies:
     test: ^1.5.1
@@ -37,7 +37,7 @@ _This page is a dump of the old Changelog page from the Flutter wiki up until
 * [#23320](https://github.com/flutter/flutter/pull/23320) Adds back swipe gesture support for Cupertino navigation bars' cross-page transitions.
 * [#23320](https://github.com/flutter/flutter/pull/23322) Adds support for Hero transitions across multiple Navigators.
 
-## Mudanças in v0.10.2 (since v0.9.4) - beta 10
+## Changes in v0.10.2 (since v0.9.4) - beta 10
 
 ### v0.10.2
 * [#23194](https://github.com/flutter/flutter/pull/23194) Adds CupertinoTextField, an iOS styled text entry field.
@@ -72,9 +72,9 @@ _This page is a dump of the old Changelog page from the Flutter wiki up until
 * [flutter/engine#6393](https://github.com/flutter/engine/pull/6393) adds nullability annotations to Android MethodChannel/MethodCall.
 
 ### v0.9.6
-* [#21251](https://github.com/flutter/flutter/pull/21251) adds CupertinoDatePicker, an iOS-style picker control that supports a date mode and a date + time mode. 
+* [#21251](https://github.com/flutter/flutter/pull/21251) adds CupertinoDatePicker, an iOS-style picker control that supports a date mode and a date + time mode.
 
-## Mudanças in v0.9.4 (since v0.8.2 ) - beta 9
+## Changes in v0.9.4 (since v0.8.2 ) - beta 9
 
 ### v0.9.4
 
@@ -86,14 +86,14 @@ _This page is a dump of the old Changelog page from the Flutter wiki up until
 
 ### v0.9.2
 
-* [#21540](https://github.com/flutter/flutter/pull/21540) added a `transform()` method to [`Animatable`](https://api.flutterbrasil.dev/flutter/animation/Animatable-class.html). It is implemented by `Tween` (the main subclass of `Animatable`) but classes that subclass `Animatable` directly will need to implement it. Typically the existing `evaluate()` method can be changed to implement `transform()` instead, using the value given by the argument to `transform()` rather than the current value of the animation provided to `evaluate()`. `evaluate()` now has a default implementation that defers to `transform()`.
+* [#21540](https://github.com/flutter/flutter/pull/21540) added a `transform()` method to [`Animatable`](https://api.flutter.dev/flutter/animation/Animatable-class.html). It is implemented by `Tween` (the main subclass of `Animatable`) but classes that subclass `Animatable` directly will need to implement it. Typically the existing `evaluate()` method can be changed to implement `transform()` instead, using the value given by the argument to `transform()` rather than the current value of the animation provided to `evaluate()`. `evaluate()` now has a default implementation that defers to `transform()`.
 
-## Mudanças in v0.8.2 (since v0.7.3) - beta 8
+## Changes in v0.8.2 (since v0.7.3) - beta 8
 
 ### v0.7.4
 * [#20322](https://github.com/flutter/flutter/pull/20322) performs parallax transitions between `CupertinoNavigationBar`s and `CupertinoSliverNavigationBar`s when navigating between pages.
 
-## Mudanças in v0.7.3 (since v0.6.0) - beta 7
+## Changes in v0.7.3 (since v0.6.0) - beta 7
 
 ### v0.7.3
 * [#20966](https://github.com/flutter/flutter/pull/20966) adds `CupertinoTimerPicker`.
@@ -104,10 +104,10 @@ _This page is a dump of the old Changelog page from the Flutter wiki up until
 ### v0.7.1
 * [#19637](https://github.com/flutter/flutter/pull/19637) `CupertinoNavigationBar` and `CupertinoSliverNavigationBar` now auto-populate their title and back button labels based on their `CupertinoPageRoute.title`.
 
-## Mudanças in v0.6.0 (since v0.5.1) - beta 6
+## Changes in v0.6.0 (since v0.5.1) - beta 6
 
 ### v0.6.0
-* Dart SDK updated to a Dart 2 build (2.1.0-dev.0.0). Package and plugin authors should ensure their `pubspec.yaml` files include a Dart SDK constraint with an upper bound of `<3.0.0`. See the [Getting ready for Dart 2 post](https://medium.com/dartlang/getting-ready-for-dart-2-and-making-your-packages-look-great-on-the-pub-site-118464d7f59d) for details.
+* Dart SDK updated to a Dart 2 build (2.1.0-dev.0.0). Package and plugin authors should ensure their `pubspec.yaml` files include a Dart SDK constraint with an upper bound of `<3.0.0`. See the [Getting ready for Dart 2 post](https://blog.dart.dev/getting-ready-for-dart-2-and-making-your-packages-look-great-on-the-pub-site-118464d7f59d) for details.
 * [#19025](https://github.com/flutter/flutter/pull/19025) renamed `CupertinoRefreshControl` to `CupertinoSliverRefreshControl` for consistency.
 * [#19317](https://github.com/flutter/flutter/pull/19317) Add cursorWidth and cursorRadius to TextField (Material) cursor.
 * [#20116](https://github.com/flutter/flutter/pull/20116) reduced release binary sizes by ~2MB
@@ -135,7 +135,7 @@ _This page is a dump of the old Changelog page from the Flutter wiki up until
 
 * [#18096](https://github.com/flutter/flutter/pull/18096) changed the rendering of the character counter in text fields to more closely match the Material design specifications.
 
-## Mudanças in v0.5.1 (since v0.3.2) - beta 5
+## Changes in v0.5.1 (since v0.3.2) - beta 5
 
 ### v0.5.0
 
@@ -147,7 +147,7 @@ _This page is a dump of the old Changelog page from the Flutter wiki up until
 
 * [#17586](https://github.com/flutter/flutter/pull/17586) added a new `background` property to `TextStyle`. Subclasses must ensure that this property is handled in constructors and `copyWith`.
 
-## Mudanças in v0.4.4 (since v0.3.2) - beta 4
+## Changes in v0.4.4 (since v0.3.2) - beta 4
 
 ### v0.4.0
 * [#17021](https://github.com/flutter/flutter/pull/17021) added implicit a11y scrolling for iOS. For this, viewports define a cache extend before the leading as well as after the trailing edge and slivers are expected to provide semantics information if they fall into the cache extent.
@@ -187,9 +187,9 @@ _This page is a dump of the old Changelog page from the Flutter wiki up until
   image.toByteData(format: ui.ImageByteFormat.png);
   ```
 
-## Mudanças in v0.3.2 (since v0.3.1) - beta 3
+## Changes in v0.3.2 (since v0.3.1) - beta 3
 
-## Mudanças in v0.3.1 (since v0.2.8) - beta 2 update
+## Changes in v0.3.1 (since v0.2.8) - beta 2 update
 
 We are aware of a potential problem with certificate validation in the `HttpClient` implementation.
 To follow our investigation, see [Dart issue 32936](https://github.com/dart-lang/sdk/issues/32936).
@@ -216,7 +216,7 @@ To follow our investigation, see [Dart issue 32936](https://github.com/dart-lang
 * `dart:core`: Added `tryParse` static method to `int`, `double`, `num`, `BigInt`, `Uri` and `DateTime`, and deprecated `onError` parameter on `int.parse`, `double.parse`, and `num.parse`.
 * The `new` keyword can now always be omitted. The `const` keyword is required to create a constant expression, although within the expression, further `const` keywords can also be omitted.
 
-## Mudanças in v0.2.8 (since v0.2.3) - beta 2
+## Changes in v0.2.8 (since v0.2.3) - beta 2
 
 ### v0.2.8
 
@@ -226,7 +226,7 @@ To follow our investigation, see [Dart issue 32936](https://github.com/dart-lang
 
 * [#15416](https://github.com/flutter/flutter/pull/15416) removed `package:http` from Flutter and replaced all usages with the `HttpClient` from `dart:io`. If you use `package:http` you must add it as a dependency in your `pubspec.yaml` to continue using it.
 
-  `createHttpClient()` was also removed after being marked deprecated. To change how the framework creates http clients, you can use [HttpOverrides](https://api.flutterbrasil.dev/flutter/dart-io/HttpOverrides-class.html) from `dart:io` to provide your own `createHttpClient()` callback globally or per zone.
+  `createHttpClient()` was also removed after being marked deprecated. To change how the framework creates http clients, you can use [HttpOverrides](https://api.flutter.dev/flutter/dart-io/HttpOverrides-class.html) from `dart:io` to provide your own `createHttpClient()` callback globally or per zone.
 
   More details are available [in the announcement](https://groups.google.com/forum/#!topic/flutter-dev/AnqDqgQ6vus).
 
@@ -284,7 +284,7 @@ To follow our investigation, see [Dart issue 32936](https://github.com/dart-lang
 
 * [#15548](https://github.com/flutter/flutter/pull/15548) adds debugging flags `debugDisableClipLayers`, `debugDisablePhysicalShapeLayers` and `debugDisableOpacityLayers` to help with performance diagnosis of rasterizing speed.
 
-## Mudanças in v0.2.3 (since v0.1.5) - beta 1 update
+## Changes in v0.2.3 (since v0.1.5) - beta 1 update
 
 ### v0.2.0
 
@@ -298,15 +298,15 @@ To follow our investigation, see [Dart issue 32936](https://github.com/dart-lang
 
 ### v0.1.9
 
-* [#14901](https://github.com/flutter/flutter/pull/14901) A [Slider](https://api.flutterbrasil.dev/flutter/material/Slider-class.html) visual update changed the colors, opacities, and the value indicator shape and behavior. It also removed the "`thumbOpenAtMin`" flag from the Slider class, which is no longer needed, and can be emulated by the custom thumb shape support.
+* [#14901](https://github.com/flutter/flutter/pull/14901) A [Slider](https://api.flutter.dev/flutter/material/Slider-class.html) visual update changed the colors, opacities, and the value indicator shape and behavior. It also removed the "`thumbOpenAtMin`" flag from the Slider class, which is no longer needed, and can be emulated by the custom thumb shape support.
 
-## Mudanças in v0.1.5 (since v0.1.4) - beta 1.1
+## Changes in v0.1.5 (since v0.1.4) - beta 1.1
 
 ### v0.1.5
 
 * [#14714](https://github.com/flutter/flutter/pull/14714) fixed the groovy script for the Flutter Gallery, thus fixing [#14912](https://github.com/flutter/flutter/issues/14912).
 
-## Mudanças in v0.1.4 (since v0.0.20) - beta 1
+## Changes in v0.1.4 (since v0.0.20) - beta 1
 
 ### v0.1.3
 
@@ -364,4 +364,3 @@ To follow our investigation, see [Dart issue 32936](https://github.com/dart-lang
 * [#4487](https://github.com/flutter/engine/pull/4487) replaces all uses of the `RequestPermissionResult` callback concept in `io.flutter.plugin.common.PluginRegistry` with `RequestPermissionsResult`, adding a missing `s` to align with the corresponding Android SDK concept.
 
   The old API has been deprecated and will be made unavailable in a later release. There will be a grace period of at least four weeks between the release that introduces the deprecation and the release that makes the old API unavailable.
-  

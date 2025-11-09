@@ -1,41 +1,37 @@
 ---
-title: Crie um efeito de rolagem parallax
-description: Como implementar um efeito de rolagem parallax.
-js:
-  - defer: true
-    url: /assets/js/inject_dartpad.js
-ia-translate: true
+title: Create a scrolling parallax effect
+description: How to implement a scrolling parallax effect.
 ---
 
 <?code-excerpt path-base="cookbook/effects/parallax_scrolling"?>
 
-Quando você rola uma lista de cartões (contendo imagens,
-por exemplo) em um aplicativo, você pode notar que essas
-imagens parecem rolar mais lentamente do que o resto da
-tela. Quase parece que os cartões na lista
-estão em primeiro plano, mas as imagens em si ficam
-bem ao longe no fundo distante. Este efeito é
-conhecido como parallax.
+When you scroll a list of cards (containing images,
+for example) in an app, you might notice that those
+images appear to scroll more slowly than the rest of the
+screen. It almost looks as if the cards in the list
+are in the foreground, but the images themselves sit
+far off in the distant background. This effect is
+known as parallax.
 
-Nesta receita, você cria o efeito parallax construindo
-uma lista de cartões (com cantos arredondados contendo algum texto).
-Cada cartão também contém uma imagem.
-Conforme os cartões deslizam para cima na tela,
-as imagens dentro de cada cartão deslizam para baixo.
+In this recipe, you create the parallax effect by building
+a list of cards (with rounded corners containing some text).
+Each card also contains an image.
+As the cards slide up the screen,
+the images within each card slide down.
 
-A animação a seguir mostra o comportamento do aplicativo:
+The following animation shows the app's behavior:
 
-![Rolagem parallax](/assets/images/docs/cookbook/effects/ParallaxScrolling.gif){:.site-mobile-screenshot}
+![Parallax scrolling](/assets/images/docs/cookbook/effects/ParallaxScrolling.webp){:.site-mobile-screenshot}
 
-## Crie uma lista para conter os itens parallax
+## Create a list to hold the parallax items
 
-Para exibir uma lista de imagens com rolagem parallax,
-você deve primeiro exibir uma lista.
+To display a list of parallax scrolling images,
+you must first display a list.
 
-Crie um novo widget stateless chamado `ParallaxRecipe`.
-Dentro de `ParallaxRecipe`, construa uma árvore de widgets com um
-`SingleChildScrollView` e uma `Column`, que forma
-uma lista.
+Create a new stateless widget called `ParallaxRecipe`.
+Within `ParallaxRecipe`, build a widget tree with a
+`SingleChildScrollView` and a `Column`, which forms
+a list.
 
 <?code-excerpt "lib/excerpt1.dart (ParallaxRecipe)"?>
 ```dart
@@ -44,30 +40,26 @@ class ParallaxRecipe extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      child: Column(
-        children: [],
-      ),
-    );
+    return const SingleChildScrollView(child: Column(children: []));
   }
 }
 ```
 
-## Exiba itens com texto e uma imagem estática
+## Display items with text and a static image
 
-Cada item da lista exibe uma imagem de fundo de retângulo
-arredondado, representando um dos sete locais no mundo.
-Empilhado em cima dessa imagem de fundo está o
-nome do local e seu país,
-posicionados no canto inferior esquerdo. Entre a
-imagem de fundo e o texto há um gradiente escuro,
-que melhora a legibilidade
-do texto em relação ao fundo.
+Each list item displays a rounded-rectangle background
+image, representing one of seven locations in the world.
+Stacked on top of that background image is the
+name of the location and its country,
+positioned in the lower left. Between the
+background image and the text is a dark gradient,
+which improves the legibility
+of the text against the background.
 
-Implemente um widget stateless chamado `LocationListItem`
-que consiste nos visuais mencionados anteriormente.
-Por enquanto, use um widget `Image` estático para o fundo.
-Mais tarde, você substituirá esse widget por uma versão parallax.
+Implement a stateless widget called `LocationListItem`
+that consists of the previously mentioned visuals.
+For now, use a static `Image` widget for the background.
+Later, you'll replace that widget with a parallax version.
 
 <?code-excerpt "lib/excerpt2.dart (LocationListItem)"?>
 ```dart
@@ -105,12 +97,7 @@ class LocationListItem extends StatelessWidget {
   }
 
   Widget _buildParallaxBackground(BuildContext context) {
-    return Positioned.fill(
-      child: Image.network(
-        imageUrl,
-        fit: BoxFit.cover,
-      ),
-    );
+    return Positioned.fill(child: Image.network(imageUrl, fit: BoxFit.cover));
   }
 
   Widget _buildGradient() {
@@ -146,10 +133,7 @@ class LocationListItem extends StatelessWidget {
           ),
           Text(
             country,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 14,
-            ),
+            style: const TextStyle(color: Colors.white, fontSize: 14),
           ),
         ],
       ),
@@ -158,7 +142,7 @@ class LocationListItem extends StatelessWidget {
 }
 ```
 
-Adicione os itens da lista ao seu widget `ParallaxRecipe`.
+Next, add the list items to your `ParallaxRecipe` widget.
 
 <?code-excerpt "lib/excerpt3.dart (ParallaxRecipeItems)"?>
 ```dart
@@ -183,84 +167,74 @@ class ParallaxRecipe extends StatelessWidget {
 }
 ```
 
-Agora você tem uma lista típica de cartões roláveis
-que exibe sete locais únicos no mundo.
-No próximo passo, você adiciona um efeito parallax à
-imagem de fundo.
+You now have a typical, scrollable list of cards
+that displays seven unique locations in the world.
+In the next step, you add a parallax effect to the
+background image.
 
-## Implemente o efeito parallax
+## Implement the parallax effect
 
-Um efeito de rolagem parallax é alcançado empurrando levemente
-a imagem de fundo na direção oposta
-ao resto da lista. Conforme os itens da lista deslizam para cima
-na tela, cada imagem de fundo desliza ligeiramente para baixo.
-Por outro lado, conforme os itens da lista deslizam para baixo na tela,
-cada imagem de fundo desliza ligeiramente para cima.
-Visualmente, isso resulta em parallax.
+A parallax scrolling effect is achieved by slightly
+pushing the background image in the opposite direction
+of the rest of the list. As the list items slide up
+the screen, each background image slides slightly downward.
+Conversely, as the list items slide down the screen,
+each background image slides slightly upward.
+Visually, this results in parallax.
 
-O efeito parallax depende da posição atual do item da lista
-dentro de seu ancestral `Scrollable`.
-Conforme a posição de rolagem do item da lista muda, a posição
-da imagem de fundo do item da lista também deve mudar.
-Este é um problema interessante de resolver. A posição
-de um item da lista dentro do `Scrollable` não está
-disponível até que a fase de layout do Flutter esteja completa.
-Isso significa que a posição da imagem de fundo
-deve ser determinada na fase de pintura, que vem depois
-da fase de layout. Felizmente, o Flutter fornece um widget
-chamado `Flow`, que foi projetado especificamente para dar a você
-controle sobre a transformação de um widget filho imediatamente
-antes do widget ser pintado. Em outras palavras,
-você pode interceptar a fase de pintura e assumir o controle
-para reposicionar seus widgets filhos como quiser.
+The parallax effect depends on the list item's
+current position within its ancestor `Scrollable`.
+As the list item's scroll position changes, the position
+of the list item's background image must also change.
+This is an interesting problem to solve. The position
+of a list item within the `Scrollable` isn't
+available until Flutter's layout phase is complete.
+This means that the position of the background image
+must be determined in the paint phase, which comes after
+the layout phase. Fortunately, Flutter provides a widget
+called `Flow`, which is specifically designed to give you
+control over the transform of a child widget immediately
+before the widget is painted. In other words,
+you can intercept the painting phase and take control
+to reposition your child widgets however you want.
 
 :::note
-Para saber mais, confira este breve
-vídeo Widget da Semana sobre o widget `Flow`:
+To learn more, check out this short
+Widget of the Week video on the `Flow` widget:
 
-{% ytEmbed 'NG6pvXpnIso', 'Flow | Flutter widget of the week' %}
+<YouTubeEmbed id="NG6pvXpnIso" title="Flow | Flutter widget of the week"></YouTubeEmbed>
 :::
 
 :::note
-Nos casos em que você precisa controlar o que um filho pinta,
-em vez de onde um filho é pintado,
-considere usar um widget [`CustomPaint`][].
+In cases where you need control over what a child paints,
+rather than where a child is painted,
+consider using a [`CustomPaint`][] widget.
 
-Nos casos em que você precisa controlar o layout,
-pintura e teste de toque, considere definir um
-[`RenderBox`][] personalizado.
+In cases where you need control over the layout,
+painting, and hit testing, consider defining a
+custom [`RenderBox`][].
 :::
 
-Envolva seu widget `Image` de fundo com um
-widget [`Flow`][].
+Wrap your background `Image` widget with a
+[`Flow`][] widget.
 
 <?code-excerpt "lib/excerpt4.dart (BuildParallaxBackground)" replace="/\n    delegate: ParallaxFlowDelegate\(\),//g"?>
 ```dart
 Widget _buildParallaxBackground(BuildContext context) {
   return Flow(
-    children: [
-      Image.network(
-        imageUrl,
-        fit: BoxFit.cover,
-      ),
-    ],
+    children: [Image.network(imageUrl, fit: BoxFit.cover)],
   );
 }
 ```
 
-Introduza um novo `FlowDelegate` chamado `ParallaxFlowDelegate`.
+Introduce a new `FlowDelegate` called `ParallaxFlowDelegate`.
 
 <?code-excerpt "lib/excerpt4.dart (BuildParallaxBackground)"?>
 ```dart
 Widget _buildParallaxBackground(BuildContext context) {
   return Flow(
     delegate: ParallaxFlowDelegate(),
-    children: [
-      Image.network(
-        imageUrl,
-        fit: BoxFit.cover,
-      ),
-    ],
+    children: [Image.network(imageUrl, fit: BoxFit.cover)],
   );
 }
 ```
@@ -288,49 +262,47 @@ class ParallaxFlowDelegate extends FlowDelegate {
 }
 ```
 
-Um `FlowDelegate` controla como seus filhos são dimensionados
-e onde esses filhos são pintados. Neste caso,
-seu widget `Flow` tem apenas um filho: a imagem de fundo.
-Essa imagem deve ser exatamente tão larga quanto o widget `Flow`.
+A `FlowDelegate` controls how its children are sized
+and where those children are painted. In this case,
+your `Flow` widget has only one child: the background image.
+That image must be exactly as wide as the `Flow` widget.
 
-Retorne restrições de largura rígidas para seu filho de imagem de fundo.
+Return tight width constraints for your background image child.
 
 <?code-excerpt "lib/main.dart (TightWidth)"?>
 ```dart
 @override
 BoxConstraints getConstraintsForChild(int i, BoxConstraints constraints) {
-  return BoxConstraints.tightFor(
-    width: constraints.maxWidth,
-  );
+  return BoxConstraints.tightFor(width: constraints.maxWidth);
 }
 ```
 
-Suas imagens de fundo agora são dimensionadas adequadamente,
-mas você ainda precisa calcular a posição vertical
-de cada imagem de fundo com base em sua posição de rolagem,
-e então pintá-la.
+Your background images are now sized appropriately,
+but you still need to calculate the vertical position
+of each background image based on its scroll
+position, and then paint it.
 
-Existem três informações críticas que
-você precisa para calcular a posição desejada de uma
-imagem de fundo:
+There are three critical pieces of information that
+you need to compute the desired position of a
+background image:
 
-* Os limites do ancestral `Scrollable`
-* Os limites do item da lista individual
-* O tamanho da imagem após ser redimensionada
-   para caber no item da lista
+* The bounds of the ancestor `Scrollable`
+* The bounds of the individual list item
+* The size of the image after it's scaled down
+   to fit in the list item
 
-Para procurar os limites do `Scrollable`,
-você passa um `ScrollableState` para seu `FlowDelegate`.
+To look up the bounds of the `Scrollable`,
+you pass a `ScrollableState` into your `FlowDelegate`.
 
-Para procurar os limites do seu item de lista individual,
-passe o `BuildContext` do seu item de lista para seu `FlowDelegate`.
+To look up the bounds of your individual list item,
+pass your list item's `BuildContext` into your `FlowDelegate`.
 
-Para procurar o tamanho final da sua imagem de fundo,
-atribua uma `GlobalKey` ao seu widget `Image`,
-e então você passa essa `GlobalKey` para seu
+To look up the final size of your background image,
+assign a `GlobalKey` to your `Image` widget,
+and then you pass that `GlobalKey` into your
 `FlowDelegate`.
 
-Disponibilize essas informações para `ParallaxFlowDelegate`.
+Make this information available to `ParallaxFlowDelegate`.
 
 <?code-excerpt "lib/excerpt5.dart (global-key)" plaster="none"?>
 ```dart
@@ -346,11 +318,7 @@ class LocationListItem extends StatelessWidget {
         backgroundImageKey: _backgroundImageKey,
       ),
       children: [
-        Image.network(
-          imageUrl,
-          key: _backgroundImageKey,
-          fit: BoxFit.cover,
-        ),
+        Image.network(imageUrl, key: _backgroundImageKey, fit: BoxFit.cover),
       ],
     );
   }
@@ -372,8 +340,8 @@ class ParallaxFlowDelegate extends FlowDelegate {
 }
 ```
 
-Tendo todas as informações necessárias para implementar
-rolagem parallax, implemente o método `shouldRepaint()`.
+Having all the information needed to implement
+parallax scrolling, implement the `shouldRepaint()` method.
 
 <?code-excerpt "lib/main.dart (ShouldRepaint)"?>
 ```dart
@@ -385,10 +353,10 @@ bool shouldRepaint(ParallaxFlowDelegate oldDelegate) {
 }
 ```
 
-Agora, implemente os cálculos de layout para o efeito parallax.
+Now, implement the layout calculations for the parallax effect.
 
-Primeiro, calcule a posição em pixels de um item da lista
-dentro de seu ancestral `Scrollable`.
+First, calculate the pixel position of a list
+item within its ancestor `Scrollable`.
 
 <?code-excerpt "lib/excerpt5.dart (paint-children)" plaster="none"?>
 ```dart
@@ -398,16 +366,17 @@ void paintChildren(FlowPaintingContext context) {
   final scrollableBox = scrollable.context.findRenderObject() as RenderBox;
   final listItemBox = listItemContext.findRenderObject() as RenderBox;
   final listItemOffset = listItemBox.localToGlobal(
-      listItemBox.size.centerLeft(Offset.zero),
-      ancestor: scrollableBox);
+    listItemBox.size.centerLeft(Offset.zero),
+    ancestor: scrollableBox,
+  );
 }
 ```
 
-Use a posição em pixels do item da lista para calcular sua
-porcentagem a partir do topo do `Scrollable`.
-Um item da lista no topo da área rolável deve
-produzir 0%, e um item da lista na parte inferior da
-área rolável deve produzir 100%.
+Use the pixel position of the list item to calculate its
+percentage from the top of the `Scrollable`.
+A list item at the top of the scrollable area should
+produce 0%, and a list item at the bottom of the
+scrollable area should produce 100%.
 
 <?code-excerpt "lib/excerpt5.dart (paint-children-2)"?>
 ```dart
@@ -417,23 +386,26 @@ void paintChildren(FlowPaintingContext context) {
   final scrollableBox = scrollable.context.findRenderObject() as RenderBox;
   final listItemBox = listItemContext.findRenderObject() as RenderBox;
   final listItemOffset = listItemBox.localToGlobal(
-      listItemBox.size.centerLeft(Offset.zero),
-      ancestor: scrollableBox);
+    listItemBox.size.centerLeft(Offset.zero),
+    ancestor: scrollableBox,
+  );
 
   // Determine the percent position of this list item within the
   // scrollable area.
   final viewportDimension = scrollable.position.viewportDimension;
-  final scrollFraction =
-      (listItemOffset.dy / viewportDimension).clamp(0.0, 1.0);
+  final scrollFraction = (listItemOffset.dy / viewportDimension).clamp(
+    0.0,
+    1.0,
+  );
   // ···
 }
 ```
 
-Use a porcentagem de rolagem para calcular um `Alignment`.
-Em 0%, você quer `Alignment(0.0, -1.0)`,
-e em 100%, você quer `Alignment(0.0, 1.0)`.
-Essas coordenadas correspondem ao alinhamento superior e inferior,
-respectivamente.
+Use the scroll percentage to calculate an `Alignment`.
+At 0%, you want `Alignment(0.0, -1.0)`,
+and at 100%, you want `Alignment(0.0, 1.0)`.
+These coordinates correspond to top and bottom
+alignment, respectively.
 
 <?code-excerpt "lib/excerpt5.dart (paint-children-3)" plaster="none"?>
 ```dart
@@ -443,14 +415,17 @@ void paintChildren(FlowPaintingContext context) {
   final scrollableBox = scrollable.context.findRenderObject() as RenderBox;
   final listItemBox = listItemContext.findRenderObject() as RenderBox;
   final listItemOffset = listItemBox.localToGlobal(
-      listItemBox.size.centerLeft(Offset.zero),
-      ancestor: scrollableBox);
+    listItemBox.size.centerLeft(Offset.zero),
+    ancestor: scrollableBox,
+  );
 
   // Determine the percent position of this list item within the
   // scrollable area.
   final viewportDimension = scrollable.position.viewportDimension;
-  final scrollFraction =
-      (listItemOffset.dy / viewportDimension).clamp(0.0, 1.0);
+  final scrollFraction = (listItemOffset.dy / viewportDimension).clamp(
+    0.0,
+    1.0,
+  );
 
   // Calculate the vertical alignment of the background
   // based on the scroll percent.
@@ -458,10 +433,10 @@ void paintChildren(FlowPaintingContext context) {
 }
 ```
 
-Use `verticalAlignment`, junto com o tamanho do
-item da lista e o tamanho da imagem de fundo,
-para produzir um `Rect` que determina onde a
-imagem de fundo deve ser posicionada.
+Use `verticalAlignment`, along with the size of the
+list item and the size of the background image,
+to produce a `Rect` that determines where the
+background image should be positioned.
 
 <?code-excerpt "lib/excerpt5.dart (paint-children-4)" plaster="none"?>
 ```dart
@@ -471,14 +446,17 @@ void paintChildren(FlowPaintingContext context) {
   final scrollableBox = scrollable.context.findRenderObject() as RenderBox;
   final listItemBox = listItemContext.findRenderObject() as RenderBox;
   final listItemOffset = listItemBox.localToGlobal(
-      listItemBox.size.centerLeft(Offset.zero),
-      ancestor: scrollableBox);
+    listItemBox.size.centerLeft(Offset.zero),
+    ancestor: scrollableBox,
+  );
 
   // Determine the percent position of this list item within the
   // scrollable area.
   final viewportDimension = scrollable.position.viewportDimension;
-  final scrollFraction =
-      (listItemOffset.dy / viewportDimension).clamp(0.0, 1.0);
+  final scrollFraction = (listItemOffset.dy / viewportDimension).clamp(
+    0.0,
+    1.0,
+  );
 
   // Calculate the vertical alignment of the background
   // based on the scroll percent.
@@ -490,15 +468,17 @@ void paintChildren(FlowPaintingContext context) {
       (backgroundImageKey.currentContext!.findRenderObject() as RenderBox)
           .size;
   final listItemSize = context.size;
-  final childRect =
-      verticalAlignment.inscribe(backgroundSize, Offset.zero & listItemSize);
+  final childRect = verticalAlignment.inscribe(
+    backgroundSize,
+    Offset.zero & listItemSize,
+  );
 }
 ```
 
-Usando `childRect`, pinte a imagem de fundo com
-a transformação de translação desejada.
-É essa transformação ao longo do tempo que dá a você o
-efeito parallax.
+Using `childRect`, paint the background image with
+the desired translation transformation.
+It's this transformation over time that gives you the
+parallax effect.
 
 <?code-excerpt "lib/excerpt5.dart (paint-children-5)" plaster="none" ?>
 ```dart
@@ -508,14 +488,17 @@ void paintChildren(FlowPaintingContext context) {
   final scrollableBox = scrollable.context.findRenderObject() as RenderBox;
   final listItemBox = listItemContext.findRenderObject() as RenderBox;
   final listItemOffset = listItemBox.localToGlobal(
-      listItemBox.size.centerLeft(Offset.zero),
-      ancestor: scrollableBox);
+    listItemBox.size.centerLeft(Offset.zero),
+    ancestor: scrollableBox,
+  );
 
   // Determine the percent position of this list item within the
   // scrollable area.
   final viewportDimension = scrollable.position.viewportDimension;
-  final scrollFraction =
-      (listItemOffset.dy / viewportDimension).clamp(0.0, 1.0);
+  final scrollFraction = (listItemOffset.dy / viewportDimension).clamp(
+    0.0,
+    1.0,
+  );
 
   // Calculate the vertical alignment of the background
   // based on the scroll percent.
@@ -527,26 +510,29 @@ void paintChildren(FlowPaintingContext context) {
       (backgroundImageKey.currentContext!.findRenderObject() as RenderBox)
           .size;
   final listItemSize = context.size;
-  final childRect =
-      verticalAlignment.inscribe(backgroundSize, Offset.zero & listItemSize);
+  final childRect = verticalAlignment.inscribe(
+    backgroundSize,
+    Offset.zero & listItemSize,
+  );
 
   // Paint the background.
   context.paintChild(
     0,
-    transform:
-        Transform.translate(offset: Offset(0.0, childRect.top)).transform,
+    transform: Transform.translate(
+      offset: Offset(0.0, childRect.top),
+    ).transform,
   );
 }
 ```
 
-Você precisa de um detalhe final para alcançar o efeito parallax.
-O `ParallaxFlowDelegate` repinta quando as entradas mudam,
-mas o `ParallaxFlowDelegate` não repinta toda vez que
-a posição de rolagem muda.
+You need one final detail to achieve the parallax effect.
+The `ParallaxFlowDelegate` repaints when the inputs change,
+but the `ParallaxFlowDelegate` doesn't repaint every time
+the scroll position changes.
 
-Passe a `ScrollPosition` do `ScrollableState` para
-o superclasse `FlowDelegate` para que o `FlowDelegate`
-repinte toda vez que a `ScrollPosition` mudar.
+Pass the `ScrollableState`'s `ScrollPosition` to
+the `FlowDelegate` superclass so that the `FlowDelegate`
+repaints every time the `ScrollPosition` changes.
 
 <?code-excerpt "lib/main.dart (SuperScrollPosition)" replace="/;\n/;\n}/g"?>
 ```dart
@@ -559,15 +545,15 @@ class ParallaxFlowDelegate extends FlowDelegate {
 }
 ```
 
-Parabéns!
-Agora você tem uma lista de cartões com parallax,
-imagens de fundo rolantes.
+Congratulations!
+You now have a list of cards with parallax,
+scrolling background images.
 
-## Exemplo interativo
+## Interactive example
 
-Execute o aplicativo:
+Run the app:
 
-* Role para cima e para baixo para observar o efeito parallax.
+* Scroll up and down to observe the parallax effect.
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter parallax scrolling hands-on example in DartPad" run="true"
@@ -588,19 +574,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: darkBlue),
       debugShowCheckedModeBanner: false,
-      home: const Scaffold(
-        body: Center(
-          child: ExampleParallax(),
-        ),
-      ),
+      home: const Scaffold(body: Center(child: ExampleParallax())),
     );
   }
 }
 
 class ExampleParallax extends StatelessWidget {
-  const ExampleParallax({
-    super.key,
-  });
+  const ExampleParallax({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -660,11 +640,7 @@ class LocationListItem extends StatelessWidget {
         backgroundImageKey: _backgroundImageKey,
       ),
       children: [
-        Image.network(
-          imageUrl,
-          key: _backgroundImageKey,
-          fit: BoxFit.cover,
-        ),
+        Image.network(imageUrl, key: _backgroundImageKey, fit: BoxFit.cover),
       ],
     );
   }
@@ -702,10 +678,7 @@ class LocationListItem extends StatelessWidget {
           ),
           Text(
             country,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 14,
-            ),
+            style: const TextStyle(color: Colors.white, fontSize: 14),
           ),
         ],
       ),
@@ -727,9 +700,7 @@ class ParallaxFlowDelegate extends FlowDelegate {
 
   @override
   BoxConstraints getConstraintsForChild(int i, BoxConstraints constraints) {
-    return BoxConstraints.tightFor(
-      width: constraints.maxWidth,
-    );
+    return BoxConstraints.tightFor(width: constraints.maxWidth);
   }
 
   @override
@@ -738,14 +709,17 @@ class ParallaxFlowDelegate extends FlowDelegate {
     final scrollableBox = scrollable.context.findRenderObject() as RenderBox;
     final listItemBox = listItemContext.findRenderObject() as RenderBox;
     final listItemOffset = listItemBox.localToGlobal(
-        listItemBox.size.centerLeft(Offset.zero),
-        ancestor: scrollableBox);
+      listItemBox.size.centerLeft(Offset.zero),
+      ancestor: scrollableBox,
+    );
 
     // Determine the percent position of this list item within the
     // scrollable area.
     final viewportDimension = scrollable.position.viewportDimension;
-    final scrollFraction =
-        (listItemOffset.dy / viewportDimension).clamp(0.0, 1.0);
+    final scrollFraction = (listItemOffset.dy / viewportDimension).clamp(
+      0.0,
+      1.0,
+    );
 
     // Calculate the vertical alignment of the background
     // based on the scroll percent.
@@ -757,14 +731,17 @@ class ParallaxFlowDelegate extends FlowDelegate {
         (backgroundImageKey.currentContext!.findRenderObject() as RenderBox)
             .size;
     final listItemSize = context.size;
-    final childRect =
-        verticalAlignment.inscribe(backgroundSize, Offset.zero & listItemSize);
+    final childRect = verticalAlignment.inscribe(
+      backgroundSize,
+      Offset.zero & listItemSize,
+    );
 
     // Paint the background.
     context.paintChild(
       0,
-      transform:
-          Transform.translate(offset: Offset(0.0, childRect.top)).transform,
+      transform: Transform.translate(
+        offset: Offset(0.0, childRect.top),
+      ).transform,
     );
   }
 
@@ -774,13 +751,12 @@ class ParallaxFlowDelegate extends FlowDelegate {
         listItemContext != oldDelegate.listItemContext ||
         backgroundImageKey != oldDelegate.backgroundImageKey;
   }
+
 }
 
 class Parallax extends SingleChildRenderObjectWidget {
-  const Parallax({
-    super.key,
-    required Widget background,
-  }) : super(child: background);
+  const Parallax({super.key, required Widget background})
+    : super(child: background);
 
   @override
   RenderObject createRenderObject(BuildContext context) {
@@ -789,7 +765,9 @@ class Parallax extends SingleChildRenderObjectWidget {
 
   @override
   void updateRenderObject(
-      BuildContext context, covariant RenderParallax renderObject) {
+    BuildContext context,
+    covariant RenderParallax renderObject,
+  ) {
     renderObject.scrollable = Scrollable.of(context);
   }
 }
@@ -798,9 +776,8 @@ class ParallaxParentData extends ContainerBoxParentData<RenderBox> {}
 
 class RenderParallax extends RenderBox
     with RenderObjectWithChildMixin<RenderBox>, RenderProxyBoxMixin {
-  RenderParallax({
-    required ScrollableState scrollable,
-  }) : _scrollable = scrollable;
+  RenderParallax({required ScrollableState scrollable})
+    : _scrollable = scrollable;
 
   ScrollableState _scrollable;
 
@@ -844,8 +821,9 @@ class RenderParallax extends RenderBox
     // Force the background to take up all available width
     // and then scale its height based on the image's aspect ratio.
     final background = child!;
-    final backgroundImageConstraints =
-        BoxConstraints.tightFor(width: size.width);
+    final backgroundImageConstraints = BoxConstraints.tightFor(
+      width: size.width,
+    );
     background.layout(backgroundImageConstraints, parentUsesSize: true);
 
     // Set the background's local offset, which is zero.
@@ -859,13 +837,17 @@ class RenderParallax extends RenderBox
 
     // Calculate the global position of this list item.
     final scrollableBox = scrollable.context.findRenderObject() as RenderBox;
-    final backgroundOffset =
-        localToGlobal(size.centerLeft(Offset.zero), ancestor: scrollableBox);
+    final backgroundOffset = localToGlobal(
+      size.centerLeft(Offset.zero),
+      ancestor: scrollableBox,
+    );
 
     // Determine the percent position of this list item within the
     // scrollable area.
-    final scrollFraction =
-        (backgroundOffset.dy / viewportDimension).clamp(0.0, 1.0);
+    final scrollFraction = (backgroundOffset.dy / viewportDimension).clamp(
+      0.0,
+      1.0,
+    );
 
     // Calculate the vertical alignment of the background
     // based on the scroll percent.
@@ -876,15 +858,18 @@ class RenderParallax extends RenderBox
     final background = child!;
     final backgroundSize = background.size;
     final listItemSize = size;
-    final childRect =
-        verticalAlignment.inscribe(backgroundSize, Offset.zero & listItemSize);
+    final childRect = verticalAlignment.inscribe(
+      backgroundSize,
+      Offset.zero & listItemSize,
+    );
 
     // Paint the background.
     context.paintChild(
-        background,
-        (background.parentData as ParallaxParentData).offset +
-            offset +
-            Offset(0.0, childRect.top));
+      background,
+      (background.parentData as ParallaxParentData).offset +
+          offset +
+          Offset(0.0, childRect.top),
+    );
   }
 }
 
@@ -901,7 +886,8 @@ class Location {
 }
 
 const urlPrefix =
-    'https://docs.flutterbrasil.dev/cookbook/img-files/effects/parallax';
+    'https://docs.flutter.dev/assets/images/exercise/effects/parallax';
+
 const locations = [
   Location(
     name: 'Mount Rushmore',
@@ -933,11 +919,7 @@ const locations = [
     place: 'Mexico',
     imageUrl: '$urlPrefix/06-mexico-city.jpg',
   ),
-  Location(
-    name: 'Cairo',
-    place: 'Egypt',
-    imageUrl: '$urlPrefix/07-cairo.jpg',
-  ),
+  Location(name: 'Cairo', place: 'Egypt', imageUrl: '$urlPrefix/07-cairo.jpg'),
 ];
 ```
 

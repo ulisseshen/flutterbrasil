@@ -1,7 +1,6 @@
 ---
 layout: toc
-title: Listas e grades
-description: Conteúdo cobrindo a adição de listas e grades de itens a apps Flutter.
+title: Lists & grids
+description: Content covering adding lists and grids of items to Flutter apps.
 sitemap: false
-ia-translate: true
 ---

@@ -3,10 +3,11 @@ title: Android ActivityControlSurface attachToActivity signature change
 description: >
   attachToActivity activity parameter changed to
   ExclusiveAppComponent instead of Activity.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 :::note
 If you use standard Android embedding Java classes like
@@ -33,7 +34,7 @@ void attachToActivity(@NonNull Activity activity, @NonNull Lifecycle lifecycle);
 The existing deprecated method with the `Activity`
 parameter was removed in Flutter 2.
 
-## Contexto
+## Context
 
 In order for custom Activities to also supply the `Activity`
 lifecycle events Flutter plugins expect using the
@@ -57,7 +58,7 @@ the engine, thus enabling `n:1` relationships between
 the activity and the engine,
 causing lifecycle cross-talk issues.
 
-## Descrição da mudança
+## Description of change
 
 After [Issue #21272][], instead of attaching your activity
 to the [`FlutterEngine`][] by using the:
@@ -88,7 +89,7 @@ API remains unchanged and you're still expected
 to call it when your custom
 activity is being destroyed naturally.
 
-## Guia de migração
+## Migration guide
 
 If you have your own activity holding a
 [`FlutterView`][], replace calls to:
@@ -120,12 +121,12 @@ activity being attached to the [`FlutterEngine`][].
 Generally, you want to perform the same detaching operations
 as performed when the activity is being naturally destroyed.
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 1.23.0-7.0.pre<br>
-Na versão estável: 2.0.0
+Landed in version: 1.23.0-7.0.pre<br>
+In stable release: 2.0.0
 
-## Referências
+## References
 
 Motivating bug: [Issue #66192][]—Non exclusive
 UI components attached to the FlutterEngine causes

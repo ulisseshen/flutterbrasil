@@ -1,23 +1,24 @@
 ---
-title: More Strict Assertions in the Navigator and the Hero Controller Scope
+title: More strict assertions in the Navigator and the Hero controller scope
 description: >
   Added additional assertions to guarantee that
   one hero controller scope can only subscribe to one navigator at a time.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 The framework throws an assertion error when it detects there are
 multiple navigators registered with one hero controller scope.
 
-## Contexto
+## Context
 
 The hero controller scope hosts a hero controller for its widget
 subtree. The hero controller can only support one navigator at
 a time. Previously, there was no assertion to guarantee that.
 
-## Descrição da mudança
+## Description of change
 
 If the code starts throwing assertion errors after this change,
 it means the code was already broken even before this change.
@@ -25,7 +26,7 @@ Multiple navigators may be registered under the same hero
 controller scope, and they can not trigger hero animations when
 their route changes. This change only surfaced this problem.
 
-## Guia de migração
+## Migration guide
 
 An example application that starts to throw exceptions.
 
@@ -115,24 +116,24 @@ void main() {
 }
 ```
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 1.20.0<br>
-Na versão estável: 1.20
+Landed in version: 1.20.0<br>
+In stable release: 1.20
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`Navigator`][]
 * [`HeroController`][]
 * [`HeroControllerScope`][]
 
-Issues relevantes:
+Relevant issue:
 
 * [Issue 45938][]
 
-PRs relevantes:
+Relevant PR:
 
 * [Clean up hero controller scope][]
 

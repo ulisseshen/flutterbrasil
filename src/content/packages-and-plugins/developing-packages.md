@@ -1,193 +1,192 @@
 ---
-ia-translate: true
 title: Developing packages & plugins
-short-title: Developing
-description: Como escrever packages e plugins para Flutter.
+shortTitle: Developing
+description: How to write packages and plugins for Flutter.
 ---
 
 ## Package introduction
 
-Packages permitem a criação de código modular que pode ser compartilhado facilmente.
-Um package mínimo consiste no seguinte:
+Packages enable the creation of modular code that can be shared easily.
+A minimal package consists of the following:
 
 **`pubspec.yaml`**
-: Um arquivo de metadata que declara o nome do package,
-  versão, autor, e assim por diante.
+: A metadata file that declares the package name,
+  version, author, and so on.
 
 **`lib`**
-: O diretório `lib` contém o código público no
-  package, minimamente um único arquivo `<package-name>.dart`.
+: The `lib` directory contains the public code in
+  the package, minimally a single `<package-name>.dart` file.
 
 :::note
-Para uma lista de práticas recomendadas ao escrever um plugin eficaz,
-veja o artigo no Medium por Mehmet Fidanboylu,
+For a list of dos and don'ts when writing an effective plugin,
+see the Medium article by Mehmet Fidanboylu,
 [Writing a good plugin][].
 :::
 
 ### Package types {:#types}
 
-Packages podem conter mais de um tipo de conteúdo:
+Packages can contain more than one kind of content:
 
 **Dart packages**
-: Packages gerais escritos em Dart,
-  por exemplo o package [`path`][].
-  Alguns destes podem conter funcionalidades específicas do Flutter
-  e portanto ter uma dependência no
-  framework Flutter, restringindo seu uso apenas ao Flutter,
-  por exemplo o package [`fluro`][].
+: General packages written in Dart,
+  for example the [`path`][] package.
+  Some of these might contain Flutter specific
+  functionality and thus have a dependency on the
+  Flutter framework, restricting their use to Flutter only,
+  for example the [`fluro`][] package.
 
 **Plugin packages**
-: Um Dart package especializado que contém uma API escrita em
-  código Dart combinada com uma ou mais implementações
-  específicas de plataforma.
+: A specialized Dart package that contains an API written in
+  Dart code combined with one or more platform-specific
+  implementations.
 
-  Plugin packages podem ser escritos para Android
-  (usando Kotlin ou Java), iOS (usando Swift ou Objective-C),
-  web, macOS, Windows, ou Linux, ou qualquer combinação
-  destes.
+  Plugin packages can be written for Android
+  (using Kotlin or Java), iOS (using Swift or Objective-C),
+  web, macOS, Windows, or Linux, or any combination
+  thereof.
 
-  Um exemplo concreto é o plugin package [`url_launcher`][].
-  Para ver como usar o package `url_launcher`, e como ele
-  foi estendido para implementar suporte para web,
-  veja o artigo no Medium por Harry Terkelsen,
+  A concrete example is the [`url_launcher`][] plugin package.
+  To see how to use the `url_launcher` package, and how it
+  was extended to implement support for web,
+  see the Medium article by Harry Terkelsen,
   [How to Write a Flutter Web Plugin, Part 1][].
 
 **FFI Plugin packages**
-: Um Dart package especializado que contém uma API escrita em
-  código Dart combinada com uma ou mais implementações
-  específicas de plataforma que usam Dart FFI([Android][Android], [iOS][iOS], [macOS][macOS]).
+: A specialized Dart package that contains an API written in
+  Dart code combined with one or more platform-specific
+  implementations that use Dart FFI([Android][Android], [iOS][iOS], [macOS][macOS]).
 
 ## Developing Dart packages {:#dart}
 
-As instruções a seguir explicam como escrever um Flutter
+The following instructions explain how to write a Flutter
 package.
 
 ### Step 1: Create the package
 
-Para criar um Flutter package inicial,
-use a flag `--template=package` com `flutter create`:
+To create a starter Flutter package,
+use the `--template=package` flag with `flutter create`:
 
 ```console
 $ flutter create --template=package hello
 ```
 
-Isto cria um projeto de package na pasta `hello`
-com o seguinte conteúdo:
+This creates a package project in the `hello`
+folder with the following content:
 
 **LICENSE**
-: Um arquivo de texto de licença (em sua maioria) vazio.
+: A (mostly) empty license text file.
 
 **test/hello_test.dart**
-: Os [unit tests][] para o package.
+: The [unit tests][] for the package.
 
 **hello.iml**
-: Um arquivo de configuração usado pelas IDEs IntelliJ.
+: A configuration file used by the IntelliJ IDEs.
 
 **.gitignore**
-: Um arquivo oculto que informa ao Git quais arquivos ou
-  pastas ignorar em um projeto.
+: A hidden file that tells Git which files or
+  folders to ignore in a project.
 
 **.metadata**
-: Um arquivo oculto usado pelas IDEs para rastrear as propriedades
-  do projeto Flutter.
+: A hidden file used by IDEs to track the properties
+  of the Flutter project.
 
 **pubspec.yaml**
-: Um arquivo yaml contendo metadata que especifica
-  as dependências do package. Usado pela ferramenta pub.
+: A yaml file containing metadata that specifies
+  the package's dependencies. Used by the pub tool.
 
 **README.md**
-: Um arquivo markdown inicial que descreve brevemente
-  o propósito do package.
+: A starter markdown file that briefly describes
+  the package's purpose.
 
 **lib/hello.dart**
-: Um app inicial contendo código Dart para o package.
+: A starter app containing Dart code for the package.
 
 **.idea/modules.xml**, **.idea/workspace.xml**
-: Uma pasta oculta contendo arquivos de configuração
-  para as IDEs IntelliJ.
+: A hidden folder containing configuration files
+  for the IntelliJ IDEs.
 
 **CHANGELOG.md**
-: Um arquivo markdown (em sua maioria) vazio para rastrear
-  mudanças de versão no package.
+: A (mostly) empty markdown file for tracking
+  version changes to the package.
 
 ### Step 2: Implement the package
 
-Para packages Dart puros, simplesmente adicione a funcionalidade
-dentro do arquivo principal `lib/<package name>.dart`,
-ou em vários arquivos no diretório `lib`.
+For pure Dart packages, simply add the functionality
+inside the main `lib/<package name>.dart` file,
+or in several files in the `lib` directory.
 
-Para testar o package, adicione [unit tests][]
-em um diretório `test`.
+To test the package, add [unit tests][]
+in a `test` directory.
 
-Para detalhes adicionais sobre como organizar o
-conteúdo do package,
-veja a documentação [Dart library package][].
+For additional details on how to organize the
+package contents,
+see the [Dart library package][] documentation.
 
 ## Developing plugin packages {:#plugin}
 
-Se você deseja desenvolver um package que chama
-APIs específicas de plataforma,
-você precisa desenvolver um plugin package.
+If you want to develop a package that calls into
+platform-specific APIs,
+you need to develop a plugin package.
 
-A API é conectada à(s) implementação(ões)
-específica(s) de plataforma usando um [platform channel][].
+The API is connected to the platform-specific
+implementation(s) using a [platform channel][].
 
 ### Federated plugins
 
-Federated plugins são uma forma de dividir o suporte para
-diferentes plataformas em packages separados.
-Então, um federated plugin pode usar um package para iOS,
-outro para Android, outro para web,
-e ainda outro para um carro (como um exemplo de um dispositivo IoT).
-Entre outros benefícios, esta abordagem permite que um especialista no domínio
-estenda um plugin existente para funcionar na plataforma que ele conhece melhor.
+Federated plugins are a way of splitting support for
+different platforms into separate packages.
+So, a federated plugin can use one package for iOS,
+another for Android, another for web,
+and yet another for a car (as an example of an IoT device).
+Among other benefits, this approach allows a domain expert
+to extend an existing plugin to work for the platform they know best.
 
-Um federated plugin requer os seguintes packages:
+A federated plugin requires the following packages:
 
 **app-facing package**
-: O package do qual os usuários do plugin dependem para usar o plugin.
-  Este package especifica a API usada pelo app Flutter.
+: The package that plugin users depend on to use the plugin.
+  This package specifies the API used by the Flutter app.
 
 **platform package(s)**
-: Um ou mais packages que contêm o
-  código de implementação específico de plataforma. O app-facing package chama
-  estes packages&mdash;eles não são incluídos em um app,
-  a menos que contenham funcionalidade específica de plataforma
-  acessível ao usuário final.
+: One or more packages that contain the platform-specific
+  implementation code. The app-facing package calls into
+  these packages&mdash;they aren't included into an app,
+  unless they contain platform-specific functionality
+  accessible to the end user.
 
 **platform interface package**
-: O package que conecta o app-facing package
-  ao(s) platform package(s). Este package declara uma
-  interface que qualquer platform package deve implementar para
-  suportar o app-facing package. Ter um único package
-  que define esta interface garante que todos os platform
-  packages implementem a mesma funcionalidade de maneira uniforme.
+: The package that glues the app-facing package
+  to the platform package(s). This package declares an
+  interface that any platform package must implement to
+  support the app-facing package. Having a single package
+  that defines this interface ensures that all platform
+  packages implement the same functionality in a uniform way.
 
 #### Endorsed federated plugin
 
-Idealmente, ao adicionar uma implementação de plataforma a
-um federated plugin, você coordenará com o autor
-do package para incluir sua implementação.
-Dessa forma, o autor original _endossa_ sua
-implementação.
+Ideally, when adding a platform implementation to
+a federated plugin, you will coordinate with the package
+author to include your implementation.
+In this way, the original author _endorses_ your
+implementation.
 
-Por exemplo, digamos que você escreve uma implementação `foobar_windows`
-para o plugin (imaginário) `foobar`.
-Em um plugin endossado, o autor original do `foobar`
-adiciona sua implementação Windows como uma dependência
-no pubspec para o app-facing package.
-Então, quando um desenvolvedor inclui o plugin `foobar`
-em seu app Flutter, a implementação Windows,
-bem como as outras implementações endossadas,
-ficam automaticamente disponíveis para o app.
+For example, say you write a `foobar_windows`
+implementation for the (imaginary) `foobar` plugin.
+In an endorsed plugin, the original `foobar` author
+adds your Windows implementation as a dependency
+in the pubspec for the app-facing package.
+Then, when a developer includes the `foobar` plugin
+in their Flutter app, the Windows implementation,
+as well as the other endorsed implementations,
+are automatically available to the app.
 
 #### Non-endorsed federated plugin
 
-Se você não pode, por qualquer razão, fazer com que sua implementação
-seja adicionada pelo autor original do plugin, então seu plugin
-_não está_ endossado. Um desenvolvedor ainda pode usar sua
-implementação, mas deve adicionar manualmente o plugin
-ao arquivo `pubspec.yaml` do app:
+If you can't, for whatever reason, get your implementation
+added by the original plugin author, then your plugin
+is _not_ endorsed. A developer can still use your
+implementation, but must manually add the plugin
+to the app's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
@@ -195,22 +194,22 @@ dependencies:
   foobar_windows: ^1.0.0 # Non-endorsed plugin implementation
 ```
 
-Esta abordagem também funciona para sobrescrever uma implementação
-de plugin já endossada de `foobar`.
+This approach also works for overriding an already
+endorsed plugin implementation of `foobar`.
 
-Para mais informações sobre federated plugins,
-por que eles são úteis, e como são
-implementados, veja o artigo no Medium por Harry Terkelsen,
+For more information on federated plugins,
+why they are useful, and how they are
+implemented, see the Medium article by Harry Terkelsen,
 [How To Write a Flutter Web Plugin, Part 2][].
 
 ### Specifying a plugin's supported platforms {:#plugin-platforms}
 
-Plugins podem especificar as plataformas que suportam
-adicionando chaves ao mapa `platforms` no
-arquivo `pubspec.yaml`. Por exemplo,
-o seguinte arquivo pubspec mostra o
-mapa `flutter:` para o plugin `hello`,
-que suporta apenas iOS e Android:
+Plugins can specify the platforms they support by
+adding keys to the `platforms` map in the
+`pubspec.yaml` file. For example,
+the following pubspec file shows the
+`flutter:` map for the `hello` plugin,
+which supports only iOS and Android:
 
 ```yaml
 flutter:
@@ -223,11 +222,11 @@ flutter:
         pluginClass: HelloPlugin
 ```
 
-Ao adicionar implementações de plugin para mais plataformas,
-o mapa `platforms` deve ser atualizado adequadamente.
-Por exemplo, aqui está o mapa no arquivo pubspec
-para o plugin `hello`,
-quando atualizado para adicionar suporte para macOS e web:
+When adding plugin implementations for more platforms,
+the `platforms` map should be updated accordingly.
+For example, here's the map in the pubspec file
+for the `hello` plugin,
+when updated to add support for macOS and web:
 
 ```yaml
 flutter:
@@ -247,12 +246,12 @@ flutter:
 
 #### Federated platform packages
 
-Um platform package usa o mesmo formato,
-mas inclui uma entrada `implements` indicando
-qual app-facing package ele implementa. Por exemplo,
-um plugin `hello_windows` contendo a implementação Windows
-para `hello`
-teria o seguinte mapa `flutter:`:
+A platform package uses the same format,
+but includes an `implements` entry indicating
+which app-facing package it implements. For example,
+a `hello_windows` plugin containing the Windows
+implementation for `hello`
+would have the following `flutter:` map:
 
 ```yaml
 flutter:
@@ -265,10 +264,10 @@ flutter:
 
 #### Endorsed implementations
 
-Um app facing package pode endossar um platform package adicionando uma
-dependência nele, e incluindo-o como um `default_package` no
-mapa `platforms:`. Se o plugin `hello` acima endossasse `hello_windows`,
-ele ficaria assim:
+An app facing package can endorse a platform package by adding a
+dependency on it, and including it as a `default_package` in the
+`platforms:` map. If the `hello` plugin above endorsed `hello_windows`,
+it would look as follows:
 
 
 ```yaml
@@ -287,18 +286,18 @@ dependencies:
   hello_windows: ^1.0.0
 ```
 
-Note que conforme mostrado aqui, um app-facing package pode ter
-algumas plataformas implementadas dentro do package,
-e outras em implementações federadas endossadas.
+Note that as shown here, an app-facing package can have
+some platforms implemented within the package,
+and others in endorsed federated implementations.
 
 #### Shared iOS and macOS implementations
 
-Muitos frameworks suportam tanto iOS quanto macOS com
-APIs idênticas ou quase idênticas, tornando possível implementar
-alguns plugins para iOS e macOS com a mesma base de código.
-Normalmente a implementação de cada plataforma fica em sua própria
-pasta, mas a opção `sharedDarwinSource` permite que iOS
-e macOS usem a mesma pasta em vez disso:
+Many frameworks support both iOS and macOS with identical
+or mostly identical APIs, making it possible to implement
+some plugins for both iOS and macOS with the same codebase.
+Normally each platform's implementation is in its own
+folder, but the `sharedDarwinSource` option allows iOS
+and macOS to use the same folder instead:
 
 
 ```yaml
@@ -319,45 +318,45 @@ environment:
   flutter: ">=3.7.0"
 ```
 
-Quando `sharedDarwinSource` está habilitado, em vez de
-um diretório `ios` para iOS e um diretório `macos`
-para macOS, ambas as plataformas usam um diretório `darwin`
-compartilhado para todo o código e recursos. Ao habilitar
-esta opção, você precisa mover quaisquer arquivos existentes
-de `ios` e `macos` para o diretório compartilhado. Você
-também precisa atualizar o arquivo podspec para definir as
-dependências e deployment targets para ambas as plataformas,
-por exemplo:
+When `sharedDarwinSource` is enabled, instead of
+an `ios` directory for iOS and a `macos` directory
+for macOS, both platforms use a shared `darwin`
+directory for all code and resources. When enabling
+this option, you need to move any existing files
+from `ios` and `macos` to the shared directory. You
+also need to update the podspec file to set the
+dependencies and deployment targets for both platforms,
+for example:
 
 ```ruby
   s.ios.dependency 'Flutter'
   s.osx.dependency 'FlutterMacOS'
-  s.ios.deployment_target = '11.0'
-  s.osx.deployment_target = '10.14'
+  s.ios.deployment_target = '13.0'
+  s.osx.deployment_target = '10.15'
 ```
 
 ### Step 1: Create the package
 
-Para criar um plugin package, use a flag `--template=plugin`
-com `flutter create`.
+To create a plugin package, use the `--template=plugin`
+flag with `flutter create`.
 
-Use a opção `--platforms=` seguida por uma
-lista separada por vírgulas para especificar as plataformas
-que o plugin suporta. Plataformas disponíveis são:
-`android`, `ios`, `web`, `linux`, `macos`, e `windows`.
-Se nenhuma plataforma for especificada, o
-projeto resultante não suporta nenhuma plataforma.
+Use the `--platforms=` option followed by a
+comma-separated list to specify the platforms
+that the plugin supports. Available platforms are:
+`android`, `ios`, `web`, `linux`, `macos`, and `windows`.
+If no platforms are specified, the
+resulting project doesn't support any platforms.
 
-Use a opção `--org` para especificar sua organização,
-usando notação de nome de domínio reverso. Este valor é usado
-em vários identificadores de package e bundle no
-código do plugin gerado.
+Use the `--org` option to specify your organization,
+using reverse domain name notation. This value is used
+in various package and bundle identifiers in the
+generated plugin code.
 
-Por padrão, o projeto de plugin usa Swift para código iOS e
-Kotlin para código Android. Se você preferir Objective-C ou Java,
-pode especificar a linguagem iOS usando `-i` e a
-linguagem Android usando `-a`.
-Por favor escolha **uma** das seguintes opções:
+By default, the plugin project uses Swift for iOS code and
+Kotlin for Android code. If you prefer Objective-C or Java,
+you can specify the iOS language using `-i` and the
+Android language using `-a`.
+Please choose **one** of the following:
 
 ```console
 $ flutter create --org com.example --template=plugin --platforms=android,ios,linux,macos,windows -a kotlin hello
@@ -372,111 +371,111 @@ $ flutter create --org com.example --template=plugin --platforms=android,ios,lin
 $ flutter create --org com.example --template=plugin --platforms=android,ios,linux,macos,windows -i swift hello
 ```
 
-Isto cria um projeto de plugin na pasta `hello`
-com o seguinte conteúdo especializado:
+This creates a plugin project in the `hello` folder
+with the following specialized content:
 
 **`lib/hello.dart`**
-: A API Dart para o plugin.
+: The Dart API for the plugin.
 
 **`android/src/main/java/com/example/hello/HelloPlugin.kt`**
-: A implementação específica da plataforma Android da API do plugin
-  em Kotlin.
+: The Android platform-specific implementation of the plugin API
+  in Kotlin.
 
 **`ios/Classes/HelloPlugin.m`**
-: A implementação específica da plataforma iOS da API do plugin
-  em Objective-C.
+: The iOS-platform specific implementation of the plugin API
+  in Objective-C.
 
 **`example/`**
-: Um app Flutter que depende do plugin,
-  e ilustra como usá-lo.
+: A Flutter app that depends on the plugin,
+  and illustrates how to use it.
 
 ### Step 2: Implement the package {:#edit-plugin-package}
 
-Como um plugin package contém código para várias plataformas
-escrito em várias linguagens de programação,
-alguns passos específicos são necessários para garantir uma experiência suave.
+As a plugin package contains code for several platforms
+written in several programming languages,
+some specific steps are needed to ensure a smooth experience.
 
 #### Step 2a: Define the package API (.dart)
 
-A API do plugin package é definida em código Dart.
-Abra a pasta principal `hello/` em seu [Flutter editor][] favorito.
-Localize o arquivo `lib/hello.dart`.
+The API of the plugin package is defined in Dart code.
+Open the main `hello/` folder in your favorite [Flutter editor][].
+Locate the file `lib/hello.dart`.
 
 #### Step 2b: Add Android platform code (.kt/.java)
 
-Recomendamos que você edite o código Android usando Android Studio.
+We recommend you edit the Android code using Android Studio.
 
-Antes de editar o código da plataforma Android no Android Studio,
-primeiro certifique-se de que o código foi construído pelo menos uma vez
-(em outras palavras, execute o app de exemplo de sua IDE/editor,
-ou em um terminal execute
+Before editing the Android platform code in Android Studio,
+first make sure that the code has been built at least once
+(in other words, run the example app from your IDE/editor,
+or in a terminal execute
 `cd hello/example; flutter build apk --config-only`).
 
-Em seguida, use os seguintes passos:
+Then use the following steps:
 
-1. Abra Android Studio.
-1. Selecione **Open an existing Android Studio Project**
-   no diálogo **Welcome to Android Studio**,
-   ou selecione **File > Open** do menu,
-   e selecione o arquivo `hello/example/android/build.gradle`.
-1. No diálogo **Gradle Sync**, selecione **OK**.
-1. No diálogo **Android Gradle Plugin Update**,
-   selecione **Don't remind me again for this project**.
+1. Launch Android Studio.
+1. Select **Open an existing Android Studio Project**
+   in the **Welcome to Android Studio** dialog,
+   or select **File > Open** from the menu,
+   and select the `hello/example/android/build.gradle` file.
+1. In the **Gradle Sync** dialog, select **OK**.
+1. In the **Android Gradle Plugin Update** dialog,
+   select **Don't remind me again for this project**.
 
-O código da plataforma Android de seu plugin está localizado em
+The Android platform code of your plugin is located in
 `hello/java/com.example.hello/HelloPlugin`.
 
-Você pode executar o app de exemplo no Android Studio
-pressionando o botão executar (&#9654;).
+You can run the example app from Android Studio by
+pressing the run (&#9654;) button.
 
 #### Step 2c: Add iOS platform code (.swift/.h+.m)
 
-Recomendamos que você edite o código iOS usando Xcode.
+We recommend you edit the iOS code using Xcode.
 
-Antes de editar o código da plataforma iOS no Xcode,
-primeiro certifique-se de que o código foi construído pelo menos uma vez
-(em outras palavras, execute o app de exemplo de sua IDE/editor,
-ou em um terminal execute
+Before editing the iOS platform code in Xcode,
+first make sure that the code has been built at least once
+(in other words, run the example app from your IDE/editor,
+or in a terminal execute
 `cd hello/example; flutter build ios --no-codesign --config-only`).
 
-Em seguida, use os seguintes passos:
+Then use the following steps:
 
-1. Abra Xcode.
-1. Selecione **File > Open**, e selecione o
-   arquivo `hello/example/ios/Runner.xcworkspace`.
+1. Launch Xcode.
+1. Select **File > Open**, and select the
+   `hello/example/ios/Runner.xcworkspace` file.
 
-O código da plataforma iOS para seu plugin está localizado em
+The iOS platform code for your plugin is located in
 `Pods/Development Pods/hello/../../example/ios/.symlinks/plugins/hello/ios/Classes`
-no Project Navigator. (Se você está usando `sharedDarwinSource`,
-o caminho terminará com `hello/darwin/Classes` em vez disso.)
+in the Project Navigator. (If you are using `sharedDarwinSource`,
+the path will end with `hello/darwin/Classes` instead.)
 
-Você pode executar o app de exemplo pressionando o botão executar (&#9654;).
+You can run the example app by pressing the run (&#9654;) button.
 
 ##### Add CocoaPod dependencies
 
 :::warning
-Flutter está migrando para [Swift Package Manager][]
-para gerenciar dependências nativas iOS e macOS.
-O suporte do Flutter ao Swift Package Manager está em desenvolvimento.
-A implementação pode mudar no futuro.
-O suporte ao Swift Package Manager está disponível apenas
-no [`main` channel][] do Flutter.
-O Flutter continua a suportar CocoaPods.
+Flutter is migrating to [Swift Package Manager][]
+to manage iOS and macOS native dependencies.
+Flutter's support of Swift Package Manager is under development.
+The implementation might change in the future.
+Swift Package Manager support is only available
+on Flutter's [`main` channel][].
+Flutter continues to support CocoaPods.
 :::
 
 [Swift Package Manager]: https://www.swift.org/documentation/package-manager/
-[`main` channel]: /release/upgrade#switching-flutter-channels
+[`main` channel]: /install/upgrade#switching-flutter-channels
 
-Use as seguintes instruções para adicionar `HelloPod` com a versão `0.0.1`:
+Use the following instructions to add `HelloPod` with the version `0.0.1`:
 
-1. Especifique a dependência no final de `ios/hello.podspec`:
+1. Specify the dependency at the end of `ios/hello.podspec`:
 
    ```ruby
    s.dependency 'HelloPod', '0.0.1'
    ```
 
-   Para pods privados, consulte
-   [Private CocoaPods][] para garantir acesso ao repo:
+   For private pods, refer to
+   [Private CocoaPods][] to ensure repo access:
 
    ```ruby
    s.source = {
@@ -492,152 +491,152 @@ Use as seguintes instruções para adicionar `HelloPod` com a versão `0.0.1`:
 
 2. Installing the plugin
 
-   - Add the plugin in the project's `pubspec.yaml` dependencies.
+   - Add the plugin in the project’s `pubspec.yaml` dependencies.
    - Run `flutter pub get`.
-   - In the project's `ios/` directory, run `pod install`.
+   - In the project’s `ios/` directory, run `pod install`.
 
-O pod deve aparecer no resumo de instalação.
+The pod should appear in the installation summary.
 
-Se seu plugin requer um privacy manifest, por exemplo,
-se ele usa qualquer **required reason APIs**,
-atualize o arquivo `PrivacyInfo.xcprivacy` para
-descrever o impacto de privacidade do seu plugin,
-e adicione o seguinte ao final do seu arquivo podspec:
+If your plugin requires a privacy manifest, for example,
+if it uses any **required reason APIs**,
+update the `PrivacyInfo.xcprivacy` file to
+describe your plugin's privacy impact,
+and add the following to the bottom of your podspec file:
 
 ```ruby
 s.resource_bundles = {'your_plugin_privacy' => ['your_plugin/Sources/your_plugin/Resources/PrivacyInfo.xcprivacy']}
 ```
 
-Para mais informações,
-veja [Privacy manifest files][] no site de desenvolvedores da Apple.
+For more information,
+check out [Privacy manifest files][] on the Apple developer site.
 
 [Privacy manifest files]: {{site.apple-dev}}/documentation/bundleresources/privacy_manifest_files
 
 #### Step 2d: Add Linux platform code (.h+.cc)
 
-Recomendamos que você edite o código Linux usando uma IDE com
-integração C++. As instruções abaixo são para
-Visual Studio Code com as extensões "C/C++" e "CMake"
-instaladas, mas podem ser ajustadas para outras IDEs.
+We recommend you edit the Linux code using an IDE with
+C++ integration. The instructions below are for
+Visual Studio Code with the "C/C++" and "CMake" extensions
+installed, but can be adjusted for other IDEs.
 
-Antes de editar o código da plataforma Linux em uma IDE,
-primeiro certifique-se de que o código foi construído pelo menos uma vez
-(em outras palavras, execute o app de exemplo de sua
-IDE/editor Flutter, ou em um terminal execute
+Before editing the Linux platform code in an IDE,
+first make sure that the code has been built at least once
+(in other words, run the example app from your Flutter
+IDE/editor, or in a terminal execute
 `cd hello/example; flutter build linux`).
 
-Em seguida, use os seguintes passos:
+Then use the following steps:
 
-1. Abra Visual Studio Code.
-1. Abra o diretório `hello/example/linux/`.
-1. Escolha **Yes** no prompt perguntando:
+1. Launch Visual Studio Code.
+1. Open the `hello/example/linux/` directory.
+1. Choose **Yes** in the prompt asking:
    `Would you like to configure project "linux"?`.
-   Isto permitirá que o autocomplete C++ funcione.
+   This will allow C++ autocomplete to work.
 
-O código da plataforma Linux para seu plugin está localizado em
+The Linux platform code for your plugin is located in
 `flutter/ephemeral/.plugin_symlinks/hello/linux/`.
 
-Você pode executar o app de exemplo usando `flutter run`.
-**Nota:** Criar uma aplicação Flutter executável
-no Linux requer passos que são parte da ferramenta `flutter`,
-então mesmo se seu editor fornecer integração CMake
-construir e executar dessa forma não funcionará
-corretamente.
+You can run the example app using `flutter run`.
+**Note:** Creating a runnable Flutter application
+on Linux requires steps that are part of the `flutter`
+tool, so even if your editor provides CMake
+integration building and running that way won't
+work correctly.
 
 #### Step 2e: Add macOS platform code (.swift)
 
-Recomendamos que você edite o código macOS usando Xcode.
+We recommend you edit the macOS code using Xcode.
 
-Antes de editar o código da plataforma macOS no Xcode,
-primeiro certifique-se de que o código foi construído pelo menos uma vez
-(em outras palavras, execute o app de exemplo de sua IDE/editor,
-ou em um terminal execute
+Before editing the macOS platform code in Xcode,
+first make sure that the code has been built at least once
+(in other words, run the example app from your IDE/editor,
+or in a terminal execute
 `cd hello/example; flutter build macos --config-only`).
 
-Em seguida, use os seguintes passos:
+Then use the following steps:
 
-1. Abra Xcode.
-1. Selecione **File > Open**, e selecione o
-   arquivo `hello/example/macos/Runner.xcworkspace`.
+1. Launch Xcode.
+1. Select **File > Open**, and select the
+   `hello/example/macos/Runner.xcworkspace` file.
 
-O código da plataforma macOS para seu plugin está localizado em
+The macOS platform code for your plugin is located in
 `Pods/Development Pods/hello/../../example/macos/Flutter/ephemeral/.symlinks/plugins/hello/macos/Classes`
-no Project Navigator. (Se você está usando `sharedDarwinSource`,
-o caminho terminará com `hello/darwin/Classes` em vez disso.)
+in the Project Navigator. (If you are using `sharedDarwinSource`,
+the path will end with `hello/darwin/Classes` instead.)
 
-Você pode executar o app de exemplo pressionando o botão executar (&#9654;).
+You can run the example app by pressing the run (&#9654;) button.
 
 #### Step 2f: Add Windows platform code (.h+.cpp)
 
-Recomendamos que você edite o código Windows usando Visual Studio.
+We recommend you edit the Windows code using Visual Studio.
 
-Antes de editar o código da plataforma Windows no Visual Studio,
-primeiro certifique-se de que o código foi construído pelo menos uma vez
-(em outras palavras, execute o app de exemplo de sua IDE/editor,
-ou em um terminal execute
+Before editing the Windows platform code in Visual Studio,
+first make sure that the code has been built at least once
+(in other words, run the example app from your IDE/editor,
+or in a terminal execute
 `cd hello/example; flutter build windows`).
 
-Em seguida, use os seguintes passos:
+Then use the following steps:
 
-1. Abra Visual Studio.
-1. Selecione **Open a project or solution**, e selecione o
-   arquivo `hello/example/build/windows/hello_example.sln`.
+1. Launch Visual Studio.
+1. Select **Open a project or solution**, and select the
+   `hello/example/build/windows/hello_example.sln` file.
 
-O código da plataforma Windows para seu plugin está localizado em
-`hello_plugin/Source Files` e `hello_plugin/Header Files` no
-Solution Explorer.
+The Windows platform code for your plugin is located in
+`hello_plugin/Source Files` and `hello_plugin/Header Files` in
+the Solution Explorer.
 
-Você pode executar o app de exemplo clicando com o botão direito em `hello_example` no
-Solution Explorer e selecionando **Set as Startup Project**,
-então pressionando o botão executar (&#9654;). **Importante:** Após
-fazer mudanças no código do plugin, você deve selecionar
-**Build > Build Solution** antes de executar novamente, caso contrário
-uma cópia desatualizada do plugin construído será executada em vez
-da versão mais recente contendo suas mudanças.
+You can run the example app by right-clicking `hello_example` in
+the Solution Explorer and selecting **Set as Startup Project**,
+then pressing the run (&#9654;) button. **Important:** After
+making changes to plugin code, you must select
+**Build > Build Solution** before running again, otherwise
+an outdated copy of the built plugin will be run instead
+of the latest version containing your changes.
 
 #### Step 2g: Connect the API and the platform code
 
-Finalmente, você precisa conectar a API escrita em código Dart com
-as implementações específicas de plataforma.
-Isto é feito usando um [platform channel][],
-ou através das interfaces definidas em um platform
+Finally, you need to connect the API written in Dart code with
+the platform-specific implementations.
+This is done using a [platform channel][],
+or through the interfaces defined in a platform
 interface package.
 
 ### Add support for platforms in an existing plugin project
 
-Para adicionar suporte para plataformas específicas a um
-projeto de plugin existente, execute `flutter create` com
-a flag `--template=plugin` novamente no diretório do projeto.
-Por exemplo, para adicionar suporte para web em um plugin existente, execute:
+To add support for specific platforms to an
+existing plugin project, run `flutter create` with
+the `--template=plugin` flag again in the project directory.
+For example, to add web support in an existing plugin, run:
 
 ```console
 $ flutter create --template=plugin --platforms=web .
 ```
 
-Se este comando exibir uma mensagem sobre atualizar o
-arquivo `pubspec.yaml`, siga as instruções fornecidas.
+If this command displays a message about updating the
+`pubspec.yaml` file, follow the provided instructions.
 
 ### Dart platform implementations
 
-Em muitos casos, implementações de plataforma não-web usam apenas a
-linguagem de implementação específica da plataforma, como mostrado acima. No entanto,
-implementações de plataforma também podem usar Dart específico de plataforma.
+In many cases, non-web platform implementations only use the
+platform-specific implementation language, as shown above. However,
+platform implementations can also use platform-specific Dart as well.
 
 :::note
-Os exemplos abaixo se aplicam apenas a plataformas não-web. Implementações
-de plugin web são sempre escritas em Dart, e usam
-`pluginClass` e `fileName` para suas implementações Dart
-como mostrado acima.
+The examples below only apply to non-web platforms. Web
+plugin implementations are always written in Dart, and use
+`pluginClass` and `fileName` for their Dart implementations
+as shown above.
 :::
 
 #### Dart-only platform implementations
 
-Em alguns casos, algumas plataformas podem ser
-implementadas inteiramente em Dart (por exemplo, usando FFI).
-Para uma implementação de plataforma apenas em Dart em uma plataforma que não seja web,
-substitua o `pluginClass` no pubspec.yaml por um `dartPluginClass`.
-Aqui está o exemplo `hello_windows` acima modificado para uma
-implementação apenas em Dart:
+In some cases, some platforms can be
+implemented entirely in Dart (for example, using FFI).
+For a Dart-only platform implementation on a platform other than web,
+replace the `pluginClass` in pubspec.yaml with a `dartPluginClass`.
+Here is the `hello_windows` example above modified for a
+Dart-only implementation:
 
 ```yaml
 flutter:
@@ -648,11 +647,11 @@ flutter:
         dartPluginClass: HelloPluginWindows
 ```
 
-Nesta versão você não teria código C++ Windows, e em vez disso
-faria uma subclasse da classe de interface de plataforma Dart do plugin `hello` com uma
-classe `HelloPluginWindows` que inclui um método estático
-`registerWith()`. Este método é chamado durante a inicialização,
-e pode ser usado para registrar a implementação Dart:
+In this version you would have no C++ Windows code, and would instead
+subclass the `hello` plugin's Dart platform interface class with a
+`HelloPluginWindows` class that includes a static
+`registerWith()` method.  This method is called during startup,
+and can be used to register the Dart implementation:
 
 ```dart
 class HelloPluginWindows extends HelloPluginPlatform {
@@ -664,13 +663,13 @@ class HelloPluginWindows extends HelloPluginPlatform {
 
 #### Hybrid platform implementations
 
-Implementações de plataforma também podem usar tanto Dart quanto uma linguagem
-específica de plataforma. Por exemplo, um plugin poderia usar um platform channel
-diferente para cada plataforma para que os channels possam ser customizados por plataforma.
+Platform implementations can also use both Dart and a platform-specific
+language. For example, a plugin could use a different platform channel
+for each platform so that the channels can be customized per platform.
 
-Uma implementação híbrida usa ambos os sistemas de registro
-descritos acima. Aqui está o exemplo `hello_windows` acima modificado para uma
-implementação híbrida:
+A hybrid implementation uses both of the registration systems
+described above. Here is the `hello_windows` example above modified for a
+hybrid implementation:
 
 ```yaml
 flutter:
@@ -682,63 +681,63 @@ flutter:
         pluginClass: HelloPlugin
 ```
 
-A classe Dart `HelloPluginWindows` usaria o `registerWith()`
-mostrado acima para implementações apenas em Dart, enquanto a classe C++ `HelloPlugin`
-seria a mesma que em uma implementação apenas em C++.
+The Dart `HelloPluginWindows` class would use the `registerWith()`
+shown above for Dart-only implementations, while the C++ `HelloPlugin`
+class would be the same as in a C++-only implementation.
 
 ### Testing your plugin
 
-Encorajamos que você teste seu plugin com testes automatizados
-para garantir que a funcionalidade não regrida
-conforme você faz mudanças no seu código.
+We encourage you test your plugin with automated tests
+to ensure that functionality doesn't regress
+as you make changes to your code.
 
-Para aprender mais sobre testar seus plugins,
-veja [Testing plugins][].
-Se você está escrevendo testes para seu app Flutter
-e plugins estão causando crashes,
-veja [Flutter in plugin tests][].
+To learn more about testing your plugins,
+check out [Testing plugins][].
+If you are writing tests for your Flutter app
+and plugins are causing crashes,
+check out [Flutter in plugin tests][].
 
 [Flutter in plugin tests]: /testing/plugins-in-tests
 [Testing plugins]: /testing/testing-plugins
 
 ## Developing FFI plugin packages {:#plugin-ffi}
 
-Se você deseja desenvolver um package que chama APIs nativas usando
-FFI do Dart, você precisa desenvolver um FFI plugin package.
+If you want to develop a package that calls into native APIs using
+Dart's FFI, you need to develop an FFI plugin package.
 
-Tanto FFI plugin packages quanto non-FFI plugin packages suportam
-empacotar código nativo. No entanto, FFI plugin packages não
-suportam method channels,
-mas eles _suportam_ código de registro de method channel.
-Para implementar um plugin que usa tanto method channels
-_quanto_ FFI, use um non-FFI plugin.
-Cada plataforma pode usar FFI ou non-FFI platform.
+Both FFI plugin packages and non-FFI plugin packages support
+bundling native code. However, FFI plugin packages don't
+support method channels,
+but they _do_ support method channel registration code.
+To implement a plugin that uses both method channels
+_and_ FFI, use a non-FFI plugin.
+Each platform can use either an FFI or non-FFI platform.
 
 ### Step 1: Create the package
 
-Para criar um FFI plugin package inicial,
-use a flag `--template=plugin_ffi` com `flutter create`:
+To create a starter FFI plugin package,
+use the `--template=plugin_ffi` flag with `flutter create`:
 
 ```console
 $ flutter create --template=plugin_ffi hello
 ```
 
-Isto cria um projeto de FFI plugin na pasta `hello`
-com o seguinte conteúdo especializado:
+This creates an FFI plugin project in the `hello`
+folder with the following specialized content:
 
-**lib**: O código Dart que define a API do plugin,
-  e que chama o código nativo usando `dart:ffi`.
+**lib**: The Dart code that defines the API of the plugin,
+  and which calls into the native code using `dart:ffi`.
 
-**src**: O código fonte nativo, e um arquivo `CMakeLists.txt`
-  para construir esse código fonte em uma biblioteca dinâmica.
+**src**: The native source code, and a `CMakeLists.txt`
+  file for building that source code into a dynamic library.
 
-**platform folders** (`android`, `ios`, `windows`, etc.): Os
-  arquivos de build para construir e empacotar a biblioteca
-  de código nativo com a aplicação de plataforma.
+**platform folders** (`android`, `ios`, `windows`, etc.): The
+  build files for building and bundling the native code
+  library with the platform application.
 
 ### Step 2: Building and bundling native code
 
-O `pubspec.yaml` especifica FFI plugins da seguinte forma:
+The `pubspec.yaml` specifies FFI plugins as follows:
 
 ```yaml
   plugin:
@@ -747,13 +746,13 @@ O `pubspec.yaml` especifica FFI plugins da seguinte forma:
         ffiPlugin: true
 ```
 
-Esta configuração invoca o build nativo
-para as várias plataformas de destino e empacota
-os binários em aplicações Flutter usando estes FFI plugins.
+This configuration invokes the native build
+for the various target platforms and bundles
+the binaries in Flutter applications using these FFI plugins.
 
-Isto pode ser combinado com `dartPluginClass`,
-como quando FFI é usado para a
-implementação de uma plataforma em um federated plugin:
+This can be combined with `dartPluginClass`,
+such as when FFI is used for the
+implementation of one platform in a federated plugin:
 
 ```yaml
   plugin:
@@ -764,7 +763,7 @@ implementação de uma plataforma em um federated plugin:
         ffiPlugin: true
 ```
 
-Um plugin pode ter tanto FFI quanto method channels:
+A plugin can have both FFI and method channels:
 
 ```yaml
   plugin:
@@ -774,29 +773,29 @@ Um plugin pode ter tanto FFI quanto method channels:
         ffiPlugin: true
 ```
 
-Os sistemas de build nativos que são invocados por FFI
-(e method channels) plugins são:
+The native build systems that are invoked by FFI
+(and method channels) plugins are:
 
-* Para Android: Gradle, que invoca o Android NDK para builds nativos.
-  * Veja a documentação em `android/build.gradle`.
-* Para iOS e macOS: Xcode, usando CocoaPods.
-  * Veja a documentação em `ios/hello.podspec`.
-  * Veja a documentação em `macos/hello.podspec`.
-* Para Linux e Windows: CMake.
-  * Veja a documentação em `linux/CMakeLists.txt`.
-  * Veja a documentação em `windows/CMakeLists.txt`.
+* For Android: Gradle, which invokes the Android NDK for native builds.
+  * See the documentation in `android/build.gradle`.
+* For iOS and macOS: Xcode, using CocoaPods.
+  * See the documentation in `ios/hello.podspec`.
+  * See the documentation in `macos/hello.podspec`.
+* For Linux and Windows: CMake.
+  * See the documentation in `linux/CMakeLists.txt`.
+  * See the documentation in `windows/CMakeLists.txt`.
 
 ### Step 3: Binding to native code
 
-Para usar o código nativo, bindings em Dart são necessários.
+To use the native code, bindings in Dart are needed.
 
-Para evitar escrevê-los manualmente,
-eles são gerados do arquivo de cabeçalho
-(`src/hello.h`) por [`package:ffigen`][].
-Consulte a [ffigen docs][] para informações
-sobre como instalar este package.
+To avoid writing these by hand,
+they are generated from the header file
+(`src/hello.h`) by [`package:ffigen`][].
+Reference the [ffigen docs][] for information
+on how to install this package.
 
-Para regenerar os bindings, execute o seguinte comando:
+To regenerate the bindings, run the following command:
 
 ```console
 $ dart run ffigen --config ffigen.yaml
@@ -804,40 +803,40 @@ $ dart run ffigen --config ffigen.yaml
 
 ### Step 4: Invoking native code
 
-Funções nativas de execução muito curta podem ser diretamente
-invocadas de qualquer isolate.
-Para um exemplo, veja `sum` em `lib/hello.dart`.
+Very short-running native functions can be directly
+invoked from any isolate.
+For an example, see `sum` in `lib/hello.dart`.
 
-Funções de execução mais longa devem ser invocadas em um
-[helper isolate][] para evitar perder frames em
-aplicações Flutter.
-Para um exemplo, veja `sumAsync` em `lib/hello.dart`.
+Longer-running functions should be invoked on a
+[helper isolate][] to avoid dropping frames in
+Flutter applications.
+For an example, see `sumAsync` in `lib/hello.dart`.
 
 ## Adding documentation
 
-É prática recomendada adicionar a seguinte documentação
-a todos os packages:
+It is recommended practice to add the following documentation
+to all packages:
 
-1. Um arquivo `README.md` que introduz o package
-1. Um arquivo `CHANGELOG.md` que documenta mudanças em cada versão
-1. Um arquivo [`LICENSE`] contendo os termos sob os quais o package
-   está licenciado
-1. Documentação de API para todas as APIs públicas (veja abaixo para detalhes)
+1. A `README.md` file that introduces the package
+1. A `CHANGELOG.md` file that documents changes in each version
+1. A [`LICENSE`] file containing the terms under which the package
+   is licensed
+1. API documentation for all public APIs (see below for details)
 
 ### API documentation
 
-Quando você publica um package,
-documentação de API é automaticamente gerada e
-publicada em pub.dev/documentation.
-Por exemplo, veja a documentação para [`device_info_plus`][].
+When you publish a package,
+API documentation is automatically generated and
+published to pub.dev/documentation.
+For example, see the docs for [`device_info_plus`][].
 
-Se você deseja gerar documentação de API localmente em
-sua máquina de desenvolvimento, use os seguintes comandos:
+If you wish to generate API documentation locally on
+your development machine, use the following commands:
 
 <ol>
 <li>
 
-Mude o diretório para a localização do seu package:
+Change directory to the location of your package:
 
 ```console
 cd ~/dev/mypackage
@@ -847,9 +846,9 @@ cd ~/dev/mypackage
 
 <li>
 
-Informe à ferramenta de documentação onde o
-Flutter SDK está localizado (mude os seguintes comandos para refletir
-onde você o colocou):
+Tell the documentation tool where the
+Flutter SDK is located (change the following commands to reflect
+where you placed it):
 
 ```console
    export FLUTTER_ROOT=~/dev/flutter  # on macOS or Linux
@@ -858,8 +857,8 @@ onde você o colocou):
 ```
 </li>
 
-<li>Execute a ferramenta `dart doc`
-    (incluída como parte do Flutter SDK), da seguinte forma:
+<li>Run the `dart doc` tool
+    (included as part of the Flutter SDK), as follows:
 
 ```console
    $FLUTTER_ROOT/bin/cache/dart-sdk/bin/dart doc   # on macOS or Linux
@@ -869,28 +868,28 @@ onde você o colocou):
 </li>
 </ol>
 
-Para dicas sobre como escrever documentação de API, veja
+For tips on how to write API documentation, see
 [Effective Dart Documentation][].
 
 ### Adding licenses to the LICENSE file
 
-Licenças individuais dentro de cada arquivo LICENSE
-devem ser separadas por 80 hífens
-em sua própria linha.
+Individual licenses inside each LICENSE file
+should be separated by 80 hyphens
+on their own on a line.
 
-Se um arquivo LICENSE contém mais de uma
-licença de componente, então cada
-licença de componente deve começar com os nomes dos
-packages aos quais a licença de componente se aplica,
-com cada nome de package em sua própria linha,
-e a lista de nomes de package separada do
-texto real da licença por uma linha em branco.
-(Os packages não precisam corresponder aos nomes dos
-packages pub. Por exemplo, um package pode conter
-código de múltiplas fontes de terceiros,
-e pode precisar incluir uma licença para cada um.)
+If a LICENSE file contains more than one
+component license, then each component
+license must start with the names of the
+packages to which the component license applies,
+with each package name on its own line,
+and the list of package names separated from
+the actual license text by a blank line.
+(The packages need not match the names of
+the pub package. For example, a package might itself contain
+code from multiple third-party sources,
+and might need to include a license for each one.)
 
-O seguinte exemplo mostra um arquivo de licença bem organizado:
+The following example shows a well-organized license file:
 
 ```plaintext
 package_1
@@ -903,7 +902,7 @@ package_2
 <some license text>
 ```
 
-Aqui está outro exemplo de um arquivo de licença bem organizado:
+Here is another example of a well-organized license file:
 
 ```plaintext
 package_1
@@ -917,7 +916,7 @@ package_2
 <some license text>
 ```
 
-Aqui está um exemplo de um arquivo de licença mal organizado:
+Here is an example of a poorly-organized license file:
 
 ```plaintext
 <some license text>
@@ -926,7 +925,7 @@ Aqui está um exemplo de um arquivo de licença mal organizado:
 <some license text>
 ```
 
-Outro exemplo de um arquivo de licença mal organizado:
+Another example of a poorly-organized license file:
 
 ```plaintext
 package_1
@@ -939,76 +938,76 @@ package_1
 ## Publishing your package {:#publish}
 
 :::tip
-Você notou que alguns dos packages e plugins
-no pub.dev são designados como [Flutter Favorites][]?
-Estes são os packages publicados por desenvolvedores verificados
-e são identificados como os packages e plugins que você
-deve considerar primeiro ao escrever seu app.
-Para aprender mais,
-veja o [Flutter Favorites program][].
+Have you noticed that some of the packages and plugins
+on pub.dev are designated as [Flutter Favorites][]?
+These are the packages published by verified developers
+and are identified as the packages and plugins you
+should first consider using when writing your app.
+To learn more,
+see the [Flutter Favorites program][].
 :::
 
-Uma vez que você implementou um package, pode publicá-lo no
-[pub.dev][], para que outros desenvolvedores possam usá-lo facilmente.
+Once you have implemented a package, you can publish it on
+[pub.dev][], so that other developers can easily use it.
 
-Antes de publicar, certifique-se de revisar o `pubspec.yaml`,
-`README.md`, e `CHANGELOG.md` para garantir que seu
-conteúdo esteja completo e correto. Além disso, para melhorar a
-qualidade e usabilidade do seu package (e torná-lo
-mais provável de alcançar o status de Flutter Favorite),
-considere incluir os seguintes itens:
+Prior to publishing, make sure to review the `pubspec.yaml`,
+`README.md`, and `CHANGELOG.md` files to make sure their
+content is complete and correct. Also, to improve the
+quality and usability of your package (and to make it
+more likely to achieve the status of a Flutter Favorite),
+consider including the following items:
 
-* Exemplos diversos de uso de código
-* Screenshots, gifs animados ou vídeos
-* Um link para o repositório de código correspondente
+* Diverse code usage examples
+* Screenshots, animated gifs, or videos
+* A link to the corresponding code repository
 
-Em seguida, execute o comando publish em modo `dry-run`
-para ver se tudo passa na análise:
+Next, run the publish command in `dry-run` mode
+to see if everything passes analysis:
 
 ```console
 $ flutter pub publish --dry-run
 ```
 
-O próximo passo é publicar no pub.dev,
-mas certifique-se de que você está pronto porque
+The next step is publishing to pub.dev,
+but be sure that you are ready because
 [publishing is forever][]:
 
 ```console
 $ flutter pub publish
 ```
 
-Para mais detalhes sobre publicação, veja a
-[publishing docs][] em dart.dev.
+For more details on publishing, see the
+[publishing docs][] on dart.dev.
 
 ## Handling package interdependencies {:#dependencies}
 
-Se você está desenvolvendo um package `hello` que depende da
-API Dart exposta por outro package, você precisa adicionar
-esse package à seção `dependencies` do seu
-arquivo `pubspec.yaml`. O código abaixo torna a API Dart
-do plugin `url_launcher` disponível para `hello`:
+If you are developing a package `hello` that depends on
+the Dart API exposed by another package, you need to add
+that package to the `dependencies` section of your
+`pubspec.yaml` file. The code below makes the Dart API
+of the `url_launcher` plugin available to `hello`:
 
 ```yaml
 dependencies:
-  url_launcher: ^5.0.0
+  url_launcher: ^6.3.2
 ```
 
-Você pode agora usar `import 'package:url_launcher/url_launcher.dart'`
-e `launch(someUrl)` no código Dart de `hello`.
+You can now `import 'package:url_launcher/url_launcher.dart'`
+and `launch(someUrl)` in the Dart code of `hello`.
 
-Isto não é diferente de como você inclui packages em
-apps Flutter ou qualquer outro projeto Dart.
+This is no different from how you include packages in
+Flutter apps or any other Dart project.
 
-Mas se `hello` acontece de ser um package _plugin_
-cujo código específico de plataforma precisa de acesso
-às APIs específicas de plataforma expostas por `url_launcher`,
-você também precisa adicionar declarações de dependência adequadas
-aos seus arquivos de build específicos de plataforma, como mostrado abaixo.
+But if `hello` happens to be a _plugin_ package
+whose platform-specific code needs access
+to the platform-specific APIs exposed by `url_launcher`,
+you also need to add suitable dependency declarations
+to your platform-specific build files, as shown below.
 
 ### Android
 
-O seguinte exemplo define uma dependência para
-`url_launcher` em `hello/android/build.gradle`:
+The following example sets a dependency for
+`url_launcher` in `hello/android/build.gradle`:
 
 ```groovy
 android {
@@ -1019,17 +1018,17 @@ android {
 }
 ```
 
-Você pode agora usar `import io.flutter.plugins.urllauncher.UrlLauncherPlugin`
-e acessar a classe `UrlLauncherPlugin`
-no código fonte em `hello/android/src`.
+You can now `import io.flutter.plugins.urllauncher.UrlLauncherPlugin`
+and access the `UrlLauncherPlugin`
+class in the source code at `hello/android/src`.
 
-Para mais informações sobre arquivos `build.gradle`, veja a
-[Gradle Documentation][] sobre build scripts.
+For more information on `build.gradle` files, see the
+[Gradle Documentation][] on build scripts.
 
 ### iOS
 
-O seguinte exemplo define uma dependência para
-`url_launcher` em `hello/ios/hello.podspec`:
+The following example sets a dependency for
+`url_launcher` in `hello/ios/hello.podspec`:
 
 ```ruby
 Pod::Spec.new do |s|
@@ -1037,17 +1036,17 @@ Pod::Spec.new do |s|
   s.dependency 'url_launcher'
 ```
 
-Você pode agora usar `#import "UrlLauncherPlugin.h"` e
-acessar a classe `UrlLauncherPlugin` no código fonte
-em `hello/ios/Classes`.
+You can now `#import "UrlLauncherPlugin.h"` and
+access the `UrlLauncherPlugin` class in the source code
+at `hello/ios/Classes`.
 
-Para detalhes adicionais sobre arquivos `.podspec`, veja a
+For additional details on `.podspec` files, see the
 [CocoaPods Documentation][].
 
 ### Web
 
-Todas as dependências web são tratadas pelo arquivo `pubspec.yaml`
-como qualquer outro Dart package.
+All web dependencies are handled by the `pubspec.yaml`
+file, like any other Dart package.
 
 {% comment %}
 <!-- Remove until we have better text. -->
@@ -1066,13 +1065,13 @@ PENDING
 [iOS]: /platform-integration/ios/c-interop
 [macOS]: /platform-integration/macos/c-interop
 [`fluro`]: {{site.pub}}/packages/fluro
-[Flutter editor]: /get-started/editor
+[Flutter editor]: /tools/editors
 [Flutter Favorites]: {{site.pub}}/flutter/favorites
 [Flutter Favorites program]: /packages-and-plugins/favorites
 [Gradle Documentation]: https://docs.gradle.org/current/userguide/tutorial_using_tasks.html
 [helper isolate]: {{site.dart-site}}/guides/language/concurrency#background-workers
-[How to Write a Flutter Web Plugin, Part 1]: {{site.flutter-medium}}/how-to-write-a-flutter-web-plugin-5e26c689ea1
-[How To Write a Flutter Web Plugin, Part 2]: {{site.flutter-medium}}/how-to-write-a-flutter-web-plugin-part-2-afdddb69ece6
+[How to Write a Flutter Web Plugin, Part 1]: {{site.flutter-blog}}/how-to-write-a-flutter-web-plugin-5e26c689ea1
+[How To Write a Flutter Web Plugin, Part 2]: {{site.flutter-blog}}/how-to-write-a-flutter-web-plugin-part-2-afdddb69ece6
 [issue #33302]: {{site.repo.flutter}}/issues/33302
 [`LICENSE`]: #adding-licenses-to-the-license-file
 [`path`]: {{site.pub}}/packages/path
@@ -1085,4 +1084,4 @@ PENDING
 [test your plugin]: #testing-your-plugin
 [unit tests]: /testing/overview#unit-tests
 [`url_launcher`]: {{site.pub}}/packages/url_launcher
-[Writing a good plugin]: {{site.flutter-medium}}/writing-a-good-flutter-plugin-1a561b986c9c
+[Writing a good plugin]: {{site.flutter-blog}}/writing-a-good-flutter-plugin-1a561b986c9c

@@ -3,29 +3,30 @@ title: ThemeData's toggleableActiveColor property has been deprecated
 description: >
   Material Widgets that use toggleableActiveColor property
   are migrated to use Material ColorScheme.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 The Material widgets `Switch`, `SwitchListTile`, `Checkbox`,
 `CheckboxListTile`, `Radio`, `RadioListTile` now use
 `ColorScheme.secondary` color for their toggleable widget.
 `ThemeData.toggleableActiveColor` is deprecated and will eventually be removed.
 
-## Contexto
+## Context
 
 The migration of widgets that depend on `ThemeData.toggleableActiveColor`
 to `ColorScheme.secondary` caused  the `toggleableActiveColor` property
 to be unnecessary. This property will eventually be removed, as per Flutter's
 [deprecation policy](/release/compatibility-policy#deprecation-policy).
 
-## Descrição da mudança
+## Description of change
 
 The widgets using `ThemeData.toggleableActiveColor` color for the
 active/selected state now use `ColorScheme.secondary`.
 
-## Guia de migração
+## Migration guide
 
 Toggleable widgets' active/selected color can generally be customized in 3 ways:
 
@@ -34,7 +35,7 @@ Toggleable widgets' active/selected color can generally be customized in 3 ways:
    `CheckboxThemeData`, and `RadioThemeData`.
 3. By customizing the widget's color properties.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 MaterialApp(
@@ -43,7 +44,7 @@ MaterialApp(
 );
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 final ThemeData theme = ThemeData();
@@ -100,22 +101,22 @@ MaterialApp(
 )
 ```
 
-## Linha do tempo
+## Timeline
 
-Na versão estável: 3.7
+In stable release: 3.7
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`ThemeData.toggleableActiveColor`][]
 * [`ColorScheme.secondary`][]
 
-Issues relevantes:
+Relevant issues:
 
 * [`Switch` widget color doesn't use `ColorScheme`][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [Deprecate `toggleableActiveColor`][].
 

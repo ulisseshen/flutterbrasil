@@ -1,19 +1,18 @@
 ---
-ia-translate: true
-title: Suporte Desktop para Flutter
-description: Informações gerais sobre o suporte Flutter para apps desktop.
+title: Desktop support for Flutter
+description: General information about Flutter support for desktop apps.
 ---
 
-Flutter fornece suporte para compilar
-um app desktop nativo para Windows, macOS ou Linux.
-O suporte desktop do Flutter também se estende a plugins&mdash;você
-pode instalar plugins existentes que suportam as plataformas Windows,
-macOS ou Linux, ou você pode criar seus próprios.
+Flutter provides support for compiling
+a native Windows, macOS, or Linux desktop app.
+Flutter's desktop support also extends to plugins&mdash;you
+can install existing plugins that support the Windows,
+macOS, or Linux platforms, or you can create your own.
 
 :::note
-Esta página cobre o desenvolvimento de apps para todas as plataformas
-desktop. Depois de ler isso, você pode mergulhar em
-informações específicas da plataforma nos seguintes links:
+This page covers developing apps for all desktop
+platforms. Once you've read this, you can dive into
+specific platform information at the following links:
 
 * [Building Windows apps with Flutter][]
 * [Building macOS apps with Flutter][]
@@ -24,34 +23,34 @@ informações específicas da plataforma nos seguintes links:
 [Building macOS apps with Flutter]: /platform-integration/macos/building
 [Building Linux apps with Flutter]: /platform-integration/linux/building
 
-## Criar um novo projeto
+## Create a new project
 
-Você pode usar os seguintes passos
-para criar um novo projeto com suporte desktop.
+You can use the following steps
+to create a new project with desktop support.
 
-### Configurar ferramentas de desenvolvimento desktop
+### Set up desktop devtools
 
-Consulte o guia para seu ambiente desktop de destino:
+Consult the guide for your target desktop environment:
 
 * [Install Linux desktop devtools][Linux-devtools]
 * [Install macOS desktop devtools][macOS-devtools]
 * [Install Windows desktop devtools][Windows-devtools]
 
-[Linux-devtools]: /get-started/install/linux/desktop
-[macOS-devtools]: /get-started/install/macos/desktop
-[Windows-devtools]: /get-started/install/windows/desktop
+[Linux-devtools]: /platform-integration/linux/setup#set-up-tooling
+[macOS-devtools]: /platform-integration/macos/setup#set-up-tooling
+[Windows-devtools]: /platform-integration/windows/setup#set-up-tooling
 
-Se `flutter doctor` encontrar problemas ou componentes faltando
-para uma plataforma que você não quer desenvolver,
-você pode ignorar esses avisos. Ou você pode desabilitar a
-plataforma completamente usando o comando `flutter config`,
-por exemplo:
+If `flutter doctor` finds problems or missing components
+for a platform that you don't want to develop for,
+you can ignore those warnings. Or you can disable the
+platform altogether using the `flutter config` command,
+for example:
 
 ```console
 $ flutter config --no-enable-ios
 ```
 
-Outras flags disponíveis:
+Other available flags:
 
 * `--no-enable-windows-desktop`
 * `--no-enable-linux-desktop`
@@ -60,46 +59,46 @@ Outras flags disponíveis:
 * `--no-enable-android`
 * `--no-enable-ios`
 
-Depois de habilitar o suporte desktop,
-reinicie seu IDE para que ele possa detectar o novo dispositivo.
+After enabling desktop support,
+restart your IDE so that it can detect the new device.
 
-### Criar e executar
+### Create and run
 
-Criar um novo projeto com suporte desktop não é diferente
-de [criar um novo projeto Flutter][creating a new Flutter project] para outras plataformas.
+Creating a new project with desktop support is no different
+from [creating a new Flutter project][] for other platforms.
 
-Uma vez que você tenha configurado seu ambiente para suporte
-desktop, você pode criar e executar uma aplicação desktop
-tanto no IDE quanto pela linha de comando.
+Once you've configured your environment for desktop
+support, you can create and run a desktop application
+either in the IDE or from the command line.
 
-[creating a new Flutter project]: /get-started/test-drive
+[creating a new Flutter project]: /reference/create-new-app
 
-#### Usando um IDE
+#### Using an IDE
 
-Depois de configurar seu ambiente para suportar
-desktop, certifique-se de reiniciar o IDE se ele já
-estava em execução.
+After you've configured your environment to support
+desktop, make sure you restart the IDE if it was
+already running.
 
-Crie uma nova aplicação no seu IDE e ele automaticamente
-cria versões iOS, Android, web e desktop do seu app.
-No menu suspenso de dispositivos, selecione **windows (desktop)**,
-**macOS (desktop)** ou **linux (desktop)**
-e execute sua aplicação para vê-la iniciar no desktop.
+Create a new application in your IDE and it automatically
+creates iOS, Android, web, and desktop versions of your app.
+From the device pulldown, select **windows (desktop)**,
+**macOS (desktop)**, or **linux (desktop)**
+and run your application to see it launch on the desktop.
 
-#### Pela linha de comando
+#### From the command line
 
-Para criar uma nova aplicação que inclui suporte desktop
-(além de suporte mobile e web), execute os seguintes comandos,
-substituindo `my_app` pelo nome do seu projeto:
+To create a new application that includes desktop support
+(in addition to mobile and web support), run the following commands,
+substituting `my_app` with the name of your project:
 
 ```console
 $ flutter create my_app
 $ cd my_app
 ```
 
-Para iniciar sua aplicação pela linha de comando,
-digite um dos seguintes comandos a partir do topo
-do pacote:
+To launch your application from the command line,
+enter one of the following commands from the top
+of the package:
 
 ```console
 C:\> flutter run -d windows
@@ -108,14 +107,14 @@ $ flutter run -d linux
 ```
 
 :::note
-Se você não fornecer a flag `-d`, `flutter run` lista
-os destinos disponíveis para escolher.
+If you do not supply the `-d` flag, `flutter run` lists
+the available targets to choose from.
 :::
 
-## Construir um app de release
+## Build a release app
 
-Para gerar um build de release,
-execute um dos seguintes comandos:
+To generate a release build,
+run one of the following commands:
 
 ```console
 PS C:\> flutter build windows
@@ -123,96 +122,96 @@ $ flutter build macos
 $ flutter build linux
 ```
 
-## Adicionar suporte desktop a um app Flutter existente
+## Add desktop support to an existing Flutter app
 
-Para adicionar suporte desktop a um projeto Flutter existente,
-execute o seguinte comando em um terminal a partir do
-diretório raiz do projeto:
+To add desktop support to an existing Flutter project,
+run the following command in a terminal from the
+root project directory:
 
 ```console
 $ flutter create --platforms=windows,macos,linux .
 ```
 
-Isso adiciona os arquivos e diretórios desktop necessários
-ao seu projeto Flutter existente.
-Para adicionar apenas plataformas desktop específicas,
-altere a lista `platforms` para incluir apenas
-a(s) plataforma(s) que você deseja adicionar.
+This adds the necessary desktop files and directories
+to your existing Flutter project.
+To add only specific desktop platforms,
+change the `platforms` list to include only
+the platform(s) you want to add.
 
-## Suporte a plugins
+## Plugin support
 
-Flutter no desktop suporta uso e criação de plugins.
-Para usar um plugin que suporta desktop,
-siga os passos para plugins em [using packages][].
-Flutter adiciona automaticamente o código nativo necessário
-ao seu projeto, como em qualquer outra plataforma.
+Flutter on the desktop supports using and creating plugins.
+To use a plugin that supports desktop,
+follow the steps for plugins in [using packages][].
+Flutter automatically adds the necessary native code
+to your project, as with any other platform.
 
-### Escrevendo um plugin
+### Writing a plugin
 
-Quando você começar a construir seus próprios plugins,
-você vai querer manter a federação em mente.
-Federação é a habilidade de definir vários
-pacotes diferentes, cada um direcionado a um
-conjunto diferente de plataformas, reunidos
-em um único plugin para facilitar o uso pelos desenvolvedores.
-Por exemplo, a implementação Windows do
-`url_launcher` é na verdade `url_launcher_windows`,
-mas um desenvolvedor Flutter pode simplesmente adicionar o
-pacote `url_launcher` ao seu `pubspec.yaml`
-como uma dependência e o processo de build puxa
-a implementação correta baseada na plataforma de destino.
-Federação é útil porque diferentes equipes com
-diferentes expertises podem construir implementações de plugins
-para diferentes plataformas.
-Você pode adicionar uma nova implementação de plataforma a qualquer
-plugin federado endossado no pub.dev,
-desde que você coordene este esforço com o
-autor original do plugin.
+When you start building your own plugins,
+you'll want to keep federation in mind.
+Federation is the ability to define several
+different packages, each targeted at a
+different set of platforms, brought together
+into a single plugin for ease of use by developers.
+For example, the Windows implementation of the
+`url_launcher` is really `url_launcher_windows`,
+but a Flutter developer can simply add the
+`url_launcher` package to their `pubspec.yaml`
+as a dependency and the build process pulls in
+the correct implementation based on the target platform.
+Federation is handy because different teams with
+different expertise can build plugin implementations
+for different platforms.
+You can add a new platform implementation to any
+endorsed federated plugin on pub.dev,
+so long as you coordinate this effort with the
+original plugin author.
 
-Para mais informações, incluindo informações
-sobre plugins endossados, veja os seguintes recursos:
+For more information, including information
+about endorsed plugins, see the following resources:
 
-* [Developing packages and plugins][], particularmente a
-  seção [Federated plugins][].
+* [Developing packages and plugins][], particularly the
+  [Federated plugins][] section.
 * [How to write a Flutter web plugin, part 2][],
-  cobre a estrutura de plugins federados e
-  contém informações aplicáveis a plugins
-  desktop.
-* [Modern Flutter Plugin Development][] cobre
-  melhorias recentes ao suporte de plugins do Flutter.
+  covers the structure of federated plugins and
+  contains information applicable to desktop
+  plugins.
+* [Modern Flutter Plugin Development][] covers
+  recent enhancements to Flutter's plugin support.
 
 [using packages]: /packages-and-plugins/using-packages
 [Developing packages and plugins]: /packages-and-plugins/developing-packages
 [Federated plugins]: /packages-and-plugins/developing-packages#federated-plugins
-[How to write a Flutter web plugin, part 2]: {{site.flutter-medium}}/how-to-write-a-flutter-web-plugin-part-2-afdddb69ece6
-[Modern Flutter Plugin Development]: {{site.flutter-medium}}/modern-flutter-plugin-development-4c3ee015cf5a
+[How to write a Flutter web plugin, part 2]: {{site.flutter-blog}}/how-to-write-a-flutter-web-plugin-part-2-afdddb69ece6
+[Modern Flutter Plugin Development]: {{site.flutter-blog}}/modern-flutter-plugin-development-4c3ee015cf5a
 
-## Exemplos e codelabs
+## Samples and codelabs
 
 [Write a Flutter desktop application][]
-: Um codelab que o guia através da construção
-de uma aplicação desktop que integra a API
-GraphQL do GitHub com seu app Flutter.
+: A codelab that walks you through building
+a desktop application that integrates the GitHub
+GraphQL API with your Flutter app.
 
-Você pode executar os seguintes exemplos como apps desktop,
-assim como baixar e inspecionar o código-fonte para
-aprender mais sobre o suporte desktop do Flutter.
+You can run the following samples as desktop apps,
+as well as download and inspect the source code to
+learn more about Flutter desktop support.
 
 Wonderous app [running app][wonderous-app], [repo][wonderous-repo]
-: Um app de showcase que usa Flutter para criar uma interface de usuário altamente expressiva.
-  Wonderous foca em entregar uma experiência de usuário acessível e de alta qualidade
-  enquanto inclui interações envolventes e animações inovadoras.
-  Para executar Wonderous como um app desktop, clone o projeto e
-  siga as instruções fornecidas no [README][wonderous-readme].
+: A showcase app that uses Flutter to create a highly expressive user interface.
+  Wonderous focuses on delivering an accessible and high-quality user experience
+  while including engaging interactions and novel animations.
+  To run Wonderous as a desktop app, clone the project and
+  follow the instructions provided in the [README][wonderous-readme].
 
 Flokk [announcement blogpost][gskinner-flokk-blogpost], [repo][gskinner-flokk-repo]
-: Um gerenciador de contatos Google que integra com GitHub e Twitter.
-  Ele sincroniza com sua conta Google, importa seus contatos
-  e permite que você os gerencie.
+: A Google contacts manager that integrates with GitHub and Twitter.
+  It syncs with your Google account, imports your contacts,
+  and allows you to manage them.
 
 [Photo Search app][]
-: Uma aplicação de exemplo construída como uma aplicação desktop que
-  usa plugins com suporte desktop.
+: A sample application built as a desktop application that
+  uses desktop-supported plugins.
 
 [wonderous-app]: {{site.wonderous}}/web
 [wonderous-repo]: {{site.repo.wonderous}}

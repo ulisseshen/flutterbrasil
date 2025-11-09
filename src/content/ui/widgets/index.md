@@ -1,97 +1,99 @@
 ---
-title: Catálogo de widgets
-description: Um catálogo de alguns dos ricos conjuntos de widgets do Flutter.
-short-title: Widgets
-toc: false
-ia-translate: true
+title: Widget catalog
+description: A catalog of some of Flutter's rich set of widgets.
+shortTitle: Widgets
+showToc: false
 ---
 
-Crie aplicativos bonitos mais rapidamente com a coleção de widgets visuais, estruturais,
-de plataforma e interativos do Flutter. Além de navegar pelos widgets por categoria,
-você também pode ver todos os widgets no [índice de widgets][widget index].
+Create beautiful apps faster with Flutter's collection of visual, structural,
+platform, and interactive widgets. In addition to browsing widgets by category,
+you can also see all the widgets in the [widget index][].
 
-<a id="design-systems"></a>
-## Sistemas de design
+## Design systems
 
-O Flutter vem com dois sistemas de design como parte do SDK.
+Flutter ships with two design systems as part of the SDK.
 
 <div class="card-grid">
-{% assign categories = catalog.index | sort: 'name' -%}
+{% assign categories = catalog.index | sortBy: 'name' -%}
 {% for section in categories %}
-    {%- if section.name == "Cupertino" or section.name == "Material components" -%}
-        <div class="card">
-            <div class="card-body">
-                <a href="{{page.url}}{{section.id}}"><header class="card-title">{{section.name}}</header></a>
-                <p class="card-text">{{section.description}}</p>
-            </div>
-        </div>
-    {% endif -%}
+  {%- if section.name == "Cupertino" or section.name == "Material components" -%}
+    <a class="card outlined-card" href="{{page.url}}/{{section.id}}">
+      <div class="card-header">
+        <span class="card-title">{{section.name}}</span>
+      </div>
+      <div class="card-content">
+        <p>{{section.description}}</p>
+      </div>
+    </a>
+  {% endif -%}
 {% endfor %}
 </div>
 
-Você pode encontrar muitos mais sistemas de design criados pela comunidade Flutter
-no [pub.dev]({{site.pub}}), o repositório de pacotes para Dart e Flutter,
-como por exemplo o [fluent_ui]({{site.pub-pkg}}/fluent_ui) inspirado no Windows,
-o [macos_ui]({{site.pub-pkg}}/macos_ui) inspirado no macOS,
-e os widgets [yaru]({{site.pub-pkg}}/yaru) inspirados no Ubuntu.
+You can find many more designs systems created by the Flutter community
+on [pub.dev]({{site.pub}}), the package repository for Dart and Flutter,
+like for example the Windows-inspired [fluent_ui]({{site.pub-pkg}}/fluent_ui),
+macOS-inspired [macos_ui]({{site.pub-pkg}}/macos_ui),
+and the Ubuntu-inspired [yaru]({{site.pub-pkg}}/yaru) widgets.
 
-## Widgets base
+## Base widgets
 
-Os widgets base suportam uma variedade de opções de renderização comuns
-como input, layout e texto.
+Base widgets support a range of common rendering options
+like input, layout, and text.
 
 <div class="card-grid">
-{% assign categories = catalog.index | sort: 'name' -%}
+{% assign categories = catalog.index | sortBy: 'name' -%}
 {% for section in categories %}
-    {%- if section.name != "Cupertino" and section.name != "Material components" and section.name != "Material 2 components" -%}
-        <div class="card">
-            <div class="card-body">
-                <a href="{{page.url}}{{section.id}}"><header class="card-title">{{section.name}}</header></a>
-                <p class="card-text">{{section.description}}</p>
-            </div>
-        </div>
-    {% endif -%}
+  {%- if section.name != "Cupertino" and section.name != "Material components" and section.name != "Material 2 components" -%}
+    <a class="card outlined-card" href="{{page.url}}/{{section.id}}">
+      <div class="card-header">
+        <span class="card-title">{{section.name}}</span>
+      </div>
+      <div class="card-content">
+        <p>{{section.description}}</p>
+      </div>
+    </a>
+  {% endif -%}
 {% endfor %}
 </div>
 
-## Widget da semana
+## Widget of the Week
 
-Mais de 100 vídeos curtos de 1 minuto explicando
-para ajudá-lo a começar rapidamente com os widgets do Flutter.
+100+ short, 1-minute explainer videos to
+help you quickly get started with Flutter widgets.
 
 <div class="card-grid wide">
-    <div class="card">
-        <div class="card-body">
-            {% ytEmbed '1z6YP7YmvwA', 'TextStyle - Flutter widget of the week', true, true %}
-        </div>
+  <div class="card wrapped-card outlined-card">
+    <div class="card-content">
+      <YouTubeEmbed id="D0xwcz2IqAY" title="CupertinoRadio - Flutter widget of the week"></YouTubeEmbed>
     </div>
-    <div class="card">
-        <div class="card-body">
-            {% ytEmbed 'VdkRy3yZiPo', 'flutter_rating_bar - Flutter package of the week', true, true %}
-        </div>
+  </div>
+  <div class="card wrapped-card outlined-card">
+    <div class="card-content">
+      <YouTubeEmbed id="5H-WvH5O29I" title="CupertinoSheetRoute - Flutter widget of the week"></YouTubeEmbed>
     </div>
-    <div class="card">
-        <div class="card-body">
-            {% ytEmbed 'gYNTcgZVcWw', 'LinearGradient - Flutter widget of the week', true, true %}
-        </div>
+  </div>
+  <div class="card wrapped-card outlined-card">
+    <div class="card-content">
+      <YouTubeEmbed id="esnBf6V4C34" title="CupertinoSlidingSegmentedControl - Flutter widget of the week"></YouTubeEmbed>
     </div>
-    <div class="card">
-        <div class="card-body">
-            {% ytEmbed '-Nny8kzW380', 'AutoComplete - Flutter widget of the week', true, true %}
-        </div>
+  </div>
+  <div class="card wrapped-card outlined-card">
+    <div class="card-content">
+      <YouTubeEmbed id="ua54JU7k1Us" title="CupertinoCheckbox - Flutter widget of the week"></YouTubeEmbed>
     </div>
-    <div class="card">
-        <div class="card-body">
-            {% ytEmbed 'y9xchtVTtqQ', 'NavigationRail - Flutter widget of the week', true, true %}
-        </div>
+  </div>
+  <div class="card wrapped-card outlined-card">
+    <div class="card-content">
+      <YouTubeEmbed id="24tg_N4sdMQ" title="CupertinoSwitch - Flutter widget of the week"></YouTubeEmbed>
     </div>
-    <div class="card">
-        <div class="card-body">
-            {% ytEmbed 'qjA0JFiPMnQ', 'mason - Flutter package of the week', true, true %}
-        </div>
+  </div>
+  <div class="card wrapped-card outlined-card">
+    <div class="card-content">
+      <YouTubeEmbed id="GQ8ajYVF0bo" title="CarouselView - Flutter widget of the week"></YouTubeEmbed>
     </div>
+  </div>
 </div>
 
-<a class="btn btn-primary full-width" target="_blank" href="{{site.yt.playlist}}PLjxrf2q8roU23XGwz3Km7sQZFTdB996iG">Assista mais vídeos de widget da semana</a>
+<a class="filled-button" target="_blank" href="{{site.yt.playlist}}PLjxrf2q8roU23XGwz3Km7sQZFTdB996iG">Watch more widget of the week videos</a>
 
 [widget index]: /reference/widgets

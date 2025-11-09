@@ -1,36 +1,37 @@
 ---
-ia-translate: true
-title: Pelo menos uma variante de dados da área de transferência deve ser fornecida
+title: At least one clipboard data variant must be provided
 description: >
-  Em preparação para suportar múltiplas variantes de dados da área de transferência,
-  pelo menos uma variante de dados da área de transferência deve ser fornecida.
+  In preparation for supporting multiple clipboard data variants,
+  at least one clipboard data variant must be provided.
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
 
-O argumento `text` do [construtor `ClipboardData`][`ClipboardData constructor`] não é mais nullable.
-Código que fornece `null` ao argumento `text` deve ser migrado para fornecer
-uma string vazia `''`.
+## Summary
 
-## Contexto
+The [`ClipboardData constructor`][]'s `text` argument is no longer nullable.
+Code that provides `null` to the `text` argument must be migrated to provide
+an empty string `''`.
 
-Em preparação para suportar múltiplas variantes de dados da área de transferência, o
-construtor `ClipboardData` agora requer que pelo menos uma variante de dados seja
-fornecida.
+## Context
 
-Anteriormente, as plataformas eram inconsistentes em como lidavam com `null`.
-O comportamento agora é consistente entre plataformas. Se você estiver interessado
-nos detalhes de baixo nível, veja [PR 122446][].
+In preparation for supporting multiple clipboard data variants, the
+`ClipboardData` constructor now requires that at least one data variant is
+provided.
 
-## Descrição da mudança
+Previously, platforms were inconsistent in how they handled `null`.
+The behavior is now consistent across platforms. If you are interested
+in the low-level details, see [PR 122446][].
 
-O argumento `text` do [construtor `ClipboardData`][`ClipboardData constructor`] não é mais nullable.
+## Description of change
 
-## Guia de migração
+The [`ClipboardData constructor`][]'s `text` argument is no longer nullable.
 
-Para resetar a área de transferência de texto, use uma string vazia `''` em vez de `null`.
+## Migration guide
 
-Código antes da migração:
+To reset the text clipboard, use an empty string `''` instead of `null`.
+
+Code before migration:
 
 ```dart
 void resetClipboard() {
@@ -38,7 +39,7 @@ void resetClipboard() {
 }
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 void resetClipboard() {
@@ -46,19 +47,19 @@ void resetClipboard() {
 }
 ```
 
-## Cronograma
+## Timeline
 
-Adicionado na versão: 3.10.0-9.0.pre<br>
-Na versão stable: 3.10.0
+Landed in version: 3.10.0-9.0.pre<br>
+In stable release: 3.10.0
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`Clipboard.setData`][]
 * [`ClipboardData constructor`][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [Assert at least one clipboard data variant is provided][]
 

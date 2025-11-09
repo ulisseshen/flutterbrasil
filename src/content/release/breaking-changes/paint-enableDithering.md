@@ -2,10 +2,11 @@
 title: Paint.enableDithering is now true by default.
 description: >-
   Deprecation of user-configurable `Paint.enableDithering`.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 [`Paint.enableDithering`][] is now `true` by default (previously, `false`),
 and is _deprecated_ pending removal - Flutter no longer supports
@@ -51,7 +52,7 @@ other than gradients was removed in [PR 44730][] and [PR 44912][].
 That was done to ease the process of migrating, because
 Impeller will never support dithering for anything but gradients.
 
-## Guia de migração
+## Migration guide
 
 Most users and libraries will not need to make any changes.
 
@@ -90,25 +91,25 @@ migration guide, but you can find some resources and examples:
 
 **NOTE**: Flutter web does not support dithering: [Issue 134250][].
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 3.14.0-0.1.pre<br>
-Na versão estável: 3.16
+Landed in version: 3.14.0-0.1.pre<br>
+In stable release: 3.16
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 - [`Paint.enableDithering`][]
 - [`matchesGoldenFile`]
 
-Issues relevantes:
+Relevant issues:
 
 - [Issue 44134][]
 - [Issue 112498][]
 - [Issue 118073][]
 
-PRs relevantes:
+Relevant PRs:
 
 - [PR 13868][]
 - [PR 44181][]

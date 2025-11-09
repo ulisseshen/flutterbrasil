@@ -1,39 +1,38 @@
 ---
-ia-translate: true
-title: Gerenciamento de estado
-description: Como estruturar um app para gerenciar o estado dos dados que fluem através dele.
+title: State management
+description: How to structure an app to manage the state of the data flowing through it.
 next:
   title: Start thinking declaratively
-  path: /development/data-and-backend/state-mgmt/declarative
+  path: /data-and-backend/state-mgmt/declarative
 ---
 
 :::note
-Se você escreveu um aplicativo móvel usando Flutter
-e se pergunta por que o estado do seu app é perdido
-em uma reinicialização, confira [Restaurar estado no Android][Restore state on Android]
-ou [Restaurar estado no iOS][Restore state on iOS].
+If you have written a mobile app using Flutter
+and wonder why your app's state is lost
+on a restart, check out [Restore state on Android][]
+or [Restore state on iOS][].
 :::
 
 [Restore state on Android]: /platform-integration/android/restore-state-android
 [Restore state on iOS]: /platform-integration/ios/restore-state-ios
 
-_Se você já está familiarizado com gerenciamento de estado em apps reativos,
-você pode pular esta seção, embora você possa querer revisar a
-[lista de diferentes abordagens][list of different approaches]._
+_If you are already familiar with state management in reactive apps,
+you can skip this section, though you might want to review the
+[list of different approaches][]._
 
-<img src='/assets/images/docs/development/data-and-backend/state-mgmt/state-management-explainer.gif' width="100%" alt="A short animated gif that shows the workings of a simple declarative state management system. This is explained in full in one of the following pages. Here it's just a decoration.">
+<img src='/assets/images/docs/development/data-and-backend/state-mgmt/state-management-explainer.webp' width="100%" alt="A short animated gif that shows the workings of a simple declarative state management system. This is explained in full in one of the following pages. Here it's just a decoration.">
 
 {% comment %}
 Source of the above animation tracked internally as b/122314402
 {% endcomment %}
 
-Conforme você explora o Flutter,
-chega um momento em que você precisa compartilhar o estado do aplicativo
-entre telas, em todo o seu app.
-Existem muitas abordagens que você pode adotar,
-e muitas perguntas para pensar.
+As you explore Flutter,
+there comes a time when you need to share application
+state between screens, across your app.
+There are many approaches you can take,
+and many questions to think about.
 
-Nas páginas a seguir,
-você aprenderá o básico de lidar com estado em apps Flutter.
+In the following pages,
+you will learn the basics of dealing with state in Flutter apps.
 
 [list of different approaches]: /data-and-backend/state-mgmt/options

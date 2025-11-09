@@ -1,163 +1,162 @@
 ---
-ia-translate: true
-title: Abordagem geral para apps adaptativos
+title: General approach to adaptive apps
 description: >-
-  Conselhos gerais sobre como abordar a criação de seu app Flutter adaptativo.
-short-title: Abordagem geral
+  General advice on how to approach making your Flutter app adaptive.
+shortTitle: General approach
 ---
 
 <?code-excerpt path-base="ui/adaptive_app_demos"?>
 
-Então, apenas _como_ você aborda pegar um app
-projetado para dispositivos móveis convencionais,
-e torná-lo bonito em uma ampla gama
-de dispositivos? Quais passos são necessários?
+So, just _how_ do you approach taking an app
+designed for conventional mobile devices,
+and make it beautiful on a wide range
+of devices? What steps are required?
 
-Engenheiros do Google, que têm experiência fazendo isso
-para apps grandes, recomendam a
-seguinte abordagem de 3 passos.
+Google engineers, who have experience doing this
+very thing for large apps, recommend the
+following 3-step approach.
 
-## Passo 1: Abstrair
+## Step 1: Abstract
 
 ![Step 1: Abstract info common to any UI widget](/assets/images/docs/ui/adaptive-responsive/abstract.png)
 
-Primeiro, identifique os widgets que você planeja
-tornar dinâmicos. Analise os construtores desses
-widgets e abstraia os dados que você pode compartilhar.
+First, identify the widgets that you plan to
+make dynamic. Analyze the constructors for those
+widgets and abstract out the data that you can share.
 
-Widgets comuns que exigem adaptabilidade são:
+Common widgets that require adaptability are:
 
-* Dialogs, tanto fullscreen quanto modal
-* UI de navegação, tanto rail quanto barra inferior
-* Layout customizado, como "a área da UI é mais alta ou mais larga?"
+* Dialogs, both fullscreen and modal
+* Navigation UI, both rail and bottom bar
+* Custom layout, such as "is the UI area taller or wider?"
 
-Por exemplo, em um widget `Dialog`, você pode compartilhar
-a informação que contém o _conteúdo_ do diálogo.
+For example, in a `Dialog` widget, you can share
+the info that contains the _content_ of the dialog.
 
-Ou, talvez você queira alternar entre uma
-`NavigationBar` quando a janela do app é pequena,
-e um `NavigationRail` quando a janela do app é grande.
-Esses widgets provavelmente compartilhariam uma lista de
-destinos navegáveis. Neste caso,
-você pode criar um widget `Destination` para armazenar
-essa informação, e especificar o `Destination` como tendo tanto
-um ícone quanto um rótulo de texto.
+Or, perhaps you want to switch between a
+`NavigationBar` when the app window is small,
+and a `NavigationRail` when the app window is large.
+These widgets would likely share a list of
+navigable destinations. In this case,
+you might create a `Destination` widget to hold
+this info, and specify the `Destination` as having both
+an icon and a text label.
 
-A seguir, você avaliará o tamanho da tela para decidir
-como exibir sua UI.
+Next, you will evaluate your screen size to decide
+on how to display your UI.
 
-## Passo 2: Medir
+## Step 2: Measure
 
 ![Step 2: How to measure screen size](/assets/images/docs/ui/adaptive-responsive/measure.png)
 
-Você tem duas maneiras de determinar o tamanho da sua área de exibição:
-`MediaQuery` e `LayoutBuilder`.
+You have two ways to determine the size of your display area:
+`MediaQuery` and `LayoutBuilder`.
 
 ### MediaQuery
 
-No passado, você pode ter usado `MediaQuery.of` para
-determinar o tamanho da tela do dispositivo.
-No entanto, os dispositivos hoje apresentam telas
-com uma ampla variedade de tamanhos e formatos,
-e este teste pode ser enganoso.
+In the past, you might have used `MediaQuery.of` to
+determine the size of the device's screen.
+However, devices today feature screens
+with a wide variety of sizes and shapes,
+and this test can be misleading.
 
-Por exemplo, talvez seu app ocupe atualmente uma
-pequena janela em uma tela grande. Se você usar o
-método `MediaQuery.of` e concluir que a tela é pequena
-(quando, na verdade, o app é exibido em uma janela minúscula em uma tela grande),
-e você bloqueou seu app no modo retrato, isso faz com que a
-janela do app fique bloqueada no centro da
-tela, cercada por preto.
-Isso dificilmente é uma UI ideal em uma tela grande.
+For example, maybe your app currently occupies a
+small window on a large screen. If you use the
+`MediaQuery.of` method and conclude the screen to be small
+(when, in fact, the app displays in a tiny window on a large screen),
+and you've portrait locked your app, it causes the
+app's window to lock to the center of the
+screen, surrounded with black.
+This is hardly an ideal UI on a large screen.
 
 :::note
-As Material Guidelines encorajam você a nunca
-_bloquear no modo retrato_ seu app (desabilitando o modo paisagem).
-No entanto, se você sentir que realmente deve,
-então pelo menos defina o modo retrato para funcionar
-no modo de cima para baixo, bem como de baixo para cima.
+The Material Guidelines encourage you to never
+_portrait lock_ your app (by disabling landscape mode).
+However, if you feel you really must,
+then at least define the portrait mode to work
+in top-down mode as well as bottom up.
 :::
 
-Tenha em mente que `MediaQuery.sizeOf` retorna o
-tamanho atual da tela inteira do app e
-não apenas um único widget.
+Keep in mind that `MediaQuery.sizeOf` returns the
+current size of the app's entire screen and
+not just a single widget.
 
-Você tem duas maneiras de medir seu espaço de tela.
-Você pode usar `MediaQuery.sizeOf` ou `LayoutBuilder`,
-dependendo se você quer o tamanho de toda a
-janela do app, ou dimensionamento mais local.
+You have two ways to measure your screen space.
+You can use either `MediaQuery.sizeOf` or `LayoutBuilder`,
+depending on whether you want the size of the whole
+app window, or more local sizing.
 
-Se você quer que seu widget seja fullscreen,
-mesmo quando a janela do app é pequena,
-use `MediaQuery.sizeOf` para que você possa escolher a
-UI com base no tamanho da janela do app em si.
-Na seção anterior, você quer basear o
-comportamento de dimensionamento na janela inteira do app,
-então você usaria `MediaQuery.sizeOf`.
+If you want your widget to be fullscreen,
+even when the app window is small,
+use `MediaQuery.sizeOf` so you can choose the
+UI based on the size of the app window itself.
+In the previous section, you want to base the
+sizing behavior on the entire app's window,
+so you would use `MediaQuery.sizeOf`.
 
-:::secondary Por que usar `MediaQuery.sizeOf` em vez de `MediaQuery.of`?
-Conselhos anteriores recomendavam que você usasse o método `of` do
-`MediaQuery` para obter as dimensões da janela do app.
-Por que esse conselho mudou?
-A resposta curta é **por razões de desempenho.**
+:::secondary Why use `MediaQuery.sizeOf` instead of `MediaQuery.of`?
+Previous advice recommended that you use the `of` method of
+`MediaQuery` to obtain the app window's dimensions.
+Why has this advice changed?
+The short answer is **for performance reasons.**
 
-`MediaQuery` contém muitos dados, mas se você está
-interessado apenas na propriedade de tamanho, é mais
-eficiente usar o método `sizeOf`. Ambos os métodos
-retornam o tamanho da janela do app em pixels lógicos
-(também conhecidos como _pixels independentes de densidade_).
-As dimensões de pixels lógicos geralmente funcionam melhor, pois têm
-aproximadamente o mesmo tamanho visual em todos os dispositivos.
-A classe `MediaQuery` tem outras funções especializadas
-para cada uma de suas propriedades individuais pelo mesmo motivo.
+`MediaQuery` contains a lot of data, but if you're
+only interested in the size property, it's more
+efficient to use the `sizeOf` method. Both methods
+return the size of the app window in logical pixels
+(also known as _density independent pixels_).
+The logical pixel dimensions generally works best as its
+roughly the same visual size across all devices.
+The `MediaQuery` class has other specialized functions
+for each of its individual properties for the same reason.
 :::
 
-Solicitar o tamanho da janela do app de dentro
-do método `build`, como em `MediaQuery.sizeOf(context)`,
-faz com que o `BuildContext` fornecido reconstrua sempre que
-a propriedade de tamanho muda.
+Requesting the size of the app window from inside
+the `build` method, as in `MediaQuery.sizeOf(context)`,
+causes the given `BuildContext` to rebuild any time
+the size property changes.
 
 ### LayoutBuilder
 
-`LayoutBuilder` realiza um objetivo semelhante ao
-`MediaQuery.sizeOf`, com algumas distinções.
+`LayoutBuilder` accomplishes a similar goal as
+`MediaQuery.sizeOf`, with some distinctions.
 
-Em vez de fornecer o tamanho da janela do app,
-`LayoutBuilder` fornece as restrições de layout do
-`Widget` pai. Isso significa que você obtém
-informações de dimensionamento baseadas no local específico
-na árvore de widgets onde você adicionou o `LayoutBuilder`.
-Além disso, `LayoutBuilder` retorna um objeto `BoxConstraints`
-em vez de um objeto `Size`,
-então você recebe os intervalos de largura
-e altura válidos (mínimo e máximo) para o conteúdo,
-em vez de apenas um tamanho fixo.
-Isso pode ser útil para widgets customizados.
+Rather than providing the size of the app's window,
+`LayoutBuilder` provides the layout constraints from
+the parent `Widget`. This means that you get
+sizing information based on the specific spot
+in the widget tree where you added the `LayoutBuilder`.
+Also, `LayoutBuilder` returns a `BoxConstraints`
+object instead of a `Size` object,
+so you are given the valid width
+and height ranges (minimum and maximum) for the content,
+rather than just a fixed size.
+This can be useful for custom widgets.
 
-Por exemplo, imagine um widget customizado, onde você quer
-que o dimensionamento seja baseado no espaço especificamente
-dado a esse widget, e não na janela do app em geral.
-Neste cenário, use `LayoutBuilder`.
+For example, imagine a custom widget, where you want
+the sizing to be based on the space specifically
+given to that widget, and not the app window in general.
+In this scenario, use `LayoutBuilder`.
 
-## Passo 3: Ramificar
+## Step 3: Branch
 
 ![Step 3: Branch the code based on the desired UI](/assets/images/docs/ui/adaptive-responsive/branch.png)
 
-Neste ponto, você deve decidir quais pontos de interrupção de dimensionamento usar
-ao escolher qual versão da UI exibir.
-Por exemplo, as diretrizes de [layout Material][Material layout] sugerem usar
-uma barra de navegação inferior para janelas com menos de 600 pixels lógicos de largura,
-e uma rail de navegação para aquelas com 600 pixels de largura ou mais.
-Novamente, sua escolha não deve depender do _tipo_ de dispositivo,
-mas do tamanho de janela disponível do dispositivo.
+At this point, you must decide what sizing breakpoints to use
+when choosing what version of the UI to display.
+For example, the [Material layout][] guidelines suggest using
+a bottom nav bar for windows less than 600 logical pixels wide,
+and a nav rail for those that are 600 pixels wide or greater.
+Again, your choice shouldn't depend on the _type_ of device,
+but on the device's available window size.
 
 [Material layout]: https://m3.material.io/foundations/layout/applying-layout/window-size-classes
 
-Para trabalhar com um exemplo que alterna entre um
-`NavigationRail` e uma `NavigationBar`, confira
-o [Building an animated responsive app layout with Material 3][codelab].
+To work through an example that switches between a
+`NavigationRail` and a `NavigationBar`, check out
+the [Building an animated responsive app layout with Material 3][codelab].
 
 [codelab]: {{site.codelabs}}/codelabs/flutter-animated-responsive-layout
 
-A próxima página discute como garantir que seu
-app tenha a melhor aparência em telas grandes e dobráveis.
+The next page discusses how to ensure that your
+app looks best on large screens and foldables.

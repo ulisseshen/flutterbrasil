@@ -1,57 +1,53 @@
 ---
-title: Crie um efeito de carregamento shimmer
-description: Como implementar um efeito de carregamento shimmer.
-js:
-  - defer: true
-    url: /assets/js/inject_dartpad.js
-ia-translate: true
+title: Create a shimmer loading effect
+description: How to implement a shimmer loading effect.
 ---
 
 <?code-excerpt path-base="cookbook/effects/shimmer_loading"?>
 
-Tempos de carregamento são inevitáveis no desenvolvimento de aplicativos.
-Do ponto de vista da experiência do usuário (UX),
-o mais importante é mostrar aos seus usuários
-que o carregamento está ocorrendo. Uma abordagem popular
-para comunicar aos usuários que os dados estão carregando é
-exibir uma cor cromada com uma animação shimmer sobre
-as formas que aproximam o tipo de conteúdo que está carregando.
+Loading times are unavoidable in application development.
+From a user experience (UX) perspective,
+the most important thing is to show your users
+that loading is taking place. One popular approach
+to communicate to users that data is loading is to
+display a chrome color with a shimmer animation over
+the shapes that approximate the type of content that is loading.
 
-A animação a seguir mostra o comportamento do aplicativo:
+The following animation shows the app's behavior:
 
-![Gif mostrando a UI carregando](/assets/images/docs/cookbook/effects/UILoadingAnimation.gif){:.site-mobile-screenshot}
+![Gif showing the UI loading](/assets/images/docs/cookbook/effects/UILoadingAnimation.webp){:.site-mobile-screenshot}
 
-Esta receita começa com os widgets de conteúdo definidos e posicionados.
-Há também um Floating Action Button (FAB) no canto inferior direito
-que alterna entre um modo de carregamento e um modo carregado
-para que você possa validar facilmente sua implementação.
+This recipe begins with the content widgets defined and positioned.
+There is also a Floating Action Button (FAB) in the bottom-right
+corner that toggles between a loading mode and a loaded mode
+so that you can easily validate your implementation.
 
-## Desenhe as formas shimmer
+## Draw the shimmer shapes
 
-As formas que brilham neste efeito são independentes
-do conteúdo real que eventualmente carrega.
+The shapes that shimmer in this effect are independent
+from the actual content that eventually loads.
 
-Portanto, o objetivo é exibir formas que representem
-o conteúdo eventual da forma mais precisa possível.
+Therefore, the goal is to display shapes that represent
+the eventual content as accurately as possible.
 
-Exibir formas precisas é fácil em situações onde o
-conteúdo tem um limite claro. Por exemplo, nesta receita,
-há algumas imagens circulares e algumas imagens de retângulo arredondado.
-Você pode desenhar formas que correspondem precisamente aos contornos
-dessas imagens.
+Displaying accurate shapes is easy in situations where the
+content has a clear boundary. For example, in this recipe,
+there are some circular images and some rounded rectangle images.
+You can draw shapes that precisely match the outlines
+of those images.
 
-Por outro lado, considere o texto que aparece abaixo das
-imagens de retângulo arredondado. Você não saberá quantas linhas de
-texto existem até que o texto carregue.
-Portanto, não há sentido em tentar desenhar um retângulo
-para cada linha de texto. Em vez disso, enquanto os dados estão carregando,
-você desenha alguns retângulos arredondados muito finos que
-representam o texto que aparecerá. A forma e o tamanho
-não correspondem exatamente, mas tudo bem.
+On the other hand, consider the text that appears beneath the
+rounded rectangle images. You won't know how many lines of
+text exist until the text loads.
+Therefore, there is no point in trying to draw a rectangle
+for every line of text. Instead, while the data is loading,
+you draw a couple of very thin rounded rectangles that
+represent the text that will appear. The shape and size
+doesn't quite match, but that is OK.
 
-Comece com os itens da lista circular no topo da tela.
-Certifique-se de que cada widget `CircleListItem` exiba um círculo
-com uma cor enquanto a imagem estiver carregando.
+Start with the circular list items at the top of the screen.
+Ensure that each `CircleListItem` widget displays a circle
+with a color while the image is loading.
 
 <?code-excerpt "lib/main.dart (CircleListItem)"?>
 ```dart
@@ -71,8 +67,8 @@ class CircleListItem extends StatelessWidget {
         ),
         child: ClipOval(
           child: Image.network(
-            'https://docs.flutterbrasil.dev/cookbook'
-            '/img-files/effects/split-check/Avatar1.jpg',
+            'https://docs.flutter.dev/assets/images/'
+            'exercise/split-check/Avatar1.jpg',
             fit: BoxFit.cover,
           ),
         ),
@@ -82,23 +78,20 @@ class CircleListItem extends StatelessWidget {
 }
 ```
 
-Contanto que seus widgets exibam algum tipo de forma,
-você pode aplicar o efeito shimmer nesta receita.
+As long as your widgets display some kind of shape,
+you can apply the shimmer effect in this recipe.
 
-Semelhante aos widgets `CircleListItem`,
-certifique-se de que os widgets `CardListItem`
-exibam uma cor onde a imagem aparecerá.
-Além disso, no widget `CardListItem`,
-alterne entre a exibição do texto e
-dos retângulos com base no status de carregamento atual.
+Similar to the `CircleListItem` widgets,
+ensure that the `CardListItem` widgets
+display a color where the image will appear.
+Also, in the `CardListItem` widget,
+switch between the display of the text and
+the rectangles based on the current loading status.
 
 <?code-excerpt "lib/main.dart (CardListItem)"?>
 ```dart
 class CardListItem extends StatelessWidget {
-  const CardListItem({
-    super.key,
-    required this.isLoading,
-  });
+  const CardListItem({super.key, required this.isLoading});
 
   final bool isLoading;
 
@@ -108,11 +101,7 @@ class CardListItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildImage(),
-          const SizedBox(height: 16),
-          _buildText(),
-        ],
+        children: [_buildImage(), const SizedBox(height: 16), _buildText()],
       ),
     );
   }
@@ -129,8 +118,8 @@ class CardListItem extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(16),
           child: Image.network(
-            'https://docs.flutterbrasil.dev/cookbook'
-            '/img-files/effects/split-check/Food1.jpg',
+            'https://docs.flutter.dev/assets/images/'
+            'exercise/split-check/Food1.jpg',
             fit: BoxFit.cover,
           ),
         ),
@@ -175,54 +164,46 @@ class CardListItem extends StatelessWidget {
 }
 ```
 
-Sua UI agora se renderiza de forma diferente dependendo
-se está carregando ou carregada.
-Ao comentar temporariamente as URLs das imagens,
-você pode ver as duas maneiras como sua UI renderiza.
+Your UI now renders itself differently depending on
+whether it's loading or loaded.
+By temporarily commenting out the image URLs,
+you can see the two ways your UI renders.
 
 
-![Gif mostrando a animação shimmer](/assets/images/docs/cookbook/effects/LoadingShimmer.gif){:.site-mobile-screenshot}
+![Gif showing the shimmer animation](/assets/images/docs/cookbook/effects/LoadingShimmer.webp){:.site-mobile-screenshot}
 
-O próximo objetivo é pintar todas as áreas coloridas
-com um único gradiente que parece um shimmer.
+The next goal is to paint all of the colored areas
+with a single gradient that looks like a shimmer.
 
-## Pinte o gradiente shimmer
+## Paint the shimmer gradient
 
-A chave para o efeito alcançado nesta receita é usar um widget
-chamado [`ShaderMask`][]. O widget `ShaderMask`, como o nome sugere,
-aplica um shader ao seu filho, mas apenas nas áreas onde
-o filho já pintou algo. Por exemplo,
-você aplicará um shader apenas às formas pretas que você
-configurou anteriormente.
+The key to the effect achieved in this recipe is to use a widget
+called [`ShaderMask`][]. The `ShaderMask` widget, as the name suggests,
+applies a shader to its child, but only in the areas where
+the child already painted something. For example,
+you'll apply a shader to only the black shapes that you
+configured earlier.
 
-Defina um gradiente linear com cor cromada que é aplicado às
-formas shimmer.
+Define a chrome-colored, linear gradient that gets applied to the
+shimmer shapes.
 
 <?code-excerpt "lib/main.dart (shimmerGradient)"?>
 ```dart
 const _shimmerGradient = LinearGradient(
-  colors: [
-    Color(0xFFEBEBF4),
-    Color(0xFFF4F4F4),
-    Color(0xFFEBEBF4),
-  ],
-  stops: [
-    0.1,
-    0.3,
-    0.4,
-  ],
+  colors: [Color(0xFFEBEBF4), Color(0xFFF4F4F4), Color(0xFFEBEBF4)],
+  stops: [0.1, 0.3, 0.4],
   begin: Alignment(-1.0, -0.3),
   end: Alignment(1.0, 0.3),
   tileMode: TileMode.clamp,
 );
 ```
 
-Defina um novo widget stateful chamado `ShimmerLoading`
-que envolve um widget `child` fornecido com um `ShaderMask`.
-Configure o widget `ShaderMask` para aplicar o gradiente
-shimmer como um shader com um `blendMode` de `srcATop`.
-O modo de mesclagem `srcATop` substitui qualquer cor que seu
-widget `child` pintou com a cor do shader.
+Define a new stateful widget called `ShimmerLoading`
+that wraps a given `child` widget with a `ShaderMask`.
+Configure the `ShaderMask` widget to apply the shimmer
+gradient as a shader with a `blendMode` of `srcATop`.
+The `srcATop` blend mode  replaces any color that your
+`child` widget painted with the shader color.
 
 <?code-excerpt "lib/main.dart (ShimmerLoading)"?>
 ```dart
@@ -258,67 +239,62 @@ class _ShimmerLoadingState extends State<ShimmerLoading> {
 }
 ```
 
-Envolva seus widgets `CircleListItem` com um widget `ShimmerLoading`.
+Wrap your `CircleListItem` widgets with a `ShimmerLoading` widget.
 
 <?code-excerpt "lib/shimmer_loading_items.dart (buildTopRowItem)"?>
 ```dart
 Widget _buildTopRowItem() {
-  return ShimmerLoading(
-    isLoading: _isLoading,
-    child: const CircleListItem(),
-  );
+  return ShimmerLoading(isLoading: _isLoading, child: const CircleListItem());
 }
 ```
 
-Envolva seus widgets `CardListItem` com um widget `ShimmerLoading`.
+Wrap your `CardListItem` widgets with a `ShimmerLoading` widget.
 
 <?code-excerpt "lib/shimmer_loading_items.dart (buildListItem)"?>
 ```dart
 Widget _buildListItem() {
   return ShimmerLoading(
     isLoading: _isLoading,
-    child: CardListItem(
-      isLoading: _isLoading,
-    ),
+    child: CardListItem(isLoading: _isLoading),
   );
 }
 ```
 
-Quando suas formas estão carregando, elas agora exibem
-o gradiente shimmer que é
-retornado do `shaderCallback`.
+When your shapes are loading, they now display
+the shimmer gradient that is
+returned from the `shaderCallback`.
 
-Este é um grande passo na direção certa,
-mas há um problema com esta exibição de gradiente.
-Cada widget `CircleListItem` e cada widget `CardListItem`
-exibe uma nova versão do gradiente.
-Para esta receita, a tela inteira deve
-parecer uma superfície brilhante grande.
-Você resolve este problema no próximo passo.
+This is a big step in the right direction,
+but there's a problem with this gradient display.
+Each `CircleListItem` widget and each `CardListItem` widget
+displays a new version of the gradient.
+For this recipe, the entire screen should
+look like one, big shimmering surface.
+You solve this problem in the next step.
 
-## Pinte um grande shimmer
+## Paint one big shimmer
 
-Para pintar um grande shimmer pela tela,
-cada widget `ShimmerLoading` precisa
-pintar o mesmo gradiente de tela cheia com base
-na posição desse widget `ShimmerLoading`
-na tela.
+To paint one big shimmer across the screen,
+each `ShimmerLoading` widget needs
+to paint the same full-screen gradient based
+on the position of that `ShimmerLoading`
+widget on the screen.
 
-Para ser mais preciso, em vez de assumir que o shimmer
-deve ocupar a tela inteira,
-deve haver alguma área que compartilhe o shimmer.
-Talvez essa área ocupe a tela inteira,
-ou talvez não. A maneira de resolver este
-tipo de problema no Flutter é definir outro widget
-que fica acima de todos os widgets `ShimmerLoading`
-na árvore de widgets, e chamá-lo de `Shimmer`.
-Então, cada widget `ShimmerLoading` obtém uma referência
-ao ancestral `Shimmer`
-e solicita o tamanho e gradiente desejados para exibir.
+To be more precise, rather than assume that the shimmer
+should take up the entire screen,
+there should be some area that shares the shimmer.
+Maybe that area takes up the entire screen,
+or maybe it doesn't. The way to solve this
+kind of problem in Flutter is to define another widget
+that sits above all of the `ShimmerLoading` widgets
+in the widget tree, and call it `Shimmer`.
+Then, each `ShimmerLoading` widget gets a reference
+to the `Shimmer` ancestor
+and requests the desired size and gradient to display.
 
-Defina um novo widget stateful chamado `Shimmer` que
-aceita um [`LinearGradient`][] e fornece aos descendentes
-acesso ao seu objeto `State`.
+Define a new stateful widget called `Shimmer` that
+takes in a [`LinearGradient`][] and provides descendants
+with access to its `State` object.
 
 <?code-excerpt "lib/main.dart (Shimmer)"?>
 ```dart
@@ -327,11 +303,7 @@ class Shimmer extends StatefulWidget {
     return context.findAncestorStateOfType<ShimmerState>();
   }
 
-  const Shimmer({
-    super.key,
-    required this.linearGradient,
-    this.child,
-  });
+  const Shimmer({super.key, required this.linearGradient, this.child});
 
   final LinearGradient linearGradient;
   final Widget? child;
@@ -348,21 +320,21 @@ class ShimmerState extends State<Shimmer> {
 }
 ```
 
-Adicione métodos à classe `ShimmerState` para
-fornecer acesso ao `linearGradient`,
-ao tamanho do `RenderBox` do `ShimmerState`,
-e procurar a posição de um descendente dentro do
-`RenderBox` do `ShimmerState`.
+Add methods to the `ShimmerState` class in order
+to provide access to the `linearGradient`,
+the size of the `ShimmerState`'s `RenderBox`,
+and look up the position of a descendant within the
+`ShimmerState`'s `RenderBox`.
 
 <?code-excerpt "lib/shimmer_state.dart (ShimmerState)"?>
 ```dart
 class ShimmerState extends State<Shimmer> {
   Gradient get gradient => LinearGradient(
-        colors: widget.linearGradient.colors,
-        stops: widget.linearGradient.stops,
-        begin: widget.linearGradient.begin,
-        end: widget.linearGradient.end,
-      );
+    colors: widget.linearGradient.colors,
+    stops: widget.linearGradient.stops,
+    begin: widget.linearGradient.begin,
+    end: widget.linearGradient.end,
+  );
 
   bool get isSized =>
       (context.findRenderObject() as RenderBox?)?.hasSize ?? false;
@@ -384,7 +356,7 @@ class ShimmerState extends State<Shimmer> {
 }
 ```
 
-Envolva todo o conteúdo da sua tela com o widget `Shimmer`.
+Wrap all of your screen's content with the `Shimmer` widget.
 
 <?code-excerpt "lib/main.dart (ExampleUiAnimationState)"?>
 ```dart
@@ -395,16 +367,16 @@ class _ExampleUiLoadingAnimationState extends State<ExampleUiLoadingAnimation> {
       body: Shimmer(
         linearGradient: _shimmerGradient,
         child: ListView(
-            // ListView Contents
-            ),
+          // ListView Contents
+        ),
       ),
     );
   }
 }
 ```
 
-Use o widget `Shimmer` dentro do seu
-widget `ShimmerLoading` para pintar o gradiente compartilhado.
+Use the `Shimmer` widget within your
+`ShimmerLoading` widget to paint the shared gradient.
 
 <?code-excerpt "lib/shimmer_loading_state_pt2.dart (ShimmerLoadingStatePt2)"?>
 ```dart
@@ -446,29 +418,27 @@ class _ShimmerLoadingState extends State<ShimmerLoading> {
 }
 ```
 
-Seus widgets `ShimmerLoading` agora exibem um
-gradiente compartilhado que ocupa todo o espaço dentro do
-widget `Shimmer`.
+Your `ShimmerLoading` widgets now display a shared
+gradient that takes up all of the space within the
+`Shimmer` widget.
 
-## Anime o shimmer
+## Animate the shimmer
 
-O gradiente shimmer precisa se mover para
-dar a aparência de um brilho cintilante.
+The shimmer gradient needs to move in order to
+give the appearance of a shimmering shine.
 
-O `LinearGradient` tem uma propriedade chamada `transform`
-que pode ser usada para transformar a aparência do gradiente,
-por exemplo, para movê-lo horizontalmente.
-A propriedade `transform` aceita uma instância de `GradientTransform`.
+The `LinearGradient` has a property called `transform`
+that can be used to transform the appearance of the gradient,
+for example, to move it horizontally.
+The `transform` property accepts a `GradientTransform` instance.
 
-Defina uma classe chamada `_SlidingGradientTransform` que implementa
-`GradientTransform` para alcançar a aparência de deslizamento horizontal.
+Define a class called `_SlidingGradientTransform` that implements
+`GradientTransform` to achieve the appearance of horizontal sliding.
 
 <?code-excerpt "lib/original_example.dart (sliding-gradient-transform)"?>
 ```dart
 class _SlidingGradientTransform extends GradientTransform {
-  const _SlidingGradientTransform({
-    required this.slidePercent,
-  });
+  const _SlidingGradientTransform({required this.slidePercent});
 
   final double slidePercent;
 
@@ -479,10 +449,10 @@ class _SlidingGradientTransform extends GradientTransform {
 }
 ```
 
-A porcentagem de deslizamento do gradiente muda ao longo do tempo
-para criar a aparência de movimento.
-Para mudar a porcentagem, configure um
-[`AnimationController`][] na classe `ShimmerState`.
+The gradient slide percentage changes over time
+in order to create the appearance of motion.
+To change the percentage, configure an
+[`AnimationController`][] in the `ShimmerState` class.
 
 <?code-excerpt "lib/original_example.dart (shimmer-state-animation)" replace="/\/\/ code-excerpt-closing-bracket/}/g"?>
 ```dart
@@ -502,40 +472,41 @@ class ShimmerState extends State<Shimmer> with SingleTickerProviderStateMixin {
     _shimmerController.dispose();
     super.dispose();
   }
-}
+  }
 ```
 
-Aplique o `_SlidingGradientTransform` ao `gradient`
-usando o `value` do `_shimmerController` como o `slidePercent`.
+Apply the `_SlidingGradientTransform` to the `gradient`
+by using the `_shimmerController`'s `value` as the `slidePercent`.
 
 <?code-excerpt "lib/original_example.dart (linear-gradient)"?>
 ```dart
 LinearGradient get gradient => LinearGradient(
-      colors: widget.linearGradient.colors,
-      stops: widget.linearGradient.stops,
-      begin: widget.linearGradient.begin,
-      end: widget.linearGradient.end,
-      transform:
-          _SlidingGradientTransform(slidePercent: _shimmerController.value),
-    );
+  colors: widget.linearGradient.colors,
+  stops: widget.linearGradient.stops,
+  begin: widget.linearGradient.begin,
+  end: widget.linearGradient.end,
+  transform: _SlidingGradientTransform(
+    slidePercent: _shimmerController.value,
+  ),
+);
 ```
 
-O gradiente agora anima, mas seus
-widgets `ShimmerLoading` individuais não se repintam
-conforme o gradiente muda. Portanto, parece que nada
-está acontecendo.
+The gradient now animates, but your individual
+`ShimmerLoading` widgets don't repaint themselves
+as the gradient changes. Therefore, it looks like nothing
+is happening.
 
-Exponha o `_shimmerController` do `ShimmerState`
-como um [`Listenable`][].
+Expose the `_shimmerController` from `ShimmerState`
+as a [`Listenable`][].
 
 <?code-excerpt "lib/original_example.dart (shimmer-changes)"?>
 ```dart
 Listenable get shimmerChanges => _shimmerController;
 ```
 
-Em `ShimmerLoading`, ouça as mudanças na propriedade
-`shimmerChanges` do ancestral `ShimmerState`,
-e repinte o gradiente shimmer.
+In `ShimmerLoading`, listen for changes to the ancestor
+`ShimmerState`'s `shimmerChanges` property,
+and repaint the shimmer gradient.
 
 <?code-excerpt "lib/original_example.dart (shimmer-loading-state)" replace="/\/\/ code-excerpt-closing-bracket/}/g"?>
 ```dart
@@ -567,14 +538,15 @@ class _ShimmerLoadingState extends State<ShimmerLoading> {
       });
     }
   }
-}
+  }
 ```
 
-Parabéns!
-Agora você tem um efeito shimmer de tela cheia animado
-que liga e desliga conforme o conteúdo carrega.
+Congratulations!
+You now have a full-screen,
+animated shimmer effect that turns
+on and off as the content loads.
 
-## Exemplo interativo
+## Interactive example
 
 <?code-excerpt "lib/original_example.dart" remove="code-excerpt-closing-bracket"?>
 ```dartpad title="Flutter shimmer loading hands-on example in DartPad" run="true"
@@ -590,25 +562,15 @@ void main() {
 }
 
 const _shimmerGradient = LinearGradient(
-  colors: [
-    Color(0xFFEBEBF4),
-    Color(0xFFF4F4F4),
-    Color(0xFFEBEBF4),
-  ],
-  stops: [
-    0.1,
-    0.3,
-    0.4,
-  ],
+  colors: [Color(0xFFEBEBF4), Color(0xFFF4F4F4), Color(0xFFEBEBF4)],
+  stops: [0.1, 0.3, 0.4],
   begin: Alignment(-1.0, -0.3),
   end: Alignment(1.0, 0.3),
   tileMode: TileMode.clamp,
 );
 
 class ExampleUiLoadingAnimation extends StatefulWidget {
-  const ExampleUiLoadingAnimation({
-    super.key,
-  });
+  const ExampleUiLoadingAnimation({super.key});
 
   @override
   State<ExampleUiLoadingAnimation> createState() =>
@@ -643,9 +605,7 @@ class _ExampleUiLoadingAnimationState extends State<ExampleUiLoadingAnimation> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _toggleLoading,
-        child: Icon(
-          _isLoading ? Icons.hourglass_full : Icons.hourglass_bottom,
-        ),
+        child: Icon(_isLoading ? Icons.hourglass_full : Icons.hourglass_bottom),
       ),
     );
   }
@@ -671,18 +631,13 @@ class _ExampleUiLoadingAnimationState extends State<ExampleUiLoadingAnimation> {
   }
 
   Widget _buildTopRowItem() {
-    return ShimmerLoading(
-      isLoading: _isLoading,
-      child: const CircleListItem(),
-    );
+    return ShimmerLoading(isLoading: _isLoading, child: const CircleListItem());
   }
 
   Widget _buildListItem() {
     return ShimmerLoading(
       isLoading: _isLoading,
-      child: CardListItem(
-        isLoading: _isLoading,
-      ),
+      child: CardListItem(isLoading: _isLoading),
     );
   }
 }
@@ -692,11 +647,7 @@ class Shimmer extends StatefulWidget {
     return context.findAncestorStateOfType<ShimmerState>();
   }
 
-  const Shimmer({
-    super.key,
-    required this.linearGradient,
-    this.child,
-  });
+  const Shimmer({super.key, required this.linearGradient, this.child});
 
   final LinearGradient linearGradient;
   final Widget? child;
@@ -723,13 +674,14 @@ class ShimmerState extends State<Shimmer> with SingleTickerProviderStateMixin {
   }
 
   LinearGradient get gradient => LinearGradient(
-        colors: widget.linearGradient.colors,
-        stops: widget.linearGradient.stops,
-        begin: widget.linearGradient.begin,
-        end: widget.linearGradient.end,
-        transform:
-            _SlidingGradientTransform(slidePercent: _shimmerController.value),
-      );
+    colors: widget.linearGradient.colors,
+    stops: widget.linearGradient.stops,
+    begin: widget.linearGradient.begin,
+    end: widget.linearGradient.end,
+    transform: _SlidingGradientTransform(
+      slidePercent: _shimmerController.value,
+    ),
+  );
 
   bool get isSized =>
       (context.findRenderObject() as RenderBox?)?.hasSize ?? false;
@@ -753,9 +705,7 @@ class ShimmerState extends State<Shimmer> with SingleTickerProviderStateMixin {
 }
 
 class _SlidingGradientTransform extends GradientTransform {
-  const _SlidingGradientTransform({
-    required this.slidePercent,
-  });
+  const _SlidingGradientTransform({required this.slidePercent});
 
   final double slidePercent;
 
@@ -860,8 +810,8 @@ class CircleListItem extends StatelessWidget {
         ),
         child: ClipOval(
           child: Image.network(
-            'https://docs.flutterbrasil.dev/cookbook'
-            '/img-files/effects/split-check/Avatar1.jpg',
+            'https://docs.flutter.dev/assets/images/'
+            'exercise/split-check/Avatar1.jpg',
             fit: BoxFit.cover,
           ),
         ),
@@ -871,10 +821,7 @@ class CircleListItem extends StatelessWidget {
 }
 
 class CardListItem extends StatelessWidget {
-  const CardListItem({
-    super.key,
-    required this.isLoading,
-  });
+  const CardListItem({super.key, required this.isLoading});
 
   final bool isLoading;
 
@@ -884,11 +831,7 @@ class CardListItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildImage(),
-          const SizedBox(height: 16),
-          _buildText(),
-        ],
+        children: [_buildImage(), const SizedBox(height: 16), _buildText()],
       ),
     );
   }
@@ -905,8 +848,8 @@ class CardListItem extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(16),
           child: Image.network(
-            'https://docs.flutterbrasil.dev/cookbook'
-            '/img-files/effects/split-check/Food1.jpg',
+            'https://docs.flutter.dev/assets/images/'
+            'exercise/split-check/Food1.jpg',
             fit: BoxFit.cover,
           ),
         ),

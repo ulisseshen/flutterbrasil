@@ -3,10 +3,11 @@ title: New CupertinoIcons has icon glyph changes
 description: >
   Once you update to cupertino_icons 1.0.0, some old glyphs are
   automapped to the new glyphs. Consider double-checking visually.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 The existing cupertino_icons [0.1.3 icons][]
 are based on iOS 11 aesthetics with sharp angles and thin lines.
@@ -29,7 +30,7 @@ variation in the new SF Symbols style but should be
 double checked to determine whether they preserve the
 intended visual effect.
 
-## Descrição da mudança
+## Description of change
 
 The new `cupertino_icons 1.0.0` font is handcrafted
 to best preserve the intent and aesthetic of the
@@ -90,7 +91,7 @@ when creating the original `cupertino_icons` set that
 no longer match the variations diversity of the more
 formal SF Symbols icon set for some of the icons.
 
-## Guia de migração
+## Migration guide
 
 After upgrading to 1.22,
 if you also upgrade the `cupertino_icons`
@@ -122,12 +123,12 @@ You're encouraged to verify your application after
 migrating to ensure that the automatically mapped
 new icons are suitable for your desired aesthetics.
 
-## Linha do tempo
+## Timeline
 
-Lançado em: 1.22.0-10.0.pre.65<br>
-Na versão estável: 1.22
+Landed in: 1.22.0-10.0.pre.65<br>
+In stable release: 1.22
 
-## Referências
+## References
 
 [0.1.3 icons]: https://raw.githubusercontent.com/flutter/cupertino_icons/master/map.png
 [`CupertinoIcons`]: {{site.api}}/flutter/cupertino/CupertinoIcons-class.html

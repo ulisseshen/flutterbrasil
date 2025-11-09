@@ -1,37 +1,38 @@
 ---
-title: MouseTracker movido para rendering
-description: MouseTracker e símbolos relacionados movidos para o pacote rendering.
-ia-translate: true
+title: MouseTracker moved to rendering
+description: MouseTracker and related symbols moved to the rendering package.
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
 
-[`MouseTracker`][] e símbolos relacionados foram movidos do
-pacote `gestures`, resultando em mensagens de erro como
-classes ou métodos indefinidos. Importe-os do pacote `rendering`
-em vez disso.
+## Summary
 
-## Contexto
+[`MouseTracker`][] and related symbols are moved from the
+`gestures` package, resulting in error messages such as
+undefined classes or methods. Import them from `rendering`
+package instead.
 
-Antes desta mudança, [`MouseTracker`][] fazia parte do
-pacote `gestures`. Isso trouxe problemas quando descobrimos
-que o código relacionado ao [`MouseTracker`][] frequentemente queria
-importar do pacote `rendering`.
+## Context
 
-Como [`MouseTracker`][] se revelou mais conectado a
-`rendering` do que a `gestures`, nós o movemos junto com seu
-código relacionado para `rendering`.
+Prior to this change [`MouseTracker`][] was part of the
+`gestures` package. This brought troubles when we found out
+that code related to [`MouseTracker`][] often wanted to
+import from the `rendering` package.
 
-## Descrição da mudança
+Since [`MouseTracker`][] turned out to be more connected to
+`rendering` than `gestures`, we have moved it and its
+related code to `rendering`.
 
-O arquivo `mouse_tracking.dart` foi movido do
-pacote `gestures` para `rendering`. Todos os símbolos no arquivo mencionado
-foram movidos sem manter compatibilidade retroativa.
+## Description of change
 
-## Guia de migração
+The file `mouse_tracking.dart` has been moved from the
+`gestures` package to `rendering`. All symbols in the said
+file have been moved without keeping backward compatibility.
 
-Se você vir erro de "Undefined class" ou "Undefined name" dos
-seguintes símbolos:
+## Migration guide
+
+If you see error of "Undefined class" or "Undefined name" of
+the following symbols:
 
 * [`MouseDetectorAnnotationFinder`][]
 * [`MouseTracker`][]
@@ -40,20 +41,20 @@ seguintes símbolos:
 * [`PointerExitEventListener`][]
 * [`PointerHoverEventListener`][]
 
-Você deve adicionar o seguinte import:
+You should add the following import:
 
 ```dart
 import 'package:flutter/rendering.dart';
 ```
 
-## Linha do tempo
+## Timeline
 
-Implementado na versão: 1.16.3<br>
-Na versão estável: 1.17
+Landed in version: 1.16.3<br>
+In stable release: 1.17
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`MouseDetectorAnnotationFinder`][]
 * [`MouseTracker`][]
@@ -62,21 +63,21 @@ Documentação da API:
 * [`PointerExitEventListener`][]
 * [`PointerHoverEventListener`][]
 
-Issues relevantes:
+Relevant issues:
 
 * [Transform mouse events to the local coordinate system][]
 * [Move annotations to a separate tree][]
 
-PR relevante:
+Relevant PR:
 
 * [Move mouse_tracking.dart to rendering][]
 
 [Move annotations to a separate tree]: {{site.repo.flutter}}/issues/49568
-[Move mouse_tracking.dart to rendering]: {{site.repo.flutter}}/pull/52781 
+[Move mouse_tracking.dart to rendering]: {{site.repo.flutter}}/pull/52781
 [Transform mouse events to the local coordinate system]: {{site.repo.flutter}}/issues/33675
 [`MouseDetectorAnnotationFinder`]: {{site.api}}/flutter/gestures/MouseDetectorAnnotationFinder.html
 [`MouseTracker`]: {{site.api}}/flutter/gestures/MouseTracker-class.html
-[`MouseTrackerAnnotation`]: {{site.api}}/flutter/gestures/MouseTrackerAnnotation-class.html 
-[`PointerEnterEventListener`]: {{site.api}}/flutter/gestures/PointerEnterEventListener.html 
-[`PointerExitEventListener`]: {{site.api}}/flutter/gestures/PointerExitEventListener.html 
-[`PointerHoverEventListener`]: {{site.api}}/flutter/gestures/PointerHoverEventListener.html 
+[`MouseTrackerAnnotation`]: {{site.api}}/flutter/gestures/MouseTrackerAnnotation-class.html
+[`PointerEnterEventListener`]: {{site.api}}/flutter/gestures/PointerEnterEventListener.html
+[`PointerExitEventListener`]: {{site.api}}/flutter/gestures/PointerExitEventListener.html
+[`PointerHoverEventListener`]: {{site.api}}/flutter/gestures/PointerHoverEventListener.html

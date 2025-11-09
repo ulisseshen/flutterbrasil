@@ -3,10 +3,11 @@ title: "\"Zone mismatch\" message"
 description: >
   When Flutter's bindings are initialized in a different zone
   than the Zone used for `runApp`, a warning is printed to the console.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 Starting with Flutter 3.10, the framework detects mismatches
 when using Zones and reports them to the console in debug builds.
@@ -64,7 +65,7 @@ The warning can be made fatal by
 setting [`BindingBase.debugZoneErrorsAreFatal`][] to `true`.
 This flag might be changed to default to `true` in a future version of Flutter.
 
-## Guia de migração
+## Migration guide
 
 The best way to silence this message is to
 remove use of Zones from within the application.
@@ -115,7 +116,7 @@ void main() {
 }
 ```
 
-In code that needs to use `myKey`, 
+In code that needs to use `myKey`,
 it can be obtained indirectly using `Zone.current['myKey'].value`.
 
 When such a solution does not work
@@ -127,24 +128,24 @@ wrapped in `Zone` calls that provide suitable values.
 It is strongly recommended that packages that use zones in this way
 migrate to more maintainable solutions.
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 3.9.0-9.0.pre<br>
-Na versão estável: 3.10.0
+Landed in version: 3.9.0-9.0.pre<br>
+In stable release: 3.10.0
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`Zone`][]
 * [`BindingBase.debugZoneErrorsAreFatal`][]
 
-Issues relevantes:
+Relevant issues:
 
 * [Issue 94123][]: Flutter framework does not warn when ensureInitialized
   is called in a different zone than runApp
 
-PRs relevantes:
+Relevant PRs:
 
 * [PR 122836][]: Assert that runApp is called
   in the same zone as binding.ensureInitialized

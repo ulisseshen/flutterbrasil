@@ -1,8 +1,8 @@
 ---
 title: Flutter 1.9.1 release notes
-short-title: 1.9.1 release notes
+shortTitle: 1.9.1 release notes
 description: Release notes for Flutter 1.9.1.
-ia-translate: true
+skipTemplateRendering: true
 ---
 
 Hello and welcome to another stable release of Flutter. So far this year, we've been right on target with one stable release each quarter, as per [our plan](https://github.com/flutter/flutter/blob/master/docs/releases/Flutter-build-release-channels.md) (well, less of a plan and more of a goal, but still, it's been working out pretty well so far…). This release is our biggest yet, with 620 Pull Requests merged from 116 contributors. As always, the interesting PRs are listed below. And there are lots of interesting things to discuss in this release, including:
@@ -109,7 +109,7 @@ This release also brings with it two new Material widgets: the ToggleButtons wid
 
 ## macOS Catalina Support
 
-With the release of macOS Catalina just around the corner, we've made sure that our tooling continues to work smoothly as you migrate to Catalina, iOS 13 and Xcode 11. I should note that **you'll want to upgrade to the Flutter 1.9.1 stable release before upgrading to Catalina**. The other order works, too, but you'll see an error when you do it that way (the [error](https://github.com/flutter/flutter/issues/33890) is benign, but still…). 
+With the release of macOS Catalina just around the corner, we've made sure that our tooling continues to work smoothly as you migrate to Catalina, iOS 13 and Xcode 11. I should note that **you'll want to upgrade to the Flutter 1.9.1 stable release before upgrading to Catalina**. The other order works, too, but you'll see an error when you do it that way (the [error](https://github.com/flutter/flutter/issues/33890) is benign, but still…).
 
 [38325](https://github.com/flutter/flutter/pull/38325) refactor flutter upgrade to be 2 part, with the second part re-entrant
 
@@ -396,7 +396,7 @@ The biggest change in text & accessibility for this release is the new ColorFilt
 
 ## Web (tech preview)
 
-Work continues on adding to the technical preview of web platform support to Flutter in this release, including a flag to tell if an app is running on the web. To see it in action, check out [main.dart](https://github.com/csells/flutter_mazegen/blob/master/lib/main.dart) in the [flutter_mazegen sample](https://github.com/csells/flutter_mazegen/). To learn more, see [Flutter for web](https://docs.flutterbrasil.dev/web).
+Work continues on adding to the technical preview of web platform support to Flutter in this release, including a flag to tell if an app is running on the web. To see it in action, check out [main.dart](https://github.com/csells/flutter_mazegen/blob/master/lib/main.dart) in the [flutter_mazegen sample](https://github.com/csells/flutter_mazegen/). To learn more, see [Flutter for web](https://docs.flutter.dev/web).
 
 [36135](https://github.com/flutter/flutter/pull/36135) add a kIsWeb constant to foundation
 
@@ -433,7 +433,7 @@ Work continues on adding to the technical preview of web platform support to Flu
 
 ## Desktop (experimental)
 
-We continue to move forward with the experimental support for the desktop platform in Flutter. If you'd like to take part in the experiment, see [Flutter Desktop shells](https://docs.flutterbrasil.dev/desktop).
+We continue to move forward with the experimental support for the desktop platform in Flutter. If you'd like to take part in the experiment, see [Flutter Desktop shells](https://docs.flutter.dev/desktop).
 
 [32770](https://github.com/flutter/flutter/pull/32770) Dismiss modal with any button press
 
@@ -1023,7 +1023,7 @@ As always, the end-to-end experience for Flutter relies heavily on its tools. Wi
 *   [DevTools 0.1.4 Release Notes](https://groups.google.com/forum/#!searchin/flutter-announce/release$20notes|sort:date/flutter-announce/ZUcqjzEDTKc/ABZtXXOpCgAJ) - Jul 19, 2019
 *   [VSCode Plugin v3.2](https://dartcode.org/releases/v3-2/) - Jun 28, 2019
 
-In addition, this release also has a lot going on under the hood to provide you with better, more actionable error messages. You can read about those details in [this blog post](https://medium.com/@taodong/e098513cecf9) from the Flutter User Experience team.
+In addition, this release also has a lot going on under the hood to provide you with better, more actionable error messages. You can read about those details in [this blog post](https://blog.flutter.dev/improving-flutters-error-messages-e098513cecf9) from the Flutter User Experience team.
 
 [32511](https://github.com/flutter/flutter/pull/32511) Rendering errors with root causes in the widget layer should have a reference to the widget
 

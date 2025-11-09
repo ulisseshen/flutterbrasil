@@ -1,27 +1,26 @@
 ---
-title: Adicionando assets e imagens
-description: Como usar imagens (e outros assets) em seu app Flutter.
-short-title: Assets e imagens
-ia-translate: true
+title: Adding assets and images
+description: How to use images (and other assets) in your Flutter app.
+shortTitle: Assets and images
 ---
 
 <?code-excerpt path-base="ui/assets_and_images/lib"?>
 
-Apps Flutter podem incluir tanto código quanto _assets_
-(às vezes chamados de recursos). Um asset é um arquivo
-que é empacotado e implantado com seu app,
-e é acessível em tempo de execução. Tipos comuns de assets incluem
-dados estáticos (por exemplo, arquivos JSON),
-arquivos de configuração, ícones e imagens
-(JPEG, WebP, GIF, WebP/GIF animados, PNG, BMP e WBMP).
+Flutter apps can include both code and _assets_
+(sometimes called resources). An asset is a file
+that is bundled and deployed with your app,
+and is accessible at runtime. Common types of assets include
+static data (for example, JSON files),
+configuration files, icons, and images
+(JPEG, WebP, GIF, animated WebP/GIF, PNG, BMP, and WBMP).
 
-## Especificando assets
+## Specifying assets
 
-O Flutter usa o arquivo [`pubspec.yaml`][],
-localizado na raiz do seu projeto,
-para identificar assets requeridos por um app.
+Flutter uses the [`pubspec.yaml`][] file,
+located at the root of your project,
+to identify assets required by an app.
 
-Aqui está um exemplo:
+Here is an example:
 
 ```yaml
 flutter:
@@ -30,8 +29,8 @@ flutter:
     - assets/background.png
 ```
 
-Para incluir todos os assets em um diretório,
-especifique o nome do diretório com o caractere `/` no final:
+To include all assets under a directory,
+specify the directory name with the `/` character at the end:
 
 ```yaml
 flutter:
@@ -41,23 +40,23 @@ flutter:
 ```
 
 :::note
-Apenas arquivos localizados diretamente no diretório são incluídos.
-[Variantes de imagens assets com resolução adaptável](#resolution-aware) são a única exceção.
-Para adicionar arquivos localizados em subdiretórios, crie uma entrada por diretório.
+Only files located directly in the directory are included.
+[Resolution-aware asset image variants](#resolution-aware) are the only exception.
+To add files located in subdirectories, create an entry per directory.
 :::
 
 :::note
-A indentação é importante em YAML. Se você ver um erro como
+Indentation matters in YAML. If you see an error like
 `Error: unable to find directory entry in pubspec.yaml`
-então você _pode_ ter indentado incorretamente em seu
-arquivo pubspec. Considere o seguinte exemplo [incorreto]:
+then you _might_ have indented incorrectly in your
+pubspec file. Consider the following [broken] example:
 ```yaml
 flutter:
 assets:
   - directory/
 ```
-A linha `assets:` deve ser indentada exatamente
-dois espaços abaixo da linha `flutter:`:
+The `assets:` line should be indented by exactly
+two spaces below the `flutter:` line:
 ```yaml
 flutter:
   assets:
@@ -65,73 +64,68 @@ flutter:
 ```
 :::
 
-### Empacotamento de assets
+### Asset bundling
 
-A subseção `assets` da seção `flutter`
-especifica arquivos que devem ser incluídos com o app.
-Cada asset é identificado por um caminho explícito
-(relativo ao arquivo `pubspec.yaml`) onde o arquivo
-do asset está localizado. A ordem em que os assets são
-declarados não importa. O nome real do diretório usado
-(`assets` no primeiro exemplo ou `directory` no exemplo
-acima) não importa.
+The `assets` subsection of the `flutter` section
+specifies files that should be included with the app.
+Each asset is identified by an explicit path
+(relative to the `pubspec.yaml` file) where the asset
+file is located. The order in which the assets are
+declared doesn't matter. The actual directory name used
+(`assets` in first example or `directory` in the above
+example) doesn't matter.
 
-Durante um build, o Flutter coloca os assets em um arquivo
-especial chamado _asset bundle_ que os apps leem
-em tempo de execução.
+During a build, Flutter places assets into a special
+archive called the _asset bundle_ that apps read
+from at runtime.
 
-### Transformação automática de arquivos de assets em tempo de build
+### Automatic transformation of asset files at build time
 
-O Flutter suporta o uso de um pacote Dart para transformar arquivos de assets ao construir seu app.
-Para fazer isso, especifique os arquivos de assets e o pacote transformador em seu arquivo pubspec.
-Para aprender como fazer isso e escrever seus próprios pacotes de transformação de assets, veja
-[Transformando assets em tempo de build][Transforming assets at build time].
+Flutter supports using a Dart package to transform asset files when building your app.
+To do this, specify the asset files and transformer package in your pubspec file.
+To learn how to do this and write your own asset-transforming packages, see
+[Transforming assets at build time][].
 
-### Empacotamento condicional de assets baseado em flavor do app
+## Loading assets
 
-Se seu projeto utiliza a [funcionalidade de flavors][flavors feature], você pode configurar assets
-individuais para serem empacotados apenas em certos flavors do seu app.
-Para mais informações, confira [Empacotando assets condicionalmente baseado em flavor][Conditionally bundling assets based on flavor].
+Your app can access its assets through an
+[`AssetBundle`][] object.
 
-## Carregando assets
+The two main methods on an asset bundle allow you to load a
+string/text asset (`loadString()`) or an image/binary asset (`load()`)
+out of the bundle, given a logical key. The logical key maps to the path
+to the asset specified in the `pubspec.yaml` file at build time.
 
-Seu app pode acessar seus assets através de um
-objeto [`AssetBundle`][].
+### Loading text assets
 
-Os dois métodos principais em um asset bundle permitem que você carregue um
-asset string/texto (`loadString()`) ou um asset imagem/binário (`load()`)
-do bundle, dado uma chave lógica. A chave lógica mapeia para o caminho
-do asset especificado no arquivo `pubspec.yaml` em tempo de build.
-
-### Carregando assets de texto
-
-Cada app Flutter tem um objeto [`rootBundle`][]
-para fácil acesso ao asset bundle principal.
-É possível carregar assets diretamente usando o
-`rootBundle` global estático de
+Each Flutter app has a [`rootBundle`][]
+object for easy access to the main asset bundle.
+It is possible to load assets directly using the
+`rootBundle` global static from
 `package:flutter/services.dart`.
 
-No entanto, é recomendado obter o `AssetBundle`
-para o `BuildContext` atual usando
-[`DefaultAssetBundle`][], em vez do asset
-bundle padrão que foi construído com o app; essa
-abordagem permite que um widget pai substitua um
-`AssetBundle` diferente em tempo de execução,
-o que pode ser útil para cenários de localização ou teste.
+However, it's recommended to obtain the `AssetBundle`
+for the current `BuildContext` using
+[`DefaultAssetBundle`][], rather than the default
+asset bundle that was built with the app; this
+approach enables a parent widget to substitute a
+different `AssetBundle` at run time,
+which can be useful for localization or testing
+scenarios.
 
-Normalmente, você usará `DefaultAssetBundle.of()`
-para carregar indiretamente um asset, por exemplo um arquivo JSON,
-do `rootBundle` em tempo de execução do app.
+Typically, you'll use `DefaultAssetBundle.of()`
+to indirectly load an asset, for example a JSON file,
+from the app's runtime `rootBundle`.
 
 {% comment %}
   Need example here to show obtaining the AssetBundle for the current
   BuildContext using DefaultAssetBundle.of
 {% endcomment %}
 
-Fora do contexto de um `Widget`, ou quando um handle
-para um `AssetBundle` não está disponível,
-você pode usar `rootBundle` para carregar tais assets diretamente.
-Por exemplo:
+Outside of a `Widget` context, or when a handle
+to an `AssetBundle` is not available,
+you can use `rootBundle` to directly load such assets.
+For example:
 
 <?code-excerpt "main.dart (root-bundle-load)"?>
 ```dart
@@ -142,30 +136,30 @@ Future<String> loadAsset() async {
 }
 ```
 
-### Carregando imagens
+### Loading images
 
-Para carregar uma imagem, use a classe [`AssetImage`][]
-no método `build()` de um widget.
+To load an image, use the [`AssetImage`][]
+class in a widget's `build()` method.
 
-Por exemplo, seu app pode carregar a imagem de fundo
-das declarações de assets nos exemplos anteriores:
+For example, your app can load the background
+image from the asset declarations in the previous example:
 
 <?code-excerpt "main.dart (background-image)"?>
 ```dart
 return const Image(image: AssetImage('assets/background.png'));
 ```
 
-### Assets de imagens com resolução adaptável {:#resolution-aware}
+### Resolution-aware image assets {:#resolution-aware}
 
-O Flutter pode carregar imagens com resolução apropriada para
-a [proporção de pixels do dispositivo][device pixel ratio] atual.
+Flutter can load resolution-appropriate images for
+the current [device pixel ratio][].
 
-[`AssetImage`][] mapeará um asset lógico solicitado
-para aquele que mais se aproxima da
-[proporção de pixels do dispositivo][device pixel ratio] atual.
+[`AssetImage`][] will map a logical requested
+asset onto one that most closely matches the current
+[device pixel ratio][].
 
-Para que esse mapeamento funcione, os assets devem ser organizados
-de acordo com uma estrutura de diretório específica:
+For this mapping to work, assets should be arranged
+according to a particular directory structure:
 
 ```plaintext
 .../image.png
@@ -174,18 +168,18 @@ de acordo com uma estrutura de diretório específica:
 ...etc.
 ```
 
-Onde _M_ e _N_ são identificadores numéricos que correspondem
-à resolução nominal das imagens contidas dentro.
-Em outras palavras, eles especificam a proporção de pixels do dispositivo para
-a qual as imagens são destinadas.
+Where _M_ and _N_ are numeric identifiers that correspond
+to the nominal resolution of the images contained within.
+In other words, they specify the device pixel ratio that
+the images are intended for.
 
-Neste exemplo, `image.png` é considerado o *asset principal*,
-enquanto `Mx/image.png` e `Nx/image.png` são considerados
-*variantes*.
+In this example, `image.png` is considered the *main asset*,
+while `Mx/image.png` and `Nx/image.png` are considered to be
+*variants*.
 
-O asset principal é assumido como correspondente a uma resolução de 1.0.
-Por exemplo, considere o seguinte layout de assets para uma
-imagem chamada `my_icon.png`:
+The main asset is assumed to correspond to a resolution of 1.0.
+For example, consider the following asset layout for an
+image named `my_icon.png`:
 
 ```plaintext
 .../my_icon.png       (mdpi baseline)
@@ -195,49 +189,49 @@ imagem chamada `my_icon.png`:
 .../4.0x/my_icon.png  (xxxhdpi)
 ```
 
-Em dispositivos com proporção de pixels de 1.8, o asset
-`.../2.0x/my_icon.png` é escolhido.
-Para um dispositivo com proporção de pixels de 2.7, o asset
-`.../3.0x/my_icon.png` é escolhido.
+On devices with a device pixel ratio of 1.8, the asset
+`.../2.0x/my_icon.png` is chosen.
+For a device pixel ratio of 2.7, the asset
+`.../3.0x/my_icon.png` is chosen.
 
-Se a largura e altura da imagem renderizada não forem especificadas
-no widget `Image`, a resolução nominal é usada para escalar
-o asset de forma que ele ocupe a mesma quantidade de espaço na tela
-que o asset principal ocuparia, apenas com resolução maior.
-Ou seja, se `.../my_icon.png` é 72px por 72px, então
-`.../3.0x/my_icon.png` deve ser 216px por 216px;
-mas ambos renderizam em 72px por 72px (em pixels lógicos),
-se largura e altura não forem especificadas.
+If the width and height of the rendered image are not specified
+on the `Image` widget, the nominal resolution is used to scale
+the asset so that it occupies the same amount of screen space
+as the main asset would have, just with a higher resolution.
+That is, if `.../my_icon.png` is 72px by 72px, then
+`.../3.0x/my_icon.png` should be 216px by 216px;
+but they both render into 72px by 72px (in logical pixels),
+if width and height are not specified.
 
 :::note
-[Proporção de pixels do dispositivo][Device pixel ratio] depende de [MediaQueryData.size][], que requer ter
-[MaterialApp][] ou [CupertinoApp][] como ancestral do seu [`AssetImage`][].
+[Device pixel ratio][] depends on [MediaQueryData.size][], which requires having either
+[MaterialApp][] or [CupertinoApp][] as an ancestor of your [`AssetImage`][].
 :::
 
-#### Empacotamento de assets de imagens com resolução adaptável {:#resolution-aware-bundling}
+#### Bundling of resolution-aware image assets {:#resolution-aware-bundling}
 
-Você só precisa especificar o asset principal ou seu diretório pai
-na seção `assets` do `pubspec.yaml`.
-O Flutter empacota as variantes para você.
-Cada entrada deve corresponder a um arquivo real, com exceção da
-entrada do asset principal. Se a entrada do asset principal não corresponder
-a um arquivo real, então o asset com a resolução mais baixa
-é usado como fallback para dispositivos com proporção de pixels
-abaixo dessa resolução. A entrada ainda deve
-ser incluída no manifesto `pubspec.yaml`, no entanto.
+You only need to specify the main asset or its parent directory
+in the `assets` section of `pubspec.yaml`.
+Flutter bundles the variants for you.
+Each entry should correspond to a real file, with the exception of
+the main asset entry. If the main asset entry doesn't correspond
+to a real file, then the asset with the lowest resolution
+is used as the fallback for devices with device pixel
+ratios below that resolution. The entry should still
+be included in the `pubspec.yaml` manifest, however.
 
-Qualquer coisa usando o asset bundle padrão herda a consciência de resolução
-ao carregar imagens. (Se você trabalhar com algumas das classes
-de nível mais baixo, como [`ImageStream`][] ou [`ImageCache`][],
-você também notará parâmetros relacionados à escala.)
+Anything using the default asset bundle inherits resolution
+awareness when loading images. (If you work with some of the lower
+level classes, like [`ImageStream`][] or [`ImageCache`][],
+you'll also notice parameters related to scale.)
 
-### Imagens assets em dependências de pacotes {:#from-packages}
+### Asset images in package dependencies {:#from-packages}
 
-Para carregar uma imagem de uma dependência de [pacote][package],
-o argumento `package` deve ser fornecido para [`AssetImage`][].
+To load an image from a [package][] dependency,
+the `package` argument must be provided to [`AssetImage`][].
 
-Por exemplo, suponha que sua aplicação dependa de um pacote
-chamado `my_icons`, que tem a seguinte estrutura de diretórios:
+For instance, suppose your application depends on a package
+called `my_icons`, which has the following directory structure:
 
 ```plaintext
 .../pubspec.yaml
@@ -247,29 +241,29 @@ chamado `my_icons`, que tem a seguinte estrutura de diretórios:
 ...etc.
 ```
 
-Para carregar a imagem, use:
+To load the image, use:
 
 <?code-excerpt "main.dart (package-image)"?>
 ```dart
 return const AssetImage('icons/heart.png', package: 'my_icons');
 ```
 
-Assets usados pelo próprio pacote também devem ser buscados
-usando o argumento `package` como acima.
+Assets used by the package itself should also be fetched
+using the `package` argument as above.
 
-#### Empacotamento de assets de pacotes
+#### Bundling of package assets
 
-Se o asset desejado for especificado no arquivo `pubspec.yaml`
-do pacote, ele é empacotado automaticamente com a
-aplicação. Em particular, assets usados pelo próprio pacote
-devem ser especificados em seu `pubspec.yaml`.
+If the desired asset is specified in the `pubspec.yaml`
+file of the package, it's bundled automatically with the
+application. In particular, assets used by the package
+itself must be specified in its `pubspec.yaml`.
 
-Um pacote também pode optar por ter assets em sua pasta `lib/`
-que não são especificados em seu arquivo `pubspec.yaml`.
-Nesse caso, para que essas imagens sejam empacotadas,
-a aplicação deve especificar quais incluir em seu
-`pubspec.yaml`. Por exemplo, um pacote chamado `fancy_backgrounds`
-poderia ter os seguintes arquivos:
+A package can also choose to have assets in its `lib/`
+folder that are not specified in its `pubspec.yaml` file.
+In this case, for those images to be bundled,
+the application has to specify which ones to include in its
+`pubspec.yaml`. For instance, a package named `fancy_backgrounds`
+could have the following files:
 
 ```plaintext
 .../lib/backgrounds/background1.png
@@ -277,8 +271,8 @@ poderia ter os seguintes arquivos:
 .../lib/backgrounds/background3.png
 ```
 
-Para incluir, digamos, a primeira imagem, o `pubspec.yaml` da
-aplicação deve especificá-la na seção `assets`:
+To include, say, the first image, the `pubspec.yaml` of the
+application should specify it in the `assets` section:
 
 ```yaml
 flutter:
@@ -286,10 +280,10 @@ flutter:
     - packages/fancy_backgrounds/backgrounds/background1.png
 ```
 
-O `lib/` é implícito,
-então não deve ser incluído no caminho do asset.
+The `lib/` is implied,
+so it should not be included in the asset path.
 
-Se você está desenvolvendo um pacote, para carregar um asset dentro do pacote, especifique-o no `pubspec.yaml` do pacote:
+If you are developing a package, to load an asset within the package, specify it in the `pubspec.yaml` of the package:
 
 ```yaml
 flutter:
@@ -297,30 +291,30 @@ flutter:
     - assets/images/
 ```
 
-Para carregar a imagem dentro do seu pacote, use:
+To load the image within your package, use:
 
 ```dart
 return const AssetImage('packages/fancy_backgrounds/backgrounds/background1.png');
 ```
 
-## Compartilhando assets com a plataforma subjacente
+## Sharing assets with the underlying platform
 
-Assets Flutter estão prontamente disponíveis para código da plataforma
-usando o `AssetManager` no Android e `NSBundle` no iOS.
+Flutter assets are readily available to platform code
+using the `AssetManager` on Android and `NSBundle` on iOS.
 
-### Carregando assets Flutter no Android
+### Loading Flutter assets in Android
 
-No Android os assets estão disponíveis através da
-API [`AssetManager`][]. A chave de busca usada em,
-por exemplo [`openFd`][], é obtida de
-`lookupKeyForAsset` em [`PluginRegistry.Registrar`][] ou
-`getLookupKeyForAsset` em [`FlutterView`][].
-`PluginRegistry.Registrar` está disponível ao desenvolver um plugin
-enquanto `FlutterView` seria a escolha ao desenvolver um
-app incluindo uma platform view.
+On Android the assets are available through the
+[`AssetManager`][] API.  The lookup key used in,
+for instance [`openFd`][], is obtained from
+`lookupKeyForAsset` on [`PluginRegistry.Registrar`][] or
+`getLookupKeyForAsset` on [`FlutterView`][].
+`PluginRegistry.Registrar` is available when developing a plugin
+while `FlutterView` would be the choice when developing an
+app including a platform view.
 
-Como exemplo, suponha que você especificou o seguinte
-em seu pubspec.yaml
+As an example, suppose you have specified the following
+in your pubspec.yaml
 
 ```yaml
 flutter:
@@ -328,7 +322,7 @@ flutter:
     - icons/heart.png
 ```
 
-Isso reflete a seguinte estrutura em seu app Flutter.
+This reflects the following structure in your Flutter app.
 
 ```plaintext
 .../pubspec.yaml
@@ -336,8 +330,8 @@ Isso reflete a seguinte estrutura em seu app Flutter.
 ...etc.
 ```
 
-Para acessar `icons/heart.png` do seu código Java de plugin,
-faça o seguinte:
+To access `icons/heart.png` from your Java plugin code,
+do the following:
 
 ```java
 AssetManager assetManager = registrar.context().getAssets();
@@ -345,29 +339,29 @@ String key = registrar.lookupKeyForAsset("icons/heart.png");
 AssetFileDescriptor fd = assetManager.openFd(key);
 ```
 
-### Carregando assets Flutter no iOS
+### Loading Flutter assets in iOS
 
-No iOS os assets estão disponíveis através do [`mainBundle`][].
-A chave de busca usada em, por exemplo [`pathForResource:ofType:`][],
-é obtida de `lookupKeyForAsset` ou `lookupKeyForAsset:fromPackage:`
-em [`FlutterPluginRegistrar`][], ou `lookupKeyForAsset:` ou
-`lookupKeyForAsset:fromPackage:` em [`FlutterViewController`][].
-`FlutterPluginRegistrar` está disponível ao desenvolver
-um plugin enquanto `FlutterViewController` seria a escolha
-ao desenvolver um app incluindo uma platform view.
+On iOS the assets are available through the [`mainBundle`][].
+The lookup key used in, for instance [`pathForResource:ofType:`][],
+is obtained from `lookupKeyForAsset` or `lookupKeyForAsset:fromPackage:`
+on [`FlutterPluginRegistrar`][], or `lookupKeyForAsset:` or
+`lookupKeyForAsset:fromPackage:` on [`FlutterViewController`][].
+`FlutterPluginRegistrar` is available when developing
+a plugin while `FlutterViewController` would be the choice
+when developing an app including a platform view.
 
-Como exemplo, suponha que você tenha as configurações Flutter de acima.
+As an example, suppose you have the Flutter setting from above.
 
-Para acessar `icons/heart.png` do seu código Objective-C de plugin você
-faria o seguinte:
+To access `icons/heart.png` from your Objective-C plugin code you
+would do the following:
 
 ```objc
 NSString* key = [registrar lookupKeyForAsset:@"icons/heart.png"];
 NSString* path = [[NSBundle mainBundle] pathForResource:key ofType:nil];
 ```
 
-Para acessar `icons/heart.png` do seu app Swift você
-faria o seguinte:
+To access `icons/heart.png` from your Swift app you
+would do the following:
 
 ```swift
 let key = controller.lookupKey(forAsset: "icons/heart.png")
@@ -375,93 +369,79 @@ let mainBundle = Bundle.main
 let path = mainBundle.path(forResource: key, ofType: nil)
 ```
 
-Para um exemplo mais completo, veja a implementação do
-[plugin `video_player`][`video_player` plugin] no pub.dev.
+For a more complete example, see the implementation of the
+Flutter [`video_player` plugin][] on pub.dev.
 
-O plugin [`ios_platform_images`][] no pub.dev encapsula
-essa lógica em uma categoria conveniente. Você busca
-uma imagem da seguinte forma:
+### Loading iOS images in Flutter
 
-**Objective-C:**
-```objc
-[UIImage flutterImageWithName:@"icons/heart.png"];
-```
+When implementing Flutter by
+[adding it to an existing iOS app][add-to-app],
+you might have images hosted in iOS that you
+want to use in Flutter. To accomplish
+that, use [platform channels][] to pass the image
+data to Dart as `FlutterStandardTypedData`.
 
-**Swift:**
-```swift
-UIImage.flutterImageNamed("icons/heart.png")
-```
+## Platform assets
 
-### Carregando imagens iOS no Flutter
+There are other occasions to work with assets in the
+platform projects directly. Below are two common cases
+where assets are used before the Flutter framework is
+loaded and running.
 
-Ao implementar Flutter
-[adicionando-o a um app iOS existente][add-to-app],
-você pode ter imagens hospedadas no iOS que deseja
-usar no Flutter. Para fazer isso,
-use o plugin [`ios_platform_images`][]
-disponível no pub.dev.
+### Updating the app icon
 
-## Assets de plataforma
+Updating a Flutter application's launch icon works
+the same way as updating launch icons in native
+Android or iOS applications.
 
-Há outras ocasiões para trabalhar com assets nos
-projetos de plataforma diretamente. Abaixo estão dois casos comuns
-onde assets são usados antes do framework Flutter ser
-carregado e executado.
-
-### Atualizando o ícone do app
-
-Atualizar o ícone de lançamento de uma aplicação Flutter funciona
-da mesma forma que atualizar ícones de lançamento em aplicações
-Android ou iOS nativas.
-
-![Ícone de lançamento](/assets/images/docs/assets-and-images/icon.png)
+![Launch icon](/assets/images/docs/assets-and-images/icon.png)
 
 #### Android
 
-No diretório raiz do seu projeto Flutter, navegue até
-`.../android/app/src/main/res`. As várias pastas de recursos bitmap
-como `mipmap-hdpi` já contêm imagens placeholder
-chamadas `ic_launcher.png`. Substitua-as por seus
-assets desejados respeitando o tamanho de ícone recomendado por
-densidade de tela conforme indicado pelo [Guia do Desenvolvedor Android][Android Developer Guide].
+In your Flutter project's root directory, navigate to
+`.../android/app/src/main/res`. The various bitmap resource
+folders such as `mipmap-hdpi` already contain placeholder
+images named `ic_launcher.png`. Replace them with your
+desired assets respecting the recommended icon size per
+screen density as indicated by the [Android Developer Guide][].
 
-![Localização do ícone Android](/assets/images/docs/assets-and-images/android-icon-path.png)
+![Android icon location](/assets/images/docs/assets-and-images/android-icon-path.png)
 
 :::note
-Se você renomear os arquivos `.png`, você também deve atualizar o
-nome correspondente no atributo `android:icon` da tag `<application>`
-do seu `AndroidManifest.xml`.
+If you rename the `.png` files, you must also update the
+corresponding name in your `AndroidManifest.xml`'s
+`<application>` tag's `android:icon` attribute.
 :::
 
 #### iOS
 
-No diretório raiz do seu projeto Flutter,
-navegue até `.../ios/Runner`. O
-diretório `Assets.xcassets/AppIcon.appiconset` já contém
-imagens placeholder. Substitua-as por imagens de tamanho
-apropriado conforme indicado por seus nomes de arquivo, conforme ditado pelas
-[Diretrizes de Interface Humana][Human Interface Guidelines] da Apple.
-Mantenha os nomes de arquivo originais.
+In your Flutter project's root directory,
+navigate to `.../ios/Runner`. The
+`Assets.xcassets/AppIcon.appiconset` directory already contains
+placeholder images. Replace them with the appropriately
+sized images as indicated by their filename as dictated by the
+Apple [Human Interface Guidelines][].
+Keep the original file names.
 
-![Localização do ícone iOS](/assets/images/docs/assets-and-images/ios-icon-path.png)
+![iOS icon location](/assets/images/docs/assets-and-images/ios-icon-path.png)
 
-### Atualizando a tela de lançamento
+### Updating the launch screen
 
 <p align="center">
-  <img src="/assets/images/docs/assets-and-images/launch-screen.png" alt="Tela de lançamento" />
+  <img src="/assets/images/docs/assets-and-images/launch-screen.png" alt="Launch screen" />
 </p>
 
-O Flutter também usa mecanismos nativos da plataforma para desenhar
-telas de lançamento transicionais para seu app Flutter enquanto o
-framework Flutter carrega. Esta tela de lançamento persiste até
-o Flutter renderizar o primeiro frame da sua aplicação.
+Flutter also uses native platform mechanisms to draw
+transitional launch screens to your Flutter app while the
+Flutter framework loads. This launch screen persists until
+Flutter renders the first frame of your application.
 
 :::note
-Isso implica que se você não chamar [`runApp()`][] na
-função `main()` do seu app (ou mais especificamente,
-se você não chamar [`FlutterView.render()`][] em resposta a
+This implies that if you don't call [`runApp()`][] in the
+`main()` function of your app (or more specifically,
+if you don't call [`FlutterView.render()`][] in response to
 [`PlatformDispatcher.onDrawFrame`][]),
-a tela de lançamento persiste para sempre.
+the launch screen persists forever.
 :::
 
 [`FlutterView.render()`]: {{site.api}}/flutter/dart-ui/FlutterView/render.html
@@ -469,39 +449,39 @@ a tela de lançamento persiste para sempre.
 
 #### Android
 
-Para adicionar uma tela de lançamento (também conhecida como "splash screen") ao seu
-app Flutter, navegue até `.../android/app/src/main`.
-Em `res/drawable/launch_background.xml`,
-use este [drawable de lista de camadas][layer list drawable] XML para customizar
-a aparência da sua tela de lançamento. O template existente fornece
-um exemplo de adicionar uma imagem ao meio de uma tela branca
-em código comentado. Você pode descomentá-lo ou usar outros
-[drawables][] para alcançar o efeito pretendido.
+To add a launch screen (also known as "splash screen") to your
+Flutter application, navigate to `.../android/app/src/main`.
+In `res/drawable/launch_background.xml`,
+use this [layer list drawable][] XML to customize
+the look of your launch screen. The existing template provides
+an example of adding an image to the middle of a white splash
+screen in commented code. You can uncomment it or use other
+[drawables][] to achieve the intended effect.
 
-Para mais detalhes, veja
-[Adicionando uma splash screen ao seu app Android][Adding a splash screen to your Android app].
+For more details, see
+[Adding a splash screen to your Android app][].
 
 #### iOS
 
-Para adicionar uma imagem ao centro da sua "splash screen",
-navegue até `.../ios/Runner`.
-Em `Assets.xcassets/LaunchImage.imageset`,
-coloque imagens chamadas `LaunchImage.png`,
+To add an image to the center of your "splash screen",
+navigate to `.../ios/Runner`.
+In `Assets.xcassets/LaunchImage.imageset`,
+drop in images named `LaunchImage.png`,
 `LaunchImage@2x.png`, `LaunchImage@3x.png`.
-Se você usar nomes de arquivo diferentes,
-atualize o arquivo `Contents.json` no mesmo diretório.
+If you use different filenames,
+update the `Contents.json` file in the same directory.
 
-Você também pode customizar totalmente seu storyboard de tela de lançamento
-no Xcode abrindo `.../ios/Runner.xcworkspace`.
-Navegue até `Runner/Runner` no Project Navigator e
-coloque imagens abrindo `Assets.xcassets` ou faça qualquer
-customização usando o Interface Builder em
+You can also fully customize your launch screen storyboard
+in Xcode by opening `.../ios/Runner.xcworkspace`.
+Navigate to `Runner/Runner` in the Project Navigator and
+drop in images by opening `Assets.xcassets` or do any
+customization using the Interface Builder in
 `LaunchScreen.storyboard`.
 
-![Adicionando ícones de lançamento no Xcode](/assets/images/docs/assets-and-images/ios-launchscreen-xcode.png){:width="100%"}
+![Adding launch icons in Xcode](/assets/images/docs/assets-and-images/ios-launchscreen-xcode.png){:width="100%"}
 
-Para mais detalhes, veja
-[Adicionando uma splash screen ao seu app iOS][Adding a splash screen to your iOS app].
+For more details, see
+[Adding a splash screen to your iOS app][].
 
 
 [add-to-app]: /add-to-app/ios
@@ -521,7 +501,7 @@ Para mais detalhes, veja
 [`FlutterView`]: {{site.api}}/javadoc/io/flutter/view/FlutterView.html
 [`FlutterViewController`]: {{site.api}}/ios-embedder/interface_flutter_view_controller.html
 [Human Interface Guidelines]: {{site.apple-dev}}/design/human-interface-guidelines/app-icons
-[`ios_platform_images`]: {{site.pub}}/packages/ios_platform_images
+[platform channels]: /platform-integration/platform-channels
 [layer list drawable]: {{site.android-dev}}/guide/topics/resources/drawable-resource#LayerList
 [`mainBundle`]: {{site.apple-dev}}/documentation/foundation/nsbundle/1410786-mainbundle
 [`openFd`]: {{site.android-dev}}/reference/android/content/res/AssetManager#openFd(java.lang.String)
@@ -536,5 +516,4 @@ Para mais detalhes, veja
 [MaterialApp]: {{site.api}}/flutter/material/MaterialApp-class.html
 [CupertinoApp]: {{site.api}}/flutter/cupertino/CupertinoApp-class.html
 [Transforming assets at build time]: /ui/assets/asset-transformation
-[Conditionally bundling assets based on flavor]: /deployment/flavors#conditionally-bundling-assets-based-on-flavor
 [flavors feature]: /deployment/flavors

@@ -1,11 +1,11 @@
 name: grid_and_list
 description: >-
-  Sample app from "Building Layouts", https://docs.flutterbrasil.dev/ui/layout.
+  Sample app from "Building Layouts", https://docs.flutter.dev/ui/layout.
 version: 1.0.0
 
 resolution: workspace
 environment:
-  sdk: ^3.6.0
+  sdk: ^3.9.0
 
 dependencies:
   flutter:

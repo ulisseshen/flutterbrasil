@@ -4,10 +4,11 @@ description: >-
   Adds a new API, SurfaceProducer, to the Android embedding API, which
   opaquely handles the creation and management of a `Surface` for plugins.
   For Impeller, use of this API is recommended.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 The Android embedder for Flutter introduces a new API, [`SurfaceProducer`][],
 which allows plugins to render to a `Surface` without needing to manage what
@@ -30,7 +31,7 @@ that Flutter will attempt to use the [Vulkan][] renderer. The Android embedding
 API needed to be updated to support a more generic `Surface` creation API that
 doesn't rely on OpenGLES.
 
-## Guia de migração
+## Migration guide
 
 If you are using the older [`createSurfaceTexture`][] API, you should migrate to
 the new [`createSurfaceProducer`][] API. The new API is more flexible and allows
@@ -115,34 +116,34 @@ For more information on this calculation, check out the
 [Android orientation calculation documentation][]. For a full example of making
 this fix, check out [this `camera_android_camerax` PR][].
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 3.22
+Landed in version: 3.22
 
 :::note
 This feature landed in the _previous_ version of the SDK but was non-functional;
 plugins that migrate to this API should set `3.24` as a minimum version constraint.
 :::
 
-Na versão estável: 3.24
+In stable release: 3.24
 
 In the upcoming stable release, 3.27, `onSurfaceCreated` is deprecated, and
 `onSurfaceAvailable` and `handlesCropAndRotation` are added.
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 - [`SurfaceProducer`][]
 - [`createSurfaceProducer`][]
 - [`createSurfaceTexture`][]
 
-Issues relevantes:
+Relevant issues:
 
 - [Issue 139702][]
 - [Issue 145930][]
 
-PRs relevantes:
+Relevant PRs:
 
 - [PR 51061][], where we test the new API in the engine tests.
 - [PR 6456][], where we migrate the `video_player` plugin to use the new API.

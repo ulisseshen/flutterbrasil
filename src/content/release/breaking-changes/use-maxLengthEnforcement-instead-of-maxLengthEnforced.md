@@ -1,16 +1,17 @@
 ---
 title: Use maxLengthEnforcement instead of maxLengthEnforced
 description: Introducing the MaxLengthEnforcement enum.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 To control the behavior of `maxLength` in the
 `LengthLimitingTextInputFormatter`, use `maxLengthEnforcement`
 instead of the now-deprecated `maxLengthEnforced`.
 
-## Contexto {:#context}
+## Context
 
 The `maxLengthEnforced` parameter was used to decide
 whether text fields should truncate the input value
@@ -55,7 +56,7 @@ The default value of the `maxLengthEnforcement`
 parameter is inferred from the `TargetPlatform`
 of the application, to conform to the platform's conventions:
 
-## Descrição da mudança
+## Description of change
 
 * Added a `maxLengthEnforcement` parameter using the
   new enum type `MaxLengthEnforcement`,
@@ -64,7 +65,7 @@ of the application, to conform to the platform's conventions:
   `TextField`, `TextFormField`, `CupertinoTextField`, and
   `LengthLimitingTextInputFormatter` classes.
 
-## Guia de migração
+## Migration guide
 
 _Using the default behavior for the current platform is recommended,
 since this will be the behavior most familiar to the user._
@@ -106,7 +107,7 @@ option when the text field expects arbitrary user input
 which may contain CJK characters.
 See the [Context](#context) section for more information._
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 TextField(maxLength: 6)
@@ -121,7 +122,7 @@ TextField(
 )
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 TextField(
@@ -137,7 +138,7 @@ but _not_ truncate when the limit is exceeded,
 use `MaxLengthEnforcement.none` instead of
 `maxLengthEnforced: false`.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 TextField(
@@ -146,7 +147,7 @@ TextField(
 )
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 TextField(
@@ -158,7 +159,7 @@ TextField(
 For `CupertinoTextField`, which isn't able to show an error message,
 just don't set the `maxLength` value.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 CupertinoTextField(
@@ -167,7 +168,7 @@ CupertinoTextField(
 )
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 CupertinoTextField()
@@ -217,29 +218,29 @@ freeform fields should rarely use the `enforced` value
 and should instead prefer the
 `truncateAfterCompositionEnds` value if at all possible.
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: v1.26.0-1.0.pre<br>
-Na versão estável: 2.0.0
+Landed in version: v1.26.0-1.0.pre<br>
+In stable release: 2.0.0
 
-## Referências
+## References
 
 Design doc:
 
 * [`MaxLengthEnforcement` design doc][]
 
-Documentação da API:
+API documentation:
 
 * [`MaxLengthEnforcement`][]
 * [`LengthLimitingTextInputFormatter`][]
 * [`maxLength`][]
 
-Issues relevantes:
+Relevant issues:
 
 * [Issue 63753][]
 * [Issue 67898][]
 
-PRs relevantes:
+Relevant PR:
 
 * [PR 63754][]: Fix TextField crashed with composing and maxLength set
 * [PR 68086][]: Introduce `MaxLengthEnforcement`
@@ -250,5 +251,5 @@ PRs relevantes:
 [`maxLength`]: {{site.api}}/flutter/services/LengthLimitingTextInputFormatter/maxLength.html
 [Issue 63753]: {{site.repo.flutter}}/issues/63753
 [Issue 67898]: {{site.repo.flutter}}/issues/67898
-[PR 63754]: {{site.github}}//flutter/flutter/pull/63754
+[PR 63754]: {{site.github}}/flutter/flutter/pull/63754
 [PR 68086]: {{site.repo.flutter}}/pull/68086

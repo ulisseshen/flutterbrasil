@@ -4,10 +4,11 @@ description: >
   The raw key event subsystem has been superseded by the key event subsystem,
   and APIs that use RawKeyEvent and RawKeyboard are converted to KeyEvent and
   HardwareKeyboard.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 For some time now (years), Flutter has had two key event systems implemented.
 The new system reached parity with the old platform-specific raw key event
@@ -16,7 +17,7 @@ APIs that use the old system are being modified, and for a select few of them we
 have decided to make breaking changes in the API in order to preserve the
 quality of the API.
 
-## Contexto
+## Context
 
 In the original key event subsystem handling each platform's quirks in the
 framework and in client apps caused overly complex code, and the old system
@@ -28,7 +29,7 @@ eventually deprecating the raw system. That time is quickly arriving, and to
 prepare for it, we have made some minimal breaking changes required to preserve
 the quality of the API.
 
-## Descrição da mudança
+## Description of change
 
 Summary of APIs that have been affected:
 
@@ -51,7 +52,7 @@ already do this.
 The change also modifies the `ShortcutManager.handleKeypress` method to take a
 `KeyEvent` instead of `RawKeyEvent`.
 
-## Guia de migração
+## Migration guide
 
 APIs provided by the Flutter framework are already migrated. Migration is
 needed only if you're using any of the methods listed in the previous section.
@@ -144,25 +145,25 @@ class _MyShortcutManager extends ShortcutManager {
 }
 ```
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 3.17.0-5.0.pre<br>
-Na versão estável: 3.19.0
+Landed in version: 3.17.0-5.0.pre<br>
+In stable release: 3.19.0
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`KeyEvent`][]
 * [`HardwareKeyboard`][]
 * [`ShortcutActivator`][]
 * [`ShortcutManager`][]
 
-Issues relevantes:
+Relevant issues:
 
 * [`RawKeyEvent` and `RawKeyboard`, et al should be deprecated and removed (Issue 136419)][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [Prepare ShortcutActivator and ShortcutManager to migrate to KeyEvent from RawKeyEvent][]
 

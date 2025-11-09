@@ -1,76 +1,62 @@
 ---
-ia-translate: true
-title: Formatação de código
-description: >
-    O formatador de código do Flutter formata seu código
-    seguindo as diretrizes de estilo recomendadas.
+title: Code formatting
+description: >-
+  Flutter's code formatter formats your code
+  following recommended style guidelines.
 ---
 
 
-Embora seu código possa seguir qualquer estilo preferido&mdash;em nossa
-experiência&mdash;equipes de desenvolvedores podem achar mais produtivo:
+While your code might follow any preferred style&mdash;in our
+experience&mdash;teams of developers might find it more productive to:
 
-* Ter um único estilo compartilhado, e
-* Aplicar esse estilo através de formatação automática.
+* Have a single, shared style, and
+* Enforce this style through automatic formatting.
 
-A alternativa é frequentemente debates cansativos sobre formatação durante revisões de código,
-onde o tempo pode ser melhor gasto no comportamento do código em vez do estilo do código.
+The alternative is often tiring formatting debates during code reviews,
+where time might be better spent on code behavior rather than code style.
 
-## Formatando código automaticamente no VS Code
+## Automatically formatting code in VS Code
 
-Instale a extensão `Flutter` (consulte
-[Configuração do editor](/get-started/editor))
-para obter formatação automática de código no VS Code.
+Install the `Flutter` extension (see [VS Code setup][])
+to get automatic formatting of code in VS Code.
 
-Para formatar automaticamente o código na janela de código-fonte atual,
-clique com o botão direito na janela de código e selecione `Format Document`.
-Você pode adicionar um atalho de teclado para isso nas **Preferences** do VS Code.
+To automatically format the code in the current source code window,
+right-click in the code window and select `Format Document`.
+You can add a keyboard shortcut to this VS Code **Preferences**.
 
-Para formatar automaticamente o código sempre que você salvar um arquivo, defina a
-configuração `editor.formatOnSave` como `true`.
+To automatically format code whenever you save a file, set the
+`editor.formatOnSave` setting to `true`.
 
-## Formatando código automaticamente no Android Studio e IntelliJ
+[VS Code setup]: /tools/vs-code#setup
 
-Instale o plugin `Dart` (consulte
-[Configuração do editor](/get-started/editor))
-para obter formatação automática de código no Android Studio e IntelliJ.
-Para formatar seu código na janela de código-fonte atual:
+## Automatically formatting code in Android Studio and IntelliJ
 
-* No macOS,
-  pressione <kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>L</kbd>.
-* No Windows e Linux,
-  pressione <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>L</kbd>.
+Install the `Dart` plugin (see [Android Studio and IntelliJ setup][])
+to get automatic formatting of code in Android Studio and IntelliJ.
+To format your code in the current source code window:
 
-Android Studio e IntelliJ também fornecem uma caixa de seleção chamada
-**Format code on save** na página Flutter em **Preferences**
-no macOS ou **Settings** no Windows e Linux.
-Esta opção corrige a formatação no arquivo atual quando você o salva.
+* On macOS,
+  press <kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>L</kbd>.
+* On Windows and Linux,
+  press <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>L</kbd>.
 
-## Formatando código automaticamente com o comando `dart`
+Android Studio and IntelliJ also provide a checkbox named
+**Format code on save** on the Flutter page in **Preferences**
+on macOS or **Settings** on Windows and Linux.
+This option corrects formatting in the current file when you save it.
 
-Para corrigir a formatação do código na interface de linha de comando (CLI),
-execute o comando `dart format`:
+[Android Studio and IntelliJ setup]: /tools/android-studio#setup
+
+## Automatically formatting code with the `dart` command
+
+To correct code formatting in the command line interface (CLI),
+run the `dart format` command:
 
 ```console
 $ dart format path1 path2 [...]
 ```
 
-## Usando vírgulas finais
+To learn more about the Dart formatter,
+check out the dart.dev docs on [`dart format`][].
 
-Código Flutter frequentemente envolve a construção de estruturas de dados em forma de árvore bastante profundas,
-por exemplo, em um método `build`. Para obter uma boa formatação automática,
-recomendamos que você adote as *vírgulas finais* opcionais.
-A diretriz para adicionar uma vírgula final é simples: Sempre
-adicione uma vírgula final no final de uma lista de parâmetros em
-funções, métodos e construtores onde você se importa em
-manter a formatação que você criou.
-Isso ajuda o formatador automático a inserir uma
-quantidade apropriada de quebras de linha para código estilo Flutter.
-
-Aqui está um exemplo de código formatado automaticamente *com* vírgulas finais:
-
-![Automatically formatted code with trailing commas](/assets/images/docs/tools/android-studio/trailing-comma-with.png){:width="100%"}
-
-E o mesmo código formatado automaticamente *sem* vírgulas finais:
-
-![Automatically formatted code without trailing commas](/assets/images/docs/tools/android-studio/trailing-comma-without.png){:width="100%"}
+[`dart format`]: {{site.dart-site}}/tools/dart-format

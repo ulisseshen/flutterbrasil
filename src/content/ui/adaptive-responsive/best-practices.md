@@ -1,242 +1,237 @@
 ---
-ia-translate: true
-title: Melhores práticas para design adaptativo
+title: Best practices for adaptive design
 description: >-
-  Resumo de algumas das melhores práticas para design adaptativo.
-short-title: Melhores práticas
+  Summary of some of the best practices for adaptive design.
+shortTitle: Best practices
 ---
 
-As melhores práticas recomendadas para design adaptativo incluem:
+Recommended best practices for adaptive design include:
 
-## Considerações de design
+## Design considerations
 
-### Divida seus widgets
+### Break down your widgets
 
-Ao projetar seu app, tente dividir widgets grandes e
-complexos em widgets menores e mais simples.
+While designing your app, try to break down large,
+complex widgets into smaller, simpler ones.
 
-Refatorar widgets pode reduzir a complexidade de
-adotar uma UI adaptativa ao compartilhar partes centrais do código.
-Existem outros benefícios também:
+Refactoring widgets can reduce the complexity of
+adopting an adaptive UI by sharing core pieces of code.
+There are other benefits as well:
 
-* Do lado do desempenho, ter muitos widgets `const` pequenos
-  melhora os tempos de reconstrução em comparação com ter widgets grandes e
-  complexos.
-* O Flutter pode reutilizar instâncias de widgets `const`,
-  enquanto um widget complexo maior precisa ser configurado
-  para cada reconstrução.
-* Do ponto de vista da saúde do código, organizar sua UI
-  em pedaços menores ajuda a manter a complexidade
-  de cada `Widget` baixa. Um `Widget` menos complexo é mais legível,
-  mais fácil de refatorar e menos propenso a ter comportamento surpreendente.
+* On the performance side, having lots of small `const`
+  widgets improves rebuild times over having large,
+  complex widgets.
+* Flutter can reuse `const` widget instances,
+  while a larger complex widget has to be set up
+  for every rebuild.
+* From a code health perspective, organizing your UI
+  into smaller bite sized pieces helps keep the complexity
+  of each `Widget` down. A less-complex `Widget` is more readable,
+  easier to refactor, and less likely to have surprising behavior.
 
-Para saber mais, confira os 3 passos de
-design adaptativo em [Abordagem geral][General approach].
+To learn more, check out the 3 steps of
+adaptive design in [General approach][].
 
 [General approach]: /ui/adaptive-responsive/general
 
-### Projete para os pontos fortes de cada fator de forma
+### Design to the strengths of each form factor
 
-Além do tamanho da tela, você também deve dedicar tempo
-considerando os pontos fortes e fracos únicos
-de diferentes fatores de forma. Nem sempre é ideal
-que seu app multiplataforma ofereça funcionalidade idêntica
-em todos os lugares. Considere se faz
-sentido focar em capacidades específicas,
-ou até mesmo remover certos recursos, em algumas categorias de dispositivos.
+Beyond screen size, you should also spend time
+considering the unique strengths and weaknesses
+of different form factors. It isn't always ideal
+for your multiplatform app to offer identical
+functionality everywhere. Consider whether it makes
+sense to focus on specific capabilities,
+or even remove certain features, on some device categories.
 
-Por exemplo, dispositivos móveis são portáteis e têm câmeras,
-mas não são bem adequados para trabalho criativo detalhado.
-Com isso em mente, você pode focar mais em capturar conteúdo
-e marcá-lo com dados de localização para uma UI móvel,
-mas focar em organizar ou manipular esse conteúdo
-para uma UI de tablet ou desktop.
+For example, mobile devices are portable and have cameras,
+but they aren't well suited for detailed creative work.
+With this in mind, you might focus more on capturing content
+and tagging it with location data for a mobile UI,
+but focus on organizing or manipulating that content
+for a tablet or desktop UI.
 
-Outro exemplo é aproveitar a barreira extremamente baixa
-da web para compartilhamento. Se você está implantando um app web,
-decida quais [deep links][] suportar,
-e projete suas rotas de navegação com isso em mente.
+Another example is leveraging the web's extremely low barrier
+for sharing. If you're deploying a web app,
+decide which [deep links][] to support,
+and design your navigation routes with those in mind.
 
-A principal conclusão aqui é pensar sobre o que cada
-plataforma faz de melhor e ver se há capacidades únicas
-que você pode aproveitar.
+The key takeaway here is to think about what each
+platform does best and see if there are unique capabilities
+you can leverage.
 
 [deep links]: /ui/navigation/deep-linking
 
-### Resolva o toque primeiro
+### Solve touch first
 
-Construir uma ótima UI de toque pode ser mais difícil
-do que uma UI de desktop tradicional devido, em parte,
-à falta de aceleradores de entrada como clique direito,
-roda de rolagem ou atalhos de teclado.
+Building a great touch UI can often be more difficult
+than a traditional desktop UI due, in part,
+to the lack of input accelerators like right-click,
+scroll wheel, or keyboard shortcuts.
 
-Uma maneira de abordar esse desafio é focar inicialmente
-em uma ótima UI orientada ao toque. Você ainda pode fazer a maior parte de
-seus testes usando o destino desktop pela velocidade de iteração.
-Mas lembre-se de alternar frequentemente para um dispositivo móvel para
-verificar se tudo está correto.
+One way to approach this challenge is to focus initially
+on a great touch-oriented UI. You can still do most of
+your testing using the desktop target for its iteration speed.
+But, remember to switch frequently to a mobile device to
+verify that everything feels right.
 
-Depois de ter a interface de toque polida, você pode ajustar
-a densidade visual para usuários de mouse e, em seguida, adicionar todas
-as entradas adicionais. Aborde essas outras entradas como
-aceleradoras—alternativas que tornam uma tarefa mais rápida.
-O importante a considerar é o que um usuário espera
-ao usar um dispositivo de entrada específico,
-e trabalhe para refletir isso em seu app.
+After you have the touch interface polished, you can tweak
+the visual density for mouse users, and then layer on all
+the additional inputs. Approach these other inputs as
+accelerator—alternatives that make a task faster.
+The important thing to consider is what a user expects
+when using a particular input device,
+and work to reflect that in your app.
 
-## Detalhes de implementação
+## Implementation details
 
-### Não bloqueie a orientação do seu app.
+### Don't lock the orientation of your app.
 
-Um app adaptativo deve ter boa aparência em janelas de
-diferentes tamanhos e formatos. Embora bloquear um app
-no modo retrato em telefones possa ajudar a reduzir o escopo
-de um produto mínimo viável, pode aumentar o
-esforço necessário para tornar o app adaptativo no futuro.
+An adaptive app should look good on windows of
+different sizes and shapes. While locking an app
+to portrait mode on phones can help narrow the scope
+of a minimum viable product, it can increase the
+effort required to make the app adaptive in the future.
 
-Por exemplo, a suposição de que telefones renderizarão
-seu app apenas em modo retrato em tela cheia não é
-uma garantia. O suporte a apps com múltiplas janelas está se tornando comum,
-e dobráveis têm muitos casos de uso que funcionam melhor com
-vários apps rodando lado a lado.
+For example, the assumption that phones will only
+render your app in a full screen portrait mode is
+not a guarantee. Multi window app support is becoming common,
+and foldables have many use cases that work best with
+multiple apps running side by side.
 
-Se você absolutamente precisa bloquear seu app no modo retrato (mas não faça isso),
-use a API `Display` em vez de algo como `MediaQuery`
-para obter as dimensões físicas da tela.
+If you absolutely must lock your app in portrait mode (but don't),
+use the `Display` API instead of something like `MediaQuery`
+to get the physical dimensions of the screen.
 
-Para resumir:
+To summarize:
 
-  * Telas bloqueadas podem ser [um problema de acessibilidade][] para alguns usuários
-  * Os níveis de formato grande do Android exigem suporte a retrato e paisagem
-    no [nível mais baixo][lowest level].
-  * Dispositivos Android podem [sobrescrever uma tela bloqueada][override a locked screen]
-  * As diretrizes da Apple dizem [tente suportar ambas as orientações][aim to support both orientations]
+  * Locked screens can be [an accessibility issue][] for some users
+  * Android large format tiers require portrait and landscape
+    support at the [lowest level][].
+  * Android devices can [override a locked screen][]
+  * Apple guidelines say [aim to support both orientations][]
 
 [an accessibility issue]: https://www.w3.org/WAI/WCAG21/Understanding/orientation.html
-[um problema de acessibilidade]: https://www.w3.org/WAI/WCAG21/Understanding/orientation.html
 [aim to support both orientations]: https://www.w3.org/WAI/WCAG21/Understanding/orientation.html
 [lowest level]:  {{site.android-dev}}/docs/quality-guidelines/large-screen-app-quality#T3-8
 [override a locked screen]: {{site.android-dev}}/guide/topics/large-screens/large-screen-compatibility-mode#per-app_overrides
 
-### Evite layouts baseados em orientação
+### Avoid device orientation-based layouts
 
-Evite usar o campo de orientação do `MediaQuery`
-ou `OrientationBuilder` para alternar entre
-diferentes layouts de app. Isso é semelhante à
-orientação de não verificar tipos de dispositivo para determinar
-o tamanho da tela. A orientação do dispositivo também não
-necessariamente informa quanto espaço a janela do seu app tem.
+Avoid using `MediaQuery`'s orientation field
+or `OrientationBuilder` near the top of your widget tree
+to switch between different app layouts. This is
+similar to the guidance of not checking device types
+to determine screen size. The device's orientation also
+doesn't necessarily inform you of how much space your
+app window has.
 
-Em vez disso, use o `sizeOf` do `MediaQuery` ou `LayoutBuilder`,
-como discutido na página [Abordagem geral][General approach].
-Em seguida, use pontos de interrupção adaptativos como os que
-o [Material][] recomenda.
+Instead, use `MediaQuery`'s `sizeOf` or `LayoutBuilder`,
+as discussed in the [General approach][] page.
+Then use adaptive breakpoints like the ones that
+[Material][] recommends.
 
 [General approach]: /ui/adaptive-responsive/general#
 [Material]: https://m3.material.io/foundations/layout/applying-layout/window-size-classes
 
-### Não consuma todo o espaço horizontal
+### Don't gobble up all of the horizontal space
 
-Apps que usam a largura total da janela para
-exibir caixas ou campos de texto não funcionam bem
-quando esses apps são executados em telas grandes.
+Apps that use the full width of the window to
+display boxes or text fields don't play well
+when these apps run on large screens.
 
-Para saber como evitar isso,
-confira [Layout com GridView][Layout with GridView].
+To learn how to avoid this,
+check out [Layout with GridView][].
 
 [Layout with GridView]: /ui/adaptive-responsive/large-screens#layout-with-gridview
 
-### Evite verificar tipos de hardware
+### Avoid checking for hardware types
 
-Evite escrever código que verifica se o dispositivo em que você está
-executando é um "telefone" ou um "tablet", ou qualquer outro tipo
-de dispositivo ao tomar decisões de layout.
+Avoid writing code that checks whether the device you're
+running on is a "phone" or a "tablet", or any other type
+of device when making layout decisions.
 
-O espaço que seu app realmente recebe para renderizar
-nem sempre está vinculado ao tamanho total da tela do dispositivo.
-O Flutter pode ser executado em muitas plataformas diferentes,
-e seu app pode estar rodando em uma janela redimensionável no ChromeOS,
-lado a lado com outro app em tablets em um modo de múltiplas janelas,
-ou até mesmo em picture-in-picture em telefones.
-Portanto, tipo de dispositivo e tamanho da janela do app não estão
-realmente fortemente conectados.
+What space your app is actually given to render in
+isn't always tied to the full screen size of the device.
+Flutter can run on many different platforms,
+and your app might be running in a resizeable window on ChromeOS,
+side by side with another app on tablets in a multi-window mode,
+or even in a picture-in-picture on phones.
+Therefore, device type and app window size aren't
+really strongly connected.
 
-Em vez disso, use `MediaQuery` para obter o tamanho da janela
-em que seu app está sendo executado atualmente.
+Instead, use `MediaQuery` to get the size of the window
+your app is currently running in.
 
-Isso não é útil apenas para código de UI.
-Para saber como abstrair
-capacidades de dispositivos pode ajudar seu código de lógica de negócios,
-confira a palestra do Google I/O 2022,
+This isn't only helpful for UI code.
+To learn how abstracting out device
+capabilities can help your business logic code,
+check out the 2022 Google I/O talk,
 [Flutter lessons for federated plugin development][].
 
 [Flutter lessons for federated plugin development]: {{site.youtube-site}}/watch?v=GAnSNplNpCA
 
-### Suporte uma variedade de dispositivos de entrada
+### Support a variety of input devices
 
-Apps devem suportar mouses básicos, trackpads
-e atalhos de teclado. Os fluxos de usuário mais comuns
-devem suportar navegação por teclado
-para garantir acessibilidade. Em particular,
-seu app deve seguir as melhores práticas acessíveis
-para teclados em dispositivos grandes.
+Apps should support basic mice, trackpads,
+and keyboard shortcuts. The most common user
+flows should support keyboard navigation
+to ensure accessibility. In particular,
+your app follow accessible best practices
+for keyboards on large devices.
 
-A biblioteca Material fornece widgets com
-excelente comportamento padrão para interação de toque, mouse
-e teclado.
+The Material library provides widgets with
+excellent default behavior for touch, mouse,
+and keyboard interaction.
 
-Para saber como adicionar esse suporte a widgets customizados,
-confira [Entrada do usuário e acessibilidade][User input & accessibility].
+To learn how to add this support to custom widgets,
+check out [User input & accessibility][].
 
 [User input & accessibility]: /ui/adaptive-responsive/input
 
-### Restaure o estado da List
+### Restore List state
 
-{% comment %}
-<b>PENDING: Reid, I think you suggested renaming/removing this item? I can't, for the life of me, find that comment in the PR</b>
-{% endcomment %}
+To maintain the scroll position in a list
+that doesn't change its layout when the
+device's orientation changes,
+use the [`PageStorageKey`][] class.
+[`PageStorageKey`][] persists the
+widget state in storage after the widget is
+destroyed and restores state when recreated.
 
-Para manter a posição de rolagem em uma lista
-que não muda seu layout quando a
-orientação do dispositivo muda,
-use a classe [`PageStorageKey`][]. A
-[`PageStorageKey`][] persiste o
-estado do widget no armazenamento após o widget ser
-destruído e restaura o estado quando recriado.
+You can see an example of this in the [Wonderous app][],
+where it stores the list's state in the
+`SingleChildScrollView` widget.
 
-Você pode ver um exemplo disso no [app Wonderous][Wonderous app],
-onde ele armazena o estado da lista no
-widget `SingleChildScrollView`.
-
-Se o widget `List` mudar seu layout
-quando a orientação do dispositivo mudar,
-você pode ter que fazer um pouco de matemática ([exemplo][example])
-para mudar a posição de rolagem na rotação da tela.
+If the `List` widget changes its layout
+when the device's orientation changes,
+you might have to do a bit of math ([example][])
+to change the scroll position on screen rotation.
 
 [example]: {{site.github}}/gskinnerTeam/flutter-wonderous-app/blob/34e49a08084fbbe69ed67be948ab00ef23819313/lib/ui/screens/collection/widgets/_collection_list.dart#L39
 [`PageStorageKey`]: {{site.api}}/flutter/widgets/PageStorageKey-class.html
 [Wonderous app]: {{site.github}}/gskinnerTeam/flutter-wonderous-app/blob/8a29d6709668980340b1b59c3d3588f123edd4d8/lib/ui/screens/wonder_events/widgets/_events_list.dart#L64
 
-## Salve o estado do app
+## Save app state
 
-Apps devem reter ou restaurar o [estado do app][app state]
-conforme o dispositivo gira, muda o tamanho da janela,
-ou dobra e desdobra.
-Por padrão, um app deve manter o estado.
+Apps should retain or restore [app state][]
+as the device rotates, changes window size,
+or folds and unfolds.
+By default, an app should maintain state.
 
-Se seu app perder estado durante a configuração do dispositivo,
-verifique se os plugins e extensões nativas
-que seu app usa suportam o
-tipo de dispositivo, como uma tela grande.
-Algumas extensões nativas podem perder estado quando o
-dispositivo muda de posição.
+If your app loses state during device configuration,
+verify that the plugins and native extensions
+that your app uses support the
+device type, such as a large screen.
+Some native extensions might lose state when the
+device changes position.
 
-Para mais informações sobre um caso real
-em que isso ocorreu, confira
-[Problema: Dobrar/desdobrar causa perda de estado][state-loss]
-em [Desenvolvendo apps Flutter para telas grandes][article],
-um artigo gratuito no Medium.
+For more information on a real-world case
+where this occurred, check out
+[Problem: Folding/unfolding causes state loss][state-loss]
+in [Developing Flutter apps for Large screens][article],
+a free article on Medium.
 
 [app state]: {{site.android-dev}}/jetpack/compose/state#store-state
-[article]: {{site.flutter-medium}}/developing-flutter-apps-for-large-screens-53b7b0e17f10
-[state-loss]: {{site.flutter-medium}}/developing-flutter-apps-for-large-screens-53b7b0e17f10#:~:text=Problem%3A%20Folding/Unfolding%20causes%20state%2Dloss
+[article]: {{site.flutter-blog}}/developing-flutter-apps-for-large-screens-53b7b0e17f10
+[state-loss]: {{site.flutter-blog}}/developing-flutter-apps-for-large-screens-53b7b0e17f10#:~:text=Problem%3A%20Folding/Unfolding%20causes%20state%2Dloss

@@ -1,35 +1,37 @@
 ---
-ia-translate: true
-title: Mudança na flag de deep links
+title: Deep links flag change
 description: >-
-  Se você usar um pacote de plugin de deep linking de terceiros para apps mobile,
-  defina a flag de deep linking do Flutter como false.
+  If you use a third party deep linking plugin package for mobile apps,
+  set Flutter's deep linking flag to false.
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
 
-**Esta breaking change afeta apenas apps mobile que
-usam um pacote de plugin de deep linking de terceiros.**
+## Summary
 
-O valor padrão para a opção de deep linking do Flutter mudou de
-`false` para `true`, significando que deep linking agora é opt-in por padrão.
+**This breaking change only affects mobile apps that
+use a third party deep linking plugin package.**
 
-## Guia de migração
+The default value for Flutter's deep linking option has changed from
+`false` to `true`, meaning that deep linking is now opt-in by default.
 
-Se você está usando a configuração padrão de deep linking do Flutter,
-esta não é uma breaking change para você.
+## Migration guide
 
-No entanto, se você está usando um plugin de terceiros para deep links,
-como os seguintes, esta atualização introduz uma breaking change:
+If you're using Flutter's default deep linking setup,
+this isn't a breaking change for you.
+
+However, if you're using a third-party plugin for deep links,
+such as the following, this update introduces a breaking change:
 
 - [Firebase dynamic links](https://firebase.google.com/docs/dynamic-links)
 - [`package:uni_link`]({{site.pub-pkg}}/uni_links)
 - [`package:app_links`]({{site.pub-pkg}}/app_links)
+- [`package:flutter_branch_sdk`]({{site.pub-pkg}}/flutter_branch_sdk)
 
-Neste caso, você deve resetar manualmente a
-opção de deep linking do Flutter para `false`.
+In this case, you must manually reset the
+Flutter deep linking option to `false`.
 
-Dentro do arquivo `AndroidManifest.xml` do seu app para Android:
+Within your app's `AndroidManifest.xml` file for Android:
 
 ```xml title="AndroidManifest.xml" highlightLines=4
 <manifest>
@@ -41,24 +43,24 @@ Dentro do arquivo `AndroidManifest.xml` do seu app para Android:
 </manifest>
 ```
 
-Dentro do arquivo `info.plist` do seu app para iOS:
+Within your app's `info.plist` file for iOS:
 
 ```xml title="info.plist"
  <key>FlutterDeepLinkingEnabled</key>
  <false/>
 ```
 
-## Cronograma
+## Timeline
 
-Adicionado na versão: 3.25.0-0.1.pre<br>
-Versão stable: 3.27
+Landed in version: 3.25.0-0.1.pre<br>
+Stable release: 3.27
 
-## Referências
+## References
 
-Documento de design:
+Design document:
 
-- [flutterbrasil.dev/go/deep-link-flag-migration]({{site.main-url}}/go/deep-link-flag-migration)
+- [flutter.dev/go/deep-link-flag-migration]({{site.main-url}}/go/deep-link-flag-migration)
 
-PR relevante:
+Relevant PR:
 
 * [Set deep linking flag to true by default]({{site.github}}/flutter/engine/pull/52350)

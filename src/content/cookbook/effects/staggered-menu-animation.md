@@ -1,37 +1,33 @@
 ---
-title: Criar uma animação de menu escalonada
-description: Como implementar uma animação de menu escalonada.
-js:
-  - defer: true
-    url: /assets/js/inject_dartpad.js
-ia-translate: true
+title: Create a staggered menu animation
+description: How to implement a staggered menu animation.
 ---
 
 <?code-excerpt path-base="cookbook/effects/staggered_menu_animation"?>
 
-Uma única tela de app pode conter múltiplas animações.
-Reproduzir todas as animações ao mesmo tempo pode ser
-avassalador. Reproduzir as animações uma após a outra
-pode levar muito tempo. Uma opção melhor é escalonar as animações.
-Cada animação começa em um momento diferente,
-mas as animações se sobrepõem para criar uma duração mais curta.
-Nesta receita, você construirá um menu drawer com conteúdo
-animado que é escalonado e tem um botão que aparece
-na parte inferior.
+A single app screen might contain multiple animations.
+Playing all of the animations at the same time can be
+overwhelming. Playing the animations one after the other
+can take too long. A better option is to stagger the animations.
+Each animation begins at a different time,
+but the animations overlap to create a shorter duration.
+In this recipe, you build a drawer menu with animated
+content that is staggered and has a button that pops
+in at the bottom.
 
-A animação a seguir mostra o comportamento do app:
+The following animation shows the app's behavior:
 
-![Staggered Menu Animation Example](/assets/images/docs/cookbook/effects/StaggeredMenuAnimation.gif){:.site-mobile-screenshot}
+![Staggered Menu Animation Example](/assets/images/docs/cookbook/effects/StaggeredMenuAnimation.webp){:.site-mobile-screenshot}
 
-## Criar o menu sem animações
+## Create the menu without animations
 
-O menu drawer exibe uma lista de títulos,
-seguida por um botão Get started na
-parte inferior do menu.
+The drawer menu displays a list of titles,
+followed by a Get started button at
+the bottom of the menu.
 
-Defina um widget stateful chamado `Menu`
-que exibe a lista e o botão
-em localizações estáticas.
+Define a stateful widget called `Menu`
+that displays the list and button
+in static locations.
 
 <?code-excerpt "lib/step1.dart (step1)"?>
 ```dart
@@ -57,10 +53,7 @@ class _MenuState extends State<Menu> {
       color: Colors.white,
       child: Stack(
         fit: StackFit.expand,
-        children: [
-          _buildFlutterLogo(),
-          _buildContent(),
-        ],
+        children: [_buildFlutterLogo(), _buildContent()],
       ),
     );
   }
@@ -91,10 +84,7 @@ class _MenuState extends State<Menu> {
           child: Text(
             _menuTitles[i],
             textAlign: TextAlign.left,
-            style: const TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.w500,
-            ),
+            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
           ),
         ),
       );
@@ -116,10 +106,7 @@ class _MenuState extends State<Menu> {
           onPressed: () {},
           child: const Text(
             'Get Started',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 22,
-            ),
+            style: TextStyle(color: Colors.white, fontSize: 22),
           ),
         ),
       ),
@@ -128,14 +115,14 @@ class _MenuState extends State<Menu> {
 }
 ```
 
-## Preparar para animações
+## Prepare for animations
 
-O controle do tempo da animação requer um
+Control of the animation timing requires an
 `AnimationController`.
 
-Adicione o `SingleTickerProviderStateMixin`
-à classe `MenuState`. Então, declare e
-instancie um `AnimationController`.
+Add the `SingleTickerProviderStateMixin`
+to the `MenuState` class. Then, declare and
+instantiate an `AnimationController`.
 
 <?code-excerpt "lib/step2.dart (animation-controller)" plaster="none"?>
 ```dart
@@ -146,9 +133,7 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
 
-    _staggeredController = AnimationController(
-      vsync: this,
-    );
+    _staggeredController = AnimationController(vsync: this);
   }
 
   @override
@@ -159,10 +144,10 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
 }
 ```
 
-A duração do atraso antes de cada animação é
-de sua escolha. Defina os atrasos de animação,
-durações de animação individuais e a duração
-total da animação.
+The length of the delay before every animation is
+up to you. Define the animation delays,
+individual animation durations, and the total
+animation duration.
 
 <?code-excerpt "lib/animation_delays.dart (delays)" plaster="none"?>
 ```dart
@@ -172,42 +157,43 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
   static const _staggerTime = Duration(milliseconds: 50);
   static const _buttonDelayTime = Duration(milliseconds: 150);
   static const _buttonTime = Duration(milliseconds: 500);
-  final _animationDuration = _initialDelayTime +
+  final _animationDuration =
+      _initialDelayTime +
       (_staggerTime * _menuTitles.length) +
       _buttonDelayTime +
       _buttonTime;
 }
 ```
 
-Neste caso, todas as animações são atrasadas em 50 ms.
-Depois disso, os itens da lista começam a aparecer.
-O aparecimento de cada item da lista é atrasado em 50 ms após o
-item anterior começar a deslizar.
-Cada item da lista leva 250 ms para deslizar da direita para a esquerda.
-Depois que o último item da lista começa a deslizar,
-o botão na parte inferior espera mais 150 ms para aparecer.
-A animação do botão leva 500 ms.
+In this case, all the animations are delayed by 50 ms.
+After that, list items begin to appear.
+Each list item's appearance is delayed by 50 ms after the
+previous list item begins to slide in.
+Each list item takes 250 ms to slide from right to left.
+After the last list item begins to slide in,
+the button at the bottom waits another 150 ms to pop in.
+The button animation takes 500 ms.
 
-Com cada atraso e duração de animação definidos,
-a duração total é calculada para que possa ser
-usada para calcular os tempos de animação individuais.
+With each delay and animation duration defined,
+the total duration is calculated so that it can be
+used to calculate the individual animation times.
 
-Os tempos de animação desejados são mostrados no diagrama a seguir:
+The desired animation times are shown in the following diagram:
 
 ![Animation Timing Diagram](/assets/images/docs/cookbook/effects/TimingDiagram.png){:.site-mobile-screenshot}
 
-Para animar um valor durante uma subseção de uma animação maior,
-o Flutter fornece a classe `Interval`.
-Um `Interval` recebe uma porcentagem de tempo inicial e uma
-porcentagem de tempo final. Esse `Interval` pode então ser usado para
-animar um valor entre esses tempos inicial e final,
-em vez de usar os tempos inicial e final de toda a animação.
-Por exemplo, dada uma animação que leva 1 segundo,
-um intervalo de 0.2 a 0.5 começaria em 200 ms
-(20%) e terminaria em 500 ms (50%).
+To animate a value during a subsection of a larger animation,
+Flutter provides the `Interval` class.
+An `Interval` takes a start time percentage and an end
+time percentage. That `Interval` can then be used to
+animate a value between those start and end times,
+instead of using the entire animation's start and
+end times. For example, given an animation that takes 1 second,
+an interval from 0.2 to 0.5 would start at 200 ms
+(20%) and end at 500 ms (50%).
 
-Declare e calcule o `Interval` de cada item da lista e o
-`Interval` do botão inferior.
+Declare and calculate each list item's `Interval` and the
+bottom button `Interval`.
 
 <?code-excerpt "lib/step3.dart (step3)" plaster="none"?>
 ```dart
@@ -240,7 +226,7 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
     }
 
     final buttonStartTime =
-        Duration(milliseconds: (_menuTitles.length * 50)) + _buttonDelayTime;
+        Duration(milliseconds: _menuTitles.length * 50) + _buttonDelayTime;
     final buttonEndTime = buttonStartTime + _buttonTime;
     _buttonInterval = Interval(
       buttonStartTime.inMilliseconds / _animationDuration.inMilliseconds,
@@ -250,11 +236,11 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
 }
 ```
 
-## Animar os itens da lista e o botão
+## Animate the list items and button
 
-A animação escalonada é reproduzida assim que o menu se torna visível.
+The staggered animation plays as soon as the menu becomes visible.
 
-Inicie a animação em `initState()`.
+Start the animation in `initState()`.
 
 <?code-excerpt "lib/step4.dart (init-state)"?>
 ```dart
@@ -271,12 +257,12 @@ void initState() {
 }
 ```
 
-Cada item da lista desliza da direita para a esquerda e
-aparece gradualmente ao mesmo tempo.
+Each list item slides from right to left and
+fades in at the same time.
 
-Use o `Interval` do item da lista e uma curva `easeOut`
-para animar os valores de opacidade e translação
-para cada item da lista.
+Use the list item's `Interval` and an `easeOut`
+curve to animate the opacity and translation
+values for each list item.
 
 <?code-excerpt "lib/step4.dart (build-list-items)"?>
 ```dart
@@ -306,10 +292,7 @@ List<Widget> _buildListItems() {
           child: Text(
             _menuTitles[i],
             textAlign: TextAlign.left,
-            style: const TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.w500,
-            ),
+            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
           ),
         ),
       ),
@@ -319,9 +302,9 @@ List<Widget> _buildListItems() {
 }
 ```
 
-Use a mesma abordagem para animar a opacidade e
-escala do botão inferior. Desta vez, use uma
-curva `elasticOut` para dar ao botão um efeito saltitante.
+Use the same approach to animate the opacity and
+scale of the bottom button. This time, use an
+`elasticOut` curve to give the button a springy effect.
 
 <?code-excerpt "lib/step4.dart (build-get-started)"?>
 ```dart
@@ -334,16 +317,14 @@ Widget _buildGetStartedButton() {
         animation: _staggeredController,
         builder: (context, child) {
           final animationPercent = Curves.elasticOut.transform(
-              _buttonInterval.transform(_staggeredController.value));
+            _buttonInterval.transform(_staggeredController.value),
+          );
           final opacity = animationPercent.clamp(0.0, 1.0);
           final scale = (animationPercent * 0.5) + 0.5;
 
           return Opacity(
             opacity: opacity,
-            child: Transform.scale(
-              scale: scale,
-              child: child,
-            ),
+            child: Transform.scale(scale: scale, child: child),
           );
         },
         child: ElevatedButton(
@@ -355,10 +336,7 @@ Widget _buildGetStartedButton() {
           onPressed: () {},
           child: const Text(
             'Get Started',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 22,
-            ),
+            style: TextStyle(color: Colors.white, fontSize: 22),
           ),
         ),
       ),
@@ -367,12 +345,12 @@ Widget _buildGetStartedButton() {
 }
 ```
 
-Parabéns!
-Agora você tem um menu animado onde o aparecimento de cada
-item da lista é escalonado, seguido por um botão inferior que
-aparece no lugar.
+Congratulations!
+You have an animated menu where the appearance of each
+list item is staggered, followed by a bottom button that
+pops into place.
 
-## Exemplo interativo
+## Interactive example
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter staggered menu animation hands-on example in DartPad" run="true"
@@ -388,9 +366,7 @@ void main() {
 }
 
 class ExampleStaggeredAnimations extends StatefulWidget {
-  const ExampleStaggeredAnimations({
-    super.key,
-  });
+  const ExampleStaggeredAnimations({super.key});
 
   @override
   State<ExampleStaggeredAnimations> createState() =>
@@ -442,23 +418,13 @@ class _ExampleStaggeredAnimationsState extends State<ExampleStaggeredAnimations>
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: _buildAppBar(),
-      body: Stack(
-        children: [
-          _buildContent(),
-          _buildDrawer(),
-        ],
-      ),
+      body: Stack(children: [_buildContent(), _buildDrawer()]),
     );
   }
 
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
-      title: const Text(
-        'Flutter Menu',
-        style: TextStyle(
-          color: Colors.black,
-        ),
-      ),
+      title: const Text('Flutter Menu', style: TextStyle(color: Colors.black)),
       backgroundColor: Colors.transparent,
       elevation: 0.0,
       automaticallyImplyLeading: false,
@@ -469,14 +435,8 @@ class _ExampleStaggeredAnimationsState extends State<ExampleStaggeredAnimations>
             return IconButton(
               onPressed: _toggleDrawer,
               icon: _isDrawerOpen() || _isDrawerOpening()
-                  ? const Icon(
-                      Icons.clear,
-                      color: Colors.black,
-                    )
-                  : const Icon(
-                      Icons.menu,
-                      color: Colors.black,
-                    ),
+                  ? const Icon(Icons.clear, color: Colors.black)
+                  : const Icon(Icons.menu, color: Colors.black),
             );
           },
         ),
@@ -523,7 +483,8 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
   static const _staggerTime = Duration(milliseconds: 50);
   static const _buttonDelayTime = Duration(milliseconds: 150);
   static const _buttonTime = Duration(milliseconds: 500);
-  final _animationDuration = _initialDelayTime +
+  final _animationDuration =
+      _initialDelayTime +
       (_staggerTime * _menuTitles.length) +
       _buttonDelayTime +
       _buttonTime;
@@ -557,7 +518,7 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
     }
 
     final buttonStartTime =
-        Duration(milliseconds: (_menuTitles.length * 50)) + _buttonDelayTime;
+        Duration(milliseconds: _menuTitles.length * 50) + _buttonDelayTime;
     final buttonEndTime = buttonStartTime + _buttonTime;
     _buttonInterval = Interval(
       buttonStartTime.inMilliseconds / _animationDuration.inMilliseconds,
@@ -577,10 +538,7 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
       color: Colors.white,
       child: Stack(
         fit: StackFit.expand,
-        children: [
-          _buildFlutterLogo(),
-          _buildContent(),
-        ],
+        children: [_buildFlutterLogo(), _buildContent()],
       ),
     );
   }
@@ -589,12 +547,7 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
     return const Positioned(
       right: -100,
       bottom: -30,
-      child: Opacity(
-        opacity: 0.2,
-        child: FlutterLogo(
-          size: 400,
-        ),
-      ),
+      child: Opacity(opacity: 0.2, child: FlutterLogo(size: 400)),
     );
   }
 
@@ -636,10 +589,7 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
             child: Text(
               _menuTitles[i],
               textAlign: TextAlign.left,
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.w500,
-              ),
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
             ),
           ),
         ),
@@ -657,16 +607,14 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
           animation: _staggeredController,
           builder: (context, child) {
             final animationPercent = Curves.elasticOut.transform(
-                _buttonInterval.transform(_staggeredController.value));
+              _buttonInterval.transform(_staggeredController.value),
+            );
             final opacity = animationPercent.clamp(0.0, 1.0);
             final scale = (animationPercent * 0.5) + 0.5;
 
             return Opacity(
               opacity: opacity,
-              child: Transform.scale(
-                scale: scale,
-                child: child,
-              ),
+              child: Transform.scale(scale: scale, child: child),
             );
           },
           child: ElevatedButton(
@@ -678,10 +626,7 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
             onPressed: () {},
             child: const Text(
               'Get started',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 22,
-              ),
+              style: TextStyle(color: Colors.white, fontSize: 22),
             ),
           ),
         ),

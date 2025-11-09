@@ -1,38 +1,39 @@
 ---
-ia-translate: true
-title: Title para Label em Bottom Navigation
+title: Bottom Navigation Title To Label
 description: >
-  Depreciado title (um Widget) de BottomNavigationBarItem em
-  favor de label (uma String).
+  Deprecated BottomNavigationBarItem's title (a Widget) in
+  favor of label (a String).
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
 
-`BottomNavigationBarItem.title` emite um aviso de depreciação,
-ou não existe mais quando referenciado no código.
+## Summary
 
-## Contexto
+`BottomNavigationBarItem.title` gives a deprecation warning,
+or no longer exists when referenced in code.
 
-O parâmetro `title` de `BottomNavigationBarItem` foi depreciado
-em favor de `label`. Esta mudança foi necessária para melhorar
-a experiência do usuário de `BottomNavigationBar`s quando o fator
-de escala de texto é aumentado. Items em uma `BottomNavigationBar`
-agora mostram tooltips em long press. Realizar isso
-requer um parâmetro `String` nos `BottomNavigationBarItem`s.
+## Context
 
-## Descrição da mudança
+`BottomNavigationBarItem`s `title` parameter was deprecated
+in favor of `label`. This change was necessary to improve
+the user experience of `BottomNavigationBar`s when the text
+scale factor is increased. Items in a `BottomNavigationBar`
+now show tooltips on long press. Accomplishing this
+requires a `String` parameter on `BottomNavigationBarItem`s.
 
-A classe `BottomNavigationBarItem` tem um parâmetro `title`,
-que é um `Widget`. Isso tornou impossível para o
-`BottomNavigationBar` mostrar widgets `Tooltip`,
-uma mudança que foi necessária para melhorar a experiência de acessibilidade.
-Agora, em vez de construir o widget
-`BottomNavigationBarItem.title`, o BottomNavigationBar envolve o
-`BottomNavigationBarItem.label` em um widget Text e constrói isso.
+## Description of change
 
-## Guia de migração
+The `BottomNavigationBarItem` class has a `title` parameter,
+which is a `Widget`. This made it impossible for the
+`BottomNavigationBar` to show `Tooltip` widgets,
+a change that was necessary to improve the accessibility experience.
+Now, instead of building the `BottomNavigationBarItem.title`
+widget, the BottomNavigationBar wraps the
+`BottomNavigationBarItem.label` in a Text widget and builds that.
 
-Código antes da migração:
+## Migration guide
+
+Code before migration:
 
 ```dart
 BottomNavigationBarItem(
@@ -41,7 +42,7 @@ BottomNavigationBarItem(
 )
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 BottomNavigationBarItem(
@@ -50,23 +51,23 @@ BottomNavigationBarItem(
 )
 ```
 
-## Cronograma
+## Timeline
 
-Adicionado na versão: 1.22.0<br>
-Na versão stable: 2.0.0
+Landed in version: 1.22.0<br>
+In stable release: 2.0.0
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`BottomNavigationBarItem`][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [PR 60655][]: Clean up hero controller scope
 * [PR 59127][]: Update BottomNavigationBar to show tooltips on long press.
 
-Proposta de breaking change:
+Breaking change proposal:
 
 * [Breaking Change: Bottom Navigation Item Title][]
 

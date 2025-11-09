@@ -1,45 +1,44 @@
 ---
-title: Delete dados na internet
-description: Como usar o pacote http para deletar dados na internet.
-ia-translate: true
+title: Delete data on the internet
+description: How to use the http package to delete data on the internet.
 ---
 
 <?code-excerpt path-base="cookbook/networking/delete_data/"?>
 
-Esta receita cobre como deletar dados através
-da internet usando o pacote `http`.
+This recipe covers how to delete data over
+the internet using the `http` package.
 
-Esta receita usa os seguintes passos:
+This recipe uses the following steps:
 
-  1. Adicione o pacote `http`.
-  2. Delete dados no servidor.
-  3. Atualize a tela.
+  1. Add the `http` package.
+  2. Delete data on the server.
+  3. Update the screen.
 
-## 1. Adicione o pacote `http`
+## 1. Add the `http` package
 
-Para adicionar o pacote `http` como uma dependência,
-execute `flutter pub add`:
+To add the `http` package as a dependency,
+run `flutter pub add`:
 
 ```console
 $ flutter pub add http
 ```
 
-Importe o pacote `http`.
+Import the `http` package.
 
 <?code-excerpt "lib/main.dart (Http)"?>
 ```dart
 import 'package:http/http.dart' as http;
 ```
 
-{% render docs/cookbook/networking/internet-permission.md %}
+{% render "docs/cookbook/networking/internet-permission.md" %}
 
-## 2. Delete dados no servidor
+## 2. Delete data on the server
 
-Esta receita cobre como deletar um álbum do
-[JSONPlaceholder][] usando o método `http.delete()`.
-Note que isso requer o `id` do álbum que
-você deseja deletar. Para este exemplo,
-use algo que você já conhece, por exemplo `id = 1`.
+This recipe covers how to delete an album from the
+[JSONPlaceholder][] using the `http.delete()` method.
+Note that this requires the `id` of the album that
+you want to delete. For this example,
+use something you already know, for example `id = 1`.
 
 <?code-excerpt "lib/main_step1.dart (deleteAlbum)"?>
 ```dart
@@ -55,24 +54,24 @@ Future<http.Response> deleteAlbum(String id) async {
 }
 ```
 
-O método `http.delete()` retorna um `Future` que contém um `Response`.
+The `http.delete()` method returns a `Future` that contains a `Response`.
 
-* [`Future`][] é uma classe central do Dart para trabalhar com
-  operações assíncronas. Um objeto Future representa um valor potencial
-  ou erro que estará disponível em algum momento no futuro.
-* A classe `http.Response` contém os dados recebidos de uma chamada
-  http bem-sucedida.
-* O método `deleteAlbum()` recebe um argumento `id` que
-  é necessário para identificar os dados a serem deletados do servidor.
+* [`Future`][] is a core Dart class for working with
+  async operations. A Future object represents a potential
+  value or error that will be available at some time in the future.
+* The `http.Response` class contains the data received from a successful
+  http call.
+* The `deleteAlbum()` method takes an `id` argument that
+  is needed to identify the data to be deleted from the server.
 
-## 3. Atualize a tela
+## 3. Update the screen
 
-Para verificar se os dados foram deletados ou não,
-primeiro busque os dados do [JSONPlaceholder][]
-usando o método `http.get()` e os exiba na tela.
-(Veja a receita [Fetch Data][] para um exemplo completo.)
-Agora você deve ter um botão **Delete Data** que,
-quando pressionado, chama o método `deleteAlbum()`.
+In order to check whether the data has been deleted or not,
+first fetch the data from the [JSONPlaceholder][]
+using the `http.get()` method, and display it in the screen.
+(See the [Fetch Data][] recipe for a complete example.)
+You should now have a **Delete Data** button that,
+when pressed, calls the `deleteAlbum()` method.
 
 <?code-excerpt "lib/main.dart (Column)" replace="/return //g"?>
 ```dart
@@ -84,24 +83,25 @@ Column(
       child: const Text('Delete Data'),
       onPressed: () {
         setState(() {
-          _futureAlbum =
-              deleteAlbum(snapshot.data!.id.toString());
+          _futureAlbum = deleteAlbum(
+            snapshot.data!.id.toString(),
+          );
         });
       },
     ),
   ],
 );
 ```
-Agora, quando você clicar no botão ***Delete Data***,
-o método `deleteAlbum()` é chamado e o id
-que você está passando é o id dos dados que você recuperou
-da internet. Isso significa que você vai deletar
-os mesmos dados que você buscou da internet.
+Now, when you click on the ***Delete Data*** button,
+the `deleteAlbum()` method is called and the id
+you are passing is the id of the data that you retrieved
+from the internet. This means you are going to delete
+the same data that you fetched from the internet.
 
-### Retornando uma resposta do método deleteAlbum()
-Uma vez que a requisição de delete foi feita,
-você pode retornar uma resposta do método `deleteAlbum()`
-para notificar sua tela que os dados foram deletados.
+### Returning a response from the deleteAlbum() method
+Once the delete request has been made,
+you can return a response from the `deleteAlbum()`
+method to notify our screen that the data has been deleted.
 
 <?code-excerpt "lib/main.dart (deleteAlbum)"?>
 ```dart
@@ -128,17 +128,17 @@ Future<Album> deleteAlbum(String id) async {
 }
 ```
 
-`FutureBuilder()` agora reconstrói quando recebe uma resposta.
-Como a resposta não terá nenhum dado em seu corpo
-se a requisição for bem-sucedida,
-o método `Album.fromJson()` cria uma instância do
-objeto `Album` com um valor padrão (`null` no nosso caso).
-Este comportamento pode ser alterado da maneira que você desejar.
+`FutureBuilder()` now rebuilds when it receives a response.
+Since the response won't have any data in its body
+if the request was successful,
+the `Album.fromJson()` method creates an instance of the
+`Album` object with a default value (`null` in our case).
+This behavior can be altered in any way you wish.
 
-É isso!
-Agora você tem uma função que deleta dados da internet.
+That's all!
+Now you've got a function that deletes the data from the internet.
 
-## Exemplo completo
+## Complete example
 
 <?code-excerpt "lib/main.dart"?>
 ```dart
@@ -194,14 +194,7 @@ class Album {
 
   factory Album.fromJson(Map<String, dynamic> json) {
     return switch (json) {
-      {
-        'id': int id,
-        'title': String title,
-      } =>
-        Album(
-          id: id,
-          title: title,
-        ),
+      {'id': int id, 'title': String title} => Album(id: id, title: title),
       _ => throw const FormatException('Failed to load album.'),
     };
   }
@@ -237,9 +230,7 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Delete Data Example'),
-        ),
+        appBar: AppBar(title: const Text('Delete Data Example')),
         body: Center(
           child: FutureBuilder<Album>(
             future: _futureAlbum,
@@ -256,8 +247,9 @@ class _MyAppState extends State<MyApp> {
                         child: const Text('Delete Data'),
                         onPressed: () {
                           setState(() {
-                            _futureAlbum =
-                                deleteAlbum(snapshot.data!.id.toString());
+                            _futureAlbum = deleteAlbum(
+                              snapshot.data!.id.toString(),
+                            );
                           });
                         },
                       ),

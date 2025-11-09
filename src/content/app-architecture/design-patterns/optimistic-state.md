@@ -1,87 +1,81 @@
 ---
-title: Estado otimista
-description: "Melhore a percepção de capacidade de resposta de um aplicativo implementando o estado otimista."
+title: Optimistic state
+description: "Improve the perception of responsiveness of an application by implementing optimistic state."
 contentTags:
   - user experience
-  - dart assíncrono
+  - asynchronous dart
 iconPath: /assets/images/docs/app-architecture/design-patterns/optimistic-state-icon.svg
 order: 0
-js:
-  - defer: true
-    url: /assets/js/inject_dartpad.js
-ia-translate: true
 ---
 
 <?code-excerpt path-base="app-architecture/optimistic_state"?>
 
-Ao construir experiências de usuário,
-a percepção de desempenho às vezes é tão importante quanto
-o desempenho real do código.
-Em geral, os usuários não gostam de esperar que uma ação termine para ver o resultado,
-e qualquer coisa que leve mais do que alguns milissegundos pode ser considerada "lenta"
-ou "sem resposta" da perspectiva do usuário.
+When building user experiences,
+the perception of performance is sometimes just as important as
+the actual performance of the code.
+In general, users don’t like waiting for an action to finish to see the result,
+and anything that takes more than a few milliseconds could be considered “slow”
+or “unresponsive” from the user’s perspective.
 
-Os desenvolvedores podem ajudar a mitigar essa percepção negativa
-apresentando um estado de UI bem-sucedido
-antes que a tarefa em segundo plano seja totalmente concluída.
-Um exemplo disso seria tocar em um botão “Inscrever-se” e
-vê-lo mudar para "Inscrito" instantaneamente,
-mesmo que a chamada em segundo plano para a API de inscrição ainda esteja em execução.
+Developers can help mitigate this negative perception
+by presenting a successful UI state
+before the background task is fully completed.
+An example of this would be tapping a “Subscribe” button,
+and seeing it change to “Subscribed” instantly,
+even if the background call to the subscription API is still running.
 
-Essa técnica é conhecida como Estado Otimista, UI Otimista ou
-Experiência de Usuário Otimista.
-Nesta receita,
-você implementará um recurso de aplicativo usando o Estado Otimista e
-seguindo as [diretrizes de arquitetura do Flutter][].
+This technique is known as Optimistic State, Optimistic UI or
+Optimistic User Experience.
+In this recipe,
+you will implement an application feature using Optimistic State and
+following the [Flutter architecture guidelines][].
 
-## Recurso de exemplo: um botão de inscrição
+## Example feature: a subscribe button
 
-Este exemplo implementa um botão de inscrição semelhante a
-o que você poderia encontrar em um aplicativo de streaming de vídeo ou um boletim informativo.
+This example implements a subscribe button similar to
+the one you could find in a video streaming application or a newsletter.
 
 <img src='/assets/images/docs/cookbook/architecture/optimistic-state.png'
-class="site-mobile-screenshot" alt="Aplicativo com botão de inscrição" >
+class="site-mobile-screenshot" alt="Application with subscribe button" >
 
-Quando o botão é tocado, o aplicativo chama uma API externa,
-executando uma ação de inscrição,
-por exemplo, registrando em um banco de dados que o usuário agora está
-na lista de inscritos.
-Para fins de demonstração, você não implementará o código de backend real,
-em vez disso, você substituirá esta chamada por
-uma ação falsa que simulará uma solicitação de rede.
+When the button is tapped, the application then calls an external API,
+performing a subscription action,
+for example recording in a database that the user is now in
+the subscription list.
+For demo purposes, you will not implement the actual backend code,
+instead you will replace this call with
+a fake action that will simulate a network request.
 
-Caso a chamada seja bem-sucedida,
-o texto do botão mudará de "Inscrever-se" para "Inscrito".
-A cor de fundo do botão também mudará.
+In the case that the call is successful,
+the button text will change from “Subscribe” to “Subscribed”.
+The button background color will change as well.
 
-Ao contrário, se a chamada falhar,
-o texto do botão deverá voltar para "Inscrever-se",
-e a UI deve mostrar uma mensagem de erro ao usuário,
-por exemplo, usando um Snackbar.
+On the contrary, if the call fails,
+the button text should revert back to “Subscribe”,
+and the UI should show an error message to the user,
+for example using a Snackbar.
 
-Seguindo a ideia do Estado Otimista,
-o botão deve mudar instantaneamente para "Inscrito" assim que for tocado,
-e só voltar para “Inscrever-se” se a solicitação falhar.
+Following the Optimistic State idea,
+the button should instantly change to “Subscribed” once it is tapped,
+and only change back to “Subscribe” if the request failed.
 
-<img src='/assets/images/docs/cookbook/architecture/optimistic-state.gif'
-class="site-mobile-screenshot" alt="Animação do aplicativo com botão de inscrição" >
+<img src='/assets/images/docs/cookbook/architecture/optimistic-state.webp'
+class="site-mobile-screenshot" alt="Animation of application with subscribe button" >
 
-## Arquitetura de recursos
+## Feature architecture
 
-Comece definindo a arquitetura do recurso.
-Seguindo as diretrizes de arquitetura,
-crie estas classes Dart em um projeto Flutter:
+Start by defining the feature architecture.
+Following the architecture guidelines,
+create these Dart classes in a Flutter project:
 
-- Um `StatefulWidget` chamado `SubscribeButton`
-- Uma classe chamada `SubscribeButtonViewModel` estendendo `ChangeNotifier`
-- Uma classe chamada `SubscriptionRepository`
+- A `StatefulWidget` named `SubscribeButton`
+- A class named `SubscribeButtonViewModel` extending `ChangeNotifier`
+- A class named `SubscriptionRepository`
 
 <?code-excerpt "lib/starter.dart (Starter)"?>
 ```dart
 class SubscribeButton extends StatefulWidget {
-  const SubscribeButton({
-    super.key,
-  });
+  const SubscribeButton({super.key});
 
   @override
   State<SubscribeButton> createState() => _SubscribeButtonState();
@@ -99,42 +93,37 @@ class SubscribeButtonViewModel extends ChangeNotifier {}
 class SubscriptionRepository {}
 ```
 
-O widget `SubscribeButton` e o `SubscribeButtonViewModel` representam
-a camada de apresentação desta solução.
-O widget exibirá um botão
-que mostrará o texto “Inscrever-se” ou “Inscrito”
-dependendo do estado da inscrição.
-O view model conterá o estado da inscrição.
-Quando o botão for tocado,
-o widget chamará o view model para realizar a ação.
+The `SubscribeButton` widget and the `SubscribeButtonViewModel` represent
+the presentation layer of this solution.
+The widget is going to display a button
+that will show the text “Subscribe” or “Subscribed”
+depending on the subscription state.
+The view model will contain the subscription state.
+When the button is tapped,
+the widget will call the view model to perform the action.
 
-O `SubscriptionRepository` implementará um método de inscrição
-que lançará uma exceção quando a ação falhar.
-O view model chamará este método ao realizar a ação de inscrição.
+The `SubscriptionRepository` will implement a subscribe method
+that will throw an exception when the action fails.
+The view model will call this method when performing the subscription action.
 
-Em seguida, conecte-os adicionando o `SubscriptionRepository`
-ao `SubscribeButtonViewModel`:
+Next, connect them together by adding the `SubscriptionRepository`
+to the `SubscribeButtonViewModel`:
 
 <?code-excerpt "lib/main.dart (ViewModelStart)" replace="/y;$/y;\n}/g"?>
 ```dart
 class SubscribeButtonViewModel extends ChangeNotifier {
-  SubscribeButtonViewModel({
-    required this.subscriptionRepository,
-  });
+  SubscribeButtonViewModel({required this.subscriptionRepository});
 
   final SubscriptionRepository subscriptionRepository;
 }
 ```
 
-E adicione o `SubscribeButtonViewModel` ao widget `SubscribeButton`:
+And add the `SubscribeButtonViewModel` to the `SubscribeButton` widget:
 
 <?code-excerpt "lib/main.dart (Widget)"?>
 ```dart
 class SubscribeButton extends StatefulWidget {
-  const SubscribeButton({
-    super.key,
-    required this.viewModel,
-  });
+  const SubscribeButton({super.key, required this.viewModel});
 
   /// Subscribe button view model.
   final SubscribeButtonViewModel viewModel;
@@ -144,8 +133,8 @@ class SubscribeButton extends StatefulWidget {
 }
 ```
 
-Agora que você criou a arquitetura básica da solução,
-você pode criar o widget `SubscribeButton` da seguinte maneira:
+Now that you have created the basic solution architecture,
+you can create the `SubscribeButton` widget the following way:
 
 <?code-excerpt "lib/main.dart (SubscribeButton)" replace="/^child: //g;/^\),$/)/g"?>
 ```dart
@@ -155,11 +144,10 @@ SubscribeButton(
   ),
 )
 ```
+### Implement the `SubscriptionRepository`
 
-### Implemente o `SubscriptionRepository`
-
-Adicione um novo método assíncrono chamado `subscribe()`
-ao `SubscriptionRepository` com o seguinte código:
+Add a new asynchronous method named `subscribe()`
+to the `SubscriptionRepository` with the following code:
 
 <?code-excerpt "lib/main.dart (SubscriptionRepository)"?>
 ```dart
@@ -174,19 +162,19 @@ class SubscriptionRepository {
 }
 ```
 
-A chamada para `await Future.delayed()` com uma duração de um segundo
-foi adicionada para simular uma solicitação de longa duração.
-A execução do método será pausada por um segundo e, em seguida, continuará sendo executada.
+The call to `await Future.delayed()` with a duration of one second
+has been added to simulate a long running request.
+The method execution will pause for a second, and then it will continue running.
 
-Para simular uma solicitação com falha,
-o método de inscrição lança uma exceção no final.
-Isso será usado mais tarde para mostrar como se recuperar de uma solicitação com falha
-ao implementar o Estado Otimista.
+In order to simulate a request failing,
+the subscribe method throws an exception at the end.
+This will be used later on to show how to recover from a failed request
+when implementing Optimistic State.
 
-### Implemente o `SubscribeButtonViewModel`
+### Implement the `SubscribeButtonViewModel`
 
-Para representar o estado da inscrição, bem como um possível estado de erro,
-adicione os seguintes membros públicos ao `SubscribeButtonViewModel`:
+To represented the subscription state, as well a possible error state,
+add the following public members to the `SubscribeButtonViewModel`:
 
 <?code-excerpt "lib/main.dart (States)"?>
 ```dart
@@ -197,18 +185,18 @@ bool subscribed = false;
 bool error = false;
 ```
 
-Ambos são definidos como `false` no início.
+Both are set to `false` on start.
 
-Seguindo as ideias do Estado Otimista,
-o estado `subscribed` mudará para `true`
-assim que o usuário tocar no botão de inscrição.
-E só voltará a `false` se a ação falhar.
+Following the ideas of Optimistic State,
+the `subscribed` state will change to `true`
+as soon as the user taps the subscribe button.
+And will only change back to `false` if the action fails.
 
-O estado `error` mudará para `true` quando a ação falhar,
-indicando ao widget `SubscribeButton` para mostrar uma mensagem de erro ao usuário.
-A variável deve voltar para `false` assim que o erro for exibido.
+The `error` state will change to `true` when the action fails,
+indicating the `SubscribeButton` widget to show an error message to the user.
+The variable should go back to `false` once the error has been displayed.
 
-Em seguida, implemente um método `subscribe()` assíncrono:
+Next, implement an asynchronous `subscribe()` method:
 
 <?code-excerpt "lib/main.dart (subscribe)"?>
 ```dart
@@ -239,32 +227,30 @@ Future<void> subscribe() async {
 }
 ```
 
-Conforme descrito anteriormente, primeiro o método define o estado `subscribed` como `true`
-e então chama `notifyListeners()`.
-Isso força a UI a atualizar e o botão altera sua aparência,
-mostrando o texto "Inscrito" para o usuário.
+As described previously, first the method sets the `subscribed` state to `true`
+and then calls to `notifyListeners()`.
+This forces the UI to update and the button changes its appearance,
+showing the text “Subscribed” to the user.
 
-Então, o método realiza a chamada real para o repositório.
-Essa chamada é envolvida por um `try-catch`
-para capturar quaisquer exceções que ele possa lançar.
-Caso uma exceção seja capturada, o estado `subscribed` é definido de volta para `false`,
-e o estado `error` é definido como `true`.
-Uma chamada final para `notifyListeners()` é feita
-para mudar a UI de volta para 'Inscrever-se'.
+Then the method performs the actual call to the repository.
+This call is wrapped by a `try-catch`
+in order to catch any exceptions it may throw.
+In case an exception is caught, the `subscribed` state is set back to `false`,
+and the `error` state is set to `true`.
+A final call to `notifyListeners()` is done
+to change the UI back to ‘Subscribe’.
 
-Se não houver exceção, o processo estará concluído
-porque a UI já está refletindo o estado de sucesso.
+If there is no exception, the process is complete
+because the UI is already reflecting the success state.
 
-O `SubscribeButtonViewModel` completo deve ser assim:
+The complete `SubscribeButtonViewModel` should look like this:
 
 <?code-excerpt "lib/main.dart (ViewModelFull)"?>
 ```dart
 /// Subscribe button View Model.
 /// Handles the subscribe action and exposes the state to the subscription.
 class SubscribeButtonViewModel extends ChangeNotifier {
-  SubscribeButtonViewModel({
-    required this.subscriptionRepository,
-  });
+  SubscribeButtonViewModel({required this.subscriptionRepository});
 
   final SubscriptionRepository subscriptionRepository;
 
@@ -299,16 +285,17 @@ class SubscribeButtonViewModel extends ChangeNotifier {
       notifyListeners();
     }
   }
+
 }
 ```
 
-### Implemente o `SubscribeButton`
+### Implement the `SubscribeButton`
 
-Nesta etapa,
-você primeiro implementará o método build do `SubscribeButton`,
-e então implementará o tratamento de erros do recurso.
+In this step,
+you will first implement the build method of the `SubscribeButton`,
+and then implement the feature’s error handling.
 
-Adicione o seguinte código ao método build:
+Add the following code to the build method:
 
 <?code-excerpt "lib/main.dart (build)"?>
 ```dart
@@ -331,18 +318,18 @@ Widget build(BuildContext context) {
 }
 ```
 
-Este método build contém um `ListenableBuilder`
-que ouve as mudanças do view model.
-O builder então cria um `FilledButton`
-que exibirá o texto "Inscrito" ou "Inscrever-se"
-dependendo do estado do view model.
-O estilo do botão também mudará dependendo desse estado.
-Além disso, quando o botão é tocado,
-ele executa o método `subscribe()` do view model.
+This build method contains a `ListenableBuilder`
+that listens to changes from the view model.
+The builder then creates a `FilledButton`
+that will display the text "Subscribed" or "Subscribe"
+depending on the view model state.
+The button style will also change depending on this state.
+As well, when the button is tapped,
+it runs the `subscribe()` method from the view model.
 
-O `SubscribeButtonStyle` pode ser encontrado aqui.
-Adicione esta classe ao lado do `SubscribeButton`.
-Sinta-se à vontade para modificar o `ButtonStyle`.
+The `SubscribeButtonStyle` can be found here.
+Add this class next to the `SubscribeButton`.
+Feel free to modify the `ButtonStyle`.
 
 <?code-excerpt "lib/main.dart (style)"?>
 ```dart
@@ -357,15 +344,15 @@ class SubscribeButtonStyle {
 }
 ```
 
-Se você executar o aplicativo agora,
-você verá como o botão muda quando você o pressiona,
-no entanto, ele voltará ao estado original sem mostrar um erro.
+If you run the application now,
+you will see how the button changes when you press it,
+however it will change back to the original state without showing an error.
 
-### Tratamento de erros
+### Handling errors
 
-Para tratar erros,
-adicione os métodos `initState()` e `dispose()` ao `SubscribeButtonState`,
-e então adicione o método `_onViewModelChange()`.
+To handle errors,
+add the `initState()` and `dispose()` methods to the `SubscribeButtonState`,
+and then add the `_onViewModelChange()` method.
 
 <?code-excerpt "lib/main.dart (listener1)"?>
 ```dart
@@ -391,62 +378,60 @@ void _onViewModelChange() {
     // Reset the error state
     widget.viewModel.error = false;
     // Show an error message
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Failed to subscribe'),
-      ),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text('Failed to subscribe')));
   }
 }
 ```
 
-A chamada `addListener()` registra o método `_onViewModelChange()`
-para ser chamado quando o view model notificar os listeners.
-É importante chamar `removeListener()` quando o widget é descartado,
-para evitar erros.
+The `addListener()` call registers the `_onViewModelChange()` method
+to be called when the view model notifies listeners.
+It’s important to call `removeListener()` when the widget is disposed of,
+in order to avoid errors.
 
-O método `_onViewModelChange()` verifica o estado `error` e,
-se for `true`,
-exibe um `Snackbar` para o usuário mostrando uma mensagem de erro.
-Além disso, o estado `error` é definido de volta para `false`,
-para evitar exibir a mensagem de erro várias vezes
-se `notifyListeners()` for chamado novamente no view model.
+The `_onViewModelChange()` method checks the `error` state,
+and if it is `true`,
+displays a `Snackbar` to the user showing an error message.
+As well, the `error` state is set back to `false`,
+to avoid displaying the error message multiple times
+if `notifyListeners()` is called again in the view model.
 
-## Estado otimista avançado
+## Advanced Optimistic State
 
-Neste tutorial,
-você aprendeu como implementar um Estado Otimista com um único estado binário,
-mas você pode usar esta técnica para criar uma solução mais avançada
-incorporando um terceiro estado temporal
-que indica que a ação ainda está em execução.
+In this tutorial,
+you’ve learned how to implement an Optimistic State with a single binary state,
+but you can use this technique to create a more advanced solution
+by incorporating a third temporal state
+that indicates that the action is still running.
 
-Por exemplo, em um aplicativo de bate-papo, quando o usuário envia uma nova mensagem,
-o aplicativo exibirá a nova mensagem de bate-papo na janela de bate-papo,
-mas com um ícone indicando que a mensagem ainda está pendente para ser entregue.
-Quando a mensagem for entregue, esse ícone seria removido.
+For example, in a chat application when the user sends a new message,
+the application will display the new chat message in the chat window,
+but with an icon indicating that the message is still pending to be delivered.
+When the message is delivered, that icon would be removed.
 
-No exemplo do botão de inscrição,
-você pode adicionar outro flag no view model
-indicando que o método `subscribe()` ainda está em execução,
-ou use o estado em execução do padrão Command,
-em seguida, modifique ligeiramente o estilo do botão para mostrar que a operação está em execução.
+In the subscribe button example,
+you could add another flag in the view model
+indicating that the `subscribe()` method is still running,
+or use the Command pattern running state,
+then modify the button style slightly to show that the operation is running.
 
-## Exemplo interativo
+## Interactive example
 
-Este exemplo mostra o widget `SubscribeButton`
-junto com o `SubscribeButtonViewModel`
-e `SubscriptionRepository`,
-que implementam uma ação de toque de inscrição com Estado Otimista.
+This example shows the `SubscribeButton` widget
+together with the `SubscribeButtonViewModel`
+and `SubscriptionRepository`,
+which implement a subscribe tap action with Optimistic State.
 
-Quando você toca no botão,
-o texto do botão muda de “Inscrever-se” para “Inscrito”. Depois de um segundo,
-o repositório lança uma exceção,
-que é capturada pelo view model,
-e o botão volta a exibir "Inscrever-se",
-enquanto também exibe um Snackbar com uma mensagem de erro.
+When you tap the button,
+the button text changes from “Subscribe” to “Subscribed”. After a second,
+the repository throws an exception,
+which gets captured by the view model,
+and the button reverts back to showing “Subscribe”,
+while also displaying a Snackbar with an error message.
 
 <?code-excerpt "lib/main.dart"?>
-```dartpad title="Exemplo de Estado Otimista do Flutter no DartPad" run="true"
+```dartpad title="Flutter Optimistic State example in DartPad" run="true"
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
@@ -478,10 +463,7 @@ class MyApp extends StatelessWidget {
 /// A button that simulates a subscription action.
 /// For example, subscribing to a newsletter or a streaming channel.
 class SubscribeButton extends StatefulWidget {
-  const SubscribeButton({
-    super.key,
-    required this.viewModel,
-  });
+  const SubscribeButton({super.key, required this.viewModel});
 
   /// Subscribe button view model.
   final SubscribeButtonViewModel viewModel;
@@ -528,13 +510,12 @@ class _SubscribeButtonState extends State<SubscribeButton> {
       // Reset the error state
       widget.viewModel.error = false;
       // Show an error message
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Failed to subscribe'),
-        ),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Failed to subscribe')));
     }
   }
+
 }
 
 class SubscribeButtonStyle {
@@ -550,9 +531,7 @@ class SubscribeButtonStyle {
 /// Subscribe button View Model.
 /// Handles the subscribe action and exposes the state to the subscription.
 class SubscribeButtonViewModel extends ChangeNotifier {
-  SubscribeButtonViewModel({
-    required this.subscriptionRepository,
-  });
+  SubscribeButtonViewModel({required this.subscriptionRepository});
 
   final SubscriptionRepository subscriptionRepository;
 
@@ -587,6 +566,7 @@ class SubscribeButtonViewModel extends ChangeNotifier {
       notifyListeners();
     }
   }
+
 }
 
 /// Repository of subscriptions.
@@ -601,4 +581,4 @@ class SubscriptionRepository {
 }
 ```
 
-[diretrizes de arquitetura do Flutter]:/app-architecture
+[Flutter Architecture guidelines]:/app-architecture

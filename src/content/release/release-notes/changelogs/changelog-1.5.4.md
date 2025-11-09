@@ -1,8 +1,8 @@
 ---
-title: Change log for Flutter 1.5.4 
-short-title: 1.5.4 change log
+title: Change log for Flutter 1.5.4
+shortTitle: 1.5.4 change log
 description: Change log for Flutter 1.5.4 containing a list of all PRs merged for this release.
-ia-translate: true
+skipTemplateRendering: true
 ---
 
 ## PRs closed in this release of flutter/flutter
@@ -294,7 +294,7 @@ From Thu Feb 21 20:22:00 2019 -0800 to Wed May 1 16:56:00 2019 -0700
 
 [28873](https://github.com/flutter/flutter/pull/28873) Remove extra build_runner modes, remove flutter_build (cla: yes, tool)
 
-[28888](https://github.com/flutter/flutter/pull/28888) Changed flutter.io to flutterbrasil.dev on each link on readme file (cla: yes, team)
+[28888](https://github.com/flutter/flutter/pull/28888) Changed flutter.io to flutter.dev on each link on readme file (cla: yes, team)
 
 [28899](https://github.com/flutter/flutter/pull/28899) Roll engine 4f54a1dd9...e6a5201f0 (cla: yes)
 
@@ -782,7 +782,7 @@ From Thu Feb 21 20:22:00 2019 -0800 to Wed May 1 16:56:00 2019 -0700
 
 [30537](https://github.com/flutter/flutter/pull/30537) Embedded images and added variations to ListTile sample code (cla: yes, d: api docs, f: material design, framework)
 
-[30562](https://github.com/flutter/flutter/pull/30562) Replace flutter.io with flutterbrasil.dev (a: first hour, a: quality, cla: yes)
+[30562](https://github.com/flutter/flutter/pull/30562) Replace flutter.io with flutter.dev (a: first hour, a: quality, cla: yes)
 
 [30563](https://github.com/flutter/flutter/pull/30563) Fixed a typo in the Expanded API doc (cla: yes, d: api docs, framework)
 

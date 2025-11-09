@@ -1,61 +1,57 @@
 ---
-title: Reproduzir e pausar um vídeo
-description: Como usar o plugin video_player.
-ia-translate: true
-js:
-  - defer: true
-    url: /assets/js/inject_dartpad.js
+title: Play and pause a video
+description: How to use the video_player plugin.
 ---
 
 <?code-excerpt path-base="cookbook/plugins/play_video/"?>
 
-Reproduzir vídeos é uma tarefa comum no desenvolvimento de apps,
-e apps Flutter não são exceção. Para reproduzir vídeos,
-a equipe do Flutter fornece o plugin [`video_player`][].
-Você pode usar o plugin `video_player` para reproduzir vídeos
-armazenados no sistema de arquivos, como um asset, ou da internet.
+Playing videos is a common task in app development,
+and Flutter apps are no exception. To play videos,
+the Flutter team provides the [`video_player`][] plugin.
+You can use the `video_player` plugin to play videos
+stored on the file system, as an asset, or from the internet.
 
 :::warning
-Neste momento,
-o plugin `video_player` não funciona no Linux e Windows.
-Para aprender mais, confira o pacote [`video_player`][].
+At this time,
+the `video_player` plugin doesn't work on Linux and Windows.
+To learn more, check out the [`video_player`][] package.
 :::
 
-No iOS, o plugin `video_player` faz uso do
-[`AVPlayer`][] para lidar com a reprodução. No Android,
-ele usa [`ExoPlayer`][].
+On iOS, the `video_player` plugin makes use of
+[`AVPlayer`][] to handle playback. On Android,
+it uses [`ExoPlayer`][].
 
-Esta receita demonstra como usar o pacote `video_player` para transmitir um
-vídeo da internet com controles básicos de reprodução e pausa usando
-os seguintes passos:
+This recipe demonstrates how to use the `video_player` package to stream a
+video from the internet with basic play and pause controls using
+the following steps:
 
-  1. Adicionar a dependência `video_player`.
-  2. Adicionar permissões ao seu app.
-  3. Criar e inicializar um `VideoPlayerController`.
-  4. Exibir o reprodutor de vídeo.
-  5. Reproduzir e pausar o vídeo.
+  1. Add the `video_player` dependency.
+  2. Add permissions to your app.
+  3. Create and initialize a `VideoPlayerController`.
+  4. Display the video player.
+  5. Play and pause the video.
 
-## 1. Adicionar a dependência `video_player`
+## 1. Add the `video_player` dependency
 
-Esta receita depende de um plugin Flutter: `video_player`.
-Primeiro, adicione esta dependência ao seu projeto.
+This recipe depends on one Flutter plugin: `video_player`.
+First, add this dependency to your project.
 
-Para adicionar o pacote `video_player` como uma dependência, execute `flutter pub add`:
+To add the `video_player` package as a dependency, run `flutter pub add`:
 
 ```console
 $ flutter pub add video_player
 ```
 
-## 2. Adicionar permissões ao seu app
+## 2. Add permissions to your app
 
-Em seguida, atualize suas configurações `android` e `ios` para garantir
-que seu app tenha as permissões corretas para transmitir vídeos
-da internet.
+Next, update your `android` and `ios` configurations to ensure
+that your app has the correct permissions to stream videos
+from the internet.
 
 ### Android
 
-Adicione a seguinte permissão ao `AndroidManifest.xml` logo após a
-definição `<application>`. O arquivo `AndroidManifest.xml` é encontrado em
+Add the following permission to the `AndroidManifest.xml` file just after the
+`<application>` definition. The `AndroidManifest.xml` file is found at
 `<project root>/android/app/src/main/AndroidManifest.xml`.
 
 ```xml
@@ -70,7 +66,7 @@ definição `<application>`. O arquivo `AndroidManifest.xml` é encontrado em
 
 ### iOS
 
-Para iOS, adicione o seguinte ao arquivo `Info.plist` encontrado em
+For iOS, add the following to the `Info.plist` file found at
 `<project root>/ios/Runner/Info.plist`.
 
 ```xml
@@ -82,48 +78,48 @@ Para iOS, adicione o seguinte ao arquivo `Info.plist` encontrado em
 ```
 
 :::warning
-O plugin `video_player` só pode reproduzir vídeos de assets em simuladores iOS.
-Você deve testar vídeos hospedados em rede em dispositivos iOS físicos.
+The `video_player` plugin can only play asset videos in iOS simulators.
+You must test network-hosted videos on physical iOS devices.
 :::
 
 ### macOS
 
-Se você usar vídeos baseados em rede,
-[adicione o entitlement `com.apple.security.network.client`][mac-entitlement].
+If you use network-based videos,
+[add the `com.apple.security.network.client` entitlement][mac-entitlement].
 
 ### Web
 
-Flutter web **não** suporta `dart:io`,
-então evite usar o construtor `VideoPlayerController.file` para o plugin.
-Usar este construtor tenta criar um `VideoPlayerController.file`
-que lança um `UnimplementedError`.
+Flutter web does **not** support `dart:io`,
+so avoid using the `VideoPlayerController.file` constructor for the plugin.
+Using this constructor attempts to create a`VideoPlayerController.file`
+that throws an `UnimplementedError`.
 
-Diferentes navegadores web podem ter diferentes capacidades de reprodução de vídeo,
-como formatos suportados ou autoplay.
-Confira o pacote [video_player_web] para mais informações específicas da web.
+Different web browsers might have different video-playback capabilities,
+such as supported formats or autoplay.
+Check the [video_player_web] package for more web-specific information.
 
-A opção `VideoPlayerOptions.mixWithOthers` não pode ser implementada na web,
-pelo menos no momento. Se você usar esta opção na web, ela será silenciosamente ignorada.
+The `VideoPlayerOptions.mixWithOthers` option can't be implemented in web,
+at least at the moment. If you use this option in web it will be silently ignored.
 
-## 3. Criar e inicializar um `VideoPlayerController`
+## 3. Create and initialize a `VideoPlayerController`
 
-Agora que você tem o plugin `video_player` instalado com as permissões corretas,
-crie um `VideoPlayerController`. A classe
-`VideoPlayerController` permite que você se conecte a diferentes tipos de
-vídeos e controle a reprodução.
+Now that you have the `video_player` plugin installed with the correct
+permissions, create a `VideoPlayerController`. The
+`VideoPlayerController` class allows you to connect to different types of
+videos and control playback.
 
-Antes de poder reproduzir vídeos, você também deve `initialize` o controller.
-Isso estabelece a conexão com o vídeo e prepara o
-controller para reprodução.
+Before you can play videos, you must also `initialize` the controller.
+This establishes the connection to the video and prepare the
+controller for playback.
 
-Para criar e inicializar o `VideoPlayerController` faça o seguinte:
+To create and initialize the `VideoPlayerController` do the following:
 
-  1. Crie um `StatefulWidget` com uma classe `State` companheira
-  2. Adicione uma variável à classe `State` para armazenar o `VideoPlayerController`
-  3. Adicione uma variável à classe `State` para armazenar o `Future` retornado de
+  1. Create a `StatefulWidget` with a companion `State` class
+  2. Add a variable to the `State` class to store the `VideoPlayerController`
+  3. Add a variable to the `State` class to store the `Future` returned from
   `VideoPlayerController.initialize`
-  4. Crie e inicialize o controller no método `initState`
-  5. Descarte o controller no método `dispose`
+  4. Create and initialize the controller in the `initState` method
+  5. Dispose of the controller in the `dispose` method
 
 <?code-excerpt "lib/main_step3.dart (VideoPlayerScreen)"?>
 ```dart
@@ -170,22 +166,22 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 }
 ```
 
-## 4. Exibir o reprodutor de vídeo
+## 4. Display the video player
 
-Agora, exiba o vídeo. O plugin `video_player` fornece o
-widget [`VideoPlayer`][] para exibir o vídeo inicializado pelo
-`VideoPlayerController`.
-Por padrão, o widget `VideoPlayer` ocupa o máximo de espaço possível.
-Isso geralmente não é ideal para vídeos porque eles são destinados
-a ser exibidos em uma proporção específica, como 16x9 ou 4x3.
+Now, display the video. The `video_player` plugin provides the
+[`VideoPlayer`][] widget to display the video initialized by
+the `VideoPlayerController`.
+By default, the `VideoPlayer` widget takes up as much space as possible.
+This often isn't ideal for videos because they are meant
+to be displayed in a specific aspect ratio, such as 16x9 or 4x3.
 
-Portanto, envolva o widget `VideoPlayer` em um widget [`AspectRatio`][]
-para garantir que o vídeo tenha as proporções corretas.
+Therefore, wrap the `VideoPlayer` widget in an [`AspectRatio`][]
+widget to ensure that the video has the correct proportions.
 
-Além disso, você deve exibir o widget `VideoPlayer` após o
-`_initializeVideoPlayerFuture()` ser completado. Use `FutureBuilder` para
-exibir um spinner de carregamento até que o controller termine de inicializar.
-Nota: inicializar o controller não inicia a reprodução.
+Furthermore, you must display the `VideoPlayer` widget after the
+`_initializeVideoPlayerFuture()` completes. Use `FutureBuilder` to
+display a loading spinner until the controller finishes initializing.
+Note: initializing the controller does not begin playback.
 
 <?code-excerpt "lib/main.dart (FutureBuilder)" replace="/body: //g;/^\),$/)/g"?>
 ```dart
@@ -205,26 +201,24 @@ FutureBuilder(
     } else {
       // If the VideoPlayerController is still initializing, show a
       // loading spinner.
-      return const Center(
-        child: CircularProgressIndicator(),
-      );
+      return const Center(child: CircularProgressIndicator());
     }
   },
 )
 ```
 
-## 5. Reproduzir e pausar o vídeo
+## 5. Play and pause the video
 
-Por padrão, o vídeo inicia em um estado pausado. Para começar a reprodução,
-chame o método [`play()`][] fornecido pelo `VideoPlayerController`.
-Para pausar a reprodução, chame o método [`pause()`][].
+By default, the video starts in a paused state. To begin playback,
+call the [`play()`][] method provided by the `VideoPlayerController`.
+To pause playback, call the [`pause()`][] method.
 
-Para este exemplo,
-adicione um `FloatingActionButton` ao seu app que exibe um ícone de reproduzir
-ou pausar dependendo da situação.
-Quando o usuário tocar no botão,
-reproduza o vídeo se ele estiver atualmente pausado,
-ou pause o vídeo se ele estiver reproduzindo.
+For this example,
+add a `FloatingActionButton` to your app that displays a play
+or pause icon depending on the situation.
+When the user taps the button,
+play the video if it's currently paused,
+or pause the video if it's playing.
 
 <?code-excerpt "lib/main.dart (FAB)" replace="/^floatingActionButton: //g;/^\),$/)/g"?>
 ```dart
@@ -249,7 +243,7 @@ FloatingActionButton(
 )
 ```
 
-## Exemplo completo
+## Complete example
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter video player hands-on example in DartPad" run="true"
@@ -314,9 +308,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Butterfly Video'),
-      ),
+      appBar: AppBar(title: const Text('Butterfly Video')),
       // Use a FutureBuilder to display a loading spinner while waiting for the
       // VideoPlayerController to finish initializing.
       body: FutureBuilder(
@@ -333,9 +325,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
           } else {
             // If the VideoPlayerController is still initializing, show a
             // loading spinner.
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+            return const Center(child: CircularProgressIndicator());
           }
         },
       ),

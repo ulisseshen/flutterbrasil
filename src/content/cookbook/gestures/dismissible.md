@@ -1,73 +1,67 @@
 ---
-title: Implementar swipe para descartar
-description: Como implementar swipe para descartar ou deletar.
-js:
-  - defer: true
-    url: /assets/js/inject_dartpad.js
-ia-translate: true
+title: Implement swipe to dismiss
+description: How to implement swiping to dismiss or delete.
 ---
 
 <?code-excerpt path-base="cookbook/gestures/dismissible"?>
 
-O padrão "swipe para descartar" é comum em muitos aplicativos mobile.
-Por exemplo, ao escrever um aplicativo de e-mail,
-você pode querer permitir que um usuário descarte
-mensagens de e-mail deslizando-as para deletá-las de uma lista.
+The "swipe to dismiss" pattern is common in many mobile apps.
+For example, when writing an email app,
+you might want to allow a user to swipe away
+email messages to delete them from a list.
 
-O Flutter facilita essa tarefa fornecendo o
-widget [`Dismissible`][].
-Aprenda como implementar swipe para descartar com os seguintes passos:
+Flutter makes this task easy by providing the
+[`Dismissible`][] widget.
+Learn how to implement swipe to dismiss with the following steps:
 
-  1. Criar uma lista de itens.
-  2. Envolver cada item em um widget `Dismissible`.
-  3. Fornecer indicadores "leave behind".
+  1. Create a list of items.
+  2. Wrap each item in a `Dismissible` widget.
+  3. Provide "leave behind" indicators.
 
-## 1. Criar uma lista de itens
+## 1. Create a list of items
 
-Primeiro, crie uma lista de itens. Para instruções detalhadas
-sobre como criar uma lista,
-siga a receita [Working with long lists][].
+First, create a list of items. For detailed
+instructions on how to create a list,
+follow the [Working with long lists][] recipe.
 
-### Criar uma fonte de dados
+### Create a data source
 
-Neste exemplo,
-você quer 20 itens de exemplo para trabalhar.
-Para manter simples, gere uma lista de strings.
+In this example,
+you want 20 sample items to work with.
+To keep it simple, generate a list of strings.
 
 <?code-excerpt "lib/main.dart (Items)"?>
 ```dart
 final items = List<String>.generate(20, (i) => 'Item ${i + 1}');
 ```
 
-### Converter a fonte de dados em uma lista
+### Convert the data source into a list
 
-Exiba cada item na lista na tela. Os usuários ainda não
-conseguirão descartar esses itens deslizando.
+Display each item in the list on screen. Users won't
+be able to swipe these items away just yet.
 
 <?code-excerpt "lib/step1.dart (ListView)" replace="/^body: //g;/^\),$/)/g"?>
 ```dart
 ListView.builder(
   itemCount: items.length,
   itemBuilder: (context, index) {
-    return ListTile(
-      title: Text(items[index]),
-    );
+    return ListTile(title: Text(items[index]));
   },
 )
 ```
 
-## 2. Envolver cada item em um widget Dismissible
+## 2. Wrap each item in a Dismissible widget
 
-Neste passo,
-dê aos usuários a capacidade de descartar um item da lista usando o
-widget [`Dismissible`][].
+In this step,
+give users the ability to swipe an item off the list by using the
+[`Dismissible`][] widget.
 
-Após o usuário ter deslizado o item,
-remova o item da lista e exiba uma snackbar.
-Em um aplicativo real, você pode precisar executar lógica mais complexa,
-como remover o item de um web service ou banco de dados.
+After the user has swiped away the item,
+remove the item from the list and display a snackbar.
+In a real app, you might need to perform more complex logic,
+such as removing the item from a web service or database.
 
-Atualize a função `itemBuilder()` para retornar um widget `Dismissible`:
+Update the `itemBuilder()` function to return a `Dismissible` widget:
 
 <?code-excerpt "lib/step2.dart (Dismissible)"?>
 ```dart
@@ -86,28 +80,27 @@ itemBuilder: (context, index) {
       });
 
       // Then show a snackbar.
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('$item dismissed')));
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('$item dismissed')));
     },
-    child: ListTile(
-      title: Text(item),
-    ),
+    child: ListTile(title: Text(item)),
   );
 },
 ```
 
-## 3. Fornecer indicadores "leave behind"
+## 3. Provide "leave behind" indicators
 
-Como está,
-o aplicativo permite que os usuários descartem itens da lista, mas não
-dá uma indicação visual do que acontece quando eles fazem isso.
-Para fornecer uma pista de que os itens são removidos,
-exiba um indicador "leave behind" enquanto eles
-deslizam o item para fora da tela. Neste caso,
-o indicador é um fundo vermelho.
+As it stands,
+the app allows users to swipe items off the list, but it doesn't
+give a visual indication of what happens when they do.
+To provide a cue that items are removed,
+display a "leave behind" indicator as they
+swipe the item off the screen. In this case,
+the indicator is a red background.
 
-Para adicionar o indicador,
-forneça um parâmetro `background` ao `Dismissible`.
+To add the indicator,
+provide a `background` parameter to the `Dismissible`.
 
 
 ```dart diff
@@ -121,7 +114,7 @@ forneça um parâmetro `background` ao `Dismissible`.
   ),
 ```
 
-## Exemplo interativo
+## Interactive example
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter Swipe to Dismiss hands-on example in DartPad" run="true"
@@ -155,9 +148,7 @@ class MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text(title),
-        ),
+        appBar: AppBar(title: const Text(title)),
         body: ListView.builder(
           itemCount: items.length,
           itemBuilder: (context, index) {
@@ -175,14 +166,13 @@ class MyAppState extends State<MyApp> {
                 });
 
                 // Then show a snackbar.
-                ScaffoldMessenger.of(context)
-                    .showSnackBar(SnackBar(content: Text('$item dismissed')));
+                ScaffoldMessenger.of(
+                  context,
+                ).showSnackBar(SnackBar(content: Text('$item dismissed')));
               },
               // Show a red background as the item is swiped away.
               background: Container(color: Colors.red),
-              child: ListTile(
-                title: Text(item),
-              ),
+              child: ListTile(title: Text(item)),
             );
           },
         ),
@@ -193,7 +183,7 @@ class MyAppState extends State<MyApp> {
 ```
 
 <noscript>
-  <img src="/assets/images/docs/cookbook/dismissible.gif" alt="Dismissible Demo" class="site-mobile-screenshot" />
+  <img src="/assets/images/docs/cookbook/dismissible.webp" alt="Dismissible Demo" class="site-mobile-screenshot" />
 </noscript>
 
 

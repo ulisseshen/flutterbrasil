@@ -1,39 +1,39 @@
 ---
-ia-translate: true
-title: Introdução à UI declarativa
-short-title: UI declarativa
-description: Explica a diferença entre um estilo de programação declarativo e imperativo.
+title: Introduction to declarative UI
+shortTitle: Declarative UI
+description: Explains the difference between a declarative and imperative programming style.
 ---
 
 <?code-excerpt path-base="get-started/flutter-for/declarative"?>
 
-_Esta introdução descreve a diferença conceitual entre o
-estilo declarativo usado pelo Flutter, e o estilo imperativo usado por
-muitos outros frameworks de UI._
+_This introduction describes the conceptual difference between the
+declarative style used by Flutter, and the imperative style used by
+many other UI frameworks._
 
-## Por que uma UI declarativa?
+## Why a declarative UI?
 
-Frameworks do Win32 à web, ao Android e iOS normalmente usam um estilo
-imperativo de programação de UI. Este pode ser o estilo com o qual você está mais familiarizado&mdash;onde você constrói manualmente uma entidade UI totalmente funcional,
-como um UIView ou equivalente, e posteriormente a modifica usando métodos e
-setters quando a UI muda.
+Frameworks from Win32 to web to Android and iOS typically use an imperative
+style of UI programming. This might be the style you're most familiar
+with&mdash;where you manually construct a full-functioned UI entity,
+such as a UIView or equivalent, and later mutate it using methods and
+setters when the UI changes.
 
-Para aliviar o fardo dos desenvolvedores de ter que programar como fazer a
-transição entre vários estados de UI, o Flutter, em contraste,
-permite que o desenvolvedor descreva o estado atual da UI e deixa a
-transição para o framework.
+In order to lighten the burden on developers from having to program how to
+transition between various UI states, Flutter, by contrast,
+lets the developer describe the current UI state and leaves the
+transitioning to the framework.
 
-Isso, no entanto, requer uma pequena mudança no pensamento de como manipular a UI.
+This, however, requires a slight shift in thinking for how to manipulate UI.
 
-## Como mudar a UI em um framework declarativo
+## How to change UI in a declarative framework
 
-Considere um exemplo simplificado abaixo:
+Consider a simplified example below:
 
 <img src="/assets/images/docs/declarativeUIchanges.png" alt="View B (contained by view A) morphs from containing two views, c1 and c2, to containing only view c3.">
 
-No estilo imperativo, você normalmente iria ao proprietário de ViewB
-e recuperaria a instância `b` usando seletores ou com `findViewById` ou similar,
-e invocaria mutações nela (e implicitamente a invalidaria). Por exemplo:
+In the imperative style, you would typically go to ViewB's owner
+and retrieve the instance `b` using selectors or with `findViewById` or similar,
+and invoke mutations on it (and implicitly invalidate it). For example:
 
 ```java
 // Imperative style
@@ -43,28 +43,24 @@ ViewC c3 = new ViewC(...)
 b.add(c3)
 ```
 
-Você também pode precisar replicar essa configuração no construtor de
-ViewB, já que a fonte de verdade para a UI pode sobreviver à própria instância `b`.
+You might also need to replicate this configuration in the constructor of
+ViewB since the source of truth for the UI might outlive instance `b` itself.
 
-No estilo declarativo, as configurações de view (como os Widgets do Flutter)
-são imutáveis e são apenas "blueprints" leves. Para mudar a UI,
-um widget dispara uma reconstrução em si mesmo (mais comumente chamando `setState()`
-em StatefulWidgets no Flutter) e constrói uma nova subárvore de Widget.
+In the declarative style, view configurations (such as Flutter's Widgets)
+are immutable and are only lightweight "blueprints". To change the UI,
+a widget triggers a rebuild on itself (most commonly by calling `setState()`
+on StatefulWidgets in Flutter) and constructs a new Widget subtree.
 
 <?code-excerpt "lib/main.dart (declarative)"?>
 ```dart
 // Declarative style
-return ViewB(
-  color: red,
-  child: const ViewC(),
-);
+return ViewB(color: red, child: const ViewC());
 ```
 
-Aqui, em vez de modificar uma instância antiga `b` quando a UI muda,
-o Flutter constrói novas instâncias de Widget. O framework gerencia muitas das
-responsabilidades de um objeto UI tradicional (como manter o
-estado do layout) nos bastidores com RenderObjects.
-RenderObjects persistem entre frames e os Widgets leves do Flutter
-dizem ao framework para modificar os RenderObjects entre estados.
-O framework Flutter cuida do resto.
-
+Here, rather than mutating an old instance `b` when the UI changes,
+Flutter constructs new Widget instances. The framework manages many of the
+responsibilities of a traditional UI object (such as maintaining the
+state of the layout) behind the scenes with RenderObjects.
+RenderObjects persist between frames and Flutter's lightweight Widgets
+tell the framework to mutate the RenderObjects between states.
+The Flutter framework handles the rest.

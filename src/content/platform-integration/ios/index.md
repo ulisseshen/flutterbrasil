@@ -1,6 +1,5 @@
 ---
-ia-translate: true
 title: iOS
 layout: toc
-description: Conteúdo sobre integração com iOS em apps Flutter.
+description: Content covering integration with iOS in Flutter apps.
 ---

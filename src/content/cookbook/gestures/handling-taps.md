@@ -1,31 +1,27 @@
 ---
-title: Lidar com toques
-description: Como lidar com toques e arrastar.
-js:
-  - defer: true
-    url: /assets/js/inject_dartpad.js
-ia-translate: true
+title: Handle taps
+description: How to handle tapping and dragging.
 ---
 
 <?code-excerpt path-base="cookbook/gestures/handling_taps/"?>
 
-Você não quer apenas exibir informações aos usuários,
-você quer que os usuários interajam com seu aplicativo.
-Use o widget [`GestureDetector`][] para responder
-a ações fundamentais, como tocar e arrastar.
+You not only want to display information to users,
+you want users to interact with your app.
+Use the [`GestureDetector`][] widget to respond
+to fundamental actions, such as tapping and dragging.
 
 :::note
-Para saber mais, assista este pequeno vídeo Widget of the Week sobre
-o widget `GestureDetector`:
+To learn more, watch this short Widget of the Week video on
+the `GestureDetector` widget:
 
-{% ytEmbed 'WhVXkCFPmK4', 'GestureDetector | Flutter widget of the week' %}
+<YouTubeEmbed id="WhVXkCFPmK4" title="GestureDetector | Flutter widget of the week"></YouTubeEmbed>
 :::
 
-Esta receita mostra como fazer um botão personalizado que exibe
-uma snackbar quando tocado com os seguintes passos:
+This recipe shows how to make a custom button that shows
+a snackbar when tapped with the following steps:
 
-  1. Criar o botão.
-  2. Envolvê-lo em um `GestureDetector` com um callback `onTap()`.
+  1. Create the button.
+  2. Wrap it in a `GestureDetector` and provide an `onTap()` callback.
 
 <?code-excerpt "lib/main.dart (GestureDetector)" replace="/return //g;/^\);$/)/g"?>
 ```dart
@@ -49,16 +45,16 @@ GestureDetector(
 )
 ```
 
-## Observações
+## Notes
 
-  1. Para informações sobre como adicionar o efeito ripple Material ao seu
-     botão, veja a receita [Add Material touch ripples][].
-  2. Embora este exemplo crie um botão personalizado,
-     o Flutter inclui várias implementações de botões, como:
-     [`ElevatedButton`][], [`TextButton`][], e
+  1. For information on adding the Material ripple effect to your
+     button, see the [Add Material touch ripples][] recipe.
+  2. Although this example creates a custom button,
+     Flutter includes a handful of button implementations, such as:
+     [`ElevatedButton`][], [`TextButton`][], and
      [`CupertinoButton`][].
 
-## Exemplo interativo
+## Interactive example
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter tap handling hands-on example in DartPad" run="true"
@@ -88,12 +84,8 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
-      body: const Center(
-        child: MyButton(),
-      ),
+      appBar: AppBar(title: Text(title)),
+      body: const Center(child: MyButton()),
     );
   }
 }
@@ -126,7 +118,7 @@ class MyButton extends StatelessWidget {
 ```
 
 <noscript>
-  <img src="/assets/images/docs/cookbook/handling-taps.gif" alt="Handle taps demo" class="site-mobile-screenshot" />
+  <img src="/assets/images/docs/cookbook/handling-taps.webp" alt="Handle taps demo" class="site-mobile-screenshot" />
 </noscript>
 
 [Add Material touch ripples]: /cookbook/gestures/ripples

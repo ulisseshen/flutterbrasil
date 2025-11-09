@@ -1,26 +1,25 @@
 ---
-title: Fazer fade in de images com um placeholder
-description: Como fazer fade de images.
-ia-translate: true
+title: Fade in images with a placeholder
+description: How to fade images into view.
 ---
 
 <?code-excerpt path-base="cookbook/images/fading_in_images"?>
 
-Ao exibir images usando o widget padrão `Image`,
-você pode notar que elas simplesmente aparecem na tela conforme são carregadas.
-Isso pode parecer visualmente perturbador para seus usuários.
+When displaying images using the default `Image` widget,
+you might notice they simply pop onto the screen as they're loaded.
+This might feel visually jarring to your users.
 
-Em vez disso, não seria legal exibir um placeholder primeiro,
-e as images fariam fade in conforme são carregadas? Use o
-widget [`FadeInImage`][] exatamente para esse propósito.
+Instead, wouldn't it be nice to display a placeholder at first,
+and images would fade in as they're loaded? Use the
+[`FadeInImage`][] widget for exactly this purpose.
 
-`FadeInImage` funciona com images de qualquer tipo: in-memory, assets locais,
-ou images da internet.
+`FadeInImage` works with images of any type: in-memory, local assets,
+or images from the internet.
 
 ## In-Memory
 
-Neste exemplo, use o pacote [`transparent_image`][]
-para um placeholder transparente simples.
+In this example, use the [`transparent_image`][]
+package for a simple transparent placeholder.
 
 <?code-excerpt "lib/memory_main.dart (MemoryNetwork)" replace="/^child\: //g"?>
 ```dart
@@ -30,7 +29,7 @@ FadeInImage.memoryNetwork(
 ),
 ```
 
-### Exemplo completo
+### Complete example
 
 <?code-excerpt "lib/memory_main.dart"?>
 ```dart
@@ -51,9 +50,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: title,
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text(title),
-        ),
+        appBar: AppBar(title: const Text(title)),
         body: Stack(
           children: <Widget>[
             const Center(child: CircularProgressIndicator()),
@@ -71,13 +68,13 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-![Fading In Image Demo](/assets/images/docs/cookbook/fading-in-images.gif){:.site-mobile-screenshot}
+![Fading In Image Demo](/assets/images/docs/cookbook/fading-in-images.webp){:.site-mobile-screenshot}
 
-## Do asset bundle
+## From asset bundle
 
-Você também pode considerar usar assets locais para placeholders.
-Primeiro, adicione o asset ao arquivo `pubspec.yaml` do projeto
-(para mais detalhes, veja [Adding assets and images][]):
+You can also consider using local assets for placeholders.
+First, add the asset to the project's `pubspec.yaml` file
+(for more details, see [Adding assets and images][]):
 
 ```yaml diff
   flutter:
@@ -85,7 +82,7 @@ Primeiro, adicione o asset ao arquivo `pubspec.yaml` do projeto
 +     - assets/loading.gif
 ```
 
-Então, use o construtor [`FadeInImage.assetNetwork()`][]:
+Then, use the [`FadeInImage.assetNetwork()`][] constructor:
 
 <?code-excerpt "lib/asset_main.dart (AssetNetwork)" replace="/^child\: //g"?>
 ```dart
@@ -95,7 +92,7 @@ FadeInImage.assetNetwork(
 ),
 ```
 
-### Exemplo completo
+### Complete example
 
 <?code-excerpt "lib/asset_main.dart"?>
 ```dart
@@ -115,9 +112,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: title,
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text(title),
-        ),
+        appBar: AppBar(title: const Text(title)),
         body: Center(
           child: FadeInImage.assetNetwork(
             placeholder: 'assets/loading.gif',
@@ -130,7 +125,7 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-![Asset fade-in](/assets/images/docs/cookbook/fading-in-asset-demo.gif){:.site-mobile-screenshot}
+![Asset fade-in](/assets/images/docs/cookbook/fading-in-asset-demo.webp){:.site-mobile-screenshot}
 
 
 [Adding assets and images]: /ui/assets/assets-and-images

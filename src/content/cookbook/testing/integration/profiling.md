@@ -1,100 +1,96 @@
 ---
-title: Medindo desempenho com um teste de integração
-description: Como perfilar desempenho para um aplicativo Flutter.
-ia-translate: true
+title: Measure performance with an integration test
+description: How to profile performance for a Flutter app.
 ---
 
 <?code-excerpt path-base="cookbook/testing/integration/profiling/"?>
 
-Quando se trata de aplicativos móveis, o desempenho é crítico para a experiência do usuário.
-Os usuários esperam que os aplicativos tenham rolagem suave e animações significativas livres de
-travamentos ou frames pulados, conhecidos como "jank". Como garantir que seu aplicativo
-esteja livre de jank em uma ampla variedade de dispositivos?
+When it comes to mobile apps, performance is critical to user experience.
+Users expect apps to have smooth scrolling and meaningful animations free of
+stuttering or skipped frames, known as "jank." How to ensure that your app
+is free of jank on a wide variety of devices?
 
-Existem duas opções: primeiro, testar manualmente o aplicativo em diferentes dispositivos.
-Embora essa abordagem possa funcionar para um aplicativo menor, ela se torna mais
-complicada à medida que um aplicativo cresce em tamanho. Alternativamente, execute um teste
-de integração que realiza uma tarefa específica e registra uma timeline de desempenho.
-Em seguida, examine os resultados para determinar se uma seção específica do
-aplicativo precisa ser melhorada.
+There are two options: first, manually test the app on different devices.
+While that approach might work for a smaller app, it becomes more
+cumbersome as an app grows in size. Alternatively, run an integration
+test that performs a specific task and records a performance timeline.
+Then, examine the results to determine whether a specific section of
+the app needs to be improved.
 
-Nesta receita, aprenda como escrever um teste que registra uma timeline de desempenho
-enquanto realiza uma tarefa específica e salva um resumo dos
-resultados em um arquivo local.
+In this recipe, learn how to write a test that records a performance
+timeline while performing a specific task and saves a summary of the
+results to a local file.
 
 :::note
-Gravar timelines de desempenho não é suportado na web.
-Para perfilamento de desempenho na web, consulte
+Recording performance timelines isn't supported on web.
+For performance profiling on web, see
 [Debugging performance for web apps][]
 :::
 
-Esta receita usa as seguintes etapas:
+This recipe uses the following steps:
 
-  1. Escrever um teste que rola através de uma lista de itens.
-  2. Registrar o desempenho do aplicativo.
-  3. Salvar os resultados em disco.
-  4. Executar o teste.
-  5. Revisar os resultados.
+  1. Write a test that scrolls through a list of items.
+  2. Record the performance of the app.
+  3. Save the results to disk.
+  4. Run the test.
+  5. Review the results.
 
-## 1. Escrever um teste que rola através de uma lista de itens
+## 1. Write a test that scrolls through a list of items
 
-Nesta receita, registre o desempenho de um aplicativo enquanto ele rola através de uma
-lista de itens. Para focar no perfilamento de desempenho, esta receita se baseia
-na receita [Scrolling][] em testes de widget.
+In this recipe, record the performance of an app as it scrolls through a
+list of items. To focus on performance profiling, this recipe builds
+on the [Scrolling][] recipe in widget tests.
 
-Siga as instruções naquela receita para criar um aplicativo e escrever um teste para
-verificar que tudo funciona como esperado.
+Follow the instructions in that recipe to create an app and write a test to
+verify that everything works as expected.
 
-## 2. Registrar o desempenho do aplicativo
+## 2. Record the performance of the app
 
-Em seguida, registre o desempenho do aplicativo enquanto ele rola através da
-lista. Realize esta tarefa usando o método [`traceAction()`][]
-fornecido pela classe [`IntegrationTestWidgetsFlutterBinding`][].
+Next, record the performance of the app as it scrolls through the
+list. Perform this task using the [`traceAction()`][]
+method provided by the [`IntegrationTestWidgetsFlutterBinding`][] class.
 
-Este método executa a função fornecida e registra uma [`Timeline`][]
-com informações detalhadas sobre o desempenho do aplicativo. Este exemplo
-fornece uma função que rola através da lista de itens,
-garantindo que um item específico seja exibido. Quando a função termina,
-o `traceAction()` cria um Map de dados do relatório que contém a `Timeline`.
+This method runs the provided function and records a [`Timeline`][]
+with detailed information about the performance of the app. This example
+provides a function that scrolls through the list of items,
+ensuring that a specific item is displayed. When the function completes,
+the `traceAction()` creates a report data `Map` that contains the `Timeline`.
 
-Especifique o `reportKey` ao executar mais de um `traceAction`.
-Por padrão, todas as `Timelines` são armazenadas com a chave `timeline`,
-neste exemplo o `reportKey` é alterado para `scrolling_timeline`.
+Specify the `reportKey` when running more than one `traceAction`.
+By default all `Timelines` are stored with the key `timeline`,
+in this example the `reportKey` is changed to `scrolling_timeline`.
 
 <?code-excerpt "integration_test/scrolling_test.dart (traceAction)"?>
 ```dart
-await binding.traceAction(
-  () async {
-    // Scroll until the item to be found appears.
-    await tester.scrollUntilVisible(
-      itemFinder,
-      500.0,
-      scrollable: listFinder,
-    );
-  },
-  reportKey: 'scrolling_timeline',
-);
+await binding.traceAction(() async {
+  // Scroll until the item to be found appears.
+  await tester.scrollUntilVisible(
+    itemFinder,
+    500.0,
+    scrollable: listFinder,
+  );
+}, reportKey: 'scrolling_timeline');
 ```
 
-## 3. Salvar os resultados em disco
+## 3. Save the results to disk
 
-Agora que você capturou uma timeline de desempenho, você precisa de uma maneira de revisá-la.
-O objeto `Timeline` fornece informações detalhadas sobre todos os eventos
-que ocorreram, mas não fornece uma maneira conveniente de revisar os resultados.
+Now that you've captured a performance timeline, you need a way to review it.
+The `Timeline` object provides detailed information about all of the events
+that took place, but it doesn't provide a convenient way to review the results.
 
-Portanto, converta a `Timeline` em um [`TimelineSummary`][].
-O `TimelineSummary` pode realizar duas tarefas que facilitam
-revisar os resultados:
+Therefore, convert the `Timeline` into a [`TimelineSummary`][].
+The `TimelineSummary` can perform two tasks that make it easier
+to review the results:
 
-  1. Escrever um documento json em disco que resume os dados contidos
-     na `Timeline`. Este resumo inclui informações sobre o
-     número de frames pulados, tempos de build mais lentos e muito mais.
-  2. Salvar a `Timeline` completa como um arquivo json em disco.
-     Este arquivo pode ser aberto com as ferramentas de rastreamento do navegador Chrome
-     encontradas em `chrome://tracing`.
+  1. Writing a json document on disk that summarizes the data contained
+     within the `Timeline`. This summary includes information about the
+     number of skipped frames, slowest build times, and more.
+  2. Saving the complete `Timeline` as a json file on disk.
+     This file can be opened with the Chrome browser's
+     tracing tools found at `chrome://tracing`.
 
-Para capturar os resultados, crie um arquivo chamado `perf_driver.dart`
-na pasta `test_driver` e adicione o seguinte código:
+To capture the results, create a file named `perf_driver.dart`
+in the `test_driver` folder and add the following code:
 
 <?code-excerpt "test_driver/perf_driver.dart"?>
 ```dart
@@ -129,15 +125,15 @@ Future<void> main() {
 }
 ```
 
-A função `integrationDriver` tem um `responseDataCallback`
-que você pode customizar.
-Por padrão, ela escreve os resultados no arquivo `integration_response_data.json`,
-mas você pode customizá-la para gerar um resumo como neste exemplo.
+The `integrationDriver` function has a `responseDataCallback`
+which you can customize.
+By default, it writes the results to the `integration_response_data.json` file,
+but you can customize it to generate a summary like in this example.
 
-## 4. Executar o teste
+## 4. Run the test
 
-Após configurar o teste para capturar uma `Timeline` de desempenho e salvar um
-resumo dos resultados em disco, execute o teste com o seguinte comando:
+After configuring the test to capture a performance `Timeline` and save a
+summary of the results to disk, run the test with the following command:
 
 ```console
 flutter drive \
@@ -146,32 +142,32 @@ flutter drive \
   --profile
 ```
 
-A opção `--profile` significa compilar o aplicativo para o "profile mode"
-ao invés do "debug mode", para que o resultado do benchmark seja mais próximo
-do que será experimentado pelos usuários finais.
+The `--profile` option means to compile the app for the "profile mode"
+rather than the "debug mode", so that the benchmark result is closer to
+what will be experienced by end users.
 
 :::note
-Execute o comando com `--no-dds` ao executar em um dispositivo móvel ou emulador.
-Esta opção desabilita o Dart Development Service (DDS), que não estará
-acessível do seu computador.
+Run the command with `--no-dds` when running on a mobile device or emulator.
+This option disables the Dart Development Service (DDS), which won't
+be accessible from your computer.
 :::
 
-## 5. Revisar os resultados
+## 5. Review the results
 
-Após o teste completar com sucesso, o diretório `build` na raiz do
-projeto contém dois arquivos:
+After the test completes successfully, the `build` directory at the root of
+the project contains two files:
 
-  1. `scrolling_summary.timeline_summary.json` contém o resumo. Abra
-     o arquivo com qualquer editor de texto para revisar as informações contidas
-     nele. Com uma configuração mais avançada, você poderia salvar um resumo toda
-     vez que o teste executa e criar um gráfico dos resultados.
-  2. `scrolling_timeline.timeline.json` contém os dados completos da timeline.
-     Abra o arquivo usando as ferramentas de rastreamento do navegador Chrome encontradas em
-     `chrome://tracing`. As ferramentas de rastreamento fornecem uma
-     interface conveniente para inspecionar os dados da timeline para descobrir
-     a origem de um problema de desempenho.
+  1. `scrolling_summary.timeline_summary.json` contains the summary. Open
+     the file with any text editor to review the information contained
+     within.  With a more advanced setup, you could save a summary every
+     time the test runs and create a graph of the results.
+  2. `scrolling_timeline.timeline.json` contains the complete timeline data.
+     Open the file using the Chrome browser's tracing tools found at
+     `chrome://tracing`. The tracing tools provide a
+     convenient interface for inspecting the timeline data to discover
+     the source of a performance issue.
 
-### Exemplo de resumo
+### Summary example
 
 ```json
 {
@@ -195,7 +191,7 @@ projeto contém dois arquivos:
 }
 ```
 
-## Exemplo completo
+## Complete example
 
 **integration_test/scrolling_test.dart**
 
@@ -211,24 +207,21 @@ void main() {
 
   testWidgets('Counter increments smoke test', (tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp(
-      items: List<String>.generate(10000, (i) => 'Item $i'),
-    ));
+    await tester.pumpWidget(
+      MyApp(items: List<String>.generate(10000, (i) => 'Item $i')),
+    );
 
     final listFinder = find.byType(Scrollable);
     final itemFinder = find.byKey(const ValueKey('item_50_text'));
 
-    await binding.traceAction(
-      () async {
-        // Scroll until the item to be found appears.
-        await tester.scrollUntilVisible(
-          itemFinder,
-          500.0,
-          scrollable: listFinder,
-        );
-      },
-      reportKey: 'scrolling_timeline',
-    );
+    await binding.traceAction(() async {
+      // Scroll until the item to be found appears.
+      await tester.scrollUntilVisible(
+        itemFinder,
+        500.0,
+        scrollable: listFinder,
+      );
+    }, reportKey: 'scrolling_timeline');
   });
 }
 ```

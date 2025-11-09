@@ -1,46 +1,33 @@
 ---
-title: Usar lists
-description: Como implementar uma list.
-js:
-  - defer: true
-    url: /assets/js/inject_dartpad.js
-ia-translate: true
+title: Use lists
+description: How to implement a list.
 ---
 
 <?code-excerpt path-base="cookbook/lists/basic_list"?>
 
-Exibir listas de dados é um padrão fundamental para aplicativos mobile.
-O Flutter inclui o widget [`ListView`][]
-para facilitar o trabalho com listas.
+Displaying lists of data is a fundamental pattern for mobile apps.
+Flutter includes the [`ListView`][]
+widget to make working with lists a breeze.
 
-## Criar uma ListView
+## Create a ListView
 
-Usar o construtor padrão `ListView` é
-perfeito para listas que contêm apenas alguns itens.
-O widget integrado [`ListTile`][]
-é uma maneira de dar aos itens uma estrutura visual.
+Using the standard `ListView` constructor is
+perfect for lists that contain only a few items.
+The built-in [`ListTile`][]
+widget is a way to give items a visual structure.
 
 <?code-excerpt "lib/main.dart (ListView)" replace="/^body\: //g"?>
 ```dart
 ListView(
   children: const <Widget>[
-    ListTile(
-      leading: Icon(Icons.map),
-      title: Text('Map'),
-    ),
-    ListTile(
-      leading: Icon(Icons.photo_album),
-      title: Text('Album'),
-    ),
-    ListTile(
-      leading: Icon(Icons.phone),
-      title: Text('Phone'),
-    ),
+    ListTile(leading: Icon(Icons.map), title: Text('Map')),
+    ListTile(leading: Icon(Icons.photo_album), title: Text('Album')),
+    ListTile(leading: Icon(Icons.phone), title: Text('Phone')),
   ],
 ),
 ```
 
-## Exemplo interativo
+## Interactive example
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter lists hands-on example in DartPad" run="true"
@@ -58,23 +45,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: title,
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text(title),
-        ),
+        appBar: AppBar(title: const Text(title)),
         body: ListView(
           children: const <Widget>[
-            ListTile(
-              leading: Icon(Icons.map),
-              title: Text('Map'),
-            ),
-            ListTile(
-              leading: Icon(Icons.photo_album),
-              title: Text('Album'),
-            ),
-            ListTile(
-              leading: Icon(Icons.phone),
-              title: Text('Phone'),
-            ),
+            ListTile(leading: Icon(Icons.map), title: Text('Map')),
+            ListTile(leading: Icon(Icons.photo_album), title: Text('Album')),
+            ListTile(leading: Icon(Icons.phone), title: Text('Phone')),
           ],
         ),
       ),

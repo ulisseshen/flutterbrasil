@@ -1,24 +1,20 @@
 ---
-title: Adicionar ripples de toque Material
-description: Como implementar animações ripple.
-js:
-  - defer: true
-    url: /assets/js/inject_dartpad.js
-ia-translate: true
+title: Add Material touch ripples
+description: How to implement ripple animations.
 ---
 
 <?code-excerpt path-base="cookbook/gestures/ripples/"?>
 
-Widgets que seguem as diretrizes do Material Design exibem
-uma animação ripple quando tocados.
+Widgets that follow the Material Design guidelines display
+a ripple animation when tapped.
 
-O Flutter fornece o widget [`InkWell`][]
-para executar este efeito.
-Crie um efeito ripple usando os seguintes passos:
+Flutter provides the [`InkWell`][]
+widget to perform this effect.
+Create a ripple effect using the following steps:
 
-  1. Criar um widget que suporte toque.
-  2. Envolvê-lo em um widget `InkWell` para gerenciar callbacks de toque e
-     animações ripple.
+  1. Create a widget that supports tap.
+  2. Wrap it in an `InkWell` widget to manage tap callbacks and
+     ripple animations.
 
 <?code-excerpt "lib/main.dart (InkWell)" replace="/return //g;/^\);$/)/g"?>
 ```dart
@@ -26,9 +22,9 @@ Crie um efeito ripple usando os seguintes passos:
 InkWell(
   // When the user taps the button, show a snackbar.
   onTap: () {
-    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-      content: Text('Tap'),
-    ));
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text('Tap')));
   },
   child: const Padding(
     padding: EdgeInsets.all(12),
@@ -37,7 +33,7 @@ InkWell(
 )
 ```
 
-## Exemplo interativo
+## Interactive example
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter Material ripples hands-on example in DartPad" run="true"
@@ -67,12 +63,8 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
-      body: const Center(
-        child: MyButton(),
-      ),
+      appBar: AppBar(title: Text(title)),
+      body: const Center(child: MyButton()),
     );
   }
 }
@@ -86,9 +78,9 @@ class MyButton extends StatelessWidget {
     return InkWell(
       // When the user taps the button, show a snackbar.
       onTap: () {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text('Tap'),
-        ));
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text('Tap')));
       },
       child: const Padding(
         padding: EdgeInsets.all(12),
@@ -100,7 +92,7 @@ class MyButton extends StatelessWidget {
 ```
 
 <noscript>
-  <img src="/assets/images/docs/cookbook/ripples.gif" alt="Ripples Demo" class="site-mobile-screenshot" />
+  <img src="/assets/images/docs/cookbook/ripples.webp" alt="Ripples Demo" class="site-mobile-screenshot" />
 </noscript>
 
 

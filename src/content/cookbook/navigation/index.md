@@ -1,7 +1,6 @@
 ---
-title: Navegação
-description: Um catálogo de receitas para lidar com navegação no seu app Flutter.
-ia-translate: true
+title: Flutter navigation cookbook
+shortTitle: Navigation
+description: A catalog of recipes for handling navigation in your Flutter app.
+layout: toc
 ---
-
-{% include docs/cookbook-group-index.md %}

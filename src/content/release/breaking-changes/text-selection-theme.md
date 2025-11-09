@@ -2,10 +2,11 @@
 title: TextSelectionTheme migration
 description: >
   The default properties for text selection are migrating to TextSelectionTheme.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 The `ThemeData` properties that controlled the look of
 selected text in Material widgets have been moved into
@@ -15,7 +16,7 @@ their own `TextSelectionTheme`. These properties include
 properties have also been changed to match the Material
 Design specification.
 
-## Contexto
+## Context
 
 As part of the larger [Material Theme Updates][],
 we have introduced a new [Text Selection Theme][]
@@ -26,7 +27,7 @@ and update their default values to match the Material
 Design specification. This document describes how
 applications can migrate to this new API.
 
-## Guia de migração
+## Migration guide
 
 If you are currently using the following properties of
 `ThemeData`, you need to update them to use the new
@@ -40,7 +41,7 @@ equivalent properties on `ThemeData.textSelectionTheme`:
 
 <br/>
 
-**Código antes da migração:**
+**Code before migration:**
 
 ```dart
 ThemeData(
@@ -50,7 +51,7 @@ ThemeData(
 )
 ```
 
-**Código após a migração:**
+**Code after migration:**
 
 ```dart
 ThemeData(
@@ -101,19 +102,19 @@ following command:
 $ flutter test --update-goldens
 ```
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 1.23.0-4.0.pre<br>
-Na versão estável: 2.0.0
+Landed in version: 1.23.0-4.0.pre<br>
+In stable release: 2.0.0
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`TextSelectionThemeData`][]
 * [`ThemeData`][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [PR 62014: TextSelectionTheme support][]
 

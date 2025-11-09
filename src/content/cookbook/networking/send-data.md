@@ -1,55 +1,54 @@
 ---
-title: Envie dados para a internet
-description: Como usar o pacote http para enviar dados pela internet.
-ia-translate: true
+title: Send data to the internet
+description: How to use the http package to send data over the internet.
 ---
 
 <?code-excerpt path-base="cookbook/networking/send_data/"?>
 
-Enviar dados para a internet é necessário para a maioria dos aplicativos.
-O pacote `http` também cuida disso.
+Sending data to the internet is necessary for most apps.
+The `http` package has got that covered, too.
 
-Esta receita usa os seguintes passos:
+This recipe uses the following steps:
 
-  1. Adicione o pacote `http`.
-  2. Envie dados para um servidor usando o pacote `http`.
-  3. Converta a resposta em um objeto Dart customizado.
-  4. Obtenha um `title` da entrada do usuário.
-  5. Exiba a resposta na tela.
+  1. Add the `http` package.
+  2. Send data to a server using the `http` package.
+  3. Convert the response into a custom Dart object.
+  4. Get a `title` from user input.
+  5. Display the response on screen.
 
-## 1. Adicione o pacote `http`
+## 1. Add the `http` package
 
-Para adicionar o pacote `http` como uma dependência,
-execute `flutter pub add`:
+To add the `http` package as a dependency,
+run `flutter pub add`:
 
 ```console
 $ flutter pub add http
 ```
 
-Importe o pacote `http`.
+Import the `http` package.
 
 <?code-excerpt "lib/main.dart (Http)"?>
 ```dart
 import 'package:http/http.dart' as http;
 ```
 
-{% render docs/cookbook/networking/internet-permission.md %}
+{% render "docs/cookbook/networking/internet-permission.md" %}
 
-## 2. Enviando dados para o servidor
+## 2. Sending data to server
 
-Esta receita cobre como criar um `Album`
-enviando um título de álbum para o
-[JSONPlaceholder][] usando o
-método [`http.post()`][].
+This recipe covers how to create an `Album`
+by sending an album title to the
+[JSONPlaceholder][] using the
+[`http.post()`][] method.
 
-Importe `dart:convert` para acesso ao `jsonEncode` para codificar os dados:
+Import `dart:convert` for access to `jsonEncode` to encode the data:
 
 <?code-excerpt "lib/create_album.dart (convert-import)"?>
 ```dart
 import 'dart:convert';
 ```
 
-Use o método `http.post()` para enviar os dados codificados:
+Use the `http.post()` method to send the encoded data:
 
 <?code-excerpt "lib/create_album.dart (CreateAlbum)"?>
 ```dart
@@ -59,39 +58,37 @@ Future<http.Response> createAlbum(String title) {
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
-    body: jsonEncode(<String, String>{
-      'title': title,
-    }),
+    body: jsonEncode(<String, String>{'title': title}),
   );
 }
 ```
 
-O método `http.post()` retorna um `Future` que contém um `Response`.
+The `http.post()` method returns a `Future` that contains a `Response`.
 
-* [`Future`][] é uma classe central do Dart para trabalhar com
-  operações assíncronas. Um objeto Future representa um valor potencial
-  ou erro que estará disponível em algum momento no futuro.
-* A classe `http.Response` contém os dados recebidos de uma chamada
-  http bem-sucedida.
-* O método `createAlbum()` recebe um argumento `title`
-  que é enviado ao servidor para criar um `Album`.
+* [`Future`][] is a core Dart class for working with
+  asynchronous operations. A Future object represents a potential
+  value or error that will be available at some time in the future.
+* The `http.Response` class contains the data received from a successful
+  http call.
+* The `createAlbum()` method takes an argument `title`
+  that is sent to the server to create an `Album`.
 
-## 3. Converta o `http.Response` em um objeto Dart customizado
+## 3. Convert the `http.Response` to a custom Dart object
 
-Embora seja fácil fazer uma requisição de rede,
-trabalhar com um `Future<http.Response>` bruto
-não é muito conveniente. Para facilitar sua vida,
-converta o `http.Response` em um objeto Dart.
+While it's easy to make a network request,
+working with a raw `Future<http.Response>`
+isn't very convenient.  To make your life easier,
+convert the `http.Response` into a Dart object.
 
-### Crie uma classe Album
+### Create an Album class
 
-Primeiro, crie uma classe `Album` que contém
-os dados da requisição de rede.
-Ela inclui um construtor factory que
-cria um `Album` a partir de JSON.
+First, create an `Album` class that contains
+the data from the network request.
+It includes a factory constructor that
+creates an `Album` from JSON.
 
-Converter JSON com [pattern matching][] é apenas uma opção.
-Para mais informações, veja o artigo completo sobre
+Converting JSON with [pattern matching][] is only one option.
+For more information, see the full article on
 [JSON and serialization][].
 
 <?code-excerpt "lib/main.dart (Album)"?>
@@ -104,36 +101,29 @@ class Album {
 
   factory Album.fromJson(Map<String, dynamic> json) {
     return switch (json) {
-      {
-        'id': int id,
-        'title': String title,
-      } =>
-        Album(
-          id: id,
-          title: title,
-        ),
+      {'id': int id, 'title': String title} => Album(id: id, title: title),
       _ => throw const FormatException('Failed to load album.'),
     };
   }
 }
 ```
 
-### Converta o `http.Response` em um `Album`
+### Convert the `http.Response` to an `Album`
 
-Use os seguintes passos para atualizar a função `createAlbum()`
-para retornar um `Future<Album>`:
+Use the following steps to update the `createAlbum()`
+function to return a `Future<Album>`:
 
-  1. Converta o corpo da resposta em um `Map` JSON com o
-     pacote `dart:convert`.
-  2. Se o servidor retornar uma resposta `CREATED` com um código
-     de status de 201, então converta o `Map` JSON em um `Album`
-     usando o método factory `fromJson()`.
-  3. Se o servidor não retornar uma resposta `CREATED` com um
-     código de status de 201, então lance uma exceção.
-     (Mesmo no caso de uma resposta do servidor "404 Not Found",
-     lance uma exceção. Não retorne `null`.
-     Isso é importante ao examinar
-     os dados em `snapshot`, conforme mostrado abaixo.)
+  1. Convert the response body into a JSON `Map` with the
+     `dart:convert` package.
+  2. If the server returns a `CREATED` response with a status
+     code of 201, then convert the JSON `Map` into an `Album`
+     using the `fromJson()` factory method.
+  3. If the server doesn't return a `CREATED` response with a
+     status code of 201, then throw an exception.
+     (Even in the case of a "404 Not Found" server response,
+     throw an exception. Do not return `null`.
+     This is important when examining
+     the data in `snapshot`, as shown below.)
 
 <?code-excerpt "lib/main.dart (createAlbum)"?>
 ```dart
@@ -143,9 +133,7 @@ Future<Album> createAlbum(String title) async {
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
-    body: jsonEncode(<String, String>{
-      'title': title,
-    }),
+    body: jsonEncode(<String, String>{'title': title}),
   );
 
   if (response.statusCode == 201) {
@@ -160,18 +148,18 @@ Future<Album> createAlbum(String title) async {
 }
 ```
 
-Viva! Agora você tem uma função que envia o título para um
-servidor para criar um álbum.
+Hooray! Now you've got a function that sends the title to a
+server to create an album.
 
-## 4. Obtenha um título da entrada do usuário
+## 4. Get a title from user input
 
-Em seguida, crie um `TextField` para inserir um título e
-um `ElevatedButton` para enviar dados ao servidor.
-Também defina um `TextEditingController` para ler a
-entrada do usuário de um `TextField`.
+Next, create a `TextField` to enter a title and
+a `ElevatedButton` to send data to server.
+Also define a `TextEditingController` to read the
+user input from a `TextField`.
 
-Quando o `ElevatedButton` é pressionado, o `_futureAlbum`
-é definido com o valor retornado pelo método `createAlbum()`.
+When the `ElevatedButton` is pressed, the `_futureAlbum`
+is set to the value returned by `createAlbum()` method.
 
 <?code-excerpt "lib/main.dart (Column)" replace="/^return //g;/^\);$/)/g"?>
 ```dart
@@ -194,31 +182,31 @@ Column(
 )
 ```
 
-Ao pressionar o botão **Create Data**, faça a requisição de rede,
-que envia os dados no `TextField` para o servidor
-como uma requisição `POST`.
-O Future, `_futureAlbum`, é usado no próximo passo.
+On pressing the **Create Data** button, make the network request,
+which sends the data in the `TextField` to the server
+as a `POST` request.
+The Future, `_futureAlbum`, is used in the next step.
 
-## 5. Exiba a resposta na tela
+## 5. Display the response on screen
 
-Para exibir os dados na tela, use o
-widget [`FutureBuilder`][].
-O widget `FutureBuilder` vem com Flutter e
-facilita trabalhar com fontes de dados assíncronas.
-Você deve fornecer dois parâmetros:
+To display the data on screen, use the
+[`FutureBuilder`][] widget.
+The `FutureBuilder` widget comes with Flutter and
+makes it easy to work with asynchronous data sources.
+You must provide two parameters:
 
-  1. O `Future` com o qual você deseja trabalhar. Neste caso,
-     o future retornado da função `createAlbum()`.
-  2. Uma função `builder` que diz ao Flutter o que renderizar,
-     dependendo do estado do `Future`: loading,
-     success, ou error.
+  1. The `Future` you want to work with. In this case,
+     the future returned from the `createAlbum()` function.
+  2. A `builder` function that tells Flutter what to render,
+     depending on the state of the `Future`: loading,
+     success, or error.
 
-Note que `snapshot.hasData` retorna `true` apenas quando
-o snapshot contém um valor de dados não-nulo.
-É por isso que a função `createAlbum()` deve lançar uma exceção
-mesmo no caso de uma resposta do servidor "404 Not Found".
-Se `createAlbum()` retornar `null`, então
-`CircularProgressIndicator` será exibido indefinidamente.
+Note that `snapshot.hasData` only returns `true` when
+the snapshot contains a non-null data value.
+This is why the `createAlbum()` function should throw an exception
+even in the case of a "404 Not Found" server response.
+If `createAlbum()` returns `null`, then
+`CircularProgressIndicator` displays indefinitely.
 
 <?code-excerpt "lib/main.dart (FutureBuilder)" replace="/^return //g;/^\);$/)/g"?>
 ```dart
@@ -236,7 +224,7 @@ FutureBuilder<Album>(
 )
 ```
 
-## Exemplo completo
+## Complete example
 
 <?code-excerpt "lib/main.dart"?>
 ```dart
@@ -252,9 +240,7 @@ Future<Album> createAlbum(String title) async {
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
-    body: jsonEncode(<String, String>{
-      'title': title,
-    }),
+    body: jsonEncode(<String, String>{'title': title}),
   );
 
   if (response.statusCode == 201) {
@@ -276,14 +262,7 @@ class Album {
 
   factory Album.fromJson(Map<String, dynamic> json) {
     return switch (json) {
-      {
-        'id': int id,
-        'title': String title,
-      } =>
-        Album(
-          id: id,
-          title: title,
-        ),
+      {'id': int id, 'title': String title} => Album(id: id, title: title),
       _ => throw const FormatException('Failed to load album.'),
     };
   }
@@ -314,9 +293,7 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Create Data Example'),
-        ),
+        appBar: AppBar(title: const Text('Create Data Example')),
         body: Container(
           alignment: Alignment.center,
           padding: const EdgeInsets.all(8),

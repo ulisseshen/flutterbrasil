@@ -1,33 +1,32 @@
 ---
-title: API depreciada removida após v3.13
-description: >
-  ia-translate: true-
-  Após atingir o fim da vida útil, as seguintes APIs depreciadas
-  foram removidas do Flutter.
+title: Deprecated API removed after v3.13
+description: >-
+  After reaching end of life, the following deprecated APIs
+  were removed from Flutter.
 ---
 
-## Resumo
+## Summary
 
-De acordo com a [Política de Depreciação][Deprecation Policy] do Flutter,
-APIs depreciadas que atingiram o fim da vida útil após a
-3.13 versão estável foram removidas.
+In accordance with Flutter's [Deprecation Policy][],
+deprecated APIs that reached end of life after the
+3.13 stable release have been removed.
 
-Todas as APIs afetadas foram compiladas nesta
-fonte primária para auxiliar na migração.
+All affected APIs have been compiled into this
+primary source to aid in migration.
 To further aid your migration, check out this
 [quick reference sheet][].
 
 [Deprecation Policy]: {{site.repo.flutter}}/blob/main/docs/contributing/Tree-hygiene.md#deprecations
 [quick reference sheet]: /go/deprecations-removed-after-3-13
 
-## Mudanças
+## Changes
 
 This section lists the deprecations by the package and affected class.
 
 ### Chip classes' useDeleteButtonTooltip
 
 Package: flutter
-Suportado pelo Flutter Fix: sim
+Supported by Flutter Fix: yes
 
 The `useDeleteButtonTooltip` property of the following classes was deprecated
 in v2.10:
@@ -43,16 +42,16 @@ same result as setting the original property `useDeleteButtonTooltip` to false.
 When `deleteButtonTooltipMessage` is unset, the
 `MaterialLocalizations.deleteButtonTooltip` is used by default.
 
-The [Deprecate `useDeleteButtonTooltip` for Chips][] design document 
+The [Deprecate `useDeleteButtonTooltip` for Chips][] design document
 covers this update to chips and tooltips in greater depth.
 To learn more, check out the [chips and tooltips migration guide][].
 
 [Deprecate `useDeleteButtonTooltip` for Chips]: https://docs.google.com/document/d/1wc9ot7T2E7hJubYxEWMX230a79wYSiFey4BHxnEzHtw/edit?usp=sharing&resourcekey=0-Bo7KPqEtkWgZcSuRCqwQ5w
 [chips and tooltips migration guide]: /release/breaking-changes/chip-usedeletebuttontooltip-migration
 
-**Guia de migração**
+**Migration guide**
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 Chip(useDeleteButtonTooltip: false);
@@ -61,7 +60,7 @@ RawChip rawChip = RawChip();
 rawChip.useDeleteButtonTooltip;
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 Chip(deleteButtonTooltipMessage: '');
@@ -70,9 +69,9 @@ RawChip rawChip = RawChip();
 rawChip.deleteButtonTooltipMessage;
 ```
 
-**Referências**
+**References**
 
-Documentação da API:
+API documentation:
 
 * [`DeletableChipAttributes`][]
 * [`Chip`][]
@@ -80,10 +79,10 @@ Documentação da API:
 * [`InputChip`][]
 * [`MaterialLocalizations.deleteButtonTooltip`][]
 
-PRs relevantes:
+Relevant PRs:
 
-* Depreciado em [#96174][]
-* Removido em [#134486][]
+* Deprecated in [#96174][]
+* Removed in [#134486][]
 
 [`DeletableChipAttributes`]: {{site.api}}/flutter/material/DeletableChipAttributes-class.html
 [`Chip`]: {{site.api}}/flutter/material/Chip-class.html
@@ -99,18 +98,18 @@ PRs relevantes:
 ### MaterialButtonWithIconMixin
 
 Package: flutter
-Suportado pelo Flutter Fix: não
+Supported by Flutter Fix: no
 
-The `MaterialButtonWithIconMixin` property foi depreciado na v2.11.
+The `MaterialButtonWithIconMixin` property was deprecated in v2.11.
 
 With the introduction of new button classes `TextButton`, `OutlinedButton` and `ElevatedButton`,
 this mixin is no longer used.
 An earlier release removed old button classes that used this mixin.
 As a result, this mixin no longer affects any classes that might mix it in.
 
-**Guia de migração**
+**Migration guide**
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 class MyButtonClass extends StatelessWidget with MaterialButtonWithIconMixin {
@@ -118,7 +117,7 @@ class MyButtonClass extends StatelessWidget with MaterialButtonWithIconMixin {
 }
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 class MyButtonClass extends StatelessWidget {
@@ -126,12 +125,12 @@ class MyButtonClass extends StatelessWidget {
 }
 ```
 
-**Referências**
+**References**
 
-PRs relevantes:
+Relevant PRs:
 
-* Depreciado em [#99088][]
-* Removido em [#133173][]
+* Deprecated in [#99088][]
+* Removed in [#133173][]
 
 [#99088]: {{site.repo.flutter}}/pull/99088
 [#133173]: {{site.repo.flutter}}/pull/133173
@@ -141,7 +140,7 @@ PRs relevantes:
 ### PlatformsViewsService.synchronizeToNativeViewHierarchy
 
 Package: flutter
-Suportado pelo Flutter Fix: não
+Supported by Flutter Fix: no
 
 The static method `synchronizeToNativeViewHierarchy` of `PlatformsViewsService`
 was deprecated in v2.11.
@@ -150,29 +149,29 @@ During the deprecation period, the method was a no-op function as it was no
 longer required to call for performance improvements.
 References to the method should be removed and won't impact the application.
 
-**Guia de migração**
+**Migration guide**
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 await PlatformsViewsService.synchronizeToNativeViewHierarchy(false);
 ````
 
-Código após a migração:
+Code after migration:
 
 ```dart
 ```
 
-**Referências**
+**References**
 
-Documentação da API:
+API documentation:
 
 * [`PlatformViewsService`][]
 
-PRs relevantes:
+Relevant PRs:
 
-* Depreciado em [#100990][]
-* Removido em [#133175][]
+* Deprecated in [#100990][]
+* Removed in [#133175][]
 
 [`PlatformViewsService`]: {{site.api}}/flutter/services/PlatformViewsService-class.html
 
@@ -184,7 +183,7 @@ PRs relevantes:
 ### TextSelectionOverlay.fadeDuration
 
 Package: flutter
-Suportado pelo Flutter Fix: sim
+Supported by Flutter Fix: yes
 
 The static `fadeDuration` property of `TextSelectionOverlay` was deprecated
 in v2.12.
@@ -194,31 +193,31 @@ With the `TextSelectionOverlay` refactor,
 `SelectionOverlay` was added as a more generic widget without
 the specific dependency on `RenderEditable`.
 
-**Guia de migração**
+**Migration guide**
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 TextSelectionOverlay.fadeDuration;
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 SelectionOverlay.fadeDuration;
 ```
 
-**Referências**
+**References**
 
-Documentação da API:
+API documentation:
 
 * [`TextSelectionOverlay`][]
 * [`SelectionOverlay`][]
 
-PRs relevantes:
+Relevant PRs:
 
-* Depreciado em [#100381][]
-* Removido em [#134485][]
+* Deprecated in [#100381][]
+* Removed in [#134485][]
 
 [`TextSelectionOverlay`]: {{site.api}}/flutter/widgets/TextSelectionOverlay-class.html
 [`SelectionOverlay`]: {{site.api}}/flutter/widgets/SelectionOverlay-class.html
@@ -231,7 +230,7 @@ PRs relevantes:
 ### androidOverscrollIndicator
 
 Package: flutter
-Suportado pelo Flutter Fix: não
+Supported by Flutter Fix: no
 
 The `androidOverscrollIndicator` property of the following classes was
 deprecated in v2.13:
@@ -242,20 +241,20 @@ deprecated in v2.13:
 
 This flag was introduced to allow users to configure scrolling widgets to use
 the `GlowingOverscrollIndicator` or the `StretchingOvercrollIndicator`.
-It foi depreciado na favor of the `ThemeData.useMaterial3` flag
+It was deprecated in favor of the `ThemeData.useMaterial3` flag
 as the framework introduced more support for Material 3-styled widgets.
 
 Since `ThemeData.useMaterial3` is `true` by default,
 the `StretchingOverscrollIndicator` is applied by default.
-Setting this value to `false` will apply a `GlowingOverscrollIndicator` no lugar.
+Setting this value to `false` will apply a `GlowingOverscrollIndicator` instead.
 
 Alternatively, the `buildOverscrollIndicator` method of `ScrollBehavior` or
 `MaterialScrollBehavior` can be overridden to further alter the appearance of
 overscroll indicators.
 
-**Guia de migração**
+**Migration guide**
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 MaterialApp(
@@ -280,7 +279,7 @@ MaterialApp(
 );
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 MaterialApp(
@@ -293,9 +292,9 @@ MaterialApp(
 );
 ```
 
-**Referências**
+**References**
 
-Documentação da API:
+API documentation:
 
 * [`ScrollBehavior`][]
 * [`MaterialScrollBehavior`][]
@@ -303,10 +302,10 @@ Documentação da API:
 * [`GlowingOverscrollIndicator`][]
 * [`StretchingOverscrollIndicator`][]
 
-PRs relevantes:
+Relevant PRs:
 
-* Depreciado em [#100234][]
-* Removido em [#133181][]
+* Deprecated in [#100234][]
+* Removed in [#133181][]
 
 [`ScrollBehavior`]: {{site.api}}/flutter/widgets/ScrollBehavior-class.html
 [`MaterialScrollBehavior`]: {{site.api}}/flutter/material/MaterialScrollBehavior-class.html
@@ -322,7 +321,7 @@ PRs relevantes:
 ### Updates to ImageProvider and PaintingBinding
 
 Package: flutter
-Suportado pelo Flutter Fix: não
+Supported by Flutter Fix: no
 
 The `instantiateImageCodec` method of `PaintingBinding`, as well as the `load`
 method of `ImageProvider` and the associated `DecoderCallback` were all
@@ -338,32 +337,32 @@ The respective replacements are:
 
 This change enabled faster performance in image loading by using a buffer.
 
-**Guia de migração**
+**Migration guide**
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 PaintingBinding.instance.instantiateImageCodec
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 PaintingBinding.instance.instantiateImageCodecFromBuffer
 ```
 
-**Referências**
+**References**
 
-Documentação da API:
+API documentation:
 
 * [`PaintingBinding`][]
 * [`ImageProvider`][]
 * [`DecoderBufferCallback`][]
 
-PRs relevantes:
+Relevant PRs:
 
-* Depreciado em [#103496][]
-* Removido em [#132679][]
+* Deprecated in [#103496][]
+* Removed in [#132679][]
 
 [`PaintingBinding`]: {{site.api}}/flutter/painting/PaintingBinding-mixin.html
 [`ImageProvider`]: {{site.api}}/flutter/painting/ImageProvider-class.html
@@ -377,7 +376,7 @@ PRs relevantes:
 ### TestWindow properties
 
 Package: flutter_test
-Suportado pelo Flutter Fix: não
+Supported by Flutter Fix: no
 
 To prepare for multi-window support,
 many deprecated properties of `TestWindow` have been removed.
@@ -411,9 +410,9 @@ To learn more about this `TestWindow` update, check out
 
 [`TestWindow` migration guide]: /release/breaking-changes/window-singleton
 
-**Guia de migração**
+**Migration guide**
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 testWidgets('My test', (WidgetTester tester) aysnc {
@@ -424,7 +423,7 @@ testWidgets('My test', (WidgetTester tester) aysnc {
 });
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 testWidgets('My test', (WidgetTester tester) aysnc {
@@ -435,18 +434,18 @@ testWidgets('My test', (WidgetTester tester) aysnc {
 });
 ```
 
-**Referências**
+**References**
 
-Documentação da API:
+API documentation:
 
 * [`WidgetTester`][]
 * [`TestWidgetsFlutterBinding`][]
 * [`TestPlatformDispatcher`][]
 
-PRs relevantes:
+Relevant PRs:
 
-* Depreciado em [#99443][]
-* Removido em [#131098][]
+* Deprecated in [#99443][]
+* Removed in [#131098][]
 
 [`WidgetTester`]: {{site.api}}/flutter/flutter_test/WidgetTester-class.html
 [`TestWidgetsFlutterBinding`]: {{site.api}}/flutter/flutter_test/TestWidgetsFlutterBinding-class.html
@@ -457,6 +456,6 @@ PRs relevantes:
 
 ---
 
-## Linha do tempo
+## Timeline
 
-Na versão estável: 3.16
+In stable release: 3.16

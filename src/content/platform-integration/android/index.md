@@ -1,6 +1,5 @@
 ---
-ia-translate: true
 layout: toc
 title: Android
-description: Conteúdo sobre integração com Android em apps Flutter.
+description: Content covering integration with Android in Flutter apps.
 ---

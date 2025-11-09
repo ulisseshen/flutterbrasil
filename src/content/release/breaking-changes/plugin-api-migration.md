@@ -1,13 +1,15 @@
 ---
 title: Supporting the new Android plugins APIs
 description: How to update a plugin using the old APIs to support the new APIs.
-ia-translate: true
 ---
+
+{% render "docs/breaking-changes.md" %}
 
 <?code-excerpt path-base="platform_integration/plugin_api_migration"?>
 
 :::note
-New plugins and all plugins that are compatible with Flutter 2 (March 2021) can ignore this page.
+New plugins and all plugins that are compatible with Flutter 2
+(March 2021) can ignore this page.
 :::
 
 :::note
@@ -33,7 +35,7 @@ Flutter isn't attached to any activities.
 
 In other words, plugins using the old API might produce undefined
 behaviors when embedding Flutter into an Android app.
-Most of the [Flutter plugins][] provided by the flutterbrasil.dev
+Most of the [Flutter plugins][] provided by the flutter.dev
 team have been migrated already. (Learn how to become a
 [verified publisher][] on pub.dev!) For an example of
 a plugin that uses the new APIs, see the

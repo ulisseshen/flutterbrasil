@@ -1,17 +1,31 @@
 ---
-ia-translate: true
-title: Versão necessária do Kotlin
+title: Required Kotlin version
 description: >
-    Apps Flutter compilados para a plataforma Android
-    agora requerem Kotlin 1.5.31 ou superior.
+    Flutter apps built for the Android platform
+    now require Kotlin 1.5.31 or greater.
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
 
-Para compilar um app Flutter para Android, é necessário Kotlin 1.5.31 ou superior.
+:::important
+As of Flutter 3.16, the default Gradle build scripts differ across
+Flutter versions. For example, the Kotlin version is now
+configured in the `android/settings.gradle` file.
+If you have generated your project with
+an older version of Flutter, it's advisable to upgrade
+your build scripts to the newest form. For more information,
+see [Issue 10380][] and [Issue 135392].
+:::
 
-Se seu app usar uma versão inferior,
-você receberá a seguinte mensagem de erro:
+[Issue 10380]:  {{site.github}}/flutter/website/issues/10380
+[Issue 135392]: {{site.github}}/flutter/flutter/issues/135392
+
+## Summary
+
+To build a Flutter app for Android, Kotlin 1.5.31 or greater is required.
+
+If your app uses a lower version,
+you will receive the following error message:
 
 ```plaintext noHighlight
 ┌─ Flutter Fix ────────────────────────────────────────────────────────────┐
@@ -25,20 +39,20 @@ você receberá a seguinte mensagem de erro:
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-## Contexto
+## Context
 
-O Flutter adicionou suporte para [dispositivos dobráveis][1] no Android.
-Isso exigiu adicionar uma dependência AndroidX ao embedding do Flutter que
-requer que os apps usem Kotlin 1.5.31 ou superior.
+Flutter added support for [foldable devices][1] on Android.
+This required adding an AndroidX dependency to the Flutter embedding that
+requires apps to use Kotlin 1.5.31 or greater.
 
-## Descrição da mudança
+## Description of change
 
-Um app Flutter compilado para Android agora inclui a dependência Gradle
+A Flutter app compiled for Android now includes the Gradle dependency
 `androidx.window:window-java`.
 
-## Guia de migração
+## Migration guide
 
-Abra `<app-src>/android/build.gradle`, e altere `ext.kotlin_version`:
+Open `<app-src>/android/build.gradle`, and change `ext.kotlin_version`:
 
 ```groovy diff
   buildscript {
@@ -46,14 +60,14 @@ Abra `<app-src>/android/build.gradle`, e altere `ext.kotlin_version`:
 +     ext.kotlin_version = '1.5.31'
 ```
 
-## Cronograma
+## Timeline
 
-Adicionado na versão: v2.9.0 beta<br>
-Na versão stable: 2.10
+Landed in version: v2.9.0 beta<br>
+In stable release: 2.10
 
-## Referências
+## References
 
-PR relevante:
+Relevant PR:
 
 * [PR 29585: Display Features support][]
 

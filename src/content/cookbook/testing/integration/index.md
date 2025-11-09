@@ -1,8 +1,7 @@
 ---
-title: Integration
+title: Integration testing
+breadcrumb: Integration
 description: >
-  Um catálogo de receitas para adicionar testes de integração ao seu aplicativo Flutter.
-ia-translate: true
+  A catalog of recipes for adding integration testing to your Flutter app.
+layout: toc
 ---
-
-{% include docs/cookbook-group-index.md %}

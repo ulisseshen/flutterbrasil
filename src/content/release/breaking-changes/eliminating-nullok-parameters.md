@@ -2,17 +2,18 @@
 title: Eliminating nullOk Parameters
 description: >
     To eliminate nullOk parameters to help with
-    API sanity in the face of null safety.
-ia-translate: true
+    API clarity in the face of null safety.
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 This migration guide describes conversion of code that uses the `nullOk`
 parameter on multiple `of` static accessors and related accessors to use
 alternate APIs with nullable return values.
 
-## Contexto
+## Context
 
 Flutter has a common pattern of allowing lookup of some types of widgets
 ([`InheritedWidget`][]s) using static member functions that are typically called
@@ -42,7 +43,7 @@ The design document for this change is [Eliminating nullOk parameters][].
 
 [Eliminating nullOk parameters]: /go/eliminating-nullok-parameters
 
-## Descrição da mudança
+## Description of change
 
 The actual change modified these APIs to not have a `nullOk` parameter, and to
 return a non-nullable value:
@@ -92,7 +93,7 @@ return a nullable value:
 * [`CupertinoUserInterfaceLevel.maybeOf`][]
 * [`CupertinoTheme.maybeBrightnessOf`][]
 
-## Guia de migração
+## Migration guide
 
 In order to modify your code to use the new form of the APIs, convert all
 instances of calls that include `nullOk = true` as a parameter to use the
@@ -133,14 +134,14 @@ finding the places where the `!` operator should be removed, and the
 helpful in finding unnecessary question mark operators on `final` and `const`
 variables.
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 1.24.0<br>
-Na versão estável: 2.0.0
+Landed in version: 1.24.0<br>
+In stable release: 2.0.0
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`MediaQuery.of`][]
 * [`Navigator.of`][]
@@ -183,11 +184,11 @@ Documentação da API:
 * [`CupertinoUserInterfaceLevel.maybeOf`][]
 * [`CupertinoTheme.maybeBrightnessOf`][]
 
-Issues relevantes:
+Relevant issue:
 
 * [Issue 68637][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [Remove `nullOk` in `MediaQuery.of`][]
 * [Remove `nullOk` in `Navigator.of`][]

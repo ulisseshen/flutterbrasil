@@ -1,23 +1,24 @@
 ---
-title: showAutocorrectionPromptRect method added to TextInputClient 
+title: showAutocorrectionPromptRect method added to TextInputClient
 description: >
-  A new method, void showAutocorrectionPromptRect(int start, int end), 
+  A new method, void showAutocorrectionPromptRect(int start, int end),
   was added to the TextInputClient interface
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 A new method,`void showAutocorrectionPromptRect(int start, int end)`,
 was added to the `TextInputClient` interface.
 
-## Contexto
+## Context
 
 In order to display the iOS autocorrection highlight,
 the iOS text input plugin needed a way to inform the
 Flutter framework of the highlight's start and end position.
 
-## Descrição da mudança
+## Description of change
 
 A new method, `void showAutocorrectionPromptRect(int start, int end)`,
 was added to the `TextInputClient` interface. iOS calls this method
@@ -25,11 +26,11 @@ when it finds a new potential autocorrect candidate
 in the current user input, or when the range of a previously
 highlighted candidate changes.
 
-## Guia de migração
+## Migration guide
 
 If your application doesn't implement or subclass `TextInputClient`,
 no migration is needed. If your application doesn't target iOS,
-or the class that implemented the `textInputClient` interface doesn't 
+or the class that implemented the `textInputClient` interface doesn't
 support autocorrect, you only need to add an empty implementation
 for the new method:
 
@@ -41,13 +42,13 @@ class CustomTextInputClient implements TextInputClient {
 
 Otherwise, if your app targets iOS and supports autocorrect on iOS,
 we recommend that you add a sensible implementation of
-`void showAutocorrectionPromptRect(int start, int end)` 
-to your `TextInputClient` subclass. 
+`void showAutocorrectionPromptRect(int start, int end)`
+to your `TextInputClient` subclass.
 
-Código após a migração:
+Code after migration:
 
 ```dart
-// Assume your `TextInputClient` is a `State` subclass, and it has a variable 
+// Assume your `TextInputClient` is a `State` subclass, and it has a variable
 // `_currentPromptRectRange` that controls the autocorrection highlight.
 class CustomTextInputClient extends State<...> implements TextInputClient {
   @override
@@ -82,21 +83,21 @@ class CustomTextInputClient extends State<...> implements TextInputClient {
 }
 ```
 
-## Linha do tempo
+## Timeline
 
-Na versão estável: 1.20
+In stable release: 1.20
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`TextInputClient`][]
 
-Issues relevantes:
+Relevant issue:
 
 * [Issue 12920][]
 
-PRs relevantes:
+Relevant PR:
 
 * [iOS UITextInput autocorrection prompt][]
 

@@ -1,58 +1,59 @@
 ---
-title: Camada de dados
-short-title: Camada de dados
+title: Data layer
+shortTitle: Data layer
 description: >-
-  Um passo a passo da camada de dados de um aplicativo que implementa a arquitetura MVVM.
+  A walk-through of the data layer of an app that implements MVVM architecture.
 prev:
-  title: Camada de UI
+  title: UI layer
   path: /app-architecture/case-study/ui-layer
 next:
-  title: Injeção de Dependência
+  title: Dependency Injection
   path: /app-architecture/case-study/dependency-injection
-ia-translate: true
 ---
 
-A camada de dados de um aplicativo, conhecida como *modelo* na terminologia MVVM,
-é a fonte da verdade para todos os dados do aplicativo.
-Como a fonte da verdade,
-é o único lugar onde os dados do aplicativo devem ser atualizados.
 
-Ela é responsável por consumir dados de várias APIs externas,
-expondo esses dados para a UI,
-tratando eventos da UI que requerem que os dados sejam atualizados,
-e enviando solicitações de atualização para essas APIs externas conforme necessário.
+The data layer of an application, known as the *model* in MVVM terminology,
+is the source of truth for all application data.
+As the source of truth,
+it's the only place that application data should be updated.
 
-A camada de dados neste guia possui dois componentes principais,
-[repositórios][] e [serviços][].
+It's responsible for consuming data from various external APIs,
+exposing that data to the UI,
+handling events from the UI that require data to be updated,
+and sending update requests to those external APIs as needed.
 
-![Um diagrama que destaca os componentes da camada de dados de um aplicativo.](/assets/images/docs/app-architecture/guide/feature-architecture-simplified-Data-highlighted.png)
+The data layer in this guide has two main components,
+[repositories][] and [services][].
 
-*   **Repositórios** são a fonte da verdade para os dados do aplicativo e contêm
-    lógica relacionada a esses dados, como atualizar os dados em resposta a novos
-    eventos do usuário ou consultar dados de serviços. Os repositórios são responsáveis
-    por sincronizar os dados quando recursos offline são suportados, gerenciar
-    a lógica de repetição e o armazenamento em cache de dados.
-*   **Serviços** são classes Dart sem estado que interagem com APIs, como
-    servidores HTTP e plugins de plataforma. Quaisquer dados que seu aplicativo precise que não sejam
-    criados dentro do próprio código do aplicativo devem ser obtidos de dentro das
-    classes de serviço.
+![A diagram that highlights the data layer components of an application.](/assets/images/docs/app-architecture/guide/feature-architecture-simplified-Data-highlighted.png)
 
-## Definir um serviço
+* **Repositories** are the source of the truth for application data, and contain
+  logic that relates to that data, like updating the data in response to new
+  user events or polling for data from services. Repositories are responsible
+  for synchronizing the data when offline capabilities are supported, managing
+  retry logic, and caching data.
+* **Services** are stateless Dart classes that interact with APIs, like HTTP
+  servers and platform plugins. Any data that your application needs that isn't
+  created inside the application code itself should be fetched from within
+  service classes.
 
-Uma classe de serviço é a menos ambígua de todos os componentes da arquitetura.
-Ela não tem estado e suas funções não têm efeitos colaterais.
-Seu único trabalho é envolver uma API externa.
-Geralmente há uma classe de serviço por fonte de dados,
-como um servidor HTTP cliente ou um plugin de plataforma.
+## Define a service
 
-![Um diagrama que mostra as entradas e saídas de objetos de serviço.](/assets/images/docs/app-architecture/case-study/mvvm-case-study-services-architecture.png)
+A service class is the least ambiguous of all the architecture components.
+It's stateless, and its functions don't have side effects.
+Its only job is to wrap an external API.
+There's generally one service class per data source,
+such as a client HTTP server or a platform plugin.
 
-No aplicativo Compass, por exemplo, há um serviço [`APIClient`][] que
-manipula as chamadas CRUD para o servidor voltado para o cliente.
+
+![A diagram that shows the inputs and outputs of service objects.](/assets/images/docs/app-architecture/case-study/mvvm-case-study-services-architecture.png)
+
+In the Compass app, for example, there's an [`APIClient`][] service that
+handles the CRUD calls to the client-facing server.
 
 ```dart title=api_client.dart
 class ApiClient {
-  // Algum código omitido para fins de demonstração.
+  // Some code omitted for demo purposes.
 
   Future<Result<List<ContinentApiModel>>> getContinents() async { /* ... */ }
 
@@ -72,38 +73,39 @@ class ApiClient {
 }
 ```
 
-O próprio serviço é uma classe,
-onde cada método envolve um endpoint de API diferente e
-expõe objetos de resposta assíncronos.
-Continuando o exemplo anterior de exclusão de uma reserva salva,
-o método `deleteBooking` retorna um `Future<Result<void>>`.
+The service itself is a class,
+where each method wraps a different API endpoint and
+exposes asynchronous response objects.
+Continuing the earlier example of deleting a saved booking,
+the `deleteBooking` method returns a `Future<Result<void>>`.
 
 :::note
-Alguns métodos retornam classes de dados que são
-especificamente para dados brutos da API,
-como a classe `BookingApiModel`.
-Como você verá em breve, os repositórios extraem dados e
-os expõem para as ViewModels em um formato diferente.
+Some methods return data classes that are
+specifically for raw data from the API,
+such as the `BookingApiModel` class.
+As you'll soon see, repositories extract data and
+expose it in a different format.
 :::
 
-## Definir um repositório
 
-A única responsabilidade de um repositório é gerenciar os dados do aplicativo.
-Um repositório é a fonte da verdade para um único tipo de dados de aplicativo,
-e deve ser o único lugar onde esse tipo de dados é alterado.
-O repositório é responsável por consultar novos dados de fontes externas,
-gerenciar a lógica de repetição, gerenciar dados em cache
-e transformar dados brutos em modelos de domínio.
+## Define a repository
 
-![Um diagrama que destaca o componente do repositório de um aplicativo.](/assets/images/docs/app-architecture/guide/feature-architecture-simplified-Repository-highlighted.png)
+A repository's sole responsibility is to manage application data.
+A repository is the source of truth for a single type of application data,
+and it should be the only place where that data type is mutated.
+The repository is responsible for polling new data from external sources,
+handling retry logic, managing cached data,
+and transforming raw data into domain models.
 
-Você deve ter um repositório separado para
-cada tipo diferente de dados em seu aplicativo.
-Por exemplo, o aplicativo Compass possui repositórios chamados `UserRepository`,
-`BookingRepository`, `AuthRepository`, `DestinationRepository` e mais.
+![A diagram that highlights the repository component of an application.](/assets/images/docs/app-architecture/guide/feature-architecture-simplified-Repository-highlighted.png)
 
-O exemplo a seguir é o `BookingRepository` do aplicativo Compass,
-e mostra a estrutura básica de um repositório.
+You should have a separate repository for
+each different type of data in your application.
+For example, the Compass app has repositories called `UserRepository`,
+`BookingRepository`, `AuthRepository`, `DestinationRepository`, and more.
+
+The following example is the `BookingRepository` from the Compass app,
+and shows the basic structure of a repository.
 
 ```dart title=booking_repository_remote.dart
 class BookingRepositoryRemote implements BookingRepository {
@@ -121,56 +123,57 @@ class BookingRepositoryRemote implements BookingRepository {
 }
 ```
 
-:::note Ambientes de desenvolvimento versus teste
-A classe no exemplo anterior é `BookingRepositoryRemote`,
-que estende uma classe abstrata chamada `BookingRepository`.
-Esta classe base é usada para criar repositórios para diferentes ambientes.
-Por exemplo, o aplicativo Compass também possui uma classe chamada `BookingRepositoryLocal`,
-que é usada para desenvolvimento local.
+:::note Development versus staging environments
+The class in the previous example is `BookingRepositoryRemote`,
+which extends an abstract class called `BookingRepository`.
+This base class is used to create repositories for different environments.
+For example, the compass app also has a class called `BookingRepositoryLocal`,
+which is used for local development.
 
-Você pode ver as diferenças entre as
-classes [`BookingRepository` no GitHub][].
+You can see the differences between the
+[`BookingRepository` classes on GitHub][].
 :::
 
-O `BookingRepository` recebe o serviço `ApiClient` como entrada,
-que ele usa para obter e atualizar os dados brutos do servidor.
-É importante que o serviço seja um membro privado,
-para que a camada de UI não possa ignorar o repositório e chamar um serviço diretamente.
 
-Com o serviço `ApiClient`,
-o repositório pode consultar atualizações para as reservas salvas de um usuário que
-podem ocorrer no servidor, e fazer solicitações `POST` para excluir reservas salvas.
+The `BookingRepository` takes the `ApiClient` service as an input,
+which it uses to get and update the raw data from the server.
+It's important that the service is a private member,
+so that the UI layer can't bypass the repository and call a service directly.
 
-Os dados brutos que um repositório transforma em modelos de aplicativo podem vir de
-várias fontes e vários serviços,
-e, portanto, repositórios e serviços têm uma relação de muitos para muitos.
-Um serviço pode ser usado por qualquer número de repositórios,
-e um repositório pode usar mais de um serviço.
+With the `ApiClient` service,
+the repository can poll for updates to a user's saved bookings that
+might happen on the server, and make `POST` requests to delete saved bookings.
 
-![Um diagrama que destaca os componentes da camada de dados de um aplicativo.](/assets/images/docs/app-architecture/guide/feature-architecture-simplified-Data-highlighted.png)
+The raw data that a repository transforms into application models can come from
+multiple sources and multiple services,
+and therefore repositories and services have a many-to-many relationship.
+A service can be used by any number of repositories,
+and a repository can use more than one service.
 
-### Modelos de domínio
+![A diagram that highlights the data layer components of an application.](/assets/images/docs/app-architecture/guide/feature-architecture-simplified-Data-highlighted.png)
 
-O `BookingRepository` gera objetos `Booking` e `BookingSummary`,
-que são *modelos de domínio*.
-Todos os repositórios geram modelos de domínio correspondentes.
-Esses modelos de dados diferem dos modelos de API porque eles contêm apenas os dados
-necessários para o resto do aplicativo.
-Os modelos de API contêm dados brutos que muitas vezes precisam ser filtrados,
-combinados ou excluídos para serem úteis para as ViewModels do aplicativo.
-O repositório refina os dados brutos e os gera como modelos de domínio.
+### Domain models
 
-No aplicativo de exemplo, os modelos de domínio são expostos por meio de
-valores de retorno em métodos como `BookingRepository.getBooking`.
-O método `getBooking` é responsável por obter os dados brutos do
-serviço `ApiClient` e transformá-los em um objeto `Booking`.
-Ele faz isso combinando dados de vários endpoints de serviço.
+The `BookingRepository` outputs `Booking` and `BookingSummary` objects,
+which are *domain models*.
+All repositories output corresponding domain models.
+These data models differ from API models in that they only contain the data
+needed by the rest of the app.
+API models contain raw data that often needs to be filtered,
+combined, or deleted to be useful to the app's view models.
+The repo refines the raw data and outputs it as domain models.
+
+In the example app, domain models are exposed through
+return values on methods like `BookingRepository.getBooking`.
+The `getBooking` method is responsible for getting the raw data from
+the `ApiClient` service, and transforming it into a `Booking` object.
+It does this by combining data from multiple service endpoints.
 
 ```dart title=booking_repository_remote.dart highlightLines=14-21
-// Este método foi editado para brevidade.
+// This method was edited for brevity.
 Future<Result<Booking>> getBooking(int id) async {
   try {
-    // Obter a reserva por ID do servidor.
+    // Get the booking by ID from server.
     final resultBooking = await _apiClient.getBooking(id);
     if (resultBooking is Error<BookingApiModel>) {
       return Result.error(resultBooking.error);
@@ -196,24 +199,24 @@ Future<Result<Booking>> getBooking(int id) async {
 ```
 
 :::note
-No aplicativo Compass, as classes de serviço retornam objetos `Result`.
-`Result` é uma classe de utilitário que envolve chamadas assíncronas e
-facilita o tratamento de erros e o gerenciamento do estado da UI que depende
-de chamadas assíncronas.
+In the Compass app, service classes return `Result` objects.
+`Result` is a utility class that wraps asynchronous calls and
+makes it easier to handle errors and manage UI state that relies
+on asynchronous calls.
 
-Este padrão é uma recomendação, mas não um requisito.
-A arquitetura recomendada neste guia pode ser implementada sem ele.
+This pattern is a recommendation, but not a requirement.
+The architecture recommended in this guide can be implemented without it.
 
-Você pode aprender sobre esta classe na [receita do cookbook Result][].
+You can learn about this class in the [Result cookbook recipe][].
 :::
 
-### Concluir o ciclo de eventos
+### Complete the event cycle
 
-Ao longo desta página, você viu como um usuário pode excluir uma reserva salva,
-começando com um evento—um usuário deslizando em um widget `Dismissible`.
-O view model trata esse evento delegando
-a mutação real dos dados para o `BookingRepository`.
-O snippet a seguir mostra o método `BookingRepository.deleteBooking`.
+Throughout this page, you've seen how a user can delete a saved booking,
+starting with an event—a user swiping on a `Dismissible` widget.
+The view model handles that event by delegating
+the actual data mutation to the `BookingRepository`.
+The following snippet shows the `BookingRepository.deleteBooking` method.
 
 ```dart title=booking_repository_remote.dart
 Future<Result<void>> delete(int id) async {
@@ -225,24 +228,21 @@ Future<Result<void>> delete(int id) async {
 }
 ```
 
-O repositório envia uma solicitação `POST` para o cliente da API com
-o método `_apiClient.deleteBooking`,
-e retorna um `Result`. O `HomeViewModel` consome o `Result` e os dados que ele contém e,
-por fim, chama `notifyListeners`,
-concluindo o ciclo.
+The repository sends a `POST` request to the API client with
+the `_apiClient.deleteBooking` method, and returns a `Result`.
+The `HomeViewModel` consumes the `Result` and the data it contains,
+then ultimately calls `notifyListeners`, completing the cycle.
 
-[repositórios]: /app-architecture/guide#repositórios
-[serviços]: /app-architecture/guide#services
+[repositories]: /app-architecture/guide#repositories
+[services]:  /app-architecture/guide#services
 [`APIClient`]: https://github.com/flutter/samples/blob/main/compass_app/app/lib/data/services/api/api_client.dart
 [`sealed`]: {{site.dart-site}}/language/class-modifiers#sealed
-[`BookingRepository` no GitHub]: https://github.com/flutter/samples/tree/main/compass_app/app/lib/data/repositories/booking
-[receita do cookbook Result]: /app-architecture/design-patterns/result
-
-[//]: # (todo ewindmill@ - atualizar link do Result após #11444 chegar)
+[`BookingRepository` classes on GitHub]: https://github.com/flutter/samples/tree/main/compass_app/app/lib/data/repositories/booking
+[Result cookbook recipe]: /app-architecture/design-patterns/result
 
 ## Feedback
 
-Como esta seção do site está evoluindo,
-nós [agradecemos seu feedback][]!
+As this section of the website is evolving,
+we [welcome your feedback][]!
 
-[agradecemos seu feedback]: https://google.qualtrics.com/jfe/form/SV_4T0XuR9Ts29acw6?page="case-study/data-layer"
+[welcome your feedback]: https://google.qualtrics.com/jfe/form/SV_4T0XuR9Ts29acw6?page="case-study/data-layer"

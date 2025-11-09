@@ -1,6 +1,5 @@
 ---
-ia-translate: true
 layout: toc
-title: Implantação
-description: Conteúdo sobre implantação de apps Flutter.
+title: Deployment
+description: Content covering deployment of Flutter apps.
 ---

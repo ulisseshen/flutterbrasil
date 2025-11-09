@@ -1,92 +1,93 @@
 ---
-ia-translate: true
-title: "Restaurar estado no Android"
-description: "Como restaurar o estado do seu app Android depois de ele ser encerrado pelo SO."
+title: "Restore state on Android"
+description: "How to restore the state of your Android app after it's been killed by the OS."
 ---
 
-Quando um usuário executa um app mobile e então seleciona outro
-app para executar, o primeiro app é movido para segundo plano,
-ou _colocado em background_. O sistema operacional (tanto iOS quanto Android)
-pode encerrar o app em background para liberar memória e
-melhorar o desempenho do app em execução em primeiro plano.
+When a user runs a mobile app and then selects another
+app to run, the first app is moved to the background,
+or _backgrounded_. The operating system (both iOS and Android)
+might kill the backgrounded app to release memory and
+improve performance for the app running in the foreground.
 
-Quando o usuário seleciona o app novamente, trazendo-o
-de volta ao primeiro plano, o SO o reinicia.
-Mas, a menos que você tenha configurado uma maneira de salvar o
-estado do app antes de ele ser encerrado,
-você perdeu o estado e o app inicia do zero.
-O usuário perdeu a continuidade que espera,
-o que claramente não é ideal.
-(Imagine preencher um formulário longo e ser interrompido
-por uma chamada telefônica _antes_ de clicar em **Submit**.)
+When the user selects the app again, bringing it
+back to the foreground, the OS relaunches it.
+But, unless you've set up a way to save the
+state of the app before it was killed,
+you've lost the state and the app starts from scratch.
+The user has lost the continuity they expect,
+which is clearly not ideal.
+(Imagine filling out a lengthy form and being interrupted
+by a phone call _before_ clicking **Submit**.)
 
-Então, como você pode restaurar o estado do app para que
-pareça como estava antes de ser enviado para segundo
-plano?
+So, how can you restore the state of the app so that
+it looks like it did before it was sent to the
+background?
 
-O Flutter tem uma solução para isso com o
-[`RestorationManager`][] (e classes relacionadas)
-na biblioteca [services][].
-Com o `RestorationManager`, o framework Flutter
-fornece os dados de estado ao engine _conforme o estado
-muda_, para que o app esteja pronto quando o SO sinalizar
-que está prestes a encerrar o app, dando ao app apenas
-momentos para se preparar.
+Flutter has a solution for this with the
+[`RestorationManager`][] (and related classes)
+in the [services][] library.
+With the `RestorationManager`, the Flutter framework
+provides the state data to the engine _as the state
+changes_, so that the app is ready when the OS signals
+that it's about to kill the app, giving the app only
+moments to prepare.
 
-:::secondary Estado de instância vs estado de longa duração
-  Quando você deve usar o `RestorationManager` e
-  quando deve salvar o estado em armazenamento de longo prazo?
-  _Estado de instância_
-  (também chamado de estado _de curto prazo_ ou _efêmero_),
-  inclui valores de campos de formulário não enviados, a aba
-  atualmente selecionada, e assim por diante. No Android, isso é
-  limitado a 1 MB e, se o app exceder isso,
-  ele trava com um erro `TransactionTooLargeException`
-  no código nativo.
+:::secondary Instance state vs long-lived state
+  When should you use the `RestorationManager` and
+  when should you save state to long term storage?
+  _Instance state_
+  (also called _short-term_ or _ephemeral_ state),
+  includes unsubmitted form field values, the currently
+  selected tab, and so on. On Android, this is
+  limited to 1 MB and, if the app exceeds this,
+  it crashes with a `TransactionTooLargeException`
+  error in the native code.
 :::
 
 [state]: /data-and-backend/state-mgmt/ephemeral-vs-app
 
-## Visão geral
+## Overview
 
-Você pode habilitar a restauração de estado com apenas algumas tarefas:
+You can enable state restoration with just a few tasks:
 
-1. Defina um `restorationId` ou um `restorationScopeId`
-   para todos os widgets que o suportam,
-   como [`TextField`][] e [`ScrollView`][].
-   Isso habilita automaticamente a restauração de estado integrada
-   para esses widgets.
+1. Define a `restorationScopeId` for classes like
+   `CupertinoApp`, `MaterialApp`, or `WidgetsApp`.
 
-2. Para widgets personalizados,
-   você deve decidir qual estado deseja restaurar
-   e manter esse estado em uma [`RestorableProperty`][].
-   (A API do Flutter fornece várias subclasses para
-   diferentes tipos de dados.)
-   Defina esses widgets `RestorableProperty`
-   em uma classe `State` que usa o [`RestorationMixin`][].
-   Registre esses widgets com o mixin em um
-   método `restoreState`.
+2. Define a `restorationId` for widgets that support it,
+   such as [`TextField`][] and [`ScrollView`][].
+   This automatically enables built-in state restoration
+   for those widgets.
 
-3. Se você usar qualquer API do Navigator (como `push`, `pushNamed`, e assim por diante)
-   migre para a API que tem "restorable" no nome
-   (`restorablePush`, `restorablePushNamed`, e assim por diante)
-   para restaurar a pilha de navegação.
+3. For custom widgets,
+   you must decide what state you want to restore
+   and hold that state in a [`RestorableProperty`][].
+   (The Flutter API provides various subclasses for
+   different data types.)
+   Define those `RestorableProperty` widgets
+   in a `State` class that uses the [`RestorationMixin`][].
+   Register those widgets with the mixin in a
+   `restoreState` method.
 
-Outras considerações:
+4. If you use any Navigator API (like `push`, `pushNamed`, and so on)
+   migrate to the API that has "restorable" in the name
+   (`restorablePush`, `restorablePushNamed`, and so on)
+   to restore the navigation stack.
 
-* Fornecer um `restorationId` para
-  `MaterialApp`, `CupertinoApp`, ou `WidgetsApp`
-  habilita automaticamente a restauração de estado ao
-  injetar um `RootRestorationScope`.
-  Se você precisar restaurar o estado _acima_ da classe app,
-  injete um `RootRestorationScope` manualmente.
+Other considerations:
 
-* **A diferença entre um `restorationId` e
-  um `restorationScopeId`:** Widgets que aceitam um
-  `restorationScopeID` criam um novo `restorationScope`
-  (um novo `RestorationBucket`) no qual todos os filhos
-  armazenam seu estado. Um `restorationId` significa que o widget
-  (e seus filhos) armazenam os dados no bucket circundante.
+* Providing a `restorationScopeId` to
+  `MaterialApp`, `CupertinoApp`, or `WidgetsApp`
+  automatically enables state restoration by
+  injecting a `RootRestorationScope`.
+  If you need to restore state _above_ the app class,
+  inject a `RootRestorationScope` manually.
+
+* **The difference between a `restorationId` and
+  a `restorationScopeId`:** Widgets that take a
+  `restorationScopeId` create a new `restorationScope`
+  (a new `RestorationBucket`) into which all children
+  store their state. A `restorationId` means the widget
+  (and its children) store the data in the surrounding bucket.
 
 [a bit of extra setup]: {{site.api}}/flutter/services/RestorationManager-class.html#state-restoration-on-ios
 [`restorationId`]: {{site.api}}/flutter/widgets/RestorationScope/restorationId.html
@@ -94,37 +95,32 @@ Outras considerações:
 [`RestorationMixin`]: {{site.api}}/flutter/widgets/RestorationMixin-mixin.html
 [`RestorationScope`]: {{site.api}}/flutter/widgets/RestorationScope-class.html
 [`restoreState`]: {{site.api}}/flutter/widgets/RestorationMixin/restoreState.html
-[VeggieSeasons]: {{site.repo.samples}}/tree/main/veggieseasons
+[VeggieSeasons]: https://github.com/flutter/demos/tree/main/veggieseasons
 
-## Restaurando estado de navegação
+## Restoring navigation state
 
-Se você quiser que seu app retorne a uma rota específica
-que o usuário estava visualizando mais recentemente
-(o carrinho de compras, por exemplo), então você deve implementar
-estado de restauração para navegação também.
+If you want your app to return to a particular route
+that the user was most recently viewing
+(the shopping cart, for example), then you must implement
+restoration state for navigation, as well.
 
-Se você usar a API do Navigator diretamente,
-migre os métodos padrão para métodos restauráveis
-(que têm "restorable" no nome).
-Por exemplo, substitua `push` por [`restorablePush`][].
+If you use the Navigator API directly,
+migrate the standard methods to restorable
+methods (that have "restorable" in the name).
+For example, replace `push` with [`restorablePush`][].
 
-O exemplo VeggieSeasons (listado em "Outros recursos" abaixo)
-implementa navegação com o pacote [`go_router`][].
-A definição dos valores de `restorationId`
-ocorre nas classes `lib/screens`.
+## Testing state restoration
 
-## Testando restauração de estado
-
-Para testar a restauração de estado, configure seu dispositivo móvel para que
-ele não salve o estado assim que um app seja colocado em background.
-Para aprender como fazer isso tanto para iOS quanto para Android,
-confira [Testing state restoration][] na
-página [`RestorationManager`][].
+To test state restoration, set up your mobile device so that
+it doesn't save state once an app is backgrounded.
+To learn how to do this for both iOS and Android,
+check out [Testing state restoration][] on the
+[`RestorationManager`][] page.
 
 :::warning
-Não se esqueça de reabilitar
-o armazenamento de estado no seu dispositivo assim que você
-terminar de testar!
+Don't forget to reenable
+storing state on your device once you are
+finished with testing!
 :::
 
 [Testing state restoration]: {{site.api}}/flutter/services/RestorationManager-class.html#testing-state-restoration
@@ -132,38 +128,27 @@ terminar de testar!
 [`RestorationManager`]: {{site.api}}/flutter/services/RestorationManager-class.html
 [services]: {{site.api}}/flutter/services/services-library.html
 
-## Outros recursos
+## Other resources
 
-Para mais informações sobre restauração de estado,
-confira os seguintes recursos:
+For further information on state restoration,
+check out the following resources.
 
-* Para um exemplo que implementa restauração de estado,
-  confira [VeggieSeasons][], um app de exemplo escrito
-  para iOS que usa widgets Cupertino. Um app iOS requer
-  [a bit of extra setup][] no Xcode, mas as classes de restauração
-  funcionam da mesma forma no iOS e no Android.<br>
-  A lista a seguir vincula partes relevantes do exemplo
-  VeggieSeasons:
-    * [Defining a `RestorablePropery` as an instance property]({{site.repo.samples}}/blob/604c82cd7c9c7807ff6c5ca96fbb01d44a4f2c41/veggieseasons/lib/widgets/trivia.dart#L33-L37)
-    * [Registering the properties]({{site.repo.samples}}/blob/604c82cd7c9c7807ff6c5ca96fbb01d44a4f2c41/veggieseasons/lib/widgets/trivia.dart#L49-L54)
-    * [Updating the property values]({{site.repo.samples}}/blob/604c82cd7c9c7807ff6c5ca96fbb01d44a4f2c41/veggieseasons/lib/widgets/trivia.dart#L108-L109)
-    * [Using property values in build]({{site.repo.samples}}/blob/604c82cd7c9c7807ff6c5ca96fbb01d44a4f2c41/veggieseasons/lib/widgets/trivia.dart#L205-L210)<br>
-
-* Para aprender mais sobre estado de curto prazo e longo prazo,
-  confira [Differentiate between ephemeral state
+* To learn more about short term and long term state,
+  check out [Differentiate between ephemeral state
   and app state][state].
 
-* Você pode querer conferir pacotes no pub.dev que
-  realizam restauração de estado, como [`statePersistence`][].
+* You might want to check out packages on pub.dev that
+  perform state restoration, such as [`statePersistence`][].
 
-* Para mais informações sobre navegação e o
-  pacote `go_router`, confira [Navigation and routing][].
+* For more information on navigation and the
+  [`go_router`][] package, check out [Navigation and routing][]
+  and the [State restoration][] topic on pub.dev.
 
+[`go_router`]: {{site.pub}}/packages/go_router
+[State restoration]: {{site.pub-api}}/go_router/latest/topics/State%20restoration-topic.html
+[Navigation and routing]: /ui/navigation
 [`RestorableProperty`]: {{site.api}}/flutter/widgets/RestorableProperty-class.html
 [`restorablePush`]: {{site.api}}/flutter/widgets/Navigator/restorablePush.html
 [`ScrollView`]: {{site.api}}/flutter/widgets/ScrollView/restorationId.html
 [`statePersistence`]: {{site.pub-pkg}}/state_persistence
 [`TextField`]: {{site.api}}/flutter/material/TextField/restorationId.html
-[`restorablePush`]: {{site.api}}/flutter/widgets/Navigator/restorablePush.html
-[`go_router`]: {{site.pub}}/packages/go_router
-[Navigation and routing]: /ui/navigation

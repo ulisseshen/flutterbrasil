@@ -1,68 +1,64 @@
 ---
-ia-translate: true
-title: Integre um módulo Flutter ao seu projeto iOS
-short-title: Integre Flutter
-description: Aprenda como integrar um módulo Flutter ao seu projeto iOS existente.
+title: Integrate a Flutter module into your iOS project
+shortTitle: Integrate Flutter
+description: Learn how to integrate a Flutter module into your existing iOS project.
 ---
 
-Componentes de UI Flutter podem ser incrementalmente adicionados à sua aplicação
-iOS existente como frameworks incorporados.
-Para incorporar Flutter em sua aplicação existente,
-considere um dos três métodos a seguir.
+Flutter UI components can be incrementally added into your existing iOS
+application as embedded frameworks.
+To embed Flutter in your existing application,
+consider one of the following three methods.
 
-| Método de Incorporação | Metodologia | Benefício |
+| Embedding Method | Methodology | Benefit |
 |---|---|---|
-| Use CocoaPods _(Recomendado)_ | Instale e use o Flutter SDK e CocoaPods. O Flutter compila o `flutter_module` do código-fonte cada vez que o Xcode constrói o app iOS. | Método menos complicado para incorporar Flutter ao seu app. |
-| Use [frameworks iOS][iOS frameworks] | Crie frameworks iOS para componentes Flutter, incorpore-os ao seu iOS e atualize as configurações de build do seu app existente. | Não requer que todos os desenvolvedores instalem o Flutter SDK e CocoaPods em suas máquinas locais. |
-| Use frameworks iOS e CocoaPods | Incorpore os frameworks para seu app iOS e os plugins no Xcode, mas distribua o engine Flutter como um podspec CocoaPods. | Fornece uma alternativa para distribuir a grande biblioteca do engine Flutter (`Flutter.xcframework`). |
+| Use CocoaPods _(Recommended)_ | Install and use the Flutter SDK and CocoaPods. Flutter compiles the `flutter_module` from source each time Xcode builds the iOS app. | Least complicated method to embed Flutter into your app. |
+| Use [iOS frameworks][] | Create iOS frameworks for Flutter components, embed them into your iOS, and update your existing app's build settings. | Doesn't require every developer to install the Flutter SDK and CocoaPods on their local machines. |
+| Use iOS frameworks and CocoaPods | Embed the frameworks for your iOS app and the plugins in Xcode, but distribute the Flutter engine as a CocoaPods podspec. | Provides an alternative to distributing the large Flutter engine (`Flutter.xcframework`) library. |
 
 {:.table .table-striped}
 
 [iOS frameworks]: {{site.apple-dev}}/library/archive/documentation/MacOSX/Conceptual/BPFrameworks/Concepts/WhatAreFrameworks.html
 
-Quando você adiciona Flutter ao seu app iOS existente,
-ele [aumenta o tamanho do seu app iOS][app-size].
+When you add Flutter to your existing iOS app,
+it [increases the size of your iOS app][app-size].
 
-Para exemplos usando um app construído com UIKit,
-consulte os diretórios iOS nos [exemplos de código add_to_app][add_to_app code samples].
-Para um exemplo usando SwiftUI, consulte o diretório iOS no [News Feed App][].
+For examples using an app built with UIKit,
+see the iOS directories in the [add_to_app code samples][].
+For an example using SwiftUI, consult the iOS directory in [News Feed App][].
 
-## Requisitos do sistema de desenvolvimento
+## Development system requirements
 
-Seu ambiente de desenvolvimento deve atender aos
-[requisitos de sistema macOS para Flutter][macOS system requirements for Flutter] com [Xcode instalado][Xcode installed].
-O Flutter suporta Xcode {{site.appmin.xcode}} ou posterior e
-[CocoaPods][] {{site.appmin.cocoapods}} ou posterior.
+Flutter requires the latest version of Xcode and [CocoaPods][].
 
-## Crie um módulo Flutter
+## Create a Flutter module
 
-Para incorporar Flutter em sua aplicação existente com qualquer método,
-crie primeiro um módulo Flutter.
-Use o seguinte comando para criar um módulo Flutter.
+To embed Flutter into your existing application with any method,
+create a Flutter module first.
+Use the following command to create a Flutter module.
 
 ```console
 $ cd /path/to/my_flutter
 $ flutter create --template module my_flutter
 ```
 
-O Flutter cria o projeto de módulo em `/path/to/my_flutter/`.
-Se você usa o [método CocoaPods][CocoaPods method], salve o módulo
-no mesmo diretório pai do seu app iOS existente.
+Flutter creates module project under `/path/to/my_flutter/`.
+If you use the [CocoaPods method][], save the module
+in the same parent directory as your existing iOS app.
 
 [CocoaPods method]: /add-to-app/ios/project-setup/?tab=embed-using-cocoapods
 
-A partir do diretório do módulo Flutter,
-você pode executar os mesmos comandos `flutter` que executaria em qualquer outro projeto Flutter,
-como `flutter run` ou `flutter build ios`.
-Você também pode executar o módulo no [VS Code][] ou
-[Android Studio/IntelliJ][] com os plugins Flutter e Dart.
-Este projeto contém uma versão de exemplo de visualização única do seu módulo
-antes de incorporá-lo ao seu app iOS existente.
-Isso ajuda ao testar as partes do seu código que são apenas Flutter.
+From the Flutter module directory,
+you can run the same `flutter` commands you would in any other Flutter project,
+like `flutter run` or `flutter build ios`.
+You can also run the module in [VS Code][] or
+[Android Studio/IntelliJ][] with the Flutter and Dart plugins.
+This project contains a single-view example version of your module
+before embedding it in your existing iOS app.
+This helps when testing the Flutter-only parts of your code.
 
-## Organize seu módulo
+## Organize your module
 
-A estrutura de diretório do módulo `my_flutter` se assemelha a um app Flutter típico.
+The `my_flutter` module directory structure resembles a typical Flutter app.
 
 ```plaintext
 my_flutter/
@@ -75,241 +71,226 @@ my_flutter/
 └── pubspec.yaml
 ```
 
-Seu código Dart deve ser adicionado ao diretório `lib/`.
-Suas dependências, pacotes e plugins Flutter devem ser adicionados ao
-arquivo `pubspec.yaml`.
+Your Dart code should be added to the `lib/` directory.
+Your Flutter dependencies, packages, and plugins must be added to the
+`pubspec.yaml` file.
 
-A subpasta oculta `.ios/` contém um workspace Xcode onde
-você pode executar uma versão standalone do seu módulo.
-Este projeto wrapper faz o bootstrap do seu código Flutter.
-Ele contém scripts auxiliares para facilitar a construção de frameworks ou
-incorporar o módulo à sua aplicação existente com CocoaPods.
+The `.ios/` hidden subfolder contains an Xcode workspace where
+you can run a standalone version of your module.
+This wrapper project bootstraps your Flutter code.
+It contains helper scripts to facilitate building frameworks or
+embedding the module into your existing application with CocoaPods.
 
 :::note
 
-* Adicione código iOS personalizado ao projeto de sua própria aplicação
-  existente ou a um plugin, não ao diretório `.ios/` do módulo.
-  Mudanças feitas no diretório `.ios/` do seu módulo não
-  aparecerão em seu projeto iOS existente usando o módulo,
-  e podem ser sobrescritas pelo Flutter.
+* Add custom iOS code to your own existing application's
+  project or to a plugin, not to the module's `.ios/`
+  directory. Changes made in your module's `.ios/`
+  directory don't appear in your existing iOS project
+  using the module, and might be overwritten by Flutter.
 
-* Exclua o diretório `.ios/` do controle de versão, pois
-  ele é gerado automaticamente.
+* Exclude the `.ios/` directory from source control as
+  it's autogenerated.
 
-* Antes de construir o módulo em uma nova máquina,
-  execute `flutter pub get` no diretório `my_flutter`.
-  Isso regenera o diretório `.ios/` antes de construir
-  o projeto iOS que usa o módulo Flutter.
+* Before building the module on a new machine,
+  run `flutter pub get` in the `my_flutter` directory.
+  This regenerates the `.ios/` directory before building
+  the iOS project that uses the Flutter module.
 
 :::
 
-## Incorpore um módulo Flutter ao seu app iOS
+## Embed a Flutter module in your iOS app
 
-Depois de ter desenvolvido seu módulo Flutter,
-você pode incorporá-lo usando os métodos descritos
-na tabela no topo da página.
+After you have developed your Flutter module,
+you can embed it using the methods described
+in the table at the top of the page.
 
-Você pode executar em modo **Debug** em um simulador ou dispositivo real,
-e em modo **Release** em um dispositivo real.
+You can run in **Debug** mode on a simulator or a real device,
+and **Release** mode on a real device.
 
 :::note
-Saiba mais sobre os [modos de build do Flutter][build modes of Flutter].
+Learn more about [Flutter's build modes][build modes of Flutter].
 
-Para usar recursos de debug do Flutter como hot reload,
-consulte [Fazendo debug do seu módulo add-to-app][Debugging your add-to-app module].
+To use Flutter debugging features such as hot reload,
+consult [Debugging your add-to-app module][].
 :::
 
-{% tabs %}
-{% tab "Use CocoaPods" %}
+<Tabs key="darwin-deps">
+<Tab name="Use CocoaPods">
 
-{% render docs/add-to-app/ios-project/embed-cocoapods.md %}
+{% render "docs/add-to-app/ios-project/embed-cocoapods.md" %}
 
-{% endtab %}
-{% tab "Use frameworks" %}
+</Tab>
+<Tab name="Use frameworks">
 
-{% render docs/add-to-app/ios-project/embed-frameworks.md %}
+{% render "docs/add-to-app/ios-project/embed-frameworks.md" %}
 
-{% endtab %}
-{% tab "Use frameworks and CocoaPods" %}
+</Tab>
+<Tab name="Use frameworks and CocoaPods">
 
-{% render docs/add-to-app/ios-project/embed-split.md %}
+{% render "docs/add-to-app/ios-project/embed-split.md" %}
 
-{% endtab %}
-{% endtabs %}
+</Tab>
+</Tabs>
 
 
-<a id="set-local-network-privacy-permissions"></a>
-## Configure permissões de privacidade de rede local
+## Set local network privacy permissions
 
-No iOS 14 e posterior, habilite o serviço Dart multicast DNS na
-versão **Debug** do seu app iOS.
-Isso adiciona [funcionalidades de debug como hot-reload e DevTools][debugging functionalities such as hot-reload and DevTools]
-usando `flutter attach`.
+On iOS 14 and later, enable the Dart multicast DNS service in the
+**Debug** version of your iOS app.
+This adds [debugging functionalities such as hot-reload and DevTools][]
+using `flutter attach`.
 
 :::warning
-Nunca habilite este serviço na versão **Release** do seu app.
-A Apple App Store pode rejeitar seu app.
+Never enable this service in the **Release** version of your app.
+The Apple App Store might reject your app.
 :::
 
-Para configurar permissões de privacidade de rede local apenas na versão Debug do seu app,
-crie um `Info.plist` separado por configuração de build.
-Projetos SwiftUI começam sem um arquivo `Info.plist`.
-Se você precisa criar uma property list,
-pode fazê-lo através do Xcode ou editor de texto.
-As instruções a seguir assumem o padrão **Debug** e **Release**.
-Ajuste os nomes conforme necessário dependendo das configurações de build do seu app.
+To set local network privacy permissions only in the Debug version of your app,
+create a separate `Info.plist` per build configuration.
+SwiftUI projects start without an `Info.plist` file.
+If you need to create a property list,
+you can do so through Xcode or text editor.
+The following instructions assume the default **Debug** and **Release**.
+Adjust the names as needed depending on your app's build configurations.
 
-1. Crie uma nova property list.
+1. Create a new property list.
 
-   1. Abra seu projeto no Xcode.
+   1. Open your project in Xcode.
 
-   1. No **Project Navigator**, clique no nome do projeto.
+   1. In the **Project Navigator**, click on the project name.
 
-   1. Na lista **Targets** no painel Editor, clique no seu app.
+   1. From the **Targets** list in the Editor pane, click on your app.
 
-   1. Clique na aba **Info**.
+   1. Click the **Info** tab.
 
-   1. Expanda **Custom iOS Target Properties**.
+   1. Expand **Custom iOS Target Properties**.
 
-   1. Clique com o botão direito na lista e selecione **Add Row**.
+   1. Right-click on the list and select **Add Row**.
 
-   1. No menu suspenso, selecione **Bonjour Services**.
-      Isso cria uma nova property list no diretório do projeto
-      chamada `Info`. Isso é exibido como `Info.plist` no Finder.
+   1. From the dropdown menu, select **Bonjour Services**.
+      This creates a new property list in the project directory
+      called `Info`. This displays as `Info.plist` in the Finder.
 
-1. Renomeie o `Info.plist` para `Info-Debug.plist`
+1. Rename the `Info.plist` to `Info-Debug.plist`
 
-   1. Clique no arquivo **Info** na lista de projeto à esquerda.
+   1. Click on **Info** file in the project list at the left.
 
-   1. No painel **Identity and Type** à direita,
-      mude o **Name** de `Info.plist` para `Info-Debug.plist`.
+   1. In the **Identity and Type** panel at the right,
+      change the **Name** from `Info.plist` to `Info-Debug.plist`.
 
-1. Crie uma property list Release.
+1. Create a Release property list.
 
-   1. No **Project Navigator**, clique em `Info-Debug.plist`.
+   1. In the **Project Navigator**, click on `Info-Debug.plist`.
 
-   1. Selecione **File** > **Duplicate...**.
-      Você também pode pressionar <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd>.
+   1. Select **File** > **Duplicate...**.
+      You can also press <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd>.
 
-   1. Na caixa de diálogo, defina o campo **Save As:** como
-      `Info-Release.plist` e clique em **Save**.
+   1. In the dialog box, set the **Save As:** field to
+      `Info-Release.plist` and click **Save**.
 
-1. Adicione as propriedades necessárias à property list **Debug**.
+1. Add the necessary properties to the **Debug** property list.
 
-   1. No **Project Navigator**, clique em `Info-Debug.plist`.
+   1. In the **Project Navigator**, click on `Info-Debug.plist`.
 
-   1. Adicione o valor String `_dartVmService._tcp`
-      ao array **Bonjour Services**.
+   1. Add the String value `_dartVmService._tcp`
+      to the **Bonjour Services** array.
 
-   1. _(Opcional)_ Para definir o texto de diálogo de permissão personalizado desejado,
-      adicione a chave **Privacy - Local Network Usage Description**.
+   1. _(Optional)_ To set your desired customized permission dialog text,
+      add the key **Privacy - Local Network Usage Description**.
 
-      {% render docs/captioned-image.liquid,
-      image:"development/add-to-app/ios/project-setup/debug-plist.png",
-      caption:"The `Info-Debug` property list with the **Bonjour Services**
-      and **Privacy - Local Network Usage Description** keys added" %}
+      <DashImage image="development/add-to-app/ios/project-setup/debug-plist.png" caption="The `Info-Debug` property list with the **Bonjour Services** and **Privacy - Local Network Usage Description** keys added" />
 
-1. Configure o target para usar property lists diferentes para diferentes modos de build.
+1. Set the target to use different property lists for different build modes.
 
-   1. No **Project Navigator**, clique no seu projeto.
+   1. In the **Project Navigator**, click on your project.
 
-   1. Clique na aba **Build Settings**.
+   1. Click the **Build Settings** tab.
 
-   1. Clique nas sub-abas **All** e **Combined**.
+   1. Click **All** and **Combined** sub-tabs.
 
-   1. Na caixa Search, digite `plist`.
-      Isso limita as configurações àquelas que incluem property lists.
+   1. In the Search box, type `plist`.
+      This limits the settings to those that include property lists.
 
-   1. Role pela lista até ver **Packaging**.
+   1. Scroll through the list until you see **Packaging**.
 
-   1. Clique na configuração **Info.plist File**.
+   1. Click on the **Info.plist File** setting.
 
-   1. Mude o valor de **Info.plist File**
-      de `path/to/Info.plist` para `path/to/Info-$(CONFIGURATION).plist`.
+   1. Change the **Info.plist File** value
+      from `path/to/Info.plist` to `path/to/Info-$(CONFIGURATION).plist`.
 
-      {%- render docs/captioned-image.liquid,
-      image:"development/add-to-app/ios/project-setup/set-plist-build-setting.png",
-      caption:"Updating the `Info.plist` build setting to use build
-      mode-specific property lists" %}
+      <DashImage image="development/add-to-app/ios/project-setup/set-plist-build-setting.png" caption="Updating the `Info.plist` build setting to use build mode-specific property lists" />
 
-      Isso resolve para o caminho **Info-Debug.plist** em **Debug** e
-      **Info-Release.plist** em **Release**.
+      This resolves to the path **Info-Debug.plist** in **Debug** and
+      **Info-Release.plist** in **Release**.
 
-      {% render docs/captioned-image.liquid,
-      image:"development/add-to-app/ios/project-setup/plist-build-setting.png",
-      caption:"The updated **Info.plist File** build setting displaying the
-      configuration variations" %}
+      <DashImage image="development/add-to-app/ios/project-setup/plist-build-setting.png" caption="The updated **Info.plist File** build setting displaying the configuration variations" />
 
-1. Remova a property list **Release** das **Build Phases**.
+1. Remove the **Release** property list from the **Build Phases**.
 
-   1. No **Project Navigator**, clique no seu projeto.
+   1. In the **Project Navigator**, click on your project.
 
-   1. Clique na aba **Build Phases**.
+   1. Click the **Build Phases** tab.
 
-   1. Expanda **Copy Bundle Resources**.
+   1. Expand **Copy Bundle Resources**.
 
-   1. Se esta lista incluir `Info-Release.plist`,
-      clique nele e depois clique no sinal **-** (menos) abaixo dele
-      para remover a property list da lista de recursos.
+   1. If this list includes `Info-Release.plist`,
+      click on it and then click the **-** (minus sign) under it
+      to remove the property list from the resources list.
 
-      {% render docs/captioned-image.liquid,
-      image:"development/add-to-app/ios/project-setup/copy-bundle.png",
-      caption:"The **Copy Bundle** build phase displaying the
-      **Info-Release.plist** setting. Remove this setting." %}
+      <DashImage image="development/add-to-app/ios/project-setup/copy-bundle.png" caption="The **Copy Bundle** build phase displaying the **Info-Release.plist** setting. Remove this setting." />
 
-1. A primeira tela Flutter que seu app Debug carrega solicita
-   permissão de rede local.
+1. The first Flutter screen your Debug app loads prompts
+   for local network permission.
 
-   Clique em **OK**.
+   Click **OK**.
 
-   _(Opcional)_ Para conceder permissão antes que o app carregue, habilite
+   _(Optional)_ To grant permission before the app loads, enable
    **Settings > Privacy > Local Network > Your App**.
 
-## Mitigue problema conhecido com Macs Apple Silicon
+## Mitigate known issue with Apple Silicon Macs
 
-Em [Macs executando Apple Silicon][apple-silicon],
-o app hospedeiro constrói para um simulador `arm64`.
-Enquanto o Flutter suporta simuladores `arm64`, alguns plugins podem não suportar.
-Se você usa um desses plugins, pode ver um erro de compilação como
+On [Macs running Apple Silicon][apple-silicon],
+the host app builds for an `arm64` simulator.
+While Flutter supports `arm64` simulators, some plugins might not.
+If you use one of these plugins, you might see a compilation error like
 **Undefined symbols for architecture arm64**.
-Se isso ocorrer,
-exclua `arm64` das arquiteturas de simulador no seu app hospedeiro.
+If this occurs,
+exclude `arm64` from the simulator architectures in your host app.
 
-1. No **Project Navigator**, clique no seu projeto.
+1. In the **Project Navigator**, click on your project.
 
-1. Clique na aba **Build Settings**.
+1. Click the **Build Settings** tab.
 
-1. Clique nas sub-abas **All** e **Combined**.
+1. Click **All** and **Combined** sub-tabs.
 
-1. Em **Architectures**, clique em **Excluded Architectures**.
+1. Under **Architectures**, click on **Excluded Architectures**.
 
-1. Expanda para ver as configurações de build disponíveis.
+1. Expand to see the available build configurations.
 
-1. Clique em **Debug**.
+1. Click **Debug**.
 
-1. Clique no sinal **+** (mais).
+1. Click the **+** (plus sign).
 
-1. Selecione **iOS Simulator**.
+1. Select **iOS Simulator**.
 
-1. Dê um duplo clique na coluna de valor para **Any iOS Simulator SDK**.
+1. Double-click in the value column for **Any iOS Simulator SDK**.
 
-1. Clique no sinal **+** (mais).
+1. Click the **+** (plus sign).
 
-1. Digite `arm64` na caixa de diálogo **Debug > Any iOS Simulator SDK**.
+1. Type `arm64` in the **Debug > Any iOS Simulator SDK** dialog box.
 
-   {% render docs/captioned-image.liquid,
-   image:"development/add-to-app/ios/project-setup/excluded-archs.png",
-   caption:"Add `arm64` as an excluded architecture for your app" %}
+   <DashImage image="development/add-to-app/ios/project-setup/excluded-archs.png" caption="Add `arm64` as an excluded architecture for your app" />
 
-1. Pressione <kbd>Esc</kbd> para fechar esta caixa de diálogo.
+1. Press <kbd>Esc</kbd> to close this dialog box.
 
-1. Repita estes passos para o modo de build **Release**.
+1. Repeat these steps for the **Release** build mode.
 
-1. Repita para quaisquer targets de teste unitário iOS.
+1. Repeat for any iOS unit test targets.
 
-## Próximos passos
+## Next steps
 
-Você agora pode [adicionar uma tela Flutter][add a Flutter screen] ao seu app iOS existente.
+You can now [add a Flutter screen][] to your existing iOS app.
 
 [add_to_app code samples]: {{site.repo.samples}}/tree/main/add_to_app
 [add a Flutter screen]: /add-to-app/ios/add-flutter-screen
@@ -318,9 +299,7 @@ Você agora pode [adicionar uma tela Flutter][add a Flutter screen] ao seu app i
 [CocoaPods]: https://cocoapods.org/
 [debugging functionalities such as hot-reload and DevTools]: /add-to-app/debugging
 [app-size]: /resources/faq#how-big-is-the-flutter-engine
-[macOS system requirements for Flutter]: /get-started/install/macos/mobile-ios#verify-system-requirements
 [VS Code]: /tools/vs-code
-[Xcode installed]: /get-started/install/macos/mobile-ios#install-and-configure-xcode
 [News Feed app]: https://github.com/flutter/put-flutter-to-work/tree/022208184ec2623af2d113d13d90e8e1ce722365
 [Debugging your add-to-app module]: /add-to-app/debugging/
 [apple-silicon]: https://support.apple.com/en-us/116943

@@ -1,109 +1,108 @@
 ---
-ia-translate: true
-title: Adicione Flutter a um app existente
-short-title: Add to app
-description: Adicionando Flutter como uma biblioteca a um app Android ou iOS existente.
+title: Add Flutter to an existing app
+shortTitle: Add to app
+description: Adding Flutter as a library to an existing Android or iOS app.
 ---
 
 ## Add-to-app
 
-Se você está escrevendo uma nova aplicação do zero, é fácil [começar][get started]
-usando Flutter. Mas e se você já tem um app que não é escrito em
-Flutter, e é impraticável começar do zero?
+If you are writing a new application from scratch, it is easy to [get started][]
+using Flutter. But what if you already have an app that's not written in
+Flutter, and it's impractical to start from scratch?
 
-Para essas situações, o Flutter pode ser integrado à sua aplicação existente
-de forma incremental, como um módulo. Este recurso é conhecido como "add-to-app".
-O módulo pode ser importado para seu app existente para renderizar parte do seu app
-usando Flutter, enquanto o resto pode ser renderizado usando tecnologia existente.
-Este método também pode ser usado para executar lógica compartilhada não-UI aproveitando
-a portabilidade e interoperabilidade do Dart com outras linguagens.
+For those situations, Flutter can be integrated into your existing application
+piecemeal, as a module. This feature is known as "add-to-app". The module can be
+imported into your existing app to render part of your app using Flutter, while
+the rest can be rendered using existing technology. This method can also be used
+to run shared non-UI logic by taking advantage of Dart's portability and
+interoperability with other languages.
 
-Add-to-app é atualmente suportado no Android, iOS e web.
+Add-to-app is currently supported on Android, iOS, and web.
 
-O Flutter suporta dois tipos de add-to-app:
+Flutter supports two flavors of add-to-app:
 
-- **Multi-engine**: suportado no Android e iOS, permite executar uma ou mais
-  instâncias do Flutter, cada uma renderizando um widget incorporado ao aplicativo
-  hospedeiro. Cada instância é um programa Dart separado, executando em isolamento
-  de outros programas. Ter múltiplas instâncias Flutter permite que cada instância
-  mantenha estado de aplicação e UI independente, usando recursos mínimos de memória.
-  Veja mais na página [múltiplos Flutters][multiple Flutters].
-- **Multi-view**: suportado na web, permite criar múltiplas
-  [FlutterView][]s, cada uma renderizando um widget incorporado ao aplicativo hospedeiro.
-  Neste modo há apenas um programa Dart e todas as views e widgets podem compartilhar
-  objetos.
+- **Multi-engine**: supported on Android and iOS, allows running one or more
+  instances of Flutter, each rendering a widget embedded into the host
+  application. Each instance is a separate Dart program, running in isolation
+  from other programs. Having multiple Flutter instances allows each instance to
+  maintain independent application and UI state while using minimal memory
+  resources. See more in the [multiple Flutters][] page.
+- **Multi-view**: supported on the web, allows creating multiple
+  [FlutterView][]s, each rendering a widget embedded into the host application.
+  In this mode there's only one Dart program and all views and widgets can share
+  objects.
 
-Add-to-app suporta integrar múltiplas views Flutter de qualquer tamanho, suportando
-vários casos de uso. Dois dos casos de uso mais comuns são:
+Add-to-app supports integrating multiple Flutter views of any size, supporting
+various use-cases. Two of the most common use-cases are:
 
-* **Pilhas de navegação híbridas**: um app é feito de múltiplas telas, algumas das
-  quais são renderizadas pelo Flutter, e outras por outro framework. O usuário pode
-  navegar de uma tela para outra livremente, não importa qual framework é usado
-  para renderizar a tela.
-* **Views de tela parcial**: uma tela no app renderiza múltiplos widgets, alguns
-  dos quais são renderizados pelo Flutter, e outros por outro framework. O usuário
-  pode rolar e interagir com qualquer widget livremente, não importa qual framework é
-  usado para renderizar o widget.
+* **Hybrid navigation stacks**: an app is made of multiple screens, some of
+  which are rendered by Flutter, and others by another framework. The user can
+  navigate from one screen to another freely, no matter which framework is used
+  to render the screen.
+* **Partial-screen views**: a screen in the app renders multiple widgets, some
+  of which are rendered by Flutter, and others by another framework. The user
+  can scroll and interact with any widget freely, no matter which framework is
+  used to render the widget.
 
-## Recursos suportados
+## Supported features
 
-### Adicionar a aplicações Android
+### Add to Android applications
 
-{% render docs/app-figure.md, image:"development/add-to-app/android-overview.gif", alt:"Add-to-app steps on Android" %}
+<DashImage figure image="development/add-to-app/android-overview.webp" alt="Add-to-app steps on Android" />
 
-* Construa e importe automaticamente o módulo Flutter adicionando um
-  hook do Flutter SDK ao seu script Gradle.
-* Construa seu módulo Flutter em um
-  [Android Archive (AAR)][] genérico para integração ao seu
-  próprio sistema de build e para melhor interoperabilidade Jetifier
-  com AndroidX.
-* API [`FlutterEngine`][java-engine] para iniciar e persistir
-  seu ambiente Flutter independentemente de anexar uma
+* Auto-build and import the Flutter module by adding a
+  Flutter SDK hook to your Gradle script.
+* Build your Flutter module into a generic
+  [Android Archive (AAR)][] for integration into your
+  own build system and for better Jetifier interoperability
+  with AndroidX.
+* [`FlutterEngine`][java-engine] API for starting and persisting
+  your Flutter environment independently of attaching a
   [`FlutterActivity`][]/[`FlutterFragment`][] etc.
-* Co-edição Android/Flutter no Android Studio e assistente de
-  criação/importação de módulos.
-* Apps hospedeiros Java e Kotlin são suportados.
-* Módulos Flutter podem usar [plugins Flutter][Flutter plugins] para interagir
-  com a plataforma.
-* Suporte para debug Flutter e hot reload stateful usando
-  `flutter attach` de IDEs ou linha de comando para
-  conectar a um app que contém Flutter.
+* Android Studio Android/Flutter co-editing and module
+  creation/import wizard.
+* Java and Kotlin host apps are supported.
+* Flutter modules can use [Flutter plugins][] to interact
+  with the platform.
+* Support for Flutter debugging and stateful hot reload by
+  using `flutter attach` from IDEs or the command line to
+  connect to an app that contains Flutter.
 
-### Adicionar a aplicações iOS
+### Add to iOS applications
 
-{% render docs/app-figure.md, image:"development/add-to-app/ios-overview.gif", alt:"Add-to-app steps on iOS" %}
+<DashImage figure image="development/add-to-app/ios-overview.webp" alt="Add-to-app steps on iOS" />
 
-* Construa e importe automaticamente o módulo Flutter adicionando um hook
-  do Flutter SDK ao seu CocoaPods e à sua fase de build do Xcode.
-* Construa seu módulo Flutter em um [iOS Framework][] genérico
-  para integração ao seu próprio sistema de build.
-* API [`FlutterEngine`][ios-engine] para iniciar e persistir
-  seu ambiente Flutter independentemente de anexar um
+* Auto-build and import the Flutter module by adding a Flutter
+  SDK hook to your CocoaPods and to your Xcode build phase.
+* Build your Flutter module into a generic [iOS Framework][]
+  for integration into your own build system.
+* [`FlutterEngine`][ios-engine] API for starting and persisting
+  your Flutter environment independently of attaching a
   [`FlutterViewController`][].
-* Apps hospedeiros Objective-C e Swift suportados.
-* Módulos Flutter podem usar [plugins Flutter][Flutter plugins] para interagir
-  com a plataforma.
-* Suporte para debug Flutter e hot reload stateful usando
-  `flutter attach` de IDEs ou linha de comando para
-  conectar a um app que contém Flutter.
+* Objective-C and Swift host apps supported.
+* Flutter modules can use [Flutter plugins][] to interact
+  with the platform.
+* Support for Flutter debugging and stateful hot reload by
+  using `flutter attach` from IDEs or the command line to
+  connect to an app that contains Flutter.
 
-Veja nosso [repositório de amostras GitHub add-to-app][add-to-app GitHub Samples repository]
-para projetos de exemplo em Android e iOS que importam
-um módulo Flutter para UI.
+See our [add-to-app GitHub Samples repository][]
+for sample projects in Android and iOS that import
+a Flutter module for UI.
 
-### Adicionar a aplicações web
+### Add to web applications
 
-O Flutter pode ser adicionado a qualquer app web existente baseado em HTML DOM escrito
-em qualquer framework web Dart do lado do cliente ([jaspr][], [ngdart][], [over_react][], etc),
-qualquer framework JS do lado do cliente ([React][], [Angular][], [Vue.js][], etc),
-qualquer framework renderizado do lado do servidor ([Django][], [Ruby on Rails][],
-[Apache Struts][], etc), ou mesmo sem framework (carinhosamente conhecido como
-"[VanillaJS][]"). O requisito mínimo é apenas que sua aplicação existente
-e seu framework suportem importar bibliotecas JavaScript e criar elementos HTML
-para o Flutter renderizar.
+Flutter can be added to any existing HTML DOM-based web app written in any
+client-side Dart web framework ([jaspr][], [ngdart][], [over_react][], etc),
+any client-side JS framework ([React][], [Angular][], [Vue.js][], etc),
+any server-side rendered framework ([Django][], [Ruby on Rails][],
+[Apache Struts][], etc), or even no framework (affectionately known as
+"[VanillaJS][]"). The minimum requirement is only that your existing application
+and its framework support importing JavaScript libraries, and creating HTML
+elements for Flutter to render into.
 
-Para adicionar Flutter a um app existente, construa-o normalmente, depois siga as
-[instruções de incorporação][embedding instructions] para colocar views Flutter na página.
+To add Flutter to an existing app, build it normally, then follow the
+[embedding instructions][] for putting Flutter views onto the page.
 
 [jaspr]: https://pub.dev/packages/jaspr
 [ngdart]: https://pub.dev/packages/ngdart
@@ -117,83 +116,71 @@ Para adicionar Flutter a um app existente, construa-o normalmente, depois siga a
 [VanillaJS]: http://vanilla-js.com/
 [embedding instructions]: {{site.docs}}/platform-integration/web/embedding-flutter-web#embedded-mode
 
-## Comece
+## Get started
 
-Para começar, veja nosso guia de integração de projeto para
-Android e iOS:
+To get started, see our project integration guide for
+Android and iOS:
 
 <div class="card-grid">
-  <a class="card" href="/add-to-app/android/project-setup">
-    <div class="card-body">
-      <header class="card-title text-center">
-        Android
-      </header>
+  <a class="card outlined-card" href="/add-to-app/android/project-setup">
+    <div class="card-header text-center">
+      <span class="card-title">Android</span>
     </div>
   </a>
-  <a class="card" href="/add-to-app/ios/project-setup">
-    <div class="card-body">
-      <header class="card-title text-center">
-        iOS
-      </header>
+  <a class="card outlined-card" href="/add-to-app/ios/project-setup">
+    <div class="card-header text-center">
+      <span class="card-title">iOS</span>
     </div>
   </a>
-  <a class="card" href="/platform-integration/web/embedding-flutter-web#embedded-mode">
-    <div class="card-body">
-      <header class="card-title text-center">
-        Web
-      </header>
+  <a class="card outlined-card" href="/platform-integration/web/embedding-flutter-web#embedded-mode">
+    <div class="card-header text-center">
+      <span class="card-title">Web</span>
     </div>
   </a>
 </div>
 
-## Uso da API
+## API usage
 
-Depois que o Flutter é integrado ao seu projeto,
-veja nossos guias de uso de API nos seguintes links:
+After Flutter is integrated into your project,
+see our API usage guides at the following links:
 
 <div class="card-grid">
-  <a class="card" href="/add-to-app/android/add-flutter-screen">
-    <div class="card-body">
-      <header class="card-title text-center">
-        Android
-      </header>
+  <a class="card outlined-card" href="/add-to-app/android/add-flutter-screen">
+    <div class="card-header text-center">
+      <span class="card-title">Android</span>
     </div>
   </a>
-  <a class="card" href="/add-to-app/ios/add-flutter-screen">
-    <div class="card-body">
-      <header class="card-title text-center">
-        iOS
-      </header>
+  <a class="card outlined-card" href="/add-to-app/ios/add-flutter-screen">
+    <div class="card-header text-center">
+      <span class="card-title">iOS</span>
     </div>
   </a>
-  <a class="card" href="/platform-integration/web/embedding-flutter-web#manage-flutter-views-from-js">
-    <div class="card-body">
-      <header class="card-title text-center">
-        Web
-      </header>
+  <a class="card outlined-card" href="/platform-integration/web/embedding-flutter-web#manage-flutter-views-from-js">
+    <div class="card-header text-center">
+      <span class="card-title">Web</span>
     </div>
   </a>
 </div>
 
-## Limitações
+## Limitations
 
-Limitações mobile:
+Mobile limitations:
 
-* Modo multi-view não é suportado (apenas multi-engine).
-* Empacotar múltiplas bibliotecas Flutter em uma
-  aplicação não é suportado.
-* Plugins que não suportam `FlutterPlugin` podem ter comportamentos
-  inesperados se fizerem suposições que são insustentáveis em add-to-app
-  (como assumir que uma `Activity` Flutter está sempre presente).
-* No Android, o módulo Flutter suporta apenas aplicações AndroidX.
+* Multi-view mode is not supported (multi-engine only).
+* Packing multiple Flutter libraries into an
+  application isn't supported.
+* Plugins that don't support `FlutterPlugin` might have unexpected
+  behaviors if they make assumptions that are untenable in add-to-app
+  (such as assuming that a Flutter `Activity` is always present).
+* On Android, the Flutter module only supports AndroidX applications.
 
-Limitações web:
+Web limitations:
 
-* Modo multi-engine não é suportado (apenas multi-view).
-* Não há forma de "desligar" completamente o engine Flutter. O app pode remover
-  todos os objetos [FlutterView][] e garantir que todos os dados sejam coletados
-  pelo garbage collector usando conceitos normais do Dart. No entanto, o engine
-  permanecerá aquecido, mesmo que não esteja renderizando nada.
+* Multi-engine mode is not supported (multi-view only).
+* There's no way to completely "shutdown" the Flutter engine. The app can remove
+  all the [FlutterView][] objects and make sure all data is garbage collected
+  using normal Dart concepts. However, the engine will remain warmed up, even if
+  it's not rendering anything.
 
 [get started]: /get-started/codelab
 [add-to-app GitHub Samples repository]: {{site.repo.samples}}/tree/main/add_to_app
@@ -209,4 +196,4 @@ Limitações web:
 [iOS Framework]: {{site.apple-dev}}/library/archive/documentation/MacOSX/Conceptual/BPFrameworks/Concepts/WhatAreFrameworks.html
 [maintained by the Flutter team]: {{site.repo.packages}}/tree/main/packages
 [multiple Flutters]: /add-to-app/multiple-flutters
-[FlutterView]: https://api.flutterbrasil.dev/flutter/dart-ui/FlutterView-class.html
+[FlutterView]: https://api.flutter.dev/flutter/dart-ui/FlutterView-class.html

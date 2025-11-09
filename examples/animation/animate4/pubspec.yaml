@@ -1,12 +1,12 @@
 name: animation4
 description: >-
   Sample app from "Animations tutorial":
-  https://docs.flutterbrasil.dev/ui/animations/tutorial.
+  https://docs.flutter.dev/ui/animations/tutorial.
 version: 1.0.0
 
 resolution: workspace
 environment:
-  sdk: ^3.6.0
+  sdk: ^3.9.0
 
 dependencies:
   flutter:

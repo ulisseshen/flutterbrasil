@@ -1,26 +1,25 @@
 ---
-ia-translate: true
 title: Swift Package Manager for plugin authors
-description: Como adicionar compatibilidade Swift Package Manager a plugins iOS e macOS
+description: How to add Swift Package Manager compatibility to iOS and macOS plugins
 ---
 
 :::warning
-Flutter está migrando para [Swift Package Manager][]
-para gerenciar dependências nativas iOS e macOS.
-O suporte do Flutter ao Swift Package Manager está em desenvolvimento.
-Se você encontrar um bug no suporte do Flutter ao Swift Package Manager,
-[abra uma issue][open an issue].
-O suporte ao Swift Package Manager está [desativado por padrão][off by default].
-O Flutter continua a suportar CocoaPods.
+Flutter is migrating to [Swift Package Manager][]
+to manage iOS and macOS native dependencies.
+Flutter's support of Swift Package Manager is under development.
+If you find a bug in Flutter's Swift Package Manager support,
+[open an issue][].
+Swift Package Manager support is [off by default][].
+Flutter continues to support CocoaPods.
 :::
 
-A integração do Flutter com Swift Package Manager tem vários benefícios:
+Flutter's Swift Package Manager integration has several benefits:
 
-1. **Fornece acesso ao ecossistema de packages Swift**.
-   Plugins Flutter podem usar o crescente ecossistema de [Swift packages][]!
-1. **Simplifica a instalação do Flutter**.
-   Swift Package Manager vem incluído com Xcode.
-   No futuro, você não precisará instalar Ruby e CocoaPods para ter como alvo iOS ou
+1. **Provides access to the Swift package ecosystem**.
+   Flutter plugins can use the growing ecosystem of [Swift packages][]!
+1. **Simplifies Flutter installation**.
+   Swift Package Manager is bundled with Xcode.
+   In the future, you won’t need to install Ruby and CocoaPods to target iOS or
    macOS.
 
 
@@ -29,51 +28,51 @@ A integração do Flutter com Swift Package Manager tem vários benefícios:
 [Swift packages]: https://swiftpackageindex.com/
 [open an issue]: {{site.github}}/flutter/flutter/issues/new?template=2_bug.yml
 
-{% include docs/swift-package-manager/how-to-enable-disable.md %}
+{% render "docs/swift-package-manager/how-to-enable-disable.md", site: site %}
 
 ## How to add Swift Package Manager support to an existing Flutter plugin
 
-Este guia mostra como adicionar suporte Swift Package Manager a um plugin que
-já suporta CocoaPods.
-Isso garante que o plugin seja usável por todos os projetos Flutter.
+This guide shows how to add Swift Package Manager support to a plugin that
+already supports CocoaPods.
+This ensures the plugin is usable by all Flutter projects.
 
-Plugins Flutter devem suportar _tanto_ Swift Package Manager _quanto_ CocoaPods até
-novo aviso.
+Flutter plugins should support _both_ Swift Package Manager and CocoaPods until
+further notice.
 
-A adoção do Swift Package Manager será gradual.
-Plugins que não suportam CocoaPods não serão usáveis por projetos que ainda não
-migraram para Swift Package Manager.
-Plugins que não suportam Swift Package Manager podem causar problemas para projetos
-que já migraram.
+Swift Package Manager adoption will be gradual.
+Plugins that don't support CocoaPods won't be usable by projects that haven't
+migrated to Swift Package Manager yet.
+Plugins that don't support Swift Package Manager can cause problems for projects
+that have migrated.
 
 
-{% tabs %}
-{% tab "Swift plugin" %}
+<Tabs key="darwin-plugin-type">
+<Tab name="Swift plugin">
 
-{% include docs/swift-package-manager/migrate-swift-plugin.md %}
+{% render "docs/swift-package-manager/migrate-swift-plugin.md", site: site %}
 
-{% endtab %}
-{% tab "Objective-C plugin" %}
+</Tab>
+<Tab name="Objective-C plugin">
 
-{% include docs/swift-package-manager/migrate-objective-c-plugin.md %}
+{% render "docs/swift-package-manager/migrate-objective-c-plugin.md", site: site %}
 
-{% endtab %}
-{% endtabs %}
+</Tab>
+</Tabs>
 
 ## How to update unit tests in a plugin's example app
 
-Se seu plugin tem XCTests nativos, você pode precisar atualizá-los para funcionar com
-Swift Package Manager se uma das seguintes condições for verdadeira:
+If your plugin has native XCTests, you might need to update them to work with
+Swift Package Manager if one of the following is true:
 
-* Você está usando uma dependência CocoaPod para o teste.
-* Seu plugin está explicitamente configurado para `type: .dynamic` em seu arquivo `Package.swift`.
+* You're using a CocoaPod dependency for the test.
+* Your plugin is explicitly set to `type: .dynamic` in its `Package.swift` file.
 
-Para atualizar seus unit tests:
+To update your unit tests:
 
-1. Abra seu `example/ios/Runner.xcworkspace` no Xcode.
+1. Open your `example/ios/Runner.xcworkspace` in Xcode.
 
-1. Se você estava usando uma dependência CocoaPod para testes, como `OCMock`,
-   você vai querer removê-la do seu arquivo `Podfile`.
+1. If you were using a CocoaPod dependency for tests, such as `OCMock`,
+   you'll want to remove it from your `Podfile` file.
 
    ```ruby title="ios/Podfile" diff
      target 'RunnerTests' do
@@ -83,65 +82,58 @@ Para atualizar seus unit tests:
      end
    ```
 
-   Então no terminal, execute `pod install` no diretório `plugin_name_ios/example/ios`.
+   Then in the terminal, run `pod install` in the `plugin_name_ios/example/ios`
+   directory.
 
-1. Navegue até **Package Dependencies** do projeto.
+1. Navigate to **Package Dependencies** for the project.
 
-   {% render docs/captioned-image.liquid,
-   image:"development/packages-and-plugins/swift-package-manager/package-dependencies.png",
-   caption:"As package dependencies do projeto" %}
+   <DashImage image="development/packages-and-plugins/swift-package-manager/package-dependencies.png" caption="The project's package dependencies" />
 
-1. Clique no botão **+** e adicione quaisquer dependências apenas para testes pesquisando por
-   elas na barra de pesquisa superior direita.
+1. Click the **+** button and add any test-only dependencies by searching for
+   them in the top right search bar.
 
-   {% render docs/captioned-image.liquid,
-   image:"development/packages-and-plugins/swift-package-manager/search-for-ocmock.png",
-   caption:"Pesquise por dependências apenas para testes" %}
+   <DashImage image="development/packages-and-plugins/swift-package-manager/search-for-ocmock.png" caption="Search for test-only dependencies" />
 
    :::note
-   OCMock usa unsafe build flags e só pode ser usado se direcionado por commit.
-   `fe1661a3efed11831a6452f4b1a0c5e6ddc08c3d` é o commit para a versão 3.9.3.
+   OCMock uses unsafe build flags and can only be used if targeted by commit.
+   `fe1661a3efed11831a6452f4b1a0c5e6ddc08c3d` is the commit for the 3.9.3
+   version.
    :::
 
-1. Certifique-se de que a dependência seja adicionada ao Target `RunnerTests`.
+1. Ensure the dependency is added to the `RunnerTests` Target.
 
-   {% render docs/captioned-image.liquid,
-   image:"development/packages-and-plugins/swift-package-manager/choose-package-products-test.png",
-   caption:"Certifique-se de que a dependência seja adicionada ao target `RunnerTests`" %}
+   <DashImage image="development/packages-and-plugins/swift-package-manager/choose-package-products-test.png" caption="Ensure the dependency is added to the `RunnerTests` target" />
 
-1. Clique no botão **Add Package**.
+1. Click the **Add Package** button.
 
-1. Se você configurou explicitamente o tipo de biblioteca do seu plugin para `.dynamic` em seu
-   arquivo `Package.swift`
-   ([não recomendado pela Apple][library type recommendations]),
-   você também precisará adicioná-lo como uma dependência ao target `RunnerTests`.
+1. If you've explicitly set your plugin's library type to `.dynamic` in its
+   `Package.swift` file
+   ([not recommended by Apple][library type recommendations]),
+   you'll also need to add it as a dependency to the `RunnerTests` target.
 
-   1. Certifique-se de que `RunnerTests` **Build Phases** tenha uma fase de build **Link Binary With Libraries**:
+   1. Ensure `RunnerTests` **Build Phases** has a **Link Binary With Libraries**
+      build phase:
 
-      {% render docs/captioned-image.liquid,
-      image:"development/packages-and-plugins/swift-package-manager/runner-tests-link-binary-with-libraries.png",
-      caption:"A Build Phase `Link Binary With Libraries` no target `RunnerTests`" %}
+      <DashImage image="development/packages-and-plugins/swift-package-manager/runner-tests-link-binary-with-libraries.png" caption="The `Link Binary With Libraries` Build Phase in the `RunnerTests` target" />
 
-      Se a fase de build ainda não existir, crie uma.
-      Clique no <span class="material-symbols">add</span> e
-      então clique em **New Link Binary With Libraries Phase**.
+      If the build phase doesn't exist already, create one.
+      Click the <span class="material-symbols" translate="no">add</span> and
+      then click **New Link Binary With Libraries Phase**.
 
-      {% render docs/captioned-image.liquid,
-      image:"development/packages-and-plugins/swift-package-manager/add-runner-tests-link-binary-with-libraries.png",
-      caption:"Adicione a Build Phase `Link Binary With Libraries`" %}
+      <DashImage image="development/packages-and-plugins/swift-package-manager/add-runner-tests-link-binary-with-libraries.png" caption="Add `Link Binary With Libraries` Build Phase" />
 
-   1. Navegue até **Package Dependencies** do projeto.
+   1. Navigate to **Package Dependencies** for the project.
 
-   1. Clique em <span class="material-symbols">add</span>.
+   1. Click <span class="material-symbols" translate="no">add</span>.
 
-   1. No diálogo que abre, clique no botão **Add Local...**.
+   1. In the dialog that opens, click the **Add Local...** button.
 
-   1. Navegue até `plugin_name/plugin_name_ios/ios/plugin_name_ios` e clique
-      no botão **Add Package**.
+   1. Navigate to `plugin_name/plugin_name_ios/ios/plugin_name_ios` and click
+      the **Add Package** button.
 
-   1. Certifique-se de que seja adicionado ao target `RunnerTests` e clique no
-      botão **Add Package**.
+   1. Ensure that it's added to the `RunnerTests` target and click the
+      **Add Package** button.
 
-1. Certifique-se de que os testes passem com **Product > Test**.
+1. Ensure tests pass **Product > Test**.
 
 [library type recommendations]: https://developer.apple.com/documentation/packagedescription/product/library(name:type:targets:)

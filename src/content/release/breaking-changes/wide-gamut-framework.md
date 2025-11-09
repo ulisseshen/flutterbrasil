@@ -2,15 +2,16 @@
 title: Migration guide for wide gamut Color
 description: >-
   Changes to support wide gamut color and migration instructions.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 The API for the [`Color`][] class in `dart:ui` is changing to
 support [wide gamut color spaces][].
 
-## Contexto
+## Context
 
 The Flutter engine [already supports wide gamut color][] with [Impeller][], and
 the support is now being added [to the framework][].
@@ -22,7 +23,7 @@ render all of those colors on iOS Impeller, and
 the `Color` class is better prepared for future color spaces or
 changes to color component bit depth.
 
-## Descrição da mudança
+## Description of change
 
 Changes to [`Color`][]:
 
@@ -35,7 +36,7 @@ Changes to [`ColorSpace`][]:
 
  1. Adds a `displayP3` property.
 
-## Guia de migração
+## Migration guide
 
 ### 8-bit unsigned integer constructors
 
@@ -127,12 +128,35 @@ extension IntColorComponents on Color {
 
 ### Opacity
 
-Previously, Color had the concept of "opacity" which
-showed up in the methods `opacity` and `withOpacity()`.
-Opacity was introduced as a way to communicate with `Color` about
-its alpha channel with floating point values.
-Now that alpha is a floating-point value, opacity is redundant
-and `opacity` and `withOpacity` are deprecated and slated to be removed.
+Before Flutter 3.27, Color had the concept of "opacity" which showed up in the
+methods `opacity` and `withOpacity()`. Opacity was introduced as a way to
+communicate with `Color` about its alpha channel with floating-point values
+([0.0, 1.0]). Opacity methods were convenience methods for setting the 8-bit
+alpha value ([0, 255]), but never offered the full expression of a
+floating-point number. This was sufficient when color components were stored as
+8-bit integers.
+
+Since Flutter 3.27, alpha is stored as a floating-point value. Using `.a` and
+`.withValues()` will give the full expression of a floating-point value and
+won't be quantized (restricted to a limited range). That means "alpha" expresses
+the intent of "opacity" more correctly. Opacity is different in a subtle way
+where its usage can result in unexpected data loss, so `.withOpacity()` and
+`.opacity` have been deprecated and their semantics have been maintained to
+avoid breaking anyone.
+
+For example:
+
+```dart
+// Prints 0.5019607843137255.
+print(Colors.black.withOpacity(0.5).a);
+// Prints 0.5.
+print(Colors.black.withValues(alpha: 0.5).a);
+```
+
+Practically all usage will directly benefit from the more accurate colors. In
+the rare case where it doesn't, care can be taken to quantize opacity to [0,
+255] using `.alpha` and `.withAlpha()` to match the behavior before Flutter
+3.27.
 
 <a id="opacity-migration" aria-hidden="true"></a>
 #### Migrate `opacity`
@@ -173,25 +197,25 @@ expect(calculateColor(), const Color(0xffff00ff));
 expect(calculateColor(), isSameColorAs(const Color(0xffff00ff)));
 ```
 
-## Linha do tempo
+## Timeline
 
 ### Phase 1 - New API introduction, old API deprecation
 
-Lançado na versão: 3.26.0-0.1.pre<br>
-Na versão estável: 3.27.0
+Landed in version: 3.26.0-0.1.pre<br>
+In stable release: 3.27.0
 
 ### Phase 2 - Old API removal
 
-Lançado na versão: Not yet<br>
-Na versão estável: Not yet
+Landed in version: Not yet<br>
+In stable release: Not yet
 
-## Referências
+## References
 
-Issues relevantes:
+Relevant issue:
 
 * [issue 127855][]: Implement wide gamut color support in the Framework
 
-PRs relevantes:
+Relevant PRs:
 
 * [PR 54737][]: Framework wide color
 

@@ -2,10 +2,11 @@
 title: The ThemeData.useMaterial3 flag is true by default
 description: >-
    The ThemeData.useMaterial3 flag is now set to true by default.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 The Material library has been updated to match
 the latest Material Design spec.
@@ -39,7 +40,7 @@ all the new components and compare them with Material 2.
 [`ThemeData.segmentedButtonTheme`]: {{site.api}}/flutter/material/ThemeData/segmentedButtonTheme.html
 [`ThemeData.snackBarTheme`]: {{site.api}}/flutter/material/ThemeData/snackBarTheme.html
 
-## Guia de migração
+## Migration guide
 
 Prior to the 3.16 release, the changes were "opt-in"
 using the `useMaterial3` theme property on `ThemeData`.
@@ -62,37 +63,36 @@ For more details, check out the [Material 3 umbrella issue][] on GitHub.
 
 [`NavigationBar`]: {{site.api}}/flutter/material/NavigationBar-class.html
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 3.13.0-4.0.pre<br>
-Na versão estável: 3.16
+Landed in version: 3.13.0-4.0.pre<br>
+In stable release: 3.16
 
-## Referências
+## References
 
 Documentation:
 
 * [Material Design for Flutter][]
 
-Documentação da API:
+API documentation:
 
 * [`ThemeData.useMaterial3`][]
 
-Issues relevantes:
+Relevant issues:
 
 * [Material 3 umbrella issue][]
 * [Add support for M3 motion][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [Change the default for `ThemeData.useMaterial3` to true][]
 * [Updated `ThemeData.useMaterial3` API doc, default is true][]
 
 
-[Material 3 gallery]: https://flutter.github.io/samples/web/material_3_demo/
+[Material 3 gallery]: https://github.com/flutter/samples/tree/main/material_3_demo
 [Material 3 umbrella issue]: {{site.repo.flutter}}/issues/91605
 [Material Design for Flutter]: /ui/design/material
 [`ThemeData.useMaterial3`]: {{site.api}}/flutter/material/ThemeData/useMaterial3.html
 [Add support for M3 motion]: {{site.repo.flutter}}/issues/129942
 [Change the default for `ThemeData.useMaterial3` to true]: {{site.repo.flutter}}/pull/129724
 [Updated `ThemeData.useMaterial3` API doc, default is true]: {{site.repo.flutter}}/pull/130764
-

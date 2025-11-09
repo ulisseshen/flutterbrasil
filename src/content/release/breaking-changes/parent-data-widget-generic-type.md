@@ -1,15 +1,16 @@
 ---
 title: The generic type of ParentDataWidget changed to ParentData
 description: The ParentDataWidget is now bound to the ParentData type.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 The generic type of `ParentDataWidget` has changed from
 `RenderObjectWidget` to `ParentData`.
 
-## Contextoo
+## Context
 
 Prior to this change, a `ParentDataWidget` was bound
 to a specific `RenderObjectWidget` type as ancestor.
@@ -22,7 +23,7 @@ sets up the correct `ParentData` type. In this new world,
 the `Positioned` widget can be reused with a hypothetical
 new `SuperStack` widget.
 
-## Descrição da mudança
+## Description of change
 
 The generic type argument of `ParentDataWidget`
 has changed from `RenderObjectWidget` to `ParentData`,
@@ -32,7 +33,7 @@ The latter is used for error messages to give users a
 better idea of the context a given `ParentDataWidget`
 is supposed to be used in.
 
-## Guia de migração
+## Migration guide
 
 You must migrate your code as described in this section
 if you're subclassing or implementing `ParentDataWidget`.
@@ -44,7 +45,7 @@ upgrade to the Flutter version that includes this change:
   error • 'FrogJar' doesn't extend 'ParentData' • lib/main.dart:114:41 • type_argument_not_matching_bounds
 ```
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 class FrogSize extends ParentDataWidget<FrogJar> {
@@ -78,7 +79,7 @@ class FrogJar extends RenderObjectWidget {
 }
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 class FrogSize extends ParentDataWidget<FrogJarParentData> { // FrogJar changed to FrogJarParentData
@@ -118,18 +119,18 @@ for this `ParentDataWidget`. Most of the time,
 you just want to return the old generic type here
 (`FrogJar` in this example).
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 1.16.3<br>
-Na versão estável: 1.17
+Landed in version: 1.16.3<br>
+In stable release: 1.17
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`ParentDataWidget`][]
 
-PRs relevantes:
+Relevant PR:
 
 * [Make ParentDataWidget usable with different ancestor RenderObjectWidget types][]
 

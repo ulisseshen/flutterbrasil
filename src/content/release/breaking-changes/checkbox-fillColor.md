@@ -3,15 +3,16 @@ title: Updated `Checkbox.fillColor` behavior
 description: >
   Improved `Checkbox.fillColor` behavior applies the fill color to the
   background when the checkbox is unselected.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 The `Checkbox.fillColor` is now applied to the checkbox's background when
 the checkbox is unselected.
 
-## Contexto
+## Context
 
 Previously, the `Checkbox.fillColor` was applied to the checkbox's border
 when the checkbox was unselected and its background was transparent.
@@ -19,12 +20,12 @@ With this change, the `Checkbox.fillColor` is applied to the checkbox's
 background and the border uses the `Checkbox.side` color when the checkbox
 is unselected.
 
-## Descrição da mudança
+## Description of change
 
 The `Checkbox.fillColor` is now applied to the checkbox's background when
 the checkbox is unselected instead of being used as the border color.
 
-## Guia de migração
+## Migration guide
 
 The updated `Checkbox.fillColor` behavior applies the fill color to the
 checkbox's background in the unselected state. To get the previous behavior,
@@ -33,7 +34,7 @@ set `Checkbox.side` to the desired color.
 
 If you use the `Checkbox.fillColor` property to customize the checkbox.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 Checkbox(
@@ -54,7 +55,7 @@ Checkbox(
 ),
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 Checkbox(
@@ -78,7 +79,7 @@ Checkbox(
 
 If you use the `CheckboxThemeData.fillColor` property to customize the checkbox.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 checkboxTheme: CheckboxThemeData(
@@ -91,7 +92,7 @@ checkboxTheme: CheckboxThemeData(
 ),
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 checkboxTheme: CheckboxThemeData(
@@ -105,22 +106,22 @@ checkboxTheme: CheckboxThemeData(
 ),
 ```
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 3.10.0-17.0.pre<br>
-Na versão estável: 3.13.0
+Landed in version: 3.10.0-17.0.pre<br>
+In stable release: 3.13.0
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`Checkbox.fillColor`][]
 
-Issues relevantes:
+Relevant issues:
 
 * [Add `backgroundColor` to `Checkbox` and `CheckboxThemeData`][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [`Checkbox.fillColor` should be applied to checkbox's background color when it is unchecked.][]
 

@@ -1,42 +1,43 @@
 ---
-ia-translate: true
-title: Comportamento atualizado de scroll into view do EditableText
+title: Updated EditableText scroll into view behavior
 description: >
-  Melhorar o comportamento de scroll into view da seleção do EditableText para sempre
-  usar a extensão de seleção atual.
+  Improve EditableText selection scroll into view behavior to always
+  use the current selection extent.
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
 
-O callback `Editable.onCaretChanged` foi removido. Com esta mudança,
-o comportamento do `EditableText` para fazer scroll da seleção para a visualização
-é alterado.
+## Summary
 
-## Contexto
+The `Editable.onCaretChanged` callback is removed. With this change,
+`EditableText` behavior for scrolling the selection into view
+changes.
 
-Anteriormente, ao fazer scroll para a visualização para mostrar atualizações do usuário, `EditableText`
-usava múltiplos mecanismos para determinar a extensão da seleção ou a
-localização do cursor.
+## Context
 
-## Descrição da mudança
+Previously, upon scrolling into view to show user updates, `EditableText`
+used multiple mechanisms to determine the extent of the selection or the
+caret location.
 
-Ao remover o callback `Editable.onCaretChanged`, `EditableText` sempre
-usará a localização mais atualizada da extensão da seleção ao fazer scroll para mostrá-la.
-Especificamente, isso melhora o comportamento de scroll into view após
-alterar a seleção de colapsada para não-colapsada usando
+## Description of change
+
+By removing the `Editable.onCaretChanged` callback, `EditableText` will always
+use the most up-to-date selection extent location when scrolling to show it.
+Specifically, this improves scroll into view behavior after
+changing selection from collapsed to non-collapsed using
 `userUpdateTextEditingValue()`.
 
-## Cronograma
+## Timeline
 
-Adicionado na versão: 3.12.0-4.0.pre<br>
-Na versão stable: 3.13.0
+Landed in version: 3.12.0-4.0.pre<br>
+In stable release: 3.13.0
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`EditableText`]({{site.api}}/flutter/widgets/EditableText-class.html)
 
-PRs relevantes:
+Relevant PRs:
 
 * [109114: Remove Editable.onCaretChanged callback]({{site.repo.flutter}}/pull/109114)

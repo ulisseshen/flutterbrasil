@@ -1,1 +1,1 @@
-![Pequena linha vertical azul com um triângulo azul que indica executar ou retomar o app Flutter](/assets/images/docs/testing/debugging/vscode-ui/icons/play-or-resume.png)
+![Small blue vertical line with a blue triangle that indicates playing or resuming the Flutter app](/assets/images/docs/testing/debugging/vscode-ui/icons/play-or-resume.png)

@@ -2,16 +2,17 @@
 title: SnackBars managed by the ScaffoldMessenger
 description: >
   SnackBars are now managed by the ScaffoldMessenger, and persist across routes.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 The `SnackBar` API within the `Scaffold` is now handled by the
 `ScaffoldMessenger`, one of which is
 available by default within the context of a `MaterialApp`.
 
-## Contexto
+## Context
 
 Prior to this change, `SnackBar`s would be shown by calling
 on the `Scaffold` within the current `BuildContext`.
@@ -31,7 +32,7 @@ By default, a root `ScaffoldMessenger` is included in the `MaterialApp`,
 but you can create your own controlled scope for the `ScaffoldMessenger`
 to further control _which_ `Scaffold`s receive your `SnackBar`s.
 
-## Descrição da mudança
+## Description of change
 
 The previous approach called upon the `Scaffold` to show a `SnackBar`.
 
@@ -108,9 +109,9 @@ Typically, the ScaffoldMessenger widget is introduced by the MaterialApp
 at the top of your application widget tree.
 ```
 
-## Guia de migração
+## Migration guide
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 // The ScaffoldState of the current context was used for managing SnackBars.
@@ -134,7 +135,7 @@ scaffoldKey.currentState.removeCurrentSnackBar(mySnackBar);
 
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 // The ScaffoldMessengerState of the current context is used for managing SnackBars.
@@ -156,7 +157,7 @@ scaffoldMessengerKey.currentState.showSnackBar(mySnackBar);
 scaffoldMessengerKey.currentState.hideCurrentSnackBar(mySnackBar);
 scaffoldMessengerKey.currentState.removeCurrentSnackBar(mySnackBar);
 
-// The root ScaffoldMessenger can also be accessed by providing a key to 
+// The root ScaffoldMessenger can also be accessed by providing a key to
 // MaterialApp.scaffoldMessengerKey. This way, the ScaffoldMessengerState can be directly accessed
 // without first obtaining it from a BuildContext via ScaffoldMessenger.of. From the key, use
 // the GlobalKey.currentState getter.
@@ -171,26 +172,26 @@ rootScaffoldMessengerKey.currentState.hideCurrentSnackBar(mySnackBar);
 rootScaffoldMessengerKey.currentState.removeCurrentSnackBar(mySnackBar);
 ```
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 1.23.0-13.0.pre<br>
-Na versão estável: 2.0.0
+Landed in version: 1.23.0-13.0.pre<br>
+In stable release: 2.0.0
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`Scaffold`][]
 * [`ScaffoldMessenger`][]
 * [`SnackBar`][]
 * [`MaterialApp`][]
 
-Issues relevantes:
+Relevant issues:
 
 * [Issue #57218][]
 * [Issue #62921][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [ScaffoldMessenger][]
 * [ScaffoldMessenger Migration][]

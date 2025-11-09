@@ -4,15 +4,16 @@ description: >
   Remove FloatingActionButton's undocumented use of
   the ThemeData accentTextTheme property, and
   its unnecessary use of accentIconTheme.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 Removed Flutter's `FloatingActionButton` (FAB) dependency on
 `ThemeData` accent properties.
 
-## Contexto
+## Context
 
 This was a small part of the [Material Theme System Updates][] project.
 
@@ -42,7 +43,7 @@ color defaulted to the `accentIconTheme`'s color.
 With this change, the default behavior uses the color scheme's
 `onSecondary` color instead.
 
-## Descrição da mudança
+## Description of change
 
 Previously, the `accentIconTheme` provided a default for the
 `FloatingActionButton`'s `foregroundColor` property:
@@ -80,7 +81,7 @@ Except in a case where an app has explicitly configured the
 this use of `accentTextTheme` is unnecessary.
 This change replaces this use of `accentTextTheme` with `textTheme`.
 
-## Guia de migração
+## Migration guide
 
 This change occurred in two steps:
 
@@ -94,7 +95,7 @@ To configure the `FloatingActionButton`'s `foregroundColor`
 for all FABs, you can configure the theme's
 `floatingActionButtonTheme` instead of its `accentIconTheme`.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 MaterialApp(
@@ -104,7 +105,7 @@ MaterialApp(
 )
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 MaterialApp(
@@ -116,24 +117,24 @@ MaterialApp(
 )
 ```
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 1.16.3<br>
-Na versão estável: 1.17
+Landed in version: 1.16.3<br>
+In stable release: 1.17
 
-## Referências
+## References
 
 Design doc:
 
 * [Remove FAB Accent Theme Dependency][]
 
-Documentação da API:
+API documentation:
 
 * [`FloatingActionButton`][]
 * [`ThemeData`][]
 * [`FloatingActionButtonThemeData`][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [Step 1 of 2][] Warn about Flutter's
   FloatingActionButton dependency on ThemeData accent properties

@@ -2,17 +2,18 @@
 title: MouseTracker no longer attaches annotations
 description: >
   MouseTracker no longer relies on annotation attachment to
-  perform the mounted-exit check; therefore, 
+  perform the mounted-exit check; therefore,
   all three related methods are removed.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 Removed `MouseTracker`'s methods `attachAnnotation`,
 `detachAnnotation`, and `isAnnotationAttached`.
 
-## Contexto
+## Context
 
 Mouse events, such as when a mouse pointer has entered a region,
 exited, or is hovering over a region, are detected with the help of
@@ -38,7 +39,7 @@ check by itself by blocking the callback when unmounted.
 Therefore, these methods have been removed, and `MouseTracker`
 no longer tracks all annotations on the screen.
 
-## Descrição da mudança
+## Description of change
 
 The `MouseTracker` class has removed three methods related
 to attaching annotations:
@@ -58,7 +59,7 @@ to attaching annotations:
 `RenderMouseRegion` and `MouseTrackerAnnotation` no longer perform the
 mounted-exit check, while `MouseRegion` still does.
 
-## Guia de migração
+## Migration guide
 
 Calls to `MouseTracker.attachAnnotation` and
 `detachAnnotation` should be removed with little to no impact:
@@ -73,7 +74,7 @@ Calls to `MouseTracker.attachAnnotation` and
   especially if the callback is leaked so that outer
   widgets might call `setState` in it. For example:
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 class MyMouseRegion extends SingleChildRenderObjectWidget {
@@ -98,7 +99,7 @@ class MyMouseRegion extends SingleChildRenderObjectWidget {
 }
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 class MyMouseRegion extends SingleChildRenderObjectWidget {
@@ -134,21 +135,21 @@ This feature is no longer technically possible,
 since annotations are no longer tracked.
 If you somehow need this feature, please submit an issue.
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 1.15.4<br>
-Na versão estável: 1.17
+Landed in version: 1.15.4<br>
+In stable release: 1.17
 
-## Referências
+## References
 
-Documentação da API:
+API documentation:
 
 * [`MouseRegion`][]
 * [`MouseTracker`][]
 * [`MouseTrackerAnnotation`][]
 * [`RenderMouseRegion`][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [MouseTracker no longer requires annotations attached][],
   which made the change

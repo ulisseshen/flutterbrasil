@@ -1,32 +1,28 @@
 ---
-title: Recuperar o valor de um text field
-description: Como recuperar texto de um text field.
-js:
-  - defer: true
-    url: /assets/js/inject_dartpad.js
-ia-translate: true
+title: Retrieve the value of a text field
+description: How to retrieve text from a text field.
 ---
 
 <?code-excerpt path-base="cookbook/forms/retrieve_input"?>
 
-Nesta receita,
-aprenda como recuperar o texto que um usuário digitou em um text field
-usando os seguintes passos:
+In this recipe,
+learn how to retrieve the text a user has entered into a text field
+using the following steps:
 
-  1. Criar um `TextEditingController`.
-  2. Fornecer o `TextEditingController` para um `TextField`.
-  3. Exibir o valor atual do text field.
+  1. Create a `TextEditingController`.
+  2. Supply the `TextEditingController` to a `TextField`.
+  3. Display the current value of the text field.
 
-## 1. Criar um `TextEditingController`
+## 1. Create a `TextEditingController`
 
-Para recuperar o texto que um usuário digitou em um text field,
-crie um [`TextEditingController`][]
-e forneça-o para um `TextField` ou `TextFormField`.
+To retrieve the text a user has entered into a text field,
+create a [`TextEditingController`][]
+and supply it to a `TextField` or `TextFormField`.
 
 :::important
-Chame `dispose` do `TextEditingController` quando
-você terminar de usá-lo. Isso garante que você descarte quaisquer recursos
-usados pelo objeto.
+Call `dispose` of the `TextEditingController` when
+you've finished using it. This ensures that you discard any resources
+used by the object.
 :::
 
 <?code-excerpt "lib/starter.dart (Starter)" remove="return Container();"?>
@@ -60,27 +56,25 @@ class _MyCustomFormState extends State<MyCustomForm> {
 }
 ```
 
-## 2. Fornecer o `TextEditingController` para um `TextField`
+## 2. Supply the `TextEditingController` to a `TextField`
 
-Agora que você tem um `TextEditingController`, conecte-o
-a um text field usando a propriedade `controller`:
+Now that you have a `TextEditingController`, wire it up
+to a text field using the `controller` property:
 
 <?code-excerpt "lib/step2.dart (TextFieldController)"?>
 ```dart
-return TextField(
-  controller: myController,
-);
+return TextField(controller: myController);
 ```
 
-## 3. Exibir o valor atual do text field
+## 3. Display the current value of the text field
 
-Depois de fornecer o `TextEditingController` ao text field,
-comece a ler valores. Use o método [`text()`][]
-fornecido pelo `TextEditingController` para recuperar a
-String que o usuário digitou no text field.
+After supplying the `TextEditingController` to the text field,
+begin reading values. Use the [`text`][]
+property provided by the `TextEditingController` to retrieve the
+String that the user has entered into the text field.
 
-O código a seguir exibe um alert dialog com o valor
-atual do text field quando o usuário toca em um floating action button.
+The following code displays an alert dialog with the current
+value of the text field when the user taps a floating action button.
 
 <?code-excerpt "lib/step3.dart (FloatingActionButton)" replace="/^floatingActionButton\: //g"?>
 ```dart
@@ -104,7 +98,7 @@ FloatingActionButton(
 ),
 ```
 
-## Exemplo interativo
+## Interactive example
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter retrieve input hands-on example in DartPad" run="true"
@@ -149,14 +143,10 @@ class _MyCustomFormState extends State<MyCustomForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Retrieve Text Input'),
-      ),
+      appBar: AppBar(title: const Text('Retrieve Text Input')),
       body: Padding(
         padding: const EdgeInsets.all(16),
-        child: TextField(
-          controller: myController,
-        ),
+        child: TextField(controller: myController),
       ),
       floatingActionButton: FloatingActionButton(
         // When the user presses the button, show an alert dialog containing
@@ -182,9 +172,9 @@ class _MyCustomFormState extends State<MyCustomForm> {
 ```
 
 <noscript>
-  <img src="/assets/images/docs/cookbook/retrieve-input.gif" alt="Retrieve Text Input Demo" class="site-mobile-screenshot" />
+  <img src="/assets/images/docs/cookbook/retrieve-input.webp" alt="Retrieve Text Input Demo" class="site-mobile-screenshot" />
 </noscript>
 
 
-[`text()`]: {{site.api}}/flutter/widgets/TextEditingController/text.html
+[`text`]: {{site.api}}/flutter/widgets/TextEditingController/text.html
 [`TextEditingController`]: {{site.api}}/flutter/widgets/TextEditingController-class.html

@@ -1,53 +1,50 @@
 ---
-title: Tocar, arrastar e inserir texto
-description: Como testar widgets para interação do usuário.
-ia-translate: true
+title: Tap, drag, and enter text
+description: How to test widgets for user interaction.
 ---
 
 <?code-excerpt path-base="cookbook/testing/widget/tap_drag/"?>
 
-{% assign api = site.api | append: '/flutter' -%}
+Many widgets not only display information, but also respond
+to user interaction. This includes buttons that can be tapped,
+and [`TextField`][] for entering text.
 
-Muitos widgets não apenas exibem informações, mas também respondem
-à interação do usuário. Isso inclui botões que podem ser tocados,
-e [`TextField`][] para inserir texto.
+To test these interactions, you need a way to simulate them
+in the test environment. For this purpose, use the
+[`WidgetTester`][] library.
 
-Para testar essas interações, você precisa de uma maneira de simulá-las
-no ambiente de teste. Para este propósito, use a
-biblioteca [`WidgetTester`][].
-
-O `WidgetTester` fornece métodos para inserir texto,
-tocar e arrastar.
+The `WidgetTester` provides methods for entering text,
+tapping, and dragging.
 
 * [`enterText()`][]
 * [`tap()`][]
 * [`drag()`][]
 
-Em muitos casos, interações do usuário atualizam o estado do aplicativo. No ambiente
-de teste, o Flutter não reconstrói widgets automaticamente quando o estado
-muda. Para garantir que a árvore de widgets seja reconstruída após simular uma
-interação do usuário, chame os métodos [`pump()`][] ou [`pumpAndSettle()`][]
-fornecidos pelo `WidgetTester`.
-Esta receita usa as seguintes etapas:
+In many cases, user interactions update the state of the app. In the test
+environment, Flutter doesn't automatically rebuild widgets when the state
+changes. To ensure that the widget tree is rebuilt after simulating a user
+interaction, call the [`pump()`][] or [`pumpAndSettle()`][]
+methods provided by the `WidgetTester`.
+This recipe uses the following steps:
 
-  1. Criar um widget para testar.
-  2. Inserir texto no campo de texto.
-  3. Garantir que tocar em um botão adiciona o todo.
-  4. Garantir que deslizar para descartar remove o todo.
+  1. Create a widget to test.
+  2. Enter text in the text field.
+  3. Ensure tapping a button adds the todo.
+  4. Ensure swipe-to-dismiss removes the todo.
 
-## 1. Criar um widget para testar
+## 1. Create a widget to test
 
-Para este exemplo,
-crie um aplicativo básico de todo que testa três recursos:
+For this example,
+create a basic todo app that tests three features:
 
-  1. Inserir texto em um `TextField`.
-  2. Tocar em um `FloatingActionButton` para adicionar o texto a uma lista de todos.
-  3. Deslizar para descartar para remover o item da lista.
+  1. Entering text into a `TextField`.
+  2. Tapping a `FloatingActionButton` to add the text to a list of todos.
+  3. Swiping-to-dismiss to remove the item from the list.
 
-Para manter o foco em testes,
-esta receita não fornecerá um guia detalhado sobre como construir o aplicativo de todo.
-Para aprender mais sobre como este aplicativo é construído,
-consulte as receitas relevantes:
+To keep the focus on testing,
+this recipe won't provide a detailed guide on how to build the todo app.
+To learn more about how this app is built,
+see the relevant recipes:
 
 * [Create and style a text field][]
 * [Handle taps][]
@@ -73,14 +70,10 @@ class _TodoListState extends State<TodoList> {
     return MaterialApp(
       title: _appTitle,
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text(_appTitle),
-        ),
+        appBar: AppBar(title: const Text(_appTitle)),
         body: Column(
           children: [
-            TextField(
-              controller: controller,
-            ),
+            TextField(controller: controller),
             Expanded(
               child: ListView.builder(
                 itemCount: todos.length,
@@ -113,16 +106,16 @@ class _TodoListState extends State<TodoList> {
 }
 ```
 
-## 2. Inserir texto no campo de texto
+## 2. Enter text in the text field
 
-Agora que você tem um aplicativo de todo, comece escrevendo o teste.
-Comece inserindo texto no `TextField`.
+Now that you have a todo app, begin writing the test.
+Start by entering text into the `TextField`.
 
-Realize esta tarefa:
+Accomplish this task by:
 
-  1. Construindo o widget no ambiente de teste.
-  2. Usando o método [`enterText()`][]
-     do `WidgetTester`.
+  1. Building the widget in the test environment.
+  2. Using the [`enterText()`][]
+     method from the `WidgetTester`.
 
 <?code-excerpt "test/main_steps.dart (TestWidgetStep2)"?>
 ```dart
@@ -136,25 +129,25 @@ testWidgets('Add and remove a todo', (tester) async {
 ```
 
 :::note
-Esta receita se baseia em receitas anteriores de testes de widget.
-Para aprender os conceitos principais de testes de widget,
-consulte as seguintes receitas:
+This recipe builds upon previous widget testing recipes.
+To learn the core concepts of widget testing,
+see the following recipes:
 
 * [Introduction to widget testing][]
 * [Finding widgets in a widget test][]
 :::
 
-## 3. Garantir que tocar em um botão adiciona o todo
+## 3. Ensure tapping a button adds the todo
 
-Após inserir texto no `TextField`, garanta que tocar
-no `FloatingActionButton` adiciona o item à lista.
+After entering text into the `TextField`, ensure that tapping
+the `FloatingActionButton` adds the item to the list.
 
-Isso envolve três etapas:
+This involves three steps:
 
- 1. Tocar no botão adicionar usando o método [`tap()`][].
- 2. Reconstruir o widget após o estado ter mudado usando o
-    método [`pump()`][].
- 3. Garantir que o item da lista apareça na tela.
+ 1. Tap the add button using the [`tap()`][] method.
+ 2. Rebuild the widget after the state has changed using the
+    [`pump()`][] method.
+ 3. Ensure that the list item appears on screen.
 
 <?code-excerpt "test/main_steps.dart (TestWidgetStep3)"?>
 ```dart
@@ -172,17 +165,17 @@ testWidgets('Add and remove a todo', (tester) async {
 });
 ```
 
-## 4. Garantir que deslizar para descartar remove o todo
+## 4. Ensure swipe-to-dismiss removes the todo
 
-Finalmente, garanta que realizar uma ação de deslizar para descartar no item todo
-o remove da lista. Isso envolve três etapas:
+Finally, ensure that performing a swipe-to-dismiss action on the todo
+item removes it from the list. This involves three steps:
 
-  1. Usar o método [`drag()`][]
-     para realizar uma ação de deslizar para descartar.
-  2. Usar o método [`pumpAndSettle()`][]
-     para reconstruir continuamente a árvore de widgets até que a animação
-     de descarte esteja completa.
-  3. Garantir que o item não apareça mais na tela.
+  1. Use the [`drag()`][]
+     method to perform a swipe-to-dismiss action.
+  2. Use the [`pumpAndSettle()`][]
+     method to continually rebuild the widget tree until the dismiss
+     animation is complete.
+  3. Ensure that the item no longer appears on screen.
 
 <?code-excerpt "test/main_steps.dart (TestWidgetStep4)"?>
 ```dart
@@ -200,7 +193,7 @@ testWidgets('Add and remove a todo', (tester) async {
 });
 ```
 
-## Exemplo completo
+## Complete example
 
 <?code-excerpt "test/main_test.dart"?>
 ```dart
@@ -252,14 +245,10 @@ class _TodoListState extends State<TodoList> {
     return MaterialApp(
       title: _appTitle,
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text(_appTitle),
-        ),
+        appBar: AppBar(title: const Text(_appTitle)),
         body: Column(
           children: [
-            TextField(
-              controller: controller,
-            ),
+            TextField(controller: controller),
             Expanded(
               child: ListView.builder(
                 itemCount: todos.length,
@@ -294,14 +283,14 @@ class _TodoListState extends State<TodoList> {
 
 [Create a basic list]: /cookbook/lists/basic-list
 [Create and style a text field]: /cookbook/forms/text-input
-[`drag()`]: {{api}}/flutter_test/WidgetController/drag.html
-[`enterText()`]: {{api}}/flutter_test/WidgetTester/enterText.html
+[`drag()`]: {{site.api}}/flutter/flutter_test/WidgetController/drag.html
+[`enterText()`]: {{site.api}}/flutter/flutter_test/WidgetTester/enterText.html
 [Finding widgets in a widget test]: /cookbook/testing/widget/finders
 [Handle taps]: /cookbook/gestures/handling-taps
 [Implement swipe to dismiss]: /cookbook/gestures/dismissible
 [Introduction to widget testing]: /cookbook/testing/widget/introduction
-[`pump()`]: {{api}}/flutter_test/WidgetTester/pump.html
-[`pumpAndSettle()`]: {{api}}/flutter_test/WidgetTester/pumpAndSettle.html
-[`tap()`]: {{api}}/flutter_test/WidgetController/tap.html
-[`TextField`]: {{api}}/material/TextField-class.html
-[`WidgetTester`]: {{api}}/flutter_test/WidgetTester-class.html
+[`pump()`]: {{site.api}}/flutter/flutter_test/WidgetTester/pump.html
+[`pumpAndSettle()`]: {{site.api}}/flutter/flutter_test/WidgetTester/pumpAndSettle.html
+[`tap()`]: {{site.api}}/flutter/flutter_test/WidgetController/tap.html
+[`TextField`]: {{site.api}}/flutter/material/TextField-class.html
+[`WidgetTester`]: {{site.api}}/flutter/flutter_test/WidgetTester-class.html

@@ -4,10 +4,11 @@ description: >-
   MaterialState and its related APIs have been moved
   outside of the Material library and renamed to
   WidgetState.
-ia-translate: true
 ---
 
-## Resumo
+{% render "docs/breaking-changes.md" %}
+
+## Summary
 
 `MaterialState`, and its related APIs, have been moved out
 of the Material library and renamed to `WidgetState`.
@@ -42,14 +43,14 @@ The classes `MaterialStateOutlineInputBorder` and
 Material library with no `WidgetState` equivalent, as
 they are specific to Material design.
 
-## Guia de migração
+## Migration guide
 
 A [Flutter fix][] is available to help migrate the `MaterialState`
 classes to `WidgetState`.
 
 To migrate, replace `MaterialState` with `WidgetState`.
 
-Código antes da migração:
+Code before migration:
 
 ```dart
 MaterialState selected = MaterialState.selected;
@@ -73,7 +74,7 @@ BorderSide side = MaterialStateBorderSide.resolveWith((Set<MaterialState> states
 });
 ```
 
-Código após a migração:
+Code after migration:
 
 ```dart
 WidgetState selected = WidgetState.selected;
@@ -97,18 +98,18 @@ BorderSide side = WidgetStateBorderSide.resolveWith((Set<WidgetState> states) {
 });
 ```
 
-## Linha do tempo
+## Timeline
 
-Lançado na versão: 3.21.0-11.0.pre<br>
-Na versão estável: 3.22.0
+Landed in version: 3.21.0-11.0.pre<br>
+In stable release: 3.22.0
 
-## Referências
+## References
 
-Issues relevantes:
+Relevant issues:
 
 * [Create widgets level support for State][]
 
-PRs relevantes:
+Relevant PRs:
 
 * [Widget State Properties][]
 

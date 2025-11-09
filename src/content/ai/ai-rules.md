@@ -1,41 +1,42 @@
 ---
-title: AI rules for Flutter and Dart
+ia-translate: true
+title: Regras de IA para Flutter e Dart
 description: >
-  Learn how to add AI rules to tools that accelerate your
-  development workflow.
+  Aprenda como adicionar regras de IA a ferramentas que aceleram seu
+  fluxo de trabalho de desenvolvimento.
 ---
 
-This guide covers how you can leverage AI rules to
-streamline your Flutter and Dart development.
+Este guia aborda como você pode aproveitar regras de IA para
+otimizar seu desenvolvimento Flutter e Dart.
 
-## Overview
+## Visão geral
 
-AI-powered editors use rules files to provide context and
-instructions to an underlying LLM. These files help you:
+Editores alimentados por IA usam arquivos de regras para fornecer contexto e
+instruções a um LLM subjacente. Esses arquivos ajudam você a:
 
-*   Customize AI behavior to your team's needs.
-*   Enforce project best practices for code style and
+*   Personalizar o comportamento da IA para as necessidades da sua equipe.
+*   Impor melhores práticas do projeto para estilo de código e
     design.
-*   Provide critical project context to the AI.
+*   Fornecer contexto crítico do projeto à IA.
 
 <a class="filled-button" style="margin-bottom: 0.5rem;" href="https://raw.githubusercontent.com/flutter/flutter/refs/heads/master/docs/rules/rules.md" download>
   <span aria-hidden="true" class="material-symbols" translate="no">download</span>
-  <span>Download the Flutter and Dart rules template</span>
+  <span>Baixar o template de regras Flutter e Dart</span>
 </a>
 
-## Environments that support rules
+## Ambientes que suportam regras
 
-Many AI environments support rules files to guide
-LLM behavior. Here are some common examples and their
-corresponding rule file names:
+Muitos ambientes de IA suportam arquivos de regras para guiar
+o comportamento do LLM. Aqui estão alguns exemplos comuns e seus
+nomes de arquivo de regras correspondentes:
 
-| Environment | Rules File | Installation Instructions                     |
+| Ambiente | Arquivo de Regras | Instruções de Instalação                     |
 | :--- | :--- |:----------------------------------------------|
-| Copilot powered IDEs | `copilot-instructions.md` | [Configure .github/copilot-instructions.md][] |
+| IDEs com Copilot | `copilot-instructions.md` | [Configure .github/copilot-instructions.md][] |
 | Cursor | `cursor.md` | [Configure cursorrules.md][]                  |
 | Firebase Studio | `airules.md` | [Configure airules.md][]                      |
 | Gemini CLI | `GEMINI.md` | [Configure GEMINI.md][]                       |
-| JetBrains IDEs | `guidelines.md` | [Configure guidelines.md][]                   |
+| IDEs JetBrains | `guidelines.md` | [Configure guidelines.md][]                   |
 | VS Code | `.instructions.md` | [Configure .instructions.md][]                |
 | Windsurf | `guidelines.md` | [Configure guidelines.md][]                   |
 
@@ -47,22 +48,22 @@ corresponding rule file names:
 [Configure guidelines.md]: https://docs.windsurf.com/windsurf/cascade/memories#rules
 [Configure GEMINI.md]: https://codelabs.developers.google.com/gemini-cli-hands-on
 
-## Create rules for your editor
+## Criar regras para seu editor
 
-You can adapt our Flutter and Dart rules template for your
-specific environment. To do so, follow these steps:
+Você pode adaptar nosso template de regras Flutter e Dart para seu
+ambiente específico. Para fazer isso, siga estes passos:
 
-1.  Download the Flutter and Dart rules template:
+1.  Baixe o template de regras Flutter e Dart:
     <a href="https://raw.githubusercontent.com/flutter/flutter/refs/heads/master/docs/rules/rules.md" download>rules.md</a>
 
-1.  In an LLM like [Gemini][], attach the
-    `rules.md` file that you downloaded in
-    the last step.
+1.  Em um LLM como [Gemini][], anexe o
+    arquivo `rules.md` que você baixou no
+    último passo.
 
-1.  Provide a prompt to reformat the file for your desired
-    editor.
+1.  Forneça um prompt para reformatar o arquivo para seu editor
+    desejado.
 
-    Example prompt:
+    Exemplo de prompt:
 
     ```text
     Convert the attached rules.md file
@@ -70,14 +71,14 @@ specific environment. To do so, follow these steps:
     to use the styles required for a guidelines.md file.
     ```
 
-1.  Review the LLM's output and make any necessary
-    adjustments.
+1.  Revise a saída do LLM e faça quaisquer ajustes
+    necessários.
 
-1.  Follow your environment's instructions to add the new
-    rules file. This may involve adding to an existing file
-    or creating a new one.
+1.  Siga as instruções do seu ambiente para adicionar o novo
+    arquivo de regras. Isso pode envolver adicionar a um arquivo existente
+    ou criar um novo.
 
-1.  Verify that your AI assistant is using the new rules to
-    guide its responses.
+1.  Verifique se seu assistente de IA está usando as novas regras para
+    guiar suas respostas.
 
 [Gemini]: https://gemini.google.com/

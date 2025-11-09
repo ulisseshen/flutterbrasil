@@ -39,6 +39,7 @@ jobs:
           projectId: transliteradu
           channelId: pr-${{ github.event.pull_request.number }}
           expires: 7d
+          target: docs-flutterbrasil
 
       - name: Comentar PR com link de preview
         uses: actions/github-script@v7

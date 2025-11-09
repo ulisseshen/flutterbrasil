@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "docs-flutterbrasil",
     "public": "_site",
     "cleanUrls": true,
     "trailingSlash": false,

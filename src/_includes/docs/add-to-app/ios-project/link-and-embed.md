@@ -1,51 +1,51 @@
-Flutter plugins might produce [static or dynamic frameworks][].
-Link static frameworks, [_never_ embed them][static-framework].
+Plugins Flutter podem produzir [frameworks estáticos ou dinâmicos][static or dynamic frameworks].
+Vincule frameworks estáticos, [_nunca_ os incorpore][static-framework].
 
-If you embed a static framework into your iOS app,
-you can't publish that app to the App Store.
-Publishing fails with a
-`Found an unexpected Mach-O header code` archive error.
+Se você incorporar um framework estático no seu app iOS,
+você não pode publicar esse app na App Store.
+A publicação falha com um
+erro de arquivo `Found an unexpected Mach-O header code`.
 
-##### Link all frameworks
+##### Vincule todos os frameworks
 
-To link the necessary frameworks, follow this procedure.
+Para vincular os frameworks necessários, siga este procedimento.
 
-1. Choose the frameworks to link.
+1. Escolha os frameworks para vincular.
 
-   1. In the **Project Navigator**, click on your project.
+   1. No **Project Navigator**, clique no seu projeto.
 
-   1. Click the **Build Phases** tab.
+   1. Clique na aba **Build Phases**.
 
-   1. Expand **Link Binary With Libraries**.
+   1. Expanda **Link Binary With Libraries**.
 
-      <DashImage image="development/add-to-app/ios/project-setup/linked-libraries.png" caption="Expand the **Link Binary With Libraries** build phase in Xcode" />
+      <DashImage image="development/add-to-app/ios/project-setup/linked-libraries.png" caption="Expanda a fase de build **Link Binary With Libraries** no Xcode" />
 
-   1. Click **+** (plus sign).
+   1. Clique em **+** (sinal de mais).
 
-   1. Click **Add Other...** then **Add Files...**.
+   1. Clique em **Add Other...** depois **Add Files...**.
 
-   1. From the **Choose frameworks and libraries to add:** dialog box,
-      navigate to the `/path/to/MyApp/Flutter/Release/` directory.
+   1. Na caixa de diálogo **Choose frameworks and libraries to add:**,
+      navegue até o diretório `/path/to/MyApp/Flutter/Release/`.
 
-   1. Command-click the frameworks in that directory then click **Open**.
+   1. Command-clique nos frameworks nesse diretório e depois clique em **Open**.
 
-      <DashImage image="development/add-to-app/ios/project-setup/choose-libraries.png" caption="Choose frameworks to link from the **Choose frameworks and libraries to add:** dialog box in Xcode" />
+      <DashImage image="development/add-to-app/ios/project-setup/choose-libraries.png" caption="Escolha frameworks para vincular na caixa de diálogo **Choose frameworks and libraries to add:** no Xcode" />
 
-1. Update the paths to the libraries to account for build modes.
+1. Atualize os caminhos para as bibliotecas para considerar os modos de build.
 
-   1. Launch the Finder.
+   1. Inicie o Finder.
 
-   1. Navigate to the `/path/to/MyApp/` directory.
+   1. Navegue até o diretório `/path/to/MyApp/`.
 
-   1. Right-click on `MyApp.xcodeproj` and select **Show Package
+   1. Clique com o botão direito em `MyApp.xcodeproj` e selecione **Show Package
       Contents**.
 
-   1. Open `project.pbxproj` with Xcode. The file opens in Xcode's text
-      editor. This also locks **Project Navigator** until you close the text editor.
+   1. Abra `project.pbxproj` com o Xcode. O arquivo abre no editor de texto
+      do Xcode. Isso também bloqueia o **Project Navigator** até você fechar o editor de texto.
 
-      <DashImage image="development/add-to-app/ios/project-setup/project-pbxproj.png" caption="The `project-pbxproj` file open in the Xcode text editor" />
+      <DashImage image="development/add-to-app/ios/project-setup/project-pbxproj.png" caption="O arquivo `project-pbxproj` aberto no editor de texto do Xcode" />
 
-   1. Find the lines that resemble the following text in the
+   1. Encontre as linhas que se assemelham ao seguinte texto na
       `/* Begin PBXFileReference section */`.
 
       ```text
@@ -66,9 +66,9 @@ To link the necessary frameworks, follow this procedure.
       };
       ```
 
-   1. Change the `Release` text highlighted in the prior step
-      and change it to `$(CONFIGURATION)`. Also wrap the path in
-      quotation marks.
+   1. Altere o texto `Release` destacado na etapa anterior
+      e mude-o para `$(CONFIGURATION)`. Também envolva o caminho em
+      aspas.
 
       ```text
       312885572C1A441C009F74FF /* Flutter.xcframework */ = {
@@ -88,99 +88,99 @@ To link the necessary frameworks, follow this procedure.
       };
       ```
 
-1. Update the search paths.
+1. Atualize os caminhos de pesquisa.
 
-   1. Click the **Build Settings** tab.
+   1. Clique na aba **Build Settings**.
 
-   1. Navigate to **Search Paths**
+   1. Navegue até **Search Paths**
 
-   1. Double-click to the right of **Framework Search Paths**.
+   1. Clique duas vezes à direita de **Framework Search Paths**.
 
-   1. In the combo box, click **+** (plus sign).
+   1. Na caixa de combinação, clique em **+** (sinal de mais).
 
-   1. Type `$(inherited)`.
-      and press <kbd>Enter</kbd>.
+   1. Digite `$(inherited)`.
+      e pressione <kbd>Enter</kbd>.
 
-   1. Click **+** (plus sign).
+   1. Clique em **+** (sinal de mais).
 
-   1. Type `$(PROJECT_DIR)/Flutter/$(CONFIGURATION)/`
-      and press <kbd>Enter</kbd>.
+   1. Digite `$(PROJECT_DIR)/Flutter/$(CONFIGURATION)/`
+      e pressione <kbd>Enter</kbd>.
 
-      <DashImage image="development/add-to-app/ios/project-setup/framework-search-paths.png" caption="Update **Framework Search Paths** in Xcode" />
+      <DashImage image="development/add-to-app/ios/project-setup/framework-search-paths.png" caption="Atualize **Framework Search Paths** no Xcode" />
 
-After linking the frameworks, they should display in the
-**Frameworks, Libraries, and Embedded Content**
-section of your target's **General** settings.
+Após vincular os frameworks, eles devem aparecer na
+seção **Frameworks, Libraries, and Embedded Content**
+das configurações **General** do seu alvo.
 
-##### Embed the dynamic frameworks
+##### Incorpore os frameworks dinâmicos
 
-To embed your dynamic frameworks, complete the following procedure.
+Para incorporar seus frameworks dinâmicos, complete o seguinte procedimento.
 
-1. Navigate to **General** <span aria-label="and then">></span>
+1. Navegue até **General** <span aria-label="and then">></span>
    **Frameworks, Libraries, and Embedded Content**.
 
-1. Click on each of your dynamic frameworks and select **Embed & Sign**.
+1. Clique em cada um de seus frameworks dinâmicos e selecione **Embed & Sign**.
 
-   <DashImage image="development/add-to-app/ios/project-setup/choose-to-embed.png" caption="Select **Embed & Sign** for each of your frameworks in Xcode" />
+   <DashImage image="development/add-to-app/ios/project-setup/choose-to-embed.png" caption="Selecione **Embed & Sign** para cada um de seus frameworks no Xcode" />
 
-   Don't include any static frameworks,
-   including `FlutterPluginRegistrant.xcframework`.
+   Não inclua frameworks estáticos,
+   incluindo `FlutterPluginRegistrant.xcframework`.
 
-1. Click the **Build Phases** tab.
+1. Clique na aba **Build Phases**.
 
-1. Expand **Embed Frameworks**.
-   Your dynamic frameworks should display in that section.
+1. Expanda **Embed Frameworks**.
+   Seus frameworks dinâmicos devem aparecer nessa seção.
 
-   <DashImage image="development/add-to-app/ios/project-setup/embed-xcode.png" caption="The expanded **Embed Frameworks** build phase in Xcode" />
+   <DashImage image="development/add-to-app/ios/project-setup/embed-xcode.png" caption="A fase de build **Embed Frameworks** expandida no Xcode" />
 
-1. Build the project.
+1. Compile o projeto.
 
-   1. Open `MyApp.xcworkspace` in Xcode.
+   1. Abra `MyApp.xcworkspace` no Xcode.
 
-      Verify that you're opening `MyApp.xcworkspace` and
-      not opening `MyApp.xcodeproj`.
-      The `.xcworkspace` file has the CocoaPod dependencies,
-      the `.xcodeproj` doesn't.
+      Verifique se você está abrindo `MyApp.xcworkspace` e
+      não abrindo `MyApp.xcodeproj`.
+      O arquivo `.xcworkspace` tem as dependências CocoaPod,
+      o `.xcodeproj` não tem.
 
-   1. Select **Product** <span aria-label="and then">></span>
-      **Build** or press <kbd>Cmd</kbd> + <kbd>B</kbd>.
+   1. Selecione **Product** <span aria-label="and then">></span>
+      **Build** ou pressione <kbd>Cmd</kbd> + <kbd>B</kbd>.
 
-#### Set LLDB Init File
+#### Configure o LLDB Init File
 
 :::warning
-Set your scheme to use Flutter's LLDB Init File. Without this file, debugging
-on an iOS 26 or later device may crash.
+Configure seu esquema para usar o LLDB Init File do Flutter. Sem este arquivo, a depuração
+em um dispositivo iOS 26 ou posterior pode travar.
 :::
 
-1. Generate Flutter LLDB files.
+1. Gere os arquivos LLDB do Flutter.
 
-   1. Within your flutter application, re-run `flutter build ios-framework` if
-      you haven't already:
+   1. Dentro da sua aplicação flutter, execute novamente `flutter build ios-framework` se
+      você ainda não o fez:
 
    ```console
    $ flutter build ios-framework --output=/path/to/MyApp/Flutter/
    ```
 
-   This will generate the LLDB files in the `/path/to/MyApp/Flutter/` directory.
+   Isso irá gerar os arquivos LLDB no diretório `/path/to/MyApp/Flutter/`.
 
-1. Set the LLDB Init File.
+1. Configure o LLDB Init File.
 
-   1. Go to **Product > Scheme > Edit Scheme**.
+   1. Vá para **Product > Scheme > Edit Scheme**.
 
-   1. Select the **Run** section in the left side bar.
+   1. Selecione a seção **Run** na barra lateral esquerda.
 
-   1. Set the **LLDB Init File** to the following:
+   1. Configure o **LLDB Init File** para o seguinte:
 
       ```console
       $(PROJECT_DIR)/Flutter/flutter_lldbinit
       ```
 
-      If your scheme already has an **LLDB Init File**, you can add Flutter's
-      LLDB file to it. The path to Flutter's LLDB Init File must be relative
-      to the location of your project's LLDB Init File.
+      Se seu esquema já tiver um **LLDB Init File**, você pode adicionar o arquivo
+      LLDB do Flutter a ele. O caminho para o LLDB Init File do Flutter deve ser relativo
+      à localização do LLDB Init File do seu projeto.
 
-      For example, if your LLDB file is located at `/path/to/MyApp/.lldbinit`,
-      you would add the following:
+      Por exemplo, se seu arquivo LLDB estiver localizado em `/path/to/MyApp/.lldbinit`,
+      você adicionaria o seguinte:
 
       ```console
       command source --relative-to-command-file "Flutter/flutter_lldbinit"

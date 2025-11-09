@@ -54,7 +54,7 @@ considere usar gestos (conforme discutido abaixo) em vez disso.
 [`PointerMoveEvent`]: {{site.api}}/flutter/gestures/PointerMoveEvent-class.html
 [`PointerUpEvent`]: {{site.api}}/flutter/gestures/PointerUpEvent-class.html
 
-## Gestos
+## Gestos {:#gestures}
 
 Gestos representam ações semânticas (por exemplo, tap, drag,
 e scale) que são reconhecidas de múltiplos eventos de ponteiro individuais,

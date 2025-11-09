@@ -87,7 +87,7 @@ Geralmente, as animações são baseadas em tween ou física.
 As seções a seguir explicam o que esses termos significam
 e indicam recursos onde você pode aprender mais.
 
-### Animação tween
+### Animação tween {:#tween-animation}
 
 Abreviação de _in-betweening_. Em uma animação tween, os pontos
 inicial e final são definidos, assim como uma linha do tempo e uma curva

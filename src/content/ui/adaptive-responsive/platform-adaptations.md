@@ -333,7 +333,7 @@ toque duplo e mostra a barra de ferramentas de seleção.
   <DashImage figure image="platform-adaptations/text-double-tap-ios.webp" caption="iOS double tap" alt="Selecting a word via double tap on iOS" />
 </div>
 
-## Componentes de UI
+## Componentes de UI {:#ui-components}
 
 Esta seção inclui recomendações preliminares sobre como adaptar
 widgets Material para entregar uma experiência natural e convincente no iOS.
@@ -373,7 +373,7 @@ Portanto, recomendamos que você siga as convenções de plataforma.
 [`CircularProgressIndicator.adaptive()`]: {{site.api}}/flutter/material/CircularProgressIndicator/CircularProgressIndicator.adaptive.html
 [`RefreshIndicator.adaptive()`]: {{site.api}}/flutter/material/RefreshIndicator/RefreshIndicator.adaptive.html
 
-### Top app bar e navigation bar
+### Top app bar e navigation bar {:#top-app-bar-and-navigation-bar}
 
 Desde o Android 12, a UI padrão para top app
 bars segue as diretrizes de design definidas no [Material 3][mat-appbar].

@@ -73,7 +73,7 @@ Quando o estado do widget muda,
 o objeto state chama `setState()`,
 dizendo ao framework para redesenhar o widget.
 
-## Criando um stateful widget
+## Criando um stateful widget {:#creating-a-stateful-widget}
 
 :::secondary Qual é a questão?
 
@@ -306,7 +306,7 @@ Se você ainda tiver dúvidas, consulte qualquer um dos canais da
 O restante desta página cobre várias formas de gerenciar o estado de um widget,
 e lista outros widgets interativos disponíveis.
 
-## Gerenciando estado
+## Gerenciando estado {:#managing-state}
 
 :::secondary Qual é a questão?
 * Existem diferentes abordagens para gerenciar estado.

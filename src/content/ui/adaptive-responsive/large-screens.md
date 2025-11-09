@@ -43,7 +43,7 @@ Por exemplo, isso:
 [large screens]: {{site.android-dev}}/guide/topics/large-screens/get-started-with-large-screens
 [Play Store updates]: {{site.android-dev}}/2022/03/helping-users-discover-quality-apps-on.html
 
-## Layout com GridView
+## Layout com GridView {:#layout-with-gridview}
 
 Considere as seguintes capturas de tela de um app.
 O app exibe sua UI em um `ListView`.

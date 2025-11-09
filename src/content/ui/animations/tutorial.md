@@ -173,7 +173,7 @@ confira [Cascade notation][Cascade notation]
 na [documentação da linguagem Dart][Dart language documentation].
 :::
 
-## Simplificando com AnimatedWidget
+## Simplificando com AnimatedWidget {:#simplifying-with-animatedwidget}
 
 :::secondary Qual é o ponto?
 * Como usar a classe auxiliar [`AnimatedWidget`][AnimatedWidget]
@@ -355,7 +355,7 @@ no início ou no fim. Isso cria um efeito de "respiração":
 
 **Código-fonte do app:** [animate3][animate3]
 
-## Refatorando com AnimatedBuilder
+## Refatorando com AnimatedBuilder {:#refactoring-with-animatedbuilder}
 
 :::secondary Qual é o ponto?
 * Um [`AnimatedBuilder`][AnimatedBuilder] entende como renderizar a transição.

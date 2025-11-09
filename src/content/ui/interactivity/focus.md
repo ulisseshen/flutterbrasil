@@ -79,7 +79,7 @@ Definir os outros atributos é melhor gerenciado por um widget [`Focus`][`Focus`
 [`FocusScope`][`FocusScope`], a menos que você não esteja usando-os, ou implementando sua própria
 versão deles.
 
-### Melhores práticas para criar objetos FocusNode
+### Melhores práticas para criar objetos FocusNode {:#best-practices-for-creating-focusnode-objects}
 
 Algumas coisas a fazer e não fazer sobre usar esses objetos incluem:
 
@@ -297,7 +297,7 @@ seria melhor implementada usando um `TextInputFormatter`, mas a técnica ainda p
 ser útil: o widget `Shortcuts` usa este método para manipular atalhos antes
 que eles se tornem entrada de texto, por exemplo.
 
-### Controlando o que recebe foco
+### Controlando o que recebe foco {:#controlling-what-gets-focus}
 
 Um dos aspectos principais do foco é controlar o que pode receber foco e como.
 Os atributos `canRequestFocus`, `skipTraversal,` e `descendantsAreFocusable`
@@ -334,7 +334,7 @@ Definir o atributo `autofocus` em dois nós que pertencem a diferentes escopos d
 é bem definido: cada um se torna o widget focado quando seus
 escopos correspondentes são focados.
 
-### Notificações de mudança
+### Notificações de mudança {:#change-notifications}
 
 O callback `Focus.onFocusChanged` pode ser usado para obter notificações de que o
 estado de foco de um nó específico mudou. Ele notifica se o nó é adicionado

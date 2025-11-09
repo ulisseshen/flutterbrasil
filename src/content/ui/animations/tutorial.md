@@ -20,8 +20,8 @@ e métodos essenciais na biblioteca de animações que você pode aprender em
 [Introduction to animations][Introduction to animations].
 
 O Flutter SDK também fornece animações explícitas integradas,
-como [`FadeTransition`][`FadeTransition`], [`SizeTransition`][`SizeTransition`]
-e [`SlideTransition`][`SlideTransition`]. Essas animações simples são
+como [`FadeTransition`][FadeTransition], [`SizeTransition`][SizeTransition]
+e [`SlideTransition`][SlideTransition]. Essas animações simples são
 acionadas definindo um ponto inicial e final.
 Elas são mais simples de implementar
 do que animações explícitas personalizadas, que são descritas aqui.
@@ -176,7 +176,7 @@ na [documentação da linguagem Dart][Dart language documentation].
 ## Simplificando com AnimatedWidget
 
 :::secondary Qual é o ponto?
-* Como usar a classe auxiliar [`AnimatedWidget`][`AnimatedWidget`]
+* Como usar a classe auxiliar [`AnimatedWidget`][AnimatedWidget]
   (em vez de `addListener()`
   e `setState()`) para criar um widget que anima.
 * Use `AnimatedWidget` para criar um widget que executa
@@ -358,7 +358,7 @@ no início ou no fim. Isso cria um efeito de "respiração":
 ## Refatorando com AnimatedBuilder
 
 :::secondary Qual é o ponto?
-* Um [`AnimatedBuilder`][`AnimatedBuilder`] entende como renderizar a transição.
+* Um [`AnimatedBuilder`][AnimatedBuilder] entende como renderizar a transição.
 * Um `AnimatedBuilder` não sabe como renderizar o widget,
   nem gerencia o objeto `Animation`.
 * Use `AnimatedBuilder` para descrever uma animação como
@@ -536,9 +536,9 @@ nos bullet points acima.
 ## Animações simultâneas
 
 :::secondary Qual é o ponto?
-* A classe [`Curves`][`Curves`] define um array de
+* A classe [`Curves`][Curves] define um array de
   curvas comumente usadas que você pode
-  usar com um [`CurvedAnimation`][`CurvedAnimation`].
+  usar com um [`CurvedAnimation`][CurvedAnimation].
 :::
 
 Nesta seção, você construirá sobre o exemplo de
@@ -553,7 +553,7 @@ Este exemplo mostra como usar múltiplos tweens no mesmo animation
 controller, onde cada tween gerencia um efeito diferente na
 animação. É apenas para fins ilustrativos.
 Se você estivesse fazendo tween de opacidade e tamanho em código de produção,
-você provavelmente usaria [`FadeTransition`][`FadeTransition`] e [`SizeTransition`][`SizeTransition`]
+você provavelmente usaria [`FadeTransition`][FadeTransition] e [`SizeTransition`][SizeTransition]
 em vez disso.
 :::
 
@@ -651,13 +651,13 @@ class _LogoAppState extends State<LogoApp> with SingleTickerProviderStateMixin {
 **Código-fonte do app:** [animate5][animate5]
 
 :::secondary Resumo
-* Um objeto [`Animation`][`Animation`] conhece o estado atual de uma animação
+* Um objeto [`Animation`][Animation] conhece o estado atual de uma animação
   (por exemplo, se ela começou, parou
   ou está avançando ou em reverso),
   mas não sabe nada sobre o que aparece na tela.
-* Um [`AnimationController`][`AnimationController`] gerencia a `Animation`.
-* Um [`CurvedAnimation`][`CurvedAnimation`] define a progressão como uma curva não linear.
-* Um [`Tween`][`Tween`] interpola entre um valor inicial e final
+* Um [`AnimationController`][AnimationController] gerencia a `Animation`.
+* Um [`CurvedAnimation`][CurvedAnimation] define a progressão como uma curva não linear.
+* Um [`Tween`][Tween] interpola entre um valor inicial e final
   para uma propriedade sendo animada.
 :::
 
@@ -676,19 +676,20 @@ simulações físicas e métodos `fling()`.
 [animate3]: {{site.repo.this}}/tree/main/examples/animation/animate3
 [animate4]: {{site.repo.this}}/tree/main/examples/animation/animate4
 [animate5]: {{site.repo.this}}/tree/main/examples/animation/animate5
-[`AnimatedWidget`]: {{site.api}}/flutter/widgets/AnimatedWidget-class.html
-[`AnimatedBuilder`]: {{site.api}}/flutter/widgets/AnimatedBuilder-class.html
+[AnimatedWidget]: {{site.api}}/flutter/widgets/AnimatedWidget-class.html
+[AnimatedBuilder]: {{site.api}}/flutter/widgets/AnimatedBuilder-class.html
 [Introduction to animations]: /ui/animations
-[`AnimationController`]: {{site.api}}/flutter/animation/AnimationController-class.html
+[AnimationController]: {{site.api}}/flutter/animation/AnimationController-class.html
 [`AnimationController` section]: /ui/animations/index#animationcontroller
-[`Curves`]: {{site.api}}/flutter/animation/Curves-class.html
-[`CurvedAnimation`]: {{site.api}}/flutter/animation/CurvedAnimation-class.html
+[Curves]: {{site.api}}/flutter/animation/Curves-class.html
+[CurvedAnimation]: {{site.api}}/flutter/animation/CurvedAnimation-class.html
 [Cascade notation]: {{site.dart-site}}/language/operators#cascade-notation
 [Dart language documentation]: {{site.dart-site}}/language
-[`FadeTransition`]: {{site.api}}/flutter/widgets/FadeTransition-class.html
+[FadeTransition]: {{site.api}}/flutter/widgets/FadeTransition-class.html
 [Monitoring the progress of the animation]: #monitoring
 [Refactoring with AnimatedBuilder]: #refactoring-with-animatedbuilder
-[`SlideTransition`]: {{site.api}}/flutter/widgets/SlideTransition-class.html
+[SlideTransition]: {{site.api}}/flutter/widgets/SlideTransition-class.html
 [Simplifying with AnimatedWidget]: #simplifying-with-animatedwidget
-[`SizeTransition`]: {{site.api}}/flutter/widgets/SizeTransition-class.html
-[`Tween`]: {{site.api}}/flutter/animation/Tween-class.html
+[SizeTransition]: {{site.api}}/flutter/widgets/SizeTransition-class.html
+[Tween]: {{site.api}}/flutter/animation/Tween-class.html
+[Animation]: {{site.api}}/flutter/animation/Animation-class.html

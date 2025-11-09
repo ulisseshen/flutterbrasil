@@ -24,7 +24,7 @@ sobrecarga de debugging que permite hot reload
 e debugging em nível de código-fonte. Dessa forma, não é representativo de um app de produção
 que os usuários finais baixam.
 
-## Verificando o tamanho total
+## Verificando o tamanho total {:#checking-the-total-size}
 
 Um build de release padrão, como um criado por `flutter build apk` ou
 `flutter build ios`, é construído para convenientemente montar seu pacote de upload
@@ -34,7 +34,7 @@ seu pacote de upload para segmentar o downloader específico e o hardware do dow
 como filtrar assets segmentados para o DPI do telefone, filtrar
 bibliotecas nativas segmentadas para a arquitetura de CPU do telefone.
 
-### Estimando o tamanho total
+### Estimando o tamanho total {:#estimating-total-size}
 
 Para obter o tamanho aproximado mais próximo em cada plataforma, use as seguintes
 instruções.
@@ -110,7 +110,7 @@ IPAs são comumente maiores que APKs conforme explicado
 em [How big is the Flutter engine?][How big is the Flutter engine?], uma
 seção no [FAQ][FAQ] do Flutter.
 
-## Detalhando o tamanho
+## Detalhando o tamanho {:#breaking-down-the-size}
 
 A partir da versão 1.22 do Flutter e versão 0.9.1 do DevTools,
 uma ferramenta de análise de tamanho está incluída para ajudar desenvolvedores a entender o detalhamento

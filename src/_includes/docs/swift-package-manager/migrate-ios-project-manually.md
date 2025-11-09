@@ -17,7 +17,7 @@ seguintes arquivos na sua issue:
 * `ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme`
    (ou o xcscheme para o flavor usado)
 
-### Passo 1: Adicione a dependência do pacote FlutterGeneratedPluginSwiftPackage {:.no_toc}
+### Passo 1: Adicione a dependência do pacote FlutterGeneratedPluginSwiftPackage {:.no_toc #step-1-add-fluttergeneratedpluginswiftpackage-package-dependency}
 
 1. Abra seu app (`ios/Runner.xcworkspace`) no Xcode.
 1. Navegue até **Package Dependencies** para o projeto.
@@ -37,7 +37,7 @@ seguintes arquivos na sua issue:
 
    <DashImage image="development/packages-and-plugins/swift-package-manager/add-generated-framework.png" caption="Certifique-se de que `FlutterGeneratedPluginSwiftPackage` foi adicionado a **Frameworks, Libraries, and Embedded Content**" />
 
-### Passo 2: Adicione a pré-ação do script Run Prepare Flutter Framework Script {:.no_toc}
+### Passo 2: Adicione a pré-ação do script Run Prepare Flutter Framework Script {:.no_toc #step-2-add-run-prepare-flutter-framework-script-pre-action}
 
 **As etapas a seguir devem ser concluídas para cada flavor.**
 

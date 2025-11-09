@@ -1,34 +1,35 @@
 ---
-title: Performance FAQ
-description: Frequently asked questions about Flutter performance
+ia-translate: true
+title: FAQ de Performance
+description: Perguntas frequentes sobre performance do Flutter
 ---
 
-This page collects some frequently asked questions
-about evaluating and debugging Flutter's performance.
+Esta página coleta algumas perguntas frequentes
+sobre avaliar e depurar a performance do Flutter.
 
-* Which performance dashboards have metrics that are related to Flutter?
-  * [Flutter dashboard on appspot][]
-  * [Flutter Skia dashboard][]
-  * [Flutter Engine Skia dashboard][]
+* Quais dashboards de performance têm métricas relacionadas ao Flutter?
+  * [Flutter dashboard no appspot][Flutter dashboard on appspot]
+  * [Flutter Skia dashboard][Flutter Skia dashboard]
+  * [Flutter Engine Skia dashboard][Flutter Engine Skia dashboard]
 
 [Flutter dashboard on appspot]: https://flutter-dashboard.appspot.com/
 [Flutter engine Skia dashboard]: https://flutter-engine-perf.skia.org/t/?subset=regressions
 [Flutter Skia dashboard]: https://flutter-flutter-perf.skia.org/t/?subset=regressions
 
-* How do I add a benchmark to Flutter?
-  * [How to write a render speed test for Flutter][speed-test]
-  * [How to write a memory test for Flutter][memory-test]
+* Como adiciono um benchmark ao Flutter?
+  * [Como escrever um teste de velocidade de renderização para Flutter][speed-test]
+  * [Como escrever um teste de memória para Flutter][memory-test]
 
 [memory-test]: {{site.repo.flutter}}/blob/main/docs/contributing/testing/How-to-write-a-memory-test-for-Flutter.md
 [speed-test]: {{site.repo.flutter}}/blob/main/docs/contributing/testing/How-to-write-a-render-speed-test-for-Flutter.md
 
-* What are some tools for capturing and analyzing performance
-  metrics?
+* Quais são algumas ferramentas para capturar e analisar métricas
+  de performance?
   * [Dart/Flutter DevTools](/tools/devtools)
   * [Apple instruments](https://en.wikipedia.org/wiki/Instruments_(software))
   * [Linux perf](https://en.wikipedia.org/wiki/Perf_(Linux))
-  * [Chrome tracing (enter `about:tracing` in your
-    Chrome URL field)][tracing]
+  * [Chrome tracing (digite `about:tracing` no seu
+    campo de URL do Chrome)][tracing]
   * [Android systrace (`adb systrace`)][systrace]
   * [Fuchsia `fx traceutil`][traceutil]
   * [Perfetto](https://ui.perfetto.dev/)
@@ -38,17 +39,17 @@ about evaluating and debugging Flutter's performance.
 [tracing]: https://www.chromium.org/developers/how-tos/trace-event-profiling-tool
 [traceutil]: https://fuchsia.dev/fuchsia-src/development/tracing/usage-guide
 
-* My Flutter app looks janky or stutters. How do I fix it?
-  * [Improving rendering performance][]
+* Meu app Flutter parece travado ou gagueja. Como eu conserto isso?
+  * [Melhorando a performance de renderização][Improving rendering performance]
 
 [Improving rendering performance]: /perf/rendering-performance
 
-* What are some costly performance operations that I need
-  to be careful with?
-  * [`Opacity`][], [`Clip.antiAliasWithSaveLayer`][],
-     or anything that triggers [`saveLayer`][]
-  * [`ImageFilter`][]
-  * Also see [Performance best practices][]
+* Quais são algumas operações de performance custosas com as quais preciso
+  ter cuidado?
+  * [`Opacity`][`Opacity`], [`Clip.antiAliasWithSaveLayer`][`Clip.antiAliasWithSaveLayer`],
+     ou qualquer coisa que dispare [`saveLayer`][`savelayer`]
+  * [`ImageFilter`][`ImageFilter`]
+  * Veja também [Melhores práticas de performance][Performance best practices]
 
 [`Clip.antiAliasWithSaveLayer`]: {{site.api}}/flutter/dart-ui/Clip.html#antiAliasWithSaveLayer
 [`ImageFilter`]: {{site.api}}/flutter/dart-ui/ImageFilter-class.html
@@ -56,62 +57,62 @@ about evaluating and debugging Flutter's performance.
 [Performance best practices]: /perf/best-practices
 [`savelayer`]: {{site.api}}/flutter/dart-ui/Canvas/saveLayer.html
 
-* How do I tell which widgets in my Flutter app are rebuilt
-  in each frame?
-  * Set [`debugProfileBuildsEnabled`][] true in
+* Como eu descubro quais widgets no meu app Flutter são reconstruídos
+  em cada frame?
+  * Defina [`debugProfileBuildsEnabled`][`debugProfileBuildsEnabled`] como true em
     [widgets/debug.dart][debug.dart].
-  * Alternatively, change the `performRebuild` function in
-    [widgets/framework.dart][framework.dart] to ignore
-    `debugProfileBuildsEnabled` and always call
+  * Alternativamente, mude a função `performRebuild` em
+    [widgets/framework.dart][framework.dart] para ignorar
+    `debugProfileBuildsEnabled` e sempre chamar
     `Timeline.startSync(...)/finish`.
-  * If you use IntelliJ, a GUI view of this data is available.
-    Select **Track widget rebuilds**,
-    and your IDE displays which the widgets rebuild.
+  * Se você usar IntelliJ, uma visualização GUI desses dados está disponível.
+    Selecione **Track widget rebuilds**,
+    e sua IDE exibe quais widgets fazem rebuild.
 
 [`debugProfileBuildsEnabled`]: {{site.api}}/flutter/widgets/debugProfileBuildsEnabled.html
 [debug.dart]: {{site.repo.flutter}}/blob/main/packages/flutter/lib/src/widgets/debug.dart
 [framework.dart]: {{site.repo.flutter}}/blob/main/packages/flutter/lib/src/widgets/framework.dart
 
-* How do I query the target frames per second (of the display)?
-  * [Get the display refresh rate][]
+* Como eu consulto a taxa de quadros por segundo alvo (do display)?
+  * [Obtenha a taxa de atualização do display][Get the display refresh rate]
 
 [Get the display refresh rate]: {{site.repo.flutter}}/blob/main/engine/src/flutter/docs/Engine-specific-Service-Protocol-extensions.md#get-the-display-refresh-rate-_fluttergetdisplayrefreshrate
 
-* How to solve my app's poor animations caused by an expensive
-  Dart async function call that is blocking the UI thread?
-  * Spawn another isolate using the [`compute()`][] method,
-    as demonstrated in [Parse JSON in the background][] cookbook.
+* Como resolver as animações ruins do meu app causadas por uma chamada de função
+  async Dart cara que está bloqueando a thread da UI?
+  * Crie outro isolate usando o método [`compute()`][`compute()`],
+    conforme demonstrado no cookbook [Analisar JSON em background][Parse JSON in the background].
 
 [`compute()`]: {{site.api}}/flutter/foundation/compute-constant.html
 [Parse JSON in the background]: /cookbook/networking/background-parsing
 
-* How do I determine my Flutter app's package size that a
-  user will download?
-  * See [Measuring your app's size][]
+* Como determino o tamanho do pacote do meu app Flutter que um
+  usuário vai baixar?
+  * Veja [Medindo o tamanho do seu app][Measuring your app's size]
 
 [Measuring your app's size]: /perf/app-size
 
-* How do I see the breakdown of the Flutter engine size?
-  * Visit the [binary size dashboard][], and replace the git
-    hash in the URL with a recent commit hash from
-    [Flutter's GitHub commits][].
+* Como vejo o detalhamento do tamanho do engine Flutter?
+  * Visite o [dashboard de tamanho binário][binary size dashboard], e substitua o hash
+    git na URL com um hash de commit recente dos
+    [commits do GitHub do Flutter][Flutter's GitHub commits].
 
 [binary size dashboard]: https://storage.googleapis.com/flutter_infra_release/flutter/241c87ad800beeab545ab867354d4683d5bfb6ce/android-arm-release/sizes/index.html
 [Flutter's GitHub commits]: {{site.repo.flutter}}/commits/main
 
-* How can I take a screenshot of an app that is running and export it
-  as a SKP file?
-  * Run `flutter screenshot --type=skia --observatory-uri=...`
-  * Note a known issue viewing screenshots:
-    * [Issue 21237][]: Doesn't record images in real devices.
-  * To analyze and visualize the SKP file,
-    check out the [Skia WASM debugger][].
+* Como posso tirar uma screenshot de um app que está rodando e exportá-la
+  como um arquivo SKP?
+  * Execute `flutter screenshot --type=skia --observatory-uri=...`
+  * Note um problema conhecido ao visualizar screenshots:
+    * [Issue 21237][Issue 21237]: Não grava imagens em dispositivos reais.
+  * Para analisar e visualizar o arquivo SKP,
+    confira o [Skia WASM debugger][Skia WASM debugger].
 
 [Issue 21237]: {{site.repo.flutter}}/issues/21237
 [Skia WASM debugger]: https://debugger.skia.org/
 
-* How do I retrieve the shader persistent cache from a device?
-  * On Android, you can do the following:
+* Como recupero o cache persistente de shader de um dispositivo?
+  * No Android, você pode fazer o seguinte:
     ```console
     adb shell
     run-as <com.your_app_package_name>
@@ -119,5 +120,5 @@ about evaluating and debugging Flutter's performance.
     adb pull <some_public_folder/your_folder>
     ```
 
-* How do I perform a trace in Fuchsia?
-  * See [Fuchsia tracing guidelines][traceutil]
+* Como executo um trace no Fuchsia?
+  * Veja [diretrizes de tracing do Fuchsia][traceutil]

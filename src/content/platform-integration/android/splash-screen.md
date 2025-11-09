@@ -1,56 +1,57 @@
 ---
-title: Adding a splash screen to your Android app
+ia-translate: true
+title: Adicionando uma splash screen ao seu app Android
 shortTitle: Splash screen
-description: Learn how to add a splash screen to your Android app.
+description: Aprenda como adicionar uma splash screen ao seu app Android.
 ---
 
 <img src='/assets/images/docs/development/ui/splash-screen/android-splash-screen/splash-screens_header.png' alt="A graphic outlining the launch flow of an app including a splash screen">
 
-## Overview
+## Visão geral
 
-A splash screens (also known as a launch screen) provides
-a simple initial experience while your Android app loads.
-It sets the stage for your application,
-while allowing time for the app engine
-to load and your app to initialize.
+Uma splash screen (também conhecida como launch screen) fornece
+uma experiência inicial simples enquanto seu app Android carrega.
+Ela prepara o cenário para sua aplicação,
+enquanto permite tempo para o engine do app
+carregar e seu app inicializar.
 
-You have a couple options for implementing a splash screen:
+Você tem algumas opções para implementar uma splash screen:
 
-1. You can use one of the packages available on [pub.dev][].
+1. Você pode usar um dos pacotes disponíveis no [pub.dev][pub.dev].
 
-2. You can implement it manually, as shown in the
-   [splash screen sample app][]. The rest of this page
-   assumes the manual approach.
+2. Você pode implementá-la manualmente, como mostrado no
+   [app de exemplo de splash screen][splash screen sample app]. O restante desta página
+   assume a abordagem manual.
 
 [pub.dev]: {{site.pub}}/packages?q=splash+screen
 [splash screen sample app]: {{site.github}}/flutter/samples/tree/main/android_splash_screen
 
-## Initializing the app
+## Inicializando o app
 
-Every Android app requires initialization time while the
-operating system sets up the app's process.
-Android provides the concept of a [launch screen][] to
-display a `Drawable` while the app is initializing.
+Todo app Android requer tempo de inicialização enquanto o
+sistema operacional configura o processo do app.
+O Android fornece o conceito de [launch screen][launch screen] para
+exibir um `Drawable` enquanto o app está inicializando.
 
 :::note
-For apps that embed one or more Flutter screens within an
-existing Android app, consider
-[pre-warming a `FlutterEngine`][] and reusing the
-same engine throughout your app to minimize wait
-time associated with initialization of the Flutter engine.
+Para apps que incorporam uma ou mais telas Flutter dentro de um
+app Android existente, considere
+[pré-aquecer um `FlutterEngine`][pre-warming a `FlutterEngine`] e reutilizar o
+mesmo engine em todo o seu app para minimizar o tempo de espera
+associado à inicialização do engine Flutter.
 :::
 
-A `Drawable` is an Android graphic.
-To learn how to add a `Drawable` to your
-Flutter project in Android Studio,
-check out [Import drawables into your project][drawables][]
-in the Android developer documentation.
+Um `Drawable` é um gráfico Android.
+Para aprender como adicionar um `Drawable` ao seu
+projeto Flutter no Android Studio,
+confira [Import drawables into your project][drawables]
+na documentação para desenvolvedores Android.
 
-The default Flutter project template includes a definition
-of a launch theme and a launch background. You can customize
-this by editing `styles.xml`, where you can define a theme
-whose `windowBackground` is set to the
-`Drawable` that should be displayed as the launch screen.
+O template de projeto Flutter padrão inclui uma definição
+de um tema de lançamento e um plano de fundo de lançamento. Você pode personalizar
+isso editando `styles.xml`, onde você pode definir um tema
+cujo `windowBackground` está definido para o
+`Drawable` que deve ser exibido como launch screen.
 
 ```xml
 <style name="LaunchTheme" parent="@android:style/Theme.Black.NoTitleBar">
@@ -58,14 +59,14 @@ whose `windowBackground` is set to the
 </style>
 ```
 
-In addition, `styles.xml` defines a _normal theme_
-to be applied to `FlutterActivity` after the launch
-screen is gone. The normal theme background only shows
-for a very brief moment after the splash screen disappears,
-and during orientation change and `Activity` restoration.
-Therefore, it's recommended that the normal theme use a
-solid background color that looks similar to the primary
-background color of the Flutter UI.
+Além disso, `styles.xml` define um _tema normal_
+para ser aplicado à `FlutterActivity` após a launch
+screen desaparecer. O plano de fundo do tema normal só aparece
+por um momento muito breve após a splash screen desaparecer,
+e durante mudança de orientação e restauração de `Activity`.
+Portanto, é recomendado que o tema normal use uma
+cor de plano de fundo sólida que se pareça com a cor de
+plano de fundo primária da UI Flutter.
 
 ```xml
 <style name="NormalTheme" parent="@android:style/Theme.Black.NoTitleBar">
@@ -75,13 +76,13 @@ background color of the Flutter UI.
 
 [drawables]: {{site.android-dev}}/studio/write/resource-manager#import
 
-## Set up the FlutterActivity in AndroidManifest.xml
+## Configure a FlutterActivity em AndroidManifest.xml
 
-In `AndroidManifest.xml`, set the `theme` of
-`FlutterActivity` to the launch theme. Then,
-add a metadata element to the desired `FlutterActivity`
-to instruct Flutter to switch from the launch theme
-to the normal theme at the appropriate time.
+Em `AndroidManifest.xml`, defina o `theme` de
+`FlutterActivity` para o tema de lançamento. Então,
+adicione um elemento metadata à `FlutterActivity` desejada
+para instruir o Flutter a mudar do tema de lançamento
+para o tema normal no momento apropriado.
 
 ```xml
 <activity
@@ -100,14 +101,14 @@ to the normal theme at the appropriate time.
 </activity>
 ```
 
-The Android app now displays the desired launch screen
-while the app initializes.
+O app Android agora exibe a launch screen desejada
+enquanto o app inicializa.
 
-## SplashScreen API
+## API SplashScreen
 
-Android 12 introduced the [`SplashScreen`][] API.
-Use the `SplashScreen` API in your `styles.xml`file.
-For example:
+O Android 12 introduziu a API [`SplashScreen`][SplashScreen].
+Use a API `SplashScreen` em seu arquivo `styles.xml`.
+Por exemplo:
 
 ```xml
 <style name="LaunchTheme" parent="@android:style/Theme.Black.NoTitleBar">
@@ -117,23 +118,23 @@ For example:
 ```
 
 :::note
-If your Android app supports releases earlier than Android 12
-_and_ post-Android 12 releases, consider using
-two different resources in your `styles.xml` file.
-Also, make sure that your background image is in line with
-the icon guidelines. For more information,
-visit [Android Splash Screens][].
+Se seu app Android suporta versões anteriores ao Android 12
+_e_ versões posteriores ao Android 12, considere usar
+dois recursos diferentes em seu arquivo `styles.xml`.
+Além disso, certifique-se de que sua imagem de fundo esteja de acordo com
+as diretrizes de ícone. Para mais informações,
+visite [Android Splash Screens][Android Splash Screens].
 :::
 
 [Android Splash Screens]: https://developer.android.com/develop/ui/views/launch/splash-screen
-[`SplashScreen`]: https://developer.android.com/reference/android/window/SplashScreen
+[SplashScreen]: https://developer.android.com/reference/android/window/SplashScreen
 
-Some apps might want to continue showing the last frame of
-the Android launch screen in Flutter. For example,
-this preserves the illusion of a single frame
-while additional loading continues in Dart.
-To achieve this, the following
-Android APIs might be helpful:
+Alguns apps podem querer continuar mostrando o último quadro da
+launch screen do Android no Flutter. Por exemplo,
+isso preserva a ilusão de um único quadro
+enquanto carregamento adicional continua em Dart.
+Para conseguir isso, as seguintes
+APIs Android podem ser úteis:
 
 <Tabs key="android-language">
 <Tab name="Kotlin">
@@ -194,11 +195,11 @@ public class MainActivity extends FlutterActivity {
 </Tab>
 </Tabs>
 
-Then, you can reimplement the first frame in Flutter
-that shows elements of your Android launch screen in
-the same positions on screen.
-For an example of this, check out the
-[splash screen sample app][].
+Então, você pode reimplementar o primeiro quadro em Flutter
+que mostra elementos de sua launch screen Android nas
+mesmas posições na tela.
+Para um exemplo disso, confira o
+[app de exemplo de splash screen][splash screen sample app].
 
 [launch screen]: {{site.android-dev}}/topic/performance/vitals/launch-time#themed
 [pre-warming a `FlutterEngine`]: /add-to-app/android/add-flutter-fragment#using-a-pre-warmed-flutterengine

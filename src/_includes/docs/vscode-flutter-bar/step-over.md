@@ -1,1 +1,5 @@
-![Small blue arched arrow over a blue circle that indicates skipping the current block or statement in the Flutter app](/assets/images/docs/testing/debugging/vscode-ui/icons/step-over.png)
+---
+ia-translate: true
+---
+
+![Pequena seta arqueada azul sobre um círculo azul que indica pular o bloco ou declaração atual no app Flutter](/assets/images/docs/testing/debugging/vscode-ui/icons/step-over.png)

@@ -1,53 +1,54 @@
 ---
-title: Using packages
-description: How to use packages in your Flutter app.
+ia-translate: true
+title: Usando packages
+description: Como usar packages no seu app Flutter.
 ---
 
 <?code-excerpt path-base="platform_integration/plugin_api_migration"?>
 
-Flutter supports using shared packages contributed by other developers
-to the Flutter and Dart ecosystems. This allows quickly building
-an app without having to develop everything from scratch.
+Flutter suporta o uso de packages compartilhados contribuídos por outros desenvolvedores
+para os ecossistemas Flutter e Dart. Isso permite construir rapidamente
+um app sem ter que desenvolver tudo do zero.
 
-:::note Difference between packages and plugins
-A plugin is a _type_ of
-package&mdash;the full designation is _plugin package_,
-which is generally shortened to _plugin_.
+:::note Diferença entre packages e plugins
+Um plugin é um _tipo_ de
+package&mdash;a designação completa é _plugin package_,
+que geralmente é abreviada para _plugin_.
 
 **Packages**
-: At a minimum, a Dart package is a directory
-  containing a `pubspec.yaml` file. Additionally,
-  a package can contain dependencies
-  (listed in the pubspec), Dart libraries, apps,
-  resources, tests, images, fonts, and examples.
-  The [pub.dev][] site lists many packages—developed by Google engineers
-  and generous members of the Flutter and Dart community—
-  that you can use in your app.
+: No mínimo, um package Dart é um diretório
+  contendo um arquivo `pubspec.yaml`. Adicionalmente,
+  um package pode conter dependências
+  (listadas no pubspec), bibliotecas Dart, apps,
+  recursos, testes, imagens, fontes e exemplos.
+  O site [pub.dev][] lista muitos packages—desenvolvidos por engenheiros da Google
+  e membros generosos da comunidade Flutter e Dart—
+  que você pode usar no seu app.
 
 **Plugins**
-: A plugin package is a special kind of package that makes
-  platform functionality available to the app.
-  Plugin packages can be written for Android (using Kotlin or Java),
-  iOS (using Swift or Objective-C), web, macOS, Windows, Linux,
-  or any combination thereof.
-  For example, a plugin might provide Flutter apps
-  with the ability to use a device's camera.
+: Um plugin package é um tipo especial de package que torna
+  funcionalidades de plataforma disponíveis para o app.
+  Plugin packages podem ser escritos para Android (usando Kotlin ou Java),
+  iOS (usando Swift ou Objective-C), web, macOS, Windows, Linux,
+  ou qualquer combinação destes.
+  Por exemplo, um plugin pode fornecer aos apps Flutter
+  a capacidade de usar a câmera de um dispositivo.
 
 <YouTubeEmbed id="Y9WifT8aN6o" title="Packages versus plugins | Decoding Flutter"></YouTubeEmbed>
 :::
 
-Existing packages enable many use cases—for example,
-making network requests ([`http`][]),
-navigation/route handling ([`go_router`][]),
-integration with device APIs
-([`url_launcher`][] and [`battery_plus`][]),
-and using third-party platform SDKs like Firebase
+Packages existentes habilitam muitos casos de uso—por exemplo,
+fazer requisições de rede ([`http`][]),
+navegação/manipulação de rotas ([`go_router`][]),
+integração com APIs de dispositivos
+([`url_launcher`][] e [`battery_plus`][]),
+e usar SDKs de plataforma de terceiros como Firebase
 ([FlutterFire][]).
 
-To write a new package, see [developing packages][].
-To add assets, images, or fonts,
-whether stored in files or packages,
-see [Adding assets and images][].
+Para escrever um novo package, veja [developing packages][].
+Para adicionar assets, imagens ou fontes,
+sejam armazenados em arquivos ou packages,
+veja [Adding assets and images][].
 
 [Adding assets and images]: /ui/assets/assets-and-images
 [`battery_plus`]: {{site.pub-pkg}}/battery_plus
@@ -61,29 +62,29 @@ see [Adding assets and images][].
 
 ## Using packages
 
-The following section describes how to use
-existing published packages.
+A seção seguinte descreve como usar
+packages publicados existentes.
 
 ### Searching for packages
 
-Packages are published to [pub.dev][].
+Packages são publicados no [pub.dev][].
 
-The [Flutter landing page][] on pub.dev displays
-top packages that are compatible with Flutter
-(those that declare dependencies generally compatible with Flutter),
-and supports searching among all published packages.
+A [Flutter landing page][] no pub.dev exibe
+os principais packages que são compatíveis com Flutter
+(aqueles que declaram dependências geralmente compatíveis com Flutter),
+e suporta busca entre todos os packages publicados.
 
-The [Flutter Favorites][] page on pub.dev lists
-the plugins and packages that have been identified as
-packages you should first consider using when writing
-your app. For more information on what it means to
-be a Flutter Favorite, see the
+A página [Flutter Favorites][] no pub.dev lista
+os plugins e packages que foram identificados como
+packages que você deveria considerar usar primeiro ao escrever
+seu app. Para mais informações sobre o que significa
+ser um Flutter Favorite, veja o
 [Flutter Favorites program][].
 
-You can also browse the packages on pub.dev by filtering
-on [Android][], [iOS][], [web][],
+Você também pode navegar pelos packages no pub.dev filtrando
+por [Android][], [iOS][], [web][],
 [Linux][], [Windows][], [macOS][],
-or any combination thereof.
+ou qualquer combinação destes.
 
 [Android]: {{site.pub-pkg}}?q=sdk%3Aflutter+platform%3Aandroid
 [Flutter Favorites]: {{site.pub}}/flutter/favorites
@@ -97,64 +98,64 @@ or any combination thereof.
 
 ### Adding a package dependency to an app using `flutter pub add`
 
-To add the package `css_colors` to an app:
+Para adicionar o package `css_colors` a um app:
 
-1. Use the [`pub add`][] command from inside the project directory
+1. Use o comando [`pub add`][] de dentro do diretório do projeto
    * `flutter pub add css_colors`
 
-1. Import it
-   * Add a corresponding `import` statement in the Dart code.
+1. Importe-o
+   * Adicione uma declaração `import` correspondente no código Dart.
 
-1. Stop and restart the app, if necessary
-   * If the package brings platform-specific code
-     (Kotlin/Java for Android, Swift/Objective-C for iOS),
-     that code must be built into your app.
-     Hot reload and hot restart only update the Dart code,
-     so a full restart of the app might be required to avoid
-     errors like `MissingPluginException` when using the package.
+1. Pare e reinicie o app, se necessário
+   * Se o package traz código específico de plataforma
+     (Kotlin/Java para Android, Swift/Objective-C para iOS),
+     esse código deve ser compilado no seu app.
+     Hot reload e hot restart apenas atualizam o código Dart,
+     então uma reinicialização completa do app pode ser necessária para evitar
+     erros como `MissingPluginException` ao usar o package.
 
 [`pub add`]: {{site.dart-site}}/tools/pub/cmd/pub-add
 
 ### Adding a package dependency to an app
 
-To add the package `css_colors` to an app:
+Para adicionar o package `css_colors` a um app:
 
 1. Depend on it
-   * Open the `pubspec.yaml` file located inside the app folder,
-     and add `css_colors: ^1.0.0` under `dependencies`.
+   * Abra o arquivo `pubspec.yaml` localizado dentro da pasta do app,
+     e adicione `css_colors: ^1.0.0` em `dependencies`.
 
 1. Install it
-   * From the terminal: Run `flutter pub get`.<br/>
-   **OR**
-   * From VS Code: Click **Get Packages** located in right side of the action
-     ribbon at the top of `pubspec.yaml` indicated by the Download icon.
-   * From Android Studio/IntelliJ: Click **Pub get** in the action
-     ribbon at the top of `pubspec.yaml`.
+   * Do terminal: Execute `flutter pub get`.<br/>
+   **OU**
+   * Do VS Code: Clique em **Get Packages** localizado no lado direito da faixa de ação
+     no topo do `pubspec.yaml` indicado pelo ícone de Download.
+   * Do Android Studio/IntelliJ: Clique em **Pub get** na faixa de ação
+     no topo do `pubspec.yaml`.
 
 1. Import it
-   * Add a corresponding `import` statement in the Dart code.
+   * Adicione uma declaração `import` correspondente no código Dart.
 
 1. Stop and restart the app, if necessary
-   * If the package brings platform-specific code
-     (Kotlin/Java for Android, Swift/Objective-C for iOS),
-     that code must be built into your app.
-     Hot reload and hot restart only update the Dart code,
-     so a full restart of the app might be required to avoid
-     errors like `MissingPluginException` when using the package.
+   * Se o package traz código específico de plataforma
+     (Kotlin/Java para Android, Swift/Objective-C para iOS),
+     esse código deve ser compilado no seu app.
+     Hot reload e hot restart apenas atualizam o código Dart,
+     então uma reinicialização completa do app pode ser necessária para evitar
+     erros como `MissingPluginException` ao usar o package.
 
 ### Removing a package dependency to an app using `flutter pub remove`
 
-To remove the package `css_colors` from an app:
+Para remover o package `css_colors` de um app:
 
-1. Use the [`pub remove`][] command from inside the project directory
+1. Use o comando [`pub remove`][] de dentro do diretório do projeto
    * `flutter pub remove css_colors`
 
-The [Installing tab][],
-available on any package page on pub.dev,
-is a handy reference for these steps.
+A [Installing tab][],
+disponível em qualquer página de package no pub.dev,
+é uma referência útil para esses passos.
 
-For a complete example,
-see the [css_colors example][] below.
+Para um exemplo completo,
+veja o [css_colors example][] abaixo.
 
 [css_colors example]: #css-example
 [Installing tab]: {{site.pub-pkg}}/css_colors/install
@@ -162,14 +163,14 @@ see the [css_colors example][] below.
 
 ### Conflict resolution
 
-Suppose you want to use `some_package` and
-`another_package` in an app,
-and both of these depend on `url_launcher`,
-but in different versions.
-That causes a potential conflict.
-The best way to avoid this is for package authors to use
-[version ranges][] rather than specific versions when
-specifying dependencies.
+Suponha que você queira usar `some_package` e
+`another_package` em um app,
+e ambos dependem de `url_launcher`,
+mas em versões diferentes.
+Isso causa um conflito potencial.
+A melhor maneira de evitar isso é que os autores de packages usem
+[version ranges][] ao invés de versões específicas ao
+especificar dependências.
 
 ```yaml
 dependencies:
@@ -177,24 +178,24 @@ dependencies:
   image_picker: '5.4.3'   # Not so good, only version 5.4.3 works.
 ```
 
-If `some_package` declares the dependencies above
-and `another_package` declares a compatible
-`url_launcher` dependency like `'5.4.6'` or
-`^5.5.0`, pub resolves the issue automatically.
-Platform-specific dependencies on
-[Gradle modules][] and/or [CocoaPods][]
-are solved in a similar way.
+Se `some_package` declara as dependências acima
+e `another_package` declara uma dependência
+`url_launcher` compatível como `'5.4.6'` ou
+`^5.5.0`, pub resolve o problema automaticamente.
+Dependências específicas de plataforma em
+[Gradle modules][] e/ou [CocoaPods][]
+são resolvidas de maneira similar.
 
-Even if `some_package` and `another_package`
-declare incompatible versions for `url_launcher`,
-they might actually use `url_launcher` in
-compatible ways. In this situation,
-the conflict can be resolved by adding
-a dependency override declaration to the app's
-`pubspec.yaml` file, forcing the use of a particular version.
+Mesmo se `some_package` e `another_package`
+declararem versões incompatíveis para `url_launcher`,
+eles podem na verdade usar `url_launcher` de
+maneiras compatíveis. Nesta situação,
+o conflito pode ser resolvido adicionando
+uma declaração de dependency override ao arquivo
+`pubspec.yaml` do app, forçando o uso de uma versão particular.
 
-For example, to force the use of `url_launcher` version `5.4.0`,
-make the following changes to the app's `pubspec.yaml` file:
+Por exemplo, para forçar o uso da versão `5.4.0` de `url_launcher`,
+faça as seguintes alterações no arquivo `pubspec.yaml` do app:
 
 ```yaml
 dependencies:
@@ -204,13 +205,13 @@ dependency_overrides:
   url_launcher: '5.4.0'
 ```
 
-If the conflicting dependency is not itself a package,
-but an Android-specific library like `guava`,
-the dependency override declaration must be added to
-Gradle build logic instead.
+Se a dependência conflitante não for ela mesma um package,
+mas uma biblioteca específica do Android como `guava`,
+a declaração de dependency override deve ser adicionada à
+lógica de build do Gradle.
 
-To force the use of `guava` version `28.0`, make the following
-changes to the app's `android/build.gradle` file:
+Para forçar o uso da versão `28.0` de `guava`, faça as seguintes
+alterações no arquivo `android/build.gradle` do app:
 
 ```groovy
 configurations.all {
@@ -220,8 +221,8 @@ configurations.all {
 }
 ```
 
-CocoaPods doesn't currently offer dependency
-override functionality.
+CocoaPods atualmente não oferece funcionalidade de
+dependency override.
 
 [CocoaPods]: https://guides.cocoapods.org/syntax/podspec.html#dependency
 [Gradle modules]: https://docs.gradle.org/current/userguide/declaring_dependencies.html
@@ -229,29 +230,29 @@ override functionality.
 
 ## Developing new packages
 
-If no package exists for your specific use case,
-you can [write a custom package][].
+Se nenhum package existe para seu caso de uso específico,
+você pode [write a custom package][].
 
 [write a custom package]: /packages-and-plugins/developing-packages
 
 ## Managing package dependencies and versions
 
-To minimize the risk of version collisions,
-specify a version range in the `pubspec.yaml` file.
+Para minimizar o risco de colisões de versão,
+especifique um intervalo de versão no arquivo `pubspec.yaml`.
 
 ### Package versions
 
-All packages have a version number, specified in the
-package's `pubspec.yaml` file. The current version of a package
-is displayed next to its name (for example,
-see the [`url_launcher`][] package), as
-well as a list of all prior versions
-(see [`url_launcher` versions][]).
+Todos os packages têm um número de versão, especificado no
+arquivo `pubspec.yaml` do package. A versão atual de um package
+é exibida ao lado de seu nome (por exemplo,
+veja o package [`url_launcher`][]), bem como
+uma lista de todas as versões anteriores
+(veja [`url_launcher` versions][]).
 
-To ensure that the app doesn't break when you update a package,
-specify a version range using one of the following formats.
+Para garantir que o app não quebre quando você atualizar um package,
+especifique um intervalo de versão usando um dos seguintes formatos.
 
-* **Ranged constraints:** Specify a minimum and maximum version.
+* **Ranged constraints:** Especifique uma versão mínima e máxima.
 
   ```yaml
   dependencies:
@@ -259,17 +260,17 @@ specify a version range using one of the following formats.
   ```
 
 * **Ranged constraints using the [caret syntax][]:**
-  Specify the version that serves as the inclusive minimum version.
-  This covers all versions from that version to the next major version.
+  Especifique a versão que serve como a versão mínima inclusiva.
+  Isso cobre todas as versões dessa versão até a próxima versão principal.
 
   ```yaml
   dependencies:
     collection: '^5.4.0'
   ```
 
-  This syntax means the same as the one noted in the first bullet.
+  Esta sintaxe significa o mesmo que a mencionada no primeiro item.
 
-To learn more, check out the [package versioning guide][].
+Para saber mais, confira o [package versioning guide][].
 
 [caret syntax]: {{site.dart-site}}/tools/pub/dependencies#caret-syntax
 [package versioning guide]: {{site.dart-site}}/tools/pub/versioning
@@ -277,37 +278,37 @@ To learn more, check out the [package versioning guide][].
 
 ### Updating package dependencies
 
-When running `flutter pub get`
-for the first time after adding a package,
-Flutter saves the concrete package version found in the `pubspec.lock`
-[lockfile][]. This ensures that you get the same version again
-if you, or another developer on your team, run `flutter pub get`.
+Ao executar `flutter pub get`
+pela primeira vez após adicionar um package,
+Flutter salva a versão concreta do package encontrada no `pubspec.lock`
+[lockfile][]. Isso garante que você obtenha a mesma versão novamente
+se você, ou outro desenvolvedor na sua equipe, executar `flutter pub get`.
 
-To upgrade to a new version of the package,
-for example to use new features in that package,
-run `flutter pub upgrade`
-to retrieve the highest available version of the package
-that is allowed by the version constraint specified in
+Para atualizar para uma nova versão do package,
+por exemplo para usar novos recursos nesse package,
+execute `flutter pub upgrade`
+para recuperar a versão mais alta disponível do package
+que é permitida pela restrição de versão especificada em
 `pubspec.yaml`.
-Note that this is a different command from
-`flutter upgrade` or `flutter update-packages`,
-which both update Flutter itself.
+Note que este é um comando diferente de
+`flutter upgrade` ou `flutter update-packages`,
+que ambos atualizam o próprio Flutter.
 
 [lockfile]: {{site.dart-site}}/tools/pub/glossary#lockfile
 
 ### Dependencies on unpublished packages
 
-Packages can be used even when not published on pub.dev.
-For private packages, or for packages not ready for publishing,
-additional dependency options are available:
+Packages podem ser usados mesmo quando não publicados no pub.dev.
+Para packages privados, ou para packages não prontos para publicação,
+opções adicionais de dependência estão disponíveis:
 
 **Path dependency**
-: A Flutter app can depend on a package using a file system
-  `path:` dependency. The path can be either relative or absolute.
-  Relative paths are evaluated relative to the directory
-  containing `pubspec.yaml`. For example, to depend on a
-  package, packageA, located in a directory next to the app,
-  use the following syntax:
+: Um app Flutter pode depender de um package usando uma dependência
+  `path:` de sistema de arquivos. O path pode ser relativo ou absoluto.
+  Paths relativos são avaliados relativamente ao diretório
+  contendo `pubspec.yaml`. Por exemplo, para depender de um
+  package, packageA, localizado em um diretório ao lado do app,
+  use a seguinte sintaxe:
 
   ```yaml
     dependencies:
@@ -317,9 +318,9 @@ additional dependency options are available:
   ```
 
 **Git dependency**
-: You can also depend on a package stored in a Git repository.
-  If the package is located at the root of the repo,
-  use the following syntax:
+: Você também pode depender de um package armazenado em um repositório Git.
+  Se o package está localizado na raiz do repositório,
+  use a seguinte sintaxe:
 
   ```yaml
     dependencies:
@@ -329,8 +330,8 @@ additional dependency options are available:
   ```
 
 **Git dependency using SSH**
-: If the repository is private and you can connect to it using SSH,
-  depend on the package by using the repo's SSH url:
+: Se o repositório é privado e você pode conectar a ele usando SSH,
+  dependa do package usando a URL SSH do repositório:
 
   ```yaml
     dependencies:
@@ -340,10 +341,10 @@ additional dependency options are available:
   ```
 
 **Git dependency on a package in a folder**
-: Pub assumes the package is located in
-  the root of the Git repository. If that isn't
-  the case, specify the location with the `path` argument.
-  For example:
+: Pub assume que o package está localizado na
+  raiz do repositório Git. Se não for
+  o caso, especifique a localização com o argumento `path`.
+  Por exemplo:
 
   ```yaml
   dependencies:
@@ -353,28 +354,28 @@ additional dependency options are available:
         path: packages/packageA
   ```
 
-  Finally, use the `ref` argument to pin the dependency to a
-  specific git commit, branch, or tag. For more details, see
+  Finalmente, use o argumento `ref` para fixar a dependência a um
+  commit, branch ou tag git específico. Para mais detalhes, veja
   [Package dependencies][].
 
 [Package dependencies]: {{site.dart-site}}/tools/pub/dependencies
 
 ## Examples
 
-The following examples walk through the necessary steps for
-using packages.
+Os exemplos seguintes percorrem os passos necessários para
+usar packages.
 
 ### Example: Using the css_colors package {:#css-example}
 
-The [`css_colors`][] package
-defines color constants for CSS colors, so use the constants
-wherever the Flutter framework expects the `Color` type.
+O package [`css_colors`][]
+define constantes de cor para cores CSS, então use as constantes
+onde quer que o framework Flutter espere o tipo `Color`.
 
-To use this package:
+Para usar este package:
 
-1. Create a new project called `cssdemo`.
+1. Crie um novo projeto chamado `cssdemo`.
 
-1. Open `pubspec.yaml`, and add the `css-colors` dependency:
+1. Abra `pubspec.yaml`, e adicione a dependência `css-colors`:
 
    ```yaml
    dependencies:
@@ -383,32 +384,32 @@ To use this package:
      css_colors: ^1.0.0
    ```
 
-1. Run `flutter pub get` in the terminal,
-   or click **Get Packages** in VS Code.
+1. Execute `flutter pub get` no terminal,
+   ou clique em **Get Packages** no VS Code.
 
-1. Open `lib/main.dart` and replace its full contents with:
+1. Abra `lib/main.dart` e substitua todo o seu conteúdo por:
 
     <?code-excerpt "lib/css_colors.dart (css-colors)"?>
     ```dart
     import 'package:css_colors/css_colors.dart';
     import 'package:flutter/material.dart';
-    
+
     void main() {
       runApp(const MyApp());
     }
-    
+
     class MyApp extends StatelessWidget {
       const MyApp({super.key});
-    
+
       @override
       Widget build(BuildContext context) {
         return const MaterialApp(home: DemoPage());
       }
     }
-    
+
     class DemoPage extends StatelessWidget {
       const DemoPage({super.key});
-    
+
       @override
       Widget build(BuildContext context) {
         return Scaffold(body: Container(color: CSSColors.orange));
@@ -416,25 +417,25 @@ To use this package:
     }
     ```
 
-1. Run the app. The app's background should now be orange.
+1. Execute o app. O fundo do app agora deve estar laranja.
 
 [`css_colors`]: {{site.pub-pkg}}/css_colors
 
 ### Example: Using the url_launcher package to launch the browser {:#url-example}
 
-The [`url_launcher`][] plugin package enables opening
-the default browser on the mobile platform to display
-a given URL, and is supported on Android, iOS, web,
-Windows, Linux, and macOS.
-This package is a special Dart package called a
-_plugin package_ (or _plugin_),
-which includes platform-specific code.
+O plugin package [`url_launcher`][] habilita abrir
+o navegador padrão na plataforma móvel para exibir
+uma URL fornecida, e é suportado em Android, iOS, web,
+Windows, Linux e macOS.
+Este package é um package Dart especial chamado
+_plugin package_ (ou _plugin_),
+que inclui código específico de plataforma.
 
-To use this plugin:
+Para usar este plugin:
 
-1. Create a new project called `launchdemo`.
+1. Crie um novo projeto chamado `launchdemo`.
 
-1. Open `pubspec.yaml`, and add the `url_launcher` dependency:
+1. Abra `pubspec.yaml`, e adicione a dependência `url_launcher`:
 
    ```yaml
    dependencies:
@@ -443,37 +444,37 @@ To use this plugin:
      url_launcher: ^5.4.0
    ```
 
-1. Run `flutter pub get` in the terminal,
-   or click **Get Packages get** in VS Code.
+1. Execute `flutter pub get` no terminal,
+   ou clique em **Get Packages get** no VS Code.
 
-1. Open `lib/main.dart` and replace its full contents with the
-   following:
+1. Abra `lib/main.dart` e substitua todo o seu conteúdo pelo
+   seguinte:
 
     <?code-excerpt "lib/url_launcher.dart (url-launcher)"?>
     ```dart
     import 'package:flutter/material.dart';
     import 'package:url_launcher/url_launcher.dart';
-    
+
     void main() {
       runApp(const MyApp());
     }
-    
+
     class MyApp extends StatelessWidget {
       const MyApp({super.key});
-    
+
       @override
       Widget build(BuildContext context) {
         return const MaterialApp(home: DemoPage());
       }
     }
-    
+
     class DemoPage extends StatelessWidget {
       const DemoPage({super.key});
-    
+
       void launchURL() {
         launchUrl(Uri.parse('https://flutter.dev'));
       }
-    
+
       @override
       Widget build(BuildContext context) {
         return Scaffold(
@@ -488,7 +489,7 @@ To use this plugin:
     }
     ```
 
-1. Run the app (or stop and restart it, if it was already running
-   before adding the plugin). Click **Show Flutter homepage**.
-   You should see the default browser open on the device,
-   displaying the homepage for flutter.dev.
+1. Execute o app (ou pare e reinicie, se ele já estava executando
+   antes de adicionar o plugin). Clique em **Show Flutter homepage**.
+   Você deveria ver o navegador padrão abrir no dispositivo,
+   exibindo a homepage do flutter.dev.

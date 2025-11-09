@@ -1,83 +1,84 @@
 ---
-title: Approaches to state management
+ia-translate: true
+title: Abordagens para gerenciamento de estado
 short-link: State-management approaches
 breadcrumb: Approaches
 description: >-
-  An introduction to different approaches to
-  managing state in Flutter apps.
+  Uma introdução às diferentes abordagens para
+  gerenciar estado em apps Flutter.
 prev:
   title: Simple app state management
   path: /data-and-backend/state-mgmt/simple
 ---
 
-State management is a complex topic.
-If you feel that some of your questions haven't been answered,
-or that the approach described on these pages
-is not viable for your use cases, you are probably right.
+Gerenciamento de estado é um tópico complexo.
+Se você sente que algumas das suas perguntas não foram respondidas,
+ou que a abordagem descrita nestas páginas
+não é viável para seus casos de uso, você provavelmente está certo.
 
-Learn more from the following resources,
-many of which have been contributed by the Flutter community.
+Aprenda mais com os seguintes recursos,
+muitos dos quais foram contribuídos pela comunidade Flutter.
 
-## General overview
+## Visão geral
 
-Things to review before selecting an approach.
+Coisas para revisar antes de selecionar uma abordagem.
 
-* [Introduction to state management][],
-  which is the beginning of this very section
-  (for those of you who arrived directly to this _Options_ page
-  and missed the previous pages)
-* [Pragmatic State Management in Flutter][],
-  a video from Google I/O 2019
-* [Flutter Architecture Samples][], by Brian Egan
+* [Introdução ao gerenciamento de estado][Introduction to state management],
+  que é o início desta mesma seção
+  (para aqueles que chegaram diretamente a esta página de _Opções_
+  e perderam as páginas anteriores)
+* [Gerenciamento de Estado Pragmático no Flutter][Pragmatic State Management in Flutter],
+  um vídeo do Google I/O 2019
+* [Amostras de Arquitetura Flutter][Flutter Architecture Samples], por Brian Egan
 
 [Flutter Architecture Samples]: https://fluttersamples.com/
 [Introduction to state management]: /data-and-backend/state-mgmt/intro
 [Pragmatic State Management in Flutter]: {{site.yt.watch}}?v=d_m5csmrf7I
 
-## Built-in approaches
+## Abordagens integradas
 
 ### `setState`
 
-The low-level approach to use for widget-specific, ephemeral state.
+A abordagem de baixo nível para usar em estado efêmero específico de widget.
 
-* [Adding interactivity to your Flutter app][], a Flutter tutorial
-* [Basic state management in Google Flutter][], by Agung Surya
+* [Adicionando interatividade ao seu app Flutter][Adding interactivity to your Flutter app], um tutorial Flutter
+* [Gerenciamento de estado básico no Google Flutter][Basic state management in Google Flutter], por Agung Surya
 
 [Adding interactivity to your Flutter app]: /ui/interactivity
 [Basic state management in Google Flutter]: {{site.medium}}/@agungsurya/basic-state-management-in-google-flutter-6ee73608f96d
 
 <a id="valuenotifier-inheritednotifier" aria-hidden="true"></a>
 
-### `ValueNotifier` and `InheritedNotifier`
+### `ValueNotifier` e `InheritedNotifier`
 
-An approach using only Flutter provided APIs to
-update state and notify the UI of changes.
+Uma abordagem usando apenas APIs fornecidas pelo Flutter para
+atualizar o estado e notificar a UI sobre mudanças.
 
-* [State Management using ValueNotifier and InheritedNotifier][], by Tadas Petra
+* [Gerenciamento de Estado usando ValueNotifier e InheritedNotifier][State Management using ValueNotifier and InheritedNotifier], por Tadas Petra
 
 [State Management using ValueNotifier and InheritedNotifier]: https://www.hungrimind.com/articles/flutter-state-management
 
 <a id="inheritedwidget-inheritedmodel" aria-hidden="true"></a>
 
-### `InheritedWidget` and `InheritedModel`
+### `InheritedWidget` e `InheritedModel`
 
-The low-level approach used to
-communicate between ancestors and children in the widget tree.
-This is what `package:provider` and many other approaches use under the hood.
+A abordagem de baixo nível usada para
+comunicar entre ancestrais e filhos na árvore de widgets.
+Isso é o que `package:provider` e muitas outras abordagens usam internamente.
 
-The following instructor-led video workshop covers how to
-use `InheritedWidget`:
+O seguinte workshop em vídeo com instrutor cobre como
+usar `InheritedWidget`:
 
 <YouTubeEmbed id="LFcGPS6cGrY" title="How to manage application state using inherited widgets"></YouTubeEmbed>
 
-Other useful docs include:
+Outros documentos úteis incluem:
 
-* [InheritedWidget docs][]
-* [Managing Flutter Application State With InheritedWidgets][],
-  by Hans Muller
-* [Inheriting Widgets][], by Mehmet Fidanboylu
-* [Using Flutter Inherited Widgets Effectively][], by Eric Windmill
-* [Widget - State - Context - InheritedWidget][], by Didier Bolelens
+* [Documentação do InheritedWidget][InheritedWidget docs]
+* [Gerenciando Estado de Aplicação Flutter com InheritedWidgets][Managing Flutter Application State With InheritedWidgets],
+  por Hans Muller
+* [Herdando Widgets][Inheriting Widgets], por Mehmet Fidanboylu
+* [Usando Flutter Inherited Widgets Efetivamente][Using Flutter Inherited Widgets Effectively], por Eric Windmill
+* [Widget - State - Context - InheritedWidget][], por Didier Bolelens
 
 [InheritedWidget docs]: {{site.api}}/flutter/widgets/InheritedWidget-class.html
 [Inheriting Widgets]: {{site.medium}}/@mehmetf_71205/inheriting-widgets-b7ac56dbbeb1
@@ -85,41 +86,41 @@ Other useful docs include:
 [Using Flutter Inherited Widgets Effectively]: https://ericwindmill.com/articles/inherited_widget/
 [Widget - State - Context - InheritedWidget]: https://www.didierboelens.com/2018/06/widget---state---context---inheritedwidget/
 
-## Community-provided packages
+## Pacotes fornecidos pela comunidade
 
-Depending on the complexity of your app and preferences of your team,
-you might find adopting a state management package useful.
-State management packages often help reduce boilerplate code,
-provide specialized debugging tools, and can help
-enable a clearer and consistent application architecture.
+Dependendo da complexidade do seu app e das preferências da sua equipe,
+você pode achar útil adotar um pacote de gerenciamento de estado.
+Pacotes de gerenciamento de estado frequentemente ajudam a reduzir código boilerplate,
+fornecem ferramentas de debugging especializadas e podem ajudar a
+habilitar uma arquitetura de aplicação mais clara e consistente.
 
-The Flutter community offers a wide variety of state management packages.
-The best choice for your app often depends on the app's complexity,
-your team's preferences, and the specific problems you need to solve.
+A comunidade Flutter oferece uma ampla variedade de pacotes de gerenciamento de estado.
+A melhor escolha para seu app frequentemente depende da complexidade do app,
+das preferências da sua equipe e dos problemas específicos que você precisa resolver.
 
-To begin exploring the available options,
-check out the [`#state-management`][]{: target="_blank"} topic on the pub.dev site and
-refine the search to find packages that match your needs.
+Para começar a explorar as opções disponíveis,
+confira o tópico [`#state-management`][]{: target="_blank"} no site pub.dev e
+refine a busca para encontrar pacotes que correspondam às suas necessidades.
 
 <div class="card-grid">
   <a class="card outlined-card" href="{{site.pub}}/packages?q=topic%3Astate-management" target="_blank">
     <div class="card-header">
       <span class="card-title">
-        <span>State management packages</span>
+        <span>Pacotes de gerenciamento de estado</span>
         <span class="material-symbols" aria-hidden="true" style="font-size: 1rem;" translate="no">open_in_new</span>
       </span>
     </div>
     <div class="card-content">
-      <p>Explore the variety of state-management packages built by and for the Flutter community.</p>
+      <p>Explore a variedade de pacotes de gerenciamento de estado construídos pela e para a comunidade Flutter.</p>
     </div>
   </a>
 </div>
 
 :::tip
-If you've developed a state management package that
-you think would be useful to the Flutter community,
-consider [adding the `state-management` topic][pub-topics] and
-[publishing the package][pub-publish] to pub.dev.
+Se você desenvolveu um pacote de gerenciamento de estado que
+acha que seria útil para a comunidade Flutter,
+considere [adicionar o tópico `state-management`][pub-topics] e
+[publicar o pacote][pub-publish] no pub.dev.
 :::
 
 [`#state-management`]: {{site.pub}}/packages?q=topic%3Astate-management

@@ -1,5 +1,6 @@
 ---
+ia-translate: true
 layout: toc
-title: Persistence
-description: Content covering persistence in Flutter apps.
+title: Persistência
+description: Conteúdo sobre persistência em apps Flutter.
 ---

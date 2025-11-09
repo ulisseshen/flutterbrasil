@@ -1,35 +1,36 @@
 ---
-title: Flutter 1.2.1 release notes
-shortTitle: 1.2.1 release notes
-description: Release notes for Flutter 1.2.1.
+ia-translate: true
+title: Notas de lançamento do Flutter 1.2.1
+shortTitle: Notas de lançamento 1.2.1
+description: Notas de lançamento para o Flutter 1.2.1.
 skipTemplateRendering: true
 ---
 
-Our #1 priority since the Flutter v1.0 release has been to
-continue to address high priority issues reported both by
-Flutter developers and the Flutter team itself.
-This includes committing 672 pull requests in the Flutter
-engine and framework since December (we've been busy!).
-We've called out the new features and breaking changes
-that we think are noteworthy below. The biggest ones came
-from our Framework and Tool tags, but we also found and
-fixed a couple of Severe issues as well.
+Nossa prioridade #1 desde o lançamento do Flutter v1.0 tem sido
+continuar a atender problemas de alta prioridade reportados tanto por
+desenvolvedores Flutter quanto pela própria equipe Flutter.
+Isso inclui o commit de 672 pull requests no motor e framework Flutter
+desde dezembro (estivemos ocupados!).
+Destacamos as novas funcionalidades e mudanças incompatíveis
+que achamos notáveis abaixo. As maiores vieram
+das nossas tags Framework e Tool, mas também encontramos e
+corrigimos alguns problemas Severe.
 
 ## Framework
 
-To more fully round-out Flutter's animation support,
-this release adds several more of the standard easing functions:
+Para complementar mais completamente o suporte de animação do Flutter,
+este lançamento adiciona várias das funções de easing padrão:
 
 [#25788](https://github.com/flutter/flutter/pull/25788) Add Robert Penner's easing functions
 
-To integrate more fully with Android,
-this release adds support for [Android App Bundles][],
-a new packaging format that helps in reducing app size
-and enables new features like dynamic delivery for Android apps:
+Para integrar mais completamente com Android,
+este lançamento adiciona suporte para [Android App Bundles][Android App Bundles],
+um novo formato de empacotamento que ajuda a reduzir o tamanho do app
+e habilita novas funcionalidades como entrega dinâmica para apps Android:
 
 [#24440](https://github.com/flutter/flutter/pull/24440) Adding support for android app bundle
 
-To integrate more fully with iOS, this release adds several new features and fixes for iOS, including a new CupertinoTheme:
+Para integrar mais completamente com iOS, este lançamento adiciona várias novas funcionalidades e correções para iOS, incluindo um novo CupertinoTheme:
 
 [#25183](https://github.com/flutter/flutter/pull/25183) Add navigatorKey to CupertinoTabView
 
@@ -39,13 +40,13 @@ To integrate more fully with iOS, this release adds several new features and fix
 
 [#23759](https://github.com/flutter/flutter/pull/23759) Adds CupertinoTheme
 
-In addition to the iOS Cupertino theme support, this release continues to enhance the Material theme as well:
+Além do suporte ao tema Cupertino do iOS, este lançamento continua a aprimorar o tema Material também:
 
 [#24169](https://github.com/flutter/flutter/pull/24169) [Material] Theme-able elevation on dialogs
 
 [#25339](https://github.com/flutter/flutter/pull/25339) [Material] Theme-able TextStyles for AlertDialog
 
-To integrate more fully with desktop form-factors like Android tablets and ChromeOS as well as desktop web and desktop OS support, this release builds more support for keyboard and mouse as first class input devices:
+Para integrar mais completamente com formatos desktop como tablets Android e ChromeOS, bem como suporte a web desktop e desktop OS, este lançamento adiciona mais suporte para teclado e mouse como dispositivos de entrada de primeira classe:
 
 [#7758](https://github.com/flutter/engine/pull/7758) Recommended implementation of combining characters implementation
 
@@ -59,7 +60,7 @@ To integrate more fully with desktop form-factors like Android tablets and Chrom
 
 [#24830](https://github.com/flutter/flutter/pull/24830) Implement hover support for mouse pointers
 
-As widgets are the core way to interact with users in Flutter, this release continues to add features and fixes to the Flutter widget set with particular attention paid to the [SliverAppBar](https://api.flutter.dev/flutter/material/SliverAppBar-class.html):
+Como widgets são a forma principal de interagir com usuários no Flutter, este lançamento continua a adicionar funcionalidades e correções ao conjunto de widgets Flutter com atenção particular ao [SliverAppBar](https://api.flutter.dev/flutter/material/SliverAppBar-class.html):
 
 [#26021](https://github.com/flutter/flutter/pull/26021) Fix SliverAppBar title opacity and test all cases
 
@@ -83,7 +84,7 @@ As widgets are the core way to interact with users in Flutter, this release cont
 
 [#26332](https://github.com/flutter/flutter/pull/26332) Strut: fine tuned control over text minimum line heights, allows forcing the line height to be a specified height
 
-And finally, as Flutter usage continues to grow world-wide, we continue to enhance support for localizations across several languages, including Ukrainian, Polish, Swahili and Galician in this release.
+E finalmente, como o uso do Flutter continua a crescer mundialmente, continuamos a aprimorar o suporte para localizações em vários idiomas, incluindo ucraniano, polonês, suaíli e galego neste lançamento.
 
 [#25394](https://github.com/flutter/flutter/pull/25394) Update localizations
 
@@ -94,7 +95,7 @@ And finally, as Flutter usage continues to grow world-wide, we continue to enhan
 
 ## Plug-Ins
 
-As in the framework and engine itself, we're continuing to focus on plugin quality as well:
+Assim como no framework e motor, estamos continuando a focar na qualidade dos plugins também:
 
 [flutter/engine#7317](https://github.com/flutter/engine/pull/7317) Fix stale GrContext for iOS platform views
 
@@ -110,7 +111,7 @@ As in the framework and engine itself, we're continuing to focus on plugin quali
 
 [flutter/plugins#1051 ](https://github.com/flutter/plugins/pull/1051)[image_picker] Fix crash on iOS when the picker is tapped multiple times
 
-The webview_flutter plugin got a communication channel between Dart and JavaScript:
+O plugin webview_flutter ganhou um canal de comunicação entre Dart e JavaScript:
 
 [flutter/plugins#1116](https://github.com/flutter/plugins/pull/1116) Add WebView JavaScript channels (Dart side)
 
@@ -120,7 +121,7 @@ The webview_flutter plugin got a communication channel between Dart and JavaScri
 
 [lutter/plugins1021](https://github.com/flutter/plugins/pull/1021) javascript evaluation ios/android
 
-We've made progress building the In App Purchase plugin (which is still pre-release):
+Fizemos progresso construindo o plugin In App Purchase (que ainda está em pré-lançamento):
 
 [#1057](https://github.com/flutter/plugins/pull/1057) [IAP] Check if the payment processor is available
 
@@ -133,7 +134,7 @@ We've made progress building the In App Purchase plugin (which is still pre-rele
 
 ## Dart
 
-The release contains a new Dart SDK which provides support for a new set literals syntax and increases AOT performance 10-20% by reducing the overhead of calling constructors or static methods:
+O lançamento contém um novo Dart SDK que fornece suporte para uma nova sintaxe de set literals e aumenta a performance AOT em 10-20% reduzindo a sobrecarga de chamar construtores ou métodos estáticos:
 
 [#37](https://github.com/dart-lang/language/issues/37) Set Literal
 
@@ -142,9 +143,9 @@ The release contains a new Dart SDK which provides support for a new set literal
 
 ## Tool
 
-We've added a number of new tools and new features to existing tools in this release.
+Adicionamos várias novas ferramentas e novas funcionalidades às ferramentas existentes neste lançamento.
 
-This release continues to improve error messages across a range of tools:
+Este lançamento continua a melhorar mensagens de erro em uma variedade de ferramentas:
 
 [#26107](https://github.com/flutter/flutter/pull/26107) Better error messages for flutter tool --dynamic flag
 
@@ -152,14 +153,14 @@ This release continues to improve error messages across a range of tools:
 
 [#25863](https://github.com/flutter/flutter/pull/25863) Friendlier messages when using dynamic patching
 
-This release also adds support for Java 1.8:
+Este lançamento também adiciona suporte para Java 1.8:
 
 [#25470](https://github.com/flutter/flutter/pull/25470) Support Java 1.8
 
 
 ## Severe
 
-In this release, we've found and fixed a few severe issues from the previous release, including two crashes and one performance degradation.
+Neste lançamento, encontramos e corrigimos alguns problemas graves do lançamento anterior, incluindo duas falhas e uma degradação de performance.
 
 Crashes
 
@@ -172,20 +173,20 @@ Performance
 
 ## Breaking Changes
 
-In an effort to continue to improve Flutter since 1.0 to meet customer needs, we have had to make a few breaking changes:
+Em um esforço para continuar a melhorar o Flutter desde a versão 1.0 para atender às necessidades dos clientes, tivemos que fazer algumas mudanças incompatíveis:
 
 ### [#8769](https://github.com/flutter/flutter/pull/8769) Rename ListItem to ListTile, document ListTile fixed height geometry
 
-Many developers were confused by the fact that ListItem was fixed height. We've renamed it to ListTile, to indicate that (like other tiles) its height is fixed, and the documentation has been updated to clearly say that about ListTile. You'll need to rename instances of the ListItem class to ListTile in your code.
+Muitos desenvolvedores estavam confusos pelo fato de que ListItem tinha altura fixa. Renomeamos para ListTile, para indicar que (como outros tiles) sua altura é fixa, e a documentação foi atualizada para dizer claramente isso sobre ListTile. Você precisará renomear instâncias da classe ListItem para ListTile no seu código.
 
 ### [#7518](https://github.com/flutter/engine/pull/7518) Update default flutter_assets path for iOS embedding
 
-Flutter assets for iOS applications are now found in Frameworks/App.framework/flutter_assets instead of flutter_assets. The flutter command line tool should take care of this difference, but if you are writing an AddToApp application for iOS that shares assets with Flutter, you'll need to be aware of this change.
+Os assets Flutter para aplicações iOS agora são encontrados em Frameworks/App.framework/flutter_assets ao invés de flutter_assets. A ferramenta de linha de comando flutter deve cuidar dessa diferença, mas se você está escrevendo uma aplicação AddToApp para iOS que compartilha assets com Flutter, você precisará estar ciente dessa mudança.
 
 
 ### [#27697](https://github.com/flutter/flutter/pull/27697) Cupertino TextField Cursor Fix
 
-CupertinoTextField's cursorColor default now matches the app's theme. If this is undesirable, developers can use the cupertinoOverrideTheme property of ThemeData to provide a Cupertino-specific override using a CupertinoThemeData object, e.g:
+O padrão do cursorColor do CupertinoTextField agora corresponde ao tema do app. Se isso for indesejável, desenvolvedores podem usar a propriedade cupertinoOverrideTheme de ThemeData para fornecer uma substituição específica do Cupertino usando um objeto CupertinoThemeData, por exemplo:
 
 ```dart
 Widget build(BuildContext context) {
@@ -204,7 +205,7 @@ Widget build(BuildContext context) {
 
 ### [#23424](https://github.com/flutter/flutter/pull/23424) Teach drag start behaviors to DragGestureRecognizer
 
-By default, a drag gesture detector's onStart callback will be called with the location of where a drag gesture is detected (i.e. after dragging a certain number of pixels) instead of at the touch down location. To use the old functionality with a given drag gesture recognizer, the dragStartBehavior variable of the recognizer should be set DragStartBehavior.down, e.g., include the bolded line below when declaring your GestureDecorator:
+Por padrão, o callback onStart de um detector de gesto de arrastar será chamado com a localização de onde um gesto de arrastar é detectado (ou seja, após arrastar um certo número de pixels) ao invés da localização do toque inicial. Para usar a funcionalidade antiga com um determinado reconhecedor de gesto de arrastar, a variável dragStartBehavior do reconhecedor deve ser definida como DragStartBehavior.down, por exemplo, inclua a linha em negrito abaixo ao declarar seu GestureDecorator:
 
 ```dart
 GestureDectector(
@@ -225,12 +226,12 @@ GestureDectector(
 
 ### [#26238](https://github.com/flutter/flutter/pull/26238) Remove long-deprecated TwoLevelList
 
-Removed the long-deprecated TwoLevelList widget; use ListView with ExpansionTile instead. See [this example](https://github.com/flutter/flutter/blob/v1.2.1/examples/catalog/lib/expansion_tile_sample.dart) for a sample that uses ExpansionTile.
+Removido o widget TwoLevelList há muito tempo obsoleto; use ListView com ExpansionTile ao invés. Veja [este exemplo](https://github.com/flutter/flutter/blob/v1.2.1/examples/catalog/lib/expansion_tile_sample.dart) para um exemplo que usa ExpansionTile.
 
 
 ###[#7442](https://github.com/flutter/engine/pull/7442) Move Picture.toImage rasterization to the GPU thread
 
-Picture.toImage now returns a `Future<Image>` instead. This permits image rasterization to occur on the GPU thread, improving performance in many cases and ensuring correct results. At a minimum, you'll need to declare methods invoking on Picture instances as async, and use await, like this:
+Picture.toImage agora retorna um `Future<Image>` ao invés. Isso permite que a rasterização de imagem ocorra na thread GPU, melhorando a performance em muitos casos e garantindo resultados corretos. No mínimo, você precisará declarar métodos que invocam instâncias Picture como async, e usar await, assim:
 
 ```dart
 void usePictureImage(Picture p) async {
@@ -239,45 +240,45 @@ void usePictureImage(Picture p) async {
 }
 ```
 
-However, your application may well be performing other asynchronous actions, and you should consider how you want to handle image processing in that light. For more on Dart's support for asynchronous programming and the Future class, see [https://www.dartlang.org/tutorials/language/futures.](https://www.dartlang.org/tutorials/language/futures)
+No entanto, sua aplicação pode muito bem estar executando outras ações assíncronas, e você deve considerar como deseja lidar com o processamento de imagem sob essa perspectiva. Para mais sobre o suporte do Dart para programação assíncrona e a classe Future, veja [https://www.dartlang.org/tutorials/language/futures.](https://www.dartlang.org/tutorials/language/futures)
 
 
 ### [#7567](https://github.com/flutter/engine/pull/7567) Rename FlutterResult in embedder.h
 
-In the Embedder API, the FlutterResult type has been renamed to FlutterEngineResult to better explain its purpose. You'll need to rename any instances of the former to the latter.
+Na API Embedder, o tipo FlutterResult foi renomeado para FlutterEngineResult para melhor explicar seu propósito. Você precisará renomear quaisquer instâncias do primeiro para o último.
 
 
 ### [#7414](https://github.com/flutter/engine/pull/7414) Strut implementation
 
-Rename dart:ui ParagraphStyle.lineHeight to ParagraphStyle.height. The ParagraphStyle.lineHeight property previously did not do anything and was renamed to stay consistent with TextStyle.height. You'll need to rename any instances of the former to the latter.
+Renomear dart:ui ParagraphStyle.lineHeight para ParagraphStyle.height. A propriedade ParagraphStyle.lineHeight anteriormente não fazia nada e foi renomeada para permanecer consistente com TextStyle.height. Você precisará renomear quaisquer instâncias do primeiro para o último.
 
 
 ## Regressions
 
-Soon after our 1.2 release, we found two regressions:
+Logo após nosso lançamento 1.2, encontramos duas regressões:
 
 
 * [#28640](https://github.com/flutter/flutter/issues/28640) NoSuchMethodError: android.view.MotionEvent.isFromSource
 
-[flutter/flutter#24830](https://github.com/flutter/flutter/pull/24830) ("Implement hover support for mouse pointers.") is using an Android API that doesn't exist on older devices. This can cause a crash on Android 4.1 (Jellybean) and 4.1 (Jellybean MR1).
+[flutter/flutter#24830](https://github.com/flutter/flutter/pull/24830) ("Implement hover support for mouse pointers.") está usando uma API Android que não existe em dispositivos mais antigos. Isso pode causar uma falha no Android 4.1 (Jellybean) e 4.1 (Jellybean MR1).
 
 
 * [#28484](https://github.com/flutter/flutter/issues/28484) Widget rendering strange since Flutter update
 
-This can cause rendering issues when loading certain images on physical iOS devices.
+Isso pode causar problemas de renderização ao carregar certas imagens em dispositivos iOS físicos.
 
-To get a fix for these regressions, once beta 1.3 lands in March,  you can switch to the beta channel and perform a "flutter upgrade" at the command line. At the time of this writing, that will update you to at least version 1.3.8, which includes [flutter/engine#8006](https://github.com/flutter/engine/pull/8006) ("Guard against using Android API not defined in API level 16 & 17") and the Skia commit that fixes the rendering issue. For the crashing issue, the two affected versions of Android are more than ten years old and represent at most 2.5% of Android users, few of which are likely to be installing new Android applications, whether they're Flutter or not. Even so, we hate to leave known regressions in a stable release, but after much internal debate, we decided it was the best way to proceed for Flutter developers and their app users.
+Para obter uma correção para essas regressões, uma vez que o beta 1.3 seja lançado em março, você pode mudar para o canal beta e executar um "flutter upgrade" na linha de comando. No momento da escrita, isso irá atualizá-lo para pelo menos a versão 1.3.8, que inclui [flutter/engine#8006](https://github.com/flutter/engine/pull/8006) ("Guard against using Android API not defined in API level 16 & 17") e o commit Skia que corrige o problema de renderização. Para o problema de falha, as duas versões afetadas do Android têm mais de dez anos e representam no máximo 2,5% dos usuários Android, poucos dos quais provavelmente estão instalando novos aplicativos Android, sejam eles Flutter ou não. Mesmo assim, odiamos deixar regressões conhecidas em um lançamento estável, mas após muito debate interno, decidimos que era a melhor maneira de proceder para desenvolvedores Flutter e seus usuários de app.
 
-Our ideal fix for any serious issue is to create a "hotfix" release by taking an existing release and "cherry picking" the fixes that we'd like to apply. The ability to hotfix an existing stable release is something that we implemented for 1.2 but have not quite gotten to production quality. The consequence of this is that if we had created a new stable "1.2.1-a" release with the fix for the regressions, we'd have stranded all of our users at that branch; updating to future branches would've required users to remove and reinstall Flutter from scratch, which was clearly unacceptable. We are working hard to validate our ability to hotfix in 1.3+ so that we don't have this problem again.
+Nossa correção ideal para qualquer problema sério é criar um lançamento "hotfix" pegando um lançamento existente e fazendo "cherry pick" das correções que gostaríamos de aplicar. A capacidade de fazer hotfix em um lançamento estável existente é algo que implementamos para 1.2 mas ainda não chegamos à qualidade de produção. A consequência disso é que se tivéssemos criado um novo lançamento estável "1.2.1-a" com a correção para as regressões, teríamos deixado todos os nossos usuários presos naquele branch; atualizar para branches futuros teria exigido que os usuários removessem e reinstalassem o Flutter do zero, o que era claramente inaceitável. Estamos trabalhando duro para validar nossa capacidade de fazer hotfix em 1.3+ para que não tenhamos esse problema novamente.
 
-Another option would have been to bring 1.3 to a stable release. Our current policy is to only bring out a new stable release once per quarter to reduce churn for Flutter developers. As of this writing, the pre-stable 1.3 release contains 104 framework commits (and even more engine, Dart, and Skia commits), any of which is a risk to how your current apps are running. To reduce that risk, we leave releases in beta for a month, let developers test them, and only promote releases to the stable channel when we're confident in them. That's how we maintain stability in the quarterly releases.
+Outra opção teria sido trazer o 1.3 para um lançamento estável. Nossa política atual é trazer um novo lançamento estável apenas uma vez por trimestre para reduzir a agitação para desenvolvedores Flutter. No momento da escrita, o lançamento pré-estável 1.3 contém 104 commits de framework (e ainda mais commits de motor, Dart e Skia), qualquer um dos quais é um risco para como seus apps atuais estão rodando. Para reduzir esse risco, deixamos lançamentos em beta por um mês, permitimos que desenvolvedores os testem, e apenas promovemos lançamentos para o canal estável quando estamos confiantes neles. É assim que mantemos estabilidade nos lançamentos trimestrais.
 
-Our next stable release is currently planned for May, 2019, which is the first stable release that will include the fix for this regression. If you are affected by [#28640](https://github.com/flutter/flutter/issues/28640) and feel like the workaround to use the pre-release 1.3 is not an option for you, please let us know by on [flutter/flutter#29235](https://github.com/flutter/flutter/issues/29235) itself. Similarly, if you are affected by [#28484](https://github.com/flutter/flutter/issues/28484), et us know on [flutter/flutter/#29360](https://github.com/flutter/flutter/issues/29360). If we find that there's a lot of feedback from the Flutter community that we made the wrong decision here, we'll use your feedback to reevaluate. Flutter is, after all, a community effort, and your opinions matter.
+Nosso próximo lançamento estável está atualmente planejado para maio de 2019, que é o primeiro lançamento estável que incluirá a correção para essa regressão. Se você for afetado por [#28640](https://github.com/flutter/flutter/issues/28640) e sentir que a solução alternativa de usar o pré-lançamento 1.3 não é uma opção para você, por favor nos informe em [flutter/flutter#29235](https://github.com/flutter/flutter/issues/29235). Da mesma forma, se você for afetado por [#28484](https://github.com/flutter/flutter/issues/28484), nos informe em [flutter/flutter/#29360](https://github.com/flutter/flutter/issues/29360). Se descobrirmos que há muito feedback da comunidade Flutter de que tomamos a decisão errada aqui, usaremos seu feedback para reavaliar. Flutter é, afinal de contas, um esforço da comunidade, e suas opiniões importam.
 
 
 ## Tooling Releases
 
-In addition to Flutter framework changes in the 1.2 release, we've made a number of tooling releases in the same timeframe, which you can read about here:
+Além das mudanças no framework Flutter no lançamento 1.2, fizemos vários lançamentos de ferramentas no mesmo período, sobre os quais você pode ler aqui:
 
 
 
@@ -287,6 +288,6 @@ In addition to Flutter framework changes in the 1.2 release, we've made a number
 
 ## Full Issue List
 
-You can see [the full list of PRs committed in this release](/release/release-notes/changelogs/changelog-1.2.1).
+Você pode ver [a lista completa de PRs commitados neste lançamento](/release/release-notes/changelogs/changelog-1.2.1).
 
 [Android App Bundles]: https://developer.android.com/guide/app-bundle/

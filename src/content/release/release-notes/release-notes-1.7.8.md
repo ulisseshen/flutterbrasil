@@ -1,39 +1,40 @@
 ---
-title: Flutter 1.7.8 release notes
-shortTitle: 1.7.8 release notes
-description: Release notes for Flutter 1.7.8.
+ia-translate: true
+title: Notas de lançamento do Flutter 1.7.8
+shortTitle: Notas de lançamento 1.7.8
+description: Notas de lançamento para Flutter 1.7.8.
 skipTemplateRendering: true
 ---
 
-The 1.7.8 release is a follow-on to the 1.5.4 stable release in May,
-providing 1289 merged PRs and closing 184 issues.
-The major themes of this release are:
+O lançamento 1.7.8 é uma continuação do lançamento estável 1.5.4 em maio,
+fornecendo 1289 PRs mesclados e fechando 184 issues.
+Os principais temas deste lançamento são:
 
-*   Support for 32-bit and 64-bit bundles on Android
-*   Large number of iOS features and fixes,
-    including improved text editing and localization
-*   [AndroidX support](https://github.com/flutter/flutter/pull/31028)
-    for new projects via the --androidx flag of 'flutter create'
-*   A new widget: the
+*   Suporte para pacotes de 32 bits e 64 bits no Android
+*   Grande número de recursos e correções para iOS,
+    incluindo edição de texto e localização aprimoradas
+*   [Suporte AndroidX](https://github.com/flutter/flutter/pull/31028)
+    para novos projetos através da flag --androidx do 'flutter create'
+*   Um novo widget: o
     [RangeSlider](https://api.flutter.dev/flutter/material/RangeSlider-class.html)
 
-As detailed in our
+Conforme detalhado em nosso
 [roadmap](https://github.com/flutter/flutter/blob/master/docs/roadmap/Roadmap.md),
-we're also continuing the ongoing work in the Flutter engine
-and framework to support turning on web and desktop targets;
-however, this is not yet ready for general usage.
+também estamos continuando o trabalho em andamento no engine Flutter
+e framework para suportar a ativação de targets web e desktop;
+no entanto, isso ainda não está pronto para uso geral.
 
 
-## Support for 32-bit and 64-bit Android Bundles
+## Suporte para pacotes Android de 32 bits e 64 bits
 
-From August 1st, 2019, Android apps that use native code and target Android 9 Pie will[ be required to provide a 64-bit version](https://android-developers.googleblog.com/2019/01/get-your-apps-ready-for-64-bit.html) in addition to the 32-bit version when publishing to the Google Play Store. Since all Flutter apps include native code, this requirement will affect new Flutter apps submitted to the store, as well as updates to existing Flutter apps. This does not affect existing app versions published to the store.
+A partir de 1º de agosto de 2019, apps Android que usam código nativo e têm como alvo Android 9 Pie [serão obrigados a fornecer uma versão de 64 bits](https://android-developers.googleblog.com/2019/01/get-your-apps-ready-for-64-bit.html) além da versão de 32 bits ao publicar na Google Play Store. Como todos os apps Flutter incluem código nativo, este requisito afetará novos apps Flutter enviados à loja, bem como atualizações de apps Flutter existentes. Isso não afeta as versões de apps existentes publicadas na loja.
 
-This release includes support for building app bundles and APKs that support both 32-bit and 64-bit binaries, completing our work on [https://github.com/flutter/flutter/issues/31922](https://github.com/flutter/flutter/issues/31922). By using this release when building an Android application, your App Bundle or APK now supports both 32-bit and 64-bit CPU architectures by default.
+Este lançamento inclui suporte para construir app bundles e APKs que suportam binários de 32 bits e 64 bits, completando nosso trabalho em [https://github.com/flutter/flutter/issues/31922](https://github.com/flutter/flutter/issues/31922). Ao usar este lançamento ao construir uma aplicação Android, seu App Bundle ou APK agora suporta arquiteturas de CPU de 32 bits e 64 bits por padrão.
 
 
-## Breaking Changes
+## Mudanças que quebram compatibilidade
 
-The following are the list of breaking changes in this release along with descriptions of each change and how to handle it in your Flutter code.
+A seguir está a lista de mudanças que quebram compatibilidade neste lançamento, juntamente com descrições de cada mudança e como lidar com ela em seu código Flutter.
 
 *   [#29188](https://github.com/flutter/flutter/pull/29188) Fix 25807: implement move in sliver multibox widget
 *   [#29683](https://github.com/flutter/flutter/pull/29683) [Show/hide toolbar and handles based on device kind](https://groups.google.com/d/msgid/flutter-announce/CAAzQ467mb_7ZC4-djDeWLiYEmAH815-R5eums2cWmo2ND%3Dz%3DOw%40mail.gmail.com.)
@@ -53,9 +54,9 @@ The following are the list of breaking changes in this release along with descri
 *   [#33946](https://github.com/flutter/flutter/pull/33946) Reland "Text inline widgets, TextSpan rework"
 
 
-## Severe Crash Changes
+## Mudanças em crashes severos
 
-We've also fixed several crashing issues in this release.
+Também corrigimos vários problemas de crash neste lançamento.
 
 *   [#31228](https://github.com/flutter/flutter/pull/31228) Fix ExpansionPanelList Duplicate Global Keys Exception
 *   [#31581](https://github.com/flutter/flutter/pull/31581) Fix Exception on Nested TabBarView disposal
@@ -64,7 +65,7 @@ We've also fixed several crashing issues in this release.
 
 ## iOS
 
-We continue to focus heavily on the iOS support in Flutter, including enhanced text editing and localization in this release.
+Continuamos a focar fortemente no suporte iOS no Flutter, incluindo edição de texto e localização aprimoradas neste lançamento.
 
 *   [#29809](https://github.com/flutter/flutter/pull/29809) Fix text selection toolbar appearing under obstructions
 *   [#29824](https://github.com/flutter/flutter/pull/29824) Cupertino localization step 8: create a gen_cupertino_localizations and generate one for cupertino english and french
@@ -101,7 +102,7 @@ We continue to focus heavily on the iOS support in Flutter, including enhanced t
 
 ## Android
 
-In this release, we've improved support for Android with new support for AndroidX from an external contributor (Thanks, [Josh](https://github.com/athornz)!) and supporting 64-bit and 32-bit APK bundles in compliance with [the Google Play Store's updated policy](https://developer.android.com/distribute/best-practices/develop/64-bit).
+Neste lançamento, melhoramos o suporte para Android com novo suporte para AndroidX de um contribuidor externo (Obrigado, [Josh](https://github.com/athornz)!) e suporte para pacotes APK de 64 bits e 32 bits em conformidade com [a política atualizada da Google Play Store](https://developer.android.com/distribute/best-practices/develop/64-bit).
 
 
 
@@ -122,7 +123,7 @@ In this release, we've improved support for Android with new support for Android
 
 ## Material
 
-This release includes a number of improvements to existing Material components, including the DatePicker, SnackBar and TimePicker, as well as a new component: the [RangeSlider](https://api.flutter.dev/flutter/material/RangeSlider-class.html).
+Este lançamento inclui uma série de melhorias para componentes Material existentes, incluindo o DatePicker, SnackBar e TimePicker, bem como um novo componente: o [RangeSlider](https://api.flutter.dev/flutter/material/RangeSlider-class.html).
 
 
 
@@ -153,11 +154,11 @@ This release includes a number of improvements to existing Material components, 
 
 ## Web
 
-The work on web functionality continues with merging of the code from the flutter_web repo
-into the main flutter repo, providing a simpler developer experience for this pre-release
-technology. We've already
-[compiled many of the existing Flutter samples for web]({{site.github}}/flutter/samples/).
-Enjoy!
+O trabalho na funcionalidade web continua com a mesclagem do código do repositório flutter_web
+no repositório principal do flutter, fornecendo uma experiência de desenvolvedor mais simples para esta
+tecnologia de pré-lançamento. Já
+[compilamos muitos dos exemplos Flutter existentes para web]({{site.github}}/flutter/samples/).
+Aproveite!
 
 
 
@@ -181,7 +182,7 @@ Enjoy!
 
 ## Desktop
 
-The experimental support for desktop in Flutter continues as well, with many improvements to the basics needed on desktop like hover, focus traversal, shortcuts, actions and even game controllers! We've also continued to simplify the developer experience, which you can read about [here](http://github.com/google/flutter-desktop-embedding). This is very early, but if you are trying desktop support in Flutter, please [log issues](https://github.com/google/flutter-desktop-embedding/issues) when you find them!
+O suporte experimental para desktop no Flutter também continua, com muitas melhorias nas funcionalidades básicas necessárias no desktop como hover, travessia de foco, atalhos, ações e até controladores de jogo! Também continuamos a simplificar a experiência do desenvolvedor, sobre a qual você pode ler [aqui](http://github.com/google/flutter-desktop-embedding). Isso está muito no início, mas se você está testando o suporte desktop no Flutter, por favor [registre issues](https://github.com/google/flutter-desktop-embedding/issues) quando encontrá-las!
 
 
 
@@ -222,9 +223,9 @@ The experimental support for desktop in Flutter continues as well, with many imp
 *   [#34755](https://github.com/flutter/flutter/pull/34755) Add linux doctor implementation
 
 
-## Animation, Scrolling & Images
+## Animação, Rolagem e Imagens
 
-In this release, we continue to polish animations, scrolling and image support.
+Neste lançamento, continuamos a aprimorar animações, rolagem e suporte a imagens.
 
 
 
@@ -241,9 +242,9 @@ In this release, we continue to polish animations, scrolling and image support.
 *   [#33369](https://github.com/flutter/flutter/pull/33369) Add loading support to Image
 
 
-## Typography & Accessibility
+## Tipografia e Acessibilidade
 
-We're also continuing to push towards excellent typography and accessibility, including support for accessing OpenType font-specific features, as demonstrated in [this sample](https://github.com/timsneath/typography).
+Também estamos continuando a impulsionar a excelência em tipografia e acessibilidade, incluindo suporte para acessar recursos específicos de fontes OpenType, como demonstrado [neste exemplo](https://github.com/timsneath/typography).
 
 
 
@@ -254,9 +255,9 @@ We're also continuing to push towards excellent typography and accessibility, in
 *   [#34434](https://github.com/flutter/flutter/pull/34434) Semantics fixes
 
 
-## Fundamentals
+## Fundamentos
 
-As always, we continue to polish the fundamentals.
+Como sempre, continuamos a aprimorar os fundamentos.
 
 
 
@@ -318,9 +319,9 @@ As always, we continue to polish the fundamentals.
 *   [#33628](https://github.com/flutter/flutter/pull/33628) DataTable Custom Horizontal Padding
 
 
-## Tooling
+## Ferramentas
 
-Last but not least, we continue to polish and simplify our tooling as well, including providing a much clearer error message when the flutter tooling finds itself in a read-only directory (a common problem for Flutter developers that we're hoping this helps address).
+Por último, mas não menos importante, continuamos a aprimorar e simplificar nossas ferramentas também, incluindo fornecer uma mensagem de erro muito mais clara quando as ferramentas flutter se encontram em um diretório somente leitura (um problema comum para desenvolvedores Flutter que esperamos que isso ajude a resolver).
 
 
 
@@ -362,6 +363,6 @@ Last but not least, we continue to polish and simplify our tooling as well, incl
 *   [#33283](https://github.com/flutter/flutter/pull/33283) Fix relative paths and snapshot logic in tool
 
 
-## Full Issue List
+## Lista completa de issues
 
-You can see the full list of issues addressed in this release [here](/release/release-notes/changelogs/changelog-1.7.8).
+Você pode ver a lista completa de issues tratadas neste lançamento [aqui](/release/release-notes/changelogs/changelog-1.7.8).

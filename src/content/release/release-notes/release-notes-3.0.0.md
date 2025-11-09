@@ -1,56 +1,57 @@
 ---
-title: Flutter 3.0.0 release notes
-shortTitle: 3.0.0 release notes
-description: Release notes for Flutter 3.0.0.
+ia-translate: true
+title: Notas de lançamento do Flutter 3.0.0
+shortTitle: Notas de lançamento 3.0.0
+description: Notas de lançamento do Flutter 3.0.0.
 skipTemplateRendering: true
 ---
 
-This page has release notes for 3.0.0.
-For information about subsequent bug-fix releases,
-see our [CHANGELOG][].
+Esta página contém as notas de lançamento da versão 3.0.0.
+Para informações sobre correções de bugs subsequentes,
+consulte nosso [CHANGELOG][CHANGELOG].
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/main/CHANGELOG.md
 
-## If you see warnings about bindings
+## Se você ver avisos sobre bindings
 
-When migrating to Flutter 3,
-you might see warnings like the following:
+Ao migrar para o Flutter 3,
+você pode ver avisos como o seguinte:
 
 ```plaintext
 Warning: Operand of null-aware operation '!' has type 'SchedulerBinding' which excludes null.
 ```
 
-These are caused by a simplification of the API
-(the `instance` property on bindings is now non-nullable),
-combined with an eager compiler that wants to report
-any case where redundant null-aware operators
-(such as `!` and `?.`) that are used when
-they're not necessary.
+Estes são causados por uma simplificação da API
+(a propriedade `instance` em bindings agora é non-nullable),
+combinada com um compilador rigoroso que deseja reportar
+qualquer caso onde operadores null-aware redundantes
+(como `!` e `?.`) são usados quando
+não são necessários.
 
-If this happens,
-there might be several causes with different solutions:
+Se isso acontecer,
+pode haver várias causas com diferentes soluções:
 
 ### Dependencies
 
-If your dependencies use bindings,
-they might need updating to silence the warnings.
-Your builds should be unaffected except for
-the verbose warnings.
-You can ignore the warnings for now
-(maybe reach out to your dependency's
-developers to convince them to update).
+Se suas dependencies usam bindings,
+elas podem precisar de atualização para silenciar os avisos.
+Seus builds não devem ser afetados exceto pelos
+avisos verbosos.
+Você pode ignorar os avisos por enquanto
+(talvez entre em contato com os
+desenvolvedores da sua dependency para convencê-los a atualizar).
 
-### Your code
+### Seu código
 
-If the problem refers to your own code,
-you can update it by running `dart fix --apply`.
-This should resolve all the warnings.
+Se o problema se refere ao seu próprio código,
+você pode atualizá-lo executando `dart fix --apply`.
+Isso deve resolver todos os avisos.
 
-If you need your code to support both
-Flutter 3 and earlier versions
-(maybe because your code is a library),
-then you can wrap calls to `binding.instance`
-with calls to a method such as the following:
+Se você precisa que seu código suporte tanto
+Flutter 3 quanto versões anteriores
+(talvez porque seu código seja uma library),
+então você pode envolver chamadas para `binding.instance`
+com chamadas para um método como o seguinte:
 
 ```dart
 /// This allows a value of type T or T?
@@ -62,37 +63,37 @@ with calls to a method such as the following:
 T? _ambiguate<T>(T? value) => value;
 ```
 
-For example, instead of the following:
+Por exemplo, ao invés do seguinte:
 
 ```dart
 SchedulerBinding.instance!.addPostFrameCallback(...);
 ```
 
-You can use:
+Você pode usar:
 
 ```dart
 _ambiguate(SchedulerBinding.instance)!.addPostFrameCallback(...);
 ```
 
-When you no longer need to support versions of
-Flutter before 3.0.0, you can remove this and
-replace it with the following:
+Quando você não precisar mais suportar versões do
+Flutter anteriores a 3.0.0, você pode remover isso e
+substituir pelo seguinte:
 
 ```dart
 SchedulerBinding.instance.addPostFrameCallback(...);
 ```
 
-### Framework issues
+### Problemas do framework
 
-If the error messages do not point to one of your dependencies,
-and `dart fix --apply` doesn't fix the issue,
-or if the warnings are fatal
-(for example, your application refuses to run), please
-[file a bug]({{site.repo.flutter}}/issues/new/choose).
+Se as mensagens de erro não apontam para uma de suas dependencies,
+e `dart fix --apply` não corrige o problema,
+ou se os avisos são fatais
+(por exemplo, sua aplicação se recusa a executar), por favor
+[relate um bug]({{site.repo.flutter}}/issues/new/choose).
 
-## What's Changed
+## O que mudou
 
-The following changes happened in this release:
+As seguintes mudanças aconteceram neste lançamento:
 
 ### Framework
 
@@ -458,7 +459,7 @@ The following changes happened in this release:
 * [flutter_releases] Flutter beta 2.13.0-0.2.pre Framework Cherrypicks by @CaseyHillers in https://github.com/flutter/flutter/pull/102193
 * [flutter_releases] Upgrade dwds to 12.1.1 by @christopherfujino in https://github.com/flutter/flutter/pull/101546
 
-### Tooling
+### Ferramentas
 
 * FFI plugin by @dcharkes in https://github.com/flutter/flutter/pull/94101
 * Revert "FFI plugin" by @zanderso in https://github.com/flutter/flutter/pull/96122
@@ -619,9 +620,9 @@ The following changes happened in this release:
 
 * [macOS] Add run release test in devicelab by @cbracken in https://github.com/flutter/flutter/pull/100526
 
-## New Contributors
+## Novos Contribuidores
 
-Thanks to the following contributors in this release:
+Agradecimentos aos seguintes contribuidores neste lançamento:
 
 * @willlockwood made their first contribution in https://github.com/flutter/flutter/pull/95537
 * @utibeabasi6 made their first contribution in https://github.com/flutter/flutter/pull/96058

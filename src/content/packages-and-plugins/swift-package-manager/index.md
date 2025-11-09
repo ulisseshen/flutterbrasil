@@ -1,6 +1,7 @@
 ---
+ia-translate: true
 layout: toc
-title: Swift Package Manager for Flutter
+title: Swift Package Manager para Flutter
 description: >
-  Content covering Flutter's integration with Swift Package Manager
+  Conteúdo sobre a integração do Flutter com Swift Package Manager
 ---

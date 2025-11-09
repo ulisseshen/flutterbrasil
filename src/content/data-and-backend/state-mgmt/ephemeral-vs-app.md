@@ -1,6 +1,7 @@
 ---
-title: Differentiate between ephemeral state and app state
-description: How to tell the difference between ephemeral and app state.
+ia-translate: true
+title: Diferencie entre estado efêmero e estado do app
+description: Como distinguir entre estado efêmero e estado do app.
 prev:
   title: Start thinking declaratively
   path: /data-and-backend/state-mgmt/declarative
@@ -9,43 +10,43 @@ next:
   path: /data-and-backend/state-mgmt/simple
 ---
 
-_This doc introduces app state, ephemeral state,
-and how you might manage each in a Flutter app._
+_Este documento introduz estado do app, estado efêmero,
+e como você pode gerenciar cada um em um app Flutter._
 
-In the broadest possible sense, the state of an app is everything that
-exists in memory when the app is running. This includes the app's assets,
-all the variables that the Flutter framework keeps about the UI,
-animation state, textures, fonts, and so on. While this broadest
-possible definition of state is valid, it's not very useful for
-architecting an app.
+No sentido mais amplo possível, o estado de um app é tudo que
+existe na memória quando o app está executando. Isso inclui os assets do app,
+todas as variáveis que o framework Flutter mantém sobre a UI,
+estado de animação, texturas, fontes e assim por diante. Embora esta definição
+mais ampla possível de estado seja válida, ela não é muito útil para
+arquitetar um app.
 
-First, you don't even manage some state (like textures).
-The framework handles those for you. So a more useful definition of
-state is "whatever data you need in order to rebuild your UI at any
-moment in time". Second, the state that you _do_ manage yourself can
-be separated into two conceptual types: ephemeral state and app state.
+Primeiro, você nem mesmo gerencia algum estado (como texturas).
+O framework cuida disso para você. Então uma definição mais útil de
+estado é "quaisquer dados que você precisa para reconstruir sua UI em qualquer
+momento no tempo". Segundo, o estado que você _de fato_ gerencia você mesmo pode
+ser separado em dois tipos conceituais: estado efêmero e estado do app.
 
-## Ephemeral state
+## Estado efêmero
 
-Ephemeral state (sometimes called _UI state_ or _local state_)
-is the state you can neatly contain in a single widget.
+Estado efêmero (às vezes chamado de _estado da UI_ ou _estado local_)
+é o estado que você pode conter claramente em um único widget.
 
-This is, intentionally, a vague definition, so here are a few examples.
+Esta é, intencionalmente, uma definição vaga, então aqui estão alguns exemplos.
 
-* current page in a [`PageView`][]
-* current progress of a complex animation
-* current selected tab in a `BottomNavigationBar`
+* página atual em um [`PageView`][]
+* progresso atual de uma animação complexa
+* aba selecionada atualmente em um `BottomNavigationBar`
 
-Other parts of the widget tree seldom need to access this kind of state.
-There is no need to serialize it, and it doesn't change in complex ways.
+Outras partes da árvore de widgets raramente precisam acessar este tipo de estado.
+Não há necessidade de serializá-lo, e ele não muda de formas complexas.
 
-In other words, there is no need to use state management techniques
-(ScopedModel, Redux, etc.) on this kind of state.
-All you need is a `StatefulWidget`.
+Em outras palavras, não há necessidade de usar técnicas de gerenciamento de estado
+(ScopedModel, Redux, etc.) neste tipo de estado.
+Tudo que você precisa é um `StatefulWidget`.
 
-Below, you see how the currently selected item in a bottom navigation bar is
-held in the `_index` field of the `_MyHomepageState` class.
-In this example, `_index` is ephemeral state.
+Abaixo, você vê como o item selecionado atualmente em uma barra de navegação inferior é
+mantido no campo `_index` da classe `_MyHomepageState`.
+Neste exemplo, `_index` é estado efêmero.
 
 <?code-excerpt "state_mgmt/simple/lib/src/set_state.dart (ephemeral)" plaster="// ... items ..."?>
 ```dart
@@ -74,53 +75,53 @@ class _MyHomepageState extends State<MyHomepage> {
 }
 ```
 
-Here, using `setState()` and a field inside the StatefulWidget's State
-class is completely natural. No other part of your app needs to access
-`_index`. The variable only changes inside the `MyHomepage` widget.
-And, if the user closes and restarts the app,
-you don't mind that `_index` resets to zero.
+Aqui, usar `setState()` e um campo dentro da classe State do StatefulWidget
+é completamente natural. Nenhuma outra parte do seu app precisa acessar
+`_index`. A variável só muda dentro do widget `MyHomepage`.
+E, se o usuário fechar e reiniciar o app,
+você não se importa que `_index` reinicie para zero.
 
-## App state
+## Estado do app
 
-State that is not ephemeral,
-that you want to share across many parts of your app,
-and that you want to keep between user sessions,
-is what we call application state
-(sometimes also called shared state).
+Estado que não é efêmero,
+que você quer compartilhar entre muitas partes do seu app,
+e que você quer manter entre sessões de usuário,
+é o que chamamos de estado da aplicação
+(às vezes também chamado de estado compartilhado).
 
-Examples of application state:
+Exemplos de estado da aplicação:
 
-* User preferences
-* Login info
-* Notifications in a social networking app
-* The shopping cart in an e-commerce app
-* Read/unread state of articles in a news app
+* Preferências do usuário
+* Informações de login
+* Notificações em um app de rede social
+* O carrinho de compras em um app de e-commerce
+* Estado lido/não lido de artigos em um app de notícias
 
-For managing app state, you'll want to research your options.
-Your choice depends on the complexity and nature of your app,
-your team's previous experience, and many other aspects. Read on.
+Para gerenciar o estado do app, você vai querer pesquisar suas opções.
+Sua escolha depende da complexidade e natureza do seu app,
+da experiência prévia da sua equipe e muitos outros aspectos. Continue lendo.
 
-## There is no clear-cut rule
+## Não há uma regra clara
 
-To be clear, you _can_ use `State` and `setState()` to manage all of
-the state in your app. In fact, the Flutter team does this in many
-simple app samples (including the starter app that you get with every
+Para ser claro, você _pode_ usar `State` e `setState()` para gerenciar todo o
+estado no seu app. De fato, o time Flutter faz isso em muitas
+amostras de apps simples (incluindo o app inicial que você obtém com cada
 `flutter create`).
 
-It goes the other way, too. For example, you might decide that&mdash;in
-the context of your particular app&mdash;the selected tab in a bottom
-navigation bar is _not_ ephemeral state. You might need to change it
-from outside the class, keep it between sessions, and so on.
-In that case, the `_index` variable is app state.
+Isso também funciona ao contrário. Por exemplo, você pode decidir que&mdash;no
+contexto do seu app particular&mdash;a aba selecionada em uma barra de
+navegação inferior _não_ é estado efêmero. Você pode precisar mudá-la
+de fora da classe, mantê-la entre sessões, e assim por diante.
+Nesse caso, a variável `_index` é estado do app.
 
-There is no clear-cut, universal rule to distinguish
-whether a particular variable is ephemeral or app state.
-Sometimes, you'll have to refactor one into another.
-For example, you'll start with some clearly ephemeral state,
-but as your application grows in features,
-it might need to be moved to app state.
+Não há uma regra universal e clara para distinguir
+se uma variável particular é estado efêmero ou estado do app.
+Às vezes, você terá que refatorar um no outro.
+Por exemplo, você começará com algum estado claramente efêmero,
+mas à medida que sua aplicação cresce em funcionalidades,
+ele pode precisar ser movido para estado do app.
 
-For that reason, take the following diagram with a large grain of salt:
+Por essa razão, considere o seguinte diagrama com cautela:
 
 <img src='/assets/images/docs/development/data-and-backend/state-mgmt/ephemeral-vs-app-state.png' width="100%" class="diagram-wrap" alt="A flow chart. Start with 'Data'. 'Who needs it?'. Three options: 'Most widgets', 'Some widgets' and 'Single widget'. The first two options both lead to 'App state'. The 'Single widget' option leads to 'Ephemeral state'.">
 
@@ -128,16 +129,16 @@ For that reason, take the following diagram with a large grain of salt:
 Source drawing for the png above: : https://docs.google.com/drawings/d/1p5Bvuagin9DZH8bNrpGfpQQvKwLartYhIvD0WKGa64k/edit?usp=sharing
 {% endcomment %}
 
-When asked about React's setState versus Redux's store, the author of Redux,
-Dan Abramov, replied:
+Quando perguntado sobre setState do React versus store do Redux, o autor do Redux,
+Dan Abramov, respondeu:
 
-> "The rule of thumb is: [Do whatever is less awkward][]."
+> "A regra prática é: [Faça o que for menos estranho][Do whatever is less awkward]."
 
-In summary, there are two conceptual types of state in any Flutter app.
-Ephemeral state can be implemented using `State` and `setState()`,
-and is often local to a single widget. The rest is your app state.
-Both types have their place in any Flutter app, and the split between
-the two depends on your own preference and the complexity of the app.
+Em resumo, há dois tipos conceituais de estado em qualquer app Flutter.
+Estado efêmero pode ser implementado usando `State` e `setState()`,
+e é frequentemente local a um único widget. O resto é o estado do seu app.
+Ambos os tipos têm seu lugar em qualquer app Flutter, e a divisão entre
+os dois depende da sua própria preferência e da complexidade do app.
 
 [Do whatever is less awkward]: {{site.github}}/reduxjs/redux/issues/1287#issuecomment-175351978
 [`PageView`]: {{site.api}}/flutter/widgets/PageView-class.html

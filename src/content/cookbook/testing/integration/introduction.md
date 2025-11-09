@@ -1,56 +1,57 @@
 ---
-title: Integration testing concepts
-description: Learn about integration testing in Flutter.
-shortTitle: Introduction
+ia-translate: true
+title: Conceitos de testes de integração
+description: Aprenda sobre testes de integração no Flutter.
+shortTitle: Introdução
 ---
 
 <?code-excerpt path-base="cookbook/testing/integration/introduction/"?>
 
-Unit tests and widget tests validate individual classes,
-functions, or widgets.
-They don't validate how individual pieces work
-together in whole or capture the performance
-of an app running on a real device.
-To perform these tasks, use *integration tests*.
+Testes unitários e testes de widget validam classes individuais,
+funções ou widgets.
+Eles não validam como peças individuais funcionam
+juntas em um todo ou capturam a performance
+de um app rodando em um dispositivo real.
+Para executar essas tarefas, use *testes de integração*.
 
-Integration tests verify the behavior of the complete app.
-This test can also be called end-to-end testing or GUI testing.
+Testes de integração verificam o comportamento do app completo.
+Este teste também pode ser chamado de teste end-to-end ou teste de GUI.
 
-The Flutter SDK includes the [integration_test][] package.
+O Flutter SDK inclui o pacote [integration_test][integration_test].
 
-## Terminology
+## Terminologia
 
 **host machine**
-: The system on which you develop your app, like a desktop computer.
+: O sistema no qual você desenvolve seu app, como um computador desktop.
 
 **target device**
-: The mobile device, browser, or desktop application that
-  runs your Flutter app.
+: O dispositivo móvel, navegador ou aplicação desktop que
+  executa seu app Flutter.
 
-  If you run your app in a web browser or as a desktop application,
-  the host machine and the target device are the same.
+  Se você executa seu app em um navegador web ou como uma aplicação desktop,
+  a host machine e o target device são os mesmos.
 
-## Dependent package
+## Pacote dependente
 
-To run integration tests, add the `integration_test` package
-as a dependency for your Flutter app test file.
+Para executar testes de integração, adicione o pacote `integration_test`
+como uma dependência para seu arquivo de teste do app Flutter.
 
-To migrate existing projects that use `flutter_driver`,
-consult the [Migrating from flutter_driver][] guide.
+Para migrar projetos existentes que usam `flutter_driver`,
+consulte o guia [Migrating from flutter_driver][Migrating from flutter_driver].
 
-Tests written with the `integration_test` package
-can perform the following tasks.
+Testes escritos com o pacote `integration_test`
+podem executar as seguintes tarefas.
 
-* Run on the target device.
-  To test multiple Android or iOS devices, use Firebase Test Lab.
-* Run from the host machine with `flutter test integration_test`.
-* Use `flutter_test` APIs. This makes integration tests
-  similar to writing [widget tests][].
+* Executar no target device.
+  Para testar múltiplos dispositivos Android ou iOS, use Firebase Test Lab.
+* Executar a partir da host machine com `flutter test integration_test`.
+* Usar APIs do `flutter_test`. Isso torna os testes de integração
+  similares a escrever [widget tests][widget tests].
 
-## Use cases for integration testing
+## Casos de uso para testes de integração
 
-The other guides in this section explain how to use integration tests to validate
-[functionality][] and [performance][].
+Os outros guias nesta seção explicam como usar testes de integração para validar
+[funcionalidade][functionality] e [performance][performance].
 
 [functionality]: /testing/integration-tests/
 [performance]: /cookbook/testing/integration/profiling/

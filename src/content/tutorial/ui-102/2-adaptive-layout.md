@@ -1,27 +1,28 @@
 ---
-title: LayoutBuilder and adaptive layouts
-description: Learn how to use the LayoutBuilder widget
+ia-translate: true
+title: LayoutBuilder e layouts adaptativos
+description: Aprenda como usar o widget LayoutBuilder
 permalink: /tutorial/adaptive-layouts/
 sitemap: false
 ---
 
-Modern apps need to work well on screens of all sizes. On this page,
-you'll learn how to create layouts that adapt to different screen
-widths. This app shows a sidebar on large screens and a
-navigation-based UI on small screens. Specifically, this app handles
-two screen sizes:
+Apps modernos precisam funcionar bem em telas de todos os tamanhos. Nesta página,
+você aprenderá como criar layouts que se adaptam a diferentes larguras
+de tela. Este app mostra uma barra lateral em telas grandes e uma
+UI baseada em navegação em telas pequenas. Especificamente, este app lida com
+dois tamanhos de tela:
 
-* **Large screens (tablets, desktop)**: Shows contact groups and
-  contact details side-by-side.
-* **Small screens (phones)**: Uses navigation to move between contact
-  groups and details.
+* **Telas grandes (tablets, desktop)**: Mostra grupos de contatos e
+  detalhes de contatos lado a lado.
+* **Telas pequenas (telefones)**: Usa navegação para alternar entre grupos
+  de contatos e detalhes.
 
-## Create the contact groups page
+## Crie a página de grupos de contatos
 
-First, create the basic structure of the `ContactGroupsPage` widget
-for your contact groups screen. Create
-`lib/screens/contact_groups.dart` and add the following basic
-structure:
+Primeiro, crie a estrutura básica do widget `ContactGroupsPage`
+para sua tela de grupos de contatos. Crie
+`lib/screens/contact_groups.dart` e adicione a seguinte estrutura
+básica:
 
 ```dart
 import 'package:flutter/cupertino.dart';
@@ -41,10 +42,10 @@ class ContactGroupsPage extends StatelessWidget {
 }
 ```
 
-## Create the contacts page
+## Crie a página de contatos
 
-Similarly, create `lib/screens/contacts.dart` to eventually display
-individual contacts:
+Similarmente, crie `lib/screens/contacts.dart` para eventualmente exibir
+contatos individuais:
 
 ```dart
 import 'package:flutter/cupertino.dart';
@@ -66,14 +67,14 @@ class ContactListsPage extends StatelessWidget {
 }
 ```
 
-The `ContaactsListPage` widget and `ContactGroupsPage` widget are
-placeholder pages that are needed to implement the adaptive layout
-widget, which you'll do next.
+Os widgets `ContaactsListPage` e `ContactGroupsPage` são
+páginas placeholder que são necessárias para implementar o widget de layout adaptativo,
+o que você fará a seguir.
 
-## Build the adaptive layout foundation
+## Construa a base do layout adaptativo
 
-Create `lib/screens/adaptive_layout.dart`
-and start with the following basic structure:
+Crie `lib/screens/adaptive_layout.dart`
+e comece com a seguinte estrutura básica:
 
 ```dart
 import 'package:flutter/cupertino.dart';
@@ -96,10 +97,10 @@ class _AdaptiveLayoutState extends State<AdaptiveLayout> {
 
 ```
 
-This is a `StatefulWidget` because the adaptive layout eventually
-manages which contact group is currently selected.
+Este é um `StatefulWidget` porque o layout adaptativo eventualmente
+gerencia qual grupo de contatos está atualmente selecionado.
 
-Next, add the screen size detection logic:
+Em seguida, adicione a lógica de detecção de tamanho de tela:
 
 ```dart
 import 'package:flutter/cupertino.dart';
@@ -134,20 +135,20 @@ class _AdaptiveLayoutState extends State<AdaptiveLayout> {
 }
 ```
 
-The `LayoutBuilder` widget provides information about the parent's
-size constraints. In the `builder` callback, you receive a
-`BoxConstraints` object that tells you the maximum available width and
-height.
+O widget `LayoutBuilder` fornece informações sobre as
+restrições de tamanho do pai. No callback `builder`, você recebe um
+objeto `BoxConstraints` que informa a largura e altura
+máximas disponíveis.
 
-By checking if `constraints.maxWidth > largeScreenMinWidth`, you can
-decide which layout to show. The 600-pixel threshold is a common
-breakpoint that separates phone-sized screens from tablet-sized
-screens.
+Ao verificar se `constraints.maxWidth > largeScreenMinWidth`, você pode
+decidir qual layout mostrar. O limite de 600 pixels é um
+breakpoint comum que separa telas de tamanho de telefone de telas
+de tamanho de tablet.
 
-## Update the main app
+## Atualize o app principal
 
-Update `main.dart` to use the adaptive layout, so you can see
-your changes.
+Atualize `main.dart` para usar o layout adaptativo, para que você possa ver
+suas mudanças.
 
 ```dart
 import 'package:flutter/cupertino.dart';
@@ -179,13 +180,13 @@ class RolodexApp extends StatelessWidget {
 }
 ```
 
-If you're running in Chrome, you can resize the browser window to see
-layout changes.
+Se você está executando no Chrome, você pode redimensionar a janela do navegador para ver
+as mudanças de layout.
 
-## Add list selection functionality
+## Adicione funcionalidade de seleção de lista
 
-The large screen layout needs to track which contact group is
-selected. Update the state object with the following code:
+O layout de tela grande precisa rastrear qual grupo de contatos está
+selecionado. Atualize o objeto de estado com o seguinte código:
 
 ```dart
 import 'package:flutter/cupertino.dart';
@@ -230,15 +231,15 @@ class _AdaptiveLayoutState extends State<AdaptiveLayout> {
 }
 ```
 
-The `selectedListId` variable tracks the currently selected contact group,
-and `_onContactListSelected` updates this value when the
-user makes a selection.
+A variável `selectedListId` rastreia o grupo de contatos atualmente selecionado,
+e `_onContactListSelected` atualiza esse valor quando o
+usuário faz uma seleção.
 
-## Build the large screen layout
+## Construa o layout de tela grande
 
-Now, implement the side-by-side layout for large screens. First,
-replace the temporary text with a widget that contains the proper
-layout.
+Agora, implemente o layout lado a lado para telas grandes. Primeiro,
+substitua o texto temporário por um widget que contém o layout
+adequado.
 
 ```dart
 import 'package:flutter/cupertino.dart';
@@ -299,11 +300,11 @@ class _AdaptiveLayoutState extends State<AdaptiveLayout> {
 
 ```
 
-The large screen layout uses a `Row` to place the sidebar and details
-side-by-side. `SafeArea` ensures that the content doesn't overlap with
-system UI elements like the status bar.
+O layout de tela grande usa um `Row` para colocar a barra lateral e os detalhes
+lado a lado. `SafeArea` garante que o conteúdo não sobreponha
+elementos da UI do sistema como a barra de status.
 
-Now, set the sizes of the two panels and add a visual divider:
+Agora, defina os tamanhos dos dois painéis e adicione um divisor visual:
 
 ```dart
 Widget _buildLargeScreenLayout() {
@@ -333,23 +334,23 @@ Widget _buildLargeScreenLayout() {
 }
 ```
 
-This layout creates the following:
-* A fixed-width sidebar (320 pixels) for contact groups.
-* A 1-pixel divider between the panels.
-* A details panel that uses an `Expanded` widget to take the remaining
-  space.
+Este layout cria o seguinte:
+* Uma barra lateral de largura fixa (320 pixels) para grupos de contatos.
+* Um divisor de 1 pixel entre os painéis.
+* Um painel de detalhes que usa um widget `Expanded` para ocupar o espaço
+  restante.
 
-## Test the adaptive layout
+## Teste o layout adaptativo
 
-Hot reload your app and test the responsive behavior. If you're
-running in Chrome, you can resize the browser window to see the layout
-change:
+Faça hot reload do seu app e teste o comportamento responsivo. Se você está
+executando no Chrome, você pode redimensionar a janela do navegador para ver a mudança
+de layout:
 
-* **Wide window (> 600px)**: Shows placeholder text for the sidebar
-  and details side-by-side.
-* **Narrow window (< 600px)**: Shows only the contact groups page.
+* **Janela larga (> 600px)**: Mostra texto placeholder para a barra lateral
+  e detalhes lado a lado.
+* **Janela estreita (< 600px)**: Mostra apenas a página de grupos de contatos.
 
-Both the sidebar and main content area show placeholder text for now.
+Tanto a barra lateral quanto a área de conteúdo principal mostram texto placeholder por enquanto.
 
-In the next lesson, you'll implement slivers to fill in the contact
-list content.
+Na próxima lição, você implementará slivers para preencher o
+conteúdo da lista de contatos.

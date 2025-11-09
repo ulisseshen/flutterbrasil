@@ -1,6 +1,7 @@
 ---
-title: Create widgets
-description: Learn about stateless widgets and how to build your own.
+ia-translate: true
+title: Criar widgets
+description: Aprenda sobre stateless widgets e como construir o seu próprio.
 permalink: /tutorial/stateless-widgets/
 sitemap: false
 ---
@@ -9,36 +10,35 @@ sitemap: false
 <!-- TODO(ewindmill) embed video -->
 {%- endcomment %}
 
-In this lesson, you'll create your own custom widget, and learn about some of
-the most common widgets included in the SDK.
+Nesta lição, você criará seu próprio widget customizado e aprenderá sobre alguns dos
+widgets mais comuns incluídos no SDK.
 
-Custom widgets allow you to reuse UI components across your app, organize
-complex UI code into manageable pieces, and create cleaner, more maintainable
-code.  By the end of this lesson, you’ll have created your own custom Tile
-widget.
+Widgets customizados permitem que você reutilize componentes de UI em todo o seu app, organize
+código de UI complexo em partes gerenciáveis e crie código mais limpo e fácil de manter.
+Ao final desta lição, você terá criado seu próprio widget Tile customizado.
 
 
-## Before you start
+## Antes de começar
 
-This app relies on a bit of game logic that isn't UI-related, and thus is outside the scope of this tutorial. Before you move on, you need to add this logic to your app.
+Este app depende de um pouco de lógica de jogo que não está relacionada à UI e, portanto, está fora do escopo deste tutorial. Antes de continuar, você precisa adicionar essa lógica ao seu app.
 
-1. Create a new file in the `lib` directory called `game.dart`.
-2. Copy the following code into it and import that code into your `main.dart` file.
+1. Crie um novo arquivo no diretório `lib` chamado `game.dart`.
+2. Copie o código a seguir nele e importe esse código no seu arquivo `main.dart`.
 
 {% render docs/tutorial/game-code.md  %}
 
-:::note Game logic note
-You may notice the lists called `legalGuesses` and `legalWords` only contain a few words. The full lists combined have over 10,000 words, and were omitted for brevity. You don't need the full lists to continue the tutorial. When you're testing your app, make sure to use the few words from those lists.
+:::note Nota sobre a lógica do jogo
+Você pode notar que as listas chamadas `legalGuesses` e `legalWords` contêm apenas algumas palavras. As listas completas combinadas têm mais de 10.000 palavras e foram omitidas por questão de brevidade. Você não precisa das listas completas para continuar o tutorial. Ao testar seu app, certifique-se de usar as poucas palavras dessas listas.
 
-Alternatively, you can find the full lists in [this github repository][], as well as instructions to import it into your project.
+Alternativamente, você pode encontrar as listas completas [neste repositório github][this github repository], assim como instruções para importá-las em seu projeto.
 :::
 
-## Anatomy of a stateless widget
+## Anatomia de um stateless widget
 
-A `Widget` is a Dart class that extends one of the Flutter widget classes, in this case [`StatelessWidget`][].
+Um `Widget` é uma classe Dart que estende uma das classes de widget do Flutter, neste caso [`StatelessWidget`][].
 
-Open your `main.dart` file and add this code below the `MainApp` class, which
-defines a new widget called `Tile`.
+Abra seu arquivo `main.dart` e adicione este código abaixo da classe `MainApp`, que
+define um novo widget chamado `Tile`.
 
 ```dart
 class Tile extends StatelessWidget {
@@ -51,20 +51,20 @@ class Tile extends StatelessWidget {
 }
 ```
 
-### Constructor
+### Construtor
 
-The `Tile` class has a [`constructor`][] that defines
-what data needs to be passed into the widget to render the widget.  Here, a
-`String` is passed in, which represents the guessed letter, and a `HitType`,
-which is an [enum value][] used to
-determine the color of the tile. (For example `HitType.hit` results in a green
-tile).  Passing data into the widget is at the core of making widgets reusable.
+A classe `Tile` tem um [`constructor`][] que define
+quais dados precisam ser passados para o widget para renderizá-lo. Aqui, uma
+`String` é passada, que representa a letra adivinhada, e um `HitType`,
+que é um [valor enum][enum value] usado para
+determinar a cor do tile. (Por exemplo, `HitType.hit` resulta em um
+tile verde). Passar dados para o widget está no cerne de tornar widgets reutilizáveis.
 
 
-### `Build` method
+### Método `Build`
 
-Finally, there’s the all important `build` method, which must be defined on
-every widget, and will always return another widget.
+Finalmente, há o importantíssimo método `build`, que deve ser definido em
+cada widget e sempre retornará outro widget.
 
 ```dart
 class Tile extends StatelessWidget {
@@ -81,11 +81,11 @@ class Tile extends StatelessWidget {
 }
 ```
 
-## Use the custom widget
+## Use o widget customizado
 
-When this app is finished, there will be 25 instances of this widget on screen.
-For now, though, display just one so you can see the updates as they’re made. In
-the `MainApp.build` method, replace the `Text` widget with the following:
+Quando este app estiver concluído, haverá 25 instâncias deste widget na tela.
+Por enquanto, porém, exiba apenas um para que você possa ver as atualizações conforme são feitas. No
+método `MainApp.build`, substitua o widget `Text` pelo seguinte:
 
 ```dart
 class MainApp extends StatelessWidget {
@@ -104,21 +104,21 @@ class MainApp extends StatelessWidget {
 }
 ```
 
-At the moment, your app will be blank, because the `Tile` widget returns an
-empty `Container`, which doesn’t display anything by default.
+No momento, seu app ficará em branco, porque o widget `Tile` retorna um
+`Container` vazio, que não exibe nada por padrão.
 
-## The `Container` widget
+## O widget `Container`
 
-The `Tile` widget consists of three of the most common basic widgets:
-`Container`, `Center`, and `Text`.
-[`Container`][] is a
-convenience widget that wraps several basic styling widgets, like `Padding`,
-[`ColoredBox`][], [`SizedBox`][], [`DecoratedBox`][], and many more.
+O widget `Tile` consiste em três dos widgets básicos mais comuns:
+`Container`, `Center` e `Text`.
+[`Container`][] é um
+widget de conveniência que envolve vários widgets básicos de estilo, como `Padding`,
+[`ColoredBox`][], [`SizedBox`][], [`DecoratedBox`][] e muitos mais.
 
-Because the finished UI contains 25 `Tile` widgets in neat columns and rows, it
-should have an explicit size. Set the width and height properties on the
-`Container`. (You could also do this with a `SizedBox` widget, but you’ll use
-more properties of the `Container` next.)
+Como a UI finalizada contém 25 widgets `Tile` em colunas e linhas organizadas, ele
+deve ter um tamanho explícito. Defina as propriedades width e height no
+`Container`. (Você também poderia fazer isso com um widget `SizedBox`, mas você usará
+mais propriedades do `Container` a seguir.)
 
 ```dart
 class Tile extends StatelessWidget {
@@ -141,7 +141,7 @@ class Tile extends StatelessWidget {
 
 ## BoxDecoration
 
-Next, add a [`Border`][] to the box with the following code:
+Em seguida, adicione uma [`Border`][] à caixa com o seguinte código:
 
 ```dart
 class Tile extends StatelessWidget {
@@ -165,23 +165,23 @@ class Tile extends StatelessWidget {
 }
 ```
 
-`BoxDecoration` is an object that knows how to add any number of decorations to
-a widget, from background color to borders to box shadows and more. In this
-case, you’ve added a border. When you hot reload, there should be a lightly
-colored border around the white square.
+`BoxDecoration` é um objeto que sabe como adicionar qualquer número de decorações a
+um widget, desde cor de fundo até bordas, box shadows e muito mais. Neste
+caso, você adicionou uma borda. Quando você fizer hot reload, deve haver uma borda
+levemente colorida ao redor do quadrado branco.
 
-When this game is complete, the color of the tile will depend on the user’s
-guess. The tile will be green when the user has guessed correctly, yellow when
-the letter is correct but the position is incorrect, and gray if the guess is
-wrong on both axes.
+Quando este jogo estiver completo, a cor do tile dependerá do palpite do
+usuário. O tile será verde quando o usuário adivinhar corretamente, amarelo quando
+a letra estiver correta mas a posição estiver incorreta, e cinza se o palpite estiver
+errado em ambos os eixos.
 
-The following figure shows all three possibilities.
+A figura a seguir mostra todas as três possibilidades.
 
 <img src='/assets/images/docs/tutorial/tiles.png' alt="A screenshot of a green, yellow, and grey tile.">
 
 
-To achieve this in UI, use a [switch expression][] to set the
-`color` of the `BoxDecoration`.
+Para conseguir isso na UI, use uma [expressão switch][switch expression] para definir a
+`color` da `BoxDecoration`.
 
 ```dart
 class Tile extends StatelessWidget {
@@ -210,13 +210,13 @@ class Tile extends StatelessWidget {
 }
 ```
 
-## Child widgets
+## Widgets filhos
 
-Finally, add the `Center` and `Text` widgets to the `Container.child` property.
+Finalmente, adicione os widgets `Center` e `Text` à propriedade `Container.child`.
 
-Most widgets in the Flutter SDK have a `child` or `children` property that’s
-meant to be passed a widget or a list of widgets, respectively. It's best
-practice to use the same naming convention in your own custom widgets.
+A maioria dos widgets no Flutter SDK tem uma propriedade `child` ou `children` que
+deve receber um widget ou uma lista de widgets, respectivamente. É uma boa
+prática usar a mesma convenção de nomenclatura em seus próprios widgets customizados.
 
 ```dart
 class Tile extends StatelessWidget {
@@ -250,8 +250,8 @@ class Tile extends StatelessWidget {
 }
 ```
 
-Hot reload and a green box appears. To toggle the color,
-update and hot reload the `HitType` passed into the `Tile` you created:
+Faça hot reload e uma caixa verde aparece. Para alternar a cor,
+atualize e faça hot reload do `HitType` passado para o `Tile` que você criou:
 
 ```dart
 // main.dart line ~16
@@ -263,8 +263,8 @@ child: Tile('A', HitType.miss)
 child: Tile('A', HitType.partial)
 ```
 
-Soon, this small box will be one of many widgets on the screen. In the next
-lesson, you’ll start building the game grid itself.
+Em breve, esta pequena caixa será um dos muitos widgets na tela. Na próxima
+lição, você começará a construir a própria grade do jogo.
 
 
 

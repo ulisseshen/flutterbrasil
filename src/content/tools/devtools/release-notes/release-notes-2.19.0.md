@@ -1,51 +1,52 @@
 ---
-title: DevTools 2.19.0 release notes
-shortTitle: 2.19.0 release notes
+ia-translate: true
+title: Notas de versão do DevTools 2.19.0
+shortTitle: Notas de versão 2.19.0
 breadcrumb: 2.19.0
-description: Release notes for Dart and Flutter DevTools version 2.19.0.
+description: Notas de versão para o Dart e Flutter DevTools versão 2.19.0.
 showToc: false
 ---
 
-The 2.19.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutter.dev/tools/devtools).
+A versão 2.19.0 do Dart e Flutter DevTools
+inclui as seguintes alterações entre outras melhorias gerais.
+Para saber mais sobre DevTools, confira a
+[visão geral do DevTools](https://docs.flutter.dev/tools/devtools).
 
-## Performance updates
+## Atualizações de Performance
 
-* Added a button to toggle the visibility of the Flutter Frames chart -
+* Adicionado um botão para alternar a visibilidade do gráfico Flutter Frames -
   [#4577](https://github.com/flutter/devtools/pull/4577)
 
   ![diff](/assets/images/docs/tools/devtools/release-notes/images-2.19.0/4577.png "Flutter Frames")
 
-* Polish the debug mode warning to better describe which data is
-  accurate in debug mode and which data may be misleading -
+* Refinado o aviso de modo debug para descrever melhor quais dados são
+  precisos no modo debug e quais dados podem ser enganosos -
   [#3537](https://github.com/flutter/devtools/pull/3537)
-* Reorder performance tool tabs and only show the CPU profiler
-  for the "Timeline Events" tab -
+* Reordenadas as abas da ferramenta de performance e mostrado o CPU profiler
+  somente para a aba "Timeline Events" -
   [#4629](https://github.com/flutter/devtools/pull/4629)
 
-## Memory updates
+## Atualizações de Memory
 
-* Improvements to the memory Profile tab -
+* Melhorias na aba Profile de memory -
   [#4583](https://github.com/flutter/devtools/pull/4583)
 
-## Debugger updates
+## Atualizações do Debugger
 
-* Fix an issue with hover cards where they were appearing
-  but never disappearing -
+* Corrigido um problema com cards de hover onde eles apareciam
+  mas nunca desapareciam -
   [#4627](https://github.com/flutter/devtools/pull/4627)
-* Fix a bug with the file search autocomplete dialog -
+* Corrigido um bug com o diálogo de autocomplete da busca de arquivo -
   [#4409](https://github.com/flutter/devtools/pull/4409)
 
-## Network profiler updates
+## Atualizações do Network profiler
 
-* Added a "Copy" button in the Network Request view
-  (thanks to @netos23) -
+* Adicionado um botão "Copy" na visualização Network Request
+  (obrigado a @netos23) -
   [#4509](https://github.com/flutter/devtools/pull/4509)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes since the previous release,
-check out
-[the diff on GitHub](https://github.com/flutter/devtools/compare/v2.18.0...v2.19.0).
+Para encontrar uma lista completa de alterações desde a versão anterior,
+confira
+[o diff no GitHub](https://github.com/flutter/devtools/compare/v2.18.0...v2.19.0).

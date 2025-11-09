@@ -1,3 +1,7 @@
+---
+ia-translate: true
+---
+
 <div class='collapsible-section'>
   <button
     type="button"
@@ -6,7 +10,7 @@
     role="button"
     data-target="#game-code-collapsible-content"
     aria-expanded="false" aria-controls="game-code-collapsible-content">
-    Reveal code
+    Revelar código
   </button>
 
 <div class="collapsible-content" id="game-code-collapsible-content">

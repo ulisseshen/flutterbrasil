@@ -1,38 +1,39 @@
 ---
-title: Set up web development
+ia-translate: true
+title: Configurar desenvolvimento web
 description: >-
-  Configure your development environment to
-  run, build, and deploy Flutter apps for the web platform.
+  Configure seu ambiente de desenvolvimento para
+  executar, compilar e fazer deploy de apps Flutter para a plataforma web.
 ---
 
-Learn how to set up your development environment
-to run, build, and deploy Flutter apps for the web platform.
+Aprenda como configurar seu ambiente de desenvolvimento
+para executar, compilar e fazer deploy de apps Flutter para a plataforma web.
 
 :::note
-If you haven't set up Flutter already,
-visit and follow the [Get started with Flutter][] guide first.
+Se você ainda não configurou o Flutter,
+visite e siga o guia [Começando com Flutter][Get started with Flutter] primeiro.
 
-If you've already installed Flutter,
-ensure that it's [up to date][].
+Se você já instalou o Flutter,
+certifique-se de que ele está [atualizado][up to date].
 :::
 
 [Get started with Flutter]: /get-started
 [up to date]: /install/upgrade
 
-## Install a web browser {: #install}
+## Instalar um navegador web {: #install}
 
-To run and debug your Flutter app on the web,
-[download and install Google Chrome][chrome-install]
-or [install and use Microsoft Edge][edge-install].
+Para executar e depurar seu app Flutter na web,
+[baixe e instale o Google Chrome][chrome-install]
+ou [instale e use o Microsoft Edge][edge-install].
 
 <details>
-<summary>Expand for instructions for other browsers</summary>
+<summary>Expandir para instruções de outros navegadores</summary>
 
-If you want to debug your app in other web browsers,
-you can use the `flutter run -d web-server` command,
-and manually navigate to the specified URL in your preferred browser.
+Se você quiser depurar seu app em outros navegadores web,
+você pode usar o comando `flutter run -d web-server`,
+e navegar manualmente para a URL especificada em seu navegador preferido.
 
-Note that debugging support in the `web-server` mode is limited.
+Observe que o suporte de depuração no modo `web-server` é limitado.
 
 </details>
 
@@ -40,14 +41,14 @@ Note that debugging support in the `web-server` mode is limited.
 [chrome-install]: https://www.google.com/chrome/
 [edge-install]: https://www.microsoft.com/edge
 
-## Validate your setup {: #validate-setup}
+## Validar sua configuração {: #validate-setup}
 
-To ensure that you installed the browser successfully,
-and that Flutter can find it,
-run `flutter devices` in your preferred terminal.
+Para garantir que você instalou o navegador com sucesso,
+e que o Flutter pode encontrá-lo,
+execute `flutter devices` em seu terminal preferido.
 
-You should at least see one connected device labeled
-**Chrome (web)** or **Edge (web)**, similar to the following:
+Você deve ver pelo menos um dispositivo conectado rotulado
+**Chrome (web)** ou **Edge (web)**, semelhante ao seguinte:
 
 ```console highlightLines=4
 $ flutter devices
@@ -56,16 +57,16 @@ Found 1 connected devices:
   Chrome (web)    • chrome • web-javascript • Google Chrome
 ```
 
-If the command isn't found, or you don't see Chrome listed,
-check out [Set up troubleshooting][troubleshoot].
+Se o comando não for encontrado, ou você não ver o Chrome listado,
+confira [Solução de problemas de configuração][troubleshoot].
 
 [troubleshoot]: /install/troubleshoot
 
-## Start developing for the web {: #start-developing}
+## Começar a desenvolver para a web {: #start-developing}
 
-Now that you've set up web development for Flutter,
-you can continue your Flutter learning journey while testing on the web
-or begin expanding integration with the web.
+Agora que você configurou o desenvolvimento web para Flutter,
+você pode continuar sua jornada de aprendizado Flutter testando na web
+ou começar a expandir a integração com a web.
 
 <div class="card-grid link-cards">
   <div class="card filled-card list-card">

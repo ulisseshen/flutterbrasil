@@ -1,28 +1,29 @@
 ---
-title: DevTools 2.28.2 release notes
-shortTitle: 2.28.2 release notes
+ia-translate: true
+title: Notas de versão do DevTools 2.28.2
+shortTitle: Notas de versão 2.28.2
 breadcrumb: 2.28.2
-description: Release notes for Dart and Flutter DevTools version 2.28.2.
+description: Notas de versão para o Dart e Flutter DevTools versão 2.28.2.
 showToc: false
 ---
 
-The 2.28.2 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutter.dev/tools/devtools).
+A versão 2.28.2 do Dart e Flutter DevTools
+inclui as seguintes alterações entre outras melhorias gerais.
+Para saber mais sobre DevTools, confira a
+[visão geral do DevTools](https://docs.flutter.dev/tools/devtools).
 
-This was a cherry-pick release on top of DevTools 2.28.1.
-To learn about the improvements included in DevTools 2.28.1, please read the
-[release notes](/tools/devtools/release-notes/release-notes-2.28.1).
+Esta foi uma versão cherry-pick em cima do DevTools 2.28.1.
+Para saber sobre as melhorias incluídas no DevTools 2.28.1, por favor leia as
+[notas de versão](/tools/devtools/release-notes/release-notes-2.28.1).
 
-## DevTools Extension updates
+## Atualizações de DevTools Extension
 
-* Enabled DevTools extensions when debugging a Dart entry point that is not
-  under `lib` (e.g. a unit test or integration test). Thanks to
-  [@bartekpacia](https://github.com/bartekpacia) for this change! -
+* Habilitadas extensões do DevTools ao debugar um ponto de entrada Dart que não está
+  sob `lib` (por exemplo, um teste unitário ou teste de integração). Obrigado a
+  [@bartekpacia](https://github.com/bartekpacia) por esta mudança! -
   [#6644](https://github.com/flutter/devtools/pull/6644)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes in this release, check out the
-[DevTools git log](https://github.com/flutter/devtools/tree/v2.28.2).
+Para encontrar uma lista completa de alterações nesta versão, confira o
+[log git do DevTools](https://github.com/flutter/devtools/tree/v2.28.2).

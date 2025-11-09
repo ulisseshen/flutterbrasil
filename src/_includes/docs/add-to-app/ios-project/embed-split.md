@@ -1,48 +1,48 @@
-### Use frameworks in Xcode and Flutter framework as podspec {:#method-c .no_toc}
+### Usar frameworks no Xcode e Flutter framework como podspec {:#method-c .no_toc}
 
-#### Approach {:#method-c-approach}
+#### Abordagem {:#method-c-approach}
 
-This method generates Flutter as a CocoaPods podspec instead of
-distributing the large `Flutter.xcframework` to other developers,
-machines, or continuous integration systems.
-Flutter still generates iOS frameworks for your compiled Dart code,
-and for each of your Flutter plugins.
-Embed these frameworks and update your existing application's build settings.
+Este método gera o Flutter como um podspec CocoaPods em vez de
+distribuir o grande `Flutter.xcframework` para outros desenvolvedores,
+máquinas ou sistemas de integração contínua.
+O Flutter ainda gera frameworks iOS para seu código Dart compilado,
+e para cada um dos seus plugins Flutter.
+Incorpore esses frameworks e atualize as configurações de compilação da sua aplicação existente.
 
-#### Requirements {:#method-c-reqs}
+#### Requisitos {:#method-c-reqs}
 
-No additional software or hardware requirements are needed for this method.
-Use this method in the following use cases:
+Nenhum software ou hardware adicional é necessário para este método.
+Use este método nos seguintes casos de uso:
 
-* Members of your team can't install the Flutter SDK and CocoaPods
-* You don't want to use CocoaPods as a dependency manager in existing iOS apps
+* Membros da sua equipe não podem instalar o Flutter SDK e CocoaPods
+* Você não quer usar o CocoaPods como gerenciador de dependências em apps iOS existentes
 
-#### Limitations {:#method-c-limits}
+#### Limitações {:#method-c-limits}
 
 {% render "docs/add-to-app/ios-project/limits-common-deps.md" %}
 
-This method only works with the `beta` or `stable` [release channels][].
+Este método funciona apenas com os [canais de release][release channels] `beta` ou `stable`.
 
 [release channels]: /install/upgrade#switching-flutter-channels
 
-#### Example project structure {:#method-c-structure}
+#### Estrutura de projeto de exemplo {:#method-c-structure}
 
 {% render "docs/add-to-app/ios-project/embed-framework-directory-tree.md" %}
 
-#### Add Flutter engine to your Podfile
+#### Adicionar Flutter engine ao seu Podfile
 
-Host apps using CocoaPods can add the Flutter engine to their Podfile.
+Apps host usando CocoaPods podem adicionar o Flutter engine ao seu Podfile.
 
 ```ruby title="MyApp/Podfile"
 pod 'Flutter', :podspec => '/path/to/MyApp/Flutter/[![build mode]!]/Flutter.podspec'
 ```
 
 :::note
-You must hard code the `[build mode]` value.
-For example, use `Debug` if you need to use `flutter attach`
-and `Release` when you're ready to ship.
+Você deve codificar o valor `[build mode]` de forma rígida.
+Por exemplo, use `Debug` se você precisar usar `flutter attach`
+e `Release` quando estiver pronto para enviar.
 :::
 
-#### Link and embed app and plugin frameworks
+#### Linkar e incorporar frameworks de app e plugin
 
 {% render "docs/add-to-app/ios-project/link-and-embed.md" %}

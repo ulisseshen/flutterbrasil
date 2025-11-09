@@ -1,71 +1,72 @@
 ---
-title: Learn Flutter
-description: Resources to help you learn Flutter.
+ia-translate: true
+title: Aprenda Flutter
+description: Recursos para ajudá-lo a aprender Flutter.
 showToc: false
 sitemap: false
 ---
 
-## Welcome!
+## Bem-vindo!
 
-Welcome to the Flutter tutorial! This tutorial teaches you how to build
-applications from scratch that run on mobile, desktop, and web.
+Bem-vindo ao tutorial Flutter! Este tutorial ensina como construir
+aplicações do zero que rodam em mobile, desktop e web.
 
-You’ll start from the very beginning: creating a blank Flutter application.
-By the end, you’ll have built a handful of small apps that demonstrate
-the critical features of Flutter development (and more!)
+Você começará do início: criando uma aplicação Flutter em branco.
+Ao final, você terá construído alguns pequenos apps que demonstram
+os recursos críticos do desenvolvimento Flutter (e muito mais!)
 
 {%- comment %}
 TODO(ewindmill) welcome video
 {%- endcomment %}
 
-## What is Flutter?
+## O que é Flutter?
 
-Flutter is an open-source UI toolkit that helps you build natively compiled,
-expressive apps across mobile, web, and desktop from a single codebase.
-It’s declarative, reactive, features hot reload for fast development cycles,
-and has a rich set of customizable widgets for creating expressive interfaces.
+Flutter é um toolkit de UI open-source que ajuda você a construir apps nativamente compilados,
+expressivos e multiplataforma para mobile, web e desktop a partir de uma única base de código.
+É declarativo, reativo, possui hot reload para ciclos de desenvolvimento rápidos,
+e tem um conjunto rico de widgets customizáveis para criar interfaces expressivas.
 
-Flutter draws every pixel itself rather than wrapping native components,
-giving developers complete control over the UI and ensuring visual consistency
-across platforms.
+Flutter desenha cada pixel ele mesmo em vez de envolver componentes nativos,
+dando aos desenvolvedores controle completo sobre a UI e garantindo consistência visual
+entre plataformas.
 
-## How to use this tutorial
+## Como usar este tutorial
 
-You should be familiar with the Dart programming language to follow this
-tutorial. This tutorial assumes you have all the knowledge from its Dart
-counterpart, the [Learn Dart tutorial][]. (Alternatively, if you’re comfortable
-with another all-purpose object oriented language, like Java or Kotlin, you’ll
-likely be okay.)
+Você deve estar familiarizado com a linguagem de programação Dart para seguir este
+tutorial. Este tutorial assume que você tem todo o conhecimento da sua
+contraparte Dart, o [tutorial Learn Dart][Learn Dart tutorial]. (Alternativamente, se você está confortável
+com outra linguagem orientada a objetos de propósito geral, como Java ou Kotlin, você
+provavelmente ficará bem.)
 
-## Set up
+## Configuração
 
-While reading this tutorial, you’ll ideally be coding along with the examples presented.
-You can do so by [installing Flutter on your machine][],
-or by using [Firebase Studio][], a web IDE that supports Flutter.
+Ao ler este tutorial, você idealmente estará codificando junto com os exemplos apresentados.
+Você pode fazer isso [instalando Flutter em sua máquina][installing Flutter on your machine],
+ou usando o [Firebase Studio][Firebase Studio], uma IDE web que suporta Flutter.
 
-If you’re running locally, this tutorial assumes that you’re running Flutter
-apps on the web, using [Chrome][]. This doesn’t require Xcode or Android Studio,
-and thus is the quickest way to start using Flutter.
+Se você está rodando localmente, este tutorial assume que você está executando apps
+Flutter na web, usando o [Chrome][Chrome]. Isso não requer Xcode ou Android Studio,
+e portanto é a maneira mais rápida de começar a usar Flutter.
 
-## Contents
+## Conteúdo
 
-1. Introdution to Flutter UI
-   1. [Create a Flutter app][]
-   2. [Widget fundamentals][]
-   3. [Layout widgets on a screen][]
-   4. [Handle User input][]
-   5. [Learn about stateful widgets][]
-   6. [Add implicit animations][]
-2. State in Flutter apps
-   1. [Set up a new project][]
-   2. [Make Http Requests][]
-   3. [Use `ChangeNotifier` to update app state][]
-   4. [Use `ListenableBuilder` to update app UI][]
+1. Introdução à UI Flutter
+   1. [Criar um app Flutter][Create a Flutter app]
+   2. [Fundamentos de widgets][Widget fundamentals]
+   3. [Layout de widgets em uma tela][Layout widgets on a screen]
+   4. [Lidar com entrada do usuário][Handle User input]
+   5. [Aprender sobre widgets stateful][Learn about stateful widgets]
+   6. [Adicionar animações implícitas][Add implicit animations]
+2. State em apps Flutter
+   1. [Configurar um novo projeto][Set up a new project]
+   2. [Fazer requisições Http][Make Http Requests]
+   3. [Usar `ChangeNotifier` para atualizar o estado do app][Use `ChangeNotifier` to update app state]
+   4. [Usar `ListenableBuilder` para atualizar a UI do app][Use `ListenableBuilder` to update app UI]
 3. Flutter UI 102
-   1. [Set up your project][]
-   2. [`LayoutBuilder` and adaptive layouts][]
-   3. [Scrolling and slivers][]
-   4. [Stack based navigation][]
+   1. [Configurar seu projeto][Set up your project]
+   2. [`LayoutBuilder` e layouts adaptativos][`LayoutBuilder` and adaptive layouts]
+   3. [Scrolling e slivers][Scrolling and slivers]
+   4. [Navegação baseada em Stack][Stack based navigation]
 
 [Learn Dart tutorial]: https://dart.dev/
 [installing Flutter on your machine]: /get-started
@@ -75,12 +76,12 @@ and thus is the quickest way to start using Flutter.
 [Create a Flutter app]: /tutorial/create-an-app/
 [Widget fundamentals]: /tutorial/stateless-widgets/
 [Layout widgets on a screen]: /tutorial/layout/
-[Handle user input]: /tutorial/user-input/
+[Handle User input]: /tutorial/user-input/
 [Learn about stateful widgets]: /tutorial/stateful-widgets/
 [Add implicit animations]: /tutorial/animations/
 [Set up a new project]: /tutorial/set-up-state-app/
 [Make Http Requests]: /tutorial/http/
-[Use `ChangeNotifier` to update app state]:/tutorial/change-notifier/
+[Use `ChangeNotifier` to update app state]: /tutorial/change-notifier/
 [Use `ListenableBuilder` to update app UI]: /tutorial/listenables/
 [Set up your project]: /tutorial/set-up-ui-102/
 [`LayoutBuilder` and adaptive layouts]: /tutorial/adaptive-layouts/

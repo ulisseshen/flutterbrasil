@@ -1,30 +1,31 @@
 ---
-title: Flutter 1.9.1 release notes
-shortTitle: 1.9.1 release notes
-description: Release notes for Flutter 1.9.1.
+ia-translate: true
+title: Notas de lançamento do Flutter 1.9.1
+shortTitle: Notas de lançamento 1.9.1
+description: Notas de lançamento do Flutter 1.9.1.
 skipTemplateRendering: true
 ---
 
-Hello and welcome to another stable release of Flutter. So far this year, we've been right on target with one stable release each quarter, as per [our plan](https://github.com/flutter/flutter/blob/master/docs/releases/Flutter-build-release-channels.md) (well, less of a plan and more of a goal, but still, it's been working out pretty well so far…). This release is our biggest yet, with 620 Pull Requests merged from 116 contributors. As always, the interesting PRs are listed below. And there are lots of interesting things to discuss in this release, including:
+Olá e bem-vindo a mais uma versão estável do Flutter. Até agora neste ano, estamos no caminho certo com uma versão estável a cada trimestre, conforme [nosso plano](https://github.com/flutter/flutter/blob/master/docs/releases/Flutter-build-release-channels.md) (bem, menos um plano e mais um objetivo, mas ainda assim, tem funcionado muito bem até agora...). Esta é nossa maior versão até o momento, com 620 Pull Requests mesclados de 116 contribuidores. Como sempre, os PRs interessantes estão listados abaixo. E há muitas coisas interessantes para discutir nesta versão, incluindo:
 
-*   One regression fixed but also one added
-*   Some breaking API changes
-*   Some severe issues caught and fixed
-*   Support for macOS Catalina and iOS 13
-*   A number of new features
-*   And more!
+*   Uma regressão corrigida, mas também uma adicionada
+*   Algumas mudanças de API incompatíveis
+*   Alguns problemas graves detectados e corrigidos
+*   Suporte para macOS Catalina e iOS 13
+*   Vários novos recursos
+*   E mais!
 
-And to be clear, when I say "we," I mean the Flutter community as a whole. The Flutter team couldn't possibly continue to scale as we have without all of our contributors, no matter who your employer is. Thanks everyone for your contributions!
-
-
-## Regressions
-
-In this release, we fixed one regression ([37955](https://github.com/flutter/flutter/pull/37955) Update shader warm-up for recent Skia changes) and caused another ([38167](https://github.com/dart-lang/sdk/issues/38167) Incremental compiler re-issuing of errors from constant evaluator). The new regression is fixed after the 1.9.1 stable release ([00d14e7](https://github.com/dart-lang/sdk/commit/00d14e7) [CFE] Always start constant evaluation error where we are asked to evaluate), so if you're seeing it, you can choose a more recent build to bring it into your Flutter apps.
+E para ser claro, quando digo "nós", quero dizer a comunidade Flutter como um todo. A equipe Flutter não poderia continuar a escalar como temos feito sem todos os nossos contribuidores, não importa quem seja seu empregador. Obrigado a todos pelas contribuições!
 
 
-## Breaking API Changes
+## Regressões
 
-We try hard not to make breaking changes, but we also don't want to create unintuitive APIs as we move Flutter forward to new scenarios and new platforms. These are the breaking changes in this release. Please see the associated announcements so you can move your code forward.
+Nesta versão, corrigimos uma regressão ([37955](https://github.com/flutter/flutter/pull/37955) Update shader warm-up for recent Skia changes) e causamos outra ([38167](https://github.com/dart-lang/sdk/issues/38167) Incremental compiler re-issuing of errors from constant evaluator). A nova regressão é corrigida após a versão estável 1.9.1 ([00d14e7](https://github.com/dart-lang/sdk/commit/00d14e7) [CFE] Always start constant evaluation error where we are asked to evaluate), então se você estiver vendo isso, pode escolher uma compilação mais recente para trazê-la para seus apps Flutter.
+
+
+## Mudanças de API Incompatíveis
+
+Tentamos muito não fazer mudanças incompatíveis, mas também não queremos criar APIs não intuitivas à medida que avançamos o Flutter para novos cenários e novas plataformas. Estas são as mudanças incompatíveis nesta versão. Por favor, veja os anúncios associados para que você possa mover seu código adiante.
 
 [33281](https://github.com/flutter/flutter/pull/33281) ([announcement](https://groups.google.com/forum/#!msg/flutter-announce/ZmnseDOW9Wc/5K7xD0V8BwAJ)) Update TextStyle and StrutStyle height docs
 
@@ -61,9 +62,9 @@ We try hard not to make breaking changes, but we also don't want to create unint
 [37736](https://github.com/flutter/flutter/pull/37736) ([announcement](https://groups.google.com/forum/#!searchin/flutter-announce/37736%7Csort:date/flutter-announce/-kotruZbBDQ/vny4JjFmFQAJ)) Added a composable waitForCondition Driver/extension API
 
 
-## Severe: Crash, Customer Critical and Performance Fixes
+## Correções Críticas: Crashes, Problemas Críticos de Clientes e Performance
 
-In Flutter, we try to add a little bit of quality to every release. This time around, we fixed several severe issues, including crashes, customer critical issues and performance issues.
+No Flutter, tentamos adicionar um pouco de qualidade a cada versão. Desta vez, corrigimos vários problemas graves, incluindo crashes, problemas críticos de clientes e problemas de performance.
 
 [34907](https://github.com/flutter/flutter/pull/34907) Fixed LicensePage to close page before loaded the License causes an error
 
@@ -82,9 +83,9 @@ In Flutter, we try to add a little bit of quality to every release. This time ar
 [35297](https://github.com/flutter/flutter/pull/35297) Fix the first frame logic in tracing and driver
 
 
-## New Features
+## Novos Recursos
 
-This release also brings with it two new Material widgets: the ToggleButtons widget (called a [segmented control](https://developer.apple.com/design/human-interface-guidelines/ios/controls/segmented-controls/) on iOS) and a ColorFilter widget (described below in the Text & Accessibility section). To see these widgets in action, check out short [ToggleButtons ](https://github.com/csells/flutter_toggle_buttons)and [ColorFilter](https://github.com/csells/flutter_color_filter) samples. Also, the SelectableText widget allows the user to select read-only text.
+Esta versão também traz dois novos widgets Material: o widget ToggleButtons (chamado de [segmented control](https://developer.apple.com/design/human-interface-guidelines/ios/controls/segmented-controls/) no iOS) e um widget ColorFilter (descrito abaixo na seção Text & Accessibility). Para ver esses widgets em ação, confira os exemplos curtos de [ToggleButtons ](https://github.com/csells/flutter_toggle_buttons) e [ColorFilter](https://github.com/csells/flutter_color_filter). Além disso, o widget SelectableText permite ao usuário selecionar texto somente leitura.
 
 [34599](https://github.com/flutter/flutter/pull/34599) [Material] ToggleButtons
 
@@ -107,9 +108,9 @@ This release also brings with it two new Material widgets: the ToggleButtons wid
 [37492](https://github.com/flutter/flutter/pull/37492) Drawer edge drag width improvements
 
 
-## macOS Catalina Support
+## Suporte ao macOS Catalina
 
-With the release of macOS Catalina just around the corner, we've made sure that our tooling continues to work smoothly as you migrate to Catalina, iOS 13 and Xcode 11. I should note that **you'll want to upgrade to the Flutter 1.9.1 stable release before upgrading to Catalina**. The other order works, too, but you'll see an error when you do it that way (the [error](https://github.com/flutter/flutter/issues/33890) is benign, but still…).
+Com o lançamento do macOS Catalina chegando, garantimos que nossas ferramentas continuem funcionando sem problemas à medida que você migra para Catalina, iOS 13 e Xcode 11. Devo observar que **você vai querer atualizar para a versão estável Flutter 1.9.1 antes de atualizar para Catalina**. A outra ordem também funciona, mas você verá um erro ao fazer dessa forma (o [erro](https://github.com/flutter/flutter/issues/33890) é inofensivo, mas ainda assim...).
 
 [38325](https://github.com/flutter/flutter/pull/38325) refactor flutter upgrade to be 2 part, with the second part re-entrant
 
@@ -134,7 +135,7 @@ With the release of macOS Catalina just around the corner, we've made sure that 
 
 ## iOS
 
-With over 50 PRs in this release, iOS support continues to be a big focus for Flutter, including an iOS 13 scrollbar implementation (that includes long-press, drag-from-right and vibration feedback support), an update to the CupertinoSwitch widget to match iOS 13 and continued experimentation with bitcode.
+Com mais de 50 PRs nesta versão, o suporte ao iOS continua sendo um grande foco para o Flutter, incluindo uma implementação de scrollbar do iOS 13 (que inclui suporte a long-press, drag-from-right e feedback de vibração), uma atualização do widget CupertinoSwitch para corresponder ao iOS 13 e experimentação contínua com bitcode.
 
 [35829](https://github.com/flutter/flutter/pull/35829) iOS 13 scrollbar
 
@@ -243,7 +244,7 @@ With over 50 PRs in this release, iOS support continues to be a big focus for Fl
 
 ## Android
 
-The biggest addition to Android this release is support for a new flutter command: 'flutter build aar'. This new build command works just like 'flutter build apk' or 'flutter build appbundle', but for plugins and module projects. By building the plugins as [AARs](https://developer.android.com/studio/projects/android-library), the Android Gradle plugin can use Jetifier to translate support libraries into AndroidX libraries for all the plugin's native code, which reduces the error rate when using AndroidX in apps.
+A maior adição ao Android nesta versão é o suporte a um novo comando flutter: 'flutter build aar'. Este novo comando de compilação funciona como 'flutter build apk' ou 'flutter build appbundle', mas para plugins e projetos de módulo. Ao compilar os plugins como [AARs](https://developer.android.com/studio/projects/android-library), o plugin Android Gradle pode usar Jetifier para traduzir bibliotecas de suporte em bibliotecas AndroidX para todo o código nativo do plugin, o que reduz a taxa de erro ao usar AndroidX em apps.
 
 [35217](https://github.com/flutter/flutter/pull/35217) Add flutter build aar
 
@@ -294,7 +295,7 @@ The biggest addition to Android this release is support for a new flutter comman
 
 ## Material
 
-Of course, the Material design language also continues to be a major focus for Flutter.
+Claro, a linguagem de design Material também continua sendo um grande foco para o Flutter.
 
 [34869](https://github.com/flutter/flutter/pull/34869) [Material] Properly call onChangeStart and onChangeEnd in Range Slider
 
@@ -357,9 +358,9 @@ Of course, the Material design language also continues to be a major focus for F
 [38636](https://github.com/flutter/flutter/pull/38636) Adds the arrowColor option to UserAccountsDrawerHeader (#38608)
 
 
-## Text & Accessibility
+## Texto e Acessibilidade
 
-The biggest change in text & accessibility for this release is the new ColorFilter support, which enables you to recolor an entire widget tree according, for example, to adjust your app for users with red/green color blindness. To see it in action, check out this [ColorFilter sample](https://github.com/csells/flutter_color_filter).
+A maior mudança em texto e acessibilidade para esta versão é o novo suporte a ColorFilter, que permite recolorir uma árvore de widgets inteira de acordo, por exemplo, para ajustar seu app para usuários com daltonismo vermelho/verde. Para ver em ação, confira este [exemplo de ColorFilter](https://github.com/csells/flutter_color_filter).
 
 [35468](https://github.com/flutter/flutter/pull/35468) Add colorFilterLayer/Widget
 
@@ -394,9 +395,9 @@ The biggest change in text & accessibility for this release is the new ColorFilt
 [37828](https://github.com/flutter/flutter/pull/37828) have android_semantics_testing use adb from ENV provided android sdk
 
 
-## Web (tech preview)
+## Web (prévia técnica)
 
-Work continues on adding to the technical preview of web platform support to Flutter in this release, including a flag to tell if an app is running on the web. To see it in action, check out [main.dart](https://github.com/csells/flutter_mazegen/blob/master/lib/main.dart) in the [flutter_mazegen sample](https://github.com/csells/flutter_mazegen/). To learn more, see [Flutter for web](https://docs.flutter.dev/web).
+O trabalho continua adicionando à prévia técnica do suporte à plataforma web no Flutter nesta versão, incluindo uma flag para informar se um app está sendo executado na web. Para ver em ação, confira [main.dart](https://github.com/csells/flutter_mazegen/blob/master/lib/main.dart) no [exemplo flutter_mazegen](https://github.com/csells/flutter_mazegen/). Para saber mais, veja [Flutter para web](https://docs.flutter.dev/web).
 
 [36135](https://github.com/flutter/flutter/pull/36135) add a kIsWeb constant to foundation
 
@@ -433,7 +434,7 @@ Work continues on adding to the technical preview of web platform support to Flu
 
 ## Desktop (experimental)
 
-We continue to move forward with the experimental support for the desktop platform in Flutter. If you'd like to take part in the experiment, see [Flutter Desktop shells](https://docs.flutter.dev/desktop).
+Continuamos avançando com o suporte experimental para a plataforma desktop no Flutter. Se você quiser participar do experimento, veja [Flutter Desktop shells](https://docs.flutter.dev/desktop).
 
 [32770](https://github.com/flutter/flutter/pull/32770) Dismiss modal with any button press
 
@@ -498,7 +499,7 @@ We continue to move forward with the experimental support for the desktop platfo
 
 ## Framework
 
-The core framework for Flutter saw several important features in this release, including support for an additional 24 new locales (ranging [from Afrikaans to Zulu](https://github.com/flutter/flutter/pull/36589)).
+O framework principal do Flutter viu vários recursos importantes nesta versão, incluindo suporte para 24 novos locales adicionais (variando [de Afrikaans a Zulu](https://github.com/flutter/flutter/pull/36589)).
 
 [36589](https://github.com/flutter/flutter/pull/36589) Update Localizations: added 24 new locales (reprise)
 
@@ -615,7 +616,7 @@ The core framework for Flutter saw several important features in this release, i
 
 ## Engine
 
-The core engine continues to see many improvements across the board in this release.
+O engine principal continua a ver muitas melhorias em geral nesta versão.
 
 [9041](https://github.com/flutter/engine/pull/9041) TextStyle.height property as a multiple of font size instead of multiple of ascent+descent+leading.
 
@@ -1008,22 +1009,22 @@ The core engine continues to see many improvements across the board in this rele
 [11075](https://github.com/flutter/engine/pull/11075) [dynamic_thread_merging] Resubmit only on the frame where the merge
 
 
-## Tools
+## Ferramentas
 
-As always, the end-to-end experience for Flutter relies heavily on its tools. With that in mind, in addition to the PRs listed below, which focus on the flutter CLI tool, you should also check out the following releases for the IntelliJ/Android Studio Flutter plugin, the VSCode Flutter plugin and Dart DevTools:
+Como sempre, a experiência de ponta a ponta do Flutter depende muito de suas ferramentas. Com isso em mente, além dos PRs listados abaixo, que se concentram na ferramenta CLI flutter, você também deve conferir os seguintes lançamentos para o plugin Flutter IntelliJ/Android Studio, o plugin Flutter VSCode e Dart DevTools:
 
 
 
-*   [DevTools 0.1.6 Release Notes](https://groups.google.com/forum/#!topic/flutter-announce/x9eiBq-OZUk) - Sept 5, 2019
-*   [IntelliJ Plugin M39 Release Notes](https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!msg/flutter-announce/HH2-z-wYMH4/Yb1mzIPWBgAJ) - Sept 3, 2019
-*   [VSCode Plugin v3.4](https://dartcode.org/releases/v3-4/) - Sept 3, 2019
-*   [DevTools 0.1.5 Release Notes](https://groups.google.com/forum/#!searchin/flutter-announce/release$20notes|sort:date/flutter-announce/_tBeov94GEk/8IMoZnV0DQAJ) - Aug 5, 2019
-*   [VSCode Plugin v3.3](https://dartcode.org/releases/v3-3/) - Aug 2, 2019
-*   [IntelliJ Plugin M38 Release Notes](https://groups.google.com/forum/#!searchin/flutter-announce/intellij|sort:date/flutter-announce/-LQPz3C3JAM/ZR2WnOklEQAJ) - Aug 2, 2019
-*   [DevTools 0.1.4 Release Notes](https://groups.google.com/forum/#!searchin/flutter-announce/release$20notes|sort:date/flutter-announce/ZUcqjzEDTKc/ABZtXXOpCgAJ) - Jul 19, 2019
-*   [VSCode Plugin v3.2](https://dartcode.org/releases/v3-2/) - Jun 28, 2019
+*   [Notas de Lançamento do DevTools 0.1.6](https://groups.google.com/forum/#!topic/flutter-announce/x9eiBq-OZUk) - 5 de setembro de 2019
+*   [Notas de Lançamento do Plugin IntelliJ M39](https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!msg/flutter-announce/HH2-z-wYMH4/Yb1mzIPWBgAJ) - 3 de setembro de 2019
+*   [Plugin VSCode v3.4](https://dartcode.org/releases/v3-4/) - 3 de setembro de 2019
+*   [Notas de Lançamento do DevTools 0.1.5](https://groups.google.com/forum/#!searchin/flutter-announce/release$20notes|sort:date/flutter-announce/_tBeov94GEk/8IMoZnV0DQAJ) - 5 de agosto de 2019
+*   [Plugin VSCode v3.3](https://dartcode.org/releases/v3-3/) - 2 de agosto de 2019
+*   [Notas de Lançamento do Plugin IntelliJ M38](https://groups.google.com/forum/#!searchin/flutter-announce/intellij|sort:date/flutter-announce/-LQPz3C3JAM/ZR2WnOklEQAJ) - 2 de agosto de 2019
+*   [Notas de Lançamento do DevTools 0.1.4](https://groups.google.com/forum/#!searchin/flutter-announce/release$20notes|sort:date/flutter-announce/ZUcqjzEDTKc/ABZtXXOpCgAJ) - 19 de julho de 2019
+*   [Plugin VSCode v3.2](https://dartcode.org/releases/v3-2/) - 28 de junho de 2019
 
-In addition, this release also has a lot going on under the hood to provide you with better, more actionable error messages. You can read about those details in [this blog post](https://blog.flutter.dev/improving-flutters-error-messages-e098513cecf9) from the Flutter User Experience team.
+Além disso, esta versão também tem muito acontecendo nos bastidores para fornecer mensagens de erro melhores e mais acionáveis. Você pode ler sobre esses detalhes [neste post do blog](https://blog.flutter.dev/improving-flutters-error-messages-e098513cecf9) da equipe de Experiência do Usuário do Flutter.
 
 [32511](https://github.com/flutter/flutter/pull/32511) Rendering errors with root causes in the widget layer should have a reference to the widget
 
@@ -1238,6 +1239,6 @@ In addition, this release also has a lot going on under the hood to provide you 
 [36884](https://github.com/flutter/flutter/pull/36884) Unbreak build_runner
 
 
-## Full PR List
+## Lista Completa de PRs
 
-You can see the full list of merged PRs in this release [here](/release/release-notes/changelogs/changelog-1.9.1).
+Você pode ver a lista completa de PRs mesclados nesta versão [aqui](/release/release-notes/changelogs/changelog-1.9.1).

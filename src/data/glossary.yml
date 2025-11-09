@@ -1,22 +1,22 @@
 - term: "Impeller"
   short_description: |-
-    Flutter's modern graphics rendering engine,
-    designed for smooth, predictable performance.
+    Motor de renderização gráfica moderno do Flutter,
+    projetado para performance suave e previsível.
   long_description: |-
-    _Impeller_ is Flutter's high-performance rendering engine,
-    built from the ground up for Flutter's needs and modern graphics APIs.
+    _Impeller_ é o motor de renderização de alto desempenho do Flutter,
+    construído do zero para as necessidades do Flutter e APIs gráficas modernas.
 
-    Its primary goal is to provide consistently smooth performance and
-    eliminate stuttering while rendering, particularly that
-    caused by shader compilation during animations and interactions.
+    Seu objetivo principal é fornecer performance consistentemente suave e
+    eliminar travamentos durante a renderização, particularmente aqueles
+    causados por compilação de shaders durante animações e interações.
 
-    Impeller achieves this by pre-compiling a specific, smaller set of
-    shaders at application build time, rather than compiling at runtime.
+    Impeller consegue isso pré-compilando um conjunto específico e menor de
+    shaders em tempo de compilação da aplicação, em vez de compilar em tempo de execução.
   related_links:
-    - text: "Impeller documentation"
+    - text: "Documentação do Impeller"
       link: "/perf/impeller"
       type: "doc"
-    - text: "Impeller FAQ"
+    - text: "FAQ do Impeller"
       link: "https://github.com/flutter/flutter/blob/main/docs/engine/impeller/docs/faq.md"
       type: "external"
   labels:
@@ -26,35 +26,35 @@
 
 - term: "Widget"
   short_description: |-
-    The basic building block of a Flutter user interface.
+    O bloco de construção básico de uma interface de usuário Flutter.
   long_description: |-
-    An immutable description of part of a user interface.
+    Uma descrição imutável de parte de uma interface de usuário.
 
-    In Flutter, almost everything is a _widget_.
-    Widgets are the fundamental building blocks you use to
-    create your application's UI with Flutter.
-    Each widget is an immutable declaration of _what the UI should
-    look like based on its current configuration and state.
+    No Flutter, quase tudo é um _widget_.
+    Widgets são os blocos de construção fundamentais que você usa para
+    criar a UI da sua aplicação com Flutter.
+    Cada widget é uma declaração imutável de _como a UI deve
+    se parecer com base em sua configuração e estado atual.
 
-    Widgets are composed together in a hierarchy to form the widget tree.
-    When a widget's state changes, the Flutter framework
-    rebuilds the necessary parts of the tree to update the UI.
-    
-    There are two primary types of widgets,
-    including [`StatelessWidget`][], which have no mutable state, and
-    [`StatefulWidget`][], which have a persistent [state][] that can be updated.
+    Widgets são compostos juntos em uma hierarquia para formar a árvore de widgets.
+    Quando o estado de um widget muda, o framework Flutter
+    reconstrói as partes necessárias da árvore para atualizar a UI.
+
+    Existem dois tipos principais de widgets,
+    incluindo [`StatelessWidget`][], que não possuem estado mutável, e
+    [`StatefulWidget`][], que possuem um [state][] persistente que pode ser atualizado.
 
     [`StatelessWidget`]: https://api.flutterbrasil.dev/flutter/widgets/StatelessWidget-class.html
     [`StatefulWidget`]: https://api.flutterbrasil.dev/flutter/widgets/StatefulWidget-class.html
     [state]: https://api.flutterbrasil.dev/flutter/widgets/State-class.html
   related_links:
-    - text: "Fundamentals: Widgets"
+    - text: "Fundamentos: Widgets"
       link: "/get-started/fundamentals/widgets"
       type: "doc"
-    - text: "Widget catalog"
+    - text: "Catálogo de widgets"
       link: "/ui/widgets"
       type: "doc"
-    - text: "Widget class"
+    - text: "Classe Widget"
       link: "https://api.flutterbrasil.dev/flutter/widgets/Widget-class.html"
       type: "api"
   labels:

@@ -1,44 +1,45 @@
 ---
-title: Run DevTools from the command line
-description: Learn how to launch and use DevTools from the command line.
+ia-translate: true
+title: Execute DevTools da linha de comando
+description: Aprenda como iniciar e usar DevTools da linha de comando.
 ---
 
-To run DevTools from the CLI,
-you must have `dart` on your path.
-Then to launch DevTools, run the `dart devtools` command.
+Para executar DevTools da CLI,
+você deve ter `dart` no seu path.
+Então, para iniciar DevTools, execute o comando `dart devtools`.
 
-To upgrade DevTools, upgrade Flutter.
-If a newer Dart SDK
-(which is included in the Flutter SDK)
-has a newer version of DevTools,
-running `dart devtools` automatically launches this version.
-If `which dart` points to a Dart SDK _not_
-included in your Flutter SDK, updating that
-Dart SDK won't update the Flutter version.
+Para atualizar DevTools, atualize Flutter.
+Se um Dart SDK mais recente
+(que está incluído no Flutter SDK)
+tiver uma versão mais recente de DevTools,
+executar `dart devtools` automaticamente inicia esta versão.
+Se `which dart` aponta para um Dart SDK que _não_ está
+incluído no seu Flutter SDK, atualizar aquele
+Dart SDK não atualizará a versão do Flutter.
 
-When you run DevTools from the command line,
-you should see output that looks something like:
+Quando você executa DevTools da linha de comando,
+você deverá ver uma saída que se parece com algo assim:
 
 ```plaintext
 Serving DevTools at http://127.0.0.1:9100
 ```
 
-## Start an application to debug
+## Inicie uma aplicação para depurar
 
-Next, start an app to connect to.
-This can be either a Flutter application
-or a Dart command-line application.
-The command below specifies a Flutter app:
+Em seguida, inicie um app para conectar.
+Este pode ser tanto uma aplicação Flutter
+quanto uma aplicação de linha de comando Dart.
+O comando abaixo especifica um app Flutter:
 
 ```console
 cd path/to/flutter/app
 flutter run
 ```
 
-You need to have a device connected, or a simulator open,
-for `flutter run` to work. Once the app starts,
-you'll see a message in your terminal that looks like
-the following:
+Você precisa ter um dispositivo conectado, ou um simulador aberto,
+para que `flutter run` funcione. Uma vez que o app inicie,
+você verá uma mensagem no seu terminal que se parece com
+o seguinte:
 
 ```console
 A Dart VM Service on macOS is available at:
@@ -48,22 +49,22 @@ is available at:
 http://127.0.0.1:9100?uri=http://127.0.0.1:51830/u37pq71Re0k=/
 ```
 
-Open the DevTools instance connected to your app
-by opening the second link in Chrome.
+Abra a instância DevTools conectada ao seu app
+abrindo o segundo link no Chrome.
 
-This URL contains a security token,
-so it's different for each run of your app.
-This means that if you stop your application and re-run it,
-you need to connect to DevTools again with the new URL.
+Esta URL contém um token de segurança,
+então ela é diferente para cada execução do seu app.
+Isso significa que se você parar sua aplicação e executá-la novamente,
+você precisa conectar a DevTools novamente com a nova URL.
 
-## Connect to a new app instance
+## Conecte a uma nova instância de app
 
-If your app stops running
-or you opened DevTools manually,
-you should see a **Connect** dialog:
+Se seu app parar de executar
+ou você abriu DevTools manualmente,
+você deverá ver um diálogo **Connect**:
 
 ![Screenshot of the DevTools connect dialog](/assets/images/docs/tools/devtools/connect_dialog.png){:width="100%"}
 
-You can manually connect DevTools to a new app instance
-by copying the link you got from running your app,
-such as ` http://127.0.0.1:51830/u37pq71Re0k=/`
+Você pode conectar manualmente DevTools a uma nova instância de app
+copiando o link que você obteve ao executar seu app,
+como ` http://127.0.0.1:51830/u37pq71Re0k=/`

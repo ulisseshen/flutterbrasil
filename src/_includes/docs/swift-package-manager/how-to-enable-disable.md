@@ -1,56 +1,55 @@
-## How to turn on Swift Package Manager
+## Como ativar o Swift Package Manager
 
-Flutter's Swift Package Manager support is turned off by default.
-To turn it on:
+O suporte ao Swift Package Manager do Flutter está desativado por padrão.
+Para ativá-lo:
 
-1. Upgrade to the latest Flutter SDK:
+1. Atualize para a versão mais recente do Flutter SDK:
 
    ```sh
    flutter upgrade
    ```
 
-1. Turn on the Swift Package Manager feature:
+1. Ative o recurso Swift Package Manager:
 
    ```sh
    flutter config --enable-swift-package-manager
    ```
 
-Using the Flutter CLI to run an app [migrates the project][addSPM] to add
-Swift Package Manager integration.
-This makes your project download the Swift packages that
-your Flutter plugins depend on.
-An app with Swift Package Manager integration requires Flutter version 3.24 or
-higher.
-To use an older Flutter version,
-you will need to [remove Swift Package Manager integration][removeSPM]
-from the app.
+Usar a CLI do Flutter para executar um app [migra o projeto][addSPM] para adicionar
+integração com Swift Package Manager.
+Isso faz com que seu projeto baixe os pacotes Swift dos quais
+seus plugins Flutter dependem.
+Um app com integração ao Swift Package Manager requer Flutter versão 3.24 ou
+superior.
+Para usar uma versão mais antiga do Flutter,
+você precisará [remover a integração ao Swift Package Manager][removeSPM]
+do app.
 
-Flutter falls back to CocoaPods for dependencies that do not support Swift
-Package Manager yet.
+O Flutter volta a usar CocoaPods para dependências que ainda não suportam Swift
+Package Manager.
 
-## How to turn off Swift Package Manager
+## Como desativar o Swift Package Manager
 
-:::secondary Plugin authors
-Plugin authors need to turn on and off Flutter's Swift Package Manager
-support for testing.
-App developers do not need to disable Swift Package Manager support,
-unless they are running into issues.
+:::secondary Autores de plugins
+Autores de plugins precisam ativar e desativar o suporte ao Swift Package Manager
+do Flutter para testes.
+Desenvolvedores de apps não precisam desativar o suporte ao Swift Package Manager,
+a menos que estejam enfrentando problemas.
 
-If you find a bug in Flutter's Swift Package Manager support,
-[open an issue][].
+Se você encontrar um bug no suporte ao Swift Package Manager do Flutter,
+[abra uma issue][open an issue].
 :::
 
-Disabling Swift Package Manager causes Flutter to use CocoaPods for all
-dependencies.
-However, Swift Package Manager remains integrated with your project.
-To remove Swift Package Manager integration completely from your project,
-follow the [How to remove Swift Package Manager integration][removeSPM]
-instructions.
+Desativar o Swift Package Manager faz com que o Flutter use CocoaPods para todas
+as dependências.
+No entanto, o Swift Package Manager permanece integrado ao seu projeto.
+Para remover completamente a integração ao Swift Package Manager do seu projeto,
+siga as instruções de [Como remover a integração ao Swift Package Manager][removeSPM].
 
-### Turn off for a single project
+### Desativar para um único projeto
 
-In the project's `pubspec.yaml` file, under the `flutter` section,
-add `disable-swift-package-manager: true`.
+No arquivo `pubspec.yaml` do projeto, sob a seção `flutter`,
+adicione `disable-swift-package-manager: true`.
 
 ```yaml title="pubspec.yaml"
 # The following section is specific to Flutter packages.
@@ -58,20 +57,20 @@ flutter:
   disable-swift-package-manager: true
 ```
 
-This turns off Swift Package Manager for all contributors to this project.
+Isso desativa o Swift Package Manager para todos os contribuidores deste projeto.
 
-### Turn off globally for all projects
+### Desativar globalmente para todos os projetos
 
-Run the following command:
+Execute o seguinte comando:
 
 ```sh
 flutter config --no-enable-swift-package-manager
 ```
 
-This turns off Swift Package Manager for the current user.
+Isso desativa o Swift Package Manager para o usuário atual.
 
-If a project is incompatible with Swift Package Manager, all contributors
-need to run this command.
+Se um projeto for incompatível com o Swift Package Manager, todos os contribuidores
+precisam executar este comando.
 
 [addSPM]: /packages-and-plugins/swift-package-manager/for-app-developers/#how-to-add-swift-package-manager-integration
 [removeSPM]: /packages-and-plugins/swift-package-manager/for-app-developers#how-to-remove-swift-package-manager-integration

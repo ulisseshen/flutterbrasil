@@ -39,4 +39,3 @@ jobs:
           projectId: transliteradu
           channelId: pr-${{ github.event.pull_request.number }}
           expires: 7d
-          target: docs-flutterbrasil

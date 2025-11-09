@@ -1,34 +1,35 @@
 ---
-title: Fetch data from the internet
-description: Instructions on how to make HTTP requests and parse responses.
+ia-translate: true
+title: Buscar dados da internet
+description: Instruções sobre como fazer requisições HTTP e analisar respostas.
 permalink: /tutorial/http-request/
 sitemap: false
 ---
 
-The overarching pattern that this tutorial implements is called
-*Model-View-ViewModel* or *MVVM*. MVVM is an [architectural pattern][]
-used in client apps that separates your app into three layers: the
-Model handles data operations, the View displays the UI, and the
-ViewModel manages state and connects them. The core tenet of MVVM
-(and many other patterns) is *separation of concerns*. Managing state
-in separate classes (outside your UI widgets) makes your code more
-testable, reusable, and easier to maintain.
+O padrão abrangente que este tutorial implementa é chamado
+*Model-View-ViewModel* ou *MVVM*. MVVM é um [padrão de arquitetura][architectural pattern]
+usado em apps cliente que separa seu app em três camadas: o
+Model lida com operações de dados, a View exibe a UI, e o
+ViewModel gerencia o estado e os conecta. O princípio central do MVVM
+(e muitos outros padrões) é a *separação de responsabilidades*. Gerenciar estado
+em classes separadas (fora dos seus widgets de UI) torna seu código mais
+testável, reutilizável e fácil de manter.
 
 <img src="/assets/images/docs/tutorial/simple_mvvm.png" width="100%"
-alt="A diagram that shows the three layers of MVVM architecture: Model, ViewModel, and View.">
+alt="Um diagrama que mostra as três camadas da arquitetura MVVM: Model, ViewModel e View.">
 
-A single feature in your app contains each one of the MVVM components. In
-this tutorial, you'll create an `ArticleModel`, `ArticleViewModel` and
-`ArticleView`, in addition to Flutter widgets.
+Uma única funcionalidade no seu app contém cada um dos componentes MVVM. Neste
+tutorial, você criará um `ArticleModel`, `ArticleViewModel` e
+`ArticleView`, além de widgets Flutter.
 
-## Define the Model
+## Definir o Model
 
-The Model is the source-of-truth for your app's data, and is
-responsible for low-level tasks such as making HTTP
-requests, caching data, or managing system resources such as a plugin.
-A model doesn't usually need to import Flutter libraries.
+O Model é a fonte da verdade para os dados do seu app, e é
+responsável por tarefas de baixo nível como fazer requisições HTTP,
+cachear dados, ou gerenciar recursos do sistema como um plugin.
+Um model geralmente não precisa importar bibliotecas Flutter.
 
-Create an empty `ArticleModel` class in your `main.dart` file:
+Crie uma classe `ArticleModel` vazia no seu arquivo `main.dart`:
 
 ```dart
 class ArticleModel {
@@ -36,17 +37,17 @@ class ArticleModel {
 }
 ```
 
-## Build the HTTP request
+## Construir a requisição HTTP
 
-Wikipedia provides a REST API that returns JSON data about articles.
-For this app, you'll use the endpoint that returns a random article
-summary.
+A Wikipedia fornece uma API REST que retorna dados JSON sobre artigos.
+Para este app, você usará o endpoint que retorna um resumo de artigo
+aleatório.
 
 ```txt
 https://en.wikipedia.org/api/rest_v1/page/random/summary
 ```
 
-Add a method to fetch random Wikipedia article summaries:
+Adicione um método para buscar resumos de artigos aleatórios da Wikipedia:
 
 ```dart
 class ArticleModel {
@@ -62,21 +63,21 @@ class ArticleModel {
 }
 ```
 
-Use the [`async` and `await`][] keywords to handle asynchronous operations.
-The `async` keyword marks a method as asynchronous, and `await` marks
-expressions that return a [`Future`][].
+Use as palavras-chave [`async` e `await`][`async` and `await`] para lidar com operações assíncronas.
+A palavra-chave `async` marca um método como assíncrono, e `await` marca
+expressões que retornam um [`Future`][`Future`].
 
-The `Uri.https()` constructor safely builds URLs by handling encoding
-and formatting. This approach is more reliable than string
-concatenation, especially when dealing with special characters or
-query parameters.
+O construtor `Uri.https()` constrói URLs com segurança lidando com codificação
+e formatação. Esta abordagem é mais confiável que concatenação de strings,
+especialmente ao lidar com caracteres especiais ou
+parâmetros de query.
 
-## Handle network errors
+## Lidar com erros de rede
 
-Always handle errors when making HTTP requests. A status code of 200 indicates
-success, while other codes indicate errors. If the
-status code isn't 200, the model throws an error for the UI to
-display to users.
+Sempre lide com erros ao fazer requisições HTTP. Um código de status 200 indica
+sucesso, enquanto outros códigos indicam erros. Se o
+código de status não for 200, o model lança um erro para a UI
+exibir aos usuários.
 
 ```dart
 class ArticleModel {
@@ -96,10 +97,10 @@ class ArticleModel {
 }
 ```
 
-## Parse JSON from Wikipedia
+## Analisar JSON da Wikipedia
 
-The [Wikipedia API][] returns [JSON][] data that you decode into
-a `Summary` class. Complete the `getRandomArticleSummary` method:
+A [API da Wikipedia][Wikipedia API] retorna dados [JSON][JSON] que você decodifica em
+uma classe `Summary`. Complete o método `getRandomArticleSummary`:
 
 ```dart
 class ArticleModel {
@@ -119,9 +120,9 @@ class ArticleModel {
 }
 ```
 
-The `dartpedia` package provides the `Summary` class. If you're
-unfamiliar with JSON parsing, see the [Dart Getting Started
-tutorial][].
+O pacote `dartpedia` fornece a classe `Summary`. Se você não está
+familiarizado com parsing de JSON, veja o [tutorial Getting Started
+do Dart][Dart Getting Started tutorial].
 
 [architectural pattern]: /architecture/guide
 [JSON]: {{site.dart-site}}/tutorial/json

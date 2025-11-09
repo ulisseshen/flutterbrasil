@@ -1,6 +1,7 @@
 ---
-title: Create an app
-description: Instructions on how to create a new Flutter app.
+ia-translate: true
+title: Crie um app
+description: Instruções sobre como criar um novo app Flutter.
 permalink: /tutorial/create-an-app/
 sitemap: false
 ---
@@ -9,34 +10,33 @@ sitemap: false
 <!-- TODO(ewindmill) embed video -->
 {%- endcomment %}
 
-In this first section of the Flutter tutorial, you’ll build the core UI of an
-app called ‘Birdle’, a game similar to [Wordle, the popular New York Times
-game][].
+Nesta primeira seção do tutorial do Flutter, você construirá a UI principal de um
+app chamado 'Birdle', um jogo similar ao [Wordle, o popular jogo do New York Times][Wordle, the popular New York Times game].
 
-By the end of this tutorial, you’ll have learned the fundamentals of building
-Flutter UIs, and your app will look like the following screenshot (and it’ll
-even mostly work 😀).
+Ao final deste tutorial, você terá aprendido os fundamentos de construção
+de UIs Flutter, e seu app se parecerá com a seguinte captura de tela (e ele
+até funcionará quase completamente 😀).
 
 <img src='/assets/images/docs/tutorial/birdle.png' width="100%" alt="A screenshot that resembles the popular game Wordle.">
 
-## Create a new Flutter project
+## Crie um novo projeto Flutter
 
-The first step to building Flutter apps is to create a new project. You create
-new apps with the [Flutter CLI tool][], installed as part of the Flutter SDK.
+O primeiro passo para construir apps Flutter é criar um novo projeto. Você cria
+novos apps com a [ferramenta CLI do Flutter][Flutter CLI tool], instalada como parte do SDK do Flutter.
 
-Open your terminal or command prompt and run the following command to create a
-new Flutter project:
+Abra seu terminal ou prompt de comando e execute o seguinte comando para criar um
+novo projeto Flutter:
 
 ```shell
 $ flutter create birdle --empty
 ```
 
-This creates a new Flutter project using the minimal “empty” template.
+Isso cria um novo projeto Flutter usando o template mínimo "empty".
 
-## Examine the code
+## Examine o código
 
-In your IDE, open the file at `lib/main.dart`. Starting from the top, you’ll see
-this code.
+Na sua IDE, abra o arquivo em `lib/main.dart`. Começando do topo, você verá
+este código.
 
 ```dart
 import 'package:flutter/material.dart'; // imports Flutter
@@ -47,13 +47,13 @@ void main() {
 // ...
 ```
 
-The `main` function is the entry point to any Dart program, and a Flutter app is
-just a **Dart** program. The `runApp` method is part of the Flutter SDK, and it
-takes a **widget** as an argument. (Most of this tutorial is about widgets, but
-in the simplest terms a widget is a Dart object that describes a piece of UI.)
-In this case, an instance of the `MainApp` widget is being passed in.
+A função `main` é o ponto de entrada para qualquer programa Dart, e um app Flutter é
+apenas um programa **Dart**. O método `runApp` é parte do SDK do Flutter, e ele
+recebe um **widget** como argumento. (A maior parte deste tutorial é sobre widgets, mas
+em termos mais simples um widget é um objeto Dart que descreve um pedaço de UI.)
+Neste caso, uma instância do widget `MainApp` está sendo passada.
 
-Just below the `main` function, you’ll find the `MainApp` class declaration.
+Logo abaixo da função `main`, você encontrará a declaração da classe `MainApp`.
 
 ```dart
 class MainApp extends StatelessWidget {
@@ -73,46 +73,46 @@ class MainApp extends StatelessWidget {
 
 ```
 
-`MainApp` is the **root widget**, as it’s the widget that’s passed into
-`runApp`. Within this widget, there’s a `build` method, which returns another
-widget called `MaterialApp`.  Essentially, this is what a Flutter app is: a
-composition of Widgets that make up a tree structure called the **widget tree.**
-Your job as a Flutter developer is to compose widgets from the SDK into larger,
-custom widgets that display a UI.
+`MainApp` é o **widget raiz**, pois é o widget que é passado para
+`runApp`. Dentro deste widget, há um método `build`, que retorna outro
+widget chamado `MaterialApp`.  Essencialmente, isto é o que um app Flutter é: uma
+composição de Widgets que formam uma estrutura de árvore chamada **árvore de widgets.**
+Seu trabalho como desenvolvedor Flutter é compor widgets do SDK em widgets maiores e
+personalizados que exibem uma UI.
 
-At the moment, the widget tree is quite simple:
+No momento, a árvore de widgets é bem simples:
 
 <img src='/assets/images/docs/tutorial/initial_widget_tree.png' alt="A screenshot that resembles the popular game Wordle.">
 
-## Run your app
+## Execute seu app
 
-In your terminal at the root of your Flutter app, run:
+No seu terminal na raiz do seu app Flutter, execute:
 
 ```shell
 $ cd birdle
 $ flutter run -d chrome
 ```
 
-The app will build and launch in a new instance of Chrome.
+O app será compilado e iniciará em uma nova instância do Chrome.
 
 <img src='/assets/images/docs/tutorial/hello_world.png' alt="A screenshot that resembles the popular game Wordle.">
 
 ## Use hot reload
 
-**Stateful hot reload**, if you haven't heard of it, allows a running Flutter
-app to re-render updated business logic or UI code in less than a second - all
-without losing your place in the app.
+**Stateful hot reload**, se você ainda não ouviu falar, permite que um app Flutter em execução
+re-renderize lógica de negócio ou código de UI atualizado em menos de um segundo - tudo
+sem perder seu lugar no app.
 
-In your IDE, open the `main.dart` file and navigate to line ~15 and find this
-code:
+Na sua IDE, abra o arquivo `main.dart` e navegue até a linha ~15 e encontre este
+código:
 
 ```dart
 child: Text('Hello World!'),
 ```
 
-Change the text inside the string to anything you want. Then, hot-reload your
-app by pressing `r` in your terminal where the app is running. The running app
-should instantly show your updated text.
+Mude o texto dentro da string para qualquer coisa que você queira. Então, faça hot-reload do seu
+app pressionando `r` no seu terminal onde o app está sendo executado. O app em execução
+deve instantaneamente mostrar seu texto atualizado.
 
 
 [Flutter CLI tool]: /reference/flutter-cli

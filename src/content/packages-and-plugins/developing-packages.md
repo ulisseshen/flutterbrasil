@@ -336,7 +336,7 @@ por exemplo:
   s.osx.deployment_target = '10.15'
 ```
 
-### Passo 1: Criar o package
+### Passo 1: Criar o package {:#step-1-create-the-package-1}
 
 Para criar um plugin package, use a flag `--template=plugin`
 com `flutter create`.
@@ -872,7 +872,7 @@ onde você o colocou):
 Para dicas sobre como escrever documentação de API, veja
 [Effective Dart Documentation][].
 
-### Adicionando licenças ao arquivo LICENSE
+### Adicionando licenças ao arquivo LICENSE {:#adding-licenses-to-the-license-file}
 
 Licenças individuais dentro de cada arquivo LICENSE
 devem ser separadas por 80 hífens

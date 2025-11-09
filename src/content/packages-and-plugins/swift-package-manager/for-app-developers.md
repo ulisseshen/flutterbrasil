@@ -29,7 +29,7 @@ A integração do Flutter com Swift Package Manager tem vários benefícios:
 
 {% render "docs/swift-package-manager/how-to-enable-disable.md", site: site %}
 
-## Como adicionar integração com Swift Package Manager
+## Como adicionar integração com Swift Package Manager {:#how-to-add-swift-package-manager-integration}
 
 ### Adicionar a um app Flutter
 
@@ -46,7 +46,7 @@ A integração do Flutter com Swift Package Manager tem vários benefícios:
 </Tab>
 </Tabs>
 
-### Adicionar a um app Flutter _manualmente_
+### Adicionar a um app Flutter _manualmente_ {:#add-to-a-flutter-app-manually}
 
 <Tabs key="darwin-platform">
 <Tab name="iOS project">
@@ -89,7 +89,7 @@ do target `Flutter`.
 [manualIntegrationStep1]: /packages-and-plugins/swift-package-manager/for-app-developers/#step-1-add-fluttergeneratedpluginswiftpackage-package-dependency
 [manualIntegrationStep2]: /packages-and-plugins/swift-package-manager/for-app-developers/#step-2-add-run-prepare-flutter-framework-script-pre-action
 
-## Como remover integração com Swift Package Manager
+## Como remover integração com Swift Package Manager {:#how-to-remove-swift-package-manager-integration}
 
 Para adicionar integração com Swift Package Manager, o Flutter CLI migra seu projeto.
 Esta migração atualiza seu projeto Xcode para adicionar dependências de plugin Flutter.

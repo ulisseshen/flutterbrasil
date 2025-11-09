@@ -132,7 +132,7 @@ escuro:
 Para mais informações sobre como reduzir jank de compilação de shader,
 confira [Reduce shader compilation jank on mobile][Reduce shader compilation jank on mobile].
 
-## Aba Frame analysis
+## Aba Frame analysis {:#frame-analysis-tab}
 
 Selecionar um frame janky (lento, colorido em vermelho)
 do gráfico de frames Flutter acima mostra dicas de debugging

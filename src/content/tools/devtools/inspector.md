@@ -82,7 +82,7 @@ usado como a versão visual do rótulo.
 [Highlight repaints]: #highlight-repaints
 [Highlight oversized images]: #highlight-oversized-images
 
-## Inspecionando um widget
+## Inspecionando um widget {:#inspecting-a-widget}
 
 Você pode navegar pela árvore de widgets interativa para visualizar widgets
 próximos e ver seus valores de campos.
@@ -100,13 +100,13 @@ campos `size` e `constraints`. As constraints fluem para baixo na árvore,
 e os tamanhos fluem de volta para cima. Para mais informações sobre como isso funciona,
 veja [Understanding constraints].
 
-## Árvore de Widgets do Flutter
+## Árvore de Widgets do Flutter {:#flutter-widget-tree}
 
 A Árvore de Widgets do Flutter permite que você visualize, entenda e navegue pela árvore de Widgets do seu app.
 
 ![Image of Flutter inspector with Widget Tree highlighted](/assets/images/docs/tools/devtools/inspector-widget-tree.png){:width="100%"}
 
-### Use a Árvore de Widgets
+### Use a Árvore de Widgets {:#use-the-widget-tree}
 
 #### Visualizando widgets criados em seu projeto
 
@@ -557,7 +557,7 @@ Este recurso impede que Widgets `const` idênticos sejam
 considerados iguais em builds de debug. Para mais detalhes, veja
 a discussão sobre [problemas comuns ao depurar][common problems when debugging].
 
-## Configurações do Inspector
+## Configurações do Inspector {:#inspector-settings}
 
 ![The Flutter Inspector Settings dialog](/assets/images/docs/tools/devtools/flutter-inspector-settings.png){:width="100%"}
 

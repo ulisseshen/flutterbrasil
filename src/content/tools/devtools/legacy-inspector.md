@@ -55,7 +55,7 @@ usado como a versão visual do rótulo.
 [Highlight repaints]: #highlight-repaints
 [Highlight oversized images]: #highlight-oversized-images
 
-## Inspecionando um widget
+## Inspecionando um widget {:#inspecting-a-widget}
 
 Você pode navegar pela árvore de widgets interativa para visualizar widgets
 próximos e ver seus valores de campos.

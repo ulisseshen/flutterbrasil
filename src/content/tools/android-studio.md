@@ -241,7 +241,7 @@ Você precisa conectar um dispositivo ou iniciar um simulador para prosseguir.
  1. Clique no **ícone Play** na barra de ferramentas, ou invoque **Run > Run**.
     O painel **Run** na parte inferior mostra a saída de logs.
 
-### Execute o app com breakpoints
+### Execute o app com breakpoints {:#run-app-with-breakpoints}
 
  1. Se desejar, defina breakpoints em seu código-fonte.
  1. Clique no **ícone Debug** na barra de ferramentas, ou invoque **Run > Debug**.

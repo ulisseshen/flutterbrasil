@@ -49,7 +49,7 @@ DevTools (veja [instruções de inicialização][launch instructions]).
 
 ![Screenshot of app size access on landing page](/assets/images/docs/tools/devtools/app_size_access_landing_page.png){:width="100%"}
 
-## Aba Analysis
+## Aba Analysis {:#analysis-tab}
 
 A aba Analysis permite inspecionar um único snapshot
 de informações de tamanho. Você pode visualizar a estrutura hierárquica
@@ -71,7 +71,7 @@ de app no diálogo e clique em "Analyze Size".
 Veja [Gerando arquivos de tamanho][Generating size files] abaixo para informações sobre
 como gerar arquivos de tamanho.
 
-### Treemap e tabela
+### Treemap e tabela {:#use-the-treemap}
 
 O treemap e a tabela mostram os dados hierárquicos para o tamanho do seu app.
 
@@ -198,7 +198,7 @@ Este é um exemplo onde o grafo de chamadas daria
 a você uma melhor compreensão sobre por que um pedaço de código está
 incluído em sua aplicação.
 
-## Aba Diff
+## Aba Diff {:#diff-tab}
 
 A aba Diff permite comparar dois snapshots de
 informações de tamanho. Os dois arquivos de informações de tamanho
@@ -231,7 +231,7 @@ apenas os dados que diferem entre os dois arquivos de tamanho importados.
 
 Para perguntas sobre o uso do treemap, veja [Use o treemap][Use the treemap] acima.
 
-## Gerando arquivos de tamanho
+## Gerando arquivos de tamanho {:#generating-size-files}
 
 Para usar a ferramenta de tamanho de app, você precisará gerar um
 arquivo de análise de tamanho do Flutter. Este arquivo contém informações de tamanho

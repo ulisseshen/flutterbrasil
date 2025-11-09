@@ -268,7 +268,7 @@ No entanto, vazamentos são mais propensos a causar problemas de memória,
 porque mesmo um pequeno vazamento,
 se repetido muitas vezes, leva a uma travamento.
 
-## Guia da visualização Memory
+## Guia da visualização Memory {:#memory-view-guide}
 
 A visualização memory do DevTools ajuda você a investigar
 alocações de memória (tanto no heap quanto externas),
@@ -291,7 +291,7 @@ tem os seguintes recursos:
 : Investigue o gerenciamento de memória de um recurso para
   um conjunto especificado de classes.
 
-### Gráfico expansível
+### Gráfico expansível {:#expandable-chart}
 
 O gráfico expansível fornece os seguintes recursos:
 
@@ -386,7 +386,7 @@ As quantidades plotadas no eixo y são as seguintes:
 
 <a id="profile-tab" aria-hidden="true"></a>
 
-### Aba Profile Memory
+### Aba Profile Memory {:#profile-memory-tab}
 
 Use a aba **Profile Memory** para ver a alocação de memória atual
 por classe e tipo de memória. Para uma
@@ -396,7 +396,7 @@ Alterne **Refresh on GC**, para ver a alocação em tempo real.
 
 ![Screenshot of the profile tab page](/assets/images/docs/tools/devtools/profile-tab.png){:width="100%"}
 
-### Aba Diff Snapshots
+### Aba Diff Snapshots {:#diff-snapshots-tab}
 
 Use a aba **Diff Snapshots** para investigar o gerenciamento
 de memória de um recurso. Siga a orientação na aba
@@ -415,7 +415,7 @@ ou outras ferramentas, baixe os dados no formato CSV.
 
 <a id="trace-tab" aria-hidden="true"></a>
 
-### Aba Trace Instances
+### Aba Trace Instances {:#trace-instances-tab}
 
 Use a aba **Trace Instances** para investigar quais métodos
 alocam memória para um conjunto de classes durante a execução do recurso:

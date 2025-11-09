@@ -39,7 +39,7 @@ marketing e conteúdo de ajuda—criados usando HTML otimizado para mecanismos d
 Dito isso, como mencionado no [roadmap][roadmap], a equipe Flutter planeja investigar a
 indexabilidade de mecanismos de busca do Flutter web.
 
-### O hot reload funciona com um app web?
+### O hot reload funciona com um app web? {:#hot-reload}
 
 Sim! Embora atualmente esteja atrás de uma flag experimental.
 Para mais informações, confira

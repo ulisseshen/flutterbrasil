@@ -1,136 +1,136 @@
 ---
-title: Load sequence, performance, and memory
-description: What are the steps involved when showing a Flutter UI.
+ia-translate: true
+title: Sequência de carregamento, desempenho e memória
+description: Quais são as etapas envolvidas ao mostrar uma UI Flutter.
 ---
 
-This page describes the breakdown of the steps involved
-to show a Flutter UI. Knowing this, you can make better,
-more informed decisions about when to pre-warm the Flutter engine,
-which operations are possible at which stage,
-and the latency and memory costs of those operations.
+Esta página descreve a divisão das etapas envolvidas
+para mostrar uma UI Flutter. Sabendo disso, você pode tomar decisões
+melhores e mais informadas sobre quando pré-aquecer o engine Flutter,
+quais operações são possíveis em qual estágio,
+e os custos de latência e memória dessas operações.
 
-## Loading Flutter
+## Carregando Flutter
 
-Android and iOS apps (the two supported platforms for
-integrating into existing apps), full Flutter apps,
-and add-to-app patterns have a similar sequence of
-conceptual loading steps when displaying the Flutter UI.
+Apps Android e iOS (as duas plataformas suportadas para
+integração em apps existentes), apps Flutter completos,
+e padrões add-to-app têm uma sequência semelhante de
+etapas conceituais de carregamento ao exibir a UI Flutter.
 
-### Finding the Flutter resources
+### Encontrando os recursos Flutter
 
-Flutter's engine runtime and your application's compiled
-Dart code are both bundled as shared libraries on Android
-and iOS. The first step of loading Flutter is to find those
-resources in your .apk/.ipa/.app (along with other Flutter
-assets such as images, fonts, and JIT code, if applicable).
+O runtime do engine Flutter e o código Dart compilado do seu aplicativo
+são ambos empacotados como bibliotecas compartilhadas no Android
+e iOS. A primeira etapa de carregamento do Flutter é encontrar esses
+recursos no seu .apk/.ipa/.app (junto com outros assets Flutter
+como imagens, fontes e código JIT, se aplicável).
 
-This happens when you construct a `FlutterEngine` for the
-first time on both **[Android][android-engine]**
-and **[iOS][ios-engine]** APIs.
+Isso acontece quando você constrói um `FlutterEngine` pela
+primeira vez tanto nas APIs **[Android][android-engine]**
+quanto **[iOS][ios-engine]**.
 
 :::note
-Some packages allow you to share images and fonts
-from the native application to your Flutter screen.
-For example:
+Alguns pacotes permitem que você compartilhe imagens e fontes
+do aplicativo nativo para sua tela Flutter.
+Por exemplo:
 * [native_font]({{site.pub-pkg}}/native_font)
 * [ios_platform_images]({{site.pub-pkg}}/ios_platform_images)
 :::
 
-### Loading the Flutter library
+### Carregando a biblioteca Flutter
 
-After it's found, the engine's shared libraries are memory loaded
-once per process.
+Depois de encontrada, as bibliotecas compartilhadas do engine são carregadas na memória
+uma vez por processo.
 
-On **Android**, this also happens when the
-[`FlutterEngine`][android-engine] is constructed because the
-JNI connectors need to reference the Flutter C++ library.
-On **iOS**, this happens when the
-[`FlutterEngine`][ios-engine] is first run,
-such as by running [`runWithEntrypoint:`][].
+No **Android**, isso também acontece quando o
+[`FlutterEngine`][android-engine] é construído porque os
+conectores JNI precisam referenciar a biblioteca C++ do Flutter.
+No **iOS**, isso acontece quando o
+[`FlutterEngine`][ios-engine] é executado pela primeira vez,
+como ao executar [`runWithEntrypoint:`][`runWithEntrypoint:`].
 
-### Starting the Dart VM
+### Iniciando a Dart VM
 
-The Dart runtime is responsible for managing Dart memory and
-concurrency for your Dart code. In JIT mode,
-it's additionally responsible for compiling
-the Dart source code into machine code during runtime.
+O runtime Dart é responsável por gerenciar a memória Dart e
+concorrência para seu código Dart. No modo JIT,
+ele é adicionalmente responsável por compilar
+o código-fonte Dart em código de máquina durante o runtime.
 
-A single Dart runtime exists per application session on
-Android and iOS.
+Um único runtime Dart existe por sessão de aplicação no
+Android e iOS.
 
-A one-time Dart VM start is done when constructing the
-[`FlutterEngine`][android-engine] for the first time on
-**Android** and when [running a Dart entrypoint][ios-engine]
-for the first time on **iOS**.
+Um início único da Dart VM é feito ao construir o
+[`FlutterEngine`][android-engine] pela primeira vez no
+**Android** e ao [executar um ponto de entrada Dart][ios-engine]
+pela primeira vez no **iOS**.
 
-At this point, your Dart code's [snapshot][]
-is also loaded into memory from your application's files.
+Neste ponto, o [snapshot][snapshot] do seu código Dart
+também é carregado na memória dos arquivos do seu aplicativo.
 
-This is a generic process that also occurs if you used the
-[Dart SDK][] directly, without the Flutter engine.
+Este é um processo genérico que também ocorre se você usou o
+[Dart SDK][Dart SDK] diretamente, sem o engine Flutter.
 
-The Dart VM never shuts down after it's started.
+A Dart VM nunca desliga depois de iniciada.
 
-### Creating and running a Dart Isolate
+### Criando e executando um Dart Isolate
 
-After the Dart runtime is initialized,
-the Flutter engine's usage of the Dart
-runtime is the next step.
+Depois que o runtime Dart é inicializado,
+o uso do runtime Dart pelo engine Flutter é o próximo passo.
 
-This is done by starting a [Dart `Isolate`][] in the Dart runtime.
-The isolate is Dart's container for memory and threads.
-A number of [auxiliary threads][] on the host platform are
-also created at this point to support the isolate, such
-as a thread for offloading GPU handling and another for image decoding.
+Isso é feito iniciando um [Dart `Isolate`][Dart `Isolate`] no runtime Dart.
+O isolate é o contêiner do Dart para memória e threads.
+Um número de [threads auxiliares][auxiliary threads] na plataforma host também são
+criadas neste ponto para suportar o isolate, como
+uma thread para descarregar o processamento de GPU e outra para decodificação de imagem.
 
-One isolate exists per `FlutterEngine` instance, and multiple isolates
-can be hosted by the same Dart VM.
+Um isolate existe por instância de `FlutterEngine`, e múltiplos isolates
+podem ser hospedados pela mesma Dart VM.
 
-On **Android**, this happens when you call
-[`DartExecutor.executeDartEntrypoint()`][]
-on a `FlutterEngine` instance.
+No **Android**, isso acontece quando você chama
+[`DartExecutor.executeDartEntrypoint()`][`DartExecutor.executeDartEntrypoint()`]
+em uma instância `FlutterEngine`.
 
-On **iOS**, this happens when you call [`runWithEntrypoint:`][]
-on a `FlutterEngine`.
+No **iOS**, isso acontece quando você chama [`runWithEntrypoint:`][`runWithEntrypoint:`]
+em um `FlutterEngine`.
 
-At this point, your Dart code's selected entrypoint
-(the `main()` function of your Dart library's `main.dart` file,
-by default) is executed. If you called the
-Flutter function [`runApp()`][] in your `main()` function,
-then your Flutter app or your library's widget tree is also created
-and built. If you need to prevent certain functionalities from executing
-in your Flutter code, then the `AppLifecycleState.detached`
-enum value indicates that the `FlutterEngine` isn't attached
-to any UI components such as a `FlutterViewController`
-on iOS or a `FlutterActivity` on Android.
+Neste ponto, o ponto de entrada selecionado do seu código Dart
+(a função `main()` do arquivo `main.dart` da sua biblioteca Dart,
+por padrão) é executado. Se você chamou a
+função Flutter [`runApp()`][`runApp()`] na sua função `main()`,
+então seu app Flutter ou a árvore de widgets da sua biblioteca também é criada
+e construída. Se você precisa evitar que certas funcionalidades sejam executadas
+no seu código Flutter, então o valor enum `AppLifecycleState.detached`
+indica que o `FlutterEngine` não está anexado
+a nenhum componente de UI, como um `FlutterViewController`
+no iOS ou uma `FlutterActivity` no Android.
 
-### Attaching a UI to the Flutter engine
+### Anexando uma UI ao engine Flutter
 
-A standard, full Flutter app moves to reach this state as
-soon as the app is launched.
+Um app Flutter padrão e completo avança para alcançar este estado assim
+que o app é iniciado.
 
-In an add-to-app scenario,
-this happens when you attach a `FlutterEngine`
-to a UI component such as by calling [`startActivity()`][]
-with an [`Intent`][] built using [`FlutterActivity.withCachedEngine()`][]
-on **Android**. Or, by presenting a [`FlutterViewController`][]
-initialized by using [`initWithEngine: nibName: bundle:`][]
-on **iOS**.
+Em um cenário add-to-app,
+isso acontece quando você anexa um `FlutterEngine`
+a um componente de UI, como ao chamar [`startActivity()`][`startActivity()`]
+com um [`Intent`][`Intent`] construído usando [`FlutterActivity.withCachedEngine()`][`FlutterActivity.withCachedEngine()`]
+no **Android**. Ou, ao apresentar um [`FlutterViewController`][`FlutterViewController`]
+inicializado usando [`initWithEngine: nibName: bundle:`][`initWithEngine: nibName: bundle:`]
+no **iOS**.
 
-This is also the case if a Flutter UI component was launched without
-pre-warming a `FlutterEngine` such as with
-[`FlutterActivity.createDefaultIntent()`][] on **Android**,
-or with [`FlutterViewController initWithProject: nibName: bundle:`][]
-on **iOS**. An implicit `FlutterEngine` is created in these cases.
+Este também é o caso se um componente de UI Flutter foi lançado sem
+pré-aquecer um `FlutterEngine`, como com
+[`FlutterActivity.createDefaultIntent()`][`FlutterActivity.createDefaultIntent()`] no **Android**,
+ou com [`FlutterViewController initWithProject: nibName: bundle:`][`FlutterViewController initWithProject: nibName: bundle:`]
+no **iOS**. Um `FlutterEngine` implícito é criado nesses casos.
 
-Behind the scene, both platform's UI components provide the
-`FlutterEngine` with a rendering surface such as a
-[`Surface`][] on **Android** or a [CAEAGLLayer][] or [CAMetalLayer][]
-on **iOS**.
+Por trás dos panos, os componentes de UI de ambas as plataformas fornecem ao
+`FlutterEngine` uma superfície de renderização, como um
+[`Surface`][`Surface`] no **Android** ou um [CAEAGLLayer][CAEAGLLayer] ou [CAMetalLayer][CAMetalLayer]
+no **iOS**.
 
-At this point, the [`Layer`][] tree generated by your Flutter
-program, per frame, is converted into
-OpenGL (or Vulkan or Metal) GPU instructions.
+Neste ponto, a árvore [`Layer`][`Layer`] gerada pelo seu
+programa Flutter, por frame, é convertida em
+instruções GPU OpenGL (ou Vulkan ou Metal).
 
 [android-engine]: {{site.api}}/javadoc/io/flutter/embedding/engine/FlutterEngine.html
 [auxiliary threads]: {{site.repo.flutter}}/blob/main/docs/about/The-Engine-architecture.md#threading

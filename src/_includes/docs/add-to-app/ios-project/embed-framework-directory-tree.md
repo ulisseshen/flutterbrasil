@@ -1,22 +1,22 @@
-The following example assumes that you want to generate the
-frameworks to `/path/to/MyApp/Flutter/`.
+O seguinte exemplo assume que você deseja gerar os
+frameworks em `/path/to/MyApp/Flutter/`.
 
 ```console
 $ flutter build ios-framework --output=/path/to/MyApp/Flutter/
 ```
 
-Run this _every time_ you change code in your Flutter module.
+Execute isso _toda vez_ que você alterar o código no seu módulo Flutter.
 
-The resulting project structure should resemble this directory tree.
+A estrutura de projeto resultante deve se assemelhar a esta árvore de diretórios.
 
 ```plaintext
 /path/to/MyApp/
 └── Flutter/
     ├── Debug/
     │   ├── Flutter.xcframework
-    │   ├── App.xcframework
-    │   ├── FlutterPluginRegistrant.xcframework (only if you have plugins with iOS platform code)
-    │   └── example_plugin.xcframework (each plugin is a separate framework)
+    │   ├── App.xcframework
+    │   ├── FlutterPluginRegistrant.xcframework (only if you have plugins with iOS platform code)
+    │   └── example_plugin.xcframework (each plugin is a separate framework)
     ├── Profile/
     │   ├── Flutter.xcframework
     │   ├── App.xcframework
@@ -30,9 +30,9 @@ The resulting project structure should resemble this directory tree.
 ```
 
 :::warning
-Always use `Flutter.xcframework` and `App.xcframework` bundles
-located in the same directory.
-Mixing `.xcframework` imports from different directories
-(like `Profile/Flutter.xcframework` with `Debug/App.xcframework`)
-causes runtime crashes.
+Sempre use os bundles `Flutter.xcframework` e `App.xcframework`
+localizados no mesmo diretório.
+Misturar importações `.xcframework` de diretórios diferentes
+(como `Profile/Flutter.xcframework` com `Debug/App.xcframework`)
+causa travamentos em tempo de execução.
 :::

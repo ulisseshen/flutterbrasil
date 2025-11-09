@@ -1,30 +1,31 @@
 ---
-title: Building user interfaces with Flutter
+ia-translate: true
+title: Construindo interfaces de usuário com Flutter
 shortTitle: UI
-description: Introduction to user interface development in Flutter.
+description: Introdução ao desenvolvimento de interfaces de usuário no Flutter.
 ---
 
 <?code-excerpt path-base="ui/widgets_intro/"?>
 
-Flutter widgets are built using a modern framework that takes
-inspiration from [React][]. The central idea is that you build
-your UI out of widgets. Widgets describe what their view
-should look like given their current configuration and state.
-When a widget's state changes, the widget rebuilds its description,
-which the framework diffs against the previous description in order
-to determine the minimal changes needed in the underlying render
-tree to transition from one state to the next.
+Os widgets Flutter são construídos usando um framework moderno que se
+inspira no [React][]. A ideia central é que você construa
+sua UI com widgets. Widgets descrevem como sua visualização
+deve ser, dada sua configuração e estado atuais.
+Quando o estado de um widget muda, o widget reconstrói sua descrição,
+que o framework compara com a descrição anterior para
+determinar as mudanças mínimas necessárias na árvore de renderização
+subjacente para fazer a transição de um estado para o próximo.
 
 :::note
-If you would like to become better acquainted with Flutter by diving
-into some code, check out [building layouts][],
-and [adding interactivity to your Flutter app][].
+Se você gostaria de se familiarizar melhor com o Flutter mergulhando
+em algum código, confira [construindo layouts][building layouts],
+e [adicionando interatividade ao seu app Flutter][adding interactivity to your Flutter app].
 :::
 
 ## Hello world
 
-The minimal Flutter app simply calls the [`runApp()`][]
-function with a widget:
+O app Flutter mínimo simplesmente chama a função [`runApp()`][]
+com um widget:
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter Hello World hands-on example in DartPad" run="true"
@@ -43,56 +44,56 @@ void main() {
 }
 ```
 
-The `runApp()` function takes the given
-[`Widget`][] and makes it the root of the widget tree.
-In this example, the widget tree consists of two widgets,
-the [`Center`][] widget and its child, the [`Text`][] widget.
-The framework forces the root widget to cover the screen,
-which means the text "Hello, world" ends up centered on screen.
-The text direction needs to be specified in this instance;
-when the `MaterialApp` widget is used,
-this is taken care of for you, as demonstrated later.
+A função `runApp()` recebe o
+[`Widget`][] fornecido e o torna a raiz da árvore de widgets.
+Neste exemplo, a árvore de widgets consiste em dois widgets,
+o widget [`Center`][] e seu filho, o widget [`Text`][].
+O framework força o widget raiz a cobrir a tela,
+o que significa que o texto "Hello, world" acaba centralizado na tela.
+A direção do texto precisa ser especificada nesta instância;
+quando o widget `MaterialApp` é usado,
+isso é cuidado para você, como demonstrado mais tarde.
 
-When writing an app, you'll commonly author new widgets that
-are subclasses of either [`StatelessWidget`][] or [`StatefulWidget`][],
-depending on whether your widget manages any state.
-A widget's main job is to implement a [`build()`][] function,
-which describes the widget in terms of other, lower-level widgets.
-The framework builds those widgets in turn until the process
-bottoms out in widgets that represent the underlying [`RenderObject`][],
-which computes and describes the geometry of the widget.
+Ao escrever um app, você geralmente criará novos widgets que
+são subclasses de [`StatelessWidget`][] ou [`StatefulWidget`][],
+dependendo se seu widget gerencia algum estado.
+O trabalho principal de um widget é implementar uma função [`build()`][],
+que descreve o widget em termos de outros widgets de nível mais baixo.
+O framework constrói esses widgets por sua vez até que o processo
+chegue ao fim em widgets que representam o [`RenderObject`][] subjacente,
+que computa e descreve a geometria do widget.
 
 ## Basic widgets
 
-Flutter comes with a suite of powerful basic widgets,
-of which the following are commonly used:
+Flutter vem com um conjunto de widgets básicos poderosos,
+dos quais os seguintes são comumente usados:
 
 **[`Text`][]**
-: The `Text` widget lets you create a run of styled text
-  within your application.
+: O widget `Text` permite criar um trecho de texto estilizado
+  dentro de sua aplicação.
 
 **[`Row`][], [`Column`][]**
-: These flex widgets let you create flexible layouts in
-  both the horizontal (`Row`) and vertical (`Column`) directions.
-  The design of these objects is based on the web's
-  flexbox layout model.
+: Esses widgets flex permitem criar layouts flexíveis em
+  ambas as direções horizontal (`Row`) e vertical (`Column`).
+  O design desses objetos é baseado no modelo de layout
+  flexbox da web.
 
 **[`Stack`][]**
-: Instead of being linearly oriented (either horizontally or vertically),
-  a `Stack` widget lets you place widgets on top of each other in paint order.
-  You can then use the [`Positioned`][] widget on children of a
-  `Stack` to position them relative to the top, right, bottom,
-  or left edge of the stack. Stacks are based on the web's
-  absolute positioning layout model.
+: Em vez de ser orientado linearmente (horizontal ou verticalmente),
+  um widget `Stack` permite colocar widgets em cima uns dos outros na ordem de pintura.
+  Você pode então usar o widget [`Positioned`][] nos filhos de um
+  `Stack` para posicioná-los relativamente ao topo, direita, inferior,
+  ou borda esquerda da pilha. Stacks são baseados no modelo de layout
+  de posicionamento absoluto da web.
 
 **[`Container`][]**
-: The `Container` widget lets you create a rectangular visual element.
-  A container can be decorated with a [`BoxDecoration`][], such as a
-  background, a border, or a shadow. A `Container` can also have margins,
-  padding, and constraints applied to its size. In addition, a
-  `Container` can be transformed in three-dimensional space using a matrix.
+: O widget `Container` permite criar um elemento visual retangular.
+  Um container pode ser decorado com um [`BoxDecoration`][], como um
+  plano de fundo, uma borda ou uma sombra. Um `Container` também pode ter margens,
+  padding e restrições aplicadas ao seu tamanho. Além disso, um
+  `Container` pode ser transformado no espaço tridimensional usando uma matriz.
 
-Below are some simple widgets that combine these and other widgets:
+Abaixo estão alguns widgets simples que combinam esses e outros widgets:
 
 <?code-excerpt "lib/main_myappbar.dart"?>
 ```dartpad title="Flutter combining widgets hands-on example in DartPad" run="true"
@@ -170,10 +171,10 @@ void main() {
 }
 ```
 
-Be sure to have a `uses-material-design: true` entry in the `flutter`
-section of your `pubspec.yaml` file. It allows you to use the predefined
-set of [Material icons][]. It's generally a good idea to include this line
-if you are using the Materials library.
+Certifique-se de ter uma entrada `uses-material-design: true` na seção `flutter`
+do seu arquivo `pubspec.yaml`. Isso permite que você use o conjunto predefinido
+de [ícones Material][Material icons]. Geralmente é uma boa ideia incluir esta linha
+se você estiver usando a biblioteca Materials.
 
 ```yaml
 name: my_app
@@ -181,42 +182,42 @@ flutter:
   uses-material-design: true
 ```
 
-Many Material Design widgets need to be inside of a [`MaterialApp`][]
-to display properly, in order to inherit theme data.
-Therefore, run the application with a `MaterialApp`.
+Muitos widgets Material Design precisam estar dentro de um [`MaterialApp`][]
+para serem exibidos corretamente, a fim de herdar dados de tema.
+Portanto, execute a aplicação com um `MaterialApp`.
 
-The `MyAppBar` widget creates a [`Container`][] with a height of 56
-device-independent pixels with an internal padding of 8 pixels,
-both on the left and the right. Inside the container,
-`MyAppBar` uses a [`Row`][] layout to organize its children.
-The middle child, the `title` widget, is marked as [`Expanded`][],
-which means it expands to fill any remaining available space
-that hasn't been consumed by the other children.
-You can have multiple `Expanded` children and determine the
-ratio in which they consume the available space using the
-[`flex`][] argument to `Expanded`.
+O widget `MyAppBar` cria um [`Container`][] com uma altura de 56
+pixels independentes de dispositivo com um padding interno de 8 pixels,
+tanto na esquerda quanto na direita. Dentro do container,
+`MyAppBar` usa um layout [`Row`][] para organizar seus filhos.
+O filho do meio, o widget `title`, é marcado como [`Expanded`][],
+o que significa que ele se expande para preencher qualquer espaço disponível restante
+que não foi consumido pelos outros filhos.
+Você pode ter vários filhos `Expanded` e determinar a
+proporção em que eles consomem o espaço disponível usando o
+argumento [`flex`][] para `Expanded`.
 
-The `MyScaffold` widget organizes its children in a vertical column.
-At the top of the column it places an instance of `MyAppBar`,
-passing the app bar a [`Text`][] widget to use as its title.
-Passing widgets as arguments to other widgets is a powerful technique
-that lets you create generic widgets that can be reused in a wide
-variety of ways. Finally, `MyScaffold` uses an
-[`Expanded`][] to fill the remaining space with its body,
-which consists of a centered message.
+O widget `MyScaffold` organiza seus filhos em uma coluna vertical.
+No topo da coluna ele coloca uma instância de `MyAppBar`,
+passando para a barra do app um widget [`Text`][] para usar como seu título.
+Passar widgets como argumentos para outros widgets é uma técnica poderosa
+que permite criar widgets genéricos que podem ser reutilizados de várias
+formas. Finalmente, `MyScaffold` usa um
+[`Expanded`][] para preencher o espaço restante com seu corpo,
+que consiste em uma mensagem centralizada.
 
-For more information, check out [Layouts][].
+Para mais informações, confira [Layouts][Layouts].
 
 ## Using Material Components
 
-Flutter provides a number of widgets that help you build apps
-that follow Material Design. A Material app starts with the
-[`MaterialApp`][] widget, which builds a number of useful widgets
-at the root of your app, including a [`Navigator`][],
-which manages a stack of widgets identified by strings,
-also known as "routes". The `Navigator` lets you transition smoothly
-between screens of your application. Using the [`MaterialApp`][]
-widget is entirely optional but a good practice.
+Flutter fornece vários widgets que ajudam você a construir apps
+que seguem o Material Design. Um app Material começa com o
+widget [`MaterialApp`][], que constrói vários widgets úteis
+na raiz do seu app, incluindo um [`Navigator`][],
+que gerencia uma pilha de widgets identificados por strings,
+também conhecidas como "routes". O `Navigator` permite fazer a transição suavemente
+entre telas da sua aplicação. Usar o widget [`MaterialApp`][]
+é totalmente opcional, mas uma boa prática.
 
 <?code-excerpt "lib/main_tutorial.dart"?>
 ```dartpad title="Flutter Material design hands-on example in DartPad" run="true"
@@ -261,37 +262,37 @@ class TutorialHome extends StatelessWidget {
 }
 ```
 
-Now that the code has switched from `MyAppBar` and `MyScaffold` to the
-[`AppBar`][] and [`Scaffold`][] widgets, and from `material.dart`,
-the app is starting to look a bit more Material.
-For example, the app bar has a shadow and the title text inherits the
-correct styling automatically. A floating action button is also added.
+Agora que o código mudou de `MyAppBar` e `MyScaffold` para os
+widgets [`AppBar`][] e [`Scaffold`][], e de `material.dart`,
+o app está começando a parecer um pouco mais Material.
+Por exemplo, a barra do app tem uma sombra e o texto do título herda o
+estilo correto automaticamente. Um botão de ação flutuante também é adicionado.
 
-Notice that widgets are passed as arguments to other widgets.
-The [`Scaffold`][] widget takes a number of different widgets as
-named arguments, each of which are placed in the `Scaffold`
-layout in the appropriate place. Similarly, the
-[`AppBar`][] widget lets you pass in widgets for the
-[`leading`][] widget, and the [`actions`][] of the [`title`][] widget.
-This pattern recurs throughout the framework and is something you
-might consider when designing your own widgets.
+Observe que widgets são passados como argumentos para outros widgets.
+O widget [`Scaffold`][] recebe vários widgets diferentes como
+argumentos nomeados, cada um dos quais é colocado no layout do `Scaffold`
+no lugar apropriado. Da mesma forma, o
+widget [`AppBar`][] permite passar widgets para o
+widget [`leading`][], e para as [`actions`][] do widget [`title`][].
+Esse padrão se repete em todo o framework e é algo que você
+pode considerar ao projetar seus próprios widgets.
 
-For more information, check out [Material Components widgets][].
+Para mais informações, confira [widgets Material Components][Material Components widgets].
 
 :::note
-Material is one of the 2 bundled designs included with Flutter.
-To create an iOS-centric design,
-check out the [Cupertino components][] package,
-which has its own versions of
-[`CupertinoApp`][], and [`CupertinoNavigationBar`][].
+Material é um dos 2 designs incluídos com o Flutter.
+Para criar um design centrado em iOS,
+confira o pacote [componentes Cupertino][Cupertino components],
+que tem suas próprias versões de
+[`CupertinoApp`][], e [`CupertinoNavigationBar`][].
 :::
 
 
 ## Handling gestures
 
-Most applications include some form of user interaction with the system.
-The first step in building an interactive application is to detect
-input gestures. See how that works by creating a simple button:
+A maioria das aplicações inclui alguma forma de interação do usuário com o sistema.
+O primeiro passo na construção de uma aplicação interativa é detectar
+gestos de entrada. Veja como isso funciona criando um botão simples:
 
 <?code-excerpt "lib/main_mybutton.dart"?>
 ```dartpad title="Flutter button hands-on example in DartPad" run="true"
@@ -329,36 +330,36 @@ void main() {
 }
 ```
 
-The [`GestureDetector`][] widget doesn't have a visual
-representation but instead detects gestures made by the
-user. When the user taps the [`Container`][],
-the `GestureDetector` calls its [`onTap()`][] callback, in this
-case printing a message to the console. You can use
-`GestureDetector` to detect a variety of input gestures,
-including taps, drags, and scales.
+O widget [`GestureDetector`][] não tem uma
+representação visual, mas detecta gestos feitos pelo
+usuário. Quando o usuário toca no [`Container`][],
+o `GestureDetector` chama seu callback [`onTap()`][], neste
+caso imprimindo uma mensagem no console. Você pode usar
+`GestureDetector` para detectar uma variedade de gestos de entrada,
+incluindo toques, arrastos e escalonamentos.
 
-Many widgets use a [`GestureDetector`][] to provide
-optional callbacks for other widgets. For example, the
-[`IconButton`][], [`ElevatedButton`][], and
-[`FloatingActionButton`][] widgets have [`onPressed()`][]
-callbacks that are triggered when the user taps the widget.
+Muitos widgets usam um [`GestureDetector`][] para fornecer
+callbacks opcionais para outros widgets. Por exemplo, os
+widgets [`IconButton`][], [`ElevatedButton`][], e
+[`FloatingActionButton`][] têm callbacks [`onPressed()`][]
+que são acionados quando o usuário toca no widget.
 
-For more information, check out [Gestures in Flutter][].
+Para mais informações, confira [Gestos no Flutter][Gestures in Flutter].
 
 ## Changing widgets in response to input
 
-So far, this page has used only stateless widgets.
-Stateless widgets receive arguments from their parent widget,
-which they store in [`final`][] member variables.
-When a widget is asked to [`build()`][], it uses these stored
-values to derive new arguments for the widgets it creates.
+Até agora, esta página usou apenas widgets stateless.
+Widgets stateless recebem argumentos do seu widget pai,
+que eles armazenam em variáveis membro [`final`][].
+Quando um widget é solicitado a [`build()`][], ele usa esses valores
+armazenados para derivar novos argumentos para os widgets que ele cria.
 
-In order to build more complex experiences&mdash;for example,
-to react in more interesting ways to user input&mdash;applications
-typically carry some state. Flutter uses `StatefulWidgets` to capture
-this idea. `StatefulWidgets` are special widgets that know how to generate
-`State` objects, which are then used to hold state.
-Consider this basic example, using the [`ElevatedButton`][] mentioned earlier:
+Para construir experiências mais complexas&mdash;por exemplo,
+para reagir de formas mais interessantes à entrada do usuário&mdash;aplicações
+normalmente carregam algum estado. Flutter usa `StatefulWidgets` para capturar
+essa ideia. `StatefulWidgets` são widgets especiais que sabem como gerar
+objetos `State`, que são então usados para manter estado.
+Considere este exemplo básico, usando o [`ElevatedButton`][] mencionado anteriormente:
 
 <?code-excerpt "lib/main_counter.dart"?>
 ```dartpad title="Flutter state management hands-on example in DartPad" run="true"
@@ -421,28 +422,28 @@ void main() {
 }
 ```
 
-You might wonder why `StatefulWidget` and `State` are separate objects.
-In Flutter, these two types of objects have different life cycles.
-`Widgets` are temporary objects, used to construct a presentation of
-the application in its current state. `State` objects, on the other
-hand, are persistent between calls to
-`build()`, allowing them to remember information.
+Você pode se perguntar por que `StatefulWidget` e `State` são objetos separados.
+No Flutter, esses dois tipos de objetos têm ciclos de vida diferentes.
+`Widgets` são objetos temporários, usados para construir uma apresentação da
+aplicação em seu estado atual. Objetos `State`, por outro
+lado, são persistentes entre chamadas a
+`build()`, permitindo que eles se lembrem de informações.
 
-The example above accepts user input and directly uses
-the result in its `build()` method.  In more complex applications,
-different parts of the widget hierarchy might be
-responsible for different concerns; for example, one
-widget might present a complex user interface
-with the goal of gathering specific information,
-such as a date or location, while another widget might
-use that information to change the overall presentation.
+O exemplo acima aceita entrada do usuário e usa diretamente
+o resultado em seu método `build()`. Em aplicações mais complexas,
+diferentes partes da hierarquia de widgets podem ser
+responsáveis por diferentes preocupações; por exemplo, um
+widget pode apresentar uma interface de usuário complexa
+com o objetivo de coletar informações específicas,
+como uma data ou localização, enquanto outro widget pode
+usar essas informações para mudar a apresentação geral.
 
-In Flutter, change notifications flow "up" the widget
-hierarchy by way of callbacks, while current state flows
-"down" to the stateless widgets that do presentation.
-The common parent that redirects this flow is the `State`.
-The following slightly more complex example shows how
-this works in practice:
+No Flutter, notificações de mudança fluem "para cima" na hierarquia
+de widgets por meio de callbacks, enquanto o estado atual flui
+"para baixo" para os widgets stateless que fazem a apresentação.
+O pai comum que redireciona esse fluxo é o `State`.
+O exemplo um pouco mais complexo a seguir mostra como
+isso funciona na prática:
 
 <?code-excerpt "lib/main_counterdisplay.dart"?>
 ```dartpad title="Flutter Hello World hands-on example in DartPad" run="true"
@@ -508,25 +509,25 @@ void main() {
 }
 ```
 
-Notice the creation of two new stateless widgets,
-cleanly separating the concerns of _displaying_ the counter
-(`CounterDisplay`) and _changing_ the counter (`CounterIncrementor`).
-Although the net result is the same as the previous example,
-the separation of responsibility allows greater complexity to
-be encapsulated in the individual widgets,
-while maintaining simplicity in the parent.
+Observe a criação de dois novos widgets stateless,
+separando claramente as preocupações de _exibir_ o contador
+(`CounterDisplay`) e _mudar_ o contador (`CounterIncrementor`).
+Embora o resultado final seja o mesmo do exemplo anterior,
+a separação de responsabilidade permite maior complexidade ser
+encapsulada nos widgets individuais,
+mantendo a simplicidade no pai.
 
-For more information, check out:
+Para mais informações, confira:
 
 * [`StatefulWidget`][]
 * [`setState()`][]
 
 ## Bringing it all together
 
-What follows is a more complete example that brings together
-these concepts: A hypothetical shopping application displays various
-products offered for sale, and maintains a shopping cart for
-intended purchases. Start by defining the presentation class,
+O que segue é um exemplo mais completo que reúne
+esses conceitos: Uma aplicação hipotética de compras exibe vários
+produtos oferecidos para venda e mantém um carrinho de compras para
+compras pretendidas. Comece definindo a classe de apresentação,
 `ShoppingListItem`:
 
 <?code-excerpt "lib/main_shoppingitem.dart"?>
@@ -604,34 +605,34 @@ void main() {
 }
 ```
 
-The `ShoppingListItem` widget follows a common pattern
-for stateless widgets.  It stores the values it receives
-in its constructor in [`final`][] member variables,
-which it then uses during its [`build()`][] function.
-For example, the `inCart` boolean toggles between two visual
-appearances: one that uses the primary color from the current
-theme, and another that uses gray.
+O widget `ShoppingListItem` segue um padrão comum
+para widgets stateless. Ele armazena os valores que recebe
+em seu construtor em variáveis membro [`final`][],
+que ele então usa durante sua função [`build()`][].
+Por exemplo, o booleano `inCart` alterna entre duas aparências
+visuais: uma que usa a cor primária do tema atual,
+e outra que usa cinza.
 
-When the user taps the list item, the widget doesn't modify
-its `inCart` value directly. Instead, the widget calls the
-`onCartChanged` function it received from its parent widget.
-This pattern lets you store state higher in the widget
-hierarchy, which causes the state to persist for longer periods of time.
-In the extreme, the state stored on the widget passed to
-[`runApp()`][] persists for the lifetime of the
-application.
+Quando o usuário toca no item da lista, o widget não modifica
+seu valor `inCart` diretamente. Em vez disso, o widget chama a
+função `onCartChanged` que recebeu do seu widget pai.
+Esse padrão permite armazenar estado mais alto na hierarquia
+de widgets, o que faz com que o estado persista por períodos mais longos.
+No extremo, o estado armazenado no widget passado para
+[`runApp()`][] persiste durante toda a vida útil da
+aplicação.
 
-When the parent receives the `onCartChanged` callback,
-the parent updates its internal state, which triggers
-the parent to rebuild and create a new instance
-of `ShoppingListItem` with the new `inCart` value.
-Although the parent creates a new instance of
-`ShoppingListItem` when it rebuilds, that operation is cheap
-because the framework compares the newly built widgets with the previously
-built widgets and applies only the differences to the underlying
-[`RenderObject`][].
+Quando o pai recebe o callback `onCartChanged`,
+o pai atualiza seu estado interno, o que aciona
+o pai a reconstruir e criar uma nova instância
+de `ShoppingListItem` com o novo valor `inCart`.
+Embora o pai crie uma nova instância de
+`ShoppingListItem` quando reconstrói, essa operação é barata
+porque o framework compara os widgets recém-construídos com os widgets
+construídos anteriormente e aplica apenas as diferenças ao
+[`RenderObject`][] subjacente.
 
-Here's an example parent widget that stores mutable state:
+Aqui está um exemplo de widget pai que armazena estado mutável:
 
 <?code-excerpt "lib/main_shoppinglist.dart"?>
 ```dartpad title="Flutter storing mutable state hands-on example in DartPad" run="true"
@@ -759,103 +760,103 @@ void main() {
 }
 ```
 
-The `ShoppingList` class extends [`StatefulWidget`][],
-which means this widget stores mutable state.
-When the `ShoppingList` widget is first inserted
-into the tree, the framework calls the [`createState()`][] function
-to create a fresh instance of `_ShoppingListState` to associate with that
-location in the tree. (Notice that subclasses of
-[`State`][] are typically named with leading underscores to
-indicate that they are private implementation details.)
-When this widget's parent rebuilds, the parent creates a new instance
-of `ShoppingList`, but the framework reuses the `_ShoppingListState`
-instance that is already in the tree rather than calling
-`createState` again.
+A classe `ShoppingList` estende [`StatefulWidget`][],
+o que significa que este widget armazena estado mutável.
+Quando o widget `ShoppingList` é inserido pela primeira vez
+na árvore, o framework chama a função [`createState()`][] para
+criar uma nova instância de `_ShoppingListState` para associar com aquela
+localização na árvore. (Observe que subclasses de
+[`State`][] são tipicamente nomeadas com sublinhados iniciais para
+indicar que são detalhes de implementação privados.)
+Quando o pai deste widget reconstrói, o pai cria uma nova instância
+de `ShoppingList`, mas o framework reutiliza a instância `_ShoppingListState`
+que já está na árvore em vez de chamar
+`createState` novamente.
 
-To access properties of the current `ShoppingList`,
-the `_ShoppingListState` can use its [`widget`][] property.
-If the parent rebuilds and creates a new `ShoppingList`,
-the `_ShoppingListState` rebuilds with the new widget value.
-If you wish to be notified when the `widget` property changes,
-override the [`didUpdateWidget()`][] function, which is passed
-an `oldWidget` to let you compare the old widget with
-the current widget.
+Para acessar propriedades do `ShoppingList` atual,
+o `_ShoppingListState` pode usar sua propriedade [`widget`][].
+Se o pai reconstrói e cria um novo `ShoppingList`,
+o `_ShoppingListState` reconstrói com o novo valor de widget.
+Se você deseja ser notificado quando a propriedade `widget` muda,
+sobrescreva a função [`didUpdateWidget()`][], que recebe
+um `oldWidget` para permitir comparar o widget antigo com
+o widget atual.
 
-When handling the `onCartChanged` callback, the `_ShoppingListState`
-mutates its internal state by either adding or removing a product from
-`_shoppingCart`. To signal to the framework that it changed its internal
-state, it wraps those calls in a [`setState()`][] call.
-Calling `setState` marks this widget as dirty and schedules it to be rebuilt
-the next time your app needs to update the screen.
-If you forget to call `setState` when modifying the internal
-state of a widget, the framework won't know your widget is
-dirty and might not call the widget's [`build()`][] function,
-which means the user interface might not update to reflect
-the changed state.  By managing state in this way,
-you don't need to write separate code for creating and
-updating child widgets. Instead, you simply implement the `build`
-function, which handles both situations.
+Ao lidar com o callback `onCartChanged`, o `_ShoppingListState`
+muda seu estado interno adicionando ou removendo um produto de
+`_shoppingCart`. Para sinalizar ao framework que ele mudou seu estado
+interno, ele envolve essas chamadas em uma chamada [`setState()`][].
+Chamar `setState` marca este widget como sujo e o agenda para ser reconstruído
+na próxima vez que seu app precisar atualizar a tela.
+Se você esquecer de chamar `setState` ao modificar o estado
+interno de um widget, o framework não saberá que seu widget está
+sujo e pode não chamar a função [`build()`][] do widget,
+o que significa que a interface do usuário pode não atualizar para refletir
+o estado alterado. Ao gerenciar estado dessa forma,
+você não precisa escrever código separado para criar e
+atualizar widgets filhos. Em vez disso, você simplesmente implementa a função `build`,
+que lida com ambas as situações.
 
 ## Responding to widget lifecycle events
 
-After calling [`createState()`][] on the `StatefulWidget`,
-the framework inserts the new state object into the tree and
-then calls [`initState()`][] on the state object.
-A subclass of [`State`][] can override `initState` to do work
-that needs to happen just once. For example, override `initState`
-to configure animations or to subscribe to platform services.
-Implementations of `initState` are required to start
-by calling `super.initState`.
+Após chamar [`createState()`][] no `StatefulWidget`,
+o framework insere o novo objeto de estado na árvore e
+então chama [`initState()`][] no objeto de estado.
+Uma subclasse de [`State`][] pode sobrescrever `initState` para fazer trabalho
+que precisa acontecer apenas uma vez. Por exemplo, sobrescreva `initState`
+para configurar animações ou para se inscrever em serviços de plataforma.
+Implementações de `initState` são obrigadas a começar
+chamando `super.initState`.
 
-When a state object is no longer needed,
-the framework calls [`dispose()`][] on the state object.
-Override the `dispose` function to do cleanup work.
-For example, override `dispose` to cancel timers or to
-unsubscribe from platform services. Implementations of
-`dispose` typically end by calling `super.dispose`.
+Quando um objeto de estado não é mais necessário,
+o framework chama [`dispose()`][] no objeto de estado.
+Sobrescreva a função `dispose` para fazer trabalho de limpeza.
+Por exemplo, sobrescreva `dispose` para cancelar temporizadores ou para
+cancelar a inscrição de serviços de plataforma. Implementações de
+`dispose` normalmente terminam chamando `super.dispose`.
 
-For more information, check out [`State`][].
+Para mais informações, confira [`State`][].
 
 ## Keys
 
-Use keys to control which widgets the framework matches up
-with other widgets when a widget rebuilds. By default, the
-framework matches widgets in the current and previous build
-according to their [`runtimeType`][] and the order in which they appear.
-With keys, the framework requires that the two widgets have
-the same [`key`][] as well as the same `runtimeType`.
+Use keys para controlar quais widgets o framework combina
+com outros widgets quando um widget reconstrói. Por padrão, o
+framework combina widgets na construção atual e anterior
+de acordo com seu [`runtimeType`][] e a ordem em que aparecem.
+Com keys, o framework exige que os dois widgets tenham
+a mesma [`key`][] assim como o mesmo `runtimeType`.
 
-Keys are most useful in widgets that build many instances of
-the same type of widget. For example, the `ShoppingList` widget,
-which builds just enough `ShoppingListItem` instances to
-fill its visible region:
+Keys são mais úteis em widgets que constroem muitas instâncias do
+mesmo tipo de widget. Por exemplo, o widget `ShoppingList`,
+que constrói apenas instâncias suficientes de `ShoppingListItem` para
+preencher sua região visível:
 
- * Without keys, the first entry in the current build
-   would always sync with the first entry in the previous build,
-   even if, semantically, the first entry in the list just
-   scrolled off screen and is no longer visible in the viewport.
+ * Sem keys, a primeira entrada na construção atual
+   sempre sincronizaria com a primeira entrada na construção anterior,
+   mesmo se, semanticamente, a primeira entrada na lista acabou de
+   rolar para fora da tela e não está mais visível no viewport.
 
- * By assigning each entry in the list a "semantic" key,
-   the infinite list can be more efficient because the
-   framework syncs entries with matching semantic keys
-   and therefore similar (or identical) visual appearances.
-   Moreover, syncing the entries semantically means that
-   state retained in stateful child widgets remains attached
-   to the same semantic entry rather than the entry in the
-   same numerical position in the viewport.
+ * Ao atribuir a cada entrada na lista uma key "semântica",
+   a lista infinita pode ser mais eficiente porque o
+   framework sincroniza entradas com keys semânticas correspondentes
+   e, portanto, aparências visuais semelhantes (ou idênticas).
+   Além disso, sincronizar as entradas semanticamente significa que
+   o estado retido em widgets filhos stateful permanece anexado
+   à mesma entrada semântica em vez da entrada na
+   mesma posição numérica no viewport.
 
-For more information, check out the [`Key`][] API.
+Para mais informações, confira a API [`Key`][].
 
 ## Global keys
 
-Use global keys to uniquely identify child widgets.
-Global keys must be globally unique across the entire
-widget hierarchy, unlike local keys which need
-only be unique among siblings. Because they are
-globally unique, a global key can be used to
-retrieve the state associated with a widget.
+Use global keys para identificar exclusivamente widgets filhos.
+Global keys devem ser globalmente únicas em toda a
+hierarquia de widgets, diferentemente de local keys que precisam
+ser únicas apenas entre irmãos. Porque são
+globalmente únicas, uma global key pode ser usada para
+recuperar o estado associado a um widget.
 
-For more information, check out the [`GlobalKey`][] API.
+Para mais informações, confira a API [`GlobalKey`][].
 
 [`actions`]: {{site.api}}/flutter/material/AppBar-class.html#actions
 [adding interactivity to your Flutter app]: /ui/interactivity

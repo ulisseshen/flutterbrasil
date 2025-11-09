@@ -2,6 +2,13 @@
 ia-translate: true
 ---
 
+<!--
+  Nota: Este é um arquivo README.md de repositório, não uma página de documentação.
+  Por isso, não usa frontmatter completo (title, description, etc.) como as páginas
+  de documentação em /src. Apenas contém 'ia-translate: true' para marcar que foi
+  traduzido para PT-BR usando IA.
+-->
+
 [![Logo do Flutter]](https://docs.flutter.dev)
 
 [Logo do Flutter]: https://github.com/dart-lang/site-shared/blob/main/src/_assets/image/flutter/icon/64.png?raw=1

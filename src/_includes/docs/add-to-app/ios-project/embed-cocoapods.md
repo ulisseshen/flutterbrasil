@@ -1,39 +1,39 @@
-### Use CocoaPods and the Flutter SDK {:#method-a .no_toc}
+### Usar CocoaPods e o Flutter SDK {:#method-a .no_toc}
 
-#### Approach {:#method-a-approach}
+#### Abordagem {:#method-a-approach}
 
-This first method uses CocoaPods to embed the Flutter modules.
-CocoaPods manages dependencies for Swift projects,
-including Flutter code and plugins.
-Each time Xcode builds the app,
-CocoaPods embeds the Flutter modules.
+Este primeiro método usa CocoaPods para incorporar os módulos Flutter.
+O CocoaPods gerencia dependências para projetos Swift,
+incluindo código Flutter e plugins.
+Cada vez que o Xcode compila o app,
+o CocoaPods incorpora os módulos Flutter.
 
-This allows rapid iteration with the most up-to-date
-version of your Flutter module without running additional
-commands outside of Xcode.
+Isso permite iteração rápida com a versão mais atualizada
+do seu módulo Flutter sem executar comandos adicionais
+fora do Xcode.
 
-To learn more about CocoaPods,
-consult the [CocoaPods getting started guide][].
+Para saber mais sobre CocoaPods,
+consulte o [guia de introdução ao CocoaPods][CocoaPods getting started guide].
 
-#### Watch the video
+#### Assista ao vídeo
 
-If watching a video helps you learn,
-this video covers adding Flutter to an iOS app:
+Se assistir a um vídeo ajuda você a aprender,
+este vídeo cobre adicionar o Flutter a um app iOS:
 
 <YouTubeEmbed id="IIcrfrTshTs" title="Step by step on how to add Flutter to an existing iOS app"></YouTubeEmbed>
 
-#### Requirements {:#method-a-reqs}
+#### Requisitos {:#method-a-reqs}
 
-Every developer working on your project must have a local version
-of the Flutter SDK and CocoaPods installed.
+Cada desenvolvedor trabalhando em seu projeto deve ter uma versão local
+do Flutter SDK e CocoaPods instalados.
 
-#### Example project structure {:#method-a-structure}
+#### Estrutura de projeto de exemplo {:#method-a-structure}
 
-This section assumes that your existing app and
-the Flutter module reside in sibling directories.
-If you have a different directory structure,
-adjust the relative paths.
-The example directory structure resembles the following:
+Esta seção assume que seu app existente e
+o módulo Flutter residem em diretórios irmãos.
+Se você tem uma estrutura de diretório diferente,
+ajuste os caminhos relativos.
+A estrutura de diretório de exemplo se assemelha ao seguinte:
 
 ```plaintext
 /path/to/MyApp
@@ -45,33 +45,33 @@ The example directory structure resembles the following:
     └── Podfile
 ```
 
-#### Update your Podfile
+#### Atualizar seu Podfile
 
-Add your Flutter modules to your Podfile configuration file.
-This section presumes you called your Swift app `MyApp`.
+Adicione seus módulos Flutter ao arquivo de configuração Podfile.
+Esta seção presume que você chamou seu app Swift de `MyApp`.
 
-1. _(Optional)_ If your existing app lacks a `Podfile` config file,
-   navigate to the root of your app directory.
-   Use the `pod init` command to create the `Podfile` file.
+1. _(Opcional)_ Se seu app existente não tiver um arquivo de configuração `Podfile`,
+   navegue até a raiz do diretório do seu app.
+   Use o comando `pod init` para criar o arquivo `Podfile`.
 
    :::tip
-   If the `pod init` command errors,
-   check that you're on the latest version of CocoaPods.
+   Se o comando `pod init` der erro,
+   verifique se você está na versão mais recente do CocoaPods.
    :::
 
-1. Update your `Podfile` config file.
+1. Atualize seu arquivo de configuração `Podfile`.
 
-   1. Add the following lines after the `platform` declaration.
+   1. Adicione as seguintes linhas após a declaração `platform`.
 
       ```ruby title="MyApp/Podfile"
       flutter_application_path = '../my_flutter'
       load File.join(flutter_application_path, '.ios', 'Flutter', 'podhelper.rb')
       ```
 
-   1. For each [Podfile target][] that needs to embed Flutter,
-      add a call to the
-      `install_all_flutter_pods(flutter_application_path)` method.
-      Add these calls after the settings in the previous step.
+   1. Para cada [alvo do Podfile][Podfile target] que precisa incorporar o Flutter,
+      adicione uma chamada ao método
+      `install_all_flutter_pods(flutter_application_path)`.
+      Adicione essas chamadas após as configurações no passo anterior.
 
       ```ruby title="MyApp/Podfile"
       target 'MyApp' do
@@ -79,9 +79,9 @@ This section presumes you called your Swift app `MyApp`.
       end
       ```
 
-   1. In the `Podfile`'s `post_install` block,
-      add a call to `flutter_post_install(installer)`.
-      This block should be the last block in the `Podfile` config file.
+   1. No bloco `post_install` do `Podfile`,
+      adicione uma chamada a `flutter_post_install(installer)`.
+      Este bloco deve ser o último bloco no arquivo de configuração `Podfile`.
 
       ```ruby title="MyApp/Podfile"
       post_install do |installer|
@@ -89,93 +89,92 @@ This section presumes you called your Swift app `MyApp`.
       end
       ```
 
-To review an example `Podfile`, consult this [Flutter Podfile sample][].
+Para revisar um exemplo de `Podfile`, consulte esta [amostra de Podfile Flutter][Flutter Podfile sample].
 
-#### Embed your frameworks
+#### Incorporar seus frameworks
 
-At build time, Xcode packages your Dart code, each Flutter plugin,
-and the Flutter engine into their own `*.xcframework` bundles.
-CocoaPod's `podhelper.rb` script then embeds these
-`*.xcframework` bundles into your project.
+No momento da compilação, o Xcode empacota seu código Dart, cada plugin Flutter,
+e o Flutter engine em seus próprios bundles `*.xcframework`.
+O script `podhelper.rb` do CocoaPod então incorpora esses
+bundles `*.xcframework` em seu projeto.
 
-* `Flutter.xcframework` contains the Flutter engine.
-* `App.xcframework` contains the compiled Dart code for this project.
-* `<plugin>.xcframework` contains one Flutter plugin.
+* `Flutter.xcframework` contém o Flutter engine.
+* `App.xcframework` contém o código Dart compilado para este projeto.
+* `<plugin>.xcframework` contém um plugin Flutter.
 
-To embed the Flutter engine, your Dart code, and your Flutter plugins
-into your iOS app, complete the following procedure.
+Para incorporar o Flutter engine, seu código Dart e seus plugins Flutter
+em seu app iOS, complete o seguinte procedimento.
 
-1. Refresh your Flutter plugins.
+1. Atualize seus plugins Flutter.
 
-   If you change the Flutter dependencies in the `pubspec.yaml` file,
-   run `flutter pub get` in your Flutter module directory.
-   This refreshes the list of plugins that the `podhelper.rb` script reads.
+   Se você alterar as dependências do Flutter no arquivo `pubspec.yaml`,
+   execute `flutter pub get` no diretório do seu módulo Flutter.
+   Isso atualiza a lista de plugins que o script `podhelper.rb` lê.
 
    ```console
    flutter pub get
    ```
 
-1. Embed the plugins and frameworks with CocoaPods.
+1. Incorpore os plugins e frameworks com CocoaPods.
 
-   1. Navigate to your iOS app project at `/path/to/MyApp/MyApp`.
+   1. Navegue até seu projeto de app iOS em `/path/to/MyApp/MyApp`.
 
-   1. Use the `pod install` command.
+   1. Use o comando `pod install`.
 
       ```console
       pod install
       ```
 
-   Your iOS app's **Debug** and **Release** build configurations embed
-   the corresponding [Flutter components for that build mode][build-modes].
+   As configurações de compilação **Debug** e **Release** do seu app iOS incorporam
+   os [componentes Flutter correspondentes para aquele modo de compilação][build-modes].
 
-1. Build the project.
+1. Compile o projeto.
 
-   1. Open `MyApp.xcworkspace` in Xcode.
+   1. Abra `MyApp.xcworkspace` no Xcode.
 
-      Verify that you're opening `MyApp.xcworkspace` and
-      not opening `MyApp.xcodeproj`.
-      The `.xcworkspace` file has the CocoaPod dependencies,
-      the `.xcodeproj` doesn't.
+      Verifique se você está abrindo `MyApp.xcworkspace` e
+      não abrindo `MyApp.xcodeproj`.
+      O arquivo `.xcworkspace` tem as dependências do CocoaPod,
+      o `.xcodeproj` não tem.
 
-   1. Select **Product** > **Build** or press <kbd>Cmd</kbd> + <kbd>B</kbd>.
+   1. Selecione **Product** > **Build** ou pressione <kbd>Cmd</kbd> + <kbd>B</kbd>.
 
-#### Set LLDB Init File
+#### Definir LLDB Init File
 
 :::warning
-Set your scheme to use Flutter's LLDB Init File. Without this file, debugging
-on an iOS 26 or later device may crash.
+Defina seu scheme para usar o LLDB Init File do Flutter. Sem este arquivo, a depuração
+em um dispositivo iOS 26 ou posterior pode travar.
 :::
 
-1. Generate Flutter LLDB files.
+1. Gere os arquivos LLDB do Flutter.
 
-   1. Within your flutter application, run the following:
+   1. Dentro da sua aplicação flutter, execute o seguinte:
 
    ```console
    flutter build ios --config-only
    ```
 
-   This will generate the LLDB files in the `.ios/Flutter/ephemeral` directory.
+   Isso irá gerar os arquivos LLDB no diretório `.ios/Flutter/ephemeral`.
 
-1. Set the LLDB Init File.
+1. Defina o LLDB Init File.
 
-   1. Go to **Product > Scheme > Edit Scheme**.
+   1. Vá para **Product > Scheme > Edit Scheme**.
 
-   1. Select the **Run** section in the left side bar.
+   1. Selecione a seção **Run** na barra lateral esquerda.
 
-   1. Set the **LLDB Init File** using the same relative path to your Flutter
-      application as you put in your Podfile in the **Update your Podfile**
-      section.
+   1. Defina o **LLDB Init File** usando o mesmo caminho relativo para sua aplicação
+      Flutter que você colocou no seu Podfile na seção **Atualizar seu Podfile**.
 
       ```console
       $(SRCROOT)/../my_flutter/.ios/Flutter/ephemeral/flutter_lldbinit
       ```
 
-      If your scheme already has an **LLDB Init File**, you can add Flutter's
-      LLDB file to it. The path to Flutter's LLDB Init File must be relative
-      to the location of your project's LLDB Init File.
+      Se seu scheme já tem um **LLDB Init File**, você pode adicionar o arquivo
+      LLDB do Flutter a ele. O caminho para o LLDB Init File do Flutter deve ser relativo
+      à localização do LLDB Init File do seu projeto.
 
-      For example, if your LLDB file is located at `/path/to/MyApp/.lldbinit`,
-      you would add the following:
+      Por exemplo, se seu arquivo LLDB está localizado em `/path/to/MyApp/.lldbinit`,
+      você adicionaria o seguinte:
 
       ```console
       command source --relative-to-command-file "../my_flutter/.ios/Flutter/ephemeral/flutter_lldbinit"

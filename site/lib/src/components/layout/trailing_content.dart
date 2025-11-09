@@ -83,6 +83,20 @@ class TrailingContent extends StatelessComponent {
           ),
           text('.'),
         ]),
+
+        p(id: 'translation-helper', [
+          text('Encontrou essa página sem tradução ou que precisa de correção? '),
+          a(
+            href: 'https://github.com/ulisseshen/flutterbrasil/issues/new',
+            target: Target.blank,
+            attributes: {
+              'rel': 'noopener',
+              'title': 'Abrir uma issue no GitHub',
+            },
+            [text('Abra uma issue')],
+          ),
+          text(' e nos ajude a manter esse site em PT-BR para ajudar pessoas como você.'),
+        ]),
       ],
     );
   }

@@ -28,7 +28,7 @@
       confidence: conditional
       confidence-description: |
         Existem muitas opções para lidar com gerenciamento de estado, e no final a decisão se resume a preferência pessoal.
-        Leia sobre [nossa recomendação de ChangeNotifier][] ou [outras opções populares][].
+        Leia sobre [nossa recomendação de ChangeNotifier][our ChangeNotifier recommendation] ou [outras opções populares][other popular options].
 
     - recommendation: Não coloque lógica em widgets.
       description: |
@@ -62,7 +62,7 @@
     - recommendation: Use `Commands` para lidar com eventos de interação do usuário.
       description: |
         Commands previnem erros de renderização no seu app, e padronizam como a camada UI envia eventos para a camada de dados.
-        Leia sobre commands no [estudo de caso de arquitetura][].
+        Leia sobre commands no [estudo de caso de arquitetura][architecture case study].
       confidence: recommend
 
     - recommendation: Use modelos de dados imutáveis.
@@ -100,7 +100,7 @@
       description: |
         Go_router é a maneira preferida de escrever 90% das aplicações Flutter.
         Existem alguns casos de uso específicos que go_router não resolve,
-        nesse caso você pode usar a [API Navigator do Flutter][] diretamente ou experimentar outros pacotes encontrados em [pub.dev][].
+        nesse caso você pode usar a [API Navigator do Flutter][Flutter Navigator API] diretamente ou experimentar outros pacotes encontrados em [pub.dev][].
       confidence: recommend
 
     - recommendation: Use convenções de nomenclatura padronizadas para classes, arquivos e diretórios.

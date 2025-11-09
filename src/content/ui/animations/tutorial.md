@@ -17,11 +17,11 @@ Este tutorial mostra como construir animações explícitas no Flutter.
 Os exemplos constroem uns sobre os outros, introduzindo você a diferentes aspectos da
 biblioteca de animações. O tutorial é baseado em conceitos, classes
 e métodos essenciais na biblioteca de animações que você pode aprender em
-[Introduction to animations][].
+[Introduction to animations][Introduction to animations].
 
 O Flutter SDK também fornece animações explícitas integradas,
-como [`FadeTransition`][], [`SizeTransition`][]
-e [`SlideTransition`][]. Essas animações simples são
+como [`FadeTransition`][`FadeTransition`], [`SizeTransition`][`SizeTransition`]
+e [`SlideTransition`][`SlideTransition`]. Essas animações simples são
 acionadas definindo um ponto inicial e final.
 Elas são mais simples de implementar
 do que animações explícitas personalizadas, que são descritas aqui.
@@ -78,7 +78,7 @@ class _LogoAppState extends State<LogoApp> {
 }
 ```
 
-**Código-fonte do app:** [animate0][]
+**Código-fonte do app:** [animate0][animate0]
 
 O código a seguir mostra o mesmo código modificado para animar o
 logo crescendo de nada até o tamanho completo.
@@ -130,7 +130,7 @@ As mudanças em relação ao exemplo não animado estão destacadas:
   }
 ```
 
-**Código-fonte do app:** [animate1][]
+**Código-fonte do app:** [animate1][animate1]
 
 A função `addListener()` chama `setState()`,
 então toda vez que a `Animation` gera um novo número,
@@ -169,14 +169,14 @@ animation.addListener(() {
 ```
 
 Para aprender mais sobre cascades,
-confira [Cascade notation][]
+confira [Cascade notation][Cascade notation]
 na [documentação da linguagem Dart][Dart language documentation].
 :::
 
 ## Simplificando com AnimatedWidget
 
 :::secondary Qual é o ponto?
-* Como usar a classe auxiliar [`AnimatedWidget`][]
+* Como usar a classe auxiliar [`AnimatedWidget`][`AnimatedWidget`]
   (em vez de `addListener()`
   e `setState()`) para criar um widget que anima.
 * Use `AnimatedWidget` para criar um widget que executa
@@ -282,7 +282,7 @@ e passa o objeto `Animation` para `AnimatedLogo`:
   }
 ```
 
-**Código-fonte do app:** [animate2][]
+**Código-fonte do app:** [animate2][animate2]
 
 <a id="monitoring"></a>
 
@@ -353,12 +353,12 @@ no início ou no fim. Isso cria um efeito de "respiração":
   }
 ```
 
-**Código-fonte do app:** [animate3][]
+**Código-fonte do app:** [animate3][animate3]
 
 ## Refatorando com AnimatedBuilder
 
 :::secondary Qual é o ponto?
-* Um [`AnimatedBuilder`][] entende como renderizar a transição.
+* Um [`AnimatedBuilder`][`AnimatedBuilder`] entende como renderizar a transição.
 * Um `AnimatedBuilder` não sabe como renderizar o widget,
   nem gerencia o objeto `Animation`.
 * Use `AnimatedBuilder` para descrever uma animação como
@@ -372,7 +372,7 @@ no início ou no fim. Isso cria um efeito de "respiração":
   `TextField`.
 :::
 
-Um problema com o código no exemplo [animate3][]
+Um problema com o código no exemplo [animate3][animate3]
 é que mudar a animação exigia mudar o widget
 que renderiza o logo. Uma solução melhor
 é separar responsabilidades em classes diferentes:
@@ -388,7 +388,7 @@ classe separada na árvore de renderização. Como `AnimatedWidget`,
 do objeto `Animation` e marca a árvore de widgets
 como suja conforme necessário, então você não precisa chamar `addListener()`.
 
-A árvore de widgets para o exemplo [animate4][]
+A árvore de widgets para o exemplo [animate4][animate4]
 se parece com isto:
 
 <DashImage figure image="ui/AnimatedBuilder-WidgetTree.png" alt="AnimatedBuilder widget tree" />
@@ -463,7 +463,7 @@ class GrowTransition extends StatelessWidget {
 ```
 
 Finalmente, o código para inicializar a animação parece muito
-similar ao exemplo [animate2][]. O método `initState()`
+similar ao exemplo [animate2][animate2]. O método `initState()`
 cria um `AnimationController` e um `Tween`,
 e depois os vincula com `animate()`. A mágica acontece no
 método `build()`, que retorna um objeto `GrowTransition`
@@ -531,19 +531,19 @@ nos bullet points acima.
   }
 ```
 
-**Código-fonte do app:** [animate4][]
+**Código-fonte do app:** [animate4][animate4]
 
 ## Animações simultâneas
 
 :::secondary Qual é o ponto?
-* A classe [`Curves`][] define um array de
+* A classe [`Curves`][`Curves`] define um array de
   curvas comumente usadas que você pode
-  usar com um [`CurvedAnimation`][].
+  usar com um [`CurvedAnimation`][`CurvedAnimation`].
 :::
 
 Nesta seção, você construirá sobre o exemplo de
-[monitorar o progresso da animação][monitoring the progress of the animation]
-([animate3][]), que usou `AnimatedWidget`
+[monitorar o progresso da animação][Monitoring the progress of the animation]
+([animate3][animate3]), que usou `AnimatedWidget`
 para animar continuamente para dentro e para fora. Considere o caso
 onde você quer animar para dentro e para fora enquanto a
 opacidade anima de transparente para opaco.
@@ -553,7 +553,7 @@ Este exemplo mostra como usar múltiplos tweens no mesmo animation
 controller, onde cada tween gerencia um efeito diferente na
 animação. É apenas para fins ilustrativos.
 Se você estivesse fazendo tween de opacidade e tamanho em código de produção,
-você provavelmente usaria [`FadeTransition`][] e [`SizeTransition`][]
+você provavelmente usaria [`FadeTransition`][`FadeTransition`] e [`SizeTransition`][`SizeTransition`]
 em vez disso.
 :::
 
@@ -648,16 +648,16 @@ class _LogoAppState extends State<LogoApp> with SingleTickerProviderStateMixin {
 }
 ```
 
-**Código-fonte do app:** [animate5][]
+**Código-fonte do app:** [animate5][animate5]
 
 :::secondary Resumo
-* Um objeto [`Animation`][] conhece o estado atual de uma animação
+* Um objeto [`Animation`][`Animation`] conhece o estado atual de uma animação
   (por exemplo, se ela começou, parou
   ou está avançando ou em reverso),
   mas não sabe nada sobre o que aparece na tela.
-* Um [`AnimationController`][] gerencia a `Animation`.
-* Um [`CurvedAnimation`][] define a progressão como uma curva não linear.
-* Um [`Tween`][] interpola entre um valor inicial e final
+* Um [`AnimationController`][`AnimationController`] gerencia a `Animation`.
+* Um [`CurvedAnimation`][`CurvedAnimation`] define a progressão como uma curva não linear.
+* Um [`Tween`][`Tween`] interpola entre um valor inicial e final
   para uma propriedade sendo animada.
 :::
 

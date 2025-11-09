@@ -1,22 +1,23 @@
 ---
-title: "Restore state on iOS"
-description: "How to restore the state of your iOS app after it's been killed by the OS."
+ia-translate: true
+title: "Restaurar estado no iOS"
+description: "Como restaurar o estado do seu app iOS depois que ele foi encerrado pelo sistema operacional."
 ---
 
-When a user runs a mobile app and then selects another
-app to run, the first app is moved to the background,
-or _backgrounded_. The operating system (both iOS and Android)
-often kills the backgrounded app to release memory or
-improve performance for the app running in the foreground.
+Quando um usuário executa um app móvel e depois seleciona outro
+app para executar, o primeiro app é movido para segundo plano,
+ou _backgrounded_. O sistema operacional (tanto iOS quanto Android)
+frequentemente encerra o app em segundo plano para liberar memória ou
+melhorar o desempenho do app em execução em primeiro plano.
 
-You can use the [`RestorationManager`][] (and related)
-classes to handle state restoration.
-An iOS app requires [a bit of extra setup][] in Xcode,
-but the restoration classes otherwise work the same on
-both iOS and Android.
+Você pode usar as classes [`RestorationManager`][`RestorationManager`] (e relacionadas)
+para lidar com a restauração de estado.
+Um app iOS requer [um pouco de configuração extra][a bit of extra setup] no Xcode,
+mas as classes de restauração funcionam da mesma forma em
+iOS e Android.
 
-For more information, check out [State restoration on Android][]
-and the [VeggieSeasons][] code sample.
+Para mais informações, consulte [Restauração de estado no Android][State restoration on Android]
+e o exemplo de código [VeggieSeasons][VeggieSeasons].
 
 [a bit of extra setup]: {{site.api}}/flutter/services/RestorationManager-class.html#state-restoration-on-ios
 [`RestorationManager`]: {{site.api}}/flutter/services/RestorationManager-class.html

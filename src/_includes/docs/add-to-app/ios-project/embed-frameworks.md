@@ -1,36 +1,36 @@
-### Link and Embed frameworks in Xcode {:#method-b .no_toc}
+### Linkar e incorporar frameworks no Xcode {:#method-b .no_toc}
 
-#### Approach {:#method-b-approach}
+#### Abordagem {:#method-b-approach}
 
-In this second method, edit your existing Xcode project,
-generate the necessary frameworks, and embed them in your app.
-Flutter generates iOS frameworks for Flutter itself,
-for your compiled Dart code, and for each of your Flutter plugins.
-Embed these frameworks and update your existing application's build settings.
+Neste segundo método, edite seu projeto Xcode existente,
+gere os frameworks necessários e incorpore-os em seu app.
+O Flutter gera frameworks iOS para o próprio Flutter,
+para seu código Dart compilado e para cada um dos seus plugins Flutter.
+Incorpore esses frameworks e atualize as configurações de compilação da sua aplicação existente.
 
-#### Requirements {:#method-b-reqs}
+#### Requisitos {:#method-b-reqs}
 
-No additional software or hardware requirements are needed for this method.
-Use this method in the following use cases:
+Nenhum software ou hardware adicional é necessário para este método.
+Use este método nos seguintes casos de uso:
 
-* Members of your team can't install the Flutter SDK and CocoaPods
-* You don't want to use CocoaPods as a dependency manager in existing iOS apps
+* Membros da sua equipe não podem instalar o Flutter SDK e CocoaPods
+* Você não quer usar o CocoaPods como gerenciador de dependências em apps iOS existentes
 
-#### Limitations {:#method-b-limits}
+#### Limitações {:#method-b-limits}
 
 {% render "docs/add-to-app/ios-project/limits-common-deps.md" %}
 
-#### Example project structure {:#method-b-structure}
+#### Estrutura de projeto de exemplo {:#method-b-structure}
 
 {% render "docs/add-to-app/ios-project/embed-framework-directory-tree.md" %}
 
-#### Procedures
+#### Procedimentos
 
-How you link, embed, or both the generated frameworks
-into your existing app in Xcode depends on the type of framework.
+Como você linka, incorpora, ou ambos, os frameworks gerados
+em seu app existente no Xcode depende do tipo de framework.
 
-* Link and embed dynamic frameworks.
-* Link static frameworks. [Never embed them][static-framework].
+* Linke e incorpore frameworks dinâmicos.
+* Linke frameworks estáticos. [Nunca incorpore-os][static-framework].
 
 {% render "docs/add-to-app/ios-project/link-and-embed.md" %}
 

@@ -1,198 +1,199 @@
 ---
-title: Use the CPU profiler view
-description: Learn how to use the DevTools CPU profiler view.
+ia-translate: true
+title: Use a view do profiler de CPU
+description: Aprenda como usar a view de profiler de CPU do DevTools.
 ---
 
 :::note
-The CPU profiler view works with Dart CLI and mobile apps only.
-Use Chrome DevTools to [analyze performance][]
-of a web app.
+A view do profiler de CPU funciona apenas com apps CLI Dart e apps mobile.
+Use Chrome DevTools para [analisar o desempenho][analyze performance]
+de um app web.
 :::
 
-The CPU profiler view allows you to record and profile a
-session from your Dart or Flutter application.
-The profiler can help you solve performance problems
-or generally understand your app's CPU activity.
-The Dart VM collects CPU samples
-(a snapshot of the CPU call stack at a single point in time)
-and sends the data to DevTools for visualization.
-By aggregating many CPU samples together,
-the profiler can help you understand where the CPU
-spends most of its time.
+A view do profiler de CPU permite que você grave e faça o profiling de uma
+sessão do seu aplicativo Dart ou Flutter.
+O profiler pode ajudá-lo a resolver problemas de desempenho
+ou geralmente entender a atividade de CPU do seu app.
+A Dart VM coleta amostras de CPU
+(um snapshot da pilha de chamadas de CPU em um único ponto no tempo)
+e envia os dados para DevTools para visualização.
+Ao agregar muitas amostras de CPU juntas,
+o profiler pode ajudá-lo a entender onde a CPU
+gasta a maior parte do seu tempo.
 
 :::note
-**If you are running a Flutter application,
-use a profile build to analyze performance.**
-CPU profiles are not indicative of release performance
-unless your Flutter application is run in profile mode.
+**Se você estiver executando uma aplicação Flutter,
+use um build de profile para analisar o desempenho.**
+Profiles de CPU não são indicativos de desempenho de release
+a menos que sua aplicação Flutter seja executada em modo profile.
 :::
 
-## CPU profiler
+## Profiler de CPU
 
-Start recording a CPU profile by clicking **Record**.
-When you are done recording, click **Stop**. At this point,
-CPU profiling data is pulled from the VM and displayed
-in the profiler views (Call tree, Bottom up, Method table,
-and Flame chart).
+Comece a gravar um profile de CPU clicando em **Record**.
+Quando você terminar de gravar, clique em **Stop**. Neste ponto,
+os dados de profiling de CPU são obtidos da VM e exibidos
+nas views do profiler (Call tree, Bottom up, Method table,
+e Flame chart).
 
-To load all available CPU samples without manually
-recording and stopping, you can click **Load all CPU samples**,
-which pulls all CPU samples that the VM has recorded and
-stored in its ring buffer, and then displays those
-CPU samples in the profiler views.
+Para carregar todas as amostras de CPU disponíveis sem gravar
+e parar manualmente, você pode clicar em **Load all CPU samples**,
+que obtém todas as amostras de CPU que a VM gravou e
+armazenou em seu buffer circular, e então exibe essas
+amostras de CPU nas views do profiler.
 
 ### Bottom up
 
-This table provides a bottom-up representation
-of a CPU profile. This means that each top-level method,
-or root, in the bottom up table is actually the
-top method in the call stack for one or more CPU samples.
-In other words, each top-level method in a bottom up
-table is a leaf node from the top down table
-(the call tree).
-In this table, a method can be expanded to show its _callers_.
+Esta tabela fornece uma representação bottom-up
+de um profile de CPU. Isso significa que cada método de nível superior,
+ou raiz, na tabela bottom up é, na verdade, o
+método superior na pilha de chamadas para uma ou mais amostras de CPU.
+Em outras palavras, cada método de nível superior em uma tabela
+bottom up é um nó folha da tabela top down
+(a árvore de chamadas).
+Nesta tabela, um método pode ser expandido para mostrar seus _chamadores_.
 
-This view is useful for identifying expensive _methods_
-in a CPU profile. When a root node in this table
-has a high _self_ time, that means that many CPU samples
-in this profile ended with that method on top of the call stack.
+Esta view é útil para identificar _métodos_ caros
+em um profile de CPU. Quando um nó raiz nesta tabela
+tem um _self_ time alto, isso significa que muitas amostras de CPU
+neste profile terminaram com aquele método no topo da pilha de chamadas.
 
 ![Screenshot of the Bottom up view](/assets/images/docs/tools/devtools/bottom-up-view.png)
-See the [Guidelines](#guidelines) section below to learn how to
-enable the blue and green vertical lines seen in this image.
+Veja a seção [Guidelines](#guidelines) abaixo para aprender como
+habilitar as linhas verticais azuis e verdes vistas nesta imagem.
 
-Tooltips can help you understand the values in each column:
+Tooltips podem ajudá-lo a entender os valores em cada coluna:
 
 **Total time**
-: For top-level methods in the bottom-up tree
-(stack frames that were at the top of at least one
-CPU sample), this is the time the method spent executing
-its own code, as well as the code for any methods that
-it called.
+: Para métodos de nível superior na árvore bottom-up
+(stack frames que estavam no topo de pelo menos uma
+amostra de CPU), este é o tempo que o método gastou executando
+seu próprio código, bem como o código de quaisquer métodos que
+ele chamou.
 
 **Self time**
-: For top-level methods in the bottom-up tree
-(stack frames that were at the top of at least one CPU
-sample), this is the time the method spent executing only
-its own code.<br><br>
-For children methods in the bottom-up tree (the callers),
-this is the self time of the top-level method (the callee)
-when called through the child method (the caller).
+: Para métodos de nível superior na árvore bottom-up
+(stack frames que estavam no topo de pelo menos uma amostra
+de CPU), este é o tempo que o método gastou executando apenas
+seu próprio código.<br><br>
+Para métodos filhos na árvore bottom-up (os chamadores),
+este é o self time do método de nível superior (o chamado)
+quando chamado através do método filho (o chamador).
 
 **Table element** (self time)
 ![Screenshot of a bottom up table](/assets/images/docs/tools/devtools/table-element.png)
 
 ### Call tree
 
-This table provides a top-down representation of a CPU profile.
-This means that each top-level method in the call tree is a root
-of one or more CPU samples. In this table,
-a method can be expanded to show its _callees_.
+Esta tabela fornece uma representação top-down de um profile de CPU.
+Isso significa que cada método de nível superior na call tree é uma raiz
+de uma ou mais amostras de CPU. Nesta tabela,
+um método pode ser expandido para mostrar seus _chamados_.
 
-This view is useful for identifying expensive _paths_ in a CPU profile.
-When a root node in this table has a high _total_ time,
-that means that many CPU samples in this profile started
-with that method on the bottom of the call stack.
+Esta view é útil para identificar _caminhos_ caros em um profile de CPU.
+Quando um nó raiz nesta tabela tem um _total_ time alto,
+isso significa que muitas amostras de CPU neste profile começaram
+com aquele método na base da pilha de chamadas.
 
 ![Screenshot of a call tree table](/assets/images/docs/tools/devtools/call-tree.png)
-See the [Guidelines](#guidelines) section below to learn how to
-enable the blue and green vertical lines seen in this image.
+Veja a seção [Guidelines](#guidelines) abaixo para aprender como
+habilitar as linhas verticais azuis e verdes vistas nesta imagem.
 
-Tooltips can help you understand the values in each column:
+Tooltips podem ajudá-lo a entender os valores em cada coluna:
 
 **Total time**
-: Time that a method spent executing its own code as well as
-the code for any methods it called.
+: Tempo que um método gastou executando seu próprio código, bem como
+o código de quaisquer métodos que ele chamou.
 
 **Self time**
-: Time the method spent executing only its own code.
+: Tempo que o método gastou executando apenas seu próprio código.
 
 ### Method table
 
-The method table provides CPU statistics for each method
-contained in a CPU profile. In the table on the left,
-all available methods are listed with their **total** and
-**self** time.
+A method table fornece estatísticas de CPU para cada método
+contido em um profile de CPU. Na tabela à esquerda,
+todos os métodos disponíveis são listados com seu tempo **total** e
+**self**.
 
-**Total** time is the combined time that a method spent
-**anywhere** on the call stack, or in other words,
-the time a method spent executing its own code and
-any code for methods that it called.
+O tempo **Total** é o tempo combinado que um método gastou
+**em qualquer lugar** na pilha de chamadas, ou em outras palavras,
+o tempo que um método gastou executando seu próprio código e
+qualquer código de métodos que ele chamou.
 
-**Self** time is the combined time that a method spent
-on top of the call stack, or in other words,
-the time a method spent executing only its own code.
+O tempo **Self** é o tempo combinado que um método gastou
+no topo da pilha de chamadas, ou em outras palavras,
+o tempo que um método gastou executando apenas seu próprio código.
 
 ![Screenshot of a call tree table](/assets/images/docs/tools/devtools/method-table.png)
 
-Selecting a method from the table on the left shows
-the call graph for that method. The call graph shows
-a method's callers and callees and their respective
-caller / callee percentages.
+Selecionar um método da tabela à esquerda mostra
+o grafo de chamadas para aquele método. O grafo de chamadas mostra
+os chamadores e chamados de um método e suas respectivas
+porcentagens de chamador / chamado.
 
 ### Flame chart
 
-The flame chart view is a graphical representation of
-the [Call tree](#call-tree). This is a top-down view
-of a CPU profile, so in this chart,
-the top-most method calls the one below it.
-The width of each flame chart element represents the
-amount of time that a method spent on the call stack.
+A view flame chart é uma representação gráfica da
+[Call tree](#call-tree). Esta é uma view top-down
+de um profile de CPU, então neste gráfico,
+o método mais acima chama aquele abaixo dele.
+A largura de cada elemento do flame chart representa a
+quantidade de tempo que um método gastou na pilha de chamadas.
 
-Like the Call tree, this view is useful for identifying
-expensive paths in a CPU profile.
+Como a Call tree, esta view é útil para identificar
+caminhos caros em um profile de CPU.
 
 ![Screenshot of a flame chart](/assets/images/docs/tools/devtools/cpu-flame-chart.png)
 
-The help menu, which can be opened by clicking the `?` icon
-next to the search bar, provides information about how to
-navigate and zoom within the chart and a color-coded legend.
+O menu de ajuda, que pode ser aberto clicando no ícone `?`
+ao lado da barra de pesquisa, fornece informações sobre como
+navegar e dar zoom dentro do gráfico e uma legenda codificada por cores.
 ![Screenshot of flame chart help](/assets/images/docs/tools/devtools/flame-chart-help.png){:width="70%"}
 
 
-### CPU sampling rate
+### Taxa de amostragem de CPU
 
-DevTools sets a rate at which the VM collects CPU samples:
-1 sample / 250 μs (microseconds).
-This is selected by default on
-the CPU profiler page as "Cpu sampling rate: medium".
-This rate can be modified using the selector at the top
-of the page.
+DevTools define uma taxa na qual a VM coleta amostras de CPU:
+1 amostra / 250 μs (microssegundos).
+Esta é selecionada por padrão na
+página do profiler de CPU como "Cpu sampling rate: medium".
+Esta taxa pode ser modificada usando o seletor no topo
+da página.
 
 ![Screenshot of cpu sampling rate menu](/assets/images/docs/tools/devtools/cpu-sampling-rate-menu.png){:width="70%"}
 
-The **low**, **medium**, and **high** sampling rates are
-1,000 Hz, 4,000 Hz, and 20,000 Hz, respectively.
-It's important to know the trade-offs
-of modifying this setting.
+As taxas de amostragem **low**, **medium** e **high** são
+1.000 Hz, 4.000 Hz e 20.000 Hz, respectivamente.
+É importante conhecer os trade-offs
+de modificar esta configuração.
 
-A profile that was recorded with a **higher** sampling rate
-yields a more fine-grained CPU profile with more samples.
-This might affect performance of your app since the VM
-is being interrupted more often to collect samples.
-This also causes the VM's CPU sample buffer to overflow more quickly.
-The VM has limited space where it can store CPU sample information.
-At a higher sampling rate, the space fills up and begins
-to overflow sooner than it would have if a lower sampling
-rate was used.
-This means that you might not have access to CPU samples
-from the beginning of the recorded profile, depending
-on whether the buffer overflows during the time of recording.
+Um profile que foi gravado com uma taxa de amostragem **higher**
+produz um profile de CPU mais refinado com mais amostras.
+Isso pode afetar o desempenho do seu app, pois a VM
+está sendo interrompida com mais frequência para coletar amostras.
+Isso também faz com que o buffer de amostras de CPU da VM transborde mais rapidamente.
+A VM tem espaço limitado onde pode armazenar informações de amostras de CPU.
+Com uma taxa de amostragem mais alta, o espaço se enche e começa
+a transbordar mais cedo do que teria se uma taxa de amostragem
+mais baixa fosse usada.
+Isso significa que você pode não ter acesso a amostras de CPU
+desde o início do profile gravado, dependendo
+de se o buffer transborda durante o tempo de gravação.
 
-A profile that was recorded with a lower sampling rate
-yields a more coarse-grained CPU profile with fewer samples.
-This affects your app's performance less,
-but you might have access to less information about what
-the CPU was doing during the time of the profile.
-The VM's sample buffer also fills more slowly, so you can see
-CPU samples for a longer period of app run time.
-This means that you have a better chance of viewing CPU
-samples from the beginning of the recorded profile.
+Um profile que foi gravado com uma taxa de amostragem mais baixa
+produz um profile de CPU mais grosseiro com menos amostras.
+Isso afeta menos o desempenho do seu app,
+mas você pode ter acesso a menos informações sobre o que
+a CPU estava fazendo durante o tempo do profile.
+O buffer de amostras da VM também se enche mais lentamente, então você pode ver
+amostras de CPU por um período mais longo de tempo de execução do app.
+Isso significa que você tem uma chance melhor de visualizar amostras
+de CPU desde o início do profile gravado.
 
-### Filtering
+### Filtragem
 
-When viewing a CPU profile, you can filter the data by
-library, method name, or [`UserTag`][].
+Ao visualizar um profile de CPU, você pode filtrar os dados por
+biblioteca, nome de método ou [`UserTag`][`UserTag`].
 
 ![Screenshot of filter by tag menu](/assets/images/docs/tools/devtools/filter-by-tag.png)
 
@@ -200,22 +201,22 @@ library, method name, or [`UserTag`][].
 
 ## Guidelines
 
-When looking at a call tree or bottom up view,
-sometimes the trees can be very deep.
-To help with viewing parent-child relationships in a deep tree,
-enable the **Display guidelines** option.
-This adds vertical guidelines between parent and child in the tree.
+Ao olhar para uma call tree ou view bottom up,
+às vezes as árvores podem ser muito profundas.
+Para ajudar na visualização de relações pai-filho em uma árvore profunda,
+habilite a opção **Display guidelines**.
+Isso adiciona linhas-guia verticais entre pai e filho na árvore.
 
 ![Screenshot of display options](/assets/images/docs/tools/devtools/display-options.png)
 
 [analyze performance]: {{site.developers}}/web/tools/chrome-devtools/evaluate-performance/
 
-## Other resources
+## Outros recursos
 
-To learn how to use DevTools to analyze
-the CPU usage of a compute-intensive Mandelbrot app,
-check out a guided [CPU Profiler View tutorial][profiler-tutorial].
-Also, learn how to analyze CPU usage when the app
-uses isolates for parallel computing.
+Para aprender como usar DevTools para analisar
+o uso de CPU de um app Mandelbrot computacionalmente intensivo,
+confira um [tutorial guiado da View do CPU Profiler][profiler-tutorial].
+Além disso, aprenda como analisar o uso de CPU quando o app
+usa isolates para computação paralela.
 
 [profiler-tutorial]: {{site.medium}}/@fluttergems/mastering-dart-flutter-devtools-cpu-profiler-view-part-6-of-8-31e24eae6bf8

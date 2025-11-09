@@ -1,81 +1,82 @@
 ---
+ia-translate: true
 title: Flutter Widget Previewer
 description: >-
-  Learn how to use the Flutter Widget Previewer to see your
-  widgets render in real-time, separate from your full app.
+  Aprenda como usar o Flutter Widget Previewer para ver seus
+  widgets renderizarem em tempo real, separados do seu app completo.
 ---
 
-In this guide, you will learn how to use the
+Neste guia, você aprenderá como usar o
 Flutter Widget Previewer.
 
-## Overview
+## Visão geral
 
-With the Flutter Widget Previewer, you can see your widgets
-render in real-time, separate from a full app, in the
-Chrome browser. To start the previewer, show a widget
-in it, and customize a preview, see the following sections.
+Com o Flutter Widget Previewer, você pode ver seus widgets
+renderizarem em tempo real, separados de um app completo, no
+navegador Chrome. Para iniciar o previewer, mostrar um widget
+nele e personalizar uma preview, veja as seções a seguir.
 
 :::version-note
-The Flutter Widget Preview requires Flutter version 3.35 or
-higher. IDE support requires Flutter version 3.38 or higher.
+O Flutter Widget Preview requer Flutter versão 3.35 ou
+superior. Suporte de IDE requer Flutter versão 3.38 ou superior.
 
-Please be aware that this is an **experimental feature**
-available in the Flutter stable channel. The APIs are not
-stable and _will change_. This guide is for the current
-early access version, and you should expect future updates
-to introduce breaking changes.
+Por favor, esteja ciente de que este é um **recurso experimental**
+disponível no canal stable do Flutter. As APIs não são
+estáveis e _vão mudar_. Este guia é para a versão
+de acesso antecipado atual, e você deve esperar que atualizações futuras
+introduzam mudanças incompatíveis.
 :::
 
-## Opening the previewer
+## Abrindo o previewer
 
 ### IDEs
 
-As of Flutter 3.38, Android Studio, Intellij, and Visual
-Studio Code automatically start the Flutter Widget Previewer
-on launch.
+A partir do Flutter 3.38, Android Studio, Intellij e Visual
+Studio Code iniciam automaticamente o Flutter Widget Previewer
+ao serem lançados.
 
-#### Android Studio and Intellij
+#### Android Studio e Intellij
 
-To open the Widget Previewer in Android Studio or Intellij, open
-the "Flutter Widget Preview" tab in the sidebar:
+Para abrir o Widget Previewer no Android Studio ou Intellij, abra
+a aba "Flutter Widget Preview" na barra lateral:
 
 ![Flutter Widget Previewer in Android Studio](/assets/images/docs/tools/widget-previewer/android-studio.png "Android Studio")
 
 #### Visual Studio Code
 
-To open the Widget Previewer in Visual Studio Code, open the
-"Flutter Widget Preview" tab in the sidebar:
+Para abrir o Widget Previewer no Visual Studio Code, abra a
+aba "Flutter Widget Preview" na barra lateral:
 
 ![Flutter Widget Previewer in Visual Studio Code](/assets/images/docs/tools/widget-previewer/vscode.png "Visual Studio Code")
 
-### Command line
+### Linha de comando
 
-To start the Flutter Widget Previewer, navigate to your
-Flutter project's root directory and run the following
-command in your terminal. This will launch a local server
-and open a Widget Preview environment in Chrome that
-automatically updates based on changes to your project.
+Para iniciar o Flutter Widget Previewer, navegue até o
+diretório raiz do seu projeto Flutter e execute o seguinte
+comando em seu terminal. Isso lançará um servidor local
+e abrirá um ambiente Widget Preview no Chrome que
+atualiza automaticamente com base em mudanças em seu projeto.
 
 ```shell
 flutter widget-preview start
 ```
 
-## Preview a widget
+## Preview de um widget
 
-After you've started the previewer, to look at a widget,
-you must use the [`@Preview`][] annotation defined in
-`package:flutter/widget_previews.dart`. This annotation
-can be applied to:
+Depois de ter iniciado o previewer, para visualizar um widget,
+você deve usar a anotação [`@Preview`][`@Preview`] definida em
+`package:flutter/widget_previews.dart`. Esta anotação
+pode ser aplicada a:
 
-- **Top-level functions** that return a `Widget` or
+- **Funções top-level** que retornam um `Widget` ou
   `WidgetBuilder`.
-- **Static methods** within a class that return a `Widget` or
+- **Métodos estáticos** dentro de uma classe que retornam um `Widget` ou
   `WidgetBuilder`.
-- **Public Widget constructors and factories** with no
-  required arguments.
+- **Construtores e factories de Widget públicos** sem
+  argumentos obrigatórios.
 
-Here is a basic example of how to use the
-`@Preview` annotation to preview a `Text` widget:
+Aqui está um exemplo básico de como usar a
+anotação `@Preview` para fazer preview de um widget `Text`:
 
 ```dart
 import 'package:flutter/widget_previews.dart';
@@ -88,77 +89,77 @@ Widget mySampleText() {
 ```
 
 ![Sample widget in Flutter Widget Previewer](/assets/images/docs/tools/widget-previewer/widget-previewer.png "Example widget")
-Each preview instance provides various controls for
-interacting with the previewed widget. From left to right:
+Cada instância de preview fornece vários controles para
+interagir com o widget em preview. Da esquerda para a direita:
 
-- **Zoom in:** Magnifies the widget in the preview.
+- **Zoom in:** Amplia o widget na preview.
 
-- **Zoom out:** Reduces the magnification of the widget in
-  the preview.
+- **Zoom out:** Reduz a ampliação do widget na
+  preview.
 
-- **Reset zoom:** Returns the widget preview to its
-  default zoom level.
+- **Reset zoom:** Retorna a preview do widget ao seu
+  nível de zoom padrão.
 
-- **Toggle between light and dark mode:** Switches the
-  preview's theme between a light and dark color scheme.
+- **Alternar entre modo claro e escuro:** Alterna o
+  tema da preview entre um esquema de cores claro e escuro.
 
-- **Perform a hot restart for the individual preview:**
-  Restarts only the specific widget preview,
-  allowing changes to be applied quickly without
-  restarting the entire application.
+- **Executar um hot restart para a preview individual:**
+  Reinicia apenas a preview de widget específica,
+  permitindo que mudanças sejam aplicadas rapidamente sem
+  reiniciar a aplicação inteira.
 
-For the case where global state has been modified
-(for example, a static initializer has been changed), the
-entire widget previewer can be told to hot restart using the
-button at the bottom right of the environment.
+Para o caso em que o estado global foi modificado
+(por exemplo, um inicializador estático foi alterado), o
+previewer de widget inteiro pode ser instruído a fazer hot restart usando o
+botão no canto inferior direito do ambiente.
 
-### Filter previews by selected file
+### Filtrar previews por arquivo selecionado
 
-When viewing previews within an IDE, the widget previewer is
-configured to filter the set of previews based on the currently
-selected file:
+Ao visualizar previews dentro de uma IDE, o previewer de widget é
+configurado para filtrar o conjunto de previews com base no arquivo
+atualmente selecionado:
 
 ![Filter by previews selected file in Flutter Widget Previewer](/assets/images/docs/tools/widget-previewer/filter-by-file.gif "Filter previews by selected file")
 
-To disable this behavior, toggle the "Filter previews by selected file"
-option at the bottom left of the environment.
+Para desabilitar este comportamento, alterne a opção "Filter previews by selected file"
+no canto inferior esquerdo do ambiente.
 
-## Customize a preview
+## Personalizar uma preview
 
-The [`@Preview`][] annotation has several parameters you can
-use to customize the preview:
+A anotação [`@Preview`][`@Preview`] tem vários parâmetros que você pode
+usar para personalizar a preview:
 
-- **`name`**: A descriptive name for the preview.
+- **`name`**: Um nome descritivo para a preview.
 
-- **`group`**: A name used to group related previews together
-  in the widget previewer.
+- **`group`**: Um nome usado para agrupar previews relacionadas juntas
+  no previewer de widget.
 
-- **`size`**: Artificial size constraints using a
-  `Size` object.
+- **`size`**: Restrições de tamanho artificiais usando um
+  objeto `Size`.
 
-- **`textScaleFactor`**: A custom font scale.
+- **`textScaleFactor`**: Uma escala de fonte customizada.
 
-- **`wrapper`**: A function that wraps your previewed
-  widget in a specific widget tree (for example, to inject
-  application state into the widget tree with an
+- **`wrapper`**: Uma função que envolve seu widget em preview
+  em uma árvore de widgets específica (por exemplo, para injetar
+  estado de aplicação na árvore de widgets com um
   `InheritedWidget`).
 
-- **`theme`**: A function to provide Material and
-  Cupertino theming data.
+- **`theme`**: Uma função para fornecer dados de tema Material e
+  Cupertino.
 
-- **`brightness`**: The initial theme brightness.
+- **`brightness`**: O brilho inicial do tema.
 
-- **`localizations`**: A function to apply a localization
-  configuration.
+- **`localizations`**: Uma função para aplicar uma configuração
+  de localização.
 
-## Create custom preview annotations
+## Criar anotações de preview customizadas
 
-To reduce the amount of boilerplate needed to define previews with
-a common set of properties, the [`Preview`][] annotation class can be
-extended to create custom preview annotations tailored for your project.
+Para reduzir a quantidade de boilerplate necessária para definir previews com
+um conjunto comum de propriedades, a classe de anotação [`Preview`][`Preview`] pode ser
+estendida para criar anotações de preview customizadas adaptadas para seu projeto.
 
-Here's an example of a custom preview annotation that provides
-theming data:
+Aqui está um exemplo de uma anotação de preview customizada que fornece
+dados de tema:
 
 ```dart
 final class MyCustomPreview extends Preview {
@@ -181,10 +182,10 @@ final class MyCustomPreview extends Preview {
 }
 ```
 
-Extending the [`Preview`][] annotation class also allows for overriding
-the [`Preview.transform()`][] method. This method is invoked by the widget previewer
-and can be used to modify the preview at runtime, allowing for preview
-configurations that would not otherwise be possible in a `const` context:
+Estender a classe de anotação [`Preview`][`Preview`] também permite sobrescrever
+o método [`Preview.transform()`][`Preview.transform()`]. Este método é invocado pelo previewer de widget
+e pode ser usado para modificar a preview em tempo de execução, permitindo
+configurações de preview que não seriam possíveis em um contexto `const`:
 
 ```dart
 final class TransformativePreview extends Preview {
@@ -198,8 +199,8 @@ final class TransformativePreview extends Preview {
     super.localizations,
   });
 
-  // Note: this is no longer public or static as it's injected
-  // at runtime when transform() is invoked.
+  // Nota: isso não é mais público ou estático pois é injetado
+  // em tempo de execução quando transform() é invocado.
   PreviewThemeData _themeBuilder() {
     return PreviewThemeData(
       materialLight: ThemeData.light(),
@@ -210,24 +211,24 @@ final class TransformativePreview extends Preview {
   @override
   Preview transform() {
     final originalPreview = super.transform();
-    // Create's a PreviewBuilder that can be used to modify
-    // the preview contents.
+    // Cria um PreviewBuilder que pode ser usado para modificar
+    // os conteúdos da preview.
     final builder = originalPreview.toBuilder();
     builder
       ..name = 'Transformed - ${originalPreview.name}'
       ..theme = _themeBuilder;
 
-    // Return the updated Preview instance.
+    // Retorna a instância Preview atualizada.
     return builder.toPreview();
   }
 }
 ```
 
-## Creating multiple preview configurations
+## Criando múltiplas configurações de preview
 
-Creating multiple previews with different configurations can be as
-simple as applying multiple [`@Preview`][] annotations to a single
-function or constructor:
+Criar múltiplas previews com configurações diferentes pode ser tão
+simples quanto aplicar múltiplas anotações [`@Preview`][`@Preview`] a uma única
+função ou construtor:
 
 ```dart
 @Preview(
@@ -245,13 +246,13 @@ Widget buttonPreview() => const ButtonShowcase();
 
 ![Multiple previews in Flutter Widget Previewer](/assets/images/docs/tools/widget-previewer/multi-preview.png "Multiple preview example")
 
-To simplify creating multiple previews with common configurations, you
-can extend the [`MultiPreview`][] to create a custom annotation that creates
-multiple previews. The following [`MultiPreview`][] creates
-the same two previews as the previous example:
+Para simplificar a criação de múltiplas previews com configurações comuns, você
+pode estender o [`MultiPreview`][`MultiPreview`] para criar uma anotação customizada que cria
+múltiplas previews. O seguinte [`MultiPreview`][`MultiPreview`] cria
+as mesmas duas previews do exemplo anterior:
 
 ```dart
-/// Creates light and dark mode previews.
+/// Cria previews em modo claro e escuro.
 final class MultiBrightnessPreview extends MultiPreview {
   const MultiBrightnessPreview();
 
@@ -274,12 +275,12 @@ final class MultiBrightnessPreview extends MultiPreview {
 Widget buttonPreview() => const ButtonShowcase();
 ```
 
-Like [`Preview`][], [`MultiPreview`][] also provides a
-[`MultiPreview.transform()`][] method to perform transformations
-on each preview at runtime:
+Assim como [`Preview`][`Preview`], [`MultiPreview`][`MultiPreview`] também fornece um
+método [`MultiPreview.transform()`][`MultiPreview.transform()`] para executar transformações
+em cada preview em tempo de execução:
 
 ```dart
-/// Creates light and dark mode previews.
+/// Cria previews em modo claro e escuro.
 final class MultiBrightnessPreview extends MultiPreview {
   const MultiBrightnessPreview({required this.name});
 
@@ -297,10 +298,10 @@ final class MultiBrightnessPreview extends MultiPreview {
     return previews.map((preview) {
       final builder = preview.toBuilder()
         ..group = 'Brightness'
-        // Building names based on values provided to the annotation
-        // isn't possible within a constant constructor. However,
-        // there's no such restriction when building a Preview at
-        // runtime.
+        // Construir nomes baseados em valores fornecidos à anotação
+        // não é possível dentro de um construtor constante. No entanto,
+        // não há tal restrição ao construir uma Preview em
+        // tempo de execução.
         ..name = '$name - ${preview.brightness!.name}';
       return builder.toPreview();
     }).toList();
@@ -311,53 +312,53 @@ final class MultiBrightnessPreview extends MultiPreview {
 Widget buttonPreview() => const ButtonShowcase();
 ```
 
-## Restrictions and limitations
+## Restrições e limitações
 
-The Flutter Widget Previewer has certain restrictions you
-should be aware of:
+O Flutter Widget Previewer tem certas restrições que
+você deve estar ciente:
 
-- **Public callback names**: All callback arguments provided to
-  preview annotations must be public and constant.
-  This is required for the previewer's code generation
-  implementation to work correctly.
+- **Nomes de callback públicos**: Todos os argumentos de callback fornecidos a
+  anotações de preview devem ser públicos e constantes.
+  Isso é necessário para que a implementação de geração de código
+  do previewer funcione corretamente.
 
-- **Unsupported APIs**: Native plugins and any APIs from
-  the `dart:io` or `dart:ffi` libraries are not supported.
-  This is because the widget previewer is built with
-  Flutter Web, which doesn't have access to the underlying
-  native platform APIs. While web plugins might work when
-  using Chrome, there is no guarantee that they will work
-  within other environments, such as when embedded in
+- **APIs não suportadas**: Plugins nativos e quaisquer APIs das
+  bibliotecas `dart:io` ou `dart:ffi` não são suportadas.
+  Isso ocorre porque o previewer de widget é construído com
+  Flutter Web, que não tem acesso às APIs de
+  plataforma nativa subjacentes. Embora plugins web possam funcionar ao
+  usar Chrome, não há garantia de que funcionarão
+  dentro de outros ambientes, como quando incorporados em
   IDEs.
 
-  Widgets with transitive dependencies on `dart:io` will
-  load correctly, but all APIs from `dart:io` will throw an
-  exception when invoked. Widgets with transitive dependencies
-  on `dart:ffi` will fail to load completely ([#166431]).
+  Widgets com dependências transitivas em `dart:io` serão
+  carregados corretamente, mas todas as APIs de `dart:io` lançarão uma
+  exceção quando invocadas. Widgets com dependências transitivas
+  em `dart:ffi` falharão ao carregar completamente ([#166431][#166431]).
 
-  See the [Dart documentation on conditional imports] for details
-  on how to structure your application to cleanly support
-  platform-specific libraries when targeting multiple platforms.
+  Veja a [documentação Dart sobre importações condicionais][Dart documentation on conditional imports] para detalhes
+  sobre como estruturar sua aplicação para suportar de forma limpa
+  bibliotecas específicas de plataforma ao direcionar múltiplas plataformas.
 
-- **Asset paths**: When using `fromAsset` APIs from
-  `dart:ui` to load resources, you must use
-  **package-based paths** instead of direct local paths.
-  This ensures that the assets can be correctly located
-  and loaded within the previewer's web environment. For
-  example, use `'packages/my_package_name/assets/my_image.png'`
-  instead of `'assets/my_image.png'`.
+- **Caminhos de asset**: Ao usar APIs `fromAsset` de
+  `dart:ui` para carregar recursos, você deve usar
+  **caminhos baseados em package** ao invés de caminhos locais diretos.
+  Isso garante que os assets possam ser corretamente localizados
+  e carregados dentro do ambiente web do previewer. Por
+  exemplo, use `'packages/my_package_name/assets/my_image.png'`
+  ao invés de `'assets/my_image.png'`.
 
-- **Unconstrained widgets**: Unconstrained widgets are
-  automatically constrained to approximately half the
-  height and width of the widget previewer. This behavior
-  is likely to change in the future, so constraints should
-  be applied using the `size` parameter when possible.
+- **Widgets sem restrições**: Widgets sem restrições são
+  automaticamente restritos a aproximadamente metade da
+  altura e largura do previewer de widget. Este comportamento
+  provavelmente mudará no futuro, então restrições devem
+  ser aplicadas usando o parâmetro `size` quando possível.
 
-- **Multi-project support in IDEs**: The widget previewer
-  currently only supports displaying previews contained
-  within a single project or Pub workspace. We’re actively
-  investigating options to support IDE sessions with multiple
-  Flutter projects ([#173550][]).
+- **Suporte multi-projeto em IDEs**: O previewer de widget
+  atualmente apenas suporta exibir previews contidas
+  dentro de um único projeto ou workspace Pub. Estamos ativamente
+  investigando opções para suportar sessões de IDE com múltiplos
+  projetos Flutter ([#173550][#173550]).
 
 [`@Preview`]: {{site.api}}/flutter/widget_previews/Preview-class.html
 [`Preview`]: {{site.api}}/flutter/widget_previews/Preview-class.html

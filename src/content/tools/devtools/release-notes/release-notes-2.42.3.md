@@ -1,36 +1,37 @@
 ---
-title: DevTools 2.42.3 release notes
-shortTitle: 2.42.3 release notes
+ia-translate: true
+title: Notas de versão do DevTools 2.42.3
+shortTitle: Notas de versão 2.42.3
 breadcrumb: 2.42.3
-description: Release notes for Dart and Flutter DevTools version 2.42.3.
+description: Notas de versão para o Dart e Flutter DevTools versão 2.42.3.
 showToc: false
 ---
 
-The 2.42.3 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](/tools/devtools/overview).
+A versão 2.42.3 do Dart e Flutter DevTools
+inclui as seguintes alterações entre outras melhorias gerais.
+Para saber mais sobre DevTools, confira a
+[visão geral do DevTools](/tools/devtools/overview).
 
-## General updates
+## Atualizações gerais
 
-* Added "View licenses" shortcut to the About dialog. - [#8610](https://github.com/flutter/devtools/pull/8610)
+* Adicionado atalho "View licenses" ao diálogo About. - [#8610](https://github.com/flutter/devtools/pull/8610)
 
-* Lower the wasm optimization level to resolve crashes on the dart2wasm build. - [#8814](https://github.com/flutter/devtools/pull/8814)
+* Reduzido o nível de otimização wasm para resolver crashes no build dart2wasm. - [#8814](https://github.com/flutter/devtools/pull/8814)
 
-## Inspector updates
+## Atualizações do Inspector
 
-* Enabled the new inspector by default. This can be disabled in the inspector settings. - [#8650](https://github.com/flutter/devtools/pull/8650)
+* Habilitado o novo inspector por padrão. Isso pode ser desabilitado nas configurações do inspector. - [#8650](https://github.com/flutter/devtools/pull/8650)
   ![Legacy inspector setting](/assets/images/docs/tools/devtools/release-notes/images-2.42.3/legacy_inspector_setting.png "Legacy inspector setting")
-* Fixed an issue where selecting an implementation widget on the device while implementation widgets were hidden in the [new inspector](https://docs.flutter.dev/tools/devtools/release-notes/release-notes-2.40.1#inspector-updates) showed an error. - [#8625](https://github.com/flutter/devtools/pull/8625)
-* Enabled auto-refreshes of the widget tree on hot-reloads and navigation events by default. This can be disabled in the inspector settings. - [#8646](https://github.com/flutter/devtools/pull/8646)
+* Corrigido um problema onde selecionar um widget de implementação no dispositivo enquanto widgets de implementação estavam ocultos no [novo inspector](https://docs.flutter.dev/tools/devtools/release-notes/release-notes-2.40.1#inspector-updates) mostrava um erro. - [#8625](https://github.com/flutter/devtools/pull/8625)
+* Habilitadas atualizações automáticas da árvore de widgets em hot-reloads e eventos de navegação por padrão. Isso pode ser desabilitado nas configurações do inspector. - [#8646](https://github.com/flutter/devtools/pull/8646)
   ![Auto-refresh setting](/assets/images/docs/tools/devtools/release-notes/images-2.42.3/inspector_auto_refresh_setting.png "Inspector auto-refresh setting")
 
-## Network profiler updates
+## Atualizações do Network profiler
 
-* Fixed an issue where the HTTP requests would sometimes not be displayed properly, particularly when DevTools is communicating
-  with an application over a slow network connection. - [#8860](https://github.com/flutter/devtools/pull/8860)
+* Corrigido um problema onde as requisições HTTP às vezes não eram exibidas corretamente, particularmente quando DevTools está se comunicando
+  com uma aplicação por uma conexão de rede lenta. - [#8860](https://github.com/flutter/devtools/pull/8860)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes in this release, check out the
-[DevTools git log](https://github.com/flutter/devtools/tree/v2.42.3).
+Para encontrar uma lista completa de alterações nesta versão, confira o
+[log git do DevTools](https://github.com/flutter/devtools/tree/v2.42.3).

@@ -1,75 +1,76 @@
 ---
-title: DevTools 2.22.2 release notes
-shortTitle: 2.22.2 release notes
+ia-translate: true
+title: Notas de versão do DevTools 2.22.2
+shortTitle: Notas de versão 2.22.2
 breadcrumb: 2.22.2
-description: Release notes for Dart and Flutter DevTools version 2.22.2.
+description: Notas de versão para o Dart e Flutter DevTools versão 2.22.2.
 showToc: false
 ---
 
-The 2.22.2 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutter.dev/tools/devtools).
+A versão 2.22.2 do Dart e Flutter DevTools
+inclui as seguintes alterações entre outras melhorias gerais.
+Para saber mais sobre DevTools, confira a
+[visão geral do DevTools](https://docs.flutter.dev/tools/devtools).
 
-## General updates
+## Atualizações gerais
 
-- Prevent crashes if there is no main isolate -
+- Prevenção de crashes se não houver isolate principal -
   [#5232](https://github.com/flutter/devtools/pull/5232)
 
-## CPU profiler updates
+## Atualizações do CPU profiler
 
-- Display stack frame URI inline with method name to
-  ensure the URI is always visible in deeply nested trees -
+- Exibida URI do stack frame inline com o nome do método para
+  garantir que a URI esteja sempre visível em árvores profundamente aninhadas -
   [#5181](https://github.com/flutter/devtools/pull/5181)
 
   ![inline uri](/assets/images/docs/tools/devtools/release-notes/images-2.22.2/5181.png "inline uri")
 
-- Add the ability to filter by method name or source URI -
+- Adicionada a capacidade de filtrar por nome de método ou URI de origem -
   [#5204](https://github.com/flutter/devtools/pull/5204)
 
-## Memory updates
+## Atualizações de Memory
 
-- Change filter default to show only project and 3rd party dependencies -
+- Alterado padrão do filtro para mostrar apenas projeto e dependências de terceiros -
   [#5201](https://github.com/flutter/devtools/pull/5201).
 
   ![filter default](/assets/images/docs/tools/devtools/release-notes/images-2.22.2/5201.png "filter default")
 
-- Support expression evaluation in console for running application -
+- Suporte para avaliação de expressão no console para aplicação em execução -
   [#5248](https://github.com/flutter/devtools/pull/5248).
 
   ![evaluation](/assets/images/docs/tools/devtools/release-notes/images-2.22.2/5248.png "evaluation")
 
-- Add column `Persisted` for memory diffing -
+- Adicionada coluna `Persisted` para comparação de memória -
   [#5290](https://github.com/flutter/devtools/pull/5290)
 
   ![persisted](/assets/images/docs/tools/devtools/release-notes/images-2.22.2/5290.png "persisted")
 
-## Debugger updates
+## Atualizações do Debugger
 
-- Add support for browser navigation history when
-  navigating using the File Explorer -
+- Adicionado suporte para histórico de navegação do navegador ao
+  navegar usando o File Explorer -
   [#4906](https://github.com/flutter/devtools/pull/4906)
-- Designate positional fields for `Record` types
-  with the getter syntax beginning at `$1` -
+- Designados campos posicionais para tipos `Record`
+  com a sintaxe getter começando em `$1` -
   [#5272](https://github.com/flutter/devtools/pull/5272)
-- Fix variable inspection for `Map` and `List` instances -
+- Corrigida inspeção de variável para instâncias `Map` e `List` -
   [#5320](https://github.com/flutter/devtools/pull/5320)
 
   ![map and list](/assets/images/docs/tools/devtools/release-notes/images-2.22.2/5320.png "map and list")
 
-- Fix variable inspection for `Set` instances -
+- Corrigida inspeção de variável para instâncias `Set` -
   [#5323](https://github.com/flutter/devtools/pull/5323)
 
   ![set](/assets/images/docs/tools/devtools/release-notes/images-2.22.2/5323.png "set")
 
 
-## Network profiler updates
+## Atualizações do Network profiler
 
-- Improve reliability and performance of the Network tab -
+- Melhorada confiabilidade e performance da aba Network -
   [#5056](https://github.com/flutter/devtools/pull/5056)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes since the previous release,
-check out
-[the diff on GitHub](https://github.com/flutter/devtools/compare/v2.21.1...v2.22.2).
+Para encontrar uma lista completa de alterações desde a versão anterior,
+confira
+[o diff no GitHub](https://github.com/flutter/devtools/compare/v2.21.1...v2.22.2).

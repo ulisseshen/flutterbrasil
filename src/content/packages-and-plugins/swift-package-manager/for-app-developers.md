@@ -1,25 +1,25 @@
 ---
-title: Swift Package Manager for app developers
-description: How to use Swift Package Manager for native iOS or macOS dependencies
+ia-translate: true
+title: Swift Package Manager para desenvolvedores de apps
+description: Como usar Swift Package Manager para dependências nativas iOS ou macOS
 ---
 
 :::warning
-Flutter is migrating to [Swift Package Manager][] to manage iOS and macOS native
-dependencies.
-Flutter's support of Swift Package Manager is under development.
-If you find a bug in Flutter's Swift Package Manager support,
-[open an issue][].
-Swift Package Manager support is [off by default][].
-Flutter continues to support CocoaPods.
+Flutter está migrando para [Swift Package Manager][] para gerenciar dependências nativas iOS e macOS.
+O suporte do Flutter ao Swift Package Manager está em desenvolvimento.
+Se você encontrar um bug no suporte do Flutter ao Swift Package Manager,
+[abra uma issue][open an issue].
+O suporte ao Swift Package Manager está [desativado por padrão][off by default].
+Flutter continua a suportar CocoaPods.
 :::
 
-Flutter's Swift Package Manager integration has several benefits:
+A integração do Flutter com Swift Package Manager tem vários benefícios:
 
-1. **Provides access to the Swift package ecosystem**.
-   Flutter plugins can use the growing ecosystem of [Swift packages][].
-1. **Simplifies Flutter installation**.
-   Xcode includes Swift Package Manager.
-   You don't need to install Ruby and CocoaPods if your project uses
+1. **Fornece acesso ao ecossistema de pacotes Swift**.
+   Plugins Flutter podem usar o crescente ecossistema de [pacotes Swift][Swift packages].
+1. **Simplifica a instalação do Flutter**.
+   Xcode inclui Swift Package Manager.
+   Você não precisa instalar Ruby e CocoaPods se seu projeto usa
    Swift Package Manager.
 
 [Swift Package Manager]: https://www.swift.org/documentation/package-manager/
@@ -29,9 +29,9 @@ Flutter's Swift Package Manager integration has several benefits:
 
 {% render "docs/swift-package-manager/how-to-enable-disable.md", site: site %}
 
-## How to add Swift Package Manager integration
+## Como adicionar integração com Swift Package Manager
 
-### Add to a Flutter app
+### Adicionar a um app Flutter
 
 <Tabs key="darwin-platform">
 <Tab name="iOS project">
@@ -46,7 +46,7 @@ Flutter's Swift Package Manager integration has several benefits:
 </Tab>
 </Tabs>
 
-### Add to a Flutter app _manually_
+### Adicionar a um app Flutter _manualmente_
 
 <Tabs key="darwin-platform">
 <Tab name="iOS project">
@@ -61,108 +61,107 @@ Flutter's Swift Package Manager integration has several benefits:
 </Tab>
 </Tabs>
 
-### Add to an existing app (add-to-app)
+### Adicionar a um app existente (add-to-app)
 
-Flutter's Swift Package Manager support doesn't work with add-to-app scenarios.
+O suporte do Flutter ao Swift Package Manager não funciona com cenários add-to-app.
 
-To keep current on status updates, consult [flutter#146957][].
+Para acompanhar atualizações de status, consulte [flutter#146957][].
 
 [flutter#146957]: https://github.com/flutter/flutter/issues/146957
 
-### Add to a custom Xcode target
+### Adicionar a um target personalizado do Xcode
 
-Your Flutter Xcode project can have custom [Xcode targets][] to build additional
-products, like frameworks or unit tests.
-You can add Swift Package Manager integration to these custom Xcode targets.
+Seu projeto Flutter Xcode pode ter [targets personalizados do Xcode][Xcode targets] para construir produtos adicionais,
+como frameworks ou testes unitários.
+Você pode adicionar integração com Swift Package Manager a esses targets personalizados do Xcode.
 
-Follow the steps in
-[How to add Swift Package Manager integration to a project _manually_][manualIntegration].
+Siga os passos em
+[Como adicionar integração com Swift Package Manager a um projeto _manualmente_][manualIntegration].
 
-In [Step 1][manualIntegrationStep1], list item 6 use your custom target instead
-of the `Flutter` target.
+No [Passo 1][manualIntegrationStep1], item 6 da lista, use seu target personalizado em vez
+do target `Flutter`.
 
-In [Step 2][manualIntegrationStep2], list item 6 use your custom target instead
-of the `Flutter` target.
+No [Passo 2][manualIntegrationStep2], item 6 da lista, use seu target personalizado em vez
+do target `Flutter`.
 
 [Xcode targets]: https://developer.apple.com/documentation/xcode/configuring-a-new-target-in-your-project
 [manualIntegration]: /packages-and-plugins/swift-package-manager/for-app-developers/#how-to-add-swift-package-manager-integration-to-a-flutter-app-manually
 [manualIntegrationStep1]: /packages-and-plugins/swift-package-manager/for-app-developers/#step-1-add-fluttergeneratedpluginswiftpackage-package-dependency
 [manualIntegrationStep2]: /packages-and-plugins/swift-package-manager/for-app-developers/#step-2-add-run-prepare-flutter-framework-script-pre-action
 
-## How to remove Swift Package Manager integration
+## Como remover integração com Swift Package Manager
 
-To add Swift Package Manager integration, the Flutter CLI migrates your project.
-This migration updates your Xcode project to add Flutter plugin dependencies.
+Para adicionar integração com Swift Package Manager, o Flutter CLI migra seu projeto.
+Esta migração atualiza seu projeto Xcode para adicionar dependências de plugin Flutter.
 
-To undo this migration:
+Para desfazer esta migração:
 
-1. [Turn off Swift Package Manager][].
+1. [Desative o Swift Package Manager][Turn off Swift Package Manager].
 
-1. Clean your project:
+1. Limpe seu projeto:
 
    ```sh
    flutter clean
    ```
 
-1. Open your app (`ios/Runner.xcworkspace` or `macos/Runner.xcworkspace`) in
+1. Abra seu app (`ios/Runner.xcworkspace` ou `macos/Runner.xcworkspace`) no
    Xcode.
 
-1. Navigate to **Package Dependencies** for the project.
+1. Navegue até **Package Dependencies** para o projeto.
 
-1. Click the `FlutterGeneratedPluginSwiftPackage` package, then click
+1. Clique no pacote `FlutterGeneratedPluginSwiftPackage`, depois clique em
    <span class="material-symbols" translate="no">remove</span>.
 
    <DashImage image="development/packages-and-plugins/swift-package-manager/remove-generated-package.png" caption="The `FlutterGeneratedPluginSwiftPackage` to remove" />
 
-1. Navigate to **Frameworks, Libraries, and Embedded Content** for the `Runner`
-   target.
+1. Navegue até **Frameworks, Libraries, and Embedded Content** para o target `Runner`.
 
-1. Click `FlutterGeneratedPluginSwiftPackage`, then click the
+1. Clique em `FlutterGeneratedPluginSwiftPackage`, depois clique no
    <span class="material-symbols" translate="no">remove</span>.
 
    <DashImage image="development/packages-and-plugins/swift-package-manager/remove-generated-framework.png" caption="The `FlutterGeneratedPluginSwiftPackage` to remove" />
 
-1. Go to **Product > Scheme > Edit Scheme**.
+1. Vá para **Product > Scheme > Edit Scheme**.
 
-1. Expand the **Build** section in the left side bar.
+1. Expanda a seção **Build** na barra lateral esquerda.
 
-1. Click **Pre-actions**.
+1. Clique em **Pre-actions**.
 
-1. Expand **Run Prepare Flutter Framework Script**.
+1. Expanda **Run Prepare Flutter Framework Script**.
 
-1. Click **<span class="material-symbols" translate="no">delete</span>**.
+1. Clique em **<span class="material-symbols" translate="no">delete</span>**.
 
    <DashImage image="development/packages-and-plugins/swift-package-manager/remove-flutter-pre-action.png" caption="The build pre-action to remove" />
 
 [Turn off Swift Package Manager]: /packages-and-plugins/swift-package-manager/for-app-developers/#how-to-turn-off-swift-package-manager
 
-## How to use a Swift Package Manager Flutter plugin that requires a higher OS version
+## Como usar um plugin Flutter Swift Package Manager que requer uma versão de OS mais alta
 
-If a Swift Package Flutter Manager plugin requires a higher OS version than
-the project, you might get an error like this:
+Se um plugin Flutter Swift Package Manager requer uma versão de OS mais alta do que
+o projeto, você pode obter um erro como este:
 
 ```plaintext
 Target Integrity (Xcode): The package product 'plugin_name_ios' requires minimum platform version 14.0 for the iOS platform, but this target supports 12.0
 ```
 
-To use the plugin:
+Para usar o plugin:
 
-1. Open your app (`ios/Runner.xcworkspace` or `macos/Runner.xcworkspace`) in
+1. Abra seu app (`ios/Runner.xcworkspace` ou `macos/Runner.xcworkspace`) no
    Xcode.
 
-1. Increase your app's target **Minimum Deployments**.
+1. Aumente o **Minimum Deployments** do target do seu app.
 
    <DashImage image="development/packages-and-plugins/swift-package-manager/minimum-deployments.png" caption="The target's **Minimum Deployments** setting" />
 
-1. If you updated your iOS app's **Minimum Deployments**,
-   regenerate the iOS project's configuration files:
+1. Se você atualizou o **Minimum Deployments** do seu app iOS,
+   regenere os arquivos de configuração do projeto iOS:
 
    ```sh
    flutter build ios --config-only
    ```
 
-1. If you updated your macOS app's **Minimum Deployments**,
-   regenerate the macOS project's configuration files:
+1. Se você atualizou o **Minimum Deployments** do seu app macOS,
+   regenere os arquivos de configuração do projeto macOS:
 
    ```sh
    flutter build macos --config-only

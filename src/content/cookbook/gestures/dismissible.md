@@ -1,44 +1,45 @@
 ---
-title: Implement swipe to dismiss
-description: How to implement swiping to dismiss or delete.
+ia-translate: true
+title: Implementar deslizar para dispensar
+description: Como implementar deslizar para dispensar ou deletar.
 ---
 
 <?code-excerpt path-base="cookbook/gestures/dismissible"?>
 
-The "swipe to dismiss" pattern is common in many mobile apps.
-For example, when writing an email app,
-you might want to allow a user to swipe away
-email messages to delete them from a list.
+O padrão "deslizar para dispensar" é comum em muitos apps mobile.
+Por exemplo, ao escrever um app de email,
+você pode querer permitir que um usuário deslize
+mensagens de email para deletá-las de uma lista.
 
-Flutter makes this task easy by providing the
-[`Dismissible`][] widget.
-Learn how to implement swipe to dismiss with the following steps:
+Flutter torna esta tarefa fácil fornecendo o
+widget [`Dismissible`][`Dismissible`].
+Aprenda como implementar deslizar para dispensar com os seguintes passos:
 
-  1. Create a list of items.
-  2. Wrap each item in a `Dismissible` widget.
-  3. Provide "leave behind" indicators.
+  1. Crie uma lista de itens.
+  2. Envolva cada item em um widget `Dismissible`.
+  3. Forneça indicadores "deixados para trás".
 
-## 1. Create a list of items
+## 1. Crie uma lista de itens
 
-First, create a list of items. For detailed
-instructions on how to create a list,
-follow the [Working with long lists][] recipe.
+Primeiro, crie uma lista de itens. Para instruções detalhadas
+sobre como criar uma lista,
+siga a receita [Working with long lists][Working with long lists].
 
-### Create a data source
+### Crie uma fonte de dados
 
-In this example,
-you want 20 sample items to work with.
-To keep it simple, generate a list of strings.
+Neste exemplo,
+você quer 20 itens de amostra para trabalhar.
+Para manter simples, gere uma lista de strings.
 
 <?code-excerpt "lib/main.dart (Items)"?>
 ```dart
 final items = List<String>.generate(20, (i) => 'Item ${i + 1}');
 ```
 
-### Convert the data source into a list
+### Converta a fonte de dados em uma lista
 
-Display each item in the list on screen. Users won't
-be able to swipe these items away just yet.
+Exiba cada item da lista na tela. Os usuários ainda não
+poderão deslizar esses itens para removê-los.
 
 <?code-excerpt "lib/step1.dart (ListView)" replace="/^body: //g;/^\),$/)/g"?>
 ```dart
@@ -50,18 +51,18 @@ ListView.builder(
 )
 ```
 
-## 2. Wrap each item in a Dismissible widget
+## 2. Envolva cada item em um widget Dismissible
 
-In this step,
-give users the ability to swipe an item off the list by using the
-[`Dismissible`][] widget.
+Neste passo,
+dê aos usuários a habilidade de deslizar um item para fora da lista usando o
+widget [`Dismissible`][`Dismissible`].
 
-After the user has swiped away the item,
-remove the item from the list and display a snackbar.
-In a real app, you might need to perform more complex logic,
-such as removing the item from a web service or database.
+Depois que o usuário deslizar o item para fora,
+remova o item da lista e exiba uma snackbar.
+Em um app real, você pode precisar executar lógica mais complexa,
+como remover o item de um serviço web ou banco de dados.
 
-Update the `itemBuilder()` function to return a `Dismissible` widget:
+Atualize a função `itemBuilder()` para retornar um widget `Dismissible`:
 
 <?code-excerpt "lib/step2.dart (Dismissible)"?>
 ```dart
@@ -89,18 +90,18 @@ itemBuilder: (context, index) {
 },
 ```
 
-## 3. Provide "leave behind" indicators
+## 3. Forneça indicadores "deixados para trás"
 
-As it stands,
-the app allows users to swipe items off the list, but it doesn't
-give a visual indication of what happens when they do.
-To provide a cue that items are removed,
-display a "leave behind" indicator as they
-swipe the item off the screen. In this case,
-the indicator is a red background.
+Como está,
+o app permite que os usuários deslizem itens para fora da lista, mas não
+dá uma indicação visual do que acontece quando eles fazem isso.
+Para fornecer uma pista de que itens são removidos,
+exiba um indicador "deixado para trás" enquanto eles
+deslizam o item para fora da tela. Neste caso,
+o indicador é um fundo vermelho.
 
-To add the indicator,
-provide a `background` parameter to the `Dismissible`.
+Para adicionar o indicador,
+forneça um parâmetro `background` para o `Dismissible`.
 
 
 ```dart diff
@@ -114,7 +115,7 @@ provide a `background` parameter to the `Dismissible`.
   ),
 ```
 
-## Interactive example
+## Exemplo interativo
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter Swipe to Dismiss hands-on example in DartPad" run="true"

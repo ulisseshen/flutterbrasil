@@ -1,6 +1,7 @@
 ---
-title: The command pattern
-description: "Simplify view model logic by implementing a Command class."
+ia-translate: true
+title: O padrão command
+description: "Simplifique a lógica do view model implementando uma classe Command."
 contentTags:
   - mvvm
   - asynchronous dart
@@ -11,38 +12,38 @@ order: 4
 
 <?code-excerpt path-base="app-architecture/command"?>
 
-[Model-View-ViewModel (MVVM)][] is a design pattern
-that separates a feature of an application into three parts:
-the model, the view model, and the view.
-Views and view models make up the UI layer of an application.
-Repositories and services represent the data layer of an application,
-or the model layer of MVVM.
+[Model-View-ViewModel (MVVM)][Model-View-ViewModel (MVVM)] é um padrão de design
+que separa uma funcionalidade de uma aplicação em três partes:
+o model, o view model e a view.
+Views e view models compõem a camada de UI de uma aplicação.
+Repositories e services representam a camada de dados de uma aplicação,
+ou a camada model do MVVM.
 
-A command is a class that wraps a method
-and helps to handle the different states of that method,
-such as running, complete, and error.
+Um command é uma classe que encapsula um método
+e ajuda a lidar com os diferentes estados desse método,
+como running, complete e error.
 
-[View models][] can use commands to handle interaction and run actions.
-You can also use them to display different UI states,
-like loading indicators when an action is running,
-or display an error dialog when an action failed.
+[View models][View models] podem usar commands para lidar com interações e executar ações.
+Você também pode usá-los para exibir diferentes estados de UI,
+como indicadores de carregamento quando uma ação está em execução,
+ou exibir um diálogo de erro quando uma ação falha.
 
-View models can become very complex
-as an application grows
-and features become bigger.
-Commands can help to simplify view models
-and reuse code.
+View models podem se tornar muito complexos
+conforme uma aplicação cresce
+e as funcionalidades ficam maiores.
+Commands podem ajudar a simplificar view models
+e reutilizar código.
 
-In this guide, you will learn
-how to use the command pattern
-to improve your view models.
+Neste guia, você aprenderá
+como usar o padrão command
+para melhorar seus view models.
 
-## Challenges when implementing view models
+## Desafios ao implementar view models
 
-View model classes in Flutter are typically implemented
-by extending the [`ChangeNotifier`][] class.
-This allows view models to call `notifyListeners()` to refresh views
-when data is updated.
+Classes de view model no Flutter são tipicamente implementadas
+estendendo a classe [`ChangeNotifier`][`ChangeNotifier`].
+Isso permite que view models chamem `notifyListeners()` para atualizar views
+quando os dados são atualizados.
 
 <?code-excerpt "lib/no_command.dart (HomeViewModel2)" replace="/2//g"?>
 ```dart
@@ -51,9 +52,9 @@ class HomeViewModel extends ChangeNotifier {
 }
 ```
 
-View models contain a representation of the UI state,
-including the data being displayed.
-For example, this `HomeViewModel` exposes the `User` instance to the view.
+View models contêm uma representação do estado da UI,
+incluindo os dados sendo exibidos.
+Por exemplo, este `HomeViewModel` expõe a instância `User` para a view.
 
 <?code-excerpt "lib/no_command.dart (getUser)" replace="/null;/\/\/ .../g;/2//g"?>
 ```dart
@@ -64,8 +65,8 @@ class HomeViewModel extends ChangeNotifier {
 }
 ```
 
-View models also contain actions typically triggered by the view,
-such as a `load` action in charge of loading the `user`.
+View models também contêm ações tipicamente disparadas pela view,
+como uma ação `load` encarregada de carregar o `user`.
 
 <?code-excerpt "lib/no_command.dart (load1)" replace="/null;/\/\/ .../g;/2//g"?>
 ```dart
@@ -80,11 +81,11 @@ class HomeViewModel extends ChangeNotifier {
 }
 ```
 
-### UI state in view models
+### Estado de UI em view models
 
-A view model also contains UI state besides data, such as
-whether the view is running or has experienced an error.
-This allows the app to tell the user if the action has completed successfully.
+Um view model também contém estado de UI além de dados, como
+se a view está em execução ou experimentou um erro.
+Isso permite que o app informe ao usuário se a ação foi concluída com sucesso.
 
 <?code-excerpt "lib/no_command.dart (UiState1)" replace="/(null|false);/\/\/ .../g;/2//g"?>
 ```dart
@@ -103,7 +104,7 @@ class HomeViewModel extends ChangeNotifier {
 }
 ```
 
-You can use the running state to display a progress indicator in the view:
+Você pode usar o estado running para exibir um indicador de progresso na view:
 
 <?code-excerpt "lib/no_command.dart (ListenableBuilder)" replace="/\.load//g;/body: //g;/^\),$/)/g"?>
 ```dart
@@ -118,7 +119,7 @@ ListenableBuilder(
 )
 ```
 
-Or use the running state to avoid executing the action multiple times:
+Ou usar o estado running para evitar executar a ação múltiplas vezes:
 
 <?code-excerpt "lib/no_command.dart (load2)" replace="/2//g"?>
 ```dart
@@ -130,10 +131,10 @@ void load() {
 }
 ```
 
-Managing the state of an action can get complicated
-if the view model contains multiple actions.
-For example, adding an `edit()` action to the `HomeViewModel`
-can lead the following outcome:
+Gerenciar o estado de uma ação pode ficar complicado
+se o view model contém múltiplas ações.
+Por exemplo, adicionar uma ação `edit()` ao `HomeViewModel`
+pode levar ao seguinte resultado:
 
 <?code-excerpt "lib/no_command.dart (HomeViewModel3)" replace="/(null|false);/\/\/ .../g;/3//g"?>
 ```dart
@@ -158,23 +159,23 @@ class HomeViewModel extends ChangeNotifier {
 }
 ```
 
-Sharing the running state
-between the `load()` and `edit()` actions might not always work,
-because you might want to show a different UI component
-when the `load()` action runs than when the `edit()` action runs;
-you'll have the same problem with the `error` state.
+Compartilhar o estado running
+entre as ações `load()` e `edit()` pode nem sempre funcionar,
+porque você pode querer mostrar um componente de UI diferente
+quando a ação `load()` executa do que quando a ação `edit()` executa;
+você terá o mesmo problema com o estado `error`.
 
-### Triggering UI actions from view models
+### Disparando ações de UI a partir de view models
 
-View model classes can run into problems when
-executing UI actions and the view model's state changes.
+Classes de view model podem encontrar problemas ao
+executar ações de UI e o estado do view model muda.
 
-For example, you might want to show a `SnackBar` when an error occurs,
-or navigate to a different screen when an action completes.
-To implement this, listen for changes in the view model,
-and perform the action depending on the state.
+Por exemplo, você pode querer mostrar um `SnackBar` quando um erro ocorre,
+ou navegar para uma tela diferente quando uma ação é concluída.
+Para implementar isso, escute as mudanças no view model,
+e execute a ação dependendo do estado.
 
-In the view:
+Na view:
 
 <?code-excerpt "lib/no_command.dart (addListener)"?>
 ```dart
@@ -200,8 +201,8 @@ void _onViewModelChanged() {
 }
 ```
 
-You need to clear the error state each time you execute this action,
-otherwise this action happens each time `notifyListeners()` is called.
+Você precisa limpar o estado de erro cada vez que executar esta ação,
+caso contrário esta ação acontece cada vez que `notifyListeners()` é chamado.
 
 <?code-excerpt "lib/no_command.dart (_onViewModelChanged)"?>
 ```dart
@@ -213,16 +214,16 @@ void _onViewModelChanged() {
 }
 ```
 
-## Command pattern
+## Padrão Command
 
-You might find yourself repeating the above code over and over,
-implementing a different running state
-for each action in every view model.
-At that point, it makes sense to extract this code
-into a reusable pattern called a _command_.
+Você pode se encontrar repetindo o código acima várias e várias vezes,
+implementando um estado running diferente
+para cada ação em cada view model.
+Nesse ponto, faz sentido extrair este código
+para um padrão reutilizável chamado _command_.
 
-A command is a class that encapsulates a view model action,
-and exposes the different states that an action can have.
+Um command é uma classe que encapsula uma ação de view model,
+e expõe os diferentes estados que uma ação pode ter.
 
 <?code-excerpt "lib/simple_command.dart (Command)" replace="/(null|false);/\/\/ .../g;"?>
 ```dart
@@ -247,9 +248,9 @@ class Command extends ChangeNotifier {
 }
 ```
 
-In the view model,
-instead of defining an action directly with a method,
-you create a command object:
+No view model,
+ao invés de definir uma ação diretamente com um método,
+você cria um objeto command:
 
 <?code-excerpt "lib/simple_command.dart (ViewModel)" replace="/(null|false);/\/\/ .../g;"?>
 ```dart
@@ -268,19 +269,19 @@ class HomeViewModel extends ChangeNotifier {
 }
 ```
 
-The previous `load()` method becomes `_load()`,
-and instead the command `load` gets exposed to the `View`.
-The previous `running` and `error` states can be removed,
-as they are now part of the command.
+O método `load()` anterior se torna `_load()`,
+e ao invés disso o command `load` é exposto para a `View`.
+Os estados `running` e `error` anteriores podem ser removidos,
+pois agora são parte do command.
 
-### Executing a command
+### Executando um command
 
-Instead of calling `viewModel.load()` to run the load action,
-now you call `viewModel.load.execute()`.
+Ao invés de chamar `viewModel.load()` para executar a ação load,
+agora você chama `viewModel.load.execute()`.
 
-The `execute()` method can also be called from within the view model.
-The following line of code runs the `load` command when the
-view model is created.
+O método `execute()` também pode ser chamado de dentro do view model.
+A seguinte linha de código executa o command `load` quando o
+view model é criado.
 
 <?code-excerpt "lib/main.dart (ViewModelInit)"?>
 ```dart
@@ -289,23 +290,23 @@ HomeViewModel() {
 }
 ```
 
-The `execute()` method sets the running state to `true`
-and resets the `error` and `completed` states.
-When the action finishes,
-the `running` state changes to `false`
-and the `completed` state to `true`.
+O método `execute()` define o estado running como `true`
+e reinicia os estados `error` e `completed`.
+Quando a ação termina,
+o estado `running` muda para `false`
+e o estado `completed` para `true`.
 
-If the `running` state is `true`,
-the command cannot begin executing again.
-This prevents users from triggering a command
-multiple times by pressing a button rapidly.
+Se o estado `running` for `true`,
+o command não pode começar a executar novamente.
+Isso impede que usuários disparem um command
+múltiplas vezes pressionando um botão rapidamente.
 
-The command’s `execute()` method captures any thrown `Exceptions`
-automatically and exposes them in the `error` state.
+O método `execute()` do command captura quaisquer `Exceptions` lançadas
+automaticamente e as expõe no estado `error`.
 
-The following code shows a sample `Command` class that
-has been simplified for demo purposes.
-You can see a full implementation at the end of this page.
+O código a seguir mostra uma classe `Command` de exemplo que
+foi simplificada para fins de demonstração.
+Você pode ver uma implementação completa no final desta página.
 
 <?code-excerpt "lib/main.dart (Command)"?>
 ```dart
@@ -352,14 +353,14 @@ class Command extends ChangeNotifier {
 }
 ```
 
-### Listening to the command state
+### Ouvindo o estado do command
 
-The `Command` class extends from `ChangeNotifier`,
-allowing Views to listen to its states.
+A classe `Command` estende de `ChangeNotifier`,
+permitindo que Views escutem seus estados.
 
-In the `ListenableBuilder`,
-instead of passing the view model to `ListenableBuilder.listenable`,
-pass the command:
+No `ListenableBuilder`,
+ao invés de passar o view model para `ListenableBuilder.listenable`,
+passe o command:
 
 
 <?code-excerpt "lib/main.dart (CommandListenable)" replace="/body: //g;/^\),$/)/g"?>
@@ -374,7 +375,7 @@ ListenableBuilder(
 )
 ```
 
-And listen to changes in the command state in order to run UI actions:
+E escute mudanças no estado do command para executar ações de UI:
 
 <?code-excerpt "lib/main.dart (addListener)"?>
 ```dart
@@ -401,10 +402,10 @@ void _onViewModelChanged() {
 }
 ```
 
-### Combining command and ViewModel
+### Combinando command e ViewModel
 
-You can stack multiple `ListenableBuilder` widgets to listen to `running`
-and `error` states before showing the view model data.
+Você pode empilhar múltiplos widgets `ListenableBuilder` para ouvir os estados `running`
+e `error` antes de mostrar os dados do view model.
 
 <?code-excerpt "lib/main.dart (ListenableBuilder)"?>
 ```dart
@@ -432,9 +433,9 @@ body: ListenableBuilder(
 ),
 ```
 
-You can define multiple commands classes in a single view model,
-simplifying its implementation
-and minimizing the amount of repeated code.
+Você pode definir múltiplas classes de commands em um único view model,
+simplificando sua implementação
+e minimizando a quantidade de código repetido.
 
 <?code-excerpt "lib/main.dart (HomeViewModel2)" replace="/null;/\/\/ .../g"?>
 ```dart
@@ -460,10 +461,10 @@ class HomeViewModel2 extends ChangeNotifier {
 }
 ```
 
-### Extending the command pattern
+### Estendendo o padrão command
 
-The command pattern can be extended in multiple ways.
-For example, to support a different number of arguments.
+O padrão command pode ser estendido de múltiplas formas.
+Por exemplo, para suportar um número diferente de argumentos.
 
 <?code-excerpt "lib/extended_command.dart (HomeViewModel)" replace="/null;/\/\/ .../g"?>
 ```dart
@@ -491,27 +492,27 @@ class HomeViewModel extends ChangeNotifier {
 }
 ```
 
-## Putting it all together
+## Juntando tudo
 
-In this guide,
-you learned how to use the command design pattern
-to improve the implementation of view models
-when using the MVVM design pattern.
+Neste guia,
+você aprendeu como usar o padrão de design command
+para melhorar a implementação de view models
+ao usar o padrão de design MVVM.
 
-Below, you can find the full `Command` class
-as implemented in the [Compass App example][]
-for the Flutter architecture guidelines.
-It also uses the [`Result` class][]
-to determine if the action completed successfully or with an error.
+Abaixo, você pode encontrar a classe `Command` completa
+como implementada no [exemplo Compass App][Compass App example]
+para as diretrizes de arquitetura Flutter.
+Ela também usa a [classe `Result`][`Result` class]
+para determinar se a ação foi concluída com sucesso ou com um erro.
 
-This implementation also includes two types of commands,
-a `Command0`, for actions without parameters,
-and a `Command1`, for actions that take one parameter.
+Esta implementação também inclui dois tipos de commands,
+um `Command0`, para ações sem parâmetros,
+e um `Command1`, para ações que recebem um parâmetro.
 
 :::note
-Check [pub.dev][] for other ready-to-use
-implementations of the command pattern,
-such as the [`command_it`][] package.
+Verifique o [pub.dev][pub.dev] para outras implementações
+prontas para uso do padrão command,
+como o pacote [`command_it`][`command_it`].
 :::
 
 <?code-excerpt "lib/command.dart"?>

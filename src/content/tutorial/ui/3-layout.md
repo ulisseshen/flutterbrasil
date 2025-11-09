@@ -1,6 +1,7 @@
 ---
+ia-translate: true
 title: Layout
-description: Learn about common layout widgets in Flutter.
+description: Aprenda sobre widgets de layout comuns no Flutter.
 permalink: /tutorial/layout/
 sitemap: false
 ---
@@ -8,34 +9,34 @@ sitemap: false
 {%- comment %} TODO(ewindmill) embed video {%- endcomment %}
 
 
-Given that Flutter is a UI toolkit, you'll spend a lot of time creating layouts
-with Flutter widgets. In this section, you'll learn how to build layouts with
-some of the most common layout widgets, including high-level widgets like
-[`Scaffold`][] and [`AppBar`][], which lay out the structure of a screen, to
-lower-level widgets like [`Column`][] or [`Row`][]
-that lay out widgets vertically or horizontally.
+Dado que Flutter é um toolkit de UI, você passará muito tempo criando layouts
+com widgets Flutter. Nesta seção, você aprenderá como construir layouts com
+alguns dos widgets de layout mais comuns, incluindo widgets de alto nível como
+[`Scaffold`][] e [`AppBar`][], que definem a estrutura de uma tela, até
+widgets de nível mais baixo como [`Column`][] ou [`Row`][]
+que organizam widgets verticalmente ou horizontalmente.
 
-## `Scaffold` and `AppBar`
+## `Scaffold` e `AppBar`
 
-Mobile applications often have a bar at the top called an “app bar” that can
-display a title, navigation controls, and/or actions.
+Aplicações mobile frequentemente têm uma barra no topo chamada de "app bar" que pode
+exibir um título, controles de navegação e/ou ações.
 
 <img src='/assets/images/docs/tutorial/apppad.png' alt="A screenshot of a simple application with a bar across the top that has a title and settings button.">
 
-The simplest way to add an appbar to your app is by using two widgets:
-`Scaffold` and `AppBar`.
+A forma mais simples de adicionar uma app bar ao seu app é usando dois widgets:
+`Scaffold` e `AppBar`.
 
-`Scaffold` is a convenience widget that provides a Material-style page layout,
-making it simple to add an app bar, drawer, navigation bar, and more to a page of
-your app. `AppBar` is, of course, the app bar.
+`Scaffold` é um widget de conveniência que fornece um layout de página estilo Material,
+tornando simples adicionar uma app bar, drawer, navigation bar e muito mais a uma página do
+seu app. `AppBar` é, claro, a app bar.
 
-The code generated from the `$ flutter create --empty` command already contains
-an `AppBar` widget and a `Scaffold` widget. The following code updates it to use an
-additional layout widget: [`Align`][]. This positions the title to the left,
-which would be centered by default. The `Text` widget contains the
-title itself.
+O código gerado pelo comando `$ flutter create --empty` já contém
+um widget `AppBar` e um widget `Scaffold`. O código a seguir atualiza isso para usar um
+widget de layout adicional: [`Align`][]. Isso posiciona o título à esquerda,
+que seria centralizado por padrão. O widget `Text` contém o
+título em si.
 
-Modify the `Scaffold` within your `MainApp`'s `build` method:
+Modifique o `Scaffold` dentro do método `build` do seu `MainApp`:
 
 ```dart
 class MainApp extends StatelessWidget {
@@ -58,20 +59,20 @@ class MainApp extends StatelessWidget {
 }
 ```
 
-### An updated widget tree
+### Uma árvore de widgets atualizada
 
-Note that your app's widget tree gets more important as your app
-grows. At this point, there's a "branch" in the widget tree for the first
-time, and it now looks like the following figure.
+Note que a árvore de widgets do seu app se torna mais importante conforme seu app
+cresce. Neste ponto, há uma "ramificação" na árvore de widgets pela primeira
+vez, e agora ela se parece com a figura a seguir.
 
 <img src='/assets/images/docs/tutorial/widget_tree_with_app_bar.png' alt="A screenshot that resembles the popular game Wordle.">
 
 
-## Create the GamePage widget
+## Crie o widget GamePage
 
-Add the following code for a new widget, called `GamePage`, to your `main.dart`
-file. This widget will eventually display the UI elements needed for the game
-itself.
+Adicione o código a seguir para um novo widget, chamado `GamePage`, ao seu arquivo `main.dart`.
+Este widget eventualmente exibirá os elementos de UI necessários para o jogo
+em si.
 
 ```dart
 class GamePage extends StatelessWidget {
@@ -88,9 +89,9 @@ class GamePage extends StatelessWidget {
 }
 ```
 
-:::note Challenge - Display the `GamePage` rather than a `Tile`.
+:::note Desafio - Exiba o `GamePage` em vez de um `Tile`.
 
-**Solution:**
+**Solução:**
 
 ```dart
 class MainApp extends StatelessWidget {
@@ -109,18 +110,18 @@ class MainApp extends StatelessWidget {
 ```
 :::
 
-## Arrange widgets with `Column` and `Row`
+## Organize widgets com `Column` e `Row`
 
-The `GamePage` layout contains the grid of tiles that display a user’s guesses.
+O layout do `GamePage` contém a grade de tiles que exibe os palpites de um usuário.
 
 <img src='/assets/images/docs/tutorial/birdle.png' alt="A screenshot that resembles the popular game Wordle.">
 
-There are a number of ways you can build this layout, and the simplest is with
-`Column` and `Row` widgets.  Each row contains five tiles that represent the
-five letters in a guess, with five rows total. You’ll need a column
-with five rows, each row containing five children.
-First, return a `Column` (wrapped with a `Padding`
-widget) from the `GamePage.build` method.
+Existem várias maneiras de construir este layout, e a mais simples é com
+widgets `Column` e `Row`. Cada linha contém cinco tiles que representam as
+cinco letras em um palpite, com cinco linhas no total. Você precisará de uma coluna
+com cinco linhas, cada linha contendo cinco filhos.
+Primeiro, retorne uma `Column` (envolvida com um widget `Padding`)
+do método `GamePage.build`.
 
 ```dart
 class GamePage extends StatelessWidget {
@@ -143,15 +144,14 @@ class GamePage extends StatelessWidget {
 }
 ```
 
-The `spacing` property puts five pixels between each element on the main axis.
+A propriedade `spacing` coloca cinco pixels entre cada elemento no eixo principal.
 
-Within `Column.children`, add one row *for each* element in the `_game.guesses`
-list.
+Dentro de `Column.children`, adicione uma linha *para cada* elemento na lista `_game.guesses`.
 
 :::note
-This `guesses` list is a **fixed-size** list, starting with five
-elements, one for each *potential* guess. The list will always contain exactly five
-elements, and therefore will always render five rows.
+Esta lista `guesses` é uma lista de **tamanho fixo**, começando com cinco
+elementos, um para cada palpite *potencial*. A lista sempre conterá exatamente cinco
+elementos e, portanto, sempre renderizará cinco linhas.
 :::
 
 ```dart
@@ -181,39 +181,39 @@ class GamePage extends StatelessWidget {
 }
 ```
 
-This is called a [collection-for][] loop, a Dart feature that allows you to
-unfurl a list inside of another list when the loop is executed.
-This syntactic sugar makes it easier for you to work
-with collections of widgets and achieves the same as the following psuedo code:
+Isso é chamado de loop [collection-for][], um recurso do Dart que permite
+desenrolar uma lista dentro de outra lista quando o loop é executado.
+Este açúcar sintático facilita o trabalho
+com coleções de widgets e alcança o mesmo resultado que o seguinte pseudocódigo:
 
 ```dart
 [...ListOfData.map((element) => Widget(element)).toList()],
 ```
 
-In this case, it adds five `Row` widgets to the column, one for each guess
-on the `Game` object.
+Neste caso, adiciona cinco widgets `Row` à coluna, um para cada palpite
+no objeto `Game`.
 
-### An updated widget tree
+### Uma árvore de widgets atualizada
 
-The widget tree for this app has expanded significantly in this
-lesson. Now, it looks more like the following figure (although it's
-abridged for legibility.)
+A árvore de widgets para este app se expandiu significativamente nesta
+lição. Agora, ela se parece mais com a figura a seguir (embora esteja
+abreviada para legibilidade.)
 
-### An updated widget tree
+### Uma árvore de widgets atualizada
 
-Considering your app's widget tree gets more important as your app
-grows. At this point, there's a "branch" in the tree for the first
-time, and it now looks like the following figure.
+Considerando que a árvore de widgets do seu app se torna mais importante conforme seu app
+cresce. Neste ponto, há uma "ramificação" na árvore pela primeira
+vez, e agora ela se parece com a figura a seguir.
 
 <img src='/assets/images/docs/tutorial/widget_tree_rows_columns.png' alt="A diagram showing a tree like structure with a node for each widget in the app.">
 
-:::note Challenge
+:::note Desafio
 
-Add a `Tile` to each row for each letter allowed in the guess.
-The `guess` variable in the loop is a [record][] with the type
+Adicione um `Tile` a cada linha para cada letra permitida no palpite.
+A variável `guess` no loop é um [registro][record] com o tipo
 `({String char, HitType type})`.
 
-**Solution:**
+**Solução:**
 
 ```dart
 class GamePage extends StatelessWidget {
@@ -244,7 +244,7 @@ class GamePage extends StatelessWidget {
 
 :::
 
-When you reload your app, you should see a 5x5 grid of white squares.
+Quando você recarregar seu app, você deverá ver uma grade 5x5 de quadrados brancos.
 
 <img src='/assets/images/docs/tutorial/grid_of_tiles.png' alt="A screenshot that resembles the popular game Wordle.">
 

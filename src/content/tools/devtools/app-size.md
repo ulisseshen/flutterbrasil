@@ -1,119 +1,120 @@
 ---
-title: Use the app size tool
-description: Learn how to use the DevTools app size tool.
+ia-translate: true
+title: Use a ferramenta de tamanho de app
+description: Aprenda como usar a ferramenta de tamanho de app do DevTools.
 ---
 
-## What is it?
+## O que é isso?
 
-The app size tool allows you to analyze the total size of your app.
-You can view a single snapshot of "size information"
-using the [Analysis tab][], or compare two different
-snapshots of "size information" using the [Diff tab][].
+A ferramenta de tamanho de app permite analisar o tamanho total do seu app.
+Você pode visualizar um único snapshot de "informações de tamanho"
+usando a [aba Analysis][Analysis tab], ou comparar dois
+snapshots diferentes de "informações de tamanho" usando a [aba Diff][Diff tab].
 
-### What is "size information"?
+### O que são "informações de tamanho"?
 
-"Size information" contains size data for Dart code,
-native code, and non-code elements of your app,
-like the application package, assets and fonts. A "size
-information" file contains data for the total picture
-of your application size.
+"Informações de tamanho" contêm dados de tamanho para código Dart,
+código nativo e elementos não codificados do seu app,
+como o pacote de aplicação, assets e fontes. Um arquivo de "informações
+de tamanho" contém dados para o panorama completo
+do tamanho da sua aplicação.
 
-### Dart size information
+### Informações de tamanho Dart
 
-The Dart AOT compiler performs tree-shaking on your code
-when compiling your application (profile or release mode
-only&mdash;the AOT compiler is not used for debug builds,
-which are JIT compiled). This means that the compiler
-attempts to optimize your app's size by removing
-pieces of code that are unused or unreachable.
+O compilador Dart AOT realiza tree-shaking no seu código
+ao compilar sua aplicação (apenas nos modos profile ou release
+&mdash;o compilador AOT não é usado para builds de debug,
+que são compilados JIT). Isso significa que o compilador
+tenta otimizar o tamanho do seu app removendo
+partes de código que não são usadas ou estão inacessíveis.
 
-After the compiler optimizes your code as much as it can,
-the end result can be summarized as the collection of packages,
-libraries, classes, and functions that exist in the binary output,
-along with their size in bytes. This is the Dart portion of
-"size information" we can analyze in the app size tool to further
-optimize Dart code and track down size issues.
+Após o compilador otimizar seu código tanto quanto possível,
+o resultado final pode ser resumido como a coleção de packages,
+bibliotecas, classes e funções que existem na saída binária,
+juntamente com seus tamanhos em bytes. Esta é a porção Dart das
+"informações de tamanho" que podemos analisar na ferramenta de tamanho de app para otimizar
+ainda mais o código Dart e rastrear problemas de tamanho.
 
-## How to use it
+## Como usar
 
-If DevTools is already connected to a running application,
-navigate to the "App Size" tab.
+Se DevTools já estiver conectado a uma aplicação em execução,
+navegue até a aba "App Size".
 
 ![Screenshot of app size tab](/assets/images/docs/tools/devtools/app_size_tab.png)
 
-If DevTools is not connected to a running application,
-you can access the tool from the landing page
-that appears once you have launched
-DevTools (see [launch instructions][]).
+Se DevTools não estiver conectado a uma aplicação em execução,
+você pode acessar a ferramenta da página inicial
+que aparece assim que você tenha iniciado
+DevTools (veja [instruções de inicialização][launch instructions]).
 
 ![Screenshot of app size access on landing page](/assets/images/docs/tools/devtools/app_size_access_landing_page.png){:width="100%"}
 
-## Analysis tab
+## Aba Analysis {:#analysis-tab}
 
-The analysis tab allows you to inspect a single snapshot
-of size information.  You can view the hierarchical structure
-of the size data using the treemap and table,
-and you can view code attribution data
-(for example, why a piece of code is included in your compiled
-application) using the dominator tree and call graph.
+A aba Analysis permite inspecionar um único snapshot
+de informações de tamanho. Você pode visualizar a estrutura hierárquica
+dos dados de tamanho usando o treemap e a tabela,
+e você pode visualizar dados de atribuição de código
+(por exemplo, por que um pedaço de código está incluído em sua aplicação
+compilada) usando a árvore dominadora e o grafo de chamadas.
 
 ![Screenshot of app size analysis](/assets/images/docs/tools/devtools/app_size_analysis.png){:width="100%"}
 
-### Loading a size file
+### Carregando um arquivo de tamanho
 
-When you open the Analysis tab, you'll see instructions
-to load an app size file. Drag and drop an app size
-file into the dialog, and click "Analyze Size".
+Quando você abre a aba Analysis, verá instruções
+para carregar um arquivo de tamanho de app. Arraste e solte um arquivo de tamanho
+de app no diálogo e clique em "Analyze Size".
 
 ![Screenshot of app size analysis loading screen](/assets/images/docs/tools/devtools/app_size_load_analysis.png){:width="100%"}
 
-See [Generating size files][] below for information on
-generating size files.
+Veja [Gerando arquivos de tamanho][Generating size files] abaixo para informações sobre
+como gerar arquivos de tamanho.
 
-### Treemap and table
+### Treemap e tabela {:#use-the-treemap}
 
-The treemap and table show the hierarchical data for your app's size.
+O treemap e a tabela mostram os dados hierárquicos para o tamanho do seu app.
 
-#### Use the treemap
+#### Use o treemap
 
-A treemap is a visualization for hierarchical data.
-The space is broken up into rectangles,
-where each rectangle is sized and ordered by some quantitative
-variable (in this case, size in bytes).
-The area of each rectangle is proportional to the size
-the node occupies in the compiled application. Inside
-of each rectangle (call one A), there are additional
-rectangles that exist one level deeper in the data
-hierarchy (children of A).
+Um treemap é uma visualização para dados hierárquicos.
+O espaço é dividido em retângulos,
+onde cada retângulo é dimensionado e ordenado por alguma variável
+quantitativa (neste caso, tamanho em bytes).
+A área de cada retângulo é proporcional ao tamanho
+que o nó ocupa na aplicação compilada. Dentro
+de cada retângulo (chame um de A), existem retângulos
+adicionais que existem um nível mais profundo na hierarquia
+de dados (filhos de A).
 
-To drill into a cell in the treemap, select the cell.
-This re-roots the tree so that the selected cell becomes
-the visual root of the treemap.
+Para detalhar uma célula no treemap, selecione a célula.
+Isso reenraíza a árvore de modo que a célula selecionada se torna
+a raiz visual do treemap.
 
-To navigate back, or up a level, use the breadcrumb
-navigator at the top of the treemap.
+Para navegar de volta, ou subir um nível, use o
+navegador de breadcrumb no topo do treemap.
 
 ![Screenshot of treemap breadcrumb navigator](/assets/images/docs/tools/devtools/treemap_breadcrumbs.png){:width="100%"}
 
-### Dominator tree and call graph
+### Árvore dominadora e grafo de chamadas
 
-This section of the page shows code size attribution data
-(for example, why a piece of code is included in your
-compiled application). This data is visible
-in the form of a dominator tree as well as a call graph.
+Esta seção da página mostra dados de atribuição de tamanho de código
+(por exemplo, por que um pedaço de código está incluído em sua
+aplicação compilada). Esses dados são visíveis
+na forma de uma árvore dominadora, bem como um grafo de chamadas.
 
-#### Use the dominator tree
+#### Use a árvore dominadora
 
-A [dominator tree][] is a tree where each node's
-children are those nodes it immediately dominates.
-A node `a` is said to "dominate" a node `b` if
-every path to `b` must go through `a`.
+Uma [árvore dominadora][dominator tree] é uma árvore onde os
+filhos de cada nó são aqueles nós que ele domina imediatamente.
+Diz-se que um nó `a` "domina" um nó `b` se
+todo caminho para `b` deve passar por `a`.
 
 [dominator tree]: https://en.wikipedia.org/wiki/Dominator_(graph_theory)
 
-To put it in context of app size analysis,
-imagine `package:a` imports both `package:b` and `package:c`,
-and both `package:b` and `package:c` import `package:d`.
+Para colocar em contexto da análise de tamanho de app,
+imagine que `package:a` importa tanto `package:b` quanto `package:c`,
+e tanto `package:b` quanto `package:c` importam `package:d`.
 
 ```plaintext
 package:a
@@ -123,8 +124,8 @@ package:a
     |__ package:d
 ```
 
-In this example, `package:a` dominates `package:d`,
-so the dominator tree for this data would look like:
+Neste exemplo, `package:a` domina `package:d`,
+então a árvore dominadora para esses dados ficaria assim:
 
 ```plaintext
 package:a
@@ -133,24 +134,24 @@ package:a
 |__ package:d
 ```
 
-This information is helpful for understanding why certain
-pieces of code are present in your compiled application.
-For example, if you are analyzing your app size and find
-an unexpected package included in your compiled app, you can
-use the dominator tree to trace the package to its root source.
+Esta informação é útil para entender por que certas
+partes de código estão presentes em sua aplicação compilada.
+Por exemplo, se você estiver analisando o tamanho do seu app e encontrar
+um package inesperado incluído no seu app compilado, você pode
+usar a árvore dominadora para rastrear o package até sua fonte raiz.
 
 ![Screenshot of code size dominator tree](/assets/images/docs/tools/devtools/app_size_dominator_tree.png){:width="100%"}
 
-#### Use the call graph
+#### Use o grafo de chamadas
 
-A call graph provides similar information to the dominator
-tree in regards to helping you understand why code exists
-in a compiled application. However, instead of showing
-the one-to-many dominant relationships between nodes of code
-size data like the dominator tree, the call graph shows the many-to-many
-relationships that existing between nodes of code size data.
+Um grafo de chamadas fornece informações similares à árvore
+dominadora no que diz respeito a ajudá-lo a entender por que o código existe
+em uma aplicação compilada. No entanto, em vez de mostrar
+as relações dominantes de um-para-muitos entre nós de dados
+de tamanho de código como a árvore dominadora, o grafo de chamadas mostra as
+relações muitos-para-muitos que existem entre nós de dados de tamanho de código.
 
-Again, using the following example:
+Novamente, usando o seguinte exemplo:
 
 ```plaintext
 package:a
@@ -160,9 +161,9 @@ package:a
     |__ package:d
 ```
 
-The call graph for this data would link `package:d`
-to its direct callers, `package:b` and `package:c`,
-instead of its "dominator", `package:a`.
+O grafo de chamadas para esses dados vincularia `package:d`
+aos seus chamadores diretos, `package:b` e `package:c`,
+em vez de seu "dominador", `package:a`.
 
 ```plaintext
 package:a --> package:b -->
@@ -170,81 +171,81 @@ package:a --> package:b -->
 package:a --> package:c -->
 ```
 
-This information is useful for understanding the
-fine-grained dependencies of between pieces of your code
-(packages, libraries, classes, functions).
+Esta informação é útil para entender as
+dependências refinadas entre partes do seu código
+(packages, bibliotecas, classes, funções).
 
 ![Screenshot of code size call graph](/assets/images/docs/tools/devtools/app_size_call_graph.png){:width="100%"}
 
-#### Should I use the dominator tree or the call graph?
+#### Devo usar a árvore dominadora ou o grafo de chamadas?
 
-Use the dominator tree if you want to understand the
-*root* cause for why a piece of code is included in your
-application. Use the call graph if you want to understand
-all the call paths to and from a piece of code.
+Use a árvore dominadora se você quiser entender a
+causa *raiz* de por que um pedaço de código está incluído em sua
+aplicação. Use o grafo de chamadas se você quiser entender
+todos os caminhos de chamada para e de um pedaço de código.
 
-A dominator tree is an analysis or slice of call graph data,
-where nodes are connected by "dominance" instead of
-parent-child hierarchy. In the case where a parent node
-dominates a child, the relationship in the call graph and the
-dominator tree would be identical, but this is not always the case.
+Uma árvore dominadora é uma análise ou fatia de dados de grafo de chamadas,
+onde os nós são conectados por "dominância" em vez de
+hierarquia pai-filho. No caso onde um nó pai
+domina um filho, a relação no grafo de chamadas e na
+árvore dominadora seria idêntica, mas isso nem sempre é o caso.
 
-In the scenario where the call graph is complete
-(an edge exists between every pair of nodes),
-the dominator tree would show the that `root` is the
-dominator for every node in the graph.
-This is an example where the call graph would give
-you a better understanding around why a piece of code is
-included in your application.
+No cenário onde o grafo de chamadas está completo
+(existe uma aresta entre cada par de nós),
+a árvore dominadora mostraria que `root` é o
+dominador de cada nó no grafo.
+Este é um exemplo onde o grafo de chamadas daria
+a você uma melhor compreensão sobre por que um pedaço de código está
+incluído em sua aplicação.
 
-## Diff tab
+## Aba Diff {:#diff-tab}
 
-The diff tab allows you to compare two snapshots of
-size information. The two size information files
-you are comparing should be generated from two different
-versions of the same app; for example,
-the size file generated before and after
-changes to your code. You can visualize the
-difference between the two data sets
-using the treemap and table.
+A aba Diff permite comparar dois snapshots de
+informações de tamanho. Os dois arquivos de informações de tamanho
+que você está comparando devem ser gerados de duas
+versões diferentes do mesmo app; por exemplo,
+o arquivo de tamanho gerado antes e depois
+de mudanças no seu código. Você pode visualizar a
+diferença entre os dois conjuntos de dados
+usando o treemap e a tabela.
 
 ![Screenshot of app size diff](/assets/images/docs/tools/devtools/app_size_diff.png){:width="100%"}
 
-### Loading size files
+### Carregando arquivos de tamanho
 
-When you open the **Diff** tab,
-you'll see instructions to load "old" and "new" size
-files. Again, these files need to be generated from
-the same application. Drag and drop these files into
-their respective dialogs, and click **Analyze Diff**.
+Quando você abre a aba **Diff**,
+verá instruções para carregar arquivos de tamanho "old" e "new".
+Novamente, esses arquivos precisam ser gerados da
+mesma aplicação. Arraste e solte esses arquivos em
+seus respectivos diálogos e clique em **Analyze Diff**.
 
 ![Screenshot of app size diff loading screen](/assets/images/docs/tools/devtools/app_size_load_diff.png){:width="100%"}
 
-See [Generating size files][] below for information
-on generating these files.
+Veja [Gerando arquivos de tamanho][Generating size files] abaixo para informações
+sobre como gerar esses arquivos.
 
-### Treemap and table
+### Treemap e tabela
 
-In the diff view, the treemap and tree table show
-only data that differs between the two imported size files.
+Na view de diff, o treemap e a tabela de árvore mostram
+apenas os dados que diferem entre os dois arquivos de tamanho importados.
 
-For questions about using the treemap, see [Use the treemap][] above.
+Para perguntas sobre o uso do treemap, veja [Use o treemap][Use the treemap] acima.
 
-## Generating size files
+## Gerando arquivos de tamanho {:#generating-size-files}
 
-To use the app size tool, you'll need to generate a
-Flutter size analysis file. This file contains size
-information for your entire application (native code,
-Dart code, assets, fonts, etc.), and you can generate it using the
-`--analyze-size` flag:
+Para usar a ferramenta de tamanho de app, você precisará gerar um
+arquivo de análise de tamanho do Flutter. Este arquivo contém informações de tamanho
+para toda a sua aplicação (código nativo,
+código Dart, assets, fontes, etc.), e você pode gerá-lo usando a
+flag `--analyze-size`:
 
 ```console
 flutter build <your target platform> --analyze-size
 ```
 
-This builds your application, prints a size summary
-to the command line, and prints a line
-telling you where to find the size analysis file.
+Isso compila sua aplicação, imprime um resumo de tamanho
+na linha de comando e imprime uma linha
+informando onde encontrar o arquivo de análise de tamanho.
 
 ```console
 flutter build apk --analyze-size --target-platform=android-arm64
@@ -256,16 +257,16 @@ app-release.apk (total compressed)                               6 MB
 A summary of your APK analysis can be found at: build/apk-code-size-analysis_01.json
 ```
 
-In this example, import the `build/apk-code-size-analysis_01.json`
-file into the app size tool to analyze further.
-For more information, see [App Size Documentation][].
+Neste exemplo, importe o arquivo `build/apk-code-size-analysis_01.json`
+na ferramenta de tamanho de app para analisar mais a fundo.
+Para mais informações, veja [Documentação de Tamanho de App][App Size Documentation].
 
-## Other resources
+## Outros recursos
 
-To learn how to perform a step-by-step size analysis of
-the Wonderous App using DevTools, check out the
-[App Size Tool tutorial][app-size-tutorial]. Various strategies
-to reduce an app's size are also discussed.
+Para aprender como realizar uma análise de tamanho passo a passo do
+Wonderous App usando DevTools, confira o
+[tutorial da Ferramenta de Tamanho de App][app-size-tutorial]. Várias estratégias
+para reduzir o tamanho de um app também são discutidas.
 
 [Use the treemap]: #use-the-treemap
 [Generating size files]: #generating-size-files

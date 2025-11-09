@@ -1,37 +1,38 @@
 ---
-title: DevTools 2.39.0 release notes
-shortTitle: 2.39.0 release notes
+ia-translate: true
+title: Notas de versão do DevTools 2.39.0
+shortTitle: Notas de versão 2.39.0
 breadcrumb: 2.39.0
-description: Release notes for Dart and Flutter DevTools version 2.39.0.
+description: Notas de versão para o Dart e Flutter DevTools versão 2.39.0.
 showToc: false
 ---
 
-The 2.39.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](/tools/devtools/overview).
+A versão 2.39.0 do Dart e Flutter DevTools
+inclui as seguintes alterações entre outras melhorias gerais.
+Para saber mais sobre DevTools, confira a
+[visão geral do DevTools](/tools/devtools/overview).
 
-## General updates
+## Atualizações gerais
 
-* Changed table columns to be sortable by default. - [#8175](https://github.com/flutter/devtools/pull/8175)
-* Updated DevTools screen icons to match what is used in the Flutter-supported IDEs. - [#8181](https://github.com/flutter/devtools/pull/8181)
+* Alteradas colunas de tabela para serem ordenáveis por padrão. - [#8175](https://github.com/flutter/devtools/pull/8175)
+* Atualizados ícones de tela do DevTools para corresponder ao usado nas IDEs suportadas pelo Flutter. - [#8181](https://github.com/flutter/devtools/pull/8181)
 
-## Memory updates
+## Atualizações de Memory
 
-* Enabled offline analysis of memory snapshots, as well as support for viewing memory
-  data when an app disconnects. For example, this may happen when an app unexpectedly
-  crashes or hits an out-of-memory issue. - [#7843](https://github.com/flutter/devtools/pull/7843),
+* Habilitada análise offline de snapshots de memória, além de suporte para visualizar dados de memória
+  quando um app desconecta. Por exemplo, isso pode acontecer quando um app inesperadamente
+  trava ou atinge um problema de falta de memória. - [#7843](https://github.com/flutter/devtools/pull/7843),
   [#8093](https://github.com/flutter/devtools/pull/8093),
   [#8096](https://github.com/flutter/devtools/pull/8096)
 
-* Fixed issue where the memory chart could cause the connected application to hit an
-  out of memory exception while allocating large, short-lived objects repeatedly. - [#8209](https://github.com/flutter/devtools/pull/8209)
+* Corrigido problema onde o gráfico de memória poderia causar ao aplicativo conectado atingir uma
+  exceção de falta de memória ao alocar objetos grandes e de curta duração repetidamente. - [#8209](https://github.com/flutter/devtools/pull/8209)
 
-## App size tool updates
+## Atualizações da ferramenta App size
 
-* Added UI polish to the file import views. [#8232](https://github.com/flutter/devtools/pull/8232)
+* Adicionado refinamento de UI às visualizações de importação de arquivo. [#8232](https://github.com/flutter/devtools/pull/8232)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes in this release, check out the
-[DevTools git log](https://github.com/flutter/devtools/tree/v2.39.0).
+Para encontrar uma lista completa de alterações nesta versão, confira o
+[log git do DevTools](https://github.com/flutter/devtools/tree/v2.39.0).

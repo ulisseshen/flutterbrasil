@@ -1,130 +1,131 @@
 ---
+ia-translate: true
 title: Hot reload
-description: Speed up development using Flutter's hot reload feature.
+description: Acelere o desenvolvimento usando o recurso de hot reload do Flutter.
 ---
 
 <?code-excerpt path-base="tools"?>
 
-Flutter's hot reload feature helps you quickly and
-easily experiment, build UIs, add features, and fix bugs.
-Hot reload works by injecting updated source code files
-into the [Dart runtime][].
-After the Dart runtime updates classes with the new versions of fields and functions,
-the Flutter framework automatically rebuilds the widget tree,
-allowing you to quickly view the effects of your changes.
+O recurso de hot reload do Flutter ajuda você a experimentar, construir UIs,
+adicionar recursos e corrigir bugs de forma rápida e fácil.
+Hot reload funciona injetando arquivos de código-fonte atualizados
+no [Dart runtime][Dart runtime].
+Depois que o Dart runtime atualiza classes com as novas versões de campos e funções,
+o framework Flutter reconstrói automaticamente a árvore de widgets,
+permitindo que você visualize rapidamente os efeitos de suas mudanças.
 
 ![Hot reload GIF](/assets/images/docs/tools/hot-reload.gif){:width="100%"}<br>
-A demo of hot reload in DartPad
+Uma demonstração de hot reload no DartPad
 
-## How to perform a hot reload
+## Como fazer um hot reload
 
-To hot reload a Flutter app:
+Para fazer hot reload em um app Flutter:
 
- 1. Run the app from a supported [Flutter editor][] or a terminal window.
-    Either a physical or virtual device can be the target.
-    **Only Flutter apps in debug mode can be hot reloaded or hot restarted.**
- 1. Modify one of the Dart files in your project.
-    Most types of code changes can be hot reloaded;
-    for a list of changes that require a hot restart,
-    see [Special cases](#special-cases).
- 1. If you're working in an IDE/editor that supports Flutter's IDE tools
-    and hot reload on save is enabled,
-    select **Save All** (`cmd-s`/`ctrl-s`),
-    or click the hot reload button on the toolbar.
+ 1. Execute o app a partir de um [Flutter editor][Flutter editor] compatível ou de uma janela de terminal.
+    Tanto um dispositivo físico quanto virtual pode ser o alvo.
+    **Apenas apps Flutter em modo debug podem ter hot reload ou hot restart.**
+ 1. Modifique um dos arquivos Dart em seu projeto.
+    A maioria dos tipos de mudanças de código pode ter hot reload;
+    para uma lista de mudanças que requerem hot restart,
+    veja [Special cases][Special cases].
+ 1. Se você está trabalhando em uma IDE/editor que suporta as ferramentas de IDE do Flutter
+    e hot reload ao salvar está habilitado,
+    selecione **Save All** (`cmd-s`/`ctrl-s`),
+    ou clique no botão hot reload na barra de ferramentas.
 
     <a id="hot-reload-on-save" aria-hidden="true"></a>
 
-    :::tip To enable hot reload on save
-    From your preferred IDE,
-    enable autosave and hot reloads on save.
+    :::tip Para habilitar hot reload ao salvar
+    A partir de sua IDE preferida,
+    habilite autosave e hot reloads ao salvar.
 
     **VS Code**
 
-    Add the following to your `.vscode/settings.json` file:
+    Adicione o seguinte ao seu arquivo `.vscode/settings.json`:
 
     ```json
     "files.autoSave": "afterDelay",
     "dart.flutterHotReloadOnSave": "all",
     ```
 
-    **Android Studio and IntelliJ**
+    **Android Studio e IntelliJ**
 
-    * Open `Settings > Tools > Actions on Save` and select
+    * Abra `Settings > Tools > Actions on Save` e selecione
       `Configure autosave options`.
-        - Check the option to `Save files if the IDE is idle for X seconds`.
-        - **Recommended:** Set a small delay duration. For example, 2 seconds.
+        - Marque a opção para `Save files if the IDE is idle for X seconds`.
+        - **Recomendado:** Defina uma duração de delay pequena. Por exemplo, 2 segundos.
 
-    * Open `Settings > Languages & Frameworks > Flutter`.
-        - Check the option to `Perform hot reload on save`.
+    * Abra `Settings > Languages & Frameworks > Flutter`.
+        - Marque a opção para `Perform hot reload on save`.
     :::
 
-    If you're running the app at the command line using `flutter run`,
-    enter `r` in the terminal window.
+    Se você está executando o app na linha de comando usando `flutter run`,
+    digite `r` na janela do terminal.
 
-After a successful hot reload operation,
-you'll see a message in the console similar to:
+Depois de uma operação de hot reload bem-sucedida,
+você verá uma mensagem no console similar a:
 
 ```console
 Performing hot reload...
 Reloaded 1 of 448 libraries in 978ms.
 ```
 
-The app updates to reflect your change,
-and the current state of the app is preserved.
-Your app continues to execute from where it was prior
-to run the hot reload command.
-The code updates and execution continues.
+O app atualiza para refletir sua mudança,
+e o estado atual do app é preservado.
+Seu app continua a executar de onde estava antes
+de executar o comando hot reload.
+O código atualiza e a execução continua.
 
 :::secondary
-**What is the difference between hot reload, hot restart,
-and full restart?**
+**Qual é a diferença entre hot reload, hot restart,
+e full restart?**
 
-* **Hot reload** loads code changes into the VM or the browser,
-  and re-builds the widget tree, preserving the app state;
-  it doesn't rerun `main()` or `initState()`.
-  (`⌘\` in Intellij and Android Studio, `⌃F5` in VSCode)
-* **Hot restart** loads code changes into the VM or the browser,
-  and restarts the Flutter app, losing the app state.
-  On the web, this can restart the app without a full page refresh.
-  (`⇧⌘\` in IntelliJ and Android Studio, `⇧⌘F5` in VSCode)
-* **Full restart** restarts the iOS, Android, or web app.
-  This takes longer because it also recompiles the
-  Java / Kotlin / Objective-C / Swift / JavaScript code.
-  On the web, it also restarts the Dart Development Compiler.
-  There is no specific keyboard shortcut for this;
-  you need to stop and start the run configuration.
+* **Hot reload** carrega mudanças de código no VM ou no navegador,
+  e reconstrói a árvore de widgets, preservando o estado do app;
+  ele não executa novamente `main()` ou `initState()`.
+  (`⌘\` no Intellij e Android Studio, `⌃F5` no VSCode)
+* **Hot restart** carrega mudanças de código no VM ou no navegador,
+  e reinicia o app Flutter, perdendo o estado do app.
+  Na web, isso pode reiniciar o app sem um refresh completo da página.
+  (`⇧⌘\` no IntelliJ e Android Studio, `⇧⌘F5` no VSCode)
+* **Full restart** reinicia o app iOS, Android ou web.
+  Isso leva mais tempo porque também recompila o
+  código Java / Kotlin / Objective-C / Swift / JavaScript.
+  Na web, também reinicia o Dart Development Compiler.
+  Não há atalho de teclado específico para isso;
+  você precisa parar e iniciar a configuração de execução.
 
-Flutter web now supports hot restart and [hot reload][].
+Flutter web agora suporta hot restart e [hot reload][hot reload].
 :::
 
 [hot reload]: /platform-integration/web/building#hot-reload-web
 
 ![Android Studio UI](/assets/images/docs/development/tools/android-studio-run-controls.png){:width="100%"}<br>
-Controls for run, run debug, hot reload, and hot restart in Android Studio
+Controles para run, run debug, hot reload e hot restart no Android Studio
 
-A code change has a visible effect only if the modified
-Dart code is run again after the change. Specifically,
-a hot reload causes all the existing widgets to rebuild.
-Only code involved in the rebuilding of the widgets
-is automatically re-executed. The `main()` and `initState()`
-functions, for example, are not run again.
+Uma mudança de código tem um efeito visível apenas se o código
+Dart modificado for executado novamente após a mudança. Especificamente,
+um hot reload faz com que todos os widgets existentes sejam reconstruídos.
+Apenas o código envolvido na reconstrução dos widgets
+é automaticamente re-executado. As funções `main()` e `initState()`,
+por exemplo, não são executadas novamente.
 
-## Special cases
+## Casos especiais {:#special-cases}
 
-The next sections describe specific scenarios that involve
-hot reload. In some cases, small changes to the Dart code
-enable you to continue using hot reload for your app.
-In other cases, a hot restart, or a full restart is needed.
+As próximas seções descrevem cenários específicos que envolvem
+hot reload. Em alguns casos, pequenas mudanças no código Dart
+permitem que você continue usando hot reload para seu app.
+Em outros casos, um hot restart ou um full restart é necessário.
 
-### An app is killed
+### Um app é encerrado
 
-Hot reload can break when the app is killed.
-For example, if the app was in the background for too long.
+Hot reload pode falhar quando o app é encerrado.
+Por exemplo, se o app ficou em segundo plano por muito tempo.
 
-### Compilation errors
+### Erros de compilação
 
-When a code change introduces a compilation error,
-hot reload generates an error message similar to:
+Quando uma mudança de código introduz um erro de compilação,
+hot reload gera uma mensagem de erro similar a:
 
 ```plaintext
 Hot reload was rejected:
@@ -136,30 +137,30 @@ Hot reload was rejected:
     ^
 ```
 
-In this situation, simply correct the errors on the
-specified lines of Dart code to keep using hot reload.
+Nesta situação, simplesmente corrija os erros nas
+linhas especificadas de código Dart para continuar usando hot reload.
 
 ### CupertinoTabView's builder
 
-Hot reload won't apply changes made to
-a `builder` of a `CupertinoTabView`.
-For more information, see [Issue 43574][].
+Hot reload não aplicará mudanças feitas em
+um `builder` de um `CupertinoTabView`.
+Para mais informações, veja [Issue 43574][Issue 43574].
 
-### Enumerated types
+### Tipos enumerados
 
-Hot reload doesn't work when enumerated types are
-changed to regular classes or regular classes are
-changed to enumerated types.
+Hot reload não funciona quando tipos enumerados são
+alterados para classes regulares ou classes regulares são
+alteradas para tipos enumerados.
 
-For example:
+Por exemplo:
 
-Before the change:
+Antes da mudança:
 <?code-excerpt "lib/hot-reload/before.dart (enum)"?>
 ```dart
 enum Color { red, green, blue }
 ```
 
-After the change:
+Depois da mudança:
 <?code-excerpt "lib/hot-reload/after.dart (enum)"?>
 ```dart
 class Color {
@@ -169,12 +170,12 @@ class Color {
 }
 ```
 
-### Generic types
+### Tipos genéricos
 
-Hot reload won't work when generic type declarations
-are modified. For example, the following won't work:
+Hot reload não funcionará quando declarações de tipo genérico
+forem modificadas. Por exemplo, o seguinte não funcionará:
 
-Before the change:
+Antes da mudança:
 <?code-excerpt "lib/hot-reload/before.dart (class)"?>
 ```dart
 class A<T> {
@@ -182,7 +183,7 @@ class A<T> {
 }
 ```
 
-After the change:
+Depois da mudança:
 <?code-excerpt "lib/hot-reload/after.dart (class)"?>
 ```dart
 class A<T, V> {
@@ -191,41 +192,41 @@ class A<T, V> {
 }
 ```
 
-### Native code
+### Código nativo
 
-If you've changed native code (such as Kotlin, Java, Swift,
-or Objective-C), you must perform a full restart (stop and
-restart the app) to see the changes take effect.
+Se você mudou código nativo (como Kotlin, Java, Swift,
+ou Objective-C), você deve executar um full restart (parar e
+reiniciar o app) para ver as mudanças terem efeito.
 
-### Previous state is combined with new code
+### Estado anterior é combinado com novo código
 
-Flutter's stateful hot reload preserves the state of your app.
-This approach enables you to view the effect of the most
-recent change only, without throwing away the current state.
-For example, if your app requires a user to log in,
-you can modify and hot reload a page several levels down in
-the navigation hierarchy, without re-entering your login credentials.
-State is kept, which is usually the desired behavior.
+Hot reload com estado do Flutter preserva o estado de seu app.
+Esta abordagem permite que você visualize o efeito apenas da
+mudança mais recente, sem descartar o estado atual.
+Por exemplo, se seu app requer que um usuário faça login,
+você pode modificar e fazer hot reload de uma página vários níveis abaixo na
+hierarquia de navegação, sem reinserir suas credenciais de login.
+O estado é mantido, que é geralmente o comportamento desejado.
 
-If code changes affect the state of your app (or its dependencies),
-the data your app has to work with might not be fully consistent
-with the data it would have if it executed from scratch.
-The result might be different behavior after a hot reload
-versus a hot restart.
+Se mudanças de código afetam o estado de seu app (ou suas dependências),
+os dados com os quais seu app tem que trabalhar podem não estar totalmente consistentes
+com os dados que ele teria se executasse do zero.
+O resultado pode ser um comportamento diferente após um hot reload
+versus um hot restart.
 
-### Recent code change is included but app state is excluded
+### Mudança recente de código é incluída mas o estado do app é excluído
 
-In Dart, [static fields are lazily initialized][static-variables].
-This means that the first time you run a Flutter app and a
-static field is read, it's set to whatever value its
-initializer was evaluated to.
-Global variables and static fields are treated as state,
-and are therefore not reinitialized during hot reload.
+No Dart, [campos estáticos são inicializados preguiçosamente][static-variables].
+Isso significa que na primeira vez que você executa um app Flutter e um
+campo estático é lido, ele é definido com qualquer valor para o qual seu
+inicializador foi avaliado.
+Variáveis globais e campos estáticos são tratados como estado,
+e portanto não são reinicializados durante hot reload.
 
-If you change initializers of global variables and static fields,
-a hot restart or restart the state where the initializers are hold
-is necessary to see the changes.
-For example, consider the following code:
+Se você mudar inicializadores de variáveis globais e campos estáticos,
+um hot restart ou reiniciar o estado onde os inicializadores são mantidos
+é necessário para ver as mudanças.
+Por exemplo, considere o seguinte código:
 
 <?code-excerpt "lib/hot-reload/before.dart (sample-table)"?>
 ```dart
@@ -253,7 +254,7 @@ final sampleTable = [
 ];
 ```
 
-After running the app, you make the following change:
+Depois de executar o app, você faz a seguinte mudança:
 
 <?code-excerpt "lib/hot-reload/after.dart (sample-table)"?>
 ```dart
@@ -283,9 +284,9 @@ final sampleTable = [
 ];
 ```
 
-You hot reload, but the change is not reflected.
+Você faz hot reload, mas a mudança não é refletida.
 
-Conversely, in the following example:
+Por outro lado, no seguinte exemplo:
 
 <?code-excerpt "lib/hot-reload/before.dart (const)"?>
 ```dart
@@ -297,8 +298,8 @@ void onClick() {
 }
 ```
 
-Running the app for the first time prints `1` and `1`.
-Then, you make the following change:
+Executar o app pela primeira vez imprime `1` e `1`.
+Então, você faz a seguinte mudança:
 
 <?code-excerpt "lib/hot-reload/after.dart (const)"?>
 ```dart
@@ -310,25 +311,25 @@ void onClick() {
 }
 ```
 
-While changes to `const` field values are always hot reloaded,
-the static field initializer is not rerun. Conceptually,
-`const` fields are treated like aliases instead of state.
+Enquanto mudanças em valores de campos `const` são sempre recarregadas com hot reload,
+o inicializador de campo estático não é re-executado. Conceitualmente,
+campos `const` são tratados como aliases ao invés de estado.
 
-The Dart VM detects initializer changes and flags when a set
-of changes needs a hot restart to take effect.
-The flagging mechanism is triggered for
-most of the initialization work in the above example,
-but not for cases like the following:
+O Dart VM detecta mudanças de inicializador e sinaliza quando um conjunto
+de mudanças precisa de um hot restart para ter efeito.
+O mecanismo de sinalização é acionado para
+a maior parte do trabalho de inicialização no exemplo acima,
+mas não para casos como o seguinte:
 
 <?code-excerpt "lib/hot-reload/after.dart (final-foo)"?>
 ```dart
 final bar = foo;
 ```
 
-To update `foo` and view the change after hot reload,
-consider redefining the field as `const` or using a getter to
-return the value, rather than using `final`.
-For example, either of the following solutions work:
+Para atualizar `foo` e ver a mudança após hot reload,
+considere redefinir o campo como `const` ou usar um getter para
+retornar o valor, ao invés de usar `final`.
+Por exemplo, qualquer uma das seguintes soluções funciona:
 
 <?code-excerpt "lib/hot-reload/foo_const.dart (const)"?>
 ```dart
@@ -350,23 +351,23 @@ void onClick() {
 }
 ```
 
-For more information, read about the [differences
-between the `const` and `final` keywords][const-new] in Dart.
+Para mais informações, leia sobre as [diferenças
+entre as palavras-chave `const` e `final`][const-new] no Dart.
 
-### Recent UI change is excluded
+### Mudança recente de UI é excluída
 
-Even when a hot reload operation appears successful and generates no
-exceptions, some code changes might not be visible in the refreshed UI.
-This behavior is common after changes to the app's `main()` or
-`initState()` methods.
+Mesmo quando uma operação de hot reload parece bem-sucedida e não gera
+exceções, algumas mudanças de código podem não ser visíveis na UI atualizada.
+Este comportamento é comum após mudanças nos métodos `main()` ou
+`initState()` do app.
 
-As a general rule, if the modified code is downstream of the root
-widget's `build()` method, then hot reload behaves as expected.
-However, if the modified code won't be re-executed as a result
-of rebuilding the widget tree, then you won't
-see its effects after hot reload.
+Como regra geral, se o código modificado está downstream do método
+`build()` do widget raiz, então hot reload se comporta como esperado.
+No entanto, se o código modificado não será re-executado como resultado
+de reconstruir a árvore de widgets, então você não verá
+seus efeitos após hot reload.
 
-For example, consider the following code:
+Por exemplo, considere o seguinte código:
 
 <?code-excerpt "lib/hot-reload/before.dart (build)"?>
 ```dart
@@ -386,7 +387,7 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-After running this app, change the code as follows:
+Depois de executar este app, mude o código da seguinte forma:
 
 <?code-excerpt "lib/hot-reload/after.dart (main)"?>
 ```dart
@@ -397,36 +398,36 @@ void main() {
 }
 ```
 
-With a hot restart, the program starts from the beginning,
-executes the new version of `main()`,
-and builds a widget tree that displays the text `Hello`.
+Com um hot restart, o programa começa do início,
+executa a nova versão de `main()`,
+e constrói uma árvore de widgets que exibe o texto `Hello`.
 
-However, if you hot reload the app after this change,
-`main()` and `initState()` are not re-executed,
-and the widget tree is rebuilt with the unchanged instance
-of `MyApp` as the root widget.
-This results in no visible change after hot reload.
+No entanto, se você fizer hot reload no app após esta mudança,
+`main()` e `initState()` não são re-executados,
+e a árvore de widgets é reconstruída com a instância inalterada
+de `MyApp` como o widget raiz.
+Isso resulta em nenhuma mudança visível após hot reload.
 
-## How it works
+## Como funciona
 
-When hot reload is invoked, the host machine looks
-at the edited code since the last compilation.
-The following libraries are recompiled:
+Quando hot reload é invocado, a máquina host olha
+para o código editado desde a última compilação.
+As seguintes bibliotecas são recompiladas:
 
-* Any libraries with changed code
-* The application's main library
-* The libraries from the main library leading
-  to affected libraries
+* Quaisquer bibliotecas com código alterado
+* A biblioteca principal do aplicativo
+* As bibliotecas da biblioteca principal levando
+  a bibliotecas afetadas
 
-The source code from those libraries is compiled into
-[kernel files][] and sent to the mobile device's Dart VM.
+O código-fonte dessas bibliotecas é compilado em
+[arquivos kernel][kernel files] e enviado ao Dart VM do dispositivo móvel.
 
-The Dart VM re-loads all libraries from the new kernel file.
-So far no code is re-executed.
+O Dart VM recarrega todas as bibliotecas do novo arquivo kernel.
+Até agora nenhum código é re-executado.
 
-The hot reload mechanism then causes the Flutter framework
-to trigger a rebuild/re-layout/repaint of all existing
-widgets and render objects.
+O mecanismo de hot reload então faz com que o framework Flutter
+dispare um rebuild/re-layout/repaint de todos os widgets e
+objetos de renderização existentes.
 
 [static-variables]: {{site.dart-site}}/language/classes#static-variables
 [const-new]: {{site.dart-site}}/language/variables#final-and-const
@@ -434,3 +435,4 @@ widgets and render objects.
 [Flutter editor]: /tools/editors
 [Issue 43574]: {{site.repo.flutter}}/issues/43574
 [kernel files]: {{site.github}}/dart-lang/sdk/tree/main/pkg/kernel
+[Special cases]: #special-cases

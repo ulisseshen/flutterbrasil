@@ -1,53 +1,54 @@
 ---
-title: Create with AI
+ia-translate: true
+title: Criar com IA
 description: >
-  Learn how to use AI to build Flutter apps, from powerful SDKs that integrate
-  AI features directly into your app to tools that accelerate your development
-  workflow.
+  Aprenda como usar IA para construir apps Flutter, desde SDKs poderosos que integram
+  recursos de IA diretamente em seu app até ferramentas que aceleram seu fluxo de
+  trabalho de desenvolvimento.
 ---
 
-This guide covers how you can leverage AI tools to build AI-powered features for
-your Flutter apps and streamline your Flutter and Dart development.
+Este guia aborda como você pode aproveitar ferramentas de IA para construir recursos alimentados por IA para
+seus apps Flutter e otimizar seu desenvolvimento Flutter e Dart.
 
-## Overview
+## Visão geral
 
-AI can be used for building AI-powered apps with Flutter and for accelerating
-your development workflow. You can integrate AI-powered features like natural
-language understanding and content generation directly into your Flutter app
-using powerful SDKs, like the Firebase SDK for Generative AI. You can also use
-AI tools, such as Gemini Code Assist and Gemini CLI, to help with code
-generation and scaffolding. These tools are powered by the Dart and Flutter MCP
-Server, which provides AI with a rich context about your codebase. The Flutter
-Extension for Gemini CLI makes it easy to leverage official rules, the MCP server,
-and custom commands for building your app. Additionally, rules files help
-fine-tune the AI's behavior and enforce project-specific best practices.
+IA pode ser usada para construir apps alimentados por IA com Flutter e para acelerar
+seu fluxo de trabalho de desenvolvimento. Você pode integrar recursos alimentados por IA como compreensão de
+linguagem natural e geração de conteúdo diretamente em seu app Flutter
+usando SDKs poderosos, como o Firebase SDK for Generative AI. Você também pode usar
+ferramentas de IA, como Gemini Code Assist e Gemini CLI, para ajudar com geração
+e estruturação de código. Essas ferramentas são alimentadas pelo Dart e Flutter MCP
+Server, que fornece à IA um contexto rico sobre sua base de código. A
+Extension para Gemini CLI do Flutter facilita o aproveitamento de regras oficiais, do servidor MCP,
+e comandos personalizados para construir seu app. Além disso, arquivos de regras ajudam a
+ajustar o comportamento da IA e impor melhores práticas específicas do projeto.
 
-## Build AI-powered experiences with Flutter
+## Construir experiências alimentadas por IA com Flutter
 
-Using AI in your Flutter app unlocks new user experiences that allow your app to
-support natural language understanding and content generation.
+Usar IA em seu app Flutter desbloqueia novas experiências de usuário que permitem que seu app
+suporte compreensão de linguagem natural e geração de conteúdo.
 
-To get started building AI-powered experiences in Flutter, check out these
-resources:
+Para começar a construir experiências alimentadas por IA no Flutter, confira estes
+recursos:
 
-* [Firebase AI Logic][] - The official Firebase SDK for using generative AI
-  features directly in Flutter. Compatible with the Gemini Developer API or
-  Vertex AI. To get started, check out the
-  [official documentation][firebase-ai-logic-docs].
-* [Flutter AI Toolkit][] - A sample app with pre-built widgets to help you build
-  AI-powered features in Flutter
+* [Firebase AI Logic][] - O SDK oficial do Firebase para usar recursos de IA generativa
+  diretamente no Flutter. Compatível com a Gemini Developer API ou
+  Vertex AI. Para começar, confira a
+  [documentação oficial][firebase-ai-logic-docs].
+* [Flutter AI Toolkit][] - Um app de exemplo com widgets pré-construídos para ajudá-lo a construir
+  recursos alimentados por IA no Flutter
 
 [Firebase AI Logic]: {{site.firebase}}/docs/ai-logic
 [firebase-ai-logic-docs]: {{site.firebase}}/docs/ai-logic/get-started
 [Flutter AI Toolkit]: {{site.url}}/ai-toolkit
 
-## AI development tools
+## Ferramentas de desenvolvimento de IA
 
-AI isn't only a feature in your app, but can also be a powerful assistant in
-your development workflow.  Tools like [Gemini Code
+IA não é apenas um recurso em seu app, mas também pode ser um assistente poderoso em
+seu fluxo de trabalho de desenvolvimento.  Ferramentas como [Gemini Code
 Assist](#gemini-code-assist), [Gemini CLI](#gemini-cli), [Claude Code][],
-[Cursor][], and [Windsurf][] can help you write code faster, understand complex
-concepts, and reduce boilerplate.
+[Cursor][], e [Windsurf][] podem ajudá-lo a escrever código mais rápido, entender conceitos
+complexos e reduzir código repetitivo.
 
 [Claude Code]: https://www.claude.com/product/claude-code
 [Cursor]: https://cursor.com/
@@ -55,82 +56,82 @@ concepts, and reduce boilerplate.
 
 ### Gemini Code Assist
 
-[Gemini Code Assist][] is an AI-powered collaborator available in Visual Studio
-Code and JetBrains IDEs (including Android Studio).  It has a deep understanding
-of your project's codebase and can help you with:
+[Gemini Code Assist][] é um colaborador alimentado por IA disponível no Visual Studio
+Code e IDEs JetBrains (incluindo Android Studio).  Ele tem uma compreensão profunda
+da base de código do seu projeto e pode ajudá-lo com:
 
-* **Code completion and generation**: It suggests and generates entire blocks of
-  code based on the context of what you're writing.
-* **In-editor chat**: You can ask questions about your code, Flutter concepts,
-  or best practices directly within your IDE.
-* **Debugging and explanation**: If you encounter an error, you can ask Gemini
-  Code Assist to explain it and suggest a fix, and
+* **Conclusão e geração de código**: Ele sugere e gera blocos inteiros de
+  código baseado no contexto do que você está escrevendo.
+* **Chat no editor**: Você pode fazer perguntas sobre seu código, conceitos do Flutter,
+  ou melhores práticas diretamente dentro de sua IDE.
+* **Depuração e explicação**: Se você encontrar um erro, pode pedir ao Gemini
+  Code Assist para explicá-lo e sugerir uma correção, e
   [Dart and Flutter MCP Server][dart-mcp-flutter-docs]
 
 [Gemini Code Assist]: https://codeassist.google/
 
 ### Gemini CLI
 
-The [Gemini CLI][] is a command-line AI workflow tool. It allows you to interact
-with Gemini models for a variety of tasks without leaving your development
-environment. You can use it to:
+O [Gemini CLI][] é uma ferramenta de fluxo de trabalho de IA de linha de comando. Ele permite que você interaja
+com modelos Gemini para uma variedade de tarefas sem sair de seu ambiente de
+desenvolvimento. Você pode usá-lo para:
 
-* Quickly scaffold a new Flutter widget, Dart function, or a complete app.
-* Use MCP server tools, such as the Dart and Flutter MCP server
-* Automate tasks like committing and pushing changes to a Git repository
+* Estruturar rapidamente um novo widget Flutter, função Dart ou um app completo.
+* Usar ferramentas de servidor MCP, como o servidor MCP Dart e Flutter
+* Automatizar tarefas como fazer commit e push de mudanças para um repositório Git
 
-To get started, visit the [Gemini CLI][] website, or try this
-[Gemini CLI codelab][].
+Para começar, visite o site [Gemini CLI][], ou experimente este
+[codelab do Gemini CLI][].
 
 [Gemini CLI]: https://geminicli.com/
 [Gemini CLI codelab]: https://codelabs.developers.google.com/gemini-cli-hands-on
 
-## Flutter Extension for Gemini CLI
+## Extension para Gemini CLI do Flutter
 
-The [Flutter Extension for Gemini CLI][flutter-extension] combines the [Dart and
-Flutter MCP Server][dart-mcp-dart-docs] with rules and commands. It uses the
-default set of [AI rules for Flutter and Dart][], adds commands like
-`/create-app` and `/modify` to make structured changes to your app, and
-automatically configures the [Dart and Flutter MCP Server][dart-mcp-dart-docs].
+A [Extension para Gemini CLI do Flutter][flutter-extension] combina o [Dart and
+Flutter MCP Server][dart-mcp-dart-docs] com regras e comandos. Ela usa o
+conjunto padrão de [AI rules for Flutter and Dart][], adiciona comandos como
+`/create-app` e `/modify` para fazer mudanças estruturadas em seu app, e
+configura automaticamente o [Dart and Flutter MCP Server][dart-mcp-dart-docs].
 
-You can install it by running the following command:
+Você pode instalá-la executando o seguinte comando:
 
 ```bash
 gemini extensions install https://github.com/gemini-cli-extensions/flutter
 ```
 
-To learn more, see the [blog post][flutter-extension-blog] or
-the [README][flutter-extension].
+Para saber mais, consulte o [post do blog][flutter-extension-blog] ou
+o [README][flutter-extension].
 
 [flutter-extension]: {{site.github}}/gemini-cli-extensions/flutter
 [flutter-extension-blog]: https://blog.flutter.dev/meet-the-flutter-extension-for-gemini-cli-f8be3643eaad
 
 ## Dart and Flutter MCP Server
 
-To provide assistance during Flutter development, AI tools
-need to communicate with Dart and Flutter's developer tools.
-The Dart and Flutter MCP Server facilitates this communication.
-The MCP (model context protocol) specification outlines how
-development tools can share the context of a user's code with an AI model,
-which allows the AI to better understand and interact with the code.
+Para fornecer assistência durante o desenvolvimento Flutter, ferramentas de IA
+precisam se comunicar com as ferramentas de desenvolvedor do Dart e Flutter.
+O Dart and Flutter MCP Server facilita essa comunicação.
+A especificação MCP (model context protocol) define como
+ferramentas de desenvolvimento podem compartilhar o contexto do código de um usuário com um modelo de IA,
+o que permite que a IA entenda melhor e interaja com o código.
 
-The Dart and Flutter MCP server provides a growing list of tools to analyze
-and fix errors, hot reload, get the selected widget, and more.
-This bridges the gap between the AI's natural language understanding,
-and Dart and Flutter's suite of developer tools.
+O servidor MCP Dart e Flutter fornece uma lista crescente de ferramentas para analisar
+e corrigir erros, hot reload, obter o widget selecionado e mais.
+Isso preenche a lacuna entre a compreensão de linguagem natural da IA,
+e o conjunto de ferramentas de desenvolvedor do Dart e Flutter.
 
-To get started, check out the official documentation for the
-[Dart and Flutter MCP server][dart-mcp-dart-docs]
-on dart.dev and the [Dart and Flutter MCP repository][dart-mcp-github].
+Para começar, confira a documentação oficial para o
+[servidor MCP Dart e Flutter][dart-mcp-dart-docs]
+em dart.dev e o [repositório MCP Dart e Flutter][dart-mcp-github].
 
 [dart-mcp-dart-docs]: {{site.dart-site}}/tools/mcp-server
 [dart-mcp-github]: {{site.github}}/dart-lang/ai/tree/main/pkgs/dart_mcp_server
 [dart-mcp-flutter-docs]: #dart-and-flutter-mcp-server
 
-## Rules for Flutter and Dart
+## Regras para Flutter e Dart
 
-You can use a rules file with AI-powered editors to provide
-context and instructions to an underlying LLM. To get
-started, see the [AI rules for Flutter and Dart][] guide.
+Você pode usar um arquivo de regras com editores alimentados por IA para fornecer
+contexto e instruções a um LLM subjacente. Para começar,
+consulte o guia [AI rules for Flutter and Dart][].
 
 [AI rules for Flutter and Dart]: /ai/ai-rules

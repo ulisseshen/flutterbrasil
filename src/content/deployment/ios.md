@@ -209,7 +209,7 @@ no diretório `build/ios/archive/` do seu projeto e um bundle de app
 da App Store (arquivo `.ipa`) em `build/ios/ipa`.
 
 Considere adicionar as flags `--obfuscate` e `--split-debug-info` para
-[ofuscar seu código Dart][] para torná-lo mais difícil
+[ofuscar seu código Dart][obfuscate your Dart code] para torná-lo mais difícil
 de fazer engenharia reversa.
 
 Se você não está distribuindo para a App Store, você pode opcionalmente

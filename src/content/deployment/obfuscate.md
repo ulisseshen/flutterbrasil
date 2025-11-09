@@ -20,7 +20,7 @@ fazer engenharia reversa do seu app proprietário.
 ## Limitações e avisos {: #limitations}
 
 **A ofuscação de código do Flutter funciona
-apenas em um [build release][].**
+apenas em um [release build][].**
 
 :::warning
 É uma **prática de segurança inadequada**

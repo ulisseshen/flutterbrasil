@@ -1,7 +1,8 @@
 ---
-title: Styling widgets
+ia-translate: true
+title: Widgets de estilização
 shortTitle: Styling
-description: A catalog of Flutter's theming and responsiveness widgets.
+description: Um catálogo de widgets Flutter de temas e responsividade.
 widgetCategory: Styling
 layout: widget-catalog-page
 ---

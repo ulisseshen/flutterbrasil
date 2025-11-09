@@ -1,46 +1,46 @@
 ---
-title: Flutter for Jetpack Compose developers
-description: Learn how to apply Jetpack Compose developer knowledge when building Flutter apps.
+title: Flutter para desenvolvedores Jetpack Compose
+description: Aprenda como aplicar conhecimentos de desenvolvimento Jetpack Compose ao criar aplicativos Flutter.
 ---
 
 <?code-excerpt path-base="get-started/flutter-for/compose_devs"?>
 
 :::note
-If you have experience building Android apps with Views (XML),
-check out [Flutter for Android developers][].
+Se você tem experiência construindo aplicativos Android com Views (XML),
+confira [Flutter para desenvolvedores Android][].
 :::
 
-Flutter is a framework for building cross-platform applications
-that uses the Dart programming language.
+Flutter é um framework para construir aplicativos multiplataforma
+que usa a linguagem de programação Dart.
 
-Your Jetpack Compose knowledge and experience
-are highly valuable when building with Flutter.
+Seu conhecimento e experiência em Jetpack Compose
+são altamente valiosos ao construir com Flutter.
 
 :::tip
-To integrate Flutter code into an **existing** Android app,
-check out [Add Flutter to existing app][].
+Para integrar código Flutter em um aplicativo Android **existente**,
+confira [Adicionar Flutter a um aplicativo existente][].
 :::
 
-This document can be used as a reference by jumping around
-and finding questions that are most relevant to your needs.
-This guide embeds sample code.
-By using the "Open in DartPad" button that appears on hover or focus,
-you can open and run some of the examples on DartPad.
+Este documento pode ser usado como referência pulando entre seções
+e encontrando questões que sejam mais relevantes para suas necessidades.
+Este guia incorpora código de exemplo.
+Usando o botão "Abrir no DartPad" que aparece ao passar o mouse ou focar,
+você pode abrir e executar alguns dos exemplos no DartPad.
 
-## Overview
+## Visão Geral
 
-Flutter and Jetpack Compose code describe how the UI looks and works.
-Developers call this type of code a _declarative framework_.
+O código Flutter e Jetpack Compose descreve como a UI parece e funciona.
+Desenvolvedores chamam este tipo de código de _framework declarativo_.
 
-While there are key differences especially when it comes to
-interacting with legacy Android code, there are many commonalities
-between the two frameworks.
+Embora existam diferenças importantes, especialmente quando se trata de
+interagir com código Android legado, há muitas semelhanças
+entre os dois frameworks.
 
 ### Composables vs. Widgets
 
-**Jetpack Compose** represents UI components as _composable functions_,
-later noted in this document as _composables_. Composables can be
-altered or decorated through the use of _Modifier_ objects.
+**Jetpack Compose** representa componentes de UI como _funções composable_,
+posteriormente notadas neste documento como _composables_. Composables podem ser
+alterados ou decorados através do uso de objetos _Modifier_.
 
 ``` kotlin
 Text("Hello, World!",
@@ -50,82 +50,82 @@ Text("Hello, World!",
     modifier = Modifier.padding(10.dp))
 ```
 
-**Flutter** represents UI components as _widgets_.
+**Flutter** representa componentes de UI como _widgets_.
 
-Both composables and widgets only exist until they need to change.
-These languages call this property _immutability_.
-Jetpack Compose modifies UI component properties using an optional
-_modifier_ property backed by a `Modifier` object.
-By contrast, Flutter uses widgets for both UI components and
-their properties.
+Tanto composables quanto widgets existem apenas até precisarem mudar.
+Essas linguagens chamam essa propriedade de _imutabilidade_.
+Jetpack Compose modifica propriedades de componentes de UI usando uma
+propriedade _modifier_ opcional apoiada por um objeto `Modifier`.
+Em contraste, Flutter usa widgets tanto para componentes de UI quanto
+suas propriedades.
 
 ```dart
-Padding(                         // <-- This is a Widget
-  padding: EdgeInsets.all(10.0), // <-- So is this
-  child: Text("Hello, World!"),  // <-- This, too
+Padding(                         // <-- Este é um Widget
+  padding: EdgeInsets.all(10.0), // <-- Este também
+  child: Text("Hello, World!"),  // <-- Este também
 )));
 ```
 
-To compose layouts, both Jetpack Compose and Flutter nest UI components
-within one another.
-Jetpack Compose nests `Composables` while Flutter nests `Widgets`.
+Para compor layouts, tanto Jetpack Compose quanto Flutter aninham componentes de UI
+dentro uns dos outros.
+Jetpack Compose aninha `Composables` enquanto Flutter aninha `Widgets`.
 
-### Layout process
+### Processo de layout
 
-Jetpack Compose and Flutter handle layout in similar ways. Both of them
-lay out the UI in a single pass and parent elements provide layout constraints
-down to their children. More specifically,
+Jetpack Compose e Flutter lidam com layout de maneiras semelhantes. Ambos
+fazem o layout da UI em uma única passagem e elementos pai fornecem restrições de layout
+para seus filhos. Mais especificamente,
 
-1. The parent measures itself and its children recursively providing
-   any constraints from the parent to the child.
-2. The children try to size themselves using the above methods and
-provide their own children both their constraints and any that
-might apply from their ancestor nodes.
-3. Upon encountering a leaf node (a node with no children), the size
-and properties are determined based on the provided constraints
-and the element is placed in the UI.
-4. With all the children sized and placed, the root nodes can
-determine their measurement, size, and placement.
+1. O pai mede a si mesmo e seus filhos recursivamente fornecendo
+   quaisquer restrições do pai para o filho.
+2. Os filhos tentam dimensionar a si mesmos usando os métodos acima e
+fornecem a seus próprios filhos tanto suas restrições quanto quaisquer que
+possam se aplicar de seus nós ancestrais.
+3. Ao encontrar um nó folha (um nó sem filhos), o tamanho
+e propriedades são determinados com base nas restrições fornecidas
+e o elemento é colocado na UI.
+4. Com todos os filhos dimensionados e posicionados, os nós raiz podem
+determinar sua medição, tamanho e posicionamento.
 
-In both Jetpack Compose and Flutter, the parent component can override
-or constrain the child's desired size. The widget cannot have any size it wants.
-It also cannot _usually_ know or decide its position on screen as its parent
-makes that decision.
+Tanto no Jetpack Compose quanto no Flutter, o componente pai pode sobrescrever
+ou restringir o tamanho desejado do filho. O widget não pode ter qualquer tamanho que quiser.
+Ele também não pode _geralmente_ saber ou decidir sua posição na tela já que seu pai
+toma essa decisão.
 
-To force a child widget to render at a specific size,
-the parent must set tight constraints.
-A constraint becomes tight when its constraint's minimum size value
-equals its maximum size value.
+Para forçar um widget filho a renderizar em um tamanho específico,
+o pai deve definir restrições rígidas.
+Uma restrição se torna rígida quando o valor de tamanho mínimo de sua restrição
+é igual ao seu valor de tamanho máximo.
 
-To learn how constraints work in Flutter,
-visit [Understanding constraints][].
+Para aprender como as restrições funcionam no Flutter,
+visite [Entendendo restrições][].
 
-### Design system
+### Sistema de design
 
-Because Flutter targets multiple platforms, your app doesn't need
-to conform to any design system.
-While this guide features [Material][] widgets,
-your Flutter app can use many different design systems:
+Como o Flutter visa várias plataformas, seu aplicativo não precisa
+se conformar a nenhum sistema de design.
+Embora este guia apresente widgets [Material][],
+seu aplicativo Flutter pode usar muitos sistemas de design diferentes:
 
-- Custom Material widgets
-- Community built widgets
-- Your own custom widgets
+- Widgets Material personalizados
+- Widgets construídos pela comunidade
+- Seus próprios widgets personalizados
 
-If you're looking for a great reference app that features a
-custom design system, check out [Wonderous][].
+Se você está procurando um ótimo aplicativo de referência que apresenta um
+sistema de design personalizado, confira [Wonderous][].
 
-## UI basics
+## Básico da UI
 
-This section covers the basics of UI development in
-Flutter and how it compares to Jetpack Compose.
-This includes how to start developing your app, display static text,
-create buttons, react to on-press events, display lists, grids, and more.
+Esta seção cobre o básico do desenvolvimento de UI no
+Flutter e como ele se compara ao Jetpack Compose.
+Isso inclui como começar a desenvolver seu aplicativo, exibir texto estático,
+criar botões, reagir a eventos on-press, exibir listas, grades e muito mais.
 
-### Getting started
+### Começando
 
-For **Compose** apps, your main entry point will
-be _Activity_ or one of its descendants,
-generally _ComponentActivity_.
+Para aplicativos **Compose**, seu ponto de entrada principal será
+_Activity_ ou um de seus descendentes,
+geralmente _ComponentActivity_.
 
 ```kotlin
 class MainActivity : ComponentActivity() {
@@ -154,8 +154,8 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 }
 ```
 
-To start your **Flutter** app, pass an instance of your app to
-the `runApp` function.
+Para iniciar seu aplicativo **Flutter**, passe uma instância do seu aplicativo para
+a função `runApp`.
 
 ```dart
 void main() {
@@ -163,10 +163,10 @@ void main() {
 }
 ```
 
-`App` is a widget. It's `build` method describes the part of the
-user interface it represents.
-It's common to begin your app with a [`WidgetApp`][] class,
-like [`MaterialApp`][].
+`App` é um widget. Seu método `build` descreve a parte da
+interface do usuário que ele representa.
+É comum começar seu aplicativo com uma classe [`WidgetApp`][],
+como [`MaterialApp`][].
 
 ```dart
 class MyApp extends StatelessWidget {
@@ -181,8 +181,8 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-The widget used in the `HomePage` might begin with the `Scaffold` class.
-`Scaffold` implements a basic layout structure for an app.
+O widget usado em `HomePage` pode começar com a classe `Scaffold`.
+`Scaffold` implementa uma estrutura de layout básica para um aplicativo.
 
 ```dart
 class HomePage extends StatelessWidget {
@@ -201,22 +201,22 @@ class HomePage extends StatelessWidget {
 }
 ```
 
-Note how Flutter uses the [`Center`][] widget.
+Note como o Flutter usa o widget [`Center`][].
 
-Compose has a number of defaults from its ancestor Android Views.
-Unless otherwise specified, most components "wrap" their size to
-content meaning they only take up as much space as needed when rendered.
-That's not always the case with Flutter.
+Compose tem uma série de padrões de suas Views Android ancestrais.
+A menos que especificado de outra forma, a maioria dos componentes "envolvem" seu tamanho ao
+conteúdo, o que significa que eles só ocupam o espaço necessário quando renderizados.
+Nem sempre é o caso com Flutter.
 
-To center the text, wrap it in a `Center` widget.
-To learn about different widgets and their default behaviors, check out
-the [Widget catalog][].
+Para centralizar o texto, envolva-o em um widget `Center`.
+Para aprender sobre diferentes widgets e seus comportamentos padrão, confira
+o [Catálogo de widgets][].
 
-### Adding Buttons
+### Adicionando Botões
 
-In **Compose**, you use the `Button` composable or one of its variants
-to create a button. `Button` is an alias for `FilledTonalButton`
-when using a Material theme.
+No **Compose**, você usa o composable `Button` ou uma de suas variantes
+para criar um botão. `Button` é um alias para `FilledTonalButton`
+quando usando um tema Material.
 
 ```kotlin
 Button(onClick = {}) {
@@ -224,27 +224,27 @@ Button(onClick = {}) {
 }
 ```
 
-To achieve the same result in **Flutter**,
-use the `FilledButton` class:
+Para alcançar o mesmo resultado no **Flutter**,
+use a classe `FilledButton`:
 
 ```dart
 FilledButton(
   onPressed: () {
-    // This closure is called when your button is tapped.
+    // Este closure é chamado quando seu botão é tocado.
   },
   const Text('Do something'),
 ),
 ```
 
-**Flutter** gives you access to a variety of buttons with pre-defined styles.
+**Flutter** fornece acesso a uma variedade de botões com estilos predefinidos.
 
 
-### Aligning components horizontally or vertically
-Jetpack Compose and Flutter handle horizontal and vertical collections of
-items similarly.
+### Alinhando componentes horizontalmente ou verticalmente
+Jetpack Compose e Flutter lidam com coleções horizontais e verticais de
+itens de forma semelhante.
 
-The following Compose snippet adds a globe image and
-text in both `Row` and `Column` containers with centering of the items:
+O seguinte snippet Compose adiciona uma imagem de globo e
+texto em containers `Row` e `Column` com centralização dos itens:
 
 ```kotlin
 Row(horizontalArrangement = Arrangement.Center) {
@@ -258,8 +258,8 @@ Column(verticalArrangement = Arrangement.Center) {
 }
 ```
 
-**Flutter** uses [`Row`][] and [`Column`][] as well but there are some slight differences for specifying child
-widgets and alignment. The following is equivalent to the Compose example.
+**Flutter** usa [`Row`][] e [`Column`][] também, mas há algumas pequenas diferenças para especificar
+widgets filhos e alinhamento. O seguinte é equivalente ao exemplo Compose.
 
 ```dart
 Row(
@@ -280,32 +280,32 @@ Column(
 
 ```
 
-`Row` and `Column` require a `List<Widget>` in the `children` parameter.
-The `mainAxisAlignment` property tells Flutter how to position children
-with extra space. `MainAxisAlignment.center` positions children in the
-center of the main axis. For `Row`, the main axis is the horizontal
-axis, inversely for `Column`, the main axis is the vertical axis.
+`Row` e `Column` requerem uma `List<Widget>` no parâmetro `children`.
+A propriedade `mainAxisAlignment` diz ao Flutter como posicionar os filhos
+com espaço extra. `MainAxisAlignment.center` posiciona os filhos no
+centro do eixo principal. Para `Row`, o eixo principal é o horizontal
+axis, inversamente para `Column`, o eixo principal é o eixo vertical.
 
 ::: note
-Whereas Flutter's `Row` and `Column` have `MainAxisAlignment`
-and `CrossAxisAlignment` to control how items are placed, the properties that
-control placement in Jetpack Compose are one vertical and horizontal property
-from the following: `verticalArrangement`, `verticalAlignment`,
-`horizontalAlignment`, and `horizontalArrangement`. The trick to determine
-which is the `MainAxis` is to look for the property that ends in `arrangement`.
-The `CrossAxis` will be the property that ends in `alignment`.
+Enquanto `Row` e `Column` do Flutter têm `MainAxisAlignment`
+e `CrossAxisAlignment` para controlar como os itens são posicionados, as propriedades que
+controlam o posicionamento no Jetpack Compose são uma propriedade vertical e horizontal
+das seguintes: `verticalArrangement`, `verticalAlignment`,
+`horizontalAlignment` e `horizontalArrangement`. O truque para determinar
+qual é o `MainAxis` é procurar pela propriedade que termina em `arrangement`.
+O `CrossAxis` será a propriedade que termina em `alignment`.
 :::
 
-### Displaying a list view
+### Exibindo um list view
 
-In **Compose**, you have a couple ways to create a list based on
-the size of the list you need to display. For a small number of items
-that can all be displayed at once, you can iterate over a collection
-inside a `Column` or `Row`.
+No **Compose**, você tem algumas maneiras de criar uma lista baseada no
+tamanho da lista que você precisa exibir. Para um pequeno número de itens
+que podem todos ser exibidos de uma vez, você pode iterar sobre uma coleção
+dentro de uma `Column` ou `Row`.
 
-For a list with a large number of items, `LazyList` has better
-performance. It only lays out the components that will be visible
-versus all of them.
+Para uma lista com um grande número de itens, `LazyList` tem melhor
+desempenho. Ela só faz o layout dos componentes que serão visíveis
+versus todos eles.
 
 ```kotlin
 data class Person(val name: String)
@@ -335,7 +335,7 @@ fun ListDemo2(people: List<Person>) {
 }
 ```
 
-To lazily build a list in Flutter, ....
+Para construir preguiçosamente uma lista no Flutter, ....
 
 ```dart
 class Person {
@@ -368,30 +368,30 @@ class HomePage extends StatelessWidget {
 }
 ```
 
-Flutter has some conventions for lists:
+Flutter tem algumas convenções para listas:
 
-- The [`ListView`] widget has a builder method.
-  This works like the `item` closure inside a Compose `LazyList`.
+- O widget [`ListView`] tem um método builder.
+  Isso funciona como o closure `item` dentro de um Compose `LazyList`.
 
-- The `itemCount` parameter of the `ListView` sets how many items
-  the `ListView` displays.
+- O parâmetro `itemCount` do `ListView` define quantos itens
+  o `ListView` exibe.
 
-- The `itemBuilder` has an index parameter that will be between zero
-  and one less than itemCount.
+- O `itemBuilder` tem um parâmetro index que será entre zero
+  e um a menos que itemCount.
 
-The previous example returned a [`ListTile`][] widget for each item.
-The `ListTile` widget includes properties like `height` and `font-size`.
-These properties help build a list. However, Flutter allows you to return
-almost any widget that represents your data.
+O exemplo anterior retornou um widget [`ListTile`][] para cada item.
+O `ListTile` possui propriedades como `height` e `font-size`.
+Essas propriedades ajudam a construir uma lista. No entanto, o Flutter permite que você retorne
+quase qualquer widget que represente seus dados.
 
-### Displaying a grid
+### Exibindo uma grade
 
-Constructing a grid in **Compose** is similar to a
-LazyList (`LazyColumn` or `LazyRow`). You can use the
-same `items` closure. There are properties on each
-grid type to specify how to arrange the items,
-whether or not to use adaptive or fixed layout,
-amongst others.
+Construir uma grade no **Compose** é semelhante a uma
+LazyList (`LazyColumn` ou `LazyRow`). Você pode usar o
+mesmo closure `items`. Há propriedades em cada
+tipo de grade para especificar como organizar os itens,
+se usar layout adaptativo ou fixo,
+entre outros.
 
 
 ```kotlin
@@ -418,10 +418,10 @@ val widgets = arrayOf(
     }
 ```
 
-To display grids in **Flutter**, use the [`GridView`] widget.
-This widget has various constructors. Each constructor has
-a similar goal, but uses different input parameters.
-The following example uses the `.builder()` initializer:
+Para exibir grades no **Flutter**, use o widget [`GridView`].
+Este widget possui vários construtores. Cada construtor tem
+um objetivo semelhante, mas usa parâmetros de entrada diferentes.
+O exemplo a seguir usa o inicializador `.builder()`:
 
 ```dart
 const widgets = [
@@ -452,24 +452,24 @@ class HomePage extends StatelessWidget {
 }
 ```
 
-The `SliverGridDelegateWithFixedCrossAxisCount` delegate determines
-various parameters that the grid uses to lay out its components.
-This includes `crossAxisCount` that dictates the number of items
-displayed on each row.
+O delegate `SliverGridDelegateWithFixedCrossAxisCount` determina
+vários parâmetros que a grade usa para fazer o layout de seus componentes.
+Isso inclui `crossAxisCount` que determina o número de itens
+exibidos em cada linha.
 
-Jetpack Compose's `LazyHorizontalGrid`, `LazyVerticalGrid`, and Flutter's `GridView` are somewhat
-similar. `GridView` uses a delegate to decide how the grid
-should lay out its components. The `rows`, `columns`, and other
-associated properties on `LazyHorizontalGrid` \ `LazyVerticalGrid` serve the same purpose.
+`LazyHorizontalGrid`, `LazyVerticalGrid` do Jetpack Compose e `GridView` do Flutter são de certa forma
+semelhantes. `GridView` usa um delegate para decidir como a grade
+deve fazer o layout de seus componentes. As propriedades `rows`, `columns` e outras
+associadas em `LazyHorizontalGrid` \ `LazyVerticalGrid` servem o mesmo propósito.
 
-### Creating a scroll view
+### Criando uma scroll view
 
-`LazyColumn` and `LazyRow` in **Jetpack Compose** have built-in
-support for scrolling.
+`LazyColumn` e `LazyRow` no **Jetpack Compose** têm suporte
+integrado para rolagem.
 
-To create a scrolling view, **Flutter** uses [`SingleChildScrollView`][].
-In the following example, the function `mockPerson` mocks instances
-of the `Person` class to create the custom `PersonView` widget.
+Para criar uma view com rolagem, **Flutter** usa [`SingleChildScrollView`][].
+No exemplo a seguir, a função `mockPerson` simula instâncias
+da classe `Person` para criar o widget personalizado `PersonView`.
 
 ```dart
 SingleChildScrollView(
@@ -485,33 +485,33 @@ SingleChildScrollView(
 ),
 ```
 
-### Responsive and adaptive design
+### Design responsivo e adaptativo
 
-Adaptive Design in **Compose** is a complex topic with many
-viable solutions:
-* Using a custom layout
-* Using `WindowSizeClass` alone
-* Using `BoxWithConstraints` to control what is shown based on
-available space
-* Using the Material 3 adaptive library that uses `WindowSizeClass`
-along with specialized composable layouts for common layouts
+Design Adaptativo no **Compose** é um tópico complexo com muitas
+soluções viáveis:
+* Usando um layout personalizado
+* Usando `WindowSizeClass` sozinho
+* Usando `BoxWithConstraints` para controlar o que é exibido com base no
+espaço disponível
+* Usando a biblioteca adaptativa Material 3 que usa `WindowSizeClass`
+junto com layouts composable especializados para layouts comuns
 
-For that reason, you are encouraged to look into the **Flutter**
-options directly and see what fits your requirements versus
-attempting to find something that is a one to one translation.
+Por esse motivo, você é encorajado a examinar as opções do **Flutter**
+diretamente e ver o que se adequa aos seus requisitos versus
+tentar encontrar algo que seja uma tradução um para um.
 
-To create relative views in **Flutter**, you can use one of two options:
+Para criar views relativas no **Flutter**, você pode usar uma das duas opções:
 
-- Get the `BoxConstraints` object in the [`LayoutBuilder`][] class.
-- Use the [`MediaQuery.of()`][] in your build functions
-  to get the size and orientation of your current app.
+- Obter o objeto `BoxConstraints` na classe [`LayoutBuilder`][].
+- Usar o [`MediaQuery.of()`][] em suas funções build
+  para obter o tamanho e a orientação do seu aplicativo atual.
 
-To learn more, check out [Creating responsive and adaptive apps][].
+Para saber mais, confira [Criando aplicativos responsivos e adaptativos][].
 
-### Managing state
+### Gerenciando estado
 
-**Compose** stores state with the `remember` API and descendants
-of the `MutableState` interface.
+**Compose** armazena estado com a API `remember` e descendentes
+da interface `MutableState`.
 
 ```kotlin
 Scaffold(
@@ -531,17 +531,17 @@ Scaffold(
 ```
 
 
-**Flutter** manages local state using a [`StatefulWidget`][].
-Implement a stateful widget with the following two classes:
+**Flutter** gerencia estado local usando um [`StatefulWidget`][].
+Implemente um widget stateful com as duas classes a seguir:
 
-- a subclass of `StatefulWidget`
-- a subclass of `State`
+- uma subclasse de `StatefulWidget`
+- uma subclasse de `State`
 
-The `State` object stores the widget's state.
-To change a widget's state, call `setState()` from the `State` subclass
-to tell the framework to redraw the widget.
+O objeto `State` armazena o estado do widget.
+Para alterar o estado de um widget, chame `setState()` da subclasse `State`
+para dizer ao framework para redesenhar o widget.
 
-The following example shows a part of a counter app:
+O exemplo a seguir mostra parte de um aplicativo contador:
 
 ```dart
 class MyHomePage extends StatefulWidget {
@@ -575,18 +575,18 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 ```
 
-To learn more ways to manage state, check out [State management][].
+Para aprender mais maneiras de gerenciar estado, confira [Gerenciamento de estado][].
 
 
-### Drawing on the Screen
+### Desenhando na tela
 
-In **Compose**, you use the `Canvas` composable to draw
-shapes, images, and text to the screen.
+No **Compose**, você usa o composable `Canvas` para desenhar
+formas, imagens e texto na tela.
 
-**Flutter** has an API based on the `Canvas` class,
-with two classes that help you draw:
+**Flutter** possui uma API baseada na classe `Canvas`,
+com duas classes que ajudam você a desenhar:
 
-1. [`CustomPaint`][] that requires a painter:
+1. [`CustomPaint`][] que requer um painter:
 
     ```dart
     CustomPaint(
@@ -595,7 +595,7 @@ with two classes that help you draw:
     ),
     ```
 
-2. [`CustomPainter`][] that implements your algorithm to draw to the canvas.
+2. [`CustomPainter`][] que implementa seu algoritmo para desenhar no canvas.
 
     ```dart
     class SignaturePainter extends CustomPainter {
@@ -622,22 +622,22 @@ with two classes that help you draw:
     }
     ```
 
-## Themes, styles, and media
+## Temas, estilos e mídia
 
-You can style Flutter apps with little effort.
-Styling includes switching between light and dark themes,
-changing the design of your text and UI components,
-and more. This section covers how to style your apps.
+Você pode estilizar aplicativos Flutter com pouco esforço.
+A estilização inclui alternar entre temas claro e escuro,
+mudar o design de seu texto e componentes de UI,
+e muito mais. Esta seção cobre como estilizar seus aplicativos.
 
-### Using dark mode
+### Usando modo escuro
 
-In **Compose**, you can control light and dark at any
-arbitrary level by wrapping a component with
-a `Theme` composable.
+No **Compose**, você pode controlar claro e escuro em qualquer
+nível arbitrário envolvendo um componente com
+um composable `Theme`.
 
-In **Flutter**, you can control light and dark mode at the app-level.
-To control the brightness mode, use the `theme` property
-of the `App` class:
+No **Flutter**, você pode controlar o modo claro e escuro no nível do aplicativo.
+Para controlar o modo de brilho, use a propriedade `theme`
+da classe `App`:
 
 ```dart
 const MaterialApp(
@@ -648,10 +648,10 @@ const MaterialApp(
 );
 ```
 
-### Styling text
+### Estilizando texto
 
-In **Compose**, you use the properties on `Text` for one or two
-attributes or construct a `TextStyle` object to set many at once.
+No **Compose**, você usa as propriedades em `Text` para um ou dois
+atributos ou constrói um objeto `TextStyle` para definir muitos de uma vez.
 
 ```kotlin
 Text("Hello, world!", color = Color.Green,
@@ -667,8 +667,8 @@ Text("Hello, world!",
 )
 ```
 
-To style text in **Flutter**, add a `TextStyle` widget as the value
-of the `style` parameter of the `Text` widget.
+Para estilizar texto no **Flutter**, adicione um widget `TextStyle` como o valor
+do parâmetro `style` do widget `Text`.
 
 ```dart
 Text(
@@ -681,11 +681,11 @@ Text(
 ),
 ```
 
-### Styling buttons
+### Estilizando botões
 
-In **Compose**, you modify the colors of a button using
-the `colors` property. If left unmodified, they
-use the defaults from the current theme.
+No **Compose**, você modifica as cores de um botão usando
+a propriedade `colors`. Se deixado sem modificação, eles
+usam os padrões do tema atual.
 
 ```kotlin
 Button(onClick = {},
@@ -696,8 +696,8 @@ Button(onClick = {},
 }
 ```
 
-To style button widgets in **Flutter**, you similarly
-set the style of its child, or modify properties on the button itself.
+Para estilizar widgets de botão no **Flutter**, você similarmente
+define o estilo de seu filho, ou modifica propriedades no próprio botão.
 
 ```dart
 FilledButton(
@@ -713,16 +713,16 @@ FilledButton(
   )
 )
 ```
-## Bundling assets for use in Flutter
+## Empacotando assets para uso no Flutter
 
-There is commonly a need to bundle resources for use in your application.
-They can be animations, vector graphics, images, fonts, or other general files.
+Comumente há a necessidade de empacotar recursos para uso em seu aplicativo.
+Eles podem ser animações, gráficos vetoriais, imagens, fontes ou outros arquivos gerais.
 
-Unlike native Android apps that expect a set directory structure under `/res/<qualifier>/`
-where the qualifier could be indicating the type of file, a specific orientation,
-or android version, Flutter doesn't require a specific location as long
-as the referenced files are listed in the `pubspec.yaml` file. Below is an excerpt
-from a `pubspec.yaml` referencing several images and a font file.
+Ao contrário de aplicativos Android nativos que esperam uma estrutura de diretório definida sob `/res/<qualifier>/`
+onde o qualificador pode indicar o tipo de arquivo, uma orientação específica,
+ou versão do android, o Flutter não requer um local específico desde que
+os arquivos referenciados estejam listados no arquivo `pubspec.yaml`. Abaixo está um trecho
+de um `pubspec.yaml` referenciando várias imagens e um arquivo de fonte.
 
 ```yaml
 flutter:
@@ -735,27 +735,27 @@ flutter:
         - asset: fonts/FiraSans-Regular.ttf
 ```
 
-### Using fonts
+### Usando fontes
 
-In **Compose**, you have two options for using fonts in your app.
-You can use a runtime service I to retrieve them [Google Fonts][].
-Alternatively, they may be bundled in resource files.
+No **Compose**, você tem duas opções para usar fontes em seu aplicativo.
+Você pode usar um serviço de runtime para recuperá-las [Google Fonts][].
+Alternativamente, elas podem ser empacotadas em arquivos de recursos.
 
-**Flutter** has similar methods to use fonts, let's discuss them both inline.
+**Flutter** possui métodos semelhantes para usar fontes, vamos discuti-los ambos inline.
 
-### Using bundled fonts
+### Usando fontes empacotadas
 
-The following are roughly equivalent Compose and Flutter code for using a font file in the `/res/` or `fonts` directory
-as listed above.
+Os seguintes são aproximadamente código Compose e Flutter equivalente para usar um arquivo de fonte no diretório `/res/` ou `fonts`
+conforme listado acima.
 
 ```kotlin
-// Font files bundled with app
+// Arquivos de fonte empacotados com app
 val firaSansFamily = FontFamily(
    Font(R.font.firasans_regular, FontWeight.Normal),
    // ...
 )
 
-// Usage
+// Uso
 Text(text = "Compose", fontFamily = firaSansFamily, fontWeight = FontWeight.Normal)
 ```
 
@@ -769,16 +769,16 @@ Text(
 ),
 ```
 
-### Using a font provider (Google Fonts)
+### Usando um provedor de fontes (Google Fonts)
 
-One point of difference is using fonts from a font provider like Google Fonts. In **Compose**,
-the instantiation is done inline with the same approximate code to reference a local file.
+Um ponto de diferença é usar fontes de um provedor de fontes como Google Fonts. No **Compose**,
+a instanciação é feita inline com aproximadamente o mesmo código para referenciar um arquivo local.
 
-After instantiating a provider that references the special strings for the font service,
-you would use the same `FontFamily` declaration.
+Após instanciar um provedor que referencia as strings especiais para o serviço de fontes,
+você usaria a mesma declaração `FontFamily`.
 
 ```kotlin
-// Font files bundled with app
+// Arquivos de fonte empacotados com app
 val provider = GoogleFont.Provider(
     providerAuthority = "com.google.android.gms.fonts",
     providerPackage = "com.google.android.gms",
@@ -792,12 +792,12 @@ val firaSansFamily = FontFamily(
     )
 )
 
-// Usage
+// Uso
 Text(text = "Compose", fontFamily = firaSansFamily, fontWeight = FontWeight.Light)
 ```
 
-For Flutter, this is provided by the [google_fonts][] plugin using the name of
-the font.
+Para Flutter, isso é fornecido pelo plugin [google_fonts][] usando o nome da
+fonte.
 
 ```dart
 import 'package:google_fonts/google_fonts.dart';
@@ -805,19 +805,19 @@ import 'package:google_fonts/google_fonts.dart';
 Text(
   'Flutter',
   style: GoogleFonts.firaSans(),
-  // or
+  // ou
   //style: GoogleFonts.getFont('FiraSans')
 ),
 ```
 
-### Using images
+### Usando imagens
 
-In **Compose**, typically image files to the drawable directory
-in resources `/res/drawable` and one uses `Image` composable to display
-the images. Assets are referenced by using the resource locator
-in the style of `R.drawable.<file name>` without the file extension.
+No **Compose**, tipicamente arquivos de imagem vão para o diretório drawable
+em resources `/res/drawable` e usa-se o composable `Image` para exibir
+as imagens. Assets são referenciados usando o localizador de recursos
+no estilo de `R.drawable.<nome do arquivo>` sem a extensão do arquivo.
 
-In **Flutter**, the resource location is a listed in `pubspec.yaml` as shown in the snippet below.
+No **Flutter**, a localização do recurso é listada em `pubspec.yaml` como mostrado no snippet abaixo.
 
 ```yaml
     flutter:
@@ -825,18 +825,17 @@ In **Flutter**, the resource location is a listed in `pubspec.yaml` as shown in 
         - images/Blueberries.jpg
    ```
 
-After adding your image, you can display it using the `Image` widget's
-`.asset()` constructor. This constructor:
+Após adicionar sua imagem, você pode exibi-la usando o construtor `.asset()` do widget `Image`. Este construtor:
 
-To review a complete example, check out the [`Image`][] docs.
+Para revisar um exemplo completo, confira a documentação do [`Image`][].
 
 
-[Flutter for Android developers]: /get-started/flutter-for/android-devs
-[Add Flutter to existing app]: /add-to-app
+[Flutter para desenvolvedores Android]: /get-started/flutter-for/android-devs
+[Adicionar Flutter a um aplicativo existente]: /add-to-app
 [Material]: {{site.material}}/develop/flutter/
 [Platform adaptations]: /platform-integration/platform-adaptations
-[widget catalog]: /ui/widgets/layout
-[Understanding constraints]: /ui/layout/constraints
+[Catálogo de widgets]: /ui/widgets/layout
+[Entendendo restrições]: /ui/layout/constraints
 [`WidgetApp`]: {{site.api}}/flutter/widgets/WidgetsApp-class.html
 [`Center`]: {{site.api}}/flutter/widgets/Center-class.html
 [`Row`]: {{site.api}}/flutter/widgets/Row-class.html
@@ -851,11 +850,11 @@ To review a complete example, check out the [`Image`][] docs.
 [`RotationTransition`]: {{site.api}}/flutter/widgets/RotationTransition-class.html
 [`Navigator`]: {{site.api}}/flutter/widgets/Navigator-class.html
 [`StatefulWidget`]: {{site.api}}/flutter/widgets/StatefulWidget-class.html
-[State management]:  /data-and-backend/state-mgmt
+[Gerenciamento de estado]:  /data-and-backend/state-mgmt
 [Wonderous]: https://flutter.gskinner.com/wonderous/?utm_source=flutterdocs&utm_medium=docs
 [video_player]: {{site.pub-pkg}}/video_player
 [video_player example]: {{site.pub-pkg}}/video_player/example
-[Creating responsive and adaptive apps]: /ui/adaptive-responsive
+[Criando aplicativos responsivos e adaptativos]: /ui/adaptive-responsive
 [`MediaQuery.of()`]: {{site.api}}/flutter/widgets/MediaQuery-class.html
 [`CustomPaint`]: {{site.api}}/flutter/widgets/CustomPaint-class.html
 [`CustomPainter`]: {{site.api}}/flutter/rendering/CustomPainter-class.html

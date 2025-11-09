@@ -1,23 +1,24 @@
 ---
-title: Flutter 1.5.4 release notes
-shortTitle: 1.5.4 release notes
-description: Release notes for Flutter 1.5.4.
+ia-translate: true
+title: Notas de lançamento do Flutter 1.5.4
+shortTitle: Notas de lançamento 1.5.4
+description: Notas de lançamento para o Flutter 1.5.4.
 skipTemplateRendering: true
 ---
 
-In addition to continuing to focus on quality and stability since the 1.2 release, the Flutter 1.5.4 stable release adds a set of new features as we approach the Google I/O conference. Further, [Apple has a deadline for building against the 12.1 version of their iOS SDK](https://developer.apple.com/news/?id=03202019a), which we now do in this update. You can meet Apple's requirements simply by pulling down the 1.5.4 stable release, building and updating your Flutter app in the Apple Store.
+Além de continuar focando em qualidade e estabilidade desde o lançamento 1.2, o lançamento estável do Flutter 1.5.4 adiciona um conjunto de novos recursos enquanto nos aproximamos da conferência Google I/O. Além disso, [a Apple tem um prazo para compilar contra a versão 12.1 do seu iOS SDK](https://developer.apple.com/news/?id=03202019a), o que agora fazemos nesta atualização. Você pode atender aos requisitos da Apple simplesmente baixando o lançamento estável 1.5.4, compilando e atualizando seu app Flutter na Apple Store.
 
-Also, this build sees fixes for the two regressions we saw in Flutter 1.2:
+Além disso, esta versão inclui correções para as duas regressões que vimos no Flutter 1.2:
 
-* [#28640](https://github.com/flutter/flutter/issues/28640) NoSuchMethodError: **android.view.MotionEvent.isFromSource was closed and fixed in all versions after 1.3.7
-* [#28484](https://github.com/flutter/flutter/issues/28484) Widget rendering strange since Flutter update:** a change was made fixes this regression in 1.4.0
+* [#28640](https://github.com/flutter/flutter/issues/28640) NoSuchMethodError: **android.view.MotionEvent.isFromSource foi fechado e corrigido em todas as versões após 1.3.7
+* [#28484](https://github.com/flutter/flutter/issues/28484) Widget rendering strange since Flutter update:** uma mudança foi feita que corrige esta regressão em 1.4.0
 
-Finally, for details about other fixes and new features, read on.
+Finalmente, para detalhes sobre outras correções e novos recursos, continue lendo.
 
 
 ## Breaking Changes
 
-Our recent survey showed that Flutter developers prefer a breaking change if it means that it improves the API and behavior of Flutter. Of course, we still make breaking changes sparingly. The following are the list of breaking changes in this release along with links to a full description of each change and how to handle it in your Flutter code.
+Nossa pesquisa recente mostrou que os desenvolvedores Flutter preferem uma breaking change se isso significa que melhora a API e o comportamento do Flutter. É claro que ainda fazemos breaking changes com moderação. A seguir está a lista de breaking changes neste lançamento, juntamente com links para uma descrição completa de cada mudança e como lidar com ela no seu código Flutter.
 
 
 
@@ -42,9 +43,9 @@ Our recent survey showed that Flutter developers prefer a breaking change if it 
 *   [engine#8274](https://github.com/flutter/engine/pull/8274): [ui] Add null check in FontWeight.lerp
 
 
-## Severe Performance and Crash Changes
+## Correções Severas de Performance e Crash
 
-In this release, we fixed several severe performance and crash issues.
+Neste lançamento, corrigimos vários problemas severos de performance e crash.
 
 
 
@@ -53,9 +54,9 @@ In this release, we fixed several severe performance and crash issues.
 *   [flutter#28651](https://github.com/flutter/flutter/pull/28651): Cannot execute operation because FlutterJNI is not attached to native.
 
 
-## iOS Changes
+## Mudanças no iOS
 
-Supporting iOS is just as important to the Flutter team as support Android, which you can see in the huge volume of changes we've made in this release to make the iOS experience even better.
+Dar suporte ao iOS é tão importante para a equipe Flutter quanto dar suporte ao Android, o que você pode ver no enorme volume de mudanças que fizemos neste lançamento para tornar a experiência iOS ainda melhor.
 
 
 
@@ -88,9 +89,9 @@ Supporting iOS is just as important to the Flutter team as support Android, whic
 *   [flutter#30475](https://github.com/flutter/flutter/pull/30475): Trackpad mode crash fix
 
 
-## Material Changes
+## Mudanças no Material
 
-Of course, Material continues to be a priority for the Flutter team as well.
+É claro que Material continua sendo uma prioridade para a equipe Flutter também.
 
 
 
@@ -115,9 +116,9 @@ Of course, Material continues to be a priority for the Flutter team as well.
 *   [flutter#29413](https://github.com/flutter/flutter/pull/29413): Fix MaterialApp's _navigatorObserver when only builder used
 
 
-## Desktop Changes
+## Mudanças no Desktop
 
-Flutter has been making progress on expanding support for desktop-class input mechanisms with keyboard mappings, text selection, mouse wheels and hover along with the beginnings of desktop support in our tooling.
+O Flutter tem progredido na expansão do suporte para mecanismos de entrada de classe desktop com mapeamentos de teclado, seleção de texto, rodas de mouse e hover, juntamente com os primórdios do suporte a desktop em nossas ferramentas.
 
 
 
@@ -137,9 +138,9 @@ Flutter has been making progress on expanding support for desktop-class input me
 *   [flutter#30670](https://github.com/flutter/flutter/issues/30670): Implement StandardMethodCodec for C++ shells
 
 
-## Framework Changes
+## Mudanças no Framework
 
-In addition to platform specifics, we continue to push on the core of the Flutter framework.
+Além de especificidades de plataforma, continuamos avançando no núcleo do framework Flutter.
 
 
 
@@ -167,9 +168,9 @@ In addition to platform specifics, we continue to push on the core of the Flutte
 *   [flutter#30468](https://github.com/flutter/flutter/pull/30468): Embedding diagram for BottomNavigationBar.
 
 
-## Plugin Changes
+## Mudanças nos Plugins
 
-In this release, we also have a number of changes in the Flutter plugins, including camera, Google Maps, the Web View, the image picker, the Firebase plugins and, now for use in your apps, [the In-App Purchase plugin beta](https://pub.dartlang.org/packages/in_app_purchase).
+Neste lançamento, também temos uma série de mudanças nos plugins Flutter, incluindo camera, Google Maps, o Web View, o image picker, os plugins Firebase e, agora para uso em seus apps, [o plugin In-App Purchase beta](https://pub.dartlang.org/packages/in_app_purchase).
 
 
 
@@ -213,9 +214,9 @@ In this release, we also have a number of changes in the Flutter plugins, includ
 *   [flutter#25329](https://github.com/flutter/flutter/pull/25329): [WebView] Allow the webview to take control when a URL is about to be loaded
 
 
-## Tool Changes
+## Mudanças nas Ferramentas
 
-Last but certainly not least, we made a number of tooling changes in the core Flutter repos to improve the developer experience, particularly when it comes to improving hot reload performance (and you thought it was fast before!).
+Por último, mas certamente não menos importante, fizemos uma série de mudanças nas ferramentas nos repositórios principais do Flutter para melhorar a experiência do desenvolvedor, particularmente quando se trata de melhorar a performance do hot reload (e você achava que já era rápido antes!).
 
 
 
@@ -235,7 +236,7 @@ Last but certainly not least, we made a number of tooling changes in the core Fl
 *   [flutter#30153](https://github.com/flutter/flutter/pull/30153): Allow disabling experimental commands, devices on stable branch
 *   [flutter#30428](https://github.com/flutter/flutter/pull/30428): Update repair command for Arch Linux
 
-Further, the IDE plugins for Flutter have had a number of updates since the last stable release of Flutter.
+Além disso, os plugins de IDE para Flutter tiveram uma série de atualizações desde o último lançamento estável do Flutter.
 
 
 
@@ -249,9 +250,9 @@ Further, the IDE plugins for Flutter have had a number of updates since the last
 
 ## Dynamic Update (aka Code Push)
 
-As a final note, we're nearly at the midpoint of the year, when it's time to reassess the areas where we can have the most important, we've decided to drop plans for dynamic updates (aka code push) from our 2019 roadmap. If you're interested in the reasons why, you can read [the detailed explanation](https://github.com/flutter/flutter/issues/14330#issuecomment-485565194). Dropping this work allows us to increase our focus on quality as well as our experiments in Flutter for web and Flutter for desktop.
+Como nota final, estamos quase no meio do ano, quando é hora de reavaliar as áreas onde podemos ter o maior impacto, e decidimos abandonar os planos para atualizações dinâmicas (também conhecido como code push) do nosso roteiro de 2019. Se você está interessado nas razões, pode ler [a explicação detalhada](https://github.com/flutter/flutter/issues/14330#issuecomment-485565194). Abandonar este trabalho nos permite aumentar nosso foco em qualidade, bem como em nossos experimentos com Flutter for web e Flutter for desktop.
 
 
-## Full Issue List
+## Lista Completa de Issues
 
-You can see [the full list of PRs committed in this release](/release/release-notes/changelogs/changelog-1.5.4).
+Você pode ver [a lista completa de PRs commitados neste lançamento](/release/release-notes/changelogs/changelog-1.5.4).

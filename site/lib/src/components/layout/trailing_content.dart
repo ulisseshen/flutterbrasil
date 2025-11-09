@@ -35,16 +35,21 @@ class TrailingContent extends StatelessComponent {
 
     final fullPageUrl = '$siteUrl$pageUrl';
     final String issueUrl;
+    final String translationIssueUrl;
     final String? pageSource;
 
     if (inputPath != null) {
       pageSource = '$repoUrl/blob/$branch/${inputPath.replaceAll('./', '')}';
       issueUrl =
           '$repoUrl/issues/new?template=1_page_issue.yml&page-url=$fullPageUrl&page-source=$pageSource';
+      translationIssueUrl =
+          '$repoUrl/issues/new?title=${Uri.encodeComponent('Problema de tradução em: $pageUrl')}&body=${Uri.encodeComponent('**URL da página:** $fullPageUrl\n\n**Problema encontrado:**\n<!-- Descreva o problema de tradução que você encontrou -->\n\n- [ ] Página não traduzida\n- [ ] Tradução incorreta ou incompleta\n- [ ] Erro de português\n- [ ] Outro (descrever abaixo)\n\n**Descrição:**\n<!-- Explique em detalhes o problema encontrado -->\n\n')}';
     } else {
       pageSource = null;
       issueUrl =
           '$repoUrl/issues/new?template=1_page_issue.yml&page-url=$fullPageUrl';
+      translationIssueUrl =
+          '$repoUrl/issues/new?title=${Uri.encodeComponent('Problema de tradução em: $pageUrl')}&body=${Uri.encodeComponent('**URL da página:** $fullPageUrl\n\n**Problema encontrado:**\n<!-- Descreva o problema de tradução que você encontrou -->\n\n- [ ] Página não traduzida\n- [ ] Tradução incorreta ou incompleta\n- [ ] Erro de português\n- [ ] Outro (descrever abaixo)\n\n**Descrição:**\n<!-- Explique em detalhes o problema encontrado -->\n\n')}';
     }
 
     return div(
@@ -87,11 +92,11 @@ class TrailingContent extends StatelessComponent {
         p(id: 'translation-helper', [
           text('Encontrou essa página sem tradução ou que precisa de correção? '),
           a(
-            href: 'https://github.com/ulisseshen/flutterbrasil/issues/new',
+            href: translationIssueUrl,
             target: Target.blank,
             attributes: {
               'rel': 'noopener',
-              'title': 'Abrir uma issue no GitHub',
+              'title': 'Abrir uma issue de tradução no GitHub',
             },
             [text('Abra uma issue')],
           ),

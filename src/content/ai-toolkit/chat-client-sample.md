@@ -1,40 +1,41 @@
 ---
-title: Chat client sample
+ia-translate: true
+title: Amostra de cliente de chat
 description: >
-  Learn about the chat client sample included in the AI Toolkit.
+  Aprenda sobre a amostra de cliente de chat incluída no AI Toolkit.
 prev:
   title: Custom LLM providers
   path: /ai-toolkit/custom-llm-providers
 ---
 
-The AI Chat sample is meant to be a full-fledged chat app
-built using the Flutter AI Toolkit and Vertex AI for Firebase.
-In addition to all of the multi-shot, multi-media,
-streaming features that it gets from the AI Toolkit,
-the AI Chat sample shows how to store and manage
-multiple chats at once in your own apps.
-On desktop form-factors, the AI Chat sample looks like the following:
+A amostra AI Chat é projetada para ser um app de chat completo
+construído usando o Flutter AI Toolkit e Vertex AI para Firebase.
+Além de todos os recursos multi-shot, multimídia e de
+streaming que obtém do AI Toolkit,
+a amostra AI Chat mostra como armazenar e gerenciar
+múltiplos chats de uma vez em seus próprios apps.
+Em fatores de forma desktop, a amostra AI Chat se parece com o seguinte:
 
 ![Desktop app UI](/assets/images/docs/ai-toolkit/desktop-pluto-convo.png)
 
 
-On mobile form-factors, it looks like this:
+Em fatores de forma mobile, ela se parece com isto:
 
 ![Mobile app UI](/assets/images/docs/ai-toolkit/mobile-pluto-convo.png)
 
-The chats are stored in an authenticated
-Cloud Firestore database; any authenticated
-user can have as many chats as they like.
+Os chats são armazenados em um banco de dados
+Cloud Firestore autenticado; qualquer usuário
+autenticado pode ter quantos chats quiser.
 
-In addition, for each new chat, while the user can
-manually title it whatever they like,
-the initial prompt and response is used to ask
-the LLM what an appropriate title should be.
-In fact, the titles of the chats in the
-screenshots in this page were set automatically.
+Além disso, para cada novo chat, enquanto o usuário pode
+titulá-lo manualmente como quiser,
+o prompt e resposta iniciais são usados para perguntar
+ao LLM qual seria um título apropriado.
+De fato, os títulos dos chats nas
+capturas de tela nesta página foram definidos automaticamente.
 
-To build and run the sample,
-follow the instructions in the [AI Chat README][].
+Para construir e executar a amostra,
+siga as instruções no [AI Chat README][].
 
 {% comment %}
 TODO: If Mit agrees, move this to an official Flutter repo

@@ -1,17 +1,18 @@
 ---
-title: Flutter 3.32.0 release notes
-shortTitle: 3.32.0 release notes
-description: Release notes for Flutter 3.32.0.
+ia-translate: true
+title: Notas de lançamento do Flutter 3.32.0
+shortTitle: Notas de lançamento da versão 3.32.0
+description: Notas de lançamento do Flutter 3.32.0.
 skipTemplateRendering: true
 ---
 
-This page has release notes for 3.32.0.
-For information about subsequent bug-fix releases,
-check out the Flutter [CHANGELOG][].
+Esta página contém as notas de lançamento da versão 3.32.0.
+Para informações sobre correções de bugs subsequentes,
+confira o [CHANGELOG][CHANGELOG] do Flutter.
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/main/CHANGELOG.md
 
-## Flutter framework
+## Framework Flutter
 
 ### Framework
 
@@ -516,7 +517,7 @@ check out the Flutter [CHANGELOG][].
 * Disable firefox image_to_byte_data_test as a group. by @eyebrowsoffire in [166559](https://github.com/flutter/flutter/pull/166559)
 * [CP-beta][skwasm] Use `queueMicrotask` instead of `postMessage` when single-threaded by @flutteractionsbot in [167154](https://github.com/flutter/flutter/pull/167154)
 
-### Tooling
+### Ferramentas
 
 * route CLI command usage information through the logger instead of using `print` by @andrewkolos in [161533](https://github.com/flutter/flutter/pull/161533)
 * remove usage of `Usage` from build system by @andrewkolos in [160663](https://github.com/flutter/flutter/pull/160663)
@@ -639,11 +640,11 @@ check out the Flutter [CHANGELOG][].
 * Roll pub packages by @flutter-pub-roller-bot in [166503](https://github.com/flutter/flutter/pull/166503)
 * [ Widget Preview ] Add initial support for communications over the Dart Tooling Daemon (DTD) by @bkonyi in [166698](https://github.com/flutter/flutter/pull/166698)
 
-### Documentation
+### Documentação
 
 * Update `generate_gradle_lockfiles.dart` to handle batch updating kotlin Gradle files by @gmackall in [162628](https://github.com/flutter/flutter/pull/162628)
 
-### Other changes
+### Outras alterações
 
 * Roll pub packages by @flutter-pub-roller-bot in [161680](https://github.com/flutter/flutter/pull/161680)
 * [Impeller] Update partial repaint to use a fullsize onscreen. by @jonahwilliams in [161626](https://github.com/flutter/flutter/pull/161626)
@@ -998,52 +999,52 @@ check out the Flutter [CHANGELOG][].
 * Update `engine.version` by @matanlurey in [167295](https://github.com/flutter/flutter/pull/167295)
 * Make a NOP edit to (re)-trigger postsubmits by @matanlurey in [167407](https://github.com/flutter/flutter/pull/167407)
 
-## New contributors
+## Novos contribuidores
 
-* @lukepighetti made their first contribution in [161803](https://github.com/flutter/flutter/pull/161803)
-* @mernen made their first contribution in [161863](https://github.com/flutter/flutter/pull/161863)
-* @sethmfuller made their first contribution in [161650](https://github.com/flutter/flutter/pull/161650)
-* @czarny made their first contribution in [159622](https://github.com/flutter/flutter/pull/159622)
-* @FrankenApps made their first contribution in [161856](https://github.com/flutter/flutter/pull/161856)
-* @importRyan made their first contribution in [161996](https://github.com/flutter/flutter/pull/161996)
-* @gaganyadav80 made their first contribution in [161880](https://github.com/flutter/flutter/pull/161880)
-* @Wasmund1 made their first contribution in [161941](https://github.com/flutter/flutter/pull/161941)
-* @ChrisCRCB made their first contribution in [162304](https://github.com/flutter/flutter/pull/162304)
-* @bc-lee made their first contribution in [161072](https://github.com/flutter/flutter/pull/161072)
-* @vizakenjack made their first contribution in [161660](https://github.com/flutter/flutter/pull/161660)
-* @MinSeungHyun made their first contribution in [162230](https://github.com/flutter/flutter/pull/162230)
-* @zaiste-linganer made their first contribution in [162490](https://github.com/flutter/flutter/pull/162490)
-* @Paulik8 made their first contribution in [161889](https://github.com/flutter/flutter/pull/161889)
-* @gaspardruan made their first contribution in [162596](https://github.com/flutter/flutter/pull/162596)
-* @dev-lup made their first contribution in [161490](https://github.com/flutter/flutter/pull/161490)
-* @AthulJoseph27 made their first contribution in [162602](https://github.com/flutter/flutter/pull/162602)
-* @harri35 made their first contribution in [160243](https://github.com/flutter/flutter/pull/160243)
-* @jrwang made their first contribution in [163000](https://github.com/flutter/flutter/pull/163000)
-* @jyameo made their first contribution in [163080](https://github.com/flutter/flutter/pull/163080)
-* @PaulAllanSturm made their first contribution in [163439](https://github.com/flutter/flutter/pull/163439)
-* @mariamhas made their first contribution in [163151](https://github.com/flutter/flutter/pull/163151)
-* @dkyurtov made their first contribution in [162785](https://github.com/flutter/flutter/pull/162785)
-* @dbspoudel made their first contribution in [163356](https://github.com/flutter/flutter/pull/163356)
-* @lucas-goldner made their first contribution in [162177](https://github.com/flutter/flutter/pull/162177)
-* @dickermoshe made their first contribution in [158103](https://github.com/flutter/flutter/pull/158103)
-* @walid-ashik made their first contribution in [163414](https://github.com/flutter/flutter/pull/163414)
-* @pathconnected made their first contribution in [162955](https://github.com/flutter/flutter/pull/162955)
-* @dominikh made their first contribution in [163942](https://github.com/flutter/flutter/pull/163942)
-* @Michae1Weiss made their first contribution in [162581](https://github.com/flutter/flutter/pull/162581)
-* @chul0061 made their first contribution in [163850](https://github.com/flutter/flutter/pull/163850)
-* @mattkae made their first contribution in [163847](https://github.com/flutter/flutter/pull/163847)
-* @ashishbeck made their first contribution in [163843](https://github.com/flutter/flutter/pull/163843)
-* @2shrestha22 made their first contribution in [163376](https://github.com/flutter/flutter/pull/163376)
-* @DarienRomero made their first contribution in [164555](https://github.com/flutter/flutter/pull/164555)
-* @ujjwaltwitx made their first contribution in [164002](https://github.com/flutter/flutter/pull/164002)
-* @Memet18 made their first contribution in [165189](https://github.com/flutter/flutter/pull/165189)
-* @koukibadr made their first contribution in [163417](https://github.com/flutter/flutter/pull/163417)
-* @miguelfrde made their first contribution in [165697](https://github.com/flutter/flutter/pull/165697)
-* @masal9pse made their first contribution in [163923](https://github.com/flutter/flutter/pull/163923)
-* @mahmerkhan made their first contribution in [165827](https://github.com/flutter/flutter/pull/165827)
-* @JaffaKetchup made their first contribution in [165048](https://github.com/flutter/flutter/pull/165048)
-* @Mastermind-sap made their first contribution in [165395](https://github.com/flutter/flutter/pull/165395)
-* @dustingreen made their first contribution in [166120](https://github.com/flutter/flutter/pull/166120)
-* @emerssso made their first contribution in [166148](https://github.com/flutter/flutter/pull/166148)
-* @icnahom made their first contribution in [164727](https://github.com/flutter/flutter/pull/164727)
-* @ahmedrasar made their first contribution in [165868](https://github.com/flutter/flutter/pull/165868)
+* @lukepighetti fez sua primeira contribuição em [161803](https://github.com/flutter/flutter/pull/161803)
+* @mernen fez sua primeira contribuição em [161863](https://github.com/flutter/flutter/pull/161863)
+* @sethmfuller fez sua primeira contribuição em [161650](https://github.com/flutter/flutter/pull/161650)
+* @czarny fez sua primeira contribuição em [159622](https://github.com/flutter/flutter/pull/159622)
+* @FrankenApps fez sua primeira contribuição em [161856](https://github.com/flutter/flutter/pull/161856)
+* @importRyan fez sua primeira contribuição em [161996](https://github.com/flutter/flutter/pull/161996)
+* @gaganyadav80 fez sua primeira contribuição em [161880](https://github.com/flutter/flutter/pull/161880)
+* @Wasmund1 fez sua primeira contribuição em [161941](https://github.com/flutter/flutter/pull/161941)
+* @ChrisCRCB fez sua primeira contribuição em [162304](https://github.com/flutter/flutter/pull/162304)
+* @bc-lee fez sua primeira contribuição em [161072](https://github.com/flutter/flutter/pull/161072)
+* @vizakenjack fez sua primeira contribuição em [161660](https://github.com/flutter/flutter/pull/161660)
+* @MinSeungHyun fez sua primeira contribuição em [162230](https://github.com/flutter/flutter/pull/162230)
+* @zaiste-linganer fez sua primeira contribuição em [162490](https://github.com/flutter/flutter/pull/162490)
+* @Paulik8 fez sua primeira contribuição em [161889](https://github.com/flutter/flutter/pull/161889)
+* @gaspardruan fez sua primeira contribuição em [162596](https://github.com/flutter/flutter/pull/162596)
+* @dev-lup fez sua primeira contribuição em [161490](https://github.com/flutter/flutter/pull/161490)
+* @AthulJoseph27 fez sua primeira contribuição em [162602](https://github.com/flutter/flutter/pull/162602)
+* @harri35 fez sua primeira contribuição em [160243](https://github.com/flutter/flutter/pull/160243)
+* @jrwang fez sua primeira contribuição em [163000](https://github.com/flutter/flutter/pull/163000)
+* @jyameo fez sua primeira contribuição em [163080](https://github.com/flutter/flutter/pull/163080)
+* @PaulAllanSturm fez sua primeira contribuição em [163439](https://github.com/flutter/flutter/pull/163439)
+* @mariamhas fez sua primeira contribuição em [163151](https://github.com/flutter/flutter/pull/163151)
+* @dkyurtov fez sua primeira contribuição em [162785](https://github.com/flutter/flutter/pull/162785)
+* @dbspoudel fez sua primeira contribuição em [163356](https://github.com/flutter/flutter/pull/163356)
+* @lucas-goldner fez sua primeira contribuição em [162177](https://github.com/flutter/flutter/pull/162177)
+* @dickermoshe fez sua primeira contribuição em [158103](https://github.com/flutter/flutter/pull/158103)
+* @walid-ashik fez sua primeira contribuição em [163414](https://github.com/flutter/flutter/pull/163414)
+* @pathconnected fez sua primeira contribuição em [162955](https://github.com/flutter/flutter/pull/162955)
+* @dominikh fez sua primeira contribuição em [163942](https://github.com/flutter/flutter/pull/163942)
+* @Michae1Weiss fez sua primeira contribuição em [162581](https://github.com/flutter/flutter/pull/162581)
+* @chul0061 fez sua primeira contribuição em [163850](https://github.com/flutter/flutter/pull/163850)
+* @mattkae fez sua primeira contribuição em [163847](https://github.com/flutter/flutter/pull/163847)
+* @ashishbeck fez sua primeira contribuição em [163843](https://github.com/flutter/flutter/pull/163843)
+* @2shrestha22 fez sua primeira contribuição em [163376](https://github.com/flutter/flutter/pull/163376)
+* @DarienRomero fez sua primeira contribuição em [164555](https://github.com/flutter/flutter/pull/164555)
+* @ujjwaltwitx fez sua primeira contribuição em [164002](https://github.com/flutter/flutter/pull/164002)
+* @Memet18 fez sua primeira contribuição em [165189](https://github.com/flutter/flutter/pull/165189)
+* @koukibadr fez sua primeira contribuição em [163417](https://github.com/flutter/flutter/pull/163417)
+* @miguelfrde fez sua primeira contribuição em [165697](https://github.com/flutter/flutter/pull/165697)
+* @masal9pse fez sua primeira contribuição em [163923](https://github.com/flutter/flutter/pull/163923)
+* @mahmerkhan fez sua primeira contribuição em [165827](https://github.com/flutter/flutter/pull/165827)
+* @JaffaKetchup fez sua primeira contribuição em [165048](https://github.com/flutter/flutter/pull/165048)
+* @Mastermind-sap fez sua primeira contribuição em [165395](https://github.com/flutter/flutter/pull/165395)
+* @dustingreen fez sua primeira contribuição em [166120](https://github.com/flutter/flutter/pull/166120)
+* @emerssso fez sua primeira contribuição em [166148](https://github.com/flutter/flutter/pull/166148)
+* @icnahom fez sua primeira contribuição em [164727](https://github.com/flutter/flutter/pull/164727)
+* @ahmedrasar fez sua primeira contribuição em [165868](https://github.com/flutter/flutter/pull/165868)

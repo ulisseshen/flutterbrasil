@@ -16,7 +16,7 @@ Os principais temas deste lançamento são:
 *   [Suporte AndroidX](https://github.com/flutter/flutter/pull/31028)
     para novos projetos através da flag --androidx do 'flutter create'
 *   Um novo widget: o
-    [RangeSlider](https://api.flutter.dev/flutter/material/RangeSlider-class.html)
+    [RangeSlider](https://api.flutterbrasil.dev/flutter/material/RangeSlider-class.html)
 
 Conforme detalhado em nosso
 [roadmap](https://github.com/flutter/flutter/blob/master/docs/roadmap/Roadmap.md),
@@ -123,7 +123,7 @@ Neste lançamento, melhoramos o suporte para Android com novo suporte para Andro
 
 ## Material
 
-Este lançamento inclui uma série de melhorias para componentes Material existentes, incluindo o DatePicker, SnackBar e TimePicker, bem como um novo componente: o [RangeSlider](https://api.flutter.dev/flutter/material/RangeSlider-class.html).
+Este lançamento inclui uma série de melhorias para componentes Material existentes, incluindo o DatePicker, SnackBar e TimePicker, bem como um novo componente: o [RangeSlider](https://api.flutterbrasil.dev/flutter/material/RangeSlider-class.html).
 
 
 

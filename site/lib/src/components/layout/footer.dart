@@ -30,7 +30,7 @@ final class DashFooter extends StatelessComponent {
           ),
           div(classes: 'footer-social-links', [
             a(
-              href: 'https://blog.flutter.dev',
+              href: 'https://blog.flutterbrasil.dev',
               target: Target.blank,
               attributes: {
                 'rel': 'noopener',
@@ -84,7 +84,7 @@ final class DashFooter extends StatelessComponent {
               ],
             ),
             a(
-              href: 'https://bsky.app/profile/flutter.dev',
+              href: 'https://bsky.app/profile/flutterbrasil.dev',
               target: Target.blank,
               attributes: {
                 'rel': 'noopener',

@@ -69,8 +69,8 @@ class DashHeader extends StatelessComponent {
                 classes: 'icon-button',
                 href: '/search',
                 attributes: {
-                  'aria-label': 'Navigate to the docs.flutter.dev search page.',
-                  'title': 'Navigate to the docs.flutter.dev search page.',
+                  'aria-label': 'Navigate to the docs.flutterbrasil.dev search page.',
+                  'title': 'Navigate to the docs.flutterbrasil.dev search page.',
                 },
                 const [
                   MaterialIcon('search'),

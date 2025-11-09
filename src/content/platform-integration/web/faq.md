@@ -31,7 +31,7 @@ web do Flutter não é exceção. O Flutter web prioriza desempenho, fidelidade 
 consistência. Isso significa que a saída do aplicativo não se alinha com o que os
 mecanismos de busca precisam para indexar adequadamente. Para conteúdo web que é
 estático ou semelhante a um documento, recomendamos usar HTML—assim como fazemos
-em [flutter.dev]({{site.main-url}}), [dart.dev]({{site.dart-site}}) e
+em [flutterbrasil.dev]({{site.main-url}}), [dartbrasil.dev]({{site.dart-site}}) e
 [pub.dev]({{site.pub}}). Você também deve considerar separar sua experiência
 principal de aplicativo—criada em Flutter—de sua landing page, conteúdo de
 marketing e conteúdo de ajuda—criados usando HTML otimizado para mecanismos de busca.
@@ -92,7 +92,7 @@ Alguns plugins requerem imports específicos de plataforma, particularmente se
 eles usam o sistema de arquivos, que não é acessível pelo navegador. Para usar
 esses plugins em seu app, consulte a
 [documentação para imports condicionais][documentation for conditional imports]
-em [dart.dev]({{site.dart-site}}).
+em [dartbrasil.dev]({{site.dart-site}}).
 
 ### O Flutter web suporta concorrência?
 

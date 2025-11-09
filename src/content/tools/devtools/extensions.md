@@ -48,7 +48,7 @@ na raiz do projeto do usuário
 
 ```yaml
 description: This file stores settings for Dart & Flutter DevTools.
-documentation: https://docs.flutter.dev/tools/devtools/extensions#configure-extension-enablement-states
+documentation: https://docs.flutterbrasil.dev/tools/devtools/extensions#configure-extension-enablement-states
 extensions:
   - provider: true
   - shared_preferences: true

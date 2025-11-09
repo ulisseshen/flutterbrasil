@@ -1144,7 +1144,7 @@ check out this [TweenAnimationBuilder video](https://www.youtube.com/watch?reloa
 
 ## Web
 
-We increased our support for web, moving it from the dev channel to the beta channel. For more details, please check [web support blog post](https://blog.flutter.dev/web-support-for-flutter-goes-beta-35b64a1217c0).
+We increased our support for web, moving it from the dev channel to the beta channel. For more details, please check [web support blog post](https://blog.flutterbrasil.dev/web-support-for-flutter-goes-beta-35b64a1217c0).
 
 [37819]({{site.repo.flutter}}/pull/37819) Add HtmlElementView (the Flutter Web platform view)
 
@@ -1236,7 +1236,7 @@ We increased our support for web, moving it from the dev channel to the beta cha
 
 [42531]({{site.repo.flutter}}/pull/42531) Print correct hostname when web server is launched
 
-[42676]({{site.repo.flutter}}/pull/42676) [web] Update web runner message with flutter.dev/web
+[42676]({{site.repo.flutter}}/pull/42676) [web] Update web runner message with flutterbrasil.dev/web
 
 [42701]({{site.repo.flutter}}/pull/42701) serve correct content type from debug server
 
@@ -2835,7 +2835,7 @@ In addition to the PRs listed below, please also check out the following release
 
 [42353]({{site.repo.flutter}}/pull/42353) Add --cache-sksl flag to drive and run
 
-[42354]({{site.repo.flutter}}/pull/42354) Pass -Ddart.developer.causal_async_stacks=true to frontend_server invocations.
+[42354]({{site.repo.flutter}}/pull/42354) Pass -Ddartbrasil.developer.causal_async_stacks=true to frontend_server invocations.
 
 [42364]({{site.repo.flutter}}/pull/42364) Wrap dwds in async guard, only catch known error types
 

@@ -412,7 +412,7 @@ Clique no botão "Next random article" para ver a UI reativa em
 ação. O app mostra um estado de carregamento, busca novos dados, e atualiza
 a exibição automaticamente.
 
-[ListenableBuilder]: https://api.flutter.dev/flutter/widgets/ListenableBuilder-class.html
-[widget]: https://docs.flutter.dev/ui/widgets-intro
-[`ListView`]: https://api.flutter.dev/flutter/widgets/ListView-class.html
-[try-catch block]: https://dart.dev/language/error-handling
+[ListenableBuilder]: https://api.flutterbrasil.dev/flutter/widgets/ListenableBuilder-class.html
+[widget]: https://docs.flutterbrasil.dev/ui/widgets-intro
+[`ListView`]: https://api.flutterbrasil.dev/flutter/widgets/ListView-class.html
+[try-catch block]: https://dartbrasil.dev/language/error-handling

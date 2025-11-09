@@ -36,7 +36,7 @@ class NetworkImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // #docregion image-network
-    return Image.network('https://docs.flutter.dev/assets/images/docs/owl.jpg');
+    return Image.network('https://docs.flutterbrasil.dev/assets/images/docs/owl.jpg');
     // #enddocregion image-network
   }
 }

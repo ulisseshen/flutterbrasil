@@ -355,7 +355,7 @@ see our [CHANGELOG][].
 * Updated some golden image tests for M2/M3 by @HansMuller in [129794](https://github.com/flutter/flutter/pull/129794)
 * Fix NetworkImage causing spurious warning in tests by @gnprice in [129537](https://github.com/flutter/flutter/pull/129537)
 * Update `SwitchTheme` tests for M2/M3 by @QuncCccccc in [129811](https://github.com/flutter/flutter/pull/129811)
-* Update links to old linter site to dart.dev by @parlough in [129866](https://github.com/flutter/flutter/pull/129866)
+* Update links to old linter site to dartbrasil.dev by @parlough in [129866](https://github.com/flutter/flutter/pull/129866)
 * Cleanup: stop accepting DiagnosticsNode as input from DevTools. by @polina-c in [129302](https://github.com/flutter/flutter/pull/129302)
 * Improve documentation for `ColorSheme.fromImageProvider` by @guidezpl in [129952](https://github.com/flutter/flutter/pull/129952)
 * fix a bug when android uses CupertinoPageTransitionsBuilder... by @ipcjs in [114303](https://github.com/flutter/flutter/pull/114303)

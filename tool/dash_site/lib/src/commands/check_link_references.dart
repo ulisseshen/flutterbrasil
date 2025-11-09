@@ -84,7 +84,7 @@ List<String> _findInContent(String content) {
   // Use regex to find all links that displayed abnormally,
   // since a valid reference link should be an `<a>` tag after rendered:
   //
-  // - `[flutter.dev][]`
+  // - `[flutterbrasil.dev][]`
   // - `[GitHub repo][repo]`
   // See also:
   // - https://github.github.com/gfm/#reference-link

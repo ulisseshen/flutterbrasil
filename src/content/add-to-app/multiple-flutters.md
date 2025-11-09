@@ -27,7 +27,7 @@ instância é independente e mantém sua própria pilha de navegação
 interna, UI e estados de aplicação. Isso simplifica a responsabilidade geral
 do código do aplicativo pela manutenção de estado e melhora a modularidade. Mais detalhes sobre os
 cenários motivando o uso de múltiplos Flutters podem ser encontrados em
-[flutter.dev/go/multiple-flutters][flutter.dev/go/multiple-flutters].
+[flutterbrasil.dev/go/multiple-flutters][flutterbrasil.dev/go/multiple-flutters].
 
 Flutter é otimizado para este cenário, com um baixo custo incremental
 de memória (~180kB) para adicionar instâncias Flutter adicionais. Este custo fixo
@@ -87,7 +87,7 @@ tanto no Android quanto no iOS no [GitHub][GitHub].
 [`FlutterActivity`]: {{site.api}}/javadoc/io/flutter/embedding/android/FlutterActivity.html
 [`FlutterViewController`]: {{site.api}}/ios-embedder/interface_flutter_view_controller.html
 [performance characteristics]: /add-to-app/performance
-[flutter.dev/go/multiple-flutters]: /go/multiple-flutters
+[flutterbrasil.dev/go/multiple-flutters]: /go/multiple-flutters
 [Issue 72009]: {{site.repo.flutter}}/issues/72009
 [Pigeon]: {{site.pub}}/packages/pigeon
 [platform channels]: /platform-integration/platform-channels

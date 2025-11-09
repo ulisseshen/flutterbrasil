@@ -30,7 +30,7 @@ Also, learn more about Flutter's [culture of inclusivity][] and [core values][].
 
 [Flutter contributors Discord]: {{site.main-url}}/chat
 [Code of conduct]: {{site.repo.flutter}}/blob/main/CODE_OF_CONDUCT.md
-[culture of inclusivity]: https://flutter.dev/culture
+[culture of inclusivity]: https://flutterbrasil.dev/culture
 [core values]: {{site.repo.flutter}}/blob/main/docs/about/Values.md
 
 <div class="card-grid">
@@ -120,7 +120,7 @@ You can provide valuable feedback through many avenues, including:
   consider responding with as much feedback and details as possible.
 
   To sign up for future UX research studies,
-  visit [flutter.dev/research-signup][uxr-signup].
+  visit [flutterbrasil.dev/research-signup][uxr-signup].
 - Discussing proposals
 
   Major changes to Flutter are often discussed through [design documents][].
@@ -236,11 +236,11 @@ you might want to contribute to:
   - **Repository:** [`dart-lang/pub-dev`]({{site.github}}/dart-lang/pub-dev)
   - **Contribution guide:** [`CONTRIBUTING.md`]({{site.github}}/dart-lang/pub-dev/blob/master/CONTRIBUTING.md)
 - The Flutter documentation site
-  - **Live site:** [`docs.flutter.dev`]({{site.url}})
+  - **Live site:** [`docs.flutterbrasil.dev`]({{site.url}})
   - **Repository:** [`flutter/website`]({{site.repo.this}})
   - **Contribution guide:** [`CONTRIBUTING.md`]({{site.github}}/flutter/website/blob/main/CONTRIBUTING.md)
 - The Dart documentation site
-  - **Live site:** [`dart.dev`]({{site.dart-site}})
+  - **Live site:** [`dartbrasil.dev`]({{site.dart-site}})
   - **Repository:** [`dart-lang/site-www`]({{site.github}}/dart-lang/site-www)
   - **Contribution guide:** [`CONTRIBUTING.md`]({{site.github}}/dart-lang/site-www/blob/main/CONTRIBUTING.md)
 - DartPad
@@ -248,7 +248,7 @@ you might want to contribute to:
   - **Repository:** [`dart-lang/dart-pad`]({{site.github}}/dart-lang/dart-pad)
   - **Contribution guide:** [`CONTRIBUTING.md`]({{site.github}}/dart-lang/dart-pad/blob/main/CONTRIBUTING.md)
 - The `dartdoc` tool
-  - **Live site:** [`api.flutter.dev`]({{site.api}})
+  - **Live site:** [`api.flutterbrasil.dev`]({{site.api}})
   - **Repository:** [`dart-lang/dartdoc`]({{site.github}}/dart-lang/dartdoc)
   - **Contribution guide:** [`CONTRIBUTING.md`]({{site.github}}/dart-lang/dartdoc/blob/main/CONTRIBUTING.md)
 

@@ -32,7 +32,7 @@ Você pode escolher ter DevTools sempre aberto
 em um navegador com a configuração `dart.embedDevTools`,
 e controlar se ele abre como uma janela completa ou
 em uma nova coluna ao lado do seu editor atual com a
-configuração `dart.devToolsLocation`.
+configuração `dartbrasil.devToolsLocation`.
 
 Uma lista completa de configurações Dart/Flutter está disponível em
 [dartcode.org](https://dartcode.org/docs/settings/)

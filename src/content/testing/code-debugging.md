@@ -18,10 +18,10 @@ A lista a seguir contém algumas instruções que você pode usar para registrar
 comportamento da sua aplicação. Você pode visualizar seus logs na
 [view de Logging][Logging view] do DevTools ou no console do seu sistema.
 
-*   [`print()`][print()]: Imprime uma mensagem `stdout` (saída padrão). Parte da
+*   [`print()`][]: Imprime uma mensagem `stdout` (saída padrão). Parte da
     biblioteca `dart:io`.
 
-*   [`stderr.method_to_invoke()`][stderr.method_to_invoke()]: Imprime uma mensagem `stderr` (erro padrão).
+*   [`stderr.method_to_invoke()`][]: Imprime uma mensagem `stderr` (erro padrão).
     Substitua `method_to_invoke()` por um método suportado pela propriedade `stderr`,
     como `writeln()` ou `write()`. Frequentemente usado em um bloco `try...catch`.
     Parte da biblioteca `dart:io`.
@@ -31,10 +31,10 @@ comportamento da sua aplicação. Você pode visualizar seus logs na
     stderr.writeln('print me');
     ```
 
-*   [`log()`][log()]: Inclui maior granularidade e mais informações na
+*   [`log()`][]: Inclui maior granularidade e mais informações na
     saída de logging. Parte da biblioteca `dart:developer`.
 
-*   [`debugPrint()`][debugPrint()]: Se muita saída resultar em linhas de log descartadas, use
+*   [`debugPrint()`][]: Se muita saída resultar em linhas de log descartadas, use
     isso para manter essas linhas. Imprimirá mensagens no modo release, a menos que faça parte
     de uma verificação de modo debug ou um assert. Parte da biblioteca `foundations`.
 
@@ -118,7 +118,7 @@ máquina de desenvolvimento imprimir.
 
 :::tip
 Cada objeto de renderização em qualquer árvore inclui os primeiros cinco
-dígitos hexadecimais do seu [`hashCode`][hashCode].
+dígitos hexadecimais do seu [`hashCode`][].
 Este hash serve como um identificador único para aquele objeto de renderização.
 :::
 
@@ -127,11 +127,11 @@ Este hash serve como um identificador único para aquele objeto de renderizaçã
 ### Imprimir a árvore de widgets
 
 Para despejar o estado da biblioteca Widgets,
-chame a função [`debugDumpApp()`][debugDumpApp()].
+chame a função [`debugDumpApp()`][].
 
 1. Abra seu arquivo de código-fonte.
 1. Importe `package:flutter/rendering.dart`.
-1. Chame a função [`debugDumpApp()`][debugDumpApp()] de dentro da função `runApp()`.
+1. Chame a função [`debugDumpApp()`][] de dentro da função `runApp()`.
    Você precisa que seu app esteja no modo debug.
    Você não pode chamar esta função dentro de um método `build()`
    quando o app está sendo construído.
@@ -177,8 +177,8 @@ O **Example 4** produz a seguinte árvore de widgets. Ela inclui:
 * Muitos widgets que não aparecem no código-fonte do seu app.
   As funções build dos widgets do framework os inserem durante a construção.
 
-  A árvore a seguir, por exemplo, mostra [`_InkFeatures`][_InkFeatures].
-  Essa classe implementa parte do widget [`Material`][Material].
+  A árvore a seguir, por exemplo, mostra [`_InkFeatures`][].
+  Essa classe implementa parte do widget [`Material`][].
   Ela não aparece em nenhum lugar no código do **Example 4**.
 
 <details>
@@ -190,7 +190,7 @@ O **Example 4** produz a seguinte árvore de widgets. Ela inclui:
 
 Quando o botão muda de estar pressionado para estar solto,
 isso invoca a função `debugDumpApp()`.
-Isso também coincide com o objeto [`TextButton`][TextButton] chamando [`setState()`][setState()]
+Isso também coincide com o objeto [`TextButton`][] chamando [`setState()`][]
 e assim marcando-o como dirty.
 Isso explica por que o Flutter marca um objeto específico como "dirty".
 Ao revisar a árvore de widgets, procure uma linha que se assemelhe ao seguinte:
@@ -212,7 +212,7 @@ O próximo nível de depuração pode exigir uma árvore de renderização.
 Para despejar a árvore de renderização:
 
 1. Abra seu arquivo de código-fonte.
-1. Chame a função [`debugDumpRenderTree()`][debugDumpRenderTree()].
+1. Chame a função [`debugDumpRenderTree()`][].
    Você pode chamá-la a qualquer momento, exceto durante uma fase de layout ou pintura.
    Considere chamá-la de um [frame callback][frame callback] ou de um manipulador de eventos.
 1. Se você não iniciou seu app, depure-o usando sua IDE.
@@ -261,16 +261,16 @@ As constraints fluem para baixo na árvore e os tamanhos fluem de volta para cim
 Na árvore de renderização para o **Example 5**:
 
 * O `RenderView`, ou tamanho da janela, limita todos os objetos de renderização até e
-  incluindo o objeto de renderização [`RenderPositionedBox`][RenderPositionedBox]`#dc1df`
+  incluindo o objeto de renderização [`RenderPositionedBox`][]`#dc1df`
   ao tamanho da tela.
   Este exemplo define o tamanho como `Size(800.0, 600.0)`
 
 * A propriedade `constraints` de cada objeto de renderização limita o tamanho
-  de cada filho. Esta propriedade recebe o objeto de renderização [`BoxConstraints`][BoxConstraints] como valor.
+  de cada filho. Esta propriedade recebe o objeto de renderização [`BoxConstraints`][] como valor.
   Começando com `RenderSemanticsAnnotations#fe6b5`, a constraint é igual a
   `BoxConstraints(w=800.0, h=600.0)`.
 
-* O widget [`Center`][Center] criou o objeto de renderização `RenderPositionedBox#dc1df`
+* O widget [`Center`][] criou o objeto de renderização `RenderPositionedBox#dc1df`
   sob a subárvore `RenderSemanticsAnnotations#8187b`.
 
 * Cada filho sob este objeto de renderização tem `BoxConstraints` com valores
@@ -288,14 +288,14 @@ Na árvore de renderização para o **Example 5**:
   `BoxConstraints(40.0<=w<=784.0, 28.0<=h<=600.0)`.
 
 Este objeto, que o campo `creator` nos diz ser
-provavelmente parte da definição do [`TextButton`][TextButton],
+provavelmente parte da definição do [`TextButton`][],
 define uma largura mínima de 88 pixels em seu conteúdo e uma
 altura específica de 36.0. Esta é a classe `TextButton` implementando
 as diretrizes do Material Design em relação às dimensões de botões.
 
 O objeto de renderização `RenderPositionedBox#80b8d` afrouxa as constraints novamente
 para centralizar o texto dentro do botão.
-O objeto de renderização [`RenderParagraph`][RenderParagraph]#59bc2 escolhe seu tamanho com base em
+O objeto de renderização [`RenderParagraph`][]#59bc2 escolhe seu tamanho com base em
 seu conteúdo.
 Se você seguir os tamanhos de volta pela árvore,
 verá como o tamanho do texto influencia a largura de todas as caixas
@@ -318,7 +318,7 @@ e então chame o método da superclasse.
 
 ### Imprimir a árvore de camadas
 
-Para depurar um problema de composição, use [`debugDumpLayerTree()`][debugDumpLayerTree()].
+Para depurar um problema de composição, use [`debugDumpLayerTree()`][].
 
 #### Example 6: Call `debugDumpLayerTree()`
 
@@ -395,7 +395,7 @@ Isso reduz o quanto precisa ser repintado.
 ### Imprimir a árvore de foco
 
 Para depurar um problema de foco ou atalho, despeje a árvore de foco
-usando a função [`debugDumpFocusTree()`][debugDumpFocusTree()].
+usando a função [`debugDumpFocusTree()`][].
 
 O método `debugDumpFocusTree()` retorna a árvore de foco para o app.
 
@@ -404,10 +404,10 @@ A árvore de foco rotula os nós da seguinte maneira:
 * O nó focado é rotulado como `PRIMARY FOCUS`.
 * Ancestrais dos nós de foco são rotulados como `IN FOCUS PATH`.
 
-Se seu app usar o widget [`Focus`][Focus], use a propriedade [`debugLabel`][debugLabel]
+Se seu app usar o widget [`Focus`][], use a propriedade [`debugLabel`][]
 para simplificar a localização de seu nó de foco na árvore.
 
-Você também pode usar a propriedade booleana [`debugFocusChanges`][debugFocusChanges] para habilitar
+Você também pode usar a propriedade booleana [`debugFocusChanges`][] para habilitar
 logging extensivo quando o foco muda.
 
 #### Example 7: Call `debugDumpFocusTree()`
@@ -455,7 +455,7 @@ Para obter um despejo da árvore Semantics:
 
 1. Habilite a acessibilidade usando uma ferramenta de acessibilidade do sistema
    ou o `SemanticsDebugger`
-1. Use a função [`debugDumpSemanticsTree()`][debugDumpSemanticsTree()].
+1. Use a função [`debugDumpSemanticsTree()`][].
 
 #### Example 8: Call `debugDumpSemanticsTree()`
 
@@ -508,8 +508,8 @@ class AppHome extends StatelessWidget {
 Se você quiser descobrir onde seus eventos acontecem em relação ao
 início e fim do frame, pode configurar prints para registrar esses eventos.
 Para imprimir o início e o fim dos frames no console,
-alterne [`debugPrintBeginFrameBanner`][debugPrintBeginFrameBanner]
-e [`debugPrintEndFrameBanner`][debugPrintEndFrameBanner].
+alterne [`debugPrintBeginFrameBanner`][]
+e [`debugPrintEndFrameBanner`][].
 
 **O log de banner de frame de print para o Example 1**
 
@@ -521,12 +521,12 @@ I/flutter : ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀�
 ```
 
 Para imprimir a pilha de chamadas causando o agendamento do frame atual,
-use a flag [`debugPrintScheduleFrameStacks`][debugPrintScheduleFrameStacks].
+use a flag [`debugPrintScheduleFrameStacks`][].
 
 ## Depurar problemas de layout
 
 Para depurar um problema de layout usando uma GUI, defina
-[`debugPaintSizeEnabled`][debugPaintSizeEnabled] como `true`.
+[`debugPaintSizeEnabled`][] como `true`.
 Esta flag pode ser encontrada na biblioteca `rendering`.
 Você pode habilitá-la a qualquer momento e afeta toda a pintura enquanto `true`.
 Considere adicioná-la ao topo do seu ponto de entrada `void main()`.
@@ -554,7 +554,7 @@ Quando habilitado, o Flutter exibe as seguintes mudanças no seu app:
 * Exibe todo o posicionamento de alinhamento com setas amarelas.
 * Exibe todos os spacers em cinza, quando não têm filho.
 
-A flag [`debugPaintBaselinesEnabled`][debugPaintBaselinesEnabled]
+A flag [`debugPaintBaselinesEnabled`][]
 faz algo similar mas para objetos com baselines.
 O app exibe a baseline para caracteres alfabéticos em verde brilhante
 e a baseline para caracteres ideográficos em laranja.
@@ -562,7 +562,7 @@ Caracteres alfabéticos "sentam" na baseline alfabética,
 mas essa baseline "corta" através da parte inferior dos [caracteres CJK][cjk].
 O Flutter posiciona a baseline ideográfica na parte mais inferior da linha de texto.
 
-A flag [`debugPaintPointersEnabled`][debugPaintPointersEnabled] ativa um modo especial que
+A flag [`debugPaintPointersEnabled`][] ativa um modo especial que
 destaca quaisquer objetos que você toca em turquesa.
 Isso pode ajudá-lo a determinar se um objeto falha no teste de toque.
 Isso pode acontecer se o objeto cair fora dos limites de seu pai
@@ -570,10 +570,10 @@ e, portanto, não for considerado para teste de toque em primeiro lugar.
 
 Se você está tentando depurar camadas de compositor, considere usar as seguintes flags.
 
-* Use a flag [`debugPaintLayerBordersEnabled`][debugPaintLayerBordersEnabled] para encontrar os limites
+* Use a flag [`debugPaintLayerBordersEnabled`][] para encontrar os limites
   de cada camada. Esta flag resulta em contornar os limites de cada camada em laranja.
 
-* Use a flag [`debugRepaintRainbowEnabled`][debugRepaintRainbowEnabled] para exibir uma camada repintada.
+* Use a flag [`debugRepaintRainbowEnabled`][] para exibir uma camada repintada.
   Sempre que uma camada repinta, ela se sobrepõe com um conjunto rotativo de cores.
 
 Qualquer função ou método no framework Flutter que começa com
@@ -592,7 +592,7 @@ Se você quiser mais controle sobre a quantidade de lentidão,
 use as instruções a seguir.
 :::
 
-Defina a variável [`timeDilation`][timeDilation] (da biblioteca `scheduler`)
+Defina a variável [`timeDilation`][] (da biblioteca `scheduler`)
 para um número maior que 1.0, por exemplo, 50.0.
 É melhor definir isso apenas uma vez na inicialização do app. Se você
 mudá-lo em tempo real, especialmente se você reduzi-lo enquanto
@@ -617,7 +617,7 @@ Para usar esses recursos, compile seu app no modo debug.
 A lista a seguir destaca algumas flags e uma função da
 [biblioteca rendering][rendering library] para depurar problemas de performance.
 
-[`debugDumpRenderTree()`][debugDumpRenderTree()]
+[`debugDumpRenderTree()`][]
 : Para despejar a árvore de renderização no console,
   chame esta função quando não estiver em uma fase de layout ou repintura.
 
@@ -627,11 +627,11 @@ A lista a seguir destaca algumas flags e uma função da
   * Importe o módulo, defina o valor na sua função `main()`,
     e então faça hot restart.
 
-[`debugPaintLayerBordersEnabled`][debugPaintLayerBordersEnabled]
+[`debugPaintLayerBordersEnabled`][]
 : Para exibir os limites de cada camada, defina esta propriedade como `true`.
   Quando definida, cada camada pinta uma caixa ao redor de seu limite.
 
-[`debugRepaintRainbowEnabled`][debugRepaintRainbowEnabled]
+[`debugRepaintRainbowEnabled`][]
 : Para exibir uma borda colorida ao redor de cada widget, defina esta propriedade como `true`.
   Essas bordas mudam de cor conforme o usuário do app rola no app.
   Para definir esta flag, adicione `debugRepaintRainbowEnabled = true;` como uma propriedade
@@ -639,7 +639,7 @@ A lista a seguir destaca algumas flags e uma função da
   Se quaisquer widgets estáticos rotacionarem através de cores após definir esta flag,
   considere adicionar limites de repintura a essas áreas.
 
-[`debugPrintMarkNeedsLayoutStacks`][debugPrintMarkNeedsLayoutStacks]
+[`debugPrintMarkNeedsLayoutStacks`][]
 : Para determinar se seu app cria mais layouts do que o esperado,
   defina esta propriedade como `true`.
   Este problema de layout pode acontecer na timeline, em um perfil,
@@ -647,7 +647,7 @@ A lista a seguir destaca algumas flags e uma função da
   Quando definida, o framework emite stack traces para o console
   para explicar por que seu app marca cada objeto de renderização para ser disposto.
 
-[`debugPrintMarkNeedsPaintStacks`][debugPrintMarkNeedsPaintStacks]
+[`debugPrintMarkNeedsPaintStacks`][]
 : Para determinar se seu app pinta mais layouts do que o esperado,
   defina esta propriedade como `true`.
 
@@ -698,7 +698,7 @@ use as instruções a seguir.
 
 Para habilitar o widget `PerformanceOverlay` no seu código,
 defina a propriedade `showPerformanceOverlay` como `true` no
-construtor [`MaterialApp`][MaterialApp], [`CupertinoApp`][CupertinoApp] ou [`WidgetsApp`][WidgetsApp]:
+construtor [`MaterialApp`][], [`CupertinoApp`][] ou [`WidgetsApp`][]:
 
 #### Example 10
 
@@ -726,7 +726,7 @@ class MyApp extends StatelessWidget {
 (Se você não estiver usando `MaterialApp`, `CupertinoApp`,
 ou `WidgetsApp`, pode obter o mesmo efeito envolvendo sua
 aplicação em uma stack e colocando um widget em sua stack que foi
-criado chamando [`PerformanceOverlay.allEnabled()`][PerformanceOverlay.allEnabled()].)
+criado chamando [`PerformanceOverlay.allEnabled()`][].)
 
 Para aprender como interpretar os gráficos no overlay,
 confira [The performance overlay][The performance overlay] em
@@ -738,7 +738,7 @@ Para adicionar um overlay a uma [grade baseline do Material Design][Material Des
 ajudar a verificar alinhamentos, adicione o argumento `debugShowMaterialGrid` no
 [construtor `MaterialApp`][MaterialApp constructor].
 
-Para adicionar um overlay a aplicações não-Material, adicione um widget [`GridPaper`][GridPaper].
+Para adicionar um overlay a aplicações não-Material, adicione um widget [`GridPaper`][].
 
 [`_InkFeatures`]: {{site.api}}/flutter/material/InkFeature-class.html
 [`BoxConstraints`]: {{site.api}}/flutter/rendering/BoxConstraints-class.html

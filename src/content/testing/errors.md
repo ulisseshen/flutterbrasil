@@ -11,11 +11,11 @@ acionados pelo próprio framework, incluindo erros encontrados
 durante as fases de build, layout e pintura. Erros que não ocorrem
 dentro dos callbacks do Flutter não podem ser capturados pelo framework,
 mas você pode tratá-los configurando um manipulador de erros no
-[`PlatformDispatcher`][PlatformDispatcher].
+[`PlatformDispatcher`][].
 
 Todos os erros capturados pelo Flutter são roteados para o
-manipulador [`FlutterError.onError`][FlutterError.onError]. Por padrão,
-isso chama [`FlutterError.presentError`][FlutterError.presentError],
+manipulador [`FlutterError.onError`][]. Por padrão,
+isso chama [`FlutterError.presentError`][],
 que despeja o erro nos logs do dispositivo.
 Ao executar a partir de uma IDE, o inspector sobrescreve esse
 comportamento para que os erros também possam ser roteados para o
@@ -23,13 +23,13 @@ console da IDE, permitindo que você inspecione os
 objetos mencionados na mensagem.
 
 :::note
-Considere chamar [`FlutterError.presentError`][FlutterError.presentError]
+Considere chamar [`FlutterError.presentError`][]
 do seu manipulador de erros personalizado para ver
 os logs no console também.
 :::
 
 Quando um erro ocorre durante a fase de build,
-o callback [`ErrorWidget.builder`][ErrorWidget.builder] é
+o callback [`ErrorWidget.builder`][] é
 invocado para construir o widget que é usado
 no lugar daquele que falhou. Por padrão,
 no modo debug isso mostra uma mensagem de erro em vermelho,
@@ -73,7 +73,7 @@ void main() {
 ```
 
 :::note
-A constante de nível superior [`kReleaseMode`][kReleaseMode] indica
+A constante de nível superior [`kReleaseMode`][] indica
 se o app foi compilado no modo release.
 :::
 
@@ -84,7 +84,7 @@ Para mais detalhes, veja nosso capítulo de cookbook para
 ## Definir um widget de erro personalizado para erros da fase de build
 
 Para definir um widget de erro personalizado que é exibido sempre que
-o builder falha ao construir um widget, use [`MaterialApp.builder`][MaterialApp.builder].
+o builder falha ao construir um widget, use [`MaterialApp.builder`][].
 
 <?code-excerpt "lib/excerpts.dart (custom-error)"?>
 ```dart
@@ -128,7 +128,7 @@ OutlinedButton(
 Se `invokeMethod` lançar um erro, ele não será encaminhado para `FlutterError.onError`.
 Em vez disso, é encaminhado para o `PlatformDispatcher`.
 
-Para capturar tal erro, use [`PlatformDispatcher.instance.onError`][PlatformDispatcher.instance.onError].
+Para capturar tal erro, use [`PlatformDispatcher.instance.onError`][].
 
 <?code-excerpt "lib/excerpts.dart (catch-error)"?>
 ```dart

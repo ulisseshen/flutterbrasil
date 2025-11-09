@@ -1,29 +1,30 @@
 ---
-title: DevTools 2.51.0 release notes
-shortTitle: 2.51.0 release notes
+ia-translate: true
+title: Notas de lançamento do DevTools 2.51.0
+shortTitle: Notas de lançamento 2.51.0
 breadcrumb: 2.51.0
-description: Release notes for Dart and Flutter DevTools version 2.51.0.
+description: Notas de lançamento da versão 2.51.0 do Dart e Flutter DevTools.
 showToc: false
 ---
 
-The 2.51.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](/tools/devtools/overview).
+A versão 2.51.0 do Dart e Flutter DevTools
+inclui as seguintes mudanças, entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](/tools/devtools/overview).
 
-## General updates
+## Atualizações gerais
 
-- Flutter beta channel users were opted into the DevTools-on-Wasm experiment.
-  All other users can still enable the Wasm-compiled DevTools from the settings
-  dialog. - [#9455](https://github.com/flutter/devtools/pull/9455)
+- Usuários do canal beta do Flutter foram incluídos no experimento DevTools-on-Wasm.
+  Todos os outros usuários ainda podem habilitar o DevTools compilado em Wasm no diálogo
+  de configurações. - [#9455](https://github.com/flutter/devtools/pull/9455)
 
-## Inspector updates
+## Atualizações do Inspector
 
-- Fixed an issue where selecting a widget with the Inspector would open the
-  widget definition file instead of the user's project file. -
+- Corrigido um problema onde selecionar um widget com o Inspector abriria o
+  arquivo de definição do widget em vez do arquivo de projeto do usuário. -
   [#176530](https://github.com/flutter/flutter/pull/176530)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes in this release, check out the
-[DevTools git log](https://github.com/flutter/devtools/tree/v2.51.0).
+Para encontrar uma lista completa de mudanças neste lançamento, confira o
+[log do git do DevTools](https://github.com/flutter/devtools/tree/v2.51.0).

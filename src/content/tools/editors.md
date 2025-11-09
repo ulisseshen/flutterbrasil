@@ -1,25 +1,26 @@
 ---
-title: Flutter editor support
-shortTitle: Editors
+ia-translate: true
+title: Suporte a editores para Flutter
+shortTitle: Editores
 description: >-
-  Editor support for Dart and Flutter.
+  Suporte a editores para Dart e Flutter.
 showToc: false
 ---
 
-You can build apps with Flutter using any text editor or
-integrated development environment (IDE)
-combined with Flutter's command-line tools.
+Você pode construir apps com Flutter usando qualquer editor de texto ou
+ambiente de desenvolvimento integrado (IDE)
+combinado com as ferramentas de linha de comando do Flutter.
 
-The Flutter team recommends using an editor that supports
-a Flutter extension or plugin, like VS Code and Android Studio.
-These plugins provide code completion, syntax highlighting,
-widget editing assists, debug support, and much more.
+A equipe Flutter recomenda usar um editor que suporte
+uma extensão ou plugin Flutter, como VS Code e Android Studio.
+Esses plugins fornecem completação de código, destacamento de sintaxe,
+assistências de edição de widgets, suporte a depuração e muito mais.
 
-## Local editors
+## Editores locais
 
-The Flutter team supports plugins for VS Code, Android Studio, and IntelliJ.
-The plugins provide extensive development and debugging support as well as
-deep integrations with the [Dart analyzer][] and [Dart and Flutter DevTools][].
+A equipe Flutter suporta plugins para VS Code, Android Studio e IntelliJ.
+Os plugins fornecem amplo suporte para desenvolvimento e depuração, bem como
+integrações profundas com o [Dart analyzer][Dart analyzer] e [Dart and Flutter DevTools][Dart and Flutter DevTools].
 
 <div class="card-grid">
   <a class="card outlined-card" href="/tools/vs-code">
@@ -27,7 +28,7 @@ deep integrations with the [Dart analyzer][] and [Dart and Flutter DevTools][].
       <span class="card-title">Visual Studio Code</span>
     </div>
     <div class="card-content">
-      <p>Develop and debug Flutter apps in a streamlined and customizable code editor.</p>
+      <p>Desenvolva e depure apps Flutter em um editor de código simplificado e personalizável.</p>
     </div>
   </a>
   <a class="card outlined-card" href="/tools/android-studio">
@@ -35,7 +36,7 @@ deep integrations with the [Dart analyzer][] and [Dart and Flutter DevTools][].
       <span class="card-title">Android Studio and IntelliJ</span>
     </div>
     <div class="card-content">
-      <p>Develop and debug Flutter apps in an IDE with rich language support and integrated tooling.</p>
+      <p>Desenvolva e depure apps Flutter em uma IDE com rico suporte a linguagem e ferramentas integradas.</p>
     </div>
   </a>
 </div>
@@ -43,10 +44,10 @@ deep integrations with the [Dart analyzer][] and [Dart and Flutter DevTools][].
 [Dart analyzer]: {{site.dart-site}}/tools/analysis
 [Dart and Flutter DevTools]: /tools/devtools
 
-## Online editors
+## Editores online
 
-You can quickly try Flutter online without any local setup
-with one of the following editors.
+Você pode experimentar rapidamente o Flutter online sem nenhuma configuração local
+com um dos seguintes editores.
 
 <div class="card-grid">
   <a class="card outlined-card" href="{{site.dartpad}}" target="_blank">
@@ -57,7 +58,7 @@ with one of the following editors.
       </span>
     </div>
     <div class="card-content">
-      <p>Quickly build and run simple single-file Flutter apps on the web.</p>
+      <p>Construa e execute rapidamente apps Flutter simples de arquivo único na web.</p>
     </div>
   </a>
   <a class="card outlined-card" href="https://firebase.studio" target="_blank">
@@ -68,18 +69,18 @@ with one of the following editors.
       </span>
     </div>
     <div class="card-content">
-      <p>Develop complex Flutter apps in an AI-assisted workspace in the cloud.</p>
+      <p>Desenvolva apps Flutter complexos em um espaço de trabalho assistido por IA na nuvem.</p>
     </div>
   </a>
 </div>
 
-## Other editors
+## Outros editores
 
-You can develop Dart and Flutter apps using any other text editor and terminal.
+Você pode desenvolver apps Dart e Flutter usando qualquer outro editor de texto e terminal.
 
-Depending on the editor, you can integrate the Dart SDK's support for the
-[Language Server Protocol][lsp] and the [Debug Adapter Protocol][dap] to
-enable rich code editing and debugging features for both Dart and Flutter.
+Dependendo do editor, você pode integrar o suporte do Dart SDK para o
+[Language Server Protocol][lsp] e o [Debug Adapter Protocol][dap] para
+habilitar recursos avançados de edição de código e depuração para Dart e Flutter.
 
 [lsp]: https://github.com/dart-lang/sdk/tree/main/pkg/analysis_server/tool/lsp_spec/README.md
 [dap]: https://github.com/dart-lang/sdk/blob/main/third_party/pkg/dap/tool/README.md

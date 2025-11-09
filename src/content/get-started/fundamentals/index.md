@@ -1,9 +1,10 @@
 ---
-title: Learn the fundamentals
-shortTitle: Fundamentals
+ia-translate: true
+title: Aprenda os fundamentos
+shortTitle: Fundamentos
 description: >
-  You've gotten a taste of using the Flutter framework;
-  now go beyond to learn the basics of Flutter.
+  Você experimentou o framework Flutter;
+  agora vá além e aprenda o básico do Flutter.
 showToc: false
 ---
 
@@ -12,16 +13,16 @@ showToc: false
 <div class="side-by-side">
 <div>
 
-## Find your way with Flutter!
+## Encontre seu caminho com Flutter!
 
-If you are new to Flutter, and have already worked
-through [your first Flutter codelab][],
-this section of the website is for you!
+Se você é novo no Flutter, e já trabalhou
+através do [seu primeiro codelab Flutter][your first Flutter codelab],
+esta seção do site é para você!
 
-The goal here is to guide you through some next
-steps of learning Flutter. It's not about teaching
-you how to _program_, it's about teaching you
-how Flutter works.
+O objetivo aqui é guiá-lo através de alguns
+próximos passos de aprendizado do Flutter. Não se trata de ensinar
+você a _programar_, mas sim de ensinar
+como o Flutter funciona.
 
 
 </div>
@@ -32,56 +33,55 @@ how Flutter works.
 
 
 :::note
-These fundamentals docs are still a work
-in progress and we welcome your feedback!
-Please consider filling out the survey
-listed at the bottom of this page and on the
-new subject pages in this section.
+Estes documentos de fundamentos ainda estão em
+andamento e agradecemos seu feedback!
+Por favor, considere preencher a pesquisa
+listada na parte inferior desta página e nas
+novas páginas de assuntos nesta seção.
 :::
 
-We suggest that you work through the
-following subjects in the listed order.
+Sugerimos que você trabalhe através dos
+seguintes assuntos na ordem listada.
 
- 1. [Intro to Dart][] _(Optional)_
-    As you might know, Flutter uses the [Dart language][].
-    If you have experience with other object-oriented
-    languages, like Java, C++, or Swift,
-    Dart should feel familiar to you.
-    As of this writing,
-    [Dart is one of the fastest growing languages][dart-lang],
-    in part, thanks to Flutter.
+ 1. [Intro to Dart][] _(Opcional)_
+    Como você deve saber, Flutter usa a [linguagem Dart][Dart language].
+    Se você tem experiência com outras linguagens
+    orientadas a objetos, como Java, C++, ou Swift,
+    Dart deve parecer familiar para você.
+    No momento desta escrita,
+    [Dart é uma das linguagens de crescimento mais rápido][dart-lang],
+    em parte, graças ao Flutter.
  2. [Widget fundamentals][]
-    Learn about one of the primary building blocks
-    of a Flutter application, widgets.
+    Aprenda sobre um dos blocos de construção primários
+    de uma aplicação Flutter, widgets.
  3. [Layout][]
-    Flutter is different from other UI frameworks
-    in that you create the layout programmatically.
-    This allows you to compose widgets,
-    Flutter's basic building blocks,
-    to realize your own layout vision.
-    It also facilitates designing a UI to
-    optimize any screen where your app might be used.
+    Flutter é diferente de outros frameworks de UI
+    pois você cria o layout programaticamente.
+    Isso permite que você componha widgets,
+    os blocos de construção básicos do Flutter,
+    para realizar sua própria visão de layout.
+    Também facilita o design de uma UI para
+    otimizar qualquer tela onde seu app possa ser usado.
  4. [State management][]
-    Learn how to share state between widgets and notify other parts of your app
-    when the state changes.
-    See how to implement MVVM in Flutter to manage state effectively
-    for small to medium-sized apps.
+    Aprenda como compartilhar estado entre widgets e notificar outras partes do seu app
+    quando o estado muda.
+    Veja como implementar MVVM no Flutter para gerenciar estado de forma eficaz
+    para apps de pequeno a médio porte.
  5. [Handling user input][]
-    Learn about Flutter's widgets that support
-    interactivity, like buttons and text.
-    Also, learn how to add interactivity to
-    a widget that doesn't already support it.
+    Aprenda sobre os widgets do Flutter que suportam
+    interatividade, como botões e texto.
+    Além disso, aprenda como adicionar interatividade a
+    um widget que ainda não a suporta.
  6. [Networking and data][]
-    Networking is a very large topic,
-    so this section focuses on basic networking
-    functionality, such as how to retrieve
-    or submit data using HTTP,
-    how to convert to and from JSON,
-    how to use authentication,
-    how to implement asynchronicity, and more.
+    Networking é um tópico muito amplo,
+    então esta seção se concentra em funcionalidades básicas de networking,
+    como recuperar ou enviar dados usando HTTP,
+    como converter de e para JSON,
+    como usar autenticação,
+    como implementar assincronicidade, e mais.
  7. [Local data and caching][]
-    Learn about different techniques for caching
-    local data.
+    Aprenda sobre diferentes técnicas para caching
+    de dados locais.
 
 [Dart language]: {{site.dart-site}}
 [dart-lang]: https://twitter.com/MiSvTh/status/1732002450641400276?cxt
@@ -96,7 +96,7 @@ following subjects in the listed order.
 
 ## Feedback
 
-As this section of the website is evolving,
-we [welcome your feedback][]!
+À medida que esta seção do site está evoluindo,
+nós [agradecemos seu feedback][welcome your feedback]!
 
 [welcome your feedback]: https://google.qualtrics.com/jfe/form/SV_6A9KxXR7XmMrNsy?page="index"

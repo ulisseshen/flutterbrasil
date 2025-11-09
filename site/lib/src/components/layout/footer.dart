@@ -14,6 +14,21 @@ final class DashFooter extends StatelessComponent {
       id: 'site-footer',
       attributes: {'data-nosnippet': 'true'},
       [
+        div(classes: 'footer-section footer-translation-helper', [
+          p([
+            text('Encontrou essa página sem tradução ou que precisa de correção? '),
+            a(
+              href: 'https://github.com/ulisseshen/flutterbrasil/issues/new',
+              target: Target.blank,
+              attributes: {
+                'rel': 'noopener',
+                'title': 'Abrir uma issue no GitHub',
+              },
+              [text('Abra uma issue')],
+            ),
+            text(' e nos ajude a manter esse site em PT-BR para ajudar pessoas como você.'),
+          ]),
+        ]),
         div(classes: 'footer-section footer-main', [
           a(
             href: '/',

@@ -1,48 +1,49 @@
 ---
-title: Use themes to share colors and font styles
+ia-translate: true
+title: Usar themes para compartilhar cores e estilos de fonte
 shortTitle: Themes
-description: How to share colors and font styles throughout an app using Themes.
+description: Como compartilhar cores e estilos de fonte em todo um app usando Themes.
 ---
 
 <?code-excerpt path-base="cookbook/design/themes"?>
 
 :::note
-This recipe uses Flutter's support for [Material 3][] and
-the [google_fonts][] package. As of the Flutter 3.16 release,
-Material 3 is Flutter's default theme.
+Esta receita usa o suporte do Flutter para [Material 3][] e
+o pacote [google_fonts][]. A partir do release Flutter 3.16,
+Material 3 é o theme padrão do Flutter.
 :::
 
 [Material 3]: /ui/design/material
 [google_fonts]: {{site.pub-pkg}}/google_fonts
 
-To share colors and font styles throughout an app, use themes.
+Para compartilhar cores e estilos de fonte em todo um app, use themes.
 
-You can define app-wide themes.
-You can extend a theme to change a theme style for one component.
-Each theme defines the colors, type style, and other parameters
-applicable for the type of Material component.
+Você pode definir themes em todo o app.
+Você pode estender um theme para mudar um estilo de theme para um componente.
+Cada theme define as cores, estilo de tipo, e outros parâmetros
+aplicáveis para o tipo de componente Material.
 
-Flutter applies styling in the following order:
+Flutter aplica estilização na seguinte ordem:
 
-1. Styles applied to the specific widget.
-1. Themes that override the immediate parent theme.
-1. Main theme for the entire app.
+1. Estilos aplicados ao widget específico.
+1. Themes que sobrescrevem o theme pai imediato.
+1. Theme principal para todo o app.
 
-After you define a `Theme`, use it within your own widgets.
-Flutter's Material widgets use your theme to set the background
-colors and font styles for app bars, buttons, checkboxes, and more.
+Depois que você define um `Theme`, use-o dentro dos seus próprios widgets.
+Os widgets Material do Flutter usam seu theme para definir as cores de fundo
+e estilos de fonte para barras de app, botões, checkboxes, e mais.
 
-## Create an app theme
+## Criar um theme de app
 
-To share a `Theme` across your entire app, set the `theme` property
-to your `MaterialApp` constructor.
-This property takes a [`ThemeData`][] instance.
+Para compartilhar um `Theme` em todo o seu app, defina a propriedade `theme`
+no seu construtor `MaterialApp`.
+Esta propriedade recebe uma instância [`ThemeData`][].
 
-As of the Flutter 3.16 release, Material 3 is Flutter's
-default theme.
+A partir do release Flutter 3.16, Material 3 é o
+theme padrão do Flutter.
 
-If you don't specify a theme in the constructor,
-Flutter creates a default theme for you.
+Se você não especificar um theme no construtor,
+Flutter cria um theme padrão para você.
 
 <?code-excerpt "lib/main.dart (MaterialApp)" replace="/return //g"?>
 ```dart
@@ -76,29 +77,29 @@ MaterialApp(
 );
 ```
 
-Most instances of `ThemeData` set values for the following two properties. These properties affect the entire app.
+A maioria das instâncias de `ThemeData` define valores para as seguintes duas propriedades. Essas propriedades afetam todo o app.
 
-1. [`colorScheme`][] defines the colors.
-1. [`textTheme`][] defines text styling.
+1. [`colorScheme`][] define as cores.
+1. [`textTheme`][] define a estilização de texto.
 
 [`colorScheme`]: {{site.api}}/flutter/material/ThemeData/colorScheme.html
 [`textTheme`]: {{site.api}}/flutter/material/ThemeData/textTheme.html
 
-To learn what colors, fonts, and other properties, you can define,
-check out the [`ThemeData`][] documentation.
+Para aprender quais cores, fontes, e outras propriedades, você pode definir,
+confira a documentação de [`ThemeData`][].
 
-## Apply a theme
+## Aplicar um theme
 
-To apply your new theme, use the `Theme.of(context)` method
-when specifying a widget's styling properties.
-These can include, but are not limited to, `style` and `color`.
+Para aplicar seu novo theme, use o método `Theme.of(context)`
+ao especificar as propriedades de estilização de um widget.
+Essas podem incluir, mas não estão limitadas a, `style` e `color`.
 
-The `Theme.of(context)` method looks up the widget tree and retrieves
-the nearest `Theme` in the tree.
-If you have a standalone `Theme`, that's applied.
-If not, Flutter applies the app's theme.
+O método `Theme.of(context)` procura na árvore de widgets e recupera
+o `Theme` mais próximo na árvore.
+Se você tem um `Theme` independente, ele é aplicado.
+Se não, Flutter aplica o theme do app.
 
-In the following example, the `Container` constructor uses this technique to set its `color`.
+No exemplo a seguir, o construtor `Container` usa essa técnica para definir sua `color`.
 
 <?code-excerpt "lib/main.dart (Container)" replace="/^child: //g"?>
 ```dart
@@ -115,21 +116,21 @@ Container(
 ),
 ```
 
-## Override a theme
+## Sobrescrever um theme
 
-To override the overall theme in part of an app,
-wrap that section of the app in a `Theme` widget.
+Para sobrescrever o theme geral em parte de um app,
+envolva essa seção do app em um widget `Theme`.
 
-You can override a theme in two ways:
+Você pode sobrescrever um theme de duas maneiras:
 
-1. Create a unique `ThemeData` instance.
-2. Extend the parent theme.
+1. Criar uma instância `ThemeData` única.
+2. Estender o theme pai.
 
-### Set a unique `ThemeData` instance
+### Definir uma instância `ThemeData` única
 
-If you want a component of your app to ignore the overall theme,
-create a `ThemeData` instance.
-Pass that instance to the `Theme` widget.
+Se você quer que um componente do seu app ignore o theme geral,
+crie uma instância `ThemeData`.
+Passe essa instância para o widget `Theme`.
 
 <?code-excerpt "lib/main.dart (Theme)"?>
 ```dart
@@ -140,10 +141,10 @@ Theme(
 );
 ```
 
-### Extend the parent theme
+### Estender o theme pai
 
-Instead of overriding everything, consider extending the parent theme.
-To extend a theme, use the [`copyWith()`][] method.
+Em vez de sobrescrever tudo, considere estender o theme pai.
+Para estender um theme, use o método [`copyWith()`][].
 
 <?code-excerpt "lib/main.dart (ThemeCopyWith)"?>
 ```dart
@@ -157,13 +158,13 @@ Theme(
 );
 ```
 
-## Watch a video on `Theme`
+## Assistir um vídeo sobre `Theme`
 
-To learn more, watch this short Widget of the Week video on the `Theme` widget:
+Para aprender mais, assista este curto vídeo Widget of the Week sobre o widget `Theme`:
 
 <YouTubeEmbed id="oTvQDJOBXmM" title="Theme | Flutter widget of the week"></YouTubeEmbed>
 
-## Try an interactive example
+## Experimentar um exemplo interativo
 
 <?code-excerpt "lib/main.dart (FullApp)"?>
 ```dartpad title="Flutter themes hands-on example in DartPad" run="true"

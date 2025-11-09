@@ -1,11 +1,15 @@
-[![Flutter logo]](https://docs.flutter.dev)
+---
+ia-translate: true
+---
 
-[Flutter logo]: https://github.com/dart-lang/site-shared/blob/main/src/_assets/image/flutter/icon/64.png?raw=1
+[![Logo do Flutter]](https://docs.flutter.dev)
 
-# [Flutter][] documentation website
+[Logo do Flutter]: https://github.com/dart-lang/site-shared/blob/main/src/_assets/image/flutter/icon/64.png?raw=1
 
-The [documentation site][Flutter] for the [Flutter framework][],
-built with [Jaspr][] and hosted on [Firebase][].
+# Site de documentação do [Flutter][Flutter]
+
+O [site de documentação][Flutter] para o [framework Flutter][Flutter framework],
+construído com [Jaspr][Jaspr] e hospedado no [Firebase][Firebase].
 
 [Flutter framework]: https://flutter.dev
 [Jaspr]: https://jaspr.site
@@ -22,80 +26,80 @@ built with [Jaspr][] and hosted on [Firebase][].
     src="https://cdn.firebasestudio.dev/btn/open_blue_32.svg">
 </a>
 
-## Issues, bugs, and requests
+## Problemas, bugs e solicitações
 
-We welcome contributions and feedback on our website.
-Please file a request in our
-[issue tracker](https://github.com/flutter/website/issues/new/choose)
-or create a [pull request](https://github.com/flutter/website/pulls).
-For simple changes (such as tweaking some text),
-it's easiest to make changes using the GitHub UI.
+Recebemos com prazer contribuições e feedback sobre nosso site.
+Por favor, registre uma solicitação no nosso
+[rastreador de problemas](https://github.com/flutter/website/issues/new/choose)
+ou crie um [pull request](https://github.com/flutter/website/pulls).
+Para mudanças simples (como ajustar algum texto),
+é mais fácil fazer alterações usando a interface do GitHub.
 
-If you have an issue with the
-API docs on [api.flutter.dev](https://api.flutter.dev),
-please file those issues on
-the [`flutter/flutter`](https://github.com/flutter/flutter/issues) repo,
-not on this (`flutter/website`) repo.
-The API docs are embedded in Flutter's source code,
-so the engineering team handles those.
+Se você tiver um problema com a
+documentação da API em [api.flutter.dev](https://api.flutter.dev),
+por favor, registre esses problemas no
+repositório [`flutter/flutter`](https://github.com/flutter/flutter/issues),
+não neste repositório (`flutter/website`).
+A documentação da API está incorporada no código-fonte do Flutter,
+então a equipe de engenharia cuida disso.
 
 
-## Before you submit a PR
+## Antes de enviar um PR
 
-We love it when the community gets involved in improving our docs!
-But here are a few notes to keep in mind before you submit a PR:
+Adoramos quando a comunidade se envolve em melhorar nossa documentação!
+Mas aqui estão algumas notas a ter em mente antes de enviar um PR:
 
-- When triaging issues,
-  we sometimes label an issue with the tag **PRs welcome**.
-  But we welcome PRs on other issues as well&mdash;
-  it doesn't have to be tagged with that label.
-- Please don't run our docs through Grammarly (or similar)
-  and submit those changes as a PR.
-- We follow the [Google Developer Documentation Style Guidelines][] —
-  for example, don't use "i.e." or "e.g.",
-  avoid writing in first person,
-  and avoid writing in future tense.
-  You can start with the
-  [style guide highlights](https://developers.google.com/style/highlights)
-  or the [word list](https://developers.google.com/style/word-list),
-  or use the search bar at the top of every style guide page.
+- Ao fazer a triagem de problemas,
+  às vezes rotulamos um problema com a tag **PRs welcome**.
+  Mas recebemos PRs em outros problemas também&mdash;
+  não precisa estar marcado com esse rótulo.
+- Por favor, não execute nossa documentação através do Grammarly (ou similar)
+  e envie essas alterações como um PR.
+- Seguimos o [Google Developer Documentation Style Guidelines][Google Developer Documentation Style Guidelines] —
+  por exemplo, não use "i.e." ou "e.g.",
+  evite escrever em primeira pessoa,
+  e evite escrever no tempo futuro.
+  Você pode começar com os
+  [destaques do guia de estilo](https://developers.google.com/style/highlights)
+  ou a [lista de palavras](https://developers.google.com/style/word-list),
+  ou usar a barra de pesquisa no topo de cada página do guia de estilo.
 
-> We truly thank you for your willingness and helpfulness
-> in keeping the website docs up to date!
+> Agradecemos sinceramente sua disposição e ajuda
+> em manter a documentação do site atualizada!
 
 [Google Developer Documentation Style Guidelines]: https://developers.google.com/style
 
 
-## Contributing
+## Contribuindo
 
-To update this site, fork the repo, make your changes,
-and generate a pull request.
-For small, contained changes (such as style and typo fixes),
-you probably don't need to build this site.
-Often you can make changes using the GitHub UI.
-If needed, we can stage the changes automatically in your pull request.
+Para atualizar este site, faça um fork do repositório, faça suas alterações,
+e gere um pull request.
+Para alterações pequenas e contidas (como correções de estilo e digitação),
+você provavelmente não precisa compilar este site.
+Frequentemente você pode fazer alterações usando a interface do GitHub.
+Se necessário, podemos preparar as alterações automaticamente no seu pull request.
 
-If your change involves code samples, adds/removes pages, or affects navigation,
-do consider building and testing your work before submitting.
+Se sua alteração envolve exemplos de código, adiciona/remove páginas ou afeta a navegação,
+considere compilar e testar seu trabalho antes de enviar.
 
-If you want or need to build the site, follow the steps below.
+Se você quer ou precisa compilar o site, siga os passos abaixo.
 
-## Build the site
+## Compilar o site
 
-For changes beyond simple text and CSS tweaks,
-we recommend running the site locally to
-enable an edit-refresh cycle.
+Para alterações além de ajustes simples de texto e CSS,
+recomendamos executar o site localmente para
+habilitar um ciclo de edição-atualização.
 
-### Get the prerequisites
+### Obter os pré-requisitos
 
-To build and develop the site, you'll need to
-install the latest stable release of Flutter, which includes Dart.
+Para compilar e desenvolver o site, você precisará
+instalar a versão estável mais recente do Flutter, que inclui Dart.
 
-If you don't have Flutter or need to update, follow the
-instructions at [Install Flutter][] or [Upgrading Flutter][].
+Se você não tem o Flutter ou precisa atualizar, siga as
+instruções em [Install Flutter][Install Flutter] ou [Upgrading Flutter][Upgrading Flutter].
 
-If you already have Flutter installed, verify it's on your path
-and already the latest stable version:
+Se você já tem o Flutter instalado, verifique se está no seu path
+e já é a versão estável mais recente:
 
 ```console
 flutter --version
@@ -104,14 +108,14 @@ flutter --version
 [Install Flutter]: https://docs.flutter.dev/get-started
 [Upgrading Flutter]: https://docs.flutter.dev/release/upgrade
 
-### Clone this repo
+### Clonar este repositório
 
-If you're not a member of the Flutter organization,
-we recommend you [create a fork][] of this repo under your own account,
-and then submit a PR from that fork.
+Se você não é membro da organização Flutter,
+recomendamos que você [crie um fork][create a fork] deste repositório na sua própria conta,
+e então envie um PR a partir desse fork.
 
-Once you have a fork (or you're a Flutter org member),
-clone the repository with `git clone`:
+Depois de ter um fork (ou se você é membro da organização Flutter),
+clone o repositório com `git clone`:
 
 ```bash
 git clone https://github.com/flutter/website.git
@@ -119,101 +123,101 @@ git clone https://github.com/flutter/website.git
 
 [create a fork]: https://docs.github.com/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
 
-## Set up your local environment and serve changes
+## Configurar seu ambiente local e servir alterações
 
-Before you continue setting up the site infrastructure,
-verify the correct versions of Flutter and Node.js are set up and available by
-following the instructions in [Get the prerequisites](#get-the-prerequisites).
+Antes de continuar configurando a infraestrutura do site,
+verifique se as versões corretas do Flutter e Node.js estão configuradas e disponíveis
+seguindo as instruções em [Obter os pré-requisitos](#obter-os-pré-requisitos).
 
-1. _Optional:_ After cloning the repo,
-   create a branch for your changes:
+1. _Opcional:_ Após clonar o repositório,
+   crie um branch para suas alterações:
 
    ```console
    git checkout -b <BRANCH_NAME>
    ```
 
-2. From the root directory of the repository,
-   fetch the site's Dart dependencies.
+2. Do diretório raiz do repositório,
+   busque as dependências Dart do site.
 
    ```console
    dart pub get
    ```
 
-3. From the root directory, run the `dash_site` tool to
-   validate your setup and learn about the available commands.
+3. Do diretório raiz, execute a ferramenta `dash_site` para
+   validar sua configuração e aprender sobre os comandos disponíveis.
 
    ```terminal
    dart run dash_site --help
    ```
 
-4. From the root directory, serve the site locally.
+4. Do diretório raiz, sirva o site localmente.
 
    ```terminal
    dart run dash_site serve
    ```
 
-   This command generates and serves the site on a
-   local port that's printed to your terminal.
+   Este comando gera e serve o site em uma
+   porta local que é impressa no seu terminal.
 
-5. View your changes in the browser by navigating to <http://localhost:8080>.
+5. Visualize suas alterações no navegador navegando para <http://localhost:8080>.
 
-   Note the port might be different if `8080` is taken.
+   Note que a porta pode ser diferente se `8080` estiver ocupada.
 
-6. Make your changes to the local repo.
+6. Faça suas alterações no repositório local.
 
-   To view your changes in the browser,
-   you'll need to refresh the page.
-   The site should automatically rebuild on most changes, but if
-   something doesn't update, exit the process and rerun the command.
+   Para visualizar suas alterações no navegador,
+   você precisará atualizar a página.
+   O site deve reconstruir automaticamente na maioria das alterações, mas se
+   algo não atualizar, saia do processo e execute o comando novamente.
 
-7. Commit your changes to the branch and submit your PR.
+7. Faça commit das suas alterações no branch e envie seu PR.
 
-   If your change is large, or you'd like to test it,
-   consider [validating your changes](#validate-your-changes).
+   Se sua alteração for grande, ou você gostaria de testá-la,
+   considere [validar suas alterações](#validar-suas-alterações).
 
 > [!TIP]
-> To find additional commands that you can run,
-> run `dart run dash_site --help` from the repository's root directory.
+> Para encontrar comandos adicionais que você pode executar,
+> execute `dart run dash_site --help` do diretório raiz do repositório.
 
-## Validate your changes
+## Validar suas alterações
 
-### Check documentation and example code
+### Verificar documentação e código de exemplo
 
-If you've made changes to the code in
-the `/examples`, `/site`, or `/tool` directories,
-commit your work, then run the following command to
-verify it is up to date and matches the site standards.
+Se você fez alterações no código nos
+diretórios `/examples`, `/site` ou `/tool`,
+faça commit do seu trabalho e então execute o seguinte comando para
+verificar se está atualizado e corresponde aos padrões do site.
 
 ```terminal
 dart run dash_site check-all
 ```
 
-If this script reports any errors or warnings,
-then address those issues and rerun the command.
-If you have any issues, leave a comment on your issue or pull request,
-and we'll try our best to help you.
-You can also chat with us on the `#hackers-devrel` channel
-on the [Flutter contributors Discord][]!
+Se este script reportar quaisquer erros ou avisos,
+então resolva esses problemas e execute o comando novamente.
+Se você tiver quaisquer problemas, deixe um comentário no seu problema ou pull request,
+e tentaremos nosso melhor para ajudá-lo.
+Você também pode conversar conosco no canal `#hackers-devrel`
+no [Flutter contributors Discord][Flutter contributors Discord]!
 
 [Flutter contributors Discord]: https://github.com/flutter/flutter/blob/main/docs/contributing/Chat.md
 
-### Refresh code excerpts
+### Atualizar trechos de código
 
-A build that fails with the error
+Uma compilação que falha com o erro
 `Error: Some code excerpts needed to be updated!`
-means that one or more code excerpts in the site Markdown files
-aren't identical to the code regions declared
-in the corresponding `.dart` files.
+significa que um ou mais trechos de código nos arquivos Markdown do site
+não são idênticos às regiões de código declaradas
+nos arquivos `.dart` correspondentes.
 
-The `.dart` files are the source of truth for code snippets,
-and the preceding `<?code-excerpt>` instructions in Markdown files specify
-how the snippets are copied from the `.dart` files.
+Os arquivos `.dart` são a fonte de verdade para trechos de código,
+e as instruções `<?code-excerpt>` anteriores nos arquivos Markdown especificam
+como os trechos são copiados dos arquivos `.dart`.
 
-To resolve this error and update the Markdown snippets to match,
-from the root of the `website` directory,
-run `dart run dash_site refresh-excerpts`.
+Para resolver este erro e atualizar os trechos Markdown para corresponder,
+do diretório raiz do `website`,
+execute `dart run dash_site refresh-excerpts`.
 
-To learn more about creating, editing, and using code excerpts,
-check out the [excerpt updater package documentation][].
+Para aprender mais sobre criar, editar e usar trechos de código,
+confira a [documentação do pacote excerpt updater][excerpt updater package documentation].
 
 [excerpt updater package documentation]: https://github.com/dart-lang/site-shared/tree/main/pkgs/excerpter#readme

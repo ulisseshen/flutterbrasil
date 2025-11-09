@@ -1,7 +1,8 @@
 ---
-title: Integration testing
-breadcrumb: Integration
+ia-translate: true
+title: Testes de integração
+breadcrumb: Integração
 description: >
-  A catalog of recipes for adding integration testing to your Flutter app.
+  Um catálogo de receitas para adicionar testes de integração ao seu app Flutter.
 layout: toc
 ---

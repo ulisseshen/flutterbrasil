@@ -1,5 +1,6 @@
 ---
-title: Testing
-description: A catalog of recipes showcasing testing your Flutter app.
+ia-translate: true
+title: Testes
+description: Um catálogo de receitas demonstrando como testar seu app Flutter.
 layout: toc
 ---

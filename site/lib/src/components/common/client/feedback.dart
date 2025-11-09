@@ -42,30 +42,30 @@ final class _FeedbackComponentState extends State<FeedbackComponent> {
             div(classes: 'feedback-buttons', [
               Button(
                 icon: 'thumb_up',
-                title: 'Yes, this page was helpful.',
+                title: 'Sim, esta página foi útil.',
                 onClick: () => _provideFeedback(helpful: true),
               ),
               Button(
                 icon: 'thumb_down',
-                title: 'No, this page was not helpful or had an issue',
+                title: 'Não, esta página não foi útil ou teve um problema',
                 onClick: () => _provideFeedback(helpful: false),
               ),
             ]),
           ],
           _FeedbackState.helpful => [
             Button(
-              content: 'Provide details',
+              content: 'Forneça detalhes',
               icon: 'feedback',
-              title: 'Provide detailed feedback.',
+              title: 'Forneça feedback detalhado.',
               href: component.issueUrl,
               attributes: const {'target': '_blank', 'rel': 'noopener'},
             ),
           ],
           _FeedbackState.unhelpful => [
             Button(
-              content: 'Provide details',
+              content: 'Forneça detalhes',
               icon: 'bug_report',
-              title: 'Provide feedback or report an issue.',
+              title: 'Forneça feedback ou reporte um problema.',
               href: component.issueUrl,
               attributes: const {'target': '_blank', 'rel': 'noopener'},
             ),
@@ -77,11 +77,11 @@ final class _FeedbackComponentState extends State<FeedbackComponent> {
 }
 
 enum _FeedbackState {
-  none('Was this page\'s content helpful?'),
-  helpful('Thank you for your feedback!'),
+  none('O conteúdo desta página foi útil?'),
+  helpful('Obrigado pelo seu feedback!'),
   unhelpful(
-    'Thank you for your feedback! '
-    'Please let us know what we can do to improve.',
+    'Obrigado pelo seu feedback! '
+    'Por favor, nos informe o que podemos fazer para melhorar.',
   );
 
   const _FeedbackState(this.introduction);

@@ -38,7 +38,7 @@ Como parte do Flutter 3.29, o novo Flutter inspector está ativado por padrão. 
 [legacy inspector]: /tools/devtools/legacy-inspector
 [filing a bug]: https://github.com/flutter/devtools/issues/new
 
-### Depurando problemas de layout visualmente
+### Depurando problemas de layout visualmente {:#debugging-layout-issues-visually}
 
 O seguinte é um guia para os recursos disponíveis na
 barra de ferramentas do inspector. Quando o espaço é limitado, o ícone é

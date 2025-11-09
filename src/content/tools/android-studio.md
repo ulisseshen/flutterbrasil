@@ -156,7 +156,7 @@ difere entre Android Studio e IntelliJ.
     [defina o domínio da empresa](#set-the-company-domain).
  1. Clique em **Finish**.
 
-#### Defina o domínio da empresa
+#### Defina o domínio da empresa {:#set-the-company-domain}
 
 Ao criar um novo app, alguns plugins Flutter para IDE solicitam um
 nome de organização em ordem de domínio reverso,
@@ -195,7 +195,7 @@ O plugin Flutter realiza análise de código que habilita o seguinte:
   Quaisquer problemas de análise são mostrados no painel Dart Analysis:<br>
   ![Dart Analysis pane](/assets/images/docs/tools/android-studio/dart-analysis.png){:width="90%"}
 
-## Executando e depurando
+## Executando e depurando {:#running-and-debugging}
 
 :::note
 Você pode depurar seu app de algumas maneiras.
@@ -257,7 +257,7 @@ Flutter oferece um ciclo de desenvolvimento de primeira classe que permite ver o
 de suas alterações quase instantaneamente com o recurso _Stateful Hot Reload_.
 Para saber mais, consulte [Hot reload][Hot reload].
 
-### Mostrar dados de performance
+### Mostrar dados de performance {:#show-performance-data}
 
 :::note
 Para examinar problemas de performance no Flutter, consulte a

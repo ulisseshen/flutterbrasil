@@ -243,7 +243,7 @@ Use `flutter config --help` para uma descrição de cada flag.
 Flags são lidas apenas do package de _aplicação_ atual, e não têm efeito
 no contexto de um package ou dependência.
 
-### campo default-flavor
+### campo default-flavor {:#default-flavor-field}
 
 Atribua um flavor padrão do Flutter para um app.
 Quando usado, você não precisa incluir o nome deste

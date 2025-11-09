@@ -137,7 +137,7 @@ A análise de código pode:
   - O painel Problems exibe quaisquer problemas de análise:<br>
     ![Problems pane](/assets/images/docs/tools/vs-code/problems.png)
 
-## Executando e depurando
+## Executando e depurando {:#running-and-debugging}
 
 :::note
 Você pode depurar seu app de algumas maneiras.

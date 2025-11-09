@@ -142,7 +142,7 @@ que detectamos que podem ter contribuído para o tempo lento do frame.
 
 ![Screenshot of the frame analysis tab](/assets/images/docs/tools/devtools/frame-analysis-tab.png)
 
-## Aba Timeline events
+## Aba Timeline events {:#timeline-events-tab}
 
 O gráfico de eventos de timeline mostra todo o rastreamento de eventos da sua aplicação.
 O framework Flutter emite eventos de timeline enquanto trabalha para construir frames,

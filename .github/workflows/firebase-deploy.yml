@@ -1,0 +1,66 @@
+name: Deploy to Firebase Hosting on merge
+
+on:
+  push:
+    branches:
+      - main
+
+# Declare default permissions as read only
+permissions:
+  contents: read
+  checks: write
+
+jobs:
+  linkcheck:
+    name: Build site and check links
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: beta
+
+      - name: Fetch Dart dependencies
+        run: dart pub get
+
+      - name: Build site
+        run: dart run dash_site build
+
+      - name: Check for broken Markdown link references
+        run: dart run dash_site check-link-references
+
+      - name: Check for broken internal links
+        run: dart run dash_site check-links
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-build
+          path: _site
+          retention-days: 1
+
+  deploy:
+    name: Deploy to production
+    runs-on: ubuntu-latest
+    needs: linkcheck
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site-build
+          path: _site
+
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          projectId: transliteradu
+          channelId: live

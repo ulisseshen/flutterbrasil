@@ -1,7 +1,8 @@
 ---
-title: User experience
+ia-translate: true
+title: Experiência do usuário
 description: >
-  How the user will experience the AI Toolkit in your app.
+  Como o usuário experimentará o AI Toolkit em seu app.
 prev:
   title: AI Toolkit overview
   path: /ai-toolkit/
@@ -10,53 +11,53 @@ next:
   path: /ai-toolkit/feature-integration
 ---
 
-The [`LlmChatView`][] widget is the entry point for the
-interactive chat experience that AI Toolkit provides.
-Hosting an instance of the `LlmChatView` enables a
-number of user experience features that don't require
-any additional code to use:
+O widget [`LlmChatView`][] é o ponto de entrada para a
+experiência de chat interativo que o AI Toolkit fornece.
+Hospedar uma instância do `LlmChatView` habilita uma série
+de recursos de experiência do usuário que não requerem
+nenhum código adicional para usar:
 
-* **Multi-line text input**: Allows users to paste long text
-  input or insert new lines into their text as they enter it.
-* **Voice input**: Allows users to input prompts using speech
-  for ease of use.
-* **Multimedia input**: Enables users to take pictures and
-  send images and other file types.
-* **Image zoom**: Enables users to zoom into image thumbnails.
-* **Copy to clipboard**: Allows the  user to copy the text of
-  a message or a LLM response to the clipboard.
-* **Message editing**: Allows the user to edit the most recent
-  message for resubmission to the LLM.
-* **Material and Cupertino**: Adapts to the best practices of
-  both design languages.
+* **Entrada de texto multilinha**: Permite aos usuários colar textos longos
+  ou inserir novas linhas no texto conforme digitam.
+* **Entrada por voz**: Permite aos usuários inserir prompts usando fala
+  para facilidade de uso.
+* **Entrada multimídia**: Permite aos usuários tirar fotos e
+  enviar imagens e outros tipos de arquivo.
+* **Zoom de imagem**: Permite aos usuários ampliar miniaturas de imagem.
+* **Copiar para a área de transferência**: Permite ao usuário copiar o texto de
+  uma mensagem ou resposta LLM para a área de transferência.
+* **Edição de mensagem**: Permite ao usuário editar a mensagem
+  mais recente para reenviar ao LLM.
+* **Material e Cupertino**: Adapta-se às melhores práticas de
+  ambas as linguagens de design.
 
 [`LlmChatView`]: {{site.pub-api}}/flutter_ai_toolkit/latest/flutter_ai_toolkit/LlmChatView-class.html
 
-## Multi-line text input
+## Entrada de texto multilinha
 
-The user has  options when it comes to submitting
-their prompt once they've finished composing it,
-which again differs depending on their platform:
+O usuário tem opções quando se trata de enviar
+seu prompt depois de terminá-lo,
+que novamente difere dependendo de sua plataforma:
 
-* **Mobile**: Tap the **Submit** button
-* **Web**: Press **Enter** or tap the **Submit** button
-* **Desktop**: Press **Enter** or tap the **Submit** button
+* **Mobile**: Toque no botão **Submit**
+* **Web**: Pressione **Enter** ou toque no botão **Submit**
+* **Desktop**: Pressione **Enter** ou toque no botão **Submit**
 
-In addition, the chat view supports text prompts
-with embedded newlines in them. If the user has existing
-text with newlines, they can paste them into the
-prompt text field as normal.
+Além disso, a visualização de chat suporta prompts de texto
+com novas linhas incorporadas neles. Se o usuário tiver texto existente
+com novas linhas, eles podem colá-lo no
+campo de texto do prompt normalmente.
 
-If they'd like to embed newlines into their prompt
-manually as they enter it, they can do so.
-The gesture for that activity differs based on the
-platform they're using:
+Se eles quiserem incorporar novas linhas em seu prompt
+manualmente conforme digitam, podem fazê-lo.
+O gesto para essa atividade difere baseado na
+plataforma que estão usando:
 
-* **Mobile**: Tap Return key on the virtual keyboard
-* **Web**: Unsupported
-* **Desktop**: Press `Ctrl+Enter` or `Opt/Alt+Enter`
+* **Mobile**: Toque na tecla Return no teclado virtual
+* **Web**: Não suportado
+* **Desktop**: Pressione `Ctrl+Enter` ou `Opt/Alt+Enter`
 
-These options look like the following:
+Essas opções se parecem com o seguinte:
 
 **Desktop**:
 
@@ -66,124 +67,124 @@ These options look like the following:
 
 ![Screenshot of entering text on mobile](/assets/images/docs/ai-toolkit/mobile-enter-text.png)
 
-## Voice input
+## Entrada por voz
 
-In addition to text input the chat view can take an
-audio recording as input by tapping the Mic button,
-which is visible when no text has yet been entered.
+Além da entrada de texto, a visualização de chat pode receber uma
+gravação de áudio como entrada tocando no botão Mic,
+que fica visível quando nenhum texto foi inserido ainda.
 
-Tapping the **Mic** button starts the recording:
+Tocar no botão **Mic** inicia a gravação:
 
 ![Screenshot of entering text](/assets/images/docs/ai-toolkit/enter-textfield.png)
 
-Pressing the **Stop** button translates the user's voice input into text:
+Pressionar o botão **Stop** traduz a entrada de voz do usuário em texto:
 
-This text can then be edited, augmented and submitted as normal.
+Este texto pode então ser editado, aumentado e enviado normalmente.
 
 ![Screenshot of entered voice](/assets/images/docs/ai-toolkit/enter-voice-into-textfield.png)
 
-## Multi-media Input
+## Entrada multimídia
 
 ![Textfield containing "Testing, testing, one, two, three"](/assets/images/docs/ai-toolkit/multi-media-testing-testing.png)
 
-The chat view can also take images and files as input to pass along
-to the underlying LLM. The user can press the **Plus** button to the
-left of the text input and choose from the **Take Photo**, **Image Gallery**,
-and **Attach File** icons:
+A visualização de chat também pode receber imagens e arquivos como entrada para passar
+ao LLM subjacente. O usuário pode pressionar o botão **Plus** à
+esquerda da entrada de texto e escolher entre os ícones **Take Photo**, **Image Gallery**
+e **Attach File**:
 
 ![Screenshot of the 4 icons](/assets/images/docs/ai-toolkit/multi-media-icons.png)
 
-The **Take Photo** button allows the user to use their device's camera to take a photo:
+O botão **Take Photo** permite ao usuário usar a câmera de seu dispositivo para tirar uma foto:
 
 ![Selfie image](/assets/images/docs/ai-toolkit/selfie.png)
 
-Pressing the **Image Gallery** button lets the user upload
-from their device's image gallery:
+Pressionar o botão **Image Gallery** permite ao usuário fazer upload
+da galeria de imagens de seu dispositivo:
 
 ![Download image from gallery](/assets/images/docs/ai-toolkit/download-from-gallery.png)
 
-Pressing the **Attach File** button lets the user select
-a file of any type available on their device, like a PDF or TXT file.
+Pressionar o botão **Attach File** permite ao usuário selecionar
+um arquivo de qualquer tipo disponível em seu dispositivo, como um arquivo PDF ou TXT.
 
-Once a photo, image, or file has been selected, it becomes an attachment and shows up as a thumbnail associated with the currently active prompt:
+Uma vez que uma foto, imagem ou arquivo foi selecionado, torna-se um anexo e aparece como uma miniatura associada ao prompt atualmente ativo:
 
 ![Thumbnails of images](/assets/images/docs/ai-toolkit/image-thumbnails.png)
 
-The user can remove an attachment by clicking the
-**X** button on the thumbnail.
+O usuário pode remover um anexo clicando no
+botão **X** na miniatura.
 
-## Image zoom
+## Zoom de imagem
 
-The user can zoom into an image thumbnail by tapping it:
+O usuário pode ampliar uma miniatura de imagem tocando nela:
 
 ![Zoomed image](/assets/images/docs/ai-toolkit/image-zoom.png)
 
-Pressing the **ESC** key or tapping anywhere outside the
-image dismisses the zoomed image.
+Pressionar a tecla **ESC** ou tocar em qualquer lugar fora da
+imagem dispensa a imagem ampliada.
 
-## Copy to clipboard
+## Copiar para a área de transferência
 
-The user can copy any text prompt or LLM response
-in their current chat in a variety of ways.
-On the desktop or the web, the user can mouse
-to select the text on their screen and
-copy it to the clipboard as normal:
+O usuário pode copiar qualquer prompt de texto ou resposta LLM
+em seu chat atual de várias maneiras.
+No desktop ou na web, o usuário pode passar o mouse
+para selecionar o texto em sua tela e
+copiá-lo para a área de transferência normalmente:
 
 ![Copy to clipboard](/assets/images/docs/ai-toolkit/copy-to-clipboard.png)
 
-In addition, at the bottom of each prompt or response,
-the user can press the **Copy** button that pops up
-when they hover their mouse:
+Além disso, na parte inferior de cada prompt ou resposta,
+o usuário pode pressionar o botão **Copy** que aparece
+quando passa o mouse:
 
 ![Press the copy button](/assets/images/docs/ai-toolkit/chatbot-prompt.png)
 
-On mobile platforms, the user can long-tap a prompt or response and choose the Copy option:
+Em plataformas mobile, o usuário pode tocar longamente um prompt ou resposta e escolher a opção Copy:
 
 ![Long tap to see the copy button](/assets/images/docs/ai-toolkit/long-tap-choose-copy.png)
 
-## Message editing
+## Edição de mensagem
 
-If the user would like to edit their last prompt
-and cause the LLM to take another run at it,
-they can do so. On the desktop,
-the user can tap the **Edit** button alongside the
-**Copy** button for their most recent prompt:
+Se o usuário quiser editar seu último prompt
+e fazer com que o LLM tente novamente,
+pode fazê-lo. No desktop,
+o usuário pode tocar no botão **Edit** ao lado do
+botão **Copy** para seu prompt mais recente:
 
 ![How to edit prompt](/assets/images/docs/ai-toolkit/how-to-edit-prompt.png)
 
-On a mobile device, the user can long-tap and get access
-to the **Edit** option on their most recent prompt:
+Em um dispositivo mobile, o usuário pode tocar longamente e ter acesso
+à opção **Edit** em seu prompt mais recente:
 
 ![How to access edit menu](/assets/images/docs/ai-toolkit/accessing-edit-menu.png)
 
-Once the user taps the **Edit** button, they enter Editing mode,
-which removes both the user's last prompt and the LLM's
-last response from the chat history,
-puts the text of the prompt into the text field, and
-provides an Editing indicator:
+Uma vez que o usuário toca no botão **Edit**, entra em modo de Edição,
+que remove tanto o último prompt do usuário quanto a última
+resposta do LLM do histórico de chat,
+coloca o texto do prompt no campo de texto e
+fornece um indicador de Edição:
 
 ![How to exit editing mode](/assets/images/docs/ai-toolkit/how-to-exit-editing-mode.png)
 
-In Editing mode, the user can edit the prompt as they choose
-and submit it to have the LLM produce a response as normal.
-Or, if they change their mind, they can tap the **X**
-near the Editing indicator to cancel their edit and restore
-their previous LLM response.
+No modo de Edição, o usuário pode editar o prompt como desejar
+e enviá-lo para que o LLM produza uma resposta normalmente.
+Ou, se mudarem de ideia, podem tocar no **X**
+perto do indicador de Edição para cancelar sua edição e restaurar
+sua resposta LLM anterior.
 
-## Material and Cupertino
+## Material e Cupertino
 
-When the `LlmChatView` widget is hosted in a [Material app][],
-it uses facilities provided by the Material design language,
-such as Material's [`TextField`][].
-Likewise, when hosted in a [Cupertino app][],
-it uses those facilities, such as [`CupertinoTextField`][].
+Quando o widget `LlmChatView` é hospedado em um [Material app][],
+ele usa facilidades fornecidas pela linguagem de design Material,
+como o [`TextField`][] do Material.
+Da mesma forma, quando hospedado em um [Cupertino app][],
+ele usa essas facilidades, como [`CupertinoTextField`][].
 
 ![Cupertino example app](/assets/images/docs/ai-toolkit/cupertino-chat-app.png)
 
-However, while the chat view supports both the Material and
-Cupertino app types, it doesn't automatically adopt the associated themes.
-Instead, that's set by the `style` property of the `LlmChatView`
-as described in the [Custom styling][] documentation.
+No entanto, enquanto a visualização de chat suporta ambos os tipos de app Material e
+Cupertino, ela não adota automaticamente os temas associados.
+Em vez disso, isso é definido pela propriedade `style` do `LlmChatView`
+conforme descrito na documentação [Custom styling][].
 
 [Cupertino app]: {{site.api}}/flutter/cupertino/CupertinoApp-class.html
 [`CupertinoTextField`]: {{site.api}}/flutter/cupertino/CupertinoTextField-class.html

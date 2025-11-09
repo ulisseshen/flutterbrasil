@@ -1,7 +1,3 @@
----
-ia-translate: true
----
-
 <!-- ia-translated: true -->
 
 [![Logo do Flutter]](https://docs.flutter.dev)

@@ -1,7 +1,3 @@
----
-ia-translate: true
----
-
 <!-- ia-translated: true -->
 
 Se você deseja contribuir para o projeto Flutter,

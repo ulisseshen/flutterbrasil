@@ -1,37 +1,38 @@
 ---
-title: Debug Flutter apps
-description: How to debug your Flutter app.
+ia-translate: true
+title: Depurar apps Flutter
+description: Como depurar seu app Flutter.
 ---
 
 <?code-excerpt path-base="testing/debugging"?>
 
-There's a wide variety of tools and features to help debug
-Flutter applications. Here are some of the available tools:
+Há uma ampla variedade de ferramentas e recursos para ajudar a depurar
+aplicações Flutter. Aqui estão algumas das ferramentas disponíveis:
 
-* [VS Code][] (recommended) and [Android Studio/IntelliJ][],
-  (enabled with the Flutter and Dart plugins)
-  support a built-in source-level debugger with
-  the ability to set breakpoints, step through code,
-  and examine values.
-* [DevTools][], a suite of performance and profiling
-  tools that run in a browser.
-* [Flutter inspector][], a widget inspector available
-  in DevTools, and also directly from Android Studio
-  and IntelliJ (enabled with the Flutter plugin).
-  The inspector allows you to examine a visual
-  representation of the widget tree, inspect
-  individual widgets and their property values,
-  enable the performance overlay, and more.
+* [VS Code][VS Code] (recomendado) e [Android Studio/IntelliJ][Android Studio/IntelliJ],
+  (habilitados com os plugins Flutter e Dart)
+  suportam um debugger integrado em nível de código-fonte com
+  a capacidade de definir breakpoints, percorrer o código passo a passo,
+  e examinar valores.
+* [DevTools][DevTools], um conjunto de ferramentas de performance e profiling
+  que executam em um navegador.
+* [Flutter inspector][Flutter inspector], um inspetor de widgets disponível
+  no DevTools, e também diretamente do Android Studio
+  e IntelliJ (habilitado com o plugin Flutter).
+  O inspector permite que você examine uma representação visual
+  da árvore de widgets, inspecione
+  widgets individuais e seus valores de propriedade,
+  habilite o overlay de performance, e mais.
 
-## Other resources
+## Outros recursos
 
-You might find the following docs useful:
+Você pode achar os seguintes documentos úteis:
 
-* [Performance best practices][]
-* [Flutter performance profiling][]
-* [Use a native debugger][]
-* [Flutter's modes][]
-* [Debugging Flutter apps programmatically][]
+* [Melhores práticas de performance][Performance best practices]
+* [Profiling de performance do Flutter][Flutter performance profiling]
+* [Use um debugger nativo][Use a native debugger]
+* [Modos do Flutter][Flutter's modes]
+* [Depurando apps Flutter programaticamente][Debugging Flutter apps programmatically]
 
 [Debugging Flutter apps programmatically]: /testing/code-debugging
 [Flutter's modes]: /testing/build-modes

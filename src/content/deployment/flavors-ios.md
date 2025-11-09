@@ -1,35 +1,36 @@
 ---
-title: Set up Flutter flavors for iOS and macOS
-shortTitle: Flavors (iOS and macOS)
+ia-translate: true
+title: Configurar flavors Flutter para iOS e macOS
+shortTitle: Flavors (iOS e macOS)
 description: >
-  How to create Flutter flavors for an iOS or macOS app.
+  Como criar flavors Flutter para um app iOS ou macOS.
 ---
 
-This guide shows you how to create Flutter flavors for an
-iOS or macOS app.
+Este guia mostra como criar flavors Flutter para um
+app iOS ou macOS.
 
-## Overview
+## Visão geral
 
-A Flutter flavor is basically a collection of settings that
-define how a specific version of your app should be built
-and run. For example, a flavor could determine which icon,
-app name, API key, feature flag, and logging level is
-associated with a specific version of your app.
+Um flavor Flutter é basicamente uma coleção de configurações que
+definem como uma versão específica do seu app deve ser compilada
+e executada. Por exemplo, um flavor pode determinar qual ícone,
+nome do app, chave de API, feature flag e nível de logging está
+associado a uma versão específica do seu app.
 
-If you want to create Flutter flavors for an iOS app, you'll
-need to do so in Xcode. Xcode does not have a concept called
-"flavor". Instead, you'll need to set up something called a
-scheme and attach custom configurations to it.
+Se você quiser criar flavors Flutter para um app iOS, você
+precisará fazer isso no Xcode. O Xcode não tem um conceito chamado
+"flavor". Em vez disso, você precisará configurar algo chamado
+scheme e anexar configurações personalizadas a ele.
 
-The following illustrates an example of two Flutter flavors
-(staging, production) as Xcode schemes with custom Xcode
-configurations assigned to them:
+O seguinte ilustra um exemplo de dois flavors Flutter
+(staging, production) como schemes do Xcode com configurações personalizadas
+do Xcode atribuídas a eles:
 
 <table class="table table-striped">
   <thead>
     <tr>
       <th>Scheme</th>
-      <th>Configurations for the scheme</th>
+      <th>Configurações para o scheme</th>
     </tr>
   </thead>
   <tbody>
@@ -52,120 +53,120 @@ configurations assigned to them:
   </tbody>
 </table>
 
-## Configure Xcode schemes
+## Configurar schemes do Xcode
 
-The following steps show how to configure two Xcode schemes
-called `staging` and `production` for your Flutter iOS
-project. You can also use these steps to set up a
-macOS project by replacing any reference to `iOS`
-with `macOS`.
+Os seguintes passos mostram como configurar dois schemes do Xcode
+chamados `staging` e `production` para seu projeto Flutter iOS.
+Você também pode usar esses passos para configurar um
+projeto macOS substituindo qualquer referência a `iOS`
+por `macOS`.
 
-For a seamless workflow, we've started with a
-new Flutter project called `flavors_example`, but you can
-always start with an existing project.
+Para um fluxo de trabalho perfeito, começamos com um
+novo projeto Flutter chamado `flavors_example`, mas você pode
+sempre começar com um projeto existente.
 
-1.  Create a new Flutter project called `flavors_example`.
+1.  Crie um novo projeto Flutter chamado `flavors_example`.
 
     ```console title="console"
     $ flutter create flavors_example
     ```
 
-1.  Open the default Xcode workspace for the iOS version of
-    the `flavors_example` project.
+1.  Abra o workspace padrão do Xcode para a versão iOS do
+    projeto `flavors_example`.
 
     ```console title="console"
     $ cd flavors_example && open ios/Runner.xcworkspace
     ```
 
-1.  Open the `flavors_example` project in the
-    Xcode project navigator:
+1.  Abra o projeto `flavors_example` no
+    navegador de projetos do Xcode:
 
-    * Open the **project navigator**
+    * Abra o **project navigator**
       (**View** > **Navigators** > **Project**).
 
-    * In the **project navigator**, at the top, select
+    * No **project navigator**, no topo, selecione
       **Runner**.
 
-1.  Create schemes in Xcode:
+1.  Crie schemes no Xcode:
 
-    * Open the **New Scheme** window
+    * Abra a janela **New Scheme**
       (**Product > Scheme > New Scheme**).
 
-    * In the **Target** field, select **Runner**.
+    * No campo **Target**, selecione **Runner**.
 
-    * In the **Name** box, enter `staging`.
+    * Na caixa **Name**, digite `staging`.
 
-    * Click **Okay** to add the new scheme.
+    * Clique em **Okay** para adicionar o novo scheme.
 
-    * Repeat the previous steps for a scheme called
+    * Repita os passos anteriores para um scheme chamado
       `production`.
 
-    * When finished, check to make sure that you
-      have the following schemes:
+    * Quando terminar, verifique para ter certeza de que você
+      tem os seguintes schemes:
 
       ![Schemes for Flutter flavors](/assets/images/docs/flavors/flavors-ios-schemes.png){:width="100%"}
 
     :::note
-    By default the new schemes are shared. The schemes must
-    be shared for Flutter flavors to work properly. To
-    double-check that sharing is enabled, open the
-    **Manage Schemes** window
-    (**Product > Scheme > Manage Schemes**) and make sure
-    that the **Shared** checkbox to the right of your new
-    scheme is checked.
+    Por padrão, os novos schemes são compartilhados. Os schemes devem
+    ser compartilhados para que os flavors Flutter funcionem corretamente. Para
+    verificar novamente se o compartilhamento está ativado, abra a
+    janela **Manage Schemes**
+    (**Product > Scheme > Manage Schemes**) e certifique-se
+    de que a caixa de seleção **Shared** à direita do seu novo
+    scheme esteja marcada.
     :::
 
-1.  Create configurations for the schemes in Xcode:
+1.  Crie configurações para os schemes no Xcode:
 
-    * In the **project navigator**, select **Runner**.
+    * No **project navigator**, selecione **Runner**.
 
-    * In the main window under **PROJECT**, select
+    * Na janela principal em **PROJECT**, selecione
       **Runner**.
 
-    * Open the **Info tab** if it isn’t open.
+    * Abra a aba **Info** se ela não estiver aberta.
 
-    * Go to the **Configurations** section and add new
-      `Debug` configurations.
+    * Vá para a seção **Configurations** e adicione novas
+      configurações `Debug`.
 
-      * Click **+**, select
-        **Duplicate "Debug" configuration**, and name the
-        new configuration `Debug-staging`.
-      * Click **+**, select
-        **Duplicate "Debug" configuration**, and name the
-        new configuration `Debug-production`.
+      * Clique em **+**, selecione
+        **Duplicate "Debug" configuration**, e nomeie a
+        nova configuração como `Debug-staging`.
+      * Clique em **+**, selecione
+        **Duplicate "Debug" configuration**, e nomeie a
+        nova configuração como `Debug-production`.
 
-    * Repeat the previous step for the
-      `Release` configurations and the
-      `Profile` configurations.
+    * Repita o passo anterior para as
+      configurações `Release` e as
+      configurações `Profile`.
 
-    * When finished, check to make sure that you
-      have the following configurations:
+    * Quando terminar, verifique para ter certeza de que você
+      tem as seguintes configurações:
 
       ![Scheme configurations for Flutter flavors](/assets/images/docs/flavors/flavors-ios-scheme-configurations.png){:width="100%"}
 
     :::note
-    The scheme name (example: `staging`) that is appended to
-    a configuration name must be lowercase if you want to
-    use it with the Flutter CLI command.
+    O nome do scheme (exemplo: `staging`) que é anexado a
+    um nome de configuração deve estar em minúsculas se você quiser
+    usá-lo com o comando Flutter CLI.
     :::
 
     :::note
-    Your configurations should be based on your
-    `Debug.xconfig`, `Profile.xcconfig`, and
-    `Release.xcconfig` files, not the
-    `Pods-Runner.xcconfigs` file. You can check this by
-    expanding the configuration names in Xcode.
+    Suas configurações devem ser baseadas nos seus
+    arquivos `Debug.xconfig`, `Profile.xcconfig`, e
+    `Release.xcconfig`, não no
+    arquivo `Pods-Runner.xcconfigs`. Você pode verificar isso
+    expandindo os nomes de configuração no Xcode.
     :::
 
-1.  Assign the configurations to the schemes in Xcode:
+1.  Atribua as configurações aos schemes no Xcode:
 
-    * Open the **Manage Schemes** window
+    * Abra a janela **Manage Schemes**
       (**Product > Scheme > Manage Schemes**).
 
-    * Select the `staging` scheme and edit it.
+    * Selecione o scheme `staging` e edite-o.
 
-    * In the following tabs, update the
-      **Build Configuration** field as follows:
+    * Nas seguintes abas, atualize o
+      campo **Build Configuration** da seguinte forma:
 
       * **Run**: `Debug-staging`
       * **Test**: `Debug-staging`
@@ -173,125 +174,125 @@ always start with an existing project.
       * **Analyze**: `Debug-staging`
       * **Archive**: `Release-staging`
 
-    * Click **Close**.
+    * Clique em **Close**.
 
-    * Repeat the previous steps for the `production` scheme.
+    * Repita os passos anteriores para o scheme `production`.
 
-1.  If you are working with a pre-existing Flutter project
-    that has at least one Podfile, update it. For more
-    information, see [Update Podfiles][].
+1.  Se você está trabalhando com um projeto Flutter pré-existente
+    que tem pelo menos um Podfile, atualize-o. Para mais
+    informações, veja [Update Podfiles][].
 
-1.  To make sure that you've set up everything correctly,
-    run your app on the new schemes in Xcode. You won't see
-    any differences because the configuration settings
-    haven't changed, but you do want to make sure that the
-    app can run.
+1.  Para ter certeza de que você configurou tudo corretamente,
+    execute seu app nos novos schemes no Xcode. Você não verá
+    diferenças porque as configurações
+    não mudaram, mas você quer ter certeza de que o
+    app pode executar.
 
-    * Select the `staging` scheme
+    * Selecione o scheme `staging`
       (**Product > Schemes > staging**).
 
-    * To the right of `staging` in the toolbar,
-      select the iOS device you want to test against. In
-      the following example, the device is `iPhone 16 Pro`.
+    * À direita de `staging` na barra de ferramentas,
+      selecione o dispositivo iOS que você quer testar. No
+      exemplo a seguir, o dispositivo é `iPhone 16 Pro`.
 
       ![Run a Flutter flavor](/assets/images/docs/flavors/flavors-ios-test-scheme.png){:width="100%"}
 
-    * Run the app scheme (**Product > Run**).
+    * Execute o scheme do app (**Product > Run**).
 
-    * Repeat the previous steps for the `production` scheme.
+    * Repita os passos anteriores para o scheme `production`.
 
-1.  If everything runs, you're ready to customize your
-    configurations. For more information, see
+1.  Se tudo executar, você está pronto para personalizar suas
+    configurações. Para mais informações, veja
     [Customize configurations][].
 
 [Update Podfiles]: #update-podfiles
 [Customize configurations]: #customize-configurations
 
-## Launch an Xcode scheme
+## Iniciar um scheme do Xcode {:#launch-an-xcode-scheme}
 
-After you've created the schemes for an iOS app in
-Xcode, you can launch a specific scheme through Xcode or
-Flutter. You can also use these steps to launch a macOS
-project by replacing any reference to `iOS` with `macOS`.
+Depois de criar os schemes para um app iOS no
+Xcode, você pode iniciar um scheme específico através do Xcode ou
+Flutter. Você também pode usar esses passos para iniciar um projeto
+macOS substituindo qualquer referência a `iOS` por `macOS`.
 
-### Use the flavor flag (Flutter CLI)
+### Use a flag flavor (Flutter CLI)
 
-You can launch an Xcode scheme in `Debug` mode with the
-Flutter CLI using the following steps:
+Você pode iniciar um scheme do Xcode no modo `Debug` com o
+Flutter CLI usando os seguintes passos:
 
-1.  In your IDE, start the iOS simulator.
+1.  No seu IDE, inicie o simulador iOS.
 
-1.  In the console, navigate to the
-    `flavors_example` directory and enter the following
-    command:
+1.  No console, navegue até o
+    diretório `flavors_example` e digite o seguinte
+    comando:
 
     ```console title="console"
     $ flutter run --flavor <xcode_scheme_name>
     ```
 
-    * `<xcode_scheme_name>`: Replace this with the name of
-      your Xcode scheme (for example, `staging` or
+    * `<xcode_scheme_name>`: Substitua isso pelo nome do
+      seu scheme do Xcode (por exemplo, `staging` ou
       `production`).
 
-    Example:
+    Exemplo:
 
     ```console title="console"
     $ flutter run --flavor staging
     ```
 
-### Use the run command (Xcode)
+### Use o comando run (Xcode)
 
-You can launch a specific scheme in Xcode using the
-following steps:
+Você pode iniciar um scheme específico no Xcode usando os
+seguintes passos:
 
-1.  Select the scheme you want to test
+1.  Selecione o scheme que você quer testar
     (**Product > Schemes > Choose scheme**).
 
-1.  Next to the scheme name in the toolbar, select the
-    device you want to test against.
+1.  Ao lado do nome do scheme na barra de ferramentas, selecione o
+    dispositivo que você quer testar.
 
-1.  Run the scheme for your app
+1.  Execute o scheme para seu app
     (**Product > Run**).
 
-## Customize configurations
+## Personalizar configurações {:#customize-configurations}
 
-After you've added Xcode schemes, you can customize them for
-your iOS app. You can also use these steps to configure a
-macOS project by replacing any reference to `iOS` with
+Depois de adicionar schemes do Xcode, você pode personalizá-los para
+seu app iOS. Você também pode usar esses passos para configurar um
+projeto macOS substituindo qualquer referência a `iOS` por
 `macOS`.
 
-### Create distinct app display names {: #create_a_distinct_app_display_name }
+### Criar nomes de exibição de app distintos {: #create_a_distinct_app_display_name }
 
-If you have multiple schemes, a distinct app name can
-quickly identify which scheme your deployed app is using.
+Se você tem múltiplos schemes, um nome de app distinto pode
+identificar rapidamente qual scheme seu app implantado está usando.
 
 <img src="/assets/images/docs/flavors/flavors-ios-app-names.png" alt="Rename a Flutter flavor" width="50%">
 
-The following steps show how to add distinct app display
-names in Xcode for two schemes called `staging` and
-`production` in a project called `flavors_example`.
+Os seguintes passos mostram como adicionar nomes de exibição de app distintos
+no Xcode para dois schemes chamados `staging` e
+`production` em um projeto chamado `flavors_example`.
 
-1.  Create user-defined settings in Xcode:
+1.  Crie configurações definidas pelo usuário no Xcode:
 
-    * Open the **project navigator**
+    * Abra o **project navigator**
       (**View > Navigators > Project**).
 
-    * In the **project navigator**, at the top, select
+    * No **project navigator**, no topo, selecione
       **Runner**.
 
-    * In the main window under **TARGETS**, select
+    * Na janela principal em **TARGETS**, selecione
       **Runner**.
 
-    * Open the **Build Settings** tab.
+    * Abra a aba **Build Settings**.
 
-    * To the left of the Basic tab, click **+** and select
+    * À esquerda da aba Basic, clique em **+** e selecione
       **Add User-Defined Setting**.
 
-    * Create a setting named `APP_DISPLAY_NAME`.
+    * Crie uma configuração chamada `APP_DISPLAY_NAME`.
 
-    * Expand the **APP_DISPLAY_NAME** setting.
+    * Expanda a configuração **APP_DISPLAY_NAME**.
 
-    * Assign the following values to the following keys:
+    * Atribua os seguintes valores às seguintes chaves:
 
       * **Debug-production**: `Flavors prod`
       * **Debug-staging**: `Flavors staging`
@@ -300,86 +301,86 @@ names in Xcode for two schemes called `staging` and
       * **Release-production**: `Flavors prod`
       * **Release-staging**: `Flavors staging`
 
-1.  Update `Info.plist` in Xcode:
+1.  Atualize `Info.plist` no Xcode:
 
-    * In the project navigator, select
-      **Runner > Runner > Info** to open
+    * No navegador de projetos, selecione
+      **Runner > Runner > Info** para abrir
       `flavor_test/ios/Runner/Info.plist`.
 
-    * Under **Information Property List**, find the
-      following key and update the value for it:
+    * Em **Information Property List**, encontre a
+      seguinte chave e atualize o valor para ela:
 
       * **Key**: `CFBundleDisplayName`
       * **Value**: `$(APP_DISPLAY_NAME)`
 
-1.  Launch the app for each scheme (`staging`, `production`)
-    and check to make sure that the app display name has
-    changed for each. To launch a scheme, see the steps in
+1.  Inicie o app para cada scheme (`staging`, `production`)
+    e verifique para ter certeza de que o nome de exibição do app mudou
+    para cada um. Para iniciar um scheme, veja os passos em
     [Launch an Xcode scheme][].
 
 [Launch an Xcode scheme]: #launch-an-xcode-scheme
 
-### Create distinct icons
+### Criar ícones distintos
 
-If you have multiple schemes, a distinct icon for each
-configuration can help you quickly identify which scheme
-your deployed app is using.
+Se você tem múltiplos schemes, um ícone distinto para cada
+configuração pode ajudá-lo a identificar rapidamente qual scheme
+seu app implantado está usando.
 
 <img src="/assets/images/docs/flavors/flavors-ios-icons.png" alt="Rename a Flutter flavor" width="50%">
 
-The following steps show how to add a distinct icon in
-Xcode for two schemes called `staging` and `production` in
-an iOS project called `flavors_example`.
+Os seguintes passos mostram como adicionar um ícone distinto no
+Xcode para dois schemes chamados `staging` e `production` em
+um projeto iOS chamado `flavors_example`.
 
-1.  Prepare your icons:
+1.  Prepare seus ícones:
 
-    * Design your staging icon and production icon in the
-      design tool of your choice.
+    * Projete seu ícone de staging e ícone de production na
+      ferramenta de design de sua escolha.
 
-    * Generate versions of the staging icon and production
-      icon in the sizes that you need. Save them in
-      PNG format.
+    * Gere versões do ícone de staging e ícone de production
+      nos tamanhos que você precisa. Salve-os em
+      formato PNG.
 
       :::note
-      You can use a tool like [App Icon Generator][]
-      to generate the versions of your icons.
+      Você pode usar uma ferramenta como [App Icon Generator][]
+      para gerar as versões de seus ícones.
       :::
 
-1.  Add the icons to your Xcode project:
+1.  Adicione os ícones ao seu projeto Xcode:
 
-    * Open the **project navigator**
+    * Abra o **project navigator**
       (**View > Navigators > Project**).
 
-    * In the **project navigator**, select
-      **Runner > Runner > Assets** to open the
-      **Assets** window.
+    * No **project navigator**, selecione
+      **Runner > Runner > Assets** para abrir a
+      janela **Assets**.
 
-    * Complete the following steps for the staging icon:
+    * Complete os seguintes passos para o ícone de staging:
 
-      * Click **+  > iOS > iOS App icon**.
+      * Clique em **+  > iOS > iOS App icon**.
 
-      * Name the icon `AppIcon-staging`.
+      * Nomeie o ícone como `AppIcon-staging`.
 
-      * Drag your staging icons into the
-        **AppIcon-staging** window and make sure the icons
-        are assigned to the correct sizes.
+      * Arraste seus ícones de staging para a
+        janela **AppIcon-staging** e certifique-se de que os ícones
+        estão atribuídos aos tamanhos corretos.
 
-    * Repeat the previous step for the production icon.
+    * Repita o passo anterior para o ícone de production.
 
-1.  Connect the icons to your schemes:
+1.  Conecte os ícones aos seus schemes:
 
-    * Open the **project navigator**.
+    * Abra o **project navigator**.
 
-    * In the main window under **TARGETS**, select
+    * Na janela principal em **TARGETS**, selecione
       **Runner**.
 
-    * Open the **General** tab if it's not already open.
+    * Abra a aba **General** se ela ainda não estiver aberta.
 
-    * Go to the **Apps Icons and Launch Screen** section and
-      expand it.
+    * Vá para a seção **Apps Icons and Launch Screen** e
+      expanda-a.
 
-    * To the right of the **App icon** field, click
-      **+** and update the fields as follows:
+    * À direita do campo **App icon**, clique em
+      **+** e atualize os campos da seguinte forma:
 
       * **Debug-staging**: `AppIcon-staging`
       * **Profile-staging**: `AppIcon-staging`
@@ -388,44 +389,44 @@ an iOS project called `flavors_example`.
       * **Profile-production**: `AppIcon-production`
       * **Release-production**: `AppIcon-production`
 
-1.  Launch the app for each scheme (`staging`, `production`)
-    and check to make sure that the app icon has
-    changed for each. To launch a scheme, see the steps in
+1.  Inicie o app para cada scheme (`staging`, `production`)
+    e verifique para ter certeza de que o ícone do app mudou
+    para cada um. Para iniciar um scheme, veja os passos em
     [Launch an Xcode scheme][].
 
 [Launch an Xcode scheme]: #launch-an-xcode-scheme
 [App Icon Generator]: https://www.appicon.co/
 
-### Add distinct bundle identifiers
+### Adicionar identificadores de bundle distintos
 
-A bundle identifier is a unique identifier for your
-application on Apple's platforms. If you are using multiple
-Xcode schemes as Flutter flavors, you can have Apple treat
-each scheme as a separate application. To do this, you need
-to assign a different bundle identifier to each scheme.
-This allows you to test new features or bug fixes in one
-version of the app (for example `staging`) without affecting
-another version of the app (for example, `production`).
+Um identificador de bundle é um identificador único para sua
+aplicação nas plataformas Apple. Se você está usando múltiplos
+schemes do Xcode como flavors Flutter, você pode fazer com que a Apple trate
+cada scheme como uma aplicação separada. Para fazer isso, você precisa
+atribuir um identificador de bundle diferente a cada scheme.
+Isso permite que você teste novos recursos ou correções de bugs em uma
+versão do app (por exemplo `staging`) sem afetar
+outra versão do app (por exemplo, `production`).
 
-The following steps show how to set a unique
-bundle identifier for two Xcode schemes called `staging`
-and `production` in an iOS project called `flavors_example`.
+Os seguintes passos mostram como definir um identificador de
+bundle único para dois schemes do Xcode chamados `staging`
+e `production` em um projeto iOS chamado `flavors_example`.
 
-1.  In Xcode, open the **project navigator**
+1.  No Xcode, abra o **project navigator**
     (**View > Navigators > Project**).
 
-1.  In the main window under **TARGETS**, select
+1.  Na janela principal em **TARGETS**, selecione
     **Runner**.
 
-1.  Open the **Build Settings** tab.
+1.  Abra a aba **Build Settings**.
 
-1.  Navigate to the **Packaging** section.
+1.  Navegue até a seção **Packaging**.
 
-1.  Expand the **Product Bundle Identifier** setting to
-    see the different build configurations.
+1.  Expanda a configuração **Product Bundle Identifier** para
+    ver as diferentes configurações de build.
 
-1.  For each scheme's build configuration, set the
-    desired bundle identifier. For example:
+1.  Para a configuração de build de cada scheme, defina o
+    identificador de bundle desejado. Por exemplo:
 
     *   Debug-staging, Profile-staging, Release-staging:
 
@@ -436,40 +437,40 @@ and `production` in an iOS project called `flavors_example`.
 
         `com.example.flavorsExample`
 
-1.  Ensure that these bundle identifiers are included in
-    your App ID and your App ID is [registered in your Apple Developer account][].
+1.  Garanta que esses identificadores de bundle estão incluídos no
+    seu App ID e que seu App ID está [registrado na sua conta Apple Developer][registered in your Apple Developer account].
 
 [registered in your Apple Developer account]: https://developer.apple.com/help/account/identifiers/register-an-app-id/
 
-### Bundle assets
+### Bundle de assets
 
-If you have assets that are only used in a specific flavor
-in your app, you can configure them to only be bundled into
-your app when launching that flavor. This prevents your
-app bundle size from being bloated by unused assets. To
-bundle assets for each flavor, add the `flavors` subfield
-to the `assets` field in your project's pubspec. To learn
-more, see the [`assets` field][] in
-[Flutter pubspec options][].
+Se você tem assets que são usados apenas em um flavor específico
+no seu app, você pode configurá-los para serem incluídos no bundle
+apenas quando iniciar esse flavor. Isso evita que o
+tamanho do bundle do seu app seja inflado por assets não utilizados. Para
+incluir assets no bundle para cada flavor, adicione o subcampo `flavors`
+ao campo `assets` no pubspec do seu projeto. Para saber
+mais, veja o [campo `assets`][`assets` field] em
+[opções pubspec do Flutter][Flutter pubspec options].
 
 [`assets` field]: /tools/pubspec#assets
 [Flutter pubspec options]: /tools/pubspec
 
-### Update Podfiles
+### Atualizar Podfiles {:#update-podfiles}
 
-If you are creating new Xcode schemes for a Flutter iOS
-project and you have an iOS Podfile in an existing
-Flutter project, you must update the Flutter iOS Podfile to
-match the changes you made in Xcode.
+Se você está criando novos schemes do Xcode para um projeto Flutter iOS
+e você tem um Podfile iOS em um projeto
+Flutter existente, você deve atualizar o Podfile iOS do Flutter para
+corresponder às mudanças que você fez no Xcode.
 
-The following steps show how to update your iOS Podfile to
-include two new Xcode schemes called `staging` and
-`production` in a Flutter project called `flavors_example`.
-You can also use these steps to update a macOS
-project by replacing any reference to `iOS` with `macOS`.
+Os seguintes passos mostram como atualizar seu Podfile iOS para
+incluir dois novos schemes do Xcode chamados `staging` e
+`production` em um projeto Flutter chamado `flavors_example`.
+Você também pode usar esses passos para atualizar um projeto
+macOS substituindo qualquer referência a `iOS` por `macOS`.
 
-1. In your IDE, open the `ios/Podfile` file.
-1. Make the following updates and save your changes.
+1. No seu IDE, abra o arquivo `ios/Podfile`.
+1. Faça as seguintes atualizações e salve suas mudanças.
 
     ```ruby title="flavors_example/ios/Podfile"
     project 'Runner', {
@@ -486,15 +487,15 @@ project by replacing any reference to `iOS` with `macOS`.
       ...
     ```
 
-### Add unique build settings
+### Adicionar configurações de build únicas
 
-You can use [build settings][] to govern your iOS build
-process from compilation and linking to debugging and
-distribution. One way that you can use build settings
-with Flutter flavors is to assign those build settings
-to Xcode build configurations. For example, you might want
-to assign different API URLs to  `Debug-staging` and
-`Debug-production`. For example:
+Você pode usar [configurações de build][build settings] para governar seu processo de build iOS
+desde compilação e vinculação até depuração e
+distribuição. Uma maneira de usar configurações de build
+com flavors Flutter é atribuir essas configurações de build
+a configurações de build do Xcode. Por exemplo, você pode querer
+atribuir URLs de API diferentes para `Debug-staging` e
+`Debug-production`. Por exemplo:
 
 ```plaintext title="debug-staging-settings.xcconfig"
 # Debug-staging build settings
@@ -506,26 +507,26 @@ API_BASE_URL = staging.flavors.com/api
 API_BASE_URL = flavors.com/api
 ```
 
-If you would like to add additional build settings for
-a specific build configuration, see Apple's
+Se você deseja adicionar configurações de build adicionais para
+uma configuração de build específica, veja o documento da Apple
 [Adding a build configuration file to your project][].
 
 [build settings]: https://developer.apple.com/documentation/xcode/build-settings-reference/
 [Adding a build configuration file to your project]: https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
 
-### Add additional customizations
+### Adicionar personalizações adicionais
 
-This document contains a few common Xcode scheme
-configurations, but there are many more that you can apply.
-To learn about them, see
+Este documento contém algumas configurações de scheme do Xcode
+comuns, mas há muitas mais que você pode aplicar.
+Para saber mais sobre elas, veja
 [Customizing the build schemes for a project][].
 
 [Customizing the build schemes for a project]: https://developer.apple.com/documentation/xcode/customizing-the-build-schemes-for-a-project
 
-## More information
+## Mais informações
 
-For more information on creating and using flavors, check
-out the following resources:
+Para mais informações sobre como criar e usar flavors, confira
+os seguintes recursos:
 
 * [How to Setup Flutter & Firebase with Multiple Flavors
   using the FlutterFire CLI][flutterfireCLI]

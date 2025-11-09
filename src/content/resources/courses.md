@@ -1,33 +1,34 @@
 ---
-title: Online courses
-description: An index of online courses teaching Flutter development.
+ia-translate: true
+title: Cursos online
+description: Um índice de cursos online ensinando desenvolvimento Flutter.
 showBreadcrumbs: false
 ---
 
-Learn how to build Flutter apps with these video courses.
-Before signing up for a course, verify that it includes
-up-to-date information, such as null-safe Dart code.
-These courses are listed alphabetically.
-To include your course, [submit a PR][]:
+Aprenda como construir apps Flutter com estes cursos em vídeo.
+Antes de se inscrever em um curso, verifique se ele inclui
+informações atualizadas, como código Dart null-safe.
+Estes cursos estão listados em ordem alfabética.
+Para incluir seu curso, [envie um PR][submit a PR]:
 
-* [20 Hour Dart & Flutter YT Course For Beginners][] by Rivaan Ranawat
-* [The Best Flutter Course on the Internet][] by Tadas Petra & Robert Brunhage
-* [Flutter in Production][] by Andrea Bizzotto
-* [Flutter Foundations][] by Andrea Bizzotto
-* [Flutter & Firebase Masterclass][] by Andrea Bizzotto
-* [Flutter Animations Masterclass][] by Andrea Bizzotto
-* [The Complete Dart Developer Guide][] by Andrea Bizzotto
+* [20 Hour Dart & Flutter YT Course For Beginners][] por Rivaan Ranawat
+* [The Best Flutter Course on the Internet][] por Tadas Petra & Robert Brunhage
+* [Flutter in Production][] por Andrea Bizzotto
+* [Flutter Foundations][] por Andrea Bizzotto
+* [Flutter & Firebase Masterclass][] por Andrea Bizzotto
+* [Flutter Animations Masterclass][] por Andrea Bizzotto
+* [The Complete Dart Developer Guide][] por Andrea Bizzotto
 * [Flutter & Dart - The Complete Guide, 2023 Edition][]
-* [The Complete 2021 Flutter Development Bootcamp Using Dart][] by App Brewery
-* [Flutter leicht gemacht 2022 - Zero to Mastery!][] by Max Berktold (German)
-* [Flutter Zero to Hero][] by Veli Bacik (Turkish)
-* [Flutter Bootcamp][] by Rubens de Melo (Portuguese)
-* [Flutter para iniciantes][] by Rubens de Melo (Portuguese)
-* [Dart & Flutter - Zero to Mastery 2023 + Clean Architecture][] by Max Berktold & Max Steffen
-* [Dart & Flutter - Zero to Mastery 2023 - Keiko Corp. Food Reviews App][] by Marco Napoli
-* [Sticky Grouped Headers in Flutter][] by Marco Napoli
-* [Flutter University - From Zero to Mastery][] by Fudeo (Italian)
-* [Tech Idara - Flutter from Basic to Advanced][] by Ishaq Hassan (Urdu)
+* [The Complete 2021 Flutter Development Bootcamp Using Dart][] por App Brewery
+* [Flutter leicht gemacht 2022 - Zero to Mastery!][] por Max Berktold (Alemão)
+* [Flutter Zero to Hero][] por Veli Bacik (Turco)
+* [Flutter Bootcamp][] por Rubens de Melo (Português)
+* [Flutter para iniciantes][] por Rubens de Melo (Português)
+* [Dart & Flutter - Zero to Mastery 2023 + Clean Architecture][] por Max Berktold & Max Steffen
+* [Dart & Flutter - Zero to Mastery 2023 - Keiko Corp. Food Reviews App][] por Marco Napoli
+* [Sticky Grouped Headers in Flutter][] por Marco Napoli
+* [Flutter University - From Zero to Mastery][] por Fudeo (Italiano)
+* [Tech Idara - Flutter from Basic to Advanced][] por Ishaq Hassan (Urdu)
 
 [20 Hour Dart & Flutter YT Course For Beginners]: https://youtu.be/CzRQ9mnmh44
 [The Best Flutter Course on the Internet]: https://www.hungrimind.com/learn/flutter

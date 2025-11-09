@@ -1,39 +1,40 @@
 ---
+ia-translate: true
 title: AI
 description: >
-  Learn about the resources available for adding
-  generative AI to your Flutter application.
+  Aprenda sobre os recursos disponíveis para adicionar
+  IA generativa ao seu aplicativo Flutter.
 showBreadcrumbs: false
 ---
 
 <YouTubeEmbed id="1AuzJEiHjO4" title="Quick overview of the Google AI Dart SDK"></YouTubeEmbed>
 
-The Google AI Dart SDK enables you to use Google's
-state-of-the-art generative AI models (like Gemini)
-to build AI-powered features and applications.
+O Google AI Dart SDK permite que você use os
+modelos de IA generativa de última geração do Google (como Gemini)
+para construir recursos e aplicações com IA.
 
-Integrate features like advanced text generation,
-summarization, chat, and more to your Dart or Flutter
-apps with minimal setup, and deploy across multiple platforms.
+Integre recursos como geração avançada de texto,
+resumo, chat e muito mais aos seus apps Dart ou Flutter
+com configuração mínima e implante em várias plataformas.
 
-The **NEW** [Flutter AI Toolkit][] shows you how to integrate
-an AI generated chatbot into your Flutter app.
-**Check it out!**
+O **NOVO** [Flutter AI Toolkit][] mostra como integrar
+um chatbot gerado por IA no seu app Flutter.
+**Confira!**
 
 [Flutter AI Toolkit]: /ai-toolkit
 
-Other resources include:
+Outros recursos incluem:
 
-* [Get started with the Gemini API in Dart or Flutter apps][tutorial]
-* [Google Generative AI SDK for Dart and Flutter][pkg]
+* [Comece com a API Gemini em apps Dart ou Flutter][tutorial]
+* [SDK de IA Generativa do Google para Dart e Flutter][pkg]
 
 [pkg]: {{site.pub-pkg}}/google_generative_ai
 [tutorial]: https://ai.google.dev/gemini-api/docs/get-started/dart
 
-Also, check out the following videos from Google I/O 2024:
+Além disso, confira os seguintes vídeos do Google I/O 2024:
 
-* [Build generative AI agents with Vertex AI Agent Builder and Flutter][vertex-video]
-* [Gemini API and Flutter: Practical, AI-driven apps with Google AI tools][gemini-video]
+* [Crie agentes de IA generativa com Vertex AI Agent Builder e Flutter][vertex-video]
+* [API Gemini e Flutter: Apps práticos orientados por IA com ferramentas Google AI][gemini-video]
 
 
 [gemini-video]: {{site.youtube-site}}/watch?v=B1RKFL6ASts

@@ -1,6 +1,7 @@
 ---
-title: Networking and data
-description: Learn how to network your Flutter app.
+ia-translate: true
+title: Networking e dados
+description: Aprenda como adicionar networking ao seu app Flutter.
 prev:
   title: Handling user input
   path: /get-started/fundamentals/user-input
@@ -9,20 +10,20 @@ next:
   path: /get-started/fundamentals/local-caching
 ---
 
-While it's said that "no man is an island",
-a Flutter app without any networking capability
-can feel a tad disconnected.
-This page covers how to add networking features
-to your Flutter app. Your app will retrieve data,
-parse JSON into usable in memory representations,
-and then send data out again.
+Embora seja dito que "nenhum homem é uma ilha",
+um app Flutter sem qualquer capacidade de networking
+pode parecer um tanto desconectado.
+Esta página cobre como adicionar recursos de networking
+ao seu app Flutter. Seu app irá recuperar dados,
+analisar JSON em representações utilizáveis na memória,
+e então enviar dados novamente.
 
 ## Introduction to retrieving data over the network
 
-At it's simplest, assuming you utilize the [`http`][]
-package to adapt to the differences between network access
-from Dart VM based platforms and web browser-based environments,
-making a HTTP `GET` request can be as simple as the following:
+Em sua forma mais simples, assumindo que você utiliza o pacote [`http`][]
+para adaptar às diferenças entre acesso à rede
+de plataformas baseadas em Dart VM e ambientes baseados em navegador web,
+fazer uma requisição HTTP `GET` pode ser tão simples quanto o seguinte:
 
 ```dart
 import 'package:http/http.dart' as http;
@@ -35,19 +36,19 @@ void main() async {
 }
 ```
 
-The following two tutorials show you all of the details
-involved in adding the [`http`][] package to your app,
-whether you are running on Android,
-iOS, inside a web browser, or natively on Windows,
-macOS, or Linux.
-The first tutorial shows you how to make an
-unauthenticated `GET` request to a website,
-parse the retrieved data as `JSON` and then
-display the resulting data. The second tutorial
-builds on the first by adding authentication headers,
-enabling access to web servers requiring authorization.
-The article by the Mozilla Developer Network (MDN)
-gives more background on how authorization works on the web.
+Os dois tutoriais a seguir mostram todos os detalhes
+envolvidos em adicionar o pacote [`http`][] ao seu app,
+seja você executando no Android,
+iOS, dentro de um navegador web, ou nativamente no Windows,
+macOS, ou Linux.
+O primeiro tutorial mostra como fazer uma
+requisição `GET` não autenticada para um site,
+analisar os dados recuperados como `JSON` e então
+exibir os dados resultantes. O segundo tutorial
+se baseia no primeiro adicionando cabeçalhos de autenticação,
+permitindo acesso a servidores web que requerem autorização.
+O artigo da Mozilla Developer Network (MDN)
+fornece mais contexto sobre como a autorização funciona na web.
 
 * Tutorial: [Fetch data from the internet][]
 * Tutorial: [Make authenticated requests][]
@@ -55,39 +56,39 @@ gives more background on how authorization works on the web.
 
 ## Making data retrieved from the network useful
 
-Once you retrieve data from the network,
-you need a way to convert the data from the network
-into something that you can easily work with in Dart.
-The tutorials in the previous section used hand rolled Dart
-to convert network data into an in-memory representation.
-In this section,
-you'll see other options for handling this conversion.
-The first links to a YouTube video showing an overview
-of the [`freezed` package][].
-The second links to a codelab that covers patterns
-and records using a case study of parsing JSON.
+Uma vez que você recupera dados da rede,
+você precisa de uma maneira de converter os dados da rede
+em algo com o qual você possa trabalhar facilmente em Dart.
+Os tutoriais na seção anterior usaram código Dart
+manual para converter dados de rede em uma representação na memória.
+Nesta seção,
+você verá outras opções para lidar com essa conversão.
+O primeiro link para um vídeo do YouTube mostrando uma visão geral
+do [pacote `freezed`][`freezed` package].
+O segundo link para um codelab que cobre padrões
+e records usando um estudo de caso de análise de JSON.
 
 * YouTube video: [Freezed (Package of the Week)][]
 * Codelab: [Dive into Dart's patterns and records][]
 
 ## Going both ways, getting data out again
 
-Now that you've mastered the art of retrieving data,
-it's time to look at pushing data out.
-This information starts with sending data to the network,
-but then dives into asynchronicity. The truth is,
-once you are in a conversation over the network,
-you'll need to deal with the fact that web servers
-that are physically far away can take a while to respond,
-and you can't stop rendering to the screen
-while you wait for packets to round trip.
-Dart has great support for asynchronicity,
-as does Flutter.
-You'll learn all about Dart's support in a tutorial,
-then see Flutter's capability covered in a
-Widget of the Week video.
-Once you complete that, you'll learn how to debug
-network traffic using DevTool's Network View.
+Agora que você dominou a arte de recuperar dados,
+é hora de olhar para o envio de dados.
+Esta informação começa com o envio de dados para a rede,
+mas então mergulha na assincronicidade. A verdade é,
+uma vez que você está em uma conversa pela rede,
+você precisará lidar com o fato de que servidores web
+que estão fisicamente distantes podem levar um tempo para responder,
+e você não pode parar de renderizar na tela
+enquanto espera que os pacotes façam a viagem de ida e volta.
+Dart tem ótimo suporte para assincronicidade,
+assim como Flutter.
+Você aprenderá tudo sobre o suporte do Dart em um tutorial,
+então verá a capacidade do Flutter coberta em um
+vídeo Widget of the Week.
+Depois de concluir isso, você aprenderá como depurar
+tráfego de rede usando o Network View do DevTools.
 
 * Tutorial: [Send data to the internet][]
 * Tutorial: [Asynchronous programming: futures, async, await][]
@@ -96,24 +97,24 @@ network traffic using DevTool's Network View.
 
 ## Extension material
 
-Now that you've mastered using Flutter's networking APIs,
-it helps to see Flutter's network usage in context.
-The first codelab (ostensibly on creating Adaptive apps in Flutter),
-uses a web server written in Dart to work around the web browsers'
-[Cross-Origin Resource Sharing (CORS) restrictions][].
+Agora que você dominou o uso das APIs de networking do Flutter,
+ajuda ver o uso de rede do Flutter em contexto.
+O primeiro codelab (ostensivamente sobre criar apps adaptativos no Flutter),
+usa um servidor web escrito em Dart para contornar as
+[restrições de Cross-Origin Resource Sharing (CORS)][Cross-Origin Resource Sharing (CORS) restrictions] dos navegadores web.
 
 :::note
-If you've already worked through this codelab
-on the [layout][] page, feel free to skip this step.
+Se você já trabalhou neste codelab
+na página de [layout][], sinta-se livre para pular esta etapa.
 :::
 
 [layout]: /get-started/fundamentals/layout
 
-Next, a long-form YouTube video where
-Flutter DevRel alumnus, Fitz,
-talks about how the location of data matters for Flutter apps.
-Finally, a really useful series of articles by Flutter GDE
-Anna (Domashych) Leushchenko covering advanced networking in Flutter.
+Em seguida, um vídeo longo do YouTube onde
+o ex-aluno do Flutter DevRel, Fitz,
+fala sobre como a localização dos dados importa para apps Flutter.
+Finalmente, uma série realmente útil de artigos da Flutter GDE
+Anna (Domashych) Leushchenko cobrindo networking avançado no Flutter.
 
 * Codelab: [Adaptive apps in Flutter][]
 * Video: [Keeping it local: Managing a Flutter app's data][]
@@ -139,7 +140,7 @@ Anna (Domashych) Leushchenko covering advanced networking in Flutter.
 
 ## Feedback
 
-As this section of the website is evolving,
-we [welcome your feedback][]!
+À medida que esta seção do site está evoluindo,
+nós [agradecemos seu feedback][welcome your feedback]!
 
 [welcome your feedback]: https://google.qualtrics.com/jfe/form/SV_6A9KxXR7XmMrNsy?page="networking"

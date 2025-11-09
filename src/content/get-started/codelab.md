@@ -1,24 +1,25 @@
 ---
-title: Write your first Flutter app
-description: How to write an app in Flutter.
-shortTitle: Write your first app
+ia-translate: true
+title: Escreva seu primeiro app Flutter
+description: Como escrever um app em Flutter.
+shortTitle: Escreva seu primeiro app
 prev:
-  title: Set up Flutter
+  title: Configure Flutter
   path: /get-started
 next:
-  title: Learn more
+  title: Aprenda mais
   path: /get-started/learn-flutter
 showToc: false
 ---
 
-You are now ready to start the "First Flutter app" codelab.
-In about an hour and a half,
-you will learn the basics of Flutter
-by creating an app
-that works on mobile, desktop, and web.
+Você está pronto para começar o codelab "First Flutter app".
+Em cerca de uma hora e meia,
+você aprenderá o básico de Flutter
+criando um app
+que funciona em mobile, desktop e web.
 
 <div class="juicy-button-container">
-  <img src="/assets/images/docs/get-started/codelab-goal-background.jpg" alt="The illustration of the initial and the resulting app that you will build in this codelab.">
+  <img src="/assets/images/docs/get-started/codelab-goal-background.jpg" alt="A ilustração do app inicial e do app resultante que você construirá neste codelab.">
 
   {%- comment %}
     The &#9654; character below is the "black right-pointing triangle"
@@ -34,11 +35,11 @@ that works on mobile, desktop, and web.
 </div>
 
 :::tip
-The codelab above walks you through writing your first Flutter
-app for all platforms &mdash; mobile, desktop, and web.
+O codelab acima guia você através da criação do seu primeiro app Flutter
+para todas as plataformas &mdash; mobile, desktop e web.
 :::
 
-If you prefer an instructor-led version of this codelab,
-check out the following workshop:
+Se você prefere uma versão com instrutor deste codelab,
+confira o seguinte workshop:
 
 <YouTubeEmbed id="8sAyPDLorek" title="Building your first Flutter app - with a Codelab!"></YouTubeEmbed>

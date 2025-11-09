@@ -104,7 +104,7 @@ Para saber mais, consulte o [post do blog][flutter-extension-blog] ou
 o [README][flutter-extension].
 
 [flutter-extension]: {{site.github}}/gemini-cli-extensions/flutter
-[flutter-extension-blog]: https://blog.flutterbrasil.dev/meet-the-flutter-extension-for-gemini-cli-f8be3643eaad
+[flutter-extension-blog]: https://blog.flutter.dev/meet-the-flutter-extension-for-gemini-cli-f8be3643eaad
 
 ## Dart and Flutter MCP Server
 

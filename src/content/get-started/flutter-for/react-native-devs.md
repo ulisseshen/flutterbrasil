@@ -1,41 +1,42 @@
 ---
-title: Flutter for React Native developers
-description: Learn how to apply React Native developer knowledge when building Flutter apps.
+ia-translate: true
+title: Flutter para desenvolvedores React Native
+description: Aprenda como aplicar o conhecimento de desenvolvedor React Native ao construir apps Flutter.
 ---
 
 <?code-excerpt path-base="get-started/flutter-for/react_native_devs"?>
 
-This document is for React Native (RN) developers looking to apply their
-existing RN knowledge to build mobile apps with Flutter. If you understand
-the fundamentals of the RN framework then you can use this document as a
-way to get started learning Flutter development.
+Este documento é para desenvolvedores React Native (RN) que buscam aplicar seu
+conhecimento existente de RN para construir apps mobile com Flutter. Se você entende
+os fundamentos do framework RN, então pode usar este documento como uma
+forma de começar a aprender desenvolvimento Flutter.
 
-This document can be used as a cookbook by jumping around and finding
-questions that are most relevant to your needs.
+Este documento pode ser usado como um guia de receitas, navegando e encontrando
+questões que são mais relevantes para suas necessidades.
 
-## Introduction to Dart for JavaScript Developers (ES6)
+## Introdução ao Dart para Desenvolvedores JavaScript (ES6)
 
-Like React Native, Flutter uses reactive-style views. However, while RN
-transpiles to native widgets, Flutter compiles all the way to native code.
-Flutter controls each pixel on the screen, which avoids performance problems
-caused by the need for a JavaScript bridge.
+Assim como React Native, Flutter usa views no estilo reativo. No entanto, enquanto RN
+transpila para widgets nativos, Flutter compila completamente para código nativo.
+Flutter controla cada pixel na tela, o que evita problemas de performance
+causados pela necessidade de uma ponte JavaScript.
 
-Dart is an easy language to learn and offers the following features:
+Dart é uma linguagem fácil de aprender e oferece os seguintes recursos:
 
-* Provides an open-source, scalable programming language for building web,
-  server, and mobile apps.
-* Provides an object-oriented, single inheritance language that uses a C-style
-  syntax that is AOT-compiled into native.
-* Transcompiles optionally into JavaScript.
-* Supports interfaces and abstract classes.
+* Fornece uma linguagem de programação open-source e escalável para construir apps web,
+  de servidor e mobile.
+* Fornece uma linguagem orientada a objetos, com herança única, que usa uma sintaxe estilo C
+  que é compilada AOT para código nativo.
+* Transcompila opcionalmente para JavaScript.
+* Suporta interfaces e classes abstratas.
 
-A few examples of the differences between JavaScript and Dart are described
-below.
+Alguns exemplos das diferenças entre JavaScript e Dart são descritos
+abaixo.
 
-### Entry point
+### Ponto de entrada
 
-JavaScript doesn't have a pre-defined entry
-function&mdash;you define the entry point.
+JavaScript não tem uma função de entrada
+pré-definida&mdash;você define o ponto de entrada.
 
 ```js
 // JavaScript
@@ -44,8 +45,8 @@ function startHere() {
 }
 ```
 
-In Dart, every app must have a top-level `main()` function that serves as the
-entry point to the app.
+No Dart, toda app deve ter uma função `main()` de nível superior que serve como o
+ponto de entrada para a app.
 
 <?code-excerpt "lib/main.dart (main)"?>
 ```dart
@@ -53,11 +54,11 @@ entry point to the app.
 void main() {}
 ```
 
-Try it out in [DartPad][DartPadA].
+Experimente no [DartPad][DartPadA].
 
-### Printing to the console
+### Imprimindo no console
 
-To print to the console in Dart, use `print()`.
+Para imprimir no console em Dart, use `print()`.
 
 ```js
 // JavaScript
@@ -70,22 +71,22 @@ console.log('Hello world!');
 print('Hello world!');
 ```
 
-Try it out in [DartPad][DartPadB].
+Experimente no [DartPad][DartPadB].
 
-### Variables
+### Variáveis
 
-Dart is type safe&mdash;it uses a combination of static type checking
-and runtime checks to ensure that a variable's value always matches
-the variable's static type. Although types are mandatory,
-some type annotations are optional because
-Dart performs type inference.
+Dart é type safe&mdash;usa uma combinação de verificação de tipo estática
+e verificações em tempo de execução para garantir que o valor de uma variável sempre corresponda
+ao tipo estático da variável. Embora os tipos sejam obrigatórios,
+algumas anotações de tipo são opcionais porque
+Dart realiza inferência de tipo.
 
-#### Creating and assigning variables
+#### Criando e atribuindo variáveis
 
-In JavaScript, variables cannot be typed.
+Em JavaScript, variáveis não podem ser tipadas.
 
-In [Dart][], variables must either be explicitly
-typed or the type system must infer the proper type automatically.
+No [Dart][], variáveis devem ser explicitamente
+tipadas ou o sistema de tipos deve inferir o tipo apropriado automaticamente.
 
 ```js
 // JavaScript
@@ -100,22 +101,22 @@ String name = 'dart'; // Explicitly typed as a [String].
 var otherName = 'Dart'; // Inferred [String] type.
 ```
 
-Try it out in [DartPad][DartPadC].
+Experimente no [DartPad][DartPadC].
 
-For more information, see [Dart's Type System][].
+Para mais informações, veja [Dart's Type System][].
 
-#### Default value
+#### Valor padrão
 
-In JavaScript, uninitialized variables are `undefined`.
+Em JavaScript, variáveis não inicializadas são `undefined`.
 
-In Dart, uninitialized variables have an initial value of `null`.
-Because numbers are objects in Dart, even uninitialized variables with
-numeric types have the value `null`.
+No Dart, variáveis não inicializadas têm um valor inicial de `null`.
+Como números são objetos em Dart, até mesmo variáveis não inicializadas com
+tipos numéricos têm o valor `null`.
 
 :::note
-As of 2.12, Dart supports [Sound Null Safety][],
-all underlying types are non-nullable by default,
-which must be initialized as a non-nullable value.
+A partir da versão 2.12, Dart suporta [Sound Null Safety][],
+todos os tipos subjacentes são não-anuláveis por padrão,
+que devem ser inicializados como um valor não-anulável.
 :::
 
 ```js
@@ -130,15 +131,15 @@ var name; // == null; raises a linter warning
 int? x; // == null
 ```
 
-Try it out in [DartPad][DartPadD].
+Experimente no [DartPad][DartPadD].
 
-For more information, see the documentation on
-[variables][].
+Para mais informações, veja a documentação sobre
+[variáveis][variables].
 
-### Checking for null or zero
+### Verificando null ou zero
 
-In JavaScript, values of 1 or any non-null objects
-are treated as `true` when using the `==` comparison operator.
+Em JavaScript, valores de 1 ou qualquer objeto não-nulo
+são tratados como `true` ao usar o operador de comparação `==`.
 
 ```js
 // JavaScript
@@ -152,7 +153,7 @@ if (!zero) {
 }
 ```
 
-In Dart, only the boolean value `true` is treated as true.
+No Dart, apenas o valor booleano `true` é tratado como verdadeiro.
 
 <?code-excerpt "lib/main.dart (true)"?>
 ```dart
@@ -167,12 +168,12 @@ if (zero == 0) {
 }
 ```
 
-Try it out in [DartPad][DartPadE].
+Experimente no [DartPad][DartPadE].
 
-### Functions
+### Funções
 
-Dart and JavaScript functions are generally similar.
-The primary difference is the declaration.
+Funções Dart e JavaScript são geralmente similares.
+A diferença principal é a declaração.
 
 ```js
 // JavaScript
@@ -190,20 +191,20 @@ bool fn() {
 }
 ```
 
-Try it out in [DartPad][DartPadF].
+Experimente no [DartPad][DartPadF].
 
-For more information, see the documentation on
-[functions][].
+Para mais informações, veja a documentação sobre
+[funções][functions].
 
-### Asynchronous programming
+### Programação assíncrona
 
 #### Futures
 
-Like JavaScript, Dart supports single-threaded execution. In JavaScript,
-the Promise object represents the eventual completion (or failure)
-of an asynchronous operation and its resulting value.
+Assim como JavaScript, Dart suporta execução single-threaded. Em JavaScript,
+o objeto Promise representa a eventual conclusão (ou falha)
+de uma operação assíncrona e seu valor resultante.
 
-Dart uses [`Future`][] objects to handle this.
+Dart usa objetos [`Future`][] para lidar com isso.
 
 ```js
 // JavaScript
@@ -256,15 +257,15 @@ void main() {
 }
 ```
 
-For more information, see the documentation on
-[`Future`][] objects.
+Para mais informações, veja a documentação sobre
+objetos [`Future`][].
 
-#### `async` and `await`
+#### `async` e `await`
 
-The `async` function declaration defines an asynchronous function.
+A declaração de função `async` define uma função assíncrona.
 
-In JavaScript, the `async` function returns a `Promise`.
-The `await` operator is used to wait for a `Promise`.
+Em JavaScript, a função `async` retorna uma `Promise`.
+O operador `await` é usado para aguardar uma `Promise`.
 
 ```js
 // JavaScript
@@ -291,9 +292,9 @@ async function main() {
 main();
 ```
 
-In Dart, an `async` function returns a `Future`,
-and the body of the function is scheduled for execution later.
-The `await` operator is used to wait for a `Future`.
+No Dart, uma função `async` retorna um `Future`,
+e o corpo da função é agendado para execução posterior.
+O operador `await` é usado para aguardar um `Future`.
 
 <?code-excerpt "lib/async.dart"?>
 ```dart
@@ -326,53 +327,50 @@ void main() async {
 }
 ```
 
-For more information, see the documentation for [async and await][].
+Para mais informações, veja a documentação para [async and await][].
 
-## The basics
+## O básico
 
-### How do I create a Flutter app?
+### Como criar uma app Flutter?
 
-To create an app using React Native,
-you would run `create-react-native-app` from the command line.
+Para criar uma app usando React Native,
+você executaria `create-react-native-app` na linha de comando.
 
 ```console
 $ create-react-native-app <projectname>
 ```
 
-To create an app in Flutter, do one of the following:
+Para criar uma app no Flutter, faça uma das seguintes opções:
 
-* Use an IDE with the Flutter and Dart plugins installed.
-* Use the `flutter create` command from the command line. Make sure that the
-  Flutter SDK is in your PATH.
+* Use uma IDE com os plugins Flutter e Dart instalados.
+* Use o comando `flutter create` na linha de comando. Certifique-se de que o
+  Flutter SDK esteja no seu PATH.
 
 ```console
 $ flutter create <projectname>
 ```
 
-For more information, see [Getting started][], which
-walks you through creating a button-click counter app.
-Creating a Flutter project builds all the files that you
-need to run a sample app on both Android and iOS devices.
+Para mais informações, veja [Getting started][], que
+guia você através da criação de uma app contador de cliques de botão.
+Criar um projeto Flutter cria todos os arquivos necessários para executar uma app de exemplo em dispositivos Android e iOS.
 
-### How do I run my app?
+### Como executar minha app?
 
-In React Native, you would run `npm run` or `yarn run` from the project
-directory.
+No React Native, você executaria `npm run` ou `yarn run` do diretório do projeto.
 
-You can run Flutter apps in a couple of ways:
+Você pode executar apps Flutter de algumas maneiras:
 
-* Use the "run" option in an IDE with the Flutter and Dart plugins.
-* Use `flutter run` from the project's root directory.
+* Use a opção "run" em uma IDE com os plugins Flutter e Dart.
+* Use `flutter run` do diretório raiz do projeto.
 
-Your app runs on a connected device, the iOS simulator,
-or the Android emulator.
+Sua app é executada em um dispositivo conectado, no iOS simulator,
+ou no Android emulator.
 
-For more information, see the Flutter [Getting started][]
-documentation.
+Para mais informações, veja a documentação [Getting started][] do Flutter.
 
-### How do I import widgets?
+### Como importar widgets?
 
-In React Native, you need to import each required component.
+No React Native, você precisa importar cada componente necessário.
 
 ```js
 // React Native
@@ -380,11 +378,11 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 ```
 
-In Flutter, to use widgets from the Material Design library,
-import the `material.dart` package. To use iOS style widgets,
-import the Cupertino library. To use a more basic widget set,
-import the Widgets library.
-Or, you can write your own widget library and import that.
+No Flutter, para usar widgets da biblioteca Material Design,
+importe o pacote `material.dart`. Para usar widgets estilo iOS,
+importe a biblioteca Cupertino. Para usar um conjunto de widgets mais básico,
+importe a biblioteca Widgets.
+Ou, você pode escrever sua própria biblioteca de widgets e importá-la.
 
 <?code-excerpt "lib/imports.dart (imports)"?>
 ```dart
@@ -394,15 +392,15 @@ import 'package:flutter/widgets.dart';
 import 'package:my_widgets/my_widgets.dart';
 ```
 
-Whichever widget package you import,
-Dart pulls in only the widgets that are used in your app.
+Qualquer pacote de widget que você importar,
+Dart extrai apenas os widgets que são usados na sua app.
 
-For more information, see the [Flutter Widget Catalog][].
+Para mais informações, veja o [Flutter Widget Catalog][].
 
-### What is the equivalent of the React Native "Hello world!" app in Flutter?
+### Qual é o equivalente da app React Native "Hello world!" no Flutter?
 
-In React Native, the `HelloWorldApp` class extends `React.Component` and
-implements the render method by returning a view component.
+No React Native, a classe `HelloWorldApp` estende `React.Component` e
+implementa o método render retornando um componente view.
 
 ```js
 // React Native
@@ -429,10 +427,10 @@ const styles = StyleSheet.create({
 export default App;
 ```
 
-In Flutter, you can create an identical "Hello world!" app using the
-`Center` and `Text` widgets from the core widget library.
-The `Center` widget becomes the root of the widget tree and has one child,
-the `Text` widget.
+No Flutter, você pode criar uma app "Hello world!" idêntica usando os
+widgets `Center` e `Text` da biblioteca de widgets core.
+O widget `Center` se torna a raiz da árvore de widgets e tem um filho,
+o widget `Text`.
 
 <?code-excerpt "lib/hello_world.dart"?>
 ```dart
@@ -448,36 +446,35 @@ void main() {
 }
 ```
 
-The following images show the Android and iOS UI for the basic Flutter
-"Hello world!" app.
+As seguintes imagens mostram a UI Android e iOS para a app Flutter
+"Hello world!" básica.
 
 {% render "docs/android-ios-figure-pair.md", image: "react-native/hello-world-basic.png", alt: "Hello world app", class: "border" %}
 
-Now that you've seen the most basic Flutter app, the next section shows how to
-take advantage of Flutter's rich widget libraries to create a modern, polished
-app.
+Agora que você viu a app Flutter mais básica, a próxima seção mostra como
+aproveitar as ricas bibliotecas de widgets do Flutter para criar uma app moderna e polida.
 
-### How do I use widgets and nest them to form a widget tree?
+### Como usar widgets e aninhá-los para formar uma árvore de widgets?
 
-In Flutter, almost everything is a widget.
+No Flutter, quase tudo é um widget.
 
-Widgets are the basic building blocks of an app's user interface.
-You compose widgets into a hierarchy, called a widget tree.
-Each widget nests inside a parent widget
-and inherits properties from its parent.
-Even the application object itself is a widget.
-There is no separate "application" object.
-Instead, the root widget serves this role.
+Widgets são os blocos de construção básicos da interface de usuário de uma app.
+Você compõe widgets em uma hierarquia, chamada de árvore de widgets.
+Cada widget aninha dentro de um widget pai
+e herda propriedades de seu pai.
+Até mesmo o objeto da aplicação em si é um widget.
+Não há um objeto "application" separado.
+Em vez disso, o widget raiz serve esse papel.
 
-A widget can define:
+Um widget pode definir:
 
-* A structural element—like a button or menu
-* A stylistic element—like a font or color scheme
-* An aspect of layout—like padding or alignment
+* Um elemento estrutural—como um botão ou menu
+* Um elemento estilístico—como uma fonte ou esquema de cores
+* Um aspecto de layout—como padding ou alinhamento
 
-The following example shows the "Hello world!" app using widgets from the
-Material library. In this example, the widget tree is nested inside the
-`MaterialApp` root widget.
+O exemplo a seguir mostra a app "Hello world!" usando widgets da
+biblioteca Material. Neste exemplo, a árvore de widgets está aninhada dentro do
+widget raiz `MaterialApp`.
 
 <?code-excerpt "lib/widget_tree.dart"?>
 ```dart
@@ -502,38 +499,38 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-The following images show "Hello world!" built from Material Design widgets.
-You get more functionality for free than in the basic "Hello world!" app.
+As seguintes imagens mostram "Hello world!" construído a partir de widgets Material Design.
+Você obtém mais funcionalidade gratuitamente do que na app "Hello world!" básica.
 
 {% render "docs/android-ios-figure-pair.md", image: "react-native/hello-world.png", alt: "Hello world app" %}
 
-When writing an app, you'll use two types of widgets:
-[`StatelessWidget`][] or [`StatefulWidget`][].
-A `StatelessWidget` is just what it sounds like&mdash;a
-widget with no state. A `StatelessWidget` is created once,
-and never changes its appearance.
-A `StatefulWidget` dynamically changes state based on data
-received, or user input.
+Ao escrever uma app, você usará dois tipos de widgets:
+[`StatelessWidget`][] ou [`StatefulWidget`][].
+Um `StatelessWidget` é exatamente o que parece&mdash;um
+widget sem estado. Um `StatelessWidget` é criado uma vez,
+e nunca muda sua aparência.
+Um `StatefulWidget` muda dinamicamente de estado com base em dados
+recebidos, ou entrada do usuário.
 
-The important difference between stateless and stateful
-widgets is that `StatefulWidget`s have a `State` object
-that stores state data and carries it over
-across tree rebuilds, so it's not lost.
+A diferença importante entre widgets stateless e stateful
+é que `StatefulWidget`s têm um objeto `State`
+que armazena dados de estado e os carrega
+através de reconstruções de árvore, então ele não é perdido.
 
-In simple or basic apps it's easy to nest widgets,
-but as the code base gets larger and the app becomes complex,
-you should break deeply nested widgets into
-functions that return the widget or smaller classes.
-Creating separate functions
-and widgets allows you to reuse the components within the app.
+Em apps simples ou básicas é fácil aninhar widgets,
+mas à medida que a base de código aumenta e a app se torna complexa,
+você deve quebrar widgets profundamente aninhados em
+funções que retornam o widget ou classes menores.
+Criar funções separadas
+e widgets permite que você reutilize os componentes dentro da app.
 
-### How do I create reusable components?
+### Como criar componentes reutilizáveis?
 
-In React Native, you would define a function (or a class) to create a
-reusable component and then use `props` methods to set
-or return properties and values of the selected elements.
-In the example below, the `CustomCard` function is defined
-and then used inside a parent component.
+No React Native, você definiria uma função (ou uma classe) para criar um
+componente reutilizável e então usaria métodos `props` para definir
+ou retornar propriedades e valores dos elementos selecionados.
+No exemplo abaixo, a função `CustomCard` é definida
+e então usada dentro de um componente pai.
 
 ```js
 // React Native
@@ -553,9 +550,9 @@ const CustomCard = ({ index, onPress }) => {
 <CustomCard onPress={this.onPress} index={item.key} />
 ```
 
-In Flutter, define a class to create a custom widget and then reuse the
-widget. You can also define and call a function that returns a
-reusable widget as shown in the `build` function in the following example.
+No Flutter, defina uma classe para criar um widget customizado e então reutilize o
+widget. Você também pode definir e chamar uma função que retorna um
+widget reutilizável como mostrado na função `build` no exemplo a seguir.
 
 <?code-excerpt "lib/components.dart (components)"?>
 ```dart
@@ -597,23 +594,42 @@ class UseCard extends StatelessWidget {
 }
 ```
 
-In the previous example, the constructor for the `CustomCard`
-class uses Dart's curly brace syntax `{ }` to indicate [named parameters][].
+No exemplo anterior, o construtor da classe `CustomCard`
+usa a sintaxe de chaves `{ }` do Dart para indicar [named parameters][].
 
-To require these fields, either remove the curly braces from
-the constructor, or add `required` to the constructor.
+Para tornar esses campos obrigatórios, remova as chaves do
+construtor, ou adicione `required` ao construtor.
 
-The following screenshots show an example of the reusable
-`CustomCard` class.
+As seguintes capturas de tela mostram um exemplo da classe
+`CustomCard` reutilizável.
 
 {% render "docs/android-ios-figure-pair.md", image: "react-native/custom-cards.png", alt: "Custom cards", class: "border" %}
 
-## Project structure and resources
+[Dart]: {{site.dart-site}}/dart-2
+[Dart's Type System]: {{site.dart-site}}/guides/language/sound-dart
+[Sound Null Safety]: {{site.dart-site}}/null-safety
+[variables]: {{site.dart-site}}/language/variables
+[`Future`]: {{site.dart-site}}/tutorials/language/futures
+[async and await]: {{site.dart-site}}/language/async
+[functions]: {{site.dart-site}}/language/functions
+[Getting started]: /get-started
+[Flutter Widget Catalog]: /ui/widgets
+[`StatelessWidget`]: {{site.api}}/flutter/widgets/StatelessWidget-class.html
+[`StatefulWidget`]: {{site.api}}/flutter/widgets/StatefulWidget-class.html
+[named parameters]: {{site.dart-site}}/language/functions#named-parameters
+[DartPadA]: {{site.dartpad}}/?id=0df636e00f348bdec2bc1c8ebc7daeb1
+[DartPadB]: {{site.dartpad}}/?id=cf9e652f77636224d3e37d96dcf238e5
+[DartPadC]: {{site.dartpad}}/?id=3f4625c16e05eec396d6046883739612
+[DartPadD]: {{site.dartpad}}/?id=57ec21faa8b6fe2326ffd74e9781a2c7
+[DartPadE]: {{site.dartpad}}/?id=c85038ad677963cb6dc943eb1a0b72e6
+[DartPadF]: {{site.dartpad}}/?id=5454e8bfadf3000179d19b9bc6be9918
 
-### Where do I start writing the code?
+## Estrutura do projeto e recursos
 
-Start with the `lib/main.dart` file.
-It's autogenerated when you create a Flutter app.
+### Onde começo a escrever o código?
+
+Comece com o arquivo `lib/main.dart`.
+Ele é gerado automaticamente quando você cria uma app Flutter.
 
 <?code-excerpt "lib/examples.dart (main)"?>
 ```dart
@@ -623,15 +639,15 @@ void main() {
 }
 ```
 
-In Flutter, the entry point file is
-`{project_name}/lib/main.dart` and execution
-starts from the `main` function.
+No Flutter, o arquivo de ponto de entrada é
+`{project_name}/lib/main.dart` e a execução
+começa a partir da função `main`.
 
-### How are files structured in a Flutter app?
+### Como os arquivos são estruturados em uma app Flutter?
 
-When you create a new Flutter project,
-it builds the following directory structure.
-You can customize it later, but this is where you start.
+Quando você cria um novo projeto Flutter,
+ele constrói a seguinte estrutura de diretórios.
+Você pode personalizá-la depois, mas é aqui que você começa.
 
 ```plaintext
 ┬
@@ -652,20 +668,20 @@ You can customize it later, but this is where you start.
                    This is equivalent to the package.json file in React Native.
 ```
 
-### Where do I put my resources and assets and how do I use them?
+### Onde coloco meus recursos e assets e como os uso?
 
-A Flutter resource or asset is a file that is bundled and deployed
-with your app and is accessible at runtime.
-Flutter apps can include the following asset types:
+Um recurso ou asset do Flutter é um arquivo que é empacotado e implantado
+com sua app e está acessível em tempo de execução.
+Apps Flutter podem incluir os seguintes tipos de assets:
 
-* Static data such as JSON files
-* Configuration files
-* Icons and images (JPEG, PNG, GIF, Animated GIF, WebP, Animated WebP, BMP,
-  and WBMP)
+* Dados estáticos como arquivos JSON
+* Arquivos de configuração
+* Ícones e imagens (JPEG, PNG, GIF, Animated GIF, WebP, Animated WebP, BMP,
+  e WBMP)
 
-Flutter uses the `pubspec.yaml` file,
-located at the root of your project, to
-identify assets required by an app.
+O Flutter usa o arquivo `pubspec.yaml`,
+localizado na raiz do seu projeto, para
+identificar assets necessários por uma app.
 
 ```yaml
 flutter:
@@ -674,25 +690,25 @@ flutter:
     - assets/background.png
 ```
 
-The `assets` subsection specifies files that should be included with the app.
-Each asset is identified by an explicit path
-relative to the `pubspec.yaml` file, where the asset file is located.
-The order in which the assets are declared does not matter.
-The actual directory used (`assets` in this case) does not matter.
-However, while assets can be placed in any app directory, it's a
-best practice to place them in the `assets` directory.
+A subseção `assets` especifica arquivos que devem ser incluídos com a app.
+Cada asset é identificado por um caminho explícito
+relativo ao arquivo `pubspec.yaml`, onde o arquivo de asset está localizado.
+A ordem em que os assets são declarados não importa.
+O diretório real usado (`assets` neste caso) não importa.
+No entanto, embora assets possam ser colocados em qualquer diretório da app, é uma
+melhor prática colocá-los no diretório `assets`.
 
-During a build, Flutter places assets into a special archive
-called the *asset bundle*, which apps read from at runtime.
-When an asset's path is specified in the assets' section of `pubspec.yaml`,
-the build process looks for any files
-with the same name in adjacent subdirectories.
-These files are also included in the asset bundle
-along with the specified asset. Flutter uses asset variants
-when choosing resolution-appropriate images for your app.
+Durante uma compilação, o Flutter coloca assets em um arquivo especial
+chamado *asset bundle*, que as apps leem em tempo de execução.
+Quando o caminho de um asset é especificado na seção assets do `pubspec.yaml`,
+o processo de compilação procura por quaisquer arquivos
+com o mesmo nome em subdiretórios adjacentes.
+Esses arquivos também são incluídos no asset bundle
+junto com o asset especificado. O Flutter usa variantes de assets
+ao escolher imagens de resolução apropriada para sua app.
 
-In React Native, you would add a static image by placing the image file
-in a source code directory and referencing it.
+No React Native, você adicionaria uma imagem estática colocando o arquivo de imagem
+em um diretório de código fonte e referenciando-o.
 
 ```js
 <Image source={require('./my-icon.png')} />
@@ -704,112 +720,118 @@ in a source code directory and referencing it.
 />
 ```
 
-In Flutter, add a static image to your app
-using the `Image.asset` constructor in a widget's build method.
+No Flutter, adicione uma imagem estática à sua app
+usando o construtor `Image.asset` no método build de um widget.
 
 <?code-excerpt "lib/examples.dart (image-asset)" replace="/return //g"?>
 ```dart
 Image.asset('assets/background.png');
 ```
 
-For more information, see [Adding Assets and Images in Flutter][].
+Para mais informações, veja [Adding Assets and Images in Flutter][].
 
-### How do I load images over a network?
+### Como carrego imagens através de uma rede?
 
-In React Native, you would specify the `uri` in the
-`source` prop of the `Image` component and also provide the
-size if needed.
+No React Native, você especificaria o `uri` no
+prop `source` do componente `Image` e também forneceria o
+tamanho se necessário.
 
-In Flutter, use the `Image.network` constructor to include
-an image from a URL.
+No Flutter, use o construtor `Image.network` para incluir
+uma imagem de uma URL.
 
 <?code-excerpt "lib/examples.dart (image-network)" replace="/return //g"?>
 ```dart
 Image.network('https://docs.flutterbrasil.dev/assets/images/docs/owl.jpg');
 ```
 
-### How do I install packages and package plugins?
+### Como instalo pacotes e plugins de pacotes?
 
-Flutter supports using shared packages contributed by other developers to the
-Flutter and Dart ecosystems. This allows you to quickly build your app without
-having to develop everything from scratch. Packages that contain
-platform-specific code are known as package plugins.
+O Flutter suporta o uso de pacotes compartilhados contribuídos por outros desenvolvedores aos
+ecossistemas Flutter e Dart. Isso permite que você construa rapidamente sua app sem
+ter que desenvolver tudo do zero. Pacotes que contêm
+código específico de plataforma são conhecidos como plugins de pacotes.
 
-In React Native, you would use `yarn add {package-name}` or
-`npm install --save {package-name}` to install packages
-from the command line.
+No React Native, você usaria `yarn add {package-name}` ou
+`npm install --save {package-name}` para instalar pacotes
+na linha de comando.
 
-In Flutter, install a package using the following instructions:
+No Flutter, instale um pacote usando as seguintes instruções:
 
-1. To add the `google_sign_in` package as a dependency, run `flutter pub add`:
+1. Para adicionar o pacote `google_sign_in` como uma dependência, execute `flutter pub add`:
 
 ```console
 $ flutter pub add google_sign_in
 ```
 
-2. Install the package from the command line by using `flutter pub get`.
-   If using an IDE, it often runs `flutter pub get` for you, or it might
-   prompt you to do so.
-3. Import the package into your app code as shown below:
+2. Instale o pacote na linha de comando usando `flutter pub get`.
+   Se usando uma IDE, ela frequentemente executa `flutter pub get` para você, ou pode
+   solicitar que você faça isso.
+3. Importe o pacote no código da sua app como mostrado abaixo:
 
 <?code-excerpt "lib/examples.dart (package-import)"?>
 ```dart
 import 'package:flutter/material.dart';
 ```
 
-For more information, see [Using Packages][] and
+Para mais informações, veja [Using Packages][] e
 [Developing Packages & Plugins][].
 
-You can find many packages shared by Flutter developers in the
-[Flutter packages][] section of [pub.dev][].
+Você pode encontrar muitos pacotes compartilhados por desenvolvedores Flutter na
+seção [Flutter packages][] do [pub.dev][].
 
-## Flutter widgets
+[Adding Assets and Images in Flutter]: /ui/assets/assets-and-images
+[Using Packages]: /packages-and-plugins/using-packages
+[Developing Packages & Plugins]: /packages-and-plugins/developing-packages
+[Flutter packages]: {{site.pub}}/flutter/
+[pub.dev]: {{site.pub}}
 
-In Flutter, you build your UI out of widgets that describe what their view
-should look like given their current configuration and state.
+## Widgets Flutter
 
-Widgets are often composed of many small,
-single-purpose widgets that are nested to produce powerful effects.
-For example, the `Container` widget consists of
-several widgets responsible for layout, painting, positioning, and sizing.
-Specifically, the `Container` widget includes the `LimitedBox`,
-`ConstrainedBox`, `Align`, `Padding`, `DecoratedBox`, and `Transform` widgets.
-Rather than subclassing `Container` to produce a customized effect, you can
-compose these and other simple widgets in new and unique ways.
+No Flutter, você constrói sua UI a partir de widgets que descrevem como sua view
+deve parecer dada sua configuração e estado atuais.
 
-The `Center` widget is another example of how you can control the layout.
-To center a widget, wrap it in a `Center` widget and then use layout
-widgets for alignment, row, columns, and grids.
-These layout widgets do not have a visual representation of their own.
-Instead, their sole purpose is to control some aspect of another
-widget's layout. To understand why a widget renders in a
-certain way, it's often helpful to inspect the neighboring widgets.
+Widgets são frequentemente compostos de muitos widgets pequenos,
+de propósito único que são aninhados para produzir efeitos poderosos.
+Por exemplo, o widget `Container` consiste de
+vários widgets responsáveis por layout, pintura, posicionamento e dimensionamento.
+Especificamente, o widget `Container` inclui os widgets `LimitedBox`,
+`ConstrainedBox`, `Align`, `Padding`, `DecoratedBox` e `Transform`.
+Em vez de criar subclasses de `Container` para produzir um efeito customizado, você pode
+compor esses e outros widgets simples de maneiras novas e únicas.
 
-For more information, see the [Flutter Technical Overview][].
+O widget `Center` é outro exemplo de como você pode controlar o layout.
+Para centralizar um widget, envolva-o em um widget `Center` e então use widgets de layout
+para alinhamento, linhas, colunas e grades.
+Esses widgets de layout não têm uma representação visual própria.
+Em vez disso, seu único propósito é controlar algum aspecto do layout de outro
+widget. Para entender por que um widget renderiza de uma
+certa maneira, geralmente é útil inspecionar os widgets vizinhos.
 
-For more information about the core widgets from the `Widgets` package,
-see [Flutter Basic Widgets][],
-the [Flutter Widget Catalog][],
-or the [Flutter Widget Index][].
+Para mais informações, veja o [Flutter Technical Overview][].
+
+Para mais informações sobre os widgets core do pacote `Widgets`,
+veja [Flutter Basic Widgets][],
+o [Flutter Widget Catalog][],
+ou o [Flutter Widget Index][].
 
 ## Views
 
-### What is the equivalent of the `View` container?
+### Qual é o equivalente do container `View`?
 
-In React Native, `View` is a container that supports layout with `Flexbox`,
-style, touch handling, and accessibility controls.
+No React Native, `View` é um container que suporta layout com `Flexbox`,
+estilo, manipulação de toque e controles de acessibilidade.
 
-In Flutter, you can use the core layout widgets in the `Widgets`
-library, such as [`Container`][], [`Column`][],
-[`Row`][], and [`Center`][].
-For more information, see the [Layout Widgets][] catalog.
+No Flutter, você pode usar os widgets de layout core na biblioteca `Widgets`,
+como [`Container`][], [`Column`][],
+[`Row`][], e [`Center`][].
+Para mais informações, veja o catálogo [Layout Widgets][].
 
-### What is the equivalent of `FlatList` or `SectionList`?
+### Qual é o equivalente de `FlatList` ou `SectionList`?
 
-A `List` is a scrollable list of components arranged vertically.
+Uma `List` é uma lista rolável de componentes organizados verticalmente.
 
-In React Native, `FlatList` or `SectionList` are used to render simple or
-sectioned lists.
+No React Native, `FlatList` ou `SectionList` são usados para renderizar listas simples ou
+seccionadas.
 
 ```js
 // React Native
@@ -819,12 +841,12 @@ sectioned lists.
 />
 ```
 
-[`ListView`][] is Flutter's most commonly used scrolling widget.
-The default constructor takes an explicit list of children.
-[`ListView`][] is most appropriate for a small number of widgets.
-For a large or infinite list, use `ListView.builder`,
-which builds its children on demand and only builds
-those children that are visible.
+[`ListView`][] é o widget de rolagem mais comumente usado do Flutter.
+O construtor padrão recebe uma lista explícita de filhos.
+[`ListView`][] é mais apropriado para um pequeno número de widgets.
+Para uma lista grande ou infinita, use `ListView.builder`,
+que constrói seus filhos sob demanda e apenas constrói
+os filhos que são visíveis.
 
 <?code-excerpt "lib/examples.dart (list-view)"?>
 ```dart
@@ -839,13 +861,13 @@ return ListView.builder(
 
 {% render "docs/android-ios-figure-pair.md", image: "react-native/flatlist.webp", alt: "Flat list", class: "border" %}
 
-To learn how to implement an infinite scrolling list, see the official
-[`infinite_list`][infinite_list] sample.
+Para aprender como implementar uma lista de rolagem infinita, veja o exemplo oficial
+[`infinite_list`][infinite_list].
 
-### How do I use a Canvas to draw or paint?
+### Como usar um Canvas para desenhar ou pintar?
 
-In React Native, canvas components aren't present
-so third party libraries like `react-native-canvas` are used.
+No React Native, componentes canvas não estão presentes
+então bibliotecas de terceiros como `react-native-canvas` são usadas.
 
 ```js
 // React Native
@@ -867,14 +889,14 @@ const CanvasComp = () => {
 }
 ```
 
-In Flutter, you can use the [`CustomPaint`][]
-and [`CustomPainter`][] classes to draw to the canvas.
+No Flutter, você pode usar as classes [`CustomPaint`][]
+e [`CustomPainter`][] para desenhar no canvas.
 
-The following example shows how to draw during the paint phase using the
-`CustomPaint` widget. It implements the abstract class, `CustomPainter`,
-and passes it to `CustomPaint`'s painter property.
-`CustomPaint` subclasses must implement the `paint()`
-and `shouldRepaint()` methods.
+O exemplo a seguir mostra como desenhar durante a fase de pintura usando o
+widget `CustomPaint`. Ele implementa a classe abstrata, `CustomPainter`,
+e a passa para a propriedade painter do `CustomPaint`.
+Subclasses de `CustomPaint` devem implementar os métodos `paint()`
+e `shouldRepaint()`.
 
 <?code-excerpt "lib/examples.dart (custom-paint)"?>
 ```dart
@@ -911,13 +933,13 @@ class MyCanvasWidget extends StatelessWidget {
 
 ## Layouts
 
-### How do I use widgets to define layout properties?
+### Como usar widgets para definir propriedades de layout?
 
-In React Native, most of the layout can be done with the props
-that are passed to a specific component.
-For example, you could use the `style` prop on the `View` component
-in order to specify the flexbox properties.
-To arrange your components in a column, you would specify a prop such as:
+No React Native, a maior parte do layout pode ser feita com os props
+que são passados para um componente específico.
+Por exemplo, você poderia usar o prop `style` no componente `View`
+para especificar as propriedades flexbox.
+Para organizar seus componentes em uma coluna, você especificaria um prop como:
 `flexDirection: 'column'`.
 
 ```js
@@ -932,16 +954,16 @@ To arrange your components in a column, you would specify a prop such as:
 >
 ```
 
-In Flutter, the layout is primarily defined by widgets
-specifically designed to provide layout,
-combined with control widgets and their style properties.
+No Flutter, o layout é definido principalmente por widgets
+especificamente projetados para fornecer layout,
+combinados com widgets de controle e suas propriedades de estilo.
 
-For example, the [`Column`][] and [`Row`][] widgets
-take an array of children and align them
-vertically and horizontally respectively.
-A [`Container`][] widget takes a combination of
-layout and styling properties, and a
-[`Center`][] widget centers its child widgets.
+Por exemplo, os widgets [`Column`][] e [`Row`][]
+recebem um array de filhos e os alinham
+verticalmente e horizontalmente respectivamente.
+Um widget [`Container`][] recebe uma combinação de
+propriedades de layout e estilo, e um
+widget [`Center`][] centraliza seus widgets filhos.
 
 <?code-excerpt "lib/layouts.dart (column)"?>
 ```dart
@@ -958,23 +980,23 @@ Widget build(BuildContext context) {
   );
 ```
 
-Flutter provides a variety of layout widgets in its core widget library.
-For example, [`Padding`][], [`Align`][], and [`Stack`][].
+O Flutter fornece uma variedade de widgets de layout em sua biblioteca de widgets core.
+Por exemplo, [`Padding`][], [`Align`][], e [`Stack`][].
 
-For a complete list, see [Layout Widgets][].
+Para uma lista completa, veja [Layout Widgets][].
 
 {% render "docs/android-ios-figure-pair.md", image: "react-native/basic-layout.webp", alt: "Layout", class: "border" %}
 
-### How do I layer widgets?
+### Como fazer camadas de widgets?
 
-In React Native, components can be layered using `absolute` positioning.
+No React Native, componentes podem ter camadas usando posicionamento `absolute`.
 
-Flutter uses the [`Stack`][]
-widget to arrange children widgets in layers.
-The widgets can entirely or partially overlap the base widget.
+O Flutter usa o widget [`Stack`][]
+para organizar widgets filhos em camadas.
+Os widgets podem sobrepor completamente ou parcialmente o widget base.
 
-The `Stack` widget positions its children relative to the edges of its box.
-This class is useful if you simply want to overlap several children widgets.
+O widget `Stack` posiciona seus filhos relativamente às bordas de sua caixa.
+Esta classe é útil se você simplesmente quer sobrepor vários widgets filhos.
 
 <?code-excerpt "lib/layouts.dart (stack)"?>
 ```dart
@@ -993,22 +1015,22 @@ Widget build(BuildContext context) {
   );
 ```
 
-The previous example uses `Stack` to overlay a Container
-(that displays its `Text` on a translucent black background)
-on top of a `CircleAvatar`.
-The Stack offsets the text using the alignment property
-and `Alignment` coordinates.
+O exemplo anterior usa `Stack` para sobrepor um Container
+(que exibe seu `Text` em um fundo preto translúcido)
+sobre um `CircleAvatar`.
+O Stack desloca o texto usando a propriedade alignment
+e coordenadas `Alignment`.
 
 {% render "docs/android-ios-figure-pair.md", image: "react-native/stack.png", alt: "Stack", class: "border" %}
 
-For more information, see the [`Stack`][] class documentation.
+Para mais informações, veja a documentação da classe [`Stack`][].
 
-## Styling
+## Estilização
 
-### How do I style my components?
+### Como estilizar meus componentes?
 
-In React Native, inline styling and `stylesheets.create`
-are used to style components.
+No React Native, estilização inline e `stylesheets.create`
+são usados para estilizar componentes.
 
 ```js
 // React Native
@@ -1028,10 +1050,10 @@ const styles = StyleSheet.create({
 });
 ```
 
-In Flutter, a `Text` widget can take a `TextStyle` class
-for its style property. If you want to use the same text
-style in multiple places, you can create a
-[`TextStyle`][] class and use it for multiple `Text` widgets.
+No Flutter, um widget `Text` pode receber uma classe `TextStyle`
+para sua propriedade style. Se você quiser usar o mesmo estilo de texto
+em vários lugares, pode criar uma
+classe [`TextStyle`][] e usá-la para múltiplos widgets `Text`.
 
 <?code-excerpt "lib/examples.dart (text-style)"?>
 ```dart
@@ -1060,26 +1082,25 @@ return const Center(
 
 {% render "docs/android-ios-figure-pair.md", image: "react-native/flutterstyling.webp", alt: "Styling", class: "border" %}
 
-### How do I use `Icons` and `Colors`?
+### Como usar `Icons` e `Colors`?
 
-React Native doesn't include support for icons
-so third party libraries are used.
+React Native não inclui suporte para ícones
+então bibliotecas de terceiros são usadas.
 
-In Flutter, importing the Material library also pulls in the
-rich set of [Material icons][] and [colors][].
+No Flutter, importar a biblioteca Material também extrai o
+rico conjunto de [Material icons][] e [colors][].
 
 <?code-excerpt "lib/examples.dart (icon)"?>
 ```dart
 return const Icon(Icons.lightbulb_outline, color: Colors.redAccent);
 ```
 
-When using the `Icons` class,
-make sure to set `uses-material-design: true` in
-the project's `pubspec.yaml` file.
-This ensures that the `MaterialIcons` font,
-which displays the icons, is included in your app.
-In general, if you intend to use the Material library,
-you should include this line.
+Ao usar a classe `Icons`,
+certifique-se de definir `uses-material-design: true` no
+arquivo `pubspec.yaml` do projeto.
+Isso garante que a fonte `MaterialIcons`, que exibe os ícones, seja incluída em sua app.
+Em geral, se você pretende usar a biblioteca Material,
+deve incluir esta linha.
 
 ```yaml
 name: my_awesome_application
@@ -1087,11 +1108,11 @@ flutter:
   uses-material-design: true
 ```
 
-Flutter's [Cupertino (iOS-style)][] package provides high
-fidelity widgets for the current iOS design language.
-To use the `CupertinoIcons` font,
-add a dependency for `cupertino_icons` in your project's
-`pubspec.yaml` file.
+O pacote [Cupertino (iOS-style)][] do Flutter fornece widgets de alta
+fidelidade para a linguagem de design atual do iOS.
+Para usar a fonte `CupertinoIcons`,
+adicione uma dependência para `cupertino_icons` no arquivo
+`pubspec.yaml` do seu projeto.
 
 ```yaml
 name: my_awesome_application
@@ -1099,15 +1120,15 @@ dependencies:
   cupertino_icons: ^1.0.8
 ```
 
-To globally customize the colors and styles of components,
-use `ThemeData` to specify default colors
-for various aspects of the theme.
-Set the theme property in `MaterialApp` to the `ThemeData` object.
-The [`Colors`][] class provides colors
-from the Material Design [color palette][].
+Para customizar globalmente as cores e estilos dos componentes,
+use `ThemeData` para especificar cores padrão
+para vários aspectos do tema.
+Defina a propriedade theme no `MaterialApp` para o objeto `ThemeData`.
+A classe [`Colors`][] fornece cores
+da [paleta de cores][color palette] do Material Design.
 
-The following example sets the color scheme from seed to `deepPurple`
-and the text selection to `red`.
+O exemplo a seguir define o esquema de cores a partir da seed como `deepPurple`
+e a seleção de texto como `red`.
 
 <?code-excerpt "lib/examples.dart (swatch)"?>
 ```dart
@@ -1130,15 +1151,15 @@ class SampleApp extends StatelessWidget {
 }
 ```
 
-### How do I add style themes?
+### Como adicionar temas de estilo?
 
-In React Native, common themes are defined for
-components in stylesheets and then used in components.
+No React Native, temas comuns são definidos para
+componentes em stylesheets e então usados em componentes.
 
-In Flutter, create uniform styling for almost everything
-by defining the styling in the [`ThemeData`][]
-class and passing it to the theme property in the
-[`MaterialApp`][] widget.
+No Flutter, crie estilização uniforme para quase tudo
+definindo a estilização na classe [`ThemeData`][]
+e passando-a para a propriedade theme no
+widget [`MaterialApp`][].
 
 <?code-excerpt "lib/examples.dart (theme)"?>
 ```dart
@@ -1151,9 +1172,9 @@ Widget build(BuildContext context) {
 }
 ```
 
-A `Theme` can be applied even without using the `MaterialApp` widget.
-The [`Theme`][] widget takes a `ThemeData` in its `data` parameter
-and applies the `ThemeData` to all of its children widgets.
+Um `Theme` pode ser aplicado mesmo sem usar o widget `MaterialApp`.
+O widget [`Theme`][] recebe um `ThemeData` em seu parâmetro `data`
+e aplica o `ThemeData` a todos os seus widgets filhos.
 
 <?code-excerpt "lib/examples.dart (theme-data)"?>
 ```dart
@@ -1169,30 +1190,55 @@ Widget build(BuildContext context) {
 }
 ```
 
-## State management
+[Flutter Technical Overview]: /resources/architectural-overview
+[Flutter Basic Widgets]: /ui/widgets/basics
+[Flutter Widget Index]: /reference/widgets
+[`Container`]: {{site.api}}/flutter/widgets/Container-class.html
+[`Column`]: {{site.api}}/flutter/widgets/Column-class.html
+[`Row`]: {{site.api}}/flutter/widgets/Row-class.html
+[`Center`]: {{site.api}}/flutter/widgets/Center-class.html
+[Layout Widgets]: /ui/widgets/layout
+[`ListView`]: {{site.api}}/flutter/widgets/ListView-class.html
+[infinite_list]: {{site.repo.samples}}/tree/main/infinite_list
+[`CustomPaint`]: {{site.api}}/flutter/widgets/CustomPaint-class.html
+[`CustomPainter`]: {{site.api}}/flutter/rendering/CustomPainter-class.html
+[`Padding`]: {{site.api}}/flutter/widgets/Padding-class.html
+[`Align`]: {{site.api}}/flutter/widgets/Align-class.html
+[`Stack`]: {{site.api}}/flutter/widgets/Stack-class.html
+[`TextStyle`]: {{site.api}}/flutter/dart-ui/TextStyle-class.html
+[Material icons]: {{site.api}}/flutter/material/Icons-class.html
+[colors]: {{site.api}}/flutter/material/Colors-class.html
+[`Colors`]: {{site.api}}/flutter/material/Colors-class.html
+[color palette]: {{site.material2}}/design/color/the-color-system.html#color-theme-creation
+[Cupertino (iOS-style)]: /ui/widgets/cupertino
+[`ThemeData`]: {{site.api}}/flutter/material/ThemeData-class.html
+[`MaterialApp`]: {{site.api}}/flutter/material/MaterialApp-class.html
+[`Theme`]: {{site.api}}/flutter/material/Theme-class.html
 
-State is information that can be read synchronously
-when a widget is built or information
-that might change during the lifetime of a widget.
-To manage app state in Flutter,
-use a [`StatefulWidget`][] paired with a State object.
+## Gerenciamento de estado
 
-For more information on ways to approach managing state in Flutter,
-see [State management][].
+Estado é informação que pode ser lida sincronamente
+quando um widget é construído ou informação
+que pode mudar durante o ciclo de vida de um widget.
+Para gerenciar o estado da app no Flutter,
+use um [`StatefulWidget`][] pareado com um objeto State.
 
-### The StatelessWidget
+Para mais informações sobre maneiras de abordar o gerenciamento de estado no Flutter,
+veja [State management][].
 
-A `StatelessWidget` in Flutter is a widget
-that doesn't require a state change&mdash;
-it has no internal state to manage.
+### O StatelessWidget
 
-Stateless widgets are useful when the part of the user interface
-you are describing does not depend on anything other than the
-configuration information in the object itself and the
-[`BuildContext`][] in which the widget is inflated.
+Um `StatelessWidget` no Flutter é um widget
+que não requer uma mudança de estado&mdash;
+ele não tem estado interno para gerenciar.
 
-[`AboutDialog`][], [`CircleAvatar`][], and [`Text`][] are examples
-of stateless widgets that subclass [`StatelessWidget`][].
+Widgets stateless são úteis quando a parte da interface de usuário
+que você está descrevendo não depende de nada além das
+informações de configuração no próprio objeto e do
+[`BuildContext`][] no qual o widget é inflado.
+
+[`AboutDialog`][], [`CircleAvatar`][], e [`Text`][] são exemplos
+de widgets stateless que fazem subclasse de [`StatelessWidget`][].
 
 <?code-excerpt "lib/stateless.dart"?>
 ```dart
@@ -1216,44 +1262,44 @@ class MyStatelessWidget extends StatelessWidget {
 }
 ```
 
-The previous example uses the constructor of the `MyStatelessWidget`
-class to pass the `text`, which is marked as `final`.
-This class extends `StatelessWidget`&mdash;it contains immutable data.
+O exemplo anterior usa o construtor da classe `MyStatelessWidget`
+para passar o `text`, que é marcado como `final`.
+Esta classe estende `StatelessWidget`&mdash;ela contém dados imutáveis.
 
-The `build` method of a stateless widget is typically called
-in only three situations:
+O método `build` de um widget stateless é tipicamente chamado
+em apenas três situações:
 
-* When the widget is inserted into a tree
-* When the widget's parent changes its configuration
-* When an [`InheritedWidget`][] it depends on, changes
+* Quando o widget é inserido em uma árvore
+* Quando o pai do widget muda sua configuração
+* Quando um [`InheritedWidget`][] do qual ele depende, muda
 
-### The StatefulWidget
+### O StatefulWidget
 
-A [`StatefulWidget`][] is a widget that changes state.
-Use the `setState` method to manage the
-state changes for a `StatefulWidget`.
-A call to `setState()` tells the Flutter
-framework that something has changed in a state,
-which causes an app to rerun the `build()` method
-so that the app can reflect the change.
+Um [`StatefulWidget`][] é um widget que muda de estado.
+Use o método `setState` para gerenciar as
+mudanças de estado para um `StatefulWidget`.
+Uma chamada para `setState()` diz ao framework
+Flutter que algo mudou em um estado,
+o que faz com que uma app execute novamente o método `build()`
+para que a app possa refletir a mudança.
 
-_State_ is information that can be read synchronously when a widget
-is built and might change during the lifetime of the widget.
-It's the responsibility of the widget implementer to ensure that
-the state object is promptly notified when the state changes.
-Use `StatefulWidget` when a widget can change dynamically.
-For example, the state of the widget changes by typing into a form,
-or moving a slider.
-Or, it can change over time—perhaps a data feed updates the UI.
+_Estado_ é informação que pode ser lida sincronamente quando um widget
+é construído e pode mudar durante o ciclo de vida do widget.
+É responsabilidade do implementador do widget garantir que
+o objeto de estado seja prontamente notificado quando o estado muda.
+Use `StatefulWidget` quando um widget pode mudar dinamicamente.
+Por exemplo, o estado do widget muda digitando em um formulário,
+ou movendo um slider.
+Ou, pode mudar ao longo do tempo—talvez um feed de dados atualize a UI.
 
 [`Checkbox`][], [`Radio`][], [`Slider`][], [`InkWell`][],
-[`Form`][], and [`TextField`][]
-are examples of stateful widgets that subclass
+[`Form`][], e [`TextField`][]
+são exemplos de widgets stateful que fazem subclasse de
 [`StatefulWidget`][].
 
-The following example declares a `StatefulWidget`
-that requires a `createState()` method.
-This method creates the state object that manages the widget's state,
+O exemplo a seguir declara um `StatefulWidget`
+que requer um método `createState()`.
+Este método cria o objeto de estado que gerencia o estado do widget,
 `_MyStatefulWidgetState`.
 
 <?code-excerpt "lib/stateful.dart (stateful-widget)"?>
@@ -1268,11 +1314,11 @@ class MyStatefulWidget extends StatefulWidget {
 }
 ```
 
-The following state class, `_MyStatefulWidgetState`,
-implements the `build()` method for the widget.
-When the state changes, for example, when the user toggles
-the button, `setState()` is called with the new toggle value.
-This causes the framework to rebuild this widget in the UI.
+A seguinte classe de estado, `_MyStatefulWidgetState`,
+implementa o método `build()` para o widget.
+Quando o estado muda, por exemplo, quando o usuário alterna
+o botão, `setState()` é chamado com o novo valor de alternância.
+Isso faz com que o framework reconstrua este widget na UI.
 
 <?code-excerpt "lib/stateful.dart (stateful-widget-state)"?>
 ```dart
@@ -1325,47 +1371,47 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 }
 ```
 
-### What are the StatefulWidget and StatelessWidget best practices?
+### Quais são as melhores práticas de StatefulWidget e StatelessWidget?
 
-Here are a few things to consider when designing your widget.
+Aqui estão algumas coisas a considerar ao projetar seu widget.
 
-1. Determine whether a widget should be
-   a `StatefulWidget` or a `StatelessWidget`.
+1. Determine se um widget deve ser
+   um `StatefulWidget` ou um `StatelessWidget`.
 
-In Flutter, widgets are either Stateful or Stateless—depending on whether
-they depend on a state change.
+No Flutter, widgets são Stateful ou Stateless—dependendo se
+eles dependem de uma mudança de estado.
 
-* If a widget changes&mdash;the user interacts with it or
-  a data feed interrupts the UI, then it's *Stateful*.
-* If a widget is final or immutable, then it's *Stateless*.
+* Se um widget muda&mdash;o usuário interage com ele ou
+  um feed de dados interrompe a UI, então é *Stateful*.
+* Se um widget é final ou imutável, então é *Stateless*.
 
-2. Determine which object manages the widget's state (for a `StatefulWidget`).
+2. Determine qual objeto gerencia o estado do widget (para um `StatefulWidget`).
 
-In Flutter, there are three primary ways to manage state:
+No Flutter, existem três maneiras principais de gerenciar estado:
 
-* The widget manages its own state
-* The parent widget manages the widget's state
-* A mix-and-match approach
+* O widget gerencia seu próprio estado
+* O widget pai gerencia o estado do widget
+* Uma abordagem mista
 
-When deciding which approach to use, consider the following principles:
+Ao decidir qual abordagem usar, considere os seguintes princípios:
 
-* If the state in question is user data,
-  for example the checked or unchecked mode of a checkbox,
-  or the position of a slider, then the state is best managed
-  by the parent widget.
-* If the state in question is aesthetic, for example an animation,
-  then the widget itself best manages the state.
-* When in doubt, let the parent widget manage the child widget's state.
+* Se o estado em questão é dado do usuário,
+  por exemplo o modo marcado ou desmarcado de uma checkbox,
+  ou a posição de um slider, então o estado é melhor gerenciado
+  pelo widget pai.
+* Se o estado em questão é estético, por exemplo uma animação,
+  então o próprio widget gerencia melhor o estado.
+* Quando em dúvida, deixe o widget pai gerenciar o estado do widget filho.
 
-3. Subclass StatefulWidget and State.
+3. Faça subclasse de StatefulWidget e State.
 
-The `MyStatefulWidget` class manages its own state&mdash;it extends
-`StatefulWidget`, it overrides the `createState()`
-method to create the `State` object,
-and the framework calls `createState()` to build the widget.
-In this example, `createState()` creates an instance of
-`_MyStatefulWidgetState`, which
-is implemented in the next best practice.
+A classe `MyStatefulWidget` gerencia seu próprio estado&mdash;ela estende
+`StatefulWidget`, ela sobrescreve o método `createState()`
+para criar o objeto `State`,
+e o framework chama `createState()` para construir o widget.
+Neste exemplo, `createState()` cria uma instância de
+`_MyStatefulWidgetState`, que
+é implementada na próxima melhor prática.
 
 <?code-excerpt "lib/best_practices.dart (create-state)" replace="/return const Text\('Hello World!'\);/\/\/.../g"?>
 ```dart
@@ -1385,10 +1431,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 }
 ```
 
-4. Add the StatefulWidget into the widget tree.
+4. Adicione o StatefulWidget à árvore de widgets.
 
-Add your custom `StatefulWidget` to the widget tree
-in the app's build method.
+Adicione seu `StatefulWidget` customizado à árvore de widgets
+no método build da app.
 
 <?code-excerpt "lib/best_practices.dart (use-stateful-widget)"?>
 ```dart
@@ -1410,9 +1456,9 @@ class MyStatelessWidget extends StatelessWidget {
 
 ## Props
 
-In React Native, most components can be customized when they are
-created with different parameters or properties, called `props`.
-These parameters can be used in a child component using `this.props`.
+No React Native, a maioria dos componentes pode ser customizada quando eles são
+criados com diferentes parâmetros ou propriedades, chamadas `props`.
+Esses parâmetros podem ser usados em um componente filho usando `this.props`.
 
 ```js
 // React Native
@@ -1446,8 +1492,8 @@ const App = () => {
 };
 ```
 
-In Flutter, you assign a local variable or function marked
-`final` with the property received in the parameterized constructor.
+No Flutter, você atribui uma variável ou função local marcada
+`final` com a propriedade recebida no construtor parametrizado.
 
 <?code-excerpt "lib/components.dart (components)"?>
 ```dart
@@ -1491,18 +1537,18 @@ class UseCard extends StatelessWidget {
 
 {% render "docs/android-ios-figure-pair.md", image: "react-native/modular.png", alt: "Cards", class: "border" %}
 
-## Local storage
+## Armazenamento local
 
-If you don't need to store a lot of data, and it doesn't require
-structure, you can use `shared_preferences` which allows you to
-read and write persistent key-value pairs of primitive data
-types: booleans, floats, ints, longs, and strings.
+Se você não precisa armazenar muitos dados, e eles não requerem
+estrutura, pode usar `shared_preferences` que permite que você
+leia e escreva pares chave-valor persistentes de tipos de dados
+primitivos: booleans, floats, ints, longs e strings.
 
-### How do I store persistent key-value pairs that are global to the app?
+### Como armazenar pares chave-valor persistentes que são globais à app?
 
-In React Native, you use the `setItem` and `getItem` functions
-of the `AsyncStorage` component to store and retrieve data
-that is persistent and global to the app.
+No React Native, você usa as funções `setItem` e `getItem`
+do componente `AsyncStorage` para armazenar e recuperar dados
+que são persistentes e globais à app.
 
 ```js
 // React Native
@@ -1516,13 +1562,13 @@ AsyncStorage.getItem('counterkey').then(value => {
 });
 ```
 
-In Flutter, use the [`shared_preferences`][] plugin to
-store and retrieve key-value data that is persistent and global
-to the app. The `shared_preferences` plugin wraps
-`NSUserDefaults` on iOS and `SharedPreferences` on Android,
-providing a persistent store for simple data.
+No Flutter, use o plugin [`shared_preferences`][] para
+armazenar e recuperar dados chave-valor que são persistentes e globais
+à app. O plugin `shared_preferences` envolve
+`NSUserDefaults` no iOS e `SharedPreferences` no Android,
+fornecendo um armazenamento persistente para dados simples.
 
-To add the `shared_preferences` package as a dependency, run `flutter pub add`:
+Para adicionar o pacote `shared_preferences` como uma dependência, execute `flutter pub add`:
 
 ```console
 $ flutter pub add shared_preferences
@@ -1533,14 +1579,14 @@ $ flutter pub add shared_preferences
 import 'package:shared_preferences/shared_preferences.dart';
 ```
 
-To implement persistent data, use the setter methods
-provided by the `SharedPreferences` class.
-Setter methods are available for various primitive
-types, such as `setInt`, `setBool`, and `setString`.
-To read data, use the appropriate getter method provided
-by the `SharedPreferences` class. For each
-setter there is a corresponding getter method,
-for example, `getInt`, `getBool`, and `getString`.
+Para implementar dados persistentes, use os métodos setter
+fornecidos pela classe `SharedPreferences`.
+Métodos setter estão disponíveis para vários tipos
+primitivos, como `setInt`, `setBool` e `setString`.
+Para ler dados, use o método getter apropriado fornecido
+pela classe `SharedPreferences`. Para cada
+setter há um método getter correspondente,
+por exemplo, `getInt`, `getBool` e `getString`.
 
 <?code-excerpt "lib/examples.dart (shared-prefs-update)"?>
 ```dart
@@ -1556,23 +1602,37 @@ Future<void> updateCounter() async {
 }
 ```
 
-## Routing
+[State management]: /data-and-backend/state-mgmt
+[`BuildContext`]: {{site.api}}/flutter/widgets/BuildContext-class.html
+[`AboutDialog`]: {{site.api}}/flutter/material/AboutDialog-class.html
+[`CircleAvatar`]: {{site.api}}/flutter/material/CircleAvatar-class.html
+[`Text`]: {{site.api}}/flutter/widgets/Text-class.html
+[`InheritedWidget`]: {{site.api}}/flutter/widgets/InheritedWidget-class.html
+[`Checkbox`]: {{site.api}}/flutter/material/Checkbox-class.html
+[`Radio`]: {{site.api}}/flutter/material/Radio-class.html
+[`Slider`]: {{site.api}}/flutter/material/Slider-class.html
+[`InkWell`]: {{site.api}}/flutter/material/InkWell-class.html
+[`Form`]: {{site.api}}/flutter/widgets/Form-class.html
+[`TextField`]: {{site.api}}/flutter/material/TextField-class.html
+[`shared_preferences`]: {{site.repo.packages}}/tree/main/packages/shared_preferences/shared_preferences
 
-Most apps contain several screens for displaying different
-types of information. For example, you might have a product
-screen that displays images where users could tap on a product
-image to get more information about the product on a new screen.
+## Roteamento
 
-In Android, new screens are new Activities.
-In iOS, new screens are new ViewControllers. In Flutter,
-screens are just Widgets! And to navigate to new
-screens in Flutter, use the Navigator widget.
+A maioria das apps contém várias telas para exibir diferentes
+tipos de informação. Por exemplo, você pode ter uma tela de produto
+que exibe imagens onde os usuários podem tocar em uma imagem de produto
+para obter mais informações sobre o produto em uma nova tela.
 
-### How do I navigate between screens?
+No Android, novas telas são novas Activities.
+No iOS, novas telas são novas ViewControllers. No Flutter,
+telas são apenas Widgets! E para navegar para novas
+telas no Flutter, use o widget Navigator.
 
-In React Native, there are three main navigators:
-StackNavigator, TabNavigator, and DrawerNavigator.
-Each provides a way to configure and define the screens.
+### Como navegar entre telas?
+
+No React Native, existem três navegadores principais:
+ StackNavigator, TabNavigator e DrawerNavigator.
+Cada um fornece uma maneira de configurar e definir as telas.
 
 ```js
 // React Native
@@ -1594,23 +1654,23 @@ export default (MyApp1 = DrawerNavigator({
 }));
 ```
 
-In Flutter, there are two main widgets used to navigate between screens:
+No Flutter, existem dois widgets principais usados para navegar entre telas:
 
-* A [`Route`][] is an abstraction for an app screen or page.
-* A [`Navigator`][] is a widget that manages routes.
+* Um [`Route`][] é uma abstração para uma tela ou página da app.
+* Um [`Navigator`][] é um widget que gerencia rotas.
 
-A `Navigator` is defined as a widget that manages a set of child
-widgets with a stack discipline. The navigator manages a stack
-of `Route` objects and provides methods for managing the stack,
-like [`Navigator.push`][] and [`Navigator.pop`][].
-A list of routes might be specified in the [`MaterialApp`][] widget,
-or they might be built on the fly, for example, in hero animations.
-The following example specifies named routes in the `MaterialApp` widget.
+Um `Navigator` é definido como um widget que gerencia um conjunto de widgets filhos
+com uma disciplina de pilha. O navigator gerencia uma pilha
+de objetos `Route` e fornece métodos para gerenciar a pilha,
+como [`Navigator.push`][] e [`Navigator.pop`][].
+Uma lista de rotas pode ser especificada no widget [`MaterialApp`][],
+ou elas podem ser construídas dinamicamente, por exemplo, em animações hero.
+O exemplo a seguir especifica rotas nomeadas no widget `MaterialApp`.
 
 :::note
-Named routes are no longer recommended for most
-applications. For more information, see
-[Limitations][] in the [navigation overview][] page.
+Rotas nomeadas não são mais recomendadas para a maioria
+das aplicações. Para mais informações, veja
+[Limitations][] na página [navigation overview][].
 :::
 
 [Limitations]: /ui/navigation#limitations
@@ -1636,24 +1696,24 @@ class NavigationApp extends StatelessWidget {
 }
 ```
 
-To navigate to a named route, the [`Navigator.of()`][]
-method is used to specify the `BuildContext`
-(a handle to the location of a widget in the widget tree).
-The name of the route is passed to the `pushNamed` function to
-navigate to the specified route.
+Para navegar para uma rota nomeada, o método [`Navigator.of()`][]
+é usado para especificar o `BuildContext`
+(uma referência à localização de um widget na árvore de widgets).
+O nome da rota é passado para a função `pushNamed` para
+navegar para a rota especificada.
 
 <?code-excerpt "lib/navigation.dart (push-named)"?>
 ```dart
 Navigator.of(context).pushNamed('/a');
 ```
 
-You can also use the push method of `Navigator` which
-adds the given [`Route`][] to the history of the
-navigator that most tightly encloses the given [`BuildContext`][],
-and transitions to it. In the following example,
-the [`MaterialPageRoute`][] widget is a modal route that
-replaces the entire screen with a platform-adaptive
-transition. It takes a [`WidgetBuilder`][] as a required parameter.
+Você também pode usar o método push do `Navigator` que
+adiciona o [`Route`][] dado ao histórico do
+navigator que envolve mais estreitamente o [`BuildContext`][] dado,
+e faz a transição para ele. No exemplo a seguir,
+o widget [`MaterialPageRoute`][] é uma rota modal que
+substitui a tela inteira com uma transição adaptativa à plataforma.
+Ele recebe um [`WidgetBuilder`][] como um parâmetro obrigatório.
 
 <?code-excerpt "lib/navigation.dart (navigator-push)"?>
 ```dart
@@ -1663,18 +1723,18 @@ Navigator.push(
 );
 ```
 
-### How do I use tab navigation and drawer navigation?
+### Como usar navegação por abas e navegação por drawer?
 
-In Material Design apps, there are two primary options
-for Flutter navigation: tabs and drawers.
-When there is insufficient space to support tabs, drawers
-provide a good alternative.
+Em apps Material Design, existem duas opções principais
+para navegação Flutter: abas e drawers.
+Quando não há espaço suficiente para suportar abas, drawers
+fornecem uma boa alternativa.
 
-#### Tab navigation
+#### Navegação por abas
 
-In React Native, `createBottomTabNavigator`
-and `TabNavigation` are used to
-show tabs and for tab navigation.
+No React Native, `createBottomTabNavigator`
+e `TabNavigation` são usados para
+mostrar abas e para navegação por abas.
 
 ```js
 // React Native
@@ -1686,21 +1746,21 @@ const MyApp = TabNavigator(
 );
 ```
 
-Flutter provides several specialized widgets for drawer and
-tab navigation:
+O Flutter fornece vários widgets especializados para navegação por drawer e
+abas:
 
 [`TabController`][]
-: Coordinates the tab selection between a `TabBar`
-  and a `TabBarView`.
+: Coordena a seleção de abas entre um `TabBar`
+  e um `TabBarView`.
 
 [`TabBar`][]
-: Displays a horizontal row of tabs.
+: Exibe uma linha horizontal de abas.
 
 [`Tab`][]
-: Creates a material design TabBar tab.
+: Cria uma aba TabBar do material design.
 
 [`TabBarView`][]
-: Displays the widget that corresponds to the currently selected tab.
+: Exibe o widget que corresponde à aba atualmente selecionada.
 
 
 <?code-excerpt "lib/navigation.dart (tab-nav)"?>
@@ -1722,31 +1782,31 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
 ```
 
 
-A `TabController` is required to coordinate the tab selection
-between a `TabBar` and a `TabBarView`.
-The `TabController` constructor `length` argument is the total
-number of tabs. A `TickerProvider` is required to trigger
-the notification whenever a frame triggers a state change.
-The `TickerProvider` is `vsync`. Pass the
-`vsync: this` argument to the `TabController` constructor
-whenever you create a new `TabController`.
+Um `TabController` é necessário para coordenar a seleção de abas
+entre um `TabBar` e um `TabBarView`.
+O argumento `length` do construtor `TabController` é o número total
+de abas. Um `TickerProvider` é necessário para acionar
+a notificação sempre que um frame aciona uma mudança de estado.
+O `TickerProvider` é `vsync`. Passe o
+argumento `vsync: this` ao construtor `TabController`
+sempre que você criar um novo `TabController`.
 
-The [`TickerProvider`][] is an interface implemented
-by classes that can vend [`Ticker`][] objects.
-Tickers can be used by any object that must be notified whenever a
-frame triggers, but they're most commonly used indirectly via an
+O [`TickerProvider`][] é uma interface implementada
+por classes que podem fornecer objetos [`Ticker`][].
+Tickers podem ser usados por qualquer objeto que precisa ser notificado sempre que um
+frame aciona, mas são mais comumente usados indiretamente via um
 [`AnimationController`][]. `AnimationController`s
-need a `TickerProvider` to obtain their `Ticker`.
-If you are creating an AnimationController from a State,
-then you can use the [`TickerProviderStateMixin`][]
-or [`SingleTickerProviderStateMixin`][]
-classes to obtain a suitable `TickerProvider`.
+precisam de um `TickerProvider` para obter seu `Ticker`.
+Se você está criando um AnimationController de um State,
+então pode usar as classes [`TickerProviderStateMixin`][]
+ou [`SingleTickerProviderStateMixin`][]
+para obter um `TickerProvider` adequado.
 
-The [`Scaffold`][] widget wraps a new `TabBar` widget and
-creates two tabs. The `TabBarView` widget
-is passed as the `body` parameter of the `Scaffold` widget.
-All screens corresponding to the `TabBar` widget's tabs are
-children to the `TabBarView` widget along with the same `TabController`.
+O widget [`Scaffold`][] envolve um novo widget `TabBar` e
+cria duas abas. O widget `TabBarView`
+é passado como o parâmetro `body` do widget `Scaffold`.
+Todas as telas correspondentes às abas do widget `TabBar` são
+filhas do widget `TabBarView` junto com o mesmo `TabController`.
 
 <?code-excerpt "lib/navigation.dart (navigation-home-page-state)"?>
 ```dart
@@ -1776,10 +1836,10 @@ class _NavigationHomePageState extends State<NavigationHomePage>
 }
 ```
 
-#### Drawer navigation
+#### Navegação por drawer
 
-In React Native, import the needed react-navigation packages and then use
-`createDrawerNavigator` and `DrawerNavigation`.
+No React Native, importe os pacotes react-navigation necessários e depois use
+`createDrawerNavigator` e `DrawerNavigation`.
 
 ```js
 // React Native
@@ -1793,22 +1853,22 @@ export default (MyApp1 = DrawerNavigator({
 }));
 ```
 
-In Flutter, we can use the `Drawer` widget in combination with a
-`Scaffold` to create a layout with a Material Design drawer.
-To add a `Drawer` to an app, wrap it in a `Scaffold` widget.
-The `Scaffold` widget provides a consistent
-visual structure to apps that follow the
-[Material Design][] guidelines. It also supports
-special Material Design components,
-such as `Drawers`, `AppBars`, and `SnackBars`.
+No Flutter, podemos usar o widget `Drawer` em combinação com um
+`Scaffold` para criar um layout com um drawer Material Design.
+Para adicionar um `Drawer` a uma app, envolva-o em um widget `Scaffold`.
+O widget `Scaffold` fornece uma
+estrutura visual consistente para apps que seguem as
+diretrizes do [Material Design][]. Ele também suporta
+componentes especiais do Material Design,
+como `Drawers`, `AppBars` e `SnackBars`.
 
-The `Drawer` widget is a Material Design panel that slides
-in horizontally from the edge of a `Scaffold` to show navigation
-links in an application. You can
-provide a [`ElevatedButton`][], a [`Text`][] widget,
-or a list of items to display as the child to the `Drawer` widget.
-In the following example, the [`ListTile`][]
-widget provides the navigation on tap.
+O widget `Drawer` é um painel Material Design que desliza
+horizontalmente da borda de um `Scaffold` para mostrar links de navegação
+em uma aplicação. Você pode
+fornecer um [`ElevatedButton`][], um widget [`Text`][],
+ou uma lista de itens para exibir como filho do widget `Drawer`.
+No exemplo a seguir, o widget [`ListTile`][]
+fornece a navegação ao tocar.
 
 <?code-excerpt "lib/examples.dart (drawer)"?>
 ```dart
@@ -1827,10 +1887,10 @@ Widget build(BuildContext context) {
 }
 ```
 
-The `Scaffold` widget also includes an `AppBar` widget that automatically
-displays an appropriate IconButton to show the `Drawer` when a Drawer is
-available in the `Scaffold`. The `Scaffold` automatically handles the
-edge-swipe gesture to show the `Drawer`.
+O widget `Scaffold` também inclui um widget `AppBar` que automaticamente
+exibe um IconButton apropriado para mostrar o `Drawer` quando um Drawer está
+disponível no `Scaffold`. O `Scaffold` automaticamente lida com o
+gesto de deslizar da borda para mostrar o `Drawer`.
 
 <?code-excerpt "lib/examples.dart (scaffold)"?>
 ```dart
@@ -1855,22 +1915,43 @@ Widget build(BuildContext context) {
 
 {% render "docs/android-ios-figure-pair.md", image: "react-native/navigation.webp", alt: "Navigation", class: "border" %}
 
-## Gesture detection and touch event handling
+[`Route`]: {{site.api}}/flutter/widgets/Route-class.html
+[`Navigator`]: {{site.api}}/flutter/widgets/Navigator-class.html
+[`Navigator.push`]: {{site.api}}/flutter/widgets/Navigator/push.html
+[`Navigator.pop`]: {{site.api}}/flutter/widgets/Navigator/pop.html
+[`Navigator.of()`]: {{site.api}}/flutter/widgets/Navigator/of.html
+[`MaterialPageRoute`]: {{site.api}}/flutter/material/MaterialPageRoute-class.html
+[`WidgetBuilder`]: {{site.api}}/flutter/widgets/WidgetBuilder.html
+[`TabController`]: {{site.api}}/flutter/material/TabController-class.html
+[`TabBar`]: {{site.api}}/flutter/material/TabBar-class.html
+[`Tab`]: {{site.api}}/flutter/material/Tab-class.html
+[`TabBarView`]: {{site.api}}/flutter/material/TabBarView-class.html
+[`TickerProvider`]: {{site.api}}/flutter/scheduler/TickerProvider-class.html
+[`Ticker`]: {{site.api}}/flutter/scheduler/Ticker-class.html
+[`AnimationController`]: {{site.api}}/flutter/animation/AnimationController-class.html
+[`TickerProviderStateMixin`]: {{site.api}}/flutter/widgets/TickerProviderStateMixin-mixin.html
+[`SingleTickerProviderStateMixin`]: {{site.api}}/flutter/widgets/SingleTickerProviderStateMixin-mixin.html
+[`Scaffold`]: {{site.api}}/flutter/material/Scaffold-class.html
+[Material Design]: {{site.material}}/styles
+[`ElevatedButton`]: {{site.api}}/flutter/material/ElevatedButton-class.html
+[`ListTile`]: {{site.api}}/flutter/material/ListTile-class.html
 
-To listen for and respond to gestures,
-Flutter supports taps, drags, and scaling.
-The gesture system in Flutter has two separate layers.
-The first layer includes raw pointer events,
-which describe the location and movement of pointers,
-(such as touches, mice, and styli movements), across the screen.
-The second layer includes gestures
-that describe semantic actions
-and consist of one or more pointer movements.
+## Detecção de gestos e manipulação de eventos de toque
 
-### How do I add a click or press listeners to a widget?
+Para ouvir e responder a gestos,
+o Flutter suporta toques, arrastos e dimensionamento.
+O sistema de gestos no Flutter tem duas camadas separadas.
+A primeira camada inclui eventos de ponteiro brutos,
+que descrevem a localização e movimento de ponteiros,
+(como toques, mouses e movimentos de canetas), pela tela.
+A segunda camada inclui gestos
+que descrevem ações semânticas
+e consistem em um ou mais movimentos de ponteiro.
 
-In React Native, listeners are added to components
-using `PanResponder` or the `Touchable` components.
+### Como adicionar um listener de clique ou pressão a um widget?
+
+No React Native, listeners são adicionados a componentes
+usando `PanResponder` ou os componentes `Touchable`.
 
 ```js
 // React Native
@@ -1886,8 +1967,8 @@ using `PanResponder` or the `Touchable` components.
 </TouchableOpacity>
 ```
 
-For more complex gestures and combining several touches into
-a single gesture, [`PanResponder`][] is used.
+Para gestos mais complexos e combinar vários toques em um
+único gesto, [`PanResponder`][] é usado.
 
 ```js
 // React Native
@@ -1916,10 +1997,10 @@ const App = () => {
 };
 ```
 
-In Flutter, to add a click (or press) listener to a widget,
-use a button or a touchable widget that has an `onPress: field`.
-Or, add gesture detection to any widget by wrapping it
-in a [`GestureDetector`][].
+No Flutter, para adicionar um listener de clique (ou pressão) a um widget,
+use um botão ou um widget tocável que tem um campo `onPress: field`.
+Ou, adicione detecção de gestos a qualquer widget envolvendo-o
+em um [`GestureDetector`][].
 
 <?code-excerpt "lib/examples.dart (gesture-detector)"?>
 ```dart
@@ -1953,23 +2034,25 @@ Widget build(BuildContext context) {
 }
 ```
 
-For more information, including a list of
-Flutter `GestureDetector` callbacks,
-see the [GestureDetector class][].
+Para mais informações, incluindo uma lista de
+callbacks do `GestureDetector` do Flutter,
+veja a [GestureDetector class][].
 
 [GestureDetector class]: {{site.api}}/flutter/widgets/GestureDetector-class.html#instance-properties
+[`PanResponder`]: https://reactnative.dev/docs/panresponder
+[`GestureDetector`]: {{site.api}}/flutter/widgets/GestureDetector-class.html
 
 {% render "docs/android-ios-figure-pair.md", image: "react-native/flutter-gestures.webp", alt: "Gestures", class: "border" %}
 
-## Making HTTP network requests
+## Fazendo requisições de rede HTTP
 
-Fetching data from the internet is common for most apps. And in Flutter,
-the `http` package provides the simplest way to fetch data from the internet.
+Buscar dados da internet é comum para a maioria das apps. E no Flutter,
+o pacote `http` fornece a maneira mais simples de buscar dados da internet.
 
-### How do I fetch data from API calls?
+### Como fazer chamadas de API para buscar dados?
 
-React Native provides the Fetch API for networking—you make a fetch request
-and then receive the response to get the data.
+React Native fornece a Fetch API para networking—você faz uma requisição fetch
+e então recebe a resposta para obter os dados.
 
 ```js
 // React Native
@@ -1987,24 +2070,24 @@ const _getIPAddress = () => {
 };
 ```
 
-Flutter uses the `http` package.
+O Flutter usa o pacote `http`.
 
-To add the `http` package as a dependency, run `flutter pub add`:
+Para adicionar o pacote `http` como uma dependência, execute `flutter pub add`:
 
 ```console
 $ flutter pub add http
 ```
 
-Flutter uses the [`dart:io`][] core HTTP support client.
-To create an HTTP Client, import `dart:io`.
+O Flutter usa o suporte HTTP core do cliente [`dart:io`][].
+Para criar um HTTP Client, importe `dart:io`.
 
 <?code-excerpt "lib/examples.dart (import-dart-io)"?>
 ```dart
 import 'dart:io';
 ```
 
-The client supports the following HTTP operations:
-GET, POST, PUT, and DELETE.
+O cliente suporta as seguintes operações HTTP:
+GET, POST, PUT e DELETE.
 
 <?code-excerpt "lib/examples.dart (http)"?>
 ```dart
@@ -2022,19 +2105,21 @@ Future<void> getIPAddress() async {
 }
 ```
 
+[`dart:io`]: {{site.api}}/flutter/dart-io/dart-io-library.html
+
 {% render "docs/android-ios-figure-pair.md", image: "react-native/api-calls.webp", alt: "API calls", class: "border" %}
 
-## Form input
+## Entrada de formulário
 
-Text fields allow users to type text into your app so they can be
-used to build forms, messaging apps, search experiences, and more.
-Flutter provides two core text field widgets:
-[`TextField`][] and [`TextFormField`][].
+Campos de texto permitem que os usuários digitem texto em sua app para que possam ser
+usados para construir formulários, apps de mensagens, experiências de busca e mais.
+O Flutter fornece dois widgets de campo de texto core:
+[`TextField`][] e [`TextFormField`][].
 
-### How do I use text field widgets?
+### Como usar widgets de campo de texto?
 
-In React Native, to enter text you use a `TextInput` component to show a text
-input box and then use the callback to store the value in a variable.
+No React Native, para inserir texto você usa um componente `TextInput` para mostrar uma caixa
+de entrada de texto e então usa o callback para armazenar o valor em uma variável.
 
 ```js
 // React Native
@@ -2047,15 +2132,15 @@ const [password, setPassword] = useState('')
 <Button title="Submit" onPress={this.validate} />
 ```
 
-In Flutter, use the [`TextEditingController`][]
-class to manage a `TextField` widget.
-Whenever the text field is modified,
-the controller notifies its listeners.
+No Flutter, use a classe [`TextEditingController`][]
+para gerenciar um widget `TextField`.
+Sempre que o campo de texto é modificado,
+o controller notifica seus ouvintes.
 
-Listeners read the text and selection properties to
-learn what the user typed into the field.
-You can access the text in `TextField`
-by the `text` property of the controller.
+Ouvintes leem as propriedades de texto e seleção para
+saber o que o usuário digitou no campo.
+Você pode acessar o texto em `TextField`
+pela propriedade `text` do controller.
 
 <?code-excerpt "lib/examples.dart (text-editing-controller)"?>
 ```dart
@@ -2091,26 +2176,26 @@ Widget build(BuildContext context) {
 }
 ```
 
-In this example, when a user clicks on the submit button an alert dialog
-displays the current text entered in the text field.
-This is achieved using an [`AlertDialog`][]
-widget that displays the alert message, and the text from
-the `TextField` is accessed by the `text` property of the
+Neste exemplo, quando um usuário clica no botão submit um diálogo de alerta
+exibe o texto atual inserido no campo de texto.
+Isso é alcançado usando um widget [`AlertDialog`][]
+que exibe a mensagem de alerta, e o texto do
+`TextField` é acessado pela propriedade `text` do
 [`TextEditingController`][].
 
-### How do I use Form widgets?
+### Como usar widgets Form?
 
-In Flutter, use the [`Form`][] widget where
-[`TextFormField`][] widgets along with the submit
-button are passed as children.
-The `TextFormField` widget has a parameter called
-[`onSaved`][] that takes a callback and executes
-when the form is saved. A `FormState`
-object is used to save, reset, or validate
-each `FormField` that is a descendant of this `Form`.
-To obtain the `FormState`, you can use `Form.of()`
-with a context whose ancestor is the `Form`,
-or pass a `GlobalKey` to the `Form` constructor and call
+No Flutter, use o widget [`Form`][] onde
+widgets [`TextFormField`][] junto com o botão submit
+são passados como filhos.
+O widget `TextFormField` tem um parâmetro chamado
+[`onSaved`][] que recebe um callback e executa
+quando o formulário é salvo. Um objeto `FormState`
+é usado para salvar, resetar ou validar
+cada `FormField` que é descendente deste `Form`.
+Para obter o `FormState`, você pode usar `Form.of()`
+com um contexto cujo ancestral é o `Form`,
+ou passar uma `GlobalKey` ao construtor `Form` e chamar
 `GlobalKey.currentState()`.
 
 <?code-excerpt "lib/examples.dart (form-state)"?>
@@ -2143,8 +2228,8 @@ Widget build(BuildContext context) {
 }
 ```
 
-The following example shows how `Form.save()` and `formKey`
-(which is a `GlobalKey`), are used to save the form on submit.
+O exemplo a seguir mostra como `Form.save()` e `formKey`
+(que é uma `GlobalKey`), são usados para salvar o formulário ao submeter.
 
 <?code-excerpt "lib/examples.dart (form-submit)"?>
 ```dart
@@ -2165,16 +2250,21 @@ void _submit() {
 }
 ```
 
+[`TextEditingController`]: {{site.api}}/flutter/widgets/TextEditingController-class.html
+[`AlertDialog`]: {{site.api}}/flutter/material/AlertDialog-class.html
+[`TextFormField`]: {{site.api}}/flutter/material/TextFormField-class.html
+[`onSaved`]: {{site.api}}/flutter/widgets/FormField/onSaved.html
+
 {% render "docs/android-ios-figure-pair.md", image: "react-native/input-fields.webp", alt: "Input", class: "border" %}
 
-## Platform-specific code
+## Código específico de plataforma
 
-When building a cross-platform app, you want to re-use as much code as
-possible across platforms. However, scenarios might arise where it
-makes sense for the code to be different depending on the OS.
-This requires a separate implementation by declaring a specific platform.
+Ao construir uma app cross-platform, você quer reutilizar o máximo de código possível
+entre plataformas. No entanto, cenários podem surgir onde faz
+sentido o código ser diferente dependendo do OS.
+Isso requer uma implementação separada declarando uma plataforma específica.
 
-In React Native, the following implementation would be used:
+No React Native, a seguinte implementação seria usada:
 
 ```js
 // React Native
@@ -2187,7 +2277,7 @@ if (Platform.OS === 'ios') {
 }
 ```
 
-In Flutter, use the following implementation:
+No Flutter, use a seguinte implementação:
 
 <?code-excerpt "lib/examples.dart (platform)"?>
 ```dart
@@ -2204,120 +2294,122 @@ if (platform == TargetPlatform.fuchsia) {
 return 'not recognized ';
 ```
 
-## Debugging
+## Depuração
 
-### What tools can I use to debug my app in Flutter?
+### Quais ferramentas posso usar para depurar minha app no Flutter?
 
-Use the [DevTools][] suite for debugging Flutter or Dart apps.
+Use o conjunto de ferramentas [DevTools][] para depurar apps Flutter ou Dart.
 
-DevTools includes support for profiling, examining the heap,
-inspecting the widget tree, logging diagnostics, debugging,
-observing executed lines of code, debugging memory leaks and memory
-fragmentation. For more information, check out the
-[DevTools][] documentation.
+DevTools inclui suporte para profiling, examinando o heap,
+inspecionando a árvore de widgets, registrando diagnósticos, depurando,
+observando linhas de código executadas, depurando vazamentos de memória e
+fragmentação de memória. Para mais informações, confira a
+documentação do [DevTools][].
 
-If you're using an IDE,
-you can debug your application using the IDE's debugger.
+Se você está usando uma IDE,
+pode depurar sua aplicação usando o debugger da IDE.
 
-### How do I perform a hot reload?
+### Como realizar um hot reload?
 
-Flutter's Stateful Hot Reload feature helps you quickly and easily experiment,
-build UIs, add features, and fix bugs. Instead of recompiling your app
-every time you make a change, you can hot reload your app instantly.
-The app is updated to reflect your change,
-and the current state of the app is preserved.
+O recurso Stateful Hot Reload do Flutter ajuda você a experimentar rápida e facilmente,
+construir UIs, adicionar recursos e corrigir bugs. Em vez de recompilar sua app
+toda vez que você faz uma mudança, pode fazer hot reload da sua app instantaneamente.
+A app é atualizada para refletir sua mudança,
+e o estado atual da app é preservado.
 
-First, from your preferred IDE,
-enable autosave and hot reloads on save.
+Primeiro, de sua IDE preferida,
+habilite autosave e hot reloads on save.
 
     **VS Code**
 
-    Add the following to your `.vscode/settings.json` file:
+    Adicione o seguinte ao seu arquivo `.vscode/settings.json`:
 
     ```json
     "files.autoSave": "afterDelay",
     "dart.flutterHotReloadOnSave": "all",
     ```
-    **Android Studio and IntelliJ**
+    **Android Studio e IntelliJ**
 
-    * Open `Settings > Tools > Actions on Save` and select
+    * Abra `Settings > Tools > Actions on Save` e selecione
      `Configure autosave options`.
-        - Check the option to `Save files if the IDE is idle for X seconds`.
-        - **Recommended:** Set a small delay duration. For example, 2 seconds.
+        - Marque a opção para `Save files if the IDE is idle for X seconds`.
+        - **Recomendado:** Defina uma pequena duração de delay. Por exemplo, 2 segundos.
 
-    * Open `Settings > Languages & Frameworks > Flutter`.
-        - Check the option to `Perform hot reload on save`.
+    * Abra `Settings > Languages & Frameworks > Flutter`.
+        - Marque a opção para `Perform hot reload on save`.
 
 
-In React Native,
-the shortcut is ⌘R for the iOS Simulator and tapping R twice on
-Android emulators.
+No React Native,
+o atalho é ⌘R para o iOS Simulator e tocar R duas vezes em
+emuladores Android.
 
-In Flutter, if you are using IntelliJ IDE or Android Studio,
-you can select Save All (⌘s/ctrl-s), or you can click the
-Hot Reload button on the toolbar. If you
-are running the app at the command line using `flutter run`,
-type `r` in the Terminal window.
-You can also perform a full restart by typing `R` in the
-Terminal window.
+No Flutter, se você está usando o IntelliJ IDE ou Android Studio,
+pode selecionar Save All (⌘s/ctrl-s), ou pode clicar no
+botão Hot Reload na barra de ferramentas. Se você
+está executando a app na linha de comando usando `flutter run`,
+digite `r` na janela do Terminal.
+Você também pode realizar um restart completo digitando `R` na
+janela do Terminal.
 
-### How do I access the in-app developer menu?
+### Como acessar o menu desenvolvedor in-app?
 
-In React Native, the developer menu can be accessed by shaking your device: ⌘D
-for the iOS Simulator or ⌘M for Android emulator.
+No React Native, o menu desenvolvedor pode ser acessado sacudindo seu dispositivo: ⌘D
+para o iOS Simulator ou ⌘M para emulador Android.
 
-In Flutter, if you are using an IDE, you can use the IDE tools. If you start
-your application using `flutter run` you can also access the menu by typing `h`
-in the terminal window, or type the following shortcuts:
+No Flutter, se você está usando uma IDE, pode usar as ferramentas da IDE. Se você iniciar
+sua aplicação usando `flutter run` você também pode acessar o menu digitando `h`
+na janela do terminal, ou digite os seguintes atalhos:
 
-| Action| Terminal Shortcut| Debug functions and properties|
+| Ação| Atalho do Terminal| Funções e propriedades de depuração|
 | :------- | :------: | :------ |
-| Widget hierarchy of the app| `w`| debugDumpApp()|
-| Rendering tree of the app | `t`| debugDumpRenderTree()|
-| Layers| `L`| debugDumpLayerTree()|
-| Accessibility | `S` (traversal order) or<br>`U` (inverse hit test order)|debugDumpSemantics()|
-| To toggle the widget inspector | `i` | WidgetsApp. showWidgetInspectorOverride|
-| To toggle the display of construction lines| `p` | debugPaintSizeEnabled|
-| To simulate different operating systems| `o` | defaultTargetPlatform|
-| To display the performance overlay | `P` | WidgetsApp. showPerformanceOverlay|
-| To save a screenshot to flutter. png| `s` ||
-| To quit| `q` ||
+| Hierarquia de widgets da app| `w`| debugDumpApp()|
+| Árvore de renderização da app | `t`| debugDumpRenderTree()|
+| Camadas| `L`| debugDumpLayerTree()|
+| Acessibilidade | `S` (ordem de travessia) ou<br>`U` (ordem inversa do hit test)|debugDumpSemantics()|
+| Para alternar o widget inspector | `i` | WidgetsApp. showWidgetInspectorOverride|
+| Para alternar a exibição de linhas de construção| `p` | debugPaintSizeEnabled|
+| Para simular diferentes sistemas operacionais| `o` | defaultTargetPlatform|
+| Para exibir o overlay de performance | `P` | WidgetsApp. showPerformanceOverlay|
+| Para salvar uma captura de tela para flutter. png| `s` ||
+| Para sair| `q` ||
 
 {:.table .table-striped}
 
-## Animation
+[DevTools]: /tools/devtools
 
-Well-designed animation makes a UI feel intuitive,
-contributes to the look and feel of a polished app,
-and improves the user experience.
-Flutter's animation support makes it easy
-to implement simple and complex animations.
-The Flutter SDK includes many Material Design widgets
-that include standard motion effects,
-and you can easily customize these effects
-to personalize your app.
+## Animação
 
-In React Native, Animated APIs are used to create animations.
+Animação bem projetada faz uma UI parecer intuitiva,
+contribui para a aparência de uma app polida,
+e melhora a experiência do usuário.
+O suporte de animação do Flutter facilita
+implementar animações simples e complexas.
+O Flutter SDK inclui muitos widgets Material Design
+que incluem efeitos de movimento padrão,
+e você pode facilmente customizar esses efeitos
+para personalizar sua app.
 
-In Flutter, use the [`Animation`][]
-class and the [`AnimationController`][] class.
-`Animation` is an abstract class that understands its
-current value and its state (completed or dismissed).
-The `AnimationController` class lets you
-play an animation forward or in reverse,
-or stop animation and set the animation
-to a specific value to customize the motion.
+No React Native, Animated APIs são usadas para criar animações.
 
-### How do I add a simple fade-in animation?
+No Flutter, use a classe [`Animation`][]
+e a classe [`AnimationController`][].
+`Animation` é uma classe abstrata que entende seu
+valor atual e seu estado (completado ou dismissed).
+A classe `AnimationController` permite que você
+reproduza uma animação para frente ou para trás,
+ou pare a animação e defina a animação
+para um valor específico para customizar o movimento.
 
-In the React Native example below, an animated component,
-`FadeInView` is created using the Animated API.
-The initial opacity state, final state, and the
-duration over which the transition occurs are defined.
-The animation component is added inside the `Animated` component,
-the opacity state `fadeAnim` is mapped
-to the opacity of the `Text` component that we want to animate,
-and then, `start()` is called to start the animation.
+### Como adicionar uma animação simples de fade-in?
+
+No exemplo React Native abaixo, um componente animado,
+`FadeInView` é criado usando a Animated API.
+O estado de opacidade inicial, estado final e a
+duração durante a qual a transição ocorre são definidos.
+O componente de animação é adicionado dentro do componente `Animated`,
+o estado de opacidade `fadeAnim` é mapeado
+para a opacidade do componente `Text` que queremos animar,
+e então, `start()` é chamado para iniciar a animação.
 
 ```js
 // React Native
@@ -2344,38 +2436,38 @@ const FadeInView = ({ style, children }) => {
     ...
 ```
 
-To create the same animation in Flutter, create an
-[`AnimationController`][] object named `controller`
-and specify the duration. By default, an `AnimationController`
-linearly produces values that range from 0.0 to 1.0,
-during a given duration. The animation controller generates a new value
-whenever the device running your app is ready to display a new frame.
-Typically, this rate is around 60 values per second.
+Para criar a mesma animação no Flutter, crie um
+objeto [`AnimationController`][] chamado `controller`
+e especifique a duração. Por padrão, um `AnimationController`
+produz linearmente valores que variam de 0.0 a 1.0,
+durante uma duração dada. O controller de animação gera um novo valor
+sempre que o dispositivo executando sua app está pronto para exibir um novo frame.
+Tipicamente, essa taxa é de cerca de 60 valores por segundo.
 
-When defining an `AnimationController`,
-you must pass in a `vsync` object.
-The presence of `vsync` prevents offscreen
-animations from consuming unnecessary resources.
-You can use your stateful object as the `vsync` by adding
-`TickerProviderStateMixin` to the class definition.
-An `AnimationController` needs a TickerProvider,
-which is configured using the `vsync` argument on the constructor.
+Ao definir um `AnimationController`,
+você deve passar um objeto `vsync`.
+A presença de `vsync` evita que animações offscreen
+consumam recursos desnecessários.
+Você pode usar seu objeto stateful como o `vsync` adicionando
+`TickerProviderStateMixin` à definição da classe.
+Um `AnimationController` precisa de um TickerProvider,
+que é configurado usando o argumento `vsync` no construtor.
 
-A [`Tween`][] describes the interpolation between a
-beginning and ending value or the mapping from an input
-range to an output range. To use a `Tween` object
-with an animation, call the `Tween` object's `animate()`
-method and pass it the `Animation` object that you want to modify.
+Um [`Tween`][] descreve a interpolação entre um
+valor inicial e final ou o mapeamento de um intervalo de entrada
+para um intervalo de saída. Para usar um objeto `Tween`
+com uma animação, chame o método `animate()` do objeto `Tween`
+e passe o objeto `Animation` que você quer modificar.
 
-For this example, a [`FadeTransition`][]
-widget is used and the `opacity` property is
-mapped to the `animation` object.
+Para este exemplo, um widget [`FadeTransition`][]
+é usado e a propriedade `opacity` é
+mapeada para o objeto `animation`.
 
-To start the animation, use `controller.forward()`.
-Other operations can also be performed using the
-controller such as `fling()` or `repeat()`.
-For this example, the [`FlutterLogo`][]
-widget is used inside the `FadeTransition` widget.
+Para iniciar a animação, use `controller.forward()`.
+Outras operações também podem ser realizadas usando o
+controller como `fling()` ou `repeat()`.
+Para este exemplo, o widget [`FlutterLogo`][]
+é usado dentro do widget `FadeTransition`.
 
 <?code-excerpt "lib/animation.dart"?>
 ```dart
@@ -2430,13 +2522,13 @@ class _LogoFadeState extends State<LogoFade>
 
 {% render "docs/android-ios-figure-pair.md", image: "react-native/flutter-fade.webp", alt: "Flutter fade", class: "border" %}
 
-### How do I add swipe animation to cards?
+### Como adicionar animação de swipe a cards?
 
-In React Native, either the `PanResponder` or
-third-party libraries are used for swipe animation.
+No React Native, `PanResponder` ou
+bibliotecas de terceiros são usadas para animação de swipe.
 
-In Flutter, to add a swipe animation, use the
-[`Dismissible`][] widget and nest the child widgets.
+No Flutter, para adicionar uma animação de swipe, use o
+widget [`Dismissible`][] e aninhe os widgets filhos.
 
 <?code-excerpt "lib/examples.dart (dismissible)"?>
 ```dart
@@ -2453,185 +2545,99 @@ return Dismissible(
 
 {% render "docs/android-ios-figure-pair.md", image: "react-native/card-swipe.webp", alt: "Card swipe", class: "border" %}
 
-## React Native and Flutter widget equivalent components
+[`Animation`]: {{site.api}}/flutter/animation/Animation-class.html
+[`Tween`]: {{site.api}}/flutter/animation/Tween-class.html
+[`FadeTransition`]: {{site.api}}/flutter/widgets/FadeTransition-class.html
+[`FlutterLogo`]: {{site.api}}/flutter/material/FlutterLogo-class.html
+[`Dismissible`]: {{site.api}}/flutter/widgets/Dismissible-class.html
 
-The following table lists commonly-used React Native
-components mapped to the corresponding Flutter widget
-and common widget properties.
+## Componentes equivalentes de widgets React Native e Flutter
 
-| React Native Component                                                                    | Flutter Widget                                                                                             | Description                                                                                                                            |
+A tabela a seguir lista componentes React Native comumente usados
+mapeados para o widget Flutter correspondente
+e propriedades de widget comuns.
+
+| React Native Component                                                                    | Flutter Widget                                                                                             | Descrição                                                                                                                            |
 | ----------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| [`Button`](https://reactnative.dev/docs/button)                        | [`ElevatedButton`][]                           | A basic raised button.                                                                              |
-|                                                                                           |  onPressed [required]                                                                                        | The callback when the button is tapped or otherwise activated.                                                          |
-|                                                                                           | Child                                                                              | The button's label.                                                                                                      |
+| [`Button`](https://reactnative.dev/docs/button)                        | [`ElevatedButton`][]                           | Um botão elevado básico.                                                                              |
+|                                                                                           |  onPressed [required]                                                                                        | O callback quando o botão é tocado ou ativado de outra forma.                                                          |
+|                                                                                           | Child                                                                              | O rótulo do botão.                                                                                                      |
 |                                                                                           |                                                                                                            |                                                                                                                                        |
-| [`Button`](https://reactnative.dev/docs/button)                        | [`TextButton`][]                               | A basic flat button.                                                                                                         |
-|                                                                                           |  onPressed [required]                                                                                        | The callback when the button is tapped or otherwise activated.                                                            |
-|                                                                                           | Child                                                                              | The button's label.                                                                                                      |
+| [`Button`](https://reactnative.dev/docs/button)                        | [`TextButton`][]                               | Um botão plano básico.                                                                                                         |
+|                                                                                           |  onPressed [required]                                                                                        | O callback quando o botão é tocado ou ativado de outra forma.                                                            |
+|                                                                                           | Child                                                                              | O rótulo do botão.                                                                                                      |
 |                                                                                           |                                                                                                            |                                                                                                                                        |
-| [`ScrollView`](https://reactnative.dev/docs/scrollview)                | [`ListView`][]                                    | A scrollable list of widgets arranged linearly.|
-||        children                                                                              | 	( <Widget\> [ ])  List of child widgets to display.
-||controller |[ [`ScrollController`][] ] An object that can be used to control a scrollable widget.
-||itemExtent|[ double ] If non-null, forces the children to have the given extent in the scroll direction.
-||scroll Direction|[ [`Axis`][] ] The axis along which the scroll view scrolls.
+| [`ScrollView`](https://reactnative.dev/docs/scrollview)                | [`ListView`][]                                    | Uma lista rolável de widgets organizados linearmente.|
+||        children                                                                              | 	( <Widget\> [ ])  Lista de widgets filhos para exibir.
+||controller |[ [`ScrollController`][] ] Um objeto que pode ser usado para controlar um widget rolável.
+||itemExtent|[ double ] Se não-nulo, força os filhos a ter a extensão dada na direção de rolagem.
+||scroll Direction|[ [`Axis`][] ] O eixo ao longo do qual a view de rolagem rola.
 ||                                                                                                            |                                                                                                                                        |
-| [`FlatList`](https://reactnative.dev/docs/flatlist)                    | [`ListView.builder`][]               | The constructor for a linear array of widgets that are created on demand.
-||itemBuilder [required] |[[`IndexedWidgetBuilder`][]] helps in building the children on demand. This callback is called only with indices greater than or equal to zero and less than the itemCount.
-||itemCount |[ int ] improves the ability of the `ListView` to estimate the maximum scroll extent.
+| [`FlatList`](https://reactnative.dev/docs/flatlist)                    | [`ListView.builder`][]               | O construtor para um array linear de widgets que são criados sob demanda.
+||itemBuilder [required] |[[`IndexedWidgetBuilder`][]] ajuda a construir os filhos sob demanda. Este callback é chamado apenas com índices maiores ou iguais a zero e menores que o itemCount.
+||itemCount |[ int ] melhora a capacidade do `ListView` de estimar a extensão máxima de rolagem.
 |                                                                                           |                                                                                                            |                                                                                                                                        |
-| [`Image`](https://reactnative.dev/docs/image)                         | [`Image`][]                                           | A widget that displays an image.                                                                                                       |
-|                                                                                           |  image [required]                                                                                          | The image to display.                                                                                                                  |
-|                                                                                           | Image. asset                                                                                                | Several constructors are provided for the various ways that an image can be specified.                                                 |
-|                                                                                           | width, height, color, alignment                                                                            | The style and layout for the image.                                                                                                         |
-|                                                                                           | fit                                                                                                        | Inscribing the image into the space allocated during layout.                                                                           |
+| [`Image`](https://reactnative.dev/docs/image)                         | [`Image`][]                                           | Um widget que exibe uma imagem.                                                                                                       |
+|                                                                                           |  image [required]                                                                                          | A imagem a exibir.                                                                                                                  |
+|                                                                                           | Image. asset                                                                                                | Vários construtores são fornecidos para as várias maneiras que uma imagem pode ser especificada.                                                 |
+|                                                                                           | width, height, color, alignment                                                                            | O estilo e layout para a imagem.                                                                                                         |
+|                                                                                           | fit                                                                                                        | Inscrever a imagem no espaço alocado durante o layout.                                                                           |
 |                                                                                           |                                                                                                            |                                                                                                                                        |
-| [`Modal`](https://reactnative.dev/docs/modal)                          | [`ModalRoute`][]                                | A route that blocks interaction with previous routes.                                                                                  |
-|                                                                                           | animation                                                                                                  | The animation that drives the route's transition and the previous route's forward transition.                                          |
+| [`Modal`](https://reactnative.dev/docs/modal)                          | [`ModalRoute`][]                                | Uma rota que bloqueia a interação com rotas anteriores.                                                                                  |
+|                                                                                           | animation                                                                                                  | A animação que conduz a transição da rota e a transição para frente da rota anterior.                                          |
 |                                                                                           |                                                                                                            |                                                                                                                                        |
-|  [`ActivityIndicator`](https://reactnative.dev/docs/activityindicator) | [`CircularProgressIndicator`][] | A widget that shows progress along a circle.                                                                                           |
-|                                                                                           | strokeWidth                                                                                                | The width of the line used to draw the circle.                                                                                         |
-|                                                                                           | backgroundColor                                                                                            | The progress indicator's background color. The current theme's `ThemeData.backgroundColor` by default.                                   |
+|  [`ActivityIndicator`](https://reactnative.dev/docs/activityindicator) | [`CircularProgressIndicator`][] | Um widget que mostra progresso ao longo de um círculo.                                                                                           |
+|                                                                                           | strokeWidth                                                                                                | A largura da linha usada para desenhar o círculo.                                                                                         |
+|                                                                                           | backgroundColor                                                                                            | A cor de fundo do indicador de progresso. O `ThemeData.backgroundColor` do tema atual por padrão.                                   |
 |                                                                                           |                                                                                                            |                                                                                                                                        |
-|  [`ActivityIndicator`](https://reactnative.dev/docs/activityindicator) | [`LinearProgressIndicator`][]     | A widget that shows progress along a line.                                                                                           |
-|                                                                                           | value                                                                                                      | The value of this progress indicator.                                                                                                   |
+|  [`ActivityIndicator`](https://reactnative.dev/docs/activityindicator) | [`LinearProgressIndicator`][]     | Um widget que mostra progresso ao longo de uma linha.                                                                                           |
+|                                                                                           | value                                                                                                      | O valor deste indicador de progresso.                                                                                                   |
 |                                                                                           |                                                                                                            |                                                                                                                                        |
-| [`RefreshControl`](https://reactnative.dev/docs/refreshcontrol)        | [`RefreshIndicator`][]                   | A widget that supports the Material "swipe to refresh" idiom.                                                                          |
-|                                                                                           | color                                                                                                      | The progress indicator's foreground color.                                                                                             |
-|                                                                                           | onRefresh                                                                                                  | A function that's called when a user drags the refresh indicator far enough to demonstrate that they want the app to refresh.  |
+| [`RefreshControl`](https://reactnative.dev/docs/refreshcontrol)        | [`RefreshIndicator`][]                   | Um widget que suporta o idioma Material "swipe to refresh".                                                                          |
+|                                                                                           | color                                                                                                      | A cor de primeiro plano do indicador de progresso.                                                                                             |
+|                                                                                           | onRefresh                                                                                                  | Uma função que é chamada quando um usuário arrasta o indicador de refresh longe o suficiente para demonstrar que quer que a app atualize.  |
 |                                                                                           |                                                                                                            |                                                                                                                                        |
-| [`View`](https://reactnative.dev/docs/view)                            | [`Container`][]                                  | A widget that surrounds a child widget.                                                                                                                |
+| [`View`](https://reactnative.dev/docs/view)                            | [`Container`][]                                  | Um widget que envolve um widget filho.                                                                                                                |
 |                                                                                           |                                                                                                            |                                                                                                                                        |
-| [`View`](https://reactnative.dev/docs/view)                            | [`Column`][]                                        | A widget that displays its children in a vertical array.                                                                                              |
+| [`View`](https://reactnative.dev/docs/view)                            | [`Column`][]                                        | Um widget que exibe seus filhos em um array vertical.                                                                                              |
 |                                                                                           |                                                                                                            |                                                                                                                                        |
-| [`View`](https://reactnative.dev/docs/view)                            | [`Row`][]                                              | A widget that displays its children in a horizontal array.                                                                                            |
+| [`View`](https://reactnative.dev/docs/view)                            | [`Row`][]                                              | Um widget que exibe seus filhos em um array horizontal.                                                                                            |
 |                                                                                           |                                                                                                            |                                                                                                                                        |
-| [`View`](https://reactnative.dev/docs/view)                            | [`Center`][]                                        | A widget that centers its child within itself.                                                                                                       |
+| [`View`](https://reactnative.dev/docs/view)                            | [`Center`][]                                        | Um widget que centraliza seu filho dentro de si mesmo.                                                                                                       |
 |                                                                                           |                                                                                                            |                                                                                                                                        |
-| [`View`](https://reactnative.dev/docs/view)                            | [`Padding`][]                                      | A widget that insets its child by the given padding.                                                                                                 |
-|                                                                                           | padding [required]                                                                                         | [ EdgeInsets ] The amount of space to inset the child.
+| [`View`](https://reactnative.dev/docs/view)                            | [`Padding`][]                                      | Um widget que inseta seu filho pelo padding dado.                                                                                                 |
+|                                                                                           | padding [required]                                                                                         | [ EdgeInsets ] A quantidade de espaço para insetar o filho.
 |||
-| [`TouchableOpacity`](https://reactnative.dev/docs/touchableopacity)    | [`GestureDetector`][]                      | A widget that detects gestures.                                                                                                                       |
-|                                                                                           | onTap                                                                                                      | A callback when a tap occurs.                                                                                                               |
-|                                                                                           | onDoubleTap                                                                                                | A callback when a tap occurs at the same location twice in quick succession.
+| [`TouchableOpacity`](https://reactnative.dev/docs/touchableopacity)    | [`GestureDetector`][]                      | Um widget que detecta gestos.                                                                                                                       |
+|                                                                                           | onTap                                                                                                      | Um callback quando um toque ocorre.                                                                                                               |
+|                                                                                           | onDoubleTap                                                                                                | Um callback quando um toque ocorre no mesmo local duas vezes em rápida sucessão.
 |||
-| [`TextInput`](https://reactnative.dev/docs/textinput)                | [`TextInput`][]                                   | The interface to the system's text input control.                                                                                           |
-|                                                                                           | controller                                                                                                 | [ [`TextEditingController`][] ] used to access and modify text.
+| [`TextInput`](https://reactnative.dev/docs/textinput)                | [`TextInput`][]                                   | A interface para o controle de entrada de texto do sistema.                                                                                           |
+|                                                                                           | controller                                                                                                 | [ [`TextEditingController`][] ] usado para acessar e modificar texto.
 |||
-| [`Text`](https://reactnative.dev/docs/text)                          | [`Text`][]                                            | The Text widget that displays a string of text with a single style.                                                                                                                                                                           |
-|                                                                                         | data                                                                                                      | [ String ] The text to display.                                                                                                                                                                              |
-|                                                                                         | textDirection                                                                                             | [ [`TextAlign`][] ] The direction in which the text flows.                                                                                     |
+| [`Text`](https://reactnative.dev/docs/text)                          | [`Text`][]                                            | O widget Text que exibe uma string de texto com um único estilo.                                                                                                                                                                           |
+|                                                                                         | data                                                                                                      | [ String ] O texto a exibir.                                                                                                                                                                              |
+|                                                                                         | textDirection                                                                                             | [ [`TextAlign`][] ] A direção na qual o texto flui.                                                                                     |
 |                                                                                         |                                                                                                           |                                                                                                                                                                                                              |
-| [`Switch`](https://reactnative.dev/docs/switch)                      | [`Switch`][]                                      | A material design switch.                                                                                                                                                                                    |
-|                                                                                         | value [required]                                                                                          | [ boolean ] Whether this switch is on or off.                                                                                                                                                                 |
-|                                                                                         | onChanged [required]                                                                                      | [ callback ] Called when the user toggles the switch on or off.                                                                                                                                               |
+| [`Switch`](https://reactnative.dev/docs/switch)                      | [`Switch`][]                                      | Um switch material design.                                                                                                                                                                                    |
+|                                                                                         | value [required]                                                                                          | [ boolean ] Se este switch está ligado ou desligado.                                                                                                                                                                 |
+|                                                                                         | onChanged [required]                                                                                      | [ callback ] Chamado quando o usuário alterna o switch para ligado ou desligado.                                                                                                                                               |
 
 {:.table .table-striped}
 
 
 [`AboutDialog`]: {{site.api}}/flutter/material/AboutDialog-class.html
-[Adding Assets and Images in Flutter]: /ui/assets/assets-and-images
-[`AlertDialog`]: {{site.api}}/flutter/material/AlertDialog-class.html
-[`Align`]: {{site.api}}/flutter/widgets/Align-class.html
-[`Animation`]: {{site.api}}/flutter/animation/Animation-class.html
-[`AnimationController`]: {{site.api}}/flutter/animation/AnimationController-class.html
-[async and await]: {{site.dart-site}}/language/async
 [`Axis`]: {{site.api}}/flutter/painting/Axis.html
-[`BuildContext`]: {{site.api}}/flutter/widgets/BuildContext-class.html
-[`Center`]: {{site.api}}/flutter/widgets/Center-class.html
-[color palette]: {{site.material2}}/design/color/the-color-system.html#color-theme-creation
-[colors]: {{site.api}}/flutter/material/Colors-class.html
-[`Colors`]: {{site.api}}/flutter/material/Colors-class.html
-[`Column`]: {{site.api}}/flutter/widgets/Column-class.html
-[`Container`]: {{site.api}}/flutter/widgets/Container-class.html
-[`Checkbox`]: {{site.api}}/flutter/material/Checkbox-class.html
-[`CircleAvatar`]: {{site.api}}/flutter/material/CircleAvatar-class.html
 [`CircularProgressIndicator`]: {{site.api}}/flutter/material/CircularProgressIndicator-class.html
-[Cupertino (iOS-style)]: /ui/widgets/cupertino
-[`CustomPaint`]: {{site.api}}/flutter/widgets/CustomPaint-class.html
-[`CustomPainter`]: {{site.api}}/flutter/rendering/CustomPainter-class.html
-[Dart]: {{site.dart-site}}/dart-2
-[Dart's Type System]: {{site.dart-site}}/guides/language/sound-dart
-[Sound Null Safety]: {{site.dart-site}}/null-safety
-[`dart:io`]: {{site.api}}/flutter/dart-io/dart-io-library.html
-[DartPadA]: {{site.dartpad}}/?id=0df636e00f348bdec2bc1c8ebc7daeb1
-[DartPadB]: {{site.dartpad}}/?id=cf9e652f77636224d3e37d96dcf238e5
-[DartPadC]: {{site.dartpad}}/?id=3f4625c16e05eec396d6046883739612
-[DartPadD]: {{site.dartpad}}/?id=57ec21faa8b6fe2326ffd74e9781a2c7
-[DartPadE]: {{site.dartpad}}/?id=c85038ad677963cb6dc943eb1a0b72e6
-[DartPadF]: {{site.dartpad}}/?id=5454e8bfadf3000179d19b9bc6be9918
-[Developing Packages & Plugins]: /packages-and-plugins/developing-packages
-[DevTools]: /tools/devtools
-[`Dismissible`]: {{site.api}}/flutter/widgets/Dismissible-class.html
-[`FadeTransition`]: {{site.api}}/flutter/widgets/FadeTransition-class.html
-[Flutter packages]: {{site.pub}}/flutter/
 [Flutter Architectural Overview]: /resources/architectural-overview
-[Flutter Basic Widgets]: /ui/widgets/basics
-[Flutter Technical Overview]: /resources/architectural-overview
-[Flutter Widget Catalog]: /ui/widgets
-[Flutter Widget Index]: /reference/widgets
-[`FlutterLogo`]: {{site.api}}/flutter/material/FlutterLogo-class.html
-[`Form`]: {{site.api}}/flutter/widgets/Form-class.html
-[`TextButton`]: {{site.api}}/flutter/material/TextButton-class.html
-[functions]: {{site.dart-site}}/language/functions
-[`Future`]: {{site.dart-site}}/tutorials/language/futures
-[`GestureDetector`]: {{site.api}}/flutter/widgets/GestureDetector-class.html
-[Getting started]: /get-started
-[`Image`]: {{site.api}}/flutter/widgets/Image-class.html
 [`IndexedWidgetBuilder`]: {{site.api}}/flutter/widgets/IndexedWidgetBuilder.html
-[`InheritedWidget`]: {{site.api}}/flutter/widgets/InheritedWidget-class.html
-[`InkWell`]: {{site.api}}/flutter/material/InkWell-class.html
-[Layout Widgets]: /ui/widgets/layout
 [`LinearProgressIndicator`]: {{site.api}}/flutter/material/LinearProgressIndicator-class.html
-[`ListTile`]: {{site.api}}/flutter/material/ListTile-class.html
-[`ListView`]: {{site.api}}/flutter/widgets/ListView-class.html
 [`ListView.builder`]: {{site.api}}/flutter/widgets/ListView/ListView.builder.html
-[Material Design]: {{site.material}}/styles
-[Material icons]: {{site.api}}/flutter/material/Icons-class.html
-[`MaterialApp`]: {{site.api}}/flutter/material/MaterialApp-class.html
-[`MaterialPageRoute`]: {{site.api}}/flutter/material/MaterialPageRoute-class.html
 [`ModalRoute`]: {{site.api}}/flutter/widgets/ModalRoute-class.html
-[`Navigator`]: {{site.api}}/flutter/widgets/Navigator-class.html
-[`Navigator.of()`]: {{site.api}}/flutter/widgets/Navigator/of.html
-[`Navigator.pop`]: {{site.api}}/flutter/widgets/Navigator/pop.html
-[`Navigator.push`]: {{site.api}}/flutter/widgets/Navigator/push.html
-[`onSaved`]: {{site.api}}/flutter/widgets/FormField/onSaved.html
-[named parameters]: {{site.dart-site}}/language/functions#named-parameters
-[`Padding`]: {{site.api}}/flutter/widgets/Padding-class.html
-[`PanResponder`]: https://reactnative.dev/docs/panresponder
-[pub.dev]: {{site.pub}}
-[`Radio`]: {{site.api}}/flutter/material/Radio-class.html
-[`ElevatedButton`]: {{site.api}}/flutter/material/ElevatedButton-class.html
 [`RefreshIndicator`]: {{site.api}}/flutter/material/RefreshIndicator-class.html
-[`Route`]: {{site.api}}/flutter/widgets/Route-class.html
-[`Row`]: {{site.api}}/flutter/widgets/Row-class.html
-[`Scaffold`]: {{site.api}}/flutter/material/Scaffold-class.html
 [`ScrollController`]: {{site.api}}/flutter/widgets/ScrollController-class.html
-[`shared_preferences`]: {{site.repo.packages}}/tree/main/packages/shared_preferences/shared_preferences
-[`SingleTickerProviderStateMixin`]: {{site.api}}/flutter/widgets/SingleTickerProviderStateMixin-mixin.html
-[`Slider`]: {{site.api}}/flutter/material/Slider-class.html
-[`Stack`]: {{site.api}}/flutter/widgets/Stack-class.html
-[State management]: /data-and-backend/state-mgmt
-[`StatefulWidget`]: {{site.api}}/flutter/widgets/StatefulWidget-class.html
-[`StatelessWidget`]: {{site.api}}/flutter/widgets/StatelessWidget-class.html
 [`Switch`]: {{site.api}}/flutter/material/Switch-class.html
-[`Tab`]: {{site.api}}/flutter/material/Tab-class.html
-[`TabBar`]: {{site.api}}/flutter/material/TabBar-class.html
-[`TabBarView`]: {{site.api}}/flutter/material/TabBarView-class.html
-[`TabController`]: {{site.api}}/flutter/material/TabController-class.html
-[`Text`]: {{site.api}}/flutter/widgets/Text-class.html
 [`TextAlign`]: {{site.api}}/flutter/dart-ui/TextAlign.html
-[`TextEditingController`]: {{site.api}}/flutter/widgets/TextEditingController-class.html
-[`TextField`]: {{site.api}}/flutter/material/TextField-class.html
-[`TextFormField`]: {{site.api}}/flutter/material/TextFormField-class.html
+[`TextButton`]: {{site.api}}/flutter/material/TextButton-class.html
 [`TextInput`]: {{site.api}}/flutter/services/TextInput-class.html
-[`TextStyle`]: {{site.api}}/flutter/dart-ui/TextStyle-class.html
-[`Theme`]: {{site.api}}/flutter/material/Theme-class.html
-[`ThemeData`]: {{site.api}}/flutter/material/ThemeData-class.html
-[`Ticker`]: {{site.api}}/flutter/scheduler/Ticker-class.html
-[`TickerProvider`]: {{site.api}}/flutter/scheduler/TickerProvider-class.html
-[`TickerProviderStateMixin`]: {{site.api}}/flutter/widgets/TickerProviderStateMixin-mixin.html
-[`Tween`]: {{site.api}}/flutter/animation/Tween-class.html
-[Using Packages]: /packages-and-plugins/using-packages
-[variables]: {{site.dart-site}}/language/variables
-[`WidgetBuilder`]: {{site.api}}/flutter/widgets/WidgetBuilder.html
-[infinite_list]: {{site.repo.samples}}/tree/main/infinite_list
+[`Image`]: {{site.api}}/flutter/widgets/Image-class.html

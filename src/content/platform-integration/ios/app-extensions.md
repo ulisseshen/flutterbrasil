@@ -1,171 +1,172 @@
 ---
-title: Adding iOS app extensions
-description: Learn how to add app extensions to your Flutter apps
+ia-translate: true
+title: Adicionando extensões de app iOS
+description: Aprenda como adicionar extensões de app aos seus apps Flutter
 ---
 
-This guide shows you how to use iOS app extensions with a
-Flutter app.
+Este guia mostra como usar extensões de app iOS com um
+app Flutter.
 
-## Overview {: #overview }
+## Visão geral {: #overview }
 
-[iOS app extensions][] allow you to expand functionality
-outside of your iOS app. Your app could appear as a home screen widget,
-or you can make portions of your app available within other apps.
+[Extensões de app iOS][iOS app extensions] permitem expandir funcionalidades
+fora do seu app iOS. Seu app pode aparecer como um widget na tela inicial,
+ou você pode disponibilizar partes do seu app dentro de outros apps.
 
-In the following example, when a user selects a
-photo to share in the iOS Photo app, a Flutter app called
-`Example App With Extension` is displayed in the
-Photo apps share sheet:
+No exemplo a seguir, quando um usuário seleciona uma
+foto para compartilhar no app Fotos do iOS, um app Flutter chamado
+`Example App With Extension` é exibido na
+planilha de compartilhamento do app Fotos:
 
 <figure>
   <div class="site-figure-container">
-    <img src='/assets/images/docs/development/platform-integration/app-extensions/share-extension.png' alt='Share sheet with a Flutter app in it.' height='400'>
+    <img src='/assets/images/docs/development/platform-integration/app-extensions/share-extension.png' alt='Planilha de compartilhamento com um app Flutter.' height='400'>
   </div>
 </figure>
 
 [iOS app extensions]: {{site.apple-dev}}/app-extensions/
 
-## Add an iOS app extension to your Flutter app {: #add-extension }
+## Adicione uma extensão de app iOS ao seu app Flutter {: #add-extension }
 
-If you want to integrate your Flutter app with
-the iOS operating system, you can add iOS app extensions
-to your Flutter project. For a seamless workflow, the
-following steps show how to add a [Share][]
-app extension to a new Flutter app called
-`example_app_with_extension`, but you can always start with
-an existing project.
+Se você deseja integrar seu app Flutter com
+o sistema operacional iOS, pode adicionar extensões de app iOS
+ao seu projeto Flutter. Para um fluxo de trabalho contínuo, os
+passos a seguir mostram como adicionar uma extensão de app [Share][Share]
+a um novo app Flutter chamado
+`example_app_with_extension`, mas você pode sempre começar com
+um projeto existente.
 
-1.  In the console, create a new Flutter project called
+1.  No console, crie um novo projeto Flutter chamado
     `example_app_with_extension`.
 
     ```console
     $ flutter create example_app_with_extension
     ```
 
-1.  In the console, open the Xcode workspace for the
-    `example_app_with_extension` project.
+1.  No console, abra o workspace do Xcode para o
+    projeto `example_app_with_extension`.
 
     ```console
     $ cd example_app_with_extension && open ios/Runner.xcworkspace
     ```
 
-1.  In Xcode, add an app extension called `Share`
-    and call it `ShareExtension`.
+1.  No Xcode, adicione uma extensão de app chamada `Share`
+    e chame-a de `ShareExtension`.
 
-    *   In the Xcode menu bar, select
+    *   Na barra de menu do Xcode, selecione
         **File** > **New** > **Target**.
 
-    *   Add **Share Extension**.
+    *   Adicione **Share Extension**.
 
-    *   In the **Name field**, enter **ShareExtension**.
+    *   No campo **Name**, digite **ShareExtension**.
 
-    *   Click **Finish**.
+    *   Clique em **Finish**.
 
-    *   In the **Activate … Scheme** dialog box that
-        appears, select **Activate**.
+    *   Na caixa de diálogo **Activate … Scheme** que
+        aparece, selecione **Activate**.
 
-1.  In Xcode, change the order of the build process.
+1.  No Xcode, altere a ordem do processo de build.
 
-    *   Open the **project navigator**
+    *   Abra o **project navigator**
         (**View** > **Navigators** > **Project**).
 
-    *   In the **project navigator**, at the top, select
+    *   No **project navigator**, no topo, selecione
         **Runner**.
 
-    *   In the main window under **TARGETS**, select
+    *   Na janela principal em **TARGETS**, selecione
         **Runner**.
 
-    *   Open the **Build Phases** tab.
+    *   Abra a aba **Build Phases**.
 
-    *   Drag **Embed Foundation Extensions** above
+    *   Arraste **Embed Foundation Extensions** acima de
         **Run Script**.
 
 
-1.  Make sure your **Minimum Deployments** iOS value is properly
-    set and matches in both **Runner** and **ShareExtension**
+1.  Certifique-se de que o valor **Minimum Deployments** do iOS está configurado
+    corretamente e corresponde em **Runner** e **ShareExtension**
 
-    *   Open the **project navigator**
+    *   Abra o **project navigator**
         (**View** > **Navigators** > **Project**).
 
-    *   In the **project navigator**, at the top, select
+    *   No **project navigator**, no topo, selecione
         **Runner**.
 
-    *   In the main window under **TARGETS**, select
+    *   Na janela principal em **TARGETS**, selecione
         **Runner**.
 
-    *   On the **General** tab check your **Minimum Deployments**
-        dropdown value to match the one you have on
-        **ShareExtension** > **General** tab.
+    *   Na aba **General**, verifique o valor do menu suspenso **Minimum Deployments**
+        para corresponder ao que você tem em
+        **ShareExtension** > aba **General**.
 
-1.  In the console, run the following command to rebuild your
-    iOS app:
+1.  No console, execute o seguinte comando para reconstruir seu
+    app iOS:
 
     ```console
     $ flutter build ios --config-only
     ```
 
-1.  [Test your app with the simulator][].
+1.  [Teste seu app com o simulador][Test your app with the simulator].
 
-When you add a new app extension, Xcode generates
-sample code based on the template you selected. For more
-information about the generated code and WidgetKit, see
-[Apple's app extension documentation][].
+Quando você adiciona uma nova extensão de app, o Xcode gera
+código de exemplo baseado no template que você selecionou. Para mais
+informações sobre o código gerado e WidgetKit, veja
+[documentação de extensões de app da Apple][Apple's app extension documentation].
 
 [Apple's app extension documentation]: {{site.apple-dev}}/app-extensions/
 [Test your app with the simulator]: #test-extensions
 [Share]: https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/Share.html
 
-## Test an iOS app extension {: #test-extensions }
+## Teste uma extensão de app iOS {: #test-extensions }
 
-After you've added an app extension to your Flutter project,
-you can test it, using a simulator or physical device.
-If you are testing you extension in debug mode, you must
-use the iOS simulator.
+Depois de adicionar uma extensão de app ao seu projeto Flutter,
+você pode testá-la, usando um simulador ou dispositivo físico.
+Se você está testando sua extensão em modo debug, deve
+usar o simulador iOS.
 
-The following steps assume you're using the sample
-application and Share extension from
-[Adding iOS app extensions][].
+Os passos a seguir assumem que você está usando a aplicação de exemplo
+e a extensão Share de
+[Adicionando extensões de app iOS][Adding iOS app extensions].
 
 <Tabs key="register-plugins-tabs" wrapped="true">
 
 <Tab name="Simulator">
 
-1.  In Xcode, [add an app extension to your project][].
+1.  No Xcode, [adicione uma extensão de app ao seu projeto][add an app extension to your project].
 
-1.  In the console, use the following command to run your
-    iOS app:
+1.  No console, use o seguinte comando para executar seu
+    app iOS:
 
     ```console
     $ flutter run
     ```
 
-1.  In the simulator, test your app extension.
+1.  No simulador, teste sua extensão de app.
 
-    *   Launch an app that supports the Share extension,
-        such as the Photos app.
+    *   Execute um app que suporta a extensão Share,
+        como o app Fotos.
 
-    *   Select a photo, tap the share button, then tap
-        on the share extension icon of your app.
+    *   Selecione uma foto, toque no botão de compartilhar e depois toque
+        no ícone da extensão de compartilhamento do seu app.
 
 </Tab>
 
 <Tab name="Physical device">
 
-1.  Add an app extension to your project.
+1.  Adicione uma extensão de app ao seu projeto.
 
-1.  In the console, run your Flutter app in release mode:
+1.  No console, execute seu app Flutter em modo release:
 
     ```console
     $ flutter run --release
     ```
 
-1.  On your device, test your app extension.
+1.  No seu dispositivo, teste sua extensão de app.
 
-    *   Launch an app that supports the Share extension,
-        such as the Photos app.
+    *   Execute um app que suporta a extensão Share,
+        como o app Fotos.
 
-    *   Select a photo, tap the share button, then tap on
-        the share extension icon of your app.
+    *   Selecione uma foto, toque no botão de compartilhar e depois toque
+        no ícone da extensão de compartilhamento do seu app.
 
 </Tab>
 
@@ -174,71 +175,71 @@ application and Share extension from
 [Adding iOS app extensions]: #add-extension
 [add an app extension to your project]: #add-extension
 
-## Additional ways to interact with iOS app extensions {: #interact-app-extensions }
+## Formas adicionais de interagir com extensões de app iOS {: #interact-app-extensions }
 
-Flutter apps interact with iOS app extensions using the same
-techniques as UIKit or SwiftUI apps.
-The containing app and the app extension don't communicate directly.
-The containing app might not be running while the device user
-interacts with the extension.
-The app and your extension can read and write to
-shared resources or use higher-level APIs
-to communicate with each other.
+Apps Flutter interagem com extensões de app iOS usando as mesmas
+técnicas que apps UIKit ou SwiftUI.
+O app contêiner e a extensão de app não se comunicam diretamente.
+O app contêiner pode não estar em execução enquanto o usuário do dispositivo
+interage com a extensão.
+O app e sua extensão podem ler e escrever em
+recursos compartilhados ou usar APIs de nível superior
+para se comunicarem entre si.
 
-### Use higher-level APIs {: #using-higher-level-apis }
+### Use APIs de nível superior {: #using-higher-level-apis }
 
-Some extensions have APIs. For example,
-the [Core Spotlight][] framework indexes your app,
-allowing users to search from Spotlight and Safari.
-The [WidgetKit][] framework can trigger an update
-of your home screen widget.
+Algumas extensões possuem APIs. Por exemplo,
+o framework [Core Spotlight][Core Spotlight] indexa seu app,
+permitindo que usuários pesquisem no Spotlight e Safari.
+O framework [WidgetKit][WidgetKit] pode acionar uma atualização
+do seu widget de tela inicial.
 
-To simplify how your app communicates with extensions,
-Flutter plugins wrap these APIs.
-To find plugins that wrap extension APIs,
-check out [Leveraging Apple's System APIs and Frameworks][leverage]
-or search [pub.dev][].
+Para simplificar como seu app se comunica com extensões,
+plugins Flutter encapsulam essas APIs.
+Para encontrar plugins que encapsulam APIs de extensão,
+confira [Aproveitando APIs e Frameworks do Sistema da Apple][leverage]
+ou pesquise em [pub.dev][pub.dev].
 
 [Core Spotlight]: {{site.apple-dev}}/documentation/corespotlight
 [leverage]: /platform-integration/ios/apple-frameworks
 [pub.dev]: {{site.pub-pkg}}
 [WidgetKit]: {{site.apple-dev}}/documentation/widgetkit
 
-### Share resources {: #sharing-resources }
+### Compartilhe recursos {: #sharing-resources }
 
-To share resources between your Flutter app
-and your app extension, put the `Runner` app target
-and the extension target in the same [App Group][].
+Para compartilhar recursos entre seu app Flutter
+e sua extensão de app, coloque o target do app `Runner`
+e o target da extensão no mesmo [App Group][App Group].
 
 :::note
-You must be signed in to your Apple Developer account.
+Você deve estar conectado à sua conta Apple Developer.
 :::
 
-To add a target to an App Group:
+Para adicionar um target a um App Group:
 
-1. Open the target settings in Xcode.
-1. Navigate to the **Signing & Capabilities** tab.
-1. Select **+ Capability** then **App Groups**.
-1. Choose which App Group you want to add the target from
-   one of two options:
+1. Abra as configurações do target no Xcode.
+1. Navegue até a aba **Signing & Capabilities**.
+1. Selecione **+ Capability** e depois **App Groups**.
+1. Escolha qual App Group você deseja adicionar o target a partir de
+   uma das duas opções:
 
     {: type="a"}
-    1. Select an App Group from the list.
-    1. Click **+** to add a new App Group.
+    1. Selecione um App Group da lista.
+    1. Clique em **+** para adicionar um novo App Group.
 
-<DashImage figure image="development/platform-integration/app-extensions/xcode-app-groups.png" alt="Selecting an App Group within an Xcode Runner target configuration." />
+<DashImage figure image="development/platform-integration/app-extensions/xcode-app-groups.png" alt="Selecionando um App Group dentro de uma configuração de target Runner do Xcode." />
 
-When two targets belong to the same App Group,
-they can read from and write to the same source.
-Choose one of the following sources for your data.
+Quando dois targets pertencem ao mesmo App Group,
+eles podem ler e escrever na mesma fonte.
+Escolha uma das seguintes fontes para seus dados.
 
-* **Key/value:** Use the [`shared_preference_app_group`][]
-  plugin to read or write to `UserDefaults` within the same App Group.
-* **File:** Use the App Group container path from the
-  [`path_provider`][] plugin to [read and write files][].
-* **Database:** Use the App Group container path from
-  the [`path_provider`][] plugin to create a database with the
-  [`sqflite`][] plugin.
+* **Chave/valor:** Use o plugin [`shared_preference_app_group`][`shared_preference_app_group`]
+  para ler ou escrever em `UserDefaults` dentro do mesmo App Group.
+* **Arquivo:** Use o caminho do contêiner do App Group do
+  plugin [`path_provider`][`path_provider`] para [ler e escrever arquivos][read and write files].
+* **Banco de dados:** Use o caminho do contêiner do App Group do
+  plugin [`path_provider`][`path_provider`] para criar um banco de dados com o
+  plugin [`sqflite`][`sqflite`].
 
 [App Group]: {{site.apple-dev}}/documentation/xcode/configuring-app-groups
 [`path_provider`]: {{site.pub-pkg}}/path_provider
@@ -246,162 +247,162 @@ Choose one of the following sources for your data.
 [`shared_preference_app_group`]: {{site.pub-pkg}}/shared_preference_app_group
 [`sqflite`]: {{site.pub-pkg}}/sqflite
 
-### Schedule background updates {: #background-updates }
+### Agende atualizações em segundo plano {: #background-updates }
 
-Background tasks provide a means to update your extension
-through code regardless of the status of your app.
+Tarefas em segundo plano fornecem um meio de atualizar sua extensão
+através de código, independentemente do status do seu app.
 
-To schedule background work from your Flutter app,
-use the [`workmanager`][] plugin.
+Para agendar trabalho em segundo plano do seu app Flutter,
+use o plugin [`workmanager`][`workmanager`].
 
 [`workmanager`]: {{site.pub-pkg}}/workmanager
 
-### Add deep linking {: #deep-linking }
+### Adicione deep linking {: #deep-linking }
 
-You might want to direct users from an
-app extension to a specific page in your Flutter app.
-To open a specific route in your app,
-you can use [Deep Linking][].
+Você pode querer direcionar usuários de uma
+extensão de app para uma página específica no seu app Flutter.
+Para abrir uma rota específica no seu app,
+você pode usar [Deep Linking][Deep Linking].
 
 [Deep Linking]:/ui/navigation/deep-linking
 
-### Add a scrollable list {: #advanced-scrolling-behavior }
+### Adicione uma lista rolável {: #advanced-scrolling-behavior }
 
-By default, flutter view does not handle scroll gestures
-in a [Share][] extension. To support a scrollable list in
-the Share extension, follow [these instructions][].
+Por padrão, a visualização Flutter não lida com gestos de rolagem
+em uma extensão [Share][Share]. Para suportar uma lista rolável na
+extensão Share, siga [estas instruções][these instructions].
 
 [Share]: https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/Share.html
 [these instructions]: {{site.github}}/flutter/flutter/issues/164670#issuecomment-2740702986
 
-### Open a Flutter app in an iOS app extension {: #creating-app-extension-uis-with-flutter }
+### Abra um app Flutter em uma extensão de app iOS {: #creating-app-extension-uis-with-flutter }
 
-You can open your Flutter app directly
-in some iOS app extensions, such as the
-[Share][] extension, with a `FlutterViewController`.
+Você pode abrir seu app Flutter diretamente
+em algumas extensões de app iOS, como a
+extensão [Share][Share], com um `FlutterViewController`.
 
-In the following example, a Flutter app called
-`Example App With Extension` is opened in the
-Share extension, which lets users share content
-between apps:
+No exemplo a seguir, um app Flutter chamado
+`Example App With Extension` é aberto na
+extensão Share, que permite aos usuários compartilhar conteúdo
+entre apps:
 
 <figure>
   <div class="site-figure-container">
-    <img src='/assets/images/docs/development/platform-integration/app-extensions/share-extension-open-app.gif' alt='An example of an entry added to the share menu by a Flutter app' height='400'>
+    <img src='/assets/images/docs/development/platform-integration/app-extensions/share-extension-open-app.gif' alt='Um exemplo de uma entrada adicionada ao menu de compartilhamento por um app Flutter' height='400'>
   </div>
 </figure>
 
-Use the following steps to display a Flutter app inside of
-a [Share][] app extension. In this example the app extension
-scheme is called `ShareExtension`, the Flutter app scheme is
-called `Runner`, and the Flutter app is called
+Use os passos a seguir para exibir um app Flutter dentro de
+uma extensão de app [Share][Share]. Neste exemplo, o esquema da extensão de app
+é chamado `ShareExtension`, o esquema do app Flutter é
+chamado `Runner`, e o app Flutter é chamado
 `Example App With Extension`:
 
-1.  [Add an extension to your Flutter app][] if you haven't
-    already done so.
+1.  [Adicione uma extensão ao seu app Flutter][Add an extension to your Flutter app] se você ainda não
+    tiver feito isso.
 
-1.  In the console, navigate to your Flutter project
-    directory and then open your project in Xcode
-    with the following command:
+1.  No console, navegue até o diretório do seu projeto Flutter
+    e depois abra seu projeto no Xcode
+    com o seguinte comando:
 
     ```console
     open ios/Runner.xcworkspace
     ```
 
-1.  In Xcode, disable user script sandboxing.
+1.  No Xcode, desabilite o sandboxing de script do usuário.
 
-    *   Open the **project navigator**
+    *   Abra o **project navigator**
         (**View** > **Navigators** > **Project**).
 
-    *   In the main window under **TARGETS**, select
+    *   Na janela principal em **TARGETS**, selecione
         **ShareExtension**.
 
-    *   Open the **Build Settings** tab.
+    *   Abra a aba **Build Settings**.
 
-    *   Navigate to **Build Options**.
+    *   Navegue até **Build Options**.
 
-    *   Set **User Script Sandboxing** as **No**.
+    *   Defina **User Script Sandboxing** como **No**.
 
-1.  In Xcode, add the pre-action to the
-    `ShareExtension` scheme.
+1.  No Xcode, adicione a pre-action ao
+    esquema `ShareExtension`.
 
-    *   Open the **Manage Schemes** window
+    *   Abra a janela **Manage Schemes**
         (**Product** > **Scheme** > **Manage Schemes**).
 
-    *   Select the **ShareExtension** scheme and edit it.
+    *   Selecione o esquema **ShareExtension** e edite-o.
 
-    *   Expand the **Build** tab.
+    *   Expanda a aba **Build**.
 
-    *   Select **Pre-actions**.
+    *   Selecione **Pre-actions**.
 
-    *   Click **+** and select **New Run Script Action**.
+    *   Clique em **+** e selecione **New Run Script Action**.
 
-    *   In the **Provide build settings from**
-        drop-down list, select **ShareExtension**.
+    *   Na lista suspensa **Provide build settings from**,
+        selecione **ShareExtension**.
 
-    *   In the **Shell** text field, enter:
+    *   No campo de texto **Shell**, digite:
 
         ```console
         /bin/sh "$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh" prepare
         ```
 
-    *   Click **Close**.
+    *   Clique em **Close**.
 
-1.  In Xcode, share the build configurations.
+1.  No Xcode, compartilhe as configurações de build.
 
-    *   Open the **project navigator**
+    *   Abra o **project navigator**
         (**View** > **Navigators** > **Project**).
 
-    *   In the main window under **PROJECT**, select
+    *   Na janela principal em **PROJECT**, selecione
         **Runner**.
 
-    *   Open the **Info** tab.
+    *   Abra a aba **Info**.
 
-    *   Expand **Configuration**.
+    *   Expanda **Configuration**.
 
-    *   Expand **Debug** and update the value for
-        **ShareExtension** to match the value for
+    *   Expanda **Debug** e atualize o valor para
+        **ShareExtension** para corresponder ao valor de
         **Runner**.
 
-    *   Repeat the previous step for **Profile**, and
+    *   Repita o passo anterior para **Profile** e
         **Release**.
 
-    *   When you are finished, make sure that the
-        configurations look similar to the following:
+    *   Quando terminar, certifique-se de que as
+        configurações pareçam semelhantes ao seguinte:
 
-        ![Xcode configurations](/assets/images/docs/development/platform-integration/app-extensions/xcode-configurations.png)
+        ![Configurações do Xcode](/assets/images/docs/development/platform-integration/app-extensions/xcode-configurations.png)
 
 
-1.  (Optional) In Xcode, replace any storyboard files with
-    an extension class, if needed.
+1.  (Opcional) No Xcode, substitua quaisquer arquivos storyboard por
+    uma classe de extensão, se necessário.
 
-    *   Open the **project navigator**
+    *   Abra o **project navigator**
         (**View** > **Navigators** > **Project**).
 
-    *   Select **Runner** > **ShareExtension** > **Info**.
+    *   Selecione **Runner** > **ShareExtension** > **Info**.
 
-    *   Expand **Information Property List**.
+    *   Expanda **Information Property List**.
 
-    *   Delete the **NSExtensionMainStoryboard** key.
+    *   Delete a chave **NSExtensionMainStoryboard**.
 
-    *   Add the **NSExtensionPrincipalClass** key.
+    *   Adicione a chave **NSExtensionPrincipalClass**.
 
-    *   Add one of these values for the
-        `NSExtensionPrincipalClass` key:
+    *   Adicione um destes valores para a
+        chave `NSExtensionPrincipalClass`:
 
         *   (Swift) **ShareExtension.ShareViewController**
         *   (Objective-C)  **ShareViewController**
 
-1.  In Xcode, update the `ShareViewController` to use the
+1.  No Xcode, atualize o `ShareViewController` para usar o
     `FlutterViewController`.
 
-    *   Open the **project navigator**
+    *   Abra o **project navigator**
         (**View** > **Navigators** > **Project**).
 
-    *   Select **Runner** > **ShareExtension** > **ShareViewController**.
+    *   Selecione **Runner** > **ShareExtension** > **ShareViewController**.
 
-    *   Update `ShareViewController` to use the
-        `FlutterViewController` class:
+    *   Atualize `ShareViewController` para usar a
+        classe `FlutterViewController`:
 
 <Tabs key="controller-code-tabs" wrapped="true">
 <Tab name="UIKit-Swift">
@@ -477,70 +478,70 @@ class ShareViewController: UIViewController {
 
 </Tabs>
 
-8.  [Test your app with the simulator][].
+8.  [Teste seu app com o simulador][Test your app with the simulator].
 
 [Add an extension to your Flutter app]: #add-extension
 [Share]: https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/Share.html
 [Test your app with the simulator]: #test-extensions
 
-### Register plugins
+### Registre plugins
 
-Use the following steps to register plugins for
-an app extension. In this example, the app extension
-scheme is called `ShareExtension`, the Flutter app scheme is
-called `Runner`, and the Flutter app is called
+Use os passos a seguir para registrar plugins para
+uma extensão de app. Neste exemplo, o esquema da extensão de app
+é chamado `ShareExtension`, o esquema do app Flutter é
+chamado `Runner`, e o app Flutter é chamado
 `Example App With Extension`:
 
-1.  [Add an extension to your Flutter app][] if you haven't
-    already done so.
+1.  [Adicione uma extensão ao seu app Flutter][Add an extension to your Flutter app] se você ainda não
+    tiver feito isso.
 
-1.  In Xcode, add `GeneratedPluginRegistrant.m` to the
-    app extension target.
+1.  No Xcode, adicione `GeneratedPluginRegistrant.m` ao
+    target da extensão de app.
 
-    *   Open the **project navigator**
+    *   Abra o **project navigator**
         (**View** > **Navigators** > **Project**).
 
-    *   In the main window under **TARGETS**, select
+    *   Na janela principal em **TARGETS**, selecione
         **ShareExtension**.
 
-    *   Open the **Build Phases** tab.
+    *   Abra a aba **Build Phases**.
 
-    *   Expand **Compile Sources**.
+    *   Expanda **Compile Sources**.
 
-    *   Click **+**.
+    *   Clique em **+**.
 
-    *   From the list in the
-        _Choose item to add_ dialog box, select
+    *   Da lista na
+        caixa de diálogo _Choose item to add_, selecione
         **GeneratedPluginRegistrant.m**.
 
-    *   Click **Add**.
+    *   Clique em **Add**.
 
-1.  (Swift only) In Xcode, update the
-    `SWIFT_OBJC_BRIDGING_HEADER` build setting.
+1.  (Apenas Swift) No Xcode, atualize a
+    configuração de build `SWIFT_OBJC_BRIDGING_HEADER`.
 
-    *   Open the **project navigator**
+    *   Abra o **project navigator**
         (**View** > **Navigators** > **Project**).
 
-    *   In the main window under **TARGETS**, select
+    *   Na janela principal em **TARGETS**, selecione
         **ShareExtension**.
 
-    *   Open the **Build Settings** tab.
+    *   Abra a aba **Build Settings**.
 
-    *   Select the **All** filter.
+    *   Selecione o filtro **All**.
 
-    *   Navigate to **Swift Compiler - General** and change
-        the value for the **Objective-C Bridging Header**
-        key to **Runner/Runner-Bridging-Header.h**.
+    *   Navegue até **Swift Compiler - General** e altere
+        o valor para a chave **Objective-C Bridging Header**
+        para **Runner/Runner-Bridging-Header.h**.
 
-1.  In Xcode, update the code for `ShareViewController`
-    to register `GeneratedPluginRegistrant.h`.
+1.  No Xcode, atualize o código de `ShareViewController`
+    para registrar `GeneratedPluginRegistrant.h`.
 
-    *   Open the **project navigator**
+    *   Abra o **project navigator**
         (**View** > **Navigators** > **Project**).
 
-    *   Select **Runner** > **ShareExtension** > **ShareViewController**.
+    *   Selecione **Runner** > **ShareExtension** > **ShareViewController**.
 
-    *   Update the `ShareViewController` file to use the
+    *   Atualize o arquivo `ShareViewController` para usar o
         `GeneratedPluginRegistrant.h`:
 
 <Tabs key="register-plugins-tabs" wrapped="true">
@@ -570,48 +571,47 @@ GeneratedPluginRegistrant.register(with: flutterEngine)
 
 </Tabs>
 
-5.  (Xcode) [Test your app with the simulator][].
+5.  (Xcode) [Teste seu app com o simulador][Test your app with the simulator].
 
 [Add an extension to your Flutter app]: #add-extension
 [Share]: https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/Share.html
 [Test your app with the simulator]: #test-extensions
 
-## Constraints {: #constraints }
+## Restrições {: #constraints }
 
-*   You must use an iOS simulator to test your extension in
-    debug mode.
+*   Você deve usar um simulador iOS para testar sua extensão em
+    modo debug.
 
-*   Flutter doesn't fully support running app extensions in
-    debug mode on physical devices when used to build
-    extension UIs because a physical device might run out of
-    memory.
+*   O Flutter não suporta totalmente a execução de extensões de app em
+    modo debug em dispositivos físicos quando usadas para construir
+    UIs de extensão porque um dispositivo físico pode ficar sem
+    memória.
 
-*   iOS app extensions have limited memory.
-    It is advisable to only modify an app extension's UI
-    if the app extension supports at least 100MB of memory.
+*   Extensões de app iOS possuem memória limitada.
+    É aconselhável modificar apenas a UI de uma extensão de app
+    se a extensão de app suportar pelo menos 100MB de memória.
 
-## Call Dart code / render Flutter content in iOS app extensions
+## Chamar código Dart / renderizar conteúdo Flutter em extensões de app iOS
 
-The [home_widget][] package provides a large amount of functionality,
-which includes allowing the following:
+O pacote [home_widget][home_widget] fornece uma grande quantidade de funcionalidades,
+que inclui permitir o seguinte:
 
-* [Respond to user input][] in app extensions
-  using Dart Code.
+* [Responder à entrada do usuário][Respond to user input] em extensões de app
+  usando código Dart.
 
-* [Render Flutter widgets][] in an app extension as an image.
+* [Renderizar widgets Flutter][Render Flutter widgets] em uma extensão de app como uma imagem.
 
-* [Save and retrieve data][] from `UserDefaults` on iOS.
+* [Salvar e recuperar dados][Save and retrieve data] do `UserDefaults` no iOS.
 
-## Other resources {: #other-resources }
+## Outros recursos {: #other-resources }
 
-For step-by-step instruction for using app
-extensions with your Flutter iOS app, check out the
-[Adding a Home Screen Widget to your Flutter app][lab]
-codelab.
+Para instruções passo a passo sobre como usar extensões de app
+com seu app Flutter iOS, confira o
+codelab [Adicionando um Widget de Tela Inicial ao seu app Flutter][lab].
 
-To learn more about the various ways you can add a
-Flutter Screen to an iOS app, see
-[Adding a Flutter Screen to an iOS app][].
+Para saber mais sobre as várias formas de adicionar uma
+tela Flutter a um app iOS, veja
+[Adicionando uma tela Flutter a um app iOS][Adding a Flutter Screen to an iOS app].
 
 [Adding a Flutter Screen to an iOS app]: /add-to-app/ios/add-flutter-screen
 [lab]: {{site.codelabs}}/flutter-home-screen-widgets

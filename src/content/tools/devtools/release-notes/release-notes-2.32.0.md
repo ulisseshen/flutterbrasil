@@ -1,65 +1,66 @@
 ---
-title: DevTools 2.32.0 release notes
-shortTitle: 2.32.0 release notes
+ia-translate: true
+title: Notas de versão do DevTools 2.32.0
+shortTitle: Notas de versão 2.32.0
 breadcrumb: 2.32.0
-description: Release notes for Dart and Flutter DevTools version 2.32.0.
+description: Notas de versão para o Dart e Flutter DevTools versão 2.32.0.
 showToc: false
 ---
 
-The 2.32.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutter.dev/tools/devtools).
+A versão 2.32.0 do Dart e Flutter DevTools
+inclui as seguintes alterações entre outras melhorias gerais.
+Para saber mais sobre DevTools, confira a
+[visão geral do DevTools](https://docs.flutter.dev/tools/devtools).
 
-## General updates
+## Atualizações gerais
 
-* Improved overall usability by making the DevTools UI more dense.
-  This significantly improves the user experience when using
-  DevTools embedded in an IDE. - [#7030](https://github.com/flutter/devtools/pull/7030)
-* Removed the "Dense mode" setting. - [#7086](https://github.com/flutter/devtools/pull/7086)
-* Added support for filtering with regular expressions in the
-  Logging, Network, and CPU profiler pages - [#7027](https://github.com/flutter/devtools/pull/7027)
-* Add a DevTools server interaction for getting the DTD uri. - [#7054](https://github.com/flutter/devtools/pull/7054)
+* Melhorada usabilidade geral tornando a UI do DevTools mais densa.
+  Isso melhora significativamente a experiência do usuário ao usar
+  DevTools incorporado em uma IDE. - [#7030](https://github.com/flutter/devtools/pull/7030)
+* Removida a configuração "Dense mode". - [#7086](https://github.com/flutter/devtools/pull/7086)
+* Adicionado suporte para filtragem com expressões regulares nas
+  páginas Logging, Network e CPU profiler - [#7027](https://github.com/flutter/devtools/pull/7027)
+* Adicionada uma interação de servidor DevTools para obter a URI DTD. - [#7054](https://github.com/flutter/devtools/pull/7054)
 
-## Memory updates
+## Atualizações de Memory
 
-* Supported allocation tracing for Flutter profile builds and
-  Dart AOT compiled applications. - [#7058](https://github.com/flutter/devtools/pull/7058)
-* Supported import of memory snapshots. - [#6974](https://github.com/flutter/devtools/pull/6974)
+* Suportado rastreamento de alocação para builds de profile Flutter e
+  aplicações compiladas Dart AOT. - [#7058](https://github.com/flutter/devtools/pull/7058)
+* Suportada importação de snapshots de memória. - [#6974](https://github.com/flutter/devtools/pull/6974)
 
-## Debugger updates
+## Atualizações do Debugger
 
-* Highlighted `extension type` as a declaration keyword,
-  highlight the `$` in identifier interpolation as part of the interpolation,
-  and properly highlight comments within type arguments. - [#6837](https://github.com/flutter/devtools/pull/6837)
+* Destacado `extension type` como uma palavra-chave de declaração,
+  destacado o `$` em interpolação de identificador como parte da interpolação,
+  e destacados corretamente comentários dentro de argumentos de tipo. - [#6837](https://github.com/flutter/devtools/pull/6837)
 
-## Logging updates
+## Atualizações de Logging
 
-* Added toggle filters to filter out noisy Flutter and Dart logs - [#7026](https://github.com/flutter/devtools/pull/7026)
+* Adicionados filtros toggle para filtrar logs ruidosos de Flutter e Dart - [#7026](https://github.com/flutter/devtools/pull/7026)
 
   ![Logging view filters](/assets/images/docs/tools/devtools/release-notes/images-2.32.0/logging_toggle_filters.png "Toggle filters for logging screen")
 
-* Added a scrollbar to the details pane. - [#6917](https://github.com/flutter/devtools/pull/6917)
+* Adicionada uma barra de rolagem ao painel de detalhes. - [#6917](https://github.com/flutter/devtools/pull/6917)
 
-## DevTools extension updates
+## Atualizações de DevTools extension
 
-* Added a description and documentation link to the `devtools_options.yaml` file
-  that is created in a user's project. - [#7052](https://github.com/flutter/devtools/pull/7052)
-* Updated the Simulated DevTools Environment Panel to be collapsible
-  (thanks to @victoreronmosele!) - [#7062](https://github.com/flutter/devtools/pull/7062)
-* Integrated DevTools extensions with the new Dart Tooling Daemon.
-  This will allow DevTools extensions to access public methods registered by
-  other DTD clients, such as an IDE, as well as access a minimal file system API
-  for interacting with the development project. - [#7108](https://github.com/flutter/devtools/pull/7108)
+* Adicionada uma descrição e link de documentação ao arquivo `devtools_options.yaml`
+  que é criado no projeto do usuário. - [#7052](https://github.com/flutter/devtools/pull/7052)
+* Atualizado o Simulated DevTools Environment Panel para ser recolhível
+  (obrigado a @victoreronmosele!) - [#7062](https://github.com/flutter/devtools/pull/7062)
+* Integradas extensões do DevTools com o novo Dart Tooling Daemon.
+  Isso permitirá que extensões do DevTools acessem métodos públicos registrados por
+  outros clientes DTD, como uma IDE, além de acessar uma API mínima de sistema de arquivos
+  para interagir com o projeto de desenvolvimento. - [#7108](https://github.com/flutter/devtools/pull/7108)
 
-## VS Code sidebar updates
+## Atualizações do VS Code sidebar
 
-* Fixed an issue that prevented the VS code sidebar from
-  loading in recent `beta` and `main` builds. - [#6984](https://github.com/flutter/devtools/pull/6984)
-* Showed DevTools extensions as an option from the
-  debug sessions DevTools dropdown, when available. [#6709](https://github.com/flutter/devtools/pull/6709)
+* Corrigido um problema que impedia a sidebar do VS code de
+  carregar em builds recentes `beta` e `main`. - [#6984](https://github.com/flutter/devtools/pull/6984)
+* Mostradas extensões do DevTools como uma opção do
+  dropdown DevTools de sessões de debug, quando disponível. [#6709](https://github.com/flutter/devtools/pull/6709)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes in this release, check out the
-[DevTools git log](https://github.com/flutter/devtools/tree/v2.32.0).
+Para encontrar uma lista completa de alterações nesta versão, confira o
+[log git do DevTools](https://github.com/flutter/devtools/tree/v2.32.0).

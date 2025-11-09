@@ -1,80 +1,81 @@
 ---
-title: Capabilities & policies
+ia-translate: true
+title: Capacidades e políticas
 description: >-
-  Learn how to adapt your app to the
-  capabilities and policies required
-  by the platform, app store, your company,
-  and so on.
+  Aprenda como adaptar seu app para as
+  capacidades e políticas requeridas
+  pela plataforma, loja de apps, sua empresa,
+  e assim por diante.
 ---
 
-Most real-world apps have the need to adapt to the
-capabilities and policies of different devices and platforms.
-This page contains advice for how to
-handle these scenarios in your code.
+A maioria dos apps do mundo real tem a necessidade de se adaptar às
+capacidades e políticas de diferentes dispositivos e plataformas.
+Esta página contém conselhos sobre como
+lidar com esses cenários em seu código.
 
-## Design to the strengths of each device type
+## Projete para as forças de cada tipo de dispositivo
 
-Consider the unique strengths and weaknesses of different devices.
-Beyond their screen size and inputs, such as touch, mouse, keyboard,
-what other unique capabilities can you leverage?
-Flutter enables your code to _run_ on different devices,
-but strong design is more than just running code.
-Think about what each platform does best and
-see if there are unique capabilities to leverage.
+Considere as forças e fraquezas únicas de diferentes dispositivos.
+Além do tamanho da tela e entradas, como touch, mouse, teclado,
+que outras capacidades únicas você pode aproveitar?
+Flutter permite que seu código _execute_ em diferentes dispositivos,
+mas um design forte é mais do que apenas executar código.
+Pense sobre o que cada plataforma faz melhor e
+veja se há capacidades únicas para aproveitar.
 
-For example: Apple's App Store and Google's Play Store
-have different rules that apps need to abide by.
-Different host operating systems have differing
-capabilities across time as well as each other.
+Por exemplo: a App Store da Apple e a Play Store do Google
+têm regras diferentes que os apps precisam seguir.
+Diferentes sistemas operacionais hospedeiros têm capacidades
+diferentes ao longo do tempo, bem como entre si.
 
-Another example is leveraging the web's extremely
-low barrier for sharing. If you're deploying a web app,
-decide what deep links to support,
-and design the navigation routes with those in mind.
+Outro exemplo é aproveitar a barreira extremamente
+baixa da web para compartilhamento. Se você está implantando um app web,
+decida quais deep links suportar,
+e projete as rotas de navegação com isso em mente.
 
-Flutter's recommended pattern for handling different
-behavior based on these unique capabilities is to create
-a set of `Capability` and `Policy` classes for your app.
+O padrão recomendado do Flutter para lidar com diferentes
+comportamentos baseados nessas capacidades únicas é criar
+um conjunto de classes `Capability` e `Policy` para seu app.
 
-### Capabilities
+### Capacidades
 
-A _capability_ defines what the code or device _can_ do.
-Examples of capabilities include:
+Uma _capacidade_ define o que o código ou dispositivo _pode_ fazer.
+Exemplos de capacidades incluem:
 
-* The existence of an API
-* OS-enforced restrictions
-* Physical hardware requirements (like a camera)
+* A existência de uma API
+* Restrições impostas pelo SO
+* Requisitos de hardware físico (como uma câmera)
 
-### Policies
+### Políticas
 
-A _policy_ defines what the code _should_ do.
+Uma _política_ define o que o código _deve_ fazer.
 
-Examples of policies include:
+Exemplos de políticas incluem:
 
-* App store guidelines
-* Design preferences
-* Assets or copy that refers to the host device
-* Features enabled on the server side
+* Diretrizes de lojas de apps
+* Preferências de design
+* Assets ou cópias que se referem ao dispositivo hospedeiro
+* Recursos habilitados no lado do servidor
 
-### How to structure policy code
+### Como estruturar código de política
 
-The simplest mechanical way is `Platform.isAndroid`,
-`Platform.isIOS`, and `kIsWeb`. These APIs mechanically
-let you know where the code is running but have some
-problems as the app expands where it can run, and
-as host platforms add functionality.
+A maneira mecânica mais simples é `Platform.isAndroid`,
+`Platform.isIOS`, e `kIsWeb`. Essas APIs mecanicamente
+permitem que você saiba onde o código está executando, mas têm alguns
+problemas à medida que o app se expande para onde pode executar, e
+à medida que as plataformas hospedeiras adicionam funcionalidade.
 
-The following guidelines explain best practices
-when developing the capabilities and policies for your app:
+As seguintes diretrizes explicam as melhores práticas
+ao desenvolver as capacidades e políticas para seu app:
 
-**Avoid using `Platform.isAndroid` and similar functions
-to make layout decisions or assumptions about what a device can do.**
+**Evite usar `Platform.isAndroid` e funções similares
+para tomar decisões de layout ou suposições sobre o que um dispositivo pode fazer.**
 
-Instead, describe what you want to branch on in a method.
+Em vez disso, descreva o que você quer ramificar em um método.
 
-Example: Your app has a link to buy something in a
-website, but you don't want to show that link on iOS
-devices for policy reasons.
+Exemplo: Seu app tem um link para comprar algo em um
+website, mas você não quer mostrar esse link em dispositivos iOS
+por razões de política.
 
 ```dart
 bool shouldAllowPurchaseClick() {
@@ -91,11 +92,11 @@ TextSpan(
   } : null,
 ```
 
-What did you get by adding an additional layer of indirection?
-The code makes it more clear why the branched path exists.
-This method can exist directly in the class but it's likely
-that other parts of the code might need this same check.
-If so, put the code in a class.
+O que você ganhou ao adicionar uma camada adicional de indireção?
+O código deixa mais claro por que o caminho ramificado existe.
+Este método pode existir diretamente na classe, mas é provável
+que outras partes do código possam precisar dessa mesma verificação.
+Se for o caso, coloque o código em uma classe.
 
 ```dart title="policy.dart"
 
@@ -108,86 +109,86 @@ class Policy {
 }
 ```
 
-With this code in a class, any widget test can mock
-`Policy().shouldAllowPurchaseClick` and verify the behavior
-independently of where the device runs.
-It also means that later, if you decide that
-buying on the web isn't the right flow for
-Android users, you can change the implementation
-and the tests for clickable text won't need to change.
+Com este código em uma classe, qualquer teste de widget pode simular
+`Policy().shouldAllowPurchaseClick` e verificar o comportamento
+independentemente de onde o dispositivo executa.
+Isso também significa que mais tarde, se você decidir que
+comprar na web não é o fluxo certo para
+usuários Android, você pode mudar a implementação
+e os testes para texto clicável não precisarão mudar.
 
-## Capabilities
+## Capacidades
 
-Sometimes you want your code to do something but the
-API doesn't exist, or maybe you depend on a plugin feature
-that isn't yet implemented on all of the platforms you support.
-This is a limitation of what the device _can_ do.
+Às vezes você quer que seu código faça algo, mas a
+API não existe, ou talvez você dependa de um recurso de plugin
+que ainda não está implementado em todas as plataformas que você suporta.
+Esta é uma limitação do que o dispositivo _pode_ fazer.
 
-Those situations are similar to the policy decisions
-described above, but these are referred to as _capabilities_.
-Why separate policy classes from capabilities
-when the structure of the classes is similar?
-The Flutter team has found with productionized apps that making
-a logical distinction between what apps _can_ do and
-what they _should_ do helps larger products respond to
-changes in what platforms can do or require
-in addition to your own preferences after
-the initial code is written.
+Essas situações são similares às decisões de política
+descritas acima, mas são referidas como _capacidades_.
+Por que separar classes de política de capacidades
+quando a estrutura das classes é similar?
+A equipe Flutter descobriu com apps em produção que fazer
+uma distinção lógica entre o que os apps _podem_ fazer e
+o que eles _devem_ fazer ajuda produtos maiores a responder a
+mudanças no que as plataformas podem fazer ou requerem
+além de suas próprias preferências depois que
+o código inicial é escrito.
 
-For example, consider the case where one platform adds
-a new permission that requires users to interact with
-a system dialog before your code calls a sensitive API.
-Your team does the work for platform 1 and creates a
-capability named `requirePermissionDialogFlow`.
-Then, if and when platform 2 adds a similar requirement
-but only for new API versions,
-then the implementation of `requirePermissionDialogFlow`
-can now check the API level and return true for platform 2.
-You've leveraged the work you already did.
+Por exemplo, considere o caso onde uma plataforma adiciona
+uma nova permissão que requer que os usuários interajam com
+um diálogo do sistema antes que seu código chame uma API sensível.
+Sua equipe faz o trabalho para a plataforma 1 e cria uma
+capacidade chamada `requirePermissionDialogFlow`.
+Então, se e quando a plataforma 2 adicionar um requisito similar
+mas apenas para novas versões de API,
+então a implementação de `requirePermissionDialogFlow`
+pode agora verificar o nível da API e retornar true para a plataforma 2.
+Você aproveitou o trabalho que já fez.
 
-## Policies
+## Políticas
 
-We encourage starting with a `Policy` class initially
-even if it seems like you won't make many policy based decisions.
-As the complexity of the class grows or the number of inputs expands,
-you might decide to break up the policy class by feature
-or some other criteria.
+Encorajamos começar com uma classe `Policy` inicialmente
+mesmo que pareça que você não tomará muitas decisões baseadas em política.
+À medida que a complexidade da classe cresce ou o número de entradas se expande,
+você pode decidir dividir a classe de política por recurso
+ou algum outro critério.
 
-For policy implementation, you can use compile time,
-run time, or Remote Procedure Call (RPC) backed implementations.
+Para implementação de política, você pode usar tempo de compilação,
+tempo de execução, ou implementações baseadas em Remote Procedure Call (RPC).
 
-Compile-time policy checks are good for platforms
-where the preference is unlikely to change and where
-accidentally changing the value might have large consequences.
-For example, if a platform requires that you not
-link to the Play store, or requires that you use
-a specific payment provider given the content of your app.
+Verificações de política em tempo de compilação são boas para plataformas
+onde a preferência é improvável de mudar e onde
+mudar acidentalmente o valor pode ter grandes consequências.
+Por exemplo, se uma plataforma requer que você não
+linke para a Play store, ou requer que você use
+um provedor de pagamento específico dado o conteúdo do seu app.
 
-Runtime checks can be good for determining if there
-is a touch screen the user can use. Android has a feature
-you can check and your web implementation could
-check for max touch points.
+Verificações em tempo de execução podem ser boas para determinar se há
+uma tela touch que o usuário pode usar. Android tem um recurso
+que você pode verificar e sua implementação web pode
+verificar pontos de toque máximos.
 
-RPC-backed policy changes are good for incremental
-feature rollout or for decisions that might change later.
+Mudanças de política baseadas em RPC são boas para lançamento
+incremental de recursos ou para decisões que podem mudar depois.
 
-## Summary
+## Resumo
 
-Use a `Capability` class to define what the code *can* do.
-You might check against the existence of an API,
-OS-enforced restrictions,
-and physical hardware requirements (like a camera).
-A capability usually involves compile or runtime checks.
+Use uma classe `Capability` para definir o que o código *pode* fazer.
+Você pode verificar a existência de uma API,
+restrições impostas pelo SO,
+e requisitos de hardware físico (como uma câmera).
+Uma capacidade geralmente envolve verificações em tempo de compilação ou execução.
 
-Use a `Policy` class (or classes depending on complexity)
-to define what the code _should_ do to comply with
-App store guidelines, design preferences,
-and assets or copy that need to refer to the host device.
-Policies can be a mix of compile, runtime, or RPC checks.
+Use uma classe `Policy` (ou classes dependendo da complexidade)
+para definir o que o código _deve_ fazer para cumprir com
+diretrizes de lojas de apps, preferências de design,
+e assets ou cópias que precisam se referir ao dispositivo hospedeiro.
+Políticas podem ser uma mistura de verificações em tempo de compilação, execução, ou RPC.
 
-Test the branching code by mocking capabilities and
-policies so the widget tests don't need to change
-when capabilities or policies change.
+Teste o código de ramificação simulando capacidades e
+políticas para que os testes de widget não precisem mudar
+quando capacidades ou políticas mudam.
 
-Name the methods in your capabilities and policies classes
-based on what they are trying to branch, rather than on device type.
+Nomeie os métodos em suas classes de capacidades e políticas
+com base no que eles estão tentando ramificar, em vez de no tipo de dispositivo.

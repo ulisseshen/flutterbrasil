@@ -1,219 +1,220 @@
 ---
-title: Introduction to animations
-shortTitle: Animations
-description: How to perform animations in Flutter.
+ia-translate: true
+title: Introdução a animações
+shortTitle: Animações
+description: Como criar animações no Flutter.
 ---
 
-Well-designed animations make a UI feel more intuitive,
-contribute to the slick look and feel of a polished app,
-and improve the user experience.
-Flutter's animation support makes it easy to implement a variety of
-animation types. Many widgets, especially [Material widgets][],
-come with the standard motion effects defined in their design spec,
-but it's also possible to customize these effects.
+Animações bem projetadas fazem uma UI parecer mais intuitiva,
+contribuem para a aparência elegante de um app refinado
+e melhoram a experiência do usuário.
+O suporte a animações do Flutter facilita a implementação de uma variedade de
+tipos de animação. Muitos widgets, especialmente [Material widgets][],
+vêm com os efeitos de movimento padrão definidos em sua especificação de design,
+mas também é possível personalizar esses efeitos.
 
-## Choosing an approach
+## Escolhendo uma abordagem
 
-There are different approaches you can take when creating
-animations in Flutter. Which approach is right for you?
-To help you decide, check out the video,
+Existem diferentes abordagens que você pode adotar ao criar
+animações no Flutter. Qual abordagem é a certa para você?
+Para ajudá-lo a decidir, confira o vídeo,
 [How to choose which Flutter Animation Widget is right for you?][]
-(Also published as a [_companion article_][article1].)
+(Também publicado como um [_artigo complementar_][article1].)
 
 <YouTubeEmbed id="GXIJJkq_H8g" title="How to choose which Flutter animation widget is right for your use case"></YouTubeEmbed>
 
-(To dive deeper into the decision process,
-watch the [Animations in Flutter done right][] video,
-presented at Flutter Europe.)
+(Para se aprofundar no processo de decisão,
+assista ao vídeo [Animations in Flutter done right][],
+apresentado na Flutter Europe.)
 
-As shown in the video, the following
-decision tree helps you decide what approach
-to use when implementing a Flutter animation:
+Como mostrado no vídeo, a seguinte
+árvore de decisão ajuda você a decidir qual abordagem
+usar ao implementar uma animação Flutter:
 
 <img src='/assets/images/docs/ui/animations/animation-decision-tree.png' alt="The animation decision tree">
 
-## Animation deep dive
+## Mergulho profundo em animações
 
-For a deeper understanding of just how animations work in Flutter, watch
+Para uma compreensão mais profunda de como as animações funcionam no Flutter, assista
 [Animation deep dive][].
-(Also published as a [_companion article_][article6].)
+(Também publicado como um [_artigo complementar_][article6].)
 
 <YouTubeEmbed id="PbcILiN8rbo" title="Take a deep dive into Flutter animation"></YouTubeEmbed>
 
-## Implicit and explicit animations
+## Animações implícitas e explícitas
 
-### Pre-packaged implicit animations
+### Animações implícitas pré-empacotadas
 
-If a pre-packaged implicit animation (the easiest animation
-to implement) suits your needs, watch
+Se uma animação implícita pré-empacotada (a animação mais fácil
+de implementar) atende às suas necessidades, assista
 [Animation basics with implicit animations][].
-(Also published as a [_companion article_][article2].)
+(Também publicado como um [_artigo complementar_][article2].)
 
 <YouTubeEmbed id="IVTjpW3W33s" title="Flutter implicit animation basics"></YouTubeEmbed>
 
-### Custom implicit animations
+### Animações implícitas personalizadas
 
-To create a custom implicit animation, watch
+Para criar uma animação implícita personalizada, assista
 [Creating your own custom implicit animations with TweenAnimationBuilder][].
-(Also published as a [_companion article_][article3].)
+(Também publicado como um [_artigo complementar_][article3].)
 
 <YouTubeEmbed id="6KiPEqzJIKQ" title="Create custom implicit animations with TweenAnimationBuilder"></YouTubeEmbed>
 
-### Built-in implicit animations
+### Animações implícitas integradas
 
-To create an explicit animation (where you control the animation,
-rather than letting the framework control it), perhaps
-you can use one of the built-in explicit animations classes.
-For more information, watch
+Para criar uma animação explícita (onde você controla a animação,
+em vez de deixar o framework controlá-la), talvez
+você possa usar uma das classes de animações explícitas integradas.
+Para mais informações, assista
 [Making your first directional animations with
 built-in explicit animations][].
-(Also published as a [_companion article_][article4].)
+(Também publicado como um [_artigo complementar_][article4].)
 
 <YouTubeEmbed id="CunyH6unILQ" title="Making your first directional animations with built-in explicit animations"></YouTubeEmbed>
 
-### Explicit animations
+### Animações explícitas
 
-If you need to build an explicit animation from scratch, watch
+Se você precisar construir uma animação explícita do zero, assista
 [Creating custom explicit animations with
 AnimatedBuilder and AnimatedWidget][].
-(Also published as a [_companion article_][article5].)
+(Também publicado como um [_artigo complementar_][article5].)
 
 <YouTubeEmbed id="fneC7t4R_B0" title="Creating custom explicit animations with AnimatedBuilder and AnimatedWidget"></YouTubeEmbed>
 
-## Animation types
+## Tipos de animação
 
-Generally, animations are either tween- or physics-based.
-The following sections explain what these terms mean,
-and point you to resources where you can learn more.
+Geralmente, as animações são baseadas em tween ou física.
+As seções a seguir explicam o que esses termos significam
+e indicam recursos onde você pode aprender mais.
 
-### Tween animation
+### Animação tween {:#tween-animation}
 
-Short for _in-betweening_. In a tween animation, the beginning
-and ending points are defined, as well as a timeline, and a curve
-that defines the timing and speed of the transition.
-The framework calculates how to transition from the beginning point
-to the end point.
+Abreviação de _in-betweening_. Em uma animação tween, os pontos
+inicial e final são definidos, assim como uma linha do tempo e uma curva
+que define o tempo e a velocidade da transição.
+O framework calcula como fazer a transição do ponto inicial
+para o ponto final.
 
-* See the [Animations tutorial][], which uses tweens in the examples.
+* Veja o [Animations tutorial][], que usa tweens nos exemplos.
 
-* Also see the API documentation for [`Tween`][], [`CurveTween`][], and
+* Veja também a documentação da API para [`Tween`][], [`CurveTween`][] e
   [`TweenSequence`][].
 
-### Physics-based animation
+### Animação baseada em física
 
-In physics-based animation, motion is modeled to resemble real-world
-behavior. When you toss a ball, for example, where and when it lands
-depends on how fast it was tossed and how far it was from the ground.
-Similarly, dropping a ball attached to a spring falls
-(and bounces) differently than dropping a ball attached to a string.
+Na animação baseada em física, o movimento é modelado para se assemelhar ao comportamento
+do mundo real. Quando você lança uma bola, por exemplo, onde e quando ela pousa
+depende da velocidade com que foi lançada e da distância do chão.
+Da mesma forma, deixar cair uma bola presa a uma mola cai
+(e quica) de maneira diferente de deixar cair uma bola presa a uma corda.
 
 * [Animate a widget using a physics simulation][]<br>
-  A recipe in the animations section of the Flutter cookbook.
+  Uma receita na seção de animações do cookbook do Flutter.
 
-* Also see the API documentation for
-  [`AnimationController.animateWith`][] and
+* Veja também a documentação da API para
+  [`AnimationController.animateWith`][] e
   [`SpringSimulation`][].
 
-## Common animation patterns
+## Padrões comuns de animação
 
-Most UX or motion designers find that certain
-animation patterns are used repeatedly when designing a UI.
-This section lists some of the commonly
-used animation patterns, and tells you where to learn more.
+A maioria dos designers de UX ou motion designers descobrem que certos
+padrões de animação são usados repetidamente ao projetar uma UI.
+Esta seção lista alguns dos padrões de animação
+comumente usados e indica onde aprender mais.
 
-### Animated list or grid
+### Lista ou grid animada
 
-This pattern involves animating the addition or removal of
-elements from a list or grid.
+Este padrão envolve animar a adição ou remoção de
+elementos de uma lista ou grid.
 
 * [`AnimatedList` example][]<br>
-  This demo, from the [Sample app catalog][], shows how to
-  animate adding an element to a list, or removing a selected element.
-  The internal Dart list is synced as the user modifies the list using
-  the plus (+) and minus (-) buttons.
+  Esta demonstração, do [Sample app catalog][], mostra como
+  animar a adição de um elemento a uma lista ou a remoção de um elemento selecionado.
+  A lista Dart interna é sincronizada conforme o usuário modifica a lista usando
+  os botões de mais (+) e menos (-).
 
-### Shared element transition
+### Transição de elemento compartilhado
 
-In this pattern, the user selects an element&mdash;often an
-image&mdash;from the page, and the UI animates the selected element
-to a new page with more detail. In Flutter, you can easily implement
-shared element transitions between routes (pages)
-using the `Hero` widget.
+Neste padrão, o usuário seleciona um elemento&mdash;geralmente uma
+imagem&mdash;da página, e a UI anima o elemento selecionado
+para uma nova página com mais detalhes. No Flutter, você pode facilmente implementar
+transições de elementos compartilhados entre rotas (páginas)
+usando o widget `Hero`.
 
 * [Hero animations][]
-  How to create two styles of Hero animations:
-  * The hero flies from one page to another while changing position
-    and size.
-  * The hero's boundary changes shape, from a circle to a square,
-    as its flies from one page to another.
+  Como criar dois estilos de animações Hero:
+  * O hero voa de uma página para outra enquanto muda de posição
+    e tamanho.
+  * O limite do hero muda de forma, de um círculo para um quadrado,
+    enquanto voa de uma página para outra.
 
-* Also see the API documentation for the
-  [`Hero`][], [`Navigator`][], and [`PageRoute`][] classes.
+* Veja também a documentação da API para as
+  classes [`Hero`][], [`Navigator`][] e [`PageRoute`][].
 
-### Staggered animation
+### Animação escalonada
 
-Animations that are broken into smaller motions,
-where some of the motion is delayed.
-The smaller animations might be sequential,
-or might partially or completely overlap.
+Animações que são divididas em movimentos menores,
+onde alguns dos movimentos são atrasados.
+As animações menores podem ser sequenciais
+ou podem se sobrepor parcial ou completamente.
 
 * [Staggered Animations][]
 
 <a id="concepts"></a>
 
-## Essential animation concepts and classes
+## Conceitos e classes essenciais de animação
 
-The animation system in Flutter is based on typed
-[`Animation`][] objects. Widgets can either incorporate
-these animations in their build functions directly by
-reading their current value and listening to their state
-changes or they can use the animations as the basis of
-more elaborate animations that they pass along to
-other widgets.
+O sistema de animação no Flutter é baseado em
+objetos [`Animation`][] tipados. Os widgets podem incorporar
+essas animações em suas funções build diretamente
+lendo seu valor atual e ouvindo suas mudanças de estado,
+ou podem usar as animações como base de
+animações mais elaboradas que passam para
+outros widgets.
 
 <a id="animation-class"></a>
 
 ### Animation<wbr>\<double>
 
-In Flutter, an `Animation` object knows nothing about what
-is onscreen. An `Animation` is an abstract class that
-understands its current value and its state (completed or dismissed).
-One of the more commonly used animation types is `Animation<double>`.
+No Flutter, um objeto `Animation` não sabe nada sobre o que
+está na tela. Um `Animation` é uma classe abstrata que
+entende seu valor atual e seu estado (completed ou dismissed).
+Um dos tipos de animação mais comumente usados é `Animation<double>`.
 
-An `Animation` object sequentially generates
-interpolated numbers between two values over a certain duration.
-The output of an `Animation` object might be linear,
-a curve, a step function, or any other mapping you can create.
-Depending on how the `Animation` object is controlled,
-it could run in reverse, or even switch directions in the
-middle.
+Um objeto `Animation` gera sequencialmente
+números interpolados entre dois valores durante uma certa duração.
+A saída de um objeto `Animation` pode ser linear,
+uma curva, uma função de passo ou qualquer outro mapeamento que você possa criar.
+Dependendo de como o objeto `Animation` é controlado,
+ele pode ser executado ao contrário ou até mudar de direção no
+meio.
 
-Animations can also interpolate types other than double, such as
-`Animation<Color>` or `Animation<Size>`.
+As animações também podem interpolar tipos diferentes de double, como
+`Animation<Color>` ou `Animation<Size>`.
 
-An `Animation` object has state. Its current value is
-always available in the `.value` member.
+Um objeto `Animation` tem estado. Seu valor atual está
+sempre disponível no membro `.value`.
 
-An `Animation` object knows nothing about rendering or
-`build()` functions.
+Um objeto `Animation` não sabe nada sobre renderização ou
+funções `build()`.
 
 ### CurvedAnimation
 
-A [`CurvedAnimation`][] defines the animation's progress
-as a non-linear curve.
+Uma [`CurvedAnimation`][] define o progresso da animação
+como uma curva não linear.
 
 <?code-excerpt "animation/animate5/lib/main.dart (CurvedAnimation)"?>
 ```dart
 animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
 ```
 
-`CurvedAnimation` and `AnimationController` (described in the next sections)
-are both of type `Animation<double>`, so you can pass them interchangeably.
-The `CurvedAnimation` wraps the object it's modifying&mdash;you
-don't subclass `AnimationController` to implement a curve.
+`CurvedAnimation` e `AnimationController` (descritos nas próximas seções)
+são ambos do tipo `Animation<double>`, então você pode passá-los de forma intercambiável.
+O `CurvedAnimation` envolve o objeto que está modificando&mdash;você
+não cria uma subclasse de `AnimationController` para implementar uma curva.
 
-You can use [`Curves`][] with `CurvedAnimation`. The `Curves` class defines
-many commonly used curves, or you can create your own. For example:
+Você pode usar [`Curves`][] com `CurvedAnimation`. A classe `Curves` define
+muitas curvas comumente usadas, ou você pode criar a sua própria. Por exemplo:
 
 <?code-excerpt "animation/animate5/lib/main.dart (ShakeCurve)" plaster="none"?>
 ```dart
@@ -225,18 +226,18 @@ class ShakeCurve extends Curve {
 }
 ```
 
-If you want to apply an animation curve to a `Tween`, consider using
+Se você quiser aplicar uma curva de animação a um `Tween`, considere usar
 [`CurveTween`][].
 
 ### AnimationController
 
-[`AnimationController`][] is a special `Animation`
-object that generates a new value whenever the hardware
-is ready for a new frame. By default,
-an `AnimationController` linearly produces the numbers
-from 0.0 to 1.0 during a given duration.
-For example, this code creates an `Animation` object,
-but does not start it running:
+[`AnimationController`][] é um objeto `Animation`
+especial que gera um novo valor sempre que o hardware
+está pronto para um novo frame. Por padrão,
+um `AnimationController` produz linearmente os números
+de 0.0 a 1.0 durante uma determinada duração.
+Por exemplo, este código cria um objeto `Animation`,
+mas não o inicia:
 
 <?code-excerpt "animation/animate5/lib/main.dart (animation-controller)"?>
 ```dart
@@ -246,21 +247,21 @@ controller = AnimationController(
 );
 ```
 
-`AnimationController` derives from `Animation<double>`, so it can be used
-wherever an `Animation` object is needed. However, the `AnimationController`
-has additional methods to control the animation. For example, you start
-an animation with the `.forward()` method. The generation of numbers is
-tied to the screen refresh, so typically 60 numbers are generated per
-second. After each number is generated, each `Animation` object calls the
-attached `Listener` objects. To create a custom display list for each
-child, see [`RepaintBoundary`][].
+`AnimationController` deriva de `Animation<double>`, então pode ser usado
+onde quer que um objeto `Animation` seja necessário. No entanto, o `AnimationController`
+tem métodos adicionais para controlar a animação. Por exemplo, você inicia
+uma animação com o método `.forward()`. A geração de números está
+vinculada à atualização da tela, então tipicamente 60 números são gerados por
+segundo. Após cada número ser gerado, cada objeto `Animation` chama os
+objetos `Listener` anexados. Para criar uma lista de exibição personalizada para cada
+filho, veja [`RepaintBoundary`][].
 
-When creating an `AnimationController`, you pass it a `vsync` argument.
-The presence of `vsync` prevents offscreen animations from consuming
-unnecessary resources.
-You can use your stateful object as the vsync by adding
-`SingleTickerProviderStateMixin` to the class definition.
-You can see an example of this in [animate1][] on GitHub.
+Ao criar um `AnimationController`, você passa um argumento `vsync`.
+A presença de `vsync` impede que animações fora da tela consumam
+recursos desnecessários.
+Você pode usar seu objeto stateful como vsync adicionando
+`SingleTickerProviderStateMixin` à definição da classe.
+Você pode ver um exemplo disso em [animate1][] no GitHub.
 
 {% comment %}
 The `vsync` object ties the ticking of the animation controller to
@@ -273,63 +274,63 @@ To use your custom State object as the `vsync`, include the
 {% endcomment %}
 
 :::note
-In some cases, a position might exceed the `AnimationController`'s
-0.0-1.0 range. For example, the `fling()` function
-allows you to provide velocity, force, and position
-(using the Force object). The position can be anything and
-so can be outside of the 0.0 to 1.0 range.
+Em alguns casos, uma posição pode exceder a faixa
+0.0-1.0 do `AnimationController`. Por exemplo, a função `fling()`
+permite que você forneça velocidade, força e posição
+(usando o objeto Force). A posição pode ser qualquer coisa e
+portanto pode estar fora da faixa de 0.0 a 1.0.
 
-A `CurvedAnimation` can also exceed the 0.0 to 1.0 range,
-even if the `AnimationController` doesn't.
-Depending on the curve selected, the output of
-the `CurvedAnimation` can have a wider range than the input.
-For example, elastic curves such as `Curves.elasticIn`
-significantly overshoots or undershoots the default range.
+Um `CurvedAnimation` também pode exceder a faixa de 0.0 a 1.0,
+mesmo se o `AnimationController` não exceder.
+Dependendo da curva selecionada, a saída do
+`CurvedAnimation` pode ter uma faixa mais ampla que a entrada.
+Por exemplo, curvas elásticas como `Curves.elasticIn`
+ultrapassam ou ficam significativamente abaixo da faixa padrão.
 :::
 
 ### Tween
 
-By default, the `AnimationController` object ranges from 0.0 to 1.0.
-If you need a different range or a different data type, you can use a
-[`Tween`][] to configure an animation to interpolate to a
-different range or data type. For example, the
-following `Tween` goes from -200.0 to 0.0:
+Por padrão, o objeto `AnimationController` varia de 0.0 a 1.0.
+Se você precisar de uma faixa diferente ou um tipo de dados diferente, você pode usar um
+[`Tween`][] para configurar uma animação para interpolar para uma
+faixa ou tipo de dados diferente. Por exemplo, o
+seguinte `Tween` vai de -200.0 a 0.0:
 
 <?code-excerpt "animation/animate5/lib/main.dart (tween)"?>
 ```dart
 tween = Tween<double>(begin: -200, end: 0);
 ```
 
-A `Tween` is a stateless object that takes only `begin` and `end`.
-The sole job of a `Tween` is to define a mapping from an
-input range to an output range. The input range is commonly
-0.0 to 1.0, but that's not a requirement.
+Um `Tween` é um objeto stateless que recebe apenas `begin` e `end`.
+O único trabalho de um `Tween` é definir um mapeamento de uma
+faixa de entrada para uma faixa de saída. A faixa de entrada é comumente
+de 0.0 a 1.0, mas isso não é um requisito.
 
-A `Tween` inherits from `Animatable<T>`, not from `Animation<T>`.
-An `Animatable`, like `Animation`, doesn't have to output double.
-For example, `ColorTween` specifies a progression between two colors.
+Um `Tween` herda de `Animatable<T>`, não de `Animation<T>`.
+Um `Animatable`, como `Animation`, não precisa produzir double.
+Por exemplo, `ColorTween` especifica uma progressão entre duas cores.
 
 <?code-excerpt "animation/animate5/lib/main.dart (colorTween)"?>
 ```dart
 colorTween = ColorTween(begin: Colors.transparent, end: Colors.black54);
 ```
 
-A `Tween` object doesn't store any state. Instead, it provides the
-[`evaluate(Animation<double> animation)`][] method that uses the
-`transform` function to map the current value of the animation
-(between 0.0 and 1.0), to the actual animation value.
+Um objeto `Tween` não armazena nenhum estado. Em vez disso, ele fornece o
+método [`evaluate(Animation<double> animation)`][] que usa a
+função `transform` para mapear o valor atual da animação
+(entre 0.0 e 1.0), para o valor real da animação.
 
-The current value of the `Animation` object can be found in the
-`.value` method. The evaluate function also performs some housekeeping,
-such as ensuring that begin and end are returned when the
-animation values are 0.0 and 1.0, respectively.
+O valor atual do objeto `Animation` pode ser encontrado no
+método `.value`. A função evaluate também executa algumas tarefas de manutenção,
+como garantir que begin e end sejam retornados quando os
+valores da animação são 0.0 e 1.0, respectivamente.
 
 #### Tween.animate
 
-To use a `Tween` object, call `animate()` on the `Tween`,
-passing in the controller object. For example,
-the following code generates the
-integer values from 0 to 255 over the course of 500 ms.
+Para usar um objeto `Tween`, chame `animate()` no `Tween`,
+passando o objeto controller. Por exemplo,
+o código a seguir gera os
+valores inteiros de 0 a 255 durante 500 ms.
 
 <?code-excerpt "animation/animate5/lib/main.dart (IntTween)"?>
 ```dart
@@ -341,11 +342,11 @@ Animation<int> alpha = IntTween(begin: 0, end: 255).animate(controller);
 ```
 
 :::note
-The `animate()` method returns an [`Animation`][],
-not an [`Animatable`][].
+O método `animate()` retorna um [`Animation`][],
+não um [`Animatable`][].
 :::
 
-The following example shows a controller, a curve, and a `Tween`:
+O exemplo a seguir mostra um controller, uma curva e um `Tween`:
 
 <?code-excerpt "animation/animate5/lib/main.dart (IntTween-curve)"?>
 ```dart
@@ -360,65 +361,65 @@ final Animation<double> curve = CurvedAnimation(
 Animation<int> alpha = IntTween(begin: 0, end: 255).animate(curve);
 ```
 
-### Animation notifications
+### Notificações de animação
 
-An [`Animation`][] object can have `Listener`s and `StatusListener`s,
-defined with `addListener()` and `addStatusListener()`.
-A `Listener` is called whenever the value of the animation changes.
-The most common behavior of a `Listener` is to call `setState()`
-to cause a rebuild. A `StatusListener` is called when an animation begins,
-ends, moves forward, or moves reverse, as defined by `AnimationStatus`.
+Um objeto [`Animation`][] pode ter `Listener`s e `StatusListener`s,
+definidos com `addListener()` e `addStatusListener()`.
+Um `Listener` é chamado sempre que o valor da animação muda.
+O comportamento mais comum de um `Listener` é chamar `setState()`
+para causar uma reconstrução. Um `StatusListener` é chamado quando uma animação começa,
+termina, avança ou retrocede, conforme definido por `AnimationStatus`.
 
-## Codelabs, tutorials, and articles
+## Codelabs, tutoriais e artigos
 
-The following resources are a good place to start learning
-the Flutter animation framework. Each of these documents
-shows how to write animation code.
+Os seguintes recursos são um bom ponto de partida para aprender
+o framework de animação do Flutter. Cada um desses documentos
+mostra como escrever código de animação.
 
 * [Animations in Flutter codelab][]<br>
-  Learn about implicit and explicit animations
-  while building a multiple-choice quiz game.
+  Aprenda sobre animações implícitas e explícitas
+  enquanto constrói um jogo de quiz de múltipla escolha.
 
 * [Animations tutorial][]<br>
-  Explains the fundamental classes in the Flutter animation package
-  (controllers, `Animatable`, curves, listeners, builders),
-  as it guides you through a progression of tween animations using
-  different aspects of the animation APIs. This tutorial shows
-  how to create your own custom explicit animations.
+  Explica as classes fundamentais no pacote de animação do Flutter
+  (controllers, `Animatable`, curvas, listeners, builders),
+  enquanto o guia através de uma progressão de animações tween usando
+  diferentes aspectos das APIs de animação. Este tutorial mostra
+  como criar suas próprias animações explícitas personalizadas.
 
-* [Zero to One with Flutter, part 1][] and [part 2][]<br>
-  Medium articles showing how to create an animated chart using tweening.
+* [Zero to One with Flutter, part 1][] e [part 2][]<br>
+  Artigos do Medium mostrando como criar um gráfico animado usando tweening.
 
 * [Casual games toolkit][]<br>
-  A toolkit with game templates that contain examples of how to use Flutter
-  animations.
+  Um toolkit com templates de jogos que contêm exemplos de como usar animações
+  Flutter.
 
-## Other resources
+## Outros recursos
 
-Learn more about Flutter animations at the following links:
+Aprenda mais sobre animações Flutter nos seguintes links:
 
-* There are several [animations packages][] available on pub.dev that contain
-  pre-built animations for commonly used patterns, including:
-  `Container` transforms, shared axis transitions,
-  fade through transitions, and fade transitions.
+* Existem vários [animations packages][] disponíveis no pub.dev que contêm
+  animações pré-construídas para padrões comumente usados, incluindo:
+  transformações de `Container`, transições de eixo compartilhado,
+  transições fade through e transições fade.
 
-* [Animation samples][] from the [Sample app catalog][].
+* [Animation samples][] do [Sample app catalog][].
 
-* [Animation recipes][] from the Flutter cookbook.
+* [Animation recipes][] do cookbook do Flutter.
 
-* [Animation videos][] from the Flutter YouTube channel.
+* [Animation videos][] do canal do Flutter no YouTube.
 
 * [Animations: overview][]<br>
-  A look at some of the major classes in the
-  animations library, and Flutter's animation architecture.
+  Uma visão de algumas das principais classes na
+  biblioteca de animações e a arquitetura de animação do Flutter.
 
 * [Animation and motion widgets][]<br>
-  A catalog of some of the animation widgets
-  provided in the Flutter APIs.
+  Um catálogo de alguns dos widgets de animação
+  fornecidos nas APIs do Flutter.
 
-* The [animation library][] in the [Flutter API documentation][]<br>
-  The animation API for the Flutter framework. This link
-  takes you to a technical overview page for the library.
+* A [animation library][] na [Flutter API documentation][]<br>
+  A API de animação para o framework Flutter. Este link
+  leva você a uma página de visão geral técnica da biblioteca.
 
 [animate1]: {{site.repo.this}}/tree/main/examples/animation/animate1
 [Animate a widget using a physics simulation]: /cookbook/animation/physics-simulation

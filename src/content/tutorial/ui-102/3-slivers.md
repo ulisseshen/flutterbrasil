@@ -1,51 +1,52 @@
 ---
-title: Advanced scrolling and slivers
-description: Learn how to implement performant scrolling with slivers.
+ia-translate: true
+title: Rolagem avançada e slivers
+description: Aprenda como implementar rolagem performática com slivers.
 permalink: /tutorial/slivers/
 sitemap: false
 ---
 
-In this lesson, you'll learn about slivers, which are special widgets
-that can take advantage of Flutter's powerful and composable scrolling
-system. Slivers enable you to create sophisticated scroll effects,
-including collapsible headers, search integration, and custom scroll
-behaviors. By the end of this section, you'll understand how to use
-`CustomScrollView`, create navigation bars that collapse, and organize
-content in scrollable sections.
+Nesta lição, você aprenderá sobre slivers, que são widgets especiais
+que podem aproveitar o sistema de rolagem poderoso e compon&#237;vel do Flutter.
+Slivers permitem que você crie efeitos de rolagem sofisticados,
+incluindo cabeçalhos retráteis, integração de busca e comportamentos
+de rolagem personalizados. Ao final desta seção, você entenderá como usar
+`CustomScrollView`, criar barras de navegação que retraem, e organizar
+conteúdo em seções roláveis.
 
-## Slivers and widgets
+## Slivers e widgets
 
-Slivers are scrollable areas that can be composed together in a
-`CustomScrollView` or other scroll views. Think of slivers as
-building blocks that each contribute a portion of the overall
-scrollable content.
+Slivers são áreas roláveis que podem ser compostas juntas em um
+`CustomScrollView` ou outras views de rolagem. Pense em slivers como
+blocos de construção que cada um contribui uma porção do conteúdo
+rolável geral.
 
-While slivers and widgets are both fundamental Flutter concepts, they
-serve different purposes and aren't interchangeable.
+Enquanto slivers e widgets são ambos conceitos fundamentais do Flutter, eles
+servem propósitos diferentes e não são intercambiáveis.
 
-- **Widgets** are general UI building blocks that can be used anywhere
-  in your widget tree.
-- **Slivers** are specialized widgets designed specifically for
-  scrollable layouts and have some constraints:
+- **Widgets** são blocos de construção de UI gerais que podem ser usados em qualquer lugar
+  na sua árvore de widgets.
+- **Slivers** são widgets especializados projetados especificamente para
+  layouts roláveis e têm algumas restrições:
 
-- Slivers can **only** be direct children of scroll views, like
-  `CustomScrollView` and `NestedScrollView`.
-- Some scroll views **only** accept slivers as children. You can't
-  pass regular widgets to `CustomScrollView.slivers`.
-- To use regular widgets within a sliver context, wrap them in
-  `SliverToBoxAdapter` or `SliverFillRemaining`.
+- Slivers podem **apenas** ser filhos diretos de views de rolagem, como
+  `CustomScrollView` e `NestedScrollView`.
+- Algumas views de rolagem **apenas** aceitam slivers como filhos. Você não pode
+  passar widgets regulares para `CustomScrollView.slivers`.
+- Para usar widgets regulares dentro de um contexto sliver, envolva-os em
+  `SliverToBoxAdapter` ou `SliverFillRemaining`.
 
-This architectural separation allows Flutter to optimize scrolling
-performance while it maintains clear boundaries between different
-types of UI components.
+Esta separação arquitetural permite que o Flutter otimize a performance
+de rolagem enquanto mantém limites claros entre diferentes
+tipos de componentes de UI.
 
-## Add a basic sliver structure to contact groups
+## Adicione uma estrutura básica de sliver aos grupos de contatos
 
-First, replace the placeholder content in your contact groups
-page. To avoid duplicating code between the phone layout and the tablet
-sidebar, you can create a private, reusable widget.
+Primeiro, substitua o conteúdo placeholder na sua página de grupos
+de contatos. Para evitar duplicar código entre o layout de telefone e a barra lateral
+de tablet, você pode criar um widget privado reutilizável.
 
-Update `lib/screens/contact_groups.dart` by adding `_ContactGroupsView` to the bottom of the file.
+Atualize `lib/screens/contact_groups.dart` adicionando `_ContactGroupsView` ao final do arquivo.
 
 ```dart
 // lib/screens/contact_groups.dart
@@ -99,23 +100,23 @@ class _ContactGroupsView extends StatelessWidget {
 }
 ```
 
-This private widget contains the shared UI for displaying the list of
-contact groups. On small screens, it will be used as a page, and on
-large screens it will be used to fill the left column.
+Este widget privado contém a UI compartilhada para exibir a lista de
+grupos de contatos. Em telas pequenas, ele será usado como uma página, e em
+telas grandes ele será usado para preencher a coluna esquerda.
 
-This widget introduces several slivers:
-- `CupertinoSliverNavigationBar`: An opinionated navigation bar that
-  collapses as the page scrolls.
-- `SliverList`: A scrollable list of items.
-- `SliverFillRemaining`: A sliver that takes up the remaining space in
-  the scroll area, and who's child is a non-sliver widget.
+Este widget introduz vários slivers:
+- `CupertinoSliverNavigationBar`: Uma barra de navegação opinada que
+  retrai conforme a página rola.
+- `SliverList`: Uma lista rolável de itens.
+- `SliverFillRemaining`: Um sliver que ocupa o espaço restante na
+  área de rolagem, e cujo filho é um widget não-sliver.
 
 
 
-It takes a callback function, `onListSelected`, to handle
-taps, which makes it adaptable for both navigation and sidebar selection.
+Ele recebe uma função callback, `onListSelected`, para lidar com
+toques, o que o torna adaptável tanto para navegação quanto para seleção de barra lateral.
 
-Now, update `ContactGroupsPage` to use this new private widget:
+Agora, atualize `ContactGroupsPage` para usar este novo widget privado:
 
 ```dart
 // lib/screens/contact_groups.dart
@@ -136,14 +137,14 @@ class ContactGroupsPage extends StatelessWidget {
 // ... _ContactGroupsView from above
 ```
 
-This structure keeps the `ContactGroupsPage` clean and focused on its
-primary responsibility: navigation, which you'll learn about in the
-next section of this tutorial.
+Esta estrutura mantém o `ContactGroupsPage` limpo e focado em sua
+responsabilidade primária: navegação, que você aprenderá na
+próxima seção deste tutorial.
 
-## Enhance the list with icons and visual elements
+## Melhore a lista com ícones e elementos visuais
 
-Now, add icons and contact counts to make the list more
-informative. Add this helper method to your `_ContactGroupsView` class:
+Agora, adicione ícones e contagens de contatos para tornar a lista mais
+informativa. Adicione este método auxiliar à sua classe `_ContactGroupsView`:
 
 ```dart
 // In lib/screens/contact_groups.dart, inside _ContactGroupsView
@@ -167,12 +168,12 @@ Widget _buildTrailing(List<Contact> contacts, BuildContext context) {
 }
 ```
 
-This helper creates the trailing content for each list item. It shows
-the contact count and a forward arrow.
+Este auxiliar cria o conteúdo trailing para cada item da lista. Ele mostra
+a contagem de contatos e uma seta para frente.
 
-Now, update the `CupertinoListSection` in `_ContactGroupsView` to use
-icons and the trailing helper. Update the code within the
-`ListenableBuilder.builder` callback in the `build` method.
+Agora, atualize o `CupertinoListSection` em `_ContactGroupsView` para usar
+ícones e o auxiliar trailing. Atualize o código dentro do
+callback `ListenableBuilder.builder` no método `build`.
 
 ```dart
 import 'package:flutter/cupertino.dart';
@@ -258,18 +259,18 @@ class _ContactGroupsView extends StatelessWidget {
 }
 ```
 
-The updated code now shows icons that differentiate between the main
-"All iPhone" group and user-created groups, along with contact counts
-and navigation indicators.
+O código atualizado agora mostra ícones que diferenciam entre o grupo principal
+"All iPhone" e grupos criados pelo usuário, junto com contagens de contatos
+e indicadores de navegação.
 
-## Create advanced scrolling for contacts
+## Crie rolagem avançada para contatos
 
-Now, work on the contacts page. Just like before, you'll create a
-private, reusable view to avoid code duplication.
+Agora, trabalhe na página de contatos. Assim como antes, você criará uma
+view privada reutilizável para evitar duplicação de código.
 
-In the next lesson, you'll implement navigation for small screens. To
-see your progress on the contacts list page in the meantime, update
-`AdaptiveLayout` to display the contacts list page.
+Na próxima lição, você implementará navegação para telas pequenas. Para
+ver seu progresso na página de lista de contatos enquanto isso, atualize
+`AdaptiveLayout` para exibir a página de lista de contatos.
 
 
 ```dart
@@ -302,8 +303,8 @@ class _AdaptiveLayoutState extends State<AdaptiveLayout> {
 ```
 
 
-Update `lib/screens/contacts.dart` by adding `_ContactListView` to the
-bottom of the file:
+Atualize `lib/screens/contacts.dart` adicionando `_ContactListView` ao
+final do arquivo:
 
 ```dart
 // lib/screens/contacts.dart
@@ -346,7 +347,7 @@ class _ContactListView extends StatelessWidget {
 }
 ```
 
-Now, update `ContactListsPage` to use this view:
+Agora, atualize `ContactListsPage` para usar esta view:
 
 ```dart
 // lib/screens/contacts.dart
@@ -368,17 +369,17 @@ class ContactListsPage extends StatelessWidget {
 // ... _ContactListView from above.
 ```
 
-This basic implementation demonstrates how to use slivers with dynamic
-data in a reusable component.
+Esta implementação básica demonstra como usar slivers com dados
+dinâmicos em um componente reutilizável.
 
-## Add search integration with slivers
+## Adicione integração de busca com slivers
 
-The `CupertinoSliverNavigationBar.search` constructor provides
-integrated search functionality. As you scroll down, the search field
-smoothly transitions into the collapsed navigation bar.
+O construtor `CupertinoSliverNavigationBar.search` fornece
+funcionalidade de busca integrada. Conforme você rola para baixo, o campo de busca
+transita suavemente para a barra de navegação retraída.
 
-Now, enhance the contacts page with integrated search
-functionality UI. Update the `CustomScrollView` in `_ContactListView`:
+Agora, melhore a página de contatos com UI de funcionalidade
+de busca integrada. Atualize o `CustomScrollView` em `_ContactListView`:
 
 ```dart
 class _ContactListView extends StatelessWidget {
@@ -425,15 +426,15 @@ class _ContactListView extends StatelessWidget {
 
 ```
 
-The `CupertinoSliverNavigationBar.search` constructor provides
-integrated search functionality. As you scroll down, the search field
-smoothly transitions into the collapsed navigation bar.
+O construtor `CupertinoSliverNavigationBar.search` fornece
+funcionalidade de busca integrada. Conforme você rola para baixo, o campo de busca
+transita suavemente para a barra de navegação retraída.
 
-## Create alphabetized contact sections
+## Crie seções de contatos alfabetizadas
 
-Real-world contact apps organize contacts alphabetically. To do this,
-create sections for each letter. Add the following widget to the
-bottom of your `contacts.dart` file. This widget doesn't contain any
+Apps de contatos do mundo real organizam contatos alfabeticamente. Para fazer isso,
+crie seções para cada letra. Adicione o seguinte widget ao
+final do seu arquivo `contacts.dart`. Este widget não contém
 slivers.
 
 ```dart
@@ -489,13 +490,13 @@ class ContactListSection extends StatelessWidget {
 }
 ```
 
-This widget creates the familiar alphabetized sections that you see in iOS
-Contacts.
+Este widget cria as seções alfabetizadas familiares que você vê no app Contacts
+do iOS.
 
-## Use `SliverList` for the alphabetized sections
+## Use `SliverList` para as seções alfabetizadas
 
-Now, replace the placeholder content in `_ContactListView` with the
-alphabetized sections:
+Agora, substitua o conteúdo placeholder em `_ContactListView` pelas
+seções alfabetizadas:
 
 ```dart
 // In lib/screens/contacts.dart, inside _ContactListView's builder
@@ -527,10 +528,10 @@ return CustomScrollView(
 );
 ```
 
-`SliverList.list` allows you to provide a list of widgets that become
-part of the scrollable content. This is the simplest way to add a list
-of normal widgets to scrollable sliver area.
+`SliverList.list` permite que você forneça uma lista de widgets que se tornam
+parte do conteúdo rolável. Esta é a maneira mais simples de adicionar uma lista
+de widgets normais a uma área sliver rolável.
 
-In the next lesson, you'll learn about stack-based navigation and
-update the UI on small screens to navigate between the contacts list
-view and the contacts view.
+Na próxima lição, você aprenderá sobre navegação baseada em pilha e
+atualizará a UI em telas pequenas para navegar entre a view de lista de contatos
+e a view de contatos.

@@ -1,160 +1,161 @@
 ---
-title: Common architecture concepts
-shortTitle: Architecture concepts
+ia-translate: true
+title: Conceitos comuns de arquitetura
+shortTitle: Conceitos de arquitetura
 description: >
-  Learn about common architecture concepts in application design,
-  and how they apply to Flutter.
+  Aprenda sobre conceitos comuns de arquitetura no design de aplicações,
+  e como eles se aplicam ao Flutter.
 prev:
-    title: Architecting Flutter apps
+    title: Arquitetura de apps Flutter
     path: /app-architecture
 next:
-    title: Guide to app architecture
+    title: Guia de arquitetura de aplicações
     path: /app-architecture/guide
 ---
 
-In this section, you'll find tried and true principles that guide architectural
-decisions in the larger world of app development,
-as well as information about how they fit into Flutter specifically.
-It's a gentle introduction to vocabulary and concepts related to
-the recommended architecture and best practices,
-so they can be explored in more detail throughout this guide.
+Nesta seção, você encontrará princípios testados e comprovados que guiam decisões arquiteturais
+no mundo mais amplo do desenvolvimento de aplicações,
+bem como informações sobre como eles se encaixam especificamente no Flutter.
+É uma introdução gentil ao vocabulário e conceitos relacionados à
+arquitetura recomendada e melhores práticas,
+para que possam ser explorados em mais detalhes ao longo deste guia.
 
-## Separation of concerns
+## Separação de responsabilidades
 
-[Separation-of-concerns][] is a core principle in app development that
-promotes modularity and maintainability by dividing an application's
-functionality into distinct, self-contained units. From a high-level,
-this means separating your UI logic from your business logic.
-This is often described as *layered* architecture.
-Within each layer, you should further separate your application by
-feature or functionality. For example, your application's authentication logic
-should be in a different class than the search logic.
+[Separação de responsabilidades][Separation-of-concerns] é um princípio fundamental no desenvolvimento de aplicações que
+promove modularidade e manutenibilidade ao dividir a funcionalidade de uma aplicação
+em unidades distintas e autocontidas. De um nível alto,
+isso significa separar sua lógica de UI da sua lógica de negócio.
+Isso é frequentemente descrito como arquitetura em *camadas*.
+Dentro de cada camada, você deve separar ainda mais sua aplicação por
+funcionalidade ou recurso. Por exemplo, a lógica de autenticação da sua aplicação
+deve estar em uma classe diferente da lógica de busca.
 
-In Flutter, this applies to [widgets](/resources/glossary#widget) in the UI layer as well. You should write
-reusable, lean widgets that hold as little logic as possible.
+No Flutter, isso se aplica a [widgets](/resources/glossary#widget) na camada de UI também. Você deve escrever
+widgets reutilizáveis e enxutos que contenham o mínimo de lógica possível.
 
-## Layered architecture
+## Arquitetura em camadas
 
-Flutter applications should be written in *layers*. Layered architecture is a
-software design pattern that organizes an application into distinct layers, each
-with specific roles and responsibilities. Typically, applications are separated
-into 2 to 3 layers, depending on complexity.
+Aplicações Flutter devem ser escritas em *camadas*. Arquitetura em camadas é um
+padrão de design de software que organiza uma aplicação em camadas distintas, cada
+uma com papéis e responsabilidades específicas. Tipicamente, aplicações são separadas
+em 2 a 3 camadas, dependendo da complexidade.
 
-<img src='/assets/images/docs/app-architecture/common-architecture-concepts/horizontal-layers-with-icons.png' alt="The three common layers of app architecture, the UI layer, logic layer, and data layer.">
+<img src='/assets/images/docs/app-architecture/common-architecture-concepts/horizontal-layers-with-icons.png' alt="As três camadas comuns de arquitetura de aplicações, a camada de UI, camada de lógica e camada de dados.">
 
-* **UI layer** - Displays data to the user that is exposed by the business logic
-  layer, and handles user interaction. This is also commonly referred to as the
-  ‘presentation layer'.
-* **Logic layer** - Implements core business logic, and facilitates interaction
-  between the data layer and UI layer. Commonly known as the ‘domain layer'.
-  The logic layer is optional, and only needs to be implemented if your
-  application has complex business logic that happens on the client.
-  Many apps are only concerned with presenting data to a user and
-  allowing the user to change that data (colloquially known as CRUD apps).
-  These apps might not need this optional layer.
-* **Data layer** - Manages interactions with data sources, such as databases or
-  platform plugins. Exposes data and methods to the business logic layer.
+* **Camada de UI** - Exibe dados ao usuário que são expostos pela camada de lógica
+  de negócio, e lida com interação do usuário. Isso também é comumente referido como
+  'camada de apresentação'.
+* **Camada de lógica** - Implementa a lógica de negócio central, e facilita a interação
+  entre a camada de dados e a camada de UI. Comumente conhecida como 'camada de domínio'.
+  A camada de lógica é opcional, e só precisa ser implementada se sua aplicação
+  tem lógica de negócio complexa que acontece no cliente.
+  Muitas aplicações estão apenas preocupadas em apresentar dados a um usuário e
+  permitir que o usuário altere esses dados (coloquialmente conhecidas como apps CRUD).
+  Essas aplicações podem não precisar desta camada opcional.
+* **Camada de dados** - Gerencia interações com fontes de dados, como bancos de dados ou
+  plugins de plataforma. Expõe dados e métodos para a camada de lógica de negócio.
 
-These are called ‘layers' because each layer can only communicate with the
-layers directly below or above it. The UI layer shouldn't know that the data
-layer exists, and vice versa.
+Essas são chamadas de 'camadas' porque cada camada pode apenas se comunicar com as
+camadas diretamente abaixo ou acima dela. A camada de UI não deve saber que a camada
+de dados existe, e vice-versa.
 
-## Single source of truth
+## Fonte única de verdade
 
-Every data type in your app should have a [single source of truth][] (SSOT).
-The source of truth is responsible for representing local or remote state.
-If the data can be modified in the app,
-the SSOT class should be the only class that can do so.
+Cada tipo de dado na sua aplicação deve ter uma [fonte única de verdade][single source of truth] (SSOT).
+A fonte de verdade é responsável por representar o estado local ou remoto.
+Se os dados podem ser modificados no app,
+a classe SSOT deve ser a única classe que pode fazer isso.
 
-This can dramatically reduce the number of bugs in your application,
-and it can simplify code because you'll only ever have one copy of the same data.
+Isso pode reduzir drasticamente o número de bugs na sua aplicação,
+e pode simplificar o código porque você terá apenas uma cópia dos mesmos dados.
 
-Generally, the source of truth for any given type of data in your application is
-held in a class called a **Repository**, which is part of the data layer.
-There is typically one repository class for each type of data in your app.
+Geralmente, a fonte de verdade para qualquer tipo de dado na sua aplicação é
+mantida em uma classe chamada **Repository**, que é parte da camada de dados.
+Tipicamente há uma classe repository para cada tipo de dado no seu app.
 
-This principle can be applied across layers and components in your application
-as well as within individual classes. For example,
-a Dart class might use [getters][] to derive values from an SSOT field
-(instead of having multiple fields that need to be updated independently)
-or a list of [records][] to group related values
-(instead of parallel lists whose indices might get out of sync).
+Este princípio pode ser aplicado através de camadas e componentes na sua aplicação
+assim como dentro de classes individuais. Por exemplo,
+uma classe Dart pode usar [getters][getters] para derivar valores de um campo SSOT
+(ao invés de ter múltiplos campos que precisam ser atualizados independentemente)
+ou uma lista de [records][records] para agrupar valores relacionados
+(ao invés de listas paralelas cujos índices podem ficar dessincronizados).
 
-## Unidirectional data flow
+## Fluxo de dados unidirecional
 
-[Unidirectional data flow][] (UDF) refers to a design pattern that helps
-decouple state from the UI that displays that state. In the simplest terms,
-state flows from the data layer through the logic layer and eventually to the
-widgets in the UI layer.
-Events from user-interaction flow the opposite direction,
-from the presentation layer back through the logic layer and to the data layer.
+[Fluxo de dados unidirecional][Unidirectional data flow] (UDF) se refere a um padrão de design que ajuda
+a desacoplar o estado da UI que exibe esse estado. Nos termos mais simples,
+o estado flui da camada de dados através da camada de lógica e eventualmente para os
+widgets na camada de UI.
+Eventos da interação do usuário fluem na direção oposta,
+da camada de apresentação de volta através da camada de lógica e para a camada de dados.
 
-<img src='/assets/images/docs/app-architecture/common-architecture-concepts/horizontal-layers-with-UDF.png' alt="The three common layers of app architecture, the UI layer, logic layer, and data layer, and the flow of state from the data layer to the UI layer.">
+<img src='/assets/images/docs/app-architecture/common-architecture-concepts/horizontal-layers-with-UDF.png' alt="As três camadas comuns de arquitetura de aplicações, a camada de UI, camada de lógica e camada de dados, e o fluxo de estado da camada de dados para a camada de UI.">
 
-In UDF, the update loop from user interaction to re-rendering the UI looks like
-this:
+No UDF, o loop de atualização da interação do usuário até a re-renderização da UI se parece com
+isso:
 
-1. [UI layer] An event occurs due to user interaction, such as a button being
-   clicked. The widget's event handler callback invokes a method exposed by a
-   class in the logic layer.
-2. [Logic layer] The logic class calls methods exposed by a repository that
-   know how to mutate the data.
-3. [Data layer] The repository updates data (if necessary) and then provides the
-   new data to the logic class.
-4. [Logic layer] The logic class saves its new state, which it sends to the UI.
-5. [UI layer] The UI displays the new state of the view model.
+1. [Camada de UI] Um evento ocorre devido à interação do usuário, como um botão sendo
+   clicado. O callback do manipulador de evento do widget invoca um método exposto por uma
+   classe na camada de lógica.
+2. [Camada de lógica] A classe de lógica chama métodos expostos por um repository que
+   sabe como mutar os dados.
+3. [Camada de dados] O repository atualiza dados (se necessário) e então fornece os
+   novos dados para a classe de lógica.
+4. [Camada de lógica] A classe de lógica salva seu novo estado, que ela envia para a UI.
+5. [Camada de UI] A UI exibe o novo estado do view model.
 
-New data can also start at the data layer.
-For example, a repository might poll an HTTP server for new data.
-In this case, the data flow only makes the second half of the journey.
-The most important idea is that data changes always happen
-in the [SSOT][], which is the data layer.
-This makes your code easier to understand, less error prone, and
-prevents malformed or unexpected data from being created.
+Novos dados também podem começar na camada de dados.
+Por exemplo, um repository pode consultar um servidor HTTP por novos dados.
+Neste caso, o fluxo de dados faz apenas a segunda metade da jornada.
+A ideia mais importante é que mudanças de dados sempre acontecem
+no [SSOT][SSOT], que é a camada de dados.
+Isso torna seu código mais fácil de entender, menos propenso a erros, e
+previne que dados malformados ou inesperados sejam criados.
 
 
-## UI is a function of (immutable) state
+## UI é uma função de estado (imutável)
 
-Flutter is declarative,
-meaning that it builds its UI to reflect the current state of your app.
-When state changes,
-your app should trigger a rebuild of the UI that depends on that state.
-In Flutter, you'll often hear this described as "UI is a function of state".
+Flutter é declarativo,
+significando que ele constrói sua UI para refletir o estado atual do seu app.
+Quando o estado muda,
+seu app deve acionar uma reconstrução da UI que depende desse estado.
+No Flutter, você frequentemente ouvirá isso descrito como "UI é uma função de estado".
 
-<img src='/assets/images/docs/app-architecture/common-architecture-concepts/ui-f-state.png' style="width:50%; margin:auto; display:block" alt="UI is a function of state.">
+<img src='/assets/images/docs/app-architecture/common-architecture-concepts/ui-f-state.png' style="width:50%; margin:auto; display:block" alt="UI é uma função de estado.">
 
-It's crucial that your data drive your UI, and not the other way around.
-Data should be immutable and persistent,
-and views should contain as little logic as possible.
-This minimizes the possibility of data being lost when an app is closed,
-and makes your app more testable and resilient to bugs.
+É crucial que seus dados dirijam sua UI, e não o contrário.
+Os dados devem ser imutáveis e persistentes,
+e as views devem conter o mínimo de lógica possível.
+Isso minimiza a possibilidade de dados serem perdidos quando um app é fechado,
+e torna seu app mais testável e resiliente a bugs.
 
-## Extensibility
+## Extensibilidade
 
-Each piece of architecture should have a well defined list of inputs and outputs.
-For example, a view model in the logic layer should only
-take in data sources as inputs, such as repositories,
-and should only expose commands and data formatted for views.
+Cada peça da arquitetura deve ter uma lista bem definida de entradas e saídas.
+Por exemplo, um view model na camada de lógica deve apenas
+receber fontes de dados como entradas, como repositories,
+e deve apenas expor comandos e dados formatados para views.
 
-Using clean interfaces in this way allows you to swap out
-concrete implementations of your classes without needing to
-change any of the code that consumes the interface.
+Usar interfaces limpas desta maneira permite que você troque
+implementações concretas de suas classes sem precisar
+alterar nenhum código que consome a interface.
 
-## Testability
+## Testabilidade
 
-The principles that make software extensible also make software easier to test.
-For example, you can test the self-contained logic of a view model by mocking a
+Os princípios que tornam o software extensível também tornam o software mais fácil de testar.
+Por exemplo, você pode testar a lógica autocontida de um view model simulando um
 repository.
-The view model tests don't require you to mock other parts of your application,
-and you can test your UI logic separate from Flutter widgets themselves.
+Os testes do view model não exigem que você simule outras partes da sua aplicação,
+e você pode testar sua lógica de UI separadamente dos widgets Flutter em si.
 
-Your app will also be more flexible.
-It will be straightforward and low risk to add new logic and new UI.
-For example, adding a new view model cannot break any logic
-from the data or business logic layers.
+Seu app também será mais flexível.
+Será direto e de baixo risco adicionar nova lógica e nova UI.
+Por exemplo, adicionar um novo view model não pode quebrar nenhuma lógica
+das camadas de dados ou lógica de negócio.
 
-The next section explains the idea of inputs and outputs for any given component
-in your application's architecture.
+A próxima seção explica a ideia de entradas e saídas para qualquer componente
+na arquitetura da sua aplicação.
 
 [Separation-of-concerns]: https://en.wikipedia.org/wiki/Separation_of_concerns
 [single source of truth]: https://en.wikipedia.org/wiki/Single_source_of_truth
@@ -165,7 +166,7 @@ in your application's architecture.
 
 ## Feedback
 
-As this section of the website is evolving,
-we [welcome your feedback][]!
+À medida que esta seção do site está evoluindo,
+[recebemos seu feedback][welcome your feedback]!
 
 [welcome your feedback]: https://google.qualtrics.com/jfe/form/SV_4T0XuR9Ts29acw6?page="concepts"

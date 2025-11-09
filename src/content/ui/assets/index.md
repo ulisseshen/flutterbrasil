@@ -1,5 +1,6 @@
 ---
+ia-translate: true
 layout: toc
 title: Assets & media
-description: Content covering incorporating assets and media in Flutter apps.
+description: Conteúdo cobrindo a incorporação de assets e mídia em apps Flutter.
 ---

@@ -1,6 +1,7 @@
 ---
-title: Flutter persistence cookbook
-shortTitle: Persistence
-description: A catalog of recipes for adding persistence to your Flutter app.
+ia-translate: true
+title: Cookbook de persistência Flutter
+shortTitle: Persistência
+description: Um catálogo de receitas para adicionar persistência ao seu app Flutter.
 layout: toc
 ---

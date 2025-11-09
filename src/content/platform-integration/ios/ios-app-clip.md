@@ -1,76 +1,77 @@
 ---
-title: Adding an iOS App Clip target
-description: How to add an iOS App Clip target to your Flutter project.
+ia-translate: true
+title: Adicionando um target App Clip iOS
+description: Como adicionar um target App Clip iOS ao seu projeto Flutter.
 ---
 
 :::important
-Targeting iOS 16 increases the uncompressed IPA payload size limit
-to 15MB. Depending on the size of your app, you might hit the limit. ([#71098][]).
+Ter como target o iOS 16 aumenta o limite de tamanho de payload IPA descompactado
+para 15MB. Dependendo do tamanho do seu app, você pode atingir o limite. ([#71098][#71098]).
 :::
 
-This guide describes how to manually add another
-Flutter-rendering iOS App Clip target to your
-existing Flutter project or [add-to-app][] project.
+Este guia descreve como adicionar manualmente outro
+target App Clip iOS que renderiza Flutter ao seu
+projeto Flutter existente ou projeto [add-to-app][add-to-app].
 
 [#71098]: {{site.repo.flutter}}/issues/71098
 [add-to-app]: /add-to-app
 
 :::warning
-This is an advanced guide and is best intended
-for audience with a working knowledge of iOS development.
+Este é um guia avançado e é mais adequado
+para um público com conhecimento prático de desenvolvimento iOS.
 :::
 
-To see a working sample, see the [App Clip sample][] on GitHub.
+Para ver um exemplo funcional, consulte o [exemplo App Clip][App Clip sample] no GitHub.
 
 [App Clip sample]: {{site.repo.samples}}/tree/main/ios_app_clip
 
 ## Step 1 - Open project
 
-Open your iOS Xcode project, such as
-`ios/Runner.xcworkspace` for full-Flutter apps.
+Abra seu projeto iOS Xcode, como
+`ios/Runner.xcworkspace` para apps Flutter completos.
 
 ## Step 2 - Add an App Clip target
 
 **2.1**
 
-Click on your project in the Project Navigator to show
-the project settings.
+Clique no seu projeto no Project Navigator para mostrar
+as configurações do projeto.
 
-Press **+** at the bottom of the target list to add a new target.
+Pressione **+** na parte inferior da lista de targets para adicionar um novo target.
 
 <DashImage figure image="development/platform-integration/ios-app-clip/add-target.png" />
 
 **2.2**
 
-Select the **App Clip** type for your new target.
+Selecione o tipo **App Clip** para o seu novo target.
 
 <DashImage figure image="development/platform-integration/ios-app-clip/add-app-clip.png" />
 
 **2.3**
 
-Enter your new target detail in the dialog.
+Insira os detalhes do seu novo target no diálogo.
 
-Select **Storyboard** for Interface.
+Selecione **Storyboard** para Interface.
 
-Select the same language as your original target for **Language**.
+Selecione o mesmo idioma do seu target original para **Language**.
 
-(In other words, to simplify the setup,
-don't create a Swift App Clip target for
-an Objective-C main target, and vice versa.)
+(Em outras palavras, para simplificar a configuração,
+não crie um target App Clip Swift para
+um target principal Objective-C, e vice-versa.)
 
 <DashImage figure image="development/platform-integration/ios-app-clip/app-clip-details.png" />
 
 **2.4**
 
-In the following dialog,
-activate the new scheme for the new target.
+No diálogo seguinte,
+ative o novo esquema para o novo target.
 
 <DashImage figure image="development/platform-integration/ios-app-clip/activate-scheme.png" />
 
 **2.5**
 
-Back in the project settings, open the **Build Phases** tab.
-Drag **Embedded App Clips** to above **Thin Binary**.
+De volta às configurações do projeto, abra a aba **Build Phases**.
+Arraste **Embedded App Clips** para acima de **Thin Binary**.
 
 <DashImage figure image="development/platform-integration/ios-app-clip/embedded-app-clips.png" />
 
@@ -79,205 +80,205 @@ Drag **Embedded App Clips** to above **Thin Binary**.
 
 **3.1**
 
-In the Project Navigator, in the newly created App Clip group,
-delete everything except `Info.plist` and
+No Project Navigator, no grupo App Clip recém-criado,
+delete tudo exceto `Info.plist` e
 `<app clip target>.entitlements`.
 
 :::tip
-For add-to-app users, it's up to the reader to decide
-how much of this template to keep to invoke
-`FlutterViewController` or `FlutterEngine` APIs
-from this code later.
+Para usuários add-to-app, cabe ao leitor decidir
+quanto deste template manter para invocar
+APIs `FlutterViewController` ou `FlutterEngine`
+deste código posteriormente.
 :::
 
 <DashImage figure image="development/platform-integration/ios-app-clip/clean-files.png" />
 
-Move files to trash.
+Mova os arquivos para a lixeira.
 
 **3.2**
 
-If you don't use the `SceneDelegate.swift` file,
-remove the reference to it in the `Info.plist`.
+Se você não usa o arquivo `SceneDelegate.swift`,
+remova a referência a ele no `Info.plist`.
 
-Open the `Info.plist` file in the App Clip group.
-Delete the entire dictionary entry for
+Abra o arquivo `Info.plist` no grupo App Clip.
+Delete toda a entrada do dicionário para
 **Application Scene Manifest**.
 
 <DashImage figure image="development/platform-integration/ios-app-clip/scene-manifest.png" />
 
 ## Step 4 - Share build configurations
 
-This step isn't necessary for add-to-app projects
-since add-to-app projects have their custom build
-configurations and versions.
+Este passo não é necessário para projetos add-to-app,
+pois projetos add-to-app têm suas configurações de compilação
+e versões personalizadas.
 
 **4.1**
 
-Back in the project settings,
-select the project entry now rather than any targets.
+De volta às configurações do projeto,
+selecione a entrada do projeto agora em vez de qualquer target.
 
-In the **Info** tab, under the **Configurations**
-expandable group, expand the
-**Debug**, **Profile**, and **Release** entries.
+Na aba **Info**, sob o grupo expansível **Configurations**,
+expanda as entradas
+**Debug**, **Profile** e **Release**.
 
-For each, select the same value from the drop-down menu
-for the App Clip target as the entry selected for the
-normal app target.
+Para cada uma, selecione o mesmo valor do menu suspenso
+para o target App Clip como a entrada selecionada para o
+target do app normal.
 
-This gives your App Clip target access to Flutter's
-required build settings.
+Isso dá ao seu target App Clip acesso às
+configurações de compilação necessárias do Flutter.
 
-Set **iOS Deployment Target** to at least **16.0** to take advantage of the
-15MB size limit.
+Defina **iOS Deployment Target** para pelo menos **16.0** para aproveitar o
+limite de tamanho de 15MB.
 
 <DashImage figure image="development/platform-integration/ios-app-clip/configuration.png" />
 
 **4.2**
 
-In the App Clip group's `Info.plist` file, set:
+No arquivo `Info.plist` do grupo App Clip, defina:
 
-* `Build version string (short)` to `$(FLUTTER_BUILD_NAME)`
-* `Bundle version` to `$(FLUTTER_BUILD_NUMBER)`
+* `Build version string (short)` para `$(FLUTTER_BUILD_NAME)`
+* `Bundle version` para `$(FLUTTER_BUILD_NUMBER)`
 
 ## Step 5 - Share code and assets
 
 ### Option 1 - Share everything
 
-Assuming the intent is to show the same Flutter UI
-in the standard app as in the App Clip,
-share the same code and assets.
+Assumindo que a intenção é mostrar a mesma UI Flutter
+no app padrão como no App Clip,
+compartilhe o mesmo código e assets.
 
-For each of the following: `Main.storyboard`, `Assets.xcassets`,
-`LaunchScreen.storyboard`, `GeneratedPluginRegistrant.m`, and
-`AppDelegate.swift` (and `Supporting Files/main.m` if using Objective-C),
-select the file, then in the first tab of the inspector,
-also include the App Clip target in the `Target Membership`
-checkbox group.
+Para cada um dos seguintes: `Main.storyboard`, `Assets.xcassets`,
+`LaunchScreen.storyboard`, `GeneratedPluginRegistrant.m`, e
+`AppDelegate.swift` (e `Supporting Files/main.m` se usar Objective-C),
+selecione o arquivo, depois na primeira aba do inspetor,
+também inclua o target App Clip no grupo de checkboxes
+`Target Membership`.
 
 <DashImage figure image="development/platform-integration/ios-app-clip/add-target-membership.png" />
 
 ### Option 2 - Customize Flutter launch for App Clip
 
-In this case,
-do not delete everything listed in [Step 3](#step-3).
-Instead, use the scaffolding and the [iOS add-to-app APIs][]
-to perform a custom launch of Flutter.
-For example to show a [custom Flutter route][].
+Neste caso,
+não delete tudo listado no [Step 3](#step-3).
+Em vez disso, use o scaffolding e as [APIs iOS add-to-app][iOS add-to-app APIs]
+para realizar uma inicialização personalizada do Flutter.
+Por exemplo, para mostrar uma [rota Flutter personalizada][custom Flutter route].
 
 [custom Flutter route]: /add-to-app/ios/add-flutter-screen#route
 [iOS add-to-app APIs]: /add-to-app/ios/add-flutter-screen
 
 ## Step 6 - Add App Clip associated domains
 
-This is a standard step for App Clip development.
-See the [official Apple documentation][].
+Este é um passo padrão para o desenvolvimento de App Clip.
+Consulte a [documentação oficial da Apple][official Apple documentation].
 
 [official Apple documentation]: {{site.apple-dev}}/documentation/app_clips/creating_an_app_clip_with_xcode#3604097
 
 **6.1**
 
-Open the `<app clip target>.entitlements` file.
-Add an `Associated Domains` Array type.
-Add a row to the array with `appclips:<your bundle id>`.
+Abra o arquivo `<app clip target>.entitlements`.
+Adicione um tipo Array `Associated Domains`.
+Adicione uma linha ao array com `appclips:<your bundle id>`.
 
 <DashImage figure image="development/platform-integration/ios-app-clip/app-clip-entitlements.png" />
 
 **6.2**
 
-The same associated domains entitlement needs to be added
-to your main app, as well.
+O mesmo entitlement de domínios associados precisa ser adicionado
+ao seu app principal também.
 
-Copy the `<app clip target>.entitlements` file from your
-App Clip group to your main app group and rename it to
-the same name as your main target
-such as `Runner.entitlements`.
+Copie o arquivo `<app clip target>.entitlements` do seu
+grupo App Clip para o seu grupo de app principal e renomeie-o para
+o mesmo nome do seu target principal,
+como `Runner.entitlements`.
 
-Open the file and delete the
+Abra o arquivo e delete a entrada
 `Parent Application Identifiers`
-entry for the main app's entitlement file
-(leave that entry for the App Clip's entitlement file).
+do arquivo de entitlement do app principal
+(deixe essa entrada para o arquivo de entitlement do App Clip).
 
 <DashImage figure image="development/platform-integration/ios-app-clip/main-app-entitlements.png" />
 
 **6.3**
 
-Back in the project settings, select the main app's target,
-open the **Build Settings** tab.
-Set the **Code Signing Entitlements** setting to the
-relative path of the second entitlements file
-created for the main app.
+De volta às configurações do projeto, selecione o target do app principal,
+abra a aba **Build Settings**.
+Defina a configuração **Code Signing Entitlements** para o
+caminho relativo do segundo arquivo de entitlements
+criado para o app principal.
 
 <DashImage figure image="development/platform-integration/ios-app-clip/main-app-entitlements-setting.png" />
 
 ## Step 7 - Integrate Flutter
 
-These steps are not necessary for add-to-app.
+Estes passos não são necessários para add-to-app.
 
 **7.1**
 
-For the Swift target,
-set the `Objective-C Bridging Header`
-build setting to `Runner/Runner-Bridging-Header.h`
+Para o target Swift,
+defina a configuração de compilação `Objective-C Bridging Header`
+para `Runner/Runner-Bridging-Header.h`
 
-In other words,
-the same as the main app target's build settings.
+Em outras palavras,
+o mesmo que as configurações de compilação do target do app principal.
 
 <DashImage figure image="development/platform-integration/ios-app-clip/bridge-header.png" />
 
 **7.2**
 
-Now open the **Build Phases** tab. Press the **+** sign
-and select **New Run Script Phase**.
+Agora abra a aba **Build Phases**. Pressione o sinal **+**
+e selecione **New Run Script Phase**.
 
 <DashImage figure image="development/platform-integration/ios-app-clip/new-build-phase.png" />
 
-Drag that new phase to below the **Dependencies** phase.
+Arraste essa nova fase para abaixo da fase **Dependencies**.
 
-Expand the new phase and add this line to the script content:
+Expanda a nova fase e adicione esta linha ao conteúdo do script:
 
 ```bash
 /bin/sh "$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh" build
 ```
 
-Uncheck **Based on dependency analysis**.
+Desmarque **Based on dependency analysis**.
 
-In other words,
-the same as the main app target's build phases.
+Em outras palavras,
+o mesmo que as fases de compilação do target do app principal.
 
 <DashImage figure image="development/platform-integration/ios-app-clip/xcode-backend-build.png" />
 
-This ensures that your Flutter Dart code is compiled
-when running the App Clip target.
+Isso garante que seu código Dart Flutter seja compilado
+ao executar o target App Clip.
 
 **7.3**
 
-Press the **+** sign and select **New Run Script Phase** again.
-Leave it as the last phase.
+Pressione o sinal **+** e selecione **New Run Script Phase** novamente.
+Deixe-o como a última fase.
 
-This time, add:
+Desta vez, adicione:
 
 ```bash
 /bin/sh "$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh" embed_and_thin
 ```
 
-Uncheck **Based on dependency analysis**.
+Desmarque **Based on dependency analysis**.
 
-In other words,
-the same as the main app target's build phases.
+Em outras palavras,
+o mesmo que as fases de compilação do target do app principal.
 
 <DashImage figure image="development/platform-integration/ios-app-clip/xcode-backend-embed.png" />
 
-This ensures that your Flutter app and engine are embedded
-into the App Clip bundle.
+Isso garante que seu app Flutter e engine sejam incorporados
+ao bundle App Clip.
 
 ## Step 8 - Integrate plugins
 
 **8.1**
 
-Open the `Podfile` for your Flutter project
-or add-to-app host project.
+Abra o `Podfile` do seu projeto Flutter
+ou projeto host add-to-app.
 
-For full-Flutter apps, replace the following section:
+Para apps Flutter completos, substitua a seguinte seção:
 
 ```ruby
 target 'Runner' do
@@ -288,7 +289,7 @@ target 'Runner' do
 end
 ```
 
-with:
+por:
 
 ```ruby
 use_frameworks!
@@ -299,12 +300,11 @@ target 'Runner'
 target '<name of your App Clip target>'
 ```
 
-At the top of the file,
-also uncomment `platform :ios, '13.0'` and set the
-version to the lowest of the two target's iOS
-Deployment Target.
+No topo do arquivo,
+também descomente `platform :ios, '13.0'` e defina a
+versão para o menor dos iOS Deployment Target dos dois targets.
 
-For add-to-app, add to:
+Para add-to-app, adicione a:
 
 ```ruby
 target 'MyApp' do
@@ -312,7 +312,7 @@ target 'MyApp' do
 end
 ```
 
-with:
+com:
 
 ```ruby
 target 'MyApp' do
@@ -326,9 +326,9 @@ end
 
 **8.2**
 
-From the command line,
-enter your Flutter project directory
-and then install the pod:
+Da linha de comando,
+entre no diretório do seu projeto Flutter
+e então instale o pod:
 
 ```console
 cd ios
@@ -337,28 +337,28 @@ pod install
 
 ## Run
 
-You can now run your App Clip target from Xcode by
-selecting your App Clip target from the scheme drop-down,
-selecting an iOS 16 or higher device and pressing run.
+Agora você pode executar seu target App Clip do Xcode
+selecionando seu target App Clip do menu suspenso de esquema,
+selecionando um dispositivo iOS 16 ou superior e pressionando executar.
 
 <DashImage figure image="development/platform-integration/ios-app-clip/run-select.png" />
 
-To test launching an App Clip from the beginning,
-also consult Apple's doc on
-[Testing Your App Clip's Launch Experience][testing].
+Para testar o lançamento de um App Clip do início,
+também consulte a documentação da Apple sobre
+[Testando a Experiência de Lançamento do seu App Clip][testing].
 
 [testing]: {{site.apple-dev}}/documentation/app_clips/testing_your_app_clip_s_launch_experience
 
 ## Debugging, hot reload
 
-Unfortunately `flutter attach` cannot auto-discover
-the Flutter session in an App Clip due to
-networking permission restrictions.
+Infelizmente, `flutter attach` não pode descobrir automaticamente
+a sessão Flutter em um App Clip devido a
+restrições de permissão de rede.
 
-You must then copy and paste it back into the
-`flutter attach` command to connect.
+Você deve então copiar e colar de volta no
+comando `flutter attach` para conectar.
 
-For example:
+Por exemplo:
 
 ```console
 flutter attach --debug-uri <copied URI>

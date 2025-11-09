@@ -736,7 +736,7 @@ confira [The performance overlay][The performance overlay] em
 
 Para adicionar um overlay a uma [grade baseline do Material Design][Material Design baseline grid] no seu app para
 ajudar a verificar alinhamentos, adicione o argumento `debugShowMaterialGrid` no
-[construtor `MaterialApp`][MaterialApp constructor].
+[`MaterialApp` constructor][].
 
 Para adicionar um overlay a aplicações não-Material, adicione um widget [`GridPaper`][].
 

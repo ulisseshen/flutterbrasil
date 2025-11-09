@@ -80,7 +80,7 @@ A camada de domínio contém componentes adicionais frequentemente chamados de *
 
 [Model-View-ViewModel architectural pattern]: https://en.wikipedia.org/wiki/Model–view–viewmodel
 
-## Camada de UI
+## Camada de UI {:#ui-layer}
 
 A camada de UI de uma aplicação é responsável por interagir com o usuário.
 Ela exibe os dados de uma aplicação ao usuário e recebe entrada do usuário,
@@ -269,7 +269,7 @@ e um service pode ser usado por múltiplos repositories.
 
 <img src='/assets/images/docs/app-architecture/guide/feature-architecture-simplified-Service-highlighted.png' alt="Um diagrama simplificado da arquitetura descrita nesta página com o objeto Service destacado.">
 
-## Opcional: Camada de domínio
+## Opcional: Camada de domínio {:#optional-domain-layer}
 
 À medida que seu app cresce e adiciona funcionalidades, você pode precisar abstrair lógica que
 adiciona muita complexidade aos seus view models.

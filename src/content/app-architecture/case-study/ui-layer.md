@@ -462,7 +462,7 @@ Future<Result<void>> _deleteBooking(int id) async {
 No app Compass,
 esses métodos que lidam com eventos do usuário são chamados **commands**.
 
-### Objetos Command
+### Objetos Command {:#command-objects}
 
 Commands são responsáveis pela interação que começa na camada de UI e
 flui de volta para a camada de dados. Neste app especificamente,
@@ -630,7 +630,7 @@ o padrão Command. [Leia sobre isso no GitHub][Read about it on GitHub].
 [`View`]: /app-architecture/guide#views
 [`ViewModel`]: /app-architecture/guide#view-models
 [repositories]: /app-architecture/guide#repositories
-[commands]: /app-architecture/guide#command-objects
+[commands]: /app-architecture/design-patterns/command
 [`package:freezed`]: {{site.pub-pkg}}/freezed
 [`ChangeNotifier`]: {{site.api}}/flutter/foundation/ChangeNotifier-class.html
 [`Listenable`]: {{site.api}}/flutter/foundation/Listenable-class.html

@@ -60,7 +60,7 @@ entender a arquitetura, mas não são trechos completos e executáveis.
 Se você prefere acompanhar com o app completo,
 você pode encontrá-lo no [GitHub][GitHub].
 
-## Estrutura de pacote
+## Estrutura de pacote {:#package-structure}
 
 Código bem organizado é mais fácil para vários engenheiros trabalharem com
 conflitos mínimos de código e é mais fácil para novos engenheiros

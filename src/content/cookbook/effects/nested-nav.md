@@ -1,51 +1,52 @@
 ---
-title: Create a nested navigation flow
-description: How to implement a flow with nested navigation.
+ia-translate: true
+title: Criar um fluxo de navegação aninhada
+description: Como implementar um fluxo com navegação aninhada.
 ---
 
 <?code-excerpt path-base="cookbook/effects/nested_nav"?>
 
-Apps accumulate dozens and then hundreds of routes over time.
-Some of your routes make sense as top-level (global) routes.
-For example, "/", "profile", "contact", "social_feed" are all
-possible top-level routes within your app.
-But, imagine that you defined every possible route in your
-top-level `Navigator` widget. The list would be very long,
-and many of these routes would
-be better handled nested within another widget.
+Apps acumulam dezenas e depois centenas de rotas ao longo do tempo.
+Algumas de suas rotas fazem sentido como rotas de nível superior (globais).
+Por exemplo, "/", "profile", "contact", "social_feed" são todas
+possíveis rotas de nível superior dentro do seu app.
+Mas, imagine que você definiu todas as rotas possíveis em seu
+widget `Navigator` de nível superior. A lista seria muito longa,
+e muitas dessas rotas seriam
+melhor tratadas aninhadas dentro de outro widget.
 
-Consider an Internet of Things (IoT) setup flow for a wireless
-light bulb that you control with your app.
-This setup flow consists of four pages:
+Considere um fluxo de configuração de Internet das Coisas (IoT) para uma
+lâmpada sem fio que você controla com seu app.
+Este fluxo de configuração consiste em quatro páginas:
 
-* `find_devices` page: Find nearby bulbs.
-* `select_device` page: Select the bulb that you want to
-  add.
-* `connecting` page: Add the bulb.
-* `finished` page: Complete the setup.
+* Página `find_devices`: Encontrar lâmpadas próximas.
+* Página `select_device`: Selecionar a lâmpada que você deseja
+  adicionar.
+* Página `connecting`: Adicionar a lâmpada.
+* Página `finished`: Completar a configuração.
 
-You could orchestrate this behavior from your top-level
-`Navigator` widget. However, it makes more sense to define a second,
-nested `Navigator` widget within your `SetupFlow` widget,
-and let the nested `Navigator` take ownership over the four pages
-in the setup flow. This delegation of navigation facilitates
-greater local control, which is
-generally preferable when developing software.
+Você poderia orquestrar este comportamento a partir do seu widget
+`Navigator` de nível superior. No entanto, faz mais sentido definir um segundo
+widget `Navigator` aninhado dentro do seu widget `SetupFlow`,
+e deixar o `Navigator` aninhado assumir a propriedade sobre as quatro páginas
+no fluxo de configuração. Esta delegação de navegação facilita
+um maior controle local, o que é
+geralmente preferível ao desenvolver software.
 
-The following animation shows the app's behavior:
+A animação a seguir mostra o comportamento do app:
 
 ![Gif showing the nested "setup" flow](/assets/images/docs/cookbook/effects/NestedNavigator.webp){:.site-mobile-screenshot}
 
-In this recipe, you implement a four-page IoT setup
-flow that maintains its own navigation nested beneath
-the top-level `Navigator` widget.
+Nesta receita, você implementa um fluxo de configuração IoT de quatro páginas
+que mantém sua própria navegação aninhada abaixo
+do widget `Navigator` de nível superior.
 
-## Prepare for navigation
+## Preparar para navegação
 
-This IoT app has two top-level screens,
-along with the setup flow. Define these
-route names as constants so that they can
-be referenced within code.
+Este app IoT tem duas telas de nível superior,
+junto com o fluxo de configuração. Defina esses
+nomes de rotas como constantes para que possam
+ser referenciados dentro do código.
 
 <?code-excerpt "lib/main.dart (routes)"?>
 ```dart
@@ -59,25 +60,25 @@ const routeDeviceSetupConnectingPage = 'connecting';
 const routeDeviceSetupFinishedPage = 'finished';
 ```
 
-The home and settings screens are referenced with
-static names. The setup flow pages, however,
-use two paths to create their route names:
-a `/setup/` prefix followed by the name of the specific page.
-By combining the two paths, your `Navigator` can determine
-that a route name is intended for the setup flow without
-recognizing all the individual pages associated with
-the setup flow.
+As telas home e settings são referenciadas com
+nomes estáticos. As páginas do fluxo de configuração, no entanto,
+usam dois caminhos para criar seus nomes de rota:
+um prefixo `/setup/` seguido pelo nome da página específica.
+Ao combinar os dois caminhos, seu `Navigator` pode determinar
+que um nome de rota é destinado ao fluxo de configuração sem
+reconhecer todas as páginas individuais associadas ao
+fluxo de configuração.
 
-The top-level `Navigator` isn't responsible for identifying
-individual setup flow pages. Therefore, your top-level
-`Navigator` needs to parse the incoming route name to
-identify the setup flow prefix. Needing to parse the route name
-means that you can't use the `routes` property of your top-level
-`Navigator`. Instead, you must provide a function for the
-`onGenerateRoute` property.
+O `Navigator` de nível superior não é responsável por identificar
+páginas individuais do fluxo de configuração. Portanto, seu `Navigator`
+de nível superior precisa analisar o nome de rota recebido para
+identificar o prefixo do fluxo de configuração. A necessidade de analisar o nome da rota
+significa que você não pode usar a propriedade `routes` do seu `Navigator`
+de nível superior. Em vez disso, você deve fornecer uma função para a
+propriedade `onGenerateRoute`.
 
-Implement `onGenerateRoute` to return the appropriate widget
-for each of the three top-level paths.
+Implemente `onGenerateRoute` para retornar o widget apropriado
+para cada um dos três caminhos de nível superior.
 
 <?code-excerpt "lib/main.dart (OnGenerateRoute)"?>
 ```dart
@@ -105,17 +106,17 @@ onGenerateRoute: (settings) {
 },
 ```
 
-Notice that the home and settings routes are matched with exact
-route names. However, the setup flow route condition only
-checks for a prefix. If the route name contains the setup
-flow prefix, then the rest of the route name is ignored
-and passed on to the `SetupFlow` widget to process.
-This splitting of the route name is what allows the top-level
-`Navigator` to be agnostic toward the various subroutes
-within the setup flow.
+Observe que as rotas home e settings são correspondidas com
+nomes de rota exatos. No entanto, a condição de rota do fluxo de configuração apenas
+verifica um prefixo. Se o nome da rota contém o prefixo do
+fluxo de configuração, então o restante do nome da rota é ignorado
+e passado para o widget `SetupFlow` processar.
+Esta divisão do nome da rota é o que permite que o `Navigator`
+de nível superior seja agnóstico em relação às várias subrotas
+dentro do fluxo de configuração.
 
-Create a stateful widget called `SetupFlow` that
-accepts a route name.
+Crie um stateful widget chamado `SetupFlow` que
+aceita um nome de rota.
 
 <?code-excerpt "lib/setupflow.dart (SetupFlow)" replace="/@override\n*.*\n\s*return const SizedBox\(\);\n\s*}/\/\/.../g"?>
 ```dart
@@ -133,14 +134,14 @@ class SetupFlowState extends State<SetupFlow> {
 }
 ```
 
-## Display an app bar for the setup flow
+## Exibir uma app bar para o fluxo de configuração
 
-The setup flow displays a persistent app bar
-that appears across all pages.
+O fluxo de configuração exibe uma app bar persistente
+que aparece em todas as páginas.
 
-Return a `Scaffold` widget from your `SetupFlow`
-widget's `build()` method,
-and include the desired `AppBar` widget.
+Retorne um widget `Scaffold` do método `build()`
+do seu widget `SetupFlow`,
+e inclua o widget `AppBar` desejado.
 
 <?code-excerpt "lib/setupflow2.dart (SetupFlow2)"?>
 ```dart
@@ -154,15 +155,15 @@ PreferredSizeWidget _buildFlowAppBar() {
 }
 ```
 
-The app bar displays a back arrow and exits the setup
-flow when the back arrow is pressed. However,
-exiting the flow causes the user to lose all progress.
-Therefore, the user is prompted to confirm whether they
-want to exit the setup flow.
+A app bar exibe uma seta de voltar e sai do fluxo
+de configuração quando a seta de voltar é pressionada. No entanto,
+sair do fluxo faz com que o usuário perca todo o progresso.
+Portanto, o usuário é solicitado a confirmar se deseja
+sair do fluxo de configuração.
 
-Prompt the user to confirm exiting the setup flow,
-and ensure that the prompt appears when the user
-presses the hardware back button on their device.
+Solicite ao usuário que confirme a saída do fluxo de configuração,
+e garanta que o prompt apareça quando o usuário
+pressionar o botão de voltar do hardware em seu dispositivo.
 
 <?code-excerpt "lib/prompt_user.dart (PromptUser)"?>
 ```dart
@@ -233,27 +234,27 @@ PreferredSizeWidget _buildFlowAppBar() {
 }
 ```
 
-When the user taps the back arrow in the app bar,
-or presses the back button on their device,
-an alert dialog pops up to confirm that the
-user wants to leave the setup flow.
-If the user presses **Leave**, then the setup flow pops itself
-from the top-level navigation stack.
-If the user presses **Stay**, then the action is ignored.
+Quando o usuário toca na seta de voltar na app bar,
+ou pressiona o botão de voltar em seu dispositivo,
+um diálogo de alerta aparece para confirmar que o
+usuário deseja sair do fluxo de configuração.
+Se o usuário pressionar **Leave**, então o fluxo de configuração se remove
+da pilha de navegação de nível superior.
+Se o usuário pressionar **Stay**, então a ação é ignorada.
 
-You might notice that the `Navigator.pop()`
-is invoked by both the **Leave** and
-**Stay** buttons. To be clear,
-this `pop()` action pops the alert dialog off
-the navigation stack, not the setup flow.
+Você pode notar que o `Navigator.pop()`
+é invocado tanto pelo botão **Leave** quanto pelo
+botão **Stay**. Para ser claro,
+esta ação `pop()` remove o diálogo de alerta
+da pilha de navegação, não o fluxo de configuração.
 
-## Generate nested routes
+## Gerar rotas aninhadas
 
-The setup flow's job is to display the appropriate
-page within the flow.
+O trabalho do fluxo de configuração é exibir a
+página apropriada dentro do fluxo.
 
-Add a `Navigator` widget to `SetupFlow`,
-and implement the `onGenerateRoute` property.
+Adicione um widget `Navigator` ao `SetupFlow`,
+e implemente a propriedade `onGenerateRoute`.
 
 <?code-excerpt "lib/add_navigator.dart (AddNavigator)"?>
 ```dart
@@ -319,63 +320,63 @@ Route<Widget> _onGenerateRoute(RouteSettings settings) {
 }
 ```
 
-The `_onGenerateRoute` function works the same as
-for a top-level `Navigator`. A `RouteSettings`
-object is passed into the function,
-which includes the route's `name`.
-Based on that route name,
-one of four flow pages is returned.
+A função `_onGenerateRoute` funciona da mesma forma que
+para um `Navigator` de nível superior. Um objeto `RouteSettings`
+é passado para a função,
+que inclui o `name` da rota.
+Baseado nesse nome de rota,
+uma das quatro páginas do fluxo é retornada.
 
-The first page, called `find_devices`,
-waits a few seconds to simulate network scanning.
-After the wait period, the page invokes its callback.
-In this case, that callback is `_onDiscoveryComplete`.
-The setup flow recognizes that, when device discovery
-is complete, the device selection page should be shown.
-Therefore, in `_onDiscoveryComplete`, the `_navigatorKey`
-instructs the nested `Navigator` to navigate to the
-`select_device` page.
+A primeira página, chamada `find_devices`,
+espera alguns segundos para simular varredura de rede.
+Após o período de espera, a página invoca seu callback.
+Neste caso, esse callback é `_onDiscoveryComplete`.
+O fluxo de configuração reconhece que, quando a descoberta de dispositivos
+está completa, a página de seleção de dispositivo deve ser mostrada.
+Portanto, em `_onDiscoveryComplete`, o `_navigatorKey`
+instrui o `Navigator` aninhado a navegar para a
+página `select_device`.
 
-The `select_device` page asks the user to select a
-device from a list of available devices. In this recipe,
-only one device is presented to the user.
-When the user taps a device, the `onDeviceSelected`
-callback is invoked. The setup flow recognizes that,
-when a device is selected, the connecting page
-should be shown. Therefore, in `_onDeviceSelected`,
-the `_navigatorKey` instructs the nested `Navigator`
-to navigate to the `"connecting"` page.
+A página `select_device` pede ao usuário para selecionar um
+dispositivo de uma lista de dispositivos disponíveis. Nesta receita,
+apenas um dispositivo é apresentado ao usuário.
+Quando o usuário toca em um dispositivo, o callback `onDeviceSelected`
+é invocado. O fluxo de configuração reconhece que,
+quando um dispositivo é selecionado, a página de conexão
+deve ser mostrada. Portanto, em `_onDeviceSelected`,
+o `_navigatorKey` instrui o `Navigator` aninhado
+a navegar para a página `"connecting"`.
 
-The `connecting` page works the same way as the
-`find_devices` page. The `connecting` page waits
-for a few seconds and then invokes its callback.
-In this case, the callback is `_onConnectionEstablished`.
-The setup flow recognizes that, when a connection is established,
-the final page should be shown. Therefore,
-in `_onConnectionEstablished`, the `_navigatorKey`
-instructs the nested `Navigator` to navigate to the
-`finished` page.
+A página `connecting` funciona da mesma forma que a
+página `find_devices`. A página `connecting` espera
+alguns segundos e então invoca seu callback.
+Neste caso, o callback é `_onConnectionEstablished`.
+O fluxo de configuração reconhece que, quando uma conexão é estabelecida,
+a página final deve ser mostrada. Portanto,
+em `_onConnectionEstablished`, o `_navigatorKey`
+instrui o `Navigator` aninhado a navegar para a
+página `finished`.
 
-The `finished` page provides the user with a **Finish**
-button. When the user taps **Finish**,
-the `_exitSetup` callback is invoked, which pops the entire
-setup flow off the top-level `Navigator` stack,
-taking the user back to the home screen.
+A página `finished` fornece ao usuário um botão **Finish**.
+Quando o usuário toca em **Finish**,
+o callback `_exitSetup` é invocado, que remove todo o
+fluxo de configuração da pilha do `Navigator` de nível superior,
+levando o usuário de volta à tela inicial.
 
-Congratulations!
-You implemented nested navigation with four subroutes.
+Parabéns!
+Você implementou navegação aninhada com quatro subrotas.
 
-## Interactive example
+## Exemplo interativo
 
-Run the app:
+Execute o app:
 
-* On the **Add your first bulb** screen,
-  click the FAB, shown with a plus sign, **+**.
-  This brings you to the **Select a nearby device**
-  screen. A single bulb is listed.
-* Click the listed bulb. A **Finished!** screen appears.
-* Click the **Finished** button to return to the
-  first screen.
+* Na tela **Add your first bulb**,
+  clique no FAB, mostrado com um sinal de mais, **+**.
+  Isso leva você à tela **Select a nearby device**.
+  Uma única lâmpada é listada.
+* Clique na lâmpada listada. Uma tela **Finished!** aparece.
+* Clique no botão **Finished** para retornar à
+  primeira tela.
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter nested navigation hands-on example in DartPad" run="true" height="640px"

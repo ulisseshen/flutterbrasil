@@ -1,49 +1,50 @@
 ---
-title: Hosting native macOS views in your Flutter app with Platform Views
-shortTitle: macOS platform-views
-description: Learn how to host native macOS views in your Flutter app with Platform Views.
+ia-translate: true
+title: Hospedando views nativas macOS em seu app Flutter com Platform Views
+shortTitle: Platform-views macOS
+description: Aprenda como hospedar views nativas macOS em seu app Flutter com Platform Views.
 ---
 
 <?code-excerpt path-base="platform_integration/platform_views"?>
 
-Platform views allow you to embed native views in a Flutter app, so you can
-apply transforms, clips, and opacity to the native view from Dart.
+Platform views permitem que você incorpore views nativas em um app Flutter, para que você possa
+aplicar transformações, clips e opacidade à view nativa do Dart.
 
-This allows you, for example, to use the native web views directly inside your
-Flutter app.
+Isso permite que você, por exemplo, use as web views nativas diretamente dentro do seu
+app Flutter.
 
 :::note
-This page discusses how to host your own
-native macOS views within a Flutter app.
-If you'd like to embed native Android views in your Flutter app,
-see [Hosting native Android views][].
-If you'd like to embed native iOS views in your Flutter app,
-see [Hosting native iOS views][].
+Esta página discute como hospedar suas próprias
+views nativas macOS dentro de um app Flutter.
+Se você quiser incorporar views nativas Android em seu app Flutter,
+veja [Hospedando views nativas Android][Hosting native Android views].
+Se você quiser incorporar views nativas iOS em seu app Flutter,
+veja [Hospedando views nativas iOS][Hosting native iOS views].
 :::
 
 [Hosting native Android views]: /platform-integration/android/platform-views
 [Hosting native iOS views]: /platform-integration/ios/platform-views
 
 :::version-note
-Platform view support on macOS isn't fully functional as of the current release.
-For example, gesture support isn't yet available on macOS.
-Stay tuned for a future stable release.
+O suporte a platform view no macOS não está totalmente funcional na versão atual.
+Por exemplo, o suporte a gestos ainda não está disponível no macOS.
+Fique atento para uma futura versão estável.
 :::
 
-macOS uses Hybrid composition, which means that the
-native `NSView` is appended to the view hierarchy.
+O macOS usa Hybrid composition, o que significa que a
+`NSView` nativa é anexada à hierarquia de views.
 
-To create a platform view on macOS, use the following instructions:
+Para criar uma platform view no macOS, use as seguintes instruções:
 
-## On the Dart side
+## No lado Dart
 
-On the Dart side, create a `Widget` and add the build implementation,
-as shown in the following steps:
+No lado Dart, crie um `Widget` e adicione a implementação do build,
+conforme mostrado nas seguintes etapas:
 
-In the Dart widget file, make changes similar to those
-shown in `native_view_example.dart`:
+No arquivo de widget Dart, faça alterações similares às
+mostradas em `native_view_example.dart`:
 
- 1. Add the following imports:
+ 1. Adicione as seguintes importações:
 
     <?code-excerpt "lib/native_view_example_4.dart (import)"?>
     ```dart
@@ -51,7 +52,7 @@ shown in `native_view_example.dart`:
     import 'package:flutter/services.dart';
     ```
 
- 1. Implement a `build()` method:
+ 1. Implemente um método `build()`:
 
     <?code-excerpt "lib/native_view_example_4.dart (macos-composition)"?>
     ```dart
@@ -60,7 +61,7 @@ shown in `native_view_example.dart`:
       const String viewType = '<platform-view-type>';
       // Pass parameters to the platform side.
       final Map<String, dynamic> creationParams = <String, dynamic>{};
-    
+
       return AppKitView(
         viewType: viewType,
         layoutDirection: TextDirection.ltr,
@@ -70,16 +71,16 @@ shown in `native_view_example.dart`:
     }
     ```
 
-For more information, check out the [`AppKitView`][] API docs.
+Para mais informações, consulte a documentação da API [`AppKitView`][`AppKitView`].
 
 [`AppKitView`]: {{site.api}}/flutter/widgets/AppKitView-class.html
 
-## On the platform side
+## No lado da plataforma
 
-Implement the factory and the platform view.
-The `NativeViewFactory` creates the platform view, and
-the platform view provides a reference to the `NSView`.
-For example, `NativeView.swift`:
+Implemente a factory e a platform view.
+A `NativeViewFactory` cria a platform view, e
+a platform view fornece uma referência à `NSView`.
+Por exemplo, `NativeView.swift`:
 
 ```swift title="NativeView.swift"
 import Cocoa
@@ -143,10 +144,10 @@ class NativeView: NSView {
 }
 ```
 
-Finally, register the platform view.
-This can be done in an app or a plugin.
+Por fim, registre a platform view.
+Isso pode ser feito em um app ou em um plugin.
 
-For app registration, modify the App's `MainFlutterWindow.swift`:
+Para registro no app, modifique o `MainFlutterWindow.swift` do App:
 
 ```swift title="MainFlutterWindow.swift"
 import Cocoa
@@ -165,7 +166,7 @@ class MainFlutterWindow: NSWindow {
 }
 ```
 
-For plugin registration, modify the plugin's main file:
+Para registro no plugin, modifique o arquivo principal do plugin:
 
 ```swift title="Plugin.swift"
 import Cocoa
@@ -179,21 +180,21 @@ public class Plugin: NSObject, FlutterPlugin {
 }
 ```
 
-For more information, check out the API docs for:
+Para mais informações, consulte a documentação da API para:
 
-* [`FlutterPlatformViewFactory`][]
-* [`FlutterPlatformView`][]
-* [`PlatformView`][]
+* [`FlutterPlatformViewFactory`][`FlutterPlatformViewFactory`]
+* [`FlutterPlatformView`][`FlutterPlatformView`]
+* [`PlatformView`][`PlatformView`]
 
 [`FlutterPlatformView`]: {{site.api}}/ios-embedder/protocol_flutter_platform_view-p.html
 [`FlutterPlatformViewFactory`]: {{site.api}}/ios-embedder/protocol_flutter_platform_view_factory-p.html
 [`PlatformView`]: {{site.api}}/javadoc/io/flutter/plugin/platform/PlatformView.html
 
-## Putting it together
+## Juntando tudo
 
-When implementing the `build()` method in Dart,
-you can use [`defaultTargetPlatform`][]
-to detect the platform, and decide which widget to use:
+Ao implementar o método `build()` em Dart,
+você pode usar [`defaultTargetPlatform`][`defaultTargetPlatform`]
+para detectar a plataforma e decidir qual widget usar:
 
 <?code-excerpt "lib/native_view_example_4.dart (together-widget)"?>
 ```dart
@@ -220,15 +221,15 @@ Widget build(BuildContext context) {
 
 ## Performance
 
-Platform views in Flutter come with performance trade-offs.
+Platform views no Flutter vêm com trade-offs de performance.
 
-For example, in a typical Flutter app, the Flutter UI is composed on a dedicated
-raster thread. This allows Flutter apps to be fast, as this thread is rarely
-blocked.
+Por exemplo, em um app Flutter típico, a UI Flutter é composta em uma thread
+raster dedicada. Isso permite que apps Flutter sejam rápidos, pois essa thread raramente
+é bloqueada.
 
-When a platform view is rendered with hybrid composition, the Flutter UI
-continues to be composed from the dedicated raster thread, but the platform view
-performs graphics operations on the platform thread. To rasterize the combined
-contents, Flutter performs synchronization between its raster thread and the
-platform thread. As such, any slow or blocking operations on the platform thread
-can negatively impact Flutter graphics performance.
+Quando uma platform view é renderizada com hybrid composition, a UI Flutter
+continua sendo composta a partir da thread raster dedicada, mas a platform view
+executa operações gráficas na thread da plataforma. Para rasterizar o conteúdo
+combinado, Flutter executa sincronização entre sua thread raster e a
+thread da plataforma. Como tal, quaisquer operações lentas ou bloqueantes na thread da plataforma
+podem impactar negativamente a performance gráfica do Flutter.

@@ -1,52 +1,53 @@
 ---
-title: Store key-value data on disk
+ia-translate: true
+title: Armazenar dados chave-valor em disco
 description: >-
-  Learn how to use the shared_preferences package to store key-value data.
+  Aprenda como usar o pacote shared_preferences para armazenar dados chave-valor.
 ---
 
 <?code-excerpt path-base="cookbook/persistence/key_value/"?>
 
-If you have a relatively small collection of key-values
-to save, you can use the [`shared_preferences`][] plugin.
+Se você tem uma coleção relativamente pequena de pares chave-valor
+para salvar, você pode usar o plugin [`shared_preferences`][`shared_preferences`].
 
-Normally, you would have to
-write native platform integrations for storing data on each platform.
-Fortunately, the [`shared_preferences`][] plugin can be used to
-persist key-value data to disk on each platform Flutter supports.
+Normalmente, você teria que
+escrever integrações de plataforma nativas para armazenar dados em cada plataforma.
+Felizmente, o plugin [`shared_preferences`][`shared_preferences`] pode ser usado para
+persistir dados chave-valor em disco em cada plataforma que o Flutter suporta.
 
-This recipe uses the following steps:
+Esta receita usa os seguintes passos:
 
-  1. Add the dependency.
-  2. Save data.
-  3. Read data.
-  4. Remove data.
+  1. Adicione a dependência.
+  2. Salve dados.
+  3. Leia dados.
+  4. Remova dados.
 
 :::note
-To learn more, watch this short Package of the Week video
-on the `shared_preferences` package:
+Para aprender mais, assista a este breve vídeo Package of the Week
+sobre o pacote `shared_preferences`:
 
 <YouTubeEmbed id="sa_U0jffQII" title="shared_preferences | Flutter package of the week"></YouTubeEmbed>
 :::
 
-## 1. Add the dependency
+## 1. Adicione a dependência
 
-Before starting, add the [`shared_preferences`][] package as a dependency.
+Antes de começar, adicione o pacote [`shared_preferences`][`shared_preferences`] como uma dependência.
 
-To add the `shared_preferences` package as a dependency,
-run `flutter pub add`:
+Para adicionar o pacote `shared_preferences` como uma dependência,
+execute `flutter pub add`:
 
 ```console
 flutter pub add shared_preferences
 ```
 
-## 2. Save data
+## 2. Salve dados
 
-To persist data, use the setter methods provided by the
-`SharedPreferences` class. Setter methods are available for
-various primitive types, such as `setInt`, `setBool`, and `setString`.
+Para persistir dados, use os métodos setter fornecidos pela
+classe `SharedPreferences`. Métodos setter estão disponíveis para
+vários tipos primitivos, como `setInt`, `setBool` e `setString`.
 
-Setter methods do two things: First, synchronously update the
-key-value pair in memory. Then, persist the data to disk.
+Métodos setter fazem duas coisas: Primeiro, atualizam sincronamente o
+par chave-valor na memória. Então, persistem os dados em disco.
 
 <?code-excerpt "lib/partial_excerpts.dart (Step2)"?>
 ```dart
@@ -57,11 +58,11 @@ final prefs = await SharedPreferences.getInstance();
 await prefs.setInt('counter', counter);
 ```
 
-## 3. Read data
+## 3. Leia dados
 
-To read data, use the appropriate getter method provided by the
-`SharedPreferences` class. For each setter there is a corresponding getter.
-For example, you can use the `getInt`, `getBool`, and `getString` methods.
+Para ler dados, use o método getter apropriado fornecido pela
+classe `SharedPreferences`. Para cada setter há um getter correspondente.
+Por exemplo, você pode usar os métodos `getInt`, `getBool` e `getString`.
 
 <?code-excerpt "lib/partial_excerpts.dart (Step3)"?>
 ```dart
@@ -72,12 +73,12 @@ final prefs = await SharedPreferences.getInstance();
 final counter = prefs.getInt('counter') ?? 0;
 ```
 
-Note that the getter methods throw an exception if the persisted value
-has a different type than the getter method expects.
+Note que os métodos getter lançam uma exceção se o valor persistido
+tem um tipo diferente do que o método getter espera.
 
-## 4. Remove data
+## 4. Remova dados
 
-To delete data, use the `remove()` method.
+Para deletar dados, use o método `remove()`.
 
 <?code-excerpt "lib/partial_excerpts.dart (Step4)"?>
 ```dart
@@ -87,33 +88,33 @@ final prefs = await SharedPreferences.getInstance();
 await prefs.remove('counter');
 ```
 
-## Supported types
+## Tipos suportados
 
-Although the key-value storage provided by `shared_preferences` is
-easy and convenient to use, it has limitations:
+Embora o armazenamento chave-valor fornecido por `shared_preferences` seja
+fácil e conveniente de usar, ele tem limitações:
 
-* Only primitive types can be used: `int`, `double`, `bool`, `String`,
-  and `List<String>`.
-* It's not designed to store large amounts of data.
-* There is no guarantee that data will be persisted across app restarts.
+* Apenas tipos primitivos podem ser usados: `int`, `double`, `bool`, `String`,
+  e `List<String>`.
+* Não é projetado para armazenar grandes quantidades de dados.
+* Não há garantia de que os dados serão persistidos entre reinicializações do app.
 
-## Testing support
+## Suporte para testes
 
-It's a good idea to test code that persists data using `shared_preferences`.
-To enable this, the package provides an
-in-memory mock implementation of the preference store.
+É uma boa ideia testar código que persiste dados usando `shared_preferences`.
+Para habilitar isso, o pacote fornece uma
+implementação mock em memória do armazenamento de preferências.
 
-To set up your tests to use the mock implementation,
-call the `setMockInitialValues` static method in
-a `setUpAll()` method in your test files.
-Pass in a map of key-value pairs to use as the initial values.
+Para configurar seus testes para usar a implementação mock,
+chame o método estático `setMockInitialValues` em
+um método `setUpAll()` em seus arquivos de teste.
+Passe um map de pares chave-valor para usar como valores iniciais.
 
 <?code-excerpt "test/prefs_test.dart (setup)"?>
 ```dart
 SharedPreferences.setMockInitialValues(<String, Object>{'counter': 2});
 ```
 
-## Complete example
+## Exemplo completo
 
 <?code-excerpt "lib/main.dart"?>
 ```dart

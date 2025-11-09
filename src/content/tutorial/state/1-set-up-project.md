@@ -1,67 +1,68 @@
 ---
-title: Set up your project
-description: Instructions on how to create a new Flutter app.
+ia-translate: true
+title: Configure seu projeto
+description: Instruções sobre como criar um novo app Flutter.
 permalink: /tutorial/set-up-state-app/
 sitemap: false
 ---
 
-In this tutorial, you'll learn how to work with data in a Flutter app.
-You'll build an app that fetches and displays article summaries from
-the [Wikipedia API][].
+Neste tutorial, você aprenderá como trabalhar com dados em um app Flutter.
+Você construirá um app que busca e exibe resumos de artigos da
+[API da Wikipedia][Wikipedia API].
 
 <img src="/assets/images/docs/tutorial/wikipedia_app.png" height="500px"
-style="border:1px solid black" alt="A screenshot of the completed
-Wikipedia reader app showing an article with image, title,
-description, and extract text.">
+style="border:1px solid black" alt="Uma captura de tela do app leitor
+da Wikipedia completo mostrando um artigo com imagem, título,
+descrição e texto de extrato.">
 
-This tutorial explores:
+Este tutorial explora:
 
-* Making HTTP requests in Flutter
-* Managing application state with `ChangeNotifier`
-* Using the MVVM architecture pattern
-* Creating responsive user interfaces that update automatically when
-  data changes
+* Fazendo requisições HTTP no Flutter
+* Gerenciando estado da aplicação com `ChangeNotifier`
+* Usando o padrão de arquitetura MVVM
+* Criando interfaces de usuário responsivas que atualizam automaticamente quando
+  os dados mudam
 
 
-This tutorial assumes you've completed the [Dart Getting Started
-tutorial][] and the [introductory Flutter tutorial][], and therefore
-doesn't explain concepts like HTTP, JSON, or widget basics.
+Este tutorial assume que você completou o [tutorial Getting Started
+do Dart][Dart Getting Started tutorial] e o [tutorial introdutório do Flutter][introductory Flutter tutorial], e portanto
+não explica conceitos como HTTP, JSON ou fundamentos de widgets.
 
-:::note Support Wikipedia
-Wikipedia is a valuable resource, providing free
-access to human knowledge through millions of articles written
-collaboratively by volunteers worldwide. Consider [donating to
-Wikipedia][] to help keep this incredible resource free and accessible
-to everyone.
+:::note Apoie a Wikipedia
+A Wikipedia é um recurso valioso, fornecendo acesso gratuito
+ao conhecimento humano através de milhões de artigos escritos
+colaborativamente por voluntários em todo o mundo. Considere [doar para a
+Wikipedia][donating to Wikipedia] para ajudar a manter este recurso incrível gratuito e acessível
+para todos.
 :::
 
-## Create a new Flutter project
+## Criar um novo projeto Flutter
 
-Create a new Flutter project using the [Flutter CLI][]. In your
-terminal, run the following command to create a minimal Flutter app:
+Crie um novo projeto Flutter usando a [Flutter CLI][Flutter CLI]. No seu
+terminal, execute o seguinte comando para criar um app Flutter mínimo:
 
 ```bash
 $ flutter create wikipedia_reader --empty
 ```
 
-## Add required dependencies
+## Adicionar dependências necessárias
 
-Your app needs two [packages][] to work with HTTP requests and
-Wikipedia data. Add them to your project:
+Seu app precisa de dois [pacotes][packages] para trabalhar com requisições HTTP e
+dados da Wikipedia. Adicione-os ao seu projeto:
 
 ```shell
 $ cd wikipedia_reader
 $ flutter pub add http dartpedia
 ```
 
-The [`http` package][] provides tools for making HTTP requests, while
-the `dartpedia` package contains data models for working with
-Wikipedia's API responses.
+O [pacote `http`][`http` package] fornece ferramentas para fazer requisições HTTP, enquanto
+o pacote `dartpedia` contém modelos de dados para trabalhar com
+as respostas da API da Wikipedia.
 
-## Examine the starter code
+## Examinar o código inicial
 
-Open `lib/main.dart` and replace the existing code with this basic
-structure, which adds required imports that the app uses.
+Abra `lib/main.dart` e substitua o código existente por esta estrutura
+básica, que adiciona importações necessárias que o app usa.
 
 ```dart
 import 'dart:convert';
@@ -94,20 +95,20 @@ class MainApp extends StatelessWidget {
 }
 ```
 
-This code provides a basic app structure with a title bar and
-placeholder content. The imports at the top include everything you
-need for HTTP requests, JSON parsing, and Wikipedia data models.
+Este código fornece uma estrutura básica do app com uma barra de título e
+conteúdo placeholder. As importações no topo incluem tudo que você
+precisa para requisições HTTP, parsing de JSON e modelos de dados da Wikipedia.
 
-## Run your app
+## Executar seu app
 
-Test that everything works by running your app:
+Teste se tudo funciona executando seu app:
 
 ```bash
 $ flutter run -d chrome
 ```
 
-You should see a simple app with "Wikipedia Flutter" in the app bar
-and "Loading..." in the center of the screen.
+Você deverá ver um app simples com "Wikipedia Flutter" na barra do app
+e "Loading..." no centro da tela.
 
 [Wikipedia API]: https://en.wikipedia.org/api/rest_v1/
 [donating to Wikipedia]: https://donate.wikimedia.org/

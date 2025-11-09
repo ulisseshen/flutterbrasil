@@ -1,42 +1,42 @@
 ## Performance
 
-Platform views in Flutter come with performance trade-offs.
+Platform views no Flutter vêm com trade-offs de performance.
 
-For example, in a typical Flutter app, the Flutter UI is composed
-on a dedicated raster thread. This allows Flutter apps to be fast,
-as the main platform thread is rarely blocked.
+Por exemplo, em um app Flutter típico, a UI Flutter é composta
+em uma thread de rasterização dedicada. Isso permite que apps Flutter sejam rápidos,
+já que a thread principal da plataforma raramente é bloqueada.
 
-While a platform view is rendered with hybrid composition,
-the Flutter UI is composed from the platform thread,
-which competes with other tasks like handling OS or plugin messages.
+Enquanto uma platform view é renderizada com hybrid composition,
+a UI Flutter é composta da thread da plataforma,
+que compete com outras tarefas como lidar com mensagens do OS ou de plugins.
 
-Prior to Android 10, hybrid composition copied each Flutter frame
-out of the graphic memory into main memory, and then copied it back
-to a GPU texture. As this copy happens per frame, the performance of
-the entire Flutter UI might be impacted. In Android 10 or above, the
-graphics memory is copied only once.
+Antes do Android 10, hybrid composition copiava cada frame Flutter
+da memória gráfica para a memória principal, e então copiava de volta
+para uma textura GPU. Como esta cópia acontece por frame, a performance de
+toda a UI Flutter pode ser impactada. No Android 10 ou superior, a
+memória gráfica é copiada apenas uma vez.
 
-Virtual display, on the other hand,
-makes each pixel of the native view
-flow through additional intermediate graphic buffers,
-which cost graphic memory and drawing performance.
+Virtual display, por outro lado,
+faz com que cada pixel da view nativa
+flua através de buffers gráficos intermediários adicionais,
+o que custa memória gráfica e performance de desenho.
 
-For complex cases, there are some techniques that
-can be used to mitigate these issues.
+Para casos complexos, há algumas técnicas que
+podem ser usadas para mitigar esses problemas.
 
-For example, you could use a placeholder texture
-while an animation is happening in Dart.
-In other words, if an animation is slow while a
-platform view is rendered,
-then consider taking a screenshot of the
-native view and rendering it as a texture.
+Por exemplo, você poderia usar uma textura placeholder
+enquanto uma animação está acontecendo em Dart.
+Em outras palavras, se uma animação está lenta enquanto uma
+platform view é renderizada,
+então considere tirar uma screenshot da
+view nativa e renderizá-la como uma textura.
 
-For more information, see:
+Para mais informações, veja:
 
-* [`TextureLayer`][]
-* [`TextureRegistry`][]
-* [`FlutterTextureRegistry`][]
-* [`FlutterImageView`][]
+* [`TextureLayer`][`TextureLayer`]
+* [`TextureRegistry`][`TextureRegistry`]
+* [`FlutterTextureRegistry`][`FlutterTextureRegistry`]
+* [`FlutterImageView`][`FlutterImageView`]
 
 [`FlutterImageView`]: {{site.api}}/javadoc/io/flutter/embedding/android/FlutterImageView.html
 [`FlutterTextureRegistry`]: {{site.api}}/ios-embedder/protocol_flutter_texture_registry-p.html

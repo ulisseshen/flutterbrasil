@@ -1,48 +1,49 @@
 ---
-title: DevTools 2.10.0 release notes
-shortTitle: 2.10.0 release notes
+ia-translate: true
+title: Notas de versão do DevTools 2.10.0
+shortTitle: Notas de versão 2.10.0
 breadcrumb: 2.10.0
-description: Release notes for Dart and Flutter DevTools version 2.10.0.
+description: Notas de versão para o Dart e Flutter DevTools versão 2.10.0.
 showToc: false
 ---
 
-The 2.10.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutter.dev/tools/devtools).
+A versão 2.10.0 do Dart e Flutter DevTools
+inclui as seguintes mudanças, entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](https://docs.flutter.dev/tools/devtools).
 
-## Flutter inspector updates
+## Atualizações do Flutter inspector
 
-* Added search support to the Widget Tree, and
-  added a breadcrumb navigator to the Widget Details Tree to
-  allow for quickly navigating through the tree hierarchy -
+* Adicionado suporte de busca à Widget Tree, e
+  adicionado um navegador breadcrumb à Widget Details Tree para
+  permitir navegar rapidamente pela hierarquia da árvore -
   [#3525](https://github.com/flutter/devtools/pull/3525)
 
   ![inspector search](/assets/images/docs/tools/devtools/release-notes/images-2.10.0/image1.png "inspector_search")
 
-## CPU profiler updates
+## Atualizações do CPU profiler
 
-* Fix a null reference in the CPU profiler
-  when loading an offline snapshot -
+* Corrigida uma referência nula no CPU profiler
+  ao carregar um snapshot offline -
   [#3596](https://github.com/flutter/devtools/pull/3596)
 
-## Debugger updates
+## Atualizações do Debugger
 
-* Added support for multi-token file search, and
-  improved search match prioritization to
-  rank file name matches over full path matches -
+* Adicionado suporte para busca de arquivo multi-token, e
+  melhorada a priorização de correspondência de busca para
+  classificar correspondências de nome de arquivo acima de correspondências de caminho completo -
   [#3582](https://github.com/flutter/devtools/pull/3582)
-* Fix some focus-related issues -
+* Corrigidos alguns problemas relacionados a foco -
   [#3602](https://github.com/flutter/devtools/pull/3602)
 
-## Logging view updates
+## Atualizações da visualização de Logging
 
-* Fix a fatal error that occurred when
-  filtering logs more than once -
+* Corrigido um erro fatal que ocorria ao
+  filtrar logs mais de uma vez -
   [#3588](https://github.com/flutter/devtools/pull/3588)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes since the previous release,
-check out
-[the diff on GitHub](https://github.com/flutter/devtools/compare/v2.9.2...v2.10.0).
+Para encontrar uma lista completa de mudanças desde a versão anterior,
+confira
+[o diff no GitHub](https://github.com/flutter/devtools/compare/v2.9.2...v2.10.0).

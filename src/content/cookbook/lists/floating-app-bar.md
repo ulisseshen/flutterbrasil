@@ -1,52 +1,53 @@
 ---
-title: Place a floating app bar above a list
-description: How to place a floating app bar or navigation bar above a list.
+ia-translate: true
+title: Posicione uma app bar flutuante acima de uma lista
+description: Como posicionar uma app bar flutuante ou barra de navegação acima de uma lista.
 ---
 
 <?code-excerpt path-base="cookbook/lists/floating_app_bar/"?>
 
-This guide describes how to place a floating app bar or
-navigation bar above a list in a Flutter app.
+Este guia descreve como posicionar uma app bar flutuante ou
+barra de navegação acima de uma lista em um app Flutter.
 
-## Overview
+## Visão geral
 
-To make it easier for users to view a list of items,
-you might want to minimize the app bar (navigation bar), as
-the user scrolls down the list.
+Para facilitar a visualização de uma lista de itens pelos usuários,
+você pode querer minimizar a app bar (barra de navegação) conforme
+o usuário rola a lista para baixo.
 
-Moving the app bar into a [`CustomScrollView`][] allows you
-to create an app bar that can be minimized or scroll
-offscreen as you scroll through a list of items contained
-inside the `CustomScrollView`.
+Mover a app bar para um [`CustomScrollView`][`CustomScrollView`] permite
+criar uma app bar que pode ser minimizada ou rolar
+para fora da tela conforme você rola uma lista de itens contidos
+dentro do `CustomScrollView`.
 
-This recipe demonstrates how to use a `CustomScrollView` to
-display a list of items with an app bar on top that
-minimizes as the user scrolls down the list using the
-following steps:
+Esta receita demonstra como usar um `CustomScrollView` para
+exibir uma lista de itens com uma app bar no topo que
+minimiza conforme o usuário rola a lista para baixo usando os
+seguintes passos:
 
-  1. Create a `CustomScrollView`.
-  2. Add a floating app bar to `CustomScrollView`.
-  3. Add a list of items to `CustomScrollView`.
+  1. Crie um `CustomScrollView`.
+  2. Adicione uma app bar flutuante ao `CustomScrollView`.
+  3. Adicione uma lista de itens ao `CustomScrollView`.
 
-## 1. Create a `CustomScrollView`
+## 1. Crie um `CustomScrollView`
 
-To create a floating app bar, place the app bar inside a
-`CustomScrollView` that also contains the list of items.
-This synchronizes the scroll position of the app bar and the
-list of items. You might think of the `CustomScrollView`
-widget as a `ListView` that allows you to mix and match
-different types of scrollable lists and widgets together.
+Para criar uma app bar flutuante, posicione a app bar dentro de um
+`CustomScrollView` que também contém a lista de itens.
+Isso sincroniza a posição de rolagem da app bar e da
+lista de itens. Você pode pensar no widget `CustomScrollView`
+como um `ListView` que permite misturar e combinar
+diferentes tipos de listas e widgets roláveis juntos.
 
-The scrollable lists and widgets provided to the
-`CustomScrollView` are known as _slivers_. There are several
-types of slivers, such as `SliverList`, `SliverGrid`, and
-`SliverAppBar`. In fact, the `ListView` and `GridView`
-widgets use the `SliverList` and `SliverGrid` widgets to
-implement scrolling.
+As listas e widgets roláveis fornecidos ao
+`CustomScrollView` são conhecidos como _slivers_. Existem vários
+tipos de slivers, como `SliverList`, `SliverGrid` e
+`SliverAppBar`. Na verdade, os widgets `ListView` e `GridView`
+usam os widgets `SliverList` e `SliverGrid` para
+implementar a rolagem.
 
-For this example, create a `CustomScrollView` that contains
-a `SliverList`. Also, remove the app bar property from your
-code if it exists.
+Para este exemplo, crie um `CustomScrollView` que contém
+um `SliverList`. Além disso, remova a propriedade app bar do seu
+código se ela existir.
 
 <Tabs key="device-type-tabs">
 
@@ -89,29 +90,29 @@ CupertinoApp(
 </Tabs>
 
 
-## 2. Add a floating app bar
+## 2. Adicione uma app bar flutuante
 
-Next, add an app bar to the [`CustomScrollView`][].
+Em seguida, adicione uma app bar ao [`CustomScrollView`][`CustomScrollView`].
 
 <Tabs key="device-type-tabs">
 
 <Tab name="Material widgets">
 
-Flutter provides the [`SliverAppBar`][] widget which,
-much like the normal `AppBar` widget,
-uses the `SliverAppBar` to display a title,
-tabs, images and more.
+O Flutter fornece o widget [`SliverAppBar`][`SliverAppBar`] que,
+assim como o widget `AppBar` normal,
+usa o `SliverAppBar` para exibir um título,
+abas, imagens e mais.
 
-However, the `SliverAppBar` also gives you the ability to
-create a "floating" app bar that shrinks and floats when
-you're not at the top of the page.
+No entanto, o `SliverAppBar` também oferece a capacidade de
+criar uma app bar "flutuante" que encolhe e flutua quando
+você não está no topo da página.
 
-To create this effect:
+Para criar este efeito:
 
-  1. Start with an app bar that displays only a title.
-  2. Set the `pinned` property to `true`.
-  3. Add a `flexibleSpace` widget that fills the available
-     `expandedHeight`.
+  1. Comece com uma app bar que exibe apenas um título.
+  2. Defina a propriedade `pinned` como `true`.
+  3. Adicione um widget `flexibleSpace` que preenche a
+     `expandedHeight` disponível.
 
 <?code-excerpt "lib/step2_material.dart (SliverAppBar)" replace="/^body: //g;/^\),$/)/g"?>
 ```dart
@@ -131,27 +132,27 @@ slivers: [
 ```
 
 :::tip
-Play around with the
-[various properties you can pass to the `SliverAppBar` widget][],
-and use hot reload to see the results. For example, use an
-`Image` widget for the `flexibleSpace` property to create a
-background image that shrinks in size as it's scrolled offscreen.
+Experimente com as
+[várias propriedades que você pode passar para o widget `SliverAppBar`][various properties you can pass to the `SliverAppBar` widget],
+e use hot reload para ver os resultados. Por exemplo, use um
+widget `Image` para a propriedade `flexibleSpace` para criar uma
+imagem de fundo que encolhe conforme rola para fora da tela.
 :::
 
 </Tab>
 
 <Tab name="Cupertino widgets">
 
-Flutter provides the [`CupertinoSliverNavigationBar`][]
-widget, which lets you have a "floating" navigation
-bar that shrinks when you scroll down and floats when
-you're not at the top of the page.
+O Flutter fornece o widget [`CupertinoSliverNavigationBar`][`CupertinoSliverNavigationBar`],
+que permite ter uma barra de navegação "flutuante"
+que encolhe quando você rola para baixo e flutua quando
+você não está no topo da página.
 
-To create this effect:
+Para criar este efeito:
 
-  1. Add `CupertinoSliverNavigationBar` to
+  1. Adicione `CupertinoSliverNavigationBar` ao
      `CustomScrollView`.
-  2. Start with an app bar that displays only a title.
+  2. Comece com uma app bar que exibe apenas um título.
 
 <?code-excerpt "lib/step2_cupertino.dart (SliverAppBar)" replace="/^body: //g;/^\),$/)/g"?>
 ```dart
@@ -169,14 +170,14 @@ slivers: [
 </Tabs>
 
 
-## 3. Add a list of items
+## 3. Adicione uma lista de itens
 
-Now that you have the app bar in place, add a list of items
-to the `CustomScrollView`. You have two options: a
-[`SliverList`][] or a [`SliverGrid`][].  If you need to
-display a list of items one after the other, use the
-`SliverList` widget. If you need to display a grid list, use
-the `SliverGrid` widget.
+Agora que você tem a app bar no lugar, adicione uma lista de itens
+ao `CustomScrollView`. Você tem duas opções: um
+[`SliverList`][`SliverList`] ou um [`SliverGrid`][`SliverGrid`]. Se você precisa
+exibir uma lista de itens um após o outro, use o
+widget `SliverList`. Se você precisa exibir uma lista em grade, use
+o widget `SliverGrid`.
 
 <Tabs key="device-type-tabs">
 
@@ -216,7 +217,7 @@ SliverList.builder(
 
 </Tabs>
 
-## Interactive example
+## Exemplo interativo
 
 <Tabs key="device-type-tabs">
 

@@ -1,24 +1,25 @@
 ---
-title: Architecture design patterns
-shortTitle: Design patterns
+ia-translate: true
+title: Padrões de design de arquitetura
+shortTitle: Padrões de design
 description: >-
-  A collection of articles about useful design patterns for
-  building Flutter applications.
+  Uma coleção de artigos sobre padrões de design úteis para
+  construir aplicações Flutter.
 prev:
-  title: Recommendations
+  title: Recomendações
   path: /app-architecture/recommendations
 showToc: false
 ---
 
-If you've already read through the [architecture guide][] page,
-or if you're comfortable with Flutter and the MVVM pattern,
-the following articles are for you.
+Se você já leu a página do [guia de arquitetura][architecture guide],
+ou se você está confortável com Flutter e o padrão MVVM,
+os seguintes artigos são para você.
 
-These articles aren't about high-level app architecture,
-rather they're about solving specific design problems that improve your
-application's code base regardless of how you've architected your app.
-That said, the articles do assume the MVVM pattern laid out on the
-previous pages in the code examples.
+Esses artigos não são sobre arquitetura de aplicações de alto nível,
+mas sim sobre resolver problemas específicos de design que melhoram a
+base de código da sua aplicação independentemente de como você arquitetou seu app.
+Dito isso, os artigos assumem o padrão MVVM apresentado nas
+páginas anteriores nos exemplos de código.
 
 <ExpansionList list="design-patterns" baseId="design-patterns">
 

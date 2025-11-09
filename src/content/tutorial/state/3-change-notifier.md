@@ -1,28 +1,28 @@
 ---
-title: State management in Flutter
-description: Instructions on how to manage state with ChangeNotifiers.
+ia-translate: true
+title: Gerenciamento de estado no Flutter
+description: Instruções sobre como gerenciar estado com ChangeNotifiers.
 permalink: /tutorial/change-notifier/
 sitemap: false
 ---
 
-When developers talk about state-management in Flutter, they're
-essentially referring to the pattern by which your app updates the
-data it needs to render correctly, and then tells Flutter to re-render
-the UI with that new data.
+Quando desenvolvedores falam sobre gerenciamento de estado no Flutter, eles estão
+essencialmente se referindo ao padrão pelo qual seu app atualiza os
+dados que precisa para renderizar corretamente, e então informa ao Flutter para re-renderizar
+a UI com esses novos dados.
 
-In MVVM, this responsibility falls to the ViewModel layer, which sits
-between and connects your UI to your Model layer. In Flutter,
-ViewModels use Flutter's `ChangeNotifier` class to
-notify the UI when data changes.
+No MVVM, essa responsabilidade cabe à camada ViewModel, que fica
+entre e conecta sua UI à sua camada Model. No Flutter,
+ViewModels usam a classe `ChangeNotifier` do Flutter para
+notificar a UI quando os dados mudam.
 
-To use [ChangeNotifier][], extend it in your state management class to
-gain access to the `notifyListeners()` method, which triggers UI
-rebuilds when called.
+Para usar [ChangeNotifier][ChangeNotifier], estenda-a em sua classe de gerenciamento de estado para
+obter acesso ao método `notifyListeners()`, que dispara reconstruções da UI
+quando chamado.
 
-## Create the basic ViewModel structure
+## Crie a estrutura básica do ViewModel
 
-Create the `ArticleViewModel` class with its basic structure and state
-properties:
+Crie a classe `ArticleViewModel` com sua estrutura básica e propriedades de estado:
 
 ```dart
 class ArticleViewModel extends ChangeNotifier {
@@ -35,16 +35,16 @@ class ArticleViewModel extends ChangeNotifier {
 }
 ```
 
-The ViewModel holds three pieces of state:
+O ViewModel mantém três pedaços de estado:
 
-- `summary`: The current Wikipedia article data.
-- `errorMessage`: Any error that occurred during data fetching.
-- `loading`: A flag to show progress indicators.
+- `summary`: Os dados atuais do artigo da Wikipedia.
+- `errorMessage`: Qualquer erro que ocorreu durante a busca de dados.
+- `loading`: Uma flag para mostrar indicadores de progresso.
 
-## Add constructor initialization
+## Adicione a inicialização do construtor
 
-Update the constructor to automatically fetch content when the
-ViewModel is created:
+Atualize o construtor para buscar conteúdo automaticamente quando o
+ViewModel é criado:
 
 ```dart
 class ArticleViewModel extends ChangeNotifier {
@@ -61,13 +61,13 @@ class ArticleViewModel extends ChangeNotifier {
 }
 ```
 
-This constructor initialization provides immediate content when the
-ViewModel is created. Because constructors can't be asynchronous,
-it delegates initial content fetching to a separate method.
+Essa inicialização do construtor fornece conteúdo imediato quando o
+ViewModel é criado. Como construtores não podem ser assíncronos,
+ele delega a busca de conteúdo inicial para um método separado.
 
-## Create the getRandomArticleSummary method
+## Crie o método getRandomArticleSummary
 
-Add the method that fetches data and manages state updates:
+Adicione o método que busca dados e gerencia atualizações de estado:
 
 ```dart
 class ArticleViewModel extends ChangeNotifier {
@@ -91,19 +91,19 @@ class ArticleViewModel extends ChangeNotifier {
   }
 }
 ```
-The ViewModel updates the `loading` property and calls
-`notifyListeners()` to inform the UI. When the operation completes, it
-toggles the property back. When you build the UI, you'll use this
-`loading` property to show a loading indicator while fetching a new
-article.
+O ViewModel atualiza a propriedade `loading` e chama
+`notifyListeners()` para informar a UI. Quando a operação completa, ele
+alterna a propriedade de volta. Quando você construir a UI, você usará essa
+propriedade `loading` para mostrar um indicador de carregamento enquanto busca um novo
+artigo.
 
-## Retrieve an article from the ArticleModel
+## Recupere um artigo do ArticleModel
 
-Complete the `getRandomArticleSummary` method to fetch an article
-summary. Use a [try-catch block][] to gracefully handle network
-errors, and store error messages that the UI can display to users. The
-method clears previous errors on success and clears the previous
-article summary on error to maintain consistent state.
+Complete o método `getRandomArticleSummary` para buscar um resumo de artigo.
+Use um [bloco try-catch][try-catch block] para lidar graciosamente com erros de rede,
+e armazene mensagens de erro que a UI pode exibir aos usuários. O
+método limpa erros anteriores em caso de sucesso e limpa o resumo do
+artigo anterior em caso de erro para manter um estado consistente.
 
 ```dart
 class ArticleViewModel extends ChangeNotifier {
@@ -132,12 +132,12 @@ class ArticleViewModel extends ChangeNotifier {
 }
 ```
 
-## Test the ViewModel
+## Teste o ViewModel
 
-Before building the full UI, test that your HTTP requests work by
-printing results to the console. First, update your
-`ArticleViewModel`'s `getRandomArticleSummary` method to print the
-results:
+Antes de construir a UI completa, teste se suas requisições HTTP funcionam
+imprimindo resultados no console. Primeiro, atualize o método
+`getRandomArticleSummary` do seu `ArticleViewModel` para imprimir os
+resultados:
 
 ```dart
 Future<void> getRandomArticleSummary() async {
@@ -157,8 +157,8 @@ Future<void> getRandomArticleSummary() async {
 }
 ```
 
-Then, update the `MainApp` widget to create the ViewModel, which calls
-the `getRandomArticleSummary` method on creation:
+Então, atualize o widget `MainApp` para criar o ViewModel, que chama
+o método `getRandomArticleSummary` na criação:
 
 ```dart
 class MainApp extends StatelessWidget {
@@ -183,9 +183,9 @@ class MainApp extends StatelessWidget {
 }
 ```
 
-Hot reload your app and check your console output. You should see
-either an article title or an error message, which confirms that your
-Model and ViewModel are wired up correctly.
+Faça hot reload do seu app e verifique a saída do console. Você deve ver
+ou um título de artigo ou uma mensagem de erro, o que confirma que seu
+Model e ViewModel estão conectados corretamente.
 
 [ChangeNotifier]: {{site.api}}/flutter/foundation/ChangeNotifier-class.html
 [try-catch block]: https://dart.dev/language/error-handling

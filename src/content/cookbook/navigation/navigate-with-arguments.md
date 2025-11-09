@@ -1,48 +1,48 @@
 ---
-title: Pass arguments to a named route
-description: How to pass arguments to a named route.
+ia-translate: true
+title: Passar argumentos para uma rota nomeada
+description: Como passar argumentos para uma rota nomeada.
 ---
 
 <?code-excerpt path-base="cookbook/navigation/navigate_with_arguments"?>
 
-The [`Navigator`][] provides the ability to navigate
-to a named route from any part of an app using
-a common identifier.
-In some cases, you might also need to pass arguments to a
-named route. For example, you might wish to navigate to the `/user` route and
-pass information about the user to that route.
+O [`Navigator`][] fornece a habilidade de navegar
+para uma rota nomeada de qualquer parte de um app usando
+um identificador comum.
+Em alguns casos, você também pode precisar passar argumentos para uma
+rota nomeada. Por exemplo, você pode desejar navegar para a rota `/user` e
+passar informações sobre o usuário para essa rota.
 
 :::note
-Named routes are no longer recommended for most
-applications. For more information, see
-[Limitations][] in the [navigation overview][] page.
+Rotas nomeadas não são mais recomendadas para a maioria
+das aplicações. Para mais informações, veja
+[Limitations][] na página [navigation overview][].
 :::
 
 [Limitations]: /ui/navigation#limitations
 [navigation overview]: /ui/navigation
 
-You can accomplish this task using the `arguments` parameter of the
-[`Navigator.pushNamed()`][] method. Extract the arguments using the
-[`ModalRoute.of()`][] method or inside an [`onGenerateRoute()`][]
-function provided to the [`MaterialApp`][] or [`CupertinoApp`][]
-constructor.
+Você pode realizar essa tarefa usando o parâmetro `arguments` do
+método [`Navigator.pushNamed()`][]. Extraia os argumentos usando o
+método [`ModalRoute.of()`][] ou dentro de uma função [`onGenerateRoute()`][]
+fornecida para o construtor [`MaterialApp`][] ou [`CupertinoApp`][].
 
-This recipe demonstrates how to pass arguments to a named
-route and read the arguments using `ModalRoute.of()`
-and `onGenerateRoute()` using the following steps:
+Esta receita demonstra como passar argumentos para uma rota
+nomeada e ler os argumentos usando `ModalRoute.of()`
+e `onGenerateRoute()` usando os seguintes passos:
 
-  1. Define the arguments you need to pass.
-  2. Create a widget that extracts the arguments.
-  3. Register the widget in the `routes` table.
-  4. Navigate to the widget.
+  1. Definir os argumentos que você precisa passar.
+  2. Criar um widget que extrai os argumentos.
+  3. Registrar o widget na tabela `routes`.
+  4. Navegar para o widget.
 
-## 1. Define the arguments you need to pass
+## 1. Definir os argumentos que você precisa passar
 
-First, define the arguments you need to pass to the new route.
-In this example, pass two pieces of data:
-The `title` of the screen and a `message`.
+Primeiro, defina os argumentos que você precisa passar para a nova rota.
+Neste exemplo, passe dois pedaços de dados:
+O `title` da tela e uma `message`.
 
-To pass both pieces of data, create a class that stores this information.
+Para passar ambos os pedaços de dados, crie uma classe que armazena essa informação.
 
 <?code-excerpt "lib/main.dart (ScreenArguments)"?>
 ```dart
@@ -57,13 +57,13 @@ class ScreenArguments {
 }
 ```
 
-## 2. Create a widget that extracts the arguments
+## 2. Criar um widget que extrai os argumentos
 
-Next, create a widget that extracts and displays the
-`title` and `message` from the `ScreenArguments`.
-To access the `ScreenArguments`,
-use the [`ModalRoute.of()`][] method.
-This method returns the current route with the arguments.
+Em seguida, crie um widget que extrai e exibe o
+`title` e `message` do `ScreenArguments`.
+Para acessar o `ScreenArguments`,
+use o método [`ModalRoute.of()`][].
+Este método retorna a rota atual com os argumentos.
 
 <?code-excerpt "lib/main.dart (ExtractArgumentsScreen)"?>
 ```dart
@@ -88,10 +88,10 @@ class ExtractArgumentsScreen extends StatelessWidget {
 }
 ```
 
-## 3. Register the widget in the `routes` table
+## 3. Registrar o widget na tabela `routes`
 
-Next, add an entry to the `routes` provided to the `MaterialApp` widget. The
-`routes` define which widget should be created based on the name of the route.
+Em seguida, adicione uma entrada às `routes` fornecidas para o widget `MaterialApp`. As
+`routes` definem qual widget deve ser criado com base no nome da rota.
 
 {% comment %}
 RegEx removes the return statement and adds the closing parenthesis at the end
@@ -107,13 +107,13 @@ MaterialApp(
 ```
 
 
-## 4. Navigate to the widget
+## 4. Navegar para o widget
 
-Finally, navigate to the `ExtractArgumentsScreen`
-when a user taps a button using [`Navigator.pushNamed()`][].
-Provide the arguments to the route via the `arguments` property. The
-`ExtractArgumentsScreen` extracts the `title` and `message` from these
-arguments.
+Finalmente, navegue para o `ExtractArgumentsScreen`
+quando um usuário toca em um botão usando [`Navigator.pushNamed()`][].
+Forneça os argumentos para a rota via a propriedade `arguments`. O
+`ExtractArgumentsScreen` extrai o `title` e `message` desses
+argumentos.
 
 <?code-excerpt "lib/main.dart (PushNamed)"?>
 ```dart
@@ -139,14 +139,14 @@ ElevatedButton(
 ),
 ```
 
-## Alternatively, extract the arguments using `onGenerateRoute`
+## Alternativamente, extrair os argumentos usando `onGenerateRoute`
 
-Instead of extracting the arguments directly inside the widget, you can also
-extract the arguments inside an [`onGenerateRoute()`][]
-function and pass them to a widget.
+Em vez de extrair os argumentos diretamente dentro do widget, você também pode
+extrair os argumentos dentro de uma função [`onGenerateRoute()`][]
+e passá-los para um widget.
 
-The `onGenerateRoute()` function creates the correct route based on the given
-[`RouteSettings`][].
+A função `onGenerateRoute()` cria a rota correta com base no
+[`RouteSettings`][] fornecido.
 
 {% comment %}
 RegEx removes the return statement, removed "routes" property and adds the closing parenthesis at the end
@@ -190,7 +190,7 @@ MaterialApp(
 )
 ```
 
-## Interactive example
+## Exemplo interativo
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter complete navigation hands-on example in DartPad" run="true"

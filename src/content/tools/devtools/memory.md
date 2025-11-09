@@ -1,88 +1,89 @@
 ---
-title: Use the Memory view
-description: Learn how to use the DevTools memory view.
+ia-translate: true
+title: Use a visualização Memory
+description: Aprenda a usar a visualização memory do DevTools.
 ---
 
-The memory view provides insights into details
-of the application's memory allocation and
-tools to detect and debug specific issues.
+A visualização memory fornece insights sobre detalhes
+da alocação de memória da aplicação e
+ferramentas para detectar e depurar problemas específicos.
 
 :::note
-This page is up to date for DevTools 2.23.0.
+Esta página está atualizada para o DevTools 2.23.0.
 :::
 
-For information on how to locate DevTools screens in different IDEs,
-check out the [DevTools overview](/tools/devtools).
+Para informações sobre como localizar as telas do DevTools em diferentes IDEs,
+consulte a [visão geral do DevTools][DevTools overview].
 
-To better understand the insights found on this page,
-the first section explains how Dart manages memory.
-If you already understand Dart's memory management,
-you can skip to the [Memory view guide](#memory-view-guide).
+Para entender melhor os insights encontrados nesta página,
+a primeira seção explica como o Dart gerencia memória.
+Se você já entende o gerenciamento de memória do Dart,
+você pode pular para o [guia da visualização Memory](#memory-view-guide).
 
-## Reasons to use the memory view
+## Razões para usar a visualização memory
 
-Use the memory view for preemptive memory optimization or when
-your application experiences one of the following conditions:
+Use a visualização memory para otimização de memória preventiva ou quando
+sua aplicação experimenta uma das seguintes condições:
 
-* Crashes when it runs out of memory
-* Slows down
-* Causes the device to slow down or become unresponsive
-* Shuts down because it exceeded the memory limit, enforced by operating system
-* Exceeds memory usage limit
-  * This limit can vary depending on the type of devices your app targets.
-* Suspect a memory leak
+* Trava quando fica sem memória
+* Torna-se lenta
+* Faz com que o dispositivo fique lento ou não responsivo
+* É encerrada porque excedeu o limite de memória, imposto pelo sistema operacional
+* Excede o limite de uso de memória
+  * Este limite pode variar dependendo do tipo de dispositivos que seu app visa.
+* Suspeita de vazamento de memória
 
-## Basic memory concepts
+## Conceitos básicos de memória
 
-Dart objects created using a class constructor
-(for example, by using `MyClass()`) live in a
-portion of memory called the _heap_. The memory
-in the heap is managed by the Dart VM (virtual machine).
-The Dart VM allocates memory for the object at the moment of the object creation,
-and releases (or deallocates) the memory when the object
-is no longer used (see [Dart garbage collection][]).
+Objetos Dart criados usando um construtor de classe
+(por exemplo, usando `MyClass()`) vivem em uma
+porção de memória chamada _heap_. A memória
+no heap é gerenciada pela Dart VM (máquina virtual).
+A Dart VM aloca memória para o objeto no momento da criação do objeto,
+e libera (ou desaloca) a memória quando o objeto
+não é mais usado (veja [Dart garbage collection]).
 
 [Dart garbage collection]: {{site.medium}}/flutter/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30
 
-### Object types
+### Tipos de objetos
 
-#### Disposable object
+#### Objeto descartável
 
-A disposable object is any Dart object that defines a `dispose()` method.
-To avoid memory leaks, invoke `dispose` when the object isn't needed anymore.
+Um objeto descartável é qualquer objeto Dart que define um método `dispose()`.
+Para evitar vazamentos de memória, invoque `dispose` quando o objeto não for mais necessário.
 
-#### Memory-risky object
+#### Objeto com risco de memória
 
-A memory-risky object is an object that _might_ cause a memory leak,
-if it is not disposed properly or disposed but not GCed.
+Um objeto com risco de memória é um objeto que _pode_ causar um vazamento de memória,
+se não for descartado corretamente ou descartado mas não coletado pelo GC.
 
-### Root object, retaining path, and reachability
+### Objeto raiz, caminho de retenção e alcançabilidade
 
-#### Root object
+#### Objeto raiz
 
-Every Dart application creates a _root object_ that references,
-directly or indirectly, all other objects the application allocates.
+Toda aplicação Dart cria um _objeto raiz_ que referencia,
+direta ou indiretamente, todos os outros objetos que a aplicação aloca.
 
-#### Reachability
+#### Alcançabilidade
 
-If, at some moment of the application run,
-the root object stops referencing an allocated object,
-the object becomes _unreachable_,
-which is a signal for the garbage collector (GC)
-to deallocate the object's memory.
+Se, em algum momento da execução da aplicação,
+o objeto raiz parar de referenciar um objeto alocado,
+o objeto torna-se _inalcançável_,
+o que é um sinal para o coletor de lixo (GC)
+desalocar a memória do objeto.
 
-#### Retaining path
+#### Caminho de retenção
 
-The sequence of references from root to an object
-is called the object's _retaining_ path,
-as it retains the object's memory from the garbage collection.
-One object can have many retaining paths.
-Objects with at least one retaining path are
-called _reachable_ objects.
+A sequência de referências da raiz para um objeto
+é chamada de _caminho de retenção_ do objeto,
+pois retém a memória do objeto da coleta de lixo.
+Um objeto pode ter muitos caminhos de retenção.
+Objetos com pelo menos um caminho de retenção são
+chamados de objetos _alcançáveis_.
 
-#### Example
+#### Exemplo
 
-The following example illustrates the concepts:
+O exemplo a seguir ilustra os conceitos:
 
 ```dart
 class Child{}
@@ -120,18 +121,18 @@ void myFunction() {
 }
 ```
 
-### Shallow size vs retained size
+### Tamanho superficial vs tamanho retido
 
-**Shallow size** includes only the size of the object
-and its references, while **retained size** also includes
-the size of the retained objects.
+**Tamanho superficial** inclui apenas o tamanho do objeto
+e suas referências, enquanto **tamanho retido** também inclui
+o tamanho dos objetos retidos.
 
-The **retained size** of the root object includes
-all reachable Dart objects.
+O **tamanho retido** do objeto raiz inclui
+todos os objetos Dart alcançáveis.
 
-In the following example, the size of `myHugeInstance`
-isn't part of the parent's or child's shallow sizes,
-but is part of their retained sizes:
+No exemplo a seguir, o tamanho de `myHugeInstance`
+não faz parte dos tamanhos superficiais do pai ou do filho,
+mas faz parte de seus tamanhos retidos:
 
 ```dart
 class Child{
@@ -147,62 +148,62 @@ class Parent {
 Parent parent = Parent()..child = Child();
 ```
 
-In DevTools calculations, if an object has more
-than one retaining path, its size is assigned as
-retained only to the members of the shortest retaining path.
+Nos cálculos do DevTools, se um objeto tem mais
+de um caminho de retenção, seu tamanho é atribuído como
+retido apenas aos membros do caminho de retenção mais curto.
 
-In this example the object `x` has two retaining paths:
+Neste exemplo, o objeto `x` tem dois caminhos de retenção:
 
 ```console
 root -> a -> b -> c -> x
 root -> d -> e -> x (shortest retaining path to `x`)
 ```
 
-Only members of the shortest path (`d` and `e`) will include
-`x` into their retaining size.
+Apenas membros do caminho mais curto (`d` e `e`) incluirão
+`x` em seu tamanho retido.
 
-### Memory leaks happen in Dart?
+### Vazamentos de memória acontecem no Dart?
 
-Garbage collector cannot prevent all types of memory leaks, and developers
-still need to watch objects to have leak-free lifecycle.
+O coletor de lixo não pode prevenir todos os tipos de vazamentos de memória, e desenvolvedores
+ainda precisam observar objetos para ter um ciclo de vida livre de vazamentos.
 
-#### Why can't the garbage collector prevent all leaks?
+#### Por que o coletor de lixo não pode prevenir todos os vazamentos?
 
-While the garbage collector takes care of all
-unreachable objects, it's the responsibility
-of the application to ensure that unneeded objects
-are no longer reachable (referenced from the root).
+Embora o coletor de lixo cuide de todos os
+objetos inalcançáveis, é responsabilidade
+da aplicação garantir que objetos desnecessários
+não sejam mais alcançáveis (referenciados da raiz).
 
-So, if non-needed objects are left referenced
-(in a global or static variable,
-or as a field of a long-living object),
-the garbage collector can't recognize them,
-the memory allocation grows progressively,
-and the app eventually crashes with an `out-of-memory` error.
+Então, se objetos não necessários são deixados referenciados
+(em uma variável global ou estática,
+ou como um campo de um objeto de longa vida),
+o coletor de lixo não pode reconhecê-los,
+a alocação de memória cresce progressivamente,
+e o app eventualmente trava com um erro `out-of-memory`.
 
-#### Why closures require extra attention
+#### Por que closures requerem atenção extra
 
-One hard-to-catch leak pattern relates to using closures.
-In the following code, a reference to the
-designed-to-be short-living `myHugeObject` is implicitly
-stored in the closure context and passed to `setHandler`.
-As a result, `myHugeObject` won't be garbage collected
-as long as `handler` is reachable.
+Um padrão de vazamento difícil de detectar está relacionado ao uso de closures.
+No código a seguir, uma referência ao
+`myHugeObject` projetado para ser de curta duração é implicitamente
+armazenada no contexto do closure e passada para `setHandler`.
+Como resultado, `myHugeObject` não será coletado pelo garbage collector
+enquanto `handler` for alcançável.
 
 ```dart
   final handler = () => print(myHugeObject.name);
   setHandler(handler);
 ```
-#### Why `BuildContext` requires extra attention
+#### Por que `BuildContext` requer atenção extra
 
-An example of a large, short-living object that
-might squeeze into a long-living area and thus cause leaks,
-is the `context` parameter passed to Flutter's
-`build` method.
+Um exemplo de um objeto grande e de curta duração que
+pode se infiltrar em uma área de longa duração e assim causar vazamentos,
+é o parâmetro `context` passado para o método
+`build` do Flutter.
 
-The following code is leak prone,
-as `useHandler` might store the handler
-in a long-living area:
+O código a seguir é propenso a vazamentos,
+pois `useHandler` pode armazenar o handler
+em uma área de longa duração:
 
 ```dart
 // BAD: DO NOT DO THIS
@@ -214,14 +215,14 @@ Widget build(BuildContext context) {
 …
 ```
 
-#### How to fix leak prone code?
+#### Como corrigir código propenso a vazamentos?
 
-The following code is not leak prone,
-because:
+O código a seguir não é propenso a vazamentos,
+porque:
 
-1. The closure doesn't use the large and short-living `context` object.
-2. The `theme` object (used instead) is long-living. It is created once and
-shared between `BuildContext` instances.
+1. O closure não usa o objeto `context` grande e de curta duração.
+2. O objeto `theme` (usado no lugar) é de longa duração. Ele é criado uma vez e
+compartilhado entre instâncias de `BuildContext`.
 
 
 ```dart
@@ -234,146 +235,146 @@ Widget build(BuildContext context) {
 …
 ```
 
-#### General rule for `BuildContext`
+#### Regra geral para `BuildContext`
 
-In general, use the following rule for a
-`BuildContext`: if the closure doesn't outlive
-the widget, it's ok to pass the context to the closure.
+Em geral, use a seguinte regra para um
+`BuildContext`: se o closure não sobrevive
+ao widget, não há problema em passar o contexto para o closure.
 
-Stateful widgets require extra attention.
-They consist of two classes: the [widget and the
-widget state][interactive],
-where the widget is short living,
-and the state is long living. The build context,
-owned by the widget, should never be referenced
-from the state's fields, as the state won't be garbage
-collected together with the widget, and can significantly outlive it.
+Widgets stateful requerem atenção extra.
+Eles consistem de duas classes: o [widget e o
+estado do widget][interactive],
+onde o widget é de curta duração,
+e o estado é de longa duração. O contexto de build,
+pertencente ao widget, nunca deve ser referenciado
+dos campos do estado, pois o estado não será coletado pelo garbage collector
+junto com o widget, e pode sobreviver a ele significativamente.
 
 [interactive]: /ui/interactivity#creating-a-stateful-widget
 
-### Memory leak vs memory bloat
+### Vazamento de memória vs inchaço de memória
 
-In a memory leak, an application progressively uses memory,
-for example, by repeatedly creating a listener,
-but not disposing it.
+Em um vazamento de memória, uma aplicação usa memória progressivamente,
+por exemplo, criando repetidamente um listener,
+mas não descartando-o.
 
-Memory bloat uses more memory than is necessary for
-optimal performance, for example, by using overly large
-images or keeping streams open through their lifetime.
+Inchaço de memória usa mais memória do que o necessário para
+desempenho ideal, por exemplo, usando imagens excessivamente grandes
+ou mantendo streams abertos durante todo o seu tempo de vida.
 
-Both leaks and bloats, when large,
-cause an application to crash with an `out-of-memory` error.
-However, leaks are more likely to cause memory issues,
-because even a small leak,
-if repeated many times, leads to a crash.
+Tanto vazamentos quanto inchaços, quando grandes,
+fazem com que uma aplicação trave com um erro `out-of-memory`.
+No entanto, vazamentos são mais propensos a causar problemas de memória,
+porque mesmo um pequeno vazamento,
+se repetido muitas vezes, leva a uma travamento.
 
-## Memory view guide
+## Guia da visualização Memory {:#memory-view-guide}
 
-The DevTools memory view helps you investigate
-memory allocations (both in the heap and external),
-memory leaks, memory bloat, and more. The view
-has the following features:
+A visualização memory do DevTools ajuda você a investigar
+alocações de memória (tanto no heap quanto externas),
+vazamentos de memória, inchaço de memória e muito mais. A visualização
+tem os seguintes recursos:
 
-[**Expandable chart**](#expandable-chart)
-: Get a high-level trace of memory allocation,
-  and view both standard events (like garbage collection)
-  and custom events (like image allocation).
+[**Gráfico expansível**](#expandable-chart)
+: Obtenha um rastreamento de alto nível da alocação de memória,
+  e visualize tanto eventos padrão (como coleta de lixo)
+  quanto eventos personalizados (como alocação de imagem).
 
-[**Profile Memory** tab](#profile-memory-tab)
-: See current memory allocation listed by class and
-  memory type.
+[**Aba Profile Memory**](#profile-memory-tab)
+: Veja a alocação de memória atual listada por classe e
+  tipo de memória.
 
-[**Diff Snapshots** tab](#diff-snapshots-tab)
-: Detect and investigate a feature's memory management issues.
+[**Aba Diff Snapshots**](#diff-snapshots-tab)
+: Detecte e investigue problemas de gerenciamento de memória de um recurso.
 
-[**Trace Instances** tab](#trace-instances-tab)
-: Investigate a feature's memory management for
-  a specified set of classes.
+[**Aba Trace Instances**](#trace-instances-tab)
+: Investigue o gerenciamento de memória de um recurso para
+  um conjunto especificado de classes.
 
-### Expandable chart
+### Gráfico expansível {:#expandable-chart}
 
-The expandable chart provides the following features:
+O gráfico expansível fornece os seguintes recursos:
 
-#### Memory anatomy
+#### Anatomia da memória
 
-A timeseries graph visualizes the state of
-Flutter memory at successive intervals of time.
-Each data point on the chart corresponds to the
-timestamp (x-axis) of measured quantities (y-axis)
-of the heap. For example, usage, capacity, external,
-garbage collection, and resident set size are captured.
-
-![Screenshot of a memory anatomy page](/assets/images/docs/tools/devtools/memory_chart_anatomy.png){:width="100%"}
-
-#### Memory overview chart
-
-The memory overview chart is a timeseries graph
-of collected memory statistics. It visually presents
-the state of the Dart or Flutter heap and Dart's
-or Flutter's native memory over time.
-
-The chart's x-axis is a timeline of events (timeseries).
-The data plotted in the y-axis all has a timestamp of
-when the data was collected. In other words,
-it shows the polled state (capacity, used, external,
-RSS (resident set size), and GC (garbage collection))
-of the memory every 500 ms. This helps provide a live
-appearance on the state of the memory as the application is running.
-
-Clicking the **Legend** button displays the
-collected measurements, symbols, and colors
-used to display the data.
+Um gráfico de séries temporais visualiza o estado da
+memória Flutter em intervalos sucessivos de tempo.
+Cada ponto de dados no gráfico corresponde ao
+timestamp (eixo x) de quantidades medidas (eixo y)
+do heap. Por exemplo, uso, capacidade, externo,
+coleta de lixo e tamanho do conjunto residente são capturados.
 
 ![Screenshot of a memory anatomy page](/assets/images/docs/tools/devtools/memory_chart_anatomy.png){:width="100%"}
 
-The **Memory Size Scale** y-axis automatically
-adjusts to the range of data collected in the
-current visible chart range.
+#### Gráfico de visão geral da memória
 
-The quantities plotted on the y-axis are as follows:
+O gráfico de visão geral da memória é um gráfico de séries temporais
+de estatísticas de memória coletadas. Ele apresenta visualmente
+o estado do heap do Dart ou Flutter e da memória nativa
+do Dart ou Flutter ao longo do tempo.
+
+O eixo x do gráfico é uma linha do tempo de eventos (séries temporais).
+Os dados plotados no eixo y todos têm um timestamp de
+quando os dados foram coletados. Em outras palavras,
+ele mostra o estado pesquisado (capacidade, usado, externo,
+RSS (tamanho do conjunto residente) e GC (coleta de lixo))
+da memória a cada 500 ms. Isso ajuda a fornecer uma aparência
+ao vivo do estado da memória enquanto a aplicação está em execução.
+
+Clicar no botão **Legend** exibe as
+medições coletadas, símbolos e cores
+usados para exibir os dados.
+
+![Screenshot of a memory anatomy page](/assets/images/docs/tools/devtools/memory_chart_anatomy.png){:width="100%"}
+
+A **Escala de Tamanho de Memória** do eixo y automaticamente
+se ajusta ao intervalo de dados coletados no
+intervalo do gráfico visível atual.
+
+As quantidades plotadas no eixo y são as seguintes:
 
 **Dart/Flutter Heap**
-: Objects (Dart and Flutter objects) in the heap.
+: Objetos (objetos Dart e Flutter) no heap.
 
 **Dart/Flutter Native**
-: Memory that isn't in the Dart/Flutter heap
-  but is still part of the total memory footprint.
-  Objects in this memory would be native objects
-  (for example, from reading a file into memory,
-  or a decoded image). The native objects are exposed
-  to the Dart VM from the native OS (such as Android,
-  Linux, Windows, iOS) using a Dart embedder.
-  The embedder creates a Dart wrapper with a finalizer,
-  allowing Dart code to communicate with these native resources.
-  Flutter has an embedder for Android and iOS.
-  For more information, see [Command-line and server apps][],
+: Memória que não está no heap Dart/Flutter
+  mas ainda faz parte do total de memória.
+  Objetos nesta memória seriam objetos nativos
+  (por exemplo, de ler um arquivo para a memória,
+  ou uma imagem decodificada). Os objetos nativos são expostos
+  à Dart VM a partir do sistema operacional nativo (como Android,
+  Linux, Windows, iOS) usando um embedder Dart.
+  O embedder cria um wrapper Dart com um finalizador,
+  permitindo que código Dart se comunique com esses recursos nativos.
+  Flutter tem um embedder para Android e iOS.
+  Para mais informações, veja [Command-line and server apps],
   [Dart on the server with Dart Frog][frog],
-  [Custom Flutter Engine Embedders][],
+  [Custom Flutter Engine Embedders],
   [Dart web server deployment with Heroku][heroku].
 
 **Timeline**
-: The timestamps of all collected memory statistics
-  and events at a particular point in time (timestamp).
+: Os timestamps de todas as estatísticas de memória coletadas
+  e eventos em um determinado momento (timestamp).
 
 **Raster Cache**
-: The size of the Flutter engine's raster cache
-  layer(s) or picture(s), while performing the
-  final rendering after compositing.
-  For more information, see the
-  [Flutter architectural overview][]
-  and [DevTools Performance view][].
+: O tamanho das camadas ou imagens do cache raster
+  do motor Flutter, ao realizar a
+  renderização final após composição.
+  Para mais informações, veja a
+  [visão geral da arquitetura Flutter][Flutter architectural overview]
+  e [visualização Performance do DevTools][DevTools Performance view].
 
 **Allocated**
-: The current total capacity of all Dart heaps. This is typically
-  slightly larger than the total size of all heap objects.
+: A capacidade total atual de todos os heaps Dart. Isso é tipicamente
+  um pouco maior que o tamanho total de todos os objetos do heap.
 
 **RSS - Resident Set Size**
-: The resident set size displays the amount of memory
-  for a process.
-  It doesn't include memory that is swapped out.
-  It includes memory from shared libraries that are
-  loaded, as well as all stack and heap memory.
-  For more information, see [Dart VM internals][].
+: O tamanho do conjunto residente exibe a quantidade de memória
+  para um processo.
+  Não inclui memória que está em swap.
+  Inclui memória de bibliotecas compartilhadas que estão
+  carregadas, assim como toda memória de pilha e heap.
+  Para mais informações, veja [Dart VM internals].
 
 [Command-line and server apps]: {{site.dart-site}}/server
 [Custom Flutter engine embedders]: {{site.repo.flutter}}/blob/main/engine/src/flutter/docs/Custom-Flutter-Engine-Embedders.md
@@ -385,73 +386,74 @@ The quantities plotted on the y-axis are as follows:
 
 <a id="profile-tab" aria-hidden="true"></a>
 
-### Profile Memory tab
+### Aba Profile Memory {:#profile-memory-tab}
 
-Use the **Profile Memory** tab to see current memory
-allocation by class and memory type. For a
-deeper analysis in Google Sheets or other tools,
-download the data in CSV format.
-Toggle **Refresh on GC**, to see allocation in real time.
+Use a aba **Profile Memory** para ver a alocação de memória atual
+por classe e tipo de memória. Para uma
+análise mais profunda no Google Sheets ou outras ferramentas,
+baixe os dados no formato CSV.
+Alterne **Refresh on GC**, para ver a alocação em tempo real.
 
 ![Screenshot of the profile tab page](/assets/images/docs/tools/devtools/profile-tab.png){:width="100%"}
 
-### Diff Snapshots tab
+### Aba Diff Snapshots {:#diff-snapshots-tab}
 
-Use the **Diff Snapshots** tab to investigate a feature's
-memory management. Follow the guidance on the tab
-to take snapshots before and after interaction
-with the application, and diff the snapshots:
+Use a aba **Diff Snapshots** para investigar o gerenciamento
+de memória de um recurso. Siga a orientação na aba
+para tirar snapshots antes e depois da interação
+com a aplicação, e comparar os snapshots:
 
 ![Screenshot of the diff tab page](/assets/images/docs/tools/devtools/diff-tab.png){:width="100%"}
 
-Tap the **Filter classes and packages** button,
-to narrow the data:
+Toque no botão **Filter classes and packages**,
+para restringir os dados:
 
 ![Screenshot of the filter options ui](/assets/images/docs/tools/devtools/filter-ui.png)
 
-For a deeper analysis in Google Sheets
-or other tools, download the data in CSV format.
+Para uma análise mais profunda no Google Sheets
+ou outras ferramentas, baixe os dados no formato CSV.
 
 <a id="trace-tab" aria-hidden="true"></a>
 
-### Trace Instances tab
+### Aba Trace Instances {:#trace-instances-tab}
 
-Use the **Trace Instances** tab to investigate what methods
-allocate memory for a set of classes during feature execution:
+Use a aba **Trace Instances** para investigar quais métodos
+alocam memória para um conjunto de classes durante a execução do recurso:
 
-1. Select classes to trace
-1. Interact with your app to trigger the code
-   you are interested in
-1. Tap **Refresh**
-1. Select a traced class
-1. Review the collected data
+1. Selecione classes para rastrear
+1. Interaja com seu app para acionar o código
+   no qual você está interessado
+1. Toque em **Refresh**
+1. Selecione uma classe rastreada
+1. Revise os dados coletados
 
 ![Screenshot of a trace tab](/assets/images/docs/tools/devtools/trace-instances-tab.png){:width="100%"}
 
-#### Bottom up vs call tree view
+#### Visualização bottom up vs call tree
 
-Switch between bottom-up and call tree views
-depending on specifics of your tasks.
+Alterne entre visualizações bottom-up e call tree
+dependendo das especificidades de suas tarefas.
 
 ![Screenshot of a trace allocations](/assets/images/docs/tools/devtools/trace-view.png)
 
-The call tree view shows the method allocations
-for each instance. The view is a top-down representation
-of the call stack, meaning that a method can be expanded
-to show its callees.
+A visualização call tree mostra as alocações de método
+para cada instância. A visualização é uma representação top-down
+da pilha de chamadas, o que significa que um método pode ser expandido
+para mostrar suas chamadas.
 
-The bottom-up view shows the list of different
-call stacks that have allocated the instances.
+A visualização bottom-up mostra a lista de diferentes
+pilhas de chamadas que alocaram as instâncias.
 
-## Other resources
+## Outros recursos
 
-For more information, check out the following resources:
+Para mais informações, confira os seguintes recursos:
 
-* To learn how to monitor an app's memory usage
-  and detect memory leaks using DevTools,
-  check out a guided [Memory View tutorial][memory-tutorial].
-* To understand Android memory structure,
-  check out [Android: Memory allocation among processes][].
+* Para aprender como monitorar o uso de memória de um app
+  e detectar vazamentos de memória usando DevTools,
+  confira um tutorial guiado da [visualização Memory][memory-tutorial].
+* Para entender a estrutura de memória do Android,
+  confira [Android: Memory allocation among processes].
 
+[DevTools overview]: /tools/devtools
 [memory-tutorial]: {{site.medium}}/@fluttergems/mastering-dart-flutter-devtools-memory-view-part-7-of-8-e7f5aaf07e15
 [Android: Memory allocation among processes]: {{site.android-dev}}/topic/performance/memory-management

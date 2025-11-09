@@ -1,21 +1,22 @@
 ---
-title: Rebuild UI when state changes
-description: Instructions on how to manage state with ChangeNotifiers.
+ia-translate: true
+title: Reconstrua a UI quando o estado muda
+description: Instruções sobre como gerenciar estado com ChangeNotifiers.
 permalink: /tutorial/listenables/
 sitemap: false
 ---
 
-The view layer is your UI, and in Flutter, that refers to your app's
-widgets. As it pertains to this tutorial, the important part is wiring
-up your UI to respond to data changes from the ViewModel.
-[`ListenableBuilder`][] is a widget that can "listen" to a
-`ChangeNotifier`, and automatically rebuilds when it's provided
-`ChangeNotifier` calls `notifyListeners()`.
+A camada de visualização é sua UI, e no Flutter, isso se refere aos
+widgets do seu app. No que diz respeito a este tutorial, a parte importante é conectar
+sua UI para responder a mudanças de dados do ViewModel.
+[`ListenableBuilder`][ListenableBuilder] é um widget que pode "ouvir" um
+`ChangeNotifier`, e reconstrói automaticamente quando o
+`ChangeNotifier` fornecido chama `notifyListeners()`.
 
-## Create the ArticleView widget
+## Crie o widget ArticleView
 
-Create the `ArticleView` widget that manages the overall page layout
-and state handling. Start with the basic class structure and widgets:
+Crie o widget `ArticleView` que gerencia o layout geral da página
+e o tratamento de estado. Comece com a estrutura básica da classe e widgets:
 
 ```dart
 class ArticleView extends StatelessWidget {
@@ -35,9 +36,9 @@ class ArticleView extends StatelessWidget {
 }
 ```
 
-## Create the ViewModel
+## Crie o ViewModel
 
-Create the ViewModel in this widget.
+Crie o ViewModel neste widget.
 
 ```dart
 class ArticleView extends StatelessWidget {
@@ -59,11 +60,11 @@ class ArticleView extends StatelessWidget {
 }
 ```
 
-## Add ListenableBuilder
+## Adicione ListenableBuilder
 
-Wrap your UI in a `ListenableBuilder` to listen for state changes, and
-pass it a `ChangeNotifier` object. In this case, the
-`ArticleViewModel` extends `ChangeNotifier`.
+Envolva sua UI em um `ListenableBuilder` para ouvir mudanças de estado, e
+passe a ele um objeto `ChangeNotifier`. Neste caso, o
+`ArticleViewModel` estende `ChangeNotifier`.
 
 ```dart
 class ArticleView extends StatelessWidget {
@@ -88,23 +89,23 @@ class ArticleView extends StatelessWidget {
 }
 ```
 
-`ListenableBuilder` uses the *builder* pattern, which requires a
-callback rather than a `child` widget to build the widget tree below
-it. These widgets are flexible because you can perform operations
-within the callback.
+`ListenableBuilder` usa o padrão *builder*, que requer um
+callback em vez de um widget `child` para construir a árvore de widgets abaixo
+dele. Esses widgets são flexíveis porque você pode executar operações
+dentro do callback.
 
 
-## Handle all states with switch expression
+## Lide com todos os estados com expressão switch
 
-Recall the `ArticleViewModel`, which has three properties that the UI
-is interested in:
+Lembre-se do `ArticleViewModel`, que tem três propriedades nas quais a UI
+está interessada:
 * `Summary? summary`
 * `bool loading`
 * `String? errorMessage`
 
-The UI needs to display different widgets based on the combination of
-states of all three of those properties. Use Dart's switch expressions
-to handle all possible combinations in a clean, readable way:
+A UI precisa exibir widgets diferentes com base na combinação de
+estados de todas essas três propriedades. Use expressões switch do Dart
+para lidar com todas as combinações possíveis de maneira limpa e legível:
 
 ```dart
 class ArticleView extends StatelessWidget {
@@ -145,23 +146,23 @@ class ArticleView extends StatelessWidget {
 }
 ```
 
-This is an excellent example of how a declarative, reactive framework
-like Flutter and a pattern like MVVM work together: The UI is rendered
-based on the state, and updates when a state changes demands it, but
-it doesn't manage any state or the process of updating itself. The
-business logic and rendering are completely separate from each other.
+Este é um excelente exemplo de como um framework declarativo e reativo
+como Flutter e um padrão como MVVM trabalham juntos: A UI é renderizada
+com base no estado, e atualiza quando uma mudança de estado o exige, mas
+ela não gerencia nenhum estado ou o processo de atualizar a si mesma. A
+lógica de negócio e a renderização são completamente separadas uma da outra.
 
 
-## Complete the UI
+## Complete a UI
 
-The only thing remaining is to use the properties and methods provided
-by the ViewModel.
+A única coisa restante é usar as propriedades e métodos fornecidos
+pelo ViewModel.
 
-Now create the `ArticlePage` widget that displays the actual article
-content. This reusable widget takes summary
-data and a callback function.
+Agora crie o widget `ArticlePage` que exibe o conteúdo real do artigo.
+Este widget reutilizável recebe dados de resumo
+e uma função callback.
 
-Create a simple widget that accepts the required parameters:
+Crie um widget simples que aceita os parâmetros necessários:
 
 ```dart
 class ArticlePage extends StatelessWidget {
@@ -181,9 +182,9 @@ class ArticlePage extends StatelessWidget {
 }
 ```
 
-## Add scrollable layout
+## Adicione layout rolável
 
-Replace the placeholder with a scrollable column layout:
+Substitua o placeholder por um layout de coluna rolável:
 
 ```dart
 class ArticlePage extends StatelessWidget {
@@ -209,9 +210,9 @@ class ArticlePage extends StatelessWidget {
 }
 ```
 
-## Add article content and button
+## Adicione conteúdo do artigo e botão
 
-Complete the layout with the article widget and navigation button:
+Complete o layout com o widget do artigo e botão de navegação:
 
 ```dart
 class ArticlePage extends StatelessWidget {
@@ -245,14 +246,14 @@ class ArticlePage extends StatelessWidget {
 }
 ```
 
-## Create the ArticleWidget
+## Crie o ArticleWidget
 
-The `ArticleWidget` handles the display of the actual article content
-with proper styling and conditional rendering.
+O `ArticleWidget` lida com a exibição do conteúdo real do artigo
+com estilização apropriada e renderização condicional.
 
-## Create the basic ArticleWidget structure
+## Crie a estrutura básica do ArticleWidget
 
-Start with the widget that accepts a summary parameter:
+Comece com o widget que aceita um parâmetro summary:
 
 ```dart
 class ArticleWidget extends StatelessWidget {
@@ -267,9 +268,9 @@ class ArticleWidget extends StatelessWidget {
 }
 ```
 
-## Add padding and column layout
+## Adicione padding e layout de coluna
 
-Wrap the content in proper padding and layout:
+Envolva o conteúdo em padding e layout apropriados:
 
 ```dart
 class ArticleWidget extends StatelessWidget {
@@ -292,9 +293,9 @@ class ArticleWidget extends StatelessWidget {
 }
 ```
 
-## Add conditional image display
+## Adicione exibição condicional de imagem
 
-Add the article image that only shows when available:
+Adicione a imagem do artigo que só é exibida quando disponível:
 
 ```dart
 class ArticleWidget extends StatelessWidget {
@@ -321,10 +322,10 @@ class ArticleWidget extends StatelessWidget {
 }
 ```
 
-## Complete with styled text content
+## Complete com conteúdo de texto estilizado
 
-Replace the placeholder with properly styled title, description, and
-extract:
+Substitua o placeholder por título, descrição e
+extrato devidamente estilizados:
 
 ```dart
 class ArticleWidget extends StatelessWidget {
@@ -364,23 +365,23 @@ class ArticleWidget extends StatelessWidget {
 }
 ```
 
-This widget demonstrates these important UI concepts:
+Este widget demonstra esses conceitos importantes de UI:
 
-- **Conditional rendering**: The `if` statements show content only
-  when available.
-- **Text styling**: Different text styles create visual hierarchy
-  using Flutter's theme system.
-- **Proper spacing**: The `spacing` parameter provides consistent
-  vertical spacing.
-- **Overflow handling**: `TextOverflow.ellipsis` prevents text from
-  breaking the layout.
+- **Renderização condicional**: As instruções `if` mostram conteúdo apenas
+  quando disponível.
+- **Estilização de texto**: Diferentes estilos de texto criam hierarquia visual
+  usando o sistema de tema do Flutter.
+- **Espaçamento apropriado**: O parâmetro `spacing` fornece
+  espaçamento vertical consistente.
+- **Tratamento de overflow**: `TextOverflow.ellipsis` evita que o texto
+  quebre o layout.
 
-## Update MainApp to use ArticleView
+## Atualize MainApp para usar ArticleView
 
-Connect everything together by updating your `MainApp` to use the
-complete `ArticleView`.
+Conecte tudo junto atualizando seu `MainApp` para usar o
+`ArticleView` completo.
 
-Replace your existing `MainApp` with this updated version:
+Substitua seu `MainApp` existente por esta versão atualizada:
 
 ```dart
 class MainApp extends StatelessWidget {
@@ -395,23 +396,23 @@ class MainApp extends StatelessWidget {
 }
 ```
 
-This change switches from the console-based test to the full UI
-experience with proper state management.
+Esta mudança alterna do teste baseado em console para a experiência completa da UI
+com gerenciamento de estado apropriado.
 
-## Run the complete app
+## Execute o app completo
 
-Hot reload your app one final time. You should now see:
+Faça hot reload do seu app uma última vez. Você deve ver agora:
 
-1. A loading spinner while the initial article loads
-2. The article content with title, description, and full text
-3. An image (if the article has one)
-4. A button to load another random article
+1. Um spinner de carregamento enquanto o artigo inicial carrega
+2. O conteúdo do artigo com título, descrição e texto completo
+3. Uma imagem (se o artigo tiver uma)
+4. Um botão para carregar outro artigo aleatório
 
-Click the "Next random article" button to see the reactive UI in
-action. The app shows a loading state, fetches new data, and updates
-the display automatically.
+Clique no botão "Next random article" para ver a UI reativa em
+ação. O app mostra um estado de carregamento, busca novos dados, e atualiza
+a exibição automaticamente.
 
-[`ListenableBuilder`]: https://api.flutter.dev/flutter/widgets/ListenableBuilder-class.html
+[ListenableBuilder]: https://api.flutter.dev/flutter/widgets/ListenableBuilder-class.html
 [widget]: https://docs.flutter.dev/ui/widgets-intro
 [`ListView`]: https://api.flutter.dev/flutter/widgets/ListView-class.html
 [try-catch block]: https://dart.dev/language/error-handling

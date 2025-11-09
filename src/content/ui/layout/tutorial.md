@@ -1,95 +1,96 @@
 ---
-title: Build a Flutter layout
-shortTitle: Layout tutorial
-description: Learn how to build a layout in Flutter.
+ia-translate: true
+title: Construa um layout Flutter
+shortTitle: Tutorial de layout
+description: Aprenda como construir um layout no Flutter.
 ---
 
 {% assign examples = site.repo.this | append: "/tree/" | append: site.branch | append: "/examples" -%}
 
-:::secondary What you'll learn
-* How to lay out widgets next to each other.
-* How to add space between widgets.
-* How adding and nesting widgets results in a Flutter layout.
+:::secondary O que você vai aprender
+* Como organizar widgets lado a lado.
+* Como adicionar espaço entre widgets.
+* Como adicionar e aninhar widgets resulta em um layout Flutter.
 :::
 
-This tutorial explains how to design and build layouts in Flutter.
+Este tutorial explica como projetar e construir layouts no Flutter.
 
-If you use the example code provided, you can build the following app.
+Se você usar o código de exemplo fornecido, você pode construir o seguinte app.
 
-<DashImage figure img-class="site-mobile-screenshot border" image="ui/layout/layout-demo-app.png" caption="The finished app." width="50%" />
+<DashImage figure img-class="site-mobile-screenshot border" image="ui/layout/layout-demo-app.png" caption="O app finalizado." width="50%" />
 
 <figcaption class="figure-caption">
 
-Photo by [Dino Reichmuth][ch-photo] on [Unsplash][].
-Text by [Switzerland Tourism][].
+Foto por [Dino Reichmuth][ch-photo] no [Unsplash][Unsplash].
+Texto por [Switzerland Tourism][Switzerland Tourism].
 
 </figcaption>
 
-To get a better overview of the layout mechanism, start with
-[Flutter's approach to layout][].
+Para obter uma melhor visão geral do mecanismo de layout, comece com
+[a abordagem do Flutter para layout][Flutter's approach to layout].
 
 [Switzerland Tourism]: https://www.myswitzerland.com/en-us/destinations/lake-oeschinen
 [Flutter's approach to layout]: /ui/layout
 
-## Diagram the layout
+## Diagramar o layout
 
-In this section, consider what type of user experience you want for
-your app users.
+Nesta seção, considere que tipo de experiência de usuário você deseja para
+os usuários do seu app.
 
-Consider how to position the components of your user interface.
-A layout consists of the total end result of these positionings.
-Consider planning your layout to speed up your coding.
-Using visual cues to know where something goes on screen can be a great help.
+Considere como posicionar os componentes da sua interface de usuário.
+Um layout consiste no resultado final total desses posicionamentos.
+Considere planejar seu layout para acelerar sua codificação.
+Usar dicas visuais para saber onde algo vai na tela pode ser uma grande ajuda.
 
-Use whichever method you prefer, like an interface design tool or a pencil
-and a sheet of paper. Figure out where you want to place elements on your
-screen before writing code. It's the programming version of the adage:
-"Measure twice, cut once."
+Use o método que você preferir, como uma ferramenta de design de interface ou um lápis
+e uma folha de papel. Descubra onde você quer colocar elementos na sua
+tela antes de escrever código. É a versão de programação do ditado:
+"Meça duas vezes, corte uma vez."
 
 <ol>
 <li>
 
-Ask these questions to break the layout down to its basic elements.
+Faça estas perguntas para dividir o layout em seus elementos básicos.
 
-* Can you identify the rows and columns?
-* Does the layout include a grid?
-* Are there overlapping elements?
-* Does the UI need tabs?
-* What do you need to align, pad, or border?
+* Você consegue identificar as rows e columns?
+* O layout inclui uma grid?
+* Existem elementos sobrepostos?
+* A UI precisa de tabs?
+* O que você precisa alinhar, adicionar padding ou borda?
 
 </li>
 
 <li>
 
-Identify the larger elements. In this example, you arrange the image, title,
-buttons, and description into a column.
+Identifique os elementos maiores. Neste exemplo, você organiza a imagem, título,
+botões e descrição em uma column.
 
-<DashImage figure img-class="site-mobile-screenshot border" image="ui/layout/layout-sketch-intro.svg" caption="Major elements in the layout: image, row, row, and text block" width="50%" />
+<DashImage figure img-class="site-mobile-screenshot border" image="ui/layout/layout-sketch-intro.svg" caption="Elementos principais no layout: imagem, row, row, e bloco de texto" width="50%" />
 
 </li>
 <li>
 
-Diagram each row.
+Diagramar cada row.
 
 <ol type="a">
 
 <li>
 
-Row 1, the **Title** section, has three children:
-a column of text, a star icon, and a number.
-Its first child, the column, contains two lines of text.
-That first column might need more space.
+Row 1, a seção **Title**, tem três filhos:
+uma column de texto, um ícone de estrela e um número.
+Seu primeiro filho, a column, contém duas linhas de texto.
+Essa primeira column pode precisar de mais espaço.
 
-<DashImage figure image="ui/layout/layout-sketch-title-block.svg" caption="Title section with text blocks and an icon" />
+<DashImage figure image="ui/layout/layout-sketch-title-block.svg" caption="Seção de título com blocos de texto e um ícone" />
 
 </li>
 
 <li>
 
-Row 2, the **Button** section, has three children: each child contains
-a column which then contains an icon and text.
+Row 2, a seção **Button**, tem três filhos: cada filho contém
+uma column que então contém um ícone e texto.
 
-<DashImage figure image="ui/layout/layout-sketch-button-block.svg" caption="The Button section with three labeled buttons" width="50%" />
+<DashImage figure image="ui/layout/layout-sketch-button-block.svg" caption="A seção Button com três botões rotulados" width="50%" />
 
   </li>
 
@@ -98,44 +99,44 @@ a column which then contains an icon and text.
 </li>
 </ol>
 
-After diagramming the layout, consider how you would code it.
+Depois de diagramar o layout, considere como você o codificaria.
 
-Would you write all the code in one class?
-Or, would you create one class for each part of the layout?
+Você escreveria todo o código em uma classe?
+Ou, você criaria uma classe para cada parte do layout?
 
-To follow Flutter best practices, create one class, or Widget,
-to contain each part of your layout.
-When Flutter needs to re-render part of a UI,
-it updates the smallest part that changes.
-This is why Flutter makes "everything a widget".
-If only the text changes in a `Text` widget, Flutter redraws only that text.
-Flutter changes the least amount of the UI possible in response to user input.
+Para seguir as melhores práticas do Flutter, crie uma classe, ou Widget,
+para conter cada parte do seu layout.
+Quando o Flutter precisa re-renderizar parte de uma UI,
+ele atualiza a menor parte que muda.
+É por isso que o Flutter faz "tudo ser um widget".
+Se apenas o texto muda em um widget `Text`, o Flutter redesenha apenas esse texto.
+O Flutter muda a menor quantidade possível da UI em resposta à entrada do usuário.
 
-For this tutorial, write each element you have identified as its own widget.
+Para este tutorial, escreva cada elemento que você identificou como seu próprio widget.
 
-## Create the app base code
+## Criar o código base do app
 
-In this section, shell out the basic Flutter app code to start your app.
+Nesta seção, crie o esqueleto do código básico do app Flutter para iniciar seu app.
 
 <?code-excerpt path-base="layout/base"?>
 
-1. [Set up your Flutter environment][].
+1. [Configure seu ambiente Flutter][Set up your Flutter environment].
 
-1. [Create a new Flutter app][new-flutter-app].
+1. [Crie um novo app Flutter][new-flutter-app].
 
-1. Replace the contents of `lib/main.dart` with the following code.
-   This app uses a parameter for the app title and the title shown
-   on the app's `appBar`. This decision simplifies the code.
+1. Substitua o conteúdo de `lib/main.dart` com o seguinte código.
+   Este app usa um parâmetro para o título do app e o título mostrado
+   na `appBar` do app. Esta decisão simplifica o código.
 
    <?code-excerpt "lib/main.dart (all)"?>
    ```dart
    import 'package:flutter/material.dart';
-   
+
    void main() => runApp(const MyApp());
-   
+
    class MyApp extends StatelessWidget {
      const MyApp({super.key});
-   
+
      @override
      Widget build(BuildContext context) {
        const String appTitle = 'Flutter layout demo';
@@ -155,18 +156,18 @@ In this section, shell out the basic Flutter app code to start your app.
 [Set up your Flutter environment]: /get-started
 [new-flutter-app]: /reference/create-new-app
 
-## Add the Title section
+## Adicionar a seção Title
 
-In this section, create a `TitleSection` widget that resembles
-the following layout.
+Nesta seção, crie um widget `TitleSection` que se pareça com
+o seguinte layout.
 
 <?code-excerpt path-base="layout/lakes"?>
 
-<DashImage figure image="ui/layout/layout-sketch-title-block-unlabeled.svg" caption="The Title section as sketch and prototype UI" />
+<DashImage figure image="ui/layout/layout-sketch-title-block-unlabeled.svg" caption="A seção Title como esboço e protótipo de UI" />
 
-### Add the `TitleSection` Widget
+### Adicione o Widget `TitleSection`
 
-Add the following code after the `MyApp` class.
+Adicione o seguinte código após a classe `MyApp`.
 
 <?code-excerpt "step2/lib/main.dart (title-section)"?>
 ```dart
@@ -211,21 +212,21 @@ class TitleSection extends StatelessWidget {
 
 {:.numbered-code-notes}
 
-1. To use all remaining free space in the row, use the `Expanded` widget to
-   stretch the `Column` widget.
-   To place the column at the start of the row,
-   set the `crossAxisAlignment` property to `CrossAxisAlignment.start`.
-2. To add space between the rows of text, put those rows in a `Padding` widget.
-3. The title row ends with a red star icon and the text `41`.
-    The entire row falls inside a `Padding` widget and pads each edge
-    by 32 pixels.
+1. Para usar todo o espaço livre restante na row, use o widget `Expanded` para
+   esticar o widget `Column`.
+   Para colocar a column no início da row,
+   defina a propriedade `crossAxisAlignment` como `CrossAxisAlignment.start`.
+2. Para adicionar espaço entre as rows de texto, coloque essas rows em um widget `Padding`.
+3. A row de título termina com um ícone de estrela vermelha e o texto `41`.
+    Toda a row fica dentro de um widget `Padding` e adiciona padding em cada borda
+    de 32 pixels.
 
-### Change the app body to a scrolling view
+### Mude o body do app para uma visualização rolável
 
-In the `body` property, replace the `Center` widget with a
-`SingleChildScrollView` widget.
-Within the [`SingleChildScrollView`][] widget, replace the `Text` widget with a
-`Column` widget.
+Na propriedade `body`, substitua o widget `Center` por um
+widget `SingleChildScrollView`.
+Dentro do widget [`SingleChildScrollView`][`SingleChildScrollView`], substitua o widget `Text` por um
+widget `Column`.
 
 ```dart diff
 - body: const Center(
@@ -235,23 +236,23 @@ Within the [`SingleChildScrollView`][] widget, replace the `Text` widget with a
 +     children: [
 ```
 
-These code updates change the app in the following ways.
+Essas atualizações de código mudam o app das seguintes maneiras.
 
-* A `SingleChildScrollView` widget can scroll.
-  This allows elements that don't fit on the current screen to display.
-* A `Column` widget displays any elements within its `children` property
-  in the order listed.
-  The first element listed in the `children` list displays at
-  the top of the list. Elements in the `children` list display
-  in array order on the screen from top to bottom.
+* Um widget `SingleChildScrollView` pode rolar.
+  Isso permite que elementos que não cabem na tela atual sejam exibidos.
+* Um widget `Column` exibe quaisquer elementos dentro de sua propriedade `children`
+  na ordem listada.
+  O primeiro elemento listado na lista `children` é exibido no
+  topo da lista. Elementos na lista `children` são exibidos
+  em ordem de array na tela de cima para baixo.
 
 [`SingleChildScrollView`]: {{site.api}}/flutter/widgets/SingleChildScrollView-class.html
 
-### Update the app to display the title section
+### Atualize o app para exibir a seção de título
 
-Add the `TitleSection` widget as the first element in the `children` list.
-This places it at the top of the screen.
-Pass the provided name and location to the `TitleSection` constructor.
+Adicione o widget `TitleSection` como o primeiro elemento na lista `children`.
+Isso o coloca no topo da tela.
+Passe o nome e localização fornecidos para o construtor `TitleSection`.
 
 ```dart diff
 + children: [
@@ -263,34 +264,34 @@ Pass the provided name and location to the `TitleSection` constructor.
 ```
 
 :::tip
-* When pasting code into your app, indentation can become skewed.
-  To fix this in your Flutter editor, use [automatic reformatting support][].
-* To accelerate your development, try Flutter's [hot reload][] feature.
-* If you have problems, compare your code to [`lib/main.dart`][].
+* Ao colar código no seu app, a indentação pode ficar distorcida.
+  Para corrigir isso no seu editor Flutter, use [suporte de reformatação automática][automatic reformatting support].
+* Para acelerar seu desenvolvimento, experimente o recurso de [hot reload][hot reload] do Flutter.
+* Se você tiver problemas, compare seu código com [`lib/main.dart`][`lib/main.dart`].
 :::
 
 [automatic reformatting support]: /tools/formatting
 [hot reload]: /tools/hot-reload
 [`lib/main.dart`]: {{examples}}/layout/lakes/step2/lib/main.dart
 
-## Add the Button section
+## Adicionar a seção Button
 
-In this section, add the buttons that will add functionality to your app.
+Nesta seção, adicione os botões que adicionarão funcionalidade ao seu app.
 
 <?code-excerpt path-base="layout/lakes/step3"?>
 
-The **Button** section contains three columns that use the same layout:
-an icon over a row of text.
+A seção **Button** contém três columns que usam o mesmo layout:
+um ícone sobre uma row de texto.
 
-<DashImage figure image="ui/layout/layout-sketch-button-block-unlabeled.svg" caption="The Button section as sketch and prototype UI" />
+<DashImage figure image="ui/layout/layout-sketch-button-block-unlabeled.svg" caption="A seção Button como esboço e protótipo de UI" />
 
-Plan to distribute these columns in one row so each takes the same
-amount of space. Paint all text and icons with the primary color.
+Planeje distribuir essas columns em uma row para que cada uma ocupe a mesma
+quantidade de espaço. Pinte todo o texto e ícones com a cor primária.
 
-### Add the `ButtonSection` widget
+### Adicione o widget `ButtonSection`
 
-Add the following code after the `TitleSection` widget to contain the code
-to build the row of buttons.
+Adicione o seguinte código após o widget `TitleSection` para conter o código
+para construir a row de botões.
 
 <?code-excerpt "lib/main.dart (button-start)"?>
 ```dart
@@ -306,17 +307,17 @@ class ButtonSection extends StatelessWidget {
 }
 ```
 
-### Create a widget to make buttons
+### Crie um widget para fazer botões
 
-As the code for each column could use the same syntax,
-create a widget named `ButtonWithText`.
-The widget's constructor accepts a color, icon data, and a label for the button.
-Using these values, the widget builds a `Column` with an `Icon` and a stylized
-`Text` widget as its children.
-To help separate these children, a `Padding` widget the `Text` widget
-is wrapped with a `Padding` widget.
+Como o código para cada column poderia usar a mesma sintaxe,
+crie um widget chamado `ButtonWithText`.
+O construtor do widget aceita uma cor, dados de ícone e um rótulo para o botão.
+Usando esses valores, o widget constrói uma `Column` com um `Icon` e um
+widget `Text` estilizado como seus filhos.
+Para ajudar a separar esses filhos, um widget `Padding` envolve o widget `Text`
+com um widget `Padding`.
 
-Add the following code after the `ButtonSection` class.
+Adicione o seguinte código após a classe `ButtonSection`.
 
 <?code-excerpt "lib/main.dart (button-with-text)"?>
 ```dart
@@ -360,18 +361,18 @@ class ButtonWithText extends StatelessWidget {
   }
 ```
 
-### Position the buttons with a `Row` widget
+### Posicione os botões com um widget `Row`
 
-Add the following code into the `ButtonSection` widget.
+Adicione o seguinte código no widget `ButtonSection`.
 
-1. Add three instances of the `ButtonWithText` widget, once for each button.
-1. Pass the color, `Icon`, and text for that specific button.
-1. Align the columns along the main axis with the
-   `MainAxisAlignment.spaceEvenly` value.
-   The main axis for a `Row` widget is horizontal and the main axis for a
-   `Column` widget is vertical.
-   This value, then, tells Flutter to arrange the free space in equal amounts
-   before, between, and after each column along the `Row`.
+1. Adicione três instâncias do widget `ButtonWithText`, uma para cada botão.
+1. Passe a cor, `Icon` e texto para esse botão específico.
+1. Alinhe as columns ao longo do eixo principal com o
+   valor `MainAxisAlignment.spaceEvenly`.
+   O eixo principal para um widget `Row` é horizontal e o eixo principal para um
+   widget `Column` é vertical.
+   Este valor, então, diz ao Flutter para organizar o espaço livre em quantidades iguais
+   antes, entre e depois de cada column ao longo da `Row`.
 
 <?code-excerpt "lib/main.dart (button-section)"?>
 ```dart
@@ -417,9 +418,9 @@ class ButtonWithText extends StatelessWidget {
 }
 ```
 
-### Update the app to display the button section
+### Atualize o app para exibir a seção de botões
 
-Add the button section to the `children` list.
+Adicione a seção de botões à lista `children`.
 
 <?code-excerpt path-base="layout/lakes"?>
 
@@ -432,17 +433,17 @@ Add the button section to the `children` list.
   ],
 ```
 
-## Add the Text section
+## Adicionar a seção Text
 
-In this section, add the text description to this app.
+Nesta seção, adicione a descrição de texto a este app.
 
-<DashImage figure image="ui/layout/layout-sketch-add-text-block.svg" caption="The text block as sketch and prototype UI" />
+<DashImage figure image="ui/layout/layout-sketch-add-text-block.svg" caption="O bloco de texto como esboço e protótipo de UI" />
 
 <?code-excerpt path-base="layout/lakes"?>
 
-### Add the `TextSection` widget
+### Adicione o widget `TextSection`
 
-Add the following code as a separate widget after the `ButtonSection` widget.
+Adicione o seguinte código como um widget separado após o widget `ButtonSection`.
 
 <?code-excerpt "step4/lib/main.dart (text-section)"?>
 ```dart
@@ -461,16 +462,16 @@ class TextSection extends StatelessWidget {
 }
 ```
 
-By setting [`softWrap`][] to `true`, text lines fill the column width before
-wrapping at a word boundary.
+Ao definir [`softWrap`][`softWrap`] como `true`, linhas de texto preenchem a largura da column antes
+de quebrar em um limite de palavra.
 
 [`softWrap`]: {{site.api}}/flutter/widgets/Text/softWrap.html
 
-### Update the app to display the text section
+### Atualize o app para exibir a seção de texto
 
-Add a new `TextSection` widget as a child after the `ButtonSection`.
-When adding the `TextSection` widget, set its `description` property to
-the text of the location description.
+Adicione um novo widget `TextSection` como filho após o `ButtonSection`.
+Ao adicionar o widget `TextSection`, defina sua propriedade `description` para
+o texto da descrição do local.
 
 ```dart diff
       location: 'Kandersteg, Switzerland',
@@ -489,28 +490,28 @@ the text of the location description.
   ],
 ```
 
-## Add the Image section
+## Adicionar a seção Image
 
-In this section, add the image file to complete your layout.
+Nesta seção, adicione o arquivo de imagem para completar seu layout.
 
-### Configure your app to use supplied images
+### Configure seu app para usar imagens fornecidas
 
-To configure your app to reference images, modify its `pubspec.yaml` file.
+Para configurar seu app para referenciar imagens, modifique seu arquivo `pubspec.yaml`.
 
-1. Create an `images` directory at the top of the project.
+1. Crie um diretório `images` no topo do projeto.
 
-1. Download the [`lake.jpg`][] image and add it to the new `images` directory.
+1. Baixe a imagem [`lake.jpg`][`lake.jpg`] e adicione-a ao novo diretório `images`.
 
    :::note
-   You can't use `wget` to save this binary file.
-   You can download the [image][ch-photo] from [Unsplash][]
-   under the Unsplash License. The small size comes in at 94.4 kB.
+   Você não pode usar `wget` para salvar este arquivo binário.
+   Você pode baixar a [imagem][ch-photo] do [Unsplash][Unsplash]
+   sob a Licença Unsplash. O tamanho pequeno vem em 94.4 kB.
    :::
 
-1. To include images, add an `assets` tag to the `pubspec.yaml` file
-   at the root directory of your app.
-   When you add `assets`, it serves as the set of pointers to the images
-   available to your code.
+1. Para incluir imagens, adicione uma tag `assets` ao arquivo `pubspec.yaml`
+   no diretório raiz do seu app.
+   Quando você adiciona `assets`, ele serve como o conjunto de ponteiros para as imagens
+   disponíveis para seu código.
 
    ```yaml title="pubspec.yaml" diff
      flutter:
@@ -520,18 +521,18 @@ To configure your app to reference images, modify its `pubspec.yaml` file.
    ```
 
 :::tip
-Text in the `pubspec.yaml` respects whitespace and text case.
-Write the changes to the file as given in the previous example.
+Texto no `pubspec.yaml` respeita espaços em branco e maiúsculas/minúsculas.
+Escreva as mudanças no arquivo como dado no exemplo anterior.
 
-This change might require you to restart the running program to
-display the image.
+Esta mudança pode exigir que você reinicie o programa em execução para
+exibir a imagem.
 :::
 
 [`lake.jpg`]: https://raw.githubusercontent.com/flutter/website/main/examples/layout/lakes/step5/images/lake.jpg
 
-### Create the `ImageSection` widget
+### Crie o widget `ImageSection`
 
-Define the following `ImageSection` widget after the other declarations.
+Defina o seguinte widget `ImageSection` após as outras declarações.
 
 <?code-excerpt "step5/lib/main.dart (image-section)"?>
 ```dart
@@ -547,15 +548,15 @@ class ImageSection extends StatelessWidget {
 }
 ```
 
-The `BoxFit.cover` value tells Flutter to display the image with
-two constraints. First, display the image as small as possible.
-Second, cover all the space that the layout allotted, called the render box.
+O valor `BoxFit.cover` diz ao Flutter para exibir a imagem com
+duas restrições. Primeiro, exibir a imagem o menor possível.
+Segundo, cobrir todo o espaço que o layout alocou, chamado de render box.
 
-### Update the app to display the image section
+### Atualize o app para exibir a seção de imagem
 
-Add an `ImageSection` widget as the first child in the `children` list.
-Set the `image` property to the path of the image you added in
-[Configure your app to use supplied images](#configure-your-app-to-use-supplied-images).
+Adicione um widget `ImageSection` como o primeiro filho na lista `children`.
+Defina a propriedade `image` para o caminho da imagem que você adicionou em
+[Configure seu app para usar imagens fornecidas](#configure-seu-app-para-usar-imagens-fornecidas).
 
 ```dart diff
   children: [
@@ -567,28 +568,28 @@ Set the `image` property to the path of the image you added in
       location: 'Kandersteg, Switzerland',
 ```
 
-## Congratulations
+## Parabéns
 
-That's it! When you hot reload the app, your app should look like this.
+É isso! Quando você fizer hot reload do app, seu app deve parecer com isto.
 
-<DashImage figure img-class="site-mobile-screenshot border" image="ui/layout/layout-demo-app.png" caption="The finished app" width="50%" />
+<DashImage figure img-class="site-mobile-screenshot border" image="ui/layout/layout-demo-app.png" caption="O app finalizado" width="50%" />
 
-## Resources
+## Recursos
 
-You can access the resources used in this tutorial from these locations:
+Você pode acessar os recursos usados neste tutorial destes locais:
 
-**Dart code:** [`main.dart`][]<br>
-**Image:** [ch-photo][]<br>
-**Pubspec:** [`pubspec.yaml`][]<br>
+**Código Dart:** [`main.dart`][`main.dart`]<br>
+**Imagem:** [ch-photo][ch-photo]<br>
+**Pubspec:** [`pubspec.yaml`][`pubspec.yaml`]<br>
 
 [`main.dart`]: {{examples}}/layout/lakes/step6/lib/main.dart
 [ch-photo]: https://unsplash.com/photos/red-and-gray-tents-in-grass-covered-mountain-5Rhl-kSRydQ
 [`pubspec.yaml`]: {{examples}}/layout/lakes/step6/pubspec.yaml
 
-## Next Steps
+## Próximos Passos
 
-To add interactivity to this layout, follow the
-[interactivity tutorial][].
+Para adicionar interatividade a este layout, siga o
+[tutorial de interatividade][interactivity tutorial].
 
 [interactivity tutorial]: /ui/interactivity
 [Unsplash]: https://unsplash.com

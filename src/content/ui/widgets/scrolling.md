@@ -1,7 +1,8 @@
 ---
-title: Scrolling widgets
+ia-translate: true
+title: Widgets de rolagem
 shortTitle: Scrolling
-description: A catalog of Flutter's widgets that enable or support scrolling.
+description: Um catálogo de widgets Flutter que permitem ou suportam rolagem.
 widgetCategory: Scrolling
 layout: widget-catalog-page
 ---

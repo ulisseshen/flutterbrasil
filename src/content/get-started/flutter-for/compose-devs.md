@@ -862,4 +862,4 @@ Para revisar um exemplo completo, confira a documentação do [`Image`][].
 [go_router]: {{site.pub-pkg}}/go_router
 [Google Fonts]: https://fonts.google.com/
 [google_fonts]: https://pub.dev/packages/google_fonts
-[`MaterialApp`]: https://api.flutter.dev/flutter/material/MaterialApp-class.html
+[`MaterialApp`]: https://api.flutterbrasil.dev/flutter/material/MaterialApp-class.html

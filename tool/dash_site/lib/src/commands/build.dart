@@ -18,7 +18,7 @@ final class BuildSiteCommand extends Command<int> {
       _releaseFlag,
       defaultsTo: false,
       help:
-          'Build a release build for docs.flutter.dev. '
+          'Build a release build for docs.flutterbrasil.dev. '
           'Optimizes site resources.',
     );
   }
@@ -46,7 +46,7 @@ final class BuildSiteCommand extends Command<int> {
         // Use build_web_compiler options specified in build.yaml instead of
         // those specified by jaspr_cli.
         '--no-managed-build-options',
-        '--sitemap-domain=https://docs.flutter.dev',
+        '--sitemap-domain=https://docs.flutterbrasil.dev',
         '--dart-define=PRODUCTION=$productionRelease',
       ],
       workingDirectory: 'site',

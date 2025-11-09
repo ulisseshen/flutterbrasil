@@ -210,7 +210,7 @@ class Location {
 }
 
 const urlPrefix =
-    'https://docs.flutter.dev/assets/images/exercise/effects/parallax';
+    'https://docs.flutterbrasil.dev/assets/images/exercise/effects/parallax';
 
 const locations = [
   Location(

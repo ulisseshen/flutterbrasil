@@ -978,7 +978,7 @@ $ flutter pub publish
 ```
 
 Para mais detalhes sobre publicação, veja a
-[publishing docs][] no dart.dev.
+[publishing docs][] no dartbrasil.dev.
 
 ## Tratando interdependências de packages {:#dependencies}
 

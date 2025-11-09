@@ -339,4 +339,4 @@ O exemplo abaixo usa `ios`, substitua `ios` por `macos`/`darwin` conforme aplic√
 [Xcode resource detection]: https://developer.apple.com/documentation/xcode/bundling-resources-with-a-swift-package#:~:text=Xcode%20detects%20common%20resource%20types%20for%20Apple%20platforms%20and%20treats%20them%20as%20a%20resource%20automatically
 [removeSPM]: /packages-and-plugins/swift-package-manager/for-app-developers#how-to-remove-swift-package-manager-integration
 [update unit tests in the plugin's example app]: /packages-and-plugins/swift-package-manager/for-plugin-authors/#how-to-update-unit-tests-in-a-plugins-example-app
-[testing plugins]: https://docs.flutter.dev/testing/testing-plugins
+[testing plugins]: https://docs.flutterbrasil.dev/testing/testing-plugins

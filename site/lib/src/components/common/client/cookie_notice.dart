@@ -55,7 +55,7 @@ final class _CookieNoticeState extends State<CookieNotice> {
         div(classes: 'container', [
           p([
             text(
-              'docs.flutter.dev uses cookies from Google to deliver and '
+              'docs.flutterbrasil.dev uses cookies from Google to deliver and '
               'enhance the quality of its services and to analyze traffic.',
             ),
           ]),

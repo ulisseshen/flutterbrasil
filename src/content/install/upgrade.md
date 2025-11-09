@@ -56,7 +56,7 @@ The continuous integration for the Flutter team's plugins and packages
 includes testing against the latest **stable** release.
 
 The latest documentation for the **stable** branch
-is at: <https://api.flutter.dev>
+is at: <https://api.flutterbrasil.dev>
 
 ### The **beta** channel
 
@@ -85,7 +85,7 @@ We do not recommend using this channel as
 it is more likely to contain serious regressions.
 
 The latest documentation for the **main** branch
-is at: <https://main-api.flutter.dev>
+is at: <https://main-api.flutterbrasil.dev>
 
 <a id="changing-channels" aria-hidden="true"></a>
 

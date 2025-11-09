@@ -10,7 +10,7 @@ void main() {
 }
 
 const _urlPrefix =
-    'https://docs.flutter.dev/assets/images/exercise/effects/split-check';
+    'https://docs.flutterbrasil.dev/assets/images/exercise/effects/split-check';
 
 const List<Item> _items = [
   Item(

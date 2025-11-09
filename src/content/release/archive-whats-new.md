@@ -1,7 +1,7 @@
 ---
 title: Archive of What's new
 description: >-
-  A list of previous what's new updates on docs.flutter.dev
+  A list of previous what's new updates on docs.flutterbrasil.dev
   and related documentation sites.
 ---
 
@@ -224,12 +224,12 @@ In particular, Dart now provides a "baked in" language macro,
 `JsonCodable`, for serializing and deserializing JSON data.
 A future (and unspecified) Dart release will allow
 you to create your own macros.
-To learn more, check out [dart.dev/go/macros][].
+To learn more, check out [dartbrasil.dev/go/macros][].
 
 [3.22-tech]: {{site.flutter-blog}}/whats-new-in-flutter-3-22-fbde6c164fe3
 [3.22-umbrella]: {{site.flutter-blog}}/io24-5e211f708a37
 [Dart 3.4 release]: {{site.medium}}/dartlang/dart-3-4-bd8d23b4462a
-[dart.dev/go/macros]: http://dart.dev/go/macros
+[dartbrasil.dev/go/macros]: http://dartbrasil.dev/go/macros
 
 **Docs updated or added since the 3.19 release**
 
@@ -387,7 +387,7 @@ programming in Dart 3][].
 
 In addition to new docs since the last release,
 we have been incrementally releasing a revamped
-version of the docs.flutter.dev website.
+version of the docs.flutterbrasil.dev website.
 Specifically, we have reorganized (flattened) the
 information architecture (IA) and have
 incorporated some of our most popular cookbook
@@ -651,7 +651,7 @@ and [Introducing Dart 3 alpha][].
   * [Flutter for SwiftUI developers][] - updated
   * [Add a Flutter screen to an iOS app][] - updated for SwiftUI
   * [Flutter concurrency for Swift developers][] - new
-  * [Learning Dart as a Swift developer][] on dart.dev - new
+  * [Learning Dart as a Swift developer][] on dartbrasil.dev - new
 * As of Xcode 14, Apple no longer supports bitcode.
   Two of our pages, [Adding an iOS clip target][]
   and the [Flutter FAQ][],
@@ -678,7 +678,7 @@ and [Introducing Dart 3 alpha][].
   * Global selection improvements - ChunHeng Tai (chtai)
   * magnification property (who owns this? - I asked Justin)
     No docs yet (other than API docs)
-    <https://main-api.flutter.dev/flutter/material/TextField/magnifierConfiguration.html>
+    <https://main-api.flutterbrasil.dev/flutter/material/TextField/magnifierConfiguration.html>
   * Implementing iOS PlatformView BackdropFilter. (Blur) - Leigha and Chris Yang
     <https://docs.google.com/document/d/1V7Jc_RGaknrBBPPBBKB8lT7f3PKhYr8sin35MSMFAf4/edit>
   * Memory management updates - Zach Anderson
@@ -872,13 +872,13 @@ and the [Flutter 3 release notes][].
 * Firebase's Flutter docs have been overhauled.
   Check out the newly updated
   [Flutter Firebase get started guide][].
-* The [dart.dev][] site has its own [what's new][dart-whats-new]
+* The [dartbrasil.dev][] site has its own [what's new][dart-whats-new]
   page, but one new page of note is the guide,
   [Learning Dart as a JavaScript developer][js-to-dart].
   Stay tuned for similar articles on Swift and C#.
 
 [dart-whats-new]: {{site.dart-site}}/guides/whats-new
-[dart.dev]: {{site.dart-site}}
+[dartbrasil.dev]: {{site.dart-site}}
 [Desktop]: /platform-integration/desktop
 [Flutter Firebase get started guide]: {{site.firebase}}/docs/flutter/setup
 [Games page]: {{site.main-url}}/games
@@ -1100,7 +1100,7 @@ and the [Flutter 2 release notes][].
   for mobile and web.
 * Updated the [Creating responsive and adaptive apps][]
   page.
-* Many pages (including all codelabs on flutter.dev)
+* Many pages (including all codelabs on flutterbrasil.dev)
   and examples are updated to be null safe.
 * Added two new add to app pages:
   * [Using multiple Flutter instances][]
@@ -1186,7 +1186,7 @@ publication since the last stable release:
 Flutter 1.22 is live! For details, see
 [Announcing Flutter 1.22][].
 
-**Docs updated or added to flutter.dev since the 1.20 release**
+**Docs updated or added to flutterbrasil.dev since the 1.20 release**
 
 * Updated the [Developing for iOS 14][] page with
   details about targeting iOS 14 with Flutter, including some
@@ -1256,7 +1256,7 @@ publication since the last stable release:
 Flutter 1.20 is live! For details,
 see [Announcing Flutter 1.20][].
 
-**Docs updated or added to flutter.dev**
+**Docs updated or added to flutterbrasil.dev**
 
 * [Flutter architectural overview][], a deep dive into Flutter's
   architecture, was added to the site just a few days after the
@@ -1272,7 +1272,7 @@ see [Announcing Flutter 1.20][].
   The Flutter books page has been updated with them.
 * The [codelabs landing][] page has been updated.
 
-A deep dive into null safety has been added to dart.dev:
+A deep dive into null safety has been added to dartbrasil.dev:
 
 * [Understanding null safety][]
 
@@ -1585,7 +1585,7 @@ New and updated docs on the site include:
   page is updated to discuss how to build an Android release
   using an app bundle, as well as how to create separate APK
   files for both 32-bit and 64-bit devices.
-* The [DevTools][] docs are migrated to flutter.dev.
+* The [DevTools][] docs are migrated to flutterbrasil.dev.
   If you haven't tried this browser-based suite
   of debugging, performance, memory, and inspection tools that
   work with both Flutter and Dart apps and can be launched from

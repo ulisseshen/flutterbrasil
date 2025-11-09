@@ -397,7 +397,7 @@ A maior mudança em texto e acessibilidade para esta versão é o novo suporte a
 
 ## Web (prévia técnica)
 
-O trabalho continua adicionando à prévia técnica do suporte à plataforma web no Flutter nesta versão, incluindo uma flag para informar se um app está sendo executado na web. Para ver em ação, confira [main.dart](https://github.com/csells/flutter_mazegen/blob/master/lib/main.dart) no [exemplo flutter_mazegen](https://github.com/csells/flutter_mazegen/). Para saber mais, veja [Flutter para web](https://docs.flutter.dev/web).
+O trabalho continua adicionando à prévia técnica do suporte à plataforma web no Flutter nesta versão, incluindo uma flag para informar se um app está sendo executado na web. Para ver em ação, confira [main.dart](https://github.com/csells/flutter_mazegen/blob/master/lib/main.dart) no [exemplo flutter_mazegen](https://github.com/csells/flutter_mazegen/). Para saber mais, veja [Flutter para web](https://docs.flutterbrasil.dev/web).
 
 [36135](https://github.com/flutter/flutter/pull/36135) add a kIsWeb constant to foundation
 
@@ -434,7 +434,7 @@ O trabalho continua adicionando à prévia técnica do suporte à plataforma web
 
 ## Desktop (experimental)
 
-Continuamos avançando com o suporte experimental para a plataforma desktop no Flutter. Se você quiser participar do experimento, veja [Flutter Desktop shells](https://docs.flutter.dev/desktop).
+Continuamos avançando com o suporte experimental para a plataforma desktop no Flutter. Se você quiser participar do experimento, veja [Flutter Desktop shells](https://docs.flutterbrasil.dev/desktop).
 
 [32770](https://github.com/flutter/flutter/pull/32770) Dismiss modal with any button press
 
@@ -1024,7 +1024,7 @@ Como sempre, a experiência de ponta a ponta do Flutter depende muito de suas fe
 *   [Notas de Lançamento do DevTools 0.1.4](https://groups.google.com/forum/#!searchin/flutter-announce/release$20notes|sort:date/flutter-announce/ZUcqjzEDTKc/ABZtXXOpCgAJ) - 19 de julho de 2019
 *   [Plugin VSCode v3.2](https://dartcode.org/releases/v3-2/) - 28 de junho de 2019
 
-Além disso, esta versão também tem muito acontecendo nos bastidores para fornecer mensagens de erro melhores e mais acionáveis. Você pode ler sobre esses detalhes [neste post do blog](https://blog.flutter.dev/improving-flutters-error-messages-e098513cecf9) da equipe de Experiência do Usuário do Flutter.
+Além disso, esta versão também tem muito acontecendo nos bastidores para fornecer mensagens de erro melhores e mais acionáveis. Você pode ler sobre esses detalhes [neste post do blog](https://blog.flutterbrasil.dev/improving-flutters-error-messages-e098513cecf9) da equipe de Experiência do Usuário do Flutter.
 
 [32511](https://github.com/flutter/flutter/pull/32511) Rendering errors with root causes in the widget layer should have a reference to the widget
 

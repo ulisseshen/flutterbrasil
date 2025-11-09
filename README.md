@@ -1,6 +1,6 @@
 <!-- ia-translated: true -->
 
-[![Logo do Flutter]](https://docs.flutter.dev)
+[![Logo do Flutter]](https://docs.flutterbrasil.dev)
 
 [Logo do Flutter]: https://github.com/dart-lang/site-shared/blob/main/src/_assets/image/flutter/icon/64.png?raw=1
 
@@ -9,12 +9,12 @@
 O [site de documentação][Flutter] para o [framework Flutter][Flutter framework],
 construído com [Jaspr][Jaspr] e hospedado no [Firebase][Firebase].
 
-[Flutter framework]: https://flutter.dev
+[Flutter framework]: https://flutterbrasil.dev
 [Jaspr]: https://jaspr.site
 [Firebase]: https://firebase.google.com/
 
 [Build Status]: https://github.com/flutter/website/workflows/build/badge.svg
-[Flutter]: https://docs.flutter.dev/
+[Flutter]: https://docs.flutterbrasil.dev/
 [Repo on GitHub Actions]: https://github.com/flutter/website/actions?query=workflow%3Abuild+branch%3Amain
 
 <a href="https://studio.firebase.google.com/import?url=https%3A%2F%2Fgithub.com%2Fflutter%2Fwebsite">
@@ -34,7 +34,7 @@ Para mudanças simples (como ajustar algum texto),
 é mais fácil fazer alterações usando a interface do GitHub.
 
 Se você tiver um problema com a
-documentação da API em [api.flutter.dev](https://api.flutter.dev),
+documentação da API em [api.flutterbrasil.dev](https://api.flutterbrasil.dev),
 por favor, registre esses problemas no
 repositório [`flutter/flutter`](https://github.com/flutter/flutter/issues),
 não neste repositório (`flutter/website`).
@@ -103,8 +103,8 @@ e já é a versão estável mais recente:
 flutter --version
 ```
 
-[Install Flutter]: https://docs.flutter.dev/get-started
-[Upgrading Flutter]: https://docs.flutter.dev/release/upgrade
+[Install Flutter]: https://docs.flutterbrasil.dev/get-started
+[Upgrading Flutter]: https://docs.flutterbrasil.dev/release/upgrade
 
 ### Clonar este repositório
 

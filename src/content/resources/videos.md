@@ -139,7 +139,7 @@ the great Flutter content!
 [Flutter Engage 2021][] was a day-long event that
 officially launched Flutter 2.
 
-[Flutter Engage 2021]: https://events.flutter.dev/
+[Flutter Engage 2021]: https://events.flutterbrasil.dev/
 
 Check out the Flutter Engage 2021 highlights reel.
 

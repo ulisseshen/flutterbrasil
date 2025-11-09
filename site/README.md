@@ -1,10 +1,10 @@
 This directory contains the [Dart][], [Jaspr][], and [Jaspr Content][] based
-implementation of the [docs.flutter.dev documentation website][docs].
+implementation of the [docs.flutterbrasil.dev documentation website][docs].
 
-[Dart]: https://dart.dev
+[Dart]: https://dartbrasil.dev
 [Jaspr]: https://docs.jaspr.site
 [Jaspr Content]: https://docs.jaspr.site/content
-[docs]: https://docs.flutter.dev
+[docs]: https://docs.flutterbrasil.dev
 
 ## Usage
 

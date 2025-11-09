@@ -1,6 +1,6 @@
 title: Flutter
-url: https://docs.flutter.dev
-main-url: https://flutter.dev
+url: https://docs.flutterbrasil.dev
+main-url: https://flutterbrasil.dev
 email: flutter-dev@googlegroups.com
 
 showBanner: true
@@ -18,18 +18,18 @@ repo:
   uxr: https://github.com/flutter/uxr
   wonderous: https://github.com/gskinnerTeam/flutter-wonderous-app
 dart:
-  api: https://api.dart.dev
+  api: https://api.dartbrasil.dev
 social:
   twitter: https://twitter.com/FlutterDev
   youtube: https://www.youtube.com/@flutterdev
-dart-site: https://dart.dev
+dart-site: https://dartbrasil.dev
 news: https://news.dartlang.org
-api: https://api.flutter.dev
-main-api: https://main-api.flutter.dev
+api: https://api.flutterbrasil.dev
+main-api: https://main-api.flutterbrasil.dev
 pub: https://pub.dev
 pub-api: https://pub.dev/documentation
 pub-pkg: https://pub.dev/packages
-flutter-blog: https://blog.flutter.dev
+flutter-blog: https://blog.flutterbrasil.dev
 medium: https://medium.com
 dartpad: https://dartpad.dev
 gallery-archive: https://flutter-gallery-archive.web.app

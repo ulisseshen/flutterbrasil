@@ -104,7 +104,7 @@ Para saber mais, consulte o [post do blog][flutter-extension-blog] ou
 o [README][flutter-extension].
 
 [flutter-extension]: {{site.github}}/gemini-cli-extensions/flutter
-[flutter-extension-blog]: https://blog.flutter.dev/meet-the-flutter-extension-for-gemini-cli-f8be3643eaad
+[flutter-extension-blog]: https://blog.flutterbrasil.dev/meet-the-flutter-extension-for-gemini-cli-f8be3643eaad
 
 ## Dart and Flutter MCP Server
 
@@ -122,7 +122,7 @@ e o conjunto de ferramentas de desenvolvedor do Dart e Flutter.
 
 Para começar, confira a documentação oficial para o
 [servidor MCP Dart e Flutter][dart-mcp-dart-docs]
-em dart.dev e o [repositório MCP Dart e Flutter][dart-mcp-github].
+em dartbrasil.dev e o [repositório MCP Dart e Flutter][dart-mcp-github].
 
 [dart-mcp-dart-docs]: {{site.dart-site}}/tools/mcp-server
 [dart-mcp-github]: {{site.github}}/dart-lang/ai/tree/main/pkgs/dart_mcp_server

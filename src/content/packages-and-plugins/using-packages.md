@@ -472,7 +472,7 @@ Para usar este plugin:
       const DemoPage({super.key});
 
       void launchURL() {
-        launchUrl(Uri.parse('https://flutter.dev'));
+        launchUrl(Uri.parse('https://flutterbrasil.dev'));
       }
 
       @override
@@ -492,4 +492,4 @@ Para usar este plugin:
 1. Execute o app (ou pare e reinicie, se ele já estava executando
    antes de adicionar o plugin). Clique em **Show Flutter homepage**.
    Você deveria ver o navegador padrão abrir no dispositivo,
-   exibindo a homepage do flutter.dev.
+   exibindo a homepage do flutterbrasil.dev.

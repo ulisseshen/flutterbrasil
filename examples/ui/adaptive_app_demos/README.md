@@ -5,7 +5,7 @@ https://github.com/gskinnerTeam/flutter-adaptive-demo.
 
 Additional example code in this project was moved from
 code snippets originally seen in
-[Building adaptive apps](https://docs.flutter.dev/ui/layout/responsive/building-adaptive-apps)
-to ensure analysis in the flutter.dev CI pipeline.
+[Building adaptive apps](https://docs.flutterbrasil.dev/ui/layout/responsive/building-adaptive-apps)
+to ensure analysis in the flutterbrasil.dev CI pipeline.
 These snippets were intended to illustrate concepts and may
 therefore not be fully integrated/a functional part of the original demo code.

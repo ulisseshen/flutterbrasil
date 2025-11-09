@@ -1,7 +1,7 @@
 ---
 title: What's new in the docs
 description: >-
-  A list of what's new on docs.flutter.dev and related documentation sites.
+  A list of what's new on docs.flutterbrasil.dev and related documentation sites.
 ---
 
 This page contains current and recent announcements
@@ -123,7 +123,7 @@ so you might have already noticed some of them:
 [adding iOS app extensions]: /platform-integration/ios/app-extensions
 [Android Studio/IntelliJ]: /tools/android-studio#property-editor
 [floating-app-bar]: /cookbook/lists/floating-app-bar
-[Flutter on iOS]: https://flutter.dev/multi-platform/ios
+[Flutter on iOS]: https://flutterbrasil.dev/multi-platform/ios
 [Flutter Property Editor]: /tools/property-editor
 [semantic-roles]: /ui/accessibility/web-accessibility#enhancing-accessibility-with-semantic-roles
 [setting up Flutter flavors for Android]: /deployment/flavors

@@ -188,4 +188,4 @@ ou um título de artigo ou uma mensagem de erro, o que confirma que seu
 Model e ViewModel estão conectados corretamente.
 
 [ChangeNotifier]: {{site.api}}/flutter/foundation/ChangeNotifier-class.html
-[try-catch block]: https://dart.dev/language/error-handling
+[try-catch block]: https://dartbrasil.dev/language/error-handling

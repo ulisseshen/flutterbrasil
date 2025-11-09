@@ -1,6 +1,7 @@
 ---
-title: Flutter images cookbook
-shortTitle: Images
-description: A catalog of recipes for handling images in your Flutter app.
+ia-translate: true
+title: Cookbook de imagens Flutter
+shortTitle: Imagens
+description: Um catálogo de receitas para manipular imagens no seu app Flutter.
 layout: toc
 ---

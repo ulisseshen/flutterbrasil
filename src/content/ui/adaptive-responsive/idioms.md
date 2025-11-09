@@ -1,113 +1,114 @@
 ---
-title: Platform idioms
+ia-translate: true
+title: Idiomas de plataforma
 description: >-
-  Learn how to create a responsive app
-  that responds to changes in the screen size.
-shortTitle: Idioms
+  Aprenda como criar um app responsivo
+  que responde a mudanças no tamanho da tela.
+shortTitle: Idiomas
 ---
 
 <?code-excerpt path-base="ui/adaptive_app_demos"?>
 
-The final area to consider for adaptive apps is platform standards.
-Each platform has its own idioms and norms;
-these nominal or de facto standards inform user expectations
-of how an application should behave. Thanks, in part to the web,
-users are accustomed to more customized experiences,
-but reflecting these platform standards can still provide
-significant benefits:
+A área final a considerar para apps adaptativos são os padrões de plataforma.
+Cada plataforma tem seus próprios idiomas e normas;
+esses padrões nominais ou de fato informam as expectativas do usuário
+de como uma aplicação deve se comportar. Graças, em parte à web,
+os usuários estão acostumados a experiências mais customizadas,
+mas refletir esses padrões de plataforma ainda pode fornecer
+benefícios significativos:
 
-* **Reduce cognitive load**
-: By matching the user's existing mental model,
-  accomplishing tasks becomes intuitive,
-  which requires less thinking,
-  boosts productivity, and reduces frustrations.
+* **Reduzir a carga cognitiva**
+: Ao corresponder ao modelo mental existente do usuário,
+  realizar tarefas se torna intuitivo,
+  o que requer menos pensamento,
+  aumenta a produtividade e reduz frustrações.
 
-* **Build trust**
-: Users can become wary or suspicious
-  when applications don't adhere to their expectations.
-  Conversely, a UI that feels familiar can build user trust
-  and can help improve the perception of quality.
-  This often has the added benefit of better app store
-  ratings—something we can all appreciate!
+* **Construir confiança**
+: Os usuários podem ficar cautelosos ou suspeitos
+  quando aplicações não aderem às suas expectativas.
+  Por outro lado, uma UI que parece familiar pode construir confiança do usuário
+  e pode ajudar a melhorar a percepção de qualidade.
+  Isso frequentemente tem o benefício adicional de melhores classificações
+  na loja de apps—algo que todos podemos apreciar!
 
-## Consider expected behavior on each platform
+## Considere o comportamento esperado em cada plataforma
 
-The first step is to spend some time considering what
-the expected appearance, presentation,
-or behavior is on this platform.
-Try to forget any limitations of your current implementation,
-and just envision the ideal user experience.
-Work backwards from there.
+O primeiro passo é dedicar algum tempo considerando qual é
+a aparência, apresentação,
+ou comportamento esperado nesta plataforma.
+Tente esquecer quaisquer limitações da sua implementação atual,
+e apenas visualize a experiência ideal do usuário.
+Trabalhe de trás para frente a partir daí.
 
-Another way to think about this is to ask,
-"How would a user of this platform expect to achieve this goal?"
-Then, try to envision how that would work in your app
-without any compromises.
+Outra maneira de pensar sobre isso é perguntar,
+"Como um usuário desta plataforma esperaria alcançar este objetivo?"
+Então, tente visualizar como isso funcionaria em seu app
+sem quaisquer compromissos.
 
-This can be difficult if you aren't a regular user of the platform.
-You might be unaware of the specific idioms and can easily miss
-them completely. For example, a lifetime Android user is
-likely unaware of platform conventions on iOS,
-and the same holds true for macOS, Linux, and Windows.
-These differences might be subtle to you,
-but be painfully obvious to an experienced user.
+Isso pode ser difícil se você não é um usuário regular da plataforma.
+Você pode não estar ciente dos idiomas específicos e pode facilmente perdê-los
+completamente. Por exemplo, um usuário de Android de longa data é
+provavelmente inconsciente das convenções de plataforma no iOS,
+e o mesmo vale para macOS, Linux e Windows.
+Essas diferenças podem ser sutis para você,
+mas serem dolorosamente óbvias para um usuário experiente.
 
-### Find a platform advocate
+### Encontre um defensor da plataforma
 
-If possible, assign someone as an advocate for each platform.
-Ideally, your advocate uses the platform as their primary device,
-and can offer the perspective of a highly opinionated user.
-To reduce the number of people, combine roles.
-Have one advocate for Windows and Android,
-one for Linux and the web, and one for Mac and iOS.
+Se possível, designe alguém como defensor de cada plataforma.
+Idealmente, seu defensor usa a plataforma como seu dispositivo principal,
+e pode oferecer a perspectiva de um usuário altamente opinativo.
+Para reduzir o número de pessoas, combine papéis.
+Tenha um defensor para Windows e Android,
+um para Linux e web, e um para Mac e iOS.
 
-The goal is to have constant, informed feedback so the app
-feels great on each platform. Advocates should be encouraged
-to be quite picky, calling out anything they feel differs from
-typical applications on their device. A simple example is how
-the default button in a dialog is typically on the left on Mac
-and Linux, but is on the right on Windows.
-Details like that are easy to miss if you aren't using a platform
-on a regular basis.
+O objetivo é ter feedback constante e informado para que o app
+se sinta ótimo em cada plataforma. Os defensores devem ser encorajados
+a serem bastante exigentes, apontando qualquer coisa que sintam que difere de
+aplicações típicas em seu dispositivo. Um exemplo simples é como
+o botão padrão em um dialog é tipicamente à esquerda no Mac
+e Linux, mas está à direita no Windows.
+Detalhes como esse são fáceis de perder se você não está usando uma plataforma
+regularmente.
 
-:::secondary Important
-Advocates don't need to be developers or
-even full-time team members. They can be designers,
-stakeholders, or external testers that are provided
-with regular builds.
+:::secondary Importante
+Os defensores não precisam ser desenvolvedores ou
+mesmo membros de tempo integral da equipe. Eles podem ser designers,
+stakeholders, ou testadores externos que recebem
+builds regulares.
 :::
 
-### Stay unique
+### Permaneça único
 
-Conforming to expected behaviors doesn't mean that your app
-needs to use default components or styling.
-Many of the most popular multiplatform apps have very distinct
-and opinionated UIs including custom buttons, context menus,
-and title bars.
+Conformar-se aos comportamentos esperados não significa que seu app
+precisa usar componentes ou estilos padrão.
+Muitos dos apps multiplataforma mais populares têm UIs muito distintas
+e opinativas, incluindo botões customizados, menus de contexto,
+e barras de título.
 
-The more you can consolidate styling and behavior across platforms,
-the easier development and testing will be.
-The trick is to balance creating a unique experience with a
-strong identity, while respecting the norms of each platform.
+Quanto mais você puder consolidar estilo e comportamento entre plataformas,
+mais fácil será o desenvolvimento e teste.
+O truque é equilibrar a criação de uma experiência única com uma
+identidade forte, enquanto respeita as normas de cada plataforma.
 
-## Common idioms and norms to consider
+## Idiomas e normas comuns a considerar
 
-Take a quick look at a few specific norms and idioms
-you might want to consider, and how you could approach
-them in Flutter.
+Dê uma olhada rápida em algumas normas e idiomas específicos
+que você pode querer considerar, e como você poderia abordá-los
+no Flutter.
 
-### Scrollbar appearance and behavior
+### Aparência e comportamento da scrollbar
 
-Desktop and mobile users expect scrollbars,
-but they expect them to behave differently on different platforms.
-Mobile users expect smaller scrollbars that only appear
-while scrolling, whereas desktop users generally expect
-omnipresent, larger scrollbars that they can click or drag.
+Usuários de desktop e mobile esperam scrollbars,
+mas esperam que elas se comportem de maneira diferente em diferentes plataformas.
+Usuários móveis esperam scrollbars menores que aparecem apenas
+enquanto rolam, enquanto usuários de desktop geralmente esperam
+scrollbars onipresentes e maiores que podem clicar ou arrastar.
 
-Flutter comes with a built-in `Scrollbar` widget that already
-has support for adaptive colors and sizes according to the
-current platform. The one tweak you might want to make is to
-toggle `alwaysShown` when on a desktop platform:
+Flutter vem com um widget `Scrollbar` integrado que já
+tem suporte para cores e tamanhos adaptativos de acordo com a
+plataforma atual. O único ajuste que você pode querer fazer é
+alternar `alwaysShown` quando em uma plataforma desktop:
 
 <?code-excerpt "lib/pages/adaptive_grid_page.dart (scrollbar-always-shown)"?>
 ```dart
@@ -124,13 +125,13 @@ return Scrollbar(
 );
 ```
 
-This subtle attention to detail can make your app feel more
-comfortable on a given platform.
+Esta atenção sutil aos detalhes pode fazer seu app se sentir mais
+confortável em uma determinada plataforma.
 
-### Multi-select
+### Multi-seleção
 
-Dealing with multi-select within a list is another area
-with subtle differences across platforms:
+Lidar com multi-seleção dentro de uma lista é outra área
+com diferenças sutis entre plataformas:
 
 <?code-excerpt "lib/widgets/extra_widget_excerpts.dart (multi-select-shift)"?>
 ```dart
@@ -138,8 +139,8 @@ static bool get isSpanSelectModifierDown =>
     isKeyDown({LogicalKeyboardKey.shiftLeft, LogicalKeyboardKey.shiftRight});
 ```
 
-To perform a platform-aware check for control or command,
-you can write something like this:
+Para realizar uma verificação consciente da plataforma para control ou command,
+você pode escrever algo assim:
 
 <?code-excerpt "lib/widgets/extra_widget_excerpts.dart (multi-select-modifier-down)"?>
 ```dart
@@ -160,40 +161,40 @@ static bool get isMultiSelectModifierDown {
 }
 ```
 
-A final consideration for keyboard users is the **Select All** action.
-If you have a large list of items of selectable items,
-many of your keyboard users will expect that they can use
-`Control+A` to select all the items.
+Uma consideração final para usuários de teclado é a ação **Select All**.
+Se você tem uma grande lista de itens selecionáveis,
+muitos dos seus usuários de teclado esperarão que possam usar
+`Control+A` para selecionar todos os itens.
 
-#### Touch devices
+#### Dispositivos touch
 
-On touch devices, multi-selection is typically simplified,
-with the expected behavior being similar to having the
-`isMultiSelectModifier` down on the desktop.
-You can select or deselect items using a single tap,
-and will usually have a button to **Select All** or
-**Clear** the current selection.
+Em dispositivos touch, a multi-seleção é tipicamente simplificada,
+com o comportamento esperado sendo similar a ter o
+`isMultiSelectModifier` pressionado no desktop.
+Você pode selecionar ou desselecionar itens usando um único toque,
+e geralmente terá um botão para **Select All** ou
+**Clear** a seleção atual.
 
-How you handle multi-selection on different devices depends
-on your specific use cases, but the important thing is to
-make sure that you're offering each platform the best
-interaction model possible.
+Como você lida com multi-seleção em diferentes dispositivos depende
+dos seus casos de uso específicos, mas o importante é
+certificar-se de que você está oferecendo a cada plataforma o melhor
+modelo de interação possível.
 
-### Selectable text
+### Texto selecionável
 
-A common expectation on the web (and to a lesser extent desktop)
-is that most visible text can be selected with the mouse cursor.
-When text is not selectable,
-users on the web tend to have an adverse reaction.
+Uma expectativa comum na web (e em menor grau no desktop)
+é que a maior parte do texto visível pode ser selecionada com o cursor do mouse.
+Quando o texto não é selecionável,
+usuários na web tendem a ter uma reação adversa.
 
-Luckily, this is easy to support with the [`SelectableText`][] widget:
+Felizmente, isso é fácil de suportar com o widget [`SelectableText`][`SelectableText`]:
 
 <?code-excerpt "lib/widgets/extra_widget_excerpts.dart (selectable-text)"?>
 ```dart
 return const SelectableText('Select me!');
 ```
 
-To support rich text, then use `TextSpan`:
+Para suportar rich text, então use `TextSpan`:
 
 <?code-excerpt "lib/widgets/extra_widget_excerpts.dart (rich-text-span)"?>
 ```dart
@@ -212,57 +213,57 @@ return const SelectableText.rich(
 
 [`SelectableText`]: {{site.api}}/flutter/material/SelectableText-class.html
 
-### Title bars
+### Barras de título
 
-On modern desktop applications, it's common to customize
-the title bar of your app window, adding a logo for
-stronger branding or contextual controls to help save
-vertical space in your main UI.
+Em aplicações desktop modernas, é comum customizar
+a barra de título da janela do seu app, adicionando um logo para
+branding mais forte ou controles contextuais para ajudar a economizar
+espaço vertical em sua UI principal.
 
 ![Samples of title bars](/assets/images/docs/ui/adaptive-responsive/titlebar.png){:width="100%"}
 
-This isn't supported directly in Flutter, but you can use the
-[`bits_dojo`][] package to disable the native title bars,
-and replace them with your own.
+Isso não é suportado diretamente no Flutter, mas você pode usar o
+pacote [`bits_dojo`][`bits_dojo`] para desabilitar as barras de título nativas,
+e substituí-las pelas suas próprias.
 
-This package lets you add whatever widgets you want to the
-`TitleBar` because it uses pure Flutter widgets under the hood.
-This makes it easy to adapt the title bar as you navigate
-to different sections of the app.
+Este pacote permite adicionar quaisquer widgets que você queira à
+`TitleBar` porque usa widgets Flutter puros por baixo dos panos.
+Isso facilita a adaptação da barra de título conforme você navega
+para diferentes seções do app.
 
 [`bits_dojo`]: {{site.github}}/bitsdojo/bitsdojo_window
 
-### Context menus and tooltips
+### Menus de contexto e tooltips
 
-On desktop, there are several interactions that
-manifest as a widget shown in an overlay,
-but with differences in how they're triggered, dismissed,
-and positioned:
+No desktop, existem várias interações que
+se manifestam como um widget mostrado em uma sobreposição,
+mas com diferenças em como são acionadas, descartadas,
+e posicionadas:
 
-* **Context menu**
-: Typically triggered by a right-click,
-  a context menu is positioned close to the mouse,
-  and is dismissed by clicking anywhere,
-  selecting an option from the menu, or clicking outside it.
+* **Menu de contexto**
+: Tipicamente acionado por um clique direito,
+  um menu de contexto é posicionado perto do mouse,
+  e é descartado clicando em qualquer lugar,
+  selecionando uma opção do menu, ou clicando fora dele.
 
 * **Tooltip**
-: Typically triggered by hovering for
-  200-400ms over an interactive element,
-  a tooltip is usually anchored to a widget
-  (as opposed to the mouse position) and is dismissed
-  when the mouse cursor leaves that widget.
+: Tipicamente acionado ao pairar por
+  200-400ms sobre um elemento interativo,
+  um tooltip é geralmente ancorado a um widget
+  (em oposição à posição do mouse) e é descartado
+  quando o cursor do mouse sai desse widget.
 
-* **Popup panel (also known as flyout)**
-: Similar to a tooltip,
-  a popup panel is usually anchored to a widget.
-  The main difference is that panels are most often
-  shown on a tap event, and they usually don't hide
-  themselves when the cursor leaves.
-  Instead, panels are typically dismissed by clicking
-  outside the panel or by pressing a **Close** or **Submit** button.
+* **Painel popup (também conhecido como flyout)**
+: Similar a um tooltip,
+  um painel popup é geralmente ancorado a um widget.
+  A principal diferença é que painéis são mais frequentemente
+  mostrados em um evento de toque, e geralmente não se escondem
+  quando o cursor sai.
+  Em vez disso, painéis são tipicamente descartados clicando
+  fora do painel ou pressionando um botão **Close** ou **Submit**.
 
-To show basic tooltips in Flutter,
-use the built-in [`Tooltip`][] widget:
+Para mostrar tooltips básicos no Flutter,
+use o widget [`Tooltip`][`Tooltip`] integrado:
 
 <?code-excerpt "lib/widgets/extra_widget_excerpts.dart (tooltip)"?>
 ```dart
@@ -272,28 +273,28 @@ return const Tooltip(
 );
 ```
 
-Flutter also provides built-in context menus when editing
-or selecting text.
+Flutter também fornece menus de contexto integrados ao editar
+ou selecionar texto.
 
-To show more advanced tooltips, popup panels,
-or create custom context menus,
-you either use one of the available packages,
-or build it yourself using a `Stack` or `Overlay`.
+Para mostrar tooltips mais avançados, painéis popup,
+ou criar menus de contexto customizados,
+você usa um dos pacotes disponíveis,
+ou constrói você mesmo usando um `Stack` ou `Overlay`.
 
-Some available packages include:
+Alguns pacotes disponíveis incluem:
 
-* [`context_menus`][]
-* [`anchored_popups`][]
-* [`flutter_portal`][]
-* [`super_tooltip`][]
-* [`custom_pop_up_menu`][]
+* [`context_menus`][`context_menus`]
+* [`anchored_popups`][`anchored_popups`]
+* [`flutter_portal`][`flutter_portal`]
+* [`super_tooltip`][`super_tooltip`]
+* [`custom_pop_up_menu`][`custom_pop_up_menu`]
 
-While these controls can be valuable for touch users as accelerators,
-they are essential for mouse users. These users expect
-to right-click things, edit content in place,
-and hover for more information. Failing to meet those expectations
-can lead to disappointed users, or at least,
-a feeling that something isn't quite right.
+Embora esses controles possam ser valiosos para usuários touch como aceleradores,
+eles são essenciais para usuários de mouse. Esses usuários esperam
+clicar com o botão direito nas coisas, editar conteúdo no local,
+e pairar para mais informações. Não atender a essas expectativas
+pode levar a usuários desapontados, ou pelo menos,
+uma sensação de que algo não está certo.
 
 [`anchored_popups`]: {{site.pub}}/packages/anchored_popups
 [`context_menus`]: {{site.pub}}/packages/context_menus
@@ -302,16 +303,16 @@ a feeling that something isn't quite right.
 [`super_tooltip`]: {{site.pub}}/packages/super_tooltip
 [`Tooltip`]: {{site.api}}/flutter/material/Tooltip-class.html
 
-### Horizontal button order
+### Ordem horizontal de botões
 
-On Windows, when presenting a row of buttons,
-the confirmation button is placed at the start of
-the row (left side). On all other platforms,
-it's the opposite. The confirmation button is
-placed at the end of the row (right side).
+No Windows, ao apresentar uma linha de botões,
+o botão de confirmação é colocado no início da
+linha (lado esquerdo). Em todas as outras plataformas,
+é o oposto. O botão de confirmação é
+colocado no final da linha (lado direito).
 
-This can be easily handled in Flutter using the
-`TextDirection` property on `Row`:
+Isso pode ser facilmente tratado no Flutter usando a
+propriedade `TextDirection` no `Row`:
 
 <?code-excerpt "lib/widgets/ok_cancel_dialog.dart (row-text-direction)"?>
 ```dart
@@ -342,58 +343,58 @@ return Row(
 
 ![Sample of embedded image](/assets/images/docs/ui/adaptive-responsive/embed_image2.png){:width="90%"}
 
-### Menu bar
+### Barra de menu
 
-Another common pattern on desktop apps is the menu bar.
-On Windows and Linux, this menu lives as part of the Chrome title bar,
-whereas on macOS, it's located along the top of the primary screen.
+Outro padrão comum em apps desktop é a barra de menu.
+No Windows e Linux, este menu vive como parte da barra de título Chrome,
+enquanto no macOS, está localizado ao longo do topo da tela principal.
 
-Currently, you can specify custom menu bar entries using
-a prototype plugin, but it's expected that this functionality will
-eventually be integrated into the main SDK.
+Atualmente, você pode especificar entradas de barra de menu customizadas usando
+um plugin protótipo, mas espera-se que esta funcionalidade será
+eventualmente integrada ao SDK principal.
 
-It's worth mentioning that on Windows and Linux,
-you can't combine a custom title bar with a menu bar.
-When you create a custom title bar,
-you're replacing the native one completely,
-which means you also lose the integrated native menu bar.
+Vale mencionar que no Windows e Linux,
+você não pode combinar uma barra de título customizada com uma barra de menu.
+Quando você cria uma barra de título customizada,
+você está substituindo completamente a nativa,
+o que significa que você também perde a barra de menu nativa integrada.
 
-If you need both a custom title bar and a menu bar,
-you can achieve that by implementing it in Flutter,
-similar to a custom context menu.
+Se você precisa tanto de uma barra de título customizada quanto de uma barra de menu,
+você pode conseguir isso implementando-a no Flutter,
+similar a um menu de contexto customizado.
 
-### Drag and drop
+### Arrastar e soltar
 
-One of the core interactions for both touch-based and
-pointer-based inputs is drag and drop. Although this
-interaction is expected for both types of input,
-there are important differences to think about when
-it comes to scrolling lists of draggable items.
+Uma das interações centrais para entradas baseadas em touch e
+ponteiro é arrastar e soltar. Embora esta
+interação seja esperada para ambos os tipos de entrada,
+existem diferenças importantes a considerar quando
+se trata de listas roláveis de itens arrastáveis.
 
-Generally speaking, touch users expect to see drag handles
-to differentiate draggable areas from scrollable ones,
-or alternatively, to initiate a drag by using a long
-press gesture. This is because scrolling and dragging
-are both sharing a single finger for input.
+Geralmente falando, usuários touch esperam ver alças de arrasto
+para diferenciar áreas arrastáveis de áreas roláveis,
+ou alternativamente, iniciar um arrasto usando um
+gesto de pressão longa. Isso ocorre porque rolar e arrastar
+estão ambos compartilhando um único dedo para entrada.
 
-Mouse users have more input options. They can use a wheel
-or scrollbar to scroll, which generally eliminates the need
-for dedicated drag handles. If you look at the macOS
-Finder or Windows Explorer, you'll see that they work
-this way: you just select an item and start dragging.
+Usuários de mouse têm mais opções de entrada. Eles podem usar uma roda
+ou barra de rolagem para rolar, o que geralmente elimina a necessidade
+de alças de arrasto dedicadas. Se você olhar para o Finder do macOS
+ou Windows Explorer, verá que eles funcionam
+desta forma: você apenas seleciona um item e começa a arrastar.
 
-In Flutter, you can implement drag and drop in many ways.
-Discussing specific implementations is outside
-the scope of this article, but some high level options
-include the following:
+No Flutter, você pode implementar arrastar e soltar de muitas maneiras.
+Discutir implementações específicas está fora
+do escopo deste artigo, mas algumas opções de alto nível
+incluem o seguinte:
 
-* Use the [`Draggable`][] and [`DragTarget`][] APIs
-  directly for a custom look and feel.
+* Use as APIs [`Draggable`][`Draggable`] e [`DragTarget`][`DragTarget`]
+  diretamente para uma aparência e sensação customizadas.
 
-* Hook into `onPan` gesture events,
-  and move an object yourself within a parent `Stack`.
+* Conecte-se aos eventos de gesto `onPan`,
+  e mova um objeto você mesmo dentro de um `Stack` pai.
 
-* Use one of the [pre-made list packages][] on pub.dev.
+* Use um dos [pacotes de lista pré-fabricados][pre-made list packages] em pub.dev.
 
 [`Draggable`]: {{site.api}}/flutter/widgets/Draggable-class.html
 [`DragTarget`]: {{site.api}}/flutter/widgets/DragTarget-class.html

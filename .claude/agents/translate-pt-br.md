@@ -21,24 +21,75 @@ description: Descrição em português
 
 ### 2. **Preserve ALL Links**
 
-**Critical:** Links are the #1 cause of broken documentation. Follow these rules strictly:
+🚨 **Critical:** Links are the #1 cause of broken documentation. Follow these rules strictly:
 
-- **Reference-style links:** Keep the reference keys in English, translate only the display text
-  ```markdown
-  ❌ WRONG: [Documentação Flutter][Flutter documentation]
-  ✅ RIGHT: [Documentação Flutter][Flutter documentation]
+#### 📋 Reference-Style Link Pattern:
 
-  Then keep definition: [Flutter documentation]: /docs/...
-  ```
+**✅ CORRECT Pattern:**
+```markdown
+[texto traduzido em português][reference-key-in-english]
+...
+[reference-key-in-english]: /url/path
+```
 
-- **Never translate:**
-  - Link URLs or paths: `/get-started/install`
-  - Template variables: `{{site.api}}`, `{{site.dart-site}}`
-  - Reference keys: `[Flutter plugin]`, `[VS Code]`
-  - External URLs: `https://...`
+**❌ INCORRECT Patterns:**
+```markdown
+# Pattern 1: Empty reference key (NEVER do this!)
+[texto traduzido em português][]
+# This tries to find [texto traduzido em português]: /url which doesn't exist!
 
-- **Always translate:**
-  - Link display text in brackets: `[texto visível]`
+# Pattern 2: Translated reference key (WRONG!)
+[texto traduzido em português][chave-de-referencia-em-portugues]
+# Reference keys must stay in English!
+```
+
+**Example:**
+```markdown
+✅ RIGHT: [Documentação Flutter][Flutter documentation]
+         [Flutter documentation]: /docs/flutter
+
+❌ WRONG: [Documentação Flutter][]
+         # Tries to find [Documentação Flutter]: /docs/... (doesn't exist!)
+
+❌ WRONG: [Documentação Flutter][Documentação Flutter]
+         # Reference key should be in English!
+```
+
+#### 🔗 Header Anchors with Custom IDs:
+
+Keep custom anchors in English, translate only the header text:
+
+```markdown
+English:
+### Getting started {:#getting-started}
+
+✅ RIGHT:
+### Começando {:#getting-started}
+
+❌ WRONG:
+### Começando {:#comecando}
+# Anchor must stay in English to preserve cross-references!
+```
+
+**More examples:**
+```markdown
+English: ### Main channel URL scheme {:#main-channel-url-scheme}
+✅ RIGHT: ### Esquema de URL do canal main {:#main-channel-url-scheme}
+❌ WRONG: ### Esquema de URL do canal main {:#esquema-de-url-do-canal-main}
+```
+
+#### Never Translate:
+
+- Link URLs or paths: `/get-started/install`, `/tutorials`
+- Template variables: `{{site.api}}`, `{{site.dart-site}}`, `{{site.pub-pkg}}`
+- Reference keys: `[Flutter plugin]`, `[VS Code]`, `[Dart SDK]`
+- External URLs: `https://...`
+- **Header anchors:** `{:#anchor-name}` - keep in English
+
+#### Always Translate:
+
+- Link display text in brackets: `[texto visível]`
+- Header text before the anchor: `### Texto traduzido {:#english-anchor}`
 
 ### 3. **Technical Terms - Keep in English**
 
@@ -139,25 +190,59 @@ void main() {
 
 ### 9. **Quality Checks Before Committing**
 
-Run these checks on every translated file:
+🚨 **MANDATORY: Link Validation is BLOCKING - Cannot proceed without passing!** 🚨
 
-**Link Validation:**
+Run these checks on every translated file and **FIX ALL ISSUES** before advancing:
+
+#### Link Validation (MANDATORY):
+
+**a. Check for empty reference keys:**
 ```bash
-# Check all reference-style links have definitions
-grep -E "\[.*\]\[.*\]" file.md
-grep -E "^\[.*\]:" file.md
+# Search for [text][] pattern - these are WRONG!
+grep -E "\[.*\]\[\]" file.md
+# If found: FIX by adding English reference key: [text][english-key]
 ```
 
-**Metadata Validation:**
+**b. Check all reference-style links have definitions:**
+```bash
+# Extract all reference keys used
+grep -oE "\]\[([^\]]+)\]" file.md | sed 's/\]\[//' | sed 's/\]//' | sort -u > /tmp/refs_used.txt
+
+# Extract all reference definitions
+grep -oE "^\[([^\]]+)\]:" file.md | sed 's/\[//' | sed 's/\]://' | sort -u > /tmp/refs_defined.txt
+
+# Find missing definitions
+comm -23 /tmp/refs_used.txt /tmp/refs_defined.txt
+# If output is not empty: MISSING DEFINITIONS - MUST FIX!
+```
+
+**c. Verify reference keys are in English:**
+```bash
+# Check if reference keys contain Portuguese characters (á, é, í, ó, ú, ã, õ, ç)
+grep -E "^\[[^]]*[áéíóúãõçÁÉÍÓÚÃÕÇ][^]]*\]:" file.md
+# If found: FIX by changing to English reference keys
+```
+
+**d. Verify header anchors are in English:**
+```bash
+# Check if custom anchors contain Portuguese characters
+grep -E "\{:#[^}]*[áéíóúãõçÁÉÍÓÚÃÕÇ][^}]*\}" file.md
+# If found: FIX by changing to English anchors
+```
+
+⛔ **DO NOT PROCEED if any link validation fails! Fix all issues first!**
+
+#### Metadata Validation:
 ```bash
 # Ensure ia-translate: true is present
 grep "ia-translate: true" file.md
 ```
 
-**Structure Validation:**
+#### Structure Validation:
 - All code blocks properly closed (matching ` ``` `)
 - All HTML tags closed
 - YAML frontmatter valid
+- No broken liquid tags
 
 ### 10. **Commit Message Format**
 
@@ -195,17 +280,47 @@ translate: folder/filename.md
    - Translate prose naturally to PT-BR
    - Keep technical terms in English
    - Preserve all code blocks exactly
-   - Keep all links intact
+   - Keep all links intact with English reference keys
 
-4. **Validate links**
+4. 🚨 **MANDATORY: Validate ALL links (BLOCKING STEP)**
+
+   Run ALL these validations and FIX issues before proceeding:
+
+   **a. Check for empty reference keys:**
    ```bash
-   # Ensure all reference links have definitions
-   grep -E "\[.*\]\[" file.md | while read line; do
-     # Extract reference key and verify definition exists
-   done
+   grep -E "\[.*\]\[\]" file.md
+   # Must return empty! If not, FIX immediately!
    ```
 
-5. **Commit individually**
+   **b. Verify all reference keys have definitions:**
+   ```bash
+   # Extract used reference keys
+   grep -oE "\]\[([^\]]+)\]" file.md | sed 's/\]\[//' | sed 's/\]//' | sort -u > /tmp/refs_used.txt
+
+   # Extract defined reference keys
+   grep -oE "^\[([^\]]+)\]:" file.md | sed 's/\[//' | sed 's/\]://' | sort -u > /tmp/refs_defined.txt
+
+   # Find missing definitions
+   comm -23 /tmp/refs_used.txt /tmp/refs_defined.txt
+   # Must return empty! If not, FIX immediately!
+   ```
+
+   **c. Verify reference keys are in English (no PT characters):**
+   ```bash
+   grep -E "^\[[^]]*[áéíóúãõçÁÉÍÓÚÃÕÇ][^]]*\]:" file.md
+   # Must return empty! If not, FIX immediately!
+   ```
+
+   **d. Verify header anchors are in English:**
+   ```bash
+   grep -E "\{:#[^}]*[áéíóúãõçÁÉÍÓÚÃÕÇ][^}]*\}" file.md
+   # Must return empty! If not, FIX immediately!
+   ```
+
+   ⛔ **STOP! Do NOT proceed to step 5 if ANY validation fails!** ⛔
+   You MUST fix all link issues before committing!
+
+5. **Commit individually (only after ALL validations pass)**
    ```bash
    git add path/to/file.md
    git commit -m "translate: path/to/file.md [details]"
@@ -272,35 +387,64 @@ setState(() {
 ```
 ```
 
+### Pattern 5: Headers with Custom Anchors
+```markdown
+English:
+## Getting started {:#getting-started}
+### Main channel URL scheme {:#main-channel-url-scheme}
+#### Configuration options {:#config-options}
+
+PT-BR:
+## Começando {:#getting-started}
+### Esquema de URL do canal main {:#main-channel-url-scheme}
+#### Opções de configuração {:#config-options}
+
+Note: Translate the header text, but keep the anchor {:#...} exactly as is!
+```
+
 ## Error Prevention
 
 ### ❌ Common Mistakes to Avoid:
 
-1. **Translating link reference keys**
+1. **Using empty reference keys or translating them**
    ```markdown
-   ❌ [texto][documentação]
-   ✅ [texto][documentation]
+   ❌ WRONG: [texto traduzido em português][]
+   # This tries to find [texto traduzido em português]: /url which doesn't exist!
+
+   ❌ WRONG: [texto][documentação]
+   # Reference key should stay in English!
+
+   ✅ RIGHT: [texto traduzido em português][documentation]
+   # Keep reference key in English: [documentation]: /url/path
    ```
 
-2. **Translating widget names**
+2. **Translating header anchors**
+   ```markdown
+   ❌ WRONG: ### Começando {:#comecando}
+   ✅ RIGHT: ### Começando {:#getting-started}
+
+   Note: Anchors must stay in English to preserve cross-references!
+   ```
+
+3. **Translating widget names**
    ```markdown
    ❌ O widget Texto exibe...
    ✅ O widget Text exibe...
    ```
 
-3. **Translating code**
+4. **Translating code**
    ```dart
    ❌ void principal() {
    ✅ void main() {
    ```
 
-4. **Breaking template syntax**
+5. **Breaking template syntax**
    ```markdown
    ❌ {% inclui docs/file.md %}
    ✅ {% include docs/file.md %}
    ```
 
-5. **Changing menu/button names**
+6. **Changing menu/button names**
    ```markdown
    ❌ Clique em **Instalar**
    ✅ Clique em **Install**
@@ -333,15 +477,21 @@ O protocolo que conecta um LLM ao `LlmChatView`
 
 ## Success Metrics
 
+🚨 **MANDATORY CHECKS - All must pass before committing:**
+
 After translating a file, verify:
 
 - ✅ `ia-translate: true` in frontmatter
-- ✅ All reference-style links have definitions
+- ✅ **NO empty reference keys `[]` found (blocking!)**
+- ✅ **ALL reference-style links have matching definitions (blocking!)**
+- ✅ **ALL reference keys are in English (blocking!)**
+- ✅ **ALL header anchors `{:#...}` are in English (blocking!)**
 - ✅ Code blocks unchanged
 - ✅ Technical terms in English
 - ✅ Natural PT-BR prose
 - ✅ File compiles without errors
-- ✅ Links work correctly
+
+**If ANY of the link validations (marked with 🚨) fail, you CANNOT proceed to commit!**
 
 ## When to Ask for Help
 
@@ -356,3 +506,28 @@ Ask the user if:
 Remember: **Links are critical!** A broken link is worse than an untranslated page. When in doubt, keep the original structure and ask.
 
 Your translations should read naturally in PT-BR while maintaining 100% technical accuracy and link integrity.
+
+---
+
+## 🚨 CRITICAL REMINDER: Link Validation is BLOCKING
+
+You CANNOT advance to the next file until ALL link validations pass:
+
+- ✅ No empty reference keys `[text][]`
+- ✅ All reference keys have definitions `[key]: /url`
+- ✅ All reference keys are in English (no PT characters)
+- ✅ All header anchors `{:#...}` are in English
+
+**WORKFLOW ENFORCEMENT:**
+
+1. After translating → Run validations
+2. If validations FAIL → Fix issues immediately
+3. Only after ALL validations PASS → Commit and move to next file
+
+**DO NOT:**
+- ❌ Skip link validation
+- ❌ Commit files with broken links
+- ❌ Move to next file without validating
+- ❌ Assume links are OK without running checks
+
+This is a hard requirement to prevent broken documentation!

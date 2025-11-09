@@ -1,46 +1,47 @@
 ---
-title: An introduction to widget testing
-description: Learn more about widget testing in Flutter.
-shortTitle: Introduction
+ia-translate: true
+title: Uma introdução a testes de widget
+description: Aprenda mais sobre testes de widget em Flutter.
+shortTitle: Introdução
 ---
 
 <?code-excerpt path-base="cookbook/testing/widget/introduction/"?>
 
-In the [introduction to unit testing][] recipe,
-you learned how to test Dart classes using the `test` package.
-To test widget classes, you need a few additional tools provided by the
-[`flutter_test`][] package, which ships with the Flutter SDK.
+Na receita [introdução a testes unitários][introduction to unit testing],
+você aprendeu como testar classes Dart usando o pacote `test`.
+Para testar classes de widget, você precisa de algumas ferramentas adicionais fornecidas pelo
+pacote [`flutter_test`][`flutter_test`], que vem com o Flutter SDK.
 
-The `flutter_test` package provides the following tools for
-testing widgets:
+O pacote `flutter_test` fornece as seguintes ferramentas para
+testar widgets:
 
-  * The [`WidgetTester`][] allows building and interacting
-    with widgets in a test environment.
-  * The [`testWidgets()`][] function automatically
-    creates a new `WidgetTester` for each test case,
-    and is used in place of the normal `test()` function.
-  * The [`Finder`][] classes allow searching for widgets
-    in the test environment.
-  * Widget-specific [`Matcher`][] constants help verify
-   whether a `Finder` locates a widget or
-    multiple widgets in the test environment.
+  * O [`WidgetTester`][`WidgetTester`] permite construir e interagir
+    com widgets em um ambiente de teste.
+  * A função [`testWidgets()`][`testWidgets()`] cria automaticamente
+    um novo `WidgetTester` para cada caso de teste,
+    e é usada no lugar da função normal `test()`.
+  * As classes [`Finder`][`Finder`] permitem buscar widgets
+    no ambiente de teste.
+  * As constantes [`Matcher`][`Matcher`] específicas de widget ajudam a verificar
+   se um `Finder` localiza um widget ou
+    múltiplos widgets no ambiente de teste.
 
-If this sounds overwhelming, don't worry. Learn how all of these pieces fit
-together throughout this recipe, which uses the following steps:
+Se isso parecer demais, não se preocupe. Aprenda como todas essas peças se encaixam
+ao longo desta receita, que usa os seguintes passos:
 
-  1. Add the `flutter_test` dependency.
-  2. Create a widget to test.
-  3. Create a `testWidgets` test.
-  4. Build the widget using the `WidgetTester`.
-  5. Search for the widget using a `Finder`.
-  6. Verify the widget using a `Matcher`.
+  1. Adicione a dependência `flutter_test`.
+  2. Crie um widget para testar.
+  3. Crie um teste `testWidgets`.
+  4. Construa o widget usando o `WidgetTester`.
+  5. Busque o widget usando um `Finder`.
+  6. Verifique o widget usando um `Matcher`.
 
-## 1. Add the `flutter_test` dependency
+## 1. Adicione a dependência `flutter_test`
 
-Before writing tests, include the `flutter_test`
-dependency in the `dev_dependencies` section of the `pubspec.yaml` file.
-If creating a new Flutter project with the command line tools or
-a code editor, this dependency should already be in place.
+Antes de escrever testes, inclua a dependência `flutter_test`
+na seção `dev_dependencies` do arquivo `pubspec.yaml`.
+Se você criar um novo projeto Flutter com as ferramentas de linha de comando ou
+um editor de código, essa dependência já deve estar no lugar.
 
 ```yaml
 dev_dependencies:
@@ -48,10 +49,10 @@ dev_dependencies:
     sdk: flutter
 ```
 
-## 2. Create a widget to test
+## 2. Crie um widget para testar
 
-Next, create a widget for testing. For this recipe,
-create a widget that displays a `title` and `message`.
+Em seguida, crie um widget para testar. Para esta receita,
+crie um widget que exibe um `title` e `message`.
 
 <?code-excerpt "test/main_test.dart (widget)"?>
 ```dart
@@ -74,16 +75,16 @@ class MyWidget extends StatelessWidget {
 }
 ```
 
-## 3. Create a `testWidgets` test
+## 3. Crie um teste `testWidgets`
 
-With a widget to test, begin by writing your first test.
-Use the [`testWidgets()`][] function provided by the
-`flutter_test` package to define a test.
-The `testWidgets` function allows you to define a
-widget test and creates a `WidgetTester` to work with.
+Com um widget para testar, comece escrevendo seu primeiro teste.
+Use a função [`testWidgets()`][`testWidgets()`] fornecida pelo
+pacote `flutter_test` para definir um teste.
+A função `testWidgets` permite que você defina um
+teste de widget e cria um `WidgetTester` para trabalhar.
 
-This test verifies that `MyWidget` displays a given title and message.
-It is titled accordingly, and it will be populated in the next section.
+Este teste verifica que `MyWidget` exibe um título e mensagem específicos.
+Ele é intitulado adequadamente, e será preenchido na próxima seção.
 
 <?code-excerpt "test/main_step3_test.dart (main)"?>
 ```dart
@@ -97,14 +98,14 @@ void main() {
 }
 ```
 
-## 4. Build the widget using the `WidgetTester`
+## 4. Construa o widget usando o `WidgetTester`
 
-Next, build `MyWidget` inside the test environment by using the
-[`pumpWidget()`][] method provided by `WidgetTester`.
-The `pumpWidget` method builds and renders the provided widget.
+Em seguida, construa `MyWidget` dentro do ambiente de teste usando o
+método [`pumpWidget()`][`pumpWidget()`] fornecido por `WidgetTester`.
+O método `pumpWidget` constrói e renderiza o widget fornecido.
 
-Create a `MyWidget` instance that displays "T" as the title
-and "M" as the message.
+Crie uma instância de `MyWidget` que exibe "T" como título
+e "M" como mensagem.
 
 <?code-excerpt "test/main_step4_test.dart (main)"?>
 ```dart
@@ -116,51 +117,51 @@ void main() {
 }
 ```
 
-### Notes about the pump() methods
+### Notas sobre os métodos pump()
 
-After the initial call to `pumpWidget()`, the `WidgetTester` provides
-additional ways to rebuild the same widget. This is useful if you're
-working with a `StatefulWidget` or animations.
+Após a chamada inicial para `pumpWidget()`, o `WidgetTester` fornece
+maneiras adicionais de reconstruir o mesmo widget. Isso é útil se você está
+trabalhando com um `StatefulWidget` ou animações.
 
-For example, tapping a button calls `setState()`, but Flutter won't
-automatically rebuild your widget in the test environment.
-Use one of the following methods to ask Flutter to rebuild the widget.
+Por exemplo, tocar em um botão chama `setState()`, mas o Flutter não
+reconstruirá automaticamente seu widget no ambiente de teste.
+Use um dos seguintes métodos para pedir ao Flutter que reconstrua o widget.
 
-[`tester.pump(Duration duration)`][]
-: Schedules a frame and triggers a rebuild of the widget.
-  If a `Duration` is specified, it advances the clock by
-  that amount and schedules a frame. It does not schedule
-  multiple frames even if the duration is longer than a
-  single frame.
+[`tester.pump(Duration duration)`][`tester.pump(Duration duration)`]
+: Agenda um frame e dispara uma reconstrução do widget.
+  Se uma `Duration` for especificada, ela avança o relógio por
+  essa quantidade e agenda um frame. Ela não agenda
+  múltiplos frames mesmo se a duração for maior que um
+  único frame.
 
 :::note
-To kick off the animation, you need to call `pump()`
-once (with no duration specified) to start the ticker.
-Without it, the animation does not start.
+Para iniciar a animação, você precisa chamar `pump()`
+uma vez (sem duração especificada) para iniciar o ticker.
+Sem isso, a animação não inicia.
 :::
 
-[`tester.pumpAndSettle()`][]
-: Repeatedly calls `pump()` with the given duration until
-  there are no longer any frames scheduled.
-  This, essentially, waits for all animations to complete.
+[`tester.pumpAndSettle()`][`tester.pumpAndSettle()`]
+: Chama repetidamente `pump()` com a duração especificada até que
+  não haja mais frames agendados.
+  Isso, essencialmente, espera que todas as animações sejam concluídas.
 
-These methods provide fine-grained control over the build lifecycle,
-which is particularly useful while testing.
+Esses métodos fornecem controle refinado sobre o ciclo de vida de construção,
+o que é particularmente útil durante os testes.
 
-## 5. Search for our widget using a `Finder`
+## 5. Busque nosso widget usando um `Finder`
 
-With a widget in the test environment, search
-through the widget tree for the `title` and `message`
-Text widgets using a `Finder`. This allows verification that
-the widgets are being displayed correctly.
+Com um widget no ambiente de teste, busque
+pela árvore de widgets os widgets Text de `title` e `message`
+usando um `Finder`. Isso permite verificar que
+os widgets estão sendo exibidos corretamente.
 
-For this purpose, use the top-level [`find()`][]
-method provided by the `flutter_test` package to create the `Finders`.
-Since you know you're looking for `Text` widgets, use the
-[`find.text()`][] method.
+Para este propósito, use o método de nível superior [`find()`][`find()`]
+fornecido pelo pacote `flutter_test` para criar os `Finders`.
+Como você sabe que está procurando widgets `Text`, use o
+método [`find.text()`][`find.text()`].
 
-For more information about `Finder` classes, see the
-[Finding widgets in a widget test][] recipe.
+Para mais informações sobre classes `Finder`, consulte a
+receita [Encontrando widgets em um teste de widget][Finding widgets in a widget test].
 
 <?code-excerpt "test/main_step5_test.dart (main)"?>
 ```dart
@@ -175,16 +176,16 @@ void main() {
 }
 ```
 
-## 6. Verify the widget using a `Matcher`
+## 6. Verifique o widget usando um `Matcher`
 
-Finally, verify the title and message `Text` widgets appear on screen
-using the `Matcher` constants provided by `flutter_test`.
-`Matcher` classes are a core part of the `test` package,
-and provide a common way to verify a given
-value meets expectations.
+Finalmente, verifique que os widgets Text de título e mensagem aparecem na tela
+usando as constantes `Matcher` fornecidas por `flutter_test`.
+As classes `Matcher` são uma parte central do pacote `test`,
+e fornecem uma maneira comum de verificar que um dado
+valor atende às expectativas.
 
-Ensure that the widgets appear on screen exactly one time.
-For this purpose, use the [`findsOneWidget`][] `Matcher`.
+Garanta que os widgets apareçam na tela exatamente uma vez.
+Para este propósito, use o `Matcher` [`findsOneWidget`][`findsOneWidget`].
 
 <?code-excerpt "test/main_step6_test.dart (main)"?>
 ```dart
@@ -202,24 +203,24 @@ void main() {
 }
 ```
 
-### Additional Matchers
+### Matchers Adicionais
 
-In addition to `findsOneWidget`, `flutter_test` provides additional
-matchers for common cases.
+Além de `findsOneWidget`, o `flutter_test` fornece matchers adicionais
+para casos comuns.
 
-[`findsNothing`][]
-: Verifies that no widgets are found.
+[`findsNothing`][`findsNothing`]
+: Verifica que nenhum widget foi encontrado.
 
-[`findsWidgets`][]
-: Verifies that one or more widgets are found.
+[`findsWidgets`][`findsWidgets`]
+: Verifica que um ou mais widgets foram encontrados.
 
-[`findsNWidgets`][]
-: Verifies that a specific number of widgets are found.
+[`findsNWidgets`][`findsNWidgets`]
+: Verifica que um número específico de widgets foi encontrado.
 
-[`matchesGoldenFile`][]
-: Verifies that a widget's rendering matches a particular bitmap image ("golden file" testing).
+[`matchesGoldenFile`][`matchesGoldenFile`]
+: Verifica que a renderização de um widget corresponde a uma imagem bitmap específica (teste de "golden file").
 
-## Complete example
+## Exemplo completo
 
 <?code-excerpt "test/main_test.dart"?>
 ```dart

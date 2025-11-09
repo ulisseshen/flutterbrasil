@@ -578,7 +578,7 @@ usa essa propriedade para empacotar os ícones de estrela juntos.
 </div>
 </div>
 
-### Aninhando rows e columns
+### Aninhando rows e columns {:#nesting-rows-and-columns}
 
 O framework de layout permite aninhar rows e columns
 dentro de rows e columns tão profundamente quanto você precisar.
@@ -752,7 +752,7 @@ usando **Window > Scale**.
 [Pixabay]: https://pixabay.com/en/photos/pavlova
 [pubspec file]: {{site.repo.this}}/tree/main/examples/layout/pavlova/pubspec.yaml
 
-## Widgets de layout comuns
+## Widgets de layout comuns {:#common-layout-widgets}
 
 Flutter tem uma rica biblioteca de widgets de layout.
 Aqui estão alguns dos mais comumente usados.

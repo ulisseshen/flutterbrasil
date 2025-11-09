@@ -1,64 +1,65 @@
 ---
+ia-translate: true
 title: AI Toolkit
 description: >
-  Learn how to add the AI Toolkit chatbot
-  to your Flutter application.
+  Aprenda como adicionar o chatbot AI Toolkit
+  ao seu aplicativo Flutter.
 next:
   title: User experience
   path: /ai-toolkit/user-experience
 ---
 
-Hello and welcome to the Flutter AI Toolkit!
+Olá e bem-vindo ao Flutter AI Toolkit!
 
 :::note
-These pages are now out of date. They will be
-updated soon but, in the meantime, be aware that the
-`google_generative_ai` and `vertexai_firebase` packages
-are deprecated and replaced with [`package:firebase_ai`][].
+Estas páginas estão agora desatualizadas. Elas serão
+atualizadas em breve mas, enquanto isso, esteja ciente de que os
+pacotes `google_generative_ai` e `vertexai_firebase`
+estão depreciados e substituídos por [`package:firebase_ai`][].
 :::
 
 [`package:firebase_ai`]: {{site.pub-pkg}}/firebase_ai
 
-The AI Toolkit is a set of AI chat-related widgets that make
-it easy to add an AI chat window to your Flutter app.
-The AI Toolkit is organized around an abstract
-LLM provider API to make it easy to swap out the
-LLM provider that you'd like your chat provider to use.
-Out of the box, it comes with support for two LLM provider
-integrations: Google Gemini AI and Firebase Vertex AI.
+O AI Toolkit é um conjunto de widgets relacionados a chat de IA que facilitam
+adicionar uma janela de chat de IA ao seu app Flutter.
+O AI Toolkit é organizado em torno de uma API abstrata
+de provedor LLM para facilitar a troca do
+provedor LLM que você gostaria que seu provedor de chat usasse.
+Pronto para uso, ele vem com suporte para duas integrações de
+provedor LLM: Google Gemini AI e Firebase Vertex AI.
 
-## Key features
+## Recursos principais
 
-* **Multi-turn chat**: Maintains context across multiple interactions.
-* **Streaming responses**: Displays AI responses in
-  real-time as they are generated.
-* **Rich text display**: Supports formatted text in chat messages.
-* **Voice input**: Allows users to input prompts using speech.
-* **Multimedia attachments**: Enables sending and
-  receiving various media types.
-* **Custom styling**: Offers extensive customization to
-  match your app's design.
-* **Chat serialization/deserialization**: Store and retrieve conversations
-  between app sessions.
-* **Custom response widgets**: Introduce specialized UI components
-  to present LLM responses.
-* **Pluggable LLM support**: Implement a simple interface to plug
-  in your own LLM.
-* **Cross-platform support**: Compatible with Android, iOS, web,
-  and macOS platforms.
+* **Chat multi-turno**: Mantém contexto em múltiplas interações.
+* **Respostas em streaming**: Exibe respostas de IA em
+  tempo real conforme são geradas.
+* **Exibição de texto rico**: Suporta texto formatado em mensagens de chat.
+* **Entrada por voz**: Permite aos usuários inserir prompts usando fala.
+* **Anexos multimídia**: Permite enviar e
+  receber vários tipos de mídia.
+* **Estilização personalizada**: Oferece extensa customização para
+  combinar com o design do seu app.
+* **Serialização/desserialização de chat**: Armazene e recupere conversas
+  entre sessões do app.
+* **Widgets de resposta personalizados**: Introduza componentes de UI especializados
+  para apresentar respostas LLM.
+* **Suporte a LLM plugável**: Implemente uma interface simples para conectar
+  seu próprio LLM.
+* **Suporte multiplataforma**: Compatível com plataformas Android, iOS, web
+  e macOS.
 
-## Online Demo
+## Demo Online
 
-Here's the online demo hosting the AI Toolkit:
+Aqui está a demo online hospedando o AI Toolkit:
 
 <a href="https://flutter-ai-toolkit-examp-60bad.web.app/">
 <img src="/assets/images/docs/ai-toolkit/ai-toolkit-app.png" alt="AI demo app">
 </a>
 
-The [source code for this demo][src-code] is available in the repo on GitHub.
+O [código-fonte desta demo][src-code] está disponível no repositório no GitHub.
 
-Or, you can open it in [Firebase Studio][],
-Google's full-stack AI workspace and IDE that runs in the cloud:
+Ou, você pode abri-la no [Firebase Studio][],
+o workspace e IDE de IA full-stack do Google que roda na nuvem:
 
 <a href="https://studio.firebase.google.com/new?template=https%3A%2F%2Fgithub.com%2Fflutter%2Fai">
   <picture>
@@ -78,36 +79,36 @@ Google's full-stack AI workspace and IDE that runs in the cloud:
 [src-code]: {{site.github}}/flutter/ai/blob/main/example/lib/demo/demo.dart
 [Firebase Studio]: https://firebase.studio/
 
-## Get started
+## Primeiros passos
 
 <ol>
-<li><b>Installation</b>
+<li><b>Instalação</b>
 
-Add the following dependencies to your `pubspec.yaml` file:
+Adicione as seguintes dependências ao seu arquivo `pubspec.yaml`:
 
 ```yaml
 dependencies:
   flutter_ai_toolkit: ^latest_version
-  google_generative_ai: ^latest_version # you might choose to use Gemini,
-  firebase_core: ^latest_version        # or Vertex AI or both
+  google_generative_ai: ^latest_version # você pode escolher usar Gemini,
+  firebase_core: ^latest_version        # ou Vertex AI ou ambos
 ```
 </li>
 
-<li><b>Gemini AI configuration</b>
+<li><b>Configuração do Gemini AI</b>
 
-The toolkit supports both Google Gemini AI and
-Firebase Vertex AI as LLM providers.
-To use Google Gemini AI,
-[obtain an API key][] from Gemini AI Studio.
-Be careful not to check this key into your source code
-repository to prevent unauthorized access.
+O toolkit suporta tanto Google Gemini AI quanto
+Firebase Vertex AI como provedores LLM.
+Para usar o Google Gemini AI,
+[obtenha uma chave API][] do Gemini AI Studio.
+Tenha cuidado para não fazer check-in desta chave no repositório
+de código-fonte para prevenir acesso não autorizado.
 
-[obtain an API key]: https://aistudio.google.com/app/apikey
+[obtenha uma chave API]: https://aistudio.google.com/app/apikey
 
-You'll also need to choose a specific Gemini model name
-to use in creating an instance of the Gemini model.
-The following example uses `gemini-2.0-flash`,
-but you can choose from an [ever-expanding set of models][models].
+Você também precisará escolher um nome de modelo Gemini específico
+para usar na criação de uma instância do modelo Gemini.
+O exemplo a seguir usa `gemini-2.0-flash`,
+mas você pode escolher de um [conjunto de modelos em expansão][models].
 
 [models]: https://ai.google.dev/gemini-api/docs/models/gemini
 
@@ -116,7 +117,7 @@ but you can choose from an [ever-expanding set of models][models].
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:flutter_ai_toolkit/flutter_ai_toolkit.dart';
 
-// ... app stuff here
+// ... código do app aqui
 
 class ChatPage extends StatelessWidget {
   const ChatPage({super.key});
@@ -136,49 +137,49 @@ class ChatPage extends StatelessWidget {
 }
 ```
 
-The `GenerativeModel` class comes from the
-`google_generative_ai` package.
-The AI Toolkit builds on top of this package with
-the `GeminiProvider`, which plugs Gemini AI into the
-`LlmChatView`, the top-level widget that provides an
-LLM-based chat conversation with your users.
+A classe `GenerativeModel` vem do
+pacote `google_generative_ai`.
+O AI Toolkit se baseia neste pacote com
+o `GeminiProvider`, que conecta o Gemini AI ao
+`LlmChatView`, o widget de nível superior que fornece uma
+conversa de chat baseada em LLM com seus usuários.
 
-For a complete example, check out [`gemini.dart`][] on GitHub.
+Para um exemplo completo, confira [`gemini.dart`][] no GitHub.
 
 [`gemini.dart`]: {{site.github}}/flutter/ai/blob/main/example/lib/gemini/gemini.dart
 </li>
 
-<li><b>Vertex AI configuration</b>
+<li><b>Configuração do Vertex AI</b>
 
-While Gemini AI is useful for quick prototyping,
-the recommended solution for production apps is
-Vertex AI in Firebase. This eliminates the need
-for an API key in your client app and replaces it
-with a more secure Firebase project.
-To use Vertex AI in your project,
-follow the steps described in the
-[Get started with the Gemini API using the Vertex AI in Firebase SDKs][vertex] docs.
+Enquanto o Gemini AI é útil para prototipagem rápida,
+a solução recomendada para apps de produção é
+Vertex AI no Firebase. Isso elimina a necessidade
+de uma chave API em seu app cliente e a substitui
+por um projeto Firebase mais seguro.
+Para usar Vertex AI em seu projeto,
+siga os passos descritos na
+documentação [Get started with the Gemini API using the Vertex AI in Firebase SDKs][vertex].
 
 [vertex]: https://firebase.google.com/docs/vertex-ai/get-started?platform=flutter
 
-Once that's complete, integrate the new Firebase project
-into your Flutter app using the `flutterfire CLI` tool,
-as described in the [Add Firebase to your Flutter app][firebase] docs.
+Quando isso estiver completo, integre o novo projeto Firebase
+no seu app Flutter usando a ferramenta `flutterfire CLI`,
+conforme descrito na documentação [Add Firebase to your Flutter app][firebase].
 
 [firebase]: https://firebase.google.com/docs/flutter/setup
 
-After following these instructions,
-you're ready to use Firebase Vertex AI in your Flutter app.
-Start by initializing Firebase:
+Após seguir estas instruções,
+você está pronto para usar Firebase Vertex AI em seu app Flutter.
+Comece inicializando o Firebase:
 
 ```dart
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter_ai_toolkit/flutter_ai_toolkit.dart';
 
-// ... other imports
+// ... outros imports
 
-import 'firebase_options.dart'; // from `flutterfire config`
+import 'firebase_options.dart'; // de `flutterfire config`
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -186,11 +187,11 @@ void main() async {
   runApp(const App());
 }
 
-// ...app stuff here
+// ...código do app aqui
 ```
 
-With Firebase properly initialized in your Flutter app,
-you're now ready to create an instance of the Vertex provider:
+Com o Firebase devidamente inicializado em seu app Flutter,
+você está agora pronto para criar uma instância do provedor Vertex:
 
 ```dart
 class ChatPage extends StatelessWidget {
@@ -199,7 +200,7 @@ class ChatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(title: const Text(App.title)),
-        // create the chat view, passing in the Vertex provider
+        // cria a visualização de chat, passando o provedor Vertex
         body: LlmChatView(
           provider: VertexProvider(
             chatModel: FirebaseVertexAI.instance.generativeModel(
@@ -212,29 +213,29 @@ class ChatPage extends StatelessWidget {
 ```
 
 
-The `FirebaseVertexAI` class comes from the
-`firebase_vertexai` package. The AI Toolkit
-builds the `VertexProvider` class to expose
-Vertex AI to the `LlmChatView`.
-Note that you provide a model name
-([you have several options][options] from which to choose),
-but you do not provide an API key.
-All of that is handled as part of the Firebase project.
+A classe `FirebaseVertexAI` vem do
+pacote `firebase_vertexai`. O AI Toolkit
+constrói a classe `VertexProvider` para expor
+Vertex AI ao `LlmChatView`.
+Note que você fornece um nome de modelo
+([você tem várias opções][options] para escolher),
+mas você não fornece uma chave API.
+Tudo isso é tratado como parte do projeto Firebase.
 
-For a complete example, check out [vertex.dart][] on GitHub.
+Para um exemplo completo, confira [vertex.dart][] no GitHub.
 
 [options]: https://firebase.google.com/docs/vertex-ai/gemini-models#available-model-names
 [vertex.dart]: {{site.github}}/flutter/ai/blob/main/example/lib/vertex/vertex.dart
 </li>
 
-<li><b>Set up device permissions</b>
+<li><b>Configurar permissões do dispositivo</b>
 
-To enable your users to take advantage of features like voice input and media
-attachments, ensure that your app has the necessary permissions:
+Para permitir que seus usuários aproveitem recursos como entrada por voz e
+anexos de mídia, certifique-se de que seu app tem as permissões necessárias:
 
-* **Network access:**
-  To enable network access on macOS,
-  add the following to your `*.entitlements` files:
+* **Acesso à rede:**
+  Para habilitar acesso à rede no macOS,
+  adicione o seguinte aos seus arquivos `*.entitlements`:
 
   ```xml
   <plist version="1.0">
@@ -246,8 +247,8 @@ attachments, ensure that your app has the necessary permissions:
   </plist>
   ```
 
-  To enable network access on Android,
-  ensure that your `AndroidManifest.xml` file contains the following:
+  Para habilitar acesso à rede no Android,
+  certifique-se de que seu arquivo `AndroidManifest.xml` contém o seguinte:
 
   ```xml
   <manifest xmlns:android="http://schemas.android.com/apk/res/android">
@@ -256,14 +257,14 @@ attachments, ensure that your app has the necessary permissions:
   </manifest>
   ```
 
-* **Microphone access**: Configure according to the
-  [record package's permission setup instructions][record].
-* **File selection**: Follow the [file_selector plugin's instructions][file].
-* **Image selection**: To take a picture on _or_ select a picture from their
-  device, refer to the
-  [image_picker plugin's installation instructions][image_picker].
-* **Web photo**: To take a picture on the web, configure the app
-  according to the [camera plugin's setup instructions][camera].
+* **Acesso ao microfone**: Configure de acordo com as
+  [instruções de configuração de permissão do pacote record][record].
+* **Seleção de arquivo**: Siga as [instruções do plugin file_selector][file].
+* **Seleção de imagem**: Para tirar uma foto _ou_ selecionar uma foto de seu
+  dispositivo, consulte as
+  [instruções de instalação do plugin image_picker][image_picker].
+* **Foto na web**: Para tirar uma foto na web, configure o app
+  de acordo com as [instruções de configuração do plugin camera][camera].
 
 [camera]: {{site.pub-pkg}}/camera#setup
 [file]: {{site.pub-pkg}}/file_selector#usage
@@ -272,47 +273,47 @@ attachments, ensure that your app has the necessary permissions:
 </li>
 </ol>
 
-## Examples
+## Exemplos
 
-To execute the [example apps][] in the repo,
-you'll need to replace the `example/lib/gemini_api_key.dart`
-and `example/lib/firebase_options.dart` files,
-both of which are just placeholders. They're needed
-to enable the example projects in the `example/lib` folder.
+Para executar os [apps de exemplo][] no repositório,
+você precisará substituir os arquivos `example/lib/gemini_api_key.dart`
+e `example/lib/firebase_options.dart`,
+ambos os quais são apenas marcadores de posição. Eles são necessários
+para habilitar os projetos de exemplo na pasta `example/lib`.
 
 **gemini_api_key.dart**
 
-Most of the example apps rely on a Gemini API key,
-so for those to work, you'll need to plug your API key
-in the `example/lib/gemini_api_key.dart` file.
-You can get an API key in [Gemini AI Studio][].
+A maioria dos apps de exemplo depende de uma chave API do Gemini,
+então para que eles funcionem, você precisará conectar sua chave API
+no arquivo `example/lib/gemini_api_key.dart`.
+Você pode obter uma chave API no [Gemini AI Studio][].
 
 :::note
-**Be careful not to check the `gemini_api_key.dart` file into your git repo.**
+**Tenha cuidado para não fazer check-in do arquivo `gemini_api_key.dart` no seu repositório git.**
 :::
 
 **firebase_options.dart**
 
-To use the [Vertex AI example app][vertex-ex],
-place your Firebase configuration details
-into the `example/lib/firebase_options.dart` file.
-You can do this with the `flutterfire CLI` tool as described
-in the [Add Firebase to your Flutter app][add-fb] docs
-**from within the `example` directory**.
+Para usar o [app de exemplo Vertex AI][vertex-ex],
+coloque seus detalhes de configuração do Firebase
+no arquivo `example/lib/firebase_options.dart`.
+Você pode fazer isso com a ferramenta `flutterfire CLI` conforme descrito
+na documentação [Add Firebase to your Flutter app][add-fb]
+**a partir do diretório `example`**.
 
 :::note
-**Be careful not to check the `firebase_options.dart`
-file into your git repo.**
+**Tenha cuidado para não fazer check-in do arquivo `firebase_options.dart`
+no seu repositório git.**
 :::
 
 ## Feedback!
 
-Along the way, as you use this package,
-please [log issues and feature requests][file-issues] as well as
-submit any [code you'd like to contribute][submit].
-We want your feedback and your contributions
-to ensure that the AI Toolkit is just as robust and useful
-as it can be for your real-world apps.
+Ao longo do caminho, conforme você usa este pacote,
+por favor [registre problemas e solicitações de recursos][file-issues] bem como
+envie qualquer [código que você gostaria de contribuir][submit].
+Queremos seu feedback e suas contribuições
+para garantir que o AI Toolkit seja tão robusto e útil
+quanto pode ser para seus apps do mundo real.
 
 [add-fb]: https://firebase.google.com/docs/flutter/setup
 [example apps]: {{site.github}}/flutter/ai/tree/main/example/lib

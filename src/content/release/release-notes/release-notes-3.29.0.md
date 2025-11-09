@@ -1,13 +1,14 @@
 ---
-title: Flutter 3.29.0 release notes
-shortTitle: 3.29.0 release notes
-description: Release notes for Flutter 3.29.0.
+ia-translate: true
+title: Notas de lançamento do Flutter 3.29.0
+shortTitle: Notas de lançamento 3.29.0
+description: Notas de lançamento do Flutter 3.29.0.
 skipTemplateRendering: true
 ---
 
-This page has release notes for 3.29.0.
-For information about subsequent bug-fix releases,
-check out the Flutter [CHANGELOG][].
+Esta página contém as notas de lançamento da versão 3.29.0.
+Para informações sobre versões de correção de bugs subsequentes,
+confira o [CHANGELOG][CHANGELOG] do Flutter.
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/main/CHANGELOG.md
 

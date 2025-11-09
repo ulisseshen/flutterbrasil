@@ -1,163 +1,164 @@
 ---
+ia-translate: true
 title: Flutter Changelog 0.0.21 - 1.0.0
-shortTitle: Flutter Changelog up to 1.0.0
-description: Archived Changelog wiki page, containing release information between Flutter 0.0.21 and 1.0.0.
+shortTitle: Flutter Changelog até 1.0.0
+description: Página arquivada do Changelog da wiki, contendo informações de release entre Flutter 0.0.21 e 1.0.0.
 skipTemplateRendering: true
 ---
 
-_This page is a dump of the old Changelog page from the Flutter wiki up until
-[Flutter release notes](./) were published in flutter.dev._
+_Esta página é um dump da antiga página de Changelog da wiki do Flutter até que
+as [notas de release do Flutter](./) foram publicadas em flutter.dev._
 
-## Changes through and including 1.0.0
+## Mudanças até e incluindo 1.0.0
 
-* Skia and engine rolls to address the following:
-  * [video_player image distortion problem after last flutter update 0.11.3](https://github.com/flutter/flutter/issues/24402)
-  * [Green, flickering bar over camera preview](https://github.com/flutter/flutter/issues/24289)
-  * [Image rendering issues on Adreno 3xx devices after upgrade from 0.9.4 to 0.10.2](https://github.com/flutter/flutter/issues/24517)
-* Engine rolls to fix
-  * [Prepend [NSLocale currentLocale] for first locale on iOS to ensure countryCode exists. Allow language-only locales.](https://github.com/flutter/engine/issues/6995)
-  * [Changes to unblock Fuchsia roll](https://github.com/flutter/engine/issues/6949)
-* Various fixes to tooling for documentation, documentation, and documentation accompanying the templates.
+* Atualizações do Skia e engine para corrigir o seguinte:
+  * [Problema de distorção de imagem do video_player após a última atualização do flutter 0.11.3](https://github.com/flutter/flutter/issues/24402)
+  * [Barra verde piscando sobre o preview da câmera](https://github.com/flutter/flutter/issues/24289)
+  * [Problemas de renderização de imagem em dispositivos Adreno 3xx após atualização de 0.9.4 para 0.10.2](https://github.com/flutter/flutter/issues/24517)
+* Atualizações do engine para corrigir
+  * [Prepend [NSLocale currentLocale] para o primeiro locale no iOS para garantir que countryCode existe. Permitir locales somente de idioma.](https://github.com/flutter/engine/issues/6995)
+  * [Mudanças para desbloquear o roll do Fuchsia](https://github.com/flutter/engine/issues/6949)
+* Várias correções nas ferramentas para documentação, documentação e documentação que acompanha os templates.
 
-## Changes since v0.10.2
-* [flutter/engine#6883](https://github.com/flutter/engine/pull/6883) - FlutterViewController will no longer load your app's splash screen by default.  The implementation of that has been moved to a new method `loadDefaultSplashScreenView`.
-* [#23755](https://github.com/flutter/flutter/pull/23755) Removed direct dependency of flutter_test on `package:test`. Flutter now requires test version 1.5.1 and mockito version 4.0.0.
+## Mudanças desde v0.10.2
+* [flutter/engine#6883](https://github.com/flutter/engine/pull/6883) - FlutterViewController não carregará mais a splash screen do seu app por padrão. A implementação disso foi movida para um novo método `loadDefaultSplashScreenView`.
+* [#23755](https://github.com/flutter/flutter/pull/23755) Removida dependência direta de flutter_test em `package:test`. Flutter agora requer test versão 1.5.1 e mockito versão 4.0.0.
 
   ### Breaking change:
-  This requires adding an explicit dependency to your pubspec.yaml:
+  Isso requer adicionar uma dependência explícita ao seu pubspec.yaml:
   ```yaml
   dev_dependencies:
     test: ^1.5.1
   ```
-* [#24024](https://github.com/flutter/flutter/pull/24024) and [flutter/engine#6760](https://github.com/flutter/engine/pull/6760) Upgraded harfbuzz to 2.1.0, Significantly improved text layout, and zero-width-joiner (zwj) support for better emojis on iOS.
-* [#23417](https://github.com/flutter/flutter/pull/23417) provide `null` when locale is unavailable or invalid instead of `_`.
-* [#23583](https://github.com/flutter/flutter/pull/23583) Improved localization algorithm with scriptCodes and full preferred locales list support, breaking changes to callbacks when locales are changed (pass list instead of single locale).
+* [#24024](https://github.com/flutter/flutter/pull/24024) e [flutter/engine#6760](https://github.com/flutter/engine/pull/6760) Atualizado harfbuzz para 2.1.0, melhorias significativas no layout de texto e suporte a zero-width-joiner (zwj) para melhores emojis no iOS.
+* [#23417](https://github.com/flutter/flutter/pull/23417) fornece `null` quando o locale está indisponível ou inválido ao invés de `_`.
+* [#23583](https://github.com/flutter/flutter/pull/23583) Melhorado algoritmo de localização com scriptCodes e suporte completo à lista de locales preferidos, breaking changes nos callbacks quando locales são alterados (passa lista ao invés de locale único).
 
 ### v0.11.0
-* [#23320](https://github.com/flutter/flutter/pull/23320) Adds back swipe gesture support for Cupertino navigation bars' cross-page transitions.
-* [#23320](https://github.com/flutter/flutter/pull/23322) Adds support for Hero transitions across multiple Navigators.
+* [#23320](https://github.com/flutter/flutter/pull/23320) Adiciona suporte a gestos de deslizar para trás nas transições entre páginas das barras de navegação Cupertino.
+* [#23320](https://github.com/flutter/flutter/pull/23322) Adiciona suporte para transições Hero através de múltiplos Navigators.
 
-## Changes in v0.10.2 (since v0.9.4) - beta 10
+## Mudanças em v0.10.2 (desde v0.9.4) - beta 10
 
 ### v0.10.2
-* [#23194](https://github.com/flutter/flutter/pull/23194) Adds CupertinoTextField, an iOS styled text entry field.
-* [#23221](https://github.com/flutter/flutter/pull/23221) Adds RTL support for Cupertino navigation bars' cross-page transitions.
+* [#23194](https://github.com/flutter/flutter/pull/23194) Adiciona CupertinoTextField, um campo de entrada de texto estilizado para iOS.
+* [#23221](https://github.com/flutter/flutter/pull/23221) Adiciona suporte RTL para transições entre páginas das barras de navegação Cupertino.
 
 ### v0.10.1
-* [#22977](https://github.com/flutter/flutter/pull/22977) replaces most of `Null` by `void`. See [the mail proposing this change](https://groups.google.com/forum/#!topic/flutter-dev/b7TKGqERNTM).
-* [#22985](https://github.com/flutter/flutter/pull/22985) Implement correct orthographic projection
-* [#23104](https://github.com/flutter/flutter/pull/23104) Update wrapping message
-* [#22924](https://github.com/flutter/flutter/pull/22924) Support for disabling interactive TextField caret and selection
-* [#22870](https://github.com/flutter/flutter/pull/22870) Use new `mixin` syntax for super-mixins
-* [#22022](https://github.com/flutter/flutter/pull/22022) allow command line option "--project-name" in flutter create
-* [#23126](https://github.com/flutter/flutter/pull/23126) Dispatch a Flutter.Navigation event each time navigation occurs.
-* [#23183](https://github.com/flutter/flutter/pull/23183) Fix bug where gradle build rule would rerun on switching from
-* [#22394](https://github.com/flutter/flutter/pull/22394) Fix out of range spring simulation in ClampingScrollSimulation
-* [#23174](https://github.com/flutter/flutter/pull/23174) enable lint prefer_void_to_null
-* [#23184](https://github.com/flutter/flutter/pull/23184) TextTheme.apply() should not assume non-null TextStyle fields
-* [#23168](https://github.com/flutter/flutter/pull/23168) Added Mongolian (mn) translations
-* [#23167](https://github.com/flutter/flutter/pull/23167) Fix disabled formfield validation
-* [#23015](https://github.com/flutter/flutter/pull/23015) Finalize editing when hitting the enter key on a single line TextField
-* [#23021](https://github.com/flutter/flutter/pull/23021) Make it easier to use CocoaPods to Add2App for iOS
-* [#22825](https://github.com/flutter/flutter/pull/22825) fix Curves.bounceInOut math
-* [#22977](https://github.com/flutter/flutter/pull/22977) Prefer void to null
-* [#22822](https://github.com/flutter/flutter/pull/22822) Adds callback for Long Press Up
-* [#18770](https://github.com/flutter/flutter/pull/18770) Add `disabledHint` to DropdownButton
-* [#21657](https://github.com/flutter/flutter/pull/21657) Make AndroidView take gesture recognizer factories.
-* [#22449](https://github.com/flutter/flutter/pull/22449) Add support for text shadows
-* [flutter/engine#6644](https://github.com/flutter/engine/pull/6644) Add BoxHeightStyle and BoxWidthStyle as arguments to Paragraph.getBoxesForRange() to obtain various styles of enclosing boxes.
-* Skia update that changes the low level implementation of blurs and anti aliasing, which may break golden tests.
+* [#22977](https://github.com/flutter/flutter/pull/22977) substitui a maioria de `Null` por `void`. Veja [o email propondo esta mudança](https://groups.google.com/forum/#!topic/flutter-dev/b7TKGqERNTM).
+* [#22985](https://github.com/flutter/flutter/pull/22985) Implementa projeção ortográfica correta
+* [#23104](https://github.com/flutter/flutter/pull/23104) Atualiza mensagem de wrapping
+* [#22924](https://github.com/flutter/flutter/pull/22924) Suporte para desabilitar caret e seleção interativa do TextField
+* [#22870](https://github.com/flutter/flutter/pull/22870) Usa nova sintaxe `mixin` para super-mixins
+* [#22022](https://github.com/flutter/flutter/pull/22022) permite opção de linha de comando "--project-name" em flutter create
+* [#23126](https://github.com/flutter/flutter/pull/23126) Despacha um evento Flutter.Navigation cada vez que ocorre navegação.
+* [#23183](https://github.com/flutter/flutter/pull/23183) Corrige bug onde a regra de build do gradle reexecutava ao trocar de
+* [#22394](https://github.com/flutter/flutter/pull/22394) Corrige simulação de mola fora do intervalo em ClampingScrollSimulation
+* [#23174](https://github.com/flutter/flutter/pull/23174) habilita lint prefer_void_to_null
+* [#23184](https://github.com/flutter/flutter/pull/23184) TextTheme.apply() não deve assumir campos TextStyle não nulos
+* [#23168](https://github.com/flutter/flutter/pull/23168) Adicionadas traduções em Mongol (mn)
+* [#23167](https://github.com/flutter/flutter/pull/23167) Corrige validação de formfield desabilitado
+* [#23015](https://github.com/flutter/flutter/pull/23015) Finaliza edição ao pressionar a tecla enter em um TextField de linha única
+* [#23021](https://github.com/flutter/flutter/pull/23021) Facilita o uso de CocoaPods para Add2App no iOS
+* [#22825](https://github.com/flutter/flutter/pull/22825) corrige matemática de Curves.bounceInOut
+* [#22977](https://github.com/flutter/flutter/pull/22977) Prefere void a null
+* [#22822](https://github.com/flutter/flutter/pull/22822) Adiciona callback para Long Press Up
+* [#18770](https://github.com/flutter/flutter/pull/18770) Adiciona `disabledHint` ao DropdownButton
+* [#21657](https://github.com/flutter/flutter/pull/21657) Faz AndroidView aceitar factories de gesture recognizer.
+* [#22449](https://github.com/flutter/flutter/pull/22449) Adiciona suporte para sombras de texto
+* [flutter/engine#6644](https://github.com/flutter/engine/pull/6644) Adiciona BoxHeightStyle e BoxWidthStyle como argumentos para Paragraph.getBoxesForRange() para obter vários estilos de caixas envolventes.
+* Atualização do Skia que muda a implementação de baixo nível de blurs e anti aliasing, o que pode quebrar golden tests.
 
 ### v0.9.7
-* [flutter/engine#6393](https://github.com/flutter/engine/pull/6393) adds nullability annotations to Android MethodChannel/MethodCall.
+* [flutter/engine#6393](https://github.com/flutter/engine/pull/6393) adiciona anotações de nullability ao Android MethodChannel/MethodCall.
 
 ### v0.9.6
-* [#21251](https://github.com/flutter/flutter/pull/21251) adds CupertinoDatePicker, an iOS-style picker control that supports a date mode and a date + time mode.
+* [#21251](https://github.com/flutter/flutter/pull/21251) adiciona CupertinoDatePicker, um controle picker estilo iOS que suporta modo de data e modo de data + hora.
 
-## Changes in v0.9.4 (since v0.8.2 ) - beta 9
+## Mudanças em v0.9.4 (desde v0.8.2) - beta 9
 
 ### v0.9.4
 
-* [#21715](https://github.com/flutter/flutter/pull/21715), The default MaterialPageRoute transition is now defined by the Theme. Added (optional) support for Android P style page transitions. The MaterialPageRoute support for "hosting" another route to reuse its buildTransitions() method was removed because PageTransitionsBuilders, including CupertinoPageTransitionBuilder, are standalone objects.
+* [#21715](https://github.com/flutter/flutter/pull/21715), A transição padrão do MaterialPageRoute agora é definida pelo Theme. Adicionado suporte (opcional) para transições de página estilo Android P. O suporte do MaterialPageRoute para "hospedar" outra rota para reutilizar seu método buildTransitions() foi removido porque PageTransitionsBuilders, incluindo CupertinoPageTransitionBuilder, são objetos independentes.
 
 ### v0.9.3
 
-* [#22108](https://github.com/flutter/flutter/pull/22108) changed the output of `flutter doctor` slightly, which may affect automated scripts that depended on the exact output.
+* [#22108](https://github.com/flutter/flutter/pull/22108) alterou ligeiramente a saída de `flutter doctor`, o que pode afetar scripts automatizados que dependiam da saída exata.
 
 ### v0.9.2
 
-* [#21540](https://github.com/flutter/flutter/pull/21540) added a `transform()` method to [`Animatable`](https://api.flutter.dev/flutter/animation/Animatable-class.html). It is implemented by `Tween` (the main subclass of `Animatable`) but classes that subclass `Animatable` directly will need to implement it. Typically the existing `evaluate()` method can be changed to implement `transform()` instead, using the value given by the argument to `transform()` rather than the current value of the animation provided to `evaluate()`. `evaluate()` now has a default implementation that defers to `transform()`.
+* [#21540](https://github.com/flutter/flutter/pull/21540) adicionou um método `transform()` ao [`Animatable`](https://api.flutter.dev/flutter/animation/Animatable-class.html). Ele é implementado por `Tween` (a principal subclasse de `Animatable`), mas classes que fazem subclasse de `Animatable` diretamente precisarão implementá-lo. Tipicamente o método `evaluate()` existente pode ser alterado para implementar `transform()` ao invés, usando o valor dado pelo argumento para `transform()` ao invés do valor atual da animação fornecido para `evaluate()`. `evaluate()` agora tem uma implementação padrão que delega para `transform()`.
 
-## Changes in v0.8.2 (since v0.7.3) - beta 8
+## Mudanças em v0.8.2 (desde v0.7.3) - beta 8
 
 ### v0.7.4
-* [#20322](https://github.com/flutter/flutter/pull/20322) performs parallax transitions between `CupertinoNavigationBar`s and `CupertinoSliverNavigationBar`s when navigating between pages.
+* [#20322](https://github.com/flutter/flutter/pull/20322) executa transições parallax entre `CupertinoNavigationBar`s e `CupertinoSliverNavigationBar`s ao navegar entre páginas.
 
-## Changes in v0.7.3 (since v0.6.0) - beta 7
+## Mudanças em v0.7.3 (desde v0.6.0) - beta 7
 
 ### v0.7.3
-* [#20966](https://github.com/flutter/flutter/pull/20966) adds `CupertinoTimerPicker`.
+* [#20966](https://github.com/flutter/flutter/pull/20966) adiciona `CupertinoTimerPicker`.
 
 ### v0.7.2
-* [#20929](https://github.com/flutter/flutter/pull/20929) fixes bug where `CupertinoPageScaffold` wasn't insetting its content when the keyboard is shown.
+* [#20929](https://github.com/flutter/flutter/pull/20929) corrige bug onde `CupertinoPageScaffold` não estava ajustando seu conteúdo quando o teclado é exibido.
 
 ### v0.7.1
-* [#19637](https://github.com/flutter/flutter/pull/19637) `CupertinoNavigationBar` and `CupertinoSliverNavigationBar` now auto-populate their title and back button labels based on their `CupertinoPageRoute.title`.
+* [#19637](https://github.com/flutter/flutter/pull/19637) `CupertinoNavigationBar` e `CupertinoSliverNavigationBar` agora preenchem automaticamente seu título e labels do botão voltar baseado em seu `CupertinoPageRoute.title`.
 
-## Changes in v0.6.0 (since v0.5.1) - beta 6
+## Mudanças em v0.6.0 (desde v0.5.1) - beta 6
 
 ### v0.6.0
-* Dart SDK updated to a Dart 2 build (2.1.0-dev.0.0). Package and plugin authors should ensure their `pubspec.yaml` files include a Dart SDK constraint with an upper bound of `<3.0.0`. See the [Getting ready for Dart 2 post](https://blog.dart.dev/getting-ready-for-dart-2-and-making-your-packages-look-great-on-the-pub-site-118464d7f59d) for details.
-* [#19025](https://github.com/flutter/flutter/pull/19025) renamed `CupertinoRefreshControl` to `CupertinoSliverRefreshControl` for consistency.
-* [#19317](https://github.com/flutter/flutter/pull/19317) Add cursorWidth and cursorRadius to TextField (Material) cursor.
-* [#20116](https://github.com/flutter/flutter/pull/20116) reduced release binary sizes by ~2MB
-* [#20267](https://github.com/flutter/flutter/pull/20267) adds `CupertinoSegmentedControl'.
-* [#19232](https://github.com/flutter/flutter/pull/19232) adds `CupertinoActionSheet` for iOS-style bottom pop-up sheets.
-* [#20101](https://github.com/flutter/flutter/pull/20101) improves `CupertinoScrollbar` visual fidelity during overscrolls.
-* [#19789](https://github.com/flutter/flutter/pull/19789) adds support for infinite scrolling and looped scrolling for `CupertinoPicker`.
-* [#18381](https://github.com/flutter/flutter/pull/18381) improves visual fidelity of `CupertinoAlertDialog`.
+* Dart SDK atualizado para uma build Dart 2 (2.1.0-dev.0.0). Autores de packages e plugins devem garantir que seus arquivos `pubspec.yaml` incluam uma restrição de Dart SDK com limite superior de `<3.0.0`. Veja o [post Getting ready for Dart 2](https://blog.dart.dev/getting-ready-for-dart-2-and-making-your-packages-look-great-on-the-pub-site-118464d7f59d) para detalhes.
+* [#19025](https://github.com/flutter/flutter/pull/19025) renomeou `CupertinoRefreshControl` para `CupertinoSliverRefreshControl` para consistência.
+* [#19317](https://github.com/flutter/flutter/pull/19317) Adiciona cursorWidth e cursorRadius ao cursor do TextField (Material).
+* [#20116](https://github.com/flutter/flutter/pull/20116) reduziu tamanhos de binários de release em ~2MB
+* [#20267](https://github.com/flutter/flutter/pull/20267) adiciona `CupertinoSegmentedControl'.
+* [#19232](https://github.com/flutter/flutter/pull/19232) adiciona `CupertinoActionSheet` para sheets pop-up inferiores estilo iOS.
+* [#20101](https://github.com/flutter/flutter/pull/20101) melhora a fidelidade visual do `CupertinoScrollbar` durante overscrolls.
+* [#19789](https://github.com/flutter/flutter/pull/19789) adiciona suporte para scrolling infinito e scrolling em loop para `CupertinoPicker`.
+* [#18381](https://github.com/flutter/flutter/pull/18381) melhora a fidelidade visual do `CupertinoAlertDialog`.
 
 ### v0.5.8
-* [#19284](https://github.com/flutter/flutter/pull/19284) adds multi-column `CupertinoPicker` support for off-axis cylindrical projection.
+* [#19284](https://github.com/flutter/flutter/pull/19284) adiciona suporte de `CupertinoPicker` multi-coluna para projeção cilíndrica fora do eixo.
 
 ### v0.5.7
-* [#18469](https://github.com/flutter/flutter/pull/18469) added a `CupertinoApp` for creating iOS styled apps.
+* [#18469](https://github.com/flutter/flutter/pull/18469) adicionou um `CupertinoApp` para criar apps estilizados para iOS.
 
 ### v0.5.6
-* [#18614](https://github.com/flutter/flutter/pull/18614) added `isInstanceOf` as a function exported from Flutter, because package:matcher has deprecated its implementation of `isInstanceOf`.
-* [flutter/engine#5517](https://github.com/flutter/engine/pull/5517) enabled the `--sync-async` Dart flag.
+* [#18614](https://github.com/flutter/flutter/pull/18614) adicionou `isInstanceOf` como uma função exportada do Flutter, porque package:matcher deprecou sua implementação de `isInstanceOf`.
+* [flutter/engine#5517](https://github.com/flutter/engine/pull/5517) habilitou a flag Dart `--sync-async`.
 
 ### v0.5.5
 
-* [#18488](https://github.com/flutter/flutter/pull/18488) made the `--debug-port` argument to `flutter trace` required, because the previous behaviour was unreliable and caused flaky tests.
+* [#18488](https://github.com/flutter/flutter/pull/18488) tornou o argumento `--debug-port` para `flutter trace` obrigatório, porque o comportamento anterior era não confiável e causava testes instáveis.
 
 ### v0.5.2
 
-* [#18096](https://github.com/flutter/flutter/pull/18096) changed the rendering of the character counter in text fields to more closely match the Material design specifications.
+* [#18096](https://github.com/flutter/flutter/pull/18096) alterou a renderização do contador de caracteres em campos de texto para corresponder mais de perto às especificações de Material design.
 
-## Changes in v0.5.1 (since v0.3.2) - beta 5
+## Mudanças em v0.5.1 (desde v0.3.2) - beta 5
 
 ### v0.5.0
 
-* [#17661](https://github.com/flutter/flutter/pull/17661) changed the layout and size of `ListTile` to better conform to the latest Material design specs.
+* [#17661](https://github.com/flutter/flutter/pull/17661) alterou o layout e tamanho do `ListTile` para melhor conformidade com as especificações mais recentes de Material design.
 
-* [#17620](https://github.com/flutter/flutter/pull/17620) slightly reduces the default dimensions of `Checkbox`, `Radio`, and `Switch` to better conform to the latest Material design specs.
+* [#17620](https://github.com/flutter/flutter/pull/17620) reduz ligeiramente as dimensões padrão de `Checkbox`, `Radio` e `Switch` para melhor conformidade com as especificações mais recentes de Material design.
 
-* [#17637](https://github.com/flutter/flutter/pull/17637) updates `Checkbox`, `Radio`, and `Switch` to use the `ThemeData` `toggleableActiveColor`. If you are using a light theme and are not specifying an `accentColor` in your `ThemeData`, these controls will now use a higher contrast shade from the primary swatch.
+* [#17637](https://github.com/flutter/flutter/pull/17637) atualiza `Checkbox`, `Radio` e `Switch` para usar o `toggleableActiveColor` do `ThemeData`. Se você está usando um tema claro e não está especificando um `accentColor` em seu `ThemeData`, esses controles agora usarão um tom de maior contraste da paleta primária.
 
-* [#17586](https://github.com/flutter/flutter/pull/17586) added a new `background` property to `TextStyle`. Subclasses must ensure that this property is handled in constructors and `copyWith`.
+* [#17586](https://github.com/flutter/flutter/pull/17586) adicionou uma nova propriedade `background` ao `TextStyle`. Subclasses devem garantir que esta propriedade seja tratada em construtores e `copyWith`.
 
-## Changes in v0.4.4 (since v0.3.2) - beta 4
+## Mudanças em v0.4.4 (desde v0.3.2) - beta 4
 
 ### v0.4.0
-* [#17021](https://github.com/flutter/flutter/pull/17021) added implicit a11y scrolling for iOS. For this, viewports define a cache extend before the leading as well as after the trailing edge and slivers are expected to provide semantics information if they fall into the cache extent.
+* [#17021](https://github.com/flutter/flutter/pull/17021) adicionou scrolling a11y implícito para iOS. Para isso, viewports definem uma extensão de cache antes da borda inicial assim como após a borda final e slivers devem fornecer informações de semântica se eles caem na extensão do cache.
 
   ### Breaking change
-  With this change, children of a viewport that are currently not visible in the viewport are now considered off-stage. To find them in a test, specify `skipOffstage: false` on the Finder.
+  Com esta mudança, filhos de um viewport que atualmente não estão visíveis no viewport agora são considerados off-stage. Para encontrá-los em um teste, especifique `skipOffstage: false` no Finder.
 
 ### v0.3.6
 
-* [#17094](https://github.com/flutter/flutter/pull/17094) introduced the ability to do golden image testing in widget tests.  Within a widget test, you can now use the following matcher to ensure that your widget's rasterized image matches a golden file (e.g. `foo.png`):
+* [#17094](https://github.com/flutter/flutter/pull/17094) introduziu a habilidade de fazer testes de golden image em widget tests. Dentro de um widget test, você agora pode usar o seguinte matcher para garantir que a imagem rasterizada do seu widget corresponda a um arquivo golden (ex: `foo.png`):
 
   ```dart
   await expectLater(find.byType(MyWidget), matchesGoldenFile('foo.png'));
@@ -165,7 +166,7 @@ _This page is a dump of the old Changelog page from the Flutter wiki up until
 
   ### Breaking change
 
-  One of the consequences of this change is that all tests run through `flutter test` now explicitly depend on `package:flutter_test`.  Users of `flutter test` will need to update their `pubspec.yaml` file to include the following if it does not already exist:
+  Uma das consequências desta mudança é que todos os testes executados através de `flutter test` agora dependem explicitamente de `package:flutter_test`. Usuários de `flutter test` precisarão atualizar seu arquivo `pubspec.yaml` para incluir o seguinte se ele ainda não existir:
 
   ```yaml
   dev_dependencies:
@@ -173,7 +174,7 @@ _This page is a dump of the old Changelog page from the Flutter wiki up until
       sdk: flutter
   ```
 
-  If your `pubspec.yaml` does not contain the requisite dependency, and you run `flutter test`, you will see errors of the following form:
+  Se seu `pubspec.yaml` não contém a dependência requisitada, e você executar `flutter test`, você verá erros da seguinte forma:
 
   ```console
   compiler message: Error: Could not resolve the package 'flutter_test' in 'package:flutter_test/flutter_test.dart'.
@@ -181,84 +182,84 @@ _This page is a dump of the old Changelog page from the Flutter wiki up until
 
 ### v0.3.3
 
-* [flutter/engine#5060](https://github.com/flutter/engine/pull/5060) introduced the ability to encode a `dart:ui Image` into a PNG via `Image.toByteData()`.  Callers wishing to get encoded bytes may pass the `format` argument, like so:
+* [flutter/engine#5060](https://github.com/flutter/engine/pull/5060) introduziu a habilidade de codificar um `dart:ui Image` em PNG via `Image.toByteData()`. Chamadores que desejam obter bytes codificados podem passar o argumento `format`, assim:
 
   ```dart
   image.toByteData(format: ui.ImageByteFormat.png);
   ```
 
-## Changes in v0.3.2 (since v0.3.1) - beta 3
+## Mudanças em v0.3.2 (desde v0.3.1) - beta 3
 
-## Changes in v0.3.1 (since v0.2.8) - beta 2 update
+## Mudanças em v0.3.1 (desde v0.2.8) - beta 2 update
 
-We are aware of a potential problem with certificate validation in the `HttpClient` implementation.
-To follow our investigation, see [Dart issue 32936](https://github.com/dart-lang/sdk/issues/32936).
+Estamos cientes de um problema potencial com validação de certificado na implementação de `HttpClient`.
+Para acompanhar nossa investigação, veja [Dart issue 32936](https://github.com/dart-lang/sdk/issues/32936).
 
 ### v0.3.1
 
-* [flutter/engine#4932](https://github.com/flutter/engine/pull/4932) introduced a new shell embedding API with numerous new features.  In particular, a single process can now host multiple Flutter shells.
+* [flutter/engine#4932](https://github.com/flutter/engine/pull/4932) introduziu uma nova API de embedding do shell com numerosas novas funcionalidades. Em particular, um único processo agora pode hospedar múltiplos shells do Flutter.
 
-* [flutter/engine#4762](https://github.com/flutter/engine/pull/4762) and [flutter/engine#5008](https://github.com/flutter/engine/pull/5008) introduced `Image.toByteData()`, which is used to get the raw RGBA bytes of an `Image` instance in `dart:ui`.
+* [flutter/engine#4762](https://github.com/flutter/engine/pull/4762) e [flutter/engine#5008](https://github.com/flutter/engine/pull/5008) introduziram `Image.toByteData()`, que é usado para obter os bytes RGBA brutos de uma instância `Image` em `dart:ui`.
 
-* [#16721](https://github.com/flutter/flutter/pull/16721) scroll motion starts on iOS has been fine tuned to avoid a jump when the scroll first starts moving and to more closely mirror native behavior.
+* [#16721](https://github.com/flutter/flutter/pull/16721) o início do movimento de scroll no iOS foi ajustado para evitar um salto quando o scroll começa a se mover e para espelhar mais de perto o comportamento nativo.
 
 ### v0.2.11
 
-* [#16039](https://github.com/flutter/flutter/pull/16039) and [#16447](https://github.com/flutter/flutter/pull/16447) substantially revised the `Chip` implementation, added new chip types: `InputChip`, `ChoiceChip`, `FilterChip`, `ActionChip`, and updated the appearance of chips.
+* [#16039](https://github.com/flutter/flutter/pull/16039) e [#16447](https://github.com/flutter/flutter/pull/16447) revisaram substancialmente a implementação de `Chip`, adicionaram novos tipos de chip: `InputChip`, `ChoiceChip`, `FilterChip`, `ActionChip`, e atualizaram a aparência dos chips.
 
 ### v0.2.9
 
-* [#16187](https://github.com/flutter/flutter/pull/16187) updated the `Card` widget's shape and elevation.
+* [#16187](https://github.com/flutter/flutter/pull/16187) atualizou o shape e elevation do widget `Card`.
 
-### Dart changes since Flutter v0.2.8
+### Mudanças no Dart desde Flutter v0.2.8
 
-* `dart:async`: Removed the deprecated `defaultValue` parameter on `Stream.firstWhere` and `Stream.lastWhere`.
-* `dart:core`: Added `tryParse` static method to `int`, `double`, `num`, `BigInt`, `Uri` and `DateTime`, and deprecated `onError` parameter on `int.parse`, `double.parse`, and `num.parse`.
-* The `new` keyword can now always be omitted. The `const` keyword is required to create a constant expression, although within the expression, further `const` keywords can also be omitted.
+* `dart:async`: Removido o parâmetro deprecado `defaultValue` em `Stream.firstWhere` e `Stream.lastWhere`.
+* `dart:core`: Adicionado método estático `tryParse` a `int`, `double`, `num`, `BigInt`, `Uri` e `DateTime`, e deprecado o parâmetro `onError` em `int.parse`, `double.parse` e `num.parse`.
+* A palavra-chave `new` agora pode sempre ser omitida. A palavra-chave `const` é necessária para criar uma expressão constante, embora dentro da expressão, outras palavras-chave `const` também possam ser omitidas.
 
-## Changes in v0.2.8 (since v0.2.3) - beta 2
+## Mudanças em v0.2.8 (desde v0.2.3) - beta 2
 
 ### v0.2.8
 
-* [#16040](https://github.com/flutter/flutter/pull/16040) adds an API to let `CupertinoTabScaffold`'s current tab be programmatically changed via its `CupertinoTabBar`'s `currentIndex`.
+* [#16040](https://github.com/flutter/flutter/pull/16040) adiciona uma API para permitir que a tab atual do `CupertinoTabScaffold` seja alterada programaticamente via o `currentIndex` de seu `CupertinoTabBar`.
 
 ### v0.2.5
 
-* [#15416](https://github.com/flutter/flutter/pull/15416) removed `package:http` from Flutter and replaced all usages with the `HttpClient` from `dart:io`. If you use `package:http` you must add it as a dependency in your `pubspec.yaml` to continue using it.
+* [#15416](https://github.com/flutter/flutter/pull/15416) removeu `package:http` do Flutter e substituiu todos os usos pelo `HttpClient` de `dart:io`. Se você usa `package:http` você deve adicioná-lo como uma dependência em seu `pubspec.yaml` para continuar usando.
 
-  `createHttpClient()` was also removed after being marked deprecated. To change how the framework creates http clients, you can use [HttpOverrides](https://api.flutter.dev/flutter/dart-io/HttpOverrides-class.html) from `dart:io` to provide your own `createHttpClient()` callback globally or per zone.
+  `createHttpClient()` também foi removido após ser marcado como deprecado. Para alterar como o framework cria clientes http, você pode usar [HttpOverrides](https://api.flutter.dev/flutter/dart-io/HttpOverrides-class.html) de `dart:io` para fornecer seu próprio callback `createHttpClient()` globalmente ou por zona.
 
-  More details are available [in the announcement](https://groups.google.com/forum/#!topic/flutter-dev/AnqDqgQ6vus).
+  Mais detalhes estão disponíveis [no anúncio](https://groups.google.com/forum/#!topic/flutter-dev/AnqDqgQ6vus).
 
-* [#15871](https://github.com/flutter/flutter/pull/15871) changed the default configuration of the `AndroidManifest.xml` created by `flutter create`.  "screenLayout" and "density" are now included by default in the configChanges attribute, preventing flutter apps from restarting when these change.
+* [#15871](https://github.com/flutter/flutter/pull/15871) alterou a configuração padrão do `AndroidManifest.xml` criado por `flutter create`. "screenLayout" e "density" agora estão incluídos por padrão no atributo configChanges, prevenindo que apps Flutter reiniciem quando estes mudam.
 
-* [#15324](https://github.com/flutter/flutter/pull/15324) adds a new CupertinoRefreshControl widget styled after the iOS pull-to-refresh pattern. Demo available in the Flutter Gallery.
+* [#15324](https://github.com/flutter/flutter/pull/15324) adiciona um novo widget CupertinoRefreshControl estilizado após o padrão de pull-to-refresh do iOS. Demo disponível no Flutter Gallery.
 
 ### v0.2.4
 
-* [#15565](https://github.com/flutter/flutter/pull/15565) turned Dart 2 mode on by default.  To run in Dart 1 mode, you can still use `--no-preview-dart-2`.
+* [#15565](https://github.com/flutter/flutter/pull/15565) ativou o modo Dart 2 por padrão. Para executar em modo Dart 1, você ainda pode usar `--no-preview-dart-2`.
 
-  More details are available [in the announcement](https://groups.google.com/d/msg/flutter-dev/H8dDhWg_c8I/_Ql78q_6AgAJ).
+  Mais detalhes estão disponíveis [no anúncio](https://groups.google.com/d/msg/flutter-dev/H8dDhWg_c8I/_Ql78q_6AgAJ).
 
-* [#15537](https://github.com/flutter/flutter/pull/15537) removed SemanticsSortOrder. From now on traversal sorting is done among sibling nodes only.
+* [#15537](https://github.com/flutter/flutter/pull/15537) removeu SemanticsSortOrder. De agora em diante a ordenação de travessia é feita apenas entre nós irmãos.
 
-  More details available [in the announcement](https://groups.google.com/forum/#!topic/flutter-dev/iCoLnW31heE).
+  Mais detalhes disponíveis [no anúncio](https://groups.google.com/forum/#!topic/flutter-dev/iCoLnW31heE).
 
-* [#15484](https://github.com/flutter/flutter/pull/15484) changed the meaning of the `TextFormField` `initialValue` constructor parameter.
+* [#15484](https://github.com/flutter/flutter/pull/15484) alterou o significado do parâmetro de construtor `initialValue` de `TextFormField`.
 
-  The TextFormField initialValue parameter no longer unconditionally initializes the text property of its TextEditingController. If you create a TextFormField and provide a controller, the initialValue must be null, which is now the default. If you're providing a controller you can specify it's initial text value with the TextEditingController text property.
+  O parâmetro initialValue de TextFormField não mais inicializa incondicionalmente a propriedade text de seu TextEditingController. Se você criar um TextFormField e fornecer um controller, o initialValue deve ser null, que agora é o padrão. Se você está fornecendo um controller você pode especificar seu valor de texto inicial com a propriedade text do TextEditingController.
 
-  > #### Before
+  > #### Antes
   >     new TextFormField(
   >       initialValue: 'Hello World',
   >       controller: _myTextEditingController,
   >     );
   >
-  > #### After
+  > #### Depois
   >     new TextFormField(
   >       controller: _myTextEditingController ..text = 'Hello World',
   >     )
-  >     // Or more typically:
+  >     // Ou mais tipicamente:
   >     _myTextEditingController = new TextEditingController(
   >       text: 'Hello World',
   >     );
@@ -266,55 +267,55 @@ To follow our investigation, see [Dart issue 32936](https://github.com/dart-lang
   >       controller: _myTextEditingController,
   >     );
 
-* [#15303](https://github.com/flutter/flutter/pull/15303) updated the `showDialog` function to take a builder and deprecated the `widget` parameter.
+* [#15303](https://github.com/flutter/flutter/pull/15303) atualizou a função `showDialog` para receber um builder e deprecou o parâmetro `widget`.
 
-  > #### Before
+  > #### Antes
   >     showDialog(context: context, child: new Text('hello'))
   >
-  > #### After
+  > #### Depois
   >     showDialog(context: context, builder: (BuildContext context) => new Text('hello'))
 
-* [#15265](https://github.com/flutter/flutter/pull/15265) updated `ThemeData` to use the primary color of a `MaterialColor` instead of unconditionally using the 500 shade for light themes.  The color values remain unchanged.
+* [#15265](https://github.com/flutter/flutter/pull/15265) atualizou `ThemeData` para usar a cor primária de um `MaterialColor` ao invés de usar incondicionalmente o tom 500 para temas claros. Os valores de cor permanecem inalterados.
 
-  > #### Before
+  > #### Antes
   >     expect(widget.color, Colors.blue.shade500) // primary color
   >
-  > #### After
+  > #### Depois
   >     expect(widget.color, Colors.blue) // primary color
 
-* [#15548](https://github.com/flutter/flutter/pull/15548) adds debugging flags `debugDisableClipLayers`, `debugDisablePhysicalShapeLayers` and `debugDisableOpacityLayers` to help with performance diagnosis of rasterizing speed.
+* [#15548](https://github.com/flutter/flutter/pull/15548) adiciona flags de debug `debugDisableClipLayers`, `debugDisablePhysicalShapeLayers` e `debugDisableOpacityLayers` para ajudar com diagnóstico de performance da velocidade de rasterização.
 
-## Changes in v0.2.3 (since v0.1.5) - beta 1 update
+## Mudanças em v0.2.3 (desde v0.1.5) - beta 1 update
 
 ### v0.2.0
 
-* [flutter/engine#4742](https://github.com/flutter/engine/pull/4742) updated assets to be read directly out of the APK on Android. As a result, leading slashes are no longer supported in image asset paths:
+* [flutter/engine#4742](https://github.com/flutter/engine/pull/4742) atualizou assets para serem lidos diretamente do APK no Android. Como resultado, barras iniciais não são mais suportadas em caminhos de asset de imagem:
 
-  > #### Before
+  > #### Antes
   >     new Image.asset('/foo/bar.png')
   >
-  > #### After:
+  > #### Depois:
   >     new Image.asset('foo/bar.png')
 
 ### v0.1.9
 
-* [#14901](https://github.com/flutter/flutter/pull/14901) A [Slider](https://api.flutter.dev/flutter/material/Slider-class.html) visual update changed the colors, opacities, and the value indicator shape and behavior. It also removed the "`thumbOpenAtMin`" flag from the Slider class, which is no longer needed, and can be emulated by the custom thumb shape support.
+* [#14901](https://github.com/flutter/flutter/pull/14901) Uma atualização visual do [Slider](https://api.flutter.dev/flutter/material/Slider-class.html) alterou as cores, opacidades e o shape e comportamento do indicador de valor. Também removeu a flag "`thumbOpenAtMin`" da classe Slider, que não é mais necessária, e pode ser emulada pelo suporte a shape customizado de thumb.
 
-## Changes in v0.1.5 (since v0.1.4) - beta 1.1
+## Mudanças em v0.1.5 (desde v0.1.4) - beta 1.1
 
 ### v0.1.5
 
-* [#14714](https://github.com/flutter/flutter/pull/14714) fixed the groovy script for the Flutter Gallery, thus fixing [#14912](https://github.com/flutter/flutter/issues/14912).
+* [#14714](https://github.com/flutter/flutter/pull/14714) corrigiu o script groovy para o Flutter Gallery, assim corrigindo [#14912](https://github.com/flutter/flutter/issues/14912).
 
-## Changes in v0.1.4 (since v0.0.20) - beta 1
+## Mudanças em v0.1.4 (desde v0.0.20) - beta 1
 
 ### v0.1.3
 
-* [#14702](https://github.com/flutter/flutter/pull/14702) removed the `engineDartVersion` getter from the flutter tool's `Version` class.
+* [#14702](https://github.com/flutter/flutter/pull/14702) removeu o getter `engineDartVersion` da classe `Version` da ferramenta flutter.
 
 ### v0.1.1
 
-* [flutter/engine#4607](https://github.com/flutter/engine/pull/4607) and [#14601](https://github.com/flutter/flutter/pull/14601) removed default constructors from the following `dart:ui` classes:
+* [flutter/engine#4607](https://github.com/flutter/engine/pull/4607) e [#14601](https://github.com/flutter/flutter/pull/14601) removeram construtores padrão das seguintes classes `dart:ui`:
 
   * `Codec`
   * `FrameInfo`
@@ -326,41 +327,41 @@ To follow our investigation, see [Dart issue 32936](https://github.com/dart-lang
   * `SemanticsUpdate`
   * `Shader`
 
-  The default constructors were removed to prevent the creation of uninitialized instances of these classes (and in certain cases to prevent extending these classes). These classes should be instantiated only by the Flutter engine or through named constructors (if provided).
+  Os construtores padrão foram removidos para prevenir a criação de instâncias não inicializadas dessas classes (e em certos casos para prevenir a extensão dessas classes). Essas classes devem ser instanciadas apenas pelo engine Flutter ou através de construtores nomeados (se fornecidos).
 
 ### v0.0.24
 
-* [#14410](https://github.com/flutter/flutter/pull/14410) contained a breaking API change to `ButtonTheme`:
+* [#14410](https://github.com/flutter/flutter/pull/14410) continha uma mudança de API breaking para `ButtonTheme`:
 
-  * The constructors `ButtonTheme()` and `ButtonTheme.bar()` are no longer `const` constructible
-  * `ButtonTheme.textTheme` is now `ButtonTheme.data.textTheme`
-  * `ButtonTheme.minWidth` is now `ButtonTheme.data.minWidth`
-  * `ButtonTheme.height` is now `ButtonTheme.data.height`
-  * `ButtonTheme.padding` is now `ButtonTheme.data.padding`
+  * Os construtores `ButtonTheme()` e `ButtonTheme.bar()` não são mais construtíveis com `const`
+  * `ButtonTheme.textTheme` agora é `ButtonTheme.data.textTheme`
+  * `ButtonTheme.minWidth` agora é `ButtonTheme.data.minWidth`
+  * `ButtonTheme.height` agora é `ButtonTheme.data.height`
+  * `ButtonTheme.padding` agora é `ButtonTheme.data.padding`
 
-* [#14410](https://github.com/flutter/flutter/pull/14410) changed the hierarchy of `FlatButton` and `RaisedButton` - they both inherit from `RawMaterialButton` now rather than from `MaterialButton`.
+* [#14410](https://github.com/flutter/flutter/pull/14410) alterou a hierarquia de `FlatButton` e `RaisedButton` - ambos agora herdam de `RawMaterialButton` ao invés de `MaterialButton`.
 
-* [#14410](https://github.com/flutter/flutter/pull/14410) changed `RaisedButton` to no longer cast a shadow when disabled.
+* [#14410](https://github.com/flutter/flutter/pull/14410) alterou `RaisedButton` para não mais projetar uma sombra quando desabilitado.
 
 ### v0.0.23
 
-* [#14343](https://github.com/flutter/flutter/pull/14343) revised how copy, cut, and paste works for EditableText: The abstract class TextSelectionControls has new methods canCopy, canCut, etc. to determine if those actions are available. The TextSelectionDelegate interface now requires an additional method bringIntoView(TextPosition position) to scroll a TextPosition into the visible part of a TextField. Furthermore, that interface is no longer implemented by TextSelectionOverlay. In its place EditableTextState should be used, which implements that interface. See also: [flutter-dev/IHPndyUDy0M](https://groups.google.com/forum/#!topic/flutter-dev/IHPndyUDy0M)
+* [#14343](https://github.com/flutter/flutter/pull/14343) revisou como copiar, recortar e colar funciona para EditableText: A classe abstrata TextSelectionControls tem novos métodos canCopy, canCut, etc. para determinar se essas ações estão disponíveis. A interface TextSelectionDelegate agora requer um método adicional bringIntoView(TextPosition position) para rolar uma TextPosition para a parte visível de um TextField. Além disso, essa interface não é mais implementada por TextSelectionOverlay. Em seu lugar, EditableTextState deve ser usado, que implementa essa interface. Veja também: [flutter-dev/IHPndyUDy0M](https://groups.google.com/forum/#!topic/flutter-dev/IHPndyUDy0M)
 
-#### Sliver APIs
+#### APIs Sliver
 
-* [#14449](https://github.com/flutter/flutter/pull/14449) replaces the `SliverGridLayout.estimateMaxScrollOffset` method by the `SliverGridLayout.computeMaxScrollOffset` method. This new method must report an accurate value, not just an estimate. This was necessary to fix a bug where a finite `SliverGrid` could not handle being scrolled off the top of the screen (because we had no way to determine how much content it had).
+* [#14449](https://github.com/flutter/flutter/pull/14449) substitui o método `SliverGridLayout.estimateMaxScrollOffset` pelo método `SliverGridLayout.computeMaxScrollOffset`. Este novo método deve reportar um valor preciso, não apenas uma estimativa. Isso foi necessário para corrigir um bug onde um `SliverGrid` finito não podia lidar com ser rolado para fora do topo da tela (porque não tínhamos como determinar quanto conteúdo ele tinha).
 
-  For similar reasons, the `RenderSliverBoxChildManager` interface has a new getter, `childCount`, which must return a non-null value if `createChild` can return null. In practice, it is unusual to implement this interface, so this should have no effect. It is more common to implement the widgets-layer equivalent, `SliverChildDelegate`. This interface already had an `estimatedChildCount` getter. The getter continues to exist, though its semantics have been adjusted a little to require that the returned value be accurate if the `build` method on the delegate ever returns null.
+  Por razões similares, a interface `RenderSliverBoxChildManager` tem um novo getter, `childCount`, que deve retornar um valor não nulo se `createChild` pode retornar null. Na prática, é incomum implementar esta interface, então isto não deve ter efeito. É mais comum implementar o equivalente da camada de widgets, `SliverChildDelegate`. Esta interface já tinha um getter `estimatedChildCount`. O getter continua a existir, embora sua semântica tenha sido ajustada um pouco para requerer que o valor retornado seja preciso se o método `build` no delegate alguma vez retornar null.
 
 ### v0.0.21
 
-* [#13734](https://github.com/flutter/flutter/pull/13734), [#14055](https://github.com/flutter/flutter/pull/14055), and [#14177](https://github.com/flutter/flutter/pull/14177) substantially revised the InputDecorator et al. widgets. The layout of the input decorator's parts has changed a little, which means that the internal layout of text fields has changed as well. Tests that depend on the internal geometry of text fields will need to be updated.
+* [#13734](https://github.com/flutter/flutter/pull/13734), [#14055](https://github.com/flutter/flutter/pull/14055) e [#14177](https://github.com/flutter/flutter/pull/14177) revisaram substancialmente os widgets InputDecorator et al. O layout das partes do input decorator mudou um pouco, o que significa que o layout interno dos campos de texto também mudou. Testes que dependem da geometria interna dos campos de texto precisarão ser atualizados.
 
-  In addition, `hideDivider: true` must be replaced by the new `border: InputBorder.none`. This is part of our making it easier to customize how inputs are rendered; you can now also provide a custom InputBorder subclass if you have particularly novel desires for your input decoration.
+  Além disso, `hideDivider: true` deve ser substituído pelo novo `border: InputBorder.none`. Isto faz parte de nosso esforço para facilitar a customização de como inputs são renderizados; você agora também pode fornecer uma subclasse customizada de InputBorder se você tem desejos particularmente novos para sua decoração de input.
 
-* [#4528](https://github.com/flutter/engine/pull/4528) and [#14011](https://github.com/flutter/flutter/pull/14011) deprecated support for big integers in the standard platform channel message/method codecs, to be made unavailable following a four week grace period. This change is a consequence of the transition to Dart
-2.0 where the `int` type is no longer unlimited size.
+* [#4528](https://github.com/flutter/engine/pull/4528) e [#14011](https://github.com/flutter/flutter/pull/14011) deprecaram o suporte para big integers nos codecs de mensagem/método de canal de plataforma padrão, para serem tornados indisponíveis após um período de graça de quatro semanas. Esta mudança é uma consequência da transição para Dart
+2.0 onde o tipo `int` não é mais de tamanho ilimitado.
 
-* [#4487](https://github.com/flutter/engine/pull/4487) replaces all uses of the `RequestPermissionResult` callback concept in `io.flutter.plugin.common.PluginRegistry` with `RequestPermissionsResult`, adding a missing `s` to align with the corresponding Android SDK concept.
+* [#4487](https://github.com/flutter/engine/pull/4487) substitui todos os usos do conceito de callback `RequestPermissionResult` em `io.flutter.plugin.common.PluginRegistry` com `RequestPermissionsResult`, adicionando um `s` faltante para alinhar com o conceito correspondente do Android SDK.
 
-  The old API has been deprecated and will be made unavailable in a later release. There will be a grace period of at least four weeks between the release that introduces the deprecation and the release that makes the old API unavailable.
+  A API antiga foi deprecada e será tornada indisponível em uma release posterior. Haverá um período de graça de pelo menos quatro semanas entre a release que introduz a depreciação e a release que torna a API antiga indisponível.

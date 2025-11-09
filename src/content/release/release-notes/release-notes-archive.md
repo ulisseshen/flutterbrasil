@@ -1,22 +1,23 @@
 ---
-title: Archived release notes
-shortTitle: Archived release notes
-description: Archived release notes for Flutter for prior releases.
+ia-translate: true
+title: Notas de versão arquivadas
+shortTitle: Notas de versão arquivadas
+description: Notas de versão arquivadas do Flutter para versões anteriores.
 ---
 
-This page preserves the links to older release notes for
-releases to the stable channel and
-the old GitHub _Changelog_ wiki page before that,
-which documented changes up through and including 1.0.0.
+Esta página preserva os links para notas de versão mais antigas para
+lançamentos no canal stable e
+a antiga página wiki _Changelog_ do GitHub antes disso,
+que documentou mudanças até e incluindo a versão 1.0.0.
 
-## Archived release notes
+## Notas de versão arquivadas
 
 * [Flutter 1.9.1 release notes][1.9.1]
 * [Flutter 1.7.8 release notes][1.7.8]
 * [Flutter 1.5.4 release notes][1.5.4]
 * [Flutter 1.2.1 release notes][1.2.1]
 
-## Old changelog
+## Changelog antigo
 
 * [Flutter Changelog 0.0.21 through 1.0.0][0.0.21]
 

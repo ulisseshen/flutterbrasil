@@ -1,14 +1,14 @@
-If you are deploying to Android, edit your `AndroidManifest.xml` file to
-add the Internet permission.
+Se você está fazendo deploy para Android, edite seu arquivo `AndroidManifest.xml` para
+adicionar a permissão de Internet.
 
 ```xml
 <!-- Required to fetch data from the internet. -->
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 
-Likewise, if you are deploying to macOS, edit your
-`macos/Runner/DebugProfile.entitlements` and `macos/Runner/Release.entitlements`
-files to include the network client entitlement.
+Da mesma forma, se você está fazendo deploy para macOS, edite seus
+arquivos `macos/Runner/DebugProfile.entitlements` e `macos/Runner/Release.entitlements`
+para incluir o entitlement de cliente de rede.
 
 ```xml
 <!-- Required to fetch data from the internet. -->

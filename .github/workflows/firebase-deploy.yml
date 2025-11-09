@@ -8,6 +8,7 @@ on:
 # Declare default permissions as read only
 permissions:
   contents: read
+  checks: write
 
 jobs:
   build_and_deploy:

@@ -48,8 +48,8 @@ dinâmica ou estática. Uma biblioteca vinculada estaticamente
 e é carregada quando o app inicia.
 
 Símbolos de uma biblioteca vinculada estaticamente podem ser
-carregados usando [`DynamicLibrary.executable`][DynamicLibrary.executable] ou
-[`DynamicLibrary.process`][DynamicLibrary.process].
+carregados usando [`DynamicLibrary.executable`][] ou
+[`DynamicLibrary.process`][].
 
 Uma biblioteca vinculada dinamicamente, por outro lado, é distribuída
 em um arquivo ou pasta separado dentro do app
@@ -58,7 +58,7 @@ vinculada dinamicamente é distribuída como um conjunto de arquivos `.so` (ELF)
 um para cada arquitetura.
 
 Uma biblioteca vinculada dinamicamente pode ser carregada em
-Dart via [`DynamicLibrary.open`][DynamicLibrary.open].
+Dart via [`DynamicLibrary.open`][].
 
 A documentação da API está disponível na
 [documentação de referência da API Dart][Dart API reference documentation].
@@ -115,9 +115,9 @@ Os bindings são gerados com [package:ffigen]({{site.pub-pkg}}/ffigen).
 Para vincular a uma biblioteca de plataforma,
 use as seguintes instruções:
 
- 1. Encontre a biblioteca desejada na lista de [Android NDK Native APIs][Android NDK Native APIs]
+ 1. Encontre a biblioteca desejada na lista de [Android NDK Native APIs][]
     na documentação Android. Isso lista APIs nativas estáveis.
- 1. Carregue a biblioteca usando [`DynamicLibrary.open`][DynamicLibrary.open].
+ 1. Carregue a biblioteca usando [`DynamicLibrary.open`][].
     Por exemplo, para carregar OpenGL ES (v3):
 
     ```dart
@@ -139,7 +139,7 @@ plugin.
 
 #### Terceiros open-source
 
-Siga as instruções [Add C and C++ code to your project][Add C and C++ code to your project]
+Siga as instruções [Add C and C++ code to your project][]
 na documentação Android para
 adicionar código nativo e suporte para a
 toolchain de código nativo (tanto CMake quanto `ndk-build`).

@@ -121,13 +121,13 @@ final class DashFooter extends StatelessComponent {
         ]),
         div(classes: 'footer-section footer-tray', [
           div(classes: 'footer-licenses', [
-            text('Except as otherwise noted, this site is licensed under a '),
+            text('Exceto quando indicado de outra forma, este site está licenciado sob uma '),
             a(href: 'https://creativecommons.org/licenses/by/4.0/', [
-              text('Creative Commons Attribution 4.0 International License,'),
+              text('Licença Creative Commons Attribution 4.0 International,'),
             ]),
-            text(' and code samples are licensed under the '),
+            text(' e os exemplos de código estão licenciados sob a '),
             a(href: 'https://opensource.org/licenses/BSD-3-Clause', [
-              text('3-Clause BSD License.'),
+              text('Licença BSD de 3 Cláusulas.'),
             ]),
           ]),
           div(classes: 'footer-utility-links', [
@@ -135,30 +135,30 @@ final class DashFooter extends StatelessComponent {
               li([
                 a(
                   href: '/tos',
-                  attributes: {'title': 'Terms of use'},
-                  [text('Terms')],
+                  attributes: {'title': 'Termos de uso'},
+                  [text('Termos')],
                 ),
               ]),
               li([
                 a(
                   href: '/brand',
-                  attributes: {'title': 'Brand usage guidelines'},
-                  [text('Brand')],
+                  attributes: {'title': 'Diretrizes de uso da marca'},
+                  [text('Marca')],
                 ),
               ]),
               li([
                 a(
                   href: 'https://policies.google.com/privacy',
                   target: Target.blank,
-                  attributes: {'rel': 'noopener', 'title': 'Privacy policy'},
-                  [text('Privacy')],
+                  attributes: {'rel': 'noopener', 'title': 'Política de privacidade'},
+                  [text('Privacidade')],
                 ),
               ]),
               li([
                 a(
                   href: '/security',
-                  attributes: {'title': 'Security philosophy and practices'},
-                  [text('Security')],
+                  attributes: {'title': 'Filosofia e práticas de segurança'},
+                  [text('Segurança')],
                 ),
               ]),
             ]),

@@ -55,18 +55,18 @@ final class _CookieNoticeState extends State<CookieNotice> {
         div(classes: 'container', [
           p([
             text(
-              'docs.flutterbrasil.dev uses cookies from Google to deliver and '
-              'enhance the quality of its services and to analyze traffic.',
+              'O docs.flutterbrasil.dev usa cookies do Google para fornecer e '
+              'melhorar a qualidade de seus serviços e para analisar o tráfego.',
             ),
           ]),
           div(classes: 'button-group', [
             const Button(
-              content: 'Learn more',
+              content: 'Saiba mais',
               href: 'https://policies.google.com/technologies/cookies',
               attributes: {'target': '_blank', 'rel': 'noopener'},
             ),
             Button(
-              content: 'OK, got it',
+              content: 'OK, entendi',
               style: ButtonStyle.filled,
               onClick: () {
                 web.window.localStorage.setItem(

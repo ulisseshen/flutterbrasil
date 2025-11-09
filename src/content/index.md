@@ -1,9 +1,10 @@
 ---
-title: Flutter documentation
+ia-translate: true
+title: Documentação Flutter
 shortTitle: Docs
 description: >-
-  Get started with Flutter. Widgets, examples, updates, and API docs to
-  help you write your first Flutter app.
+  Comece com Flutter. Widgets, exemplos, atualizações e documentação de APIs para
+  ajudá-lo a escrever seu primeiro app Flutter.
 ---
 
 <div class="card-grid">
@@ -14,48 +15,48 @@ description: >-
 {% endfor -%}
 </div>
 
-**To see changes to the site since our last release,
-see [What's new][].**
+**Para ver as mudanças no site desde nosso último release,
+veja [What's new][What's new].**
 
 [What's new]: /release/whats-new
 
-## New to Flutter?
+## Novo no Flutter?
 
-Ready to build beautiful, multiplatform apps from a single codebase?
-This video walks you through the fundamentals of Flutter and shows you how to get started.
+Pronto para construir apps bonitos e multiplataforma a partir de uma única base de código?
+Este vídeo apresenta os fundamentos do Flutter e mostra como começar.
 
-Once you've [Set up Flutter][],
-you should follow the
-[Write your first Flutter app][] codelab
-and read [Flutter fundamentals][].
-These resources are opinionated documentation
-that guide you through the most important
-parts of building a Flutter app.
+Depois de [configurar o Flutter][Set up Flutter],
+você deve seguir o
+codelab [Write your first Flutter app][Write your first Flutter app]
+e ler [Flutter fundamentals][Flutter fundamentals].
+Esses recursos são documentação opinativa
+que guia você pelas partes mais importantes
+da construção de um app Flutter.
 
 [Write your first Flutter app]: /get-started/codelab
 [Flutter fundamentals]: /get-started/fundamentals
 
 ### Docs
 
-Coming from another platform? Check out Flutter for:
-[Android][], [SwiftUI][], [UIKit][], [React Native][], and
-[Xamarin.Forms][] developers.
+Vindo de outra plataforma? Confira Flutter para desenvolvedores:
+[Android][Android], [SwiftUI][SwiftUI], [UIKit][UIKit], [React Native][React Native] e
+[Xamarin.Forms][Xamarin.Forms].
 
-[Building layouts][]
-: Learn how to create layouts in Flutter,
-  where everything is a [widget](/resources/glossary#widget).
+[Building layouts][Building layouts]
+: Aprenda como criar layouts no Flutter,
+  onde tudo é um [widget](/resources/glossary#widget).
 
-[Understanding constraints][]
-: Once you understand that "Constraints
+[Understanding constraints][Understanding constraints]
+: Uma vez que você entenda que "Constraints
   flow down. Sizes flow up. Parents set
-  positions", then you are well on your
-  way to understanding Flutter's layout model.
+  positions", então você está no caminho certo
+  para entender o modelo de layout do Flutter.
 
 [Adding interactivity to your Flutter app][interactivity]
-: Learn how to add a stateful widget to your app.
+: Aprenda como adicionar um stateful widget ao seu app.
 
-[FAQ][]
-: Get the answers to frequently asked questions.
+[FAQ][FAQ]
+: Obtenha respostas para perguntas frequentes.
 
 [Android]: /get-started/flutter-for/android-devs
 [Building layouts]: /ui/layout
@@ -71,14 +72,14 @@ Coming from another platform? Check out Flutter for:
 ### Videos
 
 <div class="video-wrapper">
-  <span class="video-intro">Check out what's new in Flutter at Google I/O 2025!</span>
+  <span class="video-intro">Confira as novidades do Flutter no Google I/O 2025!</span>
   <YouTubeEmbed id="v6Rzo5khNE8" title="What's new in Flutter" fullWidth></YouTubeEmbed>
 </div>
 <br>
 
-For more Flutter at Google I/O 2025, check out
-[How to build agentic apps with Flutter and Firebase AI Logic][]
-and [How Flutter makes the most of your platforms][].
+Para mais Flutter no Google I/O 2025, confira
+[How to build agentic apps with Flutter and Firebase AI Logic][How to build agentic apps with Flutter and Firebase AI Logic]
+e [How Flutter makes the most of your platforms][How Flutter makes the most of your platforms].
 
 <div class="card-grid">
   <div class="card wrapped-card outlined-card">
@@ -96,10 +97,10 @@ and [How Flutter makes the most of your platforms][].
 [How to build agentic apps with Flutter and Firebase AI Logic]: {{site.yt.watch}}?v=xo271p-Fl_4
 [How Flutter makes the most of your platforms]: {{site.yt.watch}}?v=flwULzNYRac
 
-To learn about all of the Flutter video series, see our [videos][] page.
+Para saber sobre todas as séries de vídeos do Flutter, veja nossa página de [videos][videos].
 
-We release new videos almost every week!
+Lançamos novos vídeos quase toda semana!
 
-<a class="filled-button" target="_blank" href="https://www.youtube.com/@flutterdev">Check out the Flutter YouTube channel</a>
+<a class="filled-button" target="_blank" href="https://www.youtube.com/@flutterdev">Confira o canal do Flutter no YouTube</a>
 
 [videos]: /resources/videos

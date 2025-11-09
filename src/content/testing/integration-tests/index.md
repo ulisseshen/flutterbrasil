@@ -353,7 +353,7 @@ Para testar em um dispositivo iOS real, complete as seguintes tarefas.
 
 ---
 
-### Teste em um navegador web
+### Teste em um navegador web {:#test-in-a-web-browser}
 
 {% comment %}
 TODO(ryjohn): Add back after other WebDriver versions are supported:

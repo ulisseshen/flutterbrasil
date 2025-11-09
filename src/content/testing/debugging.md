@@ -24,7 +24,7 @@ aplicações Flutter. Aqui estão algumas das ferramentas disponíveis:
   widgets individuais e seus valores de propriedade,
   habilite o overlay de performance, e mais.
 
-## Outros recursos
+## Outros recursos {:#other-resources}
 
 Você pode achar os seguintes documentos úteis:
 

@@ -12,7 +12,7 @@ Este guia descreve quais recursos de depuração você pode habilitar no seu có
 Para uma lista completa de ferramentas de depuração e profiling, confira a
 página [Debugging][Debugging].
 
-## Adicionar logging à sua aplicação
+## Adicionar logging à sua aplicação {:#add-logging-to-your-application}
 
 A lista a seguir contém algumas instruções que você pode usar para registrar o
 comportamento da sua aplicação. Você pode visualizar seus logs na
@@ -581,7 +581,7 @@ Qualquer função ou método no framework Flutter que começa com
 
 [cjk]: https://en.wikipedia.org/wiki/CJK_characters
 
-## Depurar problemas de animação
+## Depurar problemas de animação {:#debug-animation-issues}
 
 :::note
 Para depurar animações com o menor esforço, desacelere-as.
@@ -655,7 +655,7 @@ Você pode gerar stack traces sob demanda também.
 Para imprimir seus próprios stack traces, adicione a função `debugPrintStack()`
 ao seu app.
 
-### Rastrear performance de código Dart
+### Rastrear performance de código Dart {:#trace-dart-code-performance}
 
 :::note
 Você pode usar a [aba Timeline events][Timeline events tab] do DevTools para realizar rastreamentos.
@@ -687,7 +687,7 @@ segmentos arbitrários de código Dart, use os utilitários [Timeline][Timeline]
 Para garantir que as características de performance em tempo de execução correspondam de perto às
 do seu produto final, execute seu app no [modo profile][profile mode].
 
-### Adicionar overlay de performance
+### Adicionar overlay de performance {:#add-performance-overlay}
 
 :::note
 Você pode alternar a exibição do overlay de performance no

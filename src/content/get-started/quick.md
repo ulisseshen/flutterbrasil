@@ -1,60 +1,61 @@
 ---
-title: Set up and test drive Flutter
-shortTitle: Quick start
+ia-translate: true
+title: Configure e teste o Flutter
+shortTitle: Início rápido
 description: >-
-  Set up Flutter on your device with a OSS-based editor, such as VS Code, and
-  get started developing your first multi-platform app with Flutter!
+  Configure Flutter no seu dispositivo com um editor baseado em OSS, como VS Code, e
+  comece a desenvolver seu primeiro app multiplataforma com Flutter!
 showBanner: false
 sitemap: false
 ---
 
-Learn how to use any OSS-based editor, such as VS Code,
-to set up your Flutter development environment and
-test drive Flutter's developer experience.
+Aprenda como usar qualquer editor baseado em OSS, como VS Code,
+para configurar seu ambiente de desenvolvimento Flutter e
+experimentar a experiência de desenvolvedor do Flutter.
 
-If you've developed with Flutter before,
-or you prefer to use a different editor or IDE,
-you can follow the [custom setup instructions][] instead.
+Se você já desenvolveu com Flutter antes,
+ou prefere usar um editor ou IDE diferente,
+você pode seguir as [instruções de configuração personalizada][custom setup instructions].
 
-:::note What you'll achieve
+:::note O que você alcançará
 
-- Install the software prerequisites for Flutter.
-- Use VS Code to download and install Flutter.
-- Create a new Flutter app from a sample template.
-- Try out Flutter development features like stateful hot reload.
+- Instalar os pré-requisitos de software para Flutter.
+- Usar VS Code para baixar e instalar Flutter.
+- Criar um novo app Flutter a partir de um template de exemplo.
+- Experimentar recursos de desenvolvimento Flutter como hot reload com estado.
 
 :::
 
 [custom setup instructions]: /get-started/custom
 
-## Confirm your development platform {: #dev-platform}
+## Confirme sua plataforma de desenvolvimento {: #dev-platform}
 
-The instructions on this page are configured to cover
-installing and trying out Flutter on a **Windows**{:.selected-os-text} device.
+As instruções nesta página estão configuradas para cobrir
+a instalação e teste do Flutter em um dispositivo **Windows**{:.selected-os-text}.
 
-If you'd like to follow the instructions for a different OS,
-please select one of the following.
+Se você gostaria de seguir as instruções para um OS diferente,
+por favor selecione um dos seguintes.
 
 <OSSelector />
 
-## Download prerequisite software {: #download-prerequisites}
+## Baixe o software pré-requisito {: #download-prerequisites}
 
-For the smoothest Flutter setup,
-first install the following tools.
+Para a configuração mais suave do Flutter,
+primeiro instale as seguintes ferramentas.
 
- 1. <h3>Set up Linux support</h3>
+ 1. <h3>Configure o suporte ao Linux</h3>
 
-    If you haven't set up Linux support on your Chromebook before,
-    [Turn on Linux support][chromeos-linux].
+    Se você ainda não configurou o suporte ao Linux no seu Chromebook,
+    [Ative o suporte ao Linux][chromeos-linux].
 
-    If you've already turned on Linux support,
-    ensure it's up to date following the
-    [Fix problems with Linux][chromeos-linux-update] instructions.
+    Se você já ativou o suporte ao Linux,
+    certifique-se de que está atualizado seguindo as
+    instruções [Corrigir problemas com Linux][chromeos-linux-update].
 
- 1. <h3>Download and install prerequisite packages</h3>
+ 1. <h3>Baixe e instale os pacotes pré-requisito</h3>
 
-    Using `apt-get` or your preferred installation mechanism,
-    install the latest versions of the following packages:
+    Usando `apt-get` ou seu mecanismo de instalação preferido,
+    instale as versões mais recentes dos seguintes pacotes:
 
     - `curl`
     - `git`
@@ -63,79 +64,79 @@ first install the following tools.
     - `zip`
     - `libglu1-mesa`
 
-    If you want to use `apt-get`,
-    install these packages using the following commands:
+    Se você quer usar `apt-get`,
+    instale esses pacotes usando os seguintes comandos:
 
     ```console
     $ sudo apt-get update -y && sudo apt-get upgrade -y
     $ sudo apt-get install -y curl git unzip xz-utils zip libglu1-mesa
     ```
 
- 1. <h3>Download and install Visual Studio Code</h3>
+ 1. <h3>Baixe e instale o Visual Studio Code</h3>
 
-    To quickly install Flutter, then edit and debug your apps,
-    [install and set up Visual Studio Code][vscode-install].
+    Para instalar Flutter rapidamente, depois editar e depurar seus apps,
+    [instale e configure o Visual Studio Code][vscode-install].
 
-    You can instead install and use any other Code OSS-based editor
-    that supports VS Code extensions.
-    If you choose to do so, for the rest of this article,
-    assume VS Code refers to the editor of your choice.
+    Você pode, em vez disso, instalar e usar qualquer outro editor baseado em Code OSS
+    que suporte extensões do VS Code.
+    Se você escolher fazer isso, para o resto deste artigo,
+    assuma que VS Code se refere ao editor de sua escolha.
 
 {: .steps .chromeos-only}
 
- 1. <h3>Install git</h3>
+ 1. <h3>Instale o git</h3>
 
-    **If you already have git installed, skip to the next
-    step: Download and install Visual Studio Code.**
+    **Se você já tem o git instalado, pule para o próximo
+    passo: Baixe e instale o Visual Studio Code.**
 
-    There are a few ways to install git on your Mac,
-    but the way we recommend is by using XCode.
-    This will be important when you target your
-    builds for iOS or macOS.
+    Existem algumas maneiras de instalar o git no seu Mac,
+    mas a maneira que recomendamos é usando o XCode.
+    Isso será importante quando você direcionar suas
+    compilações para iOS ou macOS.
 
     ```console
     $ xcode-select --install
     ```
 
-    If you haven't installed the tools already,
-    a dialog should open that confirms you'd like to install them.
-    Click **Install**, then once the installation is complete, click **Done**.
+    Se você ainda não instalou as ferramentas,
+    um diálogo deve abrir confirmando que você gostaria de instalá-las.
+    Clique em **Install**, então uma vez que a instalação esteja completa, clique em **Done**.
 
- 1. <h3>Download and install Visual Studio Code</h3>
+ 1. <h3>Baixe e instale o Visual Studio Code</h3>
 
-    To quickly install Flutter, then edit and debug your apps,
-    [install and set up Visual Studio Code][vscode-install].
+    Para instalar Flutter rapidamente, depois editar e depurar seus apps,
+    [instale e configure o Visual Studio Code][vscode-install].
 
-    You can instead install and use any other Code OSS-based editor
-    that supports VS Code extensions.
-    If you choose to do so, for the rest of this article,
-    assume VS Code refers to the editor of your choice.
+    Você pode, em vez disso, instalar e usar qualquer outro editor baseado em Code OSS
+    que suporte extensões do VS Code.
+    Se você escolher fazer isso, para o resto deste artigo,
+    assuma que VS Code se refere ao editor de sua escolha.
 
 {: .steps .macos-only}
 
- 1. <h3>Install Git for Windows</h3>
+ 1. <h3>Instale o Git for Windows</h3>
 
-    Download and install the latest version of [Git for Windows][].
+    Baixe e instale a versão mais recente do [Git for Windows][].
 
-    For help installing or troubleshooting Git,
-    reference the [Git documentation][git-install].
+    Para ajuda com a instalação ou solução de problemas do Git,
+    consulte a [documentação do Git][git-install].
 
- 1. <h3>Download and install Visual Studio Code</h3>
+ 1. <h3>Baixe e instale o Visual Studio Code</h3>
 
-    To quickly install Flutter, then edit and debug your apps,
-    [install and set up Visual Studio Code][vscode-install].
+    Para instalar Flutter rapidamente, depois editar e depurar seus apps,
+    [instale e configure o Visual Studio Code][vscode-install].
 
-    You can instead install and use any other Code OSS-based editor
-    that supports VS Code extensions.
-    If you choose to do so, for the rest of this article,
-    assume VS Code refers to the editor of your choice.
+    Você pode, em vez disso, instalar e usar qualquer outro editor baseado em Code OSS
+    que suporte extensões do VS Code.
+    Se você escolher fazer isso, para o resto deste artigo,
+    assuma que VS Code se refere ao editor de sua escolha.
 
 {: .steps .windows-only}
 
- 1. <h3>Download and install prerequisite packages</h3>
+ 1. <h3>Baixe e instale os pacotes pré-requisito</h3>
 
-    Using your preferred package manager or mechanism,
-    install the latest versions of the following packages:
+    Usando seu gerenciador de pacotes ou mecanismo preferido,
+    instale as versões mais recentes dos seguintes pacotes:
 
     - `curl`
     - `git`
@@ -144,23 +145,23 @@ first install the following tools.
     - `zip`
     - `libglu1-mesa`
 
-    On Debian-based distros with `apt-get`, such as Ubuntu,
-    install these packages using the following commands:
+    Em distribuições baseadas em Debian com `apt-get`, como Ubuntu,
+    instale esses pacotes usando os seguintes comandos:
 
     ```console
     $ sudo apt-get update -y && sudo apt-get upgrade -y
     $ sudo apt-get install -y curl git unzip xz-utils zip libglu1-mesa
     ```
 
- 1. <h3>Download and install Visual Studio Code</h3>
+ 1. <h3>Baixe e instale o Visual Studio Code</h3>
 
-    To quickly install Flutter, then edit and debug your apps,
-    [install and set up Visual Studio Code][vscode-install].
+    Para instalar Flutter rapidamente, depois editar e depurar seus apps,
+    [instale e configure o Visual Studio Code][vscode-install].
 
-    You can instead install and use any other Code OSS-based editor
-    that supports VS Code extensions.
-    If you choose to do so, for the rest of this article,
-    assume VS Code refers to the editor of your choice.
+    Você pode, em vez disso, instalar e usar qualquer outro editor baseado em Code OSS
+    que suporte extensões do VS Code.
+    Se você escolher fazer isso, para o resto deste artigo,
+    assuma que VS Code se refere ao editor de sua escolha.
 
 {: .steps .linux-only}
 
@@ -170,81 +171,81 @@ first install the following tools.
 [git-install]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 [vscode-install]: https://code.visualstudio.com/docs/setup/setup-overview
 
-## Install and set up Flutter {: #install}
+## Instale e configure Flutter {: #install}
 
-Now that you've installed Git and VS Code,
-follow these steps to use VS Code to install and set up Flutter.
+Agora que você instalou Git e VS Code,
+siga estes passos para usar VS Code para instalar e configurar Flutter.
 
-:::note Download manually
-If you prefer to manually install Flutter,
-follow the instructions in [Install Flutter manually][].
+:::note Baixe manualmente
+Se você prefere instalar Flutter manualmente,
+siga as instruções em [Instalar Flutter manualmente][Install Flutter manually].
 :::
 
- 1. <h3>Launch VS Code</h3>
+ 1. <h3>Inicie o VS Code</h3>
 
-    If not already open, open VS Code by searching for it with Spotlight
-    or opening it manually from the directory where it's installed.
+    Se ainda não estiver aberto, abra o VS Code procurando por ele com Spotlight
+    ou abrindo-o manualmente do diretório onde está instalado.
 
- 1. <h3>Add the Flutter extension to VS Code</h3>
+ 1. <h3>Adicione a extensão Flutter ao VS Code</h3>
 
-    To add the Dart and Flutter extensions to VS Code,
-    visit the [Flutter extension's marketplace page][flutter-vscode],
-    then click **Install**.
-    If prompted by your browser, allow it to open VS Code.
+    Para adicionar as extensões Dart e Flutter ao VS Code,
+    visite a [página do marketplace da extensão Flutter][flutter-vscode],
+    então clique em **Install**.
+    Se solicitado pelo seu navegador, permita que ele abra o VS Code.
 
- 1. <h3>Install Flutter with VS Code</h3>
+ 1. <h3>Instale Flutter com VS Code</h3>
 
-    1. Open the command palette in VS Code.
+    1. Abra a paleta de comandos no VS Code.
 
-       Go to **View** <span aria-label="and then">></span> **Command Palette**
-       or press <kbd class="special-key">Cmd/Ctrl</kbd> +
+       Vá para **View** <span aria-label="and then">></span> **Command Palette**
+       ou pressione <kbd class="special-key">Cmd/Ctrl</kbd> +
        <kbd>Shift</kbd> + <kbd>P</kbd>.
 
-    1. In the command palette, type `flutter`.
+    1. Na paleta de comandos, digite `flutter`.
 
-    1. Select **Flutter: New Project**.
+    1. Selecione **Flutter: New Project**.
 
-    1. VS Code prompts you to locate the Flutter SDK on your computer.
-       Select **Download SDK**.
+    1. O VS Code solicita que você localize o Flutter SDK no seu computador.
+       Selecione **Download SDK**.
 
-    1. When the **Select Folder for Flutter SDK** dialog displays,
-       choose where you want to install Flutter.
+    1. Quando o diálogo **Select Folder for Flutter SDK** aparecer,
+       escolha onde você quer instalar Flutter.
 
-    1. Click **Clone Flutter**.
+    1. Clique em **Clone Flutter**.
 
-       While downloading Flutter, VS Code displays this pop-up notification:
+       Enquanto baixa Flutter, o VS Code exibe esta notificação pop-up:
 
        ```console
        Downloading the Flutter SDK. This may take a few minutes.
        ```
 
-       This download takes a few minutes.
-       If you suspect that the download has hung, click **Cancel** then
-       start the installation again.
+       Este download leva alguns minutos.
+       Se você suspeita que o download travou, clique em **Cancel** e então
+       inicie a instalação novamente.
 
-    1. Click **Add SDK to PATH**.
+    1. Clique em **Add SDK to PATH**.
 
-       When successful, a notification displays:
+       Quando bem-sucedido, uma notificação é exibida:
 
        ```console
        The Flutter SDK was added to your PATH
        ```
 
-    1. VS Code might display a Google Analytics notice.
+    1. O VS Code pode exibir um aviso do Google Analytics.
 
-       If you agree, click **OK**.
+       Se você concorda, clique em **OK**.
 
-    1. To ensure that Flutter is available in all terminals:
+    1. Para garantir que Flutter esteja disponível em todos os terminais:
 
-       1. Close, then reopen all terminal windows.
-       1. Restart VS Code.
+       1. Feche e então reabra todas as janelas de terminal.
+       1. Reinicie o VS Code.
 
        {:type="a"}
 
- 1. <h3>Troubleshoot installation issues</h3>
+ 1. <h3>Solucione problemas de instalação</h3>
 
-    If you encounter any issues during installation,
-    check out [Flutter installation troubleshooting][troubleshoot].
+    Se você encontrar problemas durante a instalação,
+    confira [Solução de problemas de instalação do Flutter][troubleshoot].
 
 {:.steps}
 
@@ -252,103 +253,103 @@ follow the instructions in [Install Flutter manually][].
 [flutter-vscode]: https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter
 [troubleshoot]: /install/troubleshoot
 
-## Test drive Flutter {: #test-drive}
+## Teste o Flutter {: #test-drive}
 
-Now that you've set up VS Code and Flutter,
-it's time to create an app and try out Flutter development!
+Agora que você configurou VS Code e Flutter,
+é hora de criar um app e experimentar o desenvolvimento Flutter!
 
- 1. <h3>Create a new Flutter app</h3>
+ 1. <h3>Crie um novo app Flutter</h3>
 
-    1. Open the command palette in VS Code.
+    1. Abra a paleta de comandos no VS Code.
 
-       Go to **View** <span aria-label="and then">></span> **Command Palette**
-       or press <kbd class="special-key">Cmd/Ctrl</kbd> +
+       Vá para **View** <span aria-label="and then">></span> **Command Palette**
+       ou pressione <kbd class="special-key">Cmd/Ctrl</kbd> +
        <kbd>Shift</kbd> + <kbd>P</kbd>.
 
-    1. In the command palette, start typing `flutter:`.
+    1. Na paleta de comandos, comece digitando `flutter:`.
 
-       VS Code should surface commands from the Flutter plugin.
+       O VS Code deve exibir comandos do plugin Flutter.
 
-    1. Select the **Flutter: New Project** command.
+    1. Selecione o comando **Flutter: New Project**.
 
-       Your OS or VS Code might ask for access to your documents,
-       agree to continue to the next step.
+       Seu OS ou VS Code pode pedir acesso aos seus documentos,
+       concorde para continuar para o próximo passo.
 
-    1. Choose the **Application** template.
+    1. Escolha o template **Application**.
 
-       VS Code should prompt you with **Which Flutter template?**.
-       Choose **Application** to bootstrap a simple counter app.
+       O VS Code deve solicitar **Which Flutter template?**.
+       Escolha **Application** para inicializar um app contador simples.
 
-    1. Create or select the parent directory for your new app's folder.
+    1. Crie ou selecione o diretório pai para a pasta do seu novo app.
 
-       A file dialog should appear.
+       Um diálogo de arquivo deve aparecer.
 
-       1. Select or create the parent directory where
-          you want the project to be created.
-       1. To confirm your selection,
-          click **Select a folder to create the project in**.
+       1. Selecione ou crie o diretório pai onde
+          você quer que o projeto seja criado.
+       1. Para confirmar sua seleção,
+          clique em **Select a folder to create the project in**.
 
-    1. Enter a name for your app.
+    1. Digite um nome para seu app.
 
-       VS Code should prompt you to enter a name for your new app.
-       Enter `trying_flutter` or a similar `lowercase_with_underscores` name.
-       To confirm your selection, press <kbd>Enter</kbd>.
+       O VS Code deve solicitar que você digite um nome para seu novo app.
+       Digite `trying_flutter` ou um nome similar `minúsculas_com_underscores`.
+       Para confirmar sua seleção, pressione <kbd>Enter</kbd>.
 
-    1. Wait for project initialization to complete.
+    1. Aguarde a conclusão da inicialização do projeto.
 
-       Task progress is often surfaced as a notification in the bottom right
-       and can also be accessed from the **Output** panel.
+       O progresso da tarefa geralmente é exibido como uma notificação no canto inferior direito
+       e também pode ser acessado no painel **Output**.
 
-    1. Open the `lib` directory, then the `main.dart` file.
+    1. Abra o diretório `lib`, depois o arquivo `main.dart`.
 
-       If you're curious about what each portion of the code does,
-       check out the preceding comments throughout the file.
+       Se você está curioso sobre o que cada parte do código faz,
+       confira os comentários anteriores ao longo do arquivo.
 
- 1. <h3>Run your app on the web</h3>
+ 1. <h3>Execute seu app na web</h3>
 
-    While Flutter apps can run on many platforms,
-    try running your new app on the web.
+    Embora apps Flutter possam rodar em muitas plataformas,
+    tente executar seu novo app na web.
 
-    1. Open the command palette in VS Code.
+    1. Abra a paleta de comandos no VS Code.
 
-       Go to **View** <span aria-label="and then">></span> **Command Palette**
-       or press <kbd class="special-key">Cmd/Ctrl</kbd> +
+       Vá para **View** <span aria-label="and then">></span> **Command Palette**
+       ou pressione <kbd class="special-key">Cmd/Ctrl</kbd> +
        <kbd>Shift</kbd> + <kbd>P</kbd>.
 
-    1. In the command palette, start typing `flutter:`.
+    1. Na paleta de comandos, comece digitando `flutter:`.
 
-       VS Code should surface commands from the Flutter plugin.
+       O VS Code deve exibir comandos do plugin Flutter.
 
-    1. Select the **Flutter: Select Device** command.
+    1. Selecione o comando **Flutter: Select Device**.
 
-    1. From the **Select Device** prompt, select **Chrome**.
+    1. No prompt **Select Device**, selecione **Chrome**.
 
-    1. Run or start debugging your app.
+    1. Execute ou comece a depurar seu app.
 
-       Go to **Run** <span aria-label="and then">></span>
-       **Start Debugging** or press <kbd>F5</kbd>.
+       Vá para **Run** <span aria-label="and then">></span>
+       **Start Debugging** ou pressione <kbd>F5</kbd>.
 
-       `flutter run` is used to build and start your app,
-       then a new instance of Chrome should open and
-       start running your newly created app.
+       `flutter run` é usado para compilar e iniciar seu app,
+       então uma nova instância do Chrome deve abrir e
+       começar a executar seu app recém-criado.
 
- 1. <h3>Try hot reload</h3>
+ 1. <h3>Experimente hot reload</h3>
 
-    Flutter offers a fast development cycle with **stateful hot reload**,
-    the ability to reload the code of a live running app without
-    restarting or losing app state.
+    Flutter oferece um ciclo de desenvolvimento rápido com **hot reload com estado**,
+    a capacidade de recarregar o código de um app em execução sem
+    reiniciar ou perder o estado do app.
 
-    You can change your app's source code,
-    run the hot reload command in VS Code,
-    then see the change in your running app.
+    Você pode alterar o código-fonte do seu app,
+    executar o comando hot reload no VS Code,
+    e então ver a mudança no seu app em execução.
 
-    1. In the running app, try adding to the counter a few times by
-       clicking the ![increment (+)][increment-button]{: .text-icon} button.
+    1. No app em execução, tente adicionar ao contador algumas vezes
+       clicando no botão ![incremento (+)][increment-button]{: .text-icon}.
 
-    1. With your app still running, make a change in the `lib/main.dart` file.
+    1. Com seu app ainda em execução, faça uma alteração no arquivo `lib/main.dart`.
 
-       Change the `_counter++` line in the `_incrementCounter` method
-       to instead decrement the `_counter` field.
+       Altere a linha `_counter++` no método `_incrementCounter`
+       para decrementar o campo `_counter`.
 
        ```dart diff
          setState(() {
@@ -358,51 +359,51 @@ it's time to create an app and try out Flutter development!
          });
        ```
 
-    1. Save your changes
-       (**File** <span aria-label="and then">></span> **Save All**) or
-       click the **Hot Reload** ![hot reload icon][]{: .text-icon} button.
+    1. Salve suas alterações
+       (**File** <span aria-label="and then">></span> **Save All**) ou
+       clique no botão **Hot Reload** ![ícone hot reload][hot reload icon]{: .text-icon}.
 
-       Flutter updates the running app without losing any existing state.
-       Notice the existing value stayed the same.
+       Flutter atualiza o app em execução sem perder nenhum estado existente.
+       Observe que o valor existente permaneceu o mesmo.
 
-    1. Try clicking the
-       ![increment (+)][increment-button]{: .text-icon} button again.
-       Notice the value decreases instead of increases.
+    1. Tente clicar no botão
+       ![incremento (+)][increment-button]{: .text-icon} novamente.
+       Observe que o valor diminui em vez de aumentar.
 
- 1. <h3>Explore the Flutter sidebar</h3>
+ 1. <h3>Explore a barra lateral do Flutter</h3>
 
-    The Flutter plugin adds a dedicated sidebar to VS Code
-    for managing Flutter debug sessions and devices,
-    viewing an outline of your code and widgets,
-    as well as accessing the Dart and Flutter DevTools.
+    O plugin Flutter adiciona uma barra lateral dedicada ao VS Code
+    para gerenciar sessões de depuração e dispositivos Flutter,
+    visualizar um esboço do seu código e widgets,
+    bem como acessar o Dart e Flutter DevTools.
 
-    1. If your app isn't running, start debugging it again.
+    1. Se seu app não está em execução, inicie a depuração novamente.
 
-       Go to **Run** <span aria-label="and then">></span>
-       **Start Debugging** or press <kbd>F5</kbd>.
+       Vá para **Run** <span aria-label="and then">></span>
+       **Start Debugging** ou pressione <kbd>F5</kbd>.
 
-    1. Open the Flutter sidebar in VS Code.
+    1. Abra a barra lateral do Flutter no VS Code.
 
-       Either open it with the Flutter ![Flutter logo][]{: .text-icon} button in
-       the VS Code sidebar or open it from the command palette by
-       running the **Flutter: Focus on Flutter Sidebar View** command.
+       Abra-a com o botão ![logo Flutter][Flutter logo]{: .text-icon} do Flutter na
+       barra lateral do VS Code ou abra-a da paleta de comandos
+       executando o comando **Flutter: Focus on Flutter Sidebar View**.
 
-    1. In the Flutter sidebar, under **DevTools**,
-       click the **Flutter Inspector** button.
+    1. Na barra lateral do Flutter, em **DevTools**,
+       clique no botão **Flutter Inspector**.
 
-       A separate **Widget Inspector** panel should open in VS Code.
+       Um painel separado **Widget Inspector** deve abrir no VS Code.
 
-       In the widget inspector, you can view your app's widget tree,
-       view the properties and layout of each widget, and more.
+       No widget inspector, você pode visualizar a árvore de widgets do seu app,
+       ver as propriedades e layout de cada widget, e muito mais.
 
-    1. In the widget inspector, try clicking the top-level `MyHomePage` widget.
+    1. No widget inspector, tente clicar no widget `MyHomePage` de nível superior.
 
-       A view of its properties and layout should open, and
-       the VS Code editor should navigate to and focus the line where
-       the widget was included.
+       Uma visualização de suas propriedades e layout deve abrir, e
+       o editor do VS Code deve navegar e focar na linha onde
+       o widget foi incluído.
 
-    1. Explore and try out other features in
-       the widget inspector and Flutter sidebar.
+    1. Explore e experimente outros recursos no
+       widget inspector e na barra lateral do Flutter.
 
 {:.steps}
 
@@ -410,13 +411,13 @@ it's time to create an app and try out Flutter development!
 [hot reload icon]: /assets/images/docs/get-started/hot-reload.svg
 [Flutter logo]: /assets/images/branding/flutter/logo/square.svg
 
-## Continue your Flutter journey {: #next-steps}
+## Continue sua jornada Flutter {: #next-steps}
 
-**Congratulations!**
-Now that you've installed and tried out Flutter,
-follow the codelab on [Building your first app][],
-set up development for an [additional target platform][], or
-explore some of these resources to continue your Flutter learning journey.
+**Parabéns!**
+Agora que você instalou e experimentou Flutter,
+siga o codelab [Construindo seu primeiro app][Building your first app],
+configure o desenvolvimento para uma [plataforma de destino adicional][additional target platform], ou
+explore alguns desses recursos para continuar sua jornada de aprendizado Flutter.
 
 {% render "docs/get-started/setup-next-steps.html", site: site %}
 

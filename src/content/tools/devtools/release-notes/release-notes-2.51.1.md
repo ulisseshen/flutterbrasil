@@ -1,47 +1,48 @@
 ---
-title: DevTools 2.51.1 release notes
-shortTitle: 2.51.1 release notes
+ia-translate: true
+title: Notas de lançamento do DevTools 2.51.1
+shortTitle: Notas de lançamento 2.51.1
 breadcrumb: 2.51.1
 showToc: false
 ---
 
-The 2.51.1 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](/tools/devtools/overview).
+A versão 2.51.1 do Dart e Flutter DevTools
+inclui as seguintes mudanças, entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](/tools/devtools/overview).
 
-## General updates
+## Atualizações gerais
 
-- Flutter beta channel users were opted into the DevTools-on-Wasm experiment.
-  All other users can still enable the Wasm-compiled DevTools from the settings
-  dialog. - [#9455](https://github.com/flutter/devtools/pull/9455)
-- Added a horizontal scrollbar to data tables to help with navigation. -
+- Usuários do canal beta do Flutter foram incluídos no experimento DevTools-on-Wasm.
+  Todos os outros usuários ainda podem habilitar o DevTools compilado em Wasm no diálogo
+  de configurações. - [#9455](https://github.com/flutter/devtools/pull/9455)
+- Adicionada uma barra de rolagem horizontal às tabelas de dados para auxiliar na navegação. -
   [#9482](https://github.com/flutter/devtools/pull/9482)
-- Made it possible to resize data table columns by dragging the header separators. -
+- Tornado possível redimensionar colunas de tabelas de dados arrastando os separadores de cabeçalho. -
   [#9485](https://github.com/flutter/devtools/pull/9485)
 
-## Inspector updates
+## Atualizações do Inspector
 
-- Fixed an issue where selecting a widget with the Inspector would open the
-  widget definition file instead of the user's project file. -
+- Corrigido um problema onde selecionar um widget com o Inspector abriria o
+  arquivo de definição do widget em vez do arquivo de projeto do usuário. -
   [#176530](https://github.com/flutter/flutter/pull/176530)
 
-## Network profiler updates
+## Atualizações do Network profiler
 
-- Fixed layout of the "error count" badge in the tab name. -
+- Corrigida a disposição do badge "error count" no nome da aba. -
   [#9470](https://github.com/flutter/devtools/pull/9470)
-- Fixed display of "Response Headers" and "Request Headers" when there are no
+- Corrigida a exibição de "Response Headers" e "Request Headers" quando não há
   headers. - [#9492](https://github.com/flutter/devtools/pull/9492)
-- Added a banner to clearly indicate when DevTools is not logging network
-  requests. - [#9495](https://github.com/flutter/devtools/pull/9495)
+- Adicionado um banner para indicar claramente quando o DevTools não está registrando requisições
+  de rede. - [#9495](https://github.com/flutter/devtools/pull/9495)
 
-## VS Code updates
+## Atualizações do VS Code
 
-- Fixed issue preventing shortcuts like `Cmd`+`C` and `Cmd`+`V` from working when DevTools was
-  embedded inside VS Code on macOS. -
+- Corrigido problema que impedia que atalhos como `Cmd`+`C` e `Cmd`+`V` funcionassem quando o DevTools estava
+  embutido dentro do VS Code no macOS. -
   [#9472](https://github.com/flutter/devtools/pull/9472)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes in this release, check out the
-[DevTools git log](https://github.com/flutter/devtools/tree/v2.51.1).
+Para encontrar uma lista completa de mudanças neste lançamento, confira o
+[log do git do DevTools](https://github.com/flutter/devtools/tree/v2.51.1).

@@ -1,8 +1,9 @@
 ---
-title: Android Studio and IntelliJ
+ia-translate: true
+title: Android Studio e IntelliJ
 description: >-
-  Learn how to develop Flutter apps in
-  Android Studio and other IntelliJ products.
+  Aprenda como desenvolver apps Flutter no
+  Android Studio e outros produtos IntelliJ.
 ---
 
 <ul class="nav nav-tabs" id="ide" role="tablist">
@@ -16,500 +17,498 @@ description: >-
 
 <a id="installation-and-setup" aria-hidden="true"></a>
 
-## Installation and setup {: #setup}
+## Instalação e configuração {: #setup}
 
-Android Studio and IntelliJ IDEA offer a complete,
-IDE experience once you install the Flutter plugin.
+Android Studio e IntelliJ IDEA oferecem uma experiência de
+IDE completa após a instalação do plugin Flutter.
 
-To install the latest version of the following IDEs, follow their instructions:
+Para instalar a versão mais recente das seguintes IDEs, siga as instruções:
 
-- [Android Studio][]
-- [IntelliJ IDEA Community][]
-- [IntelliJ IDEA Ultimate][]
+- [Android Studio][Android Studio]
+- [IntelliJ IDEA Community][IntelliJ IDEA Community]
+- [IntelliJ IDEA Ultimate][IntelliJ IDEA Ultimate]
 
 [Android Studio]: {{site.android-dev}}/studio/install
 [IntelliJ IDEA Community]: https://www.jetbrains.com/idea/download/
 [IntelliJ IDEA Ultimate]: https://www.jetbrains.com/idea/download/
 
-### Install the Flutter plugin {: #install-plugin}
+### Instale o plugin Flutter {: #install-plugin}
 
 <Tabs key="dev-os">
 
 <Tab name="Windows">
 
-1. Go to **File** <span aria-label="and then">></span>
+1. Vá para **File** <span aria-label="and then">></span>
    **Settings**.
 
-   You can also press <kbd>Ctrl</kbd> + <kbd>Alt</kbd> +
+   Você também pode pressionar <kbd>Ctrl</kbd> + <kbd>Alt</kbd> +
    <kbd>S</kbd>.
 
-   The **Preferences** dialog opens.
+   A caixa de diálogo **Preferences** abre.
 
-1. From the list at the left, select **Plugins**.
+1. Na lista à esquerda, selecione **Plugins**.
 
-1. From the top of this panel, select **Marketplace**.
+1. No topo deste painel, selecione **Marketplace**.
 
-1. Type `flutter` in the plugin search field.
+1. Digite `flutter` no campo de busca de plugins.
 
-1. Select the **Flutter** plugin.
+1. Selecione o plugin **Flutter**.
 
-1. Click **Install**.
+1. Clique em **Install**.
 
-1. Click **Yes** when prompted to install the plugin.
+1. Clique em **Yes** quando solicitado para instalar o plugin.
 
-1. Click **Restart** when prompted.
+1. Clique em **Restart** quando solicitado.
 
 </Tab>
 <Tab name="macOS">
 
-1. Start Android Studio or IntelliJ.
+1. Inicie o Android Studio ou IntelliJ.
 
-1. From the macOS menu bar, go to **Android Studio** (or **IntelliJ**)
+1. Na barra de menu do macOS, vá para **Android Studio** (ou **IntelliJ**)
    <span aria-label="and then">></span> **Settings...**.
 
-   You can also press <kbd>Cmd</kbd> + <kbd>,</kbd>.
+   Você também pode pressionar <kbd>Cmd</kbd> + <kbd>,</kbd>.
 
-   The **Preferences** dialog opens.
+   A caixa de diálogo **Preferences** abre.
 
-1. From the list at the left, select **Plugins**.
+1. Na lista à esquerda, selecione **Plugins**.
 
-1. From the top of this panel, select **Marketplace**.
+1. No topo deste painel, selecione **Marketplace**.
 
-1. Type `flutter` in the plugin search field.
+1. Digite `flutter` no campo de busca de plugins.
 
-1. Select the **Flutter** plugin.
+1. Selecione o plugin **Flutter**.
 
-1. Click **Install**.
+1. Clique em **Install**.
 
-1. Click **Yes** when prompted to install the plugin.
+1. Clique em **Yes** quando solicitado para instalar o plugin.
 
-1. Click **Restart** when prompted.
+1. Clique em **Restart** quando solicitado.
 
 </Tab>
 <Tab name="Linux">
 
-1. Go to **File** <span aria-label="and then">></span>
+1. Vá para **File** <span aria-label="and then">></span>
    **Settings**.
 
-   You can also press <kbd>Ctrl</kbd> + <kbd>Alt</kbd> +
+   Você também pode pressionar <kbd>Ctrl</kbd> + <kbd>Alt</kbd> +
    <kbd>S</kbd>.
 
-   The **Preferences** dialog opens.
+   A caixa de diálogo **Preferences** abre.
 
-1. From the list at the left, select **Plugins**.
+1. Na lista à esquerda, selecione **Plugins**.
 
-1. From the top of this panel, select **Marketplace**.
+1. No topo deste painel, selecione **Marketplace**.
 
-1. Type `flutter` in the plugin search field.
+1. Digite `flutter` no campo de busca de plugins.
 
-1. Select the **Flutter** plugin.
+1. Selecione o plugin **Flutter**.
 
-1. Click **Install**.
+1. Clique em **Install**.
 
-1. Click **Yes** when prompted to install the plugin.
+1. Clique em **Yes** quando solicitado para instalar o plugin.
 
-1. Click **Restart** when prompted.
+1. Clique em **Restart** quando solicitado.
 
 </Tab>
 
 </Tabs>
 
-### Updating the plugins {:#updating}
+### Atualizando os plugins {:#updating}
 
-Updates to the plugins are shipped on a regular basis.
-You should be prompted in the IDE when an update is available.
+Atualizações dos plugins são disponibilizadas regularmente.
+Você deve ser notificado na IDE quando uma atualização estiver disponível.
 
-To check for updates manually:
+Para verificar atualizações manualmente:
 
- 1. Open preferences (**Android Studio > Check for Updates** on macOS,
-    **Help > Check for Updates** on Linux).
- 1. If `dart` or `flutter` are listed, update them.
+ 1. Abra as preferências (**Android Studio > Check for Updates** no macOS,
+    **Help > Check for Updates** no Linux).
+ 1. Se `dart` ou `flutter` estiverem listados, atualize-os.
 
-## Creating projects
+## Criando projetos
 
-You can create a new project in one of several ways.
+Você pode criar um novo projeto de várias maneiras.
 
-### Creating a new project
+### Criando um novo projeto
 
-Creating a new Flutter project from the Flutter starter app template
-differs between Android Studio and IntelliJ.
+Criar um novo projeto Flutter a partir do template do app inicial Flutter
+difere entre Android Studio e IntelliJ.
 
-**In Android Studio:**
+**No Android Studio:**
 
- 1. In the IDE, click **New Flutter Project** from the **Welcome** window or
-    **File > New > New Flutter Project** from the main IDE window.
- 1. Specify the **Flutter SDK path** and click **Next**.
- 1. Enter your desired **Project name**,
-    **Description**, and **Project location**.
- 1. If you might publish this app,
-    [set the company domain](#set-the-company-domain).
- 1. Click **Finish**.
+ 1. Na IDE, clique em **New Flutter Project** na janela **Welcome** ou
+    **File > New > New Flutter Project** na janela principal da IDE.
+ 1. Especifique o **Flutter SDK path** e clique em **Next**.
+ 1. Digite o **Project name**, **Description** e **Project location** desejados.
+ 1. Se você pretende publicar este app,
+    [defina o domínio da empresa](#set-the-company-domain).
+ 1. Clique em **Finish**.
 
-**In IntelliJ:**
+**No IntelliJ:**
 
- 1. In the IDE, click **New Project** from the **Welcome** window or
-    **File > New > Project** from the main IDE window.
- 1. Select **Flutter** from the **Generators** list in the left panel
- 1. Specify the **Flutter SDK path** and click **Next**.
- 1. Enter your desired **Project name**,
-    **Description**, and **Project location**.
- 1. If you might publish this app,
-    [set the company domain](#set-the-company-domain).
- 1. Click **Finish**.
+ 1. Na IDE, clique em **New Project** na janela **Welcome** ou
+    **File > New > Project** na janela principal da IDE.
+ 1. Selecione **Flutter** na lista **Generators** no painel esquerdo
+ 1. Especifique o **Flutter SDK path** e clique em **Next**.
+ 1. Digite o **Project name**, **Description** e **Project location** desejados.
+ 1. Se você pretende publicar este app,
+    [defina o domínio da empresa](#set-the-company-domain).
+ 1. Clique em **Finish**.
 
-#### Set the company domain
+#### Defina o domínio da empresa
 
-When creating a new app, some Flutter IDE plugins ask for an
-organization name in reverse domain order,
-something like `com.example`. Along with the name of the app,
-this is used as the package name for Android, and the Bundle ID for iOS
-when the app is released. If you think you might ever release this app,
-it is better to specify these now. They cannot be changed once the app
-is released. Your organization name should be unique.
+Ao criar um novo app, alguns plugins Flutter para IDE solicitam um
+nome de organização em ordem de domínio reverso,
+algo como `com.example`. Junto com o nome do app,
+isso é usado como o nome do pacote para Android, e o Bundle ID para iOS
+quando o app for lançado. Se você acha que pode lançar este app algum dia,
+é melhor especificar isso agora. Eles não podem ser alterados após o app
+ser lançado. O nome da sua organização deve ser único.
 
-### Opening a project from existing source code
+### Abrindo um projeto a partir de código-fonte existente
 
-To open an existing Flutter project:
+Para abrir um projeto Flutter existente:
 
- 1. In the IDE, click **Open** from the **Welcome** window, or
-    **File > Open** from the main IDE window.
- 1. Browse to the directory holding your existing
-    Flutter source code files.
- 1. Click **Open**.
+ 1. Na IDE, clique em **Open** na janela **Welcome**, ou
+    **File > Open** na janela principal da IDE.
+ 1. Navegue até o diretório que contém os
+    arquivos de código-fonte Flutter existentes.
+ 1. Clique em **Open**.
 
     :::important
-    Do *not* use the **New > Project from existing sources**
-    option for Flutter projects.
+    *Não* use a opção **New > Project from existing sources**
+    para projetos Flutter.
     :::
 
 
-## Editing code and viewing issues
+## Editando código e visualizando problemas
 
-The Flutter plugin performs code analysis that enables the following:
+O plugin Flutter realiza análise de código que habilita o seguinte:
 
-* Syntax highlighting.
-* Code completions based on rich type analysis.
-* Navigating to type declarations (**Navigate > Declaration**),
-  and finding type usages (**Edit > Find > Find Usages**).
-* Viewing all current source code problems
+* Destacamento de sintaxe.
+* Completações de código baseadas em análise de tipos avançada.
+* Navegação para declarações de tipo (**Navigate > Declaration**),
+  e localização de usos de tipo (**Edit > Find > Find Usages**).
+* Visualização de todos os problemas atuais do código-fonte
   (**View > Tool Windows > Dart Analysis**).
-  Any analysis issues are shown in the Dart Analysis pane:<br>
+  Quaisquer problemas de análise são mostrados no painel Dart Analysis:<br>
   ![Dart Analysis pane](/assets/images/docs/tools/android-studio/dart-analysis.png){:width="90%"}
 
-## Running and debugging
+## Executando e depurando
 
 :::note
-You can debug your app in a few ways.
+Você pode depurar seu app de algumas maneiras.
 
-* Using [DevTools][], a suite of debugging and profiling
-  tools that run in a browser
-  _and include the Flutter inspector_.
-* Using Android Studio's (or IntelliJ's) built-in debugging
-  features, such as the ability to set breakpoints.
-* Using the Flutter inspector, directly available in
-  Android Studio and IntelliJ.
+* Usando [DevTools][DevTools], um conjunto de ferramentas de depuração e profiling
+  que executam em um navegador
+  _e incluem o Flutter inspector_.
+* Usando recursos de depuração integrados do Android Studio (ou IntelliJ),
+  como a capacidade de definir breakpoints.
+* Usando o Flutter inspector, disponível diretamente no
+  Android Studio e IntelliJ.
 
-The instructions below describe features available in Android
-Studio and IntelliJ. For information on launching DevTools,
-see [Running DevTools from Android Studio][] in the
-[DevTools][] docs.
+As instruções abaixo descrevem recursos disponíveis no Android
+Studio e IntelliJ. Para informações sobre como iniciar o DevTools,
+consulte [Running DevTools from Android Studio][Running DevTools from Android Studio] na
+documentação do [DevTools][DevTools].
 :::
 
-Running and debugging are controlled from the main toolbar:
+Execução e depuração são controladas a partir da barra de ferramentas principal:
 
 ![Main IntelliJ toolbar](/assets/images/docs/tools/android-studio/main-toolbar.png){:width="90%"}
 
-### Selecting a target
+### Selecionando um alvo
 
-When a Flutter project is open in the IDE, you should see a set of
-Flutter-specific buttons on the right-hand side of the toolbar.
-
-:::note
-If the Run and Debug buttons are disabled, and no targets are listed,
-Flutter has not been able to discover any connected iOS or
-Android devices or simulators.
-You need to connect a device, or start a simulator, to proceed.
-:::
-
- 1. Locate the **Flutter Target Selector** drop-down button.
-    This shows a list of available targets.
- 2. Select the target you want your app to be started on.
-    When you connect devices, or start simulators,
-    additional entries appear.
-
-### Run app without breakpoints
-
- 1. Click the **Play icon** in the toolbar, or invoke **Run > Run**.
-    The bottom **Run** pane shows logs output.
-
-### Run app with breakpoints
-
- 1. If desired, set breakpoints in your source code.
- 1. Click the **Debug icon** in the toolbar, or invoke **Run > Debug**.
-    * The bottom **Debugger** pane shows Stack Frames and Variables.
-    * The bottom **Console** pane shows detailed logs output.
-    * Debugging is based on a default launch configuration.
-      To customize this, click the drop-down button to the right
-      of the device selector, and select **Edit configuration**.
-
-## Fast edit and refresh development cycle
-
-Flutter offers a best-in-class developer cycle enabling you to see the effect
-of your changes almost instantly with the _Stateful Hot Reload_ feature.
-To learn more, check out [Hot reload][].
-
-### Show performance data
+Quando um projeto Flutter está aberto na IDE, você deve ver um conjunto de
+botões específicos do Flutter no lado direito da barra de ferramentas.
 
 :::note
-To examine performance issues in Flutter, see the
-[Timeline view][].
+Se os botões Run e Debug estiverem desabilitados e nenhum alvo estiver listado,
+o Flutter não conseguiu descobrir nenhum dispositivo ou simulador iOS ou
+Android conectado.
+Você precisa conectar um dispositivo ou iniciar um simulador para prosseguir.
 :::
 
-To view the performance data, including the widget rebuild
-information, start the app in **Debug** mode, and then open
-the Performance tool window using
+ 1. Localize o botão drop-down **Flutter Target Selector**.
+    Isso mostra uma lista de alvos disponíveis.
+ 2. Selecione o alvo no qual você deseja que seu app seja iniciado.
+    Quando você conecta dispositivos ou inicia simuladores,
+    entradas adicionais aparecem.
+
+### Execute o app sem breakpoints
+
+ 1. Clique no **ícone Play** na barra de ferramentas, ou invoque **Run > Run**.
+    O painel **Run** na parte inferior mostra a saída de logs.
+
+### Execute o app com breakpoints
+
+ 1. Se desejar, defina breakpoints em seu código-fonte.
+ 1. Clique no **ícone Debug** na barra de ferramentas, ou invoque **Run > Debug**.
+    * O painel **Debugger** na parte inferior mostra Stack Frames e Variables.
+    * O painel **Console** na parte inferior mostra a saída detalhada de logs.
+    * A depuração é baseada em uma configuração de lançamento padrão.
+      Para personalizar isso, clique no botão drop-down à direita
+      do seletor de dispositivo e selecione **Edit configuration**.
+
+## Ciclo de desenvolvimento de edição e atualização rápida
+
+Flutter oferece um ciclo de desenvolvimento de primeira classe que permite ver o efeito
+de suas alterações quase instantaneamente com o recurso _Stateful Hot Reload_.
+Para saber mais, consulte [Hot reload][Hot reload].
+
+### Mostrar dados de performance
+
+:::note
+Para examinar problemas de performance no Flutter, consulte a
+[Timeline view][Timeline view].
+:::
+
+Para visualizar os dados de performance, incluindo as informações de
+reconstrução de widgets, inicie o app no modo **Debug** e, em seguida, abra
+a janela de ferramenta Performance usando
 **View > Tool Windows > Flutter Performance**.
 
 ![Flutter performance window](/assets/images/docs/tools/android-studio/widget-rebuild-info.png){:width="90%"}
 
-To see the stats about which widgets are being rebuilt, and how often,
-click **Show widget rebuild information** in the **Performance** pane.
-The exact count of the rebuilds for this frame displays in the second
-column from the right. For a high number of rebuilds, a yellow spinning
-circle displays. The column to the far right shows how many times a
-widget was rebuilt since entering the current screen.
-For widgets that aren't rebuilt, a solid grey circle displays.
-Otherwise, a grey spinning circle displays.
+Para ver as estatísticas sobre quais widgets estão sendo reconstruídos e com que frequência,
+clique em **Show widget rebuild information** no painel **Performance**.
+A contagem exata das reconstruções para este frame é exibida na segunda
+coluna da direita para a esquerda. Para um alto número de reconstruções, um círculo
+amarelo giratório é exibido. A coluna mais à direita mostra quantas vezes um
+widget foi reconstruído desde a entrada na tela atual.
+Para widgets que não são reconstruídos, um círculo cinza sólido é exibido.
+Caso contrário, um círculo cinza giratório é exibido.
 
 :::secondary
-The app shown in this screenshot has been designed to deliver
-poor performance, and the rebuild profiler gives you a clue
-about what is happening in the frame that might cause poor
-performance. The widget rebuild profiler is not a diagnostic
-tool, by itself, about poor performance.
+O app mostrado nesta captura de tela foi projetado para entregar
+desempenho ruim, e o profiler de reconstrução fornece uma pista
+sobre o que está acontecendo no frame que pode causar
+desempenho ruim. O profiler de reconstrução de widgets não é uma ferramenta
+de diagnóstico, por si só, sobre desempenho ruim.
 :::
 
-The purpose of this feature is to make you aware when widgets are
-rebuilding&mdash;you might not realize that this is happening when just
-looking at the code. If widgets are rebuilding that you didn't expect,
-it's probably a sign that you should refactor your code by splitting
-up large build methods into multiple widgets.
+O propósito deste recurso é torná-lo ciente quando widgets estão
+sendo reconstruídos&mdash;você pode não perceber que isso está acontecendo apenas
+olhando o código. Se widgets estão sendo reconstruídos quando você não esperava,
+provavelmente é um sinal de que você deve refatorar seu código dividindo
+métodos build grandes em vários widgets.
 
-This tool can help you debug at least four common performance issues:
+Esta ferramenta pode ajudá-lo a depurar pelo menos quatro problemas comuns de performance:
 
-1. The whole screen (or large pieces of it) are built by a single
-   StatefulWidget, causing unnecessary UI building. Split up the
-   UI into smaller widgets with smaller `build()` functions.
+1. A tela inteira (ou grandes partes dela) é construída por um único
+   StatefulWidget, causando construção desnecessária de UI. Divida a
+   UI em widgets menores com funções `build()` menores.
 
-1. Offscreen widgets are being rebuilt. This can happen, for example,
-   when a ListView is nested in a tall Column that extends offscreen.
-   Or when the RepaintBoundary is not set for a list that extends
-   offscreen, causing the whole list to be redrawn.
+1. Widgets fora da tela estão sendo reconstruídos. Isso pode acontecer, por exemplo,
+   quando um ListView está aninhado em uma Column alta que se estende para fora da tela.
+   Ou quando o RepaintBoundary não está definido para uma lista que se estende
+   para fora da tela, fazendo com que toda a lista seja redesenhada.
 
-1. The `build()` function for an AnimatedBuilder draws a subtree that
-   does not need to be animated, causing unnecessary rebuilds of static
-   objects.
+1. A função `build()` de um AnimatedBuilder desenha uma subárvore que
+   não precisa ser animada, causando reconstruções desnecessárias de
+   objetos estáticos.
 
-1. An Opacity widget is placed unnecessarily high in the widget tree.
-   Or, an Opacity animation is created by directly manipulating the
-   opacity property of the Opacity widget, causing the widget itself
-   and its subtree to rebuild.
+1. Um widget Opacity está colocado desnecessariamente alto na árvore de widgets.
+   Ou, uma animação Opacity é criada manipulando diretamente a
+   propriedade opacity do widget Opacity, fazendo com que o widget em si
+   e sua subárvore sejam reconstruídos.
 
-You can click on a line in the table to navigate to the line
-in the source where the widget is created. As the code runs,
-the spinning icons also display in the code pane to help you
-visualize which rebuilds are happening.
+Você pode clicar em uma linha na tabela para navegar até a linha
+no código-fonte onde o widget é criado. Conforme o código executa,
+os ícones giratórios também são exibidos no painel de código para ajudá-lo a
+visualizar quais reconstruções estão acontecendo.
 
-Note that numerous rebuilds doesn't necessarily indicate a problem.
-Typically you should only worry about excessive rebuilds if you have
-already run the app in profile mode and verified that the performance
-is not what you want.
+Note que numerosas reconstruções não necessariamente indicam um problema.
+Tipicamente você deve se preocupar apenas com reconstruções excessivas se você já
+executou o app no modo profile e verificou que a performance
+não é o que você deseja.
 
-And remember, _the widget rebuild information is only available in
-a debug build_. Test the app's performance on a real device in a profile
-build, but debug performance issues in a debug build.
+E lembre-se, _as informações de reconstrução de widgets estão disponíveis apenas em
+uma build de debug_. Teste a performance do app em um dispositivo real em uma build
+de profile, mas depure problemas de performance em uma build de debug.
 
-## Editing tips for Flutter code
+## Dicas de edição para código Flutter
 
-If you have additional tips we should share, [let us know][]!
+Se você tiver dicas adicionais que devemos compartilhar, [nos avise][let us know]!
 
 ### Assists & quick fixes
 
-Assists are code changes related to a certain code identifier.
-A number of these are available when the cursor is placed on a
-Flutter widget identifier, as indicated by the yellow lightbulb icon.
-The assist can be invoked by clicking the lightbulb, or by using the
-keyboard shortcut (`Alt`+`Enter` on Linux and Windows,
-`Option`+`Return` on macOS), as illustrated here:
+Assists são alterações de código relacionadas a um determinado identificador de código.
+Vários deles estão disponíveis quando o cursor é colocado em um
+identificador de widget Flutter, conforme indicado pelo ícone de lâmpada amarela.
+O assist pode ser invocado clicando na lâmpada, ou usando o
+atalho de teclado (`Alt`+`Enter` no Linux e Windows,
+`Option`+`Return` no macOS), conforme ilustrado aqui:
 
 ![IntelliJ editing assists](/assets/images/docs/tools/android-studio/assists.webp){:width="100%"}
 
-Quick Fixes are similar, only they are shown with a piece of code has an error
-and they can assist in correcting it. They are indicated with a red lightbulb.
+Quick Fixes são similares, apenas são mostrados quando um trecho de código tem um erro
+e podem auxiliar na correção. Eles são indicados com uma lâmpada vermelha.
 
 #### Wrap with new widget assist
 
-This can be used when you have a widget that you want to wrap in a surrounding
-widget, for example if you want to wrap a widget in a `Row` or `Column`.
+Isso pode ser usado quando você tem um widget que deseja envolver em um widget
+circundante, por exemplo, se você deseja envolver um widget em um `Row` ou `Column`.
 
 #### Wrap widget list with new widget assist
 
-Similar to the assist above, but for wrapping an existing list of
-widgets rather than an individual widget.
+Similar ao assist acima, mas para envolver uma lista existente de
+widgets em vez de um widget individual.
 
 #### Convert child to children assist
 
-Changes a child argument to a children argument,
-and wraps the argument value in a list.
+Transforma um argumento child em um argumento children,
+e envolve o valor do argumento em uma lista.
 
 ### Live templates
 
-Live templates can be used to speed up entering typical code structures.
-They are invoked by typing their prefix, and then selecting it in the code
-completion window:
+Live templates podem ser usados para acelerar a digitação de estruturas de código típicas.
+Eles são invocados digitando seu prefixo e, em seguida, selecionando-o na janela de
+completação de código:
 
 ![IntelliJ live templates](/assets/images/docs/tools/android-studio/templates.webp){:width="100%"}
 
-The Flutter plugin includes the following templates:
+O plugin Flutter inclui os seguintes templates:
 
-* Prefix `stless`: Create a new subclass of `StatelessWidget`.
-* Prefix `stful`: Create a new subclass of `StatefulWidget` and
-  its associated State subclass.
-* Prefix `stanim`: Create a new subclass of `StatefulWidget` and its
-  associated State subclass, including a field initialized with an
+* Prefixo `stless`: Cria uma nova subclasse de `StatelessWidget`.
+* Prefixo `stful`: Cria uma nova subclasse de `StatefulWidget` e
+  sua subclasse State associada.
+* Prefixo `stanim`: Cria uma nova subclasse de `StatefulWidget` e sua
+  subclasse State associada, incluindo um campo inicializado com um
   `AnimationController`.
 
-You can also define custom templates in **Settings > Editor > Live Templates**.
+Você também pode definir templates personalizados em **Settings > Editor > Live Templates**.
 
-### Keyboard shortcuts
+### Atalhos de teclado
 
 **Hot reload**
 
-On Linux (keymap _Default for XWin_) and Windows the keyboard shortcuts
-are `Control`+`Alt`+`;` and `Control`+`Backslash`.
+No Linux (keymap _Default for XWin_) e Windows os atalhos de teclado
+são `Control`+`Alt`+`;` e `Control`+`Backslash`.
 
-On macOS (keymap _Mac OS X 10.5+ copy_) the keyboard shortcuts are
-`Command`+`Option` and `Command`+`Backslash`.
+No macOS (keymap _Mac OS X 10.5+ copy_) os atalhos de teclado são
+`Command`+`Option` e `Command`+`Backslash`.
 
-Keyboard mappings can be changed in the IDE Preferences/Settings: Select
-*Keymap*, then enter _flutter_ into the search box in the upper right corner.
-Right click the binding you want to change and _Add Keyboard Shortcut_.
+Mapeamentos de teclado podem ser alterados nas Preferences/Settings da IDE: Selecione
+*Keymap*, depois digite _flutter_ na caixa de pesquisa no canto superior direito.
+Clique com o botão direito na associação que você deseja alterar e _Add Keyboard Shortcut_.
 
 ![IntelliJ settings keymap](/assets/images/docs/tools/android-studio/keymap-settings-flutter-plugin.png){:width="100%"}
 
 ### Hot reload vs. hot restart
 
-Hot reload works by injecting updated source code files into the running
-Dart VM (Virtual Machine). This includes not only adding new classes,
-but also adding methods and fields to existing classes,
-and changing existing functions.
-A few types of code changes cannot be hot reloaded though:
+Hot reload funciona injetando arquivos de código-fonte atualizados na
+Dart VM (Virtual Machine) em execução. Isso inclui não apenas adicionar novas classes,
+mas também adicionar métodos e campos a classes existentes,
+e alterar funções existentes.
+Alguns tipos de alterações de código não podem ser hot reloaded, no entanto:
 
-* Global variable initializers
-* Static field initializers
-* The `main()` method of the app
+* Inicializadores de variáveis globais
+* Inicializadores de campos estáticos
+* O método `main()` do app
 
-For these changes you can fully restart your application,
-without having to end your debugging session. To perform a hot restart,
-don't click the Stop button, simply re-click the Run button (if in a run
-session) or Debug button (if in a debug session), or shift-click the 'hot
-reload' button.
+Para essas alterações você pode reiniciar completamente seu aplicativo,
+sem ter que encerrar sua sessão de depuração. Para realizar um hot restart,
+não clique no botão Stop, simplesmente clique novamente no botão Run (se em uma sessão
+de execução) ou botão Debug (se em uma sessão de depuração), ou shift-clique no botão 'hot
+reload'.
 
-## Editing Android code in Android Studio with full IDE support {:#android-ide}
+## Editando código Android no Android Studio com suporte completo de IDE {:#android-ide}
 
-Opening the root directory of a Flutter project doesn't expose all the Android
-files to the IDE. Flutter apps contain a subdirectory named `android`. If you
-open this subdirectory as its own separate project in Android Studio, the IDE
-will be able to fully support editing and refactoring all Android files (like
-Gradle scripts).
+Abrir o diretório raiz de um projeto Flutter não expõe todos os arquivos Android
+para a IDE. Apps Flutter contêm um subdiretório chamado `android`. Se você
+abrir este subdiretório como seu próprio projeto separado no Android Studio, a IDE
+será capaz de suportar totalmente a edição e refatoração de todos os arquivos Android (como
+scripts Gradle).
 
-If you already have the entire project opened as a Flutter app in Android
-Studio, there are two equivalent ways to open the Android files on their own
-for editing in the IDE. Before trying this, make sure that you're on the latest
-version of Android Studio and the Flutter plugins.
+Se você já tem o projeto inteiro aberto como um app Flutter no Android
+Studio, existem duas maneiras equivalentes de abrir os arquivos Android por conta própria
+para edição na IDE. Antes de tentar isso, certifique-se de estar na versão mais recente
+do Android Studio e dos plugins Flutter.
 
-* In the ["project view"][], you should see a subdirectory immediately under
-  the root of your flutter app named `android`. Right click on it,
-  then select **Flutter > Open Android module in Android Studio**.
-* OR, you can open any of the files under the `android` subdirectory for
-  editing. You should then see a "Flutter commands" banner at the top of the
-  editor with a link  labeled **Open for Editing in Android Studio**.
-  Click that link.
+* Na ["project view"]["project view"], você deve ver um subdiretório imediatamente sob
+  a raiz do seu app flutter chamado `android`. Clique com o botão direito nele,
+  depois selecione **Flutter > Open Android module in Android Studio**.
+* OU, você pode abrir qualquer um dos arquivos no subdiretório `android` para
+  edição. Você deve então ver um banner "Flutter commands" no topo do
+  editor com um link rotulado **Open for Editing in Android Studio**.
+  Clique nesse link.
 
-For both options, Android Studio gives you the option to use separate windows or
-to replace the existing window with the new project when opening a second
-project. Either option is fine.
+Para ambas as opções, o Android Studio oferece a opção de usar janelas separadas ou
+substituir a janela existente pelo novo projeto ao abrir um segundo
+projeto. Qualquer opção está correta.
 
-If you don't already have the Flutter project opened in Android studio,
-you can open the Android files as their own project from the start:
+Se você ainda não tem o projeto Flutter aberto no Android studio,
+você pode abrir os arquivos Android como seu próprio projeto desde o início:
 
-1. Click **Open an existing Android Studio Project** on the Welcome
-   splash screen, or **File > Open** if Android Studio is already open.
-2. Open the `android` subdirectory immediately under the flutter app root.
-   For example if the project is called `flutter_app`,
-   open `flutter_app/android`.
+1. Clique em **Open an existing Android Studio Project** na tela
+   de boas-vindas, ou **File > Open** se o Android Studio já estiver aberto.
+2. Abra o subdiretório `android` imediatamente sob a raiz do app flutter.
+   Por exemplo, se o projeto se chama `flutter_app`,
+   abra `flutter_app/android`.
 
-If you haven't run your Flutter app yet, you might see Android Studio report a
-build error when you open the `android` project. Run `flutter pub get` in
-the app's root directory and rebuild the project by selecting **Build > Make**
-to fix it.
+Se você ainda não executou seu app Flutter, você pode ver o Android Studio reportar um
+erro de build ao abrir o projeto `android`. Execute `flutter pub get` no
+diretório raiz do app e reconstrua o projeto selecionando **Build > Make**
+para corrigir isso.
 
-## Editing Android code in IntelliJ IDEA {:#edit-android-code}
+## Editando código Android no IntelliJ IDEA {:#edit-android-code}
 
-To enable editing of Android code in IntelliJ IDEA, you need to configure the
-location of the Android SDK:
+Para habilitar a edição de código Android no IntelliJ IDEA, você precisa configurar a
+localização do Android SDK:
 
- 1. In **Preferences > Plugins**, enable **Android Support** if you
-    haven't already.
- 1. Right-click the **android** folder in the Project view, and select **Open
+ 1. Em **Preferences > Plugins**, habilite **Android Support** se você
+    ainda não o fez.
+ 1. Clique com o botão direito na pasta **android** na visualização Project e selecione **Open
     Module Settings**.
- 1. In the **Sources** tab, locate the **Language level** field, and
-    select level 8 or later.
- 1. In the **Dependencies** tab, locate the **Module SDK** field,
-    and select an Android SDK. If no SDK is listed, click **New**
-    and specify the location of the Android SDK.
-    Make sure to select an Android SDK matching the one used by
-    Flutter (as reported by `flutter doctor`).
- 1. Click **OK**.
+ 1. Na aba **Sources**, localize o campo **Language level** e
+    selecione o nível 8 ou posterior.
+ 1. Na aba **Dependencies**, localize o campo **Module SDK**
+    e selecione um Android SDK. Se nenhum SDK estiver listado, clique em **New**
+    e especifique a localização do Android SDK.
+    Certifique-se de selecionar um Android SDK correspondente ao usado pelo
+    Flutter (conforme reportado por `flutter doctor`).
+ 1. Clique em **OK**.
 
 ## Flutter Property Editor {: #property-editor}
 
-The Flutter Property Editor is a powerful tool provided by the [Flutter
-plugin][] that lets you view and modify widget properties directly from its
-visual interface.
+O Flutter Property Editor é uma ferramenta poderosa fornecida pelo [Flutter
+plugin][] que permite visualizar e modificar propriedades de widgets diretamente de sua
+interface visual.
 
-### How to open the Flutter Property Editor in Android Studio and IntelliJ
+### Como abrir o Flutter Property Editor no Android Studio e IntelliJ
 
-1. Click on the Flutter Property Editor **icon** ![Flutter Property Editor Android Studio/IntelliJ icon](/assets/images/docs/tools/devtools/property-editor-icon-android-studio.png){:width="20px"} in the Android Studio or IntelliJ sidebar.
-2. The Flutter Property Editor will load in the side panel.
-3. Please refer to the Flutter Property Editor [documentation][] for a detailed usage guide.
+1. Clique no **ícone** do Flutter Property Editor ![Flutter Property Editor Android Studio/IntelliJ icon](/assets/images/docs/tools/devtools/property-editor-icon-android-studio.png){:width="20px"} na barra lateral do Android Studio ou IntelliJ.
+2. O Flutter Property Editor será carregado no painel lateral.
+3. Por favor, consulte a [documentação][documentation] do Flutter Property Editor para um guia de uso detalhado.
 
 ![Flutter Property Editor side panel in Android Studio/IntelliJ](/assets/images/docs/tools/devtools/property-editor-android-studio.png){:width="600px"}
 
 [Flutter plugin]: https://plugins.jetbrains.com/plugin/9212-flutter
 [documentation]: /tools/property-editor
 
-## Troubleshooting
+## Solução de problemas
 
-### Known issues and feedback
+### Problemas conhecidos e feedback
 
-Important known issues that might impact your experience are documented
-in the [Flutter plugin README][] file.
+Problemas conhecidos importantes que podem impactar sua experiência estão documentados
+no arquivo [Flutter plugin README][Flutter plugin README].
 
-All known bugs are tracked in the issue trackers:
+Todos os bugs conhecidos são rastreados nos issue trackers:
 
-* Flutter plugin: [GitHub issue tracker][]
-* Dart plugin: [JetBrains YouTrack][]
+* Plugin Flutter: [GitHub issue tracker][GitHub issue tracker]
+* Plugin Dart: [JetBrains YouTrack][JetBrains YouTrack]
 
-We welcome feedback, both on bugs/issues and feature requests.
-Prior to filing new issues:
+Valorizamos feedback, tanto sobre bugs/problemas quanto sobre solicitações de recursos.
+Antes de registrar novos problemas:
 
-* Do a quick search in the issue trackers to see if the issue is already
-  tracked.
-* Make sure you have [updated](#updating) to the most recent version of the
+* Faça uma busca rápida nos issue trackers para ver se o problema já está
+  rastreado.
+* Certifique-se de ter [atualizado](#updating) para a versão mais recente do
   plugin.
 
-When filing new issues, include the output of [`flutter doctor`][].
+Ao registrar novos problemas, inclua a saída de [`flutter doctor`][`flutter doctor`].
 
 [DevTools]: /tools/devtools
 [GitHub issue tracker]: {{site.repo.flutter}}-intellij/issues

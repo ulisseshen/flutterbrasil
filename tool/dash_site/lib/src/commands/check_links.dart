@@ -90,7 +90,7 @@ Future<int> _checkLinks({bool checkExternal = false}) async {
 
     try {
       final result = await linkcheck.run([
-        ':$_emulatorPort',
+        '127.0.0.1:$_emulatorPort',
         '--skip-file',
         _skipFilePath,
         if (checkExternal) 'external',

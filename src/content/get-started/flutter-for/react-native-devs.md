@@ -2638,4 +2638,6 @@ e propriedades de widget comuns.
 [`ScrollController`]: {{site.api}}/flutter/widgets/ScrollController-class.html
 [`Switch`]: {{site.api}}/flutter/material/Switch-class.html
 [`TextAlign`]: {{site.api}}/flutter/dart-ui/TextAlign.html
+[`TextButton`]: {{site.api}}/flutter/material/TextButton-class.html
 [`TextInput`]: {{site.api}}/flutter/services/TextInput-class.html
+[`Image`]: {{site.api}}/flutter/widgets/Image-class.html

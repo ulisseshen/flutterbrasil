@@ -44,7 +44,7 @@ final class SiteSwitcher extends StatelessComponent {
                 _SiteWordMarkListEntry(
                   name: 'Flutter',
                   subtype: 'Blog',
-                  href: 'https://blog.flutterbrasil.dev',
+                  href: 'https://blog.flutter.dev',
                 ),
                 Component.element(
                   tag: 'li',

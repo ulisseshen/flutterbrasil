@@ -1024,7 +1024,7 @@ Como sempre, a experiência de ponta a ponta do Flutter depende muito de suas fe
 *   [Notas de Lançamento do DevTools 0.1.4](https://groups.google.com/forum/#!searchin/flutter-announce/release$20notes|sort:date/flutter-announce/ZUcqjzEDTKc/ABZtXXOpCgAJ) - 19 de julho de 2019
 *   [Plugin VSCode v3.2](https://dartcode.org/releases/v3-2/) - 28 de junho de 2019
 
-Além disso, esta versão também tem muito acontecendo nos bastidores para fornecer mensagens de erro melhores e mais acionáveis. Você pode ler sobre esses detalhes [neste post do blog](https://blog.flutterbrasil.dev/improving-flutters-error-messages-e098513cecf9) da equipe de Experiência do Usuário do Flutter.
+Além disso, esta versão também tem muito acontecendo nos bastidores para fornecer mensagens de erro melhores e mais acionáveis. Você pode ler sobre esses detalhes [neste post do blog](https://blog.flutter.dev/improving-flutters-error-messages-e098513cecf9) da equipe de Experiência do Usuário do Flutter.
 
 [32511](https://github.com/flutter/flutter/pull/32511) Rendering errors with root causes in the widget layer should have a reference to the widget
 

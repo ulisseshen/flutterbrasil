@@ -507,7 +507,7 @@ Widget build(BuildContext context) {
 
 ## Intents
 
-### Qual é o equivalente de um Intent no Flutter?
+### Qual é o equivalente de um Intent no Flutter? {:#what-is-the-equivalent-of-an-intent-in-flutter}
 
 No Android, há dois casos de uso principais para `Intent`s: navegar entre
 Activities e comunicar-se com componentes. O Flutter, por outro lado,

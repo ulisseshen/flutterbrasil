@@ -81,7 +81,7 @@ desenvolvimento. Você pode usá-lo para:
 * Automatizar tarefas como fazer commit e push de mudanças para um repositório Git
 
 Para começar, visite o site [Gemini CLI][], ou experimente este
-[codelab do Gemini CLI][].
+[codelab do Gemini CLI][Gemini CLI codelab].
 
 [Gemini CLI]: https://geminicli.com/
 [Gemini CLI codelab]: https://codelabs.developers.google.com/gemini-cli-hands-on

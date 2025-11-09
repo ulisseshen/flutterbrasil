@@ -275,7 +275,7 @@ anexos de mídia, certifique-se de que seu app tem as permissões necessárias:
 
 ## Exemplos
 
-Para executar os [apps de exemplo][] no repositório,
+Para executar os [apps de exemplo][example apps] no repositório,
 você precisará substituir os arquivos `example/lib/gemini_api_key.dart`
 e `example/lib/firebase_options.dart`,
 ambos os quais são apenas marcadores de posição. Eles são necessários

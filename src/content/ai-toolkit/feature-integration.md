@@ -547,7 +547,7 @@ o que fizemos aqui.
 
 Para ver isso em ação, confira o [recipes example app][].
 
-## Estilização personalizada
+## Estilização personalizada {:#custom-styling}
 
 O chat view vem pronto para uso com um conjunto de estilos padrão
 para o plano de fundo, o campo de texto, os botões, os ícones,

@@ -1,6 +1,7 @@
 ---
+ia-translate: true
 title: Stateful widgets
-description: Learn about StatefulWidgets and rebuilding Flutter UI.
+description: Aprenda sobre StatefulWidgets e reconstrução de UI Flutter.
 permalink: /tutorial/stateful-widget/
 sitemap: false
 
@@ -8,35 +9,35 @@ sitemap: false
 
 {%- comment %} TODO(ewindmill) embed video {%- endcomment %}
 
-So far, your app displays a grid and an input field, but the grid
-doesn't yet update to reflect the user’s guesses. When this app is
-complete, each tile in the next unfilled row should update after each
-submitted user guess by:
+Até agora, seu app exibe uma grade e um campo de entrada, mas a grade
+ainda não atualiza para refletir os palpites do usuário. Quando este app estiver
+completo, cada tile na próxima linha não preenchida deve atualizar após cada
+palpite do usuário submetido:
 
-* Displaying the correct letter.
-* Changing color to reflect whether the letter is correct (green), is
-  in the word but at an incorrect position (yellow), or doesn't appear
-  in the word at all (grey).
+* Exibindo a letra correta.
+* Mudando de cor para refletir se a letra está correta (verde), está
+  na palavra mas em uma posição incorreta (amarelo), ou não aparece
+  na palavra de forma alguma (cinza).
 
-To handle this dynamic behavior, you need to convert `GamePage` from a
-`StatelessWidget` to a [`StatefulWidget`][].
+Para lidar com este comportamento dinâmico, você precisa converter `GamePage` de um
+`StatelessWidget` para um [`StatefulWidget`][].
 
-## Why stateful widgets?
+## Por que stateful widgets?
 
-When a widget's appearance or data needs to change during its
- lifetime, you need a `StatefulWidget` and a companion `State` object.
-While the `StatefulWidget` itself is still immutable (its properties
-can't change after creation), the `State` object is long-lived, can
-hold mutable data, and can be rebuilt when that data changes, causing
-the UI to update.
+Quando a aparência ou os dados de um widget precisam mudar durante seu
+tempo de vida, você precisa de um `StatefulWidget` e um objeto `State` companheiro.
+Enquanto o `StatefulWidget` em si ainda é imutável (suas propriedades
+não podem mudar após a criação), o objeto `State` é duradouro, pode
+conter dados mutáveis e pode ser reconstruído quando esses dados mudam, fazendo
+a UI atualizar.
 
-For example, the following widget tree imagines a simple app
-that has a counter that increases when the button is pressed,
-and uses a stateful widget.
+Por exemplo, a seguinte árvore de widgets imagina um app simples
+que tem um contador que aumenta quando o botão é pressionado,
+e usa um stateful widget.
 
 <img src='/assets/images/docs/tutorial/widget_tree_stateful.png' alt="A diagram of a widget tree with a stateful widget and state object.">
 
-Here is the basic `StatefulWidget` structure (don't do anything yet):
+Aqui está a estrutura básica de `StatefulWidget` (não faça nada ainda):
 
 ```dart
 class ExampleWidget extends StatefulWidget {
@@ -54,29 +55,29 @@ class _ExampleWidgetState extends State<ExampleWidget> {
 }
 ```
 
-## Convert `GamePage` to a stateful widget
+## Converta `GamePage` para um stateful widget
 
-To convert the `GamePage` widget (or any other) from
-a stateless widget to a stateful widget, do the following steps:
+Para converter o widget `GamePage` (ou qualquer outro) de
+um stateless widget para um stateful widget, siga os seguintes passos:
 
-1. Change `GamePage` to extend `StatefulWidget` instead of
+1. Altere `GamePage` para estender `StatefulWidget` em vez de
    `StatelessWidget`.
-2. Create a new class named `_GamePageState`, that extends
-   `State<GamePage>`. This new class will hold the mutable state and
-   the `build` method. Move the `build` method and all properties
-   *instantiated on the widget*  from `GamePage` to the state object.
-3. Implement the `createState()` method in `GamePage`, which returns
-   an instance of `_GamePageState`.
+2. Crie uma nova classe chamada `_GamePageState`, que estende
+   `State<GamePage>`. Esta nova classe conterá o estado mutável e
+   o método `build`. Mova o método `build` e todas as propriedades
+   *instanciadas no widget* de `GamePage` para o objeto state.
+3. Implemente o método `createState()` em `GamePage`, que retorna
+   uma instância de `_GamePageState`.
 
 :::tip Quick assists
 
-You don't have to manually do this work, as the Flutter plugins for
-VS Code and IntelliJ provides ["quick assists"][], which will do this
-conversion for you.
+Você não precisa fazer este trabalho manualmente, já que os plugins Flutter para
+VS Code e IntelliJ fornecem ["quick assists"][], que farão esta
+conversão para você.
 
 :::
 
-Your modified code should look like this:
+Seu código modificado deve ficar assim:
 
 ```dart
 class GamePage extends StatefulWidget {
@@ -119,31 +120,31 @@ class _GamePageState extends State<GamePage> {
 }
 ```
 
-## Updating the UI with `setState`
+## Atualizando a UI com `setState`
 
-Whenever you mutate a `State` object, you must call [`setState`][] to
-signal the framework to update the user interface and call the
-`State`'s `build` method again.
+Sempre que você mutar um objeto `State`, você deve chamar [`setState`][] para
+sinalizar ao framework para atualizar a interface do usuário e chamar o
+método `build` do `State` novamente.
 
-In this app, when a user makes a guess, the word they guessed is saved
-on the `Game` object, which is a property on the `GamePage` class, and
-therefore is state that might change and require the UI to update.
-When this state is mutated, the grid should be re-drawn to show the
-user’s guess.
+Neste app, quando um usuário faz um palpite, a palavra que ele adivinhou é salva
+no objeto `Game`, que é uma propriedade na classe `GamePage`, e
+portanto é um estado que pode mudar e exigir que a UI atualize.
+Quando este estado é mutado, a grade deve ser redesenhada para mostrar o
+palpite do usuário.
 
-To implement this, update the callback function passed to
-`GuessInput`. The function needs to call `setState` and, within
-`setState`, it needs to execute the logic to determine whether the users
-guess was correct.
+Para implementar isso, atualize a função de callback passada para
+`GuessInput`. A função precisa chamar `setState` e, dentro de
+`setState`, ela precisa executar a lógica para determinar se o palpite do
+usuário estava correto.
 
 :::note
 
-The game logic is abstracted away into the [`Game` object][], and
-outside of the scope of this tutorial.
+A lógica do jogo é abstraída no [objeto `Game`][`Game` object], e
+fora do escopo deste tutorial.
 
 :::
 
-Update your code:
+Atualize seu código:
 
 ```dart
 class GamePage extends StatefulWidget {
@@ -187,11 +188,11 @@ class _GamePageState extends State<GamePage> {
 }
 ```
 
-Now, when you type a legal guess into the `TextInput` and submit it,
-the application will reflect the user’s guess. If you were to call
-`_game.guess(guess)` *without* a calling `setState`, the internal game
-data would change, but Flutter wouldn't know it needs to repaint the
-screen, and the user wouldn't see any updates.
+Agora, quando você digita um palpite válido no `TextInput` e o submete,
+a aplicação refletirá o palpite do usuário. Se você chamar
+`_game.guess(guess)` *sem* chamar `setState`, os dados internos do jogo
+mudariam, mas o Flutter não saberia que precisa repintar a
+tela, e o usuário não veria nenhuma atualização.
 
 ["quick assists"]: /tools/android-studio#assists-quick-fixes
 [`StatefulWidget`]: {{site.api}}/flutter/widgets/StatefulWidget-class.html

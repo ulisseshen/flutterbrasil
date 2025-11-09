@@ -1,17 +1,18 @@
 ---
-title: Widget catalog
-description: A catalog of some of Flutter's rich set of widgets.
+ia-translate: true
+title: Catálogo de widgets
+description: Um catálogo de alguns dos ricos widgets do Flutter.
 shortTitle: Widgets
 showToc: false
 ---
 
-Create beautiful apps faster with Flutter's collection of visual, structural,
-platform, and interactive widgets. In addition to browsing widgets by category,
-you can also see all the widgets in the [widget index][].
+Crie apps bonitos mais rapidamente com a coleção de widgets visuais, estruturais,
+de plataforma e interativos do Flutter. Além de navegar pelos widgets por categoria,
+você também pode ver todos os widgets no [índice de widgets][widget index].
 
 ## Design systems
 
-Flutter ships with two design systems as part of the SDK.
+O Flutter inclui dois design systems como parte do SDK.
 
 <div class="card-grid">
 {% assign categories = catalog.index | sortBy: 'name' -%}
@@ -29,16 +30,16 @@ Flutter ships with two design systems as part of the SDK.
 {% endfor %}
 </div>
 
-You can find many more designs systems created by the Flutter community
-on [pub.dev]({{site.pub}}), the package repository for Dart and Flutter,
-like for example the Windows-inspired [fluent_ui]({{site.pub-pkg}}/fluent_ui),
-macOS-inspired [macos_ui]({{site.pub-pkg}}/macos_ui),
-and the Ubuntu-inspired [yaru]({{site.pub-pkg}}/yaru) widgets.
+Você pode encontrar muito mais design systems criados pela comunidade Flutter
+no [pub.dev]({{site.pub}}), o repositório de pacotes para Dart e Flutter,
+como por exemplo o [fluent_ui]({{site.pub-pkg}}/fluent_ui) inspirado no Windows,
+o [macos_ui]({{site.pub-pkg}}/macos_ui) inspirado no macOS,
+e os widgets [yaru]({{site.pub-pkg}}/yaru) inspirados no Ubuntu.
 
 ## Base widgets
 
-Base widgets support a range of common rendering options
-like input, layout, and text.
+Os widgets base suportam uma variedade de opções comuns de renderização
+como input, layout e texto.
 
 <div class="card-grid">
 {% assign categories = catalog.index | sortBy: 'name' -%}
@@ -58,8 +59,8 @@ like input, layout, and text.
 
 ## Widget of the Week
 
-100+ short, 1-minute explainer videos to
-help you quickly get started with Flutter widgets.
+Mais de 100 vídeos explicativos curtos de 1 minuto para
+ajudá-lo a começar rapidamente com os widgets do Flutter.
 
 <div class="card-grid wide">
   <div class="card wrapped-card outlined-card">
@@ -94,6 +95,6 @@ help you quickly get started with Flutter widgets.
   </div>
 </div>
 
-<a class="filled-button" target="_blank" href="{{site.yt.playlist}}PLjxrf2q8roU23XGwz3Km7sQZFTdB996iG">Watch more widget of the week videos</a>
+<a class="filled-button" target="_blank" href="{{site.yt.playlist}}PLjxrf2q8roU23XGwz3Km7sQZFTdB996iG">Assista mais vídeos do widget of the week</a>
 
 [widget index]: /reference/widgets

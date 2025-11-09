@@ -208,7 +208,7 @@ sempre começar com um projeto existente.
 [Update Podfiles]: #update-podfiles
 [Customize configurations]: #customize-configurations
 
-## Iniciar um scheme do Xcode
+## Iniciar um scheme do Xcode {:#launch-an-xcode-scheme}
 
 Depois de criar os schemes para um app iOS no
 Xcode, você pode iniciar um scheme específico através do Xcode ou
@@ -254,7 +254,7 @@ seguintes passos:
 1.  Execute o scheme para seu app
     (**Product > Run**).
 
-## Personalizar configurações
+## Personalizar configurações {:#customize-configurations}
 
 Depois de adicionar schemes do Xcode, você pode personalizá-los para
 seu app iOS. Você também pode usar esses passos para configurar um
@@ -456,7 +456,7 @@ mais, veja o [campo `assets`][`assets` field] em
 [`assets` field]: /tools/pubspec#assets
 [Flutter pubspec options]: /tools/pubspec
 
-### Atualizar Podfiles
+### Atualizar Podfiles {:#update-podfiles}
 
 Se você está criando novos schemes do Xcode para um projeto Flutter iOS
 e você tem um Podfile iOS em um projeto

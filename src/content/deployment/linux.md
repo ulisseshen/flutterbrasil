@@ -390,7 +390,7 @@ site [snapcraft.io][]:
 * [Snapcraft extensions][]
 * [Supported plugins][]
 
-## Recursos adicionais de deployment
+## Recursos adicionais de deployment {:#additional-deployment-resources}
 
 ### [fastforge][]
 

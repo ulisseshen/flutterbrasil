@@ -165,7 +165,7 @@ Exemplo:
 $ flutter build apk --flavor staging
 ```
 
-## Personalizar configurações
+## Personalizar configurações {:#customize-configurations}
 
 Depois de adicionar product flavors, você pode personalizá-los
 para seu app Android.

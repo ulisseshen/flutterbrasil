@@ -20,7 +20,7 @@ do seu app e cobre os seguintes tópicos:
 * [Escolhendo um modo de build e um renderer](#choosing-a-build-mode-and-a-renderer)
 * [Minificação](#minification)
 
-## Compilando o app para release
+## Compilando o app para release {:#building-the-app-for-release}
 
 Compile o app para deployment usando o comando `flutter build web`.
 
@@ -49,14 +49,14 @@ Builds profile são especializados para profiling de performance usando Chrome D
 e builds debug podem ser usados para configurar dart2js
 para respeitar assertions e mudar o nível de otimização (usando a flag `-O`.)
 
-## Escolhendo um modo de build e um renderer
+## Escolhendo um modo de build e um renderer {:#choosing-a-build-mode-and-a-renderer}
 
 Flutter web fornece dois modos de build (default e WebAssembly) e dois renderers
 (`canvaskit` e `skwasm`).
 
 Para mais informações, veja [Web renderers][].
 
-## Deploy para a web
+## Deploy para a web {:#deploying-to-the-web}
 
 Quando estiver pronto para fazer deploy do seu app,
 faça upload do bundle release
@@ -68,7 +68,7 @@ muitas outras:
 * [GitHub Pages][]
 * [Google Cloud Hosting][]
 
-## Deploy para Firebase Hosting
+## Deploy para Firebase Hosting {:#deploying-to-firebase-hosting}
 
 Você pode usar o Firebase CLI para compilar e lançar seu app Flutter com Firebase
 Hosting.
@@ -119,7 +119,7 @@ inicialização:
 Para saber mais, visite a documentação oficial do [Firebase Hosting][] para
 Flutter na web.
 
-## Manipulando imagens na web
+## Manipulando imagens na web {:#handling-images-on-the-web}
 
 A web suporta o widget `Image` padrão para exibir imagens.
 Por design, navegadores web executam código não confiável sem prejudicar o computador host.
@@ -127,7 +127,7 @@ Isso limita o que você pode fazer com imagens comparado a plataformas mobile e 
 
 Para mais informações, veja [Displaying images on the web][].
 
-## Minificação
+## Minificação {:#minification}
 
 Para melhorar o start-up do app, o compilador reduz o tamanho do código compilado
 removendo código não utilizado (conhecido como _tree shaking_), e renomeando símbolos de código para

@@ -1,35 +1,36 @@
 ---
-title: DevTools 2.48.0 release notes
-shortTitle: 2.48.0 release notes
+ia-translate: true
+title: Notas de lançamento do DevTools 2.48.0
+shortTitle: Notas de lançamento 2.48.0
 breadcrumb: 2.48.0
-description: Release notes for Dart and Flutter DevTools version 2.48.0.
+description: Notas de lançamento da versão 2.48.0 do Dart e Flutter DevTools.
 showToc: false
 ---
 
-The 2.48.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](/tools/devtools/overview).
+A versão 2.48.0 do Dart e Flutter DevTools
+inclui as seguintes mudanças, entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](/tools/devtools/overview).
 
-## Network profiler updates
+## Atualizações do Network profiler
 
-* Fixed network logging after a hot restart. -
+* Corrigido o log de rede após um hot restart. -
   [#9271](https://github.com/flutter/devtools/pull/9271).
 
-## Logging updates
+## Atualizações de Logging
 
-* Started displaying events related to timers in the Logging View. -
+* Iniciada a exibição de eventos relacionados a timers na visualização de Logging. -
   [#9238](https://github.com/flutter/devtools/pull/9238).
 
-## Advanced developer mode updates
+## Atualizações do modo de desenvolvedor avançado
 
-* Added a Queued Microtasks tab to the VM Tools screen, which allows a user to
-  see details about the microtasks scheduled in an isolate's microtask queue.
-  This tab currently only appears when DevTools is connected to a Flutter or
-  Dart app started with `--profile-microtasks`. -
+* Adicionada uma aba Queued Microtasks à tela VM Tools, que permite ao usuário
+  ver detalhes sobre as microtasks agendadas na fila de microtasks de um isolate.
+  Esta aba atualmente só aparece quando o DevTools está conectado a um app Flutter ou
+  Dart iniciado com `--profile-microtasks`. -
   [#9239](https://github.com/flutter/devtools/pull/9239).
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes in this release, check out the
-[DevTools git log](https://github.com/flutter/devtools/tree/v2.48.0).
+Para encontrar uma lista completa de mudanças neste lançamento, confira o
+[log do git do DevTools](https://github.com/flutter/devtools/tree/v2.48.0).

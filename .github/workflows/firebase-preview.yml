@@ -32,6 +32,7 @@ jobs:
         run: dart run dash_site build
 
       - name: Deploy to Firebase Hosting Preview Channel
+        id: firebase-deploy
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
@@ -39,3 +40,33 @@ jobs:
           projectId: transliteradu
           channelId: pr-${{ github.event.pull_request.number }}
           expires: 7d
+
+      - name: Comentar PR com link de preview
+        uses: actions/github-script@v7
+        if: steps.firebase-deploy.outputs.details_url
+        with:
+          script: |
+            const previewUrl = '${{ steps.firebase-deploy.outputs.details_url }}';
+            const comment = `## 🚀 Preview da Documentação do Flutter Brasil
+
+            ✅ **Deploy de preview disponível!**
+
+            Esta é uma visualização prévia das alterações na documentação oficial do Flutter Brasil.
+
+            🔗 **Visualizar preview:** ${previewUrl}
+
+            📚 **Site oficial:** [flutterbrasil.dev](https://flutterbrasil.dev)
+
+            ---
+
+            ⏰ Este preview expira em 7 dias
+            🔄 O preview será atualizado automaticamente a cada novo commit neste PR
+
+            *Documentação do Flutter em Português do Brasil*`;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });

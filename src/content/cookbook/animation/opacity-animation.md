@@ -1,52 +1,53 @@
 ---
-title: Fade a widget in and out
-description: How to fade a widget in and out.
+ia-translate: true
+title: Aplicar fade in e fade out em um widget
+description: Como aplicar fade in e fade out em um widget.
 ---
 
 <?code-excerpt path-base="cookbook/animation/opacity_animation/"?>
 
-UI developers often need to show and hide elements on screen.
-However, quickly popping elements on and off the screen can
-feel jarring to end users. Instead,
-fade elements in and out with an opacity animation to create
-a smooth experience.
+Desenvolvedores de UI frequentemente precisam mostrar e ocultar elementos na tela.
+No entanto, fazer elementos aparecerem e desaparecerem rapidamente na tela pode
+parecer abrupto para os usuários finais. Em vez disso,
+aplique fade in e fade out em elementos com uma animação de opacidade para criar
+uma experiência suave.
 
-The [`AnimatedOpacity`][] widget makes it easy to perform opacity
-animations. This recipe uses the following steps:
+O widget [`AnimatedOpacity`][] torna fácil realizar animações de
+opacidade. Esta receita usa os seguintes passos:
 
-  1. Create a box to fade in and out.
-  2. Define a `StatefulWidget`.
-  3. Display a button that toggles the visibility.
-  4. Fade the box in and out.
+  1. Criar uma caixa para aplicar fade in e fade out.
+  2. Definir um `StatefulWidget`.
+  3. Exibir um botão que alterna a visibilidade.
+  4. Aplicar fade in e fade out na caixa.
 
-## 1. Create a box to fade in and out
+## 1. Criar uma caixa para aplicar fade in e fade out
 
-First, create something to fade in and out. For this example,
-draw a green box on screen.
+Primeiro, crie algo para aplicar fade in e fade out. Para este exemplo,
+desenhe uma caixa verde na tela.
 
 <?code-excerpt "lib/main.dart (Container)" replace="/^child: //g;/\),$/)/g"?>
 ```dart
 Container(width: 200, height: 200, color: Colors.green)
 ```
 
-## 2. Define a `StatefulWidget`
+## 2. Definir um `StatefulWidget`
 
-Now that you have a green box to animate,
-you need a way to know whether the box should be visible.
-To accomplish this, use a [`StatefulWidget`][].
+Agora que você tem uma caixa verde para animar,
+você precisa de uma maneira de saber se a caixa deve estar visível.
+Para realizar isso, use um [`StatefulWidget`][].
 
-A `StatefulWidget` is a class that creates a `State` object.
-The `State` object holds some data about the app and provides a way to
-update that data. When updating the data,
-you can also ask Flutter to rebuild the UI with those changes.
+Um `StatefulWidget` é uma classe que cria um objeto `State`.
+O objeto `State` contém alguns dados sobre o app e fornece uma maneira de
+atualizar esses dados. Ao atualizar os dados,
+você também pode pedir ao Flutter para reconstruir a UI com essas mudanças.
 
-In this case, you have one piece of data:
-a boolean representing whether the button is visible.
+Neste caso, você tem uma informação:
+um booleano representando se o botão está visível.
 
-To construct a `StatefulWidget`, create two classes: A
-`StatefulWidget` and a corresponding `State` class.
-Pro tip: The Flutter plugins for Android Studio and VSCode include
-the `stful` snippet to quickly generate this code.
+Para construir um `StatefulWidget`, crie duas classes: Um
+`StatefulWidget` e uma classe `State` correspondente.
+Dica profissional: Os plugins do Flutter para Android Studio e VSCode incluem
+o snippet `stful` para gerar rapidamente este código.
 
 <?code-excerpt "lib/starter.dart (Starter)" remove="return Container();"?>
 ```dart
@@ -74,21 +75,21 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 ```
 
-## 3. Display a button that toggles the visibility
+## 3. Exibir um botão que alterna a visibilidade
 
-Now that you have some data to determine whether the green box
-should be visible, you need a way to update that data.
-In this example, if the box is visible, hide it.
-If the box is hidden, show it.
+Agora que você tem alguns dados para determinar se a caixa verde
+deve estar visível, você precisa de uma maneira de atualizar esses dados.
+Neste exemplo, se a caixa estiver visível, oculte-a.
+Se a caixa estiver oculta, mostre-a.
 
-To handle this, display a button. When a user presses the button,
-flip the boolean from true to false, or false to true.
-Make this change using [`setState()`][],
-which is a method on the `State` class.
-This tells Flutter to rebuild the widget.
+Para lidar com isso, exiba um botão. Quando um usuário pressiona o botão,
+inverta o booleano de true para false, ou false para true.
+Faça essa mudança usando [`setState()`][],
+que é um método na classe `State`.
+Isso diz ao Flutter para reconstruir o widget.
 
-For more information on working with user input,
-see the [Gestures][] section of the cookbook.
+Para mais informações sobre trabalhar com entrada do usuário,
+veja a seção [Gestures][] do cookbook.
 
 <?code-excerpt "lib/main.dart (FAB)" replace="/^floatingActionButton: //g;/^\),$/)/g"?>
 ```dart
@@ -105,17 +106,17 @@ FloatingActionButton(
 )
 ```
 
-## 4. Fade the box in and out
+## 4. Aplicar fade in e fade out na caixa
 
-You have a green box on screen and a button to toggle the visibility
-to `true` or `false`. How to fade the box in and out? With an
-[`AnimatedOpacity`][] widget.
+Você tem uma caixa verde na tela e um botão para alternar a visibilidade
+para `true` ou `false`. Como aplicar fade in e fade out na caixa? Com um
+widget [`AnimatedOpacity`][].
 
-The `AnimatedOpacity` widget requires three arguments:
+O widget `AnimatedOpacity` requer três argumentos:
 
-* `opacity`: A value from 0.0 (invisible) to 1.0 (fully visible).
-* `duration`: How long the animation should take to complete.
-* `child`: The widget to animate. In this case, the green box.
+* `opacity`: Um valor de 0.0 (invisível) a 1.0 (totalmente visível).
+* `duration`: Quanto tempo a animação deve levar para completar.
+* `child`: O widget a ser animado. Neste caso, a caixa verde.
 
 <?code-excerpt "lib/main.dart (AnimatedOpacity)" replace="/^child: //g;/^\),$/)/g"?>
 ```dart
@@ -129,10 +130,10 @@ AnimatedOpacity(
 )
 ```
 
-## Interactive example
+## Exemplo interativo
 
 <?code-excerpt "lib/main.dart"?>
-```dartpad title="Implicit Animation Opacity DartPad hands-on example" run="true"
+```dartpad title="Exemplo prático de animação de opacidade implícita no DartPad" run="true"
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());

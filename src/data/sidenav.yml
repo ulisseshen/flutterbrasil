@@ -1,903 +1,903 @@
-- header: Get started
+- header: Primeiros passos
 
 
-- title: Set up Flutter
+- title: Configurar Flutter
   permalink: /get-started
   hiddenChildren: true
   children:
-    - title: Overview
+    - title: Visão geral
       permalink: /get-started
-    - title: Quick start
+    - title: Início rápido
       permalink: /get-started/quick
-    - title: Custom setup
+    - title: Configuração personalizada
       permalink: /get-started/custom
 
-- title: Install Flutter
+- title: Instalar Flutter
   permalink: /install
   children:
-    - title: Overview
+    - title: Visão geral
       permalink: /install
-    - title: Install with VS Code
+    - title: Instalar com VS Code
       permalink: /install/with-vs-code
-    - title: Install manually
+    - title: Instalar manualmente
       permalink: /install/manual
-    - title: Upgrade SDK
+    - title: Atualizar SDK
       permalink: /install/upgrade
-    - title: SDK archive
+    - title: Arquivo SDK
       permalink: /install/archive
     - divider
-    - title: Add to path
+    - title: Adicionar ao path
       permalink: /install/add-to-path
-    - title: Troubleshoot
+    - title: Solução de problemas
       permalink: /install/troubleshoot
-    - title: Uninstall SDK
+    - title: Desinstalar SDK
       permalink: /install/uninstall
 
-- title: Learn Flutter
+- title: Aprender Flutter
   children:
-    - title: Introduction
+    - title: Introdução
       permalink: /get-started/learn-flutter
-    - title: Write your first app
+    - title: Escreva seu primeiro app
       permalink: /get-started/codelab
-    - title: Learn the fundamentals
+    - title: Aprenda os fundamentos
       expanded: true
       children:
-        - title: Introduction
+        - title: Introdução
           permalink: /get-started/fundamentals
-        - title: Intro to Dart
+        - title: Introdução ao Dart
           permalink: /get-started/fundamentals/dart
         - title: Widgets
           permalink: /get-started/fundamentals/widgets
         - title: Layout
           permalink: /get-started/fundamentals/layout
-        - title: State management
+        - title: Gerenciamento de estado
           permalink: /get-started/fundamentals/state-management
-        - title: Handling user input
+        - title: Lidando com entrada do usuário
           permalink: /get-started/fundamentals/user-input
-        - title: Networking and data
+        - title: Networking e dados
           permalink: /get-started/fundamentals/networking
-        - title: Local data and caching
+        - title: Dados locais e caching
           permalink: /get-started/fundamentals/local-caching
 
-    - title: From another platform?
+    - title: De outra plataforma?
       permalink: /get-started/flutter-for
       children:
-        - title: Flutter for Android devs
+        - title: Flutter para desenvolvedores Android
           permalink: /get-started/flutter-for/android-devs
-        - title: Flutter for Jetpack Compose devs
+        - title: Flutter para desenvolvedores Jetpack Compose
           permalink: /get-started/flutter-for/compose-devs
-        - title: Flutter for SwiftUI devs
+        - title: Flutter para desenvolvedores SwiftUI
           permalink: /get-started/flutter-for/swiftui-devs
-        - title: Flutter for UIKit devs
+        - title: Flutter para desenvolvedores UIKit
           permalink: /get-started/flutter-for/uikit-devs
-        - title: Flutter for React Native devs
+        - title: Flutter para desenvolvedores React Native
           permalink: /get-started/flutter-for/react-native-devs
-        - title: Flutter for web devs
+        - title: Flutter para desenvolvedores web
           permalink: /get-started/flutter-for/web-devs
-        - title: Flutter for Xamarin.Forms devs
+        - title: Flutter para desenvolvedores Xamarin.Forms
           permalink: /get-started/flutter-for/xamarin-forms-devs
-        - title: Introduction to declarative UI
+        - title: Introdução à UI declarativa
           permalink: /get-started/flutter-for/declarative
-        - title: Flutter versus Swift concurrency
+        - title: Flutter versus concorrência em Swift
           permalink: /get-started/flutter-for/dart-swift-concurrency
 
     - divider
-    - title: Samples & tutorials
+    - title: Exemplos e tutoriais
       permalink: /reference/learning-resources
 
-- title: Stay up to date
+- title: Mantenha-se atualizado
   permalink: /release
   children:
-    - title: Release notes
+    - title: Notas de release
       permalink: /release/release-notes
     - title: Breaking changes
       permalink: /release/breaking-changes
-    - title: Compatibility policy
+    - title: Política de compatibilidade
       permalink: /release/compatibility-policy
     - divider
-    - title: Flutter blog
+    - title: Blog do Flutter
       permalink: https://blog.flutter.dev
-    - title: What's new in the docs
+    - title: Novidades na documentação
       permalink: /release/whats-new
 
-- title: App solutions
+- title: Soluções de app
   children:
-    - title: Develop with Firebase
+    - title: Desenvolva com Firebase
       children:
-        - title: Overview
+        - title: Visão geral
           permalink: /data-and-backend/firebase
-        - title: Discover Firebase for Flutter
+        - title: Descubra Firebase para Flutter
           permalink: https://firebase.google.com/docs/flutter
-        - title: Get to know Firebase for Flutter
+        - title: Conheça Firebase para Flutter
           permalink: https://www.youtube.com/watch?v=wUSkeTaBonA
-        - title: Add a user authentication flow to a Flutter app using FirebaseUI
+        - title: Adicione um fluxo de autenticação de usuário a um app Flutter usando FirebaseUI
           permalink: https://firebase.google.com/codelabs/firebase-auth-in-flutter-apps
-        - title: Get to know Firebase for web
+        - title: Conheça Firebase para web
           permalink: https://firebase.google.com/codelabs/firebase-get-to-know-web
-    - title: Build multi-platform games
+    - title: Construa jogos multiplataforma
       children:
-        - title: Overview
+        - title: Visão geral
           permalink: /resources/games-toolkit
-        - title: Add achievements and leaderboards
+        - title: Adicione conquistas e placares
           permalink: /cookbook/games/achievements-leaderboard
-        - title: Build leaderboards with Firestore
+        - title: Construa placares com Firestore
           permalink: https://firebase.google.com/codelabs/build-leaderboards-with-firestore#0
-        - title: Add advertising
+        - title: Adicione publicidade
           permalink: /cookbook/plugins/google-mobile-ads
-        - title: Add multiplayer support
+        - title: Adicione suporte multiplayer
           permalink: /cookbook/games/firestore-multiplayer
-        - title: Add in-app purchases
+        - title: Adicione compras no app
           permalink: https://codelabs.developers.google.com/codelabs/flutter-in-app-purchases
-        - title: Add user authentication
+        - title: Adicione autenticação de usuário
           permalink: https://firebase.google.com/codelabs/firebase-auth-in-flutter-apps
-        - title: Debug using Crashlytics
+        - title: Debug usando Crashlytics
           permalink: https://firebase.google.com/docs/crashlytics/get-started?platform=flutter
-        - title: Intro to Flame with Flutter
+        - title: Introdução ao Flame com Flutter
           permalink: https://codelabs.developers.google.com/codelabs/flutter-flame-brick-breaker
-    - title: Monetize your app
+    - title: Monetize seu app
       children:
-        - title: Integrate ads
+        - title: Integre anúncios
           children:
-            - title: Ads overview
+            - title: Visão geral de anúncios
               permalink: /resources/ads-overview
-            - title: Add advertising
+            - title: Adicione publicidade
               permalink: /cookbook/plugins/google-mobile-ads
-            - title: Add AdMob ads to your Flutter app
+            - title: Adicione anúncios AdMob ao seu app Flutter
               permalink: https://codelabs.developers.google.com/codelabs/admob-ads-in-flutter
-            - title: Add an AdMob banner and native inline ads
+            - title: Adicione um banner AdMob e anúncios nativos inline
               permalink: https://codelabs.developers.google.com/codelabs/admob-inline-ads-in-flutter
-            - title: Integrate multimedia ads (video)
+            - title: Integre anúncios multimídia (vídeo)
               permalink: https://www.youtube.com/watch?v=U8x5n6RwZOo
-            - title: Google AdMob mediation
+            - title: Mediação Google AdMob
               permalink: https://developers.google.com/admob/flutter/mediation
             - title: Interactive Media Ads SDK
               permalink: https://pub.dev/packages/interactive_media_ads
-        - title: Support payments
+        - title: Suporte pagamentos
           children:
-            - title: Payments overview
+            - title: Visão geral de pagamentos
               permalink: /resources/payments-overview
-            - title: Google pay package
+            - title: Pacote Google pay
               permalink: https://pub.dev/packages/pay
-        - title: Add in-app purchases
+        - title: Adicione compras no app
           permalink: https://codelabs.developers.google.com/codelabs/flutter-in-app-purchases
-    - title: Integrate maps
+    - title: Integre mapas
       children:
-        - title: Add Google maps to a Flutter app
+        - title: Adicione Google maps a um app Flutter
           permalink: https://codelabs.developers.google.com/codelabs/google-maps-in-flutter
-        - title: Google Maps package
+        - title: Pacote Google Maps
           permalink: https://developers.google.com/maps/flutter-package
 
-- title: AI solutions
+- title: Soluções de IA
   permalink: /ai
   children:
-    - title: Create with AI
+    - title: Crie com IA
       permalink: /ai/create-with-ai
-    - title: AI Rules
+    - title: Regras de IA
       permalink: /ai/ai-rules
     - title: AI Toolkit
       permalink: /ai-toolkit
       expanded: false
       children:
-        - title: Overview
+        - title: Visão geral
           permalink: /ai-toolkit
-        - title: User experience
+        - title: Experiência do usuário
           permalink: /ai-toolkit/user-experience
-        - title: Feature integration
+        - title: Integração de recursos
           permalink: /ai-toolkit/feature-integration
-        - title: Custom LLM providers
+        - title: Provedores LLM personalizados
           permalink: /ai-toolkit/custom-llm-providers
-        - title: Chat client sample
+        - title: Exemplo de cliente de chat
           permalink: /ai-toolkit/chat-client-sample
-    - title: Dart & Flutter MCP server
+    - title: Servidor MCP Dart & Flutter
       permalink: /ai/mcp-server
-    - title: GenUI SDK for Flutter
+    - title: GenUI SDK para Flutter
       permalink: https://github.com/flutter/genui
     - title: Firebase AI Logic
       permalink: https://firebase.google.com/docs/ai-logic/get-started?platform=flutter
 
 - divider
-- header: User interface
-- title: Introduction
+- header: Interface do usuário
+- title: Introdução
   permalink: /ui
-- title: Widget catalog
+- title: Catálogo de widgets
   permalink: /ui/widgets
   children:
-    - title: Overview
+    - title: Visão geral
       permalink: /ui/widgets
-    - title: Design systems
+    - title: Sistemas de design
       expanded: false
       children:
         - title: Cupertino
           permalink: /ui/widgets/cupertino
-        - title: Material components
+        - title: Componentes Material
           permalink: /ui/widgets/material
-    - title: Base widgets
+    - title: Widgets base
       expanded: false
       children:
-        - title: Accessibility
+        - title: Acessibilidade
           permalink: /ui/widgets/accessibility
-        - title: Animation
+        - title: Animação
           permalink: /ui/widgets/animation
         - title: Assets
           permalink: /ui/widgets/assets
         - title: Async
           permalink: /ui/widgets/async
-        - title: Basics
+        - title: Básicos
           permalink: /ui/widgets/basics
         - title: Input
           permalink: /ui/widgets/input
-        - title: Interaction
+        - title: Interação
           permalink: /ui/widgets/interaction
         - title: Layout
           permalink: /ui/widgets/layout
-        - title: Painting
+        - title: Pintura
           permalink: /ui/widgets/painting
-        - title: Scrolling
+        - title: Rolagem
           permalink: /ui/widgets/scrolling
-        - title: Styling
+        - title: Estilização
           permalink: /ui/widgets/styling
-        - title: Text
+        - title: Texto
           permalink: /ui/widgets/text
 - title: Layout
   permalink: /ui/layout
   children:
-    - title: Introduction
+    - title: Introdução
       permalink: /ui/layout
-    - title: Build a layout
+    - title: Construa um layout
       permalink: /ui/layout/tutorial
-    - title: Lists & grids
+    - title: Listas e grades
       permalink: /ui/layout/lists
       children:
-        - title: Create and use lists
+        - title: Crie e use listas
           permalink: /cookbook/lists/basic-list
-        - title: Create a horizontal list
+        - title: Crie uma lista horizontal
           permalink: /cookbook/lists/horizontal-list
-        - title: Create a grid view
+        - title: Crie uma visualização de grade
           permalink: /cookbook/lists/grid-lists
-        - title: Create lists with different types of items
+        - title: Crie listas com diferentes tipos de itens
           permalink: /cookbook/lists/mixed-list
-        - title: Create lists with spaced items
+        - title: Crie listas com itens espaçados
           permalink: /cookbook/lists/spaced-items
-        - title: Work with long lists
+        - title: Trabalhe com listas longas
           permalink: /cookbook/lists/long-lists
-    - title: Scrolling
+    - title: Rolagem
       permalink: /ui/layout/scrolling
       children:
-        - title: Overview
+        - title: Visão geral
           permalink: /ui/layout/scrolling
-        - title: Use slivers to achieve fancy scrolling
+        - title: Use slivers para obter rolagem sofisticada
           permalink: /ui/layout/scrolling/slivers
-        - title: Place a floating app bar above a list
+        - title: Coloque uma app bar flutuante acima de uma lista
           permalink: /cookbook/lists/floating-app-bar
-        - title: Create a scrolling parallax effect
+        - title: Crie um efeito parallax de rolagem
           permalink: /cookbook/effects/parallax-scrolling
-- title: Adaptive & responsive design
+- title: Design adaptativo e responsivo
   permalink: /ui/adaptive-responsive
   children:
-    - title: Overview
+    - title: Visão geral
       permalink: /ui/adaptive-responsive
-    - title: General approach
+    - title: Abordagem geral
       permalink: /ui/adaptive-responsive/general
-    - title: SafeArea & MediaQuery
+    - title: SafeArea e MediaQuery
       permalink: /ui/adaptive-responsive/safearea-mediaquery
-    - title: Large screens & foldables
+    - title: Telas grandes e dobráveis
       permalink: /ui/adaptive-responsive/large-screens
-    - title: User input & accessibility
+    - title: Entrada do usuário e acessibilidade
       permalink: /ui/adaptive-responsive/input
-    - title: Capabilities & policies
+    - title: Capacidades e políticas
       permalink: /ui/adaptive-responsive/capabilities
-    - title: Automatic platform adaptations
+    - title: Adaptações automáticas de plataforma
       permalink: /ui/adaptive-responsive/platform-adaptations
-    - title: Best practices
+    - title: Melhores práticas
       permalink: /ui/adaptive-responsive/best-practices
-    - title: Additional resources
+    - title: Recursos adicionais
       permalink: /ui/adaptive-responsive/more-info
-- title: Design & theming
+- title: Design e temas
   permalink: /ui/design
   children:
-    - title: Share styles with themes
+    - title: Compartilhe estilos com temas
       permalink: /cookbook/design/themes
     - title: Material design
       permalink: /ui/design/material
-    - title: Migrate to Material 3
+    - title: Migre para Material 3
       permalink: /release/breaking-changes/material-3-migration
-    - title: Text
+    - title: Texto
       permalink: /ui/design/text
       children:
-        - title: Fonts & typography
+        - title: Fontes e tipografia
           permalink: /ui/design/text/typography
-        - title: Use a custom font
+        - title: Use uma fonte personalizada
           permalink: /cookbook/design/fonts
-        - title: Export fonts from a package
+        - title: Exporte fontes de um pacote
           permalink: /cookbook/design/package-fonts
-        - title: Google Fonts package
+        - title: Pacote Google Fonts
           permalink: https://pub.dev/packages/google_fonts
       # Consider renaming this 'Custom drawing & graphics'
       # once more docs are added
-    - title: Custom graphics
+    - title: Gráficos personalizados
       permalink: /ui/design/graphics
       children:
-        - title: Use custom fragment shaders
+        - title: Use fragment shaders personalizados
           permalink: /ui/design/graphics/fragment-shaders
 
-- title: Interactivity
+- title: Interatividade
   permalink: /ui/interactivity
   children:
-    - title: Add interactivity to your app
+    - title: Adicione interatividade ao seu app
       permalink: /ui/interactivity
-    - title: Gestures
+    - title: Gestos
       permalink: /ui/interactivity/gestures
       children:
-        - title: Introduction
+        - title: Introdução
           permalink: /ui/interactivity/gestures
-        - title: Handle taps
+        - title: Lide com toques
           permalink: /cookbook/gestures/handling-taps
-        - title: Drag an object outside an app
+        - title: Arraste um objeto para fora de um app
           permalink: /ui/interactivity/gestures/drag-outside
-        - title: Drag a UI element within an app
+        - title: Arraste um elemento UI dentro de um app
           permalink: /cookbook/effects/drag-a-widget
-        - title: Add Material touch ripples
+        - title: Adicione ripples touch do Material
           permalink: /cookbook/gestures/ripples
-        - title: Implement swipe to dismiss
+        - title: Implemente swipe para dispensar
           permalink: /cookbook/gestures/dismissible
-    - title: Input & forms
+    - title: Input e formulários
       permalink: /ui/interactivity/input
       children:
-        - title: Create and style a text field
+        - title: Crie e estilize um campo de texto
           permalink: /cookbook/forms/text-input
-        - title: Retrieve the value of a text field
+        - title: Recupere o valor de um campo de texto
           permalink: /cookbook/forms/retrieve-input
-        - title: Handle changes to a text field
+        - title: Lide com mudanças em um campo de texto
           permalink: /cookbook/forms/text-field-changes
-        - title: Manage focus in text fields
+        - title: Gerencie foco em campos de texto
           permalink: /cookbook/forms/focus
-        - title: Build a form with validation
+        - title: Construa um formulário com validação
           permalink: /cookbook/forms/validation
-    - title: Display a snackbar
+    - title: Exiba uma snackbar
       permalink: /cookbook/design/snackbars
-    - title: Implement actions & shortcuts
+    - title: Implemente ações e atalhos
       permalink: /ui/interactivity/actions-and-shortcuts
-    - title: Manage keyboard focus
+    - title: Gerencie foco do teclado
       permalink: /ui/interactivity/focus
 
-- title: Assets & media
+- title: Assets e mídia
   permalink: /ui/assets
   children:
-    - title: Add assets and images
+    - title: Adicione assets e imagens
       permalink: /ui/assets/assets-and-images
-    - title: Display images from the internet
+    - title: Exiba imagens da internet
       permalink: /cookbook/images/network-image
-    - title: Fade in images with a placeholder
+    - title: Fade in de imagens com um placeholder
       permalink: /cookbook/images/fading-in-images
-    - title: Play and pause a video
+    - title: Reproduza e pause um vídeo
       permalink: /cookbook/plugins/play-video
-    - title: Transform assets at build time
+    - title: Transforme assets em tempo de compilação
       permalink: /ui/assets/asset-transformation
 
-- title: Navigation & routing
+- title: Navegação e roteamento
   permalink: /ui/navigation
   children:
-    - title: Overview
+    - title: Visão geral
       permalink: /ui/navigation
-    - title: Add tabs to your app
+    - title: Adicione abas ao seu app
       permalink: /cookbook/design/tabs
-    - title: Navigate to a new screen and back
+    - title: Navegue para uma nova tela e volte
       permalink: /cookbook/navigation/navigation-basics
-    - title: Send data to a new screen
+    - title: Envie dados para uma nova tela
       permalink: /cookbook/navigation/passing-data
-    - title: Return data from a screen
+    - title: Retorne dados de uma tela
       permalink: /cookbook/navigation/returning-data
-    - title: Add a drawer to a screen
+    - title: Adicione uma drawer a uma tela
       permalink: /cookbook/design/drawer
-    - title: Set up deep linking
+    - title: Configure deep linking
       permalink: /ui/navigation/deep-linking
-    - title: Set up app links for Android
+    - title: Configure app links para Android
       permalink: /cookbook/navigation/set-up-app-links
-    - title: Set up universal links for iOS
+    - title: Configure universal links para iOS
       permalink: /cookbook/navigation/set-up-universal-links
-    - title: Configure web URL strategies
+    - title: Configure estratégias de URL web
       permalink: /ui/navigation/url-strategies
 
-- title: Animations & transitions
+- title: Animações e transições
   permalink: /ui/animations
   children:
-    - title: Introduction
+    - title: Introdução
       permalink: /ui/animations
     - title: Tutorial
       permalink: /ui/animations/tutorial
-    - title: Implicit animations
+    - title: Animações implícitas
       permalink: /ui/animations/implicit-animations
-    - title: Animate the properties of a container
+    - title: Anime as propriedades de um container
       permalink: /cookbook/animation/animated-container
-    - title: Fade a widget in and out
+    - title: Fade in e out de um widget
       permalink: /cookbook/animation/opacity-animation
-    - title: Hero animations
+    - title: Animações Hero
       permalink: /ui/animations/hero-animations
-    - title: Animate a page route transition
+    - title: Anime uma transição de rota de página
       permalink: /cookbook/animation/page-route-animation
-    - title: Animate using a physics simulation
+    - title: Anime usando uma simulação física
       permalink: /cookbook/animation/physics-simulation
-    - title: Staggered animations
+    - title: Animações escalonadas
       permalink: /ui/animations/staggered-animations
-    - title: Create a staggered menu animation
+    - title: Crie uma animação de menu escalonado
       permalink: /cookbook/effects/staggered-menu-animation
-    - title: API overview
+    - title: Visão geral da API
       permalink: /ui/animations/overview
 
-- title: Accessibility 
+- title: Acessibilidade
   permalink: /ui/accessibility
   children:
-    - title: Introduction
+    - title: Introdução
       permalink: /ui/accessibility
-    - title: UI design & styling
+    - title: Design e estilização de UI
       permalink: /ui/accessibility/ui-design-and-styling
-    - title: Assistive technologies
+    - title: Tecnologias assistivas
       permalink: /ui/accessibility/assistive-technologies
-    - title: Accessibility testing
+    - title: Testes de acessibilidade
       permalink: /ui/accessibility/accessibility-testing
-    - title: Web accessibility
+    - title: Acessibilidade web
       permalink: /ui/accessibility/web-accessibility
 
-- title: Internationalization
+- title: Internacionalização
   permalink: /ui/internationalization
 
 - divider
-- header: Beyond UI
+- header: Além da UI
 
-- title: Data & backend
+- title: Dados e backend
   permalink: /data-and-backend
   children:
-    - title: State management
+    - title: Gerenciamento de estado
       permalink: /data-and-backend/state-mgmt
       children:
-        - title: Introduction
+        - title: Introdução
           permalink: /data-and-backend/state-mgmt/intro
-        - title: Think declaratively
+        - title: Pense declarativamente
           permalink: /data-and-backend/state-mgmt/declarative
-        - title: Ephemeral vs app state
+        - title: Estado efêmero vs estado do app
           permalink: /data-and-backend/state-mgmt/ephemeral-vs-app
-        - title: Simple app state management
+        - title: Gerenciamento simples de estado do app
           permalink: /data-and-backend/state-mgmt/simple
-        - title: Options
+        - title: Opções
           permalink: /data-and-backend/state-mgmt/options
-    - title: Networking & http
+    - title: Networking e http
       permalink: /data-and-backend/networking
       children:
-        - title: Overview
+        - title: Visão geral
           permalink: /data-and-backend/networking
-        - title: Fetch data from the internet
+        - title: Busque dados da internet
           permalink: /cookbook/networking/fetch-data
-        - title: Make authenticated requests
+        - title: Faça requisições autenticadas
           permalink: /cookbook/networking/authenticated-requests
-        - title: Send data to the internet
+        - title: Envie dados para a internet
           permalink: /cookbook/networking/send-data
-        - title: Update data over the internet
+        - title: Atualize dados pela internet
           permalink: /cookbook/networking/update-data
-        - title: Delete data on the internet
+        - title: Delete dados na internet
           permalink: /cookbook/networking/delete-data
-        - title: Communicate with WebSockets
+        - title: Comunique-se com WebSockets
           permalink: /cookbook/networking/web-sockets
-    - title: Serialization
+    - title: Serialização
       permalink: /data-and-backend/serialization
       children:
-        - title: JSON serialization
+        - title: Serialização JSON
           permalink: /data-and-backend/serialization/json
-        - title: Parse JSON in the background
+        - title: Parse JSON em background
           permalink: /cookbook/networking/background-parsing
-    - title: Persistence
+    - title: Persistência
       permalink: /data-and-backend/persistence
       children:
-        - title: Store key-value data on disk
+        - title: Armazene dados chave-valor em disco
           permalink: /cookbook/persistence/key-value
-        - title: Read and write files
+        - title: Leia e escreva arquivos
           permalink: /cookbook/persistence/reading-writing-files
-        - title: Persist data with SQLite
+        - title: Persista dados com SQLite
           permalink: /cookbook/persistence/sqlite
     - title: Firebase
       permalink: /data-and-backend/firebase
       children:
-        - title: Overview
+        - title: Visão geral
           permalink: /data-and-backend/firebase
-        - title: Add Firebase to your Flutter app
+        - title: Adicione Firebase ao seu app Flutter
           permalink: https://firebase.google.com/docs/flutter/setup
-    - title: Google APIs
+    - title: APIs Google
       permalink: /data-and-backend/google-apis
 
-- title: App architecture
+- title: Arquitetura de app
   permalink: /app-architecture
   children:
-    - title: Introduction
+    - title: Introdução
       permalink: /app-architecture
-    - title: Architecture concepts
+    - title: Conceitos de arquitetura
       permalink: /app-architecture/concepts
-    - title: Guide to app architecture
+    - title: Guia para arquitetura de app
       permalink: /app-architecture/guide
-    - title: Architecture case study
+    - title: Estudo de caso de arquitetura
       permalink: /app-architecture/case-study
       children:
-        - title: Overview
+        - title: Visão geral
           permalink: /app-architecture/case-study
-        - title: UI layer
+        - title: Camada UI
           permalink: /app-architecture/case-study/ui-layer
-        - title: Data layer
+        - title: Camada de dados
           permalink: /app-architecture/case-study/data-layer
-        - title: Dependency injection
+        - title: Injeção de dependência
           permalink: /app-architecture/case-study/dependency-injection
-        - title: Testing each layer
+        - title: Testando cada camada
           permalink: /app-architecture/case-study/testing
 
-    - title: Recommendations
+    - title: Recomendações
       permalink: /app-architecture/recommendations
-    - title: Design patterns
+    - title: Padrões de design
       permalink: /app-architecture/design-patterns
 
-- title: Platform integration
+- title: Integração de plataforma
   permalink: /platform-integration
   children:
-    - title: Supported platforms
+    - title: Plataformas suportadas
       permalink: /reference/supported-platforms
-    - title: Build desktop apps with Flutter
+    - title: Construa apps desktop com Flutter
       permalink: /platform-integration/desktop
-    - title: Write platform-specific code
+    - title: Escreva código específico de plataforma
       permalink: /platform-integration/platform-channels
     - title: Android
       permalink: /platform-integration/android
       children:
-        - title: Set up Android development
+        - title: Configure desenvolvimento Android
           permalink: /platform-integration/android/setup
-        - title: Add a splash screen
+        - title: Adicione uma splash screen
           permalink: /platform-integration/android/splash-screen
-        - title: Add predictive back
+        - title: Adicione back preditivo
           permalink: /platform-integration/android/predictive-back
-        - title: Bind to native code
+        - title: Vincule a código nativo
           permalink: /platform-integration/android/c-interop
-        - title: Host a native Android view
+        - title: Hospede uma view nativa Android
           permalink: /platform-integration/android/platform-views
-        - title: Calling JetPack APIs
+        - title: Chamando APIs JetPack
           permalink: /platform-integration/android/call-jetpack-apis
-        - title: Launch a Jetpack Compose activity
+        - title: Lance uma activity Jetpack Compose
           permalink: /platform-integration/android/compose-activity
-        - title: Restore state on Android
+        - title: Restaure estado no Android
           permalink: /platform-integration/android/restore-state-android
-        - title: Target ChromeOS with Android
+        - title: Desenvolva para ChromeOS com Android
           permalink: /platform-integration/android/chromeos
-        - title: Protect your app's sensitive content
+        - title: Proteja o conteúdo sensível do seu app
           permalink: /platform-integration/android/sensitive-content
     - title: iOS
       permalink: /platform-integration/ios
       children:
-        - title: Set up iOS development
+        - title: Configure desenvolvimento iOS
           permalink: /platform-integration/ios/setup
-        - title: Flutter on latest iOS
+        - title: Flutter no iOS mais recente
           permalink: /platform-integration/ios/ios-latest
-        - title: Leverage Apple's system libraries
+        - title: Aproveite as bibliotecas do sistema Apple
           permalink: /platform-integration/ios/apple-frameworks
-        - title: Add a launch screen
+        - title: Adicione uma launch screen
           permalink: /platform-integration/ios/launch-screen
-        - title: Add iOS App Clip support
+        - title: Adicione suporte a iOS App Clip
           permalink: /platform-integration/ios/ios-app-clip
-        - title: Add iOS app extensions
+        - title: Adicione extensões de app iOS
           permalink: /platform-integration/ios/app-extensions
-        - title: Bind to native code
+        - title: Vincule a código nativo
           permalink: /platform-integration/ios/c-interop
-        - title: Host a native iOS view
+        - title: Hospede uma view nativa iOS
           permalink: /platform-integration/ios/platform-views
-        - title: Enable debugging on iOS
+        - title: Habilite depuração no iOS
           permalink: /platform-integration/ios/ios-debugging
-        - title: Restore state on iOS
+        - title: Restaure estado no iOS
           permalink: /platform-integration/ios/restore-state-ios
     - title: Linux
       permalink: /platform-integration/linux
       children:
-        - title: Set up Linux development
+        - title: Configure desenvolvimento Linux
           permalink: /platform-integration/linux/setup
-        - title: Build a Linux app
+        - title: Construa um app Linux
           permalink: /platform-integration/linux/building
     - title: macOS
       permalink: /platform-integration/macos
       children:
-        - title: Set up macOS development
+        - title: Configure desenvolvimento macOS
           permalink: /platform-integration/macos/setup
-        - title: Build a macOS app
+        - title: Construa um app macOS
           permalink: /platform-integration/macos/building
-        - title: Bind to native code
+        - title: Vincule a código nativo
           permalink: /platform-integration/macos/c-interop
-        - title: Host a native macOS view
+        - title: Hospede uma view nativa macOS
           permalink: /platform-integration/macos/platform-views
     - title: Web
       permalink: /platform-integration/web
       children:
-        - title: Web support in Flutter
+        - title: Suporte web no Flutter
           permalink: /platform-integration/web
-        - title: Set up web development
+        - title: Configure desenvolvimento web
           permalink: /platform-integration/web/setup
-        - title: Build a web app
+        - title: Construa um app web
           permalink: /platform-integration/web/building
-        - title: Compile to WebAssembly
+        - title: Compile para WebAssembly
           permalink: /platform-integration/web/wasm
-        - title: Customize app initialization
+        - title: Personalize inicialização do app
           permalink: /platform-integration/web/initialization
-        - title: Add Flutter to any web app
+        - title: Adicione Flutter a qualquer app web
           permalink: /platform-integration/web/embedding-flutter-web
-        - title: Web content in Flutter
+        - title: Conteúdo web no Flutter
           permalink: /platform-integration/web/web-content-in-flutter
-        - title: Web renderers
+        - title: Renderizadores web
           permalink: /platform-integration/web/renderers
-        - title: Display images on the web
+        - title: Exiba imagens na web
           permalink: /platform-integration/web/web-images
-        - title: Web FAQ
+        - title: FAQ web
           permalink: /platform-integration/web/faq
     - title: Windows
       permalink: /platform-integration/windows
       children:
-        - title: Set up Windows development
+        - title: Configure desenvolvimento Windows
           permalink: /platform-integration/windows/setup
-        - title: Build a Windows app
+        - title: Construa um app Windows
           permalink: /platform-integration/windows/building
 
-- title: Packages & plugins
+- title: Pacotes e plugins
   permalink: /packages-and-plugins
   children:
-    - title: Use packages & plugins
+    - title: Use pacotes e plugins
       permalink: /packages-and-plugins/using-packages
-    - title: Develop packages & plugins
+    - title: Desenvolva pacotes e plugins
       permalink: /packages-and-plugins/developing-packages
     - title: Swift Package Manager
       permalink: /packages-and-plugins/swift-package-manager
       children:
-        - title: For app developers
+        - title: Para desenvolvedores de app
           permalink: /packages-and-plugins/swift-package-manager/for-app-developers
-        - title: For plugin authors
+        - title: Para autores de plugin
           permalink: /packages-and-plugins/swift-package-manager/for-plugin-authors
     - divider
     - title: Flutter Favorites
       permalink: /packages-and-plugins/favorites
-    - title: Package repository
+    - title: Repositório de pacotes
       permalink: https://pub.dev/flutter
 
-- title: Testing & debugging
+- title: Testes e depuração
   permalink: /testing
   children:
-    - header: Testing
-    - title: Overview
+    - header: Testes
+    - title: Visão geral
       permalink: /testing/overview
-    - title: Unit testing
+    - title: Testes unitários
       children:
-        - title: Introduction
+        - title: Introdução
           permalink: /cookbook/testing/unit/introduction
-        - title: Mock dependencies
+        - title: Mock de dependências
           permalink: /cookbook/testing/unit/mocking
-    - title: Widget testing
+    - title: Testes de widget
       children:
-        - title: Introduction
+        - title: Introdução
           permalink: /cookbook/testing/widget/introduction
-        - title: Find widgets
+        - title: Encontre widgets
           permalink: /cookbook/testing/widget/finders
-        - title: Simulate scrolling
+        - title: Simule rolagem
           permalink: /cookbook/testing/widget/scrolling
-        - title: Simulate user interaction
+        - title: Simule interação do usuário
           permalink: /cookbook/testing/widget/tap-drag
-    - title: Integration testing
+    - title: Testes de integração
       children:
-        - title: Introduction
+        - title: Introdução
           permalink: /cookbook/testing/integration/introduction
-        - title: Write and run an integration test
+        - title: Escreva e execute um teste de integração
           permalink: /testing/integration-tests
-        - title: Profile an integration test
+        - title: Profile de um teste de integração
           permalink: /cookbook/testing/integration/profiling
-    - title: Test a plugin
+    - title: Teste um plugin
       permalink: /testing/testing-plugins
-    - title: Handle plugin code in tests
+    - title: Lide com código de plugin em testes
       permalink: /testing/plugins-in-tests
-    - header: Debugging
-    - title: Debugging tools
+    - header: Depuração
+    - title: Ferramentas de depuração
       permalink: /testing/debugging
-    - title: Debug your app programmatically
+    - title: Depure seu app programaticamente
       permalink: /testing/code-debugging
-    - title: Use a native language debugger
+    - title: Use um debugger de linguagem nativa
       permalink: /testing/native-debugging
-    - title: Common Flutter errors
+    - title: Erros comuns do Flutter
       permalink: /testing/common-errors
-    - title: Handle errors
+    - title: Lide com erros
       permalink: /testing/errors
-    - title: Report errors to a service
+    - title: Reporte erros a um serviço
       permalink: /cookbook/maintenance/error-reporting
 
-- title: Performance & optimization
+- title: Performance e otimização
   permalink: /perf
   children:
-    - title: Overview
+    - title: Visão geral
       permalink: /perf
     - title: Impeller
       permalink: /perf/impeller
-    - title: Performance best practices
+    - title: Melhores práticas de performance
       permalink: /perf/best-practices
-    - title: App size
+    - title: Tamanho do app
       permalink: /perf/app-size
-    - title: Deferred components
+    - title: Componentes diferidos
       permalink: /perf/deferred-components
     #    - title: Memory
     #      permalink: /perf/memory
     #    - title: Power usage
     #      permalink: /perf/power
-    - title: Rendering performance
+    - title: Performance de renderização
       permalink: /perf/rendering-performance
-    - title: Performance profiling
+    - title: Profiling de performance
       permalink: /perf/ui-performance
-    - title: Performance profiling for web
+    - title: Profiling de performance para web
       permalink: /perf/web-performance
-    - title: Performance metrics
+    - title: Métricas de performance
       permalink: /perf/metrics
-    - title: Concurrency and isolates
+    - title: Concorrência e isolates
       permalink: /perf/isolates
-    - title: Performance FAQ
+    - title: FAQ de performance
       permalink: /perf/faq
-    - title: Appendix
+    - title: Apêndice
       permalink: /perf/appendix
 
 - title: Deployment
   permalink: /deployment
   children:
-    - title: Obfuscate Dart code
+    - title: Ofusque código Dart
       permalink: /deployment/obfuscate
-    - title: Create app flavors for Android
+    - title: Crie flavors de app para Android
       permalink: /deployment/flavors
-    - title: Create app flavors for iOS and macOS
+    - title: Crie flavors de app para iOS e macOS
       permalink: /deployment/flavors-ios
-    - title: Build and release an Android app
+    - title: Construa e lance um app Android
       permalink: /deployment/android
-    - title: Build and release an iOS app
+    - title: Construa e lance um app iOS
       permalink: /deployment/ios
-    - title: Build and release a macOS app
+    - title: Construa e lance um app macOS
       permalink: /deployment/macos
-    - title: Build and release a Linux app
+    - title: Construa e lance um app Linux
       permalink: /deployment/linux
-    - title: Build and release a Windows app
+    - title: Construa e lance um app Windows
       permalink: /deployment/windows
-    - title: Build and release a web app
+    - title: Construa e lance um app web
       permalink: /deployment/web
-    - title: Set up continuous deployment
+    - title: Configure deployment contínuo
       permalink: /deployment/cd
 
-- title: Add to an existing app
+- title: Adicione a um app existente
   permalink: /add-to-app
   children:
-    - title: Introduction
+    - title: Introdução
       permalink: /add-to-app
-    - title: Add to an Android app
+    - title: Adicione a um app Android
       permalink: /add-to-app/android
       children:
-        - title: Set up Android project
+        - title: Configure projeto Android
           permalink: /add-to-app/android/project-setup
-        - title: Add a single Flutter screen
+        - title: Adicione uma única tela Flutter
           permalink: /add-to-app/android/add-flutter-screen
-        - title: Add a Flutter Fragment
+        - title: Adicione um Flutter Fragment
           permalink: /add-to-app/android/add-flutter-fragment
-        - title: Add a Flutter View
+        - title: Adicione uma Flutter View
           permalink: /add-to-app/android/add-flutter-view
-        - title: Use a Flutter plugin
+        - title: Use um plugin Flutter
           permalink: /add-to-app/android/plugin-setup
-    - title: Add to an iOS app
+    - title: Adicione a um app iOS
       permalink: /add-to-app/ios
       children:
-        - title: Set up iOS project
+        - title: Configure projeto iOS
           permalink: /add-to-app/ios/project-setup
-        - title: Add a single Flutter screen
+        - title: Adicione uma única tela Flutter
           permalink: /add-to-app/ios/add-flutter-screen
-    - title: Add to a web app
+    - title: Adicione a um app web
       permalink: /platform-integration/web/embedding-flutter-web
-    - title: Debug embedded Flutter module
+    - title: Depure módulo Flutter embarcado
       permalink: /add-to-app/debugging
-    - title: Add multiple Flutter instances
+    - title: Adicione múltiplas instâncias Flutter
       permalink: /add-to-app/multiple-flutters
-    - title: Loading sequence and performance
+    - title: Sequência de carregamento e performance
       permalink: /add-to-app/performance
 
 - divider
 
-- title: Tools & editors
+- title: Ferramentas e editores
   permalink: /tools
   children:
-    - title: Android Studio & IntelliJ
+    - title: Android Studio e IntelliJ
       permalink: /tools/android-studio
     - title: Visual Studio Code
       permalink: /tools/vs-code
     - title: DevTools
       permalink: /tools/devtools
       children:
-        - title: Overview
+        - title: Visão geral
           permalink: /tools/devtools
-        - title: Run from Android Studio & IntelliJ
+        - title: Execute do Android Studio e IntelliJ
           permalink: /tools/devtools/android-studio
-        - title: Run from VS Code
+        - title: Execute do VS Code
           permalink: /tools/devtools/vscode
-        - title: Run from command line
+        - title: Execute da linha de comando
           permalink: /tools/devtools/cli
         - title: Flutter inspector
           permalink: /tools/devtools/inspector
-        - title: Legacy Flutter inspector
+        - title: Flutter inspector legado
           permalink: /tools/devtools/legacy-inspector
-        - title: Performance view
+        - title: View de performance
           permalink: /tools/devtools/performance
-        - title: CPU Profiler view
+        - title: View do CPU Profiler
           permalink: /tools/devtools/cpu-profiler
-        - title: Memory view
+        - title: View de memória
           permalink: /tools/devtools/memory
-        - title: Debug console view
+        - title: View do console de debug
           permalink: /tools/devtools/console
-        - title: Network view
+        - title: View de rede
           permalink: /tools/devtools/network
         - title: Debugger
           permalink: /tools/devtools/debugger
-        - title: Logging view
+        - title: View de logging
           permalink: /tools/devtools/logging
-        - title: App size tool
+        - title: Ferramenta de tamanho do app
           permalink: /tools/devtools/app-size
-        - title: DevTools extensions
+        - title: Extensões DevTools
           permalink: /tools/devtools/extensions
-        - title: Validate deep links
+        - title: Valide deep links
           permalink: /tools/devtools/deep-links
-        - title: Release notes
+        - title: Notas de release
           permalink: /tools/devtools/release-notes
     - title: Flutter Widget Previewer
       permalink: /tools/widget-previewer
     - title: Flutter Property Editor
       permalink: /tools/property-editor
-    - title: SDK overview
+    - title: Visão geral do SDK
       permalink: /tools/sdk
-    - title: Flutter's pubspec options
+    - title: Opções do pubspec do Flutter
       permalink: /tools/pubspec
-    - title: Automated fixes
+    - title: Correções automatizadas
       permalink: /tools/flutter-fix
-    - title: Code formatting
+    - title: Formatação de código
       permalink: /tools/formatting
 
-- title: Flutter concepts
+- title: Conceitos do Flutter
   children:
-    - title: Architectural overview
+    - title: Visão geral arquitetural
       permalink: /resources/architectural-overview
-    - title: Inside Flutter
+    - title: Por dentro do Flutter
       permalink: /resources/inside-flutter
-    - title: Understanding constraints
+    - title: Entendendo constraints
       permalink: /ui/layout/constraints
-    - title: Flutter's build modes
+    - title: Modos de build do Flutter
       permalink: /testing/build-modes
     - title: Hot reload
       permalink: /tools/hot-reload
 
-- title: Resources
+- title: Recursos
   permalink: /resources
   children:
     #    - header: Learn
     - title: FAQ
       permalink: /resources/faq
-    - title: Videos
+    - title: Vídeos
       permalink: /resources/videos
-    - title: Courses
+    - title: Cursos
       permalink: /resources/courses
-    - title: Learn Dart
+    - title: Aprenda Dart
       permalink: /resources/bootstrap-into-dart
-    - title: Get support
+    - title: Obtenha suporte
       permalink: /resources/support
     - divider
-    - title: Contribute
+    - title: Contribua
       children:
-        - title: Contribute to Flutter
+        - title: Contribua para o Flutter
           permalink: /contribute
-        - title: Create useful bug reports
+        - title: Crie relatórios de bug úteis
           permalink: /resources/bug-reports
-        - title: Discover proposed features
+        - title: Descubra recursos propostos
           permalink: /resources/design-docs
-    - title: Reference
+    - title: Referência
       permalink: /reference
       children:
-        - title: Who is Dash?
+        - title: Quem é Dash?
           permalink: /dash
-        - title: Widget index
+        - title: Índice de widgets
           permalink: /reference/widgets
-        - title: Create a new app
+        - title: Crie um novo app
           permalink: /reference/create-new-app
         - title: flutter CLI
           permalink: /reference/flutter-cli
-        - title: API docs
+        - title: Documentação da API
           permalink: https://api.flutter.dev

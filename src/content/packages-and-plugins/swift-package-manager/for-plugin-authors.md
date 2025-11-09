@@ -60,7 +60,7 @@ que já migraram.
 </Tab>
 </Tabs>
 
-## Como atualizar testes unitários no app de exemplo de um plugin
+## Como atualizar testes unitários no app de exemplo de um plugin {:#how-to-update-unit-tests-in-a-plugins-example-app}
 
 Se seu plugin tem XCTests nativos, você pode precisar atualizá-los para funcionar com
 Swift Package Manager se uma das seguintes condições for verdadeira:

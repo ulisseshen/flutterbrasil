@@ -1,5 +1,6 @@
 ---
+ia-translate: true
 layout: toc
 title: Windows
-description: Content covering integration with Windows in Flutter apps.
+description: Conteúdo cobrindo integração com Windows em apps Flutter.
 ---

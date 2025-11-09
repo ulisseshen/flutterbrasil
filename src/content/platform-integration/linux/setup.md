@@ -1,31 +1,32 @@
 ---
-title: Set up Linux development
+ia-translate: true
+title: Configure o desenvolvimento Linux
 description: >-
-  Configure your development environment to
-  run, build, and deploy Flutter apps for Linux desktop.
+  Configure seu ambiente de desenvolvimento para
+  executar, compilar e implantar apps Flutter para desktop Linux.
 ---
 
-Learn how to set up your development environment
-to run, build, and deploy Flutter apps for the Linux desktop platform.
+Aprenda como configurar seu ambiente de desenvolvimento
+para executar, compilar e implantar apps Flutter para a plataforma desktop Linux.
 
 :::note
-If you haven't set up Flutter already,
-visit and follow the [Get started with Flutter][] guide first.
+Se você ainda não configurou o Flutter,
+visite e siga o guia [Get started with Flutter][Get started with Flutter] primeiro.
 
-If you've already installed Flutter,
-ensure that it's [up to date][].
+Se você já instalou o Flutter,
+certifique-se de que ele está [up to date][up to date].
 :::
 
 [Get started with Flutter]: /get-started
 [up to date]: /install/upgrade
 
-## Set up tooling {: #set-up-tooling}
+## Configure as ferramentas {: #set-up-tooling}
 
-To run and debug desktop Flutter apps on Linux,
-download and install the prerequisite packages.
+Para executar e depurar apps desktop Flutter no Linux,
+baixe e instale os pacotes pré-requisitos.
 
-Using your preferred package manager or mechanism,
-install the latest versions of the following packages:
+Usando seu gerenciador de pacotes ou mecanismo preferido,
+instale as versões mais recentes dos seguintes pacotes:
 
 - `clang`
 - `cmake`
@@ -34,61 +35,61 @@ install the latest versions of the following packages:
 - `libgtk-3-dev`
 - `libstdc++-12-dev`
 
-On Debian-based distros with `apt-get`, such as Ubuntu,
-install these packages using the following commands:
+Em distros baseadas em Debian com `apt-get`, como Ubuntu,
+instale esses pacotes usando os seguintes comandos:
 
 ```console
 $ sudo apt-get update -y && sudo apt-get upgrade -y
 $ sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev libstdc++-12-dev
 ```
 
-## Validate your setup {: #validate-setup}
+## Valide sua configuração {: #validate-setup}
 
- 1. <h3>Check for toolchain issues</h3>
+ 1. <h3>Verifique problemas na toolchain</h3>
 
-    To check for any issues with your Linux development setup,
-    run the `flutter doctor` command in your preferred terminal:
+    Para verificar quaisquer problemas com sua configuração de desenvolvimento Linux,
+    execute o comando `flutter doctor` em seu terminal preferido:
 
     ```console
     $ flutter doctor -v
     ```
 
-    If you see any errors or tasks to complete
-    under the **Linux toolchain** section,
-    complete and resolve them, then
-    run `flutter doctor -v` again to verify any changes.
+    Se você vir quaisquer erros ou tarefas para completar
+    na seção **Linux toolchain**,
+    complete e resolva-os, então
+    execute `flutter doctor -v` novamente para verificar quaisquer mudanças.
 
- 1. <h3>Check for Linux devices</h3>
+ 1. <h3>Verifique dispositivos Linux</h3>
 
-    To ensure Flutter can find and connect to your Linux device correctly,
-    run `flutter devices` in your preferred terminal:
+    Para garantir que o Flutter possa encontrar e conectar ao seu dispositivo Linux corretamente,
+    execute `flutter devices` em seu terminal preferido:
 
     ```console
     $ flutter devices
     ```
 
-    If you set everything up correctly,
-    there should be at least one entry with the platform marked as **linux**.
+    Se você configurou tudo corretamente,
+    deve haver pelo menos uma entrada com a plataforma marcada como **linux**.
 
- 1. <h3>Troubleshoot setup issues</h3>
+ 1. <h3>Solucione problemas de configuração</h3>
 
-    If you need help resolving any setup issues,
-    check out [Install and setup troubleshooting][].
+    Se você precisar de ajuda para resolver quaisquer problemas de configuração,
+    confira [Install and setup troubleshooting][Install and setup troubleshooting].
 
-    If you still have issues or questions,
-    reach out on one of the Flutter [community][] channels.
+    Se você ainda tiver problemas ou questões,
+    entre em contato em um dos canais da [community][community] do Flutter.
 
 {: .steps}
 
 [Install and setup troubleshooting]: /install/troubleshoot
 [community]: {{site.main-url}}/community
 
-## Start developing for Linux {: #start-developing}
+## Comece a desenvolver para Linux {: #start-developing}
 
-Congratulations!
-Now that you've set up Linux desktop development for Flutter,
-you can continue your Flutter learning journey while testing on Linux
-or begin expanding integration with Linux.
+Parabéns!
+Agora que você configurou o desenvolvimento desktop Linux para Flutter,
+você pode continuar sua jornada de aprendizado do Flutter enquanto testa no Linux
+ou começar a expandir a integração com Linux.
 
 <div class="card-grid link-cards">
   <div class="card filled-card list-card">

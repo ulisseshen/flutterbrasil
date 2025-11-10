@@ -1,64 +1,65 @@
 ---
-title: Default multitouch scrolling
+title: Scrolling multitouch padrão
 description: >
-  ScrollBehaviors will now configure how Scrollables respond to
-  multitouch gestures.
+  ScrollBehaviors agora irão configurar como Scrollables respondem a
+  gestos multitouch.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-`ScrollBehavior`s now allow or disallow scrolling speeds to be affected by the
-number of pointers on the screen. `ScrollBehavior.multitouchDragStrategy`, by
-default, prevents multiple pointers interacting wih the scrollable at the same
-time from affecting the speed of scrolling.
+`ScrollBehavior`s agora permitem ou não permitem que velocidades de scrolling sejam afetadas pelo
+número de pointers na tela. `ScrollBehavior.multitouchDragStrategy`, por
+padrão, previne que múltiplos pointers interagindo com o scrollable ao mesmo
+tempo afetem a velocidade de scrolling.
 
-## Context
+## Contexto
 
-Prior to this change, for each pointer dragging a `Scrollable` widget, the
-scroll speed would increase. This did not match platform expectations when
-interacting with Flutter applications.
+Antes desta mudança, para cada pointer arrastando um widget `Scrollable`, a
+velocidade de scroll aumentaria. Isso não correspondia às expectativas da plataforma ao
+interagir com aplicações Flutter.
 
-Now, the inherited `ScrollBehavior` manages how multiple pointers affect
-scrolling widgets as specified by `ScrollBehavior.multitouchDragStrategy`. This
-enum, `MultitouchDragStrategy`, can also be configured for the prior behavior.
+Agora, o `ScrollBehavior` herdado gerencia como múltiplos pointers afetam
+widgets scrolling conforme especificado por `ScrollBehavior.multitouchDragStrategy`. Este
+enum, `MultitouchDragStrategy`, também pode ser configurado para o comportamento anterior.
 
-## Description of change
+## Descrição da mudança
 
-This change fixed the unexpected ability to increase scroll speeds by dragging
-with more than one finger.
+Esta mudança corrigiu a capacidade inesperada de aumentar velocidades de scroll arrastando
+com mais de um dedo.
 
-If you have relied on the previous behavior in your application, there are
-several ways to control and configure this feature.
+Se você dependeu do comportamento anterior em sua aplicação, existem
+várias maneiras de controlar e configurar este recurso.
 
-- Extend `ScrollBehavior`, `MaterialScrollBehavior`, or `CupertinoScrollBehavior`
-  to modify the default behavior, overriding
+- Estenda `ScrollBehavior`, `MaterialScrollBehavior`, ou `CupertinoScrollBehavior`
+  para modificar o comportamento padrão, sobrescrevendo
   `ScrollBehavior.multitouchDragStrategy`.
 
-    - With your own `ScrollBehavior`, you can apply it app-wide by setting
-      `MaterialApp.scrollBehavior` or `CupertinoApp.scrollBehavior`.
-    - Or, if you wish to only apply it to specific widgets, add a
-      `ScrollConfiguration` above the widget in question with your
-      custom `ScrollBehavior`.
+    - Com seu próprio `ScrollBehavior`, você pode aplicá-lo em toda a aplicação definindo
+      `MaterialApp.scrollBehavior` ou `CupertinoApp.scrollBehavior`.
+    - Ou, se você deseja aplicá-lo apenas a widgets específicos, adicione um
+      `ScrollConfiguration` acima do widget em questão com seu
+      `ScrollBehavior` personalizado.
 
-Your scrollable widgets then inherit and reflect this behavior.
+Seus widgets scrollable então herdam e refletem este comportamento.
 
-- Instead of creating your own `ScrollBehavior`, another option for changing
-  the default behavior is to copy the existing `ScrollBehavior`, and set different
-  `multitouchDragStrategy`.
-    - Create a `ScrollConfiguration` in your widget tree, and provide a modified copy
-      of the existing `ScrollBehavior` in the current context using `copyWith`.
+- Em vez de criar seu próprio `ScrollBehavior`, outra opção para mudar
+  o comportamento padrão é copiar o `ScrollBehavior` existente, e definir uma
+  `multitouchDragStrategy` diferente.
+    - Crie um `ScrollConfiguration` em sua árvore de widgets, e forneça uma cópia modificada
+      do `ScrollBehavior` existente no contexto atual usando `copyWith`.
 
-To accommodate the new configuration
-`DragGestureRecognizer` was updated to support `MultitouchDragStrategy` as well
-in other dragging contexts.
+Para acomodar a nova configuração
+`DragGestureRecognizer` foi atualizado para suportar `MultitouchDragStrategy` também
+em outros contextos de arrastar.
 
-## Migration guide
+## Guia de migração
 
-### Setting a custom `ScrollBehavior` for your application
+### Definindo um `ScrollBehavior` personalizado para sua aplicação
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 MaterialApp(
@@ -66,7 +67,7 @@ MaterialApp(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class MyCustomScrollBehavior extends MaterialScrollBehavior {
@@ -82,9 +83,9 @@ MaterialApp(
 );
 ```
 
-### Setting a custom `ScrollBehavior` for a specific widget
+### Definindo um `ScrollBehavior` personalizado para um widget específico
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 final ScrollController controller = ScrollController();
@@ -96,7 +97,7 @@ ListView.builder(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class MyCustomScrollBehavior extends MaterialScrollBehavior {
@@ -118,9 +119,9 @@ ScrollConfiguration(
 );
 ```
 
-### Copy and modify existing `ScrollBehavior`
+### Copiar e modificar o `ScrollBehavior` existente
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 final ScrollController controller = ScrollController();
@@ -132,7 +133,7 @@ ListView.builder(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 // ScrollBehavior can be copied and adjusted.
@@ -150,14 +151,14 @@ ScrollConfiguration(
 );
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.18.0-4.0.pre<br>
-In stable release: 3.19.0
+Lançado na versão: 3.18.0-4.0.pre<br>
+Na versão estável: 3.19.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`ScrollConfiguration`][]
 * [`ScrollBehavior`][]
@@ -166,11 +167,11 @@ API documentation:
 * [`MultitouchDragStrategy`][]
 * [`DragGestureRecognizer`][]
 
-Relevant issue:
+Issue relevante:
 
 * [Issue #11884][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Introduce multi-touch drag strategies for DragGestureRecognizer][]
 

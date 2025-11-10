@@ -1,3 +1,4 @@
+<!-- ia-translate: true -->
 
 O Flutter não pode lidar com [dependências comuns com xcframeworks][common].
 Se tanto o app host quanto o plugin do módulo Flutter definem a

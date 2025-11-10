@@ -1,16 +1,17 @@
 ---
 title: Migration guide for `RouteInformation.location`
 description: Deprecation of `RouteInformation.location` and its related APIs.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
 `RouteInformation.location` and related APIs were deprecated
 in the favor of `RouteInformation.uri`.
 
-## Context
+## Contexto
 
 The [`RouteInformation`][] needs the authority information to
 handle mobile deeplinks from different web domains.
@@ -19,14 +20,14 @@ the entire deeplink information and route-related parameters
 were converted to the full [`Uri`][] format.
 This led to deprecation of incompatible APIs.
 
-## Description of change
+## Descrição da mudança
 
 * The `RouteInformation.location` was replaced by `RouteInformation.uri`.
 * The `WidgetBindingObserver.didPushRoute` was deprecated.
 * The `location` parameter of `SystemNavigator.routeInformationUpdated` was
   replaced by the newly added `uri` parameter.
 
-## Migration guide
+## Guia de migração
 
 Code before migration:
 
@@ -90,12 +91,12 @@ Code after migration:
 SystemNavigator.routeInformationUpdated(uri: Uri.parse('/myLocation'));
 ```
 
-## Timeline
+## Linha do tempo
 
 Landed in version: 3.10.0-13.0.pre<br>
 In stable release: 3.13.0
 
-## References
+## Referências
 
 Relevant PRs:
 

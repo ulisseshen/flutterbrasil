@@ -3,31 +3,32 @@ title: Migration guide for material localized strings
 description: >
   ReorderableListView's localized strings are moved from
   material localizations to widgets localizations.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
 `ReorderableListView`'s localized strings were moved from
 material localizations to widgets localizations.
 These strings were deprecated in material localizations.
 
-## Context
+## Contexto
 
 [`ReorderableListView`][] uses these strings to annotate its semantics actions.
 To apply the same annotations to [`ReorderableList`][]
 and [`SliverReorderableList`][], they need to
 access these strings from widgets library.
 
-## Description of change
+## Descrição da mudança
 
 The [`MaterialLocalizations`][] strings for
 `reorderItemToStart`, `reorderItemToEnd`, `reorderItemUp`,
 `reorderItemDown`, `reorderItemLeft`, and `reorderItemRight` are deprecated and
 replaced by the same strings in [`WidgetsLocalizations`][].
 
-## Migration guide
+## Guia de migração
 
 If you use these strings in your code,
 you can access them from `WidgetsLocalizations`instead.
@@ -72,12 +73,12 @@ class WidgetsLocalizationsMyLanguage extends WidgetsLocalizationsEn {
 }
 ```
 
-## Timeline
+## Linha do tempo
 
 Landed in version: v3.10.0-2.0.pre<br>
 In stable release: 3.13.0
 
-## References
+## Referências
 
 Relevant PR:
 

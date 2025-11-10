@@ -3,17 +3,18 @@ title: Eliminating nullOk Parameters
 description: >
     To eliminate nullOk parameters to help with
     API clarity in the face of null safety.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
 This migration guide describes conversion of code that uses the `nullOk`
 parameter on multiple `of` static accessors and related accessors to use
 alternate APIs with nullable return values.
 
-## Context
+## Contexto
 
 Flutter has a common pattern of allowing lookup of some types of widgets
 ([`InheritedWidget`][]s) using static member functions that are typically called
@@ -43,7 +44,7 @@ The design document for this change is [Eliminating nullOk parameters][].
 
 [Eliminating nullOk parameters]: /go/eliminating-nullok-parameters
 
-## Description of change
+## Descrição da mudança
 
 The actual change modified these APIs to not have a `nullOk` parameter, and to
 return a non-nullable value:
@@ -93,7 +94,7 @@ return a nullable value:
 * [`CupertinoUserInterfaceLevel.maybeOf`][]
 * [`CupertinoTheme.maybeBrightnessOf`][]
 
-## Migration guide
+## Guia de migração
 
 In order to modify your code to use the new form of the APIs, convert all
 instances of calls that include `nullOk = true` as a parameter to use the
@@ -134,12 +135,12 @@ finding the places where the `!` operator should be removed, and the
 helpful in finding unnecessary question mark operators on `final` and `const`
 variables.
 
-## Timeline
+## Linha do tempo
 
 Landed in version: 1.24.0<br>
 In stable release: 2.0.0
 
-## References
+## Referências
 
 API documentation:
 

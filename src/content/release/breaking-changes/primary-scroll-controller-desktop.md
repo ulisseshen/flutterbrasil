@@ -3,16 +3,17 @@ title: Default `PrimaryScrollController` on Desktop
 description: >
   The `PrimaryScrollController` will no longer attach to
   vertical `ScrollView`s automatically on Desktop.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
 The `PrimaryScrollController` API has been updated to no longer automatically
 attach to vertical `ScrollView`s on desktop platforms.
 
-## Context
+## Contexto
 
 Prior to this change, `ScrollView.primary` would default to true if a
 `ScrollView` had an `Axis.vertical` scroll direction and a `ScrollController`
@@ -31,7 +32,7 @@ with this pattern, resulting in an often unhelpful error message. To remedy this
 the `PrimaryScrollController` has been updated with additional parameters as
 well as better error messaging across multiple widgets that depend on it.
 
-## Description of change
+## Descrição da mudança
 
 The previous implementation of `ScrollView` resulted in `primary` being true by
 default for all vertical `ScrollView`s that did not already have a
@@ -102,7 +103,7 @@ Now, on desktop platforms, users need to specify `primary: true` to
 designate which `ScrollView` is the fallback to receive unhandled keyboard
 `Shortcuts`.
 
-## Migration guide
+## Guia de migração
 
 Code before migration:
 
@@ -176,12 +177,12 @@ Scaffold(
 );
 ```
 
-## Timeline
+## Linha do tempo
 
 Landed in version: 3.3.0-0.0.pre<br>
 In stable release: 3.3
 
-## References
+## Referências
 
 API documentation:
 

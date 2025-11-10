@@ -16,7 +16,7 @@ some in different languages.
 
 ---
 
-## Series
+## Séries
 
 ### Flutter Forward
 
@@ -170,7 +170,7 @@ Five-to-ten minute tutorials (more or less) on using Flutter.
 
 [Flutter in focus playlist]: {{site.yt.playlist}}PLjxrf2q8roU2HdJQDjJzOeO6J3FoFLWr2
 
-## Conference talks
+## Palestras de conferências
 
 Here are a some Flutter talks given at various conferences.
 

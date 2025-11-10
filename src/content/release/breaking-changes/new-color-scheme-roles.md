@@ -5,11 +5,12 @@ description: >-
   better align with Material Design 3.
   The 'ColorScheme.fromSeed' method is also updated to
   support the newly added colors.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
 New color roles in `ColorScheme` include
 seven tone-based surfaces and containers, and twelve accent colors for
@@ -48,7 +49,7 @@ had a high chroma (contained little black, white, and shades of grey).
 
 [Material color utilities]: {{site.pub-pkg}}/material_color_utilities
 
-## Migration guide
+## Guia de migração
 
 The differences caused by the updated `ColorScheme.fromSeed` and
 the new color roles should be small and acceptable.
@@ -137,12 +138,12 @@ Color myColor2 = Theme.of(context).colorScheme.onSurface;
 Color myColor3 = Theme.of(context).colorScheme.surfaceContainerHighest;
 ```
 
-## Timeline
+## Linha do tempo
 
 Landed in version: 3.21.0-4.0.pre<br>
 In stable release: 3.22.0
 
-## References
+## Referências
 
 Relevant issues:
 

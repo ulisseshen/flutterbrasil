@@ -1,3 +1,5 @@
+<!-- ia-translate: true -->
+
 ### Usar CocoaPods e o Flutter SDK {:#method-a .no_toc}
 
 #### Abordagem {:#method-a-approach}

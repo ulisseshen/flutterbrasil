@@ -1,67 +1,68 @@
 ---
-title: Flutter now sets default `abiFilters` in Android builds
+title: Flutter agora define `abiFilters` padrão em builds Android
 description: >-
-  The Flutter Gradle Plugin now automatically configures abiFilters
-  for Android builds, which might break custom abiFilters settings.
+  O Flutter Gradle Plugin agora configura automaticamente abiFilters
+  para builds Android, o que pode quebrar configurações personalizadas de abiFilters.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-Starting in Flutter 3.35, the Flutter Gradle Plugin automatically sets
-[`abiFilters`][] for Android builds to prevent the inclusion of unsupported
-architectures in release APKs. This change can break custom
-`abiFilters` specified in your app's `build.gradle` file.
+A partir do Flutter 3.35, o Flutter Gradle Plugin define automaticamente
+[`abiFilters`][] para builds Android para evitar a inclusão de arquiteturas
+não suportadas em APKs de release. Esta alteração pode quebrar
+`abiFilters` personalizados especificados no arquivo `build.gradle` do seu aplicativo.
 
-## Context
+## Contexto
 
-This change was introduced to solve an issue where third-party
-dependencies with x86 native libraries would cause Google Play to
-incorrectly identify Flutter apps as supporting x86 devices. When users
-with x86 devices installed these apps, they would crash at runtime
-because Flutter's native libraries aren't available for x86.
+Esta alteração foi introduzida para resolver um problema em que dependências
+de terceiros com bibliotecas nativas x86 fariam o Google Play
+identificar incorretamente aplicativos Flutter como suportando dispositivos x86. Quando usuários
+com dispositivos x86 instalavam esses aplicativos, eles travavam em tempo de execução
+porque as bibliotecas nativas do Flutter não estão disponíveis para x86.
 
-The Flutter Gradle Plugin now automatically configures `abiFilters` to
-include only the architectures that Flutter supports. This prevents
-Google Play from making apps available to incompatible devices.
+O Flutter Gradle Plugin agora configura automaticamente `abiFilters` para
+incluir apenas as arquiteturas que o Flutter suporta. Isso impede
+o Google Play de disponibilizar aplicativos para dispositivos incompatíveis.
 
-## Description of change
+## Descrição da alteração
 
-The Flutter Gradle Plugin now programmatically sets `abiFilters` for
-non-debuggable builds when the `--splits-per-abi` option is not enabled
-by default to:
+O Flutter Gradle Plugin agora define programaticamente `abiFilters` para
+builds não-debuggable quando a opção `--splits-per-abi` não está habilitada
+por padrão para:
 - `armeabi-v7a`
 - `arm64-v8a`
 - `x86_64`
 
-Because this automatic configuration happens before your `build.gradle` files
-are processed, it might break custom `abiFilters` settings that depend on the
-set being empty.
+Como essa configuração automática acontece antes dos seus arquivos `build.gradle`
+serem processados, ela pode quebrar configurações personalizadas de `abiFilters` que dependem do
+conjunto estar vazio.
 
-## Migration guide
-If your app doesn't customize `abiFilters`, no changes are required.
+## Guia de migração
+Se seu aplicativo não personaliza `abiFilters`, nenhuma alteração é necessária.
 
-If your app needs to customize which architectures are included, you have
-several options:
+Se seu aplicativo precisa personalizar quais arquiteturas são incluídas, você tem
+várias opções:
 
-### Option 1: Use the splits-per-abi flag
+### Opção 1: Use a flag splits-per-abi
 
-If you want to control architecture inclusion, use Flutter's built-in
-`--splits-per-abi` option instead of manually configuring `abiFilters`:
+Se você quiser controlar a inclusão de arquitetura, use a opção integrada do Flutter
+`--splits-per-abi` em vez de configurar manualmente `abiFilters`:
 
 ```console
 flutter build apk --splits-per-abi
 ```
 
-This creates separate APKs for each architecture and automatically disables
-the automatic `abiFilters` configuration.
+Isso cria APKs separados para cada arquitetura e automaticamente desabilita
+a configuração automática de `abiFilters`.
 
-### Option 2: Clear and reconfigure abiFilters
+### Opção 2: Limpar e reconfigurar abiFilters
 
-If you must use a single APK with custom architecture filters, clear the
-automatically set filters and configure your own in your `build.gradle`.
-For example:
+Se você deve usar um único APK com filtros de arquitetura personalizados, limpe os
+filtros definidos automaticamente e configure os seus próprios no seu `build.gradle`.
+Por exemplo:
 
 ```kotlin
 android {
@@ -76,16 +77,16 @@ android {
 }
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.35.0<br>
-In stable release: 3.35
+Disponibilizado na versão: 3.35.0<br>
+Na versão estável: 3.35
 
-Relevant issues:
+Issues relevantes:
 * [Issue #174004]({{site.repo.flutter}}/issues/174004)
 * [Issue #153476]({{site.repo.flutter}}/issues/153476)
 
-Relevant PRs:
+PRs relevantes:
 * [PR #168293]({{site.repo.flutter}}/pull/168293)
 
 [`abiFilters`]: https://developer.android.com/reference/tools/gradle-api/8.7/com/android/build/api/dsl/Ndk#abiFilters()

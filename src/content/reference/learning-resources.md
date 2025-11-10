@@ -1,18 +1,19 @@
 ---
-title: Flutter learning resources
-description: A catalog of Flutter sample applications, codelabs, and tutorials.
-shortTitle: Learning resources
+ia-translate: true
+title: Recursos de aprendizado do Flutter
+description: Um catálogo de aplicações de exemplo, codelabs e tutoriais do Flutter.
+shortTitle: Recursos de aprendizado
 showBreadcrumbs: false
 bodyClass: wide-site-content
 showToc: false
 ---
 
 :::secondary
-This page lists all of our additional learning resources:
-* Cookbook recipes that demonstrate how to solve common problems with Flutter.
-* Guided Codelabs and tutorials that walk you through building features and applications.
-* Working sample applications that show how to use Flutter.
-* Feature-rich demo applications that show how larger applications are built.
+Esta página lista todos os nossos recursos de aprendizado adicionais:
+* Receitas do Cookbook que demonstram como resolver problemas comuns com Flutter.
+* Codelabs guiados e tutoriais que orientam você na construção de funcionalidades e aplicações.
+* Aplicações de exemplo funcionais que mostram como usar o Flutter.
+* Aplicações de demonstração ricas em recursos que mostram como aplicações maiores são construídas.
 :::
 
 <LearningResourceIndex />

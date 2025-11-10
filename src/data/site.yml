@@ -7,8 +7,8 @@ showBanner: true
 
 branch: main
 repo:
-  organization: https://github.com/flutter
-  this: https://github.com/flutter/website
+  organization: https://github.com/ulisseshen
+  this: https://github.com/ulisseshen/flutterbrasil
   flutter: https://github.com/flutter/flutter
   games: https://github.com/flutter/games
   samples: https://github.com/flutter/samples

@@ -1,3 +1,4 @@
+<!-- ia-translate: true -->
 
 :::important
 Estes documentos de breaking changes são precisos no momento do lançamento

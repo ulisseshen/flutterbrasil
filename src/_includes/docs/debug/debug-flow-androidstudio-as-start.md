@@ -1,19 +1,19 @@
-1. To open the Flutter app directory, go to
+1. Para abrir o diretório do aplicativo Flutter, vá para
    **File** <span aria-label="and then">></span>
-   **Open...** and choose the `my_app` directory.
+   **Open...** e escolha o diretório `my_app`.
 
-1. Open the `lib/main.dart` file.
+1. Abra o arquivo `lib/main.dart`.
 
-1. Choose a virtual Android device.
-   Go to the toolbar, open the leftmost dropdown menu, and click on
+1. Escolha um dispositivo Android virtual.
+   Vá para a barra de ferramentas, abra o menu suspenso mais à esquerda e clique em
    **Open Android Emulator: \<device\>**.
 
-   You can choose any installed emulator that's doesn't include `arm64`.
+   Você pode escolher qualquer emulador instalado que não inclua `arm64`.
 
-1. From that same menu, select the virtual Android device.
+1. Nesse mesmo menu, selecione o dispositivo Android virtual.
 
-1. From the toolbar, click **Run 'main.dart'**.
+1. Na barra de ferramentas, clique em **Run 'main.dart'**.
 
-   You can also press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd>.
+   Você também pode pressionar <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd>.
 
-   After the app displays in the emulator, continue to the next step.
+   Após o aplicativo ser exibido no emulador, continue para a próxima etapa.

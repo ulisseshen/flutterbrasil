@@ -1,47 +1,48 @@
 ---
-title: "\"Zone mismatch\" message"
+title: "Mensagem \"Zone mismatch\""
 description: >
-  When Flutter's bindings are initialized in a different zone
-  than the Zone used for `runApp`, a warning is printed to the console.
+  Quando os bindings do Flutter são inicializados em uma zone diferente
+  da Zone usada para `runApp`, um aviso é impresso no console.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-Starting with Flutter 3.10, the framework detects mismatches
-when using Zones and reports them to the console in debug builds.
+A partir do Flutter 3.10, o framework detecta incompatibilidades
+ao usar Zones e as reporta ao console em builds de debug.
 
-## Background
+## Contexto
 
-Zones are a mechanism for managing callbacks in Dart.
-While primarily useful for overriding `print` and `Timer` logic in tests,
-and for catching errors in tests,
-they are sometimes used for scoping global variables
-to certain parts of an application.
+Zones são um mecanismo para gerenciar callbacks em Dart.
+Embora primariamente úteis para sobrescrever lógica de `print` e `Timer` em testes,
+e para capturar erros em testes,
+elas são às vezes usadas para delimitar variáveis globais
+a certas partes de uma aplicação.
 
-Flutter requires (and has always required)
-that all framework code be run in the same zone.
-Notably, this means that calls to
-`WidgetsFlutterBinding.ensureInitialized()` should be run in the same zone
-as calls to `runApp()`.
+Flutter requer (e sempre requereu)
+que todo código de framework seja executado na mesma zone.
+Notavelmente, isso significa que chamadas a
+`WidgetsFlutterBinding.ensureInitialized()` devem ser executadas na mesma zone
+que chamadas a `runApp()`.
 
-Historically, Flutter has not detected such mismatches.
-This sometimes leads to obscure and hard-to-debug issues.
-For example,
-a callback for keyboard input might be invoked
-using a zone that does not have access to the `zoneValues` that it expects.
-In our experience,
-most if not all code that uses Zones
-in a way that does not guarantee that all parts of
-the Flutter framework are working in the same Zone
-has some latent bug.
-Often these bugs appear unrelated to the use of Zones.
+Historicamente, Flutter não detectou tais incompatibilidades.
+Isso às vezes leva a problemas obscuros e difíceis de depurar.
+Por exemplo,
+um callback para entrada de teclado pode ser invocado
+usando uma zone que não tem acesso aos `zoneValues` que espera.
+Em nossa experiência,
+a maioria se não todo código que usa Zones
+de uma forma que não garante que todas as partes do
+framework Flutter estejam trabalhando na mesma Zone
+tem algum bug latente.
+Frequentemente esses bugs parecem não relacionados ao uso de Zones.
 
-To help developers who have accidentally violated this invariant,
-starting with Flutter 3.10,
-a non-fatal warning is printed in debug builds when a mismatch is detected.
-The warning looks like the following:
+Para ajudar desenvolvedores que acidentalmente violaram esta invariante,
+a partir do Flutter 3.10,
+um aviso não-fatal é impresso em builds de debug quando uma incompatibilidade é detectada.
+O aviso se parece com o seguinte:
 
 ```plaintext
 ════════ Exception caught by Flutter framework ════════════════════════════════════
@@ -61,36 +62,36 @@ the bindings are initialized (i.e. as the first statement in `void main() { }`).
 ═══════════════════════════════════════════════════════════════════════════════════
 ```
 
-The warning can be made fatal by
-setting [`BindingBase.debugZoneErrorsAreFatal`][] to `true`.
-This flag might be changed to default to `true` in a future version of Flutter.
+O aviso pode ser tornado fatal
+definindo [`BindingBase.debugZoneErrorsAreFatal`][] como `true`.
+Esta flag pode ser alterada para padrão `true` em uma versão futura do Flutter.
 
-## Migration guide
+## Guia de migração
 
-The best way to silence this message is to
-remove use of Zones from within the application.
-Zones can be very hard to debug,
-because they are essentially global variables,
-and break encapsulation.
-Best practice is to avoid global variables and zones.
+A melhor maneira de silenciar esta mensagem é
+remover o uso de Zones de dentro da aplicação.
+Zones podem ser muito difíceis de depurar,
+porque são essencialmente variáveis globais,
+e quebram encapsulamento.
+A melhor prática é evitar variáveis globais e zones.
 
-If removing zones is not an option
-(for example because the application depends on a third-party library
-that relies on zones for its configuration),
-then the various calls into the Flutter framework
-should be moved to all be in the same zone.
-Typically, this means moving the call to
-`WidgetsFlutterBinding.ensureInitialized()` to the
-same closure as the call to `runApp()`.
+Se remover zones não é uma opção
+(por exemplo porque a aplicação depende de uma biblioteca de terceiros
+que depende de zones para sua configuração),
+então as várias chamadas ao framework Flutter
+devem ser movidas para todas estarem na mesma zone.
+Tipicamente, isso significa mover a chamada a
+`WidgetsFlutterBinding.ensureInitialized()` para o
+mesmo closure que a chamada a `runApp()`.
 
-This can be awkward when the zone in which `runApp` is run
-is being initialized with `zoneValues` obtained from a plugin
-(which requires `WidgetsFlutterBinding.ensureInitialized()`
-to have been called).
+Isso pode ser inconveniente quando a zone na qual `runApp` é executado
+está sendo inicializada com `zoneValues` obtidos de um plugin
+(que requer que `WidgetsFlutterBinding.ensureInitialized()`
+tenha sido chamado).
 
-One option in this kind of scenario is to
-place a mutable object in the `zoneValues`, and
-update that object with the value once the value is available.
+Uma opção neste tipo de cenário é
+colocar um objeto mutável nos `zoneValues`, e
+atualizar esse objeto com o valor uma vez que o valor esteja disponível.
 
 ```dart
 import 'dart:async';
@@ -116,39 +117,39 @@ void main() {
 }
 ```
 
-In code that needs to use `myKey`,
-it can be obtained indirectly using `Zone.current['myKey'].value`.
+Em código que precisa usar `myKey`,
+ele pode ser obtido indiretamente usando `Zone.current['myKey'].value`.
 
-When such a solution does not work
-because a third-party dependency requires the use
-of a specific type for a specific `zoneValues` key,
-all calls into the dependency can be
-wrapped in `Zone` calls that provide suitable values.
+Quando tal solução não funciona
+porque uma dependência de terceiros requer o uso
+de um tipo específico para uma chave `zoneValues` específica,
+todas as chamadas à dependência podem ser
+envolvidas em chamadas `Zone` que fornecem valores adequados.
 
-It is strongly recommended that packages that use zones in this way
-migrate to more maintainable solutions.
+É fortemente recomendado que packages que usam zones desta forma
+migrem para soluções mais manuteníveis.
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.9.0-9.0.pre<br>
-In stable release: 3.10.0
+Lançado na versão: 3.9.0-9.0.pre<br>
+Na versão estável: 3.10.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`Zone`][]
 * [`BindingBase.debugZoneErrorsAreFatal`][]
 
-Relevant issues:
+Issues relevantes:
 
-* [Issue 94123][]: Flutter framework does not warn when ensureInitialized
-  is called in a different zone than runApp
+* [Issue 94123][]: Flutter framework não avisa quando ensureInitialized
+  é chamado em uma zone diferente de runApp
 
-Relevant PRs:
+PRs relevantes:
 
-* [PR 122836][]: Assert that runApp is called
-  in the same zone as binding.ensureInitialized
+* [PR 122836][]: Assert que runApp é chamado
+  na mesma zone que binding.ensureInitialized
 
 [`Zone`]: {{site.api}}/flutter/dart-async/Zone-class.html
 [`BindingBase.debugZoneErrorsAreFatal`]: {{site.api}}/flutter/foundation/BindingBase/debugZoneErrorsAreFatal.html

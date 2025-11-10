@@ -1,4 +1,5 @@
 ---
+ia-translate: true
 title: Flutter para desenvolvedores Jetpack Compose
 description: Aprenda como aplicar conhecimentos de desenvolvimento Jetpack Compose ao criar aplicativos Flutter.
 ---
@@ -7,7 +8,7 @@ description: Aprenda como aplicar conhecimentos de desenvolvimento Jetpack Compo
 
 :::note
 Se você tem experiência construindo aplicativos Android com Views (XML),
-confira [Flutter para desenvolvedores Android][].
+confira [Flutter para desenvolvedores Android][Flutter for Android developers].
 :::
 
 Flutter é um framework para construir aplicativos multiplataforma
@@ -18,7 +19,7 @@ são altamente valiosos ao construir com Flutter.
 
 :::tip
 Para integrar código Flutter em um aplicativo Android **existente**,
-confira [Adicionar Flutter a um aplicativo existente][].
+confira [Adicionar Flutter a um aplicativo existente][Add Flutter to existing app].
 :::
 
 Este documento pode ser usado como referência pulando entre seções
@@ -98,13 +99,13 @@ Uma restrição se torna rígida quando o valor de tamanho mínimo de sua restri
 é igual ao seu valor de tamanho máximo.
 
 Para aprender como as restrições funcionam no Flutter,
-visite [Entendendo restrições][].
+visite [Entendendo restrições][Understanding constraints].
 
 ### Sistema de design
 
 Como o Flutter visa várias plataformas, seu aplicativo não precisa
 se conformar a nenhum sistema de design.
-Embora este guia apresente widgets [Material][],
+Embora este guia apresente widgets [Material][Material],
 seu aplicativo Flutter pode usar muitos sistemas de design diferentes:
 
 - Widgets Material personalizados
@@ -112,7 +113,7 @@ seu aplicativo Flutter pode usar muitos sistemas de design diferentes:
 - Seus próprios widgets personalizados
 
 Se você está procurando um ótimo aplicativo de referência que apresenta um
-sistema de design personalizado, confira [Wonderous][].
+sistema de design personalizado, confira [Wonderous][Wonderous].
 
 ## Básico da UI
 
@@ -165,8 +166,8 @@ void main() {
 
 `App` é um widget. Seu método `build` descreve a parte da
 interface do usuário que ele representa.
-É comum começar seu aplicativo com uma classe [`WidgetApp`][],
-como [`MaterialApp`][].
+É comum começar seu aplicativo com uma classe [`WidgetApp`][`WidgetApp`],
+como [`MaterialApp`][`MaterialApp`].
 
 ```dart
 class MyApp extends StatelessWidget {
@@ -201,7 +202,7 @@ class HomePage extends StatelessWidget {
 }
 ```
 
-Note como o Flutter usa o widget [`Center`][].
+Note como o Flutter usa o widget [`Center`][`Center`].
 
 Compose tem uma série de padrões de suas Views Android ancestrais.
 A menos que especificado de outra forma, a maioria dos componentes "envolvem" seu tamanho ao
@@ -210,7 +211,7 @@ Nem sempre é o caso com Flutter.
 
 Para centralizar o texto, envolva-o em um widget `Center`.
 Para aprender sobre diferentes widgets e seus comportamentos padrão, confira
-o [Catálogo de widgets][].
+o [Catálogo de widgets][widget catalog].
 
 ### Adicionando Botões
 
@@ -258,7 +259,7 @@ Column(verticalArrangement = Arrangement.Center) {
 }
 ```
 
-**Flutter** usa [`Row`][] e [`Column`][] também, mas há algumas pequenas diferenças para especificar
+**Flutter** usa [`Row`][`Row`] e [`Column`][`Column`] também, mas há algumas pequenas diferenças para especificar
 widgets filhos e alinhamento. O seguinte é equivalente ao exemplo Compose.
 
 ```dart
@@ -370,7 +371,7 @@ class HomePage extends StatelessWidget {
 
 Flutter tem algumas convenções para listas:
 
-- O widget [`ListView`] tem um método builder.
+- O widget [`ListView`][`ListView`] tem um método builder.
   Isso funciona como o closure `item` dentro de um Compose `LazyList`.
 
 - O parâmetro `itemCount` do `ListView` define quantos itens
@@ -379,7 +380,7 @@ Flutter tem algumas convenções para listas:
 - O `itemBuilder` tem um parâmetro index que será entre zero
   e um a menos que itemCount.
 
-O exemplo anterior retornou um widget [`ListTile`][] para cada item.
+O exemplo anterior retornou um widget [`ListTile`][`ListTile`] para cada item.
 O `ListTile` possui propriedades como `height` e `font-size`.
 Essas propriedades ajudam a construir uma lista. No entanto, o Flutter permite que você retorne
 quase qualquer widget que represente seus dados.
@@ -467,7 +468,7 @@ associadas em `LazyHorizontalGrid` \ `LazyVerticalGrid` servem o mesmo propósit
 `LazyColumn` e `LazyRow` no **Jetpack Compose** têm suporte
 integrado para rolagem.
 
-Para criar uma view com rolagem, **Flutter** usa [`SingleChildScrollView`][].
+Para criar uma view com rolagem, **Flutter** usa [`SingleChildScrollView`][`SingleChildScrollView`].
 No exemplo a seguir, a função `mockPerson` simula instâncias
 da classe `Person` para criar o widget personalizado `PersonView`.
 
@@ -502,11 +503,11 @@ tentar encontrar algo que seja uma tradução um para um.
 
 Para criar views relativas no **Flutter**, você pode usar uma das duas opções:
 
-- Obter o objeto `BoxConstraints` na classe [`LayoutBuilder`][].
-- Usar o [`MediaQuery.of()`][] em suas funções build
+- Obter o objeto `BoxConstraints` na classe [`LayoutBuilder`][`LayoutBuilder`].
+- Usar o [`MediaQuery.of()`][`MediaQuery.of()`] em suas funções build
   para obter o tamanho e a orientação do seu aplicativo atual.
 
-Para saber mais, confira [Criando aplicativos responsivos e adaptativos][].
+Para saber mais, confira [Criando aplicativos responsivos e adaptativos][Creating responsive apps].
 
 ### Gerenciando estado
 
@@ -531,7 +532,7 @@ Scaffold(
 ```
 
 
-**Flutter** gerencia estado local usando um [`StatefulWidget`][].
+**Flutter** gerencia estado local usando um [`StatefulWidget`][`StatefulWidget`].
 Implemente um widget stateful com as duas classes a seguir:
 
 - uma subclasse de `StatefulWidget`
@@ -575,7 +576,7 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 ```
 
-Para aprender mais maneiras de gerenciar estado, confira [Gerenciamento de estado][].
+Para aprender mais maneiras de gerenciar estado, confira [Gerenciamento de estado][State management].
 
 
 ### Desenhando na tela
@@ -586,7 +587,7 @@ formas, imagens e texto na tela.
 **Flutter** possui uma API baseada na classe `Canvas`,
 com duas classes que ajudam você a desenhar:
 
-1. [`CustomPaint`][] que requer um painter:
+1. [`CustomPaint`][`CustomPaint`] que requer um painter:
 
     ```dart
     CustomPaint(
@@ -595,7 +596,7 @@ com duas classes que ajudam você a desenhar:
     ),
     ```
 
-2. [`CustomPainter`][] que implementa seu algoritmo para desenhar no canvas.
+2. [`CustomPainter`][`CustomPainter`] que implementa seu algoritmo para desenhar no canvas.
 
     ```dart
     class SignaturePainter extends CustomPainter {
@@ -738,7 +739,7 @@ flutter:
 ### Usando fontes
 
 No **Compose**, você tem duas opções para usar fontes em seu aplicativo.
-Você pode usar um serviço de runtime para recuperá-las [Google Fonts][].
+Você pode usar um serviço de runtime para recuperá-las [Google Fonts][Google Fonts].
 Alternativamente, elas podem ser empacotadas em arquivos de recursos.
 
 **Flutter** possui métodos semelhantes para usar fontes, vamos discuti-los ambos inline.
@@ -796,7 +797,7 @@ val firaSansFamily = FontFamily(
 Text(text = "Compose", fontFamily = firaSansFamily, fontWeight = FontWeight.Light)
 ```
 
-Para Flutter, isso é fornecido pelo plugin [google_fonts][] usando o nome da
+Para Flutter, isso é fornecido pelo plugin [google_fonts][google_fonts] usando o nome da
 fonte.
 
 ```dart
@@ -827,15 +828,15 @@ No **Flutter**, a localização do recurso é listada em `pubspec.yaml` como mos
 
 Após adicionar sua imagem, você pode exibi-la usando o construtor `.asset()` do widget `Image`. Este construtor:
 
-Para revisar um exemplo completo, confira a documentação do [`Image`][].
+Para revisar um exemplo completo, confira a documentação do [`Image`][`Image`].
 
 
-[Flutter para desenvolvedores Android]: /get-started/flutter-for/android-devs
-[Adicionar Flutter a um aplicativo existente]: /add-to-app
+[Flutter for Android developers]: /get-started/flutter-for/android-devs
+[Add Flutter to existing app]: /add-to-app
 [Material]: {{site.material}}/develop/flutter/
 [Platform adaptations]: /platform-integration/platform-adaptations
-[Catálogo de widgets]: /ui/widgets/layout
-[Entendendo restrições]: /ui/layout/constraints
+[widget catalog]: /ui/widgets/layout
+[Understanding constraints]: /ui/layout/constraints
 [`WidgetApp`]: {{site.api}}/flutter/widgets/WidgetsApp-class.html
 [`Center`]: {{site.api}}/flutter/widgets/Center-class.html
 [`Row`]: {{site.api}}/flutter/widgets/Row-class.html
@@ -850,11 +851,11 @@ Para revisar um exemplo completo, confira a documentação do [`Image`][].
 [`RotationTransition`]: {{site.api}}/flutter/widgets/RotationTransition-class.html
 [`Navigator`]: {{site.api}}/flutter/widgets/Navigator-class.html
 [`StatefulWidget`]: {{site.api}}/flutter/widgets/StatefulWidget-class.html
-[Gerenciamento de estado]:  /data-and-backend/state-mgmt
+[State management]:  /data-and-backend/state-mgmt
 [Wonderous]: https://flutter.gskinner.com/wonderous/?utm_source=flutterdocs&utm_medium=docs
 [video_player]: {{site.pub-pkg}}/video_player
 [video_player example]: {{site.pub-pkg}}/video_player/example
-[Criando aplicativos responsivos e adaptativos]: /ui/adaptive-responsive
+[Creating responsive apps]: /ui/adaptive-responsive
 [`MediaQuery.of()`]: {{site.api}}/flutter/widgets/MediaQuery-class.html
 [`CustomPaint`]: {{site.api}}/flutter/widgets/CustomPaint-class.html
 [`CustomPainter`]: {{site.api}}/flutter/rendering/CustomPainter-class.html

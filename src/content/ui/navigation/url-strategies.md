@@ -8,7 +8,7 @@ Os aplicativos web Flutter suportam duas maneiras de configurar
 a navegação baseada em URL na web:
 
 **Hash (padrão)**
-: Os caminhos são lidos e escritos no [fragmento hash][].
+: Os caminhos são lidos e escritos no [fragmento hash][hash fragment].
 Por exemplo, `flutterexample.dev/#/path/to/screen`.
 
 **Path**
@@ -18,11 +18,11 @@ Por exemplo, `flutterexample.dev/#/path/to/screen`.
 ## Configurando a estratégia de URL
 
 Para configurar o Flutter para usar o path, use a
-função [usePathUrlStrategy][] fornecida pela biblioteca [flutter_web_plugins][],
+função [usePathUrlStrategy][usePathUrlStrategy] fornecida pela biblioteca [flutter_web_plugins][flutter_web_plugins],
 que faz parte do Flutter SDK.
 
 Você não pode adicionar `flutter_web_plugins` diretamente usando `pub add`.
-Inclua-o como uma [dependência do SDK][] do Flutter em seu arquivo `pubspec.yaml`:
+Inclua-o como uma [dependência do SDK][SDK dependency] do Flutter em seu arquivo `pubspec.yaml`:
 
 ```yaml highlightLines=4-5
 dependencies:
@@ -43,11 +43,11 @@ void main() {
 }
 ```
 
-[dependência do SDK]: {{site.dart-site}}/tools/pub/dependencies#sdk
+[SDK dependency]: {{site.dart-site}}/tools/pub/dependencies#sdk
 
 ## Configurando seu servidor web
 
-PathUrlStrategy usa a [History API][], que requer configuração adicional
+PathUrlStrategy usa a [History API][History API], que requer configuração adicional
 para servidores web.
 
 Para configurar seu servidor web para suportar PathUrlStrategy, consulte a
@@ -57,7 +57,7 @@ configurar aplicativos de página única.
 
 Se você estiver usando Firebase Hosting, escolha a opção "Configure as a single-page app"
 ao inicializar seu projeto. Para mais informações, consulte a documentação
-[Configure rewrites][] do Firebase.
+[Configure rewrites][Configure rewrites] do Firebase.
 
 O servidor de desenvolvimento local criado ao executar `flutter run -d chrome` é configurado para
 lidar com qualquer caminho graciosamente e fazer fallback para o arquivo `index.html` do seu aplicativo.
@@ -76,7 +76,7 @@ Isso significa que um `base href` relativo para uma solicitação para `/flutter
 `/flutter_app/nested/route` e `/flutter_app/nested/route/` será diferente
 (por exemplo `"."`, `".."` e `"../.."` respectivamente).
 
-[fragmento hash]: https://en.wikipedia.org/wiki/Uniform_Resource_Locator#Syntax
+[hash fragment]: https://en.wikipedia.org/wiki/Uniform_Resource_Locator#Syntax
 [`HashUrlStrategy`]: {{site.api}}/flutter/flutter_web_plugins/HashUrlStrategy-class.html
 [`PathUrlStrategy`]: {{site.api}}/flutter/flutter_web_plugins/PathUrlStrategy-class.html
 [`setUrlStrategy`]: {{site.api}}/flutter/flutter_web_plugins/setUrlStrategy.html

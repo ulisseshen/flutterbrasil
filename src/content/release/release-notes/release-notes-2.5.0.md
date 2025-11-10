@@ -1,16 +1,17 @@
 ---
-title: Flutter 2.5.0 release notes
-shortTitle: 2.5.0 release notes
-description: Release notes for Flutter 2.5.0.
+title: Notas de lançamento do Flutter 2.5.0
+shortTitle: Notas de lançamento 2.5.0
+description: Notas de lançamento do Flutter 2.5.0.
+ia-translate: true
 skipTemplateRendering: true
 ---
 
-This page has release notes for 2.5.0.
-For information about subsequent bug-fix releases, see our [CHANGELOG][]
+Esta página contém as notas de lançamento para a versão 2.5.0.
+Para informações sobre lançamentos subsequentes de correção de bugs, veja nosso [CHANGELOG][]
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/master/CHANGELOG.md
 
-## Merged PRs by labels for `flutter/flutter`
+## PRs mesclados por labels para `flutter/flutter`
 
 ### framework - 530 pull request(s)
 

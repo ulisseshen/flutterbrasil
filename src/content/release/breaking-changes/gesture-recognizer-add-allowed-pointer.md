@@ -1,30 +1,31 @@
 ---
-title: GestureRecognizer cleanup
+title: Limpeza do GestureRecognizer
 description: >
-  OneSequenceGestureRecognizer subclasses should
-  override `addAllowedPointer` to take a `PointerDownEvent`
+  Subclasses de OneSequenceGestureRecognizer devem
+  sobrescrever `addAllowedPointer` para receber um `PointerDownEvent`
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-`OneSequenceGestureRecognizer.addAllowedPointer()` was changed to take a
-`PointerDownEvent`, like its superclass. Previously, it accepted the more
-general `PointerEvent` type, which was incorrect.
+`OneSequenceGestureRecognizer.addAllowedPointer()` foi alterado para receber um
+`PointerDownEvent`, como sua superclasse. Anteriormente, ele aceitava o tipo
+mais geral `PointerEvent`, o que estava incorreto.
 
-## Context
+## Contexto {:#context}
 
-The framework only ever passes `PointerDownEvent` objects to
-`addAllowedPointer()`. Declaring
-`OneSequenceGestureRecognizer.addAllowedPointer()` to take the more general
-type was confusing, and caused `OneSequenceGestureRecognizer` subclasses to
-have to cast their argument to the right class.
+O framework sempre passa objetos `PointerDownEvent` para
+`addAllowedPointer()`. Declarar
+`OneSequenceGestureRecognizer.addAllowedPointer()` para receber o tipo
+mais geral era confuso e fazia com que subclasses de `OneSequenceGestureRecognizer`
+tivessem que converter seu argumento para a classe correta.
 
-## Description of change
+## Descrição da mudança {:#description-of-change}
 
-The previous declaration forced `OneSequenceGestureRecognizer` descendants to
-override `addAllowedPointer()` like so:
+A declaração anterior forçava descendentes de `OneSequenceGestureRecognizer` a
+sobrescrever `addAllowedPointer()` assim:
 
 ```dart
 class CustomGestureRecognizer extends ScaleGestureRecognizer {
@@ -36,8 +37,8 @@ class CustomGestureRecognizer extends ScaleGestureRecognizer {
 }
 ```
 
-The new method declaration will cause this code to fail with the following
-error message:
+A nova declaração do método fará com que esse código falhe com a seguinte
+mensagem de erro:
 
 ```plaintext
 super.addAllowedPointer(event); The argument type 'PointerEvent' can't be assigned to the parameter type 'PointerDownEvent'.
@@ -45,9 +46,9 @@ super.addAllowedPointer(event); The argument type 'PointerEvent' can't be assign
 
 ```
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 class CustomGestureRecognizer extends ScaleGestureRecognizer {
@@ -59,7 +60,7 @@ class CustomGestureRecognizer extends ScaleGestureRecognizer {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class CustomGestureRecognizer extends ScaleGestureRecognizer {
@@ -71,18 +72,18 @@ class CustomGestureRecognizer extends ScaleGestureRecognizer {
 }
 ```
 
-## Timeline
+## Linha do tempo {:#timeline}
 
-Landed in version: 2.3.0-13.0.pre<br>
-In stable release: 2.5
+Incluído na versão: 2.3.0-13.0.pre<br>
+No lançamento estável: 2.5
 
-## References
+## Referências {:#references}
 
-API documentation:
+Documentação da API:
 
 * [`OneSequenceGestureRecognizer`][]
 
-Relevant PR:
+PR relevante:
 
 * [Fix addAllowedPointer() overrides][]
 

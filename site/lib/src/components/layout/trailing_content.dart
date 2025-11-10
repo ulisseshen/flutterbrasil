@@ -25,7 +25,7 @@ class TrailingContent extends StatelessComponent {
     final repoUrl =
         repo ??
         repoLinks['this'] as String? ??
-        'https://github.com/dart-lang/site-www';
+        'https://github.com/ulisseshen/flutterbrasil';
     final inputPath = pageData['inputPath'] as String?;
     final pageDate = pageData['date'] as String?;
 

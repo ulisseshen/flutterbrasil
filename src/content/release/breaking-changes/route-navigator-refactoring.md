@@ -1,53 +1,54 @@
 ---
-title: Route and Navigator Refactoring
+title: Refatoração de Route e Navigator
 description: >
-  Some APIs and function signatures of the
-  Route and Navigator classes have changed.
+  Algumas APIs e assinaturas de função das
+  classes Route e Navigator foram alteradas.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
 ## Summary
 
-The `Route` class no longer manages its overlay entries in overlay,
-and its `install()` method no longer has an `insertionPoint` parameter.
-The `isInitialRoute` property in `RouteSetting` has been deprecated,
-and `Navigator.pop()` no longer returns a value.
+A classe `Route` não gerencia mais suas entries overlay no overlay,
+e seu método `install()` não tem mais um parâmetro `insertionPoint`.
+A propriedade `isInitialRoute` em `RouteSetting` foi descontinuada,
+e `Navigator.pop()` não retorna mais um valor.
 
 ## Context
 
-We refactored the navigator APIs to prepare for the new page API
-and the introduction of the `Router` widget as outlined in
-the [Router][] design document.
-This refactoring introduced some function signature changes
-in order to make the existing navigator APIs continue to work
-with the new page API.
+Refatoramos as APIs do navigator para preparar para a nova API de page
+e a introdução do widget `Router` conforme descrito no
+documento de design do [Router][].
+Esta refatoração introduziu algumas mudanças de assinatura de função
+para fazer as APIs do navigator existentes continuarem a funcionar
+com a nova API de page.
 
 ## Description of change
 
-The boolean return value of `Navigator.pop()` was not well
-defined, and the user could achieve the same result by calling
+O valor de retorno booleano de `Navigator.pop()` não era bem
+definido, e o usuário poderia alcançar o mesmo resultado chamando
 `Navigator.canPop()`.
-Since the API for `Navigator.canPop()` was better defined,
-we simplified `Navigator.pop()` to not return a boolean value.
+Como a API para `Navigator.canPop()` era melhor definida,
+simplificamos `Navigator.pop()` para não retornar um valor booleano.
 
-On the other hand, the navigator requires the ability
-to manually rearrange entries in the overlay to allow
-the user to change the route history in the new API.
-We changed it so that the route only creates and destroys
-its overlay entries, while the navigator inserts or
-removes overlay entries from the overlay.
-We also removed the `insertionPoint` argument of
-`Route.install()` because it was obsolete after the change.
+Por outro lado, o navigator requer a capacidade
+de reorganizar manualmente entries no overlay para permitir
+que o usuário altere o histórico de rotas na nova API.
+Mudamos para que a route apenas crie e destrua
+suas overlay entries, enquanto o navigator insere ou
+remove overlay entries do overlay.
+Também removemos o argumento `insertionPoint` de
+`Route.install()` porque ficou obsoleto após a mudança.
 
-Finally, we removed the `isInitialRoute` property from
-`RouteSetting` as part of refactoring, and provided the
-`onGenerateInitialRoutes` API for full control of
-initial routes generation.
+Finalmente, removemos a propriedade `isInitialRoute` de
+`RouteSetting` como parte da refatoração, e fornecemos a
+API `onGenerateInitialRoutes` para controle completo da
+geração de rotas iniciais.
 
 ## Migration guide
 
-Case 1: An app depends on `pop()` returning a boolean value.
+Caso 1: Uma aplicação depende de `pop()` retornando um valor booleano.
 
 ```dart
 TextField(
@@ -60,8 +61,8 @@ TextField(
 )
 ```
 
-You could use `Navigator.canPop()` in combination with
-`Navigator.pop()` to achieve the same result.
+Você poderia usar `Navigator.canPop()` em combinação com
+`Navigator.pop()` para alcançar o mesmo resultado.
 
 ```dart
 TextField(
@@ -76,7 +77,7 @@ TextField(
 )
 ```
 
-Case 2: An app generates routes based on `isInitialRoute`.
+Caso 2: Uma aplicação gera rotas baseadas em `isInitialRoute`.
 
 ```dart
 MaterialApp(
@@ -89,11 +90,11 @@ MaterialApp(
 )
 ```
 
-There are different ways to migrate this change.
-One way is to set an explicit value for `MaterialApp.initialRoute`.
-You can then test for this value in place of `isInitialRoute`.
-As `initialRoute` inherits its default value outside of Flutter's scope,
-you must set an explicit value for it.
+Existem diferentes maneiras de migrar esta mudança.
+Uma maneira é definir um valor explícito para `MaterialApp.initialRoute`.
+Você pode então testar este valor no lugar de `isInitialRoute`.
+Como `initialRoute` herda seu valor padrão fora do escopo do Flutter,
+você deve definir um valor explícito para ele.
 
 ```dart
 MaterialApp(
@@ -107,9 +108,9 @@ MaterialApp(
 )
 ```
 
-If there is a more complicated use case,
-you can use the new API, `onGenerateInitialRoutes`,
-in `MaterialApp` or `CupertinoApp`.
+Se houver um caso de uso mais complicado,
+você pode usar a nova API, `onGenerateInitialRoutes`,
+em `MaterialApp` ou `CupertinoApp`.
 
 ```dart
 MaterialApp(

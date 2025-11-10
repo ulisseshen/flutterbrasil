@@ -1,34 +1,35 @@
 ---
-title: More strict assertions in the Navigator and the Hero controller scope
+title: Asserções mais rigorosas no Navigator e no escopo do Hero controller
 description: >
-  Added additional assertions to guarantee that
-  one hero controller scope can only subscribe to one navigator at a time.
+  Adicionadas asserções adicionais para garantir que
+  um escopo de hero controller possa se inscrever em apenas um navigator por vez.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
 ## Summary
 
-The framework throws an assertion error when it detects there are
-multiple navigators registered with one hero controller scope.
+O framework lança um erro de asserção quando detecta que há
+múltiplos navigators registrados com um escopo de hero controller.
 
 ## Context
 
-The hero controller scope hosts a hero controller for its widget
-subtree. The hero controller can only support one navigator at
-a time. Previously, there was no assertion to guarantee that.
+O escopo do hero controller hospeda um hero controller para sua subárvore
+de widget. O hero controller pode suportar apenas um navigator por
+vez. Anteriormente, não havia asserção para garantir isso.
 
 ## Description of change
 
-If the code starts throwing assertion errors after this change,
-it means the code was already broken even before this change.
-Multiple navigators may be registered under the same hero
-controller scope, and they can not trigger hero animations when
-their route changes. This change only surfaced this problem.
+Se o código começar a lançar erros de asserção após esta mudança,
+significa que o código já estava quebrado mesmo antes desta mudança.
+Múltiplos navigators podem estar registrados sob o mesmo escopo de
+hero controller, e eles não podem acionar animações hero quando
+suas rotas mudam. Esta mudança apenas expôs este problema.
 
 ## Migration guide
 
-An example application that starts to throw exceptions.
+Uma aplicação de exemplo que começa a lançar exceções.
 
 ```dart
 import 'package:flutter/material.dart';
@@ -70,7 +71,7 @@ void main() {
 }
 ```
 
-You can fix this application by introducing your own hero controller scopes.
+Você pode corrigir esta aplicação introduzindo seus próprios escopos de hero controller.
 
 ```dart
 import 'package:flutter/material.dart';

@@ -296,6 +296,7 @@ Se você precisar de mais ajuda com desenvolvimento Flutter no IntelliJ,
 confira a [referência do IntelliJ para Flutter][ij-more].
 
 [ij-setup]: /tools/android-studio#installation-and-setup
+[ij-set-org]: /tools/android-studio#set-the-company-domain
 [ij-more]: /tools/android-studio
 [ij-run]: /tools/android-studio#running-and-debugging
 

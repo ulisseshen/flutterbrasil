@@ -1,2 +1,6 @@
-These images aren't used on our site,
-but they're referenced elsewhere, so shouldn't be deleted for now.
+---
+ia-translate: true
+---
+
+Estas imagens não são usadas em nosso site,
+mas são referenciadas em outros lugares, portanto não devem ser excluídas por enquanto.

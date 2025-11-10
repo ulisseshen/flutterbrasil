@@ -61,6 +61,8 @@ inclui testes contra o lançamento **stable** mais recente.
 A documentação mais recente para o branch **stable**
 está em: <https://api.flutterbrasil.dev>
 
+<a id="the-beta-channel" aria-hidden="true"></a>
+
 ### O canal **beta**
 
 O canal **beta** tem o lançamento estável mais recente.
@@ -91,6 +93,7 @@ A documentação mais recente para o branch **main**
 está em: <https://main-api.flutterbrasil.dev>
 
 <a id="changing-channels" aria-hidden="true"></a>
+<a id="change-channels" aria-hidden="true"></a>
 
 ### Mudar canais
 

@@ -75,7 +75,7 @@ em um diretório como
 Tente realocar o Flutter para uma pasta diferente,
 como `C:\src\flutter`.
 
-## Configuração do Android
+## Configuração do Android {:#android-setup}
 
 ### Ter várias versões do Java instaladas
 

@@ -1,52 +1,53 @@
 ---
-title: SnackBar with action no longer auto-dismisses
+ia-translate: true
+title: SnackBar com action não fecha mais automaticamente
 description: >-
-  SnackBars with an action button now default to not auto-dismissing unless
-  manually dismissed by the user.
+  SnackBars com um botão de action agora têm como padrão não fechar automaticamente, a menos que
+  sejam manualmente descartados pelo usuário.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-The default behavior of a [`SnackBar`][] with an action has changed.
-Previously, a `SnackBar` with an action wouldn't
-auto-dismiss if talkback was enabled.
-Now, all `SnackBar` widgets with an action default to
-a non-dismissible state until the user interacts with the action button.
+O comportamento padrão de um [`SnackBar`][] com uma action mudou.
+Anteriormente, um `SnackBar` com uma action não fecharia
+automaticamente se o talkback estivesse ativado.
+Agora, todos os widgets `SnackBar` com uma action têm como padrão
+um estado não descartável até que o usuário interaja com o botão de action.
 
-## Context
+## Contexto
 
-A `SnackBar` with an action button is now treated as
-a more persistent notification that requires user interaction.
-This change improves accessibility and user experience by ensuring that
-critical notifications remain on the screen until they are acknowledged.
+Um `SnackBar` com um botão de action agora é tratado como
+uma notificação mais persistente que requer interação do usuário.
+Esta mudança melhora a acessibilidade e a experiência do usuário, garantindo que
+notificações críticas permaneçam na tela até serem reconhecidas.
 
-## Description of change
+## Descrição da mudança
 
-This change aligns with the Material 3 design specification for
-the `SnackBar` component:
+Esta mudança se alinha com a especificação de design do Material 3 para
+o componente `SnackBar`:
 
-* Old behavior: A `SnackBar` with an action button would auto-dismiss after a
-  duration unless talkback was enabled.
-* New behavior: A `SnackBar` with an action button won't auto-dismiss;
-  it remains on screen until dismissed by the user.
+* Comportamento antigo: Um `SnackBar` com um botão de action fecharia automaticamente após uma
+  duração, a menos que o talkback estivesse ativado.
+* Novo comportamento: Um `SnackBar` com um botão de action não fecha automaticamente;
+  ele permanece na tela até ser descartado pelo usuário.
 
-To override this behavior, an optional `persist` property has
-been added to `SnackBar`.
-When `persist` is `true`, the `SnackBar` won't auto-dismiss and
-remains on screen until manually dismissed by the user.
-When `false`, the `SnackBar` auto-dismisses after its standard duration,
-regardless of the presence of an action.
-When `null`, the `SnackBar` follows the default behavior,
-which won't auto-dismiss if an action is present.
+Para sobrescrever este comportamento, uma propriedade `persist` opcional foi
+adicionada ao `SnackBar`.
+Quando `persist` é `true`, o `SnackBar` não fecha automaticamente e
+permanece na tela até ser manualmente descartado pelo usuário.
+Quando `false`, o `SnackBar` fecha automaticamente após sua duração padrão,
+independentemente da presença de uma action.
+Quando `null`, o `SnackBar` segue o comportamento padrão,
+que não fecha automaticamente se uma action estiver presente.
 
-## Migration guide
+## Guia de migração
 
-To restore the old auto-dismiss behavior for a SnackBar with an action, set
-`persist` to `false`.
+Para restaurar o comportamento antigo de fechamento automático para um SnackBar com uma action, defina
+`persist` como `false`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 ScaffoldMessenger.of(context).showSnackBar(
@@ -62,7 +63,7 @@ ScaffoldMessenger.of(context).showSnackBar(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart highlightLines=4
 ScaffoldMessenger.of(context).showSnackBar(
@@ -79,18 +80,18 @@ ScaffoldMessenger.of(context).showSnackBar(
 );
 ```
 
-## Timeline
+## Cronograma
 
-Landed in version: 3.37.0-0.0.pre
-In stable release: 3.38
+Aterrissou na versão: 3.37.0-0.0.pre
+No lançamento estável: 3.38
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`SnackBar`][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [SnackBar with action no longer auto-dismisses][]
 

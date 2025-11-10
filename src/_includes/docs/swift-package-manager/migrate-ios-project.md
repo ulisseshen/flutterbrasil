@@ -1,3 +1,5 @@
+<!-- ia-translate: true -->
+
 Uma vez que você [ativar o Swift Package Manager][Turn on Swift Package Manager], a CLI do Flutter tenta migrar
 seu projeto na próxima vez que você executar seu app usando a CLI.
 Esta migração atualiza seu projeto Xcode para usar o Swift Package Manager para

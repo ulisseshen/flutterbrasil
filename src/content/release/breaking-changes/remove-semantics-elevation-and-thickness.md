@@ -1,32 +1,33 @@
 ---
-title: Removed semantics elevation and thickness
+ia-translate: true
+title: Removido elevation e thickness da semântica
 description: >-
-  Removed elevation and thickness from semantics properties.
+  Removido elevation e thickness das propriedades de semântica.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-Both elevation and thickness semantics properties and their related APIs were removed.
+Ambas as propriedades de semântica elevation e thickness e suas APIs relacionadas foram removidas.
 
-## Context
+## Contexto
 
-Both elevation and thickness semantics properties were created for Fuchsia's 3D rendering.
-They were never implemented and thus remained unused. There was also no other known usage
-for these properties. These properties added unnecessary code complexity and have been removed.
+Ambas as propriedades de semântica elevation e thickness foram criadas para a renderização 3D do Fuchsia.
+Elas nunca foram implementadas e, portanto, permaneceram não utilizadas. Também não havia outro uso conhecido
+para essas propriedades. Essas propriedades adicionavam complexidade desnecessária ao código e foram removidas.
 
-## Description of change
+## Descrição da mudança
 
-The following properties are removed `SemanticsConfiguration.elevation`,
+As seguintes propriedades foram removidas: `SemanticsConfiguration.elevation`,
 `SemanticsConfiguration.thickness`,
-`SemanticsNode.thickness`, `SemanticsNode.elevation`, and `SemanticsNode.elevationAdjustment`.
+`SemanticsNode.thickness`, `SemanticsNode.elevation` e `SemanticsNode.elevationAdjustment`.
 
-## Migration guide
+## Guia de migração
 
-If you previously assigned these properties, remove the assignments.
+Se você atribuiu essas propriedades anteriormente, remova as atribuições.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 void describeSemanticsConfiguration(SemanticsConfiguration config) {
@@ -36,7 +37,7 @@ void describeSemanticsConfiguration(SemanticsConfiguration config) {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 void describeSemanticsConfiguration(SemanticsConfiguration config) {
@@ -44,23 +45,23 @@ void describeSemanticsConfiguration(SemanticsConfiguration config) {
 }
 ```
 
-## Timeline
+## Cronograma
 
-Landed in version: 3.34.0-0.0.pre<br>
-In stable release: 3.35
+Aterrissou na versão: 3.34.0-0.0.pre<br>
+No lançamento estável: 3.35
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`SemanticsConfiguration`][]
 * [`SemanticsNode`][]
 
-Relevant issue:
+Issue relevante:
 
 * [Issue 166092][]
 
-Relevant PR:
+PR relevante:
 
 * [PR 169382][]
 

@@ -1,27 +1,27 @@
-##### Enable automatic attachment
+##### Ativar anexação automática
 
-You can configure VS Code to attach to your Flutter module project
-whenever you start debugging.
-To enable this feature,
-create a `.vscode/launch.json` file in your Flutter module project.
+Você pode configurar o VS Code para anexar ao seu projeto de módulo Flutter
+sempre que você iniciar a depuração.
+Para ativar este recurso,
+crie um arquivo `.vscode/launch.json` no seu projeto de módulo Flutter.
 
-1. Go to **View** <span aria-label="and then">></span> **Run**.
+1. Vá para **View** <span aria-label="and then">></span> **Run**.
 
-   You can also press
+   Você também pode pressionar
    <kbd>Ctrl</kbd> / <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd>.
 
-   VS Code displays the **Run and Debug** sidebar.
+   O VS Code exibe a barra lateral **Run and Debug**.
 
-1. In this sidebar, click **create a launch.json file**.
+1. Nesta barra lateral, clique em **create a launch.json file**.
 
-   VS Code displays the **Select debugger** menu at the top.
+   O VS Code exibe o menu **Select debugger** no topo.
 
-1. Select **Dart & Flutter**.
+1. Selecione **Dart & Flutter**.
 
-   VS Code creates then opens the `.vscode/launch.json` file.
+   O VS Code cria e então abre o arquivo `.vscode/launch.json`.
 
    <details markdown="1">
-   <summary>Expand to see an example launch.json file</summary>
+   <summary>Expandir para ver um exemplo de arquivo launch.json</summary>
 
     ```json
     {
@@ -53,7 +53,7 @@ create a `.vscode/launch.json` file in your Flutter module project.
 
     </details>
 
-1. To attach, go to **Run** <span aria-label="and then">></span>
+1. Para anexar, vá para **Run** <span aria-label="and then">></span>
    **Start Debugging**.
 
-   You can also press <kbd>F5</kbd>.
+   Você também pode pressionar <kbd>F5</kbd>.

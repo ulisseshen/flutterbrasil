@@ -1,4 +1,5 @@
 ---
+ia-translate: true
 title: Introdução à UI declarativa
 shortTitle: UI Declarativa
 description: Explica a diferença entre um estilo de programação declarativo e imperativo.

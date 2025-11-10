@@ -802,7 +802,7 @@ e as [notas de lançamento do Flutter 3.3][3.3 release notes].
   você deve habilitar o [modo Desenvolvedor][Developer mode].
   A [página de instalação][install page] do macOS foi atualizada
   com esta informação.
-* Conforme descrito nas [notas de lançamento 3.3][],
+* Conforme descrito nas [notas de lançamento 3.3][3.3 release notes],
   você deve capturar todos os erros e exceções
   no seu app definindo
   o callback `PlatformDispatcher.onError`,
@@ -1067,7 +1067,7 @@ desde o último lançamento stable:
 ## 03 de março de 2021: Flutter Engage: lançamento 2.0
 
 Flutter 2 está disponível!!! Para mais informações, veja
-[Anunciando Flutter 2][], [Novidades no Flutter 2][What's new in Flutter 2],
+[Anunciando Flutter 2][Announcing Flutter 2], [Novidades no Flutter 2][What's new in Flutter 2],
 [Suporte web do Flutter atinge o marco stable][Flutter web support hits the stable milestone],
 [Anunciando Dart 2.12][Announcing Dart 2.12],
 e as [notas de lançamento do Flutter 2][Flutter 2 release notes].
@@ -1354,7 +1354,7 @@ Documentos adicionados e atualizados desde o último anúncio incluem:
 
 * Adicionada uma nova página sobre [Entendendo restrições][Understanding constraints],
   contribuída por Marcelo Glasberg, um membro da comunidade Flutter.
-* A [landing page de animations][] foi reescrita.
+* A [landing page de animations][animations landing page] foi reescrita.
   Esta página agora inclui a árvore de decisão de animação
   que ajuda você a descobrir qual abordagem de animação
   é adequada para suas necessidades. Também inclui informações
@@ -1534,15 +1534,15 @@ Outros documentos relevantes:
 * As mensagens de erro foram melhoradas no SDK 1.9.
   Para mais informações, leia
   [Melhorando as Mensagens de Erro do Flutter][Improving Flutter's Error Messages]
-  na [publicação Flutter Medium][].
+  na [publicação Flutter Medium][Flutter Medium].
 * Se você já tem um app web que depende do
   pacote flutter_web, as seguintes instruções dizem
   como migrar para o pacote flutter:
   Atualizando de package:flutter_web para o Flutter SDK.
 * Um novo widget [`ToggleButtons`][], descrito nos documentos da API.
-  [Demo ToggleButtons][]
+  [Demo ToggleButtons][ToggleButtons demo]
 * Um novo widget [`ColorFiltered`][], também descrito nos documentos da API.
-  [Demo ColorFiltered][]
+  [Demo ColorFiltered][ColorFiltered demo]
 * Novo comportamento para o widget [`SelectableText`][].
 
 Feliz Fluttering!
@@ -1568,7 +1568,7 @@ Feliz Fluttering!
 Flutter 1.7 está disponível!
 
 Para mais informações, veja [Anunciando Flutter 1.7][Announcing Flutter 1.7]
-na [Publicação Flutter Medium][], e as
+na [Publicação Flutter Medium][Flutter Medium], e as
 [notas de lançamento 1.7.8][1.7.8 release notes].
 
 Novos e atualizados documentos no site incluem:
@@ -1644,7 +1644,7 @@ Além disso, aqui estão alguns novos e atualizados documentos recentes:
 * Também no MWC, anunciamos uma versão preview das novas Dart DevTools
   para perfil e depuração de apps Dart e Flutter.
   Você pode encontrar os documentos no wiki do DevTools
-  (Nota: desde então movido para [este site][].)
+  (Nota: desde então movido para [este site][this site].)
   Em particular, confira o [inspetor de widget][widget inspector] do DevTool para
   depurar sua UI, ou a [visualização de timeline][timeline view] para criar perfil de seu
   aplicativo Flutter. Experimente e nos diga o que você acha!

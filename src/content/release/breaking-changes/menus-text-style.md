@@ -1,45 +1,46 @@
 ---
-title: Updated default text styles for menus
+ia-translate: true
+title: Estilos de texto padrão atualizados para menus
 description: >-
-  The default text styles for menus are updated to
-  match the Material 3 specification.
+  Os estilos de texto padrão para menus são atualizados para
+  corresponder à especificação Material 3.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-The default text styles used for menus are updated
-to match the Material 3 specification.
+Os estilos de texto padrão usados para menus são atualizados
+para corresponder à especificação Material 3.
 
-## Context
+## Contexto
 
-The default text style for `MenuItemButton` (a widget used
-in a `MenuBar`, and in a menu created with `MenuAnchor`),
-and `DropdownMenuEntry` (in the `DropdownMenu`) is
-updated to match the Material 3 specification.
+O estilo de texto padrão para `MenuItemButton` (um widget usado
+em um `MenuBar`, e em um menu criado com `MenuAnchor`),
+e `DropdownMenuEntry` (no `DropdownMenu`) é
+atualizado para corresponder à especificação Material 3.
 
-Likewise, the default text style for the `DropdownMenu`s `TextField` is updated
-to match the Material 3 specification.
+Da mesma forma, o estilo de texto padrão para o `TextField` do `DropdownMenu` é atualizado
+para corresponder à especificação Material 3.
 
-## Description of change
+## Descrição da mudança
 
-The default text style for `MenuItemButton` (a widget used
-in a `MenuBar`, and in a menu created with `MenuAnchor`),
-and `DropdownMenuEntry` (in the `DropdownMenu`) is updated from
-`TextTheme.bodyLarge` to `TextTheme.labelLarge` for Material 3.
+O estilo de texto padrão para `MenuItemButton` (um widget usado
+em um `MenuBar`, e em um menu criado com `MenuAnchor`),
+e `DropdownMenuEntry` (no `DropdownMenu`) é atualizado de
+`TextTheme.bodyLarge` para `TextTheme.labelLarge` para Material 3.
 
-The default text style for the `DropdownMenu`s `TextField` is updated from
-`TextTheme.labelLarge` to `TextTheme.bodyLarge` for Material 3.
+O estilo de texto padrão para o `TextField` do `DropdownMenu` é atualizado de
+`TextTheme.labelLarge` para `TextTheme.bodyLarge` para Material 3.
 
-## Migration guide
+## Guia de migração
 
-A `MenuItemButton` for Material 3 uses
-`TextTheme.labelLarge` as the default text style.
-To use the previous default text style, set the `TextTheme.bodyLarge` text style
-in the `MenuItemButton.style` or `MenuButtonThemeData.style` properties.
+Um `MenuItemButton` para Material 3 usa
+`TextTheme.labelLarge` como o estilo de texto padrão.
+Para usar o estilo de texto padrão anterior, defina o estilo de texto `TextTheme.bodyLarge`
+nas propriedades `MenuItemButton.style` ou `MenuButtonThemeData.style`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 MenuItemButton(
@@ -56,7 +57,7 @@ menuButtonTheme: MenuButtonThemeData(
 ),
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 MenuItemButton(
@@ -76,13 +77,13 @@ menuButtonTheme: MenuButtonThemeData(
 ),
 ```
 
-A `DropdownMenu`'s `TextField` for Material 3
-uses `TextTheme.bodyLarge` as the default text style.
-To use the previous default text style,
-set the `TextTheme.labelLarge` text style in
-the `DropdownMenu.textStyle` or `DropdownMenuThemeData.textStyle` properties.
+O `TextField` de um `DropdownMenu` para Material 3
+usa `TextTheme.bodyLarge` como o estilo de texto padrão.
+Para usar o estilo de texto padrão anterior,
+defina o estilo de texto `TextTheme.labelLarge` nas
+propriedades `DropdownMenu.textStyle` ou `DropdownMenuThemeData.textStyle`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 DropdownMenu<ColorLabel>(
@@ -104,7 +105,7 @@ dropdownMenuTheme: DropdownMenuThemeData(
 ),
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 DropdownMenu<ColorLabel>(
@@ -130,13 +131,13 @@ dropdownMenuTheme: DropdownMenuThemeData(
 ),
 ```
 
-A `DropdownMenu`'s `DropdownMenuEntry` for Material 3
-uses `TextTheme.labelLarge` as the default text style.
-To use the previous default text style, set the
-`TextTheme.bodyLarge` text style in
-the `DropdownMenuEntry.style` or `MenuButtonThemeData.style` properties.
+O `DropdownMenuEntry` de um `DropdownMenu` para Material 3
+usa `TextTheme.labelLarge` como o estilo de texto padrão.
+Para usar o estilo de texto padrão anterior, defina o
+estilo de texto `TextTheme.bodyLarge` nas
+propriedades `DropdownMenuEntry.style` ou `MenuButtonThemeData.style`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 DropdownMenuEntry<ColorLabel>(
@@ -153,7 +154,7 @@ menuButtonTheme: MenuButtonThemeData(
 ),
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 DropdownMenuEntry<ColorLabel>(
@@ -173,35 +174,35 @@ menuButtonTheme: MenuButtonThemeData(
 ),
 ```
 
-## Timeline
+## Cronograma
 
-Landed in version: 3.14.0-11.0.pre<br>
-In stable release: 3.16
+Disponibilizado na versão: 3.14.0-11.0.pre<br>
+Na versão estável: 3.16
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
-* [`MenuBar`][]
-* [`MenuAnchor`][]
-* [`MenuItemButton`][]
-* [`MenuButtonTheme`][]
-* [`DropdownMenu`][]
-* [`DropdownMenuEntry`][]
-* [`DropdownMenuTheme`][]
-* [`TextTheme`][]
+* [`MenuBar`][MenuBar]
+* [`MenuAnchor`][MenuAnchor]
+* [`MenuItemButton`][MenuItemButton]
+* [`MenuButtonTheme`][MenuButtonTheme]
+* [`DropdownMenu`][DropdownMenu]
+* [`DropdownMenuEntry`][DropdownMenuEntry]
+* [`DropdownMenuTheme`][DropdownMenuTheme]
+* [`TextTheme`][TextTheme]
 
-Relevant PRs:
+PRs relevantes:
 
-* [Update default menu text styles for Material 3][]
+* [Update default menu text styles for Material 3][Update default menu text styles for Material 3]
 
-[`MenuBar`]: {{site.api}}/flutter/material/MenuBar-class.html
-[`MenuAnchor`]: {{site.api}}/flutter/material/MenuAnchor-class.html
-[`MenuItemButton`]: {{site.api}}/flutter/material/MenuItemButton-class.html
-[`MenuButtonTheme`]: {{site.api}}/flutter/material/MenuButtonTheme-class.html
-[`DropdownMenu`]: {{site.api}}/flutter/material/DropdownMenu-class.html
-[`DropdownMenuEntry`]: {{site.api}}/flutter/material/DropdownMenuEntry-class.html
-[`DropdownMenuTheme`]: {{site.api}}/flutter/material/DropdownMenuTheme-class.html
-[`TextTheme`]: {{site.api}}/flutter/material/TextTheme-class.html
+[MenuBar]: {{site.api}}/flutter/material/MenuBar-class.html
+[MenuAnchor]: {{site.api}}/flutter/material/MenuAnchor-class.html
+[MenuItemButton]: {{site.api}}/flutter/material/MenuItemButton-class.html
+[MenuButtonTheme]: {{site.api}}/flutter/material/MenuButtonTheme-class.html
+[DropdownMenu]: {{site.api}}/flutter/material/DropdownMenu-class.html
+[DropdownMenuEntry]: {{site.api}}/flutter/material/DropdownMenuEntry-class.html
+[DropdownMenuTheme]: {{site.api}}/flutter/material/DropdownMenuTheme-class.html
+[TextTheme]: {{site.api}}/flutter/material/TextTheme-class.html
 
 [Update default menu text styles for Material 3]: {{site.repo.flutter}}/pull/131930

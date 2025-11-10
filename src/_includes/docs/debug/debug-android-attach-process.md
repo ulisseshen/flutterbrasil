@@ -1,18 +1,18 @@
-1. Click the **Attach debugger to Android process** button.
+1. Clique no botão **Attach debugger to Android process**.
    (![Tiny green bug superimposed with a light grey arrow](/assets/images/docs/testing/debugging/native/android-studio/attach-process-button.png))
 
     :::tip
-    If this button doesn't appear in the **Projects** menu bar, verify that
-    you opened Flutter _application_ project but _not a Flutter plugin_.
+    Se este botão não aparecer na barra de menu **Projects**, verifique se
+    você abriu o projeto de _aplicação_ Flutter mas _não um plugin Flutter_.
     :::
 
-1. The **process** dialog displays one entry for each connected device.
-   Select **show all processes** to display available processes for each
-   device.
+1. A caixa de diálogo **process** exibe uma entrada para cada dispositivo conectado.
+   Selecione **show all processes** para exibir os processos disponíveis para cada
+   dispositivo.
 
-1. Choose the process to which you want to attach.
-   For this guide, select the `com.example.my_app` process
-   using the **Emulator Pixel_5_API_33**.
+1. Escolha o processo ao qual você deseja anexar.
+   Para este guia, selecione o processo `com.example.my_app`
+   usando o **Emulator Pixel_5_API_33**.
 
 {% comment %}
 
@@ -33,9 +33,9 @@
    </div>
 {% endcomment %}
 
-1. Locate the tab for **Android Debugger** in the **Debug** pane.
+1. Localize a aba para **Android Debugger** no painel **Debug**.
 
-1. In the **Project** pane, expand
+1. No painel **Project**, expanda
    **my_app_android** <span aria-label="and then">></span>
    **android** <span aria-label="and then">></span>
    **app** <span aria-label="and then">></span>
@@ -44,8 +44,8 @@
    **java** <span aria-label="and then">></span>
    **io.flutter plugins**.
 
-1. Double click **GeneratedProjectRegistrant** to open the
-   Java code in the **Edit** pane.
+1. Clique duas vezes em **GeneratedProjectRegistrant** para abrir o
+   código Java no painel **Edit**.
 
 {% comment %}
    !['The Android Project view highlighting the GeneratedPluginRegistrant.java file.'](/assets/images/docs/testing/debugging/native/android-studio/debug-open-java-code.png){:width="100%"}
@@ -56,10 +56,10 @@
    </div>
 {% endcomment %}
 
-At the end of this procedure, both the Dart and Android debuggers interact
-with the same process.
-Use either, or both, to set breakpoints, examine stack, resume execution
-and the like. In other words, debug!
+No final deste procedimento, tanto os depuradores Dart quanto Android interagem
+com o mesmo processo.
+Use qualquer um, ou ambos, para definir breakpoints, examinar pilha, retomar execução
+e similares. Em outras palavras, depure!
 
 {% comment %}
 ![The Dart debug pane with two breakpoints set in `lib/main.dart`](/assets/images/docs/testing/debugging/native/dart-debugger.png){:width="100%"}

@@ -1,94 +1,97 @@
+---
+ia-translate: true
+---
 
- 1. <h3>Determine your Flutter SDK installation location</h3>
+1. <h3>Determine o local de instalação do Flutter SDK</h3>
 
-    Copy the absolute path to the directory that you
-    downloaded and extracted the Flutter SDK into.
+   Copie o caminho absoluto para o diretório no qual você
+   baixou e extraiu o Flutter SDK.
 
- 1. <h3>Navigate to the environment variables settings</h3>
+1. <h3>Navegue até as configurações de variáveis de ambiente</h3>
 
-    1. Press <kbd>Windows</kbd> + <kbd>Pause</kbd>.
+   1. Pressione <kbd>Windows</kbd> + <kbd>Pause</kbd>.
 
-       If your keyboard lacks a <kbd>Pause</kbd> key,
-       try <kbd>Windows</kbd> + <kbd>Fn</kbd> + <kbd>B</kbd>.
+      Se o seu teclado não tiver uma tecla <kbd>Pause</kbd>,
+      tente <kbd>Windows</kbd> + <kbd>Fn</kbd> + <kbd>B</kbd>.
 
-       The **System > About** dialog opens.
+      A caixa de diálogo **System > About** será aberta.
 
-    1. Click **Advanced System Settings**
-       <span aria-label="and then">></span> **Advanced**
-       <span aria-label="and then">></span> **Environment Variables...**.
+   1. Clique em **Advanced System Settings**
+      <span aria-label="and then">></span> **Advanced**
+      <span aria-label="and then">></span> **Environment Variables...**.
 
-       The **Environment Variables** dialog opens.
+      A caixa de diálogo **Environment Variables** será aberta.
 
- 1. <h3>Add the Flutter SDK bin to your path</h3>
+1. <h3>Adicione o bin do Flutter SDK ao seu path</h3>
 
-    1. In the **User variables for (username)** section
-       of the **Environment Variables** dialog,
-       look for the **Path** entry.
+   1. Na seção **User variables for (username)**
+      da caixa de diálogo **Environment Variables**,
+      procure pela entrada **Path**.
 
-    1. If the **Path** entry exists, double-click it.
+   1. Se a entrada **Path** existir, clique duas vezes nela.
 
-       The **Edit Environment Variable** dialog should open.
+      A caixa de diálogo **Edit Environment Variable** deve ser aberta.
 
-       1. Double-click inside an empty row.
+      1. Clique duas vezes dentro de uma linha vazia.
 
-       1. Type the path to the `bin` directory of your Flutter installation.
+      1. Digite o caminho para o diretório `bin` da sua instalação do Flutter.
 
-          For example, if you downloaded Flutter into a
-          `develop\flutter` folder inside your user directory,
-          you'd type the following:
+         Por exemplo, se você baixou o Flutter em uma
+         pasta `develop\flutter` dentro do seu diretório de usuário,
+         você digitaria o seguinte:
 
-          ```plaintext
-          %USERPROFILE%\develop\flutter\bin
-          ```
+         ```plaintext
+         %USERPROFILE%\develop\flutter\bin
+         ```
 
-       1. Click the Flutter entry you added to select it.
+      1. Clique na entrada do Flutter que você adicionou para selecioná-la.
 
-       1. Click **Move Up** until the Flutter entry sits at the top of the list.
+      1. Clique em **Move Up** até que a entrada do Flutter fique no topo da lista.
 
-       1. To confirm your changes, click **OK** three times.
+      1. Para confirmar suas alterações, clique em **OK** três vezes.
 
-       {: type="a"}
+      {: type="a"}
 
-    1. If the entry doesn't exist, click **New...**.
+   1. Se a entrada não existir, clique em **New...**.
 
-       The **Edit Environment Variable** dialog should open.
+      A caixa de diálogo **Edit Environment Variable** deve ser aberta.
 
-       1. In the **Variable Name** box, type `Path`.
+      1. Na caixa **Variable Name**, digite `Path`.
 
-       1. In the **Variable Value** box,
-          type the path to the `bin` directory of your Flutter installation.
+      1. Na caixa **Variable Value**,
+         digite o caminho para o diretório `bin` da sua instalação do Flutter.
 
-          For example, if you downloaded Flutter into a
-          `develop\flutter` folder inside your user directory,
-          you'd type the following:
+         Por exemplo, se você baixou o Flutter em uma
+         pasta `develop\flutter` dentro do seu diretório de usuário,
+         você digitaria o seguinte:
 
-          ```plaintext
-          %USERPROFILE%\develop\flutter\bin
-          ```
+         ```plaintext
+         %USERPROFILE%\develop\flutter\bin
+         ```
 
-       1. To confirm your changes, click **OK** three times.
+      1. Para confirmar suas alterações, clique em **OK** três vezes.
 
-       {: type="a"}
+      {: type="a"}
 
- 1. <h3>Apply your changes</h3>
+1. <h3>Aplique suas alterações</h3>
 
-    To apply this change and get access to the `flutter` tool,
-    close and reopen all open command prompts,
-    sessions in your terminal apps, and IDEs.
+   Para aplicar essa alteração e obter acesso à ferramenta `flutter`,
+   feche e reabra todos os prompts de comando abertos,
+   sessões nos seus apps de terminal e IDEs.
 
- 1. <h3>Validate your setup</h3>
+1. <h3>Valide sua configuração</h3>
 
-    To ensure you successfully added the SDK to your `PATH`,
-    open command prompt or your preferred terminal app,
-    then try running the `flutter` and `dart` tools.
+   Para garantir que você adicionou o SDK ao seu `PATH` com sucesso,
+   abra o prompt de comando ou seu app de terminal preferido,
+   e então tente executar as ferramentas `flutter` e `dart`.
 
-    ```console
-    $ flutter --version
-    $ dart --version
-    ```
+   ```console
+   $ flutter --version
+   $ dart --version
+   ```
 
-    If either command isn't found,
-    check out [Flutter installation troubleshooting][troubleshoot].
+   Se qualquer um dos comandos não for encontrado,
+   confira [Solução de problemas de instalação do Flutter][troubleshoot].
 
 {: .steps}
 

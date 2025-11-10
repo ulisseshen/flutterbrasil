@@ -1,3 +1,7 @@
+---
+ia-translate: true
+---
+
 ### Usar frameworks no Xcode e Flutter framework como podspec {:#method-c .no_toc}
 
 #### Abordagem {:#method-c-approach}

@@ -1,83 +1,82 @@
 ---
-title: UISceneDelegate adoption
+ia-translate: true
+title: Adoção do UISceneDelegate
 description: >
-  A guide for Flutter iOS developers to adopt Apple's UISceneDelegate protocol.
+  Um guia para desenvolvedores Flutter iOS adotarem o protocolo UISceneDelegate da Apple.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
 :::note
-This is an upcoming breaking change that has not yet been finalized or
-implemented. The current details are provisional and might be altered. Further
-announcements will be made as the change approaches implementation.
+Esta é uma breaking change futura que ainda não foi finalizada ou
+implementada. Os detalhes atuais são provisórios e podem ser alterados. Novos
+anúncios serão feitos conforme a mudança se aproxima da implementação.
 :::
 
-## Summary
+## Resumo
 
-Apple now requires iOS developers to adopt the UIScene life cycle.
-This migration has implications on the [app launch
-sequence]({{site.apple-dev}}/documentation/uikit/about-the-app-launch-sequence)
-and [app life
-cycle]({{site.apple-dev}}/documentation/uikit/managing-your-app-s-life-cycle).
+A Apple agora exige que desenvolvedores iOS adotem o ciclo de vida UIScene.
+Esta migração tem implicações na [sequência de lançamento do
+app]({{site.apple-dev}}/documentation/uikit/about-the-app-launch-sequence)
+e no [ciclo de vida do
+app]({{site.apple-dev}}/documentation/uikit/managing-your-app-s-life-cycle).
 
-## Background
+## Contexto
 
-During WWDC25, Apple
-[announced]({{site.apple-dev}}/videos/play/wwdc2025/243/?time=1317)
-the following:
-> In the release following iOS 26, any UIKit app built with the latest SDK will
-> be required to use the UIScene life cycle, otherwise it will not launch.
+Durante a WWDC25, a Apple
+[anunciou]({{site.apple-dev}}/videos/play/wwdc2025/243/?time=1317)
+o seguinte:
+> No lançamento seguinte ao iOS 26, qualquer app UIKit compilado com o SDK mais recente será
+> obrigado a usar o ciclo de vida UIScene, caso contrário não será iniciado.
 
-To use the UIScene lifecycle with Flutter, migrate the following support:
-* All Flutter apps that support iOS - See the [migration guide for Flutter
-  apps](/release/breaking-changes/uiscenedelegate/#migration-guide-for-flutter-apps)
-* Flutter embedded in iOS native apps - See the [migration guide for adding
-  Flutter to an existing
-  app](/release/breaking-changes/uiscenedelegate/#migration-guide-for-adding-flutter-to-existing-app-add-to-app)
-* Flutter plugins that use iOS application lifecycle events - See the [migration
-  guide for
+Para usar o ciclo de vida UIScene com Flutter, migre o seguinte suporte:
+* Todos os apps Flutter que suportam iOS - Veja o [guia de migração para apps
+  Flutter](/release/breaking-changes/uiscenedelegate/#migration-guide-for-flutter-apps)
+* Flutter embarcado em apps nativos iOS - Veja o [guia de migração para adicionar
+  Flutter a um app
+  existente](/release/breaking-changes/uiscenedelegate/#migration-guide-for-adding-flutter-to-existing-app-add-to-app)
+* Plugins Flutter que usam eventos do ciclo de vida da aplicação iOS - Veja o [guia de migração para
   plugins](/release/breaking-changes/uiscenedelegate/#migration-guide-for-flutter-plugins)
 
-Migrating to UIScene shifts the AppDelegate's role—the UI lifecycle is
-now handled by the UISceneDelegate. The AppDelegate
-remains responsible for process events and the overall application
-lifecycle. All UI-related logic should be moved from the AppDelegate to the
-corresponding UISceneDelegate methods. After migrating to UIScene,
-UIKit won't call AppDelegate methods related to UI state.
+Migrar para UIScene altera o papel do AppDelegate—o ciclo de vida da UI agora é
+gerenciado pelo UISceneDelegate. O AppDelegate
+permanece responsável por eventos de processo e pelo ciclo de vida geral da aplicação. Toda a lógica relacionada à UI deve ser movida do AppDelegate para os
+métodos UISceneDelegate correspondentes. Após migrar para UIScene,
+o UIKit não chamará mais métodos do AppDelegate relacionados ao estado da UI.
 
-## Migration guide for Flutter apps
+## Guia de migração para apps Flutter {:#migration-guide-for-flutter-apps}
 
-### Auto-Migrate (Experimental)
+### Auto-Migração (Experimental)
 
-The Flutter CLI can automatically migrate your app if your AppDelegate has not
-been customized.
+A CLI do Flutter pode migrar automaticamente seu app se o AppDelegate não foi
+customizado.
 
-1. Enable UIScene Migration Feature
+1. Habilite a funcionalidade de migração UIScene
 
 ```console
 flutter config --enable-uiscene-migration
 ```
 
-2. Build or run your app
+2. Compile ou execute seu app
 
 ```console
 flutter run
-or
+ou
 flutter build ios
 ```
 
-If the migration succeeds, you will see a log that says "Finished migration to
-UIScene lifecycle". Otherwise, it warns you to migrate manually using the
-included instructions. If the migration succeeds, no further action is required!
+Se a migração for bem-sucedida, você verá um log que diz "Finished migration to
+UIScene lifecycle". Caso contrário, ele avisará para migrar manualmente usando as
+instruções incluídas. Se a migração for bem-sucedida, nenhuma ação adicional é necessária!
 
-### Migrate AppDelegate
+### Migrar AppDelegate
 
-Previously, Flutter plugins were registered in
-`application:didFinishLaunchingWithOptions:`. To accomodate the new app launch
-sequence, plugin registration must now be handled in a new callback called
+Anteriormente, plugins Flutter eram registrados em
+`application:didFinishLaunchingWithOptions:`. Para acomodar a nova sequência de lançamento do
+app, o registro de plugins agora deve ser tratado em um novo callback chamado
 `didInitializeImplicitFlutterEngine`.
 
-1. Add `FlutterImplicitEngineDelegate` and move `GeneratedPluginRegistrant`.
+1. Adicione `FlutterImplicitEngineDelegate` e mova `GeneratedPluginRegistrant`.
 
 ```swift  title="my_app/ios/Runner/AppDelegate.swift" diff
 - @objc class AppDelegate: FlutterAppDelegate {
@@ -112,13 +111,13 @@ sequence, plugin registration must now be handled in a new callback called
 + }
 ```
 
-2. Create method channels and platform views in
-`didInitializeImplicitFlutterEngine`, if applicable.
+2. Crie method channels e platform views em
+`didInitializeImplicitFlutterEngine`, se aplicável.
 
-If you previously created [method channels][platform-views-docs] or
-[platform views][platform-views-docs] in
+Se você criou anteriormente [method channels][platform-views-docs] ou
+[platform views][platform-views-docs] em
 `application:didFinishLaunchingWithOptions:`,
-move that logic to `didInitializeImplicitFlutterEngine`.
+mova essa lógica para `didInitializeImplicitFlutterEngine`.
 
 ```swift
   func didInitializeImplicitFlutterEngine(_ engineBridge: FlutterImplicitEngineBridge) {
@@ -153,48 +152,48 @@ move that logic to `didInitializeImplicitFlutterEngine`.
 ```
 
 :::warning
-If you try to access the `FlutterViewController` in
-`application:didFinishLaunchingWithOptions:`, it might result in a crash.
-Use the `FlutterImplicitEngineDelegate` protocol instead.
+Se você tentar acessar o `FlutterViewController` em
+`application:didFinishLaunchingWithOptions:`, isso pode resultar em um crash.
+Use o protocolo `FlutterImplicitEngineDelegate` em vez disso.
 
 ```swift
 // BAD
 let controller : FlutterViewController = window?.rootViewController as! FlutterViewController
 ```
 
-To access the `FlutterViewController` directly, visit
-[Bespoke FlutterViewController
-usage](/release/breaking-changes/uiscenedelegate/#bespoke-flutterviewcontroller-usage).
+Para acessar o `FlutterViewController` diretamente, visite
+[Uso customizado de
+FlutterViewController](/release/breaking-changes/uiscenedelegate/#bespoke-flutterviewcontroller-usage).
 :::
 
-3. Migrate any custom logic within application life cycle events.
+3. Migre qualquer lógica customizada dentro dos eventos do ciclo de vida da aplicação.
 
-Apple has deprecated application life cycle events related to UI state. After
-migrating to UIScene lifecycle, UIKit will no longer call these events.
+A Apple descontinuou eventos do ciclo de vida da aplicação relacionados ao estado da UI. Após
+migrar para o ciclo de vida UIScene, o UIKit não chamará mais esses eventos.
 
-If you were using one of these depreacted APIs, such as
+Se você estava usando uma dessas APIs descontinuadas, como
 [`applicationDidBecomeActive`]({{site.apple-dev}}/documentation/uikit/uiapplicationdelegate/applicationdidbecomeactive(_:)),
-you will likely need to create a SceneDelegate and migrate to scene life cycle
-events. See [Apple's
-documenation]({{site.apple-dev}}/documentation/technotes/tn3187-migrating-to-the-uikit-scene-based-life-cycle)
-on migrating.
+provavelmente você precisará criar um SceneDelegate e migrar para os eventos do ciclo de vida
+de cena. Veja a [documentação da
+Apple]({{site.apple-dev}}/documentation/technotes/tn3187-migrating-to-the-uikit-scene-based-life-cycle)
+sobre migração.
 
-If you implement your own SceneDelegate, you must subclass it with
-`FlutterSceneDelegate` or conform to the `FlutterSceneLifeCycleProvider`
-protocol. See the [following
-examples](/release/breaking-changes/uiscenedelegate/#createupdate-a-scenedelegate-uikit).
+Se você implementar seu próprio SceneDelegate, você deve criar uma subclasse dele com
+`FlutterSceneDelegate` ou estar em conformidade com o protocolo `FlutterSceneLifeCycleProvider`.
+Veja os [exemplos a
+seguir](/release/breaking-changes/uiscenedelegate/#createupdate-a-scenedelegate-uikit).
 
-### Migrate Info.plist
+### Migrar Info.plist
 
-To complete the migration to the UIScene lifecycle, add an `Application Scene
-Manifest` to your Info.plist.
+Para completar a migração para o ciclo de vida UIScene, adicione um `Application Scene
+Manifest` ao seu Info.plist.
 
-As seen in Xcode's editor:
+Como visto no editor do Xcode:
 
-![Xcode plist editor for
+![Editor plist do Xcode para
 UIApplicationSceneManifest](/assets/images/docs/breaking-changes/uiscenedelegate-plist.png)
 
-As XML:
+Como XML:
 
 ```xml title="Info.plist"
 <?xml version="1.0" encoding="UTF-8"?>
@@ -225,17 +224,17 @@ As XML:
 </dict>
 ```
 
-### Create a SceneDelegate (Optional)
+### Criar um SceneDelegate (Opcional)
 
-If you need access to the `SceneDelegate`, you can create one by
-subclassing `FlutterSceneDelegate`.
+Se você precisar de acesso ao `SceneDelegate`, você pode criar um criando uma
+subclasse de `FlutterSceneDelegate`.
 
-1. Open your app in Xcode
-2. Right click the **Runner** folder and select **New Empty File**
+1. Abra seu app no Xcode
+2. Clique com o botão direito na pasta **Runner** e selecione **New Empty File**
 
-![New Empty File option in Xcode](/assets/images/docs/breaking-changes/uiscene-new-file.png)
+![Opção New Empty File no Xcode](/assets/images/docs/breaking-changes/uiscene-new-file.png)
 
-For Swift projects, create a `SceneDelegate.swift`:
+Para projetos Swift, crie um `SceneDelegate.swift`:
 
 ```swift title=my_app/ios/Runner/SceneDelegate.swift
 import Flutter
@@ -246,7 +245,7 @@ class SceneDelegate: FlutterSceneDelegate {
 }
 ```
 
-For Objective-C projects, create a `SceneDelegate.h` and `SceneDelegate.m`:
+Para projetos Objective-C, crie um `SceneDelegate.h` e `SceneDelegate.m`:
 
 ```objc title=my_app/ios/Runner/SceneDelegate.h
 #import <Flutter/Flutter.h>
@@ -265,17 +264,17 @@ For Objective-C projects, create a `SceneDelegate.h` and `SceneDelegate.m`:
 @end
 ```
 
-3. Change the "Delegate Class Name" (`UISceneDelegateClassName`) in the
-Info.plist from `FlutterSceneDelegate` to
+3. Altere o "Delegate Class Name" (`UISceneDelegateClassName`) no
+Info.plist de `FlutterSceneDelegate` para
 `$(PRODUCT_MODULE_NAME).SceneDelegate`.
 
-## Migration guide for adding Flutter to existing app (Add to App)
+## Guia de migração para adicionar Flutter a app existente (Add to App) {:#migration-guide-for-adding-flutter-to-existing-app-add-to-app}
 
-Similar to the `FlutterAppDelegate`, the `FlutterSceneDelgate` is recommended
-but not required. The `FlutterSceneDelgate` forwards scene callbacks, such as
-[`openURL`][] to plugins such as [local_auth][].
+Semelhante ao `FlutterAppDelegate`, o `FlutterSceneDelgate` é recomendado
+mas não obrigatório. O `FlutterSceneDelgate` encaminha callbacks de cena, como
+[`openURL`][`openURL`] para plugins como [local_auth][local_auth].
 
-### Create/Update a SceneDelegate (UIKit)
+### Criar/Atualizar um SceneDelegate (UIKit) {:#createupdate-a-scenedelegate-uikit}
 
 ```swift diff
   import UIKit
@@ -291,14 +290,14 @@ but not required. The `FlutterSceneDelgate` forwards scene callbacks, such as
 ```
 
 
-### Create/Update a SceneDelegate (SwiftUI)
+### Criar/Atualizar um SceneDelegate (SwiftUI)
 
-When using Flutter in a SwifUI app, you can [optionally use a
+Ao usar Flutter em um app SwiftUI, você pode [opcionalmente usar um
 FlutterAppDelegate](/add-to-app/ios/add-flutter-screen#using-the-flutterappdelegate)
-to receive application events. To migrate that to use UIScene events, you can
-make the following changes:
+para receber eventos da aplicação. Para migrar isso para usar eventos UIScene, você pode
+fazer as seguintes alterações:
 
-1. Set the Scene Delegate to `FlutterSceneDelegate` in
+1. Defina o Scene Delegate como `FlutterSceneDelegate` em
 `application:configurationForConnecting:options:`.
 
 ```swift diff
@@ -320,22 +319,22 @@ make the following changes:
   }
 ```
 
-2. If your app does not support multiple scenes, set `Enable Multiple Scenes`
-to `NO` under `Application Scene Manifest` in your target's Info properties.
-This is enabled by default for SwiftUI apps.
+2. Se seu app não suporta múltiplas cenas, defina `Enable Multiple Scenes`
+como `NO` em `Application Scene Manifest` nas propriedades Info do seu target.
+Isso é habilitado por padrão para apps SwiftUI.
 
-![Xcode plist editor for
+![Editor plist do Xcode para
 UIApplicationSceneManifest](/assets/images/docs/breaking-changes/uiscenedelegate-swiftui-info-plist.png)
 
-Otherwise, see [If your app supports multiple
-scenes](/release/breaking-changes/uiscenedelegate/#if-your-app-supports-multiple-scenes)
-for further instructions.
-### If you can't directly make FlutterSceneDelegate a subclass
+Caso contrário, veja [Se seu app suporta múltiplas
+cenas](/release/breaking-changes/uiscenedelegate/#if-your-app-supports-multiple-scenes)
+para mais instruções.
+### Se você não pode tornar FlutterSceneDelegate diretamente uma subclasse
 
-If you can't directly make `FlutterSceneDelegate` a subclass, you can use the
-`FlutterSceneLifeCycleProvider` protocol and
-`FlutterPluginSceneLifeCycleDelegate` object to forward scene life cycle events
-to Flutter.
+Se você não pode tornar `FlutterSceneDelegate` diretamente uma subclasse, você pode usar o
+protocolo `FlutterSceneLifeCycleProvider` e o
+objeto `FlutterPluginSceneLifeCycleDelegate` para encaminhar eventos do ciclo de vida de cena
+para o Flutter.
 
 ```swift title="SceneDelegate.swift" diff
   import Flutter
@@ -464,16 +463,16 @@ to Flutter.
   }
 ```
 
-### If your app supports multiple scenes
+### Se seu app suporta múltiplas cenas {:#if-your-app-supports-multiple-scenes}
 
-When multiple scenes is enabled (UIApplicationSupportsMultipleScenes), Flutter cannot automatically associate a
-`FlutterEngine` with a scene during the scene connection phase. In order for
-plugins to receive launch connection information, the `FlutterEngine` must be
-manually registered with either the `FlutterSceneDelegate` or
-`FlutterPluginSceneLifeCycleDelegate` during
-`scene:willConnectToSession:options:`. Otherwise, once the view, created by the
-`FlutterViewController` and `FlutterEngine`, is added to the view heirarchy,
-the `FlutterEngine` will automatically register for scene events.
+Quando múltiplas cenas estão habilitadas (UIApplicationSupportsMultipleScenes), o Flutter não pode automaticamente associar um
+`FlutterEngine` com uma cena durante a fase de conexão da cena. Para que
+os plugins recebam informações de conexão de lançamento, o `FlutterEngine` deve ser
+registrado manualmente com o `FlutterSceneDelegate` ou
+`FlutterPluginSceneLifeCycleDelegate` durante
+`scene:willConnectToSession:options:`. Caso contrário, uma vez que a view, criada pelo
+`FlutterViewController` e `FlutterEngine`, seja adicionada à hierarquia de view,
+o `FlutterEngine` se registrará automaticamente para eventos de cena.
 
 ```swift title="SceneDelegate.swift"
 import Flutter
@@ -554,8 +553,8 @@ class SceneDelegate: FlutterSceneDelegate {
 @end
 ```
 
-If you manually register a `FlutterEngine` with a scene, you must also
-unregister it if the view created by the `FlutterEngine` changes scenes.
+Se você registrar manualmente um `FlutterEngine` com uma cena, você também deve
+cancelar o registro se a view criada pelo `FlutterEngine` mudar de cena.
 
 ```swift
 // If using FlutterSceneDelegate:
@@ -573,12 +572,12 @@ sceneLifeCycleDelegate.unregisterSceneLifeCycle(with: flutterEngine)
 [self.sceneLifeCycleDelegate unregisterSceneLifeCycleWithFlutterEngine:self.flutterEngine];
 ```
 
-## Migration guide for Flutter plugins
+## Guia de migração para plugins Flutter {:#migration-guide-for-flutter-plugins}
 
-Not all plugins use lifecycle events. If your plugin does, though, you will
-need to migrate to UIKit's scene-based lifecycle.
+Nem todos os plugins usam eventos de ciclo de vida. Se o seu plugin usa, porém, você precisará
+migrar para o ciclo de vida baseado em cena do UIKit.
 
-1. Update the Dart and Flutter SDK versions in your pubspec.yaml
+1. Atualize as versões do Dart e Flutter SDK no seu pubspec.yaml
 
 ```yaml
 environment:
@@ -587,14 +586,14 @@ environment:
 ```
 
 :::warning
-The below Flutter APIs are available in the 3.38.0-0.1.pre beta, but are not
-yet available on stable. You might consider publishing a
-[prerelease](https://dartbrasil.dev/tools/pub/publishing#publishing-prereleases) or
+As APIs Flutter abaixo estão disponíveis no beta 3.38.0-0.1.pre, mas ainda não estão
+disponíveis na versão stable. Você pode considerar publicar uma
+[prerelease](https://dartbrasil.dev/tools/pub/publishing#publishing-prereleases) ou
 [preview](https://dartbrasil.dev/tools/pub/publishing#publish-preview-versions)
-version of your plugin to migrate early.
+versão do seu plugin para migrar antecipadamente.
 :::
 
-2. Adopt the `FlutterSceneLifeCycleDelegate` protocol
+2. Adote o protocolo `FlutterSceneLifeCycleDelegate`
 
 ```swift diff
 - public final class MyPlugin: NSObject, FlutterPlugin {
@@ -606,11 +605,11 @@ version of your plugin to migrate early.
 + @interface MyPlugin : NSObject<FlutterPlugin, FlutterSceneLifeCycleDelegate>
 ```
 
-3. Registers the plugin as a receiver of `UISceneDelegate` calls.
+3. Registre o plugin como receptor de chamadas `UISceneDelegate`.
 
-To continue supporting apps that have not migrated to the UIScene lifecycle yet,
-you might consider remaining registered to the App Delegate and keeping the App
-Delegate events as well.
+Para continuar suportando apps que ainda não migraram para o ciclo de vida UIScene,
+você pode considerar permanecer registrado no App Delegate e manter os eventos do App
+Delegate também.
 
 ```swift diff
   public static func register(with registrar: FlutterPluginRegistrar) {
@@ -628,12 +627,12 @@ Delegate events as well.
   }
 ```
 
-4. Add one or more of the following scene events that are needed for your
+4. Adicione um ou mais dos seguintes eventos de cena que são necessários para seu
 plugin.
 
-Most App Delegate UI events have a 1-to-1 replacement. To see details for each
-event, visit Apple's documentation on
-[`UISceneDelegate`][] and [`UIWindowSceneDelegate`][].
+A maioria dos eventos de UI do App Delegate tem uma substituição 1-para-1. Para ver detalhes de cada
+evento, visite a documentação da Apple sobre
+[`UISceneDelegate`][`UISceneDelegate`] e [`UIWindowSceneDelegate`][`UIWindowSceneDelegate`].
 
 [`UISceneDelegate`]: {{site.apple-dev}}/documentation/uikit/uiscenedelegate
 [`UIWindowSceneDelegate`]: {{site.apple-dev}}/documentation/uikit/uiwindowscenedelegate
@@ -695,35 +694,35 @@ public func windowScene(
                completionHandler:(void (^)(BOOL succeeded))completionHandler { }
 ```
 
-5. Move launch logic from `application:willFinishLaunchingWithOptions:` and
-`application:didFinishLaunchingWithOptions:` to
+5. Mova a lógica de lançamento de `application:willFinishLaunchingWithOptions:` e
+`application:didFinishLaunchingWithOptions:` para
 `scene:willConnectToSession:options:`.
 
-Despite `application:willFinishLaunchingWithOptions:` and
-`application:didFinishLaunchingWithOptions:` not being deprecated, after
-migrating to the `UIScene` lifecycle, the launch options will be `nil`. Any logic
-performed here related to the launch options should be moved to the
-`scene:willConnectToSession:options:` event.
+Apesar de `application:willFinishLaunchingWithOptions:` e
+`application:didFinishLaunchingWithOptions:` não estarem descontinuados, após
+migrar para o ciclo de vida `UIScene`, as opções de lançamento serão `nil`. Qualquer lógica
+executada aqui relacionada às opções de lançamento deve ser movida para o
+evento `scene:willConnectToSession:options:`.
 
-## Bespoke FlutterViewController usage
+## Uso customizado de FlutterViewController {:#bespoke-flutterviewcontroller-usage}
 
-For apps that use a `FlutterViewController` instantiated from Storyboards in
-`application:didFinishLaunchingWithOptions:` for reasons other than
-creating platform channels, it is their responsibility to
-accommodate the new initialization order.
+Para apps que usam um `FlutterViewController` instanciado a partir de Storyboards em
+`application:didFinishLaunchingWithOptions:` por razões diferentes de
+criar platform channels, é responsabilidade deles
+acomodar a nova ordem de inicialização.
 
-Migration options:
+Opções de migração:
 
-- Subclass `FlutterViewController` and put the logic in
-  the subclasses' `awakeFromNib`.
-- Specify a `UISceneDelegate` in the `Info.plist` or
-  in the `UIApplicationDelegate` and
-  put the logic in `scene:willConnectToSession:options:`.
-  For more information, check out [Apple's documentation][apple-delegate-docs].
+- Criar subclasse de `FlutterViewController` e colocar a lógica no
+  `awakeFromNib` da subclasse.
+- Especificar um `UISceneDelegate` no `Info.plist` ou
+  no `UIApplicationDelegate` e
+  colocar a lógica em `scene:willConnectToSession:options:`.
+  Para mais informações, confira a [documentação da Apple][apple-delegate-docs].
 
 [apple-delegate-docs]: {{site.apple-dev}}/documentation/uikit/specifying-the-scenes-your-app-supports
 
-#### Example
+#### Exemplo
 
 ```swift
 @objc class MyViewController: FlutterViewController {
@@ -734,9 +733,9 @@ Migration options:
 }
 ```
 
-## Hide Migration Warning
-To hide the Flutter CLI warning about migrating to UIScene, add the following
-to your pubspec.yaml:
+## Ocultar aviso de migração
+Para ocultar o aviso da CLI do Flutter sobre migrar para UIScene, adicione o seguinte
+ao seu pubspec.yaml:
 
 ```yaml file="pubspec.yaml" diff
   flutter:
@@ -745,17 +744,17 @@ to your pubspec.yaml:
 ```
 
 
-## Timeline
+## Cronograma
 
-- Landed in main: TBD
-- Landed in stable: TBD
-- Unknown: Apple changes their warning to an assert and Flutter apps that
-  haven't adopted `UISceneDelegate` will start crashing on startup with the
-  latest SDK.
+- Incluído na main: A definir
+- Incluído na stable: A definir
+- Desconhecido: A Apple muda seu aviso para um assert e apps Flutter que
+  não adotaram `UISceneDelegate` começarão a travar na inicialização com o
+  SDK mais recente.
 
-## References
+## Referências
 
-- [Issue 167267][] - The initial reported issue.
+- [Issue 167267][Issue 167267] - A issue inicial relatada.
 
 [Issue 167267]: {{site.github}}/flutter/flutter/issues/167267
 [apple-delegate-docs]: {{site.apple-dev}}/documentation/uikit/specifying-the-scenes-your-app-supports

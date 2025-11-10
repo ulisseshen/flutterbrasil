@@ -3,7 +3,10 @@ title: Flutter 3.35.0 release notes
 shortTitle: 3.35.0 release notes
 description: Release notes for Flutter 3.35.0.
 skipTemplateRendering: true
+ia-translate: true
 ---
+
+> **Note for translators**: This is a release notes file containing technical changelog entries and PR references. Future translation should focus on the section headers and introductory content while preserving all GitHub PR links, contributor mentions, and technical terms in English.
 
 This page has release notes for 3.35.0.
 For information about subsequent bug-fix releases,

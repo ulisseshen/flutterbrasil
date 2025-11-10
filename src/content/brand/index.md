@@ -1,125 +1,126 @@
 ---
-title: Flutter Brand Guidelines
+ia-translate: true
+title: Diretrizes da Marca Flutter
 description: >
-  The guidelines governing the usage of the Flutter trademarks and assets.
+  As diretrizes que regem o uso das marcas registradas e ativos do Flutter.
 showBreadcrumbs: false
 ---
 
-The "Flutter" name and logo are trademarks owned by Google.
-These Brand Guidelines describe the appropriate uses of the Flutter
-trademarks by members of the developer community who have obtained our
-consent to use the trademarks pursuant to the [Flutter Terms of Service](/tos).
-These guidelines will ensure that the Flutter trademarks are used in a
-manner that promotes Google's mission to provide a free and open source
-SDK for crafting high-quality native interfaces on iOS and
-Android in record time, and are not associated with objectionable material,
-as determined by Google.
+O nome "Flutter" e o logotipo são marcas registradas de propriedade do Google.
+Estas Diretrizes da Marca descrevem os usos apropriados das marcas registradas
+do Flutter por membros da comunidade de desenvolvedores que obtiveram nosso
+consentimento para usar as marcas registradas de acordo com os [Termos de Serviço do Flutter](/tos).
+Estas diretrizes garantirão que as marcas registradas do Flutter sejam usadas de maneira
+que promova a missão do Google de fornecer um SDK gratuito e de código aberto
+para criar interfaces nativas de alta qualidade no iOS e
+Android em tempo recorde, e não sejam associadas a material censurável,
+conforme determinado pelo Google.
 
-Use of the Flutter trademarks that is not expressly permitted by these
-guidelines is prohibited absent written permission from Google.
+O uso das marcas registradas do Flutter que não seja expressamente permitido por estas
+diretrizes é proibido sem permissão por escrito do Google.
 
-The official Flutter assets and further guidelines on representing the brand
-can be found at [Representing the Flutter Brand]({{site.main-url}}/brand).
+Os ativos oficiais do Flutter e diretrizes adicionais sobre representação da marca
+podem ser encontrados em [Representing the Flutter Brand]({{site.main-url}}/brand).
 
-## General Rules That Govern the Use of the Flutter Trademarks
+## Regras Gerais que Regem o Uso das Marcas Registradas do Flutter
 
-You are free to use the Flutter trademarks: (i) in connection with your
-download and use of the Flutter SDK to build and develop
-apps, (ii) in training materials (e.g., video tutorials, online publications,
-etc.) that provide instructions or tips regarding how to use the Flutter
-SDK to build and develop apps, and (iii) to show your support for
-the use of the Flutter SDK by members of the developer community.
+Você é livre para usar as marcas registradas do Flutter: (i) em conexão com seu
+download e uso do Flutter SDK para construir e desenvolver
+apps, (ii) em materiais de treinamento (por exemplo, tutoriais em vídeo, publicações online,
+etc.) que fornecem instruções ou dicas sobre como usar o Flutter
+SDK para construir e desenvolver apps, e (iii) para mostrar seu apoio ao
+uso do Flutter SDK por membros da comunidade de desenvolvedores.
 
-These guidelines do not restrict your right to use the "Flutter" name
-in connection with descriptions of the Flutter SDK that would be
-considered "fair use."  For example, you may use the "Flutter"
-name to make truthful factual statements (e.g., "built with the Flutter
-SDK") or to accurately describe a feature of the Flutter SDK.
+Estas diretrizes não restringem seu direito de usar o nome "Flutter"
+em conexão com descrições do Flutter SDK que seriam
+consideradas "uso justo". Por exemplo, você pode usar o nome "Flutter"
+para fazer declarações factuais verdadeiras (por exemplo, "construído com o Flutter
+SDK") ou para descrever com precisão um recurso do Flutter SDK.
 
-You may use the Flutter trademarks on your personal website, personal
-blog, or social media account to show your support for the Flutter SDK,
-provided you do not use the Flutter trademarks in a way that
-could confuse people into thinking that your site is an official Google
-site or that Google has sponsored or endorsed your site. In the case of
-websites or personal blogs, this means you should not use the Flutter
-trademarks as the primary element on the webpage (e.g., in the masthead
-of the webpage or the title of the blog). In the case of social media
-accounts, this means you should not use the Flutter trademarks in the
-background, in your profile image or in your social media username.
+Você pode usar as marcas registradas do Flutter em seu site pessoal, blog pessoal
+ou conta de mídia social para mostrar seu apoio ao Flutter SDK,
+desde que você não use as marcas registradas do Flutter de uma forma que
+possa confundir as pessoas fazendo-as pensar que seu site é um site oficial do Google
+ou que o Google patrocinou ou endossou seu site. No caso de
+sites ou blogs pessoais, isso significa que você não deve usar as marcas registradas
+do Flutter como elemento principal na página da web (por exemplo, no cabeçalho
+da página da web ou no título do blog). No caso de contas de mídia
+social, isso significa que você não deve usar as marcas registradas do Flutter no
+fundo, em sua imagem de perfil ou em seu nome de usuário de mídia social.
 
-## Specific Rules for Proper Usage of the Flutter Trademarks
+## Regras Específicas para o Uso Adequado das Marcas Registradas do Flutter
 
-In addition to the general rules discussed above, below are specific
-rules governing the proper use of the Flutter trademarks.
+Além das regras gerais discutidas acima, abaixo estão regras específicas
+que regem o uso adequado das marcas registradas do Flutter.
 
-**DO:**
+**FAÇA:**
 
-* Use the "Flutter" name as an adjective, never as a noun or verb,
-  and never in the plural or possessive form.
-* Use a generic term following the "Flutter" name, for example,
-  "the Flutter SDK" or "the Flutter UI toolkit."
-* Distinguish the "Flutter" name from the surrounding text in some way.
-  Capitalize the first letter, capitalize or italicize the entire mark,
-  place the mark in quotes, use a different type style or font for the mark.
-* Use the trademark symbol <sup>TM</sup> for the first or most prominent
-  time the "Flutter" name appears in text on your website or blog.
-  Make sure to always use the <sup>TM</sup> symbol,
-  not the <sup>&reg;</sup> symbol.
-* Include the following text near the first or most prominent use of the
-  Flutter marks on your website or blog: "Flutter and the related logo are
-  trademarks of Google LLC. We are not endorsed by or affiliated with
+* Use o nome "Flutter" como um adjetivo, nunca como substantivo ou verbo,
+  e nunca no plural ou na forma possessiva.
+* Use um termo genérico após o nome "Flutter", por exemplo,
+  "o Flutter SDK" ou "o Flutter UI toolkit".
+* Distinga o nome "Flutter" do texto ao redor de alguma forma.
+  Capitalize a primeira letra, capitalize ou coloque em itálico toda a marca,
+  coloque a marca entre aspas, use um estilo de tipo ou fonte diferente para a marca.
+* Use o símbolo de marca registrada <sup>TM</sup> para a primeira ou mais proeminente
+  vez que o nome "Flutter" aparecer no texto em seu site ou blog.
+  Certifique-se de sempre usar o símbolo <sup>TM</sup>,
+  não o símbolo <sup>&reg;</sup>.
+* Inclua o seguinte texto próximo ao primeiro ou mais proeminente uso das
+  marcas Flutter em seu site ou blog: "Flutter e o logotipo relacionado são
+  marcas registradas do Google LLC. Não somos endossados ou afiliados ao
   Google LLC."
-* Keep some distance between the Flutter trademarks and any other trademarks,
-  logos, or icons that are displayed on the webpage.
+* Mantenha alguma distância entre as marcas registradas do Flutter e quaisquer outras marcas registradas,
+  logotipos ou ícones que sejam exibidos na página da web.
 
-**DON'T:**
+**NÃO FAÇA:**
 
-* Don't alter, distort, or modify the Flutter trademarks in any way.
-  This includes varying the spelling of the "Flutter" name, or displaying
-  the Flutter logo with color variations or unapproved visual elements.
-* Don't combine the Google name with the "Flutter" name to form a unitary
-  brand (e.g., don't use the phrases "Google Flutter" or "Google's Flutter").
-  You may use the Google name in full text to accurately describe the
-  Flutter SDK (e.g., "The Flutter SDK by Google").
-* Don't register the Flutter trademarks or any trademarks, logos,
-  or domain names that are confusingly similar to them.
-* Don't incorporate the Flutter trademarks into your own product names,
-  service names, trademarks, logos, or company names.
-* Don't display the Flutter trademarks in a manner that is misleading,
-  unfair, defamatory, infringing, libelous, disparaging, obscene or
-  otherwise objectionable to Google.
-* Don't use the Flutter trademarks on or in connection with the sale of
-  any non-software goods or services (e.g., merchandise such as clothing,
-  pens, and stickers).
+* Não altere, distorça ou modifique as marcas registradas do Flutter de forma alguma.
+  Isso inclui variar a ortografia do nome "Flutter", ou exibir
+  o logotipo Flutter com variações de cor ou elementos visuais não aprovados.
+* Não combine o nome Google com o nome "Flutter" para formar uma
+  marca unitária (por exemplo, não use as frases "Google Flutter" ou "Flutter do Google").
+  Você pode usar o nome Google em texto completo para descrever com precisão o
+  Flutter SDK (por exemplo, "O Flutter SDK pelo Google").
+* Não registre as marcas registradas do Flutter ou quaisquer marcas registradas, logotipos
+  ou nomes de domínio que sejam confusamente semelhantes a elas.
+* Não incorpore as marcas registradas do Flutter em seus próprios nomes de produtos,
+  nomes de serviços, marcas registradas, logotipos ou nomes de empresas.
+* Não exiba as marcas registradas do Flutter de maneira enganosa,
+  injusta, difamatória, infratora, libelosa, depreciativa, obscena ou
+  de outra forma censurável para o Google.
+* Não use as marcas registradas do Flutter em ou em conexão com a venda de
+  quaisquer bens ou serviços não relacionados a software (por exemplo, mercadorias como roupas,
+  canetas e adesivos).
 
-## Community Use Exceptions
+## Exceções de Uso da Comunidade
 
-To allow for the use of the Flutter trademarks by the Flutter community,
-below are specific exceptions to the rules described above:
+Para permitir o uso das marcas registradas do Flutter pela comunidade Flutter,
+abaixo estão exceções específicas às regras descritas acima:
 
-1. Local Flutter user groups may: (i) use the "Flutter" name
-   as part of their social media username in the following format:
-   "Flutter + [name of country/city]" (e.g., "Flutter France"); and (ii)
-   use the Flutter logo in the national colors of the country where the
-   user group is based (e.g., for a user group based in France,
-   the colors blue, white and red), provided the Flutter logo is otherwise
-   unaltered.  Such social media accounts should include a disclaimer that
-   clarifies that it is not an official Google account.
+1. Grupos de usuários locais do Flutter podem: (i) usar o nome "Flutter"
+   como parte de seu nome de usuário de mídia social no seguinte formato:
+   "Flutter + [nome do país/cidade]" (por exemplo, "Flutter France"); e (ii)
+   usar o logotipo Flutter nas cores nacionais do país onde o
+   grupo de usuários está baseado (por exemplo, para um grupo de usuários baseado na França,
+   as cores azul, branco e vermelho), desde que o logotipo Flutter esteja de outra forma
+   inalterado. Tais contas de mídia social devem incluir um aviso que
+   esclareça que não é uma conta oficial do Google.
 
-2. You may use the Flutter trademarks as part of the name of a newsletter
-   or related community content (e.g., Flutter training courses,
-   Flutter community forums) whose purpose is to promote the use of the
-   Flutter SDK by members of the developer community.
-   Where the Flutter trademarks are displayed on a website as part of a
-   community site name, you should use the trademark symbol <sup>TM</sup>
-   after the most prominent appearance of the "Flutter" name and include
-   the following text: "Flutter and the related logo are trademarks of
-   Google LLC.  We are not endorsed by or affiliated with Google LLC."
-   Where the Flutter trademarks are displayed on a social media account
-   as part of a community site name, you should include a disclaimer that
-   clarifies that it is not an official Google account.
+2. Você pode usar as marcas registradas do Flutter como parte do nome de uma newsletter
+   ou conteúdo relacionado à comunidade (por exemplo, cursos de treinamento Flutter,
+   fóruns da comunidade Flutter) cujo objetivo é promover o uso do
+   Flutter SDK por membros da comunidade de desenvolvedores.
+   Quando as marcas registradas do Flutter são exibidas em um site como parte de um
+   nome de site da comunidade, você deve usar o símbolo de marca registrada <sup>TM</sup>
+   após a aparição mais proeminente do nome "Flutter" e incluir
+   o seguinte texto: "Flutter e o logotipo relacionado são marcas registradas do
+   Google LLC. Não somos endossados ou afiliados ao Google LLC."
+   Quando as marcas registradas do Flutter são exibidas em uma conta de mídia social
+   como parte do nome de um site da comunidade, você deve incluir um aviso que
+   esclareça que não é uma conta oficial do Google.
 
-3. <b>[Unofficial Flutter Events]</b> You may use the Flutter trademarks as part of the name
-   of a community event (e.g. conference), but please make sure to include the following disclaimer
-   on the event website in a prominent and easy-to-see spot:  "Flutter and the related logo are trademarks of Google LLC.
-   [Title of event] is not affiliated with or otherwise sponsored by Google LLC."
+3. <b>[Eventos Flutter Não Oficiais]</b> Você pode usar as marcas registradas do Flutter como parte do nome
+   de um evento da comunidade (por exemplo, conferência), mas certifique-se de incluir o seguinte aviso
+   no site do evento em um local proeminente e fácil de ver: "Flutter e o logotipo relacionado são marcas registradas do Google LLC.
+   [Título do evento] não é afiliado ou de outra forma patrocinado pelo Google LLC."

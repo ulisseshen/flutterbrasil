@@ -1,11 +1,15 @@
+---
+ia-translate: true
+---
+
 # adaptive_app_demos
 
-This project contains demo code for adaptive app development techniques from
+Este projeto contém código de demonstração para técnicas de desenvolvimento de apps adaptativos de
 https://github.com/gskinnerTeam/flutter-adaptive-demo.
 
-Additional example code in this project was moved from
-code snippets originally seen in
-[Building adaptive apps](https://docs.flutterbrasil.dev/ui/layout/responsive/building-adaptive-apps)
-to ensure analysis in the flutterbrasil.dev CI pipeline.
-These snippets were intended to illustrate concepts and may
-therefore not be fully integrated/a functional part of the original demo code.
+Código de exemplo adicional neste projeto foi movido de
+trechos de código originalmente vistos em
+[Construindo apps adaptativos](https://docs.flutterbrasil.dev/ui/layout/responsive/building-adaptive-apps)
+para garantir a análise no pipeline de CI do flutterbrasil.dev.
+Estes trechos foram criados para ilustrar conceitos e podem,
+portanto, não estar totalmente integrados/ser uma parte funcional do código de demonstração original.

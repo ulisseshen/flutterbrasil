@@ -1,18 +1,19 @@
 ---
-title: Contribute to the docs
+ia-translate: true
+title: Contribuir com a documentação
 shortTitle: Docs
 description: >-
-  Learn about contributing to the Dart and Flutter documentation sites.
+  Aprenda sobre como contribuir com os sites de documentação do Dart e Flutter.
 sitemap: false
 noindex: true
 showBreadcrumbs: true
 ---
 
 :::warning
-This document is a work in progress.
+Este documento é um trabalho em andamento.
 :::
 
-## Contribution guides
+## Guias de contribuição
 
 - [Writing](/contribute/docs/writing)
 - [Markdown](/contribute/docs/markdown)
@@ -24,70 +25,70 @@ This document is a work in progress.
 - [Releases](/contribute/docs/releases)
 - [Command-line tool](/contribute/docs/cli)
 
-## Repository layout
+## Estrutura do repositório
 
 - `.github/`
 
-  Configuration for GitHub [actions][gh-actions],
-  issue and PR [templates][gh-templates], and [dependabot][].
+  Configuração para [actions][gh-actions] do GitHub,
+  [templates][gh-templates] de issues e PRs, e [dependabot][dependabot].
 - `cloud_build/`
 
-  Configuration for Google [Cloud Build][] that is used for staging
-  and deploying the site.
+  Configuração para Google [Cloud Build][Cloud Build] que é usado para staging
+  e deploy do site.
 - `diagrams/`
 
-  Source files for diagrams used on the site.
+  Arquivos fonte para diagramas usados no site.
 - `examples/`
 
-  The source files for [code excerpts][] used in doc code blocks.
+  Os arquivos fonte para [trechos de código][code excerpts] usados em blocos de código da documentação.
 - `src/`
   - `_11ty/`
 
-    Custom extensions for [11ty][], [Liquid][], and Markdown.
+    Extensões customizadas para [11ty][11ty], [Liquid][Liquid], e Markdown.
     - `plugins/`
     - `syntax/`
 
-      [Shiki][] themes for syntax highlighting.
+      Temas [Shiki][Shiki] para syntax highlighting.
     - `filters.ts`
     - `shortcodes.ts`
   - `_data/`
 
-    YAML and JSON files used to add data used across site templates.
+    Arquivos YAML e JSON usados para adicionar dados usados nos templates do site.
   - `_includes/`
 
-    Partial files used by liquid [render and include][] statements.
+    Arquivos parciais usados por declarações liquid de [render and include][render and include].
   - `_layouts/`
 
-    Layout templates used by the pages on the site.
+    Templates de layout usados pelas páginas do site.
   - `_sass/`
 
-    Styles for the generated documentation, written with [sass][].
+    Estilos para a documentação gerada, escritos com [sass][sass].
   - `content/`
 
-    The root directory for the content of the site.
+    O diretório raiz para o conteúdo do site.
     - `assets/`
 
-      The directory for assets, including images, used by the site.
+      O diretório para assets, incluindo imagens, usados pelo site.
     - `...`
 
-      The other directories hosting the site content.
+      Os outros diretórios hospedando o conteúdo do site.
 - `tool/`
   - `dash_site/`
 
-    The implementation directories for the `dash_site` tooling.
+    Os diretórios de implementação para as ferramentas `dash_site`.
 - `dash_site`
 
-  The entrypoint script for the site's CLI tool.
+  O script de entrypoint para a ferramenta CLI do site.
 - `eleventy.config.ts`
 
-  The entrypoint for the site's [11ty][] static-site generation setup.
+  O entrypoint para a configuração de geração de site estático do [11ty][11ty].
 - `firebase.json`
 
-  Configuration for [Firebase Hosting][] that is used for
-  the staged and deployed sites.
+  Configuração para [Firebase Hosting][Firebase Hosting] que é usado para
+  os sites de staging e produção.
 - `package.json`
 
-  Configuration of used [npm][] dependencies.
+  Configuração das dependências [npm][npm] usadas.
 
 [gh-actions]: https://docs.github.com/actions
 [gh-templates]: https://docs.github.com/communities/using-templates-to-encourage-useful-issues-and-pull-requests

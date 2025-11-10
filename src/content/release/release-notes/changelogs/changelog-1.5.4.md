@@ -1,11 +1,12 @@
 ---
-title: Change log for Flutter 1.5.4
+ia-translate: true
+title: Registro de alterações do Flutter 1.5.4
 shortTitle: 1.5.4 change log
-description: Change log for Flutter 1.5.4 containing a list of all PRs merged for this release.
+description: Registro de alterações do Flutter 1.5.4 contendo uma lista de todos os PRs mesclados para esta versão.
 skipTemplateRendering: true
 ---
 
-## PRs closed in this release of flutter/flutter
+## PRs fechados nesta versão do flutter/flutter
 
 From Thu Feb 21 20:22:00 2019 -0800 to Wed May 1 16:56:00 2019 -0700
 
@@ -1887,7 +1888,7 @@ From Thu Feb 21 20:22:00 2019 -0800 to Wed May 1 16:56:00 2019 -0700
 [8796](https://github.com/flutter/engine/pull/8796) Dart SDK roll for 2019-04-30 (cla: yes)
 
 
-## PRs closed in this release of flutter/plugins
+## PRs fechados nesta versão do flutter/plugins
 
 From Thu Feb 21 20:22:00 2019 -0800 to Wed May 1 16:56:00 2019 -0700
 

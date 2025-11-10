@@ -1,3 +1,7 @@
+---
+ia-translate: true
+---
+
 ## Como ativar o Swift Package Manager {:#how-to-turn-on-swift-package-manager}
 
 O suporte ao Swift Package Manager do Flutter está desativado por padrão.

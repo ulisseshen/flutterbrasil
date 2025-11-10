@@ -1,6 +1,7 @@
 ---
-title: Flutter plugin cookbook
+ia-translate: true
+title: Receitas de plugins Flutter
 shortTitle: Plugins
-description: A catalog of recipes showcasing using plugins in your Flutter app.
+description: Um catálogo de receitas que demonstram como usar plugins em seu app Flutter.
 layout: toc
 ---

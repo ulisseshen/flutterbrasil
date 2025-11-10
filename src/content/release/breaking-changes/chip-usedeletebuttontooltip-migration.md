@@ -1,45 +1,46 @@
 ---
-title: Migrate useDeleteButtonTooltip to deleteButtonTooltipMessage of Chips
+ia-translate: true
+title: Migrar useDeleteButtonTooltip para deleteButtonTooltipMessage dos Chips
 description: >
-  Deprecated useDeleteButtonTooltip of chips that have
-  a delete button in favor of deleteButtonTooltipMessage.
+  O useDeleteButtonTooltip dos chips que possuem um botão de exclusão
+  foi descontinuado em favor de deleteButtonTooltipMessage.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-Using `useDeleteButtonTooltip` of any chip that has a delete button gives a
-deprecation warning, or no longer exists when referenced. This includes the
-`Chip`, `InputChip`, and `RawChip` widgets.
+Usar `useDeleteButtonTooltip` em qualquer chip que tenha um botão de exclusão gera um
+aviso de descontinuação, ou não existe mais quando referenciado. Isso inclui os
+widgets `Chip`, `InputChip` e `RawChip`.
 
-## Context
+## Contexto
 
-The `useDeleteButtonTooltip` of `Chip`, `InputChip`, and `RawChip` widgets is
-deprecated in favor of `deleteButtonTooltipMessage`, as the latter can be used
-to disable the tooltip of the chip's delete button.
+O `useDeleteButtonTooltip` dos widgets `Chip`, `InputChip` e `RawChip` foi
+descontinuado em favor de `deleteButtonTooltipMessage`, já que este último pode ser usado
+para desabilitar a tooltip do botão de exclusão do chip.
 
-## Description of change
+## Descrição da mudança
 
-The `deleteButtonTooltipMessage` property provides a message to the
-tooltip on the delete button of the chip widgets.
-Subsequently, a change was made such that providing an empty string to this
-property disables the tooltip.
+A propriedade `deleteButtonTooltipMessage` fornece uma mensagem para a
+tooltip no botão de exclusão dos widgets chip.
+Posteriormente, foi feita uma mudança de modo que fornecer uma string vazia para esta
+propriedade desabilita a tooltip.
 
-To avoid redundancy of the API, this change deprecated `useDeleteButtonTooltip`,
-which was introduced for this exact functionality. A [Flutter fix][] is
-available to help you migrate existing code from `useDeleteButtonTooltip` to
-`deleteButtonTooltipMessage`, if you explicitly disabled the tooltip.
+Para evitar redundância na API, esta mudança descontinuou `useDeleteButtonTooltip`,
+que foi introduzido para exatamente essa funcionalidade. Um [Flutter fix][Flutter fix] está
+disponível para ajudá-lo a migrar código existente de `useDeleteButtonTooltip` para
+`deleteButtonTooltipMessage`, se você desabilitou explicitamente a tooltip.
 
-## Migration guide
+## Guia de migração
 
-By default, the tooltip of the delete button is always enabled.
-To explicitly disable the tooltip, provide an empty string to the
-`deleteButtonTooltipMessage` property.
-The following code snippets show the migration changes, which are applicable for
-`Chip`, `InputChip`, and `RawChip` widgets:
+Por padrão, a tooltip do botão de exclusão está sempre habilitada.
+Para desabilitar explicitamente a tooltip, forneça uma string vazia para a
+propriedade `deleteButtonTooltipMessage`.
+Os trechos de código a seguir mostram as mudanças de migração, que são aplicáveis para
+os widgets `Chip`, `InputChip` e `RawChip`:
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 Chip(
@@ -55,7 +56,7 @@ RawChip(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 Chip(
@@ -70,22 +71,22 @@ RawChip(
 );
 ```
 
-## Timeline
+## Cronograma
 
-Landed in version: 2.11.0-0.1.pre<br>
-In stable release: 3.0.0
+Incluído na versão: 2.11.0-0.1.pre<br>
+Na versão estável: 3.0.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
-* [`Chip`][]
-* [`InputChip`][]
-* [`RawChip`][]
+* [`Chip`][`Chip`]
+* [`InputChip`][`InputChip`]
+* [`RawChip`][`RawChip`]
 
-Relevant PR:
+PR relevante:
 
-* [Deprecate `useDeleteButtonTooltip` for Chips][]
+* [Deprecate `useDeleteButtonTooltip` for Chips][Deprecate `useDeleteButtonTooltip` for Chips]
 
 [`Chip`]: {{site.api}}/flutter/material/Chip-class.html
 [`InputChip`]: {{site.api}}/flutter/material/InputChip-class.html

@@ -1,46 +1,47 @@
 ---
-title: Migrate `of` to non-nullable return values, and add `maybeOf`
+ia-translate: true
+title: Migre `of` para valores de retorno não-nulos e adicione `maybeOf`
 description: >
-  To eliminate nullOk parameters to help with API clarity
-  in the face of null safety.
+  Para eliminar parâmetros nullOk e ajudar com a clareza da API
+  diante do null safety.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-This migration guide describes conversion of code that uses various static `of`
-functions to retrieve information from a context that used to return nullable
-values, but now return non-nullable values.
+Este guia de migração descreve a conversão de código que usa várias funções
+estáticas `of` para recuperar informações de um contexto que costumavam retornar
+valores anuláveis, mas agora retornam valores não-nulos.
 
-## Context
+## Contexto
 
-Flutter has a common pattern of allowing lookup of some types of widgets
-(typically [`InheritedWidget`][]s, but also others) using static member
-functions that are typically called `of`.
+Flutter tem um padrão comum de permitir a busca de alguns tipos de widgets
+(tipicamente [`InheritedWidget`][`InheritedWidget`]s, mas também outros) usando funções membro
+estáticas que são tipicamente chamadas de `of`.
 
-When non-nullability was made the default, it was then desirable to have the
-most commonly used APIs return a non-nullable value. This is because saying
-`Scrollable.of(context)` and then still requiring an `!` operator or `?` and a
-fallback value after that call felt awkward, and was not idiomatic for
-non-nullable Dart code.
+Quando a não-nulabilidade se tornou o padrão, foi desejável que as
+APIs mais comumente usadas retornassem um valor não-nulo. Isso porque dizer
+`Scrollable.of(context)` e ainda precisar de um operador `!` ou `?` e um
+valor de fallback após essa chamada parecia desajeitado e não era idiomático para
+código Dart não-nulo.
 
-A lot of this migration was performed when we eliminated `nullOk` parameters in
-a [previous migration][], but some `of` methods were missed in that migration,
-and some were subsequently added with nullable return types, counter to our
-common pattern.
+Grande parte dessa migração foi realizada quando eliminamos os parâmetros `nullOk` em
+uma [migração anterior][previous migration], mas alguns métodos `of` foram perdidos nessa migração,
+e alguns foram subsequentemente adicionados com tipos de retorno anuláveis, contrariando nosso
+padrão comum.
 
-In this migration, the affected `of` accessors were split into two calls: one
-that returned a non-nullable value and threw an exception when the sought-after
-value was not present (still called `of`), and one that returned a nullable
-value that didn't throw an exception, and returned null if the value was not
-present (a new method called `maybeOf`).
+Nesta migração, os acessores `of` afetados foram divididos em duas chamadas: uma
+que retornava um valor não-nulo e lançava uma exceção quando o valor procurado
+não estava presente (ainda chamada de `of`), e uma que retornava um valor anulável
+que não lançava uma exceção, e retornava null se o valor não estivesse
+presente (um novo método chamado `maybeOf`).
 
-## Description of change
+## Descrição da mudança
 
-The change modified these static `of` APIs to return non-nullable values.
-If a value is not found, they will also now assert in debug mode, and
-throw an exception in release mode.
+A mudança modificou estas APIs estáticas `of` para retornar valores não-nulos.
+Se um valor não for encontrado, elas também agora farão assert em modo debug, e
+lançarão uma exceção em modo release.
 
 * [`AutofillGroup.of`]
 * [`DefaultTabController.of`]
@@ -56,9 +57,9 @@ throw an exception in release mode.
 * [`Scrollable.of`]
 * [`ScrollNotificationObserver.of`]
 
-This change also introduced new static `maybeOf` APIs alongside
-the above functions, which return a nullable version of the same value, and
-simply return null if the value is not found, without throwing any exceptions.
+Esta mudança também introduziu novas APIs estáticas `maybeOf` ao lado
+das funções acima, que retornam uma versão anulável do mesmo valor, e
+simplesmente retornam null se o valor não for encontrado, sem lançar exceções.
 
 * [`AutofillGroup.maybeOf`]
 * [`DefaultTabController.maybeOf`]
@@ -74,65 +75,65 @@ simply return null if the value is not found, without throwing any exceptions.
 * [`Scrollable.maybeOf`]
 * [`ScrollNotificationObserver.maybeOf`]
 
-## Migration guide
+## Guia de migração
 
-To modify your code to use the new form of the APIs, first convert all
-instances of the original static `of` functions (where its nullability is
-important) to use the `maybeOf` form instead.
+Para modificar seu código para usar a nova forma das APIs, primeiro converta todas
+as instâncias das funções estáticas `of` originais (onde sua anulabilidade é
+importante) para usar a forma `maybeOf` em vez disso.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 ScrollController? controller = Scrollable.of(context);
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 ScrollController? controller = Scrollable.maybeOf(context);
 ```
 
-Then, for instances where the code calls the `of` API followed by
-an exclamation point, just remove the exclamation point: it can
-no longer return a nullable value.
+Em seguida, para instâncias onde o código chama a API `of` seguida por
+um ponto de exclamação, apenas remova o ponto de exclamação: ela não pode
+mais retornar um valor anulável.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 ScrollController controller = Scrollable.of(context)!;
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 ScrollController controller = Scrollable.of(context);
 ```
 
-The following can also be helpful:
+O seguinte também pode ser útil:
 
-* [`unnecessary_non_null_assertion`][] (linter message) identifies
-  places where an  `!` operator should be removed
-* [`unnecessary_null_checks`][] (analysis option) identifies places
-  where the `?` operator isn't needed
-* [`unnecessary_null_in_if_null_operators`][] identifies places
-  where a `??` operator isn't needed
-* [`unnecessary_nullable_for_final_variable_declarations`][] (analysis option)
-  finds unnecessary question mark operators on `final` and `const` variables
+* [`unnecessary_non_null_assertion`][`unnecessary_non_null_assertion`] (mensagem do linter) identifica
+  lugares onde um operador `!` deve ser removido
+* [`unnecessary_null_checks`][`unnecessary_null_checks`] (opção de análise) identifica lugares
+  onde o operador `?` não é necessário
+* [`unnecessary_null_in_if_null_operators`][`unnecessary_null_in_if_null_operators`] identifica lugares
+  onde um operador `??` não é necessário
+* [`unnecessary_nullable_for_final_variable_declarations`][`unnecessary_nullable_for_final_variable_declarations`] (opção de análise)
+  encontra operadores de interrogação desnecessários em variáveis `final` e `const`
 
-## Timeline
+## Linha do tempo
 
-In stable release: 3.7
+Na versão estável: 3.7
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
-* [`Material.of`][]
+* [`Material.of`][`Material.of`]
 
-Relevant PRs:
+PRs relevantes:
 
-* [Add `maybeOf` for all the cases when `of` returns nullable][]
-* [Add `Overlay.maybeOf`, make `Overlay.of` return a non-nullable instance][]
+* [Add `maybeOf` for all the cases when `of` returns nullable][Add `maybeOf` for all the cases when `of` returns nullable]
+* [Add `Overlay.maybeOf`, make `Overlay.of` return a non-nullable instance][Add `Overlay.maybeOf`, make `Overlay.of` return a non-nullable instance]
 
 [previous migration]: /release/breaking-changes/eliminating-nullok-parameters
 [`unnecessary_non_null_assertion`]: {{site.dart-site}}/tools/diagnostic-messages#unnecessary_non_null_assertion

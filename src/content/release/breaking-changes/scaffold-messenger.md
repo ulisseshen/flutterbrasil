@@ -1,40 +1,41 @@
 ---
-title: SnackBars managed by the ScaffoldMessenger
+ia-translate: true
+title: SnackBars gerenciados pelo ScaffoldMessenger
 description: >
-  SnackBars are now managed by the ScaffoldMessenger, and persist across routes.
+  SnackBars agora são gerenciados pelo ScaffoldMessenger e persistem entre rotas.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-The `SnackBar` API within the `Scaffold` is now handled by the
-`ScaffoldMessenger`, one of which is
-available by default within the context of a `MaterialApp`.
+A API do `SnackBar` dentro do `Scaffold` agora é gerenciada pelo
+`ScaffoldMessenger`, sendo que um está
+disponível por padrão dentro do contexto de um `MaterialApp`.
 
-## Context
+## Contexto
 
-Prior to this change, `SnackBar`s would be shown by calling
-on the `Scaffold` within the current `BuildContext`.
-By calling `Scaffold.of(context).showSnackBar`,
-the current `Scaffold` would animate a `SnackBar` into view.
-This would only apply to the current `Scaffold`,
-and would not persist across routes if they were changed
-in the course of the `SnackBar`s presentation.
-This would also lead to errors if `showSnackBar`
-would be called in the course of executing an
-asynchronous event, and the `BuildContext` became invalidated
-by the route changing and the `Scaffold` being disposed of.
+Antes dessa mudança, `SnackBar`s eram exibidos ao chamar
+o `Scaffold` dentro do `BuildContext` atual.
+Ao chamar `Scaffold.of(context).showSnackBar`,
+o `Scaffold` atual animava um `SnackBar` para exibi-lo.
+Isso se aplicava apenas ao `Scaffold` atual,
+e não persistia entre rotas se elas fossem alteradas
+durante a apresentação do `SnackBar`.
+Isso também levava a erros se `showSnackBar`
+fosse chamado durante a execução de um
+evento assíncrono, e o `BuildContext` se tornasse inválido
+pela alteração da rota e o `Scaffold` sendo descartado.
 
-The `ScaffoldMessenger` now handles `SnackBar`s in order to
-persist across routes and always be displayed on the current `Scaffold`.
-By default, a root `ScaffoldMessenger` is included in the `MaterialApp`,
-but you can create your own controlled scope for the `ScaffoldMessenger`
-to further control _which_ `Scaffold`s receive your `SnackBar`s.
+O `ScaffoldMessenger` agora gerencia `SnackBar`s para
+persistir entre rotas e sempre ser exibido no `Scaffold` atual.
+Por padrão, um `ScaffoldMessenger` raiz está incluído no `MaterialApp`,
+mas você pode criar seu próprio escopo controlado para o `ScaffoldMessenger`
+para controlar ainda mais _quais_ `Scaffold`s recebem seus `SnackBar`s.
 
-## Description of change
+## Descrição da mudança
 
-The previous approach called upon the `Scaffold` to show a `SnackBar`.
+A abordagem anterior chamava o `Scaffold` para exibir um `SnackBar`.
 
 ```dart
 Scaffold(
@@ -59,10 +60,10 @@ Scaffold(
 );
 ```
 
-The new approach calls on the `ScaffoldMessenger` to show
-the `SnackBar`. In this case, the `Builder` is no longer
-required to provide a new scope with a `BuildContext` that
-is "under" the `Scaffold`.
+A nova abordagem chama o `ScaffoldMessenger` para exibir
+o `SnackBar`. Neste caso, o `Builder` não é mais
+necessário para fornecer um novo escopo com um `BuildContext` que
+está "abaixo" do `Scaffold`.
 
 ```dart
 Scaffold(
@@ -83,24 +84,24 @@ Scaffold(
 );
 ```
 
-When presenting a `SnackBar` during a transition,
-the `SnackBar` completes a `Hero` animation,
-moving smoothly to the next page.
+Ao apresentar um `SnackBar` durante uma transição,
+o `SnackBar` completa uma animação `Hero`,
+movendo-se suavemente para a próxima página.
 
-The `ScaffoldMessenger` creates a scope in which all descendant
-`Scaffold`s register to receive `SnackBar`s,
-which is how they persist across these transitions.
-When using the root `ScaffoldMessenger` provided by the
-`MaterialApp`, all descendant `Scaffold`s receive `SnackBar`s,
-unless a new `ScaffoldMessenger` scope is created further down the tree.
-By instantiating your own `ScaffoldMessenger`,
-you can control which `Scaffold`s receive `SnackBar`s, and which are not,
-based on the context of your application.
+O `ScaffoldMessenger` cria um escopo no qual todos os
+`Scaffold`s descendentes se registram para receber `SnackBar`s,
+que é como eles persistem entre essas transições.
+Ao usar o `ScaffoldMessenger` raiz fornecido pelo
+`MaterialApp`, todos os `Scaffold`s descendentes recebem `SnackBar`s,
+a menos que um novo escopo `ScaffoldMessenger` seja criado mais abaixo na árvore.
+Ao instanciar seu próprio `ScaffoldMessenger`,
+você pode controlar quais `Scaffold`s recebem `SnackBar`s e quais não,
+com base no contexto da sua aplicação.
 
-The method `debugCheckHasScaffoldMessenger` is available to assert
-that a given context has a `ScaffoldMessenger` ancestor.
-Trying to present  a `SnackBar` without a `ScaffoldMessenger` ancestor
-present results in an assertion such as the following:
+O método `debugCheckHasScaffoldMessenger` está disponível para verificar
+se um determinado contexto tem um ancestral `ScaffoldMessenger`.
+Tentar apresentar um `SnackBar` sem um ancestral `ScaffoldMessenger`
+presente resulta em uma asserção como a seguinte:
 
 ```plaintext
 No ScaffoldMessenger widget found.
@@ -109,20 +110,20 @@ Typically, the ScaffoldMessenger widget is introduced by the MaterialApp
 at the top of your application widget tree.
 ```
 
-## Migration guide
+## Guia de migração
 
-Code before migration:
+Código antes da migração:
 
 ```dart
-// The ScaffoldState of the current context was used for managing SnackBars.
+// O ScaffoldState do contexto atual era usado para gerenciar SnackBars.
 Scaffold.of(context).showSnackBar(mySnackBar);
 Scaffold.of(context).hideCurrentSnackBar(mySnackBar);
 Scaffold.of(context).removeCurrentSnackBar(mySnackBar);
 
-// If a Scaffold.key is specified, the ScaffoldState can be directly
-// accessed without first obtaining it from a BuildContext via
-// Scaffold.of. From the key, use the GlobalKey.currentState
-// getter. This was previously used to manage SnackBars.
+// Se um Scaffold.key é especificado, o ScaffoldState pode ser acessado diretamente
+// sem primeiro obtê-lo de um BuildContext via
+// Scaffold.of. A partir da chave, use o getter GlobalKey.currentState.
+// Isso era usado anteriormente para gerenciar SnackBars.
 final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 Scaffold(
   key: scaffoldKey,
@@ -135,18 +136,18 @@ scaffoldKey.currentState.removeCurrentSnackBar(mySnackBar);
 
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
-// The ScaffoldMessengerState of the current context is used for managing SnackBars.
+// O ScaffoldMessengerState do contexto atual é usado para gerenciar SnackBars.
 ScaffoldMessenger.of(context).showSnackBar(mySnackBar);
 ScaffoldMessenger.of(context).hideCurrentSnackBar(mySnackBar);
 ScaffoldMessenger.of(context).removeCurrentSnackBar(mySnackBar);
 
-// If a ScaffoldMessenger.key is specified, the ScaffoldMessengerState can be directly
-// accessed without first obtaining it from a BuildContext via
-// ScaffoldMessenger.of. From the key, use the GlobalKey.currentState
-// getter. This is used to manage SnackBars.
+// Se um ScaffoldMessenger.key é especificado, o ScaffoldMessengerState pode ser acessado diretamente
+// sem primeiro obtê-lo de um BuildContext via
+// ScaffoldMessenger.of. A partir da chave, use o getter GlobalKey.currentState.
+// Isso é usado para gerenciar SnackBars.
 final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
 ScaffoldMessenger(
   key: scaffoldMessengerKey,
@@ -157,10 +158,10 @@ scaffoldMessengerKey.currentState.showSnackBar(mySnackBar);
 scaffoldMessengerKey.currentState.hideCurrentSnackBar(mySnackBar);
 scaffoldMessengerKey.currentState.removeCurrentSnackBar(mySnackBar);
 
-// The root ScaffoldMessenger can also be accessed by providing a key to
-// MaterialApp.scaffoldMessengerKey. This way, the ScaffoldMessengerState can be directly accessed
-// without first obtaining it from a BuildContext via ScaffoldMessenger.of. From the key, use
-// the GlobalKey.currentState getter.
+// O ScaffoldMessenger raiz também pode ser acessado fornecendo uma chave para
+// MaterialApp.scaffoldMessengerKey. Dessa forma, o ScaffoldMessengerState pode ser acessado diretamente
+// sem primeiro obtê-lo de um BuildContext via ScaffoldMessenger.of. A partir da chave, use
+// o getter GlobalKey.currentState.
 final GlobalKey<ScaffoldMessengerState> rootScaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
 MaterialApp(
   scaffoldMessengerKey: rootScaffoldMessengerKey,
@@ -172,29 +173,29 @@ rootScaffoldMessengerKey.currentState.hideCurrentSnackBar(mySnackBar);
 rootScaffoldMessengerKey.currentState.removeCurrentSnackBar(mySnackBar);
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.23.0-13.0.pre<br>
-In stable release: 2.0.0
+Incluído na versão: 1.23.0-13.0.pre<br>
+Na versão estável: 2.0.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
-* [`Scaffold`][]
-* [`ScaffoldMessenger`][]
-* [`SnackBar`][]
-* [`MaterialApp`][]
+* [`Scaffold`][`Scaffold`]
+* [`ScaffoldMessenger`][`ScaffoldMessenger`]
+* [`SnackBar`][`SnackBar`]
+* [`MaterialApp`][`MaterialApp`]
 
-Relevant issues:
+Issues relevantes:
 
-* [Issue #57218][]
-* [Issue #62921][]
+* [Issue #57218][Issue #57218]
+* [Issue #62921][Issue #62921]
 
-Relevant PRs:
+PRs relevantes:
 
-* [ScaffoldMessenger][]
-* [ScaffoldMessenger Migration][]
+* [ScaffoldMessenger][ScaffoldMessenger]
+* [ScaffoldMessenger Migration][ScaffoldMessenger Migration]
 
 [`Scaffold`]: {{site.api}}/flutter/material/Scaffold-class.html
 [`ScaffoldMessenger`]: {{site.api}}/flutter/material/ScaffoldMessenger-class.html

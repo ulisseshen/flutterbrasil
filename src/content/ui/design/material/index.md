@@ -14,24 +14,24 @@ aprimorada, até fundações para layouts de telas grandes e tokens de design.
 :::warning
 A partir da versão Flutter 3.16, **Material 3 está
 ativado por padrão**. Por enquanto, você pode optar por não usar o
-Material 3 definindo a propriedade [`useMaterial3`][]
+Material 3 definindo a propriedade [`useMaterial3`]
 como `false`. Mas esteja ciente de que a propriedade `useMaterial3`
 e o suporte para Material 2 eventualmente serão descontinuados de acordo com
-a [política de descontinuação][] do Flutter.
+a [política de descontinuação][deprecation-policy] do Flutter.
 :::
 
 Para a _maioria_ dos widgets Flutter, a atualização para Material 3
 é transparente. Mas _alguns_ widgets não puderam ser
 atualizados—implementações totalmente novas foram necessárias,
-como [`NavigationBar`][].
+como [`NavigationBar`].
 Você deve fazer essas alterações no seu código manualmente.
 Até que seu aplicativo esteja totalmente atualizado,
 a interface do usuário pode parecer ou agir um pouco estranha.
 Você pode encontrar os componentes Material totalmente novos visitando
-a página [Widgets afetados][].
+a página [Widgets afetados][affected-widgets].
 
-[Widgets afetados]: {{site.api}}/flutter/material/ThemeData/useMaterial3.html#affected-widgets
-[política de descontinuação]: /release/compatibility-policy#deprecation-policy
+[affected-widgets]: {{site.api}}/flutter/material/ThemeData/useMaterial3.html#affected-widgets
+[deprecation-policy]: /release/compatibility-policy#deprecation-policy
 [demo]: {{site.github}}/flutter/samples/blob/main/material_3_demo/
 [`NavigationBar`]: {{site.api}}/flutter/material/NavigationBar-class.html
 [`useMaterial3`]: {{site.api}}/flutter/material/ThemeData/useMaterial3.html
@@ -45,10 +45,10 @@ e suporte de elevação com a
 Para saber mais sobre Material Design e Flutter,
 confira:
 
-* [Documentação para desenvolvedores Material.io][]
-* Post do blog [Migrating a Flutter app to Material 3][] por Taha Tesser
-* [Umbrella issue no GitHub][]
+* [Documentação para desenvolvedores Material.io][material-dev-docs]
+* Post do blog [Migrating a Flutter app to Material 3][migration-blog] por Taha Tesser
+* [Umbrella issue no GitHub][umbrella-issue]
 
-[Documentação para desenvolvedores Material.io]: {{site.material}}/develop/flutter
-[Migrating a Flutter app to Material 3]: https://blog.codemagic.io/migrating-a-flutter-app-to-material-3/
-[Umbrella issue no GitHub]: {{site.github}}/flutter/flutter/issues/91605
+[material-dev-docs]: {{site.material}}/develop/flutter
+[migration-blog]: https://blog.codemagic.io/migrating-a-flutter-app-to-material-3/
+[umbrella-issue]: {{site.github}}/flutter/flutter/issues/91605

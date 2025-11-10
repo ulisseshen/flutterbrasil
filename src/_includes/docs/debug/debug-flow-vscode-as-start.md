@@ -1,41 +1,41 @@
 <!-- ia-translate: true -->
 
-1. To open the Flutter app directory, go to
+1. Para abrir o diretório da aplicação Flutter, vá para
    **File** <span aria-label="and then">></span>
-   **Open Folder...** and choose the `my_app` directory.
+   **Open Folder...** e escolha o diretório `my_app`.
 
-1. Open the `lib/main.dart` file.
+1. Abra o arquivo `lib/main.dart`.
 
-1. If you can build an app for more than one device,
-   you must select the device first.
+1. Se você pode construir uma aplicação para mais de um dispositivo,
+   você deve selecionar o dispositivo primeiro.
 
-   Go to
+   Vá para
    **View** <span aria-label="and then">></span>
    **Command Palette...**
 
-   You can also press <kbd>Ctrl</kbd> / <kbd>Cmd</kbd> +
+   Você também pode pressionar <kbd>Ctrl</kbd> / <kbd>Cmd</kbd> +
    <kbd>Shift</kbd> + <kbd>P</kbd>.
 
-1. Type `flutter select`.
+1. Digite `flutter select`.
 
-1. Click the **Flutter: Select Device** command.
+1. Clique no comando **Flutter: Select Device**.
 
-1. Choose your target device.
+1. Escolha o seu dispositivo de destino.
 
-1. Click the debug icon
+1. Clique no ícone de depuração
    (![VS Code's bug icon to trigger the debugging mode of a Flutter app](/assets/images/docs/testing/debugging/vscode-ui/icons/debug.png)).
-   This opens the **Debug** pane and launches the app.
-   Wait for the app to launch on the device and for the debug pane to
-   indicate **Connected**.
-   The debugger takes longer to launch the first time.
-   Subsequent launches start faster.
+   Isso abre o painel **Debug** e inicia a aplicação.
+   Aguarde o aplicativo ser iniciado no dispositivo e o painel de depuração
+   indicar **Connected**.
+   O depurador leva mais tempo para iniciar na primeira vez.
+   Inicializações subsequentes começam mais rápido.
 
-   This Flutter app contains two buttons:
+   Esta aplicação Flutter contém dois botões:
 
-   - **Launch in browser**: This button opens this page in the
-     default browser of your device.
-   - **Launch in app**: This button opens this page within your app.
-     This button only works for iOS or Android. Desktop apps launch a browser.
+   - **Launch in browser**: Este botão abre esta página no
+     navegador padrão do seu dispositivo.
+   - **Launch in app**: Este botão abre esta página dentro da sua aplicação.
+     Este botão funciona apenas para iOS ou Android. Aplicações desktop iniciam um navegador.
 
 {% if add == 'launch' -%}
 {% render "docs/debug/vscode-flutter-attach-json.md" %}

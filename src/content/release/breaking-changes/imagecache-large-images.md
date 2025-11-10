@@ -1,29 +1,30 @@
 ---
-title: ImageCache large images
+title: Imagens grandes no ImageCache
 description: >
-  Stop increasing the ImageCache maxByteSize to accommodate large images.
+  Parar de aumentar o maxByteSize do ImageCache para acomodar imagens grandes.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-The `maxByteSize` of the `ImageCache` is no longer
-automatically made larger to accommodate large images.
+O `maxByteSize` do `ImageCache` não é mais
+automaticamente aumentado para acomodar imagens grandes.
 
-## Context
+## Contexto {:#context}
 
-Previously, when loading images into the `ImageCache`
-that had larger byte sizes than the `ImageCache`'s `maxByteSize`,
-Flutter permanently increased the `maxByteSize` value
-to accommodate those images.
-This logic sometimes led to bloated `maxByteSize` values that
-made working in memory-limited systems more difficult.
+Anteriormente, ao carregar imagens no `ImageCache`
+que tinham tamanhos em bytes maiores que o `maxByteSize` do `ImageCache`,
+o Flutter aumentava permanentemente o valor de `maxByteSize`
+para acomodar essas imagens.
+Esta lógica às vezes levava a valores de `maxByteSize` inflados que
+tornavam o trabalho em sistemas com memória limitada mais difícil.
 
-## Description of change
+## Descrição da mudança {:#description-of-change}
 
-The following "before" and "after" pseudocode demonstrates
-the changes made to the `ImageCache` algorithm:
+O pseudocódigo "antes" e "depois" a seguir demonstra
+as mudanças feitas no algoritmo do `ImageCache`:
 
 ```dart
 // Old logic pseudocode
@@ -52,45 +53,45 @@ void onLoadImage(Image image) {
 }
 ```
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-There might be situations where the `ImageCache`
-is thrashing with the new logic where it wasn't previously,
-specifically if you load images that are larger than your
-`cache.maxByteSize` value.
-This can be remedied by one of the following approaches:
+Pode haver situações em que o `ImageCache`
+está fazendo muitas operações com a nova lógica quando não fazia anteriormente,
+especificamente se você carregar imagens maiores que o valor de
+`cache.maxByteSize`.
+Isso pode ser resolvido por uma das seguintes abordagens:
 
-1. Increase the `ImageCache.maxByteSize` value
-   to accommodate larger images.
-1. Adjust your image loading logic to guarantee that
-   the images fit nicely into the `ImageCache.maxByteSize`
-   value of your choosing.
-1. Subclass `ImageCache`, implement your desired logic,
-   and create a new binding that serves up your subclass
-   of `ImageCache` (see the [`image_cache.dart`][] source).
+1. Aumentar o valor de `ImageCache.maxByteSize`
+   para acomodar imagens maiores.
+1. Ajustar sua lógica de carregamento de imagens para garantir que
+   as imagens se encaixem bem no valor de `ImageCache.maxByteSize`
+   de sua escolha.
+1. Estender `ImageCache`, implementar sua lógica desejada,
+   e criar uma nova binding que forneça sua subclasse
+   de `ImageCache` (veja o código-fonte de [`image_cache.dart`][]).
 
-## Timeline
+## Cronograma {:#timeline}
 
-The old algorithm is no longer supported.
+O algoritmo antigo não é mais suportado.
 
-Landed in version: 1.16.3<br>
-In stable release: 1.17
+Implementado na versão: 1.16.3<br>
+Na versão estável: 1.17
 
-## References
+## Referências {:#references}
 
-API documentation:
+Documentação da API:
 
 * [`ImageCache`][]
 
-Relevant issue:
+Issue relevante:
 
 * [Issue 45643][]
 
-Relevant PR:
+PR relevante:
 
 * [Stopped increasing the cache size to accommodate large images][]
 
-Other:
+Outros:
 
 * [`ImageCache` source][]
 

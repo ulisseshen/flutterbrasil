@@ -1,3 +1,5 @@
+<!-- ia-translate: true -->
+
 ### Linkar e incorporar frameworks no Xcode {:#method-b .no_toc}
 
 #### Abordagem {:#method-b-approach}

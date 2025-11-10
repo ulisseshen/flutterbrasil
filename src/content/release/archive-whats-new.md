@@ -1,121 +1,119 @@
 ---
-title: Archive of What's new
+ia-translate: true
+title: Arquivo de novidades
 description: >-
-  A list of previous what's new updates on docs.flutterbrasil.dev
-  and related documentation sites.
+  Uma lista de atualizações anteriores de novidades no docs.flutterbrasil.dev
+  e sites de documentação relacionados.
 ---
 
-This page contains archived announcements of
-what's new on the Flutter website and blog.
-For information on the latest releases,
-check out the [current what's new][] page.
+Esta página contém anúncios arquivados sobre
+as novidades no site e blog do Flutter.
+Para informações sobre os lançamentos mais recentes,
+confira a página [novidades atuais][current what's new].
 
 [current what's new]: /release/whats-new
 
-## 12 February 2025: 3.29 release
+## 12 de fevereiro de 2025: lançamento 3.29
 
-Flutter 3.29 is live! For more information,
-check out the [Flutter 3.29 technical blog post][3.29-tech].
-You might also check out the [Dart 3.7 release][] blog post.
+Flutter 3.29 está disponível! Para mais informações,
+confira o [post técnico do blog sobre Flutter 3.29][3.29-tech].
+Você também pode conferir o [post do blog sobre o lançamento do Dart 3.7][Dart 3.7 release].
 
 [3.29-tech]: {{site.medium}}/flutter/whats-new-in-flutter-3-29-f90c380c2317
 [Dart 3.7 release]: {{site.medium}}/dartlang/announcing-dart-3-7-bf864a1b195c
 
-**Docs updated or added since the 3.27 release**
+**Documentos atualizados ou adicionados desde o lançamento 3.27**
 
-* As Flutter evolves, so do its internals. The
-  [Architectural overview page][] is updated.
+* À medida que o Flutter evolui, seus componentes internos também evoluem. A
+  [página de visão geral arquitetural][Architectural overview page] foi atualizada.
 
-* For those of you coming from Android development
-  who are familiar with Jetpack Compose, please visit
-  [Flutter for Jetpack Compose devs][].
+* Para aqueles que vêm do desenvolvimento Android
+  e estão familiarizados com Jetpack Compose, visite
+  [Flutter para desenvolvedores Jetpack Compose][Flutter for Jetpack Compose devs].
 
-* A new cookbook recipe is added for testing a
-  widget's orientation, [Test orientation][].
+* Uma nova receita de cookbook foi adicionada para testar a
+  orientação de um widget, [Testar orientação][Test orientation].
 
-* Also, don't forget to check out the [breaking changes][bc-3.29]
-  page for this release. That's also where you'll find useful
-  migration info.
+* Além disso, não se esqueça de conferir a página de [breaking changes][bc-3.29]
+  para este lançamento. Lá você também encontrará informações
+  úteis de migração.
 
 [Architectural overview page]: /resources/architectural-overview
 [bc-3.29]: /release/breaking-changes#released-in-flutter-3-29
-[Dart 3.7 release]: {{site.medium}}/dartlang/announcing-dart-3-7-bf864a1b195c
 [Flutter for Jetpack Compose devs]: /get-started/flutter-for/compose-devs
 [Test orientation]: /cookbook/testing/widget/orientation
 
 ---
 
-## 11 December 2024: 3.27 release
+## 11 de dezembro de 2024: lançamento 3.27
 
-Flutter 3.27 is live! For more information,
-check out the [Flutter 3.27 umbrella blog post][3.27-umbrella]
-and the [Flutter 3.27 technical blog post][3.27-tech].
-You might also check out the [Dart 3.6 release][] blog post.
+Flutter 3.27 está disponível! Para mais informações,
+confira o [post guarda-chuva do blog sobre Flutter 3.27][3.27-umbrella]
+e o [post técnico do blog sobre Flutter 3.27][3.27-tech].
+Você também pode conferir o [post do blog sobre o lançamento do Dart 3.6][Dart 3.6 release].
 
 [3.27-umbrella]: {{site.medium}}/flutter/flutter-in-production-f9418261d8e1
 [3.27-tech]: {{site.medium}}/flutter/whats-new-in-flutter-3-27-28341129570c
 [Dart 3.6 release]: {{site.medium}}/dartlang/announcing-dart-3-6-778dd7a80983
 
-**Docs updated or added since the 3.24 release**
+**Documentos atualizados ou adicionados desde o lançamento 3.24**
 
-This website release includes several important updates!
+Este lançamento do site inclui várias atualizações importantes!
 
-* The Flutter AI Toolkit is launched! You'll find the docs
-  on the website in the side navigation menu under
-  **App solutions > AI** and at [Flutter AI Toolkit][].
+* O Flutter AI Toolkit foi lançado! Você encontrará os documentos
+  no site no menu de navegação lateral em
+  **App solutions > AI** e em [Flutter AI Toolkit][].
 
-* For a long time now, we have been asked to create more
-  guidance for developers who write large-scale, complex
-  Flutter apps. Well, that work has begun:
-  introducing [Architecting Flutter apps][]!
-  This section includes eight new pages about architecting
-  Flutter apps, including a [Design patterns][] page
-  that has six recipes for common design patterns
-  that you might find useful.
+* Por muito tempo, fomos solicitados a criar mais
+  orientações para desenvolvedores que escrevem apps Flutter
+  complexos e de grande escala. Bem, esse trabalho começou:
+  apresentando [Arquitetando apps Flutter][Architecting Flutter apps]!
+  Esta seção inclui oito novas páginas sobre arquitetura de
+  apps Flutter, incluindo uma página de [Padrões de design][Design patterns]
+  que possui seis receitas para padrões de design comuns
+  que você pode achar úteis.
 
-* We've added more information about
-  [Support for WebAssembly (Wasm)][].
+* Adicionamos mais informações sobre
+  [Suporte para WebAssembly (Wasm)][Support for WebAssembly (Wasm)].
 
-* We've also reworked the [Web renderers][] page
-  to cover the two build modes for web and its
-  two renderers.
+* Também reformulamos a página [Renderizadores web][Web renderers]
+  para cobrir os dois modos de build para web e seus
+  dois renderizadores.
 
-* Impeller is now the default rendering engine for
-  iOS and Android. We've also added a link from
-  the Impeller page to the detailed [Can I use Impeller?][]
-  page.
+* Impeller agora é o mecanismo de renderização padrão para
+  iOS e Android. Também adicionamos um link da
+  página do Impeller para a página detalhada [Posso usar Impeller?][Can I use Impeller?].
 
-* For developers interested in monetization, we have
-  introduced a new [Interactive Media Ads][] package.
-  You can find it through the website in the side
-  navigation menu under
+* Para desenvolvedores interessados em monetização, apresentamos
+  um novo pacote [Interactive Media Ads][]. Você pode encontrá-lo
+  através do site no menu de navegação lateral em
   **App solutions > Monetization > Advertising**.
-  Also, check out the [Video & web app support in Flutter][ad-bp]
-  blog post.
+  Além disso, confira o post do blog
+  [Suporte a vídeo e app web no Flutter][ad-bp].
 
-* We have new docs for using Flutter with Android, specifically,
-  [Launching a Jetpack Compose activity from your Flutter application][jc]
-  and [Calling JetPack APIs][jetpack-api].
+* Temos novos documentos para usar Flutter com Android, especificamente,
+  [Iniciando uma atividade Jetpack Compose do seu aplicativo Flutter][jc]
+  e [Chamando APIs JetPack][jetpack-api].
 
-* Work continues on the [Learn the fundamentals][fwe] pages
-  (formerly called the First Week Experience).
-  Besides updates to several pages, check out the new
-  [Intro to Dart][] page.
+* O trabalho continua nas páginas [Aprenda os fundamentos][fwe]
+  (anteriormente chamadas de Experiência da Primeira Semana).
+  Além de atualizações em várias páginas, confira a nova
+  página [Introdução ao Dart][Intro to Dart].
 
-* Further support and updated docs for the Swift Package Manager.
-  Specifically, you can now build on the stable channel for SPM,
-  however, plugins will continue to be installed using
-  CocoaPods as the SwiftPM feature remains
-  unavailable on the stable channel:
-  [Swift Package Manager for plugin authors][plugin-authors] and
-  [Swift Package Manager for app authors][app-authors].
+* Suporte adicional e documentos atualizados para o Swift Package Manager.
+  Especificamente, agora você pode compilar no canal stable para SPM,
+  no entanto, os plugins continuarão a ser instalados usando
+  CocoaPods, pois o recurso SwiftPM permanece
+  indisponível no canal stable:
+  [Swift Package Manager para autores de plugins][plugin-authors] e
+  [Swift Package Manager para autores de apps][app-authors].
 
-* The [Deep linking validator tool][deep-linking-tool], part of DevTools,
-  now works for both iOS and Android.
+* A [ferramenta de validação de deep linking][deep-linking-tool], parte do DevTools,
+  agora funciona para iOS e Android.
 
-* Also, don't forget to check out the [breaking changes][bc-3.27]
-  page for this release. That's also where you'll find useful
-  migration info.
+* Além disso, não se esqueça de conferir a página de [breaking changes][bc-3.27]
+  para este lançamento. Lá você também encontrará informações
+  úteis de migração.
 
 [ad-bp]: {{site.medium}}/flutter/video-web-ad-support-in-flutter-f50e5a3480a8
 [app-authors]: /packages-and-plugins/swift-package-manager/for-app-developers
@@ -123,7 +121,7 @@ This website release includes several important updates!
 [bc-3.27]: /release/breaking-changes#released-in-flutter-3-27
 [Can I use Impeller?]: {{site.main-url}}/go/can-i-use-impeller
 [deep-linking-tool]: /tools/devtools/deep-links
-[design patterns]: /app-architecture/design-patterns
+[Design patterns]: /app-architecture/design-patterns
 [Flutter AI Toolkit]: /ai-toolkit
 [fwe]: /get-started/fundamentals
 [Interactive Media Ads]: {{site.pub-pkg}}/interactive_media_ads
@@ -132,58 +130,58 @@ This website release includes several important updates!
 [Intro to Dart]: /get-started/fundamentals/dart
 [plugin-authors]: /packages-and-plugins/swift-package-manager/for-plugin-authors
 [Support for WebAssembly (Wasm)]: /platform-integration/web/wasm
-[web renderers]: /platform-integration/web/renderers
+[Web renderers]: /platform-integration/web/renderers
 
 ---
 
-## 07 August 2024: I/O Connect Beijing 3.24 release
+## 07 de agosto de 2024: lançamento I/O Connect Beijing 3.24
 
-Flutter 3.24 is live! For more information,
-check out the [Flutter 3.24 umbrella blog post][3.24-umbrella]
-and the [Flutter 3.24 technical blog post][3.24-tech].
-You might also check out the [Dart 3.5 release][] blog post.
+Flutter 3.24 está disponível! Para mais informações,
+confira o [post guarda-chuva do blog sobre Flutter 3.24][3.24-umbrella]
+e o [post técnico do blog sobre Flutter 3.24][3.24-tech].
+Você também pode conferir o [post do blog sobre o lançamento do Dart 3.5][Dart 3.5 release].
 
 [3.24-tech]: {{site.flutter-blog}}/whats-new-in-flutter-3-24-6c040f87d1e4
 [3.24-umbrella]: {{site.flutter-blog}}/flutter-3-24-dart-3-5-204b7d20c45d
 [Dart 3.5 release]: {{site.medium}}/dartlang/dart-3-5-6ca36259fa2f
 
-**Docs updated or added since the 3.22 release**
+**Documentos atualizados ou adicionados desde o lançamento 3.22**
 
-This website release includes several important updates!
+Este lançamento do site inclui várias atualizações importantes!
 
-* An updated widget catalog:
-  * Added 37 missing widgets to the [Cupertino catalog][],
-    and a new screenshot for the updated `CupertinoActionSheet` widget.
-  * Added the new [`CarouselView`][] widget.
-  * `CupertinoButton` and `CupertinoTextField`
-    also have updated behaviors.
-* New guides on adding support for Swift Package Manager
-  to [iOS plugins][] and [iOS apps][]. (Note that,
-  until all of your app's dependencies are migrated,
-  Flutter will continue to use CocoaPods.)
-* Updated web docs:
-  * [Embedding Flutter on the web][], including how to
-    enable multi-view mode
-  * [Embedding web content into a Flutter app][]
-* Update for Android 14:
-  If you are using an Android device that runs on
-  Android 14, you can now support Android's
-  [predictive back gesture][].
-* Updates for iOS 18:
-  The iOS 18 release is in beta at the time of this release.
-  These iOS 18 features are already enabled in Flutter
-  and are now mentioned in the docs:
-  * Use an [iOS app extension][] in your Flutter app
-    to create a custom toggle. Your users can then
-    add your app's toggle when customizing their
+* Um catálogo de widgets atualizado:
+  * Adicionados 37 widgets ausentes ao [catálogo Cupertino][Cupertino catalog],
+    e uma nova captura de tela para o widget atualizado `CupertinoActionSheet`.
+  * Adicionado o novo widget [`CarouselView`][].
+  * `CupertinoButton` e `CupertinoTextField`
+    também têm comportamentos atualizados.
+* Novos guias sobre como adicionar suporte ao Swift Package Manager
+  para [plugins iOS][iOS plugins] e [apps iOS][iOS apps]. (Observe que,
+  até que todas as dependências do seu app sejam migradas,
+  o Flutter continuará a usar CocoaPods.)
+* Documentos web atualizados:
+  * [Incorporando Flutter na web][Embedding Flutter on the web], incluindo como
+    habilitar o modo multi-view
+  * [Incorporando conteúdo web em um app Flutter][Embedding web content into a Flutter app]
+* Atualização para Android 14:
+  Se você está usando um dispositivo Android que roda no
+  Android 14, agora pode dar suporte ao
+  [gesto preditivo de voltar][predictive back gesture] do Android.
+* Atualizações para iOS 18:
+  O lançamento do iOS 18 está em beta no momento deste lançamento.
+  Esses recursos do iOS 18 já estão habilitados no Flutter
+  e agora são mencionados nos documentos:
+  * Use uma [extensão de app iOS][iOS app extension] no seu app Flutter
+    para criar um toggle personalizado. Seus usuários podem então
+    adicionar o toggle do seu app ao personalizar o
     Control Center.
-  * [Tinted app icons][] are supported
-* Two pages of the [Flutter fundamentals docs][] are updated:
+  * [Ícones de app coloridos][Tinted app icons] são suportados
+* Duas páginas dos [documentos de fundamentos do Flutter][Flutter fundamentals docs] foram atualizadas:
   * [Widgets][]
   * [Layout][]
-  We hope these pages are helpful for new Flutter developers.
-* DevTools also has updates. Check out the release notes for
-  [DevTools 2.35.0][], [DevTools 2.36.0][], and [DevTools 2.37.2][].
+  Esperamos que essas páginas sejam úteis para novos desenvolvedores Flutter.
+* DevTools também tem atualizações. Confira as notas de lançamento para
+  [DevTools 2.35.0][], [DevTools 2.36.0][], e [DevTools 2.37.2][].
 
 [`CarouselView`]: {{site.api}}/flutter/material/CarouselView-class.html
 [Cupertino catalog]: /ui/widgets/cupertino
@@ -201,168 +199,164 @@ This website release includes several important updates!
 [predictive back gesture]: /platform-integration/android/predictive-back
 [Tinted app icons]: /deployment/ios#add-an-app-icon
 
-<b>Other</b>
+<b>Outros</b>
 
-* If you are interested in the new, experimental
-  Flutter GPU API, check out the [Flutter GPU blog post][].
-* The Flutter wiki has been divided up and moved into the
-  relevant GitHub repos, making it easier to keep that
-  info up to date.
+* Se você está interessado na nova API experimental
+  Flutter GPU, confira o [post do blog sobre Flutter GPU][Flutter GPU blog post].
+* O wiki do Flutter foi dividido e movido para os
+  repositórios GitHub relevantes, facilitando manter essas
+  informações atualizadas.
 
 [Flutter GPU blog post]: {{site.flutter-blog}}/getting-started-with-flutter-gpu-f33d497b7c11
 
 ---
 
-## 14 May 2024: Google I/O 3.22 release
+## 14 de maio de 2024: lançamento Google I/O 3.22
 
-Flutter 3.22 is live! For more information,
-check out the [Flutter 3.22 umbrella blog post][3.22-umbrella]
-and the [Flutter 3.22 technical blog post][3.22-tech].
+Flutter 3.22 está disponível! Para mais informações,
+confira o [post guarda-chuva do blog sobre Flutter 3.22][3.22-umbrella]
+e o [post técnico do blog sobre Flutter 3.22][3.22-tech].
 
-You might also check out the [Dart 3.4 release][] blog post.
-In particular, Dart now provides a "baked in" language macro,
-`JsonCodable`, for serializing and deserializing JSON data.
-A future (and unspecified) Dart release will allow
-you to create your own macros.
-To learn more, check out [dartbrasil.dev/go/macros][].
+Você também pode conferir o [post do blog sobre o lançamento do Dart 3.4][Dart 3.4 release].
+Em particular, Dart agora fornece uma macro de linguagem "integrada",
+`JsonCodable`, para serializar e desserializar dados JSON.
+Um lançamento futuro (e não especificado) do Dart permitirá
+que você crie suas próprias macros.
+Para saber mais, confira [dartbrasil.dev/go/macros][].
 
 [3.22-tech]: {{site.flutter-blog}}/whats-new-in-flutter-3-22-fbde6c164fe3
 [3.22-umbrella]: {{site.flutter-blog}}/io24-5e211f708a37
 [Dart 3.4 release]: {{site.medium}}/dartlang/dart-3-4-bd8d23b4462a
 [dartbrasil.dev/go/macros]: http://dartbrasil.dev/go/macros
 
-**Docs updated or added since the 3.19 release**
+**Documentos atualizados ou adicionados desde o lançamento 3.19**
 
-* A new 7-page section on [Adaptive and Responsive design][].
-  (This replaces our previous, somewhat scattered,
-  documentation on this subject.)
-* For new-ish Flutter developer who has worked through
-  the first Flutter codelab, we've added some "what's next"
-  advice on how to move beyond that initial step.
-  Check out the [Flutter fundamentals docs][].
-* Our [Flutter install][] docs have been revamped.
-* We have three new codelabs and a new guide for the Games Toolkit.
-  To see the list of additions,
-  check out the updated [Casual Games Toolkit][] page.
-* Flutter support for Web Assembly (Wasm) has now reached stable.
-  To learn more, check out the updated
-  [Support for WebAssembly (Wasm)][] page.
-* DevTools has a new screen for evaluating deep links on Android.
-  To learn more, check out the new page, [Validate deep links][].
-* We have a new page that describes web bootstrapping for
-  Flutter SDK release 3.22 and later.
-  Check out [Flutter web app initialization][].
-* You can now provide code to transform your assets
-  into another format at runtime. To learn more,
-  check out [Transforming assets at build time][].
+* Uma nova seção de 7 páginas sobre [Design adaptativo e responsivo][Adaptive and Responsive design].
+  (Isso substitui nossa documentação anterior, um tanto dispersa,
+  sobre este assunto.)
+* Para desenvolvedores Flutter relativamente novos que trabalharam no
+  primeiro codelab de Flutter, adicionamos alguns conselhos de "próximos passos"
+  sobre como ir além daquela etapa inicial.
+  Confira os [documentos de fundamentos do Flutter][Flutter fundamentals docs].
+* Nossos documentos de [instalação do Flutter][Flutter install] foram reformulados.
+* Temos três novos codelabs e um novo guia para o Games Toolkit.
+  Para ver a lista de adições,
+  confira a página atualizada [Casual Games Toolkit][].
+* O suporte do Flutter para Web Assembly (Wasm) agora atingiu stable.
+  Para saber mais, confira a página atualizada
+  [Suporte para WebAssembly (Wasm)][Support for WebAssembly (Wasm)].
+* DevTools tem uma nova tela para avaliar deep links no Android.
+  Para saber mais, confira a nova página, [Validar deep links][Validate deep links].
+* Temos uma nova página que descreve o bootstrapping web para
+  o lançamento do Flutter SDK 3.22 e posterior.
+  Confira [Inicialização de app web Flutter][Flutter web app initialization].
+* Agora você pode fornecer código para transformar seus assets
+  para outro formato em tempo de execução. Para saber mais,
+  confira [Transformando assets em tempo de build][Transforming assets at build time].
 
-**Website infrastructure**
+**Infraestrutura do site**
 
-* If you contribute to the website, you might have noticed
-  some recent changes. Namely, the website infrastructure
-  has been updated and the new workflow is simpler.
-  For more details, check out the [website README][].
-* You might also have noticed that the **App solutions**
-  submenu in the sidenav now has an **AI** section,
-  and an enhanced **Monetization** section,
-  to name some of the changes.
+* Se você contribui para o site, pode ter notado
+  algumas mudanças recentes. Ou seja, a infraestrutura do site
+  foi atualizada e o novo fluxo de trabalho é mais simples.
+  Para mais detalhes, confira o [README do site][website README].
+* Você também pode ter notado que o submenu **App solutions**
+  no sidenav agora tem uma seção **AI**,
+  e uma seção **Monetization** aprimorada,
+  para citar algumas das mudanças.
 
 [Adaptive and Responsive design]: /ui/adaptive-responsive
 [Casual Games Toolkit]: /resources/games-toolkit
-[Flutter fundamentals docs]: /get-started/fundamentals
 [Flutter install]: /get-started
 [Flutter web app initialization]: /platform-integration/web/initialization
 [website README]: {{site.github}}/flutter/website/?tab=readme-ov-file#flutter-documentation-website
-[Support for WebAssembly (Wasm)]: /platform-integration/web/wasm
 [Transforming assets at build time]: /ui/assets/asset-transformation
 [Validate deep links]: /tools/devtools/deep-links
 
-## 15 February 2024: Valentine's-Day-adjacent 3.19 release
+## 15 de fevereiro de 2024: lançamento adjacente ao Dia dos Namorados 3.19
 
-Flutter 3.19 is live! For more information,
-check out the [Flutter 3.19 umbrella blog post][3.19-umbrella]
-and the [Flutter 3.19 technical blog post][3.19-tech].
+Flutter 3.19 está disponível! Para mais informações,
+confira o [post guarda-chuva do blog sobre Flutter 3.19][3.19-umbrella]
+e o [post técnico do blog sobre Flutter 3.19][3.19-tech].
 
-You might also check out the [Dart 3.3 release][] blog post.
+Você também pode conferir o [post do blog sobre o lançamento do Dart 3.3][Dart 3.3 release].
 
 [3.19-tech]: {{site.flutter-blog}}/whats-new-in-flutter-3-19-58b1aae242d2
 [3.19-umbrella]: {{site.flutter-blog}}/starting-2024-strong-with-flutter-and-dart-cae9845264fe
 [Dart 3.3 release]: {{site.medium}}/dartlang/new-in-dart-3-3-extension-types-javascript-interop-and-more-325bf2bf6c13
 
-**Docs updated or added since the 3.16 release**
+**Documentos atualizados ou adicionados desde o lançamento 3.16**
 
-* A new page on [migrating from Material 2 to Material 3][]
-  is added. Thanks to [@TahaTesser][] for writing this guide.
-* Material 3 uses theming in new and different ways than
-  Material 2. The [Use themes to share colors and font styles][]
-  cookbook recipe is updated to reflect these changes.
-* The [Flutter install][] pages have been updated. Please
-  [let us know][] if you have any feedback.
-* The [Concurrency and isolates][] page has been reworked.
+* Uma nova página sobre [migração do Material 2 para Material 3][migrating from Material 2 to Material 3]
+  foi adicionada. Agradecimentos a [@TahaTesser][] por escrever este guia.
+* Material 3 usa tematização de maneiras novas e diferentes do
+  Material 2. A receita do cookbook [Use temas para compartilhar cores e estilos de fonte][Use themes to share colors and font styles]
+  foi atualizada para refletir essas mudanças.
+* As páginas de [instalação do Flutter][Flutter install] foram atualizadas. Por favor,
+  [nos avise][let us know] se você tiver algum feedback.
+* A página [Concorrência e isolates][Concurrency and isolates] foi refeita.
 
 [@TahaTesser]: {{site.github}}/TahaTesser
 [Concurrency and isolates]: /perf/isolates
-[Flutter install]: /get-started
 [let us know]: {{site.github}}/flutter/website/issues/new/choose
 [migrating from Material 2 to Material 3]: /release/breaking-changes/material-3-migration
 [Use themes to share colors and font styles]: /cookbook/design/themes
 
-**Other updates**
+**Outras atualizações**
 
-* Check out the just-published
-  [Flutter and Dart 2024 Roadmap][].
-* Check out [Harness the Gemini API in your Dart and Flutter apps][].
+* Confira o recém-publicado
+  [Roteiro do Flutter e Dart 2024][Flutter and Dart 2024 Roadmap].
+* Confira [Aproveite a API Gemini em seus apps Dart e Flutter][Harness the Gemini API in your Dart and Flutter apps].
 
 [Flutter and Dart 2024 Roadmap]: {{site.github}}/flutter/flutter/blob/main/docs/roadmap/Roadmap.md
 [Harness the Gemini API in your Dart and Flutter apps]: {{site.flutter-blog}}/harness-the-gemini-api-in-your-dart-and-flutter-apps-00573e560381
 
-## 15 November 2023: 3.16 release
+## 15 de novembro de 2023: lançamento 3.16
 
-Flutter 3.16 is live! For more information,
-check out the [Flutter 3.16 blog post][3.16-umbrella]
-and the technical [What's new in Flutter 3.16][]
-blog post.
+Flutter 3.16 está disponível! Para mais informações,
+confira o [post do blog sobre Flutter 3.16][3.16-umbrella]
+e o post técnico [Novidades no Flutter 3.16][What's new in Flutter 3.16].
 
-You might also check out [Dart 3.2 release][].
+Você também pode conferir o [lançamento do Dart 3.2][Dart 3.2 release].
 
-**Docs updated or added since the 3.13 release**
+**Documentos atualizados ou adicionados desde o lançamento 3.13**
 
-* As of this release, the **default theme for
-  Material Flutter apps is Material 3**.
-  Unless you explicitly specify Material 2
-  (with `useMaterial3: false`)
-  in your app's theme, your app _will_ look
-  different once you've updated.
-* While the Flutter Casual Games Toolkit isn't
-  technically _part_ of the 3.16 release,
-  we've release a significant update of
-  the toolkit _alongside_ the 3.16 release.
-  This update includes three completely new
-  games code templates, three new games cookbook
-  recipes, and a general reorganization of
-  our games toolkit docs. For more information,
-  check out [Casual Games Toolkit][] and
-  make sure to look at the side nav!
-* The Impeller runtime is now
-  **available for Android on Vulkan devices**
-  behind the `--enable-impeller` flag.
-  For more information, check out
-  the [Impeller rendering engine][impeller] page.
-* You can now add Apple iOS app extensions to
-  your Flutter app when running on iOS.
-  To learn more, check out
-  [Adding iOS app extensions][ios-app-ext].
+* A partir deste lançamento, o **tema padrão para
+  apps Flutter Material é Material 3**.
+  A menos que você especifique explicitamente Material 2
+  (com `useMaterial3: false`)
+  no tema do seu app, seu app _terá_ uma aparência
+  diferente após a atualização.
+* Embora o Flutter Casual Games Toolkit não seja
+  tecnicamente _parte_ do lançamento 3.16,
+  lançamos uma atualização significativa do
+  toolkit _juntamente_ com o lançamento 3.16.
+  Esta atualização inclui três templates de código de jogos
+  completamente novos, três novas receitas de cookbook de jogos
+  e uma reorganização geral de nossos
+  documentos do toolkit de jogos. Para mais informações,
+  confira [Casual Games Toolkit][] e
+  certifique-se de olhar o sidenav!
+* O runtime do Impeller agora está
+  **disponível para Android em dispositivos Vulkan**
+  por trás da flag `--enable-impeller`.
+  Para mais informações, confira
+  a página [Mecanismo de renderização Impeller][impeller].
+* Agora você pode adicionar extensões de app iOS da Apple ao
+  seu app Flutter ao executar no iOS.
+  Para saber mais, confira
+  [Adicionando extensões de app iOS][ios-app-ext].
 
-**Articles**
+**Artigos**
 
-The following articles were published on the [Flutter Medium][]
-publication since Flutter 3.13:
+Os seguintes artigos foram publicados na publicação [Flutter Medium][]
+desde o Flutter 3.13:
 
-* [How IBM is creating a Flutter Center of Excellence][ibm]
-* [Introducing the Flutter Consulting Directory][fcd]
-* [Developing Flutter apps for large screens][ls]
-* [Dart & Flutter DevTools Extensions][dt-ext]
-* [Building your next casual game with Flutter][games-2]
+* [Como a IBM está criando um Centro de Excelência Flutter][ibm]
+* [Apresentando o Diretório de Consultoria Flutter][fcd]
+* [Desenvolvendo apps Flutter para telas grandes][ls]
+* [Extensões do Dart & Flutter DevTools][dt-ext]
+* [Construindo seu próximo jogo casual com Flutter][games-2]
 
 [3.16-umbrella]: {{site.flutter-blog}}/flutter-3-16-dart-3-2-high-level-umbrella-post-b9218b17f0f7
 [Casual Games Toolkit]: /resources/games-toolkit
@@ -376,49 +370,49 @@ publication since Flutter 3.13:
 [ios-app-ext]: /platform-integration/ios/app-extensions
 [What's new in Flutter 3.16]: {{site.flutter-blog}}/whats-new-in-flutter-3-16-dba6cb1015d1
 
-## 16 August 2023: 3.13 release
+## 16 de agosto de 2023: lançamento 3.13
 
-Flutter 3.13 is live! For more information,
-check out the [Flutter 3.13 blog post][blog-general].
+Flutter 3.13 está disponível! Para mais informações,
+confira o [post do blog sobre Flutter 3.13][blog-general].
 
-You might also check out
-[Dart 3.1 & a retrospective on functional style
-programming in Dart 3][].
+Você também pode conferir
+[Dart 3.1 & uma retrospectiva sobre programação em estilo funcional
+no Dart 3][Dart 3.1 & a retrospective on functional style programming in Dart 3].
 
-In addition to new docs since the last release,
-we have been incrementally releasing a revamped
-version of the docs.flutterbrasil.dev website.
-Specifically, we have reorganized (flattened) the
-information architecture (IA) and have
-incorporated some of our most popular cookbook
-recipes into the sidenav.
-[Let us know what you think!][file-issue]
+Além de novos documentos desde o último lançamento,
+temos lançado incrementalmente uma versão reformulada
+do site docs.flutterbrasil.dev.
+Especificamente, reorganizamos (achatamos) a
+arquitetura de informações (IA) e
+incorporamos algumas de nossas receitas de cookbook
+mais populares no sidenav.
+[Nos diga o que você acha!][file-issue]
 
-**Docs updated or added since the 3.10 release**
+**Documentos atualizados ou adicionados desde o lançamento 3.10**
 
-* A rewrite and rename that completes the
-  [Use a native language debugger][oem] page.
-  This page covers how to connect both a native
-  debugger and a Dart debugger to your app
-  for Android _and_ iOS. (The previous
-  version of this page was out of date and
-  didn't cover iOS.)
-* A new [Layout/Scrolling][scrolling-overview] overview page.
-  (In fact, scrolling is also a new section of the IA.)
-* We have sunsetted the Happy Paths recommendations in
-  favor of the [Flutter Favorites program][].
-  Look for additions to Flutter Favorites very soon!
-* The Impeller runtime is now available for macOS
-  behind a flag. For more information, check out
-  the [Impeller rendering engine][impeller] page.
-* As always, this release includes a few
+* Uma reescrita e renomeação que completa a
+  página [Use um depurador de linguagem nativa][oem].
+  Esta página cobre como conectar tanto um
+  depurador nativo quanto um depurador Dart ao seu app
+  para Android _e_ iOS. (A versão
+  anterior desta página estava desatualizada e
+  não cobria iOS.)
+* Uma nova página de visão geral [Layout/Scrolling][scrolling-overview].
+  (Na verdade, scrolling também é uma nova seção da IA.)
+* Desativamos as recomendações Happy Paths em
+  favor do [programa Flutter Favorites][Flutter Favorites program].
+  Fique atento para adições ao Flutter Favorites em breve!
+* O runtime do Impeller agora está disponível para macOS
+  por trás de uma flag. Para mais informações, confira
+  a página [Mecanismo de renderização Impeller][impeller].
+* Como sempre, este lançamento inclui algumas
   [breaking changes][breaking-changes].
-  The following links have more information,
-  including info on how to migrate to the new APIs:
-  * [Removing the `ignoreSemantics` property from
-    `IgnorePointer`, `AbsorbPointer`, and `SliverIgnorePointer`][pointer]
-  * [The `Editable.onCaretChanged` callback is removed][editable-onCaretChanged]
-  * Also check out the [deprecated APIs since 3.10][deprecated-3.10]
+  Os links a seguir têm mais informações,
+  incluindo informações sobre como migrar para as novas APIs:
+  * [Removendo a propriedade `ignoreSemantics` de
+    `IgnorePointer`, `AbsorbPointer`, e `SliverIgnorePointer`][pointer]
+  * [O callback `Editable.onCaretChanged` foi removido][editable-onCaretChanged]
+  * Confira também as [APIs descontinuadas desde 3.10][deprecated-3.10]
 
 [blog-general]: {{site.flutter-blog}}/whats-new-in-flutter-3-13-479d9b11df4d
 [Dart 3.1 & a retrospective on functional style programming in Dart 3]: {{site.medium}}/dartlang/dart-3-1-a-retrospective-on-functional-style-programming-in-dart-3-a1f4b3a7cdda
@@ -430,71 +424,71 @@ recipes into the sidenav.
 [pointer]: /release/breaking-changes/ignoringsemantics-migration
 [scrolling-overview]: /ui/layout/scrolling
 
-**Codelabs and workshops**
+**Codelabs e workshops**
 
-The following codelab has been published since Flutter 3.10:
+O seguinte codelab foi publicado desde o Flutter 3.10:
 
-* [Adding a Home Screen widget to your Flutter app][home-screen]
+* [Adicionando um widget de tela inicial ao seu app Flutter][home-screen]
 
 [home-screen]:   {{site.codelabs}}/flutter-home-screen-widgets
 
-**Articles**
+**Artigos**
 
-The following articles were published on the [Flutter Medium][]
-publication since Flutter 3.10:
+Os seguintes artigos foram publicados na publicação [Flutter Medium][]
+desde o Flutter 3.10:
 
-* [The Future of iOS development with Flutter][]
-* [How it's made: I/O Flip][]
-* [Flutter 2023 Q1 survey results][]
+* [O futuro do desenvolvimento iOS com Flutter][The Future of iOS development with Flutter]
+* [Como foi feito: I/O Flip][How it's made: I/O Flip]
+* [Resultados da pesquisa Q1 2023 do Flutter][Flutter 2023 Q1 survey results]
 
 [Flutter 2023 Q1 survey results]: {{site.flutter-blog}}/flutter-2023-q1-survey-api-breaking-changes-deep-linking-and-more-7ff692f974e0
 [How it's made: I/O Flip]: {{site.flutter-blog}}/how-its-made-i-o-flip-da9d8184ef57
 [The Future of iOS development with Flutter]: {{site.flutter-blog}}/the-future-of-ios-development-with-flutter-833aa9779fac
 
-**What's coming**
+**O que está por vir**
 
-Things that are coming soon-ish to a stable release:
+Coisas que estão chegando em breve-ish a um lançamento stable:
 
 **Material 3**
 
-You've probably heard by now that [Material 3][] is coming.
-It's been available on Flutter for some time now,
-by setting `useMaterial3: true` in your code.
-By the next stable release in Q4,
-Material 3 will be enabled by default. Now would
-be a good time to start migrating your code.
-Most all of the example code on this website
-has been updated to use Material 3.
+Você provavelmente já ouviu falar que [Material 3][] está chegando.
+Ele está disponível no Flutter há algum tempo,
+ao definir `useMaterial3: true` no seu código.
+No próximo lançamento stable no Q4,
+Material 3 será habilitado por padrão. Agora seria
+um bom momento para começar a migrar seu código.
+A maioria de todos os códigos de exemplo neste site
+foram atualizados para usar Material 3.
 
-For more information,
-check out the following resources:
+Para mais informações,
+confira os seguintes recursos:
 
-* [Flutter 3.13 blog post][blog-material]
-* [Material Design for Flutter][] page
+* [Post do blog sobre Flutter 3.13][blog-material]
+* Página [Material Design para Flutter][Material Design for Flutter]
 
-**Impeller for Android**
+**Impeller para Android**
 
-Progress continues on Impeller for Android.
-For more information, check out the
-[Flutter 3.13 blog post][blog-impeller].
+O progresso continua no Impeller para Android.
+Para mais informações, confira o
+[post do blog sobre Flutter 3.13][blog-impeller].
 
-**New scrolling APIs**
+**Novas APIs de scrolling**
 
-We have been working on updating our scrolling APIs.
-The rework will eventually result in 2D scrolling
-support for trees and tables, even diagonal scrolling!
-Flutter 3.13 also provides new Sliver classes for fancy scrolling.
-For more information, check out the
-[Flutter 3.13 blog post][blog-scrolling].
+Temos trabalhado na atualização de nossas APIs de scrolling.
+A reformulação eventualmente resultará em suporte de scrolling 2D
+para árvores e tabelas, até scrolling diagonal!
+Flutter 3.13 também fornece novas classes Sliver para scrolling sofisticado.
+Para mais informações, confira o
+[post do blog sobre Flutter 3.13][blog-scrolling].
 
-**Updates to the Games toolkit**
+**Atualizações no toolkit de Games**
 
-We are working on updates to the Flutter Games toolkit,
-including the sample code, additional docs, and a new video.
-The Games toolkit is developed independently of the
-Flutter SDK, so stay tuned for updates as they are ready.
-For  more information,
-check out the [Flutter 3.13 blog post][blog-games].
+Estamos trabalhando em atualizações no toolkit de Games do Flutter,
+incluindo o código de exemplo, documentos adicionais e um novo vídeo.
+O toolkit de Games é desenvolvido independentemente do
+Flutter SDK, então fique atento para atualizações à medida que estiverem prontas.
+Para mais informações,
+confira o [post do blog sobre Flutter 3.13][blog-games].
 
 [blog-games]:     {{site.flutter-blog}}/whats-new-in-flutter-3-13-479d9b11df4d#30b2
 [blog-impeller]:  {{site.flutter-blog}}/whats-new-in-flutter-3-13-479d9b11df4d#a7be
@@ -505,49 +499,49 @@ check out the [Flutter 3.13 blog post][blog-games].
 
 <hr>
 
-## 10 May 2023: Google I/O 2023: 3.10 release
+## 10 de maio de 2023: Google I/O 2023: lançamento 3.10
 
-Flutter 3.10 is live! This release contains many updates
-and improvements. This page lists the documentation changes,
-but you can also check out the [3.10 blog post][] and the
-[3.10 release notes][].
+Flutter 3.10 está disponível! Este lançamento contém muitas atualizações
+e melhorias. Esta página lista as mudanças na documentação,
+mas você também pode conferir o [post do blog 3.10][3.10 blog post] e as
+[notas de lançamento 3.10][3.10 release notes].
 
-You might also check out [Introducing Dart 3][].
+Você também pode conferir [Apresentando Dart 3][Introducing Dart 3].
 
 [3.10 blog post]: {{site.flutter-blog}}/whats-new-in-flutter-3-10-b21db2c38c73
 [3.10 release notes]: /release/release-notes/release-notes-3.10.0
 [Introducing Dart 3]: {{site.medium}}/dartlang/announcing-dart-3-53f065a10635
 
-**Docs updated or added since the 3.7 release**
+**Documentos atualizados ou adicionados desde o lançamento 3.7**
 
-* Added section on [wireless debugging][] for iOS or Android to the
-  add-to-app module guide.
-  You can debug your iOS or Android app on a physical device over Wi-Fi.
-* Updated the [Material Widget Catalog][] to cover Material 3.
-* Added the new [canvasKitVariant runtime configuration][] setting.
-  This web initialization option lets you configure which version of
-  CanvasKit to download.
-* Updated the [Impeller][] reference.
-  iOS apps now default to the Impeller renderer.
-* Added the [Android Java Gradle migration][] guide on resolving
-  an incompatibility between Java 17 and Gradle releases prior to 7.3.
-* Updated the [DevTools][] reference material.
-* Updated the [WebAssembly support][] reference with
-  guidelines on trying out preview support.
-* Added guide on [adding iOS app extensions][] to Flutter apps.
-  This release enables using native iOS app extensions with your Flutter apps.
-* Added guide on [testing Flutter plugins][].
-* Added guide on [fonts and typography][].
-* Added guide on restoring state on [Android][] and [iOS][] Flutter apps.
-* Added a section about [sharing iOS and macOS plugin implementations][].
-* Added a guide on adapting the Material
-  [top app bar and navigation bar][], and [bottom navigation bar][] widgets
-  to the current platform as a start of UI component platform adaptation
-  guidelines.
-* Introduced the [Anatomy of an app][] section in the Architectural overview.
-* Added provenance information per SLSA to all downloads
-  in the [SDK archive page][]. Provenance guarantees that the built artifact
-  comes from the expected source.
+* Adicionada seção sobre [depuração sem fio][wireless debugging] para iOS ou Android ao
+  guia de módulo add-to-app.
+  Você pode depurar seu app iOS ou Android em um dispositivo físico via Wi-Fi.
+* Atualizado o [Catálogo de Widgets Material][Material Widget Catalog] para cobrir Material 3.
+* Adicionada a nova configuração de runtime [canvasKitVariant][canvasKitVariant runtime configuration].
+  Esta opção de inicialização web permite configurar qual versão do
+  CanvasKit baixar.
+* Atualizada a referência do [Impeller][].
+  Apps iOS agora usam o renderizador Impeller por padrão.
+* Adicionado o guia de [migração Java Gradle do Android][Android Java Gradle migration] sobre como resolver
+  uma incompatibilidade entre Java 17 e lançamentos do Gradle anteriores a 7.3.
+* Atualizado o material de referência do [DevTools][].
+* Atualizada a referência de [suporte WebAssembly][WebAssembly support] com
+  diretrizes sobre como experimentar o suporte de preview.
+* Adicionado guia sobre [adicionar extensões de app iOS][adding iOS app extensions] a apps Flutter.
+  Este lançamento habilita o uso de extensões de app iOS nativas com seus apps Flutter.
+* Adicionado guia sobre [testar plugins Flutter][testing Flutter plugins].
+* Adicionado guia sobre [fontes e tipografia][fonts and typography].
+* Adicionado guia sobre restauração de estado em apps Flutter no [Android][] e [iOS][].
+* Adicionada uma seção sobre [compartilhar implementações de plugins iOS e macOS][sharing iOS and macOS plugin implementations].
+* Adicionado um guia sobre adaptação dos widgets
+  [barra de app superior e barra de navegação][top app bar and navigation bar], e [barra de navegação inferior][bottom navigation bar] do Material
+  para a plataforma atual como início das diretrizes de adaptação de
+  componentes de UI de plataforma.
+* Introduzida a seção [Anatomia de um app][Anatomy of an app] na visão geral arquitetural.
+* Adicionadas informações de proveniência por SLSA a todos os downloads
+  na [página de arquivo do SDK][SDK archive page]. Proveniência garante que o artefato construído
+  venha da fonte esperada.
 
 [wireless debugging]: /add-to-app/debugging
 [Material Widget Catalog]: /ui/widgets/material
@@ -569,122 +563,122 @@ You might also check out [Introducing Dart 3][].
 
 **Codelabs**
 
-The following codelabs have been published since Flutter 3.7:
+Os seguintes codelabs foram publicados desde o Flutter 3.7:
 
-* [Records and Patterns in Dart 3][]<br>
-  Discover Dart 3's new records and patterns features.
-  Learn how you can use them in a Flutter app to help you
-  write more readable and maintainable Dart code.
-* [Building next generation UIs in Flutter][]<br>
-  Learn how to build a Flutter app that uses the power of `flutter_animate`,
-  fragment shaders, and particle fields. You will craft a user interface that
-  evokes those science fiction movies and TV shows we all love
-  watching when we aren't coding.
-* [Create haikus about Google products with the PaLM API and Flutter][]<br> **NEW**
-  Learn how to build an app that uses the PaLM API to generate haikus
-  based on Google product names. The PaLM API gives you access to Google's
-  state-of-the-art large language models.
+* [Records e Patterns no Dart 3][Records and Patterns in Dart 3]<br>
+  Descubra os novos recursos de records e patterns do Dart 3.
+  Aprenda como você pode usá-los em um app Flutter para ajudá-lo a
+  escrever código Dart mais legível e manutenível.
+* [Construindo UIs de próxima geração no Flutter][Building next generation UIs in Flutter]<br>
+  Aprenda como construir um app Flutter que usa o poder de `flutter_animate`,
+  fragment shaders e campos de partículas. Você criará uma interface de usuário que
+  evoca aqueles filmes e programas de TV de ficção científica que todos amamos
+  assistir quando não estamos programando.
+* [Criar haikus sobre produtos Google com a API PaLM e Flutter][Create haikus about Google products with the PaLM API and Flutter]<br> **NOVO**
+  Aprenda como construir um app que usa a API PaLM para gerar haikus
+  baseados em nomes de produtos Google. A API PaLM dá acesso aos
+  modelos de linguagem grande de ponta da Google.
 
 [Building next generation UIs in Flutter]: {{site.codelabs}}/codelabs/flutter-next-gen-uis#0
 [Records and Patterns in Dart 3]: {{site.codelabs}}/codelabs/dart-patterns-records
 [Create haikus about Google products with the PaLM API and Flutter]: {{site.codelabs}}/haiku-generator
 
-**Articles**
+**Artigos**
 
-The Flutter team published the following articles on the [Flutter Medium][]
-publication since Flutter 3.7:
+A equipe Flutter publicou os seguintes artigos na publicação [Flutter Medium][]
+desde o Flutter 3.7:
 
-* [Flutter in 2023: strategy and roadmap][]
-* [Wonderous nominated for Webby Award][]
+* [Flutter em 2023: estratégia e roteiro][Flutter in 2023: strategy and roadmap]
+* [Wonderous indicado para Webby Award][Wonderous nominated for Webby Award]
 
 [Wonderous nominated for Webby Award]: {{site.flutter-blog}}/wonderous-nominated-for-webby-award-8e00e2a648c2
 [Flutter in 2023: strategy and roadmap]: {{site.flutter-blog}}/flutter-in-2023-strategy-and-roadmap-60efc8d8b0c7
 
-## 25 Jan 2023: Flutter Forward: 3.7 release
+## 25 de janeiro de 2023: Flutter Forward: lançamento 3.7
 
-Flutter 3.7 is live! This release contains many updates
-and improvements. This page lists the documentation changes,
-but you can also check out the [3.7 blog post][] and the
-[3.7 release notes][].
+Flutter 3.7 está disponível! Este lançamento contém muitas atualizações
+e melhorias. Esta página lista as mudanças na documentação,
+mas você também pode conferir o [post do blog 3.7][3.7 blog post] e as
+[notas de lançamento 3.7][3.7 release notes].
 
-You might also check out [What's next for Flutter][]
-and [Introducing Dart 3 alpha][].
+Você também pode conferir [Próximos passos para o Flutter][What's next for Flutter]
+e [Apresentando Dart 3 alpha][Introducing Dart 3 alpha].
 
 [3.7 blog post]: {{site.flutter-blog}}/whats-new-in-flutter-3-7-38cbea71133c
 [3.7 release notes]: /release/release-notes/release-notes-3.7.0
 [Introducing Dart 3 alpha]: {{site.medium}}/dartlang/dart-3-alpha-f1458fb9d232
 [What's next for Flutter]: {{site.flutter-blog}}/whats-next-for-flutter-b94ce089f49c
 
-**Docs updated or added since the 3.3 release**
+**Documentos atualizados ou adicionados desde o lançamento 3.3**
 
-* You can now pass configuration
-  information to the engine in the `initializeEngine`
-  method. For more information, check out
-  [Customizing web app initialization][].
-* [Creating Flavors for Flutter][]
-  Learn how to create a flavor in Flutter
-  (also known as a _build configuration_ in iOS).
-* Internationalization support has been
-  revamped and the
-  [Internationalizing Flutter apps][] page
-  is updated.
-* The DevTools memory debugging tool has been
-  completely overhauled and the corresponding
-  page, [Using the memory view][], is rewritten.
-* This release includes numerous improvements to
-  Flutter's support for custom fragment shaders.
-  For more information, see the new
-  [Writing and using fragment shaders][] page.
-* Some security tools falsely report security
-  vulnerabilities in Flutter apps. The new
-  [Security false positives][] page lists
-  the known false positives and why you can
-  ignore them.
-* You can now invoke a platform channel from any
-  isolate, including background isolates.
-  For more information, check out
-  [Writing custom platform-specific code][]
-  and the [Introducing isolate background channels][]
-  article on Medium.
-* We've updated our Swift documentation.
-  New and updated pages include:
-  * [Flutter for SwiftUI developers][] - updated
-  * [Add a Flutter screen to an iOS app][] - updated for SwiftUI
-  * [Flutter concurrency for Swift developers][] - new
-  * [Learning Dart as a Swift developer][] on dartbrasil.dev - new
-* As of Xcode 14, Apple no longer supports bitcode.
-  Two of our pages, [Adding an iOS clip target][]
-  and the [Flutter FAQ][],
-  are updated to reflect this fact.
-* For developers who enjoy living on the bleeding edge,
-  you might want to try Flutter's future rendering
-  engine, Impeller. Because Impeller isn't yet
-  ready for a stable release, you can find more
-  information on our [Flutter GitHub wiki][Impeller].
+* Agora você pode passar informações de configuração
+  para o engine no método `initializeEngine`.
+  Para mais informações, confira
+  [Personalizando a inicialização de app web][Customizing web app initialization].
+* [Criando Flavors para Flutter][Creating Flavors for Flutter]
+  Aprenda como criar um flavor no Flutter
+  (também conhecido como _configuração de build_ no iOS).
+* O suporte a internacionalização foi
+  reformulado e a
+  página [Internacionalizando apps Flutter][Internationalizing Flutter apps]
+  foi atualizada.
+* A ferramenta de depuração de memória do DevTools foi
+  completamente reformulada e a página correspondente,
+  [Usando a visualização de memória][Using the memory view], foi reescrita.
+* Este lançamento inclui inúmeras melhorias ao
+  suporte do Flutter para fragment shaders personalizados.
+  Para mais informações, veja a nova
+  página [Escrevendo e usando fragment shaders][Writing and using fragment shaders].
+* Algumas ferramentas de segurança relatam falsamente
+  vulnerabilidades de segurança em apps Flutter. A nova
+  página [Falsos positivos de segurança][Security false positives] lista
+  os falsos positivos conhecidos e por que você pode
+  ignorá-los.
+* Agora você pode invocar um platform channel de qualquer
+  isolate, incluindo isolates em background.
+  Para mais informações, confira
+  [Escrevendo código personalizado específico de plataforma][Writing custom platform-specific code]
+  e o artigo [Apresentando canais de background de isolates][Introducing isolate background channels]
+  no Medium.
+* Atualizamos nossa documentação Swift.
+  Páginas novas e atualizadas incluem:
+  * [Flutter para desenvolvedores SwiftUI][Flutter for SwiftUI developers] - atualizada
+  * [Adicionar uma tela Flutter a um app iOS][Add a Flutter screen to an iOS app] - atualizada para SwiftUI
+  * [Concorrência Flutter para desenvolvedores Swift][Flutter concurrency for Swift developers] - nova
+  * [Aprendendo Dart como desenvolvedor Swift][Learning Dart as a Swift developer] no dartbrasil.dev - nova
+* A partir do Xcode 14, a Apple não suporta mais bitcode.
+  Duas de nossas páginas, [Adicionando um alvo de clip iOS][Adding an iOS clip target]
+  e as [FAQ do Flutter][Flutter FAQ],
+  foram atualizadas para refletir este fato.
+* Para desenvolvedores que gostam de viver no limite,
+  você pode querer experimentar o futuro mecanismo de renderização
+  do Flutter, Impeller. Como o Impeller ainda não está
+  pronto para um lançamento stable, você pode encontrar mais
+  informações em nosso [wiki GitHub do Flutter][Impeller].
 
 {% comment %}
 
-* Missing docs (xxx):
-  * Frame analysis tab in Performance view - Kenzie
+* Documentos faltando (xxx):
+  * Aba de análise de frame na visualização de Performance - Kenzie
   * Menu bars (M3) - Greg Spencer
-    No docs yet (other than API docs)
-  * Cascading menus (M3) - Greg Spencer
-    No docs yet (other than API docs)
-  * Custom context menus - Justin
-    No docs yet (he volunteered to do something after 3.7)
-  * CupertinoListSelection, CupertinoListTile (new Cupertino) - Mitchell Goodwin
-  * AnimatedGrid, AnimatedSliverGrid (new widgets) - Kate
-  * Material 3 - what had been worked on? started? who in eng owns this?
-  * Global selection improvements - ChunHeng Tai (chtai)
-  * magnification property (who owns this? - I asked Justin)
-    No docs yet (other than API docs)
+    Ainda sem documentos (além dos documentos da API)
+  * Menus em cascata (M3) - Greg Spencer
+    Ainda sem documentos (além dos documentos da API)
+  * Menus de contexto personalizados - Justin
+    Ainda sem documentos (ele se ofereceu para fazer algo depois do 3.7)
+  * CupertinoListSelection, CupertinoListTile (novo Cupertino) - Mitchell Goodwin
+  * AnimatedGrid, AnimatedSliverGrid (novos widgets) - Kate
+  * Material 3 - o que foi trabalhado? iniciado? quem na eng possui isso?
+  * Melhorias de seleção global - ChunHeng Tai (chtai)
+  * propriedade magnification (quem possui isso? - perguntei ao Justin)
+    Ainda sem documentos (além dos documentos da API)
     <https://main-api.flutterbrasil.dev/flutter/material/TextField/magnifierConfiguration.html>
-  * Implementing iOS PlatformView BackdropFilter. (Blur) - Leigha and Chris Yang
+  * Implementando iOS PlatformView BackdropFilter. (Blur) - Leigha e Chris Yang
     <https://docs.google.com/document/d/1V7Jc_RGaknrBBPPBBKB8lT7f3PKhYr8sin35MSMFAf4/edit>
-  * Memory management updates - Zach Anderson
-  * toImageSync - new API for rendering improvement - Zach Anderson
-    Nope, nothing available
-  * Font asset hot reload - Jonah
+  * Atualizações de gerenciamento de memória - Zach Anderson
+  * toImageSync - nova API para melhoria de renderização - Zach Anderson
+    Nada disponível
+  * Hot reload de asset de fonte - Jonah
 {% endcomment -%}
 
 [Add a Flutter screen to an iOS app]: /add-to-app/ios/add-flutter-screen
@@ -702,46 +696,46 @@ and [Introducing Dart 3 alpha][].
 [Writing and using fragment shaders]: /ui/design/graphics/fragment-shaders
 [Writing custom platform-specific code]: /platform-integration/platform-channels
 
-**Codelabs and workshops**
+**Codelabs e workshops**
 
-We have new codelabs since the last stable release:
+Temos novos codelabs desde o último lançamento stable:
 
-* [Your first Flutter app][]<br>
-  Learn about Flutter as you build an application that
-  generates cool-sounding names, such as "newstay",
-  "lightstream", "mainbrake", or "graypine".
-  The user can ask for the next name, favorite the current one,
-  and review the list of favorited names on a separate page.
-  The final app is responsive to different screen sizes.
-  (Note that this codelab replaces the previous "Write
-  your first Flutter codelab for mobile, part 1 and part 2.")
-* [Using FFI in a Flutter plugin][]<br>
-  Dart's FFI (foreign function interface) allows Flutter apps
-  to use of existing native libraries that expose a C API.
-  Dart supports FFI on Android, iOS, Windows, macOS, and Linux.
-* [Building a game with Flutter and Flame][]<br>
-  Learn how to build a platformer game with Flutter and Flame!
-  In the Doodle Dash game, inspired by Doodle Jump,
-  you play as either Dash (the Flutter mascot),
-  or her best friend Sparky (the Firebase mascot),
-  and try to reach as high as possible by jumping on platforms.
-* [Add a user authentication flow to a Flutter app using FirebaseUI][]<br>
-  Learn how to add Firebase Authentication to your Flutter app
-  using the FlutterFire UI package. You'll add both email/password
-  and Google Sign In authorization to a Flutter app. You'll also learn
-  how to set up a Firebase project,
-  and use the FlutterFire CLI to initialize Firebase in your Flutter app.
-* [Local development for your Flutter apps using the Firebase Emulator Suite][]<br>
-  Learn how to use the Firebase Emulator Suite with Flutter during local development,
-  including how to use email-password authentication with the Emulator Suite,
-  and how to read and write data to the Firestore emulator. Also, you'll import
-  and export data from the emulators, to work with the same faked data each
-  time you return to development.
+* [Seu primeiro app Flutter][Your first Flutter app]<br>
+  Aprenda sobre Flutter enquanto constrói um aplicativo que
+  gera nomes legais, como "newstay",
+  "lightstream", "mainbrake", ou "graypine".
+  O usuário pode pedir o próximo nome, favoritar o atual,
+  e revisar a lista de nomes favoritados em uma página separada.
+  O app final é responsivo a diferentes tamanhos de tela.
+  (Observe que este codelab substitui o anterior "Escreva
+  seu primeiro codelab Flutter para mobile, parte 1 e parte 2".)
+* [Usando FFI em um plugin Flutter][Using FFI in a Flutter plugin]<br>
+  O FFI (foreign function interface) do Dart permite que apps Flutter
+  usem bibliotecas nativas existentes que expõem uma API C.
+  Dart suporta FFI no Android, iOS, Windows, macOS e Linux.
+* [Construindo um jogo com Flutter e Flame][Building a game with Flutter and Flame]<br>
+  Aprenda como construir um jogo de plataforma com Flutter e Flame!
+  No jogo Doodle Dash, inspirado em Doodle Jump,
+  você joga como Dash (o mascote do Flutter),
+  ou sua melhor amiga Sparky (o mascote do Firebase),
+  e tenta alcançar o mais alto possível pulando em plataformas.
+* [Adicionar um fluxo de autenticação de usuário a um app Flutter usando FirebaseUI][Add a user authentication flow to a Flutter app using FirebaseUI]<br>
+  Aprenda como adicionar Firebase Authentication ao seu app Flutter
+  usando o pacote FlutterFire UI. Você adicionará autenticação por email/senha
+  e Google Sign In ao app Flutter. Você também aprenderá
+  como configurar um projeto Firebase,
+  e usar o FlutterFire CLI para inicializar Firebase no seu app Flutter.
+* [Desenvolvimento local para seus apps Flutter usando o Firebase Emulator Suite][Local development for your Flutter apps using the Firebase Emulator Suite]<br>
+  Aprenda como usar o Firebase Emulator Suite com Flutter durante o desenvolvimento local,
+  incluindo como usar autenticação por email-senha com o Emulator Suite,
+  e como ler e escrever dados no emulador do Firestore. Além disso, você importará
+  e exportará dados dos emuladores, para trabalhar com os mesmos dados fictícios cada
+  vez que retornar ao desenvolvimento.
 
-In addition, we've updated all of our existing
-codelabs to support multiplatform.
-The [codelabs & workshops][] page is updated
-to reflect the latest available codelabs.
+Além disso, atualizamos todos os nossos codelabs existentes
+para suportar multiplataforma.
+A página [codelabs & workshops][] foi atualizada
+para refletir os codelabs mais recentes disponíveis.
 
 [Add a user authentication flow to a Flutter app using FirebaseUI]: {{site.firebase}}/codelabs/firebase-auth-in-flutter-apps
 [Building a game with Flutter and Flame]: {{site.codelabs}}/codelabs/flutter-flame-game
@@ -750,23 +744,23 @@ to reflect the latest available codelabs.
 [Using FFI in a Flutter plugin]: {{site.codelabs}}/codelabs/flutter-ffigen
 [Your first Flutter app]: {{site.codelabs}}/codelabs/flutter-codelab-first
 
-**Articles**
+**Artigos**
 
-We've published the following articles on the [Flutter Medium][]
-publication since the last stable release:
+Publicamos os seguintes artigos na publicação [Flutter Medium][]
+desde o último lançamento stable:
 
-* [What's next for Flutter][]
-* [Adapting Wonderous to larger device formats][]
-* [What's new in Flutter 3.7][3.7 blog post]
-* [Announcing the Flutter News Toolkit][]
-* [How it's made: Holobooth][]
-* [Playful typography with Flutter][]
-* [Material 3 for Flutter][]
-* [Introducing background isolate channels][]
-* [How can we improve the Flutter experience for desktop?][]
-* [What we learned from the Flutter Q3 2022 survey][]
-* [Supporting six platforms with two keyboards][]
-* [Studying developer's usage of IDEs for Flutter development][]
+* [Próximos passos para o Flutter][What's next for Flutter]
+* [Adaptando Wonderous a formatos de dispositivos maiores][Adapting Wonderous to larger device formats]
+* [Novidades no Flutter 3.7][3.7 blog post]
+* [Anunciando o Flutter News Toolkit][Announcing the Flutter News Toolkit]
+* [Como foi feito: Holobooth][How it's made: Holobooth]
+* [Tipografia divertida com Flutter][Playful typography with Flutter]
+* [Material 3 para Flutter][Material 3 for Flutter]
+* [Apresentando canais de background de isolates][Introducing background isolate channels]
+* [Como podemos melhorar a experiência do Flutter para desktop?][How can we improve the Flutter experience for desktop?]
+* [O que aprendemos com a pesquisa Q3 2022 do Flutter][What we learned from the Flutter Q3 2022 survey]
+* [Suportando seis plataformas com dois teclados][Supporting six platforms with two keyboards]
+* [Estudando o uso de IDEs pelos desenvolvedores para desenvolvimento Flutter][Studying developer's usage of IDEs for Flutter development]
 
 [Announcing the Flutter News Toolkit]: {{site.flutter-blog}}/announcing-the-flutter-news-toolkit-180a0d32c012
 [Adapting Wonderous to larger device formats]: {{site.flutter-blog}}/adapting-wonderous-to-larger-device-formats-ac51e1c00bc0
@@ -779,42 +773,42 @@ publication since the last stable release:
 [Supporting six platforms with two keyboards]: {{site.medium}}/flutter/what-we-learned-from-the-flutter-q3-2022-survey-9b78803accd2
 [What we learned from the Flutter Q3 2022 survey]: {{site.medium}}/flutter/what-we-learned-from-the-flutter-q3-2022-survey-9b78803accd2
 
-## 31 Aug 2022: Flutter Vikings: 3.3 release
+## 31 de agosto de 2022: Flutter Vikings: lançamento 3.3
 
-Flutter 3.3 is live! For more information, see
+Flutter 3.3 está disponível! Para mais informações, veja
 
-[What's new in Flutter 3.3][],
-and [Dart 2.18: Objective-C & Swift interop][] (free articles on Medium),
-and the [Flutter 3.3 release notes][3.3 release notes].
+[Novidades no Flutter 3.3][What's new in Flutter 3.3],
+e [Dart 2.18: Interoperabilidade Objective-C & Swift][Dart 2.18: Objective-C & Swift interop] (artigos gratuitos no Medium),
+e as [notas de lançamento do Flutter 3.3][3.3 release notes].
 
 [3.3 release notes]: /release/release-notes/release-notes-3.3.0
 [Dart 2.18: Objective-C & Swift interop]: {{site.medium}}/dartlang/dart-2-18-f4b3101f146c
 [What's new in Flutter 3.3]: {{site.medium}}/flutter/whats-new-in-flutter-3-3-893c7b9af1ff
 
-**Docs updated or added since the 3.0 release**
+**Documentos atualizados ou adicionados desde o lançamento 3.0**
 
-* The [navigation and routing overview][] page has been
-  rewritten with more guidance on using `Navigator`
-  and `Router` together, named routes, and
-  using a routing package.
-* The [URL strategies][] page has also been updated
-  to reflect a more streamlined API.
-* For apps not published to the Microsoft Store, you
-  can now set the app's executable's file and
-  product versions in the pubspec file.
-  For more information, see
-  [Build and release a Windows desktop app][].
-* If you are developing software for iOS 16 and higher,
-  you must enable [Developer mode][].
-  The macOS [install page][] is updated
-  with this information.
-* As described in the [3.3 release notes][],
-  you should catch all errors and exceptions
-  in your app by setting
-  the `PlatformDispatcher.onError` callback,
-  instead of using a custom `Zone`.
-  The [Handling errors in Flutter][]
-  page has been updated with this advice.
+* A página de [visão geral de navegação e roteamento][navigation and routing overview] foi
+  reescrita com mais orientações sobre como usar `Navigator`
+  e `Router` juntos, rotas nomeadas e
+  usar um pacote de roteamento.
+* A página [Estratégias de URL][URL strategies] também foi atualizada
+  para refletir uma API mais simplificada.
+* Para apps não publicados na Microsoft Store, agora você
+  pode definir as versões de arquivo e produto do executável do app
+  no arquivo pubspec.
+  Para mais informações, veja
+  [Construir e lançar um app desktop Windows][Build and release a Windows desktop app].
+* Se você está desenvolvendo software para iOS 16 e superior,
+  você deve habilitar o [modo Desenvolvedor][Developer mode].
+  A [página de instalação][install page] do macOS foi atualizada
+  com esta informação.
+* Conforme descrito nas [notas de lançamento 3.3][],
+  você deve capturar todos os erros e exceções
+  no seu app definindo
+  o callback `PlatformDispatcher.onError`,
+  em vez de usar uma `Zone` personalizada.
+  A página [Tratamento de erros no Flutter][Handling errors in Flutter]
+  foi atualizada com este conselho.
 
 [Build and release a Windows desktop app]: /deployment/windows
 [Developer mode]: {{site.apple-dev}}/documentation/xcode/enabling-developer-mode-on-a-device
@@ -823,59 +817,59 @@ and the [Flutter 3.3 release notes][3.3 release notes].
 [navigation and routing overview]: /ui/navigation
 [URL strategies]: /ui/navigation/url-strategies
 
-## 11 May 2022: Google I/O 2022: Flutter 3 release
+## 11 de maio de 2022: Google I/O 2022: lançamento Flutter 3
 
-Flutter 3 is live!!! For more information, see
-[Introducing Flutter 3][], [What's new in Flutter 3][],
-and [Dart 2.17: Productivity and integration][]
-(free articles on Medium),
-and the [Flutter 3 release notes][].
+Flutter 3 está disponível!!! Para mais informações, veja
+[Apresentando Flutter 3][Introducing Flutter 3], [Novidades no Flutter 3][What's new in Flutter 3],
+e [Dart 2.17: Produtividade e integração][Dart 2.17: Productivity and integration]
+(artigos gratuitos no Medium),
+e as [notas de lançamento do Flutter 3][Flutter 3 release notes].
 
 [Dart 2.17: Productivity and integration]: {{site.medium}}/dartlang/dart-2-17-b216bfc80c5d
 [Flutter 3 release notes]: /release/release-notes/release-notes-3.0.0
 [Introducing Flutter 3]: {{site.medium}}/flutter/introducing-flutter-3-5eb69151622f
 [What's new in Flutter 3]: {{site.medium}}/flutter/whats-new-in-flutter-3-8c74a5bc32d0
 
-**Docs updated or added since the 2.10 release**
+**Documentos atualizados ou adicionados desde o lançamento 2.10**
 
-* We have launched the Casual Games Toolkit
-  to help you build games with Flutter.
-  Learn more on the [Games page][] and the
-  [Games doc page][].
-* Are you struggling to level up as a Flutter
-  developer? We have created the Happy paths
-  project to help. Learn more on the
-  Happy paths page.
-  (Note, this program has been discontinued
-  in favor of the [Flutter Favorite Program][].)
-* Are you a web developer who would like more
-  control over your app's launch process?
-  Check out the new page,
-  [Customizing web app initialization][],
-  which has been added to the newly updated
-  and collected web docs under
+* Lançamos o Casual Games Toolkit
+  para ajudá-lo a construir jogos com Flutter.
+  Saiba mais na [página de Games][Games page] e na
+  [página de documentos de Games][Games doc page].
+* Você está lutando para evoluir como desenvolvedor
+  Flutter? Criamos o projeto Happy paths
+  para ajudar. Saiba mais na
+  página Happy paths.
+  (Observe que este programa foi descontinuado
+  em favor do [Programa Flutter Favorite][Flutter Favorite Program].)
+* Você é um desenvolvedor web que gostaria de mais
+  controle sobre o processo de inicialização do seu app?
+  Confira a nova página,
+  [Personalizando a inicialização de app web][Customizing web app initialization],
+  que foi adicionada aos documentos web recém-atualizados
+  e coletados em
   `/platform-integration/web`.
-* Flutter 3 supports Apple Silicon processors.
-  We've updated the macOS [install page][]
-  to offer an Apple Silicon download button.
-* In Flutter 3, the macOS and Linux platforms
-  have reached stable, in addition to Windows.
-  You can now develop your app to run on any
-  or all of these platforms. As a result,
-  the [Desktop][] (and related) pages are updated.
-* The [Performance best practices][] page has
-  largely been rewritten and moved to be more visible.
-  The changes include additional advice on avoiding jank,
-  including how to minimize layout passes caused
-  by intrinsics, and techniques to minimize
-  calls to `saveLayer()`.
-* Firebase's Flutter docs have been overhauled.
-  Check out the newly updated
-  [Flutter Firebase get started guide][].
-* The [dartbrasil.dev][] site has its own [what's new][dart-whats-new]
-  page, but one new page of note is the guide,
-  [Learning Dart as a JavaScript developer][js-to-dart].
-  Stay tuned for similar articles on Swift and C#.
+* Flutter 3 suporta processadores Apple Silicon.
+  Atualizamos a [página de instalação][install page] do macOS
+  para oferecer um botão de download do Apple Silicon.
+* No Flutter 3, as plataformas macOS e Linux
+  atingiram stable, além do Windows.
+  Agora você pode desenvolver seu app para rodar em qualquer
+  ou todas essas plataformas. Como resultado,
+  as páginas [Desktop][] (e relacionadas) foram atualizadas.
+* A página [Melhores práticas de performance][Performance best practices] foi
+  amplamente reescrita e movida para ser mais visível.
+  As mudanças incluem conselhos adicionais sobre como evitar jank,
+  incluindo como minimizar passes de layout causados
+  por intrinsics, e técnicas para minimizar
+  chamadas a `saveLayer()`.
+* Os documentos Flutter do Firebase foram reformulados.
+  Confira o recém-atualizado
+  [guia de introdução ao Flutter Firebase][Flutter Firebase get started guide].
+* O site [dartbrasil.dev][] tem sua própria página [novidades][dart-whats-new],
+  mas uma nova página de destaque é o guia,
+  [Aprendendo Dart como desenvolvedor JavaScript][Learning Dart as a JavaScript developer].
+  Fique atento para artigos similares sobre Swift e C#.
 
 [dart-whats-new]: {{site.dart-site}}/guides/whats-new
 [dartbrasil.dev]: {{site.dart-site}}
@@ -883,41 +877,40 @@ and the [Flutter 3 release notes][].
 [Flutter Firebase get started guide]: {{site.firebase}}/docs/flutter/setup
 [Games page]: {{site.main-url}}/games
 [Games doc page]: /resources/games-toolkit
-[js-to-dart]: {{site.dart-site}}/guides/language/coming-from/js-to-dart
-[install page]: /get-started
+[Learning Dart as a JavaScript developer]: {{site.dart-site}}/guides/language/coming-from/js-to-dart
 
-**Codelabs and workshops**
+**Codelabs e workshops**
 
-We have a new codelab since the last stable release:
+Temos um novo codelab desde o último lançamento stable:
 
-* [Take your Flutter app from boring to beautiful][]
-  Learn how to use features in Material 3 to make your
-  more beautiful _and_ more responsive.
+* [Transforme seu app Flutter de chato para bonito][Take your Flutter app from boring to beautiful]
+  Aprenda como usar recursos no Material 3 para tornar seu app
+  mais bonito _e_ mais responsivo.
 
-Also, check out the workshops written by our GDEs
-and available on the [Flutter community blog][].
+Além disso, confira os workshops escritos por nossos GDEs
+e disponíveis no [blog da comunidade Flutter][Flutter community blog].
 
 [Flutter community blog]: {{site.medium}}/@flutter_community/622b52f70173
 [Take your Flutter app from boring to beautiful]: {{site.codelabs}}/codelabs/flutter-boring-to-beautiful
 
-**Videos**
+**Vídeos**
 
-Google I/O 2022 is over, but you can still check out
-the Flutter-specific updates and talks from Google I/O
-on the [videos] page.
+Google I/O 2022 acabou, mas você ainda pode conferir
+as atualizações e palestras específicas do Flutter do Google I/O
+na página [vídeos][videos].
 
 [videos]: /resources/videos
 
 ---
 
-## 03 Feb 2022: Windows Support: 2.10 release
+## 03 de fevereiro de 2022: Suporte Windows: lançamento 2.10
 
-Desktop support for Microsoft Windows
-(a central feature of the 2.10 release) is live!
-For more information, see
-[Announcing Flutter for Windows][]
-and [What's new in Flutter 2.10][],
-free articles on Medium.
+O suporte desktop para Microsoft Windows
+(um recurso central do lançamento 2.10) está disponível!
+Para mais informações, veja
+[Anunciando Flutter para Windows][Announcing Flutter for Windows]
+e [Novidades no Flutter 2.10][What's new in Flutter 2.10],
+artigos gratuitos no Medium.
 
 <YouTubeEmbed id="g-0B_Vfc9qM" title="Flutter Update: Windows"></YouTubeEmbed>
 
@@ -926,42 +919,42 @@ free articles on Medium.
 
 ---
 
-## 08 Dec 2021: 2.8 release
+## 08 de dezembro de 2021: lançamento 2.8
 
-Flutter 2.8 is live! For details, see
-[Announcing Flutter 2.8][] and
-[What's new in Flutter 2.8][].
+Flutter 2.8 está disponível! Para detalhes, veja
+[Anunciando Flutter 2.8][Announcing Flutter 2.8] e
+[Novidades no Flutter 2.8][What's new in Flutter 2.8].
 
 [Announcing Flutter 2.8]: {{site.flutter-blog}}/announcing-flutter-2-8-31d2cb7e19f5
 [What's new in Flutter 2.8]: {{site.flutter-blog}}/whats-new-in-flutter-2-8-d085b763d181
 
-## 08 Sep 2021: 2.5 release
+## 08 de setembro de 2021: lançamento 2.5
 
-Flutter 2.5 is live! For details, see
-[What's new in Flutter 2.5][].
+Flutter 2.5 está disponível! Para detalhes, veja
+[Novidades no Flutter 2.5][What's new in Flutter 2.5].
 
-We've made significant changes to flutter/website
-repo to make it easier to use and maintain.
-If you contribute to this repo, see the [README][] file
-for more information.
+Fizemos mudanças significativas no repositório flutter/website
+para torná-lo mais fácil de usar e manter.
+Se você contribui para este repositório, veja o arquivo [README][]
+para mais informações.
 
-**Docs updated or added since the 2.2 release**
+**Documentos atualizados ou adicionados desde o lançamento 2.2**
 
-* A new page on [Using Actions and Shortcuts][].
+* Uma nova página sobre [Usando Actions e Shortcuts][Using Actions and Shortcuts].
 
-**Articles**
+**Artigos**
 
-We've published the following articles on the [Flutter Medium][]
-publication since the last stable release:
+Publicamos os seguintes artigos na publicação [Flutter Medium][]
+desde o último lançamento stable:
 
-* [Raster thread performance optimization tips][]
-* [Writing a good code sample][]
-* [GSoC'21: Creating a desktop sample for Flutter][]
+* [Dicas de otimização de performance da thread raster][Raster thread performance optimization tips]
+* [Escrevendo um bom exemplo de código][Writing a good code sample]
+* [GSoC'21: Criando um exemplo desktop para Flutter][GSoC'21: Creating a desktop sample for Flutter]
 * [Flutter Hot Reload][]
-* [What can we do to better improve Flutter?][]
-* [Adding Flutter to your existing iOS and Android codebases][]
-* [Google I/O Spotlight: Flutter in action at ByteDance][]
-* [Improving Platform Channel Performance in Flutter][]
+* [O que podemos fazer para melhorar o Flutter?][What can we do to better improve Flutter?]
+* [Adicionando Flutter aos seus codebases iOS e Android existentes][Adding Flutter to your existing iOS and Android codebases]
+* [Destaque do Google I/O: Flutter em ação na ByteDance][Google I/O Spotlight: Flutter in action at ByteDance]
+* [Melhorando performance de Platform Channel no Flutter][Improving Platform Channel Performance in Flutter]
 
 [Adding Flutter to your existing iOS and Android codebases]: {{site.flutter-blog}}/adding-flutter-to-your-existing-ios-and-android-codebases-3e2c5a4797c1
 [What's new in Flutter 2.5]: {{site.flutter-blog}}/whats-new-in-flutter-2-5-6f080c3f3dc
@@ -977,76 +970,76 @@ publication since the last stable release:
 
 ---
 
-## 18 May 2021: Google I/O 2021: 2.2 release
+## 18 de maio de 2021: Google I/O 2021: lançamento 2.2
 
-Flutter 2.2 is live! For details, see
-[Announcing Flutter 2.2][] and
-[What's New in Flutter 2.2][].
+Flutter 2.2 está disponível! Para detalhes, veja
+[Anunciando Flutter 2.2][Announcing Flutter 2.2] e
+[Novidades no Flutter 2.2][What's New in Flutter 2.2].
 
-We continue migrating code on the website to use
-null safety, but that work is not yet completed.
+Continuamos migrando código no site para usar
+null safety, mas esse trabalho ainda não está completo.
 
-**Docs updated or added since the 2.0 release**
+**Documentos atualizados ou adicionados desde o lançamento 2.0**
 
-* A new page on Building adaptive apps.
-* A new page describing how to use [Google APIs][]
-  with Flutter.
-* A new landing page for [Embedded Support for Flutter][].
-* A new page on setting up and using [Deferred components][]
-  on Android.
-* Significant updates to the DevTools [Memory view page][].
-* The [desktop][] page is updated to reflect the progress
-  on desktop support, particularly the new support for
+* Uma nova página sobre Construindo apps adaptativos.
+* Uma nova página descrevendo como usar [APIs Google][Google APIs]
+  com Flutter.
+* Uma nova landing page para [Suporte Embarcado para Flutter][Embedded Support for Flutter].
+* Uma nova página sobre configuração e uso de [Componentes diferidos][Deferred components]
+  no Android.
+* Atualizações significativas na página [visualização de Memória do DevTools][Memory view page].
+* A página [desktop][] foi atualizada para refletir o progresso
+  no suporte desktop, particularmente o novo suporte para
   Windows UWP.
 
 {% comment %}
 
-* migration guides (drag gestures and package:flutter_lints, depending)
+* guias de migração (gestos de arrasto e package:flutter_lints, dependendo)
 {% endcomment %}
 
 **Codelabs**
 
-New codelabs since the last stable release:
+Novos codelabs desde o último lançamento stable:
 
-* [Adding in-app purchases to your Flutter app][]
-* [Build Voice Bots for Android with Dialogflow Essentials & Flutter][]
-* [Get to know Firebase for Flutter][]
+* [Adicionando compras no app ao seu app Flutter][Adding in-app purchases to your Flutter app]
+* [Construir Voice Bots para Android com Dialogflow Essentials & Flutter][Build Voice Bots for Android with Dialogflow Essentials & Flutter]
+* [Conhecer Firebase para Flutter][Get to know Firebase for Flutter]
 
 **Workshops**
 
-For Google I/O 2021, we have added a new
-Flutter/Dart learning tool that
-is based on DartPad: **Workshops!**
-These workshops are designed to be instructor led.
-The instructor-led videos are available on the
-Flutter and Firebase YouTube channels:
+Para o Google I/O 2021, adicionamos uma nova
+ferramenta de aprendizado Flutter/Dart que
+é baseada no DartPad: **Workshops!**
+Esses workshops são projetados para serem conduzidos por instrutor.
+Os vídeos conduzidos por instrutor estão disponíveis nos
+canais do YouTube do Flutter e Firebase:
 
-* [Building your first Flutter app][]
-* [Firebase for Flutter][]
-* [Flutter and Dialogflow voice bots][]
+* [Construindo seu primeiro app Flutter][Building your first Flutter app]
+* [Firebase para Flutter][Firebase for Flutter]
+* [Voice bots Flutter e Dialogflow][Flutter and Dialogflow voice bots]
 * [Inherited widgets][]
 * [Null safety][]
 * [Slivers][]
 
-To see the event list of "all things Flutter" at I/O,
-see the [Google 2021 I/O Flutter][] page.
+Para ver a lista de eventos de "tudo sobre Flutter" no I/O,
+veja a página [Google 2021 I/O Flutter][].
 
-You can author your own DartPad workshops!
-If you are interested, check out the following resources:
+Você pode criar seus próprios workshops DartPad!
+Se estiver interessado, confira os seguintes recursos:
 
-* [DartPad Workshop Authoring Guide][]
-* [DartPad Sharing Guide (using a Gist file)][]
-* [Embedding DartPad in your web page][]
+* [Guia de Autoria de Workshop DartPad][DartPad Workshop Authoring Guide]
+* [Guia de Compartilhamento DartPad (usando arquivo Gist)][DartPad Sharing Guide (using a Gist file)]
+* [Incorporando DartPad na sua página web][Embedding DartPad in your web page]
 
 [Google 2021 I/O Flutter]: https://events.google.com/io/program/content?4=topic_flutter
 
-**Articles**
+**Artigos**
 
-We've published the following articles on the [Flutter Medium][]
-publication since the last stable release:
+Publicamos os seguintes artigos na publicação [Flutter Medium][]
+desde o último lançamento stable:
 
-* [How It's Made: I/O Photo Booth][]
-* [Which factors affected users' decisions to adopt Flutter? - Q1 2021 user survey results][Q1 2021 survey]
+* [Como foi feito: I/O Photo Booth][How It's Made: I/O Photo Booth]
+* [Quais fatores afetaram as decisões dos usuários de adotar o Flutter? - Resultados da pesquisa de usuários Q1 2021][Q1 2021 survey]
 
 [Adding in-app purchases to your Flutter app]: {{site.codelabs}}/codelabs/flutter-in-app-purchases
 [Announcing Flutter 2.2]: {{site.flutter-blog}}/announcing-flutter-2-2-at-google-i-o-2021-92f0fcbd7ef9
@@ -1071,75 +1064,74 @@ publication since the last stable release:
 
 ---
 
-## 03 Mar 2021: Flutter Engage: 2.0 release
+## 03 de março de 2021: Flutter Engage: lançamento 2.0
 
-Flutter 2 is live!!!  For more information, see
-[Announcing Flutter 2][], [What's new in Flutter 2][],
-[Flutter web support hits the stable milestone][],
-[Announcing Dart 2.12][],
-and the [Flutter 2 release notes][].
+Flutter 2 está disponível!!! Para mais informações, veja
+[Anunciando Flutter 2][], [Novidades no Flutter 2][What's new in Flutter 2],
+[Suporte web do Flutter atinge o marco stable][Flutter web support hits the stable milestone],
+[Anunciando Dart 2.12][Announcing Dart 2.12],
+e as [notas de lançamento do Flutter 2][Flutter 2 release notes].
 
-**Docs updated or added since the 1.22 release**
+**Documentos atualizados ou adicionados desde o lançamento 1.22**
 
-* A new [Who is Dash?][] page!
-* Information about monetizing your apps has been
-  collected in the new [Flutter Ads][] landing page.
-* Added a new page explaining the [Flutter Fix][]
-  feature and how to use it.
-* New and updated web pages, including:
-  * [Web support for Flutter][]
-  * [Configuring the URL strategy on the web][]
-  * [Web FAQ][]
-* The [Desktop support for Flutter][] page is updated,
-  as well as other pages on the site that discuss
-  desktop support.
-* The [DevTools][] docs have been updated. The
-  most significant updates are to the following page:
-  * [Flutter inspector][]
-* Added a page on how to [implement deep linking][]
-  for mobile and web.
-* Updated the [Creating responsive and adaptive apps][]
-  page.
-* Many pages (including all codelabs on flutterbrasil.dev)
-  and examples are updated to be null safe.
-* Added two new add to app pages:
-  * [Using multiple Flutter instances][]
-  * [Adding a Flutter view to an Android app][]
-* Added a page on how to [write integration tests using
-  the integration_test package][].
-* Significant updates to the [internationalization][] page.
-* New and updated [performance][] pages, including:
-  * [Performance metrics][]
-  * [Performance faq][]
-  * [More thoughts about performance][]
+* Uma nova página [Quem é Dash?][Who is Dash?]!
+* Informações sobre monetização de seus apps foram
+  coletadas na nova landing page [Flutter Ads][].
+* Adicionada uma nova página explicando o recurso [Flutter Fix][]
+  e como usá-lo.
+* Páginas web novas e atualizadas, incluindo:
+  * [Suporte web para Flutter][Web support for Flutter]
+  * [Configurando a estratégia de URL na web][Configuring the URL strategy on the web]
+  * [FAQ Web][Web FAQ]
+* A página [Suporte desktop para Flutter][Desktop support for Flutter] foi atualizada,
+  bem como outras páginas no site que discutem
+  suporte desktop.
+* Os documentos [DevTools][] foram atualizados. As
+  atualizações mais significativas são na seguinte página:
+  * [Inspetor Flutter][Flutter inspector]
+* Adicionada uma página sobre como [implementar deep linking][implement deep linking]
+  para mobile e web.
+* Atualizada a página [Criando apps responsivos e adaptativos][Creating responsive and adaptive apps].
+* Muitas páginas (incluindo todos os codelabs no flutterbrasil.dev)
+  e exemplos foram atualizados para serem null safe.
+* Adicionadas duas novas páginas add to app:
+  * [Usando múltiplas instâncias do Flutter][Using multiple Flutter instances]
+  * [Adicionando uma visualização Flutter a um app Android][Adding a Flutter view to an Android app]
+* Adicionada uma página sobre como [escrever testes de integração usando
+  o pacote integration_test][write integration tests using the integration_test package].
+* Atualizações significativas na página [internacionalização][internationalization].
+* Páginas de [performance][] novas e atualizadas, incluindo:
+  * [Métricas de performance][Performance metrics]
+  * [FAQ de performance][Performance faq]
+  * [Mais reflexões sobre performance][More thoughts about performance]
 
 **Codelabs**
 
-Many of our codelabs have been updated to null safety.
-We've also added a new codelab since the last stable release:
+Muitos de nossos codelabs foram atualizados para null safety.
+Também adicionamos um novo codelab desde o último lançamento stable:
 
-* [Adding AdMob banner and native inline ads to a Flutter app][]
+* [Adicionando anúncios AdMob banner e native inline a um app Flutter][Adding AdMob banner and native inline ads to a Flutter app]
 
-For a complete list, see [Flutter codelabs][].
+Para uma lista completa, veja [Codelabs Flutter][Flutter codelabs].
 
-**Articles**
+**Artigos**
 
-We've published the following articles on the [Flutter Medium][]
-publication since the last stable release:
+Publicamos os seguintes artigos na publicação [Flutter Medium][]
+desde o último lançamento stable:
 
-* [Flutter performance updates in the first half of 2020][perf-H1-2020]
-* [Are you happy with Flutter? - Q4 2020 user survey results][Q4]
-* [Join us for #30DaysOfFlutter][]
-* [Providing operating system compatibility on a large scale][comp]
-* [Updates on Flutter Testing][]
-* [Announcing Dart null safety beta][]
-* [Deprecation Lifetime in Flutter][]
-* [New ad formats for Flutter][]
-* [Accessible expression with Material Icons and Flutter][]
-* [Dart sound null safety: technical preview 2][]
-* [Flutter on the web, slivers, and platform-specific issues: user survey results from Q3 2020][Q3]
-* [Testable Flutter and Cloud Firestore][]
-* [Performance testing on the web][]
+* [Atualizações de performance do Flutter na primeira metade de 2020][perf-H1-2020]
+* [Você está feliz com o Flutter? - Resultados da pesquisa de usuários Q4 2020][Q4]
+* [Junte-se a nós para #30DaysOfFlutter][Join us for #30DaysOfFlutter]
+* [Fornecendo compatibilidade de sistema operacional em grande escala][comp]
+* [Atualizações sobre testes do Flutter][Updates on Flutter Testing]
+* [Anunciando beta de null safety do Dart][Announcing Dart null safety beta]
+* [Tempo de vida de descontinuação no Flutter][Deprecation Lifetime in Flutter]
+* [Novos formatos de anúncio para Flutter][New ad formats for Flutter]
+* [Expressão acessível com Material Icons e Flutter][Accessible expression with Material Icons and Flutter]
+* [Null safety sólido do Dart: preview técnico 2][Dart sound null safety: technical preview 2]
+* [Flutter na web, slivers e problemas específicos de plataforma: resultados da pesquisa de usuários do Q3 2020][Q3]
+* [Flutter testável e Cloud Firestore][Testable Flutter and Cloud Firestore]
+* [Testes de performance na web][Performance testing on the web]
 
 [Accessible expression with Material Icons and Flutter]: {{site.flutter-blog}}/accessible-expression-with-material-icons-and-flutter-e3f3f622200b
 [Adding AdMob banner and native inline ads to a Flutter app]: {{site.codelabs}}/codelabs/admob-inline-ads-in-flutter
@@ -1181,55 +1173,55 @@ publication since the last stable release:
 
 ---
 
-## 01 Oct 2020: 1.22 release
+## 01 de outubro de 2020: lançamento 1.22
 
-Flutter 1.22 is live! For details, see
-[Announcing Flutter 1.22][].
+Flutter 1.22 está disponível! Para detalhes, veja
+[Anunciando Flutter 1.22][Announcing Flutter 1.22].
 
-**Docs updated or added to flutterbrasil.dev since the 1.20 release**
+**Documentos atualizados ou adicionados ao flutterbrasil.dev desde o lançamento 1.20**
 
-* Updated the [Developing for iOS 14][] page with
-  details about targeting iOS 14 with Flutter, including some
-  Add-to-App, deep linking, and notification considerations.
-* Added a page on how to [add an iOS App Clip][],
-  a new iOS 14 feature that supports running lightweight,
-  no-install apps under 10 MB.
-* Added a page that describes how to [migrate your app to use the
-  new icon glyphs available in
+* Atualizada a página [Desenvolvendo para iOS 14][Developing for iOS 14] com
+  detalhes sobre segmentar iOS 14 com Flutter, incluindo algumas
+  considerações sobre Add-to-App, deep linking e notificações.
+* Adicionada uma página sobre como [adicionar um iOS App Clip][add an iOS App Clip],
+  um novo recurso do iOS 14 que suporta executar apps leves,
+  sem instalação com menos de 10 MB.
+* Adicionada uma página que descreve como [migrar seu app para usar os
+  novos glifos de ícones disponíveis em
   `CupertinoIcons`][cupertino-icons].
-* Added a page that describes the new implementation for
-  Platform Views and how to use them to host native [Android views]
-  and [iOS views][] in your Flutter app platform-views.
-  This feature has enabled the [google_maps_flutter][]
-  and [webview_flutter][] plugins to be
-  updated to production-ready release 1.0.
-* Added a page that describes how to use the new
-  [App Size tool][] in Dart DevTools.
+* Adicionada uma página que descreve a nova implementação para
+  Platform Views e como usá-las para hospedar [visualizações Android][Android views]
+  e [visualizações iOS][iOS views] nativas em seu app Flutter.
+  Este recurso habilitou os plugins [google_maps_flutter][]
+  e [webview_flutter][] a serem
+  atualizados para lançamento pronto para produção 1.0.
+* Adicionada uma página que descreve como usar a nova
+  [ferramenta App Size][App Size tool] no Dart DevTools.
 
 **Codelabs**
 
-We've added a new codelab since the last stable release:
+Adicionamos um novo codelab desde o último lançamento stable:
 
-* [Building Beautiful Transitions with Material Motion
-  for Flutter][]<br>
-  Learn how to use the Material [animations][] package to
-  add prebuilt transitions to a Material app called Reply.
+* [Construindo Belas Transições com Material Motion
+  para Flutter][Building Beautiful Transitions with Material Motion for Flutter]<br>
+  Aprenda como usar o pacote [animations][] do Material para
+  adicionar transições pré-construídas a um app Material chamado Reply.
 
-For a complete list, see [Flutter codelabs][].
+Para uma lista completa, veja [Codelabs Flutter][Flutter codelabs].
 
-**Articles**
+**Artigos**
 
-We've published the following articles on the [Flutter Medium][]
-publication since the last stable release:
+Publicamos os seguintes artigos na publicação [Flutter Medium][]
+desde o último lançamento stable:
 
-* [Learning Flutter's new navigation and routing][]
-* [Integration testing with flutter_driver][]
-* [Announcing Flutter Windows Alpha][]
-* [Handling web gestures in Flutter][]
-* [Supporting iOS 14 and Xcode 12 with Flutter][]
-* [Learn testing with the new Flutter sample][]
-* [Platform channel examples][]
-* [Updates on Flutter and Firebase][]
+* [Aprendendo o novo sistema de navegação e roteamento do Flutter][Learning Flutter's new navigation and routing]
+* [Testes de integração com flutter_driver][Integration testing with flutter_driver]
+* [Anunciando Flutter Windows Alpha][Announcing Flutter Windows Alpha]
+* [Tratando gestos web no Flutter][Handling web gestures in Flutter]
+* [Suportando iOS 14 e Xcode 12 com Flutter][Supporting iOS 14 and Xcode 12 with Flutter]
+* [Aprender testes com o novo exemplo Flutter][Learn testing with the new Flutter sample]
+* [Exemplos de platform channel][Platform channel examples]
+* [Atualizações sobre Flutter e Firebase][Updates on Flutter and Firebase]
 
 [add an iOS App Clip]: /platform-integration/ios/ios-app-clip
 [animations]: {{site.pub}}/packages/animations
@@ -1251,73 +1243,73 @@ publication since the last stable release:
 [Updates on Flutter and Firebase]: {{site.flutter-blog}}/updates-on-flutter-and-firebase-8076f70bc90e
 [webview_flutter]: {{site.pub}}/packages/webview_flutter
 
-## 05 Aug 2020: 1.20 release
+## 05 de agosto de 2020: lançamento 1.20
 
-Flutter 1.20 is live! For details,
-see [Announcing Flutter 1.20][].
+Flutter 1.20 está disponível! Para detalhes,
+veja [Anunciando Flutter 1.20][Announcing Flutter 1.20].
 
-**Docs updated or added to flutterbrasil.dev**
+**Documentos atualizados ou adicionados ao flutterbrasil.dev**
 
-* [Flutter architectural overview][], a deep dive into Flutter's
-  architecture, was added to the site just a few days after the
-  1.20 release.
-* [Reducing shader compilation jank on mobile][] is added to the
-  performance docs.
-* [Developing for iOS 14 beta][] outlines some issues you might
-  run into if developing for devices running iOS 14 beta.
-* New instructions for installing Flutter on Linux using snapd.
-* Updated the [Desktop support][] page to reflect that Linux
-  desktop apps (as well as macOS) are available as alpha.
-* Several new Flutter books have been published.
-  The Flutter books page has been updated with them.
-* The [codelabs landing][] page has been updated.
+* [Visão geral arquitetural do Flutter][Flutter architectural overview], um mergulho profundo na
+  arquitetura do Flutter, foi adicionado ao site apenas alguns dias após o
+  lançamento 1.20.
+* [Reduzindo jank de compilação de shader em mobile][Reducing shader compilation jank on mobile] foi adicionado aos
+  documentos de performance.
+* [Desenvolvendo para iOS 14 beta][Developing for iOS 14 beta] descreve alguns problemas que você pode
+  encontrar ao desenvolver para dispositivos executando iOS 14 beta.
+* Novas instruções para instalar Flutter no Linux usando snapd.
+* Atualizada a página [Suporte Desktop][Desktop support] para refletir que apps
+  desktop Linux (assim como macOS) estão disponíveis como alpha.
+* Vários novos livros Flutter foram publicados.
+  A página de livros Flutter foi atualizada com eles.
+* A [landing page de codelabs][codelabs landing] foi atualizada.
 
-A deep dive into null safety has been added to dartbrasil.dev:
+Um mergulho profundo em null safety foi adicionado ao dartbrasil.dev:
 
-* [Understanding null safety][]
+* [Entendendo null safety][Understanding null safety]
 
 **Codelabs**
 
-[Flutter Day][] was held on 6/25/2020.
-In preparation for the event,
-we wrote new codelabs and updated existing codelabs.
-New codelabs include:
+[Flutter Day][] foi realizado em 25/06/2020.
+Em preparação para o evento,
+escrevemos novos codelabs e atualizamos codelabs existentes.
+Novos codelabs incluem:
 
-* [Adding Admob Ads to a Flutter app][]
-* [How to write a Flutter plugin][]
-* [Multi-platform Firestore Flutter][]
-* [Using a plugin with a Flutter web app][]
-* [Write a Flutter desktop application][]
+* [Adicionando Admob Ads a um app Flutter][Adding Admob Ads to a Flutter app]
+* [Como escrever um plugin Flutter][How to write a Flutter plugin]
+* [Firestore multiplataforma Flutter][Multi-platform Firestore Flutter]
+* [Usando um plugin com um app web Flutter][Using a plugin with a Flutter web app]
+* [Escrever um aplicativo desktop Flutter][Write a Flutter desktop application]
 
-For a complete list, see [Flutter codelabs][].
+Para uma lista completa, veja [Codelabs Flutter][Flutter codelabs].
 
-**Articles**
+**Artigos**
 
-We've published the following articles on the [Flutter Medium][]
-publication since the last stable release:
+Publicamos os seguintes artigos na publicação [Flutter Medium][]
+desde o último lançamento stable:
 
-* [Announcing Adobe XD support for Flutter][]
-* [What are the important & difficult tasks for Flutter
-     devs? - Q1 2020 survey results][q1-2020]
-* [Optimizing performance in Flutter web apps with tree
-     shaking and deferred loading][shaking]
-* [Flutter Package Ecosystem Update][]
-* [Improving perceived performance with image placeholders,
-     precaching, and disabled navigation transitions][web-perf]
-* [Two Months of #FlutterGoodNewsWednesday][]
-* [Handling 404: Page not found error in Flutter][]
-* [Flutter and Desktop apps][]
-* [What's new with the Slider widget?][]
-* [New tools for Flutter developers, built in Flutter][dev-tools]
-* [Canonical enables Linux desktop app support with
+* [Anunciando suporte Adobe XD para Flutter][Announcing Adobe XD Support for Flutter]
+* [Quais são as tarefas importantes e difíceis para desenvolvedores Flutter?
+     - Resultados da pesquisa Q1 2020][q1-2020]
+* [Otimizando performance em apps web Flutter com tree
+     shaking e deferred loading][shaking]
+* [Atualização do ecossistema de pacotes Flutter][Flutter Package Ecosystem Update]
+* [Melhorando performance percebida com placeholders de imagem,
+     precaching e transições de navegação desabilitadas][web-perf]
+* [Dois meses de #FlutterGoodNewsWednesday][Two Months of #FlutterGoodNewsWednesday]
+* [Tratando 404: Erro de página não encontrada no Flutter][Handling 404: Page not found error in Flutter]
+* [Flutter e apps Desktop][Flutter and Desktop apps]
+* [Novidades do widget Slider?][What's new with the Slider widget?]
+* [Novas ferramentas para desenvolvedores Flutter, construídas em Flutter][dev-tools]
+* [Canonical habilita suporte a apps desktop Linux com
      Flutter][ubuntu]
-* [Enums with Extensions in Dart][]
-* [Managing issues in a large-scale open source project][]
-* [What we learned from the Flutter Q2 2020 survey][]
-* [Building performant Flutter widgets][]
-* [How to debug layout issues with the Flutter Inspector][]
-* [Going deeper with Flutter's web support][]
-* [Flutter Performance Updates in 2019][]
+* [Enums com Extensions no Dart][Enums with Extensions in Dart]
+* [Gerenciando issues em um projeto open source de grande escala][Managing issues in a large-scale open source project]
+* [O que aprendemos com a pesquisa Q2 2020 do Flutter][What we learned from the Flutter Q2 2020 survey]
+* [Construindo widgets Flutter performáticos][Building performant Flutter widgets]
+* [Como depurar problemas de layout com o Flutter Inspector][How to debug layout issues with the Flutter Inspector]
+* [Indo mais fundo com o suporte web do Flutter][Going deeper with Flutter's web support]
+* [Atualizações de Performance do Flutter em 2019][Flutter Performance Updates in 2019]
 
 [Adding Admob Ads to a Flutter app]: {{site.codelabs}}/codelabs/admob-ads-in-flutter/
 [Announcing Adobe XD Support for Flutter]: {{site.flutter-blog}}/announcing-adobe-xd-support-for-flutter-4b3dd55ff40e
@@ -1352,62 +1344,62 @@ publication since the last stable release:
 [What we learned from the Flutter Q2 2020 survey]: {{site.flutter-blog}}/what-we-learned-from-the-flutter-q2-2020-survey-a4f1fc8faac9
 [Write a Flutter desktop application]: {{site.codelabs}}/codelabs/flutter-github-graphql-client/
 
-## 06 May 2020: Work-From-Home: 1.17 release
+## 06 de maio de 2020: Work-From-Home: lançamento 1.17
 
-Flutter 1.17 is live!
+Flutter 1.17 está disponível!
 
-For more information, see [Announcing Flutter 1.17][].
+Para mais informações, veja [Anunciando Flutter 1.17][Announcing Flutter 1.17].
 
-Docs added and updated since the last announcement include:
+Documentos adicionados e atualizados desde o último anúncio incluem:
 
-* Added a new page on [Understanding constraints][],
-  contributed by Marcelo Glasberg, a Flutter community member.
-* The [animations landing page][] has been re-written.
-  This page now includes the animation decision tree
-  that helps you figure out which animation approach
-  is right for your needs. It also includes information
-  on the new [package for pre-canned Material widget animations][].
-* The [hot reload][] page has been re-written. We
-  hope you find it to be clearer!
-* The [Desktop][] page has been updated and now includes information
-  on setting up entitlements and using the App Sandbox on macOS.
-* The plugin docs are updated to cover the new Android Plugin APIs
-  and also to describe Federated Plugins. Affected pages include:
-  * [Developing packages and plugins][]
-  * [Developing plugin packages][]
-  * [Supporting the new Android plugin APIs][]
-  * [Writing custom platform-specific code][]
-* Added an [Obfuscating Dart code][] page.
-  (Moved from the wiki and updated as of 1.16.2.)
-* Added a page on using Xcode 11.4 and how to manually update
-  your project. The tooling, which automatically updates your
-  configuration when possible, might direct you to this page
-  if it detects that it's needed.
-* Added a page on
-  [Managing plugins and dependencies in add-to-app][add2app]
-  when developing for Android.
+* Adicionada uma nova página sobre [Entendendo restrições][Understanding constraints],
+  contribuída por Marcelo Glasberg, um membro da comunidade Flutter.
+* A [landing page de animations][] foi reescrita.
+  Esta página agora inclui a árvore de decisão de animação
+  que ajuda você a descobrir qual abordagem de animação
+  é adequada para suas necessidades. Também inclui informações
+  sobre o novo [pacote para animações de widget Material pré-enlatadas][package for pre-canned Material widget animations].
+* A página [hot reload][] foi reescrita. Esperamos
+  que você a ache mais clara!
+* A página [Desktop][] foi atualizada e agora inclui informações
+  sobre configuração de entitlements e uso do App Sandbox no macOS.
+* Os documentos de plugin foram atualizados para cobrir as novas APIs de Plugin Android
+  e também para descrever Federated Plugins. Páginas afetadas incluem:
+  * [Desenvolvendo pacotes e plugins][Developing packages and plugins]
+  * [Desenvolvendo pacotes de plugin][Developing plugin packages]
+  * [Suportando as novas APIs de plugin Android][Supporting the new Android plugin APIs]
+  * [Escrevendo código personalizado específico de plataforma][Writing custom platform-specific code]
+* Adicionada uma página [Ofuscando código Dart][Obfuscating Dart code].
+  (Movida do wiki e atualizada a partir de 1.16.2.)
+* Adicionada uma página sobre como usar Xcode 11.4 e como atualizar manualmente
+  seu projeto. As ferramentas, que atualizam automaticamente sua
+  configuração quando possível, podem direcioná-lo para esta página
+  se detectar que é necessário.
+* Adicionada uma página sobre
+  [Gerenciando plugins e dependências em add-to-app][add2app]
+  ao desenvolver para Android.
 
-Other newness:
+Outras novidades:
 
-* We've published a number of articles on the [Flutter Medium][]
-  publication since the last stable release:
-  * [Custom implicit animations in Flutter…with TweenAnimationBuilder][]
-  * [Directional animations with build-in explicit animations][]
-  * [When should I use AnimatedBuilder or AnimatedWidget?][]
-  * [Improving Flutter with your opinion - Q4 2019 survey results][]
-  * [How to write a Flutter web plugin, Part 2][]
-  * [It's Time: The Flutter Clock contest results][]
-  * [How to float an overlay widget over a (possibly transformed) UI widget][]
-  * [How to embed a Flutter application in a website using DartPad][]
-  * [Flutter web: Navigating URLs using named routes][]
-  * [How to choose which Flutter animation widget is right for you?][]
-  * [Announcing a free Flutter introductory course][]
-  * [Announcing CodePen support for Flutter][]
-  * [Animation deep dive][]
-  * [Flutter Spring 2020 update][]
-  * [Introducing Google Fonts for Flutter v 1.0.0!][]
-  * [Flutter web support updates][]
-  * [Modern Flutter plugin development][]
+* Publicamos vários artigos na publicação [Flutter Medium][]
+  desde o último lançamento stable:
+  * [Animações implícitas personalizadas no Flutter…com TweenAnimationBuilder][Custom implicit animations in Flutter…with TweenAnimationBuilder]
+  * [Animações direcionais com animações explícitas integradas][Directional animations with build-in explicit animations]
+  * [Quando devo usar AnimatedBuilder ou AnimatedWidget?][When should I use AnimatedBuilder or AnimatedWidget?]
+  * [Melhorando Flutter com sua opinião - Resultados da pesquisa Q4 2019][Improving Flutter with your opinion - Q4 2019 survey results]
+  * [Como escrever um plugin web Flutter, Parte 2][How to write a Flutter web plugin, Part 2]
+  * [É hora: Os resultados do concurso Flutter Clock][It's Time: The Flutter Clock contest results]
+  * [Como flutuar um widget overlay sobre um widget de UI (possivelmente transformado)][How to float an overlay widget over a (possibly transformed) UI widget]
+  * [Como incorporar um aplicativo Flutter em um site usando DartPad][How to embed a Flutter application in a website using DartPad]
+  * [Flutter web: Navegando URLs usando rotas nomeadas][Flutter web: Navigating URLs using named routes]
+  * [Como escolher qual widget de animação Flutter é adequado para você?][How to choose which Flutter animation widget is right for you?]
+  * [Anunciando um curso introdutório gratuito de Flutter][Announcing a free Flutter introductory course]
+  * [Anunciando suporte CodePen para Flutter][Announcing CodePen support for Flutter]
+  * [Mergulho profundo em animação][Animation deep dive]
+  * [Atualização Flutter Spring 2020][Flutter Spring 2020 update]
+  * [Apresentando Google Fonts para Flutter v 1.0.0!][Introducing Google Fonts for Flutter v 1.0.0!]
+  * [Atualizações de suporte web Flutter][Flutter web support updates]
+  * [Desenvolvimento moderno de plugin Flutter][Modern Flutter plugin development]
 
 [add2app]: /add-to-app/android/plugin-setup
 [Animation deep dive]: {{site.flutter-blog}}/animation-deep-dive-39d3ffea111f
@@ -1438,51 +1430,51 @@ Other newness:
 [Understanding constraints]: /ui/layout/constraints
 [When should I use AnimatedBuilder or AnimatedWidget?]: {{site.flutter-blog}}/when-should-i-useanimatedbuilder-or-animatedwidget-57ecae0959e8
 
-## 11 Dec 2019: Flutter Interact: 1.12 release
+## 11 de dezembro de 2019: Flutter Interact: lançamento 1.12
 
-Flutter 1.12 is live!
+Flutter 1.12 está disponível!
 
-For more information, see
-[Flutter: the first UI platform designed for ambient computing][],
-[Announcing Flutter 1.12: What a year!][] and
-the [Flutter 1.12.13][] release notes.
+Para mais informações, veja
+[Flutter: a primeira plataforma de UI projetada para computação ambiente][Flutter: the first UI platform designed for ambient computing],
+[Anunciando Flutter 1.12: Que ano!][Announcing Flutter 1.12: What a year!] e
+as [notas de lançamento do Flutter 1.12.13][Flutter 1.12.13].
 
-Docs added and updated since the last announcement include:
+Documentos adicionados e atualizados desde o último anúncio incluem:
 
-* To accompany an updated implementation of add-to-app,
-  we have added documentation on how to
-  [add Flutter to an existing app][] for both iOS and Android.
-* If you own plugin code, we encourage you to update to the
-  new plugin APIs for Android. For more information, see
-  [Migrating your plugin to the new Android APIs][].
-* Web support has moved to the beta channel. For more information,
-  see [Web support for Flutter][] and
-  [Web support for Flutter goes beta][] on the Medium publication.
-  Also, the [building a web app with Flutter][] page is updated.
-* A new write your first Flutter app on the web codelab
-  is added to the [Get started][] docs, and includes
-  instructions on setting breakpoints in DevTools!
-* We've introduced a program for recommending particular Dart and
-  Flutter plugins and packages. Learn more about the
-  [Flutter Favorite program][].
-* A new implicit animations codelab is available
-  featuring DartPad.
-  (To run it, you don't need to download any software!)
-* Alpha support for macOS (desktop) is now available in
-  release 1.13 on the master and dev channels.
-  For more information, see [Desktop support for Flutter][].
-* The iOS section of the [app size][] page is updated to reflect
-  the inclusion of bitcode.
-* An alpha release of Flutter Layout Explorer, a new feature
-  (and part of the Flutter inspector) that allows you to
-  explore a visual representation of your layout is available.
-  For more information, see the [Flutter Layout Explorer][] docs.
+* Para acompanhar uma implementação atualizada de add-to-app,
+  adicionamos documentação sobre como
+  [adicionar Flutter a um app existente][add Flutter to an existing app] para iOS e Android.
+* Se você possui código de plugin, incentivamos você a atualizar para as
+  novas APIs de plugin para Android. Para mais informações, veja
+  [Migrando seu plugin para as novas APIs Android][Migrating your plugin to the new Android APIs].
+* O suporte web mudou para o canal beta. Para mais informações,
+  veja [Suporte web para Flutter][Web support for Flutter] e
+  [Suporte web para Flutter entra em beta][Web support for Flutter goes beta] na publicação do Medium.
+  Além disso, a página [construindo um app web com Flutter][building a web app with Flutter] foi atualizada.
+* Um novo codelab escreva seu primeiro app Flutter na web
+  foi adicionado aos documentos [Comece][Get started], e inclui
+  instruções sobre como definir breakpoints no DevTools!
+* Introduzimos um programa para recomendar plugins e pacotes
+  Dart e Flutter específicos. Saiba mais sobre o
+  [programa Flutter Favorite][Flutter Favorite program].
+* Um novo codelab de animações implícitas está disponível
+  apresentando DartPad.
+  (Para executá-lo, você não precisa baixar nenhum software!)
+* O suporte alpha para macOS (desktop) agora está disponível no
+  lançamento 1.13 nos canais master e dev.
+  Para mais informações, veja [Suporte desktop para Flutter][Desktop support for Flutter].
+* A seção iOS da página [tamanho do app][app size] foi atualizada para refletir
+  a inclusão de bitcode.
+* Um lançamento alpha do Flutter Layout Explorer, um novo recurso
+  (e parte do Flutter inspector) que permite
+  explorar uma representação visual do seu layout está disponível.
+  Para mais informações, veja os documentos do [Flutter Layout Explorer][].
 
-Other newness:
+Outras novidades:
 
-* A brand-new version of [Flutter Gallery][].
+* Uma versão totalmente nova do [Flutter Gallery][].
 
-Happy Fluttering!
+Feliz Fluttering!
 
 [add Flutter to an existing app]: /add-to-app
 [Announcing Flutter 1.12: What a year!]: {{site.flutter-blog}}/announcing-flutter-1-12-what-a-year-22c256ba525d
@@ -1498,62 +1490,62 @@ Happy Fluttering!
 [Web support for Flutter goes beta]: {{site.flutter-blog}}/web-support-for-flutter-goes-beta-35b64a1217c0
 [Get started]: /get-started
 
-## 10 Sep 2019: 1.9 release
+## 10 de setembro de 2019: lançamento 1.9
 
-Flutter 1.9 is live!
+Flutter 1.9 está disponível!
 
-For more information, see [Flutter news from GDD China:
-uniting Flutter on web and mobile, and introducing Flutter 1.9][]
-and the [1.9.1 release notes][].
+Para mais informações, veja [Notícias do Flutter do GDD China:
+unindo Flutter na web e mobile, e apresentando Flutter 1.9][Flutter news from GDD China: uniting Flutter on web and mobile, and introducing Flutter 1.9]
+e as [notas de lançamento 1.9.1][1.9.1 release notes].
 
-For the 1.9 release, Flutter's web support has been
-merged ("unforked") into the main repo.
-**Web support hasn't reached beta, and is not ready
-to be used in production.**
-Web and desktop support (which is also coming), will
-impact the website, which was originally written
-exclusively for developing Flutter mobile apps.
-Some website updates are available now (and listed below),
-but more will be coming.
+Para o lançamento 1.9, o suporte web do Flutter foi
+mesclado ("desbifurcado") no repositório principal.
+**O suporte web ainda não atingiu beta, e não está pronto
+para ser usado em produção.**
+O suporte web e desktop (que também está chegando), irá
+impactar o site, que foi originalmente escrito
+exclusivamente para desenvolver apps mobile Flutter.
+Algumas atualizações do site já estão disponíveis (e listadas abaixo),
+mas mais virão.
 
-New and updated docs on the site include:
+Novos e atualizados documentos no site incluem:
 
-* We've revamped the [Showcase][] page.
-* The Flutter layout codelab has been rewritten and
-  uses the updated DartPad, the browser-based tool for
-  running Dart code. DartPad now supports Flutter!
-  [Try it out]({{site.dartpad}}) and let us know what you think.
-* A new page on [using the dart:ffi library][]
-  to bind your app to native code (a feature currently under
-  development).
-* The Performance view tool, which allows you to record
-  and profile a session from your Dart/Flutter application,
-  has been enabled in DevTools. For more information,
-  see the [Performance view][] page.
-* A new page on
-  [building a web application][].
-* A new page on [creating responsive apps][] in Flutter.
-* A new page on [preparing a web app for release][].
-* A new [web FAQ][].
-* The [Flutter for web][] page is updated.
+* Reformulamos a página [Showcase][].
+* O codelab de layout Flutter foi reescrito e
+  usa o DartPad atualizado, a ferramenta baseada em navegador para
+  executar código Dart. DartPad agora suporta Flutter!
+  [Experimente]({{site.dartpad}}) e nos diga o que você acha.
+* Uma nova página sobre [usar a biblioteca dart:ffi][using the dart:ffi library]
+  para vincular seu app a código nativo (um recurso atualmente em
+  desenvolvimento).
+* A ferramenta de visualização de Performance, que permite gravar
+  e criar perfil de uma sessão do seu aplicativo Dart/Flutter,
+  foi habilitada no DevTools. Para mais informações,
+  veja a página [visualização de Performance][Performance view].
+* Uma nova página sobre
+  [construir um aplicativo web][building a web application].
+* Uma nova página sobre [criar apps responsivos][creating responsive apps] no Flutter.
+* Uma nova página sobre [preparar um app web para lançamento][preparing a web app for release].
+* Uma nova [FAQ web][web FAQ].
+* A página [Flutter para web][Flutter for web] foi atualizada.
 
-Other relevant docs:
+Outros documentos relevantes:
 
-* Error messages have been improved in SDK 1.9.
-  For more information, read
-  [Improving Flutter's Error Messages][]
-  on the [Flutter Medium publication][].
-* If you already have a web app that depends on the
-  flutter_web package, the following instructions tell
-  you how to migrate to the flutter package:
-  Upgrading from package:flutter_web to the Flutter SDK.
-* A new [`ToggleButtons`][] widget, described in the API docs.
-  [ToggleButtons demo][]
-* A new [`ColorFiltered`][] widget, also described in the API docs.
-  [ColorFiltered demo][]
-* New behavior for the [`SelectableText`][] widget.
+* As mensagens de erro foram melhoradas no SDK 1.9.
+  Para mais informações, leia
+  [Melhorando as Mensagens de Erro do Flutter][Improving Flutter's Error Messages]
+  na [publicação Flutter Medium][].
+* Se você já tem um app web que depende do
+  pacote flutter_web, as seguintes instruções dizem
+  como migrar para o pacote flutter:
+  Atualizando de package:flutter_web para o Flutter SDK.
+* Um novo widget [`ToggleButtons`][], descrito nos documentos da API.
+  [Demo ToggleButtons][]
+* Um novo widget [`ColorFiltered`][], também descrito nos documentos da API.
+  [Demo ColorFiltered][]
+* Novo comportamento para o widget [`SelectableText`][].
 
-Happy Fluttering!
+Feliz Fluttering!
 
 [1.9.1 release notes]: /release/release-notes/release-notes-1.9.1
 [building a web application]: /platform-integration/web/building
@@ -1571,40 +1563,40 @@ Happy Fluttering!
 [ToggleButtons demo]: {{site.github}}/csells/flutter_toggle_buttons
 [using the dart:ffi library]: /platform-integration/android/c-interop
 
-## 09 Jul 2019: 1.7 release
+## 09 de julho de 2019: lançamento 1.7
 
-Flutter 1.7 is live!
+Flutter 1.7 está disponível!
 
-For more information, see [Announcing Flutter 1.7][]
-on the [Flutter Medium Publication][], and the
-[1.7.8 release notes][].
+Para mais informações, veja [Anunciando Flutter 1.7][Announcing Flutter 1.7]
+na [Publicação Flutter Medium][], e as
+[notas de lançamento 1.7.8][1.7.8 release notes].
 
-New and updated docs on the site include:
+Novos e atualizados documentos no site incluem:
 
-* The [Preparing an Android app for release][]
-  page is updated to discuss how to build an Android release
-  using an app bundle, as well as how to create separate APK
-  files for both 32-bit and 64-bit devices.
-* The [DevTools][] docs are migrated to flutterbrasil.dev.
-  If you haven't tried this browser-based suite
-  of debugging, performance, memory, and inspection tools that
-  work with both Flutter and Dart apps and can be launched from
-  Android Studio/IntelliJ _and_ VS Code, please check it out!
-* The [Simple app state management][] page is updated.
-  The example code in the page now uses the 3.0
-  release of the Provider package.
-* A new animation recipe, [Animate a page route transition][]
-  has been added to the Flutter Cookbook.
-* The [Debugging][], [Flutter's build modes][],
-  [Performance best practices][], and [Performance profiling][]
-  pages are updated to reflect DevTools. A
-  [Debugging apps programmatically][] page has also been added.
+* A página [Preparando um app Android para lançamento][Preparing an Android app for release]
+  foi atualizada para discutir como construir um lançamento Android
+  usando um app bundle, bem como como criar arquivos APK separados
+  para dispositivos 32-bit e 64-bit.
+* Os documentos [DevTools][] foram migrados para flutterbrasil.dev.
+  Se você ainda não experimentou este conjunto de ferramentas
+  baseado em navegador para depuração, performance, memória e inspeção que
+  funcionam com apps Flutter e Dart e podem ser lançadas do
+  Android Studio/IntelliJ _e_ VS Code, por favor confira!
+* A página [Gerenciamento simples de estado de app][Simple app state management] foi atualizada.
+  O código de exemplo na página agora usa a versão 3.0
+  do pacote Provider.
+* Uma nova receita de animação, [Animar uma transição de rota de página][Animate a page route transition]
+  foi adicionada ao Flutter Cookbook.
+* As páginas [Depuração][Debugging], [Modos de build do Flutter][Flutter's build modes],
+  [Melhores práticas de performance][Performance best practices], e [Perfil de performance][Performance profiling]
+  foram atualizadas para refletir DevTools. Uma
+  página [Depurando apps programaticamente][Debugging apps programmatically] também foi adicionada.
 
-The Flutter 1.7 release includes the new [`RangeSlider`][]
-component, which allows the user to select both the upper and lower
-endpoints in a range of values. For information about this
-component and how to customize it, see
-[Material RangeSlider in Flutter].
+O lançamento Flutter 1.7 inclui o novo componente [`RangeSlider`][],
+que permite ao usuário selecionar os endpoints superior e inferior
+em uma faixa de valores. Para informações sobre este
+componente e como personalizá-lo, veja
+[Material RangeSlider no Flutter][Material RangeSlider in Flutter].
 
 [1.7.8 release notes]: /release/release-notes/release-notes-1.7.8
 [Animate a page route transition]: /cookbook/animation/page-route-animation
@@ -1619,51 +1611,51 @@ component and how to customize it, see
 [`RangeSlider`]: {{site.api}}/flutter/material/RangeSlider-class.html
 [Simple app state management]: /data-and-backend/state-mgmt/simple
 
-## 07 May 2019: Google I/O 2019: 1.5 release
+## 07 de maio de 2019: Google I/O 2019: lançamento 1.5
 
-[Flutter 1.5][] is live!
+[Flutter 1.5][] está disponível!
 
-For more information on updates, see the [1.5.4 release notes][]
-or [download the release][].
+Para mais informações sobre atualizações, veja as [notas de lançamento 1.5.4][1.5.4 release notes]
+ou [baixe o lançamento][download the release].
 
-We are updating DartPad to work with Flutter. Try the new
-Basic Flutter layout codelab and tell us what you think!
+Estamos atualizando o DartPad para funcionar com Flutter. Experimente o novo
+codelab de layout básico Flutter e nos diga o que você acha!
 
 [download the release]: /install/archive
 [Flutter 1.5]: {{site.google-blog}}/2019/05/Flutter-io19.html
 [1.5.4 release notes]: /release/release-notes/release-notes-1.5.4
 
-## 26 Feb 2019: 1.2 release
+## 26 de fevereiro de 2019: lançamento 1.2
 
-Flutter released [version 1.2][] at Mobile World Congress
-(MWC) in Barcelona. For more information, see the
-[1.2.1 release notes][] or [download the release][].
+Flutter lançou a [versão 1.2][version 1.2] no Mobile World Congress
+(MWC) em Barcelona. Para mais informações, veja as
+[notas de lançamento 1.2.1][1.2.1 release notes] ou [baixe o lançamento][download the release].
 
-In addition, here are some recent new and updated docs:
+Além disso, aqui estão alguns novos e atualizados documentos recentes:
 
-* We've updated our [state management advice][].
-  New pages include an [introduction][],
-  [thinking declaratively][], [ephemeral vs app state][],
-  [simple app state management][], and
-  [different state management options].
-  Documenting state management is a tricky thing, as there is no
-  one-size-fits-all approach. We'd love your feedback on these new docs!
-* A new page on [Performance best practices][].
-* Also at MWC, we announced a preview version of the new Dart DevTools
-  for profiling and debugging Dart and Flutter apps.
-  You can find the docs on the DevTools wiki
-  (Note: since moved to [this site][].)
-  In particular, check out the DevTool's [widget inspector][] for
-  debugging your UI, or the [timeline view][] for profiling your Flutter
-  application. Try them out and let us know what you think!
-* An update to the [Performance profiling][]
-  page that incorporates the new Dart DevTools UI.
-* Updates to the [Android Studio/IntelliJ][]
-  and [VS Code][] pages incorporating info from
-  the new Dart DevTools UI.
+* Atualizamos nosso [conselho de gerenciamento de estado][state management advice].
+  Novas páginas incluem uma [introdução][introduction],
+  [pensando declarativamente][thinking declaratively], [estado efêmero vs estado de app][ephemeral vs app state],
+  [gerenciamento simples de estado de app][simple app state management], e
+  [diferentes opções de gerenciamento de estado][different state management options].
+  Documentar gerenciamento de estado é complicado, pois não há
+  uma abordagem única que sirva para todos. Adoraríamos seu feedback sobre esses novos documentos!
+* Uma nova página sobre [Melhores práticas de performance][Performance best practices].
+* Também no MWC, anunciamos uma versão preview das novas Dart DevTools
+  para perfil e depuração de apps Dart e Flutter.
+  Você pode encontrar os documentos no wiki do DevTools
+  (Nota: desde então movido para [este site][].)
+  Em particular, confira o [inspetor de widget][widget inspector] do DevTool para
+  depurar sua UI, ou a [visualização de timeline][timeline view] para criar perfil de seu
+  aplicativo Flutter. Experimente e nos diga o que você acha!
+* Uma atualização na página [Perfil de performance][Performance profiling]
+  que incorpora a nova UI do Dart DevTools.
+* Atualizações nas páginas [Android Studio/IntelliJ][]
+  e [VS Code][] incorporando informações da
+  nova UI do Dart DevTools.
 
-If you have questions or comments about any of these docs,
-[file an issue][file-issue].
+Se você tiver perguntas ou comentários sobre qualquer um desses documentos,
+[registre um issue][file-issue].
 
 [Android Studio/IntelliJ]: /tools/android-studio
 [different state management options]: /data-and-backend/state-mgmt/options
@@ -1680,35 +1672,35 @@ If you have questions or comments about any of these docs,
 
 [version 1.2]: {{site.google-blog}}/2019/02/launching-flutter-12-at-mobile-world.html
 
-## 05 Nov 2018: new website
+## 05 de novembro de 2018: novo site
 
-Welcome to the revamped Flutter website!
+Bem-vindo ao site reformulado do Flutter!
 
-We've spent the last few months redesigning the website and how its
-information is organized. We hope you can more easily find the docs
-you are looking for. Some of the changes to the website include:
+Passamos os últimos meses redesenhando o site e como suas
+informações estão organizadas. Esperamos que você possa encontrar mais facilmente os documentos
+que está procurando. Algumas das mudanças no site incluem:
 
-* Revised [front][] page
-* Revised [showcase][] page
-* Revised [community][] page
-* Revised navigation in the left side bar
-* Table of contents on the right side of most pages
+* Página [front][] revisada
+* Página [showcase][] revisada
+* Página [community][] revisada
+* Navegação revisada na barra lateral esquerda
+* Índice no lado direito da maioria das páginas
 
-Some of the new content includes:
+Alguns dos novos conteúdos incluem:
 
-* Deep dive on Flutter internals, [Inside Flutter][]
-* [Technical videos][]
-* [State management][]
-* [Background Dart processes][]
-* [Flutter's build modes][]
+* Mergulho profundo nos componentes internos do Flutter, [Inside Flutter][]
+* [Vídeos técnicos][Technical videos]
+* [Gerenciamento de estado][State management]
+* [Processos Dart em background][Background Dart processes]
+* [Modos de build do Flutter][Flutter's build modes]
 {% comment %}
-* How to connect
-  [a native debugger _and_ a Dart debugger to your app]
-  (not yet complete)
+* Como conectar
+  [um depurador nativo _e_ um depurador Dart ao seu app]
+  (ainda não completo)
 {% endcomment %}
 
-If you have questions or comments about the revamped site,
-[file an issue][].
+Se você tiver perguntas ou comentários sobre o site reformulado,
+[registre um issue][file an issue].
 
 [a native debugger _and_ a Dart debugger to your app]: /testing/oem-debuggers
 [Background Dart processes]: /packages-and-plugins/background-processes

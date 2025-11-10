@@ -1,23 +1,24 @@
 ---
-title: Android ActivityControlSurface attachToActivity signature change
+title: Mudança na assinatura do attachToActivity do ActivityControlSurface do Android
 description: >
-  attachToActivity activity parameter changed to
-  ExclusiveAppComponent instead of Activity.
+  O parâmetro activity do attachToActivity mudou para
+  ExclusiveAppComponent em vez de Activity.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
 :::note
-If you use standard Android embedding Java classes like
-[`FlutterActivity`][] or [`FlutterFragment`][],
-and don't manually embed a [`FlutterView`][]
-inside your own custom `Activity` (this should be uncommon),
-you can stop reading.
+Se você usa classes Java de embedding Android padrão como
+[`FlutterActivity`][] ou [`FlutterFragment`][],
+e não incorpora manualmente um [`FlutterView`][]
+dentro de sua própria `Activity` personalizada (isso deve ser incomum),
+você pode parar de ler.
 :::
 
-A new [`ActivityControlSurface`][] method:
+Um novo método [`ActivityControlSurface`][]:
 
 ```java
 void attachToActivity(
@@ -25,49 +26,49 @@ void attachToActivity(
     @NonNull Lifecycle lifecycle);
 ```
 
-is replacing the now deprecated method:
+está substituindo o método agora descontinuado:
 
 ```java
 void attachToActivity(@NonNull Activity activity, @NonNull Lifecycle lifecycle);
 ```
 
-The existing deprecated method with the `Activity`
-parameter was removed in Flutter 2.
+O método descontinuado existente com o parâmetro `Activity`
+foi removido no Flutter 2.
 
-## Context
+## Contexto
 
-In order for custom Activities to also supply the `Activity`
-lifecycle events Flutter plugins expect using the
-[`ActivityAware`][] interface, the [`FlutterEngine`][]
-exposed a [`getActivityControlSurface()`][] API.
+Para que Activities personalizados também forneçam os eventos
+de ciclo de vida de `Activity` que plugins Flutter esperam usando a
+interface [`ActivityAware`][], o [`FlutterEngine`][]
+expôs uma API [`getActivityControlSurface()`][].
 
-This allows custom Activities to signal to the engine
-(with which it has a `(0|1):1` relationship) that
-it was being attached or detached from the engine.
+Isso permite que Activities personalizados sinalizem ao engine
+(com o qual tem um relacionamento `(0|1):1`) que
+estava sendo anexado ou desanexado do engine.
 
 :::note
-This lifecycle signaling is done automatically when you
-use the engine's bundled [`FlutterActivity`][]
-or [`FlutterFragment`][], which should be the most
-common case.
+Esta sinalização de ciclo de vida é feita automaticamente quando você
+usa os [`FlutterActivity`][] ou [`FlutterFragment`][]
+empacotados do engine, que deve ser o caso
+mais comum.
 :::
 
-However, the previous API had the flaw that it didn't
-enforce exclusion between activities connecting to
-the engine, thus enabling `n:1` relationships between
-the activity and the engine,
-causing lifecycle cross-talk issues.
+No entanto, a API anterior tinha a falha de não
+impor exclusão entre activities conectando ao
+engine, assim habilitando relacionamentos `n:1` entre
+o activity e o engine,
+causando problemas de cross-talk de ciclo de vida.
 
-## Description of change
+## Descrição da mudança
 
-After [Issue #21272][], instead of attaching your activity
-to the [`FlutterEngine`][] by using the:
+Após [Issue #21272][], em vez de anexar seu activity
+ao [`FlutterEngine`][] usando a:
 
 ```java
 void attachToActivity(@NonNull Activity activity, @NonNull Lifecycle lifecycle);
 ```
 
-API, which is now deprecated, instead use:
+API, que agora está descontinuada, use em vez disso:
 
 ```java
 void attachToActivity(
@@ -75,30 +76,30 @@ void attachToActivity(
     @NonNull Lifecycle lifecycle);
 ```
 
-An `ExclusiveAppComponent<Activity>` interface
-is now expected instead of an `Activity`.
-The `ExclusiveAppComponent<Activity>` provides a callback
-in case your exclusive activity is being replaced by
-another activity attaching itself to the `FlutterEngine`.
+Uma interface `ExclusiveAppComponent<Activity>`
+é agora esperada em vez de um `Activity`.
+O `ExclusiveAppComponent<Activity>` fornece um callback
+caso seu activity exclusivo esteja sendo substituído por
+outro activity se anexando ao `FlutterEngine`.
 
 ```java
 void detachFromActivity();
 ```
 
-API remains unchanged and you're still expected
-to call it when your custom
-activity is being destroyed naturally.
+A API permanece inalterada e você ainda é esperado
+para chamá-la quando seu activity
+personalizado está sendo destruído naturalmente.
 
-## Migration guide
+## Guia de migração
 
-If you have your own activity holding a
-[`FlutterView`][], replace calls to:
+Se você tem seu próprio activity contendo um
+[`FlutterView`][], substitua chamadas a:
 
 ```java
 void attachToActivity(@NonNull Activity activity, @NonNull Lifecycle lifecycle);
 ```
 
-with calls to:
+por chamadas a:
 
 ```java
 void attachToActivity(
@@ -106,31 +107,31 @@ void attachToActivity(
     @NonNull Lifecycle lifecycle);
 ```
 
-on the [`ActivityControlSurface`][] that you obtained by calling
-[`getActivityControlSurface()`][] on the [`FlutterEngine`][].
+no [`ActivityControlSurface`][] que você obteve chamando
+[`getActivityControlSurface()`][] no [`FlutterEngine`][].
 
-Wrap your activity with an `ExclusiveAppComponent<Activity>`
-and implement the callback method:
+Envolva seu activity com um `ExclusiveAppComponent<Activity>`
+e implemente o método de callback:
 
 ```java
 void detachFromFlutterEngine();
 ```
 
-to handle your activity being replaced by another
-activity being attached to the [`FlutterEngine`][].
-Generally, you want to perform the same detaching operations
-as performed when the activity is being naturally destroyed.
+para lidar com seu activity sendo substituído por outro
+activity sendo anexado ao [`FlutterEngine`][].
+Geralmente, você quer realizar as mesmas operações de desanexação
+como realizadas quando o activity está sendo destruído naturalmente.
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.23.0-7.0.pre<br>
-In stable release: 2.0.0
+Lançado na versão: 1.23.0-7.0.pre<br>
+Na versão estável: 2.0.0
 
-## References
+## Referências
 
-Motivating bug: [Issue #66192][]—Non exclusive
-UI components attached to the FlutterEngine causes
-event crosstalk
+Bug motivador: [Issue #66192][]—Componentes de
+UI não exclusivos anexados ao FlutterEngine causam
+crosstalk de eventos
 
 
 [`ActivityAware`]: {{site.api}}/javadoc/io/flutter/embedding/engine/plugins/activity/ActivityAware.html

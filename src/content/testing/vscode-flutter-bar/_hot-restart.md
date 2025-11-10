@@ -1,1 +1,3 @@
+<!-- ia-translate: true -->
+
 ![Pequena seta verde quase circular que indica o recarregamento da UI de um app Flutter e a redefinição de quaisquer valores de estado](/assets/images/docs/testing/debugging/vscode-ui/icons/hot-restart.png)

@@ -1,1 +1,5 @@
+---
+ia-translate: true
+---
+
 ![Pequena seta azul para baixo sobre um círculo azul que indica entrar na próxima função em um app Flutter](/assets/images/docs/testing/debugging/vscode-ui/icons/step-into.png)

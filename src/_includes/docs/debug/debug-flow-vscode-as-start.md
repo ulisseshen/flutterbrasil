@@ -1,3 +1,5 @@
+<!-- ia-translate: true -->
+
 1. To open the Flutter app directory, go to
    **File** <span aria-label="and then">></span>
    **Open Folder...** and choose the `my_app` directory.

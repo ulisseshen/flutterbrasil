@@ -1,17 +1,18 @@
 ---
-title: Flutter 3.27.0 release notes
-shortTitle: 3.27.0 release notes
-description: Release notes for Flutter 3.27.0.
+title: Notas de lançamento do Flutter 3.27.0
+shortTitle: Notas de lançamento 3.27.0
+description: Notas de lançamento do Flutter 3.27.0.
 skipTemplateRendering: true
+ia-translate: true
 ---
 
-This page has release notes for 3.27.0.
-For information about subsequent bug-fix releases,
-check out the Flutter [CHANGELOG][].
+Esta página contém as notas de lançamento da versão 3.27.0.
+Para informações sobre lançamentos de correção de bugs subsequentes,
+consulte o [CHANGELOG][] do Flutter.
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/main/CHANGELOG.md
 
-## Flutter framework
+## Framework do Flutter
 
 ### Framework
 
@@ -428,7 +429,7 @@ check out the Flutter [CHANGELOG][].
 * Fix `flutter run` on Mac x64 hosts if Swift Package Manager is enabled by @loic-sharma in [154645](https://github.com/flutter/flutter/pull/154645)
 * [tool] Update description of where to install platforms in XCode by @kevmoo in [156432](https://github.com/flutter/flutter/pull/156432)
 
-### Tooling
+### Ferramentas
 
 * Handle a SocketException thrown when sending the browser close command to Chrome by @jason-simmons in [151197](https://github.com/flutter/flutter/pull/151197)
 * Fix project name fallback by @navaronbracke in [150614](https://github.com/flutter/flutter/pull/150614)
@@ -567,11 +568,11 @@ check out the Flutter [CHANGELOG][].
 * Migrator for android 35/16kb page size cmake flags for plugin_ffi  by @dcharkes in [156221](https://github.com/flutter/flutter/pull/156221)
 * Beta test alternate correct macOS framework xcprivacy manifest location by @jmagman in [157136](https://github.com/flutter/flutter/pull/157136)
 
-### Documentation
+### Documentação
 
 * Fix crash in Linux platform channel example. by @robert-ancell in [155735](https://github.com/flutter/flutter/pull/155735)
 
-### Other changes
+### Outras mudanças
 
 * Force regeneration of platform-specific manifests before running performance tests by @jason-simmons in [151003](https://github.com/flutter/flutter/pull/151003)
 * Roll pub packages by @flutter-pub-roller-bot in [151203](https://github.com/flutter/flutter/pull/151203)
@@ -767,7 +768,7 @@ check out the Flutter [CHANGELOG][].
 * Started handling duplicate validation layer messages by @gaaclarke in [156375](https://github.com/flutter/flutter/pull/156375)
 * [flutter_releases] Flutter beta 3.27.0-0.1.pre Framework Cherrypicks by @reidbaker in [157268](https://github.com/flutter/flutter/pull/157268)
 
-## New contributors
+## Novos contribuidores
 
 * @xiaoxianBoy made their first contribution in [150402](https://github.com/flutter/flutter/pull/150402)
 * @veloce made their first contribution in [149102](https://github.com/flutter/flutter/pull/149102)
@@ -817,7 +818,7 @@ check out the Flutter [CHANGELOG][].
 
 **Full Changelog**: https://github.com/flutter/flutter/compare/3.24.0...3.27.0-0.1.pre
 
-## Flutter engine
+## Engine do Flutter
 
 ### Impeller
 
@@ -1170,7 +1171,7 @@ check out the Flutter [CHANGELOG][].
 * [Impeller] fix Impeller on windows. by @jonahwilliams in [55323](https://github.com/flutter/engine/pull/55323)
 * Beta fix macos xcprivacy manifest copy location by @christopherfujino in [55938](https://github.com/flutter/engine/pull/55938)
 
-### Other changes
+### Outras mudanças
 
 * Convert `run_ios_tests.sh` to `run_ios_tests.dart`. by @matanlurey in [53645](https://github.com/flutter/engine/pull/53645)
 * [Embedder] Document incorrectly named field in FlutterOpenGLFramebuffer. by @chinmaygarde in [53720](https://github.com/flutter/engine/pull/53720)
@@ -1438,7 +1439,7 @@ check out the Flutter [CHANGELOG][].
 * Refactor multi-file build parsing into a single `BuildPlan` class. by @matanlurey in [55720](https://github.com/flutter/engine/pull/55720)
 * Update Dart to 3.6.0-334.3.beta by @zanderso in [55826](https://github.com/flutter/engine/pull/55826)
 
-## New contributors
+## Novos contribuidores
 
 * @darkwater made their first contribution in [54053](https://github.com/flutter/engine/pull/54053)
 * @charafau made their first contribution in [54173](https://github.com/flutter/engine/pull/54173)

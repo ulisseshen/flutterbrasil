@@ -1,6 +1,7 @@
 ---
 layout: toc
-title: Design & theming
-description: Content covering designing Flutter apps.
+title: Design e temas
+description: Conteúdo sobre design de aplicativos Flutter.
 sitemap: false
+ia-translate: true
 ---

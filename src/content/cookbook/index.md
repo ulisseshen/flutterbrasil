@@ -1,18 +1,19 @@
 ---
 title: Cookbook
 description: >-
-  The Flutter cookbook provides recipes for many commonly performed tasks.
+  O cookbook do Flutter fornece receitas para muitas tarefas comumente executadas.
 sitemap: false
+ia-translate: true
 # This is a placeholder page (Firebase redirects this page's URL to another);
 # it is necessary to allow breadcrumbs to work.
 ---
 
-This cookbook contains recipes that demonstrate how to
-solve common problems while writing Flutter apps.
-Each recipe is self-contained and can be used as a reference to
-help you build up an application with Flutter.
+Este cookbook contém receitas que demonstram como
+resolver problemas comuns ao escrever aplicativos Flutter.
+Cada receita é independente e pode ser usada como referência para
+ajudá-lo a construir um aplicativo com Flutter.
 
-To discover recipes and other learning materials relevant to you,
-check out the [learning resources index][].
+Para descobrir receitas e outros materiais de aprendizado relevantes para você,
+confira o [índice de recursos de aprendizado][learning resources index].
 
 [learning resources index]: /reference/learning-resources

@@ -3,11 +3,12 @@ title: ImageFilter.blur default tile mode automatic selection.
 description: >-
   If a tile mode wasn't specified in the constructor, ImageFilter.blur will
   select one based on the rendering context.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
 The `ui.ImageFilter.blur`'s default tile mode is
 now automatically selected by the backend.
@@ -38,7 +39,7 @@ following tile modes based on context:
 * `mirror` with backdrop filters.
 * `clamp` for `drawImage`.
 
-## Migration guide
+## Guia de migração
 
 Only blur image filters that don't specify an explicit tile mode are
 impacted by this change.
@@ -58,12 +59,12 @@ Code after migration:
 final filter = ui.ImageFilter.blur(sigmaX: 4, sigmaY: 4);
 ```
 
-## Timeline
+## Linha do tempo
 
 Landed in version: 3.28.0-0.1.pre<br>
 In stable release: 3.29
 
-## References
+## Referências
 
 API documentation:
 

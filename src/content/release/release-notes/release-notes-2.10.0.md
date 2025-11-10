@@ -1,16 +1,17 @@
 ---
-title: Flutter 2.10.0 release notes
-shortTitle: 2.10.0 release notes
-description: Release notes for Flutter 2.10.0.
+title: Notas de lançamento do Flutter 2.10.0
+shortTitle: Notas de lançamento 2.10.0
+description: Notas de lançamento do Flutter 2.10.0.
 skipTemplateRendering: true
+ia-translate: true
 ---
 
-This page has release notes for 2.10.0.
-For information about subsequent bug-fix releases, see our [CHANGELOG][]
+Esta página contém as notas de lançamento da versão 2.10.0.
+Para informações sobre lançamentos de correção de bugs subsequentes, consulte nosso [CHANGELOG][]
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/master/CHANGELOG.md
 
-## Merged PRs by labels for `flutter/flutter`
+## PRs mesclados por labels para `flutter/flutter`
 
 
 
@@ -5421,7 +5422,7 @@ For information about subsequent bug-fix releases, see our [CHANGELOG][]
 
 
 
-## Merged PRs by labels for `flutter/engine`
+## PRs mesclados por labels para `flutter/engine`
 
 
 
@@ -9768,7 +9769,7 @@ For information about subsequent bug-fix releases, see our [CHANGELOG][]
 
 
 
-## Merged PRs by labels for `flutter/plugins`
+## PRs mesclados por labels para `flutter/plugins`
 
 
 

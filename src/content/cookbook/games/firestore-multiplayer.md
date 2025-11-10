@@ -1,24 +1,25 @@
 ---
-title: Add multiplayer support using Firestore
+title: Adicione suporte multiplayer usando Firestore
 description: >
-  How to use use Firebase Cloud Firestore to implement multiplayer
-  in your game.
+  Como usar o Firebase Cloud Firestore para implementar multiplayer
+  no seu jogo.
+ia-translate: true
 ---
 
 <?code-excerpt path-base="cookbook/games/firestore_multiplayer"?>
 
-Multiplayer games need a way to synchronize game states between players.
-Broadly speaking, two types of multiplayer games exist:
+Jogos multiplayer precisam de uma forma de sincronizar estados de jogo entre jogadores.
+De modo geral, existem dois tipos de jogos multiplayer:
 
-1. **High tick rate**.
-   These games need to synchronize game states many times per second
-   with low latency.
-   These would include action games, sports games, fighting games.
+1. **Alta taxa de ticks**.
+   Estes jogos precisam sincronizar estados de jogo muitas vezes por segundo
+   com baixa latência.
+   Isso incluiria jogos de ação, jogos esportivos, jogos de luta.
 
-2. **Low tick rate**.
-   These games only need to synchronize game states occasionally
-   with latency having less impact.
-   These would include card games, strategy games, puzzle games.
+2. **Baixa taxa de ticks**.
+   Estes jogos só precisam sincronizar estados de jogo ocasionalmente
+   com a latência tendo menos impacto.
+   Isso incluiria jogos de cartas, jogos de estratégia, jogos de quebra-cabeça.
 
 This resembles the differentiation between real-time versus turn-based
 games, though the analogy falls short.
@@ -50,7 +51,7 @@ It uses two or more clients sharing game state using Cloud Firestore.
 [Dart package]: {{site.pub-pkg}}/nakama
 [Nakama]: https://heroiclabs.com/nakama/
 
-## 1. Prepare your game for multiplayer
+## 1. Prepare seu jogo para multiplayer
 
 Write your game code to allow changing the game state
 in response to both local events and remote events.
@@ -83,7 +84,7 @@ project. Adapt the code at appropriate places.
 [`card`]: {{site.github}}/flutter/games/tree/main/templates/card#readme
 [`flutter/games` repository]: {{site.github}}/flutter/games
 
-## 2. Install Firestore
+## 2. Instale o Firestore
 
 [Cloud Firestore][] is a horizontally scaling,
 NoSQL document database in the cloud.
@@ -126,7 +127,7 @@ Dart code in that guide, return to this recipe.
 [Get started with Cloud Firestore]: {{site.firebase}}/docs/firestore/quickstart
 [Set up your development environment]: {{site.firebase}}/docs/firestore/quickstart#set_up_your_development_environment
 
-## 3. Initialize Firestore
+## 3. Inicialize o Firestore
 
 1. Open `lib/main.dart` and import the plugins,
     as well as the `firebase_options.dart` file
@@ -179,7 +180,7 @@ Dart code in that guide, return to this recipe.
 
 [install the `provider` package]: {{site.pub-pkg}}/provider/install
 
-## 4. Create a Firestore controller class
+## 4. Crie uma classe controladora do Firestore
 
 Though you can talk to Firestore directly,
 you should write a dedicated controller class
@@ -376,7 +377,7 @@ Notice the following features of this code:
   The Firestore API lets us subscribe to these references
   with `.snapshots()`, and write to them with `.set()`.
 
-## 5. Use the Firestore controller
+## 5. Use o controlador Firestore
 
 1. Open the file responsible for starting the play session:
     `lib/play_session/play_session_screen.dart` in the case of the
@@ -429,7 +430,7 @@ Notice the following features of this code:
     _firestoreController?.dispose();
     ```
 
-## 6. Test the game
+## 6. Teste o jogo
 
 1. Run the game on two separate devices
     or in 2 different windows on the same device.
@@ -452,7 +453,7 @@ Notice the following features of this code:
 
 [Firebase web console]: https://console.firebase.google.com/
 
-### Troubleshooting
+### Solução de problemas
 
 The most common issues you might encounter when testing
 Firebase integration include the following:
@@ -468,7 +469,7 @@ Firebase integration include the following:
 
 [internet entitlement]: /data-and-backend/networking#macos
 
-## 7. Next steps
+## 7. Próximos passos
 
 At this point, the game has near-instant and
 dependable synchronization of state across clients.

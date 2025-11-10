@@ -1,17 +1,18 @@
 ---
 title: TestTextInput state reset
 description: TestTextInput state is now reset between tests.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
 The state of a `TestTextInput` instance,
 a stub for the system's onscreen keyboard,
 is now reset between tests.
 
-## Context
+## Contexto
 
 The Flutter test framework uses a class called `TestTextInput`
 to track and manipulate editing state in a widgets test.
@@ -21,12 +22,12 @@ by setting their own handlers on `SystemChannels.textInput`).
 Subsequent tests might then check the state of
 `WidgetTester.testTextInput` and get unexpected values.
 
-## Description of change
+## Descrição da mudança
 
 The state of `WidgetTester.testTextInput`
 is now reset before running a `testWidgets` test.
 
-## Migration guide
+## Guia de migração
 
 Tests that relied on dirty state from a previously run
 test must be updated. For example, the following test,
@@ -54,12 +55,12 @@ following to assert that the state hasn't been modified yet:
     expect(tester.testTextInput.editingState, isNull);
 ```
 
-## Timeline
+## Linha do tempo
 
 Landed in version: 1.16.3<br>
 In stable release: 1.17
 
-## References
+## Referências
 
 API documentation:
 

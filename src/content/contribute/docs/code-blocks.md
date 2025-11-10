@@ -1,26 +1,27 @@
 ---
-title: Code blocks
+title: Blocos de código
 description: >-
-  Learn about Markdown code blocks on the Dart and Flutter documentation sites
-  and custom functionality and configurability that they support.
+  Aprenda sobre blocos de código Markdown nos sites de documentação do Dart e Flutter
+  e a funcionalidade personalizada e configurabilidade que eles suportam.
 sitemap: false
 noindex: true
 showBreadcrumbs: true
+ia-translate: true
 ---
 
 :::warning
-This document is a work in progress.
+Este documento é um trabalho em progresso.
 :::
 
-## Title
+## Título
 
 ## Tags
 
-## Line numbers
+## Números de linha
 
-## Highlight lines
+## Destacar linhas
 
-## Highlight spans
+## Destacar trechos
 
 ## Diffing
 

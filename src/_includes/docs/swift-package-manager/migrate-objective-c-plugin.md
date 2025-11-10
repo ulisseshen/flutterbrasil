@@ -1,3 +1,5 @@
+<!-- ia-translate: true -->
+
 Substitua `plugin_name` ao longo deste guia pelo nome do seu plugin.
 O exemplo abaixo usa `ios`, substitua `ios` por `macos`/`darwin` conforme aplicável.
 

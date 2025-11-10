@@ -1,4 +1,4 @@
-The image files in this directory's subdirectories are
-used in the effects cookbook recipes.
-Their names and extensions shouldn't be changed without
-updating the recipes and ensuring they still work as well.
+Os arquivos de imagem nos subdiretórios deste diretório são
+usados nas receitas do cookbook de efeitos.
+Seus nomes e extensões não devem ser alterados sem
+atualizar as receitas e garantir que ainda funcionem corretamente.

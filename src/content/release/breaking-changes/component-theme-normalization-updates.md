@@ -1,40 +1,41 @@
 ---
-title: Component theme normalization updates
+title: Atualizações de normalização de temas de componentes
 description: >-
-  `AppBarTheme`, `BottomAppBarTheme` and `InputDecorationTheme` have been
-  normalized to follow Flutter's convention for component themes in the
-  Material library.
+  `AppBarTheme`, `BottomAppBarTheme` e `InputDecorationTheme` foram
+  normalizados para seguir a convenção do Flutter para temas de componentes na
+  biblioteca Material.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
 ## Summary
 
-`AppBarTheme`, `BottomAppBarTheme` and `InputDecorationTheme` were refactored
-to conform to Flutter's conventions for component themes.
-`AppBarThemeData`, `BottomAppBarThemeData` and `InputDecorationThemeData` were
-added to define overrides for the defaults of the component visual properties.
-Releases of Flutter continue to normalize component themes like these for
-a more consistent theming experience in the material library.
+`AppBarTheme`, `BottomAppBarTheme` e `InputDecorationTheme` foram refatorados
+para estar em conformidade com as convenções do Flutter para temas de componentes.
+`AppBarThemeData`, `BottomAppBarThemeData` e `InputDecorationThemeData` foram
+adicionados para definir substituições para os padrões das propriedades visuais do componente.
+Os lançamentos do Flutter continuam a normalizar temas de componentes como estes para
+uma experiência de temas mais consistente na biblioteca material.
 
 ## Migration guide
 
-In `ThemeData`:
-- The type of the `appBarTheme` property has been
-  changed from `AppBarTheme` to `AppBarThemeData`.
-- The type of `bottomAppBarTheme` property has been
-  changed from `BottomAppBarTheme` to `BottomAppBarThemeData`.
-- The type of `inputDecorationTheme` property has been
-  changed from `InputDecorationTheme` to `InputDecorationThemeData`.
+Em `ThemeData`:
+- O tipo da propriedade `appBarTheme` foi
+  alterado de `AppBarTheme` para `AppBarThemeData`.
+- O tipo da propriedade `bottomAppBarTheme` foi
+  alterado de `BottomAppBarTheme` para `BottomAppBarThemeData`.
+- O tipo da propriedade `inputDecorationTheme` foi
+  alterado de `InputDecorationTheme` para `InputDecorationThemeData`.
 
-The return type of the component theme `xTheme.of()` methods and
-`Theme.of().xTheme` have also changed to `xThemeData`.
+O tipo de retorno dos métodos `xTheme.of()` do tema do componente e
+`Theme.of().xTheme` também foram alterados para `xThemeData`.
 
-In `DatePickerThemeData` and `TimePickerThemeData`, the type of the
-`inputDecorationTheme` property has been changed from `InputDecorationTheme`
-to `InputDecorationThemeData`.
+Em `DatePickerThemeData` e `TimePickerThemeData`, o tipo da propriedade
+`inputDecorationTheme` foi alterado de `InputDecorationTheme`
+para `InputDecorationThemeData`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 final AppBarTheme appBarTheme = Theme.of(context).appBarTheme;
@@ -66,7 +67,7 @@ const DatePickerThemeData datePickerTheme = DatePickerThemeData(inputDecorationT
 const TimePickerThemeData timePickerTheme = TimePickerThemeData(inputDecorationTheme: InputDecorationTheme());
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 final AppBarThemeData appBarTheme = Theme.of(context).appBarTheme;
@@ -100,18 +101,18 @@ const TimePickerThemeData timePickerTheme = TimePickerThemeData(inputDecorationT
 
 ## Timeline
 
-Landed in version: 3.33.0-1.0.pre through 3.35.0-0.0.pre<br>
-Stable release: 3.35
+Adicionado na versão: 3.33.0-1.0.pre até 3.35.0-0.0.pre<br>
+Versão estável: 3.35
 
 ## References
 
-API documentation:
+Documentação da API:
 
 * [`AppBarTheme`][]
 * [`BottomAppBarTheme`][]
 * [`InputDecorationTheme`][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Normalize ThemeData.appBarTheme][]
 * [Normalize ThemeData.bottomAppBarTheme][]

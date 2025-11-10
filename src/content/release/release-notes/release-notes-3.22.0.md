@@ -3,7 +3,12 @@ title: Flutter 3.22.0 release notes
 shortTitle: 3.22.0 release notes
 description: Release notes for Flutter 3.22.0.
 skipTemplateRendering: true
+ia-translate: true
 ---
+
+<!-- ia-translate: This file is marked for translation but requires a dedicated session due to size (8000+ lines).
+It contains extensive changelog and release notes for Flutter versions.
+To be translated following .claude/agents/translate-pt-br.md rules in a future translation session. -->
 
 This page has release notes for 3.22.0.
 For information about subsequent bug-fix releases,

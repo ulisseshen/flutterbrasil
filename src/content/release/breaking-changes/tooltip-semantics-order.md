@@ -1,38 +1,39 @@
 ---
-title: Accessibility traversal order of tooltip changed
+ia-translate: true
+title: Ordem de travessia de acessibilidade do tooltip alterada
 description: >-
-  The Tooltip widget's message now immediately follows the
-  Tooltip widget's child during accessibility traversal.
+  A mensagem do widget Tooltip agora aparece imediatamente após o
+  filho do widget Tooltip durante a travessia de acessibilidade.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-During accessibility focus traversal, `Tooltip.message` is
-visited immediately after `Tooltip.child`.
+Durante a travessia de foco de acessibilidade, `Tooltip.message` é
+visitado imediatamente após `Tooltip.child`.
 
-## Background
+## Contexto
 
-The `Tooltip` widget usually wraps an interactive UI component such as a button,
-and shows a help message when long pressed.
-When the message is visible, assistive technologies should announce it after
-the button.
+O widget `Tooltip` geralmente envolve um componente de UI interativo, como um botão,
+e exibe uma mensagem de ajuda quando pressionado longamente.
+Quando a mensagem está visível, as tecnologias assistivas devem anunciá-la após
+o botão.
 
-The `Tooltip` widget originally put `Tooltip.message` on
-an `OverlayEntry` when long pressed.
-As a result, `Tooltip.message` was not immediately after
-`Tooltip.child` in the semantics tree.
+O widget `Tooltip` originalmente colocava `Tooltip.message` em
+um `OverlayEntry` quando pressionado longamente.
+Como resultado, `Tooltip.message` não ficava imediatamente após
+`Tooltip.child` na árvore de semântica.
 
-## Migration guide
+## Guia de migração
 
-This change moved the tooltip message in the semantics tree.
-You might see accessibility test failures if
-your tests expect a tooltip message to appear in a
-specific location in the semantics tree, when it is visible.
-Update any failing accessibility tests to adopt the new tooltip semantics order.
+Esta mudança moveu a mensagem do tooltip na árvore de semântica.
+Você pode ver falhas em testes de acessibilidade se
+seus testes esperam que uma mensagem de tooltip apareça em uma
+localização específica na árvore de semântica, quando ela está visível.
+Atualize quaisquer testes de acessibilidade com falhas para adotar a nova ordem de semântica do tooltip.
 
-For example, if you constructed the following widget tree in your test:
+Por exemplo, se você construiu a seguinte árvore de widgets em seu teste:
 
 ```dart
 Directionality(
@@ -60,8 +61,8 @@ Directionality(
 );
 ```
 
-When the tooltip message is visible, the corresponding semantics tree before
-this change should look like this:
+Quando a mensagem do tooltip está visível, a árvore de semântica correspondente antes
+desta mudança deveria se parecer com isto:
 
 ```dart
 SemanticsNode#0
@@ -93,9 +94,9 @@ SemanticsNode#0
      textDirection: ltr
 ```
 
-After this change, the same widget tree generates a
-slightly different semantics tree, as shown below.
-Node #6 becomes a child of node #3, instead of node #0.
+Após esta mudança, a mesma árvore de widgets gera uma
+árvore de semântica ligeiramente diferente, conforme mostrado abaixo.
+O nó #6 se torna um filho do nó #3, em vez do nó #0.
 
 ```dart
 SemanticsNode#0
@@ -127,20 +128,20 @@ SemanticsNode#0
          textDirection: ltr
 ```
 
-## Timeline
+## Cronograma
 
-Landed in version: 3.16.0-11.0.pre<br>
-In stable release: 3.19.0
+Implementado na versão: 3.16.0-11.0.pre<br>
+Na versão estável: 3.19.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
-* [`Tooltip`][]
+* [`Tooltip`][`Tooltip`]
 
-Relevant PRs:
+PRs relevantes:
 
-* [OverlayPortal.overlayChild contributes semantics to OverlayPortal instead of Overlay][]
+* [OverlayPortal.overlayChild contributes semantics to OverlayPortal instead of Overlay][OverlayPortal.overlayChild contributes semantics to OverlayPortal instead of Overlay]
 
 [`Tooltip`]: {{site.api}}/flutter/material/Tooltip-class.html
 [OverlayPortal.overlayChild contributes semantics to OverlayPortal instead of Overlay]: {{site.repo.flutter}}/pull/134921

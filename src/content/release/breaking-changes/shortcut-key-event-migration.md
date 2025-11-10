@@ -1,81 +1,82 @@
 ---
-title: Migrate ShortcutActivator and ShortcutManager to KeyEvent system
+ia-translate: true
+title: Migrar ShortcutActivator e ShortcutManager para o sistema KeyEvent
 description: >
-  The raw key event subsystem has been superseded by the key event subsystem,
-  and APIs that use RawKeyEvent and RawKeyboard are converted to KeyEvent and
+  O subsistema de eventos de tecla raw foi substituído pelo subsistema de eventos de tecla,
+  e APIs que usam RawKeyEvent e RawKeyboard foram convertidas para KeyEvent e
   HardwareKeyboard.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-For some time now (years), Flutter has had two key event systems implemented.
-The new system reached parity with the old platform-specific raw key event
-system, and the raw system will be removed. To prepare for that, the Flutter
-APIs that use the old system are being modified, and for a select few of them we
-have decided to make breaking changes in the API in order to preserve the
-quality of the API.
+Por algum tempo (anos), o Flutter teve dois sistemas de eventos de tecla implementados.
+O novo sistema alcançou paridade com o antigo sistema de eventos de tecla raw específico de plataforma,
+e o sistema raw será removido. Para preparar para isso, as APIs do Flutter
+que usam o sistema antigo estão sendo modificadas, e para algumas delas decidimos
+fazer mudanças incompatíveis na API para preservar a
+qualidade da API.
 
-## Context
+## Contexto
 
-In the original key event subsystem handling each platform's quirks in the
-framework and in client apps caused overly complex code, and the old system
-didn't properly represent the true state of key events on the system.
+No subsistema de eventos de tecla original, lidar com as peculiaridades de cada plataforma no
+framework e nos apps cliente causava código excessivamente complexo, e o sistema antigo
+não representava adequadamente o estado verdadeiro dos eventos de tecla no sistema.
 
-So, the new [`KeyEvent`][]-based system was born, and to minimize breaking
-changes, was implemented in parallel with the old system with the intention of
-eventually deprecating the raw system. That time is quickly arriving, and to
-prepare for it, we have made some minimal breaking changes required to preserve
-the quality of the API.
+Então, o novo sistema baseado em [`KeyEvent`][`KeyEvent`] nasceu, e para minimizar mudanças incompatíveis,
+foi implementado em paralelo com o sistema antigo com a intenção de
+eventualmente depreciar o sistema raw. Esse momento está chegando rapidamente, e para
+nos preparar para isso, fizemos algumas mudanças incompatíveis mínimas necessárias para preservar
+a qualidade da API.
 
-## Description of change
+## Descrição da mudança
 
-Summary of APIs that have been affected:
+Resumo das APIs que foram afetadas:
 
-- `ShortcutActivator.accepts` now takes a `KeyEvent` and `HardwareKeyboard`.
-- `ShortcutActivator.isActivatedBy` is now deprecated. Just call `accepts` instead.
-- `ShortcutActivator.triggers` is now optional, and returns null if not implemented.
-- `ShortcutManager.handleKeypress` now takes a `KeyEvent`.
+- `ShortcutActivator.accepts` agora recebe um `KeyEvent` e `HardwareKeyboard`.
+- `ShortcutActivator.isActivatedBy` agora está deprecado. Apenas chame `accepts` ao invés disso.
+- `ShortcutActivator.triggers` agora é opcional, e retorna null se não implementado.
+- `ShortcutManager.handleKeypress` agora recebe um `KeyEvent`.
 
-The change modifies the `ShortcutActivator.accepts` method to take a `KeyEvent`
-and `HardwareKeyboard` instead of the previous `RawKeyEvent` and `RawKeyboard`.
+A mudança modifica o método `ShortcutActivator.accepts` para receber um `KeyEvent`
+e `HardwareKeyboard` ao invés dos anteriores `RawKeyEvent` e `RawKeyboard`.
 
-The meaning of `ShortcutActivator.accepts` has changed slightly. Before the
-change, it was assumed that `accepts` was only called if
-`ShortcutActivator.triggers` returned null, or if the key event sent to `accepts`
-had a logical key that was in the `triggers` list. Now it is always called, and
-may use the `triggers` list as a performance improvement, but is not required
-to. Flutter subclasses such as `SingleActivator` and `CharacterActivator`
-already do this.
+O significado de `ShortcutActivator.accepts` mudou ligeiramente. Antes da
+mudança, assumia-se que `accepts` era chamado apenas se
+`ShortcutActivator.triggers` retornasse null, ou se o evento de tecla enviado para `accepts`
+tivesse uma tecla lógica que estivesse na lista `triggers`. Agora ele é sempre chamado, e
+pode usar a lista `triggers` como uma melhoria de desempenho, mas não é obrigado
+a fazê-lo. Subclasses do Flutter como `SingleActivator` e `CharacterActivator`
+já fazem isso.
 
-The change also modifies the `ShortcutManager.handleKeypress` method to take a
-`KeyEvent` instead of `RawKeyEvent`.
+A mudança também modifica o método `ShortcutManager.handleKeypress` para receber um
+`KeyEvent` ao invés de `RawKeyEvent`.
 
-## Migration guide
+## Guia de migração
 
-APIs provided by the Flutter framework are already migrated. Migration is
-needed only if you're using any of the methods listed in the previous section.
+As APIs fornecidas pelo framework Flutter já foram migradas. A migração é
+necessária apenas se você estiver usando algum dos métodos listados na seção anterior.
 
-### Migrating your APIs that use `ShortcutActivator` or its subclasses.
+### Migrando suas APIs que usam `ShortcutActivator` ou suas subclasses.
 
-Pass a `KeyEvent` instead of a `RawKeyEvent` to `ShortcutActivator.accepts`.
-This may mean switching where you get your key events from. Depending on where
-you get them, this can either mean switching to using `Focus.onKeyEvent` instead
-of `Focus.onKey`, or a similar change if using `FocusScope`, `FocusNode` or
+Passe um `KeyEvent` ao invés de um `RawKeyEvent` para `ShortcutActivator.accepts`.
+Isso pode significar mudar de onde você obtém seus eventos de tecla. Dependendo de onde
+você os obtém, isso pode significar mudar para usar `Focus.onKeyEvent` ao invés
+de `Focus.onKey`, ou uma mudança similar se estiver usando `FocusScope`, `FocusNode` ou
 `FocusScopeNode`.
 
-If you're using a `RawKeyboardListener`, switch to using a
-`KeyboardListener` instead. If you're accessing `RawKeyboard` directly, use
-`HardwareKeyboard` instead. You'll find that there are non-raw equivalents for
-all of the key event sources.
+Se você estiver usando um `RawKeyboardListener`, mude para usar um
+`KeyboardListener` ao invés. Se você estiver acessando `RawKeyboard` diretamente, use
+`HardwareKeyboard` ao invés. Você descobrirá que existem equivalentes não-raw para
+todas as fontes de eventos de tecla.
 
-### Migrating your APIs that extend `ShortcutActivator`
+### Migrando suas APIs que estendem `ShortcutActivator`
 
-The `ShortcutActivator.accepts` method was modified to take a `KeyEvent` and a
-`HardwareKeyboard` instead of a `RawKeyEvent` and `RawKeyboard`.
+O método `ShortcutActivator.accepts` foi modificado para receber um `KeyEvent` e um
+`HardwareKeyboard` ao invés de um `RawKeyEvent` e `RawKeyboard`.
 
-Before:
+Antes:
 
 ```dart
 class MyActivator extends ShortcutActivator {
@@ -88,7 +89,7 @@ class MyActivator extends ShortcutActivator {
 }
 ```
 
-After:
+Depois:
 
 ```dart
 class MyActivator extends ShortcutActivator {
@@ -101,15 +102,15 @@ class MyActivator extends ShortcutActivator {
 }
 ```
 
-### Migrating your APIs that extend `ShortcutManager`
+### Migrando suas APIs que estendem `ShortcutManager`
 
-The `ShortcutManager` class was modified to take `KeyEvent`s in `handleKeypress`
-instead of `RawKeyEvent`s.  One difference in the two APIs is that repeated keys
-are determined differently. In the `RawKeyEvent` case, the `repeat` member
-indicated a repeat, but in `RawKeyEvent` code, the event is a different type
+A classe `ShortcutManager` foi modificada para receber `KeyEvent`s em `handleKeypress`
+ao invés de `RawKeyEvent`s. Uma diferença nas duas APIs é que teclas repetidas
+são determinadas de forma diferente. No caso do `RawKeyEvent`, o membro `repeat`
+indicava uma repetição, mas no código `RawKeyEvent`, o evento é de um tipo diferente
 (`KeyRepeatEvent`).
 
-Before:
+Antes:
 
 ```dart
 class _MyShortcutManager extends ShortcutManager {
@@ -127,7 +128,7 @@ class _MyShortcutManager extends ShortcutManager {
 }
 ```
 
-After:
+Depois:
 
 ```dart
 class _MyShortcutManager extends ShortcutManager {
@@ -145,27 +146,27 @@ class _MyShortcutManager extends ShortcutManager {
 }
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.17.0-5.0.pre<br>
-In stable release: 3.19.0
+Implementado na versão: 3.17.0-5.0.pre<br>
+Na versão estável: 3.19.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
-* [`KeyEvent`][]
-* [`HardwareKeyboard`][]
-* [`ShortcutActivator`][]
-* [`ShortcutManager`][]
+* [`KeyEvent`][`KeyEvent`]
+* [`HardwareKeyboard`][`HardwareKeyboard`]
+* [`ShortcutActivator`][`ShortcutActivator`]
+* [`ShortcutManager`][`ShortcutManager`]
 
-Relevant issues:
+Issues relevantes:
 
-* [`RawKeyEvent` and `RawKeyboard`, et al should be deprecated and removed (Issue 136419)][]
+* [`RawKeyEvent` and `RawKeyboard`, et al should be deprecated and removed (Issue 136419)][`RawKeyEvent` and `RawKeyboard`, et al should be deprecated and removed (Issue 136419)]
 
-Relevant PRs:
+PRs relevantes:
 
-* [Prepare ShortcutActivator and ShortcutManager to migrate to KeyEvent from RawKeyEvent][]
+* [Prepare ShortcutActivator and ShortcutManager to migrate to KeyEvent from RawKeyEvent][Prepare ShortcutActivator and ShortcutManager to migrate to KeyEvent from RawKeyEvent]
 
 [`KeyEvent`]: {{site.api}}/flutter/services/KeyEvent-class.html
 [`HardwareKeyboard`]: {{site.api}}/flutter/services/HardwareKeyboard-class.html

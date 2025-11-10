@@ -3,11 +3,12 @@ title: The Form widget no longer supports being a sliver.
 description: >-
   The Form widget now includes a semantics widget,
   which prevents it from being used directly as a sliver.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
 Previously, the Form widget essentially acted as a direct wrapper
 around its child. This design allowed a Form containing a sliver child
@@ -19,19 +20,19 @@ within the Form widget's internal structure. This change alters
 its rendering behavior, meaning Form can no longer directly
 function as a sliver.
 
-## Context
+## Contexto
 
 This change is part of an ongoing effort to improve the
 accessibility and semantic understanding of Flutter widgets.
 By embedding a semantics widget directly within Form, the framework
 can provide better information to accessibility services.
 
-## Description of change
+## Descrição da mudança
 
 The core change is the integration of a semantics widget
 into the Form widget's build method.
 
-## Migration guide
+## Guia de migração
 
 If your app does not currently use the Form widget directly
 as a sliver within a scrollable list
@@ -63,12 +64,12 @@ sliver: SliverToBoxAdapter(
 )
 ```
 
-## Timeline
+## Linha do tempo
 
 Landed in version: 3.35.0-pre<br>
 In stable release: 3.35
 
-## References
+## Referências
 
 API documentation:
 

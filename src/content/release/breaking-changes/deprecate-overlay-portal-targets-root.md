@@ -2,16 +2,17 @@
 title: Deprecate `OverlayPortal.targetsRootOverlay`
 description: >-
   Learn about changes to the OverlayPortal in Flutter.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
 The `OverlayPortal.targetsRootOverlay` property was deprecated and
 replaced with `overlayLocation`.
 
-## Context
+## Contexto
 
 A `overlayLocation` parameter was added to
 the `OverlayPortal` default constructor to
@@ -19,11 +20,11 @@ control where the overlay child renders.
 As a result, the `OverlayPortal.targetsRootOverlay` constructor is
 no longer useful.
 
-## Description of change
+## Descrição da mudança
 
 The `OverlayPortal.targetsRootOverlay` constructor is deprecated.
 
-## Migration guide
+## Guia de migração
 
 If you are using `OverlayPortal.targetsRootOverlay`,
 use `OverlayPortal` with `overlayLocation` instead.
@@ -55,12 +56,12 @@ Widget build(BuildContext context) {
 }
 ```
 
-## Timeline
+## Linha do tempo
 
 Landed in version: 3.38.0-0.1.pre<br>
 In stable release: 3.38
 
-## References
+## Referências
 
 API documentation:
 

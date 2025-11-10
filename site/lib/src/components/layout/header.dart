@@ -81,7 +81,7 @@ class DashHeader extends StatelessComponent {
               const Button(
                 id: 'call-to-action',
                 style: ButtonStyle.filled,
-                content: 'Get started',
+                content: 'Comece agora',
                 href: '/get-started/quick',
               ),
               const MenuToggle(),

@@ -42,17 +42,17 @@ Vindo de outra plataforma? Confira Flutter para desenvolvedores:
 [Android][Android], [SwiftUI][SwiftUI], [UIKit][UIKit], [React Native][React Native] e
 [Xamarin.Forms][Xamarin.Forms].
 
-[Building layouts][Building layouts]
+[Construindo layouts][Building layouts]
 : Aprenda como criar layouts no Flutter,
   onde tudo é um [widget](/resources/glossary#widget).
 
-[Understanding constraints][Understanding constraints]
+[Entendendo restrições][Understanding constraints]
 : Uma vez que você entenda que "Constraints
   flow down. Sizes flow up. Parents set
   positions", então você está no caminho certo
   para entender o modelo de layout do Flutter.
 
-[Adding interactivity to your Flutter app][interactivity]
+[Adicionando interatividade ao seu app Flutter][interactivity]
 : Aprenda como adicionar um stateful widget ao seu app.
 
 [FAQ][FAQ]

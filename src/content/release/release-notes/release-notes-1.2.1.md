@@ -240,7 +240,7 @@ void usePictureImage(Picture p) async {
 }
 ```
 
-No entanto, sua aplicação pode muito bem estar executando outras ações assíncronas, e você deve considerar como deseja lidar com o processamento de imagem sob essa perspectiva. Para mais sobre o suporte do Dart para programação assíncrona e a classe Future, veja [https://dartbrasil.dev/tutorials/language/futures.](https://dartbrasil.dev/tutorials/language/futures)
+No entanto, sua aplicação pode muito bem estar executando outras ações assíncronas, e você deve considerar como deseja lidar com o processamento de imagem sob essa perspectiva. Para mais sobre o suporte do Dart para programação assíncrona e a classe Future, veja [https://www.dartlang.org/tutorials/language/futures.](https://www.dartlang.org/tutorials/language/futures)
 
 
 ### [#7567](https://github.com/flutter/engine/pull/7567) Rename FlutterResult in embedder.h

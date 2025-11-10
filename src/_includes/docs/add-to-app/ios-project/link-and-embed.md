@@ -1,3 +1,5 @@
+<!-- ia-translate: true -->
+
 Plugins Flutter podem produzir [frameworks estáticos ou dinâmicos][static or dynamic frameworks].
 Linke frameworks estáticos, [_nunca_ incorpore-os][static-framework].
 

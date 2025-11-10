@@ -40,6 +40,8 @@ Para evitar ser quebrado por versões futuras do Flutter,
 considere submeter seus testes ao nosso [registro de testes][test registry].
 
 
+<a id="switching-flutter-channels" aria-hidden="true"></a>
+
 ## Mudando canais do Flutter
 
 O Flutter tem dois canais de lançamento:

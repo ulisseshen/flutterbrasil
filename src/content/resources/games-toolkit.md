@@ -104,14 +104,14 @@ como [Cloud, Firebase][] e [Ads][], no seu jogo.
 Você deve conectar suas contas Firebase e GCP para usar créditos para
 serviços Firebase e verificar seu e-mail comercial durante o cadastro para ganhar
 um adicional de $100 além do crédito normal de $300.
-Para a oferta de Ads, [verifique a elegibilidade da sua região][].
+Para a oferta de Ads, [verifique a elegibilidade da sua região][check your region's eligibility].
 :::
 
 ## Começando
 
 Você está pronto? Para começar:
 
-1. Se você ainda não o fez, [instale o Flutter][].
+1. Se você ainda não o fez, [instale o Flutter][install Flutter].
 1. [Clone o repositório de jogos][game-repo].
 1. Revise o arquivo `README` para o primeiro tipo de jogo que você deseja criar.
 

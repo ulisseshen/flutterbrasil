@@ -1,13 +1,14 @@
 ---
-title: Flutter 1.20.0 release notes
-shortTitle: 1.20.0 release notes
-description: Release notes for Flutter 1.20.0.
+ia-translate: true
+title: Notas de lançamento do Flutter 1.20.0
+shortTitle: Notas de lançamento 1.20.0
+description: Notas de lançamento do Flutter 1.20.0.
 skipTemplateRendering: true
 ---
 
-##  Merged pull requests by label
+##  Pull requests mesclados por label
 
-### Merged PRs by labels for `flutter/flutter`
+### PRs mesclados por labels para `flutter/flutter`
 
 #### tool - 435 pull request(s)
 
@@ -6106,7 +6107,7 @@ skipTemplateRendering: true
 
 
 
-### Merged PRs by labels for `flutter/plugins`
+### PRs mesclados por labels para `flutter/plugins`
 
 #### submit queue - 3 pull request(s)
 
@@ -6157,9 +6158,9 @@ skipTemplateRendering: true
 
 [2766](https://github.com/flutter/plugins/pull/2766) [url_launcher] update README with enableJavaScript info (cla: yes, documentation, webview)
 
-## All merged pull requests
+## Todos os pull requests mesclados
 
-### Merged PRs in `flutter/flutter`
+### PRs mesclados em `flutter/flutter`
 
 There were 1243 pull requests.
 
@@ -8649,7 +8650,7 @@ There were 1243 pull requests.
 
 [61129](https://github.com/flutter/flutter/pull/61129) [flutter_tools] fix recursive asset variant issue (cla: yes, tool, waiting for tree to go green)
 
-### Merged PRs in `flutter/engine`
+### PRs mesclados em `flutter/engine`
 
 There were 1316 pull requests.
 
@@ -11285,7 +11286,7 @@ There were 1316 pull requests.
 
 [19608](https://github.com/flutter/engine/pull/19608) Propoagate Tap events on Android hybrid views (cla: yes, platform-android)
 
-### Merged PRs in `flutter/plugins`
+### PRs mesclados em `flutter/plugins`
 
 There were 153 pull requests.
 

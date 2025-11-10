@@ -1,13 +1,17 @@
-# Theme Cookbook recipe
+---
+ia-translate: true
+---
 
-## Objective
+# Receita do Cookbook Theme
 
-This recipe explains and demonstrates the following:
+## Objetivo
 
-- How to set and apply color and font values to an entire Flutter app.
-- How to override the overall theme's color and font values for
-  one or more components in a Flutter app.
+Esta receita explica e demonstra o seguinte:
 
-## Source Code
+- Como definir e aplicar valores de cor e fonte em todo um app Flutter.
+- Como sobrescrever os valores de cor e fonte do theme geral para
+  um ou mais componentes em um app Flutter.
+
+## Código Fonte
 
 https://docs.flutterbrasil.dev/cookbook/design/themes

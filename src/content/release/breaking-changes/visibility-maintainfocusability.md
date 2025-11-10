@@ -1,34 +1,35 @@
 ---
-title: The Visibility widget is no longer focusable by default when maintainState is enabled
+ia-translate: true
+title: O widget Visibility não é mais focalizável por padrão quando maintainState está habilitado
 description: >-
-  The Visibility widget by default no longer implicitly retains focusability
-  for its child when maintainState is enabled.
+  O widget Visibility por padrão não retém mais implicitamente a focusabilidade
+  para seu filho quando maintainState está habilitado.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
-This change was introduced to fix an issue
-where an `IndexedStack`s hidden children would be focusable with keyboard events
-(see [issue](https://github.com/flutter/flutter/issues/114213))
-due to the underlying `Visibility` widgets default behavior.
+## Resumo
+Esta mudança foi introduzida para corrigir um problema
+onde os filhos ocultos de um `IndexedStack` seriam focalizáveis com eventos de teclado
+(veja o [issue](https://github.com/flutter/flutter/issues/114213))
+devido ao comportamento padrão do widget `Visibility` subjacente.
 
-## Description of change
-The core change is the `Visibility` widget is no longer focusable by default
-when `maintainState` is enabled.
-A new flag, `maintainFocusability`, must be set to true with `maintainState`
-for a hidden widget to remain focusable.
+## Descrição da mudança
+A mudança principal é que o widget `Visibility` não é mais focalizável por padrão
+quando `maintainState` está habilitado.
+Uma nova flag, `maintainFocusability`, deve ser definida como true junto com `maintainState`
+para que um widget oculto permaneça focalizável.
 
-## Migration guide
-If your app has a `Visibility` widget that does not set `maintainState` to true,
-then no changes are required.
+## Guia de migração
+Se seu app tem um widget `Visibility` que não define `maintainState` como true,
+então nenhuma mudança é necessária.
 
-If your app has a `Visibility` widget that sets `maintainState` to true
-and you relied on the previous default behavior
-that allowed you to focus your hidden widget,
-you will need to set `maintainFocusability` to true.
+Se seu app tem um widget `Visibility` que define `maintainState` como true
+e você dependia do comportamento padrão anterior
+que permitia focalizar seu widget oculto,
+você precisará definir `maintainFocusability` como true.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 child: Visibility(
@@ -37,7 +38,7 @@ child: Visibility(
 )
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 child: Visibility(
@@ -47,21 +48,21 @@ child: Visibility(
 )
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.34.0-pre<br>
-In stable release: 3.35
+Lançado na versão: 3.34.0-pre<br>
+No release estável: 3.35
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`Visibility`]({{site.api}}/flutter/widgets/Visibility-class.html)
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue 114213]({{site.repo.flutter}}/issues/114213)
 
-Relevant PRs:
+PRs relevantes:
 
 * [PR 159133: Add flag to exclude focus for hidden children in Visibility, maintainFocusability. Set maintainFocusability to false in IndexedStack]({{site.repo.flutter}}/pull/159133)

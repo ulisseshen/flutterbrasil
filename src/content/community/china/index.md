@@ -1,91 +1,92 @@
 ---
-title: Using Flutter in China
-description: How to use, access, and learn about Flutter in China.
+title: Usando Flutter na China
+description: Como usar, acessar e aprender sobre Flutter na China.
+ia-translate: true
 ---
 
 {% render "docs/china-notice-cn.md" %}
 
-To speed the download and installation of Flutter in China,
-consider using a [mirror site][] or _mirror_.
+Para acelerar o download e a instalação do Flutter na China,
+considere usar um [mirror site][] ou _espelho_.
 
 :::important
-Use mirror sites _only_ if you _trust_ the provider.
-The Flutter team can't verify their reliability or security.
+Use sites espelho _apenas_ se você _confiar_ no provedor.
+A equipe do Flutter não pode verificar sua confiabilidade ou segurança.
 :::
 
 [mirror site]: https://en.wikipedia.org/wiki/Mirror_site
 
-## Use a Flutter mirror site
+## Use um site espelho do Flutter
 
-The [China Flutter User Group][] (CFUG) maintains a Simplified Chinese
-Flutter website [https://flutter.cn](https://flutter.cn) and a mirror.
-Other mirrors can be found at the [end of this guide](#known-trusted-community-run-mirror-sites).
+O [China Flutter User Group][] (CFUG) mantém um site do Flutter em chinês simplificado
+[https://flutter.cn](https://flutter.cn) e um espelho.
+Outros espelhos podem ser encontrados no [final deste guia](#known-trusted-community-run-mirror-sites).
 
-### Configure your machine to use a mirror site
+### Configure sua máquina para usar um site espelho
 
-To install or use Flutter in China, use a trustworthy Flutter mirror.
-This requires setting two environment variables on your machine.
+Para instalar ou usar o Flutter na China, use um espelho confiável do Flutter.
+Isso requer definir duas variáveis de ambiente em sua máquina.
 
-_All examples that follow presume that you are using the CFUG mirror._
+_Todos os exemplos a seguir presumem que você está usando o espelho do CFUG._
 
-To set your machine to use a mirror site:
+Para configurar sua máquina para usar um site espelho:
 
 <Tabs key="china-setup-os">
 
 <Tab name="Windows">
 
-These steps require using PowerShell.
+Estas etapas requerem o uso do PowerShell.
 
- 1. Open a new window in PowerShell to prepare to run shell commands.
+ 1. Abra uma nova janela no PowerShell para preparar para executar comandos do shell.
 
- 1. Set `PUB_HOSTED_URL` to your mirror site.
+ 1. Defina `PUB_HOSTED_URL` para o seu site espelho.
 
     ```ps
     $ $env:PUB_HOSTED_URL="https://pub.flutter-io.cn"
     ```
 
- 1. Set `FLUTTER_STORAGE_BASE_URL` to your mirror site.
+ 1. Defina `FLUTTER_STORAGE_BASE_URL` para o seu site espelho.
 
     ```ps
     $ $env:FLUTTER_STORAGE_BASE_URL="https://storage.flutter-io.cn"
     ```
 
- 1. Download the Flutter archive from your preferred mirror site.
+ 1. Baixe o arquivo do Flutter do seu site espelho preferido.
 
-    For CFUG, visit their [Flutter SDK archive][],
-    and download the SDK for your platform and architecture.
+    Para o CFUG, visite o [Flutter SDK archive][],
+    e baixe o SDK para sua plataforma e arquitetura.
 
- 1. Create a folder where you can install Flutter. Then change into it.
-    Consider a path like `$env:USERPROFILE\dev`.
+ 1. Crie uma pasta onde você possa instalar o Flutter. Em seguida, entre nela.
+    Considere um caminho como `$env:USERPROFILE\dev`.
 
     ```ps
     $ New-Item -Path "$env:USERPROFILE\dev" -ItemType Directory; cd "$env:USERPROFILE\dev"
     ```
- 1. Extract the SDK from the zip archive file.
+ 1. Extraia o SDK do arquivo zip.
 
-    This example assumes you downloaded the Windows version of the Flutter SDK.
-    You'll need to replace the path to the archive with the
-    path to the archive file and version you downloaded.
+    Este exemplo assume que você baixou a versão Windows do Flutter SDK.
+    Você precisará substituir o caminho para o arquivo pelo
+    caminho do arquivo e versão que você baixou.
 
     ```ps
     $ Expand-Archive .\flutter_windows_3.35.5-stable.zip
     ```
 
- 1. Add Flutter to your `PATH` environment variable.
+ 1. Adicione o Flutter à sua variável de ambiente `PATH`.
 
     ```ps
     $ $env:PATH = $pwd.PATH + "\flutter\bin",$env:PATH -join ";"
     ```
 
- 1. Begin developing with Flutter.
+ 1. Comece a desenvolver com Flutter.
 
-    After following these steps,
-    Flutter fetches packages and artifacts from `flutter-io.cn`
-    in the current terminal window.
+    Após seguir essas etapas,
+    o Flutter busca pacotes e artefatos de `flutter-io.cn`
+    na janela do terminal atual.
 
-    To set these values permanently across terminals,
-    follow the instructions on adding [Flutter to your PATH][windows-path],
-    also adding the `PUB_HOSTED_URL` and `FLUTTER_STORAGE_BASE_URL` variables.
+    Para definir esses valores permanentemente entre terminais,
+    siga as instruções para adicionar [Flutter to your PATH][windows-path],
+    adicionando também as variáveis `PUB_HOSTED_URL` e `FLUTTER_STORAGE_BASE_URL`.
 
 {:.steps}
 
@@ -95,57 +96,57 @@ These steps require using PowerShell.
 
 <Tab name="macOS">
 
- 1. Open a new window in your terminal to prepare to run shell commands.
+ 1. Abra uma nova janela no seu terminal para preparar para executar comandos do shell.
 
- 1. Set `PUB_HOSTED_URL` to your mirror site.
+ 1. Defina `PUB_HOSTED_URL` para o seu site espelho.
 
     ```console
     $ export PUB_HOSTED_URL="https://pub.flutter-io.cn"
     ```
 
- 1. Set `FLUTTER_STORAGE_BASE_URL` to your mirror site.
+ 1. Defina `FLUTTER_STORAGE_BASE_URL` para o seu site espelho.
 
     ```console
     $ export FLUTTER_STORAGE_BASE_URL="https://storage.flutter-io.cn"
     ```
 
- 1. Download the Flutter archive from your preferred mirror site.
+ 1. Baixe o arquivo do Flutter do seu site espelho preferido.
 
-    For CFUG, visit their [Flutter SDK archive][],
-    and download the SDK for your platform and architecture.
+    Para o CFUG, visite o [Flutter SDK archive][],
+    e baixe o SDK para sua plataforma e arquitetura.
 
- 1. Create a folder where you can install Flutter. Then change into it.
-    Consider a path like `~/dev`.
+ 1. Crie uma pasta onde você possa instalar o Flutter. Em seguida, entre nela.
+    Considere um caminho como `~/dev`.
 
     ```console
     $ mkdir ~/dev; cd ~/dev
     ```
 
- 1. Extract the SDK from the zip archive file.
+ 1. Extraia o SDK do arquivo zip.
 
-    This example assumes you downloaded the macOS version of the Flutter SDK.
-    You'll need to replace the path to the archive with the
-    path to the archive file and version you downloaded.
+    Este exemplo assume que você baixou a versão macOS do Flutter SDK.
+    Você precisará substituir o caminho para o arquivo pelo
+    caminho do arquivo e versão que você baixou.
 
     ```console
     $ unzip flutter_macos_3.35.5-stable.zip
     ```
 
- 1. Add Flutter to your `PATH` environment variable.
+ 1. Adicione o Flutter à sua variável de ambiente `PATH`.
 
     ```console
     $ export PATH="$PWD/flutter/bin:$PATH"
     ```
 
- 1. Begin developing with Flutter.
+ 1. Comece a desenvolver com Flutter.
 
-    After following these steps,
-    Flutter fetches packages and artifacts from `flutter-io.cn`
-    in the current terminal window.
+    Após seguir essas etapas,
+    o Flutter busca pacotes e artefatos de `flutter-io.cn`
+    na janela do terminal atual.
 
-    To set these values permanently across terminals,
-    follow the instructions on adding [Flutter to your PATH][macos-path],
-    also adding the `PUB_HOSTED_URL` and `FLUTTER_STORAGE_BASE_URL` variables.
+    Para definir esses valores permanentemente entre terminais,
+    siga as instruções para adicionar [Flutter to your PATH][macos-path],
+    adicionando também as variáveis `PUB_HOSTED_URL` e `FLUTTER_STORAGE_BASE_URL`.
 
 {:.steps}
 
@@ -155,57 +156,57 @@ These steps require using PowerShell.
 
 <Tab name="Linux">
 
- 1. Open a new window in your terminal to prepare to run shell commands.
+ 1. Abra uma nova janela no seu terminal para preparar para executar comandos do shell.
 
- 1. Set `PUB_HOSTED_URL` to your mirror site.
+ 1. Defina `PUB_HOSTED_URL` para o seu site espelho.
 
     ```console
     $ export PUB_HOSTED_URL="https://pub.flutter-io.cn"
     ```
 
- 1. Set `FLUTTER_STORAGE_BASE_URL` to your mirror site.
+ 1. Defina `FLUTTER_STORAGE_BASE_URL` para o seu site espelho.
 
     ```console
     $ export FLUTTER_STORAGE_BASE_URL="https://storage.flutter-io.cn"
     ```
 
- 1. Download the Flutter archive from your preferred mirror site.
+ 1. Baixe o arquivo do Flutter do seu site espelho preferido.
 
-    For CFUG, visit their [Flutter SDK archive][],
-    and download the SDK for your platform and architecture.
+    Para o CFUG, visite o [Flutter SDK archive][],
+    e baixe o SDK para sua plataforma e arquitetura.
 
- 1. Create a folder where you can install Flutter. Then change into it.
-    Consider a path like `~/dev`.
+ 1. Crie uma pasta onde você possa instalar o Flutter. Em seguida, entre nela.
+    Considere um caminho como `~/dev`.
 
     ```console
     $ mkdir ~/dev; cd ~/dev
     ```
 
- 1. Extract the SDK from the tar archive file.
+ 1. Extraia o SDK do arquivo tar.
 
-    This example assumes you downloaded the Linux version of the Flutter SDK.
-    You'll need to replace the path to the archive with the
-    path to the archive file and version you downloaded.
+    Este exemplo assume que você baixou a versão Linux do Flutter SDK.
+    Você precisará substituir o caminho para o arquivo pelo
+    caminho do arquivo e versão que você baixou.
 
     ```console
     $ tar -xf flutter_linux_3.35.5-stable.tar.xz
     ```
 
- 1. Add Flutter to your `PATH` environment variable.
+ 1. Adicione o Flutter à sua variável de ambiente `PATH`.
 
     ```console
     $ export PATH="$PWD/flutter/bin:$PATH"
     ```
 
- 1. Begin developing with Flutter.
+ 1. Comece a desenvolver com Flutter.
 
-    After following these steps,
-    Flutter fetches packages and artifacts from `flutter-io.cn`
-    in the current terminal window.
+    Após seguir essas etapas,
+    o Flutter busca pacotes e artefatos de `flutter-io.cn`
+    na janela do terminal atual.
 
-    To set these values permanently across terminals,
-    follow the instructions on adding [Flutter to your PATH][linux-path],
-    also adding the `PUB_HOSTED_URL` and `FLUTTER_STORAGE_BASE_URL` variables.
+    Para definir esses valores permanentemente entre terminais,
+    siga as instruções para adicionar [Flutter to your PATH][linux-path],
+    adicionando também as variáveis `PUB_HOSTED_URL` e `FLUTTER_STORAGE_BASE_URL`.
 
 {:.steps}
 
@@ -217,31 +218,31 @@ These steps require using PowerShell.
 
 [Flutter SDK archive]: https://docs.flutter.cn/install/archive/
 
-### Download Flutter archives based on a mirror site
+### Baixe arquivos do Flutter baseado em um site espelho
 
-To download Flutter from the [SDK archive][] from a mirror,
-replace `storage.googleapis.com` with the URL of your trusted mirror.
-Use your mirror site in the browser or in other applications
-like IDM or Thunder.
-This should improve download speed.
+Para baixar o Flutter do [SDK archive][] de um espelho,
+substitua `storage.googleapis.com` pela URL do seu espelho confiável.
+Use seu site espelho no navegador ou em outros aplicativos
+como IDM ou Thunder.
+Isso deve melhorar a velocidade de download.
 
 [SDK archive]: /install/archive
 
-The following example shows how to change the URL for Flutter's download site
-from Google's archive to CFUG's mirror.
+O exemplo a seguir mostra como alterar a URL do site de download do Flutter
+do arquivo do Google para o espelho do CFUG.
 
 <Tabs key="china-setup-os">
 
 <Tab name="Windows">
 
-To download the x64, Windows version of the Flutter SDK,
-you would change the original URL from:
+Para baixar a versão x64, Windows do Flutter SDK,
+você alteraria a URL original de:
 
 ```plaintext
 [!https://storage.googleapis.com!]/flutter_infra_release/releases/stable/windows/flutter_windows_3.35.5-stable.zip
 ```
 
-to the mirror URL:
+para a URL do espelho:
 
 ```plaintext
 [!https://storage.flutter-io.cn!]/flutter_infra_release/releases/stable/windows/flutter_windows_3.35.5-stable.zip
@@ -251,14 +252,14 @@ to the mirror URL:
 
 <Tab name="macOS">
 
-To download the arm64, macOS version of the Flutter SDK,
-you would change the original URL from:
+Para baixar a versão arm64, macOS do Flutter SDK,
+você alteraria a URL original de:
 
 ```plaintext
 [!https://storage.googleapis.com!]/flutter_infra_release/releases/stable/macos/flutter_macos_arm64_3.35.5-stable.zip
 ```
 
-to the mirror URL:
+para a URL do espelho:
 
 ```plaintext
 [!https://storage.flutter-io.cn!]/flutter_infra_release/releases/stable/macos/flutter_macos_arm64_3.35.5-stable.zip
@@ -268,14 +269,14 @@ to the mirror URL:
 
 <Tab name="Linux">
 
-To download the Linux version of the Flutter SDK,
-you would change the original URL from:
+Para baixar a versão Linux do Flutter SDK,
+você alteraria a URL original de:
 
 ```plaintext
 [!https://storage.googleapis.com!]/flutter_infra_release/releases/stable/linux/flutter_linux_3.35.5-stable.tar.xz
 ```
 
-to the mirror URL:
+para a URL do espelho:
 
 ```plaintext
 [!https://storage.flutter-io.cn!]/flutter_infra_release/releases/stable/linux/flutter_linux_3.35.5-stable.tar.xz
@@ -286,36 +287,36 @@ to the mirror URL:
 </Tabs>
 
 :::note
-Not every mirror supports downloading artifacts using their direct URL.
+Nem todo espelho suporta o download de artefatos usando sua URL direta.
 :::
 
-## Configure your machine to publish your package
+## Configure sua máquina para publicar seu pacote
 
-To publish your packages to `pub.dev`,
-you need to be able to access both Google Auth and the `pub.dev` site.
+Para publicar seus pacotes no `pub.dev`,
+você precisa ser capaz de acessar tanto o Google Auth quanto o site `pub.dev`.
 
 {% comment %}
 From <https://github.com/flutter/website/pull/9338#discussion_r1328077020>
 {% endcomment %}
 
-To enable access to `pub.dev`:
+Para habilitar o acesso ao `pub.dev`:
 
 <Tabs key="china-setup-os">
 
 <Tab name="Windows">
 
- 1. Configure a proxy.
-    To configure a proxy, check out the
+ 1. Configure um proxy.
+    Para configurar um proxy, confira a
     [Dart documentation on proxies][].
 
- 1. Verify that your `PUB_HOSTED_URL` environment variable is either unset
-    or empty.
+ 1. Verifique se sua variável de ambiente `PUB_HOSTED_URL` está não definida
+    ou vazia.
 
     ```ps
     $ echo $env:PUB_HOSTED_URL
     ```
 
-    If this command returns any value, unset it.
+    Se este comando retornar algum valor, remova-o.
 
     ```ps
     $ Remove-Item $env:PUB_HOSTED_URL
@@ -324,18 +325,18 @@ To enable access to `pub.dev`:
 </Tab>
 <Tab name="macOS">
 
- 1. Configure a proxy.
-    To configure a proxy, check out the
+ 1. Configure um proxy.
+    Para configurar um proxy, confira a
     [Dart documentation on proxies][].
 
- 1. Verify that your `PUB_HOSTED_URL` environment variable is
-    either unset or empty.
+ 1. Verifique se sua variável de ambiente `PUB_HOSTED_URL` está
+    não definida ou vazia.
 
     ```console
     $ echo $PUB_HOSTED_URL
     ```
 
-    If this command returns any value, unset it.
+    Se este comando retornar algum valor, remova-o.
 
     ```console
     $ unset $PUB_HOSTED_URL
@@ -344,18 +345,18 @@ To enable access to `pub.dev`:
 </Tab>
 <Tab name="Linux">
 
- 1. Configure a proxy.
-    To configure a proxy, check out the
+ 1. Configure um proxy.
+    Para configurar um proxy, confira a
     [Dart documentation on proxies][].
 
- 1. Verify that your `PUB_HOSTED_URL` environment variable is
-    either unset or empty.
+ 1. Verifique se sua variável de ambiente `PUB_HOSTED_URL` está
+    não definida ou vazia.
 
     ```console
     $ echo $PUB_HOSTED_URL
     ```
 
-    If this command returns any value, unset it.
+    Se este comando retornar algum valor, remova-o.
 
     ```console
     $ unset $PUB_HOSTED_URL
@@ -365,16 +366,16 @@ To enable access to `pub.dev`:
 
 </Tabs>
 
-To learn more about publishing packages, check out the
+Para saber mais sobre publicação de pacotes, confira a
 [Dart documentation on publishing packages][].
 
 [Dart documentation on proxies]: {{site.dart-site}}/tools/pub/troubleshoot#pub-get-fails-from-behind-a-corporate-firewall
 [Dart documentation on publishing packages]: {{site.dart-site}}/tools/pub/publishing
 
-## Known, trusted community-run mirror sites
+## Sites espelho conhecidos e confiáveis executados pela comunidade
 
-The Flutter team can't guarantee the long-term availability of any mirrors.
-You can use other mirrors if they become available.
+A equipe do Flutter não pode garantir a disponibilidade a longo prazo de nenhum espelho.
+Você pode usar outros espelhos se eles ficarem disponíveis.
 
 {% for mirror in mirrors %}
 
@@ -382,32 +383,32 @@ You can use other mirrors if they become available.
 
 ### {{mirror.group}}
 
-[{{mirror.group}}][] maintains the `{{mirror.mirror}}` mirror.
-It includes the Flutter SDK and pub packages.
+[{{mirror.group}}][] mantém o espelho `{{mirror.mirror}}`.
+Inclui o Flutter SDK e pacotes pub.
 
-#### Configure your machine to use this mirror
+#### Configure sua máquina para usar este espelho
 
-To set your machine to use this mirror, use these commands.
+Para configurar sua máquina para usar este espelho, use estes comandos.
 
-On macOS, Linux, or ChromeOS:
+No macOS, Linux ou ChromeOS:
 
 ```console
 export PUB_HOSTED_URL={{mirror.urls.pubhosted}};
 export FLUTTER_STORAGE_BASE_URL={{mirror.urls.flutterstorage}}
 ```
 
-On Windows:
+No Windows:
 
 ```console
 $env:PUB_HOSTED_URL="{{mirror.urls.pubhosted}}";
 $env:FLUTTER_STORAGE_BASE_URL="{{mirror.urls.flutterstorage}}"
 ```
 
-#### Get support for this mirror
+#### Obtenha suporte para este espelho
 
-If you're running into issues that only occur when
-using the `{{mirror.mirror}}` mirror, report the issue to their
-[issue tracker]({{mirror.urls.issues}}).
+Se você está tendo problemas que ocorrem apenas ao
+usar o espelho `{{mirror.mirror}}`, relate o problema no
+[issue tracker]({{mirror.urls.issues}}) deles.
 
 {% endfor %}
 
@@ -415,8 +416,8 @@ using the `{{mirror.mirror}}` mirror, report the issue to their
 [{{mirror.group}}]: {{mirror.urls.group}}
 {% endfor %}
 
-## Offer to host a new mirror site
+## Ofereça-se para hospedar um novo site espelho
 
-If you're interested in setting up your own mirror,
-contact [flutter-dev@googlegroups.com](mailto:flutter-dev@googlegroups.com)
-for assistance.
+Se você está interessado em configurar seu próprio espelho,
+entre em contato com [flutter-dev@googlegroups.com](mailto:flutter-dev@googlegroups.com)
+para obter assistência.

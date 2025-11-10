@@ -1,52 +1,53 @@
 ---
-title: Deprecate `SemanticsProperties.focusable` and `SemanticsConfiguration.isFocusable`
+title: Descontinuação de `SemanticsProperties.focusable` e `SemanticsConfiguration.isFocusable`
 description: >
-  The `focusable` parameter has been replaced by `isFocused`.
+  O parâmetro `focusable` foi substituído por `isFocused`.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-The `SemanticsProperties.focusable` and `SemanticsConfiguration.isFocusable`
-parameters were deprecated in favor of the `SemanticsProperties.focused` and
-`SemanticsConfiguration.isFocused` parameters.
-
-The `focused` parameter is now nullable.
-Setting it to `true` or `false` automatically
-sets `isFocusable` to `true`, while
-setting it to `null` sets `isFocusable` to `false`.
-
-## Context
-
-The `SemanticsConfiguration.isFocusable` property is a boolean that
-indicates whether the semantics node can have input focus.
-`SemanticsConfiguration.isFocused` is a boolean that indicates if the
-semantics node has input focus.
-
-This change also applies to
-`SemanticsProperties.focusable` and `SemanticsProperties.focused`.
-
-We deprecated `isFocusable` because its functionality is covered by `isFocused`.
-The `isFocused` property is now stored as a tristate flag in the engine,
-and this change makes the framework consistent with the engine.
-
-## Description of change
-
-The `SemanticsConfiguration.isFocusable` property is
-deprecated in favor of `SemanticsConfiguration.isFocused`.
-This property is a nullable boolean; setting it to `true` or `false`
-automatically sets `isFocusable` to `true`, and
-setting it to `null` sets `isFocusable` to `false`.
-
-## Migration guide
-
-Replace `SemanticsConfiguration.isFocusable` with
+Os parâmetros `SemanticsProperties.focusable` e `SemanticsConfiguration.isFocusable`
+foram descontinuados em favor dos parâmetros `SemanticsProperties.focused` e
 `SemanticsConfiguration.isFocused`.
 
-### Example 1: Setting `isFocused` to `true` automatically sets `isFocusable` to `true`
+O parâmetro `focused` agora é anulável.
+Configurá-lo como `true` ou `false` automaticamente
+define `isFocusable` como `true`, enquanto
+configurá-lo como `null` define `isFocusable` como `false`.
 
-Code before migration:
+## Contexto {:#context}
+
+A propriedade `SemanticsConfiguration.isFocusable` é um booleano que
+indica se o nó de semântica pode ter foco de entrada.
+`SemanticsConfiguration.isFocused` é um booleano que indica se o
+nó de semântica tem foco de entrada.
+
+Esta mudança também se aplica a
+`SemanticsProperties.focusable` e `SemanticsProperties.focused`.
+
+Descontinuamos `isFocusable` porque sua funcionalidade é coberta por `isFocused`.
+A propriedade `isFocused` agora é armazenada como um flag tristate no engine,
+e esta mudança torna o framework consistente com o engine.
+
+## Descrição da mudança {:#description-of-change}
+
+A propriedade `SemanticsConfiguration.isFocusable` é
+descontinuada em favor de `SemanticsConfiguration.isFocused`.
+Esta propriedade é um booleano anulável; configurá-la como `true` ou `false`
+automaticamente define `isFocusable` como `true`, e
+configurá-la como `null` define `isFocusable` como `false`.
+
+## Guia de migração {:#migration-guide}
+
+Substitua `SemanticsConfiguration.isFocusable` por
+`SemanticsConfiguration.isFocused`.
+
+### Exemplo 1: Configurar `isFocused` como `true` automaticamente define `isFocusable` como `true` {:#example-1-setting-isfocused-to-true-automatically-sets-isfocusable-to-true}
+
+Código antes da migração:
 
 ```dart
 void describeSemanticsConfiguration(SemanticsConfiguration config) {
@@ -55,7 +56,7 @@ void describeSemanticsConfiguration(SemanticsConfiguration config) {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 void describeSemanticsConfiguration(SemanticsConfiguration config) {
@@ -63,9 +64,9 @@ void describeSemanticsConfiguration(SemanticsConfiguration config) {
 }
 ```
 
-### Example 2: Setting `isFocused` to `null` automatically sets `isFocusable` to `false`
+### Exemplo 2: Configurar `isFocused` como `null` automaticamente define `isFocusable` como `false` {:#example-2-setting-isfocused-to-null-automatically-sets-isfocusable-to-false}
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 void describeSemanticsConfiguration(SemanticsConfiguration config) {
@@ -74,7 +75,7 @@ void describeSemanticsConfiguration(SemanticsConfiguration config) {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 void describeSemanticsConfiguration(SemanticsConfiguration config) {
@@ -83,25 +84,25 @@ void describeSemanticsConfiguration(SemanticsConfiguration config) {
 ```
 
 
-## Timeline
+## Cronograma {:#timeline}
 
-Landed in version: 3.37.0-0.0.pre<br>
-In stable release: 3.38
+Implementado na versão: 3.37.0-0.0.pre<br>
+Na versão estável: 3.38
 
 
-## References
+## Referências {:#references}
 
-API documentation:
+Documentação da API:
 
 * [`SemanticsConfiguration`][]
 * [`SemanticsProperties`][]
 * [`SemanticsNode`][]
 
-Relevant issue:
+Issue relevante:
 
 * [Issue 166092][]
 
-Relevant PR:
+PR relevante:
 
 * [PR 170935][]
 

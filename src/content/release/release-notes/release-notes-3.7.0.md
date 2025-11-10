@@ -1,19 +1,20 @@
 ---
-title: Flutter 3.7.0 release notes
-shortTitle: 3.7.0 release notes
-description: Release notes for Flutter 3.7.0.
+title: Notas de lançamento do Flutter 3.7.0
+shortTitle: Notas de lançamento 3.7.0
+description: Notas de lançamento do Flutter 3.7.0.
 skipTemplateRendering: true
+ia-translate: true
 ---
 
-This page has release notes for 3.7.0.
-For information about subsequent bug-fix releases,
-see our [CHANGELOG][].
+Esta página contém as notas de lançamento da versão 3.7.0.
+Para informações sobre lançamentos de correção de bugs subsequentes,
+consulte nosso [CHANGELOG][].
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/main/CHANGELOG.md
 
-## What's changed
+## O que mudou
 
-The following changes happened in this release:
+As seguintes mudanças ocorreram neste lançamento:
 
 ### Framework
 * Add a matcher for Matrix4 that includes epsilon by @jonahwilliams in https://github.com/flutter/flutter/pull/107326
@@ -607,7 +608,7 @@ The following changes happened in this release:
 * Fix scroll jump when NestedScrollPosition is inertia-cancelled. (#116… by @Piinks in https://github.com/flutter/flutter/pull/117343
 * Fix `NavigationRail` highlight (#117320) by @Piinks in https://github.com/flutter/flutter/pull/117344
 * Fix `InkRipple` doesn't respect `rectCallback` when rendering ink cir… by @Piinks in https://github.com/flutter/flutter/pull/117500
-### Tooling
+### Ferramentas
 * [flutter_tools] [dap] Add support for passing env variables to spawned processes by @DanTup in https://github.com/flutter/flutter/pull/107415
 * [flutter_tools] Replace android v2 embedding broken doc link by @RoyARG02 in https://github.com/flutter/flutter/pull/107456
 * Improve coverage speed by using new caching option for package:coverage by @jensjoha in https://github.com/flutter/flutter/pull/107395
@@ -876,7 +877,7 @@ The following changes happened in this release:
 * Remove Apple Silicon workarounds from plugin lint test by @jmagman in https://github.com/flutter/flutter/pull/111432
 * Update macOS gallery display name by @jmagman in https://github.com/flutter/flutter/pull/113658
 
-## New Contributors
+## Novos Contribuidores
 * @talisk made their first contribution in https://github.com/flutter/flutter/pull/107221
 * @0xba1 made their first contribution in https://github.com/flutter/flutter/pull/107836
 * @foongsq made their first contribution in https://github.com/flutter/flutter/pull/107201

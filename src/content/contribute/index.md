@@ -85,7 +85,7 @@ Além disso, saiba mais sobre a [cultura de inclusão][culture of inclusivity] e
   </a>
 </div>
 
-## Desenvolva com Flutter
+## Desenvolva com Flutter {:#develop-with-flutter}
 
 Apenas usar o Flutter e fornecer feedback já é uma contribuição valiosa!
 
@@ -163,7 +163,7 @@ e considere quaisquer [migrações necessárias][necessary migrations].
 [report-bugs]: {{site.github}}/flutter/flutter/issues/new/choose
 [necessary migrations]: /release/breaking-changes
 
-## Contribua com código
+## Contribua com código {:#contribute-code}
 
 Melhore diretamente a base de código do Flutter e ferramentas relacionadas.
 
@@ -287,7 +287,7 @@ ou pode contribuir com exemplos mantidos pelo Flutter:
   - **Localização:** [`flutter/flutter/examples`]({{site.repo.flutter}}/tree/main/examples)
   - **Guia de contribuição:** [`CONTRIBUTING.md`]({{site.repo.flutter}}/blob/main/CONTRIBUTING.md)
 
-## Escreva documentação
+## Escreva documentação {:#write-documentation}
 
 Contribuir com a documentação do Flutter, não importa a forma,
 é uma das maneiras mais impactantes de ajudar o Flutter.
@@ -327,7 +327,7 @@ confira a [documentação de contribuição do `dart-lang/site-www`][dart-dev-co
 [Dart website]: {{site.dart-site}}
 [dart-dev-contribute]: {{site.github}}/dart-lang/site-www/tree/main?tab=readme-ov-file#getting-started
 
-## Faça triagem de issues
+## Faça triagem de issues {:#triage-issues}
 
 Ajude a equipe do Flutter fazendo triagem de relatórios de bugs e solicitações de recursos.
 
@@ -351,7 +351,7 @@ aprenda sobre a abordagem do Flutter para
 [issue triage]: {{site.repo.flutter}}/blob/main/docs/triage/README.md
 [issue hygiene]: {{site.repo.flutter}}/tree/main/docs/contributing/issue_hygiene
 
-## Fortaleça o ecossistema de packages
+## Fortaleça o ecossistema de packages {:#strengthen-the-package-ecosystem}
 
 Ajude a crescer e apoiar a coleção de
 packages Dart e Flutter disponíveis no [pub.dev](https://pub.dev/).
@@ -411,7 +411,7 @@ siga o guia e melhores práticas em [Publicar packages][Publishing packages].
 [JS interop]: {{site.dart-site}}/interop/js-interop
 [`package:http`]: {{site.pub-pkg}}/http
 
-## Apoie a comunidade
+## Apoie a comunidade {:#support-the-community}
 
 Ajude outros desenvolvedores a aprender Flutter e
 ter sucesso enquanto constroem seus próprios apps.

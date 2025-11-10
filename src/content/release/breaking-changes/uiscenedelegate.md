@@ -44,7 +44,7 @@ permanece responsável por eventos de processo e pelo ciclo de vida geral da apl
 métodos UISceneDelegate correspondentes. Após migrar para UIScene,
 o UIKit não chamará mais métodos do AppDelegate relacionados ao estado da UI.
 
-## Guia de migração para apps Flutter
+## Guia de migração para apps Flutter {:#migration-guide-for-flutter-apps}
 
 ### Auto-Migração (Experimental)
 
@@ -268,13 +268,13 @@ Para projetos Objective-C, crie um `SceneDelegate.h` e `SceneDelegate.m`:
 Info.plist de `FlutterSceneDelegate` para
 `$(PRODUCT_MODULE_NAME).SceneDelegate`.
 
-## Guia de migração para adicionar Flutter a app existente (Add to App)
+## Guia de migração para adicionar Flutter a app existente (Add to App) {:#migration-guide-for-adding-flutter-to-existing-app-add-to-app}
 
 Semelhante ao `FlutterAppDelegate`, o `FlutterSceneDelgate` é recomendado
 mas não obrigatório. O `FlutterSceneDelgate` encaminha callbacks de cena, como
 [`openURL`][`openURL`] para plugins como [local_auth][local_auth].
 
-### Criar/Atualizar um SceneDelegate (UIKit)
+### Criar/Atualizar um SceneDelegate (UIKit) {:#createupdate-a-scenedelegate-uikit}
 
 ```swift diff
   import UIKit
@@ -463,7 +463,7 @@ para o Flutter.
   }
 ```
 
-### Se seu app suporta múltiplas cenas
+### Se seu app suporta múltiplas cenas {:#if-your-app-supports-multiple-scenes}
 
 Quando múltiplas cenas estão habilitadas (UIApplicationSupportsMultipleScenes), o Flutter não pode automaticamente associar um
 `FlutterEngine` com uma cena durante a fase de conexão da cena. Para que
@@ -572,7 +572,7 @@ sceneLifeCycleDelegate.unregisterSceneLifeCycle(with: flutterEngine)
 [self.sceneLifeCycleDelegate unregisterSceneLifeCycleWithFlutterEngine:self.flutterEngine];
 ```
 
-## Guia de migração para plugins Flutter
+## Guia de migração para plugins Flutter {:#migration-guide-for-flutter-plugins}
 
 Nem todos os plugins usam eventos de ciclo de vida. Se o seu plugin usa, porém, você precisará
 migrar para o ciclo de vida baseado em cena do UIKit.
@@ -704,7 +704,7 @@ migrar para o ciclo de vida `UIScene`, as opções de lançamento serão `nil`. 
 executada aqui relacionada às opções de lançamento deve ser movida para o
 evento `scene:willConnectToSession:options:`.
 
-## Uso customizado de FlutterViewController
+## Uso customizado de FlutterViewController {:#bespoke-flutterviewcontroller-usage}
 
 Para apps que usam um `FlutterViewController` instanciado a partir de Storyboards em
 `application:didFinishLaunchingWithOptions:` por razões diferentes de

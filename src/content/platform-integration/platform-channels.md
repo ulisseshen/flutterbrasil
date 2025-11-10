@@ -1182,7 +1182,7 @@ Future<void> onClick() async {
 Você pode encontrar um exemplo completo e mais informações
 na página do [`Pigeon`][] em pub.dev.
 
-## Channels e threading de plataforma
+## Channels e threading de plataforma {:#channels-and-platform-threading}
 
 Ao invocar channels no lado da plataforma destinados ao Flutter,
 invoque-os na thread principal da plataforma.

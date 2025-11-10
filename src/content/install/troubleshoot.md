@@ -223,7 +223,7 @@ Tente as seguintes instruções para solucionar o problema:
 
 [community support channels]: #community-support
 
-## Suporte da comunidade
+## Suporte da comunidade {:#community-support}
 
 A comunidade Flutter é prestativa e acolhedora.
 Se nenhuma das sugestões acima resolver seu problema de instalação,

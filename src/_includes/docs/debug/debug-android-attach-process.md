@@ -1,3 +1,5 @@
+<!-- ia-translate: true -->
+
 1. Clique no botão **Attach debugger to Android process**.
    (![Tiny green bug superimposed with a light grey arrow](/assets/images/docs/testing/debugging/native/android-studio/attach-process-button.png))
 

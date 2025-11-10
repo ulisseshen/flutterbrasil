@@ -41,7 +41,7 @@ cookbook recipe. To use Ad Manager, follow the
 [Ad Manager documentation]({{site.developers}}/ad-manager/mobile-ads-sdk/flutter/quick-start).
 :::
 
-## 1. Obter IDs de App do AdMob
+## 1. Get AdMob App IDs
 
 1.  Go to [AdMob](https://admob.google.com/) and set up an
     account. This could take some time because you need to provide
@@ -59,7 +59,7 @@ cookbook recipe. To use Ad Manager, follow the
 
     ![Screenshot from AdMob showing the location of the App ID](/assets/images/docs/cookbook/ads-app-id.png)
 
-## 2. Configuração específica da plataforma
+## 2. Platform-specific setup
 
 Update your Android and iOS configurations to include your App IDs.
 
@@ -112,7 +112,7 @@ Add your AdMob app ID to your iOS app.
     <string>ca-app-pub-################~##########</string>
     ```
 
-## 3. Adicionar o plugin `google_mobile_ads`
+## 3. Add the google_mobile_ads plugin
 
 To add the `google_mobile_ads` plugin as a dependency, run
 `flutter pub add`:
@@ -138,7 +138,7 @@ You can return to running your app from an IDE after that.
 ![Screenshot of the `flutter` tool asking about multidex support](/assets/images/docs/cookbook/ads-multidex.png)
 :::
 
-## 4. Inicializar o Mobile Ads SDK
+## 4. Initialize the Mobile Ads SDK
 
 You need to initialize the Mobile Ads SDK before loading ads.
 

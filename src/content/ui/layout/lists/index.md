@@ -1,6 +1,7 @@
 ---
+ia-translate: true
 layout: toc
-title: Lists & grids
-description: Content covering adding lists and grids of items to Flutter apps.
+title: Listas e grids
+description: Conteúdo sobre como adicionar listas e grids de itens em apps Flutter.
 sitemap: false
 ---

@@ -372,7 +372,7 @@ Para saber mais sobre publicação de pacotes, confira a
 [Dart documentation on proxies]: {{site.dart-site}}/tools/pub/troubleshoot#pub-get-fails-from-behind-a-corporate-firewall
 [Dart documentation on publishing packages]: {{site.dart-site}}/tools/pub/publishing
 
-## Sites espelho conhecidos e confiáveis executados pela comunidade
+## Sites espelho conhecidos e confiáveis executados pela comunidade {:#known-trusted-community-run-mirror-sites}
 
 A equipe do Flutter não pode garantir a disponibilidade a longo prazo de nenhum espelho.
 Você pode usar outros espelhos se eles ficarem disponíveis.

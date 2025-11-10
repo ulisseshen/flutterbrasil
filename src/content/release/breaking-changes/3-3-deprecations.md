@@ -1,52 +1,53 @@
 ---
-title: Deprecated API removed after v3.3
+ia-translate: true
+title: API descontinuada removida após v3.3
 description: >
-  After reaching end of life, the following deprecated APIs
-  were removed from Flutter.
+  Após atingir o fim da vida útil, as seguintes APIs descontinuadas
+  foram removidas do Flutter.
 ---
 
-## Summary
+## Resumo
 
-In accordance with Flutter's [Deprecation Policy][],
-deprecated APIs that reached end of life after the
-3.3 stable release have been removed.
+De acordo com a [Deprecation Policy][Deprecation Policy] do Flutter,
+APIs descontinuadas que atingiram o fim da vida útil após a
+versão estável 3.3 foram removidas.
 
-All affected APIs have been compiled into this
-primary source to aid in migration. A
-[quick reference sheet][] is available as well.
+Todas as APIs afetadas foram compiladas nesta
+fonte primária para auxiliar na migração. Uma
+[quick reference sheet][quick reference sheet] também está disponível.
 
 [Deprecation Policy]: {{site.repo.flutter}}/blob/main/docs/contributing/Tree-hygiene.md#deprecations
 [quick reference sheet]: /go/deprecations-removed-after-3-3
 
-## Changes
+## Mudanças
 
-This section lists the deprecations, listed by the affected class.
+Esta seção lista as descontinuações, listadas pela classe afetada.
 
 ### `RenderUnconstrainedBox`
 
-Supported by Flutter Fix: no
+Suportado pelo Flutter Fix: não
 
-`RenderUnconstrainedBox` was deprecated in v2.1.
-Use `RenderConstraintsTransformBox` instead.
+`RenderUnconstrainedBox` foi descontinuado na v2.1.
+Use `RenderConstraintsTransformBox` em vez disso.
 
-Where unconstrained in both axes, provide `ConstraintsTransformBox.unconstrained`
-to `constraintsTransform`.
+Onde não restringido em ambos os eixos, forneça `ConstraintsTransformBox.unconstrained`
+para `constraintsTransform`.
 
-If `RenderUnconstrainedBox.constrainedAxis` was previously set,
-replace respectively:
+Se `RenderUnconstrainedBox.constrainedAxis` foi previamente definido,
+substitua respectivamente:
 
-- Where `constrainedAxis` was previously `Axis.horizontal`, set
-  `constraintsTransform` to `ConstraintsTransformBox.widthUnconstrained`.
-- Where `constrainedAxis` was previously `Axis.vertical`, set
-  `constraintsTransform` to `ConstraintsTransformBox.heightUnconstrained`.
+- Onde `constrainedAxis` era previamente `Axis.horizontal`, defina
+  `constraintsTransform` como `ConstraintsTransformBox.widthUnconstrained`.
+- Onde `constrainedAxis` era previamente `Axis.vertical`, defina
+  `constraintsTransform` como `ConstraintsTransformBox.heightUnconstrained`.
 
-This change allowed for the introduction of several more types of constraint
-transformations through `ConstraintsTransformBox`. Other parameters of the old
-API are compatible with the new API.
+Esta mudança permitiu a introdução de vários outros tipos de transformação
+de restrições através de `ConstraintsTransformBox`. Outros parâmetros da antiga
+API são compatíveis com a nova API.
 
-**Migration guide**
+**Guia de migração**
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 // Unconstrained
@@ -81,7 +82,7 @@ final RenderUnconstrainedBox unconstrained = RenderUnconstrainedBox(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 // Unconstrained
@@ -117,20 +118,20 @@ final RenderConstraintsTransformBox unconstrained = RenderConstraintsTransformBo
 );
 ```
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 
-* [`RenderConstraintsTransformBox`][]
-* [`ConstraintsTransformBox`][]
+* [`RenderConstraintsTransformBox`][RenderConstraintsTransformBox]
+* [`ConstraintsTransformBox`][ConstraintsTransformBox]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#78673][]
-* Removed in [#111711][]
+* Descontinuado em [#78673][#78673]
+* Removido em [#111711][#111711]
 
-[`RenderConstraintsTransformBox`]: {{site.api}}/flutter/rendering/RenderConstraintsTransformBox-class.html
-[`ConstraintsTransformBox`]: {{site.api}}/flutter/widgets/ConstraintsTransformBox-class.html
+[RenderConstraintsTransformBox]: {{site.api}}/flutter/rendering/RenderConstraintsTransformBox-class.html
+[ConstraintsTransformBox]: {{site.api}}/flutter/widgets/ConstraintsTransformBox-class.html
 [#78673]: {{site.repo.flutter}}/pull/78673
 [#111711]: {{site.repo.flutter}}/pull/111711
 
@@ -138,18 +139,18 @@ Relevant PRs:
 
 ### `DragAnchor`, `Draggable.dragAnchor` & `LongPressDraggable.dragAnchor`
 
-Supported by Flutter Fix: yes
+Suportado pelo Flutter Fix: sim
 
-The enum `DragAnchor`, and its uses in `Draggable.dragAnchor` &
-`LongPressDraggable.dragAnchor` were deprecated in v2.1.
-Use `dragAnchorStrategy` instead.
+O enum `DragAnchor`, e seus usos em `Draggable.dragAnchor` &
+`LongPressDraggable.dragAnchor` foram descontinuados na v2.1.
+Use `dragAnchorStrategy` em vez disso.
 
-This change allowed for more accurate feedback of the draggable widget when used
-in conjunction with other widgets like `Stack` and `InteractiveViewer`.
+Esta mudança permitiu um feedback mais preciso do widget arrastável quando usado
+em conjunto com outros widgets como `Stack` e `InteractiveViewer`.
 
-**Migration guide**
+**Guia de migração**
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 Draggable draggable = Draggable();
@@ -161,7 +162,7 @@ longPressDraggable = LongPressDraggable(dragAnchor: DragAnchor.child);
 longPressDraggable = LongPressDraggable(dragAnchor: DragAnchor.pointer);
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 Draggable draggable = Draggable();
@@ -173,26 +174,26 @@ longPressDraggable = LongPressDraggable(dragAnchorStrategy: childDragAnchorStrat
 longPressDraggable = LongPressDraggable(dragAnchorStrategy: pointerDragAnchorStrategy);
 ```
 
-**References**
+**Referências**
 
-API documentation:
+Documentação da API:
 
-* [`Draggable`][]
-* [`LongPressDraggable`][]
-* [`DragAnchorStrategy`][]
+* [`Draggable`][Draggable]
+* [`LongPressDraggable`][LongPressDraggable]
+* [`DragAnchorStrategy`][DragAnchorStrategy]
 
-Relevant issues:
+Issues relevantes:
 
-* [#73143][]
+* [#73143][#73143]
 
-Relevant PRs:
+PRs relevantes:
 
-* Deprecated in [#79160][]
-* Removed in [#111713][]
+* Descontinuado em [#79160][#79160]
+* Removido em [#111713][#111713]
 
-[`Draggable`]: {{site.api}}/flutter/widgets/Draggable-class.html
-[`LongPressDraggable`]: {{site.api}}/flutter/widgets/LongPressDraggable-class.html
-[`DragAnchorStrategy`]: {{site.api}}/flutter/widgets/DragAnchorStrategy.html
+[Draggable]: {{site.api}}/flutter/widgets/Draggable-class.html
+[LongPressDraggable]: {{site.api}}/flutter/widgets/LongPressDraggable-class.html
+[DragAnchorStrategy]: {{site.api}}/flutter/widgets/DragAnchorStrategy.html
 [#73143]: {{site.repo.flutter}}/pull/73143
 [#79160]: {{site.repo.flutter}}/pull/79160
 [#111713]: {{site.repo.flutter}}/pull/111713
@@ -201,67 +202,67 @@ Relevant PRs:
 
 ### `ScrollBehavior.buildViewportChrome`
 
-Supported by Flutter Fix: yes
+Suportado pelo Flutter Fix: sim
 
-The method `ScrollBehavior.buildViewportChrome` was deprecated in v2.1.
+O método `ScrollBehavior.buildViewportChrome` foi descontinuado na v2.1.
 
-This method was used by the `Scrollable` widget to apply an overscroll
-indicator, like `GlowingOverscrollIndicator`, by default on the appropriate
-platforms. As more default decorators have been added, like `Scrollbar`s, each
-has instead been split into individual methods to replace `buildViewportChrome`.
+Este método era usado pelo widget `Scrollable` para aplicar um indicador
+de overscroll, como `GlowingOverscrollIndicator`, por padrão nas
+plataformas apropriadas. Como mais decoradores padrão foram adicionados, como `Scrollbar`s, cada
+um foi dividido em métodos individuais para substituir `buildViewportChrome`.
 
-This allows extending classes to only override the specific decorator, through
-`buildScrollbar` or `buildOverscrollIndicator`, rather than needing to rewrite
-code in order to maintain one or the other.
+Isso permite que classes estendidas substituam apenas o decorador específico, através de
+`buildScrollbar` ou `buildOverscrollIndicator`, em vez de precisar reescrever
+código para manter um ou outro.
 
-**Migration guide**
+**Guia de migração**
 
-[In-depth migration guide available][]
+[Guia de migração detalhado disponível][In-depth migration guide available]
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 final ScrollBehavior scrollBehavior = ScrollBehavior();
 scrollBehavior.buildViewportChrome(context, child, axisDirection);
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 final ScrollBehavior scrollBehavior = ScrollBehavior();
 scrollBehavior.buildOverscrollIndicator(context, child, axisDirection);
 ```
 
-**References**
+**Referências**
 
-Design document:
+Documento de design:
 
-* [Exposing & Updating ScrollBehaviors][]
+* [Exposing & Updating ScrollBehaviors][Exposing & Updating ScrollBehaviors]
 
-API documentation:
+Documentação da API:
 
-* [`ScrollBehavior`][]
+* [`ScrollBehavior`][ScrollBehavior]
 
-Relevant issues:
+Issues relevantes:
 
-* [Scrollbars should be always visible and instantiated by default on web and desktop][]
+* [Scrollbars should be always visible and instantiated by default on web and desktop][Scrollbars issue]
 
-Relevant PRs:
+PRs relevantes:
 
-* [#76739][]
-* Deprecated in [#78588][]
-* Removed in [#111715][]
+* [#76739][#76739]
+* Descontinuado em [#78588][#78588]
+* Removido em [#111715][#111715]
 
 [In-depth migration guide available]: /release/breaking-changes/default-desktop-scrollbars
 [Exposing & Updating ScrollBehaviors]: /go/exposing-scroll-behaviors
-[`ScrollBehavior`]: {{site.api}}/flutter/widgets/ScrollBehavior-class.html
-[Scrollbars should be always visible and instantiated by default on web and desktop]: {{site.repo.flutter}}/issues/40107
+[ScrollBehavior]: {{site.api}}/flutter/widgets/ScrollBehavior-class.html
+[Scrollbars issue]: {{site.repo.flutter}}/issues/40107
 [#76739]: {{site.repo.flutter}}/pull/76739
 [#78588]: {{site.repo.flutter}}/pull/78588
 [#111715]: {{site.repo.flutter}}/pull/111715
 
 ---
 
-## Timeline
+## Cronograma
 
-In stable release: 3.7
+Na versão estável: 3.7

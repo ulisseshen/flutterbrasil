@@ -1,22 +1,23 @@
 ---
+ia-translate: true
 title: Frontmatter
 description: >-
-  Learn about the YAML frontmatter each document on
-  the Dart and Flutter documentation sites starts with.
+  Aprenda sobre o frontmatter YAML com o qual cada documento
+  nos sites de documentação Dart e Flutter começa.
 sitemap: false
 noindex: true
 showBreadcrumbs: true
 ---
 
 :::warning
-This document is a work in progress.
+Este documento é um trabalho em andamento.
 :::
 
-Each Markdown document on the site starts with [YAML][] frontmatter.
-You can edit the frontmatter to customize
-the generated page and its metadata.
+Cada documento Markdown no site começa com [YAML][] frontmatter.
+Você pode editar o frontmatter para personalizar
+a página gerada e seus metadados.
 
-As a minimum, a `title` and `description` are required for each page.
+No mínimo, um `title` e uma `description` são necessários para cada página.
 
 ```yaml
 ---
@@ -28,12 +29,12 @@ description: >-
 
 [YAML]: https://yaml.org/
 
-## Access frontmatter data in templates
+## Acessar dados do frontmatter em templates
 
-Layouts, templates, and source files can access values from the frontmatter
-as top-level data with templating.
+Layouts, templates e arquivos fonte podem acessar valores do frontmatter
+como dados de nível superior com templating.
 
-For example, the following frontmatter sets a `showData` variable to `value`:
+Por exemplo, o seguinte frontmatter define uma variável `showData` com valor `value`:
 
 ```yaml
 ---
@@ -42,7 +43,7 @@ showDate: false
 ---
 ```
 
-The configured value of `showDate` can be accessed in templates:
+O valor configurado de `showDate` pode ser acessado em templates:
 
 ```md
 Should show date: {{showDate}}
@@ -51,14 +52,14 @@ Should show date: {{showDate}}
 {% endif %}
 ```
 
-If you add a new value to the frontmatter,
-prefer using `lowerCamelCase` for the name.
+Se você adicionar um novo valor ao frontmatter,
+prefira usar `lowerCamelCase` para o nome.
 
-## Frontmatter fields
+## Campos do frontmatter
 
-Besides `title` and `description`,
-the sites support a variety of other optional fields
-to customize page generation.
+Além de `title` e `description`,
+os sites suportam uma variedade de outros campos opcionais
+para personalizar a geração de páginas.
 
 ### `title`
 

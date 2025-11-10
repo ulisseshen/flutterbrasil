@@ -1,39 +1,40 @@
 ---
-title: Migration guide for ignoringSemantics in IgnorePointer and related classes
-description: Removal of ignoringSemantics in IgnorePointer and related classes.
+ia-translate: true
+title: Guia de migração para ignoringSemantics em IgnorePointer e classes relacionadas
+description: Remoção de ignoringSemantics em IgnorePointer e classes relacionadas.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-The `IgnoringPointer` widget allows you to designate an area of the UI
-where you don't want to accept pointer events, for example, when
-you don't want to allow the user to enter text in a text field.
+O widget `IgnoringPointer` permite que você designe uma área da UI
+onde você não quer aceitar eventos de ponteiro, por exemplo, quando
+você não quer permitir que o usuário insira texto em um campo de texto.
 
-Previously, the `IgnorePointer` not only blocked pointer events but also
-dropped its subtree from the semantics tree. The `ignoreSemantics` parameter
-was introduced as a workaround to preserve the semantics tree when using
+Anteriormente, o `IgnorePointer` não apenas bloqueava eventos de ponteiro mas também
+descartava sua subárvore da árvore de semântica. O parâmetro `ignoreSemantics` foi
+introduzido como uma solução alternativa para preservar a árvore de semântica ao usar
 `IgnorePointer`s.
 
-The `IgnorePointer` behavior has changed in that it no longer drops
-the entire semantics subtree but merely blocks semantics actions in the
-subtree. The `ignoringSemantics` workaround is no longer needed and is
-deprecated.
+O comportamento do `IgnorePointer` mudou no sentido de que ele não mais descarta
+toda a subárvore de semântica mas apenas bloqueia ações de semântica na
+subárvore. A solução alternativa `ignoringSemantics` não é mais necessária e está
+descontinuada.
 
-This change also applies to the `AbsorbPointer` and
-`SliverIgnorePointer` widgets.
+Esta mudança também se aplica aos widgets `AbsorbPointer` e
+`SliverIgnorePointer`.
 
-## Description of change
+## Descrição da mudança
 
-`ignoringSemantics` was removed.
+`ignoringSemantics` foi removido.
 
-## Migration guide
+## Guia de migração
 
-If you set this parameter to true in these widgets, consider using
-`ExcludeSemantics` instead.
+Se você definir este parâmetro como true nestes widgets, considere usar
+`ExcludeSemantics` em vez disso.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 IgnorePointer(
@@ -52,7 +53,7 @@ SliverIgnorePointer(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 ExcludeSemantics(
@@ -74,9 +75,9 @@ SliverIgnorePointer(
 );
 ```
 
-If you are previously using `IgnorePointer`s with `ignoringSemantics` set to `false`,
-you can achieve the same behavior by copying the follow widgets directly into your
-code and use.
+Se você estava anteriormente usando `IgnorePointer`s com `ignoringSemantics` definido como `false`,
+você pode obter o mesmo comportamento copiando os seguintes widgets diretamente para seu
+código e usando.
 
 ```dart
 /// A widget ignores pointer events without modifying the semantics tree.
@@ -139,22 +140,22 @@ class _RenderSliverIgnorePointerWithSemantics extends RenderProxySliver {
 }
 ```
 
-## Timeline
+## Cronograma
 
-Landed in version: 3.10.0-2.0.pre<br>
-In stable release: 3.13.0
+Disponibilizado na versão: 3.10.0-2.0.pre<br>
+Na versão estável: 3.13.0
 
-## References
+## Referências
 
-Relevant PRs:
+PRs relevantes:
 
-* [PR 120619][]: Fixes IgnorePointer and AbsorbPointer to only block user
+* [PR 120619][PR 120619]: Fixes IgnorePointer and AbsorbPointer to only block user
   interactions in a11y.
 
 [PR 120619]: {{site.repo.flutter}}/pull/120619
-[`IgnorePointer`]: {{site.api}}/flutter/widgets/IgnorePointer-class.html
-[`AbsorbPointer`]: {{site.api}}/flutter/widgets/AbsorbPointer-class.html
-[`SliverIgnorePointer`]: {{site.api}}/flutter/widgets/SliverIgnorePointer-class.html
-[`RenderSliverIgnorePointer`]: {{site.api}}/flutter/rendering/RenderSliverIgnorePointer-class.html
-[`RenderIgnorePointer`]: {{site.api}}/flutter/rendering/RenderIgnorePointer-class.html
-[`RenderAbsorbPointer`]: {{site.api}}/flutter/rendering/RenderAbsorbPointer-class.html
+[IgnorePointer]: {{site.api}}/flutter/widgets/IgnorePointer-class.html
+[AbsorbPointer]: {{site.api}}/flutter/widgets/AbsorbPointer-class.html
+[SliverIgnorePointer]: {{site.api}}/flutter/widgets/SliverIgnorePointer-class.html
+[RenderSliverIgnorePointer]: {{site.api}}/flutter/rendering/RenderSliverIgnorePointer-class.html
+[RenderIgnorePointer]: {{site.api}}/flutter/rendering/RenderIgnorePointer-class.html
+[RenderAbsorbPointer]: {{site.api}}/flutter/rendering/RenderAbsorbPointer-class.html

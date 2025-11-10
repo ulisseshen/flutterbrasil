@@ -1,95 +1,96 @@
 ---
-title: Writing for the docs sites
+ia-translate: true
+title: Escrevendo para os sites de documentação
 short-tile: Writing
 description: >-
-  Learn about the writing style guide and processes followed when writing
-  for the Dart and Flutter documentation sites.
+  Aprenda sobre o guia de estilo de escrita e processos seguidos ao escrever
+  para os sites de documentação Dart e Flutter.
 sitemap: false
 noindex: true
 showBreadcrumbs: true
 ---
 
 :::warning
-This document is a work in progress.
+Este documento é um trabalho em andamento.
 :::
 
-## Writing guidelines
+## Diretrizes de escrita
 
-When writing for the documentation sites,
-follow the [Google developer documentation style guide][],
-except in the cases where the [Dash docs guidelines][] conflict with it.
+Ao escrever para os sites de documentação,
+siga o [guia de estilo de documentação para desenvolvedores do Google][],
+exceto nos casos em que as [diretrizes de documentação Dash][] conflitam com ele.
 
-[Google developer documentation style guide]: https://developers.google.com/style
-[Dash docs guidelines]: #dash-docs-styles
+[guia de estilo de documentação para desenvolvedores do Google]: https://developers.google.com/style
+[diretrizes de documentação Dash]: #dash-docs-styles
 
-### Dash docs styles
+### Estilos de documentação Dash
 
 :::warning
-This section is a work in progress.
-It will be added to over time.
+Esta seção é um trabalho em andamento.
+Será adicionada ao longo do tempo.
 :::
 
-## Semantic breaks
+## Quebras semânticas
 
-To make PR review, diff resolution, and history tracking easier,
-use [semantic breaks][] when writing Markdown.
-Reference the [full specification][sembr-spec] for helps,
-but roughly follow these guidelines:
+Para tornar a revisão de PR, resolução de diff e rastreamento de histórico mais fáceis,
+use [quebras semânticas][] ao escrever Markdown.
+Consulte a [especificação completa][sembr-spec] para ajudas,
+mas siga aproximadamente estas diretrizes:
 
-- Keep each line 80 characters or fewer.
-- Break lines at sentences and, unless the sentence is very short,
-  on phrases within sentences.
-- When it's necessary to split a sentence across lines,
-  try to pick a break that makes it clear that
-  the line continues on the next line.
-  That way future editors and reviewers are more likely to
-  notice that the edit might affect another line.
+- Mantenha cada linha com 80 caracteres ou menos.
+- Quebre linhas em sentenças e, a menos que a sentença seja muito curta,
+  em frases dentro de sentenças.
+- Quando for necessário dividir uma sentença em linhas,
+  tente escolher uma quebra que deixe claro que
+  a linha continua na próxima linha.
+  Dessa forma, editores e revisores futuros são mais propensos a
+  notar que a edição pode afetar outra linha.
 
-Incorporating semantic breaks in your writing might feel tedious at first,
-but quickly proves helpful and becomes natural.
-Don't worry about getting the breaks perfect or completely consistent,
-any effort towards their semantic nature is extremely helpful.
+Incorporar quebras semânticas em sua escrita pode parecer tedioso no início,
+mas rapidamente se mostra útil e se torna natural.
+Não se preocupe em tornar as quebras perfeitas ou completamente consistentes,
+qualquer esforço em direção à sua natureza semântica é extremamente útil.
 
-For some more discussion about the origin of this technique,
-also check out Brandon Rhode's [Semantic Linefeeds][] post.
+Para mais discussão sobre a origem desta técnica,
+confira também a postagem [Semantic Linefeeds][] de Brandon Rhode.
 
-[semantic breaks]: https://sembr.org/
+[quebras semânticas]: https://sembr.org/
 [sembr-spec]: https://sembr.org/#:~:text=seen%20by%20readers.-,Semantic%20Line%20Breaks%20Specification,-(SemBr)
 [Semantic Linefeeds]: https://rhodesmill.org/brandon/2012/one-sentence-per-line/
 
 ## Links
 
-### Write link text
+### Escrever texto de link
 
-Use descriptive link text that follows the
-Google guidelines on [Cross-references and linking][].
+Use texto de link descritivo que siga as
+diretrizes do Google sobre [Referências cruzadas e links][].
 
-[Cross-references and linking]: https://developers.google.com/style/cross-references
+[Referências cruzadas e links]: https://developers.google.com/style/cross-references
 
-### Configure link destinations
+### Configurar destinos de link
 
-For easier editing, shorter lines, and reduced duplication,
-prefer using Markdown link references instead of inline links.
+Para edição mais fácil, linhas mais curtas e redução de duplicação,
+prefira usar referências de link Markdown em vez de links inline.
 
-Place the link definitions at the end of the
-current section where they're used, before the next header.
+Coloque as definições de link no final da
+seção atual onde são usadas, antes do próximo cabeçalho.
 
-If a link definition is used multiple times across a page,
-you can place it at the bottom of the document.
+Se uma definição de link for usada várias vezes em uma página,
+você pode colocá-la no final do documento.
 
-### Open the link in a new tab
+### Abrir o link em uma nova aba
 
-If you want a link to open in a new tab by default,
-add the `target="_blank"` and `rel="noopener"` attributes.
+Se você quiser que um link abra em uma nova aba por padrão,
+adicione os atributos `target="_blank"` e `rel="noopener"`.
 
-For Markdown links:
+Para links Markdown:
 
 ```md
-[Link text][link-ref]{: target="_blank" rel="noopener"}
+[Texto do link][link-ref]{: target="_blank" rel="noopener"}
 ```
 
-For HTML links:
+Para links HTML:
 
 ```html
-<a href="#link-ref" target="_blank" rel="noopener">Link text</a>
+<a href="#link-ref" target="_blank" rel="noopener">Texto do link</a>
 ```

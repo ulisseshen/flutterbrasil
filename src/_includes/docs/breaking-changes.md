@@ -1,11 +1,11 @@
 
 :::important
-These breaking change docs are accurate, as of the release
-under which they are published. Over time, the
-workarounds described here might become inaccurate.
-We don't, in general, keep these breaking change docs up
-to date as of each release.
+Estes documentos de breaking changes são precisos no momento do lançamento
+em que foram publicados. Com o tempo, as
+soluções alternativas descritas aqui podem se tornar imprecisas.
+Não mantemos, em geral, estes documentos de breaking changes atualizados
+a cada lançamento.
 
-The [breaking change index file](/release/breaking-changes)
-lists the docs created for each release.
+O [arquivo de índice de breaking changes](/release/breaking-changes)
+lista os documentos criados para cada lançamento.
 :::

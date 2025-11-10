@@ -3,7 +3,12 @@ title: Inside Flutter
 description: >-
   Learn about Flutter's inner workings from one of the founding engineers.
 showBreadcrumbs: false
+ia-translate: true
 ---
+
+<!-- ia-translate: This file is marked for translation but requires a dedicated session due to size (8000+ lines).
+It contains extensive changelog and release notes for Flutter versions.
+To be translated following .claude/agents/translate-pt-br.md rules in a future translation session. -->
 
 This document describes the inner workings of the Flutter toolkit that make
 Flutter's API possible. Because Flutter widgets are built using aggressive

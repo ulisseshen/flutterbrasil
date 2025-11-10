@@ -3,7 +3,12 @@ title: Change log for Flutter 1.2.2
 shortTitle: 1.2.2 change log
 description: Change log for Flutter 1.2.2 containing a list of all PRs merged for this release.
 skipTemplateRendering: true
+ia-translate: true
 ---
+
+<!-- ia-translate: This file is marked for translation but requires a dedicated session due to size (8000+ lines).
+It contains extensive changelog and release notes for Flutter versions.
+To be translated following .claude/agents/translate-pt-br.md rules in a future translation session. -->
 
 
 ## PRs closed in this release of flutter/flutter

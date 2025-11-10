@@ -1,17 +1,18 @@
 ---
-title: Create a new Flutter app
-shortTitle: Create a new app
+ia-translate: true
+title: Criar um novo app Flutter
+shortTitle: Criar um novo app
 description: >-
-  Learn how to bootstrap a new Flutter application from
-  your command-line, different editors, and even in the cloud.
+  Aprenda como inicializar uma nova aplicação Flutter a partir da
+  sua linha de comando, diferentes editores e até na nuvem.
 showBreadcrumbs: false
 ---
 
-This page provides step-by-step instructions on how to
-bootstrap a new Flutter app in your preferred development environment.
+Esta página fornece instruções passo a passo sobre como
+inicializar um novo app Flutter no seu ambiente de desenvolvimento preferido.
 
-To create a new Flutter app, first [set up Flutter][flutter-setup], then
-choose your preferred environment and follow the corresponding instructions.
+Para criar um novo app Flutter, primeiro [configure o Flutter][flutter-setup], então
+escolha seu ambiente preferido e siga as instruções correspondentes.
 
 <div class="card-grid">
   <a class="card outlined-card" href="#vs-code">
@@ -19,7 +20,7 @@ choose your preferred environment and follow the corresponding instructions.
       <span class="card-title">VS Code</span>
     </div>
     <div class="card-content">
-      <p>Create a new Flutter app without leaving VS Code.</p>
+      <p>Crie um novo app Flutter sem sair do VS Code.</p>
     </div>
   </a>
   <a class="card outlined-card" href="#android-studio">
@@ -27,7 +28,7 @@ choose your preferred environment and follow the corresponding instructions.
       <span class="card-title">Android Studio</span>
     </div>
     <div class="card-content">
-      <p>Create a new Flutter app without leaving Android Studio.</p>
+      <p>Crie um novo app Flutter sem sair do Android Studio.</p>
     </div>
   </a>
   <a class="card outlined-card" href="#intellij">
@@ -35,7 +36,7 @@ choose your preferred environment and follow the corresponding instructions.
       <span class="card-title">IntelliJ</span>
     </div>
     <div class="card-content">
-      <p>Create a new Flutter app without leaving your IntelliJ-based IDE.</p>
+      <p>Crie um novo app Flutter sem sair do seu IDE baseado em IntelliJ.</p>
     </div>
   </a>
   <a class="card outlined-card" href="#firebase-studio">
@@ -43,7 +44,7 @@ choose your preferred environment and follow the corresponding instructions.
       <span class="card-title">Firebase Studio</span>
     </div>
     <div class="card-content">
-      <p>For quick and easy setup, create a new Flutter app in Firebase Studio.</p>
+      <p>Para configuração rápida e fácil, crie um novo app Flutter no Firebase Studio.</p>
     </div>
   </a>
   <a class="card outlined-card" href="#terminal">
@@ -51,7 +52,7 @@ choose your preferred environment and follow the corresponding instructions.
       <span class="card-title">Terminal</span>
     </div>
     <div class="card-content">
-      <p>For maximum flexibility, create a new Flutter app from the command line.</p>
+      <p>Para máxima flexibilidade, crie um novo app Flutter a partir da linha de comando.</p>
     </div>
   </a>
   <a class="card outlined-card" href="/add-to-app#get-started">
@@ -62,80 +63,80 @@ choose your preferred environment and follow the corresponding instructions.
       </span>
     </div>
     <div class="card-content">
-      <p>Create a new Flutter module to embed in an existing app.</p>
+      <p>Crie um novo módulo Flutter para incorporar em um app existente.</p>
     </div>
   </a>
 </div>
 
 ## VS Code
 
-To create a Flutter app with [VS Code][] and other Code OSS-based editors,
-you first need to [install Flutter][flutter-setup] and
-[set up VS Code][vscode-setup] for Flutter development.
-Then follow these steps:
+Para criar um app Flutter com [VS Code][] e outros editores baseados em Code OSS,
+você primeiro precisa [instalar o Flutter][flutter-setup] e
+[configurar o VS Code][vscode-setup] para desenvolvimento Flutter.
+Então siga estes passos:
 
- 1. <h3>Launch VS Code</h3>
+ 1. <h3>Inicie o VS Code</h3>
 
-    Open VS Code or your preferred Code OSS-based editor.
+    Abra o VS Code ou seu editor baseado em Code OSS preferido.
 
- 1. <h3>Open the command palette</h3>
+ 1. <h3>Abra a paleta de comandos</h3>
 
-    Go to **View** <span aria-label="and then">></span> **Command Palette** or
-    press <kbd class="special-key">Cmd/Ctrl</kbd> +
+    Vá para **View** <span aria-label="e então">></span> **Command Palette** ou
+    pressione <kbd class="special-key">Cmd/Ctrl</kbd> +
     <kbd>Shift</kbd> + <kbd>P</kbd>.
 
- 1. <h3>Find the Flutter commands</h3>
+ 1. <h3>Encontre os comandos Flutter</h3>
 
-    In the command palette, start typing `flutter:`.
-    VS Code should surface commands from the Flutter plugin.
+    Na paleta de comandos, comece a digitar `flutter:`.
+    O VS Code deve sugerir comandos do plugin Flutter.
 
- 1. <h3>Run the new project command</h3>
+ 1. <h3>Execute o comando de novo projeto</h3>
 
-    Select the **Flutter: New Project** command.
-    Your OS or VS Code might ask for access to your documents,
-    agree to continue to the next step.
+    Selecione o comando **Flutter: New Project**.
+    Seu SO ou VS Code pode solicitar acesso aos seus documentos,
+    concorde para continuar para o próximo passo.
 
- 1. <h3>Choose a template</h3>
+ 1. <h3>Escolha um template</h3>
 
-    VS Code should prompt you with **Which Flutter template?**.
-    Depending on what type of Flutter project you want to create,
-    choose the corresponding template.
-    For a new Flutter app, choose **Application**.
+    O VS Code deve solicitar **Which Flutter template?**.
+    Dependendo do tipo de projeto Flutter que você quer criar,
+    escolha o template correspondente.
+    Para um novo app Flutter, escolha **Application**.
 
- 1. <h3>Select a project location</h3>
+ 1. <h3>Selecione um local para o projeto</h3>
 
-    A file dialog should appear.
-    Select or create the parent directory where
-    you want the project to be created.
-    Don't create the project folder itself, the Flutter tool does so.
-    To confirm your selection,
-    click **Select a folder to create the project in**.
+    Uma janela de diálogo de arquivo deve aparecer.
+    Selecione ou crie o diretório pai onde
+    você quer que o projeto seja criado.
+    Não crie a pasta do projeto em si, a ferramenta Flutter faz isso.
+    Para confirmar sua seleção,
+    clique em **Select a folder to create the project in**.
 
- 1. <h3>Enter a project name</h3>
+ 1. <h3>Digite um nome de projeto</h3>
 
-    VS Code should prompt you to enter a name for your new project.
-    Enter a name for your app that follows the `lowercase_with_underscores`
-    naming convention, following the [Effective Dart][package-name] guidelines.
-    To confirm your selection, press <kbd>Enter</kbd>.
+    O VS Code deve solicitar que você digite um nome para seu novo projeto.
+    Digite um nome para seu app que siga a convenção de nomenclatura `lowercase_with_underscores`,
+    seguindo as diretrizes do [Effective Dart][package-name].
+    Para confirmar sua seleção, pressione <kbd>Enter</kbd>.
 
- 1. <h3>Wait for project initialization</h3>
+ 1. <h3>Aguarde a inicialização do projeto</h3>
 
-    Based on the information you entered,
-    VS Code uses `flutter create` to bootstrap your app.
-    Progress is often surfaced as a notification in the bottom right
-    and can also be accessed from the **Output** panel.
+    Baseado nas informações que você inseriu,
+    o VS Code usa `flutter create` para inicializar seu app.
+    O progresso geralmente é exibido como uma notificação no canto inferior direito
+    e também pode ser acessado no painel **Output**.
 
- 1. <h3>Run your app</h3>
+ 1. <h3>Execute seu app</h3>
 
-    Your new app should now be created and open in VS Code.
-    To try your new app,
-    follow the steps to [run and debug][vscode-run] in VS Code.
+    Seu novo app agora deve estar criado e aberto no VS Code.
+    Para experimentar seu novo app,
+    siga os passos para [executar e depurar][vscode-run] no VS Code.
 
 {:.steps}
 
-You've successfully created a new Flutter app in VS Code!
-If you need more help with developing Flutter in VS Code,
-check out the [VS Code for Flutter reference][vscode-more].
+Você criou com sucesso um novo app Flutter no VS Code!
+Se você precisar de mais ajuda com desenvolvimento Flutter no VS Code,
+confira a [referência do VS Code para Flutter][vscode-more].
 
 [VS Code]: https://code.visualstudio.com/
 [vscode-setup]: /tools/vs-code#installation-and-setup
@@ -144,76 +145,76 @@ check out the [VS Code for Flutter reference][vscode-more].
 
 ## Android Studio
 
-To create a Flutter app with Android Studio,
-you first need to [install Flutter][flutter-setup] and
-[set up Android Studio][as-setup] for Flutter development.
-Then follow these steps:
+Para criar um app Flutter com Android Studio,
+você primeiro precisa [instalar o Flutter][flutter-setup] e
+[configurar o Android Studio][as-setup] para desenvolvimento Flutter.
+Então siga estes passos:
 
- 1. <h3>Launch Android Studio</h3>
+ 1. <h3>Inicie o Android Studio</h3>
 
-    Open Android Studio with the Dart and Flutter plugins installed.
+    Abra o Android Studio com os plugins Dart e Flutter instalados.
 
- 1. <h3>Begin project creation</h3>
+ 1. <h3>Inicie a criação do projeto</h3>
 
-    If you're on the IDE welcome dialog that says **Welcome to Android Studio**,
-    find and click the **New Flutter Project** button in the center.
+    Se você estiver na janela de boas-vindas da IDE que diz **Welcome to Android Studio**,
+    encontre e clique no botão **New Flutter Project** no centro.
 
-    If you already have a project open, either close it or
-    go to **File** <span aria-label="and then">></span> **New**
-    <span aria-label="and then">></span> **New Flutter Project...**.
+    Se você já tem um projeto aberto, feche-o ou
+    vá para **File** <span aria-label="e então">></span> **New**
+    <span aria-label="e então">></span> **New Flutter Project...**.
 
- 1. <h3>Choose a project type</h3>
+ 1. <h3>Escolha um tipo de projeto</h3>
 
-    In the **New Project** dialog, under **Generators** in the left panel,
-    select **Flutter**.
+    Na janela **New Project**, em **Generators** no painel esquerdo,
+    selecione **Flutter**.
 
- 1. <h3>Verify Flutter SDK setup</h3>
+ 1. <h3>Verifique a configuração do Flutter SDK</h3>
 
-    At the top of the right panel, ensure the **Flutter SDK path** value matches
-    the location of the Flutter SDK you'd like to develop with.
-    If not, update it by choosing or specifying the correct one.
+    No topo do painel direito, certifique-se de que o valor de **Flutter SDK path** corresponde
+    à localização do Flutter SDK com o qual você gostaria de desenvolver.
+    Se não, atualize escolhendo ou especificando o correto.
 
- 1. <h3>Configure your project</h3>
+ 1. <h3>Configure seu projeto</h3>
 
-    Click **Next** to continue to project configuration.
-    Multiple configuration options should appear.
+    Clique em **Next** para continuar para a configuração do projeto.
+    Várias opções de configuração devem aparecer.
 
-    In the **Project name** field, enter a name for your app that
-    follows the `lowercase_with_underscores` naming convention,
-    following the [Effective Dart][package-name] guidelines.
+    No campo **Project name**, digite um nome para seu app que
+    siga a convenção de nomenclatura `lowercase_with_underscores`,
+    seguindo as diretrizes do [Effective Dart][package-name].
 
-    If you're not creating an application,
-    select another template from the **Project type** dropdown.
+    Se você não está criando uma aplicação,
+    selecione outro template no dropdown **Project type**.
 
-    If you're creating an app that you might publish in the future,
-    set the **Organization** field [to your company domain][as-set-org].
+    Se você está criando um app que pode publicar no futuro,
+    defina o campo **Organization** [para o domínio da sua empresa][as-set-org].
 
-    The other fields can be kept as is or
-    configured according to your project's needs.
+    Os outros campos podem ser mantidos como estão ou
+    configurados de acordo com as necessidades do seu projeto.
 
- 1. <h3>Finish project creation</h3>
+ 1. <h3>Finalize a criação do projeto</h3>
 
-    Once you've completed the configuration of your project,
-    click **Create** to begin project initialization.
+    Uma vez que você completou a configuração do seu projeto,
+    clique em **Create** para iniciar a inicialização do projeto.
 
- 1. <h3>Wait for workspace initialization</h3>
+ 1. <h3>Aguarde a inicialização do workspace</h3>
 
-    Android Studio will now initialize your workspace,
-    bootstrap your project file structure,
-    and retrieve your app's dependencies.
-    This might take a while and can be tracked at the bottom of the window.
+    O Android Studio agora inicializará seu workspace,
+    inicializará a estrutura de arquivos do seu projeto,
+    e recuperará as dependências do seu app.
+    Isso pode levar um tempo e pode ser acompanhado na parte inferior da janela.
 
- 1. <h3>Run your app</h3>
+ 1. <h3>Execute seu app</h3>
 
-    Your new app should now be created and open in Android Studio.
-    To try your new app,
-    follow the steps to [run and debug][as-run] in Android Studio.
+    Seu novo app agora deve estar criado e aberto no Android Studio.
+    Para experimentar seu novo app,
+    siga os passos para [executar e depurar][as-run] no Android Studio.
 
 {:.steps}
 
-You've successfully created a new Flutter app in Android Studio!
-If you need more help with developing Flutter in Android Studio,
-check out the [Android Studio for Flutter reference][as-more].
+Você criou com sucesso um novo app Flutter no Android Studio!
+Se você precisar de mais ajuda com desenvolvimento Flutter no Android Studio,
+confira a [referência do Android Studio para Flutter][as-more].
 
 [as-setup]: /tools/android-studio#installation-and-setup
 [as-set-org]: /tools/android-studio#set-the-company-domain
@@ -222,79 +223,80 @@ check out the [Android Studio for Flutter reference][as-more].
 
 ## IntelliJ
 
-To create a Flutter app with IntelliJ or other JetBrains IDEs,
-you first need to [install Flutter][flutter-setup] and
-[set up IntelliJ][ij-setup] for Flutter development.
-Then follow these steps:
+Para criar um app Flutter com IntelliJ ou outras IDEs JetBrains,
+você primeiro precisa [instalar o Flutter][flutter-setup] e
+[configurar o IntelliJ][ij-setup] para desenvolvimento Flutter.
+Então siga estes passos:
 
- 1. <h3>Launch IntelliJ</h3>
+ 1. <h3>Inicie o IntelliJ</h3>
 
-    Open IntelliJ IDEA or your preferred IntelliJ-based IDE by JetBrains
-    that has the Dart and Flutter plugins installed.
+    Abra o IntelliJ IDEA ou sua IDE baseada em IntelliJ preferida da JetBrains
+    que tenha os plugins Dart e Flutter instalados.
 
- 1. <h3>Begin project creation</h3>
+ 1. <h3>Inicie a criação do projeto</h3>
 
-    If you're on the IDE welcome dialog that says **Welcome to IntelliJ IDEA**,
-    find and click the **New Project** button in the upper right corner.
+    Se você estiver na janela de boas-vindas da IDE que diz **Welcome to IntelliJ IDEA**,
+    encontre e clique no botão **New Project** no canto superior direito.
 
-    If you already have a project open, either close it or
-    go to **File** <span aria-label="and then">></span> **New**
-    <span aria-label="and then">></span> **New Project...**.
+    Se você já tem um projeto aberto, feche-o ou
+    vá para **File** <span aria-label="e então">></span> **New**
+    <span aria-label="e então">></span> **New Project...**.
 
- 1. <h3>Choose a project type</h3>
+ 1. <h3>Escolha um tipo de projeto</h3>
 
-    In the **New Project** dialog, under **Generators** in the left panel,
-    select **Flutter**.
+    Na janela **New Project**, em **Generators** no painel esquerdo,
+    selecione **Flutter**.
 
- 1. <h3>Verify Flutter SDK setup</h3>
+ 1. <h3>Verifique a configuração do Flutter SDK</h3>
 
-    At the top of the right panel, ensure the **Flutter SDK path** value matches
-    the location of the Flutter SDK you'd like to develop with.
-    If not, update it by choosing or specifying the correct one.
+    No topo do painel direito, certifique-se de que o valor de **Flutter SDK path** corresponde
+    à localização do Flutter SDK com o qual você gostaria de desenvolver.
+    Se não, atualize escolhendo ou especificando o correto.
 
- 1. <h3>Configure your project</h3>
+ 1. <h3>Configure seu projeto</h3>
 
-    Click **Next** to continue to project configuration.
-    Multiple configuration options should appear.
+    Clique em **Next** para continuar para a configuração do projeto.
+    Várias opções de configuração devem aparecer.
 
-    In the **Project name** field, enter a name for your app that
-    follows the `lowercase_with_underscores` naming convention,
-    following the [Effective Dart][package-name] guidelines.
+    No campo **Project name**, digite um nome para seu app que
+    siga a convenção de nomenclatura `lowercase_with_underscores`,
+    seguindo as diretrizes do [Effective Dart][package-name].
 
-    If you're not creating an application,
-    select another template from the **Project type** dropdown.
+    Se você não está criando uma aplicação,
+    selecione outro template no dropdown **Project type**.
 
-    If you're creating an app that you might publish in the future,
-    set the **Organization** field [to your company domain][ij-set-org].
+    Se você está criando um app que pode publicar no futuro,
+    defina o campo **Organization** [para o domínio da sua empresa][ij-set-org].
 
-    The other fields can be kept as is or
-    configured according to your project's needs.
+    Os outros campos podem ser mantidos como estão ou
+    configurados de acordo com as necessidades do seu projeto.
 
- 1. <h3>Finish project creation</h3>
+ 1. <h3>Finalize a criação do projeto</h3>
 
-    Once you've completed the configuration of your project,
-    click **Create** to begin project initialization.
+    Uma vez que você completou a configuração do seu projeto,
+    clique em **Create** para iniciar a inicialização do projeto.
 
- 1. <h3>Wait for workspace initialization</h3>
+ 1. <h3>Aguarde a inicialização do workspace</h3>
 
-    IntelliJ will now initialize your workspace,
-    bootstrap your project file structure,
-    and retrieve your app's dependencies.
-    This might take a while and can be tracked at the bottom of the window.
+    O IntelliJ agora inicializará seu workspace,
+    inicializará a estrutura de arquivos do seu projeto,
+    e recuperará as dependências do seu app.
+    Isso pode levar um tempo e pode ser acompanhado na parte inferior da janela.
 
- 1. <h3>Run your app</h3>
+ 1. <h3>Execute seu app</h3>
 
-    Your new app should now be created and open in IntelliJ.
-    To try your new app,
-    follow the steps to [run and debug][ij-run] in IntelliJ.
+    Seu novo app agora deve estar criado e aberto no IntelliJ.
+    Para experimentar seu novo app,
+    siga os passos para [executar e depurar][ij-run] no IntelliJ.
 
 {:.steps}
 
-You've successfully created a new Flutter app in IntelliJ!
-If you need more help with developing Flutter in IntelliJ,
-check out the [IntelliJ for Flutter reference][ij-more].
+Você criou com sucesso um novo app Flutter no IntelliJ!
+Se você precisar de mais ajuda com desenvolvimento Flutter no IntelliJ,
+confira a [referência do IntelliJ para Flutter][ij-more].
 
 [ij-setup]: /tools/android-studio#installation-and-setup
+[ij-set-org]: /tools/android-studio#set-the-company-domain
 [ij-more]: /tools/android-studio
 [ij-run]: /tools/android-studio#running-and-debugging
 
@@ -302,136 +304,136 @@ check out the [IntelliJ for Flutter reference][ij-more].
 
 ## Firebase Studio
 
-To create a Flutter app with [Firebase Studio][fbs],
-you first need a Google account and to [set up Firebase Studio][fbs-setup].
-Then follow these steps:
+Para criar um app Flutter com [Firebase Studio][fbs],
+você primeiro precisa de uma conta Google e [configurar o Firebase Studio][fbs-setup].
+Então siga estes passos:
 
- 1. <h3>Launch Firebase Studio</h3>
+ 1. <h3>Inicie o Firebase Studio</h3>
 
-    In your preferred browser, navigate to the [Firebase Studio dashboard][]
-    found at `studio.firebase.google.com/`.
-    If you haven't yet, you might need to log in to your Google account.
+    No seu navegador preferido, navegue para o [painel do Firebase Studio][]
+    encontrado em `studio.firebase.google.com/`.
+    Se você ainda não fez, pode precisar fazer login na sua conta Google.
 
- 1. <h3>Create a new workspace</h3>
+ 1. <h3>Crie um novo workspace</h3>
 
-    In the Firebase Studio dashboard, find the **Start coding an app** section.
-    It should include a variety of templates to choose from.
-    Select the **Flutter** template.
-    If you can't find it, it might be under a **Mobile** category.
+    No painel do Firebase Studio, encontre a seção **Start coding an app**.
+    Ela deve incluir uma variedade de templates para escolher.
+    Selecione o template **Flutter**.
+    Se você não conseguir encontrá-lo, pode estar em uma categoria **Mobile**.
 
- 1. <h3>Name your workspace</h3>
+ 1. <h3>Nomeie seu workspace</h3>
 
-    Firebase Studio should prompt you to **Name your workspace**.
-    This name is distinct from the name of your Flutter app.
-    Choose a descriptive name that you'll recognize
-    in a list of your workspaces.
+    O Firebase Studio deve solicitar que você **Name your workspace**.
+    Este nome é distinto do nome do seu app Flutter.
+    Escolha um nome descritivo que você reconhecerá
+    em uma lista de seus workspaces.
 
- 1. <h3>Provision your new workspace</h3>
+ 1. <h3>Provisione seu novo workspace</h3>
 
-    Once you've chosen a name and configured your workspace,
-    click **Create** to provision your new workspace.
+    Uma vez que você escolheu um nome e configurou seu workspace,
+    clique em **Create** para provisionar seu novo workspace.
 
- 1. <h3>Wait for workspace initialization</h3>
+ 1. <h3>Aguarde a inicialização do workspace</h3>
 
-    Firebase Studio will now initialize your workspace,
-    bootstrap your project file structure,
-    and retrieve your app's dependencies.
-    This might take a while.
+    O Firebase Studio agora inicializará seu workspace,
+    inicializará a estrutura de arquivos do seu projeto,
+    e recuperará as dependências do seu app.
+    Isso pode levar um tempo.
 
-1. <h3>Run your app</h3>
+1. <h3>Execute seu app</h3>
 
-   Your new app should now be created and opened in the Firebase Studio editor.
-   To try your new app, follow the docs provided by Firebase Studio to
-   [preview your app][fbs-preview] on the web or on Android.
+   Seu novo app agora deve estar criado e aberto no editor do Firebase Studio.
+   Para experimentar seu novo app, siga a documentação fornecida pelo Firebase Studio para
+   [visualizar seu app][fbs-preview] na web ou no Android.
 
 {:.steps}
 
-You've successfully created a new Flutter app in Firebase Studio!
-If you need help configuring your workspace,
-check out [Customize your Firebase studio workspace][fbs-customize].
+Você criou com sucesso um novo app Flutter no Firebase Studio!
+Se você precisar de ajuda configurando seu workspace,
+confira [Personalizar seu workspace do Firebase Studio][fbs-customize].
 
 [fbs]: https://firebase.studio
-[Firebase Studio dashboard]: https://studio.firebase.google.com/
+[painel do Firebase Studio]: https://studio.firebase.google.com/
 [fbs-setup]: https://firebase.google.com/docs/studio/get-started
 [fbs-preview]: https://firebase.google.com/docs/studio/preview-apps
 [fbs-customize]: https://firebase.google.com/docs/studio/customize-workspace
 
 ## Terminal
 
-To create a Flutter app in your terminal,
-you first need to install and [set up Flutter][flutter-setup].
-Then follow these steps:
+Para criar um app Flutter no seu terminal,
+você primeiro precisa instalar e [configurar o Flutter][flutter-setup].
+Então siga estes passos:
 
- 1. <h3>Open your terminal</h3>
+ 1. <h3>Abra seu terminal</h3>
 
-    Open your preferred method to access the command line,
-    such as Terminal on macOS or PowerShell on Windows.
+    Abra seu método preferido para acessar a linha de comando,
+    como Terminal no macOS ou PowerShell no Windows.
 
- 1. <h3>Navigate to the desired directory</h3>
+ 1. <h3>Navegue para o diretório desejado</h3>
 
-    Ensure your current working directory
-    is the desired parent directory for your new app.
-    Don't create the project folder, the `flutter` tool will do so.
+    Certifique-se de que seu diretório de trabalho atual
+    seja o diretório pai desejado para seu novo app.
+    Não crie a pasta do projeto, a ferramenta `flutter` fará isso.
 
- 1. <h3>Configure project creation</h3>
+ 1. <h3>Configure a criação do projeto</h3>
 
-    In your terminal, type out the `flutter create` command and
-    pass in any desired flags and options to configure your project.
-    For example, to create an app with a minimal `main.dart` file,
-    you can add the `--empty` option:
+    No seu terminal, digite o comando `flutter create` e
+    passe quaisquer flags e opções desejadas para configurar seu projeto.
+    Por exemplo, para criar um app com um arquivo `main.dart` mínimo,
+    você pode adicionar a opção `--empty`:
 
     ```console
     $ flutter create --empty
     ```
 
-    To learn about the available creation options,
-    run `flutter create --help` in another terminal window.
+    Para aprender sobre as opções de criação disponíveis,
+    execute `flutter create --help` em outra janela de terminal.
 
- 1. <h3>Enter a project name</h3>
+ 1. <h3>Digite um nome de projeto</h3>
 
-    As the only non-option argument to `flutter create`,
-    specify the directory and default name for your application.
-    The name should follow the `lowercase_with_underscores` naming convention,
-    following the [Effective Dart][package-name] guidelines.
+    Como o único argumento sem opção para `flutter create`,
+    especifique o diretório e nome padrão para sua aplicação.
+    O nome deve seguir a convenção de nomenclatura `lowercase_with_underscores`,
+    seguindo as diretrizes do [Effective Dart][package-name].
 
-    For example, if you wanted to create an app named `my_app`:
+    Por exemplo, se você quisesse criar um app chamado `my_app`:
 
     ```console
     $ flutter create my_app
     ```
 
- 1. <h3>Execute the configured command</h3>
+ 1. <h3>Execute o comando configurado</h3>
 
-    To create a project with your specified configuration,
-    run the command you built in the previous step.
+    Para criar um projeto com sua configuração especificada,
+    execute o comando que você construiu no passo anterior.
 
- 1. <h3>Wait for project initialization</h3>
+ 1. <h3>Aguarde a inicialização do projeto</h3>
 
-    The `flutter` tool will now bootstrap your project's file structure
-    and retrieve any necessary dependencies.
-    This might take a while.
+    A ferramenta `flutter` agora inicializará a estrutura de arquivos do seu projeto
+    e recuperará quaisquer dependências necessárias.
+    Isso pode levar um tempo.
 
- 1. <h3>Navigate into the project directory</h3>
+ 1. <h3>Navegue para o diretório do projeto</h3>
 
-    Now that your project has been created,
-    you can navigate to it in your terminal or your preferred editor.
-    For example, with a bash shell and a project named `my_app`:
+    Agora que seu projeto foi criado,
+    você pode navegar até ele no seu terminal ou no seu editor preferido.
+    Por exemplo, com um shell bash e um projeto chamado `my_app`:
 
     ```console
     $ cd my_app
     ```
 
- 1. <h3>Run your app</h3>
+ 1. <h3>Execute seu app</h3>
 
-    To try your new app,
-    run the `flutter run` command in your terminal and
-    respond to its prompts to select an output device.
+    Para experimentar seu novo app,
+    execute o comando `flutter run` no seu terminal e
+    responda aos prompts para selecionar um dispositivo de saída.
 
 {:.steps}
 
-You've successfully created a new Flutter app in your terminal!
-If you need help configuring your project or with the `flutter` CLI tool,
-check out the [Flutter CLI reference][cli-reference].
+Você criou com sucesso um novo app Flutter no seu terminal!
+Se você precisar de ajuda configurando seu projeto ou com a ferramenta CLI `flutter`,
+confira a [referência do Flutter CLI][cli-reference].
 
 [cli-reference]: /reference/flutter-cli
 

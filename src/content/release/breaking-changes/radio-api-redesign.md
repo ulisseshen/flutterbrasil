@@ -1,27 +1,28 @@
 ---
-title: Redesigned the Radio widget
+ia-translate: true
+title: Widget Radio redesenhado
 description: >-
-  Learn about changes to the radio widget in Flutter 3.35.
+  Aprenda sobre as mudanças no widget radio no Flutter 3.35.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-Introduced the `RadioGroup` widget to centralize `groupValue` management and the `onChanged`
-callback for a set of `Radio` widgets. As a result, the individual `Radio.groupValue` and
-`Radio.onChanged` properties have been deprecated.
+Introduzido o widget `RadioGroup` para centralizar o gerenciamento de `groupValue` e o callback `onChanged`
+para um conjunto de widgets `Radio`. Como resultado, as propriedades individuais `Radio.groupValue` e
+`Radio.onChanged` foram descontinuadas.
 
-## Context
+## Contexto
 
-To meet APG (ARIA Practices Guide) requirements for keyboard navigation and
-semantic properties in radio button groups, Flutter needed a dedicated radio group concept.
-Introducing a wrapper widget, `RadioGroup`, provides this out-of-the-box support.
-This change also presented an opportunity to simplify the API for individual `Radio` widgets.
+Para atender aos requisitos do APG (ARIA Practices Guide) para navegação por teclado e
+propriedades semânticas em grupos de botões de rádio, o Flutter precisava de um conceito dedicado de grupo de rádio.
+Introduzir um widget wrapper, `RadioGroup`, fornece esse suporte pronto para uso.
+Esta mudança também apresentou uma oportunidade para simplificar a API para widgets `Radio` individuais.
 
-## Description of change
+## Descrição da mudança
 
-The following API is deprecated:
+As seguintes APIs foram descontinuadas:
 
 * `Radio.onChanged`
 * `Radio.groupValue`
@@ -30,13 +31,13 @@ The following API is deprecated:
 * `RadioListTile.groupValue`
 * `RadioListTile.onChanged`.
 
-## Migration guide
+## Guia de migração
 
-If you are using these properties, you can refactor them with `RadioGroup`.
+Se você está usando essas propriedades, pode refatorá-las com `RadioGroup`.
 
-### Case 1: trivial case
+### Caso 1: caso trivial
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 Widget build(BuildContext context) {
@@ -65,7 +66,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 Widget build(BuildContext context) {
@@ -86,9 +87,9 @@ Widget build(BuildContext context) {
 }
 ```
 
-### Case 2: disabled radio
+### Caso 2: radio desabilitado
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 Widget build(BuildContext context) {
@@ -113,7 +114,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 Widget build(BuildContext context) {
@@ -134,9 +135,9 @@ Widget build(BuildContext context) {
 }
 ```
 
-### Case 3: mixed group or multi-selection
+### Caso 3: grupo misto ou multi-seleção
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 Widget build(BuildContext context) {
@@ -183,7 +184,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 Widget build(BuildContext context) {
@@ -212,34 +213,34 @@ Widget build(BuildContext context) {
 }
 ```
 
-## Timeline
+## Cronograma
 
-Landed in version: 3.34.0-0.0.pre<br>
-In stable release: 3.35
+Disponibilizado na versão: 3.34.0-0.0.pre<br>
+Na versão estável: 3.35
 
-## References
+## Referências
 
-* [`APG`][]
+* [`APG`][APG]
 
-API documentation:
+Documentação da API:
 
-* [`Radio`][]
-* [`CupertinoRadio`][]
-* [`RadioListTile`][]
-* [`RadioGroup`][]
+* [`Radio`][Radio]
+* [`CupertinoRadio`][CupertinoRadio]
+* [`RadioListTile`][RadioListTile]
+* [`RadioGroup`][RadioGroup]
 
-Relevant issue:
+Issue relevante:
 
-* [Issue 113562][]
+* [Issue 113562][Issue 113562]
 
-Relevant PR:
+PR relevante:
 
-* [PR 168161][]
+* [PR 168161][PR 168161]
 
-[`APG`]: https://www.w3.org/WAI/ARIA/apg/patterns/radio
-[`Radio`]: {{site.api}}/flutter/material/Radio-class.html
-[`RadioListTile`]: {{site.api}}/flutter/material/RadioListTile-class.html
-[`CupertinoRadio`]: {{site.api}}/flutter/cupertino/CupertinoRadio-class.html
-[`RadioGroup`]: {{site.api}}/flutter/widgets/RadioGroup-class.html
+[APG]: https://www.w3.org/WAI/ARIA/apg/patterns/radio
+[Radio]: {{site.api}}/flutter/material/Radio-class.html
+[RadioListTile]: {{site.api}}/flutter/material/RadioListTile-class.html
+[CupertinoRadio]: {{site.api}}/flutter/cupertino/CupertinoRadio-class.html
+[RadioGroup]: {{site.api}}/flutter/widgets/RadioGroup-class.html
 [Issue 113562]: {{site.repo.flutter}}/issues/113562
 [PR 168161]: {{site.repo.flutter}}/pull/168161

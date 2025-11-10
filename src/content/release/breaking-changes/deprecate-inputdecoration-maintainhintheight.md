@@ -1,40 +1,41 @@
 ---
-title: Deprecate `InputDecoration.maintainHintHeight` in favor of
+ia-translate: true
+title: Depreciar `InputDecoration.maintainHintHeight` em favor de
   `InputDecoration.maintainHintSize`
 description: >-
-  The `InputDecoration.maintainHintHeight` parameter has been replaced by
+  O parâmetro `InputDecoration.maintainHintHeight` foi substituído por
   `InputDecoration.maintainHintSize`.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-The [`InputDecoration.maintainHintHeight`][] parameter was deprecated
-in favor of the [`InputDecoration.maintainHintSize`][] parameter.
+O parâmetro [`InputDecoration.maintainHintHeight`][] foi depreciado
+em favor do parâmetro [`InputDecoration.maintainHintSize`][].
 
-## Context
+## Contexto
 
-The default intrinsic size of an input decorator depends on the hint size.
-The [`InputDecoration.maintainHintSize`][] parameter can be set to `false` to
-make the intrinsic size ignores the hint size when the hint isn't visible.
-Previously, the `InputDecoration.maintainHintHeight` parameter was
-used to override the default intrinsic height and had no impact on the
-intrinsic width.
+O tamanho intrínseco padrão de um decorador de input depende do tamanho do hint.
+O parâmetro [`InputDecoration.maintainHintSize`][] pode ser definido como `false` para
+fazer com que o tamanho intrínseco ignore o tamanho do hint quando o hint não está visível.
+Anteriormente, o parâmetro `InputDecoration.maintainHintHeight` era
+usado para sobrescrever a altura intrínseca padrão e não tinha impacto na
+largura intrínseca.
 
-## Description of change
+## Descrição da mudança
 
-The [`InputDecoration.maintainHintHeight`][] is deprecated in
-favor of [`InputDecoration.maintainHintSize`][] which makes both the intrinsic
-width and height depend on the hint dimensions.
+O [`InputDecoration.maintainHintHeight`][] foi depreciado em
+favor de [`InputDecoration.maintainHintSize`][] que faz com que tanto a largura
+quanto a altura intrínsecas dependam das dimensões do hint.
 
-## Migration guide
+## Guia de migração
 
-Replace [`InputDecoration.maintainHintHeight`][] with
-[`InputDecoration.maintainHintSize`][] to override the default intrinsic size
-computation.
+Substitua [`InputDecoration.maintainHintHeight`][] por
+[`InputDecoration.maintainHintSize`][] para sobrescrever o cálculo do tamanho intrínseco
+padrão.
 
-Code before migration:
+Código antes da migração:
 
 ```dart highlightLines=3
 TextField(
@@ -44,7 +45,7 @@ TextField(
 ),
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart highlightLines=3
 TextField(
@@ -54,23 +55,23 @@ TextField(
 ),
 ```
 
-## Timeline
+## Cronograma
 
-Landed in version: 3.30.0-0.0.pre<br>
-In stable release: 3.32
+Aterrissou na versão: 3.30.0-0.0.pre<br>
+No lançamento estável: 3.32
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 - [`InputDecoration.maintainHintHeight`][]
 - [`InputDecoration.maintainHintSize`][]
 
-Relevant issues:
+Issues relevantes:
 
 - [Issue #93337][]
 
-Relevant PRs:
+PRs relevantes:
 
 - [Fix TextField intrinsic width when hint is not visible][]
 

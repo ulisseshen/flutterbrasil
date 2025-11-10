@@ -8,11 +8,11 @@
 {% endcomment %}
 
 :::note
-The following link(s) take you to the
-[latest docs][] on the master channel.
-You can find the docs for the stable
-channel at [api.flutterbrasil.dev][].
+O(s) link(s) a seguir levam você para a
+[documentação mais recente][] no canal master.
+Você pode encontrar a documentação para o canal
+stable em [api.flutterbrasil.dev][].
 :::
 
 [api.flutterbrasil.dev]: {{site.api}}
-[latest docs]: {{site.main-api}}
+[documentação mais recente]: {{site.main-api}}

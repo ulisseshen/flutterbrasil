@@ -1,49 +1,50 @@
 ---
-title: Migration guide for RouteSettings copyWith
-description: Removal of RouteSettings copyWith and how to migrate
+title: Guia de migração para RouteSettings copyWith
+description: Remoção de RouteSettings copyWith e como migrar
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-The `RouteSettings.copyWith` method is removed, and apps that use
-it need to use the constructor to create a new `RouteSettings`
-instance instead.
+O método `RouteSettings.copyWith` foi removido, e apps que o utilizam
+precisam usar o construtor para criar uma nova instância de `RouteSettings`
+em vez disso.
 
-## Context
+## Contexto
 
-With the introduction of the [`Page`][] class,
-the `RouteSettings.copyWith` was no longer a viable API.
+Com a introdução da classe [`Page`][`Page`],
+o `RouteSettings.copyWith` não era mais uma API viável.
 
-## Description of change
+## Descrição da mudança
 
-`RouteSettings.copyWith` was removed
+`RouteSettings.copyWith` foi removido
 
-## Migration guide
+## Guia de migração
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 RouteSettings newSettings = oldSettings.copyWith(name: 'new name');
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 RouteSettings newSettings = RouteSettings(name: 'new name', arguments: oldSettings.arguments);
 ```
 
-## Timeline
+## Cronograma
 
-Landed in version: 3.5.0-9.0.pre-137-gc6f6095acd<br>
-In stable release: 3.7
+Adicionado na versão: 3.5.0-9.0.pre-137-gc6f6095acd<br>
+Na versão estável: 3.7
 
-## References
+## Referências
 
-Relevant PRs:
+PRs relevantes:
 
-* [PR 113860][]: Removes RouteSetting.copyWith.
+* [PR 113860][PR 113860]: Remove RouteSetting.copyWith.
 
 [PR 113860]: {{site.repo.flutter}}/pull/113860
 [`Page`]: {{site.api}}/flutter/widgets/Page-class.html

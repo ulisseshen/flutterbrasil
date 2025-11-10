@@ -1,34 +1,35 @@
 ---
-title: $FLUTTER_ROOT/bin/cache/flutter.version.json replaces $FLUTTER_ROOT/version
+ia-translate: true
+title: $FLUTTER_ROOT/bin/cache/flutter.version.json substitui $FLUTTER_ROOT/version
 description: >-
-  The deprecated '$FLUTTER_ROOT/version' tool file output has been replaced by
-  '$FLUTTER_ROOT/bin/cache/flutter.version.json', and any build scripts or
-  references to it must also be updated.
+  A saída depreciada do arquivo da ferramenta '$FLUTTER_ROOT/version' foi substituída por
+  '$FLUTTER_ROOT/bin/cache/flutter.version.json', e quaisquer scripts de build ou
+  referências a ele também devem ser atualizados.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-The `flutter` tool will no longer
-output the `$FLUTTER_ROOT/version` metadata file, and
-only output `$FLUTTER_ROOT/bin/cache/flutter.version.json`.
+A ferramenta `flutter` não irá mais
+gerar o arquivo de metadados `$FLUTTER_ROOT/version`, e
+apenas gerará `$FLUTTER_ROOT/bin/cache/flutter.version.json`.
 
-Tools and build scripts that rely on the presence of `$FLUTTER_ROOT/version`
-need to be updated.
+Ferramentas e scripts de build que dependem da presença de `$FLUTTER_ROOT/version`
+precisam ser atualizados.
 
-## Background
+## Contexto
 
-[In 2023][PR 124558], `$FLUTTER_ROOT/bin/cache/fluttter.version.json` was added
-as a newer file format that replaces `$FLUTTER_ROOT/version`.
+[Em 2023][PR 124558], `$FLUTTER_ROOT/bin/cache/fluttter.version.json` foi adicionado
+como um novo formato de arquivo que substitui `$FLUTTER_ROOT/version`.
 
-So a file that looked something like this:
+Então um arquivo que parecia algo assim:
 
 ```plaintext title="version"
 3.33.0-1.0.pre-1070
 ```
 
-Was replaced by something like this:
+Foi substituído por algo assim:
 
 ```json title="flutter.version.json"
 {
@@ -47,21 +48,21 @@ Was replaced by something like this:
 }
 ```
 
-Generating both files is a source of technical debt.
+Gerar ambos os arquivos é uma fonte de débito técnico.
 
-## Migration guide
+## Guia de migração
 
-Most Flutter developers don't parse or use this file, but
-custom tools or CI configurations might.
+A maioria dos desenvolvedores Flutter não faz parse ou usa este arquivo, mas
+ferramentas customizadas ou configurações de CI podem fazê-lo.
 
-For example, the Flutter team's own `api.flutterbrasil.dev` generation script:
+Por exemplo, o próprio script de geração da equipe Flutter `api.flutterbrasil.dev`:
 
 ```dart title="post_processe_docs.dart"
 final File versionFile = File('version');
 final String version = versionFile.readAsStringSync();
 ```
 
-Was updated in [172601][PR 172601] to:
+Foi atualizado em [172601][PR 172601] para:
 
 ```dart
 final File versionFile = File(path.join(checkoutPath, 'bin', 'cache', 'flutter.version.json'));
@@ -72,30 +73,30 @@ final String version = () {
 }();
 ```
 
-To temporarily opt-out of `$FLUTTER_ROOT/version` no longer being emitted:
+Para temporariamente optar por não ter `$FLUTTER_ROOT/version` mais sendo emitido:
 
 ```sh
 flutter config --no-enable-omit-legacy-version-file
 ```
 
-## Timeline
+## Cronograma
 
-Landed in version: 3.33.0-1.0.pre-1416<br>
-Stable release: _Not published yet_
+Aterrissou na versão: 3.33.0-1.0.pre-1416<br>
+Lançamento estável: _Ainda não publicado_
 
-One stable release after this change lands,
-`--no-enable-omit-legacy-version-file` will be removed.
+Um lançamento estável após esta mudança ser implementada,
+`--no-enable-omit-legacy-version-file` será removido.
 
-## References
+## Referências
 
-Relevant Issues:
+Issues relevantes:
 
-- [Issue 171900][], where `FLUTTER_ROOT/version` was slated for removal
+- [Issue 171900][], onde `FLUTTER_ROOT/version` foi marcado para remoção
 
-Relevant PRs:
+PRs relevantes:
 
-- [PR 124558][], where `flutter.version.json` was added as the new format
-- [PR 172601][], an example of migrating a script to use `flutter.version.json`
+- [PR 124558][], onde `flutter.version.json` foi adicionado como o novo formato
+- [PR 172601][], um exemplo de migração de um script para usar `flutter.version.json`
 
 [Issue 171900]: {{site.repo.flutter}}/issues/171900
 [PR 124558]: {{site.repo.flutter}}/pull/124558

@@ -26,7 +26,7 @@ Usamos as respostas que você envia via pesquisa para melhorar
 o Flutter e Dart. Armazenamos essas informações independentemente
 das informações enviadas ao Google via analytics.
 Para ver como usamos pesquisas anteriores para melhorar o Flutter e Dart,
-confira nossos blogs no [Medium][].
+confira nossos blogs no [Medium][Medium].
 
 ## Como posso desativar?
 

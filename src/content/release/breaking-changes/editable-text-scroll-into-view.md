@@ -1,43 +1,44 @@
 ---
-title: Updated EditableText scroll into view behavior
+ia-translate: true
+title: Comportamento atualizado de scroll into view do EditableText
 description: >
-  Improve EditableText selection scroll into view behavior to always
-  use the current selection extent.
+  Melhorar o comportamento de scroll into view da seleção do EditableText para sempre
+  usar o extent da seleção atual.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-The `Editable.onCaretChanged` callback is removed. With this change,
-`EditableText` behavior for scrolling the selection into view
-changes.
+O callback `Editable.onCaretChanged` foi removido. Com esta mudança,
+o comportamento do `EditableText` para rolar a seleção para a visualização
+muda.
 
-## Context
+## Contexto
 
-Previously, upon scrolling into view to show user updates, `EditableText`
-used multiple mechanisms to determine the extent of the selection or the
-caret location.
+Anteriormente, ao rolar para a visualização para mostrar atualizações do usuário, `EditableText`
+usava múltiplos mecanismos para determinar o extent da seleção ou a
+localização do caret.
 
-## Description of change
+## Descrição da mudança
 
-By removing the `Editable.onCaretChanged` callback, `EditableText` will always
-use the most up-to-date selection extent location when scrolling to show it.
-Specifically, this improves scroll into view behavior after
-changing selection from collapsed to non-collapsed using
+Ao remover o callback `Editable.onCaretChanged`, `EditableText` sempre
+usará a localização do extent de seleção mais atualizada ao rolar para mostrá-la.
+Especificamente, isso melhora o comportamento de scroll into view após
+alterar a seleção de recolhida para não recolhida usando
 `userUpdateTextEditingValue()`.
 
-## Timeline
+## Cronograma
 
 Landed in version: 3.12.0-4.0.pre<br>
 In stable release: 3.13.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`EditableText`]({{site.api}}/flutter/widgets/EditableText-class.html)
 
-Relevant PRs:
+PRs relevantes:
 
 * [109114: Remove Editable.onCaretChanged callback]({{site.repo.flutter}}/pull/109114)

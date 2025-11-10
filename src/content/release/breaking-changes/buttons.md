@@ -1,41 +1,42 @@
 ---
-title: New Buttons and Button themes
-description: The basic material button classes have been replaced.
+title: Novos Botões e temas de Botões
+description: As classes básicas de botões material foram substituídas.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-A new set of basic material button widgets and themes have been added
-to Flutter. The original classes have been deprecated and will
-eventually be removed. The overall goal is to make buttons more
-flexible, and easier to configure via constructor parameters or
-themes.
+Um novo conjunto de widgets de botões material básicos e temas foram adicionados
+ao Flutter. As classes originais foram descontinuadas e serão
+eventualmente removidas. O objetivo geral é tornar os botões mais
+flexíveis e mais fáceis de configurar via parâmetros de construtor ou
+temas.
 
-The `FlatButton`, `RaisedButton` and `OutlineButton` widgets have been
-replaced by `TextButton`, `ElevatedButton`, and `OutlinedButton`
-respectively. Each new button class has its own theme:
-`TextButtonTheme`, `ElevatedButtonTheme`, and
-`OutlinedButtonTheme`. The original `ButtonTheme` class is no longer
-used. The appearance of buttons is specified by a `ButtonStyle`
-object, instead of a large set of widget parameters and
-properties. This is roughly comparable to the way that the appearance
-of text is defined with a `TextStyle` object. The new button themes
-are also configured with a `ButtonStyle` object. A `ButtonStyle` is
-itself just a collection of visual properties. Many of these
-properties are defined with `MaterialStateProperty`, which means that
-their value can depend on the button's state.
+Os widgets `FlatButton`, `RaisedButton` e `OutlineButton` foram
+substituídos por `TextButton`, `ElevatedButton` e `OutlinedButton`
+respectivamente. Cada nova classe de botão tem seu próprio tema:
+`TextButtonTheme`, `ElevatedButtonTheme` e
+`OutlinedButtonTheme`. A classe original `ButtonTheme` não é mais
+usada. A aparência dos botões é especificada por um objeto `ButtonStyle`,
+ao invés de um grande conjunto de parâmetros e propriedades de widget.
+Isto é aproximadamente comparável à forma como a aparência do texto é
+definida com um objeto `TextStyle`. Os novos temas de botões também são
+configurados com um objeto `ButtonStyle`. Um `ButtonStyle` é em si apenas
+uma coleção de propriedades visuais. Muitas dessas propriedades são
+definidas com `MaterialStateProperty`, o que significa que seu valor pode
+depender do estado do botão.
 
 
-## Context
+## Contexto
 
-Rather than try and evolve the existing button classes and their theme
-in-place, we have introduced new replacement button widgets and
-themes. In addition to freeing us from the backwards compatibility
-labyrinth that evolving the existing classes in-place would entail,
-the new names sync Flutter back up with the Material Design spec,
-which uses the new names for the button components.
+Em vez de tentar evoluir as classes de botões existentes e seus temas
+in-place, introduzimos novos widgets de botões e temas de substituição.
+Além de nos libertar do labirinto de compatibilidade retroativa que
+evoluir as classes existentes in-place implicaria, os novos nomes
+sincronizam o Flutter de volta com a especificação do Material Design,
+que usa os novos nomes para os componentes de botão.
 
 | Old Widget      | Old Theme     | New Widget       | New Theme             |
 |-----------------|---------------|------------------|-----------------------|
@@ -45,7 +46,7 @@ which uses the new names for the button components.
 
 {:.table .table-striped .nowrap}
 
-The new themes follow the "normalized" pattern that Flutter adopted
+Os novos temas seguem the "normalized" pattern that Flutter adopted
 for new Material widgets about a year ago. Theme properties and widget
 constructor parameters are null by default. Non-null theme properties
 and widget parameters specify an override of the component's default
@@ -60,13 +61,13 @@ configured in terms of the overall Theme's ColorScheme. There are
 other small differences in padding, rounded corner radii, and the
 hover/focus/pressed feedback.
 
-Many applications will be able to just substitute the new class names
+Muitas aplicações poderão just substitute the new class names
 for the old ones. Apps with golden image tests or with buttons whose
 appearance has been configured with constructor parameters or with the
 original `ButtonTheme` may need to consult the migration guide and the
 introductory material that follows.
 
-## API Change: ButtonStyle instead of individual style properties
+## Mudança da API: ButtonStyle ao invés de propriedades de estilo individuais
 
 Except for simple use cases, the APIs of the new button classes are
 not compatible with the old classes. The visual attributes of the new
@@ -139,7 +140,7 @@ TextButton(
 )
 ```
 
-### The `styleFrom()` ButtonStyle utility methods
+### Os métodos utilitários `styleFrom()` do ButtonStyle
 
 The Material Design spec defines buttons' foreground and overlay colors in
 terms of the color scheme's primary color. The primary color is
@@ -184,9 +185,9 @@ variation. The most flexible approach is defining a `ButtonStyle`
 directly, with `MaterialStateProperty` values for the states whose
 appearance you want to override.
 
-## ButtonStyle defaults
+## Padrões do ButtonStyle
 
-Widgets like the new button classes _compute_ their default values
+Widgets como as novas classes de botões _compute_ their default values
 based on the overall theme's `colorScheme` and `textTheme` as well as
 button's current state. In a few cases they also consider if the
 overall theme's color scheme is light or dark.  Each button has a
@@ -212,18 +213,18 @@ properties, like colors, for all of the button's possible states -
 like pressed, hovered, disabled, and focused.
 
 
-## Migration guide
+## Guia de migração
 
-Use the following information to migrate your buttons to the
+Use as seguintes informações to migrate your buttons to the
 new API.
 
-### Restoring the original button visuals
+### Restaurando os visuais originais dos botões
 
-In many cases it's possible to just switch from the old button class
+Em muitos casos it's possible to just switch from the old button class
 to the new one.  That's assuming that the small changes in size/shape
 and the likely bigger change in colors, aren't a concern.
 
-To preserve the original buttons' appearance in these cases, one can
+Para preservar buttons' appearance in these cases, one can
 define button styles that match the original as closely as you
 like. For example, the following style makes a `TextButton` look
 like a default `FlatButton`:
@@ -245,7 +246,7 @@ TextButton(
 )
 ```
 
-Similarly, to make an `ElevatedButton` look like a default `RaisedButton`:
+Da mesma forma, para fazer an `ElevatedButton` look like a default `RaisedButton`:
 
 ```dart
 final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
@@ -299,7 +300,7 @@ OutlinedButton(
 )
 ```
 
-To restore the default appearance for buttons throughout an
+Para restaurar a aparência padrão dos botões em toda an
 application, you can configure the new button themes in the
 application's theme:
 
@@ -313,7 +314,7 @@ MaterialApp(
 )
 ```
 
-To restore the default appearance for buttons in part of an
+Para restaurar a aparência padrão dos botões em parte de an
 application you can wrap a widget subtree with `TextButtonTheme`,
 `ElevatedButtonTheme`, or `OutlinedButtonTheme`. For example:
 
@@ -324,9 +325,9 @@ TextButtonTheme(
 )
 ```
 
-### Migrating buttons with custom colors
+### Migrando botões com cores personalizadas
 
-The following sections cover use of the following `FlatButton`,
+As seguintes seções cobrem use of the following `FlatButton`,
 `RaisedButton`, and `OutlineButton` color parameters:
 
 ```dart
@@ -343,9 +344,9 @@ splashColor
 The new button classes do not support a separate highlight color
 because it's no longer part of the Material Design.
 
-#### Migrating buttons with custom foreground and background colors
+#### Migrando botões com cores de primeiro plano e fundo personalizadas
 
-Two common customizations for the original button classes are a custom
+Duas personalizações comuns for the original button classes are a custom
 foreground color for `FlatButton`, or custom foreground and background
 colors for `RaisedButton`.  Producing the same result with the new
 button classes is simple:
@@ -395,9 +396,9 @@ In this case the button's use of the color scheme's primary color is
 reversed relative to the `TextButton`: primary is button's background
 fill color and `onPrimary` is the foreground (text/icon) color.
 
-#### Migrating buttons with custom overlay colors
+#### Migrando botões com cores de sobreposição personalizadas
 
-Overriding a button's default focused, hovered, highlighted, or splash
+Sobrescrever's default focused, hovered, highlighted, or splash
 colors is less common. The `FlatButton`, `RaisedButton`, and `OutlineButton`
 classes have individual parameters for these state-dependent
 colors. The new `TextButton`, `ElevatedButton`, and `OutlinedButton` classes
@@ -442,9 +443,9 @@ that match the example above - and just use the style parameter - or
 to define a stateless wrapper widget that encapsulated the three color
 parameters.
 
-#### Migrating buttons with custom disabled colors
+#### Migrando botões com cores desabilitadas personalizadas
 
-This is a relatively rare customization.  The `FlatButton`,
+Esta é uma personalização relativamente rara customization.  The `FlatButton`,
 `RaisedButton`, and `OutlineButton` classes have `disabledTextColor` and
 `disabledColor` parameters that define the background and foreground
 colors when the button's `onPressed` callback is null.
@@ -505,9 +506,9 @@ ElevatedButton(
 As with the previous case, there are obvious ways to make the new
 version more compact in an app where this migration comes up often.
 
-#### Migrating buttons with custom elevations
+#### Migrando botões com elevações personalizadas
 
-This is also a relatively rare customization. Typically, only
+Esta também é uma personalização relativamente rara customization. Typically, only
 `ElevatedButton`s (originally called `RaisedButtons`)
 include elevation changes. For elevations that are proportional
 to a baseline elevation (per the Material Design specification),
@@ -567,9 +568,9 @@ ElevatedButton(
 )
 ```
 
-#### Migrating buttons with custom shapes and borders
+#### Migrando botões com formas e bordas personalizadas
 
-The original `FlatButton`, `RaisedButton`, and `OutlineButton` classes all
+As classes originais `FlatButton`, `RaisedButton`, and `OutlineButton` classes all
 provide a shape parameter which defines both the button's shape and
 the appearance of its outline. The corresponding new classes and their
 themes support specifying the button's shape and its border
@@ -639,14 +640,14 @@ OutlinedButton(
 )
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.20.0-0.0.pre<br>
-In stable release: 2.0.0
+Incluído na versão: 1.20.0-0.0.pre<br>
+Em versão estável: 2.0.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`ButtonStyle`][]
 * [`ButtonStyleButton`][]
@@ -660,7 +661,7 @@ API documentation:
 * [`TextButtonTheme`][]
 * [`TextButtonThemeData`][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [PR 59702: New Button Universe][]
 * [PR 73352: Deprecated obsolete Material classes: FlatButton, RaisedButton, OutlineButton][]

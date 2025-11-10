@@ -1,12 +1,13 @@
 ---
-title: Change log for Flutter 1.7.8
-shortTitle: 1.7.8 change log
-description: Change log for Flutter 1.7.8 containing a list of all PRs merged for this release.
+ia-translate: true
+title: Registro de mudanças do Flutter 1.7.8
+shortTitle: Registro de mudanças 1.7.8
+description: Registro de mudanças do Flutter 1.7.8 contendo a lista de todos os PRs mesclados para esta versão.
 skipTemplateRendering: true
 ---
 
 
-## PRs closed in this release of flutter/flutter
+## PRs fechados nesta versão do flutter/flutter
 
 From Wed May 1 16:56:00 2019 -0700 to Thu Jul 18 08:04:00 2019 -0700
 
@@ -1380,7 +1381,7 @@ From Wed May 1 16:56:00 2019 -0700 to Thu Jul 18 08:04:00 2019 -0700
 [36413](https://github.com/flutter/flutter/pull/36413) Revert "Roll engine f3482700474a..1af19ae67dd1 (4 commits)" (cla: yes, engine)
 
 
-## PRs closed in this release of flutter/engine
+## PRs fechados nesta versão do flutter/engine
 
 From Wed May 1 16:56:00 2019 -0700 to Thu Jul 18 08:04:00 2019 -0700
 
@@ -2128,7 +2129,7 @@ From Wed May 1 16:56:00 2019 -0700 to Thu Jul 18 08:04:00 2019 -0700
 [9905](https://github.com/flutter/engine/pull/9905) Respect EXIF information while decompressing images. (cla: yes)
 
 
-## PRs closed in this release of flutter/plugins
+## PRs fechados nesta versão do flutter/plugins
 
 From Wed May 1 16:56:00 2019 -0700 to Thu Jul 18 08:04:00 2019 -0700
 

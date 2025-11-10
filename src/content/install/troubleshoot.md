@@ -1,88 +1,89 @@
 ---
-title: Troubleshooting installation
-shortTitle: Troubleshoot
+ia-translate: true
+title: Solucionando problemas de instalação
+shortTitle: Solução de problemas
 description: >-
-  Get help with common installation issues that new
-  Flutter developers might have run into.
+  Obtenha ajuda com problemas comuns de instalação que novos
+  desenvolvedores Flutter podem ter enfrentado.
 ---
 
-This page describes some common installation issues that
-new Flutter users have encountered and offers suggestions
-on how to resolve them.
+Esta página descreve alguns problemas comuns de instalação que
+novos usuários do Flutter encontraram e oferece sugestões
+sobre como resolvê-los.
 
-If you are still experiencing problems after
-using this page, consider reaching out to any of
-the resources listed under [community support channels][].
-To add a topic to this page or make a correction,
-you can [file an issue][] or
-submit a [pull request][] on GitHub.
+Se você ainda estiver enfrentando problemas após
+usar esta página, considere entrar em contato com qualquer um dos
+recursos listados em [canais de suporte da comunidade][community support channels].
+Para adicionar um tópico a esta página ou fazer uma correção,
+você pode [registrar uma issue][file an issue] ou
+enviar um [pull request][pull request] no GitHub.
 
 [community support channels]: #community-support
 [file an issue]: {{site.github}}/flutter/website/issues/new
 [pull request]: {{site.github}}/flutter/website/pulls
 
-## Get the Flutter SDK
+## Obter o Flutter SDK
 
-### Unable to find the `flutter` command
+### Não é possível encontrar o comando `flutter`
 
-__What does this issue look like?__
+__Como este problema se parece?__
 
-When you try to run the `flutter` command,
-the console fails to find it.
-The error usually looks as follows:
+Quando você tenta executar o comando `flutter`,
+o console não consegue encontrá-lo.
+O erro geralmente se parece com o seguinte:
 
 ```plaintext
 'flutter' is not recognized as an internal or external command operable program or batch file
 ```
 
-Error messages on macOS and Linux could look slightly different from
-the one on Windows.
+As mensagens de erro no macOS e Linux podem parecer um pouco diferentes da
+do Windows.
 
-__Explanation and suggestions__
+__Explicação e sugestões__
 
-Did you add Flutter to the `PATH` environment variable for your platform?
-On Windows, follow these [instructions for adding a command
-to your path][windows path].
+Você adicionou o Flutter à variável de ambiente `PATH` para sua plataforma?
+No Windows, siga estas [instruções para adicionar um comando
+ao seu path][windows path].
 
-If you've already [set up VS Code][] for Flutter development,
-you can use the Flutter extension's **Locate SDK** prompt
-to identify the location of your `flutter` folder.
+Se você já [configurou o VS Code][set up VS Code] para desenvolvimento Flutter,
+você pode usar o prompt **Locate SDK** da extensão Flutter
+para identificar a localização da sua pasta `flutter`.
 
-See also: [Configuring PATH and Environment Variables - Dart Code][config path]
+Veja também: [Configuring PATH and Environment Variables - Dart Code][config path]
 
 [windows path]: https://www.wikihow.com/Change-the-PATH-Environment-Variable-on-Windows
 [set up VS Code]: /tools/vs-code#setup
 [config path]: https://dartcode.org/docs/configuring-path-and-environment-variables/
 
-### Flutter in special folders
+### Flutter em pastas especiais
 
 
-__What does this issue look like?__
+__Como este problema se parece?__
 
-Running your Flutter project produces an error like the following:
+Executar seu projeto Flutter produz um erro como o seguinte:
 
 ```plaintext
 The Flutter SDK is installed in a protected folder and may not function correctly.
 Please move the SDK to a location that is user-writable without Administration permissions and restart.
 ```
 
-__Explanation and suggestions__
+__Explicação e sugestões__
 
-On Windows, this usually happens when Flutter is installed
-in a directory like
-`C:\Program Files\` that requires elevated privileges.
-Try relocating Flutter to a different folder,
-such as `C:\src\flutter`.
+No Windows, isso geralmente acontece quando o Flutter é instalado
+em um diretório como
+`C:\Program Files\` que requer privilégios elevados.
+Tente realocar o Flutter para uma pasta diferente,
+como `C:\src\flutter`.
 
-## Android setup
+## Configuração do Android
 
-### Having multiple versions of Java installed
+### Ter várias versões do Java instaladas
 
-__What does this issue look like?__
+__Como este problema se parece?__
 
-The command `flutter doctor --android-licenses` fails.
-Running `flutter doctor --verbose` gives an error message
-like the following:
+O comando `flutter doctor --android-licenses` falha.
+Executar `flutter doctor --verbose` dá uma mensagem de erro
+como a seguinte:
 
 ```plaintext
 java.lang.UnsupportedClassVersionError: com/android/prefs/AndroidLocationsProvider
@@ -90,36 +91,36 @@ has been compiled by a more recent version of the Java Runtime (class file versi
 this version of the Java Runtime only recognizes class file versions up to 52.0
 ```
 
-__Explanation and suggestions__
+__Explicação e sugestões__
 
-The error occurs when an older version of the
+O erro ocorre quando uma versão mais antiga do
 Java Development Kit (JDK)
-is installed on your computer.
+está instalada no seu computador.
 
-If you don't need multiple versions of Java,
-uninstall existing JDKs from your computer.
-Flutter automatically uses the JDK included in Android Studio.
+Se você não precisar de várias versões do Java,
+desinstale os JDKs existentes do seu computador.
+O Flutter usa automaticamente o JDK incluído no Android Studio.
 
-If you do need another version of Java,
-try the workaround described in
-[this GitHub issue][java binary path]
-until a long-term solution is implemented.
-For more information,
-check out the [Android Java Gradle migration guide][]
-or [flutter doctor --android-licenses not working due to
+Se você precisar de outra versão do Java,
+tente a solução alternativa descrita em
+[esta issue do GitHub][java binary path]
+até que uma solução de longo prazo seja implementada.
+Para mais informações,
+confira o [guia de migração Android Java Gradle][Android Java Gradle migration guide]
+ou [flutter doctor --android-licenses not working due to
     java.lang.UnsupportedClassVersionError - Stack Overflow][so java version].
 
 [java binary path]: {{site.repo.flutter}}/issues/106416#issuecomment-1522198064
 [Android Java Gradle migration guide]: /release/breaking-changes/android-java-gradle-migration-guide
 [so java version]: {{site.so}}/questions/75328050/
 
-### `cmdline-tools` component is missing
+### Componente `cmdline-tools` está ausente
 
-__What does this issue look like?__
+__Como este problema se parece?__
 
-The `flutter doctor` command complains that the
-`cmdline-tools` are missing from the Android toolchain.
-For example:
+O comando `flutter doctor` reclama que as
+`cmdline-tools` estão ausentes do Android toolchain.
+Por exemplo:
 
 ```plaintext noHighlight
 [!] Android toolchain - develop for Android devices (Android SDK version 33.0.2)
@@ -127,34 +128,34 @@ For example:
     X cmdline-tools component is missing
 ```
 
-__Explanation and suggestions__
+__Explicação e sugestões__
 
-The easiest way to get the cmdline-tools is through the
-SDK Manager in Android Studio.
-To do this, use the following instructions:
+A maneira mais fácil de obter as cmdline-tools é através do
+SDK Manager no Android Studio.
+Para fazer isso, use as seguintes instruções:
 
-1. Open the SDK Manager from Android Studio by
-   selecting **Tools > SDK Manager** from the menu bar.
-2. Select the latest Android SDK
-   (or a specific version that your app requires),
-   Android SDK Command-line Tools, and Android SDK Build-Tools.
-3. Click **Apply** to install the selected artifacts.
+1. Abra o SDK Manager no Android Studio
+   selecionando **Tools > SDK Manager** na barra de menu.
+2. Selecione o Android SDK mais recente
+   (ou uma versão específica que seu app requer),
+   Android SDK Command-line Tools e Android SDK Build-Tools.
+3. Clique em **Apply** para instalar os artefatos selecionados.
 
 ![Android Studio SDK Manager](/assets/images/docs/get-started/install_android_tools.png)
 
-If you're not using Android Studio,
-you can download the tools using the
-[sdkmanager][] command-line tool.
+Se você não estiver usando o Android Studio,
+você pode baixar as ferramentas usando a
+ferramenta de linha de comando [sdkmanager][sdkmanager].
 
 [sdkmanager]: {{site.android-dev}}/studio/command-line/sdkmanager
 
-## macOS setup
+## Configuração do macOS
 
 ### SocketException: Send failed, OS Error: No route to host, errno = 65
 
-__What does this issue look like?__
+__Como este problema se parece?__
 
-On macOS, the `flutter run` command produces an error like:
+No macOS, o comando `flutter run` produz um erro como:
 
 ```plaintext
 $ flutter run
@@ -164,27 +165,27 @@ Installing and launching...
 Oops; flutter has exited unexpectedly: "SocketException: Send failed (OS Error: No route to host, errno = 65), address = 0.0.0.0, port = 5353".
 ```
 
-__Explanation and suggestions__
+__Explicação e sugestões__
 
-This issue is related to macOS permissions.
+Este problema está relacionado a permissões do macOS.
 
-To fix this:
+Para corrigir isso:
 
-1. Upgrade your Flutter SDK to the latest version.
+1. Atualize seu Flutter SDK para a versão mais recente.
 
-2. Open **System Settings** > **Privacy & Security** > **Local Network**.
-   Toggle on the permission for all the code editors and terminals you use to
-   launch Flutter apps.
-   You might need to restart your code editor, terminal, and physical device.
+2. Abra **System Settings** > **Privacy & Security** > **Local Network**.
+   Ative a permissão para todos os editores de código e terminais que você usa para
+   iniciar apps Flutter.
+   Você pode precisar reiniciar seu editor de código, terminal e dispositivo físico.
 
-## Other problems
+## Outros problemas
 
 ### Exit code 69
 
-__What does this issue look like?__
+__Como este problema se parece?__
 
-Running a `flutter` command produces an "exit code: 69" error,
-as shown in the following example:
+Executar um comando `flutter` produz um erro "exit code: 69",
+conforme mostrado no exemplo a seguir:
 
 ```plaintext
 Running "flutter pub get" in flutter_tools...
@@ -203,39 +204,39 @@ pub env: {
 exit code: 69
 ```
 
-__Explanation and suggestions__
+__Explicação e sugestões__
 
-This issue is related to networking.
-Try the following instructions to troubleshoot:
+Este problema está relacionado à rede.
+Tente as seguintes instruções para solucionar o problema:
 
-* Check your internet connection.
-  Make sure that you're connected to the
-  internet and that your connection is stable.
-* Restart your devices, including your computer
-  and networking equipment.
-* Use a VPN to help to bypass any restrictions that
-  might prevent you from connecting to the network.
-* If you have tried all of these steps and are
-  still getting the error, print out verbose logs
-  with the `flutter doctor -v` command and ask for help in
-  one of the [community support channels][].
+* Verifique sua conexão com a internet.
+  Certifique-se de que você está conectado à
+  internet e que sua conexão está estável.
+* Reinicie seus dispositivos, incluindo seu computador
+  e equipamento de rede.
+* Use uma VPN para ajudar a contornar quaisquer restrições que
+  possam impedi-lo de se conectar à rede.
+* Se você tentou todas essas etapas e ainda está
+  recebendo o erro, imprima logs detalhados
+  com o comando `flutter doctor -v` e peça ajuda em
+  um dos [canais de suporte da comunidade][community support channels].
 
 [community support channels]: #community-support
 
-## Community support
+## Suporte da comunidade
 
-The Flutter community is helpful and welcoming.
-If none of the above suggestions solves your installation issue,
-consider asking for support from one of the following channels:
+A comunidade Flutter é prestativa e acolhedora.
+Se nenhuma das sugestões acima resolver seu problema de instalação,
+considere pedir suporte de um dos seguintes canais:
 
-* [/r/flutterhelp](https://www.reddit.com/r/flutterhelp/) on Reddit
-* [/r/flutterdev](https://discord.gg/rflutterdev) on Discord,
-  particularly the `install-and-setup` channel on this server.
-* [StackOverflow][],
-  in particular, questions tagged with [#flutter][] or [#dart][].
+* [/r/flutterhelp](https://www.reddit.com/r/flutterhelp/) no Reddit
+* [/r/flutterdev](https://discord.gg/rflutterdev) no Discord,
+  particularmente o canal `install-and-setup` neste servidor.
+* [StackOverflow][StackOverflow],
+  em particular, perguntas marcadas com [#flutter][#flutter] ou [#dart][#dart].
 
-To be respectful of everyone's time,
-search the archive for a similar issue before posting a new one.
+Para respeitar o tempo de todos,
+procure no arquivo por um problema semelhante antes de postar um novo.
 
 [StackOverflow]: {{site.so}}
 [#dart]: {{site.so}}/questions/tagged/dart

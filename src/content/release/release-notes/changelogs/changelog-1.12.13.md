@@ -1,11 +1,12 @@
 ---
-title: Change log for Flutter 1.12.13
-shortTitle: 1.12.13 change log
-description: Change log for Flutter 1.12.13 containing a list of all PRs merged for this release.
+ia-translate: true
+title: Registro de mudanças do Flutter 1.12.13
+shortTitle: Registro de mudanças 1.12.13
+description: Registro de mudanças do Flutter 1.12.13 contendo uma lista de todos os PRs mesclados para este lançamento.
 skipTemplateRendering: true
 ---
 
-## PRs closed in this release of flutter/flutter
+## PRs fechados neste lançamento do flutter/flutter
 
 From Sun Aug 19 17:37:00 2019 -0700 to Mon Nov 25 12:05:00 2019 -0800
 
@@ -2108,7 +2109,7 @@ From Sun Aug 19 17:37:00 2019 -0700 to Mon Nov 25 12:05:00 2019 -0800
 
 [45455](https://github.com/flutter/flutter/pull/45455) Disable tests that fail on non-master branches (cla: yes, team)
 
-## PRs closed in this release of flutter/engine
+## PRs fechados neste lançamento do flutter/engine
 
 From Sun Aug 19 17:37:00 2019 -0700 to Mon Nov 25 12:05:00 2019 -0800
 
@@ -3437,7 +3438,7 @@ From Sun Aug 19 17:37:00 2019 -0700 to Mon Nov 25 12:05:00 2019 -0800
 
 [13990](https://github.com/flutter/engine/pull/13990) Setup a Metal test surface and add a new unit-test target that tests the testing utilities. (cla: yes)
 
-## PRs closed in this release of flutter/plugins
+## PRs fechados neste lançamento do flutter/plugins
 
 From Sun Aug 19 17:37:00 2019 -0700 to Mon Nov 25 12:05:00 2019 -0800
 

@@ -379,7 +379,7 @@ e Windows.
 para apps cliente. O framework gráfico subjacente
 e a máquina virtual Dart são implementados em C/C++.
 
-### Por que Flutter escolheu usar Dart?
+### Por que Flutter escolheu usar Dart? {:#why-did-flutter-choose-to-use-dart}
 
 Durante a fase de desenvolvimento inicial,
 a equipe Flutter analisou muitas
@@ -468,7 +468,7 @@ package [`js.dart`][`js.dart`].
 
 [`js.dart`]: {{site.dart-site}}/tools/dart-compile#js
 
-### Qual o tamanho do motor Flutter?
+### Qual o tamanho do motor Flutter? {:#how-big-is-the-flutter-engine}
 
 Em março de 2021, medimos o tamanho de download de um
 [app Flutter mínimo][minimal Flutter app] (sem Material Components,
@@ -578,7 +578,7 @@ Você pode compilar e fazer deploy do seu app Flutter para iOS, Android,
 [desktop]: /platform-integration/desktop
 [web]: /platform-integration/web
 
-### Em quais dispositivos e versões de SO Flutter roda?
+### Em quais dispositivos e versões de SO Flutter roda? {:#what-devices-and-os-versions-does-flutter-run-on}
 
 * Suportamos e testamos a execução do Flutter em uma variedade
   de plataformas de baixo a alto desempenho. Para uma lista detalhada
@@ -889,7 +889,7 @@ Para IntelliJ, use as entradas de menu
 [hot reload]: #hot-reload
 [iOS]: #run-ios
 
-### Qual paradigma de programação o framework do Flutter usa?
+### Qual paradigma de programação o framework do Flutter usa? {:#what-programming-paradigm-does-flutters-framework-use}
 
 Flutter é um ambiente de programação multi-paradigma.
 Muitas técnicas de programação desenvolvidas ao longo das últimas décadas

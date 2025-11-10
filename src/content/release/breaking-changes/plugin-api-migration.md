@@ -273,7 +273,7 @@ mas não são obrigatórios.
     flutter test integration_test/app_test.dart
     ```
 
-## Plugin básico
+## Plugin básico {:#basic-plugin}
 
 Para começar com um plugin Flutter para Android em código,
 comece implementando `FlutterPlugin`.

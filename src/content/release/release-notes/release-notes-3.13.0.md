@@ -1,13 +1,14 @@
 ---
-title: Flutter 3.13.0 release notes
-shortTitle: 3.13.0 release notes
-description: Release notes for Flutter 3.13.0.
+ia-translate: true
+title: Notas de lançamento do Flutter 3.13.0
+shortTitle: Notas de lançamento 3.13.0
+description: Notas de lançamento do Flutter 3.13.0.
 skipTemplateRendering: true
 ---
 
-This page has release notes for 3.13.0.
-For information about subsequent bug-fix releases,
-see our [CHANGELOG][].
+Esta página contém as notas de lançamento para o 3.13.0.
+Para informações sobre correções de bugs subsequentes,
+consulte nosso [CHANGELOG][].
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/main/CHANGELOG.md
 
@@ -376,7 +377,7 @@ see our [CHANGELOG][].
 * [CP] `_RenderScaledInlineWidget` constrains child size (#130648) by @LongCatIsLooong in [131289](https://github.com/flutter/flutter/pull/131289)
 * [Cp] Fix Tooltip crash when selected in a SelectableRegion (#130181) by @LongCatIsLooong in [131288](https://github.com/flutter/flutter/pull/131288)
 * [CP] Constrain _RenderScaledInlineWidget child size in computeDryLayout #131765 by @LongCatIsLooong in [132096](https://github.com/flutter/flutter/pull/132096)
-### Tooling
+### Ferramentas
 * Update getGradleVersion to ignore commented out lines by @reidbaker in [124260](https://github.com/flutter/flutter/pull/124260)
 * Update gradle_utils.dart and flutter.gradle to have the same versions as the documentation in file says is required. by @reidbaker in [123213](https://github.com/flutter/flutter/pull/123213)
 * Force plugin transitive dependencies to an ARC compatible version by @jmagman in [124349](https://github.com/flutter/flutter/pull/124349)
@@ -522,7 +523,7 @@ see our [CHANGELOG][].
 * [flutter_tools] modify Skeleton template to use ListenableBuilder instead of AnimatedBuilder by @fabiancrx in [128810](https://github.com/flutter/flutter/pull/128810)
 * [CP] Fix ConcurrentModificationError in DDS by @christopherfujino in [130740](https://github.com/flutter/flutter/pull/130740)
 
-## New Contributors
+## Novos Contribuidores
 * @Rexios80 made their first contribution in [123726](https://github.com/flutter/flutter/pull/123726)
 * @adityathakurxd made their first contribution in [124511](https://github.com/flutter/flutter/pull/124511)
 * @gabrielgarciagava made their first contribution in [124459](https://github.com/flutter/flutter/pull/124459)
@@ -799,7 +800,7 @@ see our [CHANGELOG][].
 * [Impeller] allowing enabling Impeller on macOS. by @jonahwilliams in [42639](https://github.com/flutter/engine/pull/42639)
 * Fix inverted boolean in Windows document selection changed a11y event by @yaakovschectman in [43281](https://github.com/flutter/engine/pull/43281)
 
-## New Contributors
+## Novos Contribuidores
 * @drwez made their first contribution in [41154](https://github.com/flutter/engine/pull/41154)
 * @bastionkid made their first contribution in [41082](https://github.com/flutter/engine/pull/41082)
 * @maRci002 made their first contribution in [40599](https://github.com/flutter/engine/pull/40599)

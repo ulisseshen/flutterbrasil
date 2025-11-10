@@ -4,7 +4,7 @@ apareçam em algumas páginas mesmo assim. O que precisa ser feito é o seguinte
 
 - Cada app/exemplo precisa ser totalmente revisado (e potencialmente simplificado).
 - Se as fontes estão de fato sendo usadas nas páginas do site, então elas precisam ser
-  integradas como trechos de código adequados. Consulte [Code excerpts][] para detalhes.
+  integradas como trechos de código adequados. Consulte [Code excerpts][code-excerpts] para detalhes.
 - Cada app/exemplo deve ser testado, pelo menos com um teste de fumaça.
 
-[Code excerpts]: https://github.com/dart-lang/site-shared/blob/main/doc/code-excerpts.md
+[code-excerpts]: https://github.com/dart-lang/site-shared/blob/main/doc/code-excerpts.md

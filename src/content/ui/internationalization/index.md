@@ -190,7 +190,7 @@ Faça hot reload do app e o widget `CalendarDatePicker`
 deve ser renderizado novamente em espanhol.
 
 <a id="adding-localized-messages"></a>
-### Adicionando suas próprias mensagens localizadas
+### Adicionando suas próprias mensagens localizadas {:#adding-your-own-localized-messages}
 
 Após adicionar o pacote `flutter_localizations`,
 você pode configurar a localização.
@@ -806,7 +806,7 @@ MaterialApp(
 [`localeResolutionCallback`]: {{site.api}}/flutter/widgets/LocaleResolutionCallback.html
 [`supportedLocales`]: {{site.api}}/flutter/material/MaterialApp/supportedLocales.html
 
-### Configurando o arquivo l10n.yaml
+### Configurando o arquivo l10n.yaml {:#configuring-the-l10n-yaml-file}
 
 O arquivo `l10n.yaml` permite que você configure a ferramenta `gen-l10n`
 para especificar o seguinte:

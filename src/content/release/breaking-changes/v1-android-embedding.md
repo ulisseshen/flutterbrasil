@@ -1,17 +1,18 @@
 ---
-title: Removal of v1 Android embedding Java APIs
+title: Remoção das APIs Java do Android v1 embedding
 description: >-
-  Learn how to account for the removal of the Android v1 embedding APIs.
+  Saiba como considerar a remoção das APIs do Android v1 embedding.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-Android's v1 embedding has been removed in Flutter 3.29.0.
-This follows the deprecation described in
+O v1 embedding do Android foi removido no Flutter 3.29.0.
+Isso segue a descontinuação descrita em
 [Android v1 embedding app and plugin creation deprecation][].
-The following is a full list of classes removed.
+A seguir está uma lista completa das classes removidas.
 
 ```text
 io.flutter.app.FlutterActivity
@@ -30,52 +31,52 @@ io.flutter.view.FlutterNativeView
 io.flutter.view.FlutterView
 ```
 
-If your project references any of the above classes, consult the following
-list for instructions on migration.
+Se seu projeto referencia qualquer uma das classes acima, consulte a
+lista a seguir para instruções sobre migração.
 
-* `io.flutter.app.FlutterActivity` was
-   replaced with `io.flutter.embedding.android.FlutterActivity`.
-* `io.flutter.app.FlutterActivityDelegate` was
-   replaced with `io.flutter.embedding.android.FlutterActivityAndFragmentDelegate`.
-* `io.flutter.app.FlutterActivityEvents` was removed.
-* `io.flutter.app.FlutterApplication` was removed.
-   Flutter projects with custom `Application` implementations should
-   instead extend the base `android.app.Application`.
-* `io.flutter.app.FlutterFragmentActivity` was
-  replaced with `io.flutter.embedding.android.FlutterFragmentActivity`.
-* `io.flutter.app.FlutterPlayStoreSplitApplication` was
-  replaced with `io.flutter.embedding.android.FlutterPlayStoreSplitApplication`.
-* `io.flutter.app.FlutterPluginRegistry` was removed,
-   as it only served to let plugins support apps using the v1 embedding.
-* `io.flutter.embedding.engine.plugins.shim.ShimPluginRegistry` was removed,
-   as it only served to support let plugins support apps using the v1 embedding.
-* `io.flutter.embedding.engine.plugins.shim.ShimRegistrar` was removed,
-   as it only served to support let plugins support apps using the v1 embedding.
-* `io.flutter.view.FlutterMain` was
-   replaced by `io.flutter.embedding.engine.loader.FlutterLoader`.
-* `io.flutter.view.FlutterNativeView` was
-   replaced by `io.flutter.embedding.android.FlutterView`.
-* `io.flutter.view.FlutterView` was
-   replaced by `io.flutter.embedding.android.FlutterView`.
+* `io.flutter.app.FlutterActivity` foi
+   substituído por `io.flutter.embedding.android.FlutterActivity`.
+* `io.flutter.app.FlutterActivityDelegate` foi
+   substituído por `io.flutter.embedding.android.FlutterActivityAndFragmentDelegate`.
+* `io.flutter.app.FlutterActivityEvents` foi removido.
+* `io.flutter.app.FlutterApplication` foi removido.
+   Projetos Flutter com implementações personalizadas de `Application` devem
+   em vez disso estender a base `android.app.Application`.
+* `io.flutter.app.FlutterFragmentActivity` foi
+  substituído por `io.flutter.embedding.android.FlutterFragmentActivity`.
+* `io.flutter.app.FlutterPlayStoreSplitApplication` foi
+  substituído por `io.flutter.embedding.android.FlutterPlayStoreSplitApplication`.
+* `io.flutter.app.FlutterPluginRegistry` foi removido,
+   pois servia apenas para permitir que plugins suportassem aplicativos usando o v1 embedding.
+* `io.flutter.embedding.engine.plugins.shim.ShimPluginRegistry` foi removido,
+   pois servia apenas para permitir que plugins suportassem aplicativos usando o v1 embedding.
+* `io.flutter.embedding.engine.plugins.shim.ShimRegistrar` foi removido,
+   pois servia apenas para permitir que plugins suportassem aplicativos usando o v1 embedding.
+* `io.flutter.view.FlutterMain` foi
+   substituído por `io.flutter.embedding.engine.loader.FlutterLoader`.
+* `io.flutter.view.FlutterNativeView` foi
+   substituído por `io.flutter.embedding.android.FlutterView`.
+* `io.flutter.view.FlutterView` foi
+   substituído por `io.flutter.embedding.android.FlutterView`.
 
 [Android v1 embedding app and plugin creation deprecation]: /release/breaking-changes/android-v1-embedding-create-deprecation
 
-## Plugin authors
+## Autores de plugins
 
-Plugins should remove the `registerWith` method from
-their `FlutterPlugin` interface implementation:
+Plugins devem remover o método `registerWith` de
+sua implementação da interface `FlutterPlugin`:
 
 ```java
 public static void registerWith(@NonNull io.flutter.plugin.common.PluginRegistry.Registrar registrar);
 ```
 
-For an example of this migration,
-check out the pull request to remove this method from the
-Flutter team-owned plugins: [flutter/packages#6494][].
+Para um exemplo desta migração,
+confira o pull request para remover este método dos
+plugins de propriedade da equipe Flutter: [flutter/packages#6494][].
 
 [flutter/packages#6494]: {{site.github}}/flutter/packages/pull/6494
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.28.0-0.1.pre<br>
-In stable release: 3.29
+Disponibilizado na versão: 3.28.0-0.1.pre<br>
+Na versão estável: 3.29

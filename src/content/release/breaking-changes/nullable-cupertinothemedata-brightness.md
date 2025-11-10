@@ -1,49 +1,50 @@
 ---
-title: Nullable CupertinoThemeData.brightness
+title: CupertinoThemeData.brightness anulável
 description: >
-  CupertinoThemeData.brightness is now nullable, and it
-  returns the value specified by the user (defaults to null) as is.
+  CupertinoThemeData.brightness agora é anulável, e
+  retorna o valor especificado pelo usuário (padrão null) como está.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-[`CupertinoThemeData.brightness`] is now nullable.
+[`CupertinoThemeData.brightness`] agora é anulável.
 
-## Context
+## Contexto
 
-[`CupertinoThemeData.brightness`][] is now used to
-override `MediaQuery.platformBrightness` for Cupertino widgets.
-Before this change, the [`CupertinoThemeData.brightness`][]
-getter returned `Brightness.light` when it was set to null.
+[`CupertinoThemeData.brightness`][] agora é usado para
+substituir `MediaQuery.platformBrightness` para widgets Cupertino.
+Antes desta alteração, o getter [`CupertinoThemeData.brightness`][]
+retornava `Brightness.light` quando era definido como null.
 
-## Description of change
+## Descrição da alteração
 
-Previously [`CupertinoThemeData.brightness`][]
-was implemented as a getter:
+Anteriormente [`CupertinoThemeData.brightness`][]
+era implementado como um getter:
 
 ```dart
 Brightness get brightness => _brightness ?? Brightness.light;
 final Brightness _brightness;
 ```
 
-It is now a stored property:
+Agora é uma propriedade armazenada:
 
 ```dart
 final Brightness brightness;
 ```
 
-## Migration guide
+## Guia de migração
 
-Generally [`CupertinoThemeData.brightness`][]
-is rarely useful outside of the Flutter framework.
-To retrieve the brightness for Cupertino widgets,
-now use [`CupertinoTheme.brightnessOf`][] instead.
+Geralmente [`CupertinoThemeData.brightness`][]
+é raramente útil fora do framework Flutter.
+Para recuperar o brilho dos widgets Cupertino,
+agora use [`CupertinoTheme.brightnessOf`][] no lugar.
 
-With this change, it is now possible to override
-`CupertinoThemeData.brightness` in a `CupertinoThemeData`
-subclass to change the brightness override. For example:
+Com esta alteração, agora é possível substituir
+`CupertinoThemeData.brightness` em uma subclasse `CupertinoThemeData`
+para alterar a substituição de brilho. Por exemplo:
 
 ```dart
 class AlwaysDarkCupertinoThemeData extends CupertinoThemeData {
@@ -51,30 +52,30 @@ class AlwaysDarkCupertinoThemeData extends CupertinoThemeData {
 }
 ```
 
-When a `CupertinoTheme` uses the above `CupertinoThemeData`,
-dark mode is enabled for all its Cupertino descendants
-that are affected by this `CupertinoTheme`.
+Quando um `CupertinoTheme` usa o `CupertinoThemeData` acima,
+o modo escuro é habilitado para todos os seus descendentes Cupertino
+que são afetados por este `CupertinoTheme`.
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.16.3<br>
-In stable release: 1.17
+Disponibilizado na versão: 1.16.3<br>
+Na versão estável: 1.17
 
-## References
+## Referências
 
-Design doc:
+Documento de design:
 
 * [Make `CupertinoThemeData.brightness nullable`][]
 
-API documentation:
+Documentação da API:
 
 * [`CupertinoThemeData.brightness`][]
 
-Relevant issue:
+Issue relevante:
 
 * [Issue 47255][]
 
-Relevant PR:
+PR relevante:
 
 * [Let material `ThemeData` dictate brightness if `cupertinoOverrideTheme.brightness` is null][]
 

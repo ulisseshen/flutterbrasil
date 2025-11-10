@@ -3,25 +3,26 @@ title: Breaking changes and migration guides
 shortTitle: Breaking changes
 description: >-
    A collection of notices and migration guides for breaking changes in Flutter.
+ia-translate: true
 ---
 
-As described in the [breaking change policy][],
-on occasion we publish guides
-for migrating code across a breaking change.
+Conforme descrito na [política de breaking change][breaking change policy],
+ocasionalmente publicamos guias
+para migrar código através de uma breaking change.
 
 {% render "docs/breaking-changes.md" %}
 
-To be notified about future breaking changes,
-join the groups [Flutter announce][] and [Dart announce][].
+Para ser notificado sobre futuras breaking changes,
+junte-se aos grupos [Flutter announce][] e [Dart announce][].
 
-When facing Dart errors after upgrading Flutter,
-consider using the [`dart fix`][] command
-to automatically migrate your code.
-Not every breaking change is supported in this way,
-but many are.
+Ao enfrentar erros do Dart após atualizar o Flutter,
+considere usar o comando [`dart fix`][]
+para migrar automaticamente seu código.
+Nem toda breaking change é suportada desta forma,
+mas muitas são.
 
-To avoid being broken by future versions of Flutter,
-consider submitting your tests to the framework's [test registry][].
+Para evitar ser quebrado por versões futuras do Flutter,
+considere submeter seus testes para o [registro de testes][test registry] do framework.
 
 [breaking change policy]: /release/compatibility-policy
 [Flutter announce]: {{site.groups}}/forum/#!forum/flutter-announce
@@ -31,8 +32,8 @@ consider submitting your tests to the framework's [test registry][].
 
 ## Breaking changes by release
 
-The following guides are available.
-They're sorted by release and listed in alphabetical order:
+Os seguintes guias estão disponíveis.
+Eles estão organizados por versão e listados em ordem alfabética:
 
 ### Not yet released to stable
 
@@ -344,7 +345,7 @@ They're sorted by release and listed in alphabetical order:
 
 ### Reverted change in 2.2
 
-The following breaking change was reverted in release 2.2:
+A seguinte breaking change foi revertida na versão 2.2:
 
 **[Network Policy on iOS and Android][]**<br>
 :  Introduced in version: 2.0.0<br>

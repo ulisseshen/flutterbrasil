@@ -1,5 +1,6 @@
 ---
-title: <Job Title>
+ia-translate: true
+title: <Título do Cargo>
 showToc: false
 ---
 
@@ -12,63 +13,63 @@ showToc: false
 6. Adjust the "To apply" link if necessary
 {% endcomment %}
 
-## About the team
+## Sobre o time
 
-<TODO: Area description>
+<TODO: Descrição da área>
 
-## About the position
+## Sobre a posição
 
-<TODO: Role description>
+<TODO: Descrição da função>
 
-## Our values
+## Nossos valores
 
-### Mentorship
+### Orientação
 
-Upon joining Google, you will be paired with a formal mentor,
-who will help guide you in the process of ramping up, forging relationships,
-and learning the systems you'll need to do your job.
-Your manager can also help you find mentors who can coach you
-as you navigate your career at Google. In addition to formal mentors,
-we work and train together so that we are always learning from one another,
-and we celebrate and support the career progression of our team members.
+Ao ingressar no Google, você será emparelhado com um mentor formal,
+que o ajudará a orientá-lo no processo de onboarding, estabelecendo relacionamentos
+e aprendendo os sistemas necessários para fazer seu trabalho.
+Seu gerente também pode ajudá-lo a encontrar mentores que possam orientá-lo
+enquanto você navega sua carreira no Google. Além de mentores formais,
+trabalhamos e treinamos juntos para que estejamos sempre aprendendo uns com os outros,
+e celebramos e apoiamos a progressão de carreira de nossos membros do time.
 
-### Inclusion
+### Inclusão
 
-Here on the Flutter team and at Google, we embrace our differences
-and are [committed to furthering our culture of inclusion](https://flutterbrasil.dev/culture).
-In addition to groups like the [Flutteristas](https://flutteristas.org/),
-[Employee Resource Groups (ERGs)](https://diversity.google/commitments/)
-are employee-initiated networks for supporting underrepresented employees
-and their allies with shared values of creating belonging
-across their communities and Google.
+Aqui no time Flutter e no Google, abraçamos nossas diferenças
+e estamos [comprometidos em promover nossa cultura de inclusão](https://flutterbrasil.dev/culture).
+Além de grupos como o [Flutteristas](https://flutteristas.org/),
+[Grupos de Recursos para Funcionários (ERGs)](https://diversity.google/commitments/)
+são redes iniciadas por funcionários para apoiar funcionários sub-representados
+e seus aliados com valores compartilhados de criar pertencimento
+em suas comunidades e no Google.
 
-### Work-life balance
+### Equilíbrio trabalho-vida pessoal
 
-Our team also puts a high value on work-life balance.
-Striking a healthy balance between your personal and professional life
-is crucial to your happiness and success here, which is why we aren't focused
-on how many hours you spend at work or online. Instead,
-we're happy to offer a flexible schedule so you can have a more productive and
-well-balanced life—both in and outside of work.
+Nosso time também valoriza muito o equilíbrio trabalho-vida pessoal.
+Conseguir um equilíbrio saudável entre sua vida pessoal e profissional
+é crucial para sua felicidade e sucesso aqui, razão pela qual não focamos
+em quantas horas você passa trabalhando ou online. Ao invés disso,
+temos prazer em oferecer um cronograma flexível para que você possa ter uma vida mais produtiva e
+bem equilibrada—tanto dentro quanto fora do trabalho.
 
-## Job location
+## Local de trabalho
 
-<TODO: Location>
+<TODO: Local>
 
-## Job responsibilities
+## Responsabilidades do trabalho
 
-<TODO: Responsibilities>
+<TODO: Responsabilidades>
 
-## Qualifications
+## Qualificações
 
-### Minimum qualifications
+### Qualificações mínimas
 
-<TODO: Minimum qualifications>
+<TODO: Qualificações mínimas>
 
-### Preferred qualifications
+### Qualificações preferenciais
 
-<TODO: Preferred qualifications>
+<TODO: Qualificações preferenciais>
 
-## To apply
+## Como se candidatar
 
-Please apply by [filling out the following form](https://flutterbrasil.dev/go/job).
+Por favor, candidate-se [preenchendo o seguinte formulário](https://flutterbrasil.dev/go/job).

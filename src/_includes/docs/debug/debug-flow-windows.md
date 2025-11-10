@@ -1,3 +1,5 @@
+<!-- ia-translate: true -->
+
 #### Construa a versão Windows da aplicação Flutter no PowerShell ou no Command Prompt
 
 Para gerar as dependências de plataforma Windows necessárias,

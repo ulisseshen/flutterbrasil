@@ -1,3 +1,5 @@
+<!-- ia-translate: true -->
+
 #### Compile a versão Android do app Flutter no Terminal
 
 Para gerar as dependências necessárias da plataforma Android,

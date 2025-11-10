@@ -1,3 +1,5 @@
+<!-- ia-translate: true -->
+
 O seguinte exemplo assume que você deseja gerar os
 frameworks em `/path/to/MyApp/Flutter/`.
 

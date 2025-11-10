@@ -1,3 +1,5 @@
+<!-- ia-translate: true -->
+
 1. Para abrir o diretório do aplicativo Flutter, vá para
    **File** <span aria-label="and then">></span>
    **Open...** e escolha o diretório `my_app`.

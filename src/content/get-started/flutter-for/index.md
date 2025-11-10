@@ -1,4 +1,5 @@
 ---
+ia-translate: true
 title: Aprenda Flutter vindo de outra plataforma
 shortTitle: Flutter para
 sitemap: false

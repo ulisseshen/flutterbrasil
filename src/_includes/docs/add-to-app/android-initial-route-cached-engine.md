@@ -1,3 +1,5 @@
+<!-- ia-translate: true -->
+
 O conceito de uma rota inicial está disponível ao configurar uma
 `FlutterActivity` ou um `FlutterFragment` com um novo `FlutterEngine`.
 No entanto, `FlutterActivity` e `FlutterFragment` não oferecem o

@@ -1,3 +1,5 @@
+<!-- ia-translate: true -->
+
 #### Crie a versão macOS do app Flutter no Terminal
 
 Para gerar as dependências de plataforma macOS necessárias,

@@ -1,89 +1,90 @@
 ---
-title: Replace AnimationSheetBuilder.display with collate
+title: Substituir AnimationSheetBuilder.display por collate
 description: >
-  AnimationSheetBuilder.display and sheetSize
-  are deprecated in favor of collate.
+  AnimationSheetBuilder.display e sheetSize
+  foram descontinuados em favor de collate.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-The `AnimationSheetBuilder.display` and `sheetSize`
-methods are deprecated, and should be replaced with
+Os métodos `AnimationSheetBuilder.display` e `sheetSize`
+foram descontinuados, e devem ser substituídos por
 `AnimationSheetBuilder.collate`.
 
-## Context
+## Contexto
 
-[`AnimationSheetBuilder`][] is a testing utility
-class that records frames of an animating widget,
-and later composes the frames into a single
-animation sheet for [golden testing][]. The old way
-of composing involves `display` to list the images
-into a table-like widget, adjusting the testing
-surface with `sheetSize`, and capturing the table
-widget for comparison. A new way, `collate`, has
-been added that directly puts the frames together
-into an image for comparison, which requires less
-boilerplate code and outputs a smaller image without
-compromise in quality. APIs for the old way are thus
-deprecated.
+[`AnimationSheetBuilder`][] é uma classe utilitária
+de testes que grava frames de um widget animado,
+e depois compõe os frames em uma única
+folha de animação para [testes golden][golden testing]. A forma antiga
+de compor envolve `display` para listar as imagens
+em um widget tipo tabela, ajustando a superfície
+de teste com `sheetSize`, e capturando o widget
+de tabela para comparação. Uma nova forma, `collate`, foi
+adicionada que coloca diretamente os frames juntos
+em uma imagem para comparação, o que requer menos
+código boilerplate e produz uma imagem menor sem
+comprometimento na qualidade. APIs para a forma antiga são assim
+descontinuadas.
 
-The reason why `collate` outputs a smaller image,
-is because the old way captures on a testing surface
-with pixel ratio 3.0, which means it uses a 3x3 pixel
-block of the exactly same color to represent 1 actual
-pixel, making the image 9 times as large as necessary
-(before PNG compression).
+A razão pela qual `collate` produz uma imagem menor,
+é porque a forma antiga captura em uma superfície de teste
+com proporção de pixel 3.0, o que significa que usa um bloco de pixel
+3x3 exatamente da mesma cor para representar 1 pixel
+real, tornando a imagem 9 vezes maior do que o necessário
+(antes da compressão PNG).
 
-## Description of change
+## Descrição da mudança
 
-The following changes have been made to the
-[`AnimationSheetBuilder`][] class:
+As seguintes mudanças foram feitas na
+classe [`AnimationSheetBuilder`][]:
 
-* 'display' is deprecated and shouldn't be used
-* 'sheetSize' is deprecated and shouldn't be used
+* 'display' foi descontinuado e não deve ser usado
+* 'sheetSize' foi descontinuado e não deve ser usado
 
-## Migration guide
+## Guia de migração
 
-To migrate to the new API, change the process of setting
-surface size and displaying the widget into
+Para migrar para a nova API, mude o processo de definir
+tamanho de superfície e exibir o widget para
 [`AnimationSheetBuilder.collate`][].
 
-### Derive cells per row
+### Derivar células por linha
 
-The `collate` requires an explicit `cellsPerRow`
-argument, which is the number of frames per
-row in the output image. It can be manually counted,
-or calculated as follows:
+O `collate` requer um argumento `cellsPerRow`
+explícito, que é o número de frames por
+linha na imagem de saída. Pode ser contado manualmente,
+ou calculado da seguinte forma:
 
-* Find the width of frame, specified when constructing
-  `AnimationSheetBuilder`. For example, in the following
-  snippet it's 80:
+* Encontre a largura do frame, especificada ao construir
+  `AnimationSheetBuilder`. Por exemplo, no seguinte
+  snippet é 80:
 
 ```dart
 final AnimationSheetBuilder animationSheet = AnimationSheetBuilder(frameSize: const Size(80, 30));
 ```
 
-* Find the width of surface size, specified when
-  setting the surface size; the default is 800.
-  For example, in the following snippet it's 600:
+* Encontre a largura do tamanho da superfície, especificada ao
+  definir o tamanho da superfície; o padrão é 800.
+  Por exemplo, no seguinte snippet é 600:
 
 ```dart
 tester.binding.setSurfaceSize(animationSheet.sheetSize(600));
 ```
 
-* The frames per row should be the result of the two
-  numbers divided, rounded down. For example,
-  600 / 80 = 7 (rounded down), therefore
+* Os frames por linha devem ser o resultado dos dois
+  números divididos, arredondados para baixo. Por exemplo,
+  600 / 80 = 7 (arredondado para baixo), portanto
 
 ```dart
 animationSheet.collate(7)
 ```
 
-### Migrate code
+### Migrar código
 
-Code before migration:
+Código antes da migração:
 
 ```dart
   testWidgets('Indeterminate CircularProgressIndicator', (WidgetTester tester) async {
@@ -113,7 +114,7 @@ Code before migration:
   }, skip: isBrowser); // https://github.com/flutter/flutter/issues/42767
 ```
 
-Code after migration (`cellsPerRow` is 20, derived from 800 / 40):
+Código após a migração (`cellsPerRow` é 20, derivado de 800 / 40):
 
 ```dart
   testWidgets('Indeterminate CircularProgressIndicator', (WidgetTester tester) async {
@@ -136,24 +137,24 @@ Code after migration (`cellsPerRow` is 20, derived from 800 / 40):
   }, skip: isBrowser); // https://github.com/flutter/flutter/issues/42767
 ```
 
-It's expected that related golden test reference images
-are invalidated, which should all be updated. The new
-images should be identical to the old ones except
-1/3 in scale.
+É esperado que imagens de referência de testes golden relacionados
+sejam invalidadas, que devem todas ser atualizadas. As novas
+imagens devem ser idênticas às antigas exceto
+em escala 1/3.
 
-## Timeline
+## Linha do tempo
 
-Landed in version: v2.3.0-13.0.pre<br>
-In stable release: 2.5
+Lançado na versão: v2.3.0-13.0.pre<br>
+Na versão estável: 2.5
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`AnimationSheetBuilder`][]
 * [`AnimationSheetBuilder.collate`][]
 
-Relevant PR:
+PR relevante:
 
 * [Test WidgetTester handling test pointers][]
 

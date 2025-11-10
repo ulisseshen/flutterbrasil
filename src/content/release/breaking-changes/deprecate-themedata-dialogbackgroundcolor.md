@@ -1,39 +1,40 @@
 ---
-title: Deprecate `ThemeData.dialogBackgroundColor` in favor of
+title: Descontinuar `ThemeData.dialogBackgroundColor` em favor de
   `DialogThemeData.backgroundColor`
 description: >-
-  The `ThemeData.dialogBackgroundColor` parameter has been replaced by
+  O parâmetro `ThemeData.dialogBackgroundColor` foi substituído por
   `DialogThemeData.backgroundColor`.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-The [`ThemeData.dialogBackgroundColor`][] parameter was deprecated in favor of
-the [`DialogThemeData.backgroundColor`][] parameter.
+O parâmetro [`ThemeData.dialogBackgroundColor`][`ThemeData.dialogBackgroundColor`] foi descontinuado em favor do
+parâmetro [`DialogThemeData.backgroundColor`][`DialogThemeData.backgroundColor`].
 
-## Context
+## Contexto
 
-The defaults for the [`Dialog`][] and [`AlertDialog`][] widgets can be
-overridden with a component-specific theme like [`DialogThemeData`][].
-Previously, the `ThemeData.dialogBackgroundColor` parameter was used to
-override the default dialog background color,
-which was made redundant by [`DialogThemeData`][].
+Os padrões para os widgets [`Dialog`][`Dialog`] e [`AlertDialog`][`AlertDialog`] podem ser
+sobrescritos com um tema específico do componente como [`DialogThemeData`][`DialogThemeData`].
+Anteriormente, o parâmetro `ThemeData.dialogBackgroundColor` era usado para
+sobrescrever a cor de fundo padrão do diálogo,
+o que foi tornado redundante por [`DialogThemeData`][`DialogThemeData`].
 
-## Description of change
+## Descrição da mudança
 
-The [`ThemeData.dialogBackgroundColor`][] is deprecated in
-favor of a component-specific theme.
-Use [`DialogThemeData`][] to override the default background color.
+O [`ThemeData.dialogBackgroundColor`][`ThemeData.dialogBackgroundColor`] está descontinuado em
+favor de um tema específico do componente.
+Use [`DialogThemeData`][`DialogThemeData`] para sobrescrever a cor de fundo padrão.
 
-## Migration guide
+## Guia de migração
 
-Replace [`ThemeData.dialogBackgroundColor`][] with
-[`DialogThemeData.backgroundColor`][] to override the
-default dialog background color.
+Substitua [`ThemeData.dialogBackgroundColor`][`ThemeData.dialogBackgroundColor`] por
+[`DialogThemeData.backgroundColor`][`DialogThemeData.backgroundColor`] para sobrescrever a
+cor de fundo padrão do diálogo.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 theme: ThemeData(
@@ -41,7 +42,7 @@ theme: ThemeData(
 ),
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 theme: ThemeData(
@@ -49,28 +50,28 @@ theme: ThemeData(
 ),
 ```
 
-## Timeline
+## Cronograma
 
-Landed in version: 3.28.0-0.1.pre<br>
-In stable release: 3.29
+Adicionado na versão: 3.28.0-0.1.pre<br>
+Na versão estável: 3.29
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
-- [`ThemeData.dialogBackgroundColor`][]
-- [`DialogThemeData.backgroundColor`][]
-- [`DialogThemeData`][]
-- [`Dialog`][]
-- [`AlertDialog`][]
+- [`ThemeData.dialogBackgroundColor`][`ThemeData.dialogBackgroundColor`]
+- [`DialogThemeData.backgroundColor`][`DialogThemeData.backgroundColor`]
+- [`DialogThemeData`][`DialogThemeData`]
+- [`Dialog`][`Dialog`]
+- [`AlertDialog`][`AlertDialog`]
 
-Relevant issues:
+Issues relevantes:
 
-- [Issue #91772][]
+- [Issue #91772][Issue #91772]
 
-Relevant PRs:
+PRs relevantes:
 
-- [Deprecate `ThemeData.dialogBackgroundColor` in favor of `DialogTheme.backgroundColor`][]
+- [Deprecate `ThemeData.dialogBackgroundColor` in favor of `DialogTheme.backgroundColor`][Deprecate `ThemeData.dialogBackgroundColor` in favor of `DialogTheme.backgroundColor`]
 
 [`ThemeData.dialogBackgroundColor`]: {{site.api}}/flutter/material/ThemeData/dialogBackgroundColor.html
 [`DialogThemeData.backgroundColor`]: {{site.api}}/flutter/material/DialogThemeData/backgroundColor.html

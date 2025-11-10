@@ -1,4 +1,4 @@
-:::note Deprecation notice
-This document is deprecated and will be removed from
-a future website update.
+:::note Aviso de descontinuação
+Este documento está descontinuado e será removido de
+uma futura atualização do site.
 :::

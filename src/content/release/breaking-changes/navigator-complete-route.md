@@ -1,73 +1,74 @@
 ---
-title: When a route is removed from the stack, associated futures must complete
+title: Quando uma rota é removida da pilha, os futuros associados devem ser completados
 description: >
-  Before this breaking change, routes created by Navigator and awaited for
-  results could never complete if the route was removed instead of popped.
+  Antes desta alteração incompatível, rotas criadas pelo Navigator e aguardadas por
+  resultados podiam nunca ser completadas se a rota fosse removida em vez de fechada (popped).
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-When routes are pushed, developers can await them to be notified when they are
-popped. However, this didn't work when they were removed because the associated
-future was never completed.
+Quando rotas são pushed, desenvolvedores podem aguardá-las para serem notificados quando forem
+popped. No entanto, isso não funcionava quando eram removidas porque o future
+associado nunca era completado.
 
-## Context
+## Contexto
 
-All Navigator methods that call `remove` had this issue. By using `complete`,
-the issue is properly resolved, allowing developers to pass a result.
+Todos os métodos Navigator que chamam `remove` tinham esse problema. Ao usar `complete`,
+o problema é devidamente resolvido, permitindo que desenvolvedores passem um resultado.
 
-## Description of change
+## Descrição da alteração
 
-All Navigator methods have been updated to no longer call `remove` but instead
-use `complete`. Context menus are now built from the `contextMenuBuilder`
-parameter.
+Todos os métodos Navigator foram atualizados para não mais chamar `remove`, mas em vez disso
+usar `complete`. Menus de contexto agora são construídos a partir do parâmetro
+`contextMenuBuilder`.
 
-All methods that directly use `complete` now accept an optional `result`
-parameter to return it to the associated future. Other methods that indirectly
-use `remove` currently return `null`. In the future, we might extend these
-methods with an optional callback function to allow developers to handle pop
-logic in indirect scenarios (such as `removeUntil`).
+Todos os métodos que usam diretamente `complete` agora aceitam um parâmetro `result`
+opcional para retorná-lo ao future associado. Outros métodos que indiretamente
+usam `remove` atualmente retornam `null`. No futuro, podemos estender esses
+métodos com uma função de callback opcional para permitir que desenvolvedores lidem com a lógica de pop
+em cenários indiretos (como `removeUntil`).
 
-Before this PR, the methods below can't return a result:
+Antes deste PR, os métodos abaixo não podiam retornar um resultado:
 
 ```dart
 Navigator.of(context).removeRoute(route);
 Navigator.of(context).removeRouteBelow(route);
 ```
 
-After this PR, methods can return a result:
+Após este PR, os métodos podem retornar um resultado:
 
 ```dart
 Navigator.of(context).removeRoute(route, result);
 Navigator.of(context).removeRouteBelow(route, result);
 ```
 
-## Migration guide
+## Guia de migração
 
-If you implemented `RouteTransitionRecord` and used `markForRemove`,
-you need to use `markForComplete` instead. `markForRemove` is now deprecated.
+Se você implementou `RouteTransitionRecord` e usou `markForRemove`,
+você precisa usar `markForComplete` no lugar. `markForRemove` agora está descontinuado.
 
-For other developers, no changes are required. The navigator continues to work
-as expected with new capabilities.
+Para outros desenvolvedores, nenhuma alteração é necessária. O navigator continua a funcionar
+como esperado com novas capacidades.
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.31.0-0.0.pre<br>
-In stable release: 3.32
+Disponibilizado na versão: 3.31.0-0.0.pre<br>
+Na versão estável: 3.32
 
-## References
+## Referências
 
-### API documentation:
+### Documentação da API:
 
 * [`RouteTransitionRecord`]({{site.api}}/flutter/widgets/RouteTransitionRecord-class.html)
 * [`Navigator`]({{site.api}}/flutter/widgets/Navigator-class.html)
 
-### Relevant issues:
+### Issues relevantes:
 
 * [removeRoute unresolved future]({{site.repo.flutter}}/issues/157505)
 
-### Relevant PRs:
+### PRs relevantes:
 
 * [feat: removeRoute now calls didComplete]({{site.repo.flutter}}/pull/157725)

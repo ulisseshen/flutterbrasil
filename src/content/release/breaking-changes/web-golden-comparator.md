@@ -1,42 +1,42 @@
 ---
-title: Web-specific golden comparisons are no longer supported
+title: Comparações golden específicas da Web não são mais suportadas
 description: >-
-  The `WebGoldenComparator` class and `webGoldenComparator` top-level instance
-  are deprecated, pending removal, and the web rendering backends (including
-  both CanvasKit and skWasm) now use `GoldenFileComparator` and
-  `goldenFileComparator` directly.
+  A classe `WebGoldenComparator` e a instância de nível superior `webGoldenComparator`
+  foram descontinuadas, pendentes de remoção, e os backends de renderização web (incluindo
+  tanto CanvasKit quanto skWasm) agora usam `GoldenFileComparator` e
+  `goldenFileComparator` diretamente.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-The `flutter_test` package and `flutter` tool will no longer use the
-[`webGoldenComparator`][] top-level variable, and instead use the original
-[`goldenFileComparator`][] top-level variable (like the non-web platforms).
+O pacote `flutter_test` e a ferramenta `flutter` não usarão mais a
+variável de nível superior [`webGoldenComparator`][], e em vez disso usarão a
+variável de nível superior [`goldenFileComparator`][] original (como as plataformas não-web).
 
-For _users_ of `flutter_test`, these changes will be made automatically.
+Para _usuários_ do `flutter_test`, essas alterações serão feitas automaticamente.
 
-## Background
+## Contexto
 
-Originally, [`WebGoldenComparator`][class-WebGoldenComparator] was added for
-the HTML-backend of Flutter web, as it was not possible to create an encoded
-PNG (byte buffer), and a new API was needed. As [the HTML backend is being
-deprecated and removed][Issue 145954], this separate API is no longer necessary.
+Originalmente, [`WebGoldenComparator`][class-WebGoldenComparator] foi adicionado para
+o backend HTML do Flutter web, pois não era possível criar um PNG
+codificado (buffer de bytes), e uma nova API era necessária. Como [o backend HTML está sendo
+descontinuado e removido][Issue 145954], esta API separada não é mais necessária.
 
-## Migration guide
+## Guia de migração
 
-For most users, no changes are required (other than migrating off the HTML
-backend, which is not covered here), the `flutter` tool will automatically
-configure [`goldenFileComparator`][] and use it (when using a non-HTML web
-backend).
+Para a maioria dos usuários, nenhuma alteração é necessária (além de migrar do backend HTML,
+que não é coberto aqui), a ferramenta `flutter` configurará automaticamente
+[`goldenFileComparator`][] e o usará (ao usar um backend web não-HTML).
 
-For users that implement a custom [`WebGoldenComparator`][], you will
-migrate the implemenation to [`GoldenFileComparator`][]. Fortunately the
-Canvas Kit and SkWasm backends already required similar methods (`compareButes`
-and `updateBytes`).
+Para usuários que implementam um [`WebGoldenComparator`][] personalizado, você
+migrará a implementação para [`GoldenFileComparator`][]. Felizmente os
+backends Canvas Kit e SkWasm já exigiam métodos semelhantes (`compareButes`
+e `updateBytes`).
 
-For example:
+Por exemplo:
 
 ```dart
 // Before
@@ -76,21 +76,21 @@ class MyGenericGoldenComparator extends GoldenFileComparator {
 }
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.29.0-0.0.pre<br>
-In stable release: 3.29
+Disponibilizado na versão: 3.29.0-0.0.pre<br>
+Na versão estável: 3.29
 
-## References
+## Referências
 
-Relevant Issues:
+Issues relevantes:
 
-- [Issue 145954][], where the HTML renderer was deprecated.
-- [Issue 160261][], where it was proposed to consolidate `GoldenFileComparator` and `WebGoldenComparator`.
+- [Issue 145954][], onde o renderizador HTML foi descontinuado.
+- [Issue 160261][], onde foi proposto consolidar `GoldenFileComparator` e `WebGoldenComparator`.
 
-Relevant PRs:
+PRs relevantes:
 
-- [PR 161196][], where `WebGoldenComparator` was deprecated and the `flutter` CLI started using `goldenFileComparator`.
+- [PR 161196][], onde `WebGoldenComparator` foi descontinuado e a CLI `flutter` começou a usar `goldenFileComparator`.
 
 [Issue 145954]: {{site.github}}/flutter/flutter/issues/145954
 [Issue 160261]: {{site.github}}/flutter/flutter/issues/160261

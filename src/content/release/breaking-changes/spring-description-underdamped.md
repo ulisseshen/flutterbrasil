@@ -1,56 +1,57 @@
 ---
-title: Underdamped spring formula changed
+title: Fórmula de spring underdamped alterada
 description: >-
-  The formula for `SpringDescription` changed to correct an earlier error,
-  affecting underdamped springs (damping ratio less than 1).
+  A fórmula para `SpringDescription` foi alterada para corrigir um erro anterior,
+  afetando springs underdamped (relação de amortecimento menor que 1).
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-The formula for `SpringDescription` changed to correct an earlier error,
-affecting underdamped springs (damping ratio less than 1)
-with mass values other than 1.
-Springs created prior to this change may exhibit
-different bouncing behaviors after upgrading.
+A fórmula para `SpringDescription` foi alterada para corrigir um erro anterior,
+afetando springs underdamped (relação de amortecimento menor que 1)
+com valores de massa diferentes de 1.
+Springs criados antes dessa alteração podem exibir
+comportamentos de ricochete diferentes após a atualização.
 
-## Background
+## Contexto
 
-The [`SpringDescription`][] class describes the behavior of damped springs,
-enabling Flutter widgets to animate realistically based on provided parameters.
-The physics of damped springs are widely studied and documented. For an overview
-of damping, see [Wikipedia: Damping][].
+A classe [`SpringDescription`][] descreve o comportamento de springs amortecidas,
+permitindo que os widgets do Flutter animem de forma realista com base nos parâmetros fornecidos.
+A física de springs amortecidas é amplamente estudada e documentada. Para uma visão geral
+do amortecimento, consulte [Wikipedia: Damping][].
 
-Previously, Flutter's formula for calculating underdamped spring behavior was
-incorrect, as reported in [Issue 163858][]. This error affected all springs with
-a damping ratio less than 1 and a mass other than 1. Consequently, animations
-did not match expected real-world physics, and behavior around the critical
-damping point (damping ratio of exactly 1) exhibited discontinuities.
-Specifically, when using `SpringDescription.withDampingRatio`, small
-differences, such as damping ratios of 1.0001 versus 0.9999, resulted in
-significantly different animations.
+Anteriormente, a fórmula do Flutter para calcular o comportamento de spring underdamped estava
+incorreta, conforme relatado em [Issue 163858][]. Este erro afetou todas as springs com
+uma relação de amortecimento menor que 1 e uma massa diferente de 1. Consequentemente, as animações
+não correspondiam à física esperada do mundo real, e o comportamento em torno do ponto de amortecimento
+crítico (relação de amortecimento de exatamente 1) exibia descontinuidades.
+Especificamente, ao usar `SpringDescription.withDampingRatio`, pequenas
+diferenças, como relações de amortecimento de 1.0001 versus 0.9999, resultavam em
+animações significativamente diferentes.
 
-The issue was corrected in PR [Fix SpringSimulation formula for underdamping][],
-which updated the underlying calculation. As a result, previously affected
-animations now behave differently, though no explicit errors are reported by the
+O problema foi corrigido no PR [Fix SpringSimulation formula for underdamping][],
+que atualizou o cálculo subjacente. Como resultado, as animações afetadas anteriormente
+agora se comportam de maneira diferente, embora nenhum erro explícito seja relatado pelo
 framework.
 
-## Migration guide
+## Guia de migração
 
-Migration is necessary only for springs with damping ratios less than 1 and
-masses other than 1.
+A migração é necessária apenas para springs com relações de amortecimento menores que 1 e
+massas diferentes de 1.
 
-To restore previous animation behavior, update your spring parameters
-accordingly. You can calculate the required parameter adjustments using the
-provided [JSFiddle for migration][]. Detailed formulas and explanations follow
-in the next sections.
+Para restaurar o comportamento de animação anterior, atualize os parâmetros da sua spring
+de acordo. Você pode calcular os ajustes de parâmetros necessários usando o
+[JSFiddle for migration][] fornecido. Fórmulas detalhadas e explicações seguem
+nas próximas seções.
 
-### Default constructor
+### Construtor padrão
 
-If the `SpringDescription` was built with the default constructor with
-mass `m`, stiffness `k`, and damping `c`,
-then it should be changed with the following formula:
+Se o `SpringDescription` foi construído com o construtor padrão com
+massa `m`, rigidez `k` e amortecimento `c`,
+então ele deve ser alterado com a seguinte fórmula:
 
 ```plaintext
 new_m = 1
@@ -58,7 +59,7 @@ new_c = c * m
 new_k = (4 * (k / m) - (c / m)^2 + (c * m)^2) / 4
 ```
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 const spring = SpringDescription(
@@ -68,7 +69,7 @@ const spring = SpringDescription(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 const spring = SpringDescription(
@@ -78,23 +79,23 @@ const spring = SpringDescription(
 );
 ```
 
-### `.withDampingRatio` constructor
+### Construtor `.withDampingRatio`
 
-If the `SpringDescription` was built with the `.withDampingRatio` constructor
-with mass `m`, stiffness `k`, and ratio `z`, then first calculate damping:
+Se o `SpringDescription` foi construído com o construtor `.withDampingRatio`
+com massa `m`, rigidez `k` e relação `z`, então primeiro calcule o amortecimento:
 
 ```plaintext
 c = z * 2 * sqrt(m * k)
 ```
 
-Then apply the formula above.
-Optionally, you might convert the result back to damping ratio with:
+Em seguida, aplique a fórmula acima.
+Opcionalmente, você pode converter o resultado de volta para a relação de amortecimento com:
 
 ```plaintext
 new_z = new_c / 2 / sqrt(new_m * new_k)
 ```
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 const spring = SpringDescription.withDampingRatio(
@@ -104,7 +105,7 @@ const spring = SpringDescription.withDampingRatio(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 const spring = SpringDescription.withDampingRatio(
@@ -114,26 +115,26 @@ const spring = SpringDescription.withDampingRatio(
 );
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.31.0-0.1.pre<br>
-In stable release: 3.32
+Disponibilizado na versão: 3.31.0-0.1.pre<br>
+Na versão estável: 3.32
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`SpringDescription`][]
 
-Relevant issues:
+Issues relevantes:
 
-* [Issue 163858][], where the bug was discovered and more context can be found.
+* [Issue 163858][], onde o bug foi descoberto e mais contexto pode ser encontrado.
 
-Relevant PRs:
+PRs relevantes:
 
 * [Fix SpringSimulation formula for underdamping][]
 
-Tool:
+Ferramenta:
 * [JSFiddle for migration][]
 
 [Fix SpringSimulation formula for underdamping]: {{site.repo.flutter}}/pull/165017

@@ -1,10 +1,10 @@
-The samples in this folder used to be under `src/_includes/code`. Despite that,
-the sources were not being included anywhere. It is likely that the sources
-appear in some pages none-the-less. What needs to be done is the following:
+Os exemplos nesta pasta costumavam estar em `src/_includes/code`. Apesar disso,
+as fontes não estavam sendo incluídas em lugar nenhum. É provável que as fontes
+apareçam em algumas páginas mesmo assim. O que precisa ser feito é o seguinte:
 
-- Each app/sample needs to be fully reviewed (and potentially simplified).
-- If the sources are in fact being used in site pages, then they need to be
-  integrated as proper code excerpts. See [Code excerpts][] for details.
-- Each app/sample should be tested, at least with a smoke test.
+- Cada app/exemplo precisa ser totalmente revisado (e potencialmente simplificado).
+- Se as fontes estão de fato sendo usadas nas páginas do site, então elas precisam ser
+  integradas como trechos de código adequados. Consulte [Code excerpts][code-excerpts] para detalhes.
+- Cada app/exemplo deve ser testado, pelo menos com um teste de fumaça.
 
-[Code excerpts]: https://github.com/dart-lang/site-shared/blob/main/doc/code-excerpts.md
+[code-excerpts]: https://github.com/dart-lang/site-shared/blob/main/doc/code-excerpts.md

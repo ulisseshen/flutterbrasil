@@ -1,37 +1,38 @@
 ---
-title: Scrollable AlertDialog (No longer deprecated)
-description: AlertDialog should scroll automatically when it overflows.
+title: AlertDialog rolável (Não mais obsoleto)
+description: AlertDialog deve rolar automaticamente quando transborda.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
 :::note
-`AlertDialog.scrollable` is no longer deprecated because there is
-no backwards-compatible way to make `AlertDialog` scrollable by default.
-Instead, the parameter will remain and you can set `scrollable`
-to true if you want a scrollable `AlertDialog`.
+`AlertDialog.scrollable` não está mais obsoleto porque não há
+maneira retrocompatível de tornar `AlertDialog` rolável por padrão.
+Em vez disso, o parâmetro permanecerá e você pode definir `scrollable`
+como true se quiser um `AlertDialog` rolável.
 :::
 
-An `AlertDialog` now scrolls automatically when it overflows.
+Um `AlertDialog` agora rola automaticamente quando transborda.
 
-## Context
+## Contexto
 
-Before this change,
-when an `AlertDialog` widget's contents were too tall,
-the display overflowed, causing the contents to be clipped.
-This resulted in the following issues:
+Antes desta mudança,
+quando o conteúdo de um widget `AlertDialog` era muito alto,
+a exibição transbordava, causando o corte do conteúdo.
+Isso resultou nos seguintes problemas:
 
-* There was no way to view the portion of the content that was clipped.
-* Most alert dialogs have buttons beneath the content to prompt users for
-  actions. If the content overflowed, obscuring the buttons,
-  users might be unaware of their existence.
+* Não havia como visualizar a parte do conteúdo que foi cortada.
+* A maioria dos diálogos de alerta tem botões abaixo do conteúdo para solicitar aos usuários
+  ações. Se o conteúdo transbordasse, obscurecendo os botões,
+  os usuários poderiam não estar cientes de sua existência.
 
-## Description of change
+## Descrição da mudança
 
-The previous approach listed the title and content
-widgets consecutively in a `Column` widget.
+A abordagem anterior listava os widgets de título e conteúdo
+consecutivamente em um widget `Column`.
 
 ```dart
 Column(
@@ -65,10 +66,10 @@ Column(
 );
 ```
 
-The new approach wraps both widgets in a
-`SingleChildScrollView` above the button bar,
-making both widgets part of the same scrollable
-and exposing the button bar at the bottom of the dialog.
+A nova abordagem envolve ambos os widgets em um
+`SingleChildScrollView` acima da barra de botões,
+tornando ambos os widgets parte do mesmo rolável
+e expondo a barra de botões na parte inferior do diálogo.
 
 ```dart
 Column(
@@ -93,26 +94,26 @@ Column(
 ),
 ```
 
-## Migration guide
+## Guia de migração
 
-You might see the following issues as a result of this change:
+Você pode ver os seguintes problemas como resultado desta mudança:
 
-**Semantics tests might fail because of the addition of a `SingleChildScrollView`.**
-: Manual testing of the `Talkback` and `VoiceOver` features
-  show that they still exhibit the same (correct)
-  behavior as before.
+**Testes de semântica podem falhar devido à adição de um `SingleChildScrollView`.**
+: Testes manuais dos recursos `Talkback` e `VoiceOver`
+  mostram que eles ainda exibem o mesmo comportamento (correto)
+  de antes.
 
-**Golden tests might fail.**
-: This change might have caused diffs in (previously passing)
-  golden tests since the `SingleChildScrollView` now nests both the
-  title and content widgets.
-  Some Flutter projects have taken to creating semantics tests
-  by taking goldens of semantics nodes used in Flutter's debug build.
+**Testes golden podem falhar.**
+: Esta mudança pode ter causado diferenças em testes golden
+  (anteriormente passando) já que o `SingleChildScrollView` agora aninha ambos os
+  widgets de título e conteúdo.
+  Alguns projetos Flutter adotaram a criação de testes de semântica
+  tirando goldens de nós de semântica usados no build de debug do Flutter.
 
-  <br>Any semantics golden updates that reflect the scrolling
-  container addition are expected and these diffs should be safe to accept.
+  <br>Quaisquer atualizações de golden de semântica que refletem a adição do
+  contêiner rolável são esperadas e essas diferenças devem ser seguras para aceitar.
 
-  Sample resulting Semantics tree:
+  Exemplo de árvore de Semântica resultante:
 
 ```plaintext
 flutter:        ├─SemanticsNode#30 <-- SingleChildScrollView
@@ -129,17 +130,17 @@ flutter:          └─SemanticsNode#32 <-- contents
 flutter:              label: "Huge content"
 ```
 
-**Layout changes might result because of the scroll view.**
-: If the dialog was already overflowing,
-  this change corrects the problem.
-  This layout change is expected.
+**Mudanças de layout podem resultar devido à visualização de rolagem.**
+: Se o diálogo já estava transbordando,
+  esta mudança corrige o problema.
+  Esta mudança de layout é esperada.
 
-  <br>A nested `SingleChildScrollView` in `AlertDialog.content`
-  should work properly if left in the code,
-  but should be removed if unintended, since
-  it might cause confusion.
+  <br>Um `SingleChildScrollView` aninhado em `AlertDialog.content`
+  deve funcionar corretamente se deixado no código,
+  mas deve ser removido se não intencional, já que
+  pode causar confusão.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 AlertDialog(
@@ -157,7 +158,7 @@ AlertDialog(
 )
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 AlertDialog(
@@ -170,35 +171,35 @@ AlertDialog(
 )
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 1.16.3<br>
-In stable release: 1.17
+Lançado na versão: 1.16.3<br>
+Na versão estável: 1.17
 
-## References
+## Referências
 
-Design doc:
+Documento de design:
 
-* [Scrollable `AlertDialog`][]
+* [`AlertDialog` rolável][]
 
-API documentation:
+Documentação da API:
 
 * [`AlertDialog`][]
 
-Relevant issue:
+Issue relevante:
 
-* [Overflow exceptions with maximum accessibility font size][]
+* [Exceções de overflow com tamanho máximo de fonte de acessibilidade][]
 
-Relevant PRs:
+PRs relevantes:
 
-* [Update to `AlertDialog.scrollable`][]
-* [Original attempt to implement scrollable `AlertDialog`][]
-* [Revert of original attempt to implement scrollable `AlertDialog`][]
+* [Atualização para `AlertDialog.scrollable`][]
+* [Tentativa original de implementar `AlertDialog` rolável][]
+* [Reversão da tentativa original de implementar `AlertDialog` rolável][]
 
 
 [`AlertDialog`]: {{site.api}}/flutter/material/AlertDialog-class.html
-[Original attempt to implement scrollable `AlertDialog`]: {{site.repo.flutter}}/pull/43226
-[Overflow exceptions with maximum accessibility font size]: {{site.repo.flutter}}/issues/42696
-[Revert of original attempt to implement scrollable `AlertDialog`]: {{site.repo.flutter}}/pull/44003
-[Scrollable `AlertDialog`]: /go/scrollable-alert-dialog
-[Update to `AlertDialog.scrollable`]: {{site.repo.flutter}}/pull/45079
+[Tentativa original de implementar `AlertDialog` rolável]: {{site.repo.flutter}}/pull/43226
+[Exceções de overflow com tamanho máximo de fonte de acessibilidade]: {{site.repo.flutter}}/issues/42696
+[Reversão da tentativa original de implementar `AlertDialog` rolável]: {{site.repo.flutter}}/pull/44003
+[`AlertDialog` rolável]: /go/scrollable-alert-dialog
+[Atualização para `AlertDialog.scrollable`]: {{site.repo.flutter}}/pull/45079

@@ -3,6 +3,9 @@ title: Flutter 1.17.0 release notes
 shortTitle: 1.17.0 release notes
 description: Release notes for Flutter 1.17.0.
 skipTemplateRendering: true
+ia-translate: true
+# TODO: Translate to Portuguese
+# This file is very large (12,494 lines) and needs to be translated in a future session
 ---
 
 ##  Merged pull requests by label

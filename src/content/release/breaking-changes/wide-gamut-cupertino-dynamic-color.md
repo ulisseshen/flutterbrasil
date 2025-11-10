@@ -1,46 +1,47 @@
 ---
-title: Migration guide for wide gamut CupertinoDynamicColor
+title: Guia de migração para CupertinoDynamicColor de gamut amplo
 description: >-
-  Addressing previously missed deprecations in CupertinoDynamicColor to
-  align with wide gamut Color API.
+  Abordando descontinuações anteriormente perdidas no CupertinoDynamicColor para
+  alinhar com a API Color de gamut amplo.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-Certain properties and methods in [`CupertinoDynamicColor`][] were deprecated
-to align with the [`Color`][] class due to [wide gamut color spaces][] support
-added in [Flutter 3.27][Migration guide for wide gamut Color].
+Certas propriedades e métodos em [`CupertinoDynamicColor`][] foram descontinuados
+para alinhar com a classe [`Color`][] devido ao suporte a [wide gamut color spaces][]
+adicionado no [Flutter 3.27][Migration guide for wide gamut Color].
 
-## Context
+## Contexto
 
-The `Color` class was updated to support wide gamut color spaces,
-but some corresponding deprecations were not initially applied to
-`CupertinoDynamicColor` due to its implementation rather than
-due to the extension of `Color`.
+A classe `Color` foi atualizada para suportar espaços de cores de gamut amplo,
+mas algumas descontinuações correspondentes não foram inicialmente aplicadas ao
+`CupertinoDynamicColor` devido à sua implementação, e não
+devido à extensão de `Color`.
 
-## Description of change
+## Descrição da alteração
 
-1.  The [`CupertinoDynamicColor.red`][] field is deprecated in
-    favor of [`CupertinoDynamicColor.r`].
-1.  The [`CupertinoDynamicColor.green`][] is deprecated in
-    favor of [`CupertinoDynamicColor.g`].
-1.  The [`CupertinoDynamicColor.blue`][] is deprecated in
-    favor of [`CupertinoDynamicColor.b`].
-1.  The [`CupertinoDynamicColor.opacity`][] is deprecated in
-    favor of [`CupertinoDynamicColor.a`].
-1.  The [`CupertinoDynamicColor.withOpacity()`][] is deprecated in
-    favor of [`CupertinoDynamicColor.withValues()`].
+1.  O campo [`CupertinoDynamicColor.red`][] foi descontinuado em
+    favor de [`CupertinoDynamicColor.r`].
+1.  O [`CupertinoDynamicColor.green`][] foi descontinuado em
+    favor de [`CupertinoDynamicColor.g`].
+1.  O [`CupertinoDynamicColor.blue`][] foi descontinuado em
+    favor de [`CupertinoDynamicColor.b`].
+1.  O [`CupertinoDynamicColor.opacity`][] foi descontinuado em
+    favor de [`CupertinoDynamicColor.a`].
+1.  O [`CupertinoDynamicColor.withOpacity()`][] foi descontinuado em
+    favor de [`CupertinoDynamicColor.withValues()`].
 
 
-## Migration guide
+## Guia de migração
 
-### Access color components
+### Acessar componentes de cor
 
-If your app accesses a single color component, consider
-taking advantage of the floating-point components.
-In the short term, you can scale the components themselves.
+Se seu aplicativo acessa um único componente de cor, considere
+aproveitar os componentes de ponto flutuante.
+A curto prazo, você pode escalar os próprios componentes.
 
 ```dart
 int _floatToInt8(double x) {
@@ -53,16 +54,16 @@ final intGreen = _floatToInt8(color.g);
 final intBlue = _floatToInt8(color.b);
 ```
 
-### Opacity
+### Opacidade
 
-Before Flutter 3.27, `Color` had the concept of "opacity", which
-showed up in the methods `opacity` and `withOpacity()`.
-Since Flutter 3.27, the alpha channel has been stored as a floating-point value.
-Using `.a` and `.withValues()` will give the full expression of
-a floating-point value and won't be quantized (restricted to a limited range).
-That means "alpha" expresses the intent of "opacity" more correctly.
+Antes do Flutter 3.27, `Color` tinha o conceito de "opacity", que
+aparecia nos métodos `opacity` e `withOpacity()`.
+Desde o Flutter 3.27, o canal alfa é armazenado como um valor de ponto flutuante.
+Usar `.a` e `.withValues()` fornecerá a expressão completa de
+um valor de ponto flutuante e não será quantizado (restrito a um intervalo limitado).
+Isso significa que "alpha" expressa a intenção de "opacity" de forma mais correta.
 
-#### Migrate `opacity`
+#### Migrar `opacity`
 
 ```dart
 // Before: Access the alpha channel as a (converted) floating-point value.
@@ -72,7 +73,7 @@ final x = color.opacity;
 final x = color.a;
 ```
 
-#### Migrate `withOpacity`
+#### Migrar `withOpacity`
 
 ```dart
 // Before: Create a new color with the specified opacity.
@@ -83,23 +84,23 @@ final x = color.withOpacity(0.5);
 final x = color.withValues(alpha: 0.5);
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.36.0-0.1.pre<br>
-Stable release: 3.38
+Disponibilizado na versão: 3.36.0-0.1.pre<br>
+Versão estável: 3.38
 
-## References
+## Referências
 
-Relevant guides:
+Guias relevantes:
 
 * [Migration guide for wide gamut Color][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Implement wide gamut color support in the Framework][]
 * [CupertinoDynamicColor is missing deprecation notices][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Add missing deprecations to CupertinoDynamicColor][]
 

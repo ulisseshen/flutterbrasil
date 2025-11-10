@@ -1,62 +1,63 @@
 ---
-title: Migrating from flutter_driver
+title: Migrando de flutter_driver
 description: >-
-  Learn how to migrate existing flutter_driver tests to integration_test.
+  Aprenda como migrar testes flutter_driver existentes para integration_test.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
 <?code-excerpt path-base="integration_test_migration/"?>
 
-This page describes how to migrate an existing project using
-`flutter_driver` to the `integration_test` package,
-in order to run integration tests.
+Esta página descreve como migrar um projeto existente usando
+`flutter_driver` para o pacote `integration_test`,
+a fim de executar testes de integração.
 
-Tests with `integration_test` use the same methods that are
-used in [widget testing][].
+Testes com `integration_test` usam os mesmos métodos que são
+usados em [widget testing][].
 
-For an introduction to the `integration_test` package,
-check out the [Integration testing][] guide.
+Para uma introdução ao pacote `integration_test`,
+confira o guia de [Integration testing][].
 
-## Starter example project
+## Projeto de exemplo inicial
 
-The project in this guide is a small example desktop application with this
-functionality:
+O projeto neste guia é um pequeno aplicativo desktop de exemplo com esta
+funcionalidade:
 
-* On the left, there's a list of plants that the user can scroll,
-  tap and select.
-* On the right, there's a details screen that displays the plant name
-  and species.
-* On app start, when no plant is selected, a text asking the user to select
-  a plant is displayed
-* The list of plants is loaded from a local JSON file located in the
-  `/assets` folder.
+* À esquerda, há uma lista de plantas que o usuário pode rolar,
+  tocar e selecionar.
+* À direita, há uma tela de detalhes que exibe o nome da planta
+  e a espécie.
+* Na inicialização do aplicativo, quando nenhuma planta está selecionada, um texto pedindo ao usuário para selecionar
+  uma planta é exibido
+* A lista de plantas é carregada de um arquivo JSON local localizado na
+  pasta `/assets`.
 
 <img src='/assets/images/docs/integration-test/migration-1.png' alt="Starter project screenshot">
 
-You can find the full code example in the [Example Project][] folder.
+Você pode encontrar o exemplo de código completo na pasta [Example Project][].
 
-## Existing tests
+## Testes existentes
 
-The project contains the three `flutter_driver` tests
-performing the following checks:
+O projeto contém os três testes `flutter_driver`
+executando as seguintes verificações:
 
-* Verifying the initial status of the app.
-* Selecting the first item on the list of plants.
-* Scrolling and selecting the last item on the list of plants.
+* Verificando o status inicial do aplicativo.
+* Selecionando o primeiro item na lista de plantas.
+* Rolando e selecionando o último item na lista de plantas.
 
-The tests are contained in the `test_driver` folder,
-inside the `main_test.dart` file.
+Os testes estão contidos na pasta `test_driver`,
+dentro do arquivo `main_test.dart`.
 
-In this folder there's also a file named `main.dart`,
-which contains a call to the method `enableFlutterDriverExtension()`.
-This file won't be necessary anymore when using `integration_test`.
+Nesta pasta também há um arquivo chamado `main.dart`,
+que contém uma chamada para o método `enableFlutterDriverExtension()`.
+Este arquivo não será mais necessário ao usar `integration_test`.
 
-## Setup
+## Configuração
 
-To start using the `integration_test` package,
-add the `integration_test` to
-your `pubspec.yaml` file if you haven't yet:
+Para começar a usar o pacote `integration_test`,
+adicione o `integration_test` ao
+seu arquivo `pubspec.yaml` se ainda não o fez:
 
 ```yaml
 dev_dependencies:
@@ -64,27 +65,27 @@ dev_dependencies:
     sdk: flutter
 ```
 
-Next, in your project, create a new directory
-`integration_test/`, create your tests files there
-with the format: `<name>_test.dart`.
+Em seguida, em seu projeto, crie um novo diretório
+`integration_test/`, crie seus arquivos de testes lá
+com o formato: `<name>_test.dart`.
 
-## Test migration
+## Migração de teste
 
-This section contains different examples on how to migrate existing
-`flutter_driver` tests to `integration_test` tests.
+Esta seção contém diferentes exemplos de como migrar testes
+`flutter_driver` existentes para testes `integration_test`.
 
-### Example: Verifying a widget is displayed
+### Exemplo: Verificando se um widget está exibido
 
-When the app starts the screen on the right displays
-a text asking the user to select one of the plants on the list.
+Quando o aplicativo inicia, a tela à direita exibe
+um texto pedindo ao usuário para selecionar uma das plantas na lista.
 
-This test verifies that the text is displayed.
+Este teste verifica se o texto está exibido.
 
 **flutter_driver**
 
-In `flutter_driver`, the test uses `waitFor`,
-which waits until the `finder` can locate the widget.
-The test fail if the widget can't be found.
+No `flutter_driver`, o teste usa `waitFor`,
+que aguarda até que o `finder` possa localizar o widget.
+O teste falha se o widget não puder ser encontrado.
 
 <?code-excerpt "test_driver/main_test.dart (wait-for)"?>
 ```dart
@@ -99,13 +100,13 @@ test(
 
 **integration_test**
 
-In `integration_test` you have to perform two steps:
+No `integration_test` você deve executar duas etapas:
 
-1. First load the main app widget using
-   the `tester.pumpWidget` method.
+1. Primeiro, carregue o widget principal do aplicativo usando
+   o método `tester.pumpWidget`.
 
-2. Then, use `expect` with the matcher `findsOneWidget` to verify
-   that the widget is displayed.
+2. Em seguida, use `expect` com o matcher `findsOneWidget` para verificar
+   que o widget está exibido.
 
 <?code-excerpt "integration_test/main_test.dart (finds-one)"?>
 ```dart
@@ -127,26 +128,26 @@ testWidgets(
 );
 ```
 
-### Example: Tap actions
+### Exemplo: Ações de toque
 
-This test performs a tap action on the first item on the list,
-which is a `ListTile` with the text "Alder".
+Este teste executa uma ação de toque no primeiro item da lista,
+que é um `ListTile` com o texto "Alder".
 
-After the tap, the test waits for the details to appear.
-In this case, it waits for the widget with the text "Alnus" to
-be displayed.
+Após o toque, o teste aguarda os detalhes aparecerem.
+Neste caso, ele aguarda o widget com o texto "Alnus" ser
+exibido.
 
-Also , the test verifies that the text
+Além disso, o teste verifica que o texto
 "Please select a plant from the list."
-is no longer displayed.
+não está mais exibido.
 
 **flutter_driver**
 
-In `flutter_driver`, use the `driver.tap` method to perform
-a tap over a widget using a finder.
+No `flutter_driver`, use o método `driver.tap` para executar
+um toque sobre um widget usando um finder.
 
-To verify that a widget is not displayed,
-use the `waitForAbsent` method.
+Para verificar que um widget não está exibido,
+use o método `waitForAbsent`.
 
 <?code-excerpt "test_driver/main_test.dart (wait-for-absent)"?>
 ```dart
@@ -172,13 +173,13 @@ test('tap on the first item (Alder), verify selected', () async {
 
 **integration_test**
 
-In `integration_test`, use `tester.tap` to perform the tap actions.
+No `integration_test`, use `tester.tap` para executar as ações de toque.
 
-After the tap action, you must call to `tester.pumpAndSettle` to wait
-until the action has finished, and all the UI changes have happened.
+Após a ação de toque, você deve chamar `tester.pumpAndSettle` para aguardar
+até que a ação tenha terminado, e todas as mudanças de UI tenham acontecido.
 
-To verify that a widget is not displayed, use the same `expect`
-function with the `findsNothing` matcher.
+Para verificar que um widget não está exibido, use a mesma função `expect`
+com o matcher `findsNothing`.
 
 <?code-excerpt "integration_test/main_test.dart (finds-nothing)"?>
 ```dart
@@ -206,20 +207,20 @@ testWidgets('tap on the first item (Alder), verify selected', (tester) async {
 });
 ```
 
-### Example: Scrolling
+### Exemplo: Rolagem
 
-This test is similar to the previous test,
-but it scrolls down and taps the last item instead.
+Este teste é semelhante ao teste anterior,
+mas ele rola para baixo e toca no último item em vez disso.
 
 **flutter_driver**
 
-To scroll down with `flutter_driver`,
-use the `driver.scroll` method.
+Para rolar para baixo com `flutter_driver`,
+use o método `driver.scroll`.
 
-You must provide the widget to perform the scrolling action,
-as well as a duration for the scroll.
+Você deve fornecer o widget para executar a ação de rolagem,
+bem como uma duração para a rolagem.
 
-You also have to provide the total offset for the scrolling action.
+Você também deve fornecer o deslocamento total para a ação de rolagem.
 
 <?code-excerpt "test_driver/main_test.dart (scroll)"?>
 ```dart
@@ -257,17 +258,17 @@ test('scroll, tap on the last item (Zedoary), verify selected', () async {
 
 **integration_test**
 
-With `integration_test`, can use the method `tester.scrollUntilVisible`.
+Com `integration_test`, pode usar o método `tester.scrollUntilVisible`.
 
-Instead of providing the widget to scroll,
-provide the item that you're searching for.
-In this case, you're searching for the
-item with the text "Zedoary",
-which is the last item on the list.
+Em vez de fornecer o widget para rolar,
+forneça o item que você está procurando.
+Neste caso, você está procurando o
+item com o texto "Zedoary",
+que é o último item na lista.
 
-The method searches for any `Scrollable` widget
-and performs the scrolling action using the given offset.
-The action repeats until the item is visible.
+O método procura por qualquer widget `Scrollable`
+e executa a ação de rolagem usando o deslocamento fornecido.
+A ação se repete até que o item esteja visível.
 
 <?code-excerpt "integration_test/main_test.dart (scroll)"?>
 ```dart

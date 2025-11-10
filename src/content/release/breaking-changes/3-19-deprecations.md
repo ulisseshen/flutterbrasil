@@ -3,35 +3,36 @@ title: Deprecated API removed after v3.19
 description: >-
   After reaching end of life, the following deprecated APIs
   were removed from Flutter.
+ia-translate: true
 ---
 
 ## Summary
 
-In accordance with Flutter's [Deprecation Policy][],
-deprecated APIs that reached end of life after the
-3.19 stable release have been removed.
+De acordo com a [Política de Descontinuação][Deprecation Policy] do Flutter,
+APIs descontinuadas que atingiram o fim da vida útil após o
+lançamento estável 3.19 foram removidas.
 
-All affected APIs have been compiled into this
-primary source to aid in migration.
-To further aid your migration, check out this
-[quick reference sheet][].
+Todas as APIs afetadas foram compiladas nesta
+fonte primária para auxiliar na migração.
+Para auxiliar ainda mais sua migração, confira esta
+[folha de referência rápida][quick reference sheet].
 
 [Deprecation Policy]: {{site.repo.flutter}}/blob/main/docs/contributing/Tree-hygiene.md#deprecations
 [quick reference sheet]: /go/deprecations-removed-after-3-19
 
 ## Changes
 
-This section lists the deprecations by the package and affected class.
+Esta seção lista as descontinuações por pacote e classe afetada.
 
 ### `TextTheme`
 
 Package: flutter
 Supported by Flutter Fix: yes
 
-Several `TextStyle` properties of `TextTheme` were deprecated in v3.1 to support new
-stylings from the Material Design specification. They
-are listed in the following table alongside the appropriate replacement in the
-new API.
+Várias propriedades `TextStyle` de `TextTheme` foram descontinuadas na v3.1 para suportar novos
+estilos da especificação Material Design. Elas
+estão listadas na tabela a seguir ao lado da substituição apropriada na
+nova API.
 
 | Deprecation | New API |
 |---|---|
@@ -182,12 +183,12 @@ Relevant PRs:
 Package: flutter
 Supported by Flutter Fix: yes
 
-Several `Color` properties of `ThemeData` were deprecated in v3.3 to support new stylings
-from the Material Design specification. These colors were `errorColor`, `backgroundColor`,
- `bottomAppBarColor`, and `toggleableActiveColor`. The first two are replaced by
- properties of the `ThemeData.colorScheme`, while `bottomAppBarColor` is replaced by the
- color of the component theme, `BottomAppBarTheme`. The `toggleableActiveColor` was no
- longer used by the framework and was removed.
+Várias propriedades `Color` de `ThemeData` foram descontinuadas na v3.3 para suportar novos estilos
+da especificação Material Design. Essas cores eram `errorColor`, `backgroundColor`,
+ `bottomAppBarColor`, e `toggleableActiveColor`. As duas primeiras são substituídas por
+ propriedades do `ThemeData.colorScheme`, enquanto `bottomAppBarColor` é substituída pela
+ cor do tema do componente, `BottomAppBarTheme`. O `toggleableActiveColor` não era
+ mais usado pelo framework e foi removido.
 
 **Migration guide**
 
@@ -261,10 +262,10 @@ Relevant PRs:
 Package: flutter
 Supported by Flutter Fix: yes
 
-The `previewBuilder` was replaced by the `builder` of `CupertinoContextMenu` after
-v3.4. By adding `builder`, the entirety of the animation executed by the context
-menu is covered, the second half of which was performed by `previewBuilder`, and
-delineated by `CupertinoContextMenu.animationOpensAt`.
+O `previewBuilder` foi substituído pelo `builder` de `CupertinoContextMenu` após
+v3.4. Ao adicionar `builder`, toda a animação executada pelo menu de contexto
+é coberta, sendo a segunda metade executada por `previewBuilder`, e
+delimitada por `CupertinoContextMenu.animationOpensAt`.
 
 
 **Migration guide**
@@ -381,11 +382,11 @@ Relevant PRs:
 Package: flutter
 Supported by Flutter Fix: yes
 
-The `showTrackOnHover` property of `Scrollbar`, and its associated component theme,
-`ScrollbarThemeData.showTrackOnHover`, were replaced by the stateful property
-`ScrollbarThemeData.trackVisibility` after v3.4. By utilizing `trackVisibility`,
-all permutations of state can factor into revealing the scrollbar track, not
-just hover.
+A propriedade `showTrackOnHover` de `Scrollbar`, e seu tema de componente associado,
+`ScrollbarThemeData.showTrackOnHover`, foram substituídos pela propriedade stateful
+`ScrollbarThemeData.trackVisibility` após v3.4. Ao utilizar `trackVisibility`,
+todas as permutações de estado podem influenciar na revelação da trilha da scrollbar, não
+apenas hover.
 
 
 **Migration guide**
@@ -448,10 +449,10 @@ Relevant PRs:
 Package: flutter
 Supported by Flutter Fix: no
 
-The `release` method of `KeepAliveHandle` was removed and replaced by calling
-`dispose` after v3.3. This change was made because `release` was found to often
-be called without then calling `dispose`, leading to memory leaks. The `dispose`
-method executes the same functionality as `release` did now.
+O método `release` de `KeepAliveHandle` foi removido e substituído pela chamada
+`dispose` após v3.3. Esta mudança foi feita porque `release` era frequentemente
+chamado sem então chamar `dispose`, levando a vazamentos de memória. O método `dispose`
+executa a mesma funcionalidade que `release` executava agora.
 
 
 **Migration guide**
@@ -494,8 +495,8 @@ Relevant PRs:
 Package: flutter
 Supported by Flutter Fix: yes
 
-The `alignPanAxis` property of `InteractiveViewer` was removed and replaced with
-`panAxis` after v3.3. This change was made to enable more modes of panning in
+A propriedade `alignPanAxis` de `InteractiveViewer` foi removida e substituída por
+`panAxis` após v3.3. Esta mudança foi feita para habilitar mais modos de panning em
 `InteractiveViewer`.
 
 
@@ -542,10 +543,10 @@ Relevant PRs:
 Package: flutter
 Supported by Flutter Fix: yes
 
-The `boldTextOverride` method of `MediaQuery` was removed and replaced with
-`boldTextOf` after v3.5. This change was made as part of larger refactor of
-`MediaQuery`, most notably reducing the number of rebuilds that would be
-triggered by widgets that depend on it.
+O método `boldTextOverride` de `MediaQuery` foi removido e substituído por
+`boldTextOf` após v3.5. Esta mudança foi feita como parte de uma refatoração maior de
+`MediaQuery`, notavelmente reduzindo o número de rebuilds que seriam
+acionados por widgets que dependem dele.
 
 
 **Migration guide**
@@ -585,10 +586,10 @@ Relevant PRs:
 Package: flutter
 Supported by Flutter Fix: no
 
-With the addition of `AnimatedGrid`, `AnimatedList` was refactored to share a common base
-class. The previously named `AnimatedListItemBuilder` and `AnimatedListRemovedItemBuilder`
-were renamed to better reflect the classes they could be used with after v3.5.
-Rename any references to `AnimatedItemBuilder` and `AnimatedRemovedItemBuilder`.
+Com a adição de `AnimatedGrid`, `AnimatedList` foi refatorado para compartilhar uma classe base
+comum. Os anteriormente nomeados `AnimatedListItemBuilder` e `AnimatedListRemovedItemBuilder`
+foram renomeados para melhor refletir as classes com as quais poderiam ser usados após v3.5.
+Renomeie quaisquer referências para `AnimatedItemBuilder` e `AnimatedRemovedItemBuilder`.
 
 **References**
 
@@ -619,9 +620,9 @@ Relevant PRs:
 Package: flutter_driver
 Supported by Flutter Fix: yes
 
-The `enableAccessibility` method of `flutterDriver` was deprecated in v2.3. It
-was removed and replaced with `setSemantics`. This change made is possible to
-enable or disable accessibility, rather than only enable it.
+O método `enableAccessibility` de `flutterDriver` foi descontinuado na v2.3. Ele
+foi removido e substituído por `setSemantics`. Esta mudança tornou possível
+habilitar ou desabilitar acessibilidade, ao invés de apenas habilitá-la.
 
 **Migration guide**
 
@@ -666,8 +667,8 @@ Relevant PRs:
 Package: flutter_driver
 Supported by Flutter Fix: yes
 
-The `writeSummaryToFile` method of `TimelineSummary` was deprecated in v2.1. It
-was removed and replaced with `writeTimelineToFile`.
+O método `writeSummaryToFile` de `TimelineSummary` foi descontinuado na v2.1. Ele
+foi removido e substituído por `writeTimelineToFile`.
 
 **Migration guide**
 
@@ -715,20 +716,20 @@ Relevant PRs:
 
 Supported by Flutter Fix: no
 
-As of Flutter 3.0 platform views require api 23 or higher. In Flutter 3.19 we now throw UnsupportedOperationException
-when using platform views on android devices running api level 22 and below.
+A partir do Flutter 3.0, platform views requerem api 23 ou superior. No Flutter 3.19 agora lançamos UnsupportedOperationException
+ao usar platform views em dispositivos android rodando api level 22 ou inferior.
 
 **Migration guide**
 
-Set minimum api level to 23 (or higher) or check the android api level before displaying a platform view.
+Defina o nível mínimo de api para 23 (ou superior) ou verifique o nível de api android antes de exibir uma platform view.
 
 ---
 
-The [previously announced][] deprecations for context menus, relating to `ToolbarOptions`
-as well as parts of `TextSelectionController` and `SelectableRegionState` were not
-removed this cycle, to allow more time for migration.
-Expect these deprecations to be removed in the next cycle, which will
-be announced again when the time comes.
+As [descontinuações previamente anunciadas][previously announced] para menus de contexto, relacionadas a `ToolbarOptions`
+assim como partes de `TextSelectionController` e `SelectableRegionState` não foram
+removidas neste ciclo, para permitir mais tempo para migração.
+Espere que essas descontinuações sejam removidas no próximo ciclo, o que será
+anunciado novamente quando chegar a hora.
 
 [previously announced]: https://groups.google.com/g/flutter-announce/c/8XjXpUKlnf8
 

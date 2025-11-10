@@ -1,4 +1,4 @@
-<!-- ia-translated: true -->
+<!-- ia-translate: true -->
 
 [![Logo do Flutter]](https://docs.flutterbrasil.dev)
 

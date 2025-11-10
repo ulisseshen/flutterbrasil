@@ -1,12 +1,13 @@
 ---
 title: Flutter News Toolkit
-description: Learn more about creating a newsfeed app in Flutter.
+description: Saiba mais sobre como criar um aplicativo de feed de notícias no Flutter.
 showBreadcrumbs: false
+ia-translate: true
 ---
 
-The Flutter News Toolkit is now maintained by Very Good Ventures (VGV).
+O Flutter News Toolkit agora é mantido pela Very Good Ventures (VGV).
 
-For the latest information, see the
-[news_toolkit repository on GitHub][news-toolkit].
+Para obter as informações mais recentes, consulte o
+[repositório news_toolkit no GitHub][news-toolkit].
 
 [news-toolkit]: https://github.com/VGVentures/news_toolkit

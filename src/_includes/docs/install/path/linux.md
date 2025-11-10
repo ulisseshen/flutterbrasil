@@ -1,25 +1,25 @@
- 1. <h3>Determine your Flutter SDK installation location</h3>
+ 1. <h3>Determine o local de instalação do seu Flutter SDK</h3>
 
-    Copy the absolute path to the directory that you
-    downloaded and extracted the Flutter SDK into.
+    Copie o caminho absoluto para o diretório onde você
+    baixou e extraiu o Flutter SDK.
 
- 1. <h3>Determine your default shell</h3>
+ 1. <h3>Determine seu shell padrão</h3>
 
-    If you don't know what shell you use,
-    check which shell starts when you open a new console window.
+    Se você não sabe qual shell você usa,
+    verifique qual shell inicia quando você abre uma nova janela de console.
 
     ```console
     $ echo $SHELL
     ```
 
- 1. <h3>Add the Flutter SDK bin to your path</h3>
+ 1. <h3>Adicione o bin do Flutter SDK ao seu path</h3>
 
-    To add the `bin` directory of your Flutter installation to your `PATH`:
+    Para adicionar o diretório `bin` da sua instalação Flutter ao seu `PATH`:
 
-    1. Expand the instructions for your default shell.
-    1. Copy the provided command.
-    1. Replace `<path-to-sdk>` with the path to your Flutter SDK install.
-    1. Run the edited command in your preferred terminal with that shell.
+    1. Expanda as instruções para o seu shell padrão.
+    1. Copie o comando fornecido.
+    1. Substitua `<path-to-sdk>` pelo caminho para sua instalação do Flutter SDK.
+    1. Execute o comando editado no seu terminal preferido com esse shell.
 
     <hr>
 
@@ -142,16 +142,16 @@
 
     </details>
 
- 1. <h3>Apply your changes</h3>
+ 1. <h3>Aplique suas mudanças</h3>
 
-    To apply this change and get access to the `flutter` tool,
-    close and reopen all open shell sessions in your terminal apps and IDEs.
+    Para aplicar esta mudança e obter acesso à ferramenta `flutter`,
+    feche e reabra todas as sessões de shell abertas em seus terminais e IDEs.
 
- 1. <h3>Validate your setup</h3>
+ 1. <h3>Valide sua configuração</h3>
 
-    To ensure you successfully added the SDK to your `PATH`,
-    open your preferred terminal with your default shell,
-    then try running the `flutter` and `dart` tools.
+    Para garantir que você adicionou com sucesso o SDK ao seu `PATH`,
+    abra seu terminal preferido com seu shell padrão,
+    então tente executar as ferramentas `flutter` e `dart`.
 
     ```console
     $ flutter --version

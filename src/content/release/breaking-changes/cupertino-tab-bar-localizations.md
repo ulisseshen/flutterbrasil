@@ -1,19 +1,20 @@
 ---
-title: CupertinoTabBar requires Localizations parent
+title: CupertinoTabBar requer parent Localizations
 description: >
-  In order to provide locale appropriate semantics, the
-  CupertinoTabBar requires a Localizations parent.
+  Para fornecer semântica apropriada ao locale, o
+  CupertinoTabBar requer um parent Localizations.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
 ## Summary
 
-Instances of `CupertinoTabBar` must have a
-`Localizations`parent in order to provide a localized
-`Semantics` hint. Trying to instantiate a
-`CupertinoTabBar` without localizations
-results in an assertion such as the following:
+Instâncias de `CupertinoTabBar` devem ter um
+parent `Localizations` para fornecer uma dica de
+`Semantics` localizada. Tentar instanciar um
+`CupertinoTabBar` sem localizações
+resulta em uma asserção como a seguinte:
 
 ```plaintext
 CupertinoTabBar requires a Localizations parent in order to provide an appropriate Semantics hint
@@ -25,29 +26,29 @@ Failed assertion: line 213 pos 7: 'localizations != null'
 
 ## Context
 
-To support localized semantics information,
-the `CupertinoTabBar` requires localizations.
+Para suportar informações de semântica localizadas,
+o `CupertinoTabBar` requer localizações.
 
-Before this change, the `Semantics` hint provided
-to the `CupertinoTabBar` was a hard-coded String,
-'tab, $index of $total'. The content of the semantics
-hint was also updated from this original
-String to 'Tab $index of $total' in English.
+Antes desta mudança, a dica `Semantics` fornecida
+ao `CupertinoTabBar` era uma String codificada,
+'tab, $index of $total'. O conteúdo da dica de semântica
+também foi atualizado desta String original
+para 'Tab $index of $total' em inglês.
 
-If your `CupertinoTabBar` is within the scope
-of a `CupertinoApp`, the `DefaultCupertinoLocalizations`
-is already instantiated and may suit your
-needs without having to make a change to your existing code.
+Se seu `CupertinoTabBar` está dentro do escopo
+de um `CupertinoApp`, o `DefaultCupertinoLocalizations`
+já está instanciado e pode atender suas
+necessidades sem ter que fazer uma mudança no seu código existente.
 
-If your `CupertinoTabBar` is not within a `CupertinoApp`,
-you may provide the localizations of
-your choosing using the `Localizations` widget.
+Se seu `CupertinoTabBar` não está dentro de um `CupertinoApp`,
+você pode fornecer as localizações de
+sua escolha usando o widget `Localizations`.
 
 ## Migration guide
 
-If you are seeing a `'localizations != null'` assertion error,
-make sure locale information is being
-provided to your `CupertinoTabBar`.
+Se você está vendo um erro de asserção `'localizations != null'`,
+certifique-se de que informações de locale estão sendo
+fornecidas ao seu `CupertinoTabBar`.
 
 Code before migration:
 

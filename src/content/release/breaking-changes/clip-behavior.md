@@ -1,25 +1,26 @@
 ---
-title: Clip Behavior
+title: Comportamento de Clip
 description: >
-  Flutter unifies clipBehavior and defaults to not clip in most cases.
+  Flutter unifica clipBehavior e por padrão não faz clip na maioria dos casos.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-Flutter now defaults to _not_ clip except for a few specialized widgets
-(such as `ClipRect`). To override the no-clip default,
-explicitly set `clipBehavior` in widgets constructions.
+O Flutter agora não faz _clip_ por padrão, exceto para alguns widgets especializados
+(como `ClipRect`). Para sobrescrever o padrão de não fazer clip,
+defina explicitamente `clipBehavior` nas construções de widgets.
 
-## Context
+## Contexto {:#context}
 
-Flutter used to be slow because of clips. For example,
-the Flutter gallery app benchmark had an average frame
-rasterization time of about 35ms in May 2018,
-where the budget for smooth 60fps rendering is 16ms.
-By removing unnecessary clips and their related operations,
-we saw an almost 2x speedup from 35ms/frame to 17.5ms/frame.
+O Flutter costumava ser lento por causa dos clips. Por exemplo,
+o benchmark do aplicativo Flutter gallery tinha um tempo
+médio de rasterização de quadros de cerca de 35ms em maio de 2018,
+onde o orçamento para renderização suave de 60fps é 16ms.
+Ao remover clips desnecessários e suas operações relacionadas,
+vimos uma aceleração de quase 2x de 35ms/quadro para 17,5ms/quadro.
 
 {% comment %}
 The following two images are not visible.
@@ -30,78 +31,78 @@ Here's a comparison of transition with and without clips.
 ![](https://lh5.googleusercontent.com/gSFKigrEoekji0juxTVjj29PlIizjuxJsetHsIegLt85zCHknRIUOeICjMdEBjBhPZDZXcEzFh1WCOrdmZa9KZ5vghgS7Uo9IDAKyBtEJ7h3tKfIHXf6A4vxrHfj1a_0kuT6f4r2)
 {% endcomment %}
 
-The biggest cost associated with clipping at that time is that Flutter
-used to add a `saveLayer` call after each clip (unless it was a simple
-axis-aligned rectangle clip) to avoid the bleeding edge artifacts
-as described in [Issue 18057][]. Such behaviors were universal to
-material apps through widgets like `Card`, `Chip`, `Button`, and so on,
-which resulted in `PhysicalShape` and `PhysicalModel` clipping their content.
+O maior custo associado ao clipping naquela época é que o Flutter
+costumava adicionar uma chamada `saveLayer` após cada clip (a menos que fosse um
+clip de retângulo simples alinhado ao eixo) para evitar os artefatos de borda sangrada
+conforme descrito em [Issue 18057][]. Tais comportamentos eram universais para
+aplicativos material através de widgets como `Card`, `Chip`, `Button`, e assim por diante,
+o que resultava em `PhysicalShape` e `PhysicalModel` fazendo clip de seu conteúdo.
 
-A `saveLayer` call is especially expensive in older devices because
-it creates an offscreen render target, and a render target switch
-can sometimes cost about 1ms.
+Uma chamada `saveLayer` é especialmente cara em dispositivos mais antigos porque
+cria um alvo de renderização offscreen, e uma troca de alvo de renderização
+pode às vezes custar cerca de 1ms.
 
-Even without `saveLayer` call, a clip is still expensive
-because it applies to all subsequent draws until it's restored.
-Therefore a single clip may slow down the performance on
-hundreds of draw operations.
+Mesmo sem a chamada `saveLayer`, um clip ainda é caro
+porque se aplica a todos os desenhos subsequentes até que seja restaurado.
+Portanto, um único clip pode desacelerar o desempenho em
+centenas de operações de desenho.
 
-In addition to performance issues, Flutter also suffered from
-some correctness issues as the clip was not managed and implemented
-in a single place. In several places, `saveLayer` was inserted
-in the wrong place and it therefore only increased the performance
-cost without fixing any bleeding edge artifacts.
+Além dos problemas de desempenho, o Flutter também sofreu de
+alguns problemas de correção, pois o clip não era gerenciado e implementado
+em um único lugar. Em vários lugares, `saveLayer` foi inserido
+no lugar errado e, portanto, apenas aumentou o custo de desempenho
+sem corrigir nenhum artefato de borda sangrada.
 
-So, we unified the `clipBehavior` control and its implementation in
-this breaking change. The default `clipBehavior` is `Clip.none`
-for most widgets to save performance, except the following:
+Então, unificamos o controle `clipBehavior` e sua implementação nesta
+mudança disruptiva. O `clipBehavior` padrão é `Clip.none`
+para a maioria dos widgets para economizar desempenho, exceto os seguintes:
 
-* `ClipPath` defaults to `Clip.antiAlias`
-* `ClipRRect` defaults to `Clip.antiAlias`
-* `ClipRect` defaults to `Clip.hardEdge`
-* `Stack` defaults to `Clip.hardEdge`
-* `EditableText` defaults to `Clip.hardEdge`
-* `ListWheelScrollView` defaults to `Clip.hardEdge`
-* `SingleChildScrollView` defaults to `Clip.hardEdge`
-* `NestedScrollView` defaults to `Clip.hardEdge`
-* `ShrinkWrappingViewport` defaults to `Clip.hardEdge`
+* `ClipPath` tem padrão `Clip.antiAlias`
+* `ClipRRect` tem padrão `Clip.antiAlias`
+* `ClipRect` tem padrão `Clip.hardEdge`
+* `Stack` tem padrão `Clip.hardEdge`
+* `EditableText` tem padrão `Clip.hardEdge`
+* `ListWheelScrollView` tem padrão `Clip.hardEdge`
+* `SingleChildScrollView` tem padrão `Clip.hardEdge`
+* `NestedScrollView` tem padrão `Clip.hardEdge`
+* `ShrinkWrappingViewport` tem padrão `Clip.hardEdge`
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-You have 4 choices for migrating your code:
+Você tem 4 opções para migrar seu código:
 
-1. Leave your code as is if your content does not need
-   to be clipped (for example, none of the widgets' children
-   expand outside their parent's boundary).
-   This will likely have a positive impact on your app's
-   overall performance.
-2. Add `clipBehavior: Clip.hardEdge` if you need clipping,
-   and clipping without anti-alias is good enough for your
-   (and your clients') eyes. This is the common case
-   when you clip rectangles or shapes with very small curved areas
-   (such as the corners of rounded rectangles).
-3. Add `clipBehavior: Clip.antiAlias` if you need
-   anti-aliased clipping. This gives you smoother edges
-   at a slightly higher cost. This is the common case when
-   dealing with circles and arcs.
-4. Add `clip.antiAliasWithSaveLayer` if you want the exact
-   same behavior as before (May 2018). Be aware that it's
-   very costly in performance. This is likely to be only
-   rarely needed. One case where you might need this is if
-   you have an image overlaid on a very different background color.
-   In these cases, consider whether you can avoid overlapping
-   multiple colors in one spot (for example, by having the
-   background color only present where the image is absent).
+1. Deixe seu código como está se seu conteúdo não precisar
+   ser cortado (por exemplo, nenhum dos filhos dos widgets
+   se expande fora do limite de seu pai).
+   Isso provavelmente terá um impacto positivo no
+   desempenho geral do seu aplicativo.
+2. Adicione `clipBehavior: Clip.hardEdge` se você precisar de clipping,
+   e clipping sem anti-alias for bom o suficiente para seus
+   (e dos seus clientes) olhos. Este é o caso comum
+   quando você corta retângulos ou formas com áreas curvas muito pequenas
+   (como os cantos de retângulos arredondados).
+3. Adicione `clipBehavior: Clip.antiAlias` se você precisar de
+   clipping com anti-alias. Isso fornece bordas mais suaves
+   com um custo ligeiramente maior. Este é o caso comum ao
+   lidar com círculos e arcos.
+4. Adicione `clip.antiAliasWithSaveLayer` se você quiser o exato
+   mesmo comportamento de antes (maio de 2018). Esteja ciente de que é
+   muito custoso em termos de desempenho. É provável que seja necessário apenas
+   raramente. Um caso em que você pode precisar disso é se
+   você tiver uma imagem sobreposta em uma cor de fundo muito diferente.
+   Nesses casos, considere se você pode evitar sobrepor
+   várias cores em um ponto (por exemplo, tendo a
+   cor de fundo presente apenas onde a imagem está ausente).
 
-For the `Stack` widget specifically, if you previously used
-`overflow: Overflow.visible`, replace it with `clipBehavior: Clip.none`.
+Para o widget `Stack` especificamente, se você usou anteriormente
+`overflow: Overflow.visible`, substitua por `clipBehavior: Clip.none`.
 
-For the `ListWheelViewport` widget, if you previously specified
-`clipToSize`, replace it with the corresponding `clipBehavior`:
-`Clip.none` for `clipToSize = false` and
-`Clip.hardEdge` for `clipToSize = true`.
+Para o widget `ListWheelViewport`, se você especificou anteriormente
+`clipToSize`, substitua pelo `clipBehavior` correspondente:
+`Clip.none` para `clipToSize = false` e
+`Clip.hardEdge` para `clipToSize = true`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
     await tester.pumpWidget(
@@ -122,7 +123,7 @@ Code before migration:
     );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
     await tester.pumpWidget(
@@ -143,41 +144,41 @@ Code after migration:
     );
 ```
 
-## Timeline
+## Linha do tempo {:#timeline}
 
-Landed in version: _various_<br>
-In stable release: 2.0.0
+Implementado na versão: _várias_<br>
+Na versão estável: 2.0.0
 
-## References
+## Referências {:#references}
 
-API documentation:
+Documentação da API:
 
 * [`Clip`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue 13736][]
 * [Issue 18057][]
 * [Issue 21830][]
 
-Relevant PRs:
+PRs relevantes:
 
-* [PR 5420][]: Remove unnecessary saveLayer
-* [PR 18576][]: Add Clip enum to Material and related widgets
-* [PR 18616][]: Remove saveLayer after clip from dart
-* [PR 5647][]: Add ClipMode to ClipPath/ClipRRect and PhysicalShape layers
-* [PR 5670][]: Add anti-alias switch to canvas clip calls
-* [PR 5853][]: Rename clip mode to clip behavior
-* [PR 5868][]: Rename clip to clipBehavior in compositing.dart
-* [PR 5973][]: Call drawPaint instead of drawPath if there's clip
-* [PR 5952][]: Call drawPath without clip if possible
-* [PR 20205][]: Set default clipBehavior to Clip.none and update tests
-* [PR 20538][]: Expose clipBehavior to more Material Buttons
-* [PR 20751][]: Add customBorder to InkWell so it can clip ShapeBorder
-* [PR 20752][]: Set the default clip to Clip.none again
-* [PR 21012][]: Add default-no-clip tests to more buttons
-* [PR 21703][]: Default clipBehavior of ClipRect to hardEdge
-* [PR 21826][]: Missing default hardEdge clip for ClipRectLayer
+* [PR 5420][]: Remover saveLayer desnecessário
+* [PR 18576][]: Adicionar enum Clip ao Material e widgets relacionados
+* [PR 18616][]: Remover saveLayer após clip do dart
+* [PR 5647][]: Adicionar ClipMode às camadas ClipPath/ClipRRect e PhysicalShape
+* [PR 5670][]: Adicionar switch de anti-alias às chamadas de clip do canvas
+* [PR 5853][]: Renomear clip mode para clip behavior
+* [PR 5868][]: Renomear clip para clipBehavior em compositing.dart
+* [PR 5973][]: Chamar drawPaint em vez de drawPath se houver clip
+* [PR 5952][]: Chamar drawPath sem clip se possível
+* [PR 20205][]: Definir clipBehavior padrão como Clip.none e atualizar testes
+* [PR 20538][]: Expor clipBehavior para mais Material Buttons
+* [PR 20751][]: Adicionar customBorder ao InkWell para que possa fazer clip de ShapeBorder
+* [PR 20752][]: Definir o clip padrão como Clip.none novamente
+* [PR 21012][]: Adicionar testes de no-clip padrão para mais botões
+* [PR 21703][]: clipBehavior padrão de ClipRect para hardEdge
+* [PR 21826][]: Falta clip hardEdge padrão para ClipRectLayer
 
 [PR 5420]:  {{site.repo.engine}}/pull/5420
 [PR 5647]:  {{site.repo.engine}}/pull/5647

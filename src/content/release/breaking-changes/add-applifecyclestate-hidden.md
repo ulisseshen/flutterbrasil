@@ -1,37 +1,37 @@
 ---
-title: Migration guide for adding AppLifecycleState.hidden
-description: AppLifecycleState had an additional hidden state added.
+title: Guia de migração para adicionar AppLifecycleState.hidden
+description: AppLifecycleState teve um estado hidden adicional adicionado.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
 ## Summary
 
-A new `hidden` state was added to the [`AppLifecycleState`][] enum to denote
-when the application is not visible.
+Um novo estado `hidden` foi adicionado ao enum [`AppLifecycleState`][] para denotar
+quando a aplicação não está visível.
 
 ## Context
 
-The `AppLifecycleState` enum is used to indicate which lifecycle state the
-application is in when [`WidgetsBindingObserver.didChangeAppLifecycleState`][]
-is called.
+O enum `AppLifecycleState` é usado para indicar em qual estado de ciclo de vida a
+aplicação está quando [`WidgetsBindingObserver.didChangeAppLifecycleState`][]
+é chamado.
 
 ## Description of change
 
-The new state `AppLifecycleState.hidden` was added to the `AppLifecycleState`
-enum in the `dart:ui` package.
+O novo estado `AppLifecycleState.hidden` foi adicionado ao enum `AppLifecycleState`
+no pacote `dart:ui`.
 
-The `hidden` state is entered when all of the application views are no longer
-visible to the user. On Android and iOS, this state is entered briefly whenever
-the state machine traverses from inactive to paused, or from paused to inactive.
-It doesn't change when paused or inactive are entered. On other platforms, it
-will be in this state while the application is not visible.
+O estado `hidden` é entrado quando todas as views da aplicação não estão mais
+visíveis para o usuário. No Android e iOS, este estado é entrado brevemente sempre que
+a máquina de estados atravessa de inactive para paused, ou de paused para inactive.
+Ele não muda quando paused ou inactive são entrados. Em outras plataformas, ele
+estará neste estado enquanto a aplicação não estiver visível.
 
 ## Migration guide
 
-If code has switch statements that handle all cases of the `AppLifecycleState`
-enum, a new case will need to be added to handle the `AppLifecycleState.hidden`
-state.
+Se o código tem instruções switch que lidam com todos os casos do enum `AppLifecycleState`,
+um novo caso precisará ser adicionado para lidar com o estado `AppLifecycleState.hidden`.
 
 Code before migration:
 
@@ -68,10 +68,10 @@ void didChangeAppLifecycleState(AppLifecycleState state) {
 }
 ```
 
-If there is already a `default:` case in the switch statement, or the code uses
-conditionals instead, then the code will compile without changes, but the
-default case or conditional will still need to be evaluated to decide if the
-`hidden` state should also be handled.
+Se já existe um caso `default:` na instrução switch, ou o código usa
+condicionais em vez disso, então o código compilará sem mudanças, mas o
+caso default ou condicional ainda precisará ser avaliado para decidir se o
+estado `hidden` também deve ser tratado.
 
 ## Timeline
 

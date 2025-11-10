@@ -1,65 +1,66 @@
 ---
-title: Customizing tabs alignment using the new TabBar.tabAlignment property
-description: Introducing the TabBar.tabAlignment property.
+title: Customizando alinhamento de tabs usando a nova propriedade TabBar.tabAlignment
+description: Apresentando a propriedade TabBar.tabAlignment.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
 ## Summary
 
-Using `TabBar.tabAlignment` to customize the alignment of tabs in a `TabBar`.
+Usando `TabBar.tabAlignment` para customizar o alinhamento de tabs em um `TabBar`.
 
 ## Context
 
-The `TabBar.tabAlignment` property sets where a Material 3 `TabBar` places tabs.
-The `TabAlignment` enum has the following values:
+A propriedade `TabBar.tabAlignment` define onde um `TabBar` Material 3 coloca tabs.
+O enum `TabAlignment` tem os seguintes valores:
 
-* `TabAlignment.start`: Aligns the tabs to the start of the scrollable `TabBar`.
-* `TabAlignment.startOffset`: Aligns the tabs to the start of the
-   scrollable `TabBar` with an offset of `52.0` pixels.
-* `TabAlignment.center`: Aligns the tabs to the center of the `TabBar`.
-* `TabAlignment.fill`: Aligns the tabs to the start and stretches the tabs
-   to fill the fixed `TabBar`.
+* `TabAlignment.start`: Alinha as tabs ao início do `TabBar` scrollable.
+* `TabAlignment.startOffset`: Alinha as tabs ao início do
+   `TabBar` scrollable com um offset de `52.0` pixels.
+* `TabAlignment.center`: Alinha as tabs ao centro do `TabBar`.
+* `TabAlignment.fill`: Alinha as tabs ao início e estica as tabs
+   para preencher o `TabBar` fixo.
 
-The scrollable `TabBar` supports the following alignments:
+O `TabBar` scrollable suporta os seguintes alinhamentos:
 
 * `TabAlignment.start`
 * `TabAlignment.startOffset`
 * `TabAlignment.center`
 
-The fixed `TabBar` supports the following alignments:
+O `TabBar` fixo suporta os seguintes alinhamentos:
 
 * `TabAlignment.fill`
 * `TabAlignment.center`
 
-When you set `ThemeData.useMaterial3` to `true`,
-a scrollable `TabBar` aligns tabs as `TabAlignment.startOffset` by default.
-To change this alignment, set the
-`TabBar.tabAlignment` property for widget level customization.
-Or, set the `TabBarThemeData.tabAlignment` property for app level customization.
+Quando você define `ThemeData.useMaterial3` como `true`,
+um `TabBar` scrollable alinha tabs como `TabAlignment.startOffset` por padrão.
+Para mudar este alinhamento, defina a
+propriedade `TabBar.tabAlignment` para customização em nível de widget.
+Ou, defina a propriedade `TabBarThemeData.tabAlignment` para customização em nível de aplicação.
 
 ## Description of change
 
-When you set `TabBar.isScrollable` and `ThemeData.useMaterial3` to `true`,
-the tabs in a scrollable `TabBar` defaults to `TabAlignment.startOffset`.
-This aligns the tabs to the start of the
-scrollable `TabBar` with an offset of `52.0` pixels.
-This changes the previous behavior.
-The tabs were aligned to the start of the scrollable `TabBar`
-when more tabs needed to display than the width allowed.
+Quando você define `TabBar.isScrollable` e `ThemeData.useMaterial3` como `true`,
+as tabs em um `TabBar` scrollable têm como padrão `TabAlignment.startOffset`.
+Isso alinha as tabs ao início do
+`TabBar` scrollable com um offset de `52.0` pixels.
+Isso muda o comportamento anterior.
+As tabs eram alinhadas ao início do `TabBar` scrollable
+quando mais tabs precisavam ser exibidas do que a largura permitia.
 
 ## Migration guide
 
-A Material 3 scrollable `TabBar` uses `TabAlignment.startOffset` as
-the default tab alignment.
-This aligns the tabs to the start of the
-scrollable `TabBar` with an offset of `52.0` pixels.
+Um `TabBar` scrollable Material 3 usa `TabAlignment.startOffset` como
+o alinhamento de tab padrão.
+Isso alinha as tabs ao início do
+`TabBar` scrollable com um offset de `52.0` pixels.
 
-To align the tabs to the start of the
-scrollable `TabBar`, set `TabBar.tabAlignment` to `TabAlignment.start`.
-This change also removed the `52.0` pixel offset.
-The following code snippets show how to use `TabBar.tabAlignment` to
-align tabs to the start of the scrollable `TabBar`:
+Para alinhar as tabs ao início do
+`TabBar` scrollable, defina `TabBar.tabAlignment` como `TabAlignment.start`.
+Esta mudança também removeu o offset de `52.0` pixels.
+Os seguintes snippets de código mostram como usar `TabBar.tabAlignment` para
+alinhar tabs ao início do `TabBar` scrollable:
 
 Code before migration:
 

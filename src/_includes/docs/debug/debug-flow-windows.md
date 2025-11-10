@@ -1,7 +1,7 @@
-#### Build the Windows version of the Flutter app in PowerShell or the Command Prompt
+#### Construa a versão Windows da aplicação Flutter no PowerShell ou no Command Prompt
 
-To generate the needed Windows platform dependencies,
-run the `flutter build` command.
+Para gerar as dependências de plataforma Windows necessárias,
+execute o comando `flutter build`.
 
 ```console
 C:\> flutter build windows --debug
@@ -15,11 +15,11 @@ Building Windows application...                                    31.4s
 <Tabs key="windows-debug-flow">
 <Tab name="Start from VS Code">
 
-#### Start debugging with VS Code first {:#vscode-windows}
+#### Comece a depuração primeiro com o VS Code {:#vscode-windows}
 
-If you use VS Code to debug most of your code, start with this section.
+Se você usa VS Code para depurar a maior parte do seu código, comece com esta seção.
 
-##### Start the debugger in VS Code
+##### Inicie o debugger no VS Code
 
 {% render "docs/debug/debug-flow-vscode-as-start.md" %}
 
@@ -32,16 +32,16 @@ If you use VS Code to debug most of your code, start with this section.
      </div>
 {% endcomment %}
 
-##### Attach to the Flutter process in Visual Studio
+##### Anexe ao processo Flutter no Visual Studio
 
-1. To open the project solution file, go to
+1. Para abrir o arquivo de solução do projeto, vá para
    **File** <span aria-label="and then">></span>
    **Open** <span aria-label="and then">></span>
    **Project/Solution…**
 
-   You can also press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>O</kbd>.
+   Você também pode pressionar <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>O</kbd>.
 
-1. Choose the `build/windows/my_app.sln` file in your Flutter app directory.
+1. Escolha o arquivo `build/windows/my_app.sln` no diretório da sua aplicação Flutter.
 
 {% comment %}
    ![Open Project/Solution dialog box in Visual Studio 2022 with my_app.sln file selected.](/assets/images/docs/testing/debugging/native/visual-studio/choose-solution.png){:width="100%"}
@@ -53,17 +53,17 @@ If you use VS Code to debug most of your code, start with this section.
    </div>
 {% endcomment %}
 
-1. Go to **Debug** > **Attach to Process**.
+1. Vá para **Debug** > **Attach to Process**.
 
-   You can also press <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>P</kbd>.
+   Você também pode pressionar <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>P</kbd>.
 
-1. From the **Attach to Process** dialog box, choose `my_app.exe`.
+1. Na caixa de diálogo **Attach to Process**, escolha `my_app.exe`.
 
 {% comment %}
    ![Selecting my_app from the Attach to Process dialog box](/assets/images/docs/testing/debugging/native/visual-studio/attach-to-process-dialog.png){:width="100%"}
 {% endcomment %}
 
-   Visual Studio starts monitoring the Flutter app.
+   Visual Studio começa a monitorar a aplicação Flutter.
 
 {% comment %}
    ![Visual Studio debugger running and monitoring the Flutter app](/assets/images/docs/testing/debugging/native/visual-studio/debugger-active.png){:width="100%"}
@@ -72,20 +72,20 @@ If you use VS Code to debug most of your code, start with this section.
 </Tab>
 <Tab name="Start from Visual Studio">
 
-#### Start debugging with Visual Studio first
+#### Comece a depuração primeiro com o Visual Studio
 
-If you use Visual Studio to debug most of your code, start with this section.
+Se você usa Visual Studio para depurar a maior parte do seu código, comece com esta seção.
 
-##### Start the local Windows debugger
+##### Inicie o debugger local do Windows
 
-1. To open the project solution file, go to
+1. Para abrir o arquivo de solução do projeto, vá para
    **File** <span aria-label="and then">></span>
    **Open** <span aria-label="and then">></span>
    **Project/Solution…**
 
-   You can also press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>O</kbd>.
+   Você também pode pressionar <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>O</kbd>.
 
-1. Choose the `build/windows/my_app.sln` file in your Flutter app directory.
+1. Escolha o arquivo `build/windows/my_app.sln` no diretório da sua aplicação Flutter.
 
 {% comment %}
    ![Open Project/Solution dialog box in Visual Studio 2022 with my_app.sln file selected.](/assets/images/docs/testing/debugging/native/visual-studio/choose-solution.png){:width="100%"}
@@ -97,41 +97,41 @@ If you use Visual Studio to debug most of your code, start with this section.
    </div>
 {% endcomment %}
 
-1. Set `my_app` as the startup project.
-   In the **Solution Explorer**, right-click on `my_app` and select
+1. Defina `my_app` como o projeto de inicialização.
+   No **Solution Explorer**, clique com o botão direito em `my_app` e selecione
    **Set as Startup Project**.
 
-1. Click **Local Windows Debugger** to start debugging.
+1. Clique em **Local Windows Debugger** para iniciar a depuração.
 
-   You can also press <kbd>F5</kbd>.
+   Você também pode pressionar <kbd>F5</kbd>.
 
-   When the Flutter app has started, a console window displays
-   a message with the Dart VM service URI. It resembles the following response:
+   Quando a aplicação Flutter é iniciada, uma janela de console exibe
+   uma mensagem com o URI do serviço Dart VM. Ela se assemelha à seguinte resposta:
 
    ```console
    flutter: The Dart VM service is listening on http://127.0.0.1:62080/KPHEj2qPD1E=/
    ```
 
-1. Copy the Dart VM service URI.
+1. Copie o URI do serviço Dart VM.
 
-##### Attach to the Dart VM in VS Code
+##### Anexe à Dart VM no VS Code
 
-1. To open the command palette, go to
+1. Para abrir a paleta de comandos, vá para
    **View** <span aria-label="and then">></span>
    **Command Palette...**
 
-   You can also press <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>.
+   Você também pode pressionar <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>.
 
-1. Type `debug`.
+1. Digite `debug`.
 
-1. Click the **Debug: Attach to Flutter on Device** command.
+1. Clique no comando **Debug: Attach to Flutter on Device**.
 
 {% comment %}
    !['Running the Debug: Attach to Flutter on Device command in VS Code.'](/assets/images/docs/testing/debugging/vscode-ui/screens/attach-flutter-process-menu.png){:width="100%"}
 {% endcomment %}
 
-1. In the **Paste an VM Service URI** box, paste the URI you copied
-   from Visual Studio and press <kbd>Enter</kbd>.
+1. Na caixa **Paste an VM Service URI**, cole o URI que você copiou
+   do Visual Studio e pressione <kbd>Enter</kbd>.
 
 {% comment %}
    ![Alt text](/assets/images/docs/testing/debugging/vscode-ui/screens/vscode-add-attach-uri-filled.png)

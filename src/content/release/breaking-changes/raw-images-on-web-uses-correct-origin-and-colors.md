@@ -1,60 +1,61 @@
 ---
-title: Raw images on Web uses correct origin and colors
+title: Imagens raw na Web usam origem e cores corretas
 description: >
-  Raw images directly decoded by calling the Web engine functions now
-  uses the correct pixel format and starts from the top left corner.
+  Imagens raw decodificadas diretamente chamando as funções do motor Web agora
+  usam o formato de pixel correto e começam do canto superior esquerdo.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
 ## Summary
 
-How raw images are rendered on Web has been corrected
-and is now consistent with that on other platforms.
-This breaks legacy apps that had to feed incorrect data
-to `ui.ImageDescriptor.raw` or `ui.decodeImageFromPixels`,
-causing the resulting images to be upside-down
-and incorrectly colored
-(whose red and blue channels are swapped.)
+Como imagens raw são renderizadas na Web foi corrigido
+e agora é consistente com o de outras plataformas.
+Isso quebra aplicações legadas que tinham que fornecer dados incorretos
+para `ui.ImageDescriptor.raw` ou `ui.decodeImageFromPixels`,
+fazendo com que as imagens resultantes ficassem de cabeça para baixo
+e com cores incorretas
+(cujos canais vermelho e azul são trocados.)
 
 ## Context
 
-The "pixel stream" that Flutter uses internally
-has always been defined as the same format:
-for each pixel, four 8-bit channels are packed in the order defined
-by a `format` argument, then grouped in a row,
-from left to right, then rows from top to bottom.
+O "pixel stream" que o Flutter usa internamente
+sempre foi definido no mesmo formato:
+para cada pixel, quatro canais de 8 bits são empacotados na ordem definida
+por um argumento `format`, então agrupados em uma linha,
+da esquerda para a direita, depois linhas de cima para baixo.
 
-However, Flutter for Web, or more specifically, the HTML renderer,
-used to implement it in a wrong way
-due to incorrect understanding of the BMP format specification.
-As a result, if the app or library uses
-`ui.ImageDescriptor.raw` or `ui.decodeImageFromPixels`,
-it had to feed pixels from bottom to top and swap their red and blue channels
-(for example, with the `ui.PixelFormat.rgba8888` format,
-the first 4 bytes of the data were considered the blue, green,
-red, and alpha channels of the first pixel instead.)
+No entanto, Flutter para Web, ou mais especificamente, o renderer HTML,
+costumava implementá-lo de forma errada
+devido a uma compreensão incorreta da especificação do formato BMP.
+Como resultado, se a aplicação ou biblioteca usa
+`ui.ImageDescriptor.raw` ou `ui.decodeImageFromPixels`,
+ela tinha que fornecer pixels de baixo para cima e trocar seus canais vermelho e azul
+(por exemplo, com o formato `ui.PixelFormat.rgba8888`,
+os primeiros 4 bytes dos dados eram considerados os canais azul, verde,
+vermelho e alfa do primeiro pixel.)
 
-This bug has been fixed by [engine#29593][],
-but apps and libraries have to correct how their data are generated.
+Este bug foi corrigido por [engine#29593][],
+mas aplicações e bibliotecas precisam corrigir como seus dados são gerados.
 
 ## Description of change
 
-The `pixels` argument of `ui.ImageDescriptor.raw` or `ui.decodeImageFromPixels`
-now uses the correct pixel order described by `format`,
-and originates from the top left corner.
+O argumento `pixels` de `ui.ImageDescriptor.raw` ou `ui.decodeImageFromPixels`
+agora usa a ordem de pixel correta descrita por `format`,
+e se origina do canto superior esquerdo.
 
-Images rendered by directly calling these two functions
-Legacy code that invokes these functions directly might
-find their images upside down and colored incorrectly.
+Imagens renderizadas chamando diretamente essas duas funções
+Código legado que invoca essas funções diretamente pode
+encontrar suas imagens de cabeça para baixo e coloridas incorretamente.
 
 ## Migration guide
 
-If the app uses the latest version of Flutter and experiences this situation,
-the most direct solution is to manually flip the image, and use the alternate
-pixel format. However, this is unlikely the most optimized solution,
-since such pixel data are usually constructed from other sources,
-allowing flipping during the construction process.
+Se a aplicação usa a versão mais recente do Flutter e experimenta esta situação,
+a solução mais direta é inverter manualmente a imagem, e usar o formato de
+pixel alternativo. No entanto, esta provavelmente não é a solução mais otimizada,
+já que tais dados de pixel são geralmente construídos de outras fontes,
+permitindo a inversão durante o processo de construção.
 
 Code before migration:
 
@@ -111,11 +112,10 @@ Future<ui.Image> parseMyImage(Uint8List image, int width, int height) async {
 }
 ```
 
-A trickier situation is when you're writing a library,
-and you want this library to work on both the most recent Flutter
-and a pre-patch one.
-In that case, you can decide whether the behavior has been changed
-by letting it decode a single pixel first.
+Uma situação mais complicada é quando você está escrevendo uma biblioteca,
+e você quer que esta biblioteca funcione tanto no Flutter mais recente
+quanto em um pré-patch. Nesse caso, você pode decidir se o comportamento foi alterado
+deixando-o decodificar um único pixel primeiro.
 
 Code after migration:
 

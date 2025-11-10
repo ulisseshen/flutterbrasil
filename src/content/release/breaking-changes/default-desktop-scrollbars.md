@@ -1,45 +1,46 @@
 ---
-title: Default Scrollbars on Desktop
+title: Scrollbars padrão no Desktop
 description: >
-  ScrollBehaviors will now automatically build Scrollbars on Desktop platforms.
+  ScrollBehaviors agora constroem automaticamente Scrollbars em plataformas Desktop.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
 ## Summary
 
-`ScrollBehavior`s now automatically apply `Scrollbar`s to
-scrolling widgets on desktop platforms - Mac, Windows and Linux.
+`ScrollBehavior`s agora aplicam automaticamente `Scrollbar`s aos
+widgets de rolagem em plataformas desktop - Mac, Windows e Linux.
 
 ## Context
 
-Prior to this change, `Scrollbar`s were applied to scrolling widgets
-manually by the developer across all platforms. This did not match
-developer expectations when executing Flutter applications on desktop platforms.
+Antes desta mudança, `Scrollbar`s eram aplicadas aos widgets de rolagem
+manualmente pelo desenvolvedor em todas as plataformas. Isso não correspondia
+às expectativas do desenvolvedor ao executar aplicações Flutter em plataformas desktop.
 
-Now, the inherited `ScrollBehavior` applies a `Scrollbar` automatically
-to most scrolling widgets. This is similar to how `GlowingOverscrollIndicator`
-is created by `ScrollBehavior`. The few widgets that are exempt from this
-behavior are listed below.
+Agora, o `ScrollBehavior` herdado aplica uma `Scrollbar` automaticamente
+à maioria dos widgets de rolagem. Isso é semelhante a como `GlowingOverscrollIndicator`
+é criado por `ScrollBehavior`. Os poucos widgets que são isentos deste
+comportamento estão listados abaixo.
 
-To provide better management and control of this feature, `ScrollBehavior`
-has also been updated. The `buildViewportChrome` method, which applied
-a `GlowingOverscrollIndicator`, has been deprecated. Instead, `ScrollBehavior`
-now supports individual methods for decorating the viewport, `buildScrollbar`
-and `buildOverscrollIndicator`. These methods can be overridden to control
-what is built around the scrollable.
+Para fornecer melhor gerenciamento e controle deste recurso, `ScrollBehavior`
+também foi atualizado. O método `buildViewportChrome`, que aplicava
+um `GlowingOverscrollIndicator`, foi descontinuado. Em vez disso, `ScrollBehavior`
+agora suporta métodos individuais para decorar o viewport, `buildScrollbar`
+e `buildOverscrollIndicator`. Esses métodos podem ser sobrescritos para controlar
+o que é construído ao redor do scrollable.
 
-Furthermore, `ScrollBehavior` subclasses `MaterialScrollBehavior` and
-`CupertinoScrollBehavior` have been made public, allowing developers to extend
-and build upon the other existing `ScrollBehavior`s in the framework. These
-subclasses were previously private.
+Além disso, as subclasses de `ScrollBehavior`, `MaterialScrollBehavior` e
+`CupertinoScrollBehavior`, foram tornadas públicas, permitindo que desenvolvedores estendam
+e construam sobre os outros `ScrollBehavior`s existentes no framework. Essas
+subclasses eram anteriormente privadas.
 
 
 ## Description of change
 
-The previous approach called on developers to create their own `Scrollbar`s on
-all platforms. In some use cases, a `ScrollController` would need to be provided
-to the `Scrollbar` and the scrollable widget.
+A abordagem anterior exigia que desenvolvedores criassem suas próprias `Scrollbar`s em
+todas as plataformas. Em alguns casos de uso, um `ScrollController` precisaria ser fornecido
+à `Scrollbar` e ao widget scrollable.
 
 ```dart
 final ScrollController controller = ScrollController();
@@ -54,9 +55,9 @@ Scrollbar(
 );
 ```
 
-The `ScrollBehavior` now applies the `Scrollbar` automatically
-when executing on desktop, and handles providing the `ScrollController`
-to the `Scrollbar` for you.
+O `ScrollBehavior` agora aplica a `Scrollbar` automaticamente
+ao executar no desktop, e gerencia o fornecimento do `ScrollController`
+à `Scrollbar` para você.
 
 ```dart
 final ScrollController controller = ScrollController();
@@ -68,51 +69,51 @@ ListView.builder(
 );
 ```
 
-Some widgets in the framework are exempt from
-this automatic `Scrollbar` application.
-They are:
+Alguns widgets no framework são isentos desta
+aplicação automática de `Scrollbar`.
+Eles são:
 
-- `EditableText`, when `maxLines` is 1.
+- `EditableText`, quando `maxLines` é 1.
 - `ListWheelScrollView`
 - `PageView`
 - `NestedScrollView`
 
-Since these widgets manually override the inherited `ScrollBehavior`
-to remove `Scrollbar`s, all of these widgets now have a `scrollBehavior`
-parameter so that one can be provided to use instead of the override.
+Como esses widgets sobrescrevem manualmente o `ScrollBehavior` herdado
+para remover `Scrollbar`s, todos esses widgets agora têm um parâmetro `scrollBehavior`
+para que um possa ser fornecido para usar em vez da sobrescrita.
 
-This change did not cause any test failures, crashes, or error messages
-in the course of development, but it may result in two `Scrollbar`s
-being rendered in your application if you are manually adding `Scrollbar`s
-on desktop platforms.
+Esta mudança não causou nenhuma falha de teste, crash ou mensagens de erro
+durante o desenvolvimento, mas pode resultar em duas `Scrollbar`s
+sendo renderizadas em sua aplicação se você estiver adicionando manualmente `Scrollbar`s
+em plataformas desktop.
 
-If you are seeing this in your application, there are several ways to
-control and configure this feature.
+Se você está vendo isso em sua aplicação, existem várias maneiras de
+controlar e configurar este recurso.
 
-- Remove the manually applied `Scrollbar`s in your
-  application when running on desktop.
+- Remova as `Scrollbar`s aplicadas manualmente em sua
+  aplicação ao executar no desktop.
 
-- Extend `ScrollBehavior`, `MaterialScrollBehavior`,
-  or `CupertinoScrollBehavior` to modify the default behavior.
+- Estenda `ScrollBehavior`, `MaterialScrollBehavior`,
+  ou `CupertinoScrollBehavior` para modificar o comportamento padrão.
 
-  - With your own `ScrollBehavior`, you can apply it app-wide by setting
-    `MaterialApp.scrollBehavior` or `CupertinoApp.scrollBehavior`.
-  - Or, if you wish to only apply it to specific widgets, add a
-    `ScrollConfiguration` above the widget in question with your
-    custom `ScrollBehavior`.
+  - Com seu próprio `ScrollBehavior`, você pode aplicá-lo em toda a aplicação configurando
+    `MaterialApp.scrollBehavior` ou `CupertinoApp.scrollBehavior`.
+  - Ou, se você deseja aplicá-lo apenas a widgets específicos, adicione uma
+    `ScrollConfiguration` acima do widget em questão com seu
+    `ScrollBehavior` customizado.
 
-Your scrollable widgets then inherits this and reflects this behavior.
+Seus widgets scrollable então herdam isso e refletem este comportamento.
 
-- Instead of creating your own `ScrollBehavior`, another option for changing
-  the default behavior is to copy the existing `ScrollBehavior`, and toggle the
-  desired feature.
-  - Create a `ScrollConfiguration` in your widget tree, and
-    provide a modified copy of the existing `ScrollBehavior` in
-    the current context using `copyWith`.
+- Em vez de criar seu próprio `ScrollBehavior`, outra opção para mudar o
+  comportamento padrão é copiar o `ScrollBehavior` existente, e alternar o
+  recurso desejado.
+  - Crie uma `ScrollConfiguration` em sua árvore de widgets, e
+    forneça uma cópia modificada do `ScrollBehavior` existente no
+    contexto atual usando `copyWith`.
 
 ## Migration guide
 
-### Removing manual `Scrollbar`s on desktop
+### Removendo `Scrollbar`s manuais no desktop
 
 Code before migration:
 
@@ -156,7 +157,7 @@ switch (currentPlatform) {
 }
 ```
 
-### Setting a custom `ScrollBehavior` for your application
+### Configurando um `ScrollBehavior` customizado para sua aplicação
 
 Code before migration:
 
@@ -183,7 +184,7 @@ MaterialApp(
 );
 ```
 
-### Setting a custom `ScrollBehavior` for a specific widget
+### Configurando um `ScrollBehavior` customizado para um widget específico
 
 Code before migration:
 
@@ -219,7 +220,7 @@ ScrollConfiguration(
 );
 ```
 
-### Copy and modify existing `ScrollBehavior`
+### Copiar e modificar `ScrollBehavior` existente
 
 Code before migration:
 

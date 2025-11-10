@@ -1,54 +1,55 @@
 ---
-title: Updated Material 3 progress indicators
+title: Indicadores de progresso Material 3 atualizados
 description: >-
-  The `LinearProgressIndicator` and `CircularProgressIndicator` widgets
-  have been updated to match the Material 3 Design specifications.
+  Os widgets `LinearProgressIndicator` e `CircularProgressIndicator`
+  foram atualizados para corresponder às especificações de Design Material 3.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
 ## Summary
 
-The `LinearProgressIndicator` and `CircularProgressIndicator` have
-been updated to match the Material 3 Design specifications.
+Os `LinearProgressIndicator` e `CircularProgressIndicator` foram
+atualizados para corresponder às especificações de Design Material 3.
 
-The `LinearProgressIndicator`changes include a gap between
-the active and inactive tracks, a stop indicator, and rounded corners.
-The `CircularProgressIndicator` changes include a gap between
-the active and inactive tracks, and rounded stroke cap.
+As mudanças em `LinearProgressIndicator` incluem uma lacuna entre
+as trilhas ativa e inativa, um indicador de parada e cantos arredondados.
+As mudanças em `CircularProgressIndicator` incluem uma lacuna entre
+as trilhas ativa e inativa, e extremidade de traço arredondada.
 
 ## Context
 
-The Material 3 Design specifications for the `LinearProgressIndicator` and
-`CircularProgressIndicator` were updated in December 2023.
+As especificações de Design Material 3 para `LinearProgressIndicator` e
+`CircularProgressIndicator` foram atualizadas em dezembro de 2023.
 
-To opt into the 2024 design specifications,
-set the `LinearProgressIndicator.year2023` and
-`CircularProgressIndicator.year2023` flags to `false`.
-This is done to ensure that existing apps aren't affected by
-the updated design spec.
+Para optar pelas especificações de design de 2024,
+defina as flags `LinearProgressIndicator.year2023` e
+`CircularProgressIndicator.year2023` como `false`.
+Isso é feito para garantir que aplicações existentes não sejam afetadas pela
+especificação de design atualizada.
 
 ## Description of change
 
-The `LinearProgressIndicator` and `CircularProgressIndicator` widgets each
-have a `year2023` flag that can be set to `false` to
-opt in to the updated design specification.
-The default value for the `year2023` flag is `true`, which means that
-the progress indicators use the 2023 design spec.
+Os widgets `LinearProgressIndicator` e `CircularProgressIndicator` têm cada um
+uma flag `year2023` que pode ser definida como `false` para
+optar pela especificação de design atualizada.
+O valor padrão para a flag `year2023` é `true`, o que significa que
+os indicadores de progresso usam a especificação de design de 2023.
 
-When [`LinearProgressIndicator.year2023`][] is set to `false`,
-the progress indicator have gaps between active and inactive tracks,
-a stop indicator, and rounded corners.
-If the `LinearProgressIndicator` is indeterminate,
-the stop indicator isn't shown.
+Quando [`LinearProgressIndicator.year2023`][] é definido como `false`,
+o indicador de progresso tem lacunas entre trilhas ativa e inativa,
+um indicador de parada e cantos arredondados.
+Se o `LinearProgressIndicator` é indeterminado,
+o indicador de parada não é mostrado.
 
-When [`CircularProgressIndicator.year2023`][] is set to `false`,
-the progress indicator has a track gap and rounded stroke cap.
+Quando [`CircularProgressIndicator.year2023`][] é definido como `false`,
+o indicador de progresso tem uma lacuna na trilha e extremidade de traço arredondada.
 
 ## Migration guide
 
-To opt into the updated design spec for the `LinearProgressIndicator`,
-set the `year2023` flag to `false`:
+Para optar pela especificação de design atualizada para o `LinearProgressIndicator`,
+defina a flag `year2023` como `false`:
 
 ```dart highlightLines=2
 LinearProgressIndicator(
@@ -57,8 +58,8 @@ LinearProgressIndicator(
 ),
 ```
 
-To update your entire app to use the updated `LinearProgressIndicator` design,
-set the `ProgressIndicatorThemeData.year2023` property to `false` in your
+Para atualizar sua aplicação inteira para usar o design atualizado de `LinearProgressIndicator`,
+defina a propriedade `ProgressIndicatorThemeData.year2023` como `false` no seu
 `MaterialApp`:
 
 ```dart highlightLines=2
@@ -72,8 +73,8 @@ return MaterialApp(
         // ...
 ```
 
-To opt into the updated design spec for the `CircularProgressIndicator`,
-set the `year2023` flag to `false`:
+Para optar pela especificação de design atualizada para o `CircularProgressIndicator`,
+defina a flag `year2023` como `false`:
 
 ```dart highlightLines=2
 CircularProgressIndicator(
@@ -82,8 +83,8 @@ CircularProgressIndicator(
 ),
 ```
 
-To update your entire app to use the updated `CircularProgressIndicator` design,
-set the `ProgressIndicatorThemeData.year2023` property to `false` in your
+Para atualizar sua aplicação inteira para usar o design atualizado de `CircularProgressIndicator`,
+defina a propriedade `ProgressIndicatorThemeData.year2023` como `false` no seu
 `MaterialApp`:
 
 ```dart highlightLines=2

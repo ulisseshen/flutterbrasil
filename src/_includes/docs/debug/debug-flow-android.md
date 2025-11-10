@@ -1,7 +1,7 @@
-#### Build the Android version of the Flutter app in the Terminal
+#### Compile a versão Android do app Flutter no Terminal
 
-To generate the needed Android platform dependencies,
-run the `flutter build` command.
+Para gerar as dependências necessárias da plataforma Android,
+execute o comando `flutter build`.
 
 ```console
 flutter build appbundle --debug
@@ -16,22 +16,22 @@ Running Gradle task 'bundleDebug'...                               27.1s
 <Tabs key="android-debug-flow">
 <Tab name="Start from VS Code">
 
-#### Start debugging with VS Code first {:#from-vscode-to-android-studio}
+#### Comece depurando com VS Code primeiro {:#from-vscode-to-android-studio}
 
-If you use VS Code to debug most of your code, start with this section.
+Se você usa VS Code para depurar a maior parte do seu código, comece com esta seção.
 
 {% render "docs/debug/debug-flow-vscode-as-start.md" %}
 
-#### Attach to the Flutter process in Android Studio
+#### Anexe ao processo Flutter no Android Studio
 
 {% render "docs/debug/debug-android-attach-process.md" %}
 
 </Tab>
 <Tab name="Start from Android Studio">
 
-#### Start debugging with Android Studio first {:#from-android-studio}
+#### Comece depurando com Android Studio primeiro {:#from-android-studio}
 
-If you use Android Studio to debug most of your code, start with this section.
+Se você usa Android Studio para depurar a maior parte do seu código, comece com esta seção.
 
 {% render "docs/debug/debug-flow-androidstudio-as-start.md" %}
 

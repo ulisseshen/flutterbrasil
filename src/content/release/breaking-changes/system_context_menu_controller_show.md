@@ -1,46 +1,47 @@
 ---
-title: SystemContextMenuController.show Deprecated
+title: SystemContextMenuController.show descontinuado
 description: >-
-  `SystemContextMenuController`'s `show` method is deprecated and replaced by
-  its `showWithItems` method.
+  O método `show` de `SystemContextMenuController` está descontinuado e substituído por
+  seu método `showWithItems`.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
 ## Summary
 
-`SystemContextMenuController.show` is deprecated. The same functionality can be
-achieved by passing the result of calling `SystemContextMenu.getDefaultItems` to
+`SystemContextMenuController.show` está descontinuado. A mesma funcionalidade pode ser
+alcançada passando o resultado de chamar `SystemContextMenu.getDefaultItems` para
 `SystemContextMenuController.showWithItems`.
 
 ## Background
 
-The iOS-drawn `SystemContextMenu` feature was originally added without the
-ability to control which items are shown in the menu. The platform would decide
-which items to show based on the active `TextInputConnection`.
+O recurso `SystemContextMenu` desenhado pelo iOS foi originalmente adicionado sem a
+capacidade de controlar quais itens são mostrados no menu. A plataforma decidia
+quais itens mostrar baseado na `TextInputConnection` ativa.
 
-The problem with this approach is that an "Autofill" button is often shown, but
-Flutter does not have the ability to respond to this button. So in many cases,
-users see an "Autofill" button that does nothing when tapped, and Flutter app
-developers have no way to hide the button.
+O problema com esta abordagem é que um botão "Autofill" é frequentemente mostrado, mas
+Flutter não tem a capacidade de responder a este botão. Então em muitos casos,
+usuários veem um botão "Autofill" que não faz nada quando tocado, e desenvolvedores de aplicações
+Flutter não têm como esconder o botão.
 
-This problem is solved by introducing a new method,
-`SystemContextMenuController.showWithItems`, which requires a list of `items` to
-be passed.
+Este problema é resolvido introduzindo um novo método,
+`SystemContextMenuController.showWithItems`, que requer uma lista de `items` para
+ser passada.
 
-Developers that have no preference which items are shown can call the new method
-`SystemContextMenu.getDefaultItems` to get the default items based on the given
-`EditableTextState`. For example, if the `EditableTextState` indicates that
-there is nothing selected, then the **Copy** button won't be included, since it
-requires a selection to copy.
+Desenvolvedores que não têm preferência sobre quais itens são mostrados podem chamar o novo método
+`SystemContextMenu.getDefaultItems` para obter os itens padrão baseados no
+`EditableTextState` fornecido. Por exemplo, se o `EditableTextState` indica que
+não há nada selecionado, então o botão **Copy** não será incluído, já que ele
+requer uma seleção para copiar.
 
 ## Migration guide
 
-Most users use the system context menu through the `SystemContextMenu` widget,
-and in this case there will be no change required. The `SystemContextMenu`
-widget automatically gets the default items under the hood.
+A maioria dos usuários usa o menu de contexto do sistema através do widget `SystemContextMenu`,
+e neste caso não haverá mudança necessária. O widget `SystemContextMenu`
+obtém automaticamente os itens padrão internamente.
 
-No migration is needed:
+Nenhuma migração é necessária:
 
 ```dart
 class _MyWidgetState extends State<MyWidget> {
@@ -57,11 +58,11 @@ class _MyWidgetState extends State<MyWidget> {
 }
 ```
 
-For advanced users that directly work with `SystemContextMenuController`,
-migrate to the new method `SystemContextMenuController.showWithItems`. The
-default can be obtained from `SystemContextMenu.getDefaultItems` as a list of
-`IOSSystemContextMenuItem`s, which can be converted to the format required by
-`showWithItems` through `IOSSystemContextMenuItem.getData`.
+Para usuários avançados que trabalham diretamente com `SystemContextMenuController`,
+migre para o novo método `SystemContextMenuController.showWithItems`. O
+padrão pode ser obtido de `SystemContextMenu.getDefaultItems` como uma lista de
+`IOSSystemContextMenuItem`s, que podem ser convertidos para o formato requerido por
+`showWithItems` através de `IOSSystemContextMenuItem.getData`.
 
 Code before migration:
 

@@ -1,6 +1,7 @@
 ---
 title: Flutter para desenvolvedores Android
 description: Aprenda como aplicar conhecimentos de desenvolvimento Android ao criar aplicativos Flutter.
+ia-translate: true
 ---
 
 <?code-excerpt path-base="get-started/flutter-for/android_devs"?>

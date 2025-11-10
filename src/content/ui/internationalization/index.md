@@ -1,72 +1,73 @@
 ---
-title: Internationalizing Flutter apps
+title: Internacionalizando apps Flutter
 shortTitle: i18n
-description: How to internationalize your Flutter app.
+description: Como internacionalizar seu app Flutter.
+ia-translate: true
 ---
 
 <?code-excerpt path-base="internationalization"?>
 
-:::secondary What you'll learn
-* How to track the device's locale (the user's preferred language).
-* How to enable locale-specific Material or Cupertino widgets.
-* How to manage locale-specific app values.
-* How to define the locales an app supports.
+:::secondary O que você aprenderá
+* Como rastrear o locale do dispositivo (a linguagem preferida do usuário).
+* Como habilitar widgets Material ou Cupertino específicos de locale.
+* Como gerenciar valores de app específicos de locale.
+* Como definir os locales que um app suporta.
 :::
 
-If your app might be deployed to users who speak another
-language then you'll need to internationalize it.
-That means you need to write the app in a way that makes
-it possible to localize values like text and layouts
-for each language or locale that the app supports.
-Flutter provides widgets and classes that help with
-internationalization and the Flutter libraries
-themselves are internationalized.
+Se seu app pode ser implantado para usuários que falam outro
+idioma, então você precisará internacionalizá-lo.
+Isso significa que você precisa escrever o app de forma que torne
+possível localizar valores como texto e layouts
+para cada idioma ou locale que o app suporta.
+O Flutter fornece widgets e classes que ajudam com
+internacionalização e as bibliotecas Flutter
+em si são internacionalizadas.
 
-This page covers concepts and workflows necessary to
-localize a Flutter application using the
-`MaterialApp` and `CupertinoApp` classes,
-as most apps are written that way.
-However, applications written using the lower level
-`WidgetsApp` class can also be internationalized
-using the same classes and logic.
+Esta página cobre conceitos e fluxos de trabalho necessários para
+localizar um aplicativo Flutter usando as
+classes `MaterialApp` e `CupertinoApp`,
+já que a maioria dos apps é escrita dessa forma.
+No entanto, aplicativos escritos usando a classe de nível inferior
+`WidgetsApp` também podem ser internacionalizados
+usando as mesmas classes e lógica.
 
-## Introduction to localizations in Flutter
+## Introdução às localizações no Flutter
 
-This section provides a tutorial on how to create and
-internationalize a new Flutter application,
-along with any additional setup
-that a target platform might require.
+Esta seção fornece um tutorial sobre como criar e
+internacionalizar um novo aplicativo Flutter,
+juntamente com qualquer configuração adicional
+que uma plataforma alvo possa requerer.
 
-You can find the source code for this example in
+Você pode encontrar o código-fonte deste exemplo em
 [`gen_l10n_example`][].
 
 [`gen_l10n_example`]: {{site.repo.this}}/tree/{{site.branch}}/examples/internationalization/gen_l10n_example
 
-### Setting up an internation&shy;alized app: the Flutter<wbr>_localizations package {:#setting-up}
+### Configurando um app internacionalizado: o pacote Flutter<wbr>_localizations {:#setting-up}
 
-By default, Flutter only provides US English localizations.
-To add support for other languages,
-an application must specify additional
-`MaterialApp` (or `CupertinoApp`) properties,
-and include a package called `flutter_localizations`.
+Por padrão, o Flutter fornece apenas localizações em inglês dos EUA.
+Para adicionar suporte para outros idiomas,
+um aplicativo deve especificar propriedades adicionais
+do `MaterialApp` (ou `CupertinoApp`),
+e incluir um pacote chamado `flutter_localizations`.
 
-To begin, start by creating a new Flutter application
-in a directory of your choice with the `flutter create` command.
+Para começar, crie um novo aplicativo Flutter
+em um diretório de sua escolha com o comando `flutter create`.
 
 ```console
 $ flutter create <name_of_flutter_app>
 ```
 
-To use `flutter_localizations`,
-add the package as a dependency to your `pubspec.yaml` file,
-as well as the `intl` package:
+Para usar o `flutter_localizations`,
+adicione o pacote como uma dependência ao seu arquivo `pubspec.yaml`,
+assim como o pacote `intl`:
 
 ```console
 $ flutter pub add flutter_localizations --sdk=flutter
 $ flutter pub add intl:any
 ```
 
-This creates a `pubspec.yml` file with the following entries:
+Isso cria um arquivo `pubspec.yml` com as seguintes entradas:
 
 <?code-excerpt "gen_l10n_example/pubspec.yaml (flutter-localizations)"?>
 ```yaml
@@ -78,9 +79,9 @@ dependencies:
   intl: any
 ```
 
-Then import the `flutter_localizations` library and specify
-`localizationsDelegates` and `supportedLocales` for
-your `MaterialApp` or `CupertinoApp`:
+Em seguida, importe a biblioteca `flutter_localizations` e especifique
+`localizationsDelegates` e `supportedLocales` para
+seu `MaterialApp` ou `CupertinoApp`:
 
 <?code-excerpt "gen_l10n_example/lib/main.dart (localization-delegates-import)"?>
 ```dart
@@ -104,51 +105,51 @@ return const MaterialApp(
 );
 ```
 
-After introducing the `flutter_localizations` package
-and adding the previous code,
-the `Material` and `Cupertino`
-packages should now be correctly localized in
-one of the supported locales.
-Widgets should be adapted to the localized messages,
-along with correct left-to-right or right-to-left layout.
+Após introduzir o pacote `flutter_localizations`
+e adicionar o código anterior,
+os pacotes `Material` e `Cupertino`
+agora devem estar corretamente localizados em
+um dos locales suportados.
+Os widgets devem ser adaptados às mensagens localizadas,
+juntamente com o layout correto da esquerda para a direita ou da direita para a esquerda.
 
-Try switching the target platform's locale to
-Spanish (`es`) and the messages should be localized.
+Tente mudar o locale da plataforma alvo para
+espanhol (`es`) e as mensagens devem ser localizadas.
 
-Apps based on `WidgetsApp` are similar except that the
-`GlobalMaterialLocalizations.delegate` isn't needed.
+Apps baseados em `WidgetsApp` são similares, exceto que o
+`GlobalMaterialLocalizations.delegate` não é necessário.
 
-The full `Locale.fromSubtags` constructor is preferred
-as it supports [`scriptCode`][], though the `Locale` default
-constructor is still fully valid.
+O construtor completo `Locale.fromSubtags` é preferível
+pois suporta [`scriptCode`][], embora o construtor padrão `Locale`
+ainda seja totalmente válido.
 
 [`scriptCode`]: {{site.api}}/flutter/package-intl_locale/Locale/scriptCode.html
 
-The elements of the `localizationsDelegates` list are
-factories that produce collections of localized values.
-`GlobalMaterialLocalizations.delegate` provides localized
-strings and other values for the Material Components
-library. `GlobalWidgetsLocalizations.delegate`
-defines the default text direction,
-either left-to-right or right-to-left, for the widgets library.
+Os elementos da lista `localizationsDelegates` são
+factories que produzem coleções de valores localizados.
+`GlobalMaterialLocalizations.delegate` fornece strings
+localizadas e outros valores para a biblioteca Material Components.
+`GlobalWidgetsLocalizations.delegate`
+define a direção padrão do texto,
+da esquerda para a direita ou da direita para a esquerda, para a biblioteca de widgets.
 
-More information about these app properties, the types they
-depend on, and how internationalized Flutter apps are typically
-structured, is covered on this page.
+Mais informações sobre essas propriedades do app, os tipos dos quais elas
+dependem, e como os apps Flutter internacionalizados são tipicamente
+estruturados, são cobertas nesta página.
 
 [language-count]: {{site.api}}/flutter/flutter_localizations/GlobalMaterialLocalizations-class.html
 
 <a id="overriding-locale"></a>
-### Overriding the locale
+### Substituindo o locale
 
-`Localizations.override` is a factory constructor
-for the `Localizations` widget that allows for
-(the typically rare) situation where a section of your application
-needs to be localized to a different locale than the locale
-configured for your device.
+`Localizations.override` é um construtor factory
+para o widget `Localizations` que permite
+a situação (tipicamente rara) onde uma seção do seu aplicativo
+precisa ser localizada para um locale diferente do locale
+configurado para o seu dispositivo.
 
-To observe this behavior, add a call to `Localizations.override`
-and a simple `CalendarDatePicker`:
+Para observar este comportamento, adicione uma chamada a `Localizations.override`
+e um `CalendarDatePicker` simples:
 
 <?code-excerpt "gen_l10n_example/lib/examples.dart (date-picker)"?>
 ```dart
@@ -185,26 +186,26 @@ Widget build(BuildContext context) {
 }
 ```
 
-Hot reload the app and the `CalendarDatePicker`
-widget should re-render in Spanish.
+Faça hot reload do app e o widget `CalendarDatePicker`
+deve ser renderizado novamente em espanhol.
 
 <a id="adding-localized-messages"></a>
-### Adding your own localized messages
+### Adicionando suas próprias mensagens localizadas {:#adding-your-own-localized-messages}
 
-After adding the `flutter_localizations` package,
-you can configure localization.
-To add localized text to your application,
-complete the following instructions:
+Após adicionar o pacote `flutter_localizations`,
+você pode configurar a localização.
+Para adicionar texto localizado ao seu aplicativo,
+complete as seguintes instruções:
 
-1. Add the `intl` package as a dependency, pulling
-   in the version pinned by `flutter_localizations`:
+1. Adicione o pacote `intl` como uma dependência, puxando
+   a versão fixada pelo `flutter_localizations`:
 
    ```console
    $ flutter pub add intl:any
    ```
 
-2. Open the `pubspec.yaml` file and enable the `generate` flag.
-   This flag is found in the `flutter` section in the pubspec file.
+2. Abra o arquivo `pubspec.yaml` e habilite a flag `generate`.
+   Esta flag é encontrada na seção `flutter` no arquivo pubspec.
 
    <?code-excerpt "gen_l10n_example/pubspec.yaml (generate)"?>
    ```yaml
@@ -213,8 +214,8 @@ complete the following instructions:
      generate: true # Add this line
    ```
 
-3. Add a new yaml file to the root directory of the Flutter project.
-   Name this file `l10n.yaml` and include the following content:
+3. Adicione um novo arquivo yaml ao diretório raiz do projeto Flutter.
+   Nomeie este arquivo como `l10n.yaml` e inclua o seguinte conteúdo:
 
    <?code-excerpt "gen_l10n_example/l10n.yaml"?>
    ```yaml
@@ -223,18 +224,18 @@ complete the following instructions:
    output-localization-file: app_localizations.dart
    ```
 
-   This file configures the localization tool.
-   In this example, you've done the following:
+   Este arquivo configura a ferramenta de localização.
+   Neste exemplo, você fez o seguinte:
 
-   * Put the [App Resource Bundle][] (`.arb`) input files in
+   * Colocou os arquivos de entrada [App Resource Bundle][] (`.arb`) em
      `${FLUTTER_PROJECT}/lib/l10n`.
-     The `.arb` provide localization resources for your app.
-   * Set the English template as `app_en.arb`.
-   * Told Flutter to generate localizations in the
-     `app_localizations.dart` file.
+     Os `.arb` fornecem recursos de localização para seu app.
+   * Definiu o template em inglês como `app_en.arb`.
+   * Disse ao Flutter para gerar localizações no
+     arquivo `app_localizations.dart`.
 
-4. In `${FLUTTER_PROJECT}/lib/l10n`,
-   add the `app_en.arb` template file. For example:
+4. Em `${FLUTTER_PROJECT}/lib/l10n`,
+   adicione o arquivo de template `app_en.arb`. Por exemplo:
 
    <?code-excerpt "gen_l10n_example/lib/l10n/app_en.arb" take="5" replace="/},/}\n}/g"?>
    ```json
@@ -246,8 +247,8 @@ complete the following instructions:
    }
    ```
 
-5. Add another bundle file called `app_es.arb` in the same directory.
-   In this file, add the Spanish translation of the same message.
+5. Adicione outro arquivo de bundle chamado `app_es.arb` no mesmo diretório.
+   Neste arquivo, adicione a tradução em espanhol da mesma mensagem.
 
    <?code-excerpt "gen_l10n_example/lib/l10n/app_es.arb"?>
    ```json
@@ -256,15 +257,15 @@ complete the following instructions:
    }
    ```
 
-6. Now, run `flutter pub get` or `flutter run` and codegen takes place automatically.
-   You should find generated files in the directory at the path you specified
-   with the `arb-dir` or `output-dir` options
-   Alternatively, you can also run `flutter gen-l10n` to
-   generate the same files without running the app.
+6. Agora, execute `flutter pub get` ou `flutter run` e a geração de código acontece automaticamente.
+   Você deve encontrar arquivos gerados no diretório no caminho que você especificou
+   com as opções `arb-dir` ou `output-dir`
+   Alternativamente, você também pode executar `flutter gen-l10n` para
+   gerar os mesmos arquivos sem executar o app.
 
-7. Add the import statement on `app_localizations.dart` and
+7. Adicione a declaração de importação em `app_localizations.dart` e
    `AppLocalizations.delegate`
-   in your call to the constructor for `MaterialApp`:
+   na sua chamada ao construtor do `MaterialApp`:
 
    <?code-excerpt "gen_l10n_example/lib/main.dart (app-localizations-import)"?>
    ```dart
@@ -289,9 +290,9 @@ complete the following instructions:
    );
    ```
 
-   The `AppLocalizations` class also provides auto-generated
-   `localizationsDelegates` and `supportedLocales` lists.
-   You can use these instead of providing them manually.
+   A classe `AppLocalizations` também fornece listas
+   `localizationsDelegates` e `supportedLocales` geradas automaticamente.
+   Você pode usar essas em vez de fornecê-las manualmente.
 
    <?code-excerpt "gen_l10n_example/lib/examples.dart (material-app)"?>
    ```dart
@@ -302,8 +303,8 @@ complete the following instructions:
    );
    ```
 
-8. Once the Material app has started,
-   you can use `AppLocalizations` anywhere in your app:
+8. Uma vez que o app Material tenha iniciado,
+   você pode usar `AppLocalizations` em qualquer lugar do seu app:
 
    <?code-excerpt "gen_l10n_example/lib/main.dart (internationalized-title)"?>
    ```dart
@@ -317,23 +318,23 @@ complete the following instructions:
    ```
 
 :::note
-The Material app has to actually be started to initialize
-`AppLocalizations`. If the app hasn't yet started,
-`AppLocalizations.of(context)!.helloWorld` causes a
-null exception.
+O app Material precisa realmente ser iniciado para inicializar
+`AppLocalizations`. Se o app ainda não foi iniciado,
+`AppLocalizations.of(context)!.helloWorld` causa uma
+exceção nula.
 :::
 
-   This code generates a `Text` widget that displays "Hello World!"
-   if the target device's locale is set to English,
-   and "¡Hola Mundo!" if the target device's locale is set
-   to Spanish. In the `arb` files,
-   the key of each entry is used as the method name of the getter,
-   while the value of that entry contains the localized message.
+   Este código gera um widget `Text` que exibe "Hello World!"
+   se o locale do dispositivo alvo estiver definido como inglês,
+   e "¡Hola Mundo!" se o locale do dispositivo alvo estiver definido
+   como espanhol. Nos arquivos `arb`,
+   a chave de cada entrada é usada como o nome do método do getter,
+   enquanto o valor dessa entrada contém a mensagem localizada.
 
-The [`gen_l10n_example`][] uses this tool.
+O [`gen_l10n_example`][] usa esta ferramenta.
 
-To localize your device app description,
-pass the localized string to
+Para localizar a descrição do seu app no dispositivo,
+passe a string localizada para
 [`MaterialApp.onGenerateTitle`][]:
 
 <?code-excerpt "intl_example/lib/main.dart (app-title)"?>
@@ -346,32 +347,32 @@ return MaterialApp(
 [`gen_l10n_example`]: {{site.repo.this}}/tree/{{site.branch}}/examples/internationalization/gen_l10n_example
 [`MaterialApp.onGenerateTitle`]: {{site.api}}/flutter/material/MaterialApp/onGenerateTitle.html
 
-### Placeholders, plurals, and selects
+### Placeholders, plurais e seleções
 
 :::tip
-When using VS Code, add the [arb-editor extension][].
-This extension adds syntax highlighting, snippets,
-diagnostics, and quick fixes to help edit `.arb` template files.
+Ao usar o VS Code, adicione a [extensão arb-editor][arb-editor extension].
+Esta extensão adiciona realce de sintaxe, snippets,
+diagnósticos e correções rápidas para ajudar a editar arquivos de template `.arb`.
 :::
 
 [arb-editor extension]: https://marketplace.visualstudio.com/items?itemName=Google.arb-editor
 
-You can also include application values in a message with
-special syntax that uses a _placeholder_ to generate a method
-instead of a getter.
-A placeholder, which must be a valid Dart identifier name,
-becomes a positional parameter in the generated method in the
-`AppLocalizations` code. Define a placeholder name by wrapping
-it in curly braces as follows:
+Você também pode incluir valores de aplicativo em uma mensagem com
+sintaxe especial que usa um _placeholder_ para gerar um método
+em vez de um getter.
+Um placeholder, que deve ser um nome de identificador Dart válido,
+torna-se um parâmetro posicional no método gerado no
+código `AppLocalizations`. Defina um nome de placeholder envolvendo-o
+em chaves da seguinte forma:
 
 ```json
 "{placeholderName}"
 ```
 
-Define each placeholder in the `placeholders` object
-in the app's `.arb` file. For example,
-to define a hello message with a `userName` parameter,
-add the following to `lib/l10n/app_en.arb`:
+Defina cada placeholder no objeto `placeholders`
+no arquivo `.arb` do app. Por exemplo,
+para definir uma mensagem de saudação com um parâmetro `userName`,
+adicione o seguinte a `lib/l10n/app_en.arb`:
 
 <?code-excerpt "gen_l10n_example/lib/l10n/app_en.arb" skip="5" take="10" replace="/},$/}/g"?>
 ```json
@@ -387,13 +388,13 @@ add the following to `lib/l10n/app_en.arb`:
 }
 ```
 
-This code snippet adds a `hello` method call to
-the `AppLocalizations.of(context)` object,
-and the method accepts a parameter of type `String`;
-the `hello` method returns a string.
-Regenerate the `AppLocalizations` file.
+Este trecho de código adiciona uma chamada de método `hello` ao
+objeto `AppLocalizations.of(context)`,
+e o método aceita um parâmetro do tipo `String`;
+o método `hello` retorna uma string.
+Regenere o arquivo `AppLocalizations`.
 
-Replace the code passed into `Builder` with the following:
+Substitua o código passado para `Builder` pelo seguinte:
 
 <?code-excerpt "gen_l10n_example/lib/main.dart (placeholder)" remove="/wombat|Wombats|he'|they|pronoun/"?>
 ```dart
@@ -406,32 +407,32 @@ return Column(
 );
 ```
 
-You can also use numerical placeholders to specify multiple values.
-Different languages have different ways to pluralize words.
-The syntax also supports specifying _how_ a word should be pluralized.
-A _pluralized_ message must include a `num` parameter indicating
-how to pluralize the word in different situations.
-English, for example, pluralizes "person" to "people",
-but that doesn't go far enough.
-The `message0` plural might be "no people" or "zero people".
-The `messageFew` plural might be
-"several people", "some people", or "a few people".
-The `messageMany` plural might
-be "most people" or "many people", or "a crowd".
-Only the more general `messageOther` field is required.
-The following example shows what options are available:
+Você também pode usar placeholders numéricos para especificar múltiplos valores.
+Idiomas diferentes têm maneiras diferentes de pluralizar palavras.
+A sintaxe também suporta especificar _como_ uma palavra deve ser pluralizada.
+Uma mensagem _pluralizada_ deve incluir um parâmetro `num` indicando
+como pluralizar a palavra em diferentes situações.
+O inglês, por exemplo, pluraliza "person" para "people",
+mas isso não vai longe o suficiente.
+O plural `message0` pode ser "no people" ou "zero people".
+O plural `messageFew` pode ser
+"several people", "some people", ou "a few people".
+O plural `messageMany` pode
+ser "most people" ou "many people", ou "a crowd".
+Apenas o campo mais geral `messageOther` é obrigatório.
+O exemplo a seguir mostra quais opções estão disponíveis:
 
 ```json
 "{countPlaceholder, plural, =0{message0} =1{message1} =2{message2} few{messageFew} many{messageMany} other{messageOther}}"
 ```
 
-The previous expression is replaced by the message variation
-(`message0`, `message1`, ...) corresponding to the value
-of the `countPlaceholder`.
-Only the `messageOther` field is required.
+A expressão anterior é substituída pela variação da mensagem
+(`message0`, `message1`, ...) correspondente ao valor
+do `countPlaceholder`.
+Apenas o campo `messageOther` é obrigatório.
 
-The following example defines a message that pluralizes
-the word, "wombat":
+O exemplo a seguir define uma mensagem que pluraliza
+a palavra "wombat":
 
 {% raw %}
 <?code-excerpt "gen_l10n_example/lib/l10n/app_en.arb" skip="15" take="10" replace="/},$/}/g"?>
@@ -449,7 +450,7 @@ the word, "wombat":
 ```
 {% endraw %}
 
-Use a plural method by passing in the `count` parameter:
+Use um método plural passando o parâmetro `count`:
 
 <?code-excerpt "gen_l10n_example/lib/main.dart (placeholder)" remove="/John|he|she|they|pronoun/" replace="/\[/[\n    .../g"?>
 ```dart
@@ -467,17 +468,17 @@ return Column(
 );
 ```
 
-Similar to plurals,
-you can also choose a value based on a `String` placeholder.
-This is most often used to support gendered languages.
-The syntax is as follows:
+Semelhante aos plurais,
+você também pode escolher um valor com base em um placeholder `String`.
+Isso é mais frequentemente usado para suportar idiomas com gênero.
+A sintaxe é a seguinte:
 
 ```json
 "{selectPlaceholder, select, case{message} ... other{messageOther}}"
 ```
 
-The next example defines a message that
-selects a pronoun based on gender:
+O próximo exemplo define uma mensagem que
+seleciona um pronome com base no gênero:
 
 {% raw %}
 <?code-excerpt "gen_l10n_example/lib/l10n/app_en.arb" skip="25" take="9" replace="/},$/}/g"?>
@@ -494,8 +495,8 @@ selects a pronoun based on gender:
 ```
 {% endraw %}
 
-Use this feature by
-passing the gender string as a parameter:
+Use este recurso
+passando a string de gênero como parâmetro:
 
 <?code-excerpt "gen_l10n_example/lib/main.dart (placeholder)" remove="/'He|hello|ombat/" replace="/\[/[\n    .../g"?>
 ```dart
@@ -513,30 +514,30 @@ return Column(
 );
 ```
 
-Keep in mind that when using `select` statements,
-comparison between the parameter and the actual
-value is case-sensitive.
-That is, `AppLocalizations.of(context)!.pronoun("Male")`
-defaults to the "other" case, and returns "they".
+Tenha em mente que ao usar declarações `select`,
+a comparação entre o parâmetro e o valor
+real é sensível a maiúsculas e minúsculas.
+Ou seja, `AppLocalizations.of(context)!.pronoun("Male")`
+usa o caso "other" por padrão, e retorna "they".
 
-### Escaping syntax
+### Sintaxe de escape
 
-Sometimes, you have to use tokens,
-such as `{` and `}`, as normal characters.
-To ignore such tokens from being parsed,
-enable the `use-escaping` flag by adding the
-following to `l10n.yaml`:
+Às vezes, você precisa usar tokens,
+como `{` e `}`, como caracteres normais.
+Para ignorar tais tokens de serem analisados,
+habilite a flag `use-escaping` adicionando o
+seguinte a `l10n.yaml`:
 
 ```yaml
 use-escaping: true
 ```
 
-The parser ignores any string of characters
-wrapped with a pair of single quotes.
-To use a normal single quote character,
-use a pair of consecutive single quotes.
-For example, the following text is converted
-to a Dart `String`:
+O parser ignora qualquer string de caracteres
+envolvida com um par de aspas simples.
+Para usar um caractere de aspas simples normal,
+use um par de aspas simples consecutivas.
+Por exemplo, o seguinte texto é convertido
+para uma `String` Dart:
 
 ```json
 {
@@ -544,24 +545,24 @@ to a Dart `String`:
 }
 ```
 
-The resulting string is as follows:
+A string resultante é a seguinte:
 
 ```dart
 "Hello! {Isn't} this a wonderful day?"
 ```
 
-### Messages with numbers and currencies
+### Mensagens com números e moedas
 
-Numbers, including those that represent currency values,
-are displayed very differently in different locales.
-The localizations generation tool in
-`flutter_localizations` uses the
-[`NumberFormat`]({{site.api}}/flutter/intl/NumberFormat-class.html)
-class in the `intl` package to format
-numbers based on the locale and the desired format.
+Números, incluindo aqueles que representam valores monetários,
+são exibidos de maneira muito diferente em diferentes locales.
+A ferramenta de geração de localizações em
+`flutter_localizations` usa a
+classe [`NumberFormat`]({{site.api}}/flutter/intl/NumberFormat-class.html)
+no pacote `intl` para formatar
+números com base no locale e no formato desejado.
 
-The `int`, `double`, and `num` types can use any of the
-following `NumberFormat` constructors:
+Os tipos `int`, `double` e `num` podem usar qualquer um dos
+seguintes construtores `NumberFormat`:
 
 | Message "format" value   | Output for 1200000 |
 |--------------------------|--------------------|
@@ -579,13 +580,13 @@ following `NumberFormat` constructors:
 
 {:.table .table-striped}
 
-The starred `NumberFormat` constructors in the table
-offer optional, named parameters.
-Those parameters can be specified as the value
-of the placeholder's `optionalParameters` object.
-For example, to specify the optional `decimalDigits`
-parameter for `compactCurrency`,
-make the following changes to the `lib/l10n/app_en.arb` file:
+Os construtores `NumberFormat` com asterisco na tabela
+oferecem parâmetros nomeados opcionais.
+Esses parâmetros podem ser especificados como o valor
+do objeto `optionalParameters` do placeholder.
+Por exemplo, para especificar o parâmetro opcional `decimalDigits`
+para `compactCurrency`,
+faça as seguintes alterações no arquivo `lib/l10n/app_en.arb`:
 
 {% raw %}
 <?code-excerpt "gen_l10n_example/lib/l10n/app_en.arb" skip="34" take="13" replace="/},$/}/g"?>
@@ -606,19 +607,19 @@ make the following changes to the `lib/l10n/app_en.arb` file:
 ```
 {% endraw %}
 
-### Messages with dates
+### Mensagens com datas
 
-Dates strings are formatted in many different ways
-depending both the locale and the app's needs.
+Strings de datas são formatadas de muitas maneiras diferentes
+dependendo tanto do locale quanto das necessidades do app.
 
-Placeholder values with type `DateTime` are formatted with
-[`DateFormat`][] in the `intl` package.
+Valores de placeholder com tipo `DateTime` são formatados com
+[`DateFormat`][] no pacote `intl`.
 
-There are 41 format variations,
-identified by the names of their `DateFormat` factory constructors.
-In the following example, the `DateTime` value
-that appears in the `helloWorldOn` message is
-formatted with `DateFormat.yMd`:
+Existem 41 variações de formato,
+identificadas pelos nomes de seus construtores factory `DateFormat`.
+No exemplo a seguir, o valor `DateTime`
+que aparece na mensagem `helloWorldOn` é
+formatado com `DateFormat.yMd`:
 
 ```json
 "helloWorldOn": "Hello World on {date}",
@@ -633,9 +634,9 @@ formatted with `DateFormat.yMd`:
 }
 ```
 
-In an app where the locale is US English,
-the following expression would produce "7/9/1959".
-In a Russian locale, it would produce "9.07.1959".
+Em um app onde o locale é inglês dos EUA,
+a seguinte expressão produziria "7/9/1959".
+Em um locale russo, produziria "9.07.1959".
 
 ```dart
 AppLocalizations.of(context).helloWorldOn(DateTime.utc(1959, 7, 9))
@@ -644,54 +645,54 @@ AppLocalizations.of(context).helloWorldOn(DateTime.utc(1959, 7, 9))
 [`DateFormat`]: {{site.api}}/flutter/intl/DateFormat-class.html
 
 <a id="ios-specifics"></a>
-### Localizing for iOS: Updating the iOS app bundle
+### Localizando para iOS: Atualizando o bundle do app iOS
 
-Although the localizations are handled by Flutter,
-you need to add the supported languages in the Xcode project.
-This ensures your entry in the App Store correctly displays
-the supported languages.
+Embora as localizações sejam tratadas pelo Flutter,
+você precisa adicionar os idiomas suportados no projeto Xcode.
+Isso garante que sua entrada na App Store exiba corretamente
+os idiomas suportados.
 
-To configure the locales supported by your app,
-use the following instructions:
+Para configurar os locales suportados pelo seu app,
+use as seguintes instruções:
 
-1. Open your project's `ios/Runner.xcodeproj` Xcode file.
+1. Abra o arquivo Xcode `ios/Runner.xcodeproj` do seu projeto.
 
-2. In the **Project Navigator**, select the `Runner` project
-   file under **Projects**.
+2. No **Project Navigator**, selecione o arquivo de projeto `Runner`
+   em **Projects**.
 
-4. Select the `Info` tab in the project editor.
+4. Selecione a aba `Info` no editor do projeto.
 
-5. In the **Localizations** section, click the `Add` button
-   (`+`) to add the supported languages and regions to your
-   project. When asked to choose files and reference language,
-   simply select `Finish`.
+5. Na seção **Localizations**, clique no botão `Add`
+   (`+`) para adicionar os idiomas e regiões suportados ao seu
+   projeto. Quando perguntado para escolher arquivos e idioma de referência,
+   simplesmente selecione `Finish`.
 
-7. Xcode automatically creates empty `.strings` files and
-   updates the `ios/Runner.xcodeproj/project.pbxproj` file.
-   These files are used by the App Store to determine which
-   languages and regions your app supports.
+7. O Xcode cria automaticamente arquivos `.strings` vazios e
+   atualiza o arquivo `ios/Runner.xcodeproj/project.pbxproj`.
+   Esses arquivos são usados pela App Store para determinar quais
+   idiomas e regiões seu app suporta.
 
 <a id="advanced-customization"></a>
-## Advanced topics for further customization
+## Tópicos avançados para personalização adicional
 
-This section covers additional ways to customize a
-localized Flutter application.
+Esta seção cobre maneiras adicionais de personalizar um
+aplicativo Flutter localizado.
 
 <a id="advanced-locale"></a>
-### Advanced locale definition
+### Definição avançada de locale
 
-Some languages with multiple variants require more than just a
-language code to properly differentiate.
+Alguns idiomas com múltiplas variantes requerem mais do que apenas um
+código de idioma para diferenciar adequadamente.
 
-For example, fully differentiating all variants of
-Chinese requires specifying the language code, script code,
-and country code. This is due to the existence
-of simplified and traditional script, as well as regional
-differences in the way characters are written within the same script type.
+Por exemplo, diferenciar completamente todas as variantes do
+chinês requer especificar o código do idioma, código de script
+e código do país. Isso se deve à existência
+de script simplificado e tradicional, bem como diferenças regionais
+na forma como os caracteres são escritos dentro do mesmo tipo de script.
 
-In order to fully express every variant of Chinese for the
-country codes `CN`, `TW`, and `HK`, the list of supported
-locales should include:
+Para expressar completamente cada variante do chinês para os
+códigos de país `CN`, `TW` e `HK`, a lista de locales
+suportados deve incluir:
 
 <?code-excerpt "gen_l10n_example/lib/examples.dart (supported-locales)"?>
 ```dart
@@ -723,41 +724,41 @@ supportedLocales: [
 ],
 ```
 
-This explicit full definition ensures that your app can
-distinguish between and provide the fully nuanced localized
-content to all combinations of these country codes.
-If a user's preferred locale isn't specified,
-Flutter selects the closest match,
-which likely contains differences to what the user expects.
-Flutter only resolves to locales defined in `supportedLocales`
-and provides scriptCode-differentiated localized
-content for commonly used languages.
-See [`Localizations`][] for information on how the supported
-locales and the preferred locales are resolved.
+Esta definição completa e explícita garante que seu app possa
+distinguir entre e fornecer conteúdo localizado
+totalmente nuançado para todas as combinações desses códigos de país.
+Se o locale preferido de um usuário não estiver especificado,
+o Flutter seleciona a correspondência mais próxima,
+que provavelmente contém diferenças do que o usuário espera.
+O Flutter só resolve para locales definidos em `supportedLocales`
+e fornece conteúdo localizado diferenciado por scriptCode
+para idiomas comumente usados.
+Veja [`Localizations`][] para informações sobre como os locales
+suportados e os locales preferidos são resolvidos.
 
-Although Chinese is a primary example,
-other languages like French (`fr_FR`, `fr_CA`)
-should also be fully differentiated for more nuanced localization.
+Embora o chinês seja um exemplo primário,
+outros idiomas como francês (`fr_FR`, `fr_CA`)
+também devem ser totalmente diferenciados para uma localização mais nuançada.
 
 [`Localizations`]: {{site.api}}/flutter/widgets/WidgetsApp/supportedLocales.html
 
 <a id="tracking-locale"></a>
-### Tracking the locale: The Locale class and the Localizations widget
+### Rastreando o locale: A classe Locale e o widget Localizations
 
-The [`Locale`][] class identifies the user's language.
-Mobile devices support setting the locale for all applications,
-usually using a system settings menu.
-Internationalized apps respond by displaying values that are
-locale-specific. For example, if the user switches the device's locale
-from English to French, then a `Text` widget that originally
-displayed "Hello World" would be rebuilt with "Bonjour le monde".
+A classe [`Locale`][] identifica o idioma do usuário.
+Dispositivos móveis suportam configurar o locale para todos os aplicativos,
+geralmente usando um menu de configurações do sistema.
+Apps internacionalizados respondem exibindo valores que são
+específicos do locale. Por exemplo, se o usuário mudar o locale do dispositivo
+de inglês para francês, então um widget `Text` que originalmente
+exibia "Hello World" seria reconstruído com "Bonjour le monde".
 
-The [`Localizations`][widgets-global] widget defines the locale
-for its child and the localized resources that the child depends on.
-The [`WidgetsApp`][] widget creates a `Localizations` widget
-and rebuilds it if the system's locale changes.
+O widget [`Localizations`][widgets-global] define o locale
+para seu filho e os recursos localizados dos quais o filho depende.
+O widget [`WidgetsApp`][] cria um widget `Localizations`
+e o reconstrói se o locale do sistema mudar.
 
-You can always look up an app's current locale with
+Você sempre pode consultar o locale atual de um app com
 `Localizations.localeOf()`:
 
 <?code-excerpt "gen_l10n_example/lib/examples.dart (my-locale)"?>
@@ -771,26 +772,26 @@ Locale myLocale = Localizations.localeOf(context);
 
 <a id="specifying-supportedlocales" aria-hidden="true"></a>
 
-### Specifying the app's supported&shy;Locales parameter
+### Especificando o parâmetro supported&shy;Locales do app
 
-Although the `flutter_localizations` library
-supports many languages and language variants,
-only English language translations are available by default.
-It's up to the developer to decide exactly which languages to support.
+Embora a biblioteca `flutter_localizations`
+suporte muitos idiomas e variantes de idioma,
+apenas traduções em inglês estão disponíveis por padrão.
+Cabe ao desenvolvedor decidir exatamente quais idiomas suportar.
 
-The `MaterialApp` [`supportedLocales`][]
-parameter limits locale changes. When the user changes the locale
-setting on their device, the app's `Localizations` widget only
-follows suit if the new locale is a member of this list.
-If an exact match for the device locale isn't found,
-then the first supported locale with a matching [`languageCode`][]
-is used. If that fails, then the first element of the
-`supportedLocales` list is used.
+O parâmetro [`supportedLocales`][] do `MaterialApp`
+limita mudanças de locale. Quando o usuário muda a configuração de locale
+no dispositivo, o widget `Localizations` do app só
+acompanha se o novo locale for membro desta lista.
+Se uma correspondência exata para o locale do dispositivo não for encontrada,
+então o primeiro locale suportado com um [`languageCode`][] correspondente
+é usado. Se isso falhar, então o primeiro elemento da
+lista `supportedLocales` é usado.
 
-An app that wants to use a different "locale resolution"
-method can provide a [`localeResolutionCallback`][].
-For example, to have your app unconditionally accept
-whatever locale the user selects:
+Um app que deseja usar um método diferente de "resolução de locale"
+pode fornecer um [`localeResolutionCallback`][].
+Por exemplo, para fazer seu app aceitar incondicionalmente
+qualquer locale que o usuário selecione:
 
 <?code-excerpt "gen_l10n_example/lib/examples.dart (locale-resolution)"?>
 ```dart
@@ -805,102 +806,102 @@ MaterialApp(
 [`localeResolutionCallback`]: {{site.api}}/flutter/widgets/LocaleResolutionCallback.html
 [`supportedLocales`]: {{site.api}}/flutter/material/MaterialApp/supportedLocales.html
 
-### Configuring the l10n.yaml file
+### Configurando o arquivo l10n.yaml {:#configuring-the-l10n-yaml-file}
 
-The `l10n.yaml` file allows you to configure the `gen-l10n` tool
-to specify the following:
+O arquivo `l10n.yaml` permite que você configure a ferramenta `gen-l10n`
+para especificar o seguinte:
 
-* where all the input files are located
-* where all the output files should be created
-* what Dart class name to give your localizations delegate
+* onde todos os arquivos de entrada estão localizados
+* onde todos os arquivos de saída devem ser criados
+* qual nome de classe Dart dar ao seu delegate de localizações
 
-For a full list of options, either run `flutter gen-l10n --help`
-at the command line or refer to the following table:
+Para uma lista completa de opções, execute `flutter gen-l10n --help`
+na linha de comando ou consulte a tabela a seguir:
 
-| Option                              | Description |
+| Opção                               | Descrição |
 | ------------------------------------| ------------------ |
-| `arb-dir`                           | The directory where the template and translated arb files are located. The default is `lib/l10n`. |
-| `output-dir`                        | The directory where the generated localization classes are written. This option is only relevant if you want to generate the localizations code somewhere else in the Flutter project. You also need to set the `synthetic-package` flag to false.<br /><br />The app must import the file specified in the `output-localization-file` option from this directory. If unspecified, this defaults to the same directory as the input directory specified in `arb-dir`. |
-| `template-arb-file`                 | The template arb file that is used as the basis for generating the Dart localization and messages files. The default is `app_en.arb`. |
-| `output-localization-file`          | The filename for the output localization and localizations delegate classes. The default is `app_localizations.dart`. |
-| `untranslated-messages-file`        | The location of a file that describes the localization messages haven't been translated yet. Using this option creates a JSON file at the target location, in the following format: <br /> <br />`"locale": ["message_1", "message_2" ... "message_n"]`<br /><br /> If this option is not specified, a summary of the messages that haven't been translated are printed on the command line. |
-| `output-class`                      | The Dart class name to use for the output localization and localizations delegate classes. The default is `AppLocalizations`. |
-| `preferred-supported-locales`       | The list of preferred supported locales for the application. By default, the tool generates the supported locales list in alphabetical order. Use this flag to default to a different locale.<br /><br />For example, pass in `[ en_US ]` to default to American English if a device supports it. |
-| `header`                            | The header to prepend to the generated Dart localizations files. This option takes in a string.<br /><br />For example, pass in `"/// All localized files."` to prepend this string to the generated Dart file.<br /><br />Alternatively, check out the `header-file` option to pass in a text file for longer headers. |
-| `header-file`                       | The header to prepend to the generated Dart localizations files. The value of this option is the name of the file that contains the header text that is inserted at the top of each generated Dart file. <br /><br /> Alternatively, check out the `header` option to pass in a string for a simpler header.<br /><br />This file should be placed in the directory specified in `arb-dir`. |
-| `[no-]use-deferred-loading`         | Specifies whether to generate the Dart localization file with locales imported as deferred, allowing for lazy loading of each locale in Flutter web.<br /><br />This can reduce a web app's initial startup time by decreasing the size of the JavaScript bundle. When this flag is set to true, the messages for a particular locale are only downloaded and loaded by the Flutter app as they are needed. For projects with a lot of different locales and many localization strings, it can improve performance to defer loading. For projects with a small number of locales, the difference is negligible, and might slow down the start up compared to bundling the localizations with the rest of the application.<br /><br />Note that this flag doesn't affect other platforms such as mobile or desktop. |
-| `gen-inputs-and-outputs-list`      | When specified, the tool generates a JSON file containing the tool's inputs and outputs, named `gen_l10n_inputs_and_outputs.json`.<br /><br />This can be useful for keeping track of which files of the Flutter project were used when generating the latest set of localizations.  For example, the Flutter tool's build system uses this file to keep track of when to call gen_l10n during hot reload.<br /><br />The value of this option is the directory where the JSON file is generated.  When null, the JSON file won't be generated. |
-| `synthetic-package`                 | Determines  whether the generated output files are generated as a synthetic package or at a specified directory in the Flutter project. This flag is `true` by default. When `synthetic-package` is set to `false`, it generates the localizations files in the directory specified by `arb-dir` by default. If `output-dir` is specified, files are generated there. |
-| `project-dir`                       | When specified, the tool uses the path passed into this option as the directory of the root Flutter project.<br /><br />When null, the relative path to the present working directory is used. |
-| `[no-]required-resource-attributes` | Requires all resource ids to contain a corresponding resource attribute.<br /><br />By default, simple messages won't require metadata, but it's highly recommended as this provides context for the meaning of a message to readers.<br /><br />Resource attributes are still required for plural messages. |
-| `[no-]nullable-getter`              | Specifies whether the localizations class getter is nullable.<br /><br />By default, this value is true so that `Localizations.of(context)` returns a nullable value for backwards compatibility. If this value is false, then a null check is performed on the returned value of `Localizations.of(context)`, removing the need for null checking in user code. |
-| `[no-]format`                       | When specified, the `dart format` command is run after generating the localization files. |
-| `use-escaping`                      | Specifies whether to enable the use of single quotes as escaping syntax. |
-| `[no-]suppress-warnings`            | When specified, all warnings are suppressed. |
-| `[no-]relax-syntax`                 | When specified, the syntax is relaxed so that the special character "{" is treated as a string if not followed by a valid placeholder and "}" is treated as a string if it doesn't close any previous "{" that is treated as a special character. |
-| `[no-]use-named-parameters`         | Whether to use named parameters for the generated localization methods. |
+| `arb-dir`                           | O diretório onde os arquivos arb de template e traduzidos estão localizados. O padrão é `lib/l10n`. |
+| `output-dir`                        | O diretório onde as classes de localização geradas são escritas. Esta opção é relevante apenas se você quiser gerar o código de localizações em outro lugar no projeto Flutter. Você também precisa definir a flag `synthetic-package` como false.<br /><br />O app deve importar o arquivo especificado na opção `output-localization-file` deste diretório. Se não especificado, o padrão é o mesmo diretório do diretório de entrada especificado em `arb-dir`. |
+| `template-arb-file`                 | O arquivo arb de template que é usado como base para gerar os arquivos Dart de localização e mensagens. O padrão é `app_en.arb`. |
+| `output-localization-file`          | O nome do arquivo para as classes de localização de saída e delegate de localizações. O padrão é `app_localizations.dart`. |
+| `untranslated-messages-file`        | A localização de um arquivo que descreve as mensagens de localização que ainda não foram traduzidas. Usar esta opção cria um arquivo JSON na localização alvo, no seguinte formato: <br /> <br />`"locale": ["message_1", "message_2" ... "message_n"]`<br /><br /> Se esta opção não for especificada, um resumo das mensagens que não foram traduzidas é impresso na linha de comando. |
+| `output-class`                      | O nome da classe Dart a ser usado para as classes de localização de saída e delegate de localizações. O padrão é `AppLocalizations`. |
+| `preferred-supported-locales`       | A lista de locales suportados preferidos para o aplicativo. Por padrão, a ferramenta gera a lista de locales suportados em ordem alfabética. Use esta flag para usar um locale diferente como padrão.<br /><br />Por exemplo, passe `[ en_US ]` para usar inglês americano como padrão se um dispositivo o suportar. |
+| `header`                            | O cabeçalho a ser anexado aos arquivos Dart de localizações gerados. Esta opção recebe uma string.<br /><br />Por exemplo, passe `"/// All localized files."` para anexar esta string ao arquivo Dart gerado.<br /><br />Alternativamente, confira a opção `header-file` para passar um arquivo de texto para cabeçalhos mais longos. |
+| `header-file`                       | O cabeçalho a ser anexado aos arquivos Dart de localizações gerados. O valor desta opção é o nome do arquivo que contém o texto do cabeçalho que é inserido no topo de cada arquivo Dart gerado. <br /><br /> Alternativamente, confira a opção `header` para passar uma string para um cabeçalho mais simples.<br /><br />Este arquivo deve ser colocado no diretório especificado em `arb-dir`. |
+| `[no-]use-deferred-loading`         | Especifica se deve gerar o arquivo Dart de localização com locales importados como deferred, permitindo carregamento preguiçoso de cada locale no Flutter web.<br /><br />Isso pode reduzir o tempo de inicialização inicial de um app web diminuindo o tamanho do bundle JavaScript. Quando esta flag está definida como true, as mensagens para um locale específico são apenas baixadas e carregadas pelo app Flutter conforme necessário. Para projetos com muitos locales diferentes e muitas strings de localização, pode melhorar o desempenho adiar o carregamento. Para projetos com um pequeno número de locales, a diferença é negligenciável e pode retardar a inicialização comparado a agrupar as localizações com o resto do aplicativo.<br /><br />Note que esta flag não afeta outras plataformas como mobile ou desktop. |
+| `gen-inputs-and-outputs-list`      | Quando especificado, a ferramenta gera um arquivo JSON contendo as entradas e saídas da ferramenta, chamado `gen_l10n_inputs_and_outputs.json`.<br /><br />Isso pode ser útil para rastrear quais arquivos do projeto Flutter foram usados ao gerar o último conjunto de localizações. Por exemplo, o sistema de build da ferramenta Flutter usa este arquivo para rastrear quando chamar gen_l10n durante hot reload.<br /><br />O valor desta opção é o diretório onde o arquivo JSON é gerado. Quando null, o arquivo JSON não será gerado. |
+| `synthetic-package`                 | Determina se os arquivos de saída gerados são gerados como um pacote sintético ou em um diretório especificado no projeto Flutter. Esta flag é `true` por padrão. Quando `synthetic-package` está definido como `false`, gera os arquivos de localizações no diretório especificado por `arb-dir` por padrão. Se `output-dir` for especificado, os arquivos são gerados lá. |
+| `project-dir`                       | Quando especificado, a ferramenta usa o caminho passado para esta opção como o diretório do projeto Flutter raiz.<br /><br />Quando null, o caminho relativo ao diretório de trabalho atual é usado. |
+| `[no-]required-resource-attributes` | Requer que todos os IDs de recurso contenham um atributo de recurso correspondente.<br /><br />Por padrão, mensagens simples não requerem metadados, mas é altamente recomendado pois isso fornece contexto para o significado de uma mensagem aos leitores.<br /><br />Atributos de recurso ainda são obrigatórios para mensagens plurais. |
+| `[no-]nullable-getter`              | Especifica se o getter da classe de localizações é nullable.<br /><br />Por padrão, este valor é true para que `Localizations.of(context)` retorne um valor nullable para compatibilidade retroativa. Se este valor for false, então uma verificação de null é realizada no valor retornado de `Localizations.of(context)`, removendo a necessidade de verificação de null no código do usuário. |
+| `[no-]format`                       | Quando especificado, o comando `dart format` é executado após gerar os arquivos de localização. |
+| `use-escaping`                      | Especifica se deve habilitar o uso de aspas simples como sintaxe de escape. |
+| `[no-]suppress-warnings`            | Quando especificado, todos os avisos são suprimidos. |
+| `[no-]relax-syntax`                 | Quando especificado, a sintaxe é relaxada de modo que o caractere especial "{" é tratado como uma string se não for seguido por um placeholder válido e "}" é tratado como uma string se não fechar nenhum "{" anterior que seja tratado como um caractere especial. |
+| `[no-]use-named-parameters`         | Se deve usar parâmetros nomeados para os métodos de localização gerados. |
 
 {:.table .table-striped}
 
 
-## How internationalization in Flutter works
+## Como funciona a internacionalização no Flutter
 
-This section covers the technical details of how localizations work
-in Flutter. If you're planning on supporting your own set of localized
-messages, the following content would be helpful.
-Otherwise, you can skip this section.
+Esta seção cobre os detalhes técnicos de como as localizações funcionam
+no Flutter. Se você está planejando suportar seu próprio conjunto de mensagens
+localizadas, o conteúdo a seguir seria útil.
+Caso contrário, você pode pular esta seção.
 
 <a id="loading-and-retrieving"></a>
-### Loading and retrieving localized values
+### Carregando e recuperando valores localizados
 
-The `Localizations` widget is used to load and
-look up objects that contain collections of localized values.
-Apps refer to these objects with [`Localizations.of(context,type)`][].
-If the device's locale changes,
-the `Localizations` widget automatically loads values for
-the new locale and then rebuilds widgets that used it.
-This happens because `Localizations` works like an
+O widget `Localizations` é usado para carregar e
+procurar objetos que contêm coleções de valores localizados.
+Apps referem-se a esses objetos com [`Localizations.of(context,type)`][].
+Se o locale do dispositivo mudar,
+o widget `Localizations` carrega automaticamente valores para
+o novo locale e então reconstrói os widgets que o usaram.
+Isso acontece porque `Localizations` funciona como um
 [`InheritedWidget`][].
-When a build function refers to an inherited widget,
-an implicit dependency on the inherited widget is created.
-When an inherited widget changes
-(when the `Localizations` widget's locale changes),
-its dependent contexts are rebuilt.
+Quando uma função de build refere-se a um inherited widget,
+uma dependência implícita no inherited widget é criada.
+Quando um inherited widget muda
+(quando o locale do widget `Localizations` muda),
+seus contextos dependentes são reconstruídos.
 
-Localized values are loaded by the `Localizations` widget's
-list of [`LocalizationsDelegate`][]s.
-Each delegate must define an asynchronous [`load()`][]
-method that produces an object that encapsulates a
-collection of localized values.
-Typically these objects define one method per localized value.
+Valores localizados são carregados pela lista de
+[`LocalizationsDelegate`][]s do widget `Localizations`.
+Cada delegate deve definir um método [`load()`][] assíncrono
+que produz um objeto que encapsula uma
+coleção de valores localizados.
+Tipicamente, esses objetos definem um método por valor localizado.
 
-In a large app, different modules or packages might be bundled with
-their own localizations. That's why the `Localizations` widget
-manages a table of objects, one per `LocalizationsDelegate`.
-To retrieve the object produced by one of the `LocalizationsDelegate`'s
-`load` methods, specify a `BuildContext` and the object's type.
+Em um app grande, diferentes módulos ou pacotes podem ser agrupados com
+suas próprias localizações. É por isso que o widget `Localizations`
+gerencia uma tabela de objetos, um por `LocalizationsDelegate`.
+Para recuperar o objeto produzido por um dos métodos `load` do
+`LocalizationsDelegate`, especifique um `BuildContext` e o tipo do objeto.
 
-For example,
-the localized strings for the Material Components widgets
-are defined by the [`MaterialLocalizations`][] class.
-Instances of this class are created by a `LocalizationDelegate`
-provided by the [`MaterialApp`][] class.
-They can be retrieved with `Localizations.of()`:
+Por exemplo,
+as strings localizadas para os widgets Material Components
+são definidas pela classe [`MaterialLocalizations`][].
+Instâncias desta classe são criadas por um `LocalizationDelegate`
+fornecido pela classe [`MaterialApp`][].
+Elas podem ser recuperadas com `Localizations.of()`:
 
 ```dart
 Localizations.of<MaterialLocalizations>(context, MaterialLocalizations);
 ```
 
-This particular `Localizations.of()` expression is used frequently,
-so the `MaterialLocalizations` class provides a convenient shorthand:
+Esta expressão `Localizations.of()` em particular é usada frequentemente,
+então a classe `MaterialLocalizations` fornece um atalho conveniente:
 
 ```dart
 static MaterialLocalizations of(BuildContext context) {
   return Localizations.of<MaterialLocalizations>(context, MaterialLocalizations);
 }
 
-/// References to the localized values defined by MaterialLocalizations
-/// are typically written like this:
+/// Referências aos valores localizados definidos por MaterialLocalizations
+/// são tipicamente escritas assim:
 
 tooltip: MaterialLocalizations.of(context).backButtonTooltip,
 ```
@@ -913,26 +914,26 @@ tooltip: MaterialLocalizations.of(context).backButtonTooltip,
 [`MaterialLocalizations`]: {{site.api}}/flutter/material/MaterialLocalizations-class.html
 
 <a id="defining-class"></a>
-### Defining a class for the app's localized resources
+### Definindo uma classe para os recursos localizados do app
 
-Putting together an internationalized Flutter app usually
-starts with the class that encapsulates the app's localized values.
-The example that follows is typical of such classes.
+Montar um app Flutter internacionalizado geralmente
+começa com a classe que encapsula os valores localizados do app.
+O exemplo a seguir é típico de tais classes.
 
-Complete source code for the [`intl_example`][] for this app.
+Código-fonte completo para o [`intl_example`][] deste app.
 
-This example is based on the APIs and tools provided by the
-[`intl`][] package. The [An alternative class for the app's
-localized resources](#alternative-class) section
-describes [an example][] that doesn't depend on the `intl` package.
+Este exemplo é baseado nas APIs e ferramentas fornecidas pelo
+pacote [`intl`][]. A seção [Uma classe alternativa para os recursos
+localizados do app](#alternative-class)
+descreve [um exemplo][an example] que não depende do pacote `intl`.
 
-The `DemoLocalizations` class
-(defined in the following code snippet)
-contains the app's strings (just one for the example)
-translated into the locales that the app supports.
-It uses the `initializeMessages()` function
-generated by Dart's [`intl`][] package,
-[`Intl.message()`][], to look them up.
+A classe `DemoLocalizations`
+(definida no trecho de código a seguir)
+contém as strings do app (apenas uma para o exemplo)
+traduzidas para os locales que o app suporta.
+Ela usa a função `initializeMessages()`
+gerada pelo pacote [`intl`][] do Dart,
+[`Intl.message()`][], para procurá-las.
 
 <?code-excerpt "intl_example/lib/main.dart (demo-localizations)"?>
 ```dart
@@ -968,50 +969,50 @@ class DemoLocalizations {
 }
 ```
 
-A class based on the `intl` package imports a generated
-message catalog that provides the `initializeMessages()`
-function and the per-locale backing store for `Intl.message()`.
-The message catalog is produced by an [`intl` tool](#dart-tools)
-that analyzes the source code for classes that contain
-`Intl.message()` calls.
-In this case that would just be the `DemoLocalizations` class.
+Uma classe baseada no pacote `intl` importa um catálogo de mensagens
+gerado que fornece a função `initializeMessages()`
+e o armazenamento de apoio por locale para `Intl.message()`.
+O catálogo de mensagens é produzido por uma [ferramenta `intl`](#dart-tools)
+que analisa o código-fonte de classes que contêm
+chamadas `Intl.message()`.
+Neste caso, seria apenas a classe `DemoLocalizations`.
 
 [an example]: {{site.repo.this}}/tree/{{site.branch}}/examples/internationalization/minimal
 [`intl`]: {{site.pub-pkg}}/intl
 [`Intl.message()`]: {{site.pub-api}}/intl/latest/intl/Intl/message.html
 
 <a id="adding-language"></a>
-### Adding support for a new language
+### Adicionando suporte para um novo idioma
 
-An app that needs to support a language that's not included in
-[`GlobalMaterialLocalizations`][] has to do some extra work:
-it must provide about 70 translations ("localizations")
-for words or phrases and the date patterns and symbols for the
+Um app que precisa suportar um idioma que não está incluído em
+[`GlobalMaterialLocalizations`][] tem que fazer algum trabalho extra:
+ele deve fornecer cerca de 70 traduções ("localizações")
+para palavras ou frases e os padrões e símbolos de data para o
 locale.
 
-See the following for an example of how to add
-support for the Norwegian Nynorsk language.
+Veja a seguir um exemplo de como adicionar
+suporte para o idioma norueguês Nynorsk.
 
-A new `GlobalMaterialLocalizations` subclass defines the
-localizations that the Material library depends on.
-A new `LocalizationsDelegate` subclass, which serves
-as factory for the `GlobalMaterialLocalizations` subclass,
-must also be defined.
+Uma nova subclasse `GlobalMaterialLocalizations` define as
+localizações das quais a biblioteca Material depende.
+Uma nova subclasse `LocalizationsDelegate`, que serve
+como factory para a subclasse `GlobalMaterialLocalizations`,
+também deve ser definida.
 
-Here's the source code for the complete [`add_language`][] example,
-minus the actual Nynorsk translations.
+Aqui está o código-fonte para o exemplo completo [`add_language`][],
+menos as traduções reais de Nynorsk.
 
-The locale-specific `GlobalMaterialLocalizations` subclass
-is called `NnMaterialLocalizations`,
-and the `LocalizationsDelegate` subclass is
+A subclasse `GlobalMaterialLocalizations` específica do locale
+é chamada `NnMaterialLocalizations`,
+e a subclasse `LocalizationsDelegate` é
 `_NnMaterialLocalizationsDelegate`.
-The value of `NnMaterialLocalizations.delegate`
-is an instance of the delegate, and is all
-that's needed by an app that uses these localizations.
+O valor de `NnMaterialLocalizations.delegate`
+é uma instância do delegate, e é tudo
+que é necessário por um app que usa essas localizações.
 
-The delegate class includes basic date and number format
-localizations. All of the other localizations are defined by `String`
-valued property getters in `NnMaterialLocalizations`, like this:
+A classe delegate inclui localizações básicas de formato de data e número.
+Todas as outras localizações são definidas por getters de propriedade
+com valor `String` em `NnMaterialLocalizations`, assim:
 
 <?code-excerpt "add_language/lib/nn_intl.dart (getters)"?>
 ```dart
@@ -1025,14 +1026,14 @@ String get aboutListTileTitleRaw => r'About $applicationName';
 String get alertDialogLabel => r'Alert';
 ```
 
-These are the English translations, of course.
-To complete the job you need to change the return
-value of each getter to an appropriate Nynorsk string.
+Essas são as traduções em inglês, é claro.
+Para completar o trabalho, você precisa mudar o valor de retorno
+de cada getter para uma string Nynorsk apropriada.
 
-The getters return "raw" Dart strings that have an `r` prefix,
-such as `r'About $applicationName'`,
-because sometimes the strings contain variables with a `$` prefix.
-The variables are expanded by parameterized localization methods:
+Os getters retornam strings Dart "brutas" que têm um prefixo `r`,
+como `r'About $applicationName'`,
+porque às vezes as strings contêm variáveis com um prefixo `$`.
+As variáveis são expandidas por métodos de localização parametrizados:
 
 <?code-excerpt "add_language/lib/nn_intl.dart (raw)"?>
 ```dart
@@ -1044,8 +1045,8 @@ String get pageRowsInfoTitleApproximateRaw =>
     r'$firstRow–$lastRow of about $rowCount';
 ```
 
-The date patterns and symbols of the locale also need to
-be specified, which are defined in the source code as follows:
+Os padrões e símbolos de data do locale também precisam ser
+especificados, que são definidos no código-fonte da seguinte forma:
 
 {% comment %}
 RegEx adds last two lines with commented out code and closing bracket.
@@ -1073,11 +1074,11 @@ const nnDateSymbols = {
   'ERAS': <dynamic>['f.Kr.', 'e.Kr.'],
 ```
 
-These values need to be modified for the locale to use the correct
-date formatting. Unfortunately, since the `intl` library doesn't
-share the same flexibility for number formatting,
-the formatting for an existing locale must be used
-as a substitute in `_NnMaterialLocalizationsDelegate`:
+Esses valores precisam ser modificados para o locale usar a
+formatação de data correta. Infelizmente, como a biblioteca `intl` não
+compartilha a mesma flexibilidade para formatação de números,
+a formatação para um locale existente deve ser usada
+como substituto em `_NnMaterialLocalizationsDelegate`:
 
 <?code-excerpt "add_language/lib/nn_intl.dart (delegate)"?>
 ```dart
@@ -1131,15 +1132,15 @@ class _NnMaterialLocalizationsDelegate
 }
 ```
 
-For more information about localization strings,
-check out the [flutter_localizations README][].
+Para mais informações sobre strings de localização,
+confira o [README do flutter_localizations][flutter_localizations README].
 
-Once you've implemented your language-specific subclasses of
-`GlobalMaterialLocalizations` and `LocalizationsDelegate`,
-you  need to add the language and a delegate instance to your app.
-The following code sets the app's language to Nynorsk and
-adds the `NnMaterialLocalizations` delegate instance to the app's
-`localizationsDelegates` list:
+Uma vez que você implementou suas subclasses específicas de idioma de
+`GlobalMaterialLocalizations` e `LocalizationsDelegate`,
+você precisa adicionar o idioma e uma instância de delegate ao seu app.
+O código a seguir define o idioma do app como Nynorsk e
+adiciona a instância de delegate `NnMaterialLocalizations` à lista
+`localizationsDelegates` do app:
 
 <?code-excerpt "add_language/lib/main.dart (material-app)"?>
 ```dart
@@ -1160,23 +1161,23 @@ const MaterialApp(
 [`GlobalMaterialLocalizations`]: {{site.api}}/flutter/flutter_localizations/GlobalMaterialLocalizations-class.html
 
 <a id="alternative-internationalization-workflows"></a>
-## Alternative internationalization workflows
+## Fluxos de trabalho alternativos de internacionalização
 
-This section describes different approaches to internationalize
-your Flutter application.
+Esta seção descreve diferentes abordagens para internacionalizar
+seu aplicativo Flutter.
 
 <a id="alternative-class"></a>
-### An alternative class for the app's localized resources
+### Uma classe alternativa para os recursos localizados do app
 
-The previous example was defined in terms of the Dart `intl`
-package. You can choose your own approach for managing
-localized values for the sake of simplicity or perhaps to integrate
-with a different i18n framework.
+O exemplo anterior foi definido em termos do pacote `intl`
+do Dart. Você pode escolher sua própria abordagem para gerenciar
+valores localizados por questão de simplicidade ou talvez para integrar
+com um framework i18n diferente.
 
-Complete source code for the [`minimal`][] app.
+Código-fonte completo para o app [`minimal`][].
 
-In the following example, the `DemoLocalizations` class
-includes all of its translations directly in per language Maps:
+No exemplo a seguir, a classe `DemoLocalizations`
+inclui todas as suas traduções diretamente em Maps por idioma:
 
 
 <?code-excerpt "minimal/lib/main.dart (demo)"?>
@@ -1203,9 +1204,9 @@ class DemoLocalizations {
 }
 ```
 
-In the minimal app the `DemoLocalizationsDelegate` is slightly
-different. Its `load` method returns a [`SynchronousFuture`][]
-because no asynchronous loading needs to take place.
+No app minimal, o `DemoLocalizationsDelegate` é ligeiramente
+diferente. Seu método `load` retorna um [`SynchronousFuture`][]
+porque nenhum carregamento assíncrono precisa ocorrer.
 
 <?code-excerpt "minimal/lib/main.dart (delegate)"?>
 ```dart
@@ -1232,36 +1233,36 @@ class DemoLocalizationsDelegate
 [`SynchronousFuture`]: {{site.api}}/flutter/foundation/SynchronousFuture-class.html
 
 <a id="dart-tools"></a>
-### Using the Dart intl tools
+### Usando as ferramentas Dart intl
 
-Before building an API using the Dart [`intl`][] package,
-review the `intl` package's documentation.
-The following list summarizes the process for
-localizing an app that depends on the `intl` package:
+Antes de construir uma API usando o pacote [`intl`][] do Dart,
+revise a documentação do pacote `intl`.
+A lista a seguir resume o processo para
+localizar um app que depende do pacote `intl`:
 
-The demo app depends on a generated source file called
-`l10n/messages_all.dart`, which defines all of the
-localizable strings used by the app.
+O app de demonstração depende de um arquivo-fonte gerado chamado
+`l10n/messages_all.dart`, que define todas as
+strings localizáveis usadas pelo app.
 
-Rebuilding `l10n/messages_all.dart` requires two steps.
+Reconstruir `l10n/messages_all.dart` requer dois passos.
 
- 1. With the app's root directory as the current directory,
-    generate `l10n/intl_messages.arb` from `lib/main.dart`:
+ 1. Com o diretório raiz do app como diretório atual,
+    gere `l10n/intl_messages.arb` a partir de `lib/main.dart`:
 
     ```console
     $ dart run intl_translation:extract_to_arb --output-dir=lib/l10n lib/main.dart
     ```
 
-    The `intl_messages.arb` file is a JSON format map with one entry for
-    each `Intl.message()` function defined in `main.dart`.
-    This file serves as a template for the English and Spanish translations,
-    `intl_en.arb` and `intl_es.arb`.
-    These translations are created by you, the developer.
+    O arquivo `intl_messages.arb` é um mapa em formato JSON com uma entrada para
+    cada função `Intl.message()` definida em `main.dart`.
+    Este arquivo serve como template para as traduções em inglês e espanhol,
+    `intl_en.arb` e `intl_es.arb`.
+    Essas traduções são criadas por você, o desenvolvedor.
 
- 2. With the app's root directory as the current directory,
-    generate `intl_messages_<locale>.dart` for each
-    `intl_<locale>.arb` file and `intl_messages_all.dart`,
-    which imports all of the messages files:
+ 2. Com o diretório raiz do app como diretório atual,
+    gere `intl_messages_<locale>.dart` para cada
+    arquivo `intl_<locale>.arb` e `intl_messages_all.dart`,
+    que importa todos os arquivos de mensagens:
 
     ```console
     $ dart run intl_translation:generate_from_arb \
@@ -1269,9 +1270,9 @@ Rebuilding `l10n/messages_all.dart` requires two steps.
         lib/main.dart lib/l10n/intl_*.arb
     ```
 
-    ***Windows doesn't support file name wildcarding.***
-    Instead, list the .arb files that were generated by the
-    `intl_translation:extract_to_arb` command.
+    ***O Windows não suporta wildcard de nome de arquivo.***
+    Em vez disso, liste os arquivos .arb que foram gerados pelo
+    comando `intl_translation:extract_to_arb`.
 
     ```console
     $ dart run intl_translation:generate_from_arb \
@@ -1280,25 +1281,25 @@ Rebuilding `l10n/messages_all.dart` requires two steps.
         lib/l10n/intl_en.arb lib/l10n/intl_fr.arb lib/l10n/intl_messages.arb
     ```
 
-    The `DemoLocalizations` class uses the generated
-    `initializeMessages()` function
-    (defined in `intl_messages_all.dart`)
-    to load the localized messages and `Intl.message()`
-    to look them up.
+    A classe `DemoLocalizations` usa a função
+    `initializeMessages()` gerada
+    (definida em `intl_messages_all.dart`)
+    para carregar as mensagens localizadas e `Intl.message()`
+    para procurá-las.
 
-## More information
+## Mais informações
 
-If you learn best by reading code,
-check out the following examples.
+Se você aprende melhor lendo código,
+confira os seguintes exemplos.
 
 * [`minimal`][]<br>
-  The `minimal` example is designed to be as
-  simple as possible.
+  O exemplo `minimal` foi projetado para ser o mais
+  simples possível.
 * [`intl_example`][]<br>
-  uses APIs and tools provided by the [`intl`][] package.
+  usa APIs e ferramentas fornecidas pelo pacote [`intl`][].
 
-If Dart's `intl` package is new to you,
-check out [Using the Dart intl tools](#dart-tools).
+Se o pacote `intl` do Dart é novo para você,
+confira [Usando as ferramentas Dart intl](#dart-tools).
 
 [`intl_example`]: {{site.repo.this}}/tree/{{site.branch}}/examples/internationalization/intl_example
 [`minimal`]: {{site.repo.this}}/tree/{{site.branch}}/examples/internationalization/minimal

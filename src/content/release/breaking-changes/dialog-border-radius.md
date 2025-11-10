@@ -1,40 +1,41 @@
 ---
-title: Dialogs' Default BorderRadius
-description: The default BorderRadius of Dialog widgets is changing.
+title: BorderRadius padrão de Dialogs
+description: O BorderRadius padrão de widgets Dialog está mudando.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
 ## Summary
 
-Instances of `Dialog`, as well as
-`SimpleDialog`, `AlertDialog`, and `showTimePicker`,
-now have a default shape of a `RoundedRectangleBorder`
-with a `BorderRadius` of 4.0 pixels.
-This matches the current specifications of Material Design.
-Prior to this change, the default behavior for
-`Dialog.shape`'s `BorderRadius` was 2.0 pixels.
+Instâncias de `Dialog`, bem como
+`SimpleDialog`, `AlertDialog`, e `showTimePicker`,
+agora têm uma forma padrão de `RoundedRectangleBorder`
+com um `BorderRadius` de 4.0 pixels.
+Isso corresponde às especificações atuais de Material Design.
+Antes desta mudança, o comportamento padrão para
+o `BorderRadius` de `Dialog.shape` era 2.0 pixels.
 
 ## Context
 
-`Dialog`s and their associated subclasses
-(`SimpleDialog`, `AlertDialog`, and `showTimePicker`), appears
-slightly different as the border radius is larger.
-If you have master golden file images that have the
-prior rendering of the `Dialog` with a 2.0 pixel border radius,
-your widget tests will fail.
-These golden file images can be updated to reflect the new rendering,
-or you can update your code to maintain the original behavior.
+`Dialog`s e suas subclasses associadas
+(`SimpleDialog`, `AlertDialog`, e `showTimePicker`), aparecem
+ligeiramente diferentes já que o border radius é maior.
+Se você tem imagens de golden file master que têm a
+renderização anterior do `Dialog` com um border radius de 2.0 pixels,
+seus testes de widget vão falhar.
+Essas imagens de golden file podem ser atualizadas para refletir a nova renderização,
+ou você pode atualizar seu código para manter o comportamento original.
 
-The `showDatePicker` dialog already matched
-this specification and is unaffected by this change.
+O dialog `showDatePicker` já correspondia
+a esta especificação e não é afetado por esta mudança.
 
 ## Migration guide
 
-If you prefer to maintain the old shape, you can use
-the shape property of your `Dialog` to specify the original 2 pixel radius.
+Se você prefere manter a forma antiga, você pode usar
+a propriedade shape do seu `Dialog` para especificar o raio original de 2 pixels.
 
-Setting the Dialog shape to the original radius:
+Definindo a forma do Dialog para o raio original:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -64,8 +65,8 @@ class Foo extends StatelessWidget {
 }
 ```
 
-If you prefer the new behavior and have failing golden file tests,
-you can update your master golden files using this command:
+Se você prefere o novo comportamento e tem testes de golden file falhando,
+você pode atualizar seus arquivos golden master usando este comando:
 
 ```console
 flutter test --update-goldens

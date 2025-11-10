@@ -1,77 +1,78 @@
 ---
-title: FontWeight also controls the weight attribute of variable fonts
+title: FontWeight também controla o atributo weight de fontes variáveis
 description: >
-  FontWeight values applied to text styles will now set the weight attribute of variable fonts.
+  Valores FontWeight aplicados a estilos de texto agora definirão o atributo weight de fontes variáveis.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-A `FontWeight` in a text style will also set the weight attribute of variable
-fonts. It is no longer necessary to separately use `FontVariation` to control
-the weight of these fonts.
+Um `FontWeight` em um estilo de texto também definirá o atributo weight de fontes
+variáveis. Não é mais necessário usar separadamente `FontVariation` para controlar
+o weight dessas fontes.
 
-## Context
+## Contexto
 
-Text styles can specify a `FontWeight` value that configures the thickness of
-the strokes used to paint the text. `FontWeight` will select the closest
-weight among a set of font files belonging to the same family.
+Estilos de texto podem especificar um valor `FontWeight` que configura a espessura dos
+traços usados para pintar o texto. `FontWeight` selecionará o weight mais próximo
+entre um conjunto de arquivos de fonte pertencentes à mesma família.
 
-However, some fonts are distributed as [variable fonts](https://fonts.google.com/knowledge/introducing_type/introducing_variable_fonts)
-where a single font file allows adjustment of attributes such as weight. For
-variable fonts, applications also had to use the `FontVariation` API to set
-the value of the weight variation axis within the selected font file.
+No entanto, algumas fontes são distribuídas como [fontes variáveis](https://fonts.google.com/knowledge/introducing_type/introducing_variable_fonts)
+onde um único arquivo de fonte permite o ajuste de atributos como weight. Para
+fontes variáveis, aplicativos também tinham que usar a API `FontVariation` para definir
+o valor do eixo de variação de weight dentro do arquivo de fonte selecionado.
 
-Flutter has now changed the behavior of `FontWeight` so that it will both
-select the closest matching font file and set the weight attribute of variable
-fonts.
+O Flutter agora mudou o comportamento de `FontWeight` para que ele tanto
+selecione o arquivo de fonte correspondente mais próximo quanto defina o atributo weight de fontes
+variáveis.
 
-## Description of change
+## Descrição da mudança
 
-Setting the `fontWeight` property of objects such as `TextStyle` will now also
-set the value of the `wght` variation axis of fonts that support it. Flutter
-will internally apply the equivalent of adding a `FontVariation('wght')`
-attribute to the style whose value is the same as the `FontWeight`.
+Definir a propriedade `fontWeight` de objetos como `TextStyle` agora também
+definirá o valor do eixo de variação `wght` de fontes que o suportam. O Flutter
+aplicará internamente o equivalente a adicionar um atributo `FontVariation('wght')`
+ao estilo cujo valor é o mesmo do `FontWeight`.
 
-`FontWeight` instances can now be constructed using arbitrary integer values
-ranging from 1 to 1000. This allows usage of weights beyond the
-`FontWeight.w100` through `FontWeight.w900` range with values that are not
-multiples of 100. This also means that linear interpolation of fonts using
-`FontWeight.lerp` can yield values other than `FontWeight.w100` through `w900`.
+Instâncias de `FontWeight` agora podem ser construídas usando valores inteiros arbitrários
+variando de 1 a 1000. Isso permite o uso de weights além da faixa
+`FontWeight.w100` até `FontWeight.w900` com valores que não são
+múltiplos de 100. Isso também significa que interpolação linear de fontes usando
+`FontWeight.lerp` pode produzir valores diferentes de `FontWeight.w100` até `w900`.
 
-The `FontWeight.index` property is now deprecated because it only identifies
-the `FontWeight.w100` through `w900` weights. Applications should use
-`FontWeight.value` to obtain the thickness level of a font.
+A propriedade `FontWeight.index` agora está descontinuada porque ela apenas identifica
+os weights `FontWeight.w100` até `w900`. Aplicativos devem usar
+`FontWeight.value` para obter o nível de espessura de uma fonte.
 
-## Migration guide
+## Guia de migração
 
-Applications may see changes in text rendering if they used variable fonts and
-were specifying `FontWeight` in text styles without a matching
-`FontVariation('wght')` value.
+Aplicativos podem ver mudanças na renderização de texto se usaram fontes variáveis e
+estavam especificando `FontWeight` em estilos de texto sem um valor
+`FontVariation('wght')` correspondente.
 
-If these changes are undesirable, then the application should change the
-`FontWeight` to a value that achieves the intended rendering. For example,
-to restore the font's default weight, set `fontWeight` to `FontWeight.normal`.
+Se essas mudanças forem indesejáveis, então o aplicativo deve alterar o
+`FontWeight` para um valor que alcance a renderização pretendida. Por exemplo,
+para restaurar o weight padrão da fonte, defina `fontWeight` como `FontWeight.normal`.
 
-## Timeline
+## Cronograma
 
-Landed in version: 3.39.0-0.0.pre<br>
-In stable release: Not yet
+Adicionado na versão: 3.39.0-0.0.pre<br>
+Na versão estável: Ainda não
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
-* [`FontWeight`][]
+* [`FontWeight`][`FontWeight`]
 
-Relevant issue:
+Issue relevante:
 
-* [Issue 148026][]
+* [Issue 148026][Issue 148026]
 
-Relevant PR:
+PR relevante:
 
-* [PR 175771][]
+* [PR 175771][PR 175771]
 
 [`FontWeight`]: {{site.api}}/flutter/dart-ui/FontWeight-class.html
 [Issue 148026]: {{site.repo.flutter}}/issues/148026

@@ -1,37 +1,38 @@
 ---
-title: Deprecate `ThemeData.indicatorColor` in favor of
+title: Descontinuar `ThemeData.indicatorColor` em favor de
   `TabBarThemeData.indicatorColor`
 description: >-
-  The `ThemeData.indicatorColor` parameter has been replaced by
+  O parâmetro `ThemeData.indicatorColor` foi substituído por
   `TabBarThemeData.indicatorColor`.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
 ## Summary
 
-The [`ThemeData.indicatorColor`][] parameter was deprecated in favor of
-the [`TabBarThemeData.indicatorColor`][] parameter.
+O parâmetro [`ThemeData.indicatorColor`][] foi descontinuado em favor do
+parâmetro [`TabBarThemeData.indicatorColor`][].
 
 ## Context
 
-The defaults for the [`TabBar`][] widget can be overridden with a
-component-specific theme like [`TabBarThemeData`][].
-Previously, the `ThemeData.indicatorColor` parameter was used to
-override the default tab bar indicator color in Material Design 2,
-which was made redundant by [`TabBarThemeData`][].
+Os padrões para o widget [`TabBar`][] podem ser sobrescritos com um
+theme específico do componente como [`TabBarThemeData`][].
+Anteriormente, o parâmetro `ThemeData.indicatorColor` era usado para
+sobrescrever a cor padrão do indicador da tab bar no Material Design 2,
+o que foi tornado redundante por [`TabBarThemeData`][].
 
 ## Description of change
 
-The [`ThemeData.indicatorColor`][] is deprecated in
-favor of a component-specific theme.
-Use [`TabBarThemeData`][] to override the default indicator color.
+O [`ThemeData.indicatorColor`][] está descontinuado em
+favor de um theme específico do componente.
+Use [`TabBarThemeData`][] para sobrescrever a cor padrão do indicador.
 
 ## Migration guide
 
-Replace [`ThemeData.indicatorColor`][] with
-[`TabBarThemeData.indicatorColor`][] to override the default tab bar
-indicator color when [`ThemeData.useMaterial3`][] flag is set to `false`.
+Substitua [`ThemeData.indicatorColor`][] por
+[`TabBarThemeData.indicatorColor`][] para sobrescrever a cor padrão do indicador
+da tab bar quando a flag [`ThemeData.useMaterial3`][] está definida como `false`.
 
 Code before migration:
 

@@ -1,40 +1,41 @@
 ---
 title: >-
-  Deprecated the 'value' parameter of
-  the 'DropdownButtonFormField' constructor
+  Descontinuado o parâmetro 'value' do
+  construtor 'DropdownButtonFormField'
 description: >-
-  The `DropdownButtonFormField` constructor parameter `value` has been
-  replaced by the parameter `initialValue`.
+  O parâmetro `value` do construtor `DropdownButtonFormField` foi
+  substituído pelo parâmetro `initialValue`.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-The `value` parameter of the [`DropdownButtonFormField`][] constructor was
-deprecated in favor of the `initialValue` parameter.
+O parâmetro `value` do construtor [`DropdownButtonFormField`][`DropdownButtonFormField`] foi
+descontinuado em favor do parâmetro `initialValue`.
 
-## Context
+## Contexto
 
-The `value` parameter of the [`DropdownButtonFormField`][] constructor was used
-to initialize [`DropdownButtonFormField.initialValue`][].
-Not using the same name was confusing. For example,
-developers falsely assumed that setting `value` would change
-the current selected value. This was not the case—it
-only set the initial value or when the field is reset.
+O parâmetro `value` do construtor [`DropdownButtonFormField`][`DropdownButtonFormField`] era usado
+para inicializar [`DropdownButtonFormField.initialValue`][`DropdownButtonFormField.initialValue`].
+Não usar o mesmo nome era confuso. Por exemplo,
+desenvolvedores falsamente assumiam que definir `value` mudaria
+o valor selecionado atual. Este não era o caso—ele
+apenas definia o valor inicial ou quando o campo é redefinido.
 
-## Description of change
+## Descrição da mudança
 
-The `value` parameter of the [`DropdownButtonFormField`][] constructor is
-deprecated in favor of the parameter named `initialValue`.
+O parâmetro `value` do construtor [`DropdownButtonFormField`][`DropdownButtonFormField`] está
+descontinuado em favor do parâmetro chamado `initialValue`.
 
-## Migration guide
+## Guia de migração
 
-Replace the `value` parameter of the [`DropdownButtonFormField`][] constructor
-with the `initialValue` parameter to initialize
-[`DropdownButtonFormField.initialValue`][].
+Substitua o parâmetro `value` do construtor [`DropdownButtonFormField`][`DropdownButtonFormField`]
+pelo parâmetro `initialValue` para inicializar
+[`DropdownButtonFormField.initialValue`][`DropdownButtonFormField.initialValue`].
 
-Code before migration:
+Código antes da migração:
 
 ```dart highlightLines=2
 DropdownButtonFormField(
@@ -42,7 +43,7 @@ DropdownButtonFormField(
 ),
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart highlightLines=2
 DropdownButtonFormField(
@@ -50,25 +51,25 @@ DropdownButtonFormField(
 ),
 ```
 
-## Timeline
+## Cronograma
 
-Landed in version: 3.35.0-0.0.pre<br>
-In stable release: 3.35
+Adicionado na versão: 3.35.0-0.0.pre<br>
+Na versão estável: 3.35
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
-- [`DropdownButtonFormField`][]
-- [`DropdownButtonFormField.initialValue`][]
+- [`DropdownButtonFormField`][`DropdownButtonFormField`]
+- [`DropdownButtonFormField.initialValue`][`DropdownButtonFormField.initialValue`]
 
-Relevant issues:
+Issues relevantes:
 
-- [Issue #169983][]
+- [Issue #169983][Issue #169983]
 
-Relevant PRs:
+PRs relevantes:
 
-- [Deprecate `DropdownButtonFormField` `value` parameter in favor of `initialValue`][]
+- [Deprecate `DropdownButtonFormField` `value` parameter in favor of `initialValue`][Deprecate `DropdownButtonFormField` `value` parameter in favor of `initialValue`]
 
 [`DropdownButtonFormField`]: {{site.api}}/flutter/material/DropdownButtonFormField/DropdownButtonFormField.html
 [`DropdownButtonFormField.initialValue`]: {{site.main-api}}/flutter/widgets/FormField/initialValue.html

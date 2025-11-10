@@ -1,39 +1,40 @@
 ---
-title: Material 3 tokens update in Flutter
+title: Atualização de tokens Material 3 no Flutter
 description: >-
-  The latest Material Design 3 tokens (v6.1) have been applied to
-  the Flutter Material library.
+  Os tokens Material Design 3 mais recentes (v6.1) foram aplicados à
+  biblioteca Material do Flutter.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
 ## Summary
 
-The Material Design tokens updated the mapping of
-4 color roles in light mode to be more
-visually appealing while retaining accessible contrast.
-Testing identified this change as [non-breaking][] in Flutter, but
-some customers might notice this small change.
-The update affected the following color properties:
+Os tokens de Material Design atualizaram o mapeamento de
+4 papéis de cor no modo claro para ser mais
+visualmente atraente enquanto retém contraste acessível.
+Testes identificaram esta mudança como [não-quebra][non-breaking] no Flutter, mas
+alguns clientes podem notar esta pequena mudança.
+A atualização afetou as seguintes propriedades de cor:
 
-* `onPrimaryContainer` (Primary10 to Primary30)
-* `onSecondaryContainer` (Secondary10 to Secondary30)
-* `onTertiaryContainer` (Tertiary10 to Tertiary30)
-* `onErrorContainer` (Error10 to Error30)
+* `onPrimaryContainer` (Primary10 para Primary30)
+* `onSecondaryContainer` (Secondary10 para Secondary30)
+* `onTertiaryContainer` (Tertiary10 para Tertiary30)
+* `onErrorContainer` (Error10 para Error30)
 
-Widgets that have been using these roles as their
-default values might look different.
+Widgets que têm usado esses papéis como seus
+valores padrão podem parecer diferentes.
 
-Additionally, the Material 3 tokens updated the border color of
-chip widgets from `ColorScheme.outline` to `ColorScheme.outlineVariant` to
-improve visual hierarchy between chips and buttons.
-Chips (`Chip`, `ActionChip`, `ChoiceChip`, `FilterChip`, and `InputChip`) that
-have been using the chip border tokens may look different.
+Além disso, os tokens Material 3 atualizaram a cor da borda de
+widgets chip de `ColorScheme.outline` para `ColorScheme.outlineVariant` para
+melhorar a hierarquia visual entre chips e botões.
+Chips (`Chip`, `ActionChip`, `ChoiceChip`, `FilterChip`, e `InputChip`) que
+têm usado os tokens de borda do chip podem parecer diferentes.
 
 ## Migration guide
 
-The differences in the mappings of the color roles are small.
-Use `ColorScheme.copyWith` to revert to the original default colors:
+As diferenças nos mapeamentos dos papéis de cor são pequenas.
+Use `ColorScheme.copyWith` para reverter para as cores padrão originais:
 
 Code before migration:
 
@@ -52,9 +53,9 @@ final ColorScheme colors = ThemeData().colorScheme.copyWith(
 );
 ```
 
-After applying the token update,
-the default border color of M3 chips looks lighter.
-Take `ActionChip` as an example:
+Após aplicar a atualização de token,
+a cor da borda padrão de chips M3 parece mais clara.
+Tome `ActionChip` como exemplo:
 
 Code before migration:
 

@@ -1,14 +1,15 @@
 ---
-title: Handling releases
-shortTitle: Releases
+title: Gerenciando lançamentos
+shortTitle: Lançamentos
 description: >-
-  Learn how to prepare for and handle new releases of
-  Dart and Flutter on the documentation sites.
+  Aprenda como preparar e gerenciar novos lançamentos de
+  Dart e Flutter nos sites de documentação.
 sitemap: false
 noindex: true
 showBreadcrumbs: true
+ia-translate: true
 ---
 
 :::warning
-This document is a work in progress.
+Este documento é um trabalho em andamento.
 :::

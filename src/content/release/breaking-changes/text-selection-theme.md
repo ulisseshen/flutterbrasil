@@ -1,37 +1,38 @@
 ---
-title: TextSelectionTheme migration
+title: Migração de TextSelectionTheme
 description: >
-  The default properties for text selection are migrating to TextSelectionTheme.
+  As propriedades padrão para seleção de texto estão migrando para TextSelectionTheme.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
 ## Summary
 
-The `ThemeData` properties that controlled the look of
-selected text in Material widgets have been moved into
-their own `TextSelectionTheme`. These properties include
-`cursorColor`, `textSelectionColor`, and
-`textSelectionHandleColor`. The defaults for these
-properties have also been changed to match the Material
-Design specification.
+As propriedades `ThemeData` que controlavam a aparência de
+texto selecionado em widgets Material foram movidas para
+seu próprio `TextSelectionTheme`. Essas propriedades incluem
+`cursorColor`, `textSelectionColor`, e
+`textSelectionHandleColor`. Os padrões para essas
+propriedades também foram alterados para corresponder à
+especificação de Material Design.
 
 ## Context
 
-As part of the larger [Material Theme Updates][],
-we have introduced a new [Text Selection Theme][]
-used to specify the properties of selected text in
-`TextField` and `SelectableText` widgets.
-These replace several top-level properties of `ThemeData`
-and update their default values to match the Material
-Design specification. This document describes how
-applications can migrate to this new API.
+Como parte das [Material Theme Updates][] maiores,
+introduzimos um novo [Text Selection Theme][]
+usado para especificar as propriedades de texto selecionado em
+widgets `TextField` e `SelectableText`.
+Eles substituem várias propriedades de nível superior de `ThemeData`
+e atualizam seus valores padrão para corresponder à
+especificação de Material Design. Este documento descreve como
+aplicações podem migrar para esta nova API.
 
 ## Migration guide
 
-If you are currently using the following properties of
-`ThemeData`, you need to update them to use the new
-equivalent properties on `ThemeData.textSelectionTheme`:
+Se você está atualmente usando as seguintes propriedades de
+`ThemeData`, você precisa atualizá-las para usar as novas
+propriedades equivalentes em `ThemeData.textSelectionTheme`:
 
 | Before                               | After                                         |
 |--------------------------------------|-----------------------------------------------|
@@ -65,11 +66,11 @@ ThemeData(
 
 **Default changes**
 
-If you weren't using these properties explicitly,
-but depended on the previous default colors used
-for text selection you can add a new field to your
-`ThemeData` for your app to return to the old defaults
-as shown:
+Se você não estava usando essas propriedades explicitamente,
+mas dependia das cores padrão anteriores usadas
+para seleção de texto, você pode adicionar um novo campo ao seu
+`ThemeData` para sua aplicação retornar aos padrões antigos
+como mostrado:
 
 ```dart
 // Old defaults for a light theme
@@ -93,10 +94,10 @@ ThemeData(
 )
 ```
 
-If you are fine with the new defaults,
-but have failing golden file tests, you
-can update your master golden files using the
-following command:
+Se você está bem com os novos padrões,
+mas tem testes de golden file falhando, você
+pode atualizar seus arquivos golden master usando o
+seguinte comando:
 
 ```console
 $ flutter test --update-goldens

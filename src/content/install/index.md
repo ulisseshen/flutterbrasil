@@ -1,24 +1,25 @@
 ---
-title: Install Flutter
-shortTitle: Install
+title: Instalar Flutter
+shortTitle: Instalar
 description: >-
-  Learn how to install the Flutter SDK.
+  Aprenda como instalar o Flutter SDK.
+ia-translate: true
 ---
 
-Learn how to install the Flutter SDK and
-manage the resulting installation.
+Aprenda como instalar o Flutter SDK e
+gerenciar a instalação resultante.
 
 :::recommend
-If you've never set up or developed an app with Flutter before
-and plan to use VS Code or another Code OSS-based editor,
-follow [Set up and test drive Flutter][] instead.
+Se você nunca configurou ou desenvolveu um app com Flutter antes
+e planeja usar o VS Code ou outro editor baseado em Code OSS,
+siga [Set up and test drive Flutter][] em vez disso.
 :::
 
 [Set up and test drive Flutter]: /get-started/quick
 
 ## Try Flutter {:#try}
 
-You can quickly try Flutter online without any local setup.
+Você pode testar rapidamente o Flutter online sem nenhuma configuração local.
 
 <div class="card-grid">
   <a class="card outlined-card" href="{{site.dartpad}}" target="_blank">
@@ -29,7 +30,7 @@ You can quickly try Flutter online without any local setup.
       </span>
     </div>
     <div class="card-content">
-      <p>Quickly build and run simple single-file Flutter apps on the web.</p>
+      <p>Construa e execute rapidamente apps Flutter simples de arquivo único na web.</p>
     </div>
   </a>
   <a class="card outlined-card" href="https://firebase.studio" target="_blank">
@@ -40,7 +41,7 @@ You can quickly try Flutter online without any local setup.
       </span>
     </div>
     <div class="card-content">
-      <p>Develop complex Flutter apps in an AI-assisted workspace in the cloud.</p>
+      <p>Desenvolva apps Flutter complexos em um espaço de trabalho assistido por IA na nuvem.</p>
     </div>
   </a>
 </div>
@@ -49,9 +50,9 @@ You can quickly try Flutter online without any local setup.
 
 ## Install Flutter {: #install}
 
-To get started developing with Flutter,
-follow these steps to install and set up Flutter
-for your preferred development environment and target devices.
+Para começar a desenvolver com Flutter,
+siga estas etapas para instalar e configurar o Flutter
+para seu ambiente de desenvolvimento preferido e dispositivos de destino.
 
 <div class="card-grid">
   <a class="card outlined-card" href="/install/with-vs-code">
@@ -60,8 +61,8 @@ for your preferred development environment and target devices.
       <span class="card-subtitle">Recommended</span>
     </div>
     <div class="card-content">
-      <p>Use VS Code or another Code - OSS derived editor to quickly
-        set up your Flutter development environment.</p>
+      <p>Use o VS Code ou outro editor derivado do Code - OSS para configurar rapidamente
+        seu ambiente de desenvolvimento Flutter.</p>
     </div>
   </a>
   <a class="card outlined-card" href="/install/manual">
@@ -70,27 +71,27 @@ for your preferred development environment and target devices.
       <span class="card-subtitle">For specific releases</span>
     </div>
     <div class="card-content">
-      <p>Manually install and set up a specific release of the Flutter SDK
-        for your preferred development environment.</p>
+      <p>Instale e configure manualmente uma versão específica do Flutter SDK
+        para seu ambiente de desenvolvimento preferido.</p>
     </div>
   </a>
 </div>
 
 :::tip
-If you've never set up or developed an app with Flutter before
-and plan to use VS Code or another Code - OSS derived editor,
-consider following the [Flutter quick start][] instead.
+Se você nunca configurou ou desenvolveu um app com Flutter antes
+e planeja usar o VS Code ou outro editor derivado do Code - OSS,
+considere seguir o [Flutter quick start][] em vez disso.
 :::
 
 [Flutter quick start]: /get-started/quick
 
 ## Update Flutter {: #update}
 
-If you already have Flutter installed and would like to
-upgrade your Flutter SDK installation or change to a different release channel,
-check out [Upgrading Flutter][].
+Se você já tem o Flutter instalado e gostaria de
+atualizar sua instalação do Flutter SDK ou mudar para um canal de lançamento diferente,
+confira [Upgrading Flutter][].
 
-When upgrading, also remember to check out the published list of
+Ao atualizar, lembre-se também de verificar a lista publicada de
 [breaking changes and migration guides][].
 
 [Upgrading Flutter]: /install/upgrade
@@ -98,12 +99,12 @@ When upgrading, also remember to check out the published list of
 
 ## Download previous releases {: #previous-releases}
 
-If you're looking to download and install previous releases of Flutter,
-check out the [SDK archive][].
+Se você está procurando baixar e instalar versões anteriores do Flutter,
+confira o [SDK archive][].
 
 :::note
-We recommend keeping your apps and development environments
-up to date with the **latest** `stable` or `beta` releases.
+Recomendamos manter seus apps e ambientes de desenvolvimento
+atualizados com as versões **mais recentes** `stable` ou `beta`.
 :::
 
 [SDK archive]: /install/archive

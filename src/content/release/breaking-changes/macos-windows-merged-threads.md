@@ -1,52 +1,53 @@
 ---
-title: Merged threads on macOS and Windows
+ia-translate: true
+title: Threads mescladas no macOS e Windows
 description: >-
-  Learn about threading changes on macOS and Windows in Flutter 3.35.
+  Aprenda sobre mudanças de threading no macOS e Windows no Flutter 3.35.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-Flutter 3.35 merges the UI and platform threads by default on macOS and Windows.
+O Flutter 3.35 mescla as threads de UI e de plataforma por padrão no macOS e Windows.
 
-## Context
+## Contexto
 
-Originally, Flutter had separate threads to produce UI frames and to
-interact with the native platform.
+Originalmente, o Flutter tinha threads separadas para produzir frames de UI e para
+interagir com a plataforma nativa.
 
-The split-thread design prevented Flutter apps and plugins from using Dart FFI
-to interoperate with native APIs that must be called on the platform thread.
+O design de threads separadas impedia que apps e plugins Flutter usassem Dart FFI
+para interoperar com APIs nativas que devem ser chamadas na thread da plataforma.
 
-## Description of change
+## Descrição da mudança
 
-Flutter 3.35 merges the UI and platform threads by default on macOS and Windows.
+O Flutter 3.35 mescla as threads de UI e de plataforma por padrão no macOS e Windows.
 
-This mirrors iOS and Android, whose threads were merged by default in
+Isso espelha iOS e Android, cujas threads foram mescladas por padrão no
 Flutter 3.29.
 
-## Migration guide
+## Guia de migração
 
-Merged threads should not affect your app.
+As threads mescladas não devem afetar seu app.
 
-If you suspect merged threads has regressed your app, please reach out on
-[Issue 150525][].
+Se você suspeitar que as threads mescladas causaram uma regressão no seu app, entre em contato em
+[Issue 150525][Issue 150525].
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.33.0-0.0.pre<br>
-In stable release: 3.35
+Disponível na versão: 3.33.0-0.0.pre<br>
+Na versão estável: 3.35
 
-## References
+## Referências
 
-Relevant issue:
+Issue relevante:
 
-* [Issue 150525][]
+* [Issue 150525][Issue 150525]
 
-Relevant PRs:
+PRs relevantes:
 
-* [PR 166536][]
-* [PR 167472][]
+* [PR 166536][PR 166536]
+* [PR 167472][PR 167472]
 
 [Issue 150525]: {{site.repo.flutter}}/issues/150525
 [PR 166536]: {{site.repo.flutter}}/pull/166536

@@ -1,4 +1,4 @@
-The image files in this directory's subdirectories are
-used in cookbook recipes and other interactive code snippets.
-Their names or extensions shouldn't be changed without
-updating the relevant exercises and ensuring they still work.
+Os arquivos de imagem nos subdiretórios deste diretório são
+usados em receitas do cookbook e outros trechos de código interativos.
+Seus nomes ou extensões não devem ser alterados sem
+atualizar os exercícios relevantes e garantir que ainda funcionem.

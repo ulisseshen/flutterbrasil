@@ -1,16 +1,20 @@
+---
+ia-translate: true
+---
+
 # introduction
 
-A new Flutter project.
+Um novo projeto Flutter.
 
-## Getting Started
+## Começando
 
-This project is a starting point for a Flutter application.
+Este projeto é um ponto de partida para uma aplicação Flutter.
 
-A few resources to get you started if this is your first Flutter project:
+Alguns recursos para você começar se este é seu primeiro projeto Flutter:
 
-- [Lab: Write your first Flutter app](https://docs.flutterbrasil.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutterbrasil.dev/cookbook)
+- [Lab: Escreva seu primeiro app Flutter](https://docs.flutterbrasil.dev/get-started/codelab)
+- [Cookbook: Exemplos úteis do Flutter](https://docs.flutterbrasil.dev/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://docs.flutterbrasil.dev), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Para ajuda com o Flutter, veja nossa
+[documentação online](https://docs.flutterbrasil.dev), que oferece tutoriais,
+exemplos, orientação sobre desenvolvimento mobile e uma referência completa da API.

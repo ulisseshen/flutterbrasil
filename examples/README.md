@@ -1,3 +1,5 @@
+<!-- ia-translate: true -->
+
 # Flutter example apps
 
 To analyze, test and run individual apps, execute the following commands from

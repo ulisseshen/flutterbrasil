@@ -1,3 +1,5 @@
+<!-- ia-translate: true -->
+
 <figure>
   <div class="site-figure-container">
     <img src='/assets/images/docs/get-started/android/{{image}}' alt='{{alt}} on Android' class='{{class}}'>

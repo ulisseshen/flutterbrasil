@@ -1,22 +1,23 @@
 ---
-title: Adding 'linux' and 'windows' to TargetPlatform enum
+ia-translate: true
+title: Adicionando 'linux' e 'windows' ao enum TargetPlatform
 description: >
-  Two new values were added to the TargetPlatform enum that could
-  require additional cases in switch statements that switch on a TargetPlatform.
+  Dois novos valores foram adicionados ao enum TargetPlatform que podem
+  requerer cases adicionais em instruções switch que fazem switch em um TargetPlatform.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-Two new values were added to the [`TargetPlatform`][] enum
-that could require additional cases in switch statements that
-switch on a `TargetPlatform` and don't include a `default:` case.
+Dois novos valores foram adicionados ao enum [`TargetPlatform`][TargetPlatform]
+que podem requerer cases adicionais em instruções switch que
+fazem switch em um `TargetPlatform` e não incluem um case `default:`.
 
-## Context
+## Contexto
 
-Prior to this change, the `TargetPlatform` enum only contained four values,
-and was defined like this:
+Antes desta mudança, o enum `TargetPlatform` continha apenas quatro valores,
+e era definido assim:
 
 ```dart
 enum TargetPlatform {
@@ -27,10 +28,10 @@ enum TargetPlatform {
 }
 ```
 
-A `switch` statement only needed to handle these cases,
-and desktop applications that wanted to run on Linux or
-Windows usually had a test like this in their
-`main()` method:
+Uma instrução `switch` só precisava lidar com esses cases,
+e aplicações desktop que queriam executar no Linux ou
+Windows geralmente tinham um teste como este em seu
+método `main()`:
 
 ```dart
 // Sets a platform override for desktop to avoid exceptions. See
@@ -47,9 +48,9 @@ void main() {
 }
 ```
 
-## Description of change
+## Descrição da mudança
 
-The `TargetPlatform` enum is now defined as:
+O enum `TargetPlatform` agora é definido como:
 
 ```dart
 enum TargetPlatform {
@@ -62,35 +63,35 @@ enum TargetPlatform {
 }
 ```
 
-And the platform test setting
-[`debugDefaultTargetPlatformOverride`][] in `main()`
-is no longer required on Linux and Windows.
+E o teste de plataforma configurando
+[`debugDefaultTargetPlatformOverride`][debugDefaultTargetPlatformOverride] em `main()`
+não é mais necessário no Linux e Windows.
 
-This can cause the Dart analyzer to give the
-[`missing_enum_constant_in_switch`][] warning for
-switch statements that don't include a `default` case.
-Writing a switch without a `default:` case is the
-recommended way to handle enums, since the analyzer
-can then help you find any cases that aren't handled.
+Isso pode fazer com que o analisador Dart forneça o
+aviso [`missing_enum_constant_in_switch`][missing_enum_constant_in_switch] para
+instruções switch que não incluem um case `default`.
+Escrever um switch sem um case `default:` é a
+maneira recomendada de lidar com enums, já que o analisador
+pode então ajudá-lo a encontrar quaisquer cases que não sejam tratados.
 
-## Migration guide
+## Guia de migração
 
-In order to migrate to the new enum, and avoid the analyzer's
-`missing_enum_constant_in_switch` error, which looks like:
+Para migrar para o novo enum, e evitar o erro
+`missing_enum_constant_in_switch` do analisador, que se parece com:
 
 ```plaintext
 warning: Missing case clause for 'linux'. (missing_enum_constant_in_switch at [package] path/to/file.dart:111)
 ```
 
-or:
+ou:
 
 ```plaintext
 warning: Missing case clause for 'windows'. (missing_enum_constant_in_switch at [package] path/to/file.dart:111)
 ```
 
-Modify your code as follows:
+Modifique seu código da seguinte forma:
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 void dance(TargetPlatform platform) {
@@ -111,7 +112,7 @@ void dance(TargetPlatform platform) {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 void dance(TargetPlatform platform) {
@@ -138,35 +139,35 @@ void dance(TargetPlatform platform) {
 }
 ```
 
-Having `default:` cases in such switch statements isn't
-recommended, because then the analyzer can't help you find
-all the cases that need to be handled.
+Ter cases `default:` em tais instruções switch não é
+recomendado, porque então o analisador não pode ajudá-lo a encontrar
+todos os cases que precisam ser tratados.
 
-Also, any tests like the one referenced above that set the
-`debugDefaultTargetPlatformOverride` are no longer needed
-for Linux and Windows applications.
+Além disso, quaisquer testes como o referenciado acima que definem o
+`debugDefaultTargetPlatformOverride` não são mais necessários
+para aplicações Linux e Windows.
 
-## Timeline
+## Cronograma
 
-Landed in version: 1.15.4<br>
-In stable release: 1.17
+Disponibilizado na versão: 1.15.4<br>
+Na versão estável: 1.17
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
-* [`TargetPlatform`][]
+* [`TargetPlatform`][TargetPlatform]
 
-Relevant issues:
+Issues relevantes:
 
-* [Issue #31366][]
+* [Issue #31366][Issue #31366]
 
-Relevant PR:
+PR relevante:
 
-* [Add Windows, and Linux as TargetPlatforms][]
+* [Add Windows, and Linux as TargetPlatforms][Add Windows, and Linux as TargetPlatforms]
 
 [Add Windows, and Linux as TargetPlatforms]: {{site.repo.flutter}}/pull/51519
-[`debugDefaultTargetPlatformOverride`]: {{site.api}}/flutter/foundation/debugDefaultTargetPlatformOverride.html
+[debugDefaultTargetPlatformOverride]: {{site.api}}/flutter/foundation/debugDefaultTargetPlatformOverride.html
 [Issue #31366]: {{site.repo.flutter}}/issues/31366
-[`missing_enum_constant_in_switch`]: {{site.dart-site}}/tools/diagnostic-messages#missing_enum_constant_in_switch
-[`TargetPlatform`]: {{site.api}}/flutter/foundation/TargetPlatform-class.html
+[missing_enum_constant_in_switch]: {{site.dart-site}}/tools/diagnostic-messages#missing_enum_constant_in_switch
+[TargetPlatform]: {{site.api}}/flutter/foundation/TargetPlatform-class.html

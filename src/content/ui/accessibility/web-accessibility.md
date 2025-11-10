@@ -1,31 +1,32 @@
 ---
-title: Web accessibility
-description: Information about web accessibility
+ia-translate: true
+title: Acessibilidade web
+description: Informações sobre acessibilidade web
 ---
 
-## Background
+## Contexto
 
-Flutter supports web accessibility by translating its internal
-Semantics tree into an accessible HTML DOM structure that
-screen readers can understand.
-Since Flutter renders its UI on a single canvas, it needs a special layer
-to expose the UI's meaning and structure to web browsers.
+Flutter suporta acessibilidade web traduzindo sua
+árvore Semantics interna em uma estrutura DOM HTML acessível que
+leitores de tela podem entender.
+Como o Flutter renderiza sua UI em um único canvas, ele precisa de uma camada especial
+para expor o significado e estrutura da UI aos navegadores web.
 
 
-## Opt-in web accessibility
+## Opt-in de acessibilidade web
 
-### Invisible button
+### Botão invisível
 
-For performance reasons, Flutter's web accessibility is not on by default.
-To turn on accessibility, the user needs to press an invisible button with
+Por razões de desempenho, a acessibilidade web do Flutter não está ativada por padrão.
+Para ativar a acessibilidade, o usuário precisa pressionar um botão invisível com
 `aria-label="Enable accessibility"`.
-After pressing the button, the DOM tree will reflect all accessibility
-information for the widgets.
+Após pressionar o botão, a árvore DOM refletirá todas as informações de acessibilidade
+dos widgets.
 
-### Turn on accessibility mode in code
+### Ativar modo de acessibilidade no código
 
-An alternative approach is to turn on accessibility mode
-by adding the following code when running an app.
+Uma abordagem alternativa é ativar o modo de acessibilidade
+adicionando o seguinte código ao executar um app.
 
 ```dart
 import 'package:flutter/semantics.dart';
@@ -40,50 +41,49 @@ void main() {
 
 
 
-## Enhancing Accessibility with Semantic Roles
+## Melhorando a acessibilidade com roles semânticos
 
-### What are Semantic Roles?
+### O que são roles semânticos?
 
-Semantic roles define the purpose of a UI element, helping screen readers
-and other assistive tools interpret and present your application effectively
-to users. For example, a role can indicate if a widget is a button, a link,
-to users. For example, a role can indicate whether a widget is a button, a link,
-a heading, a slider, or part of a table.
+Roles semânticos definem o propósito de um elemento de UI, ajudando leitores de tela
+e outras ferramentas assistivas a interpretar e apresentar sua aplicação efetivamente
+aos usuários. Por exemplo, um role pode indicar se um widget é um botão, um link,
+um cabeçalho, um slider ou parte de uma tabela.
 
-While Flutter's standard widgets often provide these semantics automatically,
-a custom component without a clearly defined role can be incomprehensible
-to a screen reader user.
+Enquanto os widgets padrão do Flutter frequentemente fornecem essas semânticas automaticamente,
+um componente customizado sem um role claramente definido pode ser incompreensível
+para um usuário de leitor de tela.
 
 
-By assigning appropriate roles, you ensure that:
+Ao atribuir roles apropriados, você garante que:
 
-* Screen readers can announce the type and purpose of elements correctly.
-* Users can navigate your application more effectively using assistive technologies.
-* Your application adheres to web accessibility standards, improving usability.
+* Leitores de tela podem anunciar o tipo e propósito dos elementos corretamente.
+* Usuários podem navegar em sua aplicação de forma mais eficaz usando tecnologias assistivas.
+* Sua aplicação adere aos padrões de acessibilidade web, melhorando a usabilidade.
 
-### Using `SemanticsRole` in Flutter for web
+### Usando `SemanticsRole` no Flutter para web
 
-Flutter provides the [`Semantics` widget][] with the [`SemanticsRole` enum][]
-to allow developers to assign specific roles to their widgets. When your
-Flutter web app is rendered, these Flutter-specific roles are translated into
-corresponding ARIA roles in the web page's HTML structure.
+Flutter fornece o [widget `Semantics`][] com o [enum `SemanticsRole`][]
+para permitir que desenvolvedores atribuam roles específicos aos seus widgets. Quando seu
+app Flutter web é renderizado, esses roles específicos do Flutter são traduzidos em
+roles ARIA correspondentes na estrutura HTML da página web.
 
-[`Semantics` widget]: {{site.api}}/flutter/widgets/Semantics-class.html
-[`SemanticsRole` enum]: {{site.api}}/flutter/dart-ui/SemanticsRole.html
+[widget `Semantics`]: {{site.api}}/flutter/widgets/Semantics-class.html
+[enum `SemanticsRole`]: {{site.api}}/flutter/dart-ui/SemanticsRole.html
 
-**1. Automatic Semantics from Standard Widgets**
+**1. Semantics automáticos de widgets padrão**
 
-Many standard Flutter widgets, like `TabBar`, `MenuAnchor`, and `Table`,
-automatically include semantic information along with their roles.
-Whenever possible, prefer using these standard widgets
-as they handle many accessibility aspects out-of-the-box.
+Muitos widgets padrão do Flutter, como `TabBar`, `MenuAnchor` e `Table`,
+incluem automaticamente informações semânticas junto com seus roles.
+Sempre que possível, prefira usar esses widgets padrão
+pois eles lidam com muitos aspectos de acessibilidade prontos para uso.
 
-**2. Explicitly adding or overriding roles**
+**2. Adicionando ou sobrescrevendo roles explicitamente**
 
-For custom components or when the default semantics aren't sufficient,
-use the `Semantics` widget to define the role:
+Para componentes customizados ou quando as semânticas padrão não são suficientes,
+use o widget `Semantics` para definir o role:
 
-Here's an example of how you might explicitly define a list and its items:
+Aqui está um exemplo de como você pode definir explicitamente uma lista e seus itens:
 
 ```dart
 import 'package:flutter/material.dart';

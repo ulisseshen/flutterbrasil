@@ -1,13 +1,13 @@
-_Description of what this PR is changing or adding, and why:_
+_Descrição do que este PR está mudando ou adicionando, e por quê:_
 
-_Issues fixed by this PR (if any):_
+_Issues corrigidos por este PR (se houver):_
 
-_PRs or commits this PR depends on (if any):_
+_PRs ou commits dos quais este PR depende (se houver):_
 
 ## Presubmit checklist
 
-- [ ] If you are unwilling, or unable, to sign the CLA, even for a _tiny_, one-word PR, please file an issue instead of a PR.
-- [ ] If this PR is not meant to land until a future stable release, mark it as draft with an explanation.
-- [ ] This PR follows the [Google Developer Documentation Style Guidelines](https://developers.google.com/style)—for example, it doesn't use _i.e._ or _e.g._, and it avoids _I_ and _we_ (first-person pronouns).
-- [ ] This PR uses [semantic line breaks](https://github.com/dart-lang/site-shared/blob/main/doc/writing-for-dart-and-flutter-websites.md#semantic-line-breaks)
-  of 80 characters or fewer.
+- [ ] Se você não puder, ou não quiser, assinar o CLA, mesmo para um PR _pequeno_, de uma palavra apenas, por favor abra uma issue ao invés de um PR.
+- [ ] Se este PR não deve ser integrado até um lançamento estável futuro, marque-o como rascunho com uma explicação.
+- [ ] Este PR segue as [Google Developer Documentation Style Guidelines](https://developers.google.com/style)—por exemplo, não usa _i.e._ ou _e.g._, e evita _I_ e _we_ (pronomes de primeira pessoa).
+- [ ] Este PR usa [semantic line breaks](https://github.com/dart-lang/site-shared/blob/main/doc/writing-for-dart-and-flutter-websites.md#semantic-line-breaks)
+  de 80 caracteres ou menos.

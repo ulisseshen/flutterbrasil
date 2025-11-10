@@ -1,32 +1,33 @@
 ---
-title: UI design & styling
-description: Information on Flutter's accessibility support.
+title: Design e estilização de UI
+description: Informações sobre o suporte de acessibilidade do Flutter.
+ia-translate: true
 ---
 
-To create an accessible app, design your UI with accessibility in mind.
-This page covers key aspects of accessible UI design and styling.
+Para criar um app acessível, projete sua UI com acessibilidade em mente.
+Esta página cobre aspectos-chave do design e estilização de UI acessível.
 
-## Large fonts
+## Fontes grandes {:#large-fonts}
 
-Both Android and iOS contain system settings to configure the desired font
-sizes used by apps. Flutter text widgets respect this OS setting when
-determining font sizes.
+Tanto Android quanto iOS contêm configurações de sistema para configurar os tamanhos de fonte
+desejados usados pelos apps. Widgets de texto do Flutter respeitam essa configuração do SO ao
+determinar tamanhos de fonte.
 
-Font sizes are calculated automatically by Flutter based on the OS setting.
-However, as a developer you should make sure your layout has enough room to
-render all its contents when the font sizes are increased.
-For example, you can test all parts of your app on a small-screen
-device configured to use the largest font setting.
+Os tamanhos de fonte são calculados automaticamente pelo Flutter com base na configuração do SO.
+No entanto, como desenvolvedor você deve garantir que seu layout tenha espaço suficiente para
+renderizar todo seu conteúdo quando os tamanhos de fonte forem aumentados.
+Por exemplo, você pode testar todas as partes do seu app em um dispositivo de tela pequena
+configurado para usar a maior configuração de fonte.
 
-To adjust font sizes: on iOS, go to
+Para ajustar tamanhos de fonte: no iOS, vá em
 Settings > Accessibility > Display & Text Size;
-on Android, go to Settings > Font size.
+no Android, vá em Settings > Font size.
 
-### Example
+### Exemplo {:#example}
 
-The following two screenshots show the standard Flutter app
-template rendered with the default iOS font setting,
-and with the largest font setting selected in iOS accessibility settings.
+As duas capturas de tela a seguir mostram o template padrão do app Flutter
+renderizado com a configuração de fonte padrão do iOS,
+e com a maior configuração de fonte selecionada nas configurações de acessibilidade do iOS.
 
 <div class="wrapping-row">
   <DashImage figure image="a11y/app-regular-fonts.png" caption="Default font setting" img-class="simple-border" img-style="max-height: 480px;" />
@@ -34,38 +35,39 @@ and with the largest font setting selected in iOS accessibility settings.
 </div>
 
 
-## Sufficient contrast
+## Contraste suficiente {:#sufficient-contrast}
 
-Sufficient color contrast makes text and images easier to read.
-Along with benefitting users with various visual impairments,
-sufficient color contrast helps all users when viewing an interface
-on devices in extreme lighting conditions,
-such as when exposed to direct sunlight or on a display with low
-brightness.
+Contraste de cor suficiente torna texto e imagens mais fáceis de ler.
+Além de beneficiar usuários com diversas deficiências visuais,
+contraste de cor suficiente ajuda todos os usuários ao visualizar uma interface
+em dispositivos em condições de iluminação extremas,
+como quando expostos à luz solar direta ou em uma tela com baixo
+brilho.
 
-The [W3C recommends][]:
+O [W3C recomenda][W3C recommends]:
 
-* At least 4.5:1 for small text (below 18 point regular or 14 point bold)
-* At least 3.0:1 for large text (18 point and above regular or 14 point and
-  above bold)
+* Pelo menos 4.5:1 para texto pequeno (abaixo de 18 pontos regular ou 14 pontos negrito)
+* Pelo menos 3.0:1 para texto grande (18 pontos e acima regular ou 14 pontos e
+  acima negrito)
 
-You can test contrast using Flutter's [Accessibility Guideline API][].
-For more details on testing, check out the [accessibility testing page](/ui/accessibility/accessibility-testing/).
+Você pode testar o contraste usando a [API Accessibility Guideline][Accessibility Guideline API] do Flutter.
+Para mais detalhes sobre testes, confira a [página de testes de acessibilidade][accessibility testing page].
 
 [W3C recommends]: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html
+[accessibility testing page]: /ui/accessibility/accessibility-testing/
 
-## Tap target size
+## Tamanho do alvo de toque {:#tap-target-size}
 
-Controls that are too small are hard for many people to interact with and select.
-Ensure that interactive elements have a large enough tap target to be easily
-pressed by users.
+Controles que são muito pequenos são difíceis para muitas pessoas interagirem e selecionarem.
+Garanta que elementos interativos tenham um alvo de toque grande o suficiente para ser facilmente
+pressionado pelos usuários.
 
-Both [Android][] and [iOS][] recommend a minimum tap target size of 48x48 dp and 44x44 pts respectively.
+Tanto [Android][] quanto [iOS][] recomendam um tamanho mínimo de alvo de toque de 48x48 dp e 44x44 pts respectivamente.
 
-The [W3C] recommends a minimum target size of 44 by 44 CSS pixels.
+O [W3C][] recomenda um tamanho mínimo de alvo de 44 por 44 pixels CSS.
 
-You can test tap target size using Flutter's [Accessibility Guideline API][].
-For more details on testing, check out the [accessibility testing page](/ui/accessibility/accessibility-testing/).
+Você pode testar o tamanho do alvo de toque usando a [API Accessibility Guideline][Accessibility Guideline API] do Flutter.
+Para mais detalhes sobre testes, confira a [página de testes de acessibilidade][accessibility testing page].
 
 [Android]: https://developer.android.com/guide/topics/ui/accessibility/apps#large-controls
 [iOS]: https://developer.apple.com/design/human-interface-guidelines/accessibility#Mobility
@@ -73,10 +75,10 @@ For more details on testing, check out the [accessibility testing page](/ui/acce
 
 [Accessibility Guideline API]: {{site.api}}/flutter/flutter_test/AccessibilityGuideline-class.html
 
-## Other accessibility features
+## Outros recursos de acessibilidade {:#other-accessibility-features}
 
-You can check the [AccessibilityFeatures] class for additional
-accessibility features that may be enabled by the platform,
-such as bold text, high contrast, and inverted colors.
+Você pode verificar a classe [AccessibilityFeatures][] para recursos de
+acessibilidade adicionais que podem ser habilitados pela plataforma,
+como texto em negrito, alto contraste e cores invertidas.
 
 [AccessibilityFeatures]: https://api.flutterbrasil.dev/flutter/dart-ui/AccessibilityFeatures-class.html

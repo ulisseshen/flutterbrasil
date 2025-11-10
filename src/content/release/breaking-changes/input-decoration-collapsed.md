@@ -1,34 +1,35 @@
 ---
-title: Remove invalid parameters for `InputDecoration.collapsed`
+title: Remover parâmetros inválidos para `InputDecoration.collapsed`
 description: >
-  'InputDecoration.collapsed' constructor parameters
-  'floatingLabelBehavior' and 'floatingLabelAlignment' are deprecated without
-  replacement because they have no effect.
+  Os parâmetros do construtor 'InputDecoration.collapsed'
+  'floatingLabelBehavior' e 'floatingLabelAlignment' foram descontinuados sem
+  substituição porque não têm efeito.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-`InputDecoration.collapsed` invalid parameters `floatingLabelBehavior` and
-`floatingLabelAlignment` are deprecated.
+Os parâmetros inválidos `floatingLabelBehavior` e
+`floatingLabelAlignment` de `InputDecoration.collapsed` foram descontinuados.
 
-## Background
+## Contexto {:#background}
 
-`InputDecoration.collapsed` constructor is used to
-create a minimal decoration without a label.
+O construtor `InputDecoration.collapsed` é usado para
+criar uma decoração mínima sem um label.
 
-The parameters `floatingLabelAlignment` and `floatingLabelBehavior` have
-no effect because an input decoration created using
-`InputDecoration.collapsed` has no label.
+Os parâmetros `floatingLabelAlignment` e `floatingLabelBehavior` não têm
+efeito porque uma decoração de input criada usando
+`InputDecoration.collapsed` não tem label.
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-To migrate, remove usage of `floatingLabelBehavior` and `floatingLabelAlignment`
-parameters when calling the `InputDecoration.collapsed` constructor.
-Those parameters had no effect.
+Para migrar, remova o uso dos parâmetros `floatingLabelBehavior` e `floatingLabelAlignment`
+ao chamar o construtor `InputDecoration.collapsed`.
+Esses parâmetros não tinham efeito.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 InputDecoration.collapsed(
@@ -38,7 +39,7 @@ InputDecoration.collapsed(
 ),
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 InputDecoration.collapsed(
@@ -46,24 +47,24 @@ InputDecoration.collapsed(
 ),
 ```
 
-## Timeline
+## Linha do tempo {:#timeline}
 
-Landed in version: 3.24.0-0.1.pre<br>
-In stable release: 3.27.0
+Incluído na versão: 3.24.0-0.1.pre<br>
+No lançamento estável: 3.27.0
 
-## References
+## Referências {:#references}
 
-API documentation:
+Documentação da API:
 
 * [`InputDecoration.collapsed`][]
 * [`InputDecoration.floatingLabelAlignment`][]
 * [`InputDecoration.floatingLabelBehavior`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Add prefixIcon and suffixIcon parameters to InputDecoration.collapsed][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Deprecate invalid InputDecoration.collapsed parameters][]
 * [Cleanup InputDecoration.collapsed constructor][]

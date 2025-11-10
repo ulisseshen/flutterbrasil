@@ -1,16 +1,16 @@
 # code_debugging
 
-A new Flutter project.
+Um novo projeto Flutter.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Este projeto é um ponto de partida para uma aplicação Flutter.
 
-A few resources to get you started if this is your first Flutter project:
+Alguns recursos para você começar se este é seu primeiro projeto Flutter:
 
 - [Lab: Write your first Flutter app](https://docs.flutterbrasil.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutterbrasil.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutterbrasil.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Para ajuda sobre como começar com o desenvolvimento Flutter, veja a
+[documentação online](https://docs.flutterbrasil.dev/), que oferece tutoriais,
+exemplos, orientações sobre desenvolvimento mobile, e uma referência completa da API.

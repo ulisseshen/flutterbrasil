@@ -1,39 +1,40 @@
 ---
-title: The ThemeData.useMaterial3 flag is true by default
+title: O flag ThemeData.useMaterial3 é true por padrão
 description: >-
-   The ThemeData.useMaterial3 flag is now set to true by default.
+   O flag ThemeData.useMaterial3 agora está definido como true por padrão.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
 ## Summary
 
-The Material library has been updated to match
-the latest Material Design spec.
-Changes include new components, new component themes,
-and updated component visuals.
-As of this release, [`ThemeData.useMaterial3`][] is set `true` by default.
+A biblioteca Material foi atualizada para corresponder
+à especificação mais recente do Material Design.
+As mudanças incluem novos componentes, novos temas de componentes,
+e visuais de componentes atualizados.
+A partir desta versão, [`ThemeData.useMaterial3`][] está definido como `true` por padrão.
 
 ## Background
 
-Flutter's Material widgets now fully support Material 3 and,
-as of Flutter 3.16, Material 3 is now the default style.
+Os widgets Material do Flutter agora suportam totalmente o Material 3 e,
+a partir do Flutter 3.16, o Material 3 agora é o estilo padrão.
 
-The appearance of Material 3 components are primarily determined by
-the values for [`ThemeData.colorScheme`][] and [`ThemeData.textTheme`][].
-ColorScheme makes it easier to create dark and light schemes so that
-your app is both aesthetically pleasing and
-compliant with accessibility requirements.
-To further customize the appearance of Material 3 components,
-add component themes to your `ThemeData`,
-such as [`ThemeData.segmentedButtonTheme`][] or [`ThemeData.snackBarTheme`][].
+A aparência dos componentes Material 3 é determinada principalmente pelos
+valores de [`ThemeData.colorScheme`][] e [`ThemeData.textTheme`][].
+ColorScheme facilita a criação de esquemas escuros e claros para que
+seu app seja esteticamente agradável e
+em conformidade com os requisitos de acessibilidade.
+Para personalizar ainda mais a aparência dos componentes Material 3,
+adicione temas de componentes ao seu `ThemeData`,
+como [`ThemeData.segmentedButtonTheme`][] ou [`ThemeData.snackBarTheme`][].
 
-Additionally, Material 3 improves motion by using easing and duration tokens.
-This means that Material 2 curves have been renamed to include
-the word "legacy" and will eventually be deprecated and removed.
+Além disso, o Material 3 melhora o movimento usando tokens de easing e duração.
+Isso significa que as curvas do Material 2 foram renomeadas para incluir
+a palavra "legacy" e eventualmente serão descontinuadas e removidas.
 
-Check out the [Material 3 gallery][] to test out
-all the new components and compare them with Material 2.
+Confira a [Material 3 gallery][] para testar
+todos os novos componentes e compará-los com o Material 2.
 
 [`ThemeData.colorScheme`]: {{site.api}}/flutter/material/ThemeData/colorScheme.html
 [`ThemeData.textTheme`]: {{site.api}}/flutter/material/ThemeData/textTheme.html
@@ -42,48 +43,48 @@ all the new components and compare them with Material 2.
 
 ## Migration guide
 
-Prior to the 3.16 release, the changes were "opt-in"
-using the `useMaterial3` theme property on `ThemeData`.
-As of this release, `useMaterial3` is `true` by default.
-You can still opt out of the Material 3 version of the Material library by
-specifying `useMaterial3: false` in your `MaterialApp` theme.
+Antes da versão 3.16, as mudanças eram "opt-in"
+usando a propriedade de tema `useMaterial3` em `ThemeData`.
+A partir desta versão, `useMaterial3` é `true` por padrão.
+Você ainda pode optar por não usar a versão Material 3 da biblioteca Material
+especificando `useMaterial3: false` no tema do seu `MaterialApp`.
 
 :::note
-Support for Material 2 and configuring the `useMaterial3` property
-will eventually be deprecated and removed.
+O suporte para Material 2 e a configuração da propriedade `useMaterial3`
+eventualmente será descontinuado e removido.
 :::
 
-Also, some of the widgets couldn't merely be updated,
-but needed a whole new implementation.
-For this reason, your UI might look a little strange when
-you see it running with Material 3.
-To fix this, manually migrate to the new widgets, such as [`NavigationBar`][].
+Além disso, alguns dos widgets não puderam simplesmente ser atualizados,
+mas precisaram de uma implementação completamente nova.
+Por esse motivo, sua UI pode parecer um pouco estranha quando
+você a vir executando com Material 3.
+Para corrigir isso, migre manualmente para os novos widgets, como [`NavigationBar`][].
 
-For more details, check out the [Material 3 umbrella issue][] on GitHub.
+Para mais detalhes, confira a [Material 3 umbrella issue][] no GitHub.
 
 [`NavigationBar`]: {{site.api}}/flutter/material/NavigationBar-class.html
 
 ## Timeline
 
-Landed in version: 3.13.0-4.0.pre<br>
-In stable release: 3.16
+Adicionado na versão: 3.13.0-4.0.pre<br>
+Na versão estável: 3.16
 
 ## References
 
-Documentation:
+Documentação:
 
 * [Material Design for Flutter][]
 
-API documentation:
+Documentação da API:
 
 * [`ThemeData.useMaterial3`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Material 3 umbrella issue][]
 * [Add support for M3 motion][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Change the default for `ThemeData.useMaterial3` to true][]
 * [Updated `ThemeData.useMaterial3` API doc, default is true][]

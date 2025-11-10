@@ -1,18 +1,19 @@
 ---
-title: TextField requires a MaterialLocalizations widget
+title: TextField requer um widget MaterialLocalizations
 description: >
-  TextField now throws an assert error if there is
-  no MaterialLocalizations widget in the widget tree.
+  TextField agora lança um erro de assert se não houver
+  um widget MaterialLocalizations na árvore de widgets.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
 ## Summary
 
-Instances of `TextField` must have a
-`MaterialLocalizations` present in the widget tree.
-Trying to instantiate a `TextField` without the proper localizations
-results in an assertion such as the following:
+Instâncias de `TextField` devem ter um
+`MaterialLocalizations` presente na árvore de widgets.
+Tentar instanciar um `TextField` sem as localizações adequadas
+resulta em uma assertion como a seguinte:
 
 ```plaintext
 No MaterialLocalizations found.
@@ -26,23 +27,23 @@ The specific widget that could not find a MaterialLocalizations ancestor was:
 
 ## Context
 
-If the `TextField` descends from a `MaterialApp`, the
-`DefaultMaterialLocalizations` is already instantiated
-and won't require any changes to your existing code.
+Se o `TextField` descende de um `MaterialApp`, o
+`DefaultMaterialLocalizations` já está instanciado
+e não exigirá alterações no seu código existente.
 
-If the `TextField` doesn't descend from `MaterialApp`,
-you can use a `Localizations` widget to
-provide your own localizations.
+Se o `TextField` não descende de `MaterialApp`,
+você pode usar um widget `Localizations` para
+fornecer suas próprias localizações.
 
 ## Migration guide
 
-If you see an assertion error, make sure that
-locale information is available to the `TextField`,
-either through an ancestor `MaterialApp`
-(that automatically provides `Localizations`), or
-by creating your own `Localizations` widget.
+Se você encontrar um erro de assertion, certifique-se de que
+as informações de localização estejam disponíveis para o `TextField`,
+seja através de um ancestral `MaterialApp`
+(que fornece automaticamente `Localizations`), ou
+criando seu próprio widget `Localizations`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -65,7 +66,7 @@ class Foo extends StatelessWidget {
 }
 ```
 
-Code after migration (Providing localizations using the `MaterialApp`):
+Código após a migração (Fornecendo localizações usando o `MaterialApp`):
 
 ```dart
 import 'package:flutter/material.dart';
@@ -84,7 +85,7 @@ class Foo extends StatelessWidget {
 }
 ```
 
-Code after migration (Providing localizations via the `Localizations` widget):
+Código após a migração (Fornecendo localizações via widget `Localizations`):
 
 ```dart
 import 'package:flutter/material.dart';
@@ -116,12 +117,12 @@ class Foo extends StatelessWidget {
 
 ## Timeline
 
-Landed in version: 1.20.0-1.0.pre<br>
-In stable release: 1.20
+Adicionado na versão: 1.20.0-1.0.pre<br>
+Na versão estável: 1.20
 
 ## References
 
-API documentation:
+Documentação da API:
 
 * [`TextField`][]
 * [`Localizations`][]
@@ -130,7 +131,7 @@ API documentation:
 * [`MaterialApp`][]
 * [Internationalizing Flutter apps][]
 
-Relevant PR:
+PR relevante:
 
 * [PR 58831: Assert debugCheckHasMaterialLocalizations on TextField][]
 

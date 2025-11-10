@@ -1,75 +1,76 @@
 ---
-title: Change the enterText method to move the caret to the end of the input text
+title: Alterar o método enterText para mover o cursor para o final do texto de entrada
 description: >
-  WidgetTester.enterText and TestTextInput.enterText now
-  move the caret to the end of the input text.
+  WidgetTester.enterText e TestTextInput.enterText agora
+  movem o cursor para o final do texto de entrada.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
 ## Summary
 
-The `WidgetTester.enterText` and `TestTextInput.enterText` methods
-now move the caret to the end of the input text.
+Os métodos `WidgetTester.enterText` e `TestTextInput.enterText`
+agora movem o cursor para o final do texto de entrada.
 
 ## Context
 
-The caret indicates the insertion point within the current text in an
-active input field. Typically, when a new character is entered, the
-caret stays immediately after it. In Flutter the caret position is
-represented by a collapsed selection. When the selection is invalid,
-usually the user won't be able to modify or add text until they
-change the selection to a valid value.
+O cursor indica o ponto de inserção dentro do texto atual em um
+campo de entrada ativo. Normalmente, quando um novo caractere é inserido, o
+cursor permanece imediatamente após ele. No Flutter, a posição do cursor é
+representada por uma seleção colapsada. Quando a seleção é inválida,
+geralmente o usuário não conseguirá modificar ou adicionar texto até que ele
+altere a seleção para um valor válido.
 
-`WidgetTester.enterText` and `TestTextInput.enterText` are 2 methods
-used in tests to replace the content of the target text field. Prior
-to this change, `WidgetTester.enterText` and `TestTextInput.enterText`
-set the selection to an invalid range (-1, -1), indicating there's
-no selection or caret. This contradicts the typical behavior of an
-input field.
+`WidgetTester.enterText` e `TestTextInput.enterText` são 2 métodos
+usados em testes para substituir o conteúdo do campo de texto alvo. Antes
+desta mudança, `WidgetTester.enterText` e `TestTextInput.enterText`
+definiam a seleção para um intervalo inválido (-1, -1), indicando que não há
+seleção ou cursor. Isso contradiz o comportamento típico de um
+campo de entrada.
 
 ## Description of change
 
-In addition to replacing the text with the supplied text,
-`WidgetTester.enterText` and `TestTextInput.enterText` now set the
-selection to `TextSelection.collapsed(offset: text.length)`, instead
-of `TextSelection.collapsed(offset: -1)`.
+Além de substituir o texto pelo texto fornecido,
+`WidgetTester.enterText` e `TestTextInput.enterText` agora definem a
+seleção como `TextSelection.collapsed(offset: text.length)`, em vez de
+`TextSelection.collapsed(offset: -1)`.
 
 ## Migration guide
 
-It should be very uncommon for tests to have to rely on the
-previous behavior of `enterText`, since usually the selection
-should not be invalid. **Consider changing the expected values of
-your tests to adopt the `enterText` change.**
+Deve ser muito incomum que testes tenham que depender do
+comportamento anterior de `enterText`, já que geralmente a seleção
+não deve ser inválida. **Considere alterar os valores esperados dos
+seus testes para adotar a mudança de `enterText`.**
 
-Common test failures this change may introduce includes:
+Falhas de teste comuns que esta mudança pode introduzir incluem:
 
-- Golden test failures:
+- Falhas de testes Golden:
 
-  The caret appears at the end of the text, as opposed to before
-  the text prior to the change.
+  O cursor aparece no final do texto, em vez de antes do
+  texto antes da mudança.
 
-- Different `TextEditingValue.selection` after calling `enterText`:
+- `TextEditingValue.selection` diferente após chamar `enterText`:
 
-  The text field's `TextEditingValue` now has a collapsed
-  selection with a non-negative offset, as opposed to
-  `TextSelection.collapsed(offset: -1)` prior to the change.
-  For instance, you may see
+  O `TextEditingValue` do campo de texto agora tem uma
+  seleção colapsada com um offset não negativo, em vez de
+  `TextSelection.collapsed(offset: -1)` antes da mudança.
+  Por exemplo, você pode ver
   `expect(controller.value.selection.baseOffset, -1);`
-  failing after `enterText` calls.
+  falhando após chamadas de `enterText`.
 
-If your tests have to rely on setting the selection to invalid,
-the previous behavior can be achieved using`updateEditingValue`:
+Se seus testes precisam depender de definir a seleção como inválida,
+o comportamento anterior pode ser alcançado usando `updateEditingValue`:
 
 ### `TestTextInput.enterText`
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 await testTextInput.enterText(text);
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 await testTextInput.updateEditingValue(TextEditingValue(
@@ -79,13 +80,13 @@ await testTextInput.updateEditingValue(TextEditingValue(
 
 ### `WidgetTester.enterText`
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 await tester.enterText(finder, text);
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 await tester.showKeyboard(finder);
@@ -97,21 +98,21 @@ await tester.idle();
 
 ## Timeline
 
-Landed in version: 2.1.0-13.0.pre<br>
-In stable release: 2.5
+Adicionado na versão: 2.1.0-13.0.pre<br>
+Na versão estável: 2.5
 
 ## References
 
-API documentation:
+Documentação da API:
 
 * [`WidgetTester.enterText`][]
 * [`TestTextInput.enterText`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue 79494][]
 
-Relevant PR:
+PR relevante:
 
 * [enterText to move the caret to the end][]
 

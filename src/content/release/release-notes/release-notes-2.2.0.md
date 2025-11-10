@@ -1,12 +1,13 @@
 ---
-title: Flutter 2.2.0 release notes
-shortTitle: 2.2.0 release notes
-description: Release notes for Flutter 2.2.0.
+title: Notas de lançamento do Flutter 2.2.0
+shortTitle: Notas de lançamento 2.2.0
+description: Notas de lançamento para Flutter 2.2.0.
 skipTemplateRendering: true
+ia-translate: true
 ---
 
-This page has release notes for 2.2.0.
-For information about subsequent bug-fix releases, see our [CHANGELOG][]
+Esta página contém notas de lançamento para 2.2.0.
+Para informações sobre lançamentos de correção de bugs subsequentes, veja nosso [CHANGELOG][]
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/master/CHANGELOG.md
 

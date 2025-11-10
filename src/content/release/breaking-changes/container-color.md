@@ -1,50 +1,51 @@
 ---
-title: Container with color optimization
+title: Otimização de Container com color
 description: >
-  A container with a color and no other background decoration
-  no longer builds the same child widgets.
+  Um container com uma cor e nenhuma outra decoração de fundo
+  não constrói mais os mesmos widgets filhos.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
 ## Summary
 
-A new `ColoredBox` widget has been added to the framework,
-and the `Container` widget has been optimized to use it
-if a user specifies a `color` instead of a `decoration`.
+Um novo widget `ColoredBox` foi adicionado ao framework,
+e o widget `Container` foi otimizado para usá-lo
+se um usuário especificar uma `color` em vez de uma `decoration`.
 
 ## Context
 
-It is very common to use the `Container` widget as follows:
+É muito comum usar o widget `Container` da seguinte forma:
 
 ```dart
 return Container(color: Colors.red);
 ```
 
-Previously, this code resulted in a widget hierarchy that used a
-`BoxDecoration` to actually paint the background color.
-The `BoxDecoration` widget covers many cases other than
-just painting a background color,
-and is not as efficient as the new `ColoredBox` widget,
-which only paints a background color.
+Anteriormente, este código resultava em uma hierarquia de widgets que usava uma
+`BoxDecoration` para realmente pintar a cor de fundo.
+O widget `BoxDecoration` cobre muitos casos além de
+apenas pintar uma cor de fundo,
+e não é tão eficiente quanto o novo widget `ColoredBox`,
+que apenas pinta uma cor de fundo.
 
-Widget tests that wanted to assert based on the color
-of a container in the widget tree would previously have
-to find the `BoxDecoration` to actually get
-the color of the container.
-Now, they are able to check the `color` property
-on the `Container` itself, unless a `BoxDecoration`
-was explicitly provided as the `decoration` property.
-It is still an error to supply both `color` and
-`decoration` to `Container`.
+Testes de widgets que queriam fazer assertions baseadas na cor
+de um container na árvore de widgets anteriormente teriam
+que encontrar a `BoxDecoration` para realmente obter
+a cor do container.
+Agora, eles são capazes de verificar a propriedade `color`
+no próprio `Container`, a menos que uma `BoxDecoration`
+tenha sido explicitamente fornecida como a propriedade `decoration`.
+Ainda é um erro fornecer tanto `color` quanto
+`decoration` para `Container`.
 
 ## Migration guide
 
-Tests that assert on the color of a `Container`
-or that expected it to create a
-`BoxDecoration` need to be modified.
+Testes que fazem assertions na cor de um `Container`
+ou que esperavam que ele criasse uma
+`BoxDecoration` precisam ser modificados.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 testWidgets('Container color', (WidgetTester tester) async {
@@ -57,7 +58,7 @@ testWidgets('Container color', (WidgetTester tester) async {
 });
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 testWidgets('Container color', (WidgetTester tester) async {
@@ -74,23 +75,23 @@ testWidgets('Container color', (WidgetTester tester) async {
 
 ## Timeline
 
-Landed in version: 1.15.4<br>
-In stable release: 1.17
+Adicionado na versão: 1.15.4<br>
+Na versão estável: 1.17
 
 ## References
 
-API documentation:
+Documentação da API:
 
 * [`Container`][]
 * [`ColoredBox`][]
 * [`BoxDecoration`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue 9672][]
 * [Issue 28753][]
 
-Relevant PR:
+PR relevante:
 
 * [Colored box and container optimization #50979][]
 

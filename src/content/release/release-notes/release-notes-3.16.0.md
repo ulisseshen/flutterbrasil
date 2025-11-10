@@ -1,13 +1,14 @@
 ---
-title: Flutter 3.16.0 release notes
-shortTitle: 3.16.0 release notes
-description: Release notes for Flutter 3.16.0.
+title: Notas de lançamento do Flutter 3.16.0
+shortTitle: Notas de lançamento 3.16.0
+description: Notas de lançamento para Flutter 3.16.0.
 skipTemplateRendering: true
+ia-translate: true
 ---
 
-This page has release notes for 3.16.0.
-For information about subsequent bug-fix releases,
-see our [CHANGELOG][].
+Esta página contém as notas de lançamento do 3.16.0.
+Para informações sobre correções de bugs subsequentes,
+consulte nosso [CHANGELOG][].
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/main/CHANGELOG.md
 
@@ -630,7 +631,7 @@ see our [CHANGELOG][].
 * [flutter_tools] handle ERROR_INVALID_FUNCTION when trying to symlink across drives by @christopherfujino in [136681](https://github.com/flutter/flutter/pull/136681)
 * [CP][Android] Update Java/AGP/Gradle warning compatible Java range by @camsim99 in [136766](https://github.com/flutter/flutter/pull/136766)
 
-## New Contributors
+## Novos contribuidores
 
 * @CaiqueR made their first contribution in [129795](https://github.com/flutter/flutter/pull/129795)
 * @cychiang made their first contribution in [129030](https://github.com/flutter/flutter/pull/129030)
@@ -664,7 +665,7 @@ see our [CHANGELOG][].
 * @chipweinberger made their first contribution in [132291](https://github.com/flutter/flutter/pull/132291)
 * @EdgarJan made their first contribution in [132714](https://github.com/flutter/flutter/pull/132714)
 
-**Full Changelog**: https://github.com/flutter/flutter/compare/3.13.0...3.16.0-0.5.pre
+**Changelog Completo**: https://github.com/flutter/flutter/compare/3.13.0...3.16.0-0.5.pre
 
 ## Engine
 
@@ -933,7 +934,7 @@ see our [CHANGELOG][].
 * [macOS] TextInputPlugin should mark navigation events in IME popover as handled by @knopp in [46141](https://github.com/flutter/engine/pull/46141)
 * Reland: [macOS] performKeyEquivalent cleanup by @knopp in [46377](https://github.com/flutter/engine/pull/46377)
 
-## New Contributors
+## Novos contribuidores
 
 * @dballard made their first contribution in [42555](https://github.com/flutter/engine/pull/42555)
 * @gmittert made their first contribution in [43567](https://github.com/flutter/engine/pull/43567)
@@ -949,4 +950,4 @@ see our [CHANGELOG][].
 * @kenzieschmoll made their first contribution in [46072](https://github.com/flutter/engine/pull/46072)
 * @ajihyf made their first contribution in [45611](https://github.com/flutter/engine/pull/45611)
 
-**Full Changelog**: https://github.com/flutter/engine/compare/3.13.0...3.16.0-0.5.pre
+**Changelog Completo**: https://github.com/flutter/engine/compare/3.13.0...3.16.0-0.5.pre

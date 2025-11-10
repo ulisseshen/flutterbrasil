@@ -1,56 +1,56 @@
 ---
-title: Flutter support
-description: Where can you get support when developing with Flutter.
+title: Suporte ao Flutter
+description: Onde você pode obter suporte ao desenvolver com Flutter.
 showBreadcrumbs: false
+ia-translate: true
 ---
 
-Welcome!
+Bem-vindo!
 
-There are many different ways to get support
-when developing with Flutter.
-As Flutter is an open source project,
-your options range from filing issues when you
-run into bugs in the software,
-to connecting with your local community,
-to browsing and identifying a list of commercial agencies
-and consultants who offer support services.
+Existem muitas maneiras diferentes de obter suporte
+ao desenvolver com Flutter.
+Como o Flutter é um projeto de código aberto,
+suas opções variam desde registrar issues quando você
+encontra bugs no software,
+até se conectar com sua comunidade local,
+até navegar e identificar uma lista de agências comerciais
+e consultores que oferecem serviços de suporte.
 
-## I want to report an issue with Flutter
+## Quero relatar um problema com o Flutter
 
-Visit how to [create a useful bug report](/resources/bug-reports).
-Note that filing bugs is _not_ an efficient way to get tech support.
+Visite como [criar um relatório de bug útil](/resources/bug-reports).
+Observe que registrar bugs _não_ é uma maneira eficiente de obter suporte técnico.
 
-## I want to ask questions about how to use Flutter
+## Quero fazer perguntas sobre como usar o Flutter
 
-Your best bet is to consult
+Sua melhor opção é consultar o
 [Flutter Forum](https://forum.itsallwidgets.com/),
 [Stack Overflow](https://stackoverflow.com/questions/tagged/flutter),
-or [Discord](https://discord.com/invite/rflutterdev).
-While the community is active in these channels,
-there is no official SLA on responding to new posts
-or chats in these channels.
+ou [Discord](https://discord.com/invite/rflutterdev).
+Embora a comunidade seja ativa nesses canais,
+não há SLA oficial para responder a novas postagens
+ou conversas nesses canais.
 
-## I want professional services support with Flutter
+## Quero suporte de serviços profissionais com Flutter
 
-Check out the
-[Flutter consultants]({{site.main-url}}/consultants)
-directory.
+Confira o
+diretório de [consultores Flutter]({{site.main-url}}/consultants).
 
-## I want support from a Flutter expert
+## Quero suporte de um especialista em Flutter
 
-Google has a cadre of [Google Developer Experts][] (GDEs),
-non-Google employees with expertise in various areas
-of Google technologies, such as Flutter and Dart.
-GDEs are _not_ free consultants, but they often give
-lectures, host meetups, run workshops, or make videos.
-As part of the Dart and Flutter world-wide community,
-they are a great resource.
+O Google tem um grupo de [Google Developer Experts][] (GDEs),
+funcionários não-Google com expertise em várias áreas
+de tecnologias do Google, como Flutter e Dart.
+GDEs _não_ são consultores gratuitos, mas eles frequentemente dão
+palestras, organizam meetups, conduzem workshops ou fazem vídeos.
+Como parte da comunidade mundial do Dart e Flutter,
+eles são um ótimo recurso.
 
 [Google Developer Experts]: https://developers.google.com/community/experts/directory?specialization=dart%2Cflutter
 
-## I want to get paid support from Google or the Flutter project
+## Quero obter suporte pago do Google ou do projeto Flutter
 
-As an open source project,
-we're not set up to offer paid support.
-We recommend checking out the
-[consultancy program]({{site.main-url}}/consultants).
+Como um projeto de código aberto,
+não estamos estruturados para oferecer suporte pago.
+Recomendamos verificar o
+[programa de consultoria]({{site.main-url}}/consultants).

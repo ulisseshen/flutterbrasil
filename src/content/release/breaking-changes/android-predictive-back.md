@@ -1,14 +1,15 @@
 ---
-title: Android predictive back
+title: Retorno preditivo do Android
 description: >-
-  The ability to control back navigation at the time that a back gesture is
-  received has been replaced with an ahead-of-time navigation API in order to
-  support Android 14's Predictive Back feature.
+  A capacidade de controlar a navegação de retorno no momento em que um gesto de retorno é
+  recebido foi substituída por uma API de navegação ahead-of-time para
+  suportar o recurso Predictive Back do Android 14.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
 To support Android 14's Predictive Back feature,
 a set of ahead-of-time APIs have replaced just-in-time navigation APIs,
@@ -106,7 +107,7 @@ void didChangeDependencies() {
 }
 ```
 
-## Migration guide
+## Guia de migração
 
 ### Migrating from `WillPopScope` to `PopScope`
 
@@ -359,12 +360,12 @@ return PopScope(
   1. Run the app and perform a back gesture (swipe from the
      left side of the screen).
 
-## Timeline
+## Linha do tempo
 
 Landed in version: 3.14.0-7.0.pre<br>
 In stable release: 3.16
 
-## References
+## Referências
 
 API documentation:
 

@@ -1,28 +1,30 @@
 ---
-title: Integration test default golden-file comparators changed on Android and iOS.
+ia-translate: true
+title: Comparadores padrão de golden-file em testes de integração alterados no Android e iOS.
 description: >-
-  When using `package:integration_test` to run a test _on_ an Android device or
-  emulator, or an iOS device or simulator, the default `goldenFileComparator`
-  has changed, and correctly uses the host filesystem.
+  Ao usar `package:integration_test` para executar um teste _em_ um dispositivo
+  ou emulador Android, ou dispositivo ou simulador iOS, o `goldenFileComparator`
+  padrão mudou, e agora usa corretamente o sistema de arquivos do host.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-Unless a user-defined [`goldenFileComparator`][] is set, either manually in a
-test, or using a `flutter_test_config.dart` file, Android and iOS devices
-and emulators/simulators have a new default that proxies to the local host
-filesystem, fixing a long-standing bug ([#143299][Issue 143299]).
+A menos que um [`goldenFileComparator`][`goldenFileComparator`] definido pelo usuário seja configurado,
+seja manualmente em um teste ou usando um arquivo `flutter_test_config.dart`,
+dispositivos e emuladores/simuladores Android e iOS têm um novo padrão que faz
+proxy para o sistema de arquivos do host local, corrigindo um bug antigo
+([#143299][Issue 143299]).
 
-## Background
+## Contexto
 
-The package [`integration_test`][], and its integration with [`flutter_test`][]
-has historically had a bug where using [`matchesGoldenFile`][] or similar APIs
-where a `FileSystemException` was thrown.
+O pacote [`integration_test`][`integration_test`], e sua integração com [`flutter_test`][`flutter_test`],
+historicamente tinha um bug onde ao usar [`matchesGoldenFile`][`matchesGoldenFile`] ou APIs similares
+uma `FileSystemException` era lançada.
 
-Some users may have worked around this issue by writing and using a custom
-[`goldenFileComparator`][]:
+Alguns usuários podem ter contornado esse problema escrevendo e usando um
+[`goldenFileComparator`][`goldenFileComparator`] personalizado:
 
 ```dart
 import 'package:integration_test/integration_test.dart';
@@ -35,8 +37,8 @@ void main() {
 }
 ```
 
-Such workarounds are no longer necessary, and if type checking the default,
-will no longer work as before:
+Tais soluções alternativas não são mais necessárias, e se fizer verificação de tipo
+do padrão, não funcionará mais como antes:
 
 ```dart
 if (goldenFileComparator is ...) {
@@ -44,15 +46,15 @@ if (goldenFileComparator is ...) {
 }
 ```
 
-## Migration guide
+## Guia de migração
 
-In most cases, we expect users to have to do nothing - this will be in a sense
-_new_ functionality that replaced functionality that did not work and caused
-an unhandled exception which would fail a test.
+Na maioria dos casos, esperamos que os usuários não precisem fazer nada - esta será,
+em certo sentido, uma funcionalidade _nova_ que substituiu uma funcionalidade que não
+funcionava e causava uma exceção não tratada que falharia em um teste.
 
-In cases where users wrote custom test infrastructure and comparators, consider
-instead removing the [`goldenFileComparator`][] overrides, and instead rely on
-the (new) default which should work as expected:
+Nos casos em que os usuários escreveram infraestrutura de teste e comparadores
+personalizados, considere remover as substituições de [`goldenFileComparator`][`goldenFileComparator`],
+e confiar no padrão (novo) que deve funcionar como esperado:
 
 ```dart diff
   import 'package:integration_test/integration_test.dart';
@@ -65,30 +67,30 @@ the (new) default which should work as expected:
   }
 ```
 
-_Fun fact_: The existing code that was used for
-the _web_ platform was [reused][PR 160484].
+_Curiosidade_: O código existente que foi usado para a plataforma _web_
+foi [reutilizado][PR 160484].
 
-## Timeline
+## Cronograma
 
-Landed in version: 3.29.0-0.0.pre<br>
-Stable release: 3.32
+Disponível na versão: 3.29.0-0.0.pre<br>
+Versão estável: 3.32
 
-## References
+## Referências
 
-Relevant APIs:
+APIs relevantes:
 
-- [`flutter_test`][], which talks about `flutter_test_config.dart` and its capabilities.
-- [`goldenFileComparator`][], which implements comparison, and is user-configurable.
+- [`flutter_test`][`flutter_test`], que fala sobre `flutter_test_config.dart` e suas capacidades.
+- [`goldenFileComparator`][`goldenFileComparator`], que implementa comparação, e é configurável pelo usuário.
 
-Relevant Issues:
+Issues relevantes:
 
-- [Issue 143299][], one of many user reports about the long-standing bug.
-- [Issue 160043][], which explains in technical detail why [`matchesGoldenFile`][] failed.
+- [Issue 143299][Issue 143299], um dos muitos relatos de usuários sobre o bug antigo.
+- [Issue 160043][Issue 160043], que explica em detalhes técnicos por que [`matchesGoldenFile`][`matchesGoldenFile`] falhou.
 
-Relevant PRs:
+PRs relevantes:
 
-- [PR 160215][], where the web tool implementation was refactored to make it generic.
-- [PR 160484][], which uses the Dart VM service protocol to proxy between device and host.
+- [PR 160215][PR 160215], onde a implementação da ferramenta web foi refatorada para torná-la genérica.
+- [PR 160484][PR 160484], que usa o protocolo de serviço da Dart VM para fazer proxy entre dispositivo e host.
 
 [`flutter_test`]: {{site.api}}/flutter/flutter_test
 [`goldenFileComparator`]: {{site.api}}/flutter/flutter_test/goldenFileComparator.html

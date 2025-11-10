@@ -1,39 +1,40 @@
 ---
-title: Material Theme System Updates
+ia-translate: true
+title: Atualizações do sistema de tema Material
 description: >-
-  `CardTheme`, `DialogTheme`, and `TabBarTheme` have been normalized to follow
-  Flutter's convention for component themes in the Material library. In
-  `ThemeData`, the type of these properties have also changed accordingly.
+  `CardTheme`, `DialogTheme` e `TabBarTheme` foram normalizados para seguir
+  a convenção do Flutter para temas de componentes na biblioteca Material. Em
+  `ThemeData`, o tipo dessas propriedades também mudou de acordo.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-`CardTheme`, `DialogTheme` and `TabBarTheme` were refactored to
-conform to Flutter's conventions for component themes. `CardThemeData`,
-`DialogThemeData` and `TabBarThemeData` were added to define overrides for the
-defaults of the component visual properties.
+`CardTheme`, `DialogTheme` e `TabBarTheme` foram refatorados para
+se adequarem às convenções do Flutter para temas de componentes. `CardThemeData`,
+`DialogThemeData` e `TabBarThemeData` foram adicionados para definir sobrescritas
+para os padrões das propriedades visuais do componente.
 
-During card theme normalization, the type of `ThemeData.cardTheme` is changed
-to `Object?` to accept both `CardTheme` and `CardThemeData`, in order to have
-a smooth transition for the breaking changes. The same approach was used for
-`dialogTheme` and `tabBarTheme`.
+Durante a normalização do tema de card, o tipo de `ThemeData.cardTheme` foi alterado
+para `Object?` para aceitar tanto `CardTheme` quanto `CardThemeData`, a fim de ter
+uma transição suave para as mudanças disruptivas. A mesma abordagem foi usada para
+`dialogTheme` e `tabBarTheme`.
 
-To complete the transition and fully conform to the `ThemeData` convention, the
-type of `ThemeData.cardTheme` has been changed to `CardThemeData?`; the type of
-`ThemeData.dialogTheme` has been changed to `DialogThemeData?`; and the type of
-`ThemeData.tabBarTheme` has been changed to `TabBarThemeData?`.
+Para completar a transição e se adequar totalmente à convenção de `ThemeData`, o
+tipo de `ThemeData.cardTheme` foi alterado para `CardThemeData?`; o tipo de
+`ThemeData.dialogTheme` foi alterado para `DialogThemeData?`; e o tipo de
+`ThemeData.tabBarTheme` foi alterado para `TabBarThemeData?`.
 
-## Migration guide
+## Guia de migração
 
-Previously, the type of `ThemeData.cardTheme` was `Object?` to accept both
-`CardTheme` and `CardThemeData`. Now that the type has been changed to
-`CardThemeData?`, a migration is required if `ThemeData.cardTheme` is used.
-Similarly, the types of `ThemeData.dialogTheme` and `ThemeData.tabBarTheme`
-should be migrated to `DialogThemeData` and `TabBarThemeData`, respectively.
+Anteriormente, o tipo de `ThemeData.cardTheme` era `Object?` para aceitar tanto
+`CardTheme` quanto `CardThemeData`. Agora que o tipo foi alterado para
+`CardThemeData?`, uma migração é necessária se `ThemeData.cardTheme` for usado.
+Da mesma forma, os tipos de `ThemeData.dialogTheme` e `ThemeData.tabBarTheme`
+devem ser migrados para `DialogThemeData` e `TabBarThemeData`, respectivamente.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 final ThemeData theme = ThemeData(
@@ -43,7 +44,7 @@ final ThemeData theme = ThemeData(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 final ThemeData theme = ThemeData(
@@ -53,26 +54,26 @@ final ThemeData theme = ThemeData(
 );
 ```
 
-## Timeline
+## Cronograma
 
-Landed in version: 3.31.0-0.0.pre<br>
-In stable release: 3.32
+Lançado na versão: 3.31.0-0.0.pre<br>
+Na versão estável: 3.32
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
-* [`ThemeData`][]
-* [`CardTheme`][]
-* [`DialogTheme`][]
-* [`TabBarTheme`][]
+* [`ThemeData`][ThemeData]
+* [`CardTheme`][CardTheme]
+* [`DialogTheme`][DialogTheme]
+* [`TabBarTheme`][TabBarTheme]
 
-Relevant PRs:
+PRs relevantes:
 
-* [Change cardTheme, dialogTheme, and tabBarTheme type to xxxThemeData][]
+* [Change cardTheme, dialogTheme, and tabBarTheme type to xxxThemeData][PR 157292]
 
-[Change cardTheme, dialogTheme, and tabBarTheme type to xxxThemeData]: {{site.github}}/flutter/flutter/pull/157292
-[`ThemeData`]: {{site.api}}/flutter/material/ThemeData-class.html
-[`CardTheme`]: {{site.api}}/flutter/material/CardTheme-class.html
-[`DialogTheme`]: {{site.api}}/flutter/material/DialogTheme-class.html
-[`TabBarTheme`]: {{site.api}}/flutter/material/TabBarTheme-class.html
+[PR 157292]: {{site.github}}/flutter/flutter/pull/157292
+[ThemeData]: {{site.api}}/flutter/material/ThemeData-class.html
+[CardTheme]: {{site.api}}/flutter/material/CardTheme-class.html
+[DialogTheme]: {{site.api}}/flutter/material/DialogTheme-class.html
+[TabBarTheme]: {{site.api}}/flutter/material/TabBarTheme-class.html

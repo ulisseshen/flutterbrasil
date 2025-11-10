@@ -1,83 +1,84 @@
 ---
-title: MouseTracker moved to rendering
-description: MouseTracker and related symbols moved to the rendering package.
+ia-translate: true
+title: MouseTracker movido para rendering
+description: MouseTracker e símbolos relacionados movidos para o pacote rendering.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-[`MouseTracker`][] and related symbols are moved from the
-`gestures` package, resulting in error messages such as
-undefined classes or methods. Import them from `rendering`
-package instead.
+[`MouseTracker`][MouseTracker] e símbolos relacionados foram movidos do
+pacote `gestures`, resultando em mensagens de erro como
+classes ou métodos indefinidos. Importe-os do pacote
+`rendering` em vez disso.
 
-## Context
+## Contexto
 
-Prior to this change [`MouseTracker`][] was part of the
-`gestures` package. This brought troubles when we found out
-that code related to [`MouseTracker`][] often wanted to
-import from the `rendering` package.
+Antes desta mudança, [`MouseTracker`][MouseTracker] fazia parte do
+pacote `gestures`. Isso trouxe problemas quando descobrimos
+que o código relacionado a [`MouseTracker`][MouseTracker] frequentemente
+precisava importar do pacote `rendering`.
 
-Since [`MouseTracker`][] turned out to be more connected to
-`rendering` than `gestures`, we have moved it and its
-related code to `rendering`.
+Como [`MouseTracker`][MouseTracker] revelou-se mais conectado a
+`rendering` do que a `gestures`, nós o movemos junto com seu
+código relacionado para `rendering`.
 
-## Description of change
+## Descrição da mudança
 
-The file `mouse_tracking.dart` has been moved from the
-`gestures` package to `rendering`. All symbols in the said
-file have been moved without keeping backward compatibility.
+O arquivo `mouse_tracking.dart` foi movido do pacote
+`gestures` para `rendering`. Todos os símbolos no referido
+arquivo foram movidos sem manter compatibilidade retroativa.
 
-## Migration guide
+## Guia de migração
 
-If you see error of "Undefined class" or "Undefined name" of
-the following symbols:
+Se você ver erro de "Undefined class" ou "Undefined name" dos
+seguintes símbolos:
 
-* [`MouseDetectorAnnotationFinder`][]
-* [`MouseTracker`][]
-* [`MouseTrackerAnnotation`][]
-* [`PointerEnterEventListener`][]
-* [`PointerExitEventListener`][]
-* [`PointerHoverEventListener`][]
+* [`MouseDetectorAnnotationFinder`][MouseDetectorAnnotationFinder]
+* [`MouseTracker`][MouseTracker]
+* [`MouseTrackerAnnotation`][MouseTrackerAnnotation]
+* [`PointerEnterEventListener`][PointerEnterEventListener]
+* [`PointerExitEventListener`][PointerExitEventListener]
+* [`PointerHoverEventListener`][PointerHoverEventListener]
 
-You should add the following import:
+Você deve adicionar a seguinte importação:
 
 ```dart
 import 'package:flutter/rendering.dart';
 ```
 
-## Timeline
+## Linha do tempo
 
 Landed in version: 1.16.3<br>
 In stable release: 1.17
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
-* [`MouseDetectorAnnotationFinder`][]
-* [`MouseTracker`][]
-* [`MouseTrackerAnnotation`][]
-* [`PointerEnterEventListener`][]
-* [`PointerExitEventListener`][]
-* [`PointerHoverEventListener`][]
+* [`MouseDetectorAnnotationFinder`][MouseDetectorAnnotationFinder]
+* [`MouseTracker`][MouseTracker]
+* [`MouseTrackerAnnotation`][MouseTrackerAnnotation]
+* [`PointerEnterEventListener`][PointerEnterEventListener]
+* [`PointerExitEventListener`][PointerExitEventListener]
+* [`PointerHoverEventListener`][PointerHoverEventListener]
 
-Relevant issues:
+Issues relevantes:
 
-* [Transform mouse events to the local coordinate system][]
-* [Move annotations to a separate tree][]
+* [Transform mouse events to the local coordinate system][Transform mouse events to the local coordinate system]
+* [Move annotations to a separate tree][Move annotations to a separate tree]
 
-Relevant PR:
+PR relevante:
 
-* [Move mouse_tracking.dart to rendering][]
+* [Move mouse_tracking.dart to rendering][Move mouse_tracking.dart to rendering]
 
 [Move annotations to a separate tree]: {{site.repo.flutter}}/issues/49568
 [Move mouse_tracking.dart to rendering]: {{site.repo.flutter}}/pull/52781
 [Transform mouse events to the local coordinate system]: {{site.repo.flutter}}/issues/33675
-[`MouseDetectorAnnotationFinder`]: {{site.api}}/flutter/gestures/MouseDetectorAnnotationFinder.html
-[`MouseTracker`]: {{site.api}}/flutter/gestures/MouseTracker-class.html
-[`MouseTrackerAnnotation`]: {{site.api}}/flutter/gestures/MouseTrackerAnnotation-class.html
-[`PointerEnterEventListener`]: {{site.api}}/flutter/gestures/PointerEnterEventListener.html
-[`PointerExitEventListener`]: {{site.api}}/flutter/gestures/PointerExitEventListener.html
-[`PointerHoverEventListener`]: {{site.api}}/flutter/gestures/PointerHoverEventListener.html
+[MouseDetectorAnnotationFinder]: {{site.api}}/flutter/gestures/MouseDetectorAnnotationFinder.html
+[MouseTracker]: {{site.api}}/flutter/gestures/MouseTracker-class.html
+[MouseTrackerAnnotation]: {{site.api}}/flutter/gestures/MouseTrackerAnnotation-class.html
+[PointerEnterEventListener]: {{site.api}}/flutter/gestures/PointerEnterEventListener.html
+[PointerExitEventListener]: {{site.api}}/flutter/gestures/PointerExitEventListener.html
+[PointerHoverEventListener]: {{site.api}}/flutter/gestures/PointerHoverEventListener.html

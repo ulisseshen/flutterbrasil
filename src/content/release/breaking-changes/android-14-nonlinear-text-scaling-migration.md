@@ -1,42 +1,43 @@
 ---
-title: Android 14 nonlinear font scaling enabled
+ia-translate: true
+title: Escalonamento de fonte não linear do Android 14 habilitado
 description: >-
-  Android 14's new nonlinear font scaling feature is
-  enabled in Flutter after v3.14.
+  O novo recurso de escalonamento de fonte não linear do Android 14
+  está habilitado no Flutter após a v3.14.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-Android 14 introduced nonlinear font scaling up to 200%.
-It may change how your app looks when the user changes
-the accessibility text scaling in system preferences.
+O Android 14 introduziu escalonamento de fonte não linear de até 200%.
+Isso pode alterar a aparência do seu app quando o usuário muda
+o escalonamento de texto de acessibilidade nas preferências do sistema.
 
-## Background
+## Contexto
 
-The [Android 14 nonlinear font scaling][] feature prevents
-excessive accessibility font scaling by scaling larger text at a lesser rate
-when the user increases the text scaling value in system preferences.
+O recurso de [escalonamento de fonte não linear do Android 14][Android 14 nonlinear font scaling] evita
+o escalonamento excessivo da fonte de acessibilidade ao escalonar texto maior em uma taxa menor
+quando o usuário aumenta o valor de escalonamento de texto nas preferências do sistema.
 
-## Migration guide
+## Guia de migração
 
-As the
-[Android 14 feature overview][Android 14 nonlinear font scaling] suggests,
-test your UI with the maximum font size enabled (`200%`).
-This should verify that your app can apply the font sizes correctly
-and can accommodate larger font sizes without impacting usability.
+Como a
+[visão geral de recursos do Android 14][Android 14 nonlinear font scaling] sugere,
+teste sua UI com o tamanho máximo de fonte habilitado (`200%`).
+Isso deve verificar que seu app pode aplicar os tamanhos de fonte corretamente
+e pode acomodar tamanhos de fonte maiores sem impactar a usabilidade.
 
-To adopt nonlinear font scaling in your app and custom widgets,
-consider migrating from `textScaleFactor` to `TextScaler`.
-To learn how to migrate to `TextScaler`,
-check out the
-[Deprecate `textScaleFactor` in favor of `TextScaler`][] migration guide.
+Para adotar o escalonamento de fonte não linear em seu app e widgets personalizados,
+considere migrar de `textScaleFactor` para `TextScaler`.
+Para aprender como migrar para `TextScaler`,
+confira o guia de migração
+[Deprecate `textScaleFactor` in favor of `TextScaler`][Deprecate `textScaleFactor` in favor of `TextScaler`].
 
-**Temporarily Opting Out**
+**Optando por não participar temporariamente**
 
-To opt-out of nonlinear text scaling on Android 14 until you migrate your app,
-add a modified `MediaQuery` at the top of your app's widget tree:
+Para desativar o escalonamento de texto não linear no Android 14 até você migrar seu app,
+adicione um `MediaQuery` modificado no topo da árvore de widgets do seu app:
 
 ```dart
 runApp(
@@ -49,31 +50,31 @@ runApp(
 );
 ```
 
-This uses the deprecated `textScaleFactor` API.
-It will stop working once that API is removed from the Flutter API.
+Isso usa a API `textScaleFactor` obsoleta.
+Isso deixará de funcionar assim que essa API for removida da API Flutter.
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.14.0-11.0.pre<br>
-In stable release: 3.16
+Incluído na versão: 3.14.0-11.0.pre<br>
+No lançamento estável: 3.16
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
-* [`TextScaler`][]
+* [`TextScaler`][`TextScaler`]
 
-Relevant issues:
+Issues relevantes:
 
-* [New font scaling system (Issue 116231)][]
+* [New font scaling system (Issue 116231)][New font scaling system (Issue 116231)]
 
-Relevant PRs:
+PRs relevantes:
 
-* [Implementing TextScaler for nonlinear text scaling][]
+* [Implementing TextScaler for nonlinear text scaling][Implementing TextScaler for nonlinear text scaling]
 
-See also:
+Veja também:
 
-* [Deprecate `textScaleFactor` in favor of `TextScaler`][]
+* [Deprecate `textScaleFactor` in favor of `TextScaler`][Deprecate `textScaleFactor` in favor of `TextScaler`]
 
 [Android 14 nonlinear font scaling]: {{site.android-dev}}/about/versions/14/features#non-linear-font-scaling
 [Deprecate `textScaleFactor` in favor of `TextScaler`]: /release/breaking-changes/deprecate-textscalefactor

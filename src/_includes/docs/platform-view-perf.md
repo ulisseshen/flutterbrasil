@@ -1,3 +1,7 @@
+---
+ia-translate: true
+---
+
 ## Performance
 
 Platform views no Flutter vêm com trade-offs de performance.

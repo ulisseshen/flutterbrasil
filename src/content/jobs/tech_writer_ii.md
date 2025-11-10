@@ -1,7 +1,8 @@
 ---
 title: Technical Writer, Languages
 showToc: false
-description: Learn about and apply to this technical writer role!
+description: Saiba mais sobre esta vaga de technical writer e candidate-se!
+ia-translate: true
 ---
 
 {% comment %}
@@ -9,97 +10,97 @@ external link:
 https://www.google.com/about/careers/applications/jobs/results/95463419917804230-technical-writer-languages
 {% endcomment %}
 
-## About the team
+## Sobre a equipe
 
-This full time position is in the Frameworks and Languages team, part of Developer Relations.
-As such, this team is dedicated to educating developers who use our products,
-including Dart, Flutter, and Go.
+Esta posição em tempo integral está na equipe de Frameworks e Linguagens, parte das Relações com Desenvolvedores.
+Como tal, esta equipe é dedicada a educar desenvolvedores que usam nossos produtos,
+incluindo Dart, Flutter e Go.
 
-## About the position
+## Sobre a posição
 
-Technical writers plan, create, and maintain educational content
-as an integral part of the engineering or user experience.
-The content is often in the form of documentation, but may also be UI text,
-sample code, videos, or other educational material.
-Regardless of the content medium, technical writers are distinguished by
-their abilities to explain complex topics in a way that’s useful to their audience.
+Technical writers planejam, criam e mantêm conteúdo educacional
+como parte integral da engenharia ou experiência do usuário.
+O conteúdo está frequentemente na forma de documentação, mas também pode ser texto de UI,
+código de exemplo, vídeos ou outro material educacional.
+Independentemente do meio de conteúdo, technical writers se distinguem por
+suas habilidades de explicar tópicos complexos de uma forma útil para seu público.
 
-The US base salary range for this full-time position is $87,000-$125,000
-+ bonus + equity + benefits. Our salary ranges are determined by role,
-level, and location. Within the range, individual pay is determined by
-work location and additional factors, including job-related skills,
-experience, and relevant education or training. Your recruiter can share
-more about the specific salary range for your preferred location during the hiring process.
+A faixa salarial base nos EUA para esta posição em tempo integral é $87.000-$125.000
++ bônus + equity + benefícios. Nossas faixas salariais são determinadas por cargo,
+nível e localização. Dentro da faixa, o pagamento individual é determinado por
+local de trabalho e fatores adicionais, incluindo habilidades relacionadas ao trabalho,
+experiência e educação ou treinamento relevante. Seu recrutador pode compartilhar
+mais sobre a faixa salarial específica para sua localização preferida durante o processo de contratação.
 
-Please note that the compensation details listed in US role postings reflect
-the base salary only, and do not include bonus, equity, or benefits.
-Learn more about
-[benefits at Google](https://www.google.com/about/careers/applications/benefits/).
+Por favor, observe que os detalhes de remuneração listados em postagens de cargos nos EUA refletem
+apenas o salário base, e não incluem bônus, equity ou benefícios.
+Saiba mais sobre
+[benefícios no Google](https://www.google.com/about/careers/applications/benefits/).
 
-## Our values
+## Nossos valores
 
-### Mentorship
+### Mentoria
 
-Upon joining Google, you will be paired with a formal mentor,
-who will help guide you in the process of ramping up, forging relationships,
-and learning the systems you'll need to do your job.
-Your manager can also help you find mentors who can coach you
-as you navigate your career at Google. In addition to formal mentors,
-we work and train together so that we are always learning from one another,
-and we celebrate and support the career progression of our team members.
+Ao ingressar no Google, você será emparelhado com um mentor formal,
+que ajudará a guiá-lo no processo de integração, construção de relacionamentos
+e aprendizado dos sistemas necessários para fazer seu trabalho.
+Seu gerente também pode ajudá-lo a encontrar mentores que podem orientá-lo
+enquanto você navega sua carreira no Google. Além de mentores formais,
+trabalhamos e treinamos juntos para que estejamos sempre aprendendo uns com os outros,
+e celebramos e apoiamos a progressão de carreira dos membros de nossa equipe.
 
-### Inclusion
+### Inclusão
 
-Here on the Flutter team and at Google, we embrace our differences
-and are [committed to furthering our culture of inclusion](https://flutterbrasil.dev/culture).
-In addition to groups like the [Flutteristas](https://flutteristas.org/),
+Aqui na equipe Flutter e no Google, abraçamos nossas diferenças
+e estamos [comprometidos em promover nossa cultura de inclusão](https://flutterbrasil.dev/culture).
+Além de grupos como as [Flutteristas](https://flutteristas.org/),
 [Employee Resource Groups (ERGs)](https://diversity.google/commitments/)
-are employee-initiated networks for supporting underrepresented employees
-and their allies with shared values of creating belonging
-across their communities and Google.
+são redes iniciadas por funcionários para apoiar funcionários sub-representados
+e seus aliados com valores compartilhados de criar pertencimento
+em suas comunidades e no Google.
 
-### Work-Life balance
+### Equilíbrio trabalho-vida
 
-Our team also puts a high value on work-life balance.
-Striking a healthy balance between your personal and professional life
-is crucial to your happiness and success here, which is why we aren't focused
-on how many hours you spend at work or online. Instead,
-we're happy to offer a flexible schedule so you can have a more productive and
-well-balanced life—both in and outside of work.
+Nossa equipe também valoriza muito o equilíbrio trabalho-vida.
+Alcançar um equilíbrio saudável entre sua vida pessoal e profissional
+é crucial para sua felicidade e sucesso aqui, e é por isso que não focamos
+em quantas horas você passa no trabalho ou online. Em vez disso,
+temos prazer em oferecer um horário flexível para que você possa ter uma vida mais produtiva e
+equilibrada—tanto dentro quanto fora do trabalho.
 
-## Job location
+## Localização da vaga
 
-Sunnyvale, CA, USA
+Sunnyvale, CA, EUA
 
-## Job responsibilities
+## Responsabilidades do cargo
 
-Execute assigned tasks, including issue triage, pull request management,
-content verification, and feedback review, under executive guidance.
-Write clear, concise, and organized content for defined projects,
-meeting user needs and adhering to style guidelines.
-Proofread, edit, and reorganize existing documentation to enhance
-the developer experience and ensure style consistency.
-Collaborate with team members and subject matter experts.
-Demonstrate basic knowledge of user information needs and content creation processes.
-Maintain a foundational understanding of the product domain and technical writing principles.
+Executar tarefas atribuídas, incluindo triagem de issues, gerenciamento de pull requests,
+verificação de conteúdo e revisão de feedback, sob orientação executiva.
+Escrever conteúdo claro, conciso e organizado para projetos definidos,
+atendendo às necessidades dos usuários e seguindo diretrizes de estilo.
+Revisar, editar e reorganizar documentação existente para melhorar
+a experiência do desenvolvedor e garantir consistência de estilo.
+Colaborar com membros da equipe e especialistas no assunto.
+Demonstrar conhecimento básico das necessidades de informação do usuário e processos de criação de conteúdo.
+Manter um entendimento fundamental do domínio do produto e princípios de technical writing.
 
-## Qualifications
+## Qualificações
 
-### Minimum qualifications
+### Qualificações mínimas
 
-* Bachelor's degree in a relevant field, or equivalent practical experience.
-* Experience creating content for technical audiences
-  (for example, developer documentation, Computer Science course material,
-  or IT administration playbooks).
-* Experience with one or more programming languages
+* Diploma de bacharel em campo relevante, ou experiência prática equivalente.
+* Experiência criando conteúdo para públicos técnicos
+  (por exemplo, documentação para desenvolvedores, material de curso de Ciência da Computação,
+  ou playbooks de administração de TI).
+* Experiência com uma ou mais linguagens de programação
   (Python, Java, C++, Dart, Go, etc).
 
-### Preferred qualifications
+### Qualificações preferenciais
 
-* 1 year of experience in technical writing.
-* Experience creating content for technical audiences.
-* Interest in programming languages such as Dart or Go.
+* 1 ano de experiência em technical writing.
+* Experiência criando conteúdo para públicos técnicos.
+* Interesse em linguagens de programação como Dart ou Go.
 
-## To apply
+## Para se candidatar
 
-Please apply by [filling out the following form](https://flutterbrasil.dev/go/job).
+Por favor, candidate-se [preenchendo o seguinte formulário](https://flutterbrasil.dev/go/job).

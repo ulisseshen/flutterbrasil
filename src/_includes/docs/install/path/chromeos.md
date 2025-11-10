@@ -1,3 +1,5 @@
+<!-- ia-translate: true -->
+
 :::note
 As etapas a seguir assumem que
 você já [ativou o suporte ao Linux][chromeos-linux] e que

@@ -1,3 +1,5 @@
+<!-- ia-translate: true -->
+
  1. <h3>Determine o local de instalação do seu Flutter SDK</h3>
 
     Copie o caminho absoluto para o diretório onde você
@@ -24,15 +26,15 @@
     <hr>
 
     <details>
-    <summary>Expand for <code>bash</code> instructions</summary>
+    <summary>Expanda para instruções do <code>bash</code></summary>
 
     ```console
     $ echo 'export PATH="<path-to-sdk>:$PATH"' >> ~/.bash_profile
     ```
 
-    For example, if you downloaded Flutter into a
-    `develop/flutter` folder inside your user directory,
-    you'd run the following:
+    Por exemplo, se você baixou o Flutter em uma
+    pasta `develop/flutter` dentro do seu diretório de usuário,
+    você executaria o seguinte:
 
     ```console
     $ echo 'export PATH="$HOME/develop/flutter/bin:$PATH"' >> ~/.bash_profile
@@ -41,15 +43,15 @@
     </details>
 
     <details>
-    <summary>Expand for <code>zsh</code> instructions</summary>
+    <summary>Expanda para instruções do <code>zsh</code></summary>
 
     ```console
     $ echo 'export PATH="<path-to-sdk>/bin:$PATH"' >> ~/.zshenv
     ```
 
-    For example, if you downloaded Flutter into a
-    `develop/flutter` folder inside your user directory,
-    you'd run the following:
+    Por exemplo, se você baixou o Flutter em uma
+    pasta `develop/flutter` dentro do seu diretório de usuário,
+    você executaria o seguinte:
 
     ```console
     $ echo 'export PATH="$HOME/develop/flutter/bin:$PATH"' >> ~/.zshenv
@@ -58,15 +60,15 @@
     </details>
 
     <details>
-    <summary>Expand for <code>fish</code> instructions</summary>
+    <summary>Expanda para instruções do <code>fish</code></summary>
 
     ```console
     $ fish_add_path -g -p <path-to-sdk>/bin
     ```
 
-    For example, if you downloaded Flutter into a
-    `develop/flutter` folder inside your user directory,
-    you'd run the following:
+    Por exemplo, se você baixou o Flutter em uma
+    pasta `develop/flutter` dentro do seu diretório de usuário,
+    você executaria o seguinte:
 
     ```console
     $ fish_add_path -g -p ~/develop/flutter/bin
@@ -75,15 +77,15 @@
     </details>
 
     <details>
-    <summary>Expand for <code>csh</code> instructions</summary>
+    <summary>Expanda para instruções do <code>csh</code></summary>
 
     ```console
     $ echo 'setenv PATH "<path-to-sdk>/bin:$PATH"' >> ~/.cshrc
     ```
 
-    For example, if you downloaded Flutter into a
-    `develop/flutter` folder inside your user directory,
-    you'd run the following:
+    Por exemplo, se você baixou o Flutter em uma
+    pasta `develop/flutter` dentro do seu diretório de usuário,
+    você executaria o seguinte:
 
     ```console
     $ echo 'setenv PATH "$HOME/develop/flutter/bin:$PATH"' >> ~/.cshrc
@@ -92,15 +94,15 @@
     </details>
 
     <details>
-    <summary>Expand for <code>tcsh</code> instructions</summary>
+    <summary>Expanda para instruções do <code>tcsh</code></summary>
 
     ```console
     $ echo 'setenv PATH "<path-to-sdk>/bin:$PATH"' >> ~/.tcshrc
     ```
 
-    For example, if you downloaded Flutter into a
-    `develop/flutter` folder inside your user directory,
-    you'd run the following:
+    Por exemplo, se você baixou o Flutter em uma
+    pasta `develop/flutter` dentro do seu diretório de usuário,
+    você executaria o seguinte:
 
     ```console
     $ echo 'setenv PATH "$HOME/develop/flutter/bin:$PATH"' >> ~/.tcshrc
@@ -109,15 +111,15 @@
     </details>
 
     <details>
-    <summary>Expand for <code>ksh</code> instructions</summary>
+    <summary>Expanda para instruções do <code>ksh</code></summary>
 
     ```console
     $ echo 'export PATH="<path-to-sdk>/bin:$PATH"' >> ~/.profile
     ```
 
-    For example, if you downloaded Flutter into a
-    `develop/flutter` folder inside your user directory,
-    you'd run the following:
+    Por exemplo, se você baixou o Flutter em uma
+    pasta `develop/flutter` dentro do seu diretório de usuário,
+    você executaria o seguinte:
 
     ```console
     $ echo 'export PATH="$HOME/develop/flutter/bin:$PATH"' >> ~/.profile
@@ -126,15 +128,15 @@
     </details>
 
     <details>
-    <summary>Expand for <code>sh</code> instructions</summary>
+    <summary>Expanda para instruções do <code>sh</code></summary>
 
     ```console
     $ echo 'export PATH="<path-to-sdk>/bin:$PATH"' >> ~/.profile
     ```
 
-    For example, if you downloaded Flutter into a
-    `develop/flutter` folder inside your user directory,
-    you'd run the following:
+    Por exemplo, se você baixou o Flutter em uma
+    pasta `develop/flutter` dentro do seu diretório de usuário,
+    você executaria o seguinte:
 
     ```console
     $ echo 'export PATH="$HOME/develop/flutter/bin:$PATH"' >> ~/.profile
@@ -158,8 +160,8 @@
     $ dart --version
     ```
 
-    If either command isn't found,
-    check out [Flutter installation troubleshooting][troubleshoot].
+    Se qualquer comando não for encontrado,
+    confira [Solução de problemas de instalação do Flutter][troubleshoot].
 
 {: .steps}
 

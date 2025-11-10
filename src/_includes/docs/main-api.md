@@ -1,3 +1,5 @@
+<!-- ia-translate: true -->
+
 {% comment %}
   My reason for making this note an include is so
   that it's easier to search for it and to replace

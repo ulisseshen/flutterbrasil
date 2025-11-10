@@ -1,3 +1,5 @@
+<!-- ia-translate: true -->
+
 Se você está fazendo deploy para Android, edite seu arquivo `AndroidManifest.xml` para
 adicionar a permissão de Internet.
 

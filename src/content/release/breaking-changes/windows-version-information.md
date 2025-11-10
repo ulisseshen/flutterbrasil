@@ -1,46 +1,46 @@
 ---
-title: Migrate a Windows project to set version information
-description: How to update a Windows project to set version information
+ia-translate: true
+title: Migrar um projeto Windows para definir informações de versão
+description: Como atualizar um projeto Windows para definir informações de versão
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-Flutter 3.3 added support for setting the Windows app's version from
-the `pubspec.yaml` file or through the `--build-name` and `--build-number`
-build arguments. For more information, refer to the
-[Build and release a Windows app][] documentation.
+Flutter 3.3 adicionou suporte para definir a versão do app Windows a partir
+do arquivo `pubspec.yaml` ou através dos argumentos de build `--build-name` e `--build-number`.
+Para mais informações, consulte a
+documentação [Build and release a Windows app][].
 
-Projects created before Flutter version 3.3 need to be migrated
-to support versioning.
+Projetos criados antes da versão 3.3 do Flutter precisam ser migrados
+para suportar versionamento.
 
-## Migration steps
+## Passos de migração
 
-Your project can be updated using these steps:
+Seu projeto pode ser atualizado usando estes passos:
 
-1. Verify you are on Flutter version 3.3 or newer using `flutter --version`
-2. If needed, use `flutter upgrade` to update to the latest version of the
+1. Verifique se você está na versão 3.3 ou mais recente do Flutter usando `flutter --version`
+2. Se necessário, use `flutter upgrade` para atualizar para a versão mais recente do
 Flutter SDK
-3. Backup your project, possibly using git or some other version control system
-4. Delete the `windows/runner/CMakeLists.txt` and `windows/runner/Runner.rc`
-files
-5. Run `flutter create --platforms=windows .`
-6. Review the changes to your `windows/runner/CMakeLists.txt` and
-`windows/runner/Runner.rc` files
-7. Verify your app builds using `flutter build windows`
+3. Faça backup do seu projeto, possivelmente usando git ou algum outro sistema de controle de versão
+4. Exclua os arquivos `windows/runner/CMakeLists.txt` e `windows/runner/Runner.rc`
+5. Execute `flutter create --platforms=windows .`
+6. Revise as mudanças em seus arquivos `windows/runner/CMakeLists.txt` e
+`windows/runner/Runner.rc`
+7. Verifique se seu app compila usando `flutter build windows`
 
 :::note
-Follow the [run loop migration guide][] if the build fails
-with the following error message:
+Siga o [guia de migração do run loop][run loop migration guide] se o build falhar
+com a seguinte mensagem de erro:
 
 ```console
 flutter_window.obj : error LNK2019: unresolved external symbol "public: void __cdecl RunLoop::RegisterFlutterInstance(class flutter::FlutterEngine *)" (?RegisterFlutterInstance@RunLoop@@QEAAXPEAVFlutterEngine@flutter@@@Z) referenced in function "protected: virtual bool __cdecl FlutterWindow::OnCreate(void)" (?OnCreate@FlutterWindow@@MEAA_NXZ)
 ```
 :::
 
-## Example
+## Exemplo
 
-[PR 721][] shows the migration work for the
-[Flutter Gallery][] app.
+[PR 721][] mostra o trabalho de migração para o
+app [Flutter Gallery][].
 
 [Build and release a Windows app]: /deployment/windows#updating-the-apps-version-number
 [run loop migration guide]: /release/breaking-changes/windows-run-loop

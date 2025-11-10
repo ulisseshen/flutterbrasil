@@ -1,5 +1,5 @@
-This directory contains the [Dart][], [Jaspr][], and [Jaspr Content][] based
-implementation of the [docs.flutterbrasil.dev documentation website][docs].
+Este diretório contém a implementação baseada em [Dart][], [Jaspr][], e [Jaspr Content][]
+do [site de documentação docs.flutterbrasil.dev][docs].
 
 [Dart]: https://dartbrasil.dev
 [Jaspr]: https://docs.jaspr.site
@@ -8,12 +8,12 @@ implementation of the [docs.flutterbrasil.dev documentation website][docs].
 
 ## Usage
 
-The site should be run with the `dart run dash_site` tool
-from the root of the repository.
-Some relevant commands include:
+O site deve ser executado com a ferramenta `dart run dash_site`
+a partir da raiz do repositório.
+Alguns comandos relevantes incluem:
 
 - **Serve:** `dart run dash_site serve`
 - **Build:** `dart run dash_site build`
 - **Clean:** `dart run dash_site clean`
 
-Run `dart run dash_site --help` to learn what other commands are available.
+Execute `dart run dash_site --help` para saber quais outros comandos estão disponíveis.

@@ -1,37 +1,38 @@
 ---
-title: Writing and using fragment shaders
-description: How to author and use fragment shaders to create custom visual effects in your Flutter app.
+ia-translate: true
+title: Escrevendo e usando fragment shaders
+description: Como criar e usar fragment shaders para criar efeitos visuais personalizados em seu app Flutter.
 shortTitle: Fragment shaders
 ---
 
 :::note
-Both the Skia and [Impeller][] backends support writing a
-custom shader. Except where noted, the same
-instructions apply to both.
+Os backends Skia e [Impeller][] suportam a escrita de um
+shader personalizado. Exceto onde observado, as mesmas
+instruções se aplicam aos dois.
 :::
 
 [Impeller]: /perf/impeller
 
-Custom shaders can be used to provide rich graphical effects
-beyond those provided by the Flutter SDK.
-A shader is a program authored in a small,
-Dart-like language, known as GLSL,
-and executed on the user's GPU.
+Shaders personalizados podem ser usados para fornecer efeitos gráficos avançados
+além dos fornecidos pelo SDK Flutter.
+Um shader é um programa escrito em uma pequena
+linguagem semelhante a Dart, conhecida como GLSL,
+e executado na GPU do usuário.
 
-Custom shaders are added to a Flutter project
-by listing them in the `pubspec.yaml` file,
-and obtained using the [`FragmentProgram`][] API.
+Shaders personalizados são adicionados a um projeto Flutter
+listando-os no arquivo `pubspec.yaml`,
+e obtidos usando a API [`FragmentProgram`][].
 
 [`FragmentProgram`]: {{site.api}}/flutter/dart-ui/FragmentProgram-class.html
 
-## Adding shaders to an application
+## Adicionando shaders a um aplicativo
 
-Shaders, in the form of GLSL files with the `.frag` extension,
-must be declared in the `shaders` section of your project's `pubspec.yaml` file.
-The Flutter command-line tool compiles the shader
-to its appropriate backend format,
-and generates its necessary runtime metadata.
-The compiled shader is then included in the application just like an asset.
+Shaders, na forma de arquivos GLSL com extensão `.frag`,
+devem ser declarados na seção `shaders` do arquivo `pubspec.yaml` do seu projeto.
+A ferramenta de linha de comando do Flutter compila o shader
+para seu formato de backend apropriado,
+e gera seus metadados de tempo de execução necessários.
+O shader compilado é então incluído na aplicação como um ativo.
 
 ```yaml
 flutter:
@@ -39,20 +40,20 @@ flutter:
     - shaders/myshader.frag
 ```
 
-When running in debug mode,
-changes to a shader program trigger recompilation
-and update the shader during hot reload or hot restart.
+Ao executar em modo debug,
+as alterações em um programa shader acionam a recompilação
+e atualizam o shader durante hot reload ou hot restart.
 
-Shaders from packages are added to a project
-with `packages/$pkgname` prefixed to the shader program's name
-(where `$pkgname` is the name of the package).
+Shaders de pacotes são adicionados a um projeto
+com `packages/$pkgname` prefixado ao nome do programa shader
+(onde `$pkgname` é o nome do pacote).
 
-### Loading shaders at runtime
+### Carregando shaders em tempo de execução
 
-To load a shader into a `FragmentProgram` object at runtime,
-use the [`FragmentProgram.fromAsset`][] constructor.
-The asset's name is the same as the path to the shader
-given in the `pubspec.yaml` file.
+Para carregar um shader em um objeto `FragmentProgram` em tempo de execução,
+use o construtor [`FragmentProgram.fromAsset`][].
+O nome do ativo é o mesmo que o caminho do shader
+fornecido no arquivo `pubspec.yaml`.
 
 [`FragmentProgram.fromAsset`]: {{site.api}}/flutter/dart-ui/FragmentProgram/fromAsset.html
 
@@ -62,11 +63,11 @@ void loadMyShader() async {
 }
 ```
 
-The `FragmentProgram` object can be used to create
-one or more [`FragmentShader`][] instances.
-A `FragmentShader` object represents a fragment program
-along with a particular set of _uniforms_ (configuration parameters).
-The available uniforms depends on how the shader was defined.
+O objeto `FragmentProgram` pode ser usado para criar
+uma ou mais instâncias de [`FragmentShader`][].
+Um objeto `FragmentShader` representa um programa de fragmento
+juntamente com um conjunto particular de _uniforms_ (parâmetros de configuração).
+Os uniforms disponíveis dependem de como o shader foi definido.
 
 [`FragmentShader`]: {{site.api}}/flutter/dart-ui/FragmentShader-class.html
 
@@ -78,15 +79,15 @@ void updateShader(Canvas canvas, Rect rect, FragmentProgram program) {
 }
 ```
 
-### Canvas API
+### API Canvas
 
-Fragment shaders can be used with most Canvas APIs
-by setting [`Paint.shader`][].
-For example, when using [`Canvas.drawRect`][]
-the shader is evaluated for all fragments within the rectangle.
-For an API like [`Canvas.drawPath`][] with a stroked path,
-the shader is evaluated for all fragments within the stroked line.
-Some APIs, such as [`Canvas.drawImage`][], ignore the value of the shader.
+Shaders de fragmento podem ser usados com a maioria das APIs Canvas
+configurando [`Paint.shader`][].
+Por exemplo, ao usar [`Canvas.drawRect`][]
+o shader é avaliado para todos os fragmentos dentro do retângulo.
+Para uma API como [`Canvas.drawPath`][] com um caminho traçado,
+o shader é avaliado para todos os fragmentos dentro da linha traçada.
+Algumas APIs, como [`Canvas.drawImage`][], ignoram o valor do shader.
 
 [`Canvas.drawImage`]:  {{site.api}}/flutter/dart-ui/Canvas/drawImage.html
 [`Canvas.drawRect`]:   {{site.api}}/flutter/dart-ui/Canvas/drawRect.html
@@ -113,14 +114,14 @@ void paint(Canvas canvas, Size size, FragmentShader shader) {
 
 ```
 
-### ImageFilter API
+### API ImageFilter
 
-Fragment shaders can also be used with the [`ImageFilter`][] API.
-This allows using custom fragment shaders with the
-[`ImageFiltered`][] class or the [`BackdropFilter`][] class
-to apply shaders to already rendered content.
-[`ImageFilter`][] provides a constructor, [`ImageFilter.shader`][],
-for creating an [`ImageFilter`][] with a custom fragment shader.
+Shaders de fragmento também podem ser usados com a API [`ImageFilter`][].
+Isso permite usar shaders de fragmento personalizado com a
+classe [`ImageFiltered`][] ou a classe [`BackdropFilter`][]
+para aplicar shaders a conteúdo já renderizado.
+[`ImageFilter`][] fornece um construtor, [`ImageFilter.shader`][],
+para criar um [`ImageFilter`][] com um shader de fragmento personalizado.
 
 ```dart
 Widget build(BuildContext context, FragmentShader shader) {
@@ -139,19 +140,19 @@ Widget build(BuildContext context, FragmentShader shader) {
 }
 ```
 
-When using [`ImageFilter`][] with [`BackdropFilter`][], a [`ClipRect`][] can be
-used to limit the area that is affected by the [`ImageFilter`][]. Without a
-[`ClipRect`][] the [`BackdropFilter`][] will be applied to the whole screen.
+Ao usar [`ImageFilter`][] com [`BackdropFilter`][], um [`ClipRect`][] pode ser
+usado para limitar a área afetada pelo [`ImageFilter`][]. Sem um
+[`ClipRect`][] o [`BackdropFilter`][] será aplicado a toda a tela.
 
-`ImageFilter` fragment shaders receive some uniforms automatically from the
-engine. The `sampler2D` value at index 0 is set to the filter input image, and
-the `float` values at indices 0 and 1 are set to the image's width and height.
-Your shader must specify this constructor to accept these values (for example, a
-`sampler2D` and a `vec2`), but you should not set them from your Dart code.
+Os shaders de fragmento `ImageFilter` recebem alguns uniforms automaticamente do
+mecanismo. O valor `sampler2D` no índice 0 é definido como a imagem de entrada do filtro, e
+os valores `float` nos índices 0 e 1 são definidos como a largura e altura da imagem.
+Seu shader deve especificar este construtor para aceitar esses valores (por exemplo, um
+`sampler2D` e um `vec2`), mas você não deve defini-los a partir do seu código Dart.
 
-When targeting OpenGLES the y-coordinates of the texture will be flipped so the
-fragment shader should un-flip the UVs when sampling from textures provided by
-the engine.
+Ao direcionar OpenGLES, as coordenadas y da textura serão invertidas, portanto o
+shader de fragmento deve desempenhar as UVs ao fazer amostragem de texturas fornecidas pelo
+mecanismo.
 
 ```glsl
 #version 460 core
@@ -181,49 +182,49 @@ void main() {
 [`ImageFilter.shader`]: {{site.api}}/flutter/dart-ui/ImageFilter/ImageFilter.shader.html
 [`ClipRect`]: {{site.api}}/flutter/widgets/ClipRect-class.html
 
-## Authoring shaders
+## Criando shaders
 
-Fragment shaders are authored as GLSL source files.
-By convention, these files have the `.frag` extension.
-(Flutter doesn't support vertex shaders,
-which would have the `.vert` extension.)
+Shaders de fragmento são criados como arquivos de código-fonte GLSL.
+Por convenção, esses arquivos têm a extensão `.frag`.
+(Flutter não suporta shaders de vértice,
+que teriam a extensão `.vert`.)
 
-Any GLSL version from 460 down to 100 is supported,
-though some available features are restricted.
-The rest of the examples in this document use version `460 core`.
+Qualquer versão GLSL de 460 até 100 é suportada,
+embora alguns recursos disponíveis sejam restritos.
+O resto dos exemplos neste documento usa a versão `460 core`.
 
-Shaders are subject to the following limitations
-when used with Flutter:
+Shaders estão sujeitos às seguintes limitações
+quando usados com Flutter:
 
-* UBOs and SSBOs aren't supported
-* `sampler2D` is the only supported sampler type
-* Only the two-argument version of `texture` (sampler and uv) is supported
-* No additional varying inputs can be declared
-* All precision hints are ignored when targeting Skia
-* Unsigned integers and booleans aren't supported
+* UBOs e SSBOs não são suportados
+* `sampler2D` é o único tipo de amostrador suportado
+* Apenas a versão de dois argumentos de `texture` (amostrador e uv) é suportada
+* Nenhuma entrada variável adicional pode ser declarada
+* Todas as dicas de precisão são ignoradas ao direcionar Skia
+* Inteiros não assinados e booleanos não são suportados
 
 ### Uniforms
 
-A fragment program can be configured by defining
-`uniform` values in the GLSL shader source
-and then setting these values in Dart for
-each fragment shader instance.
+Um programa de fragmento pode ser configurado definindo
+valores `uniform` no código-fonte do shader GLSL
+e então definindo esses valores em Dart para
+cada instância de shader de fragmento.
 
-Floating point uniforms with the GLSL types
-`float`, `vec2`, `vec3`, and `vec4`
-are set using the [`FragmentShader.setFloat`][] method.
-GLSL sampler values, which use the `sampler2D` type,
-are set using the [`FragmentShader.setImageSampler`][] method.
+Os uniformes de ponto flutuante com os tipos GLSL
+`float`, `vec2`, `vec3` e `vec4`
+são definidos usando o método [`FragmentShader.setFloat`][].
+Os valores do amostrador GLSL, que usam o tipo `sampler2D`,
+são definidos usando o método [`FragmentShader.setImageSampler`][].
 
-The correct index for each `uniform` value is determined by the order
-that the uniform values are defined in the fragment program.
-For data types composed of multiple floats, such as a `vec4`,
-you must call [`FragmentShader.setFloat`][] once for each value.
+O índice correto para cada valor `uniform` é determinado pela ordem
+em que os valores uniformes são definidos no programa de fragmento.
+Para tipos de dados compostos de múltiplos floats, como um `vec4`,
+você deve chamar [`FragmentShader.setFloat`][] uma vez para cada valor.
 
 [`FragmentShader.setFloat`]: {{site.api}}/flutter/dart-ui/FragmentShader/setFloat.html
 [`FragmentShader.setImageSampler`]: {{site.api}}/flutter/dart-ui/FragmentShader/setImageSampler.html
 
-For example, given the following uniforms declarations in a GLSL fragment program:
+Por exemplo, dadas as seguintes declarações uniformes em um programa de fragmento GLSL:
 
 ```glsl
 uniform float uScale;
@@ -232,7 +233,7 @@ uniform vec2 uMagnitude;
 uniform vec4 uColor;
 ```
 
-The corresponding Dart code to initialize these `uniform` values is as follows:
+O código Dart correspondente para inicializar esses valores `uniform` é o seguinte:
 
 ```dart
 void updateShader(FragmentShader shader, Color color, Image image) {
@@ -240,30 +241,30 @@ void updateShader(FragmentShader shader, Color color, Image image) {
   shader.setFloat(1, 114); // uMagnitude x
   shader.setFloat(2, 83);  // uMagnitude y
 
-  // Convert color to premultiplied opacity.
+  // Converter cor para opacidade pré-multiplicada.
   shader.setFloat(3, color.red / 255 * color.opacity);   // uColor r
   shader.setFloat(4, color.green / 255 * color.opacity); // uColor g
   shader.setFloat(5, color.blue / 255 * color.opacity);  // uColor b
   shader.setFloat(6, color.opacity);                     // uColor a
 
-  // Initialize sampler uniform.
+  // Inicializar uniform de amostrador.
   shader.setImageSampler(0, image);
  }
  ```
 
-Observe that the indices used with [`FragmentShader.setFloat`][]
-do not count the `sampler2D` uniform.
-This uniform is set separately with [`FragmentShader.setImageSampler`][],
-with the index starting over at 0.
+Observe que os índices usados com [`FragmentShader.setFloat`][]
+não contam com o uniform `sampler2D`.
+Este uniform é definido separadamente com [`FragmentShader.setImageSampler`][],
+com o índice começando do 0.
 
-Any float uniforms that are left uninitialized will default to `0.0`.
+Qualquer uniforme de ponto flutuante que permanecer não inicializado será padrão para `0.0`.
 
-The reflection data generated by the Flutter's shader compiler can be audited
-with the following commands in order to see things like uniform offsets.
+Os dados de reflexão gerados pelo compilador de shader do Flutter podem ser auditados
+com os seguintes comandos para ver coisas como deslocamentos uniformes.
 
 ```shell
 cd $FLUTTER
-# Generate the .sl file.
+# Gerar o arquivo .sl.
 `find bin/ -name impellerc` \
   --runtime-stage-metal \
   --iplr \
@@ -272,22 +273,22 @@ cd $FLUTTER
   --spirv=foo.spirv \
   --include=engine/src/flutter/impeller/compiler/shader_lib/ \
   --input-type=frag
-# Convert the .sl file to .json
+# Converter o arquivo .sl para .json
 flatc \
   --json \
   ./engine/src/flutter/impeller/runtime_stage/runtime_stage.fbs \
   -- ./foo.sl
-# View results
+# Ver resultados
 cat foo.json
 ```
 
-#### Current position
+#### Posição atual
 
-The shader has access to a `varying` value that contains the local coordinates for
-the particular fragment being evaluated. Use this feature to compute
-effects that depend on the current position, which can be accessed by
-importing the `flutter/runtime_effect.glsl` library and calling the
-`FlutterFragCoord` function. For example:
+O shader tem acesso a um valor `varying` que contém as coordenadas locais para
+o fragmento particular sendo avaliado. Use este recurso para calcular
+efeitos que dependem da posição atual, que podem ser acessados
+importando a biblioteca `flutter/runtime_effect.glsl` e chamando a
+função `FlutterFragCoord`. Por exemplo:
 
 ```glsl
 #include <flutter/runtime_effect.glsl>
@@ -297,32 +298,32 @@ void main() {
 }
 ```
 
-The value returned from `FlutterFragCoord` is distinct from `gl_FragCoord`.
-`gl_FragCoord` provides the screen space coordinates and should generally be
-avoided to ensure that shaders are consistent across backends.
-When targeting a Skia backend,
-the calls to `gl_FragCoord` are rewritten to access local
-coordinates but this rewriting isn't possible with Impeller.
+O valor retornado de `FlutterFragCoord` é distinto de `gl_FragCoord`.
+`gl_FragCoord` fornece as coordenadas do espaço de tela e geralmente deve ser
+evitado para garantir que os shaders sejam consistentes entre backends.
+Ao direcionar um backend Skia,
+as chamadas para `gl_FragCoord` são reescritas para acessar
+coordenadas locais, mas essa reescrita não é possível com Impeller.
 
-#### Colors
+#### Cores
 
-There isn't a built-in data type for colors.
-Instead they are commonly represented as a `vec4`
-with each component corresponding to one of the RGBA
-color channels.
+Não há um tipo de dados integrado para cores.
+Em vez disso, eles são comumente representados como um `vec4`
+com cada componente correspondendo a um dos
+canais de cor RGBA.
 
-The single output `fragColor` expects that the color value
-is normalized to be in the range of `0.0` to `1.0`
-and that it has premultiplied alpha.
-This is different than typical Flutter colors which use
-a `0-255` value encoding and have unpremultipled alpha.
+A saída única `fragColor` espera que o valor da cor
+seja normalizado para estar no intervalo de `0.0` a `1.0`
+e que tenha alfa pré-multiplicado.
+Isso é diferente das cores Flutter típicas que usam
+uma codificação de valor `0-255` e têm alfa não pré-multiplicado.
 
-#### Samplers
+#### Amostradores
 
-A sampler provides access to a `dart:ui` `Image` object.
-This image can be acquired either from a decoded image
-or from part of the application using
-[`Scene.toImageSync`][] or [`Picture.toImageSync`][].
+Um amostrador fornece acesso a um objeto `Image` `dart:ui`.
+Esta imagem pode ser adquirida de uma imagem decodificada
+ou de parte da aplicação usando
+[`Scene.toImageSync`][] ou [`Picture.toImageSync`][].
 
 [`Picture.toImageSync`]: {{site.api}}/flutter/dart-ui/Picture/toImageSync.html
 [`Scene.toImageSync`]: {{site.api}}/flutter/dart-ui/Scene/toImageSync.html
@@ -341,41 +342,41 @@ void main() {
 }
 ```
 
-By default, the image uses
-[`TileMode.clamp`][] to determine how values outside
-of the range of `[0, 1]` behave.
-Customization of the tile mode is not
-supported and needs to be emulated in the shader.
+Por padrão, a imagem usa
+[`TileMode.clamp`][] para determinar como os valores fora
+do intervalo `[0, 1]` se comportam.
+A personalização do modo de mosaico não é
+suportada e precisa ser emulada no shader.
 
 [`TileMode.clamp`]: {{site.api}}/flutter/dart-ui/TileMode.html
 
-### Performance considerations
+### Considerações de desempenho
 
-When targeting the Skia backend,
-loading the shader might be expensive since it
-must be compiled to the appropriate
-platform-specific shader at runtime.
-If you intend to use one or more shaders during an animation,
-consider precaching the fragment program objects before
-starting the animation.
+Ao direcionar o backend Skia,
+carregar o shader pode ser custoso, pois deve
+ser compilado para o shader apropriado
+específico da plataforma em tempo de execução.
+Se você pretender usar um ou mais shaders durante uma animação,
+considere fazer cache dos objetos do programa de fragmento antes
+de iniciar a animação.
 
-You can reuse a `FragmentShader` object across frames;
-this is more efficient than creating a new
-`FragmentShader` for each frame.
+Você pode reutilizar um objeto `FragmentShader` entre quadros;
+isso é mais eficiente do que criar um novo
+`FragmentShader` para cada quadro.
 
-For a more detailed guide on writing performant shaders,
-check out [Writing efficient shaders][] on GitHub.
+Para um guia mais detalhado sobre como escrever shaders eficientes,
+confira [Escrevendo shaders eficientes][] no GitHub.
 
-[Writing efficient shaders]: {{site.repo.flutter}}/blob/main/engine/src/flutter/impeller/docs/shader_optimization.md
+[Escrevendo shaders eficientes]: {{site.repo.flutter}}/blob/main/engine/src/flutter/impeller/docs/shader_optimization.md
 
-### Other resources
+### Outros recursos
 
-For more information, here are a few resources.
+Para mais informações, aqui estão alguns recursos.
 
-* [The Book of Shaders][] by Patricio Gonzalez Vivo and Jen Lowe
-* [Shader toy][], a collaborative shader playground
-* [`simple_shader`][], a simple Flutter fragment shaders sample project
-* [`flutter_shaders`][], a package that simplifies using fragment shaders in Flutter
+* [The Book of Shaders][] por Patricio Gonzalez Vivo e Jen Lowe
+* [Shader toy][], um playground de shader colaborativo
+* [`simple_shader`][], um projeto de exemplo simples de shaders de fragmento do Flutter
+* [`flutter_shaders`][], um pacote que simplifica o uso de shaders de fragmento no Flutter
 
 [Shader toy]: https://www.shadertoy.com/
 [The Book of Shaders]: https://thebookofshaders.com/

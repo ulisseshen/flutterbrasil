@@ -16,6 +16,6 @@ Este documento é um trabalho em andamento.
 A origem dos trechos de código está no diretório raiz `/examples`.
 
 Para aprender como usar trechos de código,
-consulte o [README da ferramenta excerpter][].
+consulte o [README da ferramenta excerpter][excerpter-readme].
 
-[README da ferramenta excerpter]: https://github.com/dart-lang/site-shared/blob/main/pkgs/excerpter/README.md
+[excerpter-readme]: https://github.com/dart-lang/site-shared/blob/main/pkgs/excerpter/README.md

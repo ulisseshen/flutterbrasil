@@ -1,16 +1,17 @@
 ---
-title: Flutter 2.0.0 release notes
-shortTitle: 2.0.0 release notes
-description: Release notes for Flutter 2.0.0.
+title: Notas de versão do Flutter 2.0.0
+shortTitle: Notas de versão 2.0.0
+description: Notas de versão do Flutter 2.0.0.
+ia-translate: true
 skipTemplateRendering: true
 ---
 
-This page has release notes for 2.0.0.
-For information about subsequent bug-fix releases, see our [CHANGELOG][]
+Esta página contém as notas de versão da versão 2.0.0.
+Para informações sobre versões de correção de bugs subsequentes, consulte nosso [CHANGELOG][]
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/master/CHANGELOG.md
 
-## Merged PRs by labels for `flutter/flutter`
+## PRs mesclados por labels para `flutter/flutter`
 
 ### framework - 793 pull request(s)
 
@@ -9380,7 +9381,7 @@ For information about subsequent bug-fix releases, see our [CHANGELOG][]
 
 
 
-## Merged PRs by labels for `flutter/engine`
+## PRs mesclados por labels para `flutter/engine`
 
 
 
@@ -20255,7 +20256,7 @@ For information about subsequent bug-fix releases, see our [CHANGELOG][]
 
 
 
-## Merged PRs by labels for `flutter/plugins`
+## PRs mesclados por labels para `flutter/plugins`
 
 
 
@@ -21159,10 +21160,10 @@ For information about subsequent bug-fix releases, see our [CHANGELOG][]
 [3463](https://github.com/flutter/plugins/pull/3463) bump vmservice (cla: yes, p: integration_test)
 
 
-## All merged pull requests
+## Todos os pull requests mesclados
 
-### Merged PRs in `flutter/flutter` from 2020-09-11T02:17:00.000Z to 2021-01-26T18:58:00.000Z
-There were 1974 pull requests.
+### PRs mesclados em `flutter/flutter` de 2020-09-11T02:17:00.000Z até 2021-01-26T18:58:00.000Z
+Foram 1974 pull requests.
 
 [48223](https://github.com/flutter/flutter/pull/48223) Add HeroMode widget (a: animation, cla: yes, f: cupertino, f: routes, framework, waiting for tree to go green)
 
@@ -25112,8 +25113,8 @@ There were 1974 pull requests.
 
 [74694](https://github.com/flutter/flutter/pull/74694) Roll Engine from 6e391c5942b4 to f47ab4434dbe (1 revision) (cla: yes, waiting for tree to go green)
 
-### Merged PRs in `flutter/engine` from 2020-09-11T02:17:00.000Z to 2021-01-26T18:58:00.000Z
-There were 1864 pull requests.
+### PRs mesclados em `flutter/engine` de 2020-09-11T02:17:00.000Z até 2021-01-26T18:58:00.000Z
+Foram 1864 pull requests.
 
 [17881](https://github.com/flutter/engine/pull/17881) Enabled metal on ios simulator (cla: yes, waiting for tree to go green)
 
@@ -28843,8 +28844,8 @@ There were 1864 pull requests.
 
 [23959](https://github.com/flutter/engine/pull/23959) Roll Dart SDK from 38c2cddbe277 to 15dfe858c4a6 (1 revision) (cla: yes, waiting for tree to go green)
 
-### Merged PRs in `flutter/plugins` from 2020-09-11T02:17:00.000Z to 2021-01-26T18:58:00.000Z
-There were 253 pull requests.
+### PRs mesclados em `flutter/plugins` de 2020-09-11T02:17:00.000Z até 2021-01-26T18:58:00.000Z
+Foram 253 pull requests.
 
 [1721](https://github.com/flutter/plugins/pull/1721) [google_maps_flutter] Adds support for holes in polygon overlays to the Google Maps plugin (cla: yes, waiting for tree to go green)
 

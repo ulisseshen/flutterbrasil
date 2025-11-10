@@ -1,119 +1,119 @@
 ---
-title: Use maxLengthEnforcement instead of maxLengthEnforced
-description: Introducing the MaxLengthEnforcement enum.
+title: Use maxLengthEnforcement em vez de maxLengthEnforced
+description: Introduzindo o enum MaxLengthEnforcement.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-To control the behavior of `maxLength` in the
+Para controlar o comportamento de `maxLength` no
 `LengthLimitingTextInputFormatter`, use `maxLengthEnforcement`
-instead of the now-deprecated `maxLengthEnforced`.
+em vez do agora obsoleto `maxLengthEnforced`.
 
-## Context
+## Contexto
 
-The `maxLengthEnforced` parameter was used to decide
-whether text fields should truncate the input value
-when it reaches the `maxLength` limit, or whether
-(for `TextField` and `TextFormField`)
-a warning message should instead be shown in the
-character count when the length of the user input
-exceeded `maxLength`.
+O parâmetro `maxLengthEnforced` era usado para decidir
+se os campos de texto deveriam truncar o valor de entrada
+quando ele atingisse o limite de `maxLength`, ou se
+(para `TextField` e `TextFormField`)
+uma mensagem de aviso deveria ser mostrada no
+contador de caracteres quando o comprimento da entrada do usuário
+excedesse `maxLength`.
 
-However, to enter CJK characters, some input methods
-require the user to enter a sequence of Latin characters
-into the text field, then turn this sequence
-into desired CJK characters (a referred to as *text composition*).
-The Latin sequence is usually longer than the resulting CJK characters,
-so setting a hard maximum character limit on a text field may mean
-the user is unable to finish the text composition normally due to the
-`maxLength` character limit.
+No entanto, para inserir caracteres CJK, alguns métodos de entrada
+exigem que o usuário insira uma sequência de caracteres latinos
+no campo de texto, e então converta essa sequência
+em caracteres CJK desejados (referido como *composição de texto*).
+A sequência latina geralmente é mais longa que os caracteres CJK resultantes,
+então definir um limite máximo rígido de caracteres em um campo de texto pode significar que
+o usuário não consiga finalizar a composição de texto normalmente devido ao
+limite de caracteres de `maxLength`.
 
-Text composition is also used by some input methods to
-indicate that the text within the highlighted composing
-region is being actively edited, even when entering
-Latin characters. For example, Gboard's English keyboard on Android
-(as with many other input methods on Android) puts the current word
-in a composing region.
+A composição de texto também é usada por alguns métodos de entrada para
+indicar que o texto dentro da região de composição destacada está sendo editado ativamente,
+mesmo ao inserir caracteres latinos. Por exemplo, o teclado inglês do Gboard no Android
+(assim como muitos outros métodos de entrada no Android) coloca a palavra atual
+em uma região de composição.
 
-To improve the input experience in these scenarios,
-a new tri-state enum, `MaxLengthEnforcement`, was introduced.
-Its values describe supported strategies for handling
-active composing regions when applying a
+Para melhorar a experiência de entrada nesses cenários,
+um novo enum de três estados, `MaxLengthEnforcement`, foi introduzido.
+Seus valores descrevem estratégias suportadas para lidar com
+regiões de composição ativas ao aplicar um
 `LengthLimitingTextInputFormatter`.
-A new `maxLengthEnforcement` parameter that uses
-this enum has been added to text fields to replace
-the boolean `maxLengthEnforced` parameter.
-With the new enum parameter,
-developers can choose different strategies
-based on the type of the content the text field expects.
+Um novo parâmetro `maxLengthEnforcement` que usa
+esse enum foi adicionado aos campos de texto para substituir
+o parâmetro booleano `maxLengthEnforced`.
+Com o novo parâmetro enum,
+os desenvolvedores podem escolher diferentes estratégias
+com base no tipo de conteúdo que o campo de texto espera.
 
-For more information, see the docs for [`maxLength`][] and
+Para mais informações, consulte a documentação de [`maxLength`][] e
 [`MaxLengthEnforcement`][].
 
-The default value of the `maxLengthEnforcement`
-parameter is inferred from the `TargetPlatform`
-of the application, to conform to the platform's conventions:
+O valor padrão do parâmetro `maxLengthEnforcement`
+é inferido da `TargetPlatform`
+do aplicativo, para estar de acordo com as convenções da plataforma:
 
-## Description of change
+## Descrição da mudança
 
-* Added a `maxLengthEnforcement` parameter using the
-  new enum type `MaxLengthEnforcement`,
-  as a replacement for the now-deprecated boolean
-  `maxLengthEnforced` parameter on
-  `TextField`, `TextFormField`, `CupertinoTextField`, and
-  `LengthLimitingTextInputFormatter` classes.
+* Adicionado um parâmetro `maxLengthEnforcement` usando o
+  novo tipo enum `MaxLengthEnforcement`,
+  como substituto do agora obsoleto parâmetro booleano
+  `maxLengthEnforced` nas
+  classes `TextField`, `TextFormField`, `CupertinoTextField` e
+  `LengthLimitingTextInputFormatter`.
 
-## Migration guide
+## Guia de migração
 
-_Using the default behavior for the current platform is recommended,
-since this will be the behavior most familiar to the user._
+_Usar o comportamento padrão para a plataforma atual é recomendado,
+pois este será o comportamento mais familiar para o usuário._
 
-### Default values of `maxLengthEnforcement`
+### Valores padrão de `maxLengthEnforcement`
 
 * Android, Windows: `MaxLengthEnforcement.enforced`.
-  The native behavior of these platforms is enforced.
-  The inputting value will be truncated whether
-  the user is entering with composition or not.
+  O comportamento nativo dessas plataformas é aplicado.
+  O valor de entrada será truncado se
+  o usuário estiver inserindo com composição ou não.
 * iOS, macOS: `MaxLengthEnforcement.truncateAfterCompositionEnds`.
-  These platforms do not have a "maximum length"
-  feature and therefore require that developers implement
-  the behavior themselves. No standard convention seems
-  to have evolved on these platforms. We have chosen
-  to allow the composition to exceed the maximum length
-  to avoid breaking CJK input.
-* Web and Linux: `MaxLengthEnforcement.truncateAfterCompositionEnds`.
-  While there is no standard on these platforms
-  (and many implementation exist with conflicting behavior),
-  the common convention seems to be to allow the composition
-  to exceed the maximum length by default.
+  Essas plataformas não têm um recurso de "comprimento máximo"
+  e, portanto, exigem que os desenvolvedores implementem
+  o comportamento eles mesmos. Nenhuma convenção padrão parece
+  ter evoluído nessas plataformas. Optamos por
+  permitir que a composição exceda o comprimento máximo
+  para evitar quebrar a entrada CJK.
+* Web e Linux: `MaxLengthEnforcement.truncateAfterCompositionEnds`.
+  Embora não haja um padrão nessas plataformas
+  (e muitas implementações existem com comportamento conflitante),
+  a convenção comum parece ser permitir que a composição
+  exceda o comprimento máximo por padrão.
 * Fuchsia: `MaxLengthEnforcement.truncateAfterCompositionEnds`.
-  There is no platform convention on this platform yet,
-  so we have chosen to default to the convention that is
-  least likely to result in data loss.
+  Ainda não há convenção de plataforma nesta plataforma,
+  então optamos por usar como padrão a convenção que é
+  menos provável de resultar em perda de dados.
 
-### To enforce the limit all the time
+### Para aplicar o limite o tempo todo
 
-To enforce the limit that always truncate the value when
-it reaches the limit (for example, when entering a
-verification code), use `MaxLengthEnforcement.enforced` in
-editable text fields.
+Para aplicar o limite que sempre trunca o valor quando
+ele atinge o limite (por exemplo, ao inserir um
+código de verificação), use `MaxLengthEnforcement.enforced` em
+campos de texto editáveis.
 
-_This option may give suboptimal user experience when used
-with input methods that rely on text composition.
-Consider using the `truncateAfterCompositionEnds`
-option when the text field expects arbitrary user input
-which may contain CJK characters.
-See the [Context](#context) section for more information._
+_Esta opção pode dar uma experiência de usuário subótima quando usada
+com métodos de entrada que dependem da composição de texto.
+Considere usar a opção `truncateAfterCompositionEnds`
+quando o campo de texto espera entrada arbitrária do usuário
+que pode conter caracteres CJK.
+Consulte a seção [Contexto](#context) para mais informações._
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 TextField(maxLength: 6)
 ```
 
-or:
+ou:
 
 ```dart
 TextField(
@@ -122,7 +122,7 @@ TextField(
 )
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 TextField(
@@ -131,14 +131,14 @@ TextField(
 )
 ```
 
-### To not enforce the limitation
+### Para não aplicar a limitação
 
-To show a max length error in `TextField`,
-but _not_ truncate when the limit is exceeded,
-use `MaxLengthEnforcement.none` instead of
+Para mostrar um erro de comprimento máximo no `TextField`,
+mas _não_ truncar quando o limite for excedido,
+use `MaxLengthEnforcement.none` em vez de
 `maxLengthEnforced: false`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 TextField(
@@ -147,7 +147,7 @@ TextField(
 )
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 TextField(
@@ -156,10 +156,10 @@ TextField(
 )
 ```
 
-For `CupertinoTextField`, which isn't able to show an error message,
-just don't set the `maxLength` value.
+Para `CupertinoTextField`, que não consegue mostrar uma mensagem de erro,
+apenas não defina o valor `maxLength`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 CupertinoTextField(
@@ -168,33 +168,33 @@ CupertinoTextField(
 )
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 CupertinoTextField()
 ```
 
-### To enforce the limit, but not for composing text
+### Para aplicar o limite, mas não para texto em composição
 
-To avoid truncating text while the user is inputting text
-by using composition, specify
+Para evitar truncar texto enquanto o usuário está inserindo texto
+usando composição, especifique
 `MaxLengthEnforcement.truncateAfterCompositionEnds`.
-This behavior allows input methods that use composing
-regions larger than the resulting text,
-as is common for example with Chinese, Japanese,
-and Korean (CJK) text, to temporarily
-ignore the limit until editing is complete.
+Este comportamento permite métodos de entrada que usam regiões de composição
+maiores que o texto resultante,
+como é comum, por exemplo, com texto chinês, japonês,
+e coreano (CJK), para temporariamente
+ignorar o limite até que a edição esteja completa.
 
-_Gboard's English keyboard on Android
-(and many other Android input methods)
-creates a composing region for the word being entered.
-When used in a `truncateAfterCompositionEnds` text field,
-the user won't be stopped right away at the `maxLength` limit.
-Consider the `enforced` option if you are confident that
-the text field will not be used with input methods
-that use temporarily long composing regions such as CJK text._
+_O teclado inglês do Gboard no Android
+(e muitos outros métodos de entrada do Android)
+cria uma região de composição para a palavra que está sendo inserida.
+Quando usado em um campo de texto `truncateAfterCompositionEnds`,
+o usuário não será parado imediatamente no limite `maxLength`.
+Considere a opção `enforced` se você está confiante de que
+o campo de texto não será usado com métodos de entrada
+que usam regiões de composição temporariamente longas, como texto CJK._
 
-Code for the implementation:
+Código para a implementação:
 
 ```dart
 TextField(
@@ -203,49 +203,48 @@ TextField(
 )
 ```
 
-### Be wary of assuming input will not use composing regions
+### Tenha cuidado ao assumir que a entrada não usará regiões de composição
 
-It is tempting when targeting a particular locale to assume
-that all users will be satisfied with input from that locale.
-For example, forum software targeting an English-language
-community might be assumed to only need to deal with English
-text. However, this kind of assumption is often incorrect.
-For example, maybe the English-language forum participants
-will want to discuss Japanese anime or Vietnamese cooking.
-Maybe one of the participants is Korean and prefers to express
-their name in their native ideographs. For this reason,
-freeform fields should rarely use the `enforced` value
-and should instead prefer the
-`truncateAfterCompositionEnds` value if at all possible.
+É tentador ao direcionar uma localidade específica assumir
+que todos os usuários ficarão satisfeitos com a entrada dessa localidade.
+Por exemplo, software de fórum direcionado a uma comunidade de língua inglesa
+pode ser assumido que só precisa lidar com texto em inglês. No entanto, esse tipo de suposição geralmente está incorreta.
+Por exemplo, talvez os participantes do fórum em inglês
+queiram discutir anime japonês ou culinária vietnamita.
+Talvez um dos participantes seja coreano e prefira expressar
+seu nome em seus ideogramas nativos. Por esse motivo,
+campos de formato livre raramente devem usar o valor `enforced`
+e devem, em vez disso, preferir o
+valor `truncateAfterCompositionEnds`, se possível.
 
-## Timeline
+## Linha do tempo
 
-Landed in version: v1.26.0-1.0.pre<br>
-In stable release: 2.0.0
+Lançado na versão: v1.26.0-1.0.pre<br>
+Na versão estável: 2.0.0
 
-## References
+## Referências
 
-Design doc:
+Documento de design:
 
-* [`MaxLengthEnforcement` design doc][]
+* [Documento de design de `MaxLengthEnforcement`][]
 
-API documentation:
+Documentação da API:
 
 * [`MaxLengthEnforcement`][]
 * [`LengthLimitingTextInputFormatter`][]
 * [`maxLength`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue 63753][]
 * [Issue 67898][]
 
-Relevant PR:
+PR relevante:
 
 * [PR 63754][]: Fix TextField crashed with composing and maxLength set
 * [PR 68086][]: Introduce `MaxLengthEnforcement`
 
-[`MaxLengthEnforcement` design doc]: /go/max-length-enforcement
+[Documento de design de `MaxLengthEnforcement`]: /go/max-length-enforcement
 [`MaxLengthEnforcement`]: {{site.api}}/flutter/services/MaxLengthEnforcement.html
 [`LengthLimitingTextInputFormatter`]: {{site.api}}/flutter/services/LengthLimitingTextInputFormatter-class.html
 [`maxLength`]: {{site.api}}/flutter/services/LengthLimitingTextInputFormatter/maxLength.html

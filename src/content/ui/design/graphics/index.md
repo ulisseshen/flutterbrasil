@@ -1,9 +1,10 @@
 ---
 layout: toc
-title: Custom drawing and graphics
-shortTitle: Drawing & graphics
+title: Desenho e gráficos personalizados
+shortTitle: Desenho e gráficos
 description: >
-  Content covering how to create custom graphics and
-  use your own shaders in Flutter apps.
+  Conteúdo sobre como criar gráficos personalizados e
+  usar seus próprios shaders em apps Flutter.
 sitemap: false
+ia-translate: true
 ---

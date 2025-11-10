@@ -1,100 +1,99 @@
 ---
-title: Actions API revision
+title: Revisão da API Actions
 description: >
-  Removes need for FocusNode in invocations, map Intent types to Actions.
+  Remove a necessidade de FocusNode em invocações, mapeia tipos Intent para Actions.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-In Flutter an [`Intent`][] is an object that's typically bound
-to a keyboard key combination using the [`Shortcuts`][] widget.
-An `Intent` can be bound to an [`Action`][],
-which can update the application's state or perform other operations.
-In the course of using this API, we identified several drawbacks
-in the design, so we have updated the Actions API to make it easier
-to use and understand.
+No Flutter, um [`Intent`][] é um objeto que normalmente é vinculado
+a uma combinação de teclas do teclado usando o widget [`Shortcuts`][].
+Um `Intent` pode ser vinculado a uma [`Action`][],
+que pode atualizar o estado do aplicativo ou executar outras operações.
+No decorrer do uso desta API, identificamos várias desvantagens
+no design, então atualizamos a API Actions para torná-la mais fácil
+de usar e entender.
 
-In the previous Actions API design, actions were mapped from a
-[`LocalKey`][] to an `ActionFactory` that created a new
-`Action` each time the `invoke` method was called.
-In the current API, actions are mapped from the type of the `Intent`
-to an `Action` instance (with a `Map<Type, Action>`),
-and they are not created anew for each invocation.
+No design anterior da API Actions, as ações eram mapeadas de uma
+[`LocalKey`][] para um `ActionFactory` que criava uma nova
+`Action` cada vez que o método `invoke` era chamado.
+Na API atual, as ações são mapeadas do tipo do `Intent`
+para uma instância de `Action` (com um `Map<Type, Action>`),
+e não são criadas novamente para cada invocação.
 
-## Context
+## Contexto {:#context}
 
-The original Actions API design was oriented towards invoking actions from
-widgets, and having those actions act in the context of the widget.
-Teams have been using actions, and found several limitations in that
-design that needed to be addressed:
+O design original da API Actions era orientado para invocar ações a partir de
+widgets e fazer com que essas ações agissem no contexto do widget.
+As equipes vêm usando ações e encontraram várias limitações nesse
+design que precisavam ser abordadas:
 
-1. Actions couldn't be invoked from outside of the widget hierarchy.
-   Examples of this include processing a script of commands,
-   some undo architectures, and some controller architectures.
+1. As ações não podiam ser invocadas de fora da hierarquia de widgets.
+   Exemplos disso incluem o processamento de um script de comandos,
+   algumas arquiteturas de desfazer e algumas arquiteturas de controlador.
 
-1. The mapping from shortcut key to `Intent` and then to
-   `Action` wasn't always clear, since the data structures
-   mapped LogicalKeySet =>Intent and then
-   `LocalKey` => `ActionFactory`. The new mapping is still
-   `LogicalKeySet` to `Intent` but then it maps `Type`
-   (`Intent` type) to `Action`, which is more direct and
-   readable, since the type of the intent is written in the mapping.
+1. O mapeamento da tecla de atalho para `Intent` e depois para
+   `Action` nem sempre era claro, já que as estruturas de dados
+   mapeavam LogicalKeySet =>Intent e depois
+   `LocalKey` => `ActionFactory`. O novo mapeamento ainda é
+   `LogicalKeySet` para `Intent`, mas depois mapeia `Type`
+   (tipo de `Intent`) para `Action`, o que é mais direto e
+   legível, já que o tipo do intent é escrito no mapeamento.
 
-1. If the key binding for an action was in another part of the
-   widget hierarchy, it was not always possible for the `Intent`
-   to have access to the state necessary to decide if the
-   intent/action should be enabled or not.
+1. Se a vinculação de tecla para uma ação estivesse em outra parte da
+   hierarquia de widgets, nem sempre era possível para o `Intent`
+   ter acesso ao estado necessário para decidir se o
+   intent/ação deveria ser habilitado ou não.
 
-To address these issues, we made some significant changes to the API.
-The mapping of actions was made more intuitive,
-and the enabled interface was moved to the `Action` class.
-Some unnecessary arguments were removed from the `Action`'s
-`invoke` method and its constructor, and actions were allowed
-to return results from their invoke method.
-Actions were made into generics, accepting the type of `Intent`
-they handle, and `LocalKeys` were no longer used for identifying
-which action to run, and the type of the `Intent` is used instead.
+Para resolver esses problemas, fizemos algumas mudanças significativas na API.
+O mapeamento de ações foi tornado mais intuitivo,
+e a interface habilitada foi movida para a classe `Action`.
+Alguns argumentos desnecessários foram removidos do método
+`invoke` da `Action` e de seu construtor, e as ações foram autorizadas
+a retornar resultados de seu método invoke.
+As ações foram transformadas em genéricas, aceitando o tipo de `Intent`
+que elas manipulam, e as `LocalKeys` não são mais usadas para identificar
+qual ação executar, e o tipo do `Intent` é usado em vez disso.
 
-The majority of these changes were made in the PRs for
-[Revise Action API][] and [Make Action.enabled be
-isEnabled(Intent intent) instead][], and are
-described in detail in [the design
-doc](/go/actions-and-shortcuts-design-revision).
+A maioria dessas mudanças foi feita nos PRs para
+[Revise Action API][] e [Make Action.enabled be
+isEnabled(Intent intent) instead][], e estão
+descritas em detalhes no [documento de
+design](/go/actions-and-shortcuts-design-revision).
 
-## Description of change
+## Descrição da mudança {:#description-of-change}
 
-Here are the changes made to address the above problems:
+Aqui estão as mudanças feitas para resolver os problemas acima:
 
-1. The `Map<LocalKey, ActionFactory>` that was given to the [`Actions`][] widget
-   is now a `Map<Type, Action<Intent>>` (the type is the type of the Intent to
-   be passed to the Action).
-1. The `isEnabled` method was moved from the `Intent` class to the `Action`
-   class.
-1. The `FocusNode` argument to `Action.invoke` and `Actions.invoke` methods was removed.
-1. Invoking an action no longer creates a new instance of the `Action`.
-1. The `LocalKey` argument to the `Intent` constructor was removed.
-1. The `LocalKey` argument to `CallbackAction` was removed.
-1. The `Action` class is now a generic (`Action<T extends Intent>`) for better
-   type safety.
-1. The `OnInvokeCallback` used by `CallbackAction` no longer takes a `FocusNode`
-   argument.
-1. The `ActionDispatcher.invokeAction` signature has changed to not accept an
-   optional `FocusNode`, but instead take an optional `BuildContext`.
-1. The `LocalKey` static constants (named key by convention) in `Action`
-   subclasses have been removed.
-1. The `Action.invoke` and `ActionDispatcher.invokeAction` methods now return
-   the result of invoking the action as an `Object`.
-1. The `Action` class may now be listened to for state changes.
-1. The `ActionFactory` typedef has been removed, as it is no longer used.
+1. O `Map<LocalKey, ActionFactory>` que era passado para o widget [`Actions`][]
+   agora é um `Map<Type, Action<Intent>>` (o tipo é o tipo do Intent a
+   ser passado para a Action).
+1. O método `isEnabled` foi movido da classe `Intent` para a classe `Action`.
+1. O argumento `FocusNode` para os métodos `Action.invoke` e `Actions.invoke` foi removido.
+1. Invocar uma ação não cria mais uma nova instância da `Action`.
+1. O argumento `LocalKey` para o construtor `Intent` foi removido.
+1. O argumento `LocalKey` para `CallbackAction` foi removido.
+1. A classe `Action` agora é genérica (`Action<T extends Intent>`) para melhor
+   segurança de tipo.
+1. O `OnInvokeCallback` usado por `CallbackAction` não aceita mais um argumento `FocusNode`.
+1. A assinatura de `ActionDispatcher.invokeAction` mudou para não aceitar um
+   `FocusNode` opcional, mas em vez disso aceitar um `BuildContext` opcional.
+1. As constantes estáticas `LocalKey` (nomeadas key por convenção) em subclasses de `Action`
+   foram removidas.
+1. Os métodos `Action.invoke` e `ActionDispatcher.invokeAction` agora retornam
+   o resultado de invocar a ação como um `Object`.
+1. A classe `Action` agora pode ser ouvida para mudanças de estado.
+1. O typedef `ActionFactory` foi removido, pois não é mais usado.
 
-## Example analyzer failures
+## Falhas de exemplo do analyzer {:#example-analyzer-failures}
 
-Here are some example analyzer failures that might be encountered where an
-outdated use of the Actions API might be the cause of the problem. The specifics
-of the error might differ, and there may be other failures caused by these
-changes.
+Aqui estão algumas falhas de exemplo do analyzer que podem ser encontradas onde um
+uso desatualizado da API Actions pode ser a causa do problema. Os detalhes específicos
+do erro podem diferir, e pode haver outras falhas causadas por essas
+mudanças.
 
 ```plaintext
 error: MyActionDispatcher.invokeAction' ('bool Function(Action<Intent>, Intent, {FocusNode focusNode})') isn't a valid override of 'ActionDispatcher.invokeAction' ('Object Function(Action<Intent>, Intent, [BuildContext])'). (invalid_override at [main] lib/main.dart:74)
@@ -110,23 +109,23 @@ error: The getter 'key' isn't defined for the type 'NextFocusAction'. (undefined
 error: The argument type 'Map<LocalKey, dynamic>' can't be assigned to the parameter type 'Map<Type, Action<Intent>>'. (argument_type_not_assignable at [main] lib/main.dart:418)
 ```
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-Significant changes area required to update existing code
-to the new API.
+Mudanças significativas são necessárias para atualizar o código existente
+para a nova API.
 
-### Actions mapping for pre-defined actions
+### Mapeamento de Actions para ações pré-definidas {:#actions-mapping-for-pre-defined-actions}
 
-To update the action maps in the `Actions` widget for
-predefined actions in Flutter, like `ActivateAction`
-and `SelectAction`, do the following:
+Para atualizar os mapas de ação no widget `Actions` para
+ações pré-definidas no Flutter, como `ActivateAction`
+e `SelectAction`, faça o seguinte:
 
-* Update the argument type of the `actions` argument
-* Use an instance of a specific `Intent` class in the
-  `Shortcuts` mapping, rather than an `Intent(TheAction.key)`
-  instance.
+* Atualize o tipo de argumento do argumento `actions`
+* Use uma instância de uma classe `Intent` específica no
+  mapeamento `Shortcuts`, em vez de uma instância
+  `Intent(TheAction.key)`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 class MyWidget extends StatelessWidget {
@@ -148,7 +147,7 @@ class MyWidget extends StatelessWidget {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class MyWidget extends StatelessWidget {
@@ -170,14 +169,14 @@ class MyWidget extends StatelessWidget {
 }
 ```
 
-### Custom actions
+### Ações personalizadas {:#custom-actions}
 
-To migrate your custom actions, eliminate the `LocalKeys`
-you've defined, and replace them with `Intent` subclasses,
-as well as changing the type of the argument to the `actions`
-argument of the `Actions` widget.
+Para migrar suas ações personalizadas, elimine as `LocalKeys`
+que você definiu e substitua-as por subclasses de `Intent`,
+bem como altere o tipo do argumento para o argumento `actions`
+do widget `Actions`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 class MyAction extends Action {
@@ -211,11 +210,11 @@ class MyWidget extends StatelessWidget {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
-// You may need to create new Intent subclasses if you used
-// a bare LocalKey before.
+// Você pode precisar criar novas subclasses de Intent se você usou
+// uma LocalKey simples antes.
 class MyIntent extends Intent {
   const MyIntent();
 }
@@ -246,25 +245,25 @@ class MyWidget extends StatelessWidget {
 }
 ```
 
-### Custom `Actions` and `Intents` with arguments
+### `Actions` e `Intents` personalizados com argumentos {:#custom-actions-and-intents-with-arguments}
 
-To update actions that use intent arguments or hold state,
-you need to modify the arguments to the `invoke` method.
-In the example below, the code keeps the value of the
-argument in the intent as part of the action instance.
-This is because in the old design there is a new instance
-of the action created each time it's executed,
-and the resulting action could be kept by the
-[`ActionDispatcher`][] to record the state.
+Para atualizar ações que usam argumentos de intent ou mantêm estado,
+você precisa modificar os argumentos para o método `invoke`.
+No exemplo abaixo, o código mantém o valor do
+argumento no intent como parte da instância da ação.
+Isso ocorre porque no design antigo há uma nova instância
+da ação criada cada vez que ela é executada,
+e a ação resultante pode ser mantida pelo
+[`ActionDispatcher`][] para registrar o estado.
 
-In the example of post migration code below,
-the new `MyAction` returns the state as the result
-of calling `invoke`, since a new instance isn't created
-for each invocation. This state is returned to the caller of
-`Actions.invoke`, or `ActionDispatcher.invokeAction`,
-depending on how the action is invoked.
+No exemplo de código pós-migração abaixo,
+o novo `MyAction` retorna o estado como resultado
+de chamar `invoke`, já que uma nova instância não é criada
+para cada invocação. Esse estado é retornado ao chamador de
+`Actions.invoke` ou `ActionDispatcher.invokeAction`,
+dependendo de como a ação é invocada.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 class MyIntent extends Intent {
@@ -289,7 +288,7 @@ class MyAction extends Action {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class MyIntent extends Intent {
@@ -307,14 +306,14 @@ class MyAction extends Action<MyIntent> {
 }
 ```
 
-## Timeline
+## Linha do tempo {:#timeline}
 
-Landed in version: 1.18<br>
-In stable release: 1.20
+Implementado na versão: 1.18<br>
+Na versão estável: 1.20
 
-## References
+## Referências {:#references}
 
-API documentation:
+Documentação da API:
 
 * [`Action`][]
 * [`ActionDispatcher`][]
@@ -322,11 +321,11 @@ API documentation:
 * [`Intent`][]
 * [`Shortcuts`][]
 
-Relevant issue:
+Issue relevante:
 
 * [Issue 53276][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Revise Action API][]
 * [Make Action.enabled be isEnabled(Intent intent) instead][]

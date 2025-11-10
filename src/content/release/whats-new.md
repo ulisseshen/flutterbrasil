@@ -1,64 +1,65 @@
 ---
-title: What's new in the docs
+title: O que há de novo na documentação
 description: >-
-  A list of what's new on docs.flutterbrasil.dev and related documentation sites.
+  Uma lista do que há de novo em docs.flutterbrasil.dev e sites de documentação relacionados.
+ia-translate: true
 ---
 
-This page contains current and recent announcements
-of what's new on the Flutter website and blog.
-Find past what's new information on the
-[what's new archive][] page.
-You might also check out the
-Flutter SDK [release notes][].
+Esta página contém anúncios atuais e recentes
+do que há de novo no site e blog do Flutter.
+Encontre informações antigas sobre novidades na
+página [arquivo de novidades][what's new archive].
+Você também pode conferir as
+[notas de lançamento][release notes] do Flutter SDK.
 
-To stay on top of Flutter announcements including
-breaking changes,
-join the [flutter-announce][] Google group.
+Para se manter atualizado sobre anúncios do Flutter incluindo
+mudanças breaking,
+junte-se ao grupo Google [flutter-announce][].
 
-For Dart, you can join the [Dart Announce][] Google group,
-and review the [Dart changelog][].
+Para Dart, você pode se juntar ao grupo Google [Dart Announce][],
+e revisar o [changelog do Dart][Dart changelog].
 
 [Dart Announce]: {{site.groups}}/a/dartlang.org/g/announce
 [Dart changelog]: {{site.github}}/dart-lang/sdk/blob/main/CHANGELOG.md
 [flutter-announce]: {{site.groups}}/forum/#!forum/flutter-announce
 [release notes]: /release/release-notes
 
-## 13 August 2025: Release 3.35
+## 13 de agosto de 2025: Lançamento 3.35
 
-Flutter 3.35 is live! For more information,
-check out the [Flutter 3.35 technical blog post][3.35-tech].
-You might also check out the [Dart 3.9 release][] blog post.
+Flutter 3.35 está no ar! Para mais informações,
+confira o [post técnico do blog do Flutter 3.35][3.35-tech].
+Você também pode conferir o post do blog do [lançamento do Dart 3.9][Dart 3.9 release].
 
 [3.35-tech]: {{site.flutter-blog}}/whats-new-in-flutter-3-35-c58ef72e3766
 [Dart 3.9 release]: {{site.medium}}/dartlang/announcing-dart-3-9-ba49e8f38298
 
-**Docs updated or added since the 3.32 release**
+**Documentação atualizada ou adicionada desde o lançamento 3.32**
 
-* Hot reload is now available on the web and no longer
-  requires an experimental flag. For more information,
-  check out [hot reload][].
+* Hot reload agora está disponível na web e não mais
+  requer uma flag experimental. Para mais informações,
+  confira [hot reload][].
 
-* There is a new [Create with AI][] guide which covers
-  how you can leverage AI tools like Gemini Code Assist,
-  GeminiCLI, and the Dart and Flutter MCP Server to build
-  AI-powered features for your Flutter apps.
+* Existe um novo guia [Criar com AI][Create with AI] que cobre
+  como você pode aproveitar ferramentas de AI como Gemini Code Assist,
+  GeminiCLI, e o Dart e Flutter MCP Server para construir
+  recursos alimentados por AI para seus apps Flutter.
 
-* You can now use the [Flutter Widget Previewer][] guide
-  to help you view a preview of your Flutter widgets in
+* Você agora pode usar o guia [Flutter Widget Previewer][]
+  para ajudá-lo a visualizar uma prévia de seus widgets Flutter no
   Chrome.
 
-* Each stable release affects which versions of
-  deployed platforms that Flutter supports.
-  For more information, visit the updated
-  [supported platforms][] page.
+* Cada lançamento estável afeta quais versões de
+  plataformas implantadas o Flutter suporta.
+  Para mais informações, visite a página atualizada
+  [plataformas suportadas][supported platforms].
 
-* On Android, you can now protect sensitive content,
-  such as customer information, when you share your screen.
-  Learn more by visiting [Protect your app's sensitive content][].
+* No Android, você agora pode proteger conteúdo sensível,
+  como informações de clientes, quando você compartilha sua tela.
+  Saiba mais visitando [Proteja o conteúdo sensível do seu app][Protect your app's sensitive content].
 
-* Also, don't forget to check out the [breaking changes][bc-3.35]
-  page for this release. That's also where you'll find useful
-  migration info.
+* Além disso, não se esqueça de conferir a página de [mudanças breaking][bc-3.35]
+  para este lançamento. É também lá que você encontrará
+  informações úteis de migração.
 
 [Flutter Widget Previewer]: /tools/widget-previewer
 [Create with AI]: /ai/create-with-ai
@@ -69,53 +70,52 @@ You might also check out the [Dart 3.9 release][] blog post.
 
 ---
 
-## 20 May 2025: Google I/O release 3.32
+## 20 de maio de 2025: Lançamento Google I/O 3.32
 
-Flutter 3.32 is live! For more information,
-check out the [Flutter 3.32 technical blog post][3.32-tech].
-You might also check out the [Dart 3.8 release][] blog post.
+Flutter 3.32 está no ar! Para mais informações,
+confira o [post técnico do blog do Flutter 3.32][3.32-tech].
+Você também pode conferir o post do blog do [lançamento do Dart 3.8][Dart 3.8 release].
 
 [3.32-tech]: {{site.medium}}/flutter/whats-new-in-flutter-3-32-40c1086bab6e
 [Dart 3.8 release]: {{site.medium}}/dartlang/announcing-dart-3-8-724eaaec9f47
 
-**Website update**
+**Atualização do site**
 
-First of all, a behind-the-scenes rewrite of the website has
-been in the works. These changes have been published incrementally,
-so you might have already noticed some of them:
+Primeiramente, uma reescrita nos bastidores do site tem
+estado em andamento. Essas mudanças foram publicadas incrementalmente,
+então você pode já ter notado algumas delas:
 
-* Dark mode is now available
-* You can now rate each page on the site with a thumbs up
-  or thumbs down
-* The sidenav has changed and it's (hopefully) easier to find content
-* The website has been made more accessible
-* Files have been moved around (we always provide redirects)
+* Modo escuro agora está disponível
+* Você agora pode avaliar cada página no site com um joinha
+  ou joinha para baixo
+* A sidenav mudou e está (esperançosamente) mais fácil de encontrar conteúdo
+* O site foi tornado mais acessível
+* Arquivos foram movidos (nós sempre fornecemos redirecionamentos)
 
-**Docs updated or added since the 3.29 release**
+**Documentação atualizada ou adicionada desde o lançamento 3.29**
 
-* An updated [Flutter on iOS][] page.
-* We have a new [workflow for installing Flutter][] on the various
-  development platforms. This continues to be a work in progress,
-  so stay tuned.
-* A new page on how you can use the new DevTools feature,
+* Uma página atualizada [Flutter no iOS][Flutter on iOS].
+* Temos um novo [fluxo de trabalho para instalar o Flutter][workflow for installing Flutter] nas várias
+  plataformas de desenvolvimento. Isso continua sendo um trabalho em andamento,
+  então fique atento.
+* Uma nova página sobre como você pode usar o novo recurso do DevTools,
   [Flutter Property Editor][].
-  The [VS Code][] and [Android Studio/IntelliJ][] instructions
-  are also updated on how to use this feature.
-* The website is updated to explain how
-  you can [use hot reload on web][] behind a flag.
-  For this release, hot reload on web is an experimental feature.
-* A new page on [adding iOS app extensions][].
-* A completely rewritten page for
-  [setting up Flutter flavors for iOS and macOS][].
-* A new page for [setting up Flutter flavors for Android][].
-* The Cupertino instructions were updated for the
-  [Place a floating app bar above a list][floating-app-bar]
-  cookbook recipe.
-* You can now
-  [improve accessibility of your apps with SemanticRoles][semantic-roles].
-* Also, don't forget to check out the [breaking changes][bc-3.32]
-  page for this release. That's also where you'll find useful
-  migration info.
+  As instruções do [VS Code][] e [Android Studio/IntelliJ][]
+  também foram atualizadas sobre como usar este recurso.
+* O site foi atualizado para explicar como
+  você pode [usar hot reload na web][use hot reload on web] atrás de uma flag.
+  Para este lançamento, hot reload na web é um recurso experimental.
+* Uma nova página sobre [adicionar extensões de app iOS][adding iOS app extensions].
+* Uma página completamente reescrita para
+  [configurar flavors do Flutter para iOS e macOS][setting up Flutter flavors for iOS and macOS].
+* Uma nova página para [configurar flavors do Flutter para Android][setting up Flutter flavors for Android].
+* As instruções do Cupertino foram atualizadas para a
+  receita de cookbook [Colocar uma barra de app flutuante acima de uma lista][floating-app-bar].
+* Você agora pode
+  [melhorar a acessibilidade de seus apps com SemanticRoles][semantic-roles].
+* Além disso, não se esqueça de conferir a página de [mudanças breaking][bc-3.32]
+  para este lançamento. É também lá que você encontrará
+  informações úteis de migração.
 
 [Architectural overview page]: /resources/architectural-overview
 [bc-3.32]: /release/breaking-changes#released-in-flutter-3-32
@@ -134,7 +134,7 @@ so you might have already noticed some of them:
 
 ---
 
-For past releases, check out the
-[What's new archive][] page.
+Para lançamentos passados, confira a
+página [arquivo de novidades][What's new archive].
 
 [What's new archive]: /release/archive-whats-new

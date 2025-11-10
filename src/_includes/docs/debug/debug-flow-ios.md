@@ -1,3 +1,5 @@
+<!-- ia-translate: true -->
+
 #### Compilar a versão iOS do app Flutter no Terminal
 
 Para gerar as dependências necessárias da plataforma iOS,

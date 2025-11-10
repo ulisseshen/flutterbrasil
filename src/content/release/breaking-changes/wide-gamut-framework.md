@@ -1,48 +1,49 @@
 ---
-title: Migration guide for wide gamut Color
+title: Guia de migração para Color de gama ampla
 description: >-
-  Changes to support wide gamut color and migration instructions.
+  Alterações para suportar cor de gama ampla e instruções de migração.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
 ## Summary
 
-The API for the [`Color`][] class in `dart:ui` is changing to
-support [wide gamut color spaces][].
+A API para a classe [`Color`][] em `dart:ui` está mudando para
+suportar [wide gamut color spaces][].
 
 ## Context
 
-The Flutter engine [already supports wide gamut color][] with [Impeller][], and
-the support is now being added [to the framework][].
+O engine do Flutter [already supports wide gamut color][] com [Impeller][], e
+o suporte agora está sendo adicionado [to the framework][].
 
-The iOS devices that Flutter supports render to a larger array of colors,
-specifically in the [DisplayP3][] color space.
-After this change, the Flutter framework can
-render all of those colors on iOS Impeller, and
-the `Color` class is better prepared for future color spaces or
-changes to color component bit depth.
+Os dispositivos iOS que o Flutter suporta renderizam em uma gama maior de cores,
+especificamente no espaço de cores [DisplayP3][].
+Após esta alteração, o framework Flutter pode
+renderizar todas essas cores no iOS Impeller, e
+a classe `Color` está melhor preparada para futuros espaços de cores ou
+alterações na profundidade de bits dos componentes de cor.
 
 ## Description of change
 
-Changes to [`Color`][]:
+Alterações em [`Color`][]:
 
- 1. Adds an enum field that specifies its [`ColorSpace`][].
- 1. Adds API to use normalized floating-point color components.
- 1. Removes API that uses 8-bit unsigned integer color components that can
-    lead to data loss.
+ 1. Adiciona um campo enum que especifica seu [`ColorSpace`][].
+ 1. Adiciona API para usar componentes de cor de ponto flutuante normalizados.
+ 1. Remove API que usa componentes de cor inteiros sem sinal de 8 bits que podem
+    levar à perda de dados.
 
-Changes to [`ColorSpace`][]:
+Alterações em [`ColorSpace`][]:
 
- 1. Adds a `displayP3` property.
+ 1. Adiciona uma propriedade `displayP3`.
 
 ## Migration guide
 
 ### 8-bit unsigned integer constructors
 
-Constructors like `Color.fromARGB` remain unchanged and have continued support.
-To take advantage of Display P3 colors, you must use the new
-`Color.from` constructor that takes normalized floating-point color components.
+Construtores como `Color.fromARGB` permanecem inalterados e têm suporte contínuo.
+Para aproveitar as cores Display P3, você deve usar o novo
+construtor `Color.from` que recebe componentes de cor de ponto flutuante normalizados.
 
 ```dart
 // Before: Constructing an sRGB color from the lower 8 bits of four integers.
@@ -54,15 +55,15 @@ final magenta = Color.from(alpha: 1.0, red: 1.0, green: 0.0, blue: 1.0);
 
 ### Implementors of `Color`
 
-There are new methods being added to `Color` so
-any class that `implements Color` will break and have to
-implement the new methods, such as `Color.a` and `Color.b`.
+Há novos métodos sendo adicionados a `Color`, então
+qualquer classe que `implements Color` vai quebrar e terá que
+implementar os novos métodos, como `Color.a` e `Color.b`.
 
-Ultimately, implementors should migrate to take advantage of the new API.
-In the short-term, these methods can easily be implemented without
-changing the underlying structure of your class.
+Em última análise, os implementadores devem migrar para aproveitar a nova API.
+No curto prazo, esses métodos podem ser facilmente implementados sem
+alterar a estrutura subjacente da sua classe.
 
-For example:
+Por exemplo:
 
 ```dart
 class Foo implements Color {
@@ -74,21 +75,21 @@ class Foo implements Color {
 ```
 
 :::note
-Flutter plans to eventually lock the `Color` class down and make it `sealed`.
+O Flutter planeja eventualmente bloquear a classe `Color` e torná-la `sealed`.
 
-Now might be a good opportunity to switch from [inheritance to composition][]
-and stop reimplementing `Color`.
+Agora pode ser uma boa oportunidade para mudar de [inheritance to composition][]
+e parar de reimplementar `Color`.
 :::
 
 ### Color space support
 
-Clients that use `Color` and perform any sort of calculation on
-the color components should now first check the
-color space component before performing calculations.
-To help with that, you can use the new `Color.withValues` method to
-perform color space conversions.
+Clientes que usam `Color` e realizam qualquer tipo de cálculo nos
+componentes de cor agora devem primeiro verificar o
+componente de espaço de cor antes de realizar cálculos.
+Para ajudar com isso, você pode usar o novo método `Color.withValues` para
+realizar conversões de espaço de cores.
 
-Example migration:
+Exemplo de migração:
 
 ```dart
 // Before
@@ -102,16 +103,16 @@ double redRatio(Color x, Color y) {
 }
 ```
 
-Performing calculations with color components without
-aligning color spaces can lead to subtle unexpected results.
-In the preceding example, the `redRatio` would have the difference of `0.09`
-when calculated with differing color spaces versus aligned color spaces.
+Realizar cálculos com componentes de cor sem
+alinhar espaços de cores pode levar a resultados sutis inesperados.
+No exemplo anterior, o `redRatio` teria a diferença de `0.09`
+quando calculado com espaços de cores diferentes versus espaços de cores alinhados.
 
 ### Access color components
 
-If your app ever accesses a `Color` component, consider
-taking advantage of the floating-point components.
-In the short term, you can scale the components themselves.
+Se seu app acessa um componente `Color`, considere
+aproveitar os componentes de ponto flutuante.
+No curto prazo, você pode escalar os componentes.
 
 ```dart
 extension IntColorComponents on Color {
@@ -128,23 +129,23 @@ extension IntColorComponents on Color {
 
 ### Opacity
 
-Before Flutter 3.27, Color had the concept of "opacity" which showed up in the
-methods `opacity` and `withOpacity()`. Opacity was introduced as a way to
-communicate with `Color` about its alpha channel with floating-point values
-([0.0, 1.0]). Opacity methods were convenience methods for setting the 8-bit
-alpha value ([0, 255]), but never offered the full expression of a
-floating-point number. This was sufficient when color components were stored as
-8-bit integers.
+Antes do Flutter 3.27, Color tinha o conceito de "opacity" que aparecia nos
+métodos `opacity` e `withOpacity()`. Opacity foi introduzida como uma forma de
+comunicar com `Color` sobre seu canal alpha com valores de ponto flutuante
+([0.0, 1.0]). Os métodos de opacity eram métodos de conveniência para definir o valor
+alpha de 8 bits ([0, 255]), mas nunca ofereceram a expressão completa de um
+número de ponto flutuante. Isso era suficiente quando os componentes de cor eram armazenados como
+inteiros de 8 bits.
 
-Since Flutter 3.27, alpha is stored as a floating-point value. Using `.a` and
-`.withValues()` will give the full expression of a floating-point value and
-won't be quantized (restricted to a limited range). That means "alpha" expresses
-the intent of "opacity" more correctly. Opacity is different in a subtle way
-where its usage can result in unexpected data loss, so `.withOpacity()` and
-`.opacity` have been deprecated and their semantics have been maintained to
-avoid breaking anyone.
+Desde o Flutter 3.27, alpha é armazenado como um valor de ponto flutuante. Usar `.a` e
+`.withValues()` dará a expressão completa de um valor de ponto flutuante e
+não será quantizado (restrito a uma faixa limitada). Isso significa que "alpha" expressa
+a intenção de "opacity" de forma mais correta. Opacity é diferente de uma forma sutil
+onde seu uso pode resultar em perda de dados inesperada, então `.withOpacity()` e
+`.opacity` foram descontinuados e suas semânticas foram mantidas para
+evitar quebrar ninguém.
 
-For example:
+Por exemplo:
 
 ```dart
 // Prints 0.5019607843137255.
@@ -153,9 +154,9 @@ print(Colors.black.withOpacity(0.5).a);
 print(Colors.black.withValues(alpha: 0.5).a);
 ```
 
-Practically all usage will directly benefit from the more accurate colors. In
-the rare case where it doesn't, care can be taken to quantize opacity to [0,
-255] using `.alpha` and `.withAlpha()` to match the behavior before Flutter
+Praticamente todos os usos se beneficiarão diretamente das cores mais precisas. No
+caso raro onde não se beneficia, pode-se tomar cuidado para quantizar a opacity para [0,
+255] usando `.alpha` e `.withAlpha()` para corresponder ao comportamento antes do Flutter
 3.27.
 
 <a id="opacity-migration" aria-hidden="true"></a>
@@ -183,11 +184,11 @@ final x = color.withValues(alpha: 0.0);
 
 ### Equality
 
-Once `Color` stores its color components as floating-point numbers,
-equality works slightly differently.
-When calculating colors, there might be a
-tiny difference in values that could be considered equal.
-To accommodate this use the [`closeTo`][] or [`isColorSameAs`][] matchers.
+Uma vez que `Color` armazena seus componentes de cor como números de ponto flutuante,
+a igualdade funciona de forma um pouco diferente.
+Ao calcular cores, pode haver uma
+pequena diferença nos valores que poderiam ser considerados iguais.
+Para acomodar isso, use os matchers [`closeTo`][] ou [`isColorSameAs`][].
 
 ```dart
 // Before: Check exact equality of int-based color.

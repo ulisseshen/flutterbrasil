@@ -1,52 +1,53 @@
 ---
-title: Casual Games Toolkit
+title: Kit de Ferramentas para Jogos Casuais
 description: >-
-  Learn about free & open source multiplatform 2D game development in Flutter.
+  Aprenda sobre desenvolvimento de jogos 2D multiplataforma gratuito e open source no Flutter.
 showBreadcrumbs: false
+ia-translate: true
 ---
 
-The Flutter Casual Games Toolkit pulls together new and existing resources
-so you can accelerate development of games on mobile platforms.
+O Flutter Casual Games Toolkit reúne recursos novos e existentes
+para que você possa acelerar o desenvolvimento de jogos em plataformas móveis.
 
 :::recommend
-Check out the latest [game updates and resources for Flutter 3.22](#updates)!
+Confira as últimas [atualizações e recursos de jogos para Flutter 3.22](#updates)!
 :::
 
-This page outlines where you can find these available resources.
+Esta página descreve onde você pode encontrar esses recursos disponíveis.
 
-## Why Flutter for games?
+## Por que Flutter para jogos?
 
-The Flutter framework can create performant apps for six target platforms
-from the desktop to mobile devices to the web.
+O framework Flutter pode criar apps performáticos para seis plataformas alvo,
+desde o desktop até dispositivos móveis e a web.
 
-With Flutter's benefits of cross-platform development, performance, and
-open source licensing, it makes a great choice for games.
+Com os benefícios do Flutter de desenvolvimento multiplataforma, performance e
+licenciamento open source, é uma ótima escolha para jogos.
 
-Casual games fall into two categories: turn-based games
-and real-time games.
-You might be familiar with both types of games,
-though perhaps you didn't think about them in quite this way.
+Jogos casuais se dividem em duas categorias: jogos baseados em turnos
+e jogos em tempo real.
+Você pode estar familiarizado com ambos os tipos de jogos,
+embora talvez não tenha pensado sobre eles exatamente dessa forma.
 
-_Turn-based games_ cover games meant for a mass market with
-simple rules and gameplay.
-This includes board games, card games, puzzles, and strategy games.
-These games respond to simple user input,
-like tapping on a card or entering a number or letter.
-These games are well suited for Flutter.
+_Jogos baseados em turnos_ abrangem jogos destinados ao mercado de massa com
+regras e gameplay simples.
+Isso inclui jogos de tabuleiro, jogos de cartas, puzzles e jogos de estratégia.
+Estes jogos respondem a entradas simples do usuário,
+como tocar em uma carta ou inserir um número ou letra.
+Estes jogos são adequados para Flutter.
 
-_Real-time games_ cover games a series of actions require real time responses.
-These include endless runner games, racing games, and so on.
-You might want to create a game with advanced features like collision detection,
-camera views, game loops, and the like.
-These types of games could use an open source game engine like the
-[Flame game engine][] built using Flutter.
+_Jogos em tempo real_ abrangem jogos onde uma série de ações requer respostas em tempo real.
+Isso inclui jogos endless runner, jogos de corrida e assim por diante.
+Você pode querer criar um jogo com recursos avançados como detecção de colisão,
+visões de câmera, loops de jogo e similares.
+Estes tipos de jogos podem usar um motor de jogo open source como o
+[Flame game engine][] construído usando Flutter.
 
-## What's included in the toolkit
+## O que está incluído no kit de ferramentas
 
-The Casual Games Toolkit provides the following free resources.
+O Kit de Ferramentas para Jogos Casuais fornece os seguintes recursos gratuitos.
 
-* A repository that includes three new game templates that provide
-  a starting point for building a casual game.
+* Um repositório que inclui três novos modelos de jogos que fornecem
+  um ponto de partida para construir um jogo casual.
 
   1. A [base game template][basic-template]
      that includes the basics for:
@@ -82,46 +83,46 @@ The Casual Games Toolkit provides the following free resources.
      or [web][], [view the open source code repo][], or
      [read how the game was created in 6 weeks][].
 
-* Developer guides for integrating needed services.
-* A link to a [Flame Discord][game-discord] channel.
-  If you have a Discord account, use this [direct link][discord-direct].
+* * Guias para desenvolvedores para integrar serviços necessários.
+* Um link para um canal do [Discord Flame][game-discord].
+  Se você tem uma conta Discord, use este [link direto][discord-direct].
 
-The included game templates and cookbook recipes make certain choices
-to accelerate development.
-They include specific packages, like `provider`, `google_mobile_ads`,
-`in_app_purchase`, `audioplayers`, `crashlytics`, and `games_services`.
-If you prefer other packages, you can change the code to use them.
+Os modelos de jogos e receitas do cookbook incluídos fazem certas escolhas
+para acelerar o desenvolvimento.
+Eles incluem pacotes específicos, como `provider`, `google_mobile_ads`,
+`in_app_purchase`, `audioplayers`, `crashlytics` e `games_services`.
+Se você preferir outros pacotes, pode alterar o código para usá-los.
 
-The Flutter team understands that monetization might be a future consideration.
-Cookbook recipes for advertising and in-app purchases have been added.
+A equipe do Flutter entende que a monetização pode ser uma consideração futura.
+Receitas do cookbook para publicidade e compras no app foram adicionadas.
 
-As explained on the [Games][] page,
-you can leverage up to $900 in offers when you integrate Google services,
-such as [Cloud, Firebase][], and [Ads][], into your game.
+Como explicado na página [Games][],
+você pode aproveitar até $900 em ofertas ao integrar serviços Google,
+como [Cloud, Firebase][] e [Ads][], no seu jogo.
 
 :::important
-You must connect your Firebase and GCP accounts to use credits for
-Firebase services and verify your business email during sign up to earn
-an additional $100 on top of the normal $300 credit.
-For the Ads offer, [check your region's eligibility][].
+Você deve conectar suas contas Firebase e GCP para usar créditos para
+serviços Firebase e verificar seu e-mail comercial durante o cadastro para ganhar
+um adicional de $100 além do crédito normal de $300.
+Para a oferta de Ads, [verifique a elegibilidade da sua região][check your region's eligibility].
 :::
 
-## Get started
+## Começando
 
-Are you ready? To get started:
+Você está pronto? Para começar:
 
-1. If you haven't done so, [install Flutter][].
-1. [Clone the games repo][game-repo].
-1. Review the `README` file for the first type of game you want to create.
+1. Se você ainda não o fez, [instale o Flutter][install Flutter].
+1. [Clone o repositório de jogos][game-repo].
+1. Revise o arquivo `README` para o primeiro tipo de jogo que você deseja criar.
 
    * [basic game][basic-template-readme]
    * [card game][card-template-readme]
    * [runner game][runner-template-readme]
 
-1. [Join the Flame community on Discord][game-discord]
-   (use the [direct link][discord-direct] if you already
-   have a Discord account).
-1. Review the codelabs and cookbook recipes.
+1. [Junte-se à comunidade Flame no Discord][game-discord]
+   (use o [link direto][discord-direct] se você já
+   tem uma conta Discord).
+1. Revise os codelabs e receitas do cookbook.
 
    * {{recipeIcon}} Build a [multiplayer game][multiplayer-recipe] with Cloud Firestore.
    * {{codelab}} Build a [word puzzle][] with Flutter.—**NEW**
@@ -136,18 +137,18 @@ Are you ready? To get started:
    * Collect analytics about crashes and errors inside your game
      with {{recipeIcon}} [Firebase Crashlytics][firebase-crashlytics].
 
-1. Set up accounts on AdMob, Firebase, and Cloud, as needed.
-1. Write your game!
-1. Deploy to both the Google Play and Apple stores.
+1. Configure contas no AdMob, Firebase e Cloud, conforme necessário.
+1. Escreva seu jogo!
+1. Faça o deploy nas lojas Google Play e Apple.
 
 [Add sound and music]: {{site.codelabs}}/codelabs/flutter-codelab-soloud
 [2D physics game]: {{site.codelabs}}/codelabs/flutter-flame-forge2d
 [word puzzle]: {{site.codelabs}}/codelabs/flutter-word-puzzle
 
-## Example games
+## Jogos de exemplo
 
-For Google I/O 2022, both the Flutter team
-and Very Good Ventures created new games.
+Para o Google I/O 2022, tanto a equipe Flutter
+quanto a Very Good Ventures criaram novos jogos.
 
 * VGV created the [I/O Pinball game][pinball-game] using the Flame engine.
   To learn about this game,
@@ -159,10 +160,10 @@ and Very Good Ventures created new games.
   check out [How It's Made: I/O FLIP adds a twist to a classic card game with generative AI][flip-blog]
   on the Google Developers blog and [play the game][flip-game] in your browser.
 
-## Other resources
+## Outros recursos
 
-Once you feel ready to go beyond these games templates,
-investigate other resources that our community recommended.
+Quando você se sentir pronto para ir além desses modelos de jogos,
+investigue outros recursos recomendados por nossa comunidade.
 
 {% assign pkgIcon = '<span class="material-symbols" aria-label="Package" translate="no">package_2</span>' %}
 {% assign apiIcon = '<span class="material-symbols" aria-label="API documentation" translate="no">api</span>' %}
@@ -422,7 +423,7 @@ investigate other resources that our community recommended.
 [flutter_soloud]: {{site.pub-pkg}}/flutter_soloud
 [SoLoud codelab]: {{site.codelabs}}/codelabs/flutter-codelab-soloud
 
-## Games Toolkit updates for Flutter 3.22 {:#updates}
+## Atualizações do Kit de Ferramentas para Jogos para o Flutter 3.22 {:#updates}
 
 The following codelabs and guides were added for
 the Flutter 3.22 release:
@@ -471,9 +472,9 @@ the Flutter 3.22 release:
 [Cheng Lin]: {{site.medium}}/@mhclin113_26002
 [Forge2D]: {{site.pub-pkgs}}/forge2d
 
-## Other new resources
+## Outros novos recursos
 
-Check out the following videos:
+Confira os seguintes vídeos:
 
 * [Building multiplatform games with Flutter][gdc-talk], a talk
   given at the [Game Developer Conference (GDC)][] 2024.

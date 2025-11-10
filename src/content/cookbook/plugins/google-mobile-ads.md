@@ -1,7 +1,8 @@
 ---
-title: Add ads to your mobile Flutter app or game
-shortTitle: Show ads
-description: How to use the google_mobile_ads package to show ads in Flutter.
+ia-translate: true
+title: Adicione anúncios ao seu app ou jogo Flutter móvel
+shortTitle: Mostrar anúncios
+description: Como usar o pacote google_mobile_ads para mostrar anúncios no Flutter.
 ---
 
 <?code-excerpt path-base="cookbook/plugins/google_mobile_ads"?>
@@ -111,7 +112,7 @@ Add your AdMob app ID to your iOS app.
     <string>ca-app-pub-################~##########</string>
     ```
 
-## 3. Add the `google_mobile_ads` plugin
+## 3. Add the google_mobile_ads plugin
 
 To add the `google_mobile_ads` plugin as a dependency, run
 `flutter pub add`:

@@ -1,7 +1,7 @@
 
 ## Other Resources
 
-To learn more about C interoperability, check out these videos:
+Para aprender mais sobre interoperabilidade C, confira estes vídeos:
 
 - [C interoperability with Dart FFI]
 - [How to Use Dart FFI to Build a Retro Audio Player]

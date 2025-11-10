@@ -1,55 +1,55 @@
 :::note
-The following steps assume
-you've already [turned on Linux support][chromeos-linux] and that
-you're using Bash or the default shell on ChromeOS.
+As etapas a seguir assumem que
+você já [ativou o suporte ao Linux][chromeos-linux] e que
+está usando Bash ou o shell padrão no ChromeOS.
 
-If you're using a different shell besides the default or Bash, follow the
-[add to path instructions for Linux][linux-path]{: target="_blank"} instead.
+Se você estiver usando um shell diferente além do padrão ou Bash, siga as
+[instruções de adicionar ao path para Linux][linux-path]{: target="_blank"} em vez disso.
 :::
 
- 1. <h3>Determine your Flutter SDK installation location</h3>
+ 1. <h3>Determine o local de instalação do seu Flutter SDK</h3>
 
-    Copy the absolute path to the directory that you
-    downloaded and extracted the Flutter SDK into.
+    Copie o caminho absoluto para o diretório no qual você
+    baixou e extraiu o Flutter SDK.
 
- 1. <h3>Add the Flutter SDK bin to your path</h3>
+ 1. <h3>Adicione o bin do Flutter SDK ao seu path</h3>
 
-    To add the `bin` directory of your Flutter installation to your `PATH`:
+    Para adicionar o diretório `bin` da sua instalação do Flutter ao seu `PATH`:
 
-    1. Copy the following command.
-    1. Replace `<path-to-sdk>` with the path to your Flutter SDK install.
-    1. Run the edited command in your preferred terminal.
+    1. Copie o comando a seguir.
+    1. Substitua `<path-to-sdk>` pelo caminho para sua instalação do Flutter SDK.
+    1. Execute o comando editado no seu terminal preferido.
 
     ```console
     $ echo 'export PATH="<path-to-sdk>:$PATH"' >> ~/.bash_profile
     ```
 
-    For example, if you downloaded Flutter into a
-    `develop/flutter` folder inside your user directory,
-    you'd run the following:
+    Por exemplo, se você baixou o Flutter em uma
+    pasta `develop/flutter` dentro do seu diretório de usuário,
+    você executaria o seguinte:
 
     ```console
     $ echo 'export PATH="$HOME/develop/flutter/bin:$PATH"' >> ~/.bash_profile
     ```
 
- 1. <h3>Apply your changes</h3>
+ 1. <h3>Aplique suas alterações</h3>
 
-    To apply this change and get access to the `flutter` tool,
-    close and reopen all open Zsh sessions in your terminal apps and IDEs.
+    Para aplicar esta mudança e obter acesso à ferramenta `flutter`,
+    feche e reabra todas as sessões Zsh abertas em seus apps de terminal e IDEs.
 
- 1. <h3>Validate your setup</h3>
+ 1. <h3>Valide sua configuração</h3>
 
-    To ensure you successfully added the SDK to your `PATH`,
-    open a Zsh session in your preferred terminal,
-    then try running the `flutter` and `dart` tools.
+    Para garantir que você adicionou com sucesso o SDK ao seu `PATH`,
+    abra uma sessão Zsh no seu terminal preferido,
+    então tente executar as ferramentas `flutter` e `dart`.
 
     ```console
     $ flutter --version
     $ dart --version
     ```
 
-    If either command isn't found,
-    check out [Flutter installation troubleshooting][troubleshoot].
+    Se qualquer comando não for encontrado,
+    confira [Solução de problemas de instalação do Flutter][troubleshoot].
 
 {: .steps}
 

@@ -1,38 +1,39 @@
 ---
-title: showAutocorrectionPromptRect method added to TextInputClient
+title: Método showAutocorrectionPromptRect adicionado ao TextInputClient
 description: >
-  A new method, void showAutocorrectionPromptRect(int start, int end),
-  was added to the TextInputClient interface
+  Um novo método, void showAutocorrectionPromptRect(int start, int end),
+  foi adicionado à interface TextInputClient
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-A new method,`void showAutocorrectionPromptRect(int start, int end)`,
-was added to the `TextInputClient` interface.
+Um novo método, `void showAutocorrectionPromptRect(int start, int end)`,
+foi adicionado à interface `TextInputClient`.
 
-## Context
+## Contexto {:#context}
 
-In order to display the iOS autocorrection highlight,
-the iOS text input plugin needed a way to inform the
-Flutter framework of the highlight's start and end position.
+Para exibir o destaque de autocorreção do iOS,
+o plugin de entrada de texto do iOS precisava de uma maneira de informar ao
+framework Flutter a posição inicial e final do destaque.
 
-## Description of change
+## Descrição da mudança {:#description-of-change}
 
-A new method, `void showAutocorrectionPromptRect(int start, int end)`,
-was added to the `TextInputClient` interface. iOS calls this method
-when it finds a new potential autocorrect candidate
-in the current user input, or when the range of a previously
-highlighted candidate changes.
+Um novo método, `void showAutocorrectionPromptRect(int start, int end)`,
+foi adicionado à interface `TextInputClient`. O iOS chama este método
+quando encontra um novo candidato potencial de autocorreção
+na entrada atual do usuário, ou quando o intervalo de um candidato
+anteriormente destacado muda.
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-If your application doesn't implement or subclass `TextInputClient`,
-no migration is needed. If your application doesn't target iOS,
-or the class that implemented the `textInputClient` interface doesn't
-support autocorrect, you only need to add an empty implementation
-for the new method:
+Se sua aplicação não implementa ou estende `TextInputClient`,
+nenhuma migração é necessária. Se sua aplicação não tem como alvo iOS,
+ou a classe que implementa a interface `textInputClient` não
+suporta autocorreção, você só precisa adicionar uma implementação vazia
+para o novo método:
 
 ```dart
 class CustomTextInputClient implements TextInputClient {
@@ -40,12 +41,12 @@ class CustomTextInputClient implements TextInputClient {
 }
 ```
 
-Otherwise, if your app targets iOS and supports autocorrect on iOS,
-we recommend that you add a sensible implementation of
+Caso contrário, se seu app tem como alvo iOS e suporta autocorreção no iOS,
+recomendamos que você adicione uma implementação sensata de
 `void showAutocorrectionPromptRect(int start, int end)`
-to your `TextInputClient` subclass.
+à sua subclasse de `TextInputClient`.
 
-Code after migration:
+Código após a migração:
 
 ```dart
 // Assume your `TextInputClient` is a `State` subclass, and it has a variable
@@ -83,21 +84,21 @@ class CustomTextInputClient extends State<...> implements TextInputClient {
 }
 ```
 
-## Timeline
+## Cronograma {:#timeline}
 
-In stable release: 1.20
+Na versão estável: 1.20
 
-## References
+## Referências {:#references}
 
-API documentation:
+Documentação da API:
 
 * [`TextInputClient`][]
 
-Relevant issue:
+Issue relevante:
 
 * [Issue 12920][]
 
-Relevant PR:
+PR relevante:
 
 * [iOS UITextInput autocorrection prompt][]
 

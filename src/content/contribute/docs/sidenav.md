@@ -1,22 +1,23 @@
 ---
 title: Sidenav
 description: >-
-  Learn about adding to and configuring the sidenav of the
-  Dart and Flutter documentation site.
+  Aprenda sobre como adicionar e configurar o sidenav do
+  site de documentação Dart e Flutter.
+ia-translate: true
 sitemap: false
 noindex: true
 showBreadcrumbs: true
 ---
 
 :::warning
-This document is a work in progress.
+Este documento é um trabalho em andamento.
 :::
 
-The sidenav presents the overall information architecture for the site
-and provides developers access to documentation by topic.
+O sidenav apresenta a arquitetura geral de informações do site
+e fornece aos desenvolvedores acesso à documentação por tópico.
 
-The contents of the sidenav are configured in
-the `/src/_data/sidenav.yml` file in [YAML][] format.
+Os conteúdos do sidenav são configurados no
+arquivo `/src/_data/sidenav.yml` em formato [YAML][].
 
 [YAML]: https://yaml.org/
 

@@ -1,53 +1,54 @@
 ---
-title: AppBar theme color parameter deprecation
+title: Descontinuação do parâmetro color no tema do AppBar
 description: >-
-  The color parameter in AppBarTheme and AppBarThemeData has been
-  deprecated in favor of backgroundColor for better API consistency.
+  O parâmetro color em AppBarTheme e AppBarThemeData foi
+  descontinuado em favor de backgroundColor para melhor consistência da API.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-The `color` parameter in `AppBarTheme` and `AppBarThemeData` constructors
-and their `copyWith` methods have been deprecated. Use `backgroundColor`
-instead. This change affects how AppBar themes are configured and might
-cause deprecation warnings in existing code.
+O parâmetro `color` nos construtores de `AppBarTheme` e `AppBarThemeData`
+e seus métodos `copyWith` foram descontinuados. Use `backgroundColor`
+em vez disso. Esta mudança afeta como os temas do AppBar são configurados e pode
+causar avisos de descontinuação no código existente.
 
-## Background
+## Contexto {:#background}
 
-The AppBar theming system had two parameters that controlled the same
-property: `color` and `backgroundColor`. This duplication created confusion
-and inconsistency in the API. To improve clarity and consistency, the
-`color` parameter has been deprecated in favor of `backgroundColor`.
+O sistema de temas do AppBar tinha dois parâmetros que controlavam a mesma
+propriedade: `color` e `backgroundColor`. Esta duplicação criava confusão
+e inconsistência na API. Para melhorar a clareza e consistência, o
+parâmetro `color` foi descontinuado em favor de `backgroundColor`.
 
-The deprecation affects the following classes and methods:
+A descontinuação afeta as seguintes classes e métodos:
 
-- `AppBarTheme` constructor
-- `AppBarTheme.copyWith` method
-- `AppBarThemeData` constructor
-- `AppBarThemeData.copyWith` method
+- Construtor `AppBarTheme`
+- Método `AppBarTheme.copyWith`
+- Construtor `AppBarThemeData`
+- Método `AppBarThemeData.copyWith`
 
-When using the deprecated `color` parameter, you'll see warnings like:
+Ao usar o parâmetro `color` descontinuado, você verá avisos como:
 
 ```txt
 'color' is deprecated and shouldn't be used. Use backgroundColor instead.
 This feature was deprecated after v3.33.0-0.2.pre.
 ```
 
-The classes also include assertion checks to prevent using both parameters
-simultaneously:
+As classes também incluem verificações de asserção para impedir o uso de ambos os parâmetros
+simultaneamente:
 
 ```txt
 The color and backgroundColor parameters mean the same thing. Only specify one.
 ```
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-Replace all uses of the `color` parameter with `backgroundColor` in
-`AppBarTheme` and `AppBarThemeData` constructors and `copyWith` methods.
+Substitua todos os usos do parâmetro `color` por `backgroundColor` nos
+construtores de `AppBarTheme` e `AppBarThemeData` e nos métodos `copyWith`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 // AppBarTheme constructor
@@ -75,7 +76,7 @@ themeData.copyWith(
 )
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 // AppBarTheme constructor
@@ -103,18 +104,18 @@ themeData.copyWith(
 )
 ```
 
-## Timeline
+## Cronograma {:#timeline}
 
-Landed in version: 3.33.0-0.2.pre<br>
-In stable release: 3.35.4
+Implementado na versão: 3.33.0-0.2.pre<br>
+Na versão estável: 3.35.4
 
-## References
+## Referências {:#references}
 
-API documentation:
+Documentação da API:
 
 - [`AppBarTheme`](https://main-api.flutterbrasil.dev/flutter/material/AppBarTheme-class.html)
 - [`AppBarThemeData`](https://main-api.flutterbrasil.dev/flutter/material/AppBarThemeData-class.html)
 
-Relevant PRs:
+PRs relevantes:
 
 - [AppBar theme color parameter deprecation #170624]({{site.github}}/flutter/flutter/pull/170624)

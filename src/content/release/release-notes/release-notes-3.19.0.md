@@ -1,13 +1,14 @@
 ---
-title: Flutter 3.19.0 release notes
-shortTitle: 3.19.0 release notes
-description: Release notes for Flutter 3.19.0.
+ia-translate: true
+title: Notas de lançamento do Flutter 3.19.0
+shortTitle: Notas de lançamento 3.19.0
+description: Notas de lançamento do Flutter 3.19.0.
 skipTemplateRendering: true
 ---
 
-This page has release notes for 3.19.0.
-For information about subsequent bug-fix releases,
-see our [CHANGELOG][].
+Esta página contém as notas de lançamento para o 3.19.0.
+Para informações sobre correções de bugs subsequentes,
+consulte nosso [CHANGELOG][].
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/main/CHANGELOG.md
 
@@ -435,7 +436,7 @@ see our [CHANGELOG][].
 * Restore and fix flavors_test_macos by @andrewkolos in [139841](https://github.com/flutter/flutter/pull/139841)
 ### Web
 * #60704: Pass cert for TLS localhost connection by @arpitgandhi9 in [106635](https://github.com/flutter/flutter/pull/106635)
-### Tooling
+### Ferramentas
 * Update the wasm bootstrap to allow access to the emscripten wrapper to skwasm. by @eyebrowsoffire in [135723](https://github.com/flutter/flutter/pull/135723)
 * Use platform dill from the engine when compiling with dart2wasm. by @eyebrowsoffire in [134970](https://github.com/flutter/flutter/pull/134970)
 * Bump dart-lang/native deps by @dcharkes in [135905](https://github.com/flutter/flutter/pull/135905)
@@ -550,9 +551,9 @@ see our [CHANGELOG][].
 * add flavor-conditional asset bundling support to `flutter test` by @andrewkolos in [140944](https://github.com/flutter/flutter/pull/140944)
 * [cp] Replace deprecated `exists` in podhelper.rb by @stuartmorgan in [141381](https://github.com/flutter/flutter/pull/141381)
 * CP: [Beta] Update DWDS to version 23.0.0+1 by @elliette in [142168](https://github.com/flutter/flutter/pull/142168)
-### Documentation
+### Documentação
 * Check sample links for malformed links by @gspencergoog in [137807](https://github.com/flutter/flutter/pull/137807)
-### Other Changes
+### Outras Mudanças
 * Temporarily disable NexusLowRes, version=29 by @ricardoamador in [135785](https://github.com/flutter/flutter/pull/135785)
 * Add device ready check by @ricardoamador in [135526](https://github.com/flutter/flutter/pull/135526)
 * Add support for `setup` steps in flutter customer tests by @kenzieschmoll in [135726](https://github.com/flutter/flutter/pull/135726)
@@ -713,7 +714,7 @@ see our [CHANGELOG][].
 * [CP] Update tests to Xcode 15 by @vashworth in [142320](https://github.com/flutter/flutter/pull/142320)
 * [flutter_releases] Flutter beta 3.19.0-0.4.pre Framework Cherrypicks by @itsjustkevin in [142777](https://github.com/flutter/flutter/pull/142777)
 
-## New Contributors
+## Novos Contribuidores
 * @Pante made their first contribution in [135897](https://github.com/flutter/flutter/pull/135897)
 * @droidbg made their first contribution in [136169](https://github.com/flutter/flutter/pull/136169)
 * @fischerscode made their first contribution in [135823](https://github.com/flutter/flutter/pull/135823)
@@ -1202,7 +1203,7 @@ see our [CHANGELOG][].
 * [Windows] Remove `PlatformWindow` and `RenderTarget` abstractions by @loic-sharma in [49312](https://github.com/flutter/engine/pull/49312)
 * [Windows] Move DWM composition status to Windows proc table for mocking by @loic-sharma in [49397](https://github.com/flutter/engine/pull/49397)
 * [Windows] Move DWM flush to Windows proc table for mocking by @loic-sharma in [49398](https://github.com/flutter/engine/pull/49398)
-### Other Changes
+### Outras Mudanças
 * Bump impeller-cmake to head by @bdero in [46385](https://github.com/flutter/engine/pull/46385)
 * Multi-view Rasterizer  by @dkwingsmt in [45512](https://github.com/flutter/engine/pull/45512)
 * [Linux] Rename 'set_allow_channel_overflow' to 'set_warns_on_channel_… by @bleroux in [46360](https://github.com/flutter/engine/pull/46360)
@@ -1430,7 +1431,7 @@ see our [CHANGELOG][].
 * Rolls dart sdk to 42b177d9f by @godofredoc in [50008](https://github.com/flutter/engine/pull/50008)
 * [flutter_releases] Flutter beta 3.19.0-0.4.pre Engine Cherrypicks by @itsjustkevin in [50209](https://github.com/flutter/engine/pull/50209)
 
-## New Contributors
+## Novos Contribuidores
 * @CoderDake made their first contribution in [46720](https://github.com/flutter/engine/pull/46720)
 * @eriko13 made their first contribution in [46429](https://github.com/flutter/engine/pull/46429)
 * @natebosch made their first contribution in [46592](https://github.com/flutter/engine/pull/46592)

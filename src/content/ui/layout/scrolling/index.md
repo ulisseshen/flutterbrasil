@@ -1,50 +1,51 @@
 ---
-title: Scrolling
-description: Overview of Flutter's scrolling support
+title: Rolagem
+description: Visão geral do suporte à rolagem do Flutter
+ia-translate: true
 ---
 
-Flutter has many built-in widgets that automatically
-scroll and also offers a variety of widgets
-that you can customize to create specific scrolling
-behavior.
+O Flutter possui muitos widgets integrados que fazem rolagem automaticamente
+e também oferece uma variedade de widgets
+que você pode personalizar para criar comportamentos
+específicos de rolagem.
 
-## Basic scrolling
+## Rolagem básica {:#basic-scrolling}
 
-Many Flutter widgets support scrolling out of the box
-and do most of the work for you. For example,
-[`SingleChildScrollView`][] automatically scrolls its
-child when necessary. Other useful widgets include
-[`ListView`][] and [`GridView`][].
-You can check out more of these widgets on the
-[scrolling page][] of the Widget catalog.
+Muitos widgets do Flutter suportam rolagem prontos para uso
+e fazem a maior parte do trabalho para você. Por exemplo,
+[`SingleChildScrollView`][] faz rolagem automaticamente de seu
+filho quando necessário. Outros widgets úteis incluem
+[`ListView`][] e [`GridView`][].
+Você pode conferir mais desses widgets na
+[scrolling page][] do catálogo de Widgets.
 
 <YouTubeEmbed id="DbkIQSvwnZc" title="Scrollbar | Flutter widget of the week"></YouTubeEmbed>
 
 <YouTubeEmbed id="KJpkjHGiI5A" title="ListView | Flutter widget of the week"></YouTubeEmbed>
 
-### Infinite scrolling
+### Rolagem infinita {:#infinite-scrolling}
 
-When you have a long list of items
-in your `ListView` or `GridView` (including an _infinite_ list),
-you can build the items on demand
-as they scroll into view. This provides a much
-more performant scrolling experience.
-For more information, check out
-[`ListView.builder`][] or [`GridView.builder`][].
+Quando você tem uma longa lista de itens
+em seu `ListView` ou `GridView` (incluindo uma lista _infinita_),
+você pode construir os itens sob demanda
+conforme eles aparecem na visualização. Isso fornece uma
+experiência de rolagem muito mais eficiente.
+Para mais informações, confira
+[`ListView.builder`][] ou [`GridView.builder`][].
 
 [`ListView.builder`]: {{site.api}}/flutter/widgets/ListView/ListView.builder.html
 [`GridView.builder`]: {{site.api}}/flutter/widgets/GridView/GridView.builder.html
 
-### Specialized scrollable widgets
+### Widgets roláveis especializados {:#specialized-scrollable-widgets}
 
-The following widgets provide more
-specific scrolling behavior.
+Os seguintes widgets fornecem
+comportamento de rolagem mais específico.
 
-A video on using [`DraggableScrollableSheet`][]:
+Um vídeo sobre o uso de [`DraggableScrollableSheet`][]:
 
 <YouTubeEmbed id="Hgw819mL_78" title="DraggableScrollableSheet | Flutter widget of the week"></YouTubeEmbed>
 
-Turn the scrollable area into a wheel with [`ListWheelScrollView`][]!
+Transforme a área rolável em uma roda com [`ListWheelScrollView`][]!
 
 <YouTubeEmbed id="dUhmWAz4C7Y" title="ListWheelScrollView | Flutter widget of the week"></YouTubeEmbed>
 
@@ -61,36 +62,36 @@ Turn the scrollable area into a wheel with [`ListWheelScrollView`][]!
   Video: {{site.yt.watch}}?v=UDZ0LPQq-n8
 {% endcomment %}
 
-## Fancy scrolling
+## Rolagem sofisticada {:#fancy-scrolling}
 
-Perhaps you want to implement _elastic_ scrolling,
-also called _scroll bouncing_. Or maybe you want to
-implement other dynamic scrolling effects, like parallax scrolling.
-Or perhaps you want a scrolling header with very specific behavior,
-such as shrinking or disappearing.
+Talvez você queira implementar rolagem _elástica_,
+também chamada de _scroll bouncing_. Ou talvez você queira
+implementar outros efeitos dinâmicos de rolagem, como rolagem paralaxe.
+Ou talvez você queira um cabeçalho rolável com comportamento muito específico,
+como encolher ou desaparecer.
 
-You can achieve all this and more using the
-Flutter `Sliver*` classes.
-A _sliver_ refers to a piece of the scrollable area.
-You can define and insert a sliver into a [`CustomScrollView`][]
-to have finer-grained control over that area.
+Você pode alcançar tudo isso e muito mais usando as
+classes `Sliver*` do Flutter.
+Um _sliver_ refere-se a um pedaço da área rolável.
+Você pode definir e inserir um sliver em um [`CustomScrollView`][]
+para ter controle mais refinado sobre essa área.
 
-For more information, check out
+Para mais informações, confira
 [Using slivers to achieve fancy scrolling][]
-and the [Sliver classes][].
+e as [Sliver classes][].
 
 [`CustomScrollView`]: {{site.api}}/flutter/widgets/CustomScrollView-class.html
 [Sliver classes]: /ui/widgets/layout#sliver-widgets
 [Using slivers to achieve fancy scrolling]: /ui/layout/scrolling/slivers
 
-## Nested scrolling widgets
+## Widgets roláveis aninhados {:#nested-scrolling-widgets}
 
-How do you nest a scrolling widget
-inside another scrolling widget
-without hurting scrolling performance?
-Do you set the `ShrinkWrap` property to true,
-or do you use a sliver?
+Como você aninha um widget rolável
+dentro de outro widget rolável
+sem prejudicar o desempenho da rolagem?
+Você define a propriedade `ShrinkWrap` como true,
+ou você usa um sliver?
 
-Check out the "ShrinkWrap vs Slivers" video:
+Confira o vídeo "ShrinkWrap vs Slivers":
 
 <YouTubeEmbed id="LUqDNnv_dh0" title="ShrinkWrap vs Slivers | Decoding Flutter"></YouTubeEmbed>

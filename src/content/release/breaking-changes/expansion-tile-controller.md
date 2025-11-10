@@ -1,29 +1,30 @@
 ---
-title: Deprecated ExpansionTileController
+title: Descontinuação do ExpansionTileController
 description: >
-  `ExpansionTileController` is deprecated and replaced by
+  `ExpansionTileController` foi descontinuado e substituído por
   `ExpansibleController`.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-`ExpansionTileController` is deprecated. The same functionality can be
-achieved by using `ExpansibleController` instead.
+`ExpansionTileController` foi descontinuado. A mesma funcionalidade pode ser
+alcançada usando `ExpansibleController` em seu lugar.
 
-## Background
+## Contexto {:#background}
 
-`ExpansionTileController` programmatically expands and collapses an `ExpansionTile`. A new `Expansible` widget has been added to the widgets library, which contains logic for expanding and collapsing behavior without being tied to the Material library. `ExpansibleController` complements `Expansible` and has the same functionality as `ExpansionTileController`. Additionally, `ExpansibleController` also supports adding and notifying listeners when its expansion state changes.
+`ExpansionTileController` expande e colapsa programaticamente um `ExpansionTile`. Um novo widget `Expansible` foi adicionado à biblioteca de widgets, que contém a lógica para o comportamento de expandir e colapsar sem estar vinculado à biblioteca Material. `ExpansibleController` complementa `Expansible` e tem a mesma funcionalidade que `ExpansionTileController`. Além disso, `ExpansibleController` também suporta adicionar e notificar ouvintes quando seu estado de expansão muda.
 
-Apps that use `ExpansionTileController` display the following error when run
-in debug mode: "Use `ExpansibleController` instead.". Specifically, this means that users should replace usage of `ExpansionTileController` with `ExpansibleController`.
+Apps que usam `ExpansionTileController` exibem o seguinte erro quando executados
+no modo debug: "Use `ExpansibleController` instead.". Especificamente, isso significa que os usuários devem substituir o uso de `ExpansionTileController` por `ExpansibleController`.
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-To migrate, replace the `controller` parameter of an `ExpansionTile` from an `ExpansionTileController` to an `ExpansibleController`. Unlike `ExpansionTileController`, `ExpansibleController` is a `ChangeNotifier`, so remember to dispose the new `ExpansibleController`.
+Para migrar, substitua o parâmetro `controller` de um `ExpansionTile` de um `ExpansionTileController` para um `ExpansibleController`. Diferentemente de `ExpansionTileController`, `ExpansibleController` é um `ChangeNotifier`, então lembre-se de descartar o novo `ExpansibleController`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 class _MyWidgetState extends State<MyWidget> {
@@ -38,7 +39,7 @@ class _MyWidgetState extends State<MyWidget> {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class _MyWidgetState extends State<MyWidget> {
@@ -59,26 +60,26 @@ class _MyWidgetState extends State<MyWidget> {
 }
 ```
 
-## Timeline
+## Cronograma {:#timeline}
 
-Landed in version: 3.31.0-0.1.pre<br>
-In stable release: 3.32
+Implementado na versão: 3.31.0-0.1.pre<br>
+Na versão estável: 3.32
 
-## References
+## Referências {:#references}
 
-API documentation:
+Documentação da API:
 
 * [`ExpansionTileController`][]
 * [`ExpansibleController`][]
 * [`ExpansionTile.controller`][]
 * [`Expansible.controller`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Codeshare between ExpansionTile and its Cupertino variant][]
 * [Deprecate ExpansionTileController in favor of ExpansibleController][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Introduce Expansible, a base widget for ExpansionTile][]
 * [Deprecate ExpansionTileController][]

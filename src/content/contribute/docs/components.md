@@ -1,15 +1,16 @@
 ---
 title: Custom components
 description: >-
-  Learn about custom components that the
-  Dart and Flutter documentation sites support for displaying content.
+  Aprenda sobre os componentes personalizados que os
+  sites de documentação Dart e Flutter suportam para exibir conteúdo.
+ia-translate: true
 sitemap: false
 noindex: true
 showBreadcrumbs: true
 ---
 
 :::warning
-This document is a work in progress.
+Este documento é um trabalho em andamento.
 :::
 
 ## Tabs

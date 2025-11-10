@@ -1,22 +1,23 @@
 ---
-title: Cupertino design for Flutter
-description: Learn about Cupertino design for Flutter.
+title: Design Cupertino para Flutter
+description: Aprenda sobre o design Cupertino para Flutter.
+ia-translate: true
 ---
 
-The Flutter Cupertino library is a collection
-of widgets that implement Apple's iOS design language
-for Flutter apps. The widgets have a similar look
-and feel to iOS, including rounded corners, gradients,
-and minimalistic design.
-They also include iOS interactions and animations.
+A biblioteca Cupertino do Flutter é uma coleção
+de widgets que implementam a linguagem de design iOS da Apple
+para apps Flutter. Os widgets têm uma aparência
+e comportamento similares ao iOS, incluindo cantos arredondados, gradientes,
+e design minimalista.
+Eles também incluem interações e animações do iOS.
 
-The following 15-minute video provides a high-level
-glimpse of the Cupertino package:
+O vídeo de 15 minutos a seguir fornece uma visão geral
+do pacote Cupertino:
 
 <YouTubeEmbed id="3PdUaidHc-E" title="Flutter's Cupertino Package"></YouTubeEmbed>
 
-To see some Cupertino widgets in action, the following videos from the
-Widget of the Week series cover a few of them.
+Para ver alguns widgets Cupertino em ação, os vídeos a seguir da
+série Widget of the Week cobrem alguns deles.
 
 <div class="card-grid">
   <div class="card wrapped-card outlined-card">
@@ -46,18 +47,18 @@ Widget of the Week series cover a few of them.
   </div>
 </div>
 
-## More information {:.no_toc}
+## Mais informações {:.no_toc}
 
-To learn more about using the Cupertino
-package with Flutter,
-check out the following resources:
+Para aprender mais sobre o uso do pacote Cupertino
+com Flutter,
+confira os seguintes recursos:
 
-* The (mostly visual) [Cupertino widget catalog][]
-  on doc.flutterbrasil.dev
-* The [Cupertino library][] page in the API docs
-* The [Cupertino API examples][] on the flutter/flutter
-  repo. ([Instructions][]) For example,
-  to run `CupertinoSwitch`:
+* O (principalmente visual) [catálogo de widgets Cupertino][]
+  em doc.flutterbrasil.dev
+* A página da [biblioteca Cupertino][] na documentação da API
+* Os [exemplos da API Cupertino][] no repositório flutter/flutter.
+  ([Instruções][]) Por exemplo,
+  para executar `CupertinoSwitch`:
 
 ```console
 cd path/to/flutter
@@ -65,7 +66,7 @@ cd examples/api
 flutter run lib/cupertino/switch/cupertino_switch.0.dart
 ```
 
-[Cupertino API examples]: {{site.github}}/flutter/flutter/tree/main/examples/api/lib/cupertino
-[Cupertino library]: {{site.api}}/flutter/cupertino/cupertino-library.html
-[Cupertino widget catalog]: /ui/widgets/cupertino
-[Instructions]: {{site.github}}/flutter/flutter/tree/main/examples/api#api-example-code
+[exemplos da API Cupertino]: {{site.github}}/flutter/flutter/tree/main/examples/api/lib/cupertino
+[biblioteca Cupertino]: {{site.api}}/flutter/cupertino/cupertino-library.html
+[catálogo de widgets Cupertino]: /ui/widgets/cupertino
+[Instruções]: {{site.github}}/flutter/flutter/tree/main/examples/api#api-example-code

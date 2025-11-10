@@ -1,39 +1,40 @@
 ---
-title: Authoring Markdown
+title: Criando Markdown
 shortTitle: Markdown
 description: >-
-  Learn about the Markdown syntaxes the Dart and Flutter documentation sites
-  support and their guidelines for using them.
+  Aprenda sobre as sintaxes Markdown que os sites de documentação Dart e Flutter
+  suportam e suas diretrizes para usá-las.
 sitemap: false
 noindex: true
 showBreadcrumbs: true
+ia-translate: true
 ---
 
 :::warning
-This document is a work in progress.
+Este documento é um trabalho em progresso.
 :::
 
-Our sites support writing content in [Markdown][],
-with some additions from [GitHub Flavored Markdown][]
-as well as other custom syntaxes.
+Nossos sites suportam a criação de conteúdo em [Markdown][],
+com algumas adições do [GitHub Flavored Markdown][]
+bem como outras sintaxes personalizadas.
 
-This page outlines the Markdown syntax we support
-as well as our style guidelines for authoring Markdown.
+Esta página descreve a sintaxe Markdown que suportamos
+bem como nossas diretrizes de estilo para criar Markdown.
 
 [Markdown]: https://commonmark.org/
 [GitHub Flavored Markdown]: https://github.github.com/gfm/
 
-## General guidelines
+## Diretrizes gerais
 
-Prefer using Markdown syntax over custom HTML and components.
-Raw Markdown is easier to maintain, easier for tools to understand,
-and easier to migrate in the future if necessary.
+Prefira usar sintaxe Markdown ao invés de HTML e componentes personalizados.
+Markdown puro é mais fácil de manter, mais fácil para ferramentas entenderem,
+e mais fácil de migrar no futuro se necessário.
 
-## Code blocks
+## Blocos de código
 
-Don't use Markdown's indented code blocks,
-only use fenced code blocks using backticks
-and always specify a language. For example:
+Não use blocos de código indentados do Markdown,
+use apenas blocos de código cercados usando backticks
+e sempre especifique uma linguagem. Por exemplo:
 
 ````markdown
 ```dart
@@ -43,7 +44,7 @@ void main() {
 ```
 ````
 
-To learn more about customizing code blocks,
-check out the dedicated documentation on [Code blocks][].
+Para aprender mais sobre personalização de blocos de código,
+confira a documentação dedicada sobre [Blocos de código][].
 
-[Code blocks]: /contribute/docs/code-blocks
+[Blocos de código]: /contribute/docs/code-blocks

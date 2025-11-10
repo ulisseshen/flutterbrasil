@@ -1,86 +1,87 @@
 ---
-title: Android v1 embedding app and plugin creation deprecation
-description: Gradual deprecation of the Android v1 embedding.
+title: Descontinuação da criação de apps e plugins com Android v1 embedding
+description: Descontinuação gradual do Android v1 embedding.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-The `flutter create` templates for apps and plugins
-no longer create Android wrapping based on the
-v1 Android embedding as part of our gradual
-Android v1 embedding deprecation process described in our
+Os templates `flutter create` para apps e plugins
+não criam mais wrapping Android baseado no
+v1 Android embedding como parte do nosso processo gradual
+de descontinuação do Android v1 embedding descrito em nosso
 [Android Migration Summary][].
 
-Application projects using the v1 Android embedding
-are encouraged to migrate following the steps described in
+Projetos de aplicação usando o v1 Android embedding
+são encorajados a migrar seguindo os passos descritos em
 [Upgrading pre 1.12 Android projects][].
 
-Plugins targeting the v1 Android embedding are encouraged
-to migrate following the instructions in
+Plugins direcionados ao v1 Android embedding são encorajados
+a migrar seguindo as instruções em
 [Supporting the new Android plugins APIs][].
 
 [Android Migration Summary]: /go/android-migration-summary
 [Upgrading pre 1.12 Android projects]: {{site.repo.flutter}}/blob/main/docs/platforms/android/Upgrading-pre-1.12-Android-projects.md
 [Supporting the new Android plugins APIs]: /release/breaking-changes/plugin-api-migration
 
-## Context
+## Contexto {:#context}
 
-In Flutter version 1.12, we launched a v2 set of
-Android APIs based on the [`io.flutter.embedding`][]
-package in order to enable the [add-to-app][] workflow
-on Android.
+Na versão 1.12 do Flutter, lançamos um conjunto v2 de
+APIs Android baseadas no pacote [`io.flutter.embedding`][]
+para habilitar o workflow de [add-to-app][]
+no Android.
 
-Over time, we gradually deprecated the older
-v1 Android embeddings based on the
-[`io.flutter.app`][] package.
+Com o tempo, descontinuamos gradualmente os
+v1 Android embeddings mais antigos baseados no
+pacote [`io.flutter.app`][].
 
-As of Q2 2020, only 26% of applications used the v1 embeddings.
+A partir do 2º trimestre de 2020, apenas 26% das aplicações usavam os v1 embeddings.
 
-Since the v2 embeddings were strongly established over
-the 7 months since the launch of Flutter v1.12,
-we disabled the creation of new app and plugin
-projects using the v1 embeddings.
+Como os v2 embeddings foram fortemente estabelecidos ao longo
+dos 7 meses desde o lançamento do Flutter v1.12,
+desabilitamos a criação de novos projetos de apps e plugins
+usando os v1 embeddings.
 
 [add-to-app]: /add-to-app
 [`io.flutter.embedding`]: https://cs.opensource.google/flutter/engine/+/master:shell/platform/android/io/flutter/embedding/
 [`io.flutter.app`]: https://cs.opensource.google/flutter/engine/+/master:shell/platform/android/io/flutter/app/.
 
-## Description of change
+## Descrição da mudança {:#description-of-change}
 
-The `flutter config` command no longer has a
-toggleable `enable-android-embedding-v2`
-flag (which defaulted to true since v1.12).
-All projects created with `flutter create`
-and `flutter create -t plugin` exclusively use the
+O comando `flutter config` não tem mais uma
+flag alternável `enable-android-embedding-v2`
+(que era true por padrão desde v1.12).
+Todos os projetos criados com `flutter create`
+e `flutter create -t plugin` usam exclusivamente o
 Android v2 embedding.
 
-Existing v1 applications continue to work.
+Aplicações v1 existentes continuam a funcionar.
 
-Existing v1 applications consuming plugins now receive
-a warning prompt to migrate to v2 embedding.
+Aplicações v1 existentes consumindo plugins agora recebem
+um aviso para migrar para o v2 embedding.
 
-Existing v1 applications consuming a plugin that targets
-only the v2 embedding won't build and must migrate.
-This has been the case since v1.12. However,
-the likelihood of encountering this increases as
-plugin developers create and publish v2 only plugins.
+Aplicações v1 existentes consumindo um plugin que tem como alvo
+apenas o v2 embedding não vão compilar e devem migrar.
+Este tem sido o caso desde v1.12. No entanto,
+a probabilidade de encontrar isso aumenta conforme
+desenvolvedores de plugins criam e publicam plugins apenas v2.
 
-Existing v2 applications continue to work with or without
+Aplicações v2 existentes continuam a funcionar com ou sem
 plugins.
 
-Existing v2 applications consuming plugins that only
-target the v1 embedding continue to receive a warning prompt.
-The likelihood of encountering this decreases
-as plugin developers create and publish v2 plugins.
+Aplicações v2 existentes consumindo plugins que têm como alvo apenas
+o v1 embedding continuam a receber um aviso.
+A probabilidade de encontrar isso diminui
+conforme desenvolvedores de plugins criam e publicam plugins v2.
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-For more information,
-see [Upgrading pre 1.12 Android projects][].
+Para mais informações,
+veja [Upgrading pre 1.12 Android projects][].
 
-## Timeline
+## Cronograma {:#timeline}
 
-Landed in version: 1.20.0-8.0<br>
-In stable release: 1.22
+Implementado na versão: 1.20.0-8.0<br>
+Na versão estável: 1.22

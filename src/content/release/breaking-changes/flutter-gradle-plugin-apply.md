@@ -1,46 +1,47 @@
 ---
-title: Deprecated imperative apply of Flutter's Gradle plugins
+title: Aplicação imperativa descontinuada dos plugins Gradle do Flutter
 description: >-
-  How to migrate your Flutter app's Android Gradle build files to the
-  new, declarative format.
+  Como migrar os arquivos de build Gradle do Android do seu app Flutter para o
+  novo formato declarativo.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
 ## Summary
 
-To build a Flutter app for Android, Flutter's Gradle plugins must be applied.
-Historically, this was done imperatively with Gradle's
-[legacy, imperative apply script method][].
+Para construir um app Flutter para Android, os plugins Gradle do Flutter devem ser aplicados.
+Historicamente, isso era feito imperativamente com o
+[legacy, imperative apply script method][] do Gradle.
 
-In Flutter 3.16, support was added for applying these plugins with Gradle's
-[declarative plugins {} block][] (also called the Plugin DSL) and it is
-now the recommended approach. Since Flutter 3.16, projects generated with
-`flutter create` use the Plugin DSL to apply Gradle plugins. Projects created
-with versions of Flutter prior to 3.16 need to be migrated manually.
+No Flutter 3.16, foi adicionado suporte para aplicar esses plugins com o
+[declarative plugins {} block][] do Gradle (também chamado de Plugin DSL) e agora é
+a abordagem recomendada. Desde o Flutter 3.16, projetos gerados com
+`flutter create` usam o Plugin DSL para aplicar plugins Gradle. Projetos criados
+com versões do Flutter anteriores à 3.16 precisam ser migrados manualmente.
 
-Applying Gradle plugins using the `plugins {}` block executes the same code as
-before and should produce equivalent app binaries.
+Aplicar plugins Gradle usando o bloco `plugins {}` executa o mesmo código de
+antes e deve produzir binários de app equivalentes.
 
-To learn about advantages the new Plugin DSL syntax has over the legacy `apply`
-script syntax, see [Gradle docs][plugins block].
+Para aprender sobre as vantagens que a nova sintaxe Plugin DSL tem sobre a sintaxe de script `apply`
+legada, veja [Gradle docs][plugins block].
 
-Migrating the app ecosystem to use the new approach will also make it easier for
-Flutter team to develop Flutter's Gradle plugins, and to enable exciting new
-features in the future, such as using Kotlin instead of Groovy in Gradle
-buildscripts.
+Migrar o ecossistema de apps para usar a nova abordagem também facilitará para
+a equipe do Flutter desenvolver plugins Gradle do Flutter e habilitar novos
+recursos empolgantes no futuro, como usar Kotlin em vez de Groovy em buildscripts
+Gradle.
 
 ## Migrate
 
 ### android/settings.gradle
 
-First, find the values of the Android Gradle Plugin (AGP)
-and Kotlin that the project currently uses.
-Unless they have been moved,
-they are likely defined in the buildscript block of the
-`<app-src>/android/build.gradle` file.
-As an example, consider the `build.gradle` file from
-a new Flutter app created before this change:
+Primeiro, encontre os valores do Android Gradle Plugin (AGP)
+e Kotlin que o projeto atualmente usa.
+A menos que tenham sido movidos,
+eles provavelmente estão definidos no bloco buildscript do
+arquivo `<app-src>/android/build.gradle`.
+Como exemplo, considere o arquivo `build.gradle` de
+um novo app Flutter criado antes desta alteração:
 
 ```groovy
 buildscript {
@@ -76,15 +77,15 @@ tasks.register("clean", Delete) {
 }
 ```
 
-The AGP version is the number that comes at the end of the line
-`classpath 'com.android.tools.build:gradle:7.3.0'`, so `7.3.0`
-in this case. Similarly, the Kotlin version comes at the end of the line
-`ext.kotlin_version = '1.7.10'`, in this case `1.7.10`.
+A versão do AGP é o número que vem no final da linha
+`classpath 'com.android.tools.build:gradle:7.3.0'`, então `7.3.0`
+neste caso. Similarmente, a versão do Kotlin vem no final da linha
+`ext.kotlin_version = '1.7.10'`, neste caso `1.7.10`.
 
-Next, replace the contents of
-`<app-src>/android/settings.gradle` with the following,
-remembering to replace `{agpVersion}` and `{kotlinVersion}` with previously
-identified values:
+A seguir, substitua o conteúdo de
+`<app-src>/android/settings.gradle` pelo seguinte,
+lembrando de substituir `{agpVersion}` e `{kotlinVersion}` pelos valores
+identificados anteriormente:
 
 ```groovy
 pluginManagement {
@@ -114,18 +115,18 @@ plugins {
 include ":app"
 ```
 
-If you made some changes to this file, make sure they're placed after
-`pluginManagement {}` and `plugins {}` blocks, since Gradle enforces
-that no other code can be placed before these blocks.
+Se você fez algumas alterações neste arquivo, certifique-se de que elas estejam colocadas após
+os blocos `pluginManagement {}` e `plugins {}`, pois o Gradle exige
+que nenhum outro código possa ser colocado antes desses blocos.
 
-The settings Flutter Gradle Plugin (`dev.flutter.flutter-plugin-loader`)
-should not have apply false (the default is true) or should be explicitly
-set to true.
+O settings Flutter Gradle Plugin (`dev.flutter.flutter-plugin-loader`)
+não deve ter apply false (o padrão é true) ou deve ser explicitamente
+definido como true.
 
 
 ### android/build.gradle
 
-Remove the whole `buildscript` block from `<app-src/android/build.gradle`:
+Remova todo o bloco `buildscript` de `<app-src/android/build.gradle`:
 
 ```groovy diff
 - buildscript {
@@ -141,7 +142,7 @@ Remove the whole `buildscript` block from `<app-src/android/build.gradle`:
 - }
 ```
 
-Here's how that file will likely end up:
+Aqui está como esse arquivo provavelmente ficará:
 
 ```groovy
 allprojects {
@@ -166,10 +167,10 @@ tasks.register("clean", Delete) {
 
 ### android/app/build.gradle
 
-The following changes to code that is, by default
-found in `<app-src>/android/app/build.gradle`, also need to be made.
-First, remove the following 2 chunks of code that use the
-legacy imperative apply method:
+As seguintes alterações no código que, por padrão,
+é encontrado em `<app-src>/android/app/build.gradle`, também precisam ser feitas.
+Primeiro, remova os seguintes 2 trechos de código que usam o
+método apply imperativo legado:
 
 ```groovy diff
 - def flutterRoot = localProperties.getProperty('flutter.sdk')
@@ -184,9 +185,9 @@ legacy imperative apply method:
 - apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 ```
 
-Now apply the plugins again,
-but this time using the Plugin DSL syntax.
-At the very top of your file, add:
+Agora aplique os plugins novamente,
+mas desta vez usando a sintaxe Plugin DSL.
+No topo do seu arquivo, adicione:
 
 ```groovy
 plugins {
@@ -195,33 +196,33 @@ plugins {
     id "dev.flutter.flutter-gradle-plugin"
 }
 ```
-`"dev.flutter.flutter-gradle-plugin"` is the project Flutter
-Gradle Plugin, which is a different string than the value applied
-in settings.gradle(.kts) (`"dev.flutter.flutter-plugin-loader"`).
+`"dev.flutter.flutter-gradle-plugin"` é o project Flutter
+Gradle Plugin, que é uma string diferente do valor aplicado
+em settings.gradle(.kts) (`"dev.flutter.flutter-plugin-loader"`).
 
-Finally, if your `dependencies` block contains a dependency
-on `"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"`,
-then remove that dependency.
+Finalmente, se seu bloco `dependencies` contém uma dependência
+em `"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"`,
+então remova essa dependência.
 
 ```groovy diff
   dependencies {
 -     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
   }
 ```
-If it was the only dependency in the `dependencies` block,
-then you can instead remove the block entirely.
+Se foi a única dependência no bloco `dependencies`,
+então você pode remover o bloco inteiramente.
 
 ### Validation
 
-Execute `flutter run` to confirm that your app builds and
-launches on a connected Android device or emulator.
+Execute `flutter run` para confirmar que seu app constrói e
+inicia em um dispositivo Android conectado ou emulador.
 
 ## Examples
 
 ### Google Mobile Services and Crashlytics
 
-If your app was using Google Mobile Services and Crashlytics,
-remove the following lines from `<app-src>/android/build.gradle`:
+Se seu app estava usando Google Mobile Services e Crashlytics,
+remova as seguintes linhas de `<app-src>/android/build.gradle`:
 
 ```groovy diff
   buildscript {
@@ -235,19 +236,19 @@ remove the following lines from `<app-src>/android/build.gradle`:
   }
 ```
 
-Then remove these 2 lines from `<app-src>/android/app/build.gradle`:
+Então remova estas 2 linhas de `<app-src>/android/app/build.gradle`:
 
 ```groovy diff
 - apply plugin: 'com.google.gms.google-services'
 - apply plugin: 'com.google.firebase.crashlytics'
 ```
 
-To migrate to the new, declarative-apply syntax for
-the GMS and Crashlytics plugins, add them to `plugins` block
-in your app's `<app-src>/android/settings.gradle` file.
-The additions should look similar to the following,
-but with your desired plugin versions, likely matching
-the ones you removed from the `<app-src>/android/build.gradle` file.
+Para migrar para a nova sintaxe declarative-apply para
+os plugins GMS e Crashlytics, adicione-os ao bloco `plugins`
+no arquivo `<app-src>/android/settings.gradle` do seu app.
+As adições devem se parecer com o seguinte,
+mas com as versões de plugin desejadas, provavelmente correspondendo
+às que você removeu do arquivo `<app-src>/android/build.gradle`.
 
 ```groovy diff
   plugins {
@@ -259,7 +260,7 @@ the ones you removed from the `<app-src>/android/build.gradle` file.
   }
 ```
 
-Add the following lines to `<app-src>/android/app/build.gradle`:
+Adicione as seguintes linhas a `<app-src>/android/app/build.gradle`:
 
 ```groovy diff
   plugins {

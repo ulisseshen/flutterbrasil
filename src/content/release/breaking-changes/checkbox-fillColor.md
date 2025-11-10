@@ -1,40 +1,41 @@
 ---
-title: Updated `Checkbox.fillColor` behavior
+title: Comportamento atualizado do `Checkbox.fillColor`
 description: >
-  Improved `Checkbox.fillColor` behavior applies the fill color to the
-  background when the checkbox is unselected.
+  Comportamento melhorado do `Checkbox.fillColor` aplica a cor de preenchimento ao
+  background quando o checkbox não está selecionado.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-The `Checkbox.fillColor` is now applied to the checkbox's background when
-the checkbox is unselected.
+O `Checkbox.fillColor` é agora aplicado ao background do checkbox quando
+o checkbox não está selecionado.
 
-## Context
+## Contexto
 
-Previously, the `Checkbox.fillColor` was applied to the checkbox's border
-when the checkbox was unselected and its background was transparent.
-With this change, the `Checkbox.fillColor` is applied to the checkbox's
-background and the border uses the `Checkbox.side` color when the checkbox
-is unselected.
+Anteriormente, o `Checkbox.fillColor` era aplicado à borda do checkbox
+quando o checkbox não estava selecionado e seu background era transparente.
+Com esta mudança, o `Checkbox.fillColor` é aplicado ao background
+do checkbox e a borda usa a cor `Checkbox.side` quando o checkbox
+não está selecionado.
 
-## Description of change
+## Descrição da mudança
 
-The `Checkbox.fillColor` is now applied to the checkbox's background when
-the checkbox is unselected instead of being used as the border color.
+O `Checkbox.fillColor` é agora aplicado ao background do checkbox quando
+o checkbox não está selecionado em vez de ser usado como a cor da borda.
 
-## Migration guide
+## Guia de migração
 
-The updated `Checkbox.fillColor` behavior applies the fill color to the
-checkbox's background in the unselected state. To get the previous behavior,
-set `Checbox.fillColor` to `Colors.transparent` in the unselected state and
-set `Checkbox.side` to the desired color.
+O comportamento atualizado do `Checkbox.fillColor` aplica a cor de preenchimento ao
+background do checkbox no estado não selecionado. Para obter o comportamento anterior,
+defina `Checbox.fillColor` como `Colors.transparent` no estado não selecionado e
+defina `Checkbox.side` para a cor desejada.
 
-If you use the `Checkbox.fillColor` property to customize the checkbox.
+Se você usa a propriedade `Checkbox.fillColor` para personalizar o checkbox.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 Checkbox(
@@ -55,7 +56,7 @@ Checkbox(
 ),
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 Checkbox(
@@ -77,9 +78,9 @@ Checkbox(
 ),
 ```
 
-If you use the `CheckboxThemeData.fillColor` property to customize the checkbox.
+Se você usa a propriedade `CheckboxThemeData.fillColor` para personalizar o checkbox.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 checkboxTheme: CheckboxThemeData(
@@ -92,7 +93,7 @@ checkboxTheme: CheckboxThemeData(
 ),
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 checkboxTheme: CheckboxThemeData(
@@ -106,24 +107,24 @@ checkboxTheme: CheckboxThemeData(
 ),
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.10.0-17.0.pre<br>
-In stable release: 3.13.0
+Lançado na versão: 3.10.0-17.0.pre<br>
+Na versão estável: 3.13.0
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`Checkbox.fillColor`][]
 
-Relevant issues:
+Issues relevantes:
 
-* [Add `backgroundColor` to `Checkbox` and `CheckboxThemeData`][]
+* [Adicionar `backgroundColor` ao `Checkbox` e `CheckboxThemeData`][Add `backgroundColor` to `Checkbox` and `CheckboxThemeData`]
 
-Relevant PRs:
+PRs relevantes:
 
-* [`Checkbox.fillColor` should be applied to checkbox's background color when it is unchecked.][]
+* [`Checkbox.fillColor` deveria ser aplicado à cor de background do checkbox quando não está marcado.][`Checkbox.fillColor` should be applied to checkbox's background color when it is unchecked.]
 
 [`Checkbox.fillColor`]: {{site.api}}/flutter/material/Checkbox/fillColor.html
 

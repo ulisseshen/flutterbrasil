@@ -1,51 +1,52 @@
 ---
-title: Dry layout support for RenderBox
+title: Suporte a dry layout para RenderBox
 description: >
-  The method "computeDryLayout" was added to the RenderBox protocol to
-  correctly calculate its intrinsic size in certain situations.
+  O método "computeDryLayout" foi adicionado ao protocolo RenderBox para
+  calcular corretamente seu tamanho intrínseco em certas situações.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-A new method named `computeDryLayout` was added to the `RenderBox` protocol.
-Subclasses of `RenderBox` are expected to implement it to correctly report
-their desired size given a set of `BoxConstraints` during intrinsic
-calculations. Subclasses that implement `computeDryLayout` no longer need to
-override `performResize`.
+Um novo método chamado `computeDryLayout` foi adicionado ao protocolo `RenderBox`.
+Subclasses de `RenderBox` devem implementá-lo para relatar corretamente
+seu tamanho desejado dado um conjunto de `BoxConstraints` durante cálculos
+intrínsecos. Subclasses que implementam `computeDryLayout` não precisam mais
+sobrescrever `performResize`.
 
-## Context
+## Contexto {:#context}
 
-A new method, `computeDryLayout`, was added to the `RenderBox` protocol to
-correctly calculate the intrinsic sizes of a `RenderParagraph` with `WidgetSpan`
-children and a `RenderWrap`. The method receives a set of `BoxConstraints` and
-is expected to calculate the resulting size of the `RenderBox` without changing
-any internal state. It's essentially a dry run of `performLayout` that only
-calculates the resulting size and doesn't place the children. The
-`computeDryLayout` method is part of the intrinsics protocol (see also
-[`RenderBox.computeMinIntrinsicWidth`][] and friends).
+Um novo método, `computeDryLayout`, foi adicionado ao protocolo `RenderBox` para
+calcular corretamente os tamanhos intrínsecos de um `RenderParagraph` com
+filhos `WidgetSpan` e um `RenderWrap`. O método recebe um conjunto de `BoxConstraints` e
+deve calcular o tamanho resultante do `RenderBox` sem alterar
+nenhum estado interno. É essencialmente uma execução simulada de `performLayout` que apenas
+calcula o tamanho resultante e não posiciona os filhos. O
+método `computeDryLayout` faz parte do protocolo de intrínsecos (veja também
+[`RenderBox.computeMinIntrinsicWidth`][] e similares).
 
-## Description of change
+## Descrição da mudança {:#description-of-change}
 
-Subclasses of `RenderBox` need to override the new `computeDryLayout` method
-if they are used as a descendant of a `RenderObject` that may query the intrinsic
-size of its children. Examples of widgets that do this are `IntrinsicHeight`
-and `IntrinsicWidth`.
+Subclasses de `RenderBox` precisam sobrescrever o novo método `computeDryLayout`
+se forem usadas como descendentes de um `RenderObject` que possa consultar o tamanho
+intrínseco de seus filhos. Exemplos de widgets que fazem isso são `IntrinsicHeight`
+e `IntrinsicWidth`.
 
-The default implementation of `RenderBox.performResize` also uses the size
-computed by `computeDryLayout` to perform the resize. Overriding `performResize`
-is therefore no longer necessary.
+A implementação padrão de `RenderBox.performResize` também usa o tamanho
+computado por `computeDryLayout` para realizar o redimensionamento. Sobrescrever `performResize`
+não é mais necessário, portanto.
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-Subclasses that already override `performResize` can be migrated by simply
-changing the function signature from `void performResize()` to
-`Size computeDryLayout(BoxConstraints constraints)` and by returning the
-calculated size instead of assigning it to the `size` setter. The old
-implementation of `performResize` can be removed.
+Subclasses que já sobrescrevem `performResize` podem ser migradas simplesmente
+alterando a assinatura da função de `void performResize()` para
+`Size computeDryLayout(BoxConstraints constraints)` e retornando o
+tamanho calculado em vez de atribuí-lo ao setter `size`. A antiga
+implementação de `performResize` pode ser removida.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
   @override
@@ -54,7 +55,7 @@ Code before migration:
   }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
   // This replaces the old performResize method.
@@ -64,18 +65,18 @@ Code after migration:
   }
 ```
 
-If the subclass doesn't override `performResize`, the implementation of
-`computeDryLayout` has to be extracted from the `performLayout` method.
-Basically, `computeDryLayout` needs to do all the work `performLayout` is doing
-to figure out the size of the `RenderBox`. However, instead of assigning it
-to the `size` setter, it returns the computed size. If `computeDryLayout`
-needs to know the size of its children, it must obtain that size by calling
-`getDryLayout` on the child instead of calling `layout`.
+Se a subclasse não sobrescreve `performResize`, a implementação de
+`computeDryLayout` deve ser extraída do método `performLayout`.
+Basicamente, `computeDryLayout` precisa fazer todo o trabalho que `performLayout` faz
+para descobrir o tamanho do `RenderBox`. No entanto, em vez de atribuí-lo
+ao setter `size`, ele retorna o tamanho computado. Se `computeDryLayout`
+precisa saber o tamanho de seus filhos, deve obter esse tamanho chamando
+`getDryLayout` no filho em vez de chamar `layout`.
 
-If for some reason it is impossible to calculate the dry layout, `computeDryLayout`
-must call `debugCannotComputeDryLayout` from within an assert and return a dummy
-size of `const Size(0, 0)`. Calculating a dry layout is, for example, impossible
-if the size of a `RenderBox` depends on the baseline metrics of its children.
+Se por algum motivo for impossível calcular o dry layout, `computeDryLayout`
+deve chamar `debugCannotComputeDryLayout` dentro de um assert e retornar um tamanho
+fictício de `const Size(0, 0)`. Calcular um dry layout é, por exemplo, impossível
+se o tamanho de um `RenderBox` depende das métricas de baseline de seus filhos.
 
 ```dart
   @override
@@ -87,14 +88,14 @@ if the size of a `RenderBox` depends on the baseline metrics of its children.
   }
 ```
 
-## Timeline
+## Cronograma {:#timeline}
 
-Landed in version: 1.25.0-4.0.pre<br>
-In stable release: 2.0.0
+Implementado na versão: 1.25.0-4.0.pre<br>
+Na versão estável: 2.0.0
 
-## References
+## Referências {:#references}
 
-API documentation:
+Documentação da API:
 
 * [`RenderBox`][]
 * [`computeMinInstrinsicWidth`][]
@@ -104,11 +105,11 @@ API documentation:
 * [`RenderWrap`][]
 * [`RenderParagraph`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue 48679][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Fixes Intrinsics for RenderParagraph and RenderWrap][]
 

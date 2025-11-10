@@ -1,45 +1,28 @@
 ---
-title: A new way to customize context menus
+title: Uma nova maneira de personalizar menus de contexto
 description: >
-  Several hard-coded parameters for customizing context menus have
-  now been replaced by a generic widget builder.
+  Vários parâmetros codificados para personalizar menus de contexto
+  foram substituídos por um builder de widget genérico.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
 ## Summary
 
-Context menus, or text selection toolbars, are the menus that show up when long
-pressing or right clicking on text in Flutter, and they show options like
-**Cut**, **Copy**, **Paste**, and **Select all**. Previously, it was only
-possible to narrowly customize them using `ToolbarOptions` and
-`TextSelectionControls`. Now, they have been made composable using widgets, just
-like everything else in Flutter, and the specific configuration parameters have
-been deprecated.
+Menus de contexto, ou barras de ferramentas de seleção de texto, são os menus que aparecem ao pressionar longamente ou clicar com o botão direito no texto no Flutter, e exibem opções como **Cut**, **Copy**, **Paste** e **Select all**. Anteriormente, era possível personalizá-los de forma limitada usando `ToolbarOptions` e `TextSelectionControls`. Agora, eles foram tornados combináveis usando widgets, assim como tudo no Flutter, e os parâmetros de configuração específicos foram descontinuados.
 
 ## Context
 
-Previously, it was possible to disable buttons from the context menus using
-`TextSelectionControls`, but any customization beyond that required copying and
-editing hundreds of lines of custom classes in the framework. Now, all of this
-has been replaced by a simple builder function, `contextMenuBuilder`, which
-allows any Flutter widget to be used as a context menu.
+Anteriormente, era possível desabilitar botões dos menus de contexto usando `TextSelectionControls`, mas qualquer personalização além disso exigia copiar e editar centenas de linhas de classes personalizadas no framework. Agora, tudo isso foi substituído por uma função builder simples, `contextMenuBuilder`, que permite que qualquer widget Flutter seja usado como menu de contexto.
 
 ## Description of change
 
-Context menus are now built from the `contextMenuBuilder` parameter, which has
-been added to all text-editing and text-selection widgets. If one is not
-provided, then Flutter just sets it to a default that builds the correct context
-menu for the given platform. All of these default widgets are exposed to users
-for re-use. Customizing context menus now consists of using `contextMenuBuilder`
-to return whatever widget you want, possibly including reusing the built-in
-context menu widgets.
+Os menus de contexto agora são construídos a partir do parâmetro `contextMenuBuilder`, que foi adicionado a todos os widgets de edição de texto e seleção de texto. Se um não for fornecido, o Flutter simplesmente define um padrão que constrói o menu de contexto correto para a plataforma específica. Todos esses widgets padrão são expostos aos usuários para reutilização. Personalizar menus de contexto agora consiste em usar `contextMenuBuilder` para retornar qualquer widget que você deseja, possivelmente incluindo a reutilização dos widgets de menu de contexto integrados.
 
-Here's an example that shows how to add a **Send email** button to the default
-context menus whenever an email address is selected. The full code can be found
-in the samples repository in
+Aqui está um exemplo que mostra como adicionar um botão **Send email** aos menus de contexto padrão sempre que um endereço de e-mail é selecionado. O código completo pode ser encontrado no repositório de exemplos em
 [email_button_page.dart]({{site.repo.samples}}/blob/main/context_menus/lib/email_button_page.dart)
-on GitHub.
+no GitHub.
 
 ```dart
 TextField(
@@ -66,32 +49,31 @@ TextField(
 )
 ```
 
-A large number of examples of different custom context menus are available
-[in the samples repo]({{site.repo.samples}}/tree/main/context_menus)
-on GitHub.
+Um grande número de exemplos de diferentes menus de contexto personalizados estão disponíveis
+[no repositório de exemplos]({{site.repo.samples}}/tree/main/context_menus)
+no GitHub.
 
-All related deprecated features were flagged with the deprecation warning "Use
+Todos os recursos relacionados descontinuados foram marcados com o aviso de descontinuação "Use
 `contextMenuBuilder` instead."
 
 ## Migration guide
 
-In general, any previous changes to context menus that have been deprecated now
-require the use of the `contextMenuBuilder` parameter on the relevant
-text-editing or text-selection widget (
-[on `TextField`]({{site.api}}/flutter/material/TextField/contextMenuBuilder.html),
-for example). Return a built-in context menu widget like
+Em geral, quaisquer alterações anteriores nos menus de contexto que foram descontinuadas agora
+requerem o uso do parâmetro `contextMenuBuilder` no widget de edição de texto ou seleção de texto relevante (
+[em `TextField`]({{site.api}}/flutter/material/TextField/contextMenuBuilder.html),
+por exemplo). Retorne um widget de menu de contexto integrado como
 [`AdaptiveTextSelectionToolbar`]({{site.api}}/flutter/material/AdaptiveTextSelectionToolbar-class.html)
-to use Flutter's built-in context menus, or return your own widget for something
-totally custom.
+para usar os menus de contexto integrados do Flutter, ou retorne seu próprio widget para algo
+totalmente personalizado.
 
-To transition to `contextMenuBuilder`, the following parameters and classes have
-been deprecated.
+Para fazer a transição para `contextMenuBuilder`, os seguintes parâmetros e classes foram
+descontinuados.
 
 ### [`ToolbarOptions`]({{site.api}}/flutter/widgets/ToolbarOptions-class.html)
 
-This class was previously used to explicitly enable or disable certain buttons
-in a context menu. Before this change, you might have passed it into `TextField`
-or other widgets like this:
+Esta classe era anteriormente usada para habilitar ou desabilitar explicitamente certos botões
+em um menu de contexto. Antes desta alteração, você poderia tê-la passado para `TextField`
+ou outros widgets assim:
 
 ```dart
 // Deprecated.
@@ -102,9 +84,9 @@ TextField(
 )
 ```
 
-Now, you can achieve the same effect by adjusting the `buttonItems` passed into
-`AdaptiveTextSelectionToolbar`. For example, you could ensure that the **Cut**
-button never appears, but the other buttons do appear as usual:
+Agora, você pode alcançar o mesmo efeito ajustando os `buttonItems` passados para
+`AdaptiveTextSelectionToolbar`. Por exemplo, você pode garantir que o botão **Cut**
+nunca apareça, mas os outros botões apareçam normalmente:
 
 ```dart
 TextField(
@@ -122,7 +104,7 @@ TextField(
 )
 ```
 
-Or, you could ensure that the **Cut** button appears exclusively and always:
+Ou, você pode garantir que o botão **Cut** apareça exclusivamente e sempre:
 
 ```dart
 TextField(
@@ -142,12 +124,12 @@ TextField(
 )
 ```
 
-### [`TextSelectionControls.canCut`]({{site.api}}/flutter/widgets/TextSelectionControls/canCut.html) and other button booleans
+### [`TextSelectionControls.canCut`]({{site.api}}/flutter/widgets/TextSelectionControls/canCut.html) e outros booleanos de botão
 
-These booleans previously had the same effect of enabling and disabling certain
-buttons as `ToolbarOptions.cut`, and so on had. Before this change, you might
-have been hiding and showing buttons by overriding `TextSelectionControls` and
-setting these booleans like this:
+Estes booleanos tinham anteriormente o mesmo efeito de habilitar e desabilitar certos
+botões como `ToolbarOptions.cut`, e assim por diante. Antes desta alteração, você poderia
+estar ocultando e exibindo botões sobrescrevendo `TextSelectionControls` e
+definindo esses booleanos assim:
 
 ```dart
 // Deprecated.
@@ -157,14 +139,13 @@ class _MyMaterialTextSelectionControls extends MaterialTextSelectionControls {
 }
 ```
 
-See the previous section on `ToolbarOptions` for how to achieve a similar effect
-with `contextMenuBuilder`.
+Veja a seção anterior sobre `ToolbarOptions` para saber como alcançar um efeito similar
+com `contextMenuBuilder`.
 
-### [`TextSelectionControls.handleCut`]({{site.api}}/flutter/widgets/TextSelectionControls/handleCut.html) and other button callbacks
+### [`TextSelectionControls.handleCut`]({{site.api}}/flutter/widgets/TextSelectionControls/handleCut.html) e outros callbacks de botão
 
-These functions allowed the modification of the callback called when the buttons
-were pressed. Before this change, you might have been modifying context menu
-button callbacks by overriding these handler methods like this:
+Essas funções permitiam a modificação do callback chamado quando os botões
+eram pressionados. Antes desta alteração, você poderia estar modificando callbacks de botões do menu de contexto sobrescrevendo esses métodos handler assim:
 
 ```dart
 // Deprecated.
@@ -176,12 +157,11 @@ class _MyMaterialTextSelectionControls extends MaterialTextSelectionControls {
 }
 ```
 
-This is still possible using `contextMenuBuilder`, including calling
-out to the original buttons' actions in the custom handler, using toolbar
-widgets like `AdaptiveTextSelectionToolbar.buttonItems`.
+Isso ainda é possível usando `contextMenuBuilder`, incluindo chamar
+as ações dos botões originais no handler personalizado, usando widgets de barra de ferramentas como `AdaptiveTextSelectionToolbar.buttonItems`.
 
-This example shows modifying the **Copy** button to show a dialog in addition to
-doing its usual copy logic.
+Este exemplo mostra a modificação do botão **Copy** para exibir um diálogo além de
+realizar sua lógica de cópia usual.
 
 ```dart
 TextField(
@@ -219,17 +199,16 @@ TextField(
 )
 ```
 
-A full example of modifying a built-in context menu action can be found in the
-samples repository in
+Um exemplo completo de modificação de uma ação de menu de contexto integrado pode ser encontrado no repositório de exemplos em
 [modified_action_page.dart]({{site.repo.samples}}/blob/main/context_menus/lib/modified_action_page.dart)
-on GitHub.
+no GitHub.
 
 ### [`buildToolbar`]({{site.api}}/flutter/widgets/TextSelectionControls/buildToolbar.html)
 
-This function generated the context menu widget similarly to
-`contextMenuBuilder`, but required more setup to use. Before this change, you
-might have been overriding `buildToolbar` as a part of `TextSelectionControls`,
-like this:
+Esta função gerava o widget de menu de contexto de forma similar ao
+`contextMenuBuilder`, mas exigia mais configuração para usar. Antes desta alteração, você
+poderia estar sobrescrevendo `buildToolbar` como parte de `TextSelectionControls`,
+assim:
 
 ```dart
 // Deprecated.
@@ -250,13 +229,13 @@ class _MyMaterialTextSelectionControls extends MaterialTextSelectionControls {
 }
 ```
 
-Now you can simply use `contextMenuBuilder` directly as a parameter to
-`TextField` (and others). The information provided in the parameters to
-`buildToolbar` can be obtained from the `EditableTextState` that is passed to
+Agora você pode simplesmente usar `contextMenuBuilder` diretamente como parâmetro para
+`TextField` (e outros). As informações fornecidas nos parâmetros para
+`buildToolbar` podem ser obtidas do `EditableTextState` que é passado para
 `contextMenuBuilder`.
 
-The following example shows how to build a fully-custom toolbar from scratch
-while still using the default buttons.
+O exemplo a seguir mostra como construir uma barra de ferramentas totalmente personalizada do zero
+enquanto ainda usa os botões padrão.
 
 ```dart
 class _MyContextMenu extends StatelessWidget {
@@ -312,10 +291,9 @@ class _MyTextField extends StatelessWidget {
 }
 ```
 
-A full example of building a custom context menu can be found in the samples
-repository in
+Um exemplo completo de construção de um menu de contexto personalizado pode ser encontrado no repositório de exemplos em
 [`custom_menu_page.dart`]({{site.repo.samples}}/blob/main/context_menus/lib/custom_menu_page.dart)
-on GitHub.
+no GitHub.
 
 ## Timeline
 

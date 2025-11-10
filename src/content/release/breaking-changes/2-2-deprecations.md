@@ -1,11 +1,12 @@
 ---
-title: Deprecated API removed after v2.2
+title: API descontinuada removida após v2.2
 description: >
+ia-translate: true
   After reaching end of life, the following deprecated APIs
   were removed from Flutter.
 ---
 
-## Summary
+## Resumo
 
 In accordance with Flutter's [Deprecation Policy][],
 deprecated APIs that reached end of life after the
@@ -331,6 +332,6 @@ Relevant PRs:
 
 ---
 
-## Timeline
+## Linha do tempo
 
 In stable release: 2.5

@@ -1,13 +1,14 @@
 ---
 title: The window singleton is deprecated
 description: >
+ia-translate: true
   In preparation for supporting multiple views and
   multiple windows the window singleton has been deprecated.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
 In preparation for supporting multiple views and multiple windows, the `window`
 singleton has been deprecated. Code previously relying on the `window` singleton
@@ -84,7 +85,7 @@ together replace the functionality of `TestWindow`.
   properties such as the platform's locale, whether certain system features
   are available, etc.
 
-## Migration guide
+## Guia de migração
 
 Instead of accessing the static `window` property, application and library code
 that has access to a `BuildContext` should use `View.of` to look up the
@@ -339,12 +340,12 @@ testWidgets('test name', (WidgetTester tester) async {
 });
 ```
 
-## Timeline
+## Linha do tempo
 
 Landed in version: 3.9.0-13.0.pre.20<br>
 In stable release: 3.10.0
 
-## References
+## Referências
 
 API documentation:
 

@@ -2,6 +2,7 @@
 title: Concorrência no Flutter para desenvolvedores Swift
 description: >
   Aproveite seu conhecimento de concorrência Swift ao aprender Flutter e Dart.
+ia-translate: true
 ---
 
 <?code-excerpt path-base="resources/dart_swift_concurrency"?>

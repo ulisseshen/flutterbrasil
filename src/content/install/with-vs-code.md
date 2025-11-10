@@ -1,53 +1,54 @@
 ---
-title: Install Flutter using VS Code
-shortTitle: Install with VS Code
-breadcrumb: With VS Code
+title: Instalar o Flutter usando o VS Code
+shortTitle: Instalar com VS Code
+breadcrumb: Com VS Code
 description: >-
-  Learn how to use VS Code to quickly install and set up the Flutter SDK.
+  Aprenda a usar o VS Code para instalar e configurar rapidamente o Flutter SDK.
+ia-translate: true
 ---
 
-Learn how to install and set up Flutter in a Code OSS-based editor.
-This includes (but is not limited to), [VS Code][], [Cursor][], and [Windsurf][].
+Aprenda a instalar e configurar o Flutter em um editor baseado em Code OSS.
+Isso inclui (mas não se limita a), [VS Code][], [Cursor][] e [Windsurf][].
 
 [VS Code]: https://code.visualstudio.com
 [Cursor]: https://cursor.com/
 [Windsurf]: https://windsurf.com/
 
 :::tip
-If you've never set up or developed an app with Flutter before,
-follow [Set up and test drive Flutter][] instead.
+Se você nunca configurou ou desenvolveu um aplicativo com Flutter antes,
+siga [Configurar e testar o Flutter][Set up and test drive Flutter] em vez disso.
 :::
 
 [Set up and test drive Flutter]: /get-started/quick
 
-## Choose your development platform {: #dev-platform}
+## Escolha sua plataforma de desenvolvimento {: #dev-platform}
 
-The instructions on this page are configured to cover
-installing Flutter on a **Windows**{:.selected-os-text} device.
+As instruções nesta página estão configuradas para cobrir
+a instalação do Flutter em um dispositivo **Windows**{:.selected-os-text}.
 
-If you'd like to follow the instructions for a different OS,
-please select one of the following.
+Se você deseja seguir as instruções para um sistema operacional diferente,
+selecione uma das opções a seguir.
 
 <OSSelector />
 
-## Download prerequisite software {: #download-prerequisites}
+## Baixar software pré-requisito {: #download-prerequisites}
 
-For the smoothest Flutter setup,
-first install the following tools.
+Para uma configuração mais tranquila do Flutter,
+primeiro instale as seguintes ferramentas.
 
- 1. <h3>Set up Linux support</h3>
+ 1. <h3>Configurar o suporte ao Linux</h3>
 
-    If you haven't set up Linux support on your Chromebook before,
-    [Turn on Linux support][chromeos-linux].
+    Se você ainda não configurou o suporte ao Linux no seu Chromebook,
+    [Ative o suporte ao Linux][chromeos-linux].
 
-    If you've already turned on Linux support,
-    ensure it's up to date following the
-    [Fix problems with Linux][chromeos-linux-update] instructions.
+    Se você já ativou o suporte ao Linux,
+    certifique-se de que está atualizado seguindo as
+    instruções em [Corrigir problemas com o Linux][chromeos-linux-update].
 
- 1. <h3>Download and install prerequisite packages</h3>
+ 1. <h3>Baixar e instalar pacotes pré-requisitos</h3>
 
-    Using `apt-get` or your preferred installation mechanism,
-    install the latest versions of the following packages:
+    Usando `apt-get` ou seu mecanismo de instalação preferido,
+    instale as versões mais recentes dos seguintes pacotes:
 
     - `curl`
     - `git`
@@ -56,61 +57,61 @@ first install the following tools.
     - `zip`
     - `libglu1-mesa`
 
-    If you want to use `apt-get`,
-    install these packages using the following commands:
+    Se você quiser usar `apt-get`,
+    instale esses pacotes usando os seguintes comandos:
 
     ```console
     $ sudo apt-get update -y && sudo apt-get upgrade -y
     $ sudo apt-get install -y curl git unzip xz-utils zip libglu1-mesa
     ```
 
- 1. <h3>Download and install Visual Studio Code</h3>
+ 1. <h3>Baixar e instalar o Visual Studio Code</h3>
 
-    To quickly install Flutter, then edit and debug your apps,
-    [install and set up Visual Studio Code][vscode-install].
+    Para instalar rapidamente o Flutter e, em seguida, editar e depurar seus aplicativos,
+    [instale e configure o Visual Studio Code][vscode-install].
 
 {: .steps .chromeos-only}
 
- 1. <h3>Install the Xcode command-line tools</h3>
+ 1. <h3>Instalar as ferramentas de linha de comando do Xcode</h3>
 
-    Download the Xcode command-line tools to get access to
-    the command-line tools that Flutter relies on, including Git.
+    Baixe as ferramentas de linha de comando do Xcode para obter acesso às
+    ferramentas de linha de comando das quais o Flutter depende, incluindo Git.
 
-    To download the tools, run the following command in your preferred terminal:
+    Para baixar as ferramentas, execute o seguinte comando no seu terminal preferido:
 
     ```console
     $ xcode-select --install
     ```
 
-    If you haven't installed the tools already,
-    a dialog should open that confirms you'd like to install them.
-    Click **Install**, then once the installation is complete, click **Done**.
+    Se você ainda não instalou as ferramentas,
+    um diálogo deve abrir confirmando que você deseja instalá-las.
+    Clique em **Install** e, após a conclusão da instalação, clique em **Done**.
 
- 1. <h3>Download and install Visual Studio Code</h3>
+ 1. <h3>Baixar e instalar o Visual Studio Code</h3>
 
-    To quickly install Flutter, then edit and debug your apps,
-    [install and set up Visual Studio Code][vscode-install].
+    Para instalar rapidamente o Flutter e, em seguida, editar e depurar seus aplicativos,
+    [instale e configure o Visual Studio Code][vscode-install].
 
 {: .steps .macos-only}
 
- 1. <h3>Install Git for Windows</h3>
+ 1. <h3>Instalar o Git para Windows</h3>
 
-    Download and install the latest version of [Git for Windows][].
+    Baixe e instale a versão mais recente do [Git for Windows][].
 
-    For help installing or troubleshooting Git,
-    reference the [Git documentation][git-install].
+    Para obter ajuda na instalação ou solução de problemas do Git,
+    consulte a [documentação do Git][git-install].
 
- 1. <h3>Download and install Visual Studio Code</h3>
+ 1. <h3>Baixar e instalar o Visual Studio Code</h3>
 
-    To quickly install Flutter, then edit and debug your apps,
-    [install and set up Visual Studio Code][vscode-install].
+    Para instalar rapidamente o Flutter e, em seguida, editar e depurar seus aplicativos,
+    [instale e configure o Visual Studio Code][vscode-install].
 
 {: .steps .windows-only}
 
- 1. <h3>Download and install prerequisite packages</h3>
+ 1. <h3>Baixar e instalar pacotes pré-requisitos</h3>
 
-    Using your preferred package manager or mechanism,
-    install the latest versions of the following packages:
+    Usando seu gerenciador de pacotes ou mecanismo preferido,
+    instale as versões mais recentes dos seguintes pacotes:
 
     - `curl`
     - `git`
@@ -119,18 +120,18 @@ first install the following tools.
     - `zip`
     - `libglu1-mesa`
 
-    On Debian-based distros with `apt-get`, such as Ubuntu,
-    install these packages using the following commands:
+    Em distribuições baseadas em Debian com `apt-get`, como Ubuntu,
+    instale esses pacotes usando os seguintes comandos:
 
     ```console
     $ sudo apt-get update -y && sudo apt-get upgrade -y
     $ sudo apt-get install -y curl git unzip xz-utils zip libglu1-mesa
     ```
 
- 1. <h3>Download and install Visual Studio Code</h3>
+ 1. <h3>Baixar e instalar o Visual Studio Code</h3>
 
-    To quickly install Flutter, then edit and debug your apps,
-    [install and set up Visual Studio Code][vscode-install].
+    Para instalar rapidamente o Flutter e, em seguida, editar e depurar seus aplicativos,
+    [instale e configure o Visual Studio Code][vscode-install].
 
 {: .steps .linux-only}
 
@@ -140,79 +141,79 @@ first install the following tools.
 [git-install]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 [vscode-install]: https://code.visualstudio.com/docs/setup/setup-overview
 
-## Install and set up Flutter {: #install-flutter}
+## Instalar e configurar o Flutter {: #install-flutter}
 
-Now that you've installed Git and VS Code,
-follow these steps to use VS Code to install and set up Flutter.
+Agora que você instalou o Git e o VS Code,
+siga estas etapas para usar o VS Code para instalar e configurar o Flutter.
 
- 1. <h3>Launch VS Code</h3>
+ 1. <h3>Iniciar o VS Code</h3>
 
-    If not already open, open VS Code by searching for it with Spotlight
-    or opening it manually from the directory where it's installed.
+    Se ainda não estiver aberto, abra o VS Code procurando por ele com o Spotlight
+    ou abrindo-o manualmente do diretório onde está instalado.
 
- 1. <h3>Add the Flutter extension to VS Code</h3>
+ 1. <h3>Adicionar a extensão Flutter ao VS Code</h3>
 
-    To add the Dart and Flutter extensions to VS Code,
-    visit the [Flutter extension's marketplace page][flutter-vscode],
-    and click **Install**.
-    If prompted by your browser, allow it to open VS Code.
+    Para adicionar as extensões Dart e Flutter ao VS Code,
+    visite a [página do marketplace da extensão Flutter][flutter-vscode]
+    e clique em **Install**.
+    Se solicitado pelo seu navegador, permita que ele abra o VS Code.
 
- 1. <h3>Install Flutter with VS Code</h3>
+ 1. <h3>Instalar o Flutter com o VS Code</h3>
 
-    1. Open the command palette in VS Code.
+    1. Abra a paleta de comandos no VS Code.
 
-       Go to **View** <span aria-label="and then">></span> **Command Palette**
-       or press <kbd class="special-key">Cmd/Ctrl</kbd> +
+       Vá para **View** <span aria-label="and then">></span> **Command Palette**
+       ou pressione <kbd class="special-key">Cmd/Ctrl</kbd> +
        <kbd>Shift</kbd> + <kbd>P</kbd>.
 
-    1. In the command palette, type `flutter`.
+    1. Na paleta de comandos, digite `flutter`.
 
-    1. Select **Flutter: New Project**.
+    1. Selecione **Flutter: New Project**.
 
-    1. VS Code prompts you to locate the Flutter SDK on your computer.
-       Select **Download SDK**.
+    1. O VS Code solicita que você localize o Flutter SDK no seu computador.
+       Selecione **Download SDK**.
 
-    1. When the **Select Folder for Flutter SDK** dialog displays,
-       choose where you want to install Flutter.
+    1. Quando o diálogo **Select Folder for Flutter SDK** aparecer,
+       escolha onde você deseja instalar o Flutter.
 
-    1. Click **Clone Flutter**.
+    1. Clique em **Clone Flutter**.
 
-       While downloading Flutter, VS Code displays this pop-up notification:
+       Enquanto baixa o Flutter, o VS Code exibe esta notificação pop-up:
 
        ```console
        Downloading the Flutter SDK. This may take a few minutes.
        ```
 
-       This download takes a few minutes.
-       If you suspect that the download has hung, click **Cancel** then
-       start the installation again.
+       Este download leva alguns minutos.
+       Se você suspeitar que o download travou, clique em **Cancel** e
+       inicie a instalação novamente.
 
-    1. Click **Add SDK to PATH**.
+    1. Clique em **Add SDK to PATH**.
 
-       When successful, a notification displays:
+       Quando bem-sucedido, uma notificação é exibida:
 
        ```console
        The Flutter SDK was added to your PATH
        ```
 
-    1. VS Code might display a Google Analytics notice.
+    1. O VS Code pode exibir um aviso do Google Analytics.
 
-       If you agree, click **OK**.
+       Se você concordar, clique em **OK**.
 
-    1. To ensure that Flutter is available in all terminals:
+    1. Para garantir que o Flutter esteja disponível em todos os terminais:
 
-       1. Close, then reopen all terminal windows.
-       1. Restart VS Code.
+       1. Feche e, em seguida, reabra todas as janelas de terminal.
+       1. Reinicie o VS Code.
 
        {:type="a"}
 
- 1. <h3>Validate your setup</h3>
+ 1. <h3>Validar sua configuração</h3>
 
-    To ensure you installed Flutter correctly,
-    run `flutter doctor -v` in your preferred terminal.
+    Para garantir que você instalou o Flutter corretamente,
+    execute `flutter doctor -v` no seu terminal preferido.
 
-    If the command isn't found or there's an error,
-    check out [Flutter installation troubleshooting][troubleshoot].
+    Se o comando não for encontrado ou houver um erro,
+    consulte [Solução de problemas de instalação do Flutter][troubleshoot].
 
 {:.steps}
 
@@ -220,17 +221,17 @@ follow these steps to use VS Code to install and set up Flutter.
 [flutter-vscode]: https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter
 [troubleshoot]: /install/troubleshoot
 
-## Continue your Flutter journey {: #next-steps}
+## Continue sua jornada com Flutter {: #next-steps}
 
-Now that you've successfully installed Flutter,
-set up development for at least one target platform
-to continue your journey with Flutter.
+Agora que você instalou o Flutter com sucesso,
+configure o desenvolvimento para pelo menos uma plataforma de destino
+para continuar sua jornada com o Flutter.
 
 :::recommend
-If you don't yet have a preferred platform
-to target during development,
-the Flutter team recommends you first try out
-[developing for the web][web-setup]!
+Se você ainda não tem uma plataforma preferida
+para usar durante o desenvolvimento,
+a equipe do Flutter recomenda que você experimente primeiro
+[desenvolver para a web][web-setup]!
 :::
 
 [web-setup]: /platform-integration/web/setup
@@ -238,30 +239,30 @@ the Flutter team recommends you first try out
 <div class="card-grid link-cards">
   <div class="card filled-card list-card">
     <div class="card-leading">
-      <img src="/assets/images/decorative/flutter-on-phone.svg" height="160" aria-hidden="true" alt="A representation of Flutter on multiple devices.">
+      <img src="/assets/images/decorative/flutter-on-phone.svg" height="160" aria-hidden="true" alt="Uma representação do Flutter em múltiplos dispositivos.">
     </div>
     <div class="card-header">
-      <span class="card-title">Set up a target platform</span>
+      <span class="card-title">Configurar uma plataforma de destino</span>
     </div>
     <div class="card-content">
       <ul>
         <li>
-          <a class="text-button" href="/platform-integration/web/setup">Target the web</a>
+          <a class="text-button" href="/platform-integration/web/setup">Ter como alvo a web</a>
         </li>
         <li>
-          <a class="text-button" href="/platform-integration/android/setup">Target Android</a>
+          <a class="text-button" href="/platform-integration/android/setup">Ter como alvo Android</a>
         </li>
         <li class="macos-only">
-          <a class="text-button" href="/platform-integration/ios/setup">Target iOS</a>
+          <a class="text-button" href="/platform-integration/ios/setup">Ter como alvo iOS</a>
         </li>
         <li class="macos-only">
-          <a class="text-button" href="/platform-integration/macos/setup">Target macOS</a>
+          <a class="text-button" href="/platform-integration/macos/setup">Ter como alvo macOS</a>
         </li>
         <li class="windows-only">
-          <a class="text-button" href="/platform-integration/windows/setup">Target Windows</a>
+          <a class="text-button" href="/platform-integration/windows/setup">Ter como alvo Windows</a>
         </li>
         <li class="linux-only">
-          <a class="text-button" href="/platform-integration/linux/setup">Target Linux</a>
+          <a class="text-button" href="/platform-integration/linux/setup">Ter como alvo Linux</a>
         </li>
       </ul>
     </div>
@@ -269,21 +270,21 @@ the Flutter team recommends you first try out
 
   <div class="card filled-card list-card">
     <div class="card-leading">
-      <img src="/assets/images/decorative/pointing-the-way.png" height="160" aria-hidden="true" alt="Dash helping you explore Flutter learning resources.">
+      <img src="/assets/images/decorative/pointing-the-way.png" height="160" aria-hidden="true" alt="Dash ajudando você a explorar recursos de aprendizado do Flutter.">
     </div>
     <div class="card-header">
-      <span class="card-title">Learn Flutter development</span>
+      <span class="card-title">Aprenda desenvolvimento Flutter</span>
     </div>
     <div class="card-content">
       <ul>
         <li>
-          <a class="text-button" href="/get-started/codelab">Write your first app</a>
+          <a class="text-button" href="/get-started/codelab">Escreva seu primeiro aplicativo</a>
         </li>
         <li>
-          <a class="text-button" href="/get-started/fundamentals">Learn the fundamentals</a>
+          <a class="text-button" href="/get-started/fundamentals">Aprenda os fundamentos</a>
         </li>
         <li>
-          <a class="text-button" href="https://www.youtube.com/watch?v=b_sQ9bMltGU&list=PLjxrf2q8roU23XGwz3Km7sQZFTdB996iG">Explore Flutter widgets</a>
+          <a class="text-button" href="https://www.youtube.com/watch?v=b_sQ9bMltGU&list=PLjxrf2q8roU23XGwz3Km7sQZFTdB996iG">Explore widgets Flutter</a>
         </li>
       </ul>
     </div>
@@ -291,21 +292,21 @@ the Flutter team recommends you first try out
 
   <div class="card filled-card list-card">
     <div class="card-leading">
-      <img src="/assets/images/decorative/up-to-date.png" height="160" aria-hidden="true" alt="Keep up to date with Flutter">
+      <img src="/assets/images/decorative/up-to-date.png" height="160" aria-hidden="true" alt="Mantenha-se atualizado com o Flutter">
     </div>
     <div class="card-header">
-      <span class="card-title">Stay up to date with Flutter</span>
+      <span class="card-title">Mantenha-se atualizado com o Flutter</span>
     </div>
     <div class="card-content">
       <ul>
         <li>
-          <a class="text-button" href="/install/upgrade">Update Flutter</a>
+          <a class="text-button" href="/install/upgrade">Atualizar o Flutter</a>
         </li>
         <li>
-          <a class="text-button" href="/release/release-notes">Find out what's new</a>
+          <a class="text-button" href="/release/release-notes">Descubra o que há de novo</a>
         </li>
         <li>
-          <a class="text-button" href="{{site.social.youtube}}">Subscribe on YouTube</a>
+          <a class="text-button" href="{{site.social.youtube}}">Inscreva-se no YouTube</a>
         </li>
       </ul>
     </div>

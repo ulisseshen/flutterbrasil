@@ -1,64 +1,68 @@
-:::note
-The following steps assume you're
-using the [default shell][zsh-mac] on macOS, Zsh.
+---
+ia-translate: true
+---
 
-If you use another shell besides Zsh,
-check out [this tutorial on setting your PATH][other-path].
+:::note
+Os passos a seguir assumem que você está
+usando o [shell padrão][zsh-mac] no macOS, Zsh.
+
+Se você usar outro shell além de Zsh,
+confira [este tutorial sobre como definir seu PATH][other-path].
 :::
 
- 1. <h3>Determine your Flutter SDK installation location</h3>
+ 1. <h3>Determine a localização de instalação do Flutter SDK</h3>
 
-    Copy the absolute path to the directory that you
-    downloaded and extracted the Flutter SDK into.
+    Copie o caminho absoluto do diretório em que você
+    baixou e extraiu o Flutter SDK.
 
- 1. <h3>Open or create the Zsh environment variable file</h3>
+ 1. <h3>Abra ou crie o arquivo de variável de ambiente do Zsh</h3>
 
-    If it exists, open the [Zsh environment variable file][zsh-files]
-    `~/.zprofile` in your preferred text editor.
-    If it doesn't exist, create the `~/.zprofile` file.
+    Se existir, abra o [arquivo de variável de ambiente do Zsh][zsh-files]
+    `~/.zprofile` no seu editor de texto preferido.
+    Se não existir, crie o arquivo `~/.zprofile`.
 
- 1. <h3>Add the Flutter SDK bin to your path</h3>
+ 1. <h3>Adicione o bin do Flutter SDK ao seu caminho</h3>
 
-    At the end of your `~/.zprofile` file,
-    use the built-in `export` command to update the `PATH` variable
-    to include the `bin` directory of your Flutter installation.
+    No final do seu arquivo `~/.zprofile`,
+    use o comando `export` incorporado para atualizar a variável `PATH`
+    para incluir o diretório `bin` da sua instalação do Flutter.
 
-    Replace `<path-to-sdk>` with the path to your Flutter SDK installation.
+    Substitua `<path-to-sdk>` pelo caminho para sua instalação do Flutter SDK.
 
     ```bash
     export PATH="<path-to-sdk>/bin:$PATH"
     ```
 
-    For example, if you downloaded Flutter into a
-    `develop/flutter` folder inside your user directory,
-    you'd add the following to the file:
+    Por exemplo, se você baixou o Flutter em uma
+    pasta `develop/flutter` dentro do seu diretório de usuário,
+    você adicionaria o seguinte ao arquivo:
 
     ```bash
     export PATH="$HOME/develop/flutter/bin:$PATH"
     ```
 
- 1. <h3>Save your changes</h3>
+ 1. <h3>Salve suas alterações</h3>
 
-    Save, then close, the `~/.zprofile` file you edited.
+    Salve e feche o arquivo `~/.zprofile` que você editou.
 
- 1. <h3>Apply your changes</h3>
+ 1. <h3>Aplique suas alterações</h3>
 
-    To apply this change and get access to the `flutter` tool,
-    close and reopen all open Zsh sessions in your terminal apps and IDEs.
+    Para aplicar essa mudança e obter acesso à ferramenta `flutter`,
+    feche e reabra todas as sessões Zsh abertas em seus aplicativos de terminal e IDEs.
 
- 1. <h3>Validate your setup</h3>
+ 1. <h3>Valide sua configuração</h3>
 
-    To ensure you successfully added the SDK to your `PATH`,
-    open a Zsh session in your preferred terminal,
-    then try running the `flutter` and `dart` tools.
+    Para garantir que você adicionou com sucesso o SDK ao seu `PATH`,
+    abra uma sessão Zsh no seu terminal preferido,
+    e tente executar as ferramentas `flutter` e `dart`.
 
     ```console
     $ flutter --version
     $ dart --version
     ```
 
-    If either command isn't found,
-    check out [Flutter installation troubleshooting][troubleshoot].
+    Se algum comando não for encontrado,
+    confira [Solução de problemas de instalação do Flutter][troubleshoot].
 
 {: .steps}
 

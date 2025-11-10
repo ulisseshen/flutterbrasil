@@ -1,22 +1,23 @@
 ---
-title: Docs command-line tool
-shortTitle: Tool
+ia-translate: true
+title: Ferramenta de linha de comando do Docs
+shortTitle: Ferramenta
 description: >-
-  Learn about the dash_site CLI tool that is used to
-  develop, test, and serve the Dart and Flutter documentation sites.
+  Aprenda sobre a ferramenta CLI dash_site que é usada para
+  desenvolver, testar e servir os sites de documentação do Dart e Flutter.
 sitemap: false
 noindex: true
 showBreadcrumbs: true
 ---
 
 :::warning
-This document is a work in progress.
+Este documento é um trabalho em progresso.
 :::
 
-The site's CLI tool can be accessed by running
-`dart run dash_site` in the repository's root directory.
+A ferramenta CLI do site pode ser acessada executando
+`dart run dash_site` no diretório raiz do repositório.
 
-## Commands
+## Comandos
 
 ### `analyze-dart`
 

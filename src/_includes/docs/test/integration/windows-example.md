@@ -1,3 +1,7 @@
+---
+ia-translate: true
+---
+
 ```ps
 PS C:\path\to\counter_app> flutter test .\integration_test\app_test.dart
 Resolving dependencies...

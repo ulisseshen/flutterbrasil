@@ -1,5 +1,9 @@
+---
+ia-translate: true
+---
+
 :::note
-This codelab uses embedded DartPads to display examples and exercises.
-If you see empty boxes instead of DartPads, check out
+Este codelab usa DartPads incorporados para exibir exemplos e exercícios.
+Se você vir caixas vazias em vez de DartPads, consulte
 [Troubleshooting DartPad]({{site.dart-site}}/tools/dartpad/troubleshoot).
 :::

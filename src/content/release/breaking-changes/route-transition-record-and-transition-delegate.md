@@ -1,50 +1,51 @@
 ---
-title: Route transition record and transition delegate updates
+ia-translate: true
+title: Atualizações de registro de transição de rota e delegado de transição
 description: >
-  Changes to the rule on how transition delegate resolve route transition.
+  Mudanças na regra de como o delegado de transição resolve a transição de rota.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-A new boolean getter `isWaitingForExitingDecision` was added
-to the route transition record and the `isEntering` getter
-was renamed to `isWaitingForEnteringDecision`.
-In the `resolve()` method for the transition delegate,
-use the `isWaitingForExitingDecision` to check if an exiting
-route actually needs an explicit decision on how to transition
-off the screen. If you try to make a decision for an existing route
-that _isn't_ waiting for a decision, Flutter throws an assertion error.
+Um novo getter booleano `isWaitingForExitingDecision` foi adicionado
+ao registro de transição de rota e o getter `isEntering`
+foi renomeado para `isWaitingForEnteringDecision`.
+No método `resolve()` para o delegado de transição,
+use o `isWaitingForExitingDecision` para verificar se uma rota de saída
+realmente precisa de uma decisão explícita sobre como fazer a transição
+para fora da tela. Se você tentar tomar uma decisão para uma rota existente
+que _não_ está esperando por uma decisão, Flutter lança um erro de asserção.
 
-## Context
+## Contexto
 
-When the navigator receives a new list of pages, it tries to update its
-current routes stack to match the list. However, it requires explicit
-decisions on how to transition the route on and off the screen.
-Previously, routes that were not in the new list required decisions
-on how to transition off the screen. However, we later found out
-this is not always true. If a route is popped,
-but is still waiting for the popping animation to finish,
-this route would sit in the navigator routes stack until
-the animation was done. If a page update occurred during this time,
-this route exits but doesn't require a decision
-on how to transition off the screen. Therefore,
-`isWaitingForExitingDecision` was added to cover that case.
+Quando o navigator recebe uma nova lista de páginas, ele tenta atualizar sua
+pilha de rotas atual para corresponder à lista. No entanto, ele requer decisões
+explícitas sobre como fazer a transição da rota para dentro e para fora da tela.
+Anteriormente, rotas que não estavam na nova lista exigiam decisões
+sobre como fazer a transição para fora da tela. No entanto, descobrimos mais tarde
+que isso nem sempre é verdade. Se uma rota é removida com pop,
+mas ainda está esperando a animação de pop terminar,
+essa rota ficaria na pilha de rotas do navigator até
+que a animação fosse concluída. Se uma atualização de página ocorresse durante esse tempo,
+essa rota sai mas não requer uma decisão
+sobre como fazer a transição para fora da tela. Portanto,
+`isWaitingForExitingDecision` foi adicionado para cobrir esse caso.
 
-The `isEntering` getter is also renamed to
-`isWaitingForEnteringDecision` to be more descriptive,
-and also to make the naming more consistent.
+O getter `isEntering` também foi renomeado para
+`isWaitingForEnteringDecision` para ser mais descritivo,
+e também para tornar a nomenclatura mais consistente.
 
-## Migration guide
+## Guia de migração
 
-If you implement your own transition delegate, you need to check the
-exiting routes using the getter `isWaitingForExitingDecision` before you
-call `markForPop`, `markForComplete`, or `markForRemove` on them.
-You also need to rename all the references from `isEntering` to
+Se você implementar seu próprio delegado de transição, você precisa verificar as
+rotas de saída usando o getter `isWaitingForExitingDecision` antes de
+chamar `markForPop`, `markForComplete`, ou `markForRemove` nelas.
+Você também precisa renomear todas as referências de `isEntering` para
 `isWaitingForEnteringDecision`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 import 'package:flutter/widgets.dart';
@@ -81,7 +82,7 @@ class NoAnimationTransitionDelegate extends TransitionDelegate<void> {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 import 'package:flutter/widgets.dart';
@@ -122,27 +123,27 @@ class NoAnimationTransitionDelegate extends TransitionDelegate<void> {
 }
 ```
 
-## Timeline
+## Cronograma
 
 Landed in version: 1.18.0<br>
 In stable release: 1.20
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
-* [`Navigator`][]
-* [`TransitionDelegate`][]
-* [`RouteTransitionRecord`][]
+* [`Navigator`][`Navigator`]
+* [`TransitionDelegate`][`TransitionDelegate`]
+* [`RouteTransitionRecord`][`RouteTransitionRecord`]
 
-Relevant issue:
+Issue relevante:
 
-* [Issue 45938: Navigator 2.0][]
+* [Issue 45938: Navigator 2.0][Issue 45938: Navigator 2.0]
 
-Relevant PR:
+PR relevante:
 
-* [PR 55998][]: Fixes the navigator pages update crash
-  when there is still a route waiting
+* [PR 55998][PR 55998]: Corrige a falha de atualização de páginas do navigator
+  quando ainda há uma rota esperando
 
 
 [Issue 45938: Navigator 2.0]: {{site.repo.flutter}}/issues/45938

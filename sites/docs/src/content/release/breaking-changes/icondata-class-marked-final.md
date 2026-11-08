@@ -1,52 +1,53 @@
 ---
-title: IconData class marked as final
+ia-translate: true
+title: Classe IconData marcada como final
 description: >-
-  The IconData class is now marked as final,
-  preventing it from being extended or implemented.
+  A classe IconData agora é marcada como final,
+  impedindo que seja estendida ou implementada.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-The `IconData` class is now marked as [`final`][],
-which prevents it from being implemented or extended.
-This change is part of an effort to generalize the
-mechanism for tree-shaking assets and native code.
+A classe `IconData` agora é marcada como [`final`][],
+o que impede que seja implementada ou estendida.
+Essa mudança faz parte de um esforço para generalizar o
+mecanismo de tree-shaking de assets e código nativo.
 
 [`final`]: {{site.dart-site}}/language/class-modifiers#final
 
-## Background
+## Contexto {:#background}
 
-The Flutter team is working on a generalized mechanism to
-bring tree-shaking of assets and native code to packages.
-The existing bespoke Icon Tree Shaker is
-being folded into this general mechanism.
+A equipe do Flutter está trabalhando em um mecanismo generalizado para
+trazer o tree-shaking de assets e código nativo para pacotes.
+O Icon Tree Shaker específico existente
+está sendo incorporado a esse mecanismo geral.
 
-For performance, locality, and understandability, the general mechanism doesn't
-support recording `const` instances in complex type hierarchies.
-Therefore, the `IconData` class is now marked as `final`.
+Por questões de desempenho, localidade e compreensibilidade, o mecanismo geral não
+oferece suporte ao registro de instâncias `const` em hierarquias de tipos complexas.
+Por isso, a classe `IconData` agora é marcada como `final`.
 
-Code that implements or extends `IconData` now
-fails to compile with the following error:
+Código que implementa ou estende `IconData` agora
+falha na compilação com o seguinte erro:
 
 ```text
 The class 'IconData' is 'final' and can't be extended or implemented outside of its library.
 ```
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-Instead of implementing `IconData`,
-such as with an `enum` that supports dot shorthand,
-type safety, and an automated `.values` list,
-use a wrapper class with `static const` instances.
+Em vez de implementar `IconData`,
+como com um `enum` que oferece suporte a dot shorthand,
+segurança de tipos e uma lista `.values` automatizada,
+use uma classe wrapper com instâncias `static const`.
 
-### Migrating custom icon types
+### Migrando tipos de ícone personalizados {:#migrating-custom-icon-types}
 
-If you used an `enum` that implements `IconData`,
-migrate to a class with `static const` instances and a custom widget.
+Se você usava um `enum` que implementa `IconData`,
+migre para uma classe com instâncias `static const` e um widget personalizado.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 enum AppIcons implements IconData {
@@ -74,10 +75,10 @@ Widget build(BuildContext context) {
 }
 ```
 
-To maintain dot shorthand support and type safety,
-use a wrapper class and a custom widget.
+Para manter o suporte a dot shorthand e a segurança de tipos,
+use uma classe wrapper e um widget personalizado.
 
-Code after migration:
+Código após a migração:
 
 ```dart
 final class AppIconData {
@@ -112,35 +113,35 @@ Widget build(BuildContext context) {
 }
 ```
 
-If you rely on `.values` for tools like Widgetbook,
-you can maintain the `values` list manually as shown in
-the previous example or use code generation.
+Se você depende de `.values` para ferramentas como o Widgetbook,
+pode manter a lista `values` manualmente, como no
+exemplo anterior, ou usar geração de código.
 
-### Ignore the `mustBeConst` lint
+### Ignore o lint `mustBeConst` {:#ignore-the-mustbeconst-lint}
 
-To enable tree-shaking, some `IconData` parameters are
-marked with the `mustBeConst` annotation.
-If you must use a non-const `IconData` and
-are willing to forgo tree-shaking for that icon,
-add an ignore comment for the lint.
+Para habilitar o tree-shaking, alguns parâmetros de `IconData` são
+marcados com a anotação `mustBeConst`.
+Se você precisar usar um `IconData` não const e
+estiver disposto a abrir mão do tree-shaking para esse ícone,
+adicione um comentário de ignorar para o lint.
 
 ```dart
 // ignore: non_const_argument_for_const_parameter
 Icon(myDynamicIconData);
 ```
 
-## Timeline
+## Linha do tempo {:#timeline}
 
-Landed in version: 3.44.0-0.1.pre<br>
-In stable release: 3.44
+Incluído na versão: 3.44.0-0.1.pre<br>
+Na versão estável: 3.44
 
-## References
+## Referências {:#references}
 
-Relevant PR:
+PR relevante:
 
 * [Mark `IconData` `final` and `@mustBeConst`][pr-181345]
 
-Relevant issues:
+Issues relevantes:
 
 * [Breaking Change: Marking `class IconData` as `final`][issue-181342]
 * [Marking `IconData`'s constructor parameters as `@mustBeConst`][issue-181344]

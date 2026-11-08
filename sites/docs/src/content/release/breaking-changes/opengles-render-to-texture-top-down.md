@@ -1,46 +1,46 @@
 ---
-title: OpenGL ES render-to-texture content is stored top-down
+ia-translate: true
+title: O conteúdo de render-to-texture do OpenGL ES é armazenado de cima para baixo
 description: >-
-  Impeller's OpenGL ES backend now stores render-to-texture content
-  top-down, matching Metal and Vulkan, which can affect fragment shaders
-  and Flutter GPU apps that compensated for the previous bottom-up
-  orientation.
+  O backend OpenGL ES do Impeller agora armazena o conteúdo de render-to-texture
+  de cima para baixo, igual ao Metal e ao Vulkan, o que pode afetar fragment shaders
+  e apps do Flutter GPU que compensavam a orientação anterior de baixo para cima.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-Impeller's OpenGL ES backend now stores render-to-texture content
-top-down, the same as the Metal and Vulkan backends.
-A fragment shader or Flutter GPU app that sampled a render-target texture
-on OpenGL ES and added a vertical flip to compensate for the old
-bottom-up orientation now renders that content upside down.
+O backend OpenGL ES do Impeller agora armazena o conteúdo de render-to-texture
+de cima para baixo, da mesma forma que os backends Metal e Vulkan.
+Um fragment shader ou um app do Flutter GPU que amostrava uma textura de render target
+no OpenGL ES e adicionava um espelhamento vertical para compensar a
+orientação antiga de baixo para cima agora renderiza esse conteúdo de cabeça para baixo.
 
-## Background
+## Contexto {:#background}
 
-The OpenGL ES backend previously stored render-to-texture content
-bottom-up, unlike the Metal and Vulkan backends.
-The renderer carried that orientation difference through every texture
-sample as a per-sampler Y-coordinate scale.
-Impeller now absorbs the difference once, at the vertex stage, so
-render-target textures are stored top-down on every backend.
+O backend OpenGL ES armazenava anteriormente o conteúdo de render-to-texture de baixo para cima,
+diferente dos backends Metal e Vulkan.
+O renderizador carregava essa diferença de orientação em cada amostragem de textura
+como uma escala da coordenada Y por sampler.
+Agora o Impeller absorve a diferença uma única vez, no estágio de vértice, de modo que
+as texturas de render target são armazenadas de cima para baixo em todos os backends.
 
-This change is invisible to the framework and to Flutter's 2D rendering.
-Application code can only observe the old orientation through the
-`FragmentShader` API and through Flutter GPU,
-the experimental `flutter_gpu` package,
-where a shader samples a render-target texture directly.
+Essa mudança é invisível para o framework e para a renderização 2D do Flutter.
+O código do aplicativo só pode observar a orientação antiga pela
+API `FragmentShader` e pelo Flutter GPU,
+o pacote experimental `flutter_gpu`,
+em que um shader amostra uma textura de render target diretamente.
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-Shaders written for OpenGL ES often flipped the
-Y coordinate inside an `IMPELLER_TARGET_OPENGLES` block to make
-render-target textures match the other backends.
-Render-target textures are now top-down on every backend,
-so that flip is no longer needed.
+Shaders escritos para OpenGL ES frequentemente invertiam a
+coordenada Y dentro de um bloco `IMPELLER_TARGET_OPENGLES` para que as
+texturas de render target coincidissem com os outros backends.
+As texturas de render target agora são de cima para baixo em todos os backends,
+então essa inversão não é mais necessária.
 
-Code before migration:
+Código antes da migração:
 
 ```glsl
 void main() {
@@ -52,10 +52,10 @@ void main() {
 }
 ```
 
-If the shader only needs to run on a Flutter release that
-includes this change, remove the flip.
+Se o shader precisa rodar apenas em uma versão do Flutter que
+inclua essa mudança, remova a inversão.
 
-Code after migration:
+Código após a migração:
 
 ```glsl
 void main() {
@@ -64,10 +64,10 @@ void main() {
 }
 ```
 
-To keep one source working across releases, guard the flip with the
-`IMPELLER_OPENGLES_UNFLIPPED_DEPRECATED` macro.
-That macro is only defined on releases that store render-target textures
-top-down, so the flip still runs on older releases that need it.
+Para manter um único código-fonte funcionando em várias versões, proteja a inversão com a
+macro `IMPELLER_OPENGLES_UNFLIPPED_DEPRECATED`.
+Essa macro só é definida em versões que armazenam as texturas de render target
+de cima para baixo, então a inversão continua sendo executada nas versões antigas que precisam dela.
 
 ```glsl
 void main() {
@@ -79,18 +79,18 @@ void main() {
 }
 ```
 
-## Timeline
+## Linha do tempo {:#timeline}
 
-Landed in version: 3.46.0-0.1.pre<br>
-In stable release: 3.47
+Incluído na versão: 3.46.0-0.1.pre<br>
+Na versão estável: 3.47
 
-## References
+## Referências {:#references}
 
-GitHub issue:
+Issue no GitHub:
 
 * [Issue 186554][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [PR 186556][]
 * [PR 187316][]

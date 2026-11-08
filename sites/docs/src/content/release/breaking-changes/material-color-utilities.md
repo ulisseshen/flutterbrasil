@@ -1,27 +1,28 @@
 ---
-title: Material Color Utilities update in Flutter
+ia-translate: true
+title: Atualização do Material Color Utilities no Flutter
 description: >-
-  The latest Material Color Utilities have been
-  applied to the Flutter Material library.
+  As versões mais recentes do Material Color Utilities foram
+  aplicadas à biblioteca Material do Flutter.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-This release updates `package:material_color_utilities` from
-`v0.11.1` to `0.13.0`.
-This updated package includes algorithm changes that
-align with the [Material 3 tokens update][].
+Esta versão atualiza o `package:material_color_utilities` de
+`v0.11.1` para `0.13.0`.
+Este pacote atualizado inclui mudanças de algoritmo que
+alinham com a [atualização de tokens do Material 3][Material 3 tokens update].
 
-The algorithm changes affect the same properties:
+As mudanças de algoritmo afetam as mesmas propriedades:
 
 * `onPrimaryContainer`
 * `onSecondaryContainer`
 * `onTertiaryContainer`
 * `onErrorContainer`
 
-The changes will be reflected when generating a scheme using
+As mudanças serão refletidas ao gerar um esquema usando
 
 * `ColorScheme.fromSeed`
 * `ColorScheme.fromImageProvider`
@@ -29,20 +30,20 @@ The changes will be reflected when generating a scheme using
 
 [Material 3 tokens update]: /release/breaking-changes/material-design-3-token-update
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-In general, we believe the colors generated will be more legible and visually
-appealing, but if you want to maintain the previous colors when upgrading,
-you will have to manually set those properties to their desired color after
-generating.
+De modo geral, acreditamos que as cores geradas serão mais legíveis e visualmente
+agradáveis, mas, se você quiser manter as cores anteriores ao atualizar,
+terá que definir manualmente essas propriedades com a cor desejada após
+a geração.
 
-## Timeline
+## Linha do tempo {:#timeline}
 
-Landed in version: 3.39.0-1.0.pre-250<br>
-In stable release: 3.41
+Incluído na versão: 3.39.0-1.0.pre-250<br>
+Na versão estável: 3.41
 
-## References
+## Referências {:#references}
 
-* [Manually roll material_color_utilities][]
+* [Atualize manualmente o material_color_utilities][Manually roll material_color_utilities]
 
 [Manually roll material_color_utilities]: {{site.repo.flutter}}/pull/170000

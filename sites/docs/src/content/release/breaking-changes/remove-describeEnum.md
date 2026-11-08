@@ -1,26 +1,27 @@
 ---
+ia-translate: true
 title: Remove describeEnum
 description: >-
-  The `describeEnum` method has been removed from the Flutter framework.
-  Since Dart 2.14, enums have a `name` getter that does the same thing.
+  O método `describeEnum` foi removido do framework Flutter.
+  Desde o Dart 2.14, os enums têm um getter `name` que faz a mesma coisa.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-The `describeEnum` method has been removed from the framework because it's redundant with the `name`
-getter on `Enum` which was introduced in `Dart 2.14`.
+O método `describeEnum` foi removido do framework porque é redundante com o getter `name`
+de `Enum`, introduzido no `Dart 2.14`.
 
-## Context
+## Contexto {:#context}
 
-Historically, Flutter used `describeEnum` to return a `String` description of an enum value.
-This became redundant when the `name` getter of `Enum` was introduced in `Dart 2.14`.
+Historicamente, o Flutter usava `describeEnum` para retornar uma descrição `String` de um valor de enum.
+Isso se tornou redundante quando o getter `name` de `Enum` foi introduzido no `Dart 2.14`.
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-If your code previously used the `describeEnum` method to get the value name of an enum member,
-migrate your code to use the `name` getter on the instance itself.
+Se o seu código usava anteriormente o método `describeEnum` para obter o nome do valor de um membro de enum,
+migre o código para usar o getter `name` da própria instância.
 
 ```dart diff
   enum Theme { light, dark }
@@ -31,22 +32,22 @@ migrate your code to use the `name` getter on the instance itself.
 ```
 
 :::important
-This migration isn't supported by `dart fix`.
+Esta migração não é suportada pelo `dart fix`.
 :::
 
-## Timeline
+## Linha do tempo {:#timeline}
 
-Landed in version: TBD<br>
-In stable release: TBD
+Incluído na versão: TBD<br>
+Na versão estável: TBD
 
-## References
+## Referências {:#references}
 
-API documentation:
+Documentação da API:
 
 * [`enums`][]
 
 
-Relevant PRs:
+PRs relevantes:
 
 * [PR 94496][]
 * [PR 190076][]
@@ -54,5 +55,4 @@ Relevant PRs:
 [`enums`]: {{site.dart-site}}/language/enums
 [PR 94496]: {{site.repo.flutter}}/pull/94496
 [PR 190076]: {{site.repo.flutter}}/pull/190076
-
 

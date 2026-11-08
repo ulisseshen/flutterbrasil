@@ -1,193 +1,194 @@
 ---
-title: Restrict Android engine flags in release mode
+ia-translate: true
+title: Restringe flags do engine Android em modo release
 description: >-
-  Passing engine configuration flags to Android release binaries using
-  Android `Intent` extras or `--use-application-binary` is no longer supported.
+  Passar flags de configuração do engine para binários Android de release usando
+  extras de `Intent` do Android ou `--use-application-binary` não é mais suportado.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-Previously, the Flutter Android embedding accepted engine configuration flags
-(such as `--dart-flags`, `--route`, or tracing flags)
-at launch time through Android `Intent` extras in all build modes.
-This mechanism allowed developers and tools—including the Flutter CLI
-when using `--use-application-binary`—to dynamically configure
-running applications without modifying their source code or manifest.
+Anteriormente, o embedding Android do Flutter aceitava flags de configuração do engine
+(como `--dart-flags`, `--route` ou flags de tracing)
+no momento de inicialização, por meio de extras de `Intent` do Android, em todos os modos de build.
+Esse mecanismo permitia que desenvolvedores e ferramentas&mdash;incluindo a CLI do Flutter
+ao usar `--use-application-binary`&mdash;configurassem dinamicamente
+apps em execução sem modificar o código-fonte ou o manifesto.
 
-To protect production applications against `Intent`-based spoofing
-and parameter injection vulnerabilities,
-Flutter Android release builds now ignore engine configuration flags
-passed through `Intent` extras,
-reading engine configuration strictly from the compiled `AndroidManifest.xml`
-or from programmatic configuration prior to engine initialization.
+Para proteger apps de produção contra ataques de spoofing via `Intent`
+e de injeção de parâmetros,
+os builds Android de release do Flutter agora ignoram flags de configuração do engine
+passadas por extras de `Intent`,
+lendo a configuração do engine estritamente do `AndroidManifest.xml` compilado
+ou de configuração programática antes da inicialização do engine.
 
-This change impacts workflows in two ways:
+Esta mudança afeta os fluxos de trabalho de duas formas:
 
-- **Direct `Intent` launches:**
-  Passing engine configuration flags through `Intent` extras
-  (such as through `adb shell am start` or native Android code)
-  is ignored by the embedding in release builds.
-- **Flutter CLI prebuilt binaries:**
-  Because prebuilt binaries cannot have their manifests dynamically modified
-  after compilation, the Flutter CLI now produces a fatal error
-  if you pass engine configuration flags to a prebuilt release binary
-  with `flutter run --release --use-application-binary`.
-  This prevents flags from being silently ignored.
+- **Inicializações diretas via `Intent`:**
+  Passar flags de configuração do engine por extras de `Intent`
+  (como por meio de `adb shell am start` ou código Android nativo)
+  é ignorado pelo embedding em builds de release.
+- **Binários pré-compilados da CLI do Flutter:**
+  Como binários pré-compilados não podem ter seus manifestos modificados
+  dinamicamente após a compilação, a CLI do Flutter agora gera um erro fatal
+  se você passar flags de configuração do engine para um binário de release pré-compilado
+  com `flutter run --release --use-application-binary`.
+  Isso evita que as flags sejam ignoradas silenciosamente.
 
-Standard release builds
-(where the CLI compiles the app with Gradle and injects flags into the manifest)
-and all debug and profile workflows continue to work without changes.
+Builds de release padrão
+(em que a CLI compila o app com o Gradle e injeta as flags no manifesto)
+e todos os fluxos de debug e profile continuam funcionando sem alterações.
 
-## Context
+## Contexto {:#context}
 
-The Flutter engine accepts configuration flags
-(such as `--dart-flags`, `--route`, or `--trace-startup`)
-to configure runtime behavior when running or driving an application.
-Historically, the Flutter Android embedding accepted these flags at runtime
-through [`Intent`][] extras.
-Both developers (using `adb shell am start` or native code)
-and the Flutter CLI (via `adb`) relied on `Intent` extras
-to pass flags to running apps.
+O engine do Flutter aceita flags de configuração
+(como `--dart-flags`, `--route` ou `--trace-startup`)
+para configurar o comportamento em tempo de execução ao rodar ou dirigir um app.
+Historicamente, o embedding Android do Flutter aceitava essas flags em tempo de execução
+por meio de extras de [`Intent`][].
+Tanto os desenvolvedores (usando `adb shell am start` ou código nativo)
+quanto a CLI do Flutter (via `adb`) dependiam de extras de `Intent`
+para passar flags para apps em execução.
 
-However, runtime `Intent` extras on Android can be spoofed or intercepted
-by other applications on a user's device.
-Allowing arbitrary engine flags in production builds presents
-security vulnerabilities, such as dynamic parameter injection attacks
-(for example, spoofing `--aot-shared-library-name`).
+No entanto, extras de `Intent` em tempo de execução no Android podem sofrer spoofing
+ou ser interceptados por outros apps no dispositivo do usuário.
+Permitir flags arbitrárias do engine em builds de produção apresenta
+vulnerabilidades de segurança, como ataques de injeção dinâmica de parâmetros
+(por exemplo, o spoofing de `--aot-shared-library-name`).
 
-To harden production applications, Flutter establishes
-a build-mode-specific trust boundary:
+Para reforçar os apps de produção, o Flutter estabelece
+uma fronteira de confiança específica para cada modo de build:
 
-- **Release mode:**
-  Production application boundaries are treated as immutable.
-  The Android embedding ignores engine configuration flags passed
-  through `Intent` extras and logs a warning.
-  Release builds read configuration strictly from a signed
-  `AndroidManifest.xml` or from programmatic setup before engine startup.
-- **Debug and profile modes:**
-  Dynamic `Intent` flag support is intentionally maintained
-  to preserve developer velocity, dynamic benchmarking,
-  and local testing workflows.
+- **Modo release:**
+  Os limites dos apps de produção são tratados como imutáveis.
+  O embedding Android ignora flags de configuração do engine passadas
+  por extras de `Intent` e registra um aviso.
+  Builds de release leem a configuração estritamente de um `AndroidManifest.xml`
+  assinado ou de configuração programática antes da inicialização do engine.
+- **Modos debug e profile:**
+  O suporte dinâmico a flags via `Intent` é mantido intencionalmente
+  para preservar a agilidade do desenvolvedor, benchmarks dinâmicos
+  e fluxos de testes locais.
 
-For release builds of standard Gradle-based projects,
-the Flutter CLI automatically injects command-line flags
-into `AndroidManifest.xml` during compilation.
-When you use a prebuilt release binary with `--use-application-binary`,
-the CLI cannot modify the compiled manifest,
-and the binary ignores runtime `Intent` flags.
-To prevent tests or scripts from running with unnoticed configuration failures,
-the CLI reports a fatal error.
+Para builds de release de projetos Gradle padrão,
+a CLI do Flutter injeta automaticamente flags de linha de comando
+no `AndroidManifest.xml` durante a compilação.
+Quando você usa um binário de release pré-compilado com `--use-application-binary`,
+a CLI não consegue modificar o manifesto compilado,
+e o binário ignora as flags de `Intent` em tempo de execução.
+Para evitar que testes ou scripts rodem com falhas de configuração não percebidas,
+a CLI reporta um erro fatal.
 
-Similarly, any automated scripts, test runners, or host applications
-that directly construct Android `Intent`s with configuration extras
-will find those flags ignored when launching a release binary.
+Da mesma forma, quaisquer scripts automatizados, executores de testes ou apps hospedeiros
+que construam diretamente `Intent`s do Android com extras de configuração
+verão essas flags serem ignoradas ao iniciar um binário de release.
 
 [`Intent`]: https://developer.android.com/reference/android/content/Intent
 
-## Description of change
+## Descrição da mudança {:#description-of-change}
 
-### Android embedding behavior
+### Comportamento do embedding Android
 
-The Flutter Android embedding enforces the following behavior
-when receiving engine configuration flags through Android `Intent` extras
-(such as from `adb shell am start` or native `Intent.putExtra()` calls):
+O embedding Android do Flutter aplica o seguinte comportamento
+ao receber flags de configuração do engine por extras de `Intent` do Android
+(como de `adb shell am start` ou de chamadas nativas a `Intent.putExtra()`):
 
-| Build mode | Intent extras behavior | Notes |
+| Modo de build | Comportamento dos extras de `Intent` | Observações |
 | :--- | :--- | :--- |
-| **Debug / Profile** | Accepted and parsed | Flags apply dynamically at launch time. |
-| **Release** | **Ignored** | The embedding logs a warning and discards all engine configuration flags received from `Intent` extras. |
+| **Debug / Profile** | Aceitos e interpretados | As flags são aplicadas dinamicamente na inicialização. |
+| **Release** | **Ignorados** | O embedding registra um aviso e descarta todas as flags de configuração do engine recebidas por extras de `Intent`. |
 
-In addition, the internal interface method
-`FlutterActivityAndFragmentDelegate.Host.getFlutterShellArgs` is deprecated
-in favor of `getFlutterEngineFlags()`.
+Além disso, o método de interface interno
+`FlutterActivityAndFragmentDelegate.Host.getFlutterShellArgs` foi descontinuado
+em favor de `getFlutterEngineFlags()`.
 
-### Flutter CLI behavior
+### Comportamento da CLI do Flutter
 
-The Flutter CLI enforces the following behavior
-when running Flutter apps on Android:
+A CLI do Flutter aplica o seguinte comportamento
+ao executar apps Flutter no Android:
 
-| Build mode | Using `--use-application-binary` | CLI behavior | Notes |
+| Modo de build | Usando `--use-application-binary` | Comportamento da CLI | Observações |
 | :--- | :--- | :--- | :--- |
-| **Debug / Profile** | Yes | Passes flags to binary through `adb` | No rebuild required; flags apply at runtime. |
-| **Debug / Profile** | No | Builds and passes flags through `adb` | Standard development workflow. |
-| **Release** | Yes | **Fatal error** if configuration flags are provided | Prebuilt release binaries cannot be dynamically configured. |
-| **Release** | No | Injects flags into `AndroidManifest.xml` during compilation | Standard release build workflow. |
+| **Debug / Profile** | Sim | Passa as flags para o binário via `adb` | Não é necessário recompilar; as flags são aplicadas em tempo de execução. |
+| **Debug / Profile** | Não | Compila e passa as flags via `adb` | Fluxo de desenvolvimento padrão. |
+| **Release** | Sim | **Erro fatal** se flags de configuração forem fornecidas | Binários de release pré-compilados não podem ser configurados dinamicamente. |
+| **Release** | Não | Injeta as flags no `AndroidManifest.xml` durante a compilação | Fluxo padrão de build de release. |
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
 :::note
-You are **not affected** and do not need to take action if:
-- You build and run standard release apps with the Flutter CLI
-  (`flutter run --release`, `flutter build apk --release`,
-  or `flutter build appbundle`).
-- You run tests and benchmarks in **debug** or **profile** mode.
-- You use `--use-application-binary` without passing engine configuration flags.
+Você **não é afetado** e não precisa tomar nenhuma ação se:
+- Você compila e executa apps de release padrão com a CLI do Flutter
+  (`flutter run --release`, `flutter build apk --release`
+  ou `flutter build appbundle`).
+- Você executa testes e benchmarks no modo **debug** ou **profile**.
+- Você usa `--use-application-binary` sem passar flags de configuração do engine.
 :::
 
-You are **affected** if:
-- You launch release builds using Android `Intent` extras directly
-  (such as with `adb shell am start` or custom launch intents in native code)
-  to pass engine configuration flags or route arguments.
-- Your CI/CD pipelines, automated scripts, or test runners pass flags
-  to prebuilt release binaries using `--use-application-binary`.
-- You build Flutter Android applications using non-Gradle or hermetic build
-  systems (such as Bazel) and configure release binaries with launch-time flags.
+Você **é afetado** se:
+- Você inicia builds de release diretamente por extras de `Intent` do Android
+  (como com `adb shell am start` ou intents de inicialização personalizadas em código nativo)
+  para passar flags de configuração do engine ou argumentos de rota.
+- Seus pipelines de CI/CD, scripts automatizados ou executores de testes passam flags
+  para binários de release pré-compilados usando `--use-application-binary`.
+- Você compila apps Android com Flutter usando sistemas de build não baseados em Gradle
+  ou herméticos (como o Bazel) e configura binários de release com flags de inicialização.
 
-If your workflows are affected, use one of the following migration paths:
+Se seus fluxos de trabalho forem afetados, use um dos seguintes caminhos de migração:
 
-### Switch testing and benchmarking to profile mode
+### Mude os testes e benchmarks para o modo profile {:#switch-testing-and-benchmarking-to-profile-mode}
 
-If your automated test pipelines, scripts, or benchmarks pass flags
-to release binaries dynamically at launch time:
+Se seus pipelines de teste automatizados, scripts ou benchmarks passam flags
+para binários de release dinamicamente na inicialização:
 
-1.  Switch your test target to **profile mode** (`--profile`).
-    Profile mode mirrors release performance characteristics
-    while retaining support for dynamic runtime flag configuration
-    through `Intent` extras and the Flutter CLI without recompilation.
+1.  Mude o alvo de teste para o **modo profile** (`--profile`).
+    O modo profile espelha as características de desempenho do release
+    e, ao mesmo tempo, mantém o suporte à configuração dinâmica de flags em tempo de execução
+    por meio de extras de `Intent` e da CLI do Flutter, sem recompilação.
 
-### Configure direct Intent launches and hermetic build systems
+### Configure inicializações diretas via Intent e sistemas de build herméticos {:#configure-direct-intent-launches-and-hermetic-build-systems}
 
-If you launch release builds using Android `Intent`s directly
-(for example, via `adb shell am start` or custom test runners),
-or if you build Flutter Android apps with non-Gradle or hermetic build systems
-(such as Bazel) that separate compilation from execution:
+Se você inicia builds de release diretamente por `Intent`s do Android
+(por exemplo, via `adb shell am start` ou executores de testes personalizados),
+ou se você compila apps Android com Flutter usando sistemas de build não baseados em Gradle
+ou herméticos (como o Bazel) que separam a compilação da execução:
 
-1.  **Do not rely on `Intent` extras for release builds.**
-    Any engine flags passed in `Intent` extras to a release binary
-    are silently ignored by the embedding at runtime.
-1.  **Use profile mode for dynamic testing:**
-    For integration tests or performance benchmarks that require
-    varying flags dynamically at launch time, compile and run
-    a **profile** build instead of a release build.
-1.  **Declare flags statically in `AndroidManifest.xml`:**
-    If you must run a release binary with specific engine flags,
-    statically declare those flags in your `AndroidManifest.xml`
-    before compiling the release binary.
-    For details, refer to
-    [Declare engine flags in `AndroidManifest.xml`](#declare-engine-flags-in-manifest).
+1.  **Não dependa de extras de `Intent` para builds de release.**
+    Quaisquer flags do engine passadas em extras de `Intent` para um binário de release
+    são silenciosamente ignoradas pelo embedding em tempo de execução.
+1.  **Use o modo profile para testes dinâmicos:**
+    Para testes de integração ou benchmarks de desempenho que exigem
+    variar flags dinamicamente na inicialização, compile e execute
+    um build **profile** em vez de um build de release.
+1.  **Declare as flags estaticamente no `AndroidManifest.xml`:**
+    Se você precisar executar um binário de release com flags específicas do engine,
+    declare essas flags estaticamente no seu `AndroidManifest.xml`
+    antes de compilar o binário de release.
+    Para mais detalhes, consulte
+    [Declare as flags do engine no `AndroidManifest.xml`](#declare-engine-flags-in-manifest).
 
-### Build release binaries with flags directly using the Flutter CLI
+### Compile binários de release com flags diretamente usando a CLI do Flutter {:#build-release-binaries-with-flags-directly-using-the-flutter-cli}
 
-If you must run tests against a release binary with the Flutter CLI:
+Se você precisar executar testes contra um binário de release com a CLI do Flutter:
 
-1.  Run `flutter build` or `flutter run` with your configuration flags
-    without `--use-application-binary`.
-    The CLI automatically embeds the flags into the compiled manifest.
-1.  Alternatively, compile separate release binaries
-    for each required configuration.
+1.  Execute `flutter build` ou `flutter run` com suas flags de configuração
+    sem `--use-application-binary`.
+    A CLI incorpora automaticamente as flags no manifesto compilado.
+1.  Como alternativa, compile binários de release separados
+    para cada configuração necessária.
 
-### Configure engine flags programmatically in native host code
+### Configure as flags do engine programaticamente no código nativo do host {:#configure-engine-flags-programmatically-in-native-host-code}
 
-If you launch Flutter from native Android code
-(such as in an add-to-app integration or custom native activity)
-and previously passed engine flags through `Intent` extras:
+Se você inicia o Flutter a partir de código Android nativo
+(como em uma integração add-to-app ou em uma activity nativa personalizada)
+e passava flags do engine anteriormente por extras de `Intent`:
 
-1.  **Override `getFlutterEngineFlags()`:**
-    If you subclass `FlutterActivity` or `FlutterFragment`, override
-    `getFlutterEngineFlags()` instead of using `Intent` extras
-    or the deprecated `getFlutterShellArgs()`:
+1.  **Sobrescreva `getFlutterEngineFlags()`:**
+    Se você estende `FlutterActivity` ou `FlutterFragment`, sobrescreva
+    `getFlutterEngineFlags()` em vez de usar extras de `Intent`
+    ou o método descontinuado `getFlutterShellArgs()`:
 
     ```kotlin
     class MyFlutterActivity : FlutterActivity() {
@@ -200,7 +201,7 @@ and previously passed engine flags through `Intent` extras:
     ```
 
 1.  **Use `FlutterFragment.NewEngineFragmentBuilder`:**
-    If you host a `FlutterFragment`, pass flags using the builder:
+    Se você hospeda um `FlutterFragment`, passe as flags usando o builder:
 
     ```kotlin
     val fragment = FlutterFragment.withNewEngine()
@@ -208,9 +209,9 @@ and previously passed engine flags through `Intent` extras:
         .build<FlutterFragment>()
     ```
 
-1.  **Pre-initialize and cache a `FlutterEngine`:**
-    If you manage the engine lifecycle directly, supply engine arguments
-    to the `FlutterEngine` constructor:
+1.  **Pré-inicialize e armazene em cache um `FlutterEngine`:**
+    Se você gerencia o ciclo de vida do engine diretamente, forneça os argumentos do engine
+    ao construtor do `FlutterEngine`:
 
     ```kotlin
     val args = arrayOf("--trace-startup", "--enable-impeller=true")
@@ -218,11 +219,11 @@ and previously passed engine flags through `Intent` extras:
     FlutterEngineCache.getInstance().put("my_engine_id", flutterEngine)
     ```
 
-### Declare engine flags in manifest
+### Declare as flags do engine no manifesto {:#declare-engine-flags-in-manifest}
 
-To configure engine flags statically in release builds,
-add `<meta-data>` elements under the `<application>` tag in
-your `android/app/src/main/AndroidManifest.xml` file:
+Para configurar as flags do engine estaticamente em builds de release,
+adicione elementos `<meta-data>` sob a tag `<application>` no
+seu arquivo `android/app/src/main/AndroidManifest.xml`:
 
 ```xml title="AndroidManifest.xml" highlightLines=6-12
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
@@ -244,19 +245,19 @@ your `android/app/src/main/AndroidManifest.xml` file:
 </manifest>
 ```
 
-## Timeline
+## Linha do tempo {:#timeline}
 
-Landed in version: 3.50.0-0.1.pre<br>
-In stable release: Not yet
+Incluído na versão: 3.50.0-0.1.pre<br>
+Na versão estável: Ainda não
 
-## References
+## Referências {:#references}
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue 180686][]
 * [Issue 190461][]
 
-Relevant pull requests:
+Pull requests relevantes:
 
 * [PR 190870][]
 * [PR 191328][]

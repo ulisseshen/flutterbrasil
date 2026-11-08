@@ -1,55 +1,56 @@
 ---
-title: Web viewport-fit=cover SafeArea support
+ia-translate: true
+title: Suporte a SafeArea com viewport-fit=cover na web
 description: >-
-  Flutter web now respects viewport-fit=cover in index.html and populates
-  FlutterView.viewPadding from CSS env(safe-area-inset-*) values.
+  O Flutter web agora respeita viewport-fit=cover no index.html e preenche
+  FlutterView.viewPadding com os valores CSS env(safe-area-inset-*).
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-Flutter web now honors `viewport-fit=cover` in your `web/index.html`
-`<meta name="viewport">` tag and populates [`FlutterView.viewPadding`][],
-[`MediaQuery.paddingOf`][], and [`SafeArea`][] from the browser's CSS
-`env(safe-area-inset-*)` values.
+O Flutter web agora respeita `viewport-fit=cover` na tag
+`<meta name="viewport">` do seu `web/index.html` e preenche [`FlutterView.viewPadding`][],
+[`MediaQuery.paddingOf`][] e [`SafeArea`][] com os valores CSS
+`env(safe-area-inset-*)` do navegador.
 
-If an existing web application already includes `viewport-fit=cover` in
-`web/index.html`, it now renders edge-to-edge behind mobile device cutouts,
-notches, and home indicators instead of having `viewport-fit=cover` stripped by
-the web engine.
+Se um aplicativo web existente já inclui `viewport-fit=cover` em
+`web/index.html`, ele agora é renderizado de ponta a ponta atrás de recortes,
+entalhes e indicadores de tela inicial de dispositivos móveis, em vez de
+ter o `viewport-fit=cover` removido pelo
+engine web.
 
-## Context
+## Contexto {:#context}
 
-Previously, when initializing in full-page mode, the Flutter web engine
-replaced any `<meta name="viewport">` tag in `web/index.html` with a default
-viewport tag that omitted `viewport-fit=cover`, and always reported
-[`FlutterView.viewPadding`][] as `ViewPadding.zero`.
+Anteriormente, ao inicializar no modo de página inteira, o engine web do Flutter
+substituía qualquer tag `<meta name="viewport">` em `web/index.html` por uma
+tag de viewport padrão que omitia `viewport-fit=cover`, e sempre informava
+[`FlutterView.viewPadding`][] como `ViewPadding.zero`.
 
-To let mobile web applications render edge-to-edge on devices with display
-cutouts and notches, Flutter web now inspects the `<meta name="viewport">` tag
-in `web/index.html` before replacing it:
+Para permitir que aplicativos web móveis sejam renderizados de ponta a ponta em dispositivos
+com recortes de tela e entalhes, o Flutter web agora inspeciona a tag `<meta name="viewport">`
+em `web/index.html` antes de substituí-la:
 
-* When `viewport-fit=cover` is **not** set (the default), Flutter web renders
-  within the browser's safe area (`viewport-fit=contain`) and reports
+* Quando `viewport-fit=cover` **não** está definido (o padrão), o Flutter web renderiza
+  dentro da área segura do navegador (`viewport-fit=contain`) e informa
   `ViewPadding.zero`.
-* When `viewport-fit=cover` **is** set in `web/index.html`, Flutter web
-  preserves `viewport-fit=cover` on the active
-  `<meta name="viewport" flt-viewport>` tag. It then measures the browser's CSS
-  `env(safe-area-inset-*)` values and exposes them through
-  [`FlutterView.viewPadding`][], [`MediaQuery.paddingOf`][], and
-  [`SafeArea`][].
+* Quando `viewport-fit=cover` **está** definido em `web/index.html`, o Flutter web
+  preserva `viewport-fit=cover` na tag `<meta name="viewport" flt-viewport>`
+  ativa. Em seguida, mede os valores CSS `env(safe-area-inset-*)`
+  do navegador e os expõe por meio de [`FlutterView.viewPadding`][],
+  [`MediaQuery.paddingOf`][] e [`SafeArea`][].
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-You are **affected** only if your existing `web/index.html` file already
-specifies `viewport-fit=cover` in its `<meta name="viewport">` tag.
+Você é **afetado** apenas se o seu arquivo `web/index.html` já
+especifica `viewport-fit=cover` na sua tag `<meta name="viewport">`.
 
-### Option 1: Keep edge-to-edge rendering and wrap UI in `SafeArea`
+### Opção 1: mantenha a renderização de ponta a ponta e envolva a interface em `SafeArea` {:#option-1-keep-edge-to-edge-rendering-and-wrap-ui-in-safearea}
 
-If you want your web app to render edge-to-edge behind notches and home
-indicators, wrap your interactive content in a [`SafeArea`][] widget (or read
-[`MediaQuery.paddingOf`][]) so controls are not obscured by system cutouts:
+Se você quer que o seu app web seja renderizado de ponta a ponta atrás de entalhes e
+indicadores de tela inicial, envolva o conteúdo interativo em um widget [`SafeArea`][] (ou leia
+[`MediaQuery.paddingOf`][]) para que os controles não fiquem ocultos por recortes do sistema:
 
 ```dart
 @override
@@ -62,40 +63,40 @@ Widget build(BuildContext context) {
 }
 ```
 
-### Option 2: Revert to `viewport-fit=contain` (default)
+### Opção 2: volte para `viewport-fit=contain` (padrão) {:#option-2-revert-to-viewport-fit-contain-default}
 
-If you do not want edge-to-edge rendering on mobile browsers, remove
-`viewport-fit=cover` from `<meta name="viewport">` in `web/index.html`:
+Se você não quer renderização de ponta a ponta em navegadores móveis, remova
+`viewport-fit=cover` de `<meta name="viewport">` em `web/index.html`:
 
-Code before migration:
+Código antes da migração:
 
 ```html title="web/index.html"
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 ```
 
-Code after migration:
+Código após a migração:
 
 ```html title="web/index.html"
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 ```
 
-## Timeline
+## Linha do tempo {:#timeline}
 
-In stable release: 3.50
+Na versão estável: 3.50
 
-## References
+## Referências {:#references}
 
-API documentation:
+Documentação da API:
 
 * [`FlutterView.viewPadding`][]
 * [`MediaQuery.paddingOf`][]
 * [`SafeArea`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue 84833][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [PR 191647][]
 

@@ -1,59 +1,60 @@
 ---
-title: Built-in Kotlin migration for plugin authors
+ia-translate: true
+title: Migração para Kotlin integrado para autores de plugins
 description: >-
-  Migrate Flutter plugins to use built-in Kotlin.
+  Migre plugins Flutter para usar o Kotlin integrado.
 ---
 
-This guide outlines the migration steps specifically for plugin authors.
+Este guia descreve os passos de migração específicos para autores de plugins.
 
 :::warning
-Migrating to built-in Kotlin requires a minimum Flutter version of 3.44.
+Migrar para o Kotlin integrado exige uma versão mínima do Flutter de 3.44.
 
-This migration uses `kotlin.compilerOptions {}`,
-which requires Kotlin Gradle Plugin (KGP) 2.0.0 or higher.
-Flutter enforces a minimum KGP version of 2.0.0 starting in Flutter 3.44.
-Plugin authors must update their plugin's minimum Flutter version
-to at least 3.44 in `pubspec.yaml` when migrating.
+Esta migração usa `kotlin.compilerOptions {}`,
+que exige o Kotlin Gradle Plugin (KGP) 2.0.0 ou superior.
+A partir do Flutter 3.44, o Flutter exige uma versão mínima do KGP de 2.0.0.
+Autores de plugins devem atualizar a versão mínima do Flutter
+do plugin para pelo menos 3.44 em `pubspec.yaml` ao migrar.
 
-This guide only applies to plugins that already use the
+Este guia se aplica somente a plugins que já usam o
 Kotlin Gradle Plugin (KGP).
 
-To verify whether your plugin applies KGP,
-find the `kotlin-android` plugin
-(or the `org.jetbrains.kotlin.android` plugin).
-It is likely located in the
-`<plugin-project>/android/build.gradle` or
-`<plugin-project>/android/build.gradle.kts` file.
-To view the KGP application code,
-see [Update the Gradle file](#update-the-gradle-file).
+Para verificar se o seu plugin aplica o KGP,
+procure o plugin `kotlin-android`
+(ou o plugin `org.jetbrains.kotlin.android`).
+Ele provavelmente está no arquivo
+`<plugin-project>/android/build.gradle` ou
+`<plugin-project>/android/build.gradle.kts`.
+Para ver o código de aplicação do KGP,
+consulte [Atualize o arquivo Gradle](#update-the-gradle-file).
 
-If your plugin project doesn't currently apply KGP,
-don't migrate to built-in Kotlin.
+Se o projeto do seu plugin não aplica o KGP,
+não migre para o Kotlin integrado.
 :::
 
 :::note
-To update Flutter apps to use built-in Kotlin,
-follow the [migration guide for app developers][].
+Para atualizar apps Flutter para usar o Kotlin integrado,
+siga o [guia de migração para desenvolvedores de apps][migration guide for app developers].
 :::
 
 [migration guide for app developers]: /release/breaking-changes/migrate-to-built-in-kotlin/for-app-developers
 
-## Update the Gradle file
+## Atualize o arquivo Gradle {:#update-the-gradle-file}
 
-First, find the `kotlin-android` plugin
-(or the `org.jetbrains.kotlin.android` plugin).
-It is likely located in the `plugins` block of the
-`<plugin-project>/android/build.gradle` or the `<plugin-project>/android/build.gradle.kts` file.
-If you use the legacy `apply` syntax,
-it will be located in the Groovy-based `<plugin-project>/android/build.gradle` file,
-as this syntax isn't supported in Kotlin DSL.
+Primeiro, procure o plugin `kotlin-android`
+(ou o plugin `org.jetbrains.kotlin.android`).
+Ele provavelmente está no bloco `plugins` do
+arquivo `<plugin-project>/android/build.gradle` ou `<plugin-project>/android/build.gradle.kts`.
+Se você usa a sintaxe legada `apply`,
+ele estará no arquivo `<plugin-project>/android/build.gradle` baseado em Groovy,
+pois essa sintaxe não é suportada no Kotlin DSL.
 
-The following examples demonstrate how to migrate a Flutter plugin:
+Os exemplos a seguir mostram como migrar um plugin Flutter:
 
 <Tabs key="modern-legacy-apply">
-<Tab name="Plugins block">
+<Tab name="Bloco plugins">
 
-**Before**:
+**Antes**:
 
 ```kotlin title="<app-src>/android/build.gradle(.kts)"
 plugins {
@@ -73,7 +74,7 @@ android {
 // ...
 ```
 
-Next, remove the `kotlin-android` plugin and the `kotlinOptions` block:
+Em seguida, remova o plugin `kotlin-android` e o bloco `kotlinOptions`:
 
 ```kotlin diff title="<app-src>/android/build.gradle.kts"
   plugins {
@@ -91,7 +92,7 @@ Next, remove the `kotlin-android` plugin and the `kotlinOptions` block:
   }
 ```
 
-Add the `kotlin.compilerOptions{}` DSL block with the following:
+Adicione o bloco DSL `kotlin.compilerOptions{}` com o seguinte:
 
 ```kotlin diff title="<app-src>/android/build.gradle.kts"
 + kotlin {
@@ -101,9 +102,9 @@ Add the `kotlin.compilerOptions{}` DSL block with the following:
 + }
 ```
 
-Here is how the file will likely end up:
+Veja como o arquivo deve ficar:
 
-**After**:
+**Depois**:
 
 ```kotlin title="<app-src>/android/build.gradle(.kts)"
 plugins {
@@ -125,9 +126,9 @@ kotlin {
 ```
 
 </Tab>
-<Tab name="Legacy apply">
+<Tab name="Apply legado">
 
-**Before**:
+**Antes**:
 
 ```groovy title="<app-src>/android/build.gradle"
 apply plugin: 'com.android.library'
@@ -145,7 +146,7 @@ android {
 // ...
 ```
 
-Next, remove the `kotlin-android` plugin and the `kotlinOptions` block:
+Em seguida, remova o plugin `kotlin-android` e o bloco `kotlinOptions`:
 
 ```groovy diff title="<app-src>/android/build.gradle"
   apply plugin: 'com.android.library'
@@ -161,7 +162,7 @@ Next, remove the `kotlin-android` plugin and the `kotlinOptions` block:
   }
 ```
 
-Add the `kotlin.compilerOptions{}` DSL block with the following:
+Adicione o bloco DSL `kotlin.compilerOptions{}` com o seguinte:
 
 ```groovy diff title="<app-src>/android/build.gradle"
 + kotlin {
@@ -171,9 +172,9 @@ Add the `kotlin.compilerOptions{}` DSL block with the following:
 + }
 ```
 
-Here is how the file will likely end up:
+Veja como o arquivo deve ficar:
 
-**After**:
+**Depois**:
 
 ```groovy title="<app-src>/android/build.gradle"
 apply plugin: 'com.android.library'
@@ -194,25 +195,25 @@ kotlin {
 </Tab>
 </Tabs>
 
-## Update the plugin's `pubspec.yaml`
+## Atualize o `pubspec.yaml` do plugin {:#update-the-plugins-pubspecyaml}
 
-Using the `kotlin.compilerOptions {}` DSL block requires
-a minimum Kotlin Gradle Plugin (KGP) version of 2.0.0.
-Beginning with Flutter 3.44, the minimum required KGP version is 2.0.0.
-To ensure that apps using your plugin can build on AGP 9,
-require a minimum Flutter version of 3.44 for the plugin version.
-This allows apps using your plugin to build on AGP 9 with
-built-in Kotlin disabled (`android.builtInKotlin=false`).
+Usar o bloco DSL `kotlin.compilerOptions {}` exige
+uma versão mínima do Kotlin Gradle Plugin (KGP) de 2.0.0.
+A partir do Flutter 3.44, a versão mínima exigida do KGP é 2.0.0.
+Para garantir que apps que usam seu plugin possam compilar no AGP 9,
+exija uma versão mínima do Flutter de 3.44 para a versão do plugin.
+Isso permite que apps que usam seu plugin compilem no AGP 9 com
+o Kotlin integrado desabilitado (`android.builtInKotlin=false`).
 
 :::note
-Enabling built-in Kotlin (`android.builtInKotlin=true`)
-in the plugin's example app requires Flutter 3.47 or later.
+Habilitar o Kotlin integrado (`android.builtInKotlin=true`)
+no app de exemplo do plugin exige Flutter 3.47 ou superior.
 :::
 
-Because you are updating the minimum Flutter version,
-you must also update the minimum associated Dart version.
+Como você está atualizando a versão mínima do Flutter,
+também deve atualizar a versão mínima correspondente do Dart.
 
-Update the minimum Flutter version and the minimum Dart version:
+Atualize a versão mínima do Flutter e a versão mínima do Dart:
 
 ```yaml diff title="<plugin-project>/pubspec.yaml"
 # ...
@@ -226,7 +227,7 @@ Update the minimum Flutter version and the minimum Dart version:
 # ...
 ```
 
-Here is how the file will likely end up:
+Veja como o arquivo deve ficar:
 
 ```yaml title="<plugin-project>/pubspec.yaml"
 # ...
@@ -240,31 +241,31 @@ environment:
 
 <a id="update-the-plugins-changelog-md" aria-hidden="true"></a>
 
-## Update the plugin's changelog
+## Atualize o CHANGELOG do plugin
 
-Include your changes in the `CHANGELOG.md` file of
-the newly released plugin version:
+Inclua as suas mudanças no arquivo `CHANGELOG.md` da
+nova versão do plugin lançada:
 
 ```markdown diff title="<plugin-project>/CHANGELOG.md"
 + ## <new-plugin-release-version>
 
-+ - Updates the minimum supported SDK version to Flutter 3.44/Dart 3.12.
-+ - Migrates to built-in Kotlin.
++ - Atualiza a versão mínima do SDK suportada para Flutter 3.44/Dart 3.12.
++ - Migra para o Kotlin integrado.
 
 // ...
 ```
 
-## Validate
+## Valide {:#validate}
 
-Before enabling built-in Kotlin,
-confirm that you have migrated your plugin example app
-and any Flutter plugins it uses.
-Also, confirm that you updated your plugin example app
-to AGP 9+, because built-in Kotlin requires AGP 9+.
+Antes de habilitar o Kotlin integrado,
+confirme que você migrou o app de exemplo do seu plugin
+e quaisquer plugins Flutter que ele usa.
+Também confirme que você atualizou o app de exemplo do plugin
+para o AGP 9+, pois o Kotlin integrado exige AGP 9+.
 
-To enable built-in Kotlin,
-set the `android.builtInKotlin` property to `true`
-in your `gradle.properties` file:
+Para habilitar o Kotlin integrado,
+defina a propriedade `android.builtInKotlin` como `true`
+no arquivo `gradle.properties`:
 
 ```properties diff title="<flutter-project>/android/gradle.properties"
 # ...
@@ -272,20 +273,20 @@ in your `gradle.properties` file:
 ```
 
 :::version-note
-Flutter 3.44 added support for AGP 9 with built-in Kotlin disabled
+O Flutter 3.44 adicionou suporte ao AGP 9 com o Kotlin integrado desabilitado
 (`android.builtInKotlin=false`),
-while enabling built-in Kotlin (`android.builtInKotlin=true`)
-requires Flutter 3.47 or later.
+enquanto habilitar o Kotlin integrado (`android.builtInKotlin=true`)
+exige Flutter 3.47 ou superior.
 :::
 
-After enabling built-in Kotlin,
-execute `flutter run` or `flutter build apk`
-to confirm that your plugin example app builds and launches
-on a connected Android device or emulator.
+Depois de habilitar o Kotlin integrado,
+execute `flutter run` ou `flutter build apk`
+para confirmar que o app de exemplo do seu plugin compila e inicia
+em um dispositivo Android conectado ou em um emulador.
 
-If your plugin example app also applies KGP,
-then you will also have to migrate the example app.
-To migrate your example app,
-follow the [migration guide for app developers][app-migration-guide].
+Se o app de exemplo do seu plugin também aplica o KGP,
+você também terá que migrar o app de exemplo.
+Para isso,
+siga o [guia de migração para desenvolvedores de apps][app-migration-guide].
 
 [app-migration-guide]: /release/breaking-changes/migrate-to-built-in-kotlin/for-app-developers

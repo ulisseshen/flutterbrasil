@@ -1,35 +1,36 @@
 ---
-title: Deprecate `TextInputConnection.setStyle`
+ia-translate: true
+title: Descontinua `TextInputConnection.setStyle`
 description: >-
-  The `TextInputConnection.setStyle` method has been deprecated
-  in favor of the `TextInputConnection.updateStyle` method.
+  O método `TextInputConnection.setStyle` foi descontinuado
+  em favor do método `TextInputConnection.updateStyle`.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-`TextInputConnection.setStyle` is deprecated in favor of
-`TextInputConnection.updateStyle`, which supports synchronizing
-`letterSpacing`, `wordSpacing`, and `lineHeight` to the engine.
+`TextInputConnection.setStyle` foi descontinuado em favor de
+`TextInputConnection.updateStyle`, que oferece suporte à sincronização de
+`letterSpacing`, `wordSpacing` e `lineHeight` com o engine.
 
-## Context
+## Contexto {:#context}
 
-The previous `setStyle` method didn't support `letterSpacing`, `wordSpacing`,
-or `lineHeight`. This caused visual misalignment of the selection highlight
-and IME caret when these properties were used.
+O método `setStyle` anterior não oferecia suporte a `letterSpacing`, `wordSpacing`
+ou `lineHeight`. Isso causava um desalinhamento visual do destaque de seleção
+e do cursor do IME quando essas propriedades eram usadas.
 
-The replacement `updateStyle` method uses
-`TextInputStyle` to support these properties,
-ensuring the system input is synchronized with the rendered text.
+O método substituto `updateStyle` usa
+`TextInputStyle` para oferecer suporte a essas propriedades,
+garantindo que a entrada do sistema fique sincronizada com o texto renderizado.
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-If you author a custom text input client,
-replace calls to `TextInputConnection.setStyle`
-with `TextInputConnection.updateStyle`.
+Se você cria um cliente de entrada de texto personalizado,
+substitua as chamadas a `TextInputConnection.setStyle`
+por `TextInputConnection.updateStyle`.
 
-### Code before migration
+### Código antes da migração {:#code-before-migration}
 
 ```dart
 connection.setStyle(
@@ -41,7 +42,7 @@ connection.setStyle(
 );
 ```
 
-### Code after migration
+### Código após a migração {:#code-after-migration}
 
 ```dart
 connection.updateStyle(
@@ -58,18 +59,18 @@ connection.updateStyle(
 );
 ```
 
-## Timeline
+## Linha do tempo {:#timeline}
 
-Landed in version: 3.43.0-0.1.pre<br>
-In stable release: 3.44
+Incluído na versão: 3.43.0-0.1.pre<br>
+Na versão estável: 3.44
 
-## References
+## Referências {:#references}
 
-Relevant PR:
+PR relevante:
 
 * [Fix IME and selection by syncing more text styles][pr-180436]
 
-Relevant issues:
+Issues relevantes:
 
 * [Incorrect position of Japanese predictive conversion popup in TextFormField using maxLines on the Web][issue-161592]
 

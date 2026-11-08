@@ -1,41 +1,42 @@
 ---
-title: DevTools 2.54.0 release notes
-shortTitle: 2.54.0 release notes
+ia-translate: true
+title: Notas de lançamento do DevTools 2.54.0
+shortTitle: Notas de lançamento 2.54.0
 breadcrumb: 2.54.0
 showToc: false
 ---
 
-The 2.54.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](/tools/devtools/overview).
+A versão 2.54.0 do Dart e Flutter DevTools
+inclui as seguintes mudanças, entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](/tools/devtools/overview).
 
-## General updates
+## Atualizações gerais
 
-- Dropped connections to DTD will now automatically be retried to improve the
-  experience when your machine is resumed from sleep. -
+- As conexões perdidas com o DTD agora são tentadas novamente automaticamente, para melhorar a
+  experiência quando a sua máquina é retomada do modo de suspensão. -
   [#9587](https://github.com/flutter/devtools/pull/9587)
 
-## Inspector updates
+## Atualizações do Inspector
 
-- Added a warning banner that the legacy inspector
-  will be removed in a future release. -
+- Adicionado um banner de aviso informando que o inspector legado
+  será removido em uma versão futura. -
   [#9572](https://github.com/flutter/devtools/pull/9572)
 
-## Memory updates
+## Atualizações de memória
 
-- Fixed an error preventing users from changing the zoom duration. -
+- Corrigido um erro que impedia os usuários de alterar a duração do zoom. -
   [#9573](https://github.com/flutter/devtools/pull/9573)
 
-## Deep links tool updates
+## Atualizações da ferramenta Deep links
 
-- Added a more informative dialog if the Deep Links tool is
-  unable to find build options for the iOS or Android app. -
+- Adicionado um diálogo mais informativo caso a ferramenta Deep Links não consiga encontrar
+  as opções de build do app iOS ou Android. -
   [#9571](https://github.com/flutter/devtools/pull/9571)
-- Fixed null error when parsing universal link settings. -
+- Corrigido erro de null ao analisar as configurações de universal links. -
   [#9581](https://github.com/flutter/devtools/pull/9581)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes in this release, check out the
-[DevTools git log](https://github.com/flutter/devtools/tree/v2.54.0).
+Para encontrar uma lista completa de mudanças nesta versão, confira o
+[log do git do DevTools](https://github.com/flutter/devtools/tree/v2.54.0).

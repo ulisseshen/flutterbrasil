@@ -1,28 +1,29 @@
 ---
-title: Deprecate onReorder callback
+ia-translate: true
+title: Deprecação do callback onReorder
 description: >-
-  The onReorder callback has been deprecated
-  in favor of a new callback, called onReorderItem.
+  O callback onReorder foi descontinuado
+  em favor de um novo callback, chamado onReorderItem.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-The `onReorder` callback in the
+O callback `onReorder` nos widgets
 `ReorderableListView`, `ReorderableListView.builder`,
-`ReorderableList`, and `SliverReorderableList` widgets
-has been replaced by a new callback, `onReorderItem`,
-which provides more intuitive behavior for `newIndex`.
+`ReorderableList` e `SliverReorderableList`
+foi substituído por um novo callback, `onReorderItem`,
+que oferece um comportamento mais intuitivo para `newIndex`.
 
-## Background
+## Contexto {:#background}
 
-The `onReorder` callback in the
+O callback `onReorder` nos widgets
 `ReorderableListView`, `ReorderableListView.builder`,
-`ReorderableList`, and `SliverReorderableList` widgets required
-a manual correction for the second parameter, `newIndex`,
-in case the `oldIndex` is before the `newIndex` because
-the list of items would be shortened by one element.
+`ReorderableList` e `SliverReorderableList` exigia
+uma correção manual do segundo parâmetro, `newIndex`,
+quando `oldIndex` está antes de `newIndex`, porque
+a lista de itens fica uma posição menor.
 
 ```dart
 void handleReorder(int oldIndex, int newIndex) {
@@ -39,8 +40,8 @@ ReorderableListView(
 )
 ```
 
-The new callback, `onReorderItem`, solves this problem
-by doing the correction automatically.
+O novo callback, `onReorderItem`, resolve esse problema
+fazendo a correção automaticamente.
 
 ```dart
 void handleReorder(int oldIndex, int newIndex) {
@@ -52,18 +53,18 @@ ReorderableListView(
 )
 ```
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-The `ReorderableListView`, `ReorderableListView.builder`,
-`ReorderableList`, and `SliverReorderableList` widgets
-share the same reordering logic.
-The same migration steps apply to each of these widgets.
+Os widgets `ReorderableListView`, `ReorderableListView.builder`,
+`ReorderableList` e `SliverReorderableList`
+compartilham a mesma lógica de reordenação.
+Os mesmos passos de migração se aplicam a cada um desses widgets.
 
-This migration guide uses `ReorderableListView` as an example.
+Este guia de migração usa `ReorderableListView` como exemplo.
 
-### Case 1: Simple callbacks {: #case-1-simple-callbacks }
+### Caso 1: callbacks simples {: #case-1-simple-callbacks }
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 ReorderableListView(
@@ -77,7 +78,7 @@ ReorderableListView(
 )
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart diff
   ReorderableListView(
@@ -92,15 +93,15 @@ Code after migration:
   )
 ```
 
-### Case 2: Opt out for complex `onReorder` implementations {: #case-2-opt-out }
+### Caso 2: optar por não migrar em implementações complexas de `onReorder` {: #case-2-opt-out }
 
-In some cases, such as when the provided callback is complex,
-the migration to the new `onReorderItem` callback might not be obvious.
+Em alguns casos, como quando o callback fornecido é complexo,
+a migração para o novo callback `onReorderItem` pode não ser óbvia.
 
-In these cases, to opt out of the new behavior,
-adjust the `newIndex` to match the old behavior.
+Nesses casos, para optar por não usar o novo comportamento,
+ajuste o `newIndex` para corresponder ao comportamento antigo.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 void handleSomeComplexReorder(int oldIndex, int newIndex) {
@@ -114,7 +115,7 @@ ReorderableListView(
 )
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart diff
   void handleSomeComplexReorder(int oldIndex, int newIndex) {
@@ -135,32 +136,32 @@ Code after migration:
 ```
 
 :::important
-This migration isn't supported by `dart fix`,
-due to the change in meaning for the second callback parameter.
+Esta migração não é suportada pelo `dart fix`,
+devido à mudança de significado do segundo parâmetro do callback.
 :::
 
-## Timeline
+## Linha do tempo {:#timeline}
 
-Landed in version: 3.41.0-1.0.pre-364<br>
-In stable release: 3.44
+Incluído na versão: 3.41.0-1.0.pre-364<br>
+Na versão estável: 3.44
 
-## References
+## Referências {:#references}
 
-API documentation:
+Documentação da API:
 
 * [`ReorderCallback`][]
 * [`ReorderableList`][]
 * [`ReorderableListView`][]
 * [`SliverReorderableList`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [The index parameter for ReorderableListView's onReorderCallback is confusing][issue-127901]
 * [SliverReorderableList newIndex arg off by one on drag down list][issue-169878]
 
-Relevant PRs:
+PRs relevantes:
 
-* [Deprecate onReorder callback][]
+* [Deprecação do callback onReorder][Deprecate onReorder callback]
 
 [`ReorderCallback`]: {{site.api}}/flutter/widgets/ReorderCallback.html
 [`ReorderableList`]: {{site.api}}/flutter/widgets/ReorderableList-class.html

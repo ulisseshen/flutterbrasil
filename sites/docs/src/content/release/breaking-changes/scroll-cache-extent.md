@@ -1,44 +1,45 @@
 ---
-title: Deprecated `cacheExtent` and `cacheExtentStyle`
+ia-translate: true
+title: '`cacheExtent` e `cacheExtentStyle` descontinuados'
 description: >-
-  The `cacheExtent` and `cacheExtentStyle` properties are deprecated.
-  They are replaced by `scrollCacheExtent` with a `ScrollCacheExtent` object.
+  As propriedades `cacheExtent` e `cacheExtentStyle` estão descontinuadas.
+  Elas são substituídas por `scrollCacheExtent` com um objeto `ScrollCacheExtent`.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-Flutter 3.44 deprecates `cacheExtent` and `cacheExtentStyle`
-in scrolling-related widgets, such as
-`ListView`, `GridView`, `CustomScrollView`, and `Viewport`,
-and their corresponding render objects, such as `RenderViewport`.
-The new `scrollCacheExtent` property encapsulates
-both the value and the caching strategy (pixels or viewport).
+O Flutter 3.44 descontinua `cacheExtent` e `cacheExtentStyle`
+em widgets relacionados a rolagem, como
+`ListView`, `GridView`, `CustomScrollView` e `Viewport`,
+e em seus render objects correspondentes, como `RenderViewport`.
+A nova propriedade `scrollCacheExtent` encapsula
+tanto o valor quanto a estratégia de cache (pixels ou viewport).
 
-## Background
+## Contexto {:#background}
 
-Previously, `cacheExtent` was a `double` and
-`cacheExtentStyle` determined how that `double` was interpreted
-(either as pixels or as a fraction of the viewport).
-This split made the setting harder to understand.
+Anteriormente, `cacheExtent` era um `double` e
+`cacheExtentStyle` determinava como esse `double` era interpretado
+(como pixels ou como uma fração da viewport).
+Essa separação tornava a configuração mais difícil de entender.
 
-The new `scrollCacheExtent` property uses a `ScrollCacheExtent` object that
-explicitly encapsulates both the value and
-the caching strategy (pixels or viewport),
-which provides type safety and clearer intent.
+A nova propriedade `scrollCacheExtent` usa um objeto `ScrollCacheExtent` que
+encapsula explicitamente tanto o valor quanto
+a estratégia de cache (pixels ou viewport),
+o que oferece segurança de tipos e uma intenção mais clara.
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-### Widget layer
+### Camada de widgets {:#widget-layer}
 
-#### `cacheExtent` (pixels)
+#### `cacheExtent` (pixels) {:#cacheextent-pixels}
 
-If your code uses `cacheExtent`,
-which defaults to pixels,
-use `scrollCacheExtent` with `ScrollCacheExtent.pixels`.
+Se o seu código usa `cacheExtent`,
+que usa pixels por padrão,
+use `scrollCacheExtent` com `ScrollCacheExtent.pixels`.
 
-**Before:**
+**Antes:**
 
 ```dart
 ListView(
@@ -47,7 +48,7 @@ ListView(
 )
 ```
 
-**After:**
+**Depois:**
 
 ```dart
 ListView(
@@ -56,13 +57,13 @@ ListView(
 )
 ```
 
-#### `cacheExtentStyle` (viewport)
+#### `cacheExtentStyle` (viewport) {:#cacheextentstyle-viewport}
 
-If your code uses `cacheExtent` with `CacheExtentStyle.viewport`,
-which is common in `Viewport`,
-use `scrollCacheExtent` with `ScrollCacheExtent.viewport`.
+Se o seu código usa `cacheExtent` com `CacheExtentStyle.viewport`,
+o que é comum em `Viewport`,
+use `scrollCacheExtent` com `ScrollCacheExtent.viewport`.
 
-**Before:**
+**Antes:**
 
 ```dart
 Viewport(
@@ -72,7 +73,7 @@ Viewport(
 )
 ```
 
-**After:**
+**Depois:**
 
 ```dart
 Viewport(
@@ -81,39 +82,39 @@ Viewport(
 )
 ```
 
-### Render object layer
+### Camada de render objects {:#render-object-layer}
 
-If your code manually sets properties on
-`RenderViewport` or a similar render object,
+Se o seu código define propriedades manualmente em
+`RenderViewport` ou em um render object semelhante,
 use `scrollCacheExtent`.
 
-**Before:**
+**Antes:**
 
 ```dart
 renderViewport.cacheExtent = 500.0;
 renderViewport.cacheExtentStyle = CacheExtentStyle.pixel;
 ```
 
-**After:**
+**Depois:**
 
 ```dart
 renderViewport.scrollCacheExtent = const ScrollCacheExtent.pixels(500.0);
 ```
 
-## Timeline
+## Linha do tempo {:#timeline}
 
-Landed in version: 3.41.0-0.0.pre<br>
-In stable release: 3.44
+Incluído na versão: 3.41.0-0.0.pre<br>
+Na versão estável: 3.44
 
-## References
+## Referências {:#references}
 
-API documentation:
+Documentação da API:
 
 * [`ScrollCacheExtent`][]
 * [`ScrollView.scrollCacheExtent`][]
 * [`RenderViewportBase.scrollCacheExtent`][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Introduce ScrollCacheExtent][pr-181092]
 

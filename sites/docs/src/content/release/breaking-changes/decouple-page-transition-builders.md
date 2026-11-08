@@ -1,53 +1,54 @@
 ---
-title: Page transition builders reorganization
+ia-translate: true
+title: Reorganização dos builders de transição de página
 description: >-
-  CupertinoPageTransitionsBuilder has been moved from the
-  Material library to the Cupertino library where it belongs.
+  CupertinoPageTransitionsBuilder foi movido da
+  biblioteca Material para a biblioteca Cupertino, onde pertence.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-`CupertinoPageTransitionsBuilder` has been relocated from
-`package:material_ui/material_ui.dart` to the Cupertino package,
-which is now in `package:cupertino_ui/cupertino_ui.dart`.
+`CupertinoPageTransitionsBuilder` foi realocado de
+`package:material_ui/material_ui.dart` para o pacote Cupertino,
+que agora está em `package:cupertino_ui/cupertino_ui.dart`.
 
-## Background
+## Contexto {:#background}
 
-Flutter provides several page transition builders that
-control how routes animate when navigating between pages.
-These builders are used with `PageTransitionsTheme` to
-customize transitions per platform.
+O Flutter oferece vários builders de transição de página que
+controlam como as rotas são animadas ao navegar entre páginas.
+Esses builders são usados com `PageTransitionsTheme` para
+personalizar as transições por plataforma.
 
-The available page transition builders are:
+Os builders de transição de página disponíveis são:
 
-| Builder | Library | Description |
+| Builder | Biblioteca | Descrição |
 |---------|---------|-------------|
-| `FadeUpwardsPageTransitionsBuilder` | Material | Default transition before Material 3 |
-| `OpenUpwardsPageTransitionsBuilder` | Material | Vertical slide transition |
-| `ZoomPageTransitionsBuilder` | Material | Zoom transition (Material 3 default) |
-| `PredictiveBackPageTransitionsBuilder` | Material | Android predictive back gesture support |
-| `CupertinoPageTransitionsBuilder` | **Cupertino** | iOS-style horizontal slide transition |
+| `FadeUpwardsPageTransitionsBuilder` | Material | Transição padrão antes do Material 3 |
+| `OpenUpwardsPageTransitionsBuilder` | Material | Transição de deslize vertical |
+| `ZoomPageTransitionsBuilder` | Material | Transição de zoom (padrão do Material 3) |
+| `PredictiveBackPageTransitionsBuilder` | Material | Suporte ao gesto de voltar preditivo do Android |
+| `CupertinoPageTransitionsBuilder` | **Cupertino** | Transição de deslize horizontal estilo iOS |
 
 {:.table}
 
-Previously, `CupertinoPageTransitionsBuilder` was defined in
-the Material library alongside the other builders.
-This class is semantically a Cupertino component because
-its implementation uses Cupertino transition mixins and
-provides iOS-style navigation animations.
+Anteriormente, `CupertinoPageTransitionsBuilder` era definido na
+biblioteca Material, junto com os outros builders.
+Essa classe é semanticamente um componente Cupertino porque
+sua implementação usa mixins de transição Cupertino e
+oferece animações de navegação no estilo iOS.
 
-This move improves code organization and allows Cupertino apps to
-use this builder without depending on the Material library.
+Essa mudança melhora a organização do código e permite que apps Cupertino usem
+esse builder sem depender da biblioteca Material.
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-If you use `CupertinoPageTransitionsBuilder` and
-only import `package:material_ui/material_ui.dart`,
-add an import for `package:cupertino_ui/cupertino_ui.dart`.
+Se você usa `CupertinoPageTransitionsBuilder` e
+importa apenas `package:material_ui/material_ui.dart`,
+adicione um import para `package:cupertino_ui/cupertino_ui.dart`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 import 'package:material_ui/material_ui.dart';
@@ -60,7 +61,7 @@ final pageTransitionsTheme = PageTransitionsTheme(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 import 'package:cupertino_ui/cupertino_ui.dart';
@@ -74,16 +75,16 @@ final pageTransitionsTheme = PageTransitionsTheme(
 );
 ```
 
-If your app already imports both packages, no changes are needed.
+Se o seu app já importa os dois pacotes, nenhuma alteração é necessária.
 
-## Timeline
+## Linha do tempo {:#timeline}
 
-Landed in version: 3.43.0-0.1.pre<br>
-In stable release: 3.44
+Incluído na versão: 3.43.0-0.1.pre<br>
+Na versão estável: 3.44
 
-## References
+## Referências {:#references}
 
-Relevant PRs:
+PRs relevantes:
 
 * [Decouple CupertinoPageTransitionsBuilder from Material][pr-179776]
 

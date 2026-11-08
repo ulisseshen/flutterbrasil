@@ -1,30 +1,31 @@
 ---
-title: DevTools 2.59.0 release notes
-shortTitle: 2.59.0 release notes
+ia-translate: true
+title: Notas de lançamento do DevTools 2.59.0
+shortTitle: Notas de lançamento 2.59.0
 breadcrumb: 2.59.0
-description: Release notes for Dart and Flutter DevTools version 2.59.0.
+description: Notas de lançamento do Dart e Flutter DevTools versão 2.59.0.
 showToc: false
 ---
 
-The 2.59.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](/tools/devtools).
+A versão 2.59.0 do Dart e Flutter DevTools
+inclui as seguintes mudanças, entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](/tools/devtools).
 
-## General updates
+## Atualizações gerais
 
-- Fixed a `RangeError` thrown by `SplitPane` when the parent
-  rebuilt the widget with a different number of children.
-  For example, when toggling a panel in or out of the layout. -
+- Corrigido um `RangeError` lançado pelo `SplitPane` quando o pai
+  reconstruía o widget com um número diferente de filhos.
+  Por exemplo, ao alternar um painel para dentro ou para fora do layout. -
   [#9822](https://github.com/flutter/devtools/pull/9822)
 
-## Inspector updates
+## Atualizações do Inspector
 
-- Fixed an issue where hover tooltips in the widget tree were
-  being clipped by the window boundaries. -
+- Corrigido um problema em que as dicas de ferramenta (tooltips) ao passar o mouse na árvore de widgets
+  eram cortadas pelos limites da janela. -
   [#9823](https://github.com/flutter/devtools/pull/9823)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes in this release, check out the
-[DevTools git log](https://github.com/flutter/devtools/tree/v2.59.0).
+Para encontrar uma lista completa de mudanças nesta versão, confira o
+[log do git do DevTools](https://github.com/flutter/devtools/tree/v2.59.0).

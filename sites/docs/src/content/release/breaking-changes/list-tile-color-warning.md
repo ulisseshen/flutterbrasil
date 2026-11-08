@@ -1,36 +1,36 @@
 ---
-title: ListTile reports an error in debug when wrapped in a colored widget
+ia-translate: true
+title: ListTile reporta um erro em debug quando envolvido por um widget colorido
 description: >-
-  ListTile now reports an error in debug mode when it is wrapped in
-  an intermediate widget with a non-transparent background color.
+  ListTile agora reporta um erro em modo debug quando é envolvido por
+  um widget intermediário com uma cor de fundo não transparente.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-When a widget with a non-transparent background color,
-such as a `Container` or `ColoredBox` that sets `color`,
-sits between a `ListTile` and its nearest `Material` ancestor,
-the framework now reports an error.
+Quando um widget com cor de fundo não transparente,
+como um `Container` ou `ColoredBox` que define `color`,
+fica entre um `ListTile` e o seu ancestral `Material` mais próximo,
+o framework agora reporta um erro.
 
-## Background
+## Contexto {:#background}
 
-`ListTile` paints its background color and ink splashes
-on the nearest `Material` ancestor.
-When a widget with an opaque background color is
-placed between the `ListTile` and its `Material` ancestor,
-it obscures these visual effects,
-making them invisible to the user.
+O `ListTile` pinta a sua cor de fundo e os efeitos de respingo (ink splash)
+no ancestral `Material` mais próximo.
+Quando um widget com cor de fundo opaca é
+colocado entre o `ListTile` e o seu ancestral `Material`,
+ele oculta esses efeitos visuais,
+tornando-os invisíveis para o usuário.
 
-To prevent you from accidentally introducing this bug and
-wondering why the background or ink splash effects on
-the `ListTile` aren't displaying,
-the framework now reports an assertion error during development.
+Para evitar que você introduza esse bug sem querer e fique se perguntando por que
+o fundo ou os efeitos de respingo do `ListTile` não aparecem,
+o framework agora reporta um erro de asserção durante o desenvolvimento.
 
-If your code has an intermediate colored widget
-between a `ListTile` and a `Material` widget,
-you will now see an error similar to this:
+Se o seu código tem um widget colorido intermediário
+entre um `ListTile` e um widget `Material`,
+você verá agora um erro parecido com este:
 
 ```text
 ListTile background color or ink splashes may be invisible.
@@ -41,13 +41,13 @@ To fix this, wrap the ListTile in its own Material widget, or
 remove the background color from the intermediate Container.
 ```
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-To fix the error,
-remove the background color from the intermediate widget or
-wrap the `ListTile` in its own `Material` widget.
+Para corrigir o erro,
+remova a cor de fundo do widget intermediário ou
+envolva o `ListTile` em seu próprio widget `Material`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 // The colored Container hides the ink splashes from the ListTile.
@@ -62,7 +62,7 @@ Material(
 )
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 // Use a Material widget directly for the background color.
@@ -77,8 +77,8 @@ Material(
 )
 ```
 
-Alternatively,
-wrap the `ListTile` in its own `Material` widget:
+Alternativamente,
+envolva o `ListTile` em seu próprio widget `Material`:
 
 ```dart
 Container(
@@ -93,23 +93,23 @@ Container(
 )
 ```
 
-## Timeline
+## Linha do tempo {:#timeline}
 
-Landed in version: 3.43.0-0.1.pre<br>
-In stable release: 3.44
+Incluído na versão: 3.43.0-0.1.pre<br>
+Na versão estável: 3.44
 
-## References
+## Referências {:#references}
 
-API documentation:
+Documentação da API:
 
 * [`ListTile`][]
 * [`Material`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [`ListTile.selectedTileColor` not visible when parent `Container` has explicit background color][issue-174366]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Add warning when there is a widget with color between `Material` and `ListTile`][pr-181402]
 

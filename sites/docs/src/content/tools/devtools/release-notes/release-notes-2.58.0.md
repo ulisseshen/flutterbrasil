@@ -1,51 +1,51 @@
 ---
-title: DevTools 2.58.0 release notes
-shortTitle: 2.58.0 release notes
+ia-translate: true
+title: Notas de lançamento do DevTools 2.58.0
+shortTitle: Notas de lançamento 2.58.0
 breadcrumb: 2.58.0
 showToc: false
 ---
 
-The 2.58.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](/tools/devtools).
+A versão 2.58.0 do Dart e Flutter DevTools
+inclui as seguintes mudanças, entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](/tools/devtools).
 
-## Inspector updates
+## Atualizações do Inspector
 
-- Deleted the option to use the legacy inspector.
+- Removida a opção de usar o inspector legado.
   [#9782](https://github.com/flutter/devtools/pull/9782)
-- Fixed an issue where navigating the Inspector widget tree with the keyboard arrow keys did not update the selected widget in the connected Flutter app. [#9810](https://github.com/flutter/devtools/pull/9810)
-- Fixed an issue where clicking a widget row after collapsing a subtree with the left arrow key unexpectedly re-expanded the subtree. [#9810](https://github.com/flutter/devtools/pull/9810)
-- Fixed an issue where collapsing the Inspector widget tree to a single row with the left arrow key caused a loading spinner to appear instead of showing the root node. [#9810](https://github.com/flutter/devtools/pull/9810)
+- Corrigido um problema em que navegar pela árvore de widgets do Inspector com as teclas de seta não atualizava o widget selecionado no app Flutter conectado. [#9810](https://github.com/flutter/devtools/pull/9810)
+- Corrigido um problema em que clicar em uma linha de widget após recolher uma subárvore com a seta para a esquerda fazia a subárvore ser expandida novamente de forma inesperada. [#9810](https://github.com/flutter/devtools/pull/9810)
+- Corrigido um problema em que recolher a árvore de widgets do Inspector em uma única linha com a seta para a esquerda fazia um indicador de carregamento aparecer em vez de mostrar o nó raiz. [#9810](https://github.com/flutter/devtools/pull/9810)
 
-## Performance updates
+## Atualizações de performance
 
-- Fixed an issue where 'More Debug Options' showed options as unselected in
-profile mode even when selected. [#9813](https://github.com/flutter/devtools/issues/9813)
+- Corrigido um problema em que "More Debug Options" mostrava opções como não selecionadas no modo profile, mesmo quando selecionadas. [#9813](https://github.com/flutter/devtools/issues/9813)
 
-## Debugger updates
+## Atualizações do Debugger
 
-- Fixed an issue where long string values in the console/variables view would overflow and overlap with other elements. [#7112](https://github.com/flutter/devtools/issues/7112)
+- Corrigido um problema em que valores de string longos na visualização de console/variáveis transbordavam e se sobrepunham a outros elementos. [#7112](https://github.com/flutter/devtools/issues/7112)
 
-## Network profiler updates
+## Atualizações do Network profiler
 
-- Added response size column to the Network tab and displayed response size in the request inspector overview.  
+- Adicionada uma coluna de tamanho de resposta na aba Network e exibido o tamanho da resposta na visão geral do inspetor de requisições.
   [#9744](https://github.com/flutter/devtools/pull/9744)
 
-- Improved HTTP request status classification in the Network tab to better distinguish cancelled, completed, and in-flight requests (for example, avoiding some cases where cancelled requests appeared as pending). [#9683](https://github.com/flutter/devtools/pull/9683)
+- Melhorada a classificação de status das requisições HTTP na aba Network, para distinguir melhor requisições canceladas, concluídas e em andamento (por exemplo, evitando casos em que requisições canceladas apareciam como pendentes). [#9683](https://github.com/flutter/devtools/pull/9683)
 
-- Added a filter setting to hide HTTP-profiler socket data.  
+- Adicionada uma configuração de filtro para ocultar os dados de socket do HTTP profiler.
   [#9698](https://github.com/flutter/devtools/pull/9698)
-  
-## Logging updates
 
-- Fixed an issue where log messages containing newline characters were incorrectly split into multiple separate entries in the Logging screen. [#9757](https://github.com/flutter/devtools/pull/9757)
+## Atualizações de logging
 
-## Deep links tool updates
+- Corrigido um problema em que mensagens de log contendo caracteres de nova linha eram divididas incorretamente em várias entradas separadas na tela de Logging. [#9757](https://github.com/flutter/devtools/pull/9757)
 
-- Pluralized "domain" and "path" in the validation summary notification titles when multiple errors are present. [#9790](https://github.com/flutter/devtools/pull/9790)
+## Atualizações da ferramenta Deep links
 
-## Full commit history
+- Pluralizados "domain" e "path" nos títulos das notificações de resumo de validação quando há vários erros. [#9790](https://github.com/flutter/devtools/pull/9790)
 
-To find a complete list of changes in this release, check out the
-[DevTools git log](https://github.com/flutter/devtools/tree/v2.58.0).
+## Histórico completo de commits
+
+Para encontrar uma lista completa de mudanças nesta versão, confira o
+[log do git do DevTools](https://github.com/flutter/devtools/tree/v2.58.0).

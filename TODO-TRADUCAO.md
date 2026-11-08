@@ -13,43 +13,43 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 
 ## Progresso
 
-- Páginas traduzidas: **661 / 768** (86.1%)
-- Linhas pendentes (aprox.): 27121
+- Páginas traduzidas: **767 / 768** (99.9%)
+- Linhas pendentes (aprox.): 490
 
 | Seção | Traduzidas | Total |
 |---|---:|---:|
 | `(raiz)` | 1 | 1 |
-| `_includes` | 44 | 53 |
-| `add-to-app` | 13 | 17 |
-| `ai` | 5 | 19 |
+| `_includes` | 53 | 53 |
+| `add-to-app` | 17 | 17 |
+| `ai` | 19 | 19 |
 | `app-architecture` | 16 | 16 |
 | `brand` | 1 | 1 |
 | `community` | 1 | 1 |
 | `contribute` | 11 | 11 |
-| `cookbook` | 86 | 90 |
+| `cookbook` | 90 | 90 |
 | `dash` | 1 | 1 |
-| `data-and-backend` | 13 | 14 |
-| `deployment` | 11 | 13 |
+| `data-and-backend` | 14 | 14 |
+| `deployment` | 13 | 13 |
 | `embedded` | 1 | 1 |
-| `flutter-for` | 9 | 10 |
-| `install` | 6 | 8 |
-| `interop` | 0 | 6 |
+| `flutter-for` | 10 | 10 |
+| `install` | 8 | 8 |
+| `interop` | 6 | 6 |
 | `jobs` | 2 | 2 |
-| `learn` | 16 | 20 |
-| `packages-and-plugins` | 8 | 9 |
-| `perf` | 12 | 13 |
-| `platform-integration` | 41 | 45 |
-| `reference` | 8 | 9 |
+| `learn` | 20 | 20 |
+| `packages-and-plugins` | 9 | 9 |
+| `perf` | 13 | 13 |
+| `platform-integration` | 45 | 45 |
+| `reference` | 9 | 9 |
 | `release` | 4 | 4 |
-| `resources` | 12 | 13 |
+| `resources` | 13 | 13 |
 | `security` | 1 | 1 |
-| `testing` | 14 | 20 |
-| `tools` | 26 | 27 |
+| `testing` | 20 | 20 |
+| `tools` | 27 | 27 |
 | `tos` | 1 | 1 |
-| `ui` | 49 | 50 |
-| `release/breaking-changes` | 165 | 192 |
-| `release/release-notes` | 30 | 38 |
-| `tools/devtools/release-notes` | 53 | 62 |
+| `ui` | 50 | 50 |
+| `release/breaking-changes` | 191 | 192 |
+| `release/release-notes` | 38 | 38 |
+| `tools/devtools/release-notes` | 62 | 62 |
 
 ## Páginas por seção
 
@@ -57,7 +57,7 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 
 - [x] `index.md` (121 linhas)
 
-### `_includes` (44/53)
+### `_includes` (53/53)
 
 - [x] `_includes/docs/add-to-app/android-initial-route-cached-engine.md` (77 linhas)
 - [x] `_includes/docs/add-to-app/ios-project/embed-cocoapods.md` (182 linhas)
@@ -66,10 +66,10 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `_includes/docs/add-to-app/ios-project/embed-split.md` (52 linhas)
 - [x] `_includes/docs/add-to-app/ios-project/limits-common-deps.md` (19 linhas)
 - [x] `_includes/docs/add-to-app/ios-project/link-and-embed.md` (192 linhas)
-- [ ] `_includes/docs/add-to-app/ios-project/local-network-privacy-permissions.md` (112 linhas)
+- [x] `_includes/docs/add-to-app/ios-project/local-network-privacy-permissions.md` (115 linhas)
 - [x] `_includes/docs/android-ios-figure-pair.md` (12 linhas)
 - [x] `_includes/docs/breaking-changes.md` (12 linhas)
-- [ ] `_includes/docs/china-mirror.md` (32 linhas)
+- [x] `_includes/docs/china-mirror.md` (33 linhas)
 - [x] `_includes/docs/china-notice-cn.md` (8 linhas)
 - [x] `_includes/docs/china-notice.md` (16 linhas)
 - [x] `_includes/docs/cookbook/networking/internet-permission.md` (19 linhas)
@@ -88,21 +88,21 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `_includes/docs/install/path/linux.md` (168 linhas)
 - [x] `_includes/docs/install/path/macos.md` (72 linhas)
 - [x] `_includes/docs/install/path/windows.md` (98 linhas)
-- [ ] `_includes/docs/install/quick.md` (230 linhas)
+- [x] `_includes/docs/install/quick.md` (232 linhas)
 - [x] `_includes/docs/main-api.md` (20 linhas)
 - [x] `_includes/docs/performance.md` (12 linhas)
 - [x] `_includes/docs/swift-package-manager/migrate-ios-project-manually.md` (62 linhas)
 - [x] `_includes/docs/swift-package-manager/migrate-macos-project-manually.md` (61 linhas)
 - [x] `_includes/docs/swift-package-manager/migrate-objective-c-plugin.md` (499 linhas)
 - [x] `_includes/docs/swift-package-manager/migrate-swift-plugin.md` (378 linhas)
-- [ ] `_includes/docs/test/integration/linux-example.md` (18 linhas)
-- [ ] `_includes/docs/test/integration/macos-example.md` (38 linhas)
+- [x] `_includes/docs/test/integration/linux-example.md` (20 linhas)
+- [x] `_includes/docs/test/integration/macos-example.md` (40 linhas)
 - [x] `_includes/docs/test/integration/windows-example.md` (37 linhas)
-- [ ] `_includes/docs/testing/trees/focus-tree.md` (74 linhas)
+- [x] `_includes/docs/testing/trees/focus-tree.md` (76 linhas)
 - [x] `_includes/docs/testing/trees/layer-tree.md` (55 linhas)
-- [ ] `_includes/docs/testing/trees/render-tree.md` (605 linhas)
-- [ ] `_includes/docs/testing/trees/semantic-tree.md` (27 linhas)
-- [ ] `_includes/docs/testing/trees/widget-tree.md` (181 linhas)
+- [x] `_includes/docs/testing/trees/render-tree.md` (607 linhas)
+- [x] `_includes/docs/testing/trees/semantic-tree.md` (29 linhas)
+- [x] `_includes/docs/testing/trees/widget-tree.md` (183 linhas)
 - [x] `_includes/docs/vscode-flutter-bar/hot-reload.md` (5 linhas)
 - [x] `_includes/docs/vscode-flutter-bar/hot-restart.md` (5 linhas)
 - [x] `_includes/docs/vscode-flutter-bar/inspector.md` (5 linhas)
@@ -113,9 +113,9 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `_includes/docs/vscode-flutter-bar/step-over.md` (5 linhas)
 - [x] `_includes/docs/vscode-flutter-bar/stop.md` (5 linhas)
 
-### `add-to-app` (13/17)
+### `add-to-app` (17/17)
 
-- [ ] `add-to-app/android/_initial-route-cached-engine.md` (75 linhas)
+- [x] `add-to-app/android/_initial-route-cached-engine.md` (74 linhas)
 - [x] `add-to-app/android/add-flutter-fragment.md` (683 linhas)
 - [x] `add-to-app/android/add-flutter-screen.md` (452 linhas)
 - [x] `add-to-app/android/add-flutter-view.md` (152 linhas)
@@ -126,34 +126,34 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `add-to-app/index.md` (232 linhas)
 - [x] `add-to-app/ios/add-flutter-screen.md` (1177 linhas)
 - [x] `add-to-app/ios/index.md` (6 linhas)
-- [ ] `add-to-app/ios/project-setup-legacy.md` (211 linhas)
+- [x] `add-to-app/ios/project-setup-legacy.md` (204 linhas)
 - [x] `add-to-app/ios/project-setup.md` (276 linhas)
-- [ ] `add-to-app/macos/add-flutter-screen.md` (338 linhas)
-- [ ] `add-to-app/macos/project-setup.md` (215 linhas)
+- [x] `add-to-app/macos/add-flutter-screen.md` (339 linhas)
+- [x] `add-to-app/macos/project-setup.md` (217 linhas)
 - [x] `add-to-app/multiple-flutters.md` (95 linhas)
 - [x] `add-to-app/performance.md` (147 linhas)
 
-### `ai` (5/19)
+### `ai` (19/19)
 
 - [x] `ai/ai-toolkit/chat-client-sample.md` (37 linhas)
 - [x] `ai/ai-toolkit/custom-llm-providers.md` (284 linhas)
 - [x] `ai/ai-toolkit/feature-integration.md` (778 linhas)
 - [x] `ai/ai-toolkit/index.md` (254 linhas)
 - [x] `ai/ai-toolkit/user-experience.md` (208 linhas)
-- [ ] `ai/best-practices/index.md` (63 linhas)
-- [ ] `ai/best-practices/mode-of-interaction.md` (108 linhas)
-- [ ] `ai/best-practices/prompting.md` (208 linhas)
-- [ ] `ai/best-practices/structure-output.md` (148 linhas)
-- [ ] `ai/best-practices/tool-calls.md` (503 linhas)
-- [ ] `ai/flutter-bench/cujs.md` (33 linhas)
-- [ ] `ai/flutter-bench/index.md` (9 linhas)
-- [ ] `ai/genui/components.md` (117 linhas)
-- [ ] `ai/genui/get-started.md` (834 linhas)
-- [ ] `ai/genui/index.md` (60 linhas)
-- [ ] `ai/genui/input-events.md` (210 linhas)
-- [ ] `ai/get-started.md` (338 linhas)
-- [ ] `ai/index.md` (7 linhas)
-- [ ] `ai/tools.md` (214 linhas)
+- [x] `ai/best-practices/index.md` (62 linhas)
+- [x] `ai/best-practices/mode-of-interaction.md` (119 linhas)
+- [x] `ai/best-practices/prompting.md` (208 linhas)
+- [x] `ai/best-practices/structure-output.md` (150 linhas)
+- [x] `ai/best-practices/tool-calls.md` (503 linhas)
+- [x] `ai/flutter-bench/cujs.md` (35 linhas)
+- [x] `ai/flutter-bench/index.md` (11 linhas)
+- [x] `ai/genui/components.md` (117 linhas)
+- [x] `ai/genui/get-started.md` (836 linhas)
+- [x] `ai/genui/index.md` (60 linhas)
+- [x] `ai/genui/input-events.md` (215 linhas)
+- [x] `ai/get-started.md` (343 linhas)
+- [x] `ai/index.md` (8 linhas)
+- [x] `ai/tools.md` (216 linhas)
 
 ### `app-architecture` (16/16)
 
@@ -196,17 +196,17 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `contribute/docs/writing.md` (96 linhas)
 - [x] `contribute/index.md` (498 linhas)
 
-### `cookbook` (86/90)
+### `cookbook` (90/90)
 
 - [x] `cookbook/animation/animated-container.md` (228 linhas)
 - [x] `cookbook/animation/index.md` (7 linhas)
 - [x] `cookbook/animation/opacity-animation.md` (208 linhas)
 - [x] `cookbook/animation/page-route-animation.md` (289 linhas)
 - [x] `cookbook/animation/physics-simulation.md` (415 linhas)
-- [ ] `cookbook/audio/index.md` (6 linhas)
-- [ ] `cookbook/audio/record.md` (138 linhas)
-- [ ] `cookbook/audio/soloud.md` (209 linhas)
-- [ ] `cookbook/design/cupertino-sheets.md` (143 linhas)
+- [x] `cookbook/audio/index.md` (7 linhas)
+- [x] `cookbook/audio/record.md` (139 linhas)
+- [x] `cookbook/audio/soloud.md` (210 linhas)
+- [x] `cookbook/design/cupertino-sheets.md` (144 linhas)
 - [x] `cookbook/design/drawer.md` (295 linhas)
 - [x] `cookbook/design/fonts.md` (418 linhas)
 - [x] `cookbook/design/index.md` (7 linhas)
@@ -293,13 +293,13 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 
 - [x] `dash/index.md` (155 linhas)
 
-### `data-and-backend` (13/14)
+### `data-and-backend` (14/14)
 
 - [x] `data-and-backend/firebase.md` (295 linhas)
 - [x] `data-and-backend/google-apis.md` (236 linhas)
 - [x] `data-and-backend/index.md` (6 linhas)
 - [x] `data-and-backend/networking.md` (49 linhas)
-- [ ] `data-and-backend/persistence/choose-a-database.md` (200 linhas)
+- [x] `data-and-backend/persistence/choose-a-database.md` (199 linhas)
 - [x] `data-and-backend/persistence/index.md` (6 linhas)
 - [x] `data-and-backend/serialization/index.md` (6 linhas)
 - [x] `data-and-backend/serialization/json.md` (548 linhas)
@@ -310,13 +310,13 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `data-and-backend/state-mgmt/options.md` (126 linhas)
 - [x] `data-and-backend/state-mgmt/simple.md` (451 linhas)
 
-### `deployment` (11/13)
+### `deployment` (13/13)
 
 - [x] `deployment/android.md` (845 linhas)
 - [x] `deployment/cd.md` (331 linhas)
 - [x] `deployment/flavors-ios.md` (551 linhas)
-- [ ] `deployment/flavors-linux.md` (326 linhas)
-- [ ] `deployment/flavors-windows.md` (340 linhas)
+- [x] `deployment/flavors-linux.md` (325 linhas)
+- [x] `deployment/flavors-windows.md` (343 linhas)
 - [x] `deployment/flavors.md` (391 linhas)
 - [x] `deployment/index.md` (6 linhas)
 - [x] `deployment/ios.md` (512 linhas)
@@ -330,50 +330,50 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 
 - [x] `embedded/index.md` (47 linhas)
 
-### `flutter-for` (9/10)
+### `flutter-for` (10/10)
 
 - [x] `flutter-for/android-devs.md` (2410 linhas)
 - [x] `flutter-for/compose-devs.md` (864 linhas)
 - [x] `flutter-for/dart-swift-concurrency.md` (304 linhas)
 - [x] `flutter-for/declarative.md` (78 linhas)
-- [ ] `flutter-for/index.md` (10 linhas)
+- [x] `flutter-for/index.md` (11 linhas)
 - [x] `flutter-for/react-native-devs.md` (2619 linhas)
 - [x] `flutter-for/swiftui-devs.md` (1104 linhas)
 - [x] `flutter-for/uikit-devs.md` (2117 linhas)
 - [x] `flutter-for/web-devs.md` (999 linhas)
 - [x] `flutter-for/xamarin-forms-devs.md` (2527 linhas)
 
-### `install` (6/8)
+### `install` (8/8)
 
 - [x] `install/add-to-path.md` (82 linhas)
 - [x] `install/archive.md` (162 linhas)
-- [ ] `install/index.md` (109 linhas)
+- [x] `install/index.md` (110 linhas)
 - [x] `install/manual.md` (333 linhas)
 - [x] `install/troubleshoot.md` (319 linhas)
 - [x] `install/uninstall.md` (173 linhas)
 - [x] `install/upgrade.md` (219 linhas)
-- [ ] `install/with-vs-code.md` (21 linhas)
+- [x] `install/with-vs-code.md` (22 linhas)
 
-### `interop` (0/6)
+### `interop` (6/6)
 
-- [ ] `interop/bind-native-code.md` (283 linhas)
-- [ ] `interop/dart-ffi.md` (62 linhas)
-- [ ] `interop/ffigen.md` (155 linhas)
-- [ ] `interop/index.md` (167 linhas)
-- [ ] `interop/jnigen.md` (139 linhas)
-- [ ] `interop/pigeon.md` (152 linhas)
+- [x] `interop/bind-native-code.md` (300 linhas)
+- [x] `interop/dart-ffi.md` (66 linhas)
+- [x] `interop/ffigen.md` (158 linhas)
+- [x] `interop/index.md` (169 linhas)
+- [x] `interop/jnigen.md` (141 linhas)
+- [x] `interop/pigeon.md` (150 linhas)
 
 ### `jobs` (2/2)
 
 - [x] `jobs/_template.md` (69 linhas)
 - [x] `jobs/index.md` (11 linhas)
 
-### `learn` (16/20)
+### `learn` (20/20)
 
-- [ ] `learn/index.md` (42 linhas)
-- [ ] `learn/pathway/how-flutter-works.md` (128 linhas)
-- [ ] `learn/pathway/index.md` (86 linhas)
-- [ ] `learn/pathway/quick-install.md` (24 linhas)
+- [x] `learn/index.md` (43 linhas)
+- [x] `learn/pathway/how-flutter-works.md` (129 linhas)
+- [x] `learn/pathway/index.md` (87 linhas)
+- [x] `learn/pathway/quick-install.md` (25 linhas)
 - [x] `learn/pathway/tutorial/adaptive-layout.md` (418 linhas)
 - [x] `learn/pathway/tutorial/advanced-ui.md` (606 linhas)
 - [x] `learn/pathway/tutorial/change-notifier.md` (277 linhas)
@@ -391,10 +391,10 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `learn/pathway/tutorial/user-input.md` (762 linhas)
 - [x] `learn/pathway/tutorial/widget-fundamentals.md` (391 linhas)
 
-### `packages-and-plugins` (8/9)
+### `packages-and-plugins` (9/9)
 
 - [x] `packages-and-plugins/background-processes.md` (31 linhas)
-- [ ] `packages-and-plugins/dependency-management.md` (262 linhas)
+- [x] `packages-and-plugins/dependency-management.md` (259 linhas)
 - [x] `packages-and-plugins/developing-packages.md` (1138 linhas)
 - [x] `packages-and-plugins/favorites.md` (128 linhas)
 - [x] `packages-and-plugins/index.md` (7 linhas)
@@ -403,9 +403,9 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `packages-and-plugins/swift-package-manager/index.md` (7 linhas)
 - [x] `packages-and-plugins/using-packages.md` (495 linhas)
 
-### `perf` (12/13)
+### `perf` (13/13)
 
-- [ ] `perf/antialiasing.md` (78 linhas)
+- [x] `perf/antialiasing.md` (80 linhas)
 - [x] `perf/app-size.md` (206 linhas)
 - [x] `perf/appendix.md` (156 linhas)
 - [x] `perf/best-practices.md` (448 linhas)
@@ -419,13 +419,13 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `perf/ui-performance.md` (380 linhas)
 - [x] `perf/web-performance.md` (58 linhas)
 
-### `platform-integration` (41/45)
+### `platform-integration` (45/45)
 
 - [x] `platform-integration/android/call-jetpack-apis.md` (87 linhas)
 - [x] `platform-integration/android/chromeos.md` (68 linhas)
 - [x] `platform-integration/android/compose-activity.md` (370 linhas)
 - [x] `platform-integration/android/index.md` (6 linhas)
-- [ ] `platform-integration/android/local-network-permission.md` (154 linhas)
+- [x] `platform-integration/android/local-network-permission.md` (155 linhas)
 - [x] `platform-integration/android/platform-views.md` (573 linhas)
 - [x] `platform-integration/android/predictive-back.md` (86 linhas)
 - [x] `platform-integration/android/restore-state-android.md` (151 linhas)
@@ -436,14 +436,14 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `platform-integration/index.md` (377 linhas)
 - [x] `platform-integration/ios/app-extensions.md` (694 linhas)
 - [x] `platform-integration/ios/apple-frameworks.md` (114 linhas)
-- [ ] `platform-integration/ios/index.md` (5 linhas)
+- [x] `platform-integration/ios/index.md` (6 linhas)
 - [x] `platform-integration/ios/ios-app-clip.md` (407 linhas)
 - [x] `platform-integration/ios/ios-debugging.md` (20 linhas)
 - [x] `platform-integration/ios/launch-screen.md` (42 linhas)
 - [x] `platform-integration/ios/platform-views.md` (491 linhas)
 - [x] `platform-integration/ios/restore-state-ios.md` (23 linhas)
 - [x] `platform-integration/ios/setup.md` (292 linhas)
-- [ ] `platform-integration/legacy-ffi-plugin.md` (403 linhas)
+- [x] `platform-integration/legacy-ffi-plugin.md` (378 linhas)
 - [x] `platform-integration/linux/building.md` (99 linhas)
 - [x] `platform-integration/linux/index.md` (6 linhas)
 - [x] `platform-integration/linux/setup.md` (146 linhas)
@@ -455,7 +455,7 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `platform-integration/web/building.md` (164 linhas)
 - [x] `platform-integration/web/embedding-flutter-web.md` (424 linhas)
 - [x] `platform-integration/web/faq.md` (310 linhas)
-- [ ] `platform-integration/web/index.md` (108 linhas)
+- [x] `platform-integration/web/index.md` (108 linhas)
 - [x] `platform-integration/web/initialization.md` (365 linhas)
 - [x] `platform-integration/web/setup.md` (120 linhas)
 - [x] `platform-integration/web/wasm.md` (287 linhas)
@@ -467,13 +467,13 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `platform-integration/windows/index.md` (6 linhas)
 - [x] `platform-integration/windows/setup.md` (166 linhas)
 
-### `reference` (8/9)
+### `reference` (9/9)
 
 - [x] `reference/crash-reporting.md` (61 linhas)
 - [x] `reference/create-new-app.md` (443 linhas)
 - [x] `reference/flutter-cli.md` (87 linhas)
 - [x] `reference/index.md` (8 linhas)
-- [ ] `reference/learning-resources.md` (19 linhas)
+- [x] `reference/learning-resources.md` (20 linhas)
 - [x] `reference/security-false-positives.md` (217 linhas)
 - [x] `reference/supported-platforms.md` (155 linhas)
 - [x] `reference/user-surveys.md` (41 linhas)
@@ -486,7 +486,7 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `release/index.md` (7 linhas)
 - [x] `release/whats-new.md` (219 linhas)
 
-### `resources` (12/13)
+### `resources` (13/13)
 
 - [x] `resources/ads-overview.md` (53 linhas)
 - [x] `resources/architectural-overview.md` (1097 linhas)
@@ -495,7 +495,7 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `resources/faq.md` (763 linhas)
 - [x] `resources/games-toolkit.md` (397 linhas)
 - [x] `resources/in-app-purchases-overview.md` (20 linhas)
-- [ ] `resources/index.md` (7 linhas)
+- [x] `resources/index.md` (8 linhas)
 - [x] `resources/inside-flutter.md` (677 linhas)
 - [x] `resources/news-toolkit.md` (13 linhas)
 - [x] `resources/payments-overview.md` (20 linhas)
@@ -506,7 +506,7 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 
 - [x] `security/index.md` (138 linhas)
 
-### `testing` (14/20)
+### `testing` (20/20)
 
 - [x] `testing/build-modes.md` (137 linhas)
 - [x] `testing/code-debugging.md` (799 linhas)
@@ -519,17 +519,17 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `testing/overview.md` (147 linhas)
 - [x] `testing/plugins-in-tests.md` (154 linhas)
 - [x] `testing/testing-plugins.md` (212 linhas)
-- [ ] `testing/vscode-flutter-bar/_hot-reload.md` (1 linhas)
-- [ ] `testing/vscode-flutter-bar/_hot-restart.md` (1 linhas)
+- [x] `testing/vscode-flutter-bar/_hot-reload.md` (3 linhas)
+- [x] `testing/vscode-flutter-bar/_hot-restart.md` (3 linhas)
 - [x] `testing/vscode-flutter-bar/_inspector.md` (5 linhas)
-- [ ] `testing/vscode-flutter-bar/_pause.md` (1 linhas)
-- [ ] `testing/vscode-flutter-bar/_play.md` (1 linhas)
+- [x] `testing/vscode-flutter-bar/_pause.md` (3 linhas)
+- [x] `testing/vscode-flutter-bar/_play.md` (3 linhas)
 - [x] `testing/vscode-flutter-bar/_step-into.md` (5 linhas)
-- [ ] `testing/vscode-flutter-bar/_step-out.md` (1 linhas)
+- [x] `testing/vscode-flutter-bar/_step-out.md` (3 linhas)
 - [x] `testing/vscode-flutter-bar/_step-over.md` (5 linhas)
-- [ ] `testing/vscode-flutter-bar/_stop.md` (1 linhas)
+- [x] `testing/vscode-flutter-bar/_stop.md` (3 linhas)
 
-### `tools` (26/27)
+### `tools` (27/27)
 
 - [x] `tools/android-studio.md` (523 linhas)
 - [x] `tools/devtools/android-studio.md` (46 linhas)
@@ -537,7 +537,7 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `tools/devtools/cli.md` (70 linhas)
 - [x] `tools/devtools/console.md` (68 linhas)
 - [x] `tools/devtools/cpu-profiler.md` (229 linhas)
-- [ ] `tools/devtools/custom-tool.md` (499 linhas)
+- [x] `tools/devtools/custom-tool.md` (500 linhas)
 - [x] `tools/devtools/debugger.md` (90 linhas)
 - [x] `tools/devtools/deep-links.md` (31 linhas)
 - [x] `tools/devtools/extensions.md` (87 linhas)
@@ -563,7 +563,7 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 
 - [x] `tos/index.md` (37 linhas)
 
-### `ui` (49/50)
+### `ui` (50/50)
 
 - [x] `ui/accessibility/accessibility-testing.md` (132 linhas)
 - [x] `ui/accessibility/assistive-technologies.md` (157 linhas)
@@ -596,7 +596,7 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `ui/design/material/index.md` (17 linhas)
 - [x] `ui/design/text/index.md` (7 linhas)
 - [x] `ui/design/text/typography.md` (161 linhas)
-- [ ] `ui/dot-shorthands.md` (121 linhas)
+- [x] `ui/dot-shorthands.md` (126 linhas)
 - [x] `ui/index.md` (976 linhas)
 - [x] `ui/interactivity/actions-and-shortcuts.md` (642 linhas)
 - [x] `ui/interactivity/focus.md` (561 linhas)
@@ -616,7 +616,7 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `ui/navigation/url-strategies.md` (86 linhas)
 - [x] `ui/widgets/index.md` (91 linhas)
 
-### `release/breaking-changes` (165/192)
+### `release/breaking-changes` (191/192)
 
 - [x] `release/breaking-changes/1-22-deprecations.md` (836 linhas)
 - [x] `release/breaking-changes/2-10-deprecations.md` (658 linhas)
@@ -636,7 +636,7 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `release/breaking-changes/android-activity-control-surface-attach.md` (145 linhas)
 - [x] `release/breaking-changes/android-java-gradle-migration-guide.md` (146 linhas)
 - [x] `release/breaking-changes/android-kitkat-deprecation.md` (32 linhas)
-- [ ] `release/breaking-changes/android-large-screens-restrictions-ignored.md` (57 linhas)
+- [x] `release/breaking-changes/android-large-screens-restrictions-ignored.md` (58 linhas)
 - [x] `release/breaking-changes/android-predictive-back.md` (388 linhas)
 - [x] `release/breaking-changes/android-setIsRunningInRobolectricTest-removed.md` (87 linhas)
 - [x] `release/breaking-changes/android-surface-plugins.md` (190 linhas)
@@ -659,28 +659,28 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `release/breaking-changes/context-menus.md` (326 linhas)
 - [x] `release/breaking-changes/cupertino-icons-1.0.0.md` (134 linhas)
 - [x] `release/breaking-changes/cupertino-tab-bar-localizations.md` (179 linhas)
-- [ ] `release/breaking-changes/decouple-page-transition-builders.md` (90 linhas)
+- [x] `release/breaking-changes/decouple-page-transition-builders.md` (91 linhas)
 - [x] `release/breaking-changes/deep-links-flag-change.md` (67 linhas)
 - [x] `release/breaking-changes/default-abi-filters-android.md` (105 linhas)
-- [ ] `release/breaking-changes/default-android-page-transition.md` (215 linhas)
+- [x] `release/breaking-changes/default-android-page-transition.md` (216 linhas)
 - [x] `release/breaking-changes/default-desktop-scrollbars.md` (289 linhas)
 - [x] `release/breaking-changes/default-scroll-behavior-drag.md` (220 linhas)
 - [x] `release/breaking-changes/default-systemuimode-edge-to-edge.md` (163 linhas)
 - [x] `release/breaking-changes/deprecate-buttonbar.md` (156 linhas)
-- [ ] `release/breaking-changes/deprecate-contains-semantics.md` (88 linhas)
+- [x] `release/breaking-changes/deprecate-contains-semantics.md` (89 linhas)
 - [x] `release/breaking-changes/deprecate-dropdownbuttonformfield-value.md` (77 linhas)
 - [x] `release/breaking-changes/deprecate-focusable.md` (113 linhas)
 - [x] `release/breaking-changes/deprecate-inputdecoration-maintainhintheight.md` (81 linhas)
-- [ ] `release/breaking-changes/deprecate-onreorder-callback.md` (172 linhas)
+- [x] `release/breaking-changes/deprecate-onreorder-callback.md` (173 linhas)
 - [x] `release/breaking-changes/deprecate-overlay-portal-targets-root.md` (114 linhas)
-- [ ] `release/breaking-changes/deprecate-text-input-connection-set-style.md` (77 linhas)
+- [x] `release/breaking-changes/deprecate-text-input-connection-set-style.md` (78 linhas)
 - [x] `release/breaking-changes/deprecate-textscalefactor.md` (306 linhas)
 - [x] `release/breaking-changes/deprecate-themedata-dialogbackgroundcolor.md` (82 linhas)
 - [x] `release/breaking-changes/deprecate-themedata-indicatorcolor.md` (84 linhas)
 - [x] `release/breaking-changes/describe-enum.md` (99 linhas)
 - [x] `release/breaking-changes/dialog-border-radius.md` (99 linhas)
 - [x] `release/breaking-changes/dispose.md` (67 linhas)
-- [ ] `release/breaking-changes/dropdownbutton-enabled-property.md` (151 linhas)
+- [x] `release/breaking-changes/dropdownbutton-enabled-property.md` (149 linhas)
 - [x] `release/breaking-changes/editable-text-focus-attachment.md` (118 linhas)
 - [x] `release/breaking-changes/editable-text-scroll-into-view.md` (44 linhas)
 - [x] `release/breaking-changes/eliminating-nullok-parameters.md` (256 linhas)
@@ -700,7 +700,7 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `release/breaking-changes/form-semantics.md` (84 linhas)
 - [x] `release/breaking-changes/gesture-recognizer-add-allowed-pointer.md` (91 linhas)
 - [x] `release/breaking-changes/hero-controller-scope.md` (145 linhas)
-- [ ] `release/breaking-changes/icondata-class-marked-final.md` (150 linhas)
+- [x] `release/breaking-changes/icondata-class-marked-final.md` (151 linhas)
 - [x] `release/breaking-changes/ignoringsemantics-migration.md` (161 linhas)
 - [x] `release/breaking-changes/image-cache-and-provider.md` (152 linhas)
 - [x] `release/breaking-changes/image-filter-blur-tilemode.md` (90 linhas)
@@ -714,22 +714,22 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `release/breaking-changes/key-event-migration.md` (308 linhas)
 - [x] `release/breaking-changes/kotlin-version.md` (77 linhas)
 - [x] `release/breaking-changes/layout-builder-optimization.md` (308 linhas)
-- [ ] `release/breaking-changes/linux-merged-threads.md` (49 linhas)
-- [ ] `release/breaking-changes/list-tile-color-warning.md` (119 linhas)
+- [x] `release/breaking-changes/linux-merged-threads.md` (50 linhas)
+- [x] `release/breaking-changes/list-tile-color-warning.md` (119 linhas)
 - [x] `release/breaking-changes/macos-windows-merged-threads.md` (54 linhas)
 - [x] `release/breaking-changes/material-3-default.md` (99 linhas)
 - [x] `release/breaking-changes/material-3-migration.md` (517 linhas)
 - [x] `release/breaking-changes/material-chip-button-semantics.md` (177 linhas)
-- [ ] `release/breaking-changes/material-color-utilities.md` (48 linhas)
+- [x] `release/breaking-changes/material-color-utilities.md` (49 linhas)
 - [x] `release/breaking-changes/material-design-3-token-update.md` (108 linhas)
 - [x] `release/breaking-changes/material-localized-strings.md` (93 linhas)
 - [x] `release/breaking-changes/material-state.md` (119 linhas)
 - [x] `release/breaking-changes/material-theme-system-updates.md` (79 linhas)
-- [ ] `release/breaking-changes/material-ui-and-cupertino-ui.md` (243 linhas)
+- [x] `release/breaking-changes/material-ui-and-cupertino-ui.md` (246 linhas)
 - [x] `release/breaking-changes/menus-text-style.md` (208 linhas)
-- [ ] `release/breaking-changes/migrate-to-built-in-kotlin/for-app-developers.md` (417 linhas)
-- [ ] `release/breaking-changes/migrate-to-built-in-kotlin/for-plugin-authors.md` (291 linhas)
-- [ ] `release/breaking-changes/migrate-to-built-in-kotlin/index.md` (105 linhas)
+- [x] `release/breaking-changes/migrate-to-built-in-kotlin/for-app-developers.md` (416 linhas)
+- [x] `release/breaking-changes/migrate-to-built-in-kotlin/for-plugin-authors.md` (292 linhas)
+- [x] `release/breaking-changes/migrate-to-built-in-kotlin/index.md` (106 linhas)
 - [x] `release/breaking-changes/mock-platform-channels.md` (179 linhas)
 - [x] `release/breaking-changes/modal-router-semantics-order.md` (164 linhas)
 - [x] `release/breaking-changes/mouse-tracker-moved-to-rendering.md` (84 linhas)
@@ -741,7 +741,7 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `release/breaking-changes/new-color-scheme-roles.md` (163 linhas)
 - [x] `release/breaking-changes/notifications.md` (119 linhas)
 - [x] `release/breaking-changes/nullable-cupertinothemedata-brightness.md` (87 linhas)
-- [ ] `release/breaking-changes/opengles-render-to-texture-top-down.md` (100 linhas)
+- [x] `release/breaking-changes/opengles-render-to-texture-top-down.md` (100 linhas)
 - [x] `release/breaking-changes/overlay-entry-rebuilds.md` (123 linhas)
 - [x] `release/breaking-changes/page-transition-replaced-by-ZoomPageTransitionBuilder.md` (152 linhas)
 - [x] `release/breaking-changes/pageview-controller.md` (41 linhas)
@@ -753,30 +753,30 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `release/breaking-changes/primary-scroll-controller-desktop.md` (214 linhas)
 - [x] `release/breaking-changes/radio-api-redesign.md` (246 linhas)
 - [x] `release/breaking-changes/raw-images-on-web-uses-correct-origin-and-colors.md` (180 linhas)
-- [ ] `release/breaking-changes/raw-menu-anchor-close-order.md` (147 linhas)
-- [ ] `release/breaking-changes/remove-describeEnum.md` (58 linhas)
+- [x] `release/breaking-changes/raw-menu-anchor-close-order.md` (148 linhas)
+- [x] `release/breaking-changes/remove-describeEnum.md` (58 linhas)
 - [x] `release/breaking-changes/remove-semantics-elevation-and-thickness.md` (71 linhas)
 - [x] `release/breaking-changes/renderbox-dry-layout.md` (126 linhas)
 - [x] `release/breaking-changes/rendereditable-layout-before-hit-test.md` (138 linhas)
 - [x] `release/breaking-changes/rendering-changes.md` (80 linhas)
-- [ ] `release/breaking-changes/restrict-android-engine-flags-release-mode.md` (269 linhas)
+- [x] `release/breaking-changes/restrict-android-engine-flags-release-mode.md` (270 linhas)
 - [x] `release/breaking-changes/route-information-uri.md` (108 linhas)
 - [x] `release/breaking-changes/route-navigator-refactoring.md` (163 linhas)
 - [x] `release/breaking-changes/route-transition-record-and-transition-delegate.md` (153 linhas)
 - [x] `release/breaking-changes/routesettings-copywith-migration.md` (50 linhas)
 - [x] `release/breaking-changes/scaffold-messenger.md` (207 linhas)
 - [x] `release/breaking-changes/scribble-text-input-client.md` (101 linhas)
-- [ ] `release/breaking-changes/scroll-cache-extent.md` (124 linhas)
+- [x] `release/breaking-changes/scroll-cache-extent.md` (125 linhas)
 - [x] `release/breaking-changes/scrollable-alert-dialog.md` (205 linhas)
-- [ ] `release/breaking-changes/semantics-header-heading-level.md` (120 linhas)
-- [ ] `release/breaking-changes/separated-builder-find-child-index-callback.md` (158 linhas)
+- [x] `release/breaking-changes/semantics-header-heading-level.md` (121 linhas)
+- [x] `release/breaking-changes/separated-builder-find-child-index-callback.md` (158 linhas)
 - [x] `release/breaking-changes/services-scheduler-dependency-reversed.md` (72 linhas)
 - [x] `release/breaking-changes/shortcut-key-event-migration.md` (176 linhas)
 - [x] `release/breaking-changes/snackbar-with-action-behavior-update.md` (100 linhas)
-- [ ] `release/breaking-changes/soft-hyphen-rendering.md` (156 linhas)
+- [x] `release/breaking-changes/soft-hyphen-rendering.md` (157 linhas)
 - [x] `release/breaking-changes/splash-screen-migration.md` (92 linhas)
 - [x] `release/breaking-changes/spring-description-underdamped.md` (144 linhas)
-- [ ] `release/breaking-changes/stricter-android-entrypoint-intent-verification.md` (221 linhas)
+- [x] `release/breaking-changes/stricter-android-entrypoint-intent-verification.md` (222 linhas)
 - [x] `release/breaking-changes/supplemental-maybeOf-migration.md` (171 linhas)
 - [x] `release/breaking-changes/system_context_menu_controller_show.md` (122 linhas)
 - [x] `release/breaking-changes/tab-alignment.md` (113 linhas)
@@ -796,12 +796,12 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `release/breaking-changes/updated-material-3-slider.md` (97 linhas)
 - [x] `release/breaking-changes/use-maxLengthEnforcement-instead-of-maxLengthEnforced.md` (254 linhas)
 - [x] `release/breaking-changes/v1-android-embedding.md` (82 linhas)
-- [ ] `release/breaking-changes/viewport-fit-cover-safe-area.md` (106 linhas)
+- [x] `release/breaking-changes/viewport-fit-cover-safe-area.md` (107 linhas)
 - [x] `release/breaking-changes/visibility-maintainfocusability.md` (68 linhas)
 - [x] `release/breaking-changes/web-golden-comparator.md` (100 linhas)
 - [x] `release/breaking-changes/wide-gamut-cupertino-dynamic-color.md` (123 linhas)
 - [x] `release/breaking-changes/wide-gamut-framework.md` (234 linhas)
-- [ ] `release/breaking-changes/widgetspan-rtl-bidi-order.md` (93 linhas)
+- [x] `release/breaking-changes/widgetspan-rtl-bidi-order.md` (94 linhas)
 - [x] `release/breaking-changes/win-lifecycle-process-function.md` (60 linhas)
 - [x] `release/breaking-changes/window-singleton.md` (383 linhas)
 - [x] `release/breaking-changes/windows-build-architecture.md` (66 linhas)
@@ -811,20 +811,20 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `release/breaking-changes/windows-version-information.md` (48 linhas)
 - [x] `release/breaking-changes/zone-errors.md` (157 linhas)
 
-### `release/release-notes` (30/38)
+### `release/release-notes` (38/38)
 
 - [x] `release/release-notes/changelogs/changelog-1.12.13.md` (3832 linhas)
-- [x] `release/release-notes/changelogs/changelog-1.2.1.md` (1994 linhas)
+- [x] `release/release-notes/changelogs/changelog-1.2.1.md` (1990 linhas)
 - [x] `release/release-notes/changelogs/changelog-1.5.4.md` (2332 linhas)
 - [x] `release/release-notes/changelogs/changelog-1.7.8.md` (2607 linhas)
-- [ ] `release/release-notes/changelogs/changelog-1.9.1.md` (1896 linhas)
+- [x] `release/release-notes/changelogs/changelog-1.9.1.md` (1897 linhas)
 - [x] `release/release-notes/index.md` (207 linhas)
 - [x] `release/release-notes/release-notes-0.0.21-1.0.0.md` (367 linhas)
-- [ ] `release/release-notes/release-notes-1.12.13.md` (3017 linhas)
-- [x] `release/release-notes/release-notes-1.17.0.md` (12497 linhas)
+- [x] `release/release-notes/release-notes-1.12.13.md` (2960 linhas)
+- [x] `release/release-notes/release-notes-1.17.0.md` (12495 linhas)
 - [x] `release/release-notes/release-notes-1.2.1.md` (293 linhas)
 - [x] `release/release-notes/release-notes-1.20.0.md` (11597 linhas)
-- [x] `release/release-notes/release-notes-1.22.0.md` (8062 linhas)
+- [x] `release/release-notes/release-notes-1.22.0.md` (8058 linhas)
 - [x] `release/release-notes/release-notes-1.5.4.md` (258 linhas)
 - [x] `release/release-notes/release-notes-1.7.8.md` (368 linhas)
 - [x] `release/release-notes/release-notes-1.9.1.md` (1244 linhas)
@@ -834,25 +834,25 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `release/release-notes/release-notes-2.5.0.md` (22210 linhas)
 - [x] `release/release-notes/release-notes-2.8.0.md` (19743 linhas)
 - [x] `release/release-notes/release-notes-3.0.0.md` (665 linhas)
-- [ ] `release/release-notes/release-notes-3.10.0.md` (2797 linhas)
+- [x] `release/release-notes/release-notes-3.10.0.md` (2798 linhas)
 - [x] `release/release-notes/release-notes-3.13.0.md` (815 linhas)
 - [x] `release/release-notes/release-notes-3.16.0.md` (953 linhas)
 - [x] `release/release-notes/release-notes-3.19.0.md` (1446 linhas)
-- [x] `release/release-notes/release-notes-3.22.0.md` (1616 linhas)
-- [ ] `release/release-notes/release-notes-3.24.0.md` (1507 linhas)
+- [x] `release/release-notes/release-notes-3.22.0.md` (1612 linhas)
+- [x] `release/release-notes/release-notes-3.24.0.md` (1508 linhas)
 - [x] `release/release-notes/release-notes-3.27.0.md` (1455 linhas)
 - [x] `release/release-notes/release-notes-3.29.0.md` (746 linhas)
 - [x] `release/release-notes/release-notes-3.3.0.md` (662 linhas)
 - [x] `release/release-notes/release-notes-3.32.0.md` (1050 linhas)
-- [x] `release/release-notes/release-notes-3.35.0.md` (1143 linhas)
-- [ ] `release/release-notes/release-notes-3.38.0.md` (853 linhas)
-- [ ] `release/release-notes/release-notes-3.41.0.md` (900 linhas)
-- [ ] `release/release-notes/release-notes-3.44.0.md` (1018 linhas)
-- [ ] `release/release-notes/release-notes-3.47.0.md` (995 linhas)
+- [x] `release/release-notes/release-notes-3.35.0.md` (1141 linhas)
+- [x] `release/release-notes/release-notes-3.38.0.md` (854 linhas)
+- [x] `release/release-notes/release-notes-3.41.0.md` (901 linhas)
+- [x] `release/release-notes/release-notes-3.44.0.md` (1019 linhas)
+- [x] `release/release-notes/release-notes-3.47.0.md` (996 linhas)
 - [x] `release/release-notes/release-notes-3.7.0.md` (939 linhas)
 - [x] `release/release-notes/release-notes-archive.md` (28 linhas)
 
-### `tools/devtools/release-notes` (53/62)
+### `tools/devtools/release-notes` (62/62)
 
 - [x] `tools/devtools/release-notes/index.md` (29 linhas)
 - [x] `tools/devtools/release-notes/release-notes-2.10.0.md` (49 linhas)
@@ -903,15 +903,15 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `tools/devtools/release-notes/release-notes-2.51.0.md` (30 linhas)
 - [x] `tools/devtools/release-notes/release-notes-2.51.1.md` (48 linhas)
 - [x] `tools/devtools/release-notes/release-notes-2.52.0.md` (39 linhas)
-- [ ] `tools/devtools/release-notes/release-notes-2.53.0.md` (34 linhas)
-- [ ] `tools/devtools/release-notes/release-notes-2.54.0.md` (41 linhas)
-- [ ] `tools/devtools/release-notes/release-notes-2.55.0.md` (16 linhas)
-- [ ] `tools/devtools/release-notes/release-notes-2.57.0.md` (30 linhas)
-- [ ] `tools/devtools/release-notes/release-notes-2.58.0.md` (51 linhas)
-- [ ] `tools/devtools/release-notes/release-notes-2.59.0.md` (30 linhas)
-- [ ] `tools/devtools/release-notes/release-notes-2.60.0.md` (62 linhas)
-- [ ] `tools/devtools/release-notes/release-notes-2.61.0.md` (108 linhas)
-- [ ] `tools/devtools/release-notes/release-notes-2.62.0.md` (42 linhas)
+- [x] `tools/devtools/release-notes/release-notes-2.53.0.md` (35 linhas)
+- [x] `tools/devtools/release-notes/release-notes-2.54.0.md` (42 linhas)
+- [x] `tools/devtools/release-notes/release-notes-2.55.0.md` (17 linhas)
+- [x] `tools/devtools/release-notes/release-notes-2.57.0.md` (31 linhas)
+- [x] `tools/devtools/release-notes/release-notes-2.58.0.md` (51 linhas)
+- [x] `tools/devtools/release-notes/release-notes-2.59.0.md` (31 linhas)
+- [x] `tools/devtools/release-notes/release-notes-2.60.0.md` (61 linhas)
+- [x] `tools/devtools/release-notes/release-notes-2.61.0.md` (109 linhas)
+- [x] `tools/devtools/release-notes/release-notes-2.62.0.md` (43 linhas)
 - [x] `tools/devtools/release-notes/release-notes-2.7.0.md` (71 linhas)
 - [x] `tools/devtools/release-notes/release-notes-2.8.0.md` (100 linhas)
 - [x] `tools/devtools/release-notes/release-notes-2.9.1.md` (42 linhas)

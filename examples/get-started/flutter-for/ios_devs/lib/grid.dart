@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:cupertino_ui/cupertino_ui.dart';
+import 'package:material_ui/material_ui.dart';
 
 void main() {
   runApp(const App());
@@ -15,7 +15,7 @@ class App extends StatelessWidget {
 }
 
 // #docregion grid-example
-const widgets = [
+const widgets = <Widget>[
   Text('Row 1'),
   Icon(CupertinoIcons.arrow_down_square),
   Icon(CupertinoIcons.arrow_up_square),
@@ -41,5 +41,4 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
 // #enddocregion grid-example

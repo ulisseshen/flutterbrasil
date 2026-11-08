@@ -1,15 +1,17 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 // #docregion Http
 import 'package:http/http.dart' as http;
+import 'package:material_ui/material_ui.dart';
+
 // #enddocregion Http
 
 // #docregion fetchAlbum
 Future<Album> fetchAlbum() async {
   final response = await http.get(
     Uri.parse('https://jsonplaceholder.typicode.com/albums/1'),
+    headers: {'Accept': 'application/json'},
   );
 
   if (response.statusCode == 200) {
@@ -97,5 +99,4 @@ class _MyAppState extends State<MyApp> {
 
   // #docregion State
 }
-
 // #enddocregion State

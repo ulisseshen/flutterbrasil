@@ -13,17 +13,20 @@ final String repositoryRoot = () {
   final packageConfigPath = path.fromUri(Isolate.packageConfigSync);
   final maybeRoot = path.dirname(path.dirname(packageConfigPath));
 
-  // As a quick confidence check, verify that the
-  // root directory contains the firebase.json file.
-  if (!File(path.join(maybeRoot, 'firebase.json')).existsSync()) {
+  // Verify this is the website repository by checking
+  // the dash_site tool exists where expected.
+  final dashSitePubspec = path.join(
+    maybeRoot,
+    'tool',
+    'dash_site',
+    'pubspec.yaml',
+  );
+  if (!File(dashSitePubspec).existsSync()) {
     throw StateError('Try running the tool from the root directory.');
   }
 
   return maybeRoot;
 }();
-
-/// The path of the site output directory.
-final String siteOutputDirectoryPath = path.join(repositoryRoot, '_site');
 
 final bool _runningInCi = Platform.environment['CI'] == 'true';
 
@@ -33,7 +36,7 @@ int installJasprCliIfNecessary() {
     'global',
     'activate',
     'jaspr_cli',
-    '^0.21.6',
+    '^0.23.2',
   ]);
 
   if (activateOutput.exitCode != 0) {
@@ -80,6 +83,12 @@ int runPubGetIfNecessary(String directory) {
   }
 
   return 0;
+}
+
+/// Returns [value] if it is non-null and non-empty, otherwise `null`.
+String? nonEmpty(String? value) {
+  if (value == null || value.isEmpty) return null;
+  return value;
 }
 
 extension ArgResultExtensions on ArgResults? {

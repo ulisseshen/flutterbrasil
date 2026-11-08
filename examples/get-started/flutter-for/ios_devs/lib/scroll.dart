@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:cupertino_ui/cupertino_ui.dart';
+import 'package:material_ui/material_ui.dart';
 
 void main() {
   runApp(const App());
@@ -40,8 +40,8 @@ class PersonView extends StatelessWidget {
   }
 }
 
-// then we create a list of people
-final mockPersons = Iterable.generate(
+// Next, create a list of 100 persons.
+final List<Person> mockPersons = List.generate(
   100,
   (index) => Person(name: 'Person #${index + 1}', age: 10 + index),
 );

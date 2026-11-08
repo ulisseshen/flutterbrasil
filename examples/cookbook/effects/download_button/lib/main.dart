@@ -37,9 +37,8 @@ class _ExampleCupertinoDownloadButtonState
   }
 
   void _openDownload(int index) {
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text('Open App ${index + 1}')));
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text('Open App ${index + 1}')));
   }
 
   @override
@@ -130,12 +129,10 @@ abstract class DownloadController implements ChangeNotifier {
 class SimulatedDownloadController extends DownloadController
     with ChangeNotifier {
   SimulatedDownloadController({
-    DownloadStatus downloadStatus = DownloadStatus.notDownloaded,
-    double progress = 0.0,
-    required VoidCallback onOpenDownload,
-  }) : _downloadStatus = downloadStatus,
-       _progress = progress,
-       _onOpenDownload = onOpenDownload;
+    this._downloadStatus = DownloadStatus.notDownloaded,
+    this._progress = 0.0,
+    required this._onOpenDownload,
+  });
 
   DownloadStatus _downloadStatus;
   @override

@@ -8,6 +8,8 @@ import 'dart:io';
 import 'package:args/command_runner.dart';
 import 'package:excerpter/excerpter.dart';
 import 'package:path/path.dart' as path;
+
+import '../sites.dart';
 import '../utils.dart';
 
 final class RefreshExcerptsCommand extends Command<int> {
@@ -40,7 +42,8 @@ final class RefreshExcerptsCommand extends Command<int> {
   String get name => 'refresh-excerpts';
 
   @override
-  Future<int> run() async => _refreshExcerpts(
+  Future<int> run() => _refreshExcerpts(
+    site: selectedSite,
     verboseLogging: argResults.get<bool>(_verboseFlag, false),
     dryRun: argResults.get<bool>(_dryRunFlag, false),
     failOnUpdate: argResults.get<bool>(_failOnUpdateFlag, false),
@@ -48,10 +51,18 @@ final class RefreshExcerptsCommand extends Command<int> {
 }
 
 Future<int> _refreshExcerpts({
+  required Site site,
   bool verboseLogging = false,
   bool dryRun = false,
   bool failOnUpdate = false,
 }) async {
+  if (!site.supportsCodeExcerpts) {
+    stderr.writeln(
+      'Error: The ${site.name} site does not support code excerpts.',
+    );
+    return 1;
+  }
+
   final updater = Updater(
     baseSourcePath: path.join(repositoryRoot, 'examples'),
     defaultPlasterContent: '···',
@@ -60,12 +71,14 @@ Future<int> _refreshExcerpts({
       // Workaround for https://github.com/dart-lang/dart_style/issues/1644
       // to remove extra new lines after block close.
       SimpleReplaceTransform(RegExp(r'[\r\n]+$'), ''),
+      // Compress extra empty lines, working around formatting oddities.
+      SimpleReplaceTransform(RegExp(r'\n{3,}'), '\n\n'),
     ],
   );
 
   print('Running the code excerpt updater...');
   final updateResult = await updater.update(
-    path.join(repositoryRoot, 'src', 'content'),
+    path.join(repositoryRoot, site.contentDirectory),
     makeUpdates: !dryRun,
   );
 

@@ -134,7 +134,6 @@ class ParallaxFlowDelegate extends FlowDelegate {
     required this.listItemContext,
     required this.backgroundImageKey,
   }) : super(repaint: scrollable.position);
-
   // #enddocregion SuperScrollPosition
 
   final ScrollableState scrollable;
@@ -184,9 +183,8 @@ class ParallaxFlowDelegate extends FlowDelegate {
     // Paint the background.
     context.paintChild(
       0,
-      transform: Transform.translate(
-        offset: Offset(0.0, childRect.top),
-      ).transform,
+      transform: Transform.translate(offset: Offset(0.0, childRect.top))
+          .transform,
     );
   }
 
@@ -197,7 +195,6 @@ class ParallaxFlowDelegate extends FlowDelegate {
         listItemContext != oldDelegate.listItemContext ||
         backgroundImageKey != oldDelegate.backgroundImageKey;
   }
-
   // #enddocregion ShouldRepaint
 }
 
@@ -223,8 +220,7 @@ class ParallaxParentData extends ContainerBoxParentData<RenderBox> {}
 
 class RenderParallax extends RenderBox
     with RenderObjectWithChildMixin<RenderBox>, RenderProxyBoxMixin {
-  RenderParallax({required ScrollableState scrollable})
-    : _scrollable = scrollable;
+  RenderParallax({required this._scrollable});
 
   ScrollableState _scrollable;
 

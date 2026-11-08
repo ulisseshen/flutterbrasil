@@ -1,56 +1,34 @@
 ---
-title: Flutter 1.12.13 release notes
-shortTitle: 1.12.13 release notes
-description: Release notes for Flutter 1.12.13.
+title: Notas de lançamento do Flutter 1.12.13
+shortTitle: Notas de lançamento 1.12.13
+description: Notas de lançamento do Flutter 1.12.13.
 skipTemplateRendering: true
+ia-translate: true
 ---
 
-Welcome to Flutter 1.12, our biggest stable release so far!
-In this release, we've merged 1,905 Pull Requests
-from 188 contributors, including both Googlers and
-non-Google contributors! Please see the chart below
-for the number of PRs in each release. Over the past year,
-the number of PRs has been growing in each release
-(except for Flutter 1.9, which was an out-of-band
-release to support Catalina). In the recent
-[GitHub Octoverse report][],
-Flutter is listed as one of the top 3 active repos on GitHub!
+Bem-vindo ao Flutter 1.12, nosso maior lançamento estável até agora!
+Nesta versão, mesclamos 1.905 Pull Requests de 188 colaboradores, incluindo tanto funcionários do Google quanto colaboradores externos! Veja o gráfico abaixo com a quantidade de PRs de cada versão. No último ano, a quantidade de PRs vem crescendo a cada versão (exceto no Flutter 1.9, que foi uma versão extra para oferecer suporte ao Catalina). No recente [relatório GitHub Octoverse][GitHub Octoverse report], o Flutter aparece como um dos 3 repositórios ativos mais importantes do GitHub!
 
-As the holiday season is upon us, we would like to express
-our sincerest appreciation to our amazing developer community
-who believe in Flutter, advocate for Flutter, and contribute to Flutter.
-It's been an incredible year for us all! We look forward to
-working with you in the years to come.
+Como a temporada de festas está chegando, gostaríamos de expressar nossa mais sincera gratidão à nossa incrível comunidade de desenvolvedores, que acredita no Flutter, defende o Flutter e contribui para o Flutter. Foi um ano incrível para todos nós! Esperamos continuar trabalhando com vocês nos próximos anos.
 
-As always, you can find interesting PRs listed below.
-And there are lots of interesting things to mention in this
-release, including:
+Como sempre, você pode encontrar PRs interessantes listados abaixo. E há muitas coisas interessantes para mencionar nesta versão, incluindo:
 
-*   Some breaking API changes
-*   Some severe issues caught and fixed
-*   Web support is now available in the beta channel
-*   MacOS support is enabled in the dev channel as of 1.13
-*   Improved SDK to add Flutter to existing Android/iOS apps
-*   iOS 13 visual refresh including the support for iOS Dark mode
-*   Enhanced tooling experiences
-*   New widgets and features
-*   And more!
+*   Algumas mudanças incompatíveis na API
+*   Alguns problemas graves identificados e corrigidos
+*   O suporte à Web já está disponível no canal beta
+*   O suporte ao macOS está habilitado no canal dev a partir da 1.13
+*   SDK aprimorado para adicionar o Flutter a apps Android/iOS existentes
+*   Redesign visual do iOS 13, incluindo suporte ao modo escuro do iOS
+*   Experiência de ferramentas aprimorada
+*   Novos widgets e recursos
+*   E mais!
 
 
-## Breaking changes
+## Mudanças incompatíveis
 
-In general, we want to avoid introducing breaking changes to Flutter,
-our plugins, or our packages. However, sometimes it is inevitable
-when we need to make our APIs more intuitive.
-We have implemented a new process that invites you to submit
-tests to help us detect breaking changes.
-For more information, see [this post from Ian Hickson][]
-on [flutter-announce][] and the
-[breaking change policy on the Flutter wiki][].
+Em geral, queremos evitar introduzir mudanças incompatíveis no Flutter, nos nossos plugins ou nos nossos pacotes. No entanto, às vezes isso é inevitável quando precisamos tornar nossas APIs mais intuitivas. Implementamos um novo processo que convida você a enviar testes para nos ajudar a detectar mudanças incompatíveis. Para mais informações, veja [este post de Ian Hickson][this post from Ian Hickson] no [flutter-announce][flutter-announce] e a [política de mudanças incompatíveis na wiki do Flutter][breaking change policy on the Flutter wiki].
 
-The following list includes breaking changes in this release.
-Please see the related announcements so that you can move
-forward with your code.
+A lista a seguir inclui as mudanças incompatíveis desta versão. Consulte os anúncios relacionados para que você possa seguir adiante com o seu código.
 
 [37024]({{site.repo.flutter}}/pull/37024) [Implement PageView using SliverLayoutBuilder, Deprecate RenderSliverFillViewport](https://groups.google.com/g/flutter-announce/c/1CUo2GCjrD4/m/VGKsyVirFQAJ)
 
@@ -89,9 +67,9 @@ forward with your code.
 [45135]({{site.repo.flutter}}/pull/45135) [Add option to delay rendering the first frame](https://groups.google.com/g/flutter-announce/c/kBf4cXjD2y4/m/lg19fDnaAgAJ)
 
 
-## Severe crash & performance bugs
+## Bugs graves de travamento e desempenho
 
-In every stable release, we make an effort to improve the quality of Flutter. In 1.12, we fixed several severe issues; this includes the following  crashes and performance issues.
+Em cada versão estável, nos esforçamos para melhorar a qualidade do Flutter. Na 1.12, corrigimos vários problemas graves; isso inclui os seguintes travamentos e problemas de desempenho.
 
 [40009]({{site.repo.flutter}}/pull/40009) Add null check to _IndicatorPainter._tabOffsetsEqual() to prevent crash
 
@@ -116,13 +94,12 @@ In every stable release, we make an effort to improve the quality of Flutter. In
 [45050]({{site.repo.flutter}}/pull/45050) Add a perf test for picture raster cache
 
 
-## New features
+## Novos recursos
 
-Flutter 1.12 introduces several new features including the
-[SliverOpacity]({{site.api}}/flutter/widgets/SliverOpacity-class.html)
-widget, the
-[SliverAnimatedList]({{site.api}}/flutter/widgets/SliverAnimatedList-class.html),
-and the ability to configure a stretch effect for a SliverAppBar.
+O Flutter 1.12 traz vários novos recursos, incluindo o widget
+[SliverOpacity]({{site.api}}/flutter/widgets/SliverOpacity-class.html),
+o [SliverAnimatedList]({{site.api}}/flutter/widgets/SliverAnimatedList-class.html),
+e a possibilidade de configurar um efeito de esticamento para um SliverAppBar.
 
 [37416]({{site.repo.flutter}}/pull/37416) Add MediaQuery.systemGestureInsets to support Android Q
 
@@ -149,17 +126,14 @@ and the ability to configure a stretch effect for a SliverAppBar.
 [45432]({{site.repo.flutter}}/pull/45432) Use RenderSliverPadding to inset SliverFillViewport
 
 
-## iOS support
+## Suporte ao iOS
 
-iOS continues to be a big investment area for Flutter.
-With this release, we've made a visual refresh to our
-Cupertino library to match the iOS 13 look. We now support
-dark mode in the Cupertino widgets, added two new widgets called
+O iOS continua sendo uma grande área de investimento para o Flutter.
+Nesta versão, fizemos uma renovação visual da biblioteca Cupertino para corresponder ao visual do iOS 13. Agora oferecemos suporte ao modo escuro nos widgets Cupertino e adicionamos dois novos widgets, o
 [CupertinoContextMenu]({{site.cupertino_ui}}/CupertinoContextMenu-class.html)
-and [CupertinoSlidingSegmentedControl]({{site.cupertino_ui}}/CupertinoSlidingSegmentedControl-class.html),
-and made improvements to segmented control widgets,
+e o [CupertinoSlidingSegmentedControl]({{site.cupertino_ui}}/CupertinoSlidingSegmentedControl-class.html), além de melhorias nos widgets de controle segmentado,
 [CupertinoAlertDialog]({{site.cupertino_ui}}/CupertinoAlertDialog-class.html),
-and [CupertinoDatePicker]({{site.cupertino_ui}}/CupertinoDatePicker-class.html)
+e [CupertinoDatePicker]({{site.cupertino_ui}}/CupertinoDatePicker-class.html)
 
 [36871]({{site.repo.flutter}}/pull/36871) Audit use of defaultTargetPlatform
 
@@ -330,7 +304,7 @@ and [CupertinoDatePicker]({{site.cupertino_ui}}/CupertinoDatePicker-class.html)
 
 ## Android
 
-In this release, we've merged a list of changes to support Android 10, including a new activity zoom transition.
+Nesta versão, mesclamos uma lista de mudanças para oferecer suporte ao Android 10, incluindo uma nova transição de zoom de atividade.
 
 [37526]({{site.repo.flutter}}/pull/37526) catch errors during gradle update
 
@@ -397,9 +371,9 @@ In this release, we've merged a list of changes to support Android 10, including
 [2239](https://github.com/flutter/plugins/pull/2239) [camera] Android: Improve image streaming by creating a request suita…
 
 
-## Add to App feature
+## Recurso Add to App
 
-We've made a significant upgrade to Add-to-App, the feature that allows you to integrate a Flutter module into your Android or iOS app. Can't wait to try it? Check out the [Add-to-App documentation](/add-to-app).
+Fizemos uma atualização significativa no Add-to-App, o recurso que permite integrar um módulo Flutter ao seu app Android ou iOS. Mal podemos esperar para você experimentar! Confira a [documentação do Add-to-App](/add-to-app).
 
 [41666]({{site.repo.flutter}}/pull/41666) Generate projects using the new Android embedding
 
@@ -954,11 +928,7 @@ We've made a significant upgrade to Add-to-App, the feature that allows you to i
 
 ## Material
 
-Material continues to a focus for the Flutter team.
-In this release, we refreshed all Material widgets
-with dark mode support. Also, we added support for
-extending the height of the Scaffold's body behind
-the app bar, which was contributed by a community member!
+O Material continua sendo um foco da equipe do Flutter. Nesta versão, atualizamos todos os widgets Material com suporte ao modo escuro. Também adicionamos suporte para estender a altura do corpo do Scaffold por trás da barra de aplicativo, contribuição de um membro da comunidade!
 
 [36998]({{site.repo.flutter}}/pull/36998) Added properties in DropdownButtonFormField to match DropdownButton
 
@@ -1101,9 +1071,9 @@ the app bar, which was contributed by a community member!
 [45362]({{site.repo.flutter}}/pull/45362) Add widget of the week video embeddings
 
 
-## Text & Accessibility
+## Texto e acessibilidade
 
-In Text and Accessibility, we have several enhancements in ButtonBar and AlertDialog to prevent text overflow.
+Em Texto e acessibilidade, fizemos várias melhorias no ButtonBar e no AlertDialog para evitar o estouro de texto.
 
 [40468]({{site.repo.flutter}}/pull/40468) Propagate textfield character limits to semantics
 
@@ -1124,12 +1094,10 @@ In Text and Accessibility, we have several enhancements in ButtonBar and AlertDi
 [44605]({{site.repo.flutter}}/pull/44605) Changing RenderEditable.textAlign doesn't break hot reload anymore
 
 
-## Animation & Scroll
+## Animação e rolagem
 
-For animation, we released the
-[TweenAnimationBuilder]({{site.api}}/flutter/widgets/TweenAnimationBuilder-class.html)
-for building custom implicit animations. For more information,
-check out this [TweenAnimationBuilder video](https://www.youtube.com/watch?reload=9&v=6KiPEqzJIKQ) on Youtube.
+Para animações, lançamos o [TweenAnimationBuilder]({{site.api}}/flutter/widgets/TweenAnimationBuilder-class.html)
+para criar animações implícitas personalizadas. Para mais informações, confira este [vídeo sobre o TweenAnimationBuilder](https://www.youtube.com/watch?reload=9&v=6KiPEqzJIKQ) no YouTube.
 
 [38317]({{site.repo.flutter}}/pull/38317) TweenAnimationBuilder for building custom animations without managing an AnimationController
 
@@ -1144,7 +1112,7 @@ check out this [TweenAnimationBuilder video](https://www.youtube.com/watch?reloa
 
 ## Web
 
-We increased our support for web, moving it from the dev channel to the beta channel. For more details, please check [web support blog post](https://blog.flutter.dev/web-support-for-flutter-goes-beta-35b64a1217c0).
+Aumentamos nosso suporte à Web, movendo-o do canal dev para o canal beta. Para mais detalhes, consulte o [post do blog sobre o suporte à Web](https://blog.flutter.dev/web-support-for-flutter-goes-beta-35b64a1217c0).
 
 [37819]({{site.repo.flutter}}/pull/37819) Add HtmlElementView (the Flutter Web platform view)
 
@@ -1359,8 +1327,7 @@ We increased our support for web, moving it from the dev channel to the beta cha
 
 ## Desktop
 
-We are also moving macOS support from tech preview to alpha,
-enabling it in the dev channel.
+Também estamos movendo o suporte ao macOS de prévia técnica para alfa, habilitando-o no canal dev.
 
 [37901]({{site.repo.flutter}}/pull/37901) [macos] Check for special keys before creating a logical key
 
@@ -1475,7 +1442,7 @@ enabling it in the dev channel.
 
 ## Framework
 
-We've fixed many bugs in this release to improve the quality and stability of our framework.
+Corrigimos vários bugs nesta versão para melhorar a qualidade e a estabilidade do nosso framework.
 
 [38643]({{site.repo.flutter}}/pull/38643) PlatformViewLink handles focus
 
@@ -1612,7 +1579,7 @@ We've fixed many bugs in this release to improve the quality and stability of ou
 
 ## Engine
 
-In this update, the core engine continues to see many improvements, including a fix that solves the long-requested scrolling performance issue on iPhoneX/Xs.
+Nesta atualização, o engine principal continua recebendo muitas melhorias, incluindo uma correção para o problema de desempenho de rolagem no iPhoneX/Xs, há muito solicitado.
 
 [9386]({{site.repo.engine}}/pull/9386) [glfw] Send the glfw key data to the framework.
 
@@ -2335,15 +2302,7 @@ In this update, the core engine continues to see many improvements, including a 
 
 ## Plugins
 
-We have made significant improvements in our plugins.
-We upgraded a set of plugins to support web development.
-Also, to support Add to App scenarios,
-we have a new set of APIs available for existing
-Android plugins to be upgraded to.
-If you are currently maintaining an Android plugin.
-We encourage you to check the
-[Migrating your plugin to the new APIs][] documentation,
-and upgrade your plugins accordingly.
+Fizemos melhorias significativas nos nossos plugins. Atualizamos um conjunto de plugins para oferecer suporte ao desenvolvimento para Web. Além disso, para oferecer suporte a cenários de Add to App, há um novo conjunto de APIs disponíveis para que os plugins Android existentes sejam atualizados. Se você mantém atualmente um plugin Android, recomendamos que consulte a documentação de [migração do seu plugin para as novas APIs][Migrating your plugin to the new APIs] e atualize seus plugins de acordo.
 
 [Migrating your plugin to the new APIs]: /release/breaking-changes/plugin-api-migration
 
@@ -2388,17 +2347,14 @@ and upgrade your plugins accordingly.
 
 #### Plugin: Android Alarm Manager
 
-We added the ability to get id in the callback in the Android Alarm Manager plugin.
+Adicionamos a possibilidade de obter o id no callback do plugin Android Alarm Manager.
 
 [1985](https://github.com/flutter/plugins/pull/1985) [android_alarm_manager] Added ability to get id in the callback
 
 
 #### Plugin: Android Intent
 
-We made several improvements in the Android Intent plugin
-including adding the ability to pass intent flags
-(contributed by a community member!),
-and upgrading it to the [new plugin API][].
+Fizemos várias melhorias no plugin Android Intent, incluindo a possibilidade de passar flags de intent (contribuição de um membro da comunidade!) e a atualização para a [nova API de plugins][new plugin API].
 
 [new plugin API]: /release/breaking-changes/plugin-api-migration
 
@@ -2419,15 +2375,14 @@ and upgrading it to the [new plugin API][].
 
 #### Plugin: Battery
 
-General bug fix in the Battery plugin.
+Correção geral de bug no plugin Battery.
 
 [2189](https://github.com/flutter/plugins/pull/2189) [battery] relax the example app minimal required Flutter version
 
 
 #### Plugin: Camera
 
-We upgraded the Camera plugin to the
-[new plugin API][], and made some bug fixes.
+Atualizamos o plugin Camera para a [nova API de plugins][new plugin API] e corrigimos alguns bugs.
 
 [2057](https://github.com/flutter/plugins/pull/2057) [Camera] Fixes NullPointerException
 
@@ -2438,7 +2393,7 @@ We upgraded the Camera plugin to the
 
 #### Plugin: Connectivity
 
-General bug fixes in the Connectivity plugin.
+Correções gerais de bugs no plugin Connectivity.
 
 [2212](https://github.com/flutter/plugins/pull/2212) [connectivity]remove AndroidX constraint
 
@@ -2447,7 +2402,7 @@ General bug fixes in the Connectivity plugin.
 
 #### Plugin: e2e
 
-General bug fixes in the e2e plugin.
+Correções gerais de bugs no plugin e2e.
 
 [2022](https://github.com/flutter/plugins/pull/2022) [instrumentation_adapter] Update README instructions
 
@@ -2468,7 +2423,7 @@ General bug fixes in the e2e plugin.
 
 #### Plugin: Google Maps Flutter
 
-We have made several improvements in the Google Maps plugin including adding support for displaying the traffic layer.
+Fizemos várias melhorias no plugin Google Maps, incluindo suporte para exibir a camada de trânsito.
 
 [1702](https://github.com/flutter/plugins/pull/1702) [google_maps_flutter]Marker drag event
 
@@ -2493,10 +2448,7 @@ We have made several improvements in the Google Maps plugin including adding sup
 
 #### Plugin: Google Sign In
 
-We made some bug fixes in Google Sign in plugin.
-Meanwhile, we converted it to a federated plugin
-to help it scale more efficiently to multiple platforms.
-For more information, refer to [Federated plugins][].
+Fizemos algumas correções de bugs no plugin Google Sign In. Enquanto isso, nós o convertemos para um plugin federado, para escalar com mais eficiência para várias plataformas. Para mais informações, consulte [Plugins federados][Federated plugins].
 
 [Federated plugins]: /packages-and-plugins/developing-packages#federated-plugins
 
@@ -2513,7 +2465,7 @@ For more information, refer to [Federated plugins][].
 
 #### Plugin: Image Picker
 
-General bug fixes in the Image Picker plugin.
+Correções gerais de bugs no plugin Image Picker.
 
 [2070](https://github.com/flutter/plugins/pull/2070) [image_picker] swap width and height when source image orientation is left or right
 
@@ -2522,7 +2474,7 @@ General bug fixes in the Image Picker plugin.
 
 #### Plugin: In App Purchase
 
-General bug fixes in the In App Purchase plugin.
+Correções gerais de bugs no plugin In App Purchase.
 
 [2014](https://github.com/flutter/plugins/pull/2014) [In_App_Purchase] Avoids possible NullPointerException with background registrations.
 
@@ -2535,7 +2487,7 @@ General bug fixes in the In App Purchase plugin.
 
 #### Plugin: Local Auth
 
-General bug fixes in the Local Auth plugin.
+Correções gerais de bugs no plugin Local Auth.
 
 [2047](https://github.com/flutter/plugins/pull/2047) [local_auth] Avoid user confirmation on face unlock
 
@@ -2544,14 +2496,14 @@ General bug fixes in the Local Auth plugin.
 
 #### Plugin: Package Info
 
-General bug fixes in the Package Info plugin.
+Correções gerais de bugs no plugin Package Info.
 
 [2218](https://github.com/flutter/plugins/pull/2218) [package_info]remove AndroidX constraint
 
 
 #### Plugin: Path Provider
 
-In the Path Provider plugin, we added getApplicationLibraryDirectory, which is contributed by a community member!
+No plugin Path Provider, adicionamos getApplicationLibraryDirectory, contribuição de um membro da comunidade!
 
 [1953](https://github.com/flutter/plugins/pull/1953) [path_provider] add getApplicationLibraryDirectory
 
@@ -2562,14 +2514,14 @@ In the Path Provider plugin, we added getApplicationLibraryDirectory, which is c
 
 #### Plugin: Share
 
-Documentation update in the Share plugin.
+Atualização de documentação no plugin Share.
 
 [2297](https://github.com/flutter/plugins/pull/2297) [share] README update
 
 
 #### Plugin: Shared Preferences
 
-General bug fixes in the Shared Preferences plugin.
+Correções gerais de bugs no plugin Shared Preferences.
 
 [2241](https://github.com/flutter/plugins/pull/2241) [Shared_preferences]suppress warnings
 
@@ -2578,11 +2530,7 @@ General bug fixes in the Shared Preferences plugin.
 
 #### Plugin: Url launcher
 
-We upgraded the Url launcher plugin to the [new plugin API][],
-and fixed some bugs. Meanwhile,
-we have converted the Url launcher into a federated plugin
-to help it scale more efficiently to multiple platforms.
-For more information, refer to [Federated plugins][].
+Atualizamos o plugin Url launcher para a [nova API de plugins][new plugin API] e corrigimos alguns bugs. Enquanto isso, convertemos o Url launcher em um plugin federado, para escalar com mais eficiência para várias plataformas. Para mais informações, consulte [Plugins federados][Federated plugins].
 
 [2038](https://github.com/flutter/plugins/pull/2038) [url_launcher] Removed reference to rootViewController during initialization
 
@@ -2601,11 +2549,7 @@ For more information, refer to [Federated plugins][].
 
 #### Plugin: Video Player
 
-We upgraded the Video Player plugin to the [new plugin API][],
-and made some bug fixes. Meanwhile,
-we have converted it into a federated plugin to help it
-scale more efficiently to multiple platforms.
-For more information, refer to [Federated plugins][].
+Atualizamos o plugin Video Player para a [nova API de plugins][new plugin API] e corrigimos alguns bugs. Enquanto isso, convertemos o plugin em um plugin federado, para escalar com mais eficiência para várias plataformas. Para mais informações, consulte [Plugins federados][Federated plugins].
 
 [1813](https://github.com/flutter/plugins/pull/1813) [video-player] add support for content uris as urls
 
@@ -2622,19 +2566,18 @@ For more information, refer to [Federated plugins][].
 
 #### Plugin: Webview Flutter
 
-We upgraded the Webview Flutter plugin to the [new plugin API][],
-and made some bug fixes.
+Atualizamos o plugin Webview Flutter para a [nova API de plugins][new plugin API] e corrigimos alguns bugs.
 
 [1996](https://github.com/flutter/plugins/pull/1996) [webview_flutter] Allow underscores anywhere for Javascript Channel name
 
 [2257](https://github.com/flutter/plugins/pull/2257) [webview_flutter] Add async NavigationDelegates
 
 
-## Tooling
+## Ferramentas
 
-Flutter tooling is another big investment in this release. We launched a new version of [DartPad](http://dartpad.dev) that allows you to play with Flutter directly in your browser without installing anything, released a new feature "Hot UI" (in preview) that allows you to interact with widgets directly in the IDE, enhanced Dart DevTools with a new visual layout view, enabled simultaneous multi-device debugging in Visual Studio Code, and added support for "golden" image testing.
+As ferramentas do Flutter são outro grande investimento nesta versão. Lançamos uma nova versão do [DartPad](http://dartpad.dev), que permite experimentar o Flutter diretamente no navegador sem instalar nada, lançamos o novo recurso "Hot UI" (em prévia), que permite interagir com widgets diretamente na IDE, aprimoramos o Dart DevTools com um novo layout visual, habilitamos a depuração simultânea em vários dispositivos no Visual Studio Code e adicionamos suporte a testes de imagem "golden".
 
-In addition to the PRs listed below, please also check out the following releases for the IntelliJ and Android Studio Flutter plugin, the VS Code Flutter plugin and Dart DevTools:
+Além dos PRs listados abaixo, confira também as seguintes versões do plugin Flutter para IntelliJ e Android Studio, do plugin Flutter para VS Code e do Dart DevTools:
 
 
 ### VS Code
@@ -2646,26 +2589,26 @@ In addition to the PRs listed below, please also check out the following release
 *   12/5/2019: [dartcode.org/releases/v3-7/](https://dartcode.org/releases/v3-7/)
 
 
-### Flutter IntelliJ and Android Studio plugin
+### Plugin Flutter para IntelliJ e Android Studio
 
 
 
-*   10/1/2019: Flutter IntelliJ Plugin [M40 Release](https://groups.google.com/d/msg/flutter-dev/s2AxzJ2TbkU/RC3S508rBwAJ)
-*   11/1/2019: Flutter IntelliJ Plugin [M41 Release](https://groups.google.com/d/msg/flutter-dev/4TSSi_niovs/piNoRPr6EgAJ)
-*   12/5/2019: Flutter IntelliJ Plugin [M42 Release](https://groups.google.com/forum/#!topic/flutter-announce/EmOelPrGwGo)
+*   10/1/2019: Plugin Flutter para IntelliJ [Release M40](https://groups.google.com/d/msg/flutter-dev/s2AxzJ2TbkU/RC3S508rBwAJ)
+*   11/1/2019: Plugin Flutter para IntelliJ [Release M41](https://groups.google.com/d/msg/flutter-dev/4TSSi_niovs/piNoRPr6EgAJ)
+*   12/5/2019: Plugin Flutter para IntelliJ [Release M42](https://groups.google.com/forum/#!topic/flutter-announce/EmOelPrGwGo)
 
 
 ### DevTools
 
 
 
-*   10/2/2019: New Dart DevTools [Release 0.1.8](https://groups.google.com/d/msg/flutter-dev/J6zDXzZOsts/vOWn7mcWCgAJ)
-*   10/17/2019: New Dart DevTools [Release 0.1.9](https://groups.google.com/d/msg/flutter-dev/WuzEEENGsXU/zb0IDhkhDgAJ)
-*   11/8/2019: New Dart DevTools [Release 0.1.11](https://groups.google.com/d/msg/flutter-dev/VdAni_rhpS4/UP3mBH-2AAAJ)
-*   12/6/2019: New Dart DevTools [Release 0.1.12](https://groups.google.com/forum/#!topic/flutter-dev/EGLBgQAOoC8)
+*   10/2/2019: Nova versão do Dart DevTools [Release 0.1.8](https://groups.google.com/d/msg/flutter-dev/J6zDXzZOsts/vOWn7mcWCgAJ)
+*   10/17/2019: Nova versão do Dart DevTools [Release 0.1.9](https://groups.google.com/d/msg/flutter-dev/WuzEEENGsXU/zb0IDhkhDgAJ)
+*   11/8/2019: Nova versão do Dart DevTools [Release 0.1.11](https://groups.google.com/d/msg/flutter-dev/VdAni_rhpS4/UP3mBH-2AAAJ)
+*   12/6/2019: Nova versão do Dart DevTools [Release 0.1.12](https://groups.google.com/forum/#!topic/flutter-dev/EGLBgQAOoC8)
 
 
-### Tooling PRs
+### PRs de ferramentas
 
 [37508]({{site.repo.flutter}}/pull/37508) build bundle with assemble
 
@@ -3006,9 +2949,9 @@ In addition to the PRs listed below, please also check out the following release
 [46011]({{site.repo.flutter}}/pull/46011) [flutter_tool] Do not continue with a no-op 'upgrade'
 
 
-## Full PR List
+## Lista completa de PRs
 
- See the [full list](/release/release-notes/changelogs/changelog-1.12.13) of merged PRs for the 1.12 release.
+ Veja a [lista completa](/release/release-notes/changelogs/changelog-1.12.13) dos PRs mesclados na versão 1.12.
 
 
 [breaking change policy on the Flutter wiki]: {{site.repo.flutter}}/blob/main/docs/contributing/Tree-hygiene.md#handling-breaking-changes

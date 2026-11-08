@@ -1,30 +1,31 @@
 ---
-title: DevTools 2.57.0 release notes
-shortTitle: 2.57.0 release notes
+ia-translate: true
+title: Notas de lançamento do DevTools 2.57.0
+shortTitle: Notas de lançamento 2.57.0
 breadcrumb: 2.57.0
 showToc: false
 ---
 
-The 2.57.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](https://docs.flutter.dev/tools/devtools).
+A versão 2.57.0 do Dart e Flutter DevTools
+inclui as seguintes mudanças, entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](https://docs.flutter.dev/tools/devtools).
 
-## Network profiler updates
+## Atualizações do Network profiler
 
-- Added a filter setting to hide HTTP-profiler socket data. [#9698](https://github.com/flutter/devtools/pull/9698)
+- Adicionada uma configuração de filtro para ocultar os dados de socket do HTTP profiler. [#9698](https://github.com/flutter/devtools/pull/9698)
 
-## Logging updates
+## Atualizações de logging
 
-- Added support for searching within the log details view (raw text mode). [#9712](https://github.com/flutter/devtools/pull/9712)
+- Adicionado suporte a busca dentro da visualização de detalhes do log (modo de texto bruto). [#9712](https://github.com/flutter/devtools/pull/9712)
 
-  ![Search in log details](/assets/images/docs/tools/devtools/release-notes/images-2.57.0/log_details_search.png "Searching within the log details view")
+  ![Pesquisa nos detalhes do log](/assets/images/docs/tools/devtools/release-notes/images-2.57.0/log_details_search.png "Pesquisando na visualização de detalhes do log")
 
-## App size tool updates
+## Atualizações da App size tool
 
-- Added documentation links and improved handling for null files. [#9689](https://github.com/flutter/devtools/pull/9689)
+- Adicionados links para a documentação e melhor tratamento de arquivos nulos. [#9689](https://github.com/flutter/devtools/pull/9689)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes in this release, check out the
-[DevTools git log](https://github.com/flutter/devtools/tree/v2.57.0).
+Para encontrar uma lista completa de mudanças nesta versão, confira o
+[log do git do DevTools](https://github.com/flutter/devtools/tree/v2.57.0).

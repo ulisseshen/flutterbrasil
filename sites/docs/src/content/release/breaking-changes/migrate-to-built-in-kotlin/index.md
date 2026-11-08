@@ -1,101 +1,102 @@
 ---
-title: Migrating Flutter Android projects to built-in Kotlin
+ia-translate: true
+title: Migrando projetos Android do Flutter para o Kotlin integrado
 description: >-
-  Update your Flutter Android Gradle files to use built-in Kotlin support.
-  Essential for migrating projects to Android Gradle Plugin 9 or later.
+  Atualize os arquivos Gradle do seu projeto Android Flutter para usar o suporte
+  nativo ao Kotlin. Essencial para migrar projetos para o Android Gradle Plugin 9 ou superior.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
 :::warning
-This guide only applies to apps and plugins that already use the
+Este guia se aplica apenas a apps e plugins que já usam o
 Kotlin Gradle Plugin (KGP).
-If your project doesn't currently apply KGP,
-don't migrate to built-in Kotlin.
+Se o seu projeto não aplica o KGP atualmente,
+não migre para o Kotlin integrado.
 :::
 
-## Summary
+## Resumo {:#summary}
 
-To build a Flutter app for Android,
-the Android Gradle Plugin (AGP) must be used.
-To use AGP 9 and later, the following migrations are required.
+Para compilar um app Flutter para Android,
+é preciso usar o Android Gradle Plugin (AGP).
+Para usar o AGP 9 ou superior, as seguintes migrações são necessárias.
 
-First, built-in Kotlin is the default in AGP 9 and later.
-Apps that use the `kotlin-android` plugin,
-also known as the Kotlin Gradle Plugin (KGP),
-fail to build without migration ([Issue #181383][]).
-Flutter 3.44 added temporary support for the legacy
-KGP in AGP 9 and later with `android.builtInKotlin=false`
-([Issue #183909][]).
-This allows app and plugin developers to build their projects
-while migrating off KGP.
-Flutter 3.47 added support for enabling built-in Kotlin
+Primeiro, o Kotlin integrado é o padrão no AGP 9 e superiores.
+Apps que usam o plugin `kotlin-android`,
+também conhecido como Kotlin Gradle Plugin (KGP),
+não compilam sem a migração ([Issue #181383][Issue #181383]).
+O Flutter 3.44 adicionou suporte temporário ao KGP legado
+no AGP 9 e superiores, com `android.builtInKotlin=false`
+([Issue #183909][Issue #183909]).
+Isso permite que desenvolvedores de apps e plugins compilem seus projetos
+enquanto migram para longe do KGP.
+O Flutter 3.47 adicionou suporte para ativar o Kotlin integrado
 (`android.builtInKotlin=true`)
-once an app and all its plugins have migrated.
+assim que o app e todos os seus plugins tiverem migrado.
 
-Second, AGP 9 and later only use the new AGP DSL interfaces.
-This means any old DSL types will not be recognized.
-The Flutter team is working on migrating old DSL types
-to use the new DSL: [Issue #180137][].
-In the meantime, the Flutter team has configured the AGP DSL
-to be compatible with the legacy DSL types ([Issue #184838][]).
-This ensures app and plugin developers can
-safely upgrade to AGP 9 and later.
+Segundo, o AGP 9 e superiores usam apenas as novas interfaces de DSL do AGP.
+Isso significa que os tipos antigos de DSL não serão reconhecidos.
+A equipe do Flutter está trabalhando para migrar os tipos antigos de DSL
+para o novo DSL: [Issue #180137][Issue #180137].
+Enquanto isso, a equipe do Flutter configurou o DSL do AGP
+para ser compatível com os tipos de DSL legados ([Issue #184838][Issue #184838]).
+Isso garante que desenvolvedores de apps e plugins possam
+atualizar com segurança para o AGP 9 e superiores.
 
-To ensure compatibility,
-manually migrate all apps and plugins
-from the legacy KGP to built-in Kotlin.
-Flutter plans to remove support for applying KGP
-in a future version ([Issue #184837][]).
+Para garantir a compatibilidade,
+migre manualmente todos os apps e plugins
+do KGP legado para o Kotlin integrado.
+O Flutter planeja remover o suporte à aplicação do KGP
+em uma versão futura ([Issue #184837][Issue #184837]).
 
-To learn more about Android Gradle Plugin,
-see the [Android Gradle Plugin docs][AGP block].
+Para saber mais sobre o Android Gradle Plugin,
+consulte a [documentação do Android Gradle Plugin][AGP block].
 
 [AGP block]: {{site.android-dev}}/build/releases/gradle-plugin
 
-## Migrate
+## Migrar {:#migrate}
 
-**For app developers:**
-Follow the [app developer migration guide][app-migration-guide].
+**Para desenvolvedores de apps:**
+siga o [guia de migração para desenvolvedores de apps][app-migration-guide].
 
-**For plugin authors:**
-Follow the [plugin author migration guide][plugin-migration-guide].
+**Para autores de plugins:**
+siga o [guia de migração para autores de plugins][plugin-migration-guide].
 
 [app-migration-guide]: /release/breaking-changes/migrate-to-built-in-kotlin/for-app-developers
 [plugin-migration-guide]: /release/breaking-changes/migrate-to-built-in-kotlin/for-plugin-authors
 
-## Next steps
+## Próximos passos {:#next-steps}
 
-- **Remove support for KGP:**
-  In a future version of Flutter,
-  support for applying KGP will be removed ([Issue #184837][]).
-  Migrate apps, plugins, and host apps to keep them building.
+- **Remover o suporte ao KGP:**
+  Em uma versão futura do Flutter,
+  o suporte à aplicação do KGP será removido ([Issue #184837][Issue #184837]).
+  Migre apps, plugins e host apps para que continuem compilando.
 
-- **Remove the DSL Gradle property:**
-  Once the Flutter team completes the migration to the new AGP DSL,
-  it will remove support for the old DSL ([Issue #184839][]).
+- **Remover a propriedade Gradle do DSL:**
+  Quando a equipe do Flutter concluir a migração para o novo DSL do AGP,
+  o suporte ao DSL antigo será removido ([Issue #184839][Issue #184839]).
 
-## Timeline
+## Linha do tempo {:#timeline}
 
-Landed in version: 3.44.0-0.1.pre<br>
-In stable release: 3.44
+Incluído na versão: 3.44.0-0.1.pre<br>
+Na versão estável: 3.44
 
-## References
+## Referências {:#references}
 
-Relevant issues:
+Issues relevantes:
 
-- [Issue #180137][]: Migrate from old to new AGP DSL
-- [Issue #181383][]: Flutter plugins should support AGP 9.0.0
-- [Issue #183909][]: Add support for KGP in AGP+
-- [Issue #184837][]: Remove support for KGP
-- [Issue #184838][]: Disable new AGP DSL flag by default
-- [Issue #184839][]: Remove support for old AGP DSL types
+- [Issue #180137][Issue #180137]: Migrar do DSL antigo para o novo DSL do AGP
+- [Issue #181383][Issue #181383]: Plugins Flutter devem oferecer suporte ao AGP 9.0.0
+- [Issue #183909][Issue #183909]: Adicionar suporte ao KGP no AGP+
+- [Issue #184837][Issue #184837]: Remover suporte ao KGP
+- [Issue #184838][Issue #184838]: Desativar o novo flag de DSL do AGP por padrão
+- [Issue #184839][Issue #184839]: Remover suporte aos tipos antigos de DSL do AGP
 
-The Gradle build files in your app vary based on the Flutter version
-used when your app was created.
-Consider staying up to date with the latest version
-of the build files by periodically running `flutter upgrade`
-in your app's directory.
+Os arquivos de build Gradle do seu app variam de acordo com a versão do Flutter
+usada quando o app foi criado.
+Considere manter os arquivos de build atualizados
+executando periodicamente `flutter upgrade`
+no diretório do seu app.
 
 [Issue #180137]: {{site.repo.flutter}}/issues/180137
 [Issue #181383]: {{site.repo.flutter}}/issues/181383

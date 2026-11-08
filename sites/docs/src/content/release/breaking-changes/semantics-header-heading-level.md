@@ -1,60 +1,61 @@
 ---
-title: Update semantics header and headingLevel behavior on iOS and Android
+ia-translate: true
+title: Atualização do comportamento de header e headingLevel no iOS e Android
 description: >-
-  The `header` semantics property is now a no-op on iOS and Android.
-  Accessibility heading behaviors are now controlled with `headingLevel`.
+  A propriedade de semântica `header` agora não tem efeito no iOS e no Android.
+  Os comportamentos de cabeçalho de acessibilidade agora são controlados por `headingLevel`.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-The `header` semantics property now behaves as a no-op on iOS and Android.
-To declare a section heading for accessibility purposes on these platforms,
-use the `headingLevel` property with a value greater than `0`.
+A propriedade de semântica `header` agora não tem efeito no iOS e no Android.
+Para declarar um título de seção para fins de acessibilidade nessas plataformas,
+use a propriedade `headingLevel` com um valor maior que `0`.
 
-## Context
+## Contexto {:#context}
 
-Historically, Flutter used the boolean `header` semantics property
-to denote headings on platform implementations:
+Historicamente, o Flutter usava a propriedade booleana de semântica `header`
+para indicar cabeçalhos nas implementações das plataformas:
 
-* On Android, a `header` value of `true` mapped to `View.setHeading(true)`.
-* On iOS, a `header` value of `true` mapped to the
-  `UIAccessibilityTraitHeader` accessibility trait.
+* No Android, um valor `true` em `header` era mapeado para `View.setHeading(true)`.
+* No iOS, um valor `true` em `header` era mapeado para o
+  traço de acessibilidade `UIAccessibilityTraitHeader`.
 
-However, `setHeading` and `UIAccessibilityTraitHeader`
-represent headings (equivalent to section headers/headings),
-which are best represented by a heading level.
-In contrast, "header" on these platforms often represents a banner
-or an app bar (such as `SliverAppBar` or `AppBar`),
-creating confusion and mismatch
-between platform APIs and Flutter properties.
+No entanto, `setHeading` e `UIAccessibilityTraitHeader`
+representam cabeçalhos (equivalentes a títulos de seção),
+que são melhor representados por um nível de cabeçalho.
+Por outro lado, "header" nessas plataformas costuma representar um banner
+ou uma app bar (como `SliverAppBar` ou `AppBar`),
+o que gera confusão e descompasso
+entre as APIs das plataformas e as propriedades do Flutter.
 
-With this change:
+Com essa mudança:
 
-* The `header` semantics property behaves as a no-op on iOS and Android.
-  It remains available in the API and can still be
-  used in the future if similar APIs are provided.
-* The `headingLevel` property is updated so that setting it
-  to a value greater than `0` maps directly to
-  `View.setHeading(true)` on Android
-  and `UIAccessibilityTraitHeader` on iOS.
-  On iOS 13 or later, it also maps to `accessibilityHeadingLevel`.
+* A propriedade de semântica `header` não tem efeito no iOS e no Android.
+  Ela continua disponível na API e ainda pode ser
+  usada no futuro, caso APIs semelhantes sejam fornecidas.
+* A propriedade `headingLevel` foi atualizada para que, ao definir
+  um valor maior que `0`, ela seja mapeada diretamente para
+  `View.setHeading(true)` no Android
+  e para `UIAccessibilityTraitHeader` no iOS.
+  No iOS 13 ou superior, ela também é mapeada para `accessibilityHeadingLevel`.
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-If your code previously used `Semantics(header: true, ...)` or
-`SemanticsProperties(header: true, ...)` to declare headings,
-migrate your code to use `headingLevel: 1`
-(or another integer greater than `0`).
+Se o seu código usava `Semantics(header: true, ...)` ou
+`SemanticsProperties(header: true, ...)` para declarar cabeçalhos,
+migre o código para usar `headingLevel: 1`
+(ou outro inteiro maior que `0`).
 
-Note that while setting `headingLevel` to any value greater than `0`
-declares a heading on Android and iOS, other platforms (such as the web)
-treat the specific heading level number differently.
-For example, on the web, values `1` through `6` map to the
-corresponding `<h1>` through `<h6>` HTML elements.
+Observe que, embora definir `headingLevel` com qualquer valor maior que `0`
+declare um cabeçalho no Android e no iOS, outras plataformas (como a web)
+tratam o número do nível de cabeçalho de forma diferente.
+Por exemplo, na web, os valores de `1` a `6` são mapeados para os
+elementos HTML `<h1>` a `<h6>`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart highlightLines=2
 Semantics(
@@ -63,7 +64,7 @@ Semantics(
 )
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart highlightLines=2
 Semantics(
@@ -72,9 +73,9 @@ Semantics(
 )
 ```
 
-Similarly, if you used `SemanticsProperties`:
+Da mesma forma, se você usava `SemanticsProperties`:
 
-Code before migration:
+Código antes da migração:
 
 ```dart highlightLines=2
 SemanticsProperties(
@@ -82,7 +83,7 @@ SemanticsProperties(
 )
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart highlightLines=2
 SemanticsProperties(
@@ -90,27 +91,27 @@ SemanticsProperties(
 )
 ```
 
-## Timeline
+## Linha do tempo {:#timeline}
 
-Landed in version: 3.45.0-0.1.pre<br>
-In stable release: 3.47
+Incluído na versão: 3.45.0-0.1.pre<br>
+Na versão estável: 3.47
 
-## References
+## Referências {:#references}
 
-API documentation:
+Documentação da API:
 
-* [`Semantics`][]
-* [`SemanticsProperties`][]
-* [`SemanticsConfiguration`][]
+* [`Semantics`][`Semantics`]
+* [`SemanticsProperties`][`SemanticsProperties`]
+* [`SemanticsConfiguration`][`SemanticsConfiguration`]
 
-Relevant issues:
+Issues relevantes:
 
-* [Issue 175416][]
+* [Issue 175416][Issue 175416]
 
-Relevant PRs:
+PRs relevantes:
 
-* [PR 186916][]
-* [PR 175416][]
+* [PR 186916][PR 186916]
+* [PR 175416][PR 175416]
 
 [`Semantics`]: {{site.api}}/flutter/widgets/Semantics-class.html
 [`SemanticsProperties`]: {{site.api}}/flutter/semantics/SemanticsProperties-class.html

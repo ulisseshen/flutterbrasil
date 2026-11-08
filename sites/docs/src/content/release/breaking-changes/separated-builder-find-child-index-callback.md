@@ -1,33 +1,34 @@
 ---
-title: Deprecate `findChildIndexCallback` in favor of `findItemIndexCallback` in `ListView` and `SliverList` separated constructors
+ia-translate: true
+title: Depreciação de `findChildIndexCallback` em favor de `findItemIndexCallback` nos construtores separated de `ListView` e `SliverList`
 description: >-
-  The findChildIndexCallback parameter in ListView.separated and
-  SliverList.separated have been deprecated in favor of findItemIndexCallback.
+  O parâmetro findChildIndexCallback de ListView.separated e
+  SliverList.separated foi depreciado em favor de findItemIndexCallback.
 ---
 
-## Summary
+## Resumo {:#summary}
 
-The `findChildIndexCallback` parameter in `ListView.separated` and
-`SliverList.separated` constructors have been deprecated in favor of
-`findItemIndexCallback`. The new callback returns item indices directly,
-eliminating the need for manual index calculations to account for separators.
+Os parâmetros `findChildIndexCallback` dos construtores `ListView.separated` e
+`SliverList.separated` foram depreciados em favor de
+`findItemIndexCallback`. O novo callback retorna os índices dos itens diretamente,
+eliminando a necessidade de cálculos manuais de índice para considerar os separadores.
 
-## Background
+## Contexto {:#background}
 
-In `ListView.separated` and `SliverList.separated` constructors,
-the `findChildIndexCallback` was used to locate widgets by their key.
-However, this callback returned child indices, which include both items
-and separators in the internal widget tree. This meant that developers had to
-multiply item indices by 2 to get the correct child index, creating
-confusion and error-prone code.
+Nos construtores `ListView.separated` e `SliverList.separated`,
+o `findChildIndexCallback` era usado para localizar widgets pela sua key.
+No entanto, esse callback retornava índices de filhos, que incluem tanto
+os itens quanto os separadores na árvore interna de widgets. Isso significava que
+os desenvolvedores precisavam multiplicar os índices dos itens por 2 para obter o
+índice correto do filho, o que gerava confusão e código propenso a erros.
 
-The new `findItemIndexCallback` parameter simplifies this by working
-directly with item indices, which do not include separators.
-This makes the API more intuitive and reduces the likelihood of
-index calculation errors.
+O novo parâmetro `findItemIndexCallback` simplifica isso, trabalhando
+diretamente com os índices dos itens, que não incluem os separadores.
+Isso torna a API mais intuitiva e reduz a probabilidade de
+erros de cálculo de índice.
 
-If you use the deprecated `findChildIndexCallback` parameter,
-you will see a deprecation warning:
+Se você usar o parâmetro depreciado `findChildIndexCallback`,
+verá um aviso de depreciação:
 
 ```plaintext
 'findChildIndexCallback' is deprecated and shouldn't be used.
@@ -39,21 +40,20 @@ you can remove that workaround when migrating to findItemIndexCallback.
 This feature was deprecated after v3.37.0-1.0.pre.
 ```
 
-Additionally, if you try to provide both parameters, you will encounter
-an assertion error:
+Além disso, se você tentar fornecer os dois parâmetros, verá um erro de assertion:
 
 ```plaintext
 Cannot provide both findItemIndexCallback and findChildIndexCallback.
 Use findItemIndexCallback as findChildIndexCallback is deprecated.
 ```
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-To migrate from `findChildIndexCallback` to `findItemIndexCallback`,
-replace the parameter name and remove any index multiplications
-that were used to account for separators.
+Para migrar de `findChildIndexCallback` para `findItemIndexCallback`,
+troque o nome do parâmetro e remova quaisquer multiplicações de índice
+usadas para considerar os separadores.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 ListView.separated(
@@ -74,7 +74,7 @@ ListView.separated(
 )
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 ListView.separated(
@@ -95,9 +95,9 @@ ListView.separated(
 )
 ```
 
-The same migration applies to `SliverList.separated`:
+A mesma migração se aplica a `SliverList.separated`:
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 SliverList.separated(
@@ -117,7 +117,7 @@ SliverList.separated(
 )
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 SliverList.separated(
@@ -137,21 +137,21 @@ SliverList.separated(
 )
 ```
 
-## Timeline
+## Linha do tempo {:#timeline}
 
-Landed in version: 3.38.0-1.0.pre<br>
-In stable release: 3.41
+Incluído na versão: 3.38.0-1.0.pre<br>
+Na versão estável: 3.41
 
-## References
+## Referências {:#references}
 
-API documentation:
+Documentação da API:
 
-* [`ListView.separated`][]
-* [`SliverList.separated`][]
+* [`ListView.separated`][`ListView.separated`]
+* [`SliverList.separated`][`SliverList.separated`]
 
-Relevant PRs:
+PRs relevantes:
 
-* [Deprecate findChildIndexCallback for separated constructors][]
+* [Depreciar findChildIndexCallback nos construtores separated][Deprecate findChildIndexCallback for separated constructors]
 
 [`ListView.separated`]: {{site.api}}/flutter/widgets/ListView/ListView.separated.html
 [`SliverList.separated`]: {{site.api}}/flutter/widgets/SliverList/SliverList.separated.html

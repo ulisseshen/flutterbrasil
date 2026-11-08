@@ -1,49 +1,50 @@
 ---
-title: Merged threads on Linux
+ia-translate: true
+title: Threads unificadas no Linux
 description: >-
-  Learn about the threading changes on Linux in Flutter 3.39.
+  Saiba sobre as mudanças de threads no Linux no Flutter 3.39.
 ---
 
-## Summary
+## Resumo {:#summary}
 
-Flutter 3.39 merges the UI and platform threads by default on Linux.
+O Flutter 3.39 unifica, por padrão, as threads de UI e de plataforma no Linux.
 
-## Context
+## Contexto {:#context}
 
-Originally, Flutter had separate threads to produce UI frames and
-to interact with the native platform.
+Originalmente, o Flutter tinha threads separadas para produzir os frames da UI e
+para interagir com a plataforma nativa.
 
-The split-thread design prevented Flutter apps and plugins from using Dart FFI
-to interoperate with native APIs that must be called on the platform thread.
+O design de threads separadas impedia que apps e plugins Flutter usassem o Dart FFI
+para interoperar com APIs nativas que precisam ser chamadas na thread de plataforma.
 
-## Description of change
+## Descrição da mudança {:#description-of-change}
 
-Flutter version 3.39 merges the UI and platform threads by default on Linux.
+A versão 3.39 do Flutter unifica, por padrão, as threads de UI e de plataforma no Linux.
 
-This mirrors all the other platforms, whose threads were merged by default in
-Flutter 3.29 (iOS and Android) and 3.35 (macOS and Windows).
+Isso segue o que já acontece em todas as outras plataformas, cujas threads foram
+unificadas por padrão no Flutter 3.29 (iOS e Android) e 3.35 (macOS e Windows).
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-Merged threads shouldn't affect your app.
+Threads unificadas não devem afetar o seu app.
 
-If you suspect merged threads have caused regressions to your app,
-please reach out on [Issue 150525][].
+Se você suspeitar que as threads unificadas causaram regressões no seu app,
+entre em contato na [Issue 150525][Issue 150525].
 
-## Timeline
+## Linha do tempo {:#timeline}
 
-Landed in version: 3.39.0-0.1.pre<br>
-In stable release: 3.41
+Incluído na versão: 3.39.0-0.1.pre<br>
+Na versão estável: 3.41
 
-## References
+## Referências {:#references}
 
-Relevant issue:
+Issue relevante:
 
-* [Issue 150525][]
+* [Issue 150525][Issue 150525]
 
-Relevant PRs:
+PRs relevantes:
 
-* [PR 176759][]
+* [PR 176759][PR 176759]
 
 [Issue 150525]: {{site.repo.flutter}}/issues/150525
 [PR 176759]: {{site.repo.flutter}}/pull/176759

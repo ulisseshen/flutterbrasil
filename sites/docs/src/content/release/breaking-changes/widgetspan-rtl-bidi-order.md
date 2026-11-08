@@ -1,57 +1,58 @@
 ---
-title: WidgetSpan order in right-to-left text
+ia-translate: true
+title: Ordem de WidgetSpan em texto da direita para a esquerda
 description: >-
-  WidgetSpans now follow bidirectional visual order in right-to-left text.
-  Remove workarounds that compensated for the previous layout.
+  Os WidgetSpans agora seguem a ordem visual bidirecional em textos da direita para a esquerda.
+  Remova os workarounds que compensavam o layout anterior.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-`WidgetSpan` widgets in right-to-left (RTL) and mixed-direction text
-now follow the visual order determined by the Unicode bidirectional algorithm.
-Apps that compensated for the previous incorrect order
-might display inline widgets in the wrong positions after upgrading.
+Os widgets `WidgetSpan` em texto da direita para a esquerda (RTL) e em texto
+de direção mista agora seguem a ordem visual determinada pelo algoritmo
+bidirecional Unicode. Apps que compensavam a ordem incorreta anterior
+podem exibir widgets inline em posições erradas após a atualização.
 
-## Background
+## Contexto {:#background}
 
-Skia's paragraph layout previously placed inline widget placeholders
-in source order, even when the surrounding text was visually reordered.
-This caused inline widgets in Arabic, Hebrew, and mixed-direction text
-to appear in the wrong positions.
+O layout de parágrafos do Skia colocava os placeholders de widgets inline
+na ordem do código-fonte, mesmo quando o texto ao redor era reordenado visualmente.
+Isso fazia com que widgets inline em árabe, hebraico e texto de direção mista
+aparecessem em posições erradas.
 
-Paragraph layout now places inline widget placeholders in bidirectional visual
-order. Your `WidgetSpan` children stay in logical reading order in your Dart
-code, and layout returns placeholder boxes with the corrected visual
-coordinates. No public API signatures changed.
+O layout de parágrafos agora coloca os placeholders de widgets inline na ordem
+visual bidirecional. Os filhos do seu `WidgetSpan` continuam na ordem lógica
+de leitura no código Dart, e o layout retorna as caixas de placeholder com as
+coordenadas visuais corrigidas. Nenhuma assinatura pública da API foi alterada.
 
-The following example shows the corrected positions of inline widgets
-in mixed-direction text:
+O exemplo a seguir mostra as posições corrigidas dos widgets inline
+em texto de direção mista:
 
-| Before | After |
+| Antes | Depois |
 | :---: | :---: |
-| ![Incorrect widget order][before] | ![Correct widget order][after] |
+| ![Ordem incorreta dos widgets][before] | ![Ordem correta dos widgets][after] |
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-If your app uses `WidgetSpan` widgets without compensating for the old layout,
-no code changes are needed.
-Otherwise, remove workarounds added specifically for this issue:
+Se o seu app usa widgets `WidgetSpan` sem compensar o layout antigo,
+nenhuma mudança de código é necessária.
+Caso contrário, remova os workarounds adicionados especificamente para esse problema:
 
-* Translating or swapping widgets on the same line using `Transform.translate`
-  offsets or `GlobalKey` measurements.
-* Reversing the source order of `WidgetSpan` widgets for RTL text.
-  Keep spans in the logical order of the content and let text layout
-  determine their visual positions.
-* Mirroring placeholder-box x-coordinates in custom layout code.
-  Use the returned coordinates directly.
+* Traduzir ou trocar widgets na mesma linha usando deslocamentos de
+  `Transform.translate` ou medições com `GlobalKey`.
+* Inverter a ordem de código dos widgets `WidgetSpan` para texto RTL.
+  Mantenha os spans na ordem lógica do conteúdo e deixe o layout de texto
+  determinar as posições visuais.
+* Espelhar as coordenadas x das caixas de placeholder em código de layout customizado.
+  Use as coordenadas retornadas diretamente.
 
-For example, remove a translation that compensated for the old RTL order.
-Here, `rtlSwapOffset` is an offset calculated by the app's workaround,
-and `inlineWidget` is the widget embedded in the text.
+Por exemplo, remova uma translação que compensava a ordem RTL antiga.
+Aqui, `rtlSwapOffset` é um deslocamento calculado pelo workaround do app,
+e `inlineWidget` é o widget incorporado ao texto.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 WidgetSpan(
@@ -62,30 +63,30 @@ WidgetSpan(
 )
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 WidgetSpan(child: inlineWidget)
 ```
 
-Also remove the code that calculated the compensating offsets.
-Check RTL and mixed-direction text, including wrapped lines,
-and update golden tests that captured the incorrect layout.
+Também remova o código que calculava os deslocamentos compensatórios.
+Verifique texto RTL e de direção mista, incluindo linhas quebradas,
+e atualize os golden tests que capturaram o layout incorreto.
 
-## Timeline
+## Linha do tempo {:#timeline}
 
-Landed in version: 3.50.0-0.1.pre<br>
-In stable release: Not yet
+Incluído na versão: 3.50.0-0.1.pre<br>
+Na versão estável: Ainda não
 
-## References
+## Referências {:#references}
 
-GitHub issue:
+Issue no GitHub:
 
-* [Issue 54400][]
+* [Issue 54400][Issue 54400]
 
-Relevant PRs:
+PRs relevantes:
 
-* [Skia CL 1366676][]
+* [Skia CL 1366676][Skia CL 1366676]
 
 [after]: /assets/images/docs/breaking-changes/widgetspan-rtl-after.webp
 [before]: /assets/images/docs/breaking-changes/widgetspan-rtl-before.webp

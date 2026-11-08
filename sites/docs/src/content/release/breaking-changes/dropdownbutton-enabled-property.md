@@ -1,75 +1,73 @@
 ---
-title: Added enabled property and made onChanged optional for DropdownButton
+ia-translate: true
+title: Propriedade enabled adicionada e onChanged opcional em DropdownButton
 description: >-
-  DropdownButton and DropdownButtonFormField now support an explicit enabled
-  property, and their onChanged callbacks are no longer required.
+  DropdownButton e DropdownButtonFormField agora oferecem suporte a uma
+  propriedade enabled explícita, e os callbacks onChanged deixam de ser obrigatórios.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-`DropdownButton` and `DropdownButtonFormField` now include
-an `enabled` property to explicitly manage their interactive state,
-and the `onChanged` callback is no longer marked as `required`.
+`DropdownButton` e `DropdownButtonFormField` agora incluem
+uma propriedade `enabled` para controlar explicitamente o estado de interação,
+e o callback `onChanged` não é mais marcado como `required`.
 
-## Background
+## Contexto {:#background}
 
-Previously, `DropdownButton` and `DropdownButtonFormField` didn't
-have an `enabled` parameter.
-The only way to disable the dropdown
-(graying it out and making it non-interactive) was to
-pass `null` to the `required` `onChanged` callback.
-This led to unintuitive code when trying to
-dynamically enable or disable the button,
-forcing developers to write conditional expressions for the callback itself,
-such as `onChanged: condition ? (value) { ... } : null`.
+Antes, `DropdownButton` e `DropdownButtonFormField` não tinham
+um parâmetro `enabled`.
+A única forma de desabilitar o dropdown
+(deixando-o acinzentado e sem interação) era passar `null` para o
+callback `onChanged`, que era `required`.
+Isso resultava em código pouco intuitivo ao tentar
+habilitar ou desabilitar o botão dinamicamente,
+obrigando o desenvolvedor a escrever expressões condicionais no próprio callback,
+como `onChanged: condition ? (value) { ... } : null`.
 
-To improve this API, a dedicated `enabled` property was introduced,
-and `onChanged` was made optional.
+Para melhorar essa API, foi introduzida uma propriedade `enabled` dedicada,
+e `onChanged` passou a ser opcional.
 
-The `enabled` property is optional.
-Making it mandatory introduces a massive breaking change that
-breaks nearly every existing `DropdownButton` implementation in
-the Flutter ecosystem.
-Instead, to preserve backward compatibility,
-if the `enabled` argument isn't explicitly provided,
-the button determines its state by falling back to whether
-`onChanged` is provided (that is, it's enabled if `onChanged != null`,
-and disabled if `onChanged == null`).
+A propriedade `enabled` é opcional.
+Torná-la obrigatória causaria uma grande quebra de compatibilidade, que
+afetaria quase todas as implementações existentes de `DropdownButton` no
+ecossistema Flutter.
+Por isso, para preservar a compatibilidade, se o argumento `enabled` não for
+informado explicitamente, o botão determina o seu estado pela presença de
+`onChanged` (ou seja, fica habilitado se `onChanged != null` e desabilitado
+se `onChanged == null`).
 
-The minor breaking change here is structural:
-while the old conditional `onChanged` pattern technically
-still works due to the fallback logic,
-developers are encouraged to migrate to the clearer API by
-explicitly using the `enabled` property.
+A quebra de compatibilidade aqui é, em essência, estrutural:
+embora o padrão antigo de `onChanged` condicional ainda funcione
+graças à lógica de fallback, recomenda-se migrar para a API mais clara,
+usando explicitamente a propriedade `enabled`.
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-If you previously disabled your `DropdownButton` by
-conditionally passing `null` to `onChanged`,
-migrate to the new `enabled` property.
-This cleanly separates the state of the widget (enabled/disabled) from
-its behavior (the callback).
+Se você desabilitava o seu `DropdownButton` passando `null` condicionalmente
+para `onChanged`, migre para a nova propriedade `enabled`.
+Isso separa de forma limpa o estado do widget (habilitado/desabilitado) do
+seu comportamento (o callback).
 
-To automatically migrate your code for simple cases
-(such as statically passing `null`), run the following command:
+Para migrar o seu código automaticamente nos casos simples
+(como passar `null` de forma estática), execute o seguinte comando:
 
 ```console
 $ dart fix --apply
 ```
 
 :::important
-Note that `dart fix` will not automatically migrate cases where `onChanged`
-is set using conditional logic. For those, you must update your code manually.
+Observe que o `dart fix` não migra automaticamente os casos em que `onChanged`
+é definido com lógica condicional. Nesses casos, você deve atualizar o código manualmente.
 :::
 
-### Case 1: Statically disabled dropdown {: #case-1-statically-disabled }
+### Caso 1: dropdown desabilitado estaticamente {: #case-1-statically-disabled }
 
-For simple cases where a dropdown is permanently disabled,
-you can now simply omit `onChanged` and use `enabled: false`.
+Para casos simples em que o dropdown fica permanentemente desabilitado,
+agora você pode simplesmente omitir `onChanged` e usar `enabled: false`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 final disabledDropdown = DropdownButton<String>(
@@ -81,7 +79,7 @@ final disabledDropdown = DropdownButton<String>(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart diff
   final disabledDropdown = DropdownButton<String>(
@@ -94,12 +92,12 @@ Code after migration:
   );
 ```
 
-### Case 2: Conditionally disabled dropdown {: #case-2-conditionally-disabled }
+### Caso 2: dropdown desabilitado condicionalmente {: #case-2-conditionally-disabled }
 
-The recommended best practice is to separate the callback from
-the interactive state by using the `enabled` property directly.
+A prática recomendada é separar o callback do
+estado de interação, usando diretamente a propriedade `enabled`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 final conditionalDropdown = DropdownButton<String>(
@@ -111,7 +109,7 @@ final conditionalDropdown = DropdownButton<String>(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart diff
   final conditionalDropdown = DropdownButton<String>(
@@ -125,25 +123,25 @@ Code after migration:
   );
 ```
 
-## Timeline
+## Linha do tempo {:#timeline}
 
-Landed in version: Not yet<br>
-In stable release: Not yet
+Incluído na versão: Ainda não<br>
+Na versão estável: Ainda não
 
-## References
+## Referências {:#references}
 
-API documentation:
+Documentação da API:
 
-* [`DropdownButton`][]
-* [`DropdownButtonFormField`][]
+* [`DropdownButton`][`DropdownButton`]
+* [`DropdownButtonFormField`][`DropdownButtonFormField`]
 
-Relevant issues:
+Issues relevantes:
 
-* [Why is DropdownButtonFormField's onChanged required?][issue-57953]
+* [Por que o onChanged do DropdownButtonFormField é obrigatório?][issue-57953]
 
-Relevant PRs:
+PRs relevantes:
 
-* [Update DropdownButton enabled property logic][]
+* [Atualiza a lógica da propriedade enabled do DropdownButton][Update DropdownButton enabled property logic]
 
 [`DropdownButton`]: {{site.material_ui}}/DropdownButton-class.html
 [`DropdownButtonFormField`]: {{site.material_ui}}/DropdownButtonFormField-class.html

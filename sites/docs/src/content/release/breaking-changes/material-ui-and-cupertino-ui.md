@@ -1,126 +1,129 @@
 ---
-title: Migrate to standalone material_ui and cupertino_ui packages
+ia-translate: true
+title: Migre para os pacotes independentes material_ui e cupertino_ui
 description: >-
-  The Material and Cupertino design libraries are now available as
-  standalone packages, decoupling design systems from the Flutter SDK.
+  As bibliotecas de design Material e Cupertino agora estão disponíveis como
+  pacotes independentes, desacoplando os sistemas de design do SDK do Flutter.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-The Material and Cupertino design libraries are now available as
-standalone packages: [`package:material_ui`][] and [`package:cupertino_ui`][].
-In Flutter 3.47, developers can opt in to these packages ahead of
-the formal deprecation of the in-framework design libraries.
+As bibliotecas de design Material e Cupertino agora estão disponíveis como
+pacotes independentes: [`package:material_ui`][`package:material_ui`] e [`package:cupertino_ui`][`package:cupertino_ui`].
+No Flutter 3.47, os desenvolvedores podem optar por esses pacotes antes da
+depreciação formal das bibliotecas de design incluídas no framework.
 
-## Background
+## Contexto {:#background}
 
-Historically, Flutter's Material (`package:flutter/material.dart`)
-and Cupertino (`package:flutter/cupertino.dart`) widget libraries
-were bundled directly inside the core Flutter SDK.
-While this made it easy to get started with pixel-perfect widgets,
-bundling design systems inside the core framework presented several challenges:
+Historicamente, as bibliotecas de widgets Material (`package:flutter/material.dart`)
+e Cupertino (`package:flutter/cupertino.dart`) do Flutter eram incluídas
+diretamente no SDK principal do Flutter.
+Embora isso facilitasse o início com widgets com precisão de pixel,
+incluir os sistemas de design no framework principal trazia vários desafios:
 
-* Widget updates, bug fixes, and new components were tied to
-  quarterly Flutter SDK releases.
-* Contributions and iteration on design libraries moved slower
-  than standalone Dart packages.
-* Applications couldn't update design libraries independently of
-  the engine and framework.
+* Atualizações de widgets, correções de bugs e novos componentes estavam
+  presos aos lançamentos trimestrais do SDK do Flutter.
+* As contribuições e iterações nas bibliotecas de design avançavam mais devagar
+  do que em pacotes Dart independentes.
+* As aplicações não podiam atualizar as bibliotecas de design
+  independentemente do engine e do framework.
 
-To resolve these challenges, the design systems are now decoupled
-from the core framework.
-Starting in Flutter 3.47, version 1.0 of the standalone
-`material_ui` and `cupertino_ui` packages is published on `pub.dev`.
+Para resolver esses desafios, os sistemas de design agora estão desacoplados
+do framework principal.
+A partir do Flutter 3.47, a versão 1.0 dos pacotes independentes
+`material_ui` e `cupertino_ui` é publicada no `pub.dev`.
 
-Decoupling the design systems provides several benefits:
+Desacoplar os sistemas de design traz vários benefícios:
 
-* **Independent release cycles**:
-  The packages can ship bug fixes, improvements, and new components
-  on their own release schedules (planned for weekly releases),
-  without requiring a full Flutter SDK upgrade.
-* **Faster contributions**:
-  Community members can contribute directly to the libraries in the
-  [`flutter/packages`][] repository.
-* **Style-neutral core**:
-  Decoupling lays the groundwork for a style-neutral Flutter core widget
-  catalog, making it easier to build and maintain custom design systems.
+* **Ciclos de lançamento independentes**:
+  os pacotes podem lançar correções de bugs, melhorias e novos componentes
+  em seus próprios cronogramas (com lançamentos semanais previstos),
+  sem exigir uma atualização completa do SDK do Flutter.
+* **Contribuições mais rápidas**:
+  membros da comunidade podem contribuir diretamente com as bibliotecas no
+  repositório [`flutter/packages`][`flutter/packages`].
+* **Núcleo neutro em estilo**:
+  o desacoplamento prepara o terreno para um catálogo de widgets principais
+  do Flutter neutro em estilo, facilitando a criação e a manutenção de
+  sistemas de design customizados.
 
-Contributions to Material and Cupertino packages inside the core SDK
-were frozen starting in Flutter 3.44.
-The initial 1.0.0 versions of `package:material_ui` and `package:cupertino_ui`
-match the frozen framework code to provide a seamless transition.
-Future releases of the packages will use semantic versioning for major, minor,
-and patch updates.
-The in-framework design libraries are scheduled for formal deprecation
-in an upcoming stable release.
+As contribuições para os pacotes Material e Cupertino dentro do SDK principal
+foram congeladas a partir do Flutter 3.44.
+As versões iniciais 1.0.0 de `package:material_ui` e `package:cupertino_ui`
+correspondem ao código do framework congelado, para garantir uma transição sem interrupções.
+As próximas versões dos pacotes usarão versionamento semântico para atualizações
+de versão principal, secundária e de correção.
+As bibliotecas de design do framework estão programadas para depreciação formal
+em uma próxima versão estável.
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-To migrate your project from the in-framework design libraries to the
-standalone packages, you can use the automated `dart fix` tool
-or perform the migration manually.
+Para migrar o seu projeto das bibliotecas de design do framework para os
+pacotes independentes, você pode usar a ferramenta automatizada `dart fix`
+ou fazer a migração manualmente.
 
-### Automated migration with dart fix
+### Migração automatizada com dart fix {:#automated-migration-with-dart-fix}
 
-The quickest way to migrate is using the `migrate_design_widgets` fix rule
-with `dart fix`:
+A forma mais rápida de migrar é usar a regra de correção `migrate_design_widgets`
+com o `dart fix`:
 
 ```console
 $ dart fix --apply --code=migrate_design_widgets
 ```
 
-This command automatically updates your imports from
-`package:flutter/material.dart` and `package:flutter/cupertino.dart`
-to the corresponding standalone package imports.
+Esse comando atualiza automaticamente os seus imports de
+`package:flutter/material.dart` e `package:flutter/cupertino.dart`
+para os imports dos pacotes independentes correspondentes.
 
 :::note
-If `dart fix` doesn't automatically add the new packages to your
-`pubspec.yaml` dependencies, manually add them by running
-`flutter pub add material_ui` or `flutter pub add cupertino_ui` as needed.
+Se o `dart fix` não adicionar automaticamente os novos pacotes às
+dependências do seu `pubspec.yaml`, adicione-os manualmente executando
+`flutter pub add material_ui` ou `flutter pub add cupertino_ui`, conforme necessário.
 :::
 
-Run `dart fix` once more to ensure all other automated migrations are applied,
-and lint warnings addressed, such as import sorting.
+Execute o `dart fix` mais uma vez para garantir que todas as outras migrações
+automatizadas sejam aplicadas e que os avisos do linter, como a ordenação
+dos imports, sejam resolvidos.
 
-### Manual migration
+### Migração manual {:#manual-migration}
 
-To migrate manually, follow these steps:
+Para migrar manualmente, siga estes passos:
 
-1.  Add the standalone packages to your `pubspec.yaml` dependencies:
+1.  Adicione os pacotes independentes às dependências do seu `pubspec.yaml`:
 
     ```console
     $ flutter pub add material_ui
     $ flutter pub add cupertino_ui
     ```
 
-1.  Update the imports in your Dart files to reference the new packages.
+1.  Atualize os imports nos seus arquivos Dart para referenciar os novos pacotes.
 
-    Code before migration:
+    Código antes da migração:
 
     ```dart
     import 'package:flutter/cupertino.dart';
     import 'package:flutter/material.dart';
     ```
 
-    Code after migration:
+    Código após a migração:
 
     ```dart
     import 'package:cupertino_ui/cupertino_ui.dart';
     import 'package:material_ui/material_ui.dart';
     ```
 
-### Compatibility bridge
+### Ponte de compatibilidade {:#compatibility-bridge}
 
-During the ecosystem transition, your application might depend on
-third-party packages that still import the legacy in-framework libraries
-(`package:flutter/material.dart` or `package:flutter/cupertino.dart`).
+Durante a transição do ecossistema, o seu app pode depender de pacotes de terceiros
+que ainda importam as bibliotecas legadas do framework
+(`package:flutter/material.dart` ou `package:flutter/cupertino.dart`).
 
-To allow your application to migrate to the standalone packages immediately
-without waiting for all dependencies to update, `material_ui` and
-`cupertino_ui` provide compatibility bridge utilities.
-Wrap your app using `MaterialUiCompatibilityBridge` inside
+Para que o seu app migre imediatamente para os pacotes independentes, sem esperar
+que todas as dependências sejam atualizadas, `material_ui` e `cupertino_ui`
+oferecem utilitários de ponte de compatibilidade.
+Envolva o seu app usando `MaterialUiCompatibilityBridge` dentro de
 `MaterialApp.builder`:
 
 ```dart
@@ -150,34 +153,34 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-#### Bridge capabilities and limitations
+#### Recursos e limitações da ponte {:#bridge-capabilities-and-limitations}
 
-`MaterialUiCompatibilityBridge` injects theme and localization data
-downward into the widget tree.
-This allows unmigrated child widgets and dependencies that read design state
-from context
-(such as `Theme.of(context)` or `MaterialLocalizations.of(context)`)
-to continue functioning properly.
+`MaterialUiCompatibilityBridge` injeta dados de tema e de localização
+para baixo na árvore de widgets.
+Isso permite que widgets filhos não migrados e dependências que leem o estado
+de design a partir do contexto
+(como `Theme.of(context)` ou `MaterialLocalizations.of(context)`)
+continuem funcionando corretamente.
 
-However, the compatibility bridge cannot resolve type mismatches
-when a dependency exposes, accepts, or returns in-framework SDK types
-in its public API signatures (such as passing a `FloatingActionButtonLocation`,
-`ColorScheme`, or `TextTheme` as a parameter or callback return value).
-Because Dart enforces static typing across distinct package imports,
-values from `package:flutter/material.dart` cannot be assigned to parameters
-expecting types from `package:material_ui`.
-Dependencies with API-signature coupling must be migrated to the standalone
-package before your application can pass modern types to them.
+No entanto, a ponte de compatibilidade não consegue resolver incompatibilidades de tipos
+quando uma dependência expõe, aceita ou retorna tipos do SDK do framework
+em suas assinaturas públicas de API (por exemplo, ao passar um
+`FloatingActionButtonLocation`, `ColorScheme` ou `TextTheme` como parâmetro
+ou valor de retorno de callback).
+Como o Dart impõe tipagem estática entre imports de pacotes distintos,
+valores de `package:flutter/material.dart` não podem ser atribuídos a parâmetros
+que esperam tipos de `package:material_ui`.
+Dependências com acoplamento na assinatura da API devem ser migradas para o
+pacote independente antes que o seu app possa passar tipos modernos para elas.
 
-### Decoupled localizations
+### Localizações desacopladas {:#decoupled-localizations}
 
-As part of this transition, `flutter_localizations` is unbundled
-for design components.
-Localization delegates and translated strings for Material and Cupertino
-widgets now reside directly in `package:material_ui` and
-`package:cupertino_ui`.
+Como parte dessa transição, o `flutter_localizations` deixou de ser incluído
+para os componentes de design.
+Os delegates de localização e as strings traduzidas para os widgets Material e Cupertino
+agora ficam diretamente em `package:material_ui` e `package:cupertino_ui`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -194,7 +197,7 @@ MaterialApp(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 import 'package:material_ui/material_ui.dart';
@@ -206,34 +209,34 @@ MaterialApp(
 );
 ```
 
-Setting `localizationsDelegates` to `GlobalMaterialLocalizations.delegates`
-automatically includes the Cupertino and Widgets delegates as well,
-simplifying localization setup.
+Definir `localizationsDelegates` como `GlobalMaterialLocalizations.delegates`
+inclui automaticamente também os delegates de Cupertino e de Widgets,
+simplificando a configuração de localização.
 
-### Guidance for package authors
+### Orientações para autores de pacotes {:#guidance-for-package-authors}
 
-If you maintain an open source package or plugin in the Flutter ecosystem,
-migrating to `package:material_ui` or `package:cupertino_ui` introduces
-a breaking change for consumers who haven't updated their dependencies.
-While the symbols and class names remain the same,
-they are technically referenced from an entirely new library.
-Treat this migration as a major version bump for your package.
+Se você mantém um pacote de código aberto ou um plugin no ecossistema Flutter,
+migrar para `package:material_ui` ou `package:cupertino_ui` introduz
+uma quebra de compatibilidade para os consumidores que não atualizaram suas dependências.
+Embora os símbolos e os nomes das classes permaneçam os mesmos,
+eles passam a ser referenciados a partir de uma biblioteca totalmente nova.
+Trate essa migração como um incremento de versão principal do seu pacote.
 
-## References
+## Referências {:#references}
 
-Package documentation:
+Documentação do pacote:
 
-* [`package:material_ui`][]
-* [`package:cupertino_ui`][]
+* [`package:material_ui`][`package:material_ui`]
+* [`package:cupertino_ui`][`package:cupertino_ui`]
 
-Relevant issues:
+Issues relevantes:
 
-* [Issue 191448][]
+* [Issue 191448][Issue 191448]
 
-Relevant blog posts and announcements:
+Posts do blog e anúncios relevantes:
 
-* [What's new in Flutter 3.47][]
-* [Flutter's Material and Cupertino code freeze][]
+* [O que há de novo no Flutter 3.47][What's new in Flutter 3.47]
+* [O congelamento de código do Material e do Cupertino no Flutter][Flutter's Material and Cupertino code freeze]
 
 [`flutter/packages`]: {{site.repo.packages}}
 [Issue 191448]: {{site.repo.flutter}}/issues/191448

@@ -1,36 +1,37 @@
 ---
-title: Built-in Kotlin migration for app developers
+ia-translate: true
+title: Migração para o Kotlin integrado para desenvolvedores de apps
 description: >-
-  Migrate Flutter apps to use built-in Kotlin.
+  Migre apps Flutter para usar o Kotlin integrado.
 ---
 
-This guide outlines the migration steps specifically for app developers.
+Este guia descreve os passos de migração específicos para desenvolvedores de apps.
 
-These instructions assume you are updating from
-an AGP version created before 9.0.0 to an AGP version 9.0.0+.
-You should also use the minimum compatible dependency versions
-listed in the [Android Gradle Plugin docs][AGP block].
+Estas instruções pressupõem que você está atualizando de
+uma versão do AGP anterior à 9.0.0 para uma versão 9.0.0 ou superior do AGP.
+Você também deve usar as versões mínimas compatíveis de dependências
+listadas na [documentação do Android Gradle Plugin][AGP block].
 
 :::warning
-This guide only applies to apps that already use the
+Este guia se aplica apenas a apps que já usam o
 Kotlin Gradle Plugin (KGP).
 
-To verify whether your app applies KGP,
-find the `kotlin-android` plugin
-(or the `org.jetbrains.kotlin.android` plugin).
-It is likely located in the
-`<app-src>/android/app/build.gradle` or
-`<app-src>/android/app/build.gradle.kts` file.
-To view the KGP application code,
-see [Update the Gradle file](#update-the-gradle-file).
+Para verificar se o seu app aplica o KGP,
+procure o plugin `kotlin-android`
+(ou o plugin `org.jetbrains.kotlin.android`).
+Ele provavelmente está localizado no arquivo
+`<app-src>/android/app/build.gradle` ou
+`<app-src>/android/app/build.gradle.kts`.
+Para ver o código de aplicação do KGP,
+consulte [Atualizar o arquivo Gradle](#update-the-gradle-file).
 
-If your app doesn't currently apply KGP,
-don't migrate to built-in Kotlin.
+Se o seu app não aplica o KGP atualmente,
+não migre para o Kotlin integrado.
 :::
 
 :::note
-To update Flutter plugins to use built-in Kotlin,
-follow the [migration guide for plugin authors][].
+Para atualizar os plugins Flutter para usar o Kotlin integrado,
+siga o [guia de migração para autores de plugins][migration guide for plugin authors].
 :::
 
 [AGP block]: {{site.android-dev}}/build/releases/gradle-plugin
@@ -38,27 +39,27 @@ follow the [migration guide for plugin authors][].
 
 <a id="verify-flags-in-properties-file" aria-hidden="true"></a>
 
-## Verify flags in the Gradle properties file
+## Verificar as flags no arquivo de propriedades do Gradle {:#verify-flags-in-the-gradle-properties-file}
 
-Flutter sets the default behavior to use the legacy Kotlin Gradle Plugin (KGP)
-and the old AGP DSL types to support projects that haven't yet migrated.
-The Flutter migrator tool automatically adds `android.builtInKotlin=false`
-and `android.newDsl=false` to your `gradle.properties` file.
+O Flutter define o comportamento padrão para usar o Kotlin Gradle Plugin (KGP)
+legado e os tipos antigos de DSL do AGP, para dar suporte a projetos que ainda não migraram.
+A ferramenta de migração do Flutter adiciona automaticamente `android.builtInKotlin=false`
+e `android.newDsl=false` ao seu arquivo `gradle.properties`.
 
-If these flags are missing from your `gradle.properties` file,
-the Flutter tool automatically adds them when you
-next build or run your app using `flutter run` or `flutter build apk`.
+Se essas flags não estiverem no seu arquivo `gradle.properties`,
+a ferramenta do Flutter as adiciona automaticamente na próxima vez que você
+compilar ou executar o seu app com `flutter run` ou `flutter build apk`.
 
-Alternatively, building the project using Android Studio tooling also
-adds these flags automatically.
-Once the process completes, verify that the flags have been added.
-For more details, see Flutter [issue #183910][issue-183910].
+Como alternativa, compilar o projeto usando as ferramentas do Android Studio
+também adiciona essas flags automaticamente.
+Ao concluir o processo, verifique se as flags foram adicionadas.
+Para mais detalhes, consulte a [issue #183910][issue-183910] do Flutter.
 
-All add-to-app projects must manually add
-`android.builtInKotlin=false` and `android.newDsl=false` to
-the Android host app's `gradle.properties` file.
-The Flutter migrator tool can't run during add-to-app Android host app builds
-because the host app is a pure native Android project.
+Todos os projetos add-to-app devem adicionar manualmente
+`android.builtInKotlin=false` e `android.newDsl=false` ao arquivo
+`gradle.properties` do app host Android.
+A ferramenta de migração do Flutter não pode ser executada durante a compilação
+do app host Android em add-to-app, porque o app host é um projeto Android puramente nativo.
 
 ```properties diff title="<host-app-project>/gradle.properties"
 # ...
@@ -67,32 +68,31 @@ because the host app is a pure native Android project.
 ```
 
 :::note
-If your app doesn't apply
-the `kotlin-android` plugin (also called the Kotlin Gradle Plugin),
-then you only need to add `android.newDsl=false` and
-don't need to complete any further migration steps.
+Se o seu app não aplica o plugin `kotlin-android` (também chamado de Kotlin Gradle Plugin),
+então você só precisa adicionar `android.newDsl=false` e
+não precisa concluir nenhum outro passo de migração.
 :::
 
-## Update the Gradle file
+## Atualizar o arquivo Gradle {:#update-the-gradle-file}
 
-First, find the `kotlin-android` plugin
-(or the `org.jetbrains.kotlin.android` plugin).
-It is likely located in the `plugins` block of the
-`<app-src>/android/app/build.gradle` or the
-`<app-src>/android/app/build.gradle.kts` file.
-If you use the legacy `apply` syntax, it will be located in
-the Groovy-based `<app-src>/android/app/build.gradle` file,
-as this syntax is not supported in Kotlin DSL.
+Primeiro, encontre o plugin `kotlin-android`
+(ou o plugin `org.jetbrains.kotlin.android`).
+Ele provavelmente está no bloco `plugins` do
+arquivo `<app-src>/android/app/build.gradle` ou do arquivo
+`<app-src>/android/app/build.gradle.kts`.
+Se você usa a sintaxe legada `apply`, ele estará no
+arquivo `<app-src>/android/app/build.gradle` baseado em Groovy,
+já que essa sintaxe não é suportada no Kotlin DSL.
 
-The following examples demonstrate how to
-migrate a Flutter Android app and an add-to-app Android host app:
+Os exemplos a seguir demonstram como
+migrar um app Android Flutter e um app host Android em add-to-app:
 
-### Migrate your Flutter Android app
+### Migrar o seu app Android Flutter {:#migrate-your-flutter-android-app}
 
 <Tabs key="modern-legacy-apply">
 <Tab name="plugins block">
 
-**Before**:
+**Antes**:
 
 ```kotlin title="<app-src>/android/app/build.gradle(.kts)"
 plugins {
@@ -112,7 +112,7 @@ android {
 // ...
 ```
 
-Next, remove the `kotlin-android` plugin and the `kotlinOptions` block:
+Em seguida, remova o plugin `kotlin-android` e o bloco `kotlinOptions`:
 
 ```kotlin diff title="<app-src>/android/app/build.gradle.kts"
   plugins {
@@ -130,7 +130,7 @@ Next, remove the `kotlin-android` plugin and the `kotlinOptions` block:
   }
 ```
 
-Add the `kotlin.compilerOptions{}` DSL block with the following:
+Adicione o bloco DSL `kotlin.compilerOptions{}` com o seguinte:
 
 ```kotlin diff title="<app-src>/android/app/build.gradle.kts"
 + kotlin {
@@ -140,9 +140,9 @@ Add the `kotlin.compilerOptions{}` DSL block with the following:
 + }
 ```
 
-Here is how the file will likely end up:
+Veja como o arquivo deve ficar no final:
 
-**After**:
+**Depois**:
 
 ```kotlin title="<app-src>/android/app/build.gradle(.kts)"
 plugins {
@@ -166,7 +166,7 @@ kotlin {
 </Tab>
 <Tab name="legacy apply">
 
-**Before**:
+**Antes**:
 
 ```groovy title="<app-src>/android/app/build.gradle"
 apply plugin: 'com.android.application'
@@ -184,7 +184,7 @@ android {
 // ...
 ```
 
-Next, remove the `kotlin-android` plugin and the `kotlinOptions` block:
+Em seguida, remova o plugin `kotlin-android` e o bloco `kotlinOptions`:
 
 ```groovy diff title="<app-src>/android/app/build.gradle"
   apply plugin: 'com.android.application'
@@ -200,7 +200,7 @@ Next, remove the `kotlin-android` plugin and the `kotlinOptions` block:
   }
 ```
 
-Add the `kotlin.compilerOptions{}` DSL block with the following:
+Adicione o bloco DSL `kotlin.compilerOptions{}` com o seguinte:
 
 ```groovy diff title="<app-src>/android/app/build.gradle"
 + kotlin {
@@ -210,9 +210,9 @@ Add the `kotlin.compilerOptions{}` DSL block with the following:
 + }
 ```
 
-Here is how the file will likely end up:
+Veja como o arquivo deve ficar no final:
 
-**After**:
+**Depois**:
 
 ```groovy title="<app-src>/android/app/build.gradle"
 apply plugin: 'com.android.application'
@@ -234,13 +234,13 @@ kotlin {
 </Tab>
 </Tabs>
 
-### Migrate your add-to-app Android host app
+### Migrar o seu app host Android em add-to-app {:#migrate-your-add-to-app-android-host-app}
 
-Android native apps use the `alias` keyword to apply plugins,
-which is incompatible with the legacy `apply()` syntax.
-Therefore, only the `plugins {}` block instructions are included.
+Apps Android nativos usam a palavra-chave `alias` para aplicar plugins,
+o que é incompatível com a sintaxe legada `apply()`.
+Por isso, apenas as instruções do bloco `plugins {}` estão incluídas.
 
-**Before**:
+**Antes**:
 
 ```kotlin title="<app-src>/android/app/build.gradle(.kts)"
 plugins {
@@ -260,7 +260,7 @@ android {
 // ...
 ```
 
-Next, remove the `kotlin-android` plugin and the `kotlinOptions` block:
+Em seguida, remova o plugin `kotlin-android` e o bloco `kotlinOptions`:
 
 ```kotlin diff title="<app-src>/android/app/build.gradle.kts"
   plugins {
@@ -278,7 +278,7 @@ Next, remove the `kotlin-android` plugin and the `kotlinOptions` block:
   }
 ```
 
-Add the `kotlin.compilerOptions{}` DSL block with the following:
+Adicione o bloco DSL `kotlin.compilerOptions{}` com o seguinte:
 
 ```kotlin diff title="<app-src>/android/app/build.gradle.kts"
 + kotlin {
@@ -288,9 +288,9 @@ Add the `kotlin.compilerOptions{}` DSL block with the following:
 + }
 ```
 
-Here is how the file will likely end up:
+Veja como o arquivo deve ficar no final:
 
-**After**:
+**Depois**:
 
 ```kotlin title="<app-src>/android/app/build.gradle(.kts)"
 plugins {
@@ -311,17 +311,17 @@ kotlin {
 // ...
 ```
 
-## Validate
+## Validar {:#validate}
 
-Before enabling built-in Kotlin,
-confirm that you have migrated your application
-and any Flutter plugins it uses.
-Also, confirm that you updated your app
-to AGP 9+, because built-in Kotlin requires AGP 9+.
+Antes de ativar o Kotlin integrado,
+confirme que você migrou o seu aplicativo
+e quaisquer plugins Flutter que ele usa.
+Também confirme que você atualizou o seu app
+para o AGP 9+, porque o Kotlin integrado exige o AGP 9+.
 
-To enable built-in Kotlin,
-set the `android.builtInKotlin` property to `true`
-in your `gradle.properties` file:
+Para ativar o Kotlin integrado,
+defina a propriedade `android.builtInKotlin` como `true`
+no seu arquivo `gradle.properties`:
 
 ```properties diff title="<flutter-project>/android/gradle.properties"
 # ...
@@ -329,39 +329,39 @@ in your `gradle.properties` file:
 ```
 
 :::version-note
-Flutter 3.44 added support for AGP 9 with built-in Kotlin disabled
+O Flutter 3.44 adicionou suporte ao AGP 9 com o Kotlin integrado desativado
 (`android.builtInKotlin=false`),
-while enabling built-in Kotlin (`android.builtInKotlin=true`)
-requires Flutter 3.47 or later.
+enquanto ativar o Kotlin integrado (`android.builtInKotlin=true`)
+exige o Flutter 3.47 ou superior.
 :::
 
-After enabling built-in Kotlin,
-execute `flutter run` or `flutter build apk`
-to confirm that your app builds and launches
-on a connected Android device or emulator.
+Depois de ativar o Kotlin integrado,
+execute `flutter run` ou `flutter build apk`
+para confirmar que o seu app compila e inicia
+em um dispositivo Android conectado ou em um emulador.
 
-If your app fails to build because
-you are using an unmigrated Flutter plugin,
-follow the instructions below:
+Se o seu app não compilar porque
+você está usando um plugin Flutter que não migrou,
+siga as instruções abaixo:
 
-## Report incompatible Kotlin Gradle Plugin usage to plugin authors
+## Relatar uso incompatível do Kotlin Gradle Plugin aos autores de plugins {:#report-incompatible-kotlin-gradle-plugin-usage-to-plugin-authors}
 
-Follow these instructions only if your app uses a Flutter plugin
-that hasn't yet migrated to built-in Kotlin.
+Siga estas instruções apenas se o seu app usa um plugin Flutter
+que ainda não migrou para o Kotlin integrado.
 
-1.  Find the repository of the unmigrated Flutter plugin by
-    searching for the plugin name on [pub.dev]({{site.pub}}) or online.
-1.  Check the plugin's changelog to confirm that
-    no existing version has migrated to built-in Kotlin.
-1.  Report an issue to the plugin authors,
-    informing them that the Kotlin Gradle Plugin is incompatible and
-    won't be supported in a future version of Flutter.
+1.  Encontre o repositório do plugin Flutter não migrado pesquisando
+    o nome do plugin em [pub.dev]({{site.pub}}) ou na internet.
+1.  Verifique o changelog do plugin para confirmar que
+    nenhuma versão existente migrou para o Kotlin integrado.
+1.  Abra uma issue para os autores do plugin,
+    informando que o Kotlin Gradle Plugin é incompatível e
+    não será suportado em uma versão futura do Flutter.
 
-You can use the following template for the issue:
+Você pode usar o seguinte modelo para a issue:
 
-**Issue Title:** Migrate plugin to built-in Kotlin
+**Título da issue:** Migrate plugin to built-in Kotlin
 
-**Issue Body:**
+**Corpo da issue:**
 
 ```markdown
 I am using `<plugin-name>` in my Flutter app.
@@ -385,33 +385,32 @@ Here is the Flutter
 [migration guide for plugin authors](https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-plugin-authors).
 ```
 
-Please be respectful and mindful of the
-plugin repository's rules and code of conduct when
-reporting issues and interacting with plugin authors.
+Seja respeitoso e atento às regras e ao código de conduta do repositório do plugin
+ao relatar issues e interagir com os autores dos plugins.
 
-For reference, see the [Flutter Code of Conduct][Code of Conduct].
+Como referência, consulte o [Código de Conduta do Flutter][Code of Conduct].
 
 [Code of Conduct]: {{site.repo.flutter}}/blob/main/CODE_OF_CONDUCT.md
 
-## Next steps
+## Próximos passos {:#next-steps}
 
-For next steps,
-see the [built-in Kotlin migration overview][migration-overview].
+Para os próximos passos,
+consulte a [visão geral da migração para o Kotlin integrado][migration-overview].
 
 [migration-overview]: /release/breaking-changes/migrate-to-built-in-kotlin
 
-## References
+## Referências {:#references}
 
-Relevant issues:
+Issues relevantes:
 
-- [Issue #183910][issue-183910]: Add Disable Built-in Kotlin and new DSL Migrators
-- [Issue #181383][issue-181383]: Flutter plugins should support AGP 9.0.0
+- [Issue #183910][issue-183910]: Adicionar migradores para desativar o Kotlin integrado e o novo DSL
+- [Issue #181383][issue-181383]: Plugins Flutter devem oferecer suporte ao AGP 9.0.0
 
-The Gradle build files in your app vary based on
-the Flutter version used when your app was created.
-Consider staying up to date with the latest version
-of the build files by periodically running `flutter upgrade`
-in your app's root directory.
+Os arquivos de build Gradle do seu app variam de acordo com
+a versão do Flutter usada quando o app foi criado.
+Considere manter os arquivos de build atualizados
+executando periodicamente `flutter upgrade`
+no diretório raiz do seu app.
 
 [issue-183910]: {{site.repo.flutter}}/issues/183910
 [issue-181383]: {{site.repo.flutter}}/issues/181383

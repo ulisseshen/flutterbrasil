@@ -1,39 +1,40 @@
 ---
-title: The default page transition on Android is now PredictiveBackPageTransitionsBuilder
+ia-translate: true
+title: A transição de página padrão no Android agora é PredictiveBackPageTransitionsBuilder
 description: >-
-  Android's default page transition has been updated to match the
-  platform and to support predictive back.
+  A transição de página padrão do Android foi atualizada para acompanhar a
+  plataforma e oferecer suporte ao gesto de voltar preditivo.
 ---
 
-## Summary
+## Resumo {:#summary}
 
-The default page transition on Android has been updated from
-[`ZoomPageTransitionsBuilder`][] to [`PredictiveBackPageTransitionsBuilder`][].
-When not using predictive back, this falls back to
-[`FadeForwardsPageTransitionsBuilder`][].
+A transição de página padrão no Android foi atualizada de
+[`ZoomPageTransitionsBuilder`][`ZoomPageTransitionsBuilder`] para [`PredictiveBackPageTransitionsBuilder`][`PredictiveBackPageTransitionsBuilder`].
+Quando o gesto de voltar preditivo não é usado, a transição recorre a
+[`FadeForwardsPageTransitionsBuilder`][`FadeForwardsPageTransitionsBuilder`].
 
-## Context
+## Contexto {:#context}
 
-Android has been rolling out a feature called predictive back, where performing
-a back gesture allows the user to peek at the previous route or app and possibly
-cancel the navigation. Flutter added support for this with the [`PopScope`][]
-widget followed by [`PredictiveBackPageTransitionsBuilder`][].
+O Android está lançando um recurso chamado voltar preditivo, em que realizar um gesto
+de voltar permite que o usuário espie a rota ou o app anterior e, possivelmente,
+cancele a navegação. O Flutter adicionou suporte a isso com o widget [`PopScope`][`PopScope`]
+e, em seguida, com [`PredictiveBackPageTransitionsBuilder`][`PredictiveBackPageTransitionsBuilder`].
 
-In the meantime, Android also updated its default page transition. Flutter added
-support for this with [`FadeForwardsPageTransitionsBuilder`][].
+Enquanto isso, o Android também atualizou a sua transição de página padrão. O Flutter
+adicionou suporte a ela com [`FadeForwardsPageTransitionsBuilder`][`FadeForwardsPageTransitionsBuilder`].
 
-## Description of change
+## Descrição da mudança {:#description-of-change}
 
-With this change, [`PredictiveBackPageTransitionsBuilder`][] has replaced
-[`ZoomPageTransitionsBuilder`][] as the default page transition on Android.
-During a normal page transition without a predictive back gesture, users
-see the new [`FadeForwardsPageTransitionsBuilder`][] as the default page
-transition. When using a predictive back gesture, the page animates along
-with the gesture and allows canceling or committing to the back navigation.
+Com essa mudança, [`PredictiveBackPageTransitionsBuilder`][`PredictiveBackPageTransitionsBuilder`] substituiu
+[`ZoomPageTransitionsBuilder`][`ZoomPageTransitionsBuilder`] como a transição de página padrão no Android.
+Durante uma transição de página normal, sem o gesto de voltar preditivo, os
+usuários veem a nova [`FadeForwardsPageTransitionsBuilder`][`FadeForwardsPageTransitionsBuilder`] como transição padrão.
+Ao usar o gesto de voltar preditivo, a página acompanha o gesto e permite
+cancelar ou confirmar a navegação para trás.
 
-In this example, no page transition is explicitly given, so the
-[default]({{site.repo.flutter}}/blob/e983e4bd81f29b17215057fa5c9f46f96cbaf183/packages/flutter/lib/src/material/page_transitions_theme.dart#L806-L813)
-is set to [`PredictiveBackPageTransitionsBuilder`][] in the theme on Android.
+Neste exemplo, nenhuma transição de página é definida explicitamente, então o
+[padrão]({{site.repo.flutter}}/blob/e983e4bd81f29b17215057fa5c9f46f96cbaf183/packages/flutter/lib/src/material/page_transitions_theme.dart#L806-L813)
+é definido como [`PredictiveBackPageTransitionsBuilder`][`PredictiveBackPageTransitionsBuilder`] no tema, no Android.
 
 ```dart
 MaterialApp(
@@ -44,14 +45,14 @@ MaterialApp(
 );
 ```
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-If you want to keep your app's page transition on the old
-[`ZoomPageTransitionsBuilder`][], you can simply set your page transition
-explicitly in your app's theme. Keep in mind that you will not be able to
-support predictive back route transitions.
+Se você quiser manter a transição de página do seu app no antigo
+[`ZoomPageTransitionsBuilder`][`ZoomPageTransitionsBuilder`], basta definir a transição de página
+explicitamente no tema do seu app. Lembre-se de que você não poderá
+oferecer suporte às transições de rota do voltar preditivo.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 return MaterialApp(
@@ -63,7 +64,7 @@ return MaterialApp(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 MaterialApp(
@@ -79,13 +80,13 @@ MaterialApp(
 );
 ```
 
-One side effect of changing the default transition is that the duration that it
-takes to transition between pages has increased from 300ms to 450ms. This might
-cause breakages in tests that depend on the previous transition duration.
-Fortunately, it's possible to use [`TransitionDurationObserver`][] to keep tests
-independent of whatever page transition is used.
+Um efeito colateral de mudar a transição padrão é que a duração da transição
+entre páginas aumentou de 300ms para 450ms. Isso pode
+quebrar testes que dependem da duração da transição anterior.
+Felizmente, é possível usar [`TransitionDurationObserver`][`TransitionDurationObserver`] para manter os testes
+independentes da transição de página utilizada.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 testWidgets('example', (WidgetTester tester) async {
@@ -107,7 +108,7 @@ testWidgets('example', (WidgetTester tester) async {
 });
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 testWidgets('example', (WidgetTester tester) async {
@@ -132,10 +133,10 @@ testWidgets('example', (WidgetTester tester) async {
 });
 ```
 
-It's even possible to write tests that need to pump part of the way through a
-page transition without depending on the exact duration.
+Também é possível escrever testes que precisam avançar até o meio de uma
+transição de página sem depender da duração exata.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 testWidgets('example', (WidgetTester tester) async {
@@ -157,7 +158,7 @@ testWidgets('example', (WidgetTester tester) async {
 });
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 testWidgets('example', (WidgetTester tester) async {
@@ -182,28 +183,28 @@ testWidgets('example', (WidgetTester tester) async {
 });
 ```
 
-## Timeline
+## Linha do tempo {:#timeline}
 
-Landed in version: 3.37.0-0.0.pre<br>
-In stable release: 3.38.0
+Incluído na versão: 3.37.0-0.0.pre<br>
+Na versão estável: 3.38.0
 
-## References
+## Referências {:#references}
 
-API documentation:
+Documentação da API:
 
-* [`ZoomPageTransitionsBuilder`][]
-* [`PredictiveBackPageTransitionsBuilder`][]
-* [`FadeForwardsPageTransitionsBuilder`][]
-* [`PopScope`][]
-* [`TransitionDurationObserver`][]
+* [`ZoomPageTransitionsBuilder`][`ZoomPageTransitionsBuilder`]
+* [`PredictiveBackPageTransitionsBuilder`][`PredictiveBackPageTransitionsBuilder`]
+* [`FadeForwardsPageTransitionsBuilder`][`FadeForwardsPageTransitionsBuilder`]
+* [`PopScope`][`PopScope`]
+* [`TransitionDurationObserver`][`TransitionDurationObserver`]
 
-Relevant issues:
+Issues relevantes:
 
-* [Android predictive back route transitions][]
+* [Transições de rota do voltar preditivo no Android][Android predictive back route transitions]
 
-Relevant PRs:
+PRs relevantes:
 
-* [Predictive back route transitions by default][]
+* [Transições de rota do voltar preditivo por padrão][Predictive back route transitions by default]
 
 [`FadeForwardsPageTransitionsBuilder`]: {{site.material_ui}}/FadeForwardsPageTransitionsBuilder-class.html
 [`PopScope`]: {{site.api}}/flutter/widgets/PopScope-class.html

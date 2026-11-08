@@ -1,108 +1,109 @@
 ---
-title: DevTools 2.61.0 release notes
-shortTitle: 2.61.0 release notes
+ia-translate: true
+title: Notas de lançamento do DevTools 2.61.0
+shortTitle: Notas de lançamento 2.61.0
 breadcrumb: 2.61.0
 showToc: false
 ---
 
-The 2.61.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](/tools/devtools).
+A versão 2.61.0 do Dart e Flutter DevTools
+inclui as seguintes mudanças, entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](/tools/devtools).
 
-## General updates
+## Atualizações gerais
 
-* Fixed unreadable text in the release notes panel, where blockquotes were
-  drawn on a hard coded light blue background in the dark theme.
+* Corrigido texto ilegível no painel de notas de lançamento, em que os blockquotes eram
+  desenhados com um fundo azul-claro fixo no tema escuro.
   [#9957](https://github.com/flutter/devtools/pull/9957)
-* Added support for proxying the VM service connection over a `MessagePort`
-  using `?uri=messageport:<origin>`.
+* Adicionado suporte a proxy da conexão com o serviço da VM por meio de um `MessagePort`
+  usando `?uri=messageport:<origin>`.
   [#9964](https://github.com/flutter/devtools/pull/9964)
 
-## Inspector updates
+## Atualizações do Inspector
 
-* Added the widget source file path to the Inspector details pane
-  (`filename.dart:line:column`), matching legacy Inspector behavior.
+* Adicionado o caminho do arquivo-fonte do widget ao painel de detalhes do Inspector
+  (`filename.dart:line:column`), igualando o comportamento do Inspector legado.
   [#9972](https://github.com/flutter/devtools/pull/9972),
   [#9922](https://github.com/flutter/devtools/issues/9922)
 
-## Performance updates
+## Atualizações de desempenho
 
-* Fixed a bug where the Flutter frames chart could appear frozen after
-  switching away from the Performance screen and coming back.
+* Corrigido um bug em que o gráfico de frames do Flutter podia ficar travado após
+  sair da tela de Performance e voltar para ela.
   [#9960](https://github.com/flutter/devtools/pull/9960)
-* Added a message in the Performance panel when widget rebuild tracking is
-  unavailable because the app is running in profile mode.
+* Adicionada uma mensagem no painel de Performance para indicar quando o rastreamento
+  de rebuilds de widgets não está disponível porque o app está rodando em modo profile.
   [#9755](https://github.com/flutter/devtools/pull/9755)
 
-## CPU profiler updates
+## Atualizações do CPU profiler
 
-* Fixed a bug where resizing the CPU flame chart changes the timing values
-  across the top of the chart.
+* Corrigido um bug em que redimensionar o flame chart da CPU alterava os valores de
+  tempo exibidos no topo do gráfico.
   [#9915](https://github.com/flutter/devtools/pull/9915)
 
-## Memory updates
+## Atualizações de memória
 
-* Added the ability to pin classes to the top of the Profile Memory table.
+* Adicionada a possibilidade de fixar classes no topo da tabela do Profile Memory.
   [#8898](https://github.com/flutter/devtools/issues/8898)
 
-## Debugger updates
+## Atualizações do debugger
 
-* Prevented values from being garbage-collected, while being evaluated.
+* Evitada a coleta de lixo de valores enquanto eles estavam sendo avaliados.
   [#9885](https://github.com/flutter/devtools/pull/9885)
-* Updated to latest version of the Dart syntax highlighting grammar
+* Atualizada a gramática de realce de sintaxe do Dart para a versão mais recente
   [#9920](https://github.com/flutter/devtools/pull/9920)
-* Fixed a bug in the TextMate grammar parser that could result in code after
-  comments being classified as comments.
+* Corrigido um bug no parser da gramática TextMate que podia fazer com que o código
+  após comentários fosse classificado como comentário.
   [#9921](https://github.com/flutter/devtools/pull/9921)
-* Fixed an overflow in the debugging controls when the Debugger screen is
-  narrow, such as when DevTools is embedded in an IDE side panel. The controls
-  now scroll horizontally instead of overflowing.
+* Corrigido um estouro nos controles de depuração quando a tela Debugger está estreita,
+  como quando o DevTools está embutido em um painel lateral da IDE. Agora os controles
+  rolam horizontalmente em vez de estourar.
   [#9949](https://github.com/flutter/devtools/pull/9949)
 
-## Network profiler updates
+## Atualizações do Network profiler
 
-* Fixed Copy as cURL omitting request headers and body for failed or timed-out
-  requests. [#9963](https://github.com/flutter/devtools/pull/9963)
-* Added WebSocket support to the Network profiler, including WebSocket
-  connection details, lifecycle events, frame-level inspection, and connection
-  timing information. [#9968](https://github.com/flutter/devtools/pull/9968)
-* Fixed an issue where the Network tab would stop capturing HTTP requests after
-  a hot restart.
+* Corrigido o "Copy as cURL" que omitia cabeçalhos e corpo de requisições com falha
+  ou com timeout. [#9963](https://github.com/flutter/devtools/pull/9963)
+* Adicionado suporte a WebSocket no Network profiler, incluindo detalhes da conexão
+  WebSocket, eventos do ciclo de vida, inspeção em nível de frame e informações de
+  tempo da conexão. [#9968](https://github.com/flutter/devtools/pull/9968)
+* Corrigido um problema em que a aba Network deixava de capturar requisições HTTP
+  após um hot restart.
   [#9856](https://github.com/flutter/devtools/pull/9856)
-* Fixed an issue where the Network tab would stop capturing new HTTP requests
-  after pressing Clear while recording.
+* Corrigido um problema em que a aba Network deixava de capturar novas requisições HTTP
+  após pressionar Clear durante a gravação.
   [#9856](https://github.com/flutter/devtools/pull/9856)
 
-## Logging updates
+## Atualizações de logging
 
-* Corrected time units and cumulative nature of GC events.
+* Corrigidas as unidades de tempo e a natureza cumulativa dos eventos de GC.
   [#9890](https://github.com/flutter/devtools/pull/9890)
-* Fixed a bug where long `dart:developer` log messages lost their structured
-  Details view.
+* Corrigido um bug em que mensagens longas de log do `dart:developer` perdiam a
+  visualização estruturada de Details.
   [#10011](https://github.com/flutter/devtools/pull/10011)
 
-## Deep links tool updates
+## Atualizações da ferramenta de deep links
 
-* Added a "Watch tutorial" link to the status line that points to the
-  [deep links video tutorial](https://youtu.be/d7sZL6h1Elw).
+* Adicionado um link "Watch tutorial" na barra de status que aponta para o
+  [vídeo tutorial de deep links](https://youtu.be/d7sZL6h1Elw).
   [#9925](https://github.com/flutter/devtools/pull/9925)
-* Validated build option parameters and surfaced iOS universal link settings
-  errors in the Deep Links tool.
+* Validados os parâmetros de opções de build e exibidos erros de configuração de
+  universal links do iOS na ferramenta de Deep Links.
   [#10022](https://github.com/flutter/devtools/pull/10022)
 
-## DevTools extension updates
+## Atualizações da extensão do DevTools
 
-* Hide the DevTools extensions menu button in single-screen embedded mode
-  (`EmbedMode.embedOne`) on standard screens.
+* Ocultado o botão do menu de extensões do DevTools no modo embutido de tela única
+  (`EmbedMode.embedOne`) em telas padrão.
   [#8507](https://github.com/flutter/devtools/issues/8507)
-* Added iframe sandboxing for embedded DevTools extensions to enforce origin
-  isolation. [#9967](https://github.com/flutter/devtools/pull/9967)
-* Improved DevTools extension isolation by tracking the providing package
-  name for enablement, deduplication, and asset loading.
+* Adicionado sandboxing de iframe para as extensões do DevTools embutidas, para garantir
+  o isolamento de origem. [#9967](https://github.com/flutter/devtools/pull/9967)
+* Melhorado o isolamento das extensões do DevTools ao rastrear o nome do pacote que
+  fornece a extensão para ativação, deduplicação e carregamento de assets.
   [#9981](https://github.com/flutter/devtools/pull/9981)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes in this release, check out the
-[DevTools git log](https://github.com/flutter/devtools/tree/v2.61.0).
+Para encontrar uma lista completa de mudanças nesta versão, confira o
+[log do git do DevTools](https://github.com/flutter/devtools/tree/v2.61.0).

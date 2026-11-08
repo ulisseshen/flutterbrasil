@@ -1,34 +1,35 @@
 ---
-title: DevTools 2.53.0 release notes
-shortTitle: 2.53.0 release notes
+ia-translate: true
+title: Notas de lançamento do DevTools 2.53.0
+shortTitle: Notas de lançamento 2.53.0
 breadcrumb: 2.53.0
 showToc: false
 ---
 
-# DevTools 2.53.0 release notes
+# Notas de lançamento do DevTools 2.53.0
 
-The 2.53.0 release of the Dart and Flutter DevTools
-includes the following changes among other general improvements.
-To learn more about DevTools, check out the
-[DevTools overview](/tools/devtools/overview).
+A versão 2.53.0 do Dart e Flutter DevTools
+inclui as seguintes mudanças, entre outras melhorias gerais.
+Para saber mais sobre o DevTools, confira a
+[visão geral do DevTools](/tools/devtools/overview).
 
-## General updates
+## Atualizações gerais
 
-- Switched default compiler for DevTools to `dart2wasm`. -
+- Alterado o compilador padrão do DevTools para `dart2wasm`. -
   [#9530](https://github.com/flutter/devtools/pull/9530)
 
-## Performance updates
+## Atualizações de desempenho
 
-- Increased profile data limit from 64MB to 2GB, fixing issue where panel
-  wouldn't load for large profiles. -
+- Aumentado o limite de dados de perfil de 64MB para 2GB, corrigindo o problema em que
+  o painel não carregava perfis grandes. -
   [#9540](https://github.com/flutter/devtools/pull/9540)
 
-## Advanced developer mode updates
+## Atualizações do modo avançado para desenvolvedores
 
-- Fixed issue preventing CPU profiles from loading when "advanced developer
-  mode" was enabled. - [#9528](https://github.com/flutter/devtools/pull/9528)
+- Corrigido um problema que impedia que perfis de CPU fossem carregados quando o
+  "modo avançado para desenvolvedores" estava ativado. - [#9528](https://github.com/flutter/devtools/pull/9528)
 
-## Full commit history
+## Histórico completo de commits
 
-To find a complete list of changes in this release, check out the
-[DevTools git log](https://github.com/flutter/devtools/tree/v2.53.0).
+Para encontrar uma lista completa de mudanças nesta versão, confira o
+[log do git do DevTools](https://github.com/flutter/devtools/tree/v2.53.0).

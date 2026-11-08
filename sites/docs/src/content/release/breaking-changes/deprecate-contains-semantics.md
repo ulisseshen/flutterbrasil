@@ -1,42 +1,43 @@
 ---
-title: Deprecate `containsSemantics` in favor of `isSemantics`
+ia-translate: true
+title: Depreciação de `containsSemantics` em favor de `isSemantics`
 description: >-
-  The `containsSemantics` matcher has been deprecated in favor of
-  `isSemantics` and `matchesSemantics` matchers.
+  O matcher `containsSemantics` foi depreciado em favor dos matchers
+  `isSemantics` e `matchesSemantics`.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-The `containsSemantics` partial matcher is deprecated and replaced by
-`isSemantics` to clarify intent and standardize matcher conventions.
+O matcher parcial `containsSemantics` está depreciado e foi substituído por
+`isSemantics` para deixar a intenção mais clara e padronizar as convenções dos matchers.
 
-## Context
+## Contexto {:#context}
 
-The `contains` prefix for partial matchers, such as `containsSemantics`, has been 
-replaced with `is` to align with naming conventions:
+O prefixo `contains` dos matchers parciais, como `containsSemantics`, foi
+substituído por `is` para seguir as convenções de nomenclatura:
 
-* **Partial matchers** (such as `isSemantics`) match only
-  the properties explicitly provided.
-  Any arguments not provided are ignored.
-* **Exact matchers** (such as `matchesSemantics`) verify all values.
-  Any arguments not provided are expected to
-  match the object's default values.
+* **Matchers parciais** (como `isSemantics`) verificam apenas
+  as propriedades informadas explicitamente.
+  Os argumentos não informados são ignorados.
+* **Matchers exatos** (como `matchesSemantics`) verificam todos os valores.
+  Os argumentos não informados devem
+  corresponder aos valores padrão do objeto.
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-To automatically migrate your code, run the following command:
+Para migrar o seu código automaticamente, execute o seguinte comando:
 
 ```console
 $ dart fix --apply
 ```
 
-Alternatively, replace `containsSemantics` with `isSemantics` for partial
-matching (most common case), or `matchesSemantics` if you need to assert 
-exact property values (including defaults for omitted arguments).
+Como alternativa, substitua `containsSemantics` por `isSemantics` para
+comparação parcial (caso mais comum), ou por `matchesSemantics` se você precisar
+verificar valores exatos de propriedades (incluindo os padrões dos argumentos omitidos).
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 expect(
@@ -48,7 +49,7 @@ expect(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 expect(
@@ -60,26 +61,26 @@ expect(
 );
 ```
 
-## Timeline
+## Linha do tempo {:#timeline}
 
-Landed in version: 3.40.0-1.0.pre<br>
-In stable release: 3.41
+Incluído na versão: 3.40.0-1.0.pre<br>
+Na versão estável: 3.41
 
-## References
+## Referências {:#references}
 
-API documentation:
+Documentação da API:
 
-* [`isSemantics`][]
-* [`matchesSemantics`][]
+* [`isSemantics`][`isSemantics`]
+* [`matchesSemantics`][`matchesSemantics`]
 
-Relevant issues:
+Issues relevantes:
 
-* [Issue 180534][]
-* [Issue 107859][]
+* [Issue 180534][Issue 180534]
+* [Issue 107859][Issue 107859]
 
-Relevant PR:
+PR relevante:
 
-* [PR 180538][]
+* [PR 180538][PR 180538]
 
 [`isSemantics`]: {{site.api}}/flutter/flutter_test/isSemantics.html
 [`matchesSemantics`]: {{site.api}}/flutter/flutter_test/matchesSemantics.html

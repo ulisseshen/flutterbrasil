@@ -8,6 +8,46 @@ está no `AGENTS.md` do upstream:
 
 @AGENTS.md
 
+## Começando do zero (sessão nova)
+
+Em uma máquina ou sessão de nuvem nova, a partir da raiz do repositório:
+
+```console
+bash tool/traducao/setup.sh
+export PATH="$HOME/.dart-sdk/bin:$HOME/.pub-cache/bin:$PATH"
+```
+
+O script instala o Dart SDK na mesma versão do CI do upstream (lida de
+`.github/workflows/docs.yml`), adiciona o remote `upstream`
+(flutter/website), busca histórico suficiente e roda `dart pub get`.
+
+Comandos úteis depois disso:
+
+- `dart run dash_site --site=docs build`: build completo do site (gera
+  `sites/docs/build/jaspr`, leva vários minutos). Rode antes de abrir PR.
+- `dart run dash_site --site=docs serve`: servidor local.
+- `dart analyze sites/docs/lib packages/site_shared/lib tool/dash_site`:
+  rode depois de mexer em código Dart.
+- `python3 tool/traducao/verificar.py`: valida a estrutura das traduções.
+
+## Agentes e paralelismo
+
+- **No máximo 5 agentes em paralelo.** Divida o trabalho em lotes
+  equilibrados por tamanho (linhas ou blocos de conflito), sem dois agentes no
+  mesmo arquivo. Agentes não fazem commit nem push: quem orquestra confere com
+  `verificar.py`, faz o commit por lote e o push.
+- **Traduzir páginas novas:** agente `translate-pt-br`
+  (`.claude/agents/translate-pt-br.md`, modelo **Haiku**). É rápido e barato
+  para tradução direta. O portão de qualidade é o `verificar.py`; se um arquivo
+  falhar duas vezes, refaça-o com um modelo maior.
+- **Atualizar páginas já traduzidas** (arquivos diff3 de
+  `.traducao-pendente/`): agente `atualizar-traducao`
+  (`.claude/agents/atualizar-traducao.md`, modelo **Sonnet**). Comparar
+  inglês antigo, inglês novo e português exige mais cuidado para não perder
+  texto, por isso não use Haiku nessa etapa.
+- Código Dart, workflows e dados de configuração: resolva diretamente, sem
+  agente, e valide com `dart analyze` e com o build.
+
 ## Onde fica o quê
 
 - `sites/docs/src/content/`: páginas em Markdown (o que se traduz).

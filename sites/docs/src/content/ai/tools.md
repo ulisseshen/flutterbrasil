@@ -1,173 +1,175 @@
 ---
-title: How Flutter AI tools work
-shortTitle: How AI tools work
+ia-translate: true
+title: Como as ferramentas de IA do Flutter funcionam
+shortTitle: Como as ferramentas de IA funcionam
 description: >-
-  Learn how agent skills, the Dart and Flutter MCP server, and package skills
-  interact to assist your development workflow.
+  Saiba como as agent skills, o servidor MCP do Dart e do Flutter e as
+  package skills interagem para auxiliar no seu fluxo de desenvolvimento.
 ---
 
-Flutter and Dart provide an integrated suite of tools designed to help AI
-coding assistants understand your codebase, follow best practices, and execute
-development tasks accurately.
+O Flutter e o Dart oferecem um conjunto integrado de ferramentas projetadas para ajudar
+assistentes de programação com IA a entender sua base de código, seguir as melhores práticas
+e executar tarefas de desenvolvimento com precisão.
 
-## Tooling ecosystem overview
+## Visão geral do ecossistema de ferramentas {:#tooling-ecosystem-overview}
 
-The Flutter AI tooling ecosystem consists of six complementary components:
+O ecossistema de ferramentas de IA do Flutter é composto por seis componentes complementares:
 
-1. **Agent skills**: task-oriented blueprints that teach assistants how to
-   perform specific workflows (such as creating responsive layouts or writing
-   tests).
-2. **Dart and Flutter MCP server**: a Model Context Protocol (MCP) server
-   exposing real-time SDK diagnostics, symbol resolution, and runtime
-   introspection to assistants.
-3. **Developer Knowledge MCP server**: a cloud-hosted documentation search
-   server giving assistants direct access to official Flutter and Dart docs.
-4. **Package skills**: skills published directly inside third-party `pub.dev`
-   packages, giving assistants instant expertise on specific libraries.
-5. **Specialized agents**: dedicated agent personas equipped with focused tools
-   and system instructions for isolated workflows, such as accessibility
-   auditing.
-6. **Agent rules**: persistent rules added to the context window every time
-   you start a new session with your assistant (such as instructing the
-   assistant to proactively trigger hot reload when modifying Flutter widgets).
+1. **Agent skills**: blueprints orientados a tarefas que ensinam os assistentes a
+   executar fluxos de trabalho específicos (como criar layouts responsivos ou
+   escrever testes).
+2. **Servidor MCP do Dart e do Flutter**: um servidor Model Context Protocol (MCP)
+   que expõe para os assistentes diagnósticos do SDK em tempo real, resolução de símbolos
+   e introspecção em tempo de execução.
+3. **Servidor MCP da Developer Knowledge**: um servidor de busca na documentação
+   hospedado na nuvem, que dá aos assistentes acesso direto à documentação oficial
+   do Flutter e do Dart.
+4. **Package skills**: skills publicadas diretamente dentro de pacotes de terceiros
+   no `pub.dev`, dando aos assistentes conhecimento instantâneo sobre bibliotecas específicas.
+5. **Agentes especializados**: personas de agente dedicadas, equipadas com ferramentas
+   focadas e instruções de sistema para fluxos de trabalho isolados, como auditoria
+   de acessibilidade.
+6. **Regras de agente**: regras persistentes adicionadas à janela de contexto toda vez
+   que você inicia uma nova sessão com seu assistente (por exemplo, instruir o
+   assistente a acionar proativamente o hot reload ao modificar widgets Flutter).
 
 ---
 
-## Agent skills
+## Agent skills {:#agent-skills}
 
-[Agent skills](https://agentskills.io/) provide a standardized way to equip AI
-assistants with procedural domain expertise.
+[Agent skills](https://agentskills.io/) oferecem uma forma padronizada de equipar
+assistentes de IA com conhecimento procedural de domínio.
 
-### Progressive disclosure
+### Divulgação progressiva {:#progressive-disclosure}
 
-Skills use **progressive disclosure** to conserve model context:
+As skills usam **divulgação progressiva** para economizar o contexto do modelo:
 
-* **Discovery phase**: The assistant initially reads only skill metadata (name
-  and short description) from the `.agents/skills` directory.
-* **Execution phase**: When the assistant determines a skill is relevant to
-  your prompt, it loads the complete instructions (`SKILL.md`) and supporting
-  reference scripts.
+* **Fase de descoberta**: o assistente lê inicialmente apenas os metadados da skill (nome
+  e descrição curta) do diretório `.agents/skills`.
+* **Fase de execução**: quando o assistente determina que uma skill é relevante para
+  seu prompt, ele carrega as instruções completas (`SKILL.md`) e os scripts
+  de referência de apoio.
 
-### Official skills repositories
+### Repositórios oficiais de skills {:#official-skills-repositories}
 
 * [**flutter/agent-plugins**](https://github.com/flutter/agent-plugins):
-  Provides skills for Flutter development, including widget construction,
-  declarative navigation, responsive design, and state management.
-* [**dart-lang/skills**](https://github.com/dart-lang/skills): Provides skills
-  for Dart development, including unit test authoring, dependency resolution,
-  and static analysis remediation.
+  oferece skills para desenvolvimento Flutter, incluindo construção de widgets, navegação
+  declarativa, design responsivo e gerenciamento de estado.
+* [**dart-lang/skills**](https://github.com/dart-lang/skills): oferece skills
+  para desenvolvimento Dart, incluindo criação de testes unitários, resolução de dependências
+  e correção de análise estática.
 
-### Quality assurance and linting
+### Garantia de qualidade e lint {:#quality-assurance-and-linting}
 
-Use [`package:skills_lint`]({{site.pub-pkg}}/skills_lint) to validate
-in-repository skills (such as those under the `.agents/skills/` directory)
-and published package skills against the
-[Agent Skills specification][agentskills].
-The linter checks `SKILL.md` YAML frontmatter, directory structure,
-naming conventions, and relative file paths to keep your skill definitions
-valid and ready for AI assistants to use as your codebase evolves.
+Use o [`package:skills_lint`]({{site.pub-pkg}}/skills_lint) para validar
+skills existentes no repositório (como as do diretório `.agents/skills/`)
+e as package skills publicadas, de acordo com a
+[especificação de Agent Skills][agentskills].
+O linter verifica o frontmatter YAML do `SKILL.md`, a estrutura de diretórios,
+as convenções de nomenclatura e os caminhos relativos de arquivos, para manter suas definições
+de skill válidas e prontas para uso pelos assistentes de IA conforme sua base de código evolui.
 
-To set up and run the linter, refer to [Validate and lint skills](
+Para configurar e executar o linter, consulte [Valide e faça lint de skills](
 {{site.dart-site}}/tools/pub/package-skills#validate-and-lint-skills).
 
 [agentskills]: https://agentskills.io/specification
 
 ---
 
-## Dart and Flutter MCP server
+## Servidor MCP do Dart e do Flutter {:#dart-and-flutter-mcp-server}
 
-The [Dart and Flutter MCP server](
+O [servidor MCP do Dart e do Flutter](
 https://github.com/dart-lang/ai/tree/main/pkgs/dart_mcp_server)
-implements the open Model Context Protocol (MCP), connecting AI assistants to
-live Dart SDK and Flutter tooling over standard I/O (stdio).
+implementa o Model Context Protocol (MCP) aberto, conectando assistentes de IA
+às ferramentas ativas do SDK do Dart e do Flutter por entrada e saída padrão (stdio).
 
-Key capabilities provided by the MCP server include:
+Os principais recursos oferecidos pelo servidor MCP incluem:
 
-* **Static analysis & diagnostics**: Inspect and fix analyzer errors and
-  warnings across your project.
-* **Symbol resolution**: Resolve symbols to their definitions, signatures, and
-  documentation.
-* **Runtime introspection**: Query the state of a running Flutter application
-  during active debugging sessions.
-* **Package management**: Search [pub.dev](https://pub.dev) and manage
-  dependencies in `pubspec.yaml`.
-* **Testing & formatting**: Execute unit and widget tests and format code using
-  `dart format` rules.
+* **Análise estática e diagnósticos**: inspecione e corrija erros e
+  avisos do analisador em todo o seu projeto.
+* **Resolução de símbolos**: resolva símbolos para suas definições, assinaturas e
+  documentação.
+* **Introspecção em tempo de execução**: consulte o estado de um app Flutter em execução
+  durante sessões de depuração ativas.
+* **Gerenciamento de pacotes**: pesquise no [pub.dev](https://pub.dev) e gerencie
+  dependências no `pubspec.yaml`.
+* **Testes e formatação**: execute testes unitários e de widget e formate o código usando
+  as regras do `dart format`.
 
 ---
 
-## Developer Knowledge MCP server
+## Servidor MCP da Developer Knowledge {:#developer-knowledge-mcp-server}
 
-While the local Dart and Flutter MCP server focuses on local codebase analysis
-and runtime debugging, you can also equip your assistant with search access to
-official online documentation.
+Enquanto o servidor MCP local do Dart e do Flutter foca na análise da base de código local
+e na depuração em tempo de execução, você também pode dar ao seu assistente acesso de busca à
+documentação oficial online.
 
-The [Developer Knowledge MCP server](
+O [servidor MCP da Developer Knowledge](
 https://developers.google.com/knowledge/mcp)
-connects AI assistants to Google's developer documentation corpus, including
+conecta assistentes de IA ao corpus de documentação para desenvolvedores do Google, incluindo
 [docs.flutter.dev](https://docs.flutter.dev),
-[dart.dev](https://dart.dev), and official API references. This allows
-assistants to retrieve up-to-date guides, migration notes, and API references
-directly during conversation.
+[dart.dev](https://dart.dev) e as referências oficiais de API. Isso permite que os
+assistentes recuperem guias atualizados, notas de migração e referências de API
+diretamente durante a conversa.
 
 ---
 
-## Package skills
+## Package skills {:#package-skills}
 
-In addition to core Flutter skills, library authors can bundle official skills
-directly inside their packages on [pub.dev](https://pub.dev).
+Além das skills principais do Flutter, autores de bibliotecas podem incluir skills oficiais
+diretamente dentro de seus pacotes no [pub.dev](https://pub.dev).
 
-When you add a dependency to your project, you can discover and install its
-skills using the `skills` CLI:
+Ao adicionar uma dependência ao seu projeto, você pode descobrir e instalar as
+skills dela usando a CLI `skills`:
 
 ```bash
 dart run skills@ get
 ```
 
-To learn how to discover and install package skills, check out
+Para aprender a descobrir e instalar package skills, confira
 [Package skills]({{site.dart-site}}/ai/package-skills).
-To bundle skills with your own package, check out
-[Ship skills with packages]({{site.dart-site}}/tools/pub/package-skills).
+Para incluir skills no seu próprio pacote, confira
+[Distribua skills com pacotes]({{site.dart-site}}/tools/pub/package-skills).
 
 ---
 
-## Specialized agents
+## Agentes especializados {:#specialized-agents}
 
-**Specialized agents** (referred to as custom agents in platforms like
-Antigravity) are AI assistants configured with dedicated system prompts,
-curated tool sets, and focused skill subsets.
+**Agentes especializados** (chamados de custom agents em plataformas como
+o Antigravity) são assistentes de IA configurados com prompts de sistema dedicados,
+conjuntos de ferramentas selecionados e subconjuntos de skills focados.
 
-While agent skills guide general-purpose assistants during active coding,
-specialized agents run in isolated contexts to perform deep, single-purpose
-workflows without cluttering your primary conversation history.
+Enquanto as agent skills orientam assistentes de uso geral durante a programação ativa,
+os agentes especializados executam fluxos de trabalho profundos e de propósito único em contextos
+isolados, sem sobrecarregar o histórico principal da sua conversa.
 
-### Flutter Accessibility agent
+### Agente de acessibilidade do Flutter {:#flutter-accessibility-agent}
 
-The **Flutter Accessibility (`a11y`) agent** is an official specialized agent
-designed to audit Flutter widget trees and recommend accessibility
-improvements. The accessibility agent is currently available in
+O **agente de acessibilidade do Flutter (`a11y`)** é um agente especializado oficial
+projetado para auditar árvores de widgets Flutter e recomendar melhorias de
+acessibilidade. O agente de acessibilidade está disponível atualmente no
 [Google Antigravity](https://antigravity.google).
 
-Key capabilities of the accessibility agent include:
+Os principais recursos do agente de acessibilidade incluem:
 
-* **Semantic label inspection**: identifies interactive widgets (such as
-  `IconButton` or `InkWell`) that lack descriptive semantic labels.
-* **Touch target validation**: flags interactive elements with hit test
-  areas smaller than the recommended 48x48 logical pixels.
-* **Contrast and visual checks**: highlights potential contrast ratio issues
-  and missing focus indicators.
-* **Automated code fixes**: generates idiomatic Flutter fixes (such as
-  wrapping widgets in `Semantics` or adjusting tap bounds) that you can review
-  and accept.
+* **Inspeção de rótulos semânticos**: identifica widgets interativos (como
+  `IconButton` ou `InkWell`) que não têm rótulos semânticos descritivos.
+* **Validação de áreas de toque**: sinaliza elementos interativos com áreas de teste de
+  toque menores que os 48x48 pixels lógicos recomendados.
+* **Verificações de contraste e visuais**: destaca possíveis problemas de razão de contraste
+  e indicadores de foco ausentes.
+* **Correções automáticas de código**: gera correções idiomáticas do Flutter (como
+  envolver widgets em `Semantics` ou ajustar os limites de toque) que você pode revisar e
+  aceitar.
 
-### Using the accessibility agent in Antigravity
+### Usando o agente de acessibilidade no Antigravity {:#using-the-accessibility-agent-in-antigravity}
 
-After installing the official [Dart and Flutter plugin](
+Após instalar o [plugin oficial do Dart e do Flutter](
 https://antigravity.google/docs/build-with-google/#dart-and-flutter)
-in Antigravity, you can invoke the accessibility agent directly when chatting
-with Antigravity by selecting the **Flutter Accessibility Agent** from the
-agent picker, mentioning `@flutter_a11y_agent`, or asking your assistant to
-review your code for accessibility:
+no Antigravity, você pode invocar o agente de acessibilidade diretamente ao conversar
+com o Antigravity, selecionando o **Flutter Accessibility Agent** no
+seletor de agentes, mencionando `@flutter_a11y_agent` ou pedindo ao seu assistente que
+revise seu código quanto à acessibilidade:
 
 ```text
 @flutter_a11y_agent Audit this screen for accessibility issues.
@@ -175,40 +177,40 @@ review your code for accessibility:
 
 ---
 
-## Agent rules
+## Regras de agente {:#agent-rules}
 
-**Agent rules** are persistent rules added to the context window
-every time you start a new session with your assistant.
-Rules establish project conventions and common constraints
-across your codebase.
+**Regras de agente** são regras persistentes adicionadas à janela de contexto
+toda vez que você inicia uma nova sessão com seu assistente.
+As regras estabelecem convenções do projeto e restrições comuns
+em toda a sua base de código.
 
-To explore official Flutter rules, visit the
-[rules directory](https://github.com/flutter/agent-plugins/tree/main/rules)
-in the flutter/agent-plugins repository.
+Para explorar as regras oficiais do Flutter, visite o
+[diretório de regras](https://github.com/flutter/agent-plugins/tree/main/rules)
+no repositório flutter/agent-plugins.
 
 ---
 
-## When to use what
+## Quando usar cada uma {:#when-to-use-what}
 
-Use the following mental model to understand how different AI mechanisms
-interact:
+Use o modelo mental a seguir para entender como os diferentes mecanismos de IA
+interagem:
 
-| Mechanism | Scope and behavior | Best suited for |
+| Mecanismo | Escopo e comportamento | Ideal para |
 | :--- | :--- | :--- |
-| **Agent skill** | On demand | Multi-step recipes, patterns |
-| **Dart MCP server** | Local SDK tools | Diagnostics, tests, runtime |
-| **Developer Knowledge MCP** | Online search | Live docs, API references |
-| **Package skill** | From dependencies | Library APIs, code generation |
-| **Specialized agent** | Isolated subagent | Accessibility audits |
-| **Agent rule** | Persistent context | Project conventions, constraints |
+| **Agent skill** | Sob demanda | Receitas de múltiplos passos, padrões |
+| **Dart MCP server** | Ferramentas locais do SDK | Diagnósticos, testes, tempo de execução |
+| **Developer Knowledge MCP** | Busca online | Documentação ao vivo, referências de API |
+| **Package skill** | Vindo de dependências | APIs de bibliotecas, geração de código |
+| **Agente especializado** | Subagente isolado | Auditorias de acessibilidade |
+| **Regra de agente** | Contexto persistente | Convenções e restrições do projeto |
 
 {:.table .table-striped}
 
-## Next steps
+## Próximos passos {:#next-steps}
 
-* Follow the [Get started with AI](/ai/get-started) guide to install official
-  plugins in your editor.
-* Learn how to install skills with
+* Siga o guia [Comece a usar IA com o Flutter](/ai/get-started) para instalar os
+  plugins oficiais no seu editor.
+* Aprenda a instalar skills com
   [Package skills]({{site.dart-site}}/ai/package-skills).
-* Learn how to distribute skills with
-  [Ship skills with packages]({{site.dart-site}}/tools/pub/package-skills).
+* Aprenda a distribuir skills com
+  [Distribua skills com pacotes]({{site.dart-site}}/tools/pub/package-skills).

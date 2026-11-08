@@ -1,10 +1,11 @@
 ---
-title: FlutterBench agent evaluations
+ia-translate: true
+title: Avaliações de agentes do FlutterBench
 shortTitle: FlutterBench
 description: >-
-  How the Flutter team implements agent evals, and the results of those evals.
+  Como a equipe do Flutter implementa avaliações de agentes e os resultados dessas avaliações.
 ---
 
-:::note Coming soon
-Evaluation tooling and benchmarks are coming soon. 
+:::note Em breve
+As ferramentas de avaliação e os benchmarks estão chegando em breve.
 :::

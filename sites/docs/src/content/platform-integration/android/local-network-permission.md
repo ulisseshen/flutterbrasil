@@ -1,43 +1,44 @@
 ---
-title: Request local network permissions on Android
-shortTitle: Local network permission
+ia-translate: true
+title: Solicite permissões de rede local no Android
+shortTitle: Permissão de rede local
 description: >-
-  Learn how to declare and request Android local area network permissions
-  before opening Dart sockets in Flutter.
+  Aprenda a declarar e solicitar permissões de rede local no Android
+  antes de abrir sockets Dart no Flutter.
 ---
 
-Starting in Android 17 (API level 37), Android blocks local network access
-by default. Apps targeting Android 17 or higher that discover, scan,
-or connect to devices on the local area network must declare and request
-the `ACCESS_LOCAL_NETWORK` runtime permission.
+A partir do Android 17 (API nível 37), o Android bloqueia o acesso à rede local
+por padrão. Apps que têm como alvo o Android 17 ou superior e que descobrem, escaneiam
+ou se conectam a dispositivos na rede local devem declarar e solicitar
+a permissão de tempo de execução `ACCESS_LOCAL_NETWORK`.
 
 :::note
-Although enforced for apps targeting Android 17 (API level 37) and higher,
-you can opt in to test this behavior on Android 16 (API level 36).
+Embora seja aplicada a apps que têm como alvo o Android 17 (API nível 37) ou superior,
+você pode optar por testar esse comportamento no Android 16 (API nível 36).
 :::
 
-## Understand the impact on Dart sockets
+## Entenda o impacto nos sockets do Dart {:#understand-the-impact-on-dart-sockets}
 
-The standard `dart:io` library provides low-level socket networking,
-including [`Socket`][socket-class], [`RawSocket`][raw-socket-class],
-and [`ServerSocket`][server-socket-class].
-These socket classes operate at the system level
-and do not interact with Android's application framework UI.
+A biblioteca padrão `dart:io` oferece redes por socket de baixo nível,
+incluindo [`Socket`][socket-class], [`RawSocket`][raw-socket-class]
+e [`ServerSocket`][server-socket-class].
+Essas classes de socket operam em nível de sistema
+e não interagem com o framework de aplicação do Android nem com a UI.
 
-Because Dart sockets cannot display an Android permission prompt,
-any attempt to connect to a local IP address without the required permission
-fails and throws a `SocketException`.
-To prevent connection failures,
-request the runtime permission in Flutter
-before you initialize or connect your Dart socket.
+Como os sockets Dart não podem exibir um prompt de permissão do Android,
+qualquer tentativa de conexão a um endereço IP local sem a permissão necessária
+falha e lança uma `SocketException`.
+Para evitar falhas de conexão,
+solicite a permissão de tempo de execução no Flutter
+antes de inicializar ou conectar seu socket Dart.
 
-## Declare the permission in Android
+## Declare a permissão no Android {:#declare-the-permission-in-android}
 
-Before you can request the permission at runtime,
-declare it in your Android manifest.
+Antes de solicitar a permissão em tempo de execução,
+declare-a no manifesto do Android.
 
-1. Open `android/app/src/main/AndroidManifest.xml`.
-1. Add the `ACCESS_LOCAL_NETWORK` permission inside the `<manifest>` tag:
+1. Abra `android/app/src/main/AndroidManifest.xml`.
+1. Adicione a permissão `ACCESS_LOCAL_NETWORK` dentro da tag `<manifest>`:
 
 ```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
@@ -48,25 +49,25 @@ declare it in your Android manifest.
 </manifest>
 ```
 
-## Add the permission_handler package
+## Adicione o pacote permission_handler {:#add-the-permission_handler-package}
 
-To request Android runtime permissions from Dart,
-use the [`permission_handler`][] plugin from [pub.dev][].
+Para solicitar permissões de tempo de execução do Android a partir do Dart,
+use o plugin [`permission_handler`][`permission_handler`] do [pub.dev][pub.dev].
 
-Add `permission_handler` to your Flutter project dependencies:
+Adicione o `permission_handler` às dependências do seu projeto Flutter:
 
 ```bash
 flutter pub add permission_handler
 ```
 
-## Request permission before connecting a socket
+## Solicite a permissão antes de conectar um socket {:#request-permission-before-connecting-a-socket}
 
-Call `Permission.accessLocalNetwork.request()`
-before opening a Dart socket connection.
+Chame `Permission.accessLocalNetwork.request()`
+antes de abrir uma conexão de socket Dart.
 
-The following example demonstrates how to check the platform,
-request local network permission,
-and open a socket connection:
+O exemplo a seguir demonstra como verificar a plataforma,
+solicitar a permissão de rede local
+e abrir uma conexão de socket:
 
 ```dart
 import 'dart:io';
@@ -116,34 +117,34 @@ Future<void> connectToLocalDevice({
 }
 ```
 
-## Handle permission status
+## Trate o status da permissão {:#handle-permission-status}
 
-The `Permission.accessLocalNetwork.request()` method
-returns a `PermissionStatus` enum that indicates the outcome:
+O método `Permission.accessLocalNetwork.request()`
+retorna um enum `PermissionStatus` que indica o resultado:
 
-* `PermissionStatus.granted`: The user granted local network access.
-  You can proceed to connect your Dart sockets.
-* `PermissionStatus.denied`: The user denied permission for this request.
-  Prompt the user with an explanation before requesting permission again.
-* `PermissionStatus.permanentlyDenied`: The user denied permission permanently.
-  Call `openAppSettings()` to help the user enable permission
-  in the system settings.
+* `PermissionStatus.granted`: o usuário concedeu acesso à rede local.
+  Você pode prosseguir para conectar seus sockets Dart.
+* `PermissionStatus.denied`: o usuário negou a permissão para esta solicitação.
+  Explique ao usuário antes de solicitar a permissão novamente.
+* `PermissionStatus.permanentlyDenied`: o usuário negou a permissão permanentemente.
+  Chame `openAppSettings()` para ajudar o usuário a ativar a permissão
+  nas configurações do sistema.
 
 :::tip
-You only need to obtain permission once during an app session,
-but checking the status before establishing a socket connection
-ensures reliable network calls.
+Você só precisa obter a permissão uma vez durante a sessão do app,
+mas verificar o status antes de estabelecer uma conexão de socket
+garante chamadas de rede confiáveis.
 :::
 
-## More information
+## Mais informações {:#more-information}
 
-To learn more about local network permissions and socket programming,
-consult the following resources:
+Para saber mais sobre permissões de rede local e programação de sockets,
+consulte os seguintes recursos:
 
-* Android developer guide on [Local network permission][android-local-network]
-* [`permission_handler`][] package on pub.dev
-* Dart [`Socket` class documentation][socket-class]
-* [Issue #184859 on GitHub][flutter-issue-184859]
+* Guia do desenvolvedor Android sobre [Permissão de rede local][android-local-network]
+* Pacote [`permission_handler`][`permission_handler`] no pub.dev
+* [Documentação da classe `Socket`][socket-class] do Dart
+* [Issue #184859 no GitHub][flutter-issue-184859]
 
 [android-local-network]: https://developer.android.com/privacy-and-security/local-network-permission#android-17-enforcement
 [`permission_handler`]: {{site.pub-pkg}}/permission_handler

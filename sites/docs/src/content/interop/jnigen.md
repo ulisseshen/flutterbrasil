@@ -1,129 +1,131 @@
 ---
+ia-translate: true
 title: JNIgen
 description: >-
-  Learn how to use JNIgen to generate type-safe Dart bindings
-  for Java and Kotlin APIs.
+  Aprenda a usar o JNIgen para gerar bindings Dart com segurança de tipos
+  para APIs de Java e Kotlin.
 ---
 
-## Overview
+## Visão geral {:#overview}
 
-JNIgen (Java Native Interface generator) is a code generator tool that creates
-type-safe Dart bindings for Java and Kotlin libraries and APIs.
-This allows calling Android APIs directly and synchronously from your
-Dart code.
+O JNIgen (gerador de Java Native Interface) é uma ferramenta de geração de código
+que cria bindings Dart com segurança de tipos para bibliotecas e APIs de Java e Kotlin.
+Isso permite chamar as APIs do Android diretamente e de forma síncrona a partir
+do seu código Dart.
 
-## When to use JNIgen
+## Quando usar o JNIgen {:#when-to-use-jnigen}
 
-Use JNIgen when you need to call Java or Kotlin libraries, wrap compiled JAR
-or AAR files, or interact directly with Android from your Dart code.
+Use o JNIgen quando precisar chamar bibliotecas Java ou Kotlin, empacotar
+arquivos JAR ou AAR compilados, ou interagir diretamente com o Android a partir
+do seu código Dart.
 
-JNIgen uses direct JNI bindings through `dart:ffi`,
-making it the recommended tool when you require high-performance,
-low-latency interop, or need to pass massive amounts of raw data between Dart
-and the JVM.
+O JNIgen usa bindings JNI diretos por meio do `dart:ffi`,
+por isso é a ferramenta recomendada quando você precisa de interop de alta
+performance e baixa latência, ou quando precisa passar grandes volumes de dados
+brutos entre o Dart e a JVM.
 
-For standard, cross-platform plugin development where you don't have
-critical data transfers, use [Pigeon](/interop/pigeon)
-instead.
+Para o desenvolvimento de plugins padrão e multiplataforma, em que você não tem
+transferências de dados críticas, use o [Pigeon](/interop/pigeon).
 
-## Developer flow
+## Fluxo de desenvolvimento {:#developer-flow}
 
-Generate bindings with JNIgen using the following general flow:
+Gere bindings com o JNIgen seguindo o fluxo geral abaixo:
 
-1.  Reference the native classes or JARs.
-1.  Write the JNIgen configuration script.
-1.  Generate the bindings by running JNIgen.
-1.  Call the generated code from Dart.
-
-:::note
-For a complete list of configuration options, consult the
-[JNIgen documentation on pub.dev][jnigen-pub] and the JNIgen README.
-:::
-
-To start, identify the native Java classes, packages, or compiled JAR/AAR files
-you want to wrap.
-Then write a configuration script (typically `tool/jnigen.dart`).
-This configuration specifies where the native files are located,
-what packages to include, and where to output the generated Dart code.
-
-Next, run the configuration script (`dart run tool/jnigen.dart`),
-which parses the classes and generates the corresponding Dart bindings.
-
-Last, import the generated Dart file into your app and call the functions
-directly.
-JNIgen communicates directly through the underlying FFI layer,
-so refer to the [`dart:ffi` guide](/interop/dart-ffi)
-to learn how to manage native memory lifetimes and execute native calls
-without blocking the UI thread.
+1.  Referencie as classes nativas ou os JARs.
+1.  Escreva o script de configuração do JNIgen.
+1.  Gere os bindings executando o JNIgen.
+1.  Chame o código gerado a partir do Dart.
 
 :::note
-If the native API changes, update your configuration script and
-regenerate the bindings.
+Para uma lista completa das opções de configuração, consulte a
+[documentação do JNIgen no pub.dev][jnigen-pub] e o README do JNIgen.
 :::
 
-## Examples
+Para começar, identifique as classes Java nativas, os pacotes ou os arquivos
+JAR/AAR compilados que você quer empacotar.
+Depois, escreva um script de configuração (normalmente `tool/jnigen.dart`).
+Essa configuração especifica onde os arquivos nativos estão localizados,
+quais pacotes incluir e onde o código Dart gerado será gravado.
 
-To explore complete implementations of this flow,
-including how to configure the generator,
-refer to the [`permissions_plugin` demo][permissions-demo] and the
-[`android_toast_demo`][toast-demo] in the official Flutter native interop
-demos repository.
+Em seguida, execute o script de configuração (`dart run tool/jnigen.dart`),
+que analisa as classes e gera os bindings Dart correspondentes.
 
-For a production package on pub.dev that uses JNIgen to wrap the Android
-Cronet HTTP library, check out [`package:cronet_http`][cronet-http-pub]
-([source on GitHub][cronet-http-src]).
+Por fim, importe o arquivo Dart gerado no seu app e chame as funções
+diretamente.
+O JNIgen se comunica diretamente pela camada FFI subjacente, então consulte o
+[guia do `dart:ffi`](/interop/dart-ffi)
+para aprender a gerenciar o tempo de vida da memória nativa e executar chamadas
+nativas sem bloquear a thread da UI.
 
-## Constraints and limitations
+:::note
+Se a API nativa mudar, atualize seu script de configuração e
+gere os bindings novamente.
+:::
 
-Keep these general considerations and limitations in mind when working with
+## Exemplos {:#examples}
+
+Para explorar implementações completas desse fluxo,
+incluindo como configurar o gerador,
+consulte a [demo `permissions_plugin`][permissions-demo] e a
+[`android_toast_demo`][toast-demo] no repositório oficial de demos de
+interop nativo do Flutter.
+
+Para um pacote de produção no pub.dev que usa o JNIgen para empacotar a
+biblioteca HTTP Cronet do Android, confira o [`package:cronet_http`][cronet-http-pub]
+([código-fonte no GitHub][cronet-http-src]).
+
+## Restrições e limitações {:#constraints-and-limitations}
+
+Tenha em mente estas considerações e limitações gerais ao trabalhar com o
 JNIgen:
 
-### Threading considerations
+### Considerações sobre threading {:#threading-considerations}
 
-JNIgen calls run synchronously on the calling thread.
-Watch out for two common scenarios:
+As chamadas do JNIgen são executadas de forma síncrona na thread que as chamou.
+Atenção a dois cenários comuns:
 
-- When calling platform APIs that must run on the platform thread,
-  use [`runOnPlatformThread`][run-on-platform-thread] from `dart:ui`.
-- Dart callbacks from Java run on the isolate that created them.
-  This can lead to deadlocks if a blocked Java thread waits for a blocked
-  Dart thread.
+- Ao chamar APIs de plataforma que precisam ser executadas na thread da
+  plataforma, use [`runOnPlatformThread`][run-on-platform-thread] de `dart:ui`.
+- Callbacks do Dart chamados a partir do Java são executados no isolate que
+  os criou.
+  Isso pode levar a deadlocks se uma thread Java bloqueada aguardar uma thread
+  Dart bloqueada.
 
-To learn more, consult the [JNIgen threading guide][jnigen-threading-doc].
+Para saber mais, consulte o [guia de threading do JNIgen][jnigen-threading-doc].
 
-### Lifecycle of Java objects
+### Ciclo de vida dos objetos Java {:#lifecycle-of-java-objects}
 
-JNI wrappers use Java global references.
-There is a hard limit of 50,000 active references.
-Call `.release()` or use `.using()` blocks to prevent memory leaks.
-Use `WeakReference` to break reference cycles between Dart and Java GCs
-when implementing interfaces, as shown in the
-[JNI object lifecycle guide][jnigen-lifecycle-doc].
+Os wrappers JNI usam referências globais do Java.
+Há um limite rígido de 50.000 referências ativas.
+Chame `.release()` ou use blocos `.using()` para evitar vazamentos de memória.
+Use `WeakReference` para quebrar ciclos de referência entre os GCs do Dart e do
+Java ao implementar interfaces, como mostrado no
+[guia do ciclo de vida de objetos JNI][jnigen-lifecycle-doc].
 
-### JVM runtime type checks
+### Verificações de tipo em runtime da JVM {:#jvm-runtime-type-checks}
 
-JNI wrappers are Dart extension types that compile down to `JObject`
-at runtime, so Dart's native `is` and `as` keywords don't check the Java
-runtime type.
-Use `x.isA(Foo.type)` and `x.as(Foo.type)` instead, as shown in the
-[Java runtime types guide][jnigen-runtime-types-doc].
+Os wrappers JNI são extension types do Dart que são compilados para `JObject`
+em runtime, então as palavras-chave nativas `is` e `as` do Dart não verificam o
+tipo de runtime do Java.
+Use `x.isA(Foo.type)` e `x.as(Foo.type)` no lugar, como mostrado no
+[guia de tipos de runtime do Java][jnigen-runtime-types-doc].
 
-### General debugging
+### Depuração geral {:#general-debugging}
 
-Tracking down JNI memory allocation bugs like `DoubleReleaseError`
-and `UseAfterReleaseError` can be difficult.
-Set `Jni.captureStackTraceOnRelease = true` to log stack traces
-and help trace leaks, as explained in the
-[JNIgen debugging guide][jnigen-debugging-doc].
+Rastrear bugs de alocação de memória JNI, como `DoubleReleaseError` e
+`UseAfterReleaseError`, pode ser difícil.
+Defina `Jni.captureStackTraceOnRelease = true` para registrar stack traces
+e ajudar a rastrear vazamentos, como explicado no
+[guia de depuração do JNIgen][jnigen-debugging-doc].
 
-## Resources
+## Recursos {:#resources}
 
-To learn about generating Java and Kotlin bindings with JNIgen,
-refer to the following resources:
+Para saber mais sobre a geração de bindings de Java e Kotlin com o JNIgen,
+consulte os seguintes recursos:
 
-- [JNIgen package on pub.dev][jnigen-pub]
-- [JNI package on pub.dev][jni-pub]
-- [Official JNIgen examples on GitHub][jnigen-examples]
+- [Pacote JNIgen no pub.dev][jnigen-pub]
+- [Pacote JNI no pub.dev][jni-pub]
+- [Exemplos oficiais do JNIgen no GitHub][jnigen-examples]
 
 [jnigen-pub]: {{site.pub-pkg}}/jnigen
 [jni-pub]: {{site.pub-pkg}}/jni

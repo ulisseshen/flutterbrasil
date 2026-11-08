@@ -1,60 +1,60 @@
 ---
-title: GenUI SDK for Flutter
-shortTitle: GenUI SDK
+ia-translate: true
+title: SDK GenUI para Flutter
+shortTitle: SDK GenUI
 description: >-
-  Learn how to use GenUI SDK for Flutter to build more
-  interactive experiences for applications and chatbots.
+  Aprenda a usar o SDK GenUI para Flutter para criar
+  experiências mais interativas em aplicações e chatbots.
 next:
-  title: GenUI SDK main components & concepts
+  title: Principais componentes e conceitos do SDK GenUI
   path: /ai/genui/components
 ---
 
-## What is GenUI?
+## O que é o GenUI? {:#what-is-genui}
 
-At its core, the GenUI SDK for Flutter is an orchestration layer.
-This suite of packages coordinates the flow of information between your user,
-your Flutter widgets, and an AI agent,
-transforming text-based conversations into rich, interactive experiences.
+Em sua essência, o SDK GenUI para Flutter é uma camada de orquestração.
+Este conjunto de pacotes coordena o fluxo de informações entre o usuário,
+seus widgets Flutter e um agente de IA,
+transformando conversas baseadas em texto em experiências ricas e interativas.
 
-Imagine that, instead of presenting your user with a wall of text,
-they are presented with a graphical UI consisting of (for example),
-a row of labeled buttons and a date picker.
+Imagine que, em vez de apresentar ao usuário uma parede de texto,
+ele recebe uma interface gráfica composta por, por exemplo,
+uma linha de botões com rótulos e um seletor de data.
 
-The GenUI SDK for Flutter uses a JSON-based format to
-compose a UI from your existing
-widget catalog. As a user interacts with the UI,
-state changes are fed back to the agent,
-creating a high-bandwidth loop and turning
-an agent interaction into a rich, intuitive experience.
+O SDK GenUI para Flutter usa um formato baseado em JSON para
+compor uma UI a partir do seu catálogo de widgets existente. Conforme o usuário
+interage com a UI, as mudanças de estado são enviadas de volta ao agente,
+criando um ciclo de alta largura de banda e transformando
+a interação com o agente em uma experiência rica e intuitiva.
 
-The GenUI SDK for Flutter is designed to easily integrate
-into your Flutter application.
+O SDK GenUI para Flutter foi projetado para se integrar
+facilmente à sua aplicação Flutter.
 
-## When would you use it?
+## Quando você usaria? {:#when-would-you-use-it}
 
-Use GenUI SDK for Flutter to incorporate graphical UI
-into your app.  For example:
+Use o SDK GenUI para Flutter para incorporar uma interface gráfica
+ao seu app. Por exemplo:
 
-* Instead of describing a list of products in text,
-  use it to render a clickable carousel of product widgets.
-* When a user asks to plan a trip, use it to generate a
-  complete form with sliders, date pickers, and text fields.
+* Em vez de descrever uma lista de produtos em texto,
+  use-o para renderizar um carrossel clicável de widgets de produto.
+* Quando um usuário pede para planejar uma viagem, use-o para gerar um
+  formulário completo com controles deslizantes, seletores de data e campos de texto.
 
-For more context about GenUI SDK for Flutter,
-check out the [Getting started with GenUI video][]:
+Para mais contexto sobre o SDK GenUI para Flutter,
+confira o [vídeo Começando com GenUI][Getting started with GenUI video]:
 
 <YouTubeEmbed id="nWr6eZKM6no"
-    title="Getting started with GenUI"></YouTubeEmbed>
+    title="Começando com GenUI"></YouTubeEmbed>
 
-Also, check out the Flutter + A2UI = GenUI video from
+Também confira o vídeo Flutter + A2UI = GenUI do
 Google I/O 2026!
 
 <YouTubeEmbed id="tXeyaV1gVJk"
     title="Flutter + A2UI = GenUI"></YouTubeEmbed>
 
 :::experimental
-The `genui` package is in
-alpha and is likely to change.
+O pacote `genui` está em
+alpha e pode mudar.
 :::
 
 [Getting started with GenUI video]: https://www.youtube.com/watch?v=nWr6eZKM6no

@@ -1,108 +1,119 @@
 ---
-title: Mode of interaction
+ia-translate: true
+title: Modo de interação
 description: >
-  Learn to balance LLM capabilities with traditional code and implement 
-  guardrails to manage nondeterministic AI behavior.
+  Aprenda a equilibrar as capacidades de LLMs com código tradicional e a
+  implementar barreiras de proteção (guardrails) para gerenciar o comportamento
+  não determinístico da IA.
 prev:
-  title: Tool calls (aka function calls)
+  title: Chamadas de ferramentas (também conhecidas como chamadas de função)
   path: /ai/best-practices/tool-calls
 next:
-  title: Developer experience
+  title: Experiência do desenvolvedor
   path: /ai/best-practices/developer-experience
 ---
 
 
-It's a mistake to think of a request to an LLM in the same way as calling a
-function. Given the same set of inputs in the same order, a function acts
-predictably. We can write tests and inject faults and harden a function for a
-wide variety of inputs.
+É um erro pensar em uma requisição a um LLM da mesma forma que uma chamada de
+função. Dado o mesmo conjunto de entradas na mesma ordem, uma função se comporta
+de forma previsível. Podemos escrever testes, injetar falhas e tornar uma função
+robusta para uma grande variedade de entradas.
 
-An LLM is not like that. A better way to think about it is as if the LLM were a
-user and to treat the data we get from them as such. Like a user, an LLM is
-nondeterministic, often wrong (partially or wholly) and sometimes plain random.
-To guard our apps under these conditions, we need to build the same guardrails
-around LLM input as we do around user input.
+Um LLM não é assim. Uma forma melhor de pensar é imaginar que o LLM é um
+usuário e tratar os dados que recebemos dele como tais. Assim como um usuário, um
+LLM é não determinístico, frequentemente errado (parcial ou totalmente) e, às
+vezes, simplesmente aleatório.
+Para proteger nossos apps nessas condições, precisamos construir as mesmas
+barreiras de proteção em torno da entrada do LLM que construímos em torno da
+entrada do usuário.
 
-If we can do that successfully, then we can bring extraordinary abilities to
-apps in the form of problem solving and creativity that can rival that of a
-human.
+Se conseguirmos fazer isso com sucesso, poderemos trazer habilidades
+extraordinárias para os apps, na forma de resolução de problemas e criatividade
+que podem rivalizar com as de um ser humano.
 
-### Separation of concerns
+### Separação de responsabilidades {:#separation-of-concerns}
 
-LLMs are good at some things and bad at others; the key is to bring them into
-your apps for the good while mitigating the bad. As an example, let's consider
-the task list in the Crossword Companion:
+LLMs são bons em algumas coisas e ruins em outras; o segredo é trazê-los para
+seus apps pelo que fazem de bom, mitigando o que fazem de ruim. Como exemplo,
+vamos considerar a lista de tarefas do Crossword Companion:
 
 <img
 src="/assets/images/docs/ai-best-practices/crossword-task-list-showing-solved-clues.png"
-alt="Crossword task list showing solved clues in green with confidence
-percentages and unsolved clues in red">
+alt="Lista de tarefas do Crossword Companion mostrando pistas resolvidas em verde
+com porcentagens de confiança, e pistas não resolvidas em vermelho">
 
-The task list is the set of clues that need solving. The goal is to use colors
-and solutions in the task list to show progress during the solving process. The
-initial implementation provided the model with a tool for managing the task
-list, asking it to provide updates on progress as it went. Flash could not solve
-the puzzle this way, but Pro could. Unfortunately, it solved it in big chunks,
-only remembering to update the task list once or twice with a big delay in
-between. No amount of prompting could convince it to update the tasks as it
-went. You'll see the same behavior with modern AI agents managing their own task
-lists; that's just where we are in the evolution of LLMs at the moment.
+A lista de tarefas é o conjunto de pistas que precisam ser resolvidas. O objetivo
+é usar as cores e as soluções na lista de tarefas para mostrar o progresso durante
+o processo de resolução. A implementação inicial deu ao modelo uma ferramenta para
+gerenciar a lista de tarefas, pedindo que ele fornecesse atualizações de progresso
+conforme avançava. O Flash não conseguiu resolver o quebra-cabeça dessa forma, mas
+o Pro conseguiu. Infelizmente, ele resolveu em grandes blocos, lembrando-se de
+atualizar a lista de tarefas apenas uma ou duas vezes, com um grande atraso entre
+elas. Nenhuma quantidade de prompts conseguiu convencê-lo a atualizar as tarefas
+conforme avançava. Você verá o mesmo comportamento com agentes de IA modernos que
+gerenciam suas próprias listas de tarefas; é simplesmente onde estamos na evolução
+dos LLMs no momento.
 
-So how do we get consistent, deterministic updates of the task list? Take task
-management out of the LLM's hands and handle it in the code.
+Então, como obtemos atualizações consistentes e determinísticas da lista de
+tarefas? Tire o gerenciamento de tarefas das mãos do LLM e trate-o no código.
 
-To generalize, before applying an LLM solution to a problem you're facing, ask yourself whether an LLM is the best tool for the job. Is human-like problem solving and creativity worth the tradeoff in unpredictability?
+Para generalizar, antes de aplicar uma solução de LLM a um problema que você
+enfrenta, pergunte a si mesmo se um LLM é a melhor ferramenta para o trabalho.
+A resolução de problemas e a criatividade semelhantes às humanas valem a troca
+pela imprevisibilidade?
 
-The answer to that question comes with experimentation. Here are some examples
-from the sample:
+A resposta a essa pergunta vem com experimentação. Aqui estão alguns exemplos
+do app de exemplo:
 
-| Task                                              | LLM Suitability                                              | Code Suitability                                                                  |
+| Tarefa                                            | Adequação para LLM                                           | Adequação para código                                                             |
 | ------------------------------------------------- | ------------------------------------------------------------ | --------------------------------------------------------------------------------- |
-| **Parsing the grid for size, contents and clues** | Great for an LLM by using  vision and language understanding | Difficult to write the code to do this                                            |
-| **Validating grid contents**                      | Possible to do with another LLM checking the work            | Easier for a human to glance at and adjust                                        |
-| **Handling the task list**                        | An LLM is unlikely to do this consistently                   | Easy to write the code to loop through a task list, updating as it goes           |
-| **Solving each clue**                             | Great for an LLM using language understanding and generation | Difficult to do given real world clues that depend on word play, names, and slang |
-| **Resolving conflicts**                           | An LLM is inconsistent on this kind of looping               | Easy for a human to glance at and adjust                                          |
+| **Analisar a grade para tamanho, conteúdo e pistas** | Excelente para um LLM, usando visão e compreensão de linguagem | Difícil escrever o código para isso                                              |
+| **Validar o conteúdo da grade**                   | Possível fazer com outro LLM verificando o trabalho          | Mais fácil para um humano dar uma olhada e ajustar                                |
+| **Gerenciar a lista de tarefas**                  | Um LLM dificilmente fará isso de forma consistente           | Fácil escrever o código para percorrer uma lista de tarefas, atualizando-a conforme avança |
+| **Resolver cada pista**                           | Excelente para um LLM, usando compreensão e geração de linguagem | Difícil, dado que pistas do mundo real dependem de trocadilhos, nomes e gírias |
+| **Resolver conflitos**                            | Um LLM é inconsistente nesse tipo de iteração                | Fácil para um humano dar uma olhada e ajustar                                     |
 
-It's a judgement call for sure, but if you can reasonably write the code to do
-it, your results will be predictable. However, if writing the code would be
-unreasonably difficult, then consider an LLM, knowing you'll have to build the
-guardrails like we did in the sample.
+É uma questão de julgamento, com certeza, mas se você consegue razoavelmente
+escrever o código para fazer isso, seus resultados serão previsíveis. Porém, se
+escrever o código fosse excessivamente difícil, considere um LLM, sabendo que
+você precisará construir as barreiras de proteção como fizemos no exemplo.
 
-### Ask vs agent
+### Modos ask e agent {:#ask-vs-agent}
 
-There's more than just one pivot to consider besides code vs. LLM. Models
-operate in roughly two modes: "ask" and "agent".
+Há mais do que um eixo a considerar além de código versus LLM. Os modelos operam
+em aproximadamente dois modos: "ask" e "agent".
 
-A LLM is in "ask" mode when we prompt it without giving it tools to affect
-change in the world, for example, no tools at all or tools just for looking up
-data. Both the crossword interference model and clue solver models run in ask
-mode, using tools only for additional data.
+Um LLM está no modo "ask" quando o acionamos sem dar a ele ferramentas para
+provocar mudanças no mundo, por exemplo, sem ferramenta alguma ou apenas com
+ferramentas para consultar dados. Tanto o modelo que interpreta a grade de palavras
+cruzadas quanto os modelos de resolução de pistas rodam no modo ask, usando
+ferramentas apenas para dados adicionais.
 
-On the other hand, when we give an LLM a set of tools that allow it to operate
-on our behalf in the world – like reading and writing files, executing bash
-commands, loading web pages, calling web APIs, and so on – that LLM is in
-"agent" mode.
+Por outro lado, quando damos a um LLM um conjunto de ferramentas que lhe permitem
+operar em nosso nome no mundo, como ler e escrever arquivos, executar comandos
+bash, carregar páginas web, chamar APIs web e assim por diante, esse LLM está no
+modo "agent".
 
-### Guardrails
+### Barreiras de proteção (guardrails) {:#guardrails}
 
-The difference between ask and agent mode is not the model you choose or the
-prompts you give it, but the tools you supply. The combination of the tools and
-the agentic loop described in the Tool calls section allow an LLM to call any
-number of those tools as often as it decides. Giving it that power puts the
-responsibility on you to make sure you treat it as unpredictable; more like a
-person than a program.
+A diferença entre os modos ask e agent não está no modelo que você escolhe nem nos
+prompts que você fornece, mas nas ferramentas que você disponibiliza. A combinação
+das ferramentas com o loop agêntico descrito na seção de chamadas de ferramentas
+permite que um LLM chame quantas dessas ferramentas quiser, quantas vezes decidir.
+Dar esse poder a ele coloca sobre você a responsabilidade de tratá-lo como
+imprevisível, mais como uma pessoa do que como um programa.
 
-You do that the same way that you validate user input, by building up a suite of
-tests to see how your app works against LLM responses. Give real LLMs a wide
-variety of prompts and mock the tools to evaluate how the LLM is using them.
-Like your first user testing experience, your first LLM testing results might
-surprise you. Use that data to build the guardrails you need to harden your app.
+Você faz isso da mesma forma que valida a entrada do usuário: construindo um
+conjunto de testes para ver como seu app funciona diante das respostas do LLM.
+Dê a LLMs reais uma grande variedade de prompts e simule as ferramentas para avaliar
+como o LLM as está usando. Assim como a sua primeira experiência de teste com
+usuários, seus primeiros resultados de teste com LLMs podem surpreendê-lo. Use
+esses dados para construir as barreiras de proteção de que você precisa para
+tornar seu app mais robusto.
 
-In the sample, we didn't have to guard against harm, but we did have to guard
-against imperfect results. It was extensive testing against real-world data that
-led to the institution of human-in-the-loop guards against attempting to solve
-an invalid puzzle or conflicting solutions. In this way, Flutter and Firebase AI
-Logic make the perfect combination to harness the power of an LLM and bring
-unique capabilities to your apps.
-
+No exemplo, não precisamos nos proteger contra danos, mas precisamos nos proteger
+contra resultados imperfeitos. Foram os testes extensivos com dados do mundo real
+que levaram à implementação de proteções com humano no loop contra tentativas de
+resolver um quebra-cabeça inválido ou soluções conflitantes. Dessa forma, Flutter
+e Firebase AI Logic formam a combinação perfeita para aproveitar o poder de um LLM
+e trazer capacidades únicas para seus apps.

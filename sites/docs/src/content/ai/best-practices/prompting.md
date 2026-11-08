@@ -1,43 +1,44 @@
 ---
-title: Prompting
+ia-translate: true
+title: Prompts
 description: >
-  Learn how to build and optimize generative AI prompts in Flutter using system 
-  instructions, dynamic parameters, and versioning techniques.
+  Aprenda a criar e otimizar prompts de IA generativa no Flutter usando instruções
+  de sistema, parâmetros dinâmicos e técnicas de versionamento.
 prev:
-  title: Flutter AI best practices
+  title: Melhores práticas de IA no Flutter
   path: /ai/best-practices
 next:
-  title: Structure & output
+  title: Estrutura e saída
   path: /ai/best-practices/structure-output
 ---
 
 
-Assuming you've configured your Flutter app with the Firebase project and
-configuration you need to use the Firebase AI Logic SDK (which you can learn
-about in [the README][crossword-readme]), you're all set to start using
-generative AI. Generative AI is the branch of Machine Learning (ML) that uses a
-neural network trained on a large set of human language to produce a Large
-Language Model (LLM). At this point, the best models (like Google Gemini) are
-trained on what is essentially the entire internet.
+Partindo do pressuposto de que você configurou seu app Flutter com o projeto e a
+configuração do Firebase necessários para usar o SDK Firebase AI Logic (sobre o qual você pode
+saber mais [no README][crossword-readme]), você está pronto para começar a usar
+IA generativa. IA generativa é o ramo do Machine Learning (ML) que usa uma rede neural treinada
+em um grande conjunto de linguagem humana para produzir um Large
+Language Model (LLM). Atualmente, os melhores modelos (como o Google Gemini) são
+treinados com, essencialmente, a internet inteira.
 
-At that scale, a model trained with that much data has created models that can
-interpret human language and produce useful human language outputs. By now I'm
-sure you've used [the Gemini chat app][gemini-app] (or ChatGPT or Claude or
-other chat apps), so you know that if you talk to an LLM using vague language,
-you're likely to get vague, often incorrect, results. If you want to get good
-results, you'll have to use good prompts.
+Nessa escala, um modelo treinado com tantos dados criou modelos capazes de
+interpretar a linguagem humana e produzir saídas úteis em linguagem humana. Com certeza
+você já usou [o app de chat do Gemini][gemini-app] (ou ChatGPT, Claude ou
+outros apps de chat), então sabe que, se você conversar com um LLM usando linguagem vaga,
+é provável que receba resultados vagos e, muitas vezes, incorretos. Se quiser
+bons resultados, precisará usar bons prompts.
 
-### Prompt construction
+### Construção de prompts {:#prompt-construction}
 
-A prompt is the input you provide to an LLM to get the output you want. It will
-include text as well zero or more files, like images or PDF files. If you're
-building chat into your app, then the user will be entering the prompts (and
-[the Flutter AI Toolkit][ai-toolkit] is useful for building the chat UI). If
-you're using an LLM to implement the features of your app, like parsing an image
-for crossword puzzle data, then you're going to be building the prompts
-yourself. How you build them matters.
+Um prompt é a entrada que você fornece a um LLM para obter a saída desejada. Ele
+inclui texto e, opcionalmente, arquivos, como imagens ou PDFs. Se você estiver
+implementando um chat no seu app, o usuário digitará os prompts (e
+o [Flutter AI Toolkit][ai-toolkit] é útil para criar a UI do chat). Se
+você usar um LLM para implementar os recursos do seu app, como analisar uma imagem
+para extrair dados de palavras cruzadas, então você mesmo vai criar os prompts.
+A forma como você os constrói importa.
 
-As an example, in building the Crossword Companion, the original clue solving prompt looked like this:
+Como exemplo, ao criar o Crossword Companion, o prompt original para resolver pistas tinha esta aparência:
 
 ```dart
 You are a crossword puzzle solver. Your goal is to solve the puzzle by filling in the grid with the correct answers. Given the current state of the crossword grid and a single clue, provide the answer for that clue. The answer should be a single word, returned in a JSON object that matches the following schema: '{"type": "object", "properties": {"answer": {"type": "string"}}}'.
@@ -51,25 +52,25 @@ ${_getGridStateAsString(grid)}
 ${clue.number} ${clue.direction == ClueDirection.across ? 'Across' : 'Down'}: ${clue.text}
 ```
 
-This prompt isn't all bad – it has some useful pieces:
+Esse prompt não é de todo ruim: ele tem algumas partes úteis:
 
-- **Persona:** the phrase "You are a crossword puzzle solver" narrows the
-  model's focus  
-- **Context:** the current state of the puzzle  
-- **Query:** asking for a solution to a clue  
-- **Format:** provide the output in JSON so the result could be parsed
-  programmatically
+- **Persona:** a frase "You are a crossword puzzle solver" direciona o
+  foco do modelo  
+- **Contexto:** o estado atual do quebra-cabeça  
+- **Consulta:** pedido de solução para uma pista  
+- **Formato:** a saída em JSON para que o resultado possa ser processado
+  programaticamente
 
-However, because of the two-dimensional nature of the data, this is a hard
-prompt for some models to solve. The results from Gemini 2.5 Flash (the more
-efficient of the models available at the time) were inconsistent. The quality of
-the results from Gemini 2.5 Pro were excellent, but they were slower and more
-expensive to obtain. Debugging revealed that Pro was essentially solving the
-entire puzzle every time it was called, responding with just the solution to a
-single clue.
+No entanto, por causa da natureza bidimensional dos dados, este é um prompt difícil de
+resolver para alguns modelos. Os resultados do Gemini 2.5 Flash (o mais
+eficiente entre os modelos disponíveis na época) foram inconsistentes. A qualidade dos
+resultados do Gemini 2.5 Pro foi excelente, mas eram mais lentos e mais
+caros de obter. A depuração revelou que o Pro estava, essencialmente, resolvendo o
+quebra-cabeça inteiro a cada chamada, respondendo apenas com a solução de
+uma pista.
 
-What was needed was the efficiency of Flash with the quality of Pro. To do that
-required some work on the prompt:
+O necessário era a eficiência do Flash com a qualidade do Pro. Para isso,
+foi preciso trabalhar no prompt:
 
 ```markdown
 Your task is to solve the following crossword clue.
@@ -83,27 +84,26 @@ Your task is to solve the following crossword clue.
 Return your answer and confidence score in the required JSON format.
 ```
 
-This prompt asks to solve the clue, provides the important context, and
-specifies the output format. Instead of handing in the entire state of the
-two-dimensional grid, the input was narrowed to the length requirement and a
-pattern, such as "_ R _ Y". These simplifications produce high quality results
-from Flash that come back quickly enough to make it [fun to
-watch][crossword-demo].  
+Esse prompt pede para resolver a pista, fornece o contexto importante
+e especifica o formato de saída. Em vez de passar o estado inteiro da
+grade bidimensional, a entrada foi reduzida ao requisito de tamanho e a um padrão,
+como "_ R _ Y". Essas simplificações produzem resultados de alta qualidade
+do Flash, que voltam rápido o suficiente para tornar [divertido de
+acompanhar][crossword-demo].  
 <img
 src="/assets/images/docs/ai-best-practices/crossword-companion-interface-showing-a.png"
-alt="Crossword Companion interface showing a partially solved grid and clues
-with AI-generated answers and confidence scores">
+alt="Interface do Crossword Companion mostrando uma grade parcialmente resolvida e pistas
+com respostas geradas por IA e pontuações de confiança">
 
-### Layering your prompts
+### Camadas de prompts {:#layering-your-prompts}
 
-The prompt used to solve the clues is not the only prompt the model sees. It
-also has the system instruction (also known as the system message or the system
-prompt) which is set as part of model instance creation. Think of the system
-instruction as "this is what you do" while the individual prompts are "now do
-this."
+O prompt usado para resolver as pistas não é o único que o modelo vê. Ele
+também recebe a instrução de sistema (também conhecida como mensagem de sistema ou prompt de sistema),
+definida na criação da instância do modelo. Pense na instrução de sistema como "isto é o que você faz", enquanto
+os prompts individuais são "agora faça isto".
 
-Here is the partial system instruction for the clue solver model (you'll see the
-rest later):
+Aqui está a instrução de sistema parcial do modelo que resolve pistas (você verá o
+restante mais adiante):
 
 ```dart
 final clueSolverSystemInstruction =
@@ -122,8 +122,8 @@ You are an expert crossword puzzle solver.
 
 ```
 
-Given the model we want to use and the system instruction, we now have
-everything we need to create an instance:
+Com o modelo que queremos usar e a instrução de sistema, agora temos
+tudo o que precisamos para criar uma instância:
 
 ```dart
 // The model for solving clues.
@@ -134,14 +134,14 @@ _clueSolverModel = FirebaseAI.googleAI().generativeModel(
 );
 ```
 
-While the system instruction is often static, the individual prompts are usually
-created dynamically based on data.
+Enquanto a instrução de sistema costuma ser estática, os prompts individuais geralmente são
+criados dinamicamente com base nos dados.
 
-### Parameterizing your prompts
+### Parametrizando seus prompts {:#parameterizing-your-prompts}
 
-Each clue solver prompt is created using the text from the clue, the target
-length of the answer and the pattern so far given previously solved clues, such
-as "_R_Y":
+Cada prompt do resolvedor de pistas é criado com o texto da pista, o tamanho alvo
+da resposta e o padrão até o momento, com base nas pistas já resolvidas anteriormente, como
+"_R_Y":
 
 ```dart
 String getSolverPrompt(Clue clue, int length, String pattern) =>
@@ -158,7 +158,7 @@ Return your answer and confidence score in the required JSON format.
 ''';
 ```
 
-With the prompt in hand, we can pass it along to the model for our clue answer:
+Com o prompt em mãos, podemos enviá-lo ao modelo para obter a resposta da pista:
 
 ```dart
 final result = await _clueSolverModel.generateContent(
@@ -166,15 +166,15 @@ final result = await _clueSolverModel.generateContent(
 );
 ```
 
-### Prompt versioning
+### Versionamento de prompts {:#prompt-versioning}
 
-This basic app keeps the prompt strings in code.
-This makes them hard to track down and update.
-For production apps, it's better to keep your prompts separated from the code,
-perhaps bundled as Flutter assets.
-One way to arrange prompt files is to
-use [the Google dotprompt format][dotprompt],
-which allows you to write `.prompt` files that look like this:
+Este app básico mantém as strings de prompt no código.
+Isso dificulta encontrá-las e atualizá-las.
+Em apps de produção, é melhor manter os prompts separados do código,
+talvez empacotados como assets do Flutter.
+Uma forma de organizar os arquivos de prompt é
+usar [o formato dotprompt do Google][dotprompt],
+que permite escrever arquivos `.prompt` como este:
 
 ```markdown
 ---
@@ -195,8 +195,8 @@ Extract the requested information from the given text. If a piece of information
 Text: {{text}}
 ```
 
-To expand a `.prompt` file for use in your Dart and Flutter projects, you can
-use [the dotprompt_dart package][dotprompt-dart].
+Para expandir um arquivo `.prompt` para uso em seus projetos Dart e Flutter, você pode
+usar [o pacote dotprompt_dart][dotprompt-dart].
 
 
 

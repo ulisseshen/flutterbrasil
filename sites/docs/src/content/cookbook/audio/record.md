@@ -1,28 +1,29 @@
 ---
-title: Record or stream audio input
+ia-translate: true
+title: Grave ou transmita entrada de áudio
 description: >-
-  Learn how to record or stream audio input in
-  your Flutter app using the record package.
+  Aprenda a gravar ou transmitir entrada de áudio no seu app Flutter
+  usando o pacote record.
 ---
 
-This recipe demonstrates how to use the [`record` package][] to add
-audio recording and streaming capabilities to your Flutter app.
-To get started using the package, follow these steps:
+Esta receita demonstra como usar o [pacote `record`][`record` package] para adicionar
+recursos de gravação e streaming de áudio ao seu app Flutter.
+Para começar a usar o pacote, siga estes passos:
 
 [`record` package]: {{site.pub-pkg}}/record
 
-## 1. Add the package dependency
+## 1. Adicione a dependência do pacote {:#1-add-the-package-dependency}
 
-To add `package:record` as a dependency, use `flutter pub add`:
+Para adicionar o `package:record` como dependência, use `flutter pub add`:
 
 ```console
 $ flutter pub add record
 ```
 
-## 2. Initialize an `AudioRecorder`
+## 2. Inicialize um `AudioRecorder` {:#2-initialize-an-audiorecorder}
 
-Initialize an `AudioRecorder` object. This is the primary object
-that controls the recording process.
+Inicialize um objeto `AudioRecorder`. Este é o objeto principal
+que controla o processo de gravação.
 
 ```dart
 import 'package:record/record.dart';
@@ -30,11 +31,11 @@ import 'package:record/record.dart';
 final recorder = AudioRecorder();
 ```
 
-## 3. Request user permission
+## 3. Solicite a permissão do usuário {:#3-request-user-permission}
 
-Before recording, you need to request user permission.
-You might also need to add platform-specific permission configurations.
-Refer to the [`record` package][] documentation for details.
+Antes de gravar, você precisa solicitar a permissão do usuário.
+Também pode ser necessário adicionar configurações de permissão específicas de cada plataforma.
+Consulte a documentação do [pacote `record`][`record` package] para mais detalhes.
 
 ```dart
 final recorder = AudioRecorder();
@@ -45,12 +46,12 @@ if (await recorder.hasPermission()) {
 }
 ```
 
-## 4. Create a recording configuration
+## 4. Crie uma configuração de gravação {:#4-create-a-recording-configuration}
 
-Create and configure a `RecordConfig` object to specify the record settings,
-such as the encoder, sample rate, and channel number.
-You can also enable features like auto gain, echo cancellation,
-and noise suppression.
+Crie e configure um objeto `RecordConfig` para especificar as configurações de gravação,
+como o codificador, a taxa de amostragem e o número de canais.
+Você também pode ativar recursos como ganho automático, cancelamento de eco
+e supressão de ruído.
 
 ```dart
 final recordConfig = RecordConfig(
@@ -63,12 +64,12 @@ final recordConfig = RecordConfig(
 );
 ```
 
-## 5. Start recording to a file
+## 5. Comece a gravar em um arquivo {:#5-start-recording-to-a-file}
 
-To start recording to a file,
-call the `start` method on the `AudioRecorder`,
-passing in the `recordConfig` you defined
-and the path where the file should be stored.
+Para começar a gravar em um arquivo,
+chame o método `start` do `AudioRecorder`,
+passando o `recordConfig` que você definiu
+e o caminho onde o arquivo deve ser armazenado.
 
 ```dart
 // TODO: Specify the path where the audio file should be saved.
@@ -76,10 +77,10 @@ final audioFilePath = 'myRecording.wav';
 await recorder.start(recordConfig, path: audioFilePath);
 ```
 
-## 6. Control an ongoing recording
+## 6. Controle uma gravação em andamento {:#6-control-an-ongoing-recording}
 
-You can control an ongoing recording using the
-`pause`, `resume`, and `stop` methods on the `AudioRecorder`.
+Você pode controlar uma gravação em andamento usando os métodos
+`pause`, `resume` e `stop` do `AudioRecorder`.
 
 ```dart
 await recorder.pause();
@@ -87,10 +88,10 @@ await recorder.resume();
 await recorder.stop();
 ```
 
-## 7. [Optional] Record to an audio stream
+## 7. [Opcional] Grave em um stream de áudio {:#7-optional-record-to-an-audio-stream}
 
-To stream audio, use the `startStream` method.
-This returns a [stream][] of audio data.
+Para transmitir áudio, use o método `startStream`.
+Ele retorna um [stream][stream] de dados de áudio.
 
 ```dart
 final stream = await recorder.startStream(recordConfig);
@@ -101,35 +102,35 @@ stream.listen((audioChunk) {
 
 [stream]: {{site.api}}/flutter/dart-async/Stream-class.html
 
-## 8. Stop recording
+## 8. Pare a gravação {:#8-stop-recording}
 
-To stop the recording and get the path to the saved file,
-call the asynchronous `stop` method on the `AudioRecorder`.
+Para parar a gravação e obter o caminho do arquivo salvo,
+chame o método assíncrono `stop` do `AudioRecorder`.
 
 ```dart
 final path = await recorder.stop();
 print('Recording stopped. File saved to: $path');
 ```
 
-## 9. Dispose of the recorder
+## 9. Libere o recorder {:#9-dispose-of-the-recorder}
 
-When you are finished using the `AudioRecorder`,
-remember to call its `dispose` method to release its resources.
+Quando terminar de usar o `AudioRecorder`,
+lembre-se de chamar seu método `dispose` para liberar seus recursos.
 
 ```dart
 await recorder.dispose();
 ```
 
-## Supported formats and encodings
+## Formatos e codificações suportados {:#supported-formats-and-encodings}
 
-The `record` package supports various encoders and file formats,
-but support varies by platform.
-For the full list of supported encoders per platform,
-check out the package's [encoding support table][].
+O pacote `record` suporta vários codificadores e formatos de arquivo,
+mas o suporte varia de acordo com a plataforma.
+Para a lista completa de codificadores suportados por plataforma,
+consulte a [tabela de suporte a codificação][encoding support table] do pacote.
 
-For more detailed information and examples,
-visit the [`record` package][] page on pub.dev or
-check out the `record` Package of the Week video.
+Para informações mais detalhadas e exemplos,
+visite a página do [pacote `record`][`record` package] no pub.dev ou
+assista ao vídeo Package of the Week sobre o `record`.
 
 <div class="video-wrapper">
   <YouTubeEmbed id="Vv2A_nUL1tw" title="record - Package of the Week"></YouTubeEmbed>

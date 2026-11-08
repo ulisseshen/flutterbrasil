@@ -1,7 +1,8 @@
 ---
-title: Flutter & AI
-shortTitle: AI
+ia-translate: true
+title: Flutter e IA
+shortTitle: IA
 layout: toc
 description: >-
-  Learn how to integrate with and use AI to develop Flutter apps.
+  Aprenda como integrar e usar IA para desenvolver apps Flutter.
 ---

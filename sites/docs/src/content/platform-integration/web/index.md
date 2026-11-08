@@ -1,99 +1,99 @@
 ---
-title: Web support for Flutter
+ia-translate: true
+title: Suporte web para Flutter
 shortTitle: Web
 description: >-
-  Details of how Flutter supports the creation of web experiences.
+  Detalhes de como o Flutter oferece suporte à criação de experiências web.
 ---
 
-Flutter delivers the same experiences on the web as on mobile.
+O Flutter entrega as mesmas experiências na web que em dispositivos móveis.
 
-Building on the portability of Dart, the power of the web platform,
-the flexibility of the Flutter framework, and the performance of WebAssembly,
-you can build apps for iOS, Android, and the browser from the same codebase.
-The web is just another device target for your app.
+Com base na portabilidade do Dart, no poder da plataforma web,
+na flexibilidade do framework Flutter e no desempenho do WebAssembly,
+você pode criar apps para iOS, Android e navegadores a partir da mesma base de código.
+A web é apenas mais um alvo de dispositivo para o seu app.
 
-To get started, visit [Building a web application with Flutter][].
+Para começar, visite [Criando uma aplicação web com Flutter][Building a web application with Flutter].
 
-## Powered by WebAssembly
+## Alimentado por WebAssembly {:#powered-by-webassembly}
 
-Dart and Flutter can compile to WebAssembly,
-a binary instruction format that enables fast apps on all major browsers.
+Dart e Flutter podem compilar para WebAssembly,
+um formato de instruções binárias que possibilita apps rápidos em todos os principais navegadores.
 
-For a glimpse into the benefits of using WebAssembly,
-check out the following video.
+Para ter uma ideia dos benefícios do WebAssembly,
+confira o vídeo a seguir.
 
 <YouTubeEmbed id="lpnKWK-KEYs?start=1712"
   title="What's new in Flutter - WebAssembly"></YouTubeEmbed>
 
-## How it works
+## Como funciona {:#how-it-works}
 
-Flutter on the web compiles your Dart application and the Flutter framework to
-either JavaScript (using `dartdevc` during development and `dart2js` for
-production) or [WebAssembly][] (`dart2wasm` when building with `--wasm`),
-instead of the ARM or x64 machine code used on mobile and desktop platforms.
-Flutter renders your UI using hardware-accelerated browser graphics APIs
-(WebGL and WebGPU) through its CanvasKit and Skwasm renderers, delivering a
-portable, consistent, and high-performance experience across modern browsers.
+O Flutter na web compila sua aplicação Dart e o framework Flutter para
+JavaScript (usando `dartdevc` durante o desenvolvimento e `dart2js` para
+produção) ou para [WebAssembly][WebAssembly] (`dart2wasm` ao compilar com `--wasm`),
+em vez do código de máquina ARM ou x64 usado em plataformas móveis e desktop.
+O Flutter renderiza sua UI usando APIs gráficas do navegador com aceleração por hardware
+(WebGL e WebGPU) por meio dos renderizadores CanvasKit e Skwasm, entregando uma
+experiência portável, consistente e de alto desempenho em navegadores modernos.
 
 <img src="/assets/images/docs/arch-overview/web-framework-diagram.png"
-  alt="Flutter architecture for web" >
+  alt="Arquitetura do Flutter para web" >
 
-## What types of apps can I build?
+## Que tipos de apps posso criar? {:#what-types-of-apps-can-i-build}
 
-While you can do a lot on the web,
-Flutter's web support is most valuable in the
-following scenarios:
+Embora você possa fazer muita coisa na web,
+o suporte web do Flutter é mais valioso nos seguintes cenários:
 
 **Single Page Application**
-: Flutter's web support enables complex standalone web apps that are rich with
-  graphics and interactive content to reach end users on a wide variety of
-  devices.
+: O suporte web do Flutter possibilita aplicações web independentes e complexas, ricas em
+  gráficos e conteúdo interativo, para alcançar usuários em uma grande variedade de
+  dispositivos.
 
-**Existing mobile applications**
-: Web support for Flutter provides a browser-based delivery model for existing
-  Flutter mobile apps.
+**Aplicativos móveis existentes**
+: O suporte web do Flutter oferece um modelo de entrega baseado em navegador para
+  apps Flutter móveis já existentes.
 
-Not every HTML scenario is ideally suited for Flutter at this time.
-For example, text-rich, flow-based, static content such as blog articles
-benefit from the document-centric model that the web is built around,
-rather than the app-centric services that a UI framework like Flutter
-can deliver. However, you _can_ use Flutter to embed interactive
-experiences into these websites.
+Nem todo cenário HTML é ideal para o Flutter neste momento.
+Por exemplo, conteúdo estático, baseado em fluxo e rico em texto, como artigos de blog,
+se beneficia do modelo centrado em documentos em que a web foi construída,
+em vez dos serviços centrados em apps que um framework de UI como o Flutter
+oferece. No entanto, você _pode_ usar o Flutter para incorporar
+experiências interativas nesses sites.
 
-However, if you want to use Dart and wish to implement a traditional
-DOM-based website, a community-released Dart package,
-[Jaspr][], supports static websites; in fact,
-the [Dart documentation][] and [Flutter documentation][]
-and [marketing][] websites were migrated to use the Jaspr package.
-Note that Jaspr uses Dart (but not Flutter), and makes SEO work in the same
-way a traditional website would.
+Porém, se você quiser usar Dart e implementar um site tradicional baseado em DOM,
+um pacote Dart lançado pela comunidade,
+o [Jaspr][Jaspr], oferece suporte a sites estáticos; na verdade,
+a [documentação do Dart][Dart documentation], a [documentação do Flutter][Flutter documentation]
+e os sites de [marketing][marketing] foram migrados para usar o pacote Jaspr.
+Observe que o Jaspr usa Dart (mas não Flutter) e faz o SEO funcionar
+da mesma forma que um site tradicional.
 
 [Dart documentation]: {{site.dart-site}}
 [Flutter documentation]: {{site.main-url}}
 [Jaspr]: https://jaspr.site/
 [marketing]: {{site.main-url}}
 
-## Get started
+## Começando {:#get-started}
 
-The following resources can help you get started:
+Os seguintes recursos podem ajudar você a começar:
 
-* To add web support to an existing app, or to create a
-  new app that includes web support,
-  visit [Building a web application with Flutter][].
-* To configure web development server settings in a centralized file,
-  check out [Set up a web development configuration file][].
-* To learn how to create a responsive Flutter
-  app, check out [Creating responsive apps][].
-* To view commonly asked questions and answers,
-  visit the [web FAQ][].
-* For code examples,
-  check out the [web samples for Flutter][].
-* For a Flutter web app demo, check out the [Wonderous app][].
-* To learn about deploying a web app,
-  visit [Preparing an app for web release][].
-* [File an issue][] on the main Flutter repo.
-* You can chat and ask web-related questions on the
-  **#help** channel on [Discord][].
+* Para adicionar suporte web a um app existente, ou para criar um
+  novo app que inclua suporte web,
+  visite [Criando uma aplicação web com Flutter][Building a web application with Flutter].
+* Para configurar as definições do servidor de desenvolvimento web em um arquivo centralizado,
+  confira [Configure um arquivo de configuração de desenvolvimento web][Set up a web development configuration file].
+* Para aprender a criar um app Flutter responsivo,
+  confira [Criando apps responsivos][Creating responsive apps].
+* Para ver perguntas e respostas frequentes,
+  visite o [FAQ de web][web FAQ].
+* Para exemplos de código,
+  confira os [exemplos web para Flutter][web samples for Flutter].
+* Para uma demonstração de app web Flutter, confira o [aplicativo Wonderous][Wonderous app].
+* Para aprender sobre a publicação de um app web,
+  visite [Preparando um app para lançamento na web][Preparing an app for web release].
+* [Abra uma issue][file an issue] no repositório principal do Flutter.
+* Você pode conversar e fazer perguntas relacionadas à web no canal
+  **#help** do [Discord][Discord].
 
 [Building a web application with Flutter]: /platform-integration/web/building
 [Set up a web development configuration file]: /platform-integration/web/web-dev-config-file

@@ -1,60 +1,61 @@
 ---
-title: Tool calls (aka function calls)
-shortTitle: Tool calls
+ia-translate: true
+title: Chamadas de ferramentas (também conhecidas como chamadas de função)
+shortTitle: Chamadas de ferramentas
 description: >
-  Learn how to implement tool calling, manage agentic loops, and incorporate 
-  human-in-the-loop interactions using the Firebase AI Logic SDK.
+  Aprenda a implementar chamadas de ferramentas, gerenciar loops agênticos e incorporar
+  interações com humanos no loop usando o SDK Firebase AI Logic.
 prev:
-  title: Structure & output
+  title: Estrutura e saída
   path: /ai/best-practices/structure-output
 next:
-  title: Mode of interaction
+  title: Modo de interação
   path: /ai/best-practices/mode-of-interaction
 ---
 
 
-While it's true that LLMs are trained essentially on the entire internet, they
-don't know everything. They know what was on the public internet the day they
-were trained, but they don't know anything more recent than that. They don't
-know anything that's private to you or your organization. And even things they
-do know can easily get tangled up with other things they know.
+Embora seja verdade que os LLMs são treinados essencialmente com a internet inteira, eles
+não sabem tudo. Eles sabem o que estava na internet pública no dia em que foram
+treinados, mas não sabem nada mais recente do que isso. Eles não
+sabem nada que seja privado para você ou sua organização. E mesmo as coisas
+que eles sabem podem facilmente se misturar com outras coisas que eles também sabem.
 
-For those scenarios, and many others, we often provide an LLM with one or more
-tools.
+Para esses cenários, e muitos outros, costumamos fornecer a um LLM uma ou mais
+ferramentas.
 
-### Tool defined
+### Ferramenta definida {:#tool-defined}
 
-A tool is a name, a description and a JSON schema for the format of the input
-data when the LLM "calls" the tool. For example, if we prompt the LLM to "Reduce
-the carbs in Grandma's All America Breakfast recipe", it won't know what
-grandma's recipe is unless we give it a "lookupRecipe" tool that takes a query
-string we can use to look up the recipe.
+Uma ferramenta é um nome, uma descrição e um JSON schema para o formato dos dados de
+entrada quando o LLM "chama" a ferramenta. Por exemplo, se pedirmos ao LLM para "Reduzir
+os carboidratos da receita do café da manhã All America da vovó", ele não saberá qual é
+a receita da vovó, a menos que lhe demos uma ferramenta "lookupRecipe" que recebe uma
+string de consulta que podemos usar para buscar a receita.
 
-Conceptually, a tool is something we give the LLM to call when it needs that
-data or service. The way an LLM calls a tool is by responding to the app's
-request with a specially formatted message that means "tool call". A tool call
-message includes the name and JSON arguments for the tool. The app handles the
-tool call and bundles the result in another LLM request, to which the LLM then
-responds.
+Conceitualmente, uma ferramenta é algo que damos ao LLM para chamar quando ele precisa
+desses dados ou serviços. A forma como um LLM chama uma ferramenta é respondendo à
+requisição do app com uma mensagem especialmente formatada que significa "chamada de ferramenta". Uma mensagem de
+chamada de ferramenta inclui o nome e os argumentos JSON da ferramenta. O app processa a
+chamada da ferramenta e envia o resultado em outra requisição ao LLM, à qual o LLM então
+responde.
 
-This can go on for a while. An app can configure a model instance with any
-number of tools (although the LLM does better with a smaller set of targeted
-tools that don't overlap in functionality). The LLM can bundle up any number of
-tool calls in its response and can take any number of tool results in a request.
-The LLM consolidates multiple round-trips for prompts and tool call results via
-a stack of messages that form a history of request/response pairs.
+Isso pode continuar por um tempo. Um app pode configurar uma instância de modelo com qualquer
+número de ferramentas (embora o LLM funcione melhor com um conjunto menor de
+ferramentas direcionadas que não se sobreponham em funcionalidade). O LLM pode agrupar qualquer número de
+chamadas de ferramenta em sua resposta e pode receber qualquer número de resultados de ferramentas em uma requisição.
+O LLM consolida várias idas e vindas de prompts e resultados de chamadas de ferramentas por
+meio de uma pilha de mensagens que forma um histórico de pares de requisição/resposta.
 
-When it's done with the tool calls, the LLM returns its final response, for
-example "Here's a version of Grandma's All American Breakfast recipe that's high
-on protein and low on carbs…".
+Quando termina as chamadas de ferramentas, o LLM retorna sua resposta final, por
+exemplo "Aqui está uma versão da receita do café da manhã All American da vovó que é
+rica em proteínas e pobre em carboidratos…".
 
-### Gemini functions
+### Funções do Gemini {:#gemini-functions}
 
-In the Firebase AI Logic SDK, a tool is called a "function", but it's the same
-thing. In the sample, the clue solver model is configured with a function to
-look up word details. If the LLM wants details about a word to help with the
-solving process, calling the function provides it with data from [the Free
-Dictionary API][dictionary-api]:
+No SDK Firebase AI Logic, uma ferramenta é chamada de "function", mas é a mesma
+coisa. No exemplo, o modelo resolvedor de pistas é configurado com uma função para
+buscar detalhes de palavras. Se o LLM quiser detalhes sobre uma palavra para ajudar
+no processo de resolução, chamar a função fornece a ele dados da [API Free
+Dictionary][dictionary-api]:
 
 ```json
 [
@@ -85,7 +86,7 @@ Dictionary API][dictionary-api]:
 ...
 ```
 
-The app has a Dart function that does the look up:
+O app tem uma função Dart que faz a busca:
 
 ```dart
 // Look up the metadata for a word in the dictionary API.
@@ -101,7 +102,7 @@ Future<Map<String, dynamic>> _getWordMetadataFromApi(String word) async {
 }
 ```
 
-The model is configured with the look up function as part of initialization:
+O modelo é configurado com a função de busca como parte da inicialização:
 
 ```dart
 // The model for solving clues.
@@ -124,8 +125,8 @@ _clueSolverModel = FirebaseAI.googleAI().generativeModel(
 );
 ```
 
-For reliability, it's also a good idea to list the tools in the system
-instruction:
+Para mais confiabilidade, também é uma boa ideia listar as ferramentas na instrução
+de sistema:
 
 ````dart
 static String get clueSolverSystemInstruction =>
@@ -157,30 +158,29 @@ ${jsonEncode(_getWordMetadataFunction.toJson())}
 ''';
 ````
 
-When the app makes a request, the model now has a tool to use when it decides
-that it will be helpful. To support tool calls, we need to implement an agentic
-loop.
+Quando o app faz uma requisição, o modelo agora tem uma ferramenta para usar quando decidir
+que ela será útil. Para oferecer suporte a chamadas de ferramentas, precisamos implementar um
+loop agêntico.
 
-## The Agentic Loop
+## O loop agêntico {:#the-agentic-loop}
 
-An LLM is functionally stateless, which means that you have to give it all of
-the data it needs with every request. For a request that's just the prompt and
-any files you want to send along, the Firebase AI Logic SDK exposes the
-`generateContent` method on your model instance.
+Um LLM é funcionalmente sem estado, o que significa que você precisa fornecer todos os
+dados de que ele precisa a cada requisição. Para uma requisição que é apenas o prompt e
+quaisquer arquivos que você queira enviar junto, o SDK Firebase AI Logic expõe o
+método `generateContent` na sua instância de modelo.
 
-However, tool calling requires a history of messages that form the initial
-prompt, as well as the response/request pairs that make up tool calls and tool
-results. To support this Firebase Logic AI provides a "chat" object to gather
-the history. We use it to build the agentic loop:
+No entanto, a chamada de ferramentas exige um histórico de mensagens que forme o prompt
+inicial, bem como os pares de resposta/requisição que compõem as chamadas de ferramentas e os
+resultados das ferramentas. Para oferecer suporte a isso, o Firebase Logic AI fornece um objeto "chat"
+para reunir o histórico. Usamos esse objeto para construir o loop agêntico:
 
-- Start a chat to hold the message history across multiple request/response
-  pairs  
-- Gather the tool results for any tool calls it provides  
-- Bundle the tool results into a new request  
-- Loop until the model provides a response without tool calls  
-- Return the text accumulated across all responses
+- Inicie um chat para manter o histórico de mensagens em vários pares de requisição/resposta  
+- Reúna os resultados das ferramentas para quaisquer chamadas de ferramenta fornecidas  
+- Agrupe os resultados das ferramentas em uma nova requisição  
+- Repita até que o modelo forneça uma resposta sem chamadas de ferramenta  
+- Retorne o texto acumulado em todas as respostas
 
-Here's that algorithm expressed as an extension method on the `GenerativeModel` class so we can call it just like we call `generateContent`:
+Aqui está esse algoritmo expresso como um método de extensão da classe `GenerativeModel`, para que possamos chamá-lo da mesma forma que chamamos `generateContent`:
 
 ```dart
 extension on GenerativeModel {
@@ -232,8 +232,8 @@ extension on GenerativeModel {
 }
 ```
 
-This method takes a prompt and a callback for handling the specific tool calls,
-which the sample calls to handle the word lookup function:
+Esse método recebe um prompt e um callback para tratar as chamadas de ferramentas específicas,
+que o exemplo usa para tratar a função de busca de palavras:
 
 ```dart
 await _clueSolverModel.generateContentWithFunctions(
@@ -247,31 +247,31 @@ await _clueSolverModel.generateContentWithFunctions(
 );
 ```
 
-Structured output makes an LLM useful to program against but it's the tools that
-turn an LLM into an "agent" (more on this in the Mode of interaction section).
+A saída estruturada torna um LLM útil para programar, mas são as ferramentas que
+transformam um LLM em um "agente" (mais sobre isso na seção Modo de interação).
 
-### Structured output and tool calls
+### Saída estruturada e chamadas de ferramentas {:#structured-output-and-tool-calls}
 
-Combining structured output and tool calls produce a powerful combination. In
-the sample, the clue solver has a tool to look up word details. It's also asked
-to return JSON that bundles the solution with a confidence score, both of which
-are shown in the app's task list:
+Combinar saída estruturada e chamadas de ferramentas produz uma combinação poderosa. No
+exemplo, o resolvedor de pistas tem uma ferramenta para buscar detalhes de palavras. Ele também é
+solicitado a retornar um JSON que reúne a solução com uma pontuação de confiança, ambas
+exibidas na lista de tarefas do app:
 
 <img
 src="/assets/images/docs/ai-best-practices/app-task-list-showing-crossword-clues-fo.png"
-alt="App task list showing crossword clues followed by bold answers and
-confidence scores in parentheses">
+alt="Lista de tarefas do app mostrando pistas de palavras cruzadas seguidas de respostas
+em negrito e pontuações de confiança entre parênteses">
 
-Unfortunately, as of this writing, combining structured output and functions
-when using the Firebase AI Logic SDK produces an exception:
+Infelizmente, até a redação deste texto, combinar saída estruturada e funções
+ao usar o SDK Firebase AI Logic gera uma exceção:
 
 ```plaintext
 Function calling with a response mime type: 'application/json' is unsupported
 ```
 
-As a (hopefully temporary) work-around to this issue, the sample removes the
-structured output configuration, instead using a tool called `returnResult` to
-simulate structured output:
+Como uma solução alternativa (esperamos que temporária) para esse problema, o exemplo remove
+a configuração de saída estruturada e, em vez disso, usa uma ferramenta chamada `returnResult` para
+simular a saída estruturada:
 
 ```dart
  // The model for solving clues.
@@ -300,7 +300,7 @@ _clueSolverModel = FirebaseAI.googleAI().generativeModel(
 );
 ```
 
-The `returnResult` method is also mentioned in the system instruction:
+O método `returnResult` também é mencionado na instrução de sistema:
 
 ````dart
 static String get clueSolverSystemInstruction =>
@@ -324,8 +324,8 @@ ${jsonEncode(_returnResultFunction.toJson())}
 ''';
 ````
 
-When the model calls `returnResult`, the sample caches the result, which the
-`solveClue` looks up after calling `generateContentWithFunctions`:
+Quando o modelo chama `returnResult`, o exemplo armazena o resultado em cache, que o
+`solveClue` consulta depois de chamar `generateContentWithFunctions`:
 
 ```dart
 // Buffer for the result of the clue solving process.
@@ -363,25 +363,25 @@ Future<ClueAnswer?> solveClue(Clue clue, int length, String pattern) async {
 }
 ```
 
-We have to work a little harder to get the combo of structured output and tool
-calls using Firebase AI Logic, but the results are worth it!
+Precisamos nos esforçar um pouco mais para obter a combinação de saída estruturada e
+chamadas de ferramentas usando o Firebase AI Logic, mas os resultados valem a pena!
 
-### Human in the loop
+### Humano no loop {:#human-in-the-loop}
 
-So far, we've seen tools used for gathering data and formatting output. We can
-also use them to get a human involved.
+Até agora, vimos ferramentas sendo usadas para coletar dados e formatar a saída. Também
+podemos usá-las para envolver uma pessoa.
 
-As an example, sometimes when the sample will pass in a pattern the solution
-should take – like "_R_Y" – the model wants to suggest an answer that doesn't
-fit this pattern – like "RENT". A conflict like this is a good time to ask for
-help from the user:  
+Por exemplo, às vezes, quando o exemplo passa um padrão que a solução
+deve seguir – como "_R_Y" – o modelo quer sugerir uma resposta que não se
+encaixa nesse padrão – como "RENT". Um conflito como esse é um bom momento para pedir
+ajuda ao usuário:  
 <img
 src="/assets/images/docs/ai-best-practices/crossword-companion-app-displaying-a-con.png"
-alt="Crossword Companion app displaying a Conflict Detected dialog asking for
-user input to resolve a clue pattern">  
-This is called putting the "human in the loop" and it's yet another way for
-humans and LLMs to collaborate. Flutter and the Firebase AI Logic SDK make this
-easy to do. First, the sample defines a function and configures the model:
+alt="App Crossword Companion exibindo uma caixa de diálogo Conflito detectado pedindo
+a entrada do usuário para resolver um padrão de pista">  
+Isso se chama colocar o "humano no loop" e é mais uma forma de
+humanos e LLMs colaborarem. O Flutter e o SDK Firebase AI Logic tornam isso
+fácil de fazer. Primeiro, o exemplo define uma função e configura o modelo:
 
 ````dart
 
@@ -438,7 +438,7 @@ ${jsonEncode(_resolveConflictFunction.toJson())}
 ''';
 ````
 
-Now when the model sees a conflict, it will call the tool:
+Agora, quando o modelo vê um conflito, ele chama a ferramenta:
 
 ```dart
 // handle the LLM's request to resolve the conflict
@@ -472,30 +472,30 @@ Future<Map<String, dynamic>> _handleResolveConflict(
 }
 ```
 
-The sample handles the tool with an implementation of the `onConflict` method
-that calls `showDialog` to gather data from the user. This all happens in the
-middle of the agentic loop, but that's OK – the model is not waiting; it's
-already sent back its response to the app's initial request. The user can take
-their time with the UI while the sample waits on the `Future` returned
-`showDialog`. When they're done, the model continues where it left off using the
-message history and the most recent request, which in this case happens to be
-data gathered interactively from the user.
+O exemplo trata a ferramenta com uma implementação do método `onConflict`, que
+chama `showDialog` para coletar dados do usuário. Tudo isso acontece no
+meio do loop agêntico, mas tudo bem – o modelo não está esperando; ele
+já enviou sua resposta à requisição inicial do app. O usuário pode
+levar o tempo que precisar com a UI enquanto o exemplo aguarda o `Future` retornado
+pelo `showDialog`. Quando terminar, o modelo continua de onde parou, usando o
+histórico de mensagens e a requisição mais recente, que neste caso são os
+dados coletados interativamente do usuário.
 
-A modal dialog box is a simple way to put the human in the loop but is not the
-only way in Flutter to do so. If you'd prefer, an instance of [a
-`Completer`][completer] lets you set some state in your app that puts it into
-"gathering data from the user" mode. When the app has the data, it can call
-`complete` on the `Completer` and resume the agentic loop.
+Uma caixa de diálogo modal é uma forma simples de colocar o humano no loop, mas não é a
+única maneira no Flutter de fazer isso. Se preferir, uma instância de [um
+`Completer`][completer] permite definir algum estado no seu app que o coloca no modo
+"coletando dados do usuário". Quando o app tiver os dados, ele pode chamar
+`complete` no `Completer` e retomar o loop agêntico.
 
-Or, since you own the agentic loop, you can check for a call to a "special"
-function that indicates that you need to gather data from the user. This kind of
-special function is sometimes called an "interrupt" and you "resume" the
-conversation with the model when you have the data from the user.
+Ou, como você é o dono do loop agêntico, pode verificar se há uma chamada para uma função "especial"
+que indica que você precisa coletar dados do usuário. Esse tipo de
+função especial às vezes é chamado de "interrupção", e você "retoma" a
+conversa com o modelo quando tiver os dados do usuário.
 
-Remember that the LLM is stateless. It's not waiting on you, so you can handle
-the agentic loop in whatever way makes the most sense for your app. You can come
-back to the LLM with an updated message history and a new prompt at any time,
-whether it's been a minute or in a month.
+Lembre-se de que o LLM é sem estado. Ele não
+está esperando por você, então você pode tratar o loop agêntico da forma que fizer mais sentido para
+o seu app. Você pode voltar ao LLM com um histórico de mensagens atualizado e um novo
+prompt a qualquer momento, seja depois de um minuto ou de um mês.
 
 
 

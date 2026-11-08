@@ -1,31 +1,32 @@
 ---
-title: Play or stream sound and music with flutter_soloud
+ia-translate: true
+title: Reproduza ou transmita sons e músicas com flutter_soloud
 description: >-
-  Learn how to play or stream audio in
-  your Flutter app using the flutter_soloud package.
+  Aprenda a reproduzir ou transmitir áudio no seu app Flutter
+  usando o pacote flutter_soloud.
 ---
 
-This recipe demonstrates how to integrate the [`flutter_soloud` package][]
-into your Flutter application to play sound effects and
-background music with low latency.
-To get started using the package, follow these steps:
+Esta receita demonstra como integrar o [pacote `flutter_soloud`][`flutter_soloud` package]
+à sua aplicação Flutter para reproduzir efeitos sonoros e
+músicas de fundo com baixa latência.
+Para começar a usar o pacote, siga estes passos:
 
 [`flutter_soloud` package]: {{site.pub-pkg}}/flutter_soloud
 
-## 1. Add the package dependency
+## 1. Adicione a dependência do pacote {:#add-the-package-dependency}
 
-To add `package:flutter_soloud` as a dependency, use `flutter pub add`:
+Para adicionar o `package:flutter_soloud` como dependência, use `flutter pub add`:
 
 ```console
 $ flutter pub add flutter_soloud
 ```
 
-## 2. Initialize `SoLoud`
+## 2. Inicialize o `SoLoud` {:#initialize-soloud}
 
-Before playing any audio,
-you need to initialize the `SoLoud` instance.
-You can also configure playback settings like sample rate,
-buffer size, and the number of channels.
+Antes de reproduzir qualquer áudio,
+você precisa inicializar a instância do `SoLoud`.
+Você também pode configurar opções de reprodução, como taxa de amostragem,
+tamanho do buffer e número de canais.
 
 ```dart
 import 'package:flutter_soloud/flutter_soloud.dart';
@@ -41,25 +42,25 @@ await SoLoud.instance.init(
 );
 ```
 
-## 3. Load audio
+## 3. Carregue o áudio {:#load-audio}
 
-The `flutter_soloud` package supports various audio formats
-including MP3, WAV, OGG, and FLAC.
-You can load audio from different sources.
+O pacote `flutter_soloud` oferece suporte a vários formatos de áudio,
+incluindo MP3, WAV, OGG e FLAC.
+Você pode carregar áudio de diferentes fontes.
 
-From a local file:
+A partir de um arquivo local:
 
 ```dart
 final sound = await SoLoud.instance.loadFile('path/to/sound.mp3');
 ```
 
-From an app asset:
+A partir de um asset do app:
 
 ```dart
 final sound = await SoLoud.instance.loadAsset('assets/sound.mp3');
 ```
 
-From a network URL:
+A partir de uma URL de rede:
 
 ```dart
 final sound = await SoLoud.instance.loadUrl(
@@ -68,7 +69,7 @@ final sound = await SoLoud.instance.loadUrl(
 );
 ```
 
-From bytes in memory:
+A partir de bytes na memória:
 
 ```dart
 // TODO: Replace with your actual audio data.
@@ -81,11 +82,11 @@ final sound = await SoLoud.instance.loadMem(
 );
 ```
 
-## 4. Play audio
+## 4. Reproduza o áudio {:#play-audio}
 
-Once the audio is loaded,
-you can play it using `SoLoud.instance.play`.
-You can also configure gapless looping.
+Depois que o áudio for carregado,
+você pode reproduzi-lo usando `SoLoud.instance.play`.
+Você também pode configurar a repetição sem interrupções (gapless).
 
 ```dart
 // Play the sound.
@@ -99,41 +100,41 @@ handle = await SoLoud.instance.play(
 );
 ```
 
-The `play` method returns a handle that references
-that particular instance of the sound being played.
-You can use this handle to control the playback.
+O método `play` retorna um handle que referencia
+aquela instância específica do som em reprodução.
+Você pode usar esse handle para controlar a reprodução.
 
-## 5. Control playback
+## 5. Controle a reprodução {:#control-playback}
 
-With the handle returned from `play`,
-you can perform various actions such as pausing or resuming playback:
+Com o handle retornado por `play`,
+você pode executar várias ações, como pausar ou retomar a reprodução:
 
 ```dart
 // Toggle pause state.
 SoLoud.instance.pauseSwitch(handle);
 ```
 
-Seek to a specific timestamp:
+Avance até um timestamp específico:
 
 ```dart
 SoLoud.instance.seek(handle, Duration(seconds: 5));
 ```
 
-Set playback speed:
+Defina a velocidade de reprodução:
 
 ```dart
 // Play twice as fast.
 SoLoud.instance.setRelativePlaySpeed(handle, 2.0);
 ```
 
-Adjust playback volume:
+Ajuste o volume de reprodução:
 
 ```dart
 // Set playback to 50% volume.
 SoLoud.instance.setVolume(handle, 0.5);
 ```
 
-Fade the audio volume:
+Aplique um fade no volume do áudio:
 
 ```dart
 SoLoud.instance.fadeVolume(
@@ -143,27 +144,27 @@ SoLoud.instance.fadeVolume(
 );
 ```
 
-Stop playback:
+Pare a reprodução:
 
 ```dart
 await SoLoud.instance.stop(handle);
 ```
 
-## 6. Dispose of sound sources
+## 6. Descarte as fontes de som {:#dispose-of-sound-sources}
 
-When you are finished with a sound source,
-remember to dispose of it to free up resources.
+Quando terminar com uma fonte de som,
+lembre-se de descartá-la para liberar recursos.
 
 ```dart
 await SoLoud.instance.disposeSource(sound);
 ```
 
-## 7. [Optional] Stream audio
+## 7. [Opcional] Transmita áudio {:#optional-stream-audio}
 
-The `flutter_soloud` package also supports streaming
-audio data in real time.
+O pacote `flutter_soloud` também oferece suporte à transmissão
+de dados de áudio em tempo real.
 
-Initialize and configure a buffer stream:
+Inicialize e configure um stream de buffer:
 
 ```dart
 final stream = SoLoud.instance.setBufferStream(
@@ -174,13 +175,13 @@ final stream = SoLoud.instance.setBufferStream(
 );
 ```
 
-Play the stream:
+Reproduza o stream:
 
 ```dart
 final handle = await SoLoud.instance.play(stream);
 ```
 
-As your app receives audio data, add it to the stream:
+Conforme o app recebe dados de áudio, adicione-os ao stream:
 
 ```dart
 // TODO: Replace with your actual audio data.
@@ -192,17 +193,17 @@ SoLoud.instance.addAudioDataStream(
 );
 ```
 
-When you're done with the audio stream, mark it as complete:
+Quando terminar com o stream de áudio, marque-o como concluído:
 
 ```dart
 SoLoud.instance.setDataIsEnded(stream);
 ```
 
-## More information
+## Mais informações {:#more-information}
 
-For more detailed information and examples,
-visit the [`flutter_soloud` package][] on pub.dev or
-check out the `flutter_soloud` Package of the Week video.
+Para informações e exemplos mais detalhados,
+visite o [pacote `flutter_soloud`][`flutter_soloud` package] no pub.dev ou
+assista ao vídeo do Package of the Week sobre o `flutter_soloud`.
 
 <div class="video-wrapper">
   <YouTubeEmbed id="2t6Bt04EyLw" title="flutter_soloud - Package of the Week"></YouTubeEmbed>

@@ -1,1 +1,3 @@
-![Red empty square that indicates you want to stop the running Flutter app](/assets/images/docs/testing/debugging/vscode-ui/icons/stop.png)
+<!-- ia-translate: true -->
+
+![Quadrado vermelho vazio que indica que você quer parar o app Flutter em execução](/assets/images/docs/testing/debugging/vscode-ui/icons/stop.png)

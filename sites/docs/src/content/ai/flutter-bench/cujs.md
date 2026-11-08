@@ -1,9 +1,10 @@
 ---
-title: Flutter critical user journeys
-shortTitle: Flutter CUJs
+ia-translate: true
+title: Jornadas críticas do usuário no Flutter
+shortTitle: CUJs do Flutter
 description: >-
-  Browse the catalog of canonical Flutter and Dart critical user journeys that
-  the FlutterBench evaluations test.
+  Navegue pelo catálogo de jornadas críticas do usuário canônicas do Flutter e
+  do Dart, que as avaliações do FlutterBench testam.
 bodyClass: wide-site-content
 showToc: false
 sitemap: false
@@ -12,21 +13,22 @@ dateModifiedSources:
   - src/data/cujs.yaml
 ---
 
-A _critical user journey_ (CUJ) is a goal that a developer sets out to
-accomplish, such as "make an application accessible to all users" or
-"diagnose and resolve layout overflow errors". 
-Each CUJ is broken down into the concrete tasks required to complete it.
+Uma _jornada crítica do usuário_ (CUJ, do inglês _critical user journey_) é um
+objetivo que um desenvolvedor busca alcançar, como "tornar uma aplicação
+acessível a todos os usuários" ou "diagnosticar e resolver erros de estouro de
+layout".
+Cada CUJ é dividida nas tarefas concretas necessárias para concluí-la.
 
-Product teams at Google treat CUJs as a source of truth: 
-they're how teams align on priorities, shape roadmaps, 
-measure product health, and more. 
-The Flutter team uses CUJs to derive evaluation tasks and 
-prompts for FlutterBench.
+Equipes de produto do Google tratam as CUJs como fonte de verdade:
+é por meio delas que as equipes alinham prioridades, definem roadmaps,
+medem a saúde do produto e muito mais.
+A equipe do Flutter usa as CUJs para derivar tarefas de avaliação e
+prompts para o FlutterBench.
 
-The following catalogue lists the Flutter team's CUJs. It's a claim about
-what matters in Flutter development. If the way you build Flutter apps
-isn't represented here, the list is incomplete, and we
-encourage [you to open an issue with your feedback][].
+O catálogo a seguir lista as CUJs da equipe do Flutter. Ele representa uma
+afirmação sobre o que importa no desenvolvimento com Flutter. Se a forma como
+você constrói apps Flutter não estiver representada aqui, a lista está
+incompleta, e incentivamos [você a abrir uma issue com seu feedback][you to open an issue with your feedback].
 
 <CujIndex />
 

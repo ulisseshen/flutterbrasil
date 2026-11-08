@@ -1,3 +1,5 @@
+<!-- ia-translate: true -->
+
 ```console
 $ flutter test integration_test
 Resolving dependencies...

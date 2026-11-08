@@ -1,8 +1,9 @@
 ---
-title: Structure & output
+ia-translate: true
+title: Estrutura e saída
 description: >
-  Learn how to use structured input and output schemas to
-  receive reliable, parsable JSON data from an LLM.
+  Aprenda a usar esquemas estruturados de entrada e saída para
+  receber dados JSON confiáveis e analisáveis de um LLM.
 prev:
   title: Prompting
   path: /ai/best-practices/prompting
@@ -12,20 +13,20 @@ next:
 ---
 
 
-When you're writing programs against an LLM, you want to provide unambiguous
-input and get unambiguous output.
+Quando você escreve programas que usam um LLM, quer fornecer uma entrada sem
+ambiguidades e obter uma saída sem ambiguidades.
 
-### Structured input
+### Entrada estruturada {:#structured-input}
 
-As input, an LLM can take pretty much anything you can render as text. That
-includes free form text and semi-structured text like Markdown, but also
-includes structured formats like CSV, JSON, and XML. If you have data with
-structure, format the data with that structure and the LLM is going to give you
-better results.
+Como entrada, um LLM pode receber praticamente qualquer coisa que você consiga
+renderizar como texto. Isso inclui texto livre e texto semiestruturado, como
+Markdown, mas também formatos estruturados como CSV, JSON e XML. Se você tem
+dados com estrutura, formate-os com essa estrutura e o LLM vai dar melhores
+resultados.
 
-In addition to structured text input, you can also pass binary data, like images
-or PDFs. In the sample, the app passes the crossword puzzle screenshot images to
-Gemini for it to infer the grid data:
+Além de texto estruturado, você também pode enviar dados binários, como imagens
+ou PDFs. No exemplo, o app envia as capturas de tela do quebra-cabeça de palavras
+cruzadas para o Gemini, para que ele infira os dados da grade:
 
 ```dart
 final imageParts = <Part>[];
@@ -46,16 +47,17 @@ final response = await _crosswordModel.generateContent(content);
 ...
 ```
 
-This code passes the prompt and the images to Gemini as part of the same
-request.
+Este código envia o prompt e as imagens para o Gemini na mesma
+requisição.
 
-### Structured output
+### Saída estruturada {:#structured-output}
 
-An LLM can have a harder time with structured output than with structured input.
-You want to be clear and thorough when asking the model for JSON output to
-ensure you get something that you can reliably parse in your apps. 
+Um LLM pode ter mais dificuldade com saída estruturada do que com entrada
+estruturada. Você precisa ser claro e detalhado ao pedir ao modelo uma saída
+JSON, para garantir que receba algo que possa ser analisado de forma confiável
+nos seus apps.
 
-Start by initializing the model instance with your expected output format:
+Comece inicializando a instância do modelo com o formato de saída esperado:
 
 ```dart
 // the schema for the clue solver output
@@ -115,8 +117,8 @@ _crosswordModel = FirebaseAI.googleAI().generativeModel(
 );
 ```
 
-And while this might be enough, the most reliable results come when you also
-specify the output schema in the system instruction:
+Embora isso possa ser suficiente, os resultados mais confiáveis surgem quando
+você também especifica o esquema de saída na instrução do sistema:
 
 ```dart
 final _crosswordPrompt =
@@ -130,7 +132,7 @@ The JSON schema is as follows: ${jsonEncode(_crosswordSchema.toJson())}
 '''
 ```
 
-Now you can parse the model's text response as JSON:
+Agora você pode analisar a resposta de texto do modelo como JSON:
 
 ```dart
 final response = await _crosswordModel.generateContent(content);
@@ -143,6 +145,6 @@ final cluesData = json['clues'] as Map<String, dynamic>;
 ...
 ```
 
-Reliable JSON output from the model is what makes it possible to integrate AI
-into your app. The data might or might not be correct, but it will be in a
-format your app can work with.
+Uma saída JSON confiável do modelo é o que torna possível integrar IA ao seu
+app. Os dados podem estar corretos ou não, mas virão em um formato com o qual
+seu app consegue trabalhar.

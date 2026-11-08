@@ -1,7 +1,8 @@
 ---
-title: Resources
+ia-translate: true
+title: Recursos
 layout: toc
 showBreadcrumbs: false
 description: >-
-  Discover helpful resources covering the Flutter framework.
+  Descubra recursos úteis que abordam o framework Flutter.
 ---

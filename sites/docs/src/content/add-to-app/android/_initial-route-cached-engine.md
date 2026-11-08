@@ -1,16 +1,16 @@
-The concept of an initial route is available when configuring a
-`FlutterActivity` or a `FlutterFragment` with a new `FlutterEngine`.
-However, `FlutterActivity` and `FlutterFragment` don't offer the
-concept of an initial route when using a cached engine.
-This is because a cached engine is expected to already be
-running Dart code, which means it's too late to configure the
-initial route.
+<!-- ia-translate: true -->
 
-Developers that would like their cached engine to begin
-with a custom initial route can configure their cached
-`FlutterEngine` to use a custom initial route just before
-executing the Dart entrypoint. The following example
-demonstrates the use of an initial route with a cached engine:
+O conceito de rota inicial está disponível ao configurar um
+`FlutterActivity` ou um `FlutterFragment` com um novo `FlutterEngine`.
+No entanto, `FlutterActivity` e `FlutterFragment` não oferecem o
+conceito de rota inicial ao usar um engine em cache.
+Isso acontece porque um engine em cache deve já estar executando código Dart,
+o que significa que é tarde demais para configurar a rota inicial.
+
+Desenvolvedores que quiserem que o engine em cache comece com uma rota inicial
+personalizada podem configurar o `FlutterEngine` em cache para usar essa rota
+logo antes de executar o entrypoint do Dart. O exemplo a seguir demonstra o uso
+de uma rota inicial com um engine em cache:
 
 <Tabs key="android-language">
 <Tab name="Kotlin">
@@ -63,13 +63,12 @@ public class MyApplication extends Application {
 </Tab>
 </Tabs>
 
-By setting the initial route of the navigation channel, the associated
-`FlutterEngine` displays the desired route upon initial execution of the
-`runApp()` Dart function.
+Ao definir a rota inicial do canal de navegação, o `FlutterEngine` associado
+exibe a rota desejada na primeira execução da função Dart `runApp()`.
 
-Changing the initial route property of the navigation channel
-after the initial execution of `runApp()` has no effect.
-Developers who would like to use the same `FlutterEngine`
-between different `Activity`s and `Fragment`s and switch
-the route between those displays need to set up a method channel and
-explicitly instruct their Dart code to change `Navigator` routes.
+Alterar a propriedade de rota inicial do canal de navegação depois da
+primeira execução de `runApp()` não tem efeito.
+Desenvolvedores que quiserem usar o mesmo `FlutterEngine` entre diferentes
+`Activity`s e `Fragment`s, alternando a rota entre essas telas, precisam
+configurar um method channel e instruir explicitamente o código Dart a alterar
+as rotas do `Navigator`.

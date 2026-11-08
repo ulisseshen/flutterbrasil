@@ -1,76 +1,74 @@
 ---
-title: Integrate a Flutter module into your iOS project (Legacy)
-shortTitle: Integrate Flutter (Legacy)
-description: Learn how to integrate a Flutter module into your existing iOS project.
+ia-translate: true
+title: Integrar um módulo Flutter ao seu projeto iOS (legado)
+shortTitle: Integrar Flutter (legado)
+description: Aprenda a integrar um módulo Flutter ao seu projeto iOS existente.
 ---
 
 :::warning
 
-As of Flutter 3.44, Swift Package Manager (SwiftPM) replaces CocoaPods
-as the default dependency manager for iOS and macOS Flutter apps.
-CocoaPods is officially in maintenance mode,
-and its registry will permanently [become read-only on December 2, 2026][read-only].
+A partir do Flutter 3.44, o Swift Package Manager (SwiftPM) substitui o CocoaPods
+como gerenciador de dependências padrão para apps Flutter em iOS e macOS.
+O CocoaPods está oficialmente em modo de manutenção,
+e o registro dele vai [se tornar somente leitura permanentemente em 2 de dezembro de 2026][read-only].
 
-This guide is preserved for reference only, and will not receive ongoing maintenance.
-Please migrate to using Swift Package Manager using the [updated integration guide][].
+Este guia é mantido apenas como referência e não receberá manutenção contínua.
+Migre para o Swift Package Manager seguindo o [guia de integração atualizado][updated integration guide].
 
 :::
 
-Flutter UI components can be incrementally added into your existing iOS
-application as embedded frameworks.
-To embed Flutter in your existing application,
-consider one of the following three methods.
+Os componentes de UI do Flutter podem ser adicionados gradualmente ao seu app iOS
+existente como frameworks incorporados. Para incorporar o Flutter ao seu app,
+considere um dos três métodos a seguir.
 
-| Embedding Method | Methodology | Benefit |
+| Método de incorporação | Metodologia | Benefício |
 |---|---|---|
-| Use CocoaPods _(Recommended)_ | Install and use the Flutter SDK and CocoaPods. Flutter compiles the `flutter_module` from source each time Xcode builds the iOS app. | Least complicated method to embed Flutter into your app. |
-| Use [iOS frameworks][] | Create iOS frameworks for Flutter components, embed them into your iOS, and update your existing app's build settings. | Doesn't require every developer to install the Flutter SDK and CocoaPods on their local machines. |
-| Use iOS frameworks and CocoaPods | Embed the frameworks for your iOS app and the plugins in Xcode, but distribute the Flutter engine as a CocoaPods podspec. | Provides an alternative to distributing the large Flutter engine (`Flutter.xcframework`) library. |
+| Use CocoaPods _(recomendado)_ | Instale e use o SDK do Flutter e o CocoaPods. O Flutter compila o `flutter_module` a partir do código-fonte sempre que o Xcode compila o app iOS. | É o método menos complicado para incorporar o Flutter ao seu app. |
+| Use [frameworks iOS][iOS frameworks] | Crie frameworks iOS para os componentes do Flutter, incorpore-os ao seu app iOS e atualize as configurações de build do seu app existente. | Não exige que cada desenvolvedor instale o SDK do Flutter e o CocoaPods em sua máquina local. |
+| Use frameworks iOS e CocoaPods | Incorpore os frameworks do seu app iOS e os plugins no Xcode, mas distribua o engine do Flutter como um podspec do CocoaPods. | Oferece uma alternativa para distribuir a biblioteca grande do engine do Flutter (`Flutter.xcframework`). |
 
 {:.table .table-striped}
 
 [iOS frameworks]: {{site.apple-dev}}/library/archive/documentation/MacOSX/Conceptual/BPFrameworks/Concepts/WhatAreFrameworks.html
 
-When you add Flutter to your existing iOS app,
-it [increases the size of your iOS app][app-size].
+Ao adicionar o Flutter ao seu app iOS existente,
+isso [aumenta o tamanho do seu app iOS][app-size].
 
-For examples using an app built with UIKit,
-see the iOS directories in the [add_to_app code samples][].
-For an example using SwiftUI, consult the iOS directory in [News Feed App][].
+Para exemplos de apps criados com UIKit,
+consulte os diretórios iOS nos [exemplos de código add_to_app][add_to_app code samples].
+Para um exemplo com SwiftUI, consulte o diretório iOS do [News Feed App][News Feed App].
 
-## Development system requirements
+## Requisitos do ambiente de desenvolvimento {:#development-system-requirements}
 
-Flutter requires the latest version of Xcode and [CocoaPods][].
+O Flutter exige a versão mais recente do Xcode e do [CocoaPods][CocoaPods].
 
-## Create a Flutter module
+## Criar um módulo Flutter {:#create-a-flutter-module}
 
-To embed Flutter into your existing application with any method,
-create a Flutter module first.
-Use the following command to create a Flutter module.
+Para incorporar o Flutter ao seu app existente com qualquer método,
+crie primeiro um módulo Flutter. Use o comando a seguir para criar um módulo Flutter.
 
 ```console
 $ cd /path/to/my_flutter
 $ flutter create --template module my_flutter
 ```
 
-Flutter creates module project under `/path/to/my_flutter/`.
-If you use the [CocoaPods method][], save the module
-in the same parent directory as your existing iOS app.
+O Flutter cria o projeto do módulo em `/path/to/my_flutter/`.
+Se você usar o [método CocoaPods][CocoaPods method], salve o módulo
+no mesmo diretório pai do seu app iOS existente.
 
 [CocoaPods method]: /add-to-app/ios/project-setup-legacy/?tab=embed-using-cocoapods
 
-From the Flutter module directory,
-you can run the same `flutter` commands you would in any other Flutter project,
-like `flutter run` or `flutter build ios`.
-You can also run the module in [VS Code][] or
-[Android Studio/IntelliJ][] with the Flutter and Dart plugins.
-This project contains a single-view example version of your module
-before embedding it in your existing iOS app.
-This helps when testing the Flutter-only parts of your code.
+A partir do diretório do módulo Flutter, você pode executar os mesmos comandos
+`flutter` que executaria em qualquer outro projeto Flutter, como `flutter run`
+ou `flutter build ios`. Você também pode executar o módulo no [VS Code][VS Code]
+ou no [Android Studio/IntelliJ][Android Studio/IntelliJ], com os plugins Flutter e Dart.
+Este projeto contém uma versão de exemplo, com uma única visualização, do seu módulo
+antes de incorporá-lo ao seu app iOS existente.
+Isso ajuda a testar as partes exclusivas do Flutter do seu código.
 
-## Organize your module
+## Organizar seu módulo {:#organize-your-module}
 
-The `my_flutter` module directory structure resembles a typical Flutter app.
+A estrutura de diretórios do módulo `my_flutter` se assemelha a um app Flutter típico.
 
 <FileTree>
 
@@ -86,62 +84,59 @@ The `my_flutter` module directory structure resembles a typical Flutter app.
 
 </FileTree>
 
-Your Dart code should be added to the `lib/` directory.
-Your Flutter dependencies, packages, and plugins must be added to the
-`pubspec.yaml` file.
+Seu código Dart deve ser adicionado ao diretório `lib/`.
+As dependências, pacotes e plugins do Flutter devem ser adicionados ao
+arquivo `pubspec.yaml`.
 
-The `.ios/` hidden subfolder contains an Xcode workspace where
-you can run a standalone version of your module.
-This wrapper project bootstraps your Flutter code.
-It contains helper scripts to facilitate building frameworks or
-embedding the module into your existing application with CocoaPods.
+O subdiretório oculto `.ios/` contém um workspace do Xcode no qual
+você pode executar uma versão independente do seu módulo.
+Este projeto wrapper inicializa o seu código Flutter.
+Ele contém scripts auxiliares para facilitar a criação de frameworks ou a
+incorporação do módulo ao seu app existente com CocoaPods.
 
 :::note
 
-* Add custom iOS code to your own existing application's
-  project or to a plugin, not to the module's `.ios/`
-  directory. Changes made in your module's `.ios/`
-  directory don't appear in your existing iOS project
-  using the module, and might be overwritten by Flutter.
+* Adicione código iOS personalizado ao projeto do seu próprio app existente
+  ou a um plugin, não ao diretório `.ios/` do módulo. Alterações feitas no
+  diretório `.ios/` do módulo não aparecem no seu projeto iOS existente que
+  usa o módulo, e podem ser sobrescritas pelo Flutter.
 
-* Exclude the `.ios/` directory from source control as
-  it's autogenerated.
+* Exclua o diretório `.ios/` do controle de versão, pois ele é gerado
+  automaticamente.
 
-* Before building the module on a new machine,
-  run `flutter pub get` in the `my_flutter` directory.
-  This regenerates the `.ios/` directory before building
-  the iOS project that uses the Flutter module.
+* Antes de compilar o módulo em uma nova máquina, execute `flutter pub get`
+  no diretório `my_flutter`. Isso regenera o diretório `.ios/` antes de
+  compilar o projeto iOS que usa o módulo Flutter.
 
 :::
 
-## Embed a Flutter module in your iOS app
+## Incorporar um módulo Flutter ao seu app iOS {:#embed-a-flutter-module-in-your-ios-app}
 
-After you have developed your Flutter module,
-you can embed it using the methods described
-in the table at the top of the page.
+Depois de desenvolver o seu módulo Flutter, você pode incorporá-lo usando os
+métodos descritos na tabela no topo da página.
 
-You can run in **Debug** mode on a simulator or a real device,
-and **Release** mode on a real device.
+Você pode executar no modo **Debug** em um simulador ou em um dispositivo real,
+e no modo **Release** em um dispositivo real.
 
 :::note
-Learn more about [Flutter's build modes][build modes of Flutter].
+Saiba mais sobre os [modos de build do Flutter][build modes of Flutter].
 
-To use Flutter debugging features such as hot reload,
-consult [Debugging your add-to-app module][].
+Para usar recursos de depuração do Flutter, como o hot reload,
+consulte [Depurar seu módulo add-to-app][Debugging your add-to-app module].
 :::
 
 <Tabs key="darwin-deps">
-<Tab name="Use CocoaPods">
+<Tab name="Usar CocoaPods">
 
 {% render "docs/add-to-app/ios-project/embed-cocoapods.md" %}
 
 </Tab>
-<Tab name="Use frameworks">
+<Tab name="Usar frameworks">
 
 {% render "docs/add-to-app/ios-project/embed-frameworks.md" %}
 
 </Tab>
-<Tab name="Use frameworks and CocoaPods">
+<Tab name="Usar frameworks e CocoaPods">
 
 {% render "docs/add-to-app/ios-project/embed-split.md" %}
 
@@ -149,53 +144,51 @@ consult [Debugging your add-to-app module][].
 </Tabs>
 
 
-## Set local network privacy permissions
+## Definir permissões de privacidade de rede local {:#set-local-network-privacy-permissions}
 
 {% render "docs/add-to-app/ios-project/local-network-privacy-permissions.md" %}
 
-## Mitigate known issue with Apple Silicon Macs
+## Contornar um problema conhecido em Macs com Apple Silicon {:#mitigate-known-issue-with-apple-silicon-macs}
 
-On [Macs running Apple Silicon][apple-silicon],
-the host app builds for an `arm64` simulator.
-While Flutter supports `arm64` simulators, some plugins might not.
-If you use one of these plugins, you might see a compilation error like
-**Undefined symbols for architecture arm64**.
-If this occurs,
-exclude `arm64` from the simulator architectures in your host app.
+Em [Macs com Apple Silicon][apple-silicon], o app host é compilado para um
+simulador `arm64`. Embora o Flutter ofereça suporte a simuladores `arm64`,
+alguns plugins podem não oferecer. Se você usar um desses plugins, pode ver um
+erro de compilação como **Undefined symbols for architecture arm64**.
+Se isso ocorrer, exclua `arm64` das arquiteturas do simulador no seu app host.
 
-1. In the **Project Navigator**, click on your project.
+1. No **Project Navigator**, clique no seu projeto.
 
-1. Click the **Build Settings** tab.
+1. Clique na aba **Build Settings**.
 
-1. Click **All** and **Combined** sub-tabs.
+1. Clique nas subabas **All** e **Combined**.
 
-1. Under **Architectures**, click on **Excluded Architectures**.
+1. Em **Architectures**, clique em **Excluded Architectures**.
 
-1. Expand to see the available build configurations.
+1. Expanda para ver as configurações de build disponíveis.
 
-1. Click **Debug**.
+1. Clique em **Debug**.
 
-1. Click the **+** (plus sign).
+1. Clique no **+** (sinal de mais).
 
-1. Select **iOS Simulator**.
+1. Selecione **iOS Simulator**.
 
-1. Double-click in the value column for **Any iOS Simulator SDK**.
+1. Clique duas vezes na coluna de valor de **Any iOS Simulator SDK**.
 
-1. Click the **+** (plus sign).
+1. Clique no **+** (sinal de mais).
 
-1. Type `arm64` in the **Debug > Any iOS Simulator SDK** dialog box.
+1. Digite `arm64` na caixa de diálogo **Debug > Any iOS Simulator SDK**.
 
-   <DashImage image="development/add-to-app/ios/project-setup/excluded-archs.png" caption="Add `arm64` as an excluded architecture for your app" />
+   <DashImage image="development/add-to-app/ios/project-setup/excluded-archs.png" caption="Adicione `arm64` como arquitetura excluída do seu app" />
 
-1. Press <kbd>Esc</kbd> to close this dialog box.
+1. Pressione <kbd>Esc</kbd> para fechar esta caixa de diálogo.
 
-1. Repeat these steps for the **Release** build mode.
+1. Repita estes passos para o modo de build **Release**.
 
-1. Repeat for any iOS unit test targets.
+1. Repita para quaisquer targets de teste unitário do iOS.
 
-## Next steps
+## Próximos passos {:#next-steps}
 
-You can now [add a Flutter screen][] to your existing iOS app.
+Agora você pode [adicionar uma tela Flutter][add a Flutter screen] ao seu app iOS existente.
 
 [add_to_app code samples]: {{site.repo.samples}}/tree/main/add_to_app
 [add a Flutter screen]: /add-to-app/ios/add-flutter-screen
@@ -204,7 +197,7 @@ You can now [add a Flutter screen][] to your existing iOS app.
 [CocoaPods]: https://cocoapods.org/
 [app-size]: /resources/faq#how-big-is-the-flutter-engine
 [VS Code]: /tools/vs-code
-[News Feed app]: https://github.com/flutter/put-flutter-to-work/tree/022208184ec2623af2d113d13d90e8e1ce722365
+[News Feed App]: https://github.com/flutter/put-flutter-to-work/tree/022208184ec2623af2d113d13d90e8e1ce722365
 [Debugging your add-to-app module]: /add-to-app/debugging/
 [apple-silicon]: https://support.apple.com/en-us/116943
 [read-only]: https://blog.cocoapods.org/CocoaPods-Specs-Repo/

@@ -1,3 +1,5 @@
+<!-- ia-translate: true -->
+
 ```plaintext
 flutter: FocusManager#9d096
 flutter:  │ primaryFocus: FocusScopeNode#926dc(_ModalScopeState<dynamic>

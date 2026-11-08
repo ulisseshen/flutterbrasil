@@ -1,66 +1,68 @@
 ---
-title: Impeller anti-aliasing
-description: How does Impeller perform anti-aliasing?
+ia-translate: true
+title: Anti-aliasing do Impeller
+description: Como o Impeller faz o anti-aliasing?
 ---
 
-Aliasing is the visual artifacts that result from drawing geometry to a grid of
-pixels (rasterization). The artifacts show up as jagged or rough edges on
-shapes. Impeller employs a couple techniques to smooth out the mapping to raster
-graphics (anti-aliasing).
+Aliasing são os artefatos visuais que resultam do desenho de geometria em uma grade
+de pixels (rasterização). Os artefatos aparecem como bordas irregulares ou serrilhadas
+nas formas. O Impeller usa algumas técnicas para suavizar o mapeamento para gráficos
+rasterizados (anti-aliasing).
 
-## Techniques
+## Técnicas {:#techniques}
 
-### Multisample anti-aliasing (MSAA)
+### Anti-aliasing multiamostragem (MSAA) {:#multisample-anti-aliasing-msaa}
 
-[MSAA][] is a global anti-aliasing technique that operates on the whole contents
-of the screen. It is an optimization over rendering the whole screen at a larger
-scale and shrinking it down ([SSAA][]). Instead of doing the fragment operation
-for each sub-sample, the calculation for the pixel is duplicated across the
-sub-samples where a bounds check happens. This limits smoothing to edges. Mobile
-phone GPUs have special hardware to optimize this process ( [Tiled
-rendering][]). It comes in varying degrees of how many samples to consider.
+[MSAA][MSAA] é uma técnica global de anti-aliasing que opera sobre todo o conteúdo
+da tela. É uma otimização em relação a renderizar a tela inteira em uma escala maior
+e reduzi-la depois ([SSAA][SSAA]). Em vez de fazer a operação de fragmento para cada
+subamostra, o cálculo do pixel é duplicado entre as subamostras em que ocorre uma
+verificação de limites. Isso limita a suavização às bordas. As GPUs de celulares têm
+hardware especial para otimizar esse processo ([renderização em blocos][Tiled rendering]).
+Existem diferentes níveis de quantas amostras considerar.
 
-On desktop and mobile 4x MSAA is used for all rendering calls.
+Em desktop e celulares, 4x MSAA é usado em todas as chamadas de renderização.
 
-### Signed distance fields ([SDFs][])
+### Campos de distância com sinal ([SDFs][SDFs]) {:#signed-distance-fields-sdfs}
 
-Typically, hardware accelerated computer graphics define a series of points and
-edges (a [mesh][]) and [shaders][]. Instead, SDF renders shapes in the fragment
-shader program as signed distance fields. Since the shape is defined in the
-fragment shader the edges can be smoothed at the fragment level instead of
-relying on the rasterization of a mesh.
+Normalmente, os gráficos de computador com aceleração por hardware definem uma série de
+pontos e arestas (uma [malha][mesh]) e [shaders][shaders]. Já o SDF renderiza as formas
+no programa de shader de fragmento como campos de distância com sinal. Como a forma é
+definida no shader de fragmento, as arestas podem ser suavizadas no nível do fragmento,
+em vez de depender da rasterização de uma malha.
 
-On desktop, rendering with SDFs is enabled by default. On mobile platforms, SDFs
-are an option that defaults to false.
+No desktop, a renderização com SDFs vem habilitada por padrão. Nas plataformas móveis,
+os SDFs são uma opção que vem desabilitada por padrão.
 
-This technique is prioritized on desktop because SDF rendering puts more demand
-on the GPU and Flutter supports older mobile phones. Also, the physical pixel
-sizes on desktop computers are typically bigger than those of mobile phones. So
-any imperfection will be more evident there.
+Essa técnica é priorizada no desktop porque a renderização com SDFs exige mais da GPU,
+e o Flutter oferece suporte a celulares mais antigos. Além disso, os tamanhos físicos
+dos pixels em computadores desktop costumam ser maiores que os de celulares. Assim,
+qualquer imperfeição fica mais evidente neles.
 
-### Examples
+### Exemplos {:#examples}
 
-| No AA                                       | MSAA 4x                                        | MSAA 4x + SDF                                           |
+| Sem AA                                      | MSAA 4x                                        | MSAA 4x + SDF                                           |
 | ------------------------------------------- | ---------------------------------------------- | ------------------------------------------------------- |
-| ![No AA](/assets/images/docs/perf/noaa.png) | ![MSAA 4x](/assets/images/docs/perf/msaa4.png) | ![MSAA 4x + SDF](/assets/images/docs/perf/msaa4sdf.png) |
+| ![Sem AA](/assets/images/docs/perf/noaa.png) | ![MSAA 4x](/assets/images/docs/perf/msaa4.png) | ![MSAA 4x + SDF](/assets/images/docs/perf/msaa4sdf.png) |
 
-## Working with anti-aliasing
+## Trabalhando com anti-aliasing {:#working-with-anti-aliasing}
 
-### SDFs with the FragmentShader API
+### SDFs com a API FragmentShader {:#sdfs-with-the-fragmentshader-api}
 
-Standard primitive shapes in Flutter are drawn by default with SDFs. If a
-Flutter developer wants to define their own custom graphics with SDFs they can
-do so with the [FragmentShader API][]. Using the [drawPath()][] is sufficient
-for most use cases without resorting to high quality SDF rendering. Not all
-drawn paths are guaranteed to result in SDF rendering though.
+As formas primitivas padrão do Flutter são desenhadas por padrão com SDFs. Se um
+desenvolvedor Flutter quiser definir os próprios gráficos personalizados com SDFs,
+ele pode fazer isso com a [API FragmentShader][FragmentShader API]. Usar o
+[drawPath()][drawPath()] basta para a maioria dos casos de uso, sem recorrer à
+renderização de SDFs de alta qualidade. Nem todos os caminhos desenhados
+resultam necessariamente em renderização com SDF.
 
-An example of rendering SDFs with the FragmentShader API can be found at
-[`simple_sdf`][].
+Um exemplo de renderização de SDFs com a API FragmentShader pode ser encontrado em
+[`simple_sdf`][`simple_sdf`].
 
-### Enabling SDFs on iOS
+### Habilitando SDFs no iOS {:#enabling-sdfs-on-ios}
 
-SDFs can be enabled on iOS by adding a new field to the `Info.plist` for the
-project.
+Os SDFs podem ser habilitados no iOS adicionando um novo campo ao `Info.plist`
+do projeto.
 
 ```xml
   <key>FLTEnableSDFs</key>

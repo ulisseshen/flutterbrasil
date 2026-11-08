@@ -1,9 +1,10 @@
 ---
-title: GenUI SDK main components and concepts
-breadcrumb: Main components & concepts
+ia-translate: true
+title: Componentes principais e conceitos do SDK GenUI
+breadcrumb: Componentes principais e conceitos
 description: >-
-  Familiarize yourself with the main components and concepts of the
-  Flutter for GenUI SDK.
+  Familiarize-se com os principais componentes e conceitos do
+  Flutter para o SDK GenUI.
 prev:
   title: GenUI SDK overview
   path: /ai/genui
@@ -13,105 +14,104 @@ next:
 ---
 
 :::experimental
-The `genui` package is in
-alpha and is likely to change.
+O pacote `genui` está em
+alfa e provavelmente vai mudar.
 :::
 
-## Main components
+## Componentes principais {:#main-components}
 
-The [`genui`][] package is built around the following main components:
+O pacote [`genui`][`genui`] é construído em torno dos seguintes componentes principais:
 
 `Conversation`
-: The primary facade and entry point for the package.
-  It includes the `SurfaceController` class,
-  manages the conversation history,
-  and orchestrates the entire generative UI process.
+: A fachada principal e o ponto de entrada do pacote.
+  Ela inclui a classe `SurfaceController`,
+  gerencia o histórico da conversa
+  e orquestra todo o processo de UI generativa.
 
 `Catalog`
-: A collection of `CatalogItem` objects that defines
-  the set of widgets that the AI is allowed to use.
-  The `SurfaceController` supports multiple catalogs,
-  allowing you to organize your widgets into logical groups.
-  Each `CatalogItem` specifies a widget's name (for the AI
-  to reference), a data schema for its properties, and a
-  builder function to render the Flutter widget.
+: Uma coleção de objetos `CatalogItem` que define
+  o conjunto de widgets que a IA pode usar.
+  O `SurfaceController` oferece suporte a vários catálogos,
+  permitindo organizar seus widgets em grupos lógicos.
+  Cada `CatalogItem` especifica o nome de um widget (para que a IA
+  possa referenciá-lo), um esquema de dados para as propriedades dele e uma
+  função builder que renderiza o widget Flutter.
 
 `DataModel`
-: A centralized, observable store for all dynamic UI state.
-  Widgets are _bound_ to data in this model. When data changes,
-  only the widgets that depend on that specific piece of data are rebuilt.
+: Um armazenamento centralizado e observável para todo o estado dinâmico da UI.
+  Os widgets são _vinculados_ aos dados desse modelo. Quando os dados mudam,
+  somente os widgets que dependem daquele dado específico são reconstruídos.
 
 `A2uiTransportAdapter`
-: A bridge that parses raw text streams coming from your LLM into
-  `A2uiMessage` commands for the `SurfaceController`.
+: Uma ponte que analisa os fluxos de texto brutos vindos do seu LLM e os
+  transforma em comandos `A2uiMessage` para o `SurfaceController`.
 
 `A2uiMessage`
-: A message sent from the AI
-  (parsed by the `A2uiTransportAdapter`) to the UI,
-  instructing it to perform actions like `createSurface`,
-  `surfaceUpdate`, `dataModelUpdate`, or `deleteSurface`.
+: Uma mensagem enviada pela IA
+  (analisada pelo `A2uiTransportAdapter`) para a UI,
+  instruindo-a a executar ações como `createSurface`,
+  `surfaceUpdate`, `dataModelUpdate` ou `deleteSurface`.
 
 `SurfaceController`
-: Handles the processing of `A2uiMessage`s,
-  manages the `DataModel`, and maintains the state of UI surfaces.
+: Cuida do processamento das `A2uiMessage`s,
+  gerencia o `DataModel` e mantém o estado das superfícies da UI.
 
 
-## How it works
+## Como funciona {:#how-it-works}
 
-The `Conversation` manages the interaction cycle:
+O `Conversation` gerencia o ciclo de interação:
 
- 1. **User input**
+ 1. **Entrada do usuário**
 
-    The user provides a prompt (for example, through a text field).
-    The app calls `conversation.sendMessage()`.
+    O usuário fornece um prompt (por exemplo, por meio de um campo de texto).
+    O app chama `conversation.sendMessage()`.
 
- 2. **AI invocation**
+ 2. **Invocação da IA**
 
-    The `Conversation` sends the user's message to the LLM SDK.
+    O `Conversation` envia a mensagem do usuário para o SDK do LLM.
 
- 3. **AI response**
+ 3. **Resposta da IA**
 
-    The LLM, guided by the widget schemas provided in its system prompt,
-    sends back responses.
+    O LLM, guiado pelos esquemas dos widgets fornecidos no seu prompt de sistema,
+    envia respostas de volta.
 
- 4. **Stream handling**
+ 4. **Tratamento do stream**
 
-    The text stream from the LLM SDK is fed into the `A2uiTransportAdapter`.
+    O stream de texto do SDK do LLM é alimentado no `A2uiTransportAdapter`.
 
- 5. **UI state update**
+ 5. **Atualização do estado da UI**
 
-    `A2uiMessages` parsed by the adapter are passed to
-    `SurfaceController.handleMessage()`, which updates
-    the UI state and `DataModel`.
+    As `A2uiMessage`s analisadas pelo adaptador são passadas para
+    `SurfaceController.handleMessage()`, que atualiza
+    o estado da UI e o `DataModel`.
 
- 6. **UI rendering**
+ 6. **Renderização da UI**
 
-    The `SurfaceController` broadcasts an update,
-    and any `Surface` widgets listening for that surface ID will rebuild.
-    Widgets are bound to the `DataModel`, so they update automatically
-    when their data changes.
+    O `SurfaceController` transmite uma atualização,
+    e qualquer widget `Surface` que escute esse ID de superfície é reconstruído.
+    Os widgets estão vinculados ao `DataModel`, então se atualizam automaticamente
+    quando os dados mudam.
 
  7. **Callbacks**
 
-    Text responses and errors trigger callbacks on the `Conversation` or
-    are handled by your specific LLM integration flow.
+    Respostas de texto e erros disparam callbacks no `Conversation` ou
+    são tratados pelo fluxo de integração específico do seu LLM.
 
- 8. **User interaction**
+ 8. **Interação do usuário**
 
-    The user interacts with the newly generated UI
-    (for example, by typing in a text field). This interaction directly
-    updates the `DataModel`. If the interaction is an action (like a button click),
-    the `Surface` captures the event and forwards it to the
-    `SurfaceController`, which automatically creates
-    a new `UserMessage` containing the current state of the data model
-    and restarts the cycle.
+    O usuário interage com a UI recém-gerada
+    (por exemplo, digitando em um campo de texto). Essa interação atualiza
+    diretamente o `DataModel`. Se a interação for uma ação (como um clique em
+    botão), o `Surface` captura o evento e o encaminha para o
+    `SurfaceController`, que cria automaticamente uma nova `UserMessage` com o
+    estado atual dos dados do modelo e reinicia o ciclo.
 
 {:.steps}
 
-For more detailed information on the implementation of GenUI SDK for Flutter,
-check out the [design doc][].
+Para informações mais detalhadas sobre a implementação do SDK GenUI para Flutter,
+confira o [documento de design][design doc].
 
-The next section walks you through adding `genui` to your app.
+A próxima seção mostra como adicionar o `genui` ao seu app.
 
 [design doc]: {{site.repo.organization}}/genui/blob/main/packages/genui/DESIGN.md
 [`genui`]: {{site.pub-pkg}}/genui

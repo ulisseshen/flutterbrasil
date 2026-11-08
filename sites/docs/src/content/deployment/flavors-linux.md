@@ -1,90 +1,90 @@
 ---
-title: Set up Flutter flavors for Linux
+ia-translate: true
+title: Configurar flavors Flutter para Linux
 shortTitle: Flavors (Linux)
 description: >-
-  How to create Flutter flavors for Linux desktop apps.
+  Como criar flavors Flutter para apps desktop Linux.
 ---
 
-This guide shows you how to create Flutter flavors for
-Linux desktop apps.
+Este guia mostra como criar flavors Flutter para
+apps desktop Linux.
 
 :::note
-To create app flavors for other platforms,
-visit the pages on setting up flavors for:
+Para criar flavors de app para outras plataformas,
+visite as páginas sobre como configurar flavors para:
 
-* [Android][]
-* [iOS and macOS][]
-* [Windows][]
+* [Android][Android]
+* [iOS e macOS][iOS and macOS]
+* [Windows][Windows]
 :::
 
-## Overview
+## Visão geral {:#overview}
 
-A Flutter flavor represents a collection of settings that define
-how a specific version of your app builds and runs.
-For example, a flavor can determine the window title,
-application ID, API endpoint, asset set, and logging configuration
-for a build.
+Um flavor Flutter representa um conjunto de configurações que definem
+como uma versão específica do seu app é compilada e executada.
+Por exemplo, um flavor pode determinar o título da janela,
+o ID do app, o endpoint da API, o conjunto de assets e a configuração de logs
+de um build.
 
 :::version-note
-Built-in support for flavors on Linux requires Flutter 3.47 or later.
+O suporte nativo a flavors no Linux requer o Flutter 3.47 ou posterior.
 :::
 
-On Linux, Flutter uses [CMake][] to configure and build
-the native desktop runner.
-When you run `flutter run` or `flutter build` with the `--flavor` flag,
-Flutter writes the flavor name into
-`linux/flutter/ephemeral/generated_config.cmake` as the
-`FLUTTER_APP_FLAVOR` variable, and isolates the build outputs
-in a flavor-specific directory.
+No Linux, o Flutter usa o [CMake][CMake] para configurar e compilar
+o runner nativo do desktop.
+Quando você executa `flutter run` ou `flutter build` com a flag `--flavor`,
+o Flutter grava o nome do flavor em
+`linux/flutter/ephemeral/generated_config.cmake`, como a
+variável `FLUTTER_APP_FLAVOR`, e isola os arquivos de saída do build
+em um diretório específico do flavor.
 
 :::important
-The `generated_config.cmake` file is included from
-`linux/flutter/CMakeLists.txt`, so `FLUTTER_APP_FLAVOR`
-only becomes visible in your top-level `CMakeLists.txt` **after**
-the `add_subdirectory(${FLUTTER_MANAGED_DIR})` line.
-Any `if(DEFINED FLUTTER_APP_FLAVOR)` block placed before that line
-is silently skipped.
+O arquivo `generated_config.cmake` é incluído a partir de
+`linux/flutter/CMakeLists.txt`, então `FLUTTER_APP_FLAVOR`
+só fica visível no seu `CMakeLists.txt` de nível superior **depois** da
+linha `add_subdirectory(${FLUTTER_MANAGED_DIR})`.
+Qualquer bloco `if(DEFINED FLUTTER_APP_FLAVOR)` colocado antes dessa linha
+é ignorado silenciosamente.
 :::
 
-The following table illustrates the build directories that Flutter creates
-when a project defines two flavors (`staging`, `production`)
-and two build modes (`debug`, `release`):
+A tabela a seguir ilustra os diretórios de build que o Flutter cria
+quando um projeto define dois flavors (`staging`, `production`)
+e dois modos de build (`debug`, `release`):
 
-| Flavor     | Build mode | Output directory                                     |
-|------------|------------|------------------------------------------------------|
-| staging    | debug      | `build/linux/<arch>/staging/debug/bundle/`           |
-| production | debug      | `build/linux/<arch>/production/debug/bundle/`        |
-| staging    | release    | `build/linux/<arch>/staging/release/bundle/`         |
-| production | release    | `build/linux/<arch>/production/release/bundle/`      |
+| Flavor     | Modo de build | Diretório de saída                                   |
+|------------|---------------|------------------------------------------------------|
+| staging    | debug         | `build/linux/<arch>/staging/debug/bundle/`           |
+| production | debug         | `build/linux/<arch>/production/debug/bundle/`        |
+| staging    | release       | `build/linux/<arch>/staging/release/bundle/`         |
+| production | release       | `build/linux/<arch>/production/release/bundle/`      |
 {:.table .table-striped}
 
 [CMake]: https://cmake.org/
 
-## Configure CMake for flavors (optional) {: #configure-cmake }
+## Configurar o CMake para flavors (opcional) {: #configure-cmake }
 
-Passing `--flavor` works on Linux without any project configuration.
-Existing Flutter projects support flavors with no template updates
-or configuration changes required.
-When you pass `--flavor`, Flutter isolates the build directory,
-populates `appFlavor`, and filters flavor-specific assets automatically.
+Passar `--flavor` funciona no Linux sem nenhuma configuração do projeto.
+Projetos Flutter existentes oferecem suporte a flavors sem precisar de
+atualizações de templates ou de alterações de configuração.
+Ao passar `--flavor`, o Flutter isola o diretório de build,
+preenche `appFlavor` e filtra os assets específicos do flavor automaticamente.
 
-Complete the following optional steps only if you want to
-differentiate the native runner per flavor—for example,
-its GTK application ID or window title.
-This example configures two flavors called `staging` and `production`.
+Siga os passos opcionais a seguir somente se quiser diferenciar o runner nativo
+por flavor, por exemplo, o ID de aplicação GTK ou o título da janela.
+Este exemplo configura dois flavors chamados `staging` e `production`.
 
-1.  Create a new Flutter project called `flavors_example`:
+1.  Crie um novo projeto Flutter chamado `flavors_example`:
 
     ```console
     $ flutter create flavors_example
     $ cd flavors_example
     ```
 
-1.  Configure flavor-specific application IDs in `linux/CMakeLists.txt`:
+1.  Configure IDs de aplicação específicos por flavor em `linux/CMakeLists.txt`:
 
-    Open `linux/CMakeLists.txt` and find the
-    `add_subdirectory(${FLUTTER_MANAGED_DIR})` line.
-    Set the `APPLICATION_ID` per flavor immediately after that line:
+    Abra `linux/CMakeLists.txt` e encontre a linha
+    `add_subdirectory(${FLUTTER_MANAGED_DIR})`.
+    Defina o `APPLICATION_ID` por flavor logo após essa linha:
 
     ```cmake title="linux/CMakeLists.txt"
     # Flutter library and tool build rules.
@@ -100,94 +100,93 @@ This example configures two flavors called `staging` and `production`.
     endif()
     ```
 
-    `APPLICATION_ID` must be configured after
-    `add_subdirectory(${FLUTTER_MANAGED_DIR})` because
-    `FLUTTER_APP_FLAVOR` only becomes available at this point,
-    and before `add_subdirectory("runner")` where `APPLICATION_ID` is consumed.
+    `APPLICATION_ID` deve ser configurado depois de
+    `add_subdirectory(${FLUTTER_MANAGED_DIR})`, porque
+    `FLUTTER_APP_FLAVOR` só fica disponível nesse ponto,
+    e antes de `add_subdirectory("runner")`, onde `APPLICATION_ID` é usado.
 
     :::important
-    Leave `set(BINARY_NAME ...)` unchanged.
-    The Flutter CLI resolves the executable path by parsing that line literally,
-    so renaming the binary per flavor prevents `flutter run`
-    from launching the app.
+    Não altere a linha `set(BINARY_NAME ...)`.
+    A CLI do Flutter resolve o caminho do executável lendo essa linha literalmente,
+    então renomear o binário por flavor impede que o `flutter run`
+    inicie o app.
     :::
 
-1.  Verify that your flavors run correctly:
+1.  Verifique se os seus flavors são executados corretamente:
 
-    Run the `staging` flavor:
+    Execute o flavor `staging`:
 
     ```console
     $ flutter run -d linux --flavor staging
     ```
 
-    Run the `production` flavor:
+    Execute o flavor `production`:
 
     ```console
     $ flutter run -d linux --flavor production
     ```
 
-## Launch a flavor
+## Iniciar um flavor {:#launch-a-flavor}
 
-After you configure flavors for your app,
-run, build, or test a specific flavor using the `--flavor` flag
-with the Flutter CLI.
+Depois de configurar os flavors do seu app,
+execute, compile ou teste um flavor específico usando a flag `--flavor`
+com a CLI do Flutter.
 
-### Run a flavor in debug mode {: #run-a-flavor }
+### Executar um flavor em modo debug {: #run-a-flavor }
 
-To run a specific flavor during development,
-pass the `--flavor` option to `flutter run`:
+Para executar um flavor específico durante o desenvolvimento,
+passe a opção `--flavor` para o `flutter run`:
 
 ```console
 $ flutter run -d linux --flavor <flavor_name>
 ```
 
-Replace `<flavor_name>` with the name of your flavor
-(for example, `staging` or `production`).
+Substitua `<flavor_name>` pelo nome do seu flavor
+(por exemplo, `staging` ou `production`).
 
-### Build a release binary {: #build-a-flavor }
+### Compilar um executável de release {: #build-a-flavor }
 
-To build a release executable for a specific flavor,
-pass the `--flavor` option to `flutter build`:
+Para compilar um executável de release para um flavor específico,
+passe a opção `--flavor` para o `flutter build`:
 
 ```console
 $ flutter build linux --flavor <flavor_name>
 ```
 
-Flutter outputs the compiled bundle to
+O Flutter gera o bundle compilado em
 `build/linux/<arch>/<flavor_name>/release/bundle/`.
 
-### Run tests with a flavor {: #test-a-flavor }
+### Executar testes com um flavor {: #test-a-flavor }
 
-The `--flavor` option also works with `flutter test` and `flutter drive`,
-allowing you to run unit, widget, or integration tests
-against a specific flavor configuration:
+A opção `--flavor` também funciona com `flutter test` e `flutter drive`,
+permitindo executar testes de unidade, de widget ou de integração
+em uma configuração de flavor específica:
 
 ```console
 $ flutter test --flavor <flavor_name>
 ```
 
-## Use flavors in Flutter code {: #use-flavors-in-code }
+## Usar flavors no código Flutter {: #use-flavors-in-code }
 
-After adding flavors,
-you can adjust app behavior—such as selecting API endpoints,
-toggling features, or setting analytics keys—based on the active flavor.
+Depois de adicionar flavors,
+você pode ajustar o comportamento do app, como selecionar endpoints de API,
+ativar ou desativar recursos ou definir chaves de analytics, com base no flavor ativo.
 
-The Flutter framework provides the
-`appFlavor` constant in the `services` library,
-which identifies the flavor used to run or build your app.
+O framework Flutter oferece a constante `appFlavor` na biblioteca `services`,
+que identifica o flavor usado para executar ou compilar o seu app.
 
-1.  **Import the services library:**
+1.  **Importe a biblioteca services:**
 
-    Add the following import to your Dart file:
+    Adicione o seguinte import ao seu arquivo Dart:
 
     ```dart
     import 'package:flutter/services.dart';
     ```
 
-1.  **Read the flavor value:**
+1.  **Leia o valor do flavor:**
 
-    Use the `appFlavor` constant in your application logic
-    (often in `main()`) to handle flavor-specific configuration:
+    Use a constante `appFlavor` na lógica do seu app
+    (geralmente em `main()`) para tratar a configuração específica do flavor:
 
     ```dart
     void main() {
@@ -202,26 +201,26 @@ which identifies the flavor used to run or build your app.
     ```
 
     :::note
-    The value of `appFlavor` matches the string passed to the `--flavor` flag.
-    If you omit `--flavor`,
-    `appFlavor` matches the [default flavor](#set-default-flavor)
-    configured in `pubspec.yaml`.
-    If neither is specified, `appFlavor` is `null`.
+    O valor de `appFlavor` corresponde à string passada para a flag `--flavor`.
+    Se você omitir `--flavor`,
+    `appFlavor` corresponde ao [flavor padrão](#set-default-flavor)
+    configurado no `pubspec.yaml`.
+    Se nenhum dos dois for especificado, `appFlavor` é `null`.
     :::
 
-## Customize configurations
+## Personalizar configurações {:#customize-configurations}
 
-After adding flavors,
-you can customize native settings and assets for each configuration.
+Depois de adicionar flavors,
+você pode personalizar configurações nativas e assets de cada configuração.
 
-### Create distinct window titles
+### Criar títulos de janela distintos {:#create-distinct-window-titles}
 
-To help distinguish between different flavors at runtime,
-customize the native window title for each flavor.
+Para ajudar a diferenciar os flavors em tempo de execução,
+personalize o título nativo da janela de cada flavor.
 
-1.  In `linux/runner/CMakeLists.txt`, pass `FLUTTER_APP_FLAVOR`
-    as a preprocessor definition directly after the existing
-    `APPLICATION_ID` definition:
+1.  Em `linux/runner/CMakeLists.txt`, passe `FLUTTER_APP_FLAVOR`
+    como uma definição de pré-processador logo após a definição
+    `APPLICATION_ID` existente:
 
     ```cmake title="linux/runner/CMakeLists.txt"
     # Add preprocessor definitions for the application ID.
@@ -232,8 +231,8 @@ customize the native window title for each flavor.
     endif()
     ```
 
-1.  In `linux/runner/my_application.cc`, update the window title
-    in the `my_application_activate` function:
+1.  Em `linux/runner/my_application.cc`, atualize o título da janela
+    na função `my_application_activate`:
 
     ```c title="linux/runner/my_application.cc"
       const gchar* window_title = "flavors_example";
@@ -246,8 +245,8 @@ customize the native window title for each flavor.
     #endif
     ```
 
-    Then update `my_application_activate` to use `window_title`
-    instead of the hardcoded string literals:
+    Em seguida, atualize `my_application_activate` para usar `window_title`
+    no lugar das strings literais fixas:
 
     ```c title="linux/runner/my_application.cc"
         gtk_header_bar_set_title(header_bar, window_title);
@@ -255,27 +254,27 @@ customize the native window title for each flavor.
         gtk_window_set_title(window, window_title);
     ```
 
-### Configure app icons
+### Configurar ícones do app {:#configure-app-icons}
 
-On Linux, application icons are not embedded directly in the compiled
-executable binary.
-Instead, the desktop environment resolves app icons through
-`.desktop` launcher files and installed icon themes.
+No Linux, os ícones dos apps não ficam incorporados diretamente no
+executável binário compilado.
+Em vez disso, o ambiente de desktop resolve os ícones por meio de
+arquivos de atalho `.desktop` e de temas de ícones instalados.
 
-To provide different icons or launcher entries for each flavor,
-configure your Linux package format—such as Snap, Flatpak, or Debian
-packages—to install distinct desktop entries and icon assets.
-To learn more about packaging Linux apps, refer to
-[Build and release a Linux desktop app][].
+Para oferecer ícones ou entradas de atalho diferentes para cada flavor,
+configure o formato do seu pacote Linux (como Snap, Flatpak ou pacotes Debian)
+para instalar entradas de desktop e assets de ícone distintos.
+Para saber mais sobre como empacotar apps Linux, consulte
+[Compile e publique um app desktop Linux][Build and release a Linux desktop app].
 
-### Bundle assets by flavor {: #bundle-assets }
+### Empacotar assets por flavor {: #bundle-assets }
 
-If you have assets that only apply to a specific flavor,
-configure Flutter to only bundle those assets when building that flavor.
-This prevents unused assets from increasing your application bundle size.
+Se você tiver assets que se aplicam apenas a um flavor específico,
+configure o Flutter para incluir esses assets somente ao compilar esse flavor.
+Isso evita que assets não usados aumentem o tamanho do bundle do seu app.
 
-To bundle assets conditionally,
-add the `flavors` list to an asset entry in `pubspec.yaml`:
+Para incluir assets condicionalmente,
+adicione a lista `flavors` a uma entrada de asset no `pubspec.yaml`:
 
 ```yaml title="pubspec.yaml"
 flutter:
@@ -289,36 +288,36 @@ flutter:
         - production
 ```
 
-To learn more, consult the [`assets` field][] in [Flutter pubspec options][].
+Para saber mais, consulte o [campo `assets`][`assets` field] em
+[opções do pubspec do Flutter][Flutter pubspec options].
 
 [`assets` field]: /tools/pubspec#assets
 [Flutter pubspec options]: /tools/pubspec
 
-### Set a default flavor {: #set-default-flavor }
+### Definir um flavor padrão {: #set-default-flavor }
 
-To specify a flavor to use when running or building
-without the `--flavor` flag,
-add the `default-flavor` property to `pubspec.yaml`:
+Para especificar um flavor a ser usado ao executar ou compilar
+sem a flag `--flavor`, adicione a propriedade `default-flavor` ao `pubspec.yaml`:
 
 ```yaml title="pubspec.yaml"
 flutter:
   default-flavor: staging
 ```
 
-To learn more, consult the [`default-flavor` field][] in
-[Flutter pubspec options][].
+Para saber mais, consulte o [campo `default-flavor`][`default-flavor` field] em
+[opções do pubspec do Flutter][Flutter pubspec options].
 
 [`default-flavor` field]: /tools/pubspec#default-flavor
 
-## More information
+## Mais informações {:#more-information}
 
-For more information on flavors and desktop deployment,
-consult the following resources:
+Para mais informações sobre flavors e deploy em desktop,
+consulte os recursos a seguir:
 
-* [Set up Flutter flavors for Android][Android]
-* [Set up Flutter flavors for iOS and macOS][iOS and macOS]
-* [Set up Flutter flavors for Windows][Windows]
-* [Build and release a Linux desktop app][]
+* [Configurar flavors Flutter para Android][Android]
+* [Configurar flavors Flutter para iOS e macOS][iOS and macOS]
+* [Configurar flavors Flutter para Windows][Windows]
+* [Compile e publique um app desktop Linux][Build and release a Linux desktop app]
 
 [Android]: /deployment/flavors
 [iOS and macOS]: /deployment/flavors-ios

@@ -1,3 +1,5 @@
+<!-- ia-translate: true -->
+
 ```plaintext
 flutter: RenderView#02c80
 flutter:  │ debug mode enabled - macos

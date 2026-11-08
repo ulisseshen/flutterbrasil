@@ -1,149 +1,148 @@
 ---
-title: Package dependency management
+ia-translate: true
+title: Gerenciamento de dependências de pacotes
 description: >-
-  Learn how Flutter and Dart resolve package dependencies,
-  and how to handle version conflicts.
+  Saiba como o Flutter e o Dart resolvem as dependências de pacotes
+  e como lidar com conflitos de versão.
 ---
 
-When you build a Flutter app,
-you often use external packages to add functionality.
-Each package can depend on other packages, creating a tree of dependencies.
-Understanding how Dart and Flutter manage these dependencies helps you
-resolve version conflicts and keep your app stable.
+Ao criar um app Flutter, você costuma usar pacotes externos para adicionar funcionalidades.
+Cada pacote pode depender de outros pacotes, criando uma árvore de dependências.
+Entender como o Dart e o Flutter gerenciam essas dependências ajuda você a
+resolver conflitos de versão e manter o seu app estável.
 
-## How dependency resolution works
+## Como funciona a resolução de dependências {:#how-dependency-resolution-works}
 
-Your Flutter project specifies dependencies in the `pubspec.yaml` file.
-When you run `flutter pub get`,
-the package manager resolves the dependencies and
-records the exact versions in the `pubspec.lock` file.
+O seu projeto Flutter especifica as dependências no arquivo `pubspec.yaml`.
+Quando você executa `flutter pub get`,
+o gerenciador de pacotes resolve as dependências e
+registra as versões exatas no arquivo `pubspec.lock`.
 
-### Direct and transitive dependencies
+### Dependências diretas e transitivas {:#direct-and-transitive-dependencies}
 
-A dependency can be direct or transitive:
+Uma dependência pode ser direta ou transitiva:
 
-**Direct dependencies**
-: The packages you explicitly list under the `dependencies` or
-  `dev_dependencies` section in your `pubspec.yaml` file.
+**Dependências diretas**
+: Os pacotes que você lista explicitamente nas seções `dependencies` ou
+  `dev_dependencies` do seu arquivo `pubspec.yaml`.
 
-**Transitive dependencies**
-: The packages that your direct dependencies depend on.
-  You don't list these packages in your `pubspec.yaml` file,
-  but your project requires them to compile.
+**Dependências transitivas**
+: Os pacotes dos quais as suas dependências diretas dependem.
+  Você não lista esses pacotes no seu arquivo `pubspec.yaml`,
+  mas o seu projeto precisa deles para compilar.
 
-### The pubspec.lock file
+### O arquivo pubspec.lock {:#the-pubspeclock-file}
 
-The `pubspec.lock` file contains the exact version of every direct and
-transitive dependency used in your project.
-This file ensures that every developer on your team, and your build servers,
-use the exact same package versions.
-Commit the `pubspec.lock` file to version control for application projects,
-but not for package projects.
+O arquivo `pubspec.lock` contém a versão exata de cada dependência direta e
+transitiva usada no seu projeto.
+Esse arquivo garante que todos os desenvolvedores da sua equipe e os seus servidores de build
+usem exatamente as mesmas versões dos pacotes.
+Faça commit do arquivo `pubspec.lock` no controle de versão para projetos de aplicativo,
+mas não para projetos de pacote.
 
-:::note Use version ranges, not exact versions
-Since `pubspec.lock` always pins exact versions for predictable builds,
-you should use ranges in your `pubspec.yaml` file
-(possibly using caret syntax described below).
-This allows the version solver to find
-compatible versions of transitive dependencies,
-and enables you to safely update dependencies using `flutter pub upgrade`.
+:::note Use intervalos de versão, não versões exatas
+Como o `pubspec.lock` sempre fixa versões exatas para builds previsíveis,
+você deve usar intervalos no seu arquivo `pubspec.yaml`
+(podendo usar a sintaxe caret descrita abaixo).
+Isso permite que o solucionador de versões encontre
+versões compatíveis das dependências transitivas
+e possibilita atualizar as dependências com segurança usando `flutter pub upgrade`.
 :::
 
-## The role of the version solver
+## O papel do solucionador de versões {:#the-role-of-the-version-solver}
 
-Unlike some package managers,
-the Dart package manager (`pub`) allows only a
-single version of any package in your app's compilation tree.
+Diferente de alguns gerenciadores de pacotes,
+o gerenciador de pacotes do Dart (`pub`) permite apenas uma
+única versão de qualquer pacote na árvore de compilação do seu app.
 
-This constraint exists for several reasons:
+Essa restrição existe por vários motivos:
 
-1.  **Type safety:**
-    If your app uses two versions of the same package,
-    you can get type mismatch errors.
-    For example, if `v1` and `v2` of a package both define a `User` class,
-    the Dart compiler treats them as two distinct types.
-    You can't pass a `v1.User` to a method expecting a `v2.User`.
-1.  **Binary size:**
-    Including multiple versions of the same package
-    increases the size of your application.
-1.  **Global state:**
-    Many packages use global variables or singletons.
-    Having multiple copies of the package can
-    lead to inconsistent state or bugs.
+1.  **Segurança de tipos:**
+    Se o seu app usar duas versões do mesmo pacote,
+    você pode receber erros de incompatibilidade de tipos.
+    Por exemplo, se `v1` e `v2` de um pacote definirem ambas uma classe `User`,
+    o compilador do Dart trata as duas como tipos distintos.
+    Você não pode passar um `v1.User` para um método que espera um `v2.User`.
+1.  **Tamanho do binário:**
+    Incluir várias versões do mesmo pacote
+    aumenta o tamanho do seu aplicativo.
+1.  **Estado global:**
+    Muitos pacotes usam variáveis globais ou singletons.
+    Ter várias cópias do pacote pode
+    levar a estado inconsistente ou bugs.
 
-The version solver's job is to look at all version constraints for
-your direct and transitive dependencies and find a
-single concrete version for each package that satisfies all constraints.
+O trabalho do solucionador de versões é analisar todas as restrições de versão das
+suas dependências diretas e transitivas e encontrar uma
+única versão concreta para cada pacote que satisfaça todas as restrições.
 
-## Understand version constraints
+## Entenda as restrições de versão {:#understand-version-constraints}
 
-When you declare a dependency in `pubspec.yaml`,
-you specify a version constraint.
-Dart packages use [Semantic Versioning][] (SemVer).
-A version number has three parts: `major.minor.patch` (for example, `2.1.4`).
+Ao declarar uma dependência no `pubspec.yaml`,
+você especifica uma restrição de versão.
+Os pacotes Dart usam [Versionamento Semântico][Semantic Versioning] (SemVer).
+Um número de versão tem três partes: `major.minor.patch` (por exemplo, `2.1.4`).
 
-You can define version constraints in your `pubspec.yaml` file
-using different syntaxes:
+Você pode definir restrições de versão no seu arquivo `pubspec.yaml`
+usando diferentes sintaxes:
 
 [Semantic Versioning]: https://semver.org/spec/v2.0.0-rc.1.html
 
-### Caret syntax
+### Sintaxe caret {:#caret-syntax}
 
-The caret syntax (`^`) is the most common way to define a version constraint.
-It tells the solver to use any version that is
-compatible with the specified version.
+A sintaxe caret (`^`) é a forma mais comum de definir uma restrição de versão.
+Ela instrui o solucionador a usar qualquer versão compatível com a versão especificada.
 
-* For stable versions (1.0.0 and higher),
-  the caret allows updates that don't change the major version:
-  * `^1.2.3` is equivalent to `>=1.2.3 <2.0.0`
-* For pre-release/pre-1.0.0 versions,
-  any change in the minor or patch version can introduce breaking changes.
-  Therefore, the caret constraint is more restrictive:
-  * `^0.8.0` is equivalent to `>=0.8.0 <0.9.0`
-  * `^0.0.3` is equivalent to `>=0.0.3 <0.0.4`
+* Para versões estáveis (1.0.0 e superiores),
+  o caret permite atualizações que não alteram a versão major:
+  * `^1.2.3` é equivalente a `>=1.2.3 <2.0.0`
+* Para versões pré-lançamento ou anteriores à 1.0.0,
+  qualquer mudança na versão minor ou patch pode introduzir mudanças incompatíveis.
+  Por isso, a restrição caret é mais restritiva:
+  * `^0.8.0` é equivalente a `>=0.8.0 <0.9.0`
+  * `^0.0.3` é equivalente a `>=0.0.3 <0.0.4`
 
-### Traditional ranges
+### Intervalos tradicionais {:#traditional-ranges}
 
-You can define explicit version ranges using comparison operators:
+Você pode definir intervalos de versão explícitos usando operadores de comparação:
 
 ```yaml
 dependencies:
   url_launcher: '>=5.4.0 <6.0.0'
 ```
 
-### Any version
+### Qualquer versão {:#any-version}
 
-If you don't specify a version constraint or use `any`,
-the solver can choose any version:
+Se você não especificar uma restrição de versão ou usar `any`,
+o solucionador pode escolher qualquer versão:
 
 ```yaml
 dependencies:
   url_launcher: any
 ```
 
-:::note Avoid using `any`
-We don't recommend using `any` because a future package update might
-introduce breaking changes that break your build.
+:::note Evite usar `any`
+Não recomendamos usar `any`, porque uma futura atualização do pacote pode
+introduzir mudanças incompatíveis que quebrem o seu build.
 :::
 
-## Understand dependency conflicts
+## Entenda os conflitos de dependência {:#understand-dependency-conflicts}
 
-A dependency conflict occurs when two packages in your dependency tree require
-incompatible versions of the same transitive dependency.
+Um conflito de dependência ocorre quando dois pacotes na sua árvore de dependências exigem
+versões incompatíveis da mesma dependência transitiva.
 
-Consider this example scenario:
+Considere este cenário de exemplo:
 
-1.  Your app depends on two direct dependencies: `package_a` and `package_b`.
-1.  `package_a` depends on `foo: ^1.0.0`.
-1.  `package_b` depends on `foo: ^2.0.0`.
+1.  O seu app depende de duas dependências diretas: `package_a` e `package_b`.
+1.  `package_a` depende de `foo: ^1.0.0`.
+1.  `package_b` depende de `foo: ^2.0.0`.
 
-![Version solver conflict](/assets/images/docs/development/packages-and-plugins/version-solver.png)
+![Conflito do solucionador de versões](/assets/images/docs/development/packages-and-plugins/version-solver.png)
 
-Because `foo` can't be both `^1.0.0` (which is `<2.0.0`) and
-`^2.0.0` (which is `>=2.0.0`), the version solver fails.
+Como `foo` não pode ser ao mesmo tempo `^1.0.0` (que é `<2.0.0`) e
+`^2.0.0` (que é `>=2.0.0`), o solucionador de versões falha.
 
-When you run `flutter pub get` or try to build the app,
-the solver prints an error message:
+Quando você executa `flutter pub get` ou tenta compilar o app,
+o solucionador exibe uma mensagem de erro:
 
 ```console
 Because every version of package_a depends on foo ^1.0.0 and
@@ -153,50 +152,48 @@ So, because my_app depends on both package_a ^1.0.0
 and package_b ^1.0.0, version solving failed.
 ```
 
-To read this error message, trace the conflict from the
-bottom up in the dependency graph:
+Para ler essa mensagem de erro, siga o conflito de baixo para cima no grafo de dependências:
 
-1.  Identify the conflicting package (`foo`).
-1.  Find which packages require conflicting versions.
-    For example, `package_a` requires `foo: ^1.0.0` and
-    `package_b` requires `foo: ^2.0.0`.
-1.  Check which direct dependencies pull in those conflicting packages.
-    For example, `my_app` depends on
-    both `package_a: ^1.0.0` and `package_b: ^1.0.0`.
+1.  Identifique o pacote em conflito (`foo`).
+1.  Descubra quais pacotes exigem versões conflitantes.
+    Por exemplo, `package_a` exige `foo: ^1.0.0` e
+    `package_b` exige `foo: ^2.0.0`.
+1.  Verifique quais dependências diretas trazem esses pacotes conflitantes.
+    Por exemplo, `my_app` depende de
+    `package_a: ^1.0.0` e `package_b: ^1.0.0`.
 
-## Resolve dependency conflicts
+## Resolva os conflitos de dependência {:#resolve-dependency-conflicts}
 
-You can use the following steps to resolve dependency conflicts.
+Você pode usar os passos a seguir para resolver conflitos de dependência.
 
-### Upgrade package versions
+### Atualize as versões dos pacotes {:#upgrade-package-versions}
 
-Before making manual changes, check if newer,
-compatible versions of your dependencies exist.
-Run the following command to upgrade your packages to the
-latest versions allowed by your `pubspec.yaml` constraints:
+Antes de fazer alterações manuais, verifique se existem versões mais novas e
+compatíveis das suas dependências.
+Execute o comando a seguir para atualizar os seus pacotes para as
+versões mais recentes permitidas pelas restrições do seu `pubspec.yaml`:
 
 ```bash
 flutter pub upgrade
 ```
 
-To see which packages have newer versions available beyond
-your current constraints, run:
+Para ver quais pacotes têm versões mais novas além das suas restrições atuais, execute:
 
 ```bash
 flutter pub outdated
 ```
 
-To upgrade to newer major versions,
-run `flutter pub upgrade --major-versions`.
-This command upgrades the constraints in your `pubspec.yaml` file
-to allow the latest resolvable versions, and then
-runs `flutter pub get` to retrieve those upgraded dependencies.
+Para atualizar para versões major mais novas,
+execute `flutter pub upgrade --major-versions`.
+Esse comando atualiza as restrições no seu arquivo `pubspec.yaml`
+para permitir as versões mais recentes resolvíveis e, em seguida,
+executa `flutter pub get` para obter essas dependências atualizadas.
 
-### Use dependency overrides
+### Use substituições de dependência {:#use-dependency-overrides}
 
-If no compatible versions exist because one of the packages hasn't been updated,
-you can force the version solver to use a specific version.
-Add a `dependency_overrides` section to your `pubspec.yaml` file:
+Se não existirem versões compatíveis porque um dos pacotes não foi atualizado,
+você pode forçar o solucionador de versões a usar uma versão específica.
+Adicione uma seção `dependency_overrides` ao seu arquivo `pubspec.yaml`:
 
 ```yaml
 dependencies:
@@ -207,38 +204,38 @@ dependency_overrides:
   foo: ^2.0.0
 ```
 
-This overrides all constraints for `foo` and
-forces the version solver to use `^2.0.0`.
+Isso substitui todas as restrições de `foo` e
+força o solucionador de versões a usar `^2.0.0`.
 
 :::warning
-Use dependency overrides only as a temporary fix.
-If the packages aren't actually compatible,
-bypassing the version solver can cause
-compilation errors or runtime crashes (such as `NoSuchMethodError`).
-Thoroughly test your app after applying an override.
+Use substituições de dependência apenas como uma correção temporária.
+Se os pacotes não forem realmente compatíveis,
+contornar o solucionador de versões pode causar
+erros de compilação ou falhas em tempo de execução (como `NoSuchMethodError`).
+Teste bem o seu app depois de aplicar uma substituição.
 :::
 
 :::note
-Dependency overrides only apply to the root package.
-If you're developing a package to publish to pub.dev,
-don't include `dependency_overrides` in your `pubspec.yaml` file because
-other projects that depend on your package will ignore them.
+As substituições de dependência se aplicam somente ao pacote raiz.
+Se você estiver desenvolvendo um pacote para publicar no pub.dev,
+não inclua `dependency_overrides` no seu arquivo `pubspec.yaml`, porque
+outros projetos que dependem do seu pacote vão ignorá-las.
 :::
 
-### Support the ecosystem
+### Apoie o ecossistema {:#support-the-ecosystem}
 
-If a package is unmaintained or slow to update,
-you can help resolve the issue:
+Se um pacote não tem mais manutenção ou é lento para ser atualizado,
+você pode ajudar a resolver o problema:
 
-1.  **File an issue:**
-    Search the package's repository for existing issues or
-    file a new issue to notify the maintainer.
-1.  **Submit a pull request:**
-    If you can fix the conflict, fork the package repository,
-    update the constraints, and submit a pull request.
-1.  **Use a git or path dependency:**
-    While waiting for the maintainer to merge your pull request,
-    you can point your `pubspec.yaml` to your fork or a local copy:
+1.  **Abra uma issue:**
+    Pesquise no repositório do pacote por issues existentes ou
+    abra uma nova issue para avisar o mantenedor.
+1.  **Envie um pull request:**
+    Se você puder corrigir o conflito, faça um fork do repositório do pacote,
+    atualize as restrições e envie um pull request.
+1.  **Use uma dependência git ou de caminho:**
+    Enquanto aguarda o mantenedor aceitar o seu pull request,
+    você pode apontar o seu `pubspec.yaml` para o seu fork ou para uma cópia local:
 
     ```yaml
     dependencies:
@@ -248,14 +245,14 @@ you can help resolve the issue:
           ref: update-foo-dependency
     ```
 
-## Learn more
+## Saiba mais {:#learn-more}
 
-For more information on how Dart manages dependencies,
-see the following resources:
+Para mais informações sobre como o Dart gerencia dependências,
+consulte os recursos a seguir:
 
-* [Package versioning][] on dart.dev
-* [Pub dependencies][] on dart.dev
-* [Dependency overrides][] on dart.dev
+* [Versionamento de pacotes][Package versioning] no dart.dev
+* [Dependências do pub][Pub dependencies] no dart.dev
+* [Substituições de dependência][Dependency overrides] no dart.dev
 
 [Dependency overrides]: {{site.dart-site}}/tools/pub/dependencies#dependency-overrides
 [Package versioning]: {{site.dart-site}}/tools/pub/versioning

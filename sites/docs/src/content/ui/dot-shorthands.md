@@ -1,28 +1,29 @@
 ---
-title: "Dot shorthands in Flutter"
-description: "Learn how to use Dart's dot shorthands to write cleaner, concise Flutter code."
+ia-translate: true
+title: "Atalhos de ponto no Flutter"
+description: "Saiba como usar os atalhos de ponto do Dart para escrever código Flutter mais limpo e conciso."
 ---
 
-The **dot shorthands** feature allows you to omit the explicit type when
-accessing static members, constructors, or enum values, provided the compiler
-can infer the type from the surrounding context.
+O recurso de **atalhos de ponto** permite omitir o tipo explícito ao acessar
+membros estáticos, construtores ou valores de enum, desde que o compilador
+consiga inferir o tipo a partir do contexto ao redor.
 
 :::note
-For a technical overview of this feature, refer to the
-[Dot Shorthands guide](https://dart.dev/language/dot-shorthands) in the Dart
-documentation.
+Para uma visão técnica desse recurso, consulte o [guia de Atalhos de ponto](https://dart.dev/language/dot-shorthands)
+na documentação do Dart.
 :::
 
-## Why dot shorthands matter
+## Por que os atalhos de ponto importam {:#why-dot-shorthands-matter}
 
-Building layouts in Flutter often involves deeply nested widget trees.
-Historically, this meant repeatedly typing explicit class and enum names for
-properties like colors, typography, and alignment. Dot shorthands reduces this
-boilerplate, making your code easier to read and faster to write.
+Construir layouts no Flutter costuma envolver árvores de widgets profundamente
+aninhadas. Historicamente, isso significava digitar repetidamente nomes explícitos
+de classes e enums para propriedades como cores, tipografia e alinhamento.
+Os atalhos de ponto reduzem esse código repetitivo, tornando o código mais fácil
+de ler e mais rápido de escrever.
 
-Here is a side-by-side comparison of building a simple `Container`:
+Veja uma comparação lado a lado da construção de um `Container` simples:
 
-### Without dot shorthands
+### Sem atalhos de ponto {:#without-dot-shorthands}
 ```dart
 Container(
   alignment: Alignment.center,
@@ -42,7 +43,7 @@ Container(
 );
 ```
 
-### With dot shorthands
+### Com atalhos de ponto {:#with-dot-shorthands}
 ```dart
 Container(
   alignment: .center, // Instead of Alignment.center,
@@ -62,22 +63,22 @@ Container(
 );
 ```
 
-## Where to use dot shorthands
+## Onde usar atalhos de ponto {:#where-to-use-dot-shorthands}
 
-Dot shorthands work anywhere the Dart compiler has a clear "context type",
-meaning it knows exactly what type it expects. In Flutter, this is almost
-everywhere inside a widget's property list. 
+Os atalhos de ponto funcionam em qualquer lugar em que o compilador do Dart tenha
+um "tipo de contexto" claro, ou seja, saiba exatamente qual tipo espera.
+No Flutter, isso acontece quase sempre dentro da lista de propriedades de um widget.
 
-The most common targets for dot shorthands in Flutter are:
+Os alvos mais comuns de atalhos de ponto no Flutter são:
 
 *   **Enums**: `MainAxisAlignment`, `CrossAxisAlignment`, `BoxFit`, `TextDirection`.
-*   **Static properties and methods**: `FontWeight` (constants like `.bold`). 
-*   **Constructors**: `EdgeInsets.all()`, `BorderRadius.circular()`.
+*   **Propriedades e métodos estáticos**: `FontWeight` (constantes como `.bold`).
+*   **Construtores**: `EdgeInsets.all()`, `BorderRadius.circular()`.
 
-### Example: enums
+### Exemplo: enums {:#example-enums}
 
-When a property expects an `enum`, such as `mainAxisAlignment`, you can omit the
-enum's name and just provide the value preceded by a dot (`.`):
+Quando uma propriedade espera um `enum`, como `mainAxisAlignment`, você pode omitir
+o nome do enum e fornecer apenas o valor precedido por um ponto (`.`):
 
 ```dart
 Row(
@@ -86,9 +87,10 @@ Row(
 )
 ```
 
-### Example: static properties
+### Exemplo: propriedades estáticas {:#example-static-properties}
 
-Static properties work when the context type is exactly the class that defines the property. A common example is text styling with `FontWeight`:
+Propriedades estáticas funcionam quando o tipo de contexto é exatamente a classe
+que define a propriedade. Um exemplo comum é a estilização de texto com `FontWeight`:
 
 ```dart
 Text(
@@ -99,9 +101,12 @@ Text(
 )
 ```
 
-### Example: constructors
+### Exemplo: construtores {:#example-constructors}
 
-You can also use dot shorthands for named constructors. Many Flutter layout properties accept a base class like `EdgeInsetsGeometry`. To support dot shorthands, Flutter adds redirecting constructors to these base classes that point to the appropriate subclasses.
+Você também pode usar atalhos de ponto para construtores nomeados. Muitas propriedades
+de layout do Flutter aceitam uma classe base como `EdgeInsetsGeometry`. Para oferecer
+suporte a atalhos de ponto, o Flutter adiciona construtores de redirecionamento a essas
+classes base que apontam para as subclasses apropriadas.
 
 ```dart
 Padding(
@@ -110,8 +115,8 @@ Padding(
 )
 ```
 
-You can even use `.new` to call an unnamed constructor, though this is less
-common in standard widget trees:
+Você pode até usar `.new` para chamar um construtor sem nome, embora isso seja
+menos comum em árvores de widgets padrão:
 
 ```dart
 class _MyState extends State<MyWidget> {

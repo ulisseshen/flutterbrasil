@@ -1,3 +1,5 @@
+<!-- ia-translate: true -->
+
 ```plaintext
 flutter: WidgetsFlutterBinding - DEBUG MODE
 flutter: [root](renderObject: RenderView#06beb)

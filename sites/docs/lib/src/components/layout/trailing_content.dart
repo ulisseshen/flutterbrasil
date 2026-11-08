@@ -28,6 +28,7 @@ class TrailingContent extends StatelessComponent {
     final sourceInfo = page.sourceInfo;
     final issueUrl = sourceInfo.issueUrl;
     final pageSource = sourceInfo.sourceUrl;
+    final translationIssueUrl = sourceInfo.translationIssueUrl;
 
     return div(
       id: 'trailing-content',
@@ -38,32 +39,55 @@ class TrailingContent extends StatelessComponent {
         p(id: 'page-github-links', [
           span([
             .text(
-              'Unless stated otherwise, the documentation on '
-              'this site reflects Flutter $documentedFlutterVersion. ',
+              'A menos que indicado de outra forma, a documentação neste '
+              'site reflete o Flutter $documentedFlutterVersion. ',
             ),
             if (pageDate != null)
               .text(
-                'Page last updated on $pageDate. ',
+                'Página atualizada pela última vez em $pageDate. ',
               ),
           ]),
           if (pageSource != null) ...[
             a(
               href: pageSource,
               attributes: const {'target': '_blank', 'rel': 'noopener'},
-              const [.text('View source')],
+              const [.text('Ver código-fonte')],
             ),
-            const span([.text(' or ')]),
+            const span([.text(' ou ')]),
           ],
           a(
             href: issueUrl,
             attributes: {
-              'title': 'Report an issue with this page',
+              'title': 'Relatar um problema com esta página',
               'target': '_blank',
               'rel': 'noopener',
             },
-            [.text(pageSource == null ? 'Report an issue' : 'report an issue')],
+            [
+              .text(
+                pageSource == null ? 'Relatar um problema' : 'relatar um problema',
+              ),
+            ],
           ),
           const .text('.'),
+        ]),
+
+        p(id: 'translation-helper', [
+          const .text(
+            'Encontrou essa página sem tradução ou que precisa de correção? ',
+          ),
+          a(
+            href: translationIssueUrl,
+            attributes: const {
+              'target': '_blank',
+              'rel': 'noopener',
+              'title': 'Abrir uma issue de tradução no GitHub',
+            },
+            const [.text('Abra uma issue')],
+          ),
+          const .text(
+            ' e nos ajude a manter esse site em PT-BR para ajudar pessoas '
+            'como você.',
+          ),
         ]),
       ],
     );

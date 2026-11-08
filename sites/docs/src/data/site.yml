@@ -1,16 +1,16 @@
 title: Flutter
-name: Flutter docs
-url: https://docs.flutter.dev
+name: Flutter docs (Flutter Brasil)
+url: https://docs.flutterbrasil.dev
 description: >-
-  Official documentation for learning Flutter and using it to
-  build multiplatform apps, with guides, tutorials, examples, and references.
-main-url: https://flutter.dev
+  Documentação do Flutter em português para aprender Flutter e usá-lo para
+  criar apps multiplataforma, com guias, tutoriais, exemplos e referências.
+main-url: https://flutterbrasil.dev
 
 showBanner: true
 
 repo:
-  organization: https://github.com/flutter
-  this: https://github.com/flutter/website
+  organization: https://github.com/ulisseshen
+  this: https://github.com/ulisseshen/flutterbrasil
   flutter: https://github.com/flutter/flutter
   rfc: https://github.com/flutter/rfc
   games: https://github.com/flutter/games
@@ -24,14 +24,14 @@ repo:
   uxr: https://github.com/flutter/uxr
   wonderous: https://github.com/gskinnerTeam/flutter-wonderous-app
 dart:
-  api: https://api.dart.dev
+  api: https://api.dartbrasil.dev
 social:
   twitter: https://twitter.com/FlutterDev
   youtube: https://www.youtube.com/@flutterdev
 cupertino_ui: https://pub.dev/documentation/cupertino_ui/latest/cupertino_ui
-dart-site: https://dart.dev
-api: https://api.flutter.dev
-main-api: https://main-api.flutter.dev
+dart-site: https://dartbrasil.dev
+api: https://api.flutterbrasil.dev
+main-api: https://main-api.flutterbrasil.dev
 pub: https://pub.dev
 pub-api: https://pub.dev/documentation
 pub-pkg: https://pub.dev/packages

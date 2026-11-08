@@ -23,13 +23,14 @@ jobs:
       - name: Setup Dart
         uses: dart-lang/setup-dart@v1
         with:
-          sdk: beta
+          # Mesma versão usada pelo upstream em .github/workflows/docs.yml.
+          sdk: 3.14.0-315.3.beta
 
       - name: Fetch Dart dependencies
         run: dart pub get
 
       - name: Build site
-        run: dart run dash_site build
+        run: dart run dash_site --site=docs build
 
       - name: Deploy to Firebase Hosting Preview Channel
         id: firebase-deploy
@@ -40,6 +41,7 @@ jobs:
           channelId: pr-${{ github.event.pull_request.number }}
           expires: 7d
           target: docs-flutterbrasil
+          entryPoint: sites/docs
 
       - name: Comentar PR com link de preview
         uses: actions/github-script@v7

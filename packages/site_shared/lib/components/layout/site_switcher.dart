@@ -28,7 +28,7 @@ final class SiteSwitcher extends StatelessComponent {
             if (isFlutter) ...[
               const _SiteWordMarkListEntry(
                 name: 'Flutter',
-                href: 'https://flutter.dev',
+                href: 'https://flutterbrasil.dev',
               ),
               _SiteWordMarkListEntry(
                 name: 'Flutter',
@@ -39,7 +39,7 @@ final class SiteSwitcher extends StatelessComponent {
               const _SiteWordMarkListEntry(
                 name: 'Flutter',
                 subtype: 'API',
-                href: 'https://api.flutter.dev',
+                href: 'https://api.flutterbrasil.dev',
               ),
               const _SiteWordMarkListEntry(
                 name: 'Flutter',
@@ -50,7 +50,7 @@ final class SiteSwitcher extends StatelessComponent {
             ],
             _SiteWordMarkListEntry(
               name: 'Dart',
-              href: 'https://dart.dev',
+              href: 'https://dartbrasil.dev',
               dart: true,
               current: !isFlutter,
             ),

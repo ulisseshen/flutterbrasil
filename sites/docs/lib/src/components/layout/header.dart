@@ -53,22 +53,22 @@ class DashHeader extends StatelessComponent {
         ul(classes: 'nav-items', [
           _NavItem(
             href: '/',
-            label: 'Guides',
+            label: 'Guias',
             isActive: activeEntry == ActiveNavEntry.home,
           ),
           _NavItem(
             href: '/learn/pathway',
-            label: 'Learn',
+            label: 'Aprender',
             isActive: activeEntry == ActiveNavEntry.learn,
           ),
           _NavItem(
             href: '/ai/get-started',
-            label: 'AI',
+            label: 'IA',
             isActive: activeEntry == ActiveNavEntry.ai,
           ),
           const _NavItem(
-            href: 'https://api.flutter.dev',
-            label: 'Reference',
+            href: 'https://api.flutterbrasil.dev',
+            label: 'Referência',
             openInNewTab: true,
           ),
         ]),
@@ -87,8 +87,8 @@ class DashHeader extends StatelessComponent {
                   id: 'q',
                   attributes: {
                     'autocomplete': 'off',
-                    'placeholder': 'Search',
-                    'aria-label': 'Search',
+                    'placeholder': 'Pesquisar',
+                    'aria-label': 'Pesquisar',
                   },
                 ),
               ],

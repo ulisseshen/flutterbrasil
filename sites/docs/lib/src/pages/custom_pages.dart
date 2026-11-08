@@ -28,7 +28,7 @@ MemoryPage get _glossaryPage => MemoryPage.builder(
       'showBreadcrumbs': false,
       'description':
           'A glossary reference for terminology '
-          'used across docs.flutter.dev.',
+          'used across docs.flutterbrasil.dev.',
       'dateModifiedSources': ['src/data/glossary.yml'],
       'showToc': false,
       'bodyClass': 'glossary-page',

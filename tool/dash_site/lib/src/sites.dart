@@ -9,10 +9,10 @@ import 'package:path/path.dart' as path;
 enum Site {
   /// The Flutter documentation site.
   docs(
-    host: 'docs.flutter.dev',
+    host: 'docs.flutterbrasil.dev',
     contentPathSegments: ['src', 'content'],
     firebaseEmulatorPort: 5502,
-    defaultFirebaseProjectId: 'flutter-docs-prod',
+    defaultFirebaseProjectId: 'docs-flutterbrasil',
     supportsCodeExcerpts: true,
   ),
 

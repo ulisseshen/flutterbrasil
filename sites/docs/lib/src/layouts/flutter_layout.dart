@@ -24,7 +24,7 @@ abstract class FlutterDocsLayout extends DashLayout {
   String get name;
 
   @override
-  String get siteHost => 'docs.flutter.dev';
+  String get siteHost => 'docs.flutterbrasil.dev';
   @override
   String get iconUrl => '/assets/images/branding/flutter/icon/64.png';
   @override

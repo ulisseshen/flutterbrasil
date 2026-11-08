@@ -131,10 +131,10 @@ Nesta seção, crie o esqueleto do código básico do app Flutter para iniciar s
    import 'package:material_ui/material_ui.dart';
    
    void main() => runApp(const MyApp());
-
+   
    class MyApp extends StatelessWidget {
      const MyApp({super.key});
-
+   
      @override
      Widget build(BuildContext context) {
        const String appTitle = 'Flutter layout demo';

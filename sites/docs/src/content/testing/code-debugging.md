@@ -673,7 +673,7 @@ segmentos arbitrários de código Dart, use os utilitários [Timeline][Timeline]
     <?code-excerpt "lib/perf_trace.dart"?>
     ```dart
     import 'dart:developer';
-
+    
     void main() {
       Timeline.startSync('interesting function');
       // iWonderHowLongThisTakes();

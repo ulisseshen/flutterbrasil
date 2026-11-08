@@ -379,19 +379,19 @@ Para usar este package:
     void main() {
       runApp(const MyApp());
     }
-
+    
     class MyApp extends StatelessWidget {
       const MyApp({super.key});
-
+    
       @override
       Widget build(BuildContext context) {
         return const MaterialApp(home: DemoPage());
       }
     }
-
+    
     class DemoPage extends StatelessWidget {
       const DemoPage({super.key});
-
+    
       @override
       Widget build(BuildContext context) {
         return Scaffold(
@@ -438,27 +438,27 @@ Para usar este plugin:
     ```dart
     import 'package:material_ui/material_ui.dart';
     import 'package:url_launcher/url_launcher.dart';
-
+    
     void main() {
       runApp(const MyApp());
     }
-
+    
     class MyApp extends StatelessWidget {
       const MyApp({super.key});
-
+    
       @override
       Widget build(BuildContext context) {
         return const MaterialApp(home: DemoPage());
       }
     }
-
+    
     class DemoPage extends StatelessWidget {
       const DemoPage({super.key});
-
+    
       void launchURL() {
         launchUrl(Uri.parse('https://flutterbrasil.dev'));
       }
-
+    
       @override
       Widget build(BuildContext context) {
         return Scaffold(

@@ -1485,7 +1485,7 @@ no exemplo anterior.
 
 <?code-excerpt "lib/main.dart (Example9)" replace="/(return |;)//g"?>
 ```dart
- ConstrainedBox(
+ConstrainedBox(
   constraints: const BoxConstraints(
     minWidth: 70,
     minHeight: 70,

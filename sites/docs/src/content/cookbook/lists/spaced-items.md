@@ -51,7 +51,7 @@ mesmo quando o container pai é muito pequeno.
 
 <?code-excerpt "lib/spaced_list.dart (builder)"?>
 ```dart
- LayoutBuilder(
+LayoutBuilder(
   builder: (context, constraints) {
     return SingleChildScrollView(child: Placeholder());
   },
@@ -75,7 +75,7 @@ ou seja, a altura máxima das [`BoxConstraints`][`BoxConstraints`].
 
 <?code-excerpt "lib/spaced_list.dart (constrainedBox)"?>
 ```dart
- LayoutBuilder(
+LayoutBuilder(
   builder: (context, constraints) {
     return SingleChildScrollView(
       child: ConstrainedBox(
@@ -101,7 +101,7 @@ defina o `mainAxisAlignment` como `MainAxisAlignment.spaceBetween`.
 
 <?code-excerpt "lib/spaced_list.dart (column)"?>
 ```dart
- LayoutBuilder(
+LayoutBuilder(
   builder: (context, constraints) {
     return SingleChildScrollView(
       child: ConstrainedBox(
@@ -130,7 +130,7 @@ em vez de expandir infinitamente.
 
 <?code-excerpt "lib/spaced_list.dart (intrinsic)"?>
 ```dart
- LayoutBuilder(
+LayoutBuilder(
   builder: (context, constraints) {
     return SingleChildScrollView(
       child: ConstrainedBox(

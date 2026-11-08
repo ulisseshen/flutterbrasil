@@ -209,15 +209,15 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      // Alimentar um FutureBuilder para sua árvore de widgets.
+      // Feed a FutureBuilder to your widget tree.
       child: FutureBuilder<Weather>(
-        // Especificar o Future que você deseja rastrear.
+        // Specify the Future that you want to track.
         future: viewModel.load(),
         builder: (context, snapshot) {
-          // Um snapshot é do tipo `AsyncSnapshot` e contém o
-          // estado do Future. Ao verificar se o snapshot contém
-          // um erro ou se os dados são nulos, você pode decidir o que
-          // mostrar ao usuário.
+          // A snapshot is of type `AsyncSnapshot` and contains the
+          // state of the Future. By looking if the snapshot contains
+          // an error or if the data is null, you can decide what to
+          // show to the user.
           if (snapshot.hasData) {
             return Center(child: Text(snapshot.data.toString()));
           } else {

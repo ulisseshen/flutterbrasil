@@ -58,7 +58,7 @@ e constrói uma nova subárvore de `Widget`.
 
 <?code-excerpt "lib/main.dart (declarative)"?>
 ```dart
-// Estilo declarativo
+// Declarative style
 return ViewB(color: red, child: const ViewC());
 ```
 

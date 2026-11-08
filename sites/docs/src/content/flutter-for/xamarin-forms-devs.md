@@ -1630,7 +1630,7 @@ No Flutter existem duas maneiras muito similares:
    ```dart
    class SampleApp extends StatelessWidget {
      const SampleApp({super.key});
-
+   
      @override
      Widget build(BuildContext context) {
        return Scaffold(

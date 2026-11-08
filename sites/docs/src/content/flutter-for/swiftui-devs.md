@@ -684,9 +684,9 @@ com duas classes que ajudam você a desenhar:
     ```dart dartpad="978d64ee66d54177fb639f8a9f801039"
     class SignaturePainter extends CustomPainter {
       SignaturePainter(this.points);
-
+    
       final List<Offset?> points;
-
+    
       @override
       void paint(Canvas canvas, Size size) {
         final Paint paint = Paint()
@@ -699,7 +699,7 @@ com duas classes que ajudam você a desenhar:
           }
         }
       }
-
+    
       @override
       bool shouldRepaint(SignaturePainter oldDelegate) =>
           oldDelegate.points != points;
@@ -751,10 +751,10 @@ chame suas rotas de navegação usando seus nomes.
     // Defines the route name as a constant
     // so that it's reusable.
     const detailsPageRouteName = '/details';
-
+    
     class App extends StatelessWidget {
       const App({super.key});
-
+    
       @override
       Widget build(BuildContext context) {
         return CupertinoApp(
@@ -804,7 +804,7 @@ chame suas rotas de navegação usando seus nomes.
     ```dart dartpad="d8b22d4dcbefdc8a2e21f1382cf7dc2a"
     class DetailsPage extends StatelessWidget {
       const DetailsPage({super.key});
-
+    
       @override
       Widget build(BuildContext context) {
         // Read the person instance from the arguments.

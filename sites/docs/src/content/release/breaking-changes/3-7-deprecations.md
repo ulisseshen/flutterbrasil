@@ -1,15 +1,15 @@
 ---
-title: API obsoleta removida após v3.7
+ia-translate: true
+title: API descontinuada removida após v3.7
 description: >
-  Após atingir o fim da vida útil, as seguintes APIs obsoletas
+  Após atingir o fim da vida útil, as seguintes APIs descontinuadas
   foram removidas do Flutter.
 ---
-ia-translate: true
 
-## Resumo
+## Resumo {:#summary}
 
 De acordo com a [Política de Obsolescência][Deprecation Policy] do Flutter,
-APIs obsoletas que atingiram o fim da vida útil após o
+APIs descontinuadas que atingiram o fim da vida útil após o
 lançamento estável 3.7 foram removidas.
 
 Todas as APIs afetadas foram compiladas nesta
@@ -19,16 +19,16 @@ fonte primária para auxiliar na migração. Uma
 [Deprecation Policy]: {{site.repo.flutter}}/blob/main/docs/contributing/Tree-hygiene.md#deprecations
 [quick reference sheet]: /go/deprecations-removed-after-3-7
 
-## Mudanças
+## Mudanças {:#changes}
 
-Esta seção lista as obsolescências, listadas pela classe afetada.
+Esta seção lista as descontinuações, agrupadas pela classe afetada.
 
-### `GestureRecognizer.kind` & subclasses
+### `GestureRecognizer.kind` & subclasses {:#gesturerecognizerkind-subclasses}
 
 Suportado pelo Flutter Fix: sim
 
-`GestureRecognizer.kind` foi obsoleto em v2.3.
-Use `GestureRecognizer.supportedDevices` em vez disso.
+`GestureRecognizer.kind` foi descontinuado na v2.3.
+Use `GestureRecognizer.supportedDevices` no lugar.
 
 Esta mesma mudança afeta todas as subclasses de `GestureRecognizer`:
 
@@ -49,10 +49,10 @@ Esta mesma mudança afeta todas as subclasses de `GestureRecognizer`:
 * `PrimaryPointerGestureRecognizer`
 * `ScaleGestureRecognizer`
 
-This change allowed for multiple devices to be recognized for a gesture, rather
-than the single option `kind` provided.
+Essa mudança permitiu que múltiplos dispositivos fossem reconhecidos para um
+gesto, em vez da opção única fornecida por `kind`.
 
-**Migration guide**
+**Guia de migração**
 
 Código antes da migração:
 
@@ -71,7 +71,7 @@ var myRecognizer = GestureRecognizer(
 
 ```
 
-**References**
+**Referências**
 
 Documentação da API:
 
@@ -95,7 +95,7 @@ Documentação da API:
 
 PRs relevantes:
 
-* Obsoleto em [#81858][]
+* Descontinuado em [#81858][]
 * Removido em [#119572][]
 
 [`GestureRecognizer`]: {{site.api}}/flutter/gestures/GestureRecognizer-class.html
@@ -122,26 +122,27 @@ PRs relevantes:
 
 ---
 
-### `ThemeData` `accentColor`, `accentColorBrightness`, `accentColorTextTheme`, `accentColorIconTheme`, and `buttonColor`
+### `ThemeData` `accentColor`, `accentColorBrightness`, `accentColorTextTheme`, `accentColorIconTheme`, e `buttonColor` {:#themedata-accentcolor-accentcolorbrightness-accentcolortexttheme-accentcoloricontheme-and-buttoncolor}
 
 Suportado pelo Flutter Fix: sim
 
-The `accentColor`, `accentColorBrightness`, `accentColorTextTheme`,
-`accentColorIconTheme`, and `buttonColor` properties of `ThemeData` were
-deprecated in v2.3.
+As propriedades `accentColor`, `accentColorBrightness`, `accentColorTextTheme`,
+`accentColorIconTheme` e `buttonColor` de `ThemeData` foram descontinuadas na
+v2.3.
 
-This change better aligned `ThemeData` with Material Design guidelines. It also
-created more clarity in theming by relying either on the core color scheme or
-individual component themes for desired styling.
+Essa mudança alinhou melhor `ThemeData` às diretrizes do Material Design. Também
+trouxe mais clareza à customização de temas, passando a depender do esquema de
+cores principal ou dos temas de componentes individuais para a estilização
+desejada.
 
-The `accentColorBrightness`, `accentColorTextTheme`,
-`accentColorIconTheme`, and `buttonColor` are no longer used by the framework.
-References should be removed.
+As propriedades `accentColorBrightness`, `accentColorTextTheme`,
+`accentColorIconTheme` e `buttonColor` não são mais usadas pelo framework.
+Referências a elas devem ser removidas.
 
-Uses of `ThemeData.accentColor` should be replaced with
+Usos de `ThemeData.accentColor` devem ser substituídos por
 `ThemeData.colorScheme.secondary`.
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
 Código antes da migração:
 
@@ -169,9 +170,9 @@ var myTheme = ThemeData(
 var color = myTheme.colorScheme.secondary;
 ```
 
-**References**
+**Referências**
 
-* [Accent color migration guide][]
+* [Guia de migração cor de destaque][Accent color migration guide]
 
 Documentação da API:
 
@@ -187,13 +188,13 @@ Issues relevantes:
 
 PRs relevantes:
 
-Deprecated in:
+Descontinuado em:
 
 * [#92822][]
 * [#81336][]
 * [#85144][]
 
-Removed in:
+Removido em:
 
 * [#118658][]
 * [#119360][]
@@ -217,24 +218,24 @@ Removed in:
 
 ---
 
-### `AppBar`, `SliverAppBar`, and `AppBarTheme` updates
+### Atualizações de `AppBar`, `SliverAppBar` e `AppBarTheme` {:#appbar-sliverappbar-and-appbartheme-updates}
 
 Suportado pelo Flutter Fix: sim
 
-In v2.4, several changes were made to the app bar classes and their themes to
-better align with Material Design. Several properties were deprecated at that
-time and have been removed.
+Na v2.4, várias mudanças foram feitas nas classes de app bar e em seus temas
+para se alinhar melhor ao Material Design. Algumas propriedades foram
+descontinuadas naquele momento e agora foram removidas.
 
-For `AppBar`, `SliverAppBar` and `AppBarTheme`:
+Para `AppBar`, `SliverAppBar` e `AppBarTheme`:
 
-* `brightness` has been removed, and is replaced by `systemOverlayStyle`
-* `textTheme` has been removed, and is replaced by either `toolbarTextStyle` or `titleTextStyle`.
-* `backwardsCompatibility` can be removed, as it was a temporary migration flag for these properties.
+* `brightness` foi removido e substituído por `systemOverlayStyle`
+* `textTheme` foi removido e substituído por `toolbarTextStyle` ou `titleTextStyle`.
+* `backwardsCompatibility` pode ser removido, pois era uma flag temporária de migração para essas propriedades.
 
-Additionally, `AppBarTheme.color` was removed, with `AppBarTheme.backgroundColor`
-as its replacement.
+Além disso, `AppBarTheme.color` foi removido, tendo `AppBarTheme.backgroundColor`
+como substituto.
 
-**Migration guide**
+**Guia de migração**
 
 Código antes da migração:
 
@@ -265,7 +266,7 @@ AppBar(
 AppBarTheme(backgroundColor: Colors.blue);
 ```
 
-**References**
+**Referências**
 
 Documentação da API:
 
@@ -283,12 +284,12 @@ Issues relevantes:
 * [#51820][]
 * [#61618][]
 
-Deprecated in:
+Descontinuado em:
 
 * [#86198][]
 * [#71184][]
 
-Removed in:
+Removido em:
 
 * [#120618][]
 * [#119253][]
@@ -313,22 +314,23 @@ Removed in:
 
 ---
 
-### `SystemChrome.setEnabledSystemUIOverlays`
+### `SystemChrome.setEnabledSystemUIOverlays` {:#systemchromesetenabledsystemuioverlays}
 
 Suportado pelo Flutter Fix: sim
 
-In v2.3, `SystemChrome.setEnabledSystemUIOVerlays`, the static method for
-setting device system level overlays like status and navigation bars, was
-deprecated in favor of `SystemChrome.setEnabledSystemUIMode`.
+Na v2.3, `SystemChrome.setEnabledSystemUIOVerlays`, o método estático para
+definir as sobreposições de nível de sistema do dispositivo, como as barras de
+status e de navegação, foi descontinuado em favor de
+`SystemChrome.setEnabledSystemUIMode`.
 
-This change allowed for setting up common fullscreen modes that match native
-Android app designs like edge to edge.
+Essa mudança permitiu configurar modos de tela cheia comuns que correspondem
+aos designs nativos de apps Android, como edge to edge.
 
-Manually setting overlays, instead of choosing a specific mode, is still
-supported through `SystemUiMode.manual`, allowing developers to pass the same
-list of overlays as before.
+Definir as sobreposições manualmente, em vez de escolher um modo específico,
+continua sendo suportado por meio de `SystemUiMode.manual`, permitindo passar a
+mesma lista de sobreposições de antes.
 
-**Migration guide**
+**Guia de migração**
 
 Código antes da migração:
 ```dart
@@ -349,7 +351,7 @@ SystemChrome.setEnabledSystemUIMode(
 );
 ```
 
-**References**
+**Referências**
 
 Documentação da API:
 
@@ -363,11 +365,11 @@ Issues relevantes:
 * [#63761][]
 * [#69999][]
 
-Deprecated in:
+Descontinuado em:
 
 * [#81303][]
 
-Removed in:
+Removido em:
 
 * [#11957][]
 
@@ -382,18 +384,18 @@ Removed in:
 
 ---
 
-### `SystemNavigator.routeUpdated`
+### `SystemNavigator.routeUpdated` {:#systemnavigatorrouteupdated}
 
 Suportado pelo Flutter Fix: sim
 
-In v2.3, `SystemNavigator.routeUpdated` was deprecated in favor of
+Na v2.3, `SystemNavigator.routeUpdated` foi descontinuado em favor de
 `SystemNavigator.routeInformationUpdated`.
 
-Instead of having two ways to update the engine about the current route, the
-change moved everything to one API, which separately selects the single-entry
-history mode if a `Navigator` that reports routes is created.
+Em vez de haver duas formas de atualizar o engine sobre a rota atual, a mudança
+centralizou tudo em uma única API, que seleciona separadamente o modo de
+histórico de entrada única caso um `Navigator` que reporta rotas seja criado.
 
-**Migration guide**
+**Guia de migração**
 
 Código antes da migração:
 
@@ -407,7 +409,7 @@ Código após a migração:
 SystemNavigator.routeInformationUpdated(location: 'foo');
 ```
 
-**References**
+**Referências**
 
 Documentação da API:
 
@@ -417,11 +419,11 @@ Issues relevantes:
 
 * [#82574][]
 
-Deprecated in:
+Descontinuado em:
 
 * [#82594][]
 
-Removed in:
+Removido em:
 
 * [#119187][]
 
@@ -433,18 +435,19 @@ Removed in:
 
 ---
 
-### `AnimatedSize.vsync`
+### `AnimatedSize.vsync` {:#animatedsizevsync}
 
 Suportado pelo Flutter Fix: sim
 
-In v2.2, `AnimatedSize.vsyc` was deprecated. This property was no longer
-necessary after `AnimatedSize` was converted to a `StatefulWidget` whose `State`
-mixed in `SingleTickerProviderStateMixin`. The change was made to fix a memory
-leak.
+Na v2.2, `AnimatedSize.vsyc` foi descontinuado. Essa propriedade deixou de ser
+necessária depois que `AnimatedSize` foi convertido em um `StatefulWidget` cujo
+`State` usa o mixin `SingleTickerProviderStateMixin`. A mudança foi feita para
+corrigir um vazamento de memória.
 
-Uses of `vsync` should be removed, as `AnimatedSize` now handles this property.
+Usos de `vsync` devem ser removidos, pois `AnimatedSize` agora trata essa
+propriedade.
 
-**Migration guide**
+**Guia de migração**
 
 Código antes da migração:
 
@@ -463,18 +466,18 @@ AnimatedSize(
 );
 ```
 
-**References**
+**Referências**
 
 Documentação da API:
 
 * [`AnimatedSize`][]
 
-Deprecated in:
+Descontinuado em:
 
 * [#80554][]
 * [#81067][]
 
-Removed in:
+Removido em:
 
 * [#119186][]
 
@@ -485,6 +488,8 @@ Removed in:
 
 ---
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
-No lançamento estável: 3.10
+Na versão estável: 3.10
+
+---

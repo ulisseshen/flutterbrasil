@@ -13,8 +13,8 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 
 ## Progresso
 
-- Páginas traduzidas: **767 / 768** (99.9%)
-- Linhas pendentes (aprox.): 490
+- Páginas traduzidas: **768 / 768** (100.0%)
+- Linhas pendentes (aprox.): 0
 
 | Seção | Traduzidas | Total |
 |---|---:|---:|
@@ -47,7 +47,7 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 | `tools` | 27 | 27 |
 | `tos` | 1 | 1 |
 | `ui` | 50 | 50 |
-| `release/breaking-changes` | 191 | 192 |
+| `release/breaking-changes` | 192 | 192 |
 | `release/release-notes` | 38 | 38 |
 | `tools/devtools/release-notes` | 62 | 62 |
 
@@ -616,7 +616,7 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `ui/navigation/url-strategies.md` (86 linhas)
 - [x] `ui/widgets/index.md` (91 linhas)
 
-### `release/breaking-changes` (191/192)
+### `release/breaking-changes` (192/192)
 
 - [x] `release/breaking-changes/1-22-deprecations.md` (836 linhas)
 - [x] `release/breaking-changes/2-10-deprecations.md` (658 linhas)
@@ -627,7 +627,7 @@ Prioridade: primeiro as páginas **traduzidas cujo inglês mudou** (aparecem em
 - [x] `release/breaking-changes/3-16-deprecations.md` (277 linhas)
 - [x] `release/breaking-changes/3-19-deprecations.md` (740 linhas)
 - [x] `release/breaking-changes/3-3-deprecations.md` (268 linhas)
-- [ ] `release/breaking-changes/3-7-deprecations.md` (490 linhas)
+- [x] `release/breaking-changes/3-7-deprecations.md` (495 linhas)
 - [x] `release/breaking-changes/actions-api-revision.md` (341 linhas)
 - [x] `release/breaking-changes/add-applifecyclestate-hidden.md` (89 linhas)
 - [x] `release/breaking-changes/add-currentAutofillScope-to-TextInputClient.md` (107 linhas)

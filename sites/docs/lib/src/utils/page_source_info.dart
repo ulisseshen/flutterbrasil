@@ -36,7 +36,8 @@ extension PageSourceInfoExtension on Page {
         repoLinks['this'] as String? ??
         'https://github.com/ulisseshen/flutterbrasil';
     final inputPath = pageData['inputPath'] as String?;
-    final siteUrl = siteData['url'] as String? ?? 'https://docs.flutterbrasil.dev';
+    final siteUrl =
+        siteData['url'] as String? ?? 'https://docs.flutterbrasil.dev';
 
     final fullPageUrl = '$siteUrl$pageUrl';
     final String? pageSourceUrl;

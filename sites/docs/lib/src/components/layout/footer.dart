@@ -103,7 +103,10 @@ final class DashFooter extends StatelessComponent {
         ]),
         div(classes: 'footer-section footer-tray', [
           div(classes: 'footer-licenses', [
-            .text('Exceto quando indicado de outra forma, este site está licenciado sob uma '),
+            .text(
+              'Exceto quando indicado de outra forma, '
+              'este site está licenciado sob uma ',
+            ),
             a(href: 'https://creativecommons.org/licenses/by/4.0/', [
               .text('Licença Creative Commons Attribution 4.0 International,'),
             ]),
@@ -132,7 +135,10 @@ final class DashFooter extends StatelessComponent {
                 a(
                   href: 'https://policies.google.com/privacy',
                   target: Target.blank,
-                  attributes: {'rel': 'noopener', 'title': 'Política de privacidade'},
+                  attributes: {
+                    'rel': 'noopener',
+                    'title': 'Política de privacidade',
+                  },
                   [.text('Privacidade')],
                 ),
               ]),

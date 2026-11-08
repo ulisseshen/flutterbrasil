@@ -64,7 +64,9 @@ class TrailingContent extends StatelessComponent {
             },
             [
               .text(
-                pageSource == null ? 'Relatar um problema' : 'relatar um problema',
+                pageSource == null
+                    ? 'Relatar um problema'
+                    : 'relatar um problema',
               ),
             ],
           ),

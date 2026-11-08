@@ -1,14 +1,14 @@
 ---
-ia-translate: true
 title: Notas de lançamento do Flutter 1.20.0
 shortTitle: Notas de lançamento 1.20.0
 description: Notas de lançamento do Flutter 1.20.0.
 skipTemplateRendering: true
+ia-translate: true
 ---
 
-##  Pull requests mesclados por label
+##  Merged pull requests by label
 
-### PRs mesclados por labels para `flutter/flutter`
+### PRs incluídos por label em `flutter/flutter`
 
 #### tool - 435 pull request(s)
 
@@ -5603,7 +5603,7 @@ skipTemplateRendering: true
 
 [57037](https://github.com/flutter/flutter/pull/57037) Making DropdownButtonFormField to re-render if parent widget changes (cla: yes, f: material design, found in release: 1.17, found in release: 1.18, framework, severe: regression, waiting for tree to go green)
 
-### Merged PRs by labels for `flutter/engine`
+### PRs incluídos por label em `flutter/engine`
 
 #### platform-android - 62 pull request(s)
 
@@ -6107,7 +6107,7 @@ skipTemplateRendering: true
 
 
 
-### PRs mesclados por labels para `flutter/plugins`
+### PRs incluídos por label em `flutter/plugins`
 
 #### submit queue - 3 pull request(s)
 
@@ -6158,11 +6158,11 @@ skipTemplateRendering: true
 
 [2766](https://github.com/flutter/plugins/pull/2766) [url_launcher] update README with enableJavaScript info (cla: yes, documentation, webview)
 
-## Todos os pull requests mesclados
+## All merged pull requests
 
-### PRs mesclados em `flutter/flutter`
+### PRs incluídos em `flutter/flutter`
 
-There were 1243 pull requests.
+Foram 1243 pull requests.
 
 [42940](https://github.com/flutter/flutter/pull/42940) Revise Action API (cla: yes, f: cupertino, f: material design, framework, team)
 
@@ -8650,9 +8650,9 @@ There were 1243 pull requests.
 
 [61129](https://github.com/flutter/flutter/pull/61129) [flutter_tools] fix recursive asset variant issue (cla: yes, tool, waiting for tree to go green)
 
-### PRs mesclados em `flutter/engine`
+### PRs incluídos em `flutter/engine`
 
-There were 1316 pull requests.
+Foram 1316 pull requests.
 
 [13959](https://github.com/flutter/engine/pull/13959) iOS UITextInput autocorrection prompt (cla: yes)
 
@@ -11286,9 +11286,9 @@ There were 1316 pull requests.
 
 [19608](https://github.com/flutter/engine/pull/19608) Propoagate Tap events on Android hybrid views (cla: yes, platform-android)
 
-### PRs mesclados em `flutter/plugins`
+### PRs incluídos em `flutter/plugins`
 
-There were 153 pull requests.
+Foram 153 pull requests.
 
 [831](https://github.com/flutter/plugins/pull/831) [google_maps_flutter] add zoom controls property (cla: yes, feature, submit queue)
 

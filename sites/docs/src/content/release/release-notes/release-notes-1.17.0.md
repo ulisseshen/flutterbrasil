@@ -1,16 +1,14 @@
 ---
-title: Flutter 1.17.0 release notes
-shortTitle: 1.17.0 release notes
-description: Release notes for Flutter 1.17.0.
+title: Notas de lançamento do Flutter 1.17.0
+shortTitle: Notas de lançamento 1.17.0
+description: Notas de lançamento do Flutter 1.17.0.
 skipTemplateRendering: true
 ia-translate: true
-# TODO: Translate to Portuguese
-# This file is very large (12,494 lines) and needs to be translated in a future session
 ---
 
 ##  Merged pull requests by label
 
-### Merged PRs by labels for `flutter/flutter`
+### PRs incluídos por label em `flutter/flutter`
 
 #### tool - 435 pull request(s)
 
@@ -5605,7 +5603,7 @@ ia-translate: true
 
 [57037](https://github.com/flutter/flutter/pull/57037) Making DropdownButtonFormField to re-render if parent widget changes (cla: yes, f: material design, found in release: 1.17, found in release: 1.18, framework, severe: regression, waiting for tree to go green)
 
-### Merged PRs by labels for `flutter/engine`
+### PRs incluídos por label em `flutter/engine`
 
 #### platform-android - 62 pull request(s)
 
@@ -6109,7 +6107,7 @@ ia-translate: true
 
 
 
-### Merged PRs by labels for `flutter/plugins`
+### PRs incluídos por label em `flutter/plugins`
 
 #### submit queue - 3 pull request(s)
 
@@ -6162,9 +6160,9 @@ ia-translate: true
 
 ## All merged pull requests
 
-### Merged PRs in `flutter/flutter`
+### PRs incluídos em `flutter/flutter`
 
-There were 1526 pull requests.
+Foram 1526 pull requests.
 
 [37145](https://github.com/flutter/flutter/pull/37145) Use state value in DropdownButtonFieldForm (cla: yes, f: material design, framework, passed first triage)
 
@@ -9218,9 +9216,9 @@ There were 1526 pull requests.
 
 [53866](https://github.com/flutter/flutter/pull/53866) Roll engine 49d65b45cfee..f56e678e7fa9 (2 commits) (cla: yes, waiting for tree to go green)
 
-### Merged PRs in `flutter/engine`
+### PRs incluídos em `flutter/engine`
 
-There were 1421 pull requests.
+Foram 1421 pull requests.
 
 [12467](https://github.com/flutter/engine/pull/12467) Add support for on/off switch labels when built on iOS 13. (cla: yes)
 
@@ -12064,9 +12062,9 @@ There were 1421 pull requests.
 
 [17490](https://github.com/flutter/engine/pull/17490) Roll fuchsia/sdk/core/linux-amd64 from v61zg... to -jFTb... (cla: yes, waiting for tree to go green)
 
-### Merged PRs in `flutter/plugins`
+### PRs incluídos em `flutter/plugins`
 
-There were 214 pull requests.
+Foram 214 pull requests.
 
 [1821](https://github.com/flutter/plugins/pull/1821) [google_maps_flutter] Breaking change fix for bitmap scaling (cla: yes)
 

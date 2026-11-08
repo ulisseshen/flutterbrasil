@@ -112,9 +112,11 @@ Em toda sincronização com o upstream:
    como referência.
 6. Rode `python3 tool/traducao/verificar.py` (sem argumentos ele confere
    todas as páginas traduzidas) e corrija o que aparecer.
-7. Quando `.traducao-pendente/` estiver vazio, apague a pasta, rode
+7. Rode `python3 tool/traducao/traduzir_release_notes.py --todas` para
+   regenerar as notas de lançamento (inclusive as novas).
+8. Quando `.traducao-pendente/` estiver vazio, apague a pasta, rode
    `python3 tool/traducao/gerar_todo.py` e faça o commit.
-8. Só depois disso siga para as páginas novas que ainda não foram traduzidas
+9. Só depois disso siga para as páginas novas que ainda não foram traduzidas
    (`TODO-TRADUCAO.md`).
 
 Nunca resolva um conflito trocando a página pela versão em inglês e mantendo
@@ -127,6 +129,7 @@ Nunca resolva um conflito trocando a página pela versão em inglês e mantendo
 | `sincronizar_upstream.py` | Merge com o upstream preservando traduções (acima). |
 | `verificar.py [arquivos]` | Compara a estrutura com o inglês em `upstream/main`: cercas de código, code-excerpts, tags Liquid, admonitions, definições de link, âncoras e rótulos sem definição. |
 | `gerar_todo.py` | Regenera `TODO-TRADUCAO.md` (status por seção a partir de `ia-translate`). |
+| `traduzir_release_notes.py [--todas]` | **Gera** a versão pt-BR das notas de lançamento do Flutter (`release/release-notes/`) a partir do inglês do upstream: traduz frontmatter, introdução e títulos e mantém a lista de PRs em inglês. Não use agente para essas páginas. Páginas antigas com prosa são listadas para tradução manual. |
 
 ## Personalizações do Flutter Brasil fora do conteúdo
 

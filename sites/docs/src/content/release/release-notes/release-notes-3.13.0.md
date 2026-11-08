@@ -1,14 +1,14 @@
 ---
-ia-translate: true
 title: Notas de lançamento do Flutter 3.13.0
 shortTitle: Notas de lançamento 3.13.0
 description: Notas de lançamento do Flutter 3.13.0.
 skipTemplateRendering: true
+ia-translate: true
 ---
 
-Esta página contém as notas de lançamento para o 3.13.0.
-Para informações sobre correções de bugs subsequentes,
-consulte nosso [CHANGELOG][].
+Esta página contém as notas de lançamento da versão 3.13.0.
+Para informações sobre lançamentos de correção de bugs subsequentes,
+consulte o [CHANGELOG][] do Flutter.
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/main/CHANGELOG.md
 
@@ -356,7 +356,7 @@ consulte nosso [CHANGELOG][].
 * Updated some golden image tests for M2/M3 by @HansMuller in [129794](https://github.com/flutter/flutter/pull/129794)
 * Fix NetworkImage causing spurious warning in tests by @gnprice in [129537](https://github.com/flutter/flutter/pull/129537)
 * Update `SwitchTheme` tests for M2/M3 by @QuncCccccc in [129811](https://github.com/flutter/flutter/pull/129811)
-* Update links to old linter site to dartbrasil.dev by @parlough in [129866](https://github.com/flutter/flutter/pull/129866)
+* Update links to old linter site to dart.dev by @parlough in [129866](https://github.com/flutter/flutter/pull/129866)
 * Cleanup: stop accepting DiagnosticsNode as input from DevTools. by @polina-c in [129302](https://github.com/flutter/flutter/pull/129302)
 * Improve documentation for `ColorSheme.fromImageProvider` by @guidezpl in [129952](https://github.com/flutter/flutter/pull/129952)
 * fix a bug when android uses CupertinoPageTransitionsBuilder... by @ipcjs in [114303](https://github.com/flutter/flutter/pull/114303)
@@ -377,7 +377,7 @@ consulte nosso [CHANGELOG][].
 * [CP] `_RenderScaledInlineWidget` constrains child size (#130648) by @LongCatIsLooong in [131289](https://github.com/flutter/flutter/pull/131289)
 * [Cp] Fix Tooltip crash when selected in a SelectableRegion (#130181) by @LongCatIsLooong in [131288](https://github.com/flutter/flutter/pull/131288)
 * [CP] Constrain _RenderScaledInlineWidget child size in computeDryLayout #131765 by @LongCatIsLooong in [132096](https://github.com/flutter/flutter/pull/132096)
-### Ferramentas
+### Tooling
 * Update getGradleVersion to ignore commented out lines by @reidbaker in [124260](https://github.com/flutter/flutter/pull/124260)
 * Update gradle_utils.dart and flutter.gradle to have the same versions as the documentation in file says is required. by @reidbaker in [123213](https://github.com/flutter/flutter/pull/123213)
 * Force plugin transitive dependencies to an ARC compatible version by @jmagman in [124349](https://github.com/flutter/flutter/pull/124349)
@@ -523,7 +523,7 @@ consulte nosso [CHANGELOG][].
 * [flutter_tools] modify Skeleton template to use ListenableBuilder instead of AnimatedBuilder by @fabiancrx in [128810](https://github.com/flutter/flutter/pull/128810)
 * [CP] Fix ConcurrentModificationError in DDS by @christopherfujino in [130740](https://github.com/flutter/flutter/pull/130740)
 
-## Novos Contribuidores
+## Novos contribuidores
 * @Rexios80 made their first contribution in [123726](https://github.com/flutter/flutter/pull/123726)
 * @adityathakurxd made their first contribution in [124511](https://github.com/flutter/flutter/pull/124511)
 * @gabrielgarciagava made their first contribution in [124459](https://github.com/flutter/flutter/pull/124459)
@@ -572,7 +572,7 @@ consulte nosso [CHANGELOG][].
 * @fabiancrx made their first contribution in [128810](https://github.com/flutter/flutter/pull/128810)
 * @HenriqueNas made their first contribution in [128132](https://github.com/flutter/flutter/pull/128132)
 
-**Full Changelog**: https://github.com/flutter/flutter/compare/3.10.0...3.13.0
+**Changelog completo**: https://github.com/flutter/flutter/compare/3.10.0...3.13.0
 
 ## Engine
 
@@ -800,7 +800,7 @@ consulte nosso [CHANGELOG][].
 * [Impeller] allowing enabling Impeller on macOS. by @jonahwilliams in [42639](https://github.com/flutter/engine/pull/42639)
 * Fix inverted boolean in Windows document selection changed a11y event by @yaakovschectman in [43281](https://github.com/flutter/engine/pull/43281)
 
-## Novos Contribuidores
+## Novos contribuidores
 * @drwez made their first contribution in [41154](https://github.com/flutter/engine/pull/41154)
 * @bastionkid made their first contribution in [41082](https://github.com/flutter/engine/pull/41082)
 * @maRci002 made their first contribution in [40599](https://github.com/flutter/engine/pull/40599)
@@ -812,4 +812,4 @@ consulte nosso [CHANGELOG][].
 * @marcianx made their first contribution in [42258](https://github.com/flutter/engine/pull/42258)
 * @mk12 made their first contribution in [42667](https://github.com/flutter/engine/pull/42667)
 
-**Full Changelog**: https://github.com/flutter/engine/compare/3.10.0...3.13.0
+**Changelog completo**: https://github.com/flutter/engine/compare/3.10.0...3.13.0

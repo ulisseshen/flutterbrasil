@@ -1,18 +1,14 @@
 ---
-title: Flutter 3.22.0 release notes
-shortTitle: 3.22.0 release notes
-description: Release notes for Flutter 3.22.0.
+title: Notas de lançamento do Flutter 3.22.0
+shortTitle: Notas de lançamento 3.22.0
+description: Notas de lançamento do Flutter 3.22.0.
 skipTemplateRendering: true
 ia-translate: true
 ---
 
-<!-- ia-translate: This file is marked for translation but requires a dedicated session due to size (8000+ lines).
-It contains extensive changelog and release notes for Flutter versions.
-To be translated following .claude/agents/translate-pt-br.md rules in a future translation session. -->
-
-This page has release notes for 3.22.0.
-For information about subsequent bug-fix releases,
-see our [CHANGELOG][].
+Esta página contém as notas de lançamento da versão 3.22.0.
+Para informações sobre lançamentos de correção de bugs subsequentes,
+consulte o [CHANGELOG][] do Flutter.
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/main/CHANGELOG.md
 
@@ -583,7 +579,7 @@ see our [CHANGELOG][].
 * [flutter_tools] Enable WebAssembly compilation everywhere, remove feature flag by @kevmoo in [145562](https://github.com/flutter/flutter/pull/145562)
 * Be tolerant of backticks around directory name in `pub` output. by @eyebrowsoffire in [145768](https://github.com/flutter/flutter/pull/145768)
 * Roll pub packages and regenerate gradle lockfiles by @christopherfujino in [145727](https://github.com/flutter/flutter/pull/145727)
-### Documentation
+### Documentação
 * bind missing add icon in platform_view example by @TJRoger in [132028](https://github.com/flutter/flutter/pull/132028)
 * [iOS] Fix naming in platform_view example by @cbracken in [144247](https://github.com/flutter/flutter/pull/144247)
 ### Other Changes
@@ -762,7 +758,7 @@ see our [CHANGELOG][].
 * Refactor skp_generator_tests by @sealesj in [145871](https://github.com/flutter/flutter/pull/145871)
 * [flutter_releases] Flutter beta 3.22.0-0.0.pre Framework Cherrypicks by @itsjustkevin in [146239](https://github.com/flutter/flutter/pull/146239)
 
-## New Contributors
+## Novos contribuidores
 * @asci-00 made their first contribution in [140015](https://github.com/flutter/flutter/pull/140015)
 * @nikkivirtuoso made their first contribution in [140947](https://github.com/flutter/flutter/pull/140947)
 * @SharbelOkzan made their first contribution in [135578](https://github.com/flutter/flutter/pull/135578)
@@ -797,7 +793,7 @@ see our [CHANGELOG][].
 * @eltociear made their first contribution in [145683](https://github.com/flutter/flutter/pull/145683)
 * @dwzrlp made their first contribution in [145689](https://github.com/flutter/flutter/pull/145689)
 
-**Full Changelog**: https://github.com/flutter/flutter/compare/3.19.0...3.22.0-0.1.pre
+**Changelog completo**: https://github.com/flutter/flutter/compare/3.19.0...3.22.0-0.1.pre
 
 ## Engine
 
@@ -1599,7 +1595,7 @@ see our [CHANGELOG][].
 * Remove Impeller/OpenGLES from CI branch for Android e2e tests. by @matanlurey in [51734](https://github.com/flutter/engine/pull/51734)
 * [flutter_releases] Flutter beta 3.22.0-0.0.pre Engine Cherrypicks by @itsjustkevin in [51851](https://github.com/flutter/engine/pull/51851)
 
-## New Contributors
+## Novos contribuidores
 * @zijiehe-google-com made their first contribution in [49650](https://github.com/flutter/engine/pull/49650)
 * @iinozemtsev made their first contribution in [49598](https://github.com/flutter/engine/pull/49598)
 * @hasali19 made their first contribution in [49784](https://github.com/flutter/engine/pull/49784)
@@ -1613,4 +1609,4 @@ see our [CHANGELOG][].
 * @p-mazhnik made their first contribution in [51103](https://github.com/flutter/engine/pull/51103)
 * @Breakthrough made their first contribution in [51447](https://github.com/flutter/engine/pull/51447)
 
-**Full Changelog**: https://github.com/flutter/engine/compare/3.19.0...3.22.0-0.1.pre
+**Changelog completo**: https://github.com/flutter/engine/compare/3.19.0...3.22.0-0.1.pre

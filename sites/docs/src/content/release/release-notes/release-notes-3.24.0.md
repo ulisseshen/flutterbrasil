@@ -1,17 +1,18 @@
 ---
-title: Flutter 3.24.0 release notes
-shortTitle: 3.24.0 release notes
-description: Release notes for Flutter 3.24.0.
+title: Notas de lançamento do Flutter 3.24.0
+shortTitle: Notas de lançamento 3.24.0
+description: Notas de lançamento do Flutter 3.24.0.
 skipTemplateRendering: true
+ia-translate: true
 ---
 
-This page has release notes for 3.24.0.
-For information about subsequent bug-fix releases,
-check out the Flutter [CHANGELOG][].
+Esta página contém as notas de lançamento da versão 3.24.0.
+Para informações sobre lançamentos de correção de bugs subsequentes,
+consulte o [CHANGELOG][] do Flutter.
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/main/CHANGELOG.md
 
-## Flutter framework
+## Framework do Flutter
 
 ### Framework
 
@@ -680,7 +681,7 @@ check out the Flutter [CHANGELOG][].
 * [tool] Fix `stdin.flush` calls on processes started by `FakeProcessManager` by @andrewkolos in [151183](https://github.com/flutter/flutter/pull/151183)
 * [flutter_tools] Update the mapping for the Dart SDK internal URI by @DanTup in [151170](https://github.com/flutter/flutter/pull/151170)
 
-### Other changes
+### Outras mudanças
 
 * Use reporter extended consistently. by @godofredoc in [145617](https://github.com/flutter/flutter/pull/145617)
 * Refactor flutter_plugins by @sealesj in [145870](https://github.com/flutter/flutter/pull/145870)
@@ -830,7 +831,7 @@ check out the Flutter [CHANGELOG][].
 * Bump dartdoc to 8.0.10 by @goderbauer in [151107](https://github.com/flutter/flutter/pull/151107)
 * Roll pub packages by @flutter-pub-roller-bot in [151129](https://github.com/flutter/flutter/pull/151129)
 
-## New contributors
+## Novos contribuidores
 
 * @Dimilkalathiya made their first contribution in [146072](https://github.com/flutter/flutter/pull/146072)
 * @leoafarias made their first contribution in [145666](https://github.com/flutter/flutter/pull/145666)
@@ -875,9 +876,9 @@ check out the Flutter [CHANGELOG][].
 * @ricardoboss made their first contribution in [149777](https://github.com/flutter/flutter/pull/149777)
 * @DRSchlaubi made their first contribution in [150958](https://github.com/flutter/flutter/pull/150958)
 
-**Full Changelog**: https://github.com/flutter/flutter/compare/3.22.0...3.24.0
+**Changelog completo**: https://github.com/flutter/flutter/compare/3.22.0...3.24.0
 
-## Flutter engine
+## Engine do Flutter
 
 ### Impeller
 
@@ -1282,7 +1283,7 @@ check out the Flutter [CHANGELOG][].
 * Replace several NSAssert with FML_CHECK/DCHECK to unblock the build by @bc-lee in [53048](https://github.com/flutter/engine/pull/53048)
 * [macOS] Fix FlutterView cursor hit testing by @bufffun in [53171](https://github.com/flutter/engine/pull/53171)
 
-### Other changes
+### Outras mudanças
 
 * Remove Android API v33 tests from CI. by @matanlurey in [51751](https://github.com/flutter/engine/pull/51751)
 * Remove `--verbose` from clang_tidy execution on CI. by @matanlurey in [51760](https://github.com/flutter/engine/pull/51760)
@@ -1489,7 +1490,7 @@ check out the Flutter [CHANGELOG][].
 * Restore creation of engine before Linux widget is realized. by @robert-ancell in [53604](https://github.com/flutter/engine/pull/53604)
 * [skia] Use more GNI file lists by @kjlubick in [53685](https://github.com/flutter/engine/pull/53685)
 
-## New contributors
+## Novos contribuidores
 
 * @brianquinlan made their first contribution in [52239](https://github.com/flutter/engine/pull/52239)
 * @PurplePolyhedron made their first contribution in [52156](https://github.com/flutter/engine/pull/52156)
@@ -1504,4 +1505,4 @@ check out the Flutter [CHANGELOG][].
 * @Moncader made their first contribution in [53246](https://github.com/flutter/engine/pull/53246)
 * @hakonber made their first contribution in [53428](https://github.com/flutter/engine/pull/53428)
 
-**Full Changelog**: https://github.com/flutter/engine/compare/3.22.0...3.24.0
+**Changelog completo**: https://github.com/flutter/engine/compare/3.22.0...3.24.0

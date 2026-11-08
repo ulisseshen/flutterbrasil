@@ -1,14 +1,14 @@
 ---
-ia-translate: true
 title: Notas de lançamento do Flutter 3.19.0
 shortTitle: Notas de lançamento 3.19.0
 description: Notas de lançamento do Flutter 3.19.0.
 skipTemplateRendering: true
+ia-translate: true
 ---
 
-Esta página contém as notas de lançamento para o 3.19.0.
-Para informações sobre correções de bugs subsequentes,
-consulte nosso [CHANGELOG][].
+Esta página contém as notas de lançamento da versão 3.19.0.
+Para informações sobre lançamentos de correção de bugs subsequentes,
+consulte o [CHANGELOG][] do Flutter.
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/main/CHANGELOG.md
 
@@ -436,7 +436,7 @@ consulte nosso [CHANGELOG][].
 * Restore and fix flavors_test_macos by @andrewkolos in [139841](https://github.com/flutter/flutter/pull/139841)
 ### Web
 * #60704: Pass cert for TLS localhost connection by @arpitgandhi9 in [106635](https://github.com/flutter/flutter/pull/106635)
-### Ferramentas
+### Tooling
 * Update the wasm bootstrap to allow access to the emscripten wrapper to skwasm. by @eyebrowsoffire in [135723](https://github.com/flutter/flutter/pull/135723)
 * Use platform dill from the engine when compiling with dart2wasm. by @eyebrowsoffire in [134970](https://github.com/flutter/flutter/pull/134970)
 * Bump dart-lang/native deps by @dcharkes in [135905](https://github.com/flutter/flutter/pull/135905)
@@ -553,7 +553,7 @@ consulte nosso [CHANGELOG][].
 * CP: [Beta] Update DWDS to version 23.0.0+1 by @elliette in [142168](https://github.com/flutter/flutter/pull/142168)
 ### Documentação
 * Check sample links for malformed links by @gspencergoog in [137807](https://github.com/flutter/flutter/pull/137807)
-### Outras Mudanças
+### Other Changes
 * Temporarily disable NexusLowRes, version=29 by @ricardoamador in [135785](https://github.com/flutter/flutter/pull/135785)
 * Add device ready check by @ricardoamador in [135526](https://github.com/flutter/flutter/pull/135526)
 * Add support for `setup` steps in flutter customer tests by @kenzieschmoll in [135726](https://github.com/flutter/flutter/pull/135726)
@@ -714,7 +714,7 @@ consulte nosso [CHANGELOG][].
 * [CP] Update tests to Xcode 15 by @vashworth in [142320](https://github.com/flutter/flutter/pull/142320)
 * [flutter_releases] Flutter beta 3.19.0-0.4.pre Framework Cherrypicks by @itsjustkevin in [142777](https://github.com/flutter/flutter/pull/142777)
 
-## Novos Contribuidores
+## Novos contribuidores
 * @Pante made their first contribution in [135897](https://github.com/flutter/flutter/pull/135897)
 * @droidbg made their first contribution in [136169](https://github.com/flutter/flutter/pull/136169)
 * @fischerscode made their first contribution in [135823](https://github.com/flutter/flutter/pull/135823)
@@ -753,7 +753,7 @@ consulte nosso [CHANGELOG][].
 * @lukehutch made their first contribution in [139535](https://github.com/flutter/flutter/pull/139535)
 * @TabooSun made their first contribution in [138663](https://github.com/flutter/flutter/pull/138663)
 
-**Full Changelog**: https://github.com/flutter/flutter/compare/3.16.0...3.19.0-0.4.pre
+**Changelog completo**: https://github.com/flutter/flutter/compare/3.16.0...3.19.0-0.4.pre
 
 ## Engine
 
@@ -1203,7 +1203,7 @@ consulte nosso [CHANGELOG][].
 * [Windows] Remove `PlatformWindow` and `RenderTarget` abstractions by @loic-sharma in [49312](https://github.com/flutter/engine/pull/49312)
 * [Windows] Move DWM composition status to Windows proc table for mocking by @loic-sharma in [49397](https://github.com/flutter/engine/pull/49397)
 * [Windows] Move DWM flush to Windows proc table for mocking by @loic-sharma in [49398](https://github.com/flutter/engine/pull/49398)
-### Outras Mudanças
+### Other Changes
 * Bump impeller-cmake to head by @bdero in [46385](https://github.com/flutter/engine/pull/46385)
 * Multi-view Rasterizer  by @dkwingsmt in [45512](https://github.com/flutter/engine/pull/45512)
 * [Linux] Rename 'set_allow_channel_overflow' to 'set_warns_on_channel_… by @bleroux in [46360](https://github.com/flutter/engine/pull/46360)
@@ -1431,7 +1431,7 @@ consulte nosso [CHANGELOG][].
 * Rolls dart sdk to 42b177d9f by @godofredoc in [50008](https://github.com/flutter/engine/pull/50008)
 * [flutter_releases] Flutter beta 3.19.0-0.4.pre Engine Cherrypicks by @itsjustkevin in [50209](https://github.com/flutter/engine/pull/50209)
 
-## Novos Contribuidores
+## Novos contribuidores
 * @CoderDake made their first contribution in [46720](https://github.com/flutter/engine/pull/46720)
 * @eriko13 made their first contribution in [46429](https://github.com/flutter/engine/pull/46429)
 * @natebosch made their first contribution in [46592](https://github.com/flutter/engine/pull/46592)
@@ -1443,4 +1443,4 @@ consulte nosso [CHANGELOG][].
 * @MitchellGoodwin made their first contribution in [48937](https://github.com/flutter/engine/pull/48937)
 * @zoujunhua made their first contribution in [48397](https://github.com/flutter/engine/pull/48397)
 
-**Full Changelog**: https://github.com/flutter/engine/compare/3.16.0...3.19.0-0.4.pre
+**Changelog completo**: https://github.com/flutter/engine/compare/3.16.0...3.19.0-0.4.pre

@@ -1,14 +1,14 @@
 ---
 title: Notas de lançamento do Flutter 3.16.0
 shortTitle: Notas de lançamento 3.16.0
-description: Notas de lançamento para Flutter 3.16.0.
+description: Notas de lançamento do Flutter 3.16.0.
 skipTemplateRendering: true
 ia-translate: true
 ---
 
-Esta página contém as notas de lançamento do 3.16.0.
-Para informações sobre correções de bugs subsequentes,
-consulte nosso [CHANGELOG][].
+Esta página contém as notas de lançamento da versão 3.16.0.
+Para informações sobre lançamentos de correção de bugs subsequentes,
+consulte o [CHANGELOG][] do Flutter.
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/main/CHANGELOG.md
 
@@ -665,7 +665,7 @@ consulte nosso [CHANGELOG][].
 * @chipweinberger made their first contribution in [132291](https://github.com/flutter/flutter/pull/132291)
 * @EdgarJan made their first contribution in [132714](https://github.com/flutter/flutter/pull/132714)
 
-**Changelog Completo**: https://github.com/flutter/flutter/compare/3.13.0...3.16.0-0.5.pre
+**Changelog completo**: https://github.com/flutter/flutter/compare/3.13.0...3.16.0-0.5.pre
 
 ## Engine
 
@@ -950,4 +950,4 @@ consulte nosso [CHANGELOG][].
 * @kenzieschmoll made their first contribution in [46072](https://github.com/flutter/engine/pull/46072)
 * @ajihyf made their first contribution in [45611](https://github.com/flutter/engine/pull/45611)
 
-**Changelog Completo**: https://github.com/flutter/engine/compare/3.13.0...3.16.0-0.5.pre
+**Changelog completo**: https://github.com/flutter/engine/compare/3.13.0...3.16.0-0.5.pre

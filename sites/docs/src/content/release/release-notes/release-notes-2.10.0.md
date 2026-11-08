@@ -7,11 +7,11 @@ ia-translate: true
 ---
 
 Esta página contém as notas de lançamento da versão 2.10.0.
-Para informações sobre lançamentos de correção de bugs subsequentes, consulte nosso [CHANGELOG][]
+Para informações sobre lançamentos de correção de bugs subsequentes, consulte o [CHANGELOG][] do Flutter.
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/master/CHANGELOG.md
 
-## PRs mesclados por labels para `flutter/flutter`
+## PRs incluídos por label em `flutter/flutter`
 
 
 
@@ -5422,7 +5422,7 @@ Para informações sobre lançamentos de correção de bugs subsequentes, consul
 
 
 
-## PRs mesclados por labels para `flutter/engine`
+## PRs incluídos por label em `flutter/engine`
 
 
 
@@ -9769,7 +9769,7 @@ Para informações sobre lançamentos de correção de bugs subsequentes, consul
 
 
 
-## PRs mesclados por labels para `flutter/plugins`
+## PRs incluídos por label em `flutter/plugins`
 
 
 

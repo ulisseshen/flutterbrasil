@@ -429,7 +429,7 @@ consulte o [CHANGELOG][] do Flutter.
 * Fix `flutter run` on Mac x64 hosts if Swift Package Manager is enabled by @loic-sharma in [154645](https://github.com/flutter/flutter/pull/154645)
 * [tool] Update description of where to install platforms in XCode by @kevmoo in [156432](https://github.com/flutter/flutter/pull/156432)
 
-### Ferramentas
+### Tooling
 
 * Handle a SocketException thrown when sending the browser close command to Chrome by @jason-simmons in [151197](https://github.com/flutter/flutter/pull/151197)
 * Fix project name fallback by @navaronbracke in [150614](https://github.com/flutter/flutter/pull/150614)
@@ -816,7 +816,7 @@ consulte o [CHANGELOG][] do Flutter.
 * @ThHareau made their first contribution in [154932](https://github.com/flutter/flutter/pull/154932)
 * @admosity made their first contribution in [155571](https://github.com/flutter/flutter/pull/155571)
 
-**Full Changelog**: https://github.com/flutter/flutter/compare/3.24.0...3.27.0-0.1.pre
+**Changelog completo**: https://github.com/flutter/flutter/compare/3.24.0...3.27.0-0.1.pre
 
 ## Engine do Flutter
 
@@ -1452,4 +1452,4 @@ consulte o [CHANGELOG][] do Flutter.
 * @Zuckjet made their first contribution in [55350](https://github.com/flutter/engine/pull/55350)
 * @art-snake made their first contribution in [55520](https://github.com/flutter/engine/pull/55520)
 
-**Full Changelog**: https://github.com/flutter/engine/compare/3.24.0...3.27.0-0.1.pre
+**Changelog completo**: https://github.com/flutter/engine/compare/3.24.0...3.27.0-0.1.pre

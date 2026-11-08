@@ -1,14 +1,14 @@
 ---
-ia-translate: true
 title: Registro de mudanças do Flutter 1.12.13
 shortTitle: Registro de mudanças 1.12.13
-description: Registro de mudanças do Flutter 1.12.13 contendo uma lista de todos os PRs mesclados para este lançamento.
+description: Registro de mudanças do Flutter 1.12.13 com a lista de todos os PRs incluídos nesta versão.
 skipTemplateRendering: true
+ia-translate: true
 ---
 
-## PRs fechados neste lançamento do flutter/flutter
+## PRs fechados nesta versão de flutter/flutter
 
-From Sun Aug 19 17:37:00 2019 -0700 to Mon Nov 25 12:05:00 2019 -0800
+De Sun Aug 19 17:37:00 2019 -0700 até Mon Nov 25 12:05:00 2019 -0800
 
 
 [34188](https://github.com/flutter/flutter/pull/34188) Use separate isolate for image loading. (a: images, a: tests, cla: yes, framework)
@@ -205,7 +205,7 @@ From Sun Aug 19 17:37:00 2019 -0700 to Mon Nov 25 12:05:00 2019 -0800
 
 [39147](https://github.com/flutter/flutter/pull/39147) Downgrade the AndroidX warning (cla: yes, tool)
 
-[39150](https://github.com/flutter/flutter/pull/39150) Mention conduct@flutterbrasil.dev (cla: yes, waiting for tree to go green)
+[39150](https://github.com/flutter/flutter/pull/39150) Mention conduct@flutter.dev (cla: yes, waiting for tree to go green)
 
 [39156](https://github.com/flutter/flutter/pull/39156) Added Scaffold.extendBodyBehindAppBar (cla: yes, f: material design, framework)
 
@@ -1183,7 +1183,7 @@ From Sun Aug 19 17:37:00 2019 -0700 to Mon Nov 25 12:05:00 2019 -0800
 
 [42353](https://github.com/flutter/flutter/pull/42353) Add --cache-sksl flag to drive and run (cla: yes, tool)
 
-[42354](https://github.com/flutter/flutter/pull/42354) Pass -Ddartbrasil.developer.causal_async_stacks=true to frontend_server invocations. (cla: yes, tool)
+[42354](https://github.com/flutter/flutter/pull/42354) Pass -Ddart.developer.causal_async_stacks=true to frontend_server invocations. (cla: yes, tool)
 
 [42360](https://github.com/flutter/flutter/pull/42360) Add smoke test for the new Android embedding (cla: yes, team, tool, waiting for tree to go green)
 
@@ -1293,7 +1293,7 @@ From Sun Aug 19 17:37:00 2019 -0700 to Mon Nov 25 12:05:00 2019 -0800
 
 [42668](https://github.com/flutter/flutter/pull/42668) dispose devices on cleanupAtFinish() for run_cold.dart (cla: yes, tool, waiting for tree to go green)
 
-[42676](https://github.com/flutter/flutter/pull/42676) [web] Update web runner message with flutterbrasil.dev/web (cla: yes, tool, waiting for tree to go green)
+[42676](https://github.com/flutter/flutter/pull/42676) [web] Update web runner message with flutter.dev/web (cla: yes, tool, waiting for tree to go green)
 
 [42683](https://github.com/flutter/flutter/pull/42683) Optimize focus operations by caching descendants and ancestors. (cla: yes, f: material design, framework)
 
@@ -2109,9 +2109,9 @@ From Sun Aug 19 17:37:00 2019 -0700 to Mon Nov 25 12:05:00 2019 -0800
 
 [45455](https://github.com/flutter/flutter/pull/45455) Disable tests that fail on non-master branches (cla: yes, team)
 
-## PRs fechados neste lançamento do flutter/engine
+## PRs fechados nesta versão de flutter/engine
 
-From Sun Aug 19 17:37:00 2019 -0700 to Mon Nov 25 12:05:00 2019 -0800
+De Sun Aug 19 17:37:00 2019 -0700 até Mon Nov 25 12:05:00 2019 -0800
 
 
 [8507](https://github.com/flutter/engine/pull/8507) Add texture support for macOS shell. (affects: desktop, cla: yes, platform-macos, waiting for customer response)
@@ -3438,9 +3438,9 @@ From Sun Aug 19 17:37:00 2019 -0700 to Mon Nov 25 12:05:00 2019 -0800
 
 [13990](https://github.com/flutter/engine/pull/13990) Setup a Metal test surface and add a new unit-test target that tests the testing utilities. (cla: yes)
 
-## PRs fechados neste lançamento do flutter/plugins
+## PRs fechados nesta versão de flutter/plugins
 
-From Sun Aug 19 17:37:00 2019 -0700 to Mon Nov 25 12:05:00 2019 -0800
+De Sun Aug 19 17:37:00 2019 -0700 até Mon Nov 25 12:05:00 2019 -0800
 
 
 [1370](https://github.com/flutter/plugins/pull/1370) [camera] Pause/resume video recording for Android & iOS (cla: yes, feature)

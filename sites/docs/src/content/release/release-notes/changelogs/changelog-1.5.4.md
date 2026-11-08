@@ -1,14 +1,14 @@
 ---
-ia-translate: true
-title: Registro de alterações do Flutter 1.5.4
-shortTitle: 1.5.4 change log
-description: Registro de alterações do Flutter 1.5.4 contendo uma lista de todos os PRs mesclados para esta versão.
+title: Registro de mudanças do Flutter 1.5.4
+shortTitle: Registro de mudanças 1.5.4
+description: Registro de mudanças do Flutter 1.5.4 com a lista de todos os PRs incluídos nesta versão.
 skipTemplateRendering: true
+ia-translate: true
 ---
 
-## PRs fechados nesta versão do flutter/flutter
+## PRs fechados nesta versão de flutter/flutter
 
-From Thu Feb 21 20:22:00 2019 -0800 to Wed May 1 16:56:00 2019 -0700
+De Thu Feb 21 20:22:00 2019 -0800 até Wed May 1 16:56:00 2019 -0700
 
 
 [21834](https://github.com/flutter/flutter/pull/21834)  Add shapeBorder option on App Bar (cla: yes, f: material design, framework)
@@ -295,7 +295,7 @@ From Thu Feb 21 20:22:00 2019 -0800 to Wed May 1 16:56:00 2019 -0700
 
 [28873](https://github.com/flutter/flutter/pull/28873) Remove extra build_runner modes, remove flutter_build (cla: yes, tool)
 
-[28888](https://github.com/flutter/flutter/pull/28888) Changed flutter.io to flutterbrasil.dev on each link on readme file (cla: yes, team)
+[28888](https://github.com/flutter/flutter/pull/28888) Changed flutter.io to flutter.dev on each link on readme file (cla: yes, team)
 
 [28899](https://github.com/flutter/flutter/pull/28899) Roll engine 4f54a1dd9...e6a5201f0 (cla: yes)
 
@@ -783,7 +783,7 @@ From Thu Feb 21 20:22:00 2019 -0800 to Wed May 1 16:56:00 2019 -0700
 
 [30537](https://github.com/flutter/flutter/pull/30537) Embedded images and added variations to ListTile sample code (cla: yes, d: api docs, f: material design, framework)
 
-[30562](https://github.com/flutter/flutter/pull/30562) Replace flutter.io with flutterbrasil.dev (a: first hour, a: quality, cla: yes)
+[30562](https://github.com/flutter/flutter/pull/30562) Replace flutter.io with flutter.dev (a: first hour, a: quality, cla: yes)
 
 [30563](https://github.com/flutter/flutter/pull/30563) Fixed a typo in the Expanded API doc (cla: yes, d: api docs, framework)
 
@@ -1148,9 +1148,9 @@ From Thu Feb 21 20:22:00 2019 -0800 to Wed May 1 16:56:00 2019 -0700
 [31886](https://github.com/flutter/flutter/pull/31886) Revert "Handle notification errors" (cla: yes)
 
 
-## PRs closed in this release of flutter/engine
+## PRs fechados nesta versão de flutter/engine
 
-From Thu Feb 21 20:22:00 2019 -0800 to Wed May 1 16:56:00 2019 -0700
+De Thu Feb 21 20:22:00 2019 -0800 até Wed May 1 16:56:00 2019 -0700
 
 
 [7494](https://github.com/flutter/engine/pull/7494) Add engine support for scrollwheel events (cla: yes)
@@ -1888,9 +1888,9 @@ From Thu Feb 21 20:22:00 2019 -0800 to Wed May 1 16:56:00 2019 -0700
 [8796](https://github.com/flutter/engine/pull/8796) Dart SDK roll for 2019-04-30 (cla: yes)
 
 
-## PRs fechados nesta versão do flutter/plugins
+## PRs fechados nesta versão de flutter/plugins
 
-From Thu Feb 21 20:22:00 2019 -0800 to Wed May 1 16:56:00 2019 -0700
+De Thu Feb 21 20:22:00 2019 -0800 até Wed May 1 16:56:00 2019 -0700
 
 
 [721](https://github.com/flutter/plugins/pull/721) [google_sign_in]Fix filename in google_sign_in docs, which leads to crash (bugfix, cla: yes, documentation)

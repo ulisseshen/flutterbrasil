@@ -1,17 +1,17 @@
 ---
 title: Notas de lançamento do Flutter 2.8.0
-shortTitle: Notas de lançamento da versão 2.8.0
+shortTitle: Notas de lançamento 2.8.0
 description: Notas de lançamento do Flutter 2.8.0.
 skipTemplateRendering: true
 ia-translate: true
 ---
 
 Esta página contém as notas de lançamento da versão 2.8.0.
-Para informações sobre lançamentos posteriores de correção de bugs, consulte nosso [CHANGELOG][]
+Para informações sobre lançamentos de correção de bugs subsequentes, consulte o [CHANGELOG][] do Flutter.
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/master/CHANGELOG.md
 
-## PRs mesclados por labels para `flutter/flutter`
+## PRs incluídos por label em `flutter/flutter`
 
 
 
@@ -9962,7 +9962,7 @@ Para informações sobre lançamentos posteriores de correção de bugs, consult
 
 
 
-## PRs mesclados por labels para `flutter/engine`
+## PRs incluídos por label em `flutter/engine`
 
 
 
@@ -17531,7 +17531,7 @@ Para informações sobre lançamentos posteriores de correção de bugs, consult
 
 
 
-## PRs mesclados por labels para `flutter/plugins`
+## PRs incluídos por label em `flutter/plugins`
 
 
 

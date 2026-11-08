@@ -1,15 +1,16 @@
 ---
-title: Change log for Flutter 1.9.1
-shortTitle: 1.9.1 change log
-description: Change log for Flutter 1.9.1 containing a list of all PRs merged for this release.
+title: Registro de mudanças do Flutter 1.9.1
+shortTitle: Registro de mudanças 1.9.1
+description: Registro de mudanças do Flutter 1.9.1 com a lista de todos os PRs incluídos nesta versão.
 skipTemplateRendering: true
+ia-translate: true
 ---
 
 
 
-## PRs closed in this release of flutter/flutter
+## PRs fechados nesta versão de flutter/flutter
 
-From Fri Jun 21 22:31:55 2019 -0400 to Sun Aug 18 12:22:00 2019 -0700
+De Fri Jun 21 22:31:55 2019 -0400 até Sun Aug 18 12:22:00 2019 -0700
 
 
 [28090](https://github.com/flutter/flutter/pull/28090) Ensure that cache dirs and files have appropriate permissions (cla: yes, tool)
@@ -1046,9 +1047,9 @@ From Fri Jun 21 22:31:55 2019 -0400 to Sun Aug 18 12:22:00 2019 -0700
 
 
 
-## PRs closed in this release of `flutter/engine`
+## PRs fechados nesta versão de `flutter/engine`
 
-From Fri Jun 21 22:31:55 2019 -0400 to Sun Aug 18 12:22:00 2019 -0700
+De Fri Jun 21 22:31:55 2019 -0400 até Sun Aug 18 12:22:00 2019 -0700
 
 
 [9041](https://github.com/flutter/engine/pull/9041) TextStyle.height property as a multiple of font size instead of multiple of ascent+descent+leading. (affects: text input, cla: yes, prod: API break)

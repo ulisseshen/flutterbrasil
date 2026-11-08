@@ -1,21 +1,17 @@
 ---
-title: Flutter 1.22.0 release notes
-shortTitle: 1.22.0 release notes
-description: Release notes for Flutter 1.22.0.
+title: Notas de lançamento do Flutter 1.22.0
+shortTitle: Notas de lançamento 1.22.0
+description: Notas de lançamento do Flutter 1.22.0.
 skipTemplateRendering: true
 ia-translate: true
 ---
 
-<!-- ia-translate: This file is marked for translation but requires a dedicated session due to size (8000+ lines).
-It contains extensive changelog and release notes for Flutter versions.
-To be translated following .claude/agents/translate-pt-br.md rules in a future translation session. -->
-
-This page has release notes for 1.22.0.
-For information about subsequent bug-fix releases, see our [CHANGELOG][]
+Esta página contém as notas de lançamento da versão 1.22.0.
+Para informações sobre lançamentos de correção de bugs subsequentes, consulte o [CHANGELOG][] do Flutter.
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/master/CHANGELOG.md
 
-## Merged PRs by labels for `flutter/flutter`
+## PRs incluídos por label em `flutter/flutter`
 
 ### framework - 428 pull request(s)
 
@@ -2774,7 +2770,7 @@ For information about subsequent bug-fix releases, see our [CHANGELOG][]
 [65234](https://github.com/flutter/flutter/pull/65234) Update create templates to 1.0.0 (cla: yes, tool)
 
 
-[65426](https://github.com/flutter/flutter/pull/65426) [flutter_tools] remove advice about running sdkmanager directly in favor of directing to flutterbrasil.dev (cla: yes, tool, waiting for tree to go green)
+[65426](https://github.com/flutter/flutter/pull/65426) [flutter_tools] remove advice about running sdkmanager directly in favor of directing to flutter.dev (cla: yes, tool, waiting for tree to go green)
 
 
 [65435](https://github.com/flutter/flutter/pull/65435) [flutter_tools] alternate the name of the dill file used for hot restart (cla: yes, tool)
@@ -4699,7 +4695,7 @@ For information about subsequent bug-fix releases, see our [CHANGELOG][]
 
 
 
-## Merged PRs by labels for `flutter/engine`
+## PRs incluídos por label em `flutter/engine`
 
 
 
@@ -5361,7 +5357,7 @@ For information about subsequent bug-fix releases, see our [CHANGELOG][]
 
 
 
-## Merged PRs by labels for `flutter/plugins`
+## PRs incluídos por label em `flutter/plugins`
 
 
 
@@ -5416,8 +5412,8 @@ For information about subsequent bug-fix releases, see our [CHANGELOG][]
 
 ## All merged pull requests
 
-### Merged PRs in `flutter/flutter` from 2020-07-09T05:19:00.000 to 2020-09-10T18:17:00.000
-There were 934 pull requests.
+### PRs incluídos em `flutter/flutter` de 2020-07-09T05:19:00.000 até 2020-09-10T18:17:00.000
+Foram 934 pull requests.
 
 [44980](https://github.com/flutter/flutter/pull/44980) Add padding around flutter api docs search input (cla: yes, team)
 
@@ -7051,7 +7047,7 @@ There were 934 pull requests.
 
 [65416](https://github.com/flutter/flutter/pull/65416) Re-land ScaffoldMessenger (cla: yes, f: material design, framework, waiting for tree to go green)
 
-[65426](https://github.com/flutter/flutter/pull/65426) [flutter_tools] remove advice about running sdkmanager directly in favor of directing to flutterbrasil.dev (cla: yes, tool, waiting for tree to go green)
+[65426](https://github.com/flutter/flutter/pull/65426) [flutter_tools] remove advice about running sdkmanager directly in favor of directing to flutter.dev (cla: yes, tool, waiting for tree to go green)
 
 [65434](https://github.com/flutter/flutter/pull/65434) [devicelab] Remove ~/.gradle after each devicelab task run (cla: yes, team, waiting for tree to go green)
 
@@ -7081,8 +7077,8 @@ There were 934 pull requests.
 
 [65577](https://github.com/flutter/flutter/pull/65577) Mark `platform_views_scroll_perf_ios__timeline_summary` as flaky (cla: yes, team)
 
-### Merged PRs in `flutter/engine` from 2020-07-09T05:19:00.000 to 2020-09-10T18:17:00.000
-There were 959 pull requests.
+### PRs incluídos em `flutter/engine` de 2020-07-09T05:19:00.000 até 2020-09-10T18:17:00.000
+Foram 959 pull requests.
 
 [18339](https://github.com/flutter/engine/pull/18339) Use Android R (API 30) getInsets() to compute padding (cla: yes, platform-android)
 
@@ -7928,8 +7924,8 @@ There were 959 pull requests.
 
 [21075](https://github.com/flutter/engine/pull/21075) Disable a flaky Scenarios test (cla: yes)
 
-### Merged PRs in `flutter/plugins` from 2020-07-09T05:19:00.000 to 2020-09-10T18:17:00.000
-There were 65 pull requests.
+### PRs incluídos em `flutter/plugins` de 2020-07-09T05:19:00.000 até 2020-09-10T18:17:00.000
+Foram 65 pull requests.
 
 [970](https://github.com/flutter/plugins/pull/970) [share] Add sharing file support (android & ios) (cla: yes, in review)
 

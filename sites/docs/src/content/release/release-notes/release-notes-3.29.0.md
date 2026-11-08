@@ -1,18 +1,18 @@
 ---
-ia-translate: true
 title: Notas de lançamento do Flutter 3.29.0
 shortTitle: Notas de lançamento 3.29.0
 description: Notas de lançamento do Flutter 3.29.0.
 skipTemplateRendering: true
+ia-translate: true
 ---
 
 Esta página contém as notas de lançamento da versão 3.29.0.
-Para informações sobre versões de correção de bugs subsequentes,
-confira o [CHANGELOG][CHANGELOG] do Flutter.
+Para informações sobre lançamentos de correção de bugs subsequentes,
+consulte o [CHANGELOG][] do Flutter.
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/main/CHANGELOG.md
 
-## Flutter framework
+## Framework do Flutter
 
 ### Framework
 

@@ -1,20 +1,18 @@
 ---
-title: Flutter 3.35.0 release notes
-shortTitle: 3.35.0 release notes
-description: Release notes for Flutter 3.35.0.
+title: Notas de lançamento do Flutter 3.35.0
+shortTitle: Notas de lançamento 3.35.0
+description: Notas de lançamento do Flutter 3.35.0.
 skipTemplateRendering: true
 ia-translate: true
 ---
 
-> **Note for translators**: This is a release notes file containing technical changelog entries and PR references. Future translation should focus on the section headers and introductory content while preserving all GitHub PR links, contributor mentions, and technical terms in English.
-
-This page has release notes for 3.35.0.
-For information about subsequent bug-fix releases,
-check out the Flutter [CHANGELOG][].
+Esta página contém as notas de lançamento da versão 3.35.0.
+Para informações sobre lançamentos de correção de bugs subsequentes,
+consulte o [CHANGELOG][] do Flutter.
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/main/CHANGELOG.md
 
-## What's changed
+## O que mudou
 
 ### Framework
 
@@ -759,12 +757,12 @@ check out the Flutter [CHANGELOG][].
 * [CP-beta] Add a warning on usage of `dartPluginClass: 'none'`. by @flutteractionsbot in [172498](https://github.com/flutter/flutter/pull/172498)
 * [CP-beta] Emit a warning on `--[no-]disable-dds`, preferring `--no-dds` by @flutteractionsbot in [172790](https://github.com/flutter/flutter/pull/172790)
 
-### Documentation
+### Documentação
 
 * Adding utf-8 encoding to hello world's html template by @Markzipan in [168162](https://github.com/flutter/flutter/pull/168162)
 * Update hello_world example to current layout flutter create uses by @robert-ancell in [168571](https://github.com/flutter/flutter/pull/168571)
 
-### Other changes
+### Outras mudanças
 
 * Re-disable microbenchmarks iOS. by @jonahwilliams in [166788](https://github.com/flutter/flutter/pull/166788)
 * [Impeller] disable no decal metal test. by @jonahwilliams in [166771](https://github.com/flutter/flutter/pull/166771)
@@ -1092,7 +1090,7 @@ check out the Flutter [CHANGELOG][].
 * Update engine version for 3.35-0.2.pre by @eyebrowsoffire in [172987](https://github.com/flutter/flutter/pull/172987)
 * Update engine.version again for 3.35-0.2 by @eyebrowsoffire in [173116](https://github.com/flutter/flutter/pull/173116)
 
-## New contributors
+## Novos contribuidores
 
 * @vially made their first contribution in [164455](https://github.com/flutter/flutter/pull/164455)
 * @whopavan made their first contribution in [164966](https://github.com/flutter/flutter/pull/164966)

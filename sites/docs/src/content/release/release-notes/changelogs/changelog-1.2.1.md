@@ -1,19 +1,15 @@
 ---
-title: Change log for Flutter 1.2.2
-shortTitle: 1.2.2 change log
-description: Change log for Flutter 1.2.2 containing a list of all PRs merged for this release.
+title: Registro de mudanças do Flutter 1.2.2
+shortTitle: Registro de mudanças 1.2.2
+description: Registro de mudanças do Flutter 1.2.2 com a lista de todos os PRs incluídos nesta versão.
 skipTemplateRendering: true
 ia-translate: true
 ---
 
-<!-- ia-translate: This file is marked for translation but requires a dedicated session due to size (8000+ lines).
-It contains extensive changelog and release notes for Flutter versions.
-To be translated following .claude/agents/translate-pt-br.md rules in a future translation session. -->
 
+## PRs fechados nesta versão de flutter/flutter
 
-## PRs closed in this release of flutter/flutter
-
-From Fri Nov 29 19:41:00 2018 -0800 to Thu Feb 21 20:22:00 2019 -0800
+De Fri Nov 29 19:41:00 2018 -0800 até Thu Feb 21 20:22:00 2019 -0800
 
 
 [21157](https://github.com/flutter/flutter/pull/21157) Swap scope with gesture (cla: yes, f: scrolling, framework)
@@ -1133,9 +1129,9 @@ From Fri Nov 29 19:41:00 2018 -0800 to Thu Feb 21 20:22:00 2019 -0800
 [28272](https://github.com/flutter/flutter/pull/28272) Make logcat less chatty on perf tests (cla: yes, team)
 
 
-## PRs closed in this release of flutter/engine
+## PRs fechados nesta versão de flutter/engine
 
-From Fri Nov 29 19:41:00 2018 -0800 to Thu Feb 21 20:22:00 2019 -0800
+De Fri Nov 29 19:41:00 2018 -0800 até Thu Feb 21 20:22:00 2019 -0800
 
 
 [6399](https://github.com/flutter/engine/pull/6399) System Channels, Plugins, Dart Entrypoint, FlutterFragment (cla: yes)
@@ -1720,9 +1716,9 @@ From Fri Nov 29 19:41:00 2018 -0800 to Thu Feb 21 20:22:00 2019 -0800
 
 
 
-## PRs closed in this release of flutter/plugins
+## PRs fechados nesta versão de flutter/plugins
 
-From Fri Nov 29 19:41:00 2018 -0800 to Thu Feb 21 20:22:00 2019 -0800
+De Fri Nov 29 19:41:00 2018 -0800 até Thu Feb 21 20:22:00 2019 -0800
 
 
 [690](https://github.com/flutter/plugins/pull/690) [video_player] Fix aspect ratio (cla: yes)

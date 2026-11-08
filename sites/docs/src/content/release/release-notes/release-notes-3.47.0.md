@@ -1,13 +1,14 @@
 ---
-title: Flutter 3.47.0 release notes
-shortTitle: 3.47.0 release notes
-description: Release notes for Flutter 3.47.0.
+title: Notas de lançamento do Flutter 3.47.0
+shortTitle: Notas de lançamento 3.47.0
+description: Notas de lançamento do Flutter 3.47.0.
 skipTemplateRendering: true
+ia-translate: true
 ---
 
-This page has release notes for Flutter 3.47.
+Esta página contém as notas de lançamento do Flutter 3.47.
 
-## What's changed
+## O que mudou
 
 ### Framework
 
@@ -611,13 +612,13 @@ This page has release notes for Flutter 3.47.
 * [CP-beta] Remove ancient `tools:tools` dep from `android_sdk` bundle by @cbracken in [190182](https://github.com/flutter/flutter/pull/190182)
 * [CP-beta] Add java/gradle check when gradle crashes (#189997) by @mboetger in [190364](https://github.com/flutter/flutter/pull/190364)
 
-### Documentation
+### Documentação
 
 * Make `multiple_windows` follow repo analyzer rules by @goderbauer in [184753](https://github.com/flutter/flutter/pull/184753)
 * adds linux impeller integration test for external textures by @gaaclarke in [186759](https://github.com/flutter/flutter/pull/186759)
 * Adds external texture devicelab test for windows impeller by @gaaclarke in [187886](https://github.com/flutter/flutter/pull/187886)
 
-### Other changes
+### Outras mudanças
 
 * Fixed freeze flow by @Piinks in [184793](https://github.com/flutter/flutter/pull/184793)
 * Make `windowing_test` follow repo analyzer rules by @goderbauer in [184752](https://github.com/flutter/flutter/pull/184752)
@@ -940,7 +941,7 @@ This page has release notes for Flutter 3.47.
 * [flutter-3.47-candidate.0] Update Flutter DEPS to Dart 171019fea4e9662698a006b1747bf78bfecbd041 by @flutteractionsbot in [190568](https://github.com/flutter/flutter/pull/190568)
 * [flutter-3.47-candidate.0] Sync engine.version to f88005a259ba379c2c1156178aa1870936be7b7f by @flutteractionsbot in [190585](https://github.com/flutter/flutter/pull/190585)
 
-## New contributors
+## Novos contribuidores
 
 * @trizin made their first contribution in [184057](https://github.com/flutter/flutter/pull/184057)
 * @mahi-ma made their first contribution in [184555](https://github.com/flutter/flutter/pull/184555)
@@ -992,4 +993,4 @@ This page has release notes for Flutter 3.47.
 * @richyo-codes made their first contribution in [188476](https://github.com/flutter/flutter/pull/188476)
 * @fallintoplace made their first contribution in [187353](https://github.com/flutter/flutter/pull/187353)
 
-**Full Changelog**: https://github.com/flutter/flutter/compare/3.44.0...3.47.0-0.4.pre
+**Changelog completo**: https://github.com/flutter/flutter/compare/3.44.0...3.47.0-0.4.pre

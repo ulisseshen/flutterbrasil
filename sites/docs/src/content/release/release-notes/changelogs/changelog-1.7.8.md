@@ -1,15 +1,15 @@
 ---
-ia-translate: true
 title: Registro de mudanças do Flutter 1.7.8
 shortTitle: Registro de mudanças 1.7.8
-description: Registro de mudanças do Flutter 1.7.8 contendo a lista de todos os PRs mesclados para esta versão.
+description: Registro de mudanças do Flutter 1.7.8 com a lista de todos os PRs incluídos nesta versão.
 skipTemplateRendering: true
+ia-translate: true
 ---
 
 
-## PRs fechados nesta versão do flutter/flutter
+## PRs fechados nesta versão de flutter/flutter
 
-From Wed May 1 16:56:00 2019 -0700 to Thu Jul 18 08:04:00 2019 -0700
+De Wed May 1 16:56:00 2019 -0700 até Thu Jul 18 08:04:00 2019 -0700
 
 
 [28808](https://github.com/flutter/flutter/pull/28808)  updated tearDownAll function (cla: yes, t: flutter driver, team, tool, waiting for tree to go green)
@@ -268,7 +268,7 @@ From Wed May 1 16:56:00 2019 -0700 to Thu Jul 18 08:04:00 2019 -0700
 
 [32638](https://github.com/flutter/flutter/pull/32638) Fix apidocs in _WidgetsAppState.basicLocaleListResolution (cla: yes, d: api docs, framework)
 
-[32641](https://github.com/flutter/flutter/pull/32641) Updating dartbrasil.dev related links (cla: yes, d: api docs, framework)
+[32641](https://github.com/flutter/flutter/pull/32641) Updating dart.dev related links (cla: yes, d: api docs, framework)
 
 [32654](https://github.com/flutter/flutter/pull/32654) Tabs code/doc cleanup (cla: yes, f: material design, framework)
 
@@ -878,7 +878,7 @@ From Wed May 1 16:56:00 2019 -0700 to Thu Jul 18 08:04:00 2019 -0700
 
 [34376](https://github.com/flutter/flutter/pull/34376) Add missing pieces for 'driver' support on macOS (cla: yes, tool)
 
-[34388](https://github.com/flutter/flutter/pull/34388) Change API doc link to api.dartbrasil.dev (cla: yes, d: api docs, framework)
+[34388](https://github.com/flutter/flutter/pull/34388) Change API doc link to api.dart.dev (cla: yes, d: api docs, framework)
 
 [34417](https://github.com/flutter/flutter/pull/34417) Include raw value in Diagnostics json for basic types (a: tests, cla: yes, framework)
 
@@ -1381,9 +1381,9 @@ From Wed May 1 16:56:00 2019 -0700 to Thu Jul 18 08:04:00 2019 -0700
 [36413](https://github.com/flutter/flutter/pull/36413) Revert "Roll engine f3482700474a..1af19ae67dd1 (4 commits)" (cla: yes, engine)
 
 
-## PRs fechados nesta versão do flutter/engine
+## PRs fechados nesta versão de flutter/engine
 
-From Wed May 1 16:56:00 2019 -0700 to Thu Jul 18 08:04:00 2019 -0700
+De Wed May 1 16:56:00 2019 -0700 até Thu Jul 18 08:04:00 2019 -0700
 
 
 [7847](https://github.com/flutter/engine/pull/7847) Extracted PlatformViewsChannel from PlatformViewsController. (cla: yes)
@@ -2129,9 +2129,9 @@ From Wed May 1 16:56:00 2019 -0700 to Thu Jul 18 08:04:00 2019 -0700
 [9905](https://github.com/flutter/engine/pull/9905) Respect EXIF information while decompressing images. (cla: yes)
 
 
-## PRs fechados nesta versão do flutter/plugins
+## PRs fechados nesta versão de flutter/plugins
 
-From Wed May 1 16:56:00 2019 -0700 to Thu Jul 18 08:04:00 2019 -0700
+De Wed May 1 16:56:00 2019 -0700 até Thu Jul 18 08:04:00 2019 -0700
 
 
 [826](https://github.com/flutter/plugins/pull/826) [google_maps_flutter] enable/disable indoor view (cla: yes, feature, needs love)

@@ -1,14 +1,14 @@
 ---
-ia-translate: true
 title: Notas de lançamento do Flutter 3.3.0
 shortTitle: Notas de lançamento 3.3.0
 description: Notas de lançamento do Flutter 3.3.0.
 skipTemplateRendering: true
+ia-translate: true
 ---
 
-Esta página contém as notas de lançamento para a versão 3.3.0.
-Para informações sobre os lançamentos subsequentes de correção de bugs,
-consulte nosso [CHANGELOG][CHANGELOG].
+Esta página contém as notas de lançamento da versão 3.3.0.
+Para informações sobre lançamentos de correção de bugs subsequentes,
+consulte o [CHANGELOG][] do Flutter.
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/main/CHANGELOG.md
 
@@ -435,7 +435,7 @@ As seguintes mudanças aconteceram neste lançamento:
 * [flutter_releases] Flutter beta 3.3.0-0.2.pre Framework Cherrypicks by @godofredoc in https://github.com/flutter/flutter/pull/108831
 * CP: Fix Android platform view creation flow by @stuartmorgan in https://github.com/flutter/flutter/pull/109544
 * fix flutter not finding custom device (#108884) by @zanderso in https://github.com/flutter/flutter/pull/109957
-### Ferramentas
+### Tooling
 * Run CADisableMinimumFrameDurationOnPhone migration on all example apps by @jmagman in https://github.com/flutter/flutter/pull/101314
 * Catch errors in ProxiedDevice to make sure we don't crash on errors. by @chingjun in https://github.com/flutter/flutter/pull/101332
 * Use single quotes for `dartSdkVersionBounds` by @creativecreatorormaybenot in https://github.com/flutter/flutter/pull/101270
@@ -612,11 +612,11 @@ As seguintes mudanças aconteceram neste lançamento:
 * [flutter_releases] Fix null check errors in attach command (CP of #107864) by @christopherfujino in https://github.com/flutter/flutter/pull/108394
 * CP Catch more general XmlException #106365 by @christopherfujino in https://github.com/flutter/flutter/pull/108839
 * Remove deprecated Ruby File.exists? in helper script by @jmagman in https://github.com/flutter/flutter/pull/110045
-### macOS
+### MacOS
 * macos support for image_list by @Abhishek01039 in https://github.com/flutter/flutter/pull/84899
 * [macOS] Adds macOS project files to layers example by @cbracken in https://github.com/flutter/flutter/pull/102539
 
-## Novos Contribuidores
+## Novos contribuidores
 * @matasb-google made their first contribution in https://github.com/flutter/flutter/pull/100267
 * @guillempuche made their first contribution in https://github.com/flutter/flutter/pull/100893
 * @JankoLancer made their first contribution in https://github.com/flutter/flutter/pull/100377
@@ -659,4 +659,4 @@ As seguintes mudanças aconteceram neste lançamento:
 * @kseino made their first contribution in https://github.com/flutter/flutter/pull/107059
 * @akbiggs made their first contribution in https://github.com/flutter/flutter/pull/105169
 
-**Full Changelog**: https://github.com/flutter/flutter/compare/3.0.0...3.3.0-0.5.pre
+**Changelog completo**: https://github.com/flutter/flutter/compare/3.0.0...3.3.0-0.5.pre

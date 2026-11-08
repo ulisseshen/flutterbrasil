@@ -8,13 +8,13 @@ ia-translate: true
 
 Esta página contém as notas de lançamento da versão 3.7.0.
 Para informações sobre lançamentos de correção de bugs subsequentes,
-consulte nosso [CHANGELOG][].
+consulte o [CHANGELOG][] do Flutter.
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/main/CHANGELOG.md
 
 ## O que mudou
 
-As seguintes mudanças ocorreram neste lançamento:
+As seguintes mudanças aconteceram neste lançamento:
 
 ### Framework
 * Add a matcher for Matrix4 that includes epsilon by @jonahwilliams in https://github.com/flutter/flutter/pull/107326
@@ -608,7 +608,7 @@ As seguintes mudanças ocorreram neste lançamento:
 * Fix scroll jump when NestedScrollPosition is inertia-cancelled. (#116… by @Piinks in https://github.com/flutter/flutter/pull/117343
 * Fix `NavigationRail` highlight (#117320) by @Piinks in https://github.com/flutter/flutter/pull/117344
 * Fix `InkRipple` doesn't respect `rectCallback` when rendering ink cir… by @Piinks in https://github.com/flutter/flutter/pull/117500
-### Ferramentas
+### Tooling
 * [flutter_tools] [dap] Add support for passing env variables to spawned processes by @DanTup in https://github.com/flutter/flutter/pull/107415
 * [flutter_tools] Replace android v2 embedding broken doc link by @RoyARG02 in https://github.com/flutter/flutter/pull/107456
 * Improve coverage speed by using new caching option for package:coverage by @jensjoha in https://github.com/flutter/flutter/pull/107395
@@ -877,7 +877,7 @@ As seguintes mudanças ocorreram neste lançamento:
 * Remove Apple Silicon workarounds from plugin lint test by @jmagman in https://github.com/flutter/flutter/pull/111432
 * Update macOS gallery display name by @jmagman in https://github.com/flutter/flutter/pull/113658
 
-## Novos Contribuidores
+## Novos contribuidores
 * @talisk made their first contribution in https://github.com/flutter/flutter/pull/107221
 * @0xba1 made their first contribution in https://github.com/flutter/flutter/pull/107836
 * @foongsq made their first contribution in https://github.com/flutter/flutter/pull/107201
@@ -936,4 +936,4 @@ As seguintes mudanças ocorreram neste lançamento:
 * @srujzs made their first contribution in https://github.com/flutter/flutter/pull/115094
 * @jgoyvaerts made their first contribution in https://github.com/flutter/flutter/pull/115240
 
-**Full Changelog**: https://github.com/flutter/flutter/compare/3.3.0...3.7.0-1.4.pre
+**Changelog completo**: https://github.com/flutter/flutter/compare/3.3.0...3.7.0-1.4.pre

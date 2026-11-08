@@ -1,17 +1,17 @@
 ---
 title: Notas de lançamento do Flutter 2.2.0
 shortTitle: Notas de lançamento 2.2.0
-description: Notas de lançamento para Flutter 2.2.0.
+description: Notas de lançamento do Flutter 2.2.0.
 skipTemplateRendering: true
 ia-translate: true
 ---
 
-Esta página contém notas de lançamento para 2.2.0.
-Para informações sobre lançamentos de correção de bugs subsequentes, veja nosso [CHANGELOG][]
+Esta página contém as notas de lançamento da versão 2.2.0.
+Para informações sobre lançamentos de correção de bugs subsequentes, consulte o [CHANGELOG][] do Flutter.
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/master/CHANGELOG.md
 
-## Merged PRs by labels for `flutter/flutter`
+## PRs incluídos por label em `flutter/flutter`
 
 ### framework - 397 pull request(s)
 
@@ -5325,7 +5325,7 @@ Para informações sobre lançamentos de correção de bugs subsequentes, veja n
 
 
 
-## Merged PRs by labels for `flutter/engine`
+## PRs incluídos por label em `flutter/engine`
 
 
 
@@ -11182,7 +11182,7 @@ Para informações sobre lançamentos de correção de bugs subsequentes, veja n
 
 
 
-## Merged PRs by labels for `flutter/plugins`
+## PRs incluídos por label em `flutter/plugins`
 
 
 
@@ -14553,8 +14553,8 @@ Para informações sobre lançamentos de correção de bugs subsequentes, veja n
 
 [3300](https://github.com/flutter/plugins/pull/3300) [share] Update README.md (cla: yes, p: share, submit queue)
 
-## Merged PRs in `flutter/flutter` from 2021-01-26T18:58:00.000Z to 2021-04-07T15:28:00.000
-There were 1197 pull requests.
+## PRs incluídos em `flutter/flutter` de 2021-01-26T18:58:00.000Z até 2021-04-07T15:28:00.000
+Foram 1197 pull requests.
 
 [61221](https://github.com/flutter/flutter/pull/61221) [flutter_tools] Add ARM64 Linux host and cross-building option support (a: desktop, cla: yes, platform-linux, tool)
 
@@ -16384,8 +16384,8 @@ There were 1197 pull requests.
 
 [79973](https://github.com/flutter/flutter/pull/79973) Support block delete with word and line modifiers (cla: yes, framework)
 
-## Merged PRs in `flutter/engine` from 2021-01-26T18:58:00.000Z to 2021-04-07T15:28:00.000
-There were 985 pull requests.
+## PRs incluídos em `flutter/engine` de 2021-01-26T18:58:00.000Z até 2021-04-07T15:28:00.000
+Foram 985 pull requests.
 
 [21824](https://github.com/flutter/engine/pull/21824) Add DiffContext (cla: yes, waiting for tree to go green)
 
@@ -17053,8 +17053,8 @@ There were 985 pull requests.
 
 [25462](https://github.com/flutter/engine/pull/25462) Revert "Reland: Call Dart plugin registrant if available (#23813)" (cla: yes, waiting for tree to go green)
 
-## Merged PRs in `flutter/plugins` from 2021-01-26T18:58:00.000Z to 2021-04-07T15:28:00.000
-There were 274 pull requests.
+## PRs incluídos em `flutter/plugins` de 2021-01-26T18:58:00.000Z até 2021-04-07T15:28:00.000
+Foram 274 pull requests.
 
 [2031](https://github.com/flutter/plugins/pull/2031) [url_launcher] Added a note to the README (cla: yes, in review, p: url_launcher)
 

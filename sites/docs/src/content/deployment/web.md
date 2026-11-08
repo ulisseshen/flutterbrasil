@@ -1,148 +1,149 @@
 ---
-title: Build and release a web app
-description: How to prepare for and release a web app.
+ia-translate: true
+title: Compilar e lançar um app web
+description: Como preparar e lançar um app web.
 shortTitle: Web
 ---
 
-During a typical development cycle,
-you test an app using `flutter run -d chrome`
-(for example) at the command line.
-This builds a _debug_ version of your app.
+Durante um ciclo típico de desenvolvimento,
+você testa um app usando `flutter run -d chrome`
+(por exemplo) na linha de comando.
+Isso compila uma versão _debug_ do seu app.
 
-This page helps you prepare a _release_ version
-of your app and covers the following topics:
+Esta página ajuda você a preparar uma versão _release_
+do seu app e cobre os seguintes tópicos:
 
-* [Building the app for release](#building-the-app-for-release)
-* [Web content hashing and HTTP caching](#web-content-hashing)
-* [Deploying to the web](#deploying-to-the-web)
-* [Deploying to Firebase Hosting](#deploying-to-firebase-hosting)
-* [Handling images on the web](#handling-images-on-the-web)
-* [Opting-in to WebAssembly](#opting-in-to-webassembly)
-* [Minification](#minification)
-* [Mobile browser viewport and SafeArea](#mobile-browser-viewport-and-safearea)
+* [Compilando o app para release](#building-the-app-for-release)
+* [Hashing de conteúdo web e cache HTTP](#web-content-hashing)
+* [Deploy para a web](#deploying-to-the-web)
+* [Deploy para Firebase Hosting](#deploying-to-firebase-hosting)
+* [Manipulando imagens na web](#handling-images-on-the-web)
+* [Optando pelo WebAssembly](#opting-in-to-webassembly)
+* [Minificação](#minification)
+* [Viewport de navegadores móveis e SafeArea](#mobile-browser-viewport-and-safearea)
 
-## Building the app for release
+## Compilando o app para release {:#building-the-app-for-release}
 
-Build the app for deployment using the `flutter build web` command.
+Compile o app para deployment usando o comando `flutter build web`.
 
 ```console
 flutter build web
 ```
 
-To build your application with WebAssembly (Wasm), pass the `--wasm` flag:
+Para compilar sua aplicação com WebAssembly (Wasm), passe a flag `--wasm`:
 
 ```console
 flutter build web --wasm
 ```
 
-This
-generates the app, including the assets, and places the files into the
-`/build/web` directory of the project.
+Isso
+gera o app, incluindo os assets, e coloca os arquivos no
+diretório `/build/web` do projeto.
 
-To validate the release build of your app,
-launch a web server (for example,
+Para validar o build release do seu app,
+inicie um servidor web (por exemplo,
 `python -m http.server 8000`,
-or by using the [dhttpd][] package),
-and open the /build/web directory. Navigate to
-`localhost:8000` in your browser
-(given the python SimpleHTTPServer example)
-to view the release version of your app.
+ou usando o package [dhttpd][]),
+e abra o diretório /build/web. Navegue até
+`localhost:8000` no seu navegador
+(dado o exemplo python SimpleHTTPServer)
+para visualizar a versão release do seu app.
 
-## Additional build flags
-You might need to deploy a profile or debug build for testing.
-To do this, pass the `--profile` or `--debug` flag
-to the `flutter build web` command.
-Profile builds are specialized for performance profiling using Chrome DevTools,
-and debug builds can be used to configure dart2js
-to respect assertions and change the optimization level (using the `-O` flag.)
+## Flags de build adicionais
+Você pode precisar fazer deploy de um build profile ou debug para testes.
+Para fazer isso, passe a flag `--profile` ou `--debug`
+para o comando `flutter build web`.
+Builds profile são especializados para profiling de performance usando Chrome DevTools,
+e builds debug podem ser usados para configurar dart2js
+para respeitar assertions e mudar o nível de otimização (usando a flag `-O`.)
 
-### Source maps
+### Source maps {:#source-maps}
 
-To generate source maps for symbolication in crash reporting services,
-pass the `--source-maps` flag:
+Para gerar source maps para simbolização em serviços de relatório de falhas,
+passe a flag `--source-maps`:
 
 ```console
 flutter build web --source-maps
 ```
 
-Generating source maps creates separate `.js.map` or `.wasm.map` files
-(or both, depending on your build target) in the `build/web` directory
-without adding binary overhead to the compiled output.
+Gerar source maps cria arquivos `.js.map` ou `.wasm.map` separados
+(ou ambos, dependendo do seu alvo de build) no diretório `build/web`
+sem adicionar sobrecarga binária à saída compilada.
 
-:::warning Exclude source maps from public hosting
-By default, standard web deployment tools upload all files in `build/web/`.
-If source maps are deployed publicly, browser DevTools will
-automatically download them, exposing un-minified symbol names,
-class hierarchies, and local file paths.
+:::warning Exclua source maps da hospedagem pública
+Por padrão, ferramentas padrão de deploy web fazem upload de todos os arquivos em `build/web/`.
+Se os source maps forem publicados publicamente, o DevTools do navegador
+os baixará automaticamente, expondo nomes de símbolos não minificados,
+hierarquias de classes e caminhos de arquivos locais.
 
-Upload `.map` files to your private error-monitoring service
-(such as Sentry or Datadog) during CI/CD, and exclude `*.map` files
-from public web hosting (for example, using `"ignore": ["**/*.map"]`
-in `firebase.json` or stripping them prior to deployment).
+Faça upload dos arquivos `.map` para seu serviço privado de monitoramento de erros
+(como Sentry ou Datadog) durante o CI/CD, e exclua os arquivos `*.map`
+da hospedagem web pública (por exemplo, usando `"ignore": ["**/*.map"]`
+no `firebase.json` ou removendo-os antes do deploy).
 :::
 
-### Web content hashing (--web-content-hash) {:#web-content-hashing}
+### Hashing de conteúdo web (--web-content-hash) {:#web-content-hashing}
 
 :::version-note
-Web content hashing (`--web-content-hash`) requires Flutter 3.50 or later.
+O hashing de conteúdo web (`--web-content-hash`) requer Flutter 3.50 ou posterior.
 :::
 
-To enable automatic content-based cache busting across deployments, pass
-`--web-content-hash` to `flutter build web`:
+Para habilitar o cache busting automático baseado em conteúdo entre deploys, passe
+`--web-content-hash` para `flutter build web`:
 
 ```console
 flutter build web --wasm --web-content-hash
 ```
 
-When `--web-content-hash` is enabled, Flutter embeds an 8-character truncated
-SHA-256 content hash into compiled entrypoints and all files under
-`build/web/assets/**`, and records the hashed paths in `flutter_bootstrap.js`
+Quando `--web-content-hash` está habilitado, o Flutter incorpora um hash de conteúdo
+SHA-256 truncado em 8 caracteres nos entrypoints compilados e em todos os arquivos sob
+`build/web/assets/**`, e registra os caminhos com hash em `flutter_bootstrap.js`
 (`_flutter.buildConfig`):
 
-* **Hashed immutable files (`Cache-Control: public, max-age=31536000, immutable`)**:
-  * Compiled entrypoints: `main.dart.<hash>.js`, `main.dart.<hash>.wasm`, and
-    `main.dart.<hash>.mjs` (plus `main.dart.<hash>.js.map` and
-    `main.dart.<hash>.mjs.map` if `--source-maps` is enabled).
-  * All files under `assets/**`: including `AssetManifest.<hash>.bin`,
+* **Arquivos imutáveis com hash (`Cache-Control: public, max-age=31536000, immutable`)**:
+  * Entrypoints compilados: `main.dart.<hash>.js`, `main.dart.<hash>.wasm` e
+    `main.dart.<hash>.mjs` (além de `main.dart.<hash>.js.map` e
+    `main.dart.<hash>.mjs.map` se `--source-maps` estiver habilitado).
+  * Todos os arquivos sob `assets/**`: incluindo `AssetManifest.<hash>.bin`,
     `AssetManifest.bin.<hash>.json`, `FontManifest.<hash>.json`,
-    `NOTICES.<hash>`, fonts, images, and `shaders/**`.
-* **Unhashed bootstrap and root files (`Cache-Control: max-age=0, must-revalidate` or `no-cache`)**:
+    `NOTICES.<hash>`, fontes, imagens e `shaders/**`.
+* **Arquivos de bootstrap e raiz sem hash (`Cache-Control: max-age=0, must-revalidate` ou `no-cache`)**:
   * `index.html`, `flutter_bootstrap.js`, `flutter.js`, `manifest.json`,
-    `version.json`, `404.html`, and `icons/**`.
-  * Bundled `canvaskit/**` files when building with `--no-web-resources-cdn`.
-  * `main.dart.wasm.map` when building with `--source-maps` (the `.wasm`
-    binary's `sourceMappingURL` custom section references the unhashed
-    `.wasm.map` filename).
+    `version.json`, `404.html` e `icons/**`.
+  * Arquivos `canvaskit/**` empacotados ao compilar com `--no-web-resources-cdn`.
+  * `main.dart.wasm.map` ao compilar com `--source-maps` (a seção personalizada
+    `sourceMappingURL` do binário `.wasm` referencia o nome de arquivo
+    `.wasm.map` sem hash).
 
-For a complete `firebase.json` example, refer to the [Web FAQ][web-faq-caching].
+Para um exemplo completo de `firebase.json`, consulte o [FAQ da Web][web-faq-caching].
 
 :::note
-`--web-content-hash` does not yet support deferred imports (`deferred as`) in
-either JavaScript (`dart2js`) or WebAssembly (`dart2wasm` /
-`--enable-wasm-deferred-loading`) builds.
+`--web-content-hash` ainda não suporta imports adiados (`deferred as`) em
+builds JavaScript (`dart2js`) nem WebAssembly (`dart2wasm` /
+`--enable-wasm-deferred-loading`).
 :::
 
-#### Overlay deployments for active browser tabs
+#### Deploys sobrepostos para abas ativas do navegador {:#overlay-deployments-for-active-browser-tabs}
 
-When you deploy a new release (`N`), users with an already-open browser tab
-running the previous release (`N-1`) might lazily fetch an asset, font, or
-image whose filename carries release `N-1`'s content hash.
+Quando você faz deploy de uma nova versão (`N`), usuários com uma aba do navegador já aberta
+executando a versão anterior (`N-1`) podem buscar sob demanda um asset, fonte ou
+imagem cujo nome de arquivo carrega o hash de conteúdo da versão `N-1`.
 
-To avoid mid-session `404` errors during rollouts, use an **overlay
-deployment** strategy:
+Para evitar erros `404` no meio da sessão durante rollouts, use uma estratégia de
+**deploy sobreposto** (overlay deployment):
 
-* Retain at least the previous release's (`N-1`) hashed `main.dart.*` and
-  `assets/**` files in your CDN or storage bucket alongside release `N`'s
-  hashed files (or prune old hashes after a 24–72 hour grace window).
-* Update `index.html` and `flutter_bootstrap.js` atomically last.
-* Exclude `/assets/**`, `/canvaskit/**`, `/icons/**`, and `/main.dart.*` from
-  single-page application (SPA) `/index.html` catch-all rewrites so missing
-  assets return a genuine `404` instead of `200 text/html`.
+* Mantenha pelo menos os arquivos `main.dart.*` e `assets/**` com hash da versão
+  anterior (`N-1`) no seu CDN ou bucket de armazenamento junto com os arquivos
+  com hash da versão `N` (ou remova hashes antigos após uma janela de tolerância de 24–72 horas).
+* Atualize `index.html` e `flutter_bootstrap.js` atomicamente por último.
+* Exclua `/assets/**`, `/canvaskit/**`, `/icons/**` e `/main.dart.*` das
+  regras de rewrite catch-all para `/index.html` de single-page applications (SPA),
+  para que assets ausentes retornem um `404` genuíno em vez de `200 text/html`.
 
-#### Custom service workers (`precache_manifest.json`)
+#### Service workers personalizados (`precache_manifest.json`) {:#custom-service-workers-precache_manifest-json}
 
-When `--web-content-hash` is enabled, `flutter build web` writes a bill of
-materials to `build/web/precache_manifest.json`:
+Quando `--web-content-hash` está habilitado, `flutter build web` grava uma lista de
+materiais em `build/web/precache_manifest.json`:
 
 ```json title="build/web/precache_manifest.json"
 {
@@ -164,148 +165,148 @@ materials to `build/web/precache_manifest.json`:
 }
 ```
 
-Custom PWA service workers or [Workbox][] pipelines can consume
-`precache_manifest.json` directly (passing `revision: entry.urlHashed ? null : entry.hash`
-so URL-hashed files aren't double-cached with query parameters).
+Service workers de PWA personalizados ou pipelines do [Workbox][] podem consumir
+`precache_manifest.json` diretamente (passando `revision: entry.urlHashed ? null : entry.hash`
+para que arquivos com hash na URL não sejam armazenados em cache duas vezes com parâmetros de query).
 
-## Opting-in to WebAssembly
+## Optando pelo WebAssembly {:#opting-in-to-webassembly}
 
-To compile and optimize your app for WebAssembly,
-use the `--wasm` flag when running or building.
+Para compilar e otimizar seu app para WebAssembly,
+use a flag `--wasm` ao executar ou compilar.
 
-For more information, see [Support for WebAssembly (Wasm)][Wasm support].
+Para mais informações, veja [Suporte para WebAssembly (Wasm)][Wasm support].
 
-:::important Serving WebAssembly builds
-WebAssembly builds use multiple threads for improved rendering performance
-and require your web server to return specific COEP/COOP HTTP response headers
-(`Cross-Origin-Embedder-Policy: credentialless` and
+:::important Servindo builds WebAssembly
+Builds WebAssembly usam múltiplas threads para melhorar a performance de renderização
+e exigem que seu servidor web retorne cabeçalhos de resposta HTTP COEP/COOP específicos
+(`Cross-Origin-Embedder-Policy: credentialless` e
 `Cross-Origin-Opener-Policy: same-origin`).
-For full details, see [Support for WebAssembly (Wasm)][Wasm support].
+Para todos os detalhes, veja [Suporte para WebAssembly (Wasm)][Wasm support].
 :::
 
-## Deploying to the web
+## Deploy para a web {:#deploying-to-the-web}
 
-When you are ready to deploy your app,
-upload the release bundle
-to Firebase, the cloud, or a similar service.
-Here are a few possibilities, but there are
-many others:
+Quando estiver pronto para fazer deploy do seu app,
+faça upload do bundle release
+para Firebase, nuvem, ou um serviço similar.
+Aqui estão algumas possibilidades, mas há
+muitas outras:
 
 * [Firebase Hosting][]
 * [GitHub Pages][]
 * [Google Cloud Hosting][]
 
-## Deploying to Firebase Hosting
+## Deploy para Firebase Hosting {:#deploying-to-firebase-hosting}
 
-You can use the Firebase CLI to build and release your Flutter app with Firebase
+Você pode usar o Firebase CLI para compilar e lançar seu app Flutter com Firebase
 Hosting.
 
-### Before you begin
+### Antes de começar
 
-To get started, [install or update][install-firebase-cli] the Firebase CLI:
+Para começar, [instale ou atualize][install-firebase-cli] o Firebase CLI:
 
 ```console
 npm install -g firebase-tools
 ```
 
-### Initialize Firebase
+### Inicializar Firebase
 
-1. Enable the web frameworks preview to the [Firebase framework-aware CLI][]:
+1. Habilite o preview de web frameworks para o [CLI framework-aware do Firebase][Firebase framework-aware CLI]:
 
     ```console
     firebase experiments:enable webframeworks
     ```
 
-2. In an empty directory or an existing Flutter project, run the initialization
-command:
+2. Em um diretório vazio ou um projeto Flutter existente, execute o comando de
+inicialização:
 
     ```console
     firebase init hosting
     ```
 
-3. Answer `yes` when asked if you want to use a web framework.
+3. Responda `yes` quando perguntado se você quer usar um web framework.
 
-4. If you're in an empty directory,
-    you'll be asked to choose your web framework. Choose `Flutter Web`.
+4. Se você está em um diretório vazio,
+    você será perguntado para escolher seu web framework. Escolha `Flutter Web`.
 
-5. Choose your hosting source directory; this could be an existing flutter app.
+5. Escolha seu diretório fonte de hospedagem; isso pode ser um app flutter existente.
 
-6. Select a region to host your files.
+6. Selecione uma região para hospedar seus arquivos.
 
-7. Choose whether to set up automatic builds and deploys with GitHub.
+7. Escolha se deseja configurar builds e deploys automáticos com GitHub.
 
-8. Deploy the app to Firebase Hosting:
+8. Faça deploy do app para Firebase Hosting:
 
     ```console
     firebase deploy
     ```
 
-    Running this command automatically runs `flutter build web --release`,
-    so you don't have to build your app in a separate step.
+    Executar este comando automaticamente executa `flutter build web --release`,
+    então você não precisa compilar seu app em um passo separado.
 
-To learn more, visit the official [Firebase Hosting][] documentation for
-Flutter on the web.
+Para saber mais, visite a documentação oficial do [Firebase Hosting][] para
+Flutter na web.
 
-## Handling images on the web
+## Manipulando imagens na web {:#handling-images-on-the-web}
 
-The web supports the standard `Image` widget to display images.
-By design, web browsers run untrusted code without harming the host computer.
-This limits what you can do with images compared to mobile and desktop platforms.
+A web suporta o widget `Image` padrão para exibir imagens.
+Por design, navegadores web executam código não confiável sem prejudicar o computador host.
+Isso limita o que você pode fazer com imagens comparado a plataformas mobile e desktop.
 
-For more information, see [Displaying images on the web][].
+Para mais informações, veja [Displaying images on the web][].
 
-## Minification
+## Minificação {:#minification}
 
-To improve app start-up the compiler reduces the size of the compiled code by
-removing unused code (known as _tree shaking_), and by renaming code symbols to
-shorter strings (e.g. by renaming `AlignmentGeometryTween` to something like
-`ab`). Which of these two optimizations are applied depends on the build mode:
+Para melhorar o start-up do app, o compilador reduz o tamanho do código compilado
+removendo código não utilizado (conhecido como _tree shaking_), e renomeando símbolos de código para
+strings mais curtas (por exemplo, renomeando `AlignmentGeometryTween` para algo como
+`ab`). Quais dessas duas otimizações são aplicadas depende do modo de build:
 
-| Type of web app build | Code minified? | Tree shaking performed? |
+| Tipo de build de app web | Código minificado? | Tree shaking executado? |
 |-----------------------|----------------|-------------------------|
-| debug                 | No             | No                      |
-| profile               | No             | Yes                     |
-| release               | Yes            | Yes                     |
+| debug                 | Não             | Não                      |
+| profile               | Não             | Sim                     |
+| release               | Sim            | Sim                     |
 
-## Mobile browser viewport and SafeArea {:#mobile-browser-viewport-and-safearea}
+## Viewport de navegadores móveis e SafeArea {:#mobile-browser-viewport-and-safearea}
 
 :::version-note
-Support for `viewport-fit=cover` `SafeArea` insets and URL percent-encoding
-preservation in browser history requires Flutter 3.50 or later.
+O suporte a insets de `SafeArea` com `viewport-fit=cover` e a preservação da
+codificação percentual de URLs no histórico do navegador requerem Flutter 3.50 ou posterior.
 :::
 
-On mobile browsers (such as iOS Safari and Android Chrome) with display cutouts,
-notches, or home indicators, Flutter web defaults to rendering within the
-browser's safe area (`viewport-fit=contain`).
+Em navegadores móveis (como o Safari do iOS e o Chrome do Android) com recortes de tela,
+notches ou indicadores de início, o Flutter web por padrão renderiza dentro da
+área segura do navegador (`viewport-fit=contain`).
 
-To render edge-to-edge across the entire screen and populate Flutter's
-[`SafeArea`][] and [`MediaQuery.paddingOf`][] with the browser's CSS
-`env(safe-area-inset-*)` insets, add a `<meta name="viewport">` tag with
-`viewport-fit=cover` inside the `<head>` of your `web/index.html` file (included
-as a commented-out option in newly created `web/index.html` templates):
+Para renderizar de borda a borda em toda a tela e preencher o [`SafeArea`][]
+e o [`MediaQuery.paddingOf`][] do Flutter com os insets CSS
+`env(safe-area-inset-*)` do navegador, adicione uma tag `<meta name="viewport">` com
+`viewport-fit=cover` dentro do `<head>` do seu arquivo `web/index.html` (incluída
+como uma opção comentada nos templates `web/index.html` recém-criados):
 
 ```html title="web/index.html"
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 ```
 
 :::note
-If an existing web app already includes `viewport-fit=cover` in
-`web/index.html`, Flutter 3.50 and later honors it instead of stripping it,
-which causes the app to render behind device cutouts unless UI controls are
-wrapped in a [`SafeArea`][] widget. For migration details, refer to the
-[`viewport-fit=cover` SafeArea breaking change guide][viewport-fit-breaking].
+Se um web app existente já inclui `viewport-fit=cover` em
+`web/index.html`, o Flutter 3.50 e posterior o respeita em vez de removê-lo,
+o que faz o app renderizar atrás dos recortes do dispositivo, a menos que os controles de UI estejam
+envolvidos em um widget [`SafeArea`][]. Para detalhes de migração, consulte o
+[guia da breaking change de SafeArea com `viewport-fit=cover`][viewport-fit-breaking].
 :::
 
-### URL percent-encoding in browser history
+### Codificação percentual de URLs no histórico do navegador {:#url-percent-encoding-in-browser-history}
 
-In Flutter 3.50 and later, route strings passed to
-`SystemNavigator.routeInformationUpdated` preserve percent-encoded sequences
-(such as `%2F`, `%26`, `%23`, and `%20`) when written to the browser's URL bar
-and history, rather than decoding them using `Uri.decodeComponent`.
+No Flutter 3.50 e posterior, strings de rota passadas para
+`SystemNavigator.routeInformationUpdated` preservam sequências codificadas em porcentagem
+(como `%2F`, `%26`, `%23` e `%20`) quando gravadas na barra de URL do navegador
+e no histórico, em vez de decodificá-las usando `Uri.decodeComponent`.
 
-## Embedding a Flutter app into an HTML page
+## Incorporando um app Flutter em uma página HTML {:#embedding-a-flutter-app-into-an-html-page}
 
-See [Embedding Flutter web][].
+Veja [Embedding Flutter web][].
 
 [Embedding Flutter web]: /platform-integration/web/embedding-flutter-web
 

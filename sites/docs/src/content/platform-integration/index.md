@@ -1,33 +1,34 @@
 ---
-title: Build for and integrate with multiple platforms
-shortTitle: Platform integration
+title: Construa e integre com múltiplas plataformas
+shortTitle: Integração de plataforma
 description: >-
-  Learn how to develop for different platforms and
-  integrate with platform-specific features in Flutter apps.
+  Aprenda como desenvolver para diferentes plataformas e
+  integrar com recursos específicos de plataforma em aplicativos Flutter.
+ia-translate: true
 ---
 
-Flutter enables you to build, test, and deploy beautiful, natively compiled,
-multi-platform applications from a single codebase.
+O Flutter permite que você construa, teste e implante aplicativos bonitos, compilados nativamente,
+multiplataforma a partir de uma única base de código.
 
-## Overview
+## Visão geral
 
-Flutter and its core packages often automatically support and integrate
-with Flutter's officially [supported platforms][].
-Some platforms require you to [set up additional tooling](#setup),
-but once your development environment is set up,
-Flutter apps are usually functional across platforms out of the box.
+O Flutter e seus pacotes principais frequentemente suportam e integram automaticamente
+com as [supported platforms][] oficialmente suportadas pelo Flutter.
+Algumas plataformas exigem que você [configure ferramentas adicionais](#setup),
+mas uma vez que seu ambiente de desenvolvimento esteja configurado,
+os aplicativos Flutter geralmente são funcionais em todas as plataformas imediatamente.
 
-Occasionally you need to integrate with platform-specific functionality.
-For example, you might want to use a native library that's
-only available on iOS and iPadOS.
-For many use cases, you can find and use one of the many [Flutter plugins][]
-provided by the Flutter team and the amazing Flutter community.
-If none of them meet your needs, you can explore [Native interop][],
-[write platform-specific code][], or [create your own plugin][].
+Ocasionalmente, você precisa integrar com funcionalidades específicas da plataforma.
+Por exemplo, você pode querer usar uma biblioteca nativa que está
+disponível apenas no iOS e iPadOS.
+Para muitos casos de uso, você pode encontrar e usar um dos muitos [Flutter plugins][]
+fornecidos pela equipe do Flutter e pela incrível comunidade Flutter.
+Se nenhum deles atender às suas necessidades, você pode explorar o [interop nativo][Native interop],
+[write platform-specific code][] ou [create your own plugin][].
 
 :::tip
-If you're exploring building your app for multiple platforms,
-also consider building your UI with [adaptive and responsive design][] in mind.
+Se você está explorando a construção de seu aplicativo para múltiplas plataformas,
+considere também construir sua UI com [adaptive and responsive design][] em mente.
 :::
 
 [supported platforms]: /reference/supported-platforms
@@ -37,15 +38,15 @@ also consider building your UI with [adaptive and responsive design][] in mind.
 [create your own plugin]: /packages-and-plugins/developing-packages
 [adaptive and responsive design]: /ui/adaptive-responsive/
 
-## Set up platform development {:#setup}
+## Configure o desenvolvimento de plataforma {:#setup}
 
-While Flutter apps can be built for a variety of [supported platforms][]
-with little to no modifications to your code,
-your development environment might require additional setup
-when targeting a new platform.
+Embora os aplicativos Flutter possam ser construídos para uma variedade de [supported platforms][]
+com poucas ou nenhuma modificação no seu código,
+seu ambiente de desenvolvimento pode exigir configuração adicional
+ao direcionar uma nova plataforma.
 
-To set up development for an additional platform,
-select the platform from the following:
+Para configurar o desenvolvimento para uma plataforma adicional,
+selecione a plataforma a seguir:
 
 <div class="card-grid">
   <a class="card outlined-card" href="/platform-integration/android/setup">
@@ -54,7 +55,7 @@ select the platform from the following:
       <span class="card-subtitle">On any device</span>
     </div>
     <div class="card-content">
-      <p>Set up your development environment to build Flutter apps for Android.</p>
+      <p>Configure seu ambiente de desenvolvimento para construir aplicativos Flutter para Android.</p>
     </div>
   </a>
   <a class="card outlined-card" href="/platform-integration/ios/setup">
@@ -63,7 +64,7 @@ select the platform from the following:
       <span class="card-subtitle">On macOS only</span>
     </div>
     <div class="card-content">
-      <p>Set up your development environment to build Flutter apps for iOS.</p>
+      <p>Configure seu ambiente de desenvolvimento para construir aplicativos Flutter para iOS.</p>
     </div>
   </a>
   <a class="card outlined-card" href="/platform-integration/web/setup">
@@ -72,7 +73,7 @@ select the platform from the following:
       <span class="card-subtitle">On any device</span>
     </div>
     <div class="card-content">
-      <p>Set up your development environment to build Flutter apps for the web.</p>
+      <p>Configure seu ambiente de desenvolvimento para construir aplicativos Flutter para a web.</p>
     </div>
   </a>
   <a class="card outlined-card" href="/platform-integration/windows/setup">
@@ -81,7 +82,7 @@ select the platform from the following:
       <span class="card-subtitle">On Windows only</span>
     </div>
     <div class="card-content">
-      <p>Set up your development environment to build Flutter apps for Windows.</p>
+      <p>Configure seu ambiente de desenvolvimento para construir aplicativos Flutter para Windows.</p>
     </div>
   </a>
   <a class="card outlined-card" href="/platform-integration/macos/setup">
@@ -90,7 +91,7 @@ select the platform from the following:
       <span class="card-subtitle">On macOS only</span>
     </div>
     <div class="card-content">
-      <p>Set up your development environment to build Flutter apps for macOS.</p>
+      <p>Configure seu ambiente de desenvolvimento para construir aplicativos Flutter para macOS.</p>
     </div>
   </a>
   <a class="card outlined-card" href="/platform-integration/linux/setup">
@@ -99,23 +100,23 @@ select the platform from the following:
       <span class="card-subtitle">On Linux only</span>
     </div>
     <div class="card-content">
-      <p>Set up your development environment to build Flutter apps for Linux.</p>
+      <p>Configure seu ambiente de desenvolvimento para construir aplicativos Flutter para Linux.</p>
     </div>
   </a>
 </div>
 
-## Integrate with each platform {:#integrate}
+## Integre com cada plataforma {:#integrate}
 
-If the situation you're trying to solve is not
-covered by an existing [Flutter plugin][],
-check out the following guides to learn how to
-integrate with each of the supported platforms.
+Se a situação que você está tentando resolver não é
+coberta por um [Flutter plugin][] existente,
+confira os guias a seguir para aprender como
+integrar com cada uma das plataformas suportadas.
 
 [Flutter plugin]: /packages-and-plugins/using-packages#searching-for-packages
 
-### Integrate with Android {:#android}
+### Integre com Android {:#android}
 
-Learn how to add custom integrations with Android to your Flutter app.
+Aprenda como adicionar integrações personalizadas com Android ao seu aplicativo Flutter.
 
 <div class="card-grid">
   <a class="card outlined-card" href="/platform-integration/android/splash-screen">
@@ -123,7 +124,7 @@ Learn how to add custom integrations with Android to your Flutter app.
       <span class="card-title">Add a splash screen</span>
     </div>
     <div class="card-content">
-      <p>Learn how to add a splash screen to your app on Android.</p>
+      <p>Aprenda como adicionar uma splash screen ao seu aplicativo no Android.</p>
     </div>
   </a>
   <a class="card outlined-card" href="/platform-integration/android/predictive-back">
@@ -131,7 +132,7 @@ Learn how to add custom integrations with Android to your Flutter app.
       <span class="card-title">Support predictive back</span>
     </div>
     <div class="card-content">
-      <p>Learn how to add the predictive back gesture to your app on Android.</p>
+      <p>Aprenda como adicionar o gesto de voltar preditivo ao seu aplicativo no Android.</p>
     </div>
   </a>
   <a class="card outlined-card" href="/platform-integration/android/call-jetpack-apis">
@@ -139,7 +140,7 @@ Learn how to add custom integrations with Android to your Flutter app.
       <span class="card-title">Call JetPack APIs</span>
     </div>
     <div class="card-content">
-      <p>Learn how the latest Android APIs in your app from Dart.</p>
+      <p>Aprenda como usar as APIs Android mais recentes no seu aplicativo a partir do Dart.</p>
     </div>
   </a>
   <a class="card outlined-card" href="/interop/bind-native-code">
@@ -147,7 +148,7 @@ Learn how to add custom integrations with Android to your Flutter app.
       <span class="card-title">Bind to native code</span>
     </div>
     <div class="card-content">
-      <p>Learn how to bind to native code from your app on Android.</p>
+      <p>Aprenda como vincular a código nativo do seu aplicativo no Android.</p>
     </div>
   </a>
   <a class="card outlined-card" href="/platform-integration/android/platform-views">
@@ -155,7 +156,7 @@ Learn how to add custom integrations with Android to your Flutter app.
       <span class="card-title">Embed an Android view</span>
     </div>
     <div class="card-content">
-      <p>Learn how to host native Android views in your app.</p>
+      <p>Aprenda como hospedar views nativas do Android no seu aplicativo.</p>
     </div>
   </a>
   <a class="card outlined-card" href="/platform-integration/android/compose-activity">
@@ -163,7 +164,7 @@ Learn how to add custom integrations with Android to your Flutter app.
       <span class="card-title">Launch a Compose activity</span>
     </div>
     <div class="card-content">
-      <p>Learn how to launch a Jetpack Compose activity from your app.</p>
+      <p>Aprenda como iniciar uma activity Jetpack Compose do seu aplicativo.</p>
     </div>
   </a>
   <a class="card outlined-card" href="/platform-integration/android/local-network-permission">
@@ -171,14 +172,14 @@ Learn how to add custom integrations with Android to your Flutter app.
       <span class="card-title">Request local network permissions</span>
     </div>
     <div class="card-content">
-      <p>Learn how to handle Android local network permissions in Flutter.</p>
+      <p>Aprenda como lidar com as permissões de rede local do Android no Flutter.</p>
     </div>
   </a>
 </div>
 
-### Integrate with iOS {:#ios}
+### Integre com iOS {:#ios}
 
-Learn how to add custom integrations with iOS to your Flutter app.
+Aprenda como adicionar integrações personalizadas com iOS ao seu aplicativo Flutter.
 
 <div class="card-grid">
   <a class="card outlined-card" href="/platform-integration/ios/launch-screen">
@@ -186,7 +187,7 @@ Learn how to add custom integrations with iOS to your Flutter app.
       <span class="card-title">Add a launch screen</span>
     </div>
     <div class="card-content">
-      <p>Learn how to add a launch screen to your app on iOS.</p>
+      <p>Aprenda como adicionar uma launch screen ao seu aplicativo no iOS.</p>
     </div>
   </a>
   <a class="card outlined-card" href="/platform-integration/ios/apple-frameworks">
@@ -194,7 +195,7 @@ Learn how to add custom integrations with iOS to your Flutter app.
       <span class="card-title">Leverage system frameworks</span>
     </div>
     <div class="card-content">
-      <p>Learn about plugins that support functionality from native iOS frameworks.</p>
+      <p>Aprenda sobre plugins que suportam funcionalidades de frameworks nativos do iOS.</p>
     </div>
   </a>
   <a class="card outlined-card" href="/interop/bind-native-code">
@@ -202,7 +203,7 @@ Learn how to add custom integrations with iOS to your Flutter app.
       <span class="card-title">Bind to native code</span>
     </div>
     <div class="card-content">
-      <p>Learn how to bind to native code from your app on iOS.</p>
+      <p>Aprenda como vincular a código nativo do seu aplicativo no iOS.</p>
     </div>
   </a>
   <a class="card outlined-card" href="/platform-integration/ios/platform-views">
@@ -210,7 +211,7 @@ Learn how to add custom integrations with iOS to your Flutter app.
       <span class="card-title">Embed an iOS view</span>
     </div>
     <div class="card-content">
-      <p>Learn how to host native iOS views in your app.</p>
+      <p>Aprenda como hospedar views nativas do iOS no seu aplicativo.</p>
     </div>
   </a>
   <a class="card outlined-card" href="/platform-integration/ios/app-extensions">
@@ -218,15 +219,15 @@ Learn how to add custom integrations with iOS to your Flutter app.
       <span class="card-title">Add an app extension</span>
     </div>
     <div class="card-content">
-      <p>Learn how to add an iOS app extension to your app.</p>
+      <p>Aprenda como adicionar uma extensão de aplicativo iOS ao seu aplicativo.</p>
     </div>
   </a>
 </div>
 
-### Integrate with the web {:#web}
+### Integre com a web {:#web}
 
-Learn how to add custom integrations with the
-web platform to your Flutter app.
+Aprenda como adicionar integrações personalizadas com a
+plataforma web ao seu aplicativo Flutter.
 
 <div class="card-grid">
   <a class="card outlined-card" href="/platform-integration/web/initialization">
@@ -234,7 +235,7 @@ web platform to your Flutter app.
       <span class="card-title">Customize app initialization</span>
     </div>
     <div class="card-content">
-      <p>Customize how your Flutter app is initialized on the web.</p>
+      <p>Personalize como seu aplicativo Flutter é inicializado na web.</p>
     </div>
   </a>
   <a class="card outlined-card" href="/platform-integration/web/web-content-in-flutter">
@@ -242,7 +243,7 @@ web platform to your Flutter app.
       <span class="card-title">Embed web content</span>
     </div>
     <div class="card-content">
-      <p>Learn how to embed native web content in your app.</p>
+      <p>Aprenda como incorporar conteúdo web nativo no seu aplicativo.</p>
     </div>
   </a>
   <a class="card outlined-card" href="/platform-integration/web/embedding-flutter-web">
@@ -250,7 +251,7 @@ web platform to your Flutter app.
       <span class="card-title">Embed your app</span>
     </div>
     <div class="card-content">
-      <p>Learn how to embed your Flutter app in another web app.</p>
+      <p>Aprenda como incorporar seu aplicativo Flutter em outro aplicativo web.</p>
     </div>
   </a>
   <a class="card outlined-card" href="/platform-integration/web/wasm/">
@@ -258,7 +259,7 @@ web platform to your Flutter app.
       <span class="card-title">Compile to WebAssembly</span>
     </div>
     <div class="card-content">
-      <p>Learn how to take advantage of WebAssembly in your Flutter web app.</p>
+      <p>Aprenda como aproveitar o WebAssembly no seu aplicativo Flutter web.</p>
     </div>
   </a>
   <a class="card outlined-card" href="{{site.dart-site}}/interop/js-interop" target="_blank">
@@ -269,14 +270,14 @@ web platform to your Flutter app.
       </span>
     </div>
     <div class="card-content">
-      <p>Learn how to integrate with JavaScript from your Dart code.</p>
+      <p>Aprenda como integrar com JavaScript a partir do seu código Dart.</p>
     </div>
   </a>
 </div>
 
-### Integrate with Windows {:#windows}
+### Integre com Windows {:#windows}
 
-Learn how to add custom integrations with Windows to your Flutter app.
+Aprenda como adicionar integrações personalizadas com Windows ao seu aplicativo Flutter.
 
 <div class="card-grid">
   <a class="card outlined-card" href="/platform-integration/windows/building/#integrating-with-windows">
@@ -284,7 +285,7 @@ Learn how to add custom integrations with Windows to your Flutter app.
       <span class="card-title">Bind to native code</span>
     </div>
     <div class="card-content">
-      <p>Learn how to bind to native C code from your app on Windows.</p>
+      <p>Aprenda como vincular a código C nativo do seu aplicativo no Windows.</p>
     </div>
   </a>
   <a class="card outlined-card" href="/platform-integration/windows/building/#distributing-windows-apps">
@@ -292,7 +293,7 @@ Learn how to add custom integrations with Windows to your Flutter app.
       <span class="card-title">Distribute your app</span>
     </div>
     <div class="card-content">
-      <p>Learn about different options for distributing your app on Windows.</p>
+      <p>Aprenda sobre diferentes opções para distribuir seu aplicativo no Windows.</p>
     </div>
   </a>
   <a class="card outlined-card" href="platform-integration/windows/building#supporting-windows-ui-guidelines">
@@ -300,14 +301,14 @@ Learn how to add custom integrations with Windows to your Flutter app.
       <span class="card-title">Follow Windows UI conventions</span>
     </div>
     <div class="card-content">
-      <p>Learn different techniques to integrate with the Windows look and feel.</p>
+      <p>Aprenda diferentes técnicas para integrar com a aparência do Windows.</p>
     </div>
   </a>
 </div>
 
-### Integrate with macOS {:#macos}
+### Integre com macOS {:#macos}
 
-Learn how to add custom integrations with macOS to your Flutter app.
+Aprenda como adicionar integrações personalizadas com macOS ao seu aplicativo Flutter.
 
 <div class="card-grid">
   <a class="card outlined-card" href="/interop/bind-native-code">
@@ -315,7 +316,7 @@ Learn how to add custom integrations with macOS to your Flutter app.
       <span class="card-title">Bind to native code</span>
     </div>
     <div class="card-content">
-      <p>Learn how to bind to native code from your app on macOS.</p>
+      <p>Aprenda como vincular a código nativo do seu aplicativo no macOS.</p>
     </div>
   </a>
   <a class="card outlined-card" href="/platform-integration/macos/platform-views">
@@ -323,7 +324,7 @@ Learn how to add custom integrations with macOS to your Flutter app.
       <span class="card-title">Embed a macOS view</span>
     </div>
     <div class="card-content">
-      <p>Learn how to host native macOS views in your app.</p>
+      <p>Aprenda como hospedar views nativas do macOS no seu aplicativo.</p>
     </div>
   </a>
   <a class="card outlined-card" href="/platform-integration/macos/building#entitlements-and-the-app-sandbox">
@@ -331,7 +332,7 @@ Learn how to add custom integrations with macOS to your Flutter app.
       <span class="card-title">Set up macOS entitlements</span>
     </div>
     <div class="card-content">
-      <p>Learn how to enable specific capabilities and services for your app.</p>
+      <p>Aprenda como habilitar capacidades e serviços específicos para seu aplicativo.</p>
     </div>
   </a>
   <a class="card outlined-card" href="/platform-integration/macos/building#integrating-with-macos-look-and-feel">
@@ -339,14 +340,14 @@ Learn how to add custom integrations with macOS to your Flutter app.
       <span class="card-title">Integrate with the macOS visual style</span>
     </div>
     <div class="card-content">
-      <p>Learn different techniques to integrate with the macOS look and feel.</p>
+      <p>Aprenda diferentes técnicas para integrar com a aparência do macOS.</p>
     </div>
   </a>
 </div>
 
-### Integrate with Linux {:#linux}
+### Integre com Linux {:#linux}
 
-Learn how to add custom integrations with Linux to your Flutter app.
+Aprenda como adicionar integrações personalizadas com Linux ao seu aplicativo Flutter.
 
 <div class="card-grid">
   <a class="card outlined-card" href="/platform-integration/linux/building#integrate-with-linux">
@@ -354,7 +355,7 @@ Learn how to add custom integrations with Linux to your Flutter app.
       <span class="card-title">Bind to native code</span>
     </div>
     <div class="card-content">
-      <p>Learn how to use and bind to native Linux libraries and code.</p>
+      <p>Aprenda como usar e vincular a bibliotecas e código nativos do Linux.</p>
     </div>
   </a>
   <a class="card outlined-card" href="/platform-integration/linux/building#prepare-linux-apps-for-distribution">
@@ -362,7 +363,7 @@ Learn how to add custom integrations with Linux to your Flutter app.
       <span class="card-title">Prepare for distribution</span>
     </div>
     <div class="card-content">
-      <p>Prepare your Flutter app for distributing to Linux users.</p>
+      <p>Prepare seu aplicativo Flutter para distribuição a usuários Linux.</p>
     </div>
   </a>
   <a class="card outlined-card" href="/deployment/linux/">
@@ -370,7 +371,7 @@ Learn how to add custom integrations with Linux to your Flutter app.
       <span class="card-title">Deploy to the Snap Store</span>
     </div>
     <div class="card-content">
-      <p>Learn how to deploy your Linux desktop app to the Snap Store.</p>
+      <p>Aprenda como implantar seu aplicativo desktop Linux na Snap Store.</p>
     </div>
   </a>
 </div>

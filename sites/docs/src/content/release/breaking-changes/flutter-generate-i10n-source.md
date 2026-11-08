@@ -1,49 +1,50 @@
 ---
-title: Localized messages are generated into source, not a synthetic package
+title: Mensagens localizadas são geradas no código fonte, não em um pacote sintético
 description: >-
-  When using `package:flutter_localizations`, the default generated location
-  (and eventually, only possible location) is within your source (`lib/`)
-  directory, and not the synthetic package `package:flutter_gen`.
+  Ao usar `package:flutter_localizations`, o local gerado padrão
+  (e eventualmente, único local possível) é dentro do seu diretório de código fonte (`lib/`),
+  e não o pacote sintético `package:flutter_gen`.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-The `flutter` tool will no longer generate a synthetic `package:flutter_gen`
-or modify the `package_config.json` of the app.
+A ferramenta `flutter` não gerará mais um `package:flutter_gen` sintético
+ou modificará o `package_config.json` do aplicativo.
 
-Applications or tools that referenced `package:flutter_gen` should instead
-reference source files generated into the app's source directory directly.
+Aplicativos ou ferramentas que referenciavam `package:flutter_gen` devem, em vez disso,
+referenciar arquivos de código fonte gerados diretamente no diretório de código fonte do aplicativo.
 
-In addition, the property `generate: true` is now required when using generated
-l10n source.
+Além disso, a propriedade `generate: true` agora é obrigatória ao usar código fonte
+l10n gerado.
 
-## Background
+## Contexto
 
-`flutter_gen` is a virtual (synthetic) package that is
-created by the `flutter` command-line tool to allow developers to
-import that package to access generated symbols and functionality,
-such as for [internationalization][].
-As the package isn't listed in an app's `pubspec.yaml`, and
-is created via re-writing the generated `package_config.json` file,
-many problems have been created.
+`flutter_gen` é um pacote virtual (sintético) que é
+criado pela ferramenta de linha de comando `flutter` para permitir que os desenvolvedores
+importem esse pacote para acessar símbolos e funcionalidades gerados,
+como para [internacionalização][internationalization].
+Como o pacote não está listado no `pubspec.yaml` de um aplicativo, e
+é criado via reescrita do arquivo `package_config.json` gerado,
+muitos problemas foram criados.
 
-## Migration guide
+## Guia de migração
 
-This change only affects apps that have the
-following entry in their `pubspec.yaml`:
+Esta alteração afeta apenas aplicativos que têm a
+seguinte entrada em seu `pubspec.yaml`:
 
 ```yaml
 flutter:
   generate: true
 ```
 
-If your app previously used `gen-l10n` without this property, it is now
-required.
+Se seu aplicativo usava anteriormente `gen-l10n` sem esta propriedade, ela agora é
+obrigatória.
 
-A synthetic package (`package:flutter_gen`) is
-created and referenced by the app:
+Um pacote sintético (`package:flutter_gen`) é
+criado e referenciado pelo aplicativo:
 
 ```dart
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -55,10 +56,10 @@ const MaterialApp(
 );
 ```
 
-To migrate away from importing `package:flutter_gen`:
+Para migrar da importação de `package:flutter_gen`:
 
- 1. **Update configuration**. Specify `synthetic-package: false` in the
-    accompanying [`l10n.yaml`][] file:
+ 1. **Atualize a configuração**. Especifique `synthetic-package: false` no
+    arquivo [`l10n.yaml`][] correspondente:
 
     ```yaml title="l10n.yaml"
     synthetic-package: false
@@ -70,8 +71,8 @@ To migrate away from importing `package:flutter_gen`:
     output-dir: lib/src/generated/i18n
     ```
 
- 2. **Update imports**. Update your Dart import statements to point to the
-    new location of the generated files:
+ 2. **Atualize os imports**. Atualize suas declarações de import do Dart para apontar para o
+    novo local dos arquivos gerados:
 
     ```dart
     // Before
@@ -81,26 +82,26 @@ To migrate away from importing `package:flutter_gen`:
     import 'i18n/app_localizations.dart';
     ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.28.0-0.0.pre<br>
-Stable release: 3.32.0
+Disponibilizado na versão: 3.28.0-0.0.pre<br>
+Versão estável: 3.32.0
 
-**In the next stable release after this change lands,
-`package:flutter_gen` support will be removed.**
+**Na próxima versão estável após esta alteração,
+o suporte a `package:flutter_gen` será removido.**
 
-## References
+## Referências
 
-Relevant Issues:
+Issues relevantes:
 
-- [Issue 73870][], where `package:flutter_gen` pub problems are first found.
-- [Issue 102983][], where `package:flutter_gen` problems are outlined.
-- [Issue 157819][], where `--implicit-pubspec-resolution` is discussed.
+- [Issue 73870][], onde problemas de pub do `package:flutter_gen` são encontrados pela primeira vez.
+- [Issue 102983][], onde os problemas do `package:flutter_gen` são delineados.
+- [Issue 157819][], onde `--implicit-pubspec-resolution` é discutido.
 
-Relevant Articles:
+Artigos relevantes:
 
 - [Internationalizing Flutter apps][internationalization],
-  the canonical documentation for the feature.
+  a documentação canônica para o recurso.
 
 [`l10n.yaml`]: /ui/internationalization#configuring-the-l10n-yaml-file
 [Issue 73870]: {{site.repo.flutter}}/issues/73870

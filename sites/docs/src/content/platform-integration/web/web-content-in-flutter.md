@@ -1,34 +1,35 @@
 ---
-title: Embedding web content into a Flutter web app
-shortTitle: Web content in Flutter
+ia-translate: true
+title: Incorporando conteúdo web em um app web Flutter
+shortTitle: Conteúdo web no Flutter
 description: >-
-  Learn how to embed web content, understand DOM slot layering,
-  and handle pointer events in Flutter web apps.
+  Aprenda como incorporar conteúdo web, entender a sobreposição de slots do DOM
+  e lidar com eventos de ponteiro em apps web Flutter.
 ---
 
-In some cases, Flutter web applications need to embed web content not
-rendered by Flutter. For example, embedding a `google_maps_flutter` view
-(which uses the Google Maps JavaScript SDK) or a `video_player`
-(which uses a standard `video` element).
+Em alguns casos, aplicações web Flutter precisam incorporar conteúdo web não
+renderizado pelo Flutter. Por exemplo, incorporar uma view `google_maps_flutter`
+(que usa o SDK JavaScript do Google Maps) ou um `video_player`
+(que usa um elemento `video` padrão).
 
-Flutter web can render arbitrary web content
-within the boundaries of a `Widget`,
-and the primitives used to implement the example packages mentioned previously
-are available to all Flutter web applications.
+Flutter web pode renderizar conteúdo web arbitrário
+dentro dos limites de um `Widget`,
+e as primitivas usadas para implementar os pacotes de exemplo mencionados anteriormente
+estão disponíveis para todas as aplicações web Flutter.
 
 ## HtmlElementView
 
-The `HtmlElementView` Flutter widget reserves a space in the layout to be
-filled with any HTML element. It has two constructors:
+O widget Flutter `HtmlElementView` reserva um espaço no layout para ser
+preenchido com qualquer elemento HTML. Ele tem dois construtores:
 
 * `HtmlElementView.fromTagName`
-* `HtmlElementView` and `registerViewFactory`
+* `HtmlElementView` e `registerViewFactory`
 
 ### `HtmlElementView.fromTagName`
 
-The [`HtmlElementView.fromTagName` constructor][] creates an HTML element from
-its `tagName`, and provides an `onElementCreated` method to configure that
-element before it's injected into the DOM:
+O [construtor `HtmlElementView.fromTagName`][`HtmlElementView.fromTagName` constructor] cria um elemento HTML a partir de
+sua `tagName`, e fornece um método `onElementCreated` para configurar esse
+elemento antes de ser injetado no DOM:
 
 ```dart
 // Create a `video` tag, and set its `src` and some `style` properties...
@@ -45,60 +46,60 @@ HtmlElementView.fromTagName(
 );
 ```
 
-To learn more about how to interact with DOM APIs,
-check out the [`HTMLVideoElement` class] in [`package:web`][].
+Para saber mais sobre como interagir com APIs DOM,
+confira a [classe `HTMLVideoElement`][`HTMLVideoElement` class] no [`package:web`][`package:web`].
 
-To learn more about the video `Object` that is cast to `web.HTMLVideoElement`,
-check out Dart's [JS Interoperability][] documentation.
+Para saber mais sobre o `Object` video que é convertido para `web.HTMLVideoElement`,
+confira a documentação [JS Interoperability][JS Interoperability] do Dart.
 
-### `HtmlElementView` and `registerViewFactory`
+### `HtmlElementView` e `registerViewFactory`
 
-If you need more control over generating the HTML code you inject,
-you can use the primitives that Flutter uses to implement
-the `fromTagName` constructor.
-In this scenario, register your own HTML element factory
-for each type of HTML content that you add to your app.
+Se você precisa de mais controle sobre a geração do código HTML que você injeta,
+pode usar as primitivas que o Flutter usa para implementar
+o construtor `fromTagName`.
+Neste cenário, registre sua própria factory de elemento HTML
+para cada tipo de conteúdo HTML que você adiciona ao seu app.
 
-The resulting code has two steps per platform view type:
+O código resultante tem duas etapas por tipo de view de plataforma:
 
-1. Register the HTML element factory using
-   `platformViewRegistry.registerViewFactory` provided by `dart:ui_web`.
-1. Place the widget with the desired `viewType` using
-   `HtmlElementView(viewType: 'viewType')` in your app's widget tree.
+1. Registre a factory de elemento HTML usando
+   `platformViewRegistry.registerViewFactory` fornecido por `dart:ui_web`.
+1. Coloque o widget com o `viewType` desejado usando
+   `HtmlElementView(viewType: 'viewType')` na árvore de widgets do seu app.
 
-For more details about this approach, check out the
-[`HtmlElementView` widget][] docs.
+Para mais detalhes sobre esta abordagem, confira
+a documentação do [widget `HtmlElementView`][`HtmlElementView` widget].
 
-## Fixing hit testing issues
+## Corrigindo problemas de hit testing {:#fixing-hit-testing-issues}
 
-Because of how Flutter web performs hit testing,
-underlying platform views might sometimes swallow
-pointer events before they can reach Flutter.
+Por causa da forma como o Flutter web realiza o hit testing,
+platform views subjacentes podem às vezes capturar
+eventos de ponteiro antes que eles cheguem ao Flutter.
 
-To prevent losing pointer events intended for Flutter widgets,
-use the [`package:pointer_interceptor`][] package.
+Para evitar a perda de eventos de ponteiro destinados a widgets Flutter,
+use o pacote [`package:pointer_interceptor`][].
 
-The [`PointerInterceptor`][] widget creates
-an empty, transparent platform view
-and places it directly behind its child widget in paint order.
-This transparent element catches browser pointer events
-before they reach the underlying `HtmlElementView`,
-allowing Flutter's gesture framework to handle the interaction as expected.
+O widget [`PointerInterceptor`][] cria
+uma platform view vazia e transparente
+e a posiciona diretamente atrás do seu widget filho na ordem de pintura.
+Esse elemento transparente captura os eventos de ponteiro do navegador
+antes que eles cheguem ao `HtmlElementView` subjacente,
+permitindo que o framework de gestos do Flutter trate a interação como esperado.
 
-### Add the dependency
+### Adicione a dependência {:#add-the-dependency}
 
-Add `pointer_interceptor` to your `pubspec.yaml` file:
+Adicione `pointer_interceptor` ao seu arquivo `pubspec.yaml`:
 
 ```yaml
 dependencies:
   pointer_interceptor: ^0.10.1+2
 ```
 
-### Wrap interactive widgets
+### Envolva widgets interativos {:#wrap-interactive-widgets}
 
-To make an individual interactive widget clickable over an `HtmlElementView`
-(such as a [`FloatingActionButton`][] or [`ElevatedButton`][]),
-wrap the widget with `PointerInterceptor`:
+Para tornar um widget interativo individual clicável sobre um `HtmlElementView`
+(como um [`FloatingActionButton`][] ou [`ElevatedButton`][]),
+envolva o widget com `PointerInterceptor`:
 
 ```dart
 PointerInterceptor(
@@ -111,11 +112,11 @@ PointerInterceptor(
 )
 ```
 
-### Wrap layout and overlay containers
+### Envolva containers de layout e de sobreposição {:#wrap-layout-and-overlay-containers}
 
-When you use overlay components that cover a platform view,
-such as a [`Drawer`][], dialog, or popup menu,
-wrap the container widget in a `PointerInterceptor`:
+Quando você usa componentes de sobreposição que cobrem uma platform view,
+como um [`Drawer`][], um diálogo ou um menu popup,
+envolva o widget container em um `PointerInterceptor`:
 
 ```dart
 Scaffold(
@@ -137,10 +138,10 @@ Scaffold(
 )
 ```
 
-### Conditionally intercept events
+### Intercepte eventos condicionalmente {:#conditionally-intercept-events}
 
-The `intercepting` property lets you enable or disable pointer interception
-based on a boolean condition:
+A propriedade `intercepting` permite habilitar ou desabilitar a interceptação de ponteiro
+com base em uma condição booleana:
 
 ```dart
 PointerInterceptor(
@@ -154,15 +155,15 @@ PointerInterceptor(
 )
 ```
 
-When `intercepting` is `false`, `PointerInterceptor` renders its `child`
-directly without creating an extra platform view in the DOM.
+Quando `intercepting` é `false`, o `PointerInterceptor` renderiza seu `child`
+diretamente, sem criar uma platform view extra no DOM.
 
-### Debug interceptor bounds
+### Depure os limites do interceptor {:#debug-interceptor-bounds}
 
-The `PointerInterceptor` widget includes a `debug` property.
-Setting `debug: true` renders a visible colored overlay
-over the interceptor area,
-helping you verify the size and position of the intercepted region:
+O widget `PointerInterceptor` inclui uma propriedade `debug`.
+Definir `debug: true` renderiza uma sobreposição colorida visível
+sobre a área do interceptor,
+ajudando você a verificar o tamanho e a posição da região interceptada:
 
 ```dart
 PointerInterceptor(
@@ -176,10 +177,10 @@ PointerInterceptor(
 
 ## `package:webview_flutter`
 
-Embedding a full HTML page inside a Flutter app is a common requirement.
-The Flutter team offers a plugin for this purpose:
+Incorporar uma página HTML completa dentro de um app Flutter é uma necessidade comum.
+A equipe Flutter oferece um plugin para esse propósito:
 
-* [`package:webview_flutter`][]
+* [`package:webview_flutter`][`package:webview_flutter`]
 
 [JS Interoperability]: {{site.dart-site}}/interop/js-interop
 [`Drawer`]: {{site.material_ui}}/Drawer-class.html

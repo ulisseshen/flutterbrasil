@@ -1,10 +1,11 @@
 ---
-title: Flutter and Dart team job openings
-shortTitle: Open jobs
-description: Open job listings for the Flutter and Dart teams.
+ia-translate: true
+title: Vagas de emprego nas equipes Flutter e Dart
+shortTitle: Vagas abertas
+description: Listagens de vagas abertas para as equipes Flutter e Dart.
 ---
 
-## Current openings
+## Vagas atuais
 
-The Flutter and Dart teams aren't currently hiring.
-Thanks for your interest!
+As equipes do Flutter e Dart não estão contratando no momento.
+Obrigado pelo seu interesse!

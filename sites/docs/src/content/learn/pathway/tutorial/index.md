@@ -1,29 +1,30 @@
 ---
-title: Flutter tutorial
+ia-translate: true
+title: Tutorial Flutter
 shortTitle: Tutorial
 description: >-
-  Learn how to use Flutter to build pixel-perfect applications from scratch that
-  run on mobile, desktop, and web.
+  Aprenda a usar o Flutter para construir aplicações pixel-perfect do zero que
+  rodam em mobile, desktop e web.
 layout: tutorial
 ---
 
 <div class="side-by-side" style="margin: 3rem -1rem">
 <div>
 
-Welcome to the Flutter tutorial! This tutorial teaches you how to build
-applications from scratch that run on mobile, desktop, and web.
+Bem-vindo ao tutorial Flutter! Este tutorial ensina como construir
+aplicações do zero que rodam em mobile, desktop e web.
 
-You'll start from the very beginning: creating a blank Flutter application.
-By the end, you'll have built a handful of small apps that demonstrate
-the critical features of Flutter development (and more!)
+Você começará do início: criando uma aplicação Flutter em branco.
+Ao final, você terá construído alguns pequenos apps que demonstram
+os recursos críticos do desenvolvimento Flutter (e muito mais!)
 
-### Before you begin
+### Antes de começar
 
-This tutorial is the third step in the Flutter learning pathway, and therefor assumes that you have:
-1. A Flutter environment set up
-2. Basic understanding of the Dart programming language
+Este tutorial é o terceiro passo na trilha de aprendizado do Flutter e, portanto, assume que você tem:
+1. Um ambiente Flutter configurado
+2. Conhecimento básico da linguagem de programação Dart
 
-If either of those aren't true, please start at the [Learning pathway page](/learn/pathway).
+Se algum desses itens não for verdade, comece pela [página da trilha de aprendizado](/learn/pathway).
 
 </div>
   <div class="centered-rows">
@@ -31,8 +32,8 @@ If either of those aren't true, please start at the [Learning pathway page](/lea
   </div>
 </div>
 
-## Contents
+## Conteúdo
 
 <TutorialOutline />
 
-<a href="/learn/pathway/tutorial/create-an-app" class="outlined-button" style="margin: 3rem auto;">Start learning</a>
+<a href="/learn/pathway/tutorial/create-an-app" class="outlined-button" style="margin: 3rem auto;">Comece a aprender</a>

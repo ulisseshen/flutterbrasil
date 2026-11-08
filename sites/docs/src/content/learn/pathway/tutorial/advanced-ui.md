@@ -1,102 +1,103 @@
 ---
-title: Advanced UI features
+ia-translate: true
+title: Recursos avançados de UI
 description: >-
-  A gentle introduction into advanced UI features:
-  adaptive layouts, slivers, scrolling, navigation.
+  Uma introdução suave a recursos avançados de UI:
+  layouts adaptativos, slivers, rolagem, navegação.
 layout: tutorial
 ---
 
-Preview the Rolodex app you'll build and set up a Cupertino-based project with data models.
+Pré-visualize o app Rolodex que você vai construir e configure um projeto baseado em Cupertino com modelos de dados.
 
 <SummaryCard>
-title: What you'll accomplish
+title: O que você vai realizar
 items:
-  - title: Preview the Rolodex app you'll build
+  - title: Pré-visualizar o app Rolodex que você vai construir
     icon: preview
-  - title: Set up a project with Cupertino widgets
+  - title: Configurar um projeto com widgets Cupertino
     icon: phone_iphone
-  - title: Create data models for contacts and groups
+  - title: Criar modelos de dados para contatos e grupos
     icon: data_object
 </SummaryCard>
 
 ---
 
-### Introduction
+### Introdução {:#introduction}
 
-In this third installment of the Flutter tutorial series,
-you'll use Flutter's Cupertino library to build a
-partial clone of the iOS Contacts app.
+Nesta terceira parte da série de tutoriais do Flutter,
+você usará a biblioteca Cupertino do Flutter para construir um
+clone parcial do app Contatos do iOS.
 
 <img src='/assets/images/docs/tutorial/rolodex_complete.png' class="diagram-wrap"
-width="320px" alt="A screenshot of the completed Rolodex contact
-management app showing a list of contacts organized alphabetically.">
+width="320px" alt="Uma captura de tela do app de gerenciamento de contatos Rolodex
+concluído, mostrando uma lista de contatos organizados em ordem alfabética.">
 
-By the end of this tutorial, you'll have learned how to create
-adaptive layouts, implement comprehensive theming, build navigation
-patterns, and use advanced scrolling techniques.
+Ao final deste tutorial, você terá aprendido como criar
+layouts adaptativos, implementar temas abrangentes, construir padrões
+de navegação e usar técnicas avançadas de rolagem.
 
-#### What you'll learn
+#### O que você vai aprender {:#what-youll-learn}
 
-This tutorial explores the following topics:
+Este tutorial explora os seguintes tópicos:
 
-* Building responsive layouts with `LayoutBuilder`.
-* Using advanced scrolling with slivers and search.
-* Implementing stack-based navigation patterns.
-* Creating comprehensive themes with `CupertinoThemeData`.
-* Supporting both light and dark themes.
-* Creating an iOS-style UI using Cupertino widgets.
+* Construir layouts responsivos com `LayoutBuilder`.
+* Usar rolagem avançada com slivers e busca.
+* Implementar padrões de navegação baseados em stack.
+* Criar temas abrangentes com `CupertinoThemeData`.
+* Suportar temas claro e escuro.
+* Criar uma UI no estilo iOS usando widgets Cupertino.
 
-This tutorial assumes that you've completed the previous Flutter tutorials
-and are comfortable with basic widget composition, state management,
-and the Flutter project structure.
+Este tutorial assume que você concluiu os tutoriais anteriores do Flutter
+e está confortável com composição básica de widgets, gerenciamento de estado
+e a estrutura de projetos Flutter.
 
 
-### Create a new Flutter project
+### Crie um novo projeto Flutter {:#create-a-new-flutter-project}
 
-To build a Flutter app, you first need a Flutter project.
-You can create a new app with the [Flutter CLI tool][],
-which is installed as part of the Flutter SDK.
+Para construir um app Flutter, você primeiro precisa de um projeto Flutter.
+Você pode criar um novo app com a [ferramenta CLI do Flutter][Flutter CLI tool],
+que é instalada como parte do SDK do Flutter.
 
-Open your preferred terminal and run
-the following command to create a new Flutter project:
+Abra seu terminal preferido e execute
+o seguinte comando para criar um novo projeto Flutter:
 
 ```console
 $ flutter create rolodex --empty
 $ cd rolodex
 ```
 
-This command creates a new Flutter project that
-uses the minimal "empty" template.
+Este comando cria um novo projeto Flutter que
+usa o template mínimo "empty".
 
 [Flutter CLI tool]: /reference/flutter-cli
 
-### Add the Cupertino dependencies
+### Adicione as dependências Cupertino {:#add-the-cupertino-dependencies}
 
-This project uses the [`cupertino_ui` package][] for Cupertino widgets
-and the [`cupertino_icons` package][] for Cupertino icon assets.
-Add both official Flutter packages as dependencies
-by running the following command:
+Este projeto usa o [pacote `cupertino_ui`][`cupertino_ui` package] para widgets Cupertino
+e o [pacote `cupertino_icons`][`cupertino_icons` package] para assets de ícones Cupertino.
+Adicione ambos os pacotes oficiais do Flutter como dependências
+executando o seguinte comando:
 
 ```console
 $ flutter pub add cupertino_ui cupertino_icons
 ```
 
-### Set up the project structure
+### Configure a estrutura do projeto {:#set-up-the-project-structure}
 
-First, create the basic directory structure for your app.
-In your project's `lib` directory, create the following folders:
+Primeiro, crie a estrutura básica de diretórios para o seu app.
+No diretório `lib` do seu projeto, crie as seguintes pastas:
 
 ```console
 $ mkdir lib/data lib/screens lib/theme
 ```
 
-This command creates folders to organize your code into logical sections:
-data models, screen widgets, and theme configuration.
+Este comando cria pastas para organizar seu código em seções lógicas:
+modelos de dados, widgets de tela e configuração de tema.
 
-### Replace the starter code
+### Substitua o código inicial {:#replace-the-starter-code}
 
-In your IDE, open the `lib/main.dart` file, and replace its entire
-contents with the following starter code:
+Na sua IDE, abra o arquivo `lib/main.dart` e substitua todo o seu
+conteúdo pelo seguinte código inicial:
 
 <?code-excerpt "fwe/rolodex/lib/step1_advanced_ui/main_starter.dart"?>
 ```dart
@@ -125,31 +126,31 @@ class RolodexApp extends StatelessWidget {
 }
 ```
 
-Unlike the previous two tutorials,
-this app uses `CupertinoApp` instead of `MaterialApp`.
-The Cupertino design system provides iOS-style widgets and styling,
-which is perfect for building apps that feel native on Apple devices.
+Diferentemente dos dois tutoriais anteriores,
+este app usa `CupertinoApp` em vez de `MaterialApp`.
+O design system Cupertino fornece widgets e estilos no estilo iOS,
+o que é perfeito para construir apps que parecem nativos em dispositivos Apple.
 
-### Run your app
+### Execute seu app {:#run-your-app}
 
-In your terminal at the root of your Flutter app, run the following command:
+No seu terminal, na raiz do seu app Flutter, execute o seguinte comando:
 
 ```console
 $ flutter run -d chrome
 ```
 
-The app builds and launches in a new instance of Chrome.
-It displays "Hello Rolodex!" in the center of the screen.
+O app é compilado e iniciado em uma nova instância do Chrome.
+Ele exibe "Hello Rolodex!" no centro da tela.
 
-### Create the data models
+### Crie os modelos de dados {:#create-the-data-models}
 
-Before building the UI,
-create the data structures and sample data that the app will use.
-This section is lightly explained because it's not the focus of this tutorial.
+Antes de construir a UI,
+crie as estruturas de dados e os dados de exemplo que o app usará.
+Esta seção é explicada brevemente porque não é o foco deste tutorial.
 
-#### Contact data
+#### Dados de Contact {:#contact-data}
 
-Create a new file, `lib/data/contact.dart`, and add the basic `Contact` class:
+Crie um novo arquivo, `lib/data/contact.dart`, e adicione a classe básica `Contact`:
 
 <?code-excerpt "fwe/rolodex/lib/step1_advanced_ui/data/contact.dart" replace="/\/\/ openFold/[* -/g; /\/\/ closeFold/*]/g;"?>
 ```dart foldable
@@ -344,14 +345,14 @@ final Set<Contact> allContacts = {
 *]
 ```
 
-This sample data includes contacts with and without middle names and suffixes.
-This gives you a variety of data to work with as you build the UI.
+Estes dados de exemplo incluem contatos com e sem nomes do meio e sufixos.
+Isso oferece uma variedade de dados para trabalhar enquanto você constrói a UI.
 
-#### ContactGroup data
+#### Dados de ContactGroup {:#contactgroup-data}
 
-Now, create the contact groups that organize your contacts into lists.
-Create a new `lib/data/contact_group.dart` file and
-add the `ContactGroup` class:
+Agora, crie os grupos de contatos que organizam seus contatos em listas.
+Crie um novo arquivo `lib/data/contact_group.dart` e
+adicione a classe `ContactGroup`:
 
 <?code-excerpt "fwe/rolodex/lib/step1_advanced_ui/data/contact_group.dart (contact_group_class)"?>
 ```dart
@@ -412,10 +413,10 @@ class ContactGroup {
 }
 ```
 
-A `ContactGroup` represents a collection of contacts,
-such as "All Contacts" or "Favorites".
+Um `ContactGroup` representa uma coleção de contatos,
+como "All Contacts" ou "Favorites".
 
-Add the following helper code and sample data to `lib/data/contact_group.dart`:
+Adicione o seguinte código auxiliar e dados de exemplo a `lib/data/contact_group.dart`:
 
 <?code-excerpt "fwe/rolodex/lib/step1_advanced_ui/data/contact_group.dart (helper_code)"?>
 ```dart
@@ -469,10 +470,10 @@ List<ContactGroup> generateSeedData() {
 }
 ```
 
-This code creates three sample groups and a function to
-generate the initial data for the app.
+Este código cria três grupos de exemplo e uma função para
+gerar os dados iniciais do app.
 
-Finally, add a class that manages state changes to `lib/data/contact_group.dart`:
+Por fim, adicione uma classe que gerencia mudanças de estado a `lib/data/contact_group.dart`:
 
 <?code-excerpt "fwe/rolodex/lib/step1_advanced_ui/data/contact_group.dart (model_class)"?>
 ```dart
@@ -495,16 +496,16 @@ class ContactGroupsModel {
 }
 ```
 
-If you aren't familiar with `ValueNotifier`,
-you should complete the [previous tutorial covering state][] before continuing,
-which covers state management.
+Se você não está familiarizado com `ValueNotifier`,
+você deve concluir o [tutorial anterior sobre estado][previous tutorial covering state] antes de continuar,
+que aborda gerenciamento de estado.
 
 [previous tutorial covering state]: /learn/pathway/tutorial/set-up-state-project
 
-### Connect the data to your app
+### Conecte os dados ao seu app {:#connect-the-data-to-your-app}
 
-Update your `main.dart` to include the global state and
-import the new data file:
+Atualize seu `main.dart` para incluir o estado global e
+importar o novo arquivo de dados:
 
 <?code-excerpt "fwe/rolodex/lib/step1_advanced_ui/main.dart"?>
 ```dart
@@ -537,69 +538,69 @@ class RolodexApp extends StatelessWidget {
 }
 ```
 
-With all the extraneous code out of the way, in the next lesson,
-you'll start building the app in earnest.
+Com todo o código acessório fora do caminho, na próxima lição,
+você começará a construir o app de verdade.
 
 [`cupertino_ui` package]: {{site.pub-pkg}}/cupertino_ui
 [`cupertino_icons` package]: {{site.pub-pkg}}/cupertino_icons
 
-### Review
+### Revisão {:#review}
 
 <SummaryCard>
-title: What you accomplished
-subtitle: Here's a summary of what you built and learned in this lesson.
+title: O que você realizou
+subtitle: Aqui está um resumo do que você construiu e aprendeu nesta lição.
 completed: true
 items:
-  - title: Previewed the Rolodex app
+  - title: Pré-visualizou o app Rolodex
     icon: preview
     details: >-
-      You're starting a new tutorial section focused on advanced UI features.
-      To make your app feel polished and native on any device,
-      you'll learn adaptive layouts, slivers, navigation, and theming.
-  - title: Set up a project with Cupertino widgets
+      Você está começando uma nova seção do tutorial focada em recursos avançados de UI.
+      Para fazer seu app parecer refinado e nativo em qualquer dispositivo,
+      você aprenderá layouts adaptativos, slivers, navegação e temas.
+  - title: Configurou um projeto com widgets Cupertino
     icon: phone_iphone
     details: >-
-      Unlike the previous lessons,
-      this app uses `CupertinoApp` instead of `MaterialApp`.
-      The Cupertino design system provides iOS-style widgets that
-      feel native on Apple devices.
-  - title: Created data models for contacts and groups
+      Diferentemente das lições anteriores,
+      este app usa `CupertinoApp` em vez de `MaterialApp`.
+      O design system Cupertino fornece widgets no estilo iOS que
+      parecem nativos em dispositivos Apple.
+  - title: Criou modelos de dados para contatos e grupos
     icon: data_object
     details: >-
-      You created `Contact` and `ContactGroup` classes with sample data,
-      plus a `ContactGroupsModel` for state management.
-      This foundation supports the UI you'll build in the coming lessons.
+      Você criou as classes `Contact` e `ContactGroup` com dados de exemplo,
+      além de um `ContactGroupsModel` para gerenciamento de estado.
+      Essa base sustenta a UI que você construirá nas próximas lições.
 </SummaryCard>
 
-### Test yourself
+### Teste seus conhecimentos {:#test-yourself}
 
-<Quiz title="Advanced UI Setup Quiz">
-- question: What is the main difference between CupertinoApp and MaterialApp?
+<Quiz title="Quiz de configuração de UI avançada">
+- question: Qual é a principal diferença entre CupertinoApp e MaterialApp?
   options:
-    - text: CupertinoApp only works on iOS devices.
+    - text: CupertinoApp só funciona em dispositivos iOS.
       correct: false
-      explanation: CupertinoApp can run on any platform; it just provides iOS-style widgets.
-    - text: CupertinoApp provides iOS-style widgets and styling, while MaterialApp provides Material Design widgets.
+      explanation: CupertinoApp pode ser executado em qualquer plataforma; ele apenas fornece widgets no estilo iOS.
+    - text: CupertinoApp fornece widgets e estilos no estilo iOS, enquanto MaterialApp fornece widgets do Material Design.
       correct: true
-      explanation: CupertinoApp uses Cupertino design system widgets that match the iOS look and feel.
-    - text: CupertinoApp is lighter and has better performance.
+      explanation: CupertinoApp usa widgets do design system Cupertino que correspondem à aparência do iOS.
+    - text: CupertinoApp é mais leve e tem melhor desempenho.
       correct: false
-      explanation: Both have similar performance; they differ in visual style, not speed.
-    - text: MaterialApp requires more configuration to set up.
+      explanation: Ambos têm desempenho semelhante; eles diferem no estilo visual, não na velocidade.
+    - text: MaterialApp requer mais configuração para ser configurado.
       correct: false
-      explanation: Both have similar setup requirements; they just use different design systems.
-- question: What is the purpose of a ValueNotifier in state management?
+      explanation: Ambos têm requisitos de configuração semelhantes; eles apenas usam design systems diferentes.
+- question: Qual é o propósito de um ValueNotifier no gerenciamento de estado?
   options:
-    - text: To validate user input values.
+    - text: Validar valores de entrada do usuário.
       correct: false
-      explanation: ValueNotifier holds and notifies about value changes, not validation.
-    - text: To hold a single value and notify listeners when that value changes.
+      explanation: ValueNotifier armazena e notifica sobre mudanças de valor, não faz validação.
+    - text: Armazenar um único valor e notificar os listeners quando esse valor muda.
       correct: true
-      explanation: ValueNotifier is a simple ChangeNotifier that wraps a single value and notifies listeners on change.
-    - text: To convert values between different data types.
+      explanation: ValueNotifier é um ChangeNotifier simples que encapsula um único valor e notifica os listeners quando ele muda.
+    - text: Converter valores entre diferentes tipos de dados.
       correct: false
-      explanation: Type conversion is not the purpose of ValueNotifier.
-    - text: To store values permanently in local storage.
+      explanation: Conversão de tipos não é o propósito do ValueNotifier.
+    - text: Armazenar valores permanentemente no armazenamento local.
       correct: false
-      explanation: ValueNotifier holds values in memory; persistence requires separate implementation.
+      explanation: ValueNotifier mantém valores em memória; persistência requer implementação separada.
 </Quiz>

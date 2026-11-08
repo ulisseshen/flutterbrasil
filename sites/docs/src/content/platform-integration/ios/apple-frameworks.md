@@ -1,89 +1,90 @@
 ---
-title: Leveraging Apple's system APIs and frameworks
+ia-translate: true
+title: Aproveitando APIs e frameworks do sistema da Apple
 description: >-
-  Learn about Flutter plugins that offer equivalent
-  functionalities to Apple's frameworks.
+  Aprenda sobre plugins Flutter que oferecem funcionalidades
+  equivalentes aos frameworks da Apple.
 ---
 
-When you come from iOS development, you might need to find
-Flutter plugins that offer the same abilities as Apple's system
-libraries. This might include accessing device hardware or interacting
-with specific frameworks like `HealthKit`.
+Quando você vem do desenvolvimento iOS, pode precisar encontrar
+plugins Flutter que oferecem as mesmas capacidades das bibliotecas do sistema
+da Apple. Isso pode incluir acessar hardware do dispositivo ou interagir
+com frameworks específicos como `HealthKit`.
 
-For an overview of how the SwiftUI framework compares to Flutter,
-see [Flutter for SwiftUI developers][].
+Para uma visão geral de como o framework SwiftUI se compara ao Flutter,
+veja [Flutter para desenvolvedores SwiftUI][Flutter for SwiftUI developers].
 
-## Introducing Flutter plugins
+## Introduzindo plugins Flutter
 
-Dart calls libraries that contain platform-specific code _plugins_,
-short for "plugin package".
-When developing an app with Flutter, you use _plugins_ to interact
-with system libraries.
+Dart chama bibliotecas que contêm código específico de plataforma de _plugins_,
+abreviação de "plugin package".
+Ao desenvolver um app com Flutter, você usa _plugins_ para interagir
+com bibliotecas do sistema.
 
-In your Dart code, you use the plugin's Dart API to call the native
-code from the system library being used. This means that you can write
-the code to call the Dart API. The API then makes it work for all
-platforms that the plugin supports.
+No seu código Dart, você usa a API Dart do plugin para chamar o código
+nativo da biblioteca do sistema sendo usada. Isso significa que você pode escrever
+o código para chamar a API Dart. A API então faz funcionar para todas as
+plataformas que o plugin suporta.
 
-To learn more about plugins, see [Using packages][].
-Though this page links to some popular plugins,
-you can find thousands more, along with examples,
-on [pub.dev][].
-The following table does not endorse any particular plugin.
-If you can't find a package that meets your needs,
-you can create your own or
-use platform channels directly in your project.
-To learn more, check out [Writing platform-specific code][].
+Para saber mais sobre plugins, veja [Usando pacotes][Using packages].
+Embora esta página vincule alguns plugins populares,
+você pode encontrar milhares de outros, juntamente com exemplos,
+em [pub.dev][pub.dev].
+A tabela a seguir não endossa nenhum plugin em particular.
+Se você não encontrar um pacote que atenda às suas necessidades,
+pode criar o seu próprio ou
+usar platform channels diretamente no seu projeto.
+Para saber mais, confira [Escrevendo código específico de plataforma][Writing platform-specific code].
 
-## Adding a plugin to your project
+## Adicionando um plugin ao seu projeto
 
-To use an Apple framework within your native project,
-import it into your Swift or Objective-C file.
+Para usar um framework da Apple dentro do seu projeto nativo,
+importe-o para o seu arquivo Swift ou Objective-C.
 
-To add a Flutter plugin, run `flutter pub add package_name`
-from the root of your project.
-This adds the dependency to your [`pubspec.yaml`][] file.
-After you add the dependency, add an `import` statement for the package
-in your Dart file.
+Para adicionar um plugin Flutter, execute `flutter pub add package_name`
+a partir da raiz do seu projeto.
+Isso adiciona a dependência ao seu arquivo [`pubspec.yaml`][`pubspec.yaml`].
+Depois de adicionar a dependência, adicione uma declaração `import` para o pacote
+no seu arquivo Dart.
 
-You might need to change app settings or initialization logic.
-If that's needed, the package's "Readme" page on [pub.dev][]
-should provide details.
+Você pode precisar alterar configurações do app ou lógica de inicialização.
+Se isso for necessário, a página "Readme" do pacote em [pub.dev][pub.dev]
+deve fornecer detalhes.
 
-### Flutter plugins and Apple frameworks
+### Plugins Flutter e frameworks da Apple
 
-| Use Case                                       | Apple Framework or Class                                                               | Flutter integration          |
-|------------------------------------------------|----------------------------------------------------------------------------------------|------------------------------|
-| Access the photo library                       | `PhotoKit` using the `Photos` and `PhotosUI ` frameworks and `UIImagePickerController` | [`image_picker`][]           |
-| Access the camera                              | `UIImagePickerController` using the `.camera` `sourceType`                             | [`image_picker`][]           |
-| Use advanced camera features                   | `AVFoundation`                                                                         | [`camera`][]                 |
-| Offer In-app purchases                         | `StoreKit`                                                                             | [`in_app_purchase`][][^1]    |
-| Process payments                               | `PassKit`                                                                              | [`pay`][][^2]                |
-| Send push notifications                        | `UserNotifications`                                                                    | [`firebase_messaging`][][^3] |
-| Access GPS coordinates                         | `CoreLocation`                                                                         | [`geolocator`][]             |
-| Access sensor data[^4]                         | `CoreMotion`                                                                           | [`sensors_plus`][]           |
-| Make network requests                          | `URLSession`                                                                           | [`http`][]                   |
-| Store key-values                               | `@AppStorage` property wrapper and `NSUserDefaults`                                    | [`shared_preferences`][]     |
-| Persist to a database                          | `CoreData` or SQLite                                                                   | [`sqflite`][]                |
-| Access health data                             | `HealthKit`                                                                            | [`health`][]                 |
-| Use machine learning                           | `CoreML`                                                                               | [`google_ml_kit`][][^5]      |
-| Recognize text                                 | `VisionKit`                                                                            | [`google_ml_kit`][][^5]      |
-| Recognize speech                               | `Speech`                                                                               | [`speech_to_text`][]         |
-| Use augmented reality                          | `ARKit`                                                                                | [`arkit_plugin`][]           |
-| Access weather data                            | `WeatherKit`                                                                           | [`weather`][][^6]            |
-| Access and manage contacts                     | `Contacts`                                                                             | [`flutter_contacts`][]       |
-| Expose quick actions on the home screen        | `UIApplicationShortcutItem`                                                            | [`quick_actions`][]          |
-| Configure, update and communicate with Widgets | `WidgetKit`                                                                            | [`home_widget`][]            |
-| Automate app actions with Siri/Shortcuts       | `AppIntents`                                                                           | [`intelligence`][]           |
+| Caso de uso                                         | Framework ou classe da Apple                                                           | Integração Flutter           |
+|-----------------------------------------------------|----------------------------------------------------------------------------------------|------------------------------|
+| Acessar a biblioteca de fotos                       | `PhotoKit` usando os frameworks `Photos` e `PhotosUI ` e `UIImagePickerController`     | [`image_picker`][]           |
+| Acessar a câmera                                    | `UIImagePickerController` usando o `sourceType` `.camera`                              | [`image_picker`][]           |
+| Usar recursos avançados de câmera                   | `AVFoundation`                                                                         | [`camera`][]                 |
+| Oferecer compras in-app                             | `StoreKit`                                                                             | [`in_app_purchase`][][^1]    |
+| Processar pagamentos                                | `PassKit`                                                                              | [`pay`][][^2]                |
+| Enviar notificações push                            | `UserNotifications`                                                                    | [`firebase_messaging`][][^3] |
+| Acessar coordenadas GPS                             | `CoreLocation`                                                                         | [`geolocator`][]             |
+| Acessar dados de sensores[^4]                       | `CoreMotion`                                                                           | [`sensors_plus`][]           |
+| Fazer requisições de rede                           | `URLSession`                                                                           | [`http`][]                   |
+| Armazenar chave-valores                             | Property wrapper `@AppStorage` e `NSUserDefaults`                                      | [`shared_preferences`][]     |
+| Persistir em um banco de dados                      | `CoreData` ou SQLite                                                                   | [`sqflite`][]                |
+| Acessar dados de saúde                              | `HealthKit`                                                                            | [`health`][]                 |
+| Usar aprendizado de máquina                         | `CoreML`                                                                               | [`google_ml_kit`][][^5]      |
+| Reconhecer texto                                    | `VisionKit`                                                                            | [`google_ml_kit`][][^5]      |
+| Reconhecer fala                                     | `Speech`                                                                               | [`speech_to_text`][]         |
+| Usar realidade aumentada                            | `ARKit`                                                                                | [`arkit_plugin`][]           |
+| Acessar dados meteorológicos                        | `WeatherKit`                                                                           | [`weather`][][^6]            |
+| Acessar e gerenciar contatos                        | `Contacts`                                                                             | [`flutter_contacts`][]       |
+| Expor ações rápidas na tela inicial                 | `UIApplicationShortcutItem`                                                            | [`quick_actions`][]          |
+| Configurar, atualizar e comunicar com Widgets       | `WidgetKit`                                                                            | [`home_widget`][]            |
+| Automatizar ações do app com Siri/Shortcuts         | `AppIntents`                                                                           | [`intelligence`][]           |
 
 {:.table .table-striped .nowrap}
 
-[^1]: Supports both Google Play Store on Android and Apple App Store on iOS.
-[^2]: Adds Google Pay payments on Android and Apple Pay payments on iOS.
-[^3]: Uses Firebase Cloud Messaging and integrates with APNs.
-[^4]: Includes sensors like accelerometer, gyroscope, etc.
-[^5]: Uses Google's ML Kit and supports various features like text recognition, face detection, image labeling, landmark recognition, and barcode scanning. You can also create a custom model with Firebase. To learn more, see [Use a custom TensorFlow Lite model with Flutter][].
-[^6]: Uses the [OpenWeatherMap API][]. Other packages exist that can pull from different weather APIs.
+[^1]: Suporta tanto Google Play Store no Android quanto Apple App Store no iOS.
+[^2]: Adiciona pagamentos Google Pay no Android e pagamentos Apple Pay no iOS.
+[^3]: Usa Firebase Cloud Messaging e integra com APNs.
+[^4]: Inclui sensores como acelerômetro, giroscópio, etc.
+[^5]: Usa o ML Kit do Google e suporta vários recursos como reconhecimento de texto, detecção de faces, rotulagem de imagens, reconhecimento de pontos de referência e escaneamento de códigos de barras. Você também pode criar um modelo customizado com Firebase. Para saber mais, veja [Use um modelo TensorFlow Lite customizado com Flutter][Use a custom TensorFlow Lite model with Flutter].
+[^6]: Usa a [API OpenWeatherMap][OpenWeatherMap API]. Outros pacotes existem que podem extrair de diferentes APIs de clima.
 
 [Flutter for SwiftUI developers]: /flutter-for/swiftui-devs
 [Using packages]: /packages-and-plugins/using-packages

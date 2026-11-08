@@ -1,40 +1,41 @@
 ---
-title: Create widgets
-description: Learn about stateless widgets and how to build your own.
+ia-translate: true
+title: Criar widgets
+description: Aprenda sobre stateless widgets e como construir o seu próprio.
 layout: tutorial
 ---
 
-Learn to create custom widgets and use the most common SDK widgets like
-Container, Center, and Text.
+Aprenda a criar widgets customizados e a usar os widgets mais comuns do SDK, como
+Container, Center e Text.
 
 <YouTubeEmbed id="gyBUnaojFDg" title="Anatomy of a widget" fullWidth="true"></YouTubeEmbed>
 
 <SummaryCard>
-title: What you'll accomplish
+title: O que você vai realizar
 items:
-  - title: Create a custom StatelessWidget
+  - title: Criar um StatelessWidget customizado
     icon: widgets
-  - title: Make widgets reusable with constructor parameters
+  - title: Tornar widgets reutilizáveis com parâmetros de construtor
     icon: tune
-  - title: Style widgets using Container and BoxDecoration
+  - title: Estilizar widgets usando Container e BoxDecoration
     icon: palette
 </SummaryCard>
 
 ---
 
-### Before you start
+### Antes de começar {:#before-you-start}
 
-This app relies on a bit of game logic that isn't UI-related,
-and thus is outside the scope of this tutorial.
-Before you move on, you need to add this logic to your app.
+Este app depende de um pouco de lógica de jogo que não está relacionada à UI
+e, portanto, está fora do escopo deste tutorial.
+Antes de continuar, você precisa adicionar essa lógica ao seu app.
 
-1.  Download the following Dart file and save it
-    as `lib/game.dart` in your project directory.
+1.  Baixe o arquivo Dart a seguir e salve-o
+    como `lib/game.dart` no diretório do seu projeto.
 
     <DownloadableSnippet src="tutorial/game-code.dart" name="game.dart" />
 
-1.  To enable access to the types defined in the `game.dart` library,
-    add an import to it from your `lib/main.dart` file:
+1.  Para habilitar o acesso aos tipos definidos na biblioteca `game.dart`,
+    adicione uma importação dela no seu arquivo `lib/main.dart`:
 
     ```dart title="main.dart" highlightLines=3
     import 'package:material_ui/material_ui.dart';
@@ -42,21 +43,21 @@ Before you move on, you need to add this logic to your app.
     import 'game.dart';
     ```
 
-:::note Game logic note
+:::note Nota sobre a lógica do jogo
 
-The `legalGuesses` and `legalWords` lists in `lib/game.dart` only contain a
-small sample of five-letter words (such as `aback`, `abase`, and `abate`) for
-brevity. When testing your app later in this tutorial, only words defined in
-`lib/game.dart` are accepted as valid guesses.
+As listas `legalGuesses` e `legalWords` em `lib/game.dart` contêm apenas uma
+pequena amostra de palavras de cinco letras (como `aback`, `abase` e `abate`) por
+questão de brevidade. Ao testar seu app mais adiante neste tutorial, apenas as palavras definidas em
+`lib/game.dart` são aceitas como palpites válidos.
 :::
 
-### Anatomy of a stateless widget
+### Anatomia de um stateless widget {:#anatomy-of-a-stateless-widget}
 
-A `Widget` is a Dart class that extends one of the Flutter widget classes,
-in this case [`StatelessWidget`][].
+Um `Widget` é uma classe Dart que estende uma das classes de widget do Flutter,
+neste caso [`StatelessWidget`][].
 
-Open your `main.dart` file and add this code below the `MainApp` class,
-which defines a new widget called `Tile`.
+Abra seu arquivo `main.dart` e adicione este código abaixo da classe `MainApp`,
+que define um novo widget chamado `Tile`.
 
 <?code-excerpt "fwe/birdle/lib/step2a_main.dart (Tile)"?>
 ```dart
@@ -75,27 +76,27 @@ class Tile extends StatelessWidget {
 
 [`StatelessWidget`]: {{site.api}}/flutter/widgets/StatelessWidget-class.html
 
-#### Constructor
+#### Construtor {:#constructor}
 
-The `Tile` class has a [constructor][] that defines
-what data needs to be passed into the widget to render the widget.
-In this case, the constructor accepts two parameters:
+A classe `Tile` tem um [construtor][constructor] que define
+quais dados precisam ser passados para o widget para renderizá-lo.
+Neste caso, o construtor aceita dois parâmetros:
 
-- A `String` representing the guessed letter of the tile.
-- A `HitType` [enum value][] represent the guess result and
-  used to determine the color of the tile.
-  For example, `HitType.hit` results in a green tile.
+- Uma `String` representando a letra adivinhada do tile.
+- Um [valor enum][enum value] `HitType` que representa o resultado do palpite e
+  é usado para determinar a cor do tile.
+  Por exemplo, `HitType.hit` resulta em um tile verde.
 
-Passing data into widget constructors is at the core of making widgets reusable.
+Passar dados para construtores de widgets está no cerne de tornar widgets reutilizáveis.
 
 [constructor]: {{site.dart-site}}/language/constructors
 [enum value]: {{site.dart-site}}/language/enums
 
-#### Build method
+#### Método build {:#build-method}
 
-Finally, there's the all important `build` method,
-which must be defined on every widget,
-and will always return another widget.
+Finalmente, há o importantíssimo método `build`,
+que deve ser definido em cada widget
+e sempre retornará outro widget.
 
 <?code-excerpt "fwe/birdle/lib/step2b_main.dart (Tile)"?>
 ```dart
@@ -113,14 +114,14 @@ class Tile extends StatelessWidget {
 }
 ```
 
-### Use the custom widget
+### Use o widget customizado {:#use-the-custom-widget}
 
-When the app is finished,
-there will be 25 instances of this widget on the screen.
-For now, display just a single tile in the center of the screen
-so you can see styling updates as you make them.
-In the `MainApp.build` method,
-replace the `Text` widget with your `Tile` widget:
+Quando o app estiver concluído,
+haverá 25 instâncias deste widget na tela.
+Por enquanto, exiba apenas um único tile no centro da tela
+para que você possa ver as atualizações de estilo conforme as faz.
+No método `MainApp.build`,
+substitua o widget `Text` pelo seu widget `Tile`:
 
 <?code-excerpt "fwe/birdle/lib/step2_main.dart (MainApp)"?>
 ```dart
@@ -140,22 +141,22 @@ class MainApp extends StatelessWidget {
 }
 ```
 
-At the moment, your app appears blank
-because the `Tile` widget returns an empty `Container`,
-which doesn't render anything by default.
+No momento, seu app aparece em branco
+porque o widget `Tile` retorna um `Container` vazio,
+que não renderiza nada por padrão.
 
-### The `Container` widget
+### O widget `Container` {:#the-container-widget}
 
-The `Tile` widget consists of three of the most common core widgets:
-`Container`, `Center`, and `Text`.
-[`Container`][] is a convenience widget that wraps several core styling widgets,
-such as [`Padding`][], [`ColoredBox`][], [`SizedBox`][], and [`DecoratedBox`][].
+O widget `Tile` consiste em três dos widgets principais mais comuns:
+`Container`, `Center` e `Text`.
+[`Container`][] é um widget de conveniência que envolve vários widgets principais de estilo,
+como [`Padding`][], [`ColoredBox`][], [`SizedBox`][] e [`DecoratedBox`][].
 
-Because the finished UI contains 25 `Tile` widgets in neat columns and rows,
-it should have an explicit size.
-Set the width and height properties on the `Container`.
-(You could also do this with a `SizedBox` widget, but you'll use
-more properties of the `Container` next.)
+Como a UI finalizada contém 25 widgets `Tile` em colunas e linhas organizadas,
+ele deve ter um tamanho explícito.
+Defina as propriedades width e height no `Container`.
+(Você também poderia fazer isso com um widget `SizedBox`, mas você usará
+mais propriedades do `Container` a seguir.)
 
 <?code-excerpt "fwe/birdle/lib/step2c_main.dart (Tile)"?>
 ```dart
@@ -185,7 +186,7 @@ class Tile extends StatelessWidget {
 
 ### BoxDecoration
 
-Next, add a [`Border`][] to the box with the following code:
+Em seguida, adicione uma [`Border`][] à caixa com o seguinte código:
 
 <?code-excerpt "fwe/birdle/lib/step2d_main.dart (Tile)"?>
 ```dart
@@ -210,26 +211,26 @@ class Tile extends StatelessWidget {
 }
 ```
 
-`BoxDecoration` is an object that knows how to
-add any number of decorations to a widget, from
-background color to borders to box shadows and more.
-In this case, you added a border.
-When you hot reload,
-a lightly colored border appears around the tile.
+`BoxDecoration` é um objeto que sabe como
+adicionar qualquer número de decorações a um widget, desde
+cor de fundo até bordas, box shadows e muito mais.
+Neste caso, você adicionou uma borda.
+Quando você fizer hot reload,
+uma borda levemente colorida aparece ao redor do tile.
 
-When this game is complete,
-the color of the tile will depend on the user's guess.
-The tile will be green when the user has guessed correctly,
-yellow when the letter is correct but the position is incorrect, and
-gray if the guess is wrong in both respects.
+Quando este jogo estiver completo,
+a cor do tile dependerá do palpite do usuário.
+O tile será verde quando o usuário adivinhar corretamente,
+amarelo quando a letra estiver correta mas a posição estiver incorreta, e
+cinza se o palpite estiver errado em ambos os aspectos.
 
-The following figure shows all three possibilities.
+A figura a seguir mostra as três possibilidades.
 
-<img src='/assets/images/docs/tutorial/tiles.png' width="320px" alt="A screenshot of a green, yellow, and grey tile.">
+<img src='/assets/images/docs/tutorial/tiles.png' width="320px" alt="Uma captura de tela de um tile verde, um amarelo e um cinza.">
 
 
-To achieve this in UI, use a [switch expression][] to
-set the `color` of the `BoxDecoration`.
+Para conseguir isso na UI, use uma [expressão switch][switch expression] para
+definir a `color` da `BoxDecoration`.
 
 <?code-excerpt "fwe/birdle/lib/step2e_main.dart (Tile)"?>
 ```dart
@@ -262,14 +263,14 @@ class Tile extends StatelessWidget {
 [`Border`]: {{site.api}}/flutter/widgets/Container-class.html
 [switch expression]: {{site.dart-site}}/language/branches#switch-expressions
 
-### Child widgets
+### Widgets filhos {:#child-widgets}
 
-Finally, add the `Center` and `Text` widgets to the `Container.child` property.
+Finalmente, adicione os widgets `Center` e `Text` à propriedade `Container.child`.
 
-Most widgets in the Flutter SDK have a `child` or `children` property that's
-meant to be passed a widget or a list of widgets, respectively.
-It's the best practice to use the same naming convention in
-your own custom widgets.
+A maioria dos widgets no Flutter SDK tem uma propriedade `child` ou `children` que
+deve receber um widget ou uma lista de widgets, respectivamente.
+É uma boa prática usar a mesma convenção de nomenclatura em
+seus próprios widgets customizados.
 
 <?code-excerpt "fwe/birdle/lib/step2f_main.dart (Tile)"?>
 ```dart
@@ -304,11 +305,11 @@ class Tile extends StatelessWidget {
 }
 ```
 
-Hot reload, and a single green tile containing the letter **A**
-appears in the center of your app.
-To test different colors,
-try replacing the Tile widget in MainApp
-with one of the following examples, then hot reload:
+Faça hot reload, e um único tile verde contendo a letra **A**
+aparece no centro do seu app.
+Para testar cores diferentes,
+tente substituir o widget Tile no MainApp
+por um dos exemplos a seguir e depois faça hot reload:
 
 <?code-excerpt "fwe/birdle/lib/step2_main.dart (TileUsage)"?>
 ```dart
@@ -321,70 +322,70 @@ Tile('A', HitType.miss);
 Tile('A', HitType.partial);
 ```
 
-Soon, this small box will be one of many widgets on the screen.
-In the next lesson,
-you'll build the full 5x5 grid of tiles for the game board.
+Em breve, esta pequena caixa será um dos muitos widgets na tela.
+Na próxima lição,
+você construirá a grade completa de 5x5 tiles para o tabuleiro do jogo.
 
-### Review
+### Revisão {:#review}
 
 
 <SummaryCard>
-title: What you accomplished
-subtitle: Here's a summary of what you built and learned in this lesson.
+title: O que você realizou
+subtitle: Aqui está um resumo do que você construiu e aprendeu nesta lição.
 completed: true
 items:
-  - title: Built a custom StatelessWidget
+  - title: Construiu um StatelessWidget customizado
     icon: widgets
     details: >-
-      You created a new `Tile` widget by extending `StatelessWidget`.
-      Every widget has a constructor to accept data and
-      a `build` method that returns other widgets.
-      This pattern is fundamental to building user interfaces with Flutter.
-  - title: Made widgets reusable with constructor parameters
+      Você criou um novo widget `Tile` estendendo `StatelessWidget`.
+      Todo widget tem um construtor para aceitar dados e
+      um método `build` que retorna outros widgets.
+      Esse padrão é fundamental para construir interfaces de usuário com Flutter.
+  - title: Tornou widgets reutilizáveis com parâmetros de construtor
     icon: tune
     details: >-
-      By accepting `letter` and `hitType` as constructor parameters,
-      your `Tile` widget can display different content and colors.
-      Passing data through constructors is how you can
-      create flexible, reusable components.
-  - title: Styled widgets using Container and BoxDecoration
+      Ao aceitar `letter` e `hitType` como parâmetros de construtor,
+      seu widget `Tile` pode exibir conteúdos e cores diferentes.
+      Passar dados por meio de construtores é como você pode
+      criar componentes flexíveis e reutilizáveis.
+  - title: Estilizou widgets usando Container e BoxDecoration
     icon: palette
     details: >-
-      You used `Container` to set the widget's size and
-      `BoxDecoration` to add borders and background colors.
-      Then to conditional style the tile's color,
-      you used a switch expression on the `hitType` value.
+      Você usou `Container` para definir o tamanho do widget e
+      `BoxDecoration` para adicionar bordas e cores de fundo.
+      Depois, para estilizar condicionalmente a cor do tile,
+      você usou uma expressão switch no valor de `hitType`.
 </SummaryCard>
 
-### Test yourself
+### Teste seus conhecimentos {:#test-yourself}
 
-<Quiz title="Widget Fundamentals Quiz">
-- question: "What must every Flutter widget's `build` method return?"
+<Quiz title="Quiz de fundamentos de widgets">
+- question: "O que o método `build` de todo widget Flutter deve retornar?"
   options:
-    - text: A String describing the widget.
+    - text: Uma String descrevendo o widget.
       correct: false
-      explanation: "The `build` method returns a widget, not a String."
-    - text: Another widget.
+      explanation: "O método `build` retorna um widget, não uma String."
+    - text: Outro widget.
       correct: true
-      explanation: "The `build` method always returns another widget, which forms part of the widget tree."
-    - text: A boolean indicating success or failure.
+      explanation: "O método `build` sempre retorna outro widget, que faz parte da árvore de widgets."
+    - text: Um booleano indicando sucesso ou falha.
       correct: false
-      explanation: Widgets don't indicate success; they return other widgets to be rendered.
-    - text: Null if there's nothing to display.
+      explanation: Widgets não indicam sucesso; eles retornam outros widgets para serem renderizados.
+    - text: Null se não houver nada para exibir.
       correct: false
-      explanation: "The `build` method cannot return null; it must return a valid widget."
-- question: Which object is used to add decorations like borders, background colors, and shadows to a Container?
+      explanation: "O método `build` não pode retornar null; ele deve retornar um widget válido."
+- question: Qual objeto é usado para adicionar decorações como bordas, cores de fundo e sombras a um Container?
   options:
     - text: ThemeData
       correct: false
-      explanation: ThemeData is for app-wide styling, not individual container decorations.
+      explanation: ThemeData é para estilização de todo o app, não para decorações individuais de containers.
     - text: TextStyle
       correct: false
-      explanation: TextStyle is for text formatting, not container decorations.
+      explanation: TextStyle é para formatação de texto, não para decorações de containers.
     - text: BoxDecoration
       correct: true
-      explanation: BoxDecoration can add borders, background colors, gradients, shadows, and more to a Container.
+      explanation: BoxDecoration pode adicionar bordas, cores de fundo, gradientes, sombras e mais a um Container.
     - text: EdgeInsets
       correct: false
-      explanation: EdgeInsets is for specifying padding or margin, not visual decorations.
+      explanation: EdgeInsets é para especificar padding ou margin, não decorações visuais.
 </Quiz>

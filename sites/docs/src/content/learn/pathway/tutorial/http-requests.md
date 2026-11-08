@@ -1,53 +1,54 @@
 ---
-title: Fetch data from the internet
-description: Instructions on how to make HTTP requests and parse responses.
+ia-translate: true
+title: Buscar dados da internet
+description: Instruções sobre como fazer requisições HTTP e analisar respostas.
 layout: tutorial
 ---
 
-Learn the MVVM architecture pattern and how to build HTTP requests with async/await.
+Aprenda o padrão de arquitetura MVVM e como construir requisições HTTP com async/await.
 
 <SummaryCard>
-title: What you'll accomplish
+title: O que você vai realizar
 items:
-  - title: Understand the MVVM architecture pattern
+  - title: Entender o padrão de arquitetura MVVM
     icon: layers
-  - title: Build HTTP requests with async/await
+  - title: Construir requisições HTTP com async/await
     icon: cloud_download
-  - title: Handle errors and parse JSON responses
+  - title: Lidar com erros e analisar respostas JSON
     icon: data_object
 </SummaryCard>
 
 ---
 
-### Introduction
+### Introdução {:#introduction}
 
-The overarching pattern that this tutorial implements is called
-_Model-View-ViewModel_ or _MVVM_.
-MVVM is an [architectural pattern][] used in client apps that
-separates your app into three layers:
+O padrão abrangente que este tutorial implementa é chamado
+_Model-View-ViewModel_ ou _MVVM_.
+MVVM é um [padrão de arquitetura][architectural pattern] usado em apps cliente que
+separa seu app em três camadas:
 
-- **Model**: Handles data operations.
-- **View**: Displays the UI.
-- **ViewModel**: Manages state and connects the two.
+- **Model**: Lida com operações de dados.
+- **View**: Exibe a UI.
+- **ViewModel**: Gerencia o estado e conecta os dois.
 
-The core tenet of MVVM (and many other patterns) is *separation of concerns*.
-Managing state in separate classes (outside your UI widgets) makes
-your code more testable, reusable, and easier to maintain.
+O princípio central do MVVM (e de muitos outros padrões) é a *separação de responsabilidades*.
+Gerenciar estado em classes separadas (fora dos seus widgets de UI) torna
+seu código mais testável, reutilizável e fácil de manter.
 
-A single feature in your app contains each one of the MVVM components.
-In this tutorial, in addition to Flutter widgets,
-you'll create `ArticleModel`, `ArticleViewModel`, and `ArticleView`.
+Uma única funcionalidade no seu app contém cada um dos componentes MVVM.
+Neste tutorial, além de widgets Flutter,
+você criará `ArticleModel`, `ArticleViewModel` e `ArticleView`.
 
 [architectural pattern]: /app-architecture/guide
 
-### Define the Model
+### Definir o Model {:#define-the-model}
 
-The Model is the source-of-truth for your app's data and is responsible for
-low-level tasks such as making HTTP requests, caching data, or
-managing system resources such as used by a Flutter plugin.
-A model doesn't usually need to import Flutter libraries.
+O Model é a fonte da verdade para os dados do seu app e é responsável por
+tarefas de baixo nível como fazer requisições HTTP, cachear dados ou
+gerenciar recursos do sistema, como os usados por um plugin Flutter.
+Um model geralmente não precisa importar bibliotecas Flutter.
 
-Create an empty `ArticleModel` class in your `main.dart` file:
+Crie uma classe `ArticleModel` vazia no seu arquivo `main.dart`:
 
 <?code-excerpt "fwe/wikipedia_reader/lib/step2a_main.dart (ArticleModel)"?>
 ```dart
@@ -56,16 +57,16 @@ class ArticleModel {
 }
 ```
 
-### Build the HTTP request
+### Construir a requisição HTTP {:#build-the-http-request}
 
-Wikipedia provides a REST API that returns JSON data about articles.
-For this app, you'll use the endpoint that returns a random article summary.
+A Wikipedia fornece uma API REST que retorna dados JSON sobre artigos.
+Para este app, você usará o endpoint que retorna um resumo de artigo aleatório.
 
 ```text
 https://en.wikipedia.org/api/rest_v1/page/random/summary
 ```
 
-Add a method to fetch a random Wikipedia article summary:
+Adicione um método para buscar um resumo de artigo aleatório da Wikipedia:
 
 <?code-excerpt "fwe/wikipedia_reader/lib/step2b_main.dart (ArticleModel)"?>
 ```dart
@@ -83,24 +84,24 @@ class ArticleModel {
 }
 ```
 
-Use the [`async` and `await`][] keywords to handle asynchronous operations.
-The `async` keyword marks a method as asynchronous, and
-`await` waits for expressions that return a [`Future`][].
+Use as palavras-chave [`async` e `await`][`async` and `await`] para lidar com operações assíncronas.
+A palavra-chave `async` marca um método como assíncrono, e
+`await` aguarda expressões que retornam um [`Future`][].
 
-The `Uri.https` constructor safely builds URLs by
-handling encoding and formatting.
-This approach is more reliable than string concatenation,
-especially when dealing with special characters or query parameters.
+O construtor `Uri.https` constrói URLs com segurança
+lidando com codificação e formatação.
+Esta abordagem é mais confiável que concatenação de strings,
+especialmente ao lidar com caracteres especiais ou parâmetros de query.
 
 [`async` and `await`]: {{site.dart-site}}/language/async
 [`Future`]: {{site.api}}/flutter/dart-async/Future-class.html
 
-### Handle network errors
+### Lidar com erros de rede {:#handle-network-errors}
 
-Always handle errors when making HTTP requests.
-A status code of **200** indicates success, while other codes indicate errors.
-If the status code isn't **200**, the model throws an error for
-the UI to display to users.
+Sempre lide com erros ao fazer requisições HTTP.
+Um código de status **200** indica sucesso, enquanto outros códigos indicam erros.
+Se o código de status não for **200**, o model lança um erro para
+a UI exibir aos usuários.
 
 <?code-excerpt "fwe/wikipedia_reader/lib/step2c_main.dart (ArticleModel)"?>
 ```dart
@@ -122,11 +123,11 @@ class ArticleModel {
 }
 ```
 
-### Parse JSON from Wikipedia
+### Analisar JSON da Wikipedia {:#parse-json-from-wikipedia}
 
-The [Wikipedia API][] returns [JSON][] data that
-you decode into a `Summary` class
-Complete the `getRandomArticleSummary` method:
+A [API da Wikipedia][Wikipedia API] retorna dados [JSON][] que
+você decodifica em uma classe `Summary`.
+Complete o método `getRandomArticleSummary`:
 
 <?code-excerpt "fwe/wikipedia_reader/lib/step2_main.dart (ArticleModel)"?>
 ```dart
@@ -147,74 +148,74 @@ class ArticleModel {
 }
 ```
 
-The `Summary` class is defined in `summary.dart`.
-If you're unfamiliar with JSON parsing,
-check out the [Getting started with Dart][] tutorial.
+A classe `Summary` é definida em `summary.dart`.
+Se você não está familiarizado com parsing de JSON,
+confira o tutorial [Getting started with Dart][].
 
 [Wikipedia API]: https://en.wikipedia.org/api/rest_v1/
 [JSON]: {{site.dart-site}}/tutorial/json
 [Getting started with Dart]: {{site.dart-site}}/tutorial
 
-### Review
+### Revisão {:#review}
 
 <SummaryCard>
-title: What you accomplished
-subtitle: Here's a summary of what you built and learned in this lesson.
+title: O que você realizou
+subtitle: Aqui está um resumo do que você construiu e aprendeu nesta lição.
 completed: true
 items:
-  - title: Understood the MVVM architecture pattern
+  - title: Entendeu o padrão de arquitetura MVVM
     icon: layers
     details: >-
-      MVVM separates your app into Model (data operations),
-      View (user interface), and ViewModel (state management).
-      This separation of concerns makes your code more
-      testable, reusable, and easier to maintain.
-  - title: Built an HTTP request to fetch Wikipedia data
+      O MVVM separa seu app em Model (operações de dados),
+      View (interface do usuário) e ViewModel (gerenciamento de estado).
+      Essa separação de responsabilidades torna seu código mais
+      testável, reutilizável e fácil de manter.
+  - title: Construiu uma requisição HTTP para buscar dados da Wikipedia
     icon: cloud_download
     details: >-
-      You created an `ArticleModel` class with a method that
-      uses `async` and `await` to fetch data from the Wikipedia API.
-      To safely build the URLs for the requests,
-      you used the `Uri.https` constructor which
-      handles encoding and special characters for you.
-  - title: Handled errors and parsed JSON responses
+      Você criou uma classe `ArticleModel` com um método que
+      usa `async` e `await` para buscar dados da API da Wikipedia.
+      Para construir as URLs das requisições com segurança,
+      você usou o construtor `Uri.https`, que
+      lida com codificação e caracteres especiais para você.
+  - title: Lidou com erros e analisou respostas JSON
     icon: data_object
     details: >-
-      You checked the HTTP status code to detect errors and
-      used `jsonDecode` to parse the response body.
-      Then to convert the raw JSON into a typed Dart object,
-      you used the `Summary.fromJson` named constructor.
+      Você verificou o código de status HTTP para detectar erros e
+      usou `jsonDecode` para analisar o corpo da resposta.
+      Em seguida, para converter o JSON bruto em um objeto Dart tipado,
+      você usou o construtor nomeado `Summary.fromJson`.
 </SummaryCard>
 
-### Test yourself
+### Teste seus conhecimentos {:#test-yourself}
 
-<Quiz title="HTTP Requests Quiz">
-- question: "What do the `async` and `await` keywords do in Dart?"
+<Quiz title="Quiz de requisições HTTP">
+- question: "O que as palavras-chave `async` e `await` fazem em Dart?"
   options:
-    - text: They make code run on a separate thread.
+    - text: Elas fazem o código executar em uma thread separada.
       correct: false
-      explanation: Dart is single-threaded; async/await handles asynchronous operations without threads.
-    - text: They mark a function as asynchronous and pause execution until a Future completes.
+      explanation: Dart é single-threaded; async/await lida com operações assíncronas sem threads.
+    - text: Elas marcam uma função como assíncrona e pausam a execução até que um Future seja concluído.
       correct: true
-      explanation: "The `async` keyword marks a function as asynchronous, and `await` pauses execution until the Future resolves."
-    - text: They automatically cache the results of function calls.
+      explanation: "A palavra-chave `async` marca uma função como assíncrona, e `await` pausa a execução até que o Future seja resolvido."
+    - text: Elas armazenam automaticamente em cache os resultados das chamadas de função.
       correct: false
-      explanation: Caching requires separate implementation; async/await is for handling asynchronous operations.
-    - text: They convert synchronous code to run in the background.
+      explanation: Cache requer implementação separada; async/await serve para lidar com operações assíncronas.
+    - text: Elas convertem código síncrono para executar em segundo plano.
       correct: false
-      explanation: They don't move code to the background; they manage asynchronous execution flow.
-- question: "Why is `Uri.https` preferred over string concatenation when building URLs in Dart?"
+      explanation: Elas não movem o código para segundo plano; elas gerenciam o fluxo de execução assíncrona.
+- question: "Por que `Uri.https` é preferível à concatenação de strings ao construir URLs em Dart?"
   options:
-    - text: It makes the code shorter.
+    - text: Ele deixa o código mais curto.
       correct: false
-      explanation: Code length isn't the main benefit; proper encoding is.
-    - text: It safely handles encoding and formatting, especially for special characters and query parameters.
+      explanation: O tamanho do código não é o principal benefício; a codificação correta é.
+    - text: Ele lida com codificação e formatação com segurança, especialmente para caracteres especiais e parâmetros de query.
       correct: true
-      explanation: Uri.https properly encodes special characters and formats URLs, preventing common errors.
-    - text: It's required by the http package.
+      explanation: Uri.https codifica corretamente caracteres especiais e formata URLs, evitando erros comuns.
+    - text: Ele é exigido pelo pacote http.
       correct: false
-      explanation: You can use strings, but Uri.https is safer and more reliable.
-    - text: It automatically validates that the URL exists.
+      explanation: Você pode usar strings, mas Uri.https é mais seguro e confiável.
+    - text: Ele valida automaticamente que a URL existe.
       correct: false
-      explanation: Uri.https builds the URL; it doesn't check if the endpoint exists.
+      explanation: Uri.https constrói a URL; ele não verifica se o endpoint existe.
 </Quiz>

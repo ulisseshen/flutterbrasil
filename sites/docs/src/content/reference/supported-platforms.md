@@ -1,23 +1,24 @@
 ---
-title: Supported deployment platforms
-shortTitle: Supported platforms
-description: The platforms that Flutter supports by platform version.
+ia-translate: true
+title: Plataformas de implantação suportadas
+shortTitle: Plataformas suportadas
+description: As plataformas que Flutter suporta por versão de plataforma.
 showBreadcrumbs: false
 ---
 
-As of Flutter {{site.documentedFlutterVersion}},
-Flutter supports deploying apps on the following combinations of
-hardware architectures and operating system versions.
-These combinations are called _platforms_.
+Na versão Flutter {{site.documentedFlutterVersion}},
+Flutter suporta a implantação de apps nas seguintes combinações de
+arquiteturas de hardware e versões de sistema operacional.
+Essas combinações são chamadas de _plataformas_.
 
-Flutter categorizes platforms as follows:
+Flutter categoriza as plataformas da seguinte forma:
 
-* **Supported**: The platforms and versions that the Flutter team supports.
-* **CI-tested**: The Flutter team tests these platforms on every commit.
-* **Unsupported**: The Flutter team doesn't test or support these platforms.
+* **Supported** (Suportadas): As plataformas e versões que o time Flutter suporta.
+* **CI-tested** (Testadas em CI): O time Flutter testa essas plataformas em cada commit.
+* **Unsupported** (Não suportadas): O time Flutter não testa ou suporta essas plataformas.
 
-Based on these categories,
-Flutter supports deploying to the following platforms.
+Com base nessas categorias,
+Flutter suporta a implantação nas seguintes plataformas.
 
 ## Mobile platforms
 

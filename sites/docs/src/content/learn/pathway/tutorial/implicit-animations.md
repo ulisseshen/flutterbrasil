@@ -1,43 +1,44 @@
 ---
-title: Simple animations
-description: Learn the simplest way to implement animations in Flutter.
+ia-translate: true
+title: Animações simples
+description: Aprenda a maneira mais simples de implementar animações no Flutter.
 layout: tutorial
 ---
 
-Flutter provides a rich set of animation APIs, and the simplest way to
-start using them is with **implicit animations**.
-"Implicit animations" refers to a group of widgets that
-automatically animate changes to their properties without you
-needing to manage any intermediate behavior.
+Flutter fornece um rico conjunto de APIs de animação, e a maneira mais simples de
+começar a usá-las é com **animações implícitas**.
+"Animações implícitas" refere-se a um grupo de widgets que
+automaticamente animam mudanças em suas propriedades sem que você
+precise gerenciar nenhum comportamento intermediário.
 
 <SummaryCard>
-title: What you'll accomplish
+title: O que você vai realizar
 items:
-  - title: Discover implicit animations in Flutter
+  - title: Descobrir animações implícitas no Flutter
     icon: auto_awesome
-  - title: Animate property changes with AnimatedContainer
+  - title: Animar mudanças de propriedades com AnimatedContainer
     icon: animation
-  - title: Customize timing with duration and curves
+  - title: Personalizar o tempo com duration e curves
     icon: timeline
 </SummaryCard>
 
-In this lesson, you'll learn about one of the most common and
-versatile implicit animation widgets: [`AnimatedContainer`][].
-With just two additional lines of code, the background color of each `Tile`
-animates to a new color in about half a second.
+Nesta lição, você aprenderá sobre um dos widgets de animação implícita mais comuns e
+versáteis: [`AnimatedContainer`][].
+Com apenas duas linhas adicionais de código, a cor de fundo de cada `Tile`
+anima para uma nova cor em cerca de meio segundo.
 
 [`AnimatedContainer`]: {{site.api}}/flutter/widgets/AnimatedContainer-class.html
 
 ---
 
-### Convert `Container` to `AnimatedContainer`
+### Converta `Container` para `AnimatedContainer` {:#convert-container-to-animatedcontainer}
 
-Currently, the `Tile.build` method returns a `Container` to display a letter.
-When the `hitType` changes, like from `HitType.none` to `HitType.hit`,
-the background color of the tile changes instantly.
-For example, from white to green in the case of `HitType.none` to `HitType.hit`.
+Atualmente, o método `Tile.build` retorna um `Container` para exibir uma letra.
+Quando o `hitType` muda, como de `HitType.none` para `HitType.hit`,
+a cor de fundo do tile muda instantaneamente.
+Por exemplo, de branco para verde no caso de `HitType.none` para `HitType.hit`.
 
-For reference, here's the current implementation of the `Tile` widget:
+Para referência, aqui está a implementação atual do widget `Tile`:
 
 ```dart
 class Tile extends StatelessWidget {
@@ -71,17 +72,17 @@ class Tile extends StatelessWidget {
 }
 ```
 
-To make the color change animate smoothly,
-replace the `Container` widget with an `AnimatedContainer`.
+Para fazer a mudança de cor animar suavemente,
+substitua o widget `Container` por um `AnimatedContainer`.
 
-An `AnimatedContainer` is like a `Container`, but it
-automatically animates changes to its properties over a specified `duration`.
-When properties such as
-`color`, `height`, `width`, `decoration`, or `alignment` change,
-`AnimatedContainer` interpolates between the old and new values,
-creating a smooth transition.
+Um `AnimatedContainer` é como um `Container`, mas
+automaticamente anima mudanças em suas propriedades ao longo de uma `duration` especificada.
+Quando propriedades como
+`color`, `height`, `width`, `decoration` ou `alignment` mudam,
+`AnimatedContainer` interpola entre os valores antigos e novos,
+criando uma transição suave.
 
-Modify your `Tile` widget as follows:
+Modifique seu widget `Tile` da seguinte forma:
 
 ```dart
 class Tile extends StatelessWidget {
@@ -116,37 +117,37 @@ class Tile extends StatelessWidget {
 }
 ```
 
-**`duration`** is a required property that
-specifies how long the animation should take.
-In this example, passing `Duration(milliseconds: 500)` means
-the color transition will take half a second.
-You can also specify seconds, minutes, and many other units of time.
+**`duration`** é uma propriedade obrigatória que
+especifica quanto tempo a animação deve levar.
+Neste exemplo, passar `Duration(milliseconds: 500)` significa
+que a transição de cor levará meio segundo.
+Você também pode especificar segundos, minutos e muitas outras unidades de tempo.
 
-Now, when the `hitType` changes and the `Tile` widget rebuilds
-(because `setState` was called in `GamePage`),
-the color of the tile smoothly animates from its old color to
-the new one over the specified duration.
+Agora, quando o `hitType` muda e o widget `Tile` reconstrói
+(porque `setState` foi chamado em `GamePage`),
+a cor do tile anima suavemente de sua cor antiga para
+a nova ao longo da duração especificada.
 
-### Adjust the animation curve
+### Ajuste a curva da animação {:#adjust-the-animation-curve}
 
-To add a bit of customization to an implicit animation,
-you can pass it a different [`Curve`][].
-Different curves change the speed of the animation
-at different points throughout the animation.
+Para adicionar um pouco de customização a uma animação implícita,
+você pode passar uma [`Curve`][] diferente.
+Diferentes curvas mudam a velocidade da animação
+em diferentes pontos ao longo da animação.
 
-For example, the default curve for Flutter animations is `Curves.linear`. This gif shows how the animation curve behaves:
+Por exemplo, a curva padrão para animações no Flutter é `Curves.linear`. Este gif mostra como a curva de animação se comporta:
 
 <img src="/assets/images/docs/tutorial/linear_curve.gif" width="320px"
-alt="A gif that shows a linear curve.">
+alt="Um gif que mostra uma curva linear.">
 
-Compare that to `Curve.bounceIn`, another common curve:
+Compare isso com `Curve.bounceIn`, outra curva comum:
 
 <img src="/assets/images/docs/tutorial/bounce_in_curve.gif" width="320px"
-alt="A gif that shows a bounce-in curve">
+alt="Um gif que mostra uma curva bounce-in">
 
 
 
-To change the `Curve` of this animation, update the code to the following:
+Para mudar a `Curve` desta animação, atualize o código para o seguinte:
 
 ```dart
 class Tile extends StatelessWidget {
@@ -182,83 +183,83 @@ class Tile extends StatelessWidget {
 }
 ```
 
-There are many different curves provided by the Flutter SDK, so
-feel free to try them out by passing different types to the `curve` parameter.
+Existem muitas curvas diferentes fornecidas pelo Flutter SDK, então
+sinta-se livre para experimentá-las passando diferentes tipos para o parâmetro `curve`.
 
-Implicit animations like `AnimatedContainer` are powerful because
-you just tell the widget what the new state should be, and
-it handles the "how" of the animation.
+Animações implícitas como `AnimatedContainer` são poderosas porque
+você apenas diz ao widget qual deve ser o novo estado, e
+ele lida com o "como" da animação.
 
-For complex, custom animations, you can write your own animated widgets.
-If you're curious, try it out in the [animations tutorial][].
+Para animações complexas e customizadas, você pode escrever seus próprios widgets animados.
+Se você está curioso, experimente no [tutorial de animações][animations tutorial].
 
 [`Curve`]: {{site.api}}/flutter/animation/Curves-class.html
 [animations tutorial]: /ui/animations/tutorial
 
-### Review
+### Revisão {:#review}
 
 <SummaryCard>
-title: What you accomplished
-subtitle: Here's a summary of what you built and learned in this lesson.
+title: O que você realizou
+subtitle: Aqui está um resumo do que você construiu e aprendeu nesta lição.
 completed: true
 items:
-  - title: Discovered implicit animations
+  - title: Descobriu animações implícitas
     icon: auto_awesome
     details: >-
-      Implicit animations are widgets that automatically
-      animate changes to their properties.
-      You specify the new state, and the widget handles
-      the animation for you without requiring manual animation management.
-  - title: Animated the tiles with AnimatedContainer
+      Animações implícitas são widgets que animam automaticamente
+      mudanças em suas propriedades.
+      Você especifica o novo estado, e o widget cuida
+      da animação para você sem exigir gerenciamento manual de animação.
+  - title: Animou os tiles com AnimatedContainer
     icon: animation
     details: >-
-      By replacing `Container` with `AnimatedContainer` and adding a `duration`,
-      your tiles now smoothly transition between colors.
-      With just two lines of code, you added professional polish to your app!
-  - title: Customized timing with duration and curves
+      Ao substituir `Container` por `AnimatedContainer` e adicionar uma `duration`,
+      seus tiles agora fazem uma transição suave entre cores.
+      Com apenas duas linhas de código, você adicionou um acabamento profissional ao seu app!
+  - title: Personalizou o tempo com duration e curves
     icon: timeline
     details: >-
-      The `duration` property controls how long the animation takes,
-      while `curve` changes the animation's feel.
-      You tried `Curves.decelerate`, but you can also try other values
-      like `Curves.easeIn`, `Curves.bounceOut`, or `Curves.elasticIn`.
-  - title: Completed the Birdle game
+      A propriedade `duration` controla quanto tempo a animação leva,
+      enquanto `curve` muda a sensação da animação.
+      Você experimentou `Curves.decelerate`, mas também pode tentar outros valores
+      como `Curves.easeIn`, `Curves.bounceOut` ou `Curves.elasticIn`.
+  - title: Concluiu o jogo Birdle
     icon: celebration
     details: >-
-      You've built a complete Wordle-style game with custom widgets,
-      dynamic layouts, user input, state management, and smooth animations.
-      You now have the foundational skills to build your own Flutter apps!
+      Você construiu um jogo completo no estilo Wordle com widgets personalizados,
+      layouts dinâmicos, entrada do usuário, gerenciamento de estado e animações suaves.
+      Agora você tem as habilidades fundamentais para construir seus próprios apps Flutter!
 </SummaryCard>
 
-### Test yourself
+### Teste seus conhecimentos {:#test-yourself}
 
-<Quiz title="Implicit Animations Quiz">
-- question: What widget can you use to automatically animate changes to properties like color, size, and decoration?
+<Quiz title="Quiz de Animações Implícitas">
+- question: Qual widget você pode usar para animar automaticamente mudanças em propriedades como cor, tamanho e decoração?
   options:
     - text: Container
       correct: false
-      explanation: Container doesn't animate; property changes happen instantly.
+      explanation: Container não anima; mudanças de propriedades acontecem instantaneamente.
     - text: AnimatedContainer
       correct: true
-      explanation: AnimatedContainer automatically animates changes to its properties over the specified duration.
+      explanation: AnimatedContainer anima automaticamente mudanças em suas propriedades ao longo da duração especificada.
     - text: AnimationController
       correct: false
-      explanation: AnimationController is for explicit animations; AnimatedContainer is simpler for basic animations.
+      explanation: AnimationController é para animações explícitas; AnimatedContainer é mais simples para animações básicas.
     - text: TransitionContainer
       correct: false
-      explanation: There is no TransitionContainer widget; use AnimatedContainer for implicit animations.
-- question: "What does the `duration` property control in an AnimatedContainer?"
+      explanation: Não existe um widget TransitionContainer; use AnimatedContainer para animações implícitas.
+- question: "O que a propriedade `duration` controla em um AnimatedContainer?"
   options:
-    - text: How long the widget stays on screen before disappearing.
+    - text: Quanto tempo o widget permanece na tela antes de desaparecer.
       correct: false
-      explanation: Duration controls animation time, not widget visibility.
-    - text: How long the animation takes to transition from the old value to the new value.
+      explanation: Duration controla o tempo da animação, não a visibilidade do widget.
+    - text: Quanto tempo a animação leva para fazer a transição do valor antigo para o novo valor.
       correct: true
-      explanation: The duration specifies the time over which the property change is animated.
-    - text: The delay before the animation starts.
+      explanation: A duration especifica o tempo durante o qual a mudança de propriedade é animada.
+    - text: O atraso antes de a animação começar.
       correct: false
-      explanation: Duration is about animation length; delays require separate configuration.
-    - text: How many times the animation repeats.
+      explanation: Duration se refere à duração da animação; atrasos exigem configuração separada.
+    - text: Quantas vezes a animação se repete.
       correct: false
-      explanation: Implicit animations run once per state change; repetition requires explicit animation controllers.
+      explanation: Animações implícitas executam uma vez por mudança de estado; repetição exige animation controllers explícitos.
 </Quiz>

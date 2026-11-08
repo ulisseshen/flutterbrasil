@@ -1,62 +1,63 @@
 ---
-title: Create an app
-description: Instructions on how to create a new Flutter app.
+ia-translate: true
+title: Crie um app
+description: Instruções sobre como criar um novo app Flutter.
 layout: tutorial
 ---
 
-Learn the first steps to building a Flutter app, from creating a project to understanding widgets and hot reload.
+Aprenda os primeiros passos para construir um app Flutter, desde a criação de um projeto até o entendimento de widgets e hot reload.
 
 <YouTubeEmbed id="sE1M2EayFes" title="First steps with Flutter" fullWidth="true"></YouTubeEmbed>
 
 <SummaryCard>
-title: What you'll accomplish
+title: O que você vai realizar
 items:
-  - title: Create a new Flutter project using the CLI
+  - title: Criar um novo projeto Flutter usando a CLI
     icon: terminal
-  - title: Understand widgets and the widget tree
+  - title: Entender widgets e a árvore de widgets
     icon: account_tree
-  - title: Run your app and use hot reload
+  - title: Executar seu app e usar hot reload
     icon: bolt
 </SummaryCard>
 
 ---
 
-### What you'll build
+### O que você vai construir {:#what-youll-build}
 
-In this first section of the Flutter tutorial,
-you'll build the core UI of an app called 'Birdle',
-a game similar to [Wordle, the popular New York Times game][].
+Nesta primeira seção do tutorial do Flutter,
+você construirá a UI principal de um app chamado 'Birdle',
+um jogo similar ao [Wordle, o popular jogo do New York Times][Wordle, the popular New York Times game].
 
-<img src='/assets/images/docs/tutorial/birdle.png' width="320px" class="diagram-wrap" alt="A screenshot that resembles the popular game Wordle.">
+<img src='/assets/images/docs/tutorial/birdle.png' width="320px" class="diagram-wrap" alt="Uma captura de tela que se parece com o popular jogo Wordle.">
 
-By the end of this tutorial, you'll have
-learned the fundamentals of building Flutter UIs, and your app will
-look like the following screenshot (and it'll even mostly work 😀).
+Ao final deste tutorial, você terá
+aprendido os fundamentos de construção de UIs Flutter, e seu app se
+parecerá com a seguinte captura de tela (e ele até funcionará quase completamente 😀).
 
 [Wordle, the popular New York Times game]: https://www.nytimes.com/games/wordle/index.html
 
 
-### Create a new Flutter project
+### Crie um novo projeto Flutter {:#create-a-new-flutter-project}
 
-The first step to building Flutter apps is to create a new project.
-You create new apps with the [Flutter CLI tool][],
-installed as part of the Flutter SDK.
+O primeiro passo para construir apps Flutter é criar um novo projeto.
+Você cria novos apps com a [ferramenta CLI do Flutter][Flutter CLI tool],
+instalada como parte do SDK do Flutter.
 
-Open your terminal or command prompt and run
-the following command to create a new Flutter project:
+Abra seu terminal ou prompt de comando e execute
+o seguinte comando para criar um novo projeto Flutter:
 
 ```console
 $ flutter create birdle --empty
 ```
 
-This creates a new Flutter project using the minimal "empty" template.
+Isso cria um novo projeto Flutter usando o template mínimo "empty".
 
 [Flutter CLI tool]: /reference/flutter-cli
 
-### Examine the code
+### Examine o código {:#examine-the-code}
 
-In your IDE, open the file at `lib/main.dart`.
-Starting from the top, you'll see this code.
+Na sua IDE, abra o arquivo em `lib/main.dart`.
+Começando do topo, você verá este código.
 
 <?code-excerpt "fwe/birdle/lib/step1_main.dart (main)"?>
 ```dart title="lib/main.dart"
@@ -65,13 +66,13 @@ void main() {
 }
 ```
 
-The `main` function is the entry point to any Dart program,
-and a Flutter app is just a **Dart** program.
-The `runApp` method is part of the Flutter SDK,
-and it takes a **widget** as an argument.
-In this case, an instance of the `MainApp` widget is being passed in.
+A função `main` é o ponto de entrada para qualquer programa Dart,
+e um app Flutter é apenas um programa **Dart**.
+O método `runApp` é parte do SDK do Flutter,
+e ele recebe um **widget** como argumento.
+Neste caso, uma instância do widget `MainApp` está sendo passada.
 
-Just below the `main` function, you'll find the `MainApp` class declaration.
+Logo abaixo da função `main`, você encontrará a declaração da classe `MainApp`.
 
 <?code-excerpt "fwe/birdle/lib/step1_main.dart (MainApp)"?>
 ```dart
@@ -91,120 +92,119 @@ class MainApp extends StatelessWidget {
 }
 ```
 
-`MainApp` is the **root widget**,
-as it's the widget that's passed into `runApp`.
-Within this widget, there's a `build` method that
-returns another widget called `MaterialApp`.
-Essentially, this is what a Flutter app is:
-a composition of widgets that make
-up a tree structure called the **widget tree.**
+`MainApp` é o **widget raiz**,
+pois é o widget que é passado para `runApp`.
+Dentro deste widget, há um método `build` que
+retorna outro widget chamado `MaterialApp`.
+Essencialmente, isto é o que um app Flutter é:
+uma composição de widgets que formam
+uma estrutura de árvore chamada **árvore de widgets.**
 
-Your job as a Flutter developer is to
-compose widgets from the SDK into larger, custom widgets that display a UI.
+Seu trabalho como desenvolvedor Flutter é
+compor widgets do SDK em widgets maiores e personalizados que exibem uma UI.
 
-At the moment, the widget tree is quite simple:
+No momento, a árvore de widgets é bem simples:
 
-<img src='/assets/images/docs/tutorial/initial_widget_tree.png' width="320px" alt="A screenshot that resembles the popular game Wordle.">
+<img src='/assets/images/docs/tutorial/initial_widget_tree.png' width="320px" alt="Uma captura de tela que se parece com o popular jogo Wordle.">
 
-### Run your app
+### Execute seu app {:#run-your-app}
 
-1.  In your terminal,
-    navigate to the root directory of your created Flutter app:
+1.  No seu terminal,
+    navegue até o diretório raiz do app Flutter que você criou:
 
     ```console
     $ cd birdle
     ```
 
-1.  Run the app using the Flutter CLI tool.
+1.  Execute o app usando a ferramenta CLI do Flutter.
 
     ```console
     $ flutter run -d chrome
     ```
 
-    The app will build and launch in a new instance of Chrome.
+    O app será compilado e iniciará em uma nova instância do Chrome.
 
-<img src='/assets/images/docs/tutorial/hello_world.png' width="320px" alt="A screenshot that resembles the popular game Wordle.">
+<img src='/assets/images/docs/tutorial/hello_world.png' width="320px" alt="Uma captura de tela que se parece com o popular jogo Wordle.">
 
-### Use hot reload
+### Use hot reload {:#use-hot-reload}
 
-**Stateful hot reload**, if you haven't heard of it,
-allows a running Flutter app to re-render updated business logic or UI code in
-less than a second – all without losing your place in the app.
+**Stateful hot reload**, se você ainda não ouviu falar,
+permite que um app Flutter em execução re-renderize lógica de negócio ou código de UI atualizado em
+menos de um segundo – tudo sem perder seu lugar no app.
 
-In your IDE, open the `main.dart` file and navigate to line ~15 and find this
-code:
+Na sua IDE, abra o arquivo `main.dart` e navegue até a linha ~15 e encontre este
+código:
 
 <?code-excerpt "fwe/birdle/lib/step1_main.dart (Text)"?>
 ```dart
 child: Text('Hello World!'),
 ```
 
-Change the text inside the string to anything you want.
-Then, hot-reload your app by
-pressing `r` in the terminal where the app is running.
-The running app should instantly show your updated text.
+Mude o texto dentro da string para qualquer coisa que você queira.
+Então, faça hot reload do seu app
+pressionando `r` no terminal onde o app está sendo executado.
+O app em execução deve instantaneamente mostrar seu texto atualizado.
 
-### Review
+### Revisão {:#review}
 
 <SummaryCard expands="false">
-title: What you accomplished
-subtitle: Here's a summary of what you built and learned in this lesson.
+title: O que você realizou
+subtitle: Aqui está um resumo do que você construiu e aprendeu nesta lição.
 completed: true
 items:
-  - title: Created your first Flutter project
+  - title: Criou seu primeiro projeto Flutter
     icon: terminal
     details: >-
-      You used `flutter create` with the `--empty` flag to
-      scaffold a minimal Flutter project.
-      The CLI generates the project structure and
-      boilerplate code needed to get started.
-  - title: Explored the widget tree
+      Você usou `flutter create` com a flag `--empty` para
+      criar a estrutura de um projeto Flutter mínimo.
+      A CLI gera a estrutura do projeto e o
+      código boilerplate necessários para começar.
+  - title: Explorou a árvore de widgets
     icon: account_tree
     details: >-
-      Flutter UIs are built by composing **widgets** into a tree structure.
-      The `runApp` function takes a root widget, and that widget's
-      `build` method returns other widgets, forming the **widget tree**.
-      Your job as a Flutter developer is to
-      compose these widgets into custom UIs.
-  - title: Ran your app with hot reload
+      UIs Flutter são construídas compondo **widgets** em uma estrutura de árvore.
+      A função `runApp` recebe um widget raiz, e o método
+      `build` desse widget retorna outros widgets, formando a **árvore de widgets**.
+      Seu trabalho como desenvolvedor Flutter é
+      compor esses widgets em UIs personalizadas.
+  - title: Executou seu app com hot reload
     icon: bolt
     details: >-
-      You ran your app with `flutter run` and
-      experienced **stateful hot reload**, which lets you
-      see code changes reflected in under a second without losing app state.
-      Press `r` in the terminal to trigger a hot reload.
+      Você executou seu app com `flutter run` e
+      experimentou o **stateful hot reload**, que permite
+      ver mudanças de código refletidas em menos de um segundo sem perder o estado do app.
+      Pressione `r` no terminal para acionar um hot reload.
 </SummaryCard>
 
-### Test yourself
+### Teste seus conhecimentos {:#test-yourself}
 
-<Quiz title="Create an App Quiz">
-- question: "What is the purpose of the `runApp` function in a Flutter application?"
+<Quiz title="Quiz de criação de app">
+- question: "Qual é o propósito da função `runApp` em uma aplicação Flutter?"
   options:
-    - text: It compiles the Dart code into native machine code.
+    - text: Ela compila o código Dart em código de máquina nativo.
       correct: false
-      explanation: "Compilation happens before the app runs; `runApp` starts the Flutter framework with a root widget."
-    - text: It takes a widget as an argument and makes it the root of the widget tree.
+      explanation: "A compilação acontece antes de o app ser executado; `runApp` inicia o framework Flutter com um widget raiz."
+    - text: Ela recebe um widget como argumento e o torna a raiz da árvore de widgets.
       correct: true
-      explanation: "The `runApp` function inflates the given widget and attaches it to the screen, making it the root of the widget tree."
-    - text: "It creates the `main.dart` file for the project."
+      explanation: "A função `runApp` infla o widget fornecido e o anexa à tela, tornando-o a raiz da árvore de widgets."
+    - text: "Ela cria o arquivo `main.dart` para o projeto."
       correct: false
-      explanation: "The file is created by `flutter create`; `runApp` is called at runtime."
-    - text: It downloads Flutter dependencies from the internet.
+      explanation: "O arquivo é criado por `flutter create`; `runApp` é chamada em tempo de execução."
+    - text: Ela baixa as dependências do Flutter da internet.
       correct: false
-      explanation: "Dependencies are managed by `flutter pub get`, not `runApp`."
-- question: How do you trigger a hot reload while a Flutter app is running in the terminal?
+      explanation: "As dependências são gerenciadas por `flutter pub get`, não por `runApp`."
+- question: Como você aciona um hot reload enquanto um app Flutter está sendo executado no terminal?
   options:
-    - text: "Press `h` in the terminal."
+    - text: "Pressione `h` no terminal."
       correct: false
-      explanation: "Pressing `h` shows help options; `r` triggers hot reload."
-    - text: "Press `r` in the terminal."
+      explanation: "Pressionar `h` mostra as opções de ajuda; `r` aciona o hot reload."
+    - text: "Pressione `r` no terminal."
       correct: true
-      explanation: "Pressing `r` in the terminal where the app is running triggers a hot reload."
-    - text: "Stop and restart the app with `flutter run`."
+      explanation: "Pressionar `r` no terminal onde o app está sendo executado aciona um hot reload."
+    - text: "Pare e reinicie o app com `flutter run`."
       correct: false
-      explanation: A full restart is not needed; hot reload is faster.
-    - text: Save the file and wait for automatic reload.
+      explanation: Um reinício completo não é necessário; o hot reload é mais rápido.
+    - text: Salve o arquivo e aguarde o reload automático.
       correct: false
-      explanation: "By default, you need to press `r` to trigger hot reload in the terminal."
+      explanation: "Por padrão, você precisa pressionar `r` para acionar o hot reload no terminal."
 </Quiz>
-

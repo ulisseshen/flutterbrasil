@@ -1,34 +1,35 @@
 ---
-title: Web accessibility
-description: Information about web accessibility
+ia-translate: true
+title: Acessibilidade web
+description: Informações sobre acessibilidade web
 ---
 
-## Background
+## Contexto
 
-Flutter supports web accessibility by translating its internal
-Semantics tree into an accessible HTML DOM structure that
-screen readers can understand.
-Since Flutter renders its UI on a single canvas, it needs a special layer
-to expose the UI's meaning and structure to web browsers.
+Flutter suporta acessibilidade web traduzindo sua
+árvore Semantics interna em uma estrutura DOM HTML acessível que
+leitores de tela podem entender.
+Como o Flutter renderiza sua UI em um único canvas, ele precisa de uma camada especial
+para expor o significado e estrutura da UI aos navegadores web.
 
 
-## Opt-in web accessibility
+## Opt-in de acessibilidade web
 
-### Invisible button
+### Botão invisível
 
-For performance reasons, Flutter's web accessibility is not on by default.
-To turn on accessibility, the user needs to press an invisible button with
+Por razões de desempenho, a acessibilidade web do Flutter não está ativada por padrão.
+Para ativar a acessibilidade, o usuário precisa pressionar um botão invisível com
 `aria-label="Enable accessibility"`.
-After pressing the button, the DOM tree will reflect all accessibility
-information for the widgets.
-In embedded or multi-view web apps on mobile browsers, Flutter scopes this
-placeholder button to each Flutter view so it doesn't block taps on the
-surrounding HTML page.
+Após pressionar o botão, a árvore DOM refletirá todas as informações de acessibilidade
+dos widgets.
+Em web apps incorporados ou com múltiplas views em navegadores móveis, o Flutter restringe
+esse botão placeholder a cada view do Flutter para que ele não bloqueie toques na
+página HTML ao redor.
 
-### Turn on accessibility mode in code
+### Ativar modo de acessibilidade no código
 
-An alternative approach is to turn on accessibility mode
-by adding the following code when running an app.
+Uma abordagem alternativa é ativar o modo de acessibilidade
+adicionando o seguinte código ao executar um app.
 
 ```dart
 import 'package:flutter/semantics.dart';
@@ -43,73 +44,73 @@ void main() {
 
 
 
-## Enhancing Accessibility with Semantic Roles
+## Melhorando a acessibilidade com roles semânticos {:#enhancing-accessibility-with-semantic-roles}
 
-### What are Semantic Roles?
+### O que são roles semânticos?
 
-Semantic roles define the purpose of a UI element, helping screen readers
-and other assistive tools interpret and present your application effectively
-to users. For example, a role can indicate whether a widget is a button, a link,
-a heading, a slider, or part of a table.
+Roles semânticos definem o propósito de um elemento de UI, ajudando leitores de tela
+e outras ferramentas assistivas a interpretar e apresentar sua aplicação efetivamente
+aos usuários. Por exemplo, um role pode indicar se um widget é um botão, um link,
+um cabeçalho, um slider ou parte de uma tabela.
 
-While Flutter's standard widgets often provide these semantics automatically,
-a custom component without a clearly defined role can be incomprehensible
-to a screen reader user.
+Enquanto os widgets padrão do Flutter frequentemente fornecem essas semânticas automaticamente,
+um componente customizado sem um role claramente definido pode ser incompreensível
+para um usuário de leitor de tela.
 
 
-By assigning appropriate roles, you ensure that:
+Ao atribuir roles apropriados, você garante que:
 
-* Screen readers can announce the type and purpose of elements correctly.
-* Users can navigate your application more effectively using assistive technologies.
-* Your application adheres to web accessibility standards, improving usability.
+* Leitores de tela podem anunciar o tipo e propósito dos elementos corretamente.
+* Usuários podem navegar em sua aplicação de forma mais eficaz usando tecnologias assistivas.
+* Sua aplicação adere aos padrões de acessibilidade web, melhorando a usabilidade.
 
-### Using `SemanticsRole` in Flutter for web
+### Usando `SemanticsRole` no Flutter para web
 
-Flutter provides the [`Semantics` widget][] with the [`SemanticsRole` enum][]
-to allow developers to assign specific roles to their widgets. When your
-Flutter web app is rendered, these Flutter-specific roles are translated into
-corresponding ARIA roles in the web page's HTML structure.
+Flutter fornece o [widget `Semantics`][] com o [enum `SemanticsRole`][]
+para permitir que desenvolvedores atribuam roles específicos aos seus widgets. Quando seu
+app Flutter web é renderizado, esses roles específicos do Flutter são traduzidos em
+roles ARIA correspondentes na estrutura HTML da página web.
 
-[`Semantics` widget]: {{site.api}}/flutter/widgets/Semantics-class.html
-[`SemanticsRole` enum]: {{site.api}}/flutter/dart-ui/SemanticsRole.html
+[widget `Semantics`]: {{site.api}}/flutter/widgets/Semantics-class.html
+[enum `SemanticsRole`]: {{site.api}}/flutter/dart-ui/SemanticsRole.html
 
-**1. Automatic Semantics from Standard Widgets**
+**1. Semantics automáticos de widgets padrão**
 
 :::version-note
-Enhanced `<input type="range" role="slider">` semantics for `Slider`,
-`RangeSlider`, and `SemanticsRole.slider`, named route `role="region"`
-landmarks, DOM focus preservation across role updates and `WidgetsApp.router`
-dialogs, and `Escape` key tooltip dismissal require Flutter 3.50 or later.
+A semântica aprimorada de `<input type="range" role="slider">` para `Slider`,
+`RangeSlider` e `SemanticsRole.slider`, landmarks `role="region"` para rotas
+nomeadas, a preservação do foco do DOM em atualizações de role e em diálogos de
+`WidgetsApp.router`, e o fechamento de tooltips com a tecla `Escape` exigem Flutter 3.50 ou posterior.
 :::
 
-Many standard Flutter widgets, like `TabBar`, `MenuAnchor`, `Slider`,
-`RangeSlider`, and `Table`, automatically include semantic information along
-with their roles:
+Muitos widgets padrão do Flutter, como `TabBar`, `MenuAnchor`, `Slider`,
+`RangeSlider` e `Table`, incluem automaticamente informações semânticas junto
+com seus roles:
 
-* **Sliders**: `Slider` and `RangeSlider` (using `SemanticsFlag.isSlider`) and
-  custom widgets with `SemanticsRole.slider` render a focusable
-  `<input type="range" role="slider">` element with synchronized
-  `aria-label`, `aria-valuenow`, `aria-valuetext`, and keyboard arrow
-  navigation.
-* **Landmarks and menus**: Named routes with `scopesRoute: true`,
-  `namesRoute: true`, and a non-empty `label` emit `role="region"` landmarks,
-  and scrollable menus (`MenuAnchor`, `DropdownMenu`) expose direct item counts
-  to screen readers without intermediate `group` wrappers.
+* **Sliders**: `Slider` e `RangeSlider` (usando `SemanticsFlag.isSlider`) e
+  widgets personalizados com `SemanticsRole.slider` renderizam um elemento
+  focável `<input type="range" role="slider">` com `aria-label`,
+  `aria-valuenow` e `aria-valuetext` sincronizados, e navegação pelas
+  setas do teclado.
+* **Landmarks e menus**: Rotas nomeadas com `scopesRoute: true`,
+  `namesRoute: true` e um `label` não vazio emitem landmarks `role="region"`,
+  e menus roláveis (`MenuAnchor`, `DropdownMenu`) expõem a contagem direta de itens
+  para leitores de tela sem wrappers `group` intermediários.
 
-In addition, the web engine preserves DOM focus across semantic role changes
-without scrolling, restores focus when dialogs or modal routes close in
-`WidgetsApp.router` apps, and dismisses visible `Tooltip` widgets when the user
-presses `Escape`.
+Além disso, a engine web preserva o foco do DOM em mudanças de role semântico
+sem rolar a página, restaura o foco quando diálogos ou rotas modais fecham em
+apps com `WidgetsApp.router`, e fecha widgets `Tooltip` visíveis quando o usuário
+pressiona `Escape`.
 
-Whenever possible, prefer using these standard widgets
-as they handle many accessibility aspects out-of-the-box.
+Sempre que possível, prefira usar esses widgets padrão
+pois eles lidam com muitos aspectos de acessibilidade prontos para uso.
 
-**2. Explicitly adding or overriding roles**
+**2. Adicionando ou sobrescrevendo roles explicitamente**
 
-For custom components or when the default semantics aren't sufficient,
-use the `Semantics` widget to define the role:
+Para componentes customizados ou quando as semânticas padrão não são suficientes,
+use o widget `Semantics` para definir o role:
 
-Here's an example of how you might explicitly define a list and its items:
+Aqui está um exemplo de como você pode definir explicitamente uma lista e seus itens:
 
 ```dart
 import 'package:material_ui/material_ui.dart';
@@ -149,18 +150,18 @@ class MyCustomListWidget extends StatelessWidget {
 }
 ```
 
-## Viewport zoom and mobile text inputs
+## Zoom do viewport e entradas de texto em dispositivos móveis {:#viewport-zoom-and-mobile-text-inputs}
 
 :::version-note
-Default 500% pinch-to-zoom (`maximum-scale=5.0`) and automatic iOS Safari
-16px text-input font sizing require Flutter 3.50 or later.
+O pinch-to-zoom padrão de 500% (`maximum-scale=5.0`) e o dimensionamento automático
+da fonte de entradas de texto para 16px no iOS Safari requerem Flutter 3.50 ou posterior.
 :::
 
-By default in full-page mode, Flutter configures the page's
-`<meta name="viewport" flt-viewport>` tag with `maximum-scale=5.0` and without
-`user-scalable=no`. This allows users to pinch-to-zoom up to 500% to meet
-WCAG 2.1 AA text-resizing guidelines.
+Por padrão, no modo de página inteira, o Flutter configura a tag
+`<meta name="viewport" flt-viewport>` da página com `maximum-scale=5.0` e sem
+`user-scalable=no`. Isso permite que os usuários usem pinch-to-zoom até 500% para atender
+às diretrizes de redimensionamento de texto da WCAG 2.1 AA.
 
-On iOS Safari, Flutter also automatically sets a minimum `16px` font size on
-its hidden semantic `<input>` and `<textarea>` elements so the browser doesn't
-unexpectedly auto-zoom when a user focuses a text field.
+No iOS Safari, o Flutter também define automaticamente um tamanho mínimo de fonte de `16px` em
+seus elementos semânticos ocultos `<input>` e `<textarea>` para que o navegador não
+faça zoom automático inesperadamente quando um usuário foca um campo de texto.

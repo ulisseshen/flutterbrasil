@@ -1,67 +1,68 @@
 ---
-title: Swift Package Manager for app developers
-description: How to use Swift Package Manager for native iOS or macOS dependencies
+ia-translate: true
+title: Swift Package Manager para desenvolvedores de apps
+description: Como usar Swift Package Manager para dependências nativas iOS ou macOS
 ---
 
 :::note
-As of the 3.44 release, Flutter uses [Swift Package Manager][]
-to manage iOS and macOS native dependencies.
-Flutter continues to support CocoaPods in maintenance mode,
-however, the CocoaPods registry permanently becomes
-[read-only on December 2, 2026][cocoapods].
+A partir da versão 3.44, o Flutter usa o [Swift Package Manager][]
+para gerenciar dependências nativas iOS e macOS.
+O Flutter continua a suportar CocoaPods em modo de manutenção,
+no entanto, o registro do CocoaPods se torna permanentemente
+[somente leitura em 2 de dezembro de 2026][cocoapods].
 :::
 
 [cocoapods]: https://blog.cocoapods.org/CocoaPods-Specs-Repo/
 [Swift Package Manager]: https://www.swift.org/documentation/package-manager/
 
-## How to turn on Swift Package Manager
+## Como ativar o Swift Package Manager {:#how-to-turn-on-swift-package-manager}
 
-As of the 3.44 release, Flutter's Swift Package Manager (SwiftPM)
-support is on by default.
-Upgrading Flutter and running your app automatically adds SwiftPM integration.
-This makes your project download the Swift packages that
-your Flutter plugins depend on.
-To use an older Flutter version,
-you might need to [remove Swift Package Manager integration][removeSPM]
-from the app.
+A partir da versão 3.44, o suporte do Flutter ao Swift Package Manager (SwiftPM)
+está ativado por padrão.
+Atualizar o Flutter e executar seu app adiciona automaticamente a integração com SwiftPM.
+Isso faz com que seu projeto baixe os pacotes Swift dos quais
+seus plugins Flutter dependem.
+Para usar uma versão mais antiga do Flutter,
+talvez você precise [remover a integração com Swift Package Manager][removeSPM]
+do app.
 
-Note that Flutter falls back to CocoaPods for dependencies that don't
-yet support Swift Package Manager.
+Observe que o Flutter recorre ao CocoaPods para dependências que ainda
+não suportam Swift Package Manager.
 
-[Optional] To check if your project is using SwiftPM:
+[Opcional] Para verificar se seu projeto está usando SwiftPM:
 
-1. In Xcode, run the app.
-1. Ensure that  **Run Prepare Flutter Framework Script** runs as a pre-action
-   and that `FlutterGeneratedPluginSwiftPackage` is a target dependency.
+1. No Xcode, execute o app.
+1. Certifique-se de que **Run Prepare Flutter Framework Script** é executado como uma pre-action
+   e que `FlutterGeneratedPluginSwiftPackage` é uma dependência do target.
 
    <DashImage image="development/packages-and-plugins/swift-package-manager/flutter-pre-action-build-log.png" caption="Ensure **Run Prepare Flutter Framework Script** runs as a pre-action" />
 
-If you previously disabled SwiftPM, you might need to enable it with
+Se você desativou o SwiftPM anteriormente, talvez precise ativá-lo com
 `flutter config --enable-swift-package-manager`.
 
-If automatic migration works for you and all of your dependencies
-support Swift Package Manager,
-you can [remove CocoaPods integration][removeCocoaPods].
+Se a migração automática funcionar para você e todas as suas dependências
+suportarem Swift Package Manager,
+você pode [remover a integração com CocoaPods][removeCocoaPods].
 
-## How to remove CocoaPods integration
+## Como remover a integração com CocoaPods {:#how-to-remove-cocoapods-integration}
 
-**Flutter falls back to CocoaPods if any of your project dependencies
-do not support Swift Package Manager.**
-Ensure that all plugins in your project support Swift Package Manager
-before removing CocoaPods.
+**O Flutter recorre ao CocoaPods se alguma das dependências do seu projeto
+não suportar Swift Package Manager.**
+Certifique-se de que todos os plugins do seu projeto suportam Swift Package Manager
+antes de remover o CocoaPods.
 
 :::note
-If you have manually edited your `Podfile` to add CocoaPods
-dependencies or logic other than Flutter plugins,
-you must manually remove those changes.
+Se você editou manualmente seu `Podfile` para adicionar dependências
+CocoaPods ou lógica diferente de plugins Flutter,
+você deve remover essas alterações manualmente.
 :::
 
 <Tabs key="darwin-platform">
 <Tab name="iOS project">
 
-To remove CocoaPods from your project, use the following steps.
+Para remover o CocoaPods do seu projeto, use os passos a seguir.
 
-1. To de-integrate CocoaPods from your Xcode projects, run:
+1. Para desintegrar o CocoaPods dos seus projetos Xcode, execute:
 
     ```sh
     cd ios
@@ -69,20 +70,20 @@ To remove CocoaPods from your project, use the following steps.
     cd ..
     ```
 
-2. Delete CocoaPods-related files and directories:
+2. Exclua os arquivos e diretórios relacionados ao CocoaPods:
 
-    Delete `ios/Podfile`, `ios/Podfile.lock`,
-    the `ios/Pods/` directory, and
-    the `ios/.symlinks/` directory (if present).
+    Exclua `ios/Podfile`, `ios/Podfile.lock`,
+    o diretório `ios/Pods/` e
+    o diretório `ios/.symlinks/` (se presente).
 
-3. Check your configuration files:
+3. Verifique seus arquivos de configuração:
 
-    In `ios/Flutter/Debug.xcconfig`
-    and `ios/Flutter/Release.xcconfig`,
-    remove any `#include` lines referencing `Pods/Target Support Files`
-    or CocoaPods `.xcconfig` files if they are still present.
+    Em `ios/Flutter/Debug.xcconfig`
+    e `ios/Flutter/Release.xcconfig`,
+    remova quaisquer linhas `#include` que referenciem `Pods/Target Support Files`
+    ou arquivos `.xcconfig` do CocoaPods, se ainda estiverem presentes.
 
-4. Clean and build your project to verify the migration:
+4. Limpe e compile seu projeto para verificar a migração:
 
     ```sh
     flutter clean
@@ -93,9 +94,9 @@ To remove CocoaPods from your project, use the following steps.
 </Tab>
 <Tab name="macOS project">
 
-To remove CocoaPods from your project, use the following steps.
+Para remover o CocoaPods do seu projeto, use os passos a seguir.
 
-1. To de-integrate CocoaPods from your Xcode projects, run:
+1. Para desintegrar o CocoaPods dos seus projetos Xcode, execute:
 
     ```sh
     cd macos
@@ -103,18 +104,18 @@ To remove CocoaPods from your project, use the following steps.
     cd ..
     ```
 
-2. Delete CocoaPods-related files and directories:
+2. Exclua os arquivos e diretórios relacionados ao CocoaPods:
 
-    Delete `macos/Podfile`, the `macos/Pods/` directory,
-    and the `macos/.symlinks/` directory (if present).
+    Exclua `macos/Podfile`, o diretório `macos/Pods/`
+    e o diretório `macos/.symlinks/` (se presente).
 
-3. Check your configuration files:
+3. Verifique seus arquivos de configuração:
 
-    In `macos/Flutter/Flutter-Debug.xcconfig` and `macos/Flutter/Flutter-Release.xcconfig`
-    remove any `#include` lines referencing `Pods/Target Support Files`
-    or CocoaPods `.xcconfig` files if they are still present.
+    Em `macos/Flutter/Flutter-Debug.xcconfig` e `macos/Flutter/Flutter-Release.xcconfig`
+    remova quaisquer linhas `#include` que referenciem `Pods/Target Support Files`
+    ou arquivos `.xcconfig` do CocoaPods, se ainda estiverem presentes.
 
-4. Clean and build your project to verify the migration:
+4. Limpe e compile seu projeto para verificar a migração:
 
     ```sh
     flutter clean
@@ -125,23 +126,23 @@ To remove CocoaPods from your project, use the following steps.
 </Tab>
 </Tabs>
 
-## How to add Swift Package Manager integration manually
+## Como adicionar integração com Swift Package Manager manualmente {:#how-to-add-swift-package-manager-integration-manually}
 
-When you upgrade to Flutter 3.44 or later and run
-your app, SwiftPM integration is automatically added. You only need
-these instructions if problems occurred and you need to manually
-add SwiftPM integration to your project.
+Quando você atualiza para o Flutter 3.44 ou posterior e executa
+seu app, a integração com SwiftPM é adicionada automaticamente. Você só precisa
+destas instruções se ocorrerem problemas e você precisar adicionar
+manualmente a integração com SwiftPM ao seu projeto.
 
-Most developers do not need to do this.
+A maioria dos desenvolvedores não precisa fazer isso.
 
-If you experience a problem automatically migrating your
-project to SwiftPM, please [file an issue][].
-Include the error message and, if possible,
-include a copy of the following files in your issue:
+Se você tiver um problema ao migrar automaticamente seu
+projeto para SwiftPM, por favor [abra uma issue][file an issue].
+Inclua a mensagem de erro e, se possível,
+inclua uma cópia dos seguintes arquivos na sua issue:
 
 * `ios/Runner.xcodeproj/project.pbxproj`
 * `ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme`
-   (or the xcsheme for the flavor used)
+   (ou o xcsheme do flavor usado)
 
 <Tabs key="darwin-platform">
 <Tab name="iOS project">
@@ -158,131 +159,129 @@ include a copy of the following files in your issue:
 
 [file an issue]: {{site.repo.flutter}}/issues/new?template=02_bug.yml
 
-### Add to an existing app (add-to-app)
+### Adicionar a um app existente (add-to-app) {:#add-to-an-existing-app-add-to-app}
 
-To use SwiftPM, consult one of the following pages, as appropriate:
+Para usar SwiftPM, consulte uma das seguintes páginas, conforme apropriado:
 
-* [Integrate a Flutter app into your iOS project][ios-add-2-app]
-* [Integrate a Flutter app into your macOS project][macos-add-2-app]
+* [Integrar um app Flutter ao seu projeto iOS][ios-add-2-app]
+* [Integrar um app Flutter ao seu projeto macOS][macos-add-2-app]
 
 [ios-add-2-app]:   /add-to-app/ios/project-setup
 [macos-add-2-app]: /add-to-app/macos/project-setup
 
-### Add to a custom Xcode target
+### Adicionar a um target personalizado do Xcode
 
-Your Flutter Xcode project can have custom [Xcode targets][] to build additional
-products, like frameworks or unit tests.
-You can add Swift Package Manager integration to these custom Xcode targets.
+Seu projeto Flutter Xcode pode ter [targets personalizados do Xcode][Xcode targets] para construir produtos adicionais,
+como frameworks ou testes unitários.
+Você pode adicionar integração com Swift Package Manager a esses targets personalizados do Xcode.
 
-Follow the steps in
-[How to add Swift Package Manager integration][manualIntegration].
+Siga os passos em
+[Como adicionar integração com Swift Package Manager][manualIntegration].
 
-In [Step 1][] for list item 6,
-use your custom target instead of the `Flutter` target.
+No [Passo 1][Step 1], para o item 6 da lista,
+use seu target personalizado em vez do target `Flutter`.
 
-In [Step 2][] for list item 6,
-use your custom target instead of the `Flutter` target.
+No [Passo 2][Step 2], para o item 6 da lista,
+use seu target personalizado em vez do target `Flutter`.
 
 [Xcode targets]: {{site.apple-dev}}/documentation/xcode/configuring-a-new-target-in-your-project
 [manualIntegration]: #how-to-add-swift-package-manager-integration-manually
 [Step 1]: #step-1-add-fluttergeneratedpluginswiftpackage-package-dependency
 [Step 2]: #step-2-add-run-prepare-flutter-framework-script-pre-action
 
-## How to remove Swift Package Manager integration
+## Como remover integração com Swift Package Manager {:#how-to-remove-swift-package-manager-integration}
 
-When your app is modified to support SwiftPM,
-the Xcode project is updated to add Flutter plugin dependencies.
+Quando seu app é modificado para suportar SwiftPM,
+o projeto Xcode é atualizado para adicionar dependências de plugin Flutter.
 
-To undo this migration:
+Para desfazer esta migração:
 
-1. [Turn off Swift Package Manager][].
+1. [Desative o Swift Package Manager][Turn off Swift Package Manager].
 
-1. Clean your project:
+1. Limpe seu projeto:
 
    ```sh
    flutter clean
    ```
 
-1. Open your app (`ios/Runner.xcworkspace` or `macos/Runner.xcworkspace`) in
+1. Abra seu app (`ios/Runner.xcworkspace` ou `macos/Runner.xcworkspace`) no
    Xcode.
 
-1. Navigate to **Package Dependencies** for the project.
+1. Navegue até **Package Dependencies** para o projeto.
 
-1. Click the `FlutterGeneratedPluginSwiftPackage` package, then click
-   the <Icon id="remove" label="remove/minus"></Icon> button.
+1. Clique no pacote `FlutterGeneratedPluginSwiftPackage`, depois clique
+   no botão <Icon id="remove" label="remove/minus"></Icon>.
 
    <DashImage image="development/packages-and-plugins/swift-package-manager/remove-generated-package.png" caption="The `FlutterGeneratedPluginSwiftPackage` to remove" />
 
-1. Navigate to **Frameworks, Libraries, and Embedded Content** for the `Runner`
-   target.
+1. Navegue até **Frameworks, Libraries, and Embedded Content** para o target `Runner`.
 
-1. Click `FlutterGeneratedPluginSwiftPackage`, then click
-   the <Icon id="remove" label="remove/minus"></Icon> button.
+1. Clique em `FlutterGeneratedPluginSwiftPackage`, depois clique
+   no botão <Icon id="remove" label="remove/minus"></Icon>.
 
    <DashImage image="development/packages-and-plugins/swift-package-manager/remove-generated-framework.png" caption="The `FlutterGeneratedPluginSwiftPackage` to remove" />
 
-1. Go to **Product > Scheme > Edit Scheme**.
+1. Vá para **Product > Scheme > Edit Scheme**.
 
-1. Expand the **Build** section in the left sidebar.
+1. Expanda a seção **Build** na barra lateral esquerda.
 
-1. Click **Pre-actions**.
+1. Clique em **Pre-actions**.
 
-1. Expand **Run Prepare Flutter Framework Script**.
+1. Expanda **Run Prepare Flutter Framework Script**.
 
-1. Click the <Icon id="delete" label="delete/trash"></Icon> button.
+1. Clique no botão <Icon id="delete" label="delete/trash"></Icon>.
 
    <DashImage image="development/packages-and-plugins/swift-package-manager/remove-flutter-pre-action.png" caption="The build pre-action to remove" />
 
 [Turn off Swift Package Manager]: #how-to-turn-off-swift-package-manager
 
-## How to use a Swift Package Manager Flutter plugin that requires a higher OS version
+## Como usar um plugin Flutter Swift Package Manager que requer uma versão de OS mais alta
 
-If a Swift Package Flutter Manager plugin requires a higher OS version than
-the project, you might get an error like this:
+Se um plugin Flutter Swift Package Manager requer uma versão de OS mais alta do que
+o projeto, você pode obter um erro como este:
 
 ```plaintext
 Target Integrity (Xcode): The package product 'plugin_name_ios' requires minimum platform version 14.0 for the iOS platform, but this target supports 12.0
 ```
 
-To use the plugin:
+Para usar o plugin:
 
-1. Open your app (`ios/Runner.xcworkspace` or `macos/Runner.xcworkspace`) in
+1. Abra seu app (`ios/Runner.xcworkspace` ou `macos/Runner.xcworkspace`) no
    Xcode.
 
-1. Increase your app's target **Minimum Deployments**.
+1. Aumente o **Minimum Deployments** do target do seu app.
 
    <DashImage image="development/packages-and-plugins/swift-package-manager/minimum-deployments.png" caption="The target's **Minimum Deployments** setting" />
 
-1. If you updated your iOS app's **Minimum Deployments**,
-   regenerate the iOS project's configuration files:
+1. Se você atualizou o **Minimum Deployments** do seu app iOS,
+   regenere os arquivos de configuração do projeto iOS:
 
    ```sh
    flutter build ios --config-only
    ```
 
-1. If you updated your macOS app's **Minimum Deployments**,
-   regenerate the macOS project's configuration files:
+1. Se você atualizou o **Minimum Deployments** do seu app macOS,
+   regenere os arquivos de configuração do projeto macOS:
 
    ```sh
    flutter build macos --config-only
    ```
 
-## How to turn off Swift Package Manager
+## Como desativar o Swift Package Manager {:#how-to-turn-off-swift-package-manager}
 
-In general, don't do this. Remember that
-the CocoaPods registry becomes read-only on December 2, 2026
-and disabling SwiftPM won't be allowed in the future.
+Em geral, não faça isso. Lembre-se de que
+o registro do CocoaPods se torna somente leitura em 2 de dezembro de 2026
+e desativar o SwiftPM não será permitido no futuro.
 
-Disabling Swift Package Manager causes Flutter to use CocoaPods for all
-dependencies. However, SwiftPM remains integrated with your project.
-To remove Swift Package Manager integration completely from your project,
-follow the [How to remove Swift Package Manager integration][removeSPM]
-instructions.
+Desativar o Swift Package Manager faz com que o Flutter use CocoaPods para todas
+as dependências. No entanto, o SwiftPM permanece integrado ao seu projeto.
+Para remover completamente a integração com Swift Package Manager do seu projeto,
+siga as instruções em [Como remover integração com Swift Package Manager][removeSPM].
 
-### Turn off SwiftPM for a single project
+### Desativar o SwiftPM para um único projeto {:#turn-off-swiftpm-for-a-single-project}
 
-In the project's `pubspec.yaml` file, under the `flutter` section,
-set `enable-swift-package-manager` to `false` in the `config` subsection.
+No arquivo `pubspec.yaml` do projeto, na seção `flutter`,
+defina `enable-swift-package-manager` como `false` na subseção `config`.
 
 ```yaml title="pubspec.yaml"
 # The following section is specific to Flutter packages.
@@ -291,20 +290,20 @@ flutter:
     enable-swift-package-manager: false
 ```
 
-This turns off Swift Package Manager for all contributors to this project.
+Isso desativa o Swift Package Manager para todos os contribuidores deste projeto.
 
-### Turn off SwiftPM globally for all projects
+### Desativar o SwiftPM globalmente para todos os projetos {:#turn-off-swiftpm-globally-for-all-projects}
 
-Run the following command:
+Execute o seguinte comando:
 
 ```sh
 flutter config --no-enable-swift-package-manager
 ```
 
-This turns off Swift Package Manager for the current user.
+Isso desativa o Swift Package Manager para o usuário atual.
 
-If a project is incompatible with Swift Package Manager,
-all contributors need to run this command.
+Se um projeto for incompatível com Swift Package Manager,
+todos os contribuidores precisam executar este comando.
 
 [removeCocoaPods]: #how-to-remove-cocoapods-integration
 [removeSPM]: #how-to-remove-swift-package-manager-integration

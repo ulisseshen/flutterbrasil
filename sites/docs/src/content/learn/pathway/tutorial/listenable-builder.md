@@ -1,48 +1,49 @@
 ---
-title: Rebuild UI when state changes
-description: Instructions on how to manage state with ChangeNotifiers.
+ia-translate: true
+title: Reconstrua a UI quando o estado muda
+description: Instruções sobre como gerenciar estado com ChangeNotifiers.
 layout: tutorial
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g;"?>
 
-Learn to use ListenableBuilder to automatically rebuild UI and
-handle all possible states with switch expressions.
+Aprenda a usar ListenableBuilder para reconstruir a UI automaticamente e
+lidar com todos os estados possíveis com expressões switch.
 
 <SummaryCard>
-title: What you'll accomplish
+title: O que você vai realizar
 items:
-  - title: Use ListenableBuilder to rebuild UI automatically
+  - title: Usar ListenableBuilder para reconstruir a UI automaticamente
     icon: sync
-  - title: Handle all possible states with switch expressions
+  - title: Lidar com todos os estados possíveis com expressões switch
     icon: alt_route
-  - title: Build the complete View layer with proper styling
+  - title: Construir a camada View completa com estilização apropriada
     icon: article
 </SummaryCard>
 
 ---
 
-### Introduction
+### Introdução {:#introduction}
 
-The view layer is your UI, and in Flutter,
-that refers to your app's widgets.
-As it pertains to this tutorial, the important part is
-wiring up your UI to respond to data changes from the ViewModel.
-[`ListenableBuilder`][] is a widget that can "listen" to a
-[`ChangeNotifier`][], and automatically rebuilds when it's
-provided `ChangeNotifier` calls `notifyListeners()`.
+A camada de visualização é sua UI, e no Flutter,
+isso se refere aos widgets do seu app.
+No que diz respeito a este tutorial, a parte importante é
+conectar sua UI para responder a mudanças de dados do ViewModel.
+[`ListenableBuilder`][] é um widget que pode "ouvir" um
+[`ChangeNotifier`][], e reconstrói automaticamente quando o
+`ChangeNotifier` fornecido chama `notifyListeners()`.
 
 [`ListenableBuilder`]: {{site.api}}/flutter/widgets/ListenableBuilder-class.html
 [`ChangeNotifier`]: {{site.api}}/flutter/foundation/ChangeNotifier-class.html
 
-### Create the article view widget
+### Crie o widget de visualização do artigo {:#create-the-article-view-widget}
 
-Create the `ArticleView` widget that
-manages your page's layout and ViewModel lifecycle.
-Because it must explicitly initialize data fetching before rendering,
-implement it as a `StatefulWidget`.
+Crie o widget `ArticleView` que
+gerencia o layout da sua página e o ciclo de vida do ViewModel.
+Como ele precisa inicializar explicitamente a busca de dados antes de renderizar,
+implemente-o como um `StatefulWidget`.
 
-Start by creating the basic stateful structure:
+Comece criando a estrutura stateful básica:
 
 <?code-excerpt "fwe/wikipedia_reader/lib/step4a_main.dart"?>
 ```dart
@@ -68,10 +69,10 @@ class _ArticleViewState extends State<ArticleView> {
 }
 ```
 
-### Instantiate the article view model
+### Instancie o view model do artigo {:#instantiate-the-article-view-model}
 
-Next, initialize your `ArticleViewModel` mapping it to the state's lifecycle. 
-Provide the ViewModel and execute `fetchArticle()` within `initState()`:
+Em seguida, inicialize seu `ArticleViewModel` associando-o ao ciclo de vida do state.
+Forneça o ViewModel e execute `fetchArticle()` dentro de `initState()`:
 
 <?code-excerpt "fwe/wikipedia_reader/lib/step4b_main.dart (view-model)"?>
 ```dart highlightLines=2-8
@@ -101,12 +102,12 @@ class _ArticleViewState extends State<ArticleView> {
 }
 ```
 
-### Update your app to include the article view
+### Atualize seu app para incluir a visualização do artigo {:#update-your-app-to-include-the-article-view}
 
-Connect everything together by updating your `MainApp` to
-include your completed `ArticleView`.
+Conecte tudo atualizando seu `MainApp` para
+incluir seu `ArticleView` completo.
 
-Replace your existing `MainApp` with this updated version:
+Substitua seu `MainApp` existente por esta versão atualizada:
 
 <?code-excerpt "fwe/wikipedia_reader/lib/step4_main.dart (main-app)"?>
 ```dart highlightLines=6
@@ -120,14 +121,14 @@ class MainApp extends StatelessWidget {
 }
 ```
 
-This change switches from the console-based test to the full UI
-experience with proper state management.
+Esta mudança alterna do teste baseado em console para a experiência completa da UI
+com gerenciamento de estado apropriado.
 
-### Listen for state changes
+### Ouça mudanças de estado {:#listen-for-state-changes}
 
-Wrap your UI in a [`ListenableBuilder`][] to listen for state changes,
-and pass it a `ChangeNotifier` object.
-In this case, the `ArticleViewModel` extends `ChangeNotifier`.
+Envolva sua UI em um [`ListenableBuilder`][] para ouvir mudanças de estado,
+e passe a ele um objeto `ChangeNotifier`.
+Neste caso, o `ArticleViewModel` estende `ChangeNotifier`.
 
 <?code-excerpt "fwe/wikipedia_reader/lib/step4c_main.dart (view-model)"?>
 ```dart highlightLines=21-26
@@ -162,28 +163,28 @@ class _ArticleViewState extends State<ArticleView> {
 }
 ```
 
-`ListenableBuilder` uses the *builder* pattern,
-which requires a callback rather than a `child` widget to
-build the widget tree below it.
-These widgets are flexible because you can
-perform operations within the callback,
-building different widgets based on the state.
+`ListenableBuilder` usa o padrão *builder*,
+que requer um callback em vez de um widget `child` para
+construir a árvore de widgets abaixo dele.
+Esses widgets são flexíveis porque você pode
+executar operações dentro do callback,
+construindo widgets diferentes com base no estado.
 
 [`ListenableBuilder`]: {{site.api}}/flutter/widgets/ListenableBuilder-class.html
 
-### Handle possible view model states
+### Lide com os possíveis estados do view model {:#handle-possible-view-model-states}
 
-Recall the `ArticleViewModel`, which has three properties that
-the UI is interested in:
+Lembre-se do `ArticleViewModel`, que tem três propriedades nas quais
+a UI está interessada:
 
 - `Summary? summary`
 - `bool isLoading`
 - `Exception? error`
 
-Depending on the combined state of these properties,
-the UI can display different widgets.
-Use Dart's support for [switch expressions][]
-to handle all possible combinations in a clean, readable way:
+Dependendo do estado combinado dessas propriedades,
+a UI pode exibir widgets diferentes.
+Use o suporte do Dart a [expressões switch][switch expressions]
+para lidar com todas as combinações possíveis de maneira limpa e legível:
 
 <?code-excerpt "fwe/wikipedia_reader/lib/step4_main.dart (view-model)"?>
 ```dart
@@ -232,23 +233,23 @@ class _ArticleViewState extends State<ArticleView> {
 }
 ```
 
-This is an excellent example of how a
-declarative, reactive framework like Flutter and
-a pattern like MVVM work together:
-The UI is rendered based on the state and updates when
-a state changes demands it, but it
-doesn't manage any state or the process of updating itself.
-The business logic and rendering are completely separate from each other.
+Este é um excelente exemplo de como um
+framework declarativo e reativo como Flutter e
+um padrão como MVVM trabalham juntos:
+A UI é renderizada com base no estado e atualiza quando
+uma mudança de estado o exige, mas ela
+não gerencia nenhum estado ou o processo de atualizar a si mesma.
+A lógica de negócio e a renderização são completamente separadas uma da outra.
 
 [switch expressions]: {{site.dart-site}}/language/branches#switch-expressions
 
-### Complete the UI
+### Complete a UI {:#complete-the-ui}
 
-The only thing remaining is to use the properties and methods provided
-by the view model to build the UI.
+A única coisa restante é usar as propriedades e métodos fornecidos
+pelo view model para construir a UI.
 
-Now create a `ArticlePage` widget that displays the actual article content.
-This reusable widget takes summary data and a callback function:
+Agora crie um widget `ArticlePage` que exibe o conteúdo real do artigo.
+Este widget reutilizável recebe dados de resumo e uma função callback:
 
 <?code-excerpt "fwe/wikipedia_reader/lib/step4d_main.dart (page)"?>
 ```dart
@@ -271,9 +272,9 @@ class ArticlePage extends StatelessWidget {
 }
 ```
 
-### Add a scrollable layout
+### Adicione um layout rolável {:#add-a-scrollable-layout}
 
-Replace the placeholder with a scrollable column layout:
+Substitua o placeholder por um layout de coluna rolável:
 
 <?code-excerpt "fwe/wikipedia_reader/lib/step4e_main.dart (page)"?>
 ```dart highlightLines=13-16
@@ -298,9 +299,9 @@ class ArticlePage extends StatelessWidget {
 }
 ```
 
-### Add article content and button
+### Adicione conteúdo do artigo e botão {:#add-article-content-and-button}
 
-Complete the layout with an article widget and navigation button:
+Complete o layout com um widget de artigo e um botão de navegação:
 
 <?code-excerpt "fwe/wikipedia_reader/lib/step4_main.dart (page)"?>
 ```dart highlightLines=16-20
@@ -331,14 +332,14 @@ class ArticlePage extends StatelessWidget {
 }
 ```
 
-### Create the `ArticleWidget`
+### Crie o `ArticleWidget` {:#create-the-articlewidget}
 
-The `ArticleWidget` handles the display of the actual article content
-with proper styling and conditional rendering.
+O `ArticleWidget` lida com a exibição do conteúdo real do artigo
+com estilização apropriada e renderização condicional.
 
-#### Set up the basic article structure
+#### Configure a estrutura básica do artigo {:#set-up-the-basic-article-structure}
 
-Start with the widget that accepts a `summary` parameter:
+Comece com o widget que aceita um parâmetro `summary`:
 
 <?code-excerpt "fwe/wikipedia_reader/lib/step4f_main.dart (article)"?>
 ```dart
@@ -354,9 +355,9 @@ class ArticleWidget extends StatelessWidget {
 }
 ```
 
-#### Add padding and column layout
+#### Adicione padding e layout de coluna {:#add-padding-and-column-layout}
 
-Wrap the content in proper padding and layout:
+Envolva o conteúdo em padding e layout apropriados:
 
 <?code-excerpt "fwe/wikipedia_reader/lib/step4g_main.dart (article)"?>
 ```dart highlightLines=8-14
@@ -378,9 +379,9 @@ class ArticleWidget extends StatelessWidget {
 }
 ```
 
-#### Add conditional image display
+#### Adicione exibição condicional de imagem {:#add-conditional-image-display}
 
-Add the article image that only shows when available:
+Adicione a imagem do artigo que só é exibida quando disponível:
 
 <?code-excerpt "fwe/wikipedia_reader/lib/step4h_main.dart (article)"?>
 ```dart highlightLines=13
@@ -405,10 +406,10 @@ class ArticleWidget extends StatelessWidget {
 }
 ```
 
-#### Complete with styled text content
+#### Complete com conteúdo de texto estilizado {:#complete-with-styled-text-content}
 
-Replace the placeholder text with a
-properly styled title, description, and extract:
+Substitua o texto placeholder por
+título, descrição e extrato devidamente estilizados:
 
 <?code-excerpt "fwe/wikipedia_reader/lib/step4_main.dart (article)"?>
 ```dart highlightLines=14-25
@@ -444,98 +445,98 @@ class ArticleWidget extends StatelessWidget {
 }
 ```
 
-This widget demonstrates a few important UI concepts:
+Este widget demonstra alguns conceitos importantes de UI:
 
-- **Conditional rendering**:
-  The `if` statements show content only when available.
-- **Text styling**:
-  Different text styles create visual hierarchy using Flutter's theme system.
-- **Proper spacing**:
-  The `spacing` parameter provides consistent vertical spacing.
-- **Overflow handling**:
-  `TextOverflow.ellipsis` prevents text from breaking the layout.
+- **Renderização condicional**:
+  As instruções `if` mostram conteúdo apenas quando disponível.
+- **Estilização de texto**:
+  Diferentes estilos de texto criam hierarquia visual usando o sistema de tema do Flutter.
+- **Espaçamento apropriado**:
+  O parâmetro `spacing` fornece espaçamento vertical consistente.
+- **Tratamento de overflow**:
+  `TextOverflow.ellipsis` evita que o texto quebre o layout.
 
-### Run the complete app
+### Execute o app completo {:#run-the-complete-app}
 
-Hot reload your app one final time. You should now see:
+Faça hot reload do seu app uma última vez. Você deve ver agora:
 
-1.  A loading spinner while the initial article loads.
-1.  The article's title, description, and summary extract.
-1.  An image (if the article has one).
-1.  A button to load another random article.
+1.  Um spinner de carregamento enquanto o artigo inicial carrega.
+1.  O título, a descrição e o extrato de resumo do artigo.
+1.  Uma imagem (se o artigo tiver uma).
+1.  Um botão para carregar outro artigo aleatório.
 
-To see the reactive UI in action,
-click the **Next random article** button.
-The app shows a loading state, fetches new data, and
-updates the display automatically.
+Para ver a UI reativa em ação,
+clique no botão **Next random article**.
+O app mostra um estado de carregamento, busca novos dados e
+atualiza a exibição automaticamente.
 
-### Review
+### Revisão {:#review}
 
 <SummaryCard>
-title: What you accomplished
-subtitle: Here's a summary of what you built and learned in this lesson.
+title: O que você realizou
+subtitle: Aqui está um resumo do que você construiu e aprendeu nesta lição.
 completed: true
 items:
-  - title: Used ListenableBuilder to rebuild UI automatically
+  - title: Usou ListenableBuilder para reconstruir a UI automaticamente
     icon: sync
     details: >-
-      `ListenableBuilder` listens to your ViewModel and automatically rebuilds
-      its children whenever `notifyListeners()` is called.
-      In the MVVM pattern,
-      this is the key connection between your ViewModel and View.
-  - title: Handled all possible states with switch expressions
+      `ListenableBuilder` ouve seu ViewModel e reconstrói automaticamente
+      seus filhos sempre que `notifyListeners()` é chamado.
+      No padrão MVVM,
+      essa é a conexão principal entre seu ViewModel e a View.
+  - title: Lidou com todos os estados possíveis com expressões switch
     icon: alt_route
     details: >-
-      Using a switch expression, you accounted for
-      the possible state combinations with an appropriate user interface,
-      Conditionally displaying a loading spinner, an error message,
-      or the actual article content.
-      With this handling, the UI is now more robust and complete.
-  - title: Built the complete View layer with proper styling
+      Usando uma expressão switch, você tratou
+      as possíveis combinações de estado com uma interface de usuário apropriada,
+      exibindo condicionalmente um spinner de carregamento, uma mensagem de erro
+      ou o conteúdo real do artigo.
+      Com esse tratamento, a UI agora está mais robusta e completa.
+  - title: Construiu a camada View completa com estilização apropriada
     icon: article
     details: >-
-      You created `ArticleView`, `ArticlePage`, and
-      `ArticleWidget` with conditional rendering, text styling,
-      proper spacing, and overflow handling.
-      These are core UI patterns you'll use in every Flutter app.
-  - title: Completed the MVVM architecture
+      Você criou `ArticleView`, `ArticlePage` e
+      `ArticleWidget` com renderização condicional, estilização de texto,
+      espaçamento apropriado e tratamento de overflow.
+      Esses são padrões de UI essenciais que você usará em todo app Flutter.
+  - title: Completou a arquitetura MVVM
     icon: celebration
     details: >-
-      You've built a complete app with Model (data operations),
-      ViewModel (state management), and View (reactive UI) layers.
-      This separation of concerns helps your code be
-      more testable, maintainable, and scalable.
+      Você construiu um app completo com as camadas Model (operações de dados),
+      ViewModel (gerenciamento de estado) e View (UI reativa).
+      Essa separação de responsabilidades ajuda seu código a ser
+      mais testável, manutenível e escalável.
 </SummaryCard>
 
-### Test yourself
+### Teste seus conhecimentos {:#test-yourself}
 
-<Quiz title="ListenableBuilder Quiz">
-- question: What is the purpose of ListenableBuilder in Flutter?
+<Quiz title="Quiz de ListenableBuilder">
+- question: Qual é o propósito do ListenableBuilder no Flutter?
   options:
-    - text: To create animations based on a ChangeNotifier.
+    - text: Criar animações baseadas em um ChangeNotifier.
       correct: false
-      explanation: ListenableBuilder rebuilds UI on state changes, not specifically for animations.
-    - text: "To listen to a ChangeNotifier and automatically rebuild its child widgets when `notifyListeners()` is called."
+      explanation: ListenableBuilder reconstrói a UI em mudanças de estado, não especificamente para animações.
+    - text: "Ouvir um ChangeNotifier e reconstruir automaticamente seus widgets filhos quando `notifyListeners()` é chamado."
       correct: true
-      explanation: ListenableBuilder listens to a Listenable and rebuilds its builder function when notified.
-    - text: To manually control when widgets should be rebuilt.
+      explanation: ListenableBuilder ouve um Listenable e reconstrói sua função builder quando notificado.
+    - text: Controlar manualmente quando os widgets devem ser reconstruídos.
       correct: false
-      explanation: The rebuild is automatic when notifyListeners() is called; you don't control it manually.
-    - text: To cache widget builds for better performance.
+      explanation: A reconstrução é automática quando notifyListeners() é chamado; você não a controla manualmente.
+    - text: Fazer cache de builds de widgets para melhor performance.
       correct: false
-      explanation: ListenableBuilder is about reactive updates, not caching.
-- question: When does ListenableBuilder rebuild its child widgets?
+      explanation: ListenableBuilder trata de atualizações reativas, não de cache.
+- question: Quando o ListenableBuilder reconstrói seus widgets filhos?
   options:
-    - text: Every time the app's frame refreshes.
+    - text: Toda vez que o frame do app é atualizado.
       correct: false
-      explanation: ListenableBuilder only rebuilds when notified, not on every frame.
-    - text: When the Listenable it's listening to calls notifyListeners().
+      explanation: ListenableBuilder só reconstrói quando notificado, não a cada frame.
+    - text: Quando o Listenable que ele está ouvindo chama notifyListeners().
       correct: true
-      explanation: "ListenableBuilder subscribes to the Listenable and rebuilds its builder function whenever `notifyListeners()` is called."
-    - text: Only when the widget is first mounted.
+      explanation: "ListenableBuilder se inscreve no Listenable e reconstrói sua função builder sempre que `notifyListeners()` é chamado."
+    - text: Apenas quando o widget é montado pela primeira vez.
       correct: false
-      explanation: "It rebuilds whenever `notifyListeners()` is called, not just on mount."
-    - text: When the parent widget rebuilds.
+      explanation: "Ele reconstrói sempre que `notifyListeners()` é chamado, não apenas na montagem."
+    - text: Quando o widget pai é reconstruído.
       correct: false
-      explanation: "ListenableBuilder rebuilds based on the Listenable, not parent rebuilds."
+      explanation: "ListenableBuilder reconstrói com base no Listenable, não em reconstruções do pai."
 </Quiz>

@@ -1,45 +1,46 @@
 ---
-title: User input
-description: Accept input from the user with buttons and text fields.
+ia-translate: true
+title: Entrada do usuário
+description: Aceite entrada do usuário com botões e campos de texto.
 layout: tutorial
 ---
 
-Learn to build text inputs, manage text with controllers, and handle user actions with buttons.
+Aprenda a construir entradas de texto, gerenciar texto com controllers e lidar com ações do usuário com botões.
 
 <SummaryCard>
-title: What you'll accomplish
+title: O que você vai realizar
 items:
-  - title: Build a text input widget with TextField
+  - title: Construir um widget de entrada de texto com TextField
     icon: text_fields
-  - title: Manage text with TextEditingController
+  - title: Gerenciar texto com TextEditingController
     icon: edit_note
-  - title: Control input focus for a better user experience
+  - title: Controlar o foco da entrada para uma melhor experiência do usuário
     icon: center_focus_strong
-  - title: Handle user actions with callbacks and buttons
+  - title: Lidar com ações do usuário com callbacks e botões
     icon: touch_app
 </SummaryCard>
 
 ---
 
-### Introduction
+### Introdução {:#introduction}
 
-The app will display the user's guesses in the `Tile` widgets,
-but it needs a way for the user to input those guesses.
-In this lesson, build that functionality with two interaction widgets:
-[`TextField`][] and [`IconButton`][].
+O app exibirá os palpites do usuário nos widgets `Tile`,
+mas precisa de uma maneira para o usuário inserir esses palpites.
+Nesta lição, construa essa funcionalidade com dois widgets de interação:
+[`TextField`][] e [`IconButton`][].
 
 [`TextField`]: {{site.material_ui}}/TextField-class.html
 [`IconButton`]: {{site.material_ui}}/IconButton-class.html
 
-### Implement callback functions
+### Implemente funções de callback {:#implement-callback-functions}
 
-To allow users to type in their guesses,
-you'll create a dedicated widget named `GuessInput`.
-First, create the basic structure for your `GuessInput` widget that
-requires a callback function as an argument.
-Name the callback function `onSubmitGuess`.
+Para permitir que os usuários digitem seus palpites,
+você criará um widget dedicado chamado `GuessInput`.
+Primeiro, crie a estrutura básica para seu widget `GuessInput` que
+requer uma função de callback como argumento.
+Nomeie a função de callback `onSubmitGuess`.
 
-Add the following code to your `main.dart` file.
+Adicione o seguinte código ao seu arquivo `main.dart`.
 
 <?code-excerpt "fwe/birdle/lib/step4a_main.dart (GuessInput)"?>
 ```dart
@@ -56,31 +57,31 @@ class GuessInput extends StatelessWidget {
 }
 ```
 
-The line `final void Function(String) onSubmitGuess;`
-declares a `final` member of the class called `onSubmitGuess`
-that has the type `void Function(String)`.
-This function takes a  single `String` argument (the user's guess) and
-doesn't return any value (denoted by `void`).
+A linha `final void Function(String) onSubmitGuess;`
+declara um membro `final` da classe chamado `onSubmitGuess`
+que tem o tipo `void Function(String)`.
+Esta função recebe um único argumento `String` (o palpite do usuário) e
+não retorna nenhum valor (denotado por `void`).
 
-This callback tells us that the logic that
-actually handles the user's guess will be written elsewhere.
-It's a good practice for interactive widgets to
-use callback functions to keep the widget that handles interactions reusable and
-decoupled from any specific functionality.
+Este callback nos diz que a lógica que
+realmente lida com o palpite do usuário será escrita em outro lugar.
+É uma boa prática para widgets interativos
+usar funções de callback para manter o widget que lida com interações reutilizável e
+desacoplado de qualquer funcionalidade específica.
 
-By the end of this lesson, the passed-in `onSubmitGuess` function
-is called when a user enters a guess.
-First, you'll need to build the visual parts of this widget.
-This is what the widget will look like.
+Ao final desta lição, a função `onSubmitGuess` passada
+é chamada quando um usuário insere um palpite.
+Primeiro, você precisará construir as partes visuais deste widget.
+É assim que o widget ficará.
 
 <img src='/assets/images/docs/tutorial/app_with_input.png' width="320px" alt="A screenshot of the Flutter property editor tool.">
 
-### The `TextField` widget
+### O widget `TextField` {:#the-textfield-widget}
 
-Given that the text field and button are displayed side-by-side,
-create them as a `Row` widget.
-Replace the `Container` placeholder in your `build` method with
-a `Row` containing an `Expanded` `TextField`:
+Dado que o campo de texto e o botão são exibidos lado a lado,
+crie-os como um widget `Row`.
+Substitua o placeholder `Container` no seu método `build` por
+uma `Row` contendo um `TextField` `Expanded`:
 
 <?code-excerpt "fwe/birdle/lib/step4b_main.dart (GuessInput)"?>
 ```dart
@@ -112,38 +113,38 @@ class GuessInput extends StatelessWidget {
 }
 ```
 
-You have seen some of these widgets in previous lessons:
-`Row` and `Padding`. New, though, is the [`Expanded`][] widget.
-When a child of a `Row` (or `Column`) is wrapped in `Expanded`,
-it tells that child to fill all the available space along the main axis
-(horizontal for`Row`, vertical for `Column`) that
-hasn't been taken by other children.
-This makes the `TextField` stretch to take up all the space *except*
-what's taken by other widgets in the row.
+Você viu alguns desses widgets em lições anteriores:
+`Row` e `Padding`. Novo, porém, é o widget [`Expanded`][].
+Quando um filho de uma `Row` (ou `Column`) é envolvido em `Expanded`,
+ele diz àquele filho para preencher todo o espaço disponível ao longo do eixo principal
+(horizontal para `Row`, vertical para `Column`) que
+não foi ocupado por outros filhos.
+Isso faz o `TextField` esticar para ocupar todo o espaço *exceto*
+o que foi ocupado por outros widgets na linha.
 
 :::tip
-`Expanded` is often the solution to "[unbounded width/height][]" exceptions.
+`Expanded` é frequentemente a solução para exceções de "[largura/altura ilimitada][unbounded width/height]".
 :::
 
-The `TextField` widget is also new in this lesson and is the star of the show.
-This is the basic Flutter widget for text input.
+O widget `TextField` também é novo nesta lição e é a estrela do show.
+Este é o widget básico do Flutter para entrada de texto.
 
-Thus far, `TextField` has the following configuration.
+Até agora, `TextField` tem a seguinte configuração.
 
-- It's decorated with a rounded border.
-  Notice that the decoration configuration is
-  very similar to how a `Container` and boxes are decorated.
-- Its `maxLength` property is set to 5 because the game
-  only allows guesses of 5-letter words.
+- Ele é decorado com uma borda arredondada.
+  Note que a configuração de decoração é
+  muito similar a como um `Container` e caixas são decorados.
+- Sua propriedade `maxLength` está definida como 5 porque o jogo
+  só permite palpites de palavras de 5 letras.
 
 [`Expanded`]: {{site.api}}/flutter/widgets/Expanded-class.html
 [unbounded width/height]: https://www.youtube.com/watch?v=jckqXR5CrPI
 
-### Handle text with `TextEditingController`
+### Lide com texto com `TextEditingController` {:#handle-text-with-texteditingcontroller}
 
-Next, you need a way to manage the text that
-the user types into the input field.
-For this, use a [`TextEditingController`][].
+Em seguida, você precisa de uma maneira de gerenciar o texto que
+o usuário digita no campo de entrada.
+Para isso, use um [`TextEditingController`][].
 
 <?code-excerpt "fwe/birdle/lib/step4c_main.dart (GuessInput)"?>
 ```dart
@@ -179,9 +180,9 @@ class GuessInput extends StatelessWidget {
 }
 ```
 
-A `TextEditingController` is used to
-read, clear, and modify the text in a `TextField`.
-To use it, pass it into the `TextField`.
+Um `TextEditingController` é usado para
+ler, limpar e modificar o texto em um `TextField`.
+Para usá-lo, passe-o para o `TextField`.
 
 <?code-excerpt "fwe/birdle/lib/step4d_main.dart (GuessInput)"?>
 ```dart
@@ -216,16 +217,16 @@ class GuessInput extends StatelessWidget {
 }
 ```
 
-Now, when a user inputs text, you can
-capture it with the `_textEditingController`, but
-you'll need to know _when_ to capture it.
-The simplest way to react to input is by
-using the `TextField.onSubmitted` argument.
-This argument accepts a callback, and the callback is triggered whenever
-the user presses the "Enter" key on the keyboard while the text field has focus.
+Agora, quando um usuário insere texto, você pode
+capturá-lo com o `_textEditingController`, mas
+você precisará saber _quando_ capturá-lo.
+A maneira mais simples de reagir à entrada é
+usando o argumento `TextField.onSubmitted`.
+Este argumento aceita um callback, e o callback é acionado sempre que
+o usuário pressiona a tecla "Enter" no teclado enquanto o campo de texto tem foco.
 
-For now, ensure that this works by
-adding the following callback to `TextField.onSubmitted`:
+Por enquanto, garanta que isso funcione
+adicionando o seguinte callback a `TextField.onSubmitted`:
 
 <?code-excerpt "fwe/birdle/lib/step4e_main.dart (GuessInput)"?>
 ```dart
@@ -264,10 +265,10 @@ class GuessInput extends StatelessWidget {
 }
 ```
 
-In this case,
-you could print the `input` passed to the `onSubmitted` callback directly,
-but a better user experience clears the text after each guess:
-You need a `TextEditingController` to do that. Update the code as follows:
+Neste caso,
+você poderia imprimir o `input` passado para o callback `onSubmitted` diretamente,
+mas uma melhor experiência do usuário limpa o texto após cada palpite:
+Você precisa de um `TextEditingController` para fazer isso. Atualize o código da seguinte forma:
 
 <?code-excerpt "fwe/birdle/lib/step4f_main.dart (GuessInput)"?>
 ```dart
@@ -308,25 +309,25 @@ class GuessInput extends StatelessWidget {
 ```
 
 :::note
-In Dart, it's good practice to use the `_` [wildcard][] to
-hide the input to a function that'll never be used.
-The preceding example does so.
+No Dart, é uma boa prática usar o [wildcard][] `_` para
+ocultar a entrada de uma função que nunca será usada.
+O exemplo anterior faz isso.
 :::
 
 [`TextEditingController`]: {{site.api}}/flutter/widgets/TextEditingController-class.html
 [wildcard]: {{site.dart-site}}/language/variables#wildcard-variables
 
-### Gain input focus
+### Ganhe foco na entrada {:#gain-input-focus}
 
-Often, you want a specific input or widget to
-automatically gain focus without the user taking action.
-In this app, for example, the only thing a user can do is enter a guess,
-so the `TextField` should be focused automatically when the app launches.
-And after the user enters a guess, the focus should stay
-in the `TextField` so they can enter their next guess.
+Frequentemente, você quer que uma entrada ou widget específico
+ganhe foco automaticamente sem que o usuário tome uma ação.
+Neste app, por exemplo, a única coisa que um usuário pode fazer é inserir um palpite,
+então o `TextField` deve ter foco automaticamente quando o app é iniciado.
+E depois que o usuário insere um palpite, o foco deve permanecer
+no `TextField` para que ele possa inserir seu próximo palpite.
 
-To resolve the first focus issue,
-set up the `autofocus` property on the `TextField`.
+Para resolver o primeiro problema de foco,
+configure a propriedade `autofocus` no `TextField`.
 
 <?code-excerpt "fwe/birdle/lib/step4g_main.dart (GuessInput)"?>
 ```dart
@@ -366,13 +367,13 @@ class GuessInput extends StatelessWidget {
 }
 ```
 
-The second issue requires you to
-use a [`FocusNode`][] to manage the keyboard focus.
-You can use `FocusNode` to request that a `TextField` gain focus,
-(making the keyboard appear on mobile),
-or to know when a field has focus.
+O segundo problema requer que você
+use um [`FocusNode`][] para gerenciar o foco do teclado.
+Você pode usar `FocusNode` para solicitar que um `TextField` ganhe foco
+(fazendo o teclado aparecer no mobile),
+ou para saber quando um campo tem foco.
 
-First, create a `FocusNode` in the `GuessInput` class:
+Primeiro, crie um `FocusNode` na classe `GuessInput`:
 
 <?code-excerpt "fwe/birdle/lib/step4h_main.dart (GuessInput)"?>
 ```dart
@@ -393,8 +394,8 @@ class GuessInput extends StatelessWidget {
 }
 ```
 
-Then, use the `FocusNode` to request focus whenever
-the `TextField` is submitted after the controller is cleared:
+Então, use o `FocusNode` para solicitar foco sempre que
+o `TextField` é submetido após o controller ser limpo:
 
 <?code-excerpt "fwe/birdle/lib/step4i_main.dart (GuessInput)"?>
 ```dart
@@ -438,18 +439,18 @@ class GuessInput extends StatelessWidget {
 }
 ```
 
-Now, when you press <kbd>Enter</kbd> after inputting text,
-you can continue typing.
+Agora, quando você pressiona <kbd>Enter</kbd> após inserir texto,
+você pode continuar digitando.
 
 [`FocusNode`]: {{site.api}}/flutter/widgets/FocusNode-class.html
 
-### Use the input
+### Use a entrada {:#use-the-input}
 
-Finally, you need to handle the text that the user enters.
-Recall that the constructor for `GuessInput` requires a
-callback called `onSubmitGuess`.
-In `GuessInput`, you need to use that callback.
-Replace the `print` statement with a call to that function.
+Finalmente, você precisa lidar com o texto que o usuário insere.
+Lembre-se de que o construtor para `GuessInput` requer um
+callback chamado `onSubmitGuess`.
+Em `GuessInput`, você precisa usar esse callback.
+Substitua a instrução `print` por uma chamada para essa função.
 
 <?code-excerpt "fwe/birdle/lib/step4j_main.dart (GuessInput)"?>
 ```dart
@@ -494,14 +495,14 @@ class GuessInput extends StatelessWidget {
 ```
 
 :::note
-The `trim` function prevents whitespace from being entered;
-otherwise, the user could enter a four-letter word plus a space character.
+A função `trim` evita que espaços em branco sejam inseridos;
+caso contrário, o usuário poderia inserir uma palavra de quatro letras mais um caractere de espaço.
 :::
 
-The remaining functionality is handled in the parent widget, `GamePage`.
-In the `build` method of that class,
-under the `Row` widgets in the `Column` widget's children,
-add the `GuessInput` widget:
+A funcionalidade restante é tratada no widget pai, `GamePage`.
+No método `build` dessa classe,
+sob os widgets `Row` nos filhos do widget `Column`,
+adicione o widget `GuessInput`:
 
 <?code-excerpt "fwe/birdle/lib/step4k_main.dart (GamePage)"?>
 ```dart
@@ -537,30 +538,30 @@ class GamePage extends StatelessWidget {
 }
 ```
 
-For the moment, this only prints the guess to
-prove that it's wired up correctly.
-Submitting the guess requires using the functionality of a `StatefulWidget`,
-which you'll do in the next lesson.
+Por enquanto, isso apenas imprime o palpite para
+provar que está conectado corretamente.
+Submeter o palpite requer usar a funcionalidade de um `StatefulWidget`,
+o que você fará na próxima lição.
 
-### Buttons
+### Botões {:#buttons}
 
-To improve the UX on mobile and reflect well-known UI practices,
-there should also be a button that can submit the guess.
+Para melhorar a UX no mobile e refletir práticas de UI bem conhecidas,
+também deve haver um botão que possa submeter o palpite.
 
-There are many button widgets built into Flutter, like [`TextButton`][],
-[`ElevatedButton`][], and the button you'll use now: [`IconButton`][].
-All of these buttons (and many other interaction widgets) require two
-arguments (in addition to their optional arguments):
+Existem muitos widgets de botão integrados ao Flutter, como [`TextButton`][],
+[`ElevatedButton`][], e o botão que você usará agora: [`IconButton`][].
+Todos esses botões (e muitos outros widgets de interação) requerem dois
+argumentos (além de seus argumentos opcionais):
 
-- A callback function passed to `onPressed`.
-- A widget that makes up the content of the button (often `Text` or an `Icon`).
+- Uma função de callback passada para `onPressed`.
+- Um widget que compõe o conteúdo do botão (frequentemente `Text` ou um `Icon`).
 
-Add an icon button to the row widget's children list in the `GuessInput` widget,
-and give it an [`Icon`][] widget to display.
-The `Icon` widget requires configuration; in this case,
-the `padding` property sets the padding between the
-edge of the button and the icon it wraps to zero.
-This removes the default padding and makes the button smaller.
+Adicione um botão de ícone à lista de filhos do widget row no widget `GuessInput`,
+e dê a ele um widget [`Icon`][] para exibir.
+O widget `Icon` requer configuração; neste caso,
+a propriedade `padding` define o padding entre a
+borda do botão e o ícone que ele envolve como zero.
+Isso remove o padding padrão e torna o botão menor.
 
 <?code-excerpt "fwe/birdle/lib/step4l_main.dart (GuessInput)"?>
 ```dart
@@ -588,7 +589,7 @@ class GuessInput extends StatelessWidget {
 }
 ```
 
-The `IconButton.onPressed` callback should look familiar:
+O callback `IconButton.onPressed` deve parecer familiar:
 
 <?code-excerpt "fwe/birdle/lib/step4m_main.dart (GuessInput)"?>
 ```dart
@@ -620,24 +621,24 @@ class GuessInput extends StatelessWidget {
 }
 ```
 
-This method does the same as the `onSubmitted` callback on the `TextField`.
+Este método faz o mesmo que o callback `onSubmitted` no `TextField`.
 
 [`Icon`]: {{site.material_ui}}/Icons-class.html
 [`TextButton`]: {{site.material_ui}}/TextButton-class.html
 [`ElevatedButton`]: {{site.material_ui}}/ElevatedButton-class.html
 [`IconButton`]: {{site.material_ui}}/IconButton-class.html
 
-:::note Challenge - Share "on submitted" logic.
+:::note Desafio - Compartilhe a lógica "on submitted".
 
-You might be thinking, "Shouldn't we abstract these methods into one
-function and pass it to both inputs?"
-You could, and as your app grows in complexity, you probably should.
-That said, the callbacks `IconButton.onPressed` and `TextField.onSubmitted` have
-different signatures, so it's not completely straight-forward.
+Você pode estar pensando, "Não deveríamos abstrair esses métodos em uma
+função e passá-la para ambas as entradas?"
+Você poderia, e conforme seu app cresce em complexidade, provavelmente deveria.
+Dito isso, os callbacks `IconButton.onPressed` e `TextField.onSubmitted` têm
+assinaturas diferentes, então não é completamente direto.
 
-Refactor the code such that the logic inside this method isn't repeated.
+Refatore o código de modo que a lógica dentro desse método não seja repetida.
 
-**Solution:**
+**Solução:**
 
 <?code-excerpt "fwe/birdle/lib/step4_main.dart (GuessInput)"?>
 ```dart title="solution.dart" collapsed
@@ -692,70 +693,70 @@ class GuessInput extends StatelessWidget {
 
 :::
 
-### Review
+### Revisão {:#review}
 
 
 <SummaryCard>
-title: What you accomplished
-subtitle: Here's a summary of what you built and learned in this lesson.
+title: O que você realizou
+subtitle: Aqui está um resumo do que você construiu e aprendeu nesta lição.
 completed: true
 items:
-  - title: Built a text input widget with TextField
+  - title: Construiu um widget de entrada de texto com TextField
     icon: text_fields
     details: >-
-      You created a `GuessInput` widget with a `TextField` for text entry.
-      You configured it with a rounded border, character limit, and
-      used `Expanded` to make it fill available space in the row.
-  - title: Managed text with TextEditingController
+      Você criou um widget `GuessInput` com um `TextField` para entrada de texto.
+      Você o configurou com uma borda arredondada, um limite de caracteres e
+      usou `Expanded` para fazê-lo preencher o espaço disponível na linha.
+  - title: Gerenciou texto com TextEditingController
     icon: edit_note
     details: >-
-      `TextEditingController` lets you read and modify text field content.
-      You used it to capture the user's input with `.text` and clear the
-      field after submission with `.clear()`.
-  - title: Controlled input focus for a polished UX
+      `TextEditingController` permite ler e modificar o conteúdo do campo de texto.
+      Você o usou para capturar a entrada do usuário com `.text` e limpar o
+      campo após o envio com `.clear()`.
+  - title: Controlou o foco da entrada para uma UX refinada
     icon: center_focus_strong
     details: >-
-      You used `autofocus` to focus the text field on launch and `FocusNode`
-      with `requestFocus()` to maintain focus after each guess.
-      These details make your app feel responsive and well-built.
-  - title: Handled user actions with callbacks and buttons
+      Você usou `autofocus` para focar o campo de texto ao iniciar e `FocusNode`
+      com `requestFocus()` para manter o foco após cada palpite.
+      Esses detalhes fazem seu app parecer responsivo e bem construído.
+  - title: Lidou com ações do usuário com callbacks e botões
     icon: touch_app
     details: >-
-      To respond to user input,
-      you specified callback functions like `onSubmitted` and `onPressed`.
-      Passing callback functions as constructor arguments keeps your
-      widgets reusable and decoupled from specific logic.
+      Para responder à entrada do usuário,
+      você especificou funções de callback como `onSubmitted` e `onPressed`.
+      Passar funções de callback como argumentos do construtor mantém seus
+      widgets reutilizáveis e desacoplados de lógica específica.
 </SummaryCard>
 
-### Test yourself
+### Teste seus conhecimentos {:#test-yourself}
 
-<Quiz title="User Input Quiz">
-- question: How do you programmatically read or clear the text in a TextField?
+<Quiz title="Quiz de entrada do usuário">
+- question: Como você lê ou limpa programaticamente o texto em um TextField?
   options:
-    - text: Access the TextField's text property directly.
+    - text: Acessar diretamente a propriedade text do TextField.
       correct: false
-      explanation: TextField doesn't expose a text property; you need a controller.
-    - text: Use the TextEditingController attached to the TextField.
+      explanation: TextField não expõe uma propriedade text; você precisa de um controller.
+    - text: Usar o TextEditingController associado ao TextField.
       correct: true
-      explanation: TextEditingController provides the text property to read the value and clear() method to reset it.
-    - text: Listen to the onChanged callback and store the value in a variable.
+      explanation: TextEditingController fornece a propriedade text para ler o valor e o método clear() para redefini-lo.
+    - text: Ouvir o callback onChanged e armazenar o valor em uma variável.
       correct: false
-      explanation: While onChanged works for reading, clearing requires a TextEditingController.
-    - text: Call TextField.getText() method.
+      explanation: Embora onChanged funcione para leitura, limpar requer um TextEditingController.
+    - text: Chamar o método TextField.getText().
       correct: false
-      explanation: TextField doesn't have a getText method; use TextEditingController instead.
-- question: How do you programmatically move focus to a specific TextField?
+      explanation: TextField não tem um método getText; use TextEditingController em vez disso.
+- question: Como você move programaticamente o foco para um TextField específico?
   options:
-    - text: "Call `TextField.focus()` directly."
+    - text: "Chamar `TextField.focus()` diretamente."
       correct: false
-      explanation: TextField doesn't have a focus method; you use a FocusNode.
-    - text: "Set the `autofocus` property to true at runtime."
+      explanation: TextField não tem um método focus; você usa um FocusNode.
+    - text: "Definir a propriedade `autofocus` como true em tempo de execução."
       correct: false
-      explanation: The 'autofocus' property only works on initial build, not for moving focus later.
-    - text: "Use a FocusNode and call `requestFocus()` on it."
+      explanation: A propriedade 'autofocus' só funciona no build inicial, não para mover o foco depois.
+    - text: "Usar um FocusNode e chamar `requestFocus()` nele."
       correct: true
-      explanation: "A FocusNode gives you control over focus, and calling `requestFocus()` moves focus to its associated widget."
-    - text: Wrap the TextField in a GestureDetector and tap programmatically.
+      explanation: "Um FocusNode dá a você controle sobre o foco, e chamar `requestFocus()` move o foco para seu widget associado."
+    - text: Envolver o TextField em um GestureDetector e tocar programaticamente.
       correct: false
-      explanation: This is not how focus is managed; FocusNode is the proper approach.
+      explanation: Não é assim que o foco é gerenciado; FocusNode é a abordagem correta.
 </Quiz>

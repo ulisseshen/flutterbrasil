@@ -1,54 +1,55 @@
 ---
-title: Set up your project
-description: Instructions on how to create a new Flutter app.
+ia-translate: true
+title: Configure seu projeto
+description: Instruções sobre como criar um novo app Flutter.
 layout: tutorial
 ---
 
-Preview the Wikipedia reader app you'll build and set up the initial project with required packages.
+Visualize o app leitor da Wikipedia que você vai construir e configure o projeto inicial com os pacotes necessários.
 
 <SummaryCard>
-title: What you'll accomplish
+title: O que você vai realizar
 items:
-  - title: Preview the Wikipedia reader app you'll build
+  - title: Visualizar o app leitor da Wikipedia que você vai construir
     icon: preview
-  - title: Add packages for handling HTTP requests and Wikipedia data
+  - title: Adicionar pacotes para lidar com requisições HTTP e dados da Wikipedia
     icon: inventory_2
-  - title: Set up the initial project structure
+  - title: Configurar a estrutura inicial do projeto
     icon: code
 </SummaryCard>
 
 ---
 
-### Introduction
+### Introdução {:#introduction}
 
-In the next few lessons, you'll learn how to work with data in a Flutter app.
-You'll build an app that fetches and displays article summaries from
-the [Wikipedia API][].
+Nas próximas lições, você aprenderá como trabalhar com dados em um app Flutter.
+Você construirá um app que busca e exibe resumos de artigos da
+[API da Wikipedia][Wikipedia API].
 
 <img src="/assets/images/docs/tutorial/wikipedia_app.png" width="320px" height="500px"
-style="border:1px solid black" alt="A screenshot of the completed
-Wikipedia reader app showing an article with image, title,
-description, and extract text.">
+style="border:1px solid black" alt="Uma captura de tela do app leitor
+da Wikipedia completo mostrando um artigo com imagem, título,
+descrição e texto de extrato.">
 
-These lessons explore:
+Estas lições exploram:
 
-- Making HTTP requests in Flutter.
-- Managing application state with `ChangeNotifier`.
-- Using the MVVM architecture pattern.
-- Creating responsive user interfaces that
-  update automatically when data changes.
+- Fazer requisições HTTP no Flutter.
+- Gerenciar o estado da aplicação com `ChangeNotifier`.
+- Usar o padrão de arquitetura MVVM.
+- Criar interfaces de usuário responsivas que
+  atualizam automaticamente quando os dados mudam.
 
-This tutorial assumes you've completed the
-[Getting started with Dart][] and the [Introduction to Flutter UI][] tutorials,
-and therefore doesn't explain concepts like HTTP, JSON, or widget basics.
+Este tutorial assume que você completou os tutoriais
+[Getting started with Dart][] e [Introduction to Flutter UI][],
+e portanto não explica conceitos como HTTP, JSON ou fundamentos de widgets.
 
-:::recommend Support Wikipedia
+:::recommend Apoie a Wikipedia
 
-[Wikipedia][] is a valuable resource, providing free
-access to human knowledge through millions of articles written
-collaboratively by volunteers worldwide.
-Consider [donating to Wikipedia][] to help keep this incredible resource
-free and accessible to everyone.
+A [Wikipedia][] é um recurso valioso, fornecendo acesso gratuito
+ao conhecimento humano através de milhões de artigos escritos
+colaborativamente por voluntários em todo o mundo.
+Considere [doar para a Wikipedia][donating to Wikipedia] para ajudar a manter este recurso incrível
+gratuito e acessível para todos.
 
 :::
 
@@ -58,11 +59,11 @@ free and accessible to everyone.
 [Wikipedia]: https://wikipedia.org/
 [donating to Wikipedia]: https://donate.wikimedia.org/
 
-### Create a new Flutter project
+### Crie um novo projeto Flutter {:#create-a-new-flutter-project}
 
-Create a new Flutter project using the [Flutter CLI][].
-In your preferred terminal, run the following command to
-create a minimal Flutter app:
+Crie um novo projeto Flutter usando a [Flutter CLI][Flutter CLI].
+No seu terminal preferido, execute o seguinte comando para
+criar um app Flutter mínimo:
 
 ```console
 $ flutter create wikipedia_reader --empty
@@ -70,11 +71,11 @@ $ flutter create wikipedia_reader --empty
 
 [Flutter CLI]: /reference/flutter-cli
 
-### Add required dependencies
+### Adicione as dependências necessárias {:#add-required-dependencies}
 
-Your app needs the [`http` package][] to make HTTP requests,
-and the [`material_ui` package][] for some UI components.
-Add them to your project:
+Seu app precisa do [pacote `http`][`http` package] para fazer requisições HTTP,
+e do [pacote `material_ui`][`material_ui` package] para alguns componentes de UI.
+Adicione-os ao seu projeto:
 
 ```console
 $ cd wikipedia_reader && flutter pub add http material_ui && flutter pub get
@@ -83,13 +84,13 @@ $ cd wikipedia_reader && flutter pub add http material_ui && flutter pub get
 [`http` package]: {{site.pub}}/packages/http
 [`material_ui` package]: {{site.pub}}/packages/material_ui
 
-### Examine the starter code
+### Examine o código inicial {:#examine-the-starter-code}
 
-First, create a new file `lib/summary.dart` to define the data model
-for Wikipedia article summaries. This file has no special logic, and is
-simply a collection of classes that represent the data returned by the
-Wikipedia API. It's sufficient to copy the code below into the file and then ignore it.
-If you aren't comfortable with basic Dart classes, you should read the [Dart Getting Started][] tutorial first.
+Primeiro, crie um novo arquivo `lib/summary.dart` para definir o modelo de dados
+dos resumos de artigos da Wikipedia. Este arquivo não tem nenhuma lógica especial e é
+simplesmente uma coleção de classes que representam os dados retornados pela
+API da Wikipedia. Basta copiar o código abaixo para o arquivo e depois ignorá-lo.
+Se você não se sente confortável com classes Dart básicas, leia primeiro o tutorial [Dart Getting Started][].
 
 <?code-excerpt "fwe/wikipedia_reader/lib/summary.dart (All)"?>
 ```dart title="lib/summary.dart" collapsed
@@ -337,8 +338,8 @@ String? getFileExtension(String file) {
 const acceptableImageFormats = ['png', 'jpg', 'jpeg'];
 ```
 
-Then, open `lib/main.dart` and replace the existing code with
-this basic structure, which adds required imports that the app uses:
+Em seguida, abra `lib/main.dart` e substitua o código existente por
+esta estrutura básica, que adiciona as importações necessárias que o app usa:
 
 <?code-excerpt "fwe/wikipedia_reader/lib/step1_main.dart (All)"?>
 ```dart title="lib/main.dart"
@@ -369,81 +370,81 @@ class MainApp extends StatelessWidget {
 }
 ```
 
-This code provides a basic app structure with
-a title bar and placeholder content.
-The imports at the top include everything you need for
-HTTP requests, JSON parsing, and the Wikipedia data model.
+Este código fornece uma estrutura básica do app com
+uma barra de título e conteúdo placeholder.
+As importações no topo incluem tudo que você precisa para
+requisições HTTP, parsing de JSON e o modelo de dados da Wikipedia.
 
 [Dart Getting Started]: {{site.dart-site}}/tutorial
 
-### Run your app
+### Execute seu app {:#run-your-app}
 
-Test that everything works by running your app:
+Teste se tudo funciona executando seu app:
 
 ```console
 $ flutter run -d chrome
 ```
 
-You should see a simple app with "Wikipedia Flutter" in the app bar
-and "Loading..." in the center of the screen.
+Você deverá ver um app simples com "Wikipedia Flutter" na barra do app
+e "Loading..." no centro da tela.
 
-### Review
+### Revisão {:#review}
 
 <SummaryCard>
-title: What you accomplished
-subtitle: Here's a summary of what you built and learned in this lesson.
+title: O que você realizou
+subtitle: Aqui está um resumo do que você construiu e aprendeu nesta lição.
 completed: true
 items:
-  - title: Previewed the Wikipedia reader app
+  - title: Visualizou o app leitor da Wikipedia
     icon: preview
     details: >-
-      You're starting a new tutorial section focused on working with data.
-      You'll learn HTTP requests, state management with `ChangeNotifier`,
-      and the MVVM architectural pattern.
-  - title: Added the http package and created a data model
+      Você está começando uma nova seção do tutorial focada em trabalhar com dados.
+      Você vai aprender requisições HTTP, gerenciamento de estado com `ChangeNotifier`
+      e o padrão de arquitetura MVVM.
+  - title: Adicionou o pacote http e criou um modelo de dados
     icon: inventory_2
     details: >-
-      You used `flutter pub add` to install the http package for making HTTP requests
-      and created the `Summary` class for Wikipedia data.
-      Packages let you leverage existing code built by the community
-      instead of building everything from scratch.
-  - title: Set up the initial project structure
+      Você usou `flutter pub add` para instalar o pacote http para fazer requisições HTTP
+      e criou a classe `Summary` para os dados da Wikipedia.
+      Pacotes permitem aproveitar código existente construído pela comunidade
+      em vez de construir tudo do zero.
+  - title: Configurou a estrutura inicial do projeto
     icon: code
     details: >-
-      Your app has the basic structure with all necessary imports for
-      HTTP requests, JSON parsing, and Wikipedia data.
-      You're ready to start fetching real data from the Wikipedia API!
+      Seu app tem a estrutura básica com todas as importações necessárias para
+      requisições HTTP, parsing de JSON e dados da Wikipedia.
+      Você está pronto para começar a buscar dados reais da API da Wikipedia!
 </SummaryCard>
 
-### Test yourself
+### Teste seus conhecimentos {:#test-yourself}
 
-<Quiz title="Project Setup Quiz">
-- question: "What does the `--empty` flag do when running `flutter create`?"
+<Quiz title="Quiz de configuração do projeto">
+- question: "O que a flag `--empty` faz ao executar `flutter create`?"
   options:
-    - text: Creates a project with no files at all.
+    - text: Cria um projeto sem nenhum arquivo.
       correct: false
-      explanation: The project still has essential files; it just uses a minimal template.
-    - text: Creates a minimal Flutter project with less boilerplate code.
+      explanation: O projeto ainda tem os arquivos essenciais; ele apenas usa um template mínimo.
+    - text: Cria um projeto Flutter mínimo com menos código boilerplate.
       correct: true
-      explanation: "The `--empty` flag generates a minimal starter template without the default counter app."
-    - text: Creates a project without any dependencies.
+      explanation: "A flag `--empty` gera um template inicial mínimo sem o app contador padrão."
+    - text: Cria um projeto sem nenhuma dependência.
       correct: false
-      explanation: The project still includes core Flutter dependencies.
-    - text: Creates a project that can only run on web.
+      explanation: O projeto ainda inclui as dependências principais do Flutter.
+    - text: Cria um projeto que só pode ser executado na web.
       correct: false
-      explanation: The flag doesn't restrict platforms; it only affects the starter template.
-- question: What command is used to add a package dependency to a Flutter project?
+      explanation: A flag não restringe plataformas; ela afeta apenas o template inicial.
+- question: Qual comando é usado para adicionar uma dependência de pacote a um projeto Flutter?
   options:
     - text: "`flutter install [package_name]`"
       correct: false
-      explanation: "The correct command uses `pub add`, not `install`."
+      explanation: "O comando correto usa `pub add`, não `install`."
     - text: "`flutter pub add [package_name]`"
       correct: true
-      explanation: "Running `flutter pub add` adds the package to pubspec.yaml and downloads it."
+      explanation: "Executar `flutter pub add` adiciona o pacote ao pubspec.yaml e o baixa."
     - text: "`dart get [package_name]`"
       correct: false
-      explanation: "The command for adding packages is `flutter pub add` or editing pubspec.yaml."
+      explanation: "O comando para adicionar pacotes é `flutter pub add` ou editar o pubspec.yaml."
     - text: "`flutter package install [package_name]`"
       correct: false
-      explanation: "There is no `flutter package` command; use `flutter pub add`."
+      explanation: "Não existe o comando `flutter package`; use `flutter pub add`."
 </Quiz>

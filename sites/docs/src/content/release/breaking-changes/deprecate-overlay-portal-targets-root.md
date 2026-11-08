@@ -1,43 +1,44 @@
 ---
 title: Deprecate `OverlayPortal.targetsRootOverlay` and enforce `LookupBoundary` in `Overlay.of`
 description: >-
-  Learn about changes to the OverlayPortal and Overlay in Flutter.
+  Saiba mais sobre as mudanças no OverlayPortal e no Overlay no Flutter.
+ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo
 
-The `OverlayPortal.targetsRootOverlay` property was deprecated and
-replaced with `overlayLocation`.
+A propriedade `OverlayPortal.targetsRootOverlay` foi descontinuada e
+substituída por `overlayLocation`.
 
-The `Overlay.of` and `Overlay.maybeOf` now respect `LookupBoundary`.
+`Overlay.of` e `Overlay.maybeOf` agora respeitam `LookupBoundary`.
 
-## Context
+## Contexto
 
-A `overlayLocation` parameter was added to
-the `OverlayPortal` default constructor to
-control where the overlay child renders.
-As a result, the `OverlayPortal.targetsRootOverlay` constructor is
-no longer useful.
+Um parâmetro `overlayLocation` foi adicionado ao
+construtor padrão de `OverlayPortal` para
+controlar onde o filho do overlay é renderizado.
+Como resultado, o construtor `OverlayPortal.targetsRootOverlay`
+não é mais útil.
 
-To prevent an `OverlayEntry` from being inserted across multi-view boundaries
-by mistake, `Overlay.of` now respects `LookupBoundary`.
+Para evitar que um `OverlayEntry` seja inserido através de limites de múltiplas views
+por engano, `Overlay.of` agora respeita `LookupBoundary`.
 
-## Description of change
+## Descrição da mudança
 
-The `OverlayPortal.targetsRootOverlay` constructor is deprecated.
+O construtor `OverlayPortal.targetsRootOverlay` está descontinuado.
 
-The `Overlay.of` and `Overlay.maybeOf` will not lookup past `LookupBoundary`.
+`Overlay.of` e `Overlay.maybeOf` não farão a busca além de `LookupBoundary`.
 
-## Migration guide
+## Guia de migração
 
-If you are using `OverlayPortal.targetsRootOverlay`,
-use `OverlayPortal` with `overlayLocation` instead.
+Se você está usando `OverlayPortal.targetsRootOverlay`,
+use `OverlayPortal` com `overlayLocation` em vez disso.
 
-### Case 1: trivial case
+### Caso 1: caso trivial {:#case-1-trivial-case}
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 Widget build(BuildContext context) {
@@ -49,7 +50,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart highlightLines=3
 Widget build(BuildContext context) {
@@ -62,10 +63,10 @@ Widget build(BuildContext context) {
 }
 ```
 
-If you expect `Overlay.of` and `Overlay.maybeOf` to lookup past `LookupBoundary`,
-use `findAncestorStateOfType` instead.
+Se você espera que `Overlay.of` e `Overlay.maybeOf` façam a busca além de `LookupBoundary`,
+use `findAncestorStateOfType` em vez disso.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 Widget build(BuildContext context) {
@@ -74,7 +75,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 Widget build(BuildContext context) {
@@ -83,25 +84,25 @@ Widget build(BuildContext context) {
 }
 ```
 
-## Timeline
+## Linha do tempo
 
-Landed in version: 3.38.0-0.1.pre<br>
-In stable release: 3.38
+Disponibilizado na versão: 3.38.0-0.1.pre<br>
+Na versão stable: 3.38
 
-## References
+## Referências
 
-API documentation:
+Documentação da API:
 
 * [`OverlayPortal`][]
 * [`Overlay.of`][]
 * [`Overlay.maybeOf`][]
 * [`LookupBoundary`][]
 
-Relevant issue:
+Issue relevante:
 
 * [Issue 168785][]
 
-Relevant PR:
+PR relevante:
 
 * [PR 174239][]
 

@@ -1,30 +1,31 @@
 ---
-title: Add the predictive back gesture
+ia-translate: true
+title: Adicione o gesto predictive back
 shortTitle: Predictive back
 description: >-
-  Learn how to enable and handle Android predictive back gestures in Flutter.
+  Aprenda como habilitar e lidar com gestos predictive back do Android no Flutter.
 ---
 
-The Android predictive back gesture lets users preview
-where a back gesture will navigate to,
-whether that's the previous screen or the home screen,
-before they commit to or cancel it.
+O gesto predictive back do Android permite que os usuários pré-visualizem
+para onde um gesto de voltar irá navegar,
+seja a tela anterior ou a tela inicial,
+antes de confirmá-lo ou cancelá-lo.
 
-## Overview
+## Visão geral {:#overview}
 
-Starting with Android 14 (API level 34),
-predictive back animations are enabled by default for system gestures
-when supported by the application.
-Flutter provides built-in support for predictive back animations across
-default page route transitions and custom pop handling.
+A partir do Android 14 (API level 34),
+as animações predictive back são habilitadas por padrão para gestos do sistema
+quando suportadas pela aplicação.
+O Flutter fornece suporte integrado para animações predictive back nas
+transições de rota de página padrão e no tratamento personalizado de pop.
 
-## Enable predictive back in Android
+## Habilitar o predictive back no Android {:#enable-predictive-back-in-android}
 
-To support predictive back gestures in your Flutter app
-on Android 13 or later:
+Para suportar gestos predictive back no seu app Flutter
+no Android 13 ou posterior:
 
-1. Open `android/app/src/main/AndroidManifest.xml`.
-1. Add `android:enableOnBackInvokedCallback="true"` to the `<application>` tag:
+1. Abra `android/app/src/main/AndroidManifest.xml`.
+1. Adicione `android:enableOnBackInvokedCallback="true"` à tag `<application>`:
 
 ```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
@@ -38,24 +39,24 @@ on Android 13 or later:
 </manifest>
 ```
 
-## Handle back gestures with PopScope
+## Lidar com gestos de voltar com PopScope {:#handle-back-gestures-with-popscope}
 
-To customize back navigation or prevent users
-from accidentally leaving a screen,
-use the [`PopScope`][] widget.
-`PopScope` replaces the deprecated `WillPopScope` widget
-and supports predictive back gestures.
+Para personalizar a navegação de volta ou evitar que os usuários
+saiam de uma tela acidentalmente,
+use o widget [`PopScope`][].
+`PopScope` substitui o widget obsoleto `WillPopScope`
+e suporta gestos predictive back.
 
-### Callback parameters
+### Parâmetros do callback {:#callback-parameters}
 
-`PopScope` uses the `onPopInvokedWithResult` callback:
+`PopScope` usa o callback `onPopInvokedWithResult`:
 
-* `didPop`: A boolean indicating whether the pop operation succeeded.
-  If `canPop` is `false`, `didPop` is `false`.
-* `result`: An optional return payload passed when popping the route
-  (for example, with `Navigator.pop(context, result)`).
+* `didPop`: Um booleano que indica se a operação de pop foi bem-sucedida.
+  Se `canPop` for `false`, `didPop` é `false`.
+* `result`: Um payload de retorno opcional passado ao fazer pop da rota
+  (por exemplo, com `Navigator.pop(context, result)`).
 
-### Example: Intercepting back navigation
+### Exemplo: interceptando a navegação de volta {:#example-intercepting-back-navigation}
 
 ```dart
 PopScope(
@@ -76,11 +77,10 @@ PopScope(
 )
 ```
 
-## More information
+## Mais informações {:#more-information}
 
-For more details on API migrations,
-see the [Android predictive back migration guide][].
+Para mais detalhes sobre migrações de API,
+veja o [guia de migração do predictive back do Android][Android predictive back migration guide].
 
 [`PopScope`]: {{site.api}}/flutter/widgets/PopScope-class.html
 [Android predictive back migration guide]: /release/breaking-changes/android-predictive-back
-

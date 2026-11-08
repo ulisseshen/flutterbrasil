@@ -1,93 +1,94 @@
 ---
-title: Flutter SDK archive
+title: Arquivo do Flutter SDK
 shortTitle: Archive
-description: "All current Flutter SDK releases: stable, beta, and main."
+description: "Todos os lançamentos atuais do Flutter SDK: stable, beta e main."
+ia-translate: true
 ---
 
 {% render "docs/china-notice.md" %}
 
-## Overview
+## Visão geral
 
-The Flutter SDK archive is a collection of all previous versions of the
-Flutter SDK. This archive is useful for developers who need to use an older
-version of Flutter for compatibility reasons or to investigate bugs.
+O arquivo do Flutter SDK é uma coleção de todas as versões anteriores do
+Flutter SDK. Este arquivo é útil para desenvolvedores que precisam usar uma
+versão mais antiga do Flutter por razões de compatibilidade ou para investigar bugs.
 
-After you download a release, to set up Flutter,
-follow the [manual installation instructions][manual-install].
+Depois de baixar uma versão, para configurar o Flutter,
+siga as [instruções de instalação manual][manual-install].
 
-The archive includes Flutter SDKs for Windows, macOS, and Linux on the
-following [channels][]:
+O arquivo inclui Flutter SDKs para Windows, macOS e Linux nos
+seguintes [channels][]:
 
-*   **Stable channel**: This channel contains the most stable Flutter builds.
-    Roughly every third beta version is promoted to the stable version.
-    The stable channel is the recommended channel for
-    new users and for production app releases.
+*   **Canal estável (Stable channel)**: Este canal contém as builds mais estáveis do Flutter.
+    Aproximadamente a cada terceira versão beta é promovida para a versão estável.
+    O canal estável é o canal recomendado para
+    novos usuários e para lançamentos de aplicativos em produção.
 
-*   **Beta channel**: This channel is the most recent version of Flutter that is
-    available, but it is not yet stable. The beta branch is usually released
-    on the first Wednesday of the month. A fix will typically end up in the
-    beta channel about two weeks after it lands in the main channel.
-    Releases are distributed as [installation bundles][].
+*   **Canal beta (Beta channel)**: Este canal é a versão mais recente do Flutter que está
+    disponível, mas ainda não é estável. O branch beta é geralmente lançado
+    na primeira quarta-feira do mês. Uma correção normalmente chega ao
+    canal beta cerca de duas semanas após ser integrada ao canal main.
+    Os lançamentos são distribuídos como [installation bundles][].
 
-*   **Main channel**: This channel has the newest features, but it hasn't been fully
-    tested and might have some bugs. We don't recommend using it unless you're
-    contributing to Flutter itself.
+*   **Canal main (Main channel)**: Este canal tem os recursos mais novos, mas não foi totalmente
+    testado e pode ter alguns bugs. Não recomendamos usá-lo, a menos que você esteja
+    contribuindo para o próprio Flutter.
 
-The following information is available for each Flutter release in the
-SDK archive:
+As seguintes informações estão disponíveis para cada lançamento do Flutter no
+arquivo do SDK:
 
-*   **Flutter version**: The version number of the Flutter SDK
-    (for example, 3.35.0, 2.10.5) follows a modified
-    [calendar versioning][] scheme called _CalVer_.
-    For more information, visit the [Flutter SDK versioning][] page.
-*   **Architecture**: The processor architecture the SDK is built for
-    (for example, x64, arm64). This specifies the type of processor the SDK is
-    compatible with.
-*   **Ref**: The git commit hash that uniquely identifies the specific codebase
-    used for that release.
-*   **Release Date**: The date when that particular Flutter version was
-    officially released.
-*   **Dart version**: The corresponding version of the Dart SDK included in the
-    Flutter SDK release.
-*   **Provenance**: Provides details about the build process and origin of the
-    SDK, potentially including information about security attestations or
-    build systems used. Results are returned as JSON.
+*   **Versão do Flutter (Flutter version)**: O número da versão do Flutter SDK
+    (por exemplo, 3.35.0, 2.10.5) segue um esquema modificado de
+    [versionamento de calendário][calendar versioning] chamado _CalVer_.
+    Para mais informações, visite a página [Flutter SDK versioning][].
+*   **Arquitetura (Architecture)**: A arquitetura do processador para a qual o SDK foi construído
+    (por exemplo, x64, arm64). Isso especifica o tipo de processador com o qual o SDK é
+    compatível.
+*   **Ref**: O hash do commit git que identifica exclusivamente a base de código específica
+    usada para aquele lançamento.
+*   **Data de lançamento (Release Date)**: A data em que aquela versão específica do Flutter foi
+    oficialmente lançada.
+*   **Versão do Dart (Dart version)**: A versão correspondente do Dart SDK incluída no
+    lançamento do Flutter SDK.
+*   **Proveniência (Provenance)**: Fornece detalhes sobre o processo de build e a origem do
+    SDK, potencialmente incluindo informações sobre atestações de segurança ou
+    sistemas de build usados. Os resultados são retornados como JSON.
 
 [calendar versioning]: https://calver.org/
 [Flutter SDK versioning]: {{site.repo.flutter}}/blob/main/docs/releases/Release-versioning.md
 
-## Public release windows
+## Janelas públicas de lançamento
 
-Predictability is key to landing complex features safely.
-We use public release windows to provide the community with
-the visibility needed to plan ahead.
-By explicitly calling out branch cutoff dates and release targets,
-we enable everyone to align their development cycles and
-coordinate feature landing effectively.
+Previsibilidade é fundamental para integrar recursos complexos com segurança.
+Usamos janelas públicas de lançamento para dar à comunidade
+a visibilidade necessária para planejar com antecedência.
+Ao destacar explicitamente as datas de corte de branch e as metas de lançamento,
+permitimos que todos alinhem seus ciclos de desenvolvimento e
+coordenem a integração de recursos de forma eficaz.
 
-### What is a branch cutoff date?
+### O que é uma data de corte de branch? {:#what-is-a-branch-cutoff-date}
 
-This date is the deadline for pull requests to
-land in the default branches (`main` for Dart and `master` for Flutter) to
-guarantee inclusion in the next stable release.
+Esta data é o prazo final para que pull requests sejam
+integrados nos branches padrão (`main` para Dart e `master` para Flutter) para
+garantir a inclusão no próximo lançamento estável.
 
-* **Before cutoff:** Your PR will ship in the next stable version.
-* **After cutoff:** Your PR will wait for the following cycle.
+* **Antes do corte:** Seu PR será lançado na próxima versão estável.
+* **Depois do corte:** Seu PR aguardará o ciclo seguinte.
 
-### 2026 schedule
+### Cronograma de 2026 {:#2026-schedule}
 
-| Flutter version | Release target | Branch cutoff date |
-|-----------------|----------------|--------------------|
-| Flutter 3.41    | February, 2026 | 2026-01-06         |
-| Flutter 3.44    | May, 2026      | 2026-04-07         |
-| Flutter 3.47    | August, 2026   | 2026-07-07         |
-| Flutter 3.50    | November, 2026 | 2026-10-06         |
+| Versão do Flutter | Meta de lançamento | Data de corte de branch |
+|-------------------|--------------------|-------------------------|
+| Flutter 3.41      | Fevereiro de 2026  | 2026-01-06              |
+| Flutter 3.44      | Maio de 2026       | 2026-04-07              |
+| Flutter 3.47      | Agosto de 2026     | 2026-07-07              |
+| Flutter 3.50      | Novembro de 2026   | 2026-10-06              |
 
 {:.table}
 
 ---
 
-## Stable channel
+## Canal estável (Stable channel)
 
 <Tabs key="os-archive-tabs">
     <Tab name="Windows">
@@ -101,7 +102,7 @@ guarantee inclusion in the next stable release.
     </Tab>
 </Tabs>
 
-## Beta channel
+## Canal beta (Beta channel)
 
 <Tabs key="os-archive-tabs">
     <Tab name="Windows">
@@ -116,25 +117,25 @@ guarantee inclusion in the next stable release.
 </Tabs>
 
 :::tip
-To see what's changed in a beta release, compare the version tags on GitHub.
+Para ver o que mudou em uma versão beta, compare as tags de versão no GitHub.
 
-1. Find the version number (tag) you want to see (for example, `3.38.0-0.2.pre`).
-2. Find the previous version number (for example, `3.38.0-0.1.pre`).
-3. Go to the [GitHub compare page](https://github.com/flutter/flutter/compare).
-4. Select the older tag for the `base` field and the newer tag for the `compare` field.
+1. Encontre o número da versão (tag) que você quer ver (por exemplo, `3.38.0-0.2.pre`).
+2. Encontre o número da versão anterior (por exemplo, `3.38.0-0.1.pre`).
+3. Acesse a [página de comparação do GitHub](https://github.com/flutter/flutter/compare).
+4. Selecione a tag mais antiga no campo `base` e a tag mais recente no campo `compare`.
 
-For example: [`flutter/flutter@3.38.0-0.1.pre...3.38.0-0.2.pre`](https://github.com/flutter/flutter/compare/3.38.0-0.1.pre...3.38.0-0.2.pre)
+Por exemplo: [`flutter/flutter@3.38.0-0.1.pre...3.38.0-0.2.pre`](https://github.com/flutter/flutter/compare/3.38.0-0.1.pre...3.38.0-0.2.pre)
 :::
 
 <a id="master-channel" aria-hidden="true"></a>
 
-## Main channel
+## Canal main (Main channel)
 
-[Installation bundles][] are not available for the `main` channel
-(which was previously known as the `master` channel).
-However, you can get the SDK directly from
-[GitHub repo][] by cloning the `main` channel and then
-triggering a download of the SDK dependencies:
+[Pacotes de instalação][Installation bundles] não estão disponíveis para o canal `main`
+(que anteriormente era conhecido como canal `master`).
+No entanto, você pode obter o SDK diretamente do
+[repositório no GitHub][GitHub repo] clonando o canal `main` e então
+disparando um download das dependências do SDK:
 
 ```console
 $ git clone -b main https://github.com/flutter/flutter.git
@@ -143,16 +144,16 @@ $ ./flutter/bin/flutter --version
 
 <a id="install-from-an-archive" aria-hidden="true"></a>
 
-## More information
+## Mais informações
 
-- For instructions on installing Flutter from a downloaded SDK,
-  see [Install Flutter manually][manual-install].
+- Para instruções sobre como instalar o Flutter a partir de um SDK baixado,
+  veja [Instalar o Flutter manualmente][manual-install].
 
-- To learn what's new in the major Flutter builds,
-  check out the [release notes][] page.
+- Para saber o que há de novo nas principais builds do Flutter,
+  confira a página de [notas de lançamento][release notes].
 
-- For details on how our installation bundles are structured,
-  see [Installation bundles][].
+- Para detalhes sobre como nossos pacotes de instalação são estruturados,
+  consulte [Installation bundles][].
 
 [channels]: {{site.repo.flutter}}/blob/main/docs/releases/Flutter-build-release-channels.md
 [manual-install]: /install/manual

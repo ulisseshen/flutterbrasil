@@ -1,35 +1,36 @@
 ---
-title: Stack-based navigation
-description: Learn how to navigate from one page to another in a Flutter app.
+ia-translate: true
+title: Navegação baseada em pilha
+description: Aprenda como navegar de uma página para outra em um app Flutter.
 layout: tutorial
 ---
 
-Learn to navigate between screens with Navigator.push and implement
-adaptive navigation patterns for different screen sizes.
+Aprenda a navegar entre telas com Navigator.push e a implementar
+padrões de navegação adaptativa para diferentes tamanhos de tela.
 
 <SummaryCard>
-title: What you'll accomplish
+title: O que você vai realizar
 items:
-  - title: Navigate between screens with Navigator.push
+  - title: Navegar entre telas com Navigator.push
     icon: open_in_new
-  - title: Use CupertinoPageRoute for iOS-style transitions
+  - title: Usar CupertinoPageRoute para transições no estilo iOS
     icon: swipe_right
-  - title: Create different navigation patterns for each screen size
+  - title: Criar diferentes padrões de navegação para cada tamanho de tela
     icon: devices
 </SummaryCard>
 
 ---
 
-### Introduction
+### Introdução {:#introduction}
 
-Now that you understand slivers and scrolling,
-you can implement navigation between screens.
-In this lesson,
-you'll update the small-screen view such that when a contact group is tapped,
-it navigates to the contact list for that group.
+Agora que você entende slivers e rolagem,
+você pode implementar navegação entre telas.
+Nesta lição,
+você atualizará a view de tela pequena de modo que quando um grupo de contatos for tocado,
+ele navegue para a lista de contatos daquele grupo.
 
-First, revert changes in the adaptive layout widget so that it
-displays the `ContactGroupsPage` by default on small screens.
+Primeiro, reverta as mudanças no widget de layout adaptativo para que ele
+exiba o `ContactGroupsPage` por padrão em telas pequenas.
 
 <?code-excerpt "fwe/rolodex/lib/step4_navigation/screens/adaptive_layout.dart (reverted-state)"?>
 ```dart
@@ -60,15 +61,15 @@ class _AdaptiveLayoutState extends State<AdaptiveLayout> {
 }
 ```
 
-### Add navigation to contact groups
+### Adicione navegação aos grupos de contatos {:#add-navigation-to-contact-groups}
 
-The `ContactGroupsPage` already uses a `_ContactGroupsView`
-and provides it with a callback.
-That callback needs to be updated to navigate when a group is tapped,
-rather than printing the group to the console.
+O `ContactGroupsPage` já usa um `_ContactGroupsView`
+e fornece a ele um callback.
+Esse callback precisa ser atualizado para navegar quando um grupo é tocado,
+em vez de imprimir o grupo no console.
 
-Ensure that the `onListSelected` callback and imports in
-`lib/screens/contact_groups.dart` are implemented as follows:
+Certifique-se de que o callback `onListSelected` e os imports em
+`lib/screens/contact_groups.dart` estão implementados da seguinte forma:
 
 <?code-excerpt "fwe/rolodex/lib/step4_navigation/screens/contact_groups.dart (contact_groups_page)"?>
 ```dart title="lib/screens/contact_groups.dart"
@@ -91,32 +92,32 @@ class ContactGroupsPage extends StatelessWidget {
 }
 ```
 
-This small code block contains the most important new information on this page.
+Este pequeno bloco de código contém a informação nova mais importante desta página.
 
-`Navigator.of(context)` retrieves the
-nearest `Navigator` widget from the widget tree.
-The `push` method adds a new route to the navigator's stack, and
-displays the widget returned from the `builder` property.
+`Navigator.of(context)` recupera o
+widget `Navigator` mais próximo da árvore de widgets.
+O método `push` adiciona uma nova rota à pilha do navegador, e
+exibe o widget retornado da propriedade `builder`.
 
-This is the most basic implementation of using stack-based navigation,
-where new screens are pushed on top of the current screen.
-To navigate back to the previous screen, you'd use the `Navigator.pop` method.
+Esta é a implementação mais básica de uso de navegação baseada em pilha,
+onde novas telas são empilhadas em cima da tela atual.
+Para navegar de volta para a tela anterior, você usaria o método `Navigator.pop`.
 
-`CupertinoPageRoute` creates iOS-style page transitions with
-the following features:
+`CupertinoPageRoute` cria transições de página no estilo iOS com
+os seguintes recursos:
 
-- A slide-in animation from the right.
-- Automatic back button support.
-- Proper title handling.
-- Swipe-to-go-back gesture support.
+- Uma animação de deslizamento da direita.
+- Suporte automático de botão de voltar.
+- Tratamento adequado de título.
+- Suporte a gesto de deslizar-para-voltar.
 
-### Create the sidebar component for large screens
+### Crie o componente de barra lateral para telas grandes {:#create-the-sidebar-component-for-large-screens}
 
-For large screens, you need a sidebar that doesn't navigate but
-instead updates the main content area.
-Thanks to the refactoring in the previous step,
-creating this component is more straightforward.
-Add this widget to the bottom of `lib/screens/contact_groups.dart`:
+Para telas grandes, você precisa de uma barra lateral que não navegue mas
+em vez disso atualize a área de conteúdo principal.
+Graças à refatoração na etapa anterior,
+criar este componente é mais simples.
+Adicione este widget ao final de `lib/screens/contact_groups.dart`:
 
 <?code-excerpt "fwe/rolodex/lib/step4_navigation/screens/contact_groups.dart (contact_groups_sidebar)"?>
 ```dart
@@ -141,18 +142,18 @@ class ContactGroupsSidebar extends StatelessWidget {
 }
 ```
 
-This sidebar component reuses the `_ContactGroupsView` and
-provides a different callback. Instead of navigating,
-it calls `onListSelected` with the ID of the tapped list.
-It also passes the `selectedListId` to `_ContactGroupsView` so that
-the selected item can be highlighted.
+Este componente de barra lateral reutiliza o `_ContactGroupsView` e
+fornece um callback diferente. Em vez de navegar,
+ele chama `onListSelected` com o ID da lista tocada.
+Ele também passa o `selectedListId` para `_ContactGroupsView` para que
+o item selecionado possa ser destacado.
 
-### Create the detail view for large screens
+### Crie a view de detalhe para telas grandes {:#create-the-detail-view-for-large-screens}
 
-For the large screen layout, you need a detail view that
-doesn't show navigation controls. Just like the sidebar,
-this can be recreated by reusing the `_ContactListView`.
-Add this widget to the bottom of your `contacts.dart` file:
+Para o layout de tela grande, você precisa de uma view de detalhe que
+não mostre controles de navegação. Assim como a barra lateral,
+ela pode ser recriada reutilizando o `_ContactListView`.
+Adicione este widget ao final do seu arquivo `contacts.dart`:
 
 <?code-excerpt "fwe/rolodex/lib/step4_navigation/screens/contacts.dart (contact_list_detail)"?>
 ```dart
@@ -168,15 +169,15 @@ class ContactListDetail extends StatelessWidget {
 }
 ```
 
-The detail view reuses `_ContactListView` and sets
-the `automaticallyImplyLeading` parameter to `false` to
-hide the back button, as navigation is handled by the sidebar.
+A view de detalhe reutiliza `_ContactListView` e define
+o parâmetro `automaticallyImplyLeading` como `false` para
+esconder o botão de voltar, já que a navegação é tratada pela barra lateral.
 
-### Connect the sidebar to the adaptive layout
+### Conecte a barra lateral ao layout adaptativo {:#connect-the-sidebar-to-the-adaptive-layout}
 
-Now, connect the sidebar to your adaptive layout.
-Update your `adaptive_layout.dart` file to import the necessary files and
-update the large screen layout:
+Agora, conecte a barra lateral ao seu layout adaptativo.
+Atualize seu arquivo `adaptive_layout.dart` para importar os arquivos necessários e
+atualizar o layout de tela grande:
 
 <?code-excerpt "fwe/rolodex/lib/step4_navigation/screens/adaptive_layout.dart (imports)"?>
 ```dart
@@ -186,7 +187,7 @@ import 'contact_groups.dart';
 import 'contacts.dart';
 ```
 
-Then update the `_buildLargeScreenLayout` method:
+Então atualize o método `_buildLargeScreenLayout`:
 
 <?code-excerpt "fwe/rolodex/lib/step4_navigation/screens/adaptive_layout.dart (build_large_screen)"?>
 ```dart
@@ -212,106 +213,106 @@ Widget _buildLargeScreenLayout() {
 }
 ```
 
-This code creates the classic menu-detail layout where the sidebar
-controls the content of the detail area.
+Este código cria o layout clássico menu-detalhe onde a barra lateral
+controla o conteúdo da área de detalhe.
 
-### Test the adaptive navigation behavior
+### Teste o comportamento de navegação adaptativa {:#test-the-adaptive-navigation-behavior}
 
-Hot reload your app and test the navigation:
+Faça hot reload do seu app e teste a navegação:
 
-**Small screens (<600px width):**
+**Telas pequenas (largura <600px):**
 
-- Tap contact groups to navigate to contact details.
-- Use the back button or a swipe gesture to return.
-- This is a classic stack-based navigation flow.
+- Toque nos grupos de contatos para navegar para detalhes de contatos.
+- Use o botão de voltar ou um gesto de deslizar para retornar.
+- Este é um fluxo clássico de navegação baseada em pilha.
 
-**Large screens (>600px width):**
+**Telas grandes (largura >600px):**
 
-- Click contact groups in the sidebar to update the detail view.
-- There is no navigation stack. The selection updates the content area.
-- This is a master-detail interface pattern.
+- Clique nos grupos de contatos na barra lateral para atualizar a view de detalhe.
+- Não há pilha de navegação. A seleção atualiza a área de conteúdo.
+- Este é um padrão de interface mestre-detalhe.
 
-The app automatically chooses the
-appropriate navigation pattern based on screen size.
-This provides an optimal experience on both phones and tablets.
+O app escolhe automaticamente o
+padrão de navegação apropriado baseado no tamanho da tela.
+Isso fornece uma experiência ideal tanto em telefones quanto em tablets.
 
 :::note
-If you resize the app from a small screen to a large screen while on
-a contact detail page, and then press the back button,
-you might see a `Hero` tag exception.
-This happens because the `Navigator` still holds the pushed small-screen
-route while the large-screen layout simultaneously renders the detail view,
-causing duplicate widgets (like the navigation bar) in the widget tree during transition.
-This is an expected edge case for this simple architecture and can be ignored
-for the purpose of this learning pathway.
+Se você redimensionar o app de uma tela pequena para uma tela grande enquanto estiver
+em uma página de detalhes de contato, e então pressionar o botão de voltar,
+você pode ver uma exceção de tag `Hero`.
+Isso acontece porque o `Navigator` ainda mantém a rota de tela pequena empilhada
+enquanto o layout de tela grande renderiza simultaneamente a view de detalhe,
+causando widgets duplicados (como a barra de navegação) na árvore de widgets durante a transição.
+Este é um caso extremo esperado para esta arquitetura simples e pode ser ignorado
+para os propósitos deste caminho de aprendizado.
 :::
 
-### Review
+### Revisão {:#review}
 
 
 <SummaryCard>
-title: What you accomplished
-subtitle: Here's a summary of what you built and learned in this lesson.
+title: O que você realizou
+subtitle: Aqui está um resumo do que você construiu e aprendeu nesta lição.
 completed: true
 items:
-  - title: Navigated between screens with Navigator.push
+  - title: Navegou entre telas com Navigator.push
     icon: open_in_new
     details: >-
-      `Navigator.of(context).push` adds a new route to the navigation stack.
-      This is the foundation of stack-based navigation, where screens are
-      pushed on top of each other and popped to go back.
-  - title: Used CupertinoPageRoute for iOS-style transitions
+      `Navigator.of(context).push` adiciona uma nova rota à pilha de navegação.
+      Esta é a base da navegação baseada em pilha, onde as telas são
+      empilhadas umas sobre as outras e removidas para voltar.
+  - title: Usou CupertinoPageRoute para transições no estilo iOS
     icon: swipe_right
     details: >-
-      `CupertinoPageRoute` provides support for native iOS navigation features:
-      slide-in animations from the right, automatic back buttons,
-      proper title handling, and swipe-to-go-back gesture support.
-  - title: Implemented adaptive navigation patterns
+      `CupertinoPageRoute` fornece suporte a recursos nativos de navegação do iOS:
+      animações de deslizamento da direita, botões de voltar automáticos,
+      tratamento adequado de título e suporte a gesto de deslizar-para-voltar.
+  - title: Implementou padrões de navegação adaptativa
     icon: devices
     details: >-
-      You set up different navigation patterns for small and large screens.
-      Small screens use stack-based navigation where
-      tapping a group pushes a new screen.
-      Large screens use a master-detail pattern where selecting
-      a group updates the detail panel without navigation.
-  - title: Completed the Rolodex app
+      Você configurou diferentes padrões de navegação para telas pequenas e grandes.
+      Telas pequenas usam navegação baseada em pilha, onde
+      tocar em um grupo empilha uma nova tela.
+      Telas grandes usam um padrão mestre-detalhe, onde selecionar
+      um grupo atualiza o painel de detalhes sem navegação.
+  - title: Concluiu o app Rolodex
     icon: celebration
     details: >-
-      You've built a complete iOS-style contacts app with
-      adaptive layouts, advanced scrolling,
-      collapsible headers with search, and responsive navigation.
-      These are common patterns used in production apps!
+      Você construiu um app de contatos completo no estilo iOS com
+      layouts adaptativos, rolagem avançada,
+      cabeçalhos recolhíveis com busca e navegação responsiva.
+      Esses são padrões comuns usados em apps de produção!
 </SummaryCard>
 
-### Test yourself
+### Teste seus conhecimentos {:#test-yourself}
 
-<Quiz title="Navigation Quiz">
-- question: "What does `Navigator.of(context).push` do?"
+<Quiz title="Quiz de Navegação">
+- question: "O que `Navigator.of(context).push` faz?"
   options:
-    - text: Replaces the current screen with a new one.
+    - text: Substitui a tela atual por uma nova.
       correct: false
-      explanation: "Push adds to the stack; `pushReplacement` replaces the current screen."
-    - text: Adds a new route to the navigation stack, displaying it on top of the current screen.
+      explanation: "Push adiciona à pilha; `pushReplacement` substitui a tela atual."
+    - text: Adiciona uma nova rota à pilha de navegação, exibindo-a sobre a tela atual.
       correct: true
-      explanation: Push adds the new route to the stack, allowing users to go back to the previous screen.
-    - text: Removes the current screen from the navigation stack.
+      explanation: Push adiciona a nova rota à pilha, permitindo que os usuários voltem para a tela anterior.
+    - text: Remove a tela atual da pilha de navegação.
       correct: false
-      explanation: "That's what `pop` does; push adds a new screen."
-    - text: Opens a dialog box over the current screen.
+      explanation: "Isso é o que `pop` faz; push adiciona uma nova tela."
+    - text: Abre uma caixa de diálogo sobre a tela atual.
       correct: false
-      explanation: "Dialogs use `showDialog`; Navigator.push navigates to a full screen."
-- question: "What does `Navigator.of(context).pop()` do?"
+      explanation: "Diálogos usam `showDialog`; Navigator.push navega para uma tela inteira."
+- question: "O que `Navigator.of(context).pop()` faz?"
   options:
-    - text: Closes the entire app.
+    - text: Fecha o app inteiro.
       correct: false
-      explanation: Pop only removes the current route; it doesn't close the app.
-    - text: Removes the current route from the navigation stack, returning to the previous screen.
+      explanation: Pop apenas remove a rota atual; ele não fecha o app.
+    - text: Remove a rota atual da pilha de navegação, retornando para a tela anterior.
       correct: true
-      explanation: Pop removes the top route from the stack, revealing the screen beneath it.
-    - text: Clears all routes and shows the home screen.
+      explanation: Pop remove a rota do topo da pilha, revelando a tela abaixo dela.
+    - text: Limpa todas as rotas e mostra a tela inicial.
       correct: false
-      explanation: That would require popUntil or pushAndRemoveUntil; pop removes only the top route.
-    - text: Refreshes the current screen with new data.
+      explanation: Isso exigiria popUntil ou pushAndRemoveUntil; pop remove apenas a rota do topo.
+    - text: Atualiza a tela atual com novos dados.
       correct: false
-      explanation: Pop navigates back; to refresh, you'd use setState or other state management.
+      explanation: Pop navega para trás; para atualizar, você usaria setState ou outro gerenciamento de estado.
 </Quiz>

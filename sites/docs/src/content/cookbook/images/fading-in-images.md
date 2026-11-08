@@ -1,30 +1,31 @@
 ---
-title: Fade in images with a placeholder
-description: How to fade images into view.
+ia-translate: true
+title: Aplicar fade in em imagens com um placeholder
+description: Como aplicar fade in em imagens.
 ---
 
 <?code-excerpt path-base="cookbook/images/fading_in_images"?>
 
-When displaying images using the default `Image` widget,
-you might notice they simply pop onto the screen as they're loaded.
-This might feel visually jarring to your users.
+Ao exibir imagens usando o widget padrão `Image`,
+você pode notar que elas simplesmente aparecem na tela enquanto são carregadas.
+Isso pode parecer visualmente desagradável para seus usuários.
 
-Instead, wouldn't it be nice to display a placeholder at first,
-and images would fade in as they're loaded? Use the
-[`FadeInImage`][] widget for exactly this purpose.
+Em vez disso, não seria legal exibir um placeholder primeiro,
+e as imagens aplicariam fade in conforme são carregadas? Use o
+widget [`FadeInImage`][`FadeInImage`] exatamente para esse propósito.
 
-`FadeInImage` works with images of any type: in-memory, local assets,
-or images from the internet.
+`FadeInImage` funciona com imagens de qualquer tipo: in-memory, assets locais,
+ou imagens da internet.
 
 ## In-memory
 
-To use a single-pixel, transparent PNG as the placeholder image,
-complete the following steps:
+Para usar um PNG transparente de um único pixel como imagem de placeholder,
+conclua os seguintes passos:
 
-1.  **Create the transparent image data.**
+1.  **Crie os dados da imagem transparente.**
 
-    Import `dart:convert` and `dart:typed_data`,
-    then decode the image from a Base64-encoded string:
+    Importe `dart:convert` e `dart:typed_data`,
+    e então decodifique a imagem a partir de uma string codificada em Base64:
 
     <?code-excerpt "lib/memory_main.dart (TransparentImage)" plaster="none"?>
     ```dart
@@ -36,9 +37,9 @@ complete the following steps:
     );
     ```
 
-1.  **Use the image data as a placeholder.**
+1.  **Use os dados da imagem como placeholder.**
 
-    Pass the decoded image data to the `placeholder` parameter:
+    Passe os dados da imagem decodificada para o parâmetro `placeholder`:
 
     <?code-excerpt "lib/memory_main.dart (MemoryNetwork)" replace="/^child\: //g"?>
     ```dart
@@ -50,7 +51,7 @@ complete the following steps:
 
 {:.steps}
 
-### Complete example
+### Exemplo completo
 
 <?code-excerpt "lib/memory_main.dart"?>
 ```dart
@@ -98,17 +99,17 @@ class MyApp extends StatelessWidget {
 
 ![Fading In Image Demo](/assets/images/docs/cookbook/fading-in-images.webp){:.site-mobile-screenshot}
 
-## From asset bundle
+## Do asset bundle
 
-To use a local image asset as the placeholder image,
-complete the following steps:
+Para usar um asset de imagem local como imagem de placeholder,
+conclua os seguintes passos:
 
-1.  **Add the placeholder to the asset bundle.**
+1.  **Adicione o placeholder ao asset bundle.**
 
-    Add a placeholder image to the project's `assets` directory,
-    such as `assets/loading.gif`.
-    Then, declare the asset in the project's `pubspec.yaml` file.
-    For more details, see [Adding assets and images][].
+    Adicione uma imagem de placeholder ao diretório `assets` do projeto,
+    como `assets/loading.gif`.
+    Em seguida, declare o asset no arquivo `pubspec.yaml` do projeto.
+    Para mais detalhes, veja [Adicionando assets e imagens][Adding assets and images].
 
     ```yaml diff
       flutter:
@@ -116,10 +117,10 @@ complete the following steps:
     +     - assets/loading.gif
     ```
 
-1.  **Use the asset as a placeholder.**
+1.  **Use o asset como placeholder.**
 
-    Pass the asset path to the `placeholder` parameter of
-    the [`FadeInImage.assetNetwork`][] constructor:
+    Passe o caminho do asset para o parâmetro `placeholder` do
+    construtor [`FadeInImage.assetNetwork`][]:
 
     <?code-excerpt "lib/asset_main.dart (AssetNetwork)" replace="/^child\: //g"?>
     ```dart
@@ -131,7 +132,7 @@ complete the following steps:
 
 {:.steps}
 
-### Complete example
+### Exemplo completo
 
 <?code-excerpt "lib/asset_main.dart"?>
 ```dart

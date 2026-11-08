@@ -1,59 +1,61 @@
-Migrating to SwiftPM requires updating the
-`macos/Runner.xcodeproj/project.pbxproj` and
-`macos/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme` files.
+<!-- ia-translate: true -->
 
-### Step 1: Add FlutterGeneratedPluginSwiftPackage package dependency {:.no_toc}
+Migrar para o SwiftPM requer atualizar os arquivos
+`macos/Runner.xcodeproj/project.pbxproj` e
+`macos/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme`.
 
-1. In Xcode, open `macos/Runner.xcworkspace`.
-1. Navigate to **Package Dependencies** for the project.
+### Passo 1: Adicione a dependência do pacote FlutterGeneratedPluginSwiftPackage {:.no_toc #step-1-add-fluttergeneratedpluginswiftpackage-package-dependency}
 
-   <DashImage image="development/packages-and-plugins/swift-package-manager/package-dependencies.png" caption="The project's package dependencies" />
+1. No Xcode, abra `macos/Runner.xcworkspace`.
+1. Navegue até **Package Dependencies** para o projeto.
 
-1. Click the <Icon id="add" label="add/plus"></Icon> button.
-1. In the dialog that opens, click the **Add Local...**.
-1. Navigate to `macos/Flutter/ephemeral/Packages/FlutterGeneratedPluginSwiftPackage`
-   and click the **Add Package**.
-1. Ensure that it's added to the Runner Target and click **Add Package**.
+   <DashImage image="development/packages-and-plugins/swift-package-manager/package-dependencies.png" caption="As dependências de pacotes do projeto" />
 
-   <DashImage image="development/packages-and-plugins/swift-package-manager/choose-package-products.png" caption="Ensure that the package is added to the `Runner` target" />
+1. Clique no botão <Icon id="add" label="add/plus"></Icon>.
+1. Na caixa de diálogo que abrir, clique em **Add Local...**.
+1. Navegue até `macos/Flutter/ephemeral/Packages/FlutterGeneratedPluginSwiftPackage`
+   e clique em **Add Package**.
+1. Certifique-se de que está adicionado ao alvo `Runner` e clique em **Add Package**.
 
-1. Ensure that `FlutterGeneratedPluginSwiftPackage` was added to **Frameworks,
+   <DashImage image="development/packages-and-plugins/swift-package-manager/choose-package-products.png" caption="Certifique-se de que o pacote está adicionado ao alvo `Runner`" />
+
+1. Certifique-se de que `FlutterGeneratedPluginSwiftPackage` foi adicionado a **Frameworks,
    Libraries, and Embedded Content**.
 
-   <DashImage image="development/packages-and-plugins/swift-package-manager/add-generated-framework.png" caption="Ensure that `FlutterGeneratedPluginSwiftPackage` was added to **Frameworks, Libraries, and Embedded Content**" />
+   <DashImage image="development/packages-and-plugins/swift-package-manager/add-generated-framework.png" caption="Certifique-se de que `FlutterGeneratedPluginSwiftPackage` foi adicionado a **Frameworks, Libraries, and Embedded Content**" />
 
-### Step 2: Add Run Prepare Flutter Framework Script Pre-action {:.no_toc}
+### Passo 2: Adicione a pré-ação do script Run Prepare Flutter Framework Script {:.no_toc #step-2-add-run-prepare-flutter-framework-script-pre-action}
 
-**The following steps must be completed for each flavor.**
+**As etapas a seguir devem ser concluídas para cada flavor.**
 
-1. Go to **Product > Scheme > Edit Scheme**.
-1. Expand the **Build** section in the left sidebar.
-1. Click **Pre-actions**.
-1. Click the <Icon id="add" label="add/plus"></Icon> button
-   and select **New Run Script Action** from the menu.
-1. Click the **Run Script** title and change it to:
+1. Vá para **Product > Scheme > Edit Scheme**.
+1. Expanda a seção **Build** na barra lateral esquerda.
+1. Clique em **Pre-actions**.
+1. Clique no botão <Icon id="add" label="add/plus"></Icon> e
+   selecione **New Run Script Action** no menu.
+1. Clique no título **Run Script** e mude-o para:
 
    ```plaintext
    Run Prepare Flutter Framework Script
    ```
 
-1. Change the **Provide build settings from** to the `Runner` target.
-1. Input the following in the text box:
+1. Mude o **Provide build settings from** para o alvo `Runner`.
+1. Digite o seguinte na caixa de texto:
 
    ```sh
    "$FLUTTER_ROOT"/packages/flutter_tools/bin/macos_assemble.sh prepare
    ```
 
-   <DashImage image="development/packages-and-plugins/swift-package-manager/add-flutter-pre-action.png" caption="Add **Run Prepare Flutter Framework Script** build pre-action" />
+   <DashImage image="development/packages-and-plugins/swift-package-manager/add-flutter-pre-action.png" caption="Adicione a pré-ação de build **Run Prepare Flutter Framework Script**" />
 
-### Step 3: Run app {:.no_toc}
+### Passo 3: Execute o app {:.no_toc}
 
-1. In Xcode, run the app.
-1. Ensure that  **Run Prepare Flutter Framework Script** runs as a pre-action
-   and that `FlutterGeneratedPluginSwiftPackage` is a target dependency.
+1. No Xcode, execute o app.
+1. Certifique-se de que **Run Prepare Flutter Framework Script** é executado como uma pré-ação
+   e que `FlutterGeneratedPluginSwiftPackage` é uma dependência de alvo.
 
-   <DashImage image="development/packages-and-plugins/swift-package-manager/flutter-pre-action-build-log.png" caption="Ensure `Run Prepare Flutter Framework Script` runs as a pre-action" />
+   <DashImage image="development/packages-and-plugins/swift-package-manager/flutter-pre-action-build-log.png" caption="Certifique-se de que `Run Prepare Flutter Framework Script` é executado como uma pré-ação" />
 
-1. Ensure that the app runs on the command line with `flutter run`.
+1. Certifique-se de que o app é executado na linha de comando com `flutter run`.
 
 [file an issue]: {{site.repo.flutter}}/issues/new?template=2_bug.yml

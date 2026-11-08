@@ -1,16 +1,17 @@
 ---
-title: Material Design for Flutter
-description: Learn about Material Design for Flutter.
+title: Material Design para Flutter
+description: Aprenda sobre Material Design para Flutter.
+ia-translate: true
 ---
 
-Material Design is an open-source design system built
-and supported by Google designers and developers.
+Material Design é um sistema de design de código aberto construído
+e suportado por designers e desenvolvedores do Google.
 
-## More information {:.no_toc}
+## Mais informações {:.no_toc}
 
-To learn more about Material Design and Flutter,
-check out:
+Para saber mais sobre Material Design e Flutter,
+confira:
 
-* [Material.io developer documentation][]
+* [Documentação para desenvolvedores Material.io][Material.io developer documentation]
 
 [Material.io developer documentation]: {{site.material}}/develop/flutter

@@ -1,74 +1,75 @@
 ---
-title: Accessibility technologies
+ia-translate: true
+title: Tecnologias assistivas
 description: >-
-  Information about accessibility technologies for Flutter developers.
+  Informações sobre tecnologias assistivas para desenvolvedores Flutter.
 ---
 
-## Summary
+## Resumo
 
-Assistive technologies are essential for making digital content accessible to
-individuals with disabilities. This document provides an overview of two key
-categories of assistive technologies relevant to Flutter development: screen
-readers for users with visual impairments and mobility support tools for
-those with motor limitations. By understanding and testing with these
-technologies, you can ensure your Flutter application provides a more inclusive
-and user-friendly experience for everyone.
+Tecnologias assistivas são essenciais para tornar o conteúdo digital acessível a
+indivíduos com deficiências. Este documento fornece uma visão geral de duas categorias
+principais de tecnologias assistivas relevantes para o desenvolvimento Flutter: leitores
+de tela para usuários com deficiências visuais e ferramentas de suporte à mobilidade para
+aqueles com limitações motoras. Ao entender e testar com essas
+tecnologias, você pode garantir que sua aplicação Flutter forneça uma experiência mais inclusiva
+e amigável para todos.
 
-## Screen readers
+## Leitores de tela
 
-For mobile, screen readers ([TalkBack][], [VoiceOver][])
-enable visually impaired users to get spoken feedback about
-the contents of the screen and interact with the UI by using
-gestures on mobile and keyboard shortcuts on desktop.
-Turn on VoiceOver or TalkBack on your mobile device and
-navigate around your app.
+Para dispositivos móveis, leitores de tela ([TalkBack][TalkBack], [VoiceOver][VoiceOver])
+permitem que usuários com deficiência visual recebam feedback falado sobre
+o conteúdo da tela e interajam com a UI usando
+gestos em dispositivos móveis e atalhos de teclado no desktop.
+Ative o VoiceOver ou TalkBack no seu dispositivo móvel e
+navegue pelo seu app.
 
-**To turn on the screen reader on your device, complete the following steps:**
+**Para ativar o leitor de tela no seu dispositivo, complete os seguintes passos:**
 
 <Tabs key="screen-reader-os" wrapped="true">
 
 <Tab name="Android">
 
-1. On your device, open **Settings**.
-2. Select **Accessibility** and then **TalkBack**.
-3. Turn 'Use TalkBack' on or off.
-4. Select Ok.
+1. No seu dispositivo, abra **Settings**.
+2. Selecione **Accessibility** e depois **TalkBack**.
+3. Ative ou desative 'Use TalkBack'.
+4. Selecione Ok.
 
-To learn how to find and customize Android's
-accessibility features, view the following video.
+Para aprender como encontrar e customizar os recursos de
+acessibilidade do Android, veja o seguinte vídeo.
 
 <YouTubeEmbed id="FQyj_XTl01w" title="Customize Pixel and Android accessibility features" />
 
 </Tab>
 <Tab name="iOS or iPadOS">
 
-1. On your device, open **Settings > Accessibility > VoiceOver**
-2. Turn the VoiceOver setting on or off
+1. No seu dispositivo, abra **Settings > Accessibility > VoiceOver**
+2. Ative ou desative a configuração VoiceOver
 
-To learn how to find and customize iOS
-accessibility features, view the following video.
+Para aprender como encontrar e customizar os recursos de
+acessibilidade do iOS, veja o seguinte vídeo.
 
 <YouTubeEmbed id="ROIe49kXOc8" title="How to navigate your iPhone or iPad with VoiceOver" />
 
 </Tab>
 <Tab name="Browsers">
 
-For web, the following screen readers are currently supported:
+Para web, os seguintes leitores de tela são atualmente suportados:
 
-Mobile browsers:
+Navegadores móveis:
 
 * iOS - VoiceOver
 * Android - TalkBack
 
-Desktop browsers:
+Navegadores desktop:
 
 * macOS - VoiceOver
 * Windows - JAWs & NVDA
 
-Screen readers users on web must toggle the
-"Enable accessibility" button to build the semantics tree.
-Users can skip this step if you programmatically auto-enable
-accessibility for your app using this API:
+Usuários de leitores de tela na web devem alternar o
+botão "Enable accessibility" para construir a árvore de semântica.
+Usuários podem pular esta etapa se você habilitar programaticamente a
+acessibilidade automaticamente para seu app usando esta API:
 
 ```dart
 import 'package:material_ui/material_ui.dart';
@@ -83,23 +84,23 @@ void main() {
 </Tab>
 <Tab name="Desktop">
 
-Windows comes with a screen reader called Narrator
-but some developers recommend using the more popular
-NVDA screen reader. To learn about using NVDA to test
-Windows apps, check out
+Windows vem com um leitor de tela chamado Narrator
+mas alguns desenvolvedores recomendam usar o mais popular
+leitor de tela NVDA. Para aprender sobre como usar o NVDA para testar
+apps Windows, confira
 [Screen Readers 101 For Front-End Developers (Windows)][nvda].
 
 [nvda]: https://evinced.com/blog/screen-readers-101-for-front-end-developers-windows
 
-On a Mac, you can use the desktop version of VoiceOver,
-which is included in macOS.
+Em um Mac, você pode usar a versão desktop do VoiceOver,
+que está incluída no macOS.
 
 <YouTubeEmbed id="5R-6WvAihms" title="Screen reader basics: VoiceOver" />
 
-On Linux, a popular screen reader is called Orca.
-It comes pre-installed with some distributions
-and is available on package repositories such as `apt`.
-To learn about using Orca, check out
+No Linux, um leitor de tela popular é chamado Orca.
+Ele vem pré-instalado em algumas distribuições
+e está disponível em repositórios de pacotes como `apt`.
+Para aprender sobre como usar o Orca, confira
 [Getting started with Orca screen reader on Gnome desktop][orca].
 
 [orca]: https://www.a11yproject.com/posts/getting-started-with-orca
@@ -109,20 +110,20 @@ To learn about using Orca, check out
 
 <br/>
 
-Check out the following [video demo][] to see how to
-use VoiceOver with the now-archived [Flutter Gallery][] web app.
+Confira a seguinte [demonstração em vídeo][video demo] para ver como
+usar o VoiceOver com o web app [Flutter Gallery][Flutter Gallery], agora arquivado.
 
-Flutter's standard widgets generate an accessibility tree automatically.
-However, if your app needs something different,
-it can be customized using the [`Semantics` widget][].
+Os widgets padrão do Flutter geram uma árvore de acessibilidade automaticamente.
+No entanto, se seu app precisa de algo diferente,
+ela pode ser customizada usando o [widget `Semantics`][`Semantics` widget].
 
-When there is text in your app that should be voiced
-with a specific voice, inform the screen reader
-which voice to use by calling [`TextSpan.locale`][].
-`MaterialApp.locale` and `Localizations.override`
-will affect screen reader voices starting from flutter 3.38 release.
-Usually, the screen reader uses the system voice
-except where you explicitly set it with `TextSpan.locale`.
+Quando houver texto em seu app que deve ser falado
+com uma voz específica, informe ao leitor de tela
+qual voz usar chamando [`TextSpan.locale`][`TextSpan.locale`].
+`MaterialApp.locale` e `Localizations.override`
+afetarão as vozes do leitor de tela a partir da versão 3.38 do flutter.
+Normalmente, o leitor de tela usa a voz do sistema
+exceto onde você a define explicitamente com `TextSpan.locale`.
 
 [Flutter Gallery]: {{site.gallery-archive}}
 [`TextSpan.locale`]: {{site.api}}/flutter/painting/TextSpan/locale.html
@@ -131,26 +132,26 @@ except where you explicitly set it with `TextSpan.locale`.
 [VoiceOver]: https://www.apple.com/lae/accessibility/iphone/vision/
 [video demo]: {{site.yt.watch}}?v=A6Sx0lBP8PI
 
-## Mobility support
+## Suporte à mobilidade
 
-For users with limited dexterity or hand strength, mobility support features
-can be helpful. Both Android and iOS offer a range of tools designed to make
-navigation and control easier.
-These features allow users to operate their devices through external switches,
-voice commands, or simplified on-screen menus.
+Para usuários com destreza ou força manual limitada, recursos de suporte à mobilidade
+podem ser úteis. Tanto Android quanto iOS oferecem uma variedade de ferramentas projetadas para tornar
+a navegação e controle mais fáceis.
+Esses recursos permitem que os usuários operem seus dispositivos através de interruptores externos,
+comandos de voz ou menus simplificados na tela.
 
-Android provides Switch Access, Voice Access and Accessibility Menu,
-while iOS offers Switch Control, Voice Control, and AssistiveTouch.
-Understanding these tools helps in creating
-apps that are usable by people with diverse physical abilities.
+Android fornece Switch Access, Voice Access e Accessibility Menu,
+enquanto iOS oferece Switch Control, Voice Control e AssistiveTouch.
+Entender essas ferramentas ajuda a criar
+apps que são usáveis por pessoas com diversas habilidades físicas.
 
-| OS | Features | Functions |
+| OS | Recursos | Funções |
 | --- | --- | --- |
-| Android | **Switch Access** | As an alternate input method, you can use Switch Access and Camera Switches |
-| Android | **Voice Access** | Control your device with your voice |
-| Android | **Accessibility Menu** | A floating, on-screen menu that provides simplified buttons to control essential phone functions |
-| iOS | **Switch Control** | Use switches as an alternate input methods |
-| iOS | **Voice Control** | Control your device with your voice |
-| iOS | **AssistiveTouch** | Use AssistiveTouch to replace multi-finger gestures or hardware button actions|
+| Android | **Switch Access** | Como um método de entrada alternativo, você pode usar Switch Access e Camera Switches |
+| Android | **Voice Access** | Controle seu dispositivo com sua voz |
+| Android | **Accessibility Menu** | Um menu flutuante na tela que fornece botões simplificados para controlar funções essenciais do telefone |
+| iOS | **Switch Control** | Use interruptores como métodos de entrada alternativos |
+| iOS | **Voice Control** | Controle seu dispositivo com sua voz |
+| iOS | **AssistiveTouch** | Use AssistiveTouch para substituir gestos com múltiplos dedos ou ações de botões físicos|
 
 {:.table .table-striped}

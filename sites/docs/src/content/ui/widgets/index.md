@@ -1,20 +1,21 @@
 ---
-title: Widget catalog
-description: A catalog of some of Flutter's rich set of widgets.
+ia-translate: true
+title: Catálogo de widgets
+description: Um catálogo de alguns dos ricos widgets do Flutter.
 shortTitle: Widgets
 showToc: false
 ---
 
-Create beautiful apps faster with Flutter's collection of visual, structural,
-platform, and interactive widgets. In addition to browsing widgets by category,
-you can also see all the widgets in the [widget index][].
+Crie apps bonitos mais rapidamente com a coleção de widgets visuais, estruturais,
+de plataforma e interativos do Flutter. Além de navegar pelos widgets por categoria,
+você também pode ver todos os widgets no [índice de widgets][widget index].
 
 ## Design systems
 
-The style-neutral [`widgets`][] library ships with the Flutter SDK.
-Two UI design packages ([`material_ui`][] and [`cupertino_ui`][]) are
-built on top of `widgets` and are available on [pub.dev]({{site.pub}}),
-the package repository for Dart and Flutter.
+A biblioteca [`widgets`][], de estilo neutro, é distribuída com o Flutter SDK.
+Dois pacotes de design de UI ([`material_ui`][] e [`cupertino_ui`][]) são
+construídos sobre `widgets` e estão disponíveis no [pub.dev]({{site.pub}}),
+o repositório de pacotes para Dart e Flutter.
 
 [`cupertino_ui`]: {{site.pub}}/packages/cupertino_ui
 [`material_ui`]: {{site.pub}}/packages/material_ui
@@ -22,19 +23,19 @@ the package repository for Dart and Flutter.
 
 <div class="card-grid">
   <Card title="Cupertino" link="/ui/widgets/cupertino" outlined="true" filled="false">
-    Beautiful and high-fidelity widgets that align with
-    Apple's Human Interface Guidelines for iOS and macOS.
+    Widgets bonitos e de alta fidelidade que seguem as
+    Human Interface Guidelines da Apple para iOS e macOS.
   </Card>
   <Card title="Material design" link="/ui/widgets/material" outlined="true" filled="false">
-    Visual, behavioral, and motion-rich widgets implementing
-    the Material 3 design specification.
+    Widgets visuais, comportamentais e ricos em movimento que implementam
+    a especificação de design Material 3.
   </Card>
 </div>
 
-You can find more design systems created by the Flutter community on pub.dev.
-For example, the Windows-inspired [fluent_ui][],
-macOS-inspired [macos_ui][],
-and the Ubuntu-inspired [yaru][] widgets.
+Você pode encontrar mais design systems criados pela comunidade Flutter no pub.dev.
+Por exemplo, o [fluent_ui][] inspirado no Windows,
+o [macos_ui][] inspirado no macOS,
+e os widgets [yaru][] inspirados no Ubuntu.
 
 [fluent_ui]: {{site.pub-pkg}}/fluent_ui
 [macos_ui]: {{site.pub-pkg}}/macos_ui
@@ -42,15 +43,15 @@ and the Ubuntu-inspired [yaru][] widgets.
 
 ## Base widgets
 
-Base widgets support a range of common rendering options
-like input, layout, and text.
+Os widgets base suportam uma variedade de opções comuns de renderização
+como input, layout e texto.
 
 <WidgetCatalogCategories />
 
 ## Widget of the Week
 
-100+ short, 1-minute explainer videos to
-help you quickly get started with Flutter widgets.
+Mais de 100 vídeos explicativos curtos de 1 minuto para
+ajudá-lo a começar rapidamente com os widgets do Flutter.
 
 <div class="card-grid wide">
   <div class="card wrapped-card outlined-card">
@@ -85,6 +86,6 @@ help you quickly get started with Flutter widgets.
   </div>
 </div>
 
-<a class="filled-button" target="_blank" href="{{site.yt.playlist}}PLjxrf2q8roU23XGwz3Km7sQZFTdB996iG">Watch more widget of the week videos</a>
+<a class="filled-button" target="_blank" href="{{site.yt.playlist}}PLjxrf2q8roU23XGwz3Km7sQZFTdB996iG">Assista mais vídeos do widget of the week</a>
 
 [widget index]: /reference/widgets

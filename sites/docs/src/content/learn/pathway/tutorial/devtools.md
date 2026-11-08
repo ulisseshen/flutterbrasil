@@ -1,80 +1,81 @@
 ---
+ia-translate: true
 title: DevTools
-description: Learn to use the Dart DevTools when developing Flutter apps.
+description: Aprenda a usar o Dart DevTools ao desenvolver apps Flutter.
 layout: tutorial
 ---
 
-Learn to use the widget inspector and property editor to debug layout issues
-and experiment with properties in real-time.
+Aprenda a usar o widget inspector e o property editor para depurar problemas de layout
+e experimentar com propriedades em tempo real.
 
 <YouTubeEmbed id="CIfLE0CShbg" title="Intro to Flutter and Dart DevTools"
   fullWidth="true"></YouTubeEmbed>
 
 <SummaryCard>
-title: What you'll accomplish
+title: O que você vai realizar
 items:
-  - title: Explore your app's widget tree with the widget inspector
+  - title: Explorar a árvore de widgets do seu app com o widget inspector
     icon: account_tree
-  - title: Learn to debug layout issues like unbounded constraints
+  - title: Aprender a depurar problemas de layout como restrições ilimitadas
     icon: bug_report
-  - title: Experiment with properties in real-time
+  - title: Experimentar com propriedades em tempo real
     icon: tune
 </SummaryCard>
 
 ---
 
-### Introduction
+### Introdução {:#introduction}
 
-As your Flutter app grows in complexity, it becomes more important
-to understand how each of the widget properties affects the UI.
-The [Dart and Flutter DevTools][] provide you with
-two particularly useful features:
-the **widget inspector** and the **property editor**.
+À medida que seu app Flutter cresce em complexidade, torna-se mais importante
+entender como cada uma das propriedades dos widgets afeta a UI.
+O [Dart e Flutter DevTools][Dart and Flutter DevTools] oferece a você
+dois recursos particularmente úteis:
+o **widget inspector** e o **property editor**.
 
-First, launch DevTools by running the following commands while
-your app is running in debug mode.
-Run this command in a **separate terminal window**
-from where your app is running:
+Primeiro, inicie o DevTools executando os seguintes comandos enquanto
+seu app está rodando em modo debug.
+Execute este comando em uma **janela de terminal separada**
+daquela em que seu app está rodando:
 
 ```console
 $ dart devtools
 ```
 
-Running this command starts the DevTools server and
-opens the interface in a browser.
+Executar este comando inicia o servidor do DevTools e
+abre a interface em um navegador.
 
-To connect DevTools to your running app:
+Para conectar o DevTools ao seu app em execução:
 
-1. Find the DevTools URL printed in the terminal
-   where your app is running (for example:
+1. Encontre a URL do DevTools impressa no terminal
+   em que seu app está rodando (por exemplo:
    `Serving DevTools at http://127.0.0.1:9101`).
-2. Copy this URL.
-3. Paste it into the connect bar in the DevTools browser page.
+2. Copie essa URL.
+3. Cole-a na barra de conexão da página do DevTools no navegador.
 
-:::note Run in your IDE
+:::note Execute na sua IDE
 
-Provided you have the appropriate Flutter plugin installed,
-you can also run DevTools directly inside
-Code OSS-based editors such as [VS Code][] as well as
-[IntelliJ and Android Studio][].
-The screenshots in this lesson are from VS Code.
+Desde que você tenha o plugin Flutter apropriado instalado,
+você também pode executar o DevTools diretamente dentro de
+editores baseados no Code OSS, como o [VS Code][], assim como no
+[IntelliJ e Android Studio][IntelliJ and Android Studio].
+As capturas de tela nesta lição são do VS Code.
 :::
 
 [Dart and Flutter DevTools]: /tools/devtools
 [VS Code]: /tools/vs-code
 [IntelliJ and Android Studio]: /tools/android-studio
 
-### The widget inspector
+### O widget inspector {:#the-widget-inspector}
 
-The widget inspector allows you to visualize and explore your widget tree.
-It helps you understand the layout of your UI and
-identifies which widgets are responsible for different parts of the screen.
-Running against the app you've built so far, the inspector looks like this:
+O widget inspector permite que você visualize e explore sua árvore de widgets.
+Ele ajuda você a entender o layout da sua UI e
+identifica quais widgets são responsáveis por diferentes partes da tela.
+Executando no app que você construiu até agora, o inspector se parece com isto:
 
 <img src='/assets/images/docs/tutorial/widget_inspector.png'
-  width="320px" alt="A screenshot of the Flutter widget inspector tool.">
+  width="320px" alt="Uma captura de tela da ferramenta widget inspector do Flutter.">
 
-Consider the `GamePage` widget you created in this section:
+Considere o widget `GamePage` que você criou nesta seção:
 
 ```dart
 class GamePage extends StatelessWidget {
@@ -103,7 +104,7 @@ class GamePage extends StatelessWidget {
 }
 ```
 
-And how it's used in `MainApp`:
+E como ele é usado no `MainApp`:
 
 ```dart
 class MainApp extends StatelessWidget {
@@ -120,44 +121,44 @@ class MainApp extends StatelessWidget {
 }
 ```
 
-In the widget inspector, you should see a tree of
-exactly the same widgets that are in your code:
-`MaterialApp` as the root, with `Scaffold` as its `home`,
-an `AppBar` as its `appBar`, and so on down the entire tree to
-the `Row` widgets with `Tile` children.
-You can select any widget in the tree to see its properties and
-even jump to its source code in your IDE.
+No widget inspector, você deve ver uma árvore exatamente dos
+mesmos widgets que estão no seu código:
+`MaterialApp` como a raiz, com `Scaffold` como seu `home`,
+um `AppBar` como seu `appBar`, e assim por diante descendo toda a árvore até
+os widgets `Row` com filhos `Tile`.
+Você pode selecionar qualquer widget na árvore para ver suas propriedades e
+até mesmo ir ao seu código-fonte na sua IDE.
 
-### Debugging layout issues
+### Depurando problemas de layout {:#debugging-layout-issues}
 
-The widget inspector is perhaps most useful for debugging layout issues.
+O widget inspector é talvez mais útil para depurar problemas de layout.
 
-In certain situations,
-a widget's [constraints][] are unbounded, or infinite.
-This means that either
-the maximum width or the maximum height is set to [`double.infinity`][].
-A widget that tries to be as big as possible won't function usefully when
-given an unbounded constraint and, in debug mode, throws an exception.
+Em certas situações,
+as [restrições][constraints] de um widget são ilimitadas, ou infinitas.
+Isso significa que tanto
+a largura máxima quanto a altura máxima estão definidas como [`double.infinity`][].
+Um widget que tenta ser tão grande quanto possível não funcionará adequadamente quando
+receber uma restrição ilimitada e, em modo debug, lança uma exceção.
 
-The most common case where a render box ends up with an unbounded
-constraint is within a flex box widget ([`Row`][] or [`Column`][]),
-and within a scrollable region,
-such as a [`ListView`][] or [`ScrollView`][] subclasses.
+O caso mais comum em que uma caixa de renderização acaba com uma restrição
+ilimitada é dentro de um widget flex box ([`Row`][] ou [`Column`][]),
+e dentro de uma região rolável,
+como uma [`ListView`][] ou subclasses de [`ScrollView`][].
 
-`ListView`, for example, tries to expand to
-fit the space available in its cross-direction. Such as if
-it's a vertically scrolling block that tries to be as wide as its parent.
-If you nest a vertically scrolling `ListView` inside
-a horizontally scrolling `ListView`, the inner list tries to
-be as wide as possible, which is infinitely wide, since the
-outer one is scrollable in that direction.
+`ListView`, por exemplo, tenta expandir para
+caber no espaço disponível em sua direção transversal. Por exemplo, se
+for um bloco com rolagem vertical que tenta ser tão largo quanto seu pai.
+Se você aninhar uma `ListView` com rolagem vertical dentro de
+uma `ListView` com rolagem horizontal, a lista interna tenta
+ser tão larga quanto possível, o que é infinitamente largo, já que a
+externa pode rolar naquela direção.
 
-Perhaps the most common error you'll run into while
-building a Flutter application is due to incorrectly using layout widgets.
-This error is referred to as the "unbounded constraints" error.
+Talvez o erro mais comum que você encontrará ao
+construir uma aplicação Flutter seja devido ao uso incorreto de widgets de layout.
+Esse erro é referido como o erro de "restrições ilimitadas" (unbounded constraints).
 
-Watch the following video to get an understanding of how to
-spot and resolve this issue.
+Assista ao vídeo a seguir para obter uma compreensão de como
+identificar e resolver este problema.
 
 <YouTubeEmbed id="jckqXR5CrPI"
   title="Decoding Flutter: Unbounded height and width"></YouTubeEmbed>
@@ -169,17 +170,17 @@ spot and resolve this issue.
 [`ListView`]: {{site.api}}/flutter/widgets/ListView-class.html
 [`ScrollView`]: {{site.api}}/flutter/widgets/ScrollView-class.html
 
-### The property editor
+### O property editor {:#the-property-editor}
 
-When you select a widget in the widget inspector,
-the property editor displays all the properties of that selected widget.
-This is a powerful tool for understanding why a widget looks the way it does and
-for experimenting with property value changes in real-time.
+Quando você seleciona um widget no widget inspector,
+o property editor exibe todas as propriedades daquele widget selecionado.
+Esta é uma ferramenta poderosa para entender por que um widget parece da maneira que parece e
+para experimentar mudanças nos valores das propriedades em tempo real.
 
 <img src='/assets/images/docs/tutorial/property_editor.png'
-  width="320px" alt="A screenshot of the Flutter property editor tool.">
+  width="320px" alt="Uma captura de tela da ferramenta property editor do Flutter.">
 
-Look at the `Tile` widget's `build` method from earlier:
+Observe o método `build` do widget `Tile` de antes:
 
 ```dart
 class Tile extends StatelessWidget {
@@ -207,82 +208,82 @@ class Tile extends StatelessWidget {
 }
 ```
 
-If you select the `Container` widget inside the `Tile` in the widget inspector,
-the property editor shows its `width` (60), `height` (60), and the `decoration`
-property.
-You could then expand the `BoxDecoration` to see the `border` and `color`
-properties.
+Se você selecionar o widget `Container` dentro do `Tile` no widget inspector,
+o property editor mostra sua `width` (60), `height` (60) e a propriedade
+`decoration`.
+Você pode então expandir a `BoxDecoration` para ver as propriedades `border` e
+`color`.
 
-For many properties, you can even
-modify their values directly within the property editor.
-For example, to quickly test how a different `width` or `height` would look
-for your `Container` in the `Tile` widget,
-change the numerical value in the property editor.
-The tool writes this update directly back to your `.dart` source file on disk,
-allowing you to instantly view the visual update on your running app
-upon saving or triggering a hot reload.
-This allows for rapid iteration on UI design.
+Para muitas propriedades, você pode até
+modificar seus valores diretamente no property editor.
+Por exemplo, para testar rapidamente como uma `width` ou `height` diferente ficaria
+para seu `Container` no widget `Tile`,
+altere o valor numérico no property editor.
+A ferramenta grava essa atualização diretamente no seu arquivo-fonte `.dart` no disco,
+permitindo que você veja instantaneamente a atualização visual no seu app em execução
+ao salvar ou disparar um hot reload.
+Isso permite iteração rápida no design de UI.
 
-### Review
+### Revisão {:#review}
 
 <SummaryCard>
-title: What you accomplished
-subtitle: Here's a summary of what you built and learned in this lesson.
+title: O que você realizou
+subtitle: Aqui está um resumo do que você construiu e aprendeu nesta lição.
 completed: true
 items:
-  - title: Explored your app's widget tree with the widget inspector
+  - title: Explorou a árvore de widgets do seu app com o widget inspector
     icon: account_tree
     details: >-
-      The widget inspector lets you visualize your entire widget tree,
-      select any widget to view its properties, and
-      jump directly to its source code.
-      It's an essential tool for understanding your app's structure.
-  - title: Learned about common layout issues
+      O widget inspector permite visualizar toda a sua árvore de widgets,
+      selecionar qualquer widget para ver suas propriedades e
+      ir diretamente ao seu código-fonte.
+      É uma ferramenta essencial para entender a estrutura do seu app.
+  - title: Aprendeu sobre problemas de layout comuns
     icon: bug_report
     details: >-
-      You learned about **unbounded constraints**,
-      one of the most common errors hit in Flutter development.
-      This happens when widgets like
-      `Row`, `Column`, or `ListView` receive infinite constraints.
-      Now you can recognize and fix these issues when they occur.
-  - title: Experimented with properties in real-time
+      Você aprendeu sobre **restrições ilimitadas** (unbounded constraints),
+      um dos erros mais comuns no desenvolvimento Flutter.
+      Isso acontece quando widgets como
+      `Row`, `Column` ou `ListView` recebem restrições infinitas.
+      Agora você consegue reconhecer e corrigir esses problemas quando ocorrerem.
+  - title: Experimentou com propriedades em tempo real
     icon: tune
     details: >-
-      The property editor shows all properties of a selected widget and
-      lets you modify values directly on disk, allowing you to instantly view 
-      updates upon saving or triggering a hot reload.
-      This enables rapid iteration when fine-tuning your UI.
+      O property editor mostra todas as propriedades de um widget selecionado e
+      permite modificar valores diretamente no disco, permitindo que você veja
+      as atualizações instantaneamente ao salvar ou disparar um hot reload.
+      Isso possibilita iteração rápida ao ajustar sua UI.
 </SummaryCard>
 
-### Test yourself
+### Teste seus conhecimentos {:#test-yourself}
 
-<Quiz title="DevTools Quiz">
-- question: What is a common cause of "unbounded constraints" errors in Flutter?
+<Quiz title="Quiz de DevTools">
+- question: Qual é uma causa comum de erros de "unbounded constraints" no Flutter?
   options:
-    - text: Using too many StatefulWidgets in the widget tree.
+    - text: Usar StatefulWidgets demais na árvore de widgets.
       correct: false
-      explanation: StatefulWidget usage doesn't cause unbounded constraints.
-    - text: Placing a widget that tries to expand infinitely inside a scrollable or flex container without proper constraints.
+      explanation: O uso de StatefulWidget não causa restrições ilimitadas.
+    - text: Colocar um widget que tenta se expandir infinitamente dentro de um container rolável ou flex sem restrições adequadas.
       correct: true
-      explanation: Widgets like ListView inside a Row, or nested scrollables, can receive infinite constraints and fail.
-    - text: Forgetting to call setState after changing data.
+      explanation: Widgets como ListView dentro de um Row, ou roláveis aninhados, podem receber restrições infinitas e falhar.
+    - text: Esquecer de chamar setState após alterar dados.
       correct: false
-      explanation: Missing setState causes UI not to update, not constraint errors.
-    - text: Using Container without specifying a color.
+      explanation: A falta de setState faz com que a UI não seja atualizada, não causa erros de restrição.
+    - text: Usar Container sem especificar uma cor.
       correct: false
-      explanation: Color is optional and unrelated to layout constraints.
-- question: What can you do with the Widget Inspector in Flutter DevTools?
+      explanation: A cor é opcional e não tem relação com restrições de layout.
+- question: O que você pode fazer com o Widget Inspector no Flutter DevTools?
   options:
-    - text: Automatically generate unit tests for your widgets.
+    - text: Gerar automaticamente testes unitários para seus widgets.
       correct: false
-      explanation: The Widget Inspector is for visualization and debugging, not test generation.
-    - text: Visualize your widget tree, select widgets to view their properties, and jump to source code.
+      explanation: O Widget Inspector serve para visualização e depuração, não para geração de testes.
+    - text: Visualizar sua árvore de widgets, selecionar widgets para ver suas propriedades e ir ao código-fonte.
       correct: true
-      explanation: The Widget Inspector lets you explore your app's structure, inspect widget properties, and navigate to the corresponding source code.
-    - text: Deploy your app directly to the app store.
+      explanation: O Widget Inspector permite explorar a estrutura do seu app, inspecionar propriedades de widgets e navegar até o código-fonte correspondente.
+    - text: Implantar seu app diretamente na loja de apps.
       correct: false
-      explanation: Deployment is handled separately; the Widget Inspector is for debugging.
-    - text: Edit your app's theme colors and typography.
+      explanation: A implantação é feita separadamente; o Widget Inspector serve para depuração.
+    - text: Editar as cores do tema e a tipografia do seu app.
       correct: false
-      explanation: Theme editing requires code changes; the Widget Inspector is for inspecting the current state.
+      explanation: A edição do tema requer mudanças no código; o Widget Inspector serve para inspecionar o estado atual.
 </Quiz>

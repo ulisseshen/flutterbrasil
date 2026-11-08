@@ -1,45 +1,46 @@
 ---
-title: Hosting native Android views in your Flutter app with Platform Views
-shortTitle: Android platform-views
+ia-translate: true
+title: Hospedando views Android nativas em seu app Flutter com Platform Views
+shortTitle: Platform-views Android
 description: >-
-  Learn how to host native Android views in your
-  Flutter app with Platform Views.
+  Aprenda como hospedar views Android nativas em seu
+  app Flutter com Platform Views.
 ---
 
 <?code-excerpt path-base="platform_integration/platform_views"?>
 
-Platform views allow you to embed native views in a Flutter app,
-so you can apply transforms, clips, and opacity to the native view
-from Dart.
+Platform views permitem que você incorpore views nativas em um app Flutter,
+para que você possa aplicar transformações, recortes e opacidade à view nativa
+do Dart.
 
-This allows you, for example,
-to use the native Google Maps from the Android SDK
-directly inside your Flutter app.
+Isso permite que você, por exemplo,
+use o Google Maps nativo do Android SDK
+diretamente dentro do seu app Flutter.
 
 :::note
-This page discusses how to host your own native Android views
-within a Flutter app.
-If you'd like to embed native iOS views in your Flutter app,
-visit [Hosting native iOS views][].
-To embed native macOS views in your Flutter app,
-visit [Hosting native macOS views][].
+Esta página discute como hospedar suas próprias views Android nativas
+dentro de um app Flutter.
+Se você gostaria de incorporar views iOS nativas em seu app Flutter,
+visite [Hospedando views iOS nativas][Hosting native iOS views].
+Para incorporar views macOS nativas em seu app Flutter,
+visite [Hospedando views macOS nativas][Hosting native macOS views].
 :::
 
 [Hosting native iOS views]: /platform-integration/ios/platform-views
 [Hosting native macOS views]: /platform-integration/macos/platform-views
 
-Platform Views on Android have several implementations.
-They come with tradeoffs both in terms of performance and fidelity.
+Platform Views no Android têm várias implementações.
+Elas vêm com trade-offs tanto em termos de performance quanto de fidelidade.
 
-### Choosing an implementation
+### Escolhendo uma implementação {:#choosing-an-implementation}
 
-The following matrix summarizes the different implementations and their trade-offs:
+A matriz a seguir resume as diferentes implementações e seus trade-offs:
 
-| Mode | Benefits | Considerations | Enabler |
+| Modo | Benefícios | Considerações | Habilitador |
 | :--- | :--- | :--- | :--- |
-| **Texture layer** | • Good Flutter performance<br>• Full widget transforms work | • Janky during quick scrolling<br>• SurfaceViews lose accessibility and text magnifier breaks<br>• Platform View -> Renders to texture -> Uploads to Impeller -> Impeller composites Flutter content and Platform View content | Default behavior or standard `AndroidView` |
-| **Hybrid composition** | • Full native fidelity<br>• Correct accessibility and SurfaceView support | • Causes thread merging of raster & platform, which degrades Flutter FPS<br>• Platform View -> Renders into the Android view hierarchy as usual, Flutter content renders into `ImageReader`-backed `FlutterImageView`s (a background layer, plus an overlay layer for content drawn above a platform view), the Android view hierarchy composites them together |• `PlatformViewLink` with `AndroidViewSurface`<br>• [`AndroidViewController` builds either a TLHC or an HC Platform View][AC] |
-| **HCPP** (Experimental) | • Full fidelity and performance<br>• Solves original sync overhead | • Requires Android API 34+, Vulkan support, and use of the Impeller rendering engine<br>• Platform View -> Renders to native Android Surface, Impeller renders to native Android Surface, SurfaceFlinger composites the two together | • `<meta-data>` in `AndroidManifest.xml`<br>• `--enable-hcpp` local flag<br> •[`AndroidViewController` builds either a TLHC or an HC Platform View][AC] |
+| **Texture layer** | • Boa performance do Flutter<br>• Todas as transformações de widgets funcionam | • Instável durante rolagem rápida<br>• SurfaceViews perdem acessibilidade e a lupa de texto quebra<br>• Platform View -> Renderiza em textura -> Envia para o Impeller -> O Impeller compõe o conteúdo Flutter e o conteúdo da Platform View | Comportamento padrão ou `AndroidView` padrão |
+| **Hybrid composition** | • Fidelidade nativa total<br>• Suporte correto a acessibilidade e SurfaceView | • Causa a fusão das threads de raster e de plataforma, o que degrada o FPS do Flutter<br>• Platform View -> Renderiza na hierarquia de views Android normalmente, o conteúdo Flutter é renderizado em `FlutterImageView`s baseadas em `ImageReader` (uma camada de fundo, mais uma camada de sobreposição para conteúdo desenhado acima de uma platform view), e a hierarquia de views Android as compõe juntas |• `PlatformViewLink` com `AndroidViewSurface`<br>• [`AndroidViewController` constrói uma Platform View TLHC ou HC][AC] |
+| **HCPP** (Experimental) | • Fidelidade e performance totais<br>• Resolve o overhead de sincronização original | • Requer Android API 34+, suporte a Vulkan e uso do motor de renderização Impeller<br>• Platform View -> Renderiza em uma Surface nativa do Android, o Impeller renderiza em uma Surface nativa do Android, e o SurfaceFlinger compõe as duas juntas | • `<meta-data>` no `AndroidManifest.xml`<br>• Flag local `--enable-hcpp`<br> •[`AndroidViewController` constrói uma Platform View TLHC ou HC][AC] |
 
 {:.table .table-striped}
 
@@ -47,69 +48,69 @@ The following matrix summarizes the different implementations and their trade-of
 
 ## Hybrid composition {: #hybrid-composition }
 
-Platform views are rendered as they normally are,
-directly in the Android view hierarchy.
-Flutter content is rendered into `ImageReader`s and painted by
-`FlutterImageView`s that sit in the same window as the platform views,
-so the Android view hierarchy composites them together.
+Platform views são renderizadas como normalmente são,
+diretamente na hierarquia de views Android.
+O conteúdo Flutter é renderizado em `ImageReader`s e pintado por
+`FlutterImageView`s que ficam na mesma janela que as platform views,
+de modo que a hierarquia de views Android os compõe juntos.
 
-Flutter uses two kinds of these layers.
-The main Flutter render surface is swapped for a background
-`FlutterImageView` once a platform view is added.
-Flutter content that draws on top of a platform view
-goes into an additional overlay `FlutterImageView`,
-allocated from a pool and recycled between frames.
+O Flutter usa dois tipos dessas camadas.
+A superfície de renderização principal do Flutter é trocada por uma
+`FlutterImageView` de fundo assim que uma platform view é adicionada.
+O conteúdo Flutter que é desenhado sobre uma platform view
+vai para uma `FlutterImageView` de sobreposição adicional,
+alocada a partir de um pool e reciclada entre frames.
 
 ## Hybrid composition++ (HCPP) {: #hcpp }
 
 :::version-note
-This feature is experimental and is available starting from Flutter 3.44.
+Este recurso é experimental e está disponível a partir do Flutter 3.44.
 :::
 
-HCPP is the latest hybrid composition strategy,
-designed to solve compositing performance and synchronization issues
-seen in the original Hybrid Composition mode.
-It is currently available as an opt-in feature.
+HCPP é a estratégia de hybrid composition mais recente,
+projetada para resolver problemas de performance de composição e de sincronização
+vistos no modo Hybrid Composition original.
+Atualmente, ele está disponível como um recurso opcional (opt-in).
 
-### Requirements
+### Requisitos {: #requirements }
 
-* **Android API 34 or later**: Required for native transaction
-  synchronization capabilities.
-* **Impeller with the Vulkan backend**: The device must be capable of
-  rendering with Vulkan. Impeller also has an OpenGLES backend, and
-  falls back to it on devices without usable Vulkan support.
-  HCPP is not available in that configuration.
+* **Android API 34 ou superior**: Necessário para os recursos nativos de
+  sincronização de transações.
+* **Impeller com o backend Vulkan**: O dispositivo deve ser capaz de
+  renderizar com Vulkan. O Impeller também tem um backend OpenGLES e
+  recorre a ele em dispositivos sem suporte utilizável a Vulkan.
+  O HCPP não está disponível nessa configuração.
 
-If these requirements are not met on the end-user device,
-Flutter will automatically fall back to the existing platform view strategy
-configured for the app.
+Se esses requisitos não forem atendidos no dispositivo do usuário final,
+o Flutter recorrerá automaticamente à estratégia de platform view existente
+configurada para o app.
 
-### Opt in
+### Habilitando {: #opt-in }
 
-Because HCPP acts as a global upgrade for how platform views are backed,
-it's enabled through configuration rather than
-standard Dart initialization methods (`initAndroidView`, and so on).
+Como o HCPP atua como uma atualização global na forma como as platform views são suportadas,
+ele é habilitado por meio de configuração, e não pelos
+métodos padrão de inicialização do Dart (`initAndroidView` e assim por diante).
 
-You can enable HCPP using one of the following methods:
+Você pode habilitar o HCPP usando um dos seguintes métodos:
 
-1.  **Command line flag (run/test)**:
-    Pass the `--enable-hcpp` flag to your
-    `flutter run` or `flutter test` command:
+1.  **Flag de linha de comando (run/test)**:
+    Passe a flag `--enable-hcpp` para seu
+    comando `flutter run` ou `flutter test`:
 
     ```console
     $ flutter run --enable-hcpp
     ```
 
     :::note
-    This flag is intended for local execution and testing.
-    **It can't be passed to the `flutter build` commands.**
-    For release builds, use the manifest configuration
-    as shown in the next step.
+    Esta flag é destinada à execução e aos testes locais.
+    **Ela não pode ser passada para os comandos `flutter build`.**
+    Para builds de release, use a configuração no manifest
+    conforme mostrado no próximo passo.
     :::
 
 2.  **AndroidManifest.xml**:
-    Include a `<meta-data>` tag inside the
-    `<application>` block of your `AndroidManifest.xml`:
+    Inclua uma tag `<meta-data>` dentro do
+    bloco `<application>` do seu `AndroidManifest.xml`:
 
     ```xml
     <meta-data
@@ -117,46 +118,46 @@ You can enable HCPP using one of the following methods:
         android:value="true" />
     ```
 
-### Limitations and known issues
+### Limitações e problemas conhecidos {: #limitations-and-known-issues }
 
-* **Complex overlay stacking**:
-  Transparent platform views won't display correctly
-  in layout stacks structured as:
+* **Empilhamento complexo de sobreposições**:
+  Platform views transparentes não serão exibidas corretamente
+  em pilhas de layout estruturadas como:
   **Flutter canvas -> Platform View -> Overlay -> Transparent Platform View**,
-  when all four of these layers intersect.
+  quando todas essas quatro camadas se interceptam.
 
 ## Texture layer {: #texture-layer }
 
-Platform Views are rendered into a texture.
-Flutter draws the platform views (using the texture).
-Flutter content is rendered directly into a Surface.
+Platform Views são renderizadas em uma textura.
+Flutter desenha as platform views (usando a textura).
+O conteúdo Flutter é renderizado diretamente em uma Surface.
 
-This approach provides:
+Esta abordagem oferece:
 
-* good performance for Android Views
-* good performance for Flutter rendering
-* all transformations work correctly
+* boa performance para Android Views
+* boa performance para renderização Flutter
+* todas as transformações funcionam corretamente
 
-However, this approach might cause:
+No entanto, esta abordagem pode causar:
 
-* jankiness on quick scrolling (such as a web view)
-* broken accessibility for `SurfaceView`s
-* broken text magnification unless Flutter is rendered
-  into a `TextureView`
+* instabilidade em rolagem rápida (como em uma web view)
+* acessibilidade quebrada para `SurfaceView`s
+* lupa de texto quebrada, a menos que o Flutter seja renderizado
+  em uma `TextureView`
 
-## On the Dart side
+## Do lado do Dart
 
-To create a platform view on Android, use the following steps.
-First, on the Dart side, create a `Widget` and add one of the
-following build implementations depending on your chosen strategy.
+Para criar uma platform view no Android, use os passos a seguir.
+Primeiro, do lado do Dart, crie um `Widget` e adicione uma das
+seguintes implementações de build, dependendo da estratégia escolhida.
 
 ### Hybrid composition
 
-In your Dart file,
-for example `native_view_example.dart`,
-use the following instructions:
+Em seu arquivo Dart,
+por exemplo `native_view_example.dart`,
+use as seguintes instruções:
 
-1. Add the following imports:
+1. Adicione as seguintes importações:
 
    <?code-excerpt "lib/native_view_example_1.dart (import)"?>
    ```dart
@@ -167,7 +168,7 @@ use the following instructions:
    import 'package:material_ui/material_ui.dart';
    ```
 
-2. Implement a `build` method:
+2. Implemente um método `build`:
 
    <?code-excerpt "lib/native_view_example_1.dart (hybrid-composition)"?>
    ```dart
@@ -176,7 +177,7 @@ use the following instructions:
      const String viewType = '<platform-view-type>';
      // Pass parameters to the platform side.
      const Map<String, dynamic> creationParams = <String, dynamic>{};
-   
+
      return PlatformViewLink(
        viewType: viewType,
        surfaceFactory: (context, controller) {
@@ -204,23 +205,23 @@ use the following instructions:
    }
    ```
 
-For more information, visit the following API docs:
+Para mais informações, visite a documentação da API a seguir:
 
-* [`PlatformViewLink`][]
-* [`AndroidViewSurface`][]
-* [`PlatformViewsService`][]
+* [`PlatformViewLink`][PlatformViewLink]
+* [`AndroidViewSurface`][AndroidViewSurface]
+* [`PlatformViewsService`][PlatformViewsService]
 
-[`AndroidViewSurface`]: {{site.api}}/flutter/widgets/AndroidViewSurface-class.html
-[`PlatformViewLink`]: {{site.api}}/flutter/widgets/PlatformViewLink-class.html
-[`PlatformViewsService`]: {{site.api}}/flutter/services/PlatformViewsService-class.html
+[AndroidViewSurface]: {{site.api}}/flutter/widgets/AndroidViewSurface-class.html
+[PlatformViewLink]: {{site.api}}/flutter/widgets/PlatformViewLink-class.html
+[PlatformViewsService]: {{site.api}}/flutter/services/PlatformViewsService-class.html
 
 ### TextureLayerHybridComposition
 
-In your Dart file,
-for example `native_view_example.dart`,
-use the following instructions:
+Em seu arquivo Dart,
+por exemplo `native_view_example.dart`,
+use as seguintes instruções:
 
-1. Add the following imports:
+1. Adicione as seguintes importações:
 
    <?code-excerpt "lib/native_view_example_2.dart (import)"?>
    ```dart
@@ -228,7 +229,7 @@ use the following instructions:
    import 'package:material_ui/material_ui.dart';
    ```
 
-2. Implement a `build` method:
+2. Implemente um método `build`:
 
    <?code-excerpt "lib/native_view_example_2.dart (virtual-display)"?>
    ```dart
@@ -237,7 +238,7 @@ use the following instructions:
      const String viewType = '<platform-view-type>';
      // Pass parameters to the platform side.
      final Map<String, dynamic> creationParams = <String, dynamic>{};
-   
+
      return AndroidView(
        viewType: viewType,
        layoutDirection: TextDirection.ltr,
@@ -247,24 +248,24 @@ use the following instructions:
    }
    ```
 
-For more information, visit the [`AndroidView`][] API page.
+Para mais informações, visite a página da API de [`AndroidView`][AndroidView].
 
-[`AndroidView`]: {{site.api}}/flutter/widgets/AndroidView-class.html
+[AndroidView]: {{site.api}}/flutter/widgets/AndroidView-class.html
 
-## On the platform side
+## Do lado da plataforma
 
-On the platform side, use the standard
-`io.flutter.plugin.platform` package
-in either Kotlin or Java:
+Do lado da plataforma, use o pacote padrão
+`io.flutter.plugin.platform`
+em Kotlin ou Java:
 
 <Tabs key="android-language">
 <Tab name="Kotlin">
 
-In your native code, implement the following:
+Em seu código nativo, implemente o seguinte:
 
-Extend `io.flutter.plugin.platform.PlatformView`
-to provide a reference to the `android.view.View`
-(for example, `NativeView.kt`):
+Estenda `io.flutter.plugin.platform.PlatformView`
+para fornecer uma referência à `android.view.View`
+(por exemplo, `NativeView.kt`):
 
 ```kotlin
 package dev.flutter.example
@@ -293,9 +294,9 @@ internal class NativeView(context: Context, id: Int, creationParams: Map<String?
 }
 ```
 
-Create a factory class that creates an instance of the
-`NativeView` created earlier
-(for example, `NativeViewFactory.kt`):
+Crie uma classe factory que cria uma instância da
+`NativeView` criada anteriormente
+(por exemplo, `NativeViewFactory.kt`):
 
 ```kotlin
 package dev.flutter.example
@@ -313,12 +314,12 @@ class NativeViewFactory : PlatformViewFactory(StandardMessageCodec.INSTANCE) {
 }
 ```
 
-Finally, register the platform view.
-You can do this in an app or a plugin.
+Finalmente, registre a platform view.
+Você pode fazer isso em um app ou em um plugin.
 
-For app registration,
-modify the app's main activity
-(for example, `MainActivity.kt`):
+Para registro de app,
+modifique a activity principal do app
+(por exemplo, `MainActivity.kt`):
 
 ```kotlin
 package dev.flutter.example
@@ -338,9 +339,9 @@ class MainActivity : FlutterActivity() {
 }
 ```
 
-For plugin registration,
-modify the plugin's main class
-(for example, `PlatformViewPlugin.kt`):
+Para registro de plugin,
+modifique a classe principal do plugin
+(por exemplo, `PlatformViewPlugin.kt`):
 
 ```kotlin
 package dev.flutter.plugin.example
@@ -362,11 +363,11 @@ class PlatformViewPlugin : FlutterPlugin {
 </Tab>
 <Tab name="Java">
 
-In your native code, implement the following:
+Em seu código nativo, implemente o seguinte:
 
-Extend `io.flutter.plugin.platform.PlatformView`
-to provide a reference to the `android.view.View`
-(for example, `NativeView.java`):
+Estenda `io.flutter.plugin.platform.PlatformView`
+para fornecer uma referência à `android.view.View`
+(por exemplo, `NativeView.java`):
 
 ```java
 package dev.flutter.example;
@@ -401,9 +402,9 @@ class NativeView implements PlatformView {
 }
 ```
 
-Create a factory class that creates an
-instance of the `NativeView` created earlier
-(for example, `NativeViewFactory.java`):
+Crie uma classe factory que cria uma
+instância da `NativeView` criada anteriormente
+(por exemplo, `NativeViewFactory.java`):
 
 ```java
 package dev.flutter.example;
@@ -431,11 +432,11 @@ class NativeViewFactory extends PlatformViewFactory {
 }
 ```
 
-Finally, register the platform view.
-You can do this in an app or a plugin.
+Finalmente, registre a platform view.
+Você pode fazer isso em um app ou em um plugin.
 
-For app registration, modify the app's main activity
-(for example, `MainActivity.java`):
+Para registro de app, modifique a activity principal do app
+(por exemplo, `MainActivity.java`):
 
 ```java
 package dev.flutter.example;
@@ -455,9 +456,9 @@ public class MainActivity extends FlutterActivity {
 }
 ```
 
-For plugin registration,
-modify the plugin's main file
-(for example, `PlatformViewPlugin.java`):
+Para registro de plugin,
+modifique o arquivo principal do plugin
+(por exemplo, `PlatformViewPlugin.java`):
 
 ```java
 package dev.flutter.plugin.example;
@@ -481,84 +482,85 @@ public class PlatformViewPlugin implements FlutterPlugin {
 </Tab>
 </Tabs>
 
-For more information, visit the API docs for:
+Para mais informações, visite a documentação da API para:
 
-* [`FlutterPlugin`][]
-* [`PlatformViewRegistry`][]
-* [`PlatformViewFactory`][]
-* [`PlatformView`][]
+* [`FlutterPlugin`][FlutterPlugin]
+* [`PlatformViewRegistry`][PlatformViewRegistry]
+* [`PlatformViewFactory`][PlatformViewFactory]
+* [`PlatformView`][PlatformView]
 
-[`FlutterPlugin`]: {{site.api}}/javadoc/io/flutter/embedding/engine/plugins/FlutterPlugin.html
-[`PlatformView`]: {{site.api}}/javadoc/io/flutter/plugin/platform/PlatformView.html
-[`PlatformViewFactory`]: {{site.api}}/javadoc/io/flutter/plugin/platform/PlatformViewFactory.html
-[`PlatformViewRegistry`]: {{site.api}}/javadoc/io/flutter/plugin/platform/PlatformViewRegistry.html
+[FlutterPlugin]: {{site.api}}/javadoc/io/flutter/embedding/engine/plugins/FlutterPlugin.html
+[PlatformView]: {{site.api}}/javadoc/io/flutter/plugin/platform/PlatformView.html
+[PlatformViewFactory]: {{site.api}}/javadoc/io/flutter/plugin/platform/PlatformViewFactory.html
+[PlatformViewRegistry]: {{site.api}}/javadoc/io/flutter/plugin/platform/PlatformViewRegistry.html
 
-### Manual view invalidation
+### Invalidação manual de view
 
-Certain Android Views don't invalidate themselves when their content changes.
-Some examples include `SurfaceView` and `SurfaceTexture`.
-When your Platform View includes these views,
-you must manually invalidate it after it has been drawn
-(or, more specifically, after the swap chain is flipped).
-Invalidate the view by calling `invalidate` on it or on one of its parents.
+Certas Android Views não se invalidam quando seu conteúdo muda.
+Alguns exemplos incluem `SurfaceView` e `SurfaceTexture`.
+Quando sua Platform View incluir essas views,
+você deve invalidá-la manualmente depois que ela for desenhada
+(ou, mais especificamente, depois que a swap chain for invertida).
+Invalide a view chamando `invalidate` nela ou em uma de suas views pai.
 
-[`AndroidViewSurface`]: {{site.api}}/flutter/widgets/AndroidViewSurface-class.html
+[AndroidViewSurface]: {{site.api}}/flutter/widgets/AndroidViewSurface-class.html
 
-### Issues
+### Issues {:#issues}
 
-Check out the [existing Platform View issues][] on GitHub.
+Confira as [issues existentes de Platform View][existing Platform View issues] no GitHub.
 
 [existing Platform View issues]: {{site.repo.flutter}}/issues?q=is%3Aopen+is%3Aissue+label%3A%22a%3A+platform-views
 
-## Performance
+## Performance {:#performance}
 
-Platform views in Flutter come with performance trade-offs.
+Platform views no Flutter vêm com trade-offs de performance.
 
-In a typical Flutter app,
-Flutter rasterizes frames on a dedicated raster thread,
-while platform code, such as plugins and Android views,
-runs on the platform thread, which is the Android main thread.
-This separation keeps Flutter rendering fast and fluid,
-as the platform thread is not blocked by rasterization work.
+Em um app Flutter típico,
+o Flutter rasteriza os frames em uma thread de raster dedicada,
+enquanto o código de plataforma, como plugins e views Android,
+é executado na thread de plataforma, que é a thread principal do Android.
+Essa separação mantém a renderização do Flutter rápida e fluida,
+já que a thread de plataforma não é bloqueada pelo trabalho de rasterização.
 
-However, when a platform view is rendered on Android using
+No entanto, quando uma platform view é renderizada no Android usando
 hybrid composition,
-Flutter merges the raster thread into the platform thread
-to ensure correct synchronization between
-the native Android views and the Flutter canvas.
-Because of this thread merging,
-rasterizing complex Flutter widgets alongside a platform view
-competes with other work on the platform thread,
-such as OS messages and plugin interactions,
-potentially causing lower application FPS and frame drops.
+o Flutter mescla a thread de raster na thread de plataforma
+para garantir a sincronização correta entre
+as views Android nativas e o canvas do Flutter.
+Por causa dessa fusão de threads,
+rasterizar widgets Flutter complexos junto com uma platform view
+compete com outros trabalhos na thread de plataforma,
+como mensagens do sistema operacional e interações com plugins,
+podendo causar um FPS menor na aplicação e perda de frames.
 
-Also, prior to Android 10, hybrid composition copied each Flutter frame
-out of the graphic memory into main memory,
-and then copied it back to a GPU texture. As this copy happens per frame,
-the performance of the entire Flutter UI might be impacted.
-In Android 10 or above, the graphics memory is copied only once.
+Além disso, antes do Android 10, a hybrid composition copiava cada frame do Flutter
+da memória gráfica para a memória principal
+e depois o copiava de volta para uma textura da GPU. Como essa cópia acontece a cada frame,
+a performance de toda a UI do Flutter pode ser impactada.
+No Android 10 ou superior, a memória gráfica é copiada apenas uma vez.
 
-Hybrid Composition++ (HCPP) minimizes this overhead by using native
-transaction synchronization on supported devices (Android API 34+ with Vulkan),
-allowing superior performance without the heavy costs of original hybrid
-composition.
+A Hybrid Composition++ (HCPP) minimiza esse overhead usando a
+sincronização nativa de transações em dispositivos suportados (Android API 34+ com Vulkan),
+permitindo uma performance superior sem os altos custos da hybrid
+composition original.
 
-Virtual display, on the other hand, makes each pixel of the native view flow
-through additional intermediate graphic buffers,
-which cost graphic memory and drawing performance.
-This can cause jank during high-frequency updates like fast scrolling.
+O virtual display, por outro lado, faz cada pixel da view nativa passar
+por buffers gráficos intermediários adicionais,
+o que custa memória gráfica e performance de desenho.
+Isso pode causar instabilidade (jank) durante atualizações de alta frequência, como rolagem rápida.
 
-For complex cases, there are some techniques that
-can be used to mitigate these issues.
+Para casos complexos, existem algumas técnicas que
+podem ser usadas para mitigar esses problemas.
 
-For example, you can use a placeholder texture
-while an animation is happening in Dart.
-In other words, if an animation is slow while a
-platform view is rendered,
-then consider taking a screenshot of the
-native view and rendering it as a texture.
+Por exemplo, você pode usar uma textura placeholder
+enquanto uma animação está acontecendo no Dart.
+Em outras palavras, se uma animação estiver lenta enquanto uma
+platform view é renderizada,
+considere tirar uma captura de tela da
+view nativa e renderizá-la como uma textura.
 
-For more information, visit the following API pages:
+Para mais informações, visite as seguintes páginas da API:
+
 
 * [`TextureLayer`][]
 * [`TextureRegistry`][]

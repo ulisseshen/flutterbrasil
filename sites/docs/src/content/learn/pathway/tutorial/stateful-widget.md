@@ -1,59 +1,60 @@
 ---
+ia-translate: true
 title: Stateful widgets
-description: Learn about StatefulWidgets and rebuilding Flutter UI.
+description: Aprenda sobre StatefulWidgets e reconstrução de UI Flutter.
 layout: tutorial
 ---
 
-Learn when widgets need to be stateful and how to trigger UI updates with setState.
+Aprenda quando widgets precisam ser stateful e como disparar atualizações de UI com setState.
 
 <YouTubeEmbed id="Gzz8FwSlsUg" title="Stateful widgets in Flutter" fullWidth="true"></YouTubeEmbed>
 
 <SummaryCard>
-title: What you'll accomplish
+title: O que você vai realizar
 items:
-  - title: Learn when widgets need to be stateful
+  - title: Aprender quando widgets precisam ser stateful
     icon: change_circle
-  - title: Convert a StatelessWidget to a StatefulWidget
+  - title: Converter um StatelessWidget em um StatefulWidget
     icon: swap_horiz
-  - title: Trigger UI updates with setState
+  - title: Disparar atualizações de UI com setState
     icon: refresh
 </SummaryCard>
 
 ---
 
-### Introduction
+### Introdução
 
-So far, your app displays a grid and an input field,
-but the grid doesn't yet update to reflect the user's guesses.
-When this app is complete, each tile in the next unfilled row should
-update after each submitted user guess by:
+Até agora, seu app exibe uma grade e um campo de entrada,
+mas a grade ainda não atualiza para refletir os palpites do usuário.
+Quando este app estiver completo, cada tile na próxima linha não preenchida deve
+atualizar após cada palpite do usuário submetido:
 
-- Displaying the correct letter.
-- Changing color to reflect whether the letter is correct (green),
-  is in the word but at an incorrect position (yellow), or
-  doesn't appear in the word at all (grey).
+- Exibindo a letra correta.
+- Mudando de cor para refletir se a letra está correta (verde),
+  está na palavra mas em uma posição incorreta (amarelo), ou
+  não aparece na palavra de forma alguma (cinza).
 
-To handle this dynamic behavior, you need to convert `GamePage` from a
-`StatelessWidget` to a [`StatefulWidget`][].
+Para lidar com este comportamento dinâmico, você precisa converter `GamePage` de um
+`StatelessWidget` para um [`StatefulWidget`][].
 
 [`StatefulWidget`]: {{site.api}}/flutter/widgets/StatefulWidget-class.html
 
-### Why stateful widgets?
+### Por que stateful widgets?
 
-When a widget's appearance or data needs to change during its lifetime,
-you need a `StatefulWidget` and a companion `State` object.
-While the `StatefulWidget` itself is still immutable (its properties
-can't change after creation), the `State` object is long-lived,
-can hold mutable data, and can be rebuilt when that data changes,
-causing the UI to update.
+Quando a aparência ou os dados de um widget precisam mudar durante seu tempo de vida,
+você precisa de um `StatefulWidget` e um objeto `State` companheiro.
+Enquanto o `StatefulWidget` em si ainda é imutável (suas propriedades
+não podem mudar após a criação), o objeto `State` é duradouro,
+pode conter dados mutáveis e pode ser reconstruído quando esses dados mudam,
+fazendo a UI atualizar.
 
-For example, the following widget tree imagines a simple app
-that uses a stateful widget with a counter that
-increases when the button is pressed.
+Por exemplo, a seguinte árvore de widgets imagina um app simples
+que usa um stateful widget com um contador que
+aumenta quando o botão é pressionado.
 
 <img src='/assets/images/docs/tutorial/widget_tree_stateful.png' width="320px" alt="A diagram of a widget tree with a stateful widget and state object.">
 
-Here is the basic `StatefulWidget` structure (doesn't do anything yet):
+Aqui está a estrutura básica de `StatefulWidget` (ainda não faz nada):
 
 ```dart
 class ExampleWidget extends StatefulWidget {
@@ -71,28 +72,28 @@ class _ExampleWidgetState extends State<ExampleWidget> {
 }
 ```
 
-### Convert `GamePage` to a stateful widget
+### Converta `GamePage` para um stateful widget
 
-To convert the `GamePage` (or any other) widget from
-a stateless widget to a stateful widget, do the following steps:
+Para converter o widget `GamePage` (ou qualquer outro) de
+um stateless widget para um stateful widget, siga os seguintes passos:
 
-1.  Change `GamePage` to extend `StatefulWidget` instead of `StatelessWidget`.
-1.  Create a new class named `_GamePageState`, that extends `State<GamePage>`.
-    This new class will hold the mutable state and the `build` method.
-    Move the `build` method and all properties *instantiated on the widget*
-    from `GamePage` to the state object.
-1.  Implement the `createState()` method in `GamePage`, which
-    returns an instance of `_GamePageState`.
+1.  Altere `GamePage` para estender `StatefulWidget` em vez de `StatelessWidget`.
+1.  Crie uma nova classe chamada `_GamePageState`, que estende `State<GamePage>`.
+    Esta nova classe conterá o estado mutável e o método `build`.
+    Mova o método `build` e todas as propriedades *instanciadas no widget*
+    de `GamePage` para o objeto state.
+1.  Implemente o método `createState()` em `GamePage`, que
+    retorna uma instância de `_GamePageState`.
 
 :::tip Quick assists
 
-You don't have to manually do this work, as the Flutter plugins for
-VS Code and IntelliJ provide ["quick assists"][] that can
-do this conversion for you.
+Você não precisa fazer este trabalho manualmente, já que os plugins Flutter para
+VS Code e IntelliJ fornecem ["quick assists"][] que podem
+fazer esta conversão para você.
 
 :::
 
-Your modified code should look like this:
+Seu código modificado deve ficar assim:
 
 ```dart
 class GamePage extends StatefulWidget {
@@ -137,30 +138,30 @@ class _GamePageState extends State<GamePage> {
 
 ["quick assists"]: /tools/android-studio#assists-quick-fixes
 
-### Updating the UI with `setState`
+### Atualizando a UI com `setState`
 
-Whenever you mutate a `State` object,
-you must call [`setState`][] to signal the framework to
-update the user interface and call the `build` method again.
+Sempre que você mutar um objeto `State`,
+você deve chamar [`setState`][] para sinalizar ao framework para
+atualizar a interface do usuário e chamar o método `build` novamente.
 
-In this app, when a user makes a guess, the word they guessed is
-saved on the `Game` object, which is a property on the `GamePage` class,
-and therefore is state that might change and require the UI to update.
-When this state is mutated, the grid should be
-re-drawn to show the user's guess.
+Neste app, quando um usuário faz um palpite, a palavra que ele adivinhou é
+salva no objeto `Game`, que é uma propriedade na classe `GamePage`,
+e portanto é um estado que pode mudar e exigir que a UI atualize.
+Quando este estado é mutado, a grade deve ser
+redesenhada para mostrar o palpite do usuário.
 
-To implement this, update the callback function passed to `GuessInput`.
-The function needs to call `setState` and, within `setState`,
-it needs to execute the logic to determine whether the users guess was correct.
+Para implementar isso, atualize a função de callback passada para `GuessInput`.
+A função precisa chamar `setState` e, dentro de `setState`,
+ela precisa executar a lógica para determinar se o palpite do usuário estava correto.
 
 :::note
 
-The game logic is abstracted away into the `Game` object,
-and outside the scope of this tutorial.
+A lógica do jogo é abstraída no objeto `Game`,
+e está fora do escopo deste tutorial.
 
 :::
 
-Update your code:
+Atualize seu código:
 
 ```dart
 class GamePage extends StatefulWidget {
@@ -204,35 +205,35 @@ class _GamePageState extends State<GamePage> {
 }
 ```
 
-Now, when you type a legal guess into the `TextInput` and submit it,
-the application will reflect the user's guess.
-If you were to call `_game.guess(guess)` *without* a calling `setState`,
-the internal game data would change, but Flutter wouldn't know it
-needs to repaint the screen, and the user wouldn't see any updates.
+Agora, quando você digita um palpite válido no `TextInput` e o submete,
+a aplicação refletirá o palpite do usuário.
+Se você chamar `_game.guess(guess)` *sem* chamar `setState`,
+os dados internos do jogo mudariam, mas o Flutter não saberia que
+precisa repintar a tela, e o usuário não veria nenhuma atualização.
 
 [`setState`]: {{site.api}}/flutter/widgets/State/setState.html
 
-### Convert `GuessInput` to a stateful widget
+### Converta `GuessInput` para um stateful widget
 
-When `GamePage` rebuilds after calling `setState`,
-all of its child widgets are rebuilt as well.
-Because `GuessInput` was originally created as a `StatelessWidget`,
-its `TextEditingController` and `FocusNode` were stored directly in the widget class.
-Since a new widget instance is created on every rebuild, these controllers
-were recreated each time, causing the text input field to lose focus
-and leaving unused controllers without proper disposal.
+Quando `GamePage` é reconstruído após chamar `setState`,
+todos os seus widgets filhos também são reconstruídos.
+Como `GuessInput` foi criado originalmente como um `StatelessWidget`,
+seu `TextEditingController` e seu `FocusNode` eram armazenados diretamente na classe do widget.
+Como uma nova instância do widget é criada a cada reconstrução, esses controllers
+eram recriados toda vez, fazendo o campo de entrada de texto perder o foco
+e deixando controllers não utilizados sem o descarte adequado.
 
-To keep focus on the text field between guesses and
-manage controller lifecycles properly,
-convert `GuessInput` into a `StatefulWidget`:
+Para manter o foco no campo de texto entre os palpites e
+gerenciar corretamente o ciclo de vida dos controllers,
+converta `GuessInput` em um `StatefulWidget`:
 
-1. Change `GuessInput` to extend `StatefulWidget` instead of `StatelessWidget`.
-1. Create a companion `_GuessInputState` class extending `State<GuessInput>`.
-1. Move `_textEditingController`, `_focusNode`, `_onSubmit()`, and `build()`
-   into `_GuessInputState`.
-1. Implement `dispose()` to clean up `_textEditingController` and `_focusNode`.
+1. Altere `GuessInput` para estender `StatefulWidget` em vez de `StatelessWidget`.
+1. Crie uma classe companheira `_GuessInputState` que estende `State<GuessInput>`.
+1. Mova `_textEditingController`, `_focusNode`, `_onSubmit()` e `build()`
+   para `_GuessInputState`.
+1. Implemente `dispose()` para liberar `_textEditingController` e `_focusNode`.
 
-Your modified `GuessInput` widget should look like this:
+Seu widget `GuessInput` modificado deve ficar assim:
 
 <?code-excerpt "fwe/birdle/lib/step5_main.dart (GuessInput)"?>
 ```dart
@@ -296,70 +297,70 @@ class _GuessInputState extends State<GuessInput> {
 }
 ```
 
-By converting `GuessInput` to a `StatefulWidget`,
-`_GuessInputState` persists across parent rebuilds,
-keeping focus on the text field after each guess is submitted
-and properly disposing of resources when the widget is unmounted.
+Ao converter `GuessInput` para um `StatefulWidget`,
+`_GuessInputState` persiste entre as reconstruções do pai,
+mantendo o foco no campo de texto após cada palpite submetido
+e descartando adequadamente os recursos quando o widget é desmontado.
 
-### Review
+### Revisão
 
 <SummaryCard>
-title: What you accomplished
-subtitle: Here's a summary of what you built and learned in this lesson.
+title: O que você realizou
+subtitle: Aqui está um resumo do que você construiu e aprendeu nesta lição.
 completed: true
 items:
-  - title: Learned when widgets need to be stateful
+  - title: Aprendeu quando widgets precisam ser stateful
     icon: change_circle
     details: >-
-      When a widget's appearance or data needs to change during its lifetime,
-      you need a `StatefulWidget`. The widget itself stays immutable, but
-      its companion `State` object holds mutable data and triggers rebuilds.
-  - title: Converted GamePage and GuessInput to StatefulWidgets
+      Quando a aparência ou os dados de um widget precisam mudar durante seu tempo de vida,
+      você precisa de um `StatefulWidget`. O widget em si permanece imutável, mas
+      seu objeto `State` companheiro contém dados mutáveis e dispara reconstruções.
+  - title: Converteu GamePage e GuessInput em StatefulWidgets
     icon: swap_horiz
     details: >-
-      You refactored `GamePage` and `GuessInput` to be stateful by
-      creating companion `State` classes, moving mutable properties and
-      lifecycle management (like `dispose`) to them, and
-      implementing `createState()`.
-      Your IDE's support for quick assists can automate this conversion.
-  - title: Made your app respond to user input with setState
+      Você refatorou `GamePage` e `GuessInput` para serem stateful
+      criando classes `State` companheiras, movendo para elas as propriedades mutáveis e
+      o gerenciamento de ciclo de vida (como `dispose`), e
+      implementando `createState()`.
+      O suporte da sua IDE a quick assists pode automatizar essa conversão.
+  - title: Fez seu app responder à entrada do usuário com setState
     icon: refresh
     details: >-
-      Calling `setState` tells Flutter to rebuild the UI of a widget.
-      When a user submits a guess, you call `setState` to update the game state,
-      and the grid automatically reflects the new data while maintaining text field focus.
-      Your app is now truly interactive!
+      Chamar `setState` diz ao Flutter para reconstruir a UI de um widget.
+      Quando um usuário submete um palpite, você chama `setState` para atualizar o estado do jogo,
+      e a grade reflete automaticamente os novos dados enquanto mantém o foco no campo de texto.
+      Seu app agora é realmente interativo!
 </SummaryCard>
 
-### Test yourself
+### Teste seus conhecimentos
 
-<Quiz title="Stateful Widgets Quiz">
-- question: When should you use a StatefulWidget instead of a StatelessWidget?
+<Quiz title="Quiz sobre Stateful Widgets">
+- question: Quando você deve usar um StatefulWidget em vez de um StatelessWidget?
   options:
-    - text: When the widget needs to make HTTP requests.
+    - text: Quando o widget precisa fazer requisições HTTP.
       correct: false
-      explanation: HTTP requests can be made from either, but state changes require StatefulWidget.
-    - text: When the widget's appearance or data needs to change during its lifetime.
+      explanation: Requisições HTTP podem ser feitas a partir de qualquer um deles, mas mudanças de estado exigem StatefulWidget.
+    - text: Quando a aparência ou os dados do widget precisam mudar durante seu tempo de vida.
       correct: true
-      explanation: StatefulWidget is needed when the UI must update in response to data changes over time.
-    - text: When the widget has more than three child widgets.
+      explanation: StatefulWidget é necessário quando a UI precisa ser atualizada em resposta a mudanças de dados ao longo do tempo.
+    - text: Quando o widget tem mais de três widgets filhos.
       correct: false
-      explanation: The number of children doesn't determine whether a widget is stateful.
-    - text: When the widget is at the root of the widget tree.
+      explanation: O número de filhos não determina se um widget é stateful.
+    - text: Quando o widget está na raiz da árvore de widgets.
       correct: false
-      explanation: Root widgets can be stateless; statefulness depends on whether data changes during the widget's lifetime.
-- question: What happens if you change data in a State object without calling setState?
+      explanation: Widgets raiz podem ser stateless; ser stateful depende de os dados mudarem durante o tempo de vida do widget.
+- question: O que acontece se você alterar dados em um objeto State sem chamar setState?
   options:
-    - text: The app will crash with an error.
+    - text: O app vai travar com um erro.
       correct: false
-      explanation: The app won't crash, but the UI won't update.
-    - text: The data changes internally, but Flutter won't rebuild the UI to reflect the change.
+      explanation: O app não vai travar, mas a UI não será atualizada.
+    - text: Os dados mudam internamente, mas o Flutter não reconstrói a UI para refletir a mudança.
       correct: true
-      explanation: Without calling setState, Flutter doesn't know it needs to repaint, so the user won't see updates.
-    - text: Flutter automatically detects the change and rebuilds the UI.
+      explanation: Sem chamar setState, o Flutter não sabe que precisa repintar, então o usuário não verá atualizações.
+    - text: O Flutter detecta a mudança automaticamente e reconstrói a UI.
       correct: false
-      explanation: Flutter requires setState to know when to rebuild; it doesn't auto-detect changes.
-    - text: The widget is removed from the widget tree.
+      explanation: O Flutter precisa de setState para saber quando reconstruir; ele não detecta mudanças automaticamente.
+    - text: O widget é removido da árvore de widgets.
       correct: false
-      explanation: The widget remains; it just won't visually update without setState.
+      explanation: O widget permanece; ele apenas não será atualizado visualmente sem setState.
 </Quiz>

@@ -1,39 +1,40 @@
 ---
-title: Authoring Markdown
+title: Criando Markdown
 shortTitle: Markdown
 description: >-
-  Learn about the Markdown syntaxes the Dart and Flutter documentation sites
-  support and their guidelines for using them.
+  Aprenda sobre as sintaxes Markdown que os sites de documentação Dart e Flutter
+  suportam e suas diretrizes para usá-las.
 sitemap: false
 noindex: true
 showBreadcrumbs: true
+ia-translate: true
 ---
 
 :::warning
-This document is a work in progress.
+Este documento é um trabalho em progresso.
 :::
 
-Our sites support writing content in [Markdown][],
-with some additions from [GitHub Flavored Markdown][]
-as well as other custom syntaxes.
+Nossos sites suportam a criação de conteúdo em [Markdown][],
+com algumas adições do [GitHub Flavored Markdown][]
+bem como outras sintaxes personalizadas.
 
-This page outlines the Markdown syntax we support
-as well as our style guidelines for authoring Markdown.
+Esta página descreve a sintaxe Markdown que suportamos
+bem como nossas diretrizes de estilo para criar Markdown.
 
 [Markdown]: https://commonmark.org/
 [GitHub Flavored Markdown]: https://github.github.com/gfm/
 
-## General guidelines
+## Diretrizes gerais
 
-Prefer using Markdown syntax over custom HTML and components.
-Raw Markdown is easier to maintain, easier for tools to understand,
-and easier to migrate in the future if necessary.
+Prefira usar sintaxe Markdown ao invés de HTML e componentes personalizados.
+Markdown puro é mais fácil de manter, mais fácil para ferramentas entenderem,
+e mais fácil de migrar no futuro se necessário.
 
-## Code blocks
+## Blocos de código
 
-Don't use Markdown's indented code blocks,
-only use fenced code blocks using backticks
-and always specify a language. For example:
+Não use blocos de código indentados do Markdown,
+use apenas blocos de código cercados usando backticks
+e sempre especifique uma linguagem. Por exemplo:
 
 ````markdown
 ```dart
@@ -43,16 +44,16 @@ void main() {
 ```
 ````
 
-To learn more about customizing code blocks,
-check out the dedicated documentation on [Code blocks][].
+Para aprender mais sobre personalização de blocos de código,
+confira a documentação dedicada sobre [Blocos de código][].
 
-[Code blocks]: /contribute/docs/code-blocks
+[Blocos de código]: /contribute/docs/code-blocks
 
 
-## Mermaid diagrams
+## Diagramas Mermaid
 
-To render flowcharts, sequence diagrams, and other charts within a Markdown file,
-use a fenced code block with the `mermaid` language identifier:
+Para renderizar fluxogramas, diagramas de sequência e outros gráficos em um arquivo Markdown,
+use um bloco de código delimitado com o identificador de linguagem `mermaid`:
 
 ````markdown
 ```mermaid
@@ -64,18 +65,18 @@ flowchart LR
 ```
 ````
 
-### Style Mermaid diagrams
+### Estilizar diagramas Mermaid
 
-Mermaid diagrams are rendered to SVG on the server, once for each theme.
-Both variants ship in the page and CSS shows the one matching the site's
-current light or dark theme. Diagrams inherit the default
-`Google Sans Flex` typography.
+Os diagramas Mermaid são renderizados para SVG no servidor, uma vez para cada tema.
+Ambas as variantes são incluídas na página e o CSS mostra a que corresponde ao
+tema claro ou escuro atual do site. Os diagramas herdam a tipografia
+padrão `Google Sans Flex`.
 
-#### In-diagram styling (Recommended)
+#### Estilização no diagrama (Recomendado)
 
-When you need custom colors for specific nodes,
-define them directly in the diagram using Mermaid's built-in
-[`classDef` and `:::styleName` syntax][]:
+Quando você precisar de cores personalizadas para nós específicos,
+defina-as diretamente no diagrama usando a
+[sintaxe `classDef` e `:::styleName`][`classDef` and `:::styleName` syntax] nativa do Mermaid:
 
 ```mermaid
 flowchart LR
@@ -83,10 +84,10 @@ flowchart LR
     classDef highlightNode fill:#f96,stroke:#333,stroke-width:2px;
 ```
 
-#### SCSS styling
+#### Estilização SCSS
 
-To adjust the global diagram layout, border, or background across the site,
-edit [`_mermaid.scss`][]:
+Para ajustar o layout global, a borda ou o fundo dos diagramas em todo o site,
+edite [`_mermaid.scss`][]:
 
 ```scss
 .mermaid-container {

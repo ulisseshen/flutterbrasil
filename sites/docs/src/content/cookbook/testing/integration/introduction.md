@@ -1,65 +1,66 @@
 ---
-title: Integration testing concepts
-description: Learn about integration testing in Flutter.
-shortTitle: Introduction
+ia-translate: true
+title: Conceitos de testes de integração
+description: Aprenda sobre testes de integração no Flutter.
+shortTitle: Introdução
 ---
 
 <?code-excerpt path-base="cookbook/testing/integration/introduction/"?>
 
-Unit tests and widget tests validate individual classes,
-functions, or widgets.
-They don't validate how individual pieces work
-together in whole or capture the performance
-of an app running on a real device.
-To perform these tasks, use *integration tests*.
+Testes unitários e testes de widget validam classes individuais,
+funções ou widgets.
+Eles não validam como peças individuais funcionam
+juntas em um todo ou capturam a performance
+de um app rodando em um dispositivo real.
+Para executar essas tarefas, use *testes de integração*.
 
-Integration tests verify the behavior of the complete app.
-This test can also be called end-to-end testing or GUI testing.
+Testes de integração verificam o comportamento do app completo.
+Este teste também pode ser chamado de teste end-to-end ou teste de GUI.
 
-## Testing frameworks
+## Frameworks de teste
 
-Two packages are commonly used to perform Flutter integration tests.
-These are:
+Dois pacotes são comumente usados para realizar testes de integração no Flutter.
+São eles:
 
-- [integration_test][integration_test] package: The official
-integration test package that is part of the Flutter SDK. Tests written
-with `integration_test` can perform the following tasks: run on the
-target device, run from the host machine with `flutter test integration_test`,
-and use `flutter_test` APIs. This makes integration tests similar to writing 
-[widget tests][]. However, `integration_test` can't interact with
-native platform UI.
+- Pacote [integration_test][integration_test]: O pacote oficial
+de testes de integração que faz parte do Flutter SDK. Testes escritos
+com `integration_test` podem executar as seguintes tarefas: executar no
+target device, executar a partir da host machine com `flutter test integration_test`,
+e usar APIs do `flutter_test`. Isso torna os testes de integração similares a escrever
+[widget tests][widget tests]. No entanto, `integration_test` não consegue interagir com
+a UI nativa da plataforma.
 
-- [patrol][] package: A popular third-party integration test package that
-has many of the features supported by the `integration_test` package,
-but can additionally interact with native platform UI such as
-permission dialogs, notifications, or the contents of platform views.
+- Pacote [patrol][patrol]: Um pacote popular de terceiros para testes de integração que
+tem muitas das funcionalidades suportadas pelo pacote `integration_test`,
+mas que adicionalmente consegue interagir com a UI nativa da plataforma, como
+diálogos de permissão, notificações ou o conteúdo de platform views.
 
-## Terminology
+## Terminologia
 
 **host machine**
-: The system on which you develop your app, like a desktop computer.
+: O sistema no qual você desenvolve seu app, como um computador desktop.
 
 **target device**
-: The mobile device, browser, or desktop application that
-  runs your Flutter app.
+: O dispositivo móvel, navegador ou aplicação desktop que
+  executa seu app Flutter.
 
-  If you run your app in a web browser or as a desktop application,
-  the host machine and the target device are the same.
+  Se você executa seu app em um navegador web ou como uma aplicação desktop,
+  a host machine e o target device são os mesmos.
 
-## Getting started
+## Primeiros passos
 
-To use `integration_test`, add it as a dependency for your
-Flutter app test file.
+Para usar o `integration_test`, adicione-o como uma dependência para seu
+arquivo de teste do app Flutter.
 
-To migrate existing projects that use `flutter_driver`,
-consult the [Migrating from flutter_driver][] guide.
+Para migrar projetos existentes que usam `flutter_driver`,
+consulte o guia [Migrating from flutter_driver][Migrating from flutter_driver].
 
-To use `patrol`, follow the [Patrol setup guide][].
+Para usar o `patrol`, siga o [guia de configuração do Patrol][Patrol setup guide].
 
-## Use cases for integration testing
+## Casos de uso para testes de integração
 
-The other guides in this section explain how to use integration tests to validate
-[functionality][] and [performance][].
+Os outros guias nesta seção explicam como usar testes de integração para validar
+[funcionalidade][functionality] e [performance][performance].
 
 [functionality]: /testing/integration-tests/
 [integration_test]: {{site.repo.flutter}}/tree/main/packages/integration_test

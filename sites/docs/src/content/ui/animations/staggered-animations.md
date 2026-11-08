@@ -1,103 +1,104 @@
 ---
-title: Staggered animations
-description: How to write a staggered animation in Flutter.
-shortTitle: Staggered
+ia-translate: true
+title: Animações escalonadas
+description: Como escrever uma animação escalonada no Flutter.
+shortTitle: Escalonadas
 ---
 
-:::secondary What you'll learn
-* A staggered animation consists of sequential or overlapping
-    animations.
-* To create a staggered animation, use multiple `Animation` objects.
-* One `AnimationController` controls all of the `Animation` objects.
-* Each `Animation` object specifies the animation during an `Interval`.
-* For each property being animated, create a `Tween`.
+:::secondary O que você aprenderá
+* Uma animação escalonada consiste em animações
+    sequenciais ou sobrepostas.
+* Para criar uma animação escalonada, use vários objetos `Animation`.
+* Um `AnimationController` controla todos os objetos `Animation`.
+* Cada objeto `Animation` especifica a animação durante um `Interval`.
+* Para cada propriedade sendo animada, crie um `Tween`.
 :::
 
-:::tip Terminology
-If the concept of tweens or tweening is new to you, refer to the
+:::tip Terminologia
+Se o conceito de tweens ou tweening é novo para você, consulte o
 [Animations in Flutter tutorial][].
 :::
 
-Staggered animations are a straightforward concept: visual changes
-happen as a series of operations, rather than all at once.
-The animation might be purely sequential, with one change occurring after
-the next, or it might partially or completely overlap. It might also
-have gaps, where no changes occur.
+Animações escalonadas são um conceito direto: mudanças visuais
+acontecem como uma série de operações, em vez de todas de uma vez.
+A animação pode ser puramente sequencial, com uma mudança ocorrendo após
+a próxima, ou pode se sobrepor parcial ou completamente. Também pode
+ter lacunas, onde nenhuma mudança ocorre.
 
-This guide shows how to build a staggered animation in Flutter
-that applies a series of sequential and overlapping animations
-to a single widget. Tapping the screen begins an animation
-that changes opacity, size, shape, color, and padding.
+Este guia mostra como construir uma animação escalonada no Flutter
+que aplica uma série de animações sequenciais e sobrepostas
+a um único widget. Tocar na tela inicia uma animação
+que muda opacidade, tamanho, forma, cor e padding.
 
-The following video demonstrates this staggered animation:
+O vídeo a seguir demonstra esta animação escalonada:
 
 <YouTubeEmbed id="0fFvnZemmh8" title="Staggered animation example"></YouTubeEmbed>
 
-In the video, you see the following animation of a single widget,
-which begins as a bordered blue square with slightly rounded corners.
-The square runs through changes in the following order:
+No vídeo, você vê a seguinte animação de um único widget,
+que começa como um quadrado azul com borda e cantos ligeiramente arredondados.
+O quadrado passa por mudanças na seguinte ordem:
 
-1. Fades in
-1. Widens
-1. Becomes taller while moving upwards
-1. Transforms into a bordered circle
-1. Changes color to orange
+1. Fade in
+1. Alarga
+1. Torna-se mais alto enquanto se move para cima
+1. Transforma-se em um círculo com borda
+1. Muda de cor para laranja
 
-After running forward, the animation runs in reverse.
+Após executar para frente, a animação executa em reverso.
 
-:::secondary New to Flutter?
-This page assumes you know how to create a layout using Flutter's
-widgets. To learn more, visit [Building Layouts in Flutter][].
+:::secondary Novo no Flutter?
+Esta página assume que você sabe como criar um layout usando os
+widgets do Flutter. Para saber mais, visite [Building Layouts in Flutter][].
 :::
 
-## Basic structure of a staggered animation
+## Estrutura básica de uma animação escalonada
 
-:::secondary What's the point?
-* All of the animations are driven by the same
+:::secondary Qual é o ponto?
+* Todas as animações são conduzidas pelo mesmo
   [`AnimationController`][].
-* Regardless of how long the animation lasts in real time,
-  the controller's values must be between 0.0 and 1.0, inclusive.
-* Each animation has an [`Interval`][]
-  between 0.0 and 1.0, inclusive.
-* For each property that animates in an interval, create a
-  [`Tween`][]. The `Tween` specifies the start and end
-  values for that property.
-* The `Tween` produces an [`Animation`][]
-  object that is managed by the controller.
+* Independentemente de quanto tempo a animação dura em tempo real,
+  os valores do controller devem estar entre 0.0 e 1.0, inclusive.
+* Cada animação tem um [`Interval`][]
+  entre 0.0 e 1.0, inclusive.
+* Para cada propriedade que anima em um intervalo, crie um
+  [`Tween`][]. O `Tween` especifica os valores inicial e final
+  para essa propriedade.
+* O `Tween` produz um objeto [`Animation`][]
+  que é gerenciado pelo controller.
 :::
 
-The following diagram shows the `Interval` objects used in the
-staggered animation example.
-You might notice the following characteristics:
+O diagrama a seguir mostra os objetos `Interval` usados no
+exemplo de animação escalonada.
+Você pode notar as seguintes características:
 
-* The opacity changes during the first 10% of the timeline.
-* A tiny gap occurs between the change in opacity
-  and the change in width.
-* Nothing animates during the last 25% of the timeline.
-* Increasing the padding makes the widget appear to rise upward.
-* Increasing the border radius to `75.0`
-  transforms the `150.0` x `150.0` square with rounded corners into a circle.
-* The padding and height changes occur during
-  the exact same interval, but they don't have to.
+* A opacidade muda durante os primeiros 10% da linha do tempo.
+* Uma pequena lacuna ocorre entre a mudança de opacidade
+  e a mudança de largura.
+* Nada é animado durante os últimos 25% da linha do tempo.
+* Aumentar o padding faz o widget parecer subir.
+* Aumentar o raio da borda para `75.0`
+  transforma o quadrado de `150.0` x `150.0` com cantos arredondados em um círculo.
+* As mudanças de padding e altura ocorrem durante
+  exatamente o mesmo intervalo, mas não precisam.
 
 ![Diagram showing the interval specified for each motion](/assets/images/docs/ui/animations/StaggeredAnimationIntervals.png)
 
-To set up the animation:
+Para configurar a animação:
 
-* Create an `AnimationController` that manages all of the
-  `Animation` objects.
-* Create a `Tween` for each property being animated.
-  * The `Tween` defines a range of values.
-  * The `animate()` method of `Tween` takes a parent animation
-    and produces an `Animation` for that property.
-* Specify the interval with the `curve` property of `CurvedAnimation`.
+* Crie um `AnimationController` que gerencia todos os
+  objetos `Animation`.
+* Crie um `Tween` para cada propriedade sendo animada.
+  * O `Tween` define uma faixa de valores.
+  * O método `animate()` do `Tween` recebe uma animação pai
+    e produz uma `Animation` para essa propriedade.
+* Especifique o intervalo com a propriedade `curve` de `CurvedAnimation`.
 
-When the controlling animation's value changes,
-the new animation's value changes, triggering the UI to update.
+Quando o valor da animação controladora muda,
+o valor da nova animação muda, acionando a atualização da UI.
 
-The following code creates a tween for the `width` property.
-It builds a [`CurvedAnimation`][], specifying an eased curve.
-For other available predefined animation curves, consult [`Curves`][].
+O código a seguir cria um tween para a propriedade `width`.
+Ele constrói um [`CurvedAnimation`][], especificando uma curva eased.
+Para outras curvas de animação pré-definidas disponíveis, consulte [`Curves`][].
 
 <?code-excerpt "animation/staggered_animation/lib/main.dart (width)"?>
 ```dart
@@ -109,10 +110,10 @@ width = Tween<double>(begin: 50, end: 150).animate(
 ),
 ```
 
-The `begin` and `end` values don't have to be doubles.
-The following code builds the tween for the `borderRadius` property
-(which controls the roundness of the square's corners),
-using `BorderRadius.circular()`.
+Os valores `begin` e `end` não precisam ser doubles.
+O código a seguir constrói o tween para a propriedade `borderRadius`
+(que controla o arredondamento dos cantos do quadrado),
+usando `BorderRadius.circular()`.
 
 <?code-excerpt "animation/staggered_animation/lib/main.dart (border-radius)"?>
 ```dart
@@ -128,40 +129,41 @@ borderRadius =
     ),
 ```
 
-### Complete staggered animation
+### Animação escalonada completa
 
-Like all interactive widgets, the complete animation consists
-of a widget pair: a stateless and a stateful widget.
+Como todos os widgets interativos, a animação completa consiste
+em um par de widgets: um stateless e um stateful.
 
-The stateless widget specifies the `Tween` objects,
-defines the `Animation` objects, and provides a `build()` function
-responsible for building the animating portion of the widget tree.
+O widget stateless especifica os objetos `Tween`,
+define os objetos `Animation` e fornece uma função `build()`
+responsável por construir a parte animada da árvore de widgets.
 
-The stateful widget creates the controller, plays the animation,
-and builds the non-animating portion of the widget tree.
-The animation begins when a tap is detected anywhere on the screen.
+O widget stateful cria o controller, executa a animação
+e constrói a parte não animada da árvore de widgets.
+A animação começa quando um toque é detectado em qualquer lugar da tela.
 
 **App source:** [staggered animation example][]
 
-### Stateless widget: StaggerAnimation
+### Widget stateless: StaggerAnimation
 
-In the stateless widget, `StaggerAnimation`,
-the `build()` function instantiates an
-[`AnimatedBuilder`][]&mdash;a general-purpose widget for building animations.
-The `AnimatedBuilder` builds a widget and configures it
-using the current values of the `Animation` objects.
-The example creates a function named `_buildAnimation()` (which performs
-the actual UI updates), and assigns it to its `builder` property.
-`AnimatedBuilder` listens to notifications from the animation controller,
-marking the widget tree dirty as values change.
-For each tick of the animation, the values are updated,
-resulting in a call to `_buildAnimation()`.
+No widget stateless, `StaggerAnimation`,
+a função `build()` instancia um
+[`AnimatedBuilder`][]&mdash;um widget de propósito geral para construir animações.
+O `AnimatedBuilder` constrói um widget e o configura
+usando os valores atuais dos objetos `Animation`.
+O exemplo cria uma função chamada `_buildAnimation()` (que executa
+as atualizações reais da UI), e a atribui à sua propriedade `builder`.
+`AnimatedBuilder` ouve notificações do animation controller,
+marcando a árvore de widgets como suja conforme os valores mudam.
+Para cada tick da animação, os valores são atualizados,
+resultando em uma chamada para `_buildAnimation()`.
 
 :::tip
-This example uses an `Opacity` widget inside `AnimatedBuilder` to keep all
-animated properties in a single builder. When animating opacity on its own,
-prefer [`FadeTransition`][] to avoid rebuilding the child widget on each frame.
+Este exemplo usa um widget `Opacity` dentro do `AnimatedBuilder` para manter todas
+as propriedades animadas em um único builder. Ao animar apenas a opacidade,
+prefira [`FadeTransition`][] para evitar reconstruir o widget filho a cada frame.
 :::
+
 
 <?code-excerpt "animation/staggered_animation/lib/main.dart (stagger-animation)"?>
 ```dart highlightLines=6,12,63-69,74,94-95
@@ -264,14 +266,14 @@ class StaggerAnimation extends StatelessWidget {
 }
 ```
 
-### Stateful widget: StaggerDemo
+### Widget stateful: StaggerDemo
 
-The stateful widget, `StaggerDemo`, creates the `AnimationController`,
-specifying a 2000 ms duration. It plays the animation,
-and builds the non-animating portion of the widget tree.
-The animation begins when a tap is detected on the screen.
-The animation runs forward, then backward.
-Taps during playback are ignored so the sequence can finish.
+O widget stateful, `StaggerDemo`, cria o `AnimationController`,
+especificando uma duração de 2000 ms. Ele executa a animação
+e constrói a parte não animada da árvore de widgets.
+A animação começa quando um toque é detectado na tela.
+A animação executa para frente e depois para trás.
+Toques durante a reprodução são ignorados para que a sequência possa terminar.
 
 <?code-excerpt "animation/staggered_animation/lib/main.dart (stagger-demo)"?>
 ```dart highlightLines=1,28,32-33,40

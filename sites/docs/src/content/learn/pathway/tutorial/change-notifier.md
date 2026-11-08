@@ -1,46 +1,47 @@
 ---
-title: State management in Flutter
-description: Instructions on how to manage state with ChangeNotifiers.
+ia-translate: true
+title: Gerenciamento de estado no Flutter
+description: Instruções sobre como gerenciar estado com ChangeNotifiers.
 layout: tutorial
 ---
 
-Learn to create a ViewModel with ChangeNotifier and manage loading, success, and error states.
+Aprenda a criar um ViewModel com ChangeNotifier e a gerenciar estados de carregamento, sucesso e erro.
 
 <SummaryCard>
-title: What you'll accomplish
+title: O que você vai realizar
 items:
-  - title: Create a ViewModel with ChangeNotifier
+  - title: Criar um ViewModel com ChangeNotifier
     icon: layers
-  - title: Manage loading, success, and error states
+  - title: Gerenciar estados de carregamento, sucesso e erro
     icon: toggle_on
-  - title: Signal UI updates with notifyListeners
+  - title: Sinalizar atualizações da UI com notifyListeners
     icon: notifications_active
 </SummaryCard>
 
 ---
 
-### Introduction
+### Introdução {:#introduction}
 
-When developers talk about state-management in Flutter,
-they're essentially referring to the pattern by which your app
-updates the data it needs to render correctly and then
-tells Flutter to re-render the UI with that new data.
+Quando desenvolvedores falam sobre gerenciamento de estado no Flutter,
+eles estão essencialmente se referindo ao padrão pelo qual seu app
+atualiza os dados que precisa para renderizar corretamente e então
+informa ao Flutter para re-renderizar a UI com esses novos dados.
 
-In MVVM, this responsibility falls to the ViewModel layer,
-which sits between and connects your UI to your Model layer.
-In Flutter, ViewModels use Flutter's `ChangeNotifier` class to
-notify the UI when data changes.
+No MVVM, essa responsabilidade cabe à camada ViewModel,
+que fica entre e conecta sua UI à sua camada Model.
+No Flutter, ViewModels usam a classe `ChangeNotifier` do Flutter para
+notificar a UI quando os dados mudam.
 
-To use [`ChangeNotifier`][], extend it in your state management class to
-gain access to the `notifyListeners()` method,
-which triggers UI rebuilds when called.
+Para usar [`ChangeNotifier`][], estenda-a em sua classe de gerenciamento de estado para
+obter acesso ao método `notifyListeners()`,
+que dispara reconstruções da UI quando chamado.
 
 [`ChangeNotifier`]: {{site.api}}/flutter/foundation/ChangeNotifier-class.html
 
-### Create the basic view model structure
+### Crie a estrutura básica do view model {:#create-the-basic-view-model-structure}
 
-Create the `ArticleViewModel` class with its
-basic structure and state properties:
+Crie a classe `ArticleViewModel` com sua
+estrutura básica e propriedades de estado:
 
 <?code-excerpt "fwe/wikipedia_reader/lib/step3a_main.dart (ArticleViewModel)"?>
 ```dart
@@ -54,16 +55,16 @@ class ArticleViewModel extends ChangeNotifier {
 }
 ```
 
-The `ArticleViewModel` holds three pieces of state:
+O `ArticleViewModel` mantém três pedaços de estado:
 
-- `summary`: The current Wikipedia article data.
-- `error`: Any error that occurred during data fetching.
-- `isLoading`: A flag to show progress indicators.
+- `summary`: Os dados atuais do artigo da Wikipedia.
+- `error`: Qualquer erro que ocorreu durante a busca de dados.
+- `isLoading`: Uma flag para mostrar indicadores de progresso.
 
-### Add constructor initialization
+### Adicione a inicialização do construtor {:#add-constructor-initialization}
 
-Update the constructor to automatically fetch content when the
-`ArticleViewModel` is created:
+Atualize o construtor para buscar conteúdo automaticamente quando o
+`ArticleViewModel` é criado:
 
 <?code-excerpt "fwe/wikipedia_reader/lib/step3b_main.dart (ArticleViewModel)"?>
 ```dart
@@ -82,14 +83,14 @@ class ArticleViewModel extends ChangeNotifier {
 }
 ```
 
-This constructor initialization provides immediate content when
-a `ArticleViewModel` object is created.
-Because constructors can't be asynchronous,
-it delegates initial content fetching to a separate method.
+Essa inicialização do construtor fornece conteúdo imediato quando
+um objeto `ArticleViewModel` é criado.
+Como construtores não podem ser assíncronos,
+ele delega a busca de conteúdo inicial para um método separado.
 
-### Set up the `fetchArticle` method
+### Configure o método `fetchArticle` {:#set-up-the-fetcharticle-method}
 
-Add the `fetchArticle` method that fetches data and manages state updates:
+Adicione o método `fetchArticle`, que busca dados e gerencia atualizações de estado:
 
 <?code-excerpt "fwe/wikipedia_reader/lib/step3c_main.dart (ArticleViewModel)"?>
 ```dart
@@ -115,19 +116,19 @@ class ArticleViewModel extends ChangeNotifier {
 }
 ```
 
-The ViewModel updates the `isLoading` property and
-calls `notifyListeners()` to inform the UI of the update.
-When the operation completes, it toggles the property back.
-When you build the UI, you'll use this `isLoading` property to
-show a loading indicator while fetching a new article.
+O ViewModel atualiza a propriedade `isLoading` e
+chama `notifyListeners()` para informar a UI da atualização.
+Quando a operação completa, ele alterna a propriedade de volta.
+Quando você construir a UI, você usará essa propriedade `isLoading` para
+mostrar um indicador de carregamento enquanto busca um novo artigo.
 
-### Retrieve an article from the `ArticleModel`
+### Recupere um artigo do `ArticleModel` {:#retrieve-an-article-from-the-articlemodel}
 
-Complete the `fetchArticle` method to fetch an article summary.
-Use a [try-catch block][] to gracefully handle network errors and
-store error messages that the UI can display to users.
-The method clears previous errors on success and
-clears the previous article summary on error to maintain a consistent state.
+Complete o método `fetchArticle` para buscar um resumo de artigo.
+Use um [bloco try-catch][try-catch block] para lidar graciosamente com erros de rede e
+armazenar mensagens de erro que a UI pode exibir aos usuários.
+O método limpa erros anteriores em caso de sucesso e
+limpa o resumo do artigo anterior em caso de erro para manter um estado consistente.
 
 <?code-excerpt "fwe/wikipedia_reader/lib/step3d_main.dart (ArticleViewModel)"?>
 ```dart
@@ -159,12 +160,12 @@ class ArticleViewModel extends ChangeNotifier {
 
 [try-catch block]: {{site.dart-site}}/language/error-handling#catch
 
-### Test the ViewModel
+### Teste o ViewModel {:#test-the-viewmodel}
 
-Before building the full UI, test that your HTTP requests work by
-printing results to the console.
-First, update the `fetchArticle` method to
-print the results:
+Antes de construir a UI completa, teste se suas requisições HTTP funcionam
+imprimindo resultados no console.
+Primeiro, atualize o método `fetchArticle` para
+imprimir os resultados:
 
 <?code-excerpt "fwe/wikipedia_reader/lib/step3e_main.dart (fetchArticle)"?>
 ```dart
@@ -185,8 +186,8 @@ Future<void> fetchArticle() async {
 }
 ```
 
-Then, update the `MainApp` widget to create the `ArticleViewModel`,
-which calls the `fetchArticle` method on creation:
+Então, atualize o widget `MainApp` para criar o `ArticleViewModel`,
+que chama o método `fetchArticle` na criação:
 
 <?code-excerpt "fwe/wikipedia_reader/lib/step3f_main.dart (MainApp)"?>
 ```dart
@@ -208,69 +209,69 @@ class MainApp extends StatelessWidget {
 }
 ```
 
-Hot reload your app and check your console output.
-You should see either an article title or an error message,
-which confirms that your Model and ViewModel are wired up correctly.
+Faça hot reload do seu app e verifique a saída do console.
+Você deve ver ou um título de artigo ou uma mensagem de erro,
+o que confirma que seu Model e ViewModel estão conectados corretamente.
 
-### Review
+### Revisão {:#review}
 
 <SummaryCard>
-title: What you accomplished
-subtitle: Here's a summary of what you built and learned in this lesson.
+title: O que você realizou
+subtitle: Aqui está um resumo do que você construiu e aprendeu nesta lição.
 completed: true
 items:
-  - title: Created the ArticleViewModel with ChangeNotifier
+  - title: Criou o ArticleViewModel com ChangeNotifier
     icon: layers
     details: >-
-      The ViewModel sits between your UI and Model,
-      managing state and connecting the two layers.
-      By extending `ChangeNotifier`, your ViewModel gains the ability to
-      notify listeners when data changes.
-  - title: Managed loading, success, and error states
+      O ViewModel fica entre sua UI e o Model,
+      gerenciando o estado e conectando as duas camadas.
+      Ao estender `ChangeNotifier`, seu ViewModel ganha a capacidade de
+      notificar listeners quando os dados mudam.
+  - title: Gerenciou estados de carregamento, sucesso e erro
     icon: toggle_on
     details: >-
-      Your ViewModel tracks three pieces of state:
-      `isLoading`, `summary`, and `error`.
-      Using `try` and `catch`, you handle network errors gracefully and
-      maintain consistent state for each possible outcome.
-  - title: Used notifyListeners to signal UI updates
+      Seu ViewModel acompanha três pedaços de estado:
+      `isLoading`, `summary` e `error`.
+      Usando `try` e `catch`, você lida graciosamente com erros de rede e
+      mantém um estado consistente para cada resultado possível.
+  - title: Usou notifyListeners para sinalizar atualizações da UI
     icon: notifications_active
     details: >-
-      Calling `notifyListeners()` tells any listening widgets to rebuild.
-      You call it after setting `loading = true` and again
-      after the operation completes.
-      This is how you can implement reactive UI updates in Flutter.
+      Chamar `notifyListeners()` informa a todos os widgets que estão ouvindo para se reconstruírem.
+      Você o chama depois de definir `loading = true` e novamente
+      depois que a operação completa.
+      É assim que você pode implementar atualizações reativas da UI no Flutter.
 </SummaryCard>
 
-### Test yourself
+### Teste seus conhecimentos {:#test-yourself}
 
-<Quiz title="State Management Quiz">
-- question: What is a ChangeNotifier?
+<Quiz title="Quiz de gerenciamento de estado">
+- question: O que é um ChangeNotifier?
   options:
-    - text: A widget that displays notifications to the user.
+    - text: Um widget que exibe notificações para o usuário.
       correct: false
-      explanation: ChangeNotifier is not a widget; it's a class for managing state.
-    - text: A class that can notify listeners when its data changes, enabling reactive UI updates.
+      explanation: ChangeNotifier não é um widget; é uma classe para gerenciar estado.
+    - text: Uma classe que pode notificar listeners quando seus dados mudam, permitindo atualizações reativas da UI.
       correct: true
-      explanation: ChangeNotifier provides the notifyListeners method to signal widgets to rebuild when state changes.
-    - text: A built-in Dart class for sending push notifications.
+      explanation: ChangeNotifier fornece o método notifyListeners para sinalizar aos widgets que se reconstruam quando o estado muda.
+    - text: Uma classe embutida do Dart para enviar notificações push.
       correct: false
-      explanation: ChangeNotifier is for in-app state management, not push notifications.
-    - text: A type of animation controller in Flutter.
+      explanation: ChangeNotifier é para gerenciamento de estado dentro do app, não para notificações push.
+    - text: Um tipo de animation controller no Flutter.
       correct: false
-      explanation: Animation controllers are separate; ChangeNotifier is for state management.
-- question: "What does calling `notifyListeners()` do in a ChangeNotifier?"
+      explanation: Animation controllers são separados; ChangeNotifier é para gerenciamento de estado.
+- question: "O que chamar `notifyListeners()` faz em um ChangeNotifier?"
   options:
-    - text: Saves the current state to local storage.
+    - text: Salva o estado atual no armazenamento local.
       correct: false
-      explanation: "`notifyListeners()` signals UI updates; persistence requires separate implementation."
-    - text: Tells any listening widgets to rebuild and reflect the new state.
+      explanation: "`notifyListeners()` sinaliza atualizações da UI; persistência requer uma implementação separada."
+    - text: Informa a todos os widgets que estão ouvindo para se reconstruírem e refletirem o novo estado.
       correct: true
-      explanation: "Calling `notifyListeners()` triggers a rebuild of all widgets listening to this ChangeNotifier."
-    - text: Logs the state change to the console for debugging.
+      explanation: "Chamar `notifyListeners()` dispara uma reconstrução de todos os widgets que estão ouvindo este ChangeNotifier."
+    - text: Registra a mudança de estado no console para depuração.
       correct: false
-      explanation: It doesn't log anything; it signals listeners to rebuild.
-    - text: Resets all state properties to their default values.
+      explanation: Ele não registra nada; ele sinaliza aos listeners que se reconstruam.
+    - text: Redefine todas as propriedades de estado para seus valores padrão.
       correct: false
-      explanation: "`notifyListeners()` doesn't modify state; it just signals that state has changed."
+      explanation: "`notifyListeners()` não modifica o estado; ele apenas sinaliza que o estado mudou."
 </Quiz>

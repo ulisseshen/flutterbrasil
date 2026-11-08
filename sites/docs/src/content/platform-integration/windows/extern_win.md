@@ -1,36 +1,37 @@
 ---
-title: External windows in Flutter Windows apps
+ia-translate: true
+title: Janelas externas em apps Flutter Windows
 description: >-
-  Special considerations for adding external windows to Flutter apps
+  Considerações especiais para adicionar janelas externas a apps Flutter
 ---
 
-# Windows lifecycle
+# Ciclo de vida do Windows
 
-## Who is affected
+## Quem é afetado
 
-Windows applications built against Flutter versions after 3.13
-that open non-Flutter windows.
+Aplicações Windows construídas com versões do Flutter posteriores a 3.13
+que abrem janelas não-Flutter.
 
 
-## Overview
+## Visão geral
 
-When adding a non-Flutter window to a Flutter Windows app, it will not be part
-of the logic for application lifecycle state updates by default. For example,
-this means that when the external window is shown or hidden, the app lifecycle
-state won't appropriately update to inactive or hidden. As a result, the app
-might receive incorrect lifecycle state changes through
-[WidgetsBindingObserver.didChangeAppLifecycle][].
+Ao adicionar uma janela não-Flutter a um app Flutter Windows, ela não fará parte
+da lógica para atualizações de estado do ciclo de vida da aplicação por padrão. Por exemplo,
+isso significa que quando a janela externa é exibida ou ocultada, o estado do ciclo de vida
+do app não será atualizado apropriadamente para inativo ou oculto. Como resultado, o app
+pode receber alterações de estado do ciclo de vida incorretas através de
+[WidgetsBindingObserver.didChangeAppLifecycle][WidgetsBindingObserver.didChangeAppLifecycle].
 
-# What do I need to do?
+# O que preciso fazer?
 
-To add the external window to this application logic,
-the window's `WndProc` procedure
-must invoke `FlutterEngine::ProcessExternalWindowMessage`.
+Para adicionar a janela externa a esta lógica da aplicação,
+o procedimento `WndProc` da janela
+deve invocar `FlutterEngine::ProcessExternalWindowMessage`.
 
-To achieve this, add the following code to the message handler function
-of your custom external window. In C++ wrappers for the Win32 API,
-this is often a class method called from the window's `WndProc`.
-The exact file and class name depend on your app's implementation.
+Para conseguir isso, adicione o seguinte código à função manipuladora de mensagens
+da sua janela externa personalizada. Em wrappers C++ para a API Win32,
+geralmente é um método de classe chamado a partir do `WndProc` da janela.
+O arquivo e o nome da classe exatos dependem da implementação do seu app.
 
 ```cpp diff
   LRESULT MyExternalWindow::MessageHandler(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {

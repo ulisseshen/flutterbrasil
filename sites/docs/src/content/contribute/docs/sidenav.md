@@ -1,26 +1,27 @@
 ---
 title: Sidenav
 description: >-
-  Learn about adding to and configuring the sidenav of the
-  Dart and Flutter documentation site.
+  Aprenda sobre como adicionar e configurar o sidenav do
+  site de documentação Dart e Flutter.
+ia-translate: true
 sitemap: false
 noindex: true
 showBreadcrumbs: true
 ---
 
 :::warning
-This document is a work in progress.
+Este documento é um trabalho em andamento.
 :::
 
-The sidenav presents the overall information architecture for the site
-and provides developers access to documentation by topic.
+O sidenav apresenta a arquitetura geral de informações do site
+e fornece aos desenvolvedores acesso à documentação por tópico.
 
-The contents of the sidenav are configured in
-[YAML][] files in the `/src/data/sidenav/` directory.
-Each file in that directory defines a named sidenav,
-with the filename (without extension) serving as the key.
-Pages select which sidenav to display through the `sidenav` front matter field.
-If no sidenav is specified, the `default` sidenav is used.
+Os conteúdos do sidenav são configurados em
+arquivos [YAML][] no diretório `/src/data/sidenav/`.
+Cada arquivo nesse diretório define um sidenav nomeado,
+com o nome do arquivo (sem extensão) servindo como chave.
+As páginas selecionam qual sidenav exibir através do campo `sidenav` do front matter.
+Se nenhum sidenav for especificado, o sidenav `default` é usado.
 
 [YAML]: https://yaml.org/
 
@@ -32,8 +33,8 @@ If no sidenav is specified, the `default` sidenav is used.
 
 ## Icons for top-level sections
 
-Top-level section entries support an optional `icon` field to render a Material Symbols icon to the left of the section title. Use the icon's identifier (for example, `flag`, `download`, or `build`). This icon appears only for the first-level items.
+Entradas de seção de nível superior suportam um campo opcional `icon` para renderizar um ícone do Material Symbols à esquerda do título da seção. Use o identificador do ícone (por exemplo, `flag`, `download` ou `build`). Esse ícone aparece apenas para os itens de primeiro nível.
 
-Icons use the site's Material Symbols font. Choose identifiers from Google's [Material Symbols catalog](https://fonts.google.com/icons).
+Os ícones usam a fonte Material Symbols do site. Escolha identificadores no [catálogo do Material Symbols](https://fonts.google.com/icons) do Google.
 
 ## Infrastructure

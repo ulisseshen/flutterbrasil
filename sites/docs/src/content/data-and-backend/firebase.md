@@ -1,60 +1,61 @@
 ---
+ia-translate: true
 title: Firebase
 description: >-
-  Connect your Flutter app to Firebase for authentication, Cloud Firestore,
-  Firebase SQL Connect, cloud storage, AI features, and serverless Dart
-  functions.
+  Conecte seu app Flutter ao Firebase para autenticação, Cloud Firestore,
+  Firebase SQL Connect, armazenamento em nuvem, recursos de IA e funções
+  Dart serverless.
 ---
 
-Firebase is Google's app development platform that provides managed
-backend services for Flutter apps on mobile, web, and desktop.
-Each Firebase service is available as a separate Firebase Flutter
-plugin on pub.dev, so you can add only the services your app needs:
+Firebase é a plataforma de desenvolvimento de apps do Google que fornece serviços
+de backend gerenciados para apps Flutter em dispositivos móveis, web e desktop.
+Cada serviço do Firebase está disponível como um plugin Flutter do Firebase
+separado no pub.dev, para que você possa adicionar apenas os serviços de que seu app precisa:
 
-| Service | Use case | Package |
+| Serviço | Caso de uso | Pacote |
 |---|---|---|
-| [Cloud Firestore][] | NoSQL document database with realtime sync and built-in offline cache | [`cloud_firestore`][] |
-| [Firebase SQL Connect][] | Managed PostgreSQL database with generated, type-safe Dart SDKs | [`firebase_data_connect`][] |
-| [Firebase Authentication][firebase-auth] | User sign-in with email, phone, and providers like Google or Apple | [`firebase_auth`][] |
-| [Cloud Storage for Firebase][firebase-storage] | File uploads and downloads for user photos, videos, and documents | [`firebase_storage`][] |
-| [Firebase AI Logic][firebase-ai] | Direct client access to Gemini and Imagen models | [`firebase_ai`][] |
-| [Cloud Functions for Firebase][firebase-functions-dart] | Serverless backend logic written in JavaScript, TypeScript, Python, or Dart (experimental) | [`cloud_functions`][] (client), [`firebase_functions`][] (server) |
-| [Firebase Crashlytics][crashlytics] | Realtime crash reporting and diagnostics | [`firebase_crashlytics`][] |
+| [Cloud Firestore][] | Banco de dados de documentos NoSQL com sincronização em tempo real e cache offline integrado | [`cloud_firestore`][] |
+| [Firebase SQL Connect][] | Banco de dados PostgreSQL gerenciado com SDKs Dart gerados e com segurança de tipos | [`firebase_data_connect`][] |
+| [Firebase Authentication][firebase-auth] | Login de usuários com e-mail, telefone e provedores como Google ou Apple | [`firebase_auth`][] |
+| [Cloud Storage for Firebase][firebase-storage] | Uploads e downloads de arquivos para fotos, vídeos e documentos de usuários | [`firebase_storage`][] |
+| [Firebase AI Logic][firebase-ai] | Acesso direto do cliente aos modelos Gemini e Imagen | [`firebase_ai`][] |
+| [Cloud Functions for Firebase][firebase-functions-dart] | Lógica de backend serverless escrita em JavaScript, TypeScript, Python ou Dart (experimental) | [`cloud_functions`][] (cliente), [`firebase_functions`][] (servidor) |
+| [Firebase Crashlytics][crashlytics] | Relatórios de falhas e diagnósticos em tempo real | [`firebase_crashlytics`][] |
 
 {:.table .table-striped}
 
-For a complete list of supported packages and platform availability,
-check out [Available Firebase Flutter plugins][Firebase plugins].
+Para uma lista completa de pacotes suportados e disponibilidade por plataforma,
+confira [Plugins Flutter do Firebase disponíveis][Firebase plugins].
 
-## Connect a Flutter app to Firebase
+## Conectar um app Flutter ao Firebase
 
-To register your Flutter app with a Firebase project and generate
-platform configuration files, use the Firebase CLI and FlutterFire CLI:
+Para registrar seu app Flutter em um projeto Firebase e gerar
+arquivos de configuração de plataforma, use a Firebase CLI e a FlutterFire CLI:
 
-1. Install the [Firebase CLI][] and sign in to your Google Account:
+1. Instale a [Firebase CLI][] e faça login na sua Conta do Google:
 
    ```console
    $ firebase login
    ```
 
-2. Install the FlutterFire CLI globally:
+2. Instale a FlutterFire CLI globalmente:
 
    ```console
    $ dart pub global activate flutterfire_cli
    ```
 
-3. From the root of your Flutter project, add the core plugin and run
-   the configuration workflow:
+3. Na raiz do seu projeto Flutter, adicione o plugin core e execute
+   o fluxo de configuração:
 
    ```console
    $ flutter pub add firebase_core
    $ flutterfire configure
    ```
 
-   This command registers your per-platform apps in your Firebase
-   project and generates `lib/firebase_options.dart`.
+   Este comando registra seus apps por plataforma no seu projeto
+   Firebase e gera `lib/firebase_options.dart`.
 
-4. Initialize Firebase in `lib/main.dart` before calling `runApp()`:
+4. Inicialize o Firebase em `lib/main.dart` antes de chamar `runApp()`:
 
    ```dart
    import 'package:firebase_core/firebase_core.dart';
@@ -70,23 +71,23 @@ platform configuration files, use the Firebase CLI and FlutterFire CLI:
    }
    ```
 
-For detailed platform setup instructions, refer to
-[Add Firebase to your Flutter app][started].
+Para instruções detalhadas de configuração por plataforma, consulte
+[Adicionar o Firebase ao seu app Flutter][started].
 
-## Authenticate users with Firebase Authentication
+## Autenticar usuários com Firebase Authentication
 
-[Firebase Authentication][firebase-auth] supports sign-in with email
-and password, phone numbers, anonymous sessions, and federated
-identity providers such as Google, Apple, and GitHub.
+O [Firebase Authentication][firebase-auth] suporta login com e-mail
+e senha, números de telefone, sessões anônimas e provedores de
+identidade federada como Google, Apple e GitHub.
 
-To add Firebase Authentication to your app, install [`firebase_auth`][]:
+Para adicionar o Firebase Authentication ao seu app, instale [`firebase_auth`][]:
 
 ```console
 $ flutter pub add firebase_auth
 ```
 
-You can listen to `FirebaseAuth.instance.authStateChanges()` with a
-`StreamBuilder` to react whenever a user signs in or out:
+Você pode escutar `FirebaseAuth.instance.authStateChanges()` com um
+`StreamBuilder` para reagir sempre que um usuário fizer login ou logout:
 
 ```dart
 import 'package:firebase_auth/firebase_auth.dart';
@@ -121,28 +122,28 @@ Future<UserCredential> signInWithEmail(String email, String password) {
 }
 ```
 
-To learn more, check out
-[Get started with Firebase Authentication on Flutter][firebase-auth] or
-the [FirebaseUI authentication codelab][auth-codelab].
+Para saber mais, confira
+[Começar a usar o Firebase Authentication no Flutter][firebase-auth] ou
+o [codelab de autenticação com FirebaseUI][auth-codelab].
 
-## Store and sync NoSQL data with Cloud Firestore
+## Armazenar e sincronizar dados NoSQL com Cloud Firestore
 
-[Cloud Firestore][] is the recommended default when your app needs a
-scalable NoSQL database that syncs data across devices in realtime and
-offers offline caching and persistence—such as in chat apps,
-collaborative tools, or field service apps that need to keep working
-with an unreliable connection. To compare Cloud Firestore with
-relational and local storage options, check out
-[Choose a database for your Flutter app][choose-db].
+O [Cloud Firestore][] é a opção padrão recomendada quando seu app precisa de um
+banco de dados NoSQL escalável que sincroniza dados entre dispositivos em tempo real e
+oferece cache e persistência offline, como em apps de chat,
+ferramentas colaborativas ou apps de serviço de campo que precisam continuar funcionando
+com uma conexão instável. Para comparar o Cloud Firestore com
+opções de armazenamento relacional e local, confira
+[Escolher um banco de dados para seu app Flutter][choose-db].
 
-To add Cloud Firestore to your project, run:
+Para adicionar o Cloud Firestore ao seu projeto, execute:
 
 ```console
 $ flutter pub add cloud_firestore
 ```
 
-The following example adds a task document to a `tasks` collection and
-streams live query results into a `ListView`:
+O exemplo a seguir adiciona um documento de tarefa a uma coleção `tasks` e
+transmite os resultados da consulta em tempo real para uma `ListView`:
 
 ```dart
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -199,69 +200,69 @@ class _TaskListState extends State<TaskList> {
 }
 ```
 
-Offline persistence is enabled by default on Android and Apple
-platforms (and can be enabled on the web), so your app can read and
-write cached documents without a network connection and automatically
-sync changes when connectivity returns. To get started, follow the
-[Cloud Firestore quickstart][firestore-quickstart].
+A persistência offline é habilitada por padrão no Android e nas plataformas
+Apple (e pode ser habilitada na web), para que seu app possa ler e
+gravar documentos em cache sem conexão de rede e sincronizar
+automaticamente as mudanças quando a conectividade voltar. Para começar, siga o
+[guia de início rápido do Cloud Firestore][firestore-quickstart].
 
-## Query relational SQL data with Firebase SQL Connect
+## Consultar dados SQL relacionais com Firebase SQL Connect
 
-If your app needs a relational database, [Firebase SQL Connect][]
-(formerly Firebase Data Connect) provides a managed PostgreSQL
-database and generates a type-safe Dart SDK built on the
-[`firebase_data_connect`][] package.
+Se o seu app precisa de um banco de dados relacional, o [Firebase SQL Connect][]
+(antigo Firebase Data Connect) fornece um banco de dados PostgreSQL
+gerenciado e gera um SDK Dart com segurança de tipos construído sobre o
+pacote [`firebase_data_connect`][].
 
-To install the plugin, run:
+Para instalar o plugin, execute:
 
 ```console
 $ flutter pub add firebase_data_connect
 ```
 
-To compare SQL Connect with Cloud Firestore and local SQLite, check out
-[Choose a database for your Flutter app][choose-db]. To set up a
-SQL Connect backend and call it from Flutter, follow the guide to
-[use generated Flutter SDKs][sql-connect-flutter].
+Para comparar o SQL Connect com o Cloud Firestore e o SQLite local, confira
+[Escolher um banco de dados para seu app Flutter][choose-db]. Para configurar um
+backend SQL Connect e chamá-lo a partir do Flutter, siga o guia para
+[usar SDKs Flutter gerados][sql-connect-flutter].
 
-## Share Dart code with a serverless Firebase backend
+## Compartilhar código Dart com um backend Firebase serverless
 
-When your app needs custom server-side logic, background triggers, or
-administrative access to Firebase services, you can write
-[Cloud Functions for Firebase in Dart][firebase-functions-dart] using
-the [`firebase_functions`][] and [`firebase_admin_sdk`][] packages.
+Quando seu app precisa de lógica personalizada no servidor, gatilhos em segundo plano ou
+acesso administrativo aos serviços do Firebase, você pode escrever
+[Cloud Functions for Firebase em Dart][firebase-functions-dart] usando
+os pacotes [`firebase_functions`][] e [`firebase_admin_sdk`][].
 
 :::note
-Dart support for Cloud Functions for Firebase is experimental.
-You must enable the `dartfunctions` experiment in the Firebase CLI
-before running `firebase init functions`, and the APIs might change
-before a stable release.
+O suporte a Dart no Cloud Functions for Firebase é experimental.
+Você precisa habilitar o experimento `dartfunctions` na Firebase CLI
+antes de executar `firebase init functions`, e as APIs podem mudar
+antes de uma versão estável.
 :::
 
-Using Dart on both your Flutter frontend and your Firebase backend lets
-you share a single Dart package for data models, JSON serialization,
-and validation rules across client and server. To learn how to
-structure a shared-package workspace, check out
-[Sharing code between Flutter apps and Dart backends][dart-server].
+Usar Dart tanto no seu frontend Flutter quanto no seu backend Firebase permite
+compartilhar um único pacote Dart para modelos de dados, serialização JSON
+e regras de validação entre cliente e servidor. Para aprender como
+estruturar um workspace com pacote compartilhado, confira
+[Compartilhando código entre apps Flutter e backends Dart][dart-server].
 
-## Flutter and Firebase resources
+## Recursos Flutter e Firebase
 
-To learn more about building Flutter apps with Firebase, check out the
-following official and community resources.
+Para saber mais sobre como construir apps Flutter com Firebase, confira os
+seguintes recursos oficiais e da comunidade.
 
-### Documentation and codelabs
+### Documentação e codelabs
 
-* [Add Firebase to your Flutter app][started]
-* [Choose a database for your Flutter app][choose-db]
-* [Get to know Firebase for Flutter codelab][codelab1]
-* [Add a user authentication flow using FirebaseUI][auth-codelab]
-* [Firebase AI Logic documentation][firebase-ai]
-* [Use Firebase to host your Flutter app on the web][article]
+* [Adicionar o Firebase ao seu app Flutter][started]
+* [Escolher um banco de dados para seu app Flutter][choose-db]
+* [Codelab Conheça o Firebase para Flutter][codelab1]
+* [Adicionar um fluxo de autenticação de usuário usando FirebaseUI][auth-codelab]
+* [Documentação do Firebase AI Logic][firebase-ai]
+* [Use Firebase para hospedar seu app Flutter na web][article]
 
-### Videos
+### Vídeos
 
-* [Get to know Firebase for Flutter video workshop][workshop]
-* [Using Firestore as a backend to your Flutter app][video]
-* [Live Coding Firebase Authentication with Flutter][video2]
+* [Vídeo workshop Conheça o Firebase para Flutter][workshop]
+* [Usando Firestore como backend para seu app Flutter][video]
+* [Live Coding Firebase Authentication com Flutter][video2]
 
 [article]: {{site.flutter-blog}}/must-try-use-firebase-to-host-your-flutter-app-on-the-web-852ee533a469
 [auth-codelab]: {{site.firebase}}/codelabs/firebase-auth-in-flutter-apps

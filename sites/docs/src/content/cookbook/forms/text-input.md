@@ -1,29 +1,30 @@
 ---
-title: Create and style a text field
-description: How to implement a text field.
+ia-translate: true
+title: Criar e estilizar um campo de texto
+description: Como implementar um campo de texto.
 ---
 
 <?code-excerpt path-base="cookbook/forms/text_input/"?>
 
-Text fields allow users to type text into an app.
-They are used to build forms,
-send messages, create search experiences, and more.
-In this recipe, explore how to create and style text fields.
+Campos de texto permitem que os usuários digitem texto em um app.
+Eles são usados para construir formulários,
+enviar mensagens, criar experiências de busca e muito mais.
+Nesta receita, explore como criar e estilizar campos de texto.
 
-Flutter provides two Material Design text fields:
-[`TextField`][] and [`TextFormField`][].
+Flutter fornece dois campos de texto do Material Design:
+[`TextField`][`TextField`] e [`TextFormField`][`TextFormField`].
 
 ## `TextField`
 
-[`TextField`][] is the most commonly used text input widget.
+[`TextField`][`TextField`] é o widget de entrada de texto mais comumente usado.
 
-By default, a `TextField` is decorated with an underline.
-You can add a label, icon, inline hint text, and error text by supplying an
-[`InputDecoration`][] as the [`decoration`][]
-property of the `TextField`.
-To remove the decoration entirely (including the
-underline and the space reserved for the label),
-set the `decoration` to `null`.
+Por padrão, um `TextField` é decorado com um sublinhado.
+Você pode adicionar um rótulo, ícone, texto de dica inline e texto de erro fornecendo um
+[`InputDecoration`][`InputDecoration`] como a propriedade [`decoration`][`decoration`]
+do `TextField`.
+Para remover a decoração completamente (incluindo o
+sublinhado e o espaço reservado para o rótulo),
+defina a `decoration` como `null`.
 
 <?code-excerpt "lib/main.dart (TextField)" replace="/^child\: //g"?>
 ```dart
@@ -39,16 +40,16 @@ TextField(
   <img src="/assets/images/docs/cookbook/text-input.png" alt="Text Input Demo" />
 </noscript>
 
-To retrieve the value when it changes,
-consult the [Handle changes to a text field][] recipe.
+Para recuperar o valor quando ele muda,
+consulte a receita [Handle changes to a text field][Handle changes to a text field].
 
 ## `TextFormField`
 
-[`TextFormField`][] wraps a `TextField` and integrates it
-with the enclosing [`Form`][].
-This provides additional functionality,
-such as validation and integration with other
-[`FormField`][] widgets.
+[`TextFormField`][`TextFormField`] envolve um `TextField` e o integra
+com o [`Form`][`Form`] envolvente.
+Isso fornece funcionalidade adicional,
+como validação e integração com outros
+widgets [`FormField`][`FormField`].
 
 <?code-excerpt "lib/main.dart (TextFormField)" replace="/^child\: //g"?>
 ```dart
@@ -60,7 +61,7 @@ TextFormField(
 ),
 ```
 
-## Interactive example
+## Exemplo interativo
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter text input hands-on example in DartPad" run="true"
@@ -116,8 +117,8 @@ class MyCustomForm extends StatelessWidget {
 }
 ```
 
-To learn more about input validation,
-consult the [Build a form with validation][] recipe.
+Para saber mais sobre validação de entrada,
+consulte a receita [Build a form with validation][Build a form with validation].
 
 
 [Build a form with validation]: /cookbook/forms/validation

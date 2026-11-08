@@ -1,28 +1,29 @@
 ---
-title: Cupertino design for Flutter
-description: Learn about Cupertino design for Flutter.
+title: Design Cupertino para Flutter
+description: Aprenda sobre o design Cupertino para Flutter.
+ia-translate: true
 ---
 
-The Flutter Cupertino package is a collection
-of widgets that implement Apple's iOS design language
-for Flutter apps. The widgets have a similar look
-and feel to iOS, including rounded corners, gradients,
-and minimalistic design.
-They also include iOS interactions and animations.
+O pacote Cupertino do Flutter é uma coleção
+de widgets que implementam a linguagem de design iOS da Apple
+para apps Flutter. Os widgets têm uma aparência
+e comportamento similares ao iOS, incluindo cantos arredondados, gradientes,
+e design minimalista.
+Eles também incluem interações e animações do iOS.
 
-Previously, Cupertino was part of the core Flutter SDK,
-but it has been decoupled from the framework.
-You can access Cupertino from the [`cupertino_ui`][] package on pub.dev.
+Anteriormente, o Cupertino fazia parte do Flutter SDK principal,
+mas foi desacoplado do framework.
+Você pode acessar o Cupertino pelo pacote [`cupertino_ui`][] no pub.dev.
 
 [`cupertino_ui`]: {{site.pub}}/packages/cupertino_ui
 
-The following 15-minute video provides a high-level
-glimpse of the Cupertino package:
+O vídeo de 15 minutos a seguir fornece uma visão geral
+do pacote Cupertino:
 
 <YouTubeEmbed id="3PdUaidHc-E" title="Flutter's Cupertino Package"></YouTubeEmbed>
 
-To see some Cupertino widgets in action, the following videos from the
-Widget of the Week series cover a few of them.
+Para ver alguns widgets Cupertino em ação, os vídeos a seguir da
+série Widget of the Week cobrem alguns deles.
 
 <div class="card-grid">
   <div class="card wrapped-card outlined-card">
@@ -52,17 +53,17 @@ Widget of the Week series cover a few of them.
   </div>
 </div>
 
-## More information {:.no_toc}
+## Mais informações {:.no_toc}
 
-To learn more about using the Cupertino
-package with Flutter,
-check out the following resources:
+Para aprender mais sobre o uso do pacote Cupertino
+com Flutter,
+confira os seguintes recursos:
 
-* The (mostly visual) [Cupertino widget catalog][]
-* The [Cupertino library][] page on pub.dev
-* The [Cupertino API examples][] on the flutter/flutter
-  repo. ([Instructions][]) For example,
-  to run `CupertinoSwitch`:
+* O (principalmente visual) [catálogo de widgets Cupertino][Cupertino widget catalog]
+* A página da [biblioteca Cupertino][Cupertino library] no pub.dev
+* Os [exemplos da API Cupertino][Cupertino API examples] no repositório flutter/flutter.
+  ([Instruções][Instructions]) Por exemplo,
+  para executar `CupertinoSwitch`:
 
 ```console
 cd path/to/flutter

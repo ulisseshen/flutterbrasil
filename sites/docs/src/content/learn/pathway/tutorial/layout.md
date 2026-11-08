@@ -1,70 +1,71 @@
 ---
+ia-translate: true
 title: Layout
-description: Learn about common layout widgets in Flutter.
+description: Aprenda sobre widgets de layout comuns no Flutter.
 layout: tutorial
 ---
 
-Learn how to build layouts with common widgets like Scaffold, AppBar, Column, and Row.
+Aprenda a construir layouts com widgets comuns como Scaffold, AppBar, Column e Row.
 
 <YouTubeEmbed id="z8bY3XVAzgI" title="Flutter layout and constraints" fullWidth="true"></YouTubeEmbed>
 
 <SummaryCard>
-title: What you'll accomplish
+title: O que você vai realizar
 items:
-  - title: Structure an app with Scaffold and AppBar
+  - title: Estruturar um app com Scaffold e AppBar
     icon: web_asset
-  - title: Arrange widgets using Column and Row
+  - title: Organizar widgets usando Column e Row
     icon: view_column
-  - title: Generate widgets dynamically from data
+  - title: Gerar widgets dinamicamente a partir de dados
     icon: repeat
-  - title: Build a grid layout for the game board
+  - title: Construir um layout de grade para o tabuleiro do jogo
     icon: grid_view
 </SummaryCard>
 
 ---
 
-### Introduction
+### Introdução {:#introduction}
 
-Given that Flutter is a UI toolkit,
-you'll spend a lot of time creating layouts with Flutter widgets.
+Dado que Flutter é um toolkit de UI,
+você passará muito tempo criando layouts com widgets Flutter.
 
-In this section, you'll learn how to build layouts with
-some of the most common layout widgets.
-This includes high-level widgets like
-[`Scaffold`][] and [`AppBar`][], which lay out the structure of a screen,
-as well as lower-level widgets like [`Column`][] or [`Row`][] that
-lay out widgets vertically or horizontally.
+Nesta seção, você aprenderá como construir layouts com
+alguns dos widgets de layout mais comuns.
+Isso inclui widgets de alto nível como
+[`Scaffold`][] e [`AppBar`][], que definem a estrutura de uma tela,
+assim como widgets de nível mais baixo como [`Column`][] ou [`Row`][] que
+organizam widgets verticalmente ou horizontalmente.
 
 [`Scaffold`]: {{site.material_ui}}/Scaffold-class.html
 [`AppBar`]: {{site.material_ui}}/AppBar-class.html
 [`Column`]:  {{site.api}}/flutter/widgets/Column-class.html
 [`Row`]: {{site.api}}/flutter/widgets/Row-class.html
 
-### `Scaffold` and `AppBar`
+### `Scaffold` e `AppBar` {:#scaffold-and-appbar}
 
-Mobile applications often have a bar at the top called an "app bar" that can
-display a title, navigation controls, and/or actions.
+Aplicações mobile frequentemente têm uma barra no topo chamada de "app bar" que pode
+exibir um título, controles de navegação e/ou ações.
 
-<img src='/assets/images/docs/tutorial/appbar.png' width="320px" alt="A screenshot of a simple application with a bar across the top that has a title and settings button.">
+<img src='/assets/images/docs/tutorial/appbar.png' width="320px" alt="Uma captura de tela de uma aplicação simples com uma barra no topo que tem um título e um botão de configurações.">
 
-The simplest way to add an app bar to your app is by using two widgets:
-`Scaffold` and `AppBar`.
+A forma mais simples de adicionar uma app bar ao seu app é usando dois widgets:
+`Scaffold` e `AppBar`.
 
-`Scaffold` is a convenience widget that provides a Material-style page layout,
-making it simple to add an app bar, drawer, navigation bar,
-and more to a page of your app.
-`AppBar` is, of course, the app bar.
+`Scaffold` é um widget de conveniência que fornece um layout de página estilo Material,
+tornando simples adicionar uma app bar, drawer, navigation bar
+e muito mais a uma página do seu app.
+`AppBar` é, claro, a app bar.
 
-Add an `AppBar` to the `Scaffold` widget
-within your `MainApp` widget's `build` method.
-The following code uses an additional layout widget: [`Align`][].
-This positions the title to the left, which would be centered by default.
-The `Text` widget contains the title itself.
+Adicione um `AppBar` ao widget `Scaffold`
+dentro do método `build` do seu widget `MainApp`.
+O código a seguir usa um widget de layout adicional: [`Align`][].
+Isso posiciona o título à esquerda, que seria centralizado por padrão.
+O widget `Text` contém o título em si.
 
-Passing an enum or static property directly (like `Alignment.centerLeft`)
-can also be shortened using [Dart's dot shorthands][] syntax,
-which you can read more about on both the official Dart documentation
-and the [Flutter shorthands overview][].
+Passar um enum ou uma propriedade estática diretamente (como `Alignment.centerLeft`)
+também pode ser abreviado usando a sintaxe de [dot shorthands do Dart][Dart's dot shorthands],
+sobre a qual você pode ler mais tanto na documentação oficial do Dart
+quanto na [visão geral de shorthands do Flutter][Flutter shorthands overview].
 
 [Dart's dot shorthands]: https://dart.dev/language/dot-shorthands
 [Flutter shorthands overview]: /ui/dot-shorthands
@@ -94,20 +95,20 @@ class MainApp extends StatelessWidget {
 
 [`Align`]: {{site.api}}/flutter/widgets/Align-class.html
 
-#### An updated widget tree
+#### Uma árvore de widgets atualizada {:#an-updated-widget-tree}
 
-Considering your app's widget tree gets more important as your app grows.
-At this point, there's a "branch" in the widget tree for the first time,
-and it now looks like the following figure:
+Considerar a árvore de widgets do seu app se torna mais importante conforme seu app cresce.
+Neste ponto, há uma "ramificação" na árvore de widgets pela primeira vez,
+e agora ela se parece com a figura a seguir:
 
-<img src='/assets/images/docs/tutorial/widget_tree_with_app_bar.png' width="320px" alt="A screenshot that resembles the popular game Wordle.">
+<img src='/assets/images/docs/tutorial/widget_tree_with_app_bar.png' width="320px" alt="Uma captura de tela que se assemelha ao popular jogo Wordle.">
 
 
-### Create a widget for the game page layout
+### Crie um widget para o layout da página do jogo {:#create-a-widget-for-the-game-page-layout}
 
-Add the following code for a new widget,
-called `GamePage`, to your `main.dart` file.
-This widget will eventually display the UI elements needed for the game itself.
+Adicione o código a seguir para um novo widget,
+chamado `GamePage`, ao seu arquivo `main.dart`.
+Este widget eventualmente exibirá os elementos de UI necessários para o jogo em si.
 
 <?code-excerpt "fwe/birdle/lib/step3a_main.dart (GamePage)"?>
 ```dart title="lib/main.dart"
@@ -125,8 +126,8 @@ class GamePage extends StatelessWidget {
 }
 ```
 
-Then update your `MainApp` widget to create and
-display a `GamePage` widget instead of the `Tile` widget.
+Em seguida, atualize seu widget `MainApp` para criar e
+exibir um widget `GamePage` em vez do widget `Tile`.
 
 <?code-excerpt "fwe/birdle/lib/step3_main.dart (MainApp)"?>
 ```dart highlightLines=14
@@ -150,35 +151,35 @@ class MainApp extends StatelessWidget {
 }
 ```
 
-:::note Resolving `const` constructor errors
+:::note Resolvendo erros de construtor `const`
 
-Because `GamePage` initializes a non-constant field
+Como `GamePage` inicializa um campo não constante
 (`final Game _game = Game();`),
-its constructor cannot be `const`.
-If you previously had const Center(...) or const MaterialApp(...),
-Dart reports an error:
+seu construtor não pode ser `const`.
+Se você tinha anteriormente const Center(...) ou const MaterialApp(...),
+o Dart reporta um erro:
 "The constructor being called isn't a const constructor."
-To resolve this, remove the const keyword from Center (or MaterialApp)
-(or the enclosing parent widget)
-and only use `const` on widgets with constant arguments,
-like `const Align(...)`.
+Para resolver isso, remova a palavra-chave const de Center (ou MaterialApp)
+(ou do widget pai que os envolve)
+e use `const` apenas em widgets com argumentos constantes,
+como `const Align(...)`.
 :::
 
-### Arrange widgets with `Column` and `Row`
+### Organize widgets com `Column` e `Row` {:#arrange-widgets-with-column-and-row}
 
-The `GamePage` layout contains the grid of tiles that display a user's guesses.
+O layout do `GamePage` contém a grade de tiles que exibe os palpites de um usuário.
 
-<img src='/assets/images/docs/tutorial/birdle.png' width="320px" alt="A screenshot that resembles the popular game Wordle.">
+<img src='/assets/images/docs/tutorial/birdle.png' width="320px" alt="Uma captura de tela que se assemelha ao popular jogo Wordle.">
 
-There are a number of ways you can build this layout.
-The simplest is with the `Column` and `Row` widgets.
-Each row contains five tiles that represent the five letters in a guess,
-with five rows total.
-So you'll need a single `Column` with five `Row` widgets as children,
-where each row contains five children.
+Existem várias maneiras de construir este layout.
+A mais simples é com os widgets `Column` e `Row`.
+Cada linha contém cinco tiles que representam as cinco letras em um palpite,
+com cinco linhas no total.
+Então você precisará de uma única `Column` com cinco widgets `Row` como filhos,
+em que cada linha contém cinco filhos.
 
-To get started, replace the `Container` in `GamePage.build` with a
-`Padding` widget with a `Column` widget as its child:
+Para começar, substitua o `Container` em `GamePage.build` por um
+widget `Padding` com um widget `Column` como filho:
 
 <?code-excerpt "fwe/birdle/lib/step3b_main.dart (GamePage)"?>
 ```dart
@@ -202,16 +203,16 @@ class GamePage extends StatelessWidget {
 }
 ```
 
-The `spacing` property puts five pixels between each element on the main axis.
+A propriedade `spacing` coloca cinco pixels entre cada elemento no eixo principal.
 
-Within `Column.children`, for each element in the `_game.guesses` list,
-add a `Row` widget as a child.
+Dentro de `Column.children`, para cada elemento na lista `_game.guesses`,
+adicione um widget `Row` como filho.
 
 :::note
-This `guesses` list is a **fixed-size** list, starting with five
-elements, one for each *potential* guess.
-The list will always contain exactly five elements,
-and therefore will always render five rows.
+Esta lista `guesses` é uma lista de **tamanho fixo**, começando com cinco
+elementos, um para cada palpite *potencial*.
+A lista sempre conterá exatamente cinco elementos
+e, portanto, sempre renderizará cinco linhas.
 :::
 
 <?code-excerpt "fwe/birdle/lib/step3c_main.dart (GamePage)"?>
@@ -242,38 +243,38 @@ class GamePage extends StatelessWidget {
 }
 ```
 
-The `for` loop in the `children` list is called a [collection for element][],
-a Dart syntax that allows you to iteratively add items to a collection
-when it is built at runtime.
-This syntactic sugar makes it easier for you to work
-with collections of widgets,
-providing a declarative alternative to the following:
+O loop `for` na lista `children` é chamado de [collection for element][],
+uma sintaxe do Dart que permite adicionar itens iterativamente a uma coleção
+quando ela é construída em tempo de execução.
+Este açúcar sintático facilita o trabalho
+com coleções de widgets,
+fornecendo uma alternativa declarativa ao seguinte:
 
 ```dart
 [..._game.guesses.map((guess) => Row(/* ... */))],
 ```
 
-In this case, it adds five `Row` widgets to the column,
-one for each guess on the `Game` object.
+Neste caso, adiciona cinco widgets `Row` à coluna,
+um para cada palpite no objeto `Game`.
 
 [collection for element]: {{site.dart-site}}/language/collections#for-element
 
-#### An updated widget tree
+#### Uma árvore de widgets atualizada {:#an-updated-widget-tree-2}
 
-The widget tree for this app has expanded significantly in this lesson.
-Now, it looks more like the following (abridged) figure:
+A árvore de widgets para este app se expandiu significativamente nesta lição.
+Agora, ela se parece mais com a figura a seguir (abreviada):
 
-<img src='/assets/images/docs/tutorial/widget_tree_rows_columns.png' width="320px" alt="A diagram showing a tree like structure with a node for each widget in the app.">
+<img src='/assets/images/docs/tutorial/widget_tree_rows_columns.png' width="320px" alt="Um diagrama mostrando uma estrutura de árvore com um nó para cada widget no app.">
 
-:::note Challenge
+:::note Desafio
 
-Add a `Tile` to each row for each letter allowed in the guess.
-Each element in `guess` is a [record][] with the type
+Adicione um `Tile` a cada linha para cada letra permitida no palpite.
+Cada elemento em `guess` é um [registro][record] com o tipo
 `({String char, HitType type})`.
 
-Use a nested loop to iterate over the letters in each guess.
+Use um loop aninhado para iterar sobre as letras de cada palpite.
 
-**Solution:**
+**Solução:**
 
 <?code-excerpt "fwe/birdle/lib/step3_main.dart (GamePage)"?>
 ```dart title="lib/main.dart" collapsed
@@ -306,75 +307,76 @@ class GamePage extends StatelessWidget {
 
 :::
 
-When you reload your app, you should see a 5x5 grid of white squares.
+Quando você recarregar seu app, você deverá ver uma grade 5x5 de quadrados brancos.
 
-<img src='/assets/images/docs/tutorial/grid_of_tiles.png' width="320px" alt="A screenshot that resembles the popular game Wordle.">
+<img src='/assets/images/docs/tutorial/grid_of_tiles.png' width="320px" alt="Uma captura de tela que se assemelha ao popular jogo Wordle.">
 
 [record]: {{site.dart-site}}/language/records
 
-### Review
+### Revisão {:#review}
 
 <SummaryCard>
-title: What you accomplished
-subtitle: Here's a summary of what you built and learned in this lesson.
+title: O que você realizou
+subtitle: Aqui está um resumo do que você construiu e aprendeu nesta lição.
 completed: true
 items:
-  - title: Structured your app with Scaffold and AppBar
+  - title: Estruturou seu app com Scaffold e AppBar
     icon: web_asset
     details: >-
-      You used `Scaffold` to provide a Material-style page layout and
-      `AppBar` to add a title bar at the top of your app.
-      These high-level widgets give your app a standard, yet polished structure.
-  - title: Arranged widgets using Column and Row
+      Você usou `Scaffold` para fornecer um layout de página estilo Material e
+      `AppBar` para adicionar uma barra de título no topo do seu app.
+      Esses widgets de alto nível dão ao seu app uma estrutura padrão, porém refinada.
+  - title: Organizou widgets usando Column e Row
     icon: view_column
     details: >-
-      `Column` arranges widgets vertically and `Row` arranges them horizontally.
-      These are fundamental layout widgets you'll use constantly in Flutter.
-      The `spacing` property adds consistent gaps between children.
-  - title: Generated widgets dynamically from data
+      `Column` organiza widgets verticalmente e `Row` os organiza horizontalmente.
+      Esses são widgets de layout fundamentais que você usará constantemente no Flutter.
+      A propriedade `spacing` adiciona espaços consistentes entre os filhos.
+  - title: Gerou widgets dinamicamente a partir de dados
     icon: repeat
     details: >-
-      You used a collection for element to build widgets from a list.
-      This declarative approach lets you build user interfaces that
-      automatically and visually reflect your data,
-      a pattern central to Flutter development.
-  - title: Built the game board grid
+      Você usou um collection for element para construir widgets a partir de uma lista.
+      Essa abordagem declarativa permite construir interfaces de usuário que
+      refletem seus dados de forma automática e visual,
+      um padrão central no desenvolvimento Flutter.
+  - title: Construiu a grade do tabuleiro do jogo
     icon: grid_view
     details: >-
-      By nesting `Row` widgets inside a `Column` and using nested loops,
-      you created a 5x5 grid of `Tile` widgets.
-      Your app now displays the complete game board layout!
+      Ao aninhar widgets `Row` dentro de uma `Column` e usar loops aninhados,
+      você criou uma grade 5x5 de widgets `Tile`.
+      Seu app agora exibe o layout completo do tabuleiro do jogo!
 </SummaryCard>
 
-### Test yourself
+### Teste seus conhecimentos {:#test-yourself}
 
-<Quiz title="Layout Quiz">
-- question: What is the primary difference between a Column and a Row widget?
+<Quiz title="Quiz de Layout">
+- question: Qual é a principal diferença entre um widget Column e um widget Row?
   options:
-    - text: Column is for scrolling content; Row is for static content.
+    - text: Column é para conteúdo rolável; Row é para conteúdo estático.
       correct: false
-      explanation: Both Column and Row are for layout, not scrolling. Use ListView or SingleChildScrollView for scrolling.
-    - text: Column arranges children vertically; Row arranges children horizontally.
+      explanation: Tanto Column quanto Row servem para layout, não para rolagem. Use ListView ou SingleChildScrollView para rolagem.
+    - text: Column organiza os filhos verticalmente; Row organiza os filhos horizontalmente.
       correct: true
-      explanation: Column lays out its children along the vertical axis, while Row uses the horizontal axis.
-    - text: Column can have unlimited children; Row is limited to two.
+      explanation: Column dispõe seus filhos ao longo do eixo vertical, enquanto Row usa o eixo horizontal.
+    - text: Column pode ter filhos ilimitados; Row é limitado a dois.
       correct: false
-      explanation: Both widgets can have any number of children.
-    - text: Column requires a Scaffold parent; Row does not.
+      explanation: Ambos os widgets podem ter qualquer número de filhos.
+    - text: Column requer um Scaffold como pai; Row não.
       correct: false
-      explanation: Neither widget requires a Scaffold as a parent.
-- question: What does the Scaffold widget provide in a Flutter app?
+      explanation: Nenhum dos widgets requer um Scaffold como pai.
+- question: O que o widget Scaffold fornece em um app Flutter?
   options:
-    - text: Only a background color for the page.
+    - text: Apenas uma cor de fundo para a página.
       correct: false
-      explanation: Scaffold provides much more, including structure for app bars, drawers, and more.
-    - text: A Material-style page layout with slots for app bar, body, drawer, and more.
+      explanation: O Scaffold fornece muito mais, incluindo estrutura para app bars, drawers e mais.
+    - text: Um layout de página estilo Material com espaços para app bar, body, drawer e mais.
       correct: true
-      explanation: Scaffold is a convenience widget that provides a standard Material page structure.
-    - text: A way to navigate between different pages.
+      explanation: Scaffold é um widget de conveniência que fornece uma estrutura de página Material padrão.
+    - text: Uma forma de navegar entre páginas diferentes.
       correct: false
-      explanation: Navigation is handled by Navigator, not Scaffold.
-    - text: Automatic state management for the page.
+      explanation: A navegação é tratada pelo Navigator, não pelo Scaffold.
+    - text: Gerenciamento automático de estado para a página.
       correct: false
-      explanation: Scaffold doesn't manage state; you use StatefulWidget or state management solutions for that.
+      explanation: O Scaffold não gerencia estado; para isso você usa StatefulWidget ou soluções de gerenciamento de estado.
 </Quiz>
+

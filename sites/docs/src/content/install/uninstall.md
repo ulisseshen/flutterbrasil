@@ -1,37 +1,38 @@
 ---
-title: Uninstall Flutter
-shortTitle: Uninstall
+title: Desinstalar Flutter
+shortTitle: Desinstalar
 description: >-
-    How to remove the Flutter SDK and clean up its configuration files.
+    Como remover o Flutter SDK e limpar seus arquivos de configuração.
 showToc: false
+ia-translate: true
 ---
 
-To remove the Flutter SDK from your development machine,
-delete the directories that store Flutter and its configuration files.
+Para remover o Flutter SDK da sua máquina de desenvolvimento,
+exclua os diretórios que armazenam o Flutter e seus arquivos de configuração.
 
-## Confirm your development platform {: #dev-platform }
+## Confirme sua plataforma de desenvolvimento {: #dev-platform }
 
-These instructions are configured for **Windows**{:.selected-os-text}.
-If you're using a different operating system,
-select it from one of the following:
+Estas instruções estão configuradas para **Windows**{:.selected-os-text}.
+Se você estiver usando um sistema operacional diferente,
+selecione-o em uma das opções a seguir:
 
 <OSSelector />
 
-## Uninstall the Flutter SDK {: #uninstall }
+## Desinstalar o Flutter SDK {: #uninstall }
 
- 1. <h3>Determine your Flutter SDK installation location</h3>
+ 1. <h3>Determine a localização da instalação do Flutter SDK</h3>
 
-    Copy the absolute path to the directory that you
-    downloaded and extracted the Flutter SDK into.
+    Copie o caminho absoluto para o diretório em que você
+    baixou e extraiu o Flutter SDK.
 
- 1. <h3>Remove the installation directory</h3>
+ 1. <h3>Remova o diretório de instalação</h3>
 
-    To uninstall the Flutter SDK,
-    delete the `flutter` directory you installed Flutter to.
+    Para desinstalar o Flutter SDK,
+    exclua o diretório `flutter` em que você instalou o Flutter.
 
-    For example, if you downloaded Flutter into a
-    `develop\flutter` folder inside your user directory,
-    run the following command to delete the SDK:
+    Por exemplo, se você baixou o Flutter em uma
+    pasta `develop\flutter` dentro do seu diretório de usuário,
+    execute o seguinte comando para excluir o SDK:
 
     ```ps
     $ Remove-Item -Recurse -Force -Path (Join-Path $env:USERPROFILE "develop\flutter")
@@ -39,19 +40,19 @@ select it from one of the following:
 
 {: .steps .windows-only}
 
- 1. <h3>Determine your Flutter SDK installation location</h3>
+ 1. <h3>Determine a localização da instalação do Flutter SDK</h3>
 
-    Copy the absolute path to the directory that you
-    downloaded and extracted the Flutter SDK into.
+    Copie o caminho absoluto para o diretório em que você
+    baixou e extraiu o Flutter SDK.
 
- 1. <h3>Remove the installation directory</h3>
+ 1. <h3>Remova o diretório de instalação</h3>
 
-    To uninstall the Flutter SDK,
-    delete the `flutter` directory you installed Flutter to.
+    Para desinstalar o Flutter SDK,
+    exclua o diretório `flutter` em que você instalou o Flutter.
 
-    For example, if you downloaded Flutter into a
-    `develop/flutter` folder inside your user directory,
-    run the following command to delete the SDK:
+    Por exemplo, se você baixou o Flutter em uma
+    pasta `develop/flutter` dentro do seu diretório de usuário,
+    execute o seguinte comando para excluir o SDK:
 
     ```console
     $ rm -rf ~/develop/flutter
@@ -59,22 +60,22 @@ select it from one of the following:
 
 {: .steps .macos-only .linux-only .chromeos-only }
 
-## Clean up installation and configuration files {: #cleanup }
+## Limpar arquivos de instalação e configuração {: #cleanup }
 
-Flutter and Dart add to additional directories in your home directory.
-These contain configuration files and package downloads.
-The following cleanup is optional.
+O Flutter e o Dart adicionam a diretórios adicionais em seu diretório home.
+Estes contêm arquivos de configuração e downloads de pacotes.
+A seguinte limpeza é opcional.
 
- 1. <h3>Remove Flutter configuration directories</h3>
+ 1. <h3>Remova diretórios de configuração do Flutter</h3>
 
-    If you don't want to preserve your Flutter tooling configuration,
-    remove the following directories from your device.
+    Se você não deseja preservar sua configuração de ferramentas do Flutter,
+    remova os seguintes diretórios do seu dispositivo.
 
     <div class="windows-only">
 
     - `%APPDATA%\.flutter-devtools`
 
-    To remove these directories, run the following command:
+    Para remover esses diretórios, execute o seguinte comando:
 
     ```ps
     $ Remove-Item -Recurse -Force -Path (Join-Path $env:APPDATA ".flutter-devtools")
@@ -88,7 +89,7 @@ The following cleanup is optional.
     - `~/.flutter-devtools`
     - `~/.flutter_settings`
 
-    To remove these directories, run the following command:
+    Para remover esses diretórios, execute o seguinte comando:
 
     ```ps
     $ rm -rf  ~/.flutter ~/.flutter-devtools ~/.flutter_settings
@@ -96,10 +97,10 @@ The following cleanup is optional.
 
     </div>
 
- 1. <h3>Remove Dart configuration directories</h3>
+ 1. <h3>Remova diretórios de configuração do Dart</h3>
 
-    If you don't want to preserve your Dart tooling configuration,
-    remove the following directories from your device.
+    Se você não deseja preservar sua configuração de ferramentas do Dart,
+    remova os seguintes diretórios do seu dispositivo.
 
     <div class="windows-only">
 
@@ -107,7 +108,7 @@ The following cleanup is optional.
     - `%APPDATA%\.dart-tool`
     - `%LOCALAPPDATA%\.dartServer`
 
-    To remove these directories, run the following command:
+    Para remover esses diretórios, execute o seguinte comando:
 
     ```console
     $ Remove-Item -Recurse -Force -Path (Join-Path $env:APPDATA ".dart"), (Join-Path $env:APPDATA ".dart-tool"), (Join-Path $env:LOCALAPPDATA ".dartServer")
@@ -121,7 +122,7 @@ The following cleanup is optional.
     - `~/.dart-tool`
     - `~/.dartServer`
 
-    To remove these directories, run the following command:
+    Para remover esses diretórios, execute o seguinte comando:
 
     ```console
     $ rm -rf  ~/.dart ~/.dart-tool ~/.dartServer
@@ -129,16 +130,16 @@ The following cleanup is optional.
 
     </div>
 
- 1. <h3>Remove pub package directories</h3>
+ 1. <h3>Remova diretórios de pacotes pub</h3>
 
-    If you don't want to preserve your locally installed pub packages,
-    remove the [pub system cache][] directory from your device.
+    Se você não deseja preservar seus pacotes pub instalados localmente,
+    remova o diretório de [pub system cache][] do seu dispositivo.
 
     <div class="windows-only">
 
-    If you didn't change the location of the pub system cache,
-    run the following command to
-    delete the `%LOCALAPPDATA%\Pub\Cache` directory:
+    Se você não alterou a localização do cache do sistema pub,
+    execute o seguinte comando para
+    excluir o diretório `%LOCALAPPDATA%\Pub\Cache`:
 
     ```ps
     $ Remove-Item -Recurse -Force -Path (Join-Path $env:LOCALAPPDATA "Pub\Cache")
@@ -148,8 +149,8 @@ The following cleanup is optional.
 
     <div class="macos-only linux-only chromeos-only">
 
-    If you didn't change the location of the pub system cache,
-    run the following command to delete the `~/.pub-cache` directory:
+    Se você não alterou a localização do cache do sistema pub,
+    execute o seguinte comando para excluir o diretório `~/.pub-cache`:
 
     ```console
     $ rm -rf ~/.pub-cache
@@ -161,12 +162,12 @@ The following cleanup is optional.
 
 [pub system cache]: {{site.dart-site}}/tools/pub/glossary#system-cache
 
-## Reinstall Flutter {: #reinstall }
+## Reinstalar Flutter {: #reinstall }
 
-You can [reinstall Flutter][flutter-install] or
-[just Dart][dart-install] at any time.
-If you removed any configuration directories,
-reinstalling Flutter restores them to default settings.
+Você pode [reinstalar o Flutter][flutter-install] ou
+[apenas o Dart][dart-install] a qualquer momento.
+Se você removeu quaisquer diretórios de configuração,
+reinstalar o Flutter os restaura para as configurações padrão.
 
 [flutter-install]: /install
 [dart-install]: {{site.dart-site}}/get-dart

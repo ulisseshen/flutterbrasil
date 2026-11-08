@@ -1,138 +1,139 @@
 ---
+ia-translate: true
 title: FAQ
-description: Frequently asked questions and answers about Flutter.
+description: Perguntas frequentes e respostas sobre Flutter.
 showBreadcrumbs: false
 ---
 
-## Introduction
+## Introdução
 
-This page collects common questions about Flutter.
-You can also check out the following specialized FAQs:
+Esta página reúne perguntas comuns sobre o Flutter.
+Você também pode conferir as seguintes FAQs especializadas:
 
-* [Web FAQ][]
-* [Performance FAQ][]
+* [Web FAQ][Web FAQ]
+* [Performance FAQ][Performance FAQ]
 
 [Performance FAQ]: /perf/faq
 [Web FAQ]: /platform-integration/web/faq
 
-### What is Flutter?
+### O que é Flutter?
 
-Flutter is Google's open source framework
-for crafting beautiful, natively compiled applications
-for mobile (iOS, Android), web, desktop (macOS, Windows, Linux),
-and embedded devices from a single codebase.
-Flutter works with existing code,
-is used by developers and organizations worldwide,
-and is free and open source.
+Flutter é o framework open source do Google
+para criar aplicações lindas e compiladas nativamente
+para mobile (iOS, Android), web, desktop (macOS, Windows, Linux)
+e dispositivos embarcados a partir de uma única base de código.
+Flutter funciona com código existente,
+é usado por desenvolvedores e organizações ao redor do mundo,
+e é gratuito e open source.
 
-### Who is Flutter for?
+### Para quem é o Flutter?
 
-For developers, Flutter accelerates app development
-and reduces the cost and complexity of building across platforms.
+Para desenvolvedores, Flutter acelera o desenvolvimento de apps
+e reduz o custo e a complexidade de construir para várias plataformas.
 
-For designers, Flutter provides a flexible canvas
-for high-end user experiences.
-It turns concepts into production code
-without the compromises imposed by traditional cross-platform frameworks.
+Para designers, Flutter fornece uma tela flexível
+para experiências de usuário de alta qualidade.
+Ele transforma conceitos em código de produção
+sem os compromissos impostos por frameworks multiplataforma tradicionais.
 
-For engineering managers and businesses,
-Flutter enables the unification of app developers into a single team,
-building branded apps for multiple platforms from a single codebase.
-Flutter speeds feature development and synchronizes release schedules
-across your customer base.
+Para gerentes de engenharia e empresas,
+Flutter permite a unificação de desenvolvedores de apps em uma única equipe,
+construindo apps com marca para múltiplas plataformas a partir de uma única base de código.
+Flutter acelera o desenvolvimento de recursos e sincroniza cronogramas de lançamento
+em toda a sua base de clientes.
 
-### How much development experience do I need to use Flutter?
+### Quanta experiência de desenvolvimento eu preciso para usar Flutter?
 
-Flutter is approachable to programmers familiar with object-oriented
-and imperative or declarative programming concepts.
-Experience with languages such as Java, Kotlin, Swift, TypeScript,
-or C# helps you learn Dart and Flutter quickly.
+Flutter é acessível para programadores familiarizados com conceitos de
+orientação a objetos e de programação imperativa ou declarativa.
+Experiência com linguagens como Java, Kotlin, Swift, TypeScript
+ou C# ajuda você a aprender Dart e Flutter rapidamente.
 
-### What kinds of apps can I build with Flutter?
+### Que tipos de apps eu posso construir com Flutter?
 
-Flutter supports building mobile apps on Android and iOS,
-web applications, desktop apps on macOS, Windows, and Linux,
-and embedded device interfaces.
+Flutter suporta a criação de apps mobile no Android e iOS,
+aplicações web, apps desktop no macOS, Windows e Linux,
+e interfaces para dispositivos embarcados.
 
-Apps that require custom, branded designs are well suited for Flutter.
-You can also create pixel-perfect experiences that match
-Android's Material Design and iOS's Cupertino design languages.
+Apps que exigem designs personalizados e com marca são adequados para Flutter.
+Você também pode criar experiências pixel-perfect que combinam com
+as linguagens de design Material Design do Android e Cupertino do iOS.
 
-Flutter's [package ecosystem][] on pub.dev supports a wide variety of hardware
-(such as camera, GPS, Bluetooth, network, and local storage)
-and cloud services (such as authentication, notifications, payments, and storage).
+O [ecossistema de packages][package ecosystem] do Flutter no pub.dev suporta uma ampla variedade de hardware
+(como câmera, GPS, Bluetooth, rede e armazenamento local)
+e serviços em nuvem (como autenticação, notificações, pagamentos e armazenamento).
 
 [package ecosystem]: {{site.pub}}/flutter
 
-### Who makes Flutter?
+### Quem faz Flutter?
 
-Flutter is an open source project managed by Google,
-with contributions from a global community of developers,
-companies, and individuals.
+Flutter é um projeto open source gerenciado pelo Google,
+com contribuições de uma comunidade global de desenvolvedores,
+empresas e indivíduos.
 
-### Who uses Flutter?
+### Quem usa Flutter?
 
-Developers and organizations worldwide use Flutter to build
-natively compiled applications.
-To explore apps built with Flutter, visit the [showcase][].
+Desenvolvedores e organizações ao redor do mundo usam Flutter para construir
+aplicações compiladas nativamente.
+Para explorar apps construídos com Flutter, visite a [vitrine][showcase].
 
 [showcase]: {{site.main-url}}/showcase
 
-### What makes Flutter unique?
+### O que torna Flutter único?
 
-Flutter differs from most cross-platform alternatives
-because it doesn't rely on web browser views
-or system-provided platform widgets.
-Instead, Flutter renders its UI using its own high-performance
-rendering engine ([Impeller][]).
+Flutter é diferente da maioria das alternativas multiplataforma
+porque não depende de views de navegador web
+nem de widgets de plataforma fornecidos pelo sistema.
+Em vez disso, Flutter renderiza sua UI usando seu próprio
+motor de renderização de alta performance ([Impeller][]).
 
-In addition, Flutter implements most of its framework
-(including compositing, gestures, animation, and widgets) in [Dart][].
-This architecture gives you deep control over the UI,
-high predictability, and the ability to inspect or modify
-the framework at any level.
+Além disso, Flutter implementa a maior parte de seu framework
+(incluindo composição, gestos, animação e widgets) em [Dart][Dart].
+Essa arquitetura dá a você controle profundo sobre a UI,
+alta previsibilidade e a capacidade de inspecionar ou modificar
+o framework em qualquer nível.
 
 [Dart]: {{site.dart-site}}/
 [Impeller]: /perf/impeller
 
-### Should I build my next production app with Flutter?
+### Devo construir meu próximo app de produção com Flutter?
 
-Yes. Thousands of organizations, from early-stage startups
-to large enterprises, deploy production Flutter apps
-to hundreds of millions of users.
-Explore real-world examples in the [showcase][].
+Sim. Milhares de organizações, desde startups em estágio inicial
+até grandes empresas, implantam apps Flutter em produção
+para centenas de milhões de usuários.
+Explore exemplos do mundo real na [vitrine][showcase].
 
-Flutter releases updates on a regular cadence,
-bringing performance improvements, new features,
-and platform updates to the stable channel.
+Flutter lança atualizações em uma cadência regular,
+trazendo melhorias de desempenho, novos recursos
+e atualizações de plataforma para o canal stable.
 
-## What does Flutter provide?
+## O que Flutter fornece?
 
-### What is inside the Flutter SDK?
+### O que está dentro do Flutter SDK?
 
-The Flutter SDK includes:
+O Flutter SDK inclui:
 
-* High-performance 2D rendering engine ([Impeller][])
-* Modern, reactive framework written in Dart
-* Rich set of widgets implementing Material Design 3 and Cupertino (iOS-style)
-* APIs for unit, widget, and integration tests
-* Interop and plugin APIs to connect to system features and native SDKs
-* Headless test runner for running tests on Windows, Linux, and macOS
-* [Flutter DevTools][] for profiling, debugging, and inspecting your app
-* Command-line tools for creating, building, testing, and compiling apps
+* Motor de renderização 2D de alta performance ([Impeller][])
+* Framework moderno e reativo escrito em Dart
+* Rico conjunto de widgets implementando Material Design 3 e Cupertino (estilo iOS)
+* APIs para testes unitários, de widget e de integração
+* APIs de interop e plugin para conectar a recursos do sistema e SDKs nativos
+* Test runner headless para executar testes no Windows, Linux e macOS
+* [Flutter DevTools][Flutter DevTools] para fazer profiling, depurar e inspecionar seu app
+* Ferramentas de linha de comando para criar, compilar, testar e compilar apps
 
 [Flutter DevTools]: /tools/devtools
 
-### Does Flutter work with any editors or IDEs?
+### Flutter funciona com quaisquer editores ou IDEs?
 
-Flutter provides plugins and extensions for [VS Code][],
-[Antigravity][] (an AI-assisted IDE), [Android Studio][],
-and [IntelliJ IDEA][].
-See [editor configuration][] for setup details,
-and [VS Code][] and [Android Studio/IntelliJ][] for usage guidance.
+O Flutter fornece plugins e extensões para [VS Code][VS Code],
+[Antigravity][] (uma IDE assistida por IA), [Android Studio][Android Studio],
+e [IntelliJ IDEA][IntelliJ IDEA].
+Veja [configuração de editor][editor configuration] para detalhes de configuração,
+e [VS Code][VS Code] e [Android Studio/IntelliJ][Android Studio/IntelliJ] para orientações de uso.
 
-You can also run the `flutter` command from a terminal
-along with any editor that supports [editing Dart][].
+Você também pode executar o comando `flutter` a partir de um terminal
+junto com qualquer editor que suporte [edição de Dart][editing Dart].
 
 [Android Studio]: {{site.android-dev}}/studio
 [Android Studio/IntelliJ]: /tools/android-studio
@@ -142,507 +143,507 @@ along with any editor that supports [editing Dart][].
 [IntelliJ IDEA]: https://www.jetbrains.com/idea/
 [VS Code]: https://code.visualstudio.com/
 
-### Does Flutter come with a framework?
+### Flutter vem com um framework?
 
-Yes. Flutter includes a modern, reactive framework.
-The framework is layered and customizable,
-allowing you to use high-level widgets or interact directly
-with lower layers of the rendering pipeline.
+Sim. Flutter inclui um framework moderno e reativo.
+O framework é em camadas e customizável,
+permitindo que você use widgets de alto nível ou interaja diretamente
+com camadas inferiores do pipeline de renderização.
 
-### Does Flutter come with widgets?
+### Flutter vem com widgets?
 
-Yes. Flutter ships with a collection of high-quality
-[Material Design and Cupertino (iOS-style) widgets][widgets],
-layouts, and themes.
-You can use these widgets as provided,
-customize them, or create custom widgets.
+Sim. Flutter vem com uma coleção de
+[widgets Material Design e Cupertino (estilo iOS)][widgets] de alta qualidade,
+layouts e temas.
+Você pode usar esses widgets como são fornecidos,
+customizá-los ou criar widgets personalizados.
 
 [widgets]: /ui/widgets
 
-### Does Flutter support Material Design?
+### Flutter suporta Material Design?
 
-Yes. Flutter provides full support for [Material Design 3][widget catalog],
-Google's design system.
+Sim. Flutter fornece suporte completo ao [Material Design 3][widget catalog],
+o sistema de design do Google.
 
 [widget catalog]: /ui/widgets/material
 
-### Does Flutter come with a testing framework?
+### Flutter vem com um framework de testes?
 
-Yes. Flutter provides built-in support for unit, widget,
-and integration testing.
-To learn more, see [Testing overview][].
+Sim. Flutter fornece suporte integrado para testes unitários, de widget
+e de integração.
+Para saber mais, veja [Visão geral de testes][Testing overview].
 
 [Testing overview]: /testing/overview
 
-### Does Flutter come with debugging tools?
+### Flutter vem com ferramentas de depuração?
 
-Yes. Flutter includes [Flutter DevTools][].
-For more information, see [Debugging Flutter apps][]
-and the [Flutter DevTools][] documentation.
+Sim. Flutter inclui o [Flutter DevTools][Flutter DevTools].
+Para mais informações, veja [Depurando apps Flutter][Debugging Flutter apps]
+e a documentação do [Flutter DevTools][Flutter DevTools].
 
 [Debugging Flutter apps]: /testing/debugging
 
-### Does Flutter come with a dependency injection framework?
+### Flutter vem com um framework de injeção de dependência?
 
-Flutter doesn't require an opinionated dependency injection framework.
-The Flutter ecosystem offers several packages for dependency injection
-and service location, such as [Riverpod][], [get_it][],
-[Provider][], and [injectable][].
+Flutter não exige um framework opinativo de injeção de dependência.
+O ecossistema Flutter oferece vários packages para injeção de dependência
+e localização de serviços, como [Riverpod][], [get_it][get_it],
+[Provider][] e [injectable][injectable].
 
 [get_it]: {{site.pub}}/packages/get_it
 [injectable]: {{site.pub}}/packages/injectable
 [Provider]: {{site.pub}}/packages/provider
 [Riverpod]: {{site.pub}}/packages/riverpod
 
-## Technology
+## Tecnologia
 
-### What technology is Flutter built with?
+### Com qual tecnologia Flutter é construído?
 
-Flutter is built with C, C++, and Dart.
-It uses [Impeller][] as its default rendering engine,
-taking advantage of modern graphics APIs such as Metal on iOS and macOS,
-and Vulkan on Android.
-For a detailed description of Flutter's layered architecture,
-read the [architectural overview][].
+Flutter é construído com C, C++ e Dart.
+Ele usa o [Impeller][Impeller] como seu motor de renderização padrão,
+aproveitando APIs gráficas modernas como Metal no iOS e macOS,
+e Vulkan no Android.
+Para uma descrição detalhada da arquitetura em camadas do Flutter,
+leia a [visão geral arquitetural][architectural overview].
 
 [architectural overview]: /resources/architectural-overview
 
-### How does Flutter run my code on Android? {:#run-android}
+### Como Flutter executa meu código no Android? {:#run-android}
 
-The engine's C and C++ code is compiled using Android's NDK.
-The Dart code (both the framework and your application code)
-is ahead-of-time (AOT) compiled into native machine code.
-These libraries are packaged into a runner Android project
-and built into an APK or Android App Bundle (AAB).
-When launched, the app loads the Flutter engine,
-which executes the compiled code and renders the UI.
+O código C e C++ do motor é compilado usando o NDK do Android.
+O código Dart (tanto do framework quanto o código da sua aplicação)
+é compilado ahead-of-time (AOT) em código de máquina nativo.
+Essas bibliotecas são empacotadas em um projeto Android "runner"
+e compiladas em um APK ou Android App Bundle (AAB).
+Quando lançado, o app carrega o motor Flutter,
+que executa o código compilado e renderiza a UI.
 
-During debug mode, Flutter runs inside the Dart VM
-to enable stateful [hot reload][],
-allowing you to make changes to your running code without recompiling.
-A "debug" banner in the top right corner indicates
-that the app is running in debug mode.
+Durante o modo debug, Flutter roda dentro da VM Dart
+para habilitar o [hot reload][Hot reload] stateful,
+permitindo que você faça alterações no seu código em execução sem recompilar.
+Um banner "debug" no canto superior direito indica
+que o app está rodando em modo debug.
 
-### How does Flutter run my code on iOS? {:#run-ios}
+### Como Flutter executa meu código no iOS? {:#run-ios}
 
-The engine's C and C++ code is compiled with LLVM.
-The Dart code (both the framework and your application code)
-is ahead-of-time (AOT) compiled into native ARM machine code.
-The compiled code is packaged into a runner iOS project
-and built into an `.ipa` bundle.
-When launched, the app loads the Flutter engine,
-which executes the compiled code and renders the UI using Impeller.
+O código C e C++ do motor é compilado com LLVM.
+O código Dart (tanto do framework quanto o código da sua aplicação)
+é compilado ahead-of-time (AOT) em código de máquina ARM nativo.
+O código compilado é empacotado em um projeto iOS "runner"
+e compilado em um bundle `.ipa`.
+Quando lançado, o app carrega o motor Flutter,
+que executa o código compilado e renderiza a UI usando o Impeller.
 
-During debug mode, Flutter runs inside the Dart VM
-to enable stateful [hot reload][].
-A "debug" banner in the top right corner indicates
-that the app is running in debug mode.
+Durante o modo debug, Flutter roda dentro da VM Dart
+para habilitar o [hot reload][Hot reload] stateful.
+Um banner "debug" no canto superior direito indica
+que o app está rodando em modo debug.
 
-### Does Flutter use my operating system's built-in platform widgets?
+### Flutter usa os widgets de plataforma integrados do meu sistema operacional?
 
-No. Instead, Flutter renders widgets directly using its own engine,
-providing implementations of Material Design and Cupertino (iOS-style) widgets.
-You can explore the available widgets in the [widget catalog][catalog of Flutter's widgets].
+Não. Em vez disso, Flutter renderiza widgets diretamente usando seu próprio motor,
+fornecendo implementações de widgets Material Design e Cupertino (estilo iOS).
+Você pode explorar os widgets disponíveis no [catálogo de widgets][catalog of Flutter's widgets].
 
-By rendering pixels directly, Flutter avoids the performance constraints
-and behavioral differences of platform widget abstractions.
-This approach delivers consistent performance and appearance across platforms.
+Ao renderizar pixels diretamente, Flutter evita as limitações de desempenho
+e as diferenças de comportamento das abstrações de widgets de plataforma.
+Essa abordagem entrega desempenho e aparência consistentes entre plataformas.
 
-For cases where you need a platform-native component
-(such as Google Maps or a web view),
-Flutter supports embedding [platform views][] directly into the widget tree.
+Para casos em que você precisa de um componente nativo da plataforma
+(como Google Maps ou uma web view),
+Flutter suporta incorporar [platform views][] diretamente na árvore de widgets.
 
 [catalog of Flutter's widgets]: /ui/widgets
 [platform views]: /platform-integration/platform-views
 
-### What happens when my mobile OS updates and introduces new widgets?
+### O que acontece quando meu SO mobile atualiza e introduz novos widgets?
 
-The Flutter team and community track new design guidelines
-and platform widgets from Apple and Google,
-updating Flutter's widget libraries accordingly.
-Because Flutter widgets are written in Dart,
-you can also build or adapt widgets immediately
-without waiting for an OS or SDK update.
+A equipe Flutter e a comunidade acompanham novas diretrizes de design
+e widgets de plataforma da Apple e do Google,
+atualizando as bibliotecas de widgets do Flutter de acordo.
+Como os widgets Flutter são escritos em Dart,
+você também pode construir ou adaptar widgets imediatamente
+sem esperar por uma atualização do SO ou do SDK.
 
-### What happens when my mobile OS updates and introduces new platform capabilities?
+### O que acontece quando meu SO mobile atualiza e introduz novas capacidades de plataforma?
 
-Flutter's plugin architecture, [platform channels][],
-and native interop tools (such as Dart FFI, `ffigen`, and `jnigen`)
-allow you to access new OS APIs immediately.
-You don't need to wait for a Flutter SDK release to integrate new platform capabilities.
+A arquitetura de plugins do Flutter, os [platform channels][platform channels]
+e as ferramentas de interop nativo (como Dart FFI, `ffigen` e `jnigen`)
+permitem que você acesse novas APIs do SO imediatamente.
+Você não precisa esperar por um lançamento do Flutter SDK para integrar novas capacidades da plataforma.
 
 [platform channels]: /platform-integration/platform-channels
 
-### Does Flutter support code push?
+### Flutter suporta code push?
 
-Flutter doesn't provide built-in code push functionality.
-Third-party solutions, such as [Shorebird][],
-provide code push support for Flutter applications.
+Flutter não fornece funcionalidade de code push integrada.
+Soluções de terceiros, como o [Shorebird][Shorebird],
+fornecem suporte a code push para aplicações Flutter.
 
 [Shorebird]: https://shorebird.dev/
 
-### What operating systems can I use to build a Flutter app?
+### Quais sistemas operacionais posso usar para construir um app Flutter?
 
-Flutter supports development on macOS, Windows, Linux, and ChromeOS.
-For details on system requirements, see the [install guide][install].
+Flutter suporta desenvolvimento no macOS, Windows, Linux e ChromeOS.
+Para detalhes sobre requisitos de sistema, veja o [guia de instalação][install].
 
 [install]: /install
 
-### What language is Flutter written in?
+### Em qual linguagem Flutter é escrito?
 
-The Flutter framework is written in [Dart][].
-The underlying engine and graphics pipeline are implemented in C and C++.
+O framework Flutter é escrito em [Dart][Dart].
+O motor subjacente e o pipeline gráfico são implementados em C e C++.
 
-### Why did Flutter choose to use Dart?
+### Por que Flutter escolheu usar Dart? {:#why-did-flutter-choose-to-use-dart}
 
-During initial development, the Flutter team evaluated multiple languages
-and runtimes before selecting Dart for the framework and widgets.
-Dart scored highest across several key evaluation criteria:
+Durante o desenvolvimento inicial, a equipe Flutter avaliou várias linguagens
+e runtimes antes de selecionar Dart para o framework e os widgets.
+Dart obteve a maior pontuação em vários critérios-chave de avaliação:
 
-_Developer productivity_
-: Dart supports both JIT (Just-in-Time) compilation for fast development
-  with stateful hot reload, and AOT (Ahead-of-Time) compilation
-  for efficient native machine code in production.
-  Because the framework is written in Dart,
-  developers can inspect, debug, and modify the entire stack.
+_Produtividade do desenvolvedor_
+: Dart suporta tanto compilação JIT (Just-in-Time) para desenvolvimento rápido
+  com hot reload stateful, quanto compilação AOT (Ahead-of-Time)
+  para código de máquina nativo eficiente em produção.
+  Como o framework é escrito em Dart,
+  desenvolvedores podem inspecionar, depurar e modificar toda a stack.
 
-_Object orientation and UI composition_
-: Dart's object-oriented structure matches the requirements
-  of building composable user interfaces without requiring a separate markup language.
+_Orientação a objetos e composição de UI_
+: A estrutura orientada a objetos do Dart atende aos requisitos
+  de construir interfaces de usuário composáveis sem exigir uma linguagem de marcação separada.
 
-_Predictable, high performance_
-: Dart compiles directly to native machine code without an interpreter or bridge,
-  delivering consistent frame rates without unpredictable runtime pauses.
+_Desempenho previsível e alto_
+: Dart compila diretamente para código de máquina nativo sem um interpretador ou bridge,
+  entregando taxas de quadros consistentes sem pausas imprevisíveis em tempo de execução.
 
-_Fast memory allocation_
-: Flutter's reactive framework creates many short-lived objects.
-  Dart's generational garbage collector is optimized
-  for fast allocation and cleanup of ephemeral objects.
+_Alocação rápida de memória_
+: O framework reativo do Flutter cria muitos objetos de curta duração.
+  O coletor de lixo geracional do Dart é otimizado
+  para alocação e limpeza rápidas de objetos efêmeros.
 
-### Can Flutter run any Dart code?
+### Flutter pode executar qualquer código Dart?
 
-Flutter can run any Dart code that doesn't depend on libraries
-unavailable on the target platform.
-For example, mobile and desktop apps can't import web-specific libraries,
-and web apps can't use `dart:io`.
+Flutter pode executar qualquer código Dart que não dependa de bibliotecas
+indisponíveis na plataforma alvo.
+Por exemplo, apps mobile e desktop não podem importar bibliotecas específicas da web,
+e apps web não podem usar `dart:io`.
 
-### How does Flutter compile for the web?
+### Como Flutter compila para a web?
 
-Flutter compiles Dart for the web to both JavaScript and WebAssembly (Wasm).
-WebAssembly compilation (WasmGC) delivers high-performance rendering
-comparable to native desktop and mobile apps.
-For details, see the [Flutter web documentation][web].
+Flutter compila Dart para a web tanto para JavaScript quanto para WebAssembly (Wasm).
+A compilação para WebAssembly (WasmGC) entrega renderização de alta performance
+comparável a apps nativos desktop e mobile.
+Para detalhes, veja a [documentação do Flutter web][web].
 
 [web]: /platform-integration/web
 
-### How big is the Flutter engine? {:#how-big-is-the-flutter-engine}
+### Qual o tamanho do motor Flutter? {:#how-big-is-the-flutter-engine}
 
-A minimal release Flutter application includes the Flutter engine,
-the framework, and your application code.
-The engine adds a small baseline footprint (a few megabytes compressed),
-which varies by target platform and architecture.
+Uma aplicação Flutter mínima de release inclui o motor Flutter,
+o framework e o código da sua aplicação.
+O motor adiciona uma pequena pegada base (alguns megabytes comprimidos),
+que varia de acordo com a plataforma e arquitetura alvo.
 
-App size is largely determined by bundled assets, fonts,
-and third-party packages.
-To analyze and minimize the size of your application,
-see [Measuring your app's size][].
+O tamanho do app é determinado em grande parte pelos assets incluídos, fontes
+e packages de terceiros.
+Para analisar e minimizar o tamanho da sua aplicação,
+veja [Medindo o tamanho do seu app][Measuring your app's size].
 
 [Measuring your app's size]: /perf/app-size
 
-### How does Flutter define a pixel?
+### Como Flutter define um pixel?
 
-Flutter uses logical pixels,
-which correspond roughly to physical pixels on a standard-density display.
-Flutter automatically maps logical pixels to physical device pixels
-based on the view's [`devicePixelRatio`][].
+Flutter usa pixels lógicos,
+que correspondem aproximadamente a pixels físicos em uma tela de densidade padrão.
+Flutter mapeia automaticamente pixels lógicos para pixels físicos do dispositivo
+com base no [`devicePixelRatio`][`devicePixelRatio`] da view.
 
 [`devicePixelRatio`]: {{site.api}}/flutter/dart-ui/FlutterView/devicePixelRatio.html
 
-## Capabilities
+## Capacidades
 
-### What kind of app performance can I expect?
+### Que tipo de desempenho de app posso esperar?
 
-Flutter is designed to deliver smooth 60fps and 120fps animations.
-Flutter apps compile directly to native machine code or WebAssembly,
-eliminating interpreter overhead.
-To learn more about performance optimization, see the [Performance FAQ][].
+Flutter foi projetado para entregar animações suaves a 60fps e 120fps.
+Apps Flutter compilam diretamente para código de máquina nativo ou WebAssembly,
+eliminando a sobrecarga de interpretadores.
+Para saber mais sobre otimização de desempenho, veja a [Performance FAQ][Performance FAQ].
 
-### What kind of developer cycles can I expect? How long between edit and refresh? {:#hot-reload}
+### Que tipo de ciclos de desenvolvedor posso esperar? Quanto tempo entre editar e atualizar? {:#hot-reload}
 
-Flutter implements a stateful _hot reload_ developer cycle.
-You can expect sub-second reload times on physical devices,
-emulators, and simulators.
+Flutter implementa um ciclo de desenvolvedor de _hot reload_ stateful.
+Você pode esperar tempos de reload abaixo de um segundo em dispositivos físicos,
+emuladores e simuladores.
 
-Hot reload preserves your application state,
-allowing you to iterate rapidly without navigating back
-to the current screen after every code change.
+O hot reload preserva o estado da sua aplicação,
+permitindo que você itere rapidamente sem precisar navegar de volta
+para a tela atual após cada alteração de código.
 
-### How is hot reload different from hot restart?
+### Como hot reload é diferente de hot restart?
 
-Hot reload injects updated source code files into the running Dart VM
-without clearing the application state.
-Hot restart resets the application state and re-executes `main()`,
-which takes slightly longer than hot reload but remains faster
-than a full recompile.
+O hot reload injeta arquivos de código-fonte atualizados na VM Dart em execução
+sem limpar o estado da aplicação.
+O hot restart reseta o estado da aplicação e executa novamente `main()`,
+o que leva um pouco mais de tempo que o hot reload, mas continua sendo mais rápido
+do que uma recompilação completa.
 
-For more information, see [Hot reload][].
+Para mais informações, veja [Hot reload][Hot reload].
 
 [Hot reload]: /tools/hot-reload
 
-### Where can I deploy my Flutter app?
+### Onde posso fazer deploy do meu app Flutter?
 
-You can compile and deploy Flutter apps to iOS, Android,
-[web][], [desktop][] (macOS, Windows, Linux), and embedded devices.
+Você pode compilar e fazer deploy de apps Flutter para iOS, Android,
+[web][web], [desktop][desktop] (macOS, Windows, Linux) e dispositivos embarcados.
 
 [desktop]: /platform-integration/desktop
 
-### What devices and OS versions does Flutter run on? {:#what-devices-and-os-versions-does-flutter-run-on}
+### Em quais dispositivos e versões de SO Flutter roda? {:#what-devices-and-os-versions-does-flutter-run-on}
 
-Flutter supports a broad range of operating systems and hardware platforms:
+Flutter suporta uma ampla gama de sistemas operacionais e plataformas de hardware:
 
-* Mobile: Android (ARM32, ARM64, x86_64) and iOS (ARM64).
-* Desktop: macOS (x86_64, ARM64), Windows (x86_64, ARM64), and Linux (x86_64, ARM64).
-* Web: Modern browsers supporting WebAssembly or JavaScript.
+* Mobile: Android (ARM32, ARM64, x86_64) e iOS (ARM64).
+* Desktop: macOS (x86_64, ARM64), Windows (x86_64, ARM64) e Linux (x86_64, ARM64).
+* Web: navegadores modernos que suportam WebAssembly ou JavaScript.
 
-For the complete list of supported OS versions,
-see [Supported platforms][].
+Para a lista completa de versões de SO suportadas,
+veja [Plataformas suportadas][Supported platforms].
 
 [Supported platforms]: /reference/supported-platforms
 
-### Does Flutter run on the web?
+### Flutter roda na web?
 
-Yes. Flutter web support is available on the stable channel
-and supports compilation to both WebAssembly (Wasm) and JavaScript.
-For more details, see [Web support for Flutter][web].
+Sim. O suporte web do Flutter está disponível no canal stable
+e suporta compilação tanto para WebAssembly (Wasm) quanto para JavaScript.
+Para mais detalhes, veja [Suporte web para Flutter][web].
 
-### Can I use Flutter to build desktop apps?
+### Posso usar Flutter para construir apps desktop?
 
-Yes. Desktop support is available on the stable channel
-for macOS, Windows, and Linux.
-For details, see [Desktop support for Flutter][desktop].
+Sim. O suporte desktop está disponível no canal stable
+para macOS, Windows e Linux.
+Para detalhes, veja [Suporte desktop para Flutter][desktop].
 
-### Can I use Flutter inside of my existing native app?
+### Posso usar Flutter dentro do meu app nativo existente?
 
-Yes. You can integrate Flutter into existing Android and iOS applications
-using [Add-to-App][add-to-app].
+Sim. Você pode integrar o Flutter em aplicações Android e iOS existentes
+usando [Add-to-App][add-to-app].
 
 [add-to-app]: /add-to-app
 
-### Can I access platform services and APIs like sensors and local storage?
+### Posso acessar serviços e APIs de plataforma como sensores e armazenamento local?
 
-Yes. Flutter provides access to platform-specific APIs and hardware
-through plugins available on [pub.dev][ready-made packages].
-You can also create custom integrations using [platform channels][]
-or native interop (Dart FFI).
+Sim. Flutter fornece acesso a APIs e hardware específicos de plataforma
+por meio de plugins disponíveis no [pub.dev][ready-made packages].
+Você também pode criar integrações personalizadas usando [platform channels][platform channels]
+ou interop nativo (Dart FFI).
 
 [ready-made packages]: {{site.pub}}/flutter/
 
-### Can I extend and customize the bundled widgets?
+### Posso estender e customizar os widgets empacotados?
 
-Yes. Flutter's widget system is built around composition.
-Instead of subclassing complex widgets,
-you compose smaller, single-purpose widgets to create custom designs.
-This architecture provides control over layout, painting,
-and gesture handling.
+Sim. O sistema de widgets do Flutter é construído em torno da composição.
+Em vez de criar subclasses de widgets complexos,
+você compõe widgets menores e de propósito único para criar designs personalizados.
+Essa arquitetura fornece controle sobre layout, pintura
+e tratamento de gestos.
 
-### Why would I want to share layout code across iOS and Android?
+### Por que eu gostaria de compartilhar código de layout entre iOS e Android?
 
-Sharing layout and UI code reduces engineering effort,
-keeps feature releases synchronized,
-and ensures a consistent brand experience across platforms.
-When you want platform-specific behavior or styling,
-you can adapt the UI using platform checks or responsive layouts.
+Compartilhar código de layout e de UI reduz o esforço de engenharia,
+mantém os lançamentos de recursos sincronizados
+e garante uma experiência de marca consistente entre plataformas.
+Quando você quiser comportamento ou estilo específico de plataforma,
+pode adaptar a UI usando verificações de plataforma ou layouts responsivos.
 
-### Can I interop with my mobile platform's default programming language?
+### Posso fazer interop com a linguagem de programação padrão da minha plataforma mobile?
 
-Yes. Flutter supports calling native code on all supported platforms:
+Sim. Flutter suporta chamar código nativo em todas as plataformas suportadas:
 
-* On Android: Kotlin and Java via [platform channels][] and [JNI interop][] (`jnigen`).
-* On iOS and macOS: Swift and Objective-C via [platform channels][] and [Objective-C/Swift interop][] (`ffigen`).
-* On desktop and mobile: C and C++ via Dart FFI ([`dart:ffi`][]).
+* No Android: Kotlin e Java via [platform channels][platform channels] e [interop com JNI][JNI interop] (`jnigen`).
+* No iOS e macOS: Swift e Objective-C via [platform channels][platform channels] e [interop com Objective-C/Swift][Objective-C/Swift interop] (`ffigen`).
+* No desktop e mobile: C e C++ via Dart FFI ([`dart:ffi`][]).
 
 [JNI interop]: {{site.dart-site}}/interop/java-interop
 [Objective-C/Swift interop]: {{site.dart-site}}/interop/objective-c-interop
 [`dart:ffi`]: {{site.dart-site}}/interop/c-interop
 
-### Does Flutter come with a reflection / mirrors system?
+### Flutter vem com um sistema de reflection / mirrors?
 
-No. Dart disables `dart:mirrors` in Flutter to enable aggressive
-ahead-of-time (AOT) compilation and dead-code elimination (tree shaking).
-This keeps binary sizes small and startup times fast.
-For metadata inspection and serialization,
-Flutter applications use compile-time code generation.
+Não. Dart desabilita `dart:mirrors` no Flutter para permitir compilação
+ahead-of-time (AOT) agressiva e eliminação de código morto (tree shaking).
+Isso mantém os binários pequenos e os tempos de inicialização rápidos.
+Para inspeção de metadados e serialização,
+aplicações Flutter usam geração de código em tempo de compilação.
 
-### Are internationalization and localization supported?
+### Internacionalização e localização são suportadas?
 
-Yes. Flutter provides built-in internationalization (i18n)
-and localization (l10n) support,
-including pluralization, bidirectional text, and date formatting.
-To learn more, see [Internationalizing Flutter apps][internationalization documentation].
+Sim. Flutter fornece suporte integrado a internacionalização (i18n)
+e localização (l10n),
+incluindo pluralização, texto bidirecional e formatação de datas.
+Para saber mais, veja [Internacionalizando apps Flutter][internationalization documentation].
 
 [internationalization documentation]: /ui/internationalization
 
-### What accessibility is supported?
+### Qual acessibilidade é suportada?
 
-Flutter supports standard accessibility features (a11y),
-including screen readers (TalkBack, VoiceOver), large text scaling,
-high-contrast themes, and hardware switch access.
-For details, see [Accessibility][accessibility documentation].
+Flutter suporta recursos padrão de acessibilidade (a11y),
+incluindo leitores de tela (TalkBack, VoiceOver), escalonamento de texto grande,
+temas de alto contraste e acesso por switch de hardware.
+Para detalhes, veja [Acessibilidade][accessibility documentation].
 
 [accessibility documentation]: /ui/accessibility
 
-### How do I write parallel and/or concurrent apps for Flutter?
+### Como escrevo apps paralelos e/ou concorrentes para Flutter?
 
-Dart uses an event loop for asynchronous operations (`Future` and `Stream`).
-For CPU-intensive tasks, Flutter supports isolates—isolated execution
-threads with independent memory heaps that communicate through message passing.
-You can use [`Isolate.run()`][] or the [`compute()`][] function
-to run heavy computations in the background.
+Dart usa um event loop para operações assíncronas (`Future` e `Stream`).
+Para tarefas que exigem muito da CPU, Flutter suporta isolates — threads de execução
+isoladas com heaps de memória independentes que se comunicam por meio de troca de mensagens.
+Você pode usar [`Isolate.run()`][] ou a função [`compute()`][]
+para executar computações pesadas em segundo plano.
 
 [`Isolate.run()`]: {{site.api}}/flutter/dart-isolate/Isolate/run.html
 [`compute()`]: {{site.api}}/flutter/foundation/compute.html
 
-### Can I run Dart code in the background of a Flutter app?
+### Posso executar código Dart em background de um app Flutter?
 
-Yes. You can execute Dart code in background processes on Android and iOS
-using background execution packages and platform service integrations.
+Sim. Você pode executar código Dart em processos em segundo plano no Android e iOS
+usando packages de execução em segundo plano e integrações com serviços da plataforma.
 
-### Can I use JSON, XML, or Protocol Buffers with Flutter?
+### Posso usar JSON, XML ou Protocol Buffers com Flutter?
 
-Yes. The Dart ecosystem provides packages on [pub.dev][]
-for JSON serialization, XML parsing, Protocol Buffers,
-and other data formats.
-For details on working with JSON, see [JSON and serialization][JSON tutorial].
+Sim. O ecossistema Dart fornece packages no [pub.dev][pub.dev]
+para serialização JSON, parsing de XML, Protocol Buffers
+e outros formatos de dados.
+Para detalhes sobre como trabalhar com JSON, veja [JSON e serialização][JSON tutorial].
 
 [JSON tutorial]: /data-and-backend/serialization/json
 [pub.dev]: {{site.pub}}
 
-### Can I build 3D apps with Flutter?
+### Posso construir apps 3D com Flutter?
 
-Yes. Flutter supports 3D graphics through Flutter GPU
-and packages such as `flutter_scene`,
-which use the Impeller rendering backend to draw 3D scenes.
-You can also embed third-party 3D views (such as Unity or native 3D engines)
-using platform views.
+Sim. Flutter suporta gráficos 3D por meio do Flutter GPU
+e de packages como `flutter_scene`,
+que usam o backend de renderização Impeller para desenhar cenas 3D.
+Você também pode incorporar views 3D de terceiros (como Unity ou motores 3D nativos)
+usando platform views.
 
-### Why is my APK or IPA so big?
+### Por que meu APK ou IPA é tão grande?
 
-App bundle size includes the Flutter engine, framework code,
-application logic, and bundled assets (such as images, fonts, and audio).
-Always create a release build (`flutter build apk` or `flutter build appbundle`
-for Android, and `flutter build ipa` for iOS),
-which removes debug symbols and enables compiler optimizations.
-To analyze and reduce app size, see [Measuring your app's size][].
+O tamanho do bundle do app inclui o motor Flutter, o código do framework,
+a lógica da aplicação e os assets incluídos (como imagens, fontes e áudio).
+Sempre crie um build de release (`flutter build apk` ou `flutter build appbundle`
+para Android, e `flutter build ipa` para iOS),
+que remove símbolos de debug e habilita otimizações do compilador.
+Para analisar e reduzir o tamanho do app, veja [Medindo o tamanho do seu app][Measuring your app's size].
 
-### Is Flutter ABI compatible?
+### Flutter é compatível com ABI?
 
-Flutter and Dart don't provide application binary interface (ABI)
-compatibility across different compiler releases.
-Always compile your application using matching SDK versions.
+Flutter e Dart não fornecem compatibilidade de interface binária de aplicação (ABI)
+entre diferentes versões do compilador.
+Sempre compile sua aplicação usando versões correspondentes do SDK.
 
-### How does Flutter handle scrolling?
+### Como Flutter lida com rolagem?
 
-Flutter provides platform-specific scroll physics
-that match the native scrolling behavior of each platform
-(such as momentum scrolling on iOS and overscroll stretch on Android).
-For more details, see the [scrolling][] documentation.
+Flutter fornece física de rolagem específica de cada plataforma
+que corresponde ao comportamento de rolagem nativo de cada plataforma
+(como rolagem com momento no iOS e efeito de esticar ao ultrapassar o limite no Android).
+Para mais detalhes, veja a documentação de [rolagem][scrolling].
 
 [scrolling]: /ui/layout/scrolling
 
 ## Framework
 
-### Why is the build() method on State, rather than StatefulWidget?
+### Por que o método build() está em State, em vez de StatefulWidget?
 
-Placing the `Widget build(BuildContext context)` method on `State`
-rather than `StatefulWidget` provides greater flexibility
-when subclassing `StatefulWidget` and managing lifecycle state.
-For a detailed explanation, see the [API documentation for `State.build`][].
+Colocar o método `Widget build(BuildContext context)` em `State`
+em vez de `StatefulWidget` fornece maior flexibilidade
+ao criar subclasses de `StatefulWidget` e gerenciar o estado do ciclo de vida.
+Para uma explicação detalhada, veja a [documentação da API para `State.build`][API documentation for `State.build`].
 
 [API documentation for `State.build`]: {{site.api}}/flutter/widgets/State/build.html
 
-### Where is Flutter's markup language? Why doesn't Flutter have a markup syntax?
+### Onde está a linguagem de marcação do Flutter? Por que Flutter não tem uma sintaxe de marcação?
 
-Flutter UIs are defined in Dart code rather than a declarative markup language.
-Defining UI in code enables:
+UIs Flutter são definidas em código Dart em vez de uma linguagem de marcação declarativa.
+Definir a UI em código permite:
 
-* Fast development with stateful hot reload.
-* Full access to programming language features (loops, conditionals, functions).
-* Strong type safety and compiler checks.
-* Easy refactoring and code reuse across widgets.
+* Desenvolvimento rápido com hot reload stateful.
+* Acesso completo aos recursos da linguagem de programação (loops, condicionais, funções).
+* Forte segurança de tipos e verificações do compilador.
+* Fácil refatoração e reutilização de código entre widgets.
 
-Because build methods are standard code,
-you can also create widgets dynamically from data or external configurations.
+Como os métodos build são código padrão,
+você também pode criar widgets dinamicamente a partir de dados ou configurações externas.
 
-### My app has a Debug banner in the upper right. Why am I seeing that?
+### Meu app tem um banner Debug no canto superior direito. Por que estou vendo isso?
 
-By default, `flutter run` launches the app in debug mode.
-The debug build configuration runs code inside the Dart VM
-to enable stateful [hot reload][],
-and enables runtime assertions to catch errors early.
-The "Debug" banner indicates that these checks are active.
+Por padrão, `flutter run` lança o app em modo debug.
+A configuração de build debug executa o código dentro da VM Dart
+para habilitar o [hot reload][Hot reload] stateful,
+e habilita asserções em tempo de execução para pegar erros cedo.
+O banner "Debug" indica que essas verificações estão ativas.
 
-To run without assertions and with optimized performance,
-run the app in release mode using `flutter run --release`
-or build a release binary.
+Para executar sem asserções e com desempenho otimizado,
+execute o app em modo release usando `flutter run --release`
+ou compile um binário de release.
 
-### What programming paradigm does Flutter's framework use? {:#what-programming-paradigm-does-flutters-framework-use}
+### Qual paradigma de programação o framework do Flutter usa? {:#what-programming-paradigm-does-flutters-framework-use}
 
-Flutter uses a combination of programming paradigms,
-applying each where it is most effective:
+Flutter usa uma combinação de paradigmas de programação,
+aplicando cada um onde é mais eficaz:
 
-**Composition**
-: The primary paradigm in Flutter is composing small,
-  single-purpose widgets into complex user interfaces.
-  For example, the Material [`TextButton`][] widget is composed of
-  an [`IconTheme`][], an [`InkWell`][], a [`Padding`][],
-  a [`Center`][], a [`Material`][],
-  an [`AnimatedDefaultTextStyle`][], and a [`ConstrainedBox`][].
+**Composição**
+: O paradigma primário no Flutter é compor widgets pequenos
+  e de propósito único em interfaces de usuário complexas.
+  Por exemplo, o widget [`TextButton`][`TextButton`] do Material é composto por
+  um [`IconTheme`][`IconTheme`], um [`InkWell`][`InkWell`], um [`Padding`][`Padding`],
+  um [`Center`][`Center`], um [`Material`][`Material`],
+  um [`AnimatedDefaultTextStyle`][`AnimatedDefaultTextStyle`] e um [`ConstrainedBox`][`ConstrainedBox`].
 
-**Functional programming**
-: Applications can define UI using [`StatelessWidget`][] instances,
-  which act as functions mapping configuration inputs to child widgets.
-  Flutter uses immutable data structures across its widget hierarchy,
-  including [`Widget`][], [`TextStyle`][], and [`Rect`][].
+**Programação funcional**
+: Aplicações podem definir a UI usando instâncias de [`StatelessWidget`][`StatelessWidget`],
+  que atuam como funções que mapeiam entradas de configuração para widgets filhos.
+  Flutter usa estruturas de dados imutáveis em toda a sua hierarquia de widgets,
+  incluindo [`Widget`][`Widget`], [`TextStyle`][`TextStyle`] e [`Rect`][`Rect`].
 
-**Event-driven programming**
-: User interactions are represented by event objects
-  dispatched to callbacks registered on widgets.
-  Classes like [`Listenable`][] formalize event subscription models.
+**Programação orientada a eventos**
+: Interações do usuário são representadas por objetos de evento
+  despachados para callbacks registrados em widgets.
+  Classes como [`Listenable`][`Listenable`] formalizam modelos de assinatura de eventos.
 
-**Class-based object-oriented programming**
-: The framework APIs use inheritance to specialize behavior.
-  For example, [`RenderBox`][] extends [`RenderObject`][]
-  to establish a Cartesian coordinate system for 2D layout.
+**Programação orientada a objetos baseada em classes**
+: As APIs do framework usam herança para especializar comportamentos.
+  Por exemplo, [`RenderBox`][`RenderBox`] estende [`RenderObject`][`RenderObject`]
+  para estabelecer um sistema de coordenadas cartesiano para layout 2D.
 
-**Prototype-based object-oriented programming**
-: The [`ScrollPhysics`][] class chains instances to compose
-  scrolling physics dynamically at runtime.
+**Programação orientada a objetos baseada em protótipos**
+: A classe [`ScrollPhysics`][`ScrollPhysics`] encadeia instâncias para compor
+  a física de rolagem dinamicamente em tempo de execução.
 
-**Imperative programming**
-: Imperative code manages encapsulated state and test execution,
-  where step-by-step logic is clearest.
+**Programação imperativa**
+: Código imperativo gerencia estado encapsulado e a execução de testes,
+  onde a lógica passo a passo é mais clara.
 
-**Reactive programming**
-: Constructor parameters propagate changes down the widget tree,
-  and user interactions trigger updates back up the tree through callbacks.
-  State changes schedule rebuilds of affected subtrees.
+**Programação reativa**
+: Parâmetros de construtor propagam mudanças para baixo na árvore de widgets,
+  e interações do usuário disparam atualizações de volta para cima na árvore por meio de callbacks.
+  Mudanças de estado agendam reconstruções das subárvores afetadas.
 
-**Declarative programming**
-: Widget `build` methods describe the desired UI state declaratively,
-  leaving layout and rendering updates to the framework.
+**Programação declarativa**
+: Os métodos `build` dos widgets descrevem o estado desejado da UI de forma declarativa,
+  deixando as atualizações de layout e renderização para o framework.
 
-**Generic programming**
-: Generic types enforce type safety across the framework,
-  such as parameterizing [`State<T>`][] with its widget type
-  and [`GlobalKey<T>`][] with its state type.
+**Programação genérica**
+: Tipos genéricos garantem a segurança de tipos em todo o framework,
+  como parametrizar [`State<T>`][] com seu tipo de widget
+  e [`GlobalKey<T>`][] com seu tipo de estado.
 
-**Concurrent programming**
-: Flutter uses [`Future`][] and [`Stream`][] for asynchronous operations,
-  and isolates for parallel background computation.
+**Programação concorrente**
+: Flutter usa [`Future`][`Future`] e [`Stream`][] para operações assíncronas,
+  e isolates para computação paralela em segundo plano.
 
-**Constraint programming**
-: The layout system uses box constraints (minimum and maximum width and height)
-  passed down from parent to child to compute geometry in a single pass.
+**Programação de restrições**
+: O sistema de layout usa restrições de caixa (largura e altura mínimas e máximas)
+  passadas de pai para filho para calcular a geometria em uma única passagem.
 
 [`AnimatedDefaultTextStyle`]: {{site.api}}/flutter/widgets/AnimatedDefaultTextStyle-class.html
 [`Center`]: {{site.api}}/flutter/widgets/Center-class.html
@@ -665,19 +666,19 @@ applying each where it is most effective:
 [`TextStyle`]: {{site.api}}/flutter/painting/TextStyle-class.html
 [`Widget`]: {{site.api}}/flutter/widgets/Widget-class.html
 
-## Project
+## Projeto
 
-### Where can I get support?
+### Onde posso obter suporte?
 
-To report bugs or request features, file an issue in the
-[Flutter issue tracker][issue tracker].
+Para reportar bugs ou solicitar recursos, registre uma issue no
+[issue tracker do Flutter][issue tracker].
 
-For community discussion, troubleshooting, and advice:
+Para discussões da comunidade, solução de problemas e conselhos:
 
-* Join the [Flutter Discord][Discord].
-* Ask questions on [Stack Overflow][] using the `flutter` tag.
-* Participate in discussions on [Reddit r/FlutterDev][Reddit].
-* Visit the [Community][] page for additional resources.
+* Junte-se ao [Discord do Flutter][Discord].
+* Faça perguntas no [Stack Overflow][Stack Overflow] usando a tag `flutter`.
+* Participe de discussões no [Reddit r/FlutterDev][Reddit].
+* Visite a página [Community][Community] para recursos adicionais.
 
 [Community]: {{site.main-url}}/community
 [Discord]: https://discord.com/invite/rflutterdev
@@ -685,78 +686,78 @@ For community discussion, troubleshooting, and advice:
 [Reddit]: https://www.reddit.com/r/FlutterDev/
 [Stack Overflow]: {{site.so}}/tags/flutter
 
-### How do I get involved?
+### Como me envolvo?
 
-Flutter is open source, and contributions are welcome.
-You can help by:
+Flutter é open source, e contribuições são bem-vindas.
+Você pode ajudar:
 
-* Reporting bugs and feature requests on the [issue tracker][].
-* Contributing code and documentation by following the [Contributing guide][].
-* Triaging issues or helping other developers on [Discord][] and [Stack Overflow][].
+* Reportando bugs e solicitações de recursos no [issue tracker][issue tracker].
+* Contribuindo com código e documentação seguindo o [guia de Contribuição][Contributing guide].
+* Fazendo triagem de issues ou ajudando outros desenvolvedores no [Discord][Discord] e no [Stack Overflow][Stack Overflow].
 
 [Contributing guide]: {{site.repo.flutter}}/blob/main/CONTRIBUTING.md
 
-### Is Flutter open source?
+### Flutter é open source?
 
-Yes. Flutter is open source and available under the
-BSD 3-Clause License on [GitHub][].
+Sim. Flutter é open source e está disponível sob a
+licença BSD 3-Clause no [GitHub][GitHub].
 
 [GitHub]: {{site.repo.flutter}}
 
-### Which software license(s) apply to Flutter and its dependencies?
+### Quais licenças de software se aplicam ao Flutter e suas dependências?
 
-Flutter includes two main components:
-the engine (compiled binary with dependencies)
-and the framework (Dart source code).
+Flutter inclui dois componentes principais:
+o motor (binário compilado com dependências)
+e o framework (código-fonte Dart).
 
-* The framework is licensed under the [BSD 3-Clause License][only one license].
-* The engine uses open source dependencies listed in its [license file][].
-* Dart packages on pub.dev specify their own individual licenses.
+* O framework é licenciado sob a [licença BSD 3-Clause][only one license].
+* O motor usa dependências open source listadas em seu [arquivo de licença][license file].
+* Packages Dart no pub.dev especificam suas próprias licenças individuais.
 
 [license file]: {{site.repo.flutter}}/blob/main/engine/src/flutter/sky/packages/sky_engine/LICENSE
 [only one license]: {{site.repo.flutter}}/blob/main/LICENSE
 
-### How can I determine the licenses my Flutter application needs to show?
+### Como posso determinar as licenças que meu aplicativo Flutter precisa mostrar?
 
-Flutter provides built-in APIs to display open source licenses:
+Flutter fornece APIs integradas para exibir licenças open source:
 
-* If your application uses a `Drawer`, add an [`AboutListTile`][].
-* If your application uses Material Design, call [`showAboutDialog`][]
-  or [`showLicensePage`][].
-* For custom presentations, access the raw licenses from the [`LicenseRegistry`][].
+* Se sua aplicação usa um `Drawer`, adicione um [`AboutListTile`][`AboutListTile`].
+* Se sua aplicação usa Material Design, chame [`showAboutDialog`][`showAboutDialog`]
+  ou [`showLicensePage`][`showLicensePage`].
+* Para apresentações personalizadas, acesse as licenças brutas a partir do [`LicenseRegistry`][`LicenseRegistry`].
 
 [`AboutListTile`]: {{site.material_ui}}/AboutListTile-class.html
 [`LicenseRegistry`]: {{site.api}}/flutter/foundation/LicenseRegistry-class.html
 [`showAboutDialog`]: {{site.material_ui}}/showAboutDialog.html
 [`showLicensePage`]: {{site.material_ui}}/showLicensePage.html
 
-### Who works on Flutter?
+### Quem trabalha no Flutter?
 
-Flutter is developed by engineers at Google along with
-hundreds of open source contributors worldwide.
-To join the community, see [contribute to Flutter][].
+Flutter é desenvolvido por engenheiros do Google junto com
+centenas de colaboradores open source ao redor do mundo.
+Para se juntar à comunidade, veja [contribuir para o Flutter][contribute to Flutter].
 
 [contribute to Flutter]: {{site.repo.flutter}}/blob/main/CONTRIBUTING.md
 
-### What are Flutter's guiding principles?
+### Quais são os princípios orientadores do Flutter?
 
-Flutter is built around three core principles:
+Flutter é construído em torno de três princípios fundamentais:
 
-_Control_
-: Developers have full access to and control over every layer of the system.
+_Controle_
+: Desenvolvedores têm acesso completo e controle sobre todas as camadas do sistema.
 
-_Performance_
-: Applications deliver smooth, responsive, jank-free experiences.
+_Desempenho_
+: Aplicações entregam experiências fluidas, responsivas e sem travamentos.
 
-_Fidelity_
-: Applications achieve pixel-perfect, beautiful user experiences on every platform.
+_Fidelidade_
+: Aplicações alcançam experiências de usuário lindas e pixel-perfect em todas as plataformas.
 
-### Will Apple or Google reject my Flutter app?
+### A Apple ou o Google vão rejeitar meu app Flutter?
 
-No. Thousands of Flutter apps are published, approved, and featured
-in the Apple App Store and Google Play Store.
-As with any application, ensure your app complies with
-Apple's [App Store Review Guidelines][guidelines]
-and Google Play's Developer Program Policies.
+Não. Milhares de apps Flutter são publicados, aprovados e destacados
+na Apple App Store e na Google Play Store.
+Como com qualquer aplicação, certifique-se de que seu app está em conformidade com as
+[App Store Review Guidelines][guidelines] da Apple
+e com as Políticas do Programa para Desenvolvedores do Google Play.
 
 [guidelines]: {{site.apple-dev}}/app-store/review/guidelines/

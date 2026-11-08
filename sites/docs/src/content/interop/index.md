@@ -1,25 +1,26 @@
 ---
-title: Native interop
-description: Learn about the options to call platform-specific code in your app.
+ia-translate: true
+title: Interoperabilidade nativa
+description: Conheça as opções para chamar código específico de plataforma no seu app.
 ---
 
-Flutter apps run on multiple platforms,
-but sometimes you need to communicate directly
-with the host operating system or run code from an existing native library.
+Apps Flutter rodam em várias plataformas,
+mas às vezes você precisa se comunicar diretamente
+com o sistema operacional hospedeiro ou executar código de uma biblioteca nativa existente.
 
-To solve this, Flutter provides several interop tools ranging from
-code generators to direct FFI bindings.
+Para isso, o Flutter oferece várias ferramentas de interop,
+desde geradores de código até bindings FFI diretos.
 
 <a id="choose-your-interop-solution" aria-hidden="true"></a>
-## Overview of interop tools
+## Visão geral das ferramentas de interop {:#overview-of-interop-tools}
 
-Flutter's interop tools take one of two architectural approaches
-to bridging Dart and native code.
-FFIgen and JNIgen use a bottom-up approach, which starts from existing
-native APIs and generates Dart bindings that mirror them directly.
-Pigeon uses a top-down approach, which starts from a single Dart schema
-and generates matching client and host interfaces across multiple platforms.
-Choose the approach that best fits your integration needs.
+As ferramentas de interop do Flutter adotam uma de duas abordagens arquiteturais
+para fazer a ponte entre Dart e código nativo.
+FFIgen e JNIgen usam uma abordagem bottom-up, que parte de APIs nativas
+existentes e gera bindings Dart que espelham essas APIs diretamente.
+Pigeon usa uma abordagem top-down, que parte de um único schema Dart
+e gera interfaces cliente e host correspondentes em várias plataformas.
+Escolha a abordagem que melhor se adapta às necessidades da sua integração.
 
 ```mermaid
 %%{init: {'themeVariables': {'clusterBkg': '#1a73e80a', 'clusterBorder': '#1a73e8'}}}%%
@@ -40,126 +41,127 @@ flowchart TD
     classDef flutterAccent fill:#1a73e826,stroke:#1a73e8,stroke-width:2px;
 ```
 
-### Bottom-up with FFIgen and JNIgen
+### Bottom-up com FFIgen e JNIgen {:#bottom-up-with-ffigen-and-jnigen}
 
-FFIgen and JNIgen generate low-level Dart bindings directly from your
-target platform's headers or classes.
-Because the generated bindings call native code without serialization
-overhead, you're responsible for managing native memory lifetimes and
-threading in your Dart code.
+FFIgen e JNIgen geram bindings Dart de baixo nível diretamente a partir
+dos headers ou das classes da plataforma de destino.
+Como os bindings gerados chamam código nativo sem overhead de serialização,
+você é responsável por gerenciar o tempo de vida da memória nativa
+e a concorrência no seu código Dart.
 
-- [FFIgen](/interop/ffigen) parses C and Objective-C headers
-  (including `@objc`-annotated Swift) to generate direct
-  [`dart:ffi`](/interop/dart-ffi) bindings.
-  Wrapping an iOS or macOS framework with FFIgen produces an
-  Apple-shaped Dart API; wrapping a C library or C-ABI binary
-  (C, C++ with `extern "C"`, Rust, or Go) produces a C-shaped Dart API.
-- [JNIgen](/interop/jnigen) inspects Java and Kotlin classes,
-  JAR and AAR files, or Android SDK packages to generate direct JNI bindings.
-  Wrapping an Android package with JNIgen produces an
-  Android-shaped Dart API.
+- [FFIgen](/interop/ffigen) analisa headers de C e Objective-C
+  (incluindo Swift anotado com `@objc`) para gerar
+  bindings diretos de [`dart:ffi`](/interop/dart-ffi).
+  Envolver um framework de iOS ou macOS com o FFIgen produz uma API Dart
+  com formato Apple; envolver uma biblioteca C ou um binário com ABI C
+  (C, C++ com `extern "C"`, Rust ou Go) produz uma API Dart com formato C.
+- [JNIgen](/interop/jnigen) inspeciona classes Java e Kotlin,
+  arquivos JAR e AAR ou pacotes do Android SDK para gerar
+  bindings JNI diretos.
+  Envolver um pacote Android com o JNIgen produz uma API Dart
+  com formato Android.
 
-### Top-down with Pigeon
+### Top-down com Pigeon {:#top-down-with-pigeon}
 
-[Pigeon](/interop/pigeon) starts from a single Dart schema that
-defines an intentional, platform-agnostic boundary contract once and
-enforces identical types and signatures across Android, iOS, macOS,
-Windows, and Linux.
-You implement the generated host interface on each target platform
-while Pigeon handles type safety, data conversion, and cross-runtime
-memory safety across the boundary.
+[Pigeon](/interop/pigeon) parte de um único schema Dart que define,
+uma única vez, um contrato de fronteira intencional e independente de plataforma,
+e garante tipos e assinaturas idênticos entre Android, iOS, macOS,
+Windows e Linux.
+Você implementa a interface host gerada em cada plataforma de destino,
+enquanto o Pigeon cuida da segurança de tipos, da conversão de dados
+e da segurança de memória entre runtimes na fronteira.
 
-Pigeon generates bindings over
+O Pigeon gera bindings sobre
 [platform channels](/platform-integration/platform-channels)
-for all supported platforms, and offers a preview option to generate
-direct native interop bindings using [FFIgen](/interop/ffigen)
-on iOS and macOS and [JNIgen](/interop/jnigen) on Android.
+para todas as plataformas suportadas e oferece uma opção de prévia
+para gerar bindings de interop nativa direta usando o [FFIgen](/interop/ffigen)
+no iOS e no macOS e o [JNIgen](/interop/jnigen) no Android.
 
-## Package your interop code
+## Empacote seu código de interop {:#package-your-interop-code}
 
-Depending on how you plan to share your code,
-choose the option that best suits your use case.
-To learn about the difference between a [package](/resources/glossary#package)
-and a [plugin](/resources/glossary#plugin),
-refer to the [Flutter glossary](/resources/glossary).
+Dependendo de como você pretende compartilhar seu código,
+escolha a opção que melhor se adapta ao seu caso de uso.
+Para entender a diferença entre um [package](/resources/glossary#package)
+e um [plugin](/resources/glossary#plugin),
+consulte o [glossário do Flutter](/resources/glossary).
 
-- **In-app integration.**
-  Write your native interop code directly inside your Flutter app without
-  creating a separate package.
+- **Integração no próprio app.**
+  Escreva seu código de interop nativo diretamente dentro do seu app Flutter,
+  sem criar um package separado.
 - **Plugin.**
-  A specialized package that makes native platform functionality (such as a
-  device's camera or sensors) available to your app
+  Um package especializado que disponibiliza funcionalidades nativas da plataforma
+  (como a câmera ou os sensores de um dispositivo) para o seu app
   (`flutter create --template=plugin`).
-  For more details, refer to
-  [Developing plugin packages](/packages-and-plugins/developing-packages#plugin).
-- **FFI package.**
-  A package that compiles and bundles native C or C++ code (or pre-compiled
-  binaries) using [Dart build hooks](/interop/bind-native-code) and
-  [`dart:ffi`](/interop/dart-ffi).
-  This template also includes an FFIgen configuration to regenerate
-  Dart bindings (`flutter create --template=package_ffi`).
-  For more details, refer to
-  [Developing FFI packages](/packages-and-plugins/developing-packages#ffi).
+  Para mais detalhes, consulte
+  [Desenvolvendo packages de plugin](/packages-and-plugins/developing-packages#plugin).
+- **Package FFI.**
+  Um package que compila e empacota código nativo em C ou C++
+  (ou binários pré-compilados) usando [build hooks do Dart](/interop/bind-native-code)
+  e [`dart:ffi`](/interop/dart-ffi).
+  Este template também inclui uma configuração do FFIgen para regenerar
+  os bindings Dart (`flutter create --template=package_ffi`).
+  Para mais detalhes, consulte
+  [Desenvolvendo packages FFI](/packages-and-plugins/developing-packages#ffi).
 
-For more details on package authoring,
-refer to [Developing packages and plugins](/packages-and-plugins/developing-packages).
+Para mais detalhes sobre a criação de packages,
+consulte [Desenvolvendo packages e plugins](/packages-and-plugins/developing-packages).
 
-## Tool comparison
+## Comparação de ferramentas {:#tool-comparison}
 
-The following table compares two interop solutions:
+A tabela a seguir compara duas soluções de interop:
 
-- **Direct interop:** Lower-level direct bindings with higher performance for
-  large data; requires manual memory and threading management.
-- **Pigeon:** Structured, type-safe code generator for cross-platform
-  boundary contracts.
+- **Interop direta:** bindings diretos de nível mais baixo, com maior desempenho
+  para grandes volumes de dados; exige gerenciamento manual de memória e concorrência.
+- **Pigeon:** gerador de código estruturado e com segurança de tipos
+  para contratos de fronteira multiplataforma.
 
-| Target language | Direct interop | Pigeon |
+| Linguagem de destino | Interop direta | Pigeon |
 | --- | --- | --- |
-| **C** | [FFIgen](/interop/ffigen) | Supported on Linux (GObject) with platform channels |
-| **C++ with `extern "C"`** | [FFIgen](/interop/ffigen) | Supported on Windows with platform channels |
-| **C++ without `extern "C"`** | FFIgen (not yet supported) | Supported on Windows with platform channels |
-| **Rust with `extern "C"`** | [FFIgen](/interop/ffigen) | Not supported directly |
-| **Rust without `extern "C"`** | [Flutter Rust Bridge][frb] | Not supported |
-| **Go with `extern "C"`** | [FFIgen](/interop/ffigen) | Not supported directly |
-| **Go without `extern "C"`** | Not supported | Not supported |
-| **Java** | [JNIgen](/interop/jnigen) | Supported with platform channels, or through Kotlin with native interop (preview) |
-| **Kotlin** | [JNIgen](/interop/jnigen) | Supported with platform channels or native interop (preview) |
-| **Objective-C** | [FFIgen](/interop/ffigen) | Supported with platform channels, or through Swift with native interop (preview) |
-| **Swift without Obj-C compatibility annotations** | [`package:swiftgen`][swiftgen-pub] (experimental) | Supported with platform channels or native interop (preview) |
+| **C** | [FFIgen](/interop/ffigen) | Suportado no Linux (GObject) com platform channels |
+| **C++ com `extern "C"`** | [FFIgen](/interop/ffigen) | Suportado no Windows com platform channels |
+| **C++ sem `extern "C"`** | FFIgen (ainda não suportado) | Suportado no Windows com platform channels |
+| **Rust com `extern "C"`** | [FFIgen](/interop/ffigen) | Não suportado diretamente |
+| **Rust sem `extern "C"`** | [Flutter Rust Bridge][frb] | Não suportado |
+| **Go com `extern "C"`** | [FFIgen](/interop/ffigen) | Não suportado diretamente |
+| **Go sem `extern "C"`** | Não suportado | Não suportado |
+| **Java** | [JNIgen](/interop/jnigen) | Suportado com platform channels, ou via Kotlin com interop nativa (prévia) |
+| **Kotlin** | [JNIgen](/interop/jnigen) | Suportado com platform channels ou interop nativa (prévia) |
+| **Objective-C** | [FFIgen](/interop/ffigen) | Suportado com platform channels, ou via Swift com interop nativa (prévia) |
+| **Swift sem anotações de compatibilidade com Obj-C** | [`package:swiftgen`][swiftgen-pub] (experimental) | Suportado com platform channels ou interop nativa (prévia) |
 
 {:.table .table-striped}
 
-## Understand interop layers
+## Entenda as camadas de interop {:#understand-interop-layers}
 
-Dart structures native interop into three distinct layers:
-low-level bindings, idiomatic Dart APIs, and framework-specific plugins.
+O Dart organiza a interop nativa em três camadas distintas:
+bindings de baixo nível, APIs Dart idiomáticas e plugins específicos do framework.
 
-For complete architectural details,
-consult the [native interop layers guide][interop-layers].
+Para detalhes completos da arquitetura,
+consulte o [guia de camadas de interop nativa][interop-layers].
 
-### Layer 1: Low-level bindings
+### Camada 1: bindings de baixo nível {:#layer-1-low-level-bindings}
 
-Layer 1 consists of thin, high-performance, and unopinionated wrappers around
-native code (for example, [`dart:ffi`](/interop/dart-ffi),
-`dart:js_interop`, [FFIgen](/interop/ffigen),
-and [JNIgen](/interop/jnigen)).
-These APIs mirror native signatures closely,
-but require manual memory and threading management.
+A camada 1 é composta por wrappers finos, de alto desempenho e sem opinião
+sobre o código nativo (por exemplo, [`dart:ffi`](/interop/dart-ffi),
+`dart:js_interop`, [FFIgen](/interop/ffigen)
+e [JNIgen](/interop/jnigen)).
+Essas APIs espelham de perto as assinaturas nativas,
+mas exigem gerenciamento manual de memória e de concorrência.
 
-### Layer 2: Idiomatic Dart APIs
+### Camada 2: APIs Dart idiomáticas {:#layer-2-idiomatic-dart-apis}
 
-Layer 2 consists of idiomatic Dart APIs that wrap the low-level layer to hide
-platform-specific complexities (for example,
-[Pigeon](/interop/pigeon) or the
-[`sqlite3` package][sqlite3-pub]).
-These manage concurrency, memory lifetimes, and data conversions automatically.
+A camada 2 é composta por APIs Dart idiomáticas que envolvem a camada de baixo nível
+para ocultar complexidades específicas de cada plataforma (por exemplo,
+[Pigeon](/interop/pigeon) ou o [package `sqlite3`][sqlite3-pub]).
+Elas gerenciam automaticamente a concorrência, o tempo de vida da memória
+e as conversões de dados.
 
-### Layer 3: Framework-specific plugins
+### Camada 3: plugins específicos do framework {:#layer-3-framework-specific-plugins}
 
-Layer 3 provides integration with framework-specific APIs (for example, the
-Flutter Plugin API).
-This layer exposes Dart APIs to the framework while hiding platform details
-like Android's `Context` or iOS's application lifecycle.
+A camada 3 oferece integração com APIs específicas do framework (por exemplo,
+a API de Plugins do Flutter).
+Essa camada expõe APIs Dart para o framework e oculta detalhes da plataforma,
+como o `Context` do Android ou o ciclo de vida de aplicações do iOS.
 
 [frb]: {{site.pub-pkg}}/flutter_rust_bridge
 [swiftgen-pub]: {{site.pub-pkg}}/swiftgen

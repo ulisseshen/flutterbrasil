@@ -1,63 +1,65 @@
 ---
-title: Input and events
-description: How input and events are handled in GenUI applications.
+ia-translate: true
+title: Entrada e eventos
+description: Como entrada e eventos são tratados em aplicações GenUI.
 prev:
-  title: Get started with the GenUI SDK for Flutter
+  title: Comece com o GenUI SDK para Flutter
   path: /ai/genui/get-started
 ---
 
-This guide explains how user interactions are handled
-within the GenUI package, from the initial widget
-interaction to the AI agent receiving the event.
+Este guia explica como as interações do usuário são tratadas
+dentro do pacote GenUI, desde a interação inicial com o widget
+até o agente de IA receber o evento.
 
 :::experimental
-The `genui` package is in alpha and is likely to change.
+O pacote `genui` está em alfa e provavelmente vai mudar.
 :::
 
-## Overview
+## Visão geral {:#overview}
 
-In the GenUI architecture, the UI is driven by the AI,
-but user interactions (like clicking a button or submitting a form)
-must be communicated back to the AI agent.
-This allows the agent to update the UI or perform actions
-in response to user input.
+Na arquitetura do GenUI, a UI é conduzida pela IA,
+mas as interações do usuário (como clicar em um botão
+ou enviar um formulário) precisam ser comunicadas de volta
+ao agente de IA.
+Isso permite que o agente atualize a UI ou execute ações
+em resposta à entrada do usuário.
 
-The flow of an event is as follows:
+O fluxo de um evento é o seguinte:
 
-1. Interaction: User interacts with a widget;
-   for example, the user taps a button.
-2. Capture: The widget implementation dispatches a `UiEvent`.
-3. Processing: The framework adds context
-   (such as a `surfaceId` or data model values)
-   and forwards the event.
-4. Transmission: The Flutter widget generates the event,
-   adds the appropriate context, and routes
-   it to the AI through the `ContentGenerator`,
-   which forwards it to the AI agent.
+1. Interação: o usuário interage com um widget;
+   por exemplo, toca em um botão.
+2. Captura: a implementação do widget despacha um `UiEvent`.
+3. Processamento: o framework adiciona contexto
+   (como um `surfaceId` ou valores do modelo de dados)
+   e encaminha o evento.
+4. Transmissão: o widget Flutter gera o evento,
+   adiciona o contexto apropriado e o roteia
+   para a IA por meio do `ContentGenerator`,
+   que o encaminha ao agente de IA.
 
-## Defining events
+## Definindo eventos {:#defining-events}
 
-### Protocol level
+### Nível do protocolo {:#protocol-level}
 
-The A2UI protocol defines an `action` message used to report events.
-An `action` contains:
+O protocolo A2UI define uma mensagem `action` usada para reportar eventos.
+Uma `action` contém:
 
-* `name`: The name of the action
-  (defined by the AI when generating the component).
-* `surfaceId`: The ID of the UI surface where the event occurred.
-* `sourceComponentId`: The ID of the component that triggered the event.
-* `context`: A JSON object containing data relevant to the event.
-* `timestamp`: When the event occurred.
+* `name`: o nome da ação
+  (definido pela IA ao gerar o componente).
+* `surfaceId`: o ID da superfície de UI onde o evento ocorreu.
+* `sourceComponentId`: o ID do componente que disparou o evento.
+* `context`: um objeto JSON com dados relevantes ao evento.
+* `timestamp`: quando o evento ocorreu.
 
-### Dart implementation
+### Implementação em Dart {:#dart-implementation}
 
-In [`package:genui`][], user events are represented by the
-`UiEvent` extension type and its concrete implementation
+No [`package:genui`][], os eventos do usuário são representados
+pelo extension type `UiEvent` e por sua implementação concreta,
 `UserActionEvent`.
 
 [`package:genui`]: {{site.pub-pkg}}/genui
 
-The following structures are defined in
+As estruturas a seguir são definidas em
 `lib/src/model/ui_models.dart`:
 
 ```dart title="lib/src/model/ui_models.dart"
@@ -76,23 +78,25 @@ extension type UserActionEvent.fromMap(JsonMap _json) implements UiEvent {
 }
 ```
 
-## Capturing events in widgets
+## Capturando eventos em widgets {:#capturing-events-in-widgets}
 
-Widgets in GenUI are defined in a `Catalog`,
-which includes information about what events
-the widget can send to the AI.
-The AI can then send
-information about how to communicate those events back.
-When you implement a custom widget (or use the standard widgets),
-you use the `dispatchEvent` method in `CatalogItemContext`
-to dispatch events.
+Widgets no GenUI são definidos em um `Catalog`,
+que inclui informações sobre quais eventos o widget
+pode enviar para a IA.
+A IA pode então enviar informações sobre como
+comunicar esses eventos de volta.
+Ao implementar um widget customizado
+(ou usar os widgets padrão),
+você usa o método `dispatchEvent` em `CatalogItemContext`
+para despachar eventos.
 
-### Example: Button implementation {: #button-example}
+### Exemplo: implementação de Button {: #button-example}
 
-The following example shows how a `Button` widget typically captures
-a tap and dispatches an event. It retrieves the action definition
-(provided by the AI) from its properties,
-resolves any data bindings in the context, and sends the event.
+O exemplo a seguir mostra como um widget `Button`
+normalmente captura um toque e despacha um evento.
+Ele recupera a definição da ação (fornecida pela IA)
+a partir de suas propriedades, resolve quaisquer vínculos de dados
+no contexto e envia o evento.
 
 ```dart
 // Inside a CatalogItem widgetBuilder:
@@ -128,23 +132,23 @@ widgetBuilder: (itemContext) {
 },
 ```
 
-## Event processing pipeline
+## Pipeline de processamento de eventos {:#event-processing-pipeline}
 
-Once `dispatchEvent` is called,
-the event travels through the GenUI core layers.
+Depois que `dispatchEvent` é chamado,
+o evento percorre as camadas centrais do GenUI.
 
-### Surface
+### Surface {:#surface}
 
-The `Surface` widget (in `lib/src/core/surface.dart`)
-wraps the rendered widgets.
-It provides the dispatchEvent callback implementation.
+O widget `Surface` (em `lib/src/core/surface.dart`)
+envolve os widgets renderizados.
+Ele fornece a implementação do callback dispatchEvent.
 
-When `_dispatchEvent` is called:
+Quando `_dispatchEvent` é chamado:
 
-1. It automatically injects the `surfaceId` into the event,
-   ensuring the AI knows which surface the interaction came from.
-2. It delegates handling to the `SurfaceHost`
-   (implemented by `SurfaceController`).
+1. Ele injeta automaticamente o `surfaceId` no evento,
+   garantindo que a IA saiba de qual superfície veio a interação.
+2. Ele delega o tratamento ao `SurfaceHost`
+   (implementado pelo `SurfaceController`).
 
 ```dart
 // Surface implementation details
@@ -159,17 +163,17 @@ void _dispatchEvent(UiEvent event) {
 }
 ```
 
-### SurfaceController
+### SurfaceController {:#surfacecontroller}
 
-The `SurfaceController` (in `lib/src/core/surface_controller.dart`)
-is the central hub for managing UI state.
+O `SurfaceController` (em `lib/src/core/surface_controller.dart`)
+é o hub central para o gerenciamento do estado da UI.
 
-When `handleUiEvent` is called, it does the following:
+Quando `handleUiEvent` é chamado, ele faz o seguinte:
 
-1.  Verifies the event type.
-2.  Wraps the event in the `action` JSON envelope
-   required by the protocol.
-3.  Emits a `UserUiInteractionMessage` on its `onSubmit` stream.
+1.  Verifica o tipo do evento.
+2.  Envolve o evento no envelope JSON `action`
+   exigido pelo protocolo.
+3.  Emite uma `UserUiInteractionMessage` no seu stream `onSubmit`.
 
 ```dart
 // SurfaceController implementation details
@@ -185,26 +189,27 @@ void handleUiEvent(UiEvent event) {
 }
 ```
 
-## Transmission to AI
+## Transmissão para a IA {:#transmission-to-ai}
 
-The final step sends the event to the AI Agent.
-This is typically handled by `Conversation`
-(in `lib/src/facade/conversation.dart`).
-The `Conversation` listens to the `onSubmit` stream
-from the message processor.
+A etapa final envia o evento ao agente de IA.
+Isso normalmente é feito pelo `Conversation`
+(em `lib/src/facade/conversation.dart`).
+O `Conversation` escuta o stream `onSubmit`
+do processador de mensagens.
 
 ```dart
 // Conversation constructor
 _userEventSubscription = surfaceController.onSubmit.listen(sendRequest);
 ```
 
-When an event is received, the `sendRequest` method:
+Quando um evento é recebido, o método `sendRequest`:
 
-1. Wraps the `UserUiInteractionMessage` back to the developer's client code.
-2. The custom integration or predefined transport adapter forwards
-   the message to the LLM agent network transport.
+1. Encapsula a `UserUiInteractionMessage` de volta
+   para o código do cliente do desenvolvedor.
+2. A integração customizada ou o adaptador de transporte predefinido
+   encaminha a mensagem para o transporte de rede do agente LLM.
 
-The AI Agent receives this JSON message, processes the user action,
-and might stream back new `surfaceUpdate` or `dataModelUpdate` messages
-to modify the UI, or some other action, completing the full interaction loop.
-
+O agente de IA recebe essa mensagem JSON, processa a ação do usuário
+e pode devolver novas mensagens `surfaceUpdate` ou `dataModelUpdate`
+para modificar a UI, ou executar alguma outra ação,
+completando o ciclo completo da interação.

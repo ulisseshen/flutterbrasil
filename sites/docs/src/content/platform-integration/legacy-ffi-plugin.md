@@ -1,161 +1,153 @@
 ---
-title: Bind to native code using the legacy FFI plugin template
+ia-translate: true
+title: Vincular-se a código nativo usando o template legado de plugin FFI
 description: >-
-  Use the legacy plugin_ffi template and dart:ffi to bind to
-  native C code in your Flutter plugin or app.
+  Use o template legado plugin_ffi e dart:ffi para vincular código C nativo
+  no seu plugin ou app Flutter.
 ---
 
 :::warning
-This page documents the legacy `plugin_ffi` approach to C interop.
+Esta página documenta a abordagem legada `plugin_ffi` para interop com C.
 
-Since Flutter 3.38, we recommend using the `package_ffi` template with
-[build hooks][] for C interop.
+Desde o Flutter 3.38, recomendamos usar o template `package_ffi`
+com [build hooks][] para interop com C.
 
-However, the legacy FFI plugin template (`plugin_ffi`) documented here is
-still useful if you need to:
+No entanto, o template legado de plugin FFI (`plugin_ffi`) documentado aqui
+continua útil se você precisar:
 
-- Access the Flutter Plugin API.
-- Use static linking (on iOS and macOS).
-- Configure a Google Play services runtime on Android.
+- Acessar a API de Plugins do Flutter.
+- Usar linkagem estática (no iOS e no macOS).
+- Configurar um runtime do Google Play services no Android.
 :::
 
-Flutter mobile and desktop apps can
-use the [`dart:ffi`][] library to call native C APIs.
-_FFI_ stands for [_foreign function interface._][FFI]
-Other terms for similar functionality include
-_native interface_ and _language bindings._
+Apps Flutter mobile e desktop podem usar a biblioteca [`dart:ffi`][]
+para chamar APIs C nativas.
+_FFI_ significa [_interface de função estrangeira._][FFI]
+Outros termos para funcionalidades semelhantes incluem
+_native interface_ e _language bindings._
 
 [build hooks]: /interop/bind-native-code
 [`dart:ffi`]: {{site.dart.api}}/dart-ffi/dart-ffi-library.html
 [FFI]: https://en.wikipedia.org/wiki/Foreign_function_interface
 
-Before your library or program can
-use the FFI library to bind to native code,
-you must ensure that the native code is
-loaded and its symbols are visible to Dart.
-This page focuses on compiling, packaging,
-and loading native code within a Flutter plugin or app.
+Antes que sua biblioteca ou programa possa usar a biblioteca FFI
+para vincular-se a código nativo, você precisa garantir que o código nativo
+seja carregado e que seus símbolos fiquem visíveis para o Dart.
+Esta página foca em compilar, empacotar e carregar código nativo
+dentro de um plugin ou app Flutter.
 
-This tutorial demonstrates how to bundle C/C++ sources
-in a Flutter plugin and bind to them using the Dart FFI library.
-In this walkthrough, you'll create a C function that
-implements 32-bit addition and then exposes it through
-a Dart plugin named `native_add`.
+Este tutorial mostra como empacotar fontes C/C++ em um plugin Flutter
+e vincular-se a elas usando a biblioteca Dart FFI.
+Neste passo a passo, você criará uma função C que implementa uma soma
+de 32 bits e a exporá por meio de um plugin Dart chamado `native_add`.
 
-## Dynamic versus static linking
+## Linkagem dinâmica versus estática {:#dynamic-versus-static-linking}
 
-A native library can be linked into an app either
-dynamically or statically. A statically linked library
-is embedded into the app's executable image,
-and is loaded when the app starts.
+Uma biblioteca nativa pode ser linkada a um app de forma dinâmica ou estática.
+Uma biblioteca linkada estaticamente é incorporada à imagem executável do app
+e é carregada quando o app inicia.
 
-Symbols from a statically linked library can be
-loaded using [`DynamicLibrary.executable`][] or
-[`DynamicLibrary.process`][].
+Símbolos de uma biblioteca linkada estaticamente podem ser carregados usando
+[`DynamicLibrary.executable`][] ou [`DynamicLibrary.process`][].
 
-A dynamically linked library, by contrast, is distributed
-in a separate file or folder within the app,
-and loaded on-demand. The distribution format depends on
-the platform:
+Uma biblioteca linkada dinamicamente, por outro lado, é distribuída em um
+arquivo ou pasta separada dentro do app e é carregada sob demanda.
+O formato de distribuição depende da plataforma:
 
-- On Android, a dynamically linked library is distributed as a
-  set of `.so` (ELF) files, one for each architecture.
-  Only dynamic libraries are supported,
-  because the main executable is the JVM,
-  which Flutter doesn't link to statically.
-- On iOS and macOS, the dynamically linked library is
-  distributed as a `.framework` folder.
+- No Android, uma biblioteca linkada dinamicamente é distribuída como um
+  conjunto de arquivos `.so` (ELF), um para cada arquitetura.
+  Apenas bibliotecas dinâmicas são suportadas, porque o executável principal
+  é a JVM, à qual o Flutter não linka estaticamente.
+- No iOS e no macOS, a biblioteca linkada dinamicamente é distribuída
+  como uma pasta `.framework`.
 
-A dynamically linked library can be loaded into
-Dart using [`DynamicLibrary.open`][].
+Uma biblioteca linkada dinamicamente pode ser carregada no Dart
+usando [`DynamicLibrary.open`][].
 
 [`DynamicLibrary.executable`]: {{site.dart.api}}/dart-ffi/DynamicLibrary/DynamicLibrary.executable.html
 [`DynamicLibrary.open`]: {{site.dart.api}}/dart-ffi/DynamicLibrary/DynamicLibrary.open.html
 [`DynamicLibrary.process`]: {{site.dart.api}}/dart-ffi/DynamicLibrary/DynamicLibrary.process.html
 
-## Create an FFI plugin
+## Criar um plugin FFI {:#create-an-ffi-plugin}
 
-To create an FFI plugin called `native_add`,
-use `flutter create` with the `plugin_ffi` template:
+Para criar um plugin FFI chamado `native_add`,
+use `flutter create` com o template `plugin_ffi`:
 
 ```console
 $ flutter create --platforms=android,ios,macos,windows,linux --template=plugin_ffi native_add
 ```
 
 :::note
-You can exclude platforms from `--platforms` that you don't want to build to.
-However, you need to include the platform of the device you are testing on.
+Você pode excluir de `--platforms` as plataformas para as quais não quer compilar.
+No entanto, é necessário incluir a plataforma do dispositivo em que você vai testar.
 :::
 
-This creates a plugin with C/C++ sources in `native_add/src`.
-These sources are built by the native build files in the
-various OS build folders.
+Isso cria um plugin com fontes C/C++ em `native_add/src`.
+Essas fontes são compiladas pelos arquivos de build nativos
+nas várias pastas de build de cada sistema operacional.
 
-The FFI library can only bind against C symbols,
-so in C++ these symbols are marked `extern "C"`.
+A biblioteca FFI só consegue vincular símbolos C,
+por isso, em C++, esses símbolos são marcados com `extern "C"`.
 
-You should also add attributes to indicate that the
-symbols are referenced from Dart,
-to prevent the linker from discarding the symbols
-during link-time optimization:
+Você também deve adicionar atributos para indicar que os símbolos são
+referenciados pelo Dart, para evitar que o linker descarte os símbolos
+durante a otimização em tempo de link:
 `__attribute__((visibility("default"))) __attribute__((used))`.
 
-The platform-specific build file links the code:
+O arquivo de build específico de cada plataforma faz a linkagem do código:
 
-- On Android, `native_add/android/build.gradle`.
-- On iOS, `native_add/ios/native_add.podspec`.
-- On macOS, `native_add/macos/native_add.podspec`.
-- On Linux, `native_add/linux/CMakeLists.txt`.
-- On Windows, `native_add/windows/CMakeLists.txt`.
+- No Android, `native_add/android/build.gradle`.
+- No iOS, `native_add/ios/native_add.podspec`.
+- No macOS, `native_add/macos/native_add.podspec`.
+- No Linux, `native_add/linux/CMakeLists.txt`.
+- No Windows, `native_add/windows/CMakeLists.txt`.
 
-The native code is invoked from
-Dart in `lib/native_add_bindings_generated.dart`.
+O código nativo é invocado a partir do Dart em
+`lib/native_add_bindings_generated.dart`.
 
-The bindings are generated with [`package:ffigen`][].
+Os bindings são gerados com o [`package:ffigen`][].
 
 [`package:ffigen`]: {{site.pub-pkg}}/ffigen
 
-## Other use cases
+## Outros casos de uso {:#other-use-cases}
 
 ### iOS
 
-The dynamic linker automatically loads
-dynamically linked libraries when the app starts.
-Their constituent symbols can be resolved using [`DynamicLibrary.process`][].
-You can also get a handle to the library with [`DynamicLibrary.open`][] to
-restrict the scope of symbol resolution, but it's
-unclear how Apple's review process handles this.
+O linker dinâmico carrega automaticamente as bibliotecas linkadas
+dinamicamente quando o app inicia.
+Seus símbolos constituintes podem ser resolvidos usando
+[`DynamicLibrary.process`][].
+Você também pode obter um handle para a biblioteca com
+[`DynamicLibrary.open`][] para restringir o escopo da resolução de símbolos,
+mas não está claro como o processo de revisão da Apple lida com isso.
 
-Symbols statically linked into the application binary can be
-resolved using [`DynamicLibrary.executable`][] or [`DynamicLibrary.process`][].
+Símbolos linkados estaticamente no binário do aplicativo podem ser resolvidos
+usando [`DynamicLibrary.executable`][] ou [`DynamicLibrary.process`][].
 
-#### Platform library {:#ios-platform-library}
+#### Biblioteca de plataforma {:#ios-platform-library}
 
-To link against a platform library,
-use the following instructions:
+Para linkar a uma biblioteca de plataforma, use as instruções a seguir:
 
-1.  In Xcode, open `Runner.xcworkspace`.
-1.  Select the target platform.
-1.  Click **+** in the **Linked Frameworks and Libraries** section.
-1.  Select the system library to link against.
+1.  No Xcode, abra o `Runner.xcworkspace`.
+1.  Selecione a plataforma de destino.
+1.  Clique em **+** na seção **Linked Frameworks and Libraries**.
+1.  Selecione a biblioteca do sistema a ser linkada.
 
-#### First-party library {:#ios-first-party-library}
+#### Biblioteca de primeira parte {:#ios-first-party-library}
 
-A first-party native library can be included either
-as source or as a (signed) `.framework` file.
-It's probably possible to include statically linked
-archives as well, but it requires testing.
+Uma biblioteca nativa de primeira parte pode ser incluída como código-fonte
+ou como um arquivo `.framework` (assinado).
+Provavelmente também é possível incluir archives linkados estaticamente,
+mas isso exige testes.
 
-#### Source code {:#ios-source-code}
+#### Código-fonte {:#ios-source-code}
 
-To link directly to source code,
-use the following instructions:
+Para linkar diretamente ao código-fonte, use as instruções a seguir:
 
-1.  In Xcode, open `Runner.xcworkspace`.
-1.  Add the C/C++/Objective-C/Swift
-    source files to the Xcode project.
-1.  Add the following prefix to the exported symbol declarations to
-    ensure they are visible to Dart:
+1.  No Xcode, abra o `Runner.xcworkspace`.
+1.  Adicione os arquivos-fonte C/C++/Objective-C/Swift ao projeto do Xcode.
+1.  Adicione o prefixo a seguir às declarações de símbolos exportados
+    para garantir que eles fiquem visíveis para o Dart:
 
     **C/C++/Objective-C:**
 
@@ -169,97 +161,89 @@ use the following instructions:
     @_cdecl("myFunctionName")
     ```
 
-#### Compiled (dynamic) library {:#ios-compiled-dynamic-library}
+#### Biblioteca compilada (dinâmica) {:#ios-compiled-dynamic-library}
 
-To link to a compiled dynamic library,
-use the following instructions:
+Para linkar a uma biblioteca dinâmica compilada, use as instruções a seguir:
 
-1.  If a properly signed `Framework` file is present,
-    open `Runner.xcworkspace`.
-1.  Add the framework file to the
-    **Frameworks, Libraries, and Embedded Content** section of
-    the target in Xcode.
-1.  Under the **Embed** column, select **Embed & Sign**.
+1.  Se houver um arquivo `Framework` devidamente assinado, abra o `Runner.xcworkspace`.
+1.  Adicione o arquivo de framework à seção **Frameworks, Libraries, and Embedded Content**
+    do target no Xcode.
+1.  Na coluna **Embed**, selecione **Embed & Sign**.
 
-#### Open-source third-party library {:#ios-open-source-third-party-library}
+#### Biblioteca de terceiros de código aberto {:#ios-open-source-third-party-library}
 
-To create a Flutter plugin that includes both
-C/C++/Objective-C _and_ Dart code,
-use the following instructions:
+Para criar um plugin Flutter que inclua código C/C++/Objective-C _e_ código Dart,
+use as instruções a seguir:
 
-1.  In your plugin project, open `ios/<myproject>.podspec`.
-1.  Add the native code to the `source_files` field.
+1.  No seu projeto de plugin, abra `ios/<myproject>.podspec`.
+1.  Adicione o código nativo ao campo `source_files`.
 
-The native code is then statically linked into
-the application binary of any app that uses this plugin.
+O código nativo é então linkado estaticamente ao binário do aplicativo
+de qualquer app que use este plugin.
 
-#### Closed-source third-party library {:#ios-closed-source-third-party-library}
+#### Biblioteca de terceiros de código fechado {:#ios-closed-source-third-party-library}
 
-To create a Flutter plugin that includes Dart source code,
-but distribute the C/C++ library in binary form,
-use the following instructions:
+Para criar um plugin Flutter que inclua código-fonte Dart,
+mas distribua a biblioteca C/C++ em formato binário,
+use as instruções a seguir:
 
-1.  In your plugin project, open `ios/<myproject>.podspec`.
-1.  Add a `vendored_frameworks` field.
-    See the [CocoaPods example][].
+1.  No seu projeto de plugin, abra `ios/<myproject>.podspec`.
+1.  Adicione um campo `vendored_frameworks`.
+    Consulte o [exemplo do CocoaPods][CocoaPods example].
 
 :::warning
-**Do not** upload this plugin
-(or any plugin containing binary code) to pub.dev.
-Instead, this plugin should be downloaded
-from a trusted third-party,
-as shown in the CocoaPods example.
+**Não** envie este plugin (nem qualquer plugin que contenha código binário)
+para o pub.dev.
+Em vez disso, este plugin deve ser baixado de um terceiro confiável,
+como mostrado no exemplo do CocoaPods.
 :::
 
 [CocoaPods example]: https://github.com/CocoaPods/CocoaPods/blob/master/examples/Vendored%20Framework%20Example/Example%20Pods/VendoredFrameworkExample.podspec
 
-#### Stripping symbols {:#ios-stripping-symbols}
+#### Remoção de símbolos {:#ios-stripping-symbols}
 
-When creating a release build, Xcode strips the symbols.
+Ao criar uma build de release, o Xcode remove os símbolos.
 
-1.  In Xcode, select the **Runner** target,
-    then go to **Build Settings > Strip Style**.
-1.  Change from **All Symbols** to **Non-Global Symbols**.
+1.  No Xcode, selecione o target **Runner** e vá para **Build Settings > Strip Style**.
+1.  Altere de **All Symbols** para **Non-Global Symbols**.
 
 ### macOS
 
-The dynamic linker automatically loads
-dynamically linked libraries when the app starts.
-Their constituent symbols can be resolved using [`DynamicLibrary.process`][].
-You can also get a handle to the library with [`DynamicLibrary.open`][] to
-restrict the scope of symbol resolution, but it's
-unclear how Apple's review process handles this.
+O linker dinâmico carrega automaticamente as bibliotecas linkadas
+dinamicamente quando o app inicia.
+Seus símbolos constituintes podem ser resolvidos usando
+[`DynamicLibrary.process`][].
+Você também pode obter um handle para a biblioteca com
+[`DynamicLibrary.open`][] para restringir o escopo da resolução de símbolos,
+mas não está claro como o processo de revisão da Apple lida com isso.
 
-Symbols statically linked into the application binary can be
-resolved using [`DynamicLibrary.executable`][] or [`DynamicLibrary.process`][].
+Símbolos linkados estaticamente no binário do aplicativo podem ser resolvidos
+usando [`DynamicLibrary.executable`][] ou [`DynamicLibrary.process`][].
 
-#### Platform library {:#macos-platform-library}
+#### Biblioteca de plataforma {:#macos-platform-library}
 
-To link against a platform library,
-use the following instructions:
+Para linkar a uma biblioteca de plataforma, use as instruções a seguir:
 
-1.  In Xcode, open `Runner.xcworkspace`.
-1.  Select the target platform.
-1.  Click **+** in the **Linked Frameworks and Libraries** section.
-1.  Select the system library to link against.
+1.  No Xcode, abra o `Runner.xcworkspace`.
+1.  Selecione a plataforma de destino.
+1.  Clique em **+** na seção **Linked Frameworks and Libraries**.
+1.  Selecione a biblioteca do sistema a ser linkada.
 
-#### First-party library {:#macos-first-party-library}
+#### Biblioteca de primeira parte {:#macos-first-party-library}
 
-A first-party native library can be included either
-as source or as a (signed) `.framework` file.
-It's probably possible to include statically linked
-archives as well, but it requires testing.
+Uma biblioteca nativa de primeira parte pode ser incluída como código-fonte
+ou como um arquivo `.framework` (assinado).
+Provavelmente também é possível incluir archives linkados estaticamente,
+mas isso exige testes.
 
-#### Source code {:#macos-source-code}
+#### Código-fonte {:#macos-source-code}
 
-To link directly to source code,
-use the following instructions:
+Para linkar diretamente ao código-fonte, use as instruções a seguir:
 
-1.  In Xcode, open `Runner.xcworkspace`.
-1.  Add the C/C++/Objective-C/Swift
-    source files to the Xcode project.
-1.  Add the following prefix to the exported symbol declarations to
-    ensure they are visible to Dart:
+1.  No Xcode, abra o `Runner.xcworkspace`.
+1.  Adicione os arquivos-fonte C/C++/Objective-C/Swift ao projeto do Xcode.
+1.  Adicione o prefixo a seguir às declarações de símbolos exportados
+    para garantir que eles fiquem visíveis para o Dart:
 
     **C/C++/Objective-C:**
 
@@ -273,131 +257,122 @@ use the following instructions:
     @_cdecl("myFunctionName")
     ```
 
-#### Compiled (dynamic) library {:#macos-compiled-dynamic-library}
+#### Biblioteca compilada (dinâmica) {:#macos-compiled-dynamic-library}
 
-To link to a compiled dynamic library,
-use the following instructions:
+Para linkar a uma biblioteca dinâmica compilada, use as instruções a seguir:
 
-1.  If a properly signed `Framework` file is present,
-    open `Runner.xcworkspace`.
-1.  Add the framework file to the
-    **Frameworks, Libraries, and Embedded Content** section of
-    the target in Xcode.
-1.  Under the **Embed** column, select **Embed & Sign**.
+1.  Se houver um arquivo `Framework` devidamente assinado, abra o `Runner.xcworkspace`.
+1.  Adicione o arquivo de framework à seção **Frameworks, Libraries, and Embedded Content**
+    do target no Xcode.
+1.  Na coluna **Embed**, selecione **Embed & Sign**.
 
-#### Compiled (dynamic) library, closed source {:#macos-compiled-dynamic-library-closed-source}
+#### Biblioteca compilada (dinâmica), código fechado {:#macos-compiled-dynamic-library-closed-source}
 
-To add a closed source library to a
-[Flutter macOS Desktop][] app,
-use the following instructions:
+Para adicionar uma biblioteca de código fechado a um app
+[Flutter macOS Desktop][], use as instruções a seguir:
 
-1.  Follow the instructions for Flutter desktop to
-    create a Flutter desktop app.
-1.  Open the `yourapp/macos/Runner.xcworkspace` in Xcode.
-    1.  Drag your precompiled library (`libyourlibrary.dylib`)
-        into `Runner/Frameworks`.
-    1.  Click `Runner` and go to the `Build Phases` tab.
-        1.  Drag `libyourlibrary.dylib` into the `Copy Bundle Resources` list.
-        1.  Under `Embed Libraries`, check `Code Sign on Copy`.
-        1.  Under `Link Binary With Libraries`,
-            set status to `Optional`. (We use dynamic linking,
-            no need to statically link.)
-    1.  Click `Runner` and go to the `General` tab.
-        1.  Drag `libyourlibrary.dylib` into the
-            **Frameworks, Libraries, and Embedded Content** list.
-        1.  Select **Embed & Sign**.
-    1.  Click **Runner** and go to the **Build Settings** tab.
-        1.  In the **Search Paths** section configure the
-            **Library Search Paths** to include the path
-            where `libyourlibrary.dylib` is located.
-1.  Edit `lib/main.dart`.
-    1.  Use `DynamicLibrary.open('libyourlibrary.dylib')` to
-        dynamically link to the symbols.
-    1.  Call your native function somewhere in a widget.
-1.  Run `flutter run` and check that your native function gets called.
-1.  Run `flutter build macos` to build a
-    self-contained release version of your app.
+1.  Siga as instruções para desktop do Flutter para criar um app desktop Flutter.
+1.  Abra o `yourapp/macos/Runner.xcworkspace` no Xcode.
+    1.  Arraste a sua biblioteca pré-compilada (`libyourlibrary.dylib`)
+        para `Runner/Frameworks`.
+    1.  Clique em `Runner` e vá para a aba `Build Phases`.
+        1.  Arraste `libyourlibrary.dylib` para a lista `Copy Bundle Resources`.
+        1.  Em `Embed Libraries`, marque `Code Sign on Copy`.
+        1.  Em `Link Binary With Libraries`, defina o status como `Optional`.
+            (Usamos linkagem dinâmica, então não é preciso linkar estaticamente.)
+    1.  Clique em `Runner` e vá para a aba `General`.
+        1.  Arraste `libyourlibrary.dylib` para a lista
+            **Frameworks, Libraries, and Embedded Content**.
+        1.  Selecione **Embed & Sign**.
+    1.  Clique em **Runner** e vá para a aba **Build Settings**.
+        1.  Na seção **Search Paths**, configure o **Library Search Paths**
+            para incluir o caminho onde está o `libyourlibrary.dylib`.
+1.  Edite `lib/main.dart`.
+    1.  Use `DynamicLibrary.open('libyourlibrary.dylib')` para vincular
+        dinamicamente aos símbolos.
+    1.  Chame a sua função nativa em algum widget.
+1.  Execute `flutter run` e verifique se a sua função nativa é chamada.
+1.  Execute `flutter build macos` para compilar uma versão de release
+    autocontida do seu app.
 
 [Flutter macOS Desktop]: /platform-integration/macos/building
 
-#### Stripping symbols {:#macos-stripping-symbols}
+#### Remoção de símbolos {:#macos-stripping-symbols}
 
-When creating a release build, Xcode strips the symbols.
+Ao criar uma build de release, o Xcode remove os símbolos.
 
-1.  In Xcode, select the **Runner** target,
-    then go to **Build Settings > Strip Style**.
-1.  Change from **All Symbols** to **Non-Global Symbols**.
+1.  No Xcode, selecione o target **Runner** e vá para **Build Settings > Strip Style**.
+1.  Altere de **All Symbols** para **Non-Global Symbols**.
 
 ### Android
 
-#### Platform library {:#android-platform-library}
+#### Biblioteca de plataforma {:#android-platform-library}
 
-To link against a platform library,
-use the following instructions:
+Para linkar a uma biblioteca de plataforma, use as instruções a seguir:
 
-1.  Find the desired library in the [Android NDK Native APIs][]
-    list in the Android docs. This lists stable native APIs.
-1.  Load the library using [`DynamicLibrary.open`][].
-    For example, to load OpenGL ES (v3):
+1.  Encontre a biblioteca desejada na lista de [APIs nativas do NDK do Android][Android NDK Native APIs]
+    na documentação do Android. Essa lista traz APIs nativas estáveis.
+1.  Carregue a biblioteca usando [`DynamicLibrary.open`][].
+    Por exemplo, para carregar o OpenGL ES (v3):
 
     ```dart
     DynamicLibrary.open('libGLES_v3.so');
     ```
 
-You might need to update the Android manifest file of the
-app or plugin if indicated by the documentation.
+Talvez seja necessário atualizar o arquivo de manifesto Android do app
+ou do plugin, se a documentação indicar isso.
 
 [Android NDK Native APIs]: {{site.android-dev}}/ndk/guides/stable_apis
 
-#### First-party library {:#android-first-party-library}
+#### Biblioteca de primeira parte {:#android-first-party-library}
 
-The process for including native code in
-source code or binary form is the same for an app or plugin.
+O processo para incluir código nativo, em formato de código-fonte ou binário,
+é o mesmo para um app ou um plugin.
 
-#### Open-source third-party library {:#android-open-source-third-party-library}
+#### Biblioteca de terceiros de código aberto {:#android-open-source-third-party-library}
 
-Follow the [Add C and C++ code to your project][]
-instructions in the Android docs to
-add native code and support for the native
-code toolchain (either CMake or `ndk-build`).
+Siga as instruções [Adicionar código C e C++ ao seu projeto][Add C and C++ code to your project]
+na documentação do Android para adicionar código nativo e suporte
+à toolchain de código nativo (CMake ou `ndk-build`).
 
 [Add C and C++ code to your project]: {{site.android-dev}}/studio/projects/add-native-code
 
-#### Closed-source third-party library {:#android-closed-source-third-party-library}
+#### Biblioteca de terceiros de código fechado {:#android-closed-source-third-party-library}
 
-To create a Flutter plugin that includes Dart source code,
-but distribute the C/C++ library in binary form,
-use the following instructions:
+Para criar um plugin Flutter que inclua código-fonte Dart,
+mas distribua a biblioteca C/C++ em formato binário,
+use as instruções a seguir:
 
-1.  Open the `android/build.gradle` file for your project.
-1.  Add the AAR artifact as a dependency.
-    **Don't** include the artifact in your Flutter package.
-    Instead, it should be downloaded from a repository, such as Maven Central.
+1.  Abra o arquivo `android/build.gradle` do seu projeto.
+1.  Adicione o artefato AAR como dependência.
+    **Não** inclua o artefato no seu package Flutter.
+    Em vez disso, ele deve ser baixado de um repositório, como o Maven Central.
 
-#### Android APK size (shared object compression)
+#### Tamanho do APK Android (compressão de objetos compartilhados) {:#android-apk-size-shared-object-compression}
 
-[Android guidelines][] in general recommend
-distributing native shared objects uncompressed
-because that actually saves on device space.
-Shared objects can be directly loaded from the APK instead of
-unpacking them on the device into a temporary location and then loading.
-APKs are additionally packed in transit&mdash;that's
-why you should be looking at download size.
+As [diretrizes do Android][Android guidelines] em geral recomendam distribuir
+objetos compartilhados nativos sem compressão, porque isso de fato economiza
+espaço no dispositivo.
+Objetos compartilhados podem ser carregados diretamente do APK, em vez de
+serem descompactados no dispositivo em um local temporário e só depois carregados.
+Os APKs ainda são compactados durante a transferência&mdash;por isso
+é o tamanho do download que você deve observar.
 
-By default, Flutter APKs compress `libflutter.so` and `libapp.so`,
-which leads to a smaller APK size but a larger on-device size.
-To control whether native libraries are stored compressed and extracted at
-install time, set the Android Gradle plugin's `useLegacyPackaging` option.
-For current recommendations, see the [Android guidelines][].
+Por padrão, os APKs do Flutter comprimem `libflutter.so` e `libapp.so`,
+o que resulta em um APK menor, mas em um tamanho maior no dispositivo.
+Para controlar se as bibliotecas nativas são armazenadas comprimidas e
+extraídas no momento da instalação, defina a opção `useLegacyPackaging`
+do Android Gradle plugin.
+Para as recomendações atuais, consulte as [diretrizes do Android][Android guidelines].
 
 [Android guidelines]: {{site.android-dev}}/topic/performance/reduce-apk-size#extract-false
 
-## Other resources
+## Outros recursos {:#other-resources}
 
-To learn more about C interoperability, check out these videos:
+Para saber mais sobre interoperabilidade com C, confira estes vídeos:
 
-- [C interoperability with Dart FFI][]
-- [How to Use Dart FFI to Build a Retro Audio Player][]
+- [Interoperabilidade com C usando Dart FFI][C interoperability with Dart FFI]
+- [Como usar o Dart FFI para criar um player de áudio retrô][How to Use Dart FFI to Build a Retro Audio Player]
 
 [C interoperability with Dart FFI]: {{site.yt.watch}}?v=2MMK7YoFgaA
 [How to Use Dart FFI to Build a Retro Audio Player]: {{site.yt.watch}}?v=05Wn2oM_nWw

@@ -1,113 +1,115 @@
-On iOS 14 and later, enable the Dart multicast DNS service in the
-**Debug** version of your iOS app.
-This adds [debugging functionalities such as hot-reload and DevTools][]
-using `flutter attach`.
+<!-- ia-translate: true -->
+
+No iOS 14 e versões posteriores, habilite o serviço DNS multicast do Dart
+na versão **Debug** do seu app iOS.
+Isso adiciona [funcionalidades de depuração, como hot reload e DevTools][debugging functionalities such as hot-reload and DevTools]
+usando `flutter attach`.
 
 :::warning
-Never enable this service in the **Release** version of your app.
-The Apple App Store might reject your app.
+Nunca habilite este serviço na versão **Release** do seu app.
+A App Store da Apple pode rejeitar o seu app.
 :::
 
-To set local network privacy permissions only in the Debug version of your app,
-create a separate `Info.plist` per build configuration.
-SwiftUI projects start without an `Info.plist` file.
-If you need to create a property list,
-you can do so through Xcode or text editor.
-The following instructions assume the default **Debug** and **Release**.
-Adjust the names as needed depending on your app's build configurations.
+Para definir as permissões de privacidade de rede local somente na versão **Debug** do seu app,
+crie um `Info.plist` separado para cada configuração de build.
+Projetos SwiftUI começam sem um arquivo `Info.plist`.
+Se você precisar criar uma property list,
+pode fazer isso pelo Xcode ou por um editor de texto.
+As instruções a seguir assumem as configurações padrão **Debug** e **Release**.
+Ajuste os nomes conforme necessário, de acordo com as configurações de build do seu app.
 
-1. Create a new property list.
+1. Crie uma nova property list.
 
-   1. Open your project in Xcode.
+   1. Abra seu projeto no Xcode.
 
-   1. In the **Project Navigator**, click on the project name.
+   1. No **Project Navigator**, clique no nome do projeto.
 
-   1. From the **Targets** list in the Editor pane, click on your app.
+   1. Na lista **Targets** do painel Editor, clique no seu app.
 
-   1. Click the **Info** tab.
+   1. Clique na aba **Info**.
 
-   1. Expand **Custom iOS Target Properties**.
+   1. Expanda **Custom iOS Target Properties**.
 
-   1. Right-click on the list and select **Add Row**.
+   1. Clique com o botão direito na lista e selecione **Add Row**.
 
-   1. From the dropdown menu, select **Bonjour Services**.
-      This creates a new property list in the project directory
-      called `Info`. This displays as `Info.plist` in the Finder.
+   1. No menu suspenso, selecione **Bonjour Services**.
+      Isso cria uma nova property list no diretório do projeto,
+      chamada `Info`. Ela aparece como `Info.plist` no Finder.
 
-1. Rename the `Info.plist` to `Info-Debug.plist`
+1. Renomeie o `Info.plist` para `Info-Debug.plist`
 
-   1. Click on **Info** file in the project list at the left.
+   1. Clique no arquivo **Info** na lista de projeto à esquerda.
 
-   1. In the **Identity and Type** panel at the right,
-      change the **Name** from `Info.plist` to `Info-Debug.plist`.
+   1. No painel **Identity and Type** à direita,
+      altere o **Name** de `Info.plist` para `Info-Debug.plist`.
 
-1. Create a Release property list.
+1. Crie uma property list de Release.
 
-   1. In the **Project Navigator**, click on `Info-Debug.plist`.
+   1. No **Project Navigator**, clique em `Info-Debug.plist`.
 
-   1. Select **File** > **Duplicate...**.
-      You can also press <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd>.
+   1. Selecione **File** > **Duplicate...**.
+      Você também pode pressionar <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd>.
 
-   1. In the dialog box, set the **Save As:** field to
-      `Info-Release.plist` and click **Save**.
+   1. Na caixa de diálogo, defina o campo **Save As:** como
+      `Info-Release.plist` e clique em **Save**.
 
-1. Add the necessary properties to the **Debug** property list.
+1. Adicione as propriedades necessárias à property list de **Debug**.
 
-   1. In the **Project Navigator**, click on `Info-Debug.plist`.
+   1. No **Project Navigator**, clique em `Info-Debug.plist`.
 
-   1. Add the String value `_dartVmService._tcp`
-      to the **Bonjour Services** array.
+   1. Adicione o valor String `_dartVmService._tcp`
+      ao array **Bonjour Services**.
 
-   1. _(Optional)_ To set your desired customized permission dialog text,
-      add the key **Privacy - Local Network Usage Description**.
+   1. _(Opcional)_ Para definir o texto personalizado do diálogo de permissão,
+      adicione a chave **Privacy - Local Network Usage Description**.
 
-      <DashImage image="development/add-to-app/ios/project-setup/debug-plist.png" caption="The `Info-Debug` property list with the **Bonjour Services** and **Privacy - Local Network Usage Description** keys added" />
+      <DashImage image="development/add-to-app/ios/project-setup/debug-plist.png" caption="A property list `Info-Debug` com as chaves **Bonjour Services** e **Privacy - Local Network Usage Description** adicionadas" />
 
-1. Set the target to use different property lists for different build modes.
+1. Configure o target para usar property lists diferentes para cada modo de build.
 
-   1. In the **Project Navigator**, click on your project.
+   1. No **Project Navigator**, clique no seu projeto.
 
-   1. Click the **Build Settings** tab.
+   1. Clique na aba **Build Settings**.
 
-   1. Click **All** and **Combined** sub-tabs.
+   1. Clique nas sub-abas **All** e **Combined**.
 
-   1. In the Search box, type `plist`.
-      This limits the settings to those that include property lists.
+   1. Na caixa de busca, digite `plist`.
+      Isso limita as configurações às que incluem property lists.
 
-   1. Scroll through the list until you see **Packaging**.
+   1. Role a lista até encontrar **Packaging**.
 
-   1. Click on the **Info.plist File** setting.
+   1. Clique na configuração **Info.plist File**.
 
-   1. Change the **Info.plist File** value
-      from `path/to/Info.plist` to `path/to/Info-$(CONFIGURATION).plist`.
+   1. Altere o valor de **Info.plist File**
+      de `path/to/Info.plist` para `path/to/Info-$(CONFIGURATION).plist`.
 
-      <DashImage image="development/add-to-app/ios/project-setup/set-plist-build-setting.png" caption="Updating the `Info.plist` build setting to use build mode-specific property lists" />
+      <DashImage image="development/add-to-app/ios/project-setup/set-plist-build-setting.png" caption="Atualizando a configuração de build `Info.plist` para usar property lists específicas de cada modo de build" />
 
-      This resolves to the path **Info-Debug.plist** in **Debug** and
-      **Info-Release.plist** in **Release**.
+      Isso resolve para o caminho **Info-Debug.plist** em **Debug** e
+      **Info-Release.plist** em **Release**.
 
-      <DashImage image="development/add-to-app/ios/project-setup/plist-build-setting.png" caption="The updated **Info.plist File** build setting displaying the configuration variations" />
+      <DashImage image="development/add-to-app/ios/project-setup/plist-build-setting.png" caption="A configuração **Info.plist File** atualizada, mostrando as variações por configuração" />
 
-1. Remove the **Release** property list from the **Build Phases**.
+1. Remova a property list de **Release** das **Build Phases**.
 
-   1. In the **Project Navigator**, click on your project.
+   1. No **Project Navigator**, clique no seu projeto.
 
-   1. Click the **Build Phases** tab.
+   1. Clique na aba **Build Phases**.
 
-   1. Expand **Copy Bundle Resources**.
+   1. Expanda **Copy Bundle Resources**.
 
-   1. If this list includes `Info-Release.plist`,
-      click on it and then click the **-** (minus sign) under it
-      to remove the property list from the resources list.
+   1. Se essa lista incluir `Info-Release.plist`,
+      clique nele e depois clique no **-** (sinal de menos) abaixo dela
+      para remover a property list da lista de recursos.
 
-      <DashImage image="development/add-to-app/ios/project-setup/copy-bundle.png" caption="The **Copy Bundle** build phase displaying the **Info-Release.plist** setting. Remove this setting." />
+      <DashImage image="development/add-to-app/ios/project-setup/copy-bundle.png" caption="A fase de build **Copy Bundle** exibindo a configuração **Info-Release.plist**. Remova essa configuração." />
 
-1. The first Flutter screen your Debug app loads prompts
-   for local network permission.
+1. A primeira tela do Flutter que o seu app de Debug carrega pede
+   permissão de rede local.
 
-   Click **OK**.
+   Clique em **OK**.
 
-   _(Optional)_ To grant permission before the app loads, enable
+   _(Opcional)_ Para conceder a permissão antes de o app carregar, habilite
    **Settings > Privacy > Local Network > Your App**.
 
 [debugging functionalities such as hot-reload and DevTools]: /add-to-app/debugging

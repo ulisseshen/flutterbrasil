@@ -1,128 +1,137 @@
 ---
-title: Bind to native code using FFI
-description: To use native code in your Flutter program, use the dart:ffi library with the package_ffi template.
+ia-translate: true
+title: Vincular-se a código nativo usando FFI
+description: Para usar código nativo no seu programa Flutter, use a biblioteca dart:ffi com o template package_ffi.
 ---
 
-Flutter apps can use the [dart:ffi][] library to call native APIs. _FFI_ stands
-for [_foreign function interface_][FFI]. Other terms for similar functionality
-include _native interface_ and _language bindings._
+Apps Flutter podem usar a biblioteca [dart:ffi][] para chamar APIs nativas.
+_FFI_ significa [_interface de função estrangeira_][FFI].
+Outros termos para funcionalidades semelhantes incluem
+_native interface_ e _language bindings._
 
-Since Flutter 3.38, the recommended way to bind to native code is to use the
-`flutter create --template=package_ffi` command. This template uses
-[build hooks][] to configure the native build in a
-`build.dart` script, and no longer requires OS-specific build files. This
-approach works for both Flutter and Dart standalone projects.
+Desde o Flutter 3.38, a forma recomendada de vincular código nativo
+é usar o comando `flutter create --template=package_ffi`.
+Esse template usa [build hooks][] para configurar a build nativa
+em um script `build.dart` e não exige mais arquivos de build
+específicos de cada sistema operacional.
+Essa abordagem funciona tanto para projetos Flutter quanto para
+projetos Dart standalone.
 
-If you need to use the Flutter Plugin API, or if you need to configure a Google
-Play services runtime on Android, use the standard plugin template (`flutter create
---template=plugin`).
+Se você precisar usar a API de Plugins do Flutter, ou configurar um runtime
+do Google Play services no Android, use o template padrão de plugin
+(`flutter create --template=plugin`).
 
 :::note
-Looking for the previous FFI plugin workflow? Consult
-[Bind to native code using the legacy FFI plugin template](/platform-integration/legacy-ffi-plugin),
-which documents the `plugin_ffi` template and OS-specific build files.
+Procurando o fluxo de trabalho anterior de plugin FFI? Consulte
+[Vincular-se a código nativo usando o template legado de plugin FFI](/platform-integration/legacy-ffi-plugin),
+que documenta o template `plugin_ffi` e os arquivos de build
+específicos de cada sistema operacional.
 :::
 
 [build hooks]: {{site.dart-site}}/tools/hooks
 [dart:ffi]: {{site.dart.api}}/dart-ffi/dart-ffi-library.html
 [FFI]: https://en.wikipedia.org/wiki/Foreign_function_interface
 
-## Create an FFI package
+## Criar um package FFI {:#create-an-ffi-package}
 
-To create an FFI package, run the following command:
+Para criar um package FFI, execute o comando a seguir:
 
 ```console
 $ flutter create --template=package_ffi native_add
 $ cd native_add
 ```
 
-This creates a package with the following specialized content:
+Isso cria um package com o seguinte conteúdo específico:
 
-- **`lib/native_add.dart`**: The Dart code that defines the API of the package.
-- **`lib/native_add_bindings_generated.dart`**: The generated Dart bindings
-  for the native code.
-- **`src/native_add.c`**: The native C source code.
-- **`src/native_add.h`**: The C header file for the native code.
-- **`hook/build.dart`**: A script that is run by the Flutter SDK to compile the
-  native code.
-- **`ffigen.yaml`**: The configuration file for [`package:ffigen`][] to generate
-  the Dart bindings.
-- **`pubspec.yaml`**: The package definition, which enables the `build.dart`
-  hook.
+- **`lib/native_add.dart`**: o código Dart que define a API do package.
+- **`lib/native_add_bindings_generated.dart`**: os bindings Dart gerados
+  para o código nativo.
+- **`src/native_add.c`**: o código-fonte nativo em C.
+- **`src/native_add.h`**: o arquivo de header em C do código nativo.
+- **`hook/build.dart`**: um script executado pelo SDK do Flutter
+  para compilar o código nativo.
+- **`ffigen.yaml`**: o arquivo de configuração do [`package:ffigen`][]
+  para gerar os bindings Dart.
+- **`pubspec.yaml`**: a definição do package, que habilita o hook
+  `build.dart`.
 
 [`package:ffigen`]: {{site.pub-pkg}}/ffigen
 
-## The native code
+## O código nativo {:#the-native-code}
 
-The native code is located in `src/native_add.c` and `src/native_add.h`. The C
-function `sum` is defined in the `.c` file and its signature is in the header
-file. The function is marked to be exported so that it can be called from Dart.
+O código nativo está em `src/native_add.c` e `src/native_add.h`.
+A função C `sum` é definida no arquivo `.c`, e sua assinatura está no
+arquivo de header.
+A função é marcada para exportação, para que possa ser chamada a partir do Dart.
 
-## The build hook
+## O build hook {:#the-build-hook}
 
-The native code is compiled and bundled with your app automatically. This is
-done by the `hook/build.dart` script, which is a [build hook][build hooks].
+O código nativo é compilado e empacotado com o seu app automaticamente.
+Isso é feito pelo script `hook/build.dart`, que é um [build hook][build hooks].
 
-This means you no longer need to write OS-specific build files (like
-`CMakeLists.txt` for Linux/Windows, `.podspec` for iOS/macOS, or `build.gradle`
-for Android) to compile your native code.
+Isso significa que você não precisa mais escrever arquivos de build específicos
+de cada sistema operacional (como `CMakeLists.txt` para Linux/Windows,
+`.podspec` para iOS/macOS ou `build.gradle` para Android)
+para compilar o seu código nativo.
 
-The build hook uses `package:native_toolchain_c` to compile the C code into a
-dynamic library. You can customize this file to build other native languages or
-to download pre-compiled binaries.
+O build hook usa o `package:native_toolchain_c` para compilar o código C
+em uma biblioteca dinâmica.
+Você pode personalizar esse arquivo para compilar outras linguagens nativas
+ou para baixar binários pré-compilados.
 
-## The Dart code
+## O código Dart {:#the-dart-code}
 
-The Dart code defines the public API of the package.
+O código Dart define a API pública do package.
 
-### Generating the bindings
+### Gerando os bindings {:#generating-the-bindings}
 
-To bind to the native code, the template uses [`package:ffigen`][] to generate
-bindings from the header file (`src/native_add.h`). The generation is configured
-in `ffigen.yaml`.
+Para vincular ao código nativo, o template usa o [`package:ffigen`][]
+para gerar bindings a partir do arquivo de header (`src/native_add.h`).
+A geração é configurada em `ffigen.yaml`.
 
-This generates `lib/native_add_bindings_generated.dart`.
+Isso gera `lib/native_add_bindings_generated.dart`.
 
-### Calling the native function
+### Chamando a função nativa {:#calling-the-native-function}
 
-The generated bindings in `lib/native_add_bindings_generated.dart` contain
-`@Native() external` functions. These functions are automatically resolved at
-runtime against the code asset outputted by the build hook (which runs at build
-time). This means there is no OS-specific logic required for `dlopen`-ing the
-dynamic libraries, making the Dart code truly cross-platform.
+Os bindings gerados em `lib/native_add_bindings_generated.dart` contêm
+funções `@Native() external`.
+Essas funções são resolvidas automaticamente em tempo de execução
+contra o code asset gerado pelo build hook (que roda em tempo de build).
+Isso significa que nenhuma lógica específica de sistema operacional
+é necessária para fazer o `dlopen` das bibliotecas dinâmicas,
+tornando o código Dart verdadeiramente multiplataforma.
 
-The main library file `lib/native_add.dart` exposes these functions. Your app
-can then call these functions by importing `package:native_add/native_add.dart`.
+O arquivo principal da biblioteca, `lib/native_add.dart`, expõe essas funções.
+Seu app pode então chamá-las importando `package:native_add/native_add.dart`.
 
-## Testing
+## Testes {:#testing}
 
-The generated package includes a unit test in `test/native_add_test.dart` that
-shows how to test the native function.
+O package gerado inclui um teste de unidade em `test/native_add_test.dart`
+que mostra como testar a função nativa.
 
-## Other use cases
+## Outros casos de uso {:#other-use-cases}
 
-### System libraries
+### Bibliotecas do sistema {:#system-libraries}
 
-To link against a system library, you modify the `build.dart` hook to specify
-the linking mode. Instead of compiling source code, you create a `CodeAsset` and
-set its `linkMode`.
+Para vincular a uma biblioteca do sistema, você modifica o hook `build.dart`
+para especificar o modo de linkagem.
+Em vez de compilar código-fonte, você cria um `CodeAsset` e define seu `linkMode`.
 
-For many system libraries on Android, iOS, Linux, and macOS, you can use
-`LookupInProcess()` to find symbols in the main process.
+Para muitas bibliotecas do sistema em Android, iOS, Linux e macOS,
+você pode usar `LookupInProcess()` para encontrar símbolos no processo principal.
 
-For Windows, you often use `DynamicLoadingSystem()` and provide the name of the
-DLL.
+Para Windows, normalmente você usa `DynamicLoadingSystem()` e informa o nome da DLL.
 
 :::note
-For desktop-specific guidance on calling system APIs—including wrapper
-packages like [`package:win32`]({{site.pub-pkg}}/win32) and
-[Canonical's Linux packages]({{site.pub}}/publishers/canonical.com/packages)—refer to
-[Integrating with Windows](/platform-integration/windows/building#integrating-with-windows)
-and [Integrate with Linux](/platform-integration/linux/building#integrate-with-linux).
+Para orientações específicas de desktop sobre como chamar APIs do sistema,
+incluindo packages wrapper como [`package:win32`]({{site.pub-pkg}}/win32) e
+[pacotes Linux da Canonical]({{site.pub}}/publishers/canonical.com/packages),
+consulte [Integração com Windows](/platform-integration/windows/building#integrating-with-windows)
+e [Integrar com Linux](/platform-integration/linux/building#integrate-with-linux).
 :::
 
-Here is an example `build.dart` that links against system libraries to get the
-host name:
+Aqui está um exemplo de `build.dart` que faz a linkagem com bibliotecas do sistema
+para obter o nome do host:
 
 ```dart
 // hook/build.dart
@@ -156,39 +165,40 @@ void main(List<String> args) async {
 }
 ```
 
-The Dart files (`unix.dart`, `windows.dart`) would then contain the `external`
-functions that use the symbols from these system libraries.
+Os arquivos Dart (`unix.dart`, `windows.dart`) conteriam então as funções
+`external` que usam os símbolos dessas bibliotecas do sistema.
 
-#### Bundling `libc++_shared.so` on Android
+#### Empacotando o `libc++_shared.so` no Android {:#bundling-libcsharedso-on-android}
 
-Although `libc++_shared.so` ships with the Android NDK,
-it isn't a system library.
-If your app or package uses the [C++ standard library][libcpp-support],
-or includes [multiple shared libraries][shared-libraries] that depend on it,
-your app needs to bundle `libc++_shared.so`.
+Embora o `libc++_shared.so` venha com o NDK do Android,
+ele não é uma biblioteca do sistema.
+Se o seu app ou package usar a [biblioteca padrão do C++][libcpp-support],
+ou incluir [múltiplas bibliotecas compartilhadas][shared-libraries]
+que dependem dela, o seu app precisa empacotar o `libc++_shared.so`.
 
-To bundle the library in your app,
-add a dependency on [`package:android_libcpp_shared`][libcpp-shared],
-which uses its own build hook to bundle `libc++_shared.so`
-from the locally installed NDK for each target architecture.
+Para empacotar a biblioteca no seu app,
+adicione uma dependência ao [`package:android_libcpp_shared`][libcpp-shared],
+que usa o próprio build hook para empacotar o `libc++_shared.so`
+do NDK instalado localmente para cada arquitetura de destino.
 
 [libcpp-support]: {{site.android-dev}}/ndk/guides/cpp-support#cs
 [shared-libraries]: {{site.android-dev}}/ndk/guides/cpp-support#shared_runtimes
 [libcpp-shared]: {{site.pub}}/packages/android_libcpp_shared
 
-### Closed-source libraries
+### Bibliotecas de código fechado {:#closed-source-libraries}
 
-You can also use build hooks to link against pre-compiled, closed-source
-libraries. The recommended approach is to download the pre-compiled binaries at
-build time and verify their integrity with a file hash.
+Você também pode usar build hooks para linkar bibliotecas pré-compiladas
+de código fechado.
+A abordagem recomendada é baixar os binários pré-compilados no momento da build
+e verificar a integridade deles com um hash de arquivo.
 
-In your `build.dart` hook, you would:
-1.  Download the library from a URL.
-2.  Verify the hash of the downloaded file.
-3.  Place the library in the build output directory.
-4.  Create a `CodeAsset` with `DynamicLoading` pointing to the library.
+No seu hook `build.dart`, você faria o seguinte:
+1.  Baixar a biblioteca de uma URL.
+2.  Verificar o hash do arquivo baixado.
+3.  Colocar a biblioteca no diretório de saída da build.
+4.  Criar um `CodeAsset` com `DynamicLoading` apontando para a biblioteca.
 
-Here is a simplified example of the `CodeAsset` creation:
+Aqui está um exemplo simplificado da criação do `CodeAsset`:
 
 ```dart
 // hook/build.dart
@@ -212,72 +222,79 @@ void main(List<String> args) async {
   });
 }
 ```
-You would need to handle different architectures and platforms by having
-different versions of your pre-compiled library.
+Você precisaria lidar com diferentes arquiteturas e plataformas,
+tendo versões diferentes da biblioteca pré-compilada.
 
-To explore additional examples, consult the
-[`package:code_assets` examples]({{site.pub-pkg}}/code_assets/example).
+Para explorar outros exemplos, consulte os
+[exemplos do `package:code_assets`]({{site.pub-pkg}}/code_assets/example).
 
-## Dynamic library naming guidelines
+## Diretrizes para nomes de bibliotecas dinâmicas {:#dynamic-library-naming-guidelines}
 
-When implementing `build.dart` hooks for packages that bundle code assets, it
-is critical to ensure consistent naming of your dynamic libraries across all
-target architectures and SDKs.
+Ao implementar hooks `build.dart` para packages que empacotam code assets,
+é fundamental garantir nomes consistentes para as bibliotecas dinâmicas
+em todas as arquiteturas e SDKs de destino.
 
-On Apple platforms (iOS and macOS), dynamic libraries are bundled into
-frameworks. Flutter's build system relies on these names to generate metadata
-and package distributable formats like XCFrameworks.
+Em plataformas Apple (iOS e macOS), as bibliotecas dinâmicas são empacotadas
+em frameworks.
+O sistema de build do Flutter depende desses nomes para gerar metadados
+e empacotar formatos distribuíveis, como XCFrameworks.
 
-### Consistency across architectures
+### Consistência entre arquiteturas {:#consistency-across-architectures}
 
-For a given asset ID, your hook will be invoked multiple times, once per
-architecture. Your hook must produce the same filename regardless of the target
-architecture (for example, `arm64` vs. `x64`).
+Para um determinado asset ID, o seu hook será invocado várias vezes,
+uma para cada arquitetura.
+O hook deve produzir o mesmo nome de arquivo independentemente da arquitetura
+de destino (por exemplo, `arm64` vs. `x64`).
 
-*   **Why?** Within a single SDK build, Flutter combines architecture-specific
-    binaries into a single universal (fat) binary using `lipo`. If architectures
-    have different filenames, the tool will pick one non-deterministically and
-    issue a warning. Furthermore, error messages at runtime will be confusing
-    for your users if dynamic libraries are renamed.
-*   **Recommended action**: Avoid adding architecture suffixes to your
-    filenames (for example, use `libsqlite3.dylib` instead of
-    `libsqlite3_arm64.dylib`). Instead, write the file to
-    `input.outputDirectory` (which is unique per architecture) or to an
-    architecture-specific subdirectory of `input.outputDirectoryShared` (for
-    example, `input.outputDirectoryShared.resolve('$architecture/')`).
+*   **Por quê?** Dentro de uma única build do SDK, o Flutter combina binários
+    específicos de cada arquitetura em um único binário universal (fat),
+    usando `lipo`. Se as arquiteturas tiverem nomes de arquivo diferentes,
+    a ferramenta escolhe um de forma não determinística e emite um aviso.
+    Além disso, as mensagens de erro em tempo de execução ficam confusas
+    para os usuários se as bibliotecas dinâmicas forem renomeadas.
+*   **Ação recomendada**: evite adicionar sufixos de arquitetura aos nomes
+    de arquivo (por exemplo, use `libsqlite3.dylib` em vez de
+    `libsqlite3_arm64.dylib`). Em vez disso, escreva o arquivo em
+    `input.outputDirectory` (que é único por arquitetura) ou em um subdiretório
+    específico da arquitetura dentro de `input.outputDirectoryShared`
+    (por exemplo, `input.outputDirectoryShared.resolve('$architecture/')`).
 
-### Consistency across SDKs (iOS)
+### Consistência entre SDKs (iOS) {:#consistency-across-sdks-ios}
 
-When building for iOS, your hook will be invoked multiple times with different
-values for the SDK and architecture. Both physical device (`iphoneos`) and
-simulator (`iphonesimulator`) invocations must produce the same framework name
-for the same asset ID.
+Ao compilar para iOS, o seu hook será invocado várias vezes com valores
+diferentes de SDK e arquitetura.
+Tanto as invocações para dispositivo físico (`iphoneos`) quanto para
+simulador (`iphonesimulator`) devem produzir o mesmo nome de framework
+para o mesmo asset ID.
 
-*   **Why?** Flutter uses `xcodebuild -create-xcframework` to combine these
-    outputs. Xcode requires that all platform slices within an XCFramework
-    share the same framework name to allow seamless linking. If filenames
-    differ, the Flutter tool cannot create a correct XCFramework, and commands
-    like `flutter build ios-framework` will fail.
-*   **Recommended action**: Do not use suffixes like `_sim` or `_simulator` for
-    the simulator build. The XCFramework structure already handles the platform
-    separation internally (for example,
-    `MyLib.xcframework/ios-arm64_x86_64-simulator/MyLib.framework`). Instead,
-    write the file to `input.outputDirectory` (which is unique per SDK) or to an
-    SDK-specific subdirectory of `input.outputDirectoryShared`.
+*   **Por quê?** O Flutter usa `xcodebuild -create-xcframework` para combinar
+    essas saídas. O Xcode exige que todas as fatias de plataforma dentro de
+    um XCFramework compartilhem o mesmo nome de framework para permitir a
+    linkagem sem problemas. Se os nomes de arquivo forem diferentes, a
+    ferramenta do Flutter não consegue criar um XCFramework correto, e comandos
+    como `flutter build ios-framework` vão falhar.
+*   **Ação recomendada**: não use sufixos como `_sim` ou `_simulator` na build
+    do simulador. A estrutura do XCFramework já trata a separação de plataforma
+    internamente (por exemplo,
+    `MyLib.xcframework/ios-arm64_x86_64-simulator/MyLib.framework`).
+    Em vez disso, escreva o arquivo em `input.outputDirectory` (que é único por
+    SDK) ou em um subdiretório específico do SDK dentro de
+    `input.outputDirectoryShared`.
 
-### Consistency in the set of assets
+### Consistência no conjunto de assets {:#consistency-in-the-set-of-assets}
 
-Your hook must produce the same set of Asset IDs across all SDKs for a given
-target platform.
+O seu hook deve produzir o mesmo conjunto de Asset IDs em todos os SDKs
+para uma determinada plataforma de destino.
 
-*   **Why?** Apple's build system and App Store validation require that all
-    frameworks included in an application are compatible with the target
-    device. If you produce an asset for the simulator (`iphonesimulator`) but
-    not for the physical device (`iphoneos`), the resulting XCFramework will
-    contain a slice that has no counterpart for the device. This can lead to
-    build failures or Apple rejecting the application for including
-    simulator-only binaries in a device build.
-*   **Recommended action**: Ensure that your `build.dart` hook logic handles
-    all supported SDKs consistently. If you produce an asset for one SDK, you
-    must produce a corresponding asset for all other SDKs for that platform.
-    For SDK-specific code, you can use stub implementations for other SDKs.
+*   **Por quê?** O sistema de build da Apple e a validação da App Store exigem
+    que todos os frameworks incluídos em um aplicativo sejam compatíveis com o
+    dispositivo de destino. Se você produzir um asset para o simulador
+    (`iphonesimulator`), mas não para o dispositivo físico (`iphoneos`), o
+    XCFramework resultante terá uma fatia sem correspondência no dispositivo.
+    Isso pode levar a falhas de build ou à rejeição do aplicativo pela Apple,
+    por incluir binários exclusivos de simulador em uma build de dispositivo.
+*   **Ação recomendada**: garanta que a lógica do seu hook `build.dart` trate
+    todos os SDKs suportados de forma consistente. Se você produzir um asset
+    para um SDK, deve produzir um asset correspondente para todos os outros SDKs
+    dessa plataforma. Para código específico de um SDK, você pode usar
+    implementações stub nos demais SDKs.

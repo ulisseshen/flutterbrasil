@@ -1,28 +1,29 @@
 ---
-title: Display a Cupertino sheet
+ia-translate: true
+title: Exibir uma Cupertino sheet
 description: >-
-  How to implement a Cupertino sheet to display messages and content.
+  Como implementar uma Cupertino sheet para exibir mensagens e conteúdo.
 ---
 
 <?code-excerpt path-base="cookbook/design/cupertino_sheets/"?>
 
-A Cupertino sheet is an iOS-style modal bottom sheet
-used to present content or options.
-It slides up from the bottom of the screen
-and can be pulled down to dismiss.
+Uma Cupertino sheet é um modal no estilo iOS,
+usado para apresentar conteúdo ou opções.
+Ela surge deslizando de baixo para cima na tela
+e pode ser arrastada para baixo para ser fechada.
 
-In Flutter, this is the job of [`showCupertinoSheet`][].
-This recipe implements a Cupertino sheet using the following steps:
+No Flutter, essa tarefa é feita por [`showCupertinoSheet`][].
+Esta receita implementa uma Cupertino sheet seguindo estes passos:
 
-  1. Create a `CupertinoApp` or `MaterialApp`.
-  2. Display the sheet content.
+  1. Criar um `CupertinoApp` ou `MaterialApp`.
+  2. Exibir o conteúdo da sheet.
 
-## 1. Create a `CupertinoApp`
+## 1. Criar um `CupertinoApp` {:#1-create-a-cupertinoapp}
 
-When creating apps that follow the iOS design guidelines,
-you can use `CupertinoApp`.
-The following example provides a button in the center of the screen
-that triggers the modal.
+Ao criar apps que seguem as diretrizes de design do iOS,
+você pode usar `CupertinoApp`.
+O exemplo a seguir exibe um botão no centro da tela
+que abre o modal.
 
 <?code-excerpt "lib/main.dart (CupertinoSheetDemo)"?>
 ```dart
@@ -39,11 +40,11 @@ class CupertinoSheetDemo extends StatelessWidget {
 }
 ```
 
-## 2. Display the sheet content
+## 2. Exibir o conteúdo da sheet {:#2-display-the-sheet-content}
 
-With the basic app structure in place, display the sheet.
-To show it, call `showCupertinoSheet` and provide a `scrollableBuilder`
-that returns the content for the sheet, such as a `SingleChildScrollView`.
+Com a estrutura básica do app pronta, exiba a sheet.
+Para mostrá-la, chame `showCupertinoSheet` e forneça um `scrollableBuilder`
+que retorne o conteúdo da sheet, como um `SingleChildScrollView`.
 
 <?code-excerpt "lib/main.dart (ShowCupertinoSheet)"?>
 ```dart
@@ -74,7 +75,7 @@ showCupertinoSheet<void>(
 );
 ```
 
-## Interactive example
+## Exemplo interativo {:#interactive-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter CupertinoSheet hands-on example in DartPad" run="true"

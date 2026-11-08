@@ -1,6 +1,7 @@
 ---
-title: Flutter audio cookbook
-shortTitle: Audio
-description: A catalog of Flutter audio-related recipes.
+ia-translate: true
+title: Receitas de áudio do Flutter
+shortTitle: Áudio
+description: Um catálogo de receitas do Flutter relacionadas a áudio.
 layout: toc
 ---

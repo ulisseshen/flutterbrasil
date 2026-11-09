@@ -29,7 +29,15 @@ jobs:
         run: dart pub get
 
       - name: Install firebase-tools
-        run: curl -sL https://firebase.tools | bash
+        # Mesma versão fixada pelo upstream em .github/workflows/docs.yml
+        # (o emulador de hosting falha ao iniciar na 15.31.0).
+        env:
+          FIREBASE_TOOLS_VERSION: 15.30.2
+        run: |
+          sudo curl -sSfLo /usr/local/bin/firebase \
+            "https://firebase.tools/bin/linux/v${FIREBASE_TOOLS_VERSION}"
+          sudo chmod +rx /usr/local/bin/firebase
+          firebase --version
 
       - name: Build site
         run: dart run dash_site --site=docs build

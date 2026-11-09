@@ -74,3 +74,22 @@ jobs:
               repo: context.repo.repo,
               body: comment
             });
+
+      # As checagens de link rodam depois do deploy: o preview continua
+      # disponível para revisão, mas o PR fica vermelho se houver link quebrado
+      # (o mesmo check que roda no deploy de produção, antes do merge).
+      - name: Install firebase-tools
+        # Mesma versão fixada pelo upstream em .github/workflows/docs.yml.
+        env:
+          FIREBASE_TOOLS_VERSION: 15.30.2
+        run: |
+          sudo curl -sSfLo /usr/local/bin/firebase \
+            "https://firebase.tools/bin/linux/v${FIREBASE_TOOLS_VERSION}"
+          sudo chmod +rx /usr/local/bin/firebase
+          firebase --version
+
+      - name: Check for broken Markdown link references
+        run: dart run dash_site --site=docs check-link-references
+
+      - name: Check for broken internal links
+        run: dart run dash_site --site=docs check-links

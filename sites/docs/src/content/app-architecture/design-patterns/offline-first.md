@@ -32,7 +32,7 @@ você aprenderá como implementar diferentes abordagens
 para aplicações offline-first no Flutter,
 seguindo as [diretrizes de Arquitetura Flutter][Flutter Architecture guidelines].
 
-## Arquitetura offline-first
+## Arquitetura offline-first {:#offline-first-architecture}
 
 Como explicado no guia de conceitos comuns de arquitetura,
 repositories atuam como a única fonte de verdade.
@@ -138,7 +138,7 @@ class UserProfileViewModel extends ChangeNotifier {
 }
 ```
 
-## Lendo dados
+## Lendo dados {:#reading-data}
 
 Ler dados é uma parte fundamental de qualquer aplicação
 que depende de serviços de API remotos.
@@ -154,7 +154,7 @@ você aprenderá duas abordagens diferentes,
 uma que usa o banco de dados como fallback,
 e uma que combina dados locais e remotos usando um `Stream`.
 
-### Usando dados locais como fallback
+### Usando dados locais como fallback {:#using-local-data-as-a-fallback}
 
 Como primeira abordagem,
 você pode implementar suporte offline tendo um mecanismo de fallback
@@ -192,7 +192,7 @@ Future<UserProfile> getUserProfile() async {
 }
 ```
 
-### Usando um Stream
+### Usando um Stream {:#using-a-stream}
 
 Uma alternativa melhor apresenta os dados usando um `Stream`.
 No melhor cenário,
@@ -262,7 +262,7 @@ Future<void> load() async {
       .asFuture<void>();
 }
 ```
-### Usando apenas dados locais
+### Usando apenas dados locais {:#using-only-local-data}
 
 Outra abordagem possível usa dados armazenados localmente para operações de leitura.
 Esta abordagem requer que os dados tenham sido pré-carregados
@@ -308,7 +308,7 @@ ou feita periodicamente por um `Timer` ou um processo em segundo plano.
 Você pode aprender como implementar uma tarefa de sincronização
 na seção sobre sincronização de estado.
 
-## Escrevendo dados
+## Escrevendo dados {:#writing-data}
 
 Escrever dados em aplicações offline-first depende fundamentalmente
 do caso de uso da aplicação.
@@ -321,7 +321,7 @@ e permitir que os dados estejam fora de sincronia temporariamente.
 Esta seção explica duas abordagens diferentes
 para implementar escrita de dados em aplicações offline-first.
 
-### Escrita apenas online
+### Escrita apenas online {:#online-only-writing}
 
 Uma abordagem para escrever dados em aplicações offline-first
 é forçar estar online para escrever dados.
@@ -354,7 +354,7 @@ A desvantagem neste caso é que a funcionalidade offline-first
 está disponível apenas para operações de leitura,
 mas não para operações de escrita, pois essas requerem que o usuário esteja online.
 
-### Escrita offline-first
+### Escrita offline-first {:#offline-first-writing}
 
 A segunda abordagem funciona de forma oposta.
 Ao invés de executar a chamada de rede primeiro,
@@ -384,7 +384,7 @@ Na próxima seção,
 você aprenderá diferentes abordagens para lidar com sincronização
 entre dados locais e remotos.
 
-## Sincronizando estado
+## Sincronizando estado {:#synchronizing-state}
 
 Manter os dados locais e remotos em sincronia
 é uma parte importante de aplicações offline-first,
@@ -394,7 +394,7 @@ O app também deve garantir que, quando o usuário volta à aplicação,
 os dados armazenados localmente sejam os mesmos do serviço remoto.
 
 
-### Escrevendo uma tarefa de sincronização
+### Escrevendo uma tarefa de sincronização {:#writing-a-synchronization-task}
 
 Existem diferentes abordagens para implementar
 sincronização em uma tarefa em segundo plano.
@@ -462,7 +462,7 @@ enquanto em outros pode não ser frequente o suficiente.
 O tempo real do período de sincronização para sua aplicação
 depende das necessidades da sua aplicação e é algo que você terá que decidir.
 
-### Armazenando uma flag de sincronização
+### Armazenando uma flag de sincronização {:#storing-a-synchronization-flag}
 
 Para saber se os dados requerem sincronização,
 adicione uma flag à classe de dados indicando se as mudanças precisam ser sincronizadas.
@@ -486,7 +486,7 @@ enviá-lo ao serviço de API
 apenas quando a flag `synchronized` for `false`.
 Se a requisição for bem-sucedida, então mude-a para `true`.
 
-### Enviando dados do servidor
+### Enviando dados do servidor {:#pushing-data-from-server}
 
 Uma abordagem diferente para sincronização
 é usar um serviço de push para fornecer dados atualizados à aplicação.
@@ -505,7 +505,7 @@ Você pode combinar ambas as abordagens juntas,
 tendo uma tarefa de sincronização em segundo plano e usando mensagens push em segundo plano,
 para manter o banco de dados da aplicação sincronizado com o servidor.
 
-## Juntando tudo
+## Juntando tudo {:#putting-it-all-together}
 
 Escrever uma aplicação offline-first
 requer tomar decisões sobre

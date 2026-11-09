@@ -27,7 +27,7 @@ se uma `Route` opaca é empilhada sobre outra `Route` ou removida de cima dela,
 as `Route`s abaixo da `Route` opaca
 não são mais reconstruídas desnecessariamente.
 
-## Descrição da mudança {:#description-of-the-change}
+## Descrição da mudança {:#description-of-change}
 
 Na maioria dos casos, esta mudança não exige nenhuma alteração no seu código.
 No entanto, se o seu app dependia de forma incorreta das

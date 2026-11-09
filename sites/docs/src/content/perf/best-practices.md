@@ -39,7 +39,7 @@ por serem lentas, mas nem sempre podem ser evitadas.
 Elas devem ser usadas com cuidado,
 seguindo as orientações abaixo.
 
-## Minimizar operações caras
+## Minimizar operações caras {:#minimize-expensive-operations}
 
 Algumas operações são mais caras que outras,
 significando que elas consomem mais recursos.
@@ -47,7 +47,7 @@ Obviamente, você quer usar essas operações
 apenas quando necessário. Como você projeta e implementa a
 UI do seu app pode ter um grande impacto em quão eficientemente ele executa.
 
-### Controlar o custo do build()
+### Controlar o custo do build() {:#control-build-cost}
 
 Aqui estão algumas coisas para manter em mente ao projetar sua UI:
 
@@ -97,7 +97,7 @@ Para mais informações, confira:
 
 ---
 
-### Use StringBuffer para construção eficiente de strings
+### Use StringBuffer para construção eficiente de strings {:#use-stringbuffer-for-efficient-string-building}
 
 Quando você precisa construir uma string a partir de múltiplas partes, especialmente dentro de um loop,
 usar o operador `+` pode ser ineficiente porque ele cria um novo objeto `String`
@@ -109,7 +109,7 @@ que coleta todas as strings e as concatena apenas uma vez, quando você chama
 
 ---
 
-### Use saveLayer() com cuidado
+### Use saveLayer() com cuidado {:#use-savelayer-thoughtfully}
 
 Algum código Flutter usa `saveLayer()`, uma operação cara,
 para implementar vários efeitos visuais na UI.
@@ -118,7 +118,7 @@ outros widgets ou packages que você usa podem chamá-lo nos bastidores.
 Talvez seu app esteja chamando `saveLayer()` mais do que o necessário;
 chamadas excessivas a `saveLayer()` podem causar jank.
 
-#### Por que saveLayer é caro?
+#### Por que saveLayer é caro? {:#why-is-savelayer-expensive}
 
 Chamar `saveLayer()` aloca um buffer offscreen
 e desenhar conteúdo no buffer offscreen pode
@@ -129,14 +129,14 @@ a redirecionar esse fluxo temporariamente e então
 direcioná-lo de volta novamente. Em GPUs móveis isso é
 particularmente disruptivo para o throughput de renderização.
 
-#### Quando saveLayer é necessário?
+#### Quando saveLayer é necessário? {:#when-is-savelayer-required}
 
 Em tempo de execução, se você precisa exibir dinamicamente várias formas
 vindas de um servidor (por exemplo), cada uma com alguma transparência,
 que podem (ou não) se sobrepor,
 então você praticamente precisa usar `saveLayer()`.
 
-#### Depurando chamadas a saveLayer
+#### Depurando chamadas a saveLayer {:#debugging-calls-to-savelayer}
 
 Como você pode saber com que frequência seu app chama `saveLayer()`,
 seja direta ou indiretamente?
@@ -148,7 +148,7 @@ na [visualização Performance do DevTools][DevTools Performance view].
 
 [DevTools timeline]: /tools/devtools/performance#timeline-events-tab
 
-#### Minimizando chamadas a saveLayer
+#### Minimizando chamadas a saveLayer {:#minimizing-calls-to-savelayer}
 
 Você pode evitar chamadas a `saveLayer`?
 Pode exigir repensar como você
@@ -205,7 +205,7 @@ e são potencialmente caros:
 
 ---
 
-### Minimizar uso de opacidade e clipping
+### Minimizar uso de opacidade e clipping {:#minimize-use-of-opacity-and-clipping}
 
 Opacidade é outra operação cara, assim como clipping.
 Aqui estão algumas dicas que você pode achar úteis:
@@ -236,7 +236,7 @@ Aqui estão algumas dicas que você pode achar úteis:
 
 ---
 
-### Implementar grids e listas com cuidado
+### Implementar grids e listas com cuidado {:#implement-grids-and-lists-thoughtfully}
 
 Como suas grids e listas são implementadas
 pode estar causando problemas de performance para seu app.
@@ -245,7 +245,7 @@ ao criar grids e listas,
 e como determinar se seu app usa
 passes de layout excessivos.
 
-#### Seja preguiçoso!
+#### Seja preguiçoso! {:#be-lazy}
 
 Ao construir uma grid ou lista grande,
 use os métodos de builder preguiçosos, com callbacks.
@@ -263,14 +263,14 @@ Para mais informações e exemplos, confira:
 [`ListView.builder`]: {{site.api}}/flutter/widgets/ListView/ListView.builder.html
 [Working with long lists]: /cookbook/lists/long-lists
 
-#### Evite intrinsics
+#### Evite intrinsics {:#avoid-intrinsics}
 
 Para informações sobre como passes intrínsecos podem estar causando
 problemas com suas grids e listas, veja a próxima seção.
 
 ---
 
-### Minimizar passes de layout causados por operações intrínsecas
+### Minimizar passes de layout causados por operações intrínsecas {:#minimize-layout-passes-caused-by-intrinsic-operations}
 
 Se você já programou muito em Flutter, provavelmente está
 familiarizado com [como layout e constraints funcionam][how layout and constraints work]
@@ -285,7 +285,7 @@ sobre os widgets mas, às vezes,
 um segundo passe (chamado de _passe intrínseco_) é necessário,
 e isso pode tornar a performance mais lenta.
 
-#### O que é um passe intrínseco?
+#### O que é um passe intrínseco? {:#what-is-an-intrinsic-pass}
 
 Um passe intrínseco acontece quando, por exemplo,
 você quer que todas as células tenham o tamanho
@@ -305,7 +305,7 @@ o framework determina um tamanho de célula uniforme,
 e revisita todas as células da grid uma segunda vez,
 dizendo a cada card qual tamanho usar.
 
-#### Depurando passes intrínsecos
+#### Depurando passes intrínsecos {:#debugging-intrinsic-passes}
 
 Para determinar se você tem passes intrínsecos excessivos,
 habilite a opção **[Track layouts][Track layouts option]**
@@ -315,7 +315,7 @@ para saber quantos passes de layout foram realizados.
 Uma vez que você habilite o rastreamento, eventos de timeline intrínsecos
 são rotulados como '$runtimeType intrinsics'.
 
-#### Evitando passes intrínsecos
+#### Evitando passes intrínsecos {:#avoiding-intrinsic-passes}
 
 Você tem algumas opções para evitar o passe intrínseco:
 
@@ -340,7 +340,7 @@ na [visão geral arquitetural do Flutter][Flutter architectural overview].
 
 ---
 
-### Construir e exibir frames em 16ms
+### Construir e exibir frames em 16ms {:#build-and-display-frames-in-16ms}
 
 Como há duas threads separadas para construção
 e renderização, você tem 16ms para construção,
@@ -372,7 +372,7 @@ confira o vídeo [Why 60fps?][Why 60fps?]
 [profile mode]: /testing/build-modes#profile
 [Why 60fps?]: {{site.yt.watch}}?v=CaMTIgxCSqU
 
-## Armadilhas
+## Armadilhas {:#pitfalls}
 
 Se você precisa ajustar a performance do seu app,
 ou talvez a UI não esteja tão suave quanto você espera,
@@ -427,7 +427,7 @@ a performance do seu app.
   já que o compilador não pode mais assumir que a chamada é sempre estática.
 
 
-## Recursos
+## Recursos {:#resources}
 
 Para mais informações sobre performance, confira os seguintes recursos:
 

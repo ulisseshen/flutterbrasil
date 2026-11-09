@@ -24,7 +24,7 @@ A animação a seguir mostra o comportamento do app:
 
 ![Parallax scrolling](/assets/images/docs/cookbook/effects/ParallaxScrolling.webp){:.site-mobile-screenshot}
 
-## Criar uma lista para armazenar os itens parallax
+## Criar uma lista para armazenar os itens parallax {:#create-a-list-to-hold-the-parallax-items}
 
 Para exibir uma lista de imagens com rolagem parallax,
 você deve primeiro exibir uma lista.
@@ -46,7 +46,7 @@ class ParallaxRecipe extends StatelessWidget {
 }
 ```
 
-## Exibir itens com texto e uma imagem estática
+## Exibir itens com texto e uma imagem estática {:#display-items-with-text-and-a-static-image}
 
 Cada item da lista exibe uma imagem de fundo de
 retângulo arredondado, representando uma das sete localizações no mundo.
@@ -173,7 +173,7 @@ que exibe sete localizações únicas no mundo.
 Na próxima etapa, você adiciona um efeito parallax à
 imagem de fundo.
 
-## Implementar o efeito parallax
+## Implementar o efeito parallax {:#implement-the-parallax-effect}
 
 Um efeito de rolagem parallax é alcançado empurrando levemente
 a imagem de fundo na direção oposta
@@ -548,7 +548,7 @@ Parabéns!
 Agora você tem uma lista de cards com parallax,
 rolando imagens de fundo.
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 Execute o app:
 

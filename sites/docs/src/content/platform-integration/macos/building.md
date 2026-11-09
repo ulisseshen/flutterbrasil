@@ -32,7 +32,7 @@ pop-up, e diálogos modais.
 [Cupertino]: /ui/widgets/cupertino
 [macos_ui]: {{site.pub}}/packages/macos_ui
 
-## Criando apps macOS
+## Criando apps macOS {:#building-macos-apps}
 
 :::warning Descontinuação do macOS Intel (x64)
 À medida que a Apple descontinua os Macs baseados em Intel,

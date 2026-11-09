@@ -15,7 +15,7 @@ Em contraste com o construtor padrão `ListView`, que requer
 criar todos os itens de uma vez, o construtor `ListView.builder()`
 cria itens conforme eles são exibidos na tela.
 
-## 1. Criar uma fonte de dados
+## 1. Criar uma fonte de dados {:#1-create-a-data-source}
 
 Primeiro, você precisa de uma fonte de dados. Por exemplo, sua fonte de dados
 pode ser uma lista de mensagens, resultados de pesquisa ou produtos em uma loja.
@@ -29,7 +29,7 @@ construtor [`List.generate`][`List.generate`].
 List<String>.generate(10000, (i) => 'Item $i'),
 ```
 
-## 2. Converter a fonte de dados em widgets
+## 2. Converter a fonte de dados em widgets {:#2-convert-the-data-source-into-widgets}
 
 Para exibir a lista de strings, renderize cada String como um widget
 usando `ListView.builder()`.
@@ -46,7 +46,7 @@ ListView.builder(
 )
 ```
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter create long list hands-on example in DartPad" run="true"
@@ -86,7 +86,7 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-## Extensão dos filhos
+## Extensão dos filhos {:#childrens-extent}
 
 Para especificar a extensão de cada item, você pode usar [`prototypeItem`][`prototypeItem`], [`itemExtent`][`itemExtent`],
 ou [`itemExtentBuilder`][`itemExtentBuilder`].

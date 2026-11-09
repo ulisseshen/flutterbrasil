@@ -36,7 +36,7 @@ e `onGenerateRoute()` usando os seguintes passos:
   3. Registrar o widget na tabela `routes`.
   4. Navegar para o widget.
 
-## 1. Definir os argumentos que você precisa passar
+## 1. Definir os argumentos que você precisa passar {:#1-define-the-arguments-you-need-to-pass}
 
 Primeiro, defina os argumentos que você precisa passar para a nova rota.
 Neste exemplo, passe dois pedaços de dados:
@@ -57,7 +57,7 @@ class ScreenArguments {
 }
 ```
 
-## 2. Criar um widget que extrai os argumentos
+## 2. Criar um widget que extrai os argumentos {:#2-create-a-widget-that-extracts-the-arguments}
 
 Em seguida, crie um widget que extrai e exibe o
 `title` e `message` do `ScreenArguments`.
@@ -88,7 +88,7 @@ class ExtractArgumentsScreen extends StatelessWidget {
 }
 ```
 
-## 3. Registrar o widget na tabela `routes`
+## 3. Registrar o widget na tabela `routes` {:#3-register-the-widget-in-the-routes-table}
 
 Em seguida, adicione uma entrada às `routes` fornecidas para o widget `MaterialApp`. As
 `routes` definem qual widget deve ser criado com base no nome da rota.
@@ -107,7 +107,7 @@ MaterialApp(
 ```
 
 
-## 4. Navegar para o widget
+## 4. Navegar para o widget {:#4-navigate-to-the-widget}
 
 Finalmente, navegue para o `ExtractArgumentsScreen`
 quando um usuário toca em um botão usando [`Navigator.pushNamed()`][].
@@ -139,7 +139,7 @@ ElevatedButton(
 ),
 ```
 
-## Alternativamente, extrair os argumentos usando `onGenerateRoute`
+## Alternativamente, extrair os argumentos usando `onGenerateRoute` {:#alternatively-extract-the-arguments-using-ongenerateroute}
 
 Em vez de extrair os argumentos diretamente dentro do widget, você também pode
 extrair os argumentos dentro de uma função [`onGenerateRoute()`][]
@@ -190,7 +190,7 @@ MaterialApp(
 )
 ```
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter complete navigation hands-on example in DartPad" run="true"

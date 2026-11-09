@@ -124,7 +124,7 @@ TextField(
 )
 ```
 
-### [`TextSelectionControls.canCut`]({{site.api}}/flutter/widgets/TextSelectionControls/canCut.html) e outros booleanos de botão
+### [`TextSelectionControls.canCut`]({{site.api}}/flutter/widgets/TextSelectionControls/canCut.html) e outros booleanos de botão {:#textselectioncontrols-cancut-and-other-button-booleans}
 
 Estes booleanos tinham anteriormente o mesmo efeito de habilitar e desabilitar certos
 botões como `ToolbarOptions.cut`, e assim por diante. Antes desta alteração, você poderia
@@ -142,7 +142,7 @@ class _MyMaterialTextSelectionControls extends MaterialTextSelectionControls {
 Veja a seção anterior sobre `ToolbarOptions` para saber como alcançar um efeito similar
 com `contextMenuBuilder`.
 
-### [`TextSelectionControls.handleCut`]({{site.api}}/flutter/widgets/TextSelectionControls/handleCut.html) e outros callbacks de botão
+### [`TextSelectionControls.handleCut`]({{site.api}}/flutter/widgets/TextSelectionControls/handleCut.html) e outros callbacks de botão {:#textselectioncontrols-handlecut-and-other-button-callbacks}
 
 Essas funções permitiam a modificação do callback chamado quando os botões
 eram pressionados. Antes desta alteração, você poderia estar modificando callbacks de botões do menu de contexto sobrescrevendo esses métodos handler assim:

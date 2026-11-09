@@ -41,7 +41,7 @@ e ferramentas:
 $ flutter --version
 ```
 
-## Comandos `flutter`
+## Comandos `flutter` {:#flutter-commands}
 
 A tabela a seguir mostra quais comandos você pode usar com a ferramenta `flutter`:
 

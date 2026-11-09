@@ -8,7 +8,7 @@ description: Aprenda como usar o Flutter Property Editor para visualizar e modif
 O Flutter Property Editor requer Flutter versão 3.32 ou superior.
 :::
 
-## O que é isso?
+## O que é isso? {:#what-is-it}
 
 O Flutter Property Editor é uma poderosa ferramenta de IDE que permite visualizar e modificar
 propriedades de widgets diretamente de uma interface visual.
@@ -21,7 +21,7 @@ o desenvolvimento e iteração de UI.
 
 ![Flutter Property Editor](/assets/images/docs/tools/devtools/property-editor-text-widget.png){:width="500px"}
 
-## Como acessar o Flutter Property Editor
+## Como acessar o Flutter Property Editor {:#how-to-access-the-flutter-property-editor}
 
 1.  Abra o Flutter Property Editor em sua IDE compatível ([VS Code][VS Code],
     [Android Studio/IntelliJ][Android Studio/IntelliJ]).
@@ -51,9 +51,9 @@ o desenvolvimento e iteração de UI.
 [Android Studio/IntelliJ]: /tools/android-studio#property-editor
 [widget constructor invocation]: /learn/pathway/tutorial/widget-fundamentals
 
-### Uso em tempo de execução
+### Uso em tempo de execução {:#runtime-usage}
 
-#### Integração com o Flutter inspector
+#### Integração com o Flutter inspector {:#integration-with-the-flutter-inspector}
 
 O Flutter Property Editor pode ser usado em conjunto com o
 [Flutter inspector][Flutter inspector] para inspecionar seus widgets simultaneamente em ambas as ferramentas.
@@ -83,7 +83,7 @@ Ambas as ações irão automaticamente:
 [inspector's widget tree]: /tools/devtools/inspector#flutter-widget-tree
 [Select Widget Mode]: /tools/devtools/inspector#inspecting-a-widget
 
-#### Integração com hot reload
+#### Integração com hot reload {:#integration-with-hot-reload}
 
 O Flutter Property Editor pode ser usado em conjunto
 com hot reload para visualizar mudanças em tempo real.
@@ -116,12 +116,12 @@ com hot reload para visualizar mudanças em tempo real.
 3.  Quaisquer mudanças que você fizer no Flutter Property Editor são automaticamente
     refletidas em seu app em execução.
 
-## Conjunto de recursos
+## Conjunto de recursos {:#feature-set}
 
 O Flutter Property Editor vem equipado com vários recursos projetados para
 acelerar o processo de desenvolvimento.
 
-### Visualizando documentação de widget
+### Visualizando documentação de widget {:#viewing-widget-documentation}
 
 Quando um widget é selecionado no Flutter Property Editor, sua documentação é
 exibida no topo. Isso permite que você leia rapidamente a documentação do widget,
@@ -139,7 +139,7 @@ Editor, certifique-se de seguir o [guia de estilo Dart][Dart style guide].
 
 [Dart style guide]: {{site.dart-site}}/effective-dart/documentation
 
-### Editando propriedades de widget
+### Editando propriedades de widget {:#editing-widget-properties}
 
 O Flutter Property Editor contém campos de entrada adaptados ao tipo de cada
 argumento de construtor.
@@ -160,7 +160,7 @@ argumento de construtor.
       edição direta de propriedades de objeto complexo. Você precisará editar estas
       diretamente em seu código-fonte.
 
-### Compreendendo as entradas de propriedade
+### Compreendendo as entradas de propriedade {:#understanding-the-property-inputs}
 
 Cada entrada de propriedade no Flutter Property Editor é acompanhada de informações
 para ajudá-lo a entender seu uso.
@@ -196,7 +196,7 @@ para ajudá-lo a entender seu uso.
 
     !["Set" and "default" labels for a property input](/assets/images/docs/tools/devtools/property-editor-labels.png){:width="500px"}
 
-### Filtrando propriedades
+### Filtrando propriedades {:#filtering-properties}
 
 Para widgets com muitas propriedades, a barra de filtro pode ajudar a localizar rapidamente
 propriedades de interesse.

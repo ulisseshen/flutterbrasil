@@ -79,7 +79,7 @@ A view de logging do DevTool interpreta o parâmetro error codificado em JSON
 como um objeto de dados.
 O DevTool renderiza na view de detalhes para aquela entrada de log.
 
-## Definir breakpoints
+## Definir breakpoints {:#set-breakpoints}
 
 Você pode definir breakpoints no [Debugger][Debugger] do DevTools ou
 no debugger integrado da sua IDE.
@@ -105,7 +105,7 @@ void someFunction(double offset) {
 }
 ```
 
-## Depurar camadas do app usando flags
+## Depurar camadas do app usando flags {:#debug-app-layers-using-flags}
 
 Cada camada do framework Flutter fornece uma função para despejar seu
 estado ou eventos atuais no console usando a propriedade `debugPrint`.
@@ -124,7 +124,7 @@ Este hash serve como um identificador único para aquele objeto de renderizaçã
 
 [`hashCode`]: {{site.api}}/flutter/rendering/TextSelectionPoint/hashCode.html
 
-### Imprimir a árvore de widgets
+### Imprimir a árvore de widgets {:#print-the-widget-tree}
 
 Para despejar o estado da biblioteca Widgets,
 chame a função [`debugDumpApp()`][].
@@ -205,7 +205,7 @@ Adicione objetos [DiagnosticsProperty][DiagnosticsProperty] ao argumento do mét
 e chame o método da superclasse.
 O método `toString` usa esta função para preencher a descrição do widget.
 
-### Imprimir a árvore de renderização
+### Imprimir a árvore de renderização {:#print-the-render-tree}
 
 Ao depurar um problema de layout, a árvore da camada Widgets pode não ter detalhes suficientes.
 O próximo nível de depuração pode exigir uma árvore de renderização.
@@ -316,7 +316,7 @@ substitua [`debugFillProperties()`][render-fill].
 Adicione objetos [DiagnosticsProperty][DiagnosticsProperty] ao argumento do método
 e então chame o método da superclasse.
 
-### Imprimir a árvore de camadas
+### Imprimir a árvore de camadas {:#print-the-layer-tree}
 
 Para depurar um problema de composição, use [`debugDumpLayerTree()`][].
 
@@ -392,7 +392,7 @@ O widget `RepaintBoundary` cria:
 
 Isso reduz o quanto precisa ser repintado.
 
-### Imprimir a árvore de foco
+### Imprimir a árvore de foco {:#print-the-focus-tree}
 
 Para depurar um problema de foco ou atalho, despeje a árvore de foco
 usando a função [`debugDumpFocusTree()`][].
@@ -446,7 +446,7 @@ class AppHome extends StatelessWidget {
 
 </details>
 
-### Imprimir a árvore semântica
+### Imprimir a árvore semântica {:#print-the-semantics-tree}
 
 A função `debugDumpSemanticsTree()` imprime a árvore semântica para o app.
 
@@ -503,7 +503,7 @@ class AppHome extends StatelessWidget {
 
 </details>
 
-### Imprimir timings de eventos
+### Imprimir timings de eventos {:#print-event-timings}
 
 Se você quiser descobrir onde seus eventos acontecem em relação ao
 início e fim do frame, pode configurar prints para registrar esses eventos.
@@ -523,7 +523,7 @@ I/flutter : ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀�
 Para imprimir a pilha de chamadas causando o agendamento do frame atual,
 use a flag [`debugPrintScheduleFrameStacks`][].
 
-## Depurar problemas de layout
+## Depurar problemas de layout {:#debug-layout-issues}
 
 Para depurar um problema de layout usando uma GUI, defina
 [`debugPaintSizeEnabled`][] como `true`.
@@ -601,7 +601,7 @@ animações estiverem em execução, é possível que o framework
 observe o tempo voltando, o que provavelmente
 resultará em asserts e geralmente interferirá com seus esforços.
 
-## Depurar problemas de performance
+## Depurar problemas de performance {:#debug-performance-issues}
 
 :::note
 Você pode obter resultados similares a algumas dessas flags de debug
@@ -733,7 +733,7 @@ Para aprender como interpretar os gráficos no overlay,
 confira [The performance overlay][The performance overlay] em
 [Profiling Flutter performance][Profiling Flutter performance].
 
-## Adicionar grade de alinhamento de widgets
+## Adicionar grade de alinhamento de widgets {:#add-widget-alignment-grid}
 
 Para adicionar um overlay a uma [grade baseline do Material Design][Material Design baseline grid] no seu app para
 ajudar a verificar alinhamentos, adicione o argumento `debugShowMaterialGrid` no

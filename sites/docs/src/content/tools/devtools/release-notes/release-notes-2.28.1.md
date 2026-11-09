@@ -12,7 +12,7 @@ inclui as seguintes alterações entre outras melhorias gerais.
 Para saber mais sobre DevTools, confira a
 [visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 * Adicionado suporte para extensões do DevTools.
   Isso significa que se você está debugando um app que depende de `package:foo`,
@@ -35,13 +35,13 @@ Para saber mais sobre DevTools, confira a
   [#6451](https://github.com/flutter/devtools/pull/6451),
   [#6450](https://github.com/flutter/devtools/pull/6450)
 
-## Atualizações do Inspector
+## Atualizações do Inspector {:#inspector-updates}
 
 * Corrigido bug onde chamadas de serviço do inspector eram feitas no isolate selecionado,
   ao invés do isolate principal -
   [#6434](https://github.com/flutter/devtools/pull/6434)
 
-## Atualizações de Logging
+## Atualizações de Logging {:#logging-updates}
 
 * Melhorada responsividade da barra superior na visualização Logging -
   [#6281](https://github.com/flutter/devtools/pull/6281)
@@ -51,7 +51,7 @@ Para saber mais sobre DevTools, confira a
 
   ![The copy button on the Logging view to the right of the filter tool](/assets/images/docs/tools/devtools/release-notes/images-2.28.1/logger_copy.png "The Logging view copy button")
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de alterações nesta versão, confira o
 [log git do DevTools](https://github.com/flutter/devtools/tree/v2.28.1).

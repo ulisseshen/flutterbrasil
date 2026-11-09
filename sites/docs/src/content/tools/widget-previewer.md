@@ -13,7 +13,7 @@ O Flutter Widget Previewer é estável a partir do Flutter 3.47.
 Neste guia, você aprenderá como usar o
 Flutter Widget Previewer.
 
-## Visão geral
+## Visão geral {:#overview}
 
 Com o Flutter Widget Previewer, você pode renderizar, inspecionar
 e iterar instantaneamente sobre componentes de UI individuais em tempo real,
@@ -22,14 +22,14 @@ separados de um app completo, na sua IDE ou navegador.
 As seções a seguir explicam como abrir o previewer, fazer preview dos seus
 widgets, pesquisar e filtrar previews e personalizar configurações de preview.
 
-## Abrindo o previewer
+## Abrindo o previewer {:#opening-the-previewer}
 
 ### IDEs
 
 Android Studio, IntelliJ e Visual Studio Code iniciam automaticamente
 o Flutter Widget Previewer ao serem lançados.
 
-#### Android Studio e IntelliJ
+#### Android Studio e IntelliJ {:#android-studio-and-intellij}
 
 Para abrir o Widget Previewer no Android Studio ou IntelliJ, abra
 a aba "Flutter Widget Preview" na barra lateral:
@@ -43,7 +43,7 @@ aba "Flutter Widget Preview" na barra lateral:
 
 ![Flutter Widget Previewer in Visual Studio Code](/assets/images/docs/tools/widget-previewer/vscode.png "Visual Studio Code")
 
-### Linha de comando
+### Linha de comando {:#command-line}
 
 Para iniciar o Flutter Widget Previewer a partir do seu terminal, navegue até o
 diretório raiz do seu projeto Flutter e execute o seguinte comando:
@@ -58,7 +58,7 @@ no seu navegador.
 Para otimizar os tempos de inicialização, o previewer armazena automaticamente em cache
 os builds do projeto em uma pasta `.widget_preview/` na raiz do seu projeto.
 
-## Preview de um widget
+## Preview de um widget {:#preview-a-widget}
 
 Depois de ter iniciado o previewer, para visualizar um widget,
 você deve usar a anotação [`@Preview`][`@Preview`] definida em
@@ -147,7 +147,7 @@ previews com base no arquivo atualmente selecionado:
 Para alternar este comportamento, selecione a opção **Filter previews by selected file**
 na parte inferior do ambiente.
 
-## Personalizar uma preview
+## Personalizar uma preview {:#customize-a-preview}
 
 A anotação [`@Preview`][`@Preview`] tem vários parâmetros que você pode
 usar para personalizar a preview:
@@ -176,7 +176,7 @@ usar para personalizar a preview:
 - **`localizations`**: Uma função para aplicar uma configuração
   de localização.
 
-## Criar anotações de preview customizadas
+## Criar anotações de preview customizadas {:#create-custom-preview-annotations}
 
 Para reduzir a quantidade de boilerplate necessária para definir previews com
 um conjunto comum de propriedades, a classe de anotação [`Preview`][`Preview`] pode ser
@@ -267,7 +267,7 @@ final class const PreviewMaterialThemeData({final Brightness? _brightness})
 
 ![Transformações em tempo de execução na anotação Preview no Flutter Widget Previewer](/assets/images/docs/tools/widget-previewer/transformative-preview.webp "Transformações em tempo de execução na anotação Preview")
 
-## Criando múltiplas configurações de preview
+## Criando múltiplas configurações de preview {:#creating-multiple-preview-configurations}
 
 Criar múltiplas previews com configurações diferentes pode ser tão
 simples quanto aplicar múltiplas anotações [`@Preview`][`@Preview`] a uma única
@@ -355,7 +355,7 @@ final class MultiBrightnessPreview extends MultiPreview {
 Widget buttonPreview() => const ButtonShowcase();
 ```
 
-## Restrições e limitações
+## Restrições e limitações {:#restrictions-and-limitations}
 
 O Flutter Widget Previewer tem certas restrições que
 você deve estar ciente:

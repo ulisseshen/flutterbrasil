@@ -33,7 +33,7 @@ o que oferece segurança de tipos e uma intenção mais clara.
 
 ### Camada de widgets {:#widget-layer}
 
-#### `cacheExtent` (pixels) {:#cacheextent-pixels}
+#### `cacheExtent` (pixels)
 
 Se o seu código usa `cacheExtent`,
 que usa pixels por padrão,
@@ -57,7 +57,7 @@ ListView(
 )
 ```
 
-#### `cacheExtentStyle` (viewport) {:#cacheextentstyle-viewport}
+#### `cacheExtentStyle` (viewport)
 
 Se o seu código usa `cacheExtent` com `CacheExtentStyle.viewport`,
 o que é comum em `Viewport`,

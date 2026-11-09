@@ -13,7 +13,7 @@ ia-translate: true
 A API `PrimaryScrollController` foi atualizada para não se anexar mais
 automaticamente a `ScrollView`s verticais em plataformas desktop.
 
-## Contexto {:#background}
+## Contexto {:#context}
 
 Antes desta mudança, `ScrollView.primary` era true por padrão se uma
 `ScrollView` tivesse uma direção de rolagem `Axis.vertical` e um
@@ -33,7 +33,7 @@ uma mensagem de erro muitas vezes pouco útil. Para resolver isso, o
 `PrimaryScrollController` recebeu parâmetros adicionais, além de mensagens de
 erro melhores em vários widgets que dependem dele.
 
-## Descrição da mudança {:#change-description}
+## Descrição da mudança {:#description-of-change}
 
 A implementação anterior de `ScrollView` fazia com que `primary` fosse true por
 padrão em todas as `ScrollView`s verticais que não tinham um

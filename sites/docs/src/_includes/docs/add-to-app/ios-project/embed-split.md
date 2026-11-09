@@ -33,7 +33,7 @@ Este método funciona apenas com os [canais de release][release channels] `beta`
 
 {% render "docs/add-to-app/ios-project/embed-framework-directory-tree.md" %}
 
-#### Adicionar Flutter engine ao seu Podfile
+#### Adicionar Flutter engine ao seu Podfile {:#add-flutter-engine-to-your-podfile}
 
 Apps host usando CocoaPods podem adicionar o Flutter engine ao seu Podfile.
 
@@ -47,6 +47,6 @@ Por exemplo, use `Debug` se você precisar usar `flutter attach`
 e `Release` quando estiver pronto para enviar.
 :::
 
-#### Linkar e incorporar frameworks de app e plugin
+#### Linkar e incorporar frameworks de app e plugin {:#link-and-embed-app-and-plugin-frameworks}
 
 {% render "docs/add-to-app/ios-project/link-and-embed.md" %}

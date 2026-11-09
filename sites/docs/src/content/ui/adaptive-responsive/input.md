@@ -31,7 +31,7 @@ adaptativos _quanto_ acessíveis.
 
 [creating accessible apps]: /ui/accessibility
 
-## Roda de rolagem para widgets customizados
+## Roda de rolagem para widgets customizados {:#scroll-wheel-for-custom-widgets}
 
 Widgets roláveis como `ScrollView` ou `ListView`
 suportam a roda de rolagem por padrão, e porque
@@ -54,7 +54,7 @@ return Listener(
 
 [`Listener`]: {{site.api}}/flutter/widgets/Listener-class.html
 
-## Navegação por tab e interações de foco
+## Navegação por tab e interações de foco {:#tab-traversal-and-focus-interactions}
 
 Usuários com teclados físicos esperam que possam usar
 a tecla tab para navegar rapidamente por uma aplicação,
@@ -117,7 +117,7 @@ class _BasicActionDetectorState extends State<BasicActionDetector> {
 [`MouseRegion`]: {{site.api}}/flutter/widgets/MouseRegion-class.html
 [`Shortcuts`]: {{site.api}}/flutter/widgets/Shortcuts-class.html
 
-### Controlando a ordem de travessia
+### Controlando a ordem de travessia {:#controlling-traversal-order}
 
 Para obter mais controle sobre a ordem em que
 os widgets são focados quando o usuário pressiona tab,
@@ -145,7 +145,7 @@ uma política customizada.
 
 [`FocusTraversalGroup`]: {{site.api}}/flutter/widgets/FocusTraversalGroup-class.html
 
-## Aceleradores de teclado
+## Aceleradores de teclado {:#keyboard-accelerators}
 
 Além da navegação por tab, usuários de desktop e web estão acostumados
 a ter vários atalhos de teclado vinculados a ações específicas.
@@ -351,7 +351,7 @@ e, se sim, adiciona um contorno.
 [button code for the Wonderous app]: {{site.repo.wonderous}}/blob/8a29d6709668980340b1b59c3d3588f123edd4d8/lib/ui/common/controls/buttons.dart#L143
 [`FocusNode.hasFocus`]: {{site.api}}/flutter/widgets/FocusNode/hasFocus.html
 
-## Densidade visual
+## Densidade visual {:#visual-density}
 
 Você pode considerar aumentar a "área de toque"
 de um widget para acomodar uma tela touch, por exemplo.

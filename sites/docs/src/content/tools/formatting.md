@@ -16,7 +16,7 @@ experiência&mdash;equipes de desenvolvedores podem achar mais produtivo:
 A alternativa frequentemente são debates cansativos sobre formatação durante revisões de código,
 onde o tempo poderia ser melhor gasto no comportamento do código ao invés do estilo do código.
 
-## Formatando código automaticamente no VS Code
+## Formatando código automaticamente no VS Code {:#automatically-formatting-code-in-vs-code}
 
 Instale a extensão `Flutter` (veja [VS Code setup][VS Code setup])
 para obter formatação automática de código no VS Code.
@@ -30,7 +30,7 @@ configuração `editor.formatOnSave` como `true`.
 
 [VS Code setup]: /tools/vs-code#setup
 
-## Formatando código automaticamente no Android Studio e IntelliJ
+## Formatando código automaticamente no Android Studio e IntelliJ {:#automatically-formatting-code-in-android-studio-and-intellij}
 
 Instale o plugin `Dart` (veja [Android Studio and IntelliJ setup][Android Studio and IntelliJ setup])
 para obter formatação automática de código no Android Studio e IntelliJ.
@@ -48,7 +48,7 @@ Esta opção corrige a formatação no arquivo atual quando você o salva.
 
 [Android Studio and IntelliJ setup]: /tools/android-studio#setup
 
-## Formatando código automaticamente com o comando `dart`
+## Formatando código automaticamente com o comando `dart` {:#automatically-formatting-code-with-the-dart-command}
 
 Para corrigir a formatação do código na interface de linha de comando (CLI),
 execute o comando `dart format`:

@@ -24,7 +24,7 @@ seguintes passos:
   1. Construir um `GridView` com duas colunas.
   2. Usar um `OrientationBuilder` para mudar o número de colunas.
 
-## 1. Construir um `GridView` com duas colunas
+## 1. Construir um `GridView` com duas colunas {:#1-build-a-gridview-with-two-columns}
 
 Primeiro, crie uma lista de itens para trabalhar.
 Em vez de usar uma lista normal,
@@ -43,7 +43,7 @@ return GridView.count(
 Para aprender mais sobre trabalhar com `GridViews`,
 veja a receita [Creating a grid list][].
 
-## 2. Usar um `OrientationBuilder` para mudar o número de colunas
+## 2. Usar um `OrientationBuilder` para mudar o número de colunas {:#2-use-an-orientationbuilder-to-change-the-number-of-columns}
 
 Para determinar a `Orientation` atual do app, use o
 widget [`OrientationBuilder`][].
@@ -76,7 +76,7 @@ Usar `MediaQuery.orientationOf` como uma forma de organizar a UI
 é [desencorajado][discouraged]. Em vez disso, use `MediaQuery.sizeOf(context)`
 :::
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Exemplo prático de orientação de app Flutter no DartPad" run="true"
@@ -136,7 +136,7 @@ class OrientationList extends StatelessWidget {
   <img src="/assets/images/docs/cookbook/orientation.webp" alt="Orientation Demo" class="site-mobile-screenshot" />
 </noscript>
 
-## Bloquear orientação do dispositivo
+## Bloquear orientação do dispositivo {:#locking-device-orientation}
 
 Na seção anterior, você aprendeu
 como adaptar a UI do app a mudanças de orientação do dispositivo.

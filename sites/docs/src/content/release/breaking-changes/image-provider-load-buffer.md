@@ -8,7 +8,7 @@ description: >
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 * `ImageProvider` agora tem um método chamado `loadBuffer` que funciona
    de forma similar ao `load`, exceto que ele decodifica de um `ui.ImmutableBuffer`.
@@ -22,13 +22,13 @@ description: >
 * `PaintingBinding.instantiateImageCodec` agora está depreciado, será removido
    em uma versão futura.
 
-## Contexto
+## Contexto {:#context}
 
 `ImageProvider.loadBuffer` é um novo método que deve ser implementado para
 carregar imagens. Esta API permite que o carregamento de imagens baseadas em assets seja realizado mais rapidamente
 e com menos impacto de memória na aplicação.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 Ao carregar imagens de assets, anteriormente a API do image provider exigia múltiplas
 cópias dos dados comprimidos. Primeiro, ao abrir o asset os dados eram
@@ -48,7 +48,7 @@ um `ui.ImmutableBuffer` em vez de um `Uint8List`. Para classes `ImageProvider`
 que adquirem bytes de lugares diferentes de assets, o método de conveniência
 `ui.ImmutableBuffer.fromUint8List` pode ser usado para compatibilidade.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Classes que fazem subclasse de `ImageProvider` devem implementar o método `loadBuffer` para
 carregar assets. Classes que delegam ou chamam os métodos de um
@@ -117,12 +117,12 @@ Em ambos os casos você pode optar por manter a
 implementação anterior de `ImageProvider.load`
 para dar aos usuários do seu código tempo para migrar também.
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Landed in version: 3.1.0-0.0.pre.976<br>
 In stable release: 3.3.0
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

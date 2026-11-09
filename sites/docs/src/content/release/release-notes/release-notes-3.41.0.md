@@ -8,7 +8,7 @@ ia-translate: true
 
 Esta página contém as notas de lançamento do Flutter 3.41.
 
-## O que mudou
+## O que mudou {:#whats-changed}
 
 ### Framework
 
@@ -654,14 +654,14 @@ Esta página contém as notas de lançamento do Flutter 3.41.
 * [CP-beta] [ Tool ] Handle DartDevelopmentServiceException when launching web applications by @bkonyi in [181162](https://github.com/flutter/flutter/pull/181162)
 * Generate Flutter framework swift package by @vashworth in [181578](https://github.com/flutter/flutter/pull/181578)
 
-### Documentação
+### Documentação {:#documentation}
 
 * Remove unnecessary location permission by @mboetger in [176672](https://github.com/flutter/flutter/pull/176672)
 * Making the multiple_windows example app demonstrate dialogs of dialogs by @mattkae in [177786](https://github.com/flutter/flutter/pull/177786)
 * Add missing flutter_lints dev dependencies by @guidezpl in [178105](https://github.com/flutter/flutter/pull/178105)
 * Update window settings as they change rather than the more outdated "Apply" pattern. by @robert-ancell in [179861](https://github.com/flutter/flutter/pull/179861)
 
-### Outras mudanças
+### Outras mudanças {:#other-changes}
 
 * Configure FfiNative resolver on dart:io by @mraleph in [176621](https://github.com/flutter/flutter/pull/176621)
 * fix: build windows_arm artifacts for cah by @jtmcdole in [176723](https://github.com/flutter/flutter/pull/176723)
@@ -861,7 +861,7 @@ Esta página contém as notas de lançamento do Flutter 3.41.
 * [CP-beta]Roll libpng to version 1.6.53 by @flutteractionsbot in [181543](https://github.com/flutter/flutter/pull/181543)
 * Bump engine.version for 3.41.0-0.2.pre by @eyebrowsoffire in [181615](https://github.com/flutter/flutter/pull/181615)
 
-## Novos contribuidores
+## Novos contribuidores {:#new-contributors}
 
 * @jwlilly made their first contribution in [174374](https://github.com/flutter/flutter/pull/174374)
 * @progamax made their first contribution in [174497](https://github.com/flutter/flutter/pull/174497)

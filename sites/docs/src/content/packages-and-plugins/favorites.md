@@ -21,7 +21,7 @@ Se você veio aqui procurando pelas recomendações Happy Paths,
 descontinuamos esse projeto em favor do Flutter Favorites.
 :::
 
-## Métricas
+## Métricas {:#metrics}
 
 Pacotes Flutter Favorite passaram por padrões de alta qualidade
 usando as seguintes métricas:
@@ -40,7 +40,7 @@ usando as seguintes métricas:
 * Bom **comportamento em runtime** em termos de uso de CPU e memória
 * **Dependências** de alta qualidade
 
-## Comitê do Ecossistema Flutter
+## Comitê do Ecossistema Flutter {:#flutter-ecosystem-committee}
 
 O Comitê do Ecossistema Flutter é composto por membros
 do time Flutter e membros da comunidade Flutter espalhados
@@ -65,7 +65,7 @@ potencial futuro Flutter Favorite, ou gostaria de
 trazer quaisquer outras questões à atenção do comitê,
 [envie um email ao comitê][send the committee].
 
-## Diretrizes de uso do Flutter Favorite
+## Diretrizes de uso do Flutter Favorite {:#flutter-favorite-usage-guidelines}
 
 Pacotes Flutter Favorite são rotulados como tal no pub.dev
 pelo time Flutter.
@@ -94,7 +94,7 @@ você deve aderir às seguintes diretrizes:
   seja enganosa, injusta, difamatória, infratora, difamatória,
   depreciativa, obscena ou de outra forma questionável ao Google.
 
-## Próximos passos
+## Próximos passos {:#whats-next}
 
 Você deve esperar que a lista de pacotes Flutter Favorite
 cresça e mude à medida que o ecossistema continue prosperando.

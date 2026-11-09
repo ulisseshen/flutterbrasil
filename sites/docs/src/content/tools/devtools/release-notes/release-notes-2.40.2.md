@@ -12,7 +12,7 @@ inclui as seguintes alterações entre outras melhorias gerais.
 Para saber mais sobre DevTools, confira a
 [visão geral do DevTools](/tools/devtools/overview).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 * Adicionada uma configuração que permite aos usuários optar por carregar DevTools
   com WebAssembly. - [#8270](https://github.com/flutter/devtools/pull/8270)
@@ -45,30 +45,30 @@ Para saber mais sobre DevTools, confira a
 
 * Tabelas correspondem ao tema da IDE quando incorporadas em uma IDE. - [#8498](https://github.com/flutter/devtools/pull/8498)
 
-## Atualizações do Inspector
+## Atualizações do Inspector {:#inspector-updates}
 
 - Adicionada uma configuração aos controles do Flutter Inspector que
   permite aos usuários optar pelo Flutter Inspector recém-redesenhado. - [#8342](https://github.com/flutter/devtools/pull/8342)
 
   ![New inspector opt-in setting](/assets/images/docs/tools/devtools/release-notes/images-2.40.2/new_inspector.png "DevTools setting to opt into the new Flutter Inspector.")
 
-## Atualizações de Performance
+## Atualizações de Performance {:#performance-updates}
 
 * Corrigido um problema com o overlay "Refreshing timeline" que estava sendo mostrado
   quando não deveria. - [#8318](https://github.com/flutter/devtools/pull/8318)
 
-## Atualizações do Network profiler
+## Atualizações do Network profiler {:#network-profiler-updates}
 
 * Resolvido um problema na exportação `.har` onde
   conteúdo de resposta às vezes estava faltando nos dados. - [#8333](https://github.com/flutter/devtools/pull/8333)
 
-## Atualizações da ferramenta Deep links
+## Atualizações da ferramenta Deep links {:#deep-links-tool-updates}
 
 - Adicionado suporte para validar configurações de deep link do iOS. - [#8394](https://github.com/flutter/devtools/pull/8394)
 
   ![Deep link validator for iOS](/assets/images/docs/tools/devtools/release-notes/images-2.40.2/deep_link_ios.png "DevTools Deep link validator Page")
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de alterações nesta versão, confira o
 [log git do DevTools](https://github.com/flutter/devtools/tree/v2.40.2).

@@ -44,7 +44,7 @@ Você pode ir direto para tocar no código em
 Se você quiser experimentar diferentes formas de gerenciar estado,
 pule para [Gerenciando estado][Managing state].
 
-## Widgets stateful e stateless
+## Widgets stateful e stateless {:#stateful-and-stateless-widgets}
 
 Um widget é ou stateful ou stateless. Se um widget pode
 mudar&mdash;quando um usuário interage com ele,
@@ -101,7 +101,7 @@ chamado `FavoriteWidget`, para o app lakes.
 Após a configuração, seu primeiro passo é escolher como o estado é
 gerenciado para `FavoriteWidget`.
 
-### Step 0: Prepare-se
+### Step 0: Prepare-se {:#step-0-get-ready}
 
 Se você já construiu o app no
 [tutorial de construção de layouts][building layouts tutorial],
@@ -122,7 +122,7 @@ você está pronto para começar!
 
 <a id="step-1"></a>
 
-### Step 1: Decida qual objeto gerencia o estado do widget
+### Step 1: Decida qual objeto gerencia o estado do widget {:#step-1-decide-which-object-manages-the-widgets-state}
 
 O estado de um widget pode ser gerenciado de várias formas,
 mas em nosso exemplo o próprio widget,
@@ -136,7 +136,7 @@ e como o estado pode ser gerenciado, em [Gerenciando estado][Managing state].
 
 <a id="step-2"></a>
 
-### Step 2: Crie uma subclasse de StatefulWidget
+### Step 2: Crie uma subclasse de StatefulWidget {:#step-2-subclass-statefulwidget}
 
 A classe `FavoriteWidget` gerencia seu próprio estado,
 então ela sobrescreve `createState()` para criar um objeto `State`.
@@ -167,7 +167,7 @@ veja [Libraries and imports][Libraries and imports], uma seção na
 
 <a id="step-3"></a>
 
-### Step 3: Crie uma subclasse de State
+### Step 3: Crie uma subclasse de State {:#step-3-subclass-state}
 
 A classe `_FavoriteWidgetState` armazena os dados mutáveis
 que podem mudar durante o tempo de vida do widget.
@@ -255,7 +255,7 @@ void _toggleFavorite() {
 
 <a id="step-4"></a>
 
-### Step 4: Conecte o stateful widget na árvore de widgets
+### Step 4: Conecte o stateful widget na árvore de widgets {:#step-4-plug-the-stateful-widget-into-the-widget-tree}
 
 Adicione seu stateful widget personalizado à árvore de widgets no
 método `build()` do app. Primeiro, localize o código que
@@ -281,7 +281,7 @@ No mesmo local, crie o stateful widget:
 É isso! Quando você fizer hot reload do app,
 o ícone de estrela agora deve responder a toques.
 
-### Problemas?
+### Problemas? {:#problems}
 
 Se você não conseguir fazer seu código rodar, procure no seu
 IDE por possíveis erros. [Depurando apps Flutter][Debugging Flutter apps] pode ajudar.
@@ -356,7 +356,7 @@ no `Container`.
 
 <a id="self-managed" aria-hidden="true"></a>
 
-### O widget gerencia seu próprio estado
+### O widget gerencia seu próprio estado {:#the-widget-manages-its-own-state}
 
 Às vezes faz mais sentido para o widget
 gerenciar seu estado internamente. Por exemplo,
@@ -444,7 +444,7 @@ class MyApp extends StatelessWidget {
 
 <a id="parent-managed"></a>
 
-### O widget pai gerencia o estado do widget
+### O widget pai gerencia o estado do widget {:#the-parent-widget-manages-the-widgets-state}
 
 Frequentemente faz mais sentido para o widget pai
 gerenciar o estado e dizer ao seu widget filho quando atualizar.
@@ -541,7 +541,7 @@ class TapboxB extends StatelessWidget {
 
 <a id="mix-and-match"></a>
 
-### Uma abordagem mista
+### Uma abordagem mista {:#a-mix-and-match-approach}
 
 Para alguns widgets, uma abordagem mista faz
 mais sentido. Neste cenário, o stateful widget
@@ -683,7 +683,7 @@ detalhes.
 
 <hr>
 
-## Outros widgets interativos
+## Outros widgets interativos {:#other-interactive-widgets}
 
 Flutter oferece uma variedade de botões e widgets interativos similares.
 A maioria desses widgets implementa as [diretrizes Material Design][Material Design guidelines],
@@ -703,7 +703,7 @@ Flutter também fornece um conjunto de widgets no estilo iOS chamados
 Quando você precisa de interatividade, é mais fácil usar um dos
 widgets pré-fabricados. Aqui está uma lista parcial:
 
-### Widgets padrão
+### Widgets padrão {:#standard-widgets}
 
 * [`Form`][`Form`]
 * [`FormField`][`FormField`]
@@ -721,7 +721,7 @@ widgets pré-fabricados. Aqui está uma lista parcial:
 * [`Switch`][`Switch`]
 * [`TextField`][`TextField`]
 
-## Recursos
+## Recursos {:#resources}
 
 Os seguintes recursos podem ajudar ao adicionar interatividade
 ao seu app.

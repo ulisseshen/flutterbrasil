@@ -8,7 +8,7 @@ description: >-
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 O comportamento padrão de um [`SnackBar`][] com uma action mudou.
 Anteriormente, um `SnackBar` com uma action não fecharia
@@ -16,14 +16,14 @@ automaticamente se o talkback estivesse ativado.
 Agora, todos os widgets `SnackBar` com uma action têm como padrão
 um estado não descartável até que o usuário interaja com o botão de action.
 
-## Contexto
+## Contexto {:#context}
 
 Um `SnackBar` com um botão de action agora é tratado como
 uma notificação mais persistente que requer interação do usuário.
 Esta mudança melhora a acessibilidade e a experiência do usuário, garantindo que
 notificações críticas permaneçam na tela até serem reconhecidas.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 Esta mudança se alinha com a especificação de design do Material 3 para
 o componente `SnackBar`:
@@ -42,7 +42,7 @@ independentemente da presença de uma action.
 Quando `null`, o `SnackBar` segue o comportamento padrão,
 que não fecha automaticamente se uma action estiver presente.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Para restaurar o comportamento antigo de fechamento automático para um SnackBar com uma action, defina
 `persist` como `false`.
@@ -80,12 +80,12 @@ ScaffoldMessenger.of(context).showSnackBar(
 );
 ```
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Aterrissou na versão: 3.37.0-0.0.pre
 No lançamento estável: 3.38
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

@@ -24,7 +24,7 @@ Esta receita usa as seguintes etapas:
   3. Converter a resposta em um objeto Dart customizado.
   4. Buscar e exibir os dados com Flutter.
 
-## 1. Adicionar o pacote `http`
+## 1. Adicionar o pacote `http` {:#1-add-the-http-package}
 
 O pacote [`http`][] fornece a
 maneira mais simples de buscar dados da internet.
@@ -46,7 +46,7 @@ import 'package:material_ui/material_ui.dart';
 
 {% render "docs/cookbook/networking/internet-permission.md" %}
 
-## 2. Fazer uma requisição de rede
+## 2. Fazer uma requisição de rede {:#2-make-a-network-request}
 
 Esta receita cobre como buscar um álbum de exemplo do
 [JSONPlaceholder][] usando o método [`http.get()`][].
@@ -66,14 +66,14 @@ O método `http.get()` retorna uma `Future` que contém uma `Response`.
 * A classe `http.Response` contém os dados recebidos de uma
   chamada http bem-sucedida.
 
-## 3. Converter a resposta em um objeto Dart customizado
+## 3. Converter a resposta em um objeto Dart customizado {:#3-convert-the-response-into-a-custom-dart-object}
 
 Embora seja fácil fazer uma requisição de rede, trabalhar com uma
 `Future<http.Response>` bruta não é muito conveniente.
 Para facilitar sua vida,
 converta a `http.Response` em um objeto Dart.
 
-### Criar uma classe `Album`
+### Criar uma classe `Album` {:#create-an-album-class}
 
 Primeiro, crie uma classe `Album` que contém os dados da
 requisição de rede. Ela inclui um construtor factory que
@@ -105,7 +105,7 @@ class Album {
 }
 ```
 
-### Converter a `http.Response` para um `Album`
+### Converter a `http.Response` para um `Album` {:#convert-the-http-response-to-an-album}
 
 Agora, use as seguintes etapas para atualizar a função `fetchAlbum()`
 para retornar uma `Future<Album>`:
@@ -145,7 +145,7 @@ Future<Album> fetchAlbum() async {
 Oba!
 Agora você tem uma função que busca um álbum da internet.
 
-## 4. Buscar os dados
+## 4. Buscar os dados {:#4-fetch-the-data}
 
 Chame o método `fetchAlbum()` em um dos métodos
 [`initState()`][] ou [`didChangeDependencies()`][].
@@ -172,7 +172,7 @@ class _MyAppState extends State<MyApp> {
 
 Esta Future é usada na próxima etapa.
 
-## 5. Exibir os dados
+## 5. Exibir os dados {:#5-display-the-data}
 
 Para exibir os dados na tela, use o
 widget [`FutureBuilder`][].
@@ -216,7 +216,7 @@ FutureBuilder<Album>(
 )
 ```
 
-## Por que fetchAlbum() é chamado em initState()?
+## Por que fetchAlbum() é chamado em initState()? {:#why-is-fetchalbum-called-in-initstate}
 
 Embora seja conveniente,
 não é recomendado colocar uma chamada de API em um método `build()`.
@@ -231,7 +231,7 @@ Armazenar o resultado de `fetchAlbum()` em uma variável de estado garante que
 a `Future` seja executada apenas uma vez e então armazenada em cache para
 reconstruções subsequentes.
 
-## Testes
+## Testes {:#testing}
 
 Para informações sobre como testar esta funcionalidade,
 veja as seguintes receitas:
@@ -239,7 +239,7 @@ veja as seguintes receitas:
   * [Introduction to unit testing][]
   * [Mock dependencies using Mockito][]
 
-## Exemplo completo
+## Exemplo completo {:#complete-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dart

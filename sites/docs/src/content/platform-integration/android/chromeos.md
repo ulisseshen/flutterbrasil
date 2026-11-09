@@ -7,7 +7,7 @@ description: Considerações específicas de plataforma para fazer build para Ch
 Esta página discute considerações únicas para fazer build de
 apps Android que suportam ChromeOS com Flutter.
 
-## Dicas e truques Flutter & ChromeOS
+## Dicas e truques Flutter & ChromeOS {:#flutter-chromeos-tips-tricks}
 
 Para as versões atuais do ChromeOS, apenas certas portas do
 Linux são expostas para o resto do ambiente.
@@ -29,7 +29,7 @@ de `http://127.0.0.1:8080/auth_code=/`. Use esta URL
 e selecione "Connect" para iniciar o Flutter DevTools
 para seu app Android.
 
-#### Análise de lint ChromeOS do Flutter
+#### Análise de lint ChromeOS do Flutter {:#flutter-chromeos-lint-analysis}
 
 O Flutter tem verificações de análise de lint específicas do ChromeOS
 para garantir que o app que você está construindo

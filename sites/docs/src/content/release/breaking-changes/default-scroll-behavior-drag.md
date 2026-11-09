@@ -62,7 +62,7 @@ de um `PointerDeviceKind` válido.
 
 ## Migration guide
 
-### Configurando um `ScrollBehavior` customizado para sua aplicação
+### Configurando um `ScrollBehavior` customizado para sua aplicação {:#setting-a-custom-scrollbehavior-for-your-application}
 
 Code before migration:
 
@@ -92,7 +92,7 @@ MaterialApp(
 );
 ```
 
-### Configurando um `ScrollBehavior` customizado para um widget específico
+### Configurando um `ScrollBehavior` customizado para um widget específico {:#setting-a-custom-scrollbehavior-for-a-specific-widget}
 
 Code before migration:
 
@@ -132,7 +132,7 @@ ScrollConfiguration(
 );
 ```
 
-### Copiar e modificar `ScrollBehavior` existente
+### Copiar e modificar `ScrollBehavior` existente {:#copy-and-modify-existing-scrollbehavior}
 
 Code before migration:
 
@@ -165,7 +165,7 @@ ScrollConfiguration(
 );
 ```
 
-### Migrar `GestureDetector`s de `kind` para `supportedDevices`
+### Migrar `GestureDetector`s de `kind` para `supportedDevices` {:#migrate-gesturedetectors-from-kind-to-supporteddevices}
 
 Code before migration:
 

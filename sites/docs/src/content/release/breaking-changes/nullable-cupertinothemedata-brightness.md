@@ -8,18 +8,18 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 [`CupertinoThemeData.brightness`] agora é anulável.
 
-## Contexto
+## Contexto {:#context}
 
 [`CupertinoThemeData.brightness`][] agora é usado para
 substituir `MediaQuery.platformBrightness` para widgets Cupertino.
 Antes desta alteração, o getter [`CupertinoThemeData.brightness`][]
 retornava `Brightness.light` quando era definido como null.
 
-## Descrição da alteração
+## Descrição da alteração {:#description-of-change}
 
 Anteriormente [`CupertinoThemeData.brightness`][]
 era implementado como um getter:
@@ -35,7 +35,7 @@ Agora é uma propriedade armazenada:
 final Brightness brightness;
 ```
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Geralmente [`CupertinoThemeData.brightness`][]
 é raramente útil fora do framework Flutter.
@@ -56,12 +56,12 @@ Quando um `CupertinoTheme` usa o `CupertinoThemeData` acima,
 o modo escuro é habilitado para todos os seus descendentes Cupertino
 que são afetados por este `CupertinoTheme`.
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Disponibilizado na versão: 1.16.3<br>
 Na versão estável: 1.17
 
-## Referências
+## Referências {:#references}
 
 Documento de design:
 

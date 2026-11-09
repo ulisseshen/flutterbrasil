@@ -12,7 +12,7 @@ consulte nosso [CHANGELOG][CHANGELOG].
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/main/CHANGELOG.md
 
-## Se você ver avisos sobre bindings
+## Se você ver avisos sobre bindings {:#if-you-see-warnings-about-bindings}
 
 Ao migrar para o Flutter 3,
 você pode ver avisos como o seguinte:
@@ -41,7 +41,7 @@ Você pode ignorar os avisos por enquanto
 (talvez entre em contato com os
 desenvolvedores da sua dependency para convencê-los a atualizar).
 
-### Seu código
+### Seu código {:#your-code}
 
 Se o problema se refere ao seu próprio código,
 você pode atualizá-lo executando `dart fix --apply`.
@@ -83,7 +83,7 @@ substituir pelo seguinte:
 SchedulerBinding.instance.addPostFrameCallback(...);
 ```
 
-### Problemas do framework
+### Problemas do framework {:#framework-issues}
 
 Se as mensagens de erro não apontam para uma de suas dependencies,
 e `dart fix --apply` não corrige o problema,
@@ -91,7 +91,7 @@ ou se os avisos são fatais
 (por exemplo, sua aplicação se recusa a executar), por favor
 [relate um bug]({{site.repo.flutter}}/issues/new/choose).
 
-## O que mudou
+## O que mudou {:#whats-changed}
 
 As seguintes mudanças aconteceram neste lançamento:
 
@@ -459,7 +459,7 @@ As seguintes mudanças aconteceram neste lançamento:
 * [flutter_releases] Flutter beta 2.13.0-0.2.pre Framework Cherrypicks by @CaseyHillers in https://github.com/flutter/flutter/pull/102193
 * [flutter_releases] Upgrade dwds to 12.1.1 by @christopherfujino in https://github.com/flutter/flutter/pull/101546
 
-### Ferramentas
+### Ferramentas {:#tooling}
 
 * FFI plugin by @dcharkes in https://github.com/flutter/flutter/pull/94101
 * Revert "FFI plugin" by @zanderso in https://github.com/flutter/flutter/pull/96122
@@ -620,7 +620,7 @@ As seguintes mudanças aconteceram neste lançamento:
 
 * [macOS] Add run release test in devicelab by @cbracken in https://github.com/flutter/flutter/pull/100526
 
-## Novos Contribuidores
+## Novos Contribuidores {:#new-contributors}
 
 Agradecimentos aos seguintes contribuidores neste lançamento:
 

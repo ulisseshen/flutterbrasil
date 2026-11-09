@@ -32,7 +32,7 @@ Depois que você define um `Theme`, use-o dentro dos seus próprios widgets.
 Os widgets Material do Flutter usam seu theme para definir as cores de fundo
 e estilos de fonte para barras de app, botões, checkboxes, e mais.
 
-## Criar um theme de app
+## Criar um theme de app {:#create-an-app-theme}
 
 Para compartilhar um `Theme` em todo o seu app, defina a propriedade `theme`
 no seu construtor `MaterialApp`.
@@ -84,7 +84,7 @@ A maioria das instâncias de `ThemeData` define valores para as seguintes duas p
 Para aprender quais cores, fontes, e outras propriedades, você pode definir,
 confira a documentação de [`ThemeData`][].
 
-## Aplicar um theme
+## Aplicar um theme {:#apply-a-theme}
 
 Para aplicar seu novo theme, use o método `Theme.of(context)`
 ao especificar as propriedades de estilização de um widget.
@@ -111,7 +111,7 @@ Container(
 ),
 ```
 
-## Sobrescrever um theme
+## Sobrescrever um theme {:#override-a-theme}
 
 Para sobrescrever o theme geral em parte de um app,
 envolva essa seção do app em um widget `Theme`.
@@ -121,7 +121,7 @@ Você pode sobrescrever um theme de duas maneiras:
 1. Criar uma instância `ThemeData` única.
 2. Estender o theme pai.
 
-### Definir uma instância `ThemeData` única
+### Definir uma instância `ThemeData` única {:#set-a-unique-themedata-instance}
 
 Se você quer que um componente do seu app ignore o theme geral,
 crie uma instância `ThemeData`.
@@ -136,7 +136,7 @@ Theme(
 );
 ```
 
-### Estender o theme pai
+### Estender o theme pai {:#extend-the-parent-theme}
 
 Em vez de sobrescrever tudo, considere estender o theme pai.
 Para estender um theme, use o método [`copyWith()`][].
@@ -152,13 +152,13 @@ Theme(
 );
 ```
 
-## Assistir um vídeo sobre `Theme`
+## Assistir um vídeo sobre `Theme` {:#watch-a-video-on-theme}
 
 Para aprender mais, assista este curto vídeo Widget of the Week sobre o widget `Theme`:
 
 <YouTubeEmbed id="oTvQDJOBXmM" title="Theme | Flutter widget of the week"></YouTubeEmbed>
 
-## Experimentar um exemplo interativo
+## Experimentar um exemplo interativo {:#try-an-interactive-example}
 
 <?code-excerpt "lib/main.dart (FullApp)"?>
 ```dartpad title="Flutter themes hands-on example in DartPad" run="true"

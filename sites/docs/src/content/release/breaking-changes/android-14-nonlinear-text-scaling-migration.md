@@ -8,19 +8,19 @@ description: >-
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 O Android 14 introduziu escalonamento de fonte não linear de até 200%.
 Isso pode alterar a aparência do seu app quando o usuário muda
 o escalonamento de texto de acessibilidade nas preferências do sistema.
 
-## Contexto
+## Contexto {:#background}
 
 O recurso de [escalonamento de fonte não linear do Android 14][Android 14 nonlinear font scaling] evita
 o escalonamento excessivo da fonte de acessibilidade ao escalonar texto maior em uma taxa menor
 quando o usuário aumenta o valor de escalonamento de texto nas preferências do sistema.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Como a
 [visão geral de recursos do Android 14][Android 14 nonlinear font scaling] sugere,
@@ -53,12 +53,12 @@ runApp(
 Isso usa a API `textScaleFactor` obsoleta.
 Isso deixará de funcionar assim que essa API for removida da API Flutter.
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Incluído na versão: 3.14.0-11.0.pre<br>
 No lançamento estável: 3.16
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

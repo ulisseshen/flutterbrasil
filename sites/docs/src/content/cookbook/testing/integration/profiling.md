@@ -36,7 +36,7 @@ Esta receita usa os seguintes passos:
   4. Executar o teste.
   5. Revisar os resultados.
 
-## 1. Escrever um teste que rola através de uma lista de itens
+## 1. Escrever um teste que rola através de uma lista de itens {:#1-write-a-test-that-scrolls-through-a-list-of-items}
 
 Nesta receita, grave a performance de um app enquanto ele rola através de uma
 lista de itens. Para focar no profiling de performance, esta receita se baseia
@@ -45,7 +45,7 @@ na receita [Scrolling][Scrolling] em testes de widget.
 Siga as instruções naquela receita para criar um app e escrever um teste para
 verificar que tudo funciona como esperado.
 
-## 2. Gravar a performance do app
+## 2. Gravar a performance do app {:#2-record-the-performance-of-the-app}
 
 Em seguida, grave a performance do app enquanto ele rola através da
 lista. Execute esta tarefa usando o método [`traceAction()`][`traceAction()`]
@@ -73,7 +73,7 @@ await binding.traceAction(() async {
 }, reportKey: 'scrolling_timeline');
 ```
 
-## 3. Salvar os resultados no disco
+## 3. Salvar os resultados no disco {:#3-save-the-results-to-disk}
 
 Agora que você capturou uma timeline de performance, você precisa de uma forma de revisá-la.
 O objeto `Timeline` fornece informações detalhadas sobre todos os eventos
@@ -131,7 +131,7 @@ que você pode customizar.
 Por padrão, ela escreve os resultados no arquivo `integration_response_data.json`,
 mas você pode customizá-la para gerar um resumo como neste exemplo.
 
-## 4. Executar o teste
+## 4. Executar o teste {:#4-run-the-test}
 
 Depois de configurar o teste para capturar uma `Timeline` de performance e salvar um
 resumo dos resultados no disco, execute o teste com o seguinte comando:
@@ -153,7 +153,7 @@ Esta opção desabilita o Dart Development Service (DDS), que não estará
 acessível do seu computador.
 :::
 
-## 5. Revisar os resultados
+## 5. Revisar os resultados {:#5-review-the-results}
 
 Depois que o teste completa com sucesso, o diretório `build` na raiz do
 projeto contém dois arquivos:
@@ -168,7 +168,7 @@ projeto contém dois arquivos:
      interface conveniente para inspecionar os dados da timeline para descobrir
      a fonte de um problema de performance.
 
-### Exemplo de resumo
+### Exemplo de resumo {:#summary-example}
 
 ```json
 {
@@ -192,7 +192,7 @@ projeto contém dois arquivos:
 }
 ```
 
-## Exemplo completo
+## Exemplo completo {:#complete-example}
 
 **integration_test/scrolling_test.dart**
 

@@ -78,11 +78,11 @@ Para instalar atualizações você mesmo:
    clique em **Update** e depois em **Reload**.
 1. Reinicie o VS Code.
 
-## Criando projetos
+## Criando projetos {:#creating-projects}
 
 Existem algumas maneiras de criar um novo projeto.
 
-### Criando um novo projeto
+### Criando um novo projeto {:#creating-a-new-project}
 
 Para criar um novo projeto Flutter a partir do
 template de app inicial do Flutter:
@@ -101,7 +101,7 @@ template de app inicial do Flutter:
 1. Selecione uma **Project location**.
 1. Digite o **Project name** desejado.
 
-### Abrindo um projeto a partir de código-fonte existente
+### Abrindo um projeto a partir de código-fonte existente {:#opening-a-project-from-existing-source-code}
 
 Para abrir um projeto Flutter existente:
 
@@ -113,7 +113,7 @@ Para abrir um projeto Flutter existente:
    arquivos de código-fonte Flutter existentes.
 1. Clique em **Open**.
 
-## Editando código e visualizando problemas
+## Editando código e visualizando problemas {:#editing-code-and-viewing-issues}
 
 A extensão Flutter realiza análise de código.
 A análise de código pode:
@@ -155,7 +155,7 @@ Para informações sobre como iniciar e usar o DevTools, veja
 Comece a depurar clicando em **Run > Start Debugging**
 na janela principal da IDE, ou pressione <kbd>F5</kbd>.
 
-### Selecionando um dispositivo alvo
+### Selecionando um dispositivo alvo {:#selecting-a-target-device}
 
 Quando um projeto Flutter está aberto no VS Code,
 você deve ver um conjunto de entradas específicas do Flutter na barra de status,
@@ -189,7 +189,7 @@ o keychain. Para mais informações, veja esta
 
 [question on StackExchange]: https://superuser.com/questions/270095/when-i-ssh-into-os-x-i-dont-have-my-keychain-when-i-use-terminal-i-do/363840#363840
 
-### Executar app sem breakpoints
+### Executar app sem breakpoints {:#run-app-without-breakpoints}
 
 Vá para **Run** > **Start Without Debugging**.
 
@@ -210,7 +210,7 @@ Você também pode pressionar <kbd>Ctrl</kbd> + <kbd>F5</kbd>.
      **Debug Sidebar** para criar um arquivo `launch.json`.
      Você pode então modificar os valores.
 
-### Executar app em modo debug, profile ou release
+### Executar app em modo debug, profile ou release {:#run-app-in-debug-profile-or-release-mode}
 
 O Flutter oferece muitos modos de compilação diferentes para executar seu app.
 Você pode ler mais sobre eles em [modos de compilação do Flutter][Flutter's build modes].
@@ -249,18 +249,18 @@ Você pode ler mais sobre eles em [modos de compilação do Flutter][Flutter's b
 
 1. Execute o app através do painel **Run**.
 
-## Ciclo de desenvolvimento de edição e atualização rápida
+## Ciclo de desenvolvimento de edição e atualização rápida {:#fast-edit-and-refresh-development-cycle}
 
 Flutter oferece um ciclo de desenvolvedor de primeira classe que permite
 ver o efeito de suas mudanças quase instantaneamente com o
 recurso _Stateful Hot Reload_.
 Para aprender mais, confira [Hot reload][Hot reload].
 
-## Depuração avançada
+## Depuração avançada {:#advanced-debugging}
 
 Você pode achar as seguintes dicas de depuração avançada úteis:
 
-### Depurando problemas de layout visual
+### Depurando problemas de layout visual {:#debugging-visual-layout-issues}
 
 Durante uma sessão de depuração,
 vários comandos de depuração adicionais são adicionados à
@@ -280,7 +280,7 @@ do rótulo.
 **Toggle Debug Mode Banner** ![Debug mode banner icon](/assets/images/docs/tools/devtools/debug-mode-banner-icon.png){:width="20px"}
 : Oculta o banner de modo debug mesmo ao executar uma compilação de debug.
 
-### Depurando bibliotecas externas
+### Depurando bibliotecas externas {:#debugging-external-libraries}
 
 Por padrão, a depuração de uma biblioteca externa está desabilitada
 na extensão Flutter. Para habilitar:
@@ -288,7 +288,7 @@ na extensão Flutter. Para habilitar:
 1. Selecione **Settings > Extensions > Dart Configuration**.
 2. Marque a opção `Debug External Libraries`.
 
-## Dicas de edição para código Flutter
+## Dicas de edição para código Flutter {:#editing-tips-for-flutter-code}
 
 Se você tiver dicas adicionais que devemos compartilhar, [nos avise][let us know]!
 
@@ -363,7 +363,7 @@ A extensão Dart inclui os seguintes snippets:
 Você também pode definir snippets customizados executando
 **Configure User Snippets** a partir da [Command Palette][Command Palette].
 
-### Atalhos de teclado
+### Atalhos de teclado {:#keyboard-shortcuts}
 
 **Hot reload**
 : Para executar um hot reload durante uma sessão de depuração,
@@ -432,7 +432,7 @@ O Flutter Property Editor é uma ferramenta poderosa fornecida pela [extensão
 Flutter][Flutter extension] que permite visualizar e modificar propriedades de widget diretamente de sua
 interface visual.
 
-### Como abrir o Flutter Property Editor no VS Code
+### Como abrir o Flutter Property Editor no VS Code {:#how-to-open-the-flutter-property-editor-in-vs-code}
 
 1. Clique no **ícone** do Flutter Property Editor ![Flutter Property Editor VS Code icon](/assets/images/docs/tools/devtools/property-editor-icon-vscode.png){:width="20px"} na barra lateral do VS Code.
 2. O Flutter Property Editor será carregado no painel lateral.
@@ -443,9 +443,9 @@ interface visual.
 [Flutter extension]: https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter
 [documentation]: /tools/property-editor
 
-## Solução de problemas
+## Solução de problemas {:#troubleshooting}
 
-### Problemas conhecidos e feedback
+### Problemas conhecidos e feedback {:#known-issues-and-feedback}
 
 Todos os bugs conhecidos são rastreados no issue tracker:
 [issue tracker de extensões Dart e Flutter no GitHub][issue tracker].

@@ -8,19 +8,19 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 `ImageCache` agora tem um método chamado `containsKey`.
 Subclasses de `ImageProvider` não devem sobrescrever `resolve`,
 e sim implementar os novos métodos em `ImageProvider`.
 Essas mudanças foram enviadas como um único commit para o framework.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 As seções abaixo descrevem as mudanças em `containsKey`
 e em `ImageProvider`.
 
-### Mudança em containsKey
+### Mudança em containsKey {:#containskey-change}
 
 Clientes de `ImageCache`, como um `ImageProvider` personalizado,
 podem querer saber se o cache já está rastreando uma imagem.
@@ -37,7 +37,7 @@ pendentes quanto os de imagens em cache.
   }
 ```
 
-### Mudanças em ImageProvider
+### Mudanças em ImageProvider {:#imageprovider-changes}
 
 O método `ImageProvider.resolve` faz um tratamento de erros complicado
 que normalmente não deve ser sobrescrito.
@@ -57,9 +57,9 @@ Eles também permitem que subclasses que compõem `ImageProvider`s
 tenham mais confiança de que há apenas um ponto de entrada público
 para os vários providers encadeados.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
-### Mudança em ImageCache
+### Mudança em ImageCache {:#imagecache-change}
 
 Antes da migração, o código não teria uma sobrescrita de `containsKey`.
 
@@ -76,7 +76,7 @@ class MyImageCache implements ImageCache {
 }
 ```
 
-### Mudança em ImageProvider
+### Mudança em ImageProvider {:#imageprovider-change}
 
 Código antes da migração:
 
@@ -118,12 +118,12 @@ class MyImageProvider extends ImageProvider<Object> {
 
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Incluído na versão: 1.16.3<br>
 Na versão estável: 1.17
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

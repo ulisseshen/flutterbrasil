@@ -4,7 +4,7 @@ title: Execute DevTools do VS Code
 description: Aprenda como iniciar e usar DevTools do VS Code.
 ---
 
-## Adicione as extensões do VS Code
+## Adicione as extensões do VS Code {:#add-the-vs-code-extensions}
 
 Para usar DevTools do VS Code, você precisa da [extensão Dart][Dart extension].
 Se você estiver depurando aplicações Flutter, você também deve instalar
@@ -16,7 +16,7 @@ Inicie uma sessão de debug para sua aplicação abrindo a pasta raiz
 do seu projeto (aquela contendo `pubspec.yaml`)
 no VS Code e clicando em **Run > Start Debugging** (`F5`).
 
-## Inicie DevTools
+## Inicie DevTools {:#launch-devtools}
 
 Uma vez que a sessão de debug esteja ativa e a aplicação tenha iniciado,
 os comandos **Open DevTools** ficam disponíveis na

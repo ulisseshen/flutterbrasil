@@ -11,11 +11,11 @@ app Android existente. Uma tela Flutter pode ser adicionada como uma tela normal
 opaca, ou como uma tela translúcida e transparente.
 Ambas as opções são descritas neste guia.
 
-## Adicionar uma tela Flutter normal
+## Adicionar uma tela Flutter normal {:#add-a-normal-flutter-screen}
 
 <img src='/assets/images/docs/development/add-to-app/android/add-flutter-screen/add-single-flutter-screen_header.png' alt="Add Flutter Screen Header">
 
-### Passo 1: Adicionar FlutterActivity ao AndroidManifest.xml
+### Passo 1: Adicionar FlutterActivity ao AndroidManifest.xml {:#step-1-add-flutteractivity-to-androidmanifest-xml}
 
 O Flutter fornece [`FlutterActivity`][`FlutterActivity`] para exibir uma
 experiência Flutter dentro de um app Android. Como qualquer outra [`Activity`][`Activity`],
@@ -40,7 +40,7 @@ chrome do sistema Android, como a barra de navegação do Android, e à
 cor de fundo da `FlutterActivity` logo antes
 da UI Flutter se renderizar pela primeira vez.
 
-### Passo 2: Lançar FlutterActivity
+### Passo 2: Lançar FlutterActivity {:#step-2-launch-flutteractivity}
 
 Com `FlutterActivity` registrada no seu arquivo de manifesto,
 adicione código para lançar `FlutterActivity` de qualquer ponto
@@ -174,7 +174,7 @@ tempo de inicialização não trivial. A abordagem alternativa
 pré-aquecido e em cache, o que minimiza o
 tempo de inicialização do Flutter. Essa abordagem é discutida a seguir.
 
-### Passo 3: (Opcional) Usar um FlutterEngine em cache
+### Passo 3: (Opcional) Usar um FlutterEngine em cache {:#step-3-optional-use-a-cached-flutterengine}
 
 Cada `FlutterActivity` cria seu próprio `FlutterEngine`
 por padrão. Cada `FlutterEngine` tem um tempo de
@@ -340,11 +340,11 @@ performance drasticamente diferentes. Para avaliar a performance
 do Flutter, use uma build de release.
 :::
 
-#### Rota inicial com um engine em cache
+#### Rota inicial com um engine em cache {:#initial-route-with-a-cached-engine}
 
 {% render "docs/add-to-app/android-initial-route-cached-engine.md" %}
 
-## Adicionar uma tela Flutter translúcida
+## Adicionar uma tela Flutter translúcida {:#add-a-translucent-flutter-screen}
 
 <img src='/assets/images/docs/development/add-to-app/android/add-flutter-screen/add-single-flutter-screen-transparent_header.png' alt="Add Flutter Screen With Translucency Header">
 
@@ -358,7 +358,7 @@ Para tornar sua `FlutterActivity` translúcida,
 faça as seguintes mudanças no processo regular de
 criar e lançar uma `FlutterActivity`.
 
-### Passo 1: Usar um tema com translucidez
+### Passo 1: Usar um tema com translucidez {:#step-1-use-a-theme-with-translucency}
 
 O Android requer uma propriedade de tema especial para `Activity`s que renderizam
 com um background translúcido. Crie ou atualize um tema Android com a
@@ -386,7 +386,7 @@ Sua `FlutterActivity` agora suporta translucidez.
 Em seguida, você precisa lançar sua `FlutterActivity`
 com suporte explícito à transparência.
 
-### Passo 2: Iniciar FlutterActivity com transparência
+### Passo 2: Iniciar FlutterActivity com transparência {:#step-2-start-flutteractivity-with-transparency}
 
 Para lançar sua `FlutterActivity` com um background transparente,
 passe o `BackgroundMode` apropriado para o `IntentBuilder`:

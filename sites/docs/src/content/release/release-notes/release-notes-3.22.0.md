@@ -579,7 +579,7 @@ consulte o [CHANGELOG][] do Flutter.
 * [flutter_tools] Enable WebAssembly compilation everywhere, remove feature flag by @kevmoo in [145562](https://github.com/flutter/flutter/pull/145562)
 * Be tolerant of backticks around directory name in `pub` output. by @eyebrowsoffire in [145768](https://github.com/flutter/flutter/pull/145768)
 * Roll pub packages and regenerate gradle lockfiles by @christopherfujino in [145727](https://github.com/flutter/flutter/pull/145727)
-### Documentação
+### Documentação {:#documentation}
 * bind missing add icon in platform_view example by @TJRoger in [132028](https://github.com/flutter/flutter/pull/132028)
 * [iOS] Fix naming in platform_view example by @cbracken in [144247](https://github.com/flutter/flutter/pull/144247)
 ### Other Changes
@@ -758,7 +758,7 @@ consulte o [CHANGELOG][] do Flutter.
 * Refactor skp_generator_tests by @sealesj in [145871](https://github.com/flutter/flutter/pull/145871)
 * [flutter_releases] Flutter beta 3.22.0-0.0.pre Framework Cherrypicks by @itsjustkevin in [146239](https://github.com/flutter/flutter/pull/146239)
 
-## Novos contribuidores
+## Novos contribuidores {:#new-contributors}
 * @asci-00 made their first contribution in [140015](https://github.com/flutter/flutter/pull/140015)
 * @nikkivirtuoso made their first contribution in [140947](https://github.com/flutter/flutter/pull/140947)
 * @SharbelOkzan made their first contribution in [135578](https://github.com/flutter/flutter/pull/135578)
@@ -1595,7 +1595,7 @@ consulte o [CHANGELOG][] do Flutter.
 * Remove Impeller/OpenGLES from CI branch for Android e2e tests. by @matanlurey in [51734](https://github.com/flutter/engine/pull/51734)
 * [flutter_releases] Flutter beta 3.22.0-0.0.pre Engine Cherrypicks by @itsjustkevin in [51851](https://github.com/flutter/engine/pull/51851)
 
-## Novos contribuidores
+## Novos contribuidores {:#new-contributors}
 * @zijiehe-google-com made their first contribution in [49650](https://github.com/flutter/engine/pull/49650)
 * @iinozemtsev made their first contribution in [49598](https://github.com/flutter/engine/pull/49598)
 * @hasali19 made their first contribution in [49784](https://github.com/flutter/engine/pull/49784)

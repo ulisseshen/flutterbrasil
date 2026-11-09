@@ -8,13 +8,13 @@ description: >
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Este guia de migração descreve a conversão de código que usa várias funções
 estáticas `of` para recuperar informações de um contexto que costumavam retornar
 valores anuláveis, mas agora retornam valores não-nulos.
 
-## Contexto
+## Contexto {:#context}
 
 Flutter tem um padrão comum de permitir a busca de alguns tipos de widgets
 (tipicamente [`InheritedWidget`][`InheritedWidget`]s, mas também outros) usando funções membro
@@ -37,7 +37,7 @@ não estava presente (ainda chamada de `of`), e uma que retornava um valor anul�
 que não lançava uma exceção, e retornava null se o valor não estivesse
 presente (um novo método chamado `maybeOf`).
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 A mudança modificou estas APIs estáticas `of` para retornar valores não-nulos.
 Se um valor não for encontrado, elas também agora farão assert em modo debug, e
@@ -75,7 +75,7 @@ simplesmente retornam null se o valor não for encontrado, sem lançar exceçõe
 * [`Scrollable.maybeOf`]
 * [`ScrollNotificationObserver.maybeOf`]
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Para modificar seu código para usar a nova forma das APIs, primeiro converta todas
 as instâncias das funções estáticas `of` originais (onde sua anulabilidade é
@@ -120,11 +120,11 @@ O seguinte também pode ser útil:
 * [`unnecessary_nullable_for_final_variable_declarations`][`unnecessary_nullable_for_final_variable_declarations`] (opção de análise)
   encontra operadores de interrogação desnecessários em variáveis `final` e `const`
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Na versão estável: 3.7
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

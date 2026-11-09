@@ -39,7 +39,7 @@ você gostaria que seu provedor de chat usasse. Pronto para uso, ele vem com sup
 * **Suporte multiplataforma**: Compatível com plataformas Android, iOS, web e
   macOS.
 
-## Demo {:#demo}
+## Demo
 
 Veja como fica o exemplo de demonstração hospedando o AI Toolkit:
 
@@ -239,7 +239,7 @@ backend — não o cliente — controla o acesso, e incluir
 Você também deve revisar e seguir a [checklist de segurança do Firebase](https://firebase.google.com/support/guides/security-checklist).
 :::
 
-## Feedback {:#feedback}
+## Feedback
 
 Ao longo do caminho, conforme você usa este pacote, por favor [registre problemas e solicitações
 de recursos][file-issues] bem como envie qualquer [código que você gostaria de

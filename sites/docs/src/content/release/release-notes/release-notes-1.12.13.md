@@ -24,7 +24,7 @@ Como sempre, você pode encontrar PRs interessantes listados abaixo. E há muita
 *   E mais!
 
 
-## Mudanças incompatíveis
+## Mudanças incompatíveis {:#breaking-changes}
 
 Em geral, queremos evitar introduzir mudanças incompatíveis no Flutter, nos nossos plugins ou nos nossos pacotes. No entanto, às vezes isso é inevitável quando precisamos tornar nossas APIs mais intuitivas. Implementamos um novo processo que convida você a enviar testes para nos ajudar a detectar mudanças incompatíveis. Para mais informações, veja [este post de Ian Hickson][this post from Ian Hickson] no [flutter-announce][flutter-announce] e a [política de mudanças incompatíveis na wiki do Flutter][breaking change policy on the Flutter wiki].
 
@@ -67,7 +67,7 @@ A lista a seguir inclui as mudanças incompatíveis desta versão. Consulte os a
 [45135]({{site.repo.flutter}}/pull/45135) [Add option to delay rendering the first frame](https://groups.google.com/g/flutter-announce/c/kBf4cXjD2y4/m/lg19fDnaAgAJ)
 
 
-## Bugs graves de travamento e desempenho
+## Bugs graves de travamento e desempenho {:#severe-crash-performance-bugs}
 
 Em cada versão estável, nos esforçamos para melhorar a qualidade do Flutter. Na 1.12, corrigimos vários problemas graves; isso inclui os seguintes travamentos e problemas de desempenho.
 
@@ -94,7 +94,7 @@ Em cada versão estável, nos esforçamos para melhorar a qualidade do Flutter. 
 [45050]({{site.repo.flutter}}/pull/45050) Add a perf test for picture raster cache
 
 
-## Novos recursos
+## Novos recursos {:#new-features}
 
 O Flutter 1.12 traz vários novos recursos, incluindo o widget
 [SliverOpacity]({{site.api}}/flutter/widgets/SliverOpacity-class.html),
@@ -126,7 +126,7 @@ e a possibilidade de configurar um efeito de esticamento para um SliverAppBar.
 [45432]({{site.repo.flutter}}/pull/45432) Use RenderSliverPadding to inset SliverFillViewport
 
 
-## Suporte ao iOS
+## Suporte ao iOS {:#ios-support}
 
 O iOS continua sendo uma grande área de investimento para o Flutter.
 Nesta versão, fizemos uma renovação visual da biblioteca Cupertino para corresponder ao visual do iOS 13. Agora oferecemos suporte ao modo escuro nos widgets Cupertino e adicionamos dois novos widgets, o
@@ -371,7 +371,7 @@ Nesta versão, mesclamos uma lista de mudanças para oferecer suporte ao Android
 [2239](https://github.com/flutter/plugins/pull/2239) [camera] Android: Improve image streaming by creating a request suita…
 
 
-## Recurso Add to App
+## Recurso Add to App {:#add-to-app-feature}
 
 Fizemos uma atualização significativa no Add-to-App, o recurso que permite integrar um módulo Flutter ao seu app Android ou iOS. Mal podemos esperar para você experimentar! Confira a [documentação do Add-to-App](/add-to-app).
 
@@ -1071,7 +1071,7 @@ O Material continua sendo um foco da equipe do Flutter. Nesta versão, atualizam
 [45362]({{site.repo.flutter}}/pull/45362) Add widget of the week video embeddings
 
 
-## Texto e acessibilidade
+## Texto e acessibilidade {:#text-accessibility}
 
 Em Texto e acessibilidade, fizemos várias melhorias no ButtonBar e no AlertDialog para evitar o estouro de texto.
 
@@ -1094,7 +1094,7 @@ Em Texto e acessibilidade, fizemos várias melhorias no ButtonBar e no AlertDial
 [44605]({{site.repo.flutter}}/pull/44605) Changing RenderEditable.textAlign doesn't break hot reload anymore
 
 
-## Animação e rolagem
+## Animação e rolagem {:#animation-scroll}
 
 Para animações, lançamos o [TweenAnimationBuilder]({{site.api}}/flutter/widgets/TweenAnimationBuilder-class.html)
 para criar animações implícitas personalizadas. Para mais informações, confira este [vídeo sobre o TweenAnimationBuilder](https://www.youtube.com/watch?reload=9&v=6KiPEqzJIKQ) no YouTube.
@@ -2573,7 +2573,7 @@ Atualizamos o plugin Webview Flutter para a [nova API de plugins][new plugin API
 [2257](https://github.com/flutter/plugins/pull/2257) [webview_flutter] Add async NavigationDelegates
 
 
-## Ferramentas
+## Ferramentas {:#tooling}
 
 As ferramentas do Flutter são outro grande investimento nesta versão. Lançamos uma nova versão do [DartPad](http://dartpad.dev), que permite experimentar o Flutter diretamente no navegador sem instalar nada, lançamos o novo recurso "Hot UI" (em prévia), que permite interagir com widgets diretamente na IDE, aprimoramos o Dart DevTools com um novo layout visual, habilitamos a depuração simultânea em vários dispositivos no Visual Studio Code e adicionamos suporte a testes de imagem "golden".
 
@@ -2589,7 +2589,7 @@ Além dos PRs listados abaixo, confira também as seguintes versões do plugin F
 *   12/5/2019: [dartcode.org/releases/v3-7/](https://dartcode.org/releases/v3-7/)
 
 
-### Plugin Flutter para IntelliJ e Android Studio
+### Plugin Flutter para IntelliJ e Android Studio {:#flutter-intellij-and-android-studio-plugin}
 
 
 
@@ -2608,7 +2608,7 @@ Além dos PRs listados abaixo, confira também as seguintes versões do plugin F
 *   12/6/2019: Nova versão do Dart DevTools [Release 0.1.12](https://groups.google.com/forum/#!topic/flutter-dev/EGLBgQAOoC8)
 
 
-### PRs de ferramentas
+### PRs de ferramentas {:#tooling-prs}
 
 [37508]({{site.repo.flutter}}/pull/37508) build bundle with assemble
 
@@ -2949,7 +2949,7 @@ Além dos PRs listados abaixo, confira também as seguintes versões do plugin F
 [46011]({{site.repo.flutter}}/pull/46011) [flutter_tool] Do not continue with a no-op 'upgrade'
 
 
-## Lista completa de PRs
+## Lista completa de PRs {:#full-pr-list}
 
  Veja a [lista completa](/release/release-notes/changelogs/changelog-1.12.13) dos PRs mesclados na versão 1.12.
 

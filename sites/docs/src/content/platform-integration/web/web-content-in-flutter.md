@@ -52,7 +52,7 @@ confira a [classe `HTMLVideoElement`][`HTMLVideoElement` class] no [`package:web
 Para saber mais sobre o `Object` video que é convertido para `web.HTMLVideoElement`,
 confira a documentação [JS Interoperability][JS Interoperability] do Dart.
 
-### `HtmlElementView` e `registerViewFactory`
+### `HtmlElementView` e `registerViewFactory` {:#htmlelementview-and-registerviewfactory}
 
 Se você precisa de mais controle sobre a geração do código HTML que você injeta,
 pode usar as primitivas que o Flutter usa para implementar

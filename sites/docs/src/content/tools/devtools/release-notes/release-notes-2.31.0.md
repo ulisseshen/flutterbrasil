@@ -12,14 +12,14 @@ inclui as seguintes alterações entre outras melhorias gerais.
 Para saber mais sobre DevTools, confira a
 [visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 * Adicionada uma nova funcionalidade para validação de deep link,
   suportando verificações web de deep link no Android. - [#6935](https://github.com/flutter/devtools/pull/6935)
 * Adicionada a estrutura básica para permitir conexões a um Dart Tooling Daemon. - [#7009](https://github.com/flutter/devtools/pull/7009)
 * Tornado texto de tabela selecionável [#6919](https://github.com/flutter/devtools/pull/6919)
 
-## Atualizações do Inspector
+## Atualizações do Inspector {:#inspector-updates}
 
 * Quando terminar de digitar no campo de busca,
   a próxima seleção agora é automaticamente selecionada - [#6677](https://github.com/flutter/devtools/pull/6677)
@@ -33,37 +33,37 @@ Para saber mais sobre DevTools, confira a
 * Cachear apenas diretórios raiz pub adicionados pelo usuário - [#6897](https://github.com/flutter/devtools/pull/6897)
 * Remover raiz pub do Flutter se foi acidentalmente cacheada - [#6911](https://github.com/flutter/devtools/pull/6911)
 
-## Atualizações de Performance
+## Atualizações de Performance {:#performance-updates}
 
 * Alterado fundo de preview da camada raster para um tabuleiro de xadrez. - [#6827](https://github.com/flutter/devtools/pull/6827)
 
-## Atualizações do CPU profiler
+## Atualizações do CPU profiler {:#cpu-profiler-updates}
 
 * Adicionados cards de hover para mostrar taxa de amostragem para o item no dropdown. - [#7010](https://github.com/flutter/devtools/pull/7010)
 
   ![Sampling rate for dropdown](/assets/images/docs/tools/devtools/release-notes/images-2.31.0/hover-for-dropdown.png "Sampling rate for dropdown")
 
-## Atualizações do Debugger
+## Atualizações do Debugger {:#debugger-updates}
 
 * Destacado `extension type` como uma palavra-chave de declaração,
   destacado o `$` em interpolação de identificador como parte da interpolação,
   e destacados corretamente comentários dentro de argumentos de tipo. - [6837](https://github.com/flutter/devtools/pull/6837)
 
-## Atualizações de Logging
+## Atualizações de Logging {:#logging-updates}
 
 * Adicionada barra de rolagem ao painel de detalhes. - [#6917](https://github.com/flutter/devtools/pull/6917)
 
-## Atualizações do VS Code Sidebar
+## Atualizações do VS Code Sidebar {:#vs-code-sidebar-updates}
 
 * Corrigido um problema que impedia a sidebar do VS code de
   carregar em builds recentes beta/master. - [#6984](https://github.com/flutter/devtools/pull/6984)
 
-## Atualizações de DevTools Extension
+## Atualizações de DevTools Extension {:#devtools-extension-updates}
 
 * Corrigidos alguns bugs que impediam apps de servidor Dart de
   se conectarem às extensões do DevTools. - [#6982](https://github.com/flutter/devtools/pull/6982), [#6993](https://github.com/flutter/devtools/pull/6993)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de alterações nesta versão, confira o
 [log git do DevTools](https://github.com/flutter/devtools/tree/v2.31.0).

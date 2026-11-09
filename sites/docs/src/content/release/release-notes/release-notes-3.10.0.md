@@ -810,7 +810,7 @@ consulte o [CHANGELOG][] do Flutter.
 * Remove macOS impeller benchmarks by @jmagman in [118917](https://github.com/flutter/flutter/pull/118917)
 * Verify Mac artifact codesigning on x64 and arm64 by @jmagman in [119971](https://github.com/flutter/flutter/pull/119971)
 
-## Novos contribuidores
+## Novos contribuidores {:#new-contributors}
 * @parlough made their first contribution in [116474](https://github.com/flutter/flutter/pull/116474)
 * @ivirtex made their first contribution in [110127](https://github.com/flutter/flutter/pull/110127)
 * @Dev-dfm made their first contribution in [110854](https://github.com/flutter/flutter/pull/110854)
@@ -2778,7 +2778,7 @@ consulte o [CHANGELOG][] do Flutter.
 * [CP][codesign] Add pinned xcode version to mac android aot engine by @XilaiZhang in [41541](https://github.com/flutter/engine/pull/41541)
 * [flutter_releases] Flutter beta 3.10.0-1.5.pre Engine Cherrypicks by @Jasguerrero in [41670](https://github.com/flutter/engine/pull/41670)
 
-## Novos contribuidores
+## Novos contribuidores {:#new-contributors}
 * @Kingtous made their first contribution in [36143](https://github.com/flutter/engine/pull/36143)
 * @DenisovAV made their first contribution in [37493](https://github.com/flutter/engine/pull/37493)
 * @endless7 made their first contribution in [37107](https://github.com/flutter/engine/pull/37107)

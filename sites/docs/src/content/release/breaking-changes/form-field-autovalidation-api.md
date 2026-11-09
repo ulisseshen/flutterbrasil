@@ -6,7 +6,7 @@ description: Fornece mais controle sobre como validar automaticamente um Form e 
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 A API de validação automática anterior para os widgets `Form` e
 `FormField` não controlava quando a validação automática
@@ -15,7 +15,7 @@ sempre acontecia na primeira construção quando o widget ficava
 visível para o usuário pela primeira vez, e você não conseguia controlar
 quando a validação automática deveria acontecer.
 
-## Contexto
+## Contexto {:#context}
 
 Devido à API original não permitir que desenvolvedores alterassem
 o comportamento da validação automática para validar apenas quando
@@ -23,7 +23,7 @@ o usuário interage com o campo de formulário, adicionamos uma nova API
 que permite aos desenvolvedores configurar como eles querem que a
 validação automática se comporte para os widgets `Form` e `FormField`.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 As seguintes alterações foram feitas:
 
@@ -32,7 +32,7 @@ As seguintes alterações foram feitas:
   um Enum que aceita valores da classe Enum `AutovalidateMode`,
   foi adicionado.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Para migrar para a nova API de validação automática, você precisa
 substituir o uso do parâmetro obsoleto `autovalidate` pelo novo
@@ -73,12 +73,12 @@ class MyWidget extends StatelessWidget {
 }
 ```
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Implementado na versão: 1.21.0-5.0.pre<br>
 Na versão estável: 1.22
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

@@ -17,7 +17,7 @@ Engenheiros do Google, que têm experiência fazendo isso
 para apps grandes, recomendam a
 seguinte abordagem de 3 passos.
 
-## Passo 1: Abstrair
+## Passo 1: Abstrair {:#step-1-abstract}
 
 ![Step 1: Abstract info common to any UI widget](/assets/images/docs/ui/adaptive-responsive/abstract.png)
 
@@ -46,7 +46,7 @@ um ícone quanto um rótulo de texto.
 Em seguida, você avaliará o tamanho da sua tela para decidir
 como exibir sua UI.
 
-## Passo 2: Medir
+## Passo 2: Medir {:#step-2-measure}
 
 ![Step 2: How to measure screen size](/assets/images/docs/ui/adaptive-responsive/measure.png)
 
@@ -139,7 +139,7 @@ que o dimensionamento seja baseado no espaço especificamente
 dado a esse widget, e não na janela do app em geral.
 Neste cenário, use `LayoutBuilder`.
 
-## Passo 3: Ramificar
+## Passo 3: Ramificar {:#step-3-branch}
 
 ![Step 3: Branch the code based on the desired UI](/assets/images/docs/ui/adaptive-responsive/branch.png)
 

@@ -11,7 +11,7 @@ inclui as seguintes mudanças, entre outras melhorias gerais.
 Para saber mais sobre o DevTools, confira a
 [visão geral do DevTools](/tools/devtools).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 * Removida a tela legada do Provider, que era um placeholder para direcionar os usuários
 para a extensão de DevTools do `package:provider`. [#10046](https://github.com/flutter/devtools/pull/10046)
@@ -19,7 +19,7 @@ para a extensão de DevTools do `package:provider`. [#10046](https://github.com/
   sem campos obrigatórios ou sem dados para a tela.
   [#10005](https://github.com/flutter/devtools/pull/10005)
 
-## Atualizações de desempenho
+## Atualizações de desempenho {:#performance-updates}
 
 * Reduzida a memória usada ao salvar dados de Performance para visualização offline, e
   os arquivos salvos ficaram menores. Arquivos salvos com esta versão não podem ser
@@ -31,13 +31,13 @@ para a extensão de DevTools do `package:provider`. [#10046](https://github.com/
   mas sem trace de timeline, tratava os dados como vazios.
   [#10005](https://github.com/flutter/devtools/pull/10005)
 
-## Atualizações do debugger
+## Atualizações do debugger {:#debugger-updates}
 
 * Melhorado o realce de sintaxe de blocos de código cercados que usam mais de três
   crases.
   [#10021](https://github.com/flutter/devtools/pull/10021)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de mudanças nesta versão, confira o
 [log do git do DevTools](https://github.com/flutter/devtools/tree/v2.62.0).

@@ -12,7 +12,7 @@ inclui as seguintes alterações entre outras melhorias gerais.
 Para saber mais sobre DevTools, confira a
 [visão geral do DevTools](/tools/devtools/overview).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 * Corrigidos vários vazamentos de memória e problemas de ciclo de vida. -
   [#8901](https://github.com/flutter/devtools/pull/8901),
@@ -29,7 +29,7 @@ Para saber mais sobre DevTools, confira a
   [#8970](https://github.com/flutter/devtools/pull/8970),
   [#8975](https://github.com/flutter/devtools/pull/8975)
 
-## Atualizações do CPU profiler
+## Atualizações do CPU profiler {:#cpu-profiler-updates}
 
 * Melhorado o tempo de carregamento e uso de memória de perfis de CPU.
   * [#8892](https://github.com/flutter/devtools/pull/8892)
@@ -38,13 +38,13 @@ Para saber mais sobre DevTools, confira a
 * Corrigidos cálculos de duração incorretos quando há tempo durante o qual nenhuma
   amostra foi coletada - [#8941](https://github.com/flutter/devtools/pull/8941).
 
-## Atualizações de Memory
+## Atualizações de Memory {:#memory-updates}
 
 * Alterada a ferramenta de snapshot de heap de memória para que referências sejam
   incluídas em snapshots por padrão. -
   [#8899](https://github.com/flutter/devtools/pull/8899)
 
-## Atualizações do Debugger
+## Atualizações do Debugger {:#debugger-updates}
 
 * Adicionado um tooltip para descrever o dropdown de modo de exceção. -
   [#8849](https://github.com/flutter/devtools/pull/8849)
@@ -57,7 +57,7 @@ Para saber mais sobre DevTools, confira a
 * Adicionada quebra de linha suave no console do debugger.
   [#8855](https://github.com/flutter/devtools/pull/8855).
 
-## Atualizações do Network profiler
+## Atualizações do Network profiler {:#network-profiler-updates}
 
 * Adicionado suporte offline para a tela de network (obrigado a @hrajwade96!) -
   [#8332](https://github.com/flutter/devtools/pull/8332)
@@ -69,7 +69,7 @@ Para saber mais sobre DevTools, confira a
 * Alterado o estilo do menu de contexto para ser consistente com outras telas
   [#8859](https://github.com/flutter/devtools/pull/8859).
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de alterações nesta versão, confira o
 [log git do DevTools](https://github.com/flutter/devtools/tree/v2.44.0).

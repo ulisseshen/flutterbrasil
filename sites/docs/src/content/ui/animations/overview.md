@@ -117,7 +117,7 @@ com uma animação para obter um valor concreto:
    que pode então ler o valor atual que incorpora
    o tween, bem como ouvir mudanças no valor.
 
-## Arquitetura
+## Arquitetura {:#architecture}
 
 As animações são construídas a partir de vários blocos de construção principais.
 
@@ -196,7 +196,7 @@ faixa 0.0-1.0).
 Um `Tween` não rastreia o progresso da animação,
 mas seus valores `begin` e `end` são mutáveis.
 
-#### Compondo animatables
+#### Compondo animatables {:#composing-animatables}
 
 Passar um `Animatable<double>` (o pai) para o método
 `chain()` de um objeto `Animatable`
@@ -232,7 +232,7 @@ Algumas subclasses de `Animation` são stateless,
 apenas encaminhando listeners para seus pais.
 Algumas são muito stateful.
 
-#### Animações compostas
+#### Animações compostas {:#composable-animations}
 
 A maioria das subclasses de `Animation` recebe um "pai"
 `Animation<double>` explícito. Elas são conduzidas por esse pai.
@@ -301,7 +301,7 @@ fazendo dispose do controller, deixa esse future incompleto.
 Use sua propriedade `orCancel` para aguardar um future que
 lança `TickerCanceled` em caso de cancelamento.
 
-#### Anexando animatables a animações
+#### Anexando animatables a animações {:#attaching-animatables-to-animations}
 
 Passar um `Animation<double>` (o novo pai) para
 o método `animate()` de um objeto `Animatable`

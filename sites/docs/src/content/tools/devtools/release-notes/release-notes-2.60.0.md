@@ -12,7 +12,7 @@ inclui as seguintes mudanças, entre outras melhorias gerais.
 Para saber mais sobre o DevTools, confira a
 [visão geral do DevTools](/tools/devtools).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 - Corrigido um problema em que o DevTools podia ficar preso em um estado desconectado
   (por exemplo, depois que um Mac entra em suspensão) ao adicionar um botão manual
@@ -32,30 +32,30 @@ Para saber mais sobre o DevTools, confira a
   servidor do DevTools grave em caminhos arbitrários. -
   [#9834](https://github.com/flutter/devtools/pull/9834)
 
-## Atualizações do Inspector
+## Atualizações do Inspector {:#inspector-updates}
 
 - Corrigido um problema em que o contador do badge de erros do Inspector aumentava
   indevidamente ou desaparecia durante a navegação. -
   [#9524](https://github.com/flutter/devtools/issues/9524)
 
-## Atualizações de desempenho
+## Atualizações de desempenho {:#performance-updates}
 
 - Corrigido um bug em que a aba de funcionalidade selecionada não era restaurada
   ao carregar dados de Performance exportados. -
   [#9861](https://github.com/flutter/devtools/pull/9861)
 
-## Atualizações do Network profiler
+## Atualizações do Network profiler {:#network-profiler-updates}
 
 - Corrigido o campo de busca aba Network que ficava desabilitado após limpar todas
   as requisições, de modo que a consulta de busca agora pode ser editada a qualquer momento. -
   [#9855](https://github.com/flutter/devtools/pull/9855)
 
-## Atualizações da ferramenta de deep links
+## Atualizações da ferramenta de deep links {:#deep-links-tool-updates}
 
 - Validar deep links apenas quando conectado a um app Flutter. -
   [#8081](https://github.com/flutter/devtools/issues/8081)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de mudanças nesta versão, confira o
 [log do git do DevTools](https://github.com/flutter/devtools/tree/v2.60.0).

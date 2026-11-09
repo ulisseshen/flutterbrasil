@@ -17,7 +17,7 @@ confira o vídeo a seguir sobre o uso de slivers.
 
 <YouTubeEmbed id="YY-_yrZdjGc" title="Building scrolling experiences in Flutter"></YouTubeEmbed>
 
-## Recursos
+## Recursos {:#resources}
 
 Para mais informações sobre a implementação de efeitos de rolagem sofisticados
 no Flutter, consulte os seguintes recursos:
@@ -48,7 +48,7 @@ no Flutter, consulte os seguintes recursos:
 
   <YouTubeEmbed id="Mz3kHQxBjGg" title="Slivers explained - Making dynamic layouts"></YouTubeEmbed>
 
-## Documentação da API
+## Documentação da API {:#api-docs}
 
 Para saber mais sobre as APIs de sliver disponíveis,
 confira estes documentos relacionados da API:

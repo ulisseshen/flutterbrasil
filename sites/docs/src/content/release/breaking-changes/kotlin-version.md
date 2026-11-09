@@ -20,7 +20,7 @@ Para mais informações, consulte [Issue 10380][Issue 10380] e [Issue 135392][Is
 [Issue 10380]:  {{site.repo.this}}/issues/10380
 [Issue 135392]: {{site.repo.flutter}}/issues/135392
 
-## Resumo
+## Resumo {:#summary}
 
 Para compilar um app Flutter para Android, é necessário o Kotlin 1.5.31 ou superior.
 
@@ -39,18 +39,18 @@ você receberá a seguinte mensagem de erro:
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-## Contexto
+## Contexto {:#context}
 
 Flutter adicionou suporte para [dispositivos dobráveis][1] no Android.
 Isso exigiu adicionar uma dependência do AndroidX ao embedding do Flutter que
 requer que os apps usem Kotlin 1.5.31 ou superior.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 Um app Flutter compilado para Android agora inclui a dependência do Gradle
 `androidx.window:window-java`.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Abra `<app-src>/android/build.gradle` e altere `ext.kotlin_version`:
 
@@ -60,12 +60,12 @@ Abra `<app-src>/android/build.gradle` e altere `ext.kotlin_version`:
 +     ext.kotlin_version = '1.5.31'
 ```
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Incluído na versão: v2.9.0 beta<br>
 Lançamento estável: 2.10
 
-## Referências
+## Referências {:#references}
 
 PR relevante:
 

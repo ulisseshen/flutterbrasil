@@ -35,7 +35,7 @@ que combinados oferecem suporte para mobile e desktop.
 O suporte para web é fornecido no plugin experimental
 [`sqflite_common_ffi_web`][`sqflite_common_ffi_web`] mas não está incluído neste exemplo.
 
-## Aplicação de exemplo: Aplicação de lista de tarefas
+## Aplicação de exemplo: Aplicação de lista de tarefas {:#example-application-todo-list-application}
 
 A aplicação de exemplo consiste em uma única tela com uma barra de aplicativo no topo,
 uma lista de itens e um campo de entrada de texto na parte inferior.
@@ -59,7 +59,7 @@ O código-fonte completo e executável para este exemplo está
 disponível em [`/examples/app-architecture/todo_data_service/`][`/examples/app-architecture/todo_data_service/`].
 :::
 
-## Armazenando dados complexos com SQL
+## Armazenando dados complexos com SQL {:#storing-complex-data-with-sql}
 
 Esta funcionalidade segue o [design de arquitetura Flutter][Flutter Architecture design] recomendado,
 contendo uma camada de UI e uma camada de dados.
@@ -69,7 +69,7 @@ Além disso, na camada de domínio você encontrará o modelo de dados usado.
 - Camada de domínio com a classe de dados `Todo`
 - Camada de dados com `TodoRepository` e `DatabaseService`
 
-### Camada de apresentação da lista de tarefas
+### Camada de apresentação da lista de tarefas {:#todo-list-presentation-layer}
 
 O `TodoListScreen` é um Widget que contém a UI encarregada de exibir
 e criar os itens de tarefa.
@@ -231,7 +231,7 @@ Future<Result<void>> _delete(int id) async {
 }
 ```
 
-### Camada de domínio da lista de tarefas
+### Camada de domínio da lista de tarefas {:#todo-list-domain-layer}
 
 A camada de domínio desta aplicação de exemplo contém
 o modelo de dados do item `Todo`.
@@ -256,7 +256,7 @@ abstract class Todo with _$Todo {
 }
 ```
 
-### Camada de dados da lista de tarefas
+### Camada de dados da lista de tarefas {:#todo-list-data-layer}
 
 A camada de dados desta funcionalidade é composta por duas classes,
 o `TodoRepository` e o `DatabaseService`.
@@ -427,7 +427,7 @@ assim como dos requisitos da sua aplicação.
 para recomendações.
 :::
 
-## Juntando tudo
+## Juntando tudo {:#putting-it-all-together}
 
 No método `main()` da sua aplicação,
 primeiro inicialize o `DatabaseService`,

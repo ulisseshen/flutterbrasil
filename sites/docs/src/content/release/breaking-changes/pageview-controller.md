@@ -7,13 +7,13 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Se um controller não for fornecido no construtor,
 o membro `controller` é `null`. Isso torna
 o `PageView` e sua propriedade `controller` consistentes com outros widgets.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Antes:
 
@@ -27,12 +27,12 @@ Depois:
 pageView.controller!.page
 ```
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Aplicado na versão: 3.19.0-12.0.pre<br>
 Em versão estável: 3.22.0
 
-## Referências
+## Referências {:#references}
 
 Issues relevantes:
 

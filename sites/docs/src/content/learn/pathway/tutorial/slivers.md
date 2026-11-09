@@ -31,7 +31,7 @@ items:
 
 ---
 
-### Slivers e widgets
+### Slivers e widgets {:#slivers-and-widgets}
 
 Slivers são áreas roláveis que podem ser compostas juntas em um
 `CustomScrollView` ou outras views de rolagem.
@@ -57,7 +57,7 @@ Esta separação arquitetural permite que o Flutter
 otimize a performance de rolagem enquanto mantém limites claros entre
 diferentes tipos de componentes de UI.
 
-### Adicione uma estrutura básica de sliver aos grupos de contatos
+### Adicione uma estrutura básica de sliver aos grupos de contatos {:#add-a-basic-sliver-structure-to-contact-groups}
 
 Primeiro, substitua o conteúdo placeholder na sua página de grupos de contatos.
 Para evitar duplicar código entre o layout de telefone e a barra lateral de tablet,
@@ -166,7 +166,7 @@ Esta estrutura mantém o `ContactGroupsPage` limpo e
 focado em sua responsabilidade primária: navegação,
 que você aprenderá na próxima seção deste tutorial.
 
-### Melhore a lista com ícones e elementos visuais
+### Melhore a lista com ícones e elementos visuais {:#enhance-the-list-with-icons-and-visual-elements}
 
 Agora, adicione ícones e contagens de contatos para tornar a lista mais informativa.
 Adicione este método auxiliar `_buildTrailing` à sua
@@ -236,7 +236,7 @@ O código atualizado agora mostra ícones que diferenciam entre o
 grupo principal "All iPhone" e grupos criados pelo usuário, junto com
 contagens de contatos e indicadores de navegação.
 
-### Crie rolagem avançada para contatos
+### Crie rolagem avançada para contatos {:#create-advanced-scrolling-for-contacts}
 
 Em seguida, você implementará a página de lista de contatos.
 
@@ -364,7 +364,7 @@ class ContactListsPage extends StatelessWidget {
 Esta implementação básica demonstra como usar slivers com dados
 dinâmicos em um componente reutilizável.
 
-### Adicione integração de busca com slivers
+### Adicione integração de busca com slivers {:#add-search-integration-with-slivers}
 
 Agora, melhore a página de contatos com UI de funcionalidade de busca integrada.
 Atualize o `CustomScrollView` em `_ContactListView` para usar o
@@ -414,7 +414,7 @@ O construtor `CupertinoSliverNavigationBar.search` fornece
 funcionalidade de busca integrada. Conforme você rola para baixo,
 o campo de busca transita suavemente para a barra de navegação retraída.
 
-### Crie seções de contatos alfabetizadas
+### Crie seções de contatos alfabetizadas {:#create-alphabetized-contact-sections}
 
 Apps de contatos do mundo real organizam contatos alfabeticamente.
 Para fazer isso, crie seções para cada letra.
@@ -474,7 +474,7 @@ class ContactListSection extends StatelessWidget {
 Este widget cria as seções alfabetizadas familiares que
 você vê no app Contacts do iOS.
 
-### Use `SliverList` para as seções alfabetizadas
+### Use `SliverList` para as seções alfabetizadas {:#use-sliverlist-for-the-alphabetized-sections}
 
 Agora, substitua o conteúdo placeholder em `_ContactListView` pelas
 seções alfabetizadas:
@@ -531,7 +531,7 @@ Na próxima lição, você aprenderá sobre navegação baseada em pilha e
 atualizará a UI em telas pequenas para navegar entre
 a view de lista de contatos e a view de contatos.
 
-### Revisão
+### Revisão {:#review}
 
 <SummaryCard>
 title: O que você realizou
@@ -564,7 +564,7 @@ items:
       Isso reproduz a experiência familiar do app Contacts do iOS.
 </SummaryCard>
 
-### Teste seus conhecimentos
+### Teste seus conhecimentos {:#test-yourself}
 
 <Quiz title="Quiz sobre Slivers">
 - question: Qual é a principal diferença entre slivers e widgets regulares?

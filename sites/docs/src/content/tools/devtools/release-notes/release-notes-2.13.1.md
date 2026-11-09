@@ -12,7 +12,7 @@ inclui as seguintes mudanças, entre outras melhorias gerais.
 Para saber mais sobre o DevTools, confira a
 [visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 * Esta versão incluiu muita limpeza e redução de débito técnico.
   O mais notável é a conclusão de nossa migração para null safety sólido.
@@ -24,7 +24,7 @@ Para saber mais sobre o DevTools, confira a
   [#4041](https://github.com/flutter/devtools/pull/4041),
   [#4076](https://github.com/flutter/devtools/pull/4076)
 
-## Atualizações de Performance
+## Atualizações de Performance {:#performance-updates}
 
 * Adicionado um novo recurso para ajudá-lo a depurar jank de raster em seu app Flutter.
   Este recurso permite que você tire um snapshot da
@@ -42,22 +42,22 @@ Para saber mais sobre o DevTools, confira a
 
   ![track-widget-builds-scope-setting](/assets/images/docs/tools/devtools/release-notes/images-2.13.1/image2.png "track widget builds scope setting")
 
-## Atualizações do CPU profiler
+## Atualizações do CPU profiler {:#cpu-profiler-updates}
 
 * Usar uris de pacote em vez de uris de arquivo na coluna "Source" do CPU profiler -
   [#3932](https://github.com/flutter/devtools/pull/3932)
 
-## Atualizações do Debugger
+## Atualizações do Debugger {:#debugger-updates}
 
 * Corrigido bug de rolagem com breakpoints do debugger -
   [#4074](https://github.com/flutter/devtools/pull/4074)
 
-## Atualizações do Flutter inspector
+## Atualizações do Flutter inspector {:#flutter-inspector-updates}
 
 * Adicionado suporte para exibir valores flex maiores que 5 no Layout Explorer -
   [#4055](https://github.com/flutter/devtools/pull/4055)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de mudanças desde a versão anterior,
 confira

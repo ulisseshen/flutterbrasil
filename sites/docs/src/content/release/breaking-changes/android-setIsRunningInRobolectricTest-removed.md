@@ -8,7 +8,7 @@ description: >
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Se você escreve testes JUnit em Java (como testes Robolectric)
 contra o embedding Java do engine Flutter e usou a
@@ -25,7 +25,7 @@ FlutterInjector.setInstance(
 
 Isso deve ser muito incomum.
 
-## Contexto
+## Contexto {:#context}
 
 A própria classe `FlutterMain` está sendo depreciada e substituída pela
 classe `FlutterInjector`. A classe `FlutterMain` usa várias
@@ -49,7 +49,7 @@ a biblioteca `libflutter.so`.
 
 [`FlutterLoader`]: https://cs.opensource.google/flutter/engine/+/master:shell/platform/android/io/flutter/embedding/engine/loader/FlutterLoader.java
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 Este [commit do engine][engine commit] removeu a
 função de teste `FlutterMain.setIsRunningInRobolectricTest()`;
@@ -63,7 +63,7 @@ e `FlutterJNI` para permitir mocking e testes adicionais.
 [PR 20473]: {{site.repo.engine}}/pull/20473
 to allow for additional mocking/testing.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Código antes da migração:
 
@@ -81,7 +81,7 @@ FlutterInjector.setInstance(
             .build());
 ```
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Aterrissou na versão: 1.22.0-2.0.pre.133<br>
 No lançamento estável: 2.0.0

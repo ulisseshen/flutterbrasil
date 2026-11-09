@@ -37,7 +37,7 @@ Veja [Sequência de carregamento e desempenho][Loading sequence and performance]
 para mais análise sobre a latência e compensações de memória
 de pré-aquecer um engine.
 
-### Crie um FlutterEngine
+### Crie um FlutterEngine {:#create-a-flutterengine}
 
 Onde você cria um `FlutterEngine` depende do seu app host.
 
@@ -145,7 +145,7 @@ exposto como uma propriedade, na inicialização do app no app delegate.
 </Tab>
 </Tabs>
 
-### Mostre um FlutterViewController com seu FlutterEngine
+### Mostre um FlutterViewController com seu FlutterEngine {:#show-a-flutterviewcontroller-with-your-flutterengine}
 
 <Tabs key="darwin-framework">
 <Tab name="SwiftUI">
@@ -288,7 +288,7 @@ seria executada ao chamar `run` no
 </Tab>
 </Tabs>
 
-### _Alternativamente_ - Crie um FlutterViewController com um FlutterEngine implícito
+### _Alternativamente_ - Crie um FlutterViewController com um FlutterEngine implícito {:#alternatively-create-a-flutterviewcontroller-with-an-implicit-flutterengine}
 
 Como alternativa ao exemplo anterior, você pode deixar o
 `FlutterViewController` criar implicitamente seu próprio `FlutterEngine` sem
@@ -393,7 +393,7 @@ quanto o `FlutterSceneDelegate` (ou `FlutterSceneLifeCycleProvider`).
 Para mais detalhes sobre a migração para o ciclo de vida `UIScene`,
 consulte o [guia de migração para UIScene][UIScene migration guide].
 
-### Usando o FlutterAppDelegate
+### Usando o FlutterAppDelegate {:#using-the-flutterappdelegate}
 
 Criar uma subclasse de `FlutterAppDelegate` no seu `UIApplicationDelegate`
 é recomendado, mas não obrigatório.
@@ -489,7 +489,7 @@ struct ContentView: View {
 }
 ```
 
-#### Se você não pode criar uma subclasse de FlutterAppDelegate
+#### Se você não pode criar uma subclasse de FlutterAppDelegate {:#if-you-cant-subclass-flutterappdelegate}
 
 Se o delegate do seu app não pode ser uma subclasse de `FlutterAppDelegate`,
 adote o protocolo `FlutterAppLifeCycleProvider`
@@ -737,7 +737,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, FlutterAppLifeCycleProvid
 </Tab>
 </Tabs>
 
-### Usando o FlutterSceneDelegate
+### Usando o FlutterSceneDelegate {:#using-the-flutterscenedelegate}
 
 Assim como com o `FlutterAppDelegate`,
 criar uma subclasse de `FlutterSceneDelegate` é recomendado, mas não obrigatório.
@@ -745,7 +745,7 @@ O `FlutterSceneDelegate` encaminha callbacks de cena,
 como [`scene(_:openURLContexts:)`][] e [`scene(_:continue:)`][],
 para plugins como [`local_auth`][].
 
-#### Criar ou atualizar um SceneDelegate
+#### Criar ou atualizar um SceneDelegate {:#create-or-update-a-scenedelegate}
 
 Em apps UIKit, atualize seu `SceneDelegate` para ser uma subclasse de
 `FlutterSceneDelegate`:
@@ -786,7 +786,7 @@ como **NO** em **Application Scene Manifest** no `Info.plist` do seu target.
 </Tab>
 </Tabs>
 
-#### Se você não pode criar uma subclasse de FlutterSceneDelegate
+#### Se você não pode criar uma subclasse de FlutterSceneDelegate {:#if-you-cant-subclass-flutterscenedelegate}
 
 Se o seu `SceneDelegate` não pode ser uma subclasse de `FlutterSceneDelegate`,
 adote o protocolo `FlutterSceneLifeCycleProvider` e use um
@@ -940,14 +940,14 @@ eventos do ciclo de vida da cena para o Flutter:
 </Tab>
 </Tabs>
 
-## Opções de lançamento
+## Opções de lançamento {:#launch-options}
 
 Os exemplos demonstram executar Flutter usando as configurações de lançamento padrão.
 
 Para personalizar seu runtime Flutter,
 você também pode especificar o ponto de entrada Dart, biblioteca e rota.
 
-### Ponto de entrada Dart
+### Ponto de entrada Dart {:#dart-entrypoint}
 
 Chamar `run` em um `FlutterEngine`, por padrão,
 executa a função Dart `main()`
@@ -968,7 +968,7 @@ void myOtherEntrypoint() { ... };
 ```
 :::
 
-### Biblioteca Dart
+### Biblioteca Dart {:#dart-library}
 
 Além de especificar uma função Dart, você pode especificar uma função
 de ponto de entrada em um arquivo específico.
@@ -1063,7 +1063,7 @@ chame [`SystemNavigator.pop()`][`SystemNavigator.pop()`].
 
 Veja [Navegação e roteamento][Navigation and routing] para mais sobre rotas do Flutter.
 
-### Outros
+### Outros {:#other}
 
 O exemplo anterior ilustra apenas algumas maneiras de personalizar
 como uma instância Flutter é iniciada. Usando [canais de plataforma][platform channels],

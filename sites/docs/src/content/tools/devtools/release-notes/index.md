@@ -18,7 +18,7 @@ execute o seguinte na sua linha de comando:
 $ dart devtools --version
 ```
 
-### Notas de versão
+### Notas de versão {:#release-notes}
 
 {% comment %}
 Ao adicionar as notas de versão de uma nova versão do DevTools,

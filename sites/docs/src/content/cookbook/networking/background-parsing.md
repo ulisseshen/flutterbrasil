@@ -25,7 +25,7 @@ Esta receita usa os seguintes passos:
   3. Converta a resposta em uma lista de fotos.
   4. Mova este trabalho para um isolate separado.
 
-## 1. Adicione o pacote `http`
+## 1. Adicione o pacote `http` {:#1-add-the-http-package}
 
 Primeiro, adicione o pacote [`http`][] ao seu projeto.
 O pacote `http` facilita a execução de requisições de rede,
@@ -38,7 +38,7 @@ execute `flutter pub add`:
 $ flutter pub add http
 ```
 
-## 2. Faça uma requisição de rede
+## 2. Faça uma requisição de rede {:#2-make-a-network-request}
 
 Este exemplo cobre como buscar um documento JSON grande
 que contém uma lista de 5000 objetos de fotos da
@@ -57,14 +57,14 @@ Você está fornecendo um `http.Client` para a função neste exemplo.
 Isso torna a função mais fácil de testar e usar em diferentes ambientes.
 :::
 
-## 3. Analise e converta o JSON em uma lista de fotos
+## 3. Analise e converta o JSON em uma lista de fotos {:#3-parse-and-convert-the-json-into-a-list-of-photos}
 
 Em seguida, seguindo as orientações da
 receita [Fetch data from the internet][],
 converta o `http.Response` em uma lista de objetos Dart.
 Isso torna os dados mais fáceis de trabalhar.
 
-### Crie uma classe `Photo`
+### Crie uma classe `Photo` {:#create-a-photo-class}
 
 Primeiro, crie uma classe `Photo` que contém dados sobre uma foto.
 Inclua um método factory `fromJson()` para facilitar a criação de um
@@ -99,7 +99,7 @@ class Photo {
 }
 ```
 
-### Converta a resposta em uma lista de fotos
+### Converta a resposta em uma lista de fotos {:#convert-the-response-into-a-list-of-photos}
 
 Agora, use as seguintes instruções para atualizar a
 função `fetchPhotos()` para que ela retorne um
@@ -129,7 +129,7 @@ Future<List<Photo>> fetchPhotos(http.Client client) async {
 }
 ```
 
-## 4. Mova este trabalho para um isolate separado
+## 4. Mova este trabalho para um isolate separado {:#4-move-this-work-to-a-separate-isolate}
 
 Se você executar a função `fetchPhotos()` em um dispositivo mais lento,
 você pode notar que o app congela por um breve momento enquanto analisa e
@@ -153,7 +153,7 @@ Future<List<Photo>> fetchPhotos(http.Client client) async {
 }
 ```
 
-## Notas sobre trabalhar com isolates
+## Notas sobre trabalhar com isolates {:#notes-on-working-with-isolates}
 
 Isolates se comunicam passando mensagens de um lado para outro. Essas mensagens podem
 ser valores primitivos, como `null`, `num`, `bool`, `double`, ou `String`, ou
@@ -168,7 +168,7 @@ Como uma solução alternativa, confira os pacotes [`worker_manager`][] ou
 [`worker_manager`]:  {{site.pub}}/packages/worker_manager
 [`workmanager`]: {{site.pub}}/packages/workmanager
 
-## Exemplo completo
+## Exemplo completo {:#complete-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dart

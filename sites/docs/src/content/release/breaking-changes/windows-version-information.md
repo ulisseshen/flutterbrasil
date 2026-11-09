@@ -14,7 +14,7 @@ documentação [Build and release a Windows app][].
 Projetos criados antes da versão 3.3 do Flutter precisam ser migrados
 para suportar versionamento.
 
-## Passos de migração
+## Passos de migração {:#migration-steps}
 
 Seu projeto pode ser atualizado usando estes passos:
 
@@ -37,7 +37,7 @@ flutter_window.obj : error LNK2019: unresolved external symbol "public: void __c
 ```
 :::
 
-## Exemplo
+## Exemplo {:#example}
 
 [PR 721][] mostra o trabalho de migração para o
 app [Flutter Gallery][].

@@ -195,7 +195,7 @@ kotlin {
 </Tab>
 </Tabs>
 
-## Atualize o `pubspec.yaml` do plugin {:#update-the-plugins-pubspecyaml}
+## Atualize o `pubspec.yaml` do plugin {:#update-the-plugins-pubspec-yaml}
 
 Usar o bloco DSL `kotlin.compilerOptions {}` exige
 uma versão mínima do Kotlin Gradle Plugin (KGP) de 2.0.0.
@@ -241,7 +241,7 @@ environment:
 
 <a id="update-the-plugins-changelog-md" aria-hidden="true"></a>
 
-## Atualize o CHANGELOG do plugin
+## Atualize o CHANGELOG do plugin {:#update-the-plugins-changelog}
 
 Inclua as suas mudanças no arquivo `CHANGELOG.md` da
 nova versão do plugin lançada:

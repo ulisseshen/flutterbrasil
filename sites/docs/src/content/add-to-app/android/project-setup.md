@@ -61,12 +61,12 @@ Ao usar um emulador no modo debug Just-In-Time (JIT),
 o módulo Flutter ainda funciona corretamente.
 :::
 
-## Integre seu módulo Flutter
+## Integre seu módulo Flutter {:#integrate-your-flutter-module}
 
 <Tabs key="android-integrate-flow">
 <Tab name="With Android Studio">
 
-### Integre com Android Studio {:.no_toc}
+### Integre com Android Studio {:.no_toc #integrate-with-android-studio}
 
 A IDE Android Studio pode ajudar a integrar seu módulo Flutter.
 Usando o Android Studio, você pode editar tanto seu código Android quanto Flutter
@@ -115,13 +115,13 @@ Isso mostra todos os arquivos sem filtro.
 </Tab>
 <Tab name="Without Android Studio">
 
-### Integre sem Android Studio {:.no_toc}
+### Integre sem Android Studio {:.no_toc #integrate-without-android-studio}
 
 Para integrar um módulo Flutter com um app Android existente
 manualmente, sem usar o plugin Android Studio do Flutter,
 siga estas etapas:
 
-#### Crie um módulo Flutter
+#### Crie um módulo Flutter {:#create-a-flutter-module}
 
 Supondo que você tem um app Android existente em
 `some/path/MyApp`, e que você quer seu projeto
@@ -163,7 +163,7 @@ Para evitar problemas de mesclagem Dex, `flutter.androidPackage` não deve
 ser idêntico ao nome do pacote do seu app host.
 :::
 
-#### Requisito de versão Java
+#### Requisito de versão Java {:#java-version-requirement}
 
 Flutter requer que seu projeto declare compatibilidade com Java 17 ou posterior.
 
@@ -183,7 +183,7 @@ android {
 }
 ```
 
-#### Centralize as configurações de repositório
+#### Centralize as configurações de repositório {:#centralize-repository-settings}
 
 A partir do Gradle 7, Android recomenda usar declarações de repositório
 centralizadas em `settings.gradle` em vez de declarações de nível de projeto
@@ -244,7 +244,7 @@ dependencyResolutionManagement {
 </Tab>
 </Tabs>
 
-## Adicione o módulo Flutter como uma dependência
+## Adicione o módulo Flutter como uma dependência {:#add-the-flutter-module-as-a-dependency}
 
 Adicione o módulo Flutter como uma dependência do seu
 app existente no Gradle. Você pode conseguir isso de duas maneiras.
@@ -264,7 +264,7 @@ app existente no Gradle. Você pode conseguir isso de duas maneiras.
 <Tabs key="android-archive">
 <Tab name="Android Archive">
 
-### Dependa do Android Archive (AAR) {:.no_toc}
+### Dependa do Android Archive (AAR) {:.no_toc #depend-on-the-android-archive-aar}
 
 Esta opção empacota sua biblioteca Flutter como um repositório
 Maven local genérico composto de artefatos AARs e POMs.
@@ -419,7 +419,7 @@ o menu `Build > Flutter > Build AAR`.
 </Tab>
 <Tab name="Module source code">
 
-### Dependa do código-fonte do módulo {:.no_toc}
+### Dependa do código-fonte do módulo {:.no_toc #depend-on-the-modules-source-code}
 
 Esta opção permite uma construção de uma etapa para ambos
 o seu projeto Android e projeto Flutter. Esta opção é
@@ -435,7 +435,7 @@ Para alterar o nome deste projeto, defina
 Inclua este projeto no arquivo `settings.gradle` do app host.
 :::
 
-#### Atualizando `settings.gradle`
+#### Atualizando `settings.gradle` {:#updating-settings-gradle}
 
 Inclua o módulo Flutter como um subprojeto no
 `settings.gradle` do app host. Este exemplo assume que `flutter_module` e `MyApp`
@@ -475,7 +475,7 @@ Flutter `include` a si mesmo (como `:flutter`) e quaisquer
 plugins Flutter usados pelo módulo (como `:package_info` e `:video_player`)
 no contexto de avaliação do seu `settings.gradle`.
 
-#### Atualizando `app/build.gradle`
+#### Atualizando `app/build.gradle` {:#updating-appbuild-gradle}
 
 Introduza uma dependência de `implementation` no módulo
 Flutter do seu app:

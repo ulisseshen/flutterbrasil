@@ -8,13 +8,13 @@ description: Aprenda como usar a view de logging do DevTools.
 A view de logging funciona com todas as aplicações Flutter e Dart.
 :::
 
-## O que é isso?
+## O que é isso? {:#what-is-it}
 
 A view de logging exibe eventos do runtime Dart,
 frameworks de aplicação (como Flutter) e eventos
 de logging em nível de aplicação.
 
-## Eventos de logging padrão
+## Eventos de logging padrão {:#standard-logging-events}
 
 Por padrão, a view de logging mostra:
 
@@ -25,13 +25,13 @@ Por padrão, a view de logging mostra:
 
 ![Screenshot of a logging view](/assets/images/docs/tools/devtools/logging_log_entries.png){:width="100%"}
 
-## Logging da sua aplicação
+## Logging da sua aplicação {:#logging-from-your-application}
 
 Para implementar logging no seu código,
 veja a seção [Logging][Logging] na
 página [Debugging Flutter apps programmatically][Debugging Flutter apps programmatically].
 
-## Limpando logs
+## Limpando logs {:#clearing-logs}
 
 Para limpar as entradas de log na view de logging,
 clique no botão **Clear logs**.
@@ -39,7 +39,7 @@ clique no botão **Clear logs**.
 [Logging]: /testing/code-debugging#add-logging-to-your-application
 [Debugging Flutter apps programmatically]: /testing/code-debugging
 
-## Outros recursos
+## Outros recursos {:#other-resources}
 
 Para aprender sobre diferentes métodos de logging
 e como usar efetivamente DevTools para

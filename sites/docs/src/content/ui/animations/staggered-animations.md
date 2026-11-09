@@ -51,7 +51,7 @@ Esta página assume que você sabe como criar um layout usando os
 widgets do Flutter. Para saber mais, visite [Building Layouts in Flutter][].
 :::
 
-## Estrutura básica de uma animação escalonada
+## Estrutura básica de uma animação escalonada {:#basic-structure-of-a-staggered-animation}
 
 :::secondary Qual é o ponto?
 * Todas as animações são conduzidas pelo mesmo
@@ -129,7 +129,7 @@ borderRadius =
     ),
 ```
 
-### Animação escalonada completa
+### Animação escalonada completa {:#complete-staggered-animation}
 
 Como todos os widgets interativos, a animação completa consiste
 em um par de widgets: um stateless e um stateful.
@@ -144,7 +144,7 @@ A animação começa quando um toque é detectado em qualquer lugar da tela.
 
 **App source:** [staggered animation example][]
 
-### Widget stateless: StaggerAnimation
+### Widget stateless: StaggerAnimation {:#stateless-widget-staggeranimation}
 
 No widget stateless, `StaggerAnimation`,
 a função `build()` instancia um
@@ -266,7 +266,7 @@ class StaggerAnimation extends StatelessWidget {
 }
 ```
 
-### Widget stateful: StaggerDemo
+### Widget stateful: StaggerDemo {:#stateful-widget-staggerdemo}
 
 O widget stateful, `StaggerDemo`, cria o `AnimationController`,
 especificando uma duração de 2000 ms. Ele executa a animação

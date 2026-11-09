@@ -13,7 +13,7 @@ tipos de animação. Muitos widgets, especialmente [Material widgets][],
 vêm com os efeitos de movimento padrão definidos em sua especificação de design,
 mas também é possível personalizar esses efeitos.
 
-## Escolhendo uma abordagem
+## Escolhendo uma abordagem {:#choosing-an-approach}
 
 Existem diferentes abordagens que você pode adotar ao criar
 animações no Flutter. Qual abordagem é a certa para você?
@@ -33,7 +33,7 @@ usar ao implementar uma animação Flutter:
 
 ![The animation decision tree](/assets/images/docs/ui/animations/animation-decision-tree.png)
 
-## Mergulho profundo em animações
+## Mergulho profundo em animações {:#animation-deep-dive}
 
 Para uma compreensão mais profunda de como as animações funcionam no Flutter, assista
 [Animation deep dive][].
@@ -41,9 +41,9 @@ Para uma compreensão mais profunda de como as animações funcionam no Flutter,
 
 <YouTubeEmbed id="PbcILiN8rbo" title="Take a deep dive into Flutter animation"></YouTubeEmbed>
 
-## Animações implícitas e explícitas
+## Animações implícitas e explícitas {:#implicit-and-explicit-animations}
 
-### Animações implícitas pré-empacotadas
+### Animações implícitas pré-empacotadas {:#pre-packaged-implicit-animations}
 
 Se uma animação implícita pré-empacotada (a animação mais fácil
 de implementar) atende às suas necessidades, assista
@@ -52,7 +52,7 @@ de implementar) atende às suas necessidades, assista
 
 <YouTubeEmbed id="IVTjpW3W33s" title="Flutter implicit animation basics"></YouTubeEmbed>
 
-### Animações implícitas personalizadas
+### Animações implícitas personalizadas {:#custom-implicit-animations}
 
 Para criar uma animação implícita personalizada, assista
 [Creating your own custom implicit animations with TweenAnimationBuilder][].
@@ -60,7 +60,7 @@ Para criar uma animação implícita personalizada, assista
 
 <YouTubeEmbed id="6KiPEqzJIKQ" title="Create custom implicit animations with TweenAnimationBuilder"></YouTubeEmbed>
 
-### Animações explícitas integradas
+### Animações explícitas integradas {:#built-in-explicit-animations}
 
 Para criar uma animação explícita (onde você controla a animação,
 em vez de deixar o framework controlá-la), considere
@@ -72,7 +72,7 @@ built-in explicit animations][].
 
 <YouTubeEmbed id="CunyH6unILQ" title="Making your first directional animations with built-in explicit animations"></YouTubeEmbed>
 
-### Animações explícitas
+### Animações explícitas {:#explicit-animations}
 
 Se você precisar construir uma animação explícita do zero, assista
 [Creating custom explicit animations with
@@ -81,7 +81,7 @@ AnimatedBuilder and AnimatedWidget][].
 
 <YouTubeEmbed id="fneC7t4R_B0" title="Creating custom explicit animations with AnimatedBuilder and AnimatedWidget"></YouTubeEmbed>
 
-## Tipos de animação
+## Tipos de animação {:#animation-types}
 
 Geralmente, as animações são baseadas em tween ou física.
 As seções a seguir explicam o que esses termos significam
@@ -100,7 +100,7 @@ para o ponto final.
 * Consulte a documentação da API para [`Tween`][], [`CurveTween`][] e
   [`TweenSequence`][].
 
-### Animação baseada em física
+### Animação baseada em física {:#physics-based-animation}
 
 Na animação baseada em física, o movimento é modelado para se assemelhar ao comportamento
 do mundo real. Quando você lança uma bola, por exemplo, onde e quando ela pousa
@@ -115,14 +115,14 @@ Da mesma forma, deixar cair uma bola presa a uma mola cai
   [`AnimationController.animateWith`][] e
   [`SpringSimulation`][].
 
-## Padrões comuns de animação
+## Padrões comuns de animação {:#common-animation-patterns}
 
 A maioria dos designers de UX ou motion designers descobrem que certos
 padrões de animação são usados repetidamente ao projetar uma UI.
 Esta seção lista alguns dos padrões de animação
 comumente usados e indica onde aprender mais.
 
-### Lista ou grid animada
+### Lista ou grid animada {:#animated-list-or-grid}
 
 Este padrão envolve animar a adição ou remoção de
 elementos de uma lista ou grid.
@@ -133,7 +133,7 @@ elementos de uma lista ou grid.
   A lista Dart interna é sincronizada conforme o usuário modifica a lista usando
   os botões de mais (+) e menos (-).
 
-### Transição de elemento compartilhado
+### Transição de elemento compartilhado {:#shared-element-transition}
 
 Neste padrão, o usuário seleciona um elemento&mdash;geralmente uma
 imagem&mdash;da página, e a UI anima o elemento selecionado
@@ -151,7 +151,7 @@ usando o widget `Hero`.
 * Consulte a documentação da API para as
   classes [`Hero`][], [`Navigator`][] e [`PageRoute`][].
 
-### Animação escalonada
+### Animação escalonada {:#staggered-animation}
 
 Animações que são divididas em movimentos menores,
 onde alguns dos movimentos são atrasados.
@@ -162,7 +162,7 @@ ou podem se sobrepor parcial ou completamente.
 
 <a id="concepts"></a>
 
-## Conceitos e classes essenciais de animação
+## Conceitos e classes essenciais de animação {:#essential-animation-concepts-and-classes}
 
 O sistema de animação no Flutter é baseado em
 objetos [`Animation`][] tipados. Os widgets podem incorporar
@@ -355,7 +355,7 @@ final Animation<double> curve = CurvedAnimation(
 final Animation<int> alpha = IntTween(begin: 0, end: 255).animate(curve);
 ```
 
-### Notificações de animação
+### Notificações de animação {:#animation-notifications}
 
 Um objeto [`Animation`][] pode ter listeners e status listeners,
 registrados com `addListener()` e `addStatusListener()`.
@@ -365,7 +365,7 @@ chamar `setState()` para causar uma reconstrução.
 Um status listener é chamado quando uma animação começa, termina,
 avança ou retrocede, conforme definido por `AnimationStatus`.
 
-## Codelabs, tutoriais e artigos
+## Codelabs, tutoriais e artigos {:#codelabs-tutorials-and-articles}
 
 Os seguintes recursos são um bom ponto de partida para aprender
 o framework de animação do Flutter. Cada um desses documentos
@@ -389,7 +389,7 @@ mostra como escrever código de animação.
   Um toolkit com templates de jogos que contêm exemplos de como usar animações
   Flutter.
 
-## Outros recursos
+## Outros recursos {:#other-resources}
 
 Aprenda mais sobre animações Flutter nos seguintes links:
 

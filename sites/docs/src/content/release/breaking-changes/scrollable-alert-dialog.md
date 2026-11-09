@@ -6,7 +6,7 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 :::note
 `AlertDialog.scrollable` não está mais obsoleto porque não há
@@ -17,7 +17,7 @@ como true se quiser um `AlertDialog` rolável.
 
 Um `AlertDialog` agora rola automaticamente quando transborda.
 
-## Contexto
+## Contexto {:#context}
 
 Antes desta mudança,
 quando o conteúdo de um widget `AlertDialog` era muito alto,
@@ -29,7 +29,7 @@ Isso resultou nos seguintes problemas:
   ações. Se o conteúdo transbordasse, obscurecendo os botões,
   os usuários poderiam não estar cientes de sua existência.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 A abordagem anterior listava os widgets de título e conteúdo
 consecutivamente em um widget `Column`.
@@ -94,7 +94,7 @@ Column(
 ),
 ```
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Você pode ver os seguintes problemas como resultado desta mudança:
 
@@ -171,12 +171,12 @@ AlertDialog(
 )
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Lançado na versão: 1.16.3<br>
 Na versão estável: 1.17
 
-## Referências
+## Referências {:#references}
 
 Documento de design:
 

@@ -6,9 +6,9 @@ skipTemplateRendering: true
 ia-translate: true
 ---
 
-##  Merged pull requests by label
+## Merged pull requests by label
 
-### PRs incluídos por label em `flutter/flutter`
+### PRs incluídos por label em `flutter/flutter` {:#merged-prs-by-labels-for-flutterflutter}
 
 #### tool - 435 pull request(s)
 
@@ -5603,7 +5603,7 @@ ia-translate: true
 
 [57037](https://github.com/flutter/flutter/pull/57037) Making DropdownButtonFormField to re-render if parent widget changes (cla: yes, f: material design, found in release: 1.17, found in release: 1.18, framework, severe: regression, waiting for tree to go green)
 
-### PRs incluídos por label em `flutter/engine`
+### PRs incluídos por label em `flutter/engine` {:#merged-prs-by-labels-for-flutterengine}
 
 #### platform-android - 62 pull request(s)
 
@@ -6107,7 +6107,7 @@ ia-translate: true
 
 
 
-### PRs incluídos por label em `flutter/plugins`
+### PRs incluídos por label em `flutter/plugins` {:#merged-prs-by-labels-for-flutterplugins}
 
 #### submit queue - 3 pull request(s)
 
@@ -6160,7 +6160,7 @@ ia-translate: true
 
 ## All merged pull requests
 
-### PRs incluídos em `flutter/flutter`
+### PRs incluídos em `flutter/flutter` {:#merged-prs-in-flutterflutter}
 
 Foram 1526 pull requests.
 
@@ -9216,7 +9216,7 @@ Foram 1526 pull requests.
 
 [53866](https://github.com/flutter/flutter/pull/53866) Roll engine 49d65b45cfee..f56e678e7fa9 (2 commits) (cla: yes, waiting for tree to go green)
 
-### PRs incluídos em `flutter/engine`
+### PRs incluídos em `flutter/engine` {:#merged-prs-in-flutterengine}
 
 Foram 1421 pull requests.
 
@@ -12062,7 +12062,7 @@ Foram 1421 pull requests.
 
 [17490](https://github.com/flutter/engine/pull/17490) Roll fuchsia/sdk/core/linux-amd64 from v61zg... to -jFTb... (cla: yes, waiting for tree to go green)
 
-### PRs incluídos em `flutter/plugins`
+### PRs incluídos em `flutter/plugins` {:#merged-prs-in-flutterplugins}
 
 Foram 214 pull requests.
 

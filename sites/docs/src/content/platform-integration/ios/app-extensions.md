@@ -506,7 +506,7 @@ class ShareViewController: UIViewController {
 [Share]: {{site.apple-dev}}/library/archive/documentation/General/Conceptual/ExtensibilityPG/Share.html
 [Test your app with the simulator]: #test-extensions
 
-### Registre plugins
+### Registre plugins {:#register-plugins}
 
 Use os passos a seguir para registrar plugins para
 uma extensão de app. Neste exemplo, o esquema da extensão de app
@@ -664,7 +664,7 @@ GeneratedPluginRegistrant.register(with: flutterEngine)
     É aconselhável modificar apenas a UI de uma extensão de app
     se a extensão de app suportar pelo menos 100MB de memória.
 
-## Chamar código Dart / renderizar conteúdo Flutter em extensões de app iOS
+## Chamar código Dart / renderizar conteúdo Flutter em extensões de app iOS {:#call-dart-code-render-flutter-content-in-ios-app-extensions}
 
 O pacote [home_widget][home_widget] fornece uma grande quantidade de funcionalidades,
 que inclui permitir o seguinte:

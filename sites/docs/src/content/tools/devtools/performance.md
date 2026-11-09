@@ -39,7 +39,7 @@ A view de performance também suporta importação e exportação de
 snapshots de dados. Para mais informações,
 confira a seção [Import and export][Import and export].
 
-## O que é um frame no Flutter?
+## O que é um frame no Flutter? {:#what-is-a-frame-in-flutter}
 
 Flutter é projetado para renderizar sua UI a 60 frames por segundo
 (fps), ou 120 fps em dispositivos capazes de atualizações de 120Hz.
@@ -49,7 +49,7 @@ para refletir animações ou outras mudanças na UI. Um frame
 que leva mais de 16ms para renderizar causa jank
 (movimento irregular) no dispositivo de exibição.
 
-## Gráfico de frames Flutter
+## Gráfico de frames Flutter {:#flutter-frames-chart}
 
 Este gráfico contém informações de frame Flutter para sua aplicação.
 Cada conjunto de barras no gráfico representa um único frame Flutter.
@@ -109,7 +109,7 @@ e clips ou sombras em situações específicas.
 Para mais informações sobre profiling, confira
 [Identifying problems in the GPU graph][GPU graph].
 
-### Jank (frame lento)
+### Jank (frame lento) {:#jank-slow-frame}
 
 O gráfico de renderização de frames mostra jank com uma sobreposição vermelha.
 Um frame é considerado janky se leva mais de
@@ -121,7 +121,7 @@ experimentar jank da UI ou frames perdidos.
 Para mais informações sobre como analisar o desempenho do seu app,
 confira [Flutter performance profiling][Flutter performance profiling].
 
-### Compilação de shader
+### Compilação de shader {:#shader-compilation}
 
 Compilação de shader ocorre quando um shader é usado pela primeira vez no seu app
 Flutter. Frames que realizam compilação de shader são marcados em vermelho
@@ -161,7 +161,7 @@ abas de eventos de timeline. Para atualizar a timeline com novos eventos da
 sua aplicação, clique no botão de atualização
 (também no canto superior direito dos controles da aba).
 
-## Ferramentas avançadas de debugging
+## Ferramentas avançadas de debugging {:#advanced-debugging-tools}
 
 ### Enhance tracing
 
@@ -206,7 +206,7 @@ habilite a opção **Track Paints**:
 
 [Assista este vídeo para um exemplo de rastreamento de pinturas][track-paints]
 
-## Mais opções de debugging
+## Mais opções de debugging {:#more-debugging-options}
 
 Para diagnosticar problemas de desempenho relacionados a layers de renderização,
 desative uma layer de renderização.
@@ -251,7 +251,7 @@ página de performance. Para importar um snapshot de performance, você pode arr
 snapshot no DevTools de qualquer página. **Note que DevTools apenas
 suporta importar arquivos que foram originalmente exportados do DevTools.**
 
-## Outros recursos
+## Outros recursos {:#other-resources}
 
 Para aprender como monitorar o desempenho de um app e
 detectar jank usando DevTools, confira um

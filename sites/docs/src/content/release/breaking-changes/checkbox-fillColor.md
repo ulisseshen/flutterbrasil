@@ -8,12 +8,12 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 O `Checkbox.fillColor` é agora aplicado ao background do checkbox quando
 o checkbox não está selecionado.
 
-## Contexto
+## Contexto {:#context}
 
 Anteriormente, o `Checkbox.fillColor` era aplicado à borda do checkbox
 quando o checkbox não estava selecionado e seu background era transparente.
@@ -21,12 +21,12 @@ Com esta mudança, o `Checkbox.fillColor` é aplicado ao background
 do checkbox e a borda usa a cor `Checkbox.side` quando o checkbox
 não está selecionado.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 O `Checkbox.fillColor` é agora aplicado ao background do checkbox quando
 o checkbox não está selecionado em vez de ser usado como a cor da borda.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 O comportamento atualizado do `Checkbox.fillColor` aplica a cor de preenchimento ao
 background do checkbox no estado não selecionado. Para obter o comportamento anterior,
@@ -107,12 +107,12 @@ checkboxTheme: CheckboxThemeData(
 ),
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Lançado na versão: 3.10.0-17.0.pre<br>
 Na versão estável: 3.13.0
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

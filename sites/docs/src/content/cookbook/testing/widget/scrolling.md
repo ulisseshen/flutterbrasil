@@ -26,7 +26,7 @@ Esta receita usa os seguintes passos:
 2. Escreva um teste que rola pela lista.
 3. Execute o teste.
 
-## 1. Crie um app com uma lista de itens
+## 1. Crie um app com uma lista de itens {:#1-create-an-app-with-a-list-of-items}
 
 Esta receita constrói um app que mostra uma longa lista de itens.
 Para manter esta receita focada em testes, use o app criado na
@@ -82,7 +82,7 @@ class MyApp extends StatelessWidget {
 ```
 
 
-## 2. Escreva um teste que rola pela lista
+## 2. Escreva um teste que rola pela lista {:#2-write-a-test-that-scrolls-through-the-list}
 
 Agora, você pode escrever um teste. Neste exemplo, role pela lista de itens e
 verifique que um item específico existe na lista. A classe [`WidgetTester`][`WidgetTester`]
@@ -132,7 +132,7 @@ void main() {
 }
 ```
 
-## 3. Execute o teste
+## 3. Execute o teste {:#3-run-the-test}
 
 Execute o teste usando o seguinte comando a partir da raiz do projeto:
 

@@ -4,7 +4,7 @@ title: Adaptações automáticas de plataforma
 description: Saiba mais sobre a adaptabilidade de plataforma do Flutter.
 ---
 
-## Filosofia de adaptação
+## Filosofia de adaptação {:#adaptation-philosophy}
 
 Em geral, existem dois casos de adaptabilidade de plataforma:
 
@@ -39,13 +39,13 @@ Você pode solicitar guias adicionais comentando na [issue #8427][8427].
 [Material/Cupertino adaptive widget problem definition]: https://bit.ly/flutter-adaptive-widget-problem
 [platform_design code samples]: {{site.repo.samples}}/tree/main/platform_design
 
-## Navegação de página
+## Navegação de página {:#page-navigation}
 
 Flutter fornece os padrões de navegação vistos no Android
 e iOS e também adapta automaticamente a animação de navegação
 à plataforma atual.
 
-### Transições de navegação
+### Transições de navegação {:#navigation-transitions}
 
 No **Android**, a transição padrão do [`Navigator.push()`][`Navigator.push()`]
 é modelada após [`startActivity()`][`startActivity()`],
@@ -73,7 +73,7 @@ No **iOS**:
 [`startActivity()`]: {{site.android-dev}}/reference/kotlin/android/app/Activity#startactivity
 [`PageRoute.fullscreenDialog`]: {{site.api}}/flutter/widgets/PageRoute-class.html
 
-### Detalhes de transição específicos da plataforma
+### Detalhes de transição específicos da plataforma {:#platform-specific-transition-details}
 
 No **Android**, Flutter usa a animação [`ZoomPageTransitionsBuilder`][`ZoomPageTransitionsBuilder`].
 Quando o usuário toca em um item, a UI amplia para uma tela que apresenta esse item.
@@ -94,7 +94,7 @@ correspondente na próxima página ou página anterior
 [`CupertinoNavigationBar`]: {{site.cupertino_ui}}/CupertinoNavigationBar-class.html
 [`CupertinoSliverNavigationBar`]: {{site.cupertino_ui}}/CupertinoSliverNavigationBar-class.html
 
-### Navegação de volta
+### Navegação de volta {:#back-navigation}
 
 No **Android**,
 o botão de voltar do SO, por padrão, é enviado ao Flutter
@@ -110,13 +110,13 @@ um gesto de deslizar da borda pode ser usado para remover a rota superior.
 
 [`WidgetsApp`]: {{site.api}}/flutter/widgets/WidgetsApp-class.html
 
-## Rolagem
+## Rolagem {:#scrolling}
 
 A rolagem é uma parte importante da aparência e sensação da
 plataforma, e o Flutter ajusta automaticamente
 o comportamento de rolagem para corresponder à plataforma atual.
 
-### Simulação de física
+### Simulação de física {:#physics-simulation}
 
 Android e iOS ambos têm simulações de física de rolagem
 complexas que são difíceis de descrever verbalmente.
@@ -131,7 +131,7 @@ menos abruptamente e é mais escorregadio em velocidades baixas.
   <DashImage figure image="platform-adaptations/scroll-strong.webp" caption="Strong fling comparison" alt="A strong fling where the Android scrollable reaches speed faster and covered significantly more distance" />
 </div>
 
-### Comportamento de overscroll
+### Comportamento de overscroll {:#overscroll-behavior}
 
 No **Android**,
 rolar além da borda de um rolável mostra um
@@ -173,7 +173,7 @@ Não há comportamento equivalente no Android.
   <DashImage figure image="platform-adaptations/scroll-momentum-ios.webp" caption="iOS scroll momentum" alt="Repeated scroll flings building momentum on iOS" />
 </div>
 
-### Retornar ao topo
+### Retornar ao topo {:#return-to-top}
 
 No **iOS**,
 tocar na barra de status do SO rola o controlador
@@ -184,7 +184,7 @@ Não há comportamento equivalente no Android.
   <DashImage figure image="platform-adaptations/scroll-tap-to-top-ios.webp" img-style="border-radius: 22px;" caption="iOS status bar tap to top" alt="Tapping the status bar scrolls the primary scrollable back to the top" />
 </div>
 
-## Tipografia
+## Tipografia {:#typography}
 
 Ao usar o pacote Material,
 a tipografia automaticamente assume como padrão a
@@ -213,7 +213,7 @@ Você pode ver exemplos específicos de widget na
 
 [default theme]: {{site.repo.flutter}}/blob/main/packages/flutter/lib/src/cupertino/text_theme.dart
 
-## Iconografia
+## Iconografia {:#iconography}
 
 Ao usar o pacote Material,
 certos ícones mostram automaticamente diferentes
@@ -233,7 +233,7 @@ A biblioteca material também fornece um conjunto de
 
 [`Icons.adaptive`]: {{site.material_ui}}/PlatformAdaptiveIcons-class.html
 
-## Feedback háptico
+## Feedback háptico {:#haptic-feedback}
 
 Os pacotes Material e Cupertino automaticamente
 acionam o feedback háptico apropriado da plataforma em
@@ -246,7 +246,7 @@ no Android e não no iOS.
 Rolar através de itens de picker no iOS aciona um
 batida de 'impacto leve' e sem feedback no Android.
 
-## Edição de texto
+## Edição de texto {:#text-editing}
 
 Ambos os campos de entrada de texto Material e Cupertino
 suportam verificação ortográfica e se adaptam para usar a
@@ -256,7 +256,7 @@ e o menu e cores de destaque de verificação ortográfica apropriados.
 Flutter também faz as adaptações abaixo ao editar
 o conteúdo de campos de texto para corresponder à plataforma atual.
 
-### Navegação por gestos de teclado
+### Navegação por gestos de teclado {:#keyboard-gesture-navigation}
 
 No **Android**,
 deslizamentos horizontais podem ser feitos na tecla <kbd>espaço</kbd> do teclado virtual
@@ -272,7 +272,7 @@ Isso funciona tanto em campos de texto Material quanto Cupertino.
   <DashImage figure image="platform-adaptations/text-keyboard-move-ios.webp" caption="iOS 3D Touch drag cursor move" alt="Moving the cursor via 3D Touch drag on the keyboard on iOS" />
 </div>
 
-### Barra de ferramentas de seleção de texto
+### Barra de ferramentas de seleção de texto {:#text-selection-toolbar}
 
 Com **Material no Android**,
 a barra de ferramentas de seleção no estilo Android é mostrada quando
@@ -287,7 +287,7 @@ seleção de texto é feita em um campo de texto.
   <DashImage figure image="platform-adaptations/text-toolbar-ios.png" caption="iOS text selection toolbar" alt="iOS appropriate text toolbar" />
 </div>
 
-### Gesto de toque único
+### Gesto de toque único {:#single-tap-gesture}
 
 Com **Material no Android**,
 um único toque em um campo de texto coloca o cursor no
@@ -307,7 +307,7 @@ Seleções de texto colapsadas não têm alças arrastáveis no iOS.
   <DashImage figure image="platform-adaptations/text-single-tap-ios.webp" caption="iOS tap" alt="Moving the cursor to the nearest edge of the tapped word on iOS" />
 </div>
 
-### Gesto de long-press
+### Gesto de long-press {:#long-press-gesture}
 
 Com **Material no Android**,
 um long press seleciona a palavra sob o long press.
@@ -322,7 +322,7 @@ long press. A barra de ferramentas de seleção é mostrada ao soltar.
   <DashImage figure image="platform-adaptations/text-long-press-ios.webp" caption="iOS long press" alt="Selecting a position with long press on iOS" />
 </div>
 
-### Gesto de arrastar long-press
+### Gesto de arrastar long-press {:#long-press-drag-gesture}
 
 Com **Material no Android**,
 arrastar enquanto segura o long press expande as palavras selecionadas.
@@ -335,7 +335,7 @@ arrastar enquanto segura o long press move o cursor.
   <DashImage figure image="platform-adaptations/text-long-press-drag-ios.webp" caption="iOS long-press drag" alt="Moving the cursor with a long-press drag on iOS" />
 </div>
 
-### Gesto de toque duplo
+### Gesto de toque duplo {:#double-tap-gesture}
 
 Tanto no Android quanto no iOS,
 um toque duplo seleciona a palavra que recebe o
@@ -354,7 +354,7 @@ Seu feedback é bem-vindo na [issue #8427][8427].
 
 [8427]: {{site.repo.this}}/issues/8427
 
-### Widgets com construtores .adaptive()
+### Widgets com construtores .adaptive() {:#widgets-with-adaptive-constructors}
 
 Vários widgets suportam construtores `.adaptive()`.
 A tabela a seguir lista esses widgets.

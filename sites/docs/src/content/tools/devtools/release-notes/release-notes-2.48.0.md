@@ -12,17 +12,17 @@ inclui as seguintes mudanças, entre outras melhorias gerais.
 Para saber mais sobre o DevTools, confira a
 [visão geral do DevTools](/tools/devtools/overview).
 
-## Atualizações do Network profiler
+## Atualizações do Network profiler {:#network-profiler-updates}
 
 * Corrigido o log de rede após um hot restart. -
   [#9271](https://github.com/flutter/devtools/pull/9271).
 
-## Atualizações de Logging
+## Atualizações de Logging {:#logging-updates}
 
 * Iniciada a exibição de eventos relacionados a timers na visualização de Logging. -
   [#9238](https://github.com/flutter/devtools/pull/9238).
 
-## Atualizações do modo de desenvolvedor avançado
+## Atualizações do modo de desenvolvedor avançado {:#advanced-developer-mode-updates}
 
 * Adicionada uma aba Queued Microtasks à tela VM Tools, que permite ao usuário
   ver detalhes sobre as microtasks agendadas na fila de microtasks de um isolate.
@@ -30,7 +30,7 @@ Para saber mais sobre o DevTools, confira a
   Dart iniciado com `--profile-microtasks`. -
   [#9239](https://github.com/flutter/devtools/pull/9239).
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de mudanças neste lançamento, confira o
 [log do git do DevTools](https://github.com/flutter/devtools/tree/v2.48.0).

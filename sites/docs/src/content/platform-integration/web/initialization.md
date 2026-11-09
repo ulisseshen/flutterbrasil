@@ -47,7 +47,7 @@ diretório de saída (`build/web`) durante a etapa de build.
 
 <a id="customizing-initialization" aria-hidden="true"></a>
 
-## Personalizar a inicialização
+## Personalizar a inicialização {:#customize-initialization}
 
 Por padrão, `flutter build web` gera um arquivo `flutter_bootstrap.js` que
 faz uma inicialização simples do seu app Flutter.
@@ -116,7 +116,7 @@ em vez de fixar `"main.dart.js"` no código ou chamar a API descontinuada
 
 [web-content-hashing]: /deployment/web#web-content-hashing
 
-## Personalizar o Flutter loader
+## Personalizar o Flutter loader {:#customize-the-flutter-loader}
 
 A API JavaScript `_flutter.loader.load()` pode ser invocada com
 argumentos opcionais para personalizar o comportamento de inicialização:
@@ -168,7 +168,7 @@ a executar em **modo de thread única**. Isso é útil se:
 * Use `false` (padrão) para permitir renderização multi-thread quando
   suportada, o que melhora o desempenho.
 
-## Exemplo de uso
+## Exemplo de uso {:#example-usage}
 
 ```js
 _flutter.loader.load({
@@ -183,7 +183,7 @@ _flutter.loader.load({
 });
 ```
 
-## Exemplo: Personalizando a configuração Flutter com base em parâmetros de query da URL
+## Exemplo: Personalizando a configuração Flutter com base em parâmetros de query da URL {:#example-customizing-flutter-configuration-based-on-url-query-parameters}
 
 O exemplo a seguir mostra um `flutter_bootstrap.js` personalizado que habilita
 o modo de thread única quando um parâmetro de query `force_st` está presente na URL:
@@ -203,7 +203,7 @@ _flutter.loader.load({
 Este script avalia os `URLSearchParams` da página para determinar se
 o usuário passou um parâmetro de query `force_st` e configura o app de acordo.
 
-## O callback onEntrypointLoaded
+## O callback onEntrypointLoaded {:#the-onentrypointloaded-callback}
 
 Você também pode passar um callback `onEntrypointLoaded` para a API `load` para
 executar lógica personalizada em diferentes partes do processo de inicialização.
@@ -323,7 +323,7 @@ Se o seu app requer um service worker personalizado, consulte o
 [FAQ da Web](/platform-integration/web/faq#how-do-i-configure-a-service-worker)
 e [Hash de conteúdo web (`precache_manifest.json`)][web-content-hashing].
 
-### Descontinuação de FlutterLoader.loadEntrypoint
+### Descontinuação de FlutterLoader.loadEntrypoint {:#flutterloader-loadentrypoint-deprecation}
 
 Se você encontrar um aviso semelhante ao seguinte:
 

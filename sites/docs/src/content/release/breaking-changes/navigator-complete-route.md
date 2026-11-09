@@ -8,18 +8,18 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Quando rotas são pushed, desenvolvedores podem aguardá-las para serem notificados quando forem
 popped. No entanto, isso não funcionava quando eram removidas porque o future
 associado nunca era completado.
 
-## Contexto
+## Contexto {:#context}
 
 Todos os métodos Navigator que chamam `remove` tinham esse problema. Ao usar `complete`,
 o problema é devidamente resolvido, permitindo que desenvolvedores passem um resultado.
 
-## Descrição da alteração
+## Descrição da alteração {:#description-of-change}
 
 Todos os métodos Navigator foram atualizados para não mais chamar `remove`, mas em vez disso
 usar `complete`. Menus de contexto agora são construídos a partir do parâmetro
@@ -45,7 +45,7 @@ Navigator.of(context).removeRoute(route, result);
 Navigator.of(context).removeRouteBelow(route, result);
 ```
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Se você implementou `RouteTransitionRecord` e usou `markForRemove`,
 você precisa usar `markForComplete` no lugar. `markForRemove` agora está descontinuado.
@@ -53,22 +53,22 @@ você precisa usar `markForComplete` no lugar. `markForRemove` agora está desco
 Para outros desenvolvedores, nenhuma alteração é necessária. O navigator continua a funcionar
 como esperado com novas capacidades.
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Disponibilizado na versão: 3.31.0-0.0.pre<br>
 Na versão estável: 3.32
 
-## Referências
+## Referências {:#references}
 
-### Documentação da API:
+### Documentação da API: {:#api-documentation}
 
 * [`RouteTransitionRecord`]({{site.api}}/flutter/widgets/RouteTransitionRecord-class.html)
 * [`Navigator`]({{site.api}}/flutter/widgets/Navigator-class.html)
 
-### Issues relevantes:
+### Issues relevantes: {:#relevant-issues}
 
 * [removeRoute unresolved future]({{site.repo.flutter}}/issues/157505)
 
-### PRs relevantes:
+### PRs relevantes: {:#relevant-prs}
 
 * [feat: removeRoute now calls didComplete]({{site.repo.flutter}}/pull/157725)

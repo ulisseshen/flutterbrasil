@@ -45,7 +45,7 @@ Em vez disso, use os recursos assíncronos
 que a linguagem Dart fornece,
 como `async`/`await`.
 
-## Programação Assíncrona
+## Programação Assíncrona {:#asynchronous-programming}
 
 Uma operação assíncrona permite que outras operações
 sejam executadas antes de ser concluída.
@@ -59,7 +59,7 @@ suspender a função, se necessário.
 Para mais detalhes sobre programação assíncrona, confira
 [Concorrência no Dart]({{site.dart-site}}/guides/language/concurrency).
 
-### Aproveitando a thread/isolate principal
+### Aproveitando a thread/isolate principal {:#leveraging-the-main-threadisolate}
 
 Para sistemas operacionais Apple, a thread primária (também chamada de principal)
 é onde o aplicativo começa a ser executado.
@@ -235,7 +235,7 @@ Para o exemplo completo, confira o arquivo
 
 [async_weather]: {{site.repo.this}}/blob/main/examples/resources/dart_swift_concurrency/lib/async_weather.dart
 
-### Aproveitando uma thread/isolate em background
+### Aproveitando uma thread/isolate em background {:#leveraging-a-background-threadisolate}
 
 Aplicativos Flutter podem ser executados em uma variedade de hardware multi-core,
 incluindo dispositivos executando macOS e iOS.

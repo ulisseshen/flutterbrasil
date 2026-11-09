@@ -16,14 +16,14 @@ Esta foi uma versão cherry-pick em cima do DevTools 2.28.3.
 Para saber sobre as melhorias incluídas no DevTools 2.28.3, por favor leia as
 [notas de versão](/tools/devtools/release-notes/release-notes-2.28.3).
 
-## Atualizações do Inspector
+## Atualizações do Inspector {:#inspector-updates}
 
 * Adicionado link para documentação do diretório de pacotes, do diálogo de configurações de inspeção - [#6825](https://github.com/flutter/devtools/pull/6825)
 
 * Corrigido um bug onde widgets de propriedade do framework Flutter estavam aparecendo na visualização da árvore de widgets -
   [#6857](https://github.com/flutter/devtools/pull/6857)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de alterações nesta versão, confira o
 [log git do DevTools](https://github.com/flutter/devtools/tree/v2.28.4).

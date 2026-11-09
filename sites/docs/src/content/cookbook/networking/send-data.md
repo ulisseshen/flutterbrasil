@@ -17,7 +17,7 @@ Esta receita usa as seguintes etapas:
   4. Obter um `title` da entrada do usuário.
   5. Exibir a resposta na tela.
 
-## 1. Adicionar o pacote `http`
+## 1. Adicionar o pacote `http` {:#1-add-the-http-package}
 
 Para adicionar o pacote `http` como uma dependência,
 execute `flutter pub add`:
@@ -36,7 +36,7 @@ import 'package:material_ui/material_ui.dart';
 
 {% render "docs/cookbook/networking/internet-permission.md" %}
 
-## 2. Enviar dados para o servidor
+## 2. Enviar dados para o servidor {:#2-sending-data-to-server}
 
 Esta receita cobre como criar um `Album`
 enviando um título de álbum para o
@@ -75,14 +75,14 @@ O método `http.post()` retorna uma `Future` que contém uma `Response`.
 * O método `createAlbum()` recebe um argumento `title`
   que é enviado para o servidor para criar um `Album`.
 
-## 3. Converter a `http.Response` para um objeto Dart customizado
+## 3. Converter a `http.Response` para um objeto Dart customizado {:#3-convert-the-http-response-to-a-custom-dart-object}
 
 Embora seja fácil fazer uma requisição de rede,
 trabalhar com uma `Future<http.Response>` bruta
 não é muito conveniente. Para facilitar sua vida,
 converta a `http.Response` em um objeto Dart.
 
-### Criar uma classe Album
+### Criar uma classe Album {:#create-an-album-class}
 
 Primeiro, crie uma classe `Album` que contém
 os dados da requisição de rede.
@@ -110,7 +110,7 @@ class Album {
 }
 ```
 
-### Converter a `http.Response` para um `Album`
+### Converter a `http.Response` para um `Album` {:#convert-the-http-response-to-an-album}
 
 Use as seguintes etapas para atualizar a função `createAlbum()`
 para retornar uma `Future<Album>`:
@@ -153,7 +153,7 @@ Future<Album> createAlbum(String title) async {
 Oba! Agora você tem uma função que envia o título para um
 servidor para criar um álbum.
 
-## 4. Obter um título da entrada do usuário
+## 4. Obter um título da entrada do usuário {:#4-get-a-title-from-user-input}
 
 Em seguida, crie um `TextField` para inserir um título e
 um `ElevatedButton` para enviar dados ao servidor.
@@ -189,7 +189,7 @@ que envia os dados no `TextField` para o servidor
 como uma requisição `POST`.
 A Future, `_futureAlbum`, é usada na próxima etapa.
 
-## 5. Exibir a resposta na tela
+## 5. Exibir a resposta na tela {:#5-display-the-response-on-screen}
 
 Para exibir os dados na tela, use o
 widget [`FutureBuilder`][].
@@ -226,7 +226,7 @@ FutureBuilder<Album>(
 )
 ```
 
-## Exemplo completo
+## Exemplo completo {:#complete-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dart

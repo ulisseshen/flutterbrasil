@@ -137,7 +137,7 @@ widgetBuilder: (itemContext) {
 Depois que `dispatchEvent` é chamado,
 o evento percorre as camadas centrais do GenUI.
 
-### Surface {:#surface}
+### Surface
 
 O widget `Surface` (em `lib/src/core/surface.dart`)
 envolve os widgets renderizados.
@@ -163,7 +163,7 @@ void _dispatchEvent(UiEvent event) {
 }
 ```
 
-### SurfaceController {:#surfacecontroller}
+### SurfaceController
 
 O `SurfaceController` (em `lib/src/core/surface_controller.dart`)
 é o hub central para o gerenciamento do estado da UI.

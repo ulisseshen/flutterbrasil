@@ -4,7 +4,7 @@ title: Execute DevTools do Android Studio
 description: Aprenda como iniciar e usar DevTools do Android Studio.
 ---
 
-## Instale o plugin Flutter
+## Instale o plugin Flutter {:#install-the-flutter-plugin}
 
 Adicione o plugin Flutter se você ainda não o tiver instalado.
 Isso pode ser feito usando a página normal de **Plugins** nas
@@ -18,7 +18,7 @@ Isso pode ser realizado abrindo um projeto Flutter,
 garantindo que você tenha um dispositivo conectado,
 e clicando nos botões da barra de ferramentas **Run** ou **Debug**.
 
-## Inicie DevTools da barra de ferramentas/menu
+## Inicie DevTools da barra de ferramentas/menu {:#launch-devtools-from-the-toolbarmenu}
 
 Uma vez que um app esteja em execução,
 você pode iniciar DevTools usando uma das seguintes técnicas:
@@ -31,7 +31,7 @@ você pode iniciar DevTools usando uma das seguintes técnicas:
 
 ![screenshot of Open DevTools button](/assets/images/docs/tools/devtools/android_studio_open_devtools.png){:width="100%"}
 
-## Inicie DevTools de uma ação
+## Inicie DevTools de uma ação {:#launch-devtools-from-an-action}
 
 Você também pode abrir DevTools de uma ação do IntelliJ.
 Abra o diálogo **Find Action...**

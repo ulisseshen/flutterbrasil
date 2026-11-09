@@ -11,7 +11,7 @@ Este guia descreve como configurar seu projeto para consumir
 plugins e como gerenciar suas dependências de biblioteca Gradle
 entre seu app Android existente e os plugins do seu módulo Flutter.
 
-## A. Cenário simples
+## A. Cenário simples {:#a-simple-scenario}
 
 Nos casos simples:
 
@@ -30,7 +30,7 @@ subprojeto Gradle ou AARs,
 as bibliotecas Android Gradle transitivas são automaticamente
 agrupadas conforme necessário no seu app externo existente.
 
-## B. Plugins que precisam de edições no projeto
+## B. Plugins que precisam de edições no projeto {:#b-plugins-needing-project-edits}
 
 Alguns plugins exigem que você faça algumas edições no
 lado Android do seu projeto.
@@ -67,7 +67,7 @@ AndroidManifest.xml, arquivos Gradle ou adicionar mais arquivos Java
 nessa biblioteca wrapper.
 :::
 
-## C. Mesclando bibliotecas
+## C. Mesclando bibliotecas {:#c-merging-libraries}
 
 O cenário que requer um pouco mais de atenção é se
 seu aplicativo Android existente já depende da

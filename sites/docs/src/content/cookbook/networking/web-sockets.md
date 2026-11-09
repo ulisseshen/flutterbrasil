@@ -20,7 +20,7 @@ Esta receita usa os seguintes passos:
   3. Enviar dados para o servidor.
   4. Fechar a conexão WebSocket.
 
-## 1. Conectar a um servidor WebSocket
+## 1. Conectar a um servidor WebSocket {:#1-connect-to-a-websocket-server}
 
 O pacote [`web_socket_channel`][`web_socket_channel`] fornece as
 ferramentas que você precisa para se conectar a um servidor WebSocket.
@@ -39,7 +39,7 @@ final WebSocketChannel channel = WebSocketChannel.connect(
 );
 ```
 
-## 2. Ouvir mensagens do servidor
+## 2. Ouvir mensagens do servidor {:#2-listen-for-messages-from-the-server}
 
 Agora que você estabeleceu uma conexão,
 ouça mensagens do servidor.
@@ -61,7 +61,7 @@ StreamBuilder(
 ),
 ```
 
-### Como isso funciona
+### Como isso funciona {:#how-this-works}
 
 O `WebSocketChannel` fornece um
 [`Stream`][`Stream`] de mensagens do servidor.
@@ -75,7 +75,7 @@ O widget [`StreamBuilder`][`StreamBuilder`] se conecta a um `Stream`
 e pede ao Flutter para reconstruir toda vez que
 recebe um evento usando a função `builder()` fornecida.
 
-## 3. Enviar dados para o servidor
+## 3. Enviar dados para o servidor {:#3-send-data-to-the-server}
 
 Para enviar dados para o servidor,
 adicione (`add()`) mensagens ao `sink` fornecido
@@ -86,7 +86,7 @@ pelo `WebSocketChannel`.
 channel.sink.add('Hello!');
 ```
 
-### Como isso funciona
+### Como isso funciona {:#how-this-works}
 
 O `WebSocketChannel` fornece um
 [`StreamSink`][`StreamSink`] para enviar mensagens para o servidor.
@@ -94,7 +94,7 @@ O `WebSocketChannel` fornece um
 A classe `StreamSink` fornece uma forma geral de adicionar eventos
 síncronos ou assíncronos a uma fonte de dados.
 
-## 4. Fechar a conexão WebSocket
+## 4. Fechar a conexão WebSocket {:#4-close-the-websocket-connection}
 
 Depois de terminar de usar o WebSocket, feche a conexão:
 
@@ -103,7 +103,7 @@ Depois de terminar de usar o WebSocket, feche a conexão:
 channel.sink.close();
 ```
 
-## Exemplo completo
+## Exemplo completo {:#complete-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dart

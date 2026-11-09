@@ -19,13 +19,13 @@ Aprenda como implementar deslizar para dispensar com os seguintes passos:
   2. Envolva cada item em um widget `Dismissible`.
   3. Forneça indicadores "deixados para trás".
 
-## 1. Crie uma lista de itens
+## 1. Crie uma lista de itens {:#1-create-a-list-of-items}
 
 Primeiro, crie uma lista de itens. Para instruções detalhadas
 sobre como criar uma lista,
 siga a receita [Working with long lists][Working with long lists].
 
-### Crie uma fonte de dados
+### Crie uma fonte de dados {:#create-a-data-source}
 
 Neste exemplo,
 você quer 20 itens de amostra para trabalhar.
@@ -36,7 +36,7 @@ Para manter simples, gere uma lista de strings.
 final items = List<String>.generate(20, (i) => 'Item ${i + 1}');
 ```
 
-### Converta a fonte de dados em uma lista
+### Converta a fonte de dados em uma lista {:#convert-the-data-source-into-a-list}
 
 Exiba cada item da lista na tela. Os usuários ainda não
 poderão deslizar esses itens para removê-los.
@@ -51,7 +51,7 @@ ListView.builder(
 )
 ```
 
-## 2. Envolva cada item em um widget Dismissible
+## 2. Envolva cada item em um widget Dismissible {:#2-wrap-each-item-in-a-dismissible-widget}
 
 Neste passo,
 dê aos usuários a habilidade de deslizar um item para fora da lista usando o
@@ -89,7 +89,7 @@ itemBuilder: (context, index) {
 },
 ```
 
-## 3. Forneça indicadores "deixados para trás"
+## 3. Forneça indicadores "deixados para trás" {:#3-provide-leave-behind-indicators}
 
 Como está,
 o app permite que os usuários deslizem itens para fora da lista, mas não
@@ -114,7 +114,7 @@ forneça um parâmetro `background` para o `Dismissible`.
   ),
 ```
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter Swipe to Dismiss hands-on example in DartPad" run="true"

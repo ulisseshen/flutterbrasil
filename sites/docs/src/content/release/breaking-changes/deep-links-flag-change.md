@@ -8,7 +8,7 @@ description: >-
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 **Esta breaking change afeta apenas apps móveis que
 usam um pacote de plugin de deep linking de terceiros.**
@@ -16,7 +16,7 @@ usam um pacote de plugin de deep linking de terceiros.**
 O valor padrão para a opção de deep linking do Flutter mudou de
 `false` para `true`, o que significa que o deep linking agora é opt-in por padrão.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Se você está usando a configuração padrão de deep linking do Flutter,
 esta não é uma breaking change para você.
@@ -51,12 +51,12 @@ Dentro do arquivo `info.plist` do seu app para iOS:
  <false/>
 ```
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Aterrissou na versão: 3.25.0-0.1.pre<br>
 Lançamento estável: 3.27
 
-## Referências
+## Referências {:#references}
 
 Documento de design:
 

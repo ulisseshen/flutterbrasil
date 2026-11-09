@@ -7,14 +7,14 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 A propriedade `OverlayPortal.targetsRootOverlay` foi descontinuada e
 substituída por `overlayLocation`.
 
 `Overlay.of` e `Overlay.maybeOf` agora respeitam `LookupBoundary`.
 
-## Contexto
+## Contexto {:#context}
 
 Um parâmetro `overlayLocation` foi adicionado ao
 construtor padrão de `OverlayPortal` para
@@ -25,13 +25,13 @@ não é mais útil.
 Para evitar que um `OverlayEntry` seja inserido através de limites de múltiplas views
 por engano, `Overlay.of` agora respeita `LookupBoundary`.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 O construtor `OverlayPortal.targetsRootOverlay` está descontinuado.
 
 `Overlay.of` e `Overlay.maybeOf` não farão a busca além de `LookupBoundary`.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Se você está usando `OverlayPortal.targetsRootOverlay`,
 use `OverlayPortal` com `overlayLocation` em vez disso.
@@ -84,12 +84,12 @@ Widget build(BuildContext context) {
 }
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Disponibilizado na versão: 3.38.0-0.1.pre<br>
 Na versão stable: 3.38
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

@@ -11,7 +11,7 @@ Para informações sobre lançamentos de correção de bugs subsequentes, consul
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/master/CHANGELOG.md
 
-## PRs incluídos por label em `flutter/flutter`
+## PRs incluídos por label em `flutter/flutter` {:#merged-prs-by-labels-for-flutterflutter}
 
 ### framework - 793 pull request(s)
 
@@ -9381,7 +9381,7 @@ Para informações sobre lançamentos de correção de bugs subsequentes, consul
 
 
 
-## PRs incluídos por label em `flutter/engine`
+## PRs incluídos por label em `flutter/engine` {:#merged-prs-by-labels-for-flutterengine}
 
 
 
@@ -20256,7 +20256,7 @@ Para informações sobre lançamentos de correção de bugs subsequentes, consul
 
 
 
-## PRs incluídos por label em `flutter/plugins`
+## PRs incluídos por label em `flutter/plugins` {:#merged-prs-by-labels-for-flutterplugins}
 
 
 
@@ -21162,7 +21162,7 @@ Para informações sobre lançamentos de correção de bugs subsequentes, consul
 
 ## All merged pull requests
 
-### PRs incluídos em `flutter/flutter` de 2020-09-11T02:17:00.000Z até 2021-01-26T18:58:00.000Z
+### PRs incluídos em `flutter/flutter` de 2020-09-11T02:17:00.000Z até 2021-01-26T18:58:00.000Z {:#merged-prs-in-flutterflutter-from-2020-09-11t02-17-00-000z-to-2021-01-26t18-58-00-000z}
 Foram 1974 pull requests.
 
 [48223](https://github.com/flutter/flutter/pull/48223) Add HeroMode widget (a: animation, cla: yes, f: cupertino, f: routes, framework, waiting for tree to go green)
@@ -25113,7 +25113,7 @@ Foram 1974 pull requests.
 
 [74694](https://github.com/flutter/flutter/pull/74694) Roll Engine from 6e391c5942b4 to f47ab4434dbe (1 revision) (cla: yes, waiting for tree to go green)
 
-### PRs incluídos em `flutter/engine` de 2020-09-11T02:17:00.000Z até 2021-01-26T18:58:00.000Z
+### PRs incluídos em `flutter/engine` de 2020-09-11T02:17:00.000Z até 2021-01-26T18:58:00.000Z {:#merged-prs-in-flutterengine-from-2020-09-11t02-17-00-000z-to-2021-01-26t18-58-00-000z}
 Foram 1864 pull requests.
 
 [17881](https://github.com/flutter/engine/pull/17881) Enabled metal on ios simulator (cla: yes, waiting for tree to go green)
@@ -28844,7 +28844,7 @@ Foram 1864 pull requests.
 
 [23959](https://github.com/flutter/engine/pull/23959) Roll Dart SDK from 38c2cddbe277 to 15dfe858c4a6 (1 revision) (cla: yes, waiting for tree to go green)
 
-### PRs incluídos em `flutter/plugins` de 2020-09-11T02:17:00.000Z até 2021-01-26T18:58:00.000Z
+### PRs incluídos em `flutter/plugins` de 2020-09-11T02:17:00.000Z até 2021-01-26T18:58:00.000Z {:#merged-prs-in-flutterplugins-from-2020-09-11t02-17-00-000z-to-2021-01-26t18-58-00-000z}
 Foram 253 pull requests.
 
 [1721](https://github.com/flutter/plugins/pull/1721) [google_maps_flutter] Adds support for holes in polygon overlays to the Google Maps plugin (cla: yes, waiting for tree to go green)

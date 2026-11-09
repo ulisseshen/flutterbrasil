@@ -8,7 +8,7 @@ description: >
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Se você recentemente atualizou o Android Studio para a versão
 Flamingo e executou ou compilou um app Android existente,
@@ -56,7 +56,7 @@ usando uma das seguintes abordagens.**
 
 [prior to 7.3]: https://docs.gradle.org/current/userguide/compatibility.html#java
 
-## Solução #1: Correção guiada usando Android Studio
+## Solução #1: Correção guiada usando Android Studio {:#solution-1-guided-fix-using-android-studio}
 
 Atualize a versão do Gradle no Android Studio Flamingo
 da seguinte forma:
@@ -72,7 +72,7 @@ da seguinte forma:
 
    ![Workflow to upgrade Gradle](/assets/images/docs/releaseguide/android-studio-flamingo-gradle-upgrade.png){:width="85%"}
 
-## Solução #2: Correção manual na linha de comando
+## Solução #2: Correção manual na linha de comando {:#solution-2-manual-fix-at-the-command-line}
 
 Faça o seguinte a partir do topo do seu projeto Flutter.
 
@@ -88,18 +88,18 @@ Faça o seguinte a partir do topo do seu projeto Flutter.
    $ ./gradlew wrapper --gradle-version=7.6.1
    ```
 
-## Você não atualizou o Android Studio e ainda tem um erro de Java
+## Você não atualizou o Android Studio e ainda tem um erro de Java {:#you-didnt-update-android-studio-and-still-have-a-java-error}
 O erro aparece similar a `Unsupported class file major version 65`.
 Esta é uma indicação de que sua versão do Java é mais recente do que a versão do
 Gradle que você está executando pode lidar. Existe um conjunto não óbvio de dependências
 envolvendo AGP, Java e Gradle.
 
-### Solução 1: Android Studio
+### Solução 1: Android Studio {:#solution-1-android-studio}
 A maneira mais fácil de resolver este problema é usar o assistente de atualização AGP do Android Studio.
 Para usar, selecione seu arquivo `build.gradle` de nível superior no Android Studio e então selecione
 Tools -> AGP Upgrade Assistant.
 
-### Solução 2: Linha de comando
+### Solução 2: Linha de comando {:#solution-2-command-line}
 Execute `flutter analyze --suggestions` para ver se suas versões de AGP, Java e Gradle são compatíveis.
 Se o Gradle precisar ser atualizado, você pode atualizá-lo com `./gradlew wrapper --gradle-version=SOMEGRADLEVERSION`
 onde SOMEGRADLEVERSION é a versão (você pode usar uma versão mais recente)
@@ -110,7 +110,7 @@ Em um Mac, você pode encontrar as versões do Java que o SO conhece com `/usr/l
 Para definir a versão do Java que todos os projetos Flutter usam, execute `flutter config --jdk-dir=SOMEJAVAPATH`
 onde SOMEJAVAPATH é um caminho para uma versão do Java como `/opt/homebrew/Cellar/openjdk@17/17.0.13/libexec/openjdk.jdk/Contents/Home`
 
-## Notas
+## Notas {:#notes}
 
 Algumas notas para estar ciente:
 

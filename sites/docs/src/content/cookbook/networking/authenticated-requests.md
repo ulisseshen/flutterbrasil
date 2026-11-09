@@ -10,7 +10,7 @@ Para buscar dados da maioria dos serviços web, você precisa fornecer
 autorização. Existem muitas maneiras de fazer isso,
 mas talvez a mais comum use o cabeçalho HTTP `Authorization`.
 
-## Adicione cabeçalhos de autorização
+## Adicione cabeçalhos de autorização {:#add-authorization-headers}
 
 O pacote [`http`][] fornece uma
 maneira conveniente de adicionar cabeçalhos às suas requisições.
@@ -26,7 +26,7 @@ final response = await http.get(
 );
 ```
 
-## Exemplo completo
+## Exemplo completo {:#complete-example}
 
 Este exemplo se baseia na
 receita [Fetching data from the internet][].

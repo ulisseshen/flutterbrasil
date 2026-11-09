@@ -21,7 +21,7 @@ descritos na seção [Canal beta][Beta channel] da página [Arquivo do SDK][SDK 
 [Beta channel]: /install/archive#beta-channel
 [SDK archive]: /install/archive
 
-## Versões stable
+## Versões stable {:#stable-releases}
 
 * 3.50.0 _(Tentative)_
   * [3.50.0 breaking changes & migrations][]

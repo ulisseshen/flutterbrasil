@@ -30,7 +30,7 @@ Para obter uma melhor visão geral do mecanismo de layout, comece com
 [Switzerland Tourism]: https://www.myswitzerland.com/en-us/destinations/lake-oeschinen
 [Flutter's approach to layout]: /ui/layout
 
-## Diagramar o layout
+## Diagramar o layout {:#diagram-the-layout}
 
 Nesta seção, considere que tipo de experiência de usuário você deseja para
 os usuários do seu app.
@@ -112,7 +112,7 @@ O Flutter muda a menor quantidade possível da UI em resposta à entrada do usu�
 
 Para este tutorial, escreva cada elemento que você identificou como seu próprio widget.
 
-## Criar o código base do app
+## Criar o código base do app {:#create-the-app-base-code}
 
 Nesta seção, crie o esqueleto do código básico do app Flutter para iniciar seu app.
 
@@ -154,7 +154,7 @@ Nesta seção, crie o esqueleto do código básico do app Flutter para iniciar s
 [Set up your Flutter environment]: /install
 [new-flutter-app]: /reference/create-new-app
 
-## Adicionar a seção Title
+## Adicionar a seção Title {:#add-the-title-section}
 
 Nesta seção, crie um widget `TitleSection` que se pareça com
 o seguinte layout.
@@ -163,7 +163,7 @@ o seguinte layout.
 
 <DashImage figure image="ui/layout/layout-sketch-title-block-unlabeled.svg" caption="A seção Title como esboço e protótipo de UI" />
 
-### Adicione o Widget `TitleSection`
+### Adicione o Widget `TitleSection` {:#add-the-titlesection-widget}
 
 Adicione o seguinte código após a classe `MyApp`.
 
@@ -219,7 +219,7 @@ class TitleSection extends StatelessWidget {
     Toda a row fica dentro de um widget `Padding` e adiciona padding em cada borda
     de 32 pixels.
 
-### Mude o body do app para uma visualização rolável
+### Mude o body do app para uma visualização rolável {:#change-the-app-body-to-a-scrolling-view}
 
 Na propriedade `body`, substitua o widget `Center` por um
 widget `SingleChildScrollView`.
@@ -246,7 +246,7 @@ Essas atualizações de código mudam o app das seguintes maneiras.
 
 [`SingleChildScrollView`]: {{site.api}}/flutter/widgets/SingleChildScrollView-class.html
 
-### Atualize o app para exibir a seção de título
+### Atualize o app para exibir a seção de título {:#update-the-app-to-display-the-title-section}
 
 Adicione o widget `TitleSection` como o primeiro elemento na lista `children`.
 Isso o coloca no topo da tela.
@@ -272,7 +272,7 @@ Passe o nome e localização fornecidos para o construtor `TitleSection`.
 [hot reload]: /tools/hot-reload
 [`lib/main.dart`]: {{site.repo.this}}/blob/main/examples/layout/lakes/step2/lib/main.dart
 
-## Adicionar a seção Button
+## Adicionar a seção Button {:#add-the-button-section}
 
 Nesta seção, adicione os botões que adicionarão funcionalidade ao seu app.
 
@@ -286,7 +286,7 @@ um ícone sobre uma row de texto.
 Planeje distribuir essas columns em uma row para que cada uma ocupe a mesma
 quantidade de espaço. Pinte todo o texto e ícones com a cor primária.
 
-### Adicione o widget `ButtonSection`
+### Adicione o widget `ButtonSection` {:#add-the-buttonsection-widget}
 
 Adicione o seguinte código após o widget `TitleSection` para conter o código
 para construir a row de botões.
@@ -305,7 +305,7 @@ class ButtonSection extends StatelessWidget {
 }
 ```
 
-### Crie um widget para fazer botões
+### Crie um widget para fazer botões {:#create-a-widget-to-make-buttons}
 
 Como o código para cada column poderia usar a mesma sintaxe,
 crie um widget chamado `ButtonWithText`.
@@ -360,7 +360,7 @@ class ButtonWithText extends StatelessWidget {
 }
 ```
 
-### Posicione os botões com um widget `Row`
+### Posicione os botões com um widget `Row` {:#position-the-buttons-with-a-row-widget}
 
 Adicione o seguinte código no widget `ButtonSection`.
 
@@ -416,7 +416,7 @@ class ButtonWithText extends StatelessWidget {
 }
 ```
 
-### Atualize o app para exibir a seção de botões
+### Atualize o app para exibir a seção de botões {:#update-the-app-to-display-the-button-section}
 
 Adicione a seção de botões à lista `children`.
 
@@ -431,7 +431,7 @@ Adicione a seção de botões à lista `children`.
   ],
 ```
 
-## Adicionar a seção Text
+## Adicionar a seção Text {:#add-the-text-section}
 
 Nesta seção, adicione a descrição de texto a este app.
 
@@ -439,7 +439,7 @@ Nesta seção, adicione a descrição de texto a este app.
 
 <?code-excerpt path-base="layout/lakes"?>
 
-### Adicione o widget `TextSection`
+### Adicione o widget `TextSection` {:#add-the-textsection-widget}
 
 Adicione o seguinte código como um widget separado após o widget `ButtonSection`.
 
@@ -465,7 +465,7 @@ de quebrar em um limite de palavra.
 
 [`softWrap`]: {{site.api}}/flutter/widgets/Text/softWrap.html
 
-### Atualize o app para exibir a seção de texto
+### Atualize o app para exibir a seção de texto {:#update-the-app-to-display-the-text-section}
 
 Adicione um novo widget `TextSection` como filho após o `ButtonSection`.
 Ao adicionar o widget `TextSection`, defina sua propriedade `description` para
@@ -488,11 +488,11 @@ o texto da descrição do local.
   ],
 ```
 
-## Adicionar a seção Image
+## Adicionar a seção Image {:#add-the-image-section}
 
 Nesta seção, adicione o arquivo de imagem para completar seu layout.
 
-### Configure seu app para usar imagens fornecidas
+### Configure seu app para usar imagens fornecidas {:#configure-your-app-to-use-supplied-images}
 
 Para configurar seu app para referenciar imagens, modifique seu arquivo `pubspec.yaml`.
 
@@ -528,7 +528,7 @@ exibir a imagem.
 
 [`lake.jpg`]: https://raw.githubusercontent.com/flutter/website/main/examples/layout/lakes/step5/images/lake.jpg
 
-### Crie o widget `ImageSection`
+### Crie o widget `ImageSection` {:#create-the-imagesection-widget}
 
 Defina o seguinte widget `ImageSection` após as outras declarações.
 
@@ -550,11 +550,11 @@ O valor `BoxFit.cover` diz ao Flutter para exibir a imagem com
 duas restrições. Primeiro, exibir a imagem o menor possível.
 Segundo, cobrir todo o espaço que o layout alocou, chamado de render box.
 
-### Atualize o app para exibir a seção de imagem
+### Atualize o app para exibir a seção de imagem {:#update-the-app-to-display-the-image-section}
 
 Adicione um widget `ImageSection` como o primeiro filho na lista `children`.
 Defina a propriedade `image` para o caminho da imagem que você adicionou em
-[Configure seu app para usar imagens fornecidas](#configure-seu-app-para-usar-imagens-fornecidas).
+[Configure seu app para usar imagens fornecidas](#configure-your-app-to-use-supplied-images).
 
 ```dart diff
   children: [
@@ -566,13 +566,13 @@ Defina a propriedade `image` para o caminho da imagem que você adicionou em
       location: 'Kandersteg, Switzerland',
 ```
 
-## Parabéns
+## Parabéns {:#congratulations}
 
 É isso! Quando você fizer hot reload do app, seu app deve parecer com isto.
 
 <DashImage figure img-class="site-mobile-screenshot border" image="ui/layout/layout-demo-app.png" caption="O app finalizado" width="50%" />
 
-## Recursos
+## Recursos {:#resources}
 
 Você pode acessar os recursos usados neste tutorial destes locais:
 
@@ -584,7 +584,7 @@ Você pode acessar os recursos usados neste tutorial destes locais:
 [ch-photo]: https://unsplash.com/photos/red-and-gray-tents-in-grass-covered-mountain-5Rhl-kSRydQ
 [`pubspec.yaml`]: {{site.repo.this}}/blob/main/examples/layout/lakes/step6/pubspec.yaml
 
-## Próximos Passos
+## Próximos Passos {:#next-steps}
 
 Para adicionar interatividade a este layout, siga o
 [tutorial de interatividade][interactivity tutorial].

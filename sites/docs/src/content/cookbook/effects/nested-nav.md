@@ -41,7 +41,7 @@ Nesta receita, você implementa um fluxo de configuração IoT de quatro página
 que mantém sua própria navegação aninhada abaixo
 do widget `Navigator` de nível superior.
 
-## Preparar para navegação
+## Preparar para navegação {:#prepare-for-navigation}
 
 Este app IoT tem duas telas de nível superior,
 junto com o fluxo de configuração. Defina esses
@@ -134,7 +134,7 @@ class SetupFlowState extends State<SetupFlow> {
 }
 ```
 
-## Exibir uma app bar para o fluxo de configuração
+## Exibir uma app bar para o fluxo de configuração {:#display-an-app-bar-for-the-setup-flow}
 
 O fluxo de configuração exibe uma app bar persistente
 que aparece em todas as páginas.
@@ -248,7 +248,7 @@ botão **Stay**. Para ser claro,
 esta ação `pop()` remove o diálogo de alerta
 da pilha de navegação, não o fluxo de configuração.
 
-## Gerar rotas aninhadas
+## Gerar rotas aninhadas {:#generate-nested-routes}
 
 O trabalho do fluxo de configuração é exibir a
 página apropriada dentro do fluxo.
@@ -366,7 +366,7 @@ levando o usuário de volta à tela inicial.
 Parabéns!
 Você implementou navegação aninhada com quatro subrotas.
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 Execute o app:
 

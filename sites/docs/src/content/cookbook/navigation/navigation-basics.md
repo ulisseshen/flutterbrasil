@@ -30,7 +30,7 @@ usando esses passos:
   2. Navegar para a segunda route usando `Navigator.push()`.
   3. Retornar para a primeira route usando `Navigator.pop()`.
 
-## 1. Criar duas routes
+## 1. Criar duas routes {:#1-create-two-routes}
 
 Primeiro, crie duas routes para trabalhar. Como este é um exemplo básico,
 cada route contém apenas um único botão. Tocar no botão na
@@ -133,7 +133,7 @@ class SecondRoute extends StatelessWidget {
 
 </Tabs>
 
-## 2. Navegar para a segunda route usando Navigator.push()
+## 2. Navegar para a segunda route usando Navigator.push() {:#2-navigate-to-the-second-route-using-navigator-push}
 
 Para mudar para uma nova route, use o método [`Navigator.push()`][].
 O método `push()` adiciona uma `Route` à pilha de routes gerenciadas pelo
@@ -184,7 +184,7 @@ onPressed: () {
 
 </Tabs>
 
-## 3. Retornar para a primeira route usando Navigator.pop()
+## 3. Retornar para a primeira route usando Navigator.pop() {:#3-return-to-the-first-route-using-navigator-pop}
 
 Como você fecha a segunda route e retorna para a primeira?
 Usando o método [`Navigator.pop()`][].
@@ -202,7 +202,7 @@ onPressed: () {
 }
 ```
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 <Tabs key="target-os">
 
@@ -328,7 +328,7 @@ class SecondRoute extends StatelessWidget {
 
 </Tabs>
 
-## Métodos adicionais de navegação
+## Métodos adicionais de navegação {:#additional-navigation-methods}
 
 A receita neste tópico mostra uma maneira de navegar para uma nova tela e
 voltar para a cena anterior, usando os métodos [`push`] e [`pop`] na

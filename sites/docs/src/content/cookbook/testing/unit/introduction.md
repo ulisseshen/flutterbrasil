@@ -29,7 +29,7 @@ usando os seguintes passos:
 Para mais informações sobre o pacote test,
 veja a [documentação do pacote test][test package documentation].
 
-## 1. Adicionar a dependência test
+## 1. Adicionar a dependência test {:#1-add-the-test-dependency}
 
 O pacote `test` fornece a funcionalidade principal para
 escrever testes em Dart. Esta é a melhor abordagem quando
@@ -42,7 +42,7 @@ execute `flutter pub add`:
 $ flutter pub add dev:test
 ```
 
-## 2. Criar um arquivo de teste
+## 2. Criar um arquivo de teste {:#2-create-a-test-file}
 
 Neste exemplo, crie dois arquivos: `counter.dart` e `counter_test.dart`.
 
@@ -65,7 +65,7 @@ counter_app/
     counter_test.dart
 ```
 
-## 3. Criar uma classe para testar
+## 3. Criar uma classe para testar {:#3-create-a-class-to-test}
 
 Em seguida, você precisa de uma "unidade" para testar. Lembre-se: "unidade" é outro nome para uma
 função, método ou classe. Para este exemplo, crie uma classe `Counter`
@@ -87,7 +87,7 @@ class Counter {
 Development". Se você se sente mais confortável com esse estilo de
 desenvolvimento, você pode sempre seguir essa rota.
 
-## 4. Escrever um teste para nossa classe
+## 4. Escrever um teste para nossa classe {:#4-write-a-test-for-our-class}
 
 Dentro do arquivo `counter_test.dart`, escreva o primeiro teste unitário. Testes são
 definidos usando a função top-level `test`, e você pode verificar se os resultados
@@ -111,7 +111,7 @@ void main() {
 }
 ```
 
-## 5. Combinar múltiplos testes em um `group`
+## 5. Combinar múltiplos testes em um `group` {:#5-combine-multiple-tests-in-a-group}
 
 Se você quer executar uma série de testes relacionados,
 use a função [`group`][`group`] do pacote `flutter_test` para categorizar os testes.
@@ -148,12 +148,12 @@ void main() {
 }
 ```
 
-## 6. Executar os testes
+## 6. Executar os testes {:#6-run-the-tests}
 
 Agora que você tem uma classe `Counter` com testes no lugar,
 você pode executar os testes.
 
-### Executar testes usando IntelliJ ou VSCode
+### Executar testes usando IntelliJ ou VSCode {:#run-tests-using-intellij-or-vscode}
 
 Os plugins Flutter para IntelliJ e VSCode suportam executar testes.
 Esta é frequentemente a melhor opção ao escrever testes porque fornece o
@@ -171,7 +171,7 @@ loop de feedback mais rápido assim como a habilidade de definir breakpoints.
   1. Vá para **Run** > **Start Debugging**.
      Você também pode pressionar o atalho de teclado apropriado para sua plataforma.
 
-### Executar testes em um terminal
+### Executar testes em um terminal {:#run-tests-in-a-terminal}
 
 Para executar todos os testes do terminal,
 execute o seguinte comando da raiz do projeto:

@@ -15,7 +15,7 @@ Por exemplo, `flutterexample.dev/#/path/to/screen`.
 :  Os caminhos são lidos e escritos sem um hash. Por exemplo,
 `flutterexample.dev/path/to/screen`.
 
-## Configurando a estratégia de URL
+## Configurando a estratégia de URL {:#configuring-the-url-strategy}
 
 Para configurar o Flutter para usar o path, use a
 função [usePathUrlStrategy][usePathUrlStrategy] fornecida pela biblioteca [flutter_web_plugins][flutter_web_plugins],
@@ -45,7 +45,7 @@ void main() {
 
 [SDK dependency]: {{site.dart-site}}/tools/pub/dependencies#sdk
 
-## Configurando seu servidor web
+## Configurando seu servidor web {:#configuring-your-web-server}
 
 PathUrlStrategy usa a [History API][History API], que requer configuração adicional
 para servidores web.
@@ -62,7 +62,7 @@ ao inicializar seu projeto. Para mais informações, consulte a documentação
 O servidor de desenvolvimento local criado ao executar `flutter run -d chrome` é configurado para
 lidar com qualquer caminho graciosamente e fazer fallback para o arquivo `index.html` do seu aplicativo.
 
-## Hospedando um aplicativo Flutter em uma localização não raiz
+## Hospedando um aplicativo Flutter em uma localização não raiz {:#hosting-a-flutter-app-at-a-non-root-location}
 
 Atualize a tag `<base href="/">` em `web/index.html`
 para o caminho onde seu aplicativo está hospedado.

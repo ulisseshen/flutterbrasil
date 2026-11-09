@@ -12,25 +12,25 @@ inclui as seguintes alterações entre outras melhorias gerais.
 Para saber mais sobre DevTools, confira a
 [visão geral do DevTools](/tools/devtools/overview).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 * Persistidas configurações de filtro entre sessões. - [#8447](https://github.com/flutter/devtools/pull/8447),
   [#8456](https://github.com/flutter/devtools/pull/8456)
   [#8470](https://github.com/flutter/devtools/pull/8470)
 
-## Atualizações do Inspector
+## Atualizações do Inspector {:#inspector-updates}
 
 * Adicionada uma opção às configurações do novo Inspector para permitir
   atualização automática da árvore de widgets após um hot-reload. -
   [#8483](https://github.com/flutter/devtools/pull/8483)
 
-## Atualizações do Network profiler
+## Atualizações do Network profiler {:#network-profiler-updates}
 
 * Adicionado um campo de texto de filtro aos controles de nível superior do Network profiler. -
   [#8469](https://github.com/flutter/devtools/pull/8469)
   ![Network filter field](/assets/images/docs/tools/devtools/release-notes/images-2.41.0/network_filter.png "Network filter field")
 
-## Atualizações de Logging
+## Atualizações de Logging {:#logging-updates}
 
 * Buscar detalhes de log imediatamente ao receber logs para que dados de log não sejam perdidos
   devido ao carregamento preguiçoso. - [#8421](https://github.com/flutter/devtools/pull/8421)
@@ -56,7 +56,7 @@ Para saber mais sobre DevTools, confira a
 * Rolagem automática da tabela de logs para o final no carregamento inicial. -
   [#8437](https://github.com/flutter/devtools/pull/8437)
 
-## Atualizações do VS Code Sidebar
+## Atualizações do VS Code Sidebar {:#vs-code-sidebar-updates}
 
 * A versão `postMessage` legada da sidebar do VS Code foi removida em
   favor da versão alimentada por DTD. Tentar acessar a sidebar legada
@@ -64,7 +64,7 @@ Para saber mais sobre DevTools, confira a
   Code era a única usuária da sidebar legada e migrou na
   v3.96.
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de alterações nesta versão, confira o
 [log git do DevTools](https://github.com/flutter/devtools/tree/v2.41.0).

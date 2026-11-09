@@ -18,12 +18,12 @@ Olá e bem-vindo a mais uma versão estável do Flutter. Até agora neste ano, e
 E para ser claro, quando digo "nós", quero dizer a comunidade Flutter como um todo. A equipe Flutter não poderia continuar a escalar como temos feito sem todos os nossos contribuidores, não importa quem seja seu empregador. Obrigado a todos pelas contribuições!
 
 
-## Regressões
+## Regressões {:#regressions}
 
 Nesta versão, corrigimos uma regressão ([37955](https://github.com/flutter/flutter/pull/37955) Update shader warm-up for recent Skia changes) e causamos outra ([38167]({{site.repo.dart-sdk}}/issues/38167) Incremental compiler re-issuing of errors from constant evaluator). A nova regressão é corrigida após a versão estável 1.9.1 ([00d14e7]({{site.repo.dart-sdk}}/commit/00d14e7) [CFE] Always start constant evaluation error where we are asked to evaluate), então se você estiver vendo isso, pode escolher uma compilação mais recente para trazê-la para seus apps Flutter.
 
 
-## Mudanças de API Incompatíveis
+## Mudanças de API Incompatíveis {:#breaking-api-changes}
 
 Tentamos muito não fazer mudanças incompatíveis, mas também não queremos criar APIs não intuitivas à medida que avançamos o Flutter para novos cenários e novas plataformas. Estas são as mudanças incompatíveis nesta versão. Por favor, veja os anúncios associados para que você possa mover seu código adiante.
 
@@ -62,7 +62,7 @@ Tentamos muito não fazer mudanças incompatíveis, mas também não queremos cr
 [37736](https://github.com/flutter/flutter/pull/37736) ([announcement](https://groups.google.com/forum/#!searchin/flutter-announce/37736%7Csort:date/flutter-announce/-kotruZbBDQ/vny4JjFmFQAJ)) Added a composable waitForCondition Driver/extension API
 
 
-## Correções Críticas: Crashes, Problemas Críticos de Clientes e Performance
+## Correções Críticas: Crashes, Problemas Críticos de Clientes e Performance {:#severe-crash-customer-critical-and-performance-fixes}
 
 No Flutter, tentamos adicionar um pouco de qualidade a cada versão. Desta vez, corrigimos vários problemas graves, incluindo crashes, problemas críticos de clientes e problemas de performance.
 
@@ -83,7 +83,7 @@ No Flutter, tentamos adicionar um pouco de qualidade a cada versão. Desta vez, 
 [35297](https://github.com/flutter/flutter/pull/35297) Fix the first frame logic in tracing and driver
 
 
-## Novos Recursos
+## Novos Recursos {:#new-features}
 
 Esta versão também traz dois novos widgets Material: o widget ToggleButtons (chamado de [segmented control](https://developer.apple.com/design/human-interface-guidelines/ios/controls/segmented-controls/) no iOS) e um widget ColorFilter (descrito abaixo na seção Text & Accessibility). Para ver esses widgets em ação, confira os exemplos curtos de [ToggleButtons ](https://github.com/csells/flutter_toggle_buttons) e [ColorFilter](https://github.com/csells/flutter_color_filter). Além disso, o widget SelectableText permite ao usuário selecionar texto somente leitura.
 
@@ -108,7 +108,7 @@ Esta versão também traz dois novos widgets Material: o widget ToggleButtons (c
 [37492](https://github.com/flutter/flutter/pull/37492) Drawer edge drag width improvements
 
 
-## Suporte ao macOS Catalina
+## Suporte ao macOS Catalina {:#macos-catalina-support}
 
 Com o lançamento do macOS Catalina chegando, garantimos que nossas ferramentas continuem funcionando sem problemas à medida que você migra para Catalina, iOS 13 e Xcode 11. Devo observar que **você vai querer atualizar para a versão estável Flutter 1.9.1 antes de atualizar para Catalina**. A outra ordem também funciona, mas você verá um erro ao fazer dessa forma (o [erro](https://github.com/flutter/flutter/issues/33890) é inofensivo, mas ainda assim...).
 
@@ -358,7 +358,7 @@ Claro, a linguagem de design Material também continua sendo um grande foco para
 [38636](https://github.com/flutter/flutter/pull/38636) Adds the arrowColor option to UserAccountsDrawerHeader (#38608)
 
 
-## Texto e Acessibilidade
+## Texto e Acessibilidade {:#text-accessibility}
 
 A maior mudança em texto e acessibilidade para esta versão é o novo suporte a ColorFilter, que permite recolorir uma árvore de widgets inteira de acordo, por exemplo, para ajustar seu app para usuários com daltonismo vermelho/verde. Para ver em ação, confira este [exemplo de ColorFilter](https://github.com/csells/flutter_color_filter).
 
@@ -395,7 +395,7 @@ A maior mudança em texto e acessibilidade para esta versão é o novo suporte a
 [37828](https://github.com/flutter/flutter/pull/37828) have android_semantics_testing use adb from ENV provided android sdk
 
 
-## Web (prévia técnica)
+## Web (prévia técnica) {:#web-tech-preview}
 
 O trabalho continua adicionando à prévia técnica do suporte à plataforma web no Flutter nesta versão, incluindo uma flag para informar se um app está sendo executado na web. Para ver em ação, confira [main.dart](https://github.com/csells/flutter_mazegen/blob/master/lib/main.dart) no [exemplo flutter_mazegen](https://github.com/csells/flutter_mazegen/). Para saber mais, veja [Flutter para web](https://docs.flutterbrasil.dev/web).
 
@@ -1009,7 +1009,7 @@ O engine principal continua a ver muitas melhorias em geral nesta versão.
 [11075](https://github.com/flutter/engine/pull/11075) [dynamic_thread_merging] Resubmit only on the frame where the merge
 
 
-## Ferramentas
+## Ferramentas {:#tools}
 
 Como sempre, a experiência de ponta a ponta do Flutter depende muito de suas ferramentas. Com isso em mente, além dos PRs listados abaixo, que se concentram na ferramenta CLI flutter, você também deve conferir os seguintes lançamentos para o plugin Flutter IntelliJ/Android Studio, o plugin Flutter VSCode e Dart DevTools:
 
@@ -1239,6 +1239,6 @@ Além disso, esta versão também tem muito acontecendo nos bastidores para forn
 [36884](https://github.com/flutter/flutter/pull/36884) Unbreak build_runner
 
 
-## Lista Completa de PRs
+## Lista Completa de PRs {:#full-pr-list}
 
 Você pode ver a lista completa de PRs mesclados nesta versão [aqui](/release/release-notes/changelogs/changelog-1.9.1).

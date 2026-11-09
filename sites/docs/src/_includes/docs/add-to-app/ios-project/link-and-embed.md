@@ -8,7 +8,7 @@ você não pode publicar esse app na App Store.
 A publicação falha com um
 erro de archive `Found an unexpected Mach-O header code`.
 
-##### Linkar todos os frameworks
+##### Linkar todos os frameworks {:#link-all-frameworks}
 
 Para linkar os frameworks necessários, siga este procedimento.
 
@@ -114,7 +114,7 @@ Após linkar os frameworks, eles devem ser exibidos na
 seção **Frameworks, Libraries, and Embedded Content**
 das configurações **General** do seu target.
 
-##### Incorporar os frameworks dinâmicos
+##### Incorporar os frameworks dinâmicos {:#embed-the-dynamic-frameworks}
 
 Para incorporar seus frameworks dinâmicos, complete o seguinte procedimento.
 
@@ -147,7 +147,7 @@ Para incorporar seus frameworks dinâmicos, complete o seguinte procedimento.
    1. Selecione **Product** <span aria-label="and then">></span>
       **Build** ou pressione <kbd>Cmd</kbd> + <kbd>B</kbd>.
 
-#### Definir LLDB Init File
+#### Definir LLDB Init File {:#set-lldb-init-file}
 
 :::warning
 Defina seu scheme para usar o LLDB Init File do Flutter. Sem este arquivo, a depuração

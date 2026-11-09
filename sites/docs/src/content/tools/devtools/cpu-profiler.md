@@ -28,7 +28,7 @@ Profiles de CPU não são indicativos de desempenho de release
 a menos que sua aplicação Flutter seja executada em modo profile.
 :::
 
-## Profiler de CPU
+## Profiler de CPU {:#cpu-profiler}
 
 Comece a gravar um profile de CPU clicando em **Record**.
 Quando você terminar de gravar, clique em **Stop**. Neste ponto,
@@ -158,7 +158,7 @@ navegar e dar zoom dentro do gráfico e uma legenda codificada por cores.
 ![Screenshot of flame chart help](/assets/images/docs/tools/devtools/flame-chart-help.png){:width="70%"}
 
 
-### Taxa de amostragem de CPU
+### Taxa de amostragem de CPU {:#cpu-sampling-rate}
 
 DevTools define uma taxa na qual a VM coleta amostras de CPU:
 1 amostra / 250 μs (microssegundos).
@@ -197,7 +197,7 @@ amostras de CPU por um período mais longo de tempo de execução do app.
 Isso significa que você tem uma chance melhor de visualizar amostras
 de CPU desde o início do profile gravado.
 
-### Filtragem
+### Filtragem {:#filtering}
 
 Ao visualizar um profile de CPU, você pode filtrar os dados por
 biblioteca, nome de método ou [`UserTag`][`UserTag`].
@@ -218,7 +218,7 @@ Isso adiciona linhas-guia verticais entre pai e filho na árvore.
 
 [analyze performance]: {{site.developers}}/web/tools/chrome-devtools/evaluate-performance/
 
-## Outros recursos
+## Outros recursos {:#other-resources}
 
 Para aprender como usar DevTools para analisar
 o uso de CPU de um app Mandelbrot computacionalmente intensivo,

@@ -6,7 +6,7 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Para controlar o comportamento de `maxLength` no
 `LengthLimitingTextInputFormatter`, use `maxLengthEnforcement`
@@ -56,7 +56,7 @@ O valor padrão do parâmetro `maxLengthEnforcement`
 é inferido da `TargetPlatform`
 do aplicativo, para estar de acordo com as convenções da plataforma:
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 * Adicionado um parâmetro `maxLengthEnforcement` usando o
   novo tipo enum `MaxLengthEnforcement`,
@@ -65,12 +65,12 @@ do aplicativo, para estar de acordo com as convenções da plataforma:
   classes `TextField`, `TextFormField`, `CupertinoTextField` e
   `LengthLimitingTextInputFormatter`.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 _Usar o comportamento padrão para a plataforma atual é recomendado,
 pois este será o comportamento mais familiar para o usuário._
 
-### Valores padrão de `maxLengthEnforcement`
+### Valores padrão de `maxLengthEnforcement` {:#default-values-of-maxlengthenforcement}
 
 * Android, Windows: `MaxLengthEnforcement.enforced`.
   O comportamento nativo dessas plataformas é aplicado.
@@ -93,7 +93,7 @@ pois este será o comportamento mais familiar para o usuário._
   então optamos por usar como padrão a convenção que é
   menos provável de resultar em perda de dados.
 
-### Para aplicar o limite o tempo todo
+### Para aplicar o limite o tempo todo {:#to-enforce-the-limit-all-the-time}
 
 Para aplicar o limite que sempre trunca o valor quando
 ele atinge o limite (por exemplo, ao inserir um
@@ -131,7 +131,7 @@ TextField(
 )
 ```
 
-### Para não aplicar a limitação
+### Para não aplicar a limitação {:#to-not-enforce-the-limitation}
 
 Para mostrar um erro de comprimento máximo no `TextField`,
 mas _não_ truncar quando o limite for excedido,
@@ -174,7 +174,7 @@ Código após a migração:
 CupertinoTextField()
 ```
 
-### Para aplicar o limite, mas não para texto em composição
+### Para aplicar o limite, mas não para texto em composição {:#to-enforce-the-limit-but-not-for-composing-text}
 
 Para evitar truncar texto enquanto o usuário está inserindo texto
 usando composição, especifique
@@ -203,7 +203,7 @@ TextField(
 )
 ```
 
-### Tenha cuidado ao assumir que a entrada não usará regiões de composição
+### Tenha cuidado ao assumir que a entrada não usará regiões de composição {:#be-wary-of-assuming-input-will-not-use-composing-regions}
 
 É tentador ao direcionar uma localidade específica assumir
 que todos os usuários ficarão satisfeitos com a entrada dessa localidade.
@@ -217,12 +217,12 @@ campos de formato livre raramente devem usar o valor `enforced`
 e devem, em vez disso, preferir o
 valor `truncateAfterCompositionEnds`, se possível.
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Lançado na versão: v1.26.0-1.0.pre<br>
 Na versão estável: 2.0.0
 
-## Referências
+## Referências {:#references}
 
 Documento de design:
 

@@ -27,7 +27,7 @@ Dito isso, se você tem uma sólida experiência em
 gerenciamento de estado de outros frameworks reativos,
 você pode encontrar pacotes e tutoriais listados na [página de opções][options page].
 
-## Nosso exemplo
+## Nosso exemplo {:#our-example}
 
 <img src='/assets/images/docs/development/data-and-backend/state-mgmt/model-shopper-screencast.webp' alt='An animated gif showing a Flutter app in use. It starts with the user on a login screen. They log in and are taken to the catalog screen, with a list of items. The click on several items, and as they do so, the items are marked as "added". The user clicks on a button and gets taken to the cart view. They see the items there. They go back to the catalog, and the items they bought still show "added". End of animation.' class='site-image-right' style="max-height: 24rem;">
 
@@ -60,7 +60,7 @@ Isso nos leva à nossa primeira pergunta: onde devemos colocar o estado
 atual do carrinho?
 
 
-## Elevando o estado
+## Elevando o estado {:#lifting-state-up}
 
 No Flutter,
 faz sentido manter o estado acima dos widgets que o usam.
@@ -148,7 +148,7 @@ Eles não mudam&mdash;eles são substituídos.
 Agora que sabemos onde colocar o estado do carrinho, vamos ver como
 acessá-lo.
 
-## Acessando o estado
+## Acessando o estado {:#accessing-the-state}
 
 Quando um usuário clica em um dos itens no catálogo,
 ele é adicionado ao carrinho. Mas como o carrinho vive acima de `MyListItem`,

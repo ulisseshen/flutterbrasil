@@ -12,13 +12,13 @@ inclui as seguintes mudanças, entre outras melhorias gerais.
 Para saber mais sobre o DevTools, confira a
 [visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 * A versão 2.15 do DevTools inclui melhorias em todas as tabelas no
   DevTools (visualização de logging, network profiler, CPU profiler, e assim por diante) -
   [#4175](https://github.com/flutter/devtools/pull/4175)
 
-## Atualizações de Performance
+## Atualizações de Performance {:#performance-updates}
 
 * Adicionados contornos a cada camada exibida na ferramenta Raster Metrics -
   [#4192](https://github.com/flutter/devtools/pull/4192)
@@ -28,7 +28,7 @@ Para saber mais sobre o DevTools, confira a
 * Corrigido um bug com carregamento de dados offline -
   [#4189](https://github.com/flutter/devtools/pull/4189)
 
-## Atualizações de Network
+## Atualizações de Network {:#network-updates}
 
 * Adicionado um visualizador Json com destaque de sintaxe para respostas de rede -
   [#4167](https://github.com/flutter/devtools/pull/4167)
@@ -38,7 +38,7 @@ Para saber mais sobre o DevTools, confira a
 * Adicionada a capacidade de copiar respostas de rede -
   [#4190](https://github.com/flutter/devtools/pull/4190)
 
-## Atualizações de Memory
+## Atualizações de Memory {:#memory-updates}
 
 * Adicionada a capacidade de selecionar um isolate diferente a partir do rodapé do DevTools -
   [#4173](https://github.com/flutter/devtools/pull/4173)
@@ -50,7 +50,7 @@ Para saber mais sobre o DevTools, confira a
 * Parado de truncar manualmente URIs de origem nas tabelas do profiler -
   [#4166](https://github.com/flutter/devtools/pull/4166)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de mudanças desde a versão anterior,
 confira

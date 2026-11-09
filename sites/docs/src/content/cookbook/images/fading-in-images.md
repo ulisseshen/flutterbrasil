@@ -51,7 +51,7 @@ conclua os seguintes passos:
 
 {:.steps}
 
-### Exemplo completo
+### Exemplo completo {:#complete-example}
 
 <?code-excerpt "lib/memory_main.dart"?>
 ```dart
@@ -99,7 +99,7 @@ class MyApp extends StatelessWidget {
 
 ![Fading In Image Demo](/assets/images/docs/cookbook/fading-in-images.webp){:.site-mobile-screenshot}
 
-## Do asset bundle
+## Do asset bundle {:#from-asset-bundle}
 
 Para usar um asset de imagem local como imagem de placeholder,
 conclua os seguintes passos:
@@ -132,7 +132,7 @@ conclua os seguintes passos:
 
 {:.steps}
 
-### Exemplo completo
+### Exemplo completo {:#complete-example}
 
 <?code-excerpt "lib/asset_main.dart"?>
 ```dart

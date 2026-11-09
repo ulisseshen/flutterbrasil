@@ -12,7 +12,7 @@ consulte o [CHANGELOG][] do Flutter.
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/main/CHANGELOG.md
 
-## O que mudou
+## O que mudou {:#whats-changed}
 
 As seguintes mudanças aconteceram neste lançamento:
 
@@ -616,7 +616,7 @@ As seguintes mudanças aconteceram neste lançamento:
 * macos support for image_list by @Abhishek01039 in https://github.com/flutter/flutter/pull/84899
 * [macOS] Adds macOS project files to layers example by @cbracken in https://github.com/flutter/flutter/pull/102539
 
-## Novos contribuidores
+## Novos contribuidores {:#new-contributors}
 * @matasb-google made their first contribution in https://github.com/flutter/flutter/pull/100267
 * @guillempuche made their first contribution in https://github.com/flutter/flutter/pull/100893
 * @JankoLancer made their first contribution in https://github.com/flutter/flutter/pull/100377

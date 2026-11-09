@@ -12,7 +12,7 @@ inclui as seguintes alterações entre outras melhorias gerais.
 Para saber mais sobre DevTools, confira a
 [visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 * Corrigido um bug com estados de service extension não
   sendo limpos na desconexão do app. - [#6547](https://github.com/flutter/devtools/pull/6547)
@@ -21,7 +21,7 @@ Para saber mais sobre DevTools, confira a
 
 * Adicionado um workaround para corrigir funcionalidade do botão copiar no VSCode. - [#6598](https://github.com/flutter/devtools/pull/6598)
 
-## Atualizações de Performance
+## Atualizações de Performance {:#performance-updates}
 
 * Adicionada uma opção no menu "Enhance Tracing" para rastrear atividade de
   platform channel. Isso é útil para apps com plugins. - [#6515](https://github.com/flutter/devtools/pull/6515)
@@ -37,7 +37,7 @@ Para saber mais sobre DevTools, confira a
 
   ![Open file button on the performance screen](/assets/images/docs/tools/devtools/release-notes/images-2.29.0/open_file_performance_screen.png "Open file button on the performance screen")
 
-## Atualizações do CPU profiler
+## Atualizações do CPU profiler {:#cpu-profiler-updates}
 
 * Linhas guia de árvore agora sempre habilitadas para as
   abas "Bottom Up" e "Call Tree". - [#6534](https://github.com/flutter/devtools/pull/6534)
@@ -49,11 +49,11 @@ Para saber mais sobre DevTools, confira a
 * Adicionado um botão "Open" aos controles do CPU profiler para carregar dados
   salvos anteriormente do DevTools. - [#6567](https://github.com/flutter/devtools/pull/6567)
 
-## Atualizações do Network profiler
+## Atualizações do Network profiler {:#network-profiler-updates}
 
 * Status de rede agora são mostrados com uma cor de erro quando a requisição falhou. - [#6527](https://github.com/flutter/devtools/pull/6527)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de alterações nesta versão, confira o
 [log git do DevTools](https://github.com/flutter/devtools/tree/v2.29.0).

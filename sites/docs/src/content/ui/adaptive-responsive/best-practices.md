@@ -8,9 +8,9 @@ shortTitle: Melhores práticas
 
 Melhores práticas recomendadas para design adaptativo incluem:
 
-## Considerações de design
+## Considerações de design {:#design-considerations}
 
-### Divida seus widgets
+### Divida seus widgets {:#break-down-your-widgets}
 
 Ao projetar seu app, tente dividir widgets grandes e
 complexos em widgets menores e mais simples.
@@ -35,7 +35,7 @@ design adaptativo em [General approach][General approach].
 
 [General approach]: /ui/adaptive-responsive/general
 
-### Projete para as forças de cada fator de forma
+### Projete para as forças de cada fator de forma {:#design-to-the-strengths-of-each-form-factor}
 
 Além do tamanho da tela, você também deve dedicar tempo
 considerando as forças e fraquezas únicas
@@ -63,7 +63,7 @@ que você pode aproveitar.
 
 [deep links]: /ui/navigation/deep-linking
 
-### Resolva touch primeiro
+### Resolva touch primeiro {:#solve-touch-first}
 
 Construir uma ótima UI touch pode frequentemente ser mais difícil
 do que uma UI desktop tradicional, em parte,
@@ -84,9 +84,9 @@ O importante a considerar é o que um usuário espera
 ao usar um dispositivo de entrada específico,
 e trabalhar para refletir isso em seu app.
 
-## Detalhes de implementação
+## Detalhes de implementação {:#implementation-details}
 
-### Não bloqueie a orientação do seu app.
+### Não bloqueie a orientação do seu app. {:#dont-lock-the-orientation-of-your-app}
 
 Um app adaptativo deve ter uma boa aparência em janelas de
 diferentes tamanhos e formas. Embora bloquear um app
@@ -117,7 +117,7 @@ Para resumir:
 [lowest level]:  {{site.android-dev}}/docs/quality-guidelines/large-screen-app-quality#T3-8
 [override a locked screen]: {{site.android-dev}}/guide/topics/large-screens/large-screen-compatibility-mode#per-app_overrides
 
-### Evite layouts baseados em orientação do dispositivo
+### Evite layouts baseados em orientação do dispositivo {:#avoid-device-orientation-based-layouts}
 
 Evite usar o campo orientation do `MediaQuery`
 ou `OrientationBuilder` perto do topo da sua árvore de widgets
@@ -135,7 +135,7 @@ Então use breakpoints adaptativos como os que o
 [General approach]: /ui/adaptive-responsive/general#
 [Material]: https://m3.material.io/foundations/layout/applying-layout/window-size-classes
 
-### Não consuma todo o espaço horizontal
+### Não consuma todo o espaço horizontal {:#dont-gobble-up-all-of-the-horizontal-space}
 
 Apps que usam a largura total da janela para
 exibir caixas ou campos de texto não funcionam bem
@@ -146,7 +146,7 @@ confira [Layout with GridView][Layout with GridView].
 
 [Layout with GridView]: /ui/adaptive-responsive/large-screens#layout-with-gridview
 
-### Evite verificar tipos de hardware
+### Evite verificar tipos de hardware {:#avoid-checking-for-hardware-types}
 
 Evite escrever código que verifica se o dispositivo em que você está
 executando é um "telefone" ou um "tablet", ou qualquer outro tipo
@@ -172,7 +172,7 @@ confira a palestra do Google I/O de 2022,
 
 [Flutter lessons for federated plugin development]: {{site.yt.watch}}?v=GAnSNplNpCA
 
-### Suporte uma variedade de dispositivos de entrada
+### Suporte uma variedade de dispositivos de entrada {:#support-a-variety-of-input-devices}
 
 Apps devem suportar mouses básicos, trackpads,
 e atalhos de teclado. Os fluxos de usuário mais comuns
@@ -190,7 +190,7 @@ confira [User input & accessibility][User input & accessibility].
 
 [User input & accessibility]: /ui/adaptive-responsive/input
 
-### Restaure o estado da Lista
+### Restaure o estado da Lista {:#restore-list-state}
 
 Para manter a posição de rolagem em uma lista
 que não muda seu layout quando a
@@ -213,7 +213,7 @@ para mudar a posição de rolagem na rotação da tela.
 [`PageStorageKey`]: {{site.api}}/flutter/widgets/PageStorageKey-class.html
 [Wonderous app]: {{site.repo.wonderous}}/blob/8a29d6709668980340b1b59c3d3588f123edd4d8/lib/ui/screens/wonder_events/widgets/_events_list.dart#L64
 
-## Salve o estado do app
+## Salve o estado do app {:#save-app-state}
 
 Apps devem reter ou restaurar o [app state][app state]
 conforme o dispositivo gira, muda o tamanho da janela,

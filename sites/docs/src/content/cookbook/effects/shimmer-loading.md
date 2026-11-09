@@ -23,7 +23,7 @@ Há também um Floating Action Button (FAB) no canto inferior direito
 que alterna entre um modo de carregamento e um modo carregado
 para que você possa validar facilmente sua implementação.
 
-## Desenhar as formas shimmer
+## Desenhar as formas shimmer {:#draw-the-shimmer-shapes}
 
 As formas que brilham (shimmer) neste efeito são independentes
 do conteúdo real que eventualmente carrega.
@@ -176,7 +176,7 @@ você pode ver as duas maneiras como sua UI renderiza.
 O próximo objetivo é pintar todas as áreas coloridas
 com um único gradiente que se parece com um shimmer.
 
-## Pintar o gradiente shimmer
+## Pintar o gradiente shimmer {:#paint-the-shimmer-gradient}
 
 A chave para o efeito alcançado nesta receita é usar um widget
 chamado [`ShaderMask`][`ShaderMask`]. O widget `ShaderMask`, como o nome sugere,
@@ -273,7 +273,7 @@ Para esta receita, a tela inteira deve
 parecer uma grande superfície brilhante.
 Você resolve este problema na próxima etapa.
 
-## Pintar um grande shimmer
+## Pintar um grande shimmer {:#paint-one-big-shimmer}
 
 Para pintar um grande shimmer pela tela,
 cada widget `ShimmerLoading` precisa
@@ -423,7 +423,7 @@ Seus widgets `ShimmerLoading` agora exibem um gradiente
 compartilhado que ocupa todo o espaço dentro do
 widget `Shimmer`.
 
-## Animar o shimmer
+## Animar o shimmer {:#animate-the-shimmer}
 
 O gradiente shimmer precisa se mover para
 dar a aparência de um brilho cintilante.
@@ -547,7 +547,7 @@ Agora você tem um efeito shimmer animado
 de tela cheia que liga e desliga
 conforme o conteúdo carrega.
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 <?code-excerpt "lib/original_example.dart" remove="code-excerpt-closing-bracket"?>
 ```dartpad title="Flutter shimmer loading hands-on example in DartPad" run="true"

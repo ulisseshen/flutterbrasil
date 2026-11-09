@@ -23,7 +23,7 @@ um único campo de texto usando as seguintes etapas:
 1.  Adicionar um `TextFormField` com lógica de validação.
 1.  Criar um botão para validar e enviar o formulário.
 
-## 1. Criar um `Form` com uma `GlobalKey`
+## 1. Criar um `Form` com uma `GlobalKey` {:#1-create-a-form-with-a-globalkey}
 
 Crie um [`Form`][`Form`].
 O widget `Form` atua como um contêiner para agrupar e
@@ -85,7 +85,7 @@ você pode usar o método [`Form.of()`][`Form.of()`] para
 acessar o formulário dentro de widgets aninhados.
 :::
 
-## 2. Adicionar um `TextFormField` com lógica de validação
+## 2. Adicionar um `TextFormField` com lógica de validação {:#2-add-a-textformfield-with-validation-logic}
 
 Embora o `Form` esteja no lugar,
 ele não tem uma maneira para os usuários inserirem texto.
@@ -123,7 +123,7 @@ no seu `Form` ou `TextFormField` usando [`AutovalidateMode`][]
 (como `AutovalidateMode.onUserInteraction` ou `AutovalidateMode.onUnfocus`).
 :::
 
-## 3. Criar um botão para validar e enviar o formulário
+## 3. Criar um botão para validar e enviar o formulário {:#3-create-a-button-to-validate-and-submit-the-form}
 
 Agora que você tem um formulário com um campo de texto,
 forneça um botão que o usuário possa tocar para enviar as informações.
@@ -149,7 +149,7 @@ ElevatedButton(
 ),
 ```
 
-### Como isso funciona?
+### Como isso funciona? {:#how-does-this-work}
 
 Para validar o formulário, use a `_formKey` criada na
 etapa 1. Você pode usar o accessor `_formKey.currentState`
@@ -163,7 +163,7 @@ Se tudo estiver correto, o método `validate()` retorna `true`.
 Se algum campo de texto contiver erros, o método `validate()`
 reconstrói o formulário para exibir quaisquer mensagens de erro e retorna `false`.
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter form validation hands-on example in DartPad" run="true"

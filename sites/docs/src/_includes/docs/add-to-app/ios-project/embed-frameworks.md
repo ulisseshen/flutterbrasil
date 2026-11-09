@@ -26,7 +26,7 @@ Use este método nos seguintes casos de uso:
 
 {% render "docs/add-to-app/ios-project/embed-framework-directory-tree.md" %}
 
-#### Procedimentos
+#### Procedimentos {:#procedures}
 
 Como você linka, incorpora, ou ambos, os frameworks gerados
 em seu app existente no Xcode depende do tipo de framework.

@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 ---
-##### Inicie o debugger do Xcode
+##### Inicie o debugger do Xcode {:#start-the-xcode-debugger}
 {:.no_toc}
 
 1. Abra `ios/Runner.xcworkspace` do diretório do seu app Flutter.
@@ -37,7 +37,7 @@ ia-translate: true
 
 1. Copie a URI do serviço Dart VM.
 
-##### Conecte à Dart VM no VS Code
+##### Conecte à Dart VM no VS Code {:#attach-to-the-dart-vm-in-vs-code}
 {:.no_toc}
 
 1. Para abrir a paleta de comandos, vá para

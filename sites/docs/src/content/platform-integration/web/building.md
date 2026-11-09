@@ -8,20 +8,20 @@ shortTitle: Desenvolvimento web
 Esta página fornece uma visão geral de como configurar, executar e compilar uma
 aplicação web usando Flutter.
 
-## Requisitos
+## Requisitos {:#requirements}
 
 Antes de poder construir uma aplicação web com Flutter,
 certifique-se de que você tem o [Flutter SDK][] e um navegador web instalado.
 Visite as instruções em [Set up web development for Flutter][Setup-web]
 para detalhes.
 
-## Configurar um projeto Flutter
+## Configurar um projeto Flutter {:#set-up-a-flutter-project}
 
 Para configurar seu projeto, você pode criar um
 novo projeto Flutter ou adicionar suporte web
 a um projeto existente.
 
-### Criar um novo projeto
+### Criar um novo projeto {:#create-a-new-project}
 
 Para criar um novo app que inclui suporte web, execute o seguinte comando:
 
@@ -29,7 +29,7 @@ Para criar um novo app que inclui suporte web, execute o seguinte comando:
 $ flutter create my_app
 ```
 
-### Adicionar suporte web a um projeto existente
+### Adicionar suporte web a um projeto existente {:#add-web-support-to-an-existing-project}
 
 Se você já tem um projeto,
 execute o comando `flutter create` no diretório do seu projeto:
@@ -41,11 +41,11 @@ $ flutter create . --platforms web
 Isso cria um diretório `web/` contendo os assets web usados para inicializar
 e executar seu app Flutter.
 
-## Executar seu app
+## Executar seu app {:#run-your-app}
 
 Confira as seções a seguir para executar seu app.
 
-### Executar seu app a partir da linha de comando
+### Executar seu app a partir da linha de comando {:#run-your-app-from-the-command-line}
 
 Selecione [Chrome][Chrome] como o dispositivo alvo do seu app para executar e depurar
 um app Flutter web:
@@ -74,7 +74,7 @@ para nós rastrear problemas. Problemas conhecidos podem ser vistos no
 [GitHub project][GitHub project] associado.
 :::
 
-### Executar seu app usando WebAssembly
+### Executar seu app usando WebAssembly {:#run-your-app-using-webassembly}
 
 Você pode passar a flag `--wasm` para executar seu app usando WebAssembly:
 
@@ -85,7 +85,7 @@ $ flutter run -d chrome --wasm
 Para aprender mais sobre compilação WebAssembly e requisitos de servidor,
 confira [Suporte a WebAssembly (Wasm)][Wasm support].
 
-### Usar hot reload no DartPad
+### Usar hot reload no DartPad {:#use-hot-reload-in-dartpad}
 
 Hot reload também está habilitado no DartPad com um novo botão "Reload".
 A funcionalidade está disponível apenas se Flutter for detectado
@@ -97,11 +97,11 @@ sessão com hot reload selecionando um app de exemplo fornecido pelo DartPad.
 [Web Hot Reload issue template]: {{site.repo.dart-sdk}}/issues/new?template=5_web_hot_reload.yml
 [GitHub project]: https://github.com/orgs/dart-lang/projects/107/views/1
 
-## Compilar seu app
+## Compilar seu app {:#build-your-app}
 
 Veja as seções a seguir para compilar seu app.
 
-### Compilar seu app a partir da linha de comando
+### Compilar seu app a partir da linha de comando {:#build-your-app-from-the-command-line}
 
 Execute o seguinte comando para gerar um build de release:
 
@@ -109,7 +109,7 @@ Execute o seguinte comando para gerar um build de release:
 $ flutter build web
 ```
 
-### Compilar seu app usando WebAssembly
+### Compilar seu app usando WebAssembly {:#build-your-app-using-webassembly}
 
 Você também pode passar a flag `--wasm` para compilar seu app usando WebAssembly:
 
@@ -128,7 +128,7 @@ Para respostas a outras perguntas comuns, visite o [Web FAQ][].
 Se você encontrar erros ao compilar seu app com Wasm, confira
 [Diagnosticando erros de compilação Wasm](/platform-integration/web/wasm#diagnosing-wasm-compilation-errors).
 
-## Depuração
+## Depuração {:#debugging}
 
 Use [Flutter DevTools][Flutter DevTools] para as seguintes tarefas:
 
@@ -142,7 +142,7 @@ Use [Chrome DevTools][Chrome DevTools] para as seguintes tarefas:
 * [Analyzing performance][Analyzing performance]&mdash;certifique-se de usar um
   build de profile
 
-## Testes
+## Testes {:#testing}
 
 Use [widget tests][Widget tests] ou testes de integração. Para aprender mais sobre
 como executar testes de integração em um navegador, confira a página [Integration testing][].

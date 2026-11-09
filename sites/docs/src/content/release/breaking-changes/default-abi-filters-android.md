@@ -8,14 +8,14 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 A partir do Flutter 3.35, o Flutter Gradle Plugin define automaticamente
 [`abiFilters`][] para builds Android para evitar a inclusão de arquiteturas
 não suportadas em APKs de release. Esta alteração pode quebrar
 `abiFilters` personalizados especificados no arquivo `build.gradle` do seu aplicativo.
 
-## Contexto
+## Contexto {:#context}
 
 Esta alteração foi introduzida para resolver um problema em que dependências
 de terceiros com bibliotecas nativas x86 fariam o Google Play
@@ -27,7 +27,7 @@ O Flutter Gradle Plugin agora configura automaticamente `abiFilters` para
 incluir apenas as arquiteturas que o Flutter suporta. Isso impede
 o Google Play de disponibilizar aplicativos para dispositivos incompatíveis.
 
-## Descrição da alteração
+## Descrição da alteração {:#description-of-change}
 
 O Flutter Gradle Plugin agora define programaticamente `abiFilters` para
 builds não-debuggable quando a opção `--splits-per-abi` não está habilitada
@@ -43,13 +43,13 @@ conjunto estar vazio. O Flutter pode preservar os `abiFilters` que você configu
 filtros de ABI em `buildTypes` ou `productFlavors` com as APIs atuais do Android Gradle
 Plugin.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 Se seu aplicativo não personaliza `abiFilters`, nenhuma alteração é necessária.
 
 Se seu aplicativo precisa personalizar quais arquiteturas são incluídas, você tem
 várias opções:
 
-### Opção 1: Use a flag splits-per-abi
+### Opção 1: Use a flag splits-per-abi {:#option-1-use-the-splits-per-abi-flag}
 
 Se você quiser controlar a inclusão de arquitetura, use a opção integrada do Flutter
 `--splits-per-abi` em vez de configurar manualmente `abiFilters`:
@@ -61,7 +61,7 @@ flutter build apk --splits-per-abi
 Isso cria APKs separados para cada arquitetura e automaticamente desabilita
 a configuração automática de `abiFilters`.
 
-### Opção 2: Configurar abiFilters em defaultConfig
+### Opção 2: Configurar abiFilters em defaultConfig {:#option-2-configure-abifilters-in-defaultconfig}
 
 Se você deve usar um único APK com filtros de arquitetura personalizados, limpe os
 filtros definidos automaticamente e configure os seus próprios em `defaultConfig`.
@@ -80,7 +80,7 @@ android {
 }
 ```
 
-### Opção 3: Desabilitar a filtragem de ABI padrão do Flutter
+### Opção 3: Desabilitar a filtragem de ABI padrão do Flutter {:#option-3-disable-flutters-default-abi-filtering}
 
 Se seu app configura filtros de ABI em `buildTypes` ou `productFlavors`,
 passe `-Pdisable-abi-filtering=true` ao executar `flutter build` ou
@@ -88,7 +88,7 @@ passe `-Pdisable-abi-filtering=true` ao executar `flutter build` ou
 de modo que a configuração do seu build type ou product flavor controla quais
 arquiteturas são incluídas.
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Disponibilizado na versão: 3.35.0<br>
 Na versão estável: 3.35

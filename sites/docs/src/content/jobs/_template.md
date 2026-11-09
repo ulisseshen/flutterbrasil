@@ -12,17 +12,17 @@ showToc: false
 5. Update the sections with a TODO, removing the TODO when complete
 {% endcomment %}
 
-## Sobre o time
+## Sobre o time {:#about-the-team}
 
 <TODO: Descrição da área>
 
-## Sobre a posição
+## Sobre a posição {:#about-the-position}
 
 <TODO: Descrição da função>
 
-## Nossos valores
+## Nossos valores {:#our-values}
 
-### Orientação
+### Orientação {:#mentorship}
 
 Ao ingressar no Google, você será emparelhado com um mentor formal,
 que o ajudará a orientá-lo no processo de onboarding, estabelecendo relacionamentos
@@ -32,12 +32,12 @@ enquanto você navega sua carreira no Google. Além de mentores formais,
 trabalhamos e treinamos juntos para que estejamos sempre aprendendo uns com os outros,
 e celebramos e apoiamos a progressão de carreira de nossos membros do time.
 
-### Inclusão
+### Inclusão {:#inclusion}
 
 Aqui no time Flutter e no Google, abraçamos nossas diferenças
 e estamos [comprometidos em promover nossa cultura de inclusão](https://flutter.dev/culture).
 
-### Equilíbrio trabalho-vida pessoal
+### Equilíbrio trabalho-vida pessoal {:#work-life-balance}
 
 Nosso time também valoriza muito o equilíbrio trabalho-vida pessoal.
 Conseguir um equilíbrio saudável entre sua vida pessoal e profissional
@@ -46,24 +46,24 @@ em quantas horas você passa trabalhando ou online. Ao invés disso,
 temos prazer em oferecer um cronograma flexível para que você possa ter uma vida mais produtiva e
 bem equilibrada—tanto dentro quanto fora do trabalho.
 
-## Local de trabalho
+## Local de trabalho {:#job-location}
 
 <TODO: Local>
 
-## Responsabilidades do trabalho
+## Responsabilidades do trabalho {:#job-responsibilities}
 
 <TODO: Responsabilidades>
 
-## Qualificações
+## Qualificações {:#qualifications}
 
-### Qualificações mínimas
+### Qualificações mínimas {:#minimum-qualifications}
 
 <TODO: Qualificações mínimas>
 
-### Qualificações preferenciais
+### Qualificações preferenciais {:#preferred-qualifications}
 
 <TODO: Qualificações preferenciais>
 
-## Como se candidatar
+## Como se candidatar {:#to-apply}
 
 Por favor, candidate-se por meio [desta página do Google Careers](<TODO: Link>).

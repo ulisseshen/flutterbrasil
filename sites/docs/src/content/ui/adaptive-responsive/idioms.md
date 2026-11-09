@@ -31,7 +31,7 @@ benefícios significativos:
   Isso frequentemente tem o benefício adicional de melhores classificações
   na loja de apps—algo que todos podemos apreciar!
 
-## Considere o comportamento esperado em cada plataforma
+## Considere o comportamento esperado em cada plataforma {:#consider-expected-behavior-on-each-platform}
 
 O primeiro passo é dedicar algum tempo considerando qual é
 a aparência, apresentação,
@@ -53,7 +53,7 @@ e o mesmo vale para macOS, Linux e Windows.
 Essas diferenças podem ser sutis para você,
 mas serem dolorosamente óbvias para um usuário experiente.
 
-### Encontre um defensor da plataforma
+### Encontre um defensor da plataforma {:#find-a-platform-advocate}
 
 Se possível, designe alguém como defensor de cada plataforma.
 Idealmente, seu defensor usa a plataforma como seu dispositivo principal,
@@ -78,7 +78,7 @@ stakeholders, ou testadores externos que recebem
 builds regulares.
 :::
 
-### Permaneça único
+### Permaneça único {:#stay-unique}
 
 Conformar-se aos comportamentos esperados não significa que seu app
 precisa usar componentes ou estilos padrão.
@@ -91,13 +91,13 @@ mais fácil será o desenvolvimento e teste.
 O truque é equilibrar a criação de uma experiência única com uma
 identidade forte, enquanto respeita as normas de cada plataforma.
 
-## Idiomas e normas comuns a considerar
+## Idiomas e normas comuns a considerar {:#common-idioms-and-norms-to-consider}
 
 Dê uma olhada rápida em algumas normas e idiomas específicos
 que você pode querer considerar, e como você poderia abordá-los
 no Flutter.
 
-### Aparência e comportamento da scrollbar
+### Aparência e comportamento da scrollbar {:#scrollbar-appearance-and-behavior}
 
 Usuários de desktop e mobile esperam scrollbars,
 mas esperam que elas se comportem de maneira diferente em diferentes plataformas.
@@ -128,7 +128,7 @@ return Scrollbar(
 Esta atenção sutil aos detalhes pode fazer seu app se sentir mais
 confortável em uma determinada plataforma.
 
-### Multi-seleção
+### Multi-seleção {:#multi-select}
 
 Lidar com multi-seleção dentro de uma lista é outra área
 com diferenças sutis entre plataformas:
@@ -166,7 +166,7 @@ Se você tem uma grande lista de itens selecionáveis,
 muitos dos seus usuários de teclado esperarão que possam usar
 `Control+A` para selecionar todos os itens.
 
-#### Dispositivos touch
+#### Dispositivos touch {:#touch-devices}
 
 Em dispositivos touch, a multi-seleção é tipicamente simplificada,
 com o comportamento esperado sendo similar a ter o
@@ -180,7 +180,7 @@ dos seus casos de uso específicos, mas o importante é
 certificar-se de que você está oferecendo a cada plataforma o melhor
 modelo de interação possível.
 
-### Texto selecionável
+### Texto selecionável {:#selectable-text}
 
 Uma expectativa comum na web (e em menor grau no desktop)
 é que a maior parte do texto visível pode ser selecionada com o cursor do mouse.
@@ -213,7 +213,7 @@ return const SelectableText.rich(
 
 [`SelectableText`]: {{site.material_ui}}/SelectableText-class.html
 
-### Barras de título
+### Barras de título {:#title-bars}
 
 Em aplicações desktop modernas, é comum customizar
 a barra de título da janela do seu app, adicionando um logo para
@@ -233,7 +233,7 @@ para diferentes seções do app.
 
 [`bits_dojo`]: https://github.com/bitsdojo/bitsdojo_window
 
-### Menus de contexto e tooltips
+### Menus de contexto e tooltips {:#context-menus-and-tooltips}
 
 No desktop, existem várias interações que
 se manifestam como um widget mostrado em uma sobreposição,
@@ -303,7 +303,7 @@ uma sensação de que algo não está certo.
 [`super_tooltip`]: {{site.pub}}/packages/super_tooltip
 [`Tooltip`]: {{site.material_ui}}/Tooltip-class.html
 
-### Ordem horizontal de botões
+### Ordem horizontal de botões {:#horizontal-button-order}
 
 No Windows, ao apresentar uma linha de botões,
 o botão de confirmação é colocado no início da
@@ -343,7 +343,7 @@ return Row(
 
 ![Sample of embedded image](/assets/images/docs/ui/adaptive-responsive/embed_image2.png){:width="90%"}
 
-### Barra de menu
+### Barra de menu {:#menu-bar}
 
 Outro padrão comum em apps desktop é a barra de menu.
 No Windows e Linux, este menu vive como parte da barra de título Chrome,
@@ -363,7 +363,7 @@ Se você precisa tanto de uma barra de título customizada quanto de uma barra d
 você pode conseguir isso implementando-a no Flutter,
 similar a um menu de contexto customizado.
 
-### Arrastar e soltar
+### Arrastar e soltar {:#drag-and-drop}
 
 Uma das interações centrais para entradas baseadas em touch e
 ponteiro é arrastar e soltar. Embora esta

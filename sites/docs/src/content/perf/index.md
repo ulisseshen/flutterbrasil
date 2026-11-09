@@ -51,7 +51,7 @@ Let's put "speed" (rendering) first as it's the most popular performance issue
 category.
 {% endcomment -%}
 
-## Velocidade
+## Velocidade {:#speed}
 
 Suas animações estão travadas (não suaves)? Aprenda como
 avaliar e corrigir problemas de renderização.
@@ -73,7 +73,7 @@ TODO(<https://github.com/flutter/website/issues/8249>): Reintroduce this article
 
 {% endcomment -%}
 
-## Tamanho do app
+## Tamanho do app {:#app-size}
 
 Como medir o tamanho do seu app. Quanto menor o tamanho,
 mais rápido é o download.

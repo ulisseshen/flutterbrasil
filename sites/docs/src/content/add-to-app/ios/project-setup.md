@@ -19,7 +19,7 @@ no entanto, o registro do CocoaPods se torna permanentemente
 Componentes de UI Flutter podem ser adicionados incrementalmente
 ao seu aplicativo iOS existente usando Swift packages.
 
-## Pré-requisitos {: #prerequisites}
+## Pré-requisitos {:#prerequisites}
 
 * Flutter 3.44 ou posterior
 * Xcode 15.0 ou posterior
@@ -267,7 +267,7 @@ A estrutura de diretórios de exemplo se assemelha à seguinte:
 
 
 
-## Próximos passos {: #next-steps}
+## Próximos passos {:#next-steps}
 
 Você agora pode [adicionar uma tela Flutter][add a Flutter screen] ao seu app iOS existente.
 

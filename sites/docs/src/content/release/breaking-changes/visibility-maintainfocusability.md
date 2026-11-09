@@ -8,19 +8,19 @@ description: >-
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 Esta mudança foi introduzida para corrigir um problema
 onde os filhos ocultos de um `IndexedStack` seriam focalizáveis com eventos de teclado
 (veja o [issue](https://github.com/flutter/flutter/issues/114213))
 devido ao comportamento padrão do widget `Visibility` subjacente.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 A mudança principal é que o widget `Visibility` não é mais focalizável por padrão
 quando `maintainState` está habilitado.
 Uma nova flag, `maintainFocusability`, deve ser definida como true junto com `maintainState`
 para que um widget oculto permaneça focalizável.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 Se seu app tem um widget `Visibility` que não define `maintainState` como true,
 então nenhuma mudança é necessária.
 
@@ -48,12 +48,12 @@ child: Visibility(
 )
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Lançado na versão: 3.34.0-pre<br>
 No release estável: 3.35
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

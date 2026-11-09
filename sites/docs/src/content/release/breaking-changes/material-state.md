@@ -9,12 +9,12 @@ description: >-
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 `MaterialState`, e suas APIs relacionadas, foram movidas para fora
 da biblioteca Material e renomeadas para `WidgetState`.
 
-## Contexto
+## Contexto {:#background}
 
 Anteriormente, `MaterialState` fornecia lógica para
 lidar com múltiplos estados diferentes que um widget poderia ter,
@@ -44,7 +44,7 @@ As classes `MaterialStateOutlineInputBorder` e
 biblioteca Material sem equivalente `WidgetState`, pois
 são específicas do design Material.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Um [Flutter fix][Flutter fix] está disponível para ajudar a migrar as classes
 `MaterialState` para `WidgetState`.
@@ -99,12 +99,12 @@ BorderSide side = WidgetStateBorderSide.resolveWith((Set<WidgetState> states) {
 });
 ```
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Disponível na versão: 3.21.0-11.0.pre<br>
 Na versão estável: 3.22.0
 
-## Referências
+## Referências {:#references}
 
 Issues relevantes:
 

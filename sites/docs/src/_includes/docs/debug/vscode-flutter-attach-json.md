@@ -1,6 +1,6 @@
 <!-- ia-translate: true -->
 
-##### Ativar anexação automática
+##### Ativar anexação automática {:#enable-automatic-attachment}
 
 Você pode configurar o VS Code para anexar ao seu projeto de módulo Flutter
 sempre que você iniciar a depuração.

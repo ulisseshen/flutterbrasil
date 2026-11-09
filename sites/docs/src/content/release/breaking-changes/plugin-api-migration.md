@@ -42,7 +42,7 @@ flutterbrasil.dev já foram migrados. (Saiba como se tornar um
 um plugin que usa as novas APIs, veja o
 [battery plus package][battery plus package].
 
-## Passos para atualização
+## Passos para atualização {:#upgrade-steps}
 
 As instruções a seguir delineiam os passos para suportar a nova API:
 
@@ -160,7 +160,7 @@ As instruções a seguir delineiam os passos para suportar a nova API:
     </activity>
     ```
 
-## Testando seu plugin
+## Testando seu plugin {:#testing-your-plugin}
 
 Os passos restantes abordam os testes do seu plugin, o que encorajamos,
 mas não são obrigatórios.
@@ -310,7 +310,7 @@ referências importantes:
 **binding.getApplicationContext()**
 : Retorna o `Context` da aplicação Android para o app em execução.
 
-## Plugin UI/Activity
+## Plugin UI/Activity {:#uiactivity-plugin}
 
 Se seu plugin precisa interagir com a UI,
 como solicitar permissões, ou alterar o chrome da UI do Android,

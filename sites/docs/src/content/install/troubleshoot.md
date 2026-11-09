@@ -22,9 +22,9 @@ enviar um [pull request][pull request] no GitHub.
 [file an issue]: {{site.repo.this}}/issues/new
 [pull request]: {{site.repo.this}}/pulls
 
-## Obter o Flutter SDK
+## Obter o Flutter SDK {:#get-the-flutter-sdk}
 
-### Não é possível encontrar o comando `flutter`
+### Não é possível encontrar o comando `flutter` {:#unable-to-find-the-flutter-command}
 
 __Como este problema se parece?__
 
@@ -55,7 +55,7 @@ Veja também: [Configuring PATH and Environment Variables - Dart Code][config pa
 [set up VS Code]: /tools/vs-code#setup
 [config path]: https://dartcode.org/docs/configuring-path-and-environment-variables/
 
-### Flutter em pastas especiais
+### Flutter em pastas especiais {:#flutter-in-special-folders}
 
 __Como este problema se parece?__
 
@@ -111,7 +111,7 @@ Para resolver isso:
 
 ## Configuração do Android {:#android-setup}
 
-### Ter várias versões do Java instaladas
+### Ter várias versões do Java instaladas {:#having-multiple-versions-of-java-installed}
 
 __Como este problema se parece?__
 
@@ -148,7 +148,7 @@ java.lang.UnsupportedClassVersionError - Stack Overflow][so java version].
 [Android Java Gradle migration guide]: /release/breaking-changes/android-java-gradle-migration-guide
 [so java version]: {{site.so}}/questions/75328050/
 
-### Componente `cmdline-tools` está ausente
+### Componente `cmdline-tools` está ausente {:#cmdline-tools-component-is-missing}
 
 __Como este problema se parece?__
 
@@ -183,7 +183,7 @@ ferramenta de linha de comando [sdkmanager][sdkmanager].
 
 [sdkmanager]: {{site.android-dev}}/studio/command-line/sdkmanager
 
-### Status da licença do Android desconhecido
+### Status da licença do Android desconhecido {:#android-license-status-unknown}
 
 __Como este problema se parece?__
 
@@ -225,7 +225,7 @@ Para resolver este problema:
    $ flutter doctor
    ```
 
-## Configuração do macOS
+## Configuração do macOS {:#macos-setup}
 
 ### SocketException: Send failed, OS Error: No route to host, errno = 65
 
@@ -254,7 +254,7 @@ Para corrigir isso:
    iniciar apps Flutter.
    Você pode precisar reiniciar seu editor de código, terminal e dispositivo físico.
 
-## Outros problemas
+## Outros problemas {:#other-problems}
 
 ### Exit code 69
 

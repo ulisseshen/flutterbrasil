@@ -6,7 +6,7 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 O método global `describeEnum` foi descontinuado. Usos anteriores
 de `describeEnum(Enum.something)` devem usar
@@ -17,7 +17,7 @@ estender `<T extends Enum?>` em vez de `<T>`.
 Usos existentes de `EnumProperty<NotAnEnum>` devem
 usar `DiagnosticsProperty<NotAnEnum>` no lugar.
 
-## Contexto
+## Contexto {:#context}
 
 O Dart 2.17 introduziu [enhanced enums][], que adicionou `Enum` como um tipo.
 Como resultado, todos os enums ganharam um getter `name`, o que tornou `describeEnum`
@@ -33,7 +33,7 @@ então a classe `EnumProperty` foi atualizada para aceitar apenas objetos `Enum`
 
 [enhanced enums]: {{site.dart-site}}/language/enums#declaring-enhanced-enums
 
-## Descrição da alteração
+## Descrição da alteração {:#description-of-change}
 
 Remover `describeEnum`.
 
@@ -42,7 +42,7 @@ Remover `describeEnum`.
 O `EnumProperty` agora espera null ou um `Enum`;
 você não pode mais passar uma classe que não seja `Enum`.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Se você usava anteriormente `describeEnum(Enum.field)` para acessar o
 valor string de um enum, agora você pode chamar `Enum.field.name`.
@@ -72,12 +72,12 @@ print(MyEnum.paper.name); // output: paper
 properties.add(DiagnosticsProperty<TextInputType>( ... ));
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Disponibilizado na versão: 3.14.0-2.0.pre<br>
 Na versão estável: 3.16
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

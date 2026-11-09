@@ -12,7 +12,7 @@ inclui as seguintes alterações entre outras melhorias gerais.
 Para saber mais sobre DevTools, confira a
 [visão geral do DevTools](/tools/devtools).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 * Melhorada usabilidade geral tornando a UI do DevTools mais densa.
   Isso melhora significativamente a experiência do usuário ao usar
@@ -27,7 +27,7 @@ Para saber mais sobre DevTools, confira a
 * Integração do DevTools ao [`package:unified_analytics`](https://pub.dev/packages/unified_analytics) para
   logging de telemetria unificado entre ferramentas Flutter e Dart. - [#7084](https://github.com/flutter/devtools/pull/7084)
 
-## Atualizações do Debugger
+## Atualizações do Debugger {:#debugger-updates}
 
 * Corrigido erro de off by one causando hits do profiler serem
   renderizados nas linhas erradas. - [#7178](https://github.com/flutter/devtools/pull/7178)
@@ -39,11 +39,11 @@ Para saber mais sobre DevTools, confira a
   o arquivo fonte usa finais de linha `\r\n` [#7190](https://github.com/flutter/devtools/pull/7190)
 * Reestabelecer breakpoints após um hot-restart. - [#7205](https://github.com/flutter/devtools/pull/7205)
 
-## Atualizações do VS Code Sidebar
+## Atualizações do VS Code Sidebar {:#vs-code-sidebar-updates}
 
 * Não mostrar notas de versão do DevTools na sidebar do Flutter. - [#7166](https://github.com/flutter/devtools/pull/7166)
 
-## Atualizações de DevTools Extension
+## Atualizações de DevTools Extension {:#devtools-extension-updates}
 
 * Adicionado suporte para conectar ao Dart Tooling Daemon do
   ambiente DevTools simulado. - [#7133](https://github.com/flutter/devtools/pull/7133)
@@ -57,7 +57,7 @@ Para saber mais sobre DevTools, confira a
 * Adicionado um comando `devtools_extensions validate` para
   validar requisitos de extensão durante o desenvolvimento. - [#7257](https://github.com/flutter/devtools/pull/7257)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de alterações nesta versão, confira o
 [log git do DevTools](https://github.com/flutter/devtools/tree/v2.33.0).

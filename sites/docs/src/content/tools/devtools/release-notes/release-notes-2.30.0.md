@@ -12,7 +12,7 @@ inclui as seguintes alterações entre outras melhorias gerais.
 Para saber mais sobre DevTools, confira a
 [visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Atualizações de Performance
+## Atualizações de Performance {:#performance-updates}
 
 * Adicionado um indicador do motor de renderização ao gráfico Flutter Frames. -
   [#6771](https://github.com/flutter/devtools/pull/6771)
@@ -22,7 +22,7 @@ Para saber mais sobre DevTools, confira a
 * Melhoradas mensagens quando não temos dados de análise disponíveis para um
   frame Flutter. - [#6768](https://github.com/flutter/devtools/pull/6768)
 
-## Atualizações do VS Code Sidebar
+## Atualizações do VS Code Sidebar {:#vs-code-sidebar-updates}
 
 * A Flutter Sidebar fornecida ao VS Code agora tem a capacidade de habilitar novas
   plataformas se um dispositivo está disponível para uma plataforma que não está habilitada para
@@ -33,7 +33,7 @@ Para saber mais sobre DevTools, confira a
   que abre DevTools em uma janela externa do navegador mesmo quando as configurações do VS Code
   estão definidas para normalmente usar DevTools incorporado. - [#6736](https://github.com/flutter/devtools/pull/6736)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de alterações nesta versão, confira o
 [log git do DevTools](https://github.com/flutter/devtools/tree/v2.30.0).

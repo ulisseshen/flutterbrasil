@@ -12,7 +12,7 @@ inclui as seguintes alterações entre outras melhorias gerais.
 Para saber mais sobre DevTools, confira a
 [visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Atualizações do Inspector
+## Atualizações do Inspector {:#inspector-updates}
 
 * Adicionado suporte para definir manualmente os diretórios de pacotes para seu app.
   Se você já carregou o Inspector e notou que
@@ -30,7 +30,7 @@ Para saber mais sobre DevTools, confira a
 
   ![frame_analysis](/assets/images/docs/tools/devtools/release-notes/images-2.17.0/package_directories.png "package directories")
 
-## Atualizações de Performance
+## Atualizações de Performance {:#performance-updates}
 
 * Adicionada uma aba **Frame Analysis** à página Performance.
   Ao analisar um frame Flutter com jank,
@@ -44,7 +44,7 @@ Para saber mais sobre DevTools, confira a
 
   ![frame_analysis](/assets/images/docs/tools/devtools/release-notes/images-2.17.0/frame_analysis.png "frame analysis")
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de alterações desde a versão anterior,
 confira

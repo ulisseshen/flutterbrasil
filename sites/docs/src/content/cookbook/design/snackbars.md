@@ -20,7 +20,7 @@ Esta receita implementa uma snackbar usando os seguintes passos:
   2. Exibir uma `SnackBar`.
   3. Fornecer uma ação opcional.
 
-## 1. Criar um `Scaffold`
+## 1. Criar um `Scaffold` {:#1-create-a-scaffold}
 
 Ao criar apps que seguem as diretrizes do Material Design,
 dê aos seus apps uma estrutura visual consistente.
@@ -43,7 +43,7 @@ return MaterialApp(
 );
 ```
 
-## 2. Exibir uma `SnackBar`
+## 2. Exibir uma `SnackBar` {:#2-display-a-snackbar}
 
 Com o `Scaffold` no lugar, exiba uma `SnackBar`.
 Primeiro, crie uma `SnackBar`, depois a exiba usando `ScaffoldMessenger`.
@@ -65,7 +65,7 @@ o widget `ScaffoldMessenger`:
   title="ScaffoldMessenger | Flutter widget of the week"></YouTubeEmbed>
 :::
 
-## 3. Fornecer uma ação opcional
+## 3. Fornecer uma ação opcional {:#3-provide-an-optional-action}
 
 Você pode querer fornecer uma ação ao usuário quando
 a `SnackBar` é exibida.
@@ -88,7 +88,7 @@ final snackBar = SnackBar(
 );
 ```
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 :::note
 Neste exemplo, a `SnackBar` é exibida quando um usuário toca em um botão.

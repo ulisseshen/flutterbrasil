@@ -20,7 +20,7 @@ A animação a seguir mostra o comportamento do app:
 
 ![Expanding and collapsing the FAB](/assets/images/docs/cookbook/effects/ExpandingFAB.webp){:.site-mobile-screenshot}
 
-## Criar um widget ExpandableFab
+## Criar um widget ExpandableFab {:#create-an-expandablefab-widget}
 
 Comece criando um novo stateful widget chamado `ExpandableFab`.
 Este widget exibe o FAB primário e coordena a expansão
@@ -57,7 +57,7 @@ class _ExpandableFabState extends State<ExpandableFab> {
 }
 ```
 
-## Cross-fade do FAB
+## Cross-fade do FAB {:#fab-cross-fade}
 
 O `ExpandableFab` exibe um botão de edição azul quando colapsado
 e um botão de fechar branco quando expandido. Ao expandir e colapsar,
@@ -157,7 +157,7 @@ mesmo quando está transparente. Sem o `IgnorePointer`,
 o botão de abrir sempre recebe o evento de toque,
 mesmo quando o botão de fechar está visível.
 
-## Criar um widget ActionButton
+## Criar um widget ActionButton {:#create-an-actionbutton-widget}
 
 Cada um dos botões que se expandem do `ExpandableFab`
 tem o mesmo design. Eles são círculos azuis com ícones brancos.
@@ -218,7 +218,7 @@ floatingActionButton: ExpandableFab(
 ),
 ```
 
-## Expandir e colapsar os botões de ação
+## Expandir e colapsar os botões de ação {:#expand-and-collapse-the-action-buttons}
 
 Os `ActionButton`s filhos devem voar para fora de baixo do FAB
 aberto quando expandidos. Então, os `ActionButton`s filhos devem
@@ -378,7 +378,7 @@ class _ExpandableFabState extends State<ExpandableFab>
 
 Parabéns! Agora você tem um FAB expansível.
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 Execute o app:
 

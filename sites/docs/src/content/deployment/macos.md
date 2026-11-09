@@ -8,7 +8,7 @@ shortTitle: macOS
 Este guia fornece um passo a passo detalhado para lançar um
 app Flutter na [App Store][appstore].
 
-## Preliminares
+## Preliminares {:#preliminaries}
 
 Antes de iniciar o processo de lançamento do seu app,
 garanta que ele atende às
@@ -21,7 +21,7 @@ Você pode ler mais sobre as várias
 opções de associação no guia
 [Choosing a Membership][devprogram_membership] da Apple.
 
-## Registre seu app no App Store Connect
+## Registre seu app no App Store Connect {:#register-your-app-on-app-store-connect}
 
 Gerencie o ciclo de vida do seu app no
 [App Store Connect][appstoreconnect_login] (anteriormente iTunes Connect).
@@ -34,7 +34,7 @@ Bundle ID único e criar um registro de aplicação no App Store Connect.
 Para uma visão geral detalhada do App Store Connect, veja o
 guia [App Store Connect][appstoreconnect_guide].
 
-### Registrar um Bundle ID
+### Registrar um Bundle ID {:#register-a-bundle-id}
 
 Toda aplicação macOS é associada com um Bundle ID,
 um identificador único registrado na Apple.
@@ -47,7 +47,7 @@ Para registrar um Bundle ID para seu app, siga estes passos:
 1. Na próxima página, confirme os detalhes e clique em **Register**
    para registrar seu Bundle ID.
 
-### Criar um registro de aplicação no App Store Connect
+### Criar um registro de aplicação no App Store Connect {:#create-an-application-record-on-app-store-connect}
 
 Registre seu app no App Store Connect:
 
@@ -67,7 +67,7 @@ Registre seu app no App Store Connect:
 Para uma visão geral detalhada,
 veja [Add an app to your account][appstoreconnect_guide_register].
 
-## Revisar configurações do projeto Xcode
+## Revisar configurações do projeto Xcode {:#review-xcode-project-settings}
 
 Este passo cobre a revisão das configurações mais importantes
 no workspace do Xcode.
@@ -122,7 +122,7 @@ Para uma visão geral detalhada de assinatura de app, veja
 
 [Supported deployment platforms]: /reference/supported-platforms
 
-## Configurando o nome, bundle identifier e copyright do app
+## Configurando o nome, bundle identifier e copyright do app {:#configuring-the-apps-name-bundle-identifier-and-copyright}
 
 A configuração para os identificadores de produto está centralizada
 em `macos/Runner/Configs/AppInfo.xcconfig`. Para o nome do app,
@@ -130,7 +130,7 @@ defina `PRODUCT_NAME`, para o copyright defina `PRODUCT_COPYRIGHT`,
 e finalmente defina `PRODUCT_BUNDLE_IDENTIFIER` para o
 bundle identifier do app.
 
-## Atualizar o número de versão do app
+## Atualizar o número de versão do app {:#updating-the-apps-version-number}
 
 O número de versão padrão do app é `1.0.0`.
 Para atualizá-lo, navegue até o arquivo `pubspec.yaml`
@@ -151,7 +151,7 @@ enquanto `build-number` usa `CFBundleVersion`.
 Leia mais sobre versionamento iOS em [Core Foundation Keys][]
 no site do Apple Developer.
 
-## Adicionar um ícone de app
+## Adicionar um ícone de app {:#add-an-app-icon}
 
 Quando um novo app Flutter é criado, um conjunto de ícones placeholder é criado.
 Este passo cobre substituir esses ícones placeholder pelos
@@ -163,7 +163,7 @@ Este passo cobre substituir esses ícones placeholder pelos
 1. Verifique se o ícone foi substituído executando seu app usando
    `flutter run -d macos`.
 
-## Criar um arquivo de compilação com Xcode
+## Criar um arquivo de compilação com Xcode {:#create-a-build-archive-with-xcode}
 
 Este passo cobre criar um arquivo de compilação e fazer upload
 do seu build para App Store Connect usando Xcode.
@@ -216,7 +216,7 @@ no TestFlight, ou prosseguir e lançar seu app na App Store.
 Para mais detalhes, veja
 [Upload an app to App Store Connect][distributionguide_upload].
 
-## Criar um arquivo de compilação com Codemagic CLI tools
+## Criar um arquivo de compilação com Codemagic CLI tools {:#create-a-build-archive-with-codemagic-cli-tools}
 
 Este passo cobre criar um arquivo de compilação e fazer upload
 do seu build para App Store Connect usando comandos de build Flutter
@@ -420,7 +420,7 @@ keychain use-login
 </li>
 </ol>
 
-## Lançar seu app no TestFlight
+## Lançar seu app no TestFlight {:#release-your-app-on-testflight}
 
 [TestFlight][] permite que desenvolvedores enviem seus apps
 para testadores internos e externos. Este passo opcional
@@ -435,12 +435,12 @@ cobre lançar seu build no TestFlight.
    do App Store Connect,
    disponível no menu dropdown no topo da página.
 
-## Distribuir para dispositivos registrados
+## Distribuir para dispositivos registrados {:#distribute-to-registered-devices}
 
 Veja o [guia de distribuição][distributionguide_macos]
 para preparar um arquivo para distribuição para computadores Mac designados.
 
-## Lançar seu app na App Store
+## Lançar seu app na App Store {:#release-your-app-to-the-app-store}
 
 Quando estiver pronto para lançar seu app para o mundo,
 siga estes passos para enviar seu app para revisão e
@@ -462,12 +462,12 @@ especificou na seção **Version Release**.
 Para mais detalhes, veja
 [Distribute an app through the App Store][distributionguide_submit].
 
-## Solução de problemas
+## Solução de problemas {:#troubleshooting}
 
 O guia [Distribute your app][distributionguide] fornece uma
 visão geral detalhada do processo de lançar um app na App Store.
 
-## Recursos adicionais
+## Recursos adicionais {:#additional-resources}
 
 Para aprender como empacotar e distribuir seu app desktop Flutter
 para macOS da maneira open source, sem usar uma conta Apple Developer

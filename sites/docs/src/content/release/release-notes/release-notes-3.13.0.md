@@ -523,7 +523,7 @@ consulte o [CHANGELOG][] do Flutter.
 * [flutter_tools] modify Skeleton template to use ListenableBuilder instead of AnimatedBuilder by @fabiancrx in [128810](https://github.com/flutter/flutter/pull/128810)
 * [CP] Fix ConcurrentModificationError in DDS by @christopherfujino in [130740](https://github.com/flutter/flutter/pull/130740)
 
-## Novos contribuidores
+## Novos contribuidores {:#new-contributors}
 * @Rexios80 made their first contribution in [123726](https://github.com/flutter/flutter/pull/123726)
 * @adityathakurxd made their first contribution in [124511](https://github.com/flutter/flutter/pull/124511)
 * @gabrielgarciagava made their first contribution in [124459](https://github.com/flutter/flutter/pull/124459)
@@ -800,7 +800,7 @@ consulte o [CHANGELOG][] do Flutter.
 * [Impeller] allowing enabling Impeller on macOS. by @jonahwilliams in [42639](https://github.com/flutter/engine/pull/42639)
 * Fix inverted boolean in Windows document selection changed a11y event by @yaakovschectman in [43281](https://github.com/flutter/engine/pull/43281)
 
-## Novos contribuidores
+## Novos contribuidores {:#new-contributors}
 * @drwez made their first contribution in [41154](https://github.com/flutter/engine/pull/41154)
 * @bastionkid made their first contribution in [41082](https://github.com/flutter/engine/pull/41082)
 * @maRci002 made their first contribution in [40599](https://github.com/flutter/engine/pull/40599)

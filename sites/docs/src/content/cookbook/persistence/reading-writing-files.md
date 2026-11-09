@@ -31,7 +31,7 @@ Para acompanhar a discussão sobre este problema,
 confira o `flutter/flutter` [issue #45296]({{site.repo.flutter}}/issues/45296).
 :::
 
-## 1. Encontre o caminho local correto
+## 1. Encontre o caminho local correto {:#1-find-the-correct-local-path}
 
 Este exemplo exibe um contador. Quando o contador muda,
 escreva dados em disco para que você possa lê-los novamente quando o app for carregado.
@@ -70,7 +70,7 @@ import 'package:path_provider/path_provider.dart';
   }
 ```
 
-## 2. Crie uma referência para a localização do arquivo
+## 2. Crie uma referência para a localização do arquivo {:#2-create-a-reference-to-the-file-location}
 
 Uma vez que você sabe onde armazenar o arquivo, crie uma referência para a
 localização completa do arquivo. Você pode usar a classe [`File`][`File`]
@@ -84,7 +84,7 @@ Future<File> get _localFile async {
 }
 ```
 
-## 3. Escreva dados no arquivo
+## 3. Escreva dados no arquivo {:#3-write-data-to-the-file}
 
 Agora que você tem um `File` para trabalhar,
 use-o para ler e escrever dados.
@@ -102,7 +102,7 @@ Future<File> writeCounter(int counter) async {
 }
 ```
 
-## 4. Leia dados do arquivo
+## 4. Leia dados do arquivo {:#4-read-data-from-the-file}
 
 Agora que você tem alguns dados em disco, você pode lê-los.
 Mais uma vez, use a classe `File`.
@@ -124,7 +124,7 @@ Future<int> readCounter() async {
 }
 ```
 
-## Exemplo completo
+## Exemplo completo {:#complete-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dart

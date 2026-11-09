@@ -20,7 +20,7 @@ A animação a seguir mostra o comportamento do app:
 
 ![O botão de download passa por suas etapas](/assets/images/docs/cookbook/effects/DownloadButton.webp){:.site-mobile-screenshot}
 
-## Defina um novo widget stateless
+## Defina um novo widget stateless {:#define-a-new-stateless-widget}
 
 Seu widget de botão precisa mudar sua aparência ao longo do tempo.
 Portanto, você precisa implementar seu botão com um
@@ -42,7 +42,7 @@ class DownloadButton extends StatelessWidget {
 }
 ```
 
-## Defina os possíveis estados visuais do botão
+## Defina os possíveis estados visuais do botão {:#define-the-buttons-possible-visual-states}
 
 A apresentação visual do botão de download é baseada em um
 determinado status de download. Defina os possíveis estados do
@@ -91,7 +91,7 @@ testes mais fáceis e mudanças mais fáceis no comportamento da aplicação
 no futuro.
 :::
 
-## Exiba a forma do botão
+## Exiba a forma do botão {:#display-the-button-shape}
 
 O botão de download muda sua forma com base no status
 do download. O botão exibe um retângulo arredondado cinza durante
@@ -199,7 +199,7 @@ forma final de um círculo. Mas, você não quer que o círculo
 final seja visível, então você o torna transparente,
 o que causa um desaparecimento animado.
 
-## Exiba o texto do botão
+## Exiba o texto do botão {:#display-the-button-text}
 
 O `DownloadButton` exibe `GET` durante a
 fase `notDownloaded`, `OPEN` durante a fase `downloaded`,
@@ -268,7 +268,7 @@ class ButtonShapeWidget extends StatelessWidget {
 }
 ```
 
-## Exiba um spinner durante o fetching do download
+## Exiba um spinner durante o fetching do download {:#display-a-spinner-while-fetching-download}
 
 Durante a fase `fetchingDownload`, o `DownloadButton`
 exibe um spinner radial. Este spinner aparece gradualmente da
@@ -313,7 +313,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-## Exiba o progresso e um botão de parar durante o download
+## Exiba o progresso e um botão de parar durante o download {:#display-the-progress-and-a-stop-button-while-downloading}
 
 Após a fase `fetchingDownload` está a fase `downloading`.
 Durante a fase `downloading`, o `DownloadButton`
@@ -371,7 +371,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-## Adicione callbacks de toque no botão
+## Adicione callbacks de toque no botão {:#add-button-tap-callbacks}
 
 O último detalhe que seu `DownloadButton` precisa é o
 comportamento do botão. O botão deve fazer coisas quando o usuário toca nele.
@@ -444,7 +444,7 @@ buscando download, baixando e baixado.
 Agora, o usuário pode tocar para iniciar um download, tocar para cancelar um
 download em progresso e tocar para abrir um download completo.
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 Execute o app:
 

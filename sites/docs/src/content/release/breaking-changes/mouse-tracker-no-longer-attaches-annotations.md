@@ -9,12 +9,12 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Os métodos `attachAnnotation`, `detachAnnotation` e `isAnnotationAttached`
 do `MouseTracker` foram removidos.
 
-## Contexto
+## Contexto {:#context}
 
 Eventos do mouse, como quando um ponteiro do mouse entra em uma região,
 sai dela ou passa sobre ela, são detectados com a ajuda de
@@ -40,7 +40,7 @@ verificação de saída montada, bloqueando o callback quando desmontado.
 Por isso, esses métodos foram removidos, e o `MouseTracker`
 não rastreia mais todas as annotations da tela.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 A classe `MouseTracker` removeu três métodos relacionados
 à anexação de annotations:
@@ -60,7 +60,7 @@ A classe `MouseTracker` removeu três métodos relacionados
 `RenderMouseRegion` e `MouseTrackerAnnotation` não realizam mais a
 verificação de saída montada, enquanto `MouseRegion` continua realizando.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 As chamadas a `MouseTracker.attachAnnotation` e
 `detachAnnotation` devem ser removidas, com pouco ou nenhum impacto:
@@ -136,12 +136,12 @@ Esse recurso não é mais tecnicamente possível,
 já que as annotations não são mais rastreadas.
 Se você de alguma forma precisar desse recurso, abra uma issue.
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Incluído na versão: 1.15.4<br>
 Na versão estável: 1.17
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

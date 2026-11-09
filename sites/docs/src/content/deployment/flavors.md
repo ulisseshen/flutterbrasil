@@ -10,7 +10,7 @@ description: >
 Este guia mostra como criar flavors Flutter para um
 app Android.
 
-## Visão geral
+## Visão geral {:#overview}
 
 Um flavor Flutter quando usado com Android representa um
 termo unificado para vários recursos específicos da plataforma. Por exemplo, um
@@ -190,7 +190,7 @@ O framework Flutter fornece a constante `appFlavor`, que recupera o nome do flav
 Depois de adicionar product flavors, você pode personalizá-los
 para seu app Android.
 
-### Criar um nome de exibição de app distinto
+### Criar um nome de exibição de app distinto {:#create-a-distinct-app-display-name}
 
 Se você tem múltiplos product flavors, um nome de app distinto
 pode identificar rapidamente qual flavor seu app implantado está
@@ -265,7 +265,7 @@ para dois product flavors chamados `staging` e
 
 [Launch a flavor]: #launching-your-app-flavors
 
-### Criar ícones distintos
+### Criar ícones distintos {:#create-distinct-icons}
 
 Se você tem múltiplos product flavors, um ícone distinto para
 cada configuração pode ajudá-lo a identificar rapidamente qual
@@ -336,7 +336,7 @@ projeto chamado `flavors_example`.
 [Launch a flavor]: #launching-your-app-flavors
 [App Icon Generator]: https://www.appicon.co/
 
-### Bundle de assets
+### Bundle de assets {:#bundle-assets}
 
 Se você tem assets que são usados apenas em um flavor específico
 no seu app, você pode configurá-los para serem incluídos no bundle
@@ -350,7 +350,7 @@ mais, veja o [campo `assets`][`assets` field] em
 [`assets` field]: /tools/pubspec#assets
 [Flutter pubspec options]: /tools/pubspec
 
-### Definir um flavor padrão
+### Definir um flavor padrão {:#set-a-default-flavor}
 
 Você pode fazer com que seu app use um flavor específico quando você
 iniciar seu app sem especificar um flavor. Para fazer isso,
@@ -360,7 +360,7 @@ em [opções pubspec do Flutter][Flutter pubspec options].
 
 [`default-flavor` field]: /tools/pubspec#default-flavor
 
-### Adicionar configurações de build únicas
+### Adicionar configurações de build únicas {:#add-unique-build-settings}
 
 Se você tem configurações de build adicionais que gostaria de
 configurar para um product flavor Android específico, veja o
@@ -373,7 +373,7 @@ Ao definir `abiFilters` em product flavors, passe
 
 [Configure build variants]: https://developer.android.com/build/build-variants
 
-## Mais informações
+## Mais informações {:#more-information}
 
 Para mais informações sobre como criar e usar flavors, confira
 os seguintes recursos:

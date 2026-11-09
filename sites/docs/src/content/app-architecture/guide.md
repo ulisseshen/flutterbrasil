@@ -24,7 +24,7 @@ juntamente com as classes que existem dentro de cada camada.
 A seção após esta fornece exemplos de código concretos e
 percorre uma aplicação Flutter que implementou essas recomendações.
 
-## Visão geral da estrutura do projeto
+## Visão geral da estrutura do projeto {:#overview-of-project-structure}
 
 [Separação de responsabilidades][Separation-of-concerns] é o princípio mais importante a seguir ao
 projetar seu app Flutter.
@@ -202,7 +202,7 @@ confira os [fundamentos de gerenciamento de estado][state management fundamental
 [App architecture case study]: /app-architecture/case-study
 [state management fundamentals]: /data-and-backend/state-mgmt/intro
 
-## Camada de dados
+## Camada de dados {:#data-layer}
 
 A camada de dados de um app lida com seus dados e lógica de negócio.
 Duas peças de arquitetura compõem a camada de dados: services e repositories.
@@ -325,7 +325,7 @@ beneficiaria desta camada adicional, considere os prós e contras:
 
 {:.table .table-striped}
 
-### Acesso a dados com use-cases
+### Acesso a dados com use-cases {:#data-access-with-use-cases}
 
 Outra consideração ao adicionar uma camada de domínio é se os view models continuarão
 a ter acesso aos dados do repository diretamente, ou se você forçará

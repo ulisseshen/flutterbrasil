@@ -1,6 +1,6 @@
 <!-- ia-translate: true -->
 
-#### Construa a versão Windows da aplicação Flutter no PowerShell ou no Command Prompt
+#### Construa a versão Windows da aplicação Flutter no PowerShell ou no Command Prompt {:#build-the-windows-version-of-the-flutter-app-in-powershell-or-the-command-prompt}
 
 Para gerar as dependências de plataforma Windows necessárias,
 execute o comando `flutter build`.
@@ -21,7 +21,7 @@ Building Windows application...                                    31.4s
 
 Se você usa VS Code para depurar a maior parte do seu código, comece com esta seção.
 
-##### Inicie o debugger no VS Code
+##### Inicie o debugger no VS Code {:#start-the-debugger-in-vs-code}
 
 {% render "docs/debug/debug-flow-vscode-as-start.md" %}
 
@@ -34,7 +34,7 @@ Se você usa VS Code para depurar a maior parte do seu código, comece com esta 
      </div>
 {% endcomment %}
 
-##### Anexe ao processo Flutter no Visual Studio
+##### Anexe ao processo Flutter no Visual Studio {:#attach-to-the-flutter-process-in-visual-studio}
 
 1. Para abrir o arquivo de solução do projeto, vá para
    **File** <span aria-label="and then">></span>
@@ -74,11 +74,11 @@ Se você usa VS Code para depurar a maior parte do seu código, comece com esta 
 </Tab>
 <Tab name="Start from Visual Studio">
 
-#### Comece a depuração primeiro com o Visual Studio
+#### Comece a depuração primeiro com o Visual Studio {:#start-debugging-with-visual-studio-first}
 
 Se você usa Visual Studio para depurar a maior parte do seu código, comece com esta seção.
 
-##### Inicie o debugger local do Windows
+##### Inicie o debugger local do Windows {:#start-the-local-windows-debugger}
 
 1. Para abrir o arquivo de solução do projeto, vá para
    **File** <span aria-label="and then">></span>
@@ -116,7 +116,7 @@ Se você usa Visual Studio para depurar a maior parte do seu código, comece com
 
 1. Copie o URI do serviço Dart VM.
 
-##### Anexe à Dart VM no VS Code
+##### Anexe à Dart VM no VS Code {:#attach-to-the-dart-vm-in-vs-code}
 
 1. Para abrir a paleta de comandos, vá para
    **View** <span aria-label="and then">></span>

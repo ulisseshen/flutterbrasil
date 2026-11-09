@@ -8,7 +8,7 @@ Esta página descreve como vincular eventos de teclado físico a ações na inte
 do usuário. Por exemplo, para definir atalhos de teclado na sua aplicação, esta
 página é para você.
 
-## Visão geral
+## Visão geral {:#overview}
 
 Para uma aplicação GUI fazer algo, ela precisa ter ações: os usuários querem dizer
 à aplicação para _fazer_ algo. As ações são frequentemente funções simples que
@@ -38,7 +38,7 @@ Para ilustrar os conceitos em actions e shortcuts, este artigo cria um
 app simples que permite ao usuário selecionar e copiar texto em um campo de texto usando tanto
 botões quanto atalhos.
 
-### Por que separar Actions de Intents?
+### Por que separar Actions de Intents? {:#why-separate-actions-from-intents}
 
 Você pode se perguntar: por que não apenas mapear uma combinação de teclas diretamente para uma ação? Por que
 ter intents? Isso ocorre porque é útil ter uma separação de
@@ -67,7 +67,7 @@ a todas as invocações de uma `Action`: esse tipo de estado deve ser passado pa
 construtor da própria `Action`, para manter o `Intent` sem precisar saber
 demais.
 
-### Por que não usar callbacks?
+### Por que não usar callbacks? {:#why-not-use-callbacks}
 
 Você também pode se perguntar: por que não apenas usar um callback em vez de um objeto `Action`?
 A razão principal é que é útil para as ações decidirem se elas
@@ -165,7 +165,7 @@ caractere produzido por uma sequência de teclas, em vez das logical keys em si.
 maneiras personalizadas de ativar atalhos a partir de eventos de tecla.
 :::
 
-### O ShortcutManager
+### O ShortcutManager {:#the-shortcutmanager}
 
 O shortcut manager, um objeto mais duradouro que o widget `Shortcuts`, passa
 eventos de tecla quando os recebe. Ele contém a lógica para decidir como
@@ -203,7 +203,7 @@ executar invocando-as com um `Intent`. Actions podem ser habilitadas ou desabili
 e recebem a instância de intent que as invocou como argumento para permitir
 configuração pelo intent.
 
-### Definindo actions
+### Definindo actions {:#defining-actions}
 
 Actions, em sua forma mais simples, são apenas subclasses de `Action<Intent>` com um
 método `invoke()`. Aqui está uma ação simples que simplesmente invoca uma função no
@@ -248,7 +248,7 @@ intent correspondente no primeiro widget `Actions` encontrado, ele considera o p
 widget ancestral `Actions`, e assim por diante, até atingir a raiz da árvore de widgets,
 ou encontrar um tipo de intent correspondente e invocar a action correspondente.
 
-### Invocando Actions
+### Invocando Actions {:#invoking-actions}
 
 O sistema de actions tem várias maneiras de invocar actions. De longe, a maneira mais comum
 é através do uso de um widget `Shortcuts` coberto na seção anterior,
@@ -415,7 +415,7 @@ Isso registra cada action à medida que ela é executada, assim:
 flutter: Action invoked: SelectAllAction#906fc(SelectAllIntent#a98e3) from Builder(dependencies: _[ActionsMarker])
 ```
 
-## Juntando tudo
+## Juntando tudo {:#putting-it-together}
 
 A combinação de `Actions` e `Shortcuts` é poderosa: você pode definir
 intents genéricos que mapeiam para ações específicas no nível do widget. Aqui está um app simples

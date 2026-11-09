@@ -19,7 +19,7 @@ não é viável para seus casos de uso, você provavelmente está certo.
 Aprenda mais com os seguintes recursos,
 muitos dos quais foram contribuídos pela comunidade Flutter.
 
-## Visão geral
+## Visão geral {:#general-overview}
 
 Coisas para revisar antes de selecionar uma abordagem.
 
@@ -35,7 +35,7 @@ Coisas para revisar antes de selecionar uma abordagem.
 [Introduction to state management]: /data-and-backend/state-mgmt/intro
 [Pragmatic State Management in Flutter]: {{site.yt.watch}}?v=d_m5csmrf7I
 
-## Abordagens integradas
+## Abordagens integradas {:#built-in-approaches}
 
 ### `setState`
 
@@ -49,7 +49,7 @@ A abordagem de baixo nível para usar em estado efêmero específico de widget.
 
 <a id="valuenotifier-inheritednotifier" aria-hidden="true"></a>
 
-### `ValueNotifier` e `InheritedNotifier`
+### `ValueNotifier` e `InheritedNotifier` {:#valuenotifier-and-inheritednotifier}
 
 Uma abordagem usando apenas APIs fornecidas pelo Flutter para
 atualizar o estado e notificar a UI sobre mudanças.
@@ -60,7 +60,7 @@ atualizar o estado e notificar a UI sobre mudanças.
 
 <a id="inheritedwidget-inheritedmodel" aria-hidden="true"></a>
 
-### `InheritedWidget` e `InheritedModel`
+### `InheritedWidget` e `InheritedModel` {:#inheritedwidget-and-inheritedmodel}
 
 A abordagem de baixo nível usada para
 comunicar entre ancestrais e filhos na árvore de widgets.
@@ -84,7 +84,7 @@ Outros documentos úteis incluem:
 [Managing Flutter Application State With InheritedWidgets]: {{site.flutter-blog}}/managing-flutter-application-state-with-inheritedwidgets-1140452befe1
 [Widget - State - Context - InheritedWidget]: https://flutteris.com/blog/en/widget-state-context-inheritedwidget
 
-## Pacotes fornecidos pela comunidade
+## Pacotes fornecidos pela comunidade {:#community-provided-packages}
 
 Dependendo da complexidade do seu app e das preferências da sua equipe,
 você pode achar útil adotar um pacote de gerenciamento de estado.

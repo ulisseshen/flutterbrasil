@@ -21,20 +21,20 @@ O console de Debug está disponível nas views [Inspector][Inspector],
 [Debugger]:  /tools/devtools/debugger
 [Memory]:    /tools/devtools/memory
 
-## Assista à saída da aplicação
+## Assista à saída da aplicação {:#watch-application-output}
 
 O console mostra a saída padrão (`stdout`) da aplicação:
 
 ![Screenshot of stdout in Console view](/assets/images/docs/tools/devtools/console-stdout.png)
 
-## Explore widgets inspecionados
+## Explore widgets inspecionados {:#explore-inspected-widgets}
 
 Se você clicar em um widget na tela **Inspector**,
 a variável para este widget é exibida no **Console**:
 
 ![Screenshot of inspected widget in Console view](/assets/images/docs/tools/devtools/console-inspect-widget.png){:width="100%"}
 
-## Avalie expressões
+## Avalie expressões {:#evaluate-expressions}
 
 No console, você pode avaliar expressões para uma aplicação
 pausada ou em execução, assumindo que você está executando
@@ -47,7 +47,7 @@ use `$0`, `$1` (até `$5`) na forma de `var x = $0`:
 
 ![Screenshot showing how to evaluate variables](/assets/images/docs/tools/devtools/console-evaluate-variables.png){:width="100%"}
 
-## Navegue pelo snapshot da heap
+## Navegue pelo snapshot da heap {:#browse-heap-snapshot}
 
 Para soltar uma variável no console a partir de um snapshot da heap,
 faça o seguinte:

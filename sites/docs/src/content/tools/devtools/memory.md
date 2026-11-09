@@ -20,7 +20,7 @@ a primeira seção explica como o Dart gerencia memória.
 Se você já entende o gerenciamento de memória do Dart,
 você pode pular para o [guia da visualização Memory](#memory-view-guide).
 
-## Razões para usar a visualização memory
+## Razões para usar a visualização memory {:#reasons-to-use-the-memory-view}
 
 Use a visualização memory para otimização de memória preventiva ou quando
 sua aplicação experimenta uma das seguintes condições:
@@ -33,7 +33,7 @@ sua aplicação experimenta uma das seguintes condições:
   * Este limite pode variar dependendo do tipo de dispositivos que seu app visa.
 * Suspeita de vazamento de memória
 
-## Conceitos básicos de memória
+## Conceitos básicos de memória {:#basic-memory-concepts}
 
 Objetos Dart criados usando um construtor de classe
 (por exemplo, usando `MyClass()`) vivem em uma
@@ -45,26 +45,26 @@ não é mais usado (veja [Dart garbage collection]).
 
 [Dart garbage collection]: https://flutter.dev/blog/flutter-dont-fear-the-garbage-collector
 
-### Tipos de objetos
+### Tipos de objetos {:#object-types}
 
-#### Objeto descartável
+#### Objeto descartável {:#disposable-object}
 
 Um objeto descartável é qualquer objeto Dart que define um método `dispose()`.
 Para evitar vazamentos de memória, invoque `dispose` quando o objeto não for mais necessário.
 
-#### Objeto com risco de memória
+#### Objeto com risco de memória {:#memory-risky-object}
 
 Um objeto com risco de memória é um objeto que _pode_ causar um vazamento de memória,
 se não for descartado corretamente ou descartado mas não coletado pelo GC.
 
-### Objeto raiz, caminho de retenção e alcançabilidade
+### Objeto raiz, caminho de retenção e alcançabilidade {:#root-object-retaining-path-and-reachability}
 
-#### Objeto raiz
+#### Objeto raiz {:#root-object}
 
 Toda aplicação Dart cria um _objeto raiz_ que referencia,
 direta ou indiretamente, todos os outros objetos que a aplicação aloca.
 
-#### Alcançabilidade
+#### Alcançabilidade {:#reachability}
 
 Se, em algum momento da execução da aplicação,
 o objeto raiz parar de referenciar um objeto alocado,
@@ -72,7 +72,7 @@ o objeto torna-se _inalcançável_,
 o que é um sinal para o coletor de lixo (GC)
 desalocar a memória do objeto.
 
-#### Caminho de retenção
+#### Caminho de retenção {:#retaining-path}
 
 A sequência de referências da raiz para um objeto
 é chamada de _caminho de retenção_ do objeto,
@@ -81,7 +81,7 @@ Um objeto pode ter muitos caminhos de retenção.
 Objetos com pelo menos um caminho de retenção são
 chamados de objetos _alcançáveis_.
 
-#### Exemplo
+#### Exemplo {:#example}
 
 O exemplo a seguir ilustra os conceitos:
 
@@ -121,7 +121,7 @@ void myFunction() {
 }
 ```
 
-### Tamanho superficial vs tamanho retido
+### Tamanho superficial vs tamanho retido {:#shallow-size-vs-retained-size}
 
 **Tamanho superficial** inclui apenas o tamanho do objeto
 e suas referências, enquanto **tamanho retido** também inclui
@@ -162,12 +162,12 @@ root -> d -> e -> x (shortest retaining path to `x`)
 Apenas membros do caminho mais curto (`d` e `e`) incluirão
 `x` em seu tamanho retido.
 
-### Vazamentos de memória acontecem no Dart?
+### Vazamentos de memória acontecem no Dart? {:#memory-leaks-happen-in-dart}
 
 O coletor de lixo não pode prevenir todos os tipos de vazamentos de memória, e desenvolvedores
 ainda precisam observar objetos para ter um ciclo de vida livre de vazamentos.
 
-#### Por que o coletor de lixo não pode prevenir todos os vazamentos?
+#### Por que o coletor de lixo não pode prevenir todos os vazamentos? {:#why-cant-the-garbage-collector-prevent-all-leaks}
 
 Embora o coletor de lixo cuide de todos os
 objetos inalcançáveis, é responsabilidade
@@ -181,7 +181,7 @@ o coletor de lixo não pode reconhecê-los,
 a alocação de memória cresce progressivamente,
 e o app eventualmente trava com um erro `out-of-memory`.
 
-#### Por que closures requerem atenção extra
+#### Por que closures requerem atenção extra {:#why-closures-require-extra-attention}
 
 Um padrão de vazamento difícil de detectar está relacionado ao uso de closures.
 No código a seguir, uma referência ao
@@ -194,7 +194,7 @@ enquanto `handler` for alcançável.
   final handler = () => print(myHugeObject.name);
   setHandler(handler);
 ```
-#### Por que `BuildContext` requer atenção extra
+#### Por que `BuildContext` requer atenção extra {:#why-buildcontext-requires-extra-attention}
 
 Um exemplo de um objeto grande e de curta duração que
 pode se infiltrar em uma área de longa duração e assim causar vazamentos,
@@ -215,7 +215,7 @@ Widget build(BuildContext context) {
 …
 ```
 
-#### Como corrigir código propenso a vazamentos?
+#### Como corrigir código propenso a vazamentos? {:#how-to-fix-leak-prone-code}
 
 O código a seguir não é propenso a vazamentos,
 porque:
@@ -235,7 +235,7 @@ Widget build(BuildContext context) {
 …
 ```
 
-#### Regra geral para `BuildContext`
+#### Regra geral para `BuildContext` {:#general-rule-for-buildcontext}
 
 Em geral, use a seguinte regra para um
 `BuildContext`: se o closure não sobrevive
@@ -252,7 +252,7 @@ junto com o widget, e pode sobreviver a ele significativamente.
 
 [interactive]: /ui/interactivity#creating-a-stateful-widget
 
-### Vazamento de memória vs inchaço de memória
+### Vazamento de memória vs inchaço de memória {:#memory-leak-vs-memory-bloat}
 
 Em um vazamento de memória, uma aplicação usa memória progressivamente,
 por exemplo, criando repetidamente um listener,
@@ -295,7 +295,7 @@ tem os seguintes recursos:
 
 O gráfico expansível fornece os seguintes recursos:
 
-#### Anatomia da memória
+#### Anatomia da memória {:#memory-anatomy}
 
 Um gráfico de séries temporais visualiza o estado da
 memória Flutter em intervalos sucessivos de tempo.
@@ -306,7 +306,7 @@ coleta de lixo e tamanho do conjunto residente são capturados.
 
 ![Screenshot of a memory anatomy page](/assets/images/docs/tools/devtools/memory_chart_anatomy.png){:width="100%"}
 
-#### Gráfico de visão geral da memória
+#### Gráfico de visão geral da memória {:#memory-overview-chart}
 
 O gráfico de visão geral da memória é um gráfico de séries temporais
 de estatísticas de memória coletadas. Ele apresenta visualmente
@@ -429,7 +429,7 @@ alocam memória para um conjunto de classes durante a execução do recurso:
 
 ![Screenshot of a trace tab](/assets/images/docs/tools/devtools/trace-instances-tab.png){:width="100%"}
 
-#### Visualização bottom up vs call tree
+#### Visualização bottom up vs call tree {:#bottom-up-vs-call-tree-view}
 
 Alterne entre visualizações bottom-up e call tree
 dependendo das especificidades de suas tarefas.
@@ -444,7 +444,7 @@ para mostrar suas chamadas.
 A visualização bottom-up mostra a lista de diferentes
 pilhas de chamadas que alocaram as instâncias.
 
-## Outros recursos
+## Outros recursos {:#other-resources}
 
 Para mais informações, confira os seguintes recursos:
 

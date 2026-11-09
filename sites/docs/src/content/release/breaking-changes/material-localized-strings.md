@@ -21,7 +21,7 @@ semântica. Para aplicar as mesmas anotações ao
 [`ReorderableList`][] e ao [`SliverReorderableList`][], eles precisam
 acessar essas strings a partir da biblioteca de widgets.
 
-## Descrição da mudança {:#description-of-the-change}
+## Descrição da mudança {:#description-of-change}
 
 As strings de [`MaterialLocalizations`][] `reorderItemToStart`,
 `reorderItemToEnd`, `reorderItemUp`, `reorderItemDown`, `reorderItemLeft` e

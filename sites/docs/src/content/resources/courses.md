@@ -12,11 +12,11 @@ informações atualizadas, como código Dart null-safe.
 Estes cursos estão agrupados por idioma e listados em ordem alfabética.
 Para incluir seu curso, [envie um PR][submit a PR]:
 
-## Árabe
+## Árabe {:#arabic}
 
 * [Flutter Master Course From Zero To Hero][] por Usama Elgendy
 
-## Inglês
+## Inglês {:#english}
 
 * [20 Hour Dart & Flutter YT Course For Beginners][] por Rivaan Ranawat
 * [Best Dart Course][] por Tadas Petra & Robert Brunhage
@@ -36,20 +36,20 @@ Para incluir seu curso, [envie um PR][submit a PR]:
 * [The Complete 2021 Flutter Development Bootcamp Using Dart][] por App Brewery
 * [The Complete Dart Developer Guide][] por Andrea Bizzotto
 
-## Alemão
+## Alemão {:#german}
 
 * [Flutter leicht gemacht 2022 - Zero to Mastery!][] por Max Berktold
 
-## Italiano
+## Italiano {:#italian}
 
 * [Flutter University - From Zero to Mastery][] por Fudeo
 
-## Português
+## Português {:#portuguese}
 
 * [Flutter Bootcamp][] por Rubens de Melo
 * [Flutter para iniciantes][] por Rubens de Melo
 
-## Turco
+## Turco {:#turkish}
 
 * [Flutter Zero to Hero][] por Veli Bacik
 

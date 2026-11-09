@@ -36,7 +36,7 @@ ao longo desta receita, que usa os seguintes passos:
   5. Busque o widget usando um `Finder`.
   6. Verifique o widget usando um `Matcher`.
 
-## 1. Adicione a dependência `flutter_test`
+## 1. Adicione a dependência `flutter_test` {:#1-add-the-flutter-test-dependency}
 
 Antes de escrever testes, inclua a dependência `flutter_test`
 na seção `dev_dependencies` do arquivo `pubspec.yaml`.
@@ -49,7 +49,7 @@ dev_dependencies:
     sdk: flutter
 ```
 
-## 2. Crie um widget para testar
+## 2. Crie um widget para testar {:#2-create-a-widget-to-test}
 
 Em seguida, crie um widget para testar. Para esta receita,
 crie um widget que exibe um `title` e `message`.
@@ -75,7 +75,7 @@ class MyWidget extends StatelessWidget {
 }
 ```
 
-## 3. Crie um teste `testWidgets`
+## 3. Crie um teste `testWidgets` {:#3-create-a-testwidgets-test}
 
 Com um widget para testar, comece escrevendo seu primeiro teste.
 Use a função [`testWidgets()`][`testWidgets()`] fornecida pelo
@@ -98,7 +98,7 @@ void main() {
 }
 ```
 
-## 4. Construa o widget usando o `WidgetTester`
+## 4. Construa o widget usando o `WidgetTester` {:#4-build-the-widget-using-the-widgettester}
 
 Em seguida, construa `MyWidget` dentro do ambiente de teste usando o
 método [`pumpWidget()`][`pumpWidget()`] fornecido por `WidgetTester`.
@@ -117,7 +117,7 @@ void main() {
 }
 ```
 
-### Notas sobre os métodos pump()
+### Notas sobre os métodos pump() {:#notes-about-the-pump-methods}
 
 Após a chamada inicial para `pumpWidget()`, o `WidgetTester` fornece
 maneiras adicionais de reconstruir o mesmo widget. Isso é útil se você está
@@ -148,7 +148,7 @@ Sem isso, a animação não inicia.
 Esses métodos fornecem controle refinado sobre o ciclo de vida de construção,
 o que é particularmente útil durante os testes.
 
-## 5. Busque nosso widget usando um `Finder`
+## 5. Busque nosso widget usando um `Finder` {:#5-search-for-our-widget-using-a-finder}
 
 Com um widget no ambiente de teste, busque
 pela árvore de widgets os widgets Text de `title` e `message`
@@ -176,7 +176,7 @@ void main() {
 }
 ```
 
-## 6. Verifique o widget usando um `Matcher`
+## 6. Verifique o widget usando um `Matcher` {:#6-verify-the-widget-using-a-matcher}
 
 Finalmente, verifique que os widgets Text de título e mensagem aparecem na tela
 usando as constantes `Matcher` fornecidas por `flutter_test`.
@@ -203,7 +203,7 @@ void main() {
 }
 ```
 
-### Matchers Adicionais
+### Matchers Adicionais {:#additional-matchers}
 
 Além de `findsOneWidget`, o `flutter_test` fornece matchers adicionais
 para casos comuns.
@@ -220,7 +220,7 @@ para casos comuns.
 [`matchesGoldenFile`][`matchesGoldenFile`]
 : Verifica que a renderização de um widget corresponde a uma imagem bitmap específica (teste de "golden file").
 
-## Exemplo completo
+## Exemplo completo {:#complete-example}
 
 <?code-excerpt "test/main_test.dart"?>
 ```dart

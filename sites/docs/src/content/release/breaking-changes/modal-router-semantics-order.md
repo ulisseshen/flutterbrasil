@@ -8,13 +8,13 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Alteramos a ordem de travessia de semantics das overlay entries em modal routes.
 O talk back de acessibilidade ou voice over agora foca no escopo de um modal route
 primeiro, em vez de sua modal barrier.
 
-## Contexto
+## Contexto {:#context}
 
 O modal route tem duas overlay entries, o escopo e a modal barrier. O
 escopo é o conteúdo real do modal route, e a modal barrier é o
@@ -24,7 +24,7 @@ focável para acessibilidade porque os usuários podem tocar na modal barrier pa
 modal route. Esta alteração especificamente fez a acessibilidade focar no escopo
 primeiro antes da modal barrier.
 
-## Descrição da alteração
+## Descrição da alteração {:#description-of-change}
 
 Adicionamos um nó de semantics adicional acima de ambas
 as overlay entries dos modal routes.
@@ -32,7 +32,7 @@ Esses nós de semantics denotam a ordem de travessia
 de semantics dessas duas overlay entries.
 Isso também alterou a estrutura da árvore de semantics.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Se seus testes começarem a falhar devido a alterações na árvore de semantics após a atualização,
 você pode migrar seu código esperando um novo nó acima das overlay entries
@@ -138,12 +138,12 @@ SemanticsNode getChild(SemanticsNode node) {
 }
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Disponibilizado na versão: 1.19.0<br>
 Na versão estável: 1.20
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

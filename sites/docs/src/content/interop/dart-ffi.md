@@ -16,7 +16,7 @@ ou [JNIgen](/interop/jnigen),
 `dart:ffi` é a tecnologia subjacente que alimenta essas ferramentas
 e permite a interoperabilidade com memória nativa.
 
-## Quando usar `dart:ffi` e `package:ffi` {:#when-to-use-dartffi-and-packageffi}
+## Quando usar `dart:ffi` e `package:ffi` {:#when-to-use-dart-ffi-and-package-ffi}
 
 A memória do Dart é liberada automaticamente pelo coletor de lixo, enquanto a
 memória C nativa é gerenciada manualmente. Por isso, use `dart:ffi` e
@@ -33,7 +33,7 @@ Na conversão de dados, use `package:ffi` para converter strings do Dart em
 strings C (`Pointer<Utf8>` ou `Pointer<Utf16>`), para que possam ser lidas pelo
 código C nativo.
 
-## Ferramentas principais: `dart:ffi` e `package:ffi` {:#core-tools-dartffi-and-packageffi}
+## Ferramentas principais: `dart:ffi` e `package:ffi` {:#core-tools-dart-ffi-and-package-ffi}
 
 Para escrever código de interoperabilidade com C, use duas bibliotecas:
 

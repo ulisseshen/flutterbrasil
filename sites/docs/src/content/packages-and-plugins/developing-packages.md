@@ -5,7 +5,7 @@ description: Como escrever packages e plugins para o Flutter.
 ia-translate: true
 ---
 
-## Introdução aos packages
+## Introdução aos packages {:#package-introduction}
 
 Packages permitem a criação de código modular que pode ser facilmente compartilhado.
 Um package mínimo consiste no seguinte:
@@ -64,7 +64,7 @@ Packages podem conter mais de um tipo de conteúdo:
 As instruções a seguir explicam como escrever um package
 Flutter.
 
-### Passo 1: Criar o package
+### Passo 1: Criar o package {:#step-1-create-the-package}
 
 Para criar um package Flutter inicial,
 use a flag `--template=package` com `flutter create`:
@@ -112,7 +112,7 @@ com o seguinte conteúdo:
 : Um arquivo markdown (praticamente) vazio para rastrear
   mudanças de versão do package.
 
-### Passo 2: Implementar o package
+### Passo 2: Implementar o package {:#step-2-implement-the-package}
 
 Para packages Dart puros, simplesmente adicione a funcionalidade
 dentro do arquivo principal `lib/<package name>.dart`,
@@ -364,7 +364,7 @@ por exemplo:
   s.osx.deployment_target = '10.15'
 ```
 
-### Passo 1: Criar o package {:#step-1-create-the-package-1}
+### Passo 1: Criar o package {:#step-1-create-the-package}
 
 Para criar um plugin package, use a flag `--template=plugin`
 com `flutter create`.
@@ -424,13 +424,13 @@ Como um plugin package contém código para várias plataformas
 escrito em várias linguagens de programação,
 alguns passos específicos são necessários para garantir uma experiência suave.
 
-#### Passo 2a: Definir a API do package (.dart)
+#### Passo 2a: Definir a API do package (.dart) {:#step-2a-define-the-package-api-dart}
 
 A API do plugin package é definida em código Dart.
 Abra a pasta principal `hello/` em seu [Flutter editor][] favorito.
 Localize o arquivo `lib/hello.dart`.
 
-#### Passo 2b: Adicionar código da plataforma Android (.kt/.java)
+#### Passo 2b: Adicionar código da plataforma Android (.kt/.java) {:#step-2b-add-android-platform-code-kt-java}
 
 Recomendamos que você edite o código Android usando Android Studio.
 
@@ -461,7 +461,7 @@ O código da plataforma Android do seu plugin está localizado em
 Você pode executar o app de exemplo no Android Studio
 pressionando o botão executar (&#9654;).
 
-#### Passo 2c: Adicionar código da plataforma iOS (.swift/.h+.m)
+#### Passo 2c: Adicionar código da plataforma iOS (.swift/.h+.m) {:#step-2c-add-ios-platform-code-swift-h-m}
 
 Recomendamos que você edite o código iOS usando Xcode.
 
@@ -579,7 +579,7 @@ consulte [Privacy manifest files][] no site de desenvolvedores da Apple.
 
 [Privacy manifest files]: {{site.apple-dev}}/documentation/bundleresources/privacy_manifest_files
 
-#### Passo 2d: Adicionar código da plataforma Linux (.h+.cc)
+#### Passo 2d: Adicionar código da plataforma Linux (.h+.cc) {:#step-2d-add-linux-platform-code-h-cc}
 
 Recomendamos que você edite o código Linux usando uma IDE com
 integração C++. As instruções abaixo são para
@@ -610,7 +610,7 @@ então, mesmo que seu editor forneça integração
 CMake, compilar e executar dessa forma não
 funcionará corretamente.
 
-#### Passo 2e: Adicionar código da plataforma macOS (.swift)
+#### Passo 2e: Adicionar código da plataforma macOS (.swift) {:#step-2e-add-macos-platform-code-swift}
 
 Recomendamos que você edite o código macOS usando Xcode.
 
@@ -633,7 +633,7 @@ o caminho terminará com `hello/darwin/Classes` em vez disso.)
 
 Você pode executar o app de exemplo pressionando o botão executar (&#9654;).
 
-#### Passo 2f: Adicionar código da plataforma Windows (.h+.cpp)
+#### Passo 2f: Adicionar código da plataforma Windows (.h+.cpp) {:#step-2f-add-windows-platform-code-h-cpp}
 
 Recomendamos que você edite o código Windows usando Visual Studio.
 
@@ -661,7 +661,7 @@ fazer alterações no código do plugin, você deve selecionar
 uma cópia desatualizada do plugin compilado será executada em vez
 da versão mais recente contendo suas alterações.
 
-#### Passo 2g: Conectar a API e o código da plataforma
+#### Passo 2g: Conectar a API e o código da plataforma {:#step-2g-connect-the-api-and-the-platform-code}
 
 Finalmente, você precisa conectar a API escrita em código Dart com
 as implementações específicas de plataforma.
@@ -669,7 +669,7 @@ Isso é feito usando um [platform channel][],
 ou através das interfaces definidas em um platform
 interface package.
 
-### Adicionar suporte para plataformas em um projeto de plugin existente
+### Adicionar suporte para plataformas em um projeto de plugin existente {:#add-support-for-platforms-in-an-existing-plugin-project}
 
 Para adicionar suporte para plataformas específicas a um
 projeto de plugin existente, execute `flutter create` com
@@ -752,7 +752,7 @@ A classe Dart `HelloPluginWindows` usaria o `registerWith()`
 mostrado acima para implementações apenas Dart, enquanto a classe C++ `HelloPlugin`
 seria a mesma que em uma implementação apenas C++.
 
-### Testando seu plugin
+### Testando seu plugin {:#testing-your-plugin}
 
 Encorajamos você a testar seu plugin com testes automatizados
 para garantir que a funcionalidade não regrida
@@ -778,7 +778,7 @@ services no Android, use o comando `flutter create --template=plugin`
 em vez disso.
 :::
 
-### Passo 1: Criar o package {:#step-1-create-the-package-2}
+### Passo 1: Criar o package {:#step-1-create-the-package}
 
 Para criar um FFI package inicial,
 use a flag `--template=package_ffi` com `flutter create`:
@@ -824,7 +824,7 @@ Funções de execução mais longa devem ser invocadas em um
 aplicativos Flutter.
 Para um exemplo, veja `sumAsync` em `lib/hello.dart`.
 
-## Adicionando documentação
+## Adicionando documentação {:#adding-documentation}
 
 É uma prática recomendada adicionar a seguinte documentação
 a todos os packages:
@@ -835,7 +835,7 @@ a todos os packages:
    está licenciado
 1. Documentação de API para todas as APIs públicas (veja abaixo para detalhes)
 
-### Documentação de API
+### Documentação de API {:#api-documentation}
 
 Quando você publica um package,
 a documentação de API é automaticamente gerada e

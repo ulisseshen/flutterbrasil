@@ -12,13 +12,13 @@ inclui as seguintes mudanças, entre outras melhorias gerais.
 Para saber mais sobre o DevTools, confira a
 [visão geral do DevTools](/tools/devtools/overview).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 - Corrigido um bug que impedia que os botões no topo de uma tela embutida do DevTools
   fossem clicados sob certas circunstâncias. -
   [#9327](https://github.com/flutter/devtools/pull/9327)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de mudanças neste lançamento, confira o
 [log do git do DevTools](https://github.com/flutter/devtools/tree/v2.49.0).

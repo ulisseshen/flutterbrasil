@@ -17,7 +17,7 @@ Esta receita cria um exemplo com tabs usando os seguintes passos:
   2. Criar as tabs.
   3. Criar conteúdo para cada tab.
 
-## 1. Criar um `TabController`
+## 1. Criar um `TabController` {:#1-create-a-tabcontroller}
 
 Para que as tabs funcionem, você precisa manter a tab selecionada e as
 seções de conteúdo sincronizadas.
@@ -36,7 +36,7 @@ return MaterialApp(
 );
 ```
 
-## 2. Criar as tabs
+## 2. Criar as tabs {:#2-create-the-tabs}
 
 Quando uma tab é selecionada, ela precisa exibir conteúdo.
 Você pode criar tabs usando o widget [`TabBar`][].
@@ -67,7 +67,7 @@ Por padrão, a `TabBar` procura na árvore de widgets pelo
 `DefaultTabController` mais próximo. Se você estiver criando manualmente um `TabController`,
 passe-o para a `TabBar`.
 
-## 3. Criar conteúdo para cada tab
+## 3. Criar conteúdo para cada tab {:#3-create-content-for-each-tab}
 
 Agora que você tem tabs, exiba conteúdo quando uma tab for selecionada.
 Para este propósito, use o widget [`TabBarView`][].
@@ -88,7 +88,7 @@ body: const TabBarView(
 ),
 ```
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Exemplo prático de TabBar Flutter no DartPad" run="true"

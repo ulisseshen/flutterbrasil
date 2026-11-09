@@ -25,14 +25,14 @@ e framework para suportar a ativação de targets web e desktop;
 no entanto, isso ainda não está pronto para uso geral.
 
 
-## Suporte para pacotes Android de 32 bits e 64 bits
+## Suporte para pacotes Android de 32 bits e 64 bits {:#support-for-32-bit-and-64-bit-android-bundles}
 
 A partir de 1º de agosto de 2019, apps Android que usam código nativo e têm como alvo Android 9 Pie [serão obrigados a fornecer uma versão de 64 bits](https://android-developers.googleblog.com/2019/01/get-your-apps-ready-for-64-bit.html) além da versão de 32 bits ao publicar na Google Play Store. Como todos os apps Flutter incluem código nativo, este requisito afetará novos apps Flutter enviados à loja, bem como atualizações de apps Flutter existentes. Isso não afeta as versões de apps existentes publicadas na loja.
 
 Este lançamento inclui suporte para construir app bundles e APKs que suportam binários de 32 bits e 64 bits, completando nosso trabalho em [https://github.com/flutter/flutter/issues/31922](https://github.com/flutter/flutter/issues/31922). Ao usar este lançamento ao construir uma aplicação Android, seu App Bundle ou APK agora suporta arquiteturas de CPU de 32 bits e 64 bits por padrão.
 
 
-## Mudanças que quebram compatibilidade
+## Mudanças que quebram compatibilidade {:#breaking-changes}
 
 A seguir está a lista de mudanças que quebram compatibilidade neste lançamento, juntamente com descrições de cada mudança e como lidar com ela em seu código Flutter.
 
@@ -54,7 +54,7 @@ A seguir está a lista de mudanças que quebram compatibilidade neste lançament
 *   [#33946](https://github.com/flutter/flutter/pull/33946) Reland "Text inline widgets, TextSpan rework"
 
 
-## Mudanças em crashes severos
+## Mudanças em crashes severos {:#severe-crash-changes}
 
 Também corrigimos vários problemas de crash neste lançamento.
 
@@ -223,7 +223,7 @@ O suporte experimental para desktop no Flutter também continua, com muitas melh
 *   [#34755](https://github.com/flutter/flutter/pull/34755) Add linux doctor implementation
 
 
-## Animação, Rolagem e Imagens
+## Animação, Rolagem e Imagens {:#animation-scrolling-images}
 
 Neste lançamento, continuamos a aprimorar animações, rolagem e suporte a imagens.
 
@@ -242,7 +242,7 @@ Neste lançamento, continuamos a aprimorar animações, rolagem e suporte a imag
 *   [#33369](https://github.com/flutter/flutter/pull/33369) Add loading support to Image
 
 
-## Tipografia e Acessibilidade
+## Tipografia e Acessibilidade {:#typography-accessibility}
 
 Também estamos continuando a impulsionar a excelência em tipografia e acessibilidade, incluindo suporte para acessar recursos específicos de fontes OpenType, como demonstrado [neste exemplo](https://github.com/timsneath/typography).
 
@@ -255,7 +255,7 @@ Também estamos continuando a impulsionar a excelência em tipografia e acessibi
 *   [#34434](https://github.com/flutter/flutter/pull/34434) Semantics fixes
 
 
-## Fundamentos
+## Fundamentos {:#fundamentals}
 
 Como sempre, continuamos a aprimorar os fundamentos.
 
@@ -319,7 +319,7 @@ Como sempre, continuamos a aprimorar os fundamentos.
 *   [#33628](https://github.com/flutter/flutter/pull/33628) DataTable Custom Horizontal Padding
 
 
-## Ferramentas
+## Ferramentas {:#tooling}
 
 Por último, mas não menos importante, continuamos a aprimorar e simplificar nossas ferramentas também, incluindo fornecer uma mensagem de erro muito mais clara quando as ferramentas flutter se encontram em um diretório somente leitura (um problema comum para desenvolvedores Flutter que esperamos que isso ajude a resolver).
 
@@ -363,6 +363,6 @@ Por último, mas não menos importante, continuamos a aprimorar e simplificar no
 *   [#33283](https://github.com/flutter/flutter/pull/33283) Fix relative paths and snapshot logic in tool
 
 
-## Lista completa de issues
+## Lista completa de issues {:#full-issue-list}
 
 Você pode ver a lista completa de issues tratadas neste lançamento [aqui](/release/release-notes/changelogs/changelog-1.7.8).

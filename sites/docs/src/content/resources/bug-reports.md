@@ -13,14 +13,14 @@ crashes e outros comportamentos ruins. Cada etapa é opcional, mas
 melhorará muito a rapidez com que os problemas são diagnosticados e resolvidos.
 Agradecemos seu esforço em nos enviar o máximo de feedback possível.
 
-## Crie um issue no GitHub
+## Crie um issue no GitHub {:#create-an-issue-on-github}
 
 * Para relatar um crash ou bug do Flutter,
   [crie um issue no projeto flutter/flutter][Flutter issue].
 * Para relatar um problema com o website,
   [crie um issue no projeto flutter/website][Website issue].
 
-## Forneça um exemplo de código mínimo reproduzível
+## Forneça um exemplo de código mínimo reproduzível {:#provide-a-minimal-reproducible-code-sample}
 
 Crie um app Flutter mínimo que mostre o problema que você está enfrentando,
 e cole-o no issue do GitHub.
@@ -73,7 +73,7 @@ reprodução em um repositório separado e vinculá-lo.
     • iPhone (mobile) • 00000000-0000000000000000 • ios • iOS 14.0
 ```
 
-## Execute o comando em modo verbose
+## Execute o comando em modo verbose {:#run-the-command-in-verbose-mode}
 
 Siga estas etapas somente se o seu issue estiver relacionado à
 ferramenta `flutter`.
@@ -84,7 +84,7 @@ ferramenta `flutter`.
 * Anexe os resultados do comando ao issue do GitHub.
 ![flutter verbose](/assets/images/docs/verbose_flag.png){:width="100%"}
 
-## Forneça os logs mais recentes
+## Forneça os logs mais recentes {:#provide-the-most-recent-logs}
 
 * Os logs para o dispositivo atualmente conectado são acessados
   usando `flutter logs`.
@@ -96,7 +96,7 @@ ferramenta `flutter`.
   tracejadas da primeira exceção.
 ![flutter logs](/assets/images/docs/logs.png){:width="100%"}
 
-## Forneça o relatório de crash
+## Forneça o relatório de crash {:#provide-the-crash-report}
 
 * Quando o simulador iOS falha,
   um relatório de crash é gerado em `~/Library/Logs/DiagnosticReports/`.

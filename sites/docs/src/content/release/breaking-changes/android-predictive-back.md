@@ -226,7 +226,7 @@ if (myRoute.popDisposition == RoutePopDisposition.doNotPop) {
 }
 ```
 
-### Migrando de ModalRoute.add/removeScopedWillPopCallback para ModalRoute.(un)registerPopEntry {:#migrating-from-modalroute-add-removescopedwillpopcallback-to-modalroute-un-registerpopentry}
+### Migrando de ModalRoute.add/removeScopedWillPopCallback para ModalRoute.(un)registerPopEntry {:#migrating-from-modalroute-addremovescopedwillpopcallback-to-modalroute-unregisterpopentry}
 
 Internamente, `ModalRoute` mantinha o controle da existência de
 `WillPopScope`s na sua subárvore de widgets, registrando-os com

@@ -22,7 +22,7 @@ items:
 
 ---
 
-### Introdução
+### Introdução {:#introduction}
 
 Até agora, seu app exibe uma grade e um campo de entrada,
 mas a grade ainda não atualiza para refletir os palpites do usuário.
@@ -39,7 +39,7 @@ Para lidar com este comportamento dinâmico, você precisa converter `GamePage` 
 
 [`StatefulWidget`]: {{site.api}}/flutter/widgets/StatefulWidget-class.html
 
-### Por que stateful widgets?
+### Por que stateful widgets? {:#why-stateful-widgets}
 
 Quando a aparência ou os dados de um widget precisam mudar durante seu tempo de vida,
 você precisa de um `StatefulWidget` e um objeto `State` companheiro.
@@ -72,7 +72,7 @@ class _ExampleWidgetState extends State<ExampleWidget> {
 }
 ```
 
-### Converta `GamePage` para um stateful widget
+### Converta `GamePage` para um stateful widget {:#convert-gamepage-to-a-stateful-widget}
 
 Para converter o widget `GamePage` (ou qualquer outro) de
 um stateless widget para um stateful widget, siga os seguintes passos:
@@ -138,7 +138,7 @@ class _GamePageState extends State<GamePage> {
 
 ["quick assists"]: /tools/android-studio#assists-quick-fixes
 
-### Atualizando a UI com `setState`
+### Atualizando a UI com `setState` {:#updating-the-ui-with-setstate}
 
 Sempre que você mutar um objeto `State`,
 você deve chamar [`setState`][] para sinalizar ao framework para
@@ -213,7 +213,7 @@ precisa repintar a tela, e o usuário não veria nenhuma atualização.
 
 [`setState`]: {{site.api}}/flutter/widgets/State/setState.html
 
-### Converta `GuessInput` para um stateful widget
+### Converta `GuessInput` para um stateful widget {:#convert-guessinput-to-a-stateful-widget}
 
 Quando `GamePage` é reconstruído após chamar `setState`,
 todos os seus widgets filhos também são reconstruídos.
@@ -302,7 +302,7 @@ Ao converter `GuessInput` para um `StatefulWidget`,
 mantendo o foco no campo de texto após cada palpite submetido
 e descartando adequadamente os recursos quando o widget é desmontado.
 
-### Revisão
+### Revisão {:#review}
 
 <SummaryCard>
 title: O que você realizou
@@ -332,7 +332,7 @@ items:
       Seu app agora é realmente interativo!
 </SummaryCard>
 
-### Teste seus conhecimentos
+### Teste seus conhecimentos {:#test-yourself}
 
 <Quiz title="Quiz sobre Stateful Widgets">
 - question: Quando você deve usar um StatefulWidget em vez de um StatelessWidget?

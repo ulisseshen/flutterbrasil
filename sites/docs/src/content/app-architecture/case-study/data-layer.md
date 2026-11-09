@@ -38,7 +38,7 @@ A camada de dados neste guia tem dois componentes principais,
   criados dentro do próprio código da aplicação devem ser buscados de dentro
   de classes de serviço.
 
-## Definir um serviço
+## Definir um serviço {:#define-a-service}
 
 Uma classe de serviço é a menos ambígua de todos os componentes de arquitetura.
 Ela é sem estado, e suas funções não têm efeitos colaterais.
@@ -89,7 +89,7 @@ os expõem em um formato diferente.
 :::
 
 
-## Definir um repositório
+## Definir um repositório {:#define-a-repository}
 
 A única responsabilidade de um repositório é gerenciar dados da aplicação.
 Um repositório é a fonte da verdade para um único tipo de dados da aplicação,
@@ -153,7 +153,7 @@ e um repositório pode usar mais de um serviço.
 
 ![A diagram that highlights the data layer components of an application.](/assets/images/docs/app-architecture/guide/feature-architecture-simplified-Data-highlighted.png)
 
-### Modelos de domínio
+### Modelos de domínio {:#domain-models}
 
 O `BookingRepository` produz objetos `Booking` e `BookingSummary`,
 que são *modelos de domínio*.
@@ -211,7 +211,7 @@ A arquitetura recomendada neste guia pode ser implementada sem ela.
 Você pode aprender sobre esta classe na [receita Result do cookbook][Result cookbook recipe].
 :::
 
-### Completar o ciclo de evento
+### Completar o ciclo de evento {:#complete-the-event-cycle}
 
 Ao longo desta página, você viu como um usuário pode excluir uma reserva salva,
 começando com um evento—um usuário deslizando em um widget `Dismissible`.

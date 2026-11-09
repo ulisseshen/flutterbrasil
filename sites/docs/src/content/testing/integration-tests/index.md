@@ -6,7 +6,7 @@ description: Aprenda como escrever testes de integração
 
 <?code-excerpt path-base="testing/integration_tests/how_to"?>
 
-## Introdução
+## Introdução {:#introduction}
 
 Este guia descreve como executar testes de integração com seu app Flutter. Com ele, você aprenderá como fazer o seguinte:
 
@@ -21,7 +21,7 @@ O guia referencia o projeto `counter_app` que vem com Flutter e o pacote [`integ
 * Executar no [Firebase Test Lab][Firebase Test Lab], para automatizar testes em uma variedade de dispositivos.
 * Usar APIs do [flutter_test][flutter_test] para escrever testes em um estilo similar aos [widget tests][widget tests].
 
-## Crie um novo app para testar
+## Crie um novo app para testar {:#create-a-new-app-to-test}
 
 Testes de integração requerem um app para testar. Este exemplo usa o exemplo integrado **Counter App** que o Flutter produz quando você executa o comando `flutter create`. O app contador permite que um usuário toque em um botão para aumentar um contador.
 
@@ -115,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 ```
 
-## Adicione a dependência `integration_test`
+## Adicione a dependência `integration_test` {:#add-the-integration-test-dependency}
 
 Você precisa adicionar os pacotes de teste ao seu novo app.
 
@@ -159,7 +159,7 @@ dev_dependencies:
 # ...
 ```
 
-## Crie os arquivos de teste de integração
+## Crie os arquivos de teste de integração {:#create-the-integration-test-files}
 
 Testes de integração residem em um diretório separado dentro do seu projeto Flutter.
 
@@ -176,7 +176,7 @@ counter_app/
     app_test.dart
 ```
 
-## Escreva o teste de integração
+## Escreva o teste de integração {:#write-the-integration-test}
 
 O arquivo de teste de integração consiste em um arquivo de código Dart com dependências em `integration_test`, `flutter_test`, e o arquivo Dart do seu app.
 
@@ -228,7 +228,7 @@ Este exemplo passa por três etapas:
 
 3. Teste os cenários importantes.
 
-## Execute testes de integração
+## Execute testes de integração {:#run-integration-tests}
 
 Os testes de integração executados variam dependendo da plataforma na qual você testa.
 
@@ -238,7 +238,7 @@ Os testes de integração executados variam dependendo da plataforma na qual voc
 
 ---
 
-### Teste em uma plataforma desktop
+### Teste em uma plataforma desktop {:#test-on-a-desktop-platform}
 
 <details markdown="1">
 <summary>Expanda se você testar apps Linux usando um sistema CI</summary>
@@ -299,7 +299,7 @@ Baseado na plataforma, o resultado do comando deve se parecer com a seguinte sa�
 
 ---
 
-### Teste em um dispositivo Android
+### Teste em um dispositivo Android {:#test-on-an-android-device}
 
 Para testar em um dispositivo Android real, complete as seguintes tarefas.
 
@@ -326,7 +326,7 @@ Para testar em um dispositivo Android real, complete as seguintes tarefas.
 
 ---
 
-### Teste em um dispositivo iOS
+### Teste em um dispositivo iOS {:#test-on-an-ios-device}
 
 Para testar em um dispositivo iOS real, complete as seguintes tarefas.
 
@@ -461,15 +461,15 @@ Para aprender mais, veja a página wiki [Running Flutter driver tests with web][
 
 ---
 
-### Teste no Firebase Test Lab (Android)
+### Teste no Firebase Test Lab (Android) {:#test-in-firebase-test-lab-android}
 
 Você pode usar Firebase Test Lab para testar targets Android.
 
-#### Configuração do Android
+#### Configuração do Android {:#android-setup}
 
 Siga as instruções na seção [Android Device Testing][Android Device Testing] do README.
 
-#### Configuração do projeto Test Lab
+#### Configuração do projeto Test Lab {:#test-lab-project-setup}
 
 1. Inicie seu [Firebase Console][Firebase Console].
 
@@ -479,7 +479,7 @@ Siga as instruções na seção [Android Device Testing][Android Device Testing]
 
    <img src='/assets/images/docs/integration-test/test-lab-1.png' alt="Firebase Test Lab Console">
 
-#### Faça upload de um APK Android
+#### Faça upload de um APK Android {:#upload-an-android-apk}
 
 Complete as seguintes etapas para fazer upload de um APK Android.
 
@@ -518,7 +518,7 @@ Complete as seguintes etapas para fazer upload de um APK Android.
 
 Para instruções adicionais, veja a seção [Firebase Test Lab do README][Firebase Test Lab section of the README].
 
-#### Inicie o teste Robo
+#### Inicie o teste Robo {:#start-robo-test}
 
 Para usar o teste Robo para executar testes de integração, complete as seguintes etapas.
 
@@ -546,15 +546,15 @@ Para usar o teste Robo para executar testes de integração, complete as seguint
 
 ---
 
-### Teste no Firebase Test Lab (iOS)
+### Teste no Firebase Test Lab (iOS) {:#test-in-firebase-test-lab-ios}
 
 Você pode usar Firebase Test Lab para testar targets iOS.
 
-#### Configuração do iOS
+#### Configuração do iOS {:#ios-setup}
 
 Siga as instruções de [iOS Device Testing][iOS Device Testing instructions].
 
-#### Configuração do projeto Test Lab
+#### Configuração do projeto Test Lab {:#test-lab-project-setup}
 
 1. Inicie seu [Firebase Console][Firebase Console].
 
@@ -564,11 +564,11 @@ Siga as instruções de [iOS Device Testing][iOS Device Testing instructions].
 
    <img src='/assets/images/docs/integration-test/test-lab-1.png' alt="Firebase Test Lab Console">
 
-#### Faça upload de testes Xcode através do Firebase Console
+#### Faça upload de testes Xcode através do Firebase Console {:#upload-xcode-tests-through-the-firebase-console}
 
 Para aprender como fazer upload de testes de um arquivo ZIP, usando o Firebase Test Lab Console, consulte as [instruções do Firebase Test Lab para iOS][Firebase Test Lab iOS instructions].
 
-#### Faça upload de testes Xcode para Firebase Console com a linha de comando
+#### Faça upload de testes Xcode para Firebase Console com a linha de comando {:#upload-xcode-tests-to-firebase-console-with-the-command-line}
 
 Para aprender como fazer upload de testes de um arquivo ZIP da linha de comando para o Firebase Test Lab Console, consulte as instruções de [iOS Device Testing][iOS Device Testing instructions].
 

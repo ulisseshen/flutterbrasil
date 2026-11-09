@@ -8,12 +8,12 @@ description: >
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Gestos de trackpad na maioria das plataformas agora enviam sequências `PointerPanZoom` e
 podem acionar callbacks de `GestureRecognizer` de pan, drag e scale.
 
-## Contexto
+## Contexto {:#context}
 
 A rolagem no Flutter Desktop antes da versão 3.3.0 usava mensagens `PointerScrollEvent`
 para representar deltas de rolagem discretos. Este sistema funcionava bem para rodas de
@@ -33,7 +33,7 @@ acionado em interação com trackpad, quanto o código projetado para lidar com 
 rolagem de desktop pode agora ser acionado apenas na rolagem de mouse, e não na rolagem
 de trackpad.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 O Flutter engine foi atualizado em todas as plataformas possíveis para reconhecer
 gestos de trackpad e enviá-los para o framework como eventos `PointerPanZoom`
@@ -161,20 +161,20 @@ class Foo extends StatelessWidget {
 }
 ```
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Os passos de migração dependem de se você quer que cada interação de gesto em seu
 app seja utilizável via trackpad, ou se deve ser restrito apenas a uso de toque
 e mouse.
 
-### Para interações de gesto adequadas para uso de trackpad
+### Para interações de gesto adequadas para uso de trackpad {:#for-gesture-interactions-suitable-for-trackpad-usage}
 
-#### Usando `GestureDetector`
+#### Usando `GestureDetector` {:#using-gesturedetector}
 
 Nenhuma mudança é necessária, `GestureDetector` automaticamente processa eventos
 de gesto de trackpad e aciona callbacks se reconhecidos.
 
-#### Usando `GestureRecognizer` e `Listener`
+#### Usando `GestureRecognizer` e `Listener` {:#using-gesturerecognizer-and-listener}
 
 Certifique-se de que `onPointerPanZoomStart` seja passado para
 cada recognizer do `Listener`.
@@ -260,7 +260,7 @@ class Foo extends StatefulWidget {
 }
 ```
 
-#### Usando `Listener` puro
+#### Usando `Listener` puro {:#using-raw-listener}
 
 O código a seguir usando PointerScrollSignal não será mais chamado em toda
 rolagem de desktop. Eventos `PointerPanZoomUpdate` devem ser capturados para receber
@@ -313,9 +313,9 @@ Observe: O uso de `Listener` puro dessa forma pode
 causar conflitos com outras interações de gesto, pois não
 participa da arena de desambiguação de gestos.
 
-### Para interações de gesto não adequadas para uso de trackpad
+### Para interações de gesto não adequadas para uso de trackpad {:#for-gesture-interactions-not-suitable-for-trackpad-usage}
 
-#### Usando `GestureDetector`
+#### Usando `GestureDetector` {:#using-gesturedetector}
 
 Se estiver usando Flutter 3.3.0, `RawGestureDetector` pode ser usado
 ao invés de `GestureDetector` para garantir que cada `GestureRecognizer` criado
@@ -421,7 +421,7 @@ class Foo extends StatelessWidget {
 }
 ```
 
-#### Usando `RawGestureRecognizer`
+#### Usando `RawGestureRecognizer` {:#using-rawgesturerecognizer}
 
 Certifique-se explicitamente de que `supportedDevices`
 não inclui `PointerDeviceKind.trackpad`.
@@ -501,7 +501,7 @@ class Foo extends StatelessWidget {
 }
 ```
 
-#### Usando `GestureRecognizer` e `Listener`
+#### Usando `GestureRecognizer` e `Listener` {:#using-gesturerecognizer-and-listener}
 
 Após atualizar para o Flutter 3.3.0, não haverá mudança no comportamento, pois
 `addPointerPanZoom` deve ser chamado em cada `GestureRecognizer` para permitir
@@ -546,12 +546,12 @@ class Foo extends StatefulWidget {
 }
 ```
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Lançado na versão: 3.3.0-0.0.pre<br>
 No lançamento estável: 3.3.0
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

@@ -11,7 +11,7 @@ Para informações sobre lançamentos de correção de bugs subsequentes, consul
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/master/CHANGELOG.md
 
-## PRs incluídos por label em `flutter/flutter`
+## PRs incluídos por label em `flutter/flutter` {:#merged-prs-by-labels-for-flutterflutter}
 
 ### framework - 428 pull request(s)
 
@@ -4695,7 +4695,7 @@ Para informações sobre lançamentos de correção de bugs subsequentes, consul
 
 
 
-## PRs incluídos por label em `flutter/engine`
+## PRs incluídos por label em `flutter/engine` {:#merged-prs-by-labels-for-flutterengine}
 
 
 
@@ -5357,7 +5357,7 @@ Para informações sobre lançamentos de correção de bugs subsequentes, consul
 
 
 
-## PRs incluídos por label em `flutter/plugins`
+## PRs incluídos por label em `flutter/plugins` {:#merged-prs-by-labels-for-flutterplugins}
 
 
 
@@ -5412,7 +5412,7 @@ Para informações sobre lançamentos de correção de bugs subsequentes, consul
 
 ## All merged pull requests
 
-### PRs incluídos em `flutter/flutter` de 2020-07-09T05:19:00.000 até 2020-09-10T18:17:00.000
+### PRs incluídos em `flutter/flutter` de 2020-07-09T05:19:00.000 até 2020-09-10T18:17:00.000 {:#merged-prs-in-flutterflutter-from-2020-07-09t05-19-00-000-to-2020-09-10t18-17-00-000}
 Foram 934 pull requests.
 
 [44980](https://github.com/flutter/flutter/pull/44980) Add padding around flutter api docs search input (cla: yes, team)
@@ -7077,7 +7077,7 @@ Foram 934 pull requests.
 
 [65577](https://github.com/flutter/flutter/pull/65577) Mark `platform_views_scroll_perf_ios__timeline_summary` as flaky (cla: yes, team)
 
-### PRs incluídos em `flutter/engine` de 2020-07-09T05:19:00.000 até 2020-09-10T18:17:00.000
+### PRs incluídos em `flutter/engine` de 2020-07-09T05:19:00.000 até 2020-09-10T18:17:00.000 {:#merged-prs-in-flutterengine-from-2020-07-09t05-19-00-000-to-2020-09-10t18-17-00-000}
 Foram 959 pull requests.
 
 [18339](https://github.com/flutter/engine/pull/18339) Use Android R (API 30) getInsets() to compute padding (cla: yes, platform-android)
@@ -7924,7 +7924,7 @@ Foram 959 pull requests.
 
 [21075](https://github.com/flutter/engine/pull/21075) Disable a flaky Scenarios test (cla: yes)
 
-### PRs incluídos em `flutter/plugins` de 2020-07-09T05:19:00.000 até 2020-09-10T18:17:00.000
+### PRs incluídos em `flutter/plugins` de 2020-07-09T05:19:00.000 até 2020-09-10T18:17:00.000 {:#merged-prs-in-flutterplugins-from-2020-07-09t05-19-00-000-to-2020-09-10t18-17-00-000}
 Foram 65 pull requests.
 
 [970](https://github.com/flutter/plugins/pull/970) [share] Add sharing file support (android & ios) (cla: yes, in review)

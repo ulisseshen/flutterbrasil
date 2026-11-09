@@ -33,7 +33,7 @@ InkWell(
 )
 ```
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter Material ripples hands-on example in DartPad" run="true"

@@ -8,7 +8,7 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 As propriedades [accentColor][], [accentColorBrightness][], [accentIconTheme][]
 e [accentTextTheme][] do ThemeData foram descontinuadas.
@@ -20,7 +20,7 @@ A [cor secondary][secondary color] do `ColorScheme` é agora normalmente usada e
 `accentColor` e a [cor onSecondary][onSecondary color] é usada quando uma cor contrastante
 é necessária.
 
-## Contexto
+## Contexto {:#context}
 
 Isso foi uma pequena parte do projeto [Material Theme System Updates][].
 
@@ -41,15 +41,15 @@ com temas específicos de componente como [`FloatingActionButtonThemeData`][] ou
 punhado de tipos de componentes e apenas em algumas situações, o que tornava
 difícil entender as implicações de sobrescrevê-las.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 As propriedades accentColor, accentColorBrightness, accentIconTheme e
 accentTextTheme do ThemeData foram descontinuadas porque a biblioteca
 Material não as usa mais.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
-### Tema da aplicação
+### Tema da aplicação {:#application-theme}
 
 Valores de [`ThemeData`][] não precisam mais especificar accentColor,
 accentColorBrightness, accentIconTheme, ou accentTextTheme.
@@ -138,12 +138,12 @@ dentro de um [`FloatingActionButton`][]. Agora é possível configurar a cor do 
 diretamente ou com o [`FloatingActionButtonThemeData`][]. Veja
 [FloatingActionButton e as propriedades accent do ThemeData][FloatingActionButton and ThemeData's accent properties].
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Lançado na versão: 2.3.0-0.1.pre<br>
 Na versão estável: 2.5
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

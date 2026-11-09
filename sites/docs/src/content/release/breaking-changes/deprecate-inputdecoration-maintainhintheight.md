@@ -9,12 +9,12 @@ description: >-
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 O parâmetro [`InputDecoration.maintainHintHeight`][] foi depreciado
 em favor do parâmetro [`InputDecoration.maintainHintSize`][].
 
-## Contexto
+## Contexto {:#context}
 
 O tamanho intrínseco padrão de um decorador de input depende do tamanho do hint.
 O parâmetro [`InputDecoration.maintainHintSize`][] pode ser definido como `false` para
@@ -23,13 +23,13 @@ Anteriormente, o parâmetro `InputDecoration.maintainHintHeight` era
 usado para sobrescrever a altura intrínseca padrão e não tinha impacto na
 largura intrínseca.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 O [`InputDecoration.maintainHintHeight`][] foi depreciado em
 favor de [`InputDecoration.maintainHintSize`][] que faz com que tanto a largura
 quanto a altura intrínsecas dependam das dimensões do hint.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Substitua [`InputDecoration.maintainHintHeight`][] por
 [`InputDecoration.maintainHintSize`][] para sobrescrever o cálculo do tamanho intrínseco
@@ -55,12 +55,12 @@ TextField(
 ),
 ```
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Aterrissou na versão: 3.30.0-0.0.pre<br>
 No lançamento estável: 3.32
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

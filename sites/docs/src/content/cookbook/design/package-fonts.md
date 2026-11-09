@@ -22,7 +22,7 @@ Confira o package [google_fonts][] para acesso direto
 a quase 1000 famílias de fonts open-source.
 :::
 
-## 1. Adicionar uma font a um package
+## 1. Adicionar uma font a um package {:#1-add-a-font-to-a-package}
 
 Para exportar uma font de um package, você precisa importar os arquivos de font para a
 pasta `lib` do projeto do package. Você pode colocar arquivos de font diretamente na
@@ -40,12 +40,12 @@ awesome_package/
       Raleway-Italic.ttf
 ```
 
-## 2. Adicionar o package e fonts ao app
+## 2. Adicionar o package e fonts ao app {:#2-add-the-package-and-fonts-to-the-app}
 
 Agora você pode usar as fonts no package
 atualizando o `pubspec.yaml` no diretório raiz do *app*.
 
-### Adicionar o package ao app
+### Adicionar o package ao app {:#add-the-package-to-the-app}
 
 Para adicionar o package `awesome_package` como uma dependência,
 execute `flutter pub add`:
@@ -54,7 +54,7 @@ execute `flutter pub add`:
 $ flutter pub add awesome_package
 ```
 
-### Declarar os assets de font
+### Declarar os assets de font {:#declare-the-font-assets}
 
 Agora que você importou o package, diga ao Flutter onde
 encontrar as fonts do `awesome_package`.
@@ -76,7 +76,7 @@ flutter:
 
 <a id="use" aria-hidden="true"></a>
 
-## 3. Usar a font
+## 3. Usar a font {:#3-use-the-font}
 
 Use um [`TextStyle`][] para mudar a aparência do texto.
 Para usar fonts de package, declare qual font você gostaria de usar e
@@ -90,7 +90,7 @@ child: Text(
 ),
 ```
 
-## Exemplo completo
+## Exemplo completo {:#complete-example}
 
 ### Fonts
 

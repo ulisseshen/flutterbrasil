@@ -34,7 +34,7 @@ encontrando questões que sejam mais relevantes para suas necessidades.
 
 ## Views
 
-### Qual é o equivalente de uma View no Flutter?
+### Qual é o equivalente de uma View no Flutter? {:#what-is-the-equivalent-of-a-view-in-flutter}
 
 :::secondary
 Como a programação estilo-react, ou _declarativa_, é diferente do
@@ -70,7 +70,7 @@ Mas o Flutter é flexível e expressivo o suficiente para implementar qualquer l
 Por exemplo, no iOS, você pode usar os [widgets Cupertino][]
 para produzir uma interface que se pareça com a [linguagem de design iOS da Apple][].
 
-### Como atualizo widgets?
+### Como atualizo widgets? {:#how-do-i-update-widgets}
 
 No Android, você atualiza suas views mutando-as diretamente. No entanto,
 no Flutter, `Widget`s são imutáveis e não são atualizados diretamente,
@@ -182,7 +182,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
 }
 ```
 
-### Como faço o layout dos meus widgets? Onde está meu arquivo de layout XML?
+### Como faço o layout dos meus widgets? Onde está meu arquivo de layout XML? {:#how-do-i-lay-out-my-widgets-where-is-my-xml-layout-file}
 
 No Android, você escreve layouts em XML, mas no Flutter você escreve seus layouts
 com uma árvore de widgets.
@@ -211,7 +211,7 @@ Widget build(BuildContext context) {
 Você pode ver alguns dos layouts que o Flutter oferece no
 [catálogo de widgets][].
 
-### Como adiciono ou removo um componente do meu layout?
+### Como adiciono ou removo um componente do meu layout? {:#how-do-i-add-or-remove-a-component-from-my-layout}
 
 No Android, você chama `addChild()` ou `removeChild()`
 em um pai para adicionar ou remover views filhas dinamicamente.
@@ -286,7 +286,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
 }
 ```
 
-### Como animo um widget?
+### Como animo um widget? {:#how-do-i-animate-a-widget}
 
 No Android, você cria animações usando XML ou chama o método `animate()`
 em uma view. No Flutter, anime widgets usando a biblioteca de animação
@@ -389,7 +389,7 @@ Para mais informações, veja
 o [tutorial de Animações][],
 e a [visão geral de Animações][].
 
-### Como uso um Canvas para desenhar/pintar?
+### Como uso um Canvas para desenhar/pintar? {:#how-do-i-use-a-canvas-to-drawpaint}
 
 No Android, você usaria o `Canvas` e `Drawable`
 para desenhar imagens e formas na tela.
@@ -472,7 +472,7 @@ class SignaturePainter extends CustomPainter {
 
 [Custom Paint]: {{site.so}}/questions/46241071/create-signature-area-for-mobile-app-in-dart-flutter
 
-### Como construo widgets personalizados?
+### Como construo widgets personalizados? {:#how-do-i-build-custom-widgets}
 
 No Android, você normalmente faz uma subclasse de `View`, ou usa uma view pré-existente,
 para sobrescrever e implementar métodos que alcancem o comportamento desejado.
@@ -571,7 +571,7 @@ nativa (ou usar um [plugin existente][]).
 Para aprender como construir uma integração de plataforma nativa,
 veja [desenvolvendo pacotes e plugins][].
 
-### Como lido com intents recebidas de aplicativos externos no Flutter?
+### Como lido com intents recebidas de aplicativos externos no Flutter? {:#how-do-i-handle-incoming-intents-from-external-applications-in-flutter}
 
 O Flutter pode lidar com intents recebidas do Android conversando diretamente com a
 camada Android e solicitando os dados que foram compartilhados.
@@ -722,7 +722,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
 }
 ```
 
-### Qual é o equivalente de startActivityForResult()?
+### Qual é o equivalente de startActivityForResult()? {:#what-is-the-equivalent-of-startactivityforresult}
 
 A classe `Navigator` lida com roteamento no Flutter e é usada para obter
 um resultado de volta de uma rota que você empurrou (push) na pilha.
@@ -746,7 +746,7 @@ Navigator.of(context).pop({'lat': 43.821757, 'long': -79.226392});
 
 ## Async UI
 
-### Qual é o equivalente de runOnUiThread() no Flutter?
+### Qual é o equivalente de runOnUiThread() no Flutter? {:#what-is-the-equivalent-of-runonuithread-in-flutter}
 
 Dart possui um modelo de execução single-threaded, com suporte para `Isolate`s
 (uma maneira de executar código Dart em outra thread), um loop de eventos e
@@ -858,7 +858,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
 Consulte a próxima seção para mais informações sobre como fazer trabalho em
 segundo plano, e como o Flutter difere do Android.
 
-### Como você move trabalho para uma thread em segundo plano?
+### Como você move trabalho para uma thread em segundo plano? {:#how-do-you-move-work-to-a-background-thread}
 
 No Android, quando você quer acessar um recurso de rede, normalmente
 muda para uma thread em segundo plano e faz o trabalho, para não bloquear a thread principal,
@@ -1089,7 +1089,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
 }
 ```
 
-### Qual é o equivalente do OkHttp no Flutter?
+### Qual é o equivalente do OkHttp no Flutter? {:#what-is-the-equivalent-of-okhttp-on-flutter}
 
 Fazer uma chamada de rede no Flutter é fácil quando você usa o
 popular [pacote `http`][].
@@ -1119,7 +1119,7 @@ Future<void> loadData() async {
 }
 ```
 
-### Como mostro o progresso para uma tarefa de longa duração?
+### Como mostro o progresso para uma tarefa de longa duração? {:#how-do-i-show-the-progress-for-a-long-running-task}
 
 No Android, você normalmente mostraria uma view `ProgressBar` em sua UI enquanto
 executa uma tarefa de longa duração em uma thread em segundo plano.
@@ -1224,9 +1224,9 @@ class _SampleAppPageState extends State<SampleAppPage> {
 }
 ```
 
-## Estrutura do projeto & recursos
+## Estrutura do projeto & recursos {:#project-structure-resources}
 
-### Onde armazeno meus arquivos de imagem dependentes de resolução?
+### Onde armazeno meus arquivos de imagem dependentes de resolução? {:#where-do-i-store-my-resolution-dependent-image-files}
 
 Enquanto o Android trata recursos e assets como itens distintos,
 aplicativos Flutter possuem apenas assets. Todos os recursos que viveriam
@@ -1301,7 +1301,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-### Onde armazeno strings? Como lido com localização?
+### Onde armazeno strings? Como lido com localização? {:#where-do-i-store-strings-how-do-i-handle-localization}
 
 O Flutter atualmente não possui um sistema dedicado semelhante a recursos para strings.
 A melhor prática e recomendada é manter suas strings em um arquivo `.arb` como pares chave-valor. Por exemplo:
@@ -1332,7 +1332,7 @@ Text(AppLocalizations.of(context)!.hello('John'));
 
 Veja [Internacionalizando aplicativos Flutter][] para mais informações sobre isso.
 
-### Qual é o equivalente de um arquivo Gradle? Como adiciono dependências?
+### Qual é o equivalente de um arquivo Gradle? Como adiciono dependências? {:#what-is-the-equivalent-of-a-gradle-file-how-do-i-add-dependencies}
 
 No Android, você adiciona dependências adicionando ao seu script de build Gradle.
 O Flutter usa o próprio sistema de build do Dart e o gerenciador de pacotes Pub.
@@ -1346,9 +1346,9 @@ Em geral, use `pubspec.yaml` para declarar
 dependências externas para usar no Flutter.
 Um bom lugar para encontrar pacotes Flutter é [pub.dev][].
 
-## Activities e fragments
+## Activities e fragments {:#activities-and-fragments}
 
-### Quais são os equivalentes de activities e fragments no Flutter?
+### Quais são os equivalentes de activities e fragments no Flutter? {:#what-are-the-equivalent-of-activities-and-fragments-in-flutter}
 
 No Android, uma `Activity` representa uma única coisa focada que o usuário pode fazer.
 Um `Fragment` representa um comportamento ou uma porção da interface do usuário.
@@ -1366,7 +1366,7 @@ um widget no Flutter. Use um `Navigator` para mover entre diferentes
 `Route`s que representam diferentes telas ou páginas,
 ou talvez diferentes estados ou renderizações dos mesmos dados.
 
-### Como ouço eventos do ciclo de vida da activity do Android?
+### Como ouço eventos do ciclo de vida da activity do Android? {:#how-do-i-listen-to-android-activity-lifecycle-events}
 
 No Android, você pode sobrescrever métodos da `Activity` para capturar métodos do ciclo de vida
 para a activity em si, ou registrar `ActivityLifecycleCallbacks` na
@@ -1459,7 +1459,7 @@ void main() {
 
 ## Layouts
 
-### Qual é o equivalente de um LinearLayout?
+### Qual é o equivalente de um LinearLayout? {:#what-is-the-equivalent-of-a-linearlayout}
 
 No Android, um LinearLayout é usado para dispor seus widgets
 linearmente&mdash;horizontal ou verticalmente.
@@ -1507,7 +1507,7 @@ Para aprender mais sobre como construir layouts lineares,
 veja o artigo Medium contribuído pela comunidade
 [Flutter para Desenvolvedores Android: Como projetar LinearLayout no Flutter][].
 
-### Qual é o equivalente de um RelativeLayout?
+### Qual é o equivalente de um RelativeLayout? {:#what-is-the-equivalent-of-a-relativelayout}
 
 Um RelativeLayout dispõe seus widgets relativamente uns aos outros. No
 Flutter, existem algumas maneiras de alcançar o mesmo resultado.
@@ -1519,7 +1519,7 @@ sobre como os filhos são dispostos relativamente ao pai.
 Para um bom exemplo de construção de um RelativeLayout no Flutter,
 veja a resposta de Collin no [StackOverflow][].
 
-### Qual é o equivalente de um ScrollView?
+### Qual é o equivalente de um ScrollView? {:#what-is-the-equivalent-of-a-scrollview}
 
 No Android, use um ScrollView para dispor seus widgets&mdash;se o
 dispositivo do usuário tiver uma tela menor que seu conteúdo, ele rola.
@@ -1544,7 +1544,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-### Como lido com transições de paisagem no Flutter?
+### Como lido com transições de paisagem no Flutter? {:#how-do-i-handle-landscape-transitions-in-flutter}
 
 FlutterView lida com a mudança de configuração se AndroidManifest.xml contiver:
 
@@ -1552,9 +1552,9 @@ FlutterView lida com a mudança de configuração se AndroidManifest.xml contive
 android:configChanges="orientation|screenSize"
 ```
 
-## Detecção de gestos e manipulação de eventos de toque
+## Detecção de gestos e manipulação de eventos de toque {:#gesture-detection-and-touch-event-handling}
 
-### Como adiciono um listener onClick a um widget no Flutter?
+### Como adiciono um listener onClick a um widget no Flutter? {:#how-do-i-add-an-onclick-listener-to-a-widget-in-flutter}
 
 No Android, você pode anexar onClick a views como botões chamando
 o método 'setOnClickListener'.
@@ -1601,7 +1601,7 @@ No Flutter existem duas maneiras de adicionar listeners de toque:
   }
   ```
 
-### Como lido com outros gestos em widgets?
+### Como lido com outros gestos em widgets? {:#how-do-i-handle-other-gestures-on-widgets}
 
 Usando o GestureDetector, você pode ouvir uma ampla gama de Gestos como:
 
@@ -1704,7 +1704,7 @@ class _SampleAppState extends State<SampleApp>
 
 ## Listviews & adapters
 
-### Qual é a alternativa para um ListView no Flutter?
+### Qual é a alternativa para um ListView no Flutter? {:#what-is-the-alternative-to-a-listview-in-flutter}
 
 O equivalente a um ListView no Flutter é … um ListView!
 
@@ -1768,7 +1768,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
 }
 ```
 
-### Como sei qual item da lista foi clicado?
+### Como sei qual item da lista foi clicado? {:#how-do-i-know-which-list-item-is-clicked-on}
 
 No Android, o ListView possui um método para descobrir qual item foi clicado,
 'onItemClickListener'.
@@ -1835,7 +1835,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
 }
 ```
 
-### Como atualizo ListView's dinamicamente?
+### Como atualizo ListView's dinamicamente? {:#how-do-i-update-listviews-dynamically}
 
 No Android, você atualiza o adapter e chama `notifyDataSetChanged`.
 
@@ -2004,9 +2004,9 @@ e retorna a linha que você deseja renderizar nessa posição.
 Finalmente, mas mais importante, observe que a função `onTap()` não
 recria mais a lista, mas em vez disso `.add` a ela.
 
-## Trabalhando com texto
+## Trabalhando com texto {:#working-with-text}
 
-### Como defino fontes personalizadas em meus widgets de Text?
+### Como defino fontes personalizadas em meus widgets de Text? {:#how-do-i-set-custom-fonts-on-my-text-widgets}
 
 No Android SDK (a partir do Android O), você cria um arquivo de recurso Font e
 o passa para o parâmetro FontFamily do seu TextView.
@@ -2040,7 +2040,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-### Como estilizo meus widgets de Text?
+### Como estilizo meus widgets de Text? {:#how-do-i-style-my-text-widgets}
 
 Junto com fontes, você pode personalizar outros elementos de estilo em um widget `Text`.
 O parâmetro style de um widget `Text` recebe um objeto `TextStyle`, onde você pode
@@ -2061,12 +2061,12 @@ personalizar muitos parâmetros, como:
 * textBaseline
 * wordSpacing
 
-## Entrada de formulário
+## Entrada de formulário {:#form-input}
 
 Para mais informações sobre o uso de Formulários,
 veja [Recuperar o valor de um campo de texto][].
 
-### Qual é o equivalente de um "hint" em um Input?
+### Qual é o equivalente de um "hint" em um Input? {:#what-is-the-equivalent-of-a-hint-on-an-input}
 
 No Flutter, você pode facilmente mostrar um "hint" ou um texto placeholder para seu input
 adicionando um objeto InputDecoration ao parâmetro do construtor decoration para
@@ -2079,7 +2079,7 @@ Center(
 )
 ```
 
-### Como mostro erros de validação?
+### Como mostro erros de validação? {:#how-do-i-show-validation-errors}
 
 Assim como você faria com um "hint", passe um objeto InputDecoration
 para o construtor decoration do widget Text.
@@ -2163,23 +2163,23 @@ class _SampleAppPageState extends State<SampleAppPage> {
 ```
 
 
-## Plugins Flutter
+## Plugins Flutter {:#flutter-plugins}
 
-### Como acesso o sensor GPS?
+### Como acesso o sensor GPS? {:#how-do-i-access-the-gps-sensor}
 
 Use o plugin da comunidade [`geolocator`][].
 
-### Como acesso a câmera?
+### Como acesso a câmera? {:#how-do-i-access-the-camera}
 
 O plugin [`image_picker`][] é popular
 para acessar a câmera.
 
-### Como faço login com Facebook?
+### Como faço login com Facebook? {:#how-do-i-log-in-with-facebook}
 
 Para fazer login com Facebook, use o
 plugin da comunidade [`flutter_facebook_auth`][].
 
-### Como uso recursos do Firebase?
+### Como uso recursos do Firebase? {:#how-do-i-use-firebase-features}
 
 A maioria das funções do Firebase são cobertas por
 [plugins de primeira parte][].
@@ -2200,7 +2200,7 @@ Você também pode encontrar alguns plugins Firebase de terceiros no
 pub.dev que cobrem áreas não cobertas diretamente pelos
 plugins de primeira parte.
 
-### Como construo minhas próprias integrações nativas personalizadas?
+### Como construo minhas próprias integrações nativas personalizadas? {:#how-do-i-build-my-own-custom-native-integrations}
 
 Se houver funcionalidade específica de plataforma que o Flutter
 ou seus Plugins da comunidade estão faltando,
@@ -2212,7 +2212,7 @@ Android: você dispara uma mensagem e deixa o receptor processar e emitir um res
 de volta para você. Neste caso, o receptor é código executando no lado nativo
 no Android ou iOS.
 
-### Como uso o NDK no meu aplicativo Flutter?
+### Como uso o NDK no meu aplicativo Flutter? {:#how-do-i-use-the-ndk-in-my-flutter-application}
 
 Se você usa o NDK no seu aplicativo Android atual e quer que seu aplicativo Flutter
 aproveite suas bibliotecas nativas, então é possível
@@ -2224,9 +2224,9 @@ envie uma mensagem de volta para o Flutter e renderize o resultado.
 
 Chamar código nativo diretamente do Flutter não é suportado atualmente.
 
-## Temas
+## Temas {:#themes}
 
-### Como eu tematizo meu aplicativo?
+### Como eu tematizo meu aplicativo? {:#how-do-i-theme-my-app}
 
 Pronto para uso, o Flutter vem com uma bela implementação de Material
 Design, que cuida de muitas necessidades de estilo e tematização que você
@@ -2270,9 +2270,9 @@ class SampleApp extends StatelessWidget {
 }
 ```
 
-## Widgets de tela inicial
+## Widgets de tela inicial {:#homescreen-widgets}
 
-### Como crio um widget de tela inicial?
+### Como crio um widget de tela inicial? {:#how-do-i-create-a-homescreen-widget}
 
 Widgets de tela inicial do Android não podem ser criados totalmente usando Flutter. Eles devem
 usar código de layout XML ou Jetpack Glance (método preferido). Usando
@@ -2289,9 +2289,9 @@ sobre Previsualizações de Widget Geradas e as opções de fallback para dispos
 confira a página de documentação [Adicionar previsualizações geradas ao seu seletor de widget][].
 
 
-## Bancos de dados e armazenamento local
+## Bancos de dados e armazenamento local {:#databases-and-local-storage}
 
-### Como acesso Shared Preferences?
+### Como acesso Shared Preferences? {:#how-do-i-access-shared-preferences}
 
 No Android, você pode armazenar uma pequena coleção de pares chave-valor usando
 a API SharedPreferences.
@@ -2331,7 +2331,7 @@ Future<void> _incrementCounter() async {
 }
 ```
 
-### Como acesso SQLite no Flutter?
+### Como acesso SQLite no Flutter? {:#how-do-i-access-sqlite-in-flutter}
 
 No Android, você usa SQLite para armazenar dados estruturados
 que você pode consultar usando SQL.
@@ -2340,9 +2340,9 @@ No Flutter, para macOS, Android ou iOS,
 acesse essa funcionalidade usando o
 plugin [SQFlite][].
 
-## Depuração
+## Depuração {:#debugging}
 
-### Quais ferramentas posso usar para depurar meu aplicativo no Flutter?
+### Quais ferramentas posso usar para depurar meu aplicativo no Flutter? {:#what-tools-can-i-use-to-debug-my-app-in-flutter}
 
 Use a suíte [DevTools][] para depurar aplicativos Flutter ou Dart.
 
@@ -2351,9 +2351,9 @@ inspeção da árvore de widgets, registro de diagnósticos, depuração,
 observação de linhas de código executadas, depuração de vazamentos de memória e fragmentação de memória. Para mais informações, confira a
 documentação do [DevTools][].
 
-## Notificações
+## Notificações {:#notifications}
 
-### Como configuro notificações push?
+### Como configuro notificações push? {:#how-do-i-set-up-push-notifications}
 
 No Android, você usa Firebase Cloud Messaging para configurar
 notificações push para seu aplicativo.

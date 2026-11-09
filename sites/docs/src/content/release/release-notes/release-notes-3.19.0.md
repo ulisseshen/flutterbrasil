@@ -551,7 +551,7 @@ consulte o [CHANGELOG][] do Flutter.
 * add flavor-conditional asset bundling support to `flutter test` by @andrewkolos in [140944](https://github.com/flutter/flutter/pull/140944)
 * [cp] Replace deprecated `exists` in podhelper.rb by @stuartmorgan in [141381](https://github.com/flutter/flutter/pull/141381)
 * CP: [Beta] Update DWDS to version 23.0.0+1 by @elliette in [142168](https://github.com/flutter/flutter/pull/142168)
-### Documentação
+### Documentação {:#documentation}
 * Check sample links for malformed links by @gspencergoog in [137807](https://github.com/flutter/flutter/pull/137807)
 ### Other Changes
 * Temporarily disable NexusLowRes, version=29 by @ricardoamador in [135785](https://github.com/flutter/flutter/pull/135785)
@@ -714,7 +714,7 @@ consulte o [CHANGELOG][] do Flutter.
 * [CP] Update tests to Xcode 15 by @vashworth in [142320](https://github.com/flutter/flutter/pull/142320)
 * [flutter_releases] Flutter beta 3.19.0-0.4.pre Framework Cherrypicks by @itsjustkevin in [142777](https://github.com/flutter/flutter/pull/142777)
 
-## Novos contribuidores
+## Novos contribuidores {:#new-contributors}
 * @Pante made their first contribution in [135897](https://github.com/flutter/flutter/pull/135897)
 * @droidbg made their first contribution in [136169](https://github.com/flutter/flutter/pull/136169)
 * @fischerscode made their first contribution in [135823](https://github.com/flutter/flutter/pull/135823)
@@ -1431,7 +1431,7 @@ consulte o [CHANGELOG][] do Flutter.
 * Rolls dart sdk to 42b177d9f by @godofredoc in [50008](https://github.com/flutter/engine/pull/50008)
 * [flutter_releases] Flutter beta 3.19.0-0.4.pre Engine Cherrypicks by @itsjustkevin in [50209](https://github.com/flutter/engine/pull/50209)
 
-## Novos contribuidores
+## Novos contribuidores {:#new-contributors}
 * @CoderDake made their first contribution in [46720](https://github.com/flutter/engine/pull/46720)
 * @eriko13 made their first contribution in [46429](https://github.com/flutter/engine/pull/46429)
 * @natebosch made their first contribution in [46592](https://github.com/flutter/engine/pull/46592)

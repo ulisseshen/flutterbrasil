@@ -8,14 +8,14 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 `ScrollBehavior`s agora permitem ou não permitem que velocidades de scrolling sejam afetadas pelo
 número de pointers na tela. `ScrollBehavior.multitouchDragStrategy`, por
 padrão, previne que múltiplos pointers interagindo com o scrollable ao mesmo
 tempo afetem a velocidade de scrolling.
 
-## Contexto
+## Contexto {:#context}
 
 Antes desta mudança, para cada pointer arrastando um widget `Scrollable`, a
 velocidade de scroll aumentaria. Isso não correspondia às expectativas da plataforma ao
@@ -25,7 +25,7 @@ Agora, o `ScrollBehavior` herdado gerencia como múltiplos pointers afetam
 widgets scrolling conforme especificado por `ScrollBehavior.multitouchDragStrategy`. Este
 enum, `MultitouchDragStrategy`, também pode ser configurado para o comportamento anterior.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 Esta mudança corrigiu a capacidade inesperada de aumentar velocidades de scroll arrastando
 com mais de um dedo.
@@ -55,9 +55,9 @@ Para acomodar a nova configuração
 `DragGestureRecognizer` foi atualizado para suportar `MultitouchDragStrategy` também
 em outros contextos de arrastar.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
-### Definindo um `ScrollBehavior` personalizado para sua aplicação
+### Definindo um `ScrollBehavior` personalizado para sua aplicação {:#setting-a-custom-scrollbehavior-for-your-application}
 
 Código antes da migração:
 
@@ -83,7 +83,7 @@ MaterialApp(
 );
 ```
 
-### Definindo um `ScrollBehavior` personalizado para um widget específico
+### Definindo um `ScrollBehavior` personalizado para um widget específico {:#setting-a-custom-scrollbehavior-for-a-specific-widget}
 
 Código antes da migração:
 
@@ -119,7 +119,7 @@ ScrollConfiguration(
 );
 ```
 
-### Copiar e modificar o `ScrollBehavior` existente
+### Copiar e modificar o `ScrollBehavior` existente {:#copy-and-modify-existing-scrollbehavior}
 
 Código antes da migração:
 
@@ -151,12 +151,12 @@ ScrollConfiguration(
 );
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Lançado na versão: 3.18.0-4.0.pre<br>
 Na versão estável: 3.19.0
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

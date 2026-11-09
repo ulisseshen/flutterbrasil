@@ -18,7 +18,7 @@ construtor [`Image.network()`][`Image.network()`].
 Image.network('https://picsum.photos/250?image=9'),
 ```
 
-## Bônus: gifs animados
+## Bônus: gifs animados {:#bonus-animated-gifs}
 
 Uma coisa útil sobre o widget `Image`:
 Ele suporta gifs animados.
@@ -30,7 +30,7 @@ Image.network(
 );
 ```
 
-## Fade in de imagens com placeholders
+## Fade in de imagens com placeholders {:#image-fade-in-with-placeholders}
 
 O construtor padrão `Image.network` não lida com funcionalidades
 mais avançadas, como aplicar fade in em imagens após o carregamento.
@@ -39,7 +39,7 @@ confira [Aplicar fade in em imagens com um placeholder][Fade in images with a pl
 
 * [Aplicar fade in em imagens com um placeholder][Fade in images with a placeholder]
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter network images hands-on example in DartPad" run="true"

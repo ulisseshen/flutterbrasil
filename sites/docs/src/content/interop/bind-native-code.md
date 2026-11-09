@@ -168,7 +168,7 @@ void main(List<String> args) async {
 Os arquivos Dart (`unix.dart`, `windows.dart`) conteriam então as funções
 `external` que usam os símbolos dessas bibliotecas do sistema.
 
-#### Empacotando o `libc++_shared.so` no Android {:#bundling-libcsharedso-on-android}
+#### Empacotando o `libc++_shared.so` no Android {:#bundling-libc-shared-so-on-android}
 
 Embora o `libc++_shared.so` venha com o NDK do Android,
 ele não é uma biblioteca do sistema.

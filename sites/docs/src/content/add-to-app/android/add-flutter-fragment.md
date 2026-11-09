@@ -36,7 +36,7 @@ Essas chamadas permitem que o Flutter reaja apropriadamente a eventos do SO.
 Todas as variedades de `FlutterFragment`, e seus requisitos,
 são descritas neste guia.
 
-## Adicionar um `FlutterFragment` a uma `Activity` com um novo `FlutterEngine`
+## Adicionar um `FlutterFragment` a uma `Activity` com um novo `FlutterEngine` {:#add-a-flutterfragment-to-an-activity-with-a-new-flutterengine}
 
 A primeira coisa a fazer para usar um `FlutterFragment` é adicioná-lo a uma `Activity`
 hospedeira.
@@ -384,11 +384,11 @@ Ao fornecer um `FlutterEngine` pré-aquecido,
 como mostrado anteriormente, seu app renderiza o
 primeiro frame Flutter o mais rápido possível.
 
-#### Rota inicial com um engine em cache
+#### Rota inicial com um engine em cache {:#initial-route-with-a-cached-engine}
 
 {% render "docs/add-to-app/android-initial-route-cached-engine.md" %}
 
-## Exibir uma splash screen
+## Exibir uma splash screen {:#display-a-splash-screen}
 
 A exibição inicial do conteúdo Flutter requer algum tempo de espera,
 mesmo se um `FlutterEngine` pré-aquecido for usado.
@@ -398,7 +398,7 @@ exibição de uma splash screen (também conhecida como "launch screen") até qu
 renderize seu primeiro frame. Para instruções sobre como mostrar uma launch
 screen, consulte o [guia de splash screen][splash screen guide].
 
-## Executar Flutter com uma rota inicial especificada
+## Executar Flutter com uma rota inicial especificada {:#run-flutter-with-a-specified-initial-route}
 
 Um app Android pode conter muitas experiências Flutter independentes,
 executando em diferentes `FlutterFragment`s, com diferentes
@@ -438,7 +438,7 @@ escolheu uma rota inicial. A rota inicial pode ser escolhida explicitamente ao
 pré-aquecer um `FlutterEngine`.
 :::
 
-## Executar Flutter a partir de um entrypoint especificado
+## Executar Flutter a partir de um entrypoint especificado {:#run-flutter-from-a-specified-entrypoint}
 
 Semelhante a variar rotas iniciais, diferentes
 `FlutterFragment`s podem querer executar diferentes
@@ -483,7 +483,7 @@ O entrypoint Dart pode ser escolhido explicitamente ao pré-aquecer
 um `FlutterEngine`.
 :::
 
-## Controlar o modo de renderização de `FlutterFragment`
+## Controlar o modo de renderização de `FlutterFragment` {:#control-flutterfragments-render-mode}
 
 `FlutterFragment` pode usar um `SurfaceView` para renderizar seu
 conteúdo Flutter, ou pode usar um `TextureView`.
@@ -536,7 +536,7 @@ FlutterFragment flutterFragment = FlutterFragment.withCachedEngine("my_engine_id
 Usando a configuração mostrada, o `FlutterFragment` resultante
 renderiza sua UI para um `TextureView`.
 
-## Exibir um `FlutterFragment` com transparência
+## Exibir um `FlutterFragment` com transparência {:#display-a-flutterfragment-with-transparency}
 
 Por padrão, `FlutterFragment` renderiza com um background opaco,
 usando um `SurfaceView`. (Veja "Controlar o modo de renderização de `FlutterFragment`".)
@@ -601,7 +601,7 @@ FlutterFragment flutterFragment = FlutterFragment.withCachedEngine("my_engine_id
 </Tab>
 </Tabs>
 
-## A relação entre `FlutterFragment` e sua `Activity`
+## A relação entre `FlutterFragment` e sua `Activity` {:#the-relationship-between-flutterfragment-and-its-activity}
 
 Alguns apps escolhem usar `Fragment`s como telas Android inteiras.
 Nestes apps, seria razoável para um `Fragment`

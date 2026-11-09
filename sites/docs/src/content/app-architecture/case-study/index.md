@@ -150,7 +150,7 @@ Outras características notáveis desta estrutura de pastas:
 Há código adicional no app compass que não pertence à arquitetura.
 Para a estrutura completa do pacote, [veja no GitHub][view it on GitHub].
 
-## Outras opções de arquitetura
+## Outras opções de arquitetura {:#other-architecture-options}
 
 O exemplo neste estudo de caso demonstra como uma aplicação segue nossas
 regras arquiteturais recomendadas, mas existem muitos outros apps de exemplo que

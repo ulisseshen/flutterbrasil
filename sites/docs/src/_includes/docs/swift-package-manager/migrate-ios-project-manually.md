@@ -48,7 +48,7 @@ Migrar para o SwiftPM requer atualizar os arquivos
 
    <DashImage image="development/packages-and-plugins/swift-package-manager/add-flutter-pre-action.png" caption="Adicione a pré-ação de build **Run Prepare Flutter Framework Script**" />
 
-### Passo 3: Execute o app {:.no_toc}
+### Passo 3: Execute o app {:.no_toc #step-3-run-app}
 
 1. No Xcode, execute o app.
 1. Certifique-se de que **Run Prepare Flutter Framework Script** é executado como uma pré-ação

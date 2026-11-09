@@ -12,7 +12,7 @@ consulte o [CHANGELOG][] do Flutter.
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/main/CHANGELOG.md
 
-## Framework do Flutter
+## Framework do Flutter {:#flutter-framework}
 
 ### Framework
 
@@ -640,11 +640,11 @@ consulte o [CHANGELOG][] do Flutter.
 * Roll pub packages by @flutter-pub-roller-bot in [166503](https://github.com/flutter/flutter/pull/166503)
 * [ Widget Preview ] Add initial support for communications over the Dart Tooling Daemon (DTD) by @bkonyi in [166698](https://github.com/flutter/flutter/pull/166698)
 
-### Documentação
+### Documentação {:#documentation}
 
 * Update `generate_gradle_lockfiles.dart` to handle batch updating kotlin Gradle files by @gmackall in [162628](https://github.com/flutter/flutter/pull/162628)
 
-### Outras mudanças
+### Outras mudanças {:#other-changes}
 
 * Roll pub packages by @flutter-pub-roller-bot in [161680](https://github.com/flutter/flutter/pull/161680)
 * [Impeller] Update partial repaint to use a fullsize onscreen. by @jonahwilliams in [161626](https://github.com/flutter/flutter/pull/161626)
@@ -999,7 +999,7 @@ consulte o [CHANGELOG][] do Flutter.
 * Update `engine.version` by @matanlurey in [167295](https://github.com/flutter/flutter/pull/167295)
 * Make a NOP edit to (re)-trigger postsubmits by @matanlurey in [167407](https://github.com/flutter/flutter/pull/167407)
 
-## Novos contribuidores
+## Novos contribuidores {:#new-contributors}
 
 * @lukepighetti made their first contribution in [161803](https://github.com/flutter/flutter/pull/161803)
 * @mernen made their first contribution in [161863](https://github.com/flutter/flutter/pull/161863)

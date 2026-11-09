@@ -7,12 +7,12 @@ description: >
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Uma refatoração recente da detecção de duplicação de global key agora requer que
 subclasses de `Element` que sobrescrevam o `forgetChild()` chamem `super()`.
 
-## Contexto
+## Contexto {:#context}
 
 Ao encontrar uma duplicação de global key que será
 limpa por uma reconstrução de element posteriormente,
@@ -30,7 +30,7 @@ anterior em `forgetChild` se a reconstrução havia acontecido.
 Isso, no entanto, requer que todas as subclasses de `Element` que
 sobrescrevam `forgetChild` chamem o método `super`.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 O `forgetChild` da classe abstrata `Element` tem uma
 implementação base para remover a reserva de global key,
@@ -39,7 +39,7 @@ Todas as subclasses que sobrescrevem o método têm que chamar `super`;
 caso contrário, o analyzer mostra um erro de linting e
 a detecção de duplicação de global key pode lançar um erro inesperado.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 No exemplo a seguir, uma subclasse de `Element` de um app
 sobrescreve o método `forgetChild`.
@@ -69,12 +69,12 @@ class CustomElement extends Element {
 }
 ```
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Aterrissou na versão: 1.16.3<br>
 No lançamento estável: 1.17
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

@@ -14,7 +14,7 @@ showBreadcrumbs: true
 Este documento é um trabalho em andamento.
 :::
 
-## Diretrizes de escrita
+## Diretrizes de escrita {:#writing-guidelines}
 
 Ao escrever para os sites de documentação,
 siga o [guia de estilo de documentação para desenvolvedores do Google][],
@@ -23,14 +23,14 @@ exceto nos casos em que as [diretrizes de documentação Dash][] conflitam com e
 [guia de estilo de documentação para desenvolvedores do Google]: https://developers.google.com/style
 [diretrizes de documentação Dash]: #dash-docs-styles
 
-### Estilos de documentação Dash
+### Estilos de documentação Dash {:#dash-docs-styles}
 
 :::warning
 Esta seção é um trabalho em andamento.
 Será adicionada ao longo do tempo.
 :::
 
-## Quebras semânticas
+## Quebras semânticas {:#semantic-breaks}
 
 Para tornar a revisão de PR, resolução de diff e rastreamento de histórico mais fáceis,
 use [quebras semânticas][] ao escrever Markdown.
@@ -60,14 +60,14 @@ confira também a postagem [Semantic Linefeeds][] de Brandon Rhode.
 
 ## Links
 
-### Escrever texto de link
+### Escrever texto de link {:#write-link-text}
 
 Use texto de link descritivo que siga as
 diretrizes do Google sobre [Referências cruzadas e links][].
 
 [Referências cruzadas e links]: https://developers.google.com/style/cross-references
 
-### Configurar destinos de link
+### Configurar destinos de link {:#configure-link-destinations}
 
 Para edição mais fácil, linhas mais curtas e redução de duplicação,
 prefira usar referências de link Markdown em vez de links inline.
@@ -78,7 +78,7 @@ seção atual onde são usadas, antes do próximo cabeçalho.
 Se uma definição de link for usada várias vezes em uma página,
 você pode colocá-la no final do documento.
 
-### Abrir o link em uma nova aba
+### Abrir o link em uma nova aba {:#open-the-link-in-a-new-tab}
 
 Se você quiser que um link abra em uma nova aba por padrão,
 adicione os atributos `target="_blank"` e `rel="noopener"`.

@@ -36,7 +36,7 @@ O macOS usa Hybrid composition, o que significa que a
 
 Para criar uma platform view no macOS, use as seguintes instruções:
 
-## No lado Dart
+## No lado Dart {:#on-the-dart-side}
 
 No lado Dart, crie um `Widget` e adicione a implementação do build,
 conforme mostrado nas seguintes etapas:
@@ -75,7 +75,7 @@ Para mais informações, consulte a documentação da API [`AppKitView`][`AppKit
 
 [`AppKitView`]: {{site.api}}/flutter/widgets/AppKitView-class.html
 
-## No lado da plataforma
+## No lado da plataforma {:#on-the-platform-side}
 
 Implemente a factory e a platform view.
 A `NativeViewFactory` cria a platform view, e
@@ -190,7 +190,7 @@ Para mais informações, consulte a documentação da API para:
 [`FlutterPlatformViewFactory`]: {{site.api}}/ios-embedder/protocol_flutter_platform_view_factory-p.html
 [`PlatformView`]: {{site.api}}/javadoc/io/flutter/plugin/platform/PlatformView.html
 
-## Juntando tudo
+## Juntando tudo {:#putting-it-together}
 
 Ao implementar o método `build()` em Dart,
 você pode usar [`defaultTargetPlatform`][`defaultTargetPlatform`]

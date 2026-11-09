@@ -631,7 +631,7 @@ consulte o [CHANGELOG][] do Flutter.
 * [flutter_tools] handle ERROR_INVALID_FUNCTION when trying to symlink across drives by @christopherfujino in [136681](https://github.com/flutter/flutter/pull/136681)
 * [CP][Android] Update Java/AGP/Gradle warning compatible Java range by @camsim99 in [136766](https://github.com/flutter/flutter/pull/136766)
 
-## Novos contribuidores
+## Novos contribuidores {:#new-contributors}
 
 * @CaiqueR made their first contribution in [129795](https://github.com/flutter/flutter/pull/129795)
 * @cychiang made their first contribution in [129030](https://github.com/flutter/flutter/pull/129030)
@@ -934,7 +934,7 @@ consulte o [CHANGELOG][] do Flutter.
 * [macOS] TextInputPlugin should mark navigation events in IME popover as handled by @knopp in [46141](https://github.com/flutter/engine/pull/46141)
 * Reland: [macOS] performKeyEquivalent cleanup by @knopp in [46377](https://github.com/flutter/engine/pull/46377)
 
-## Novos contribuidores
+## Novos contribuidores {:#new-contributors}
 
 * @dballard made their first contribution in [42555](https://github.com/flutter/engine/pull/42555)
 * @gmittert made their first contribution in [43567](https://github.com/flutter/engine/pull/43567)

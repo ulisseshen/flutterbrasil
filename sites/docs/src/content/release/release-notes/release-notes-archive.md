@@ -10,14 +10,14 @@ lançamentos no canal stable e
 a antiga página wiki _Changelog_ do GitHub antes disso,
 que documentou mudanças até e incluindo a versão 1.0.0.
 
-## Notas de versão arquivadas
+## Notas de versão arquivadas {:#archived-release-notes}
 
 * [Flutter 1.9.1 release notes][1.9.1]
 * [Flutter 1.7.8 release notes][1.7.8]
 * [Flutter 1.5.4 release notes][1.5.4]
 * [Flutter 1.2.1 release notes][1.2.1]
 
-## Changelog antigo
+## Changelog antigo {:#old-changelog}
 
 * [Flutter Changelog 0.0.21 through 1.0.0][0.0.21]
 

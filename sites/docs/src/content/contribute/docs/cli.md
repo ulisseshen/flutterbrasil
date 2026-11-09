@@ -17,7 +17,7 @@ Este documento é um trabalho em progresso.
 A ferramenta CLI do site pode ser acessada executando
 `dart run dash_site` no diretório raiz do repositório.
 
-## Comandos
+## Comandos {:#commands}
 
 ### `analyze-dart`
 

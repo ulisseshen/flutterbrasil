@@ -12,7 +12,7 @@ consulte o [CHANGELOG][] do Flutter.
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/main/CHANGELOG.md
 
-## Framework do Flutter
+## Framework do Flutter {:#flutter-framework}
 
 ### Framework
 
@@ -568,11 +568,11 @@ consulte o [CHANGELOG][] do Flutter.
 * Migrator for android 35/16kb page size cmake flags for plugin_ffi  by @dcharkes in [156221](https://github.com/flutter/flutter/pull/156221)
 * Beta test alternate correct macOS framework xcprivacy manifest location by @jmagman in [157136](https://github.com/flutter/flutter/pull/157136)
 
-### Documentação
+### Documentação {:#documentation}
 
 * Fix crash in Linux platform channel example. by @robert-ancell in [155735](https://github.com/flutter/flutter/pull/155735)
 
-### Outras mudanças
+### Outras mudanças {:#other-changes}
 
 * Force regeneration of platform-specific manifests before running performance tests by @jason-simmons in [151003](https://github.com/flutter/flutter/pull/151003)
 * Roll pub packages by @flutter-pub-roller-bot in [151203](https://github.com/flutter/flutter/pull/151203)
@@ -768,7 +768,7 @@ consulte o [CHANGELOG][] do Flutter.
 * Started handling duplicate validation layer messages by @gaaclarke in [156375](https://github.com/flutter/flutter/pull/156375)
 * [flutter_releases] Flutter beta 3.27.0-0.1.pre Framework Cherrypicks by @reidbaker in [157268](https://github.com/flutter/flutter/pull/157268)
 
-## Novos contribuidores
+## Novos contribuidores {:#new-contributors}
 
 * @xiaoxianBoy made their first contribution in [150402](https://github.com/flutter/flutter/pull/150402)
 * @veloce made their first contribution in [149102](https://github.com/flutter/flutter/pull/149102)
@@ -818,7 +818,7 @@ consulte o [CHANGELOG][] do Flutter.
 
 **Changelog completo**: https://github.com/flutter/flutter/compare/3.24.0...3.27.0-0.1.pre
 
-## Engine do Flutter
+## Engine do Flutter {:#flutter-engine}
 
 ### Impeller
 
@@ -1171,7 +1171,7 @@ consulte o [CHANGELOG][] do Flutter.
 * [Impeller] fix Impeller on windows. by @jonahwilliams in [55323](https://github.com/flutter/engine/pull/55323)
 * Beta fix macos xcprivacy manifest copy location by @christopherfujino in [55938](https://github.com/flutter/engine/pull/55938)
 
-### Outras mudanças
+### Outras mudanças {:#other-changes}
 
 * Convert `run_ios_tests.sh` to `run_ios_tests.dart`. by @matanlurey in [53645](https://github.com/flutter/engine/pull/53645)
 * [Embedder] Document incorrectly named field in FlutterOpenGLFramebuffer. by @chinmaygarde in [53720](https://github.com/flutter/engine/pull/53720)
@@ -1439,7 +1439,7 @@ consulte o [CHANGELOG][] do Flutter.
 * Refactor multi-file build parsing into a single `BuildPlan` class. by @matanlurey in [55720](https://github.com/flutter/engine/pull/55720)
 * Update Dart to 3.6.0-334.3.beta by @zanderso in [55826](https://github.com/flutter/engine/pull/55826)
 
-## Novos contribuidores
+## Novos contribuidores {:#new-contributors}
 
 * @darkwater made their first contribution in [54053](https://github.com/flutter/engine/pull/54053)
 * @charafau made their first contribution in [54173](https://github.com/flutter/engine/pull/54173)

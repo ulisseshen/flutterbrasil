@@ -4,7 +4,7 @@ title: Acessibilidade web
 description: Informações sobre acessibilidade web
 ---
 
-## Contexto
+## Contexto {:#background}
 
 Flutter suporta acessibilidade web traduzindo sua
 árvore Semantics interna em uma estrutura DOM HTML acessível que
@@ -13,9 +13,9 @@ Como o Flutter renderiza sua UI em um único canvas, ele precisa de uma camada e
 para expor o significado e estrutura da UI aos navegadores web.
 
 
-## Opt-in de acessibilidade web
+## Opt-in de acessibilidade web {:#opt-in-web-accessibility}
 
-### Botão invisível
+### Botão invisível {:#invisible-button}
 
 Por razões de desempenho, a acessibilidade web do Flutter não está ativada por padrão.
 Para ativar a acessibilidade, o usuário precisa pressionar um botão invisível com
@@ -26,7 +26,7 @@ Em web apps incorporados ou com múltiplas views em navegadores móveis, o Flutt
 esse botão placeholder a cada view do Flutter para que ele não bloqueie toques na
 página HTML ao redor.
 
-### Ativar modo de acessibilidade no código
+### Ativar modo de acessibilidade no código {:#turn-on-accessibility-mode-in-code}
 
 Uma abordagem alternativa é ativar o modo de acessibilidade
 adicionando o seguinte código ao executar um app.
@@ -46,7 +46,7 @@ void main() {
 
 ## Melhorando a acessibilidade com roles semânticos {:#enhancing-accessibility-with-semantic-roles}
 
-### O que são roles semânticos?
+### O que são roles semânticos? {:#what-are-semantic-roles}
 
 Roles semânticos definem o propósito de um elemento de UI, ajudando leitores de tela
 e outras ferramentas assistivas a interpretar e apresentar sua aplicação efetivamente
@@ -64,7 +64,7 @@ Ao atribuir roles apropriados, você garante que:
 * Usuários podem navegar em sua aplicação de forma mais eficaz usando tecnologias assistivas.
 * Sua aplicação adere aos padrões de acessibilidade web, melhorando a usabilidade.
 
-### Usando `SemanticsRole` no Flutter para web
+### Usando `SemanticsRole` no Flutter para web {:#using-semanticsrole-in-flutter-for-web}
 
 Flutter fornece o [widget `Semantics`][] com o [enum `SemanticsRole`][]
 para permitir que desenvolvedores atribuam roles específicos aos seus widgets. Quando seu

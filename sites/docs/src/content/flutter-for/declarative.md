@@ -11,7 +11,7 @@ _Esta introdução descreve a diferença conceitual entre o
 estilo declarativo usado pelo Flutter, e o estilo imperativo usado por
 muitos outros frameworks de UI._
 
-## Por que uma UI declarativa?
+## Por que uma UI declarativa? {:#why-a-declarative-ui}
 
 Frameworks do Win32 à web, Android e iOS normalmente usam um estilo imperativo
 de programação de UI. Este pode ser o estilo com o qual você está mais familiarizado
@@ -26,7 +26,7 @@ transição para o framework.
 
 Isso, no entanto, requer uma ligeira mudança de pensamento sobre como manipular a UI.
 
-## Como mudar a UI em um framework declarativo
+## Como mudar a UI em um framework declarativo {:#how-to-change-ui-in-a-declarative-framework}
 
 Considere um exemplo simplificado abaixo:
 

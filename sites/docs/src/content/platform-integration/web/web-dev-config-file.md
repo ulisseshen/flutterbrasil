@@ -20,7 +20,7 @@ regras de proxy—garantindo um ambiente de desenvolvimento consistente.
 O suporte ao arquivo `web_dev_config.yaml` foi adicionado no Flutter 3.38.
 :::
 
-## Criar um arquivo de configuração
+## Criar um arquivo de configuração {:#create-a-configuration-file}
 
 Adicione um arquivo `web_dev_config.yaml` ao diretório raiz do seu projeto Flutter.
 Se você ainda não configurou um projeto Flutter,
@@ -28,9 +28,9 @@ visite [Construindo uma aplicação web com Flutter][Building a web application 
 
 [Building a web application with Flutter]: /platform-integration/web/building
 
-## Adicionar configurações
+## Adicionar configurações {:#add-configuration-settings}
 
-### Configuração básica do servidor
+### Configuração básica do servidor {:#basic-server-configuration}
 
 Você pode definir o host, porta e configurações HTTPS para seu servidor de desenvolvimento.
 
@@ -43,7 +43,7 @@ server:
     cert-key-path: "/path/to/key.pem" # Path <string> to TLS certificate key
 ```
 
-### Headers personalizados
+### Headers personalizados {:#custom-headers}
 
 Você também pode injetar headers HTTP personalizados nas respostas do servidor de desenvolvimento.
 
@@ -56,11 +56,11 @@ server:
       value: "no-cache, no-store, must-revalidate"
 ```
 
-### Configuração de proxy
+### Configuração de proxy {:#proxy-configuration}
 
 Requisições são correspondidas em ordem do arquivo `web_dev_config.yaml`.
 
-#### Proxy de string básico
+#### Proxy de string básico {:#basic-string-proxy}
 
 Use o campo `prefix` para correspondência simples de prefixo de caminho.
 
@@ -88,7 +88,7 @@ server:
     encaminhada para `http://localhost:4000/item/123` porque `replace: ""`
     remove o prefixo `/products/` substituindo-o por uma string vazia.
 
-#### Proxy regex avançado
+#### Proxy regex avançado {:#advanced-regex-proxy}
 
 Você também pode usar o campo `regex` para correspondência mais flexível e complexa.
 
@@ -109,7 +109,7 @@ server:
 *   Uma requisição para `/api/v1/users/profile/` começa com o caminho da segunda regra
     então é encaminhada para `http://localhost:4000/users/profile/?apiVersion=v1`.
 
-## Precedência de configuração
+## Precedência de configuração {:#configuration-precedence}
 
 Lembre-se da ordem de precedência para configurações:
 

@@ -21,9 +21,9 @@ com mais frequência do que a plataforma Android.
 
 [AndroidX]: {{site.android-dev}}/jetpack/androidx
 
-## Perguntas Comuns
+## Perguntas Comuns {:#common-questions}
 
-### Como migrar meu app, plugin ou projeto de módulo editável existente para AndroidX?
+### Como migrar meu app, plugin ou projeto de módulo editável existente para AndroidX? {:#how-do-i-migrate-my-existing-app-plugin-or-host-editable-module-project-to-androidx}
 
 _Você precisará do Android Studio 3.2 ou superior.
 Se você não o tiver instalado,
@@ -54,7 +54,7 @@ seu `CHANGELOG.md` para indicar que esta nova versão
 
 [Android Studio]: {{site.android-dev}}/studio
 
-### E se eu não puder usar o Android Studio?
+### E se eu não puder usar o Android Studio? {:#what-if-i-cant-use-android-studio}
 
 Você pode criar um novo projeto usando a ferramenta Flutter
 e então mover o código Dart e os
@@ -83,7 +83,7 @@ Por fim, execute `flutter clean`.
 Se o seu módulo contiver um diretório `android`,
 então siga as etapas da seção anterior.
 
-### Como saber se meu projeto está usando AndroidX?
+### Como saber se meu projeto está usando AndroidX? {:#how-do-i-know-if-my-project-is-using-androidx}
 
 A partir do Flutter v1.12.13, novos projetos criados com
 `flutter create -t <project-type>`
@@ -106,7 +106,7 @@ android.useAndroidX=true
 android.enableJetifier=true
 ```
 
-### E se eu não migrar meu app ou módulo para AndroidX?
+### E se eu não migrar meu app ou módulo para AndroidX? {:#what-if-i-dont-migrate-my-app-or-module-to-androidx}
 
 Seu app pode continuar a funcionar. No entanto,
 combinar artefatos AndroidX e Support
@@ -117,14 +117,14 @@ Como resultado, à medida que mais plugins migram para AndroidX,
 plugins que dependem de bibliotecas principais do Android provavelmente
 causarão falhas de compilação.
 
-### E se meu app foi migrado para AndroidX, mas nem todos os plugins que uso foram?
+### E se meu app foi migrado para AndroidX, mas nem todos os plugins que uso foram? {:#what-if-my-app-is-migrated-to-androidx-but-not-all-of-the-plugins-i-use}
 
 A ferramenta Flutter usa o Jetifier para migrar automaticamente
 plugins Flutter que usam a Support Library
 para AndroidX, para que você possa usar os mesmos plugins mesmo
 se eles ainda não tiverem sido migrados para AndroidX.
 
-### Estou tendo problemas ao migrar para AndroidX
+### Estou tendo problemas ao migrar para AndroidX {:#im-having-issues-migrating-to-androidx}
 
 [Abra uma issue no GitHub][Open an issue on GitHub] e adicione `[androidx-migration]`
 ao título da issue.

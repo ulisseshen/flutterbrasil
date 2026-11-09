@@ -9,7 +9,7 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 A ferramenta `flutter` não gerará mais um `package:flutter_gen` sintético
 ou modificará o `package_config.json` do aplicativo.
@@ -20,7 +20,7 @@ referenciar arquivos de código fonte gerados diretamente no diretório de códi
 Além disso, a propriedade `generate: true` agora é obrigatória ao usar código fonte
 l10n gerado.
 
-## Contexto
+## Contexto {:#background}
 
 `flutter_gen` é um pacote virtual (sintético) que é
 criado pela ferramenta de linha de comando `flutter` para permitir que os desenvolvedores
@@ -30,7 +30,7 @@ Como o pacote não está listado no `pubspec.yaml` de um aplicativo, e
 é criado via reescrita do arquivo `package_config.json` gerado,
 muitos problemas foram criados.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Esta alteração afeta apenas aplicativos que têm a
 seguinte entrada em seu `pubspec.yaml`:
@@ -82,7 +82,7 @@ Para migrar da importação de `package:flutter_gen`:
     import 'i18n/app_localizations.dart';
     ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Disponibilizado na versão: 3.28.0-0.0.pre<br>
 Versão estável: 3.32.0
@@ -90,7 +90,7 @@ Versão estável: 3.32.0
 **Na próxima versão estável após esta alteração,
 o suporte a `package:flutter_gen` será removido.**
 
-## Referências
+## Referências {:#references}
 
 Issues relevantes:
 

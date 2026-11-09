@@ -18,7 +18,7 @@ Esta receita usa os seguintes passos:
   5. Atualizar o `title` existente a partir da entrada do usuário.
   6. Atualizar e exibir a resposta na tela.
 
-## 1. Adicionar o pacote `http`
+## 1. Adicionar o pacote `http` {:#1-add-the-http-package}
 
 Para adicionar o pacote `http` como uma dependência,
 execute `flutter pub add`:
@@ -37,7 +37,7 @@ import 'package:material_ui/material_ui.dart';
 
 {% render "docs/cookbook/networking/internet-permission.md" %}
 
-## 2. Atualizando dados pela internet usando o pacote `http`
+## 2. Atualizando dados pela internet usando o pacote `http` {:#2-updating-data-over-the-internet-using-the-http-package}
 
 Esta receita cobre como atualizar o título de um álbum no
 [JSONPlaceholder][JSONPlaceholder] usando o método [`http.put()`][`http.put()`].
@@ -65,14 +65,14 @@ O método `http.put()` retorna um `Future` que contém um `Response`.
 * O método `updateAlbum()` recebe um argumento, `title`,
   que é enviado ao servidor para atualizar o `Album`.
 
-## 3. Converter o `http.Response` em um objeto Dart customizado
+## 3. Converter o `http.Response` em um objeto Dart customizado {:#3-convert-the-http-response-to-a-custom-dart-object}
 
 Embora seja fácil fazer uma requisição de rede,
 trabalhar com um `Future<http.Response>` bruto
 não é muito conveniente. Para facilitar sua vida,
 converta o `http.Response` em um objeto Dart.
 
-### Criar uma classe Album
+### Criar uma classe Album {:#create-an-album-class}
 
 Primeiro, crie uma classe `Album` que contém os dados da
 requisição de rede. Ela inclui um construtor factory que
@@ -99,7 +99,7 @@ class Album {
 }
 ```
 
-### Converter o `http.Response` em um `Album`
+### Converter o `http.Response` em um `Album` {:#convert-the-http-response-to-an-album}
 
 Agora, use os seguintes passos para atualizar a função `updateAlbum()`
 para retornar um `Future<Album>`:
@@ -142,7 +142,7 @@ Future<Album> updateAlbum(String title) async {
 Ótimo!
 Agora você tem uma função que atualiza o título de um álbum.
 
-### Obter os dados da internet
+### Obter os dados da internet {:#get-the-data-from-the-internet}
 
 Obtenha os dados da internet antes de poder atualizá-los.
 Para um exemplo completo, veja a receita [Fetch data][Fetch data].
@@ -170,7 +170,7 @@ Idealmente, você usará este método para definir
 `_futureAlbum` durante `initState` para buscar
 os dados da internet.
 
-## 4. Atualizar o título existente a partir da entrada do usuário
+## 4. Atualizar o título existente a partir da entrada do usuário {:#4-update-the-existing-title-from-user-input}
 
 Crie um `TextField` para inserir um título e um `ElevatedButton`
 para atualizar os dados no servidor.
@@ -209,7 +209,7 @@ Ao pressionar o botão **Update Data**, uma requisição de rede
 envia os dados no `TextField` para o servidor como uma requisição `PUT`.
 A variável `_futureAlbum` é usada no próximo passo.
 
-## 5. Exibir a resposta na tela
+## 5. Exibir a resposta na tela {:#5-display-the-response-on-screen}
 
 Para exibir os dados na tela, use o
 widget [`FutureBuilder`][`FutureBuilder`].
@@ -246,7 +246,7 @@ FutureBuilder<Album>(
 );
 ```
 
-## Exemplo completo
+## Exemplo completo {:#complete-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dart

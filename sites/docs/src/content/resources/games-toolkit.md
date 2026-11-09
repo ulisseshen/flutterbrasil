@@ -11,7 +11,7 @@ para que você possa acelerar o desenvolvimento de jogos em plataformas móveis.
 
 Esta página descreve onde você pode encontrar esses recursos disponíveis.
 
-## Por que Flutter para jogos?
+## Por que Flutter para jogos? {:#why-flutter-for-games}
 
 O framework Flutter pode criar apps performáticos para seis plataformas alvo,
 desde o desktop até dispositivos móveis e a web.
@@ -39,7 +39,7 @@ visões de câmera, loops de jogo e similares.
 Estes tipos de jogos podem usar um motor de jogo open source como o
 [Flame game engine][] construído usando Flutter.
 
-## O que está incluído no kit de ferramentas
+## O que está incluído no kit de ferramentas {:#whats-included-in-the-toolkit}
 
 O Kit de Ferramentas para Jogos Casuais fornece os seguintes recursos gratuitos.
 
@@ -104,7 +104,7 @@ um adicional de $100 além do crédito normal de $300.
 Para a oferta de Ads, [verifique a elegibilidade da sua região][check your region's eligibility].
 :::
 
-## Começando
+## Começando {:#get-started}
 
 Você está pronto? Para começar:
 
@@ -138,7 +138,7 @@ Você está pronto? Para começar:
 
 [word puzzle]: {{site.codelabs}}/codelabs/flutter-word-puzzle
 
-## Jogos de exemplo
+## Jogos de exemplo {:#example-games}
 
 Para o Google I/O 2022, tanto a equipe Flutter
 quanto a Very Good Ventures criaram novos jogos.
@@ -154,7 +154,7 @@ quanto a Very Good Ventures criaram novos jogos.
   no blog do Google Developers e [jogue o jogo][flip-game] no seu navegador.
 
 
-## Outros recursos
+## Outros recursos {:#other-resources}
 
 Quando você se sentir pronto para ir além desses modelos de jogos,
 investigue outros recursos recomendados por nossa comunidade.
@@ -383,7 +383,7 @@ investigue outros recursos recomendados por nossa comunidade.
 [flutter_soloud]: {{site.pub-pkg}}/flutter_soloud
 [Best practices for optimizing Flutter web loading speed]: {{site.flutter-blog}}/best-practices-for-optimizing-flutter-web-loading-speed-7cc0df14ce5c
 
-## Outros recursos
+## Outros recursos {:#other-resources}
 
 Confira os seguintes vídeos:
 

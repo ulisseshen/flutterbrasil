@@ -15,7 +15,7 @@ dados estáticos (por exemplo, arquivos JSON),
 arquivos de configuração, ícones e imagens
 (JPEG, WebP, GIF, WebP/GIF animados, PNG, BMP e WBMP).
 
-## Especificando assets
+## Especificando assets {:#specifying-assets}
 
 Flutter usa o arquivo [`pubspec.yaml`][`pubspec.yaml`],
 localizado na raiz do seu projeto,
@@ -65,7 +65,7 @@ flutter:
 ```
 :::
 
-### Empacotamento de assets
+### Empacotamento de assets {:#asset-bundling}
 
 A subseção `assets` da seção `flutter`
 especifica arquivos que devem ser incluídos com o app.
@@ -80,14 +80,14 @@ Durante uma compilação, Flutter coloca assets em um arquivo
 especial chamado _asset bundle_ que apps leem
 em tempo de execução.
 
-### Transformação automática de arquivos de assets no momento da compilação
+### Transformação automática de arquivos de assets no momento da compilação {:#automatic-transformation-of-asset-files-at-build-time}
 
 Flutter suporta o uso de um pacote Dart para transformar arquivos de assets ao compilar seu app.
 Para fazer isso, especifique os arquivos de assets e o pacote transformador no seu arquivo pubspec.
 Para aprender como fazer isso e escrever seus próprios pacotes de transformação de assets, veja
 [Transforming assets at build time][Transforming assets at build time].
 
-### Assets específicos de plataforma
+### Assets específicos de plataforma {:#platform-specific-assets}
 
 :::version-note
 Este recurso está disponível a partir do Flutter 3.41.0.
@@ -114,7 +114,7 @@ Para mais informações sobre como configurar assets específicos de plataforma,
 veja o [campo `assets`][`assets` field]
 na referência [opções do pubspec do Flutter][Flutter pubspec options].
 
-## Carregando assets
+## Carregando assets {:#loading-assets}
 
 Seu app pode acessar seus assets através de um
 objeto [`AssetBundle`][`AssetBundle`].
@@ -124,7 +124,7 @@ asset de string/texto (`loadString()`) ou um asset de imagem/binário (`load()`)
 do bundle, dado uma chave lógica. A chave lógica mapeia para o caminho
 do asset especificado no arquivo `pubspec.yaml` no momento da compilação.
 
-### Carregando assets de texto
+### Carregando assets de texto {:#loading-text-assets}
 
 Cada app Flutter tem um objeto [`rootBundle`][`rootBundle`]
 para fácil acesso ao asset bundle principal.
@@ -164,7 +164,7 @@ Future<String> loadAsset() async {
 }
 ```
 
-### Carregando imagens
+### Carregando imagens {:#loading-images}
 
 Para carregar uma imagem, use a classe [`AssetImage`][`AssetImage`]
 no método `build()` de um widget.
@@ -279,7 +279,7 @@ return const AssetImage('icons/heart.png', package: 'my_icons');
 Assets usados pelo próprio pacote também devem ser buscados
 usando o argumento `package` como acima.
 
-#### Empacotamento de assets de pacotes
+#### Empacotamento de assets de pacotes {:#bundling-of-package-assets}
 
 Se o asset desejado é especificado no arquivo `pubspec.yaml`
 do pacote, ele é empacotado automaticamente com a
@@ -325,12 +325,12 @@ Para carregar a imagem dentro do seu pacote, use:
 return const AssetImage('packages/fancy_backgrounds/backgrounds/background1.png');
 ```
 
-## Compartilhando assets com a plataforma subjacente
+## Compartilhando assets com a plataforma subjacente {:#sharing-assets-with-the-underlying-platform}
 
 Assets Flutter estão prontamente disponíveis para código de plataforma
 usando o `AssetManager` no Android e `NSBundle` no iOS.
 
-### Carregando assets Flutter no Android
+### Carregando assets Flutter no Android {:#loading-flutter-assets-in-android}
 
 No Android os assets estão disponíveis através da
 API [`AssetManager`][`AssetManager`]. A chave de lookup usada em,
@@ -367,7 +367,7 @@ String key = registrar.lookupKeyForAsset("icons/heart.png");
 AssetFileDescriptor fd = assetManager.openFd(key);
 ```
 
-### Carregando assets Flutter no iOS
+### Carregando assets Flutter no iOS {:#loading-flutter-assets-in-ios}
 
 No iOS os assets estão disponíveis através do [`mainBundle`][`mainBundle`].
 A chave de lookup usada em, por exemplo [`pathForResource:ofType:`][`pathForResource:ofType:`],
@@ -400,7 +400,7 @@ let path = mainBundle.path(forResource: key, ofType: nil)
 Para um exemplo mais completo, veja a implementação do
 plugin Flutter [`video_player` plugin][`video_player` plugin] no pub.dev.
 
-### Carregando imagens iOS no Flutter
+### Carregando imagens iOS no Flutter {:#loading-ios-images-in-flutter}
 
 Ao implementar Flutter
 [adicionando-o a um app iOS existente][add-to-app],
@@ -409,14 +409,14 @@ usar no Flutter. Para realizar
 isso, use [platform channels][platform channels] para passar os dados da imagem
 para Dart como `FlutterStandardTypedData`.
 
-## Assets de plataforma
+## Assets de plataforma {:#platform-assets}
 
 Existem outras ocasiões para trabalhar com assets nos
 projetos de plataforma diretamente. Abaixo estão dois casos comuns
 onde assets são usados antes que o framework Flutter seja
 carregado e executando.
 
-### Atualizando o ícone do app
+### Atualizando o ícone do app {:#updating-the-app-icon}
 
 Atualizar o ícone de lançamento de uma aplicação Flutter funciona
 da mesma forma que atualizar ícones de lançamento em aplicações
@@ -453,7 +453,7 @@ Mantenha os nomes de arquivo originais.
 
 ![iOS icon location](/assets/images/docs/assets-and-images/ios-icon-path.png)
 
-### Atualizando a tela de lançamento
+### Atualizando a tela de lançamento {:#updating-the-launch-screen}
 
 <p align="center">
   <img src="/assets/images/docs/assets-and-images/launch-screen.png" alt="Launch screen" />

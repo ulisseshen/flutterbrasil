@@ -23,7 +23,7 @@ Esta receita usa os seguintes passos:
   1.  Crie um teste de orientação paisagem.
   1.  Execute os testes.
 
-## 1. Crie um app que atualiza baseado na orientação
+## 1. Crie um app que atualiza baseado na orientação {:#1-create-an-app-that-updates-based-on-orientation}
 
 Crie um app Flutter que muda quantas colunas são exibidas quando um
 app está em modo retrato ou paisagem:
@@ -37,7 +37,7 @@ app está em modo retrato ou paisagem:
 2.  Siga os passos em [Atualizar a UI baseado na orientação][Update the UI based on orientation] para
     configurar o projeto.
 
-## 2. Crie um grupo de testes de orientação
+## 2. Crie um grupo de testes de orientação {:#2-create-an-orientation-test-group}
 
 Depois que você configurar seu projeto `orientation_tests`, complete estes passos para
 agrupar seus futuros testes de orientação:
@@ -58,7 +58,7 @@ agrupar seus futuros testes de orientação:
     }
     ```
 
-## 3. Crie um teste de orientação retrato
+## 3. Crie um teste de orientação retrato {:#3-create-a-portrait-orientation-test}
 
 Adicione o teste de orientação retrato ao grupo `Orientation`.
 Este teste garante que a orientação é `portrait` e que
@@ -97,7 +97,7 @@ apenas `2` colunas de dados aparecem no app:
     });
     ```
 
-## 4. Crie um teste de orientação paisagem
+## 4. Crie um teste de orientação paisagem {:#4-create-a-landscape-orientation-test}
 
 Adicione o teste de orientação paisagem ao grupo `Orientation`.
 Este teste garante que a orientação é `landscape` e que
@@ -136,7 +136,7 @@ apenas `3` colunas de dados aparecem no app:
     });
     ```
 
-## 5. Execute os testes
+## 5. Execute os testes {:#5-run-the-tests}
 
 Execute os testes usando o seguinte comando a partir da raiz do projeto:
 
@@ -144,7 +144,7 @@ Execute os testes usando o seguinte comando a partir da raiz do projeto:
 flutter test test/widget_test.dart
 ```
 
-## Exemplo completo
+## Exemplo completo {:#complete-example}
 
 <?code-excerpt "cookbook/testing/widget/orientation_tests/test/widget_test.dart"?>
 ```dart title="widget_test.dart"

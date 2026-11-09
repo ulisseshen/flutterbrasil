@@ -43,7 +43,7 @@ Esta receita usa os seguintes passos:
   7. Atualize um `Dog` no banco de dados.
   7. Delete um `Dog` do banco de dados.
 
-## 1. Adicione as dependências
+## 1. Adicione as dependências {:#1-add-the-dependencies}
 
 Para trabalhar com bancos de dados SQLite, importe os pacotes `sqflite` e
 `path`.
@@ -71,7 +71,7 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 ```
 
-## 2. Defina o modelo de dados Dog
+## 2. Defina o modelo de dados Dog {:#2-define-the-dog-data-model}
 
 Antes de criar a tabela para armazenar informações sobre Dogs, reserve alguns momentos para
 definir os dados que precisam ser armazenados. Para este exemplo, defina uma classe Dog
@@ -89,7 +89,7 @@ class Dog {
 }
 ```
 
-## 3. Abra o banco de dados
+## 3. Abra o banco de dados {:#3-open-the-database}
 
 Antes de ler e escrever dados no banco de dados, abra uma conexão
 com o banco de dados. Isso envolve dois passos:
@@ -118,7 +118,7 @@ final database = openDatabase(
 );
 ```
 
-## 4. Crie a tabela `dogs`
+## 4. Crie a tabela `dogs` {:#4-create-the-dogs-table}
 
 Em seguida, crie uma tabela para armazenar informações sobre vários Dogs.
 Para este exemplo, crie uma tabela chamada `dogs` que define os dados
@@ -156,7 +156,7 @@ final database = openDatabase(
 );
 ```
 
-## 5. Insira um Dog no banco de dados
+## 5. Insira um Dog no banco de dados {:#5-insert-a-dog-into-the-database}
 
 Agora que você tem um banco de dados com uma tabela adequada para armazenar informações
 sobre vários dogs, é hora de ler e escrever dados.
@@ -218,7 +218,7 @@ var fido = Dog(id: 0, name: 'Fido', age: 35);
 await insertDog(fido);
 ```
 
-## 6. Recupere a lista de Dogs
+## 6. Recupere a lista de Dogs {:#6-retrieve-the-list-of-dogs}
 
 Agora que um `Dog` está armazenado no banco de dados, consulte o banco de dados
 por um dog específico ou uma lista de todos os dogs. Isso envolve dois passos:
@@ -251,7 +251,7 @@ Future<List<Dog>> dogs() async {
 print(await dogs()); // Prints a list that include Fido.
 ```
 
-## 7. Atualize um `Dog` no banco de dados
+## 7. Atualize um `Dog` no banco de dados {:#7-update-a-dog-in-the-database}
 
 Após inserir informações no banco de dados,
 você pode querer atualizar essas informações mais tarde.
@@ -299,7 +299,7 @@ Não use interpolação de string, como `where: "id = ${dog.id}"`!
 :::
 
 
-## 8. Delete um `Dog` do banco de dados
+## 8. Delete um `Dog` do banco de dados {:#8-delete-a-dog-from-the-database}
 
 Além de inserir e atualizar informações sobre Dogs,
 você também pode remover dogs do banco de dados. Para deletar dados,
@@ -326,7 +326,7 @@ Future<void> deleteDog(int id) async {
 }
 ```
 
-## Exemplo
+## Exemplo {:#example}
 
 Para executar o exemplo:
 

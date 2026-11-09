@@ -9,7 +9,7 @@ DevTools oculta a aba Debugger se o app foi iniciado
 do VS Code porque o VS Code tem um debugger integrado.
 :::
 
-## Começando
+## Começando {:#getting-started}
 
 DevTools inclui um debugger completo de nível de fonte,
 suportando breakpoints, stepping e inspeção de variáveis.
@@ -24,14 +24,14 @@ pesquise por outros arquivos de código-fonte.
 
 ![Screenshot of the debugger tab](/assets/images/docs/tools/devtools/debugger_screenshot.png){:width="100%"}
 
-## Definindo breakpoints
+## Definindo breakpoints {:#setting-breakpoints}
 
 Para definir um breakpoint, clique na margem esquerda (a régua de número de linha)
 na área de código-fonte. Clicar uma vez define um breakpoint, que também
 deve aparecer na área **Breakpoints** à esquerda. Clicar
 novamente remove o breakpoint.
 
-## As áreas de call stack e variáveis
+## As áreas de call stack e variáveis {:#the-call-stack-and-variable-areas}
 
 Quando sua aplicação encontra um breakpoint, ela pausa ali,
 e o debugger DevTools mostra o local de execução pausado
@@ -45,7 +45,7 @@ alternando-os abertos para ver seus campos. Passar o mouse sobre um objeto
 na área `Variables` chama `toString()` para aquele objeto e
 exibe o resultado.
 
-## Percorrendo o código-fonte
+## Percorrendo o código-fonte {:#stepping-through-source-code}
 
 Quando pausado, os três botões de stepping ficam ativos.
 
@@ -59,13 +59,13 @@ Quando pausado, os três botões de stepping ficam ativos.
 Além disso, o botão **Resume** continua a
 execução regular da aplicação.
 
-## Saída do console
+## Saída do console {:#console-output}
 
 A saída do console para o app em execução (stdout e stderr) é
 exibida no console, abaixo da área de código-fonte.
 Você também pode ver a saída na [view Logging][Logging view].
 
-## Quebrando em exceções
+## Quebrando em exceções {:#breaking-on-exceptions}
 
 Para ajustar o comportamento de stop-on-exceptions, alterne o
 dropdown **Ignore** no topo da view do debugger.
@@ -75,14 +75,14 @@ breakpoint for considerado não capturado pelo código da aplicação.
 Quebrar em todas as exceções faz com que o debugger pause
 independentemente de o breakpoint ter sido capturado ou não pelo código da aplicação.
 
-## Problemas conhecidos
+## Problemas conhecidos {:#known-issues}
 
 Ao realizar um hot restart para uma aplicação Flutter,
 os breakpoints do usuário são limpos.
 
 [Logging view]: /tools/devtools/logging
 
-## Outros recursos
+## Outros recursos {:#other-resources}
 
 Para mais informações sobre debugging e profiling, veja a
 página [Debugging][Debugging].

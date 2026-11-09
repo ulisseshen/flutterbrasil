@@ -16,7 +16,7 @@ uma extensão ou plugin Flutter, como VS Code e Android Studio.
 Esses plugins fornecem completação de código, destacamento de sintaxe,
 assistências de edição de widgets, suporte a depuração e muito mais.
 
-## Editores locais
+## Editores locais {:#local-editors}
 
 A equipe Flutter suporta plugins para VS Code, Android Studio e IntelliJ.
 Os plugins fornecem amplo suporte para desenvolvimento e depuração, bem como
@@ -44,7 +44,7 @@ integrações profundas com o [Dart analyzer][Dart analyzer] e [Dart and Flutter
 [Dart analyzer]: {{site.dart-site}}/tools/analysis
 [Dart and Flutter DevTools]: /tools/devtools
 
-## Editores online
+## Editores online {:#online-editors}
 
 Você pode experimentar rapidamente o Flutter online sem nenhuma configuração local
 com um dos seguintes editores.
@@ -63,7 +63,7 @@ com um dos seguintes editores.
   </a>
 </div>
 
-## Outros editores
+## Outros editores {:#other-editors}
 
 Você pode desenvolver apps Dart e Flutter usando qualquer outro editor de texto e terminal.
 

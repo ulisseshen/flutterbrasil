@@ -6,7 +6,7 @@ description: >
   foram removidas do Flutter.
 ---
 
-## Resumo
+## Resumo {:#summary}
 
 De acordo com a [Deprecation Policy][Deprecation Policy] do Flutter,
 APIs descontinuadas que atingiram o fim da vida útil após a
@@ -19,7 +19,7 @@ fonte primária para auxiliar na migração. Uma
 [Deprecation Policy]: {{site.repo.flutter}}/blob/main/docs/contributing/Tree-hygiene.md#deprecations
 [quick reference sheet]: /go/deprecations-removed-after-3-10
 
-## Mudanças
+## Mudanças {:#changes}
 
 Esta seção lista as descontinuações, listadas pelo pacote e classe afetada.
 
@@ -496,6 +496,6 @@ PRs relevantes:
 
 ---
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Na versão estável: 3.13.0

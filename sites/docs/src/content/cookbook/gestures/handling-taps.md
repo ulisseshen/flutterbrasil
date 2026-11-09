@@ -46,7 +46,7 @@ GestureDetector(
 )
 ```
 
-## Notas
+## Notas {:#notes}
 
   1. Para informações sobre como adicionar o efeito ripple Material ao seu
      botão, veja a receita [Add Material touch ripples][Add Material touch ripples].
@@ -55,7 +55,7 @@ GestureDetector(
      [`ElevatedButton`][`ElevatedButton`], [`TextButton`][`TextButton`], e
      [`CupertinoButton`][`CupertinoButton`].
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter tap handling hands-on example in DartPad" run="true"

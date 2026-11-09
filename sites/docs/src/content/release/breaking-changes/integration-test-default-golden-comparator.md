@@ -9,7 +9,7 @@ description: >-
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 A menos que um [`goldenFileComparator`][`goldenFileComparator`] definido pelo usuário seja configurado,
 seja manualmente em um teste ou usando um arquivo `flutter_test_config.dart`,
@@ -17,7 +17,7 @@ dispositivos e emuladores/simuladores Android e iOS têm um novo padrão que faz
 proxy para o sistema de arquivos do host local, corrigindo um bug antigo
 ([#143299][Issue 143299]).
 
-## Contexto
+## Contexto {:#background}
 
 O pacote [`integration_test`][`integration_test`], e sua integração com [`flutter_test`][`flutter_test`],
 historicamente tinha um bug onde ao usar [`matchesGoldenFile`][`matchesGoldenFile`] ou APIs similares
@@ -46,7 +46,7 @@ if (goldenFileComparator is ...) {
 }
 ```
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Na maioria dos casos, esperamos que os usuários não precisem fazer nada - esta será,
 em certo sentido, uma funcionalidade _nova_ que substituiu uma funcionalidade que não
@@ -70,12 +70,12 @@ e confiar no padrão (novo) que deve funcionar como esperado:
 _Curiosidade_: O código existente que foi usado para a plataforma _web_
 foi [reutilizado][PR 160484].
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Disponível na versão: 3.29.0-0.0.pre<br>
 Versão estável: 3.32
 
-## Referências
+## Referências {:#references}
 
 APIs relevantes:
 

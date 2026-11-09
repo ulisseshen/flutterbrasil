@@ -15,7 +15,7 @@ confira a página [novidades atuais][current what's new].
 
 ---
 
-## 13 de agosto de 2025: lançamento 3.35
+## 13 de agosto de 2025: lançamento 3.35 {:#13-august-2025-release-3-35}
 
 Flutter 3.35 está disponível! Para mais informações,
 confira o [post técnico do blog sobre Flutter 3.35][3.35-tech].
@@ -61,7 +61,7 @@ Você também pode conferir o post do blog sobre o [lançamento do Dart 3.9][Dar
 
 ---
 
-## 20 de maio de 2025: lançamento Google I/O 3.32
+## 20 de maio de 2025: lançamento Google I/O 3.32 {:#20-may-2025-google-io-release-3-32}
 
 Flutter 3.32 está disponível! Para mais informações,
 confira o [post técnico do blog sobre Flutter 3.32][3.32-tech].
@@ -125,7 +125,7 @@ então você pode já ter notado algumas delas:
 
 ---
 
-## 12 de fevereiro de 2025: lançamento 3.29
+## 12 de fevereiro de 2025: lançamento 3.29 {:#12-february-2025-3-29-release}
 
 Flutter 3.29 está disponível! Para mais informações,
 confira o [post técnico do blog sobre Flutter 3.29][3.29-tech].
@@ -157,7 +157,7 @@ Você também pode conferir o [post do blog sobre o lançamento do Dart 3.7][Dar
 
 ---
 
-## 11 de dezembro de 2024: lançamento 3.27
+## 11 de dezembro de 2024: lançamento 3.27 {:#11-december-2024-3-27-release}
 
 Flutter 3.27 está disponível! Para mais informações,
 confira o [post guarda-chuva do blog sobre Flutter 3.27][3.27-umbrella]
@@ -246,7 +246,7 @@ Este lançamento do site inclui várias atualizações importantes!
 
 ---
 
-## 07 de agosto de 2024: lançamento I/O Connect Beijing 3.24
+## 07 de agosto de 2024: lançamento I/O Connect Beijing 3.24 {:#07-august-2024-io-connect-beijing-3-24-release}
 
 Flutter 3.24 está disponível! Para mais informações,
 confira o [post guarda-chuva do blog sobre Flutter 3.24][3.24-umbrella]
@@ -323,7 +323,7 @@ Este lançamento do site inclui várias atualizações importantes!
 
 ---
 
-## 14 de maio de 2024: lançamento Google I/O 3.22
+## 14 de maio de 2024: lançamento Google I/O 3.22 {:#14-may-2024-google-io-3-22-release}
 
 Flutter 3.22 está disponível! Para mais informações,
 confira o [post guarda-chuva do blog sobre Flutter 3.22][3.22-umbrella]
@@ -387,7 +387,7 @@ Para saber mais, confira [dartbrasil.dev/go/macros][].
 [Transforming assets at build time]: /ui/assets/asset-transformation
 [Validate deep links]: /tools/devtools/deep-links
 
-## 15 de fevereiro de 2024: lançamento adjacente ao Dia dos Namorados 3.19
+## 15 de fevereiro de 2024: lançamento adjacente ao Dia dos Namorados 3.19 {:#15-february-2024-valentines-day-adjacent-3-19-release}
 
 Flutter 3.19 está disponível! Para mais informações,
 confira o [post guarda-chuva do blog sobre Flutter 3.19][3.19-umbrella]
@@ -426,7 +426,7 @@ Você também pode conferir o [post do blog sobre o lançamento do Dart 3.3][Dar
 [Flutter and Dart 2024 Roadmap]: {{site.repo.flutter}}/blob/main/docs/roadmap/Roadmap.md
 [Harness the Gemini API in your Dart and Flutter apps]: {{site.flutter-blog}}/harness-the-gemini-api-in-your-dart-and-flutter-apps-00573e560381
 
-## 15 de novembro de 2023: lançamento 3.16
+## 15 de novembro de 2023: lançamento 3.16 {:#15-november-2023-3-16-release}
 
 Flutter 3.16 está disponível! Para mais informações,
 confira o [post do blog sobre Flutter 3.16][3.16-umbrella]
@@ -485,7 +485,7 @@ desde o Flutter 3.13:
 [ios-app-ext]: /platform-integration/ios/app-extensions
 [What's new in Flutter 3.16]: {{site.flutter-blog}}/whats-new-in-flutter-3-16-dba6cb1015d1
 
-## 16 de agosto de 2023: lançamento 3.13
+## 16 de agosto de 2023: lançamento 3.13 {:#16-august-2023-3-13-release}
 
 Flutter 3.13 está disponível! Para mais informações,
 confira o [post do blog sobre Flutter 3.13][blog-general].
@@ -614,7 +614,7 @@ confira o [post do blog sobre Flutter 3.13][blog-games].
 
 <hr>
 
-## 10 de maio de 2023: Google I/O 2023: lançamento 3.10
+## 10 de maio de 2023: Google I/O 2023: lançamento 3.10 {:#10-may-2023-google-io-2023-3-10-release}
 
 Flutter 3.10 está disponível! Este lançamento contém muitas atualizações
 e melhorias. Esta página lista as mudanças na documentação,
@@ -709,7 +709,7 @@ desde o Flutter 3.7:
 [Wonderous nominated for Webby Award]: {{site.flutter-blog}}/wonderous-nominated-for-webby-award-8e00e2a648c2
 [Flutter in 2023: strategy and roadmap]: {{site.flutter-blog}}/flutter-in-2023-strategy-and-roadmap-60efc8d8b0c7
 
-## 25 de janeiro de 2023: Flutter Forward: lançamento 3.7
+## 25 de janeiro de 2023: Flutter Forward: lançamento 3.7 {:#25-jan-2023-flutter-forward-3-7-release}
 
 Flutter 3.7 está disponível! Este lançamento contém muitas atualizações
 e melhorias. Esta página lista as mudanças na documentação,
@@ -863,7 +863,7 @@ desde o último lançamento stable:
 [Supporting six platforms with two keyboards]: https://flutter.dev/blog/what-we-learned-from-the-flutter-q3-2022-survey
 [What we learned from the Flutter Q3 2022 survey]: https://flutter.dev/blog/what-we-learned-from-the-flutter-q3-2022-survey
 
-## 31 de agosto de 2022: Flutter Vikings: lançamento 3.3
+## 31 de agosto de 2022: Flutter Vikings: lançamento 3.3 {:#31-aug-2022-flutter-vikings-3-3-release}
 
 Flutter 3.3 está disponível! Para mais informações, leia
 [Novidades no Flutter 3.3][What's new in Flutter 3.3],
@@ -906,7 +906,7 @@ e as [notas de lançamento do Flutter 3.3][3.3 release notes].
 [navigation and routing overview]: /ui/navigation
 [URL strategies]: /ui/navigation/url-strategies
 
-## 11 de maio de 2022: Google I/O 2022: lançamento Flutter 3
+## 11 de maio de 2022: Google I/O 2022: lançamento Flutter 3 {:#11-may-2022-google-io-2022-flutter-3-release}
 
 Flutter 3 está disponível!!! Para mais informações, veja
 [Apresentando Flutter 3][Introducing Flutter 3], [Novidades no Flutter 3][What's new in Flutter 3],
@@ -991,7 +991,7 @@ na página [vídeos][videos].
 
 ---
 
-## 03 de fevereiro de 2022: Suporte Windows: lançamento 2.10
+## 03 de fevereiro de 2022: Suporte Windows: lançamento 2.10 {:#03-feb-2022-windows-support-2-10-release}
 
 O suporte desktop para Microsoft Windows
 (um recurso central do lançamento 2.10) está disponível!
@@ -1007,7 +1007,7 @@ no blog do Flutter.
 
 ---
 
-## 08 de dezembro de 2021: lançamento 2.8
+## 08 de dezembro de 2021: lançamento 2.8 {:#08-dec-2021-2-8-release}
 
 Flutter 2.8 está disponível! Para detalhes, veja
 [Anunciando Flutter 2.8][Announcing Flutter 2.8] e
@@ -1016,7 +1016,7 @@ Flutter 2.8 está disponível! Para detalhes, veja
 [Announcing Flutter 2.8]: {{site.flutter-blog}}/announcing-flutter-2-8-31d2cb7e19f5
 [What's new in Flutter 2.8]: {{site.flutter-blog}}/whats-new-in-flutter-2-8-d085b763d181
 
-## 08 de setembro de 2021: lançamento 2.5
+## 08 de setembro de 2021: lançamento 2.5 {:#08-sep-2021-2-5-release}
 
 Flutter 2.5 está disponível! Para detalhes, veja
 [Novidades no Flutter 2.5][What's new in Flutter 2.5].
@@ -1058,7 +1058,7 @@ desde o último lançamento stable:
 
 ---
 
-## 18 de maio de 2021: Google I/O 2021: lançamento 2.2
+## 18 de maio de 2021: Google I/O 2021: lançamento 2.2 {:#18-may-2021-google-io-2021-2-2-release}
 
 Flutter 2.2 está disponível! Para detalhes, veja
 [Anunciando Flutter 2.2][Announcing Flutter 2.2] e
@@ -1152,7 +1152,7 @@ desde o último lançamento stable:
 
 ---
 
-## 03 de março de 2021: Flutter Engage: lançamento 2.0
+## 03 de março de 2021: Flutter Engage: lançamento 2.0 {:#03-mar-2021-flutter-engage-2-0-release}
 
 Flutter 2 está disponível!!! Para mais informações, veja
 [Anunciando Flutter 2][Announcing Flutter 2], [Novidades no Flutter 2][What's new in Flutter 2],
@@ -1261,7 +1261,7 @@ desde o último lançamento stable:
 
 ---
 
-## 01 de outubro de 2020: lançamento 1.22
+## 01 de outubro de 2020: lançamento 1.22 {:#01-oct-2020-1-22-release}
 
 Flutter 1.22 está disponível! Para detalhes, veja
 [Anunciando Flutter 1.22][Announcing Flutter 1.22].
@@ -1331,7 +1331,7 @@ desde o último lançamento stable:
 [Updates on Flutter and Firebase]: {{site.flutter-blog}}/updates-on-flutter-and-firebase-8076f70bc90e
 [webview_flutter]: {{site.pub}}/packages/webview_flutter
 
-## 05 de agosto de 2020: lançamento 1.20
+## 05 de agosto de 2020: lançamento 1.20 {:#05-aug-2020-1-20-release}
 
 Flutter 1.20 está disponível! Para detalhes,
 veja [Anunciando Flutter 1.20][Announcing Flutter 1.20].
@@ -1432,7 +1432,7 @@ desde o último lançamento stable:
 [What we learned from the Flutter Q2 2020 survey]: {{site.flutter-blog}}/what-we-learned-from-the-flutter-q2-2020-survey-a4f1fc8faac9
 [Write a Flutter desktop application]: https://web.archive.org/web/20250908033205/https://codelabs.developers.google.com/codelabs/flutter-github-client
 
-## 06 de maio de 2020: Work-From-Home: lançamento 1.17
+## 06 de maio de 2020: Work-From-Home: lançamento 1.17 {:#06-may-2020-work-from-home-1-17-release}
 
 Flutter 1.17 está disponível!
 
@@ -1518,7 +1518,7 @@ Outras novidades:
 [Understanding constraints]: /ui/layout/constraints
 [When should I use AnimatedBuilder or AnimatedWidget?]: {{site.flutter-blog}}/when-should-i-useanimatedbuilder-or-animatedwidget-57ecae0959e8
 
-## 11 de dezembro de 2019: Flutter Interact: lançamento 1.12
+## 11 de dezembro de 2019: Flutter Interact: lançamento 1.12 {:#11-dec-2019-flutter-interact-1-12-release}
 
 Flutter 1.12 está disponível!
 
@@ -1575,7 +1575,7 @@ Feliz Fluttering!
 [Web support for Flutter goes beta]: {{site.flutter-blog}}/web-support-for-flutter-goes-beta-35b64a1217c0
 [Get started]: /install
 
-## 10 de setembro de 2019: lançamento 1.9
+## 10 de setembro de 2019: lançamento 1.9 {:#10-sep-2019-1-9-release}
 
 Flutter 1.9 está disponível!
 
@@ -1648,7 +1648,7 @@ Feliz Fluttering!
 [ToggleButtons demo]: https://github.com/csells/flutter_toggle_buttons
 [using the dart:ffi library]: /platform-integration/legacy-ffi-plugin
 
-## 09 de julho de 2019: lançamento 1.7
+## 09 de julho de 2019: lançamento 1.7 {:#09-jul-2019-1-7-release}
 
 Flutter 1.7 está disponível!
 
@@ -1696,7 +1696,7 @@ componente e como personalizá-lo, veja
 [`RangeSlider`]: {{site.material_ui}}/RangeSlider-class.html
 [Simple app state management]: /data-and-backend/state-mgmt/simple
 
-## 07 de maio de 2019: Google I/O 2019: lançamento 1.5
+## 07 de maio de 2019: Google I/O 2019: lançamento 1.5 {:#07-may-2019-google-io-2019-1-5-release}
 
 [Flutter 1.5][] está disponível!
 
@@ -1710,7 +1710,7 @@ codelab de layout básico Flutter e nos diga o que você acha!
 [Flutter 1.5]: {{site.google-blog}}/2019/05/Flutter-io19.html
 [1.5.4 release notes]: /release/release-notes/release-notes-1.5.4
 
-## 26 de fevereiro de 2019: lançamento 1.2
+## 26 de fevereiro de 2019: lançamento 1.2 {:#26-feb-2019-1-2-release}
 
 Flutter lançou a [versão 1.2][version 1.2] no Mobile World Congress
 (MWC) em Barcelona. Para mais informações, veja as
@@ -1757,7 +1757,7 @@ Se você tiver perguntas ou comentários sobre qualquer um desses documentos,
 
 [version 1.2]: {{site.google-blog}}/2019/02/launching-flutter-12-at-mobile-world.html
 
-## 05 de novembro de 2018: novo site
+## 05 de novembro de 2018: novo site {:#05-nov-2018-new-website}
 
 Bem-vindo ao site reformulado do Flutter!
 

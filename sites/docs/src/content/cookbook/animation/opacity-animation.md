@@ -20,7 +20,7 @@ opacidade. Esta receita usa os seguintes passos:
 1.  Exibir um botão que alterna a visibilidade.
 1.  Aplicar fade in e fade out na caixa.
 
-## 1. Criar uma caixa para aplicar fade in e fade out
+## 1. Criar uma caixa para aplicar fade in e fade out {:#1-create-a-box-to-fade-in-and-out}
 
 Primeiro, crie algo para aplicar fade in e fade out. Para este exemplo,
 desenhe uma caixa verde na tela.
@@ -30,7 +30,7 @@ desenhe uma caixa verde na tela.
 Container(width: 200, height: 200, color: Colors.green)
 ```
 
-## 2. Definir um `StatefulWidget`
+## 2. Definir um `StatefulWidget` {:#2-define-a-statefulwidget}
 
 Agora que você tem uma caixa verde para animar,
 você precisa de uma maneira de saber se a caixa deve estar visível.
@@ -75,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 ```
 
-## 3. Exibir um botão que alterna a visibilidade
+## 3. Exibir um botão que alterna a visibilidade {:#3-display-a-button-that-toggles-the-visibility}
 
 Agora que você tem alguns dados para determinar se a caixa verde
 deve estar visível, você precisa de uma maneira de atualizar esses dados.
@@ -106,7 +106,7 @@ FloatingActionButton(
 )
 ```
 
-## 4. Aplicar fade in e fade out na caixa
+## 4. Aplicar fade in e fade out na caixa {:#4-fade-the-box-in-and-out}
 
 Você tem uma caixa verde na tela e um botão para alternar a visibilidade
 para `true` ou `false`. Como aplicar fade in e fade out na caixa? Com um
@@ -130,7 +130,7 @@ AnimatedOpacity(
 )
 ```
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Exemplo prático de animação de opacidade implícita no DartPad" run="true"

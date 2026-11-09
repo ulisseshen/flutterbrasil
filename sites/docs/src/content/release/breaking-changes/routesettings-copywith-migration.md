@@ -6,22 +6,22 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 O método `RouteSettings.copyWith` foi removido, e apps que o utilizam
 precisam usar o construtor para criar uma nova instância de `RouteSettings`
 em vez disso.
 
-## Contexto
+## Contexto {:#context}
 
 Com a introdução da classe [`Page`][`Page`],
 o `RouteSettings.copyWith` não era mais uma API viável.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 `RouteSettings.copyWith` foi removido
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Código antes da migração:
 
@@ -35,12 +35,12 @@ Código após a migração:
 RouteSettings newSettings = RouteSettings(name: 'new name', arguments: oldSettings.arguments);
 ```
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Adicionado na versão: 3.5.0-9.0.pre-137-gc6f6095acd<br>
 Na versão estável: 3.7
 
-## Referências
+## Referências {:#references}
 
 PRs relevantes:
 

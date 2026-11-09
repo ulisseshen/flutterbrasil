@@ -33,7 +33,7 @@ sobre o pacote `shared_preferences`:
 <YouTubeEmbed id="sa_U0jffQII" title="shared_preferences | Flutter package of the week"></YouTubeEmbed>
 :::
 
-## 1. Adicione a dependência
+## 1. Adicione a dependência {:#1-add-the-dependency}
 
 Antes de começar, adicione o pacote [`shared_preferences`][`shared_preferences`] como uma dependência.
 
@@ -44,7 +44,7 @@ execute `flutter pub add`:
 flutter pub add shared_preferences
 ```
 
-## 2. Salve dados
+## 2. Salve dados {:#2-save-data}
 
 Para persistir dados, use os métodos setter fornecidos pela
 classe `SharedPreferences`. Métodos setter estão disponíveis para
@@ -62,7 +62,7 @@ final prefs = await SharedPreferences.getInstance();
 await prefs.setInt('counter', counter);
 ```
 
-## 3. Leia dados
+## 3. Leia dados {:#3-read-data}
 
 Para ler dados, use o método getter apropriado fornecido pela
 classe `SharedPreferences`. Para cada setter há um getter correspondente.
@@ -80,7 +80,7 @@ final counter = prefs.getInt('counter') ?? 0;
 Note que os métodos getter lançam uma exceção se o valor persistido
 tem um tipo diferente do que o método getter espera.
 
-## 4. Remova dados
+## 4. Remova dados {:#4-remove-data}
 
 Para deletar dados, use o método `remove()`.
 
@@ -92,7 +92,7 @@ final prefs = await SharedPreferences.getInstance();
 await prefs.remove('counter');
 ```
 
-## Tipos suportados
+## Tipos suportados {:#supported-types}
 
 Embora o armazenamento chave-valor fornecido por `shared_preferences` seja
 fácil e conveniente de usar, ele tem limitações:
@@ -102,7 +102,7 @@ fácil e conveniente de usar, ele tem limitações:
 * Não é projetado para armazenar grandes quantidades de dados.
 * Não há garantia de que os dados serão persistidos entre reinicializações do app.
 
-## Suporte para testes
+## Suporte para testes {:#testing-support}
 
 É uma boa ideia testar código que persiste dados usando `shared_preferences`.
 Para habilitar isso, o pacote fornece uma
@@ -118,7 +118,7 @@ Passe um map de pares chave-valor para usar como valores iniciais.
 SharedPreferences.setMockInitialValues(<String, Object>{'counter': 2});
 ```
 
-## Exemplo completo
+## Exemplo completo {:#complete-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dart

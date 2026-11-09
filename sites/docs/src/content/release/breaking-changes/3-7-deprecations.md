@@ -23,7 +23,7 @@ fonte primária para auxiliar na migração. Uma
 
 Esta seção lista as descontinuações, agrupadas pela classe afetada.
 
-### `GestureRecognizer.kind` & subclasses {:#gesturerecognizerkind-subclasses}
+### `GestureRecognizer.kind` & subclasses
 
 Suportado pelo Flutter Fix: sim
 
@@ -314,7 +314,7 @@ Removido em:
 
 ---
 
-### `SystemChrome.setEnabledSystemUIOverlays` {:#systemchromesetenabledsystemuioverlays}
+### `SystemChrome.setEnabledSystemUIOverlays`
 
 Suportado pelo Flutter Fix: sim
 
@@ -384,7 +384,7 @@ Removido em:
 
 ---
 
-### `SystemNavigator.routeUpdated` {:#systemnavigatorrouteupdated}
+### `SystemNavigator.routeUpdated`
 
 Suportado pelo Flutter Fix: sim
 
@@ -435,7 +435,7 @@ Removido em:
 
 ---
 
-### `AnimatedSize.vsync` {:#animatedsizevsync}
+### `AnimatedSize.vsync`
 
 Suportado pelo Flutter Fix: sim
 

@@ -31,7 +31,7 @@ Esta receita usa os seguintes passos:
   2. Encontrar um widget com uma `Key` específica.
   3. Encontrar uma instância específica de widget.
 
-## 1. Encontrar um widget `Text`
+## 1. Encontrar um widget `Text` {:#1-find-a-text-widget}
 
 Em testes, você frequentemente precisa encontrar widgets que contenham texto específico.
 Isso é exatamente para o que o método `find.text()` serve. Ele cria um
@@ -48,7 +48,7 @@ testWidgets('finds a Text widget', (tester) async {
 });
 ```
 
-## 2. Encontrar um widget com uma `Key` específica
+## 2. Encontrar um widget com uma `Key` específica {:#2-find-a-widget-with-a-specific-key}
 
 Em alguns casos, você pode querer encontrar um widget com base na Key que foi
 fornecida a ele. Isso pode ser útil ao exibir múltiplas instâncias do
@@ -73,7 +73,7 @@ testWidgets('finds a widget using a Key', (tester) async {
 });
 ```
 
-## 3. Encontrar uma instância específica de widget
+## 3. Encontrar uma instância específica de widget {:#3-find-a-specific-widget-instance}
 
 Finalmente, você pode estar interessado em localizar uma instância específica de um widget.
 Por exemplo, isso pode ser útil ao criar widgets que recebem uma propriedade `child`
@@ -92,7 +92,7 @@ testWidgets('finds a specific instance', (tester) async {
 });
 ```
 
-## Resumo
+## Resumo {:#summary}
 
 A constante `find` fornecida pelo pacote `flutter_test` oferece
 várias maneiras de localizar widgets no ambiente de teste. Esta receita
@@ -103,7 +103,7 @@ Se os exemplos acima não funcionarem para um caso de uso específico,
 consulte a [documentação `CommonFinders`][`CommonFinders` documentation]
 para revisar todos os métodos disponíveis.
 
-## Exemplo completo
+## Exemplo completo {:#complete-example}
 
 <?code-excerpt "test/finders_test.dart"?>
 ```dart

@@ -8,19 +8,19 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Quando você adiciona janelas externas ao seu app Flutter,
 você precisa incluí-las na lógica de ciclo de vida do app Windows.
 Para incluir a janela, sua função `WndProc` deve invocar
 `FlutterEngine::ProcessExternalWindowMessage`.
 
-## Quem é afetado
+## Quem é afetado {:#who-is-affected}
 
 Aplicativos Windows compilados com Flutter 3.13 ou mais recente que
 abrem janelas não-Flutter.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 Implementar o ciclo de vida do aplicativo no Windows envolve escutar mensagens
 do Window para atualizar o estado do ciclo de vida. Para que janelas não-Flutter
@@ -31,7 +31,7 @@ funções `WndProc`. Esta função retorna um `std::optional<LRESULT>`, que é
 resultado retornado tem um valor, a mensagem foi consumida, e o processamento
 adicional em `WndProc` deve cessar.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 O seguinte exemplo de procedimento `WndProc` invoca
 `FlutterEngine::ProcessExternalWindowMessage`:
@@ -46,12 +46,12 @@ LRESULT Window::Messagehandler(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam
 }
 ```
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Adicionado na versão: 3.14.0-3.0.pre<br>
 Na versão estável: 3.16
 
-## Referências
+## Referências {:#references}
 
 PRs relevantes:
 

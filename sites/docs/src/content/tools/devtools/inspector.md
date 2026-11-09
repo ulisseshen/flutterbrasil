@@ -15,7 +15,7 @@ consulte a [visão geral do DevTools][DevTools overview].
 
 [DevTools overview]: /tools/devtools
 
-## O que é?
+## O que é? {:#what-is-it}
 
 O Flutter widget inspector é uma ferramenta poderosa para visualizar e
 explorar árvores de widgets do Flutter. O framework Flutter usa widgets
@@ -108,7 +108,7 @@ A Árvore de Widgets do Flutter permite que você visualize, entenda e navegue p
 
 ### Use a Árvore de Widgets {:#use-the-widget-tree}
 
-#### Visualizando widgets criados em seu projeto
+#### Visualizando widgets criados em seu projeto {:#viewing-widgets-created-in-your-project}
 
 Por padrão, a Árvore de Widgets do Flutter inclui todos os widgets criados no
 diretório raiz do seu projeto.
@@ -125,7 +125,7 @@ Por exemplo, para a seguinte seção de uma árvore de widgets:
 * `Flexible` tem um único filho `Column`
 * `Column` tem quatro filhos: `Text`, `Text`, `SizedBox` e `Divider`
 
-#### Visualizando todos os widgets
+#### Visualizando todos os widgets {:#viewing-all-widgets}
 
 Para visualizar todos os widgets na sua árvore de widgets, incluindo
 aqueles que foram criados fora do seu projeto, ative "Show implementation widgets".
@@ -149,7 +149,7 @@ o widget inspecionado.
 
 ![Image of Flutter inspector with Widget Explorer highlighted](/assets/images/docs/tools/devtools/inspector-widget-explorer.png){:width="100%"}
 
-### Use o Widget Explorer
+### Use o Widget Explorer {:#use-the-widget-explorer}
 
 Do Flutter inspector, selecione um widget. O Widget Explorer será mostrado no lado direito da janela.
 
@@ -159,7 +159,7 @@ Dependendo do widget selecionado, o Widget Explorer incluirá um ou mais dos seg
 * Aba do flex explorer
 * Aba do render object
 
-#### Aba de propriedades do widget
+#### Aba de propriedades do widget {:#widget-properties-tab}
 
 ![Image of widget properties tab](/assets/images/docs/tools/devtools/widget-properties-tab.png){:width="100%"}
 
@@ -169,14 +169,14 @@ largura, altura e padding, junto com uma lista de propriedades desse widget.
 Essas propriedades incluem se o valor corresponde ou não ao valor padrão
 para o argumento da propriedade.
 
-#### Aba de render object
+#### Aba de render object {:#render-object-tab}
 
 ![Image of render object tab](/assets/images/docs/tools/devtools/render-object-tab.png){:width="100%"}
 
 A aba de render object exibe todas as propriedades definidas no render object do
 widget Flutter selecionado.
 
-#### Aba do flex explorer
+#### Aba do flex explorer {:#flex-explorer-tab}
 
 ![Image of flex explorer tab](/assets/images/docs/tools/devtools/flex-explorer-tab.png){:width="100%"}
 
@@ -216,7 +216,7 @@ em mudanças de propriedade para que o efeito da mudança seja claro.
 Mudanças de propriedade de widget feitas do layout explorer não
 modificam seu código-fonte e são revertidas em hot reload.
 
-##### Propriedades Interativas
+##### Propriedades Interativas {:#interactive-properties}
 
 O flex explorer suporta modificar [`mainAxisAlignment`],
 [`crossAxisAlignment`] e [`FlexParentData.flex`].
@@ -263,7 +263,7 @@ flex do filho de um widget flex pode ser qualquer int.
 O flex explorer suporta os dois tipos diferentes de
 [`FlexFit`]: `loose` e `tight`.
 
-## Depuração visual
+## Depuração visual {:#visual-debugging}
 
 O Flutter Inspector fornece várias opções para depurar visualmente seu app.
 
@@ -289,7 +289,7 @@ void setSlowAnimations() {
 
 Isso desacelera as animações em 5x.
 
-#### Veja também
+#### Veja também {:#see-also}
 
 Os seguintes links fornecem mais informações.
 
@@ -326,7 +326,7 @@ blocos de construção dos layouts do Flutter. Eles são mostrados com uma borda
 
 ![Screenshot of render box guidelines](/assets/images/docs/tools/devtools/debug-toggle-guideline-render-box.png)
 
-#### Alinhamentos
+#### Alinhamentos {:#alignments}
 
 Alinhamentos são mostrados com setas amarelas. Essas setas mostram os offsets verticais
 e horizontais de um widget em relação ao seu pai.
@@ -485,7 +485,7 @@ dash.png has a display size of 213×392 but a decode size of 2130×392, which us
 
 Imagens são consideradas muito grandes se usarem pelo menos 128KB a mais do que o necessário.
 
-#### Corrigindo imagens
+#### Corrigindo imagens {:#fixing-images}
 
 Sempre que possível, a melhor maneira de corrigir este problema é redimensionar
 o arquivo de asset da imagem para que seja menor.
@@ -520,7 +520,7 @@ void showOversizedImages() {
 }
 ```
 
-#### Mais informações
+#### Mais informações {:#more-information}
 
 Você pode aprender mais no seguinte link:
 
@@ -528,7 +528,7 @@ Você pode aprender mais no seguinte link:
 
 [render box]: {{site.api}}/flutter/rendering/RenderBox-class.html
 
-## Rastreamento de criação de widgets
+## Rastreamento de criação de widgets {:#track-widget-creation}
 
 Parte da funcionalidade do Flutter inspector é baseada em
 instrumentar o código da aplicação para entender melhor
@@ -562,18 +562,18 @@ a discussão sobre [problemas comuns ao depurar][common problems when debugging]
 
 ![The Flutter Inspector Settings dialog](/assets/images/docs/tools/devtools/flutter-inspector-settings.png){:width="100%"}
 
-### Ativar inspeção ao passar o mouse
+### Ativar inspeção ao passar o mouse {:#enable-hover-inspection}
 
 Passar o mouse sobre qualquer widget exibe suas propriedades e valores.
 
 Alternar este valor ativa ou desativa a funcionalidade de inspeção ao passar o mouse.
 
-### Ativar atualização automática da árvore de widgets
+### Ativar atualização automática da árvore de widgets {:#enable-widget-tree-auto-refreshing}
 
 Quando ativado, a árvore de widgets é atualizada automaticamente após
 um hot-reload ou um evento de navegação.
 
-### Diretórios de pacotes
+### Diretórios de pacotes {:#package-directories}
 
 Por padrão, o DevTools limita os widgets exibidos na árvore de widgets àqueles criados
 no diretório raiz do projeto. Para ver todos os widgets, incluindo aqueles criados fora
@@ -606,7 +606,7 @@ widget inspector for aberto para o app.
 
 [Show implementation widgets]: #debugging-layout-issues-visually
 
-## Outros recursos
+## Outros recursos {:#other-resources}
 
 Para uma demonstração do que é geralmente possível com o inspector,
 veja a [palestra DartConf 2018][DartConf 2018 talk] demonstrando a versão IntelliJ

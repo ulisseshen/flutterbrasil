@@ -18,7 +18,7 @@ confira as [notas de lançamento do Android 16][Android 16 release notes].
 
 [Android 16 release notes]: {{site.android-dev}}/about/versions/16/behavior-changes-16#edge-to-edge
 
-## Android 16 (ou posterior)
+## Android 16 (ou posterior) {:#android-16-or-later}
 
 Usar o mecanismo para desativar o edge-to-edge no Android 16
 ou posterior pode fazer seu app travar, mas você pode evitar isso
@@ -33,7 +33,7 @@ Você também pode encontrar mais discussões na [Issue 168635][Issue 168635] no
 [article]: https://leancode.co/blog/mastering-edge-to-edge-in-flutter
 [Issue 168635]: {{site.repo.flutter}}/issues/168635#issuecomment-3485274018
 
-## Android 15 (e anteriores)
+## Android 15 (e anteriores) {:#android-15-and-below}
 
 Se o seu app Flutter visa a versão 15 do Android SDK,
 seu app é exibido automaticamente no modo edge-to-edge,

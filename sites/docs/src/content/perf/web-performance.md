@@ -30,7 +30,7 @@ Você também pode emitir seus próprios eventos de timeline usando as APIs
 
 ![Screenshot of the Chrome DevTools performance panel](/assets/images/docs/tools/devtools/chrome-devtools-performance-panel.png)
 
-## Flags opcionais para melhorar o rastreamento
+## Flags opcionais para melhorar o rastreamento {:#optional-flags-to-enhance-tracing}
 
 Para configurar quais eventos de timeline são rastreados, defina qualquer uma das seguintes propriedades de nível superior como `true`
 no método `main` do seu app.
@@ -45,7 +45,7 @@ no método `main` do seu app.
 [debugProfileLayoutsEnabled]: {{site.api}}/flutter/rendering/debugProfileLayoutsEnabled.html
 [debugProfilePaintsEnabled]: {{site.api}}/flutter/rendering/debugProfilePaintsEnabled.html
 
-## Instruções
+## Instruções {:#instructions}
 
 1. _[Opcional]_ Defina quaisquer flags de rastreamento desejadas como true no método main do seu app.
 2. Execute seu app Flutter web em [modo profile][profile mode].

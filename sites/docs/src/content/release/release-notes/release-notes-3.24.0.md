@@ -12,7 +12,7 @@ consulte o [CHANGELOG][] do Flutter.
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/main/CHANGELOG.md
 
-## Framework do Flutter
+## Framework do Flutter {:#flutter-framework}
 
 ### Framework
 
@@ -681,7 +681,7 @@ consulte o [CHANGELOG][] do Flutter.
 * [tool] Fix `stdin.flush` calls on processes started by `FakeProcessManager` by @andrewkolos in [151183](https://github.com/flutter/flutter/pull/151183)
 * [flutter_tools] Update the mapping for the Dart SDK internal URI by @DanTup in [151170](https://github.com/flutter/flutter/pull/151170)
 
-### Outras mudanças
+### Outras mudanças {:#other-changes}
 
 * Use reporter extended consistently. by @godofredoc in [145617](https://github.com/flutter/flutter/pull/145617)
 * Refactor flutter_plugins by @sealesj in [145870](https://github.com/flutter/flutter/pull/145870)
@@ -831,7 +831,7 @@ consulte o [CHANGELOG][] do Flutter.
 * Bump dartdoc to 8.0.10 by @goderbauer in [151107](https://github.com/flutter/flutter/pull/151107)
 * Roll pub packages by @flutter-pub-roller-bot in [151129](https://github.com/flutter/flutter/pull/151129)
 
-## Novos contribuidores
+## Novos contribuidores {:#new-contributors}
 
 * @Dimilkalathiya made their first contribution in [146072](https://github.com/flutter/flutter/pull/146072)
 * @leoafarias made their first contribution in [145666](https://github.com/flutter/flutter/pull/145666)
@@ -878,7 +878,7 @@ consulte o [CHANGELOG][] do Flutter.
 
 **Changelog completo**: https://github.com/flutter/flutter/compare/3.22.0...3.24.0
 
-## Engine do Flutter
+## Engine do Flutter {:#flutter-engine}
 
 ### Impeller
 
@@ -1283,7 +1283,7 @@ consulte o [CHANGELOG][] do Flutter.
 * Replace several NSAssert with FML_CHECK/DCHECK to unblock the build by @bc-lee in [53048](https://github.com/flutter/engine/pull/53048)
 * [macOS] Fix FlutterView cursor hit testing by @bufffun in [53171](https://github.com/flutter/engine/pull/53171)
 
-### Outras mudanças
+### Outras mudanças {:#other-changes}
 
 * Remove Android API v33 tests from CI. by @matanlurey in [51751](https://github.com/flutter/engine/pull/51751)
 * Remove `--verbose` from clang_tidy execution on CI. by @matanlurey in [51760](https://github.com/flutter/engine/pull/51760)
@@ -1490,7 +1490,7 @@ consulte o [CHANGELOG][] do Flutter.
 * Restore creation of engine before Linux widget is realized. by @robert-ancell in [53604](https://github.com/flutter/engine/pull/53604)
 * [skia] Use more GNI file lists by @kjlubick in [53685](https://github.com/flutter/engine/pull/53685)
 
-## Novos contribuidores
+## Novos contribuidores {:#new-contributors}
 
 * @brianquinlan made their first contribution in [52239](https://github.com/flutter/engine/pull/52239)
 * @PurplePolyhedron made their first contribution in [52156](https://github.com/flutter/engine/pull/52156)

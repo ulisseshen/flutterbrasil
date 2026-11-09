@@ -8,19 +8,19 @@ description: >
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 O callback `Editable.onCaretChanged` foi removido. Com esta mudança,
 o comportamento do `EditableText` para rolar a seleção para a visualização
 muda.
 
-## Contexto
+## Contexto {:#context}
 
 Anteriormente, ao rolar para a visualização para mostrar atualizações do usuário, `EditableText`
 usava múltiplos mecanismos para determinar o extent da seleção ou a
 localização do caret.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 Ao remover o callback `Editable.onCaretChanged`, `EditableText` sempre
 usará a localização do extent de seleção mais atualizada ao rolar para mostrá-la.
@@ -28,12 +28,12 @@ Especificamente, isso melhora o comportamento de scroll into view após
 alterar a seleção de recolhida para não recolhida usando
 `userUpdateTextEditingValue()`.
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Landed in version: 3.12.0-4.0.pre<br>
 In stable release: 3.13.0
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

@@ -49,7 +49,7 @@ Esta visão geral está dividida em várias seções:
 1. **Suporte para web**: Observações finais sobre as características do
    Flutter em um ambiente de navegador.
 
-## Camadas arquiteturais
+## Camadas arquiteturais {:#architectural-layers}
 
 O Flutter é projetado como um sistema extensível e em camadas. Ele existe como uma série de
 bibliotecas independentes, cada uma dependendo da camada subjacente. Nenhuma camada tem
@@ -194,7 +194,7 @@ peças de um app Flutter.
 * Parte do template de app gerado por `flutter create`,
   de propriedade do desenvolvedor do app.
 
-## Interfaces de usuário reativas
+## Interfaces de usuário reativas {:#reactive-user-interfaces}
 
 Na superfície, o Flutter é [um framework de UI reativo e declarativo][faq],
 no qual o desenvolvedor fornece um mapeamento do estado da aplicação para o estado da interface,
@@ -377,7 +377,7 @@ de fazer subclasse de `Container` para produzir um efeito customizado, você pod
 e outros widgets de maneiras novas, ou apenas criar um novo widget usando
 `Container` como inspiração.
 
-### Construindo widgets
+### Construindo widgets {:#building-widgets}
 
 Como mencionado anteriormente, você determina a representação visual de um widget
 substituindo a função
@@ -414,7 +414,7 @@ função build simplifica seu código concentrando-se em declarar do que um widg
 feito, em vez das complexidades de atualizar a interface do usuário de um
 estado para outro.
 
-### Estado do widget
+### Estado do widget {:#widget-state}
 
 O framework introduz duas classes principais de widget: widgets _stateful_ e _stateless_.
 
@@ -526,13 +526,13 @@ apps Flutter usam pacotes utilitários como
 para implementar a transformação de estado em UI, como o pacote
 [flutter_hooks]({{site.pub}}/packages/flutter_hooks).
 
-## Renderização e layout
+## Renderização e layout {:#rendering-and-layout}
 
 Esta seção descreve o pipeline de renderização, que é a série de etapas que
 o Flutter executa para converter uma hierarquia de widgets nos pixels reais pintados
 em uma tela.
 
-### Modelo de renderização do Flutter
+### Modelo de renderização do Flutter {:#flutters-rendering-model}
 
 Você pode estar se perguntando: se o Flutter é um framework multiplataforma,
 então como ele pode oferecer desempenho comparável a
@@ -579,7 +579,7 @@ visite [Motor de renderização Impeller][Impeller rendering engine]
 
 [Impeller rendering engine]: /perf/impeller
 
-### Da entrada do usuário à GPU
+### Da entrada do usuário à GPU {:#from-user-input-to-the-gpu}
 
 O princípio primordial que o Flutter aplica ao seu
 pipeline de renderização é que **simples é rápido**.
@@ -590,7 +590,7 @@ o sistema, como mostrado no seguinte diagrama de sequência:
 
 Vamos dar uma olhada em algumas dessas fases com mais detalhes.
 
-### Build: de Widget para Element
+### Build: de Widget para Element {:#build-from-widget-to-element}
 
 Considere este fragmento de código que demonstra uma hierarquia de widgets:
 
@@ -769,7 +769,7 @@ além do escopo deste artigo de alto nível, mas mais informações podem ser en
 [nesta palestra sobre o pipeline de renderização do
 Flutter]({{site.yt.watch}}?v=UUfXWzp0-DU).
 
-## Embedding de plataforma
+## Embedding de plataforma {:#platform-embedding}
 
 Como vimos, em vez de serem traduzidas para os widgets equivalentes do SO,
 as interfaces de usuário do Flutter são construídas, dispostas, compostas e pintadas pelo próprio
@@ -821,14 +821,14 @@ específicas da plataforma:
 
 [The great thread merge]: https://youtu.be/miW7vCmQwnw?si=9EYvRDxtkpkPrcSO
 
-## Integrando com outro código
+## Integrando com outro código {:#integrating-with-other-code}
 
 O Flutter fornece uma variedade de mecanismos de interoperabilidade, seja você
 acessando código ou APIs escritas em uma linguagem como Kotlin ou Swift, chamando uma
 API nativa baseada em C, incorporando controles nativos em um app Flutter, ou incorporando
 Flutter em uma aplicação existente.
 
-### Canais de plataforma
+### Canais de plataforma {:#platform-channels}
 
 Para apps móveis e desktop, o Flutter permite que você chame código personalizado através
 de um _canal de plataforma_, que é um mecanismo para comunicação entre seu
@@ -936,7 +936,7 @@ void exampleFfi() {
 [JS interop libraries]: {{site.dart-site}}/interop/js-interop
 [`package:web`]: {{site.pub-pkg}}/web
 
-### Renderizando controles nativos em um app Flutter
+### Renderizando controles nativos em um app Flutter {:#rendering-native-controls-in-a-flutter-app}
 
 Como o conteúdo do Flutter é desenhado em uma textura e sua árvore de widgets é inteiramente
 interna, não há lugar para algo como uma visualização Android existir dentro do
@@ -997,7 +997,7 @@ normalmente ocorre usando o mecanismo de canais de plataforma, conforme descrito
 No momento, as visualizações de plataforma não estão disponíveis para plataformas desktop, mas isso não é
 uma limitação arquitetural; o suporte pode ser adicionado no futuro.
 
-### Hospedando conteúdo Flutter em um app pai
+### Hospedando conteúdo Flutter em um app pai {:#hosting-flutter-content-in-a-parent-app}
 
 O inverso do cenário anterior é incorporar um widget Flutter em uma
 aplicação Android ou iOS existente. Como descrito em uma seção anterior, um
@@ -1027,7 +1027,7 @@ topic].
 [Load sequence, performance and memory
 topic]: /add-to-app/performance
 
-## Suporte web do Flutter
+## Suporte web do Flutter {:#flutter-web-support}
 
 Embora os conceitos arquiteturais gerais se apliquem a todas as plataformas que o Flutter
 suporta, há algumas características únicas do suporte web do Flutter que
@@ -1076,7 +1076,7 @@ Para mais informações sobre o Flutter web, confira
 [Web support for Flutter]: /platform-integration/web
 [hot reload behind a flag]: /platform-integration/web/faq#hot-reload
 
-## Mais informações
+## Mais informações {:#further-information}
 
 Para aqueles interessados em mais informações sobre os internos do Flutter,
 o whitepaper [Inside Flutter][/resources/inside-flutter]

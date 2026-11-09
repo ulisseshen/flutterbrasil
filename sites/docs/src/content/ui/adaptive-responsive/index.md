@@ -27,7 +27,7 @@ são _adaptativo_ e _responsivo_. Idealmente,
 você gostaria que seu app fosse _ambos_, mas o que,
 exatamente, isso significa?
 
-## O que é responsivo vs adaptativo?
+## O que é responsivo vs adaptativo? {:#what-is-responsive-vs-adaptive}
 
 Uma maneira fácil de pensar sobre isso é que design responsivo
 é sobre encaixar a UI _no_ espaço e

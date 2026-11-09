@@ -148,10 +148,18 @@ def main():
                  if s in ('M', 'A') and not p.startswith(IGNORAR)]
 
     print(f'Base {base[:9]} → alvo {alvo[:9]}; {len(alterados)} arquivos do Flutter Brasil.')
+    exclusivos_br = [p for p in git('ls-tree', '-r', '--name-only', head).split()
+                     if p.startswith(IGNORAR)]
     git('merge', '-q', '--no-commit', '--no-ff', '-s', 'ours', alvo)
     git('read-tree', '-u', '--reset', alvo)
+    # Arquivos exclusivos do Flutter Brasil que não passam pelo merge
+    # (CLAUDE.md, .claude/, plan/, tool/traducao/): o read-tree os apaga
+    # porque não existem no upstream, então restaura do HEAD.
+    if exclusivos_br:
+        git('checkout', head, '--', *exclusivos_br)
 
     copiados, mesclados, conflitos, sem_destino, exclusivos = [], [], [], [], []
+    mapeados = set()
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)
         for status, p in alterados:
@@ -166,6 +174,7 @@ def main():
                 else:
                     sem_destino.append(p)
                 continue
+            mapeados.add(p)
             en_novo = show(alvo, n)
             if en_base == en_novo or en_base is None:
                 (ROOT / n).write_bytes(br)
@@ -186,6 +195,17 @@ def main():
                 destino.parent.mkdir(parents=True, exist_ok=True)
                 destino.write_bytes(r.stdout)
                 conflitos.append((n, r.stdout.count(b'\n<<<<<<< pt')))
+
+    # Checagem final: nenhum arquivo que só existe no Flutter Brasil (não está
+    # no upstream) pode desaparecer sem ter sido tratado acima.
+    sumidos = [p for p in git('ls-tree', '-r', '--name-only', head).split()
+               if p not in arquivos_alvo and not (ROOT / p).exists()
+               and p not in sem_destino and p not in mapeados]
+    if sumidos:
+        print('ATENÇÃO: arquivos do Flutter Brasil que sumiram no merge '
+              '(restaure com git checkout HEAD -- <arquivo> se forem necessários):')
+        for p in sumidos[:50]:
+            print('   ', p)
 
     SYNC.write_text(alvo + '\n')
     PEND.mkdir(exist_ok=True)

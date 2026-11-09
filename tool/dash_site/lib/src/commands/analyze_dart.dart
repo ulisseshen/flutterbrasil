@@ -7,6 +7,7 @@ import 'dart:io';
 import 'package:args/command_runner.dart';
 import 'package:path/path.dart' as path;
 
+import '../sites.dart';
 import '../utils.dart';
 
 final class AnalyzeDartCommand extends Command<int> {
@@ -33,9 +34,10 @@ final class AnalyzeDartCommand extends Command<int> {
 
 int analyzeDart({bool verboseLogging = false}) {
   final directoriesToAnalyze = [
-    path.join('site'),
+    'examples',
+    'packages',
+    for (final site in Site.values) site.directory,
     path.join('tool', 'dash_site'),
-    path.join('examples'),
   ];
 
   if (!verboseLogging) {
@@ -52,7 +54,7 @@ int analyzeDart({bool verboseLogging = false}) {
       return pubGetResult;
     }
 
-    final flutterAnalyzeOutput = Process.runSync('flutter', const [
+    final flutterAnalyzeOutput = Process.runSync('dart', const [
       'analyze',
       '.',
     ], workingDirectory: directory);

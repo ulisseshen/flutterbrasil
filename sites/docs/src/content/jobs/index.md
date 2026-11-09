@@ -1,0 +1,11 @@
+---
+ia-translate: true
+title: Vagas de emprego nas equipes Flutter e Dart
+shortTitle: Vagas abertas
+description: Listagens de vagas abertas para as equipes Flutter e Dart.
+---
+
+## Vagas atuais
+
+As equipes do Flutter e Dart não estão contratando no momento.
+Obrigado pelo seu interesse!

@@ -22,7 +22,8 @@ jobs:
       - name: Setup Dart
         uses: dart-lang/setup-dart@v1
         with:
-          sdk: beta
+          # Mesma versão usada pelo upstream em .github/workflows/docs.yml.
+          sdk: 3.14.0-315.3.beta
 
       - name: Fetch Dart dependencies
         run: dart pub get
@@ -31,19 +32,19 @@ jobs:
         run: curl -sL https://firebase.tools | bash
 
       - name: Build site
-        run: dart run dash_site build
+        run: dart run dash_site --site=docs build
 
       - name: Check for broken Markdown link references
-        run: dart run dash_site check-link-references
+        run: dart run dash_site --site=docs check-link-references
 
       - name: Check for broken internal links
-        run: dart run dash_site check-links
+        run: dart run dash_site --site=docs check-links
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: site-build
-          path: _site
+          path: sites/docs/build/jaspr
           retention-days: 1
 
   deploy:
@@ -58,13 +59,14 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: site-build
-          path: _site
+          path: sites/docs/build/jaspr
 
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TRANSLITERADU }}
           projectId: transliteradu
           channelId: live
           target: docs-flutterbrasil
+          entryPoint: sites/docs

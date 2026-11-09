@@ -1,0 +1,47 @@
+---
+ia-translate: true
+title: Janelas externas em apps Flutter Windows
+description: >-
+  Considerações especiais para adicionar janelas externas a apps Flutter
+---
+
+# Ciclo de vida do Windows
+
+## Quem é afetado
+
+Aplicações Windows construídas com versões do Flutter posteriores a 3.13
+que abrem janelas não-Flutter.
+
+
+## Visão geral
+
+Ao adicionar uma janela não-Flutter a um app Flutter Windows, ela não fará parte
+da lógica para atualizações de estado do ciclo de vida da aplicação por padrão. Por exemplo,
+isso significa que quando a janela externa é exibida ou ocultada, o estado do ciclo de vida
+do app não será atualizado apropriadamente para inativo ou oculto. Como resultado, o app
+pode receber alterações de estado do ciclo de vida incorretas através de
+[WidgetsBindingObserver.didChangeAppLifecycle][WidgetsBindingObserver.didChangeAppLifecycle].
+
+# O que preciso fazer?
+
+Para adicionar a janela externa a esta lógica da aplicação,
+o procedimento `WndProc` da janela
+deve invocar `FlutterEngine::ProcessExternalWindowMessage`.
+
+Para conseguir isso, adicione o seguinte código à função manipuladora de mensagens
+da sua janela externa personalizada. Em wrappers C++ para a API Win32,
+geralmente é um método de classe chamado a partir do `WndProc` da janela.
+O arquivo e o nome da classe exatos dependem da implementação do seu app.
+
+```cpp diff
+  LRESULT MyExternalWindow::MessageHandler(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
++     std::optional<LRESULT> result = flutter_controller_->engine()->ProcessExternalWindowMessage(hwnd, msg, wparam, lparam);
++     if (result.has_value()) {
++         return *result;
++     }
+      // Original contents of WndProc...
+  }
+```
+
+[documentation of this breaking change.]: /release/breaking-changes/win_lifecycle_process_function
+[WidgetsBindingObserver.didChangeAppLifecycle]: {{site.api}}/flutter/widgets/WidgetsBindingObserver/didChangeAppLifecycleState.html

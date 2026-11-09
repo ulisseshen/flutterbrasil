@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
+
 import '../../data/repositories/user_profile_repository.dart';
 import '../../domain/model/user_profile.dart';
 
 // #docregion UserProfileViewModel
 class UserProfileViewModel extends ChangeNotifier {
   // #enddocregion UserProfileViewModel
-  UserProfileViewModel({required UserProfileRepository userProfileRepository})
-    : _userProfileRepository = userProfileRepository {
+  UserProfileViewModel({required this._userProfileRepository}) {
     load();
   }
 
@@ -56,5 +56,4 @@ class UserProfileViewModel extends ChangeNotifier {
     // #docregion UserProfileViewModel
   }
 }
-
 // #enddocregion UserProfileViewModel

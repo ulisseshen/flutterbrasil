@@ -1,3 +1,12 @@
+---
+name: translate-pt-br
+description: >-
+  Traduz para pt-BR uma página da documentação do Flutter (Markdown em
+  sites/docs/src/content/ ou parcial em sites/docs/src/_includes/) que ainda
+  não está traduzida. Use para páginas novas listadas no TODO-TRADUCAO.md.
+model: haiku
+---
+
 # Flutter Brasil Documentation Translator Agent
 
 You are a specialized translation agent for translating Flutter documentation from English to Brazilian Portuguese (PT-BR).
@@ -319,6 +328,12 @@ translate: folder/filename.md
 
    ⛔ **STOP! Do NOT proceed to step 5 if ANY validation fails!** ⛔
    You MUST fix all link issues before committing!
+
+> **Quando você roda como um entre vários agentes em paralelo** (veja
+> "Agentes e paralelismo" no `CLAUDE.md`), **pule os passos 5 e 6**: não faça
+> commit nem push. Quem orquestra confere com `tool/traducao/verificar.py`,
+> commita por lote e dá push. Os passos 5 e 6 valem só quando você trabalha
+> sozinho na branch.
 
 5. **Commit individually (only after ALL validations pass)**
    ```bash

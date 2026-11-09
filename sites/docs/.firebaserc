@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "default": "docs-flutterbrasil",
+    "prod": "transliteradu",
+    "devtools-staging": "flutter-website-dt-staging"
+  }
+}

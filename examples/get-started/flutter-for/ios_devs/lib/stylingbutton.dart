@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:cupertino_ui/cupertino_ui.dart';
 
 void main() {
   runApp(const App());
@@ -36,7 +36,6 @@ class HomePage extends StatelessWidget {
         child: CupertinoButton(
           color: CupertinoColors.systemYellow,
           onPressed: () {},
-          padding: const EdgeInsets.all(16),
           child: const Text(
             'Do something',
             style: TextStyle(

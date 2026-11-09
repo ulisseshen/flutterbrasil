@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 void main() => runApp(const MyApp());
 
@@ -131,8 +131,5 @@ class ButtonWithText extends StatelessWidget {
       // #docregion button-section
     );
   }
-
-  // #enddocregion button-with-text
 }
-
-// #enddocregion button-section
+// #enddocregion button-with-text, button-section

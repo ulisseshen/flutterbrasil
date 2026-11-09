@@ -1,0 +1,134 @@
+- category: separation-of-concerns
+  recommendations:
+    - recommendation: Use camadas de dados e UI claramente definidas.
+      description: |
+        Separação de responsabilidades é o princípio arquitetural mais importante.
+        A camada de dados expõe os dados da aplicação para o resto do app, e contém a maior parte da lógica de negócio na sua aplicação.
+        A camada UI exibe os dados da aplicação e escuta eventos do usuário. A camada UI contém classes separadas para lógica de UI e widgets.
+      confidence: strong
+
+    - recommendation: Use o padrão repository na camada de dados.
+      description: |
+        O padrão repository é um padrão de design de software que isola a lógica de acesso a dados do resto da aplicação.
+        Ele cria uma camada de abstração entre a lógica de negócio da aplicação e os mecanismos subjacentes de armazenamento de dados (bancos de dados, APIs, sistemas de arquivos, etc.).
+        Na prática, isso significa criar classes Repository e classes Service.
+      confidence: strong
+
+    - recommendation: Use ViewModels e Views na camada UI. (MVVM)
+      description: |
+        Separação de responsabilidades é o princípio arquitetural mais importante.
+        Esta separação em particular torna seu código muito menos propenso a erros porque seus widgets permanecem "burros".
+      confidence: strong
+
+    - recommendation: Use `ChangeNotifiers` e `Listenables` para lidar com atualizações de widgets.
+      description: |
+        A API `ChangeNotifier` é parte do Flutter SDK, e é uma maneira conveniente de fazer seus widgets observarem mudanças em seus ViewModels.
+      confidence: conditional
+      confidence-description: |
+        Existem muitas opções para lidar com gerenciamento de estado, e no final a decisão se resume a preferência pessoal.
+        Leia sobre [nossa recomendação de ChangeNotifier](/get-started/fwe/state-management) ou [outras opções populares](https://docs.flutter.dev/data-and-backend/state-mgmt/options).
+
+    - recommendation: Não coloque lógica em widgets.
+      description: |
+        A lógica deve ser encapsulada em métodos no ViewModel. A única lógica que uma view deve conter é:
+        * Declarações if simples para mostrar e ocultar widgets baseadas em uma flag ou campo nullable no ViewModel
+        * Lógica de animação que depende do widget para calcular
+        * Lógica de layout baseada em informações do dispositivo, como tamanho de tela ou orientação.
+        * Lógica de roteamento simples
+      confidence: strong
+
+    - recommendation: Use uma camada de domínio.
+      description: |
+        Uma camada de domínio só é necessária se sua aplicação tem lógica extremamente complexa que sobrecarrega seus ViewModels,
+        ou se você se encontra repetindo lógica em ViewModels.
+        Em apps muito grandes, casos de uso são úteis, mas na maioria dos apps eles adicionam overhead desnecessário.
+      confidence: conditional
+      confidence-description: |
+        Use em apps com requisitos de lógica complexa.
+
+- category: handling-data
+  recommendations:
+    - recommendation: Use fluxo de dados unidirecional.
+      description: |
+        Atualizações de dados devem fluir apenas da camada de dados para a camada UI.
+        Interações na camada UI são enviadas para a camada de dados onde são processadas.
+      confidence: strong
+
+    - recommendation: Use `Commands` para lidar com eventos de interação do usuário.
+      description: |
+        Commands previnem erros de renderização no seu app, e padronizam como a camada UI envia eventos para a camada de dados.
+        Leia sobre commands no [estudo de caso de arquitetura](/app-architecture/guide).
+      confidence: recommend
+
+    - recommendation: Use modelos de dados imutáveis.
+      description: |
+        Dados imutáveis são cruciais para garantir que quaisquer mudanças necessárias ocorram apenas no lugar apropriado, geralmente a camada de dados ou domínio.
+        Como objetos imutáveis não podem ser modificados após a criação, você deve criar uma nova instância para refletir mudanças.
+        Este processo previne atualizações acidentais na camada UI e suporta um fluxo de dados claro e unidirecional.
+      confidence: strong
+
+    - recommendation: Use freezed ou built_value para gerar modelos de dados imutáveis.
+      description: |
+        Você pode usar pacotes para ajudar a gerar funcionalidade útil em seus modelos de dados, [freezed](https://pub.dev/packages/freezed) ou [built_value](https://pub.dev/packages/built_value).
+        Estes podem gerar métodos comuns de modelo como serialização/desserialização JSON, verificação de igualdade profunda e métodos de cópia.
+        Estes pacotes de geração de código podem adicionar tempo de compilação significativo às suas aplicações se você tiver muitos modelos.
+      confidence: recommend
+
+    - recommendation: Crie modelos de API e modelos de domínio separados.
+      description: |
+        Usar modelos separados adiciona verbosidade, mas previne complexidade em ViewModels e casos de uso.
+      confidence: conditional
+      confidence-description: Use em apps grandes.
+
+- category: app-structure
+  recommendations:
+    - recommendation: Use injeção de dependência.
+      description: |
+        Injeção de dependência previne que seu app tenha objetos globalmente acessíveis, o que torna seu código menos propenso a erros.
+        Recomendamos que você use o pacote [provider](https://pub.dev/packages/provider) para lidar com injeção de dependência.
+      confidence: strong
+
+    - recommendation: Use [go_router](https://pub.dev/packages/go_router) para navegação.
+      description: |
+        Go_router é a maneira preferida de escrever 90% das aplicações Flutter.
+        Existem alguns casos de uso específicos que go_router não resolve,
+        nesse caso você pode usar a [API Navigator do Flutter](https://docs.flutter.dev/ui/navigation) diretamente ou experimentar outros pacotes encontrados em [pub.dev](https://pub.dev).
+      confidence: recommend
+
+    - recommendation: Use convenções de nomenclatura padronizadas para classes, arquivos e diretórios.
+      description: |
+        Recomendamos nomear classes pelo componente arquitetural que elas representam.
+        Por exemplo, você pode ter as seguintes classes:
+
+        * HomeViewModel
+        * HomeScreen
+        * UserRepository
+        * ClientApiService
+
+        Para clareza, não recomendamos usar nomes que podem ser confundidos com objetos do Flutter SDK.
+        Por exemplo, você deve colocar seus widgets compartilhados em um diretório chamado `ui/core/`,
+        em vez de um diretório chamado `/widgets`.
+      confidence: recommend
+
+    - recommendation: Use classes repository abstratas
+      description: |
+        Classes repository são as fontes de verdade para todos os dados no seu app,
+        e facilitam a comunicação com APIs externas.
+        Criar classes repository abstratas permite que você crie diferentes implementações,
+        que podem ser usadas para diferentes ambientes de app, como "development" e "staging".
+      confidence: strong
+
+- category: testing
+  recommendations:
+    - recommendation: Teste componentes arquiteturais separadamente, e juntos.
+      description: |
+        * Escreva testes unitários para cada classe service, repository e ViewModel. Estes testes devem testar a lógica de cada método individualmente.
+        * Escreva testes de widget para views. Testar roteamento e injeção de dependência são particularmente importantes.
+      confidence: strong
+
+    - recommendation: Faça fakes para testes (e escreva código que aproveite os fakes.)
+      description: |
+       Fakes não estão preocupados com o funcionamento interno de qualquer método específico tanto
+       quanto estão preocupados com entradas e saídas. Se você tem isso em mente ao escrever código de aplicação,
+       você é forçado a escrever funções e classes modulares, leves com entradas e saídas bem definidas.
+      confidence: strong

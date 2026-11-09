@@ -4,25 +4,22 @@
 
 [Logo do Flutter]: https://github.com/dart-lang/site-shared/blob/main/src/_assets/image/flutter/icon/64.png?raw=1
 
-# Site de documentação do [Flutter][Flutter]
+# Sites de documentação e de marketing do [Flutter][Flutter]
 
-O [site de documentação][Flutter] para o [framework Flutter][Flutter framework],
-construído com [Jaspr][Jaspr] e hospedado no [Firebase][Firebase].
+O [site de documentação][documentation site] (`docs.flutterbrasil.dev`) e o
+[site de marketing][marketing website] (`flutterbrasil.dev`, incluindo o blog)
+do [framework Flutter][Flutter framework],
+construídos com [Jaspr][Jaspr] e hospedados no [Firebase][Firebase].
 
+[documentation site]: https://docs.flutterbrasil.dev
+[marketing website]: https://flutterbrasil.dev
 [Flutter framework]: https://flutterbrasil.dev
 [Jaspr]: https://jaspr.site
 [Firebase]: https://firebase.google.com/
 
 [Build Status]: https://github.com/flutter/website/workflows/build/badge.svg
-[Flutter]: https://docs.flutterbrasil.dev/
+[Flutter]: https://flutterbrasil.dev
 [Repo on GitHub Actions]: https://github.com/flutter/website/actions?query=workflow%3Abuild+branch%3Amain
-
-<a href="https://studio.firebase.google.com/import?url=https%3A%2F%2Fgithub.com%2Fflutter%2Fwebsite">
-  <img
-    height="32"
-    alt="Open in Firebase Studio"
-    src="https://cdn.firebasestudio.dev/btn/open_blue_32.svg">
-</a>
 
 ## Problemas, bugs e solicitações
 
@@ -35,28 +32,28 @@ Para mudanças simples (como ajustar algum texto),
 
 Se você tiver um problema com a
 documentação da API em [api.flutterbrasil.dev](https://api.flutterbrasil.dev),
-por favor, registre esses problemas no
+por favor, registre-o no
 repositório [`flutter/flutter`](https://github.com/flutter/flutter/issues),
 não neste repositório (`flutter/website`).
 A documentação da API está incorporada no código-fonte do Flutter,
-então a equipe de engenharia cuida disso.
+então a equipe de engenharia cuida dela.
 
 
 ## Antes de enviar um PR
 
 Adoramos quando a comunidade se envolve em melhorar nossa documentação!
-Mas aqui estão algumas notas a ter em mente antes de enviar um PR:
+Aqui estão algumas coisas a ter em mente antes de enviar um PR:
 
 - Ao fazer a triagem de problemas,
   às vezes rotulamos um problema com a tag **PRs welcome**.
-  Mas recebemos PRs em outros problemas também&mdash;
+  No entanto, recebemos PRs em outros problemas também&mdash;
   não precisa estar marcado com esse rótulo.
-- Por favor, não execute nossa documentação através do Grammarly (ou similar)
+- Por favor, não execute nossa documentação através do Grammarly (ou uma ferramenta similar)
   e envie essas alterações como um PR.
-- Seguimos o [Google Developer Documentation Style Guidelines][Google Developer Documentation Style Guidelines] —
-  por exemplo, não use "i.e." ou "e.g.",
-  evite escrever em primeira pessoa,
-  e evite escrever no tempo futuro.
+- Seguimos o [Google Developer Documentation Style Guidelines][Google Developer Documentation Style Guidelines]—
+  por exemplo, evite "i.e." ou "e.g.",
+  evite escrever em primeira pessoa
+  e evite o tempo futuro.
   Você pode começar com os
   [destaques do guia de estilo](https://developers.google.com/style/highlights)
   ou a [lista de palavras](https://developers.google.com/style/word-list),
@@ -78,7 +75,7 @@ Frequentemente você pode fazer alterações usando a interface do GitHub.
 Se necessário, podemos preparar as alterações automaticamente no seu pull request.
 
 Se sua alteração envolve exemplos de código, adiciona/remove páginas ou afeta a navegação,
-considere compilar e testar seu trabalho antes de enviar.
+por favor, compile e teste seu trabalho antes de enviar.
 
 Se você quer ou precisa compilar o site, siga os passos abaixo.
 
@@ -96,21 +93,21 @@ instalar a versão estável mais recente do Flutter, que inclui Dart.
 Se você não tem o Flutter ou precisa atualizar, siga as
 instruções em [Install Flutter][Install Flutter] ou [Upgrading Flutter][Upgrading Flutter].
 
-Se você já tem o Flutter instalado, verifique se está no seu path
-e já é a versão estável mais recente:
+Se você já tem o Flutter instalado, verifique se ele está no seu path
+e se é a versão estável mais recente:
 
 ```console
 flutter --version
 ```
 
 [Install Flutter]: https://docs.flutterbrasil.dev/get-started
-[Upgrading Flutter]: https://docs.flutterbrasil.dev/release/upgrade
+[Upgrading Flutter]: https://docs.flutterbrasil.dev/install/upgrade
 
 ### Clonar este repositório
 
 Se você não é membro da organização Flutter,
-recomendamos que você [crie um fork][create a fork] deste repositório na sua própria conta,
-e então envie um PR a partir desse fork.
+recomendamos que você [crie um fork][create a fork] deste repositório na sua própria conta do GitHub
+e então envie um pull request a partir desse fork.
 
 Depois de ter um fork (ou se você é membro da organização Flutter),
 clone o repositório com `git clone`:
@@ -124,7 +121,7 @@ git clone https://github.com/flutter/website.git
 ## Configurar seu ambiente local e servir alterações
 
 Antes de continuar configurando a infraestrutura do site,
-verifique se as versões corretas do Flutter e Node.js estão configuradas e disponíveis
+verifique se a versão correta do Flutter está configurada e disponível
 seguindo as instruções em [Obter os pré-requisitos](#obter-os-pré-requisitos).
 
 1. _Opcional:_ Após clonar o repositório,
@@ -150,16 +147,23 @@ seguindo as instruções em [Obter os pré-requisitos](#obter-os-pré-requisitos
 
 4. Do diretório raiz, sirva o site localmente.
 
+   Para servir o site de documentação (`docs.flutterbrasil.dev`):
+
    ```terminal
    dart run dash_site serve
+   ```
+
+   Para servir o site de marketing e o blog (`flutterbrasil.dev`):
+
+   ```terminal
+   dart run dash_site --site=www serve
    ```
 
    Este comando gera e serve o site em uma
    porta local que é impressa no seu terminal.
 
-5. Visualize suas alterações no navegador navegando para <http://localhost:8080>.
-
-   Note que a porta pode ser diferente se `8080` estiver ocupada.
+5. Visualize suas alterações no navegador navegando para
+   a URL local impressa no seu terminal.
 
 6. Faça suas alterações no repositório local.
 
@@ -174,15 +178,17 @@ seguindo as instruções em [Obter os pré-requisitos](#obter-os-pré-requisitos
    considere [validar suas alterações](#validar-suas-alterações).
 
 > [!TIP]
-> Para encontrar comandos adicionais que você pode executar,
+> Para conhecer outros comandos disponíveis,
 > execute `dart run dash_site --help` do diretório raiz do repositório.
+> Passe `--site=www` para qualquer comando para direcioná-lo ao `flutterbrasil.dev`
+> em vez de `docs.flutterbrasil.dev`.
 
 ## Validar suas alterações
 
 ### Verificar documentação e código de exemplo
 
 Se você fez alterações no código nos
-diretórios `/examples`, `/site` ou `/tool`,
+diretórios `/examples`, `/sites` ou `/tool`,
 faça commit do seu trabalho e então execute o seguinte comando para
 verificar se está atualizado e corresponde aos padrões do site.
 
@@ -191,18 +197,59 @@ dart run dash_site check-all
 ```
 
 Se este script reportar quaisquer erros ou avisos,
-então resolva esses problemas e execute o comando novamente.
-Se você tiver quaisquer problemas, deixe um comentário no seu problema ou pull request,
-e tentaremos nosso melhor para ajudá-lo.
+resolva-os e execute o comando novamente.
+Se você tiver dúvidas, deixe um comentário no seu problema ou pull request,
+e faremos o nosso melhor para ajudar.
 Você também pode conversar conosco no canal `#hackers-devrel`
 no [Flutter contributors Discord][Flutter contributors Discord]!
 
 [Flutter contributors Discord]: https://github.com/flutter/flutter/blob/main/docs/contributing/Chat.md
 
+### Verificar links
+
+Se você fez alterações no conteúdo e quer verificar se todos os
+links internos e referências de links Markdown são válidos,
+compile o site localmente e execute os seguintes comandos.
+
+1.  Compile o site localmente.
+
+    Para compilar o site de documentação (`docs.flutterbrasil.dev`):
+
+    ```bash
+    dart run dash_site build
+    ```
+
+    Para compilar o site de marketing e o blog (`flutterbrasil.dev`):
+
+    ```bash
+    dart run dash_site --site=www build
+    ```
+
+1.  Verifique se todas as referências de links Markdown estão resolvidas.
+
+    ```bash
+    dart run dash_site check-link-references
+    ```
+
+1.  Verifique se todos os links internos são válidos.
+
+    Este comando depende de a ferramenta de CLI `firebase` estar no seu PATH.
+    Se você não a instalou ou não a atualizou há algum tempo,
+    siga [Set up or update the Firebase CLI][firebase-install].
+
+    ```bash
+    dart run dash_site check-links
+    ```
+
+Se algum dos comandos reportar erros ou avisos,
+resolva-os, recompile o site e execute o comando novamente.
+
+[firebase-install]: https://firebase.google.com/docs/cli#setup_update_cli
+
 ### Atualizar trechos de código
 
 Uma compilação que falha com o erro
-`Error: Some code excerpts needed to be updated!`
+`Error: Some code excerpts need to be updated!`
 significa que um ou mais trechos de código nos arquivos Markdown do site
 não são idênticos às regiões de código declaradas
 nos arquivos `.dart` correspondentes.
@@ -218,4 +265,4 @@ execute `dart run dash_site refresh-excerpts`.
 Para aprender mais sobre criar, editar e usar trechos de código,
 confira a [documentação do pacote excerpt updater][excerpt updater package documentation].
 
-[excerpt updater package documentation]: https://github.com/dart-lang/site-shared/tree/main/pkgs/excerpter#readme
+[excerpt updater package documentation]: https://github.com/flutter/website/tree/main/packages/excerpter#readme

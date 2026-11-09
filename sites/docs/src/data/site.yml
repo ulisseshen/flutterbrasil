@@ -24,14 +24,14 @@ repo:
   uxr: https://github.com/flutter/uxr
   wonderous: https://github.com/gskinnerTeam/flutter-wonderous-app
 dart:
-  api: https://api.dartbrasil.dev
+  api: https://api.dart.dev
 social:
   twitter: https://twitter.com/FlutterDev
   youtube: https://www.youtube.com/@flutterdev
 cupertino_ui: https://pub.dev/documentation/cupertino_ui/latest/cupertino_ui
 dart-site: https://dartbrasil.dev
-api: https://api.flutterbrasil.dev
-main-api: https://main-api.flutterbrasil.dev
+api: https://api.flutter.dev
+main-api: https://main-api.flutter.dev
 pub: https://pub.dev
 pub-api: https://pub.dev/documentation
 pub-pkg: https://pub.dev/packages

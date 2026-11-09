@@ -58,7 +58,7 @@ você está depurando seu próprio projeto Flutter também.
 
     All done!
     You can find general documentation for Flutter at: https://docs.flutterbrasil.dev/
-    Detailed API documentation is available at: https://api.flutterbrasil.dev/
+    Detailed API documentation is available at: https://api.flutter.dev/
     If you prefer video documentation, consider: https://www.youtube.com/c/flutterdev
 
     In order to run your application, type:

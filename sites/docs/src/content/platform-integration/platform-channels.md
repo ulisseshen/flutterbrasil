@@ -21,7 +21,7 @@ Embora [Pigeon](/interop/pigeon),
 platform channels continuam disponíveis para troca de mensagens de baixo nível e
 para manter bases de código existentes.
 
-## Visão geral
+## Visão geral {:#overview}
 
 Você pode usar código específico da plataforma no seu app Flutter.
 Maneiras comuns de fazer isso incluem:
@@ -228,7 +228,7 @@ lado da plataforma e vice-versa:
 </Tab>
 </Tabs>
 
-[MessageCodec]: https://api.flutterbrasil.dev/flutter/services/MessageCodec-class.html
+[MessageCodec]: https://api.flutter.dev/flutter/services/MessageCodec-class.html
 
 ## Chamar código específico da plataforma usando platform channels {:#example}
 
@@ -355,7 +355,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-### Passo 3: Adicionar uma implementação específica da plataforma Android
+### Passo 3: Adicionar uma implementação específica da plataforma Android {:#step-3-add-an-android-platform-specific-implementation}
 
 <Tabs key="android-language">
 <Tab name="Kotlin">
@@ -598,7 +598,7 @@ Agora você deve conseguir executar o app no Android. Se estiver usando o Androi
 Emulator, defina o nível da bateria no painel Extended Controls
 acessível a partir do botão **...** na barra de ferramentas.
 
-### Passo 4: Adicionar uma implementação específica da plataforma iOS
+### Passo 4: Adicionar uma implementação específica da plataforma iOS {:#step-4-add-an-ios-platform-specific-implementation}
 
 <Tabs key="darwin-language">
 <Tab name="Swift">
@@ -797,7 +797,7 @@ Se estiver usando o iOS Simulator,
 observe que ele não suporta APIs de bateria,
 e o app exibirá 'Battery level not available'.
 
-### Passo 5: Adicionar uma implementação específica da plataforma Windows
+### Passo 5: Adicionar uma implementação específica da plataforma Windows {:#step-5-add-a-windows-platform-specific-implementation}
 
 Comece abrindo a porção host Windows do seu app Flutter no Visual Studio:
 
@@ -912,7 +912,7 @@ Agora você deve conseguir executar a aplicação no Windows.
 Se o seu dispositivo não tiver uma bateria,
 ele exibirá 'Battery level not available'.
 
-### Passo 6: Adicionar uma implementação específica da plataforma macOS
+### Passo 6: Adicionar uma implementação específica da plataforma macOS {:#step-6-add-a-macos-platform-specific-implementation}
 
 Comece abrindo a porção host macOS do seu app Flutter no Xcode:
 
@@ -1011,7 +1011,7 @@ Agora você deve conseguir executar a aplicação no macOS.
 Se o seu dispositivo não tiver uma bateria,
 ele exibirá 'Battery level not available'.
 
-### Passo 7: Adicionar uma implementação específica da plataforma Linux
+### Passo 7: Adicionar uma implementação específica da plataforma Linux {:#step-7-add-a-linux-platform-specific-implementation}
 
 Para este exemplo, você precisa instalar os headers de desenvolvedor `upower`.
 Isso provavelmente está disponível na sua distribuição, por exemplo com:
@@ -1241,7 +1241,7 @@ public void onAttachedToEngine(@NonNull FlutterPluginBinding binding) {
 
 </Tabs>
 
-### Executar handlers de channel em uma thread de background (iOS)
+### Executar handlers de channel em uma thread de background (iOS) {:#execute-channel-handlers-on-a-background-thread-ios}
 
 Para que um handler do lado da plataforma de um channel
 execute em uma thread de background em um app iOS, você deve usar
@@ -1354,7 +1354,7 @@ DispatchQueue.main.async {
 
 </Tabs>
 
-## Suplementos
+## Suplementos {:#supplementals}
 
 ### Channels e codecs comuns {:#codec2}
 

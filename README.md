@@ -31,7 +31,7 @@ Para mudanças simples (como ajustar algum texto),
 é mais fácil fazer alterações usando a interface do GitHub.
 
 Se você tiver um problema com a
-documentação da API em [api.flutterbrasil.dev](https://api.flutterbrasil.dev),
+documentação da API em [api.flutter.dev](https://api.flutter.dev),
 por favor, registre-o no
 repositório [`flutter/flutter`](https://github.com/flutter/flutter/issues),
 não neste repositório (`flutter/website`).

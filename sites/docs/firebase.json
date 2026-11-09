@@ -13,9 +13,9 @@
     ],
     "rewrites": [],
     "redirects": [
-      { "regex": "^\/(flutter(\/.*)?)", "destination": "https://api.flutterbrasil.dev/:1", "type": 301 },
-      { "regex": "^\/(objcdoc(\/.*)?)", "destination": "https://api.flutterbrasil.dev/:1", "type": 301 },
-      { "regex": "^\/(javadoc(\/.*)?)", "destination": "https://api.flutterbrasil.dev/:1", "type": 301 },
+      { "regex": "^\/(flutter(\/.*)?)", "destination": "https://api.flutter.dev/:1", "type": 301 },
+      { "regex": "^\/(objcdoc(\/.*)?)", "destination": "https://api.flutter.dev/:1", "type": 301 },
+      { "regex": "^\/(javadoc(\/.*)?)", "destination": "https://api.flutter.dev/:1", "type": 301 },
       { "regex": "(.*)\\.html$", "destination": ":1", "type": 301 },
       { "regex": "(.*)\\.$", "destination": ":1", "type": 301 },
 
@@ -893,7 +893,7 @@
       { "source": "/to/flutter-plugins-configuration", "destination": "/release/breaking-changes/flutter-plugins-configuration", "type": 301 },
       { "source": "/to/flutter-fix", "destination": "/tools/flutter-fix", "type": 301 },
       { "source": "/to/flutter-gradle-plugin-apply", "destination": "/release/breaking-changes/flutter-gradle-plugin-apply", "type": 301 },
-      { "source": "/to/flutter-test-docs", "destination": "https://api.flutterbrasil.dev/flutter/flutter_test/flutter_test-library.html", "type": 301 },
+      { "source": "/to/flutter-test-docs", "destination": "https://api.flutter.dev/flutter/flutter_test/flutter_test-library.html", "type": 301 },
       { "source": "/to/font-from-package", "destination": "/cookbook/design/package-fonts#use", "type": 301 },
       { "source": "/to/gesture-disambiguation", "destination": "/ui/interactivity/gestures#gesture-disambiguation", "type": 301 },
       { "source": "/to/gestures", "destination": "/ui/interactivity/gestures", "type": 301 },

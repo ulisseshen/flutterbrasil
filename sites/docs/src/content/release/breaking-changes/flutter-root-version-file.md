@@ -9,7 +9,7 @@ description: >-
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 A ferramenta `flutter` não irá mais
 gerar o arquivo de metadados `$FLUTTER_ROOT/version`, e
@@ -18,7 +18,7 @@ apenas gerará `$FLUTTER_ROOT/bin/cache/flutter.version.json`.
 Ferramentas e scripts de build que dependem da presença de `$FLUTTER_ROOT/version`
 precisam ser atualizados.
 
-## Contexto
+## Contexto {:#background}
 
 [Em 2023][PR 124558], `$FLUTTER_ROOT/bin/cache/fluttter.version.json` foi adicionado
 como um novo formato de arquivo que substitui `$FLUTTER_ROOT/version`.
@@ -50,12 +50,12 @@ Foi substituído por algo assim:
 
 Gerar ambos os arquivos é uma fonte de débito técnico.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 A maioria dos desenvolvedores Flutter não faz parse ou usa este arquivo, mas
 ferramentas customizadas ou configurações de CI podem fazê-lo.
 
-Por exemplo, o próprio script de geração da equipe Flutter `api.flutterbrasil.dev`:
+Por exemplo, o próprio script de geração da equipe Flutter `api.flutter.dev`:
 
 ```dart title="post_process_docs.dart"
 final File versionFile = File('version');
@@ -79,7 +79,7 @@ Para temporariamente optar por não ter `$FLUTTER_ROOT/version` mais sendo emiti
 flutter config --no-enable-omit-legacy-version-file
 ```
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Aterrissou na versão: 3.33.0-1.0.pre-1416<br>
 Lançamento estável: _Ainda não publicado_
@@ -87,7 +87,7 @@ Lançamento estável: _Ainda não publicado_
 Um lançamento estável após esta mudança ser implementada,
 `--no-enable-omit-legacy-version-file` será removido.
 
-## Referências
+## Referências {:#references}
 
 Issues relevantes:
 

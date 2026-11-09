@@ -9,7 +9,7 @@ skipTemplateRendering: true
 _Esta página é um dump da antiga página de Changelog da wiki do Flutter até que
 as [notas de release do Flutter](./) foram publicadas em flutterbrasil.dev._
 
-## Mudanças até e incluindo 1.0.0
+## Mudanças até e incluindo 1.0.0 {:#changes-through-and-including-1-0-0}
 
 * Atualizações do Skia e engine para corrigir o seguinte:
   * [Problema de distorção de imagem do video_player após a última atualização do flutter 0.11.3](https://github.com/flutter/flutter/issues/24402)
@@ -20,7 +20,7 @@ as [notas de release do Flutter](./) foram publicadas em flutterbrasil.dev._
   * [Mudanças para desbloquear o roll do Fuchsia](https://github.com/flutter/engine/issues/6949)
 * Várias correções nas ferramentas para documentação, documentação e documentação que acompanha os templates.
 
-## Mudanças desde v0.10.2
+## Mudanças desde v0.10.2 {:#changes-since-v0-10-2}
 * [flutter/engine#6883](https://github.com/flutter/engine/pull/6883) - FlutterViewController não carregará mais a splash screen do seu app por padrão. A implementação disso foi movida para um novo método `loadDefaultSplashScreenView`.
 * [#23755](https://github.com/flutter/flutter/pull/23755) Removida dependência direta de flutter_test em `package:test`. Flutter agora requer test versão 1.5.1 e mockito versão 4.0.0.
 
@@ -38,7 +38,7 @@ as [notas de release do Flutter](./) foram publicadas em flutterbrasil.dev._
 * [#23320](https://github.com/flutter/flutter/pull/23320) Adiciona suporte a gestos de deslizar para trás nas transições entre páginas das barras de navegação Cupertino.
 * [#23320](https://github.com/flutter/flutter/pull/23322) Adiciona suporte para transições Hero através de múltiplos Navigators.
 
-## Mudanças em v0.10.2 (desde v0.9.4) - beta 10
+## Mudanças em v0.10.2 (desde v0.9.4) - beta 10 {:#changes-in-v0-10-2-since-v0-9-4-beta-10}
 
 ### v0.10.2
 * [#23194](https://github.com/flutter/flutter/pull/23194) Adiciona CupertinoTextField, um campo de entrada de texto estilizado para iOS.
@@ -75,7 +75,7 @@ as [notas de release do Flutter](./) foram publicadas em flutterbrasil.dev._
 ### v0.9.6
 * [#21251](https://github.com/flutter/flutter/pull/21251) adiciona CupertinoDatePicker, um controle picker estilo iOS que suporta modo de data e modo de data + hora.
 
-## Mudanças em v0.9.4 (desde v0.8.2) - beta 9
+## Mudanças em v0.9.4 (desde v0.8.2) - beta 9 {:#changes-in-v0-9-4-since-v0-8-2-beta-9}
 
 ### v0.9.4
 
@@ -87,14 +87,14 @@ as [notas de release do Flutter](./) foram publicadas em flutterbrasil.dev._
 
 ### v0.9.2
 
-* [#21540](https://github.com/flutter/flutter/pull/21540) adicionou um método `transform()` ao [`Animatable`](https://api.flutterbrasil.dev/flutter/animation/Animatable-class.html). Ele é implementado por `Tween` (a principal subclasse de `Animatable`), mas classes que fazem subclasse de `Animatable` diretamente precisarão implementá-lo. Tipicamente o método `evaluate()` existente pode ser alterado para implementar `transform()` ao invés, usando o valor dado pelo argumento para `transform()` ao invés do valor atual da animação fornecido para `evaluate()`. `evaluate()` agora tem uma implementação padrão que delega para `transform()`.
+* [#21540](https://github.com/flutter/flutter/pull/21540) adicionou um método `transform()` ao [`Animatable`](https://api.flutter.dev/flutter/animation/Animatable-class.html). Ele é implementado por `Tween` (a principal subclasse de `Animatable`), mas classes que fazem subclasse de `Animatable` diretamente precisarão implementá-lo. Tipicamente o método `evaluate()` existente pode ser alterado para implementar `transform()` ao invés, usando o valor dado pelo argumento para `transform()` ao invés do valor atual da animação fornecido para `evaluate()`. `evaluate()` agora tem uma implementação padrão que delega para `transform()`.
 
-## Mudanças em v0.8.2 (desde v0.7.3) - beta 8
+## Mudanças em v0.8.2 (desde v0.7.3) - beta 8 {:#changes-in-v0-8-2-since-v0-7-3-beta-8}
 
 ### v0.7.4
 * [#20322](https://github.com/flutter/flutter/pull/20322) executa transições parallax entre `CupertinoNavigationBar`s e `CupertinoSliverNavigationBar`s ao navegar entre páginas.
 
-## Mudanças em v0.7.3 (desde v0.6.0) - beta 7
+## Mudanças em v0.7.3 (desde v0.6.0) - beta 7 {:#changes-in-v0-7-3-since-v0-6-0-beta-7}
 
 ### v0.7.3
 * [#20966](https://github.com/flutter/flutter/pull/20966) adiciona `CupertinoTimerPicker`.
@@ -105,7 +105,7 @@ as [notas de release do Flutter](./) foram publicadas em flutterbrasil.dev._
 ### v0.7.1
 * [#19637](https://github.com/flutter/flutter/pull/19637) `CupertinoNavigationBar` e `CupertinoSliverNavigationBar` agora preenchem automaticamente seu título e labels do botão voltar baseado em seu `CupertinoPageRoute.title`.
 
-## Mudanças em v0.6.0 (desde v0.5.1) - beta 6
+## Mudanças em v0.6.0 (desde v0.5.1) - beta 6 {:#changes-in-v0-6-0-since-v0-5-1-beta-6}
 
 ### v0.6.0
 * Dart SDK atualizado para uma build Dart 2 (2.1.0-dev.0.0). Autores de packages e plugins devem garantir que seus arquivos `pubspec.yaml` incluam uma restrição de Dart SDK com limite superior de `<3.0.0`. Veja o [post Getting ready for Dart 2](https://dart.dev/blog/getting-ready-for-dart-2-and-making-your-packages-look-great-on-the-pub-site) para detalhes.
@@ -136,7 +136,7 @@ as [notas de release do Flutter](./) foram publicadas em flutterbrasil.dev._
 
 * [#18096](https://github.com/flutter/flutter/pull/18096) alterou a renderização do contador de caracteres em campos de texto para corresponder mais de perto às especificações de Material design.
 
-## Mudanças em v0.5.1 (desde v0.3.2) - beta 5
+## Mudanças em v0.5.1 (desde v0.3.2) - beta 5 {:#changes-in-v0-5-1-since-v0-3-2-beta-5}
 
 ### v0.5.0
 
@@ -148,7 +148,7 @@ as [notas de release do Flutter](./) foram publicadas em flutterbrasil.dev._
 
 * [#17586](https://github.com/flutter/flutter/pull/17586) adicionou uma nova propriedade `background` ao `TextStyle`. Subclasses devem garantir que esta propriedade seja tratada em construtores e `copyWith`.
 
-## Mudanças em v0.4.4 (desde v0.3.2) - beta 4
+## Mudanças em v0.4.4 (desde v0.3.2) - beta 4 {:#changes-in-v0-4-4-since-v0-3-2-beta-4}
 
 ### v0.4.0
 * [#17021](https://github.com/flutter/flutter/pull/17021) adicionou scrolling a11y implícito para iOS. Para isso, viewports definem uma extensão de cache antes da borda inicial assim como após a borda final e slivers devem fornecer informações de semântica se eles caem na extensão do cache.
@@ -188,9 +188,9 @@ as [notas de release do Flutter](./) foram publicadas em flutterbrasil.dev._
   image.toByteData(format: ui.ImageByteFormat.png);
   ```
 
-## Mudanças em v0.3.2 (desde v0.3.1) - beta 3
+## Mudanças em v0.3.2 (desde v0.3.1) - beta 3 {:#changes-in-v0-3-2-since-v0-3-1-beta-3}
 
-## Mudanças em v0.3.1 (desde v0.2.8) - beta 2 update
+## Mudanças em v0.3.1 (desde v0.2.8) - beta 2 update {:#changes-in-v0-3-1-since-v0-2-8-beta-2-update}
 
 Estamos cientes de um problema potencial com validação de certificado na implementação de `HttpClient`.
 Para acompanhar nossa investigação, veja [Dart issue 32936]({{site.repo.dart-sdk}}/issues/32936).
@@ -211,13 +211,13 @@ Para acompanhar nossa investigação, veja [Dart issue 32936]({{site.repo.dart-s
 
 * [#16187](https://github.com/flutter/flutter/pull/16187) atualizou o shape e elevation do widget `Card`.
 
-### Mudanças no Dart desde Flutter v0.2.8
+### Mudanças no Dart desde Flutter v0.2.8 {:#dart-changes-since-flutter-v0-2-8}
 
 * `dart:async`: Removido o parâmetro deprecado `defaultValue` em `Stream.firstWhere` e `Stream.lastWhere`.
 * `dart:core`: Adicionado método estático `tryParse` a `int`, `double`, `num`, `BigInt`, `Uri` e `DateTime`, e deprecado o parâmetro `onError` em `int.parse`, `double.parse` e `num.parse`.
 * A palavra-chave `new` agora pode sempre ser omitida. A palavra-chave `const` é necessária para criar uma expressão constante, embora dentro da expressão, outras palavras-chave `const` também possam ser omitidas.
 
-## Mudanças em v0.2.8 (desde v0.2.3) - beta 2
+## Mudanças em v0.2.8 (desde v0.2.3) - beta 2 {:#changes-in-v0-2-8-since-v0-2-3-beta-2}
 
 ### v0.2.8
 
@@ -227,7 +227,7 @@ Para acompanhar nossa investigação, veja [Dart issue 32936]({{site.repo.dart-s
 
 * [#15416](https://github.com/flutter/flutter/pull/15416) removeu `package:http` do Flutter e substituiu todos os usos pelo `HttpClient` de `dart:io`. Se você usa `package:http` você deve adicioná-lo como uma dependência em seu `pubspec.yaml` para continuar usando.
 
-  `createHttpClient()` também foi removido após ser marcado como deprecado. Para alterar como o framework cria clientes http, você pode usar [HttpOverrides](https://api.flutterbrasil.dev/flutter/dart-io/HttpOverrides-class.html) de `dart:io` para fornecer seu próprio callback `createHttpClient()` globalmente ou por zona.
+  `createHttpClient()` também foi removido após ser marcado como deprecado. Para alterar como o framework cria clientes http, você pode usar [HttpOverrides](https://api.flutter.dev/flutter/dart-io/HttpOverrides-class.html) de `dart:io` para fornecer seu próprio callback `createHttpClient()` globalmente ou por zona.
 
   Mais detalhes estão disponíveis [no anúncio](https://groups.google.com/forum/#!topic/flutter-dev/AnqDqgQ6vus).
 
@@ -285,7 +285,7 @@ Para acompanhar nossa investigação, veja [Dart issue 32936]({{site.repo.dart-s
 
 * [#15548](https://github.com/flutter/flutter/pull/15548) adiciona flags de debug `debugDisableClipLayers`, `debugDisablePhysicalShapeLayers` e `debugDisableOpacityLayers` para ajudar com diagnóstico de performance da velocidade de rasterização.
 
-## Mudanças em v0.2.3 (desde v0.1.5) - beta 1 update
+## Mudanças em v0.2.3 (desde v0.1.5) - beta 1 update {:#changes-in-v0-2-3-since-v0-1-5-beta-1-update}
 
 ### v0.2.0
 
@@ -301,13 +301,13 @@ Para acompanhar nossa investigação, veja [Dart issue 32936]({{site.repo.dart-s
 
 * [#14901](https://github.com/flutter/flutter/pull/14901) Uma atualização visual do [Slider](https://pub.dev/documentation/material_ui/latest/material_ui/Slider-class.html) alterou as cores, opacidades e o shape e comportamento do indicador de valor. Também removeu a flag "`thumbOpenAtMin`" da classe Slider, que não é mais necessária, e pode ser emulada pelo suporte a shape customizado de thumb.
 
-## Mudanças em v0.1.5 (desde v0.1.4) - beta 1.1
+## Mudanças em v0.1.5 (desde v0.1.4) - beta 1.1 {:#changes-in-v0-1-5-since-v0-1-4-beta-1-1}
 
 ### v0.1.5
 
 * [#14714](https://github.com/flutter/flutter/pull/14714) corrigiu o script groovy para o Flutter Gallery, assim corrigindo [#14912](https://github.com/flutter/flutter/issues/14912).
 
-## Mudanças em v0.1.4 (desde v0.0.20) - beta 1
+## Mudanças em v0.1.4 (desde v0.0.20) - beta 1 {:#changes-in-v0-1-4-since-v0-0-20-beta-1}
 
 ### v0.1.3
 
@@ -347,7 +347,7 @@ Para acompanhar nossa investigação, veja [Dart issue 32936]({{site.repo.dart-s
 
 * [#14343](https://github.com/flutter/flutter/pull/14343) revisou como copiar, recortar e colar funciona para EditableText: A classe abstrata TextSelectionControls tem novos métodos canCopy, canCut, etc. para determinar se essas ações estão disponíveis. A interface TextSelectionDelegate agora requer um método adicional bringIntoView(TextPosition position) para rolar uma TextPosition para a parte visível de um TextField. Além disso, essa interface não é mais implementada por TextSelectionOverlay. Em seu lugar, EditableTextState deve ser usado, que implementa essa interface. Veja também: [flutter-dev/IHPndyUDy0M](https://groups.google.com/forum/#!topic/flutter-dev/IHPndyUDy0M)
 
-#### APIs Sliver
+#### APIs Sliver {:#sliver-apis}
 
 * [#14449](https://github.com/flutter/flutter/pull/14449) substitui o método `SliverGridLayout.estimateMaxScrollOffset` pelo método `SliverGridLayout.computeMaxScrollOffset`. Este novo método deve reportar um valor preciso, não apenas uma estimativa. Isso foi necessário para corrigir um bug onde um `SliverGrid` finito não podia lidar com ser rolado para fora do topo da tela (porque não tínhamos como determinar quanto conteúdo ele tinha).
 

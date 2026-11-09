@@ -7,7 +7,7 @@ ia-translate: true
 ---
 
 
-## PRs fechados nesta versão de flutter/flutter
+## PRs fechados nesta versão de flutter/flutter {:#prs-closed-in-this-release-of-flutterflutter}
 
 De Wed May 1 16:56:00 2019 -0700 até Thu Jul 18 08:04:00 2019 -0700
 
@@ -1381,7 +1381,7 @@ De Wed May 1 16:56:00 2019 -0700 até Thu Jul 18 08:04:00 2019 -0700
 [36413](https://github.com/flutter/flutter/pull/36413) Revert "Roll engine f3482700474a..1af19ae67dd1 (4 commits)" (cla: yes, engine)
 
 
-## PRs fechados nesta versão de flutter/engine
+## PRs fechados nesta versão de flutter/engine {:#prs-closed-in-this-release-of-flutterengine}
 
 De Wed May 1 16:56:00 2019 -0700 até Thu Jul 18 08:04:00 2019 -0700
 
@@ -2129,7 +2129,7 @@ De Wed May 1 16:56:00 2019 -0700 até Thu Jul 18 08:04:00 2019 -0700
 [9905](https://github.com/flutter/engine/pull/9905) Respect EXIF information while decompressing images. (cla: yes)
 
 
-## PRs fechados nesta versão de flutter/plugins
+## PRs fechados nesta versão de flutter/plugins {:#prs-closed-in-this-release-of-flutterplugins}
 
 De Wed May 1 16:56:00 2019 -0700 até Thu Jul 18 08:04:00 2019 -0700
 

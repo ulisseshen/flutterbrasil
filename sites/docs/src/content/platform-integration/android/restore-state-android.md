@@ -47,7 +47,7 @@ momentos para se preparar.
 
 [state]: /data-and-backend/state-mgmt/ephemeral-vs-app
 
-## Visão geral
+## Visão geral {:#overview}
 
 Você pode habilitar a restauração de estado com apenas algumas tarefas:
 
@@ -98,7 +98,7 @@ Outras considerações:
 [`restoreState`]: {{site.api}}/flutter/widgets/RestorationMixin/restoreState.html
 [VeggieSeasons]: {{site.repo.demos}}/tree/main/veggieseasons
 
-## Restaurando estado de navegação
+## Restaurando estado de navegação {:#restoring-navigation-state}
 
 Se você quer que seu app retorne para uma rota particular
 que o usuário estava visualizando mais recentemente
@@ -110,7 +110,7 @@ migre os métodos padrão para métodos restauráveis
 (que têm "restorable" no nome).
 Por exemplo, substitua `push` por [`restorablePush`][].
 
-## Testando restauração de estado
+## Testando restauração de estado {:#testing-state-restoration}
 
 Para testar a restauração de estado, configure seu dispositivo móvel para que
 ele não salve estado uma vez que um app seja colocado em segundo plano.
@@ -129,7 +129,7 @@ terminado o teste!
 [`RestorationManager`]: {{site.api}}/flutter/services/RestorationManager-class.html
 [services]: {{site.api}}/flutter/services/services-library.html
 
-## Outros recursos
+## Outros recursos {:#other-resources}
 
 Para mais informações sobre restauração de estado,
 confira os seguintes recursos.

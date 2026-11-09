@@ -15,7 +15,7 @@ widgets Flutter e a outra usa um package
 [pub.dev]: {{site.pub}}
 [super_drag_and_drop]: {{site.pub-pkg}}/super_drag_and_drop
 
-## Criar widgets arrastáveis dentro do seu app
+## Criar widgets arrastáveis dentro do seu app {:#create-draggable-widgets-within-your-app}
 
 Se você quiser implementar drag and drop dentro
 da sua aplicação, pode usar o widget [`Draggable`][`Draggable`].
@@ -34,7 +34,7 @@ vídeo [widget of the week do `Draggable`][video].
 [local data]: {{site.pub-api}}/super_drag_and_drop/latest/super_drag_and_drop/DragItem/localData.html
 [video]: https://youtu.be/q4x2G_9-Mu0?si=T4679e90U2yrloCs
 
-## Implementar drag and drop entre apps
+## Implementar drag and drop entre apps {:#implement-drag-and-drop-between-apps}
 
 Se você quiser implementar drag and drop dentro
 da sua aplicação e _também_ entre sua

@@ -112,7 +112,7 @@ Adicione o seu App ID do AdMob ao app iOS.
     <string>ca-app-pub-################~##########</string>
     ```
 
-## 3. Adicione o plugin google_mobile_ads {:#3-add-the-google_mobile_ads-plugin}
+## 3. Adicione o plugin google_mobile_ads {:#3-add-the-google-mobile-ads-plugin}
 
 Para adicionar o plugin `google_mobile_ads` como dependência, execute
 `flutter pub add`:

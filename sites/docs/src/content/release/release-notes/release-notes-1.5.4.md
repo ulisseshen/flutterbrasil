@@ -43,7 +43,7 @@ Nossa pesquisa recente mostrou que os desenvolvedores Flutter preferem uma break
 *   [engine#8274](https://github.com/flutter/engine/pull/8274): [ui] Add null check in FontWeight.lerp
 
 
-## Correções Severas de Performance e Crash
+## Correções Severas de Performance e Crash {:#severe-performance-and-crash-changes}
 
 Neste lançamento, corrigimos vários problemas severos de performance e crash.
 
@@ -54,7 +54,7 @@ Neste lançamento, corrigimos vários problemas severos de performance e crash.
 *   [flutter#28651](https://github.com/flutter/flutter/pull/28651): Cannot execute operation because FlutterJNI is not attached to native.
 
 
-## Mudanças no iOS
+## Mudanças no iOS {:#ios-changes}
 
 Dar suporte ao iOS é tão importante para a equipe Flutter quanto dar suporte ao Android, o que você pode ver no enorme volume de mudanças que fizemos neste lançamento para tornar a experiência iOS ainda melhor.
 
@@ -89,7 +89,7 @@ Dar suporte ao iOS é tão importante para a equipe Flutter quanto dar suporte a
 *   [flutter#30475](https://github.com/flutter/flutter/pull/30475): Trackpad mode crash fix
 
 
-## Mudanças no Material
+## Mudanças no Material {:#material-changes}
 
 É claro que Material continua sendo uma prioridade para a equipe Flutter também.
 
@@ -116,7 +116,7 @@ Dar suporte ao iOS é tão importante para a equipe Flutter quanto dar suporte a
 *   [flutter#29413](https://github.com/flutter/flutter/pull/29413): Fix MaterialApp's _navigatorObserver when only builder used
 
 
-## Mudanças no Desktop
+## Mudanças no Desktop {:#desktop-changes}
 
 O Flutter tem progredido na expansão do suporte para mecanismos de entrada de classe desktop com mapeamentos de teclado, seleção de texto, rodas de mouse e hover, juntamente com os primórdios do suporte a desktop em nossas ferramentas.
 
@@ -138,7 +138,7 @@ O Flutter tem progredido na expansão do suporte para mecanismos de entrada de c
 *   [flutter#30670](https://github.com/flutter/flutter/issues/30670): Implement StandardMethodCodec for C++ shells
 
 
-## Mudanças no Framework
+## Mudanças no Framework {:#framework-changes}
 
 Além de especificidades de plataforma, continuamos avançando no núcleo do framework Flutter.
 
@@ -168,7 +168,7 @@ Além de especificidades de plataforma, continuamos avançando no núcleo do fra
 *   [flutter#30468](https://github.com/flutter/flutter/pull/30468): Embedding diagram for BottomNavigationBar.
 
 
-## Mudanças nos Plugins
+## Mudanças nos Plugins {:#plugin-changes}
 
 Neste lançamento, também temos uma série de mudanças nos plugins Flutter, incluindo camera, Google Maps, o Web View, o image picker, os plugins Firebase e, agora para uso em seus apps, [o plugin In-App Purchase beta](https://pub.dartlang.org/packages/in_app_purchase).
 
@@ -214,7 +214,7 @@ Neste lançamento, também temos uma série de mudanças nos plugins Flutter, in
 *   [flutter#25329](https://github.com/flutter/flutter/pull/25329): [WebView] Allow the webview to take control when a URL is about to be loaded
 
 
-## Mudanças nas Ferramentas
+## Mudanças nas Ferramentas {:#tool-changes}
 
 Por último, mas certamente não menos importante, fizemos uma série de mudanças nas ferramentas nos repositórios principais do Flutter para melhorar a experiência do desenvolvedor, particularmente quando se trata de melhorar a performance do hot reload (e você achava que já era rápido antes!).
 
@@ -253,6 +253,6 @@ Além disso, os plugins de IDE para Flutter tiveram uma série de atualizações
 Como nota final, estamos quase no meio do ano, quando é hora de reavaliar as áreas onde podemos ter o maior impacto, e decidimos abandonar os planos para atualizações dinâmicas (também conhecido como code push) do nosso roteiro de 2019. Se você está interessado nas razões, pode ler [a explicação detalhada](https://github.com/flutter/flutter/issues/14330#issuecomment-485565194). Abandonar este trabalho nos permite aumentar nosso foco em qualidade, bem como em nossos experimentos com Flutter for web e Flutter for desktop.
 
 
-## Lista Completa de Issues
+## Lista Completa de Issues {:#full-issue-list}
 
 Você pode ver [a lista completa de PRs commitados neste lançamento](/release/release-notes/changelogs/changelog-1.5.4).

@@ -93,7 +93,7 @@ A negociação acontece mais ou menos assim:
 **Widget**: "Ei pai, eu decidi que meu tamanho vai ser `300`
    pixels de largura, e `60` pixels de altura."
 
-## Limitações
+## Limitações {:#limitations}
 
 O motor de layout do Flutter é projetado para ser um processo de passagem única.
 Isso significa que o Flutter organiza seus widgets de forma muito eficiente,
@@ -156,7 +156,7 @@ conforme descrito na seção [Flex](#flex).
 [`Text`]: {{site.api}}/flutter/widgets/Text-class.html
 [`Transform`]: {{site.api}}/flutter/widgets/Transform-class.html
 
-## Exemplos
+## Exemplos {:#examples}
 
 Para uma experiência interativa, use o seguinte DartPad.
 Use a barra de rolagem horizontal numerada para alternar entre
@@ -1313,7 +1313,7 @@ Os exemplos são explicados nas seções seguintes.
 
 [this GitHub repo]: https://github.com/marcglasberg/flutter_layout_article
 
-### Exemplo 1
+### Exemplo 1 {:#example-1}
 
 <img src='/assets/images/docs/ui/layout/layout-1.png' alt="Example 1 layout">
 
@@ -1327,7 +1327,7 @@ força o `Container` a ser exatamente do mesmo tamanho que a tela.
 
 Então o `Container` preenche a tela e a pinta de vermelho.
 
-### Exemplo 2
+### Exemplo 2 {:#example-2}
 
 <img src='/assets/images/docs/ui/layout/layout-2.png' alt="Example 2 layout">
 
@@ -1342,7 +1342,7 @@ exatamente do mesmo tamanho que a tela.
 
 Então o `Container` preenche a tela.
 
-### Exemplo 3
+### Exemplo 3 {:#example-3}
 
 <img src='/assets/images/docs/ui/layout/layout-3.png' alt="Example 3 layout">
 
@@ -1358,7 +1358,7 @@ O `Center` diz ao `Container` que ele pode ser de qualquer tamanho que
 quiser, mas não maior que a tela. Agora o `Container`
 pode realmente ter 100 × 100.
 
-### Exemplo 4
+### Exemplo 4 {:#example-4}
 
 <img src='/assets/images/docs/ui/layout/layout-4.png' alt="Example 4 layout">
 
@@ -1378,7 +1378,7 @@ quiser, mas se houver espaço vazio ele não centralizará o `Container`.
 Em vez disso, ele alinha o container no canto inferior direito do
 espaço disponível.
 
-### Exemplo 5
+### Exemplo 5 {:#example-5}
 
 <img src='/assets/images/docs/ui/layout/layout-5.png' alt="Example 5 layout">
 
@@ -1401,7 +1401,7 @@ mas não maior que a tela. O `Container` quer ter
 tamanho infinito, mas já que não pode ser maior que a tela,
 ele apenas preenche a tela.
 
-### Exemplo 6
+### Exemplo 6 {:#example-6}
 
 <img src='/assets/images/docs/ui/layout/layout-6.png' alt="Example 6 layout">
 
@@ -1426,7 +1426,7 @@ criado de forma diferente, e você tem que ler a
 documentação da API do [`Container`][`Container`] para entender
 como ele se comporta, dependendo das circunstâncias.
 
-### Exemplo 7
+### Exemplo 7 {:#example-7}
 
 <img src='/assets/images/docs/ui/layout/layout-7.png' alt="Example 7 layout">
 
@@ -1457,7 +1457,7 @@ o tamanho de seu filho, ele também tem 30 × 30.
 A cor vermelha não é visível porque o `Container` verde
 cobre completamente o `Container` vermelho.
 
-### Exemplo 8
+### Exemplo 8 {:#example-8}
 
 <img src='/assets/images/docs/ui/layout/layout-8.png' alt="Example 8 layout">
 
@@ -1479,7 +1479,7 @@ A cor vermelha é visível por causa do padding,
 e o `Container` verde tem o mesmo tamanho que
 no exemplo anterior.
 
-### Exemplo 9
+### Exemplo 9 {:#example-9}
 
 <img src='/assets/images/docs/ui/layout/layout-9.png' alt="Example 9 layout">
 
@@ -1506,7 +1506,7 @@ do mesmo tamanho que a tela, então ele diz ao seu filho `Container`
 para também assumir o tamanho da tela, ignorando assim seu
 parâmetro `constraints`.
 
-### Exemplo 10
+### Exemplo 10 {:#example-10}
 
 <img src='/assets/images/docs/ui/layout/layout-10.png' alt="Example 10 layout">
 
@@ -1533,7 +1533,7 @@ O Container deve ter entre 70 e 150 pixels.
 Ele quer ter 10 pixels,
 então acaba tendo 70 (o mínimo).
 
-### Exemplo 11
+### Exemplo 11 {:#example-11}
 
 <img src='/assets/images/docs/ui/layout/layout-11.png' alt="Example 11 layout">
 
@@ -1560,7 +1560,7 @@ O `Container` deve ter entre 70 e 150 pixels.
 Ele quer ter 1000 pixels,
 então acaba tendo 150 (o máximo).
 
-### Exemplo 12
+### Exemplo 12 {:#example-12}
 
 <img src='/assets/images/docs/ui/layout/layout-12.png' alt="Example 12 layout">
 
@@ -1587,7 +1587,7 @@ O `Container` deve ter entre 70 e 150 pixels.
 Ele quer ter 100 pixels, e é esse o tamanho que ele tem,
 já que está entre 70 e 150.
 
-### Exemplo 13
+### Exemplo 13 {:#example-13}
 
 <img src='/assets/images/docs/ui/layout/layout-13.png' alt="Example 13 layout">
 
@@ -1602,7 +1602,7 @@ A tela força o `UnconstrainedBox` a ser exatamente
 do mesmo tamanho que a tela. No entanto, o `UnconstrainedBox`
 permite que seu filho `Container` seja de qualquer tamanho que quiser.
 
-### Exemplo 14
+### Exemplo 14 {:#example-14}
 
 <img src='/assets/images/docs/ui/layout/layout-14.png' alt="Example 14 layout">
 
@@ -1622,7 +1622,7 @@ Infelizmente, neste caso o `Container` tem
 `UnconstrainedBox`, então o `UnconstrainedBox` exibe
 o temido "aviso de overflow".
 
-### Exemplo 15
+### Exemplo 15 {:#example-15}
 
 <img src='/assets/images/docs/ui/layout/layout-15.png' alt="Example 15 layout">
 
@@ -1650,7 +1650,7 @@ e é muito grande para caber no `OverflowBox`,
 mas o `OverflowBox` simplesmente mostra o máximo que pode,
 sem dar avisos.
 
-### Exemplo 16
+### Exemplo 16 {:#example-16}
 
 <img src='/assets/images/docs/ui/layout/layout-16.png' alt="Example 16 layout">
 
@@ -1669,7 +1669,7 @@ no entanto seu filho é um `Container` com tamanho infinito.
 Flutter não pode renderizar tamanhos infinitos, então ele lança um erro com
 a seguinte mensagem: `BoxConstraints forces an infinite width.`
 
-### Exemplo 17
+### Exemplo 17 {:#example-17}
 
 <img src='/assets/images/docs/ui/layout/layout-17.png' alt="Example 17 layout">
 
@@ -1701,7 +1701,7 @@ pode crescer além de 100.
 Isso explica a diferença entre um `LimitedBox`
 e um `ConstrainedBox`.
 
-### Exemplo 18
+### Exemplo 18 {:#example-18}
 
 <img src='/assets/images/docs/ui/layout/layout-18.png' alt="Example 18 layout">
 
@@ -1720,7 +1720,7 @@ mas depois que o `Text` informa seu tamanho ao `FittedBox`,
 o `FittedBox` escala o Text até que ele preencha toda a
 largura disponível.
 
-### Exemplo 19
+### Exemplo 19 {:#example-19}
 
 <img src='/assets/images/docs/ui/layout/layout-19.png' alt="Example 19 layout">
 
@@ -1738,7 +1738,7 @@ e permite que o `Text` seja de qualquer tamanho que quiser.
 Já que tanto `FittedBox` quanto o `Text` têm o mesmo tamanho,
 nenhuma escala acontece.
 
-### Exemplo 20
+### Exemplo 20 {:#example-20}
 
 <img src='/assets/images/docs/ui/layout/layout-20.png' alt="Example 20 layout">
 
@@ -1761,7 +1761,7 @@ mas não pode ser maior que a tela.
 Então ele assume o tamanho da tela,
 e redimensiona `Text` para que ele caiba na tela também.
 
-### Exemplo 21
+### Exemplo 21 {:#example-21}
 
 <img src='/assets/images/docs/ui/layout/layout-21.png' alt="Example 21 layout">
 
@@ -1778,7 +1778,7 @@ Se, no entanto, você remover o `FittedBox`, o `Text`
 obtém sua largura máxima da tela,
 e quebra a linha para que caiba na tela.
 
-### Exemplo 22
+### Exemplo 22 {:#example-22}
 
 <img src='/assets/images/docs/ui/layout/layout-22.png' alt="Example 22 layout">
 
@@ -1794,7 +1794,7 @@ FittedBox(
 ele não renderizará nada,
 e você verá um erro no console.
 
-### Exemplo 23
+### Exemplo 23 {:#example-23}
 
 <img src='/assets/images/docs/ui/layout/layout-23.png' alt="Example 23 layout">
 
@@ -1823,7 +1823,7 @@ e em vez disso permite que eles sejam de qualquer tamanho que queiram.
 A `Row` então os coloca lado a lado,
 e qualquer espaço extra permanece vazio.
 
-### Exemplo 24
+### Exemplo 24 {:#example-24}
 
 <img src='/assets/images/docs/ui/layout/layout-24.png' alt="Example 24 layout">
 
@@ -1852,7 +1852,7 @@ Já que `Row` não imporá nenhuma constraint aos seus filhos,
 na largura disponível da `Row`. Neste caso, assim como um
 `UnconstrainedBox`, a `Row` exibe o "aviso de overflow".
 
-### Exemplo 25
+### Exemplo 25 {:#example-25}
 
 <img src='/assets/images/docs/ui/layout/layout-25.png' alt="Example 25 layout">
 
@@ -1889,7 +1889,7 @@ o filho original a ter a largura do `Expanded`.
 Em outras palavras, uma vez que você usa `Expanded`,
 a largura original do filho se torna irrelevante, e é ignorada.
 
-### Exemplo 26
+### Exemplo 26 {:#example-26}
 
 <img src='/assets/images/docs/ui/layout/layout-26.png' alt="Example 26 layout">
 
@@ -1924,7 +1924,7 @@ a largura do `Expanded`.
 Em outras palavras, `Expanded` ignora a largura preferida de
 seus filhos.
 
-### Exemplo 27
+### Exemplo 27 {:#example-27}
 
 <img src='/assets/images/docs/ui/layout/layout-27.png' alt="Example 27 layout">
 
@@ -1965,7 +1965,7 @@ a largura exata do filho, ou a ignora completamente
 quando você usa `Expanded` ou `Flexible`.
 :::
 
-### Exemplo 28
+### Exemplo 28 {:#example-28}
 
 <img src='/assets/images/docs/ui/layout/layout-28.png' alt="Example 28 layout">
 
@@ -1990,7 +1990,7 @@ certo tamanho, dizemos que o widget fornece constraints _loose_
 ao seu filho. Mais sobre isso depois.
 :::
 
-### Exemplo 29
+### Exemplo 29 {:#example-29}
 
 <img src='/assets/images/docs/ui/layout/layout-29.png' alt="Example 29 layout">
 
@@ -2010,12 +2010,12 @@ Se você quiser que o filho do `Scaffold` seja exatamente do mesmo tamanho
 que o próprio `Scaffold`, você pode envolver seu filho com
 `SizedBox.expand`.
 
-## Constraints tight vs loose
+## Constraints tight vs loose {:#tight-vs-loose-constraints}
 
 É muito comum ouvir que alguma constraint é
 "tight" ou "loose", então o que isso significa?
 
-### Constraints tight
+### Constraints tight {:#tight-constraints}
 
 Uma constraint _tight_ oferece uma única possibilidade,
 um tamanho exato. Em outras palavras, uma constraint tight
@@ -2046,13 +2046,13 @@ BoxConstraints.tight(Size size)
      maxHeight = size.height;
 ```
 
-Se você revisitar o [Exemplo 2](#exemplo-2),
+Se você revisitar o [Exemplo 2](#example-2),
 a tela força o `Container` vermelho a ser
 exatamente do mesmo tamanho que a tela.
 A tela consegue isso, é claro, passando constraints tight
 ao `Container`.
 
-### Constraints loose
+### Constraints loose {:#loose-constraints}
 
 Uma constraint _loose_ é aquela que tem um mínimo
 de zero e um máximo não-zero.
@@ -2067,7 +2067,7 @@ as constraints tight que recebeu de seu pai
 (a tela) em constraints loose para seu filho
 (o `Container`).
 
-Se você revisitar o [Exemplo 3](#exemplo-3),
+Se você revisitar o [Exemplo 3](#example-3),
 o `Center` permite que o `Container` vermelho seja menor,
 mas não maior que a tela.
 
@@ -2076,7 +2076,7 @@ mas não maior que a tela.
 
 <a id="unbounded"></a>
 
-## Constraints unbounded
+## Constraints unbounded {:#unbounded-constraints}
 
 :::note
 Você pode ser direcionado aqui se o framework
@@ -2141,7 +2141,7 @@ ou ela não pode alinhar razoavelmente seus filhos.
 [`RenderBox`]: {{site.api}}/flutter/rendering/RenderBox-class.html
 [`ScrollView`]: {{site.api}}/flutter/widgets/ScrollView-class.html
 
-## Aprendendo as regras de layout para widgets específicos
+## Aprendendo as regras de layout para widgets específicos {:#learning-the-layout-rules-for-specific-widgets}
 
 Conhecer a regra geral de layout é necessário, mas não é suficiente.
 

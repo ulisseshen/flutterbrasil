@@ -22,7 +22,7 @@ diretrizes é proibido sem permissão por escrito do Google.
 Os ativos oficiais do Flutter e diretrizes adicionais sobre representação da marca
 podem ser encontrados em [Representing the Flutter Brand]({{site.main-url}}/brand).
 
-## Regras Gerais que Regem o Uso das Marcas Registradas do Flutter
+## Regras Gerais que Regem o Uso das Marcas Registradas do Flutter {:#general-rules-that-govern-the-use-of-the-flutter-trademarks}
 
 Você é livre para usar as marcas registradas do Flutter: (i) em conexão com seu
 download e uso do Flutter SDK para construir e desenvolver
@@ -48,7 +48,7 @@ da página da web ou no título do blog). No caso de contas de mídia
 social, isso significa que você não deve usar as marcas registradas do Flutter no
 fundo, em sua imagem de perfil ou em seu nome de usuário de mídia social.
 
-## Regras Específicas para o Uso Adequado das Marcas Registradas do Flutter
+## Regras Específicas para o Uso Adequado das Marcas Registradas do Flutter {:#specific-rules-for-proper-usage-of-the-flutter-trademarks}
 
 Além das regras gerais discutidas acima, abaixo estão regras específicas
 que regem o uso adequado das marcas registradas do Flutter.
@@ -93,7 +93,7 @@ que regem o uso adequado das marcas registradas do Flutter.
   quaisquer bens ou serviços não relacionados a software (por exemplo, mercadorias como roupas,
   canetas e adesivos).
 
-## Exceções de Uso da Comunidade
+## Exceções de Uso da Comunidade {:#community-use-exceptions}
 
 Para permitir o uso das marcas registradas do Flutter pela comunidade Flutter,
 abaixo estão exceções específicas às regras descritas acima:

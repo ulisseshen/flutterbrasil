@@ -6,7 +6,7 @@ description: Como criar componentes diferidos para melhor performance de downloa
 
 <?code-excerpt path-base="perf/deferred_components"?>
 
-## Introdução
+## Introdução {:#introduction}
 
 Com Flutter, apps Android e web têm a capacidade de baixar componentes
 diferidos (código e assets adicionais) enquanto o app já está em execução. Isso
@@ -35,12 +35,12 @@ Para um mergulho mais profundo nos detalhes técnicos de
 como este recurso funciona, veja [Deferred Components][Deferred Components]
 no [Flutter wiki][Flutter wiki].
 
-## Como configurar seu projeto Android para componentes diferidos
+## Como configurar seu projeto Android para componentes diferidos {:#how-to-set-your-android-project-up-for-deferred-components}
 
 As seguintes instruções explicam como configurar seu
 app Android para carregamento diferido.
 
-### Passo 1: Dependências e configuração inicial do projeto
+### Passo 1: Dependências e configuração inicial do projeto {:#step-1-dependencies-and-initial-project-setup}
 
 <ol>
 <li>
@@ -199,7 +199,7 @@ no [passo 3.3][step 3.3] uma vez que `gen_snapshot` produza as unidades de carre
 </li>
 </ol>
 
-### Passo 2: Implementando bibliotecas Dart diferidas
+### Passo 2: Implementando bibliotecas Dart diferidas {:#step-2-implementing-deferred-dart-libraries}
 
 Em seguida, implemente bibliotecas Dart de carregamento diferido no
 código Dart do seu app. A implementação não precisa
@@ -311,7 +311,7 @@ Você pode encontrar outro exemplo de carregamento de importação diferida em
 </li>
 </ol>
 
-### Passo 3: Construindo o app
+### Passo 3: Construindo o app {:#step-3-building-the-app}
 
 Use o seguinte comando `flutter` para construir um
 app de componentes diferidos:
@@ -629,7 +629,7 @@ mudanças recomendadas para continuar a construção.
 </li>
 </ol>
 
-### Executando o app localmente
+### Executando o app localmente {:#running-the-app-locally}
 
 Uma vez que seu app tenha construído com sucesso um arquivo AAB,
 use o [`bundletool`][`bundletool`] do Android para realizar
@@ -665,7 +665,7 @@ o ID de build do Android ou desinstalar e reinstalar
 o app, já que o Android não atualizará os módulos de recurso
 a menos que detecte um novo número de versão.
 
-### Lançamento na Google Play Store
+### Lançamento na Google Play Store {:#releasing-to-the-google-play-store}
 
 O arquivo AAB construído pode ser enviado diretamente para
 a Play store normalmente. Quando `loadLibrary()` é chamado,

@@ -15,7 +15,7 @@ Esta receita usa os seguintes passos:
   2. Delete dados no servidor.
   3. Atualize a tela.
 
-## 1. Adicione o pacote `http`
+## 1. Adicione o pacote `http` {:#1-add-the-http-package}
 
 Para adicionar o pacote `http` como uma dependência,
 execute `flutter pub add`:
@@ -34,7 +34,7 @@ import 'package:material_ui/material_ui.dart';
 
 {% render "docs/cookbook/networking/internet-permission.md" %}
 
-## 2. Delete dados no servidor
+## 2. Delete dados no servidor {:#2-delete-data-on-the-server}
 
 Esta receita cobre como deletar um álbum do
 [JSONPlaceholder][] usando o método `http.delete()`.
@@ -66,7 +66,7 @@ O método `http.delete()` retorna um `Future` que contém um `Response`.
 * O método `deleteAlbum()` recebe um argumento `id` que
   é necessário para identificar os dados a serem deletados do servidor.
 
-## 3. Atualize a tela
+## 3. Atualize a tela {:#3-update-the-screen}
 
 Para verificar se os dados foram deletados ou não,
 primeiro busque os dados do [JSONPlaceholder][]
@@ -100,7 +100,7 @@ que você está passando é o id dos dados que você recuperou
 da internet. Isso significa que você vai deletar
 os mesmos dados que você buscou da internet.
 
-### Retornando uma resposta do método deleteAlbum()
+### Retornando uma resposta do método deleteAlbum() {:#returning-a-response-from-the-deletealbum-method}
 Depois que a requisição de deleção foi feita,
 você pode retornar uma resposta do método `deleteAlbum()`
 para notificar sua tela que os dados foram deletados.
@@ -140,7 +140,7 @@ Este comportamento pode ser alterado da maneira que você desejar.
 É isso!
 Agora você tem uma função que deleta os dados da internet.
 
-## Exemplo completo
+## Exemplo completo {:#complete-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dart

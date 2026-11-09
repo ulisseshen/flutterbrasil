@@ -20,7 +20,7 @@ A animação a seguir mostra o comportamento do app:
 
 ![Staggered Menu Animation Example](/assets/images/docs/cookbook/effects/StaggeredMenuAnimation.webp){:.site-mobile-screenshot}
 
-## Criar o menu sem animações
+## Criar o menu sem animações {:#create-the-menu-without-animations}
 
 O menu drawer exibe uma lista de títulos,
 seguida por um botão Get started na
@@ -116,7 +116,7 @@ class _MenuState extends State<Menu> {
 }
 ```
 
-## Preparar para animações
+## Preparar para animações {:#prepare-for-animations}
 
 O controle do timing da animação requer um
 `AnimationController`.
@@ -237,7 +237,7 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
 }
 ```
 
-## Animar os itens da lista e o botão
+## Animar os itens da lista e o botão {:#animate-the-list-items-and-button}
 
 A animação escalonada é reproduzida assim que o menu se torna visível.
 
@@ -351,7 +351,7 @@ Você tem um menu animado onde a aparição de cada
 item da lista é escalonada, seguida por um botão inferior que
 aparece no lugar.
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter staggered menu animation hands-on example in DartPad" run="true"

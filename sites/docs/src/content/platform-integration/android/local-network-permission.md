@@ -49,7 +49,7 @@ declare-a no manifesto do Android.
 </manifest>
 ```
 
-## Adicione o pacote permission_handler {:#add-the-permission_handler-package}
+## Adicione o pacote permission_handler {:#add-the-permission-handler-package}
 
 Para solicitar permissões de tempo de execução do Android a partir do Dart,
 use o plugin [`permission_handler`][`permission_handler`] do [pub.dev][pub.dev].

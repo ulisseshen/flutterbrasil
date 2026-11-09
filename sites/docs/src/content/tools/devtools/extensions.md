@@ -4,7 +4,7 @@ title: Extensões DevTools
 description: Aprenda como usar e construir extensões DevTools.
 ---
 
-## O que são extensões DevTools?
+## O que são extensões DevTools? {:#what-are-devtools-extensions}
 
 [Extensões DevTools][DevTools extensions]
 são ferramentas de desenvolvedor fornecidas por packages de terceiros que são
@@ -15,13 +15,13 @@ um usuário está depurando seu app.
 
 [DevTools extensions]: {{site.pub-pkg}}/devtools_extensions
 
-## Use uma extensão DevTools
+## Use uma extensão DevTools {:#use-a-devtools-extension}
 
 Se seu app depende de um package que fornece uma
 extensão DevTools, a extensão aparece automaticamente
 em uma nova aba quando você abre DevTools.
 
-### Configure estados de habilitação de extensões
+### Configure estados de habilitação de extensões {:#configure-extension-enablement-states}
 
 Você precisa habilitar manualmente a extensão antes dela carregar
 pela primeira vez. Certifique-se de que a extensão é fornecida por
@@ -74,7 +74,7 @@ usa uma cópia local do arquivo `devtools_options.yaml`
 neste caso, as opções especificadas podem
 diferir entre os colaboradores do projeto.
 
-## Construa uma extensão DevTools
+## Construa uma extensão DevTools {:#build-a-devtools-extension}
 
 Para um guia detalhado sobre como construir uma extensão DevTools, visite
 [Construa ferramentas personalizadas no Flutter e Dart DevTools][build-extensions]

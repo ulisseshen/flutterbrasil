@@ -31,7 +31,7 @@ Uma dependência pode ser direta ou transitiva:
   Você não lista esses pacotes no seu arquivo `pubspec.yaml`,
   mas o seu projeto precisa deles para compilar.
 
-### O arquivo pubspec.lock {:#the-pubspeclock-file}
+### O arquivo pubspec.lock {:#the-pubspec-lock-file}
 
 O arquivo `pubspec.lock` contém a versão exata de cada dependência direta e
 transitiva usada no seu projeto.

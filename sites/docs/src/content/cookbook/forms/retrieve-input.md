@@ -14,7 +14,7 @@ usando as seguintes etapas:
 1.  Fornecer o `TextEditingController` para um `TextField`.
 1.  Exibir o valor atual do campo de texto.
 
-## 1. Criar um `TextEditingController`
+## 1. Criar um `TextEditingController` {:#1-create-a-texteditingcontroller}
 
 Para recuperar o texto que um usuário digitou em um campo de texto,
 crie um [`TextEditingController`][`TextEditingController`]
@@ -57,7 +57,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
 }
 ```
 
-## 2. Fornecer o `TextEditingController` para um `TextField`
+## 2. Fornecer o `TextEditingController` para um `TextField` {:#2-supply-the-texteditingcontroller-to-a-textfield}
 
 Agora que você tem um `TextEditingController`, conecte-o
 a um campo de texto usando a propriedade `controller`:
@@ -67,7 +67,7 @@ a um campo de texto usando a propriedade `controller`:
 return TextField(controller: myController);
 ```
 
-## 3. Exibir o valor atual do campo de texto
+## 3. Exibir o valor atual do campo de texto {:#3-display-the-current-value-of-the-text-field}
 
 Após fornecer o `TextEditingController` para o campo de texto,
 comece a ler valores.
@@ -99,7 +99,7 @@ FloatingActionButton(
 ),
 ```
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter retrieve input hands-on example in DartPad" run="true"

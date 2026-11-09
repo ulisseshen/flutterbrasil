@@ -89,7 +89,7 @@ verão essas flags serem ignoradas ao iniciar um binário de release.
 
 ## Descrição da mudança {:#description-of-change}
 
-### Comportamento do embedding Android
+### Comportamento do embedding Android {:#android-embedding-behavior}
 
 O embedding Android do Flutter aplica o seguinte comportamento
 ao receber flags de configuração do engine por extras de `Intent` do Android
@@ -104,7 +104,7 @@ Além disso, o método de interface interno
 `FlutterActivityAndFragmentDelegate.Host.getFlutterShellArgs` foi descontinuado
 em favor de `getFlutterEngineFlags()`.
 
-### Comportamento da CLI do Flutter
+### Comportamento da CLI do Flutter {:#flutter-cli-behavior}
 
 A CLI do Flutter aplica o seguinte comportamento
 ao executar apps Flutter no Android:

@@ -8,13 +8,13 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 O argumento `text` do [`ClipboardData constructor`][`ClipboardData constructor`] não é mais anulável.
 Código que fornece `null` para o argumento `text` deve ser migrado para fornecer
 uma string vazia `''`.
 
-## Contexto
+## Contexto {:#context}
 
 Em preparação para suportar múltiplas variantes de dados da área de transferência, o
 construtor `ClipboardData` agora requer que pelo menos uma variante de dados seja
@@ -24,11 +24,11 @@ Anteriormente, as plataformas eram inconsistentes em como lidavam com `null`.
 O comportamento agora é consistente entre plataformas. Se você está interessado
 nos detalhes de baixo nível, veja [PR 122446][PR 122446].
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 O argumento `text` do [`ClipboardData constructor`][`ClipboardData constructor`] não é mais anulável.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Para redefinir a área de transferência de texto, use uma string vazia `''` em vez de `null`.
 
@@ -48,12 +48,12 @@ void resetClipboard() {
 }
 ```
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Adicionado na versão: 3.10.0-9.0.pre<br>
 Na versão estável: 3.10.0
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

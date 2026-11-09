@@ -7,20 +7,20 @@ description: >-
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Introduzido o widget `RadioGroup` para centralizar o gerenciamento de `groupValue` e o callback `onChanged`
 para um conjunto de widgets `Radio`. Como resultado, as propriedades individuais `Radio.groupValue` e
 `Radio.onChanged` foram descontinuadas.
 
-## Contexto
+## Contexto {:#context}
 
 Para atender aos requisitos do APG (ARIA Practices Guide) para navegação por teclado e
 propriedades semânticas em grupos de botões de rádio, o Flutter precisava de um conceito dedicado de grupo de rádio.
 Introduzir um widget wrapper, `RadioGroup`, fornece esse suporte pronto para uso.
 Esta mudança também apresentou uma oportunidade para simplificar a API para widgets `Radio` individuais.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 As seguintes APIs foram descontinuadas:
 
@@ -31,11 +31,11 @@ As seguintes APIs foram descontinuadas:
 * `RadioListTile.groupValue`
 * `RadioListTile.onChanged`.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Se você está usando essas propriedades, pode refatorá-las com `RadioGroup`.
 
-### Caso 1: caso trivial
+### Caso 1: caso trivial {:#case-1-trivial-case}
 
 Código antes da migração:
 
@@ -87,7 +87,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-### Caso 2: radio desabilitado
+### Caso 2: radio desabilitado {:#case-2-disabled-radio}
 
 Código antes da migração:
 
@@ -135,7 +135,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-### Caso 3: grupo misto ou multi-seleção
+### Caso 3: grupo misto ou multi-seleção {:#case-3-mixed-group-or-multi-selection}
 
 Código antes da migração:
 
@@ -213,12 +213,12 @@ Widget build(BuildContext context) {
 }
 ```
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Disponibilizado na versão: 3.34.0-0.0.pre<br>
 Na versão estável: 3.35
 
-## Referências
+## Referências {:#references}
 
 * [`APG`][APG]
 

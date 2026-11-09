@@ -16,9 +16,9 @@ Veja como você pode criar tal estrutura com Flutter:
   1. Crie uma fonte de dados com diferentes tipos de itens.
   2. Converta a fonte de dados em uma lista de widgets.
 
-## 1. Crie uma fonte de dados com diferentes tipos de itens
+## 1. Crie uma fonte de dados com diferentes tipos de itens {:#1-create-a-data-source-with-different-types-of-items}
 
-### Tipos de itens
+### Tipos de itens {:#types-of-items}
 
 Para representar diferentes tipos de itens em uma lista, defina
 uma classe para cada tipo de item.
@@ -68,7 +68,7 @@ class MessageItem implements ListItem {
 }
 ```
 
-### Crie uma lista de itens
+### Crie uma lista de itens {:#create-a-list-of-items}
 
 Na maioria das vezes, você buscaria dados da internet ou de um banco de dados
 local e converteria esses dados em uma lista de itens.
@@ -87,7 +87,7 @@ final items = List<ListItem>.generate(
 );
 ```
 
-## 2. Converta a fonte de dados em uma lista de widgets
+## 2. Converta a fonte de dados em uma lista de widgets {:#2-convert-the-data-source-into-a-list-of-widgets}
 
 Para converter cada item em um widget,
 use o construtor [`ListView.builder()`][`ListView.builder()`].
@@ -114,7 +114,7 @@ ListView.builder(
 )
 ```
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter create mixed lists hands-on example in DartPad" run="true"

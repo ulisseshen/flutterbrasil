@@ -1,6 +1,6 @@
 <!-- ia-translate: true -->
 
-#### Compilar a versão iOS do app Flutter no Terminal
+#### Compilar a versão iOS do app Flutter no Terminal {:#build-the-ios-version-of-the-flutter-app-in-the-terminal}
 
 Para gerar as dependências necessárias da plataforma iOS,
 execute o comando `flutter build`.
@@ -21,7 +21,7 @@ Building com.example.myApp for device (ios)...
 
 Se você usa o VS Code para depurar a maior parte do seu código, comece com esta seção.
 
-##### Iniciar o depurador Dart no VS Code
+##### Iniciar o depurador Dart no VS Code {:#start-the-dart-debugger-in-vs-code}
 
 {% render "docs/debug/debug-flow-vscode-as-start.md" %}
 
@@ -29,7 +29,7 @@ Se você usa o VS Code para depurar a maior parte do seu código, comece com est
 {% render "docs/debug/vscode-flutter-attach-json.md" %}
 {% endif %}
 
-##### Anexar ao processo Flutter no Xcode
+##### Anexar ao processo Flutter no Xcode {:#attach-to-the-flutter-process-in-xcode}
 
 Para anexar ao app Flutter no Xcode:
 
@@ -45,7 +45,7 @@ Para anexar ao app Flutter no Xcode:
 
 Se você usa o Xcode para depurar a maior parte do seu código, comece com esta seção.
 
-##### Iniciar o depurador do Xcode
+##### Iniciar o depurador do Xcode {:#start-the-xcode-debugger}
 
 1. Abra `ios/Runner.xcworkspace` do diretório do seu app Flutter.
 
@@ -84,7 +84,7 @@ Se você usa o Xcode para depurar a maior parte do seu código, comece com esta 
 
 1. Copie o URI do serviço Dart VM.
 
-##### Anexar à Dart VM no VS Code
+##### Anexar à Dart VM no VS Code {:#attach-to-the-dart-vm-in-vs-code}
 
 1. Para abrir a paleta de comandos, vá para
     **View** <span aria-label="and then">></span>

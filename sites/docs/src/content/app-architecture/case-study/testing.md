@@ -9,7 +9,7 @@ prev:
   path: /app-architecture/case-study/dependency-injection
 ---
 
-## Testando a camada de UI
+## Testando a camada de UI {:#testing-the-ui-layer}
 
 Uma maneira de determinar se sua arquitetura é sólida é
 considerar quão fácil (ou difícil) a aplicação é para testar.
@@ -17,7 +17,7 @@ Como view models e views têm entradas bem definidas,
 suas dependências podem ser facilmente mockadas ou falsificadas,
 e testes unitários são facilmente escritos.
 
-### Testes unitários de ViewModel
+### Testes unitários de ViewModel {:#viewmodel-unit-tests}
 
 Para testar a lógica de UI do view model, você deve escrever testes unitários que
 não dependem de bibliotecas ou frameworks de teste do Flutter.
@@ -67,7 +67,7 @@ Se você está usando esta arquitetura com [casos de uso][use-cases], estes tamb
 precisariam ser falsificados.
 :::
 
-### Testes de widget de View
+### Testes de widget de View {:#view-widget-tests}
 
 Depois de escrever testes para seu view model,
 você já criou os fakes que precisa para escrever testes de widget também.
@@ -185,7 +185,7 @@ estão mais acima na árvore de widgets.
 O mais importante a observar é que os testes de view e view model
 só requerem mockar repositórios se sua arquitetura for sólida.
 
-## Testando a camada de dados
+## Testando a camada de dados {:#testing-the-data-layer}
 
 Semelhante à camada de UI, os componentes da camada de dados têm
 entradas e saídas bem definidas, tornando ambos os lados falsificáveis.

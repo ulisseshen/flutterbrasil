@@ -20,7 +20,7 @@ ou [GitHub Pages][] como uma solução temporária.
 Uma vez que você configurou seus deep links, você pode validá-los.
 Para aprender mais, veja [Validate deep links][].
 
-## 1. Personalizar uma aplicação Flutter
+## 1. Personalizar uma aplicação Flutter {:#1-customize-a-flutter-application}
 
 Escreva um app Flutter que possa lidar com uma URL de entrada.
 Este exemplo usa o pacote [go_router][] para lidar com o roteamento.
@@ -73,7 +73,7 @@ Ele fornece uma API simples para lidar com cenários de roteamento complexos.
     );
     ```
 
-## 2. Modificar AndroidManifest.xml
+## 2. Modificar AndroidManifest.xml {:#2-modify-androidmanifest-xml}
 
  1. Abra o projeto Flutter com VS Code ou Android Studio.
  2. Navegue até o arquivo `android/app/src/main/AndroidManifest.xml`.
@@ -116,7 +116,7 @@ Ele fornece uma API simples para lidar com cenários de roteamento complexos.
     ```
     :::
 
-## 3. Hospedar arquivo assetlinks.json
+## 3. Hospedar arquivo assetlinks.json {:#3-hosting-assetlinks-json-file}
 
 Hospede um arquivo `assetlinks.json` usando um servidor web
 com um domínio que você possui. Este arquivo informa ao
@@ -126,17 +126,17 @@ obtenha o nome do pacote do app Flutter que você criou no
 passo anterior e a impressão digital sha256 da
 chave de assinatura que você usará para construir o APK.
 
-### Nome do pacote
+### Nome do pacote {:#package-name}
 
 Localize o nome do pacote em `AndroidManifest.xml`,
 a propriedade `package` sob a tag `<manifest>`.
 Nomes de pacote geralmente estão no formato `com.example.*`.
 
-### Impressão digital sha256
+### Impressão digital sha256 {:#sha256-fingerprint}
 
 O processo pode diferir dependendo de como o apk é assinado.
 
-#### Usando assinatura de app do google play
+#### Usando assinatura de app do google play {:#using-google-play-app-signing}
 
 Você pode encontrar a impressão digital sha256 diretamente do
 console de desenvolvedor do play. Abra seu app no console do play,
@@ -144,7 +144,7 @@ em **Release> Setup > App Integrity> App Signing tab**:
 
 <img src="/assets/images/docs/cookbook/set-up-app-links-pdc-signing-key.png" alt="Screenshot of sha256 fingerprint in play developer console" width="50%" />
 
-#### Usando keystore local
+#### Usando keystore local {:#using-local-keystore}
 
 Se você está armazenando a chave localmente,
 você pode gerar sha256 usando o seguinte comando:
@@ -185,7 +185,7 @@ no campo sha256_cert_fingerprints.
 Apenas adicione-o à lista sha256_cert_fingerprints
 :::
 
-## Testando
+## Testando {:#testing}
 
 Você pode usar um dispositivo real ou o Emulador para testar um app link,
 mas primeiro certifique-se de ter executado `flutter run` pelo menos uma vez nos
@@ -223,7 +223,7 @@ abre e exibe a tela de detalhes:
 
 <img src="/assets/images/docs/cookbook/set-up-app-links-emulator-deeplinked.png" alt="Deeplinked Emulator screenshot" width="50%" />
 
-## Apêndice
+## Apêndice {:#appendix}
 
 Código-fonte: [deeplink_cookbook][]
 

@@ -6,7 +6,7 @@ showBreadcrumbs: false
 ia-translate: true
 ---
 
-## Por que vejo um anúncio de pesquisa?
+## Por que vejo um anúncio de pesquisa? {:#why-do-i-see-a-survey-announcement}
 
 Se você não optou por não participar da
 [análise e relatório de falhas](/reference/crash-reporting) do Flutter,
@@ -20,7 +20,7 @@ Executamos dois tipos de pesquisas:
   Se seus dados de telemetria atenderem aos critérios da pesquisa,
   você poderá ver um anúncio de pesquisa.
 
-## Como minhas respostas serão usadas?
+## Como minhas respostas serão usadas? {:#how-will-my-responses-be-used}
 
 Usamos as respostas que você envia via pesquisa para melhorar
 o Flutter e Dart. Armazenamos essas informações independentemente
@@ -28,7 +28,7 @@ das informações enviadas ao Google via analytics.
 Para ver como usamos pesquisas anteriores para melhorar o Flutter e Dart,
 confira as publicações sobre pesquisas no [blog do Flutter][Flutter blog].
 
-## Como posso desativar?
+## Como posso desativar? {:#how-can-i-disable-it}
 
 Para silenciar anúncios de pesquisa, você pode fazer uma das seguintes opções:
 

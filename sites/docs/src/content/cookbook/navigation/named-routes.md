@@ -34,7 +34,7 @@ demonstrando como usar rotas nomeadas usando os seguintes passos:
   3. Navegar para a segunda tela usando `Navigator.pushNamed()`.
   4. Retornar à primeira tela usando `Navigator.pop()`.
 
-## 1. Criar duas telas
+## 1. Criar duas telas {:#1-create-two-screens}
 
 Primeiro, crie duas telas para trabalhar. A primeira tela contém um
 botão que navega para a segunda tela. A segunda tela contém um
@@ -83,7 +83,7 @@ class SecondScreen extends StatelessWidget {
 }
 ```
 
-## 2. Definir as rotas
+## 2. Definir as rotas {:#2-define-the-routes}
 
 Em seguida, defina as rotas fornecendo propriedades adicionais
 ao construtor [`MaterialApp`][`MaterialApp`]: a `initialRoute`
@@ -116,7 +116,7 @@ MaterialApp(
 Ao usar `initialRoute`, **não** defina uma propriedade `home`.
 :::
 
-## 3. Navegar para a segunda tela
+## 3. Navegar para a segunda tela {:#3-navigate-to-the-second-screen}
 
 Com os widgets e rotas em vigor, acione a navegação usando o
 método [`Navigator.pushNamed()`][`Navigator.pushNamed()`].
@@ -137,7 +137,7 @@ onPressed: () {
 }
 ```
 
-## 4. Retornar à primeira tela
+## 4. Retornar à primeira tela {:#4-return-to-the-first-screen}
 
 Para navegar de volta à primeira tela, use a
 função [`Navigator.pop()`][`Navigator.pop()`].
@@ -155,7 +155,7 @@ onPressed: () {
 }
 ```
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter Named Routes hands-on example in DartPad" run="true"

@@ -89,7 +89,7 @@ Além disso, saiba mais sobre a [cultura de inclusão][culture of inclusivity] e
 
 Apenas usar o Flutter e fornecer feedback já é uma contribuição valiosa!
 
-### Forneça feedback
+### Forneça feedback {:#provide-feedback}
 
 Compartilhar seu feedback e experiências ajuda a equipe do Flutter
 a entender e priorizar as necessidades e problemas dos desenvolvedores.
@@ -152,7 +152,7 @@ Você pode fornecer feedback valioso através de várias formas, incluindo:
 [rfc-prs]: {{site.repo.rfc}}/pulls
 [design-doc-issues]: {{site.repo.flutter}}/issues?q=is%3Aopen+is%3Aissue+label%3A%22design+doc%22
 
-### Experimente o canal beta
+### Experimente o canal beta {:#try-out-the-beta-channel}
 
 Para ajudar a garantir a estabilidade do Flutter e melhorar os recursos futuros,
 ajude a testar versões futuras antes que elas cheguem ao canal stable.
@@ -192,7 +192,7 @@ consulte o [guia de RFCs e documentos de design do Flutter][design-docs-guide] e
 [design-docs-guide]: {{site.repo.flutter}}/blob/main/docs/contributing/Design-Documents.md
 [rfc-0002]: {{site.repo.rfc}}/blob/main/rfc/000.0002-flutter-rfc-review-process.md
 
-### Framework Flutter
+### Framework Flutter {:#flutter-framework}
 
 Encontrou um bug em um widget nativo, tem uma ideia para um novo,
 adora adicionar testes ou está interessado nas partes internas do Flutter?
@@ -204,7 +204,7 @@ confira o [guia de contribuição][framework-contribute] do Flutter.
 
 [framework-contribute]: {{site.repo.flutter}}/blob/main/CONTRIBUTING.md
 
-### Engine Flutter
+### Engine Flutter {:#flutter-engine}
 
 Interessado em implementar as primitivas e integrações de plataforma
 que sustentam o Flutter ou tem aptidão para programação gráfica?
@@ -218,7 +218,7 @@ e como [Configurar o ambiente de desenvolvimento do engine][engine-setup].
 [framework-contribute]: {{site.repo.flutter}}/blob/main/CONTRIBUTING.md
 [engine-setup]: {{site.repo.flutter}}/blob/main/docs/engine/contributing/Setting-up-the-Engine-development-environment.md
 
-### Packages Flutter
+### Packages Flutter {:#flutter-packages}
 
 Contribua com packages oficiais que são
 mantidos pela equipe do Flutter.
@@ -245,7 +245,7 @@ o [guia `CONTRIBUTING.md` do DevTools][devtools-contribute].
 [Dart and Flutter DevTools]: /tools/devtools
 [devtools-contribute]: {{site.repo.organization}}/devtools/blob/master/CONTRIBUTING.md
 
-### Infraestrutura de sites
+### Infraestrutura de sites {:#site-infrastructure}
 
 Corrija bugs, melhore a acessibilidade ou adicione recursos aos
 sites Dart e Flutter.
@@ -274,7 +274,7 @@ você pode querer contribuir com:
   - **Repositório:** [`dart-lang/dart-pad`](https://github.com/dart-lang/dart-pad)
   - **Guia de contribuição:** [`CONTRIBUTING.md`](https://github.com/dart-lang/dart-pad/blob/main/CONTRIBUTING.md)
 - A ferramenta `dartdoc`
-  - **Site ativo:** [`api.flutterbrasil.dev`]({{site.api}})
+  - **Site ativo:** [`api.flutter.dev`]({{site.api}})
   - **Repositório:** [`dart-lang/dartdoc`](https://github.com/dart-lang/dartdoc)
   - **Guia de contribuição:** [`CONTRIBUTING.md`](https://github.com/dart-lang/dartdoc/blob/main/CONTRIBUTING.md)
 
@@ -291,7 +291,7 @@ guias de [contribuição][dart-contribute] e [compilação][dart-build].
 [dart-contribute]: {{site.repo.dart-sdk}}/blob/main/CONTRIBUTING.md
 [dart-build]: {{site.repo.dart-sdk}}/blob/main/docs/Building.md
 
-### Exemplos de código
+### Exemplos de código {:#code-samples}
 
 Melhore ou adicione exemplos demonstrando recursos do Flutter,
 ajudando desenvolvedores que preferem aprender através de exemplos.
@@ -317,7 +317,7 @@ ou pode contribuir com exemplos mantidos pelo Flutter:
 Contribuir com a documentação do Flutter, não importa a forma,
 é uma das maneiras mais impactantes de ajudar o Flutter.
 
-### Documentação da API Flutter
+### Documentação da API Flutter {:#flutter-api-docs}
 
 A documentação da API é muito utilizada por muitos desenvolvedores Flutter,
 tanto online quanto em seus editores de código.
@@ -334,7 +334,7 @@ particularmente sua seção sobre [documentação da API][flutter-api-contribute
 [flutter-contribute]: {{site.repo.flutter}}/blob/main/CONTRIBUTING.md
 [flutter-api-contribute]: {{site.repo.flutter}}/blob/main/CONTRIBUTING.md#api-documentation
 
-### Site de documentação
+### Site de documentação {:#documentation-website}
 
 Considere contribuir com este site,
 guiando desenvolvedores enquanto eles aprendem e exploram o Flutter.
@@ -381,7 +381,7 @@ aprenda sobre a abordagem do Flutter para
 Ajude a crescer e apoiar a coleção de
 packages Dart e Flutter disponíveis no [pub.dev](https://pub.dev/).
 
-### Contribua com packages que você usa
+### Contribua com packages que você usa {:#contribute-to-packages-you-use}
 
 Para retribuir aos packages dos quais você depende e potencialmente até ajudar seus próprios apps,
 encontre packages que você utiliza e contribua de volta para eles.
@@ -398,7 +398,7 @@ manter em mente o [Código de conduta][Code of conduct] do Flutter.
 [pub.dev site]: {{site.pub}}
 [Code of conduct]: {{site.repo.flutter}}/blob/main/CODE_OF_CONDUCT.md
 
-### Abra o código de funcionalidades reutilizáveis do seu app
+### Abra o código de funcionalidades reutilizáveis do seu app {:#open-source-reusable-functionality-from-your-app}
 
 Se você construiu um widget ou utilitário genérico interessante em seu app,
 considere extraí-lo em um package e publicá-lo no pub.dev.
@@ -413,7 +413,7 @@ siga o guia e melhores práticas em [Publicar packages][Publishing packages].
 [pub.dev site]: {{site.pub}}
 [Publishing packages]: {{site.dart-site}}/tools/pub/publishing
 
-### Adicione suporte Dart ou Flutter a SDKs populares
+### Adicione suporte Dart ou Flutter a SDKs populares {:#add-dart-or-flutter-support-to-popular-sdks}
 
 Crie ou contribua com packages que encapsulem SDKs nativos ou APIs web.
 
@@ -441,7 +441,7 @@ siga o guia e melhores práticas em [Publicar packages][Publishing packages].
 Ajude outros desenvolvedores a aprender Flutter e
 ter sucesso enquanto constroem seus próprios apps.
 
-### Ajude outros desenvolvedores
+### Ajude outros desenvolvedores {:#help-other-developers}
 
 Compartilhe seu conhecimento e experiência em Flutter
 para ajudar seus colegas desenvolvedores Flutter a ter sucesso.
@@ -458,7 +458,7 @@ Alguns locais comuns onde desenvolvedores Flutter procuram ajuda incluem:
 - [GitHub issues]({{site.repo.flutter}}/issues)
 - [Flutter Forum](https://forum.itsallwidgets.com/)
 
-### Organize eventos
+### Organize eventos {:#host-events}
 
 Conecte-se com outros entusiastas do Flutter e
 organize eventos locais, nacionais e até virtuais.
@@ -474,7 +474,7 @@ explore a [Rede de Meetups Flutter][Flutter Meetup Network].
 [Flutter community]: {{site.main-url}}/community
 [Flutter Meetup Network]: https://www.meetup.com/pro/flutter/
 
-### Poste sobre Flutter
+### Poste sobre Flutter {:#post-about-flutter}
 
 Compartilhe seus insights e projetos com a comunidade Flutter mais ampla.
 

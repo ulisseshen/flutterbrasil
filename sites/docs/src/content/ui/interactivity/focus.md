@@ -9,7 +9,7 @@ está implementando uma aplicação que usa um teclado físico, como a maioria
 das aplicações desktop e web, esta página é para você. Se seu app não será usado
 com um teclado físico, você pode pular isto.
 
-## Visão geral
+## Visão geral {:#overview}
 
 Flutter vem com um sistema de foco que direciona a entrada de teclado para uma
 parte específica de uma aplicação. Para fazer isso, os usuários "focam" a entrada
@@ -25,7 +25,7 @@ confusão entre desenvolvedores sobre como definir e usar objetos [`FocusNode`][
 Se isso descreve sua experiência, pule para as [melhores práticas para
 criar objetos `FocusNode`](#best-practices-for-creating-focusnode-objects).
 
-### Casos de uso de foco
+### Casos de uso de foco {:#focus-use-cases}
 
 Alguns exemplos de situações onde você pode precisar saber como usar o sistema de foco:
 
@@ -36,7 +36,7 @@ Alguns exemplos de situações onde você pode precisar saber como usar o sistem
 - [Definir grupos de controles que devem ser percorridos juntos](#focustraversalgroup-widget)
 - [Impedir que alguns controles em uma aplicação sejam focáveis](#controlling-what-gets-focus)
 
-## Glossário
+## Glossário {:#glossary}
 
 Abaixo estão termos, como Flutter os usa, para elementos do sistema de foco. As
 várias classes que implementam alguns desses conceitos são apresentadas abaixo.
@@ -60,7 +60,7 @@ várias classes que implementam alguns desses conceitos são apresentadas abaixo
   o usuário pressiona <kbd>Tab</kbd> para mover para o próximo controle focável ou
   campo.
 
-## FocusNode e FocusScopeNode
+## FocusNode e FocusScopeNode {:#focusnode-and-focusscopenode}
 
 Os objetos `FocusNode` e [`FocusScopeNode`][`FocusScopeNode`] implementam a
 mecânica do sistema de foco. Eles são objetos de longa vida (mais longos que widgets,
@@ -342,7 +342,7 @@ ou removido da cadeia de foco, o que significa que recebe notificações mesmo s
 for o foco primário. Se você só quer saber se recebeu o
 foco primário, verifique se `hasPrimaryFocus` é true no nó de foco.
 
-### Obtendo o FocusNode
+### Obtendo o FocusNode {:#obtaining-the-focusnode}
 
 Às vezes, é útil obter o nó de foco de um widget `Focus` para
 interrogar seus atributos.
@@ -423,7 +423,7 @@ o widget `FocusableActionDetector`:
 <YouTubeEmbed id="R84AGg0lKs8" title="FocusableActionDetector - Flutter widget of the week"></YouTubeEmbed>
 :::
 
-## Controlando o focus traversal
+## Controlando o focus traversal {:#controlling-focus-traversal}
 
 Uma vez que uma aplicação tem a capacidade de focar, a próxima coisa que muitos apps querem
 fazer é permitir que o usuário controle o foco usando o teclado ou outro dispositivo de entrada.
@@ -517,7 +517,7 @@ Para usar um `FocusTraversalPolicy`, você o dá a um
 será efetiva. As funções membro da classe raramente são chamadas diretamente:
 elas são destinadas a ser usadas pelo sistema de foco.
 
-## O focus manager
+## O focus manager {:#the-focus-manager}
 
 O [`FocusManager`][`FocusManager`] mantém o foco primário atual para o sistema. Ele
 só tem algumas partes de API que são úteis para usuários do sistema de foco. Uma

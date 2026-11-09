@@ -22,9 +22,9 @@ que é usada em múltiplas plataformas.
 Este documento pode ser usado como um guia de referência pulando entre
 as questões que são mais relevantes para suas necessidades.
 
-## Configuração do projeto
+## Configuração do projeto {:#project-setup}
 
-### Como o app inicia?
+### Como o app inicia? {:#how-does-the-app-start}
 
 Para cada plataforma no Xamarin.Forms,
 você chama o método `LoadApplication`,
@@ -83,7 +83,7 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-### Como criar uma página?
+### Como criar uma página? {:#how-do-you-create-a-page}
 
 Xamarin.Forms tem muitos tipos de páginas;
 `ContentPage` é o mais comum.
@@ -202,7 +202,7 @@ mas há muitos benefícios para esta abordagem.
 
 ## Views
 
-### Qual é o equivalente de uma Page ou Element no Flutter?
+### Qual é o equivalente de uma Page ou Element no Flutter? {:#what-is-the-equivalent-of-a-page-or-element-in-flutter}
 
 :::secondary
 Como é a programação no estilo react, ou _declarativa_, diferente do
@@ -230,7 +230,7 @@ para implementar qualquer linguagem de design.
 Por exemplo, no iOS, você pode usar os [widgets Cupertino][Cupertino widgets]
 para produzir uma interface que parece com a [linguagem de design iOS da Apple][Apple's iOS design language].
 
-### Como atualizar widgets?
+### Como atualizar widgets? {:#how-do-i-update-widgets}
 
 No Xamarin.Forms, cada `Page` ou `Element` é uma classe com estado,
 que tem propriedades e métodos.
@@ -345,7 +345,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
 }
 ```
 
-### Como faço o layout dos meus widgets? Qual é o equivalente de um arquivo XAML?
+### Como faço o layout dos meus widgets? Qual é o equivalente de um arquivo XAML? {:#how-do-i-lay-out-my-widgets-what-is-the-equivalent-of-an-xaml-file}
 
 No Xamarin.Forms, a maioria dos desenvolvedores escreve layouts em XAML,
 embora às vezes em C#.
@@ -375,7 +375,7 @@ Widget build(BuildContext context) {
 Você pode visualizar os layouts que o Flutter tem a oferecer no
 [catálogo de widgets][widget catalog].
 
-### Como adicionar ou remover um Element do meu layout?
+### Como adicionar ou remover um Element do meu layout? {:#how-do-i-add-or-remove-an-element-from-my-layout}
 
 No Xamarin.Forms, você tinha que remover ou adicionar um `Element` em código.
 Isso envolvia definir a propriedade `Content` ou chamar
@@ -438,7 +438,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
 }
 ```
 
-### Como animar um widget?
+### Como animar um widget? {:#how-do-i-animate-a-widget}
 
 No Xamarin.Forms, você cria animações simples usando ViewExtensions que
 incluem métodos como `FadeTo` e `TranslateTo`.
@@ -549,7 +549,7 @@ class _MyFadeTest extends State<MyFadeTest> with TickerProviderStateMixin {
 Para mais informações, veja [widgets de Animação e Movimento][Animation & Motion widgets],
 o [tutorial de Animações][Animations tutorial] e a [visão geral de Animações][Animations overview].
 
-### Como desenhar/pintar na tela?
+### Como desenhar/pintar na tela? {:#how-do-i-drawpaint-on-the-screen}
 
 Xamarin.Forms nunca teve uma maneira integrada de desenhar diretamente na tela.
 Muitos usariam SkiaSharp, se precisassem de uma imagem customizada desenhada.
@@ -638,13 +638,13 @@ class SignaturePainter extends CustomPainter {
 }
 ```
 
-### Onde está a opacidade do widget?
+### Onde está a opacidade do widget? {:#where-is-the-widgets-opacity}
 
 No Xamarin.Forms, todos os `VisualElement`s têm uma Opacity.
 No Flutter, você precisa envolver um widget em um
 [widget `Opacity`][`Opacity` widget] para conseguir isso.
 
-### Como construir widgets customizados?
+### Como construir widgets customizados? {:#how-do-i-build-custom-widgets}
 
 No Xamarin.Forms, você normalmente faz subclasse de `VisualElement`,
 ou usa um `VisualElement` pré-existente, para sobrescrever e
@@ -685,9 +685,9 @@ Widget build(BuildContext context) {
 }
 ```
 
-## Navegação
+## Navegação {:#navigation}
 
-### Como navegar entre páginas?
+### Como navegar entre páginas? {:#how-do-i-navigate-between-pages}
 
 No Xamarin.Forms, a classe `NavigationPage`
 fornece uma experiência de navegação hierárquica
@@ -759,7 +759,7 @@ localização, desempilhe a pilha com o resultado:
 Navigator.of(context).pop({'lat': 43.821757, 'long': -79.226392});
 ```
 
-### Como navegar para outro app?
+### Como navegar para outro app? {:#how-do-i-navigate-to-another-app}
 
 No Xamarin.Forms, para enviar o usuário para outra aplicação,
 você usa um esquema URI específico, usando `Device.OpenUrl("mailto://")`.
@@ -770,7 +770,7 @@ como [`url_launcher`][], disponível com muitos outros pacotes em [pub.dev][].
 
 ## Async UI
 
-### Qual é o equivalente de Device.BeginOnMainThread() no Flutter?
+### Qual é o equivalente de Device.BeginOnMainThread() no Flutter? {:#what-is-the-equivalent-of-device-beginonmainthread-in-flutter}
 
 Dart tem um modelo de execução single-threaded,
 com suporte para `Isolate`s (uma forma de executar códigos Dart em outra thread),
@@ -881,7 +881,7 @@ Consulte a próxima seção para mais informações
 sobre como fazer trabalho em segundo plano,
 e como Flutter difere do Android.
 
-### Como mover trabalho para uma thread de segundo plano?
+### Como mover trabalho para uma thread de segundo plano? {:#how-do-you-move-work-to-a-background-thread}
 
 Como Flutter é single threaded e executa um event loop,
 você não precisa se preocupar com gerenciamento de threads
@@ -1095,7 +1095,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
 }
 ```
 
-### Como fazer requisições de rede?
+### Como fazer requisições de rede? {:#how-do-i-make-network-requests}
 
 No Xamarin.Forms você usaria `HttpClient`.
 Fazer uma chamada de rede no Flutter é fácil
@@ -1125,7 +1125,7 @@ Future<void> loadData() async {
 }
 ```
 
-### Como mostrar o progresso para uma tarefa de longa execução?
+### Como mostrar o progresso para uma tarefa de longa execução? {:#how-do-i-show-the-progress-for-a-long-running-task}
 
 No Xamarin.Forms você normalmente criaria um indicador de carregamento,
 diretamente em XAML ou através de um plugin de terceiros como AcrDialogs.
@@ -1225,9 +1225,9 @@ class _SampleAppPageState extends State<SampleAppPage> {
 }
 ```
 
-## Estrutura do projeto e recursos
+## Estrutura do projeto e recursos {:#project-structure-resources}
 
-### Onde armazeno meus arquivos de imagem?
+### Onde armazeno meus arquivos de imagem? {:#where-do-i-store-my-image-files}
 
 Xamarin.Forms não tem uma maneira independente de plataforma de armazenar imagens,
 você tinha que colocar imagens na pasta `xcasset` do iOS,
@@ -1303,7 +1303,7 @@ Widget build(BuildContext context) {
 
 Informações mais detalhadas podem ser encontradas em [Adicionando assets e imagens][Adding assets and images].
 
-### Onde armazeno strings? Como lidar com localização?
+### Onde armazeno strings? Como lidar com localização? {:#where-do-i-store-strings-how-do-i-handle-localization}
 
 Diferente do .NET que tem arquivos `resx`,
 Flutter atualmente não tem um sistema dedicado para lidar com strings.
@@ -1397,7 +1397,7 @@ Para mais detalhes sobre internacionalização e localização no Flutter,
 veja o [guia de internacionalização][internationalization guide], que tem código de exemplo
 com e sem o pacote `intl`.
 
-### Onde está meu arquivo de projeto?
+### Onde está meu arquivo de projeto? {:#where-is-my-project-file}
 
 No Xamarin.Forms você terá um arquivo `csproj`.
 O equivalente mais próximo no Flutter é pubspec.yaml,
@@ -1405,7 +1405,7 @@ que contém dependências de pacotes e vários detalhes do projeto.
 Similar ao .NET Standard,
 arquivos dentro do mesmo diretório são considerados parte do projeto.
 
-### Qual é o equivalente do Nuget? Como adiciono dependências?
+### Qual é o equivalente do Nuget? Como adiciono dependências? {:#what-is-the-equivalent-of-nuget-how-do-i-add-dependencies}
 
 No ecossistema .NET, projetos nativos Xamarin e projetos Xamarin.Forms
 tinham acesso ao Nuget e ao sistema de gerenciamento de pacotes integrado.
@@ -1422,9 +1422,9 @@ Em geral, use `pubspec.yaml` para declarar
 dependências externas para usar no Flutter.
 Um bom lugar para encontrar pacotes Flutter é em [pub.dev][].
 
-## Ciclo de vida da aplicação
+## Ciclo de vida da aplicação {:#application-lifecycle}
 
-### Como escuto eventos do ciclo de vida da aplicação?
+### Como escuto eventos do ciclo de vida da aplicação? {:#how-do-i-listen-to-application-lifecycle-events}
 
 No Xamarin.Forms, você tem uma `Application`
 que contém `OnStart`, `OnResume` e `OnSleep`.
@@ -1456,7 +1456,7 @@ veja a [documentação `AppLifecycleStatus`][`AppLifecycleStatus` documentation]
 
 ## Layouts
 
-### Qual é o equivalente de um StackLayout?
+### Qual é o equivalente de um StackLayout? {:#what-is-the-equivalent-of-a-stacklayout}
 
 No Xamarin.Forms você pode criar um `StackLayout`
 com uma `Orientation` de horizontal ou vertical.
@@ -1500,7 +1500,7 @@ Widget build(BuildContext context) {
   );
 ```
 
-### Qual é o equivalente de um Grid?
+### Qual é o equivalente de um Grid? {:#what-is-the-equivalent-of-a-grid}
 
 O equivalente mais próximo de um `Grid` seria um `GridView`.
 Isso é muito mais poderoso do que você está acostumado no Xamarin.Forms.
@@ -1550,7 +1550,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-### Qual é o equivalente de um ScrollView?
+### Qual é o equivalente de um ScrollView? {:#what-is-the-equivalent-of-a-scrollview}
 
 No Xamarin.Forms, um `ScrollView` envolve um `VisualElement`,
 e se o conteúdo for maior que a tela do dispositivo, ele rola.
@@ -1587,7 +1587,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-### Como lidar com transições de paisagem no Flutter?
+### Como lidar com transições de paisagem no Flutter? {:#how-do-i-handle-landscape-transitions-in-flutter}
 
 As transições de paisagem podem ser manipuladas automaticamente definindo a
 propriedade `configChanges` no AndroidManifest.xml:
@@ -1596,9 +1596,9 @@ propriedade `configChanges` no AndroidManifest.xml:
 <activity android:configChanges="orientation|screenSize" />
 ```
 
-## Detecção de gestos e manipulação de eventos de toque
+## Detecção de gestos e manipulação de eventos de toque {:#gesture-detection-and-touch-event-handling}
 
-### Como adiciono GestureRecognizers a um widget no Flutter?
+### Como adiciono GestureRecognizers a um widget no Flutter? {:#how-do-i-add-gesturerecognizers-to-a-widget-in-flutter}
 
 No Xamarin.Forms, `Element`s podem conter um evento de clique ao qual você pode anexar.
 Muitos elementos também contêm um `Command` que está vinculado a este evento.
@@ -1647,7 +1647,7 @@ No Flutter existem duas maneiras muito similares:
    }
    ```
 
-### Como lidar com outros gestos em widgets?
+### Como lidar com outros gestos em widgets? {:#how-do-i-handle-other-gestures-on-widgets}
 
 No Xamarin.Forms você adicionaria um `GestureRecognizer` à `View`.
 Você normalmente seria limitado a `TapGestureRecognizer`,
@@ -1767,9 +1767,9 @@ class _RotatingFlutterDetectorState extends State<RotatingFlutterDetector>
 }
 ```
 
-## Listviews e adapters
+## Listviews e adapters {:#listviews-and-adapters}
 
-### Qual é o equivalente a um ListView no Flutter?
+### Qual é o equivalente a um ListView no Flutter? {:#what-is-the-equivalent-to-a-listview-in-flutter}
 
 O equivalente a um `ListView` no Flutter é … um `ListView`!
 
@@ -1823,7 +1823,7 @@ class SampleAppPage extends StatelessWidget {
 }
 ```
 
-### Como saber qual item da lista foi clicado?
+### Como saber qual item da lista foi clicado? {:#how-do-i-know-which-list-item-has-been-clicked}
 
 No Xamarin.Forms, o ListView tem um método `ItemTapped`
 para descobrir qual item foi clicado.
@@ -1886,7 +1886,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
 }
 ```
 
-### Como atualizo um ListView dinamicamente?
+### Como atualizo um ListView dinamicamente? {:#how-do-i-update-a-listview-dynamically}
 
 No Xamarin.Forms, se você vinculou a
 propriedade `ItemsSource` a uma `ObservableCollection`,
@@ -2062,9 +2062,9 @@ não recria mais a lista, mas em vez disso adiciona a ela.
 Para mais informações, veja
 o codelab [Seu primeiro app Flutter][first_codelab].
 
-## Trabalhando com texto
+## Trabalhando com texto {:#working-with-text}
 
-### Como definir fontes customizadas nos meus widgets de texto?
+### Como definir fontes customizadas nos meus widgets de texto? {:#how-do-i-set-custom-fonts-on-my-text-widgets}
 
 No Xamarin.Forms, você teria que adicionar uma fonte customizada em cada projeto nativo.
 Então, em seu `Element` você atribuiria este nome de fonte
@@ -2100,7 +2100,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-### Como estilizar meus widgets de texto?
+### Como estilizar meus widgets de texto? {:#how-do-i-style-my-text-widgets}
 
 Junto com fontes, você pode customizar outros elementos de estilo em um widget `Text`.
 O parâmetro style de um widget `Text` recebe um objeto `TextStyle`,
@@ -2121,9 +2121,9 @@ onde você pode customizar muitos parâmetros, como:
 * `textBaseline`
 * `wordSpacing`
 
-## Entrada de formulário
+## Entrada de formulário {:#form-input}
 
-### Como recupero a entrada do usuário?
+### Como recupero a entrada do usuário? {:#how-do-i-retrieve-user-input}
 
 `element`s do Xamarin.Forms permitem que você consulte diretamente o `element`
 para determinar o estado de suas propriedades,
@@ -2192,7 +2192,7 @@ class _MyFormState extends State<MyForm> {
 Você pode encontrar mais informações e a listagem de código completa em
 [Recuperar o valor de um campo de texto][Retrieve the value of a text field].
 
-### Qual é o equivalente de um Placeholder em uma Entry?
+### Qual é o equivalente de um Placeholder em uma Entry? {:#what-is-the-equivalent-of-a-placeholder-on-an-entry}
 
 No Xamarin.Forms, alguns `Elements` suportam uma propriedade `Placeholder`
 à qual você pode atribuir um valor. Por exemplo:
@@ -2210,7 +2210,7 @@ ao parâmetro construtor `decoration` para o widget de texto.
 TextField(decoration: InputDecoration(hintText: 'This is a hint')),
 ```
 
-### Como mostro erros de validação?
+### Como mostro erros de validação? {:#how-do-i-show-validation-errors}
 
 Com Xamarin.Forms, se você desejasse fornecer uma dica visual de um
 erro de validação, você precisaria criar novas propriedades e
@@ -2290,11 +2290,11 @@ class _SampleAppPageState extends State<SampleAppPage> {
 }
 ```
 
-## Plugins Flutter
+## Plugins Flutter {:#flutter-plugins}
 
-## Interagindo com hardware, serviços de terceiros e a plataforma
+## Interagindo com hardware, serviços de terceiros e a plataforma {:#interacting-with-hardware-third-party-services-and-the-platform}
 
-### Como interajo com a plataforma e com código nativo da plataforma?
+### Como interajo com a plataforma e com código nativo da plataforma? {:#how-do-i-interact-with-the-platform-and-with-platform-native-code}
 
 Flutter não executa código diretamente na plataforma subjacente;
 em vez disso, o código Dart que compõe um app Flutter é executado nativamente
@@ -2331,20 +2331,20 @@ ou Android, ou ambos.
 Se você não conseguir encontrar um plugin em pub.dev que atenda às suas necessidades,
 você pode [escrever o seu próprio][write your own] e [publicá-lo em pub.dev][publish it on pub.dev].
 
-### Como acesso o sensor GPS?
+### Como acesso o sensor GPS? {:#how-do-i-access-the-gps-sensor}
 
 Use o plugin da comunidade [`geolocator`][].
 
-### Como acesso a câmera?
+### Como acesso a câmera? {:#how-do-i-access-the-camera}
 
 O plugin [`camera`][] é popular para acessar a câmera.
 
-### Como faço login com Facebook?
+### Como faço login com Facebook? {:#how-do-i-log-in-with-facebook}
 
 Para fazer login com Facebook, use o
 plugin da comunidade [`flutter_facebook_auth`][].
 
-### Como uso recursos do Firebase?
+### Como uso recursos do Firebase? {:#how-do-i-use-firebase-features}
 
 A maioria das funções do Firebase são cobertas por [plugins de primeira parte][first party plugins].
 Estes plugins são integrações de primeira parte,
@@ -2363,7 +2363,7 @@ mantidas pelas equipes do Flutter e do Firebase:
 Você também pode encontrar alguns plugins Firebase de terceiros em pub.dev
 que cobrem áreas não cobertas diretamente pelos plugins de primeira parte.
 
-### Como construo minhas próprias integrações nativas customizadas?
+### Como construo minhas próprias integrações nativas customizadas? {:#how-do-i-build-my-own-custom-native-integrations}
 
 Se houver funcionalidade específica de plataforma que o Flutter
 ou seus plugins da comunidade estão faltando,
@@ -2376,9 +2376,9 @@ você dispara uma mensagem e deixa o receptor processar e emitir um resultado
 de volta para você. Neste caso, o receptor é código executando no lado nativo
 no Android ou iOS.
 
-## Themes (Estilos)
+## Themes (Estilos) {:#themes-styles}
 
-### Como eu tematizo meu app?
+### Como eu tematizo meu app? {:#how-do-i-theme-my-app}
 
 Flutter vem com uma bela implementação integrada de Material Design,
 que lida com muitas das necessidades de estilo e tematização
@@ -2429,9 +2429,9 @@ class SampleApp extends StatelessWidget {
 }
 ```
 
-## Bancos de dados e armazenamento local
+## Bancos de dados e armazenamento local {:#databases-and-local-storage}
 
-### Como acesso shared preferences ou UserDefaults?
+### Como acesso shared preferences ou UserDefaults? {:#how-do-i-access-shared-preferences-or-userdefaults}
 
 Desenvolvedores Xamarin.Forms provavelmente estarão familiarizados com o
 plugin `Xam.Plugins.Settings`.
@@ -2441,7 +2441,7 @@ plugin [`shared_preferences`][]. Este plugin envolve a
 funcionalidade de ambos `UserDefaults` e o
 equivalente do Android, `SharedPreferences`.
 
-### Como acesso SQLite no Flutter?
+### Como acesso SQLite no Flutter? {:#how-do-i-access-sqlite-in-flutter}
 
 No Xamarin.Forms a maioria das aplicações usaria o plugin `sqlite-net-pcl`
 para acessar bancos de dados SQLite.
@@ -2450,9 +2450,9 @@ No Flutter, no macOS, Android e iOS,
 acesse esta funcionalidade usando o
 plugin [`sqflite`][].
 
-## Depuração
+## Depuração {:#debugging}
 
-### Quais ferramentas posso usar para depurar meu app no Flutter?
+### Quais ferramentas posso usar para depurar meu app no Flutter? {:#what-tools-can-i-use-to-debug-my-app-in-flutter}
 
 Use o conjunto [DevTools][] para depurar apps Flutter ou Dart.
 
@@ -2462,9 +2462,9 @@ observando linhas de código executadas,
 depurando vazamentos de memória e fragmentação de memória.
 Para mais informações, confira a documentação [DevTools][].
 
-## Notificações
+## Notificações {:#notifications}
 
-### Como configuro push notifications?
+### Como configuro push notifications? {:#how-do-i-set-up-push-notifications}
 
 No Android, você usa Firebase Cloud Messaging para configurar
 push notifications para seu app.

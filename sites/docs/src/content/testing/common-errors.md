@@ -6,7 +6,7 @@ description: Como reconhecer e resolver erros comuns do framework Flutter.
 
 <?code-excerpt path-base="testing/common_errors"?>
 
-## Introdução
+## Introdução {:#introduction}
 
 Esta página explica vários erros frequentemente encontrados no
 framework Flutter (incluindo erros de layout) e dá sugestões
@@ -19,7 +19,7 @@ tornar esta página mais útil para você e a comunidade Flutter.
 [open an issue]: {{site.repo.this}}/issues/new/choose
 [submit a pull request]: {{site.repo.this}}/pulls
 
-## Uma tela vermelha ou cinza sólida ao executar seu app
+## Uma tela vermelha ou cinza sólida ao executar seu app {:#a-solid-red-or-grey-screen-when-running-your-app}
 
 Tipicamente chamada de "tela vermelha (ou cinza) da morte",
 esta é às vezes como o Flutter permite
@@ -505,7 +505,7 @@ confira o vídeo a seguir sobre
 
 [controller-video]: {{site.api}}/flutter/widgets/PrimaryScrollController-class.html
 
-## Referências
+## Referências {:#references}
 
 Para aprender mais sobre como depurar erros,
 especialmente erros de layout no Flutter,

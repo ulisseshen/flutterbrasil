@@ -8,7 +8,7 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Anteriormente, o widget Form atuava essencialmente como um wrapper direto
 do seu filho. Esse design permitia que um Form contendo um filho sliver
@@ -20,19 +20,19 @@ na estrutura interna do widget Form. Essa mudança altera
 o comportamento de renderização, o que significa que Form não pode mais
 funcionar diretamente como um sliver.
 
-## Contexto
+## Contexto {:#context}
 
 Esta mudança faz parte de um esforço contínuo para melhorar a
 acessibilidade e a compreensão semântica dos widgets do Flutter.
 Ao incorporar um widget Semantics diretamente em Form, o framework
 pode fornecer informações melhores aos serviços de acessibilidade.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 A mudança principal é a integração de um widget Semantics
 ao método build do widget Form.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Se o seu app não usa atualmente o widget Form diretamente
 como sliver dentro de uma lista rolável
@@ -64,12 +64,12 @@ sliver: SliverToBoxAdapter(
 )
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Incluído na versão: 3.35.0-pre<br>
 Na versão estável: 3.35
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

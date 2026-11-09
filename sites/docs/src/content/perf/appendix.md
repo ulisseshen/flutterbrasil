@@ -4,7 +4,7 @@ title: Mais reflexões sobre performance
 description: O que é performance, e por que performance é importante
 ---
 
-## O que é performance?
+## O que é performance? {:#what-is-performance}
 
 Performance é um conjunto de propriedades quantificáveis de um executor.
 
@@ -43,7 +43,7 @@ são fáceis de ignorar. Performance de documentação é um exemplo disso. O ex
 poderia ser uma documentação de API do SDK, e uma métrica poderia ser: a porcentagem de leitores
 que acham a documentação da API útil.
 
-## Por que performance é importante?
+## Por que performance é importante? {:#why-is-performance-important}
 
 Responder esta pergunta não é apenas crucial para validar o trabalho em
 performance, mas também para guiar o trabalho de performance de forma a ser mais
@@ -61,7 +61,7 @@ Não que questões ou descrições não-performance, ou não-mensuráveis não s
 importantes. Elas são destinadas a destacar os cenários onde performance pode ser
 mais útil.
 
-### 1. Um relatório de performance é fácil de consumir
+### 1. Um relatório de performance é fácil de consumir {:#1-a-performance-report-is-easy-to-consume}
 
 Métricas de performance são números. Ler um número é muito mais fácil do que ler uma
 passagem. Por exemplo, provavelmente leva a um engenheiro 1 segundo para consumir a
@@ -78,7 +78,7 @@ Por outro lado, ter _n_ textos de 500 palavras quase garante um
 custo de _n_ vezes para consumir esses textos. Seria uma tarefa assustadora analisar
 milhares de descrições históricas, cada uma tendo 500 palavras.
 
-### 2. Performance tem pouca ambiguidade
+### 2. Performance tem pouca ambiguidade {:#2-performance-has-little-ambiguity}
 
 Outra vantagem de ter performance como um conjunto de números é sua não ambiguidade.
 Quando você quer que uma animação tenha uma performance de 20 ms por frame ou
@@ -98,7 +98,7 @@ pode fazer múltiplas medições para estimar a distribuição de uma variável
 aleatória, ou você pode tirar a média de muitas medições para eliminar o
 ruído pela [lei dos grandes números][1].
 
-### 3. Performance é comparável e conversível
+### 3. Performance é comparável e conversível {:#3-performance-is-comparable-and-convertible}
 
 Números de performance não apenas têm significados não ambíguos, mas também têm
 comparações não ambíguas. Por exemplo, não há dúvida de que 5 é maior que 4.
@@ -118,7 +118,7 @@ medição sem nenhum ruído ou ambiguidade adicionados. A quantidade convertida 
 então ser usada para comparações e consumo adicionais. Tais conversões são
 quase impossíveis se você está lidando com linguagens naturais.
 
-### 4. Performance é justa
+### 4. Performance é justa {:#4-performance-is-fair}
 
 Se questões dependem de palavras verbosas para serem descobertas, então uma vantagem injusta é
 dada a pessoas que são mais verbosas (mais dispostas a conversar ou escrever) ou aquelas
@@ -129,7 +129,7 @@ Ao ter as mesmas métricas para detectar problemas não importa quão longe ou q
 silenciosos os usuários estão, podemos tratar todas as questões de forma justa. Isso, por sua vez,
 nos permite focar nas questões certas que têm maior impacto.
 
-### Como tornar performance útil
+### Como tornar performance útil {:#how-to-make-performance-useful}
 
 O seguinte resume os 4 pontos discutidos aqui, de uma perspectiva ligeiramente diferente:
 1. Torne métricas de performance fáceis de consumir. Não sobrecarregue os leitores com

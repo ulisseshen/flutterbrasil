@@ -13,7 +13,7 @@ showBreadcrumbs: true
 Este documento é um trabalho em andamento.
 :::
 
-## Guias de contribuição
+## Guias de contribuição {:#contribution-guides}
 
 - [Writing](/contribute/docs/writing)
 - [Markdown](/contribute/docs/markdown)
@@ -25,7 +25,7 @@ Este documento é um trabalho em andamento.
 - [Releases](/contribute/docs/releases)
 - [Command-line tool](/contribute/docs/cli)
 
-## Estrutura do repositório
+## Estrutura do repositório {:#repository-layout}
 
 - `.github/`
 

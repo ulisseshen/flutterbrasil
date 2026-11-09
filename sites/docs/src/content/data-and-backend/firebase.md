@@ -27,7 +27,7 @@ separado no pub.dev, para que você possa adicionar apenas os serviços de que s
 Para uma lista completa de pacotes suportados e disponibilidade por plataforma,
 confira [Plugins Flutter do Firebase disponíveis][Firebase plugins].
 
-## Conectar um app Flutter ao Firebase
+## Conectar um app Flutter ao Firebase {:#connect-a-flutter-app-to-firebase}
 
 Para registrar seu app Flutter em um projeto Firebase e gerar
 arquivos de configuração de plataforma, use a Firebase CLI e a FlutterFire CLI:
@@ -74,7 +74,7 @@ arquivos de configuração de plataforma, use a Firebase CLI e a FlutterFire CLI
 Para instruções detalhadas de configuração por plataforma, consulte
 [Adicionar o Firebase ao seu app Flutter][started].
 
-## Autenticar usuários com Firebase Authentication
+## Autenticar usuários com Firebase Authentication {:#authenticate-users-with-firebase-authentication}
 
 O [Firebase Authentication][firebase-auth] suporta login com e-mail
 e senha, números de telefone, sessões anônimas e provedores de
@@ -126,7 +126,7 @@ Para saber mais, confira
 [Começar a usar o Firebase Authentication no Flutter][firebase-auth] ou
 o [codelab de autenticação com FirebaseUI][auth-codelab].
 
-## Armazenar e sincronizar dados NoSQL com Cloud Firestore
+## Armazenar e sincronizar dados NoSQL com Cloud Firestore {:#store-and-sync-nosql-data-with-cloud-firestore}
 
 O [Cloud Firestore][] é a opção padrão recomendada quando seu app precisa de um
 banco de dados NoSQL escalável que sincroniza dados entre dispositivos em tempo real e
@@ -206,7 +206,7 @@ gravar documentos em cache sem conexão de rede e sincronizar
 automaticamente as mudanças quando a conectividade voltar. Para começar, siga o
 [guia de início rápido do Cloud Firestore][firestore-quickstart].
 
-## Consultar dados SQL relacionais com Firebase SQL Connect
+## Consultar dados SQL relacionais com Firebase SQL Connect {:#query-relational-sql-data-with-firebase-sql-connect}
 
 Se o seu app precisa de um banco de dados relacional, o [Firebase SQL Connect][]
 (antigo Firebase Data Connect) fornece um banco de dados PostgreSQL
@@ -224,7 +224,7 @@ Para comparar o SQL Connect com o Cloud Firestore e o SQLite local, confira
 backend SQL Connect e chamá-lo a partir do Flutter, siga o guia para
 [usar SDKs Flutter gerados][sql-connect-flutter].
 
-## Compartilhar código Dart com um backend Firebase serverless
+## Compartilhar código Dart com um backend Firebase serverless {:#share-dart-code-with-a-serverless-firebase-backend}
 
 Quando seu app precisa de lógica personalizada no servidor, gatilhos em segundo plano ou
 acesso administrativo aos serviços do Firebase, você pode escrever
@@ -244,12 +244,12 @@ e regras de validação entre cliente e servidor. Para aprender como
 estruturar um workspace com pacote compartilhado, confira
 [Compartilhando código entre apps Flutter e backends Dart][dart-server].
 
-## Recursos Flutter e Firebase
+## Recursos Flutter e Firebase {:#flutter-and-firebase-resources}
 
 Para saber mais sobre como construir apps Flutter com Firebase, confira os
 seguintes recursos oficiais e da comunidade.
 
-### Documentação e codelabs
+### Documentação e codelabs {:#documentation-and-codelabs}
 
 * [Adicionar o Firebase ao seu app Flutter][started]
 * [Escolher um banco de dados para seu app Flutter][choose-db]
@@ -258,7 +258,7 @@ seguintes recursos oficiais e da comunidade.
 * [Documentação do Firebase AI Logic][firebase-ai]
 * [Use Firebase para hospedar seu app Flutter na web][article]
 
-### Vídeos
+### Vídeos {:#videos}
 
 * [Vídeo workshop Conheça o Firebase para Flutter][workshop]
 * [Usando Firestore como backend para seu app Flutter][video]

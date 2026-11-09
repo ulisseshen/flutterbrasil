@@ -23,7 +23,7 @@ desenvolvedor deve fazer essa ponte manualmente com o [FlutterEngine]({{site.api
 Como você escolhe alimentar os eventos das activities da sua aplicação para o FlutterView
 será específico da sua aplicação.
 
-## Um exemplo
+## Um exemplo {:#a-sample}
 
 <img src='/assets/images/docs/development/add-to-app/android/add-flutter-view/add-view-sample.webp' alt="Add Flutter View sample video">
 
@@ -34,7 +34,7 @@ Um projeto de exemplo está em [https://github.com/flutter/samples/tree/main/add
 para documentar uma integração simples de FlutterView onde FlutterViews são usadas
 para algumas das células em uma lista RecycleView de cards como visto no gif acima.
 
-## Abordagem geral
+## Abordagem geral {:#general-approach}
 
 A essência geral da integração no nível FlutterView é que você
 deve recriar as várias interações entre sua Activity, o
@@ -62,7 +62,7 @@ entre uma `Activity`, um
 [`FlutterView`]({{site.api}}/javadoc/io/flutter/embedding/android/FlutterView.html)
 e um [FlutterEngine]({{site.api}}/javadoc/io/flutter/embedding/engine/FlutterEngine.html).
 
-### APIs para implementar
+### APIs para implementar {:#apis-to-implement}
 
 A implementação mínima absoluta necessária para o Flutter
 desenhar qualquer coisa é:
@@ -91,7 +91,7 @@ ou no
 para garantir o funcionamento correto de outros recursos como áreas de transferência,
 overlay da UI do sistema, plugins, e assim por diante.
 
-## Views dimensionadas pelo conteúdo
+## Views dimensionadas pelo conteúdo {:#content-sized-views}
 
 Normalmente, uma [`FlutterView`]({{site.api}}/javadoc/io/flutter/embedding/android/FlutterView.html)
 precisa de dimensões fixas, seja por meio de suas próprias dimensões ou correspondendo às
@@ -110,7 +110,7 @@ ou a largura, uma `FlutterView` pode se dimensionar, como mostrado no [projeto d
   android:value="true" />
 ```
 
-### Restrições
+### Restrições {:#restrictions}
 
 Como as Flutter views dimensionadas pelo conteúdo exigem que seu app Flutter seja capaz de se dimensionar,
 alguns widgets não são suportados.

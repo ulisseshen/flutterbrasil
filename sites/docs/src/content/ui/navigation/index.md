@@ -14,7 +14,7 @@ o aplicativo está em execução na web.
 Para configurar seu aplicativo Android ou iOS para lidar com deep links, consulte
 [Deep linking][].
 
-## Usando o Navigator
+## Usando o Navigator {:#using-the-navigator}
 
 O widget `Navigator` exibe telas como uma pilha usando as animações de transição
 corretas para a plataforma de destino. Para navegar para uma nova tela, acesse o
@@ -40,7 +40,7 @@ transição para Material Design. Para mais exemplos de como usar o `Navigator`,
 siga as [navigation recipes][] do Flutter Cookbook ou visite a
 [documentação da API do Navigator][`Navigator`].
 
-## Usando rotas nomeadas
+## Usando rotas nomeadas {:#using-named-routes}
 
 :::note
 Não recomendamos o uso de rotas nomeadas para a maioria das aplicações.
@@ -78,7 +78,7 @@ usando rotas nomeadas. Por essas razões, não recomendamos o uso de rotas nomea
 na maioria das aplicações. Em vez disso, use um pacote de roteamento como [go_router][] ou
 use `Navigator` com [`MaterialPageRoute`][].
 
-## Usando o Router
+## Usando o Router {:#using-the-router}
 
 Aplicações Flutter com requisitos avançados de navegação e roteamento (como um
 aplicativo web que usa links diretos para cada tela, ou um aplicativo com múltiplos
@@ -109,7 +109,7 @@ objetos `Page` usando o parâmetro `Navigator.pages`. Para mais detalhes, consul
 a documentação da API do `Router`.
 :::
 
-## Usando Router e Navigator juntos
+## Usando Router e Navigator juntos {:#using-router-and-navigator-together}
 
 O `Router` e o `Navigator` são projetados para trabalhar juntos. Você pode navegar
 usando a API do `Router` através de um pacote de roteamento declarativo, como
@@ -140,7 +140,7 @@ confira o [guia de migração do predictive back do Android][Android predictive 
 
 [Android predictive back migration guide]: /release/breaking-changes/android-predictive-back
 
-## Suporte para web
+## Suporte para web {:#web-support}
 
 Aplicações usando a classe `Router` se integram com a History API do navegador para
 fornecer uma experiência consistente ao usar os botões de voltar e avançar do
@@ -152,7 +152,7 @@ que o usuário é levado ao local visitado anteriormente que foi mostrado usando
 pressiona o botão **voltar** do navegador, a página anterior é empurrada de volta
 para a pilha.
 
-## Mais informações
+## Mais informações {:#more-information}
 
 Para mais informações sobre navegação e roteamento, confira os seguintes
 recursos:

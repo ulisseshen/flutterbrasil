@@ -6,7 +6,7 @@ skipTemplateRendering: true
 ia-translate: true
 ---
 
-## PRs fechados nesta versão de flutter/flutter
+## PRs fechados nesta versão de flutter/flutter {:#prs-closed-in-this-release-of-flutterflutter}
 
 De Sun Aug 19 17:37:00 2019 -0700 até Mon Nov 25 12:05:00 2019 -0800
 
@@ -2109,7 +2109,7 @@ De Sun Aug 19 17:37:00 2019 -0700 até Mon Nov 25 12:05:00 2019 -0800
 
 [45455](https://github.com/flutter/flutter/pull/45455) Disable tests that fail on non-master branches (cla: yes, team)
 
-## PRs fechados nesta versão de flutter/engine
+## PRs fechados nesta versão de flutter/engine {:#prs-closed-in-this-release-of-flutterengine}
 
 De Sun Aug 19 17:37:00 2019 -0700 até Mon Nov 25 12:05:00 2019 -0800
 
@@ -3438,7 +3438,7 @@ De Sun Aug 19 17:37:00 2019 -0700 até Mon Nov 25 12:05:00 2019 -0800
 
 [13990](https://github.com/flutter/engine/pull/13990) Setup a Metal test surface and add a new unit-test target that tests the testing utilities. (cla: yes)
 
-## PRs fechados nesta versão de flutter/plugins
+## PRs fechados nesta versão de flutter/plugins {:#prs-closed-in-this-release-of-flutterplugins}
 
 De Sun Aug 19 17:37:00 2019 -0700 até Mon Nov 25 12:05:00 2019 -0800
 

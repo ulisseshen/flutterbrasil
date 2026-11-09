@@ -1,6 +1,6 @@
 <!-- ia-translate: true -->
 
-#### Crie a versão macOS do app Flutter no Terminal
+#### Crie a versão macOS do app Flutter no Terminal {:#build-the-macos-version-of-the-flutter-app-in-the-terminal}
 
 Para gerar as dependências de plataforma macOS necessárias,
 execute o comando `flutter build`.
@@ -18,11 +18,11 @@ Building macOS application...
 
 #### Comece a depuração pelo VS Code primeiro {:#vscode-macos}
 
-##### Inicie o depurador no VS Code
+##### Inicie o depurador no VS Code {:#start-the-debugger-in-vs-code}
 
 {% render "docs/debug/debug-flow-vscode-as-start.md" %}
 
-##### Anexe ao processo Flutter no Xcode
+##### Anexe ao processo Flutter no Xcode {:#attach-to-the-flutter-process-in-xcode}
 
 1. Para anexar ao app Flutter, vá em
    **Debug** <span aria-label="and then">></span>
@@ -37,7 +37,7 @@ Building macOS application...
 
 #### Comece a depuração pelo Xcode primeiro {:#xcode-macos}
 
-##### Inicie o depurador no Xcode
+##### Inicie o depurador no Xcode {:#start-the-debugger-in-xcode}
 
 1. Abra `macos/Runner.xcworkspace` do diretório do seu app Flutter.
 
@@ -63,7 +63,7 @@ Building macOS application...
 
 1. Copie a URI do serviço Dart VM.
 
-##### Anexe à Dart VM no VS Code
+##### Anexe à Dart VM no VS Code {:#attach-to-the-dart-vm-in-vs-code}
 
 1. Para abrir a paleta de comandos, vá em **View** > **Command Palette...**
 

@@ -7,13 +7,13 @@ description: >
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 A API do `SnackBar` dentro do `Scaffold` agora é gerenciada pelo
 `ScaffoldMessenger`, sendo que um está
 disponível por padrão dentro do contexto de um `MaterialApp`.
 
-## Contexto
+## Contexto {:#context}
 
 Antes dessa mudança, `SnackBar`s eram exibidos ao chamar
 o `Scaffold` dentro do `BuildContext` atual.
@@ -33,7 +33,7 @@ Por padrão, um `ScaffoldMessenger` raiz está incluído no `MaterialApp`,
 mas você pode criar seu próprio escopo controlado para o `ScaffoldMessenger`
 para controlar ainda mais _quais_ `Scaffold`s recebem seus `SnackBar`s.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 A abordagem anterior chamava o `Scaffold` para exibir um `SnackBar`.
 
@@ -110,7 +110,7 @@ Typically, the ScaffoldMessenger widget is introduced by the MaterialApp
 at the top of your application widget tree.
 ```
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Código antes da migração:
 
@@ -173,12 +173,12 @@ rootScaffoldMessengerKey.currentState.hideCurrentSnackBar(mySnackBar);
 rootScaffoldMessengerKey.currentState.removeCurrentSnackBar(mySnackBar);
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Incluído na versão: 1.23.0-13.0.pre<br>
 Na versão estável: 2.0.0
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

@@ -72,7 +72,7 @@ projetada para resolver problemas de performance de composição e de sincroniza
 vistos no modo Hybrid Composition original.
 Atualmente, ele está disponível como um recurso opcional (opt-in).
 
-### Requisitos {: #requirements }
+### Requisitos {:#requirements}
 
 * **Android API 34 ou superior**: Necessário para os recursos nativos de
   sincronização de transações.
@@ -85,7 +85,7 @@ Se esses requisitos não forem atendidos no dispositivo do usuário final,
 o Flutter recorrerá automaticamente à estratégia de platform view existente
 configurada para o app.
 
-### Habilitando {: #opt-in }
+### Habilitando {:#opt-in}
 
 Como o HCPP atua como uma atualização global na forma como as platform views são suportadas,
 ele é habilitado por meio de configuração, e não pelos
@@ -118,7 +118,7 @@ Você pode habilitar o HCPP usando um dos seguintes métodos:
         android:value="true" />
     ```
 
-### Limitações e problemas conhecidos {: #limitations-and-known-issues }
+### Limitações e problemas conhecidos {:#limitations-and-known-issues}
 
 * **Empilhamento complexo de sobreposições**:
   Platform views transparentes não serão exibidas corretamente
@@ -145,7 +145,7 @@ No entanto, esta abordagem pode causar:
 * lupa de texto quebrada, a menos que o Flutter seja renderizado
   em uma `TextureView`
 
-## Do lado do Dart
+## Do lado do Dart {:#on-the-dart-side}
 
 Para criar uma platform view no Android, use os passos a seguir.
 Primeiro, do lado do Dart, crie um `Widget` e adicione uma das
@@ -252,7 +252,7 @@ Para mais informações, visite a página da API de [`AndroidView`][AndroidView]
 
 [AndroidView]: {{site.api}}/flutter/widgets/AndroidView-class.html
 
-## Do lado da plataforma
+## Do lado da plataforma {:#on-the-platform-side}
 
 Do lado da plataforma, use o pacote padrão
 `io.flutter.plugin.platform`
@@ -494,7 +494,7 @@ Para mais informações, visite a documentação da API para:
 [PlatformViewFactory]: {{site.api}}/javadoc/io/flutter/plugin/platform/PlatformViewFactory.html
 [PlatformViewRegistry]: {{site.api}}/javadoc/io/flutter/plugin/platform/PlatformViewRegistry.html
 
-### Invalidação manual de view
+### Invalidação manual de view {:#manual-view-invalidation}
 
 Certas Android Views não se invalidam quando seu conteúdo muda.
 Alguns exemplos incluem `SurfaceView` e `SurfaceTexture`.
@@ -505,13 +505,13 @@ Invalide a view chamando `invalidate` nela ou em uma de suas views pai.
 
 [AndroidViewSurface]: {{site.api}}/flutter/widgets/AndroidViewSurface-class.html
 
-### Issues {:#issues}
+### Issues
 
 Confira as [issues existentes de Platform View][existing Platform View issues] no GitHub.
 
 [existing Platform View issues]: {{site.repo.flutter}}/issues?q=is%3Aopen+is%3Aissue+label%3A%22a%3A+platform-views
 
-## Performance {:#performance}
+## Performance
 
 Platform views no Flutter vêm com trade-offs de performance.
 

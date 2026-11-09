@@ -11,7 +11,7 @@ inclui as seguintes mudanças, entre outras melhorias gerais.
 Para saber mais sobre o DevTools, confira a
 [visão geral do DevTools](/tools/devtools).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 * Corrigido texto ilegível no painel de notas de lançamento, em que os blockquotes eram
   desenhados com um fundo azul-claro fixo no tema escuro.
@@ -20,14 +20,14 @@ Para saber mais sobre o DevTools, confira a
   usando `?uri=messageport:<origin>`.
   [#9964](https://github.com/flutter/devtools/pull/9964)
 
-## Atualizações do Inspector
+## Atualizações do Inspector {:#inspector-updates}
 
 * Adicionado o caminho do arquivo-fonte do widget ao painel de detalhes do Inspector
   (`filename.dart:line:column`), igualando o comportamento do Inspector legado.
   [#9972](https://github.com/flutter/devtools/pull/9972),
   [#9922](https://github.com/flutter/devtools/issues/9922)
 
-## Atualizações de desempenho
+## Atualizações de desempenho {:#performance-updates}
 
 * Corrigido um bug em que o gráfico de frames do Flutter podia ficar travado após
   sair da tela de Performance e voltar para ela.
@@ -36,18 +36,18 @@ Para saber mais sobre o DevTools, confira a
   de rebuilds de widgets não está disponível porque o app está rodando em modo profile.
   [#9755](https://github.com/flutter/devtools/pull/9755)
 
-## Atualizações do CPU profiler
+## Atualizações do CPU profiler {:#cpu-profiler-updates}
 
 * Corrigido um bug em que redimensionar o flame chart da CPU alterava os valores de
   tempo exibidos no topo do gráfico.
   [#9915](https://github.com/flutter/devtools/pull/9915)
 
-## Atualizações de memória
+## Atualizações de memória {:#memory-updates}
 
 * Adicionada a possibilidade de fixar classes no topo da tabela do Profile Memory.
   [#8898](https://github.com/flutter/devtools/issues/8898)
 
-## Atualizações do debugger
+## Atualizações do debugger {:#debugger-updates}
 
 * Evitada a coleta de lixo de valores enquanto eles estavam sendo avaliados.
   [#9885](https://github.com/flutter/devtools/pull/9885)
@@ -61,7 +61,7 @@ Para saber mais sobre o DevTools, confira a
   rolam horizontalmente em vez de estourar.
   [#9949](https://github.com/flutter/devtools/pull/9949)
 
-## Atualizações do Network profiler
+## Atualizações do Network profiler {:#network-profiler-updates}
 
 * Corrigido o "Copy as cURL" que omitia cabeçalhos e corpo de requisições com falha
   ou com timeout. [#9963](https://github.com/flutter/devtools/pull/9963)
@@ -75,7 +75,7 @@ Para saber mais sobre o DevTools, confira a
   após pressionar Clear durante a gravação.
   [#9856](https://github.com/flutter/devtools/pull/9856)
 
-## Atualizações de logging
+## Atualizações de logging {:#logging-updates}
 
 * Corrigidas as unidades de tempo e a natureza cumulativa dos eventos de GC.
   [#9890](https://github.com/flutter/devtools/pull/9890)
@@ -83,7 +83,7 @@ Para saber mais sobre o DevTools, confira a
   visualização estruturada de Details.
   [#10011](https://github.com/flutter/devtools/pull/10011)
 
-## Atualizações da ferramenta de deep links
+## Atualizações da ferramenta de deep links {:#deep-links-tool-updates}
 
 * Adicionado um link "Watch tutorial" na barra de status que aponta para o
   [vídeo tutorial de deep links](https://youtu.be/d7sZL6h1Elw).
@@ -92,7 +92,7 @@ Para saber mais sobre o DevTools, confira a
   universal links do iOS na ferramenta de Deep Links.
   [#10022](https://github.com/flutter/devtools/pull/10022)
 
-## Atualizações da extensão do DevTools
+## Atualizações da extensão do DevTools {:#devtools-extension-updates}
 
 * Ocultado o botão do menu de extensões do DevTools no modo embutido de tela única
   (`EmbedMode.embedOne`) em telas padrão.
@@ -103,7 +103,7 @@ Para saber mais sobre o DevTools, confira a
   fornece a extensão para ativação, deduplicação e carregamento de assets.
   [#9981](https://github.com/flutter/devtools/pull/9981)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de mudanças nesta versão, confira o
 [log do git do DevTools](https://github.com/flutter/devtools/tree/v2.61.0).

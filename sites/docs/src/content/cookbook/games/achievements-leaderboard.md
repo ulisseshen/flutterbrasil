@@ -29,7 +29,7 @@ para adicionar funcionalidade de conquistas e tabela de classificação ao seu j
 [`games_services` package]: {{site.pub-pkg}}/games_services
 [immersion, achievement, cooperation, and competition]: https://meditations.metavert.io/p/game-player-motivations
 
-## 1. Habilite os serviços da plataforma
+## 1. Habilite os serviços da plataforma {:#1-enable-platform-services}
 
 Para habilitar os serviços de jogos, configure o *Game Center* no iOS e
 o *Google Play Games Services* no Android.
@@ -122,7 +122,7 @@ Para habilitar o *Play Games Services* no Android:
 [Google Play Console]: https://play.google.com/console/
 [Play Games Services guide]: {{site.developers}}/games/services/console/enabling
 
-## 2. Faça login no serviço de jogos
+## 2. Faça login no serviço de jogos {:#2-sign-in-to-the-game-service}
 
 Agora que você configurou o *Game Center* e o *Play Games Services*, e
 tem seus IDs de conquistas e tabelas de classificação prontos, é finalmente hora do Dart.
@@ -161,7 +161,7 @@ a funcionalidade bruta do plugin `games_services`.
 :::
 
 
-## 3. Desbloqueie conquistas
+## 3. Desbloqueie conquistas {:#3-unlock-achievements}
 
 1.  Registre conquistas no Google Play Console e App Store Connect,
     e anote seus IDs. Agora você pode conceder qualquer uma dessas
@@ -195,7 +195,7 @@ a funcionalidade bruta do plugin `games_services`.
 
 [`GamesServices.loadAchievements()`]: {{site.pub-api}}/games_services/latest/games_services/GamesServices/loadAchievements.html
 
-## 4. Envie pontuações
+## 4. Envie pontuações {:#4-submit-scores}
 
 Quando o jogador termina uma partida, seu jogo pode enviar o resultado
 dessa sessão de jogo para uma ou mais tabelas de classificação.
@@ -238,7 +238,7 @@ tabelas de classificação separadas.
 
 [`GamesServices.loadLeaderboardScores()`]: {{site.pub-api}}/games_services/latest/games_services/GamesServices/loadLeaderboardScores.html
 
-## 5. Próximos passos
+## 5. Próximos passos {:#5-next-steps}
 
 Há mais no plugin `games_services`. Com este plugin, você pode:
 
@@ -370,7 +370,7 @@ class GamesServicesController {
 }
 ```
 
-## Mais informações
+## Mais informações {:#more-information}
 
 O Flutter Casual Games Toolkit inclui os seguintes templates:
 

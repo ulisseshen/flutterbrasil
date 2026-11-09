@@ -126,7 +126,7 @@ No momento, a árvore de widgets é bem simples:
 
 <img src='/assets/images/docs/tutorial/hello_world.png' width="320px" alt="Uma captura de tela que se parece com o popular jogo Wordle.">
 
-### Use hot reload {:#use-hot-reload}
+### Use hot reload
 
 **Stateful hot reload**, se você ainda não ouviu falar,
 permite que um app Flutter em execução re-renderize lógica de negócio ou código de UI atualizado em

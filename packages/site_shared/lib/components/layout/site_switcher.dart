@@ -39,7 +39,7 @@ final class SiteSwitcher extends StatelessComponent {
               const _SiteWordMarkListEntry(
                 name: 'Flutter',
                 subtype: 'API',
-                href: 'https://api.flutterbrasil.dev',
+                href: 'https://api.flutter.dev',
               ),
               const _SiteWordMarkListEntry(
                 name: 'Flutter',

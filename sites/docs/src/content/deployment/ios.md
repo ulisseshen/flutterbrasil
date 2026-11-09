@@ -8,7 +8,7 @@ shortTitle: iOS
 Este guia fornece um passo a passo detalhado para lançar um
 app Flutter na [App Store][appstore] e [TestFlight][].
 
-## Preliminares
+## Preliminares {:#preliminaries}
 
 Xcode é necessário para compilar e lançar seu app. Você
 deve usar um dispositivo executando macOS para seguir este guia.
@@ -21,14 +21,14 @@ você deve primeiro se inscrever no [Apple Developer Program][devprogram].
 Você pode ler mais sobre as várias opções de associação no guia
 [Choosing a Membership][devprogram_membership] da Apple.
 
-## Visão geral em vídeo
+## Visão geral em vídeo {:#video-overview}
 
 Para aqueles que preferem vídeo ao invés de texto,
 o seguinte vídeo cobre o mesmo material que este guia.
 
 <YouTubeEmbed id="iE2bpP56QKc" title="Release an iOS app built with Flutter in 7 steps"></YouTubeEmbed>
 
-## Registre seu app no App Store Connect
+## Registre seu app no App Store Connect {:#register-your-app-on-app-store-connect}
 
 Gerencie o ciclo de vida do seu app no
 [App Store Connect][appstoreconnect] (anteriormente iTunes Connect).
@@ -41,7 +41,7 @@ Bundle ID único e criar um registro de aplicação no App Store Connect.
 Para uma visão geral detalhada do App Store Connect, veja o
 guia [App Store Connect][appstoreconnect_guide].
 
-### Registrar um Bundle ID
+### Registrar um Bundle ID {:#register-a-bundle-id}
 
 Toda aplicação iOS é associada com um Bundle ID,
 um identificador único registrado na Apple.
@@ -54,7 +54,7 @@ Para registrar um Bundle ID para seu app, siga estes passos:
 1. Na próxima página, confirme os detalhes e clique em **Register**
    para registrar seu Bundle ID.
 
-### Criar um registro de aplicação no App Store Connect
+### Criar um registro de aplicação no App Store Connect {:#create-an-application-record-on-app-store-connect}
 
 Registre seu app no App Store Connect:
 
@@ -74,7 +74,7 @@ Registre seu app no App Store Connect:
 Para uma visão geral detalhada, veja
 [Add an app to your account][appstoreconnect_guide_register].
 
-## Revisar configurações do projeto Xcode
+## Revisar configurações do projeto Xcode {:#review-xcode-project-settings}
 
 Este passo cobre a revisão das configurações mais importantes
 no workspace do Xcode.
@@ -145,7 +145,7 @@ Este passo cobre substituir esses ícones placeholder pelos
 [app-icon]: {{site.apple-dev}}/design/human-interface-guidelines/app-icons/
 [icon-modes]: {{site.apple-dev}}/design/human-interface-guidelines/app-icons#iOS-iPadOS
 
-## Adicionar uma imagem de lançamento
+## Adicionar uma imagem de lançamento {:#add-a-launch-image}
 
 Similar ao ícone do app,
 você também pode substituir a imagem de lançamento placeholder:
@@ -156,7 +156,7 @@ você também pode substituir a imagem de lançamento placeholder:
 1. Verifique a nova imagem de lançamento reiniciando seu app com hot restart.
    (Não use `hot reload`.)
 
-## Criar um arquivo de compilação e fazer upload para App Store Connect
+## Criar um arquivo de compilação e fazer upload para App Store Connect {:#create-a-build-archive-and-upload-to-app-store-connect}
 
 Durante o desenvolvimento, você tem compilado, depurado e testado
 com builds _debug_. Quando estiver pronto para enviar seu app para usuários
@@ -196,7 +196,7 @@ Você também pode sobrescrever o nome de build e número do `pubspec.yaml` no X
    número de build único usado para rastrear este build no App Store Connect.
    Cada upload requer um número de build único.
 
-### Criar um bundle de app
+### Criar um bundle de app {:#create-an-app-bundle}
 
 Execute `flutter build ipa` para produzir um arquivo de compilação do Xcode (arquivo `.xcarchive`)
 no diretório `build/ios/archive/` do seu projeto e um bundle de app
@@ -217,7 +217,7 @@ abra `build/ios/archive/MyApp.xcarchive` e siga as instruções abaixo
 para validar e distribuir o app do Xcode.
 :::
 
-### Fazer upload do bundle de app para App Store Connect
+### Fazer upload do bundle de app para App Store Connect {:#upload-the-app-bundle-to-app-store-connect}
 
 Uma vez que o bundle de app é criado, faça upload dele para
 [App Store Connect][appstoreconnect_login] por meio de:
@@ -277,7 +277,7 @@ no TestFlight, ou prosseguir e lançar seu app na App Store.
 Para mais detalhes, veja
 [Upload an app to App Store Connect][distributionguide_upload].
 
-## Criar um arquivo de compilação com Codemagic CLI tools
+## Criar um arquivo de compilação com Codemagic CLI tools {:#create-a-build-archive-with-codemagic-cli-tools}
 
 Este passo cobre criar um arquivo de compilação e fazer upload
 do seu build para App Store Connect usando comandos de build Flutter
@@ -441,7 +441,7 @@ seu build foi validado e está disponível para lançamento para testadores
 no TestFlight. Neste ponto você pode escolher se lança
 no TestFlight, ou prosseguir e lançar seu app na App Store.
 
-## Lançar seu app no TestFlight
+## Lançar seu app no TestFlight {:#release-your-app-on-testflight}
 
 [TestFlight][] permite que desenvolvedores enviem seus apps
 para testadores internos e externos. Este passo opcional
@@ -459,7 +459,7 @@ cobre lançar seu build no TestFlight.
 Para mais detalhes, veja
 [Distribute an app using TestFlight][distributionguide_testflight].
 
-## Lançar seu app na App Store
+## Lançar seu app na App Store {:#release-your-app-to-the-app-store}
 
 Quando estiver pronto para lançar seu app para o mundo,
 siga estes passos para enviar seu app para revisão e
@@ -481,7 +481,7 @@ especificou na seção **Version Release**.
 Para mais detalhes, veja
 [Distribute an app through the App Store][distributionguide_submit].
 
-## Solução de problemas
+## Solução de problemas {:#troubleshooting}
 
 O guia [Distribute your app][distributionguide] fornece uma
 visão geral detalhada do processo de lançar um app na App Store.

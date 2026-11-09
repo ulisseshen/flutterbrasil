@@ -6,7 +6,7 @@ description: >
 ia-translate: true
 ---
 
-## Resumo
+## Resumo {:#summary}
 
 De acordo com a [Política de Obsolescência][Deprecation Policy] do Flutter,
 APIs obsoletas que atingiram o fim da vida útil após o
@@ -28,7 +28,7 @@ para mais contexto sobre a política de obsolescência do Flutter.
 [design document]: /go/deprecation-lifetime
 [article]: {{site.flutter-blog}}/deprecation-lifetime-in-flutter-e4d76ee738ad
 
-## Mudanças
+## Mudanças {:#changes}
 
 Esta seção lista as obsolescências, listadas pela classe afetada.
 
@@ -831,6 +831,6 @@ PRs relevantes:
 
 ---
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 No lançamento estável: 2.0.0

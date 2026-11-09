@@ -36,7 +36,7 @@ GridView.count(
 ),
 ```
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter GridView hands-on example in DartPad" run="true"

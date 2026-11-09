@@ -28,7 +28,7 @@ descritas neste tutorial.
 As seções a seguir guiam você através de vários exemplos de animação.
 Cada seção fornece um link para o código-fonte desse exemplo.
 
-## Renderizando animações
+## Renderizando animações {:#rendering-animations}
 
 :::secondary Qual é o ponto?
 * Como adicionar animação básica a um widget usando `addListener()` e
@@ -290,7 +290,7 @@ e passa o objeto `Animation` para `AnimatedLogo`:
 
 <a id="monitoring"></a>
 
-## Monitorando o progresso da animação
+## Monitorando o progresso da animação {:#monitoring-the-progress-of-the-animation}
 
 :::secondary Qual é o ponto?
 * Use `addStatusListener()` para notificações de mudanças
@@ -552,7 +552,7 @@ nos bullet points acima.
 
 **Código-fonte do app:** [animate4][animate4]
 
-## Animações simultâneas
+## Animações simultâneas {:#simultaneous-animations}
 
 :::secondary Qual é o ponto?
 * A classe [`Curves`][Curves] define um array de
@@ -669,7 +669,7 @@ class _LogoAppState extends State<LogoApp> with SingleTickerProviderStateMixin {
 
 **Código-fonte do app:** [animate5][animate5]
 
-## Próximos passos
+## Próximos passos {:#next-steps}
 
 Este tutorial fornece uma base para
 criar animações explícitas no Flutter usando tweens,

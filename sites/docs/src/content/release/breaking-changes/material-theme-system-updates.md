@@ -9,7 +9,7 @@ description: >-
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 `CardTheme`, `DialogTheme` e `TabBarTheme` foram refatorados para
 se adequarem às convenções do Flutter para temas de componentes. `CardThemeData`,
@@ -26,7 +26,7 @@ tipo de `ThemeData.cardTheme` foi alterado para `CardThemeData?`; o tipo de
 `ThemeData.dialogTheme` foi alterado para `DialogThemeData?`; e o tipo de
 `ThemeData.tabBarTheme` foi alterado para `TabBarThemeData?`.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Anteriormente, o tipo de `ThemeData.cardTheme` era `Object?` para aceitar tanto
 `CardTheme` quanto `CardThemeData`. Agora que o tipo foi alterado para
@@ -54,12 +54,12 @@ final ThemeData theme = ThemeData(
 );
 ```
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Lançado na versão: 3.31.0-0.0.pre<br>
 Na versão estável: 3.32
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

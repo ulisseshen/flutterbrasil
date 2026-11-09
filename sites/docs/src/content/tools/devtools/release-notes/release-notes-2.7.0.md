@@ -12,7 +12,7 @@ inclui as seguintes mudanças, entre outras melhorias gerais.
 Para saber mais sobre o DevTools, confira a
 [visão geral do DevTools](/tools/devtools).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 * Melhorias no tempo de carregamento inicial da página -
   [#3309](https://github.com/flutter/devtools/pull/3309)
@@ -20,7 +20,7 @@ Para saber mais sobre o DevTools, confira a
   [#3393](https://github.com/flutter/devtools/pull/3393),
   [#3401](https://github.com/flutter/devtools/pull/3401)
 
-## Atualizações do Debugger
+## Atualizações do Debugger {:#debugger-updates}
 
 * Adicionado um diálogo de abrir arquivo (ctrl / cmd + p) -
   [#3342](https://github.com/flutter/devtools/pull/3342),
@@ -35,7 +35,7 @@ Para saber mais sobre o DevTools, confira a
 
   ![Call stack view](/assets/images/docs/tools/devtools/release-notes/images-2.7.0/image2.png "Call stack view")
 
-## Atualizações do CPU profiler
+## Atualizações do CPU profiler {:#cpu-profiler-updates}
 
 * Adicionada funcionalidade para carregar um perfil de inicialização de app para apps Flutter.
   Este perfil conterá amostras de CPU desde a inicialização
@@ -64,7 +64,7 @@ Para saber mais sobre o DevTools, confira a
 
   ![Class names](/assets/images/docs/tools/devtools/release-notes/images-2.7.0/image6.png "Class names")
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de mudanças desde o lançamento anterior,
 confira

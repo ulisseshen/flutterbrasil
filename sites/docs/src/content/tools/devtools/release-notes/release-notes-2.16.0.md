@@ -12,12 +12,12 @@ inclui as seguintes mudanças, entre outras melhorias gerais.
 Para saber mais sobre o DevTools, confira a
 [visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 Esta versão inclui várias correções de bugs e melhorias, bem como
 trabalho em direção a alguns novos recursos que estão chegando em breve!
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de mudanças desde a versão anterior,
 confira

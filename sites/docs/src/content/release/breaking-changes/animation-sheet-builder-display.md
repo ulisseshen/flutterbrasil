@@ -8,13 +8,13 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Os métodos `AnimationSheetBuilder.display` e `sheetSize`
 foram descontinuados, e devem ser substituídos por
 `AnimationSheetBuilder.collate`.
 
-## Contexto
+## Contexto {:#context}
 
 [`AnimationSheetBuilder`][] é uma classe utilitária
 de testes que grava frames de um widget animado,
@@ -37,7 +37,7 @@ com proporção de pixel 3.0, o que significa que usa um bloco de pixel
 real, tornando a imagem 9 vezes maior do que o necessário
 (antes da compressão PNG).
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 As seguintes mudanças foram feitas na
 classe [`AnimationSheetBuilder`][]:
@@ -45,13 +45,13 @@ classe [`AnimationSheetBuilder`][]:
 * 'display' foi descontinuado e não deve ser usado
 * 'sheetSize' foi descontinuado e não deve ser usado
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Para migrar para a nova API, mude o processo de definir
 tamanho de superfície e exibir o widget para
 [`AnimationSheetBuilder.collate`][].
 
-### Derivar células por linha
+### Derivar células por linha {:#derive-cells-per-row}
 
 O `collate` requer um argumento `cellsPerRow`
 explícito, que é o número de frames por
@@ -82,7 +82,7 @@ tester.binding.setSurfaceSize(animationSheet.sheetSize(600));
 animationSheet.collate(7)
 ```
 
-### Migrar código
+### Migrar código {:#migrate-code}
 
 Código antes da migração:
 
@@ -142,12 +142,12 @@ sejam invalidadas, que devem todas ser atualizadas. As novas
 imagens devem ser idênticas às antigas exceto
 em escala 1/3.
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Lançado na versão: v2.3.0-13.0.pre<br>
 Na versão estável: 2.5
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

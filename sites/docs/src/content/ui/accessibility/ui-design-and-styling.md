@@ -81,4 +81,4 @@ Você pode verificar a classe [AccessibilityFeatures][] para recursos de
 acessibilidade adicionais que podem ser habilitados pela plataforma,
 como texto em negrito, alto contraste e cores invertidas.
 
-[AccessibilityFeatures]: https://api.flutterbrasil.dev/flutter/dart-ui/AccessibilityFeatures-class.html
+[AccessibilityFeatures]: https://api.flutter.dev/flutter/dart-ui/AccessibilityFeatures-class.html

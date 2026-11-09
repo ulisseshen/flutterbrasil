@@ -24,13 +24,13 @@ bem como nossas diretrizes de estilo para criar Markdown.
 [Markdown]: https://commonmark.org/
 [GitHub Flavored Markdown]: https://github.github.com/gfm/
 
-## Diretrizes gerais
+## Diretrizes gerais {:#general-guidelines}
 
 Prefira usar sintaxe Markdown ao invés de HTML e componentes personalizados.
 Markdown puro é mais fácil de manter, mais fácil para ferramentas entenderem,
 e mais fácil de migrar no futuro se necessário.
 
-## Blocos de código
+## Blocos de código {:#code-blocks}
 
 Não use blocos de código indentados do Markdown,
 use apenas blocos de código cercados usando backticks
@@ -50,7 +50,7 @@ confira a documentação dedicada sobre [Blocos de código][].
 [Blocos de código]: /contribute/docs/code-blocks
 
 
-## Diagramas Mermaid
+## Diagramas Mermaid {:#mermaid-diagrams}
 
 Para renderizar fluxogramas, diagramas de sequência e outros gráficos em um arquivo Markdown,
 use um bloco de código delimitado com o identificador de linguagem `mermaid`:
@@ -65,14 +65,14 @@ flowchart LR
 ```
 ````
 
-### Estilizar diagramas Mermaid
+### Estilizar diagramas Mermaid {:#style-mermaid-diagrams}
 
 Os diagramas Mermaid são renderizados para SVG no servidor, uma vez para cada tema.
 Ambas as variantes são incluídas na página e o CSS mostra a que corresponde ao
 tema claro ou escuro atual do site. Os diagramas herdam a tipografia
 padrão `Google Sans Flex`.
 
-#### Estilização no diagrama (Recomendado)
+#### Estilização no diagrama (Recomendado) {:#in-diagram-styling-recommended}
 
 Quando você precisar de cores personalizadas para nós específicos,
 defina-as diretamente no diagrama usando a
@@ -84,7 +84,7 @@ flowchart LR
     classDef highlightNode fill:#f96,stroke:#333,stroke-width:2px;
 ```
 
-#### Estilização SCSS
+#### Estilização SCSS {:#scss-styling}
 
 Para ajustar o layout global, a borda ou o fundo dos diagramas em todo o site,
 edite [`_mermaid.scss`][]:

@@ -12,7 +12,7 @@ consulte o [CHANGELOG][] do Flutter.
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/main/CHANGELOG.md
 
-## O que mudou
+## O que mudou {:#whats-changed}
 
 As seguintes mudanças aconteceram neste lançamento:
 
@@ -877,7 +877,7 @@ As seguintes mudanças aconteceram neste lançamento:
 * Remove Apple Silicon workarounds from plugin lint test by @jmagman in https://github.com/flutter/flutter/pull/111432
 * Update macOS gallery display name by @jmagman in https://github.com/flutter/flutter/pull/113658
 
-## Novos contribuidores
+## Novos contribuidores {:#new-contributors}
 * @talisk made their first contribution in https://github.com/flutter/flutter/pull/107221
 * @0xba1 made their first contribution in https://github.com/flutter/flutter/pull/107836
 * @foongsq made their first contribution in https://github.com/flutter/flutter/pull/107201

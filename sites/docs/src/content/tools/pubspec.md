@@ -17,7 +17,7 @@ Esta página lista campos que são válidos apenas para um projeto Flutter.
 [Package dependency management]: /packages-and-plugins/dependency-management
 [pubspec]: {{site.dart-site}}/tools/pub/pubspec
 
-## Exemplo
+## Exemplo {:#example}
 
 Quando você cria um novo projeto com o
 comando `flutter create` (ou usando o
@@ -95,7 +95,7 @@ dev_dependencies:
           [!weight: 700!]
 ```
 
-## Campos
+## Campos {:#fields}
 
 Esta página discute os campos do pubspec exclusivos do Flutter.
 Saiba mais sobre os campos gerais do Dart em
@@ -750,7 +750,7 @@ dependencies:
   cupertino_icons: ^1.0.8
 ```
 
-## Mais informações
+## Mais informações {:#more-information}
 
 Para mais informações sobre packages, plugins,
 e arquivos pubspec, visite o seguinte:

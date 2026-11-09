@@ -7,7 +7,7 @@ ia-translate: true
 Material Design é um sistema de design de código aberto construído
 e suportado por designers e desenvolvedores do Google.
 
-## Mais informações {:.no_toc}
+## Mais informações {:.no_toc #more-information}
 
 Para saber mais sobre Material Design e Flutter,
 confira:

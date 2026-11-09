@@ -11,7 +11,7 @@ Flutter SDK ou os packages dos quais seu app depende.
 
 <a id="upgrading-the-flutter-sdk" aria-hidden="true"></a>
 
-## Atualizar o Flutter SDK
+## Atualizar o Flutter SDK {:#upgrade-the-flutter-sdk}
 
 Para atualizar o Flutter SDK use o comando `flutter upgrade`:
 
@@ -29,7 +29,7 @@ e então execute `flutter upgrade`.
 
 <a id="keep-informed" aria-hidden="true"></a>
 
-### Mantenha-se informado
+### Mantenha-se informado {:#keep-informed}
 
 Nós publicamos [guias de migração][migration guides] para mudanças breaking conhecidas.
 
@@ -42,12 +42,12 @@ considere submeter seus testes ao nosso [registro de testes][test registry].
 
 <a id="switching-flutter-channels" aria-hidden="true"></a>
 
-## Mudando canais do Flutter
+## Mudando canais do Flutter {:#switching-flutter-channels}
 
 O Flutter tem dois canais de lançamento:
 **stable** e **beta**.
 
-### O canal **stable**
+### O canal **stable** {:#the-stable-channel}
 
 Nós recomendamos o canal **stable** para novos usuários
 e para lançamentos de apps em produção.
@@ -59,11 +59,11 @@ A integração contínua para plugins e packages da equipe Flutter
 inclui testes contra o lançamento **stable** mais recente.
 
 A documentação mais recente para o branch **stable**
-está em: <https://api.flutterbrasil.dev>
+está em: <https://api.flutter.dev>
 
 <a id="the-beta-channel" aria-hidden="true"></a>
 
-### O canal **beta**
+### O canal **beta** {:#the-beta-channel}
 
 O canal **beta** tem o lançamento estável mais recente.
 Esta é a versão mais recente do Flutter que testamos intensamente.
@@ -78,7 +78,7 @@ mas atualizado mensalmente em vez de trimestralmente.
 De fato, quando o canal **stable** é atualizado,
 ele é atualizado para o lançamento **beta** mais recente.
 
-### Outros canais
+### Outros canais {:#other-channels}
 
 Atualmente temos um outro canal, **main** (anteriormente conhecido como **master**).
 Pessoas que [contribuem para o Flutter][contribute to Flutter] usam este canal.
@@ -90,12 +90,12 @@ Nós não recomendamos usar este canal já que
 é mais provável que contenha regressões sérias.
 
 A documentação mais recente para o branch **main**
-está em: <https://main-api.flutterbrasil.dev>
+está em: <https://main-api.flutter.dev>
 
 <a id="changing-channels" aria-hidden="true"></a>
 <a id="change-channels" aria-hidden="true"></a>
 
-### Mudar canais
+### Mudar canais {:#change-channels}
 
 Para visualizar seu canal atual, use o seguinte comando:
 
@@ -115,7 +115,7 @@ $ flutter upgrade
 
 <a id="switching-to-a-specific-flutter-version" aria-hidden="true"></a>
 
-## Mudar para uma versão específica do Flutter
+## Mudar para uma versão específica do Flutter {:#switch-to-a-specific-flutter-version}
 
 Para mudar para uma versão específica do Flutter:
 
@@ -139,7 +139,7 @@ Para mudar para uma versão específica do Flutter:
 
 <a id="upgrading-packages" aria-hidden="true"></a>
 
-## Atualizar packages
+## Atualizar packages {:#upgrade-packages}
 
 Se você modificou seu arquivo `pubspec.yaml`, ou você quer atualizar
 apenas os packages dos quais seu app depende

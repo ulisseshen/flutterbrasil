@@ -8,13 +8,13 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Adiciona um campo, `currentTextEditingValue`, à interface `TextInputClient`
 para obter o valor atual de um campo de texto editável
 de um cliente de plataforma.
 
-## Contexto
+## Contexto {:#context}
 
 A classe `TextInputClient` é usada pelo framework Flutter para
 comunicar com código de plataforma sobre o estado atual de widgets
@@ -26,7 +26,7 @@ o app pode pedir ao framework pelo último estado conhecido.
 Para obter esta informação,
 o `TextEditingValue` foi exposto para o `TextInputClient`.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 Em algumas plataformas suportadas, a aplicação pode ser movida para
 o background onde é esperado que consuma menos recursos.
@@ -63,7 +63,7 @@ o tratamento nativo da plataforma de uma resposta a um evento de entrada de tecl
 ou o que acontece quando código Dart define diretamente
 `TextEditingController.value`.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Se você implementou ou estendeu `TextEditingClient` anteriormente,
 você deve agora adicionar o override apropriado para `currentTextEditingValue`.
@@ -134,12 +134,12 @@ class _MyCustomTextWidgetState extends State<MyCustomWidget> implements TextEdit
 }
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Lançado na versão: 1.16.3<br>
 Na versão estável: 1.17
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

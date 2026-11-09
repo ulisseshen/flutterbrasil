@@ -7,7 +7,7 @@ description: >
   engine Flutter, telas ou views ao seu aplicativo.
 ---
 
-## Cenários
+## Cenários {:#scenarios}
 
 Se você está integrando Flutter em um app existente,
 ou gradualmente migrando um app existente para usar Flutter,
@@ -34,7 +34,7 @@ de memória (~180kB) para adicionar instâncias Flutter adicionais. Este custo f
 reduzido permite que o padrão de múltiplas instâncias Flutter seja usado mais livremente
 na sua integração add-to-app.
 
-## Componentes
+## Componentes {:#components}
 
 A API primária para adicionar múltiplas instâncias Flutter tanto no Android quanto no iOS
 é baseada em uma nova classe `FlutterEngineGroup` ([API Android][Android API], [API iOS][iOS API])
@@ -69,14 +69,14 @@ renderização inicial mais rápida e menor uso de memória.
   mas remove a capacidade de criar `FlutterEngine`s adicionais
   que compartilham recursos com engines criados existentes.
 
-## Comunicação
+## Comunicação {:#communication}
 
 A comunicação entre instâncias Flutter é tratada usando [canais de plataforma][platform channels]
 (ou [Pigeon][Pigeon]) através da plataforma host. Para ver nosso roadmap sobre comunicação,
 ou outro trabalho planejado sobre aprimoramento de múltiplas instâncias Flutter, confira
 [Issue 72009][Issue 72009].
 
-## Amostras
+## Amostras {:#samples}
 
 Você pode encontrar um exemplo demonstrando como usar `FlutterEngineGroup`
 tanto no Android quanto no iOS no [GitHub][GitHub].

@@ -1,6 +1,6 @@
 <!-- ia-translate: true -->
 
-#### Compile a versão Android do app Flutter no Terminal
+#### Compile a versão Android do app Flutter no Terminal {:#build-the-android-version-of-the-flutter-app-in-the-terminal}
 
 Para gerar as dependências necessárias da plataforma Android,
 execute o comando `flutter build`.
@@ -24,7 +24,7 @@ Se você usa VS Code para depurar a maior parte do seu código, comece com esta 
 
 {% render "docs/debug/debug-flow-vscode-as-start.md" %}
 
-#### Anexe ao processo Flutter no Android Studio
+#### Anexe ao processo Flutter no Android Studio {:#attach-to-the-flutter-process-in-android-studio}
 
 {% render "docs/debug/debug-android-attach-process.md" %}
 

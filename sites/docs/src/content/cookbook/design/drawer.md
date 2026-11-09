@@ -20,7 +20,7 @@ Esta receita usa os seguintes passos:
   3. Preencher o drawer com itens.
   4. Fechar o drawer programaticamente.
 
-## 1. Criar um `Scaffold`
+## 1. Criar um `Scaffold` {:#1-create-a-scaffold}
 
 Para adicionar um drawer ao app, envolva-o em um widget [`Scaffold`][].
 O widget `Scaffold` fornece uma estrutura visual consistente para apps que
@@ -38,7 +38,7 @@ Scaffold(
 );
 ```
 
-## 2. Adicionar um drawer
+## 2. Adicionar um drawer {:#2-add-a-drawer}
 
 Agora adicione um drawer ao `Scaffold`. Um drawer pode ser qualquer widget,
 mas geralmente é melhor usar o widget `Drawer` da
@@ -55,7 +55,7 @@ Scaffold(
 );
 ```
 
-## 3. Preencher o drawer com itens
+## 3. Preencher o drawer com itens {:#3-populate-the-drawer-with-items}
 
 Agora que você tem um `Drawer` em vigor, adicione conteúdo a ele.
 Para este exemplo, use um [`ListView`][].
@@ -102,7 +102,7 @@ Drawer(
 );
 ```
 
-## 4. Abrir o drawer programaticamente
+## 4. Abrir o drawer programaticamente {:#4-open-the-drawer-programmatically}
 
 Normalmente, você não precisa escrever nenhum código para abrir um `drawer`,
 porque quando o widget `leading` é null, a implementação padrão em `AppBar` é `DrawerButton`.
@@ -132,7 +132,7 @@ Scaffold(
 );
 ```
 
-## 5. Fechar o drawer programaticamente
+## 5. Fechar o drawer programaticamente {:#5-close-the-drawer-programmatically}
 
 Depois que um usuário toca em um item, você pode querer fechar o drawer.
 Você pode fazer isso usando o [`Navigator`][].
@@ -153,7 +153,7 @@ ListTile(
 ),
 ```
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 Este exemplo mostra um [`Drawer`][] como ele é usado dentro de um widget [`Scaffold`][].
 O [`Drawer`][] tem três itens [`ListTile`][].

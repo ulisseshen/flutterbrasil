@@ -25,7 +25,7 @@ e obtidos usando a API [`FragmentProgram`][].
 
 [`FragmentProgram`]: {{site.api}}/flutter/dart-ui/FragmentProgram-class.html
 
-## Adicionando shaders a um aplicativo
+## Adicionando shaders a um aplicativo {:#adding-shaders-to-an-application}
 
 Shaders, na forma de arquivos GLSL com extensão `.frag`,
 devem ser declarados na seção `shaders` do arquivo `pubspec.yaml` do seu projeto.
@@ -48,7 +48,7 @@ Shaders de pacotes são adicionados a um projeto
 com `packages/$pkgname` prefixado ao nome do programa shader
 (onde `$pkgname` é o nome do pacote).
 
-### Carregando shaders em tempo de execução
+### Carregando shaders em tempo de execução {:#loading-shaders-at-runtime}
 
 Para carregar um shader em um objeto `FragmentProgram` em tempo de execução,
 use o construtor [`FragmentProgram.fromAsset`][].
@@ -79,7 +79,7 @@ void updateShader(Canvas canvas, Rect rect, FragmentProgram program) {
 }
 ```
 
-### API Canvas
+### API Canvas {:#canvas-api}
 
 Shaders de fragmento podem ser usados com a maioria das APIs Canvas
 configurando [`Paint.shader`][].
@@ -114,7 +114,7 @@ void paint(Canvas canvas, Size size, FragmentShader shader) {
 
 ```
 
-### API ImageFilter
+### API ImageFilter {:#imagefilter-api}
 
 Shaders de fragmento também podem ser usados com a API [`ImageFilter`][].
 Isso permite usar shaders de fragmento personalizado com a
@@ -187,7 +187,7 @@ void main() {
 [`ImageFilter.shader`]: {{site.api}}/flutter/dart-ui/ImageFilter/ImageFilter.shader.html
 [`ClipRect`]: {{site.api}}/flutter/widgets/ClipRect-class.html
 
-## Criando shaders
+## Criando shaders {:#authoring-shaders}
 
 Shaders de fragmento são criados como arquivos de código-fonte GLSL.
 Por convenção, esses arquivos têm a extensão `.frag`.
@@ -303,7 +303,7 @@ flatc \
 cat foo.json
 ```
 
-#### Posição atual
+#### Posição atual {:#current-position}
 
 O shader tem acesso a um valor `varying` que contém as coordenadas locais para
 o fragmento particular sendo avaliado. Use este recurso para calcular
@@ -325,7 +325,7 @@ evitado para garantir que os shaders sejam consistentes entre backends. Ao direc
 backend Skia, as chamadas para `gl_FragCoord` são reescritas para acessar
 coordenadas locais, mas essa reescrita não é possível com Impeller.
 
-#### Cores
+#### Cores {:#colors}
 
 Não há um tipo de dados integrado para cores. Em vez disso, eles são comumente
 representados como um `vec4` com cada componente correspondendo a um dos
@@ -336,7 +336,7 @@ no intervalo de `0.0` a `1.0` e que tenha alfa pré-multiplicado. Isso é
 diferente das cores Flutter típicas que usam uma codificação de valor `0-255` e
 têm alfa não pré-multiplicado.
 
-#### Amostradores
+#### Amostradores {:#samplers}
 
 Um amostrador fornece acesso a um objeto `Image` `dart:ui`. Esta imagem pode ser
 adquirida de uma imagem decodificada ou de parte da aplicação usando
@@ -345,7 +345,7 @@ adquirida de uma imagem decodificada ou de parte da aplicação usando
 [`Picture.toImageSync`]: {{site.api}}/flutter/dart-ui/Picture/toImageSync.html
 [`Scene.toImageSync`]: {{site.api}}/flutter/dart-ui/Scene/toImageSync.html
 
-##### Exemplo de uso de amostrador em GLSL
+##### Exemplo de uso de amostrador em GLSL {:#sampler-usage-in-glsl-example}
 
 ```glsl
 #include <flutter/runtime_effect.glsl>
@@ -367,7 +367,7 @@ e precisa ser emulada no shader.
 
 [`TileMode.clamp`]: {{site.api}}/flutter/dart-ui/TileMode.html
 
-##### Exemplo de `toImageSync`
+##### Exemplo de `toImageSync` {:#toimagesync-example}
 
 ```dart
 class SDFPainter {

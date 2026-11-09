@@ -8,7 +8,7 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Um novo getter, `TextInputClient.currentAutofillScope`, foi adicionado à
 interface `TextInputClient`; todas as subclasses de `TextInputClient` devem
@@ -20,7 +20,7 @@ Por exemplo, um campo "username" pode acionar um
 autofill que preenche tanto ele próprio quanto o campo "password"
 associado a ele.
 
-## Contexto
+## Contexto {:#context}
 
 Em muitas plataformas, os serviços de autofill são capazes de
 preencher automaticamente múltiplos campos de entrada em uma única tentativa de autofill.
@@ -33,7 +33,7 @@ logicamente conectados a ele.
 campos de entrada que estão logicamente conectados a este `TextInputClient`,
 e podem ser preenchidos automaticamente juntos.
 
-## Descrição da alteração
+## Descrição da alteração {:#description-of-change}
 
 `TextInputClient` agora tem um getter adicional que retorna
 o `AutofillScope` ao qual este cliente pertence.
@@ -51,7 +51,7 @@ Se você vir a mensagem de erro "missing concrete implementation of
 'getter TextInputClient.currentAutofillScope'" ao compilar
 um aplicativo Flutter, siga as etapas de migração listadas abaixo.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Se você não está planejando adicionar suporte a autofill
 de múltiplos campos à sua subclasse `TextInputClient`,
@@ -79,12 +79,12 @@ class CustomTextFieldState extends State<CustomTextField> implements TextInputCl
 
 Para mais informações, consulte [`AutofillGroup`][].
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Disponibilizado na versão: 1.18.0<br>
 Na versão estável: 1.20
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

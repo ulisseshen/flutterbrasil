@@ -4,12 +4,12 @@ title: Networking
 description: Chamadas de rede pela internet no Flutter.
 ---
 
-## Networking http multiplataforma
+## Networking http multiplataforma {:#cross-platform-http-networking}
 
 O pacote [`http`][] fornece a maneira mais simples de fazer requisições http. Este
 pacote tem suporte em Android, iOS, macOS, Windows, Linux e web.
 
-## Notas sobre plataformas
+## Notas sobre plataformas {:#platform-notes}
 
 Algumas plataformas requerem etapas adicionais, conforme detalhado abaixo.
 
@@ -39,7 +39,7 @@ Saiba mais sobre [configurar entitlements][setting up entitlements].
 
 [setting up entitlements]: /platform-integration/macos/building#setting-up-entitlements
 
-## Exemplos
+## Exemplos {:#samples}
 
 Para um exemplo prático de várias tarefas de networking (incluindo busca de dados,
 WebSockets e análise de dados em segundo plano), veja as

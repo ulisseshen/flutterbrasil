@@ -12,7 +12,7 @@ inclui as seguintes alterações entre outras melhorias gerais.
 Para saber mais sobre DevTools, confira a
 [visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Atualizações do CPU profiler
+## Atualizações do CPU profiler {:#cpu-profiler-updates}
 
 * Adicionado suporte para agrupar amostras por tag -
   [#4693](https://github.com/flutter/devtools/pull/4693)
@@ -31,7 +31,7 @@ Para saber mais sobre DevTools, confira a
   ![sampling rate](/assets/images/docs/tools/devtools/release-notes/images-2.20.0/4803.png "sampling rate")
 
 
-## Atualizações de Memory
+## Atualizações de Memory {:#memory-updates}
 
 * Desativada a aba **Analysis** -
   [#4714](https://github.com/flutter/devtools/pull/4714)
@@ -44,7 +44,7 @@ Para saber mais sobre DevTools, confira a
 
   ![diff](/assets/images/docs/tools/devtools/release-notes/images-2.20.0/4714.png "Diff in Memory tab")
 
-## Atualizações do Debugger
+## Atualizações do Debugger {:#debugger-updates}
 
 * Suporte para inspecionar mais tipos de instâncias no visualizador de variáveis
   (Expandos, Types, TypeArguments, Parameters, Closures + closure Contexts,
@@ -56,13 +56,13 @@ Para saber mais sobre DevTools, confira a
 
   ![coverage](/assets/images/docs/tools/devtools/release-notes/images-2.20.0/4700.png "coverage in CodeView")
 
-## Atualizações de Network
+## Atualizações de Network {:#network-updates}
 
 * Exibidos dados da requisição se o tipo de conteúdo não for json
   (obrigado a @leungpuikuen!) -
   [#4602](https://github.com/flutter/devtools/pull/4602)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de alterações desde a versão anterior,
 confira

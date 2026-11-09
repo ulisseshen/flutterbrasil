@@ -16,7 +16,7 @@ Esta foi uma versão cherry-pick em cima do DevTools 2.28.2.
 Para saber sobre as melhorias incluídas no DevTools 2.28.2, por favor leia as
 [notas de versão](/tools/devtools/release-notes/release-notes-2.28.2).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 * Adicionado um link para o novo [vídeo](https://www.youtube.com/watch?v=_EYk-E29edo)
   "Dive in to DevTools" no YouTube na barra de status inferior.
@@ -27,17 +27,17 @@ Para saber sobre as melhorias incluídas no DevTools 2.28.2, por favor leia as
 
 * Adicionado um workaround para corrigir funcionalidade do botão copiar no VSCode. - [#6598](https://github.com/flutter/devtools/pull/6598)
 
-## Atualizações de Performance
+## Atualizações de Performance {:#performance-updates}
 
 * Desabilitada a ferramenta Raster Stats para o backend Impeller
   já que não é suportado. - [#6616](https://github.com/flutter/devtools/pull/6616)
 
-## Atualizações do VS Code Sidebar
+## Atualizações do VS Code Sidebar {:#vs-code-sidebar-updates}
 
 * Ao usar VS Code com um tema claro, a sidebar incorporada fornecida pelo
   DevTools agora também será mostrada no tema claro. - [#6581](https://github.com/flutter/devtools/pull/6581)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de alterações nesta versão, confira o
 [log git do DevTools](https://github.com/flutter/devtools/tree/v2.28.3).

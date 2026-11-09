@@ -20,7 +20,7 @@ Para informações sobre como desativar e ativar o SwiftPM, visite
 
 [for-app-devs]: /packages-and-plugins/swift-package-manager/for-app-developers
 
-## Como adicionar suporte ao Swift Package Manager a um plugin Flutter existente
+## Como adicionar suporte ao Swift Package Manager a um plugin Flutter existente {:#how-to-add-swift-package-manager-support-to-an-existing-flutter-plugin}
 
 Este guia mostra como adicionar suporte ao Swift Package Manager a um plugin que
 já suporta CocoaPods.

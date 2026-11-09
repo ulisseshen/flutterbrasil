@@ -12,13 +12,13 @@ inclui as seguintes alterações entre outras melhorias gerais.
 Para saber mais sobre DevTools, confira a
 [visão geral do DevTools](/tools/devtools/overview).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 * Adicionado atalho "View licenses" ao diálogo About. - [#8610](https://github.com/flutter/devtools/pull/8610)
 
 * Reduzido o nível de otimização wasm para resolver crashes no build dart2wasm. - [#8814](https://github.com/flutter/devtools/pull/8814)
 
-## Atualizações do Inspector
+## Atualizações do Inspector {:#inspector-updates}
 
 * Habilitado o novo inspector por padrão. Isso pode ser desabilitado nas configurações do inspector. - [#8650](https://github.com/flutter/devtools/pull/8650)
   ![Legacy inspector setting](/assets/images/docs/tools/devtools/release-notes/images-2.42.3/legacy_inspector_setting.png "Legacy inspector setting")
@@ -26,12 +26,12 @@ Para saber mais sobre DevTools, confira a
 * Habilitadas atualizações automáticas da árvore de widgets em hot-reloads e eventos de navegação por padrão. Isso pode ser desabilitado nas configurações do inspector. - [#8646](https://github.com/flutter/devtools/pull/8646)
   ![Auto-refresh setting](/assets/images/docs/tools/devtools/release-notes/images-2.42.3/inspector_auto_refresh_setting.png "Inspector auto-refresh setting")
 
-## Atualizações do Network profiler
+## Atualizações do Network profiler {:#network-profiler-updates}
 
 * Corrigido um problema onde as requisições HTTP às vezes não eram exibidas corretamente, particularmente quando DevTools está se comunicando
   com uma aplicação por uma conexão de rede lenta. - [#8860](https://github.com/flutter/devtools/pull/8860)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de alterações nesta versão, confira o
 [log git do DevTools](https://github.com/flutter/devtools/tree/v2.42.3).

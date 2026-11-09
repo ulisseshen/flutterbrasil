@@ -30,7 +30,7 @@ This file provides a curated list of resources to help Large Language Models und
 - [Layouts in Flutter](https://docs.flutterbrasil.dev/ui/layout): A guide to arranging widgets to create a user interface.
 - [App architecture and resources](https://docs.flutterbrasil.dev/app-architecture/recommendations): Architecture best practices and recommendations for Flutter applications.
 - [State management overview](https://docs.flutterbrasil.dev/data-and-backend/state-mgmt/options): The different approaches to managing state in a Flutter app.
-- [BuildContext class](https://api.flutterbrasil.dev/flutter/widgets/BuildContext-class.html): API reference docs for BuildContext 
+- [BuildContext class](https://api.flutter.dev/flutter/widgets/BuildContext-class.html): API reference docs for BuildContext 
 - [Decoding Flutter video: BuildContext?!](https://www.youtube.com/watch?v=rIaaH87z1-g): Video explaining what BuildContext is and why it shows up in so many widgets and builders.
 - [Deep dive into Flutter's build modes](https://docs.flutterbrasil.dev/testing/build-modes): Understand the difference between debug, profile, and release modes.
 
@@ -174,7 +174,7 @@ This file provides a curated list of resources to help Large Language Models und
 
 ## API reference
 
-- [Full Flutter API Reference](https://api.flutterbrasil.dev/): The complete, searchable reference for all Flutter libraries, classes, and functions.
+- [Full Flutter API Reference](https://api.flutter.dev/): The complete, searchable reference for all Flutter libraries, classes, and functions.
 
 ## Flutter for developers
 

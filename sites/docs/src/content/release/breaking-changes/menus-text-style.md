@@ -8,12 +8,12 @@ description: >-
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Os estilos de texto padrão usados para menus são atualizados
 para corresponder à especificação Material 3.
 
-## Contexto
+## Contexto {:#context}
 
 O estilo de texto padrão para `MenuItemButton` (um widget usado
 em um `MenuBar`, e em um menu criado com `MenuAnchor`),
@@ -23,7 +23,7 @@ atualizado para corresponder à especificação Material 3.
 Da mesma forma, o estilo de texto padrão para o `TextField` do `DropdownMenu` é atualizado
 para corresponder à especificação Material 3.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 O estilo de texto padrão para `MenuItemButton` (um widget usado
 em um `MenuBar`, e em um menu criado com `MenuAnchor`),
@@ -33,7 +33,7 @@ e `DropdownMenuEntry` (no `DropdownMenu`) é atualizado de
 O estilo de texto padrão para o `TextField` do `DropdownMenu` é atualizado de
 `TextTheme.labelLarge` para `TextTheme.bodyLarge` para Material 3.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Um `MenuItemButton` para Material 3 usa
 `TextTheme.labelLarge` como o estilo de texto padrão.
@@ -174,12 +174,12 @@ menuButtonTheme: MenuButtonThemeData(
 ),
 ```
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Disponibilizado na versão: 3.14.0-11.0.pre<br>
 Na versão estável: 3.16
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

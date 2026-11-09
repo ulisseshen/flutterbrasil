@@ -13,7 +13,7 @@ confira a página [Posso usar Impeller?][Can I use Impeller?].
 
 [Can I use Impeller?]: {{site.main-url}}/go/can-i-use-impeller
 
-## O que é Impeller?
+## O que é Impeller? {:#what-is-impeller}
 
 Impeller fornece um novo runtime de renderização para Flutter.
 Impeller pré-compila um [conjunto menor e mais simples de shaders][smaller, simpler set of shaders]
@@ -48,7 +48,7 @@ Impeller tem os seguintes objetivos:
   Impeller pode distribuir cargas de trabalho de um único frame entre múltiplas
   threads, se necessário.
 
-## Disponibilidade
+## Disponibilidade {:#availability}
 
 Onde você pode usar Impeller? Para informações _detalhadas_, confira
 a página [Posso usar Impeller?][Can I use Impeller?].
@@ -148,7 +148,7 @@ adicione a seguinte configuração ao seu projeto em `windows\runner\main.cpp`:
 + project.set_impeller_switch(flutter::ImpellerSwitch::Disabled);
 ```
 
-### Bugs e problemas
+### Bugs e problemas {:#bugs-and-issues}
 
 A equipe continua a melhorar o suporte ao Impeller.
 Se você encontrar problemas de performance ou fidelidade
@@ -170,14 +170,14 @@ enviar um issue para Impeller:
 [file-issue]: {{site.repo.flutter}}/issues/new/choose
 [Impeller project board]: https://github.com/orgs/flutter/projects/21
 
-## Arquitetura
+## Arquitetura {:#architecture}
 
 Para aprender mais detalhes sobre o design e arquitetura do Impeller,
 confira o arquivo [README.md][README.md] na árvore de código-fonte.
 
 [README.md]: {{site.repo.flutter}}/blob/main/engine/src/flutter/impeller/README.md
 
-## Informações adicionais
+## Informações adicionais {:#additional-information}
 
 * [Anti-aliasing do Impeller][impeller-antialiasing]
 * [Perguntas frequentes][impeller-faq]

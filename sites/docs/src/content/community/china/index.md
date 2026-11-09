@@ -16,13 +16,13 @@ A equipe do Flutter não pode verificar sua confiabilidade ou segurança.
 
 [mirror site]: https://en.wikipedia.org/wiki/Mirror_site
 
-## Use um site espelho do Flutter
+## Use um site espelho do Flutter {:#use-a-flutter-mirror-site}
 
 O [China Flutter User Group][] (CFUG) mantém um site do Flutter em chinês simplificado
 [https://flutter.cn](https://flutter.cn) e um espelho.
 Outros espelhos podem ser encontrados no [final deste guia](#known-trusted-community-run-mirror-sites).
 
-### Configure sua máquina para usar um site espelho
+### Configure sua máquina para usar um site espelho {:#configure-your-machine-to-use-a-mirror-site}
 
 Para instalar ou usar o Flutter na China, use um espelho confiável do Flutter.
 Isso requer definir duas variáveis de ambiente em sua máquina.
@@ -218,7 +218,7 @@ Estas etapas requerem o uso do PowerShell.
 
 [Flutter SDK archive]: https://docs.flutter.cn/install/archive/
 
-### Baixe arquivos do Flutter baseado em um site espelho
+### Baixe arquivos do Flutter baseado em um site espelho {:#download-flutter-archives-based-on-a-mirror-site}
 
 Para baixar o Flutter do [SDK archive][] de um espelho,
 substitua `storage.googleapis.com` pela URL do seu espelho confiável.
@@ -290,7 +290,7 @@ para a URL do espelho:
 Nem todo espelho suporta o download de artefatos usando sua URL direta.
 :::
 
-## Configure sua máquina para publicar seu pacote
+## Configure sua máquina para publicar seu pacote {:#configure-your-machine-to-publish-your-package}
 
 Para publicar seus pacotes no `pub.dev`,
 você precisa ser capaz de acessar tanto o Google Auth quanto o site `pub.dev`.
@@ -401,7 +401,7 @@ Você pode usar outros espelhos se eles ficarem disponíveis.
     issueLink: "https://github.com/tuna/issues",
     groupLink: "https://tuna.moe" %}
 
-## Ofereça-se para hospedar um novo site espelho
+## Ofereça-se para hospedar um novo site espelho {:#offer-to-host-a-new-mirror-site}
 
 Se você está interessado em configurar seu próprio espelho,
 entre em contato com [flutter-dev@googlegroups.com](mailto:flutter-dev@googlegroups.com)

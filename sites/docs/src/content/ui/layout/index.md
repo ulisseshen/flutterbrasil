@@ -6,7 +6,7 @@ description: >-
   Aprenda como o mecanismo de layout do Flutter funciona e como construir o layout do seu app.
 ---
 
-## Visão geral
+## Visão geral {:#overview}
 
 :::secondary Qual é a ideia?
 * Layouts no Flutter são construídos com widgets.
@@ -25,7 +25,7 @@ restringem e alinham os widgets visíveis.
 Você cria um layout compondo widgets para construir
 widgets mais complexos.
 
-## Exemplo conceitual
+## Exemplo conceitual {:#conceptual-example}
 
 No exemplo a seguir, a primeira captura de tela exibe
 três ícones com rótulos e a segunda captura de tela inclui
@@ -77,7 +77,7 @@ layout visual. Para mais informações, veja
 [`Row`]: {{site.api}}/flutter/widgets/Row-class.html
 [`Text`]: {{site.api}}/flutter/widgets/Text-class.html
 
-## Organizar um widget em layout
+## Organizar um widget em layout {:#lay-out-a-widget}
 
 Como você organiza um único widget em layout no Flutter? Esta seção
 mostra como criar e exibir um widget simples.
@@ -86,7 +86,7 @@ Ela também mostra o código completo para um app Hello World simples.
 No Flutter, são necessários apenas alguns passos para colocar texto, um ícone
 ou uma imagem na tela.
 
-### 1. Selecione um widget de layout
+### 1. Selecione um widget de layout {:#1-select-a-layout-widget}
 
 Escolha entre uma variedade de [widgets de layout][layout widgets] com base
 em como você quer alinhar ou restringir um widget visível,
@@ -106,7 +106,7 @@ Center(
 [`Center`]: {{site.api}}/flutter/widgets/Center-class.html
 [layout widgets]: /ui/widgets/layout
 
-### 2. Crie um widget visível
+### 2. Crie um widget visível {:#2-create-a-visible-widget}
 
 Escolha um [widget visível][visible widget] para seu app conter
 elementos visíveis, como [text][text], [images][images], ou
@@ -125,7 +125,7 @@ Text('Hello World')
 [`Text`]: {{site.api}}/flutter/widgets/Text-class.html
 [visible widget]: /ui/widgets
 
-### 3. Adicione o widget visível ao widget de layout
+### 3. Adicione o widget visível ao widget de layout {:#3-add-the-visible-widget-to-the-layout-widget}
 
 <?code-excerpt path-base="layout/base"?>
 
@@ -145,7 +145,7 @@ const Center(
 ),
 ```
 
-### 4. Adicione o widget de layout à página
+### 4. Adicione o widget de layout à página {:#4-add-the-layout-widget-to-the-page}
 
 Um app Flutter é em si um widget, e a maioria dos widgets tem um método [`build()`][`build()`].
 Instanciar e retornar um widget no método `build()` do app
@@ -310,7 +310,7 @@ ou você pode construir seu próprio conjunto de widgets customizados.
 [widgets library]: {{site.api}}/flutter/widgets/widgets-library.html
 [Material Design]: https://m3.material.io
 
-### 5. Execute seu app
+### 5. Execute seu app {:#5-run-your-app}
 
 <div class="side-by-side">
 <div>
@@ -328,7 +328,7 @@ Código fonte do app:
 </div>
 <hr>
 
-## Organizar múltiplos widgets vertical e horizontalmente
+## Organizar múltiplos widgets vertical e horizontalmente {:#lay-out-multiple-widgets-vertically-and-horizontally}
 
 <?code-excerpt path-base=""?>
 
@@ -386,7 +386,7 @@ Para mais informações, veja [Widgets de layout comuns][Common layout widgets].
 [`ListView`]: {{site.api}}/flutter/widgets/ListView-class.html
 [`Row`]: {{site.api}}/flutter/widgets/Row-class.html
 
-### Alinhando widgets
+### Alinhando widgets {:#aligning-widgets}
 
 Você controla como uma row ou column alinha seus filhos usando as
 propriedades `mainAxisAlignment` e `crossAxisAlignment`.
@@ -478,7 +478,7 @@ uniformemente entre, acima e abaixo de cada imagem.
 [`pubspec.yaml` file]: {{site.repo.this}}/tree/main/examples/layout/row_column/pubspec.yaml
 [Adding assets and images]: /ui/assets/assets-and-images
 
-### Dimensionando widgets
+### Dimensionando widgets {:#sizing-widgets}
 
 Quando um layout é muito grande para caber em um dispositivo, um
 padrão listrado amarelo e preto aparece ao longo da borda afetada.
@@ -546,7 +546,7 @@ o fator flex da imagem do meio como 2:
 [`Expanded`]: {{site.api}}/flutter/widgets/Expanded-class.html
 [sizing]: {{site.repo.this}}/tree/main/examples/layout/sizing
 
-### Empacotando widgets
+### Empacotando widgets {:#packing-widgets}
 
 Por padrão, uma row ou column ocupa o máximo de espaço possível ao longo de seu eixo principal
 mas se você quiser empacotar os filhos juntos,
@@ -858,7 +858,7 @@ ou imagem.
 
 [`Container`]: {{site.api}}/flutter/widgets/Container-class.html
 
-#### Resumo (Container)
+#### Resumo (Container) {:#summary-container}
 
 * Adiciona padding, margens, bordas
 * Muda cor de fundo ou imagem
@@ -871,7 +871,7 @@ ou imagem.
 </div>
 </div>
 
-#### Exemplos (Container)
+#### Exemplos (Container) {:#examples-container}
 
 Este layout consiste em uma column com duas rows, cada uma contendo
 2 imagens. Um [`Container`][`Container`] é usado para mudar a cor de fundo
@@ -939,7 +939,7 @@ ele automaticamente rola.
 
 [`GridView`]: {{site.api}}/flutter/widgets/GridView-class.html
 
-#### Resumo (GridView)
+#### Resumo (GridView) {:#summary-gridview}
 
 * Organiza widgets em uma grade
 * Detecta quando o conteúdo da column excede a render box
@@ -964,7 +964,7 @@ row e column uma célula ocupa (por exemplo,
 [`DataTable`]: {{site.material_ui}}/DataTable-class.html
 [`Table`]: {{site.api}}/flutter/widgets/Table-class.html
 
-#### Exemplos (GridView)
+#### Exemplos (GridView) {:#examples-gridview}
 
 <div class="side-by-side">
 <div>
@@ -1017,7 +1017,7 @@ sua render box.
 
 [`ListView`]: {{site.api}}/flutter/widgets/ListView-class.html
 
-#### Resumo (ListView)
+#### Resumo (ListView) {:#summary-listview}
 
 * Uma [`Column`][`Column`] especializada para organizar uma lista de boxes
 * Pode ser organizada horizontal ou verticalmente
@@ -1027,7 +1027,7 @@ sua render box.
 
 [`Column`]: {{site.api}}/flutter/widgets/Column-class.html
 
-#### Exemplos (ListView)
+#### Exemplos (ListView) {:#examples-listview}
 
 <div class="side-by-side">
 <div>
@@ -1100,7 +1100,7 @@ ou parcialmente sobrepor o widget base.
 
 [`Stack`]: {{site.api}}/flutter/widgets/Stack-class.html
 
-#### Resumo (Stack)
+#### Resumo (Stack) {:#summary-stack}
 
 * Use para widgets que se sobrepõem a outro widget
 * O primeiro widget na lista de filhos é o widget base;
@@ -1108,7 +1108,7 @@ ou parcialmente sobrepor o widget base.
 * O conteúdo de um `Stack` não pode rolar
 * Você pode escolher cortar filhos que excedem a render box
 
-#### Exemplos (Stack)
+#### Exemplos (Stack) {:#examples-stack}
 
 <div class="side-by-side">
 <div>
@@ -1188,7 +1188,7 @@ Especificar um valor não suportado desabilita a sombra completamente.
 [`SizedBox`]: {{site.api}}/flutter/widgets/SizedBox-class.html
 [Material library]: {{site.material_ui}}
 
-#### Resumo (Card)
+#### Resumo (Card) {:#summary-card}
 
 * Implementa um [card Material][Material card]
 * Usado para apresentar nuggets relacionados de informação
@@ -1201,7 +1201,7 @@ Especificar um valor não suportado desabilita a sombra completamente.
 [Material card]: {{site.material}}/components/cards
 [Material library]: {{site.material_ui}}
 
-#### Exemplos (Card)
+#### Exemplos (Card) {:#examples-card}
 
 <div class="side-by-side">
 <div>
@@ -1273,7 +1273,7 @@ e trailing opcionais. `ListTile` é mais comumente usado em
 [`ListView`]: {{site.api}}/flutter/widgets/ListView-class.html
 [Material library]: {{site.material_ui}}
 
-#### Resumo (ListTile)
+#### Resumo (ListTile) {:#summary-listtile}
 
 * Uma row especializada que contém até 3 linhas de texto e
   ícones opcionais
@@ -1282,7 +1282,7 @@ e trailing opcionais. `ListTile` é mais comumente usado em
 
 [Material library]: {{site.material_ui}}
 
-#### Exemplos (ListTile)
+#### Exemplos (ListTile) {:#examples-listtile}
 
 <div class="side-by-side">
 <div>
@@ -1313,7 +1313,7 @@ veja [Entendendo constraints][Understanding constraints].
 
 [Understanding constraints]: /ui/layout/constraints
 
-## Vídeos
+## Vídeos {:#videos}
 
 Os vídeos a seguir, parte da
 série [Flutter in Focus][Flutter in Focus],
@@ -1337,7 +1337,7 @@ Vários deles incluem widgets de layout.
 [Widget of the Week series]: {{site.yt.playlist}}PLjxrf2q8roU23XGwz3Km7sQZFTdB996iG
 [Flutter in Focus]: {{site.yt.watch}}?v=wgTBLj7rMPM&list=PLjxrf2q8roU2HdJQDjJzOeO6J3FoFLWr2
 
-## Outros recursos
+## Outros recursos {:#other-resources}
 
 Os recursos a seguir podem ajudar ao escrever código de layout.
 

@@ -9,13 +9,13 @@ description: >-
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Há algum tempo (anos), o Flutter tem dois sistemas de eventos de tecla implementados.
 O novo sistema alcançou paridade com o antigo sistema de evento de tecla raw específico da plataforma,
 e o sistema raw foi descontinuado.
 
-## Contexto
+## Contexto {:#context}
 
 No subsistema original de evento de tecla, lidar com as peculiaridades de cada plataforma no
 framework e em apps clientes causava código excessivamente complexo, e o sistema antigo
@@ -47,11 +47,11 @@ a intenção de eventualmente descontinuar o sistema raw. Esse momento chegou,
 e desenvolvedores de aplicações devem migrar seu código para evitar mudanças drásticas
 que ocorrerão quando as APIs descontinuadas forem removidas.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 Abaixo estão as APIs que foram descontinuadas.
 
-### APIs descontinuadas que têm um equivalente
+### APIs descontinuadas que têm um equivalente {:#deprecated-apis-that-have-an-equivalent}
 
 * [`Focus.onKey`][Focus.onKey] => [`Focus.onKeyEvent`][Focus.onKeyEvent]
 * [`FocusNode.attach`][FocusNode.attach]'s `onKey` argument => `onKeyEvent` argument
@@ -65,7 +65,7 @@ Abaixo estão as APIs que foram descontinuadas.
 * [`RawKeyEvent`][RawKeyEvent] => [`KeyEvent`][KeyEvent]
 * [`RawKeyUpEvent`][RawKeyUpEvent] => [`KeyUpEvent`][KeyUpEvent]
 
-### APIs que foram descontinuadas
+### APIs que foram descontinuadas {:#apis-that-have-been-discontinued}
 
 Essas APIs não são mais necessárias uma vez que existe apenas um sistema de evento de tecla, ou
 sua funcionalidade não é mais oferecida.
@@ -92,13 +92,13 @@ sua funcionalidade não é mais oferecida.
 * [`RawKeyEventHandler`][RawKeyEventHandler]
 * [`ServicesBinding.keyEventManager`][ServicesBinding.keyEventManager]
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 As bibliotecas do framework Flutter já foram migradas.
 Se seu código usa alguma das classes ou métodos listados na
 seção anterior, migre para essas novas APIs.
 
-### Migrando seu código que usa `RawKeyEvent`
+### Migrando seu código que usa `RawKeyEvent` {:#migrating-your-code-that-uses-rawkeyevent}
 
 Na maior parte, existem APIs `KeyEvent` equivalentes disponíveis para todas as
 APIs `RawKeyEvent`.
@@ -109,7 +109,7 @@ suportadas. Uma exceção é que a informação [`RawKeyEventDataAndroid.eventSo
 está acessível agora como [`KeyEvent.deviceType`][KeyEvent.deviceType] de forma
 mais independente da plataforma.
 
-#### Migrando `isKeyPressed` e funções relacionadas
+#### Migrando `isKeyPressed` e funções relacionadas {:#migrating-iskeypressed-and-related-functions}
 
 Se o código legado usava as APIs [`RawKeyEvent.isKeyPressed`][RawKeyEvent.isKeyPressed],
 [`RawKeyEvent.isControlPressed`][RawKeyEvent.isControlPressed], [`RawKeyEvent.isShiftPressed`][RawKeyEvent.isShiftPressed],
@@ -152,7 +152,7 @@ KeyEventResult _handleKeyEvent(KeyEvent _) {
 }
 ```
 
-#### Definindo `onKey` para focus
+#### Definindo `onKey` para focus {:#setting-onkey-for-focus}
 
 Se o código legado estava usando os parâmetros [`Focus.onKey`][Focus.onKey], [`FocusScope.onKey`][FocusScope.onKey],
 [`FocusNode.onKey`][FocusNode.onKey], ou [`FocusScopeNode.onKey`][FocusScopeNode.onKey], então existe
@@ -188,7 +188,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-#### Tratamento de evento de tecla de repetição
+#### Tratamento de evento de tecla de repetição {:#repeat-key-event-handling}
 
 Se você estava confiando no atributo [`RawKeyEvent.repeat`][RawKeyEvent.repeat] para determinar se uma
 tecla era um evento de tecla repetido, isso agora foi separado em um
@@ -221,12 +221,12 @@ um [`KeyRepeatEvent`][KeyRepeatEvent] também é um evento de tecla pressionada.
 Não assuma que `keyEvent is! KeyDownEvent` permite apenas eventos de tecla liberada.
 Verifique tanto `KeyDownEvent` quanto `KeyRepeatEvent`.
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Disponibilizado na versão: 3.18.0-7.0.pre<br>
 Na versão estável: 3.19.0
 
-## Referências
+## Referências {:#references}
 
 Documentação da API de substituição:
 

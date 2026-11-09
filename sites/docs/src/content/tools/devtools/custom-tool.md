@@ -229,7 +229,7 @@ execute o comando a seguir, substituindo `foo_devtools_extension` por
 flutter create --template app --platforms web foo_devtools_extension
 ```
 
-### Adicione a dependência `package:devtools_extensions` {:#add-the-packagedevtools_extensions-dependency}
+### Adicione a dependência `package:devtools_extensions` {:#add-the-package-devtools-extensions-dependency}
 
 ```console
 flutter pub add devtools_extensions
@@ -285,7 +285,7 @@ Ao desenvolver e manter sua extensão do DevTools,
 você vai querer executar, depurar e testar o app Flutter web da sua extensão.
 Você tem algumas opções diferentes para isso, descritas abaixo.
 
-### Opção A: use o ambiente simulado do DevTools (recomendado para desenvolvimento) {:#option-a-use-the-simulated-devtools-environment}
+### Opção A: use o ambiente simulado do DevTools (recomendado para desenvolvimento) {:#option-a-use-the-simulated-devtools-environment-recommended-for-development}
 
 Para fins de depuração,
 você provavelmente vai querer usar o "ambiente simulado do DevTools".

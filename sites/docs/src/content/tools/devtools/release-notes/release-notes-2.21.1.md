@@ -12,7 +12,7 @@ inclui as seguintes alterações entre outras melhorias gerais.
 Para saber mais sobre DevTools, confira a
 [visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Atualizações de Performance
+## Atualizações de Performance {:#performance-updates}
 
 * Substituído o visualizador de trace da timeline do DevTools pelo
   visualizador de trace [Perfetto](https://perfetto.dev/) -
@@ -25,7 +25,7 @@ Para saber mais sobre DevTools, confira a
   [#4929](https://github.com/flutter/devtools/pull/4929)
 * Refinamento e limpeza da UI - [#4889](https://github.com/flutter/devtools/pull/4889)
 
-## Atualizações de Memory
+## Atualizações de Memory {:#memory-updates}
 
 * Melhorada a usabilidade da comparação de snapshots -
   [#5015](https://github.com/flutter/devtools/pull/5015)
@@ -41,7 +41,7 @@ Para saber mais sobre DevTools, confira a
 * Desativada funcionalidade quebrada de import/export -
   [#5135](https://github.com/flutter/devtools/pull/5135)
 
-## Atualizações do Debugger
+## Atualizações do Debugger {:#debugger-updates}
 
 * Adicionado suporte para visualizar hits do profiler no
   visualizador de script do debugger -
@@ -49,7 +49,7 @@ Para saber mais sobre DevTools, confira a
 * Adicionado suporte para inspecionar records -
   [#5084](https://github.com/flutter/devtools/pull/5084)
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 * Corrigidos vários problemas no syntax highlighting que
   coloriam incorretamente nomes de variáveis contendo palavras reservadas e
@@ -69,7 +69,7 @@ Para saber mais sobre DevTools, confira a
 * Corrigidas cores conflitantes no tema claro -
   [#5067](https://github.com/flutter/devtools/pull/5067)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de alterações desde a versão anterior,
 confira

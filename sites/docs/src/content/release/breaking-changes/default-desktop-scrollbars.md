@@ -113,7 +113,7 @@ Seus widgets scrollable então herdam isso e refletem este comportamento.
 
 ## Migration guide
 
-### Removendo `Scrollbar`s manuais no desktop
+### Removendo `Scrollbar`s manuais no desktop {:#removing-manual-scrollbars-on-desktop}
 
 Code before migration:
 
@@ -157,7 +157,7 @@ switch (currentPlatform) {
 }
 ```
 
-### Configurando um `ScrollBehavior` customizado para sua aplicação
+### Configurando um `ScrollBehavior` customizado para sua aplicação {:#setting-a-custom-scrollbehavior-for-your-application}
 
 Code before migration:
 
@@ -184,7 +184,7 @@ MaterialApp(
 );
 ```
 
-### Configurando um `ScrollBehavior` customizado para um widget específico
+### Configurando um `ScrollBehavior` customizado para um widget específico {:#setting-a-custom-scrollbehavior-for-a-specific-widget}
 
 Code before migration:
 
@@ -220,7 +220,7 @@ ScrollConfiguration(
 );
 ```
 
-### Copiar e modificar `ScrollBehavior` existente
+### Copiar e modificar `ScrollBehavior` existente {:#copy-and-modify-existing-scrollbehavior}
 
 Code before migration:
 

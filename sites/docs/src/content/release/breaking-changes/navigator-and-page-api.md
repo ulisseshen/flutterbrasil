@@ -7,12 +7,12 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 As APIs de página do [`Navigator`][] foram refatoradas para que
 possam se integrar com outros mecanismos de pop do Flutter.
 
-## Contexto
+## Contexto {:#context}
 
 A propriedade `onPopPage` foi adicionada para limpar páginas após
 uma página estar prestes a ser fechada (pop).
@@ -23,7 +23,7 @@ como [`PopScope`][] e gestos de voltar do iOS.
 Para integrar os mecanismos de pop do framework juntos,
 as APIs de página precisavam ser refatoradas.
 
-## Descrição da alteração
+## Descrição da alteração {:#description-of-change}
 
 A propriedade `onDidRemovePage` substitui a propriedade `onPopPage`.
 Você não pode mais vetar um pop na propriedade `onDidRemovePage`.
@@ -35,7 +35,7 @@ Estas funcionam de forma semelhante a como você usa o widget `PopScope`.
 
 [`pages`]: {{site.api}}/flutter/widgets/Navigator/pages.html
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Código antes da migração:
 
@@ -92,12 +92,12 @@ void main() {
 }
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Disponibilizado na versão: 3.22.0-32.0.pre<br>
 Na versão estável: 3.24.0
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

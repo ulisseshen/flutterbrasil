@@ -12,7 +12,7 @@ inclui as seguintes mudanças, entre outras melhorias gerais.
 Para saber mais sobre o DevTools, confira a
 [visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 * Melhorias no tempo de carregamento inicial da página -
   [#3325](https://github.com/flutter/devtools/pull/3325)
@@ -29,7 +29,7 @@ Para saber mais sobre o DevTools, confira a
 
   ![dart devtools warning dialog](/assets/images/docs/tools/devtools/release-notes/images-2.8.0/image1.png "dart devtools warning dialog")
 
-## Atualizações de Performance
+## Atualizações de Performance {:#performance-updates}
 
 * Adicionada uma nova funcionalidade "Enhance Tracing" para ajudar usuários a diagnosticar jank de UI
   proveniente de operações caras de Build, Layout e Paint.
@@ -68,7 +68,7 @@ Para saber mais sobre o DevTools, confira a
      o usuário agora sabe que o problema de performance
      não é devido a esses efeitos de UI.
 
-## Atualizações do Debugger
+## Atualizações do Debugger {:#debugger-updates}
 
 * Substituído o painel "Libraries" por um painel "File Explorer" -
   [#3448](https://github.com/flutter/devtools/pull/3448).
@@ -93,7 +93,7 @@ Para saber mais sobre o DevTools, confira a
 * Refinamento de UI - [#3421](https://github.com/flutter/devtools/pull/3421),
   [#3449](https://github.com/flutter/devtools/pull/3449)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de mudanças desde o lançamento anterior,
 confira

@@ -13,7 +13,7 @@ que você executa apps Android ou iOS normais.
 Flutter agora alimenta a UI onde quer que seu código inclua
 `FlutterActivity` ou `FlutterViewController`.
 
-## Visão geral
+## Visão geral {:#overview}
 
 Você pode estar acostumado a ter seu conjunto de ferramentas de depuração
 favoritas do Flutter disponíveis ao executar `flutter run` ou um comando
@@ -32,7 +32,7 @@ Você pode invocar `flutter attach` antes de iniciar seu engine.
 O comando `flutter attach` aguarda a próxima Dart VM disponível que
 seu engine hospeda.
 
-## Depure a partir do Terminal
+## Depure a partir do Terminal {:#debug-from-the-terminal}
 
 Para conectar a partir do terminal, execute `flutter attach`.
 Para selecionar um dispositivo de destino específico, adicione `-d <deviceId>`.
@@ -51,11 +51,11 @@ To hot reload the changes while running, press "r".
 To hot restart (and rebuild state). press "R".
 ```
 
-## Depure extensão iOS no Xcode e VS Code
+## Depure extensão iOS no Xcode e VS Code {:#debug-ios-extension-in-xcode-and-vs-code}
 
 {% render "docs/debug/debug-flow-ios.md", add:'launch' %}
 
-## Depure extensão Android no Android Studio
+## Depure extensão Android no Android Studio {:#debug-android-extension-in-android-studio}
 
 {% render "docs/debug/debug-flow-androidstudio-as-start.md" %}
 
@@ -66,7 +66,7 @@ To hot restart (and rebuild state). press "R".
 Para depurar seu app via Wi-Fi em um dispositivo iOS ou Android,
 use `flutter attach`.
 
-### Depure via Wi-Fi em dispositivos iOS
+### Depure via Wi-Fi em dispositivos iOS {:#debug-over-wi-fi-on-ios-devices}
 
 Para um alvo iOS, complete as seguintes etapas:
 
@@ -94,7 +94,7 @@ Para um alvo iOS, complete as seguintes etapas:
 
    <DashImage figure img-class="site-mobile-screenshot border" image="development/add-to-app/debugging/wireless-port.png" caption="Arguments Passed On Launch with an IPv4 network added", width="100%" />
 
-#### Para determinar se você está em uma rede IPv6
+#### Para determinar se você está em uma rede IPv6 {:#to-determine-if-youre-on-an-ipv6-network}
 
 1. Abra **Settings** <span aria-label="and then">></span> **Wi-Fi**.
 
@@ -108,7 +108,7 @@ Para um alvo iOS, complete as seguintes etapas:
 
    <DashImage figure img-class="site-mobile-screenshot border" image="development/add-to-app/ipv6.png" caption="WiFi dialog box for macOS System Settings" width="60%" />
 
-### Depure via Wi-Fi em dispositivos Android
+### Depure via Wi-Fi em dispositivos Android {:#debug-over-wi-fi-on-android-devices}
 
 Verifique se seu dispositivo se conecta ao Android Studio via Wi-Fi
 conforme descrito no [guia de configuração do Android][Android setup guide].

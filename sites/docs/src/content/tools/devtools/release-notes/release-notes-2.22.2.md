@@ -12,12 +12,12 @@ inclui as seguintes alterações entre outras melhorias gerais.
 Para saber mais sobre DevTools, confira a
 [visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 - Prevenção de crashes se não houver isolate principal -
   [#5232](https://github.com/flutter/devtools/pull/5232)
 
-## Atualizações do CPU profiler
+## Atualizações do CPU profiler {:#cpu-profiler-updates}
 
 - Exibida URI do stack frame inline com o nome do método para
   garantir que a URI esteja sempre visível em árvores profundamente aninhadas -
@@ -28,7 +28,7 @@ Para saber mais sobre DevTools, confira a
 - Adicionada a capacidade de filtrar por nome de método ou URI de origem -
   [#5204](https://github.com/flutter/devtools/pull/5204)
 
-## Atualizações de Memory
+## Atualizações de Memory {:#memory-updates}
 
 - Alterado padrão do filtro para mostrar apenas projeto e dependências de terceiros -
   [#5201](https://github.com/flutter/devtools/pull/5201).
@@ -45,7 +45,7 @@ Para saber mais sobre DevTools, confira a
 
   ![persisted](/assets/images/docs/tools/devtools/release-notes/images-2.22.2/5290.png "persisted")
 
-## Atualizações do Debugger
+## Atualizações do Debugger {:#debugger-updates}
 
 - Adicionado suporte para histórico de navegação do navegador ao
   navegar usando o File Explorer -
@@ -64,12 +64,12 @@ Para saber mais sobre DevTools, confira a
   ![set](/assets/images/docs/tools/devtools/release-notes/images-2.22.2/5323.png "set")
 
 
-## Atualizações do Network profiler
+## Atualizações do Network profiler {:#network-profiler-updates}
 
 - Melhorada confiabilidade e performance da aba Network -
   [#5056](https://github.com/flutter/devtools/pull/5056)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de alterações desde a versão anterior,
 confira

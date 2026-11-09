@@ -17,7 +17,7 @@ alguns em diferentes idiomas.
 
 ---
 
-## Séries
+## Séries {:#series}
 
 ### Flutter Forward
 
@@ -30,7 +30,7 @@ você pode aproveitar o conteúdo criado para Flutter Forward!
 
 [Flutter Forward playlist]: {{site.yt.playlist}}PLjxrf2q8roU3LvrdR8Hv_phLrTj0xmjnD
 
-### Prepare-se para Flutter Forward
+### Prepare-se para Flutter Forward {:#get-ready-for-flutter-forward}
 
 Flutter Forward aconteceu em 25 de janeiro de 2023 em Nairobi, Quênia.
 Antes do evento, a equipe do Flutter forneceu 17 dias de Flutter
@@ -124,7 +124,7 @@ sem script e em tempo real. Erros, soluções
 
 [The Boring Flutter show playlist]: {{site.yt.playlist}}PLjxrf2q8roU3ahJVrSgAnPjzkpGmL9Czl
 
-### Flutter no Google I/O 2022
+### Flutter no Google I/O 2022 {:#flutter-at-google-io-2022}
 
 Google I/O 2022 já terminou, mas você ainda pode assistir
 ao ótimo conteúdo do Flutter!
@@ -171,7 +171,7 @@ Tutoriais de cinco a dez minutos (mais ou menos) sobre como usar Flutter.
 
 [Flutter in focus playlist]: {{site.yt.playlist}}PLjxrf2q8roU2HdJQDjJzOeO6J3FoFLWr2
 
-## Palestras de conferências
+## Palestras de conferências {:#conference-talks}
 
 Aqui estão algumas palestras do Flutter apresentadas em várias conferências.
 
@@ -181,7 +181,7 @@ Aqui estão algumas palestras do Flutter apresentadas em várias conferências.
 
 [Conference talks playlist]: {{site.yt.playlist}}PLjxrf2q8roU1UJ0OEpANodVMVm1GeE7Ti
 
-## Histórias de desenvolvedores Flutter
+## Histórias de desenvolvedores Flutter {:#flutter-developer-stories}
 
 Vídeos mostrando como vários clientes, como Abbey Road Studio, Hamilton,
 e Alibaba, usaram Flutter para criar apps lindos e atraentes com

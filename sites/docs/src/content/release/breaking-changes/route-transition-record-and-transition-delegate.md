@@ -7,7 +7,7 @@ description: >
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Um novo getter booleano `isWaitingForExitingDecision` foi adicionado
 ao registro de transição de rota e o getter `isEntering`
@@ -18,7 +18,7 @@ realmente precisa de uma decisão explícita sobre como fazer a transição
 para fora da tela. Se você tentar tomar uma decisão para uma rota existente
 que _não_ está esperando por uma decisão, Flutter lança um erro de asserção.
 
-## Contexto
+## Contexto {:#context}
 
 Quando o navigator recebe uma nova lista de páginas, ele tenta atualizar sua
 pilha de rotas atual para corresponder à lista. No entanto, ele requer decisões
@@ -37,7 +37,7 @@ O getter `isEntering` também foi renomeado para
 `isWaitingForEnteringDecision` para ser mais descritivo,
 e também para tornar a nomenclatura mais consistente.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Se você implementar seu próprio delegado de transição, você precisa verificar as
 rotas de saída usando o getter `isWaitingForExitingDecision` antes de
@@ -123,12 +123,12 @@ class NoAnimationTransitionDelegate extends TransitionDelegate<void> {
 }
 ```
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Landed in version: 1.18.0<br>
 In stable release: 1.20
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

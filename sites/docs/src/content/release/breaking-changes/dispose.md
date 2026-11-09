@@ -7,7 +7,7 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Chamadas ausentes para 'dispose()' foram adicionadas para alguns objetos descartáveis.
 Por exemplo, ContextMenuController não descartava OverlayEntry,
@@ -19,7 +19,7 @@ o segundo 'dispose()' falhará com a seguinte mensagem de erro:
 
 `Once you have called dispose() on a <class name>, it can no longer be used.`
 
-## Contexto
+## Contexto {:#background}
 
 A convenção é que o proprietário de um objeto deve descartá-lo.
 
@@ -30,7 +30,7 @@ No entanto, se o objeto estiver protegido contra descarte duplo,
 isso pode causar falhas ao executar no modo debug
 e `dispose()` for chamado em outro lugar no objeto.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Se você encontrar o seguinte erro, atualize seu código para
 chamar `dispose()` apenas nos casos em que seu código criou o objeto.
@@ -62,6 +62,6 @@ chamado incorretamente na primeira vez.
 Você pode localizar a chamada incorreta chamando temporariamente `print(StackTrace.current)`
 no corpo do método `dispose` que falhou.
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Veja o progresso e status [no issue de acompanhamento]({{site.repo.flutter}}/issues/134787).

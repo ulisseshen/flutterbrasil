@@ -21,7 +21,7 @@ Esta receita usa estes passos:
 1.  Calcular a velocidade para simular um movimento de mola.
 
 
-## Passo 1: Configurar um animation controller
+## Passo 1: Configurar um animation controller {:#step-1-set-up-an-animation-controller}
 
 Comece com um widget stateful chamado `DraggableCard`:
 
@@ -103,7 +103,7 @@ Para saber mais, consulte a documentação de [`TickerProvider`][].
     }
 ```
 
-## Passo 2: Mover o widget usando gestos
+## Passo 2: Mover o widget usando gestos {:#step-2-move-the-widget-using-gestures}
 
 Faça o widget se mover quando for arrastado, e adicione um campo [`Alignment`][] à
 classe `_DraggableCardState`:
@@ -149,7 +149,7 @@ do widget `Align` para `_dragAlignment`:
   }
 ```
 
-## Passo 3: Animar o widget
+## Passo 3: Animar o widget {:#step-3-animate-the-widget}
 
 Quando o widget é solto, ele deve voltar para o centro como uma mola.
 
@@ -221,7 +221,7 @@ Finalmente, atualize o `GestureDetector` para gerenciar o animation controller:
     child: Align(
 ```
 
-## Passo 4: Calcular a velocidade para simular um movimento de mola
+## Passo 4: Calcular a velocidade para simular um movimento de mola {:#step-4-calculate-the-velocity-to-simulate-a-springing-motion}
 
 O último passo é fazer um pouco de matemática, para calcular a velocidade do widget
 depois que ele terminar de ser arrastado. Isso é para que o widget realisticamente
@@ -287,7 +287,7 @@ Agora que o animation controller usa uma simulação, seu argumento `duration`
 não é mais necessário.
 :::
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Exemplo prático de simulação de física Flutter no DartPad" run="true"

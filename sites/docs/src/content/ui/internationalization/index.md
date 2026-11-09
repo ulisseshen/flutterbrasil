@@ -31,7 +31,7 @@ No entanto, aplicativos escritos usando a classe de nível inferior
 `WidgetsApp` também podem ser internacionalizados
 usando as mesmas classes e lógica.
 
-## Introdução às localizações no Flutter
+## Introdução às localizações no Flutter {:#introduction-to-localizations-in-flutter}
 
 Esta seção fornece um tutorial sobre como criar e
 internacionalizar um novo aplicativo Flutter,
@@ -148,7 +148,7 @@ estruturados, são cobertas nesta página.
 
 <a id="overriding-locale"></a>
 <a id="overriding-the-locale"></a>
-### Substituir o locale
+### Substituir o locale {:#override-the-locale}
 
 `Localizations.override` é um construtor factory
 para o widget `Localizations` que permite
@@ -199,7 +199,7 @@ deve ser renderizado novamente em espanhol.
 
 <a id="adding-localized-messages"></a>
 <a id="adding-your-own-localized-messages"></a>
-### Adicionar suas próprias mensagens localizadas
+### Adicionar suas próprias mensagens localizadas {:#add-your-own-localized-messages}
 
 Para adicionar texto localizado ao seu aplicativo,
 complete as seguintes instruções:
@@ -366,7 +366,7 @@ return MaterialApp(
 [`gen_l10n_example`]: {{site.repo.this}}/tree/main/examples/internationalization/gen_l10n_example
 [`MaterialApp.onGenerateTitle`]: {{site.material_ui}}/MaterialApp/onGenerateTitle.html
 
-### Placeholders, plurais e seleções
+### Placeholders, plurais e seleções {:#placeholders-plurals-and-selects}
 
 :::tip
 Ao usar o VS Code, adicione a [extensão arb-editor][arb-editor extension].
@@ -539,7 +539,7 @@ real é sensível a maiúsculas e minúsculas.
 Ou seja, `AppLocalizations.of(context)!.pronoun("Male")`
 usa o caso "other" por padrão, e retorna "they".
 
-### Sintaxe de escape
+### Sintaxe de escape {:#escaping-syntax}
 
 Às vezes, você precisa usar tokens,
 como `{` e `}`, como caracteres normais.
@@ -570,7 +570,7 @@ A string resultante é a seguinte:
 "Hello! {Isn't} this a wonderful day?"
 ```
 
-### Mensagens com números e moedas
+### Mensagens com números e moedas {:#messages-with-numbers-and-currencies}
 
 Números, incluindo aqueles que representam valores monetários,
 são exibidos de maneira muito diferente em diferentes locales.
@@ -626,7 +626,7 @@ faça as seguintes alterações no arquivo `lib/l10n/app_en.arb`:
 ```
 {% endraw %}
 
-### Mensagens com datas
+### Mensagens com datas {:#messages-with-dates}
 
 Strings de datas são formatadas de muitas maneiras diferentes
 dependendo tanto do locale quanto das necessidades do app.
@@ -664,7 +664,7 @@ AppLocalizations.of(context).helloWorldOn(DateTime.utc(1959, 7, 9))
 [`DateFormat`]: {{site.api}}/flutter/package-intl_intl/DateFormat-class.html
 
 <a id="ios-specifics"></a>
-### Localizando para iOS: Atualizando o bundle do app iOS
+### Localizando para iOS: Atualizando o bundle do app iOS {:#localizing-for-ios-updating-the-ios-app-bundle}
 
 Embora as localizações sejam tratadas pelo Flutter,
 você precisa adicionar os idiomas suportados no projeto Xcode.
@@ -692,13 +692,13 @@ use as seguintes instruções:
    idiomas e regiões seu app suporta.
 
 <a id="advanced-customization"></a>
-## Tópicos avançados para personalização adicional
+## Tópicos avançados para personalização adicional {:#advanced-topics-for-further-customization}
 
 Esta seção cobre maneiras adicionais de personalizar um
 aplicativo Flutter localizado.
 
 <a id="advanced-locale"></a>
-### Definição avançada de locale
+### Definição avançada de locale {:#advanced-locale-definition}
 
 Alguns idiomas com múltiplas variantes requerem mais do que apenas um
 código de idioma para diferenciar adequadamente.
@@ -762,7 +762,7 @@ também devem ser totalmente diferenciados para uma localização mais nuançada
 [`Localizations`]: {{site.api}}/flutter/widgets/WidgetsApp/supportedLocales.html
 
 <a id="tracking-locale"></a>
-### Rastreando o locale: A classe Locale e o widget Localizations
+### Rastreando o locale: A classe Locale e o widget Localizations {:#tracking-the-locale-the-locale-class-and-the-localizations-widget}
 
 A classe [`Locale`][] identifica o idioma do usuário.
 Dispositivos móveis suportam configurar o locale para todos os aplicativos,
@@ -791,7 +791,7 @@ Locale myLocale = Localizations.localeOf(context);
 
 <a id="specifying-supportedlocales" aria-hidden="true"></a>
 
-### Especificando o parâmetro supported&shy;Locales do app
+### Especificando o parâmetro supported&shy;Locales do app {:#specifying-the-apps-supportedshylocales-parameter}
 
 Embora a biblioteca `flutter_localizations`
 suporte muitos idiomas e variantes de idioma,
@@ -863,7 +863,7 @@ na linha de comando ou consulte a tabela a seguir:
 {:.table .table-striped}
 
 
-## Como funciona a internacionalização no Flutter
+## Como funciona a internacionalização no Flutter {:#how-internationalization-in-flutter-works}
 
 Esta seção cobre os detalhes técnicos de como as localizações funcionam
 no Flutter. Se você está planejando suportar seu próprio conjunto de mensagens
@@ -871,7 +871,7 @@ localizadas, o conteúdo a seguir seria útil.
 Caso contrário, você pode pular esta seção.
 
 <a id="loading-and-retrieving"></a>
-### Carregando e recuperando valores localizados
+### Carregando e recuperando valores localizados {:#loading-and-retrieving-localized-values}
 
 O widget `Localizations` é usado para carregar e
 procurar objetos que contêm coleções de valores localizados.
@@ -933,7 +933,7 @@ tooltip: MaterialLocalizations.of(context).backButtonTooltip,
 [`MaterialLocalizations`]: {{site.material_ui}}/MaterialLocalizations-class.html
 
 <a id="defining-class"></a>
-### Definindo uma classe para os recursos localizados do app
+### Definindo uma classe para os recursos localizados do app {:#defining-a-class-for-the-apps-localized-resources}
 
 Montar um app Flutter internacionalizado geralmente
 começa com a classe que encapsula os valores localizados do app.
@@ -1001,7 +1001,7 @@ Neste caso, seria apenas a classe `DemoLocalizations`.
 [`Intl.message()`]: {{site.pub-api}}/intl/latest/intl/Intl/message.html
 
 <a id="adding-language"></a>
-### Adicionando suporte para um novo idioma
+### Adicionando suporte para um novo idioma {:#adding-support-for-a-new-language}
 
 Um app que precisa suportar um idioma que não está incluído em
 [`GlobalMaterialLocalizations`][] tem que fazer algum trabalho extra:
@@ -1180,13 +1180,13 @@ const MaterialApp(
 [`GlobalMaterialLocalizations`]: {{site.api}}/flutter/flutter_localizations/GlobalMaterialLocalizations-class.html
 
 <a id="alternative-internationalization-workflows"></a>
-## Fluxos de trabalho alternativos de internacionalização
+## Fluxos de trabalho alternativos de internacionalização {:#alternative-internationalization-workflows}
 
 Esta seção descreve diferentes abordagens para internacionalizar
 seu aplicativo Flutter.
 
 <a id="alternative-class"></a>
-### Uma classe alternativa para os recursos localizados do app
+### Uma classe alternativa para os recursos localizados do app {:#an-alternative-class-for-the-apps-localized-resources}
 
 O exemplo anterior foi definido em termos do pacote `intl`
 do Dart. Você pode escolher sua própria abordagem para gerenciar
@@ -1252,7 +1252,7 @@ class DemoLocalizationsDelegate
 [`SynchronousFuture`]: {{site.api}}/flutter/foundation/SynchronousFuture-class.html
 
 <a id="dart-tools"></a>
-### Usando as ferramentas Dart intl
+### Usando as ferramentas Dart intl {:#using-the-dart-intl-tools}
 
 Antes de construir uma API usando o pacote [`intl`][] do Dart,
 revise a documentação do pacote `intl`.
@@ -1306,7 +1306,7 @@ Reconstruir `l10n/messages_all.dart` requer dois passos.
     para carregar as mensagens localizadas e `Intl.message()`
     para procurá-las.
 
-## Mais informações
+## Mais informações {:#more-information}
 
 Se você aprende melhor lendo código,
 confira os seguintes exemplos.

@@ -13,8 +13,8 @@
 O(s) link(s) a seguir levam você para a
 [documentação mais recente][] no canal master.
 Você pode encontrar a documentação para o canal
-stable em [api.flutterbrasil.dev][].
+stable em [api.flutter.dev][].
 :::
 
-[api.flutterbrasil.dev]: {{site.api}}
+[api.flutter.dev]: {{site.api}}
 [documentação mais recente]: {{site.main-api}}

@@ -40,7 +40,7 @@ e a documentação
 [service accounts]: https://cloud.google.com/iam/docs/service-account-overview
 [YouTube]: {{site.pub-api}}/googleapis/latest/youtube_v3/youtube_v3-library.html
 
-## Visão geral
+## Visão geral {:#overview}
 
 Para usar Google APIs, siga estas etapas:
 
@@ -50,7 +50,7 @@ Para usar Google APIs, siga estas etapas:
 1. Obtenha um cliente HTTP autenticado
 1. Crie e use a classe de API desejada
 
-## 1. Escolha a API desejada
+## 1. Escolha a API desejada {:#1-pick-the-desired-api}
 
 A documentação do [`package:googleapis`][] lista
 cada API como uma biblioteca Dart separada&emdash;em um
@@ -83,7 +83,7 @@ import 'package:googleapis/youtube/v3.dart';
 [`YouTubeApi`]: {{site.pub-api}}/googleapis/latest/youtube_v3/YouTubeApi-class.html
 [`youtubeReadonlyScope`]: {{site.pub-api}}/googleapis/latest/youtube_v3/YouTubeApi/youtubeReadonlyScope-constant.html
 
-## 2. Habilite a API
+## 2. Habilite a API {:#2-enable-the-api}
 
 Para usar Google APIs você deve ter uma conta Google
 e um projeto Google. Você também
@@ -95,7 +95,7 @@ Para detalhes, veja as [instruções de primeiros passos][getting started instru
 [getting started instructions]: https://cloud.google.com/apis/docs/getting-started
 [YouTube Data API v3]: https://console.cloud.google.com/apis/library/youtube.googleapis.com
 
-## 3. Autentique e determine o usuário atual
+## 3. Autentique e determine o usuário atual {:#3-authenticate-and-determine-the-current-user}
 
 Use o pacote [google_sign_in][gsi-pkg] para
 autenticar usuários com sua identidade Google.
@@ -170,7 +170,7 @@ você deve obter um cliente HTTP autenticado.
 [gsi-pkg]: {{site.pub-pkg}}/google_sign_in
 [`GoogleSignIn`]: {{site.pub-api}}/google_sign_in/latest/google_sign_in/GoogleSignIn-class.html
 
-## 4. Obtenha um cliente HTTP autenticado
+## 4. Obtenha um cliente HTTP autenticado {:#4-obtain-an-authenticated-http-client}
 
 Depois de ter um usuário conectado, solicite os
 tokens de autorização de cliente relevantes usando [`authorizationForScopes`][]
@@ -211,7 +211,7 @@ final authenticatedClient = authorization!.authClient(
 [`authClient`]: {{site.pub-api}}/extension_google_sign_in_as_googleapis_auth/latest/extension_google_sign_in_as_googleapis_auth/GoogleApisGoogleSignInAuth/authClient.html
 [`package:extension_google_sign_in_as_googleapis_auth`]: {{site.pub-pkg}}/extension_google_sign_in_as_googleapis_auth
 
-## 5. Crie e use a classe de API desejada
+## 5. Crie e use a classe de API desejada {:#5-create-and-use-the-desired-api-class}
 
 Use a API para criar o tipo de API desejado e chamar métodos.
 Por exemplo:
@@ -226,7 +226,7 @@ final favorites = await youTubeApi.playlistItems.list(
 );
 ```
 
-## Mais informações
+## Mais informações {:#more-information}
 
 Você pode querer conferir o seguinte:
 

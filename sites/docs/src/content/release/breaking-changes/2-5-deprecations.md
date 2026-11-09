@@ -6,7 +6,7 @@ description: >
   foram removidas do Flutter.
 ---
 
-## Resumo
+## Resumo {:#summary}
 
 De acordo com a [Política de Descontinuação][Deprecation Policy] do Flutter,
 as APIs descontinuadas que atingiram o fim da vida útil após o
@@ -20,13 +20,13 @@ fonte primária para auxiliar na migração. Uma
 [Deprecation Policy]: {{site.repo.flutter}}/blob/main/docs/contributing/Tree-hygiene.md#deprecations
 [quick reference sheet]: /go/deprecations-removed-after-2-5
 
-## Mudanças
+## Mudanças {:#changes}
 
 Esta seção lista as descontinuações por classe afetada.
 
 ---
 
-### `autovalidate` do `Form` e classes relacionadas
+### `autovalidate` do `Form` e classes relacionadas {:#autovalidate-of-form-related-classes}
 
 Suportado pelo Flutter Fix: sim
 
@@ -176,7 +176,7 @@ PRs relevantes:
 
 ---
 
-### `id` do `AndroidViewController` e subclasses
+### `id` do `AndroidViewController` e subclasses {:#androidviewcontroller-subclasses-id}
 
 Suportado pelo Flutter Fix: sim
 
@@ -261,7 +261,7 @@ PRs relevantes:
 
 ---
 
-### `BlacklistingTextInputFormatter` e `WhitelistingTextInputFormatter`
+### `BlacklistingTextInputFormatter` e `WhitelistingTextInputFormatter` {:#blacklistingtextinputformatter-whitelistingtextinputformatter}
 
 Suportado pelo Flutter Fix: não
 
@@ -363,7 +363,7 @@ PRs relevantes:
 
 ---
 
-### `packageRoot` em `dart:core`, `dart:isolate` e `package:platform`
+### `packageRoot` em `dart:core`, `dart:isolate` e `package:platform` {:#packageroot-in-dart-core-dart-isolate-and-package-platform}
 
 As seguintes APIs foram removidas:
 
@@ -425,6 +425,6 @@ PRs relevantes:
 
 ---
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Na versão estável: 2.10

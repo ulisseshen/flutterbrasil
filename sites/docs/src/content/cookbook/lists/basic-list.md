@@ -10,7 +10,7 @@ Exibir listas de dados é um padrão fundamental para apps mobile.
 O Flutter inclui o widget [`ListView`][`ListView`]
 para facilitar o trabalho com listas.
 
-## Crie um ListView
+## Crie um ListView {:#create-a-listview}
 
 Usar o construtor padrão do `ListView` é
 perfeito para listas que contêm apenas alguns itens.
@@ -28,7 +28,7 @@ ListView(
 ),
 ```
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter lists hands-on example in DartPad" run="true"

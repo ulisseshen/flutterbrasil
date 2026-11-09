@@ -4,7 +4,7 @@ description: Informações sobre o suporte de acessibilidade do Flutter.
 ia-translate: true
 ---
 
-## Contexto
+## Contexto {:#background}
 
 Garantir que os aplicativos sejam acessíveis a uma ampla gama de usuários é uma
 parte essencial da construção de um aplicativo de alta qualidade. Aplicativos mal
@@ -27,7 +27,7 @@ operacional subjacente, incluindo:
 [UI design and styling]: /ui/accessibility/ui-design-and-styling
 [Assistive technologies support]: /ui/accessibility/assistive-technologies
 
-## Regulamentações de acessibilidade
+## Regulamentações de acessibilidade {:#accessibility-regulations}
 
 Padrões e regulamentações de acessibilidade ajudam a garantir que os produtos sejam
 acessíveis a pessoas com deficiência. Muitos deles foram transformados em leis e
@@ -68,7 +68,7 @@ a [EN 301 549][EN 301 549] como sua base técnica.
 [EAA]: https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/disability/union-equality-strategy-rights-persons-disabilities-2021-2030/european-accessibility-act_en
 
 
-## Construindo com acessibilidade em mente
+## Construindo com acessibilidade em mente {:#building-with-accessibility-in-mind}
 
 Garantir que seu aplicativo possa ser usado por todos significa incorporar acessibilidade
 desde o início. Para alguns aplicativos, isso é mais fácil dizer do que fazer.
@@ -79,7 +79,7 @@ para oferecer uma experiência dramaticamente mais acessível.
 <YouTubeEmbed id="bWbBgbmAdQs" title="Building Flutter apps with accessibility in mind" />
 
 
-## Lista de verificação de acessibilidade para lançamento
+## Lista de verificação de acessibilidade para lançamento {:#accessibility-release-checklist}
 
 Aqui está uma lista não exaustiva de coisas a considerar ao preparar seu
 aplicativo para lançamento.
@@ -109,7 +109,7 @@ aplicativo para lançamento.
 [TalkBack]: https://support.google.com/accessibility/android/answer/6283677?hl=en
 [VoiceOver]: https://www.apple.com/lae/accessibility/iphone/vision/
 
-## Saiba mais
+## Saiba mais {:#learn-more}
 
 Para saber mais sobre Flutter e acessibilidade, confira
 os seguintes artigos escritos por membros da comunidade:

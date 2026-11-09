@@ -8,19 +8,19 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Executáveis construídos para aplicativos Flutter Windows agora estão localizados em pastas
 dependentes da arquitetura.
 
-## Contexto
+## Contexto {:#context}
 
 Em preparação para suportar Windows em Arm64, o caminho de build do Windows foi
 atualizado para adicionar a arquitetura de destino do build.
 
 Anteriormente, builds do Flutter para Windows assumiam uma arquitetura de destino x64.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Você pode precisar atualizar sua infraestrutura para usar o novo caminho de build do
 Flutter Windows.
@@ -47,12 +47,12 @@ Se você usa [`package:msix`][], atualize para a versão 3.16.7 ou mais recente.
 
 [`package:msix`]: {{site.pub-pkg}}/msix
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Disponibilizado na versão: 3.15.0-0.0.pre<br>
 Na versão estável: 3.16
 
-## Referências
+## Referências {:#references}
 
 Documento de design:
 

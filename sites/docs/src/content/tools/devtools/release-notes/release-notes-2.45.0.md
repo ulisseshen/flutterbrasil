@@ -12,7 +12,7 @@ inclui as seguintes mudanças, entre outras melhorias gerais.
 Para saber mais sobre o DevTools, confira a
 [visão geral do DevTools](/tools/devtools/overview).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 * Adicionado um aviso de pressão de memória que permite reduzir o uso de memória do
   DevTools para evitar uma falha OOM. -
@@ -30,18 +30,18 @@ Para saber mais sobre o DevTools, confira a
 * Impedido que campos de texto roubassem o foco da IDE. -
   [#9091](https://github.com/flutter/devtools/pull/9091)
 
-## Atualizações do Inspector
+## Atualizações do Inspector {:#inspector-updates}
 
 * Corrigido bug onde erros na árvore do inspector (por exemplo, erros de overflow do RenderFlex)
   não eram removidos após um hot-reload. -
   [#9106](https://github.com/flutter/devtools/pull/9106)
 
-## Atualizações do Debugger
+## Atualizações do Debugger {:#debugger-updates}
 
 * Combinados os botões Pause e Resume em um único botão. -
   [#9095](https://github.com/flutter/devtools/pull/9095)
 
-## Atualizações da ferramenta Deep links
+## Atualizações da ferramenta Deep links {:#deep-links-tool-updates}
 
 * Corrigido um problema com caminhos de arquivo do Windows sendo exibidos incorretamente na página
   Deep Links [#9027](https://github.com/flutter/devtools/pull/9027).
@@ -49,7 +49,7 @@ Para saber mais sobre o DevTools, confira a
 * Corrigido um problema com a página Deep Links falhando quando nenhuma configuração do iOS está
   presente [#9027](https://github.com/flutter/devtools/pull/9027).
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de mudanças neste lançamento, confira o
 [log do git do DevTools](https://github.com/flutter/devtools/tree/v2.45.0).

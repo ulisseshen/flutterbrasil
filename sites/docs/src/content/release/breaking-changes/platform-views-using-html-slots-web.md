@@ -11,7 +11,7 @@ description: >
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 O Flutter agora renderiza todas as platform views web em uma localização consistente do DOM,
 como filhos diretos de `flt-glass-pane` (independentemente do backend de renderização:
@@ -23,7 +23,7 @@ conteúdos renderizados de uma platform view para posicioná-la/dimensioná-la a
 não é mais o caso.** Os usuários agora podem decidir como querem utilizar o espaço
 alocado para sua platform view pelo framework.
 
-## Contexto
+## Contexto {:#context}
 
 O framework Flutter frequentemente ajusta sua árvore de renderização para otimizar as operações
 de pintura que são finalmente feitas por frame. Na web, essas mudanças na árvore de renderização
@@ -51,13 +51,13 @@ Esta mudança foi feita para:
    CSS de forma confiável para estilizar suas platform views, e usar outras APIs DOM padrão,
    como `querySelector`, e `getElementById`.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 Um app Flutter web agora é renderizado dentro de um [shadow root][shadow root] comum no qual
 [elementos slot][slot elements] representam platform views. O conteúdo real de
 cada platform view é renderizado como um **irmão de dito shadow root**.
 
-### Antes
+### Antes {:#before}
 
 ```html
 ...
@@ -76,7 +76,7 @@ cada platform view é renderizado como um **irmão de dito shadow root**.
 ...
 ```
 
-### Depois
+### Depois {:#after}
 
 ```html
 ...
@@ -107,9 +107,9 @@ Da perspectiva de um app, esta mudança é transparente. **No entanto**, isto é
 considerado uma _breaking change_ porque alguns testes fazem suposições
 sobre o DOM interno de um app Flutter web, e quebram.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
-### Código
+### Código {:#code}
 
 O engine pode imprimir uma mensagem de aviso no console similar a:
 
@@ -153,7 +153,7 @@ valor de `auto` para `width` e `height` é suficiente para parar o aviso.
 
 Leia mais sobre [`CSS width`][CSS width] e [`CSS height`][CSS height].
 
-### Testes
+### Testes {:#tests}
 
 Após esta mudança, o código de teste do usuário **não** precisa inspecionar profundamente os
 conteúdos do shadow root do App. Todos os conteúdos da platform view serão
@@ -166,12 +166,12 @@ sem aviso.
 
 (Veja PRs relevantes abaixo para exemplos das "migrações" descritas acima).
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Disponibilizado na versão: 2.3.0-16.0.pre<br>
 Na versão estável: 2.5
 
-## Referências
+## Referências {:#references}
 
 Documento de design:
 

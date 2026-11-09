@@ -124,7 +124,7 @@ podem rodar na web e desktop, que podem ser dimensionados de muitas maneiras.
 em vez do tamanho do dispositivo físico.**
 :::
 
-### Outras soluções
+### Outras soluções {:#other-solutions}
 
 Outra maneira de abordar essas situações é
 usar a propriedade `maxWidth` de `BoxConstraints`.
@@ -142,7 +142,7 @@ pelo Material 3 no guia [Applying layout][Applying layout].
 
 [Applying layout]: https://m3.material.io/foundations/layout/applying-layout/window-size-classes
 
-## Dobráveis
+## Dobráveis {:#foldables}
 
 Como mencionado anteriormente, Android e Flutter ambos
 recomendam em suas orientações de design **não**
@@ -210,7 +210,7 @@ visualização que você se importa. Isso cria uma API
 com visão de futuro que deve lidar com dispositivos
 de múltiplas telas _e_ múltiplas visualizações atuais e futuros.
 
-## Entrada adaptativa
+## Entrada adaptativa {:#adaptive-input}
 
 Adicionar suporte para mais telas, também significa
 expandir controles de entrada.
@@ -237,7 +237,7 @@ orientação sobre adicionar
 [m3-guide]: {{site.android-dev}}/docs/quality-guidelines/large-screen-app-quality
 [User input]: /ui/adaptive-responsive/input
 
-### Navegação
+### Navegação {:#navigation}
 
 A navegação pode criar desafios únicos ao trabalhar com uma variedade de
 dispositivos de tamanhos diferentes. Geralmente, você quer alternar entre

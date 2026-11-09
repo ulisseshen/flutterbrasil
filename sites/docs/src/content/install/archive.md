@@ -7,7 +7,7 @@ ia-translate: true
 
 {% render "docs/china-notice.md" %}
 
-## Visão geral
+## Visão geral {:#overview}
 
 O arquivo do Flutter SDK é uma coleção de todas as versões anteriores do
 Flutter SDK. Este arquivo é útil para desenvolvedores que precisam usar uma
@@ -57,7 +57,7 @@ arquivo do SDK:
 [calendar versioning]: https://calver.org/
 [Flutter SDK versioning]: {{site.repo.flutter}}/blob/main/docs/releases/Release-versioning.md
 
-## Janelas públicas de lançamento
+## Janelas públicas de lançamento {:#public-release-windows}
 
 Previsibilidade é fundamental para integrar recursos complexos com segurança.
 Usamos janelas públicas de lançamento para dar à comunidade
@@ -88,7 +88,7 @@ garantir a inclusão no próximo lançamento estável.
 
 ---
 
-## Canal estável (Stable channel)
+## Canal estável (Stable channel) {:#stable-channel}
 
 <Tabs key="os-archive-tabs">
     <Tab name="Windows">
@@ -129,7 +129,7 @@ Por exemplo: [`flutter/flutter@3.38.0-0.1.pre...3.38.0-0.2.pre`](https://github.
 
 <a id="master-channel" aria-hidden="true"></a>
 
-## Canal main (Main channel)
+## Canal main (Main channel) {:#main-channel}
 
 [Pacotes de instalação][Installation bundles] não estão disponíveis para o canal `main`
 (que anteriormente era conhecido como canal `master`).
@@ -144,7 +144,7 @@ $ ./flutter/bin/flutter --version
 
 <a id="install-from-an-archive" aria-hidden="true"></a>
 
-## Mais informações
+## Mais informações {:#more-information}
 
 - Para instruções sobre como instalar o Flutter a partir de um SDK baixado,
   veja [Instalar o Flutter manualmente][manual-install].

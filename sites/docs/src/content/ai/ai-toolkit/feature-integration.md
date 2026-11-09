@@ -40,7 +40,7 @@ funcionalidades adicionais:
 [`LlmChatView`]:
     {{site.pub-api}}/flutter_ai_toolkit/latest/flutter_ai_toolkit/LlmChatView-class.html
 
-## Mensagens de boas-vindas
+## Mensagens de boas-vindas {:#welcome-messages}
 
 O chat view permite que você forneça uma mensagem de boas-vindas personalizada
 para definir o contexto para o usuário:
@@ -76,7 +76,7 @@ confira o [welcome example][].
 [welcome example]:
     https://github.com/flutter/ai/blob/main/example/lib/welcome/welcome.dart
 
-## Prompts sugeridos
+## Prompts sugeridos {:#suggested-prompts}
 
 Você pode fornecer um conjunto de prompts sugeridos para dar
 ao usuário uma ideia do que a sessão de chat foi otimizada:
@@ -118,7 +118,7 @@ dê uma olhada no [suggestions example][].
 [suggestions example]:
     https://github.com/flutter/ai/blob/main/example/lib/suggestions/suggestions.dart
 
-## Instruções do LLM
+## Instruções do LLM {:#llm-instructions}
 
 Para otimizar as respostas de um LLM com base nas necessidades
 do seu aplicativo, você vai querer fornecer instruções.
@@ -178,7 +178,7 @@ class _HomePageState extends State<HomePage> {
 }
 ```
 
-## Function calling {:#function-calling}
+## Function calling
 
 Para permitir que o LLM execute ações em nome do usuário, você pode fornecer um
 conjunto de ferramentas (funções) que o LLM pode chamar. O `FirebaseProvider` suporta
@@ -192,7 +192,7 @@ Para usar function calling, você precisa definir suas ferramentas e passá-las 
 [function calling example]:
     https://github.com/flutter/ai/blob/main/example/lib/function_calls/function_calls.dart
 
-## Desabilitar anexos e entrada de áudio
+## Desabilitar anexos e entrada de áudio {:#disable-attachments-and-audio-input}
 
 Se você gostaria de desabilitar anexos (o botão **+**) ou entrada de áudio (o botão do microfone),
 você pode fazer isso com os parâmetros `enableAttachments` e `enableVoiceNotes` no
@@ -240,7 +240,7 @@ Confira o [custom STT example][] para mais detalhes.
 [custom STT example]:
     https://github.com/flutter/ai/tree/main/example/lib/custom_stt
 
-## Gerenciar comportamento de cancelamento ou erro
+## Gerenciar comportamento de cancelamento ou erro {:#manage-cancel-or-error-behavior}
 
 Por padrão, quando o usuário cancela uma solicitação do LLM, a resposta do LLM será
 anexada com a string "CANCEL" e uma mensagem aparecerá informando que o usuário
@@ -278,7 +278,7 @@ class ChatPage extends StatelessWidget {
 Você pode substituir qualquer um ou todos esses parâmetros e o `LlmChatView` usará
 seus padrões para qualquer coisa que você não substituir.
 
-## Gerenciar histórico
+## Gerenciar histórico {:#manage-history}
 
 A [interface padrão que define todos os providers LLM][providerIF]
 que podem se conectar ao chat view inclui a capacidade de
@@ -368,7 +368,7 @@ confira o [recipes example app][] e o [history example app][].
     https://github.com/flutter/ai/blob/main/example/lib/history/history.dart
 [recipes example app]: https://github.com/flutter/ai/tree/main/example/lib/recipes
 
-## Serialização/desserialização de chat
+## Serialização/desserialização de chat {:#chat-serializationdeserialization}
 
 Para salvar e restaurar o histórico de chat entre sessões
 de um aplicativo, é necessária a capacidade de serializar e
@@ -430,7 +430,7 @@ Para ver isso em ação, confira o [history example app][].
 [history example app]:
     https://github.com/flutter/ai/blob/main/example/lib/history/history.dart
 
-## Widgets de resposta personalizados
+## Widgets de resposta personalizados {:#custom-response-widgets}
 
 Por padrão, a resposta do LLM mostrada pelo chat view é
 Markdown formatado. No entanto, em alguns casos,
@@ -625,7 +625,7 @@ confira o [dark mode example][] e o [demo app][].
 [reference documentation]:
     {{site.pub-api}}/flutter_ai_toolkit/latest/flutter_ai_toolkit/LlmChatViewStyle-class.html
 
-## Chat sem interface
+## Chat sem interface {:#chat-without-ui}
 
 Você não precisa usar o chat view para acessar a
 funcionalidade do provider subjacente.
@@ -716,7 +716,7 @@ confira a [Edit Recipe page][] do exemplo de receitas.
 [Edit Recipe page]:
     https://github.com/flutter/ai/blob/main/example/lib/recipes/pages/edit_recipe_page.dart
 
-## Reroteamento de prompts
+## Reroteamento de prompts {:#rerouting-prompts}
 
 Se você gostaria de depurar, registrar ou manipular a conexão
 entre o chat view e o provider subjacente,

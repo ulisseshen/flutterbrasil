@@ -8,7 +8,7 @@ description: Bibliotecas e ferramentas de linha de comando do Flutter.
 O Flutter SDK tem os packages e ferramentas de linha de comando necessários para desenvolver
 apps Flutter em diferentes plataformas. Para obter o Flutter SDK, veja [Install][Install].
 
-## O que há no Flutter SDK
+## O que há no Flutter SDK {:#whats-in-the-flutter-sdk}
 
 O seguinte está disponível através do Flutter SDK:
 
@@ -27,12 +27,12 @@ O seguinte está disponível através do Flutter SDK:
 Nota: Para mais informações sobre o Flutter SDK, veja seu
 [arquivo README][README file].
 
-## Ferramenta de linha de comando `flutter`
+## Ferramenta de linha de comando `flutter` {:#flutter-command-line-tool}
 
 A [ferramenta CLI `flutter`][flutter CLI tool] (`flutter/bin/flutter`) é como desenvolvedores
 (ou IDEs em nome de desenvolvedores) interagem com o Flutter.
 
-## Ferramenta de linha de comando `dart`
+## Ferramenta de linha de comando `dart` {:#dart-command-line-tool}
 
 A [ferramenta CLI `dart`][dart CLI tool] está disponível com o Flutter SDK em `flutter/bin/dart`.
 
@@ -43,7 +43,7 @@ A [ferramenta CLI `dart`][dart CLI tool] está disponível com o Flutter SDK em 
 [Install]: /install
 [README file]: {{site.repo.flutter}}/blob/main/README.md
 
-## Suporte do SDK para ferramentas de desenvolvedor Flutter
+## Suporte do SDK para ferramentas de desenvolvedor Flutter {:#sdk-support-for-flutter-developer-tools}
 
 As ferramentas de IDE para Flutter (plugins do Android Studio e Intellij, extensões do
 VS Code) suportam versões do Flutter SDK que remontam a dois anos. Isso significa que

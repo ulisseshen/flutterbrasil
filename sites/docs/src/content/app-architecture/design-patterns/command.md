@@ -38,7 +38,7 @@ Neste guia, você aprenderá
 como usar o padrão command
 para melhorar seus view models.
 
-## Desafios ao implementar view models
+## Desafios ao implementar view models {:#challenges-when-implementing-view-models}
 
 Classes de view model no Flutter são tipicamente implementadas
 estendendo a classe [`ChangeNotifier`][`ChangeNotifier`].
@@ -81,7 +81,7 @@ class HomeViewModel extends ChangeNotifier {
 }
 ```
 
-### Estado de UI em view models
+### Estado de UI em view models {:#ui-state-in-view-models}
 
 Um view model também contém estado de UI além de dados, como
 se a view está em execução ou experimentou um erro.
@@ -165,7 +165,7 @@ porque você pode querer mostrar um componente de UI diferente
 quando a ação `load()` executa do que quando a ação `edit()` executa;
 você terá o mesmo problema com o estado `error`.
 
-### Disparando ações de UI a partir de view models
+### Disparando ações de UI a partir de view models {:#triggering-ui-actions-from-view-models}
 
 Classes de view model podem encontrar problemas ao
 executar ações de UI e o estado do view model muda.
@@ -214,7 +214,7 @@ void _onViewModelChanged() {
 }
 ```
 
-## Padrão Command
+## Padrão Command {:#command-pattern}
 
 Você pode se encontrar repetindo o código acima várias e várias vezes,
 implementando um estado running diferente
@@ -274,7 +274,7 @@ e ao invés disso o command `load` é exposto para a `View`.
 Os estados `running` e `error` anteriores podem ser removidos,
 pois agora são parte do command.
 
-### Executando um command
+### Executando um command {:#executing-a-command}
 
 Ao invés de chamar `viewModel.load()` para executar a ação load,
 agora você chama `viewModel.load.execute()`.
@@ -353,7 +353,7 @@ class Command extends ChangeNotifier {
 }
 ```
 
-### Ouvindo o estado do command
+### Ouvindo o estado do command {:#listening-to-the-command-state}
 
 A classe `Command` estende de `ChangeNotifier`,
 permitindo que Views escutem seus estados.
@@ -402,7 +402,7 @@ void _onViewModelChanged() {
 }
 ```
 
-### Combinando command e ViewModel
+### Combinando command e ViewModel {:#combining-command-and-viewmodel}
 
 Você pode empilhar múltiplos widgets `ListenableBuilder` para ouvir os estados `running`
 e `error` antes de mostrar os dados do view model.
@@ -461,7 +461,7 @@ class HomeViewModel2 extends ChangeNotifier {
 }
 ```
 
-### Estendendo o padrão command
+### Estendendo o padrão command {:#extending-the-command-pattern}
 
 O padrão command pode ser estendido de múltiplas formas.
 Por exemplo, para suportar um número diferente de argumentos.
@@ -492,7 +492,7 @@ class HomeViewModel extends ChangeNotifier {
 }
 ```
 
-## Juntando tudo
+## Juntando tudo {:#putting-it-all-together}
 
 Neste guia,
 você aprendeu como usar o padrão de design command

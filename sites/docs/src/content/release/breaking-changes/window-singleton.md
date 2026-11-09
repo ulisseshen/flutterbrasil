@@ -25,7 +25,7 @@ que dependiam dessas APIs precisam escolher a view específica
 com a qual querem trabalhar e migrar para as novas APIs compatíveis
 com múltiplas views, conforme descrito neste guia de migração.
 
-## Descrição da mudança {:#description-of-the-change}
+## Descrição da mudança {:#description-of-change}
 
 As APIs que foram obsoletas como parte desta mudança são:
 
@@ -134,7 +134,7 @@ double getTextScaleFactor() {
 }
 ```
 
-### Testes {:#testing-migration}
+### Testes {:#testing}
 
 Em testes escritos com `testWidget`, use as novas propriedades `view` e
 `platformDispatcher`.
@@ -285,7 +285,7 @@ Assim como na definição de propriedades, redefinir propriedades específicas d
 principalmente em trocar o acessor `binding.window` pelo
 acessor `platformDispatcher`.
 
-##### Redefinindo propriedades individuais {:#resetting-individual-platform-properties}
+##### Redefinindo propriedades individuais {:#resetting-individual-properties}
 
 Código antes da migração:
 
@@ -323,7 +323,7 @@ testWidgets('test name', (WidgetTester tester) async {
 });
 ```
 
-##### Redefinindo todas as propriedades de uma vez {:#resetting-all-platform-properties-at-once}
+##### Redefinindo todas as propriedades de uma vez {:#resetting-all-properties-at-once}
 
 Código antes da migração:
 

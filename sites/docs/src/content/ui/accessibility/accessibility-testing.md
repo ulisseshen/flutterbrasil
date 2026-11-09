@@ -4,7 +4,7 @@ title: Testes de acessibilidade
 description: Informações sobre testes de acessibilidade no Flutter.
 ---
 
-## Regulamentações de acessibilidade
+## Regulamentações de acessibilidade {:#accessibility-regulations}
 
 Para garantir que seu app seja acessível, verifique-o em relação aos padrões públicos como as
 [Diretrizes de Acessibilidade para Conteúdo Web (WCAG) 2][Web Content Accessibility Guidelines (WCAG) 2], a [EN 301 549][EN 301 549],
@@ -18,7 +18,7 @@ regulamentações, consulte a [página principal de acessibilidade][accessibilit
 [Voluntary Product Accessibility Template (VPAT)]: https://www.itic.org/policy/accessibility/vpat
 [accessibility page]: /ui/accessibility
 
-## Inspecionando o suporte à acessibilidade
+## Inspecionando o suporte à acessibilidade {:#inspecting-accessibility-support}
 
 Recomendamos usar scanners automatizados de acessibilidade para testar o seguinte:
 
@@ -51,7 +51,7 @@ Recomendamos usar scanners automatizados de acessibilidade para testar o seguint
        que pode ser usada para inspecionar os dados exportados para a árvore de semântica.
 
 
-## Testando acessibilidade no mobile
+## Testando acessibilidade no mobile {:#testing-accessibility-on-mobile}
 
 Teste seu app usando a [API de Diretrizes de Acessibilidade do Flutter][Accessibility Guideline API].
 Esta API verifica se a UI do seu app atende às recomendações de acessibilidade do Flutter.
@@ -102,7 +102,7 @@ ou em um arquivo separado, como `test/a11y_test.dart` neste exemplo.
 [create-new-app]: /reference/create-new-app
 [widget tests]: /testing/overview#widget-tests
 
-## Testando acessibilidade na web
+## Testando acessibilidade na web {:#testing-accessibility-on-the-web}
 
 Você pode debugar acessibilidade visualizando os nós semânticos criados para seu app web
 usando o seguinte flag de linha de comando nos modos profile e release:

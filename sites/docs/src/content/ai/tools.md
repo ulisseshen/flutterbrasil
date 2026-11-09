@@ -35,7 +35,7 @@ O ecossistema de ferramentas de IA do Flutter é composto por seis componentes c
 
 ---
 
-## Agent skills {:#agent-skills}
+## Agent skills
 
 [Agent skills](https://agentskills.io/) oferecem uma forma padronizada de equipar
 assistentes de IA com conhecimento procedural de domínio.
@@ -114,7 +114,7 @@ diretamente durante a conversa.
 
 ---
 
-## Package skills {:#package-skills}
+## Package skills
 
 Além das skills principais do Flutter, autores de bibliotecas podem incluir skills oficiais
 diretamente dentro de seus pacotes no [pub.dev](https://pub.dev).

@@ -6,14 +6,14 @@ description: MouseTracker e símbolos relacionados movidos para o pacote renderi
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 [`MouseTracker`][MouseTracker] e símbolos relacionados foram movidos do
 pacote `gestures`, resultando em mensagens de erro como
 classes ou métodos indefinidos. Importe-os do pacote
 `rendering` em vez disso.
 
-## Contexto
+## Contexto {:#context}
 
 Antes desta mudança, [`MouseTracker`][MouseTracker] fazia parte do
 pacote `gestures`. Isso trouxe problemas quando descobrimos
@@ -24,13 +24,13 @@ Como [`MouseTracker`][MouseTracker] revelou-se mais conectado a
 `rendering` do que a `gestures`, nós o movemos junto com seu
 código relacionado para `rendering`.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 O arquivo `mouse_tracking.dart` foi movido do pacote
 `gestures` para `rendering`. Todos os símbolos no referido
 arquivo foram movidos sem manter compatibilidade retroativa.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Se você ver erro de "Undefined class" ou "Undefined name" dos
 seguintes símbolos:
@@ -48,12 +48,12 @@ Você deve adicionar a seguinte importação:
 import 'package:flutter/rendering.dart';
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Landed in version: 1.16.3<br>
 In stable release: 1.17
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

@@ -33,7 +33,7 @@ Esta receita usa os seguintes passos:
   3. Garanta que tocar em um botão adiciona o todo.
   4. Garanta que deslizar para dispensar remove o todo.
 
-## 1. Crie um widget para testar
+## 1. Crie um widget para testar {:#1-create-a-widget-to-test}
 
 Para este exemplo,
 crie um app básico de todos que testa três recursos:
@@ -107,7 +107,7 @@ class _TodoListState extends State<TodoList> {
 }
 ```
 
-## 2. Insira texto no campo de texto
+## 2. Insira texto no campo de texto {:#2-enter-text-in-the-text-field}
 
 Agora que você tem um app de todos, comece escrevendo o teste.
 Comece inserindo texto no `TextField`.
@@ -138,7 +138,7 @@ consulte as seguintes receitas:
 * [Encontrando widgets em um teste de widget][Finding widgets in a widget test]
 :::
 
-## 3. Garanta que tocar em um botão adiciona o todo
+## 3. Garanta que tocar em um botão adiciona o todo {:#3-ensure-tapping-a-button-adds-the-todo}
 
 Após inserir texto no `TextField`, garanta que tocar
 no `FloatingActionButton` adiciona o item à lista.
@@ -166,7 +166,7 @@ testWidgets('Add and remove a todo', (tester) async {
 });
 ```
 
-## 4. Garanta que deslizar para dispensar remove o todo
+## 4. Garanta que deslizar para dispensar remove o todo {:#4-ensure-swipe-to-dismiss-removes-the-todo}
 
 Finalmente, garanta que executar uma ação de deslizar para dispensar no item
 todo o remove da lista. Isso envolve três passos:
@@ -194,7 +194,7 @@ testWidgets('Add and remove a todo', (tester) async {
 });
 ```
 
-## Exemplo completo
+## Exemplo completo {:#complete-example}
 
 <?code-excerpt "test/main_test.dart"?>
 ```dart

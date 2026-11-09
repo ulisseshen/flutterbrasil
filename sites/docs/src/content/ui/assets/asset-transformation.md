@@ -8,7 +8,7 @@ shortTitle: Transformação de assets
 Você pode configurar seu projeto para transformar automaticamente assets
 no momento da compilação usando pacotes Dart compatíveis.
 
-## Especificando transformações de assets
+## Especificando transformações de assets {:#specifying-asset-transformations}
 
 No arquivo `pubspec.yaml`, liste os assets a serem transformados e o pacote
 transformador associado.
@@ -33,7 +33,7 @@ import 'package:vector_graphics/vector_graphics.dart';
 const Widget logo = VectorGraphic(loader: AssetBytesLoader('assets/logo.svg'));
 ```
 
-### Passando argumentos para transformadores de assets
+### Passando argumentos para transformadores de assets {:#passing-arguments-to-asset-transformers}
 
 Para passar uma string de argumentos para um transformador de assets,
 especifique isso também no pubspec:
@@ -47,7 +47,7 @@ flutter:
           args: ['--tessellate', '--font-size=14']
 ```
 
-### Encadeando transformadores de assets
+### Encadeando transformadores de assets {:#chaining-asset-transformers}
 
 Transformadores de assets podem ser encadeados e são aplicados na
 ordem em que são declarados.
@@ -66,7 +66,7 @@ Aqui, `bird.png` é transformado pelo pacote `grayscale_filter`.
 A saída é então transformada pelo pacote `png_optimizer` antes de ser
 empacotada no app compilado.
 
-## Escrevendo pacotes transformadores de assets
+## Escrevendo pacotes transformadores de assets {:#writing-asset-transformer-packages}
 
 Um transformador de assets é um [command-line app][command-line app] Dart que é invocado com
 `dart run` com pelo menos dois argumentos: `--input`, que contém o caminho para
@@ -83,7 +83,7 @@ Durante a invocação do transformador, a variável de ambiente
 Por exemplo, se você executar seu app com `flutter run -d macos --release`, então
 `FLUTTER_BUILD_MODE` será definida para `release`.
 
-## Exemplo
+## Exemplo {:#sample}
 
 Para um projeto Flutter de exemplo que usa transformação de assets e inclui um pacote
 Dart customizado que é usado como transformador, confira o

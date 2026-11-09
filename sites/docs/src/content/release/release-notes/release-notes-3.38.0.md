@@ -8,7 +8,7 @@ ia-translate: true
 
 Esta página contém as notas de lançamento do Flutter 3.38.
 
-## O que mudou
+## O que mudou {:#whats-changed}
 
 ### Framework
 
@@ -591,11 +591,11 @@ Esta página contém as notas de lançamento do Flutter 3.38.
 * [CP-beta][tool/dap] Forward app.warning events from Flutter to DAP client by @flutteractionsbot in [176997](https://github.com/flutter/flutter/pull/176997)
 * [CP-beta][ Tool ] Output DTD URI for Flutter web applications by @flutteractionsbot in [177321](https://github.com/flutter/flutter/pull/177321)
 
-### Documentação
+### Documentação {:#documentation}
 
 * Remove jetifier usages  by @reidbaker in [173548](https://github.com/flutter/flutter/pull/173548)
 
-### Outras mudanças
+### Outras mudanças {:#other-changes}
 
 * Licenses_cpp: Parses NOTICES and DEPS by @gaaclarke in [172044](https://github.com/flutter/flutter/pull/172044)
 * Use `release-*.version` to simplify `last_engine_commit.sh` (no branch operations) by @matanlurey in [172236](https://github.com/flutter/flutter/pull/172236)
@@ -811,7 +811,7 @@ Esta página contém as notas de lançamento do Flutter 3.38.
 * [CP-beta] Fix crash when NSAttributedString is passed to insertText on macOS by @flutteractionsbot in [177401](https://github.com/flutter/flutter/pull/177401)
 * Update `engine.version` for 3.38.1 hotfix release by @camsim99 in [177675](https://github.com/flutter/flutter/pull/177675)
 
-## Novos contribuidores
+## Novos contribuidores {:#new-contributors}
 
 * @MohiuddinM made their first contribution in [170223](https://github.com/flutter/flutter/pull/170223)
 * @iamtoricool made their first contribution in [171054](https://github.com/flutter/flutter/pull/171054)

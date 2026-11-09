@@ -13,15 +13,15 @@ ia-translate: true
 Este documento é um trabalho em progresso.
 :::
 
-## Título
+## Título {:#title}
 
 ## Tags
 
-## Números de linha
+## Números de linha {:#line-numbers}
 
-## Destacar linhas
+## Destacar linhas {:#highlight-lines}
 
-## Destacar trechos
+## Destacar trechos {:#highlight-spans}
 
 ## Diffing
 

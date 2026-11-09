@@ -12,7 +12,7 @@ inclui as seguintes alterações entre outras melhorias gerais.
 Para saber mais sobre DevTools, confira a
 [visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 - Adicionada uma nova tela "Home" no DevTools que mostra o diálogo "Connect"
   ou um resumo do seu app conectado, dependendo do
@@ -28,26 +28,26 @@ Para saber mais sobre DevTools, confira a
   cubram a área que seu fundo bloqueia -
   [#5975](https://github.com/flutter/devtools/pull/5975)
 
-## Atualizações de Memory
+## Atualizações de Memory {:#memory-updates}
 
 - Adicionado um menu de contexto para renomear ou deletar um heap snapshot da lista -
   [#5997](https://github.com/flutter/devtools/pull/5997)
 - Avisados usuários quando logging HTTP pode estar afetando o consumo de memória de seu app -
   [#5998](https://github.com/flutter/devtools/pull/5998)
 
-## Atualizações do Debugger
+## Atualizações do Debugger {:#debugger-updates}
 
 - Melhorias na seleção de texto e comportamento de cópia na
   visualização de código, console e janelas de variáveis -
   [#6020](https://github.com/flutter/devtools/pull/6020)
 
-## Atualizações do Network profiler
+## Atualizações do Network profiler {:#network-profiler-updates}
 
 - Adicionado um seletor para customizar o tipo de exibição
   de respostas text e json (obrigado a @hhacker1999!) -
   [#5816](https://github.com/flutter/devtools/pull/5816)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de alterações desde a versão anterior,
 confira

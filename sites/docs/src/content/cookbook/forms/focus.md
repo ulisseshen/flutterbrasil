@@ -24,7 +24,7 @@ a um campo de texto assim que ele estiver visível,
 bem como dar foco a um campo de texto
 quando um botão for tocado.
 
-## Dar foco a um campo de texto assim que ele estiver visível
+## Dar foco a um campo de texto assim que ele estiver visível {:#focus-a-text-field-as-soon-as-its-visible}
 
 Para dar foco a um campo de texto assim que ele estiver visível,
 use a propriedade `autofocus`.
@@ -38,7 +38,7 @@ TextField(
 Para saber mais sobre manipulação de entrada e criação de campos de texto,
 consulte a seção [Forms][Forms] do cookbook.
 
-## Dar foco a um campo de texto quando um botão for tocado
+## Dar foco a um campo de texto quando um botão for tocado {:#focus-a-text-field-when-a-button-is-tapped}
 
 Em vez de imediatamente mover o foco para um campo de texto específico,
 você pode precisar dar foco a um campo de texto em um momento posterior.
@@ -51,7 +51,7 @@ pressionar um botão usando as seguintes etapas:
 1.  Passar o `FocusNode` para um `TextField`.
 1.  Dar foco ao `TextField` quando um botão for tocado.
 
-### 1. Criar um `FocusNode`
+### 1. Criar um `FocusNode` {:#1-create-a-focusnode}
 
 Primeiro, crie um [`FocusNode`][`FocusNode`].
 Use o `FocusNode` para identificar um `TextField` específico na
@@ -102,7 +102,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
 }
 ```
 
-### 2. Passar o `FocusNode` para um `TextField`
+### 2. Passar o `FocusNode` para um `TextField` {:#2-pass-the-focusnode-to-a-textfield}
 
 Agora que você tem um `FocusNode`,
 passe-o para um `TextField` específico no método `build()`.
@@ -115,7 +115,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-### 3. Dar foco ao `TextField` quando um botão for tocado
+### 3. Dar foco ao `TextField` quando um botão for tocado {:#3-give-focus-to-the-textfield-when-a-button-is-tapped}
 
 Finalmente, dê foco ao campo de texto quando o usuário tocar em um botão
 de ação flutuante. Use o método [`requestFocus()`][`requestFocus()`] para realizar
@@ -132,7 +132,7 @@ FloatingActionButton(
 ),
 ```
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter text focus hands-on example in DartPad" run="true"

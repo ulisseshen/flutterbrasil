@@ -9,7 +9,7 @@ description: Como posicionar uma app bar flutuante ou barra de navegação acima
 Este guia descreve como posicionar uma app bar flutuante ou
 barra de navegação acima de uma lista em um app Flutter.
 
-## Visão geral
+## Visão geral {:#overview}
 
 Para facilitar a visualização de uma lista de itens pelos usuários,
 você pode querer minimizar a app bar (barra de navegação) conforme
@@ -29,7 +29,7 @@ seguintes passos:
   2. Adicione uma app bar flutuante ao `CustomScrollView`.
   3. Adicione uma lista de itens ao `CustomScrollView`.
 
-## 1. Crie um `CustomScrollView`
+## 1. Crie um `CustomScrollView` {:#1-create-a-customscrollview}
 
 Para criar uma app bar flutuante, posicione a app bar dentro de um
 `CustomScrollView` que também contém a lista de itens.
@@ -90,7 +90,7 @@ CupertinoApp(
 </Tabs>
 
 
-## 2. Adicione uma app bar flutuante
+## 2. Adicione uma app bar flutuante {:#2-add-a-floating-app-bar}
 
 Em seguida, adicione uma app bar ao [`CustomScrollView`][`CustomScrollView`].
 
@@ -170,7 +170,7 @@ slivers: [
 </Tabs>
 
 
-## 3. Adicione uma lista de itens
+## 3. Adicione uma lista de itens {:#3-add-a-list-of-items}
 
 Agora que você tem a app bar no lugar, adicione uma lista de itens
 ao `CustomScrollView`. Você tem duas opções: um
@@ -217,7 +217,7 @@ SliverList.builder(
 
 </Tabs>
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 <Tabs key="device-type-tabs">
 

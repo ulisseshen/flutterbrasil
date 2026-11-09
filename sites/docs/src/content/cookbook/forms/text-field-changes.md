@@ -17,7 +17,7 @@ Com Flutter, você tem duas opções:
 1.  Fornecer um callback `onChanged()` para um `TextField` ou um `TextFormField`.
 1.  Usar um `TextEditingController`.
 
-## 1. Fornecer um callback `onChanged()` para um `TextField` ou um `TextFormField`
+## 1. Fornecer um callback `onChanged()` para um `TextField` ou um `TextFormField` {:#1-supply-an-onchanged-callback-to-a-textfield-or-a-textformfield}
 
 A abordagem mais simples é fornecer um callback [`onChanged()`][`onChanged()`] para um
 [`TextField`][`TextField`] ou um [`TextFormField`][`TextFormField`].
@@ -44,7 +44,7 @@ TextField(
   <img src="/assets/images/docs/cookbook/text-field-changes.png" alt="Demonstração de tratamento de mudanças em campo de texto" />
 </noscript>
 
-## 2. Usar um `TextEditingController`
+## 2. Usar um `TextEditingController` {:#2-use-a-texteditingcontroller}
 
 Uma abordagem mais poderosa, mas mais elaborada, é fornecer um
 [`TextEditingController`][`TextEditingController`] como a propriedade [`controller`][`controller`]
@@ -58,7 +58,7 @@ usando o método [`addListener()`][`addListener()`] seguindo as seguintes etapas
 1.  Criar uma função para imprimir o valor mais recente.
 1.  Ouvir o controlador para mudanças.
 
-### Criar um `TextEditingController`
+### Criar um `TextEditingController` {:#create-a-texteditingcontroller}
 
 Crie um `TextEditingController`:
 
@@ -100,7 +100,7 @@ mais necessário. Isso garante que você descarte quaisquer recursos usados
 pelo objeto.
 :::
 
-### Conectar o `TextEditingController` a um campo de texto
+### Conectar o `TextEditingController` a um campo de texto {:#connect-the-texteditingcontroller-to-a-text-field}
 
 Forneça o `TextEditingController` para um `TextField`
 ou um `TextFormField`. Uma vez que você conecte essas duas classes,
@@ -111,7 +111,7 @@ você pode começar a ouvir mudanças no campo de texto.
 TextField(controller: myController),
 ```
 
-### Criar uma função para imprimir o valor mais recente
+### Criar uma função para imprimir o valor mais recente {:#create-a-function-to-print-the-latest-value}
 
 Você precisa de uma função para executar cada vez que o texto muda.
 Crie um método na classe `_MyCustomFormState` que imprima
@@ -125,7 +125,7 @@ void _printLatestValue() {
 }
 ```
 
-### Ouvir o controlador para mudanças
+### Ouvir o controlador para mudanças {:#listen-to-the-controller-for-changes}
 
 Finalmente, ouça o `TextEditingController` e chame o
 método `_printLatestValue()` quando o texto mudar. Use o
@@ -157,7 +157,7 @@ void dispose() {
 }
 ```
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter text field change hands-on example in DartPad" run="true"

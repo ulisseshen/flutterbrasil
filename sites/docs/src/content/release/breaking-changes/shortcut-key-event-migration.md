@@ -9,7 +9,7 @@ description: >
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Por algum tempo (anos), o Flutter teve dois sistemas de eventos de tecla implementados.
 O novo sistema alcançou paridade com o antigo sistema de eventos de tecla raw específico de plataforma,
@@ -18,7 +18,7 @@ que usam o sistema antigo estão sendo modificadas, e para algumas delas decidim
 fazer mudanças incompatíveis na API para preservar a
 qualidade da API.
 
-## Contexto
+## Contexto {:#context}
 
 No subsistema de eventos de tecla original, lidar com as peculiaridades de cada plataforma no
 framework e nos apps cliente causava código excessivamente complexo, e o sistema antigo
@@ -30,7 +30,7 @@ eventualmente depreciar o sistema raw. Esse momento está chegando rapidamente, 
 nos preparar para isso, fizemos algumas mudanças incompatíveis mínimas necessárias para preservar
 a qualidade da API.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 Resumo das APIs que foram afetadas:
 
@@ -53,12 +53,12 @@ já fazem isso.
 A mudança também modifica o método `ShortcutManager.handleKeypress` para receber um
 `KeyEvent` ao invés de `RawKeyEvent`.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 As APIs fornecidas pelo framework Flutter já foram migradas. A migração é
 necessária apenas se você estiver usando algum dos métodos listados na seção anterior.
 
-### Migrando suas APIs que usam `ShortcutActivator` ou suas subclasses.
+### Migrando suas APIs que usam `ShortcutActivator` ou suas subclasses. {:#migrating-your-apis-that-use-shortcutactivator-or-its-subclasses}
 
 Passe um `KeyEvent` ao invés de um `RawKeyEvent` para `ShortcutActivator.accepts`.
 Isso pode significar mudar de onde você obtém seus eventos de tecla. Dependendo de onde
@@ -71,7 +71,7 @@ Se você estiver usando um `RawKeyboardListener`, mude para usar um
 `HardwareKeyboard` ao invés. Você descobrirá que existem equivalentes não-raw para
 todas as fontes de eventos de tecla.
 
-### Migrando suas APIs que estendem `ShortcutActivator`
+### Migrando suas APIs que estendem `ShortcutActivator` {:#migrating-your-apis-that-extend-shortcutactivator}
 
 O método `ShortcutActivator.accepts` foi modificado para receber um `KeyEvent` e um
 `HardwareKeyboard` ao invés de um `RawKeyEvent` e `RawKeyboard`.
@@ -102,7 +102,7 @@ class MyActivator extends ShortcutActivator {
 }
 ```
 
-### Migrando suas APIs que estendem `ShortcutManager`
+### Migrando suas APIs que estendem `ShortcutManager` {:#migrating-your-apis-that-extend-shortcutmanager}
 
 A classe `ShortcutManager` foi modificada para receber `KeyEvent`s em `handleKeypress`
 ao invés de `RawKeyEvent`s. Uma diferença nas duas APIs é que teclas repetidas
@@ -146,12 +146,12 @@ class _MyShortcutManager extends ShortcutManager {
 }
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Implementado na versão: 3.17.0-5.0.pre<br>
 Na versão estável: 3.19.0
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

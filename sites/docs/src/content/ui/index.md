@@ -24,7 +24,7 @@ disponíveis no pub.dev.
 Entender essa distinção ajuda você a decidir qual pacote
 importar para seu app ou pacote.
 
-## O pacote `widgets`
+## O pacote `widgets` {:#the-widgets-package}
 
 A biblioteca `widgets` (`package:flutter/widgets.dart`)
 fornece os blocos de construção fundamentais e neutros em estilo
@@ -32,7 +32,7 @@ do framework Flutter. Ela inclui primitivas de layout (`Row,` `Column,` `Stack)`
 modelos de interação (`GestureDetector`), controladores de animação
 e widgets básicos de apresentação (`CustomPaint`, `Image`, `RichText`).
 
-### Quando usar `widgets`
+### Quando usar `widgets` {:#when-to-use-widgets}
 
 * **Construindo um design system personalizado:**
   Se sua aplicação usa uma linguagem visual sob medida que não
@@ -47,14 +47,14 @@ e widgets básicos de apresentação (`CustomPaint`, `Image`, `RichText`).
   Para sistemas automotivos, quiosques ou displays embarcados onde as convenções de plataforma
   não se aplicam e um tamanho mínimo de bundle é crítico.
 
-## O pacote `material_ui`
+## O pacote `material_ui` {:#the-material-ui-package}
 
 O pacote `material_ui` (`package:material_ui/material_ui.dart`)
 implementa o design system Material 3 do Google. Ele adiciona estilo visual,
 cores dinâmicas, elevação, tipografia e feedback de interação
 (como ripples) sobre os widgets básicos.
 
-### Quando usar `material_ui`
+### Quando usar `material_ui` {:#when-to-use-material-ui}
 
 * **Construindo apps Android ou multiplataforma:**
   Quando você quer uma aparência moderna e coesa no Android, web
@@ -68,13 +68,13 @@ cores dinâmicas, elevação, tipografia e feedback de interação
   Quando você quer tirar proveito de `ColorScheme.fromSeed`,
   da alternância entre modo claro e escuro e da extração dinâmica de cores no Android.
 
-## O pacote `cupertino_ui`
+## O pacote `cupertino_ui` {:#the-cupertino-ui-package}
 
 O pacote `cupertino_ui` (`package:cupertino_ui/cupertino_ui.dart`)
 implementa as Human Interface Guidelines da Apple. Ele recria estilos visuais
 específicos do iOS, desfoques translúcidos, toques hápticos e gestos de navegação.
 
-### Quando usar `cupertino_ui`
+### Quando usar `cupertino_ui` {:#when-to-use-cupertino-ui}
 
 * **Visando a estética nativa do iOS e macOS:**
   Quando o objetivo principal da sua aplicação é se integrar perfeitamente ao

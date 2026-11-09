@@ -8,7 +8,7 @@ description: >-
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 `CardTheme`, `DialogTheme` e `TabBarTheme` foram refatorados para
 estar em conformidade com as convenções do Flutter para component themes.
@@ -17,7 +17,7 @@ definir sobrescritas para os padrões das propriedades visuais do componente.
 Lançamentos do Flutter continuam a normalizar component themes como estes para
 uma experiência de temas mais consistente na biblioteca material.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Em `ThemeData`:
 
@@ -57,12 +57,12 @@ final TabBarThemeData tabBarTheme = Theme.of(context).tabBarTheme;
 final TabBarThemeData tabBarTheme = TabBarTheme.of(context);
 ```
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Landed in version: 3.27.0-0.0.pre<br>
 Stable release: 3.27
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

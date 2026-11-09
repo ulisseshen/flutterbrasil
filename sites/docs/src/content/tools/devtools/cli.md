@@ -24,7 +24,7 @@ você deverá ver uma saída que se parece com algo assim:
 Serving DevTools at http://127.0.0.1:9100
 ```
 
-## Inicie uma aplicação para depurar
+## Inicie uma aplicação para depurar {:#start-an-application-to-debug}
 
 Em seguida, inicie um app para conectar.
 Este pode ser tanto uma aplicação Flutter
@@ -57,7 +57,7 @@ então ela é diferente para cada execução do seu app.
 Isso significa que se você parar sua aplicação e executá-la novamente,
 você precisa conectar a DevTools novamente com a nova URL.
 
-## Conecte a uma nova instância de app
+## Conecte a uma nova instância de app {:#connect-to-a-new-app-instance}
 
 Se seu app parar de executar
 ou você abriu DevTools manualmente,

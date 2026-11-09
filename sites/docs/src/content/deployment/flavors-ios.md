@@ -9,7 +9,7 @@ description: >
 Este guia mostra como criar flavors Flutter para um
 app iOS ou macOS.
 
-## Visão geral
+## Visão geral {:#overview}
 
 Um flavor Flutter é basicamente uma coleção de configurações que
 definem como uma versão específica do seu app deve ser compilada
@@ -33,7 +33,7 @@ do Xcode atribuídas a eles:
 
 {:.table .table-striped}
 
-## Configurar schemes do Xcode
+## Configurar schemes do Xcode {:#configure-xcode-schemes}
 
 Os seguintes passos mostram como configurar dois schemes do Xcode
 chamados `staging` e `production` para seu projeto Flutter iOS.
@@ -190,7 +190,7 @@ Xcode, você pode iniciar um scheme específico através do Xcode ou
 Flutter. Você também pode usar esses passos para iniciar um projeto
 macOS substituindo qualquer referência a `iOS` por `macOS`.
 
-### Use a flag flavor (Flutter CLI)
+### Use a flag flavor (Flutter CLI) {:#use-the-flavor-flag-flutter-cli}
 
 Você pode iniciar um scheme do Xcode no modo `Debug` com o
 Flutter CLI usando os seguintes passos:
@@ -215,7 +215,7 @@ Flutter CLI usando os seguintes passos:
     $ flutter run --flavor staging
     ```
 
-### Acesse o flavor atual
+### Acesse o flavor atual {:#access-the-current-flavor}
 
 1.  **Importe a biblioteca services.**
     Para acessar a constante `appFlavor`,
@@ -247,7 +247,7 @@ Flutter CLI usando os seguintes passos:
 O valor de `appFlavor` corresponde ao nome do scheme do Xcode que você definiu (por exemplo, `staging` ou `production`). Se nenhum flavor for especificado durante o build, `appFlavor` retorna `null`.
     :::
 
-### Use o comando run (Xcode)
+### Use o comando run (Xcode) {:#use-the-run-command-xcode}
 
 Você pode iniciar um scheme específico no Xcode usando os
 seguintes passos:
@@ -327,7 +327,7 @@ no Xcode para dois schemes chamados `staging` e
 
 [Launch an Xcode scheme]: #launch-an-xcode-scheme
 
-### Criar ícones distintos
+### Criar ícones distintos {:#create-distinct-icons}
 
 Se você tem múltiplos schemes, um ícone distinto para cada
 configuração pode ajudá-lo a identificar rapidamente qual scheme
@@ -404,7 +404,7 @@ um projeto iOS chamado `flavors_example`.
 [Launch an Xcode scheme]: #launch-an-xcode-scheme
 [App Icon Generator]: https://www.appicon.co/
 
-### Adicionar identificadores de bundle distintos
+### Adicionar identificadores de bundle distintos {:#add-distinct-bundle-identifiers}
 
 Um identificador de bundle é um identificador único para sua
 aplicação nas plataformas Apple. Se você está usando múltiplos
@@ -449,7 +449,7 @@ e `production` em um projeto iOS chamado `flavors_example`.
 
 [registered in your Apple Developer account]: {{site.apple-dev}}/help/account/identifiers/register-an-app-id/
 
-### Bundle de assets
+### Bundle de assets {:#bundle-assets}
 
 Se você tem assets que são usados apenas em um flavor específico
 no seu app, você pode configurá-los para serem incluídos no bundle
@@ -494,7 +494,7 @@ macOS substituindo qualquer referência a `iOS` por `macOS`.
       ...
     ```
 
-### Adicionar configurações de build únicas
+### Adicionar configurações de build únicas {:#add-unique-build-settings}
 
 Você pode usar [configurações de build][build settings] para governar seu processo de build iOS
 desde compilação e vinculação até depuração e
@@ -522,7 +522,7 @@ configuração de build específica, consulte o documento da Apple
 [build settings]: {{site.apple-dev}}/documentation/xcode/build-settings-reference/
 [Adding a build configuration file to your project]: {{site.apple-dev}}/documentation/xcode/adding-a-build-configuration-file-to-your-project
 
-### Adicionar personalizações adicionais
+### Adicionar personalizações adicionais {:#add-additional-customizations}
 
 Este documento contém algumas configurações de scheme do Xcode
 comuns, mas há muitas mais que você pode aplicar.
@@ -531,7 +531,7 @@ Para saber mais sobre elas, consulte
 
 [Customizing the build schemes for a project]: {{site.apple-dev}}/documentation/xcode/customizing-the-build-schemes-for-a-project
 
-## Mais informações
+## Mais informações {:#more-information}
 
 Para saber mais sobre como criar e usar flavors, consulte
 os seguintes recursos:

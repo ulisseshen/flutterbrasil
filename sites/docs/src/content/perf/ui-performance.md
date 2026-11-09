@@ -5,7 +5,7 @@ subtitle: Onde procurar quando sua aplicação Flutter perde frames na UI.
 description: Diagnosticando problemas de performance de UI no Flutter.
 ---
 
-## Visão geral
+## Visão geral {:#overview}
 
 Performance de aplicação engloba vários aspectos, desde velocidade bruta e throughput de I/O
 até a suavidade da interface do usuário. Embora esta página se concentre principalmente na suavidade
@@ -50,7 +50,7 @@ irregular.
 [Show performance data]: /tools/android-studio#show-performance-data
 [Integration testing]: /testing/integration-tests
 
-## Conectar a um dispositivo físico
+## Conectar a um dispositivo físico {:#connect-to-a-physical-device}
 
 Quase toda depuração de performance para aplicações Flutter
 deve ser conduzida em um dispositivo Android ou iOS físico,
@@ -75,7 +75,7 @@ no dispositivo mais lento que seus usuários possam razoavelmente usar._
   o que pode causar jank.
 :::
 
-## Executar em profile mode
+## Executar em profile mode {:#run-in-profile-mode}
 
 O profile mode do Flutter compila e executa sua aplicação
 quase identicamente ao release mode, mas com funcionalidade adicional suficiente
@@ -123,7 +123,7 @@ o performance overlay, como discutido na próxima seção.
 [Flutter's build modes]: /testing/build-modes
 [generate timeline events]: {{site.developers}}/web/tools/chrome-devtools/evaluate-performance/performance-reference
 
-## Executar DevTools
+## Executar DevTools {:#launch-devtools}
 
 DevTools fornece recursos como profiling, examinando o heap,
 exibindo cobertura de código, habilitando o performance overlay,
@@ -262,7 +262,7 @@ veja [The Framework architecture][The Framework architecture] no
 [The Framework architecture]: {{site.repo.flutter}}/blob/main/docs/about/The-Framework-architecture.md
 [MainThread]: {{site.android-dev}}/reference/android/support/annotation/MainThread
 
-## Identificar problemas
+## Identificar problemas {:#identify-problems}
 
 ### Revisar o gráfico de UI {:#identifying-problems-in-the-ui-graph}
 
@@ -297,7 +297,7 @@ manipulada, um [`RepaintBoundary`][RepaintBoundary] pode ajudar.
 
 [programmatically]: /testing/code-debugging#debug-animation-issues
 
-#### Verificando offscreen layers
+#### Verificando offscreen layers {:#checking-for-offscreen-layers}
 
 O método [`saveLayer`][saveLayer] é um dos métodos mais caros no
 framework Flutter. É útil ao aplicar pós-processamento
@@ -329,7 +329,7 @@ faça a si mesmo estas perguntas:
 
 [Clip.antiAliasWithSaveLayer]: {{site.api}}/flutter/dart-ui/Clip.html
 
-#### Verificando imagens não cacheadas
+#### Verificando imagens não cacheadas {:#checking-for-non-cached-images}
 
 Cachear uma imagem com [`RepaintBoundary`][RepaintBoundary] é bom,
 _quando faz sentido_.
@@ -349,7 +349,7 @@ _Como entradas de cache raster são caras para
 construir e ocupam muita memória GPU,
 cache imagens apenas onde absolutamente necessário._
 
-## Outros recursos
+## Outros recursos {:#other-resources}
 
 Os seguintes recursos fornecem mais informações sobre usar
 as ferramentas do Flutter e depuração no Flutter:

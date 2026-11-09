@@ -11,7 +11,7 @@ criadas com ele a sério. Esta página descreve como reportar quaisquer
 vulnerabilidades que você possa encontrar, e lista melhores práticas para minimizar
 o risco de introduzir uma vulnerabilidade.
 
-## Filosofia de segurança
+## Filosofia de segurança {:#security-philosophy}
 
 A estratégia de segurança do Flutter é baseada em cinco pilares-chave:
 
@@ -27,7 +27,7 @@ A estratégia de segurança do Flutter é baseada em cinco pilares-chave:
 * **Recuperar**: Construir capacidades para conter e recuperar
   de um incidente com impacto mínimo.
 
-## Reportando vulnerabilidades
+## Reportando vulnerabilidades {:#reporting-vulnerabilities}
 
 Antes de reportar uma vulnerabilidade de segurança encontrada
 por uma ferramenta de análise estática,
@@ -60,7 +60,7 @@ veja nossa [política de segurança][security policy].
 [known false positives]: /reference/security-false-positives
 [security policy]: {{site.repo.flutter}}/security/policy
 
-## Sinalizando issues existentes como relacionados à segurança
+## Sinalizando issues existentes como relacionados à segurança {:#flagging-existing-issues-as-security-related}
 
 Se você acredita que um issue existente do GitHub está relacionado à segurança,
 pedimos que você reporte o issue para g.co/vulnz e envie um
@@ -72,12 +72,12 @@ Relatórios de segurança não são rastreados explicitamente no banco de dados
 de issues do GitHub. Usamos o recurso de security advisory do GitHub para rastrear
 relatórios de segurança abertos.
 
-## Versões suportadas
+## Versões suportadas {:#supported-versions}
 
 Nos comprometemos a publicar atualizações de segurança para a versão do
 Flutter atualmente no branch `stable`.
 
-## Expectativas
+## Expectativas {:#expectations}
 
 Tratamos relatórios de segurança como equivalentes a um nível de prioridade P0.
 Isso significa que tentamos corrigi-los o mais rápido possível.
@@ -90,7 +90,7 @@ Qualquer vulnerabilidade reportada para sites flutter como
 docs.flutterbrasil.dev não requer um lançamento e será
 corrigida no próprio site.
 
-## Programas de Bug Bounty
+## Programas de Bug Bounty {:#bug-bounty-programs}
 
 Equipes não-Google que usam ou contribuem para o Flutter também são
 bem-vindas a incluir Flutter no escopo de seus programas de bug
@@ -102,7 +102,7 @@ O Google considera o Flutter dentro do escopo do
 
 [google-oss-vrp]: https://bughunters.google.com/open-source-security
 
-## Recebendo atualizações de segurança
+## Recebendo atualizações de segurança {:#receiving-security-updates}
 
 A melhor maneira de receber atualizações de segurança é se inscrever na
 lista de discussão [flutter-announce][flutter-announce] ou assistir atualizações no
@@ -112,7 +112,7 @@ post do blog de lançamento técnico.
 [Discord channel]: https://discord.gg/BS8KZyg
 [flutter-announce]: {{site.groups.flutter-announce}}
 
-## Melhores práticas
+## Melhores práticas {:#best-practices}
 
 * **Mantenha-se atualizado com os últimos lançamentos do Flutter SDK.**
   Atualizamos regularmente o Flutter, e essas atualizações podem corrigir defeitos de

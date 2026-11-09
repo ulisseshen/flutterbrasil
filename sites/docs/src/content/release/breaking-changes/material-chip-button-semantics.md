@@ -6,12 +6,12 @@ description: Chips Material interativos agora são semanticamente marcados como 
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 O Flutter agora aplica o rótulo semântico de `button` para
 todos os [Material Chips][Material Chips] interativos para fins de acessibilidade.
 
-## Contexto
+## Contexto {:#context}
 
 Chips Material interativos (especificamente [`ActionChip`][],
 [`ChoiceChip`][], [`FilterChip`][], e [`InputChip`][])
@@ -29,7 +29,7 @@ podem ter tido uma experiência inferior,
 a menos que você implementasse uma solução alternativa adicionando manualmente as
 semânticas faltantes aos widgets Chip em seu app.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 O widget [`Semantics`][] mais externo que envolve todas as
 classes Chip para descrever suas propriedades semânticas
@@ -55,7 +55,7 @@ Para o [`Chip`][] de informação não interativo:
 * A propriedade [`enabled`][`SemanticsProperties.enabled`]
   é definida como `null`.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 **Você pode não precisar realizar nenhuma migração.**
 Esta mudança só afeta você se você contornou
@@ -125,12 +125,12 @@ Widget myInputChip = InputChip(
 );
 ```
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Disponibilizado na versão: 1.23.0-7.0.pre<br>
 Na versão estável: 2.0.0
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

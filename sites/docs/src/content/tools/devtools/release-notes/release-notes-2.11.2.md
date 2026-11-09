@@ -12,18 +12,18 @@ inclui as seguintes mudanças, entre outras melhorias gerais.
 Para saber mais sobre o DevTools, confira a
 [visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 * Esta versão incluiu muita limpeza e redução de débito técnico.
 
-## Atualizações do CPU profiler
+## Atualizações do CPU profiler {:#cpu-profiler-updates}
 
 * Adicionado o número da linha de origem aos uris de arquivo nos perfis de CPU -
   [#3718](https://github.com/flutter/devtools/pull/3718)
 
   ![cpu stack frame line numbers](/assets/images/docs/tools/devtools/release-notes/images-2.11.2/image1.png "cpu stack frame line numbers")
 
-## Atualizações do Debugger
+## Atualizações do Debugger {:#debugger-updates}
 
 * Melhorias de UX no abridor de arquivos, incluindo suporte para clicar
   no nome do arquivo de origem para abrir a janela de busca de arquivo -
@@ -35,7 +35,7 @@ Para saber mais sobre o DevTools, confira a
 
   ![debugger file explorer scrolling](/assets/images/docs/tools/devtools/release-notes/images-2.11.2/image2.gif "debugger file explorer scrolling")
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de mudanças desde a versão anterior,
 confira

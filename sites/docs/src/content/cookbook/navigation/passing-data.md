@@ -22,7 +22,7 @@ Esta receita usa os seguintes passos:
   3. Criar uma tela de detalhe que pode exibir informações sobre um todo.
   4. Navegar e passar dados para a tela de detalhe.
 
-## 1. Definir uma classe todo
+## 1. Definir uma classe todo {:#1-define-a-todo-class}
 
 Primeiro, você precisa de uma maneira simples de representar todos. Para este exemplo,
 crie uma classe que contém dois pedaços de dados: o título e descrição.
@@ -37,14 +37,14 @@ class Todo {
 }
 ```
 
-## 2. Criar uma lista de todos
+## 2. Criar uma lista de todos {:#2-create-a-list-of-todos}
 
 Segundo, exiba uma lista de todos. Neste exemplo, gere
 20 todos e mostre-os usando um ListView.
 Para mais informações sobre trabalhar com listas,
 veja a receita [Use lists][].
 
-### Gerar a lista de todos
+### Gerar a lista de todos {:#generate-the-list-of-todos}
 
 <?code-excerpt "lib/main.dart (Generate)" replace="/^todos:/final todos =/g/^\),$/);/g"?>
 ```dart
@@ -57,7 +57,7 @@ final todos = List.generate(
 );
 ```
 
-### Exibir a lista de todos usando um ListView
+### Exibir a lista de todos usando um ListView {:#display-the-list-of-todos-using-a-listview}
 
 <?code-excerpt "lib/main_todoscreen.dart (ListViewBuilder)" replace="/^body: //g;/^\),$/)/g"?>
 ```dart
@@ -72,7 +72,7 @@ ListView.builder(
 Até agora, tudo bem.
 Isso gera 20 todos e os exibe em um ListView.
 
-## 3. Criar uma tela Todo para exibir a lista
+## 3. Criar uma tela Todo para exibir a lista {:#3-create-a-todo-screen-to-display-the-list}
 
 Para isso, criamos um `StatelessWidget`. Nós o chamamos de `TodosScreen`.
 Como o conteúdo desta página não mudará durante o runtime,
@@ -109,7 +109,7 @@ class TodosScreen extends StatelessWidget {
 Com o estilo padrão do Flutter, você está pronto para começar sem se preocupar sobre
 coisas que você gostaria de fazer mais tarde!
 
-## 4. Criar uma tela de detalhe para exibir informações sobre um todo
+## 4. Criar uma tela de detalhe para exibir informações sobre um todo {:#4-create-a-detail-screen-to-display-information-about-a-todo}
 
 Agora, crie a segunda tela. O título da tela contém o
 título do todo, e o corpo da tela mostra a descrição.
@@ -141,7 +141,7 @@ class DetailScreen extends StatelessWidget {
 }
 ```
 
-## 5. Navegar e passar dados para a tela de detalhe
+## 5. Navegar e passar dados para a tela de detalhe {:#5-navigate-and-pass-data-to-the-detail-screen}
 
 Com um `DetailScreen` em vigor,
 você está pronto para realizar a Navegação.
@@ -175,7 +175,7 @@ body: ListView.builder(
 ),
 ```
 
-### Exemplo interativo
+### Exemplo interativo {:#interactive-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter passing data hands-on example in DartPad" run="true"
@@ -258,11 +258,11 @@ class DetailScreen extends StatelessWidget {
 }
 ```
 
-## Alternativamente, passar os argumentos usando RouteSettings
+## Alternativamente, passar os argumentos usando RouteSettings {:#alternatively-pass-the-arguments-using-routesettings}
 
 Repita os dois primeiros passos.
 
-### Criar uma tela de detalhe para extrair os argumentos
+### Criar uma tela de detalhe para extrair os argumentos {:#create-a-detail-screen-to-extract-the-arguments}
 
 Em seguida, crie uma tela de detalhe que extrai e exibe o título e descrição do `Todo`. Para acessar o `Todo`, use o método [`ModalRoute.of()`][]. Este método retorna a rota atual com os argumentos.
 
@@ -287,7 +287,7 @@ class DetailScreen extends StatelessWidget {
 }
 ```
 
-### Navegar e passar os argumentos para a tela de detalhe
+### Navegar e passar os argumentos para a tela de detalhe {:#navigate-and-pass-the-arguments-to-the-detail-screen}
 
 Finalmente, navegue para o `DetailScreen` quando um usuário toca
 em um widget `ListTile` usando `Navigator.push()`.
@@ -320,7 +320,7 @@ ListView.builder(
 )
 ```
 
-### Exemplo completo
+### Exemplo completo {:#complete-example}
 
 <?code-excerpt "lib/main_routesettings.dart"?>
 ```dart

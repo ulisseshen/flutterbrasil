@@ -8,19 +8,19 @@ description: >
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Usar `useDeleteButtonTooltip` em qualquer chip que tenha um botão de exclusão gera um
 aviso de descontinuação, ou não existe mais quando referenciado. Isso inclui os
 widgets `Chip`, `InputChip` e `RawChip`.
 
-## Contexto
+## Contexto {:#context}
 
 O `useDeleteButtonTooltip` dos widgets `Chip`, `InputChip` e `RawChip` foi
 descontinuado em favor de `deleteButtonTooltipMessage`, já que este último pode ser usado
 para desabilitar a tooltip do botão de exclusão do chip.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 A propriedade `deleteButtonTooltipMessage` fornece uma mensagem para a
 tooltip no botão de exclusão dos widgets chip.
@@ -32,7 +32,7 @@ que foi introduzido para exatamente essa funcionalidade. Um [Flutter fix][Flutte
 disponível para ajudá-lo a migrar código existente de `useDeleteButtonTooltip` para
 `deleteButtonTooltipMessage`, se você desabilitou explicitamente a tooltip.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Por padrão, a tooltip do botão de exclusão está sempre habilitada.
 Para desabilitar explicitamente a tooltip, forneça uma string vazia para a
@@ -71,12 +71,12 @@ RawChip(
 );
 ```
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Incluído na versão: 2.11.0-0.1.pre<br>
 Na versão estável: 3.0.0
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

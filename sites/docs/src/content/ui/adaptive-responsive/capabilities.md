@@ -13,7 +13,7 @@ capacidades e políticas de diferentes dispositivos e plataformas.
 Esta página contém conselhos sobre como
 lidar com esses cenários em seu código.
 
-## Projete para as forças de cada tipo de dispositivo
+## Projete para as forças de cada tipo de dispositivo {:#design-to-the-strengths-of-each-device-type}
 
 Considere as forças e fraquezas únicas de diferentes dispositivos.
 Além do tamanho da tela e entradas, como touch, mouse, teclado,
@@ -37,7 +37,7 @@ O padrão recomendado do Flutter para lidar com diferentes
 comportamentos baseados nessas capacidades únicas é criar
 um conjunto de classes `Capability` e `Policy` para seu app.
 
-### Capacidades
+### Capacidades {:#capabilities}
 
 Uma _capacidade_ define o que o código ou dispositivo _pode_ fazer.
 Exemplos de capacidades incluem:
@@ -46,7 +46,7 @@ Exemplos de capacidades incluem:
 * Restrições impostas pelo SO
 * Requisitos de hardware físico (como uma câmera)
 
-### Políticas
+### Políticas {:#policies}
 
 Uma _política_ define o que o código _deve_ fazer.
 
@@ -57,7 +57,7 @@ Exemplos de políticas incluem:
 * Assets ou cópias que se referem ao dispositivo hospedeiro
 * Recursos habilitados no lado do servidor
 
-### Como estruturar código de política
+### Como estruturar código de política {:#how-to-structure-policy-code}
 
 A maneira mecânica mais simples é `Platform.isAndroid`,
 `Platform.isIOS`, e `kIsWeb`. Essas APIs mecanicamente
@@ -117,7 +117,7 @@ comprar na web não é o fluxo certo para
 usuários Android, você pode mudar a implementação
 e os testes para texto clicável não precisarão mudar.
 
-## Capacidades
+## Capacidades {:#capabilities}
 
 Às vezes você quer que seu código faça algo, mas a
 API não existe, ou talvez você dependa de um recurso de plugin
@@ -146,7 +146,7 @@ então a implementação de `requirePermissionDialogFlow`
 pode agora verificar o nível da API e retornar true para a plataforma 2.
 Você aproveitou o trabalho que já fez.
 
-## Políticas
+## Políticas {:#policies}
 
 Encorajamos começar com uma classe `Policy` inicialmente
 mesmo que pareça que você não tomará muitas decisões baseadas em política.
@@ -172,7 +172,7 @@ verificar pontos de toque máximos.
 Mudanças de política baseadas em RPC são boas para lançamento
 incremental de recursos ou para decisões que podem mudar depois.
 
-## Resumo
+## Resumo {:#summary}
 
 Use uma classe `Capability` para definir o que o código *pode* fazer.
 Você pode verificar a existência de uma API,

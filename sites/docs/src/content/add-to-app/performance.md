@@ -10,14 +10,14 @@ melhores e mais informadas sobre quando pré-aquecer o engine Flutter,
 quais operações são possíveis em qual estágio,
 e os custos de latência e memória dessas operações.
 
-## Carregando Flutter
+## Carregando Flutter {:#loading-flutter}
 
 Apps Android e iOS (as duas plataformas suportadas para
 integração em apps existentes), apps Flutter completos,
 e padrões add-to-app têm uma sequência semelhante de
 etapas conceituais de carregamento ao exibir a UI Flutter.
 
-### Encontrando os recursos Flutter
+### Encontrando os recursos Flutter {:#finding-the-flutter-resources}
 
 O runtime do engine Flutter e o código Dart compilado do seu aplicativo
 são ambos empacotados como bibliotecas compartilhadas no Android
@@ -29,7 +29,7 @@ Isso acontece quando você constrói um `FlutterEngine` pela
 primeira vez tanto nas APIs **[Android][android-engine]**
 quanto **[iOS][ios-engine]**.
 
-### Carregando a biblioteca Flutter
+### Carregando a biblioteca Flutter {:#loading-the-flutter-library}
 
 Depois de encontrada, as bibliotecas compartilhadas do engine são carregadas na memória
 uma vez por processo.
@@ -41,7 +41,7 @@ No **iOS**, isso acontece quando o
 [`FlutterEngine`][ios-engine] é executado pela primeira vez,
 como ao executar [`runWithEntrypoint:`][`runWithEntrypoint:`].
 
-### Iniciando a Dart VM
+### Iniciando a Dart VM {:#starting-the-dart-vm}
 
 O runtime Dart é responsável por gerenciar a memória Dart e
 concorrência para seu código Dart. No modo JIT,
@@ -64,7 +64,7 @@ Este é um processo genérico que também ocorre se você usou o
 
 A Dart VM nunca desliga depois de iniciada.
 
-### Criando e executando um Dart Isolate
+### Criando e executando um Dart Isolate {:#creating-and-running-a-dart-isolate}
 
 Depois que o runtime Dart é inicializado,
 o uso do runtime Dart pelo engine Flutter é o próximo passo.
@@ -96,7 +96,7 @@ indica que o `FlutterEngine` não está anexado
 a nenhum componente de UI, como um `FlutterViewController`
 no iOS ou uma `FlutterActivity` no Android.
 
-### Anexando uma UI ao engine Flutter
+### Anexando uma UI ao engine Flutter {:#attaching-a-ui-to-the-flutter-engine}
 
 Um app Flutter padrão e completo avança para alcançar este estado assim
 que o app é iniciado.

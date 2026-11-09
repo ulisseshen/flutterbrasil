@@ -16,7 +16,7 @@ por exemplo para [publicar na Snap Store][snap] ou um
 [canal alternativo](#additional-deployment-resources),
 esta página pode ajudar.
 
-## Pré-requisitos
+## Pré-requisitos {:#prerequisites}
 
 Para compilar e publicar na Snap Store, você precisa dos
 seguintes componentes:
@@ -25,11 +25,11 @@ seguintes componentes:
 * Ferramenta de linha de comando [Snapcraft][]
 * [Gerenciador de container LXD][LXD container manager]
 
-## Configurar o ambiente de build
+## Configurar o ambiente de build {:#set-up-the-build-environment}
 
 Use as seguintes instruções para configurar seu ambiente de build.
 
-### Instalar snapcraft
+### Instalar snapcraft {:#install-snapcraft}
 
 Na linha de comando, execute o seguinte:
 
@@ -37,7 +37,7 @@ Na linha de comando, execute o seguinte:
 $ sudo snap install snapcraft --classic
 ```
 
-### Instalar LXD
+### Instalar LXD {:#install-lxd}
 
 Para instalar LXD, use o seguinte comando:
 
@@ -83,7 +83,7 @@ Isso significa que você precisa adicionar seu nome de usuário ao grupo LXD
 $ sudo usermod -a -G lxd <your username>
 ```
 
-## Visão geral do snapcraft
+## Visão geral do snapcraft {:#overview-of-snapcraft}
 
 A ferramenta `snapcraft` compila snaps baseada nas instruções
 listadas em um arquivo `snapcraft.yaml`.
@@ -93,7 +93,7 @@ e na [Introdução ao snapcraft][Introduction to snapcraft].
 Links e informações adicionais estão listados na
 parte inferior desta página.
 
-## Exemplo Flutter snapcraft.yaml
+## Exemplo Flutter snapcraft.yaml {:#flutter-snapcraft-yaml-example}
 
 Coloque o arquivo YAML no seu projeto
 Flutter em `<project root>/snap/snapcraft.yaml`.
@@ -133,7 +133,7 @@ parts:
 
 As seguintes seções explicam as várias partes do arquivo YAML.
 
-### Metadados
+### Metadados {:#metadata}
 
 Esta seção do arquivo `snapcraft.yaml` define e
 descreve a aplicação. A versão snap é
@@ -146,7 +146,7 @@ summary: Super Cool App
 description: Super Cool App that does everything!
 ```
 
-### Grade, confinement, e base
+### Grade, confinement, e base {:#grade-confinement-and-base}
 
 Esta seção define como o snap é compilado.
 
@@ -265,7 +265,7 @@ parts:
 ```
 
 
-## Arquivo desktop e ícone
+## Arquivo desktop e ícone {:#desktop-file-and-icon}
 
 
 Arquivos de entrada desktop são usados para adicionar uma aplicação
@@ -275,7 +275,7 @@ palavras-chave de busca relacionadas e mais. Estes arquivos têm a
 extensão .desktop e seguem a XDG Desktop Entry
 Specification versão 1.1.
 
-### Exemplo Flutter super-cool-app.desktop
+### Exemplo Flutter super-cool-app.desktop {:#flutter-super-cool-app-desktop-example}
 
 Coloque o arquivo .desktop no seu projeto Flutter
 em `<project root>/snap/gui/super-cool-app.desktop`.
@@ -300,7 +300,7 @@ Coloque seu ícone com extensão .png no seu projeto
 Flutter em `<project root>/snap/gui/super-cool-app.png`.
 
 
-## Compilar o snap
+## Compilar o snap {:#build-the-snap}
 
 Uma vez que o arquivo `snapcraft.yaml` está completo,
 execute `snapcraft` da seguinte forma a partir do diretório raiz
@@ -318,14 +318,14 @@ Para usar o backend de container LXD:
 $ snapcraft --use-lxd
 ```
 
-## Testar o snap
+## Testar o snap {:#test-the-snap}
 
 Uma vez que o snap é compilado, você terá um arquivo `<name>.snap`
 no diretório raiz do seu projeto.
 
 $ sudo snap install ./super-cool-app_0.1.0_amd64.snap --dangerous
 
-## Publicar
+## Publicar {:#publish}
 
 Você pode agora publicar o snap.
 O processo consiste do seguinte:
@@ -346,7 +346,7 @@ O processo consiste do seguinte:
    $ snapcraft upload --release=<channel> <file>.snap
    ```
 
-### Canais da Snap Store
+### Canais da Snap Store {:#snap-store-channels}
 
 A Snap Store usa canais para diferenciar entre
 diferentes versões de snaps.
@@ -369,7 +369,7 @@ Cada canal consiste de três componentes:
 : Permite criação de sequências snap
   de curta duração para testar correções de bugs.
 
-### Revisão automática da Snap Store
+### Revisão automática da Snap Store {:#snap-store-automatic-review}
 
 A Snap Store executa várias verificações automatizadas contra
 seu snap. Também pode haver uma revisão manual,
@@ -377,7 +377,7 @@ dependendo de como o snap foi compilado, e se há
 quaisquer preocupações de segurança específicas. Se as verificações passarem
 sem erros, o snap fica disponível na store.
 
-## Recursos adicionais de snapcraft
+## Recursos adicionais de snapcraft {:#additional-snapcraft-resources}
 
 Você pode aprender mais a partir dos seguintes links no
 site [snapcraft.io][]:

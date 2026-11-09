@@ -6,7 +6,7 @@ description: Remoção de ignoringSemantics em IgnorePointer e classes relaciona
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 O widget `IgnoringPointer` permite que você designe uma área da UI
 onde você não quer aceitar eventos de ponteiro, por exemplo, quando
@@ -25,11 +25,11 @@ descontinuada.
 Esta mudança também se aplica aos widgets `AbsorbPointer` e
 `SliverIgnorePointer`.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 `ignoringSemantics` foi removido.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Se você definir este parâmetro como true nestes widgets, considere usar
 `ExcludeSemantics` em vez disso.
@@ -140,12 +140,12 @@ class _RenderSliverIgnorePointerWithSemantics extends RenderProxySliver {
 }
 ```
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Disponibilizado na versão: 3.10.0-2.0.pre<br>
 Na versão estável: 3.13.0
 
-## Referências
+## Referências {:#references}
 
 PRs relevantes:
 

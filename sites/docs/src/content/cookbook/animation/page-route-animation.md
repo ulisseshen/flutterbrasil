@@ -24,7 +24,7 @@ Para criar uma transição de rota de página customizada, esta receita usa os s
 1.  Usar um `CurveTween`.
 1.  Combinar os dois `Tween`s.
 
-## 1. Configurar um `PageRouteBuilder`
+## 1. Configurar um `PageRouteBuilder` {:#1-set-up-a-pageroutebuilder}
 
 Para começar, use um [`PageRouteBuilder`][] para criar uma [`Route`][].
 `PageRouteBuilder` tem dois callbacks, um para construir o conteúdo da rota
@@ -89,7 +89,7 @@ class Page2 extends StatelessWidget {
 }
 ```
 
-## 2. Criar um `Tween`
+## 2. Criar um `Tween` {:#2-create-a-tween}
 
 Para fazer a nova página animar de baixo para cima, ela deve animar de
 `Offset(0.0, 1.0)` para `Offset(0.0, 0.0)` (geralmente definido usando o construtor `Offset.zero`
@@ -113,7 +113,7 @@ transitionsBuilder: (context, animation, secondaryAnimation, child) {
 },
 ```
 
-## 3. Usar um `AnimatedWidget`
+## 3. Usar um `AnimatedWidget` {:#3-use-an-animatedwidget}
 
 Flutter tem um conjunto de widgets que estendem [`AnimatedWidget`][]
 que se reconstroem quando o valor da animação muda. Por exemplo,
@@ -135,7 +135,7 @@ transitionsBuilder: (context, animation, secondaryAnimation, child) {
 },
 ```
 
-## 4. Usar um `CurveTween`
+## 4. Usar um `CurveTween` {:#4-use-a-curvetween}
 
 Flutter fornece uma seleção de curvas de atenuação que
 ajustam a taxa da animação ao longo do tempo.
@@ -156,7 +156,7 @@ final curveTween = CurveTween(curve: curve);
 Este novo `Tween` ainda produz valores de 0 a 1. No próximo passo,
 combine-o com o `Tween<Offset>` do passo 2.
 
-## 5. Combinar os dois `Tween`s
+## 5. Combinar os dois `Tween`s {:#5-combine-the-two-tweens}
 
 Para combinar os tweens,
 use [`chain()`][]:
@@ -211,7 +211,7 @@ transitionsBuilder: (context, animation, secondaryAnimation, child) {
 }
 ```
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Exemplo prático de roteamento de página Flutter no DartPad" run="true"

@@ -11,14 +11,14 @@ inclui as seguintes mudanças, entre outras melhorias gerais.
 Para saber mais sobre o DevTools, confira a
 [visão geral do DevTools](/tools/devtools/overview).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 - Adicionada uma barra de rolagem horizontal às tabelas de dados para auxiliar na navegação. -
   [#9482](https://github.com/flutter/devtools/pull/9482)
 - Tornado possível redimensionar colunas de tabelas de dados arrastando os separadores de cabeçalho. -
   [#9485](https://github.com/flutter/devtools/pull/9485)
 
-## Atualizações do Network profiler
+## Atualizações do Network profiler {:#network-profiler-updates}
 
 - Corrigida a disposição do badge "error count" no nome da aba. -
   [#9470](https://github.com/flutter/devtools/pull/9470)
@@ -27,13 +27,13 @@ Para saber mais sobre o DevTools, confira a
 - Adicionado um banner para indicar claramente quando o DevTools não está registrando requisições
   de rede. - [#9495](https://github.com/flutter/devtools/pull/9495)
 
-## Atualizações do VS Code
+## Atualizações do VS Code {:#vs-code-updates}
 
 - Corrigido problema que impedia que atalhos como `Cmd`+`C` e `Cmd`+`V` funcionassem quando o DevTools estava
   embutido dentro do VS Code no macOS. -
   [#9472](https://github.com/flutter/devtools/pull/9472)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de mudanças neste lançamento, confira o
 [log do git do DevTools](https://github.com/flutter/devtools/tree/v2.52.0).

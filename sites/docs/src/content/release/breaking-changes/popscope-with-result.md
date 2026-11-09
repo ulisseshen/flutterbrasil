@@ -24,7 +24,7 @@ o resultado do pop quando `onPopInvoked` era chamado.
 O tipo genérico foi adicionado à classe `PopScope` para que
 o novo método `onPopInvokedWithResult` possa acessar o resultado com segurança de tipos.
 
-## Descrição da mudança {:#description-of-the-change}
+## Descrição da mudança {:#description-of-change}
 
 Foi adicionado um tipo genérico (`<T>`) à classe `PopScope` e
 um novo método `onPopInvokedWithResult`.

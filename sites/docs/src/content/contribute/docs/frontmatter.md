@@ -29,7 +29,7 @@ description: >-
 
 [YAML]: https://yaml.org/
 
-## Acessar dados do frontmatter em templates
+## Acessar dados do frontmatter em templates {:#access-frontmatter-data-in-templates}
 
 Layouts, templates e arquivos fonte podem acessar valores do frontmatter
 como dados de nível superior com templating.
@@ -55,7 +55,7 @@ Should show date: {{showDate}}
 Se você adicionar um novo valor ao frontmatter,
 prefira usar `lowerCamelCase` para o nome.
 
-## Campos do frontmatter
+## Campos do frontmatter {:#frontmatter-fields}
 
 Além de `title` e `description`,
 os sites suportam uma variedade de outros campos opcionais

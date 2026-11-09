@@ -24,12 +24,12 @@ informações específicas da plataforma nos seguintes links:
 [Building macOS apps with Flutter]: /platform-integration/macos/building
 [Building Linux apps with Flutter]: /platform-integration/linux/building
 
-## Criar um novo projeto
+## Criar um novo projeto {:#create-a-new-project}
 
 Você pode usar as seguintes etapas
 para criar um novo projeto com suporte a desktop.
 
-### Configurar ferramentas de desenvolvimento desktop
+### Configurar ferramentas de desenvolvimento desktop {:#set-up-desktop-devtools}
 
 Consulte o guia para seu ambiente desktop alvo:
 
@@ -63,7 +63,7 @@ Outras flags disponíveis:
 Após habilitar o suporte a desktop,
 reinicie seu IDE para que ele possa detectar o novo dispositivo.
 
-### Criar e executar
+### Criar e executar {:#create-and-run}
 
 Criar um novo projeto com suporte a desktop não é diferente
 de [criar um novo projeto Flutter][creating a new Flutter project] para outras plataformas.
@@ -74,7 +74,7 @@ tanto no IDE quanto na linha de comando.
 
 [creating a new Flutter project]: /reference/create-new-app
 
-#### Usando um IDE
+#### Usando um IDE {:#using-an-ide}
 
 Depois de ter configurado seu ambiente para suportar
 desktop, certifique-se de reiniciar o IDE se ele já
@@ -86,7 +86,7 @@ No menu suspenso de dispositivos, selecione **windows (desktop)**,
 **macOS (desktop)** ou **linux (desktop)**
 e execute sua aplicação para vê-la ser iniciada no desktop.
 
-#### Da linha de comando
+#### Da linha de comando {:#from-the-command-line}
 
 Para criar uma nova aplicação que inclui suporte a desktop
 (além do suporte a mobile e web), execute os seguintes comandos,
@@ -112,7 +112,7 @@ Se você não fornecer a flag `-d`, `flutter run` lista
 os alvos disponíveis para escolher.
 :::
 
-## Construir um app de release
+## Construir um app de release {:#build-a-release-app}
 
 Para gerar uma build de release,
 execute um dos seguintes comandos:
@@ -123,7 +123,7 @@ $ flutter build macos
 $ flutter build linux
 ```
 
-## Adicionar suporte a desktop a um app Flutter existente
+## Adicionar suporte a desktop a um app Flutter existente {:#add-desktop-support-to-an-existing-flutter-app}
 
 Para adicionar suporte a desktop a um projeto Flutter existente,
 execute o seguinte comando em um terminal a partir do
@@ -139,7 +139,7 @@ Para adicionar apenas plataformas desktop específicas,
 altere a lista `platforms` para incluir apenas
 a(s) plataforma(s) que você quer adicionar.
 
-## Suporte a plugins
+## Suporte a plugins {:#plugin-support}
 
 O Flutter no desktop suporta usar e criar plugins.
 Para usar um plugin que suporta desktop,
@@ -147,7 +147,7 @@ siga as etapas para plugins em [usando pacotes][using packages].
 O Flutter adiciona automaticamente o código nativo necessário
 ao seu projeto, como em qualquer outra plataforma.
 
-### Escrevendo um plugin
+### Escrevendo um plugin {:#writing-a-plugin}
 
 Quando você começar a construir seus próprios plugins,
 você vai querer manter a federação em mente.
@@ -189,7 +189,7 @@ sobre plugins endossados, veja os seguintes recursos:
 
 <a id="samples-and-codelabs" aria-hidden="true"></a>
 
-## Exemplos
+## Exemplos {:#samples}
 
 Você pode executar os seguintes exemplos como apps desktop,
 bem como baixar e inspecionar o código-fonte para

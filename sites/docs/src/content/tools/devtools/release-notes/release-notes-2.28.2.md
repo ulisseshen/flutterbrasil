@@ -16,14 +16,14 @@ Esta foi uma versão cherry-pick em cima do DevTools 2.28.1.
 Para saber sobre as melhorias incluídas no DevTools 2.28.1, por favor leia as
 [notas de versão](/tools/devtools/release-notes/release-notes-2.28.1).
 
-## Atualizações de DevTools Extension
+## Atualizações de DevTools Extension {:#devtools-extension-updates}
 
 * Habilitadas extensões do DevTools ao debugar um ponto de entrada Dart que não está
   sob `lib` (por exemplo, um teste unitário ou teste de integração). Obrigado a
   [@bartekpacia](https://github.com/bartekpacia) por esta mudança! -
   [#6644](https://github.com/flutter/devtools/pull/6644)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de alterações nesta versão, confira o
 [log git do DevTools](https://github.com/flutter/devtools/tree/v2.28.2).

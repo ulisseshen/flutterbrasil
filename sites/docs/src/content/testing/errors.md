@@ -48,7 +48,7 @@ há um trecho de código que trata todos os tipos de erros. Mesmo
 que você possa simplesmente copiar e colar o trecho, recomendamos que você
 primeiro se familiarize com cada um dos tipos de erro.
 
-## Erros capturados pelo Flutter
+## Erros capturados pelo Flutter {:#errors-caught-by-flutter}
 
 Por exemplo, para fazer sua aplicação sair imediatamente sempre que um
 erro for capturado pelo Flutter no modo release, você poderia usar o
@@ -81,7 +81,7 @@ Este manipulador também pode ser usado para relatar erros a um serviço de logg
 Para mais detalhes, veja nosso capítulo de cookbook para
 [relatar erros a um serviço][reporting errors to a service].
 
-## Definir um widget de erro personalizado para erros da fase de build
+## Definir um widget de erro personalizado para erros da fase de build {:#define-a-custom-error-widget-for-build-phase-errors}
 
 Para definir um widget de erro personalizado que é exibido sempre que
 o builder falha ao construir um widget, use [`MaterialApp.builder`][].
@@ -108,7 +108,7 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-## Erros não capturados pelo Flutter
+## Erros não capturados pelo Flutter {:#errors-not-caught-by-flutter}
 
 Considere um callback `onPressed` que invoca uma função assíncrona,
 como `MethodChannel.invokeMethod` (ou praticamente qualquer plugin).
@@ -146,7 +146,7 @@ void main() {
 }
 ```
 
-## Tratando todos os tipos de erros
+## Tratando todos os tipos de erros {:#handling-all-types-of-errors}
 
 Digamos que você queira sair da aplicação em qualquer exceção e exibir
 um widget de erro personalizado sempre que a construção de um widget falhar - você pode basear

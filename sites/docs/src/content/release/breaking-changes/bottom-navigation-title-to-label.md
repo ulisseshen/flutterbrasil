@@ -8,12 +8,12 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 `BottomNavigationBarItem.title` emite um aviso de descontinuação,
 ou não existe mais quando referenciado no código.
 
-## Contexto
+## Contexto {:#context}
 
 O parâmetro `title` do `BottomNavigationBarItem` foi descontinuado
 em favor de `label`. Esta mudança foi necessária para melhorar
@@ -22,7 +22,7 @@ de escala de texto é aumentado. Os itens em um `BottomNavigationBar`
 agora mostram tooltips ao pressionar longamente. Para realizar isso
 é necessário um parâmetro `String` nos `BottomNavigationBarItem`s.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 A classe `BottomNavigationBarItem` tem um parâmetro `title`,
 que é um `Widget`. Isso tornava impossível para o
@@ -32,7 +32,7 @@ Agora, em vez de construir o widget `BottomNavigationBarItem.title`,
 o BottomNavigationBar envolve o
 `BottomNavigationBarItem.label` em um widget Text e constrói isso.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Código antes da migração:
 
@@ -52,12 +52,12 @@ BottomNavigationBarItem(
 )
 ```
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Aplicado na versão: 1.22.0<br>
 Em versão estável: 2.0.0
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

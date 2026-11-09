@@ -6,7 +6,7 @@ skipTemplateRendering: true
 ia-translate: true
 ---
 
-## PRs fechados nesta versão de flutter/flutter
+## PRs fechados nesta versão de flutter/flutter {:#prs-closed-in-this-release-of-flutterflutter}
 
 De Thu Feb 21 20:22:00 2019 -0800 até Wed May 1 16:56:00 2019 -0700
 
@@ -1148,7 +1148,7 @@ De Thu Feb 21 20:22:00 2019 -0800 até Wed May 1 16:56:00 2019 -0700
 [31886](https://github.com/flutter/flutter/pull/31886) Revert "Handle notification errors" (cla: yes)
 
 
-## PRs fechados nesta versão de flutter/engine
+## PRs fechados nesta versão de flutter/engine {:#prs-closed-in-this-release-of-flutterengine}
 
 De Thu Feb 21 20:22:00 2019 -0800 até Wed May 1 16:56:00 2019 -0700
 
@@ -1888,7 +1888,7 @@ De Thu Feb 21 20:22:00 2019 -0800 até Wed May 1 16:56:00 2019 -0700
 [8796](https://github.com/flutter/engine/pull/8796) Dart SDK roll for 2019-04-30 (cla: yes)
 
 
-## PRs fechados nesta versão de flutter/plugins
+## PRs fechados nesta versão de flutter/plugins {:#prs-closed-in-this-release-of-flutterplugins}
 
 De Thu Feb 21 20:22:00 2019 -0800 até Wed May 1 16:56:00 2019 -0700
 

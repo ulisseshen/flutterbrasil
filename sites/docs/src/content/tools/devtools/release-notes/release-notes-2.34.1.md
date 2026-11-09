@@ -12,19 +12,19 @@ inclui as seguintes alterações entre outras melhorias gerais.
 Para saber mais sobre DevTools, confira a
 [visão geral do DevTools](/tools/devtools).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 * Corrigido um problema impedindo DevTools de se conectar a apps Flutter que
   não são lançados do Flutter Tools. - [#6848](https://github.com/flutter/devtools/issues/6848)
 * Melhorada performance do FlatTable. -
   [#7391](https://github.com/flutter/devtools/pull/7391)
 
-## Atualizações do Inspector
+## Atualizações do Inspector {:#inspector-updates}
 
 - Corrige um caso extremo onde widgets de outros pacotes poderiam
   aparecer na árvore do inspector. - [#7353](https://github.com/flutter/devtools/pull/7353)
 
-## Atualizações de Performance
+## Atualizações de Performance {:#performance-updates}
 * Adicionada uma configuração para incluir amostras de CPU na Timeline. -
   [#7333](https://github.com/flutter/devtools/pull/7333), [#7369](https://github.com/flutter/devtools/pull/7369)
 
@@ -43,7 +43,7 @@ Para saber mais sobre DevTools, confira a
 
   ![Loading message](/assets/images/docs/tools/devtools/release-notes/images-2.34.1/7463-overlay.png "Loading message")
 
-## Atualizações de Memory
+## Atualizações de Memory {:#memory-updates}
 
 * Habilitada exportação de snapshots e melhorada performance de snapshotting. -
   [#7197](https://github.com/flutter/devtools/pull/7197),
@@ -57,7 +57,7 @@ Para saber mais sobre DevTools, confira a
 * Tornado filtro de classe compartilhado entre
   os painéis `Profile Memory` e `Diff Snapshots`. - [#7462](https://github.com/flutter/devtools/pull/7462)
 
-## Atualizações do Network profiler
+## Atualizações do Network profiler {:#network-profiler-updates}
 
 * Melhorada performance do Network profiler. - [#7266](https://github.com/flutter/devtools/pull/7266)
 * Corrigido um bug onde requisições pendentes selecionadas não estavam
@@ -67,12 +67,12 @@ Para saber mais sobre DevTools, confira a
 * Corrigido JsonViewer onde todas as
   seções expandidas se fechariam de repente. [#7367](https://github.com/flutter/devtools/pull/7367)
 
-## Atualizações da ferramenta Deep Links
+## Atualizações da ferramenta Deep Links {:#deep-links-tool-updates}
 
 * Preenchida automaticamente uma lista de projetos Flutter do
   IDE conectado. - [#7415](https://github.com/flutter/devtools/pull/7415), [#7431](https://github.com/flutter/devtools/pull/7431)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de alterações nesta versão, confira o
 [log git do DevTools](https://github.com/flutter/devtools/tree/v2.34.1).

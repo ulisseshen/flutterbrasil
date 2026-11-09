@@ -31,7 +31,7 @@ usando os seguintes passos:
 1.  Construir um `AnimatedContainer` usando as propriedades.
 1.  Iniciar a animação reconstruindo com novas propriedades.
 
-## 1. Criar um `StatefulWidget` com propriedades padrão
+## 1. Criar um `StatefulWidget` com propriedades padrão {:#1-create-a-statefulwidget-with-default-properties}
 
 Para começar, crie classes [`StatefulWidget`][] e [`State`][].
 Use a classe `State` customizada para definir as propriedades que mudam ao
@@ -65,7 +65,7 @@ class _AnimatedContainerAppState extends State<AnimatedContainerApp> {
 }
 ```
 
-## 2. Construir um `AnimatedContainer` usando as propriedades
+## 2. Construir um `AnimatedContainer` usando as propriedades {:#2-build-an-animatedcontainer-using-the-properties}
 
 Em seguida, construa o `AnimatedContainer` usando as propriedades definidas no
 passo anterior. Além disso, forneça uma `duration` que define quanto tempo
@@ -88,7 +88,7 @@ AnimatedContainer(
 )
 ```
 
-## 3. Iniciar a animação reconstruindo com novas propriedades
+## 3. Iniciar a animação reconstruindo com novas propriedades {:#3-start-the-animation-by-rebuilding-with-new-properties}
 
 Finalmente, inicie a animação reconstruindo o
 `AnimatedContainer` com as novas propriedades.
@@ -136,7 +136,7 @@ FloatingActionButton(
 )
 ```
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Exemplo prático de animated container Flutter no DartPad" run="true"

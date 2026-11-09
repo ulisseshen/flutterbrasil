@@ -7,14 +7,14 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Descartáveis em projetos Dart puros não podem usar `MemoryAllocations` no Flutter.
 Portanto, para serem rastreáveis quanto a vazamentos, eles precisam de uma classe somente Dart.
 `MemoryAllocations` no Flutter é renomeado para disponibilizar o nome
 para um projeto Dart não-Flutter.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Antes:
 
@@ -40,12 +40,12 @@ if (kFlutterMemoryAllocationsEnabled) {
 }
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Disponibilizado na versão: 3.19.0-2.0.pre<br>
 Disponibilizado na estável: 3.22.0
 
-## Referências
+## Referências {:#references}
 
 Issues relevantes:
 

@@ -25,7 +25,7 @@ uma linha de clientes.
 O primeiro passo é reconhecer um toque longo
 e exibir uma foto arrastável de um item do cardápio.
 
-## Pressionar e arrastar
+## Pressionar e arrastar {:#press-and-drag}
 
 Flutter fornece um widget chamado [`LongPressDraggable`][]
 que fornece exatamente o comportamento que você precisa para começar
@@ -93,7 +93,7 @@ são enviados para um widget especial chamado `DragTarget`,
 onde o usuário solta o gesto de arrastar.
 Você implementará o comportamento de soltar a seguir.
 
-## Soltar o arrastável
+## Soltar o arrastável {:#drop-the-draggable}
 
 O usuário pode soltar um `LongPressDraggable` onde escolher,
 mas soltar o arrastável não tem efeito a menos que seja solto
@@ -164,7 +164,7 @@ da sua UI para outra arrastando e soltando.
 No próximo passo,
 você atualiza o carrinho do cliente com o item do cardápio solto.
 
-## Adicionar um item do cardápio a um carrinho
+## Adicionar um item do cardápio a um carrinho {:#add-a-menu-item-to-a-cart}
 
 Cada cliente é representado por um objeto `Customer`,
 que mantém um carrinho de itens e um total de preço.
@@ -217,7 +217,7 @@ preço e contagem de itens do cliente.
 Parabéns! Você tem uma interação de arrastar e soltar
 que adiciona itens de comida ao carrinho de compras de um cliente.
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 Execute o app:
 

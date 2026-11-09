@@ -10,7 +10,7 @@ ia-translate: true
 O Flutter permite que você construa, teste e implante aplicativos bonitos, compilados nativamente,
 multiplataforma a partir de uma única base de código.
 
-## Visão geral
+## Visão geral {:#overview}
 
 O Flutter e seus pacotes principais frequentemente suportam e integram automaticamente
 com as [supported platforms][] oficialmente suportadas pelo Flutter.

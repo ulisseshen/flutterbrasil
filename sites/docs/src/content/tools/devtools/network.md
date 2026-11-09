@@ -8,14 +8,14 @@ description: Como usar a view de network do DevTools.
 A view de network funciona com todas as aplicações Flutter e Dart.
 :::
 
-## O que é isso?
+## O que é isso? {:#what-is-it}
 
 A view de network permite inspecionar tráfego HTTP, HTTPS e WebSocket do
 seu aplicativo Dart ou Flutter.
 
 ![Screenshot of the network screen](/assets/images/docs/tools/devtools/network_screenshot.png){:width="100%"}
 
-## Qual tráfego de rede é registrado?
+## Qual tráfego de rede é registrado? {:#what-network-traffic-is-recorded}
 
 Todo o tráfego de rede que se origina do `dart:io` (como a
 classe [`HttpClient`][HttpClient]) é registrado, incluindo o package [`dio`][dio].
@@ -28,7 +28,7 @@ packages [`cupertino_http`][cupertino_http], [`cronet_http`][cronet_http], e
 Para um app web que faz requisições usando o navegador, recomendamos usar
 ferramentas do navegador para inspecionar o tráfego de rede, como [Chrome DevTools][Chrome DevTools].
 
-## Como usar
+## Como usar {:#how-to-use-it}
 
 Quando você abre a página Network, DevTools imediatamente começa a gravar tráfego
 de rede. Para pausar e retomar a gravação, use os botões **Pause** e **Resume**
@@ -43,7 +43,7 @@ inspecionar informações gerais e de tempo sobre a requisição, bem como o con
 dos headers e bodies de resposta e requisição. Alguns dados não estão disponíveis até que
 a resposta seja recebida.
 
-### Pesquisa e filtragem
+### Pesquisa e filtragem {:#search-and-filtering}
 
 Você pode usar os controles de pesquisa e filtro para encontrar uma requisição específica ou filtrar
 requisições da tabela de requisições.
@@ -74,7 +74,7 @@ my-endpoint m:get t:json s:200
 https s:404
 ```
 
-### Gravando requisições de rede na inicialização do app
+### Gravando requisições de rede na inicialização do app {:#recording-network-requests-on-app-startup}
 
 Para gravar o tráfego de rede na inicialização do app, você pode iniciar seu app em um estado
 pausado, e então começar a gravar o tráfego de rede no DevTools
@@ -91,7 +91,7 @@ antes de retomar seu app.
 5. O profiler de Network agora gravará todo o tráfego de rede do seu app,
    incluindo tráfego da inicialização do app.
 
-## Outros recursos
+## Outros recursos {:#other-resources}
 
 Requisições HTTP e HTTPS também aparecem no [`Timeline`][timeline] como
 eventos de timeline assíncronos. Visualizar a atividade de rede na timeline pode ser

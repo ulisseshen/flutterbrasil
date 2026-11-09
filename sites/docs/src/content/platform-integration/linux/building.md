@@ -88,7 +88,7 @@ $ sudo apt-get install libgtk-3-0 libblkid1 liblzma5
 Para aprender como publicar uma aplicação Linux na [Snap Store],
 consulte [Build and release a Linux application to the Snap Store][Build and release a Linux application to the Snap Store].
 
-## Recursos adicionais
+## Recursos adicionais {:#additional-resources}
 
 Para aprender como criar builds Linux Debian (`.deb`) e RPM (`.rpm`)
 do seu app desktop Flutter,

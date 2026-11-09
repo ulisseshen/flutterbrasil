@@ -8,13 +8,13 @@ description: >
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Dois novos valores foram adicionados ao enum [`TargetPlatform`][TargetPlatform]
 que podem requerer cases adicionais em instruções switch que
 fazem switch em um `TargetPlatform` e não incluem um case `default:`.
 
-## Contexto
+## Contexto {:#context}
 
 Antes desta mudança, o enum `TargetPlatform` continha apenas quatro valores,
 e era definido assim:
@@ -48,7 +48,7 @@ void main() {
 }
 ```
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 O enum `TargetPlatform` agora é definido como:
 
@@ -74,7 +74,7 @@ Escrever um switch sem um case `default:` é a
 maneira recomendada de lidar com enums, já que o analisador
 pode então ajudá-lo a encontrar quaisquer cases que não sejam tratados.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Para migrar para o novo enum, e evitar o erro
 `missing_enum_constant_in_switch` do analisador, que se parece com:
@@ -147,12 +147,12 @@ Além disso, quaisquer testes como o referenciado acima que definem o
 `debugDefaultTargetPlatformOverride` não são mais necessários
 para aplicações Linux e Windows.
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Disponibilizado na versão: 1.15.4<br>
 Na versão estável: 1.17
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

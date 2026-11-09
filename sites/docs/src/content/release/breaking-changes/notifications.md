@@ -7,12 +7,12 @@ description: >
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Notifications são mais eficientes ao percorrer apenas ancestrais que
 são notification listeners.
 
-## Contexto
+## Contexto {:#context}
 
 A API de notification percorria a árvore de elements para localizar um
 receptor de notification. Isso levou a algumas características de desempenho
@@ -37,7 +37,7 @@ No entanto, o antigo sistema de notifications expunha o fato de que percorria
 cada element como parte de sua API via `Notification.visitAncestor`. Este
 método não é mais suportado já que não visitamos mais todos os elements ancestrais.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 `Notification.visitAncestor` foi removido.
 Quaisquer classes que estendem `Notification` não devem mais
@@ -47,7 +47,7 @@ sobrescrever este método.
 que sobrescreve `Notification.visitAncestor`,
 então nenhuma mudança é necessária.**
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Se você tem uma subclasse de `Notification` que sobrescreve
 `Notification.visitAncestor`, então você deve deletar a sobrescrita ou
@@ -99,12 +99,12 @@ void methodThatSendsNotification(BuildContext? context) {
 Note que isso tem desempenho ruim comparado ao
 novo comportamento padrão de `Notification.dispatch`.
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Landed in version: 2.12.0-4.1<br>
 In stable release: 3.0.0
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

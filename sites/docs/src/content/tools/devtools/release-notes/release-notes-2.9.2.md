@@ -12,7 +12,7 @@ inclui as seguintes mudanças, entre outras melhorias gerais.
 Para saber mais sobre o DevTools, confira a
 [visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 * Participe da nossa pesquisa DevTools 2022! Forneça seu feedback e nos ajude a melhorar
   sua experiência de desenvolvimento. Este prompt de pesquisa aparecerá diretamente no
@@ -33,20 +33,20 @@ Para saber mais sobre o DevTools, confira a
   [#3532](https://github.com/flutter/devtools/pull/3532),
   [#3539](https://github.com/flutter/devtools/pull/3539)
 
-## Atualizações de Performance
+## Atualizações de Performance {:#performance-updates}
 
 * Adicionados números de frame ao eixo x do gráfico de frames Flutter -
   [#3526](https://github.com/flutter/devtools/pull/3526)
 
   ![frame numbers](/assets/images/docs/tools/devtools/release-notes/images-2.9.2/image2.png "frame_numbers")
 
-## Atualizações do Debugger
+## Atualizações do Debugger {:#debugger-updates}
 
 * Corrigido um bug onde o File Explorer no Debugger não mostrava conteúdo
   após um hot restart -
   [#3527](https://github.com/flutter/devtools/pull/3527)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de mudanças desde o lançamento anterior,
 confira

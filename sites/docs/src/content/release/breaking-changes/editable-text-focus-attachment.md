@@ -8,12 +8,12 @@ description: >
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 `EditableText.focusNode` agora está anexado a
 um widget `Focus` dedicado abaixo de `EditableText`.
 
-## Contexto
+## Contexto {:#context}
 
 Um widget de campo de entrada de texto (`TextField`, por exemplo)
 tipicamente possui um `FocusNode`.
@@ -37,7 +37,7 @@ abaixo do `BuildContext` do `EditableTextState`) não podiam lidar com
 atalhos mesmo quando esse `EditableText` estava focado, pela
 razão mencionada acima.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 `EditableTextState` agora cria um widget `Focus` dedicado para
 hospedar `EditableText.focusNode`.
@@ -53,7 +53,7 @@ verificar se um `FocusNode` está associado a um campo de entrada de texto.
 Esta mudança não quebra nenhuma build mas pode introduzir problemas em tempo de execução, ou
 fazer com que testes existentes falhem.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 O widget `EditableText` recebe um `FocusNode` como parâmetro, que era
 anteriormente anexado ao `BuildContext` do seu `EditableText`. Se você está confiando
@@ -99,12 +99,12 @@ if (focusedContext != null) {
 Para uma lista abrangente de `Intent`s suportados pelo widget `EditableText`,
 consulte a documentação do widget `EditableText`.
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Landed in version: 2.6.0-12.0.pre<br>
 In stable release: 2.10.0
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

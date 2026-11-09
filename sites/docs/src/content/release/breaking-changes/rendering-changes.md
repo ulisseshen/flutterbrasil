@@ -6,11 +6,11 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Alterações
+## Alterações {:#changes}
 
 Esta seção lista as alterações incompatíveis notáveis não relacionadas à API.
 
-### (Afeta Apenas Testes) `FlutterTest` agora é a fonte de teste padrão
+### (Afeta Apenas Testes) `FlutterTest` agora é a fonte de teste padrão {:#only-affects-tests-fluttertest-is-now-the-default-test-font}
 
 A fonte `FlutterTest` substituiu `Ahem` como a fonte padrão em testes: quando
 `fontFamily` não é especificado, ou as famílias de fontes especificadas não estão registradas,
@@ -63,7 +63,7 @@ uma ligeira diferença:
 | :---: | :---: |:---------------------------------------:|
 | ![before](/assets/images/docs/breaking-changes/material.floating_action_button_test.clip_masterImage.png) | ![after](/assets/images/docs/breaking-changes/material.floating_action_button_test.clip_testImage.png) | ![not_def_animated](/assets/images/docs/breaking-changes/not_def.gif) |
 
-## Referências
+## Referências {:#references}
 
 PRs relevantes:
 

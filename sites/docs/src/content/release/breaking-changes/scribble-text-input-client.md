@@ -15,13 +15,13 @@ Adiciona três métodos, `showToolbar`, `insertTextPlaceholder` e
 recurso Scribble do iOS 14 insira e remova placeholders de texto e exiba a
 barra de ferramentas.
 
-## Contexto {:#background}
+## Contexto {:#context}
 
 A partir do iOS 14, os iPads oferecem suporte ao recurso Scribble ao usar o
 Apple Pencil. Esse recurso permite que o usuário use a caneta para interagir
 com campos de texto e adicionar, apagar, selecionar e modificar texto.
 
-## Descrição da mudança {:#change-description}
+## Descrição da mudança {:#description-of-change}
 
 Em widgets de texto nativos, a barra de ferramentas de texto é exibida quando
 o usuário usa a caneta para selecionar texto em um iPad com iOS 14 ou superior.

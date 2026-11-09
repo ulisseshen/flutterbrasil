@@ -37,7 +37,7 @@ confira [Hospedando views Android nativas][Hosting native Android views].
 Nem todas as activities Android usam Jetpack Compose, mas
 este tutorial assume que você quer usar Compose.
 
-## Do lado do Dart
+## Do lado do Dart {:#on-the-dart-side}
 
 Do lado do Dart, crie um canal de método e invoque-o de
 uma interação específica do usuário, como tocar em um botão.
@@ -106,7 +106,7 @@ Existem 3 valores importantes que devem corresponder entre seu código Dart e Ko
     Neste caso, os dados são um mapa com uma única chave `"message"`.
 
 
-## Do lado do Android
+## Do lado do Android {:#on-the-android-side}
 
 Você deve fazer alterações em 4 arquivos no app Android gerado para
 prepará-lo para lançar activities Compose novas.

@@ -19,7 +19,7 @@ usados em [widget testing][].
 Para uma introdução ao pacote `integration_test`,
 confira o guia de [Integration testing][].
 
-## Projeto de exemplo inicial
+## Projeto de exemplo inicial {:#starter-example-project}
 
 O projeto neste guia é um pequeno aplicativo desktop de exemplo com esta
 funcionalidade:
@@ -37,7 +37,7 @@ funcionalidade:
 
 Você pode encontrar o exemplo de código completo na pasta [Example Project][].
 
-## Testes existentes
+## Testes existentes {:#existing-tests}
 
 O projeto contém os três testes `flutter_driver`
 executando as seguintes verificações:
@@ -53,7 +53,7 @@ Nesta pasta também há um arquivo chamado `main.dart`,
 que contém uma chamada para o método `enableFlutterDriverExtension()`.
 Este arquivo não será mais necessário ao usar `integration_test`.
 
-## Configuração
+## Configuração {:#setup}
 
 Para começar a usar o pacote `integration_test`,
 adicione o `integration_test` ao
@@ -69,12 +69,12 @@ Em seguida, em seu projeto, crie um novo diretório
 `integration_test/`, crie seus arquivos de testes lá
 com o formato: `<name>_test.dart`.
 
-## Migração de teste
+## Migração de teste {:#test-migration}
 
 Esta seção contém diferentes exemplos de como migrar testes
 `flutter_driver` existentes para testes `integration_test`.
 
-### Exemplo: Verificando se um widget está exibido
+### Exemplo: Verificando se um widget está exibido {:#example-verifying-a-widget-is-displayed}
 
 Quando o aplicativo inicia, a tela à direita exibe
 um texto pedindo ao usuário para selecionar uma das plantas na lista.
@@ -128,7 +128,7 @@ testWidgets(
 );
 ```
 
-### Exemplo: Ações de toque
+### Exemplo: Ações de toque {:#example-tap-actions}
 
 Este teste executa uma ação de toque no primeiro item da lista,
 que é um `ListTile` com o texto "Alder".
@@ -207,7 +207,7 @@ testWidgets('tap on the first item (Alder), verify selected', (tester) async {
 });
 ```
 
-### Exemplo: Rolagem
+### Exemplo: Rolagem {:#example-scrolling}
 
 Este teste é semelhante ao teste anterior,
 mas ele rola para baixo e toca no último item em vez disso.

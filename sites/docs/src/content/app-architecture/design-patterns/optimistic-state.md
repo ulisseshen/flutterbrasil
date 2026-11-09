@@ -31,7 +31,7 @@ Nesta receita,
 você implementará uma funcionalidade de aplicação usando Optimistic State e
 seguindo as [diretrizes de arquitetura Flutter][Flutter architecture guidelines].
 
-## Funcionalidade de exemplo: um botão de inscrição
+## Funcionalidade de exemplo: um botão de inscrição {:#example-feature-a-subscribe-button}
 
 Este exemplo implementa um botão de inscrição similar ao
 que você poderia encontrar em uma aplicação de streaming de vídeo ou uma newsletter.
@@ -63,7 +63,7 @@ e apenas mudar de volta para "Subscribe" se a requisição falhar.
 <img src='/assets/images/docs/cookbook/architecture/optimistic-state.webp'
 class="site-mobile-screenshot" alt="Animation of application with subscribe button" >
 
-## Arquitetura da funcionalidade
+## Arquitetura da funcionalidade {:#feature-architecture}
 
 Comece definindo a arquitetura da funcionalidade.
 Seguindo as diretrizes de arquitetura,
@@ -145,7 +145,7 @@ SubscribeButton(
   ),
 )
 ```
-### Implemente o `SubscriptionRepository`
+### Implemente o `SubscriptionRepository` {:#implement-the-subscriptionrepository}
 
 Adicione um novo método assíncrono chamado `subscribe()`
 ao `SubscriptionRepository` com o seguinte código:
@@ -172,7 +172,7 @@ o método subscribe lança uma exceção no final.
 Isso será usado mais tarde para mostrar como se recuperar de uma requisição falhada
 ao implementar Optimistic State.
 
-### Implemente o `SubscribeButtonViewModel`
+### Implemente o `SubscribeButtonViewModel` {:#implement-the-subscribebuttonviewmodel}
 
 Para representar o estado da assinatura, bem como um possível estado de erro,
 adicione os seguintes membros públicos ao `SubscribeButtonViewModel`:
@@ -289,7 +289,7 @@ class SubscribeButtonViewModel extends ChangeNotifier {
 }
 ```
 
-### Implemente o `SubscribeButton`
+### Implemente o `SubscribeButton` {:#implement-the-subscribebutton}
 
 Neste passo,
 você primeiro implementará o método build do `SubscribeButton`,
@@ -348,7 +348,7 @@ Se você executar a aplicação agora,
 você verá como o botão muda quando você pressiona,
 no entanto ele mudará de volta ao estado original sem mostrar um erro.
 
-### Tratando erros
+### Tratando erros {:#handling-errors}
 
 Para tratar erros,
 adicione os métodos `initState()` e `dispose()` ao `SubscribeButtonState`,
@@ -396,7 +396,7 @@ Além disso, o estado `error` é definido de volta para `false`,
 para evitar exibir a mensagem de erro múltiplas vezes
 se `notifyListeners()` for chamado novamente no view model.
 
-## Optimistic State avançado
+## Optimistic State avançado {:#advanced-optimistic-state}
 
 Neste tutorial,
 você aprendeu como implementar um Optimistic State com um único estado binário,
@@ -415,7 +415,7 @@ indicando que o método `subscribe()` ainda está em execução,
 ou usar o estado running do padrão Command,
 e então modificar o estilo do botão ligeiramente para mostrar que a operação está em execução.
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 Este exemplo mostra o widget `SubscribeButton`
 junto com o `SubscribeButtonViewModel`

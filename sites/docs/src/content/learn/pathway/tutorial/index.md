@@ -18,7 +18,7 @@ Você começará do início: criando uma aplicação Flutter em branco.
 Ao final, você terá construído alguns pequenos apps que demonstram
 os recursos críticos do desenvolvimento Flutter (e muito mais!)
 
-### Antes de começar
+### Antes de começar {:#before-you-begin}
 
 Este tutorial é o terceiro passo na trilha de aprendizado do Flutter e, portanto, assume que você tem:
 1. Um ambiente Flutter configurado
@@ -32,7 +32,7 @@ Se algum desses itens não for verdade, comece pela [página da trilha de aprend
   </div>
 </div>
 
-## Conteúdo
+## Conteúdo {:#contents}
 
 <TutorialOutline />
 

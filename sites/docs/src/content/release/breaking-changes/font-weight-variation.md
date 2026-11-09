@@ -8,13 +8,13 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Um `FontWeight` em um estilo de texto também definirá o atributo weight de fontes
 variáveis. Não é mais necessário usar separadamente `FontVariation` para controlar
 o weight dessas fontes.
 
-## Contexto
+## Contexto {:#context}
 
 Estilos de texto podem especificar um valor `FontWeight` que configura a espessura dos
 traços usados para pintar o texto. `FontWeight` selecionará o weight mais próximo
@@ -29,7 +29,7 @@ O Flutter agora mudou o comportamento de `FontWeight` para que ele tanto
 selecione o arquivo de fonte correspondente mais próximo quanto defina o atributo weight de fontes
 variáveis.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 Definir a propriedade `fontWeight` de objetos como `TextStyle` agora também
 definirá o valor do eixo de variação `wght` de fontes que o suportam. O Flutter
@@ -46,7 +46,7 @@ A propriedade `FontWeight.index` agora está descontinuada porque ela apenas ide
 os weights `FontWeight.w100` até `w900`. Aplicativos devem usar
 `FontWeight.value` para obter o nível de espessura de uma fonte.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Aplicativos podem ver mudanças na renderização de texto se usaram fontes variáveis e
 estavam especificando `FontWeight` em estilos de texto sem um valor
@@ -56,12 +56,12 @@ Se essas mudanças forem indesejáveis, então o aplicativo deve alterar o
 `FontWeight` para um valor que alcance a renderização pretendida. Por exemplo,
 para restaurar o weight padrão da fonte, defina `fontWeight` como `FontWeight.normal`.
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Adicionado na versão: 3.39.0-0.0.pre<br>
 Na versão estável: 3.41
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

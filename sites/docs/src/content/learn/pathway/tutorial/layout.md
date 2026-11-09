@@ -259,7 +259,7 @@ um para cada palpite no objeto `Game`.
 
 [collection for element]: {{site.dart-site}}/language/collections#for-element
 
-#### Uma árvore de widgets atualizada {:#an-updated-widget-tree-2}
+#### Uma árvore de widgets atualizada {:#an-updated-widget-tree}
 
 A árvore de widgets para este app se expandiu significativamente nesta lição.
 Agora, ela se parece mais com a figura a seguir (abreviada):

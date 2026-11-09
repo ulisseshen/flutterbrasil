@@ -8,7 +8,7 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 A fórmula para `SpringDescription` foi alterada para corrigir um erro anterior,
 afetando springs underdamped (relação de amortecimento menor que 1)
@@ -16,7 +16,7 @@ com valores de massa diferentes de 1.
 Springs criados antes dessa alteração podem exibir
 comportamentos de ricochete diferentes após a atualização.
 
-## Contexto
+## Contexto {:#background}
 
 A classe [`SpringDescription`][] descreve o comportamento de springs amortecidas,
 permitindo que os widgets do Flutter animem de forma realista com base nos parâmetros fornecidos.
@@ -37,7 +37,7 @@ que atualizou o cálculo subjacente. Como resultado, as animações afetadas ant
 agora se comportam de maneira diferente, embora nenhum erro explícito seja relatado pelo
 framework.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 A migração é necessária apenas para springs com relações de amortecimento menores que 1 e
 massas diferentes de 1.
@@ -47,7 +47,7 @@ de acordo. Você pode calcular os ajustes de parâmetros necessários usando o
 [JSFiddle for migration][] fornecido. Fórmulas detalhadas e explicações seguem
 nas próximas seções.
 
-### Construtor padrão
+### Construtor padrão {:#default-constructor}
 
 Se o `SpringDescription` foi construído com o construtor padrão com
 massa `m`, rigidez `k` e amortecimento `c`,
@@ -79,7 +79,7 @@ const spring = SpringDescription(
 );
 ```
 
-### Construtor `.withDampingRatio`
+### Construtor `.withDampingRatio` {:#withdampingratio-constructor}
 
 Se o `SpringDescription` foi construído com o construtor `.withDampingRatio`
 com massa `m`, rigidez `k` e relação `z`, então primeiro calcule o amortecimento:
@@ -115,12 +115,12 @@ const spring = SpringDescription.withDampingRatio(
 );
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Disponibilizado na versão: 3.31.0-0.1.pre<br>
 Na versão estável: 3.32
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

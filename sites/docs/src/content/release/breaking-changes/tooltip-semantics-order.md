@@ -8,12 +8,12 @@ description: >-
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Durante a travessia de foco de acessibilidade, `Tooltip.message` é
 visitado imediatamente após `Tooltip.child`.
 
-## Contexto
+## Contexto {:#background}
 
 O widget `Tooltip` geralmente envolve um componente de UI interativo, como um botão,
 e exibe uma mensagem de ajuda quando pressionado longamente.
@@ -25,7 +25,7 @@ um `OverlayEntry` quando pressionado longamente.
 Como resultado, `Tooltip.message` não ficava imediatamente após
 `Tooltip.child` na árvore de semântica.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Esta mudança moveu a mensagem do tooltip na árvore de semântica.
 Você pode ver falhas em testes de acessibilidade se
@@ -128,12 +128,12 @@ SemanticsNode#0
          textDirection: ltr
 ```
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Implementado na versão: 3.16.0-11.0.pre<br>
 Na versão estável: 3.19.0
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

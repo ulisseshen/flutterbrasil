@@ -58,7 +58,7 @@ description: >-
     PR final.
 {% endcomment %}
 
-## Resumo
+## Resumo {:#summary}
 
 {% comment %}
   Um breve resumo (de uma a três linhas) que fornece
@@ -70,7 +70,7 @@ description: >-
   mensagens de erro).
 {% endcomment %}
 
-## Contexto
+## Contexto {:#background}
 
 {% comment %}
   Descrição de alto nível sobre qual API mudou e por quê.
@@ -90,7 +90,7 @@ description: >-
   mensagens de erro. ISSO É MUITO IMPORTANTE PARA DESCOBERTA!
 {% endcomment %}
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 {% comment %}
   Uma descrição de como fazer a mudança.
@@ -121,7 +121,7 @@ Código após a migração:
   a API mudou e fazendo link para este guia.
 {% endcomment %}
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 {% comment %}
   O número da versão do SDK onde esta mudança foi
@@ -141,14 +141,14 @@ Landed in version: xxx<br>
 In stable release: Not yet
 Reverted in version: xxx  (OPTIONAL, delete if not used)
 
-## Referências
+## Referências {:#references}
 
 {% comment %}
   Esses links estão comentados porque
   fazem com que o linkcheck do GitHubActions (GHA) falhe.
   Remova as tags de comentário assim que preencher isso com
   links reais. Apenas use o include "main-api" se
-  você fizer link para "main-api.flutterbrasil.dev"; prefira nossa
+  você fizer link para "main-api.flutter.dev"; prefira nossa
   documentação stable se possível.
 
 {% render "docs/main-api.md", site: site %}

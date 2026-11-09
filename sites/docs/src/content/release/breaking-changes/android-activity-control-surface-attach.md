@@ -8,7 +8,7 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 :::note
 Se você usa classes Java de embedding Android padrão como
@@ -35,7 +35,7 @@ void attachToActivity(@NonNull Activity activity, @NonNull Lifecycle lifecycle);
 O método descontinuado existente com o parâmetro `Activity`
 foi removido no Flutter 2.
 
-## Contexto
+## Contexto {:#context}
 
 Para que Activities personalizados também forneçam os eventos
 de ciclo de vida de `Activity` que plugins Flutter esperam usando a
@@ -59,7 +59,7 @@ engine, assim habilitando relacionamentos `n:1` entre
 o activity e o engine,
 causando problemas de cross-talk de ciclo de vida.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 Após [Issue #21272][], em vez de anexar seu activity
 ao [`FlutterEngine`][] usando a:
@@ -90,7 +90,7 @@ A API permanece inalterada e você ainda é esperado
 para chamá-la quando seu activity
 personalizado está sendo destruído naturalmente.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Se você tem seu próprio activity contendo um
 [`FlutterView`][], substitua chamadas a:
@@ -122,12 +122,12 @@ activity sendo anexado ao [`FlutterEngine`][].
 Geralmente, você quer realizar as mesmas operações de desanexação
 como realizadas quando o activity está sendo destruído naturalmente.
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Lançado na versão: 1.23.0-7.0.pre<br>
 Na versão estável: 2.0.0
 
-## Referências
+## Referências {:#references}
 
 Bug motivador: [Issue #66192][]—Componentes de
 UI não exclusivos anexados ao FlutterEngine causam

@@ -23,7 +23,7 @@ armazenam o que normalmente seriam várias fontes estáticas em um único arquiv
 
 [_Typography_]: https://en.wikipedia.org/wiki/Typography
 
-## Escala Tipográfica
+## Escala Tipográfica {:#typographic-scale}
 
 Uma escala tipográfica é um conjunto de estilos de texto relacionados para fornecer equilíbrio,
 coesão e variedade visual nos seus apps.
@@ -56,7 +56,7 @@ referenciar esta classe diretamente, pois o `TextTheme` será localizado para su
 [`TextStyle`]: {{site.api}}/flutter/painting/TextStyle-class.html
 [`Typography`]: {{site.material_ui}}/Typography-class.html
 
-## Fontes variáveis
+## Fontes variáveis {:#variable-fonts}
 
 [Fontes variáveis][Variable fonts]
 permitem que você controle aspectos pré-definidos do estilo de texto.
@@ -67,7 +67,7 @@ ao especificar o tipo.
 
 [Variable fonts]: https://fonts.google.com/knowledge/introducing_type/introducing_variable_fonts
 
-### Usando o testador de tipos do Google Fonts
+### Usando o testador de tipos do Google Fonts {:#using-the-google-fonts-type-tester}
 
 Um número crescente de fontes no Google Fonts oferece algumas capacidades de fonte variável.
 Você pode ver a variedade de opções usando o Type Tester e ver como você
@@ -85,14 +85,14 @@ A classe `FontVariation` está em conformidade com a
 [Google Fonts]: https://fonts.google.com/
 [OpenType font variables spec]: https://learn.microsoft.com/en-us/typography/opentype/spec/otvaroverview
 
-## Fontes estáticas
+## Fontes estáticas {:#static-fonts}
 
 O Google Fonts também contém fontes estáticas. Assim como nas fontes variáveis,
 você precisa saber como a fonte é projetada para saber quais opções
 estão disponíveis para você.
 Mais uma vez, o site do Google Fonts pode ajudar.
 
-### Usando o pacote Google Fonts
+### Usando o pacote Google Fonts {:#using-the-google-fonts-package}
 
 Embora você possa baixar fontes do site e instalá-las manualmente em seus apps,
 você pode optar por usar o tema diretamente do pacote [google_fonts][google_fonts] no [pub.dev][pub.dev].
@@ -120,7 +120,7 @@ Text(
 ),
 ```
 
-### Modificando fontes
+### Modificando fontes {:#modifying-fonts}
 
 Use a seguinte API para alterar programaticamente uma fonte estática
 (mas lembre-se de que isso só funciona se a fonte foi _projetada_
@@ -142,7 +142,7 @@ um recurso de uma determinada fonte.
 [pub.dev]: https://pub.dev
 [google_fonts]: https://pub.dev/packages/google_fonts
 
-## Outros recursos
+## Outros recursos {:#other-resources}
 
 O vídeo a seguir mostra algumas das capacidades
 da tipografia do Flutter e combina isso com a aparência

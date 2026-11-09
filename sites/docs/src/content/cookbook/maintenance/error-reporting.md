@@ -34,7 +34,7 @@ os seguintes passos:
   3. Inicialize o SDK do Sentry
   4. Capture erros programaticamente
 
-## 1. Obtenha um DSN do Sentry
+## 1. Obtenha um DSN do Sentry {:#1-get-a-dsn-from-sentry}
 
 Antes de reportar erros ao Sentry, você precisa de um "DSN" para identificar exclusivamente
 seu app com o serviço Sentry.io.
@@ -46,7 +46,7 @@ Para obter um DSN, use os seguintes passos:
   3. Crie um novo projeto Flutter.
   4. Copie o trecho de código que inclui o DSN.
 
-## 2. Importe o pacote Sentry
+## 2. Importe o pacote Sentry {:#2-import-the-sentry-package}
 
 Importe o pacote [`sentry_flutter`][`sentry_flutter`] para o app.
 O pacote sentry torna mais fácil enviar
@@ -59,7 +59,7 @@ execute `flutter pub add`:
 $ flutter pub add sentry_flutter
 ```
 
-## 3. Inicialize o SDK do Sentry
+## 3. Inicialize o SDK do Sentry {:#3-initialize-the-sentry-sdk}
 
 Inicialize o SDK para capturar diferentes erros não tratados automaticamente:
 
@@ -82,14 +82,14 @@ Alternativamente, você pode passar o DSN para o Flutter usando a tag `dart-defi
 --dart-define SENTRY_DSN=https://example@sentry.io/example
 ```
 
-### O que isso me dá?
+### O que isso me dá? {:#what-does-that-give-me}
 
 Isso é tudo que você precisa para o Sentry
 capturar erros não tratados nas camadas Dart e nativas.
 Isso inclui Swift, Objective-C, C e C++ no iOS, e
 Java, Kotlin, C e C++ no Android.
 
-## 4. Capture erros programaticamente
+## 4. Capture erros programaticamente {:#4-capture-errors-programmatically}
 
 Além do relatório automático de erros que o Sentry gera ao
 importar e inicializar o SDK,
@@ -102,11 +102,11 @@ await Sentry.captureException(exception, stackTrace: stackTrace);
 
 Para mais informações, consulte a documentação da [API do Sentry][Sentry API] em pub.dev.
 
-## Saiba mais
+## Saiba mais {:#learn-more}
 
 Documentação extensiva sobre o uso do SDK do Sentry pode ser encontrada no [site do Sentry][Sentry's site].
 
-## Exemplo completo
+## Exemplo completo {:#complete-example}
 
 Para ver um exemplo funcionando,
 consulte o [app de exemplo do Sentry flutter][Sentry flutter example].

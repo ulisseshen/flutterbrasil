@@ -8,7 +8,7 @@ ia-translate: true
 
 
 
-## PRs fechados nesta versão de flutter/flutter
+## PRs fechados nesta versão de flutter/flutter {:#prs-closed-in-this-release-of-flutterflutter}
 
 De Fri Jun 21 22:31:55 2019 -0400 até Sun Aug 18 12:22:00 2019 -0700
 
@@ -1047,7 +1047,7 @@ De Fri Jun 21 22:31:55 2019 -0400 até Sun Aug 18 12:22:00 2019 -0700
 
 
 
-## PRs fechados nesta versão de `flutter/engine`
+## PRs fechados nesta versão de `flutter/engine` {:#prs-closed-in-this-release-of-flutterengine}
 
 De Fri Jun 21 22:31:55 2019 -0400 até Sun Aug 18 12:22:00 2019 -0700
 

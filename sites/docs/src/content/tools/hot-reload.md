@@ -17,7 +17,7 @@ permitindo que você visualize rapidamente os efeitos de suas mudanças.
 ![Hot reload GIF](/assets/images/docs/tools/hot-reload.gif){:width="100%"}<br>
 Uma demonstração de hot reload no DartPad
 
-## Como fazer um hot reload
+## Como fazer um hot reload {:#how-to-perform-a-hot-reload}
 
 Se você estiver usando um assistente de codificação com IA como o Google Antigravity,
 o assistente pode fazer hot reload automaticamente na sua aplicação em execução depois
@@ -124,12 +124,12 @@ hot reload. Em alguns casos, pequenas mudanças no código Dart
 permitem que você continue usando hot reload para seu app.
 Em outros casos, um hot restart ou um full restart é necessário.
 
-### Um app é encerrado
+### Um app é encerrado {:#an-app-is-killed}
 
 Hot reload pode falhar quando o app é encerrado.
 Por exemplo, se o app ficou em segundo plano por muito tempo.
 
-### Erros de compilação
+### Erros de compilação {:#compilation-errors}
 
 Quando uma mudança de código introduz um erro de compilação,
 hot reload gera uma mensagem de erro similar a:
@@ -153,7 +153,7 @@ Hot reload não aplicará mudanças feitas em
 um `builder` de um `CupertinoTabView`.
 Para mais informações, veja [Issue 43574][Issue 43574].
 
-### Tipos enumerados
+### Tipos enumerados {:#enumerated-types}
 
 Hot reload não funciona quando tipos enumerados são
 alterados para classes regulares ou classes regulares são
@@ -177,7 +177,7 @@ class Color {
 }
 ```
 
-### Tipos genéricos
+### Tipos genéricos {:#generic-types}
 
 Hot reload não funcionará quando declarações de tipo genérico
 forem modificadas. Por exemplo, o seguinte não funcionará:
@@ -199,13 +199,13 @@ class A<T, V> {
 }
 ```
 
-### Código nativo
+### Código nativo {:#native-code}
 
 Se você mudou código nativo (como Kotlin, Java, Swift,
 ou Objective-C), você deve executar um full restart (parar e
 reiniciar o app) para ver as mudanças terem efeito.
 
-### Estado anterior é combinado com novo código
+### Estado anterior é combinado com novo código {:#previous-state-is-combined-with-new-code}
 
 Hot reload com estado do Flutter preserva o estado de seu app.
 Esta abordagem permite que você visualize o efeito apenas da
@@ -221,7 +221,7 @@ com os dados que ele teria se executasse do zero.
 O resultado pode ser um comportamento diferente após um hot reload
 versus um hot restart.
 
-### Mudança recente de código é incluída mas o estado do app é excluído
+### Mudança recente de código é incluída mas o estado do app é excluído {:#recent-code-change-is-included-but-app-state-is-excluded}
 
 No Dart, [campos estáticos são inicializados preguiçosamente][static-variables].
 Isso significa que na primeira vez que você executa um app Flutter e um
@@ -361,7 +361,7 @@ void onClick() {
 Para mais informações, leia sobre as [diferenças
 entre as palavras-chave `const` e `final`][const-new] no Dart.
 
-### Mudança recente de UI é excluída
+### Mudança recente de UI é excluída {:#recent-ui-change-is-excluded}
 
 Mesmo quando uma operação de hot reload parece bem-sucedida e não gera
 exceções, algumas mudanças de código podem não ser visíveis na UI atualizada.
@@ -416,7 +416,7 @@ e a árvore de widgets é reconstruída com a instância inalterada
 de `MyApp` como o widget raiz.
 Isso resulta em nenhuma mudança visível após hot reload.
 
-## Como funciona
+## Como funciona {:#how-it-works}
 
 Quando hot reload é invocado, a máquina host olha
 para o código editado desde a última compilação.

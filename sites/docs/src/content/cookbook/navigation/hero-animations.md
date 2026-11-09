@@ -19,7 +19,7 @@ Esta receita usa os seguintes passos:
   2. Adicionar um widget `Hero` à primeira tela.
   3. Adicionar um widget `Hero` à segunda tela.
 
-## 1. Criar duas telas mostrando a mesma imagem
+## 1. Criar duas telas mostrando a mesma imagem {:#1-create-two-screens-showing-the-same-image}
 
 Neste exemplo, exiba a mesma imagem em ambas as telas.
 Anime a imagem da primeira tela para a segunda tela quando
@@ -79,7 +79,7 @@ class DetailScreen extends StatelessWidget {
 }
 ```
 
-## 2. Adicionar um widget `Hero` à primeira tela
+## 2. Adicionar um widget `Hero` à primeira tela {:#2-add-a-hero-widget-to-the-first-screen}
 
 Para conectar as duas telas com uma animação, envolva
 o widget `Image` em ambas as telas em um widget `Hero`.
@@ -103,7 +103,7 @@ Hero(
 )
 ```
 
-## 3. Adicionar um widget `Hero` à segunda tela
+## 3. Adicionar um widget `Hero` à segunda tela {:#3-add-a-hero-widget-to-the-second-screen}
 
 Para completar a conexão com a primeira tela,
 envolva o `Image` na segunda tela com um widget `Hero`
@@ -131,7 +131,7 @@ repetir código. Este exemplo usa código idêntico para ambos
 os widgets, por simplicidade.
 :::
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter Hero animation hands-on example in DartPad" run="true"

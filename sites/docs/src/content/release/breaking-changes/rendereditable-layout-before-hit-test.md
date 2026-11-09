@@ -8,7 +8,7 @@ description: >
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Instâncias de `RenderEditable` devem ser diagramadas antes de processar hit
 testing. Tentar fazer hit-test em um objeto `RenderEditable` antes do layout
@@ -18,7 +18,7 @@ resulta em uma asserção como a seguinte:
 Failed assertion: line 123 pos 45: '!debugNeedsLayout': is not true.
 ```
 
-## Contexto
+## Contexto {:#context}
 
 Para suportar gesture recognizers em texto selecionável, o
 `RenderEditable` requer as informações de layout para seus
@@ -34,7 +34,7 @@ os render objects. Este problema só é provável de ser visto em
 código que interage diretamente com render objects, por
 exemplo em testes de render objects personalizados.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Se você vir o erro de asserção `'!debugNeedsLayout': is not true`
 ao fazer hit testing do `RenderEditable`,
@@ -112,12 +112,12 @@ class FakeEditableTextState extends TextSelectionDelegate {
 }
 ```
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Landed in version: 1.18.0<br>
 In stable release: 1.20
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

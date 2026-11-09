@@ -20,7 +20,7 @@ considere usar [Firebase Hosting][] ou [GitHub Pages][].
 Uma vez que você configurou seus deep links, você pode validá-los.
 Para aprender mais, veja [Validate deep links][].
 
-## Criar ou modificar um app Flutter
+## Criar ou modificar um app Flutter {:#create-or-modify-a-flutter-app}
 
 Escreva um app Flutter que possa lidar com uma URL de entrada.
 
@@ -70,7 +70,7 @@ Ele fornece uma API simples para lidar com cenários de roteamento complexos.
     );
     ```
 
-## Ajustar configurações de build do iOS
+## Ajustar configurações de build do iOS {:#adjust-ios-build-settings}
 
 1. Abra o Xcode.
 
@@ -93,7 +93,7 @@ Ele fornece uma API simples para lidar com cenários de roteamento complexos.
    par chave e valor `FlutterDeepLinkingEnabled` e `NO` ao `info.Plist`.
    :::
 
-### Adicionar domínios associados
+### Adicionar domínios associados {:#add-associated-domains}
 
 :::warning
 Equipes de desenvolvimento pessoal não suportam a capacidade de
@@ -175,7 +175,7 @@ execute os seguintes passos:
 
 Você terminou de configurar a aplicação para deep linking.
 
-## Associar seu app com seu domínio web
+## Associar seu app com seu domínio web {:#associate-your-app-with-your-web-domain}
 
 Você precisa hospedar um arquivo `apple-app-site-association` no domínio web.
 Este arquivo informa ao navegador móvel qual
@@ -183,7 +183,7 @@ aplicação iOS abrir em vez do navegador.
 Para criar o arquivo, encontre o `appID` do app Flutter que você
 criou na seção anterior.
 
-### Localizar componentes do `appID`
+### Localizar componentes do `appID` {:#locate-components-of-the-appid}
 
 Apple formata o `appID` como `<team id>.<bundle id>`.
 
@@ -195,7 +195,7 @@ e um bundle ID de `com.example.deeplinkCookbook`,
 você digitaria uma entrada `appID` de
 `S8QB4VV633.com.example.deeplinkCookbook`.
 
-### Criar e hospedar arquivo JSON `apple-app-site-association`
+### Criar e hospedar arquivo JSON `apple-app-site-association` {:#create-and-host-apple-app-site-association-json-file}
 
 Este arquivo usa o formato JSON.
 Não inclua a extensão de arquivo `.json` quando você salvar este arquivo.
@@ -241,7 +241,7 @@ Se você tem mais de um scheme/flavor, você pode
 adicionar mais de um `appID` no campo `appIDs`.
 :::
 
-## Testar o universal link
+## Testar o universal link {:#test-the-universal-link}
 
 Teste um universal link usando um dispositivo iOS físico ou o Simulator.
 
@@ -286,7 +286,7 @@ Para contornar a CDN da Apple, confira a [alternate mode section][].
 
 [Content Delivery Network]: https://en.wikipedia.org/wiki/Content_delivery_network
 
-## Encontrar o código-fonte
+## Encontrar o código-fonte {:#find-the-source-code}
 
 Você pode encontrar o código-fonte para a receita [deeplink_cookbook][]
 no repositório GitHub.

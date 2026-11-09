@@ -5,7 +5,7 @@ description: >-
   Informações sobre tecnologias assistivas para desenvolvedores Flutter.
 ---
 
-## Resumo
+## Resumo {:#summary}
 
 Tecnologias assistivas são essenciais para tornar o conteúdo digital acessível a
 indivíduos com deficiências. Este documento fornece uma visão geral de duas categorias
@@ -15,7 +15,7 @@ aqueles com limitações motoras. Ao entender e testar com essas
 tecnologias, você pode garantir que sua aplicação Flutter forneça uma experiência mais inclusiva
 e amigável para todos.
 
-## Leitores de tela
+## Leitores de tela {:#screen-readers}
 
 Para dispositivos móveis, leitores de tela ([TalkBack][TalkBack], [VoiceOver][VoiceOver])
 permitem que usuários com deficiência visual recebam feedback falado sobre
@@ -132,7 +132,7 @@ exceto onde você a define explicitamente com `TextSpan.locale`.
 [VoiceOver]: https://www.apple.com/lae/accessibility/iphone/vision/
 [video demo]: {{site.yt.watch}}?v=A6Sx0lBP8PI
 
-## Suporte à mobilidade
+## Suporte à mobilidade {:#mobility-support}
 
 Para usuários com destreza ou força manual limitada, recursos de suporte à mobilidade
 podem ser úteis. Tanto Android quanto iOS oferecem uma variedade de ferramentas projetadas para tornar

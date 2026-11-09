@@ -8,12 +8,12 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 A partir do Flutter 3.10, o framework detecta incompatibilidades
 ao usar Zones e as reporta ao console em builds de debug.
 
-## Contexto
+## Contexto {:#background}
 
 Zones são um mecanismo para gerenciar callbacks em Dart.
 Embora primariamente úteis para sobrescrever lógica de `print` e `Timer` em testes,
@@ -66,7 +66,7 @@ O aviso pode ser tornado fatal
 definindo [`BindingBase.debugZoneErrorsAreFatal`][] como `true`.
 Esta flag pode ser alterada para padrão `true` em uma versão futura do Flutter.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 A melhor maneira de silenciar esta mensagem é
 remover o uso de Zones de dentro da aplicação.
@@ -129,12 +129,12 @@ envolvidas em chamadas `Zone` que fornecem valores adequados.
 É fortemente recomendado que packages que usam zones desta forma
 migrem para soluções mais manuteníveis.
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Lançado na versão: 3.9.0-9.0.pre<br>
 Na versão estável: 3.10.0
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

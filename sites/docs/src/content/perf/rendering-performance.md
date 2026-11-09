@@ -14,7 +14,7 @@ aplicações Flutter são performáticas por padrão,
 então você só precisa evitar armadilhas comuns para alcançar
 excelente performance.
 
-## Conselhos gerais
+## Conselhos gerais {:#general-advice}
 
 Se você vê animações travadas (não suaves), certifique-se
 de que você está fazendo profiling de performance com um
@@ -38,7 +38,7 @@ veja os seguintes docs:
 * [Melhores práticas de performance][Performance best practices]
 * [Profiling de performance do Flutter][Flutter performance profiling]
 
-## Conselhos apenas para mobile
+## Conselhos apenas para mobile {:#mobile-only-advice}
 
 Você vê jank notável no seu app mobile, mas apenas na primeira execução de uma
 animação? Para evitar isso, certifique-se de que está usando o
@@ -46,7 +46,7 @@ renderizador gráfico padrão do Flutter, [Impeller][Impeller].
 
 [Impeller]: /perf/impeller
 
-## Conselhos apenas para web
+## Conselhos apenas para web {:#web-only-advice}
 
 A seguinte série de artigos cobre o que a equipe Flutter Material
 aprendeu ao melhorar a performance do app Flutter Gallery

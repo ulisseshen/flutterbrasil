@@ -12,7 +12,7 @@ inclui as seguintes alterações entre outras melhorias gerais.
 Para saber mais sobre DevTools, confira a
 [visão geral do DevTools](/tools/devtools).
 
-## Atualizações de Performance
+## Atualizações de Performance {:#performance-updates}
 
 * Adicionada uma funcionalidade para mostrar contagens de build de widget.
   Habilite esta configuração para ver contagens de build de widget para
@@ -26,17 +26,17 @@ Para saber mais sobre DevTools, confira a
 
   ![Widget rebuild counts in the Rebuild Stats view](/assets/images/docs/tools/devtools/release-notes/images-2.36.0/rebuild_stats.png "Widget rebuilds counts aggregate stats")
 
-## Atualizações do Network profiler
+## Atualizações do Network profiler {:#network-profiler-updates}
 
 * Adicionado melhor suporte para janelas de visualização estreitas, como quando
   esta tela está incorporada em uma IDE. - [#7726](https://github.com/flutter/devtools/pull/7726)
 
-## Atualizações da ferramenta Deep links
+## Atualizações da ferramenta Deep links {:#deep-links-tool-updates}
 
 * Adiciona uma página de erro para explicar o problema quando
   a ferramenta falha ao analisar o projeto. - [#7767](https://github.com/flutter/devtools/pull/7767)
 
-## Atualizações de DevTools Extension
+## Atualizações de DevTools Extension {:#devtools-extension-updates}
 
 * Corrigido um problema com detecção de extensões para
   testes Dart ou Flutter. - [#7717](https://github.com/flutter/devtools/pull/7717)
@@ -52,7 +52,7 @@ Para saber mais sobre DevTools, confira a
 * Corrigido um problema de tema quando extensões estão
   incorporadas em uma IDE - [#7824](https://github.com/flutter/devtools/pull/7824)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de alterações nesta versão, confira o
 [log git do DevTools](https://github.com/flutter/devtools/tree/v2.36.0).

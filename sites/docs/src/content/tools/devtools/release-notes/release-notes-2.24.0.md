@@ -12,18 +12,18 @@ inclui as seguintes alterações entre outras melhorias gerais.
 Para saber mais sobre DevTools, confira a
 [visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 * Melhorada a performance geral das tabelas do DevTools -
   [#5664](https://github.com/flutter/devtools/pull/5664),
   [#5696](https://github.com/flutter/devtools/pull/5696)
 
-## Atualizações do CPU profiler
+## Atualizações do CPU profiler {:#cpu-profiler-updates}
 
 * Corrigido bug com seleção e tooltips do flame chart do CPU -
   [#5676](https://github.com/flutter/devtools/pull/5676)
 
-## Atualizações do Debugger
+## Atualizações do Debugger {:#debugger-updates}
 
 * Melhorado suporte para inspecionar
   instâncias `UserTag` e `MirrorReferent` -
@@ -45,7 +45,7 @@ Para saber mais sobre DevTools, confira a
 * Prevenção de nomes de arquivo e código-fonte ficarem fora de sincronia -
   [#5827](https://github.com/flutter/devtools/pull/5827)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de alterações desde a versão anterior,
 confira

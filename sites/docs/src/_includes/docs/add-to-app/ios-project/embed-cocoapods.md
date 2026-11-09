@@ -41,7 +41,7 @@ A estrutura de diretório de exemplo se assemelha ao seguinte:
 
 </FileTree>
 
-#### Atualizar seu Podfile
+#### Atualizar seu Podfile {:#update-your-podfile}
 
 Adicione seus módulos Flutter ao arquivo de configuração Podfile.
 Esta seção presume que você chamou seu app Swift de `MyApp`.
@@ -87,7 +87,7 @@ Esta seção presume que você chamou seu app Swift de `MyApp`.
 
 Para revisar um exemplo de `Podfile`, consulte esta [amostra de Podfile Flutter][Flutter Podfile sample].
 
-#### Incorporar seus frameworks
+#### Incorporar seus frameworks {:#embed-your-frameworks}
 
 No momento da compilação, o Xcode empacota seu código Dart, cada plugin Flutter,
 e o Flutter engine em seus próprios bundles `*.xcframework`.
@@ -135,7 +135,7 @@ em seu app iOS, complete o seguinte procedimento.
 
    1. Selecione **Product** > **Build** ou pressione <kbd>Cmd</kbd> + <kbd>B</kbd>.
 
-#### Definir LLDB Init File
+#### Definir LLDB Init File {:#set-lldb-init-file}
 
 :::warning
 Defina seu scheme para usar o LLDB Init File do Flutter. Sem este arquivo, a depuração

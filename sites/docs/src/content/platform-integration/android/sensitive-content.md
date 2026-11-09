@@ -14,7 +14,7 @@ confira o seguinte vídeo de dois minutos do Widget of the Week:
 <YouTubeEmbed id="WnzHARTIZww"
   title="SensitiveContent | Flutter widget of the week"></YouTubeEmbed>
 
-## Sobre o widget `SensitiveContent`
+## Sobre o widget `SensitiveContent` {:#about-the-sensitivecontent-widget}
 
 Você pode usar o widget `SensitiveContent` em seu app para definir a sensibilidade
 de conteúdo de um `Widget` filho para um dos seguintes valores [`ContentSensitivity`][ContentSensitivity]:
@@ -38,7 +38,7 @@ da mesma forma que `notSensitive`. Veja a [Issue #160879][Issue #160879] para ma
 
 [Issue #160879]: {{site.repo.flutter}}/issues/160879
 
-## Usando o widget `SensitiveContent`
+## Usando o widget `SensitiveContent` {:#using-the-sensitivecontent-widget}
 
 Dado algum conteúdo que você deseja proteger do compartilhamento de tela de mídia
 (por exemplo, um widget `MySensitiveContent()`), você pode envolvê-lo com o
@@ -61,7 +61,7 @@ durante projeção de mídia. O widget existirá na árvore mas não tem outro
 efeito, e você não precisa evitar usos de `SensitiveContent` em plataformas
 que não suportam este recurso.
 
-## Para mais informações
+## Para mais informações {:#for-more-information}
 
 Para mais informações, visite a documentação da API [`SensitiveContent`][SensitiveContent]
 e [`ContentSensitivity`][ContentSensitivity].

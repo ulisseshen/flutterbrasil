@@ -97,7 +97,7 @@ Os widgets fornecidos pelo framework Flutter já foram migrados.
 A migração é necessária apenas se você estiver usando algum dos
 símbolos descontinuados listados nas tabelas anteriores.
 
-### Migrando suas APIs que expõem `textScaleFactor`
+### Migrando suas APIs que expõem `textScaleFactor` {:#migrating-your-apis-that-expose-textscalefactor}
 
 Before:
 
@@ -117,7 +117,7 @@ abstract class _MyCustomPaintDelegate {
 }
 ```
 
-### Migrando código que consome `textScaleFactor`
+### Migrando código que consome `textScaleFactor` {:#migrating-code-that-consumes-textscalefactor}
 
 Se você não está usando `textScaleFactor` diretamente, mas sim passando-o
 para uma API diferente que recebe um `textScaleFactor`, e a API receptora já
@@ -175,7 +175,7 @@ Você pode escolher usar o fator de escala de texto "efetivo" aplicando o
 `TextScaler` no tamanho de fonte 20: `chatBoxSize * textScaler.scale(20) / 20`, ou
 redesenhar a UI e deixar o widget assumir seu próprio tamanho intrínseco.
 
-### Sobrescrevendo a estratégia de escala de texto em uma subárvore de widget
+### Sobrescrevendo a estratégia de escala de texto em uma subárvore de widget {:#overriding-the-text-scaling-strategy-in-a-widget-subtree}
 
 Para sobrescrever o `TextScaler` existente usado em uma subárvore de widget, sobrescreva
 o `MediaQuery` assim:

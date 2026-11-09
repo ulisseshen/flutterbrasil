@@ -13,7 +13,7 @@ mais tempo leva para baixar,
 e pode ultrapassar o limite de recursos úteis
 como Android instant apps.
 
-## Builds de debug não são representativas
+## Builds de debug não são representativas {:#debug-builds-are-not-representative}
 
 Por padrão, executar seu app com `flutter run`,
 ou clicando no botão **Play** em sua IDE,
@@ -157,7 +157,7 @@ uma estimativa mais próxima do tamanho de download, consulte a
 seção [Estimando o tamanho total](#estimating-total-size) acima.
 :::
 
-### Análise mais profunda no DevTools
+### Análise mais profunda no DevTools {:#deeper-analysis-in-devtools}
 
 O arquivo `*-code-size-analysis_*.json` produzido acima pode ser
 analisado em detalhes mais profundos no DevTools onde uma visualização em árvore ou treemap pode
@@ -172,7 +172,7 @@ Isso pode ser feito executando `dart devtools`, selecionando
 Para mais informações sobre o uso da ferramenta de tamanho de app do DevTools,
 confira a [documentação do DevTools][DevTools documentation].
 
-## Reduzindo o tamanho do app
+## Reduzindo o tamanho do app {:#reducing-app-size}
 
 Ao construir uma versão de release do seu app,
 considere usar a tag `--split-debug-info`.

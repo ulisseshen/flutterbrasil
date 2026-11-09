@@ -7,7 +7,7 @@ description: >-
 shortTitle: Aprenda
 ---
 
-## Exemplos
+## Exemplos {:#examples}
 
 Se você gostaria de ver como os conceitos adaptativos e responsivos
 (conforme descrito nestas páginas) se juntam,
@@ -19,7 +19,7 @@ confira o código-fonte dos seguintes apps:
 [Flutter adaptive demo]: https://github.com/gskinnerTeam/flutter-adaptive-demo
 [Wonderous]: {{site.repo.wonderous}}
 
-## Saiba mais sobre princípios básicos de usabilidade
+## Saiba mais sobre princípios básicos de usabilidade {:#learn-more-about-basic-usability-principles}
 
 Claro, essas páginas não constituem uma
 lista exaustiva das coisas que você pode considerar.

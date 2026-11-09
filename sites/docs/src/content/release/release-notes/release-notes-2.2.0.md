@@ -11,7 +11,7 @@ Para informações sobre lançamentos de correção de bugs subsequentes, consul
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/master/CHANGELOG.md
 
-## PRs incluídos por label em `flutter/flutter`
+## PRs incluídos por label em `flutter/flutter` {:#merged-prs-by-labels-for-flutterflutter}
 
 ### framework - 397 pull request(s)
 
@@ -5325,7 +5325,7 @@ Para informações sobre lançamentos de correção de bugs subsequentes, consul
 
 
 
-## PRs incluídos por label em `flutter/engine`
+## PRs incluídos por label em `flutter/engine` {:#merged-prs-by-labels-for-flutterengine}
 
 
 
@@ -11182,7 +11182,7 @@ Para informações sobre lançamentos de correção de bugs subsequentes, consul
 
 
 
-## PRs incluídos por label em `flutter/plugins`
+## PRs incluídos por label em `flutter/plugins` {:#merged-prs-by-labels-for-flutterplugins}
 
 
 
@@ -14553,7 +14553,7 @@ Para informações sobre lançamentos de correção de bugs subsequentes, consul
 
 [3300](https://github.com/flutter/plugins/pull/3300) [share] Update README.md (cla: yes, p: share, submit queue)
 
-## PRs incluídos em `flutter/flutter` de 2021-01-26T18:58:00.000Z até 2021-04-07T15:28:00.000
+## PRs incluídos em `flutter/flutter` de 2021-01-26T18:58:00.000Z até 2021-04-07T15:28:00.000 {:#merged-prs-in-flutterflutter-from-2021-01-26t18-58-00-000z-to-2021-04-07t15-28-00-000}
 Foram 1197 pull requests.
 
 [61221](https://github.com/flutter/flutter/pull/61221) [flutter_tools] Add ARM64 Linux host and cross-building option support (a: desktop, cla: yes, platform-linux, tool)
@@ -16384,7 +16384,7 @@ Foram 1197 pull requests.
 
 [79973](https://github.com/flutter/flutter/pull/79973) Support block delete with word and line modifiers (cla: yes, framework)
 
-## PRs incluídos em `flutter/engine` de 2021-01-26T18:58:00.000Z até 2021-04-07T15:28:00.000
+## PRs incluídos em `flutter/engine` de 2021-01-26T18:58:00.000Z até 2021-04-07T15:28:00.000 {:#merged-prs-in-flutterengine-from-2021-01-26t18-58-00-000z-to-2021-04-07t15-28-00-000}
 Foram 985 pull requests.
 
 [21824](https://github.com/flutter/engine/pull/21824) Add DiffContext (cla: yes, waiting for tree to go green)
@@ -17053,7 +17053,7 @@ Foram 985 pull requests.
 
 [25462](https://github.com/flutter/engine/pull/25462) Revert "Reland: Call Dart plugin registrant if available (#23813)" (cla: yes, waiting for tree to go green)
 
-## PRs incluídos em `flutter/plugins` de 2021-01-26T18:58:00.000Z até 2021-04-07T15:28:00.000
+## PRs incluídos em `flutter/plugins` de 2021-01-26T18:58:00.000Z até 2021-04-07T15:28:00.000 {:#merged-prs-in-flutterplugins-from-2021-01-26t18-58-00-000z-to-2021-04-07t15-28-00-000}
 Foram 274 pull requests.
 
 [2031](https://github.com/flutter/plugins/pull/2031) [url_launcher] Added a note to the README (cla: yes, in review, p: url_launcher)

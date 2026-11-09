@@ -6,7 +6,7 @@
 # sometimes too long for Travis, so it is simpler just to skip all site links.
 
 https://github.com
-https://main-api.flutterbrasil.dev
+https://main-api.flutter.dev
 
 # -----------------------------------------------------------------------------
 # Valid external links that result in connection failures too often:

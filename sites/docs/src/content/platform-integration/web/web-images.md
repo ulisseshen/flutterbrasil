@@ -24,7 +24,7 @@ leia o post no blog do Flutter
 [article]: {{site.flutter-blog}}/best-practices-for-optimizing-flutter-web-loading-speed-7cc0df14ce5c
 :::
 
-## Contexto
+## Contexto {:#background}
 
 A web oferece vários métodos para exibir imagens:
 
@@ -75,12 +75,12 @@ recorre à renderização de imagens de outra origem usando elementos HTML `<img
 [XHR]: https://developer.mozilla.org/docs/Web/API/XMLHttpRequest
 [`fetch`]: https://developer.mozilla.org/docs/Web/API/Fetch_API/Using_Fetch
 
-## Soluções
+## Soluções {:#solutions}
 
 Existem múltiplas soluções para contornar as restrições CORS
 no Flutter.
 
-### Imagens em memória, de assets e de rede same-origin
+### Imagens em memória, de assets e de rede same-origin {:#in-memory-asset-and-same-origin-network-images}
 
 Se o app tem os bytes da imagem codificada na memória,
 fornecidos como um [asset][asset], ou armazenados no
@@ -94,7 +94,7 @@ A imagem pode ser exibida usando
 [`Image.asset`]: {{site.api}}/flutter/widgets/Image/Image.asset.html
 [`Image.network`]: {{site.api}}/flutter/widgets/Image/Image.network.html
 
-### Hospedar imagens em uma CDN habilitada para CORS
+### Hospedar imagens em uma CDN habilitada para CORS {:#host-images-in-a-cors-enabled-cdn}
 
 Tipicamente, redes de entrega de conteúdo (CDN)
 podem ser configuradas para personalizar quais domínios
@@ -105,7 +105,7 @@ personalizado no arquivo `firebase.json`.
 
 [custom-header]: {{site.firebase}}/docs/hosting/full-config#headers
 
-### Use um proxy CORS se você não tem controle sobre o servidor de origem
+### Use um proxy CORS se você não tem controle sobre o servidor de origem {:#use-a-cors-proxy-if-you-have-no-control-over-the-origin-server}
 
 Se o servidor de imagem não pode ser configurado para permitir requisições CORS
 da sua aplicação,

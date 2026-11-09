@@ -53,7 +53,7 @@ série Widget of the Week cobrem alguns deles.
   </div>
 </div>
 
-## Mais informações {:.no_toc}
+## Mais informações {:.no_toc #more-information}
 
 Para aprender mais sobre o uso do pacote Cupertino
 com Flutter,

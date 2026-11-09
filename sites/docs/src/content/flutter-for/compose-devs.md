@@ -26,7 +26,7 @@ Este documento pode ser usado como referência pulando entre seções
 e encontrando questões que sejam mais relevantes para suas necessidades.
 Este guia incorpora código de exemplo.
 
-## Visão Geral
+## Visão Geral {:#overview}
 
 O código Flutter e Jetpack Compose descreve como a UI parece e funciona.
 Desenvolvedores chamam este tipo de código de _framework declarativo_.
@@ -69,7 +69,7 @@ Para compor layouts, tanto Jetpack Compose quanto Flutter aninham componentes de
 dentro uns dos outros.
 Jetpack Compose aninha `Composables` enquanto Flutter aninha `Widgets`.
 
-### Processo de layout
+### Processo de layout {:#layout-process}
 
 Jetpack Compose e Flutter lidam com layout de maneiras semelhantes. Ambos
 fazem o layout da UI em uma única passagem e elementos pai fornecem restrições de layout
@@ -99,7 +99,7 @@ Uma restrição se torna rígida quando o valor de tamanho mínimo de sua restri
 Para aprender como as restrições funcionam no Flutter,
 visite [Entendendo restrições][Understanding constraints].
 
-### Sistema de design
+### Sistema de design {:#design-system}
 
 Como o Flutter visa várias plataformas, seu aplicativo não precisa
 se conformar a nenhum sistema de design.
@@ -113,14 +113,14 @@ seu aplicativo Flutter pode usar muitos sistemas de design diferentes:
 Se você está procurando um ótimo aplicativo de referência que apresenta um
 sistema de design personalizado, confira [Wonderous][Wonderous].
 
-## Básico da UI
+## Básico da UI {:#ui-basics}
 
 Esta seção cobre o básico do desenvolvimento de UI no
 Flutter e como ele se compara ao Jetpack Compose.
 Isso inclui como começar a desenvolver seu aplicativo, exibir texto estático,
 criar botões, reagir a eventos on-press, exibir listas, grades e muito mais.
 
-### Começando
+### Começando {:#getting-started}
 
 Para aplicativos **Compose**, seu ponto de entrada principal será
 _Activity_ ou um de seus descendentes,
@@ -211,7 +211,7 @@ Para centralizar o texto, envolva-o em um widget `Center`.
 Para aprender sobre diferentes widgets e seus comportamentos padrão, confira
 o [Catálogo de widgets][widget catalog].
 
-### Adicionando Botões
+### Adicionando Botões {:#adding-buttons}
 
 No **Compose**, você usa o composable `Button` ou uma de suas variantes
 para criar um botão. `Button` é um alias para `FilledTonalButton`
@@ -238,7 +238,7 @@ FilledButton(
 **Flutter** fornece acesso a uma variedade de botões com estilos predefinidos.
 
 
-### Alinhando componentes horizontalmente ou verticalmente
+### Alinhando componentes horizontalmente ou verticalmente {:#aligning-components-horizontally-or-vertically}
 Jetpack Compose e Flutter lidam com coleções horizontais e verticais de
 itens de forma semelhante.
 
@@ -295,7 +295,7 @@ qual é o `MainAxis` é procurar pela propriedade que termina em `arrangement`.
 O `CrossAxis` será a propriedade que termina em `alignment`.
 :::
 
-### Exibindo um list view
+### Exibindo um list view {:#displaying-a-list-view}
 
 No **Compose**, você tem algumas maneiras de criar uma lista baseada no
 tamanho da lista que você precisa exibir. Para um pequeno número de itens
@@ -383,7 +383,7 @@ O `ListTile` possui propriedades como `height` e `font-size`.
 Essas propriedades ajudam a construir uma lista. No entanto, o Flutter permite que você retorne
 quase qualquer widget que represente seus dados.
 
-### Exibindo uma grade
+### Exibindo uma grade {:#displaying-a-grid}
 
 Construir uma grade no **Compose** é semelhante a uma
 LazyList (`LazyColumn` ou `LazyRow`). Você pode usar o
@@ -461,7 +461,7 @@ semelhantes. `GridView` usa um delegate para decidir como a grade
 deve fazer o layout de seus componentes. As propriedades `rows`, `columns` e outras
 associadas em `LazyHorizontalGrid` \ `LazyVerticalGrid` servem o mesmo propósito.
 
-### Criando uma scroll view
+### Criando uma scroll view {:#creating-a-scroll-view}
 
 `LazyColumn` e `LazyRow` no **Jetpack Compose** têm suporte
 integrado para rolagem.
@@ -484,7 +484,7 @@ SingleChildScrollView(
 ),
 ```
 
-### Design responsivo e adaptativo
+### Design responsivo e adaptativo {:#responsive-and-adaptive-design}
 
 Design Adaptativo no **Compose** é um tópico complexo com muitas
 soluções viáveis:
@@ -507,7 +507,7 @@ Para criar views relativas no **Flutter**, você pode usar uma das duas opções
 
 Para saber mais, confira [Criando aplicativos responsivos e adaptativos][Creating responsive apps].
 
-### Gerenciando estado
+### Gerenciando estado {:#managing-state}
 
 **Compose** armazena estado com a API `remember` e descendentes
 da interface `MutableState`.
@@ -577,7 +577,7 @@ class _MyHomePageState extends State<MyHomePage> {
 Para aprender mais maneiras de gerenciar estado, confira [Gerenciamento de estado][State management].
 
 
-### Desenhando na tela
+### Desenhando na tela {:#drawing-on-the-screen}
 
 No **Compose**, você usa o composable `Canvas` para desenhar
 formas, imagens e texto na tela.
@@ -621,14 +621,14 @@ com duas classes que ajudam você a desenhar:
     }
     ```
 
-## Temas, estilos e mídia
+## Temas, estilos e mídia {:#themes-styles-and-media}
 
 Você pode estilizar aplicativos Flutter com pouco esforço.
 A estilização inclui alternar entre temas claro e escuro,
 mudar o design de seu texto e componentes de UI,
 e muito mais. Esta seção cobre como estilizar seus aplicativos.
 
-### Usando modo escuro
+### Usando modo escuro {:#using-dark-mode}
 
 No **Compose**, você pode controlar claro e escuro em qualquer
 nível arbitrário envolvendo um componente com
@@ -647,7 +647,7 @@ const MaterialApp(
 );
 ```
 
-### Estilizando texto
+### Estilizando texto {:#styling-text}
 
 No **Compose**, você usa as propriedades em `Text` para um ou dois
 atributos ou constrói um objeto `TextStyle` para definir muitos de uma vez.
@@ -680,7 +680,7 @@ Text(
 ),
 ```
 
-### Estilizando botões
+### Estilizando botões {:#styling-buttons}
 
 No **Compose**, você modifica as cores de um botão usando
 a propriedade `colors`. Se deixado sem modificação, eles
@@ -712,7 +712,7 @@ FilledButton(
   )
 )
 ```
-## Empacotando assets para uso no Flutter
+## Empacotando assets para uso no Flutter {:#bundling-assets-for-use-in-flutter}
 
 Comumente há a necessidade de empacotar recursos para uso em seu aplicativo.
 Eles podem ser animações, gráficos vetoriais, imagens, fontes ou outros arquivos gerais.
@@ -734,7 +734,7 @@ flutter:
         - asset: fonts/FiraSans-Regular.ttf
 ```
 
-### Usando fontes
+### Usando fontes {:#using-fonts}
 
 No **Compose**, você tem duas opções para usar fontes em seu aplicativo.
 Você pode usar um serviço de runtime para recuperá-las [Google Fonts][Google Fonts].
@@ -742,7 +742,7 @@ Alternativamente, elas podem ser empacotadas em arquivos de recursos.
 
 **Flutter** possui métodos semelhantes para usar fontes, vamos discuti-los ambos inline.
 
-### Usando fontes empacotadas
+### Usando fontes empacotadas {:#using-bundled-fonts}
 
 Os seguintes são aproximadamente código Compose e Flutter equivalente para usar um arquivo de fonte no diretório `/res/` ou `fonts`
 conforme listado acima.
@@ -768,7 +768,7 @@ Text(
 ),
 ```
 
-### Usando um provedor de fontes (Google Fonts)
+### Usando um provedor de fontes (Google Fonts) {:#using-a-font-provider-google-fonts}
 
 Um ponto de diferença é usar fontes de um provedor de fontes como Google Fonts. No **Compose**,
 a instanciação é feita inline com aproximadamente o mesmo código para referenciar um arquivo local.
@@ -809,7 +809,7 @@ Text(
 ),
 ```
 
-### Usando imagens
+### Usando imagens {:#using-images}
 
 No **Compose**, tipicamente arquivos de imagem vão para o diretório drawable
 em resources `/res/drawable` e usa-se o composable `Image` para exibir

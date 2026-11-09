@@ -12,7 +12,7 @@ inclui as seguintes alterações entre outras melhorias gerais.
 Para saber mais sobre DevTools, confira a
 [visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Atualizações do Inspector
+## Atualizações do Inspector {:#inspector-updates}
 
 - Comportamento de rolagem automática melhorado ao encaixar um widget em foco -
   [#4283](https://github.com/flutter/devtools/pull/4283)
@@ -22,7 +22,7 @@ Para saber mais sobre DevTools, confira a
 - Melhoria nos cards de hover do widget inspector para mostrar progresso enquanto aguarda dados -
   [#4488](https://github.com/flutter/devtools/pull/4488)
 
-## Atualizações de Performance
+## Atualizações de Performance {:#performance-updates}
 
 - Corrigido problema onde a barra de rolagem ficava fora de sincronia com o conteúdo do frame -
   [#4503](https://github.com/flutter/devtools/pull/4503)
@@ -33,7 +33,7 @@ Para saber mais sobre DevTools, confira a
 
   ![render-time-column](/assets/images/docs/tools/devtools/release-notes/images-2.18.0/render-time-column.png "Rendering time column in the Raster Metrics tab")
 
-## Atualizações do CPU profiler
+## Atualizações do CPU profiler {:#cpu-profiler-updates}
 
 - Corrigido crash quando um frame vazio é filtrado -
   [#4502](https://github.com/flutter/devtools/pull/4502)
@@ -41,7 +41,7 @@ Para saber mais sobre DevTools, confira a
   [#4413](https://github.com/flutter/devtools/pull/4413)
 - Limpeza da UI - [#4404](https://github.com/flutter/devtools/pull/4404)
 
-## Atualizações de Memory
+## Atualizações de Memory {:#memory-updates}
 
 - Adicionadas sub-abas Profile e Allocation Tracing -
   [#4523](https://github.com/flutter/devtools/pull/4523)
@@ -53,7 +53,7 @@ Para saber mais sobre DevTools, confira a
 - Implementada visualização de snapshot -
   [#4473](https://github.com/flutter/devtools/pull/4473)
 
-## Atualizações do Debugger
+## Atualizações do Debugger {:#debugger-updates}
 
 - Corrigido bug no file opener e search -
   [#4525](https://github.com/flutter/devtools/pull/4525)
@@ -62,18 +62,18 @@ Para saber mais sobre DevTools, confira a
 - Permitido syntax highlighting em capturas aninhadas no parser -
   [#4427](https://github.com/flutter/devtools/pull/4427)
 
-## Atualizações do Network profiler
+## Atualizações do Network profiler {:#network-profiler-updates}
 
 - Quando na aba Network, as gravações de rede agora continuam funcionando
   após o app fazer hot restart -
   [#4438](https://github.com/flutter/devtools/pull/4438)
 
-## Atualizações de Logging
+## Atualizações de Logging {:#logging-updates}
 
 - Mensagens de log de fontes não-stdout agora são mostradas -
   [#4487](https://github.com/flutter/devtools/pull/4487)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de alterações desde a versão anterior,
 confira

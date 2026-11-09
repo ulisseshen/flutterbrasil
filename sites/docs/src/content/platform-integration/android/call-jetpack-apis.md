@@ -11,13 +11,13 @@ APIs mais recentes no primeiro dia em que são lançadas no Android, não
 importa o quê. Esta página descreve as formas disponíveis para invocar
 APIs específicas do Android.
 
-## Use uma solução existente
+## Use uma solução existente {:#use-an-existing-solution}
 
 Na maioria dos cenários, você pode usar um plugin (como mostrado na próxima seção)
 para invocar APIs nativas sem escrever qualquer código boilerplate ou
 glue code personalizado você mesmo.
 
-### Use um plugin
+### Use um plugin {:#use-a-plugin}
 
 Usar um plugin é frequentemente a forma mais fácil de acessar APIs
 nativas, independentemente de onde seu app Flutter esteja rodando. Para
@@ -37,7 +37,7 @@ imediatamente após seu lançamento. Em qualquer cenário onde
 seu recurso nativo desejado não é coberto por um pacote no
 [pub.dev][pub], continue para as seções seguintes.
 
-## Criando uma solução personalizada
+## Criando uma solução personalizada {:#creating-a-custom-solution}
 
 Nem todos os cenários e APIs serão suportados por
 soluções existentes; mas felizmente, você sempre pode adicionar qualquer
@@ -50,7 +50,7 @@ plugins existentes, porque todos os plugins usam uma das duas
 opções seguintes.
 :::
 
-### Chame código nativo diretamente via FFI
+### Chame código nativo diretamente via FFI {:#call-native-code-directly-via-ffi}
 
 A forma mais direta e eficiente de invocar APIs nativas é
 chamando a API diretamente, via FFI. Isso vincula seu executável Dart
@@ -67,7 +67,7 @@ seu app Flutter, consulte a [documentação de interop nativo][interop].
 [jnigen]: /interop/jnigen
 
 
-### Adicione um MethodChannel
+### Adicione um MethodChannel {:#add-a-methodchannel}
 
 [`MethodChannel`][methodchannels-api-docs]s são uma forma alternativa
 de apps Flutter invocarem código nativo arbitrário.

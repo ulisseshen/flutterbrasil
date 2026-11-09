@@ -6,14 +6,14 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Para garantir que as bibliotecas sigam o comportamento mais recente do OEM,
 os construtores de transição de página padrão agora usam
 `ZoomPageTransitionsBuilder` em todas as plataformas (excluindo iOS e macOS)
 em vez de `FadeUpwardsPageTransitionsBuilder`.
 
-## Contexto
+## Contexto {:#context}
 
 O `FadeUpwardsPageTransitionsBuilder` (fornecido com a primeira
 versão do Flutter), definia uma transição de página que é
@@ -34,7 +34,7 @@ Quando a `TargetPlatform` atual não tem
 `ZoomPageTransitionsBuilder` é usado como padrão.
 
 [Style guide for Flutter repo]: {{site.repo.flutter}}/blob/main/docs/contributing/Style-guide-for-Flutter-repo.md
-## Descrição da alteração
+## Descrição da alteração {:#description-of-change}
 
 Os `PageTransitionsBuilder`s definidos em
 `PageTransitionsTheme._defaultBuilders` foram alterados de
@@ -42,7 +42,7 @@ Os `PageTransitionsBuilder`s definidos em
 `ZoomPageTransitionsBuilder` para `TargetPlatform.android`,
 `TargetPlatform.linux` e `TargetPlatform.windows`.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Se você quiser voltar ao construtor de transição de página anterior
 (`FadeUpwardsPageTransitionsBuilder`), você deve definir os construtores
@@ -86,7 +86,7 @@ MaterialApp(
 
 ```
 
-### Migração de testes
+### Migração de testes {:#tests-migration}
 
 Se você costumava tentar encontrar widgets mas falhava com *Too many elements*
 usando a nova transição, e via erros semelhantes ao seguinte:
@@ -124,12 +124,12 @@ final Finder finder = find.descendant(
 Os widgets que normalmente precisam migrar o escopo do finder são:
 `Transform`, `FadeTransition`, `ScaleTransition` e `ColoredBox`.
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Disponibilizado na versão: 2.13.0-1.0.pre<br>
 Na versão estável: 3.0.0
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

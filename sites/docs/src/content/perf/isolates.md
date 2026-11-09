@@ -68,7 +68,7 @@ Dart.
 
 <YouTubeEmbed id="vl_AaCgudcY" title="Isolates and the event loop | Flutter in Focus"></YouTubeEmbed>
 
-## Casos de uso comuns para isolates
+## Casos de uso comuns para isolates {:#common-use-cases-for-isolates}
 
 Existe apenas uma regra rígida para quando você deve usar isolates,
 e isso é quando computações grandes estão fazendo sua aplicação Flutter
@@ -94,7 +94,7 @@ Dito isso, isolates são comumente usados para o seguinte:
 - Quando você precisa de suporte assíncrono ao usar FFI
 - Aplicar filtragem a listas complexas ou filesystems
 
-## Message passing entre isolates
+## Message passing entre isolates {:#message-passing-between-isolates}
 
 Os isolates do Dart são uma implementação do [Actor model][Actor model].
 Eles só podem se comunicar uns com os outros por message passing,
@@ -132,7 +132,7 @@ que envia a referência à mensagem.
 Tanto `Isolate.run` quanto `compute`
 usam `Isolate.exit` internamente.
 
-## Isolates de curta duração
+## Isolates de curta duração {:#short-lived-isolates}
 
 A maneira mais fácil de mover um processo para um isolate no Flutter é com
 o método `Isolate.run`.
@@ -180,7 +180,7 @@ fazer parse de JSON em background, veja [esta receita do cookbook][this cookbook
 
 [this cookbook recipe]: /cookbook/networking/background-parsing
 
-## Isolates de longa duração com estado
+## Isolates de longa duração com estado {:#stateful-longer-lived-isolates}
 
 Isolates de curta duração são convenientes de usar,
 mas há overhead de performance necessário para criar novos isolates,
@@ -213,7 +213,7 @@ Ou, você pode usar [worker_manager][worker_manager] para gerenciar isolates de 
 
 [worker_manager]: {{site.pub-pkg}}/worker_manager
 
-### ReceivePorts e SendPorts
+### ReceivePorts e SendPorts {:#receiveports-and-sendports}
 
 Configure comunicação de longa duração entre isolates com duas classes
 (além de Isolate):
@@ -238,7 +238,7 @@ siga os exemplos na [documentação Dart][Dart documentation].
 
 [Dart documentation]: {{site.dart-site}}/language/concurrency
 
-## Usando platform plugins em isolates
+## Usando platform plugins em isolates {:#using-platform-plugins-in-isolates}
 
 Você pode usar platform plugins em background isolates.
 Isso permite que plugins transfiram computações pesadas e dependentes de plataforma
@@ -276,7 +276,7 @@ Future<void> _isolateMain(RootIsolateToken rootIsolateToken) async {
 }
 ```
 
-## Limitações de Isolates
+## Limitações de Isolates {:#limitations-of-isolates}
 
 Se você está vindo para Dart de uma linguagem com multithreading,
 é razoável esperar que isolates se comportem como threads,
@@ -296,7 +296,7 @@ para o novo isolate.
 É assim que isolates são feitos para funcionar,
 e é importante manter isso em mente quando você considera usar isolates.
 
-### Plataformas web e compute
+### Plataformas web e compute {:#web-platforms-and-compute}
 
 Plataformas web Dart, incluindo Flutter web,
 não suportam isolates.
@@ -314,7 +314,7 @@ confira a [documentação de concurrency][concurrency documentation] em dartbras
 
 [concurrency documentation]: {{site.dart-site}}/language/concurrency
 
-### Sem acesso ao `rootBundle` ou métodos `dart:ui`
+### Sem acesso ao `rootBundle` ou métodos `dart:ui` {:#no-rootbundle-access-or-dart-ui-methods}
 
 Todas as tarefas de UI e o próprio Flutter estão acoplados ao main isolate.
 Portanto,
@@ -322,7 +322,7 @@ você não pode acessar assets usando `rootBundle` em isolates criados,
 nem pode executar qualquer trabalho de widget
 ou UI em isolates criados.
 
-### Mensagens limitadas de plugins da plataforma host para Flutter
+### Mensagens limitadas de plugins da plataforma host para Flutter {:#limited-plugin-messages-from-host-platform-to-flutter}
 
 Com background isolate platform channels,
 você pode usar platform channels em isolates para enviar mensagens para a plataforma host
@@ -336,7 +336,7 @@ porque Firestore usa platform channels para enviar atualizações ao Flutter,
 que são não solicitadas.
 Você pode, no entanto, consultar Firestore para uma resposta em background.
 
-## Mais informações
+## Mais informações {:#more-information}
 
 Para mais informações sobre isolates, confira os seguintes recursos:
 

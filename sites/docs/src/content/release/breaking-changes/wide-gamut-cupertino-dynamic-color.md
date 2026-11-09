@@ -8,20 +8,20 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Certas propriedades e métodos em [`CupertinoDynamicColor`][] foram descontinuados
 para alinhar com a classe [`Color`][] devido ao suporte a [wide gamut color spaces][]
 adicionado no [Flutter 3.27][Migration guide for wide gamut Color].
 
-## Contexto
+## Contexto {:#context}
 
 A classe `Color` foi atualizada para suportar espaços de cores de gamut amplo,
 mas algumas descontinuações correspondentes não foram inicialmente aplicadas ao
 `CupertinoDynamicColor` devido à sua implementação, e não
 devido à extensão de `Color`.
 
-## Descrição da alteração
+## Descrição da alteração {:#description-of-change}
 
 1.  O campo [`CupertinoDynamicColor.red`][] foi descontinuado em
     favor de [`CupertinoDynamicColor.r`].
@@ -35,9 +35,9 @@ devido à extensão de `Color`.
     favor de [`CupertinoDynamicColor.withValues()`].
 
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
-### Acessar componentes de cor
+### Acessar componentes de cor {:#access-color-components}
 
 Se seu aplicativo acessa um único componente de cor, considere
 aproveitar os componentes de ponto flutuante.
@@ -54,7 +54,7 @@ final intGreen = _floatToInt8(color.g);
 final intBlue = _floatToInt8(color.b);
 ```
 
-### Opacidade
+### Opacidade {:#opacity}
 
 Antes do Flutter 3.27, `Color` tinha o conceito de "opacity", que
 aparecia nos métodos `opacity` e `withOpacity()`.
@@ -63,7 +63,7 @@ Usar `.a` e `.withValues()` fornecerá a expressão completa de
 um valor de ponto flutuante e não será quantizado (restrito a um intervalo limitado).
 Isso significa que "alpha" expressa a intenção de "opacity" de forma mais correta.
 
-#### Migrar `opacity`
+#### Migrar `opacity` {:#migrate-opacity}
 
 ```dart
 // Before: Access the alpha channel as a (converted) floating-point value.
@@ -73,7 +73,7 @@ final x = color.opacity;
 final x = color.a;
 ```
 
-#### Migrar `withOpacity`
+#### Migrar `withOpacity` {:#migrate-withopacity}
 
 ```dart
 // Before: Create a new color with the specified opacity.
@@ -84,12 +84,12 @@ final x = color.withOpacity(0.5);
 final x = color.withValues(alpha: 0.5);
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Disponibilizado na versão: 3.36.0-0.1.pre<br>
 Versão estável: 3.38
 
-## Referências
+## Referências {:#references}
 
 Guias relevantes:
 

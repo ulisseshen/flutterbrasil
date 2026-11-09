@@ -96,7 +96,7 @@ PRs relevantes:
 
 ---
 
-### MaterialButtonWithIconMixin {:#materialbuttonwithiconmixin}
+### MaterialButtonWithIconMixin
 
 Pacote: flutter
 Suportado pelo Flutter Fix: não
@@ -138,7 +138,7 @@ PRs relevantes:
 
 ---
 
-### PlatformsViewsService.synchronizeToNativeViewHierarchy {:#platformsviewsservice-synchronizetonativeviewhierarchy}
+### PlatformsViewsService.synchronizeToNativeViewHierarchy
 
 Pacote: flutter
 Suportado pelo Flutter Fix: não
@@ -181,7 +181,7 @@ PRs relevantes:
 
 ---
 
-### TextSelectionOverlay.fadeDuration {:#textselectionoverlay-fadeduration}
+### TextSelectionOverlay.fadeDuration
 
 Pacote: flutter
 Suportado pelo Flutter Fix: sim
@@ -228,7 +228,7 @@ PRs relevantes:
 
 ---
 
-### androidOverscrollIndicator {:#androidoverscrollindicator}
+### androidOverscrollIndicator
 
 Pacote: flutter
 Suportado pelo Flutter Fix: não

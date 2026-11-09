@@ -5,7 +5,7 @@ breadcrumb: DevTools
 description: Como usar Flutter DevTools com Flutter.
 ---
 
-## O que é DevTools?
+## O que é DevTools? {:#what-is-devtools}
 
 DevTools é um conjunto de ferramentas de desempenho e debugging
 para Dart e Flutter.
@@ -19,7 +19,7 @@ o seguinte mergulho profundo e passo a passo de casos de uso:
 
 <YouTubeEmbed id="_EYk-E29edo" title="Dive in to Flutter and Dart DevTools"></YouTubeEmbed>
 
-## O que posso fazer com DevTools?
+## O que posso fazer com DevTools? {:#what-can-i-do-with-devtools}
 
 Aqui estão algumas das coisas que você pode fazer com DevTools:
 
@@ -50,7 +50,7 @@ Você pode iniciar DevTools com as seguintes ferramentas:
 * [Android Studio/IntelliJ][Android Studio/IntelliJ]
 * [linha de comando][command line]
 
-## Solucionando alguns problemas comuns
+## Solucionando alguns problemas comuns {:#troubleshooting-some-standard-issues}
 
 **Pergunta**: Meu app parece janky ou trava.
   Como eu corrijo isso?
@@ -82,19 +82,19 @@ sem impacto no desempenho.
 [Performance > Timeline]: /tools/devtools/performance#timeline-events-tab
 [UI frames]: /perf/ui-performance
 
-## Fornecendo feedback
+## Fornecendo feedback {:#providing-feedback}
 
 Por favor, experimente DevTools, forneça feedback e registre problemas
 no [rastreador de problemas do DevTools][DevTools issue tracker]. Obrigado!
 
-## Versionamento do DevTools
+## Versionamento do DevTools {:#devtools-versioning}
 
 DevTools é distribuído como parte do Flutter SDK. Para obter acesso à
 funcionalidade mais recente do DevTools, execute `flutter upgrade` para obter a versão
 mais atualizada do Flutter. Para acessar recursos do DevTools antes de chegarem ao
 canal `stable` do Flutter, considere mudar para os canais `beta` ou `main`.
 
-## Outros recursos
+## Outros recursos {:#other-resources}
 
 Para mais informações sobre debugging e profiling
 de apps Flutter, veja a página [Debugging][Debugging] e,

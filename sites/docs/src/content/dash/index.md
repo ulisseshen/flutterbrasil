@@ -21,7 +21,7 @@ Você pode agora criar sua **própria** Dash digital usando
 
 [Dashatar]: https://dashatar-dev.web.app/#/
 
-## Como tudo começou?
+## Como tudo começou? {:#how-did-it-all-start}
 
 Assim que Shams Zakhour começou a trabalhar como
 escritora Dart no Google em dezembro de 2013,
@@ -66,7 +66,7 @@ Aqui estão alguns mockups iniciais e um dos primeiros protótipos:
 ![First prototype](/assets/images/dash/early-dash-sketches5.jpg){:width="50%"}<br>
 O primeiro protótipo tinha olhos irregulares
 
-## Por que um beija-flor?
+## Por que um beija-flor? {:#why-a-hummingbird}
 
 No início, uma imagem de beija-flor foi criada para a equipe Dart
 usar em apresentações e na web.
@@ -118,7 +118,7 @@ Dash 2.0 e 2.1
 
 ![Flutter Interact claw machine](/assets/images/dash/DashClawMachine.png){:width="50%"}<br>
 
-## Fatos sobre Dash
+## Fatos sobre Dash {:#dash-facts}
 
 * Dash é do gênero feminino, mas ela não se importa
   de ser chamada de _they_, _their_, _he_, ou _him_.

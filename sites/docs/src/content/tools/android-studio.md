@@ -126,11 +126,11 @@ Para verificar atualizações manualmente:
     **Help > Check for Updates** no Linux).
  1. Se `dart` ou `flutter` estiverem listados, atualize-os.
 
-## Criando projetos
+## Criando projetos {:#creating-projects}
 
 Você pode criar um novo projeto de várias maneiras.
 
-### Criando um novo projeto
+### Criando um novo projeto {:#creating-a-new-project}
 
 Criar um novo projeto Flutter a partir do template do app inicial Flutter
 difere entre Android Studio e IntelliJ.
@@ -166,7 +166,7 @@ quando o app for lançado. Se você acha que pode lançar este app algum dia,
 é melhor especificar isso agora. Eles não podem ser alterados após o app
 ser lançado. O nome da sua organização deve ser único.
 
-### Abrindo um projeto a partir de código-fonte existente
+### Abrindo um projeto a partir de código-fonte existente {:#opening-a-project-from-existing-source-code}
 
 Para abrir um projeto Flutter existente:
 
@@ -182,7 +182,7 @@ Para abrir um projeto Flutter existente:
     :::
 
 
-## Editando código e visualizando problemas
+## Editando código e visualizando problemas {:#editing-code-and-viewing-issues}
 
 O plugin Flutter realiza análise de código que habilita o seguinte:
 
@@ -218,7 +218,7 @@ Execução e depuração são controladas a partir da barra de ferramentas princ
 
 ![Main IntelliJ toolbar](/assets/images/docs/tools/android-studio/main-toolbar.png){:width="90%"}
 
-### Selecionando um alvo
+### Selecionando um alvo {:#selecting-a-target}
 
 Quando um projeto Flutter está aberto na IDE, você deve ver um conjunto de
 botões específicos do Flutter no lado direito da barra de ferramentas.
@@ -236,7 +236,7 @@ Você precisa conectar um dispositivo ou iniciar um simulador para prosseguir.
     Quando você conecta dispositivos ou inicia simuladores,
     entradas adicionais aparecem.
 
-### Execute o app sem breakpoints
+### Execute o app sem breakpoints {:#run-app-without-breakpoints}
 
  1. Clique no **ícone Play** na barra de ferramentas, ou invoque **Run > Run**.
     O painel **Run** na parte inferior mostra a saída de logs.
@@ -251,7 +251,7 @@ Você precisa conectar um dispositivo ou iniciar um simulador para prosseguir.
       Para personalizar isso, clique no botão drop-down à direita
       do seletor de dispositivo e selecione **Edit configuration**.
 
-## Ciclo de desenvolvimento de edição e atualização rápida
+## Ciclo de desenvolvimento de edição e atualização rápida {:#fast-edit-and-refresh-development-cycle}
 
 Flutter oferece um ciclo de desenvolvimento de primeira classe que permite ver o efeito
 de suas alterações quase instantaneamente com o recurso _Stateful Hot Reload_.
@@ -328,7 +328,7 @@ E lembre-se, _as informações de reconstrução de widgets estão disponíveis 
 uma build de debug_. Teste a performance do app em um dispositivo real em uma build
 de profile, mas depure problemas de performance em uma build de debug.
 
-## Dicas de edição para código Flutter
+## Dicas de edição para código Flutter {:#editing-tips-for-flutter-code}
 
 Se você tiver dicas adicionais que devemos compartilhar, [nos avise][let us know]!
 
@@ -380,7 +380,7 @@ O plugin Flutter inclui os seguintes templates:
 
 Você também pode definir templates personalizados em **Settings > Editor > Live Templates**.
 
-### Atalhos de teclado
+### Atalhos de teclado {:#keyboard-shortcuts}
 
 **Hot reload**
 
@@ -477,7 +477,7 @@ O Flutter Property Editor é uma ferramenta poderosa fornecida pelo [Flutter
 plugin][] que permite visualizar e modificar propriedades de widgets diretamente de sua
 interface visual.
 
-### Como abrir o Flutter Property Editor no Android Studio e IntelliJ
+### Como abrir o Flutter Property Editor no Android Studio e IntelliJ {:#how-to-open-the-flutter-property-editor-in-android-studio-and-intellij}
 
 1. Clique no **ícone** do Flutter Property Editor ![Flutter Property Editor Android Studio/IntelliJ icon](/assets/images/docs/tools/devtools/property-editor-icon-android-studio.png){:width="20px"} na barra lateral do Android Studio ou IntelliJ.
 2. O Flutter Property Editor será carregado no painel lateral.
@@ -488,9 +488,9 @@ interface visual.
 [Flutter plugin]: https://plugins.jetbrains.com/plugin/9212-flutter
 [documentation]: /tools/property-editor
 
-## Solução de problemas
+## Solução de problemas {:#troubleshooting}
 
-### Problemas conhecidos e feedback
+### Problemas conhecidos e feedback {:#known-issues-and-feedback}
 
 Problemas conhecidos importantes que podem impactar sua experiência estão
 documentados no arquivo [Flutter plugin README][Flutter plugin README].

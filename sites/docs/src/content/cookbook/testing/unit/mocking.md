@@ -37,7 +37,7 @@ pacote Mockito usando os seguintes passos:
 
 Para mais informações, consulte a documentação do [pacote Mockito][Mockito package].
 
-## 1. Adicione as dependências do pacote
+## 1. Adicione as dependências do pacote {:#1-add-the-package-dependencies}
 
 Para usar o pacote `mockito`, adicione-o ao
 arquivo `pubspec.yaml` junto com a dependência `flutter_test` na
@@ -56,7 +56,7 @@ Para adicionar as dependências, execute `flutter pub add`:
 $ flutter pub add http dev:mockito dev:build_runner
 ```
 
-## 2. Crie uma função para testar
+## 2. Crie uma função para testar {:#2-create-a-function-to-test}
 
 Neste exemplo, faça um teste unitário da função `fetchAlbum` da
 receita [Buscar dados da internet][Fetch data from the internet].
@@ -95,7 +95,7 @@ No código do seu app, você pode fornecer um `http.Client` para o método `fetc
 diretamente com `fetchAlbum(http.Client())`. `http.Client()` cria um
 `http.Client` padrão.
 
-## 3. Crie um arquivo de teste com um mock `http.Client`
+## 3. Crie um arquivo de teste com um mock `http.Client` {:#3-create-a-test-file-with-a-mock-http-client}
 
 Em seguida, crie um arquivo de teste.
 
@@ -134,7 +134,7 @@ Em seguida, gere os mocks executando o seguinte comando:
 $ dart run build_runner build
 ```
 
-## 4. Escreva um teste para cada condição
+## 4. Escreva um teste para cada condição {:#4-write-a-test-for-each-condition}
 
 A função `fetchAlbum()` faz uma de duas coisas:
 
@@ -194,7 +194,7 @@ void main() {
 }
 ```
 
-## 5. Execute os testes
+## 5. Execute os testes {:#5-run-the-tests}
 
 Agora que você tem uma função `fetchAlbum()` com testes implementados,
 execute os testes.
@@ -206,7 +206,7 @@ $ flutter test test/fetch_album_test.dart
 Você também pode executar os testes dentro do seu editor favorito seguindo as
 instruções da receita [Introdução a testes unitários][Introduction to unit testing].
 
-## Exemplo completo
+## Exemplo completo {:#complete-example}
 
 ##### lib/main.dart
 
@@ -347,7 +347,7 @@ void main() {
 }
 ```
 
-## Resumo
+## Resumo {:#summary}
 
 Neste exemplo, você aprendeu como usar Mockito para testar funções ou classes
 que dependem de serviços web ou bancos de dados. Esta é apenas uma breve introdução à

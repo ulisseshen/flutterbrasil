@@ -34,7 +34,7 @@ nenhum código adicional para usar:
 [`LlmChatView`]:
     {{site.pub-api}}/flutter_ai_toolkit/latest/flutter_ai_toolkit/LlmChatView-class.html
 
-## Entrada de texto multilinha
+## Entrada de texto multilinha {:#multiline-text-input}
 
 O usuário tem opções quando se trata de enviar
 seu prompt depois de terminá-lo,
@@ -70,7 +70,7 @@ desktop](/assets/images/docs/ai-toolkit/desktop-enter-text.png)
 ![Screenshot of entering text on
 mobile](/assets/images/docs/ai-toolkit/mobile-enter-text.png)
 
-## Entrada por voz
+## Entrada por voz {:#voice-input}
 
 Além da entrada de texto, a visualização de chat pode receber uma
 gravação de áudio como entrada tocando no botão Mic,
@@ -88,7 +88,7 @@ Este texto pode então ser editado, aumentado e enviado normalmente.
 ![Screenshot of entered
 voice](/assets/images/docs/ai-toolkit/enter-voice-into-textfield.png)
 
-## Entrada multimídia
+## Entrada multimídia {:#multimedia-input}
 
 ![Textfield containing "Testing, testing, one, two,
 three"](/assets/images/docs/ai-toolkit/multi-media-testing-testing.png)
@@ -125,7 +125,7 @@ e aparece como uma miniatura associada ao prompt atualmente ativo:
 O usuário pode remover um anexo clicando no
 botão **X** na miniatura.
 
-## Zoom de imagem
+## Zoom de imagem {:#image-zoom}
 
 O usuário pode ampliar uma miniatura de imagem tocando nela:
 
@@ -134,7 +134,7 @@ O usuário pode ampliar uma miniatura de imagem tocando nela:
 Pressionar a tecla **Esc** ou tocar em qualquer lugar fora da
 imagem dispensa a imagem ampliada.
 
-## Copiar para a área de transferência
+## Copiar para a área de transferência {:#copy-to-clipboard}
 
 O usuário pode copiar qualquer prompt de texto ou resposta LLM
 em seu chat atual de várias maneiras.
@@ -155,7 +155,7 @@ Em plataformas mobile, o usuário pode tocar longamente um prompt ou resposta e 
 ![Long tap to see the copy
 button](/assets/images/docs/ai-toolkit/long-tap-choose-copy.png)
 
-## Edição de mensagem
+## Edição de mensagem {:#message-editing}
 
 Se o usuário quiser editar seu último prompt
 e fazer com que o LLM tente novamente,
@@ -186,7 +186,7 @@ Ou, se mudarem de ideia, podem tocar no **X**
 perto do indicador de Edição para cancelar sua edição e restaurar
 sua resposta LLM anterior.
 
-## Material e Cupertino
+## Material e Cupertino {:#material-and-cupertino}
 
 Quando o widget `LlmChatView` é hospedado em um [Material app][],
 ele usa facilidades fornecidas pela linguagem de design Material,

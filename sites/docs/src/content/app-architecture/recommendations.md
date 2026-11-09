@@ -28,27 +28,27 @@ que reflete quão fortemente a equipe Flutter as recomenda.
 * **Recomendado**: Esta prática provavelmente melhorará seu app.
 * **Condicional**: Esta prática pode melhorar seu app em certas circunstâncias.
 
-## Separação de responsabilidades
+## Separação de responsabilidades {:#separation-of-concerns}
 
 Você deve separar seu app em uma camada de UI e uma camada de dados. Dentro dessas camadas,
 você deve separar ainda mais a lógica em classes por responsabilidade.
 
 <ArchitectureRecommendations category="separation-of-concerns" />
 
-## Manipulação de dados
+## Manipulação de dados {:#handling-data}
 
 Manipular dados com cuidado torna seu código mais fácil de entender, menos propenso a erros e
 impede que dados malformados ou inesperados sejam criados.
 
 <ArchitectureRecommendations category="handling-data" />
 
-## Estrutura do app
+## Estrutura do app {:#app-structure}
 
 Código bem organizado beneficia tanto a saúde do próprio app quanto a equipe que trabalha no código.
 
 <ArchitectureRecommendations category="app-structure" />
 
-## Testes
+## Testes {:#testing}
 
 Boas práticas de teste tornam seu app flexível.
 Elas também tornam simples e de baixo risco adicionar nova lógica e nova UI.

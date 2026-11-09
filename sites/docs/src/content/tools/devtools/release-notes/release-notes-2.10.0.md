@@ -12,7 +12,7 @@ inclui as seguintes mudanças, entre outras melhorias gerais.
 Para saber mais sobre o DevTools, confira a
 [visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Atualizações do Flutter inspector
+## Atualizações do Flutter inspector {:#flutter-inspector-updates}
 
 * Adicionado suporte de busca à Widget Tree, e
   adicionado um navegador breadcrumb à Widget Details Tree para
@@ -21,13 +21,13 @@ Para saber mais sobre o DevTools, confira a
 
   ![inspector search](/assets/images/docs/tools/devtools/release-notes/images-2.10.0/image1.png "inspector_search")
 
-## Atualizações do CPU profiler
+## Atualizações do CPU profiler {:#cpu-profiler-updates}
 
 * Corrigida uma referência nula no CPU profiler
   ao carregar um snapshot offline -
   [#3596](https://github.com/flutter/devtools/pull/3596)
 
-## Atualizações do Debugger
+## Atualizações do Debugger {:#debugger-updates}
 
 * Adicionado suporte para busca de arquivo multi-token, e
   melhorada a priorização de correspondência de busca para
@@ -36,13 +36,13 @@ Para saber mais sobre o DevTools, confira a
 * Corrigidos alguns problemas relacionados a foco -
   [#3602](https://github.com/flutter/devtools/pull/3602)
 
-## Atualizações da visualização de Logging
+## Atualizações da visualização de Logging {:#logging-view-updates}
 
 * Corrigido um erro fatal que ocorria ao
   filtrar logs mais de uma vez -
   [#3588](https://github.com/flutter/devtools/pull/3588)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de mudanças desde a versão anterior,
 confira

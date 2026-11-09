@@ -6,12 +6,12 @@ description: O ParentDataWidget agora está vinculado ao tipo ParentData.
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 O tipo genérico de `ParentDataWidget` mudou de
 `RenderObjectWidget` para `ParentData`.
 
-## Contexto
+## Contexto {:#context}
 
 Antes desta mudança, um `ParentDataWidget` estava vinculado
 a um tipo específico de `RenderObjectWidget` como ancestral.
@@ -24,7 +24,7 @@ configure o tipo correto de `ParentData`. Neste novo cenário,
 o widget `Positioned` pode ser reutilizado com um hipotético
 novo widget `SuperStack`.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 O argumento de tipo genérico de `ParentDataWidget`
 mudou de `RenderObjectWidget` para `ParentData`,
@@ -34,7 +34,7 @@ Esta última é usada para mensagens de erro para dar aos usuários uma
 melhor ideia do contexto no qual um determinado `ParentDataWidget`
 deve ser usado.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Você deve migrar seu código conforme descrito nesta seção
 se estiver criando subclasses ou implementando `ParentDataWidget`.
@@ -120,12 +120,12 @@ para este `ParentDataWidget`. Na maioria das vezes,
 você apenas deseja retornar o antigo tipo genérico aqui
 (`FrogJar` neste exemplo).
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Lançado na versão: 1.16.3<br>
 Na versão estável: 1.17
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

@@ -32,7 +32,7 @@ as seguintes etapas:
   4. Exibir o video player.
   5. Reproduzir e pausar o vídeo.
 
-## 1. Adicionar a dependência `video_player`
+## 1. Adicionar a dependência `video_player` {:#1-add-the-video-player-dependency}
 
 Esta receita depende de um plugin Flutter: `video_player`.
 Primeiro, adicione esta dependência ao seu projeto.
@@ -43,7 +43,7 @@ Para adicionar o pacote `video_player` como dependência, execute `flutter pub a
 $ flutter pub add video_player
 ```
 
-## 2. Adicionar permissões ao seu app
+## 2. Adicionar permissões ao seu app {:#2-add-permissions-to-your-app}
 
 Em seguida, atualize suas configurações `android` e `ios` para garantir
 que seu app tenha as permissões corretas para transmitir vídeos
@@ -102,7 +102,7 @@ Consulte o pacote [video_player_web] para mais informações específicas da web
 A opção `VideoPlayerOptions.mixWithOthers` não pode ser implementada na web,
 pelo menos no momento. Se você usar esta opção na web, ela será ignorada silenciosamente.
 
-## 3. Criar e inicializar um `VideoPlayerController`
+## 3. Criar e inicializar um `VideoPlayerController` {:#3-create-and-initialize-a-videoplayercontroller}
 
 Agora que você tem o plugin `video_player` instalado com as
 permissões corretas, crie um `VideoPlayerController`. A
@@ -167,7 +167,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 }
 ```
 
-## 4. Exibir o video player
+## 4. Exibir o video player {:#4-display-the-video-player}
 
 Agora, exiba o vídeo. O plugin `video_player` fornece o
 widget [`VideoPlayer`][`VideoPlayer`] para exibir o vídeo inicializado pelo
@@ -208,7 +208,7 @@ FutureBuilder(
 )
 ```
 
-## 5. Reproduzir e pausar o vídeo
+## 5. Reproduzir e pausar o vídeo {:#5-play-and-pause-the-video}
 
 Por padrão, o vídeo começa em estado pausado. Para iniciar a reprodução,
 chame o método [`play()`][`play()`] fornecido pelo `VideoPlayerController`.
@@ -244,7 +244,7 @@ FloatingActionButton(
 )
 ```
 
-## Exemplo completo
+## Exemplo completo {:#complete-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter video player hands-on example in DartPad" run="true"

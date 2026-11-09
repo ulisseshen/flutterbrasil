@@ -9,18 +9,18 @@ Siga as melhores práticas de entrega contínua com Flutter para garantir que su
 aplicação seja entregue aos seus beta testers e validada com frequência
 sem recorrer a fluxos de trabalho manuais.
 
-## Opções de CI/CD
+## Opções de CI/CD {:#cicd-options}
 
 Há várias opções de integração contínua (CI) e entrega contínua (CD)
 disponíveis para ajudar a automatizar a entrega de sua aplicação.
 
-### Opções completas com funcionalidade Flutter integrada
+### Opções completas com funcionalidade Flutter integrada {:#all-in-one-options-with-built-in-flutter-functionality}
 
 * [Codemagic][]
 * [Bitrise][]
 * [Appcircle][]
 
-### Integrando fastlane com fluxos de trabalho existentes
+### Integrando fastlane com fluxos de trabalho existentes {:#integrating-fastlane-with-existing-workflows}
 
 Você pode usar fastlane com as seguintes ferramentas:
 
@@ -41,7 +41,7 @@ Para mais informações, veja "Integrating fastlane with existing workflow".
 [fastlane][] é um conjunto de ferramentas open-source para automatizar lançamentos e deployments
 para seu app.
 
-### Configuração local
+### Configuração local {:#local-setup}
 
 É recomendado que você teste o processo de compilação e deployment localmente antes
 de migrar para um sistema baseado em nuvem. Você também pode optar por realizar entrega contínua
@@ -106,7 +106,7 @@ Visite a [documentação fastlane][fastlane] para mais informações.
 Você está agora pronto para realizar deployments localmente ou migrar o processo de deployment
 para um sistema de integração contínua (CI).
 
-### Executando deployment localmente
+### Executando deployment localmente {:#running-deployment-locally}
 
 1. Compile o app em modo release.
     * ![Android](/assets/images/docs/cd/android.png) `flutter build appbundle`.
@@ -117,7 +117,7 @@ para um sistema de integração contínua (CI).
     * ![iOS](/assets/images/docs/cd/ios.png) `cd ios` e então
     `fastlane [nome da lane que você criou]`.
 
-### Configuração de build e deploy na nuvem
+### Configuração de build e deploy na nuvem {:#cloud-build-and-deploy-setup}
 
 Primeiro, siga a seção de configuração local descrita em 'Configuração local' para garantir que
 o processo funcione antes de migrar para um sistema em nuvem como Travis.
@@ -199,12 +199,12 @@ segredos em pull requests que você aceite e mescle.
 [Xcode Cloud][] é um serviço de integração e entrega contínua para compilar,
 testar e distribuir apps e frameworks para plataformas Apple.
 
-### Requisitos
+### Requisitos {:#requirements}
 
 * Xcode 13.4.1 ou superior.
 * Estar inscrito no [Apple Developer Program][].
 
-### Script de build personalizado
+### Script de build personalizado {:#custom-build-script}
 
 Xcode Cloud reconhece [scripts de build personalizados][custom build scripts] que podem ser
 usados para realizar tarefas adicionais em um momento designado. Ele também inclui um conjunto
@@ -217,7 +217,7 @@ parte do macOS e Xcode&mdash;por exemplo, Python&mdash;e adicionalmente Homebrew
 suportar a instalação de dependências e ferramentas de terceiros.
 :::
 
-#### Script post-clone
+#### Script post-clone {:#post-clone-script}
 
 Aproveite o script de build personalizado post-clone que executa após
 Xcode Cloud clonar seu repositório Git usando as seguintes instruções:
@@ -260,7 +260,7 @@ Este arquivo deve ser adicionado ao seu repositório git e marcado como executá
 $ git add --chmod=+x ios/ci_scripts/ci_post_clone.sh
 ```
 
-### Configuração do workflow
+### Configuração do workflow {:#workflow-configuration}
 
 Um [workflow do Xcode Cloud][Xcode Cloud workflow] define os passos executados no processo CI/CD
 quando seu workflow é acionado.
@@ -281,7 +281,7 @@ Para criar um novo workflow no Xcode, use as seguintes instruções:
 3. A próxima planilha exibe uma visão geral do workflow padrão fornecido pelo Xcode,
     e pode ser personalizada clicando no botão **Edit Workflow**.
 
-#### Mudanças de branch
+#### Mudanças de branch {:#branch-changes}
 
 Por padrão, o Xcode sugere a condição Branch Changes que inicia uma nova compilação
 para cada mudança no branch padrão do seu repositório Git.
@@ -294,7 +294,7 @@ Isso pode ser alcançado usando as seguintes condições Files and Folders:
 
 ![Xcode Workflow Branch Changes](/assets/images/docs/releaseguide/xcode_workflow_branch_changes.png){:width="100%"}
 
-### Próximo número de build
+### Próximo número de build {:#next-build-number}
 
 O Xcode Cloud define o número de build padrão para novos workflows como `1` e incrementa
 ele por compilação bem-sucedida. Se você está usando um app existente com um número de build

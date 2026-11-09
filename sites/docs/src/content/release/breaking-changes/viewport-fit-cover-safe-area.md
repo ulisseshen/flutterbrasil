@@ -63,7 +63,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-### Opção 2: volte para `viewport-fit=contain` (padrão) {:#option-2-revert-to-viewport-fit-contain-default}
+### Opção 2: volte para `viewport-fit=contain` (padrão) {:#option-2-revert-to-viewport-fitcontain-default}
 
 Se você não quer renderização de ponta a ponta em navegadores móveis, remova
 `viewport-fit=cover` de `<meta name="viewport">` em `web/index.html`:

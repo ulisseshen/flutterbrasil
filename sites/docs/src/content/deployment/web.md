@@ -49,7 +49,7 @@ e abra o diretório /build/web. Navegue até
 (dado o exemplo python SimpleHTTPServer)
 para visualizar a versão release do seu app.
 
-## Flags de build adicionais
+## Flags de build adicionais {:#additional-build-flags}
 Você pode precisar fazer deploy de um build profile ou debug para testes.
 Para fazer isso, passe a flag `--profile` ou `--debug`
 para o comando `flutter build web`.
@@ -57,7 +57,7 @@ Builds profile são especializados para profiling de performance usando Chrome D
 e builds debug podem ser usados para configurar dart2js
 para respeitar assertions e mudar o nível de otimização (usando a flag `-O`.)
 
-### Source maps {:#source-maps}
+### Source maps
 
 Para gerar source maps para simbolização em serviços de relatório de falhas,
 passe a flag `--source-maps`:
@@ -140,7 +140,7 @@ Para evitar erros `404` no meio da sessão durante rollouts, use uma estratégia
   regras de rewrite catch-all para `/index.html` de single-page applications (SPA),
   para que assets ausentes retornem um `404` genuíno em vez de `200 text/html`.
 
-#### Service workers personalizados (`precache_manifest.json`) {:#custom-service-workers-precache_manifest-json}
+#### Service workers personalizados (`precache_manifest.json`) {:#custom-service-workers-precache-manifest-json}
 
 Quando `--web-content-hash` está habilitado, `flutter build web` grava uma lista de
 materiais em `build/web/precache_manifest.json`:
@@ -201,7 +201,7 @@ muitas outras:
 Você pode usar o Firebase CLI para compilar e lançar seu app Flutter com Firebase
 Hosting.
 
-### Antes de começar
+### Antes de começar {:#before-you-begin}
 
 Para começar, [instale ou atualize][install-firebase-cli] o Firebase CLI:
 
@@ -209,7 +209,7 @@ Para começar, [instale ou atualize][install-firebase-cli] o Firebase CLI:
 npm install -g firebase-tools
 ```
 
-### Inicializar Firebase
+### Inicializar Firebase {:#initialize-firebase}
 
 1. Habilite o preview de web frameworks para o [CLI framework-aware do Firebase][Firebase framework-aware CLI]:
 

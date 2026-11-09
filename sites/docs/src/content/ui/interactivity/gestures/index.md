@@ -16,7 +16,7 @@ toques, mouses e canetas stylus) pela tela.
 A segunda camada tem _gestos_ que descrevem ações semânticas
 que consistem em um ou mais movimentos de ponteiro.
 
-## Ponteiros
+## Ponteiros {:#pointers}
 
 Ponteiros representam dados brutos sobre a interação do usuário
 com a tela do dispositivo.
@@ -145,7 +145,7 @@ drag update, e drag end):
   Este callback trava se `onHorizontalDragEnd` ou
   `onVerticalDragEnd` estiver definido.
 
-### Adicionando detecção de gestos a widgets
+### Adicionando detecção de gestos a widgets {:#adding-gesture-detection-to-widgets}
 
 Para ouvir gestos da camada de widgets,
 use um [`GestureDetector`][`GestureDetector`].
@@ -171,7 +171,7 @@ efeito "ink splash" em um tap, você pode usar [`InkWell`][`InkWell`].
 [`ListView`]: {{site.api}}/flutter/widgets/ListView-class.html
 [`TextButton`]: {{site.material_ui}}/TextButton-class.html
 
-### Desambiguação de gestos
+### Desambiguação de gestos {:#gesture-disambiguation}
 
 Em uma determinada localização na tela,
 pode haver múltiplos detectores de gestos.

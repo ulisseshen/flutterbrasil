@@ -7,7 +7,7 @@ ia-translate: true
 ---
 
 
-## PRs fechados nesta versão de flutter/flutter
+## PRs fechados nesta versão de flutter/flutter {:#prs-closed-in-this-release-of-flutterflutter}
 
 De Fri Nov 29 19:41:00 2018 -0800 até Thu Feb 21 20:22:00 2019 -0800
 
@@ -1129,7 +1129,7 @@ De Fri Nov 29 19:41:00 2018 -0800 até Thu Feb 21 20:22:00 2019 -0800
 [28272](https://github.com/flutter/flutter/pull/28272) Make logcat less chatty on perf tests (cla: yes, team)
 
 
-## PRs fechados nesta versão de flutter/engine
+## PRs fechados nesta versão de flutter/engine {:#prs-closed-in-this-release-of-flutterengine}
 
 De Fri Nov 29 19:41:00 2018 -0800 até Thu Feb 21 20:22:00 2019 -0800
 
@@ -1716,7 +1716,7 @@ De Fri Nov 29 19:41:00 2018 -0800 até Thu Feb 21 20:22:00 2019 -0800
 
 
 
-## PRs fechados nesta versão de flutter/plugins
+## PRs fechados nesta versão de flutter/plugins {:#prs-closed-in-this-release-of-flutterplugins}
 
 De Fri Nov 29 19:41:00 2018 -0800 até Thu Feb 21 20:22:00 2019 -0800
 

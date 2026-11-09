@@ -137,7 +137,7 @@ intent.setData(Uri.parse("myapp://product_details"));
 Declare entradas `<intent-filter>` correspondentes no `AndroidManifest.xml`
 para que o embedder possa validar a URL recebida.
 
-### Declare entrypoints e rotas no AndroidManifest.xml {:#declare-entrypoints-and-routes-in-androidmanifestxml}
+### Declare entrypoints e rotas no AndroidManifest.xml {:#declare-entrypoints-and-routes-in-androidmanifest-xml}
 
 Para entrypoints estáticos ou rotas iniciais,
 declare-os como `<meta-data>` no `AndroidManifest.xml`:

@@ -40,7 +40,7 @@ tirar uma foto e exibi-la usando as seguintes etapas:
   5. Tirar uma foto com o `CameraController`.
   6. Exibir a foto com um widget `Image`.
 
-## 1. Adicionar as dependências necessárias
+## 1. Adicionar as dependências necessárias {:#1-add-the-required-dependencies}
 
 Para completar esta receita, você precisa adicionar três dependências ao seu aplicativo:
 
@@ -71,7 +71,7 @@ No iOS, as seguintes linhas devem ser adicionadas dentro de
 ```
 :::
 
-## 2. Obter uma lista das câmeras disponíveis
+## 2. Obter uma lista das câmeras disponíveis {:#2-get-a-list-of-the-available-cameras}
 
 Em seguida, obtenha uma lista de câmeras disponíveis usando o plugin `camera`.
 
@@ -88,7 +88,7 @@ final cameras = await availableCameras();
 final firstCamera = cameras.first;
 ```
 
-## 3. Criar e inicializar o `CameraController`
+## 3. Criar e inicializar o `CameraController` {:#3-create-and-initialize-the-cameracontroller}
 
 Depois de ter uma câmera, use as seguintes etapas para
 criar e inicializar um `CameraController`.
@@ -155,7 +155,7 @@ Se você não inicializar o `CameraController`,
 você *não pode* usar a câmera para exibir uma visualização e tirar fotos.
 :::
 
-## 4. Usar um `CameraPreview` para exibir o feed da câmera
+## 4. Usar um `CameraPreview` para exibir o feed da câmera {:#4-use-a-camerapreview-to-display-the-cameras-feed}
 
 Em seguida, use o widget `CameraPreview` do pacote `camera` para
 exibir uma visualização do feed da câmera.
@@ -188,7 +188,7 @@ FutureBuilder<void>(
 )
 ```
 
-## 5. Tirar uma foto com o `CameraController`
+## 5. Tirar uma foto com o `CameraController` {:#5-take-a-picture-with-the-cameracontroller}
 
 Você pode usar o `CameraController` para tirar fotos usando o
 método [`takePicture()`][], que retorna um [`XFile`][],
@@ -231,7 +231,7 @@ FloatingActionButton(
   child: const Icon(Icons.camera_alt),
 )
 ```
-## 6. Exibir a foto com um widget `Image`
+## 6. Exibir a foto com um widget `Image` {:#6-display-the-picture-with-an-image-widget}
 
 Se você tirar a foto com sucesso, poderá então exibir a foto salva
 usando um widget `Image`. Neste caso, a foto é armazenada como um arquivo no
@@ -246,7 +246,7 @@ etapa anterior.
 Image.file(File('path/to/my/picture.png'));
 ```
 
-## Exemplo completo
+## Exemplo completo {:#complete-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dart

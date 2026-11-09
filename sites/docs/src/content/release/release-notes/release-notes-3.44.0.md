@@ -8,7 +8,7 @@ ia-translate: true
 
 Esta página contém as notas de lançamento do Flutter 3.44.
 
-## O que mudou
+## O que mudou {:#whats-changed}
 
 ### Framework
 
@@ -666,11 +666,11 @@ Esta página contém as notas de lançamento do Flutter 3.44.
 * [CP-beta] Update iOS tools to fat binaries (#185868) by @vashworth in [186063](https://github.com/flutter/flutter/pull/186063)
 * [CP-beta] [AGP 9] Update AGP Error With Flutter Docs (#185043) by @jesswrd in [186040](https://github.com/flutter/flutter/pull/186040)
 
-### Documentação
+### Documentação {:#documentation}
 
 * Update example description by @robert-ancell in [182067](https://github.com/flutter/flutter/pull/182067)
 
-### Outras mudanças
+### Outras mudanças {:#other-changes}
 
 * Update flutter changelog for 3.38.6 by @walley892 in [180708](https://github.com/flutter/flutter/pull/180708)
 * Update CODEOWNERS to remove chinmaygarde. by @chinmaygarde in [180703](https://github.com/flutter/flutter/pull/180703)
@@ -952,7 +952,7 @@ Esta página contém as notas de lançamento do Flutter 3.44.
 * [flutter-3.44-candidate.0] Update Flutter DEPS to Dart 98116461144f4429ab873f8497023a5ec3b08127 by @flutteractionsbot in [186420](https://github.com/flutter/flutter/pull/186420)
 * [flutter-3.44-candidate.0] Sync engine.version to 4c525dac5ebe5971c5708ef73558ed8edcf4a362 by @flutteractionsbot in [186587](https://github.com/flutter/flutter/pull/186587)
 
-## Novos contribuidores
+## Novos contribuidores {:#new-contributors}
 
 * @Koichi5 made their first contribution in [180172](https://github.com/flutter/flutter/pull/180172)
 * @vhaudiquet made their first contribution in [178711](https://github.com/flutter/flutter/pull/178711)

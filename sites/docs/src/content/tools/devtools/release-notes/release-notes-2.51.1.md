@@ -11,7 +11,7 @@ inclui as seguintes mudanças, entre outras melhorias gerais.
 Para saber mais sobre o DevTools, confira a
 [visão geral do DevTools](/tools/devtools/overview).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 - Usuários do canal beta do Flutter foram incluídos no experimento DevTools-on-Wasm.
   Todos os outros usuários ainda podem habilitar o DevTools compilado em Wasm no diálogo
@@ -21,13 +21,13 @@ Para saber mais sobre o DevTools, confira a
 - Tornado possível redimensionar colunas de tabelas de dados arrastando os separadores de cabeçalho. -
   [#9485](https://github.com/flutter/devtools/pull/9485)
 
-## Atualizações do Inspector
+## Atualizações do Inspector {:#inspector-updates}
 
 - Corrigido um problema onde selecionar um widget com o Inspector abriria o
   arquivo de definição do widget em vez do arquivo de projeto do usuário. -
   [#176530](https://github.com/flutter/flutter/pull/176530)
 
-## Atualizações do Network profiler
+## Atualizações do Network profiler {:#network-profiler-updates}
 
 - Corrigida a disposição do badge "error count" no nome da aba. -
   [#9470](https://github.com/flutter/devtools/pull/9470)
@@ -36,13 +36,13 @@ Para saber mais sobre o DevTools, confira a
 - Adicionado um banner para indicar claramente quando o DevTools não está registrando requisições
   de rede. - [#9495](https://github.com/flutter/devtools/pull/9495)
 
-## Atualizações do VS Code
+## Atualizações do VS Code {:#vs-code-updates}
 
 - Corrigido problema que impedia que atalhos como `Cmd`+`C` e `Cmd`+`V` funcionassem quando o DevTools estava
   embutido dentro do VS Code no macOS. -
   [#9472](https://github.com/flutter/devtools/pull/9472)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de mudanças neste lançamento, confira o
 [log do git do DevTools](https://github.com/flutter/devtools/tree/v2.51.1).

@@ -12,7 +12,7 @@ inclui as seguintes alterações entre outras melhorias gerais.
 Para saber mais sobre DevTools, confira a
 [visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Atualizações de Performance
+## Atualizações de Performance {:#performance-updates}
 
 * Adicionado um botão para alternar a visibilidade do gráfico Flutter Frames -
   [#4577](https://github.com/flutter/devtools/pull/4577)
@@ -26,12 +26,12 @@ Para saber mais sobre DevTools, confira a
   somente para a aba "Timeline Events" -
   [#4629](https://github.com/flutter/devtools/pull/4629)
 
-## Atualizações de Memory
+## Atualizações de Memory {:#memory-updates}
 
 * Melhorias na aba Profile de memory -
   [#4583](https://github.com/flutter/devtools/pull/4583)
 
-## Atualizações do Debugger
+## Atualizações do Debugger {:#debugger-updates}
 
 * Corrigido um problema com cards de hover onde eles apareciam
   mas nunca desapareciam -
@@ -39,13 +39,13 @@ Para saber mais sobre DevTools, confira a
 * Corrigido um bug com o diálogo de autocomplete da busca de arquivo -
   [#4409](https://github.com/flutter/devtools/pull/4409)
 
-## Atualizações do Network profiler
+## Atualizações do Network profiler {:#network-profiler-updates}
 
 * Adicionado um botão "Copy" na visualização Network Request
   (obrigado a @netos23) -
   [#4509](https://github.com/flutter/devtools/pull/4509)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de alterações desde a versão anterior,
 confira

@@ -14,7 +14,7 @@ com frameworks específicos como `HealthKit`.
 Para uma visão geral de como o framework SwiftUI se compara ao Flutter,
 veja [Flutter para desenvolvedores SwiftUI][Flutter for SwiftUI developers].
 
-## Introduzindo plugins Flutter
+## Introduzindo plugins Flutter {:#introducing-flutter-plugins}
 
 Dart chama bibliotecas que contêm código específico de plataforma de _plugins_,
 abreviação de "plugin package".
@@ -36,7 +36,7 @@ pode criar o seu próprio ou
 usar platform channels diretamente no seu projeto.
 Para saber mais, confira [Escrevendo código específico de plataforma][Writing platform-specific code].
 
-## Adicionando um plugin ao seu projeto
+## Adicionando um plugin ao seu projeto {:#adding-a-plugin-to-your-project}
 
 Para usar um framework da Apple dentro do seu projeto nativo,
 importe-o para o seu arquivo Swift ou Objective-C.
@@ -51,7 +51,7 @@ Você pode precisar alterar configurações do app ou lógica de inicialização
 Se isso for necessário, a página "Readme" do pacote em [pub.dev][pub.dev]
 deve fornecer detalhes.
 
-### Plugins Flutter e frameworks da Apple
+### Plugins Flutter e frameworks da Apple {:#flutter-plugins-and-apple-frameworks}
 
 | Caso de uso                                         | Framework ou classe da Apple                                                           | Integração Flutter           |
 |-----------------------------------------------------|----------------------------------------------------------------------------------------|------------------------------|

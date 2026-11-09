@@ -12,7 +12,7 @@ inclui as seguintes mudanças, entre outras melhorias gerais.
 Para saber mais sobre o DevTools, confira a
 [visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 * Adicionado um link para o novo
   [canal Discord](https://discord.com/channels/608014603317936148/958862085297672282)
@@ -21,7 +21,7 @@ Para saber mais sobre o DevTools, confira a
 
   ![about-devtools](/assets/images/docs/tools/devtools/release-notes/images-2.14.0/image1.png "about devtools")
 
-## Atualizações de Network
+## Atualizações de Network {:#network-updates}
 
 * Adicionadas ações "Copy as URL" e "Copy as cURL" para
   requisições selecionadas no network profiler
@@ -30,13 +30,13 @@ Para saber mais sobre o DevTools, confira a
 
   ![network-request-copy-actions](/assets/images/docs/tools/devtools/release-notes/images-2.14.0/image2.png "network request copy actions")
 
-## Atualizações do Flutter inspector
+## Atualizações do Flutter inspector {:#flutter-inspector-updates}
 
 * Adicionada uma configuração para controlar se passar o mouse sobre um widget
   no inspector exibe suas propriedades e valores em um cartão de hover -
   [#4090](https://github.com/flutter/devtools/pull/4090)
 
-## Atualizações do Debugger
+## Atualizações do Debugger {:#debugger-updates}
 
 * Adicionadas sugestões de auto completar no console
   (agradecimento especial a [@jankuss](https://github.com/jankuss)!) -
@@ -49,7 +49,7 @@ Para saber mais sobre o DevTools, confira a
 * Corrigida formatação no menu de exceções do debugger -
   [#4066](https://github.com/flutter/devtools/pull/4066)
 
-## Atualizações de Memory
+## Atualizações de Memory {:#memory-updates}
 
 * Corrigida formatação para valores de memória na visualização de árvore do heap -
   [#4153](https://github.com/flutter/devtools/pull/4153)
@@ -57,13 +57,13 @@ Para saber mais sobre o DevTools, confira a
   aparecer no gráfico de memória -
   [#4131](https://github.com/flutter/devtools/pull/4131)
 
-## Atualizações de Performance
+## Atualizações de Performance {:#performance-updates}
 
 * Avisar usuários que os toggles de camada de renderização no
   menu "More Debugging Options" não estão disponíveis para apps em modo profile -
   [#4075](https://github.com/flutter/devtools/pull/4075)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de mudanças desde a versão anterior,
 confira

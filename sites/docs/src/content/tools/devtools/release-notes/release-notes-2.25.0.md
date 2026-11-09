@@ -12,14 +12,14 @@ inclui as seguintes alterações entre outras melhorias gerais.
 Para saber mais sobre DevTools, confira a
 [visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 - Melhorada navegação da barra de abas do DevTools quando a lista de abas é longa -
   [#5875](https://github.com/flutter/devtools/pull/5875)
 - Limpos métodos de serviço registrados entre conexões de app -
   [#5960](https://github.com/flutter/devtools/pull/5960)
 
-## Atualizações de Memory
+## Atualizações de Memory {:#memory-updates}
 
 - Adicionada legenda para tipos de classe -
   [#5937](https://github.com/flutter/devtools/pull/5937)
@@ -28,7 +28,7 @@ Para saber mais sobre DevTools, confira a
 
   ![memory sampling](/assets/images/docs/tools/devtools/release-notes/images-2.25.0/memory.png "memory_sampling")
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de alterações desde a versão anterior,
 confira

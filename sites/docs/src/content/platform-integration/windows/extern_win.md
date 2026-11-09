@@ -7,13 +7,13 @@ description: >-
 
 # Ciclo de vida do Windows
 
-## Quem é afetado
+## Quem é afetado {:#who-is-affected}
 
 Aplicações Windows construídas com versões do Flutter posteriores a 3.13
 que abrem janelas não-Flutter.
 
 
-## Visão geral
+## Visão geral {:#overview}
 
 Ao adicionar uma janela não-Flutter a um app Flutter Windows, ela não fará parte
 da lógica para atualizações de estado do ciclo de vida da aplicação por padrão. Por exemplo,

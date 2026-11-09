@@ -20,7 +20,7 @@ usando os seguintes passos:
   4. Quando um botão é tocado, fechar a tela de seleção
   5. Mostrar um snackbar na tela home com a seleção
 
-## 1. Definir a tela home
+## 1. Definir a tela home {:#1-define-the-home-screen}
 
 A tela home exibe um botão. Quando tocado,
 ele abre a tela de seleção.
@@ -41,7 +41,7 @@ class HomeScreen extends StatelessWidget {
 }
 ```
 
-## 2. Adicionar um botão que abre a tela de seleção
+## 2. Adicionar um botão que abre a tela de seleção {:#2-add-a-button-that-launches-the-selection-screen}
 
 Agora, crie o SelectionButton, que faz o seguinte:
 
@@ -80,7 +80,7 @@ class _SelectionButtonState extends State<SelectionButton> {
 }
 ```
 
-## 3. Mostrar a tela de seleção com dois botões
+## 3. Mostrar a tela de seleção com dois botões {:#3-show-the-selection-screen-with-two-buttons}
 
 Agora, construa uma tela de seleção que contém dois botões.
 Quando um usuário toca em um botão,
@@ -129,7 +129,7 @@ class SelectionScreen extends StatelessWidget {
 }
 ```
 
-## 4. Quando um botão é tocado, fechar a tela de seleção
+## 4. Quando um botão é tocado, fechar a tela de seleção {:#4-when-a-button-is-tapped-close-the-selection-screen}
 
 Agora, atualize o callback `onPressed()` para ambos os botões.
 Para retornar dados para a primeira tela,
@@ -137,7 +137,7 @@ use o método [`Navigator.pop()`][],
 que aceita um segundo argumento opcional chamado `result`.
 Qualquer resultado é retornado para o `Future` no SelectionButton.
 
-### Botão Yep
+### Botão Yep {:#yep-button}
 
 <?code-excerpt "lib/main.dart (Yep)" replace="/^child: //g;/^\),$/)/g"?>
 ```dart
@@ -150,7 +150,7 @@ ElevatedButton(
 )
 ```
 
-### Botão Nope
+### Botão Nope {:#nope-button}
 
 <?code-excerpt "lib/main.dart (Nope)" replace="/^child: //g;/^\),$/)/g"?>
 ```dart
@@ -163,7 +163,7 @@ ElevatedButton(
 )
 ```
 
-## 5. Mostrar um snackbar na tela home com a seleção
+## 5. Mostrar um snackbar na tela home com a seleção {:#5-show-a-snackbar-on-the-home-screen-with-the-selection}
 
 Agora que você está abrindo uma tela de seleção e aguardando o resultado,
 você vai querer fazer algo com a informação que é retornada.
@@ -195,7 +195,7 @@ Future<void> _navigateAndDisplaySelection(BuildContext context) async {
 }
 ```
 
-## Exemplo interativo
+## Exemplo interativo {:#interactive-example}
 
 <?code-excerpt "lib/main.dart"?>
 ```dartpad title="Flutter Return from Data hands-on example in DartPad" run="true"

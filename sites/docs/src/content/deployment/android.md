@@ -842,5 +842,5 @@ que são importadas em apps Android como dependências AAR.
 [Flutter Shark]: https://play.google.com/store/apps/details?id=com.fluttershark.fluttersharkapp&pli=1
 
 {% comment %}
-### Existem considerações especiais com add-to-app?
+### Existem considerações especiais com add-to-app? {:#are-there-any-special-considerations-with-add-to-app}
 {% endcomment %}

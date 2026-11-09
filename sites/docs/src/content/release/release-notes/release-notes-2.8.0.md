@@ -11,7 +11,7 @@ Para informações sobre lançamentos de correção de bugs subsequentes, consul
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/master/CHANGELOG.md
 
-## PRs incluídos por label em `flutter/flutter`
+## PRs incluídos por label em `flutter/flutter` {:#merged-prs-by-labels-for-flutterflutter}
 
 
 
@@ -9962,7 +9962,7 @@ Para informações sobre lançamentos de correção de bugs subsequentes, consul
 
 
 
-## PRs incluídos por label em `flutter/engine`
+## PRs incluídos por label em `flutter/engine` {:#merged-prs-by-labels-for-flutterengine}
 
 
 
@@ -17531,7 +17531,7 @@ Para informações sobre lançamentos de correção de bugs subsequentes, consul
 
 
 
-## PRs incluídos por label em `flutter/plugins`
+## PRs incluídos por label em `flutter/plugins` {:#merged-prs-by-labels-for-flutterplugins}
 
 
 

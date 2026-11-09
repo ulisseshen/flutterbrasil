@@ -12,14 +12,14 @@ inclui as seguintes alterações entre outras melhorias gerais.
 Para saber mais sobre DevTools, confira a
 [visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Atualizações do Network profiler
+## Atualizações do Network profiler {:#network-profiler-updates}
 
 - Corrigido um crash com texto grande em requisições e respostas de rede -
   [#6254](https://github.com/flutter/devtools/pull/6254)
 
   ![Example truncation of text in the network view](/assets/images/docs/tools/devtools/release-notes/images-2.27.0/truncation.png "Example truncation of text in the network view")
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de alterações desde a versão anterior,
 confira

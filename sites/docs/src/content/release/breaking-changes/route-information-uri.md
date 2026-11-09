@@ -6,12 +6,12 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 `RouteInformation.location` e as APIs relacionadas foram descontinuadas
 em favor de `RouteInformation.uri`.
 
-## Contexto
+## Contexto {:#context}
 
 O [`RouteInformation`][] precisa das informações de autoridade para
 tratar deep links de aplicativos móveis vindos de domínios web diferentes.
@@ -20,14 +20,14 @@ todas as informações do deep link, e os parâmetros relacionados à rota
 foram convertidos para o formato completo [`Uri`][].
 Isso levou à descontinuação de APIs incompatíveis.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 * `RouteInformation.location` foi substituído por `RouteInformation.uri`.
 * `WidgetBindingObserver.didPushRoute` foi descontinuado.
 * O parâmetro `location` de `SystemNavigator.routeInformationUpdated` foi
   substituído pelo parâmetro `uri`, recém-adicionado.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Código antes da migração:
 
@@ -91,12 +91,12 @@ Código após a migração:
 SystemNavigator.routeInformationUpdated(uri: Uri.parse('/myLocation'));
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Incluído na versão: 3.10.0-13.0.pre<br>
 Na versão estável: 3.13.0
 
-## Referências
+## Referências {:#references}
 
 PRs relevantes:
 

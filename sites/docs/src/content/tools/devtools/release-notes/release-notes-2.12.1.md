@@ -12,16 +12,16 @@ inclui as seguintes mudanças, entre outras melhorias gerais.
 Para saber mais sobre o DevTools, confira a
 [visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 * Esta versão incluiu muita limpeza e redução de débito técnico.
 
-## Atualizações do Flutter inspector
+## Atualizações do Flutter inspector {:#flutter-inspector-updates}
 
 * Adicionado suporte de rolagem aos cartões de hover -
   [#3923](https://github.com/flutter/devtools/pull/3923)
 
-## Atualizações de Performance
+## Atualizações de Performance {:#performance-updates}
 
 * Adicionados links de documentação aos menus
   "Enhance Tracing" e "More debugging options".
@@ -33,7 +33,7 @@ Para saber mais sobre o DevTools, confira a
 
   ![enhance tracing documentation links](/assets/images/docs/tools/devtools/release-notes/images-2.12.1/image1.png "enhance tracing documentation links")
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de mudanças desde a versão anterior,
 confira

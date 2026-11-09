@@ -110,8 +110,9 @@ Em toda sincronização com o upstream:
 5. Revise também os "removidos ou consolidados" do relatório: se a página que
    os substituiu ainda não está traduzida, traduza-a usando a tradução antiga
    como referência.
-6. Rode `python3 tool/traducao/verificar.py` (sem argumentos ele confere
-   todas as páginas traduzidas) e corrija o que aparecer.
+6. Rode `python3 tool/traducao/ancorar_titulos.py` nas páginas resolvidas e
+   `python3 tool/traducao/verificar.py` (sem argumentos ele confere todas as
+   páginas traduzidas) e corrija o que aparecer.
 7. Rode `python3 tool/traducao/traduzir_release_notes.py --todas` para
    regenerar as notas de lançamento (inclusive as novas).
 8. Quando `.traducao-pendente/` estiver vazio, apague a pasta, rode
@@ -128,18 +129,28 @@ Nunca resolva um conflito trocando a página pela versão em inglês e mantendo
 |---|---|
 | `sincronizar_upstream.py` | Merge com o upstream preservando traduções (acima). |
 | `verificar.py [--estrito] [arquivos]` | **Checagens determinísticas** (roda no CI, ver abaixo). Sem argumentos confere todas as páginas marcadas. |
+| `ancorar_titulos.py <arquivos>` | Acrescenta `{:#id}` em inglês aos títulos traduzidos (mesma regra de slug do site; junta atributos como `{:.no_toc #id}`). Rode em toda página traduzida. |
 | `gerar_todo.py` | Regenera `TODO-TRADUCAO.md` (status por seção a partir de `ia-translate`). |
 | `traduzir_release_notes.py [--todas]` | **Gera** a versão pt-BR das notas de lançamento do Flutter (`release/release-notes/`) a partir do inglês do upstream: traduz frontmatter, introdução e títulos e mantém a lista de PRs em inglês. Não use agente para essas páginas. Páginas antigas com prosa são listadas para tradução manual. |
 
 ## Checagens determinísticas (CI)
 
 O workflow `.github/workflows/traducao.yml` roda em todo PR e push na `main`
-e falha se qualquer checagem der erro. Rode localmente antes do commit:
+e falha se qualquer checagem der erro. O job **Build and
+check links** do `docs.yml` (liberado para este repositório) também roda
+`check-link-references`, `check-links` e a validação do `firebase.json` nos
+PRs, os mesmos checks que barram o deploy de produção. Rode localmente antes do
+commit:
 
 ```console
 python3 tool/traducao/verificar.py
 dart run dash_site --site=docs refresh-excerpts --fail-on-update --dry-run
 ```
+
+Para o `check-links` local é preciso o firebase-tools na versão fixada pelo
+upstream (`curl -sSfLo firebase https://firebase.tools/bin/linux/v15.30.2`,
+no `PATH`), depois do build: `dart run dash_site --site=docs check-links`.
+Ele falha também com avisos (âncora inexistente).
 
 O `verificar.py` acusa como **erro**:
 
@@ -157,6 +168,15 @@ O `verificar.py` acusa como **erro**:
 - `defasada`: o inglês da página mudou no upstream depois do último sync
   (`ultimo-sync-upstream.txt`). É a regra principal acima virando checagem;
 - `pendente`: `.traducao-pendente/` com arquivos não resolvidos.
+- `ancora`: título traduzido sem `{:#id}` com o slug do inglês. Os links
+  `#ancora` (de outras páginas e do upstream) usam o id em inglês; corrija com
+  `python3 tool/traducao/ancorar_titulos.py <arquivos>`;
+- `link-interno`: link para âncora da própria página que não existe (ex.:
+  `(#exemplo-2)` quando o id é `example-2`);
+- `dominio`: domínios que não existem, como `api.flutterbrasil.dev`,
+  `main-api.flutterbrasil.dev` e `api.dartbrasil.dev`. A documentação de API
+  não é traduzida: use `api.flutter.dev`, `main-api.flutter.dev` e
+  `api.dart.dev` (o `dartbrasil.dev` existe e pode ser usado).
 
 E como **aviso** (não falha, a menos que use `--estrito`): `parcial` (30% a
 70% da prosa em inglês) e `defs-link` (número de definições de link diferente

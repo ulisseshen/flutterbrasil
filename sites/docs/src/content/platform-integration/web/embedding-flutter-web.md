@@ -41,7 +41,7 @@ consulte [Customize app initialization][Customize app initialization].
 
 [Customize app initialization]: /platform-integration/web/initialization
 
-### Incorporação com `iframe`
+### Incorporação com `iframe` {:#iframe-embedding}
 
 O modo de página inteira é recomendado ao incorporar uma aplicação web Flutter através de um
 `iframe`. A página que incorpora o `iframe` pode dimensioná-lo e posicioná-lo conforme necessário,
@@ -89,7 +89,7 @@ Neste modo:
 * A aplicação Flutter é notificada quando views são adicionadas ou removidas,
   para que possa ajustar seus widgets adequadamente.
 
-### Habilitar modo multi-view
+### Habilitar modo multi-view {:#enable-multi-view-mode}
 
 Habilite o modo multi-view configurando `multiViewEnabled: true` no
 método `initializeEngine` como mostrado:
@@ -123,7 +123,7 @@ let viewId = app.addView({
 let viewConfig = app.removeView(viewId);
 ```
 
-### Lidando com mudanças de view a partir do Dart
+### Lidando com mudanças de view a partir do Dart {:#handling-view-changes-from-dart}
 
 Adições e remoções de views são expostas ao Flutter através do
 [método `didChangeMetrics`][`didChangeMetrics` method] da classe `WidgetsBinding`.
@@ -222,7 +222,7 @@ na documentação da API.
 [`WidgetsBinding` mixin]: {{site.api}}/flutter/widgets/WidgetsBinding-mixin.html
 [`WidgetBuilder` function]: {{site.api}}/flutter/widgets/WidgetBuilder.html
 
-### Substituir `runApp` por `runWidget` no Dart
+### Substituir `runApp` por `runWidget` no Dart {:#replace-runapp-by-runwidget-in-dart}
 
 A [função `runApp`][`runApp` function] do Flutter assume que há pelo menos uma view disponível
 para renderizar (a `implicitView`), no entanto no modo multi-view do Flutter web,
@@ -249,7 +249,7 @@ void main() {
 [`runApp` function]: {{site.api}}/flutter/widgets/runApp.html
 [`runWidget` function]: {{site.api}}/flutter/widgets/runWidget.html
 
-### Identificando views
+### Identificando views {:#identifying-views}
 
 Cada `FlutterView` tem um identificador atribuído pelo Flutter quando
 anexada. Este `viewId` pode ser usado para identificar exclusivamente cada view,
@@ -284,7 +284,7 @@ Leia mais sobre o [construtor `View.of`][`View.of` constructor].
 
 [`View.of` constructor]: {{site.api}}/flutter/widgets/View/of.html
 
-### Configuração inicial da view
+### Configuração inicial da view {:#initial-view-configuration}
 
 Views Flutter podem receber qualquer dado de inicialização do JS ao iniciar.
 Os valores são passados através da propriedade `initialData` do método `addView`,
@@ -315,7 +315,7 @@ passado do JS para que seja type-safe no seu programa Dart, consulte:
 
 [JS Interoperability]: {{site.dart-site}}/interop/js-interop
 
-### Restrições de view
+### Restrições de view {:#view-constraints}
 
 Por padrão, uma view Flutter web incorporada considera o tamanho de seu `hostElement`
 como uma propriedade imutável, e restringe fortemente seu layout ao espaço
@@ -351,7 +351,7 @@ e [Understanding constraints][Understanding constraints].
 [`ViewConstraints` class]: {{site.api}}/flutter/dart-ui/ViewConstraints-class.html
 [Understanding constraints]: /ui/layout/constraints
 
-## Elemento customizado (`hostElement`)
+## Elemento customizado (`hostElement`) {:#custom-element-hostelement}
 
 Você pode incorporar um app Flutter web de visualização única
 em qualquer elemento HTML da sua página web.

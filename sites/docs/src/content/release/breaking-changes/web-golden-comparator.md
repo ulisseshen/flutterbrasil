@@ -10,7 +10,7 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 O pacote `flutter_test` e a ferramenta `flutter` não usarão mais a
 variável de nível superior [`webGoldenComparator`][], e em vez disso usarão a
@@ -18,14 +18,14 @@ variável de nível superior [`goldenFileComparator`][] original (como as plataf
 
 Para _usuários_ do `flutter_test`, essas alterações serão feitas automaticamente.
 
-## Contexto
+## Contexto {:#background}
 
 Originalmente, [`WebGoldenComparator`][class-WebGoldenComparator] foi adicionado para
 o backend HTML do Flutter web, pois não era possível criar um PNG
 codificado (buffer de bytes), e uma nova API era necessária. Como [o backend HTML está sendo
 descontinuado e removido][Issue 145954], esta API separada não é mais necessária.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Para a maioria dos usuários, nenhuma alteração é necessária (além de migrar do backend HTML,
 que não é coberto aqui), a ferramenta `flutter` configurará automaticamente
@@ -76,12 +76,12 @@ class MyGenericGoldenComparator extends GoldenFileComparator {
 }
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Disponibilizado na versão: 3.29.0-0.0.pre<br>
 Na versão estável: 3.29
 
-## Referências
+## Referências {:#references}
 
 Issues relevantes:
 

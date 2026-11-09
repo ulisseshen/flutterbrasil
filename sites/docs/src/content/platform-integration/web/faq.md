@@ -5,9 +5,9 @@ description: >-
   Algumas pegadinhas e diferenças ao escrever ou executar apps web no Flutter.
 ---
 
-## Perguntas
+## Perguntas {:#questions}
 
-### Quais cenários são ideais para Flutter na web?
+### Quais cenários são ideais para Flutter na web? {:#what-scenarios-are-ideal-for-flutter-on-the-web}
 
 Nem toda página web faz sentido em Flutter,
 mas achamos que o Flutter é particularmente adequado para experiências centradas em aplicativos:
@@ -25,7 +25,7 @@ você _pode_ usar Flutter para incorporar experiências interativas nesses sites
 Para mais informações sobre como você pode usar Flutter na web,
 consulte [Suporte web para Flutter][Web support for Flutter].
 
-### Otimização para mecanismos de busca (SEO)
+### Otimização para mecanismos de busca (SEO) {:#search-engine-optimization-seo}
 
 Em geral, o Flutter é voltado para experiências de aplicativos dinâmicos.
 O suporte web do Flutter não é exceção.
@@ -54,14 +54,14 @@ recomendamos usar _ou_:
 [Flutter marketing]: {{site.main-url}}
 [Jaspr]: https://jaspr.site/
 
-### O hot reload funciona com um app web? {:#hot-reload}
+### O hot reload funciona com um app web? {:#does-hot-reload-work-with-a-web-app}
 
 Sim! Para mais informações,
 confira [hot reload na web][hot reload on the web].
 
 [hot reload on the web]: /platform-integration/web/building#hot-reload-web
 
-### Quais navegadores web são suportados pelo Flutter?
+### Quais navegadores web são suportados pelo Flutter? {:#which-web-browsers-are-supported-by-flutter}
 
 Apps web Flutter podem ser executados nos seguintes navegadores:
 
@@ -74,7 +74,7 @@ Durante o desenvolvimento, Chrome (no macOS, Windows e Linux)
 e Edge (no Windows) são suportados como navegadores padrão
 para depurar seu app.
 
-### Posso compilar, executar e fazer deploy de apps web em qualquer uma das IDEs?
+### Posso compilar, executar e fazer deploy de apps web em qualquer uma das IDEs? {:#can-i-build-run-and-deploy-web-apps-in-any-of-the-ides}
 
 Você pode selecionar **Chrome** ou **Edge** como dispositivo de destino no
 Android Studio/IntelliJ e VS Code.
@@ -82,11 +82,11 @@ Android Studio/IntelliJ e VS Code.
 O menu suspenso de dispositivos agora deve incluir a opção **Chrome (web)**
 para todos os canais.
 
-### Como faço para compilar um app responsivo para a web?
+### Como faço para compilar um app responsivo para a web? {:#how-do-i-build-a-responsive-app-for-the-web}
 
 Consulte [Criando apps responsivos][Creating responsive apps].
 
-### Posso usar `dart:io` com um app web?
+### Posso usar `dart:io` com um app web? {:#can-i-use-dart-io-with-a-web-app}
 
 Não. O sistema de arquivos não é acessível pelo navegador.
 Para funcionalidade de rede, use o pacote [`http`][`http`].
@@ -94,7 +94,7 @@ Observe que a segurança funciona de forma um pouco
 diferente porque o navegador (e não o app)
 controla os headers em uma requisição HTTP.
 
-### Como lido com imports específicos da web?
+### Como lido com imports específicos da web? {:#how-do-i-handle-web-specific-imports}
 
 Alguns plugins requerem imports específicos de plataforma, particularmente se
 eles usam o sistema de arquivos, que não é acessível pelo navegador. Para usar
@@ -116,7 +116,7 @@ em [dart.dev]({{site.dart-site}}). Para ajuda com falhas de compilação Wasm
 devido a imports não suportados, confira
 [Diagnosticar erros de compilação Wasm](/platform-integration/web/wasm#diagnosing-wasm-compilation-errors).
 
-### O Flutter web suporta concorrência?
+### O Flutter web suporta concorrência? {:#does-flutter-web-support-concurrency}
 
 O suporte de concorrência do Dart que usa [isolates][isolates]
 não é atualmente suportado no Flutter web.
@@ -125,11 +125,11 @@ Apps web Flutter podem potencialmente contornar isso
 usando [web workers][web workers],
 embora esse suporte não esteja integrado.
 
-### Como faço para fazer deploy de um app web?
+### Como faço para fazer deploy de um app web? {:#how-do-i-deploy-a-web-app}
 
 Consulte [Preparando um app web para lançamento][Preparing a web app for release].
 
-### `Platform.is` funciona na web?
+### `Platform.is` funciona na web? {:#does-platform-is-work-on-the-web}
 
 Não. Embora tecnicamente você possa importar `dart:io` ao compilar para a web,
 chamar qualquer método `Platform.isXYZ` lança um `UnsupportedError`.
@@ -144,7 +144,7 @@ pontue o pacote como sem suporte à web.
 
 [`kIsWeb`]: {{site.api}}/flutter/foundation/kIsWeb-constant.html
 
-### Por que meu app não atualiza imediatamente após ser implantado?
+### Por que meu app não atualiza imediatamente após ser implantado? {:#why-doesnt-my-app-update-immediately-after-its-deployed}
 
 Pode ser necessário configurar o header `Cache-Control`
 retornado pelo seu servidor web.
@@ -164,7 +164,7 @@ Isso pode levar ao uso de uma versão do seu app que
 é incompatível com mudanças que foram implantadas
 em serviços de backend.
 
-### Como limpo o cache da web após um deploy e forço o download de um app?
+### Como limpo o cache da web após um deploy e forço o download de um app? {:#how-do-i-clear-the-web-cache-after-a-deployment-and-force-an-app-download}
 
 No Flutter 3.50 e posteriores, passe `--web-content-hash` ao compilar seu app web:
 

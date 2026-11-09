@@ -7,7 +7,7 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 O v1 embedding do Android foi removido no Flutter 3.29.0.
 Isso segue a descontinuação descrita em
@@ -61,7 +61,7 @@ lista a seguir para instruções sobre migração.
 
 [Android v1 embedding app and plugin creation deprecation]: /release/breaking-changes/android-v1-embedding-create-deprecation
 
-## Autores de plugins
+## Autores de plugins {:#plugin-authors}
 
 Plugins devem remover o método `registerWith` de
 sua implementação da interface `FlutterPlugin`:
@@ -76,7 +76,7 @@ plugins de propriedade da equipe Flutter: [flutter/packages#6494][].
 
 [flutter/packages#6494]: {{site.repo.packages}}/pull/6494
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Disponibilizado na versão: 3.28.0-0.1.pre<br>
 Na versão estável: 3.29

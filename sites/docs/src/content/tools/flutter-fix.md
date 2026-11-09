@@ -15,12 +15,12 @@ Essas atualizações automatizadas são chamadas de _quick-fixes_ no IntelliJ e 
 Studio, e _code actions_ no VS Code.
 :::
 
-## Aplicando correções individuais
+## Aplicando correções individuais {:#applying-individual-fixes}
 
 Você pode usar qualquer IDE compatível
 para aplicar uma única correção por vez.
 
-### IntelliJ e Android Studio
+### IntelliJ e Android Studio {:#intellij-and-android-studio}
 
 Quando o analisador detecta uma API descontinuada,
 uma lâmpada aparece nessa linha de código.
@@ -56,7 +56,7 @@ Você pode fazer qualquer um dos seguintes:
 ![Screenshot showing suggested change in VS Code](/assets/images/docs/development/tools/flutter-fix-suggestion-vscode.png)<br>
 Um exemplo de code action no VS Code
 
-## Aplicando correções em todo o projeto
+## Aplicando correções em todo o projeto {:#applying-project-wide-fixes}
 
 [dart fix Decoding Flutter][dart fix Decoding Flutter]
 

@@ -7,12 +7,12 @@ description: >
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Este guia explica como migrar aplicações Flutter após
 [a otimização do LayoutBuilder][1].
 
-## Contexto
+## Contexto {:#context}
 
 [LayoutBuilder][2] e [SliverLayoutBuilder][3] chamam
 a função [builder][4] mais vezes do que o necessário para
@@ -35,7 +35,7 @@ O app pode exibir alguma combinação dos seguintes sintomas:
 * A UI de um widget está faltando.
 * A UI de um widget não está atualizando.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 Antes da otimização, a função builder passada para `LayoutBuilder` ou
 `SliverLayoutBuilder` era chamada quando qualquer uma das seguintes situações acontecia:
@@ -57,7 +57,7 @@ Seu app pode quebrar se depender do relayout para causar a reconstrução do
 acontece por acidente. Você pretendia adicionar `setState`, mas esqueceu porque o app
 continuou funcionando como você queria, e portanto nada o lembrou de adicionar.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Procure por usos de `LayoutBuilder` e `SliverLayoutBuilder` e certifique-se de
 chamar `setState` sempre que o estado do widget mudar.
@@ -279,11 +279,11 @@ animation.addListener(() {
 });
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Esta mudança foi lançada no Flutter v1.20.0.
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

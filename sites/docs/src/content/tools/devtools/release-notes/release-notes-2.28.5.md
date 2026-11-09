@@ -16,17 +16,17 @@ Esta foi uma versão cherry-pick em cima do DevTools 2.28.4.
 Para saber sobre as melhorias incluídas no DevTools 2.28.4, por favor leia as
 [notas de versão](/tools/devtools/release-notes/release-notes-2.28.4).
 
-## Atualizações do Inspector
+## Atualizações do Inspector {:#inspector-updates}
 
 * Cachear apenas diretórios raiz pub adicionados pelo usuário. - [#6897](https://github.com/flutter/devtools/pull/6897)
 
 * Remover raiz pub do Flutter se foi acidentalmente cacheada. - [#6911](https://github.com/flutter/devtools/pull/6911)
 
-## Atualizações de DevTools Extension
+## Atualizações de DevTools Extension {:#devtools-extension-updates}
 
 * Corrigidos alguns bugs que impediam apps de servidor Dart de se conectarem às extensões do DevTools. - [#6982](https://github.com/flutter/devtools/pull/6982), [#6993](https://github.com/flutter/devtools/pull/6993)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de alterações nesta versão, confira o
 [log git do DevTools](https://github.com/flutter/devtools/tree/v2.28.5).

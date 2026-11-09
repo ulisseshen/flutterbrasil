@@ -12,7 +12,7 @@ inclui as seguintes mudanças, entre outras melhorias gerais.
 Para saber mais sobre o DevTools, confira a
 [visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Atualizações do Debugger
+## Atualizações do Debugger {:#debugger-updates}
 
 * Melhorado o suporte para inspecionar listas e mapas grandes no
   painel de variáveis do Debugger - [#3497](https://github.com/flutter/devtools/pull/3497)
@@ -26,7 +26,7 @@ Para saber mais sobre o DevTools, confira a
   no debugger para o objeto selecionado -
   [#3480](https://github.com/flutter/devtools/pull/3480)
 
-## Atualizações de Performance
+## Atualizações de Performance {:#performance-updates}
 
 * Corrigidos bugs com a busca na página de performance e melhorada a performance -
   [#3515](https://github.com/flutter/devtools/pull/3515)
@@ -35,7 +35,7 @@ Para saber mais sobre o DevTools, confira a
 
   ![Flutter frame tooltips](/assets/images/docs/tools/devtools/release-notes/images-2.9.1/image3.png "Flutter frame tooltips")
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de mudanças desde o lançamento anterior,
 confira

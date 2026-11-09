@@ -30,7 +30,7 @@ a esses processos.
 
 <YouTubeEmbed id="ngsxzZt5DoY" title="dart:convert (Technique of the Week)"></YouTubeEmbed>
 
-## Qual método de serialização JSON é adequado para mim?
+## Qual método de serialização JSON é adequado para mim? {:#which-json-serialization-method-is-right-for-me}
 
 Este artigo cobre duas estratégias gerais para trabalhar com JSON:
 
@@ -44,7 +44,7 @@ Para apps com vários modelos JSON com mais complexidade,
 codificar manualmente pode rapidamente se tornar tedioso, repetitivo
 e propício a muitos pequenos erros.
 
-### Use serialização manual para projetos menores
+### Use serialização manual para projetos menores {:#use-manual-serialization-for-smaller-projects}
 
 Decodificação manual de JSON refere-se ao uso do decodificador JSON integrado em
 `dart:convert`. Envolve passar a string JSON bruta para a função `jsonDecode()`
@@ -70,7 +70,7 @@ aproveitando os novos recursos do Dart 3,
 confira o codelab [Dive into Dart's patterns and records][].
 :::
 
-### Use geração de código para projetos médios a grandes
+### Use geração de código para projetos médios a grandes {:#use-code-generation-for-medium-to-large-projects}
 
 Serialização JSON com geração de código significa ter uma biblioteca externa
 gerar o boilerplate de encoding para você. Após alguma configuração inicial,
@@ -88,7 +88,7 @@ Você pode querer usar código gerado para serialização JSON quando tiver um
 projeto médio ou maior. Para ver um exemplo de encoding JSON baseado em geração de código,
 veja [Serializando JSON usando bibliotecas de geração de código][Serializing JSON using code generation libraries].
 
-## Existe um equivalente GSON/<wbr>Jackson/<wbr>Moshi no Flutter?
+## Existe um equivalente GSON/<wbr>Jackson/<wbr>Moshi no Flutter? {:#is-there-a-gsonjacksonmoshi-equivalent-in-flutter}
 
 A resposta simples é não.
 
@@ -109,7 +109,7 @@ abordagem é coberta em mais detalhes na
 seção [bibliotecas de geração de código][code generation libraries].
 
 <a id="manual-encoding"></a>
-## Serializando JSON manualmente usando dart:convert
+## Serializando JSON manualmente usando dart:convert {:#serializing-json-manually-using-dart-convert}
 
 Serialização JSON básica no Flutter é muito simples. Flutter tem uma
 biblioteca `dart:convert` integrada que inclui um encoder e
@@ -128,7 +128,7 @@ O exemplo de JSON a seguir implementa um modelo de usuário simples.
 Com `dart:convert`,
 você pode serializar este modelo JSON de duas maneiras.
 
-### Serializando JSON inline
+### Serializando JSON inline {:#serializing-json-inline}
 
 Ao olhar a documentação [`dart:convert`][],
 você verá que pode decodificar o JSON chamando a
@@ -152,7 +152,7 @@ Por exemplo, sempre que você acessar os campos `name` ou `email`, você poderia
 introduzir um erro de digitação. Um erro de digitação que o compilador não sabe, já que o
 JSON vive em uma estrutura de map.
 
-### Serializando JSON dentro de classes modelo
+### Serializando JSON dentro de classes modelo {:#serializing-json-inside-model-classes}
 
 Combata os problemas mencionados anteriormente introduzindo uma classe modelo
 simples, chamada `User` neste exemplo. Dentro da classe `User`, você encontrará:
@@ -228,7 +228,7 @@ Seria bom se houvesse algo que lidasse com encoding
 e decoding JSON para você. Felizmente, existe!
 
 <a id="code-generation"></a>
-## Serializando JSON usando bibliotecas de geração de código
+## Serializando JSON usando bibliotecas de geração de código {:#serializing-json-using-code-generation-libraries}
 
 Embora existam outras bibliotecas disponíveis, este guia usa
 [`json_serializable`][], um gerador de código-fonte automatizado que
@@ -250,7 +250,7 @@ Como o código de serialização não é escrito manualmente ou mantido manualme
 mais, você minimiza o risco de ter exceções de serialização JSON em
 runtime.
 
-### Configurando json_serializable em um projeto
+### Configurando json_serializable em um projeto {:#setting-up-json-serializable-in-a-project}
 
 Para incluir `json_serializable` em seu projeto, você precisa de uma dependência regular
 e duas _dev dependencies_. Em resumo, _dev dependencies_
@@ -267,7 +267,7 @@ Execute `flutter pub get` dentro da pasta raiz do seu projeto
 (ou clique em **Packages get** no seu editor)
 para tornar essas novas dependências disponíveis em seu projeto.
 
-### Criando classes modelo da maneira json_serializable
+### Criando classes modelo da maneira json_serializable {:#creating-model-classes-the-json-serializable-way}
 
 O seguinte mostra como converter a classe `User` para uma
 classe `json_serializable`. Para simplificar,
@@ -349,7 +349,7 @@ final String id;
 final String verificationCode;
 ```
 
-### Executando o utilitário de geração de código
+### Executando o utilitário de geração de código {:#running-the-code-generation-utility}
 
 Ao criar classes `json_serializable` pela primeira vez,
 você receberá erros semelhantes ao seguinte:
@@ -364,7 +364,7 @@ que gera o boilerplate de serialização.
 
 Existem duas maneiras de executar o gerador de código.
 
-#### Geração de código única
+#### Geração de código única {:#one-time-code-generation}
 
 Executando `dart run build_runner build --delete-conflicting-outputs` na raiz do projeto,
 você gera código de serialização JSON para seus modelos sempre que necessário.
@@ -374,7 +374,7 @@ relevantes e gera o código de serialização necessário para eles.
 Embora isso seja conveniente, seria bom se você não tivesse que executar o
 build manualmente toda vez que fizer alterações em suas classes modelo.
 
-#### Gerando código continuamente
+#### Gerando código continuamente {:#generating-code-continuously}
 
 Um _watcher_ torna nosso processo de geração de código-fonte mais conveniente. Ele
 observa alterações em nossos arquivos de projeto e automaticamente constrói os arquivos necessários
@@ -383,7 +383,7 @@ quando necessário. Inicie o watcher executando
 
 É seguro iniciar o watcher uma vez e deixá-lo rodando em segundo plano.
 
-### Consumindo modelos json_serializable
+### Consumindo modelos json_serializable {:#consuming-json-serializable-models}
 
 Para decodificar uma string JSON da maneira `json_serializable`,
 você na verdade não precisa fazer nenhuma alteração em nosso código anterior.
@@ -409,7 +409,7 @@ que a serialização funciona&mdash;agora é
 _responsabilidade da biblioteca_ garantir que a serialização funcione
 apropriadamente.
 
-## Gerando código para classes aninhadas
+## Gerando código para classes aninhadas {:#generating-code-for-nested-classes}
 
 Você pode ter código que tem classes aninhadas dentro de uma classe.
 Se esse for o caso, e você tentou passar a classe em formato JSON
@@ -518,7 +518,7 @@ class User {
 Para mais informações, veja [`explicitToJson`][] na
 classe [`JsonSerializable`][] para o pacote [`json_annotation`][].
 
-## Referências adicionais
+## Referências adicionais {:#further-references}
 
 Para mais informações, veja os seguintes recursos:
 

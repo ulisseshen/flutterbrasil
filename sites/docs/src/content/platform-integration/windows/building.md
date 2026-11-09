@@ -150,7 +150,7 @@ Para alterar o número da versão, edite as propriedades `VERSION_AS_NUMBER`
 e `VERSION_AS_STRING`;
 outras informações podem ser editadas no bloco `StringFileInfo`.
 
-## Compilando com o Visual Studio
+## Compilando com o Visual Studio {:#compiling-with-visual-studio}
 
 Para a maioria dos apps, é suficiente permitir que o Flutter
 lide com o processo de compilação usando os comandos `flutter run`
@@ -223,7 +223,7 @@ consulte o exemplo [Desktop Photo Search][Desktop Photo Search].
 [msix package]: {{site.pub}}/packages/msix
 [Desktop Photo Search]: {{site.repo.samples}}/tree/main/desktop_photo_search
 
-#### Criar um certificado .pfx auto-assinado para testes locais
+#### Criar um certificado .pfx auto-assinado para testes locais {:#create-a-self-signed-pfx-certificate-for-local-testing}
 
 Para implantação e testes privados com a ajuda
 do instalador MSIX, você precisa dar à sua aplicação uma
@@ -267,7 +267,7 @@ certificado `.pfx` auto-assinado.
 
 [OpenSSL]: https://slproweb.com/products/Win32OpenSSL.html
 
-### Construindo seu próprio arquivo zip para Windows
+### Construindo seu próprio arquivo zip para Windows {:#building-your-own-zip-file-for-windows}
 
 O executável Flutter, `.exe`, pode ser encontrado em seu
 projeto em `build\windows\runner\<build mode>\`.
@@ -307,7 +307,7 @@ Além desse executável, você precisa do seguinte:
 Neste ponto, se desejado, seria relativamente simples
 adicionar esta pasta a um instalador Windows como Inno Setup, WiX, etc.
 
-## Recursos adicionais
+## Recursos adicionais {:#additional-resources}
 
 Para aprender como construir um `.exe` usando Inno Setup para distribuir
 seu app desktop Flutter para Windows, confira o guia passo a passo

@@ -12,7 +12,7 @@ inclui as seguintes alterações entre outras melhorias gerais.
 Para saber mais sobre DevTools, confira a
 [visão geral do DevTools](https://docs.flutterbrasil.dev/tools/devtools).
 
-## Atualizações gerais
+## Atualizações gerais {:#general-updates}
 
 * Atualizado DevTools para o novo design Material 3 -
   [#5429](https://github.com/flutter/devtools/pull/5429)
@@ -32,7 +32,7 @@ Para saber mais sobre DevTools, confira a
 * Incluído botão de settings no rodapé da visualização incorporada -
   [#5528](https://github.com/flutter/devtools/pull/5528)
 
-## Atualizações de Performance
+## Atualizações de Performance {:#performance-updates}
 
 * Corrigida uma regressão de performance no processamento de eventos de timeline -
   [#5460](https://github.com/flutter/devtools/pull/5460)
@@ -45,7 +45,7 @@ Para saber mais sobre DevTools, confira a
 * Removido o CPU profiler do visualizador de trace legado -
   [#5539](https://github.com/flutter/devtools/pull/5539)
 
-## Atualizações do CPU profiler
+## Atualizações do CPU profiler {:#cpu-profiler-updates}
 
 * Adicionada uma Method Table ao CPU profiler -
   [#5366](https://github.com/flutter/devtools/pull/5366)
@@ -68,7 +68,7 @@ Para saber mais sobre DevTools, confira a
   com teclas ,AOE (útil para usuários Dvorak) -
   [#5545](https://github.com/flutter/devtools/pull/5545)
 
-## Atualizações de Memory
+## Atualizações de Memory {:#memory-updates}
 
 * Corrigido bug de filtragem na visualização "Trace Instances" -
   [#5406](https://github.com/flutter/devtools/pull/5406)
@@ -81,7 +81,7 @@ Para saber mais sobre DevTools, confira a
 * Expostos totais para memória no heap snapshot -
   [#5593](https://github.com/flutter/devtools/pull/5593)
 
-## Atualizações do Debugger
+## Atualizações do Debugger {:#debugger-updates}
 
 * Corrigido um bug onde inspeção de variável
   para instâncias às vezes não mostrava filhos -
@@ -101,7 +101,7 @@ Para saber mais sobre DevTools, confira a
 * Painel do debugger respeita "dense mode" -
   [#5517](https://github.com/flutter/devtools/pull/5517)
 
-## Atualizações do Network profiler
+## Atualizações do Network profiler {:#network-profiler-updates}
 
 * Corrigido um bug ao visualizar respostas JSON com valores null -
   [#5424](https://github.com/flutter/devtools/pull/5424)
@@ -112,7 +112,7 @@ Para saber mais sobre DevTools, confira a
   permitia copiar enquanto ainda estava carregando os dados -
   [#5476](https://github.com/flutter/devtools/pull/5476)
 
-## Histórico completo de commits
+## Histórico completo de commits {:#full-commit-history}
 
 Para encontrar uma lista completa de alterações desde a versão anterior,
 confira

@@ -26,7 +26,7 @@ estado é "quaisquer dados que você precisa para reconstruir sua UI em qualquer
 momento no tempo". Segundo, o estado que você _de fato_ gerencia você mesmo pode
 ser separado em dois tipos conceituais: estado efêmero e estado do app.
 
-## Estado efêmero
+## Estado efêmero {:#ephemeral-state}
 
 Estado efêmero (às vezes chamado de _estado da UI_ ou _estado local_)
 é o estado que você pode conter claramente em um único widget.
@@ -81,7 +81,7 @@ Aqui, usar `setState()` e um campo dentro da classe State do StatefulWidget
 E, se o usuário fechar e reiniciar o app,
 você não se importa que `_index` reinicie para zero.
 
-## Estado do app
+## Estado do app {:#app-state}
 
 Estado que não é efêmero,
 que você quer compartilhar entre muitas partes do seu app,
@@ -101,7 +101,7 @@ Para gerenciar o estado do app, você vai querer pesquisar suas opções.
 Sua escolha depende da complexidade e natureza do seu app,
 da experiência prévia da sua equipe e muitos outros aspectos. Continue lendo.
 
-## Não há uma regra clara
+## Não há uma regra clara {:#there-is-no-clear-cut-rule}
 
 Para ser claro, você _pode_ usar `State` e `setState()` para gerenciar todo o
 estado no seu app. De fato, o time Flutter faz isso em muitas

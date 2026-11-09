@@ -12,7 +12,7 @@ consulte o [CHANGELOG][] do Flutter.
 
 [CHANGELOG]: https://github.com/flutter/flutter/blob/main/CHANGELOG.md
 
-## O que mudou
+## O que mudou {:#whats-changed}
 
 ### Framework
 
@@ -757,12 +757,12 @@ consulte o [CHANGELOG][] do Flutter.
 * [CP-beta] Add a warning on usage of `dartPluginClass: 'none'`. by @flutteractionsbot in [172498](https://github.com/flutter/flutter/pull/172498)
 * [CP-beta] Emit a warning on `--[no-]disable-dds`, preferring `--no-dds` by @flutteractionsbot in [172790](https://github.com/flutter/flutter/pull/172790)
 
-### Documentação
+### Documentação {:#documentation}
 
 * Adding utf-8 encoding to hello world's html template by @Markzipan in [168162](https://github.com/flutter/flutter/pull/168162)
 * Update hello_world example to current layout flutter create uses by @robert-ancell in [168571](https://github.com/flutter/flutter/pull/168571)
 
-### Outras mudanças
+### Outras mudanças {:#other-changes}
 
 * Re-disable microbenchmarks iOS. by @jonahwilliams in [166788](https://github.com/flutter/flutter/pull/166788)
 * [Impeller] disable no decal metal test. by @jonahwilliams in [166771](https://github.com/flutter/flutter/pull/166771)
@@ -1090,7 +1090,7 @@ consulte o [CHANGELOG][] do Flutter.
 * Update engine version for 3.35-0.2.pre by @eyebrowsoffire in [172987](https://github.com/flutter/flutter/pull/172987)
 * Update engine.version again for 3.35-0.2 by @eyebrowsoffire in [173116](https://github.com/flutter/flutter/pull/173116)
 
-## Novos contribuidores
+## Novos contribuidores {:#new-contributors}
 
 * @vially made their first contribution in [164455](https://github.com/flutter/flutter/pull/164455)
 * @whopavan made their first contribution in [164966](https://github.com/flutter/flutter/pull/164966)

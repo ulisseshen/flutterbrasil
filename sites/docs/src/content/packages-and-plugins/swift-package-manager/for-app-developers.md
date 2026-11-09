@@ -169,7 +169,7 @@ Para usar SwiftPM, consulte uma das seguintes páginas, conforme apropriado:
 [ios-add-2-app]:   /add-to-app/ios/project-setup
 [macos-add-2-app]: /add-to-app/macos/project-setup
 
-### Adicionar a um target personalizado do Xcode
+### Adicionar a um target personalizado do Xcode {:#add-to-a-custom-xcode-target}
 
 Seu projeto Flutter Xcode pode ter [targets personalizados do Xcode][Xcode targets] para construir produtos adicionais,
 como frameworks ou testes unitários.
@@ -235,7 +235,7 @@ Para desfazer esta migração:
 
 [Turn off Swift Package Manager]: #how-to-turn-off-swift-package-manager
 
-## Como usar um plugin Flutter Swift Package Manager que requer uma versão de OS mais alta
+## Como usar um plugin Flutter Swift Package Manager que requer uma versão de OS mais alta {:#how-to-use-a-swift-package-manager-flutter-plugin-that-requires-a-higher-os-version}
 
 Se um plugin Flutter Swift Package Manager requer uma versão de OS mais alta do que
 o projeto, você pode obter um erro como este:

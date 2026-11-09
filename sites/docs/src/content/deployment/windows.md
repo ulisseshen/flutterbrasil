@@ -19,7 +19,7 @@ inclui mais informações sobre abordagens de instalação
 tradicionais, incluindo [Windows Installer][msidocs].
 :::
 
-## Preliminares
+## Preliminares {:#preliminaries}
 
 Antes de iniciar o processo de lançar
 um app desktop Flutter Windows na Microsoft Store,
@@ -28,7 +28,7 @@ primeiro confirme que ele satisfaz as [Políticas da Microsoft Store][storepolic
 Além disso, você deve entrar na
 [Microsoft Partner Network][microsoftpartner] para poder enviar apps.
 
-## Configure sua aplicação no Partner Center
+## Configure sua aplicação no Partner Center {:#set-up-your-application-in-the-partner-center}
 
 Gerencie o ciclo de vida de uma aplicação no
 [Microsoft Partner Center][microsoftpartner].
@@ -45,7 +45,7 @@ configuradas junto com a primeira submissão
 e são automaticamente retidas
 para as submissões subsequentes.
 
-## Empacotamento e deployment
+## Empacotamento e deployment {:#packaging-and-deployment}
 
 Para publicar uma aplicação na Microsoft Store,
 você deve primeiro empacotá-la.
@@ -53,7 +53,7 @@ Os formatos válidos são **.msix**, **.msixbundle**,
 **.msixupload**, **.appx**, **.appxbundle**,
 **.appxupload**, e **.xap**.
 
-### Empacotamento e deployment manual para a Microsoft Store
+### Empacotamento e deployment manual para a Microsoft Store {:#manual-packaging-and-deployment-for-the-microsoft-store}
 
 Confira [empacotamento MSIX][msix packaging]
 para aprender sobre empacotar
@@ -80,7 +80,7 @@ Você pode fazer isso criando uma nova submissão,
 navegando até **Packages**,
 e fazendo upload do pacote de aplicação criado.
 
-### Deployment contínuo
+### Deployment contínuo {:#continuous-deployment}
 
 Além de criar e fazer deploy manualmente do pacote,
 você pode automatizar o processo de build, empacotamento, versionamento,
@@ -200,7 +200,7 @@ Tanto o nome de build quanto o número podem ser sobrescritos em
 `flutter build windows` especificando `--build-name` e
 `--build-number`, respectivamente.
 
-## Adicionar ícones de app
+## Adicionar ícones de app {:#add-app-icons}
 
 Para atualizar o ícone de uma aplicação
 desktop Flutter Windows antes de empacotar use as
@@ -224,7 +224,7 @@ o tamanho de 300 x 300 pixels.
 
 Todas as imagens carregadas são retidas para submissões subsequentes.
 
-## Validando o pacote de aplicação
+## Validando o pacote de aplicação {:#validating-the-application-package}
 
 Antes de publicar na Microsoft Store,
 primeiro valide o pacote de aplicação localmente.

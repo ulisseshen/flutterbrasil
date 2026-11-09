@@ -6,7 +6,7 @@ description: >-
   foram removidas do Flutter.
 ---
 
-## Resumo
+## Resumo {:#summary}
 
 De acordo com a [Política de Descontinuação][Deprecation Policy] do Flutter,
 as APIs descontinuadas que atingiram o fim da vida útil após o
@@ -20,11 +20,11 @@ Para auxiliar ainda mais sua migração, confira esta
 [Deprecation Policy]: {{site.repo.flutter}}/blob/main/docs/contributing/Tree-hygiene.md#deprecations
 [quick reference sheet]: /go/deprecations-removed-after-3-16
 
-## Mudanças
+## Mudanças {:#changes}
 
 Esta seção lista as descontinuações por pacote e classe afetada.
 
-### Propriedades `styleFrom` de Button
+### Propriedades `styleFrom` de Button {:#button-stylefrom-properties}
 
 Package: flutter
 Supported by Flutter Fix: yes
@@ -272,6 +272,6 @@ anunciado novamente quando chegar.
 
 ---
 
-## Cronograma
+## Cronograma {:#timeline}
 
 No lançamento estável: 3.19.0

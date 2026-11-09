@@ -4,14 +4,14 @@ title: Use a ferramenta de tamanho de app
 description: Aprenda como usar a ferramenta de tamanho de app do DevTools.
 ---
 
-## O que é isso?
+## O que é isso? {:#what-is-it}
 
 A ferramenta de tamanho de app permite analisar o tamanho total do seu app.
 Você pode visualizar um único snapshot de "informações de tamanho"
 usando a [aba Analysis][Analysis tab], ou comparar dois
 snapshots diferentes de "informações de tamanho" usando a [aba Diff][Diff tab].
 
-### O que são "informações de tamanho"?
+### O que são "informações de tamanho"? {:#what-is-size-information}
 
 "Informações de tamanho" contêm dados de tamanho para código Dart,
 código nativo e elementos não codificados do seu app,
@@ -19,7 +19,7 @@ como o pacote de aplicação, assets e fontes. Um arquivo de "informações
 de tamanho" contém dados para o panorama completo
 do tamanho da sua aplicação.
 
-### Informações de tamanho Dart
+### Informações de tamanho Dart {:#dart-size-information}
 
 O compilador Dart AOT realiza tree-shaking no seu código
 ao compilar sua aplicação (apenas nos modos profile ou release
@@ -35,7 +35,7 @@ juntamente com seus tamanhos em bytes. Esta é a porção Dart das
 "informações de tamanho" que podemos analisar na ferramenta de tamanho de app para otimizar
 ainda mais o código Dart e rastrear problemas de tamanho.
 
-## Como usar
+## Como usar {:#how-to-use-it}
 
 Se DevTools já estiver conectado a uma aplicação em execução,
 navegue até a aba "App Size".
@@ -60,7 +60,7 @@ compilada) usando a árvore dominadora e o grafo de chamadas.
 
 ![Screenshot of app size analysis](/assets/images/docs/tools/devtools/app_size_analysis.png){:width="100%"}
 
-### Carregando um arquivo de tamanho
+### Carregando um arquivo de tamanho {:#loading-a-size-file}
 
 Quando você abre a aba Analysis, verá instruções
 para carregar um arquivo de tamanho de app. Arraste e solte um arquivo de tamanho
@@ -71,11 +71,11 @@ de app no diálogo e clique em "Analyze Size".
 Veja [Gerando arquivos de tamanho][Generating size files] abaixo para informações sobre
 como gerar arquivos de tamanho.
 
-### Treemap e tabela {:#use-the-treemap}
+### Treemap e tabela {:#treemap-and-table}
 
 O treemap e a tabela mostram os dados hierárquicos para o tamanho do seu app.
 
-#### Use o treemap
+#### Use o treemap {:#use-the-treemap}
 
 Um treemap é uma visualização para dados hierárquicos.
 O espaço é dividido em retângulos,
@@ -96,14 +96,14 @@ navegador de breadcrumb no topo do treemap.
 
 ![Screenshot of treemap breadcrumb navigator](/assets/images/docs/tools/devtools/treemap_breadcrumbs.png){:width="100%"}
 
-### Árvore dominadora e grafo de chamadas
+### Árvore dominadora e grafo de chamadas {:#dominator-tree-and-call-graph}
 
 Esta seção da página mostra dados de atribuição de tamanho de código
 (por exemplo, por que um pedaço de código está incluído em sua
 aplicação compilada). Esses dados são visíveis
 na forma de uma árvore dominadora, bem como um grafo de chamadas.
 
-#### Use a árvore dominadora
+#### Use a árvore dominadora {:#use-the-dominator-tree}
 
 Uma [árvore dominadora][dominator tree] é uma árvore onde os
 filhos de cada nó são aqueles nós que ele domina imediatamente.
@@ -142,7 +142,7 @@ usar a árvore dominadora para rastrear o package até sua fonte raiz.
 
 ![Screenshot of code size dominator tree](/assets/images/docs/tools/devtools/app_size_dominator_tree.png){:width="100%"}
 
-#### Use o grafo de chamadas
+#### Use o grafo de chamadas {:#use-the-call-graph}
 
 Um grafo de chamadas fornece informações similares à árvore
 dominadora no que diz respeito a ajudá-lo a entender por que o código existe
@@ -177,7 +177,7 @@ dependências refinadas entre partes do seu código
 
 ![Screenshot of code size call graph](/assets/images/docs/tools/devtools/app_size_call_graph.png){:width="100%"}
 
-#### Devo usar a árvore dominadora ou o grafo de chamadas?
+#### Devo usar a árvore dominadora ou o grafo de chamadas? {:#should-i-use-the-dominator-tree-or-the-call-graph}
 
 Use a árvore dominadora se você quiser entender a
 causa *raiz* de por que um pedaço de código está incluído em sua
@@ -211,7 +211,7 @@ usando o treemap e a tabela.
 
 ![Screenshot of app size diff](/assets/images/docs/tools/devtools/app_size_diff.png){:width="100%"}
 
-### Carregando arquivos de tamanho
+### Carregando arquivos de tamanho {:#loading-size-files}
 
 Quando você abre a aba **Diff**,
 verá instruções para carregar arquivos de tamanho "old" e "new".
@@ -224,7 +224,7 @@ seus respectivos diálogos e clique em **Analyze Diff**.
 Veja [Gerando arquivos de tamanho][Generating size files] abaixo para informações
 sobre como gerar esses arquivos.
 
-### Treemap e tabela
+### Treemap e tabela {:#treemap-and-table}
 
 Na view de diff, o treemap e a tabela de árvore mostram
 apenas os dados que diferem entre os dois arquivos de tamanho importados.
@@ -261,7 +261,7 @@ Neste exemplo, importe o arquivo `build/apk-code-size-analysis_01.json`
 na ferramenta de tamanho de app para analisar mais a fundo.
 Para mais informações, veja [Documentação de Tamanho de App][App Size Documentation].
 
-## Outros recursos
+## Outros recursos {:#other-resources}
 
 Para aprender como realizar uma análise de tamanho passo a passo do
 Wonderous App usando DevTools, confira o

@@ -8,7 +8,7 @@
   categories: []
   subcategories:
     - 'Touch interactions'
-  link: https://api.flutterbrasil.dev/flutter/widgets/AbsorbPointer-class.html
+  link: https://api.flutter.dev/flutter/widgets/AbsorbPointer-class.html
 - name: AlertDialog
   description: >-
     Hovering containers that prompt app users to provide more data or make a
@@ -29,7 +29,7 @@
   categories: []
   subcategories:
     - 'Single-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/Align-class.html
+  link: https://api.flutter.dev/flutter/widgets/Align-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><defs><marker id='arrow-align'
     orient='auto-start-reverse' viewBox='0 0 1 1' markerWidth='3'
@@ -48,7 +48,7 @@
   categories:
     - 'Animation and motion'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/AlignTransition-class.html
+  link: https://api.flutter.dev/flutter/widgets/AlignTransition-class.html
 - name: AnimatedAlign
   description: >-
     Animated transition that moves the child's position over a given duration
@@ -56,7 +56,7 @@
   categories:
     - 'Animation and motion'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/AnimatedAlign-class.html
+  link: https://api.flutter.dev/flutter/widgets/AnimatedAlign-class.html
 - name: AnimatedBuilder
   description: >-
     A general-purpose widget for building animations. AnimatedBuilder is useful
@@ -66,14 +66,14 @@
   categories:
     - 'Animation and motion'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/AnimatedBuilder-class.html
+  link: https://api.flutter.dev/flutter/widgets/AnimatedBuilder-class.html
 - name: AnimatedContainer
   description: >-
     A container that gradually changes its values over a period of time.
   categories:
     - 'Animation and motion'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/AnimatedContainer-class.html
+  link: https://api.flutter.dev/flutter/widgets/AnimatedContainer-class.html
 - name: AnimatedCrossFade
   description: >-
     A widget that cross-fades between two given children and animates itself
@@ -81,7 +81,7 @@
   categories:
     - 'Animation and motion'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/AnimatedCrossFade-class.html
+  link: https://api.flutter.dev/flutter/widgets/AnimatedCrossFade-class.html
 - name: AnimatedDefaultTextStyle
   description: >-
     Animated version of DefaultTextStyle which automatically transitions the
@@ -91,14 +91,14 @@
   categories:
     - 'Animation and motion'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/AnimatedDefaultTextStyle-class.html
+  link: https://api.flutter.dev/flutter/widgets/AnimatedDefaultTextStyle-class.html
 - name: AnimatedList
   description: >-
     A scrolling container that animates items when they are inserted or removed.
   categories:
     - 'Animation and motion'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/AnimatedList-class.html
+  link: https://api.flutter.dev/flutter/widgets/AnimatedList-class.html
 - name: AnimatedListState
   description: >-
     The state for a scrolling container that animates items when they are
@@ -106,14 +106,14 @@
   categories:
     - 'Animation and motion'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/AnimatedListState-class.html
+  link: https://api.flutter.dev/flutter/widgets/AnimatedListState-class.html
 - name: AnimatedModalBarrier
   description: >-
     A widget that prevents the user from interacting with widgets behind itself.
   categories:
     - 'Animation and motion'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/AnimatedModalBarrier-class.html
+  link: https://api.flutter.dev/flutter/widgets/AnimatedModalBarrier-class.html
 - name: AnimatedOpacity
   description: >-
     Animated version of Opacity which automatically transitions the child's
@@ -121,14 +121,14 @@
   categories:
     - 'Animation and motion'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/AnimatedOpacity-class.html
+  link: https://api.flutter.dev/flutter/widgets/AnimatedOpacity-class.html
 - name: AnimatedPhysicalModel
   description: >-
     Animated version of PhysicalModel.
   categories:
     - 'Animation and motion'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/AnimatedPhysicalModel-class.html
+  link: https://api.flutter.dev/flutter/widgets/AnimatedPhysicalModel-class.html
 - name: AnimatedPositioned
   description: >-
     Animated version of Positioned which automatically transitions the child's
@@ -136,7 +136,7 @@
   categories:
     - 'Animation and motion'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/AnimatedPositioned-class.html
+  link: https://api.flutter.dev/flutter/widgets/AnimatedPositioned-class.html
 - name: AnimatedScale
   description: >-
     Animated version of `Transform.scale` that automatically transitions the child's
@@ -144,7 +144,7 @@
   categories:
     - 'Animation and motion'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/AnimatedScale-class.html
+  link: https://api.flutter.dev/flutter/widgets/AnimatedScale-class.html
 - name: AnimatedSize
   description: >-
     Animated widget that automatically transitions its size over a given
@@ -152,14 +152,14 @@
   categories:
     - 'Animation and motion'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/AnimatedSize-class.html
+  link: https://api.flutter.dev/flutter/widgets/AnimatedSize-class.html
 - name: AnimatedWidget
   description: >-
     A widget that rebuilds when the given Listenable changes value.
   categories:
     - 'Animation and motion'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/AnimatedWidget-class.html
+  link: https://api.flutter.dev/flutter/widgets/AnimatedWidget-class.html
 - name: ImplicitlyAnimatedWidget
   description: >-
     An abstract class for building widgets that animate changes to their
@@ -167,7 +167,7 @@
   categories:
     - 'Animation and motion'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/ImplicitlyAnimatedWidget-class.html
+  link: https://api.flutter.dev/flutter/widgets/ImplicitlyAnimatedWidget-class.html
 - name: AppBar
   description: Container that displays content and actions at the top of a screen.
   categories:
@@ -186,7 +186,7 @@
   categories: []
   subcategories:
     - 'Single-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/AspectRatio-class.html
+  link: https://api.flutter.dev/flutter/widgets/AspectRatio-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><defs><marker id='arrow-aspect-ratio'
     orient='auto-start-reverse' viewBox='0 0 1 1' markerWidth='3'
@@ -207,7 +207,7 @@
   categories:
     - 'Assets, images, and icons'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/services/AssetBundle-class.html
+  link: https://api.flutter.dev/flutter/services/AssetBundle-class.html
 - name: Autocomplete
   description: >-
     A widget for helping the user make a selection by entering some text and
@@ -224,7 +224,7 @@
   categories:
     - 'Painting and effects'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/BackdropFilter-class.html
+  link: https://api.flutter.dev/flutter/widgets/BackdropFilter-class.html
 - name: Badge
   description: >-
     Icon-like block that conveys dynamic content such as counts or status. It
@@ -242,7 +242,7 @@
   categories: []
   subcategories:
     - 'Single-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/Baseline-class.html
+  link: https://api.flutter.dev/flutter/widgets/Baseline-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><defs><marker id='arrow-baseline'
     orient='auto-start-reverse' viewBox='0 0 1 1' markerWidth='3'
@@ -307,7 +307,7 @@
   categories: []
   subcategories:
     - 'Single-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/Center-class.html
+  link: https://api.flutter.dev/flutter/widgets/Center-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><defs><marker id='arrow-center'
     orient='auto-start-reverse' viewBox='0 0 1 1' markerWidth='3'
@@ -362,7 +362,7 @@
   categories:
     - 'Painting and effects'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/ClipOval-class.html
+  link: https://api.flutter.dev/flutter/widgets/ClipOval-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><defs><clipPath id='clip-oval'><circle cx='40'
     cy='50' r='30'/></clipPath></defs><rect x='0' y='0' width='100' height='100'
@@ -376,14 +376,14 @@
   categories:
     - 'Painting and effects'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/ClipPath-class.html
+  link: https://api.flutter.dev/flutter/widgets/ClipPath-class.html
 - name: ClipRect
   description: >-
     A widget that clips its child using a rectangle.
   categories:
     - 'Painting and effects'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/ClipRect-class.html
+  link: https://api.flutter.dev/flutter/widgets/ClipRect-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><defs><clipPath id='clip-rect'><rect x='10'
     y='20' width='60' height='60'/></clipPath></defs><rect x='0' y='0'
@@ -397,7 +397,7 @@
     - 'Basics'
   subcategories:
     - 'Multi-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/Column-class.html
+  link: https://api.flutter.dev/flutter/widgets/Column-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><rect x='0' y='0' width='100' height='100'
     fill='#3949ab'/><rect x='30' y='10' width='40' height='80'
@@ -422,7 +422,7 @@
   categories: []
   subcategories:
     - 'Single-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/ConstrainedBox-class.html
+  link: https://api.flutter.dev/flutter/widgets/ConstrainedBox-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><defs><marker id='arrow-constrained-box'
     orient='auto-start-reverse' viewBox='0 0 1 1' markerWidth='3'
@@ -454,7 +454,7 @@
   description: >-
     A convenience widget that combines common painting, positioning, and sizing
     widgets.
-  link: https://api.flutterbrasil.dev/flutter/widgets/Container-class.html
+  link: https://api.flutter.dev/flutter/widgets/Container-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><defs><marker id='arrow-container-1'
     orient='auto-start-reverse' viewBox='0 0 1 1' markerWidth='3'
@@ -1011,14 +1011,14 @@
   categories: []
   subcategories:
     - 'Multi-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/CustomMultiChildLayout-class.html
+  link: https://api.flutter.dev/flutter/widgets/CustomMultiChildLayout-class.html
 - name: CustomPaint
   description: >-
     A widget that provides a canvas on which to draw during the paint phase.
   categories:
     - 'Painting and effects'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/CustomPaint-class.html
+  link: https://api.flutter.dev/flutter/widgets/CustomPaint-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><rect x='0' y='0' width='100' height='100'
     fill='#3949ab'/><rect x='20' y='20' width='60' height='60'
@@ -1045,14 +1045,14 @@
     - 'Scrolling'
   subcategories:
     - 'Sliver widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/CustomScrollView-class.html
+  link: https://api.flutter.dev/flutter/widgets/CustomScrollView-class.html
 - name: CustomSingleChildLayout
   description: >-
     A widget that defers the layout of its single child to a delegate.
   categories: []
   subcategories:
     - 'Single-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/CustomSingleChildLayout-class.html
+  link: https://api.flutter.dev/flutter/widgets/CustomSingleChildLayout-class.html
 - name: DataTable
   description: >-
     Data tables display sets of raw data. They usually appear in desktop
@@ -1080,7 +1080,7 @@
   categories:
     - 'Painting and effects'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/DecoratedBox-class.html
+  link: https://api.flutter.dev/flutter/widgets/DecoratedBox-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><defs><filter id='shadow-decorated-box' x='-50%'
     y='-50%' width='200%' height='200%'><feGaussianBlur
@@ -1099,20 +1099,20 @@
   categories:
     - 'Animation and motion'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/DecoratedBoxTransition-class.html
+  link: https://api.flutter.dev/flutter/widgets/DecoratedBoxTransition-class.html
 - name: DefaultTextStyle
   description: The text style to apply to descendant Text widgets without explicit style.
   categories:
     - 'Text'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/DefaultTextStyle-class.html
+  link: https://api.flutter.dev/flutter/widgets/DefaultTextStyle-class.html
 - name: DefaultTextStyleTransition
   description: >-
     Animated version of a DefaultTextStyle that animates the different properties of its TextStyle.
   categories:
     - 'Animation and motion'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/DefaultTextStyleTransition-class.html
+  link: https://api.flutter.dev/flutter/widgets/DefaultTextStyleTransition-class.html
 - name: Dismissible
   description: >-
     A widget that can be dismissed by dragging in the indicated direction.
@@ -1123,7 +1123,7 @@
   categories: []
   subcategories:
     - 'Touch interactions'
-  link: https://api.flutterbrasil.dev/flutter/widgets/Dismissible-class.html
+  link: https://api.flutter.dev/flutter/widgets/Dismissible-class.html
 - name: Divider
   description: Thin line that groups content in lists and containers.
   categories: []
@@ -1146,7 +1146,7 @@
   categories: []
   subcategories:
     - 'Touch interactions'
-  link: https://api.flutterbrasil.dev/flutter/widgets/DragTarget-class.html
+  link: https://api.flutter.dev/flutter/widgets/DragTarget-class.html
 - name: Draggable
   description: >-
     A widget that can be dragged from to a DragTarget. When a draggable widget
@@ -1157,7 +1157,7 @@
   categories: []
   subcategories:
     - 'Touch interactions'
-  link: https://api.flutterbrasil.dev/flutter/widgets/Draggable-class.html
+  link: https://api.flutter.dev/flutter/widgets/Draggable-class.html
 - name: DraggableScrollableSheet
   description: >-
     A container for a Scrollable that responds to drag gestures by resizing the
@@ -1166,7 +1166,7 @@
     - 'Scrolling'
   subcategories:
     - 'Touch interactions'
-  link: https://api.flutterbrasil.dev/flutter/widgets/DraggableScrollableSheet-class.html
+  link: https://api.flutter.dev/flutter/widgets/DraggableScrollableSheet-class.html
 - name: Drawer
   description: >-
     A Material Design panel that slides in horizontally from the edge of a
@@ -1207,14 +1207,14 @@
   categories:
     - 'Accessibility'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/ExcludeSemantics-class.html
+  link: https://api.flutter.dev/flutter/widgets/ExcludeSemantics-class.html
 - name: Expanded
   categories: []
   subcategories:
     - 'Single-child layout widgets'
   description: >-
     A widget that expands a child of a Row, Column, or Flex.
-  link: https://api.flutterbrasil.dev/flutter/widgets/Expanded-class.html
+  link: https://api.flutter.dev/flutter/widgets/Expanded-class.html
 - name: ExpansionPanel
   description: >-
     Expansion panels contain creation flows and allow lightweight editing of an
@@ -1231,13 +1231,13 @@
   categories:
     - 'Animation and motion'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/FadeTransition-class.html
+  link: https://api.flutter.dev/flutter/widgets/FadeTransition-class.html
 - name: FittedBox
   description: Scales and positions its child within itself according to fit.
   categories: []
   subcategories:
     - 'Single-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/FittedBox-class.html
+  link: https://api.flutter.dev/flutter/widgets/FittedBox-class.html
 - name: FloatingActionButton
   description: Clickable block containing an icon that keeps a key action always in reach.
   categories: []
@@ -1268,14 +1268,14 @@
   categories: []
   subcategories:
     - 'Multi-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/Flow-class.html
+  link: https://api.flutter.dev/flutter/widgets/Flow-class.html
 - name: FlutterLogo
   description: >-
     The Flutter logo, in widget form. This widget respects the IconTheme.
   categories:
     - 'Basics'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/FlutterLogo-class.html
+  link: https://api.flutter.dev/flutter/widgets/FlutterLogo-class.html
 - name: Form
   description: >-
     An optional container for grouping together multiple form field widgets
@@ -1283,7 +1283,7 @@
   categories:
     - 'Input'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/Form-class.html
+  link: https://api.flutter.dev/flutter/widgets/Form-class.html
 - name: FormField
   description: >-
     A single form field.
@@ -1292,7 +1292,7 @@
   categories:
     - 'Input'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/FormField-class.html
+  link: https://api.flutter.dev/flutter/widgets/FormField-class.html
 - name: FractionalTranslation
   description: >-
     A widget that applies a translation expressed as a fraction of the box's
@@ -1300,7 +1300,7 @@
   categories:
     - 'Painting and effects'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/FractionalTranslation-class.html
+  link: https://api.flutter.dev/flutter/widgets/FractionalTranslation-class.html
 - name: FractionallySizedBox
   description: >-
     A widget that sizes its child to a fraction of the total available space.
@@ -1309,7 +1309,7 @@
   categories: []
   subcategories:
     - 'Single-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/FractionallySizedBox-class.html
+  link: https://api.flutter.dev/flutter/widgets/FractionallySizedBox-class.html
 - name: FutureBuilder
   description: >-
     Widget that builds itself based on the latest snapshot of interaction with a
@@ -1317,7 +1317,7 @@
   categories:
     - 'Async'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/FutureBuilder-class.html
+  link: https://api.flutter.dev/flutter/widgets/FutureBuilder-class.html
 - name: GestureDetector
   description: >-
     A widget that detects gestures. Attempts to recognize gestures that
@@ -1327,7 +1327,7 @@
   categories: []
   subcategories:
     - 'Touch interactions'
-  link: https://api.flutterbrasil.dev/flutter/widgets/GestureDetector-class.html
+  link: https://api.flutter.dev/flutter/widgets/GestureDetector-class.html
 - name: GridView
   description: >-
     A grid list consists of a repeated pattern of cells arrayed in a vertical
@@ -1337,7 +1337,7 @@
   subcategories:
     - 'Information displays'
     - 'Multi-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/GridView-class.html
+  link: https://api.flutter.dev/flutter/widgets/GridView-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-grid-view.png
 - name: Hero
@@ -1347,7 +1347,7 @@
     - 'Animation and motion'
   subcategories:
     - 'Routing'
-  link: https://api.flutterbrasil.dev/flutter/widgets/Hero-class.html
+  link: https://api.flutter.dev/flutter/widgets/Hero-class.html
 - name: Icon
   description: >-
     A Material Design icon.
@@ -1356,7 +1356,7 @@
     - 'Assets, images, and icons'
   subcategories:
     - 'Information displays'
-  link: https://api.flutterbrasil.dev/flutter/widgets/Icon-class.html
+  link: https://api.flutter.dev/flutter/widgets/Icon-class.html
   image:
     src: https://flutter.github.io/assets-for-api-docs/assets/widgets/icon.png
 - name: IconButton
@@ -1379,7 +1379,7 @@
   categories: []
   subcategories:
     - 'Touch interactions'
-  link: https://api.flutterbrasil.dev/flutter/widgets/IgnorePointer-class.html
+  link: https://api.flutter.dev/flutter/widgets/IgnorePointer-class.html
 - name: Image
   description: >-
     A widget that displays an image.
@@ -1388,7 +1388,7 @@
     - 'Assets, images, and icons'
   subcategories:
     - 'Information displays'
-  link: https://api.flutterbrasil.dev/flutter/widgets/Image-class.html
+  link: https://api.flutter.dev/flutter/widgets/Image-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><rect x='0' y='0' width='100' height='100'
     fill='#3949ab'/><rect x='20' y='20' width='60' height='60'
@@ -1400,42 +1400,42 @@
   categories: []
   subcategories:
     - 'Multi-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/IndexedStack-class.html
+  link: https://api.flutter.dev/flutter/widgets/IndexedStack-class.html
 - name: InteractiveViewer
   description: >-
     A widget that enables pan and zoom interactions with its child.
   categories: []
   subcategories:
     - 'Touch interactions'
-  link: https://api.flutterbrasil.dev/flutter/widgets/InteractiveViewer-class.html
+  link: https://api.flutter.dev/flutter/widgets/InteractiveViewer-class.html
 - name: IntrinsicHeight
   description: >-
     A widget that sizes its child to the child's intrinsic height.
   categories: []
   subcategories:
     - 'Single-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/IntrinsicHeight-class.html
+  link: https://api.flutter.dev/flutter/widgets/IntrinsicHeight-class.html
 - name: IntrinsicWidth
   description: >-
     A widget that sizes its child to the child's intrinsic width.
   categories: []
   subcategories:
     - 'Single-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/IntrinsicWidth-class.html
+  link: https://api.flutter.dev/flutter/widgets/IntrinsicWidth-class.html
 - name: LayoutBuilder
   description: >-
     Builds a widget tree that can depend on the parent widget's size.
   categories: []
   subcategories:
     - 'Multi-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/LayoutBuilder-class.html
+  link: https://api.flutter.dev/flutter/widgets/LayoutBuilder-class.html
 - name: LimitedBox
   description: >-
     A box that limits its size only when it's unconstrained.
   categories: []
   subcategories:
     - 'Single-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/LimitedBox-class.html
+  link: https://api.flutter.dev/flutter/widgets/LimitedBox-class.html
 - name: LinearProgressIndicator
   description: >-
     Vertical line that changes color as an ongoing process, such as loading an
@@ -1469,7 +1469,7 @@
   categories: []
   subcategories:
     - 'Multi-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/ListBody-class.html
+  link: https://api.flutter.dev/flutter/widgets/ListBody-class.html
 - name: ListView
   description: >-
     A scrollable, linear list of widgets. ListView is the most commonly used
@@ -1480,7 +1480,7 @@
     - 'Scrolling'
   subcategories:
     - 'Multi-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/ListView-class.html
+  link: https://api.flutter.dev/flutter/widgets/ListView-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-list-tile.png
 - name: LongPressDraggable
@@ -1488,7 +1488,7 @@
   categories: []
   subcategories:
     - 'Touch interactions'
-  link: https://api.flutterbrasil.dev/flutter/widgets/LongPressDraggable-class.html
+  link: https://api.flutter.dev/flutter/widgets/LongPressDraggable-class.html
 - name: MaterialApp
   description: >-
     A convenience widget that wraps a number of widgets that are commonly
@@ -1505,13 +1505,13 @@
   categories:
     - 'Animation and motion'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/MatrixTransition-class.html
+  link: https://api.flutter.dev/flutter/widgets/MatrixTransition-class.html
 - name: MediaQuery
   description: Establishes a subtree in which media queries resolve to the given data.
   categories:
     - 'Styling'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/MediaQuery-class.html
+  link: https://api.flutter.dev/flutter/widgets/MediaQuery-class.html
 - name: Menu
   description: Container that displays a list of choices on a temporary surface.
   categories: []
@@ -1528,7 +1528,7 @@
   categories:
     - 'Accessibility'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/MergeSemantics-class.html
+  link: https://api.flutter.dev/flutter/widgets/MergeSemantics-class.html
 - name: NavigationBar
   description: >-
     Persistent container that enables switching between primary destinations in
@@ -1577,7 +1577,7 @@
   categories: []
   subcategories:
     - 'Routing'
-  link: https://api.flutterbrasil.dev/flutter/widgets/Navigator-class.html
+  link: https://api.flutter.dev/flutter/widgets/Navigator-class.html
 - name: NestedScrollView
   description: >-
     A scrolling view inside of which can be nested other scrolling views, with
@@ -1585,14 +1585,14 @@
   categories:
     - 'Scrolling'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/NestedScrollView-class.html
+  link: https://api.flutter.dev/flutter/widgets/NestedScrollView-class.html
 - name: NotificationListener
   description: >-
     A widget that listens for Notifications bubbling up the tree.
   categories:
     - 'Scrolling'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/NotificationListener-class.html
+  link: https://api.flutter.dev/flutter/widgets/NotificationListener-class.html
 - name: Offstage
   description: >-
     A widget that lays the child out as if it was in the tree, but without
@@ -1601,14 +1601,14 @@
   categories: []
   subcategories:
     - 'Single-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/Offstage-class.html
+  link: https://api.flutter.dev/flutter/widgets/Offstage-class.html
 - name: Opacity
   description: >-
     A widget that makes its child partially transparent.
   categories:
     - 'Painting and effects'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/Opacity-class.html
+  link: https://api.flutter.dev/flutter/widgets/Opacity-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><rect x='0' y='0' width='100' height='100'
     fill='#3949ab'/><rect x='10' y='10' width='60' height='60'
@@ -1632,7 +1632,7 @@
   categories: []
   subcategories:
     - 'Multi-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/OverflowBar-class.html
+  link: https://api.flutter.dev/flutter/widgets/OverflowBar-class.html
 - name: OverflowBox
   description: >-
     A widget that imposes different constraints on its child than it gets from
@@ -1640,7 +1640,7 @@
   categories: []
   subcategories:
     - 'Single-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/OverflowBox-class.html
+  link: https://api.flutter.dev/flutter/widgets/OverflowBox-class.html
 - name: Padding
   description: >-
     A widget that insets its child by the given padding.
@@ -1648,7 +1648,7 @@
     - 'Styling'
   subcategories:
     - 'Single-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/Padding-class.html
+  link: https://api.flutter.dev/flutter/widgets/Padding-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><defs><marker id='arrow-padding'
     orient='auto-start-reverse' viewBox='0 0 1 1' markerWidth='3'
@@ -1671,7 +1671,7 @@
   categories:
     - 'Scrolling'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/PageView-class.html
+  link: https://api.flutter.dev/flutter/widgets/PageView-class.html
 - name: Placeholder
   description: >-
     A widget that draws a box that represents where other widgets will one day
@@ -1679,7 +1679,7 @@
   categories:
     - 'Basics'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/Placeholder-class.html
+  link: https://api.flutter.dev/flutter/widgets/Placeholder-class.html
 - name: PopupMenuButton
   description: >-
     Displays a menu when pressed and calls onSelected when the menu is dismissed
@@ -1698,7 +1698,7 @@
   categories:
     - 'Animation and motion'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/PositionedTransition-class.html
+  link: https://api.flutter.dev/flutter/widgets/PositionedTransition-class.html
 - name: Radio
   description: >-
     Form control that app users can set or clear to select only one option from
@@ -1718,7 +1718,7 @@
   categories:
     - 'Assets, images, and icons'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/RawImage-class.html
+  link: https://api.flutter.dev/flutter/widgets/RawImage-class.html
 - name: KeyboardListener
   description: >-
     A widget that calls a callback whenever the user presses or releases a key
@@ -1726,7 +1726,7 @@
   categories:
     - 'Input'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/KeyboardListener-class.html
+  link: https://api.flutter.dev/flutter/widgets/KeyboardListener-class.html
 - name: RefreshIndicator
   description: >-
     A Material Design pull-to-refresh wrapper for scrollables.
@@ -1742,7 +1742,7 @@
   categories:
     - 'Animation and motion'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/RelativePositionedTransition-class.html
+  link: https://api.flutter.dev/flutter/widgets/RelativePositionedTransition-class.html
 - name: ReorderableListView
   description: >-
     A list whose items the user can interactively reorder by dragging.
@@ -1756,7 +1756,7 @@
   categories:
     - 'Animation and motion'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/RepeatingAnimationBuilder-class.html
+  link: https://api.flutter.dev/flutter/widgets/RepeatingAnimationBuilder-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><rect x='0' y='0' width='100' height='100'
     fill='#3949ab'/><g transform="rotate(30 50 50)"><rect x='35' y='35'
@@ -1775,28 +1775,28 @@
   categories:
     - 'Text'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/RichText-class.html
+  link: https://api.flutter.dev/flutter/widgets/RichText-class.html
 - name: RotatedBox
   description: >-
     A widget that rotates its child by a integral number of quarter turns.
   categories:
     - 'Painting and effects'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/RotatedBox-class.html
+  link: https://api.flutter.dev/flutter/widgets/RotatedBox-class.html
 - name: RotationTransition
   description: >-
     Animates the rotation of a widget.
   categories:
     - 'Animation and motion'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/RotationTransition-class.html
+  link: https://api.flutter.dev/flutter/widgets/RotationTransition-class.html
 - name: Row
   description: Layout a list of child widgets in the horizontal direction.
   categories:
     - 'Basics'
   subcategories:
     - 'Multi-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/Row-class.html
+  link: https://api.flutter.dev/flutter/widgets/Row-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><rect x='0' y='0' width='100' height='100'
     fill='#3949ab'/><rect x='10' y='30' width='80' height='40'
@@ -1820,13 +1820,13 @@
   categories:
     - 'Animation and motion'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/ScaleTransition-class.html
+  link: https://api.flutter.dev/flutter/widgets/ScaleTransition-class.html
 - name: ScrollConfiguration
   description: Controls how Scrollable widgets behave in a subtree.
   categories:
     - 'Scrolling'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/ScrollConfiguration-class.html
+  link: https://api.flutter.dev/flutter/widgets/ScrollConfiguration-class.html
 - name: Scrollable
   description: >-
     Scrollable implements the interaction model for a scrollable widget,
@@ -1836,7 +1836,7 @@
     - 'Scrolling'
   subcategories:
     - 'Touch interactions'
-  link: https://api.flutterbrasil.dev/flutter/widgets/Scrollable-class.html
+  link: https://api.flutter.dev/flutter/widgets/Scrollable-class.html
 - name: Scrollbar
   description: >-
     A Material Design scrollbar. A scrollbar indicates which portion of a
@@ -1865,7 +1865,7 @@
   categories:
     - 'Accessibility'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/Semantics-class.html
+  link: https://api.flutter.dev/flutter/widgets/Semantics-class.html
 - name: SimpleDialog
   description: >-
     Simple dialogs can provide additional details or actions about a list item.
@@ -1886,14 +1886,14 @@
   categories:
     - 'Scrolling'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/SingleChildScrollView-class.html
+  link: https://api.flutter.dev/flutter/widgets/SingleChildScrollView-class.html
 - name: SizeTransition
   description: >-
     Animates its own size and clips and aligns the child.
   categories:
     - 'Animation and motion'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/SizeTransition-class.html
+  link: https://api.flutter.dev/flutter/widgets/SizeTransition-class.html
 - name: SizedBox
   description: >-
     A box with a specified size. If given a child, this widget forces its child
@@ -1903,7 +1903,7 @@
   categories: []
   subcategories:
     - 'Single-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/SizedBox-class.html
+  link: https://api.flutter.dev/flutter/widgets/SizedBox-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><defs><marker id='arrow-sized-box'
     orient='auto-start-reverse' viewBox='0 0 1 1' markerWidth='3'
@@ -1923,14 +1923,14 @@
   categories: []
   subcategories:
     - 'Single-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/SizedOverflowBox-class.html
+  link: https://api.flutter.dev/flutter/widgets/SizedOverflowBox-class.html
 - name: SlideTransition
   description: >-
     Animates the position of a widget relative to its normal position.
   categories:
     - 'Animation and motion'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/SlideTransition-class.html
+  link: https://api.flutter.dev/flutter/widgets/SlideTransition-class.html
 - name: Slider
   description: Form control that enables selecting a range of values.
   categories: []
@@ -1958,21 +1958,21 @@
   categories: []
   subcategories:
     - 'Sliver widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/SliverChildBuilderDelegate-class.html
+  link: https://api.flutter.dev/flutter/widgets/SliverChildBuilderDelegate-class.html
 - name: SliverChildListDelegate
   description: >-
     A delegate that supplies children for slivers using an explicit list.
   categories: []
   subcategories:
     - 'Sliver widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/SliverChildListDelegate-class.html
+  link: https://api.flutter.dev/flutter/widgets/SliverChildListDelegate-class.html
 - name: SliverFadeTransition
   description: >-
     Animates the opacity of a sliver widget.
   categories:
     - 'Animation and motion'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/SliverFadeTransition-class.html
+  link: https://api.flutter.dev/flutter/widgets/SliverFadeTransition-class.html
 - name: SliverFillRemaining
   description: >-
     A sliver that contains a single box child that fills the remaining space
@@ -1980,7 +1980,7 @@
   categories: []
   subcategories:
     - 'Sliver widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/SliverFillRemaining-class.html
+  link: https://api.flutter.dev/flutter/widgets/SliverFillRemaining-class.html
 - name: SliverFixedExtentList
   description: >-
     A sliver that places multiple box children with the same main axis extent in
@@ -1988,14 +1988,14 @@
   categories: []
   subcategories:
     - 'Sliver widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/SliverFixedExtentList-class.html
+  link: https://api.flutter.dev/flutter/widgets/SliverFixedExtentList-class.html
 - name: SliverGrid
   description: >-
     A sliver that places multiple box children in a two dimensional arrangement.
   categories: []
   subcategories:
     - 'Sliver widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/SliverGrid-class.html
+  link: https://api.flutter.dev/flutter/widgets/SliverGrid-class.html
 - name: SliverList
   description: >-
     A sliver that places multiple box children in a linear array along the main
@@ -2003,14 +2003,14 @@
   categories: []
   subcategories:
     - 'Sliver widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/SliverList-class.html
+  link: https://api.flutter.dev/flutter/widgets/SliverList-class.html
 - name: SliverPadding
   description: >-
     A sliver that applies padding on each side of another sliver.
   categories: []
   subcategories:
     - 'Sliver widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/SliverPadding-class.html
+  link: https://api.flutter.dev/flutter/widgets/SliverPadding-class.html
 - name: SliverPersistentHeader
   description: >-
     A sliver whose size varies when the sliver is scrolled to the edge of the
@@ -2018,14 +2018,14 @@
   categories: []
   subcategories:
     - 'Sliver widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/SliverPersistentHeader-class.html
+  link: https://api.flutter.dev/flutter/widgets/SliverPersistentHeader-class.html
 - name: SliverToBoxAdapter
   description: >-
     A sliver that contains a single box widget.
   categories: []
   subcategories:
     - 'Sliver widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/SliverToBoxAdapter-class.html
+  link: https://api.flutter.dev/flutter/widgets/SliverToBoxAdapter-class.html
 - name: SnackBar
   description: >-
     Brief messages about app processes that display at the bottom of the screen.
@@ -2047,7 +2047,7 @@
     - 'Stack'
   subcategories:
     - 'Multi-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/Stack-class.html
+  link: https://api.flutter.dev/flutter/widgets/Stack-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><rect x='0' y='0' width='100' height='100'
     fill='#3949ab'/><rect x='10' y='10' width='80' height='80'
@@ -2072,7 +2072,7 @@
   categories:
     - 'Async'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/StreamBuilder-class.html
+  link: https://api.flutter.dev/flutter/widgets/StreamBuilder-class.html
 - name: Switch
   description: Toggle control that changes the state of a single item to on or off.
   categories: []
@@ -2130,7 +2130,7 @@
   categories: []
   subcategories:
     - 'Multi-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/Table-class.html
+  link: https://api.flutter.dev/flutter/widgets/Table-class.html
 - name: Text
   description: >-
     A run of text with a single style.
@@ -2138,7 +2138,7 @@
     - 'Basics'
     - 'Text'
   subcategories: []
-  link: https://api.flutterbrasil.dev/flutter/widgets/Text-class.html
+  link: https://api.flutter.dev/flutter/widgets/Text-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><rect x='0' y='0' width='100' height='100'
     fill='#3949ab'/><rect x='20' y='30' width='60' height='40'
@@ -2203,7 +2203,7 @@
     - 'Painting and effects'
   subcategories:
     - 'Single-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/Transform-class.html
+  link: https://api.flutter.dev/flutter/widgets/Transform-class.html
   vector: >-
     <svg viewBox='0 0 100 100'><rect x='0' y='0' width='100' height='100'
     fill='#3949ab'/><rect x='17.5' y='42.5' width='50' height='30'
@@ -2217,7 +2217,7 @@
   categories: []
   subcategories:
     - 'App structure and navigation'
-  link: https://api.flutterbrasil.dev/flutter/widgets/WidgetsApp-class.html
+  link: https://api.flutter.dev/flutter/widgets/WidgetsApp-class.html
   image:
     src: /assets/images/docs/widget-catalog/material-widgets-app.png
 - name: Wrap
@@ -2226,4 +2226,4 @@
   categories: []
   subcategories:
     - 'Multi-child layout widgets'
-  link: https://api.flutterbrasil.dev/flutter/widgets/Wrap-class.html
+  link: https://api.flutter.dev/flutter/widgets/Wrap-class.html

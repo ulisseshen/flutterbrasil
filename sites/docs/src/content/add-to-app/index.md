@@ -45,9 +45,9 @@ vários casos de uso. Dois dos casos de uso mais comuns são:
   pode rolar e interagir com qualquer widget livremente, independentemente do framework
   usado para renderizar o widget.
 
-## Recursos suportados
+## Recursos suportados {:#supported-features}
 
-### Adicione a aplicações Android
+### Adicione a aplicações Android {:#add-to-android-applications}
 
 <DashImage figure image="development/add-to-app/android-overview.webp" alt="Add-to-app steps on Android" />
 
@@ -69,7 +69,7 @@ vários casos de uso. Dois dos casos de uso mais comuns são:
   `flutter attach` de IDEs ou da linha de comando para
   conectar a um app que contém Flutter.
 
-### Adicione a aplicações iOS
+### Adicione a aplicações iOS {:#add-to-ios-applications}
 
 <DashImage figure image="development/add-to-app/ios-overview.webp" alt="Add-to-app steps on iOS" />
 
@@ -90,7 +90,7 @@ Veja nosso [repositório de Samples GitHub add-to-app][add-to-app GitHub Samples
 para projetos de exemplo em Android e iOS que importam
 um módulo Flutter para UI.
 
-### Adicione a aplicações macOS
+### Adicione a aplicações macOS {:#add-to-macos-applications}
 * Construa seu módulo Flutter em um Swift package
   para integração em seu próprio sistema de construção.
 * Construa e importe automaticamente o módulo Flutter usando as fases de construção do Xcode.
@@ -104,7 +104,7 @@ um módulo Flutter para UI.
   `flutter attach` de IDEs ou da linha de comando para
   conectar a um app que contém Flutter.
 
-### Adicione a aplicações web
+### Adicione a aplicações web {:#add-to-web-applications}
 
 Flutter pode ser adicionado a qualquer app web baseado em HTML DOM existente escrito em qualquer
 framework web Dart do lado do cliente ([jaspr][], [ngdart][], [over_react][], etc),
@@ -161,7 +161,7 @@ Android, web, iOS e macOS:
   </a>
 </div>
 
-## Uso da API
+## Uso da API {:#api-usage}
 
 Depois que Flutter for integrado ao seu projeto,
 veja nossos guias de uso da API nos seguintes links:
@@ -193,7 +193,7 @@ veja nossos guias de uso da API nos seguintes links:
   </a>
 </div>
 
-## Limitações
+## Limitações {:#limitations}
 
 Limitações móveis:
 

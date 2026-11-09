@@ -8,7 +8,7 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Os seguintes métodos foram substituídos por APIs
 no pacote `flutter_test`:
@@ -24,7 +24,7 @@ no pacote `flutter_test`:
 O callback `onPlatformMessage` não é mais usado
 pelo framework Flutter.
 
-## Contexto
+## Contexto {:#context}
 
 Como parte de uma refatoração da arquitetura de comunicação de plugins de baixo nível,
 mudamos da lógica anterior `onPlatformMessage`/`handlePlatformMessage`
@@ -47,7 +47,7 @@ elas exigiram refatoração.
 Para evitar adicionar ainda mais lógica de teste no pacote `flutter`,
 foi tomada a decisão de mover essa lógica para o pacote `flutter_test`.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 Especificamente, as seguintes APIs foram afetadas:
 
@@ -93,7 +93,7 @@ receber mensagens de plugins, não é mais usado
 chamar esse callback para injetar mensagens no
 framework não tem mais efeito.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 O pacote `flutter_test` fornece alguns shims para que
 usos dos métodos obsoletos `setMock...` e `checkMock...`
@@ -157,12 +157,12 @@ Não há mecanismo para interceptar mensagens dos plugins
 e encaminhá-las para o framework na nova API.
 Se seu caso de uso requer tal mecanismo, por favor, registre um bug.
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Lançado na versão: 2.3.0-17.0.pre.1<br>
 Na versão estável: 2.5
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

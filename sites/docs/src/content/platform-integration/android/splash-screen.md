@@ -7,7 +7,7 @@ description: Aprenda como adicionar uma splash screen ao seu app Android.
 
 <img src='/assets/images/docs/development/ui/splash-screen/android-splash-screen/splash-screens_header.png' alt="A graphic outlining the launch flow of an app including a splash screen">
 
-## Visão geral
+## Visão geral {:#overview}
 
 Uma splash screen (também conhecida como launch screen) fornece
 uma experiência inicial simples enquanto seu app Android carrega.
@@ -26,7 +26,7 @@ Você tem algumas opções para implementar uma splash screen:
 [pub.dev]: {{site.pub}}/packages?q=splash+screen
 [splash screen sample app]: {{site.repo.samples}}/tree/main/android_splash_screen
 
-## Inicializando o app
+## Inicializando o app {:#initializing-the-app}
 
 Todo app Android requer tempo de inicialização enquanto o
 sistema operacional configura o processo do app.
@@ -76,7 +76,7 @@ plano de fundo primária da UI Flutter.
 
 [drawables]: {{site.android-dev}}/studio/write/resource-manager#import
 
-## Configure a FlutterActivity em AndroidManifest.xml
+## Configure a FlutterActivity em AndroidManifest.xml {:#set-up-the-flutteractivity-in-androidmanifest-xml}
 
 Em `AndroidManifest.xml`, defina o `theme` de
 `FlutterActivity` para o tema de lançamento. Então,
@@ -104,7 +104,7 @@ para o tema normal no momento apropriado.
 O app Android agora exibe a launch screen desejada
 enquanto o app inicializa.
 
-## API SplashScreen
+## API SplashScreen {:#splashscreen-api}
 
 O Android 12 introduziu a API [`SplashScreen`][SplashScreen].
 Use a API `SplashScreen` em seu arquivo `styles.xml`.

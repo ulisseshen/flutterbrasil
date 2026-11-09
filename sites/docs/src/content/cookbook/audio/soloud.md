@@ -13,7 +13,7 @@ Para começar a usar o pacote, siga estes passos:
 
 [`flutter_soloud` package]: {{site.pub-pkg}}/flutter_soloud
 
-## 1. Adicione a dependência do pacote {:#add-the-package-dependency}
+## 1. Adicione a dependência do pacote {:#1-add-the-package-dependency}
 
 Para adicionar o `package:flutter_soloud` como dependência, use `flutter pub add`:
 
@@ -21,7 +21,7 @@ Para adicionar o `package:flutter_soloud` como dependência, use `flutter pub ad
 $ flutter pub add flutter_soloud
 ```
 
-## 2. Inicialize o `SoLoud` {:#initialize-soloud}
+## 2. Inicialize o `SoLoud` {:#2-initialize-soloud}
 
 Antes de reproduzir qualquer áudio,
 você precisa inicializar a instância do `SoLoud`.
@@ -42,7 +42,7 @@ await SoLoud.instance.init(
 );
 ```
 
-## 3. Carregue o áudio {:#load-audio}
+## 3. Carregue o áudio {:#3-load-audio}
 
 O pacote `flutter_soloud` oferece suporte a vários formatos de áudio,
 incluindo MP3, WAV, OGG e FLAC.
@@ -82,7 +82,7 @@ final sound = await SoLoud.instance.loadMem(
 );
 ```
 
-## 4. Reproduza o áudio {:#play-audio}
+## 4. Reproduza o áudio {:#4-play-audio}
 
 Depois que o áudio for carregado,
 você pode reproduzi-lo usando `SoLoud.instance.play`.
@@ -104,7 +104,7 @@ O método `play` retorna um handle que referencia
 aquela instância específica do som em reprodução.
 Você pode usar esse handle para controlar a reprodução.
 
-## 5. Controle a reprodução {:#control-playback}
+## 5. Controle a reprodução {:#5-control-playback}
 
 Com o handle retornado por `play`,
 você pode executar várias ações, como pausar ou retomar a reprodução:
@@ -150,7 +150,7 @@ Pare a reprodução:
 await SoLoud.instance.stop(handle);
 ```
 
-## 6. Descarte as fontes de som {:#dispose-of-sound-sources}
+## 6. Descarte as fontes de som {:#6-dispose-of-sound-sources}
 
 Quando terminar com uma fonte de som,
 lembre-se de descartá-la para liberar recursos.
@@ -159,7 +159,7 @@ lembre-se de descartá-la para liberar recursos.
 await SoLoud.instance.disposeSource(sound);
 ```
 
-## 7. [Opcional] Transmita áudio {:#optional-stream-audio}
+## 7. [Opcional] Transmita áudio {:#7-optional-stream-audio}
 
 O pacote `flutter_soloud` também oferece suporte à transmissão
 de dados de áudio em tempo real.

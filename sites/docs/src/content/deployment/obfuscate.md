@@ -6,7 +6,7 @@ description: Como remover nomes de funções e classes do seu binário Dart.
 
 <?code-excerpt path-base="deployment/obfuscate"?>
 
-## O que é ofuscação de código?
+## O que é ofuscação de código? {:#what-is-code-obfuscation}
 
 [Ofuscação de código][Code obfuscation] é o processo de modificar o
 binário de um app para torná-lo mais difícil de ser compreendido por humanos.
@@ -42,7 +42,7 @@ veja [Build and release a web app][].
 [Build and release a web app]: /deployment/web
 [minified]: https://en.wikipedia.org/wiki/Minification_(programming)
 
-## Targets suportados
+## Targets suportados {:#supported-targets}
 
 Os seguintes targets de build
 suportam o processo de ofuscação
@@ -71,7 +71,7 @@ $ flutter build <build-target> -h
    *  `<build-target>`: O target de build. Por exemplo,
       `apk`.
 
-## Ofuscar seu app
+## Ofuscar seu app {:#obfuscate-your-app}
 
 Para ofuscar seu app e criar um mapa de símbolos, use o
 comando `flutter build` em modo release
@@ -105,7 +105,7 @@ no futuro, você precisará do mapa de símbolos.
    seu arquivo SYMBOLS original (ou arquivo PDB) e quiser
    des-ofuscar um stack trace.
 
-## Ler um stack trace ofuscado
+## Ler um stack trace ofuscado {:#read-an-obfuscated-stack-trace}
 
 Para depurar um stack trace criado por um app ofuscado,
 use os seguintes passos para torná-lo legível por humanos:
@@ -141,7 +141,7 @@ do Windows, como o WinDbg.
    Para mais informações sobre o comando `symbolize`,
    execute `flutter symbolize -h`.
 
-## Ler um nome ofuscado
+## Ler um nome ofuscado {:#read-an-obfuscated-name}
 
 Você pode gerar um arquivo JSON que contém
 um mapa de ofuscação. Um mapa de ofuscação é um array JSON com
@@ -166,7 +166,7 @@ $ flutter build <build-target> \
    mapa de ofuscação JSON deve ser colocado. Por exemplo,
    `out/android/map.json`
 
-## Ressalva
+## Ressalva {:#caveat}
 
 Esteja ciente do seguinte ao codificar um app que
 eventualmente será um binário ofuscado.

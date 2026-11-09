@@ -7,23 +7,23 @@ description: >-
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Ambas as propriedades de semântica elevation e thickness e suas APIs relacionadas foram removidas.
 
-## Contexto
+## Contexto {:#context}
 
 Ambas as propriedades de semântica elevation e thickness foram criadas para a renderização 3D do Fuchsia.
 Elas nunca foram implementadas e, portanto, permaneceram não utilizadas. Também não havia outro uso conhecido
 para essas propriedades. Essas propriedades adicionavam complexidade desnecessária ao código e foram removidas.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 As seguintes propriedades foram removidas: `SemanticsConfiguration.elevation`,
 `SemanticsConfiguration.thickness`,
 `SemanticsNode.thickness`, `SemanticsNode.elevation` e `SemanticsNode.elevationAdjustment`.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Se você atribuiu essas propriedades anteriormente, remova as atribuições.
 
@@ -45,12 +45,12 @@ void describeSemanticsConfiguration(SemanticsConfiguration config) {
 }
 ```
 
-## Cronograma
+## Cronograma {:#timeline}
 
 Aterrissou na versão: 3.34.0-0.0.pre<br>
 No lançamento estável: 3.35
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

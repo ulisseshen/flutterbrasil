@@ -136,9 +136,10 @@ Nunca resolva um conflito trocando a página pela versão em inglês e mantendo
 ## Checagens determinísticas (CI)
 
 O workflow `.github/workflows/traducao.yml` roda em todo PR e push na `main`
-e falha se qualquer checagem der erro. O preview do PR
-(`firebase-preview.yml`) também roda `check-link-references` e `check-links`,
-os mesmos checks que barram o deploy de produção. Rode localmente antes do
+e falha se qualquer checagem der erro. O job **Build and
+check links** do `docs.yml` (liberado para este repositório) também roda
+`check-link-references`, `check-links` e a validação do `firebase.json` nos
+PRs, os mesmos checks que barram o deploy de produção. Rode localmente antes do
 commit:
 
 ```console

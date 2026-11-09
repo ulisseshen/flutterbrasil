@@ -13,9 +13,9 @@
     ],
     "rewrites": [],
     "redirects": [
-      { "regex": "^\/(flutter(\/.*)?)", "destination": "https://api.flutter.dev/:1", "type": 301 },
-      { "regex": "^\/(objcdoc(\/.*)?)", "destination": "https://api.flutter.dev/:1", "type": 301 },
-      { "regex": "^\/(javadoc(\/.*)?)", "destination": "https://api.flutter.dev/:1", "type": 301 },
+      { "regex": "^\/(flutter(\/.*)?)$", "destination": "https://api.flutter.dev/:1", "type": 301 },
+      { "regex": "^\/(objcdoc(\/.*)?)$", "destination": "https://api.flutter.dev/:1", "type": 301 },
+      { "regex": "^\/(javadoc(\/.*)?)$", "destination": "https://api.flutter.dev/:1", "type": 301 },
       { "regex": "(.*)\\.html$", "destination": ":1", "type": 301 },
       { "regex": "(.*)\\.$", "destination": ":1", "type": 301 },
 

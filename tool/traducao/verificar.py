@@ -14,6 +14,9 @@ ERROS
 - frontmatter:  YAML inválido, `ia-translate` que não é o booleano `true` de
                 primeiro nível (ex.: colado dentro de um `description: >`) ou
                 campo que tem valor no inglês e ficou vazio na tradução.
+- frontmatter-en: `title`, `shortTitle` ou `description` idêntico ao inglês e
+                em inglês (3+ palavras com palavra-função inglesa); nomes de
+                produto como "Flutter AI Toolkit" não disparam.
 - flag:         `ia-translate` fora do frontmatter, ou o comentário
                 `<!-- ia-translate: true -->` fora da primeira linha de um parcial.
 - placeholder:  avisos de "tradução pendente" deixados no texto
@@ -155,6 +158,12 @@ def checar_frontmatter(fm, en_fm):
         if isinstance(valor, str) and valor.strip() and \
                 not str(dados.get(chave) or '').strip():
             erros.append(('frontmatter', f'campo `{chave}` vazio (o inglês tem valor)'))
+    for chave in ('title', 'shortTitle', 'description'):
+        valor = en.get(chave)
+        if isinstance(valor, str) and dados.get(chave) == valor:
+            palavras = re.findall(r"[a-z']+", valor.lower())
+            if len(palavras) >= 3 and any(p in EN for p in palavras):
+                erros.append(('frontmatter-en', f'`{chave}` igual ao inglês: {valor[:60]!r}'))
     return erros
 
 

@@ -1,7 +1,7 @@
 ---
 ia-translate: true
-title: Flutter Changelog 0.0.21 - 1.0.0
-shortTitle: Flutter Changelog até 1.0.0
+title: Changelog do Flutter 0.0.21 - 1.0.0
+shortTitle: Changelog do Flutter até 1.0.0
 description: Página arquivada do Changelog da wiki, contendo informações de release entre Flutter 0.0.21 e 1.0.0.
 skipTemplateRendering: true
 ---

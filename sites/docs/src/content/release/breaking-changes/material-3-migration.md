@@ -1,7 +1,7 @@
 ---
-title: Migrate to Material 3
+title: Migre para o Material 3
 description: >-
-  Learn how to migrate your Flutter app's UI from Material 2 to Material 3.
+  Aprenda a migrar a UI do seu app Flutter do Material 2 para o Material 3.
 ia-translate: true
 ---
 

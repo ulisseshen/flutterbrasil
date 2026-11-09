@@ -21,104 +21,103 @@ De modo geral, existem dois tipos de jogos multiplayer:
    com a latência tendo menos impacto.
    Isso incluiria jogos de cartas, jogos de estratégia, jogos de quebra-cabeça.
 
-This resembles the differentiation between real-time versus turn-based
-games, though the analogy falls short.
-For example, real-time strategy games run—as the name suggests—in
-real-time, but that doesn't correlate to a high tick rate.
-These games can simulate much of what happens
-in between player interactions on local machines.
-Therefore, they don't need to synchronize game states that often.
+Isso se assemelha à diferenciação entre jogos em tempo real e jogos por turnos,
+embora a analogia não seja perfeita.
+Por exemplo, jogos de estratégia em tempo real rodam, como o nome sugere,
+em tempo real, mas isso não se correlaciona com uma alta taxa de ticks.
+Esses jogos podem simular grande parte do que acontece
+entre as interações dos jogadores nas máquinas locais.
+Por isso, eles não precisam sincronizar estados de jogo com tanta frequência.
 
-![An illustration of two mobile phones and a two-way arrow between them](/assets/images/docs/cookbook/multiplayer-two-mobiles.jpg){:.site-illustration}
+![Uma ilustração de dois celulares e uma seta de duas vias entre eles](/assets/images/docs/cookbook/multiplayer-two-mobiles.jpg){:.site-illustration}
 
-If you can choose low tick rates as a developer, you should.
-Low tick lowers latency requirements and server costs.
-Sometimes, a game requires high tick rates of synchronization.
-For those cases, solutions such as Firestore *don't make a good fit*.
-Pick a dedicated multiplayer server solution such as [Nakama][].
-Nakama has a [Dart package][].
+Se você, como desenvolvedor, puder escolher taxas de ticks baixas, deve fazê-lo.
+Uma taxa de ticks baixa reduz os requisitos de latência e os custos de servidor.
+Às vezes, um jogo exige altas taxas de ticks de sincronização.
+Para esses casos, soluções como o Firestore *não são uma boa escolha*.
+Escolha uma solução de servidor multiplayer dedicada, como o [Nakama][].
+O Nakama tem um [pacote Dart][Dart package].
 
-If you expect that your game requires a low tick rate of synchronization,
-continue reading.
+Se você espera que o seu jogo precise de uma taxa de ticks baixa de sincronização,
+continue lendo.
 
-This recipe demonstrates how to use the
-[`cloud_firestore` package][]
-to implement multiplayer capabilities in your game.
-This recipe doesn't require a server.
-It uses two or more clients sharing game state using Cloud Firestore.
+Esta receita demonstra como usar o [pacote `cloud_firestore`][`cloud_firestore` package]
+para implementar recursos multiplayer no seu jogo.
+Esta receita não requer um servidor.
+Ela usa dois ou mais clientes compartilhando o estado do jogo por meio do Cloud Firestore.
 
 [`cloud_firestore` package]: {{site.pub-pkg}}/cloud_firestore
 [Dart package]: {{site.pub-pkg}}/nakama
 [Nakama]: https://heroiclabs.com/nakama/
 
-## 1. Prepare seu jogo para multiplayer
+## 1. Prepare seu jogo para multiplayer {:#1-prepare-your-game-for-multiplayer}
 
-Write your game code to allow changing the game state
-in response to both local events and remote events.
-A local event could be a player action or some game logic.
-A remote event could be a world update coming from the server.
+Escreva o código do seu jogo para permitir a alteração do estado do jogo
+em resposta tanto a eventos locais quanto a eventos remotos.
+Um evento local pode ser uma ação do jogador ou alguma lógica do jogo.
+Um evento remoto pode ser uma atualização do mundo vinda do servidor.
 
-![Screenshot of the card game](/assets/images/docs/cookbook/multiplayer-card-game.jpg){:.site-mobile-screenshot .site-illustration}
+![Captura de tela do jogo de cartas](/assets/images/docs/cookbook/multiplayer-card-game.jpg){:.site-mobile-screenshot .site-illustration}
 
-To simplify this cookbook recipe, start with
-the [`card`][] template that you'll find
-in the [`flutter/games` repository][].
-Run the following command to clone that repository:
+Para simplificar esta receita do cookbook, comece com
+o template [`card`][] que você encontrará no
+[repositório `flutter/games`][`flutter/games` repository].
+Execute o comando a seguir para clonar esse repositório:
 
 ```console
 git clone https://github.com/flutter/games.git
 ```
 
 {% comment %}
-  If/when we have a "sample_extractor" tool, or any other easier way
-  to get the code, mention that here.
+  Se/quando tivermos uma ferramenta "sample_extractor", ou qualquer outra forma
+  mais fácil de obter o código, mencione isso aqui.
 {% endcomment %}
 
-Open the project in `templates/card`.
+Abra o projeto em `templates/card`.
 
 :::note
-You can ignore this step and follow the recipe with your own game
-project. Adapt the code at appropriate places.
+Você pode ignorar esta etapa e seguir a receita com o seu próprio projeto de jogo.
+Adapte o código nos lugares apropriados.
 :::
 
 [`card`]: {{site.repo.games}}/tree/main/templates/card#readme
 [`flutter/games` repository]: {{site.repo.games}}
 
-## 2. Instale o Firestore
+## 2. Instale o Firestore {:#2-install-firestore}
 
-[Cloud Firestore][] is a horizontally scaling,
-NoSQL document database in the cloud.
-It includes built-in live synchronization.
-This is perfect for our needs.
-It keeps the game state updated in the cloud database,
-so every player sees the same state.
+[Cloud Firestore][] é um banco de dados de documentos NoSQL, na nuvem,
+com escalabilidade horizontal.
+Ele inclui sincronização ao vivo integrada.
+Isso é perfeito para as nossas necessidades.
+Ele mantém o estado do jogo atualizado no banco de dados na nuvem,
+para que todos os jogadores vejam o mesmo estado.
 
-If you want a quick, 15-minute primer on Cloud Firestore,
-check out the following video:
+Se você quiser uma introdução rápida de 15 minutos ao Cloud Firestore,
+confira o vídeo a seguir:
 
-<YouTubeEmbed id="v_hR4K4auoQ" title="What is a NoSQL Database? Learn about Cloud Firestore"></YouTubeEmbed>
+<YouTubeEmbed id="v_hR4K4auoQ" title="O que é um banco de dados NoSQL? Saiba mais sobre o Cloud Firestore"></YouTubeEmbed>
 
-To add Firestore to your Flutter project,
-follow the first two steps of the
-[Get started with Cloud Firestore][] guide:
+Para adicionar o Firestore ao seu projeto Flutter,
+siga os dois primeiros passos do guia
+[Comece com o Cloud Firestore][Get started with Cloud Firestore]:
 
-* [Create a Cloud Firestore database][]
-* [Set up your development environment][]
+* [Crie um banco de dados do Cloud Firestore][Create a Cloud Firestore database]
+* [Configure o seu ambiente de desenvolvimento][Set up your development environment]
 
-The desired outcomes include:
+Os resultados desejados incluem:
 
-* A Firestore database ready in the cloud, in **Test mode**
-* A generated `firebase_options.dart` file
-* The appropriate plugins added to your `pubspec.yaml`
+* Um banco de dados Firestore pronto na nuvem, em **modo de teste**
+* Um arquivo `firebase_options.dart` gerado
+* Os plugins apropriados adicionados ao seu `pubspec.yaml`
 
-You *don't* need to write any Dart code in this step.
-As soon as you understand the step of writing
-Dart code in that guide, return to this recipe.
+Você *não* precisa escrever nenhum código Dart nesta etapa.
+Assim que entender a etapa de escrita de
+código Dart nesse guia, volte para esta receita.
 
 {% comment %}
-  Revisit to see if we can inline the steps here:
+  Revisite para ver se conseguimos incluir as etapas aqui:
   <https://firebase.google.com/docs/flutter/setup>
-  ... followed by the first 2 steps here:
+  ... seguidas pelos dois primeiros passos aqui:
   <https://firebase.google.com/docs/firestore/quickstart>
 {% endcomment %}
 
@@ -127,11 +126,11 @@ Dart code in that guide, return to this recipe.
 [Get started with Cloud Firestore]: {{site.firebase}}/docs/firestore/quickstart
 [Set up your development environment]: {{site.firebase}}/docs/firestore/quickstart#set_up_your_development_environment
 
-## 3. Inicialize o Firestore
+## 3. Inicialize o Firestore {:#3-initialize-firestore}
 
-1. Open `lib/main.dart` and import the plugins,
-    as well as the `firebase_options.dart` file
-    that was generated by `flutterfire configure` in the previous step.
+1. Abra `lib/main.dart` e importe os plugins,
+    bem como o arquivo `firebase_options.dart`
+    que foi gerado por `flutterfire configure` na etapa anterior.
 
     <?code-excerpt "lib/main.dart (imports)"?>
     ```dart
@@ -141,8 +140,8 @@ Dart code in that guide, return to this recipe.
     import 'firebase_options.dart';
     ```
 
-2. Add the following code just above the call to `runApp()`
-    in `lib/main.dart`:
+2. Adicione o código a seguir logo acima da chamada a `runApp()`
+    em `lib/main.dart`:
 
     <?code-excerpt "lib/main.dart (initializeApp)"?>
     ```dart
@@ -151,52 +150,52 @@ Dart code in that guide, return to this recipe.
     await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
     ```
 
-    This ensures that Firebase is initialized on game startup.
+    Isso garante que o Firebase seja inicializado na inicialização do jogo.
 
-3. Add the Firestore instance to the app.
-    That way, any widget can access this instance.
-    Widgets can also react to the instance missing, if needed.
+3. Adicione a instância do Firestore ao app.
+    Dessa forma, qualquer widget pode acessar essa instância.
+    Os widgets também podem reagir à ausência da instância, se necessário.
 
-    To do this with the `card` template, you can use
-    the `provider` package
-    (which is already installed as a dependency).
+    Para fazer isso com o template `card`, você pode usar
+    o pacote `provider`
+    (que já está instalado como dependência).
 
-    Replace the boilerplate `runApp(MyApp())` with the following:
+    Substitua o `runApp(MyApp())` padrão pelo código a seguir:
 
     <?code-excerpt "lib/main.dart (runApp)"?>
     ```dart
     runApp(Provider.value(value: FirebaseFirestore.instance, child: MyApp()));
     ```
 
-    Put the provider above `MyApp`, not inside it.
-    This enables you to test the app without Firebase.
+    Coloque o provider acima de `MyApp`, e não dentro dele.
+    Isso permite que você teste o app sem o Firebase.
 
     :::note
-    In case you are *not* working with the `card` template,
-    you must either [install the `provider` package][]
-    or use your own method of accessing the `FirebaseFirestore`
-    instance from various parts of your codebase.
+    Caso você *não* esteja trabalhando com o template `card`, você deve
+    [instalar o pacote `provider`][install the `provider` package]
+    ou usar o seu próprio método para acessar a instância de `FirebaseFirestore`
+    a partir de várias partes da sua base de código.
     :::
 
 [install the `provider` package]: {{site.pub-pkg}}/provider/install
 
-## 4. Crie uma classe controladora do Firestore
+## 4. Crie uma classe controladora do Firestore {:#4-create-a-firestore-controller-class}
 
-Though you can talk to Firestore directly,
-you should write a dedicated controller class
-to make the code more readable and maintainable.
+Embora você possa se comunicar diretamente com o Firestore,
+deve escrever uma classe controladora dedicada
+para tornar o código mais legível e fácil de manter.
 
-How you implement the controller depends on your game
-and on the exact design of your multiplayer experience.
-For the case of the `card` template,
-you could synchronize the contents of the two circular playing areas.
-It's not enough for a full multiplayer experience,
-but it's a good start.
+A forma como você implementa o controlador depende do seu jogo
+e do design exato da sua experiência multiplayer.
+No caso do template `card`,
+você poderia sincronizar o conteúdo das duas áreas circulares de jogo.
+Não é o suficiente para uma experiência multiplayer completa,
+mas é um bom começo.
 
-![Screenshot of the card game, with arrows pointing to playing areas](/assets/images/docs/cookbook/multiplayer-areas.jpg){:.site-mobile-screenshot .site-illustration}
+![Captura de tela do jogo de cartas, com setas apontando para as áreas de jogo](/assets/images/docs/cookbook/multiplayer-areas.jpg){:.site-mobile-screenshot .site-illustration}
 
-To create a controller, copy,
-then paste the following code into a new file called
+Para criar um controlador, copie e cole
+o código a seguir em um novo arquivo chamado
 `lib/multiplayer/firestore_controller.dart`.
 
 <?code-excerpt "lib/multiplayer/firestore_controller.dart"?>
@@ -363,30 +362,30 @@ class FirebaseControllerException implements Exception {
 }
 ```
 
-Notice the following features of this code:
+Observe os seguintes recursos deste código:
 
-* The controller's constructor takes a `BoardState`.
-  This enables the controller to manipulate the local state of the game.
+* O construtor do controlador recebe um `BoardState`.
+  Isso permite que o controlador manipule o estado local do jogo.
 
-* The controller subscribes to both local changes to update Firestore
-  and to remote changes to update the local state and UI.
+* O controlador se inscreve tanto nas mudanças locais, para atualizar o Firestore,
+  quanto nas mudanças remotas, para atualizar o estado local e a UI.
 
-* The fields `_areaOneRef` and `_areaTwoRef` are
-  Firebase document references.
-  They describe where the data for each area resides,
-  and how to convert between the local Dart objects (`List<PlayingCard>`)
-  and remote JSON objects (`Map<String, dynamic>`).
-  The Firestore API lets us subscribe to these references
-  with `.snapshots()`, and write to them with `.set()`.
+* Os campos `_areaOneRef` e `_areaTwoRef` são
+  referências de documentos do Firebase.
+  Eles descrevem onde os dados de cada área residem
+  e como converter entre os objetos Dart locais (`List<PlayingCard>`)
+  e os objetos JSON remotos (`Map<String, dynamic>`).
+  A API do Firestore nos permite se inscrever nessas referências
+  com `.snapshots()` e escrever nelas com `.set()`.
 
-## 5. Use o controlador Firestore
+## 5. Use o controlador Firestore {:#5-use-the-firestore-controller}
 
-1. Open the file responsible for starting the play session:
-    `lib/play_session/play_session_screen.dart` in the case of the
-    `card` template.
-    You instantiate the Firestore controller from this file.
+1. Abra o arquivo responsável por iniciar a sessão de jogo:
+    `lib/play_session/play_session_screen.dart`, no caso do
+    template `card`.
+    Você instancia o controlador do Firestore a partir desse arquivo.
 
-2. Import Firebase and the controller:
+2. Importe o Firebase e o controlador:
 
     <?code-excerpt "lib/play_session/play_session_screen.dart (imports)"?>
     ```dart
@@ -395,19 +394,19 @@ Notice the following features of this code:
     import '../multiplayer/firestore_controller.dart';
     ```
 
-3. Add a nullable field to the `_PlaySessionScreenState` class
-    to contain a controller instance:
+3. Adicione um campo anulável à classe `_PlaySessionScreenState`
+    para conter uma instância do controlador:
 
     <?code-excerpt "lib/play_session/play_session_screen.dart (controller)"?>
     ```dart
     FirestoreController? _firestoreController;
     ```
 
-4. In the `initState()` method of the same class,
-    add code that tries to read the FirebaseFirestore instance
-    and, if successful, constructs the controller.
-    You added the `FirebaseFirestore` instance to `main.dart`
-    in the *Initialize Firestore* step.
+4. No método `initState()` da mesma classe,
+    adicione código que tenta ler a instância de FirebaseFirestore
+    e, se tiver sucesso, constrói o controlador.
+    Você adicionou a instância de `FirebaseFirestore` ao `main.dart`
+    na etapa *Inicialize o Firestore*.
 
     <?code-excerpt "lib/play_session/play_session_screen.dart (init-state)"?>
     ```dart
@@ -425,92 +424,92 @@ Notice the following features of this code:
     }
     ```
 
-5. Dispose of the controller using the `dispose()` method
-    of the same class.
+5. Descarte o controlador usando o método `dispose()`
+    da mesma classe.
 
     <?code-excerpt "lib/play_session/play_session_screen.dart (dispose)"?>
     ```dart
     _firestoreController?.dispose();
     ```
 
-## 6. Teste o jogo
+## 6. Teste o jogo {:#6-test-the-game}
 
-1. Run the game on two separate devices
-    or in 2 different windows on the same device.
+1. Execute o jogo em dois dispositivos separados
+    ou em 2 janelas diferentes do mesmo dispositivo.
 
-2. Watch how adding a card to an area on one device
-    makes it appear on the other one.
+2. Observe como adicionar uma carta a uma área em um dispositivo
+    faz com que ela apareça no outro.
 
     {% comment %}
-      TBA: GIF of multiplayer working
+      TBA: GIF do multiplayer funcionando
     {% endcomment %}
 
-3. Open the [Firebase web console][]
-    and navigate to your project's Firestore Database.
+3. Abra o [console web do Firebase][Firebase web console]
+    e navegue até o Firestore Database do seu projeto.
 
-4. Watch how it updates the data in real time.
-    You can even edit the data in the console
-    and see all running clients update.
+4. Observe como ele atualiza os dados em tempo real.
+    Você pode até editar os dados no console
+    e ver todos os clientes em execução serem atualizados.
 
-    ![Screenshot of the Firebase Firestore data view](/assets/images/docs/cookbook/multiplayer-firebase-data.png)
+    ![Captura de tela da visualização de dados do Firebase Firestore](/assets/images/docs/cookbook/multiplayer-firebase-data.png)
 
 [Firebase web console]: https://console.firebase.google.com/
 
-### Solução de problemas
+### Solução de problemas {:#troubleshooting}
 
-The most common issues you might encounter when testing
-Firebase integration include the following:
+Os problemas mais comuns que você pode encontrar ao testar
+a integração com o Firebase incluem os seguintes:
 
-* **The game crashes when trying to reach Firebase.**
-  * Firebase integration hasn't been properly set up.
-    Revisit *Step 2* and make sure to run `flutterfire configure`
-    as part of that step.
+* **O jogo trava ao tentar acessar o Firebase.**
+  * A integração com o Firebase não foi configurada corretamente.
+    Revisite o *Passo 2* e certifique-se de executar `flutterfire configure`
+    como parte dessa etapa.
 
-* **The game doesn't communicate with Firebase on macOS.**
-  * By default, macOS apps don't have internet access.
-    Enable [internet entitlement][] first.
+* **O jogo não se comunica com o Firebase no macOS.**
+  * Por padrão, apps macOS não têm acesso à internet.
+    Habilite primeiro a [permissão de rede (entitlement)][internet entitlement].
 
 [internet entitlement]: /data-and-backend/networking#macos
 
-## 7. Próximos passos
+## 7. Próximos passos {:#7-next-steps}
 
-At this point, the game has near-instant and
-dependable synchronization of state across clients.
-It lacks actual game rules:
-what cards can be played when, and with what results.
-This depends on the game itself and is left to you to try.
+Neste ponto, o jogo tem uma sincronização de estado quase instantânea e
+confiável entre os clientes.
+Falta ele ter regras de jogo reais:
+quais cartas podem ser jogadas e quando, e com quais resultados.
+Isso depende do próprio jogo e fica a seu cargo experimentar.
 
-![An illustration of two mobile phones and a two-way arrow between them](/assets/images/docs/cookbook/multiplayer-two-mobiles.jpg){:.site-illustration}
+![Uma ilustração de dois celulares e uma seta de duas vias entre eles](/assets/images/docs/cookbook/multiplayer-two-mobiles.jpg){:.site-illustration}
 
-At this point, the shared state of the match only includes
-the two playing areas and the cards within them.
-You can save other data into `_matchRef`, too,
-like who the players are and whose turn it is.
-If you're unsure where to start,
-follow [a Firestore codelab or two][]
-to familiarize yourself with the API.
+Neste ponto, o estado compartilhado da partida inclui apenas
+as duas áreas de jogo e as cartas dentro delas.
+Você também pode salvar outros dados em `_matchRef`,
+como quem são os jogadores e de quem é a vez.
+Se você não sabe por onde começar,
+siga [um ou dois codelabs do Firestore][a Firestore codelab or two]
+para se familiarizar com a API.
 
-At first, a single match should suffice
-for testing your multiplayer game with colleagues and friends.
-As you approach the release date,
-think about authentication and match-making.
-Thankfully, Firebase provides a
-[built-in way to authenticate users][]
-and the Firestore database structure can handle multiple matches.
-Instead of a single `match_1`,
-you can populate the matches collection with as many records as needed.
+No início, uma única partida deve bastar
+para testar o seu jogo multiplayer com colegas e amigos.
+À medida que se aproxima da data de lançamento,
+pense em autenticação e em matchmaking.
+Felizmente, o Firebase oferece uma
+[forma integrada de autenticar usuários][built-in way to authenticate users],
+e a estrutura do banco de dados do Firestore pode lidar com várias partidas.
+Em vez de um único `match_1`,
+você pode preencher a coleção de partidas com quantos registros forem necessários.
 
-![Screenshot of the Firebase Firestore data view with additional matches](/assets/images/docs/cookbook/multiplayer-firebase-match.png)
+![Captura de tela da visualização de dados do Firebase Firestore com partidas adicionais](/assets/images/docs/cookbook/multiplayer-firebase-match.png)
 
-An online match can start in a "waiting" state,
-with only the first player present.
-Other players can see the "waiting" matches in some kind of lobby.
-Once enough players join a match, it becomes "active".
-Once again, the exact implementation depends on
-the kind of online experience you want.
-The basics remain the same:
-a large collection of documents,
-each representing one active or potential match.
+Uma partida online pode começar em um estado de "espera",
+com apenas o primeiro jogador presente.
+Outros jogadores podem ver as partidas em "espera" em algum tipo de lobby.
+Quando jogadores suficientes entram em uma partida, ela passa a ficar "ativa".
+Mais uma vez, a implementação exata depende
+do tipo de experiência online que você quer.
+Os fundamentos continuam os mesmos:
+uma grande coleção de documentos,
+cada um representando uma partida ativa ou potencial.
 
 [a Firestore codelab or two]: {{site.codelabs}}/?product=flutter&text=firestore
 [built-in way to authenticate users]: {{site.firebase}}/docs/auth/flutter/start

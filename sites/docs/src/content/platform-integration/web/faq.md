@@ -189,7 +189,7 @@ com o ID de build ou um nome de arquivo versionado à tag do seu script de boots
 <script src="flutter_bootstrap.v123.js" async></script>
 ```
 
-### Como configuro meus headers de cache?
+### Como configuro meus headers de cache? {:#how-do-i-configure-my-cache-headers}
 
 Se você está usando Firebase Hosting,
 o cache compartilhado (CDN) é invalidado quando você faz deploy de uma

@@ -38,7 +38,7 @@ Eles estão organizados por versão e listados em ordem alfabética:
 <!-- ### Ainda não lançado na stable -->
 
 <a id="released-in-flutter-350" aria-hidden="true"></a>
-### Lançado no Flutter 3.50
+### Lançado no Flutter 3.50 {:#released-in-flutter-3-50}
 
 * [Adicionado `enabled` ao `DropdownButtonFormField` e `onChanged` tornado opcional][Added `enabled` to `DropdownButtonFormField` and made `onChanged` optional] (`material_ui` 1.8.0)
 * [Migre para os pacotes independentes `material_ui` e `cupertino_ui`][Migrate to standalone `material_ui` and `cupertino_ui` packages]
@@ -57,7 +57,7 @@ Eles estão organizados por versão e listados em ordem alfabética:
 [WidgetSpan order in right-to-left text]: /release/breaking-changes/widgetspan-rtl-bidi-order
 
 <a id="released-in-flutter-347" aria-hidden="true"></a>
-### Lançado no Flutter 3.47
+### Lançado no Flutter 3.47 {:#released-in-flutter-3-47}
 
 * [O conteúdo de render-to-texture do OpenGL ES é armazenado de cima para baixo][OpenGL ES render-to-texture content is stored top-down]
 * [Atualização do comportamento de header e headingLevel no iOS e Android][Update semantics header and headingLevel behavior on iOS and Android]
@@ -68,7 +68,7 @@ Eles estão organizados por versão e listados em ordem alfabética:
 [Removal of `describeEnum`]: /release/breaking-changes/remove-describeEnum
 
 <a id="released-in-flutter-344" aria-hidden="true"></a>
-### Lançado no Flutter 3.44
+### Lançado no Flutter 3.44 {:#released-in-flutter-3-44}
 
 * [Mudança na ordem de fechamento do RawMenuAnchor][Changing RawMenuAnchor close order]
 * [Deprecação do callback onReorder][Deprecate `onReorder` callback]
@@ -91,7 +91,7 @@ Eles estão organizados por versão e listados em ordem alfabética:
 [Page transition builders reorganization]: /release/breaking-changes/decouple-page-transition-builders
 
 <a id="released-in-flutter-341" aria-hidden="true"></a>
-### Lançado no Flutter 3.41
+### Lançado no Flutter 3.41 {:#released-in-flutter-3-41}
 
 * [Threads unificadas no Linux][Merged threads on Linux]
 * [FontWeight também controla o atributo weight de fontes variáveis][`FontWeight` also controls the weight attribute of variable fonts]
@@ -106,7 +106,7 @@ Eles estão organizados por versão e listados em ordem alfabética:
 [Material 3 tokens update]: /release/breaking-changes/material-color-utilities
 
 <a id="released-in-flutter-338" aria-hidden="true"></a>
-### Lançado no Flutter 3.38
+### Lançado no Flutter 3.38 {:#released-in-flutter-3-38}
 
 * [Guia de migração para CupertinoDynamicColor de gamut amplo][`CupertinoDynamicColor` wide gamut support]
 * [Deprecate `OverlayPortal.targetsRootOverlay` and enforce `LookupBoundary` in `Overlay.of`][Deprecate `OverlayPortal.targetsRootOverlay`]
@@ -123,7 +123,7 @@ Eles estão organizados por versão e listados em ordem alfabética:
 [UISceneDelegate adoption]: /release/breaking-changes/uiscenedelegate
 
 <a id="released-in-flutter-335" aria-hidden="true"></a>
-### Lançado no Flutter 3.35
+### Lançado no Flutter 3.35 {:#released-in-flutter-3-35}
 
 * [Atualizações de normalização de temas de componentes][Component theme normalization updates]
 * [>-][Deprecate `DropdownButtonFormField` `value` parameter in favor of `initialValue`]
@@ -148,7 +148,7 @@ Eles estão organizados por versão e listados em ordem alfabética:
 [`$FLUTTER_ROOT/version` replaced by `$FLUTTER_ROOT/bin/cache/flutter.version.json`]: /release/breaking-changes/flutter-root-version-file
 
 <a id="released-in-flutter-332" aria-hidden="true"></a>
-### Lançado no Flutter 3.32
+### Lançado no Flutter 3.32 {:#released-in-flutter-3-32}
 
 * [SystemContextMenuController.show descontinuado][Deprecate `SystemContextMenuController.show`]
 * [Descontinuação do ExpansionTileController][Deprecate `ExpansionTileController` in favor of `ExpansibleController`]
@@ -174,7 +174,7 @@ Eles estão organizados por versão e listados em ordem alfabética:
 [Underdamped spring formula changed]: /release/breaking-changes/spring-description-underdamped
 
 <a id="released-in-flutter-329" aria-hidden="true"></a>
-### Lançado no Flutter 3.29
+### Lançado no Flutter 3.29 {:#released-in-flutter-3-29}
 
 * [Remoção das APIs Java do Android v1 embedding][Removal of v1 Android embedding Java APIs]
 * [Comparações golden específicas da Web não são mais suportadas][Deprecate `WebGoldenComparator`]
@@ -191,7 +191,7 @@ Eles estão organizados por versão e listados em ordem alfabética:
 [Updated Material 3 `Slider`]: /release/breaking-changes/updated-material-3-slider
 
 <a id="released-in-flutter-327" aria-hidden="true"></a>
-### Lançado no Flutter 3.27
+### Lançado no Flutter 3.27 {:#released-in-flutter-3-27}
 
 * [Guia de migração para Color de gama ampla][`Color` wide gamut support]
 * [Normalização de component theme][Component theme normalization]
@@ -208,7 +208,7 @@ Eles estão organizados por versão e listados em ordem alfabética:
 [Set default for SystemUiMode to Edge-to-Edge]: /release/breaking-changes/default-systemuimode-edge-to-edge
 
 <a id="released-in-flutter-324" aria-hidden="true"></a>
-### Lançado no Flutter 3.24
+### Lançado no Flutter 3.24 {:#released-in-flutter-3-24}
 
 * [Alteração incompatível nas APIs de página do Navigator][Navigator's page APIs breaking change]
 * [Tipos genéricos no PopScope][Generic types in `PopScope`]
@@ -221,7 +221,7 @@ Eles estão organizados por versão e listados em ordem alfabética:
 [New APIs for Android plugins that render to a `Surface`]: /release/breaking-changes/android-surface-plugins
 
 <a id="released-in-flutter-322" aria-hidden="true"></a>
-### Lançado no Flutter 3.22
+### Lançado no Flutter 3.22 {:#released-in-flutter-3-22}
 
 * [Deprecated API removed after v3.19][Deprecated API removed after v3.19]
 * [Renomear MaterialState para WidgetState][Rename `MaterialState` to `WidgetState`]
@@ -239,7 +239,7 @@ Eles estão organizados por versão e listados em ordem alfabética:
 
 <a id="released-in-flutter-319" aria-hidden="true"></a>
 
-### Lançado no Flutter 3.19
+### Lançado no Flutter 3.19 {:#released-in-flutter-3-19}
 
 * [APIs descontinuadas removidas após v3.16][Deprecated API removed after v3.16]
 * [Migrar sistema RawKeyEvent/RawKeyboard para sistema KeyEvent/HardwareKeyboard][Migrate RawKeyEvent/RawKeyboard system to KeyEvent/HardwareKeyboard system]
@@ -256,7 +256,7 @@ Eles estão organizados por versão e listados em ordem alfabética:
 [Stop generating `AssetManifest.json`]: /release/breaking-changes/asset-manifest-dot-json
 
 <a id="released-in-flutter-316" aria-hidden="true"></a>
-### Lançado no Flutter 3.16
+### Lançado no Flutter 3.16 {:#released-in-flutter-3-16}
 
 * [Migrate to Material 3][Migrating to Material 3]
 * [Migrar ShortcutActivator e ShortcutManager para o sistema KeyEvent][Migrate ShortcutActivator and ShortcutManager to KeyEvent system]
@@ -287,7 +287,7 @@ Eles estão organizados por versão e listados em ordem alfabética:
 [Windows build path changed to add the target architecture]: /release/breaking-changes/windows-build-architecture
 
 <a id="released-in-flutter-313" aria-hidden="true"></a>
-### Lançado no Flutter 3.13
+### Lançado no Flutter 3.13 {:#released-in-flutter-3-13}
 
 * [Adicionado `dispose()` ausente para alguns objetos descartáveis no Flutter][Added missing `dispose()` for some disposable objects in Flutter]
 * [API descontinuada removida após v3.10][Deprecated API removed after v3.10]
@@ -310,7 +310,7 @@ Eles estão organizados por versão e listados em ordem alfabética:
 [Updated `Checkbox.fillColor` behavior]: /release/breaking-changes/checkbox-fillColor
 
 <a id="released-in-flutter-310" aria-hidden="true"></a>
-### Lançado no Flutter 3.10
+### Lançado no Flutter 3.10 {:#released-in-flutter-3-10}
 
 * [Mudanças do Dart 3 no Flutter v3.10 e posteriores][Dart 3 changes in Flutter v3.10 and later]
 * [API descontinuada removida após v3.7][Deprecated API removed after v3.7]
@@ -329,7 +329,7 @@ Eles estão organizados por versão e listados em ordem alfabética:
 ["Zone mismatch" message]: /release/breaking-changes/zone-errors
 
 <a id="released-in-flutter-37" aria-hidden="true"></a>
-### Lançado no Flutter 3.7
+### Lançado no Flutter 3.7 {:#released-in-flutter-3-7}
 
 * [API descontinuada removida após v3.3][Deprecated API removed after v3.3]
 * [Uma nova maneira de personalizar menus de contexto][Replaced parameters for customizing context menus with a generic widget builder]
@@ -348,7 +348,7 @@ Eles estão organizados por versão e listados em ordem alfabética:
 [Migrate a Windows project to support dark title bars]: /release/breaking-changes/windows-dark-mode
 
 <a id="released-in-flutter-33" aria-hidden="true"></a>
-### Lançado no Flutter 3.3
+### Lançado no Flutter 3.3 {:#released-in-flutter-3-3}
 
 * [Adicionando ImageProvider.loadBuffer][Adding ImageProvider.loadBuffer]
 * [Default `PrimaryScrollController` on Desktop][Default PrimaryScrollController on Desktop]
@@ -360,7 +360,7 @@ Eles estão organizados por versão e listados em ordem alfabética:
 [Trackpad gestures can trigger GestureRecognizer]: /release/breaking-changes/trackpad-gestures
 [Migrate a Windows project to set version information]: /release/breaking-changes/windows-version-information
 
-### Lançado no Flutter 3
+### Lançado no Flutter 3 {:#released-in-flutter-3}
 
 * [API obsoleta removida após v2.10][Deprecated API removed after v2.10]
 * [Migrar useDeleteButtonTooltip para deleteButtonTooltipMessage dos Chips][Migrate useDeleteButtonTooltip to deleteButtonTooltipMessage of Chips]
@@ -371,7 +371,7 @@ Eles estão organizados por versão e listados em ordem alfabética:
 [Migrate useDeleteButtonTooltip to deleteButtonTooltipMessage of Chips]: /release/breaking-changes/chip-usedeletebuttontooltip-migration
 
 <a id="released-in-flutter-210" aria-hidden="true"></a>
-### Lançado no Flutter 2.10
+### Lançado no Flutter 2.10 {:#released-in-flutter-2-10}
 
 * [APIs descontinuadas removidas após v2.5][Deprecated API removed after v2.5]
 * [Imagens raw na Web usam origem e cores corretas][Raw images on Web uses correct origin and colors]
@@ -384,7 +384,7 @@ Eles estão organizados por versão e listados em ordem alfabética:
 [Scribble Text Input Client]: /release/breaking-changes/scribble-text-input-client
 
 <a id="released-in-flutter-25" aria-hidden="true"></a>
-### Lançado no Flutter 2.5
+### Lançado no Flutter 2.5 {:#released-in-flutter-2-5}
 
 * [Dispositivos de arrasto de rolagem padrão][Default drag scrolling devices]
 * [API descontinuada removida após v2.2][Deprecated API removed after v2.2]
@@ -419,13 +419,13 @@ A seguinte breaking change foi revertida na versão 2.2:
 [Network Policy on iOS and Android]: /release/breaking-changes/network-policy-ios-android
 
 <a id="released-in-flutter-22" aria-hidden="true"></a>
-### Lançado no Flutter 2.2
+### Lançado no Flutter 2.2 {:#released-in-flutter-2-2}
 
 * [Scrollbars padrão no Desktop][Default Scrollbars on Desktop]
 
 [Default Scrollbars on Desktop]: /release/breaking-changes/default-desktop-scrollbars
 
-### Lançado no Flutter 2
+### Lançado no Flutter 2 {:#released-in-flutter-2}
 
 * [Adicionado parâmetro BuildContext a TextEditingController.buildTextSpan][Added BuildContext parameter to TextEditingController.buildTextSpan]
 * [Mudança na assinatura do attachToActivity do ActivityControlSurface do Android][Android ActivityControlSurface attachToActivity signature change]
@@ -454,7 +454,7 @@ A seguinte breaking change foi revertida na versão 2.2:
 [Transition of platform channel test interfaces to flutter_test package]: /release/breaking-changes/mock-platform-channels
 
 <a id="released-in-flutter-122" aria-hidden="true"></a>
-### Lançado no Flutter 1.22
+### Lançado no Flutter 1.22 {:#released-in-flutter-1-22}
 
 * [Descontinuação da criação de apps e plugins com Android v1 embedding][Android v1 embedding app and plugin creation deprecation]
 * [Novo CupertinoIcons tem alterações nos glifos de ícones][Cupertino icons 1.0.0]
@@ -466,7 +466,7 @@ A seguinte breaking change foi revertida na versão 2.2:
 [The new Form, FormField auto-validation API]: /release/breaking-changes/form-field-autovalidation-api
 
 <a id="released-in-flutter-120" aria-hidden="true"></a>
-### Lançado no Flutter 1.20
+### Lançado no Flutter 1.20 {:#released-in-flutter-1-20}
 
 * [Revisão da API Actions][Actions API revision]
 * [Adicionando a propriedade TextInputClient.currentAutofillScope][Adding TextInputClient.currentAutofillScope property]
@@ -495,7 +495,7 @@ A seguinte breaking change foi revertida na versão 2.2:
 [The Route Transition record and Transition delegate updates]: /release/breaking-changes/route-transition-record-and-transition-delegate
 
 <a id="released-in-flutter-117" aria-hidden="true"></a>
-### Lançado no Flutter 1.17
+### Lançado no Flutter 1.17 {:#released-in-flutter-1-17}
 
 * [Adicionando 'linux' e 'windows' ao enum TargetPlatform][Adding 'linux' and 'windows' to TargetPlatform enum]
 * [AnnotatedRegionLayers retornam posição local relativa à região de clipping][Annotations return local position relative to object]

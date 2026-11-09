@@ -44,33 +44,39 @@ jobs:
           entryPoint: sites/docs
 
       - name: Comentar PR com link de preview
+        # Mantém um único comentário por PR: na primeira vez cria, nos pushes
+        # seguintes só edita o mesmo comentário (sem notificar de novo).
         uses: actions/github-script@v7
         if: steps.firebase-deploy.outputs.details_url
         env:
           PREVIEW_URL: ${{ steps.firebase-deploy.outputs.details_url }}
         with:
           script: |
+            const marcador = '<!-- preview-flutterbrasil -->';
             const previewUrl = process.env.PREVIEW_URL;
-            const comment = `## 🚀 Preview da Documentação do Flutter Brasil
-
-            ✅ **Deploy de preview disponível!**
-
-            Esta é uma visualização prévia das alterações na documentação oficial do Flutter Brasil.
+            const sha = context.payload.pull_request.head.sha.substring(0, 7);
+            const body = `${marcador}
+            ## 🚀 Preview da Documentação do Flutter Brasil
 
             🔗 **Visualizar preview:** ${previewUrl}
 
-            📚 **Site oficial:** [docs.flutterbrasil.dev](https://docs.flutterbrasil.dev)
+            Atualizado para o commit \`${sha}\`. Este comentário é editado a cada
+            novo commit no PR; o preview expira em 7 dias.
 
-            ---
+            📚 **Site oficial:** [docs.flutterbrasil.dev](https://docs.flutterbrasil.dev)`;
 
-            ⏰ Este preview expira em 7 dias
-            🔄 O preview será atualizado automaticamente a cada novo commit neste PR
-
-            *Documentação do Flutter em Português do Brasil*`;
-
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: comment
+            const { owner, repo } = context.repo;
+            const issue_number = context.issue.number;
+            const comentarios = await github.paginate(github.rest.issues.listComments, {
+              owner, repo, issue_number, per_page: 100,
             });
+            const existente = comentarios.find(
+              (c) => c.user.type === 'Bot' && c.body.includes(marcador),
+            );
+            if (existente) {
+              await github.rest.issues.updateComment({
+                owner, repo, comment_id: existente.id, body,
+              });
+            } else {
+              await github.rest.issues.createComment({ owner, repo, issue_number, body });
+            }

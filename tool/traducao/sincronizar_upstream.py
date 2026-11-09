@@ -45,6 +45,17 @@ CONTENT = 'sites/docs/src/content/'
 # Arquivos exclusivos do Flutter Brasil ou que não devem ser mesclados.
 IGNORAR = ('tool/traducao/', '.traducao-pendente/', 'CLAUDE.md', 'plan/',
            '.claude/')
+# Arquivos do upstream que o Flutter Brasil NÃO quer: automações que só fazem
+# sentido no flutter/website (todas têm `if: github.repository ==
+# 'flutter/website'` e só geram execuções puladas ou PRs de bot aqui). Eles
+# voltam a cada sync com a árvore do upstream, então são removidos de novo.
+REMOVIDOS_NO_FORK = (
+    '.github/dependabot.yml',           # dependências chegam pelo sync
+    '.github/workflows/codeql-analysis.yml',
+    '.github/workflows/dart.yml',
+    '.github/workflows/www.yml',
+    '.github/workflows/no-response.yaml',  # agendado de hora em hora
+)
 
 
 def git(*args, check=True, entrada=None):
@@ -157,6 +168,9 @@ def main():
     # porque não existem no upstream, então restaura do HEAD.
     if exclusivos_br:
         git('checkout', head, '--', *exclusivos_br)
+    for p in REMOVIDOS_NO_FORK:
+        if (ROOT / p).exists():
+            git('rm', '-q', '--', p)
 
     copiados, mesclados, conflitos, sem_destino, exclusivos = [], [], [], [], []
     mapeados = set()

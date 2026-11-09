@@ -1,83 +1,81 @@
 ---
-title: ImageFilter.blur default tile mode automatic selection.
+title: Seleção automática do tile mode padrão de `ImageFilter.blur`.
 description: >-
-  If a tile mode wasn't specified in the constructor, ImageFilter.blur will
-  select one based on the rendering context.
+  Se um tile mode não for especificado no construtor, `ImageFilter.blur` vai
+  escolher um com base no contexto de renderização.
 ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
-The `ui.ImageFilter.blur`'s default tile mode is
-now automatically selected by the backend.
-Previously `TileMode.clamp` was used unless a different tile mode was specified.
-Now, the default is `null` and specifies automatic selection unless
-a specific tile mode is specified.
+O tile mode padrão de `ui.ImageFilter.blur` agora é selecionado
+automaticamente pelo backend. Antes, `TileMode.clamp` era usado, a menos que
+outro tile mode fosse especificado. Agora, o padrão é `null` e especifica
+seleção automática, a menos que um tile mode específico seja informado.
 
-## Background
+## Contexto {:#background}
 
-`ImageFilter.blur`'s _tile mode_ specifies what happens to
-edge pixels for the applied filter.
-There are four options:
+O _tile mode_ de `ImageFilter.blur` especifica o que acontece com os pixels
+das bordas para o filtro aplicado. Existem quatro opções:
 
-- `TileMode.clamp` (the previous default)
-- `Tilemode.repeated`
+- `TileMode.clamp` (o padrão anterior)
+- `TileMode.repeated`
 - `TileMode.mirror`
 - `TileMode.decal`
 
-Previously, if the behavior wasn't specified,
-`ImageFilter` defaulted to `clamp` mode.
-This sometimes surprised developers as it didn't always match expectations.
+Antes, se o comportamento não fosse especificado, o `ImageFilter` usava o modo
+`clamp` por padrão. Isso às vezes surpreendia os desenvolvedores, pois nem
+sempre correspondia às expectativas.
 
-As of this change, the filter automatically selects the
-following tile modes based on context:
+Com esta mudança, o filtro seleciona automaticamente os seguintes tile modes
+com base no contexto:
 
-* `decal` with save layers and when applied to individual shape draws
-          (such as with `drawRect` and `drawPath`).
-* `mirror` with backdrop filters.
-* `clamp` for `drawImage`.
+* `decal` com save layers e quando aplicado a desenhos de formas individuais
+          (como `drawRect` e `drawPath`).
+* `mirror` com backdrop filters.
+* `clamp` para `drawImage`.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
-Only blur image filters that don't specify an explicit tile mode are
-impacted by this change.
+Apenas filtros de imagem blur que não especificam um tile mode explícito são
+afetados por esta mudança.
 
-We believe that the new defaults are generally
-better and would recommend removing any specified blur tile modes.
+Acreditamos que os novos padrões são geralmente melhores e recomendamos remover
+quaisquer tile modes de blur especificados.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 final filter = ui.ImageFilter.blur(sigmaX: 4, sigmaY: 4, tileMode: TileMode.decal);
 ```
 
-Code after migration:
+Código depois da migração:
 
 ```dart
 final filter = ui.ImageFilter.blur(sigmaX: 4, sigmaY: 4);
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
-Landed in version: 3.28.0-0.1.pre<br>
-In stable release: 3.29
+Incluído na versão: 3.28.0-0.1.pre<br>
+Na versão estável: 3.29
 
-## Referências
+## Referências {:#references}
 
-API documentation:
+Documentação da API:
 
 * [`ImageFilter`][]
 * [`TileMode`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue #154935][]
 * [Issue #110318][]
 * [Issue #157693][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Change default TileMode for blur ImageFilter objects to null][]
 

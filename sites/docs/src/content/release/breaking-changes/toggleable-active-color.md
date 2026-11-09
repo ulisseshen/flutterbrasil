@@ -8,7 +8,7 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Os widgets Material `Switch`, `SwitchListTile`, `Checkbox`,
 `CheckboxListTile`, `Radio` e `RadioListTile` agora usam a cor
@@ -16,19 +16,19 @@ Os widgets Material `Switch`, `SwitchListTile`, `Checkbox`,
 `ThemeData.toggleableActiveColor` foi descontinuada e será removida
 eventualmente.
 
-## Contexto
+## Contexto {:#context}
 
 A migração dos widgets que dependiam de `ThemeData.toggleableActiveColor`
 para `ColorScheme.secondary` tornou a propriedade `toggleableActiveColor`
 desnecessária. Essa propriedade será removida eventualmente, conforme a
 [política de descontinuação do Flutter](/release/compatibility-policy#deprecation-policy).
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 Os widgets que usavam a cor `ThemeData.toggleableActiveColor` para o
 estado ativo/selecionado agora usam `ColorScheme.secondary`.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 A cor do estado ativo/selecionado dos widgets alternáveis pode, em geral,
 ser personalizada de 3 formas:
@@ -104,11 +104,11 @@ MaterialApp(
 )
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Na versão estável: 3.7
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

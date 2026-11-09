@@ -9,7 +9,7 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 Os novos papéis de cor no `ColorScheme` incluem sete superfícies e
 contêineres baseados em tons e doze cores de destaque para os grupos
@@ -20,7 +20,7 @@ O `ColorScheme` construído pelo método `ColorScheme.fromSeed` atualizado
 agora gera valores diferentes em relação à versão anterior,
 adequando-se às diretrizes do Material Design 3.
 
-## Contexto
+## Contexto {:#background}
 
 As cores de superfície baseadas em tons incluem:
 
@@ -48,7 +48,7 @@ mesmo quando a cor de origem parece clara e tem alto croma
 
 [Material color utilities]: {{site.pub-pkg}}/material_color_utilities
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 As diferenças causadas pelo `ColorScheme.fromSeed` atualizado e pelos novos
 papéis de cor devem ser pequenas e aceitáveis.
@@ -138,12 +138,12 @@ Color myColor2 = Theme.of(context).colorScheme.onSurface;
 Color myColor3 = Theme.of(context).colorScheme.surfaceContainerHighest;
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Incluído na versão: 3.21.0-4.0.pre<br>
 Na versão estável: 3.22.0
 
-## Referências
+## Referências {:#references}
 
 Issues relevantes:
 

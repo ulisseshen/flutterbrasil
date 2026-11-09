@@ -8,7 +8,7 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 O `Slider` foi atualizado para seguir as especificações do Material 3 Design.
 
@@ -19,7 +19,7 @@ e a trilha ajusta o seu formato. O novo formato do indicador de valor
 é um retângulo arredondado. Também foram introduzidos novos mapeamentos
 de cores para alguns formatos do `Slider`.
 
-## Contexto
+## Contexto {:#context}
 
 As especificações do Material 3 Design para o `Slider` foram atualizadas
 em dezembro de 2023. Para optar pela especificação de design de 2024,
@@ -27,7 +27,7 @@ defina a flag `Slider.year2023` como `false`.
 Isso foi feito para garantir que os apps existentes não sejam afetados
 pelas especificações de design atualizadas.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 O widget `Slider` tem uma flag `year2023` que pode ser definida como `false`
 para optar pela especificação de design atualizada.
@@ -37,7 +37,7 @@ usa as especificações de design de 2023 anteriores.
 Quando [`Slider.year2023`][] é definido como `false`,
 o slider usa as especificações de design atualizadas.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Para optar pela especificação de design atualizada do `Slider`,
 defina a flag `year2023` como `false`:
@@ -72,12 +72,12 @@ return MaterialApp(
         // ...
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Incluído na versão: 3.28.0-0.1.pre<br>
 Na versão estável: 3.29
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

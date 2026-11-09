@@ -1,43 +1,45 @@
 ---
-title: Default `PrimaryScrollController` on Desktop
+title: '`PrimaryScrollController` padrão no Desktop'
 description: >
-  The `PrimaryScrollController` will no longer attach to
-  vertical `ScrollView`s automatically on Desktop.
+  O `PrimaryScrollController` não será mais anexado automaticamente a
+  `ScrollView`s verticais no Desktop.
 ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
-The `PrimaryScrollController` API has been updated to no longer automatically
-attach to vertical `ScrollView`s on desktop platforms.
+A API `PrimaryScrollController` foi atualizada para não se anexar mais
+automaticamente a `ScrollView`s verticais em plataformas desktop.
 
-## Contexto
+## Contexto {:#background}
 
-Prior to this change, `ScrollView.primary` would default to true if a
-`ScrollView` had an `Axis.vertical` scroll direction and a `ScrollController`
-had not already been provided. This allowed for common UI patterns, like the
-scroll-to-top function on iOS to work out of the box for Flutter apps.
-On desktop however, this default would often cause the following assertion error:
+Antes desta mudança, `ScrollView.primary` era true por padrão se uma
+`ScrollView` tivesse uma direção de rolagem `Axis.vertical` e um
+`ScrollController` não tivesse sido fornecido. Isso permitia padrões comuns de
+UI, como a função de rolar para o topo no iOS, funcionarem sem configuração
+nos apps Flutter. No desktop, porém, esse padrão frequentemente causava o
+seguinte erro de asserção:
 
 ```plaintext
 ScrollController attached to multiple ScrollViews.
 ```
 
-While it is common for a mobile application to display one `ScrollView` at a time,
-desktop UI patterns are more likely to display multiple `ScrollView`s
-side-by-side. The prior implementation of `PrimaryScrollController` conflicted
-with this pattern, resulting in an often unhelpful error message. To remedy this,
-the `PrimaryScrollController` has been updated with additional parameters as
-well as better error messaging across multiple widgets that depend on it.
+Embora seja comum um app mobile exibir uma `ScrollView` por vez, os padrões de
+UI no desktop costumam exibir várias `ScrollView`s lado a lado. A implementação
+anterior do `PrimaryScrollController` conflitava com esse padrão, resultando em
+uma mensagem de erro muitas vezes pouco útil. Para resolver isso, o
+`PrimaryScrollController` recebeu parâmetros adicionais, além de mensagens de
+erro melhores em vários widgets que dependem dele.
 
-## Descrição da mudança
+## Descrição da mudança {:#change-description}
 
-The previous implementation of `ScrollView` resulted in `primary` being true by
-default for all vertical `ScrollView`s that did not already have a
-`ScrollController`, on all platforms. This default behavior was not always clear,
-particularly because it is separate from the `PrimaryScrollController` itself.
+A implementação anterior de `ScrollView` fazia com que `primary` fosse true por
+padrão em todas as `ScrollView`s verticais que não tinham um
+`ScrollController`, em todas as plataformas. Esse comportamento padrão nem
+sempre era claro, principalmente porque era separado do próprio
+`PrimaryScrollController`.
 
 ```dart
 // Previously, this ListView would always result in primary being true,
@@ -51,20 +53,20 @@ Scaffold(
 );
 ```
 
-The implementation changes `ScrollView.primary` to be nullable, with the fallback
-decision-making being relocated to the `PrimaryScrollController`.
-When `primary` is null, and no `ScrollController` has been provided, the `ScrollView`
-will look up the `PrimaryScrollController` and instead call `shouldInherit` to
-determine if the given `ScrollView` should use the `PrimaryScrollController`.
+A implementação altera `ScrollView.primary` para ser anulável, e a decisão do
+valor padrão passa a ser feita pelo `PrimaryScrollController`. Quando `primary`
+é nulo e nenhum `ScrollController` foi fornecido, a `ScrollView` consulta o
+`PrimaryScrollController` e chama `shouldInherit` para determinar se ela deve
+usar o `PrimaryScrollController`.
 
-The new members of the `PrimaryScrollController` class,
-`automaticallyInheritForPlatforms` and `scrollDirection`, are evaluated in
-`shouldInherit`, allowing users clarity and control over the
-`PrimaryScrollController`'s behavior.
+Os novos membros da classe `PrimaryScrollController`,
+`automaticallyInheritForPlatforms` e `scrollDirection`, são avaliados em
+`shouldInherit`, o que dá aos usuários clareza e controle sobre o
+comportamento do `PrimaryScrollController`.
 
-By default, backwards compatibility is maintained for mobile platforms.
-`PrimaryScrollController.shouldInherit` returns true for vertical
-`ScrollView`s. On desktop, this returns false by default.
+Por padrão, a compatibilidade com versões anteriores é mantida para plataformas
+mobile. `PrimaryScrollController.shouldInherit` retorna true para
+`ScrollView`s verticais. No desktop, isso retorna false por padrão.
 
 ```dart
 // Only on mobile platforms will this attach to the PrimaryScrollController by
@@ -78,34 +80,34 @@ Scaffold(
 );
 ```
 
-To change the default, users can set `ScrollView.primary` true or false to
-explicitly manage the `PrimaryScrollController` for an individual `ScrollView`.
-For behavior across multiple `ScrollView`s, the `PrimaryScrollController` is now
-configurable by setting the specific platform, as well as the scroll direction
-that is preferred for inheritance.
+Para alterar o padrão, os usuários podem definir `ScrollView.primary` como true
+ou false para gerenciar explicitamente o `PrimaryScrollController` de uma
+`ScrollView` específica. Para o comportamento entre várias `ScrollView`s, o
+`PrimaryScrollController` agora é configurável definindo a plataforma específica,
+bem como a direção de rolagem preferida para herança.
 
-Widgets that use the `PrimaryScrollController`, such as `NestedScrollView`,
-`Scrollbar`, and `DropdownMenuButton` will experience no change to existing
-functionality. Features like the iOS scroll-to-top will also continue to work as
-expected without any migration.
+Widgets que usam o `PrimaryScrollController`, como `NestedScrollView`,
+`Scrollbar` e `DropdownMenuButton`, não sofrem nenhuma alteração na
+funcionalidade existente. Recursos como o rolar para o topo no iOS também
+continuam funcionando como esperado, sem nenhuma migração.
 
-`ScrollAction`s, and `ScrollIntent`s on desktop are the only classes affected by
-this change, requiring migration. By default, the `PrimaryScrollController` is
-used to execute fallback keyboard scrolling `Shortcuts` if the current `Focus` is
-contained within a `Scrollable`. Since displaying more than one `ScrollView`
-side-by-side is common on desktop platforms, it isn't possible for
-Flutter to decide "Which `ScrollView` should be primary in this view and receive
-the keyboard scroll action?"
+`ScrollAction`s e `ScrollIntent`s no desktop são as únicas classes afetadas
+por esta mudança, e exigem migração. Por padrão, o `PrimaryScrollController` é
+usado para executar `Shortcuts` de rolagem pelo teclado como fallback, se o
+`Focus` atual estiver contido em um `Scrollable`. Como exibir mais de uma
+`ScrollView` lado a lado é comum em plataformas desktop, não é possível para o
+Flutter decidir "Qual `ScrollView` deve ser a primária nesta view e receber a
+ação de rolagem do teclado?"
 
-If more than one `ScrollView` was present previous to this change, the same
-assertion (`ScrollController attached to multiple ScrollViews.`) would be thrown.
-Now, on desktop platforms, users need to specify `primary: true` to
-designate which `ScrollView` is the fallback to receive unhandled keyboard
-`Shortcuts`.
+Se mais de uma `ScrollView` estivesse presente antes desta mudança, a mesma
+asserção (`ScrollController attached to multiple ScrollViews.`) seria lançada.
+Agora, nas plataformas desktop, os usuários precisam especificar
+`primary: true` para designar qual `ScrollView` é o fallback que vai receber
+os `Shortcuts` de teclado não tratados.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 // These side-by-side ListViews would throw errors from Scrollbars and
@@ -140,7 +142,7 @@ Scaffold(
 );
 ```
 
-Code after migration:
+Código depois da migração:
 
 ```dart
 // These side-by-side ListViews will no longer throw errors, but for
@@ -177,14 +179,14 @@ Scaffold(
 );
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
-Landed in version: 3.3.0-0.0.pre<br>
-In stable release: 3.3
+Incluído na versão: 3.3.0-0.0.pre<br>
+Na versão estável: 3.3
 
-## Referências
+## Referências {:#references}
 
-API documentation:
+Documentação da API:
 
 * [`PrimaryScrollController`][]
 * [`ScrollView`][]
@@ -192,15 +194,15 @@ API documentation:
 * [`ScrollIntent`][]
 * [`Scrollbar`][]
 
-Design document:
+Documento de design:
 
 * [Updating PrimaryScrollController][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue #100264][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Updating PrimaryScrollController for Desktop][]
 

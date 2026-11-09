@@ -11,6 +11,9 @@ Checagens:
 
 ERROS
 - conflito:     marcadores de merge (<<<<<<<, |||||||, >>>>>>>) no arquivo.
+- frontmatter:  YAML inválido, `ia-translate` que não é o booleano `true` de
+                primeiro nível (ex.: colado dentro de um `description: >`) ou
+                campo que tem valor no inglês e ficou vazio na tradução.
 - flag:         `ia-translate` fora do frontmatter, ou o comentário
                 `<!-- ia-translate: true -->` fora da primeira linha de um parcial.
 - placeholder:  avisos de "tradução pendente" deixados no texto
@@ -39,6 +42,11 @@ por `dart run dash_site --site=docs refresh-excerpts --fail-on-update --dry-run`
 import argparse
 import importlib.util
 import re
+
+try:
+    import yaml
+except ImportError:  # pragma: no cover
+    yaml = None
 import subprocess
 import sys
 from pathlib import Path
@@ -89,8 +97,11 @@ def sem_codigo(texto):
 
 def proporcao_ingles(texto):
     _, corpo = frontmatter(texto)
+    # Tags HTML/componentes (inclusive multilinha), comentários e Liquid não
+    # são prosa: o texto entre tags continua sendo contado.
+    corpo = re.sub(r'<!--.*?-->|\{%.*?%\}|<[^<>]*>', ' ', sem_codigo(corpo), flags=re.S)
     linhas = []
-    for linha in sem_codigo(corpo).split('\n'):
+    for linha in corpo.split('\n'):
         s = linha.strip()
         if (not s or s.startswith(('<', '{%', '[', '|'))
                 or re.match(r'^[*-] .*(by @|\]\(https://github\.com)', s)
@@ -111,6 +122,26 @@ def rotulos_sem_definicao(texto):
     # Ignora o que está dentro de código inline (ex.: `map['key'][0]`).
     inline = ' '.join(re.findall(r'`[^`]*`', t)).lower()
     return {r for r in usados - defs if f'[{r}]' not in inline}
+
+
+def checar_frontmatter(fm, en_fm):
+    try:
+        dados = yaml.safe_load(fm) or {}
+    except yaml.YAMLError as e:
+        return [('frontmatter', f'YAML inválido: {str(e).splitlines()[0]}')]
+    erros = []
+    if dados.get('ia-translate') is not True:
+        erros.append(('frontmatter', f'ia-translate não é `true` de primeiro nível '
+                                     f'(valor: {str(dados.get("ia-translate"))[:40]!r})'))
+    try:
+        en = yaml.safe_load(en_fm or '') or {}
+    except yaml.YAMLError:
+        en = {}
+    for chave, valor in en.items():
+        if isinstance(valor, str) and valor.strip() and \
+                not str(dados.get(chave) or '').strip():
+            erros.append(('frontmatter', f'campo `{chave}` vazio (o inglês tem valor)'))
+    return erros
 
 
 def marcados():
@@ -135,6 +166,9 @@ def checar_arquivo(caminho, ref, sync, gerador):
 
     if CONFLITO.search(texto):
         erros.append(('conflito', 'marcadores de merge no arquivo'))
+
+    if fm is not None and yaml is not None:
+        erros += checar_frontmatter(fm, en_fm=frontmatter(git('show', f'{ref}:{caminho}') or '')[0])
 
     if fm is not None and FLAG_FM.search(fm) is None and 'ia-translate' in corpo:
         erros.append(('flag', '`ia-translate` fora do frontmatter'))

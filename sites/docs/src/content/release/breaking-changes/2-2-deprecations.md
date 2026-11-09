@@ -6,7 +6,7 @@ description: >
 ia-translate: true
 ---
 
-## Resumo
+## Resumo {:#summary}
 
 De acordo com a [Política de descontinuação do Flutter][Deprecation Policy],
 APIs descontinuadas que atingiram o fim da vida útil após a versão
@@ -19,7 +19,7 @@ na migração. Também está disponível uma
 [Deprecation Policy]: {{site.repo.flutter}}/blob/main/docs/contributing/Tree-hygiene.md#deprecations
 [quick reference sheet]: /go/deprecations-removed-after-2-2
 
-## Mudanças
+## Mudanças {:#changes}
 
 Esta seção lista as descontinuações, agrupadas pela classe afetada.
 
@@ -333,6 +333,6 @@ PRs relevantes:
 
 ---
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Na versão estável: 2.5

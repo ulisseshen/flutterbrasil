@@ -1,51 +1,52 @@
 ---
-title: Scribble Text Input Client
+title: Cliente de entrada de texto Scribble
 description: >
-  Add new methods to the TextInputClient interface to allow Scribble
-  to insert or remove text placeholders and show the toolbar.
+  Adiciona novos métodos à interface TextInputClient para permitir que o Scribble
+  insira ou remova placeholders de texto e exiba a barra de ferramentas.
 ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
-Adds three methods, `showToolbar`, `insertTextPlaceholder`, and
-`removeTextPlaceholder` to the `TextInputClient` interface to allow the iOS 14
-Scribble feature to insert and remove text placeholders and show the toolbar.
+Adiciona três métodos, `showToolbar`, `insertTextPlaceholder` e
+`removeTextPlaceholder`, à interface `TextInputClient` para permitir que o
+recurso Scribble do iOS 14 insira e remova placeholders de texto e exiba a
+barra de ferramentas.
 
-## Contexto
+## Contexto {:#background}
 
-As of iOS 14, iPads support the Scribble feature when using the Apple Pencil.
-This feature allows users to use the pencil to interact with text fields to
-add, delete, select, and modify text.
+A partir do iOS 14, os iPads oferecem suporte ao recurso Scribble ao usar o
+Apple Pencil. Esse recurso permite que o usuário use a caneta para interagir
+com campos de texto e adicionar, apagar, selecionar e modificar texto.
 
-## Descrição da mudança
+## Descrição da mudança {:#change-description}
 
-In native text widgets, the text toolbar is shown when a user uses the pencil
-to select text on an iPad running iOS 14 or higher.
-To replicate this behavior, the platform sends a `textInput` channel message
-called `TextInputClient.showToolbar`.
-This notifies the Dart code that the toolbar should be shown.
+Em widgets de texto nativos, a barra de ferramentas de texto é exibida quando
+o usuário usa a caneta para selecionar texto em um iPad com iOS 14 ou superior.
+Para replicar esse comportamento, a plataforma envia uma mensagem do canal
+`textInput` chamada `TextInputClient.showToolbar`. Isso notifica o código Dart
+de que a barra de ferramentas deve ser exibida.
 
-When a user holds the pencil down, a visual gap in the text is shown to allow
-the user extra space to write.
-To replicate this behavior, the platform sends `textInput` channel messages
-called `TextInputClient.insertTextPlaceholder` and
-`TextInputClient.removeTextPlaceholder`.
-Multiline text inputs should have placeholders that provide vertical space,
-while single line inputs should provide horizontal space.
+Quando o usuário pressiona a caneta, um espaço visual é exibido no texto para
+dar ao usuário espaço extra para escrever. Para replicar esse comportamento, a
+plataforma envia mensagens do canal `textInput` chamadas
+`TextInputClient.insertTextPlaceholder` e
+`TextInputClient.removeTextPlaceholder`. Entradas de texto multilinha devem ter
+placeholders que forneçam espaço vertical, enquanto entradas de linha única
+devem fornecer espaço horizontal.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
-If you previously implemented `TextEditingClient`, you must override
-`showToolbar`, `insertTextPlaceholder`, and `removeTextPlaceholder` to either
-support these Scribble features or provide an empty implementation.
+Se você já implementava `TextEditingClient`, precisa sobrescrever
+`showToolbar`, `insertTextPlaceholder` e `removeTextPlaceholder`, para oferecer
+suporte a esses recursos do Scribble ou fornecer uma implementação vazia.
 
-To migrate, implement `showToolbar`, `insertTextPlaceholder`, and
+Para migrar, implemente `showToolbar`, `insertTextPlaceholder` e
 `removeTextPlaceholder`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 class MyCustomTextInputClient implements TextInputClient {
@@ -53,7 +54,7 @@ class MyCustomTextInputClient implements TextInputClient {
 }
 ```
 
-Code after migration:
+Código depois da migração:
 
 ```dart
 class MyCustomTextInputClient implements TextInputClient {
@@ -75,22 +76,22 @@ class MyCustomTextInputClient implements TextInputClient {
 }
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
-Landed in version: 2.9.0-1.0.pre<br>
-In stable release: 2.10
+Incluído na versão: 2.9.0-1.0.pre<br>
+Na versão estável: 2.10
 
-## Referências
+## Referências {:#references}
 
-API documentation:
+Documentação da API:
 
 * [`TextInputClient`]({{site.api}}/flutter/services/TextInputClient-class.html)
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue 61278]({{site.repo.flutter}}/issues/61278)
 
-Relevant PRs:
+PRs relevantes:
 
 * [24224: Support Scribble Handwriting (engine)][]
 * [75472: Support Scribble Handwriting][]

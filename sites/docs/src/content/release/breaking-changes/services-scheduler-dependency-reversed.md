@@ -6,14 +6,14 @@ ia-translate: true
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
 A camada services agora depende da camada scheduler.
 Antes, era o contrário. Isso pode afetar você
 se tiver definido bindings personalizados que substituem
 `SchedulerBinding` ou `ServicesBinding` do Flutter.
 
-## Contexto
+## Contexto {:#context}
 
 Antes desta mudança, a camada scheduler dependia
 da camada services. Esta mudança inverte a cadeia de dependência e
@@ -21,13 +21,13 @@ permite que a camada services use as primitivas de agendamento da
 camada scheduler. Por exemplo, serviços na camada services agora podem
 agendar tarefas usando `SchedulerBinding.scheduleTask`.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
 A mudança afeta apenas usuários que definem seus próprios bindings
 personalizados baseados em `SchedulerBinding` e `ServicesBinding`
 do Flutter.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
 Antes desta mudança, o `ServiceBinding` precisava ser definido antes do
 `SchedulerBinding`. Com esta mudança, é o contrário:
@@ -48,12 +48,12 @@ class FooBinding extends BindingBase with SchedulerBinding, ServicesBinding {
 }
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
 Incluído na versão: 1.18.0<br>
 Na versão estável: 1.20
 
-## Referências
+## Referências {:#references}
 
 Documentação da API:
 

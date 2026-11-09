@@ -1,8 +1,8 @@
 ---
-title: The Form widget no longer supports being a sliver.
+title: O widget Form não suporta mais ser um sliver.
 description: >-
-  The Form widget now includes a semantics widget,
-  which prevents it from being used directly as a sliver.
+  O widget Form agora inclui um widget Semantics,
+  o que impede que ele seja usado diretamente como sliver.
 ia-translate: true
 ---
 
@@ -10,41 +10,41 @@ ia-translate: true
 
 ## Resumo
 
-Previously, the Form widget essentially acted as a direct wrapper
-around its child. This design allowed a Form containing a sliver child
-(e.g., Form(child: other sliver)) to be treated as a sliver itself
- within a CustomScrollView or similar scrollable parent.
+Anteriormente, o widget Form atuava essencialmente como um wrapper direto
+do seu filho. Esse design permitia que um Form contendo um filho sliver
+(por exemplo, Form(child: outro sliver)) fosse tratado como um sliver
+dentro de um CustomScrollView ou de um pai rolável semelhante.
 
-However, This PR introduced a new semantics widget
-within the Form widget's internal structure. This change alters
-its rendering behavior, meaning Form can no longer directly
-function as a sliver.
+No entanto, este PR introduziu um novo widget Semantics
+na estrutura interna do widget Form. Essa mudança altera
+o comportamento de renderização, o que significa que Form não pode mais
+funcionar diretamente como um sliver.
 
 ## Contexto
 
-This change is part of an ongoing effort to improve the
-accessibility and semantic understanding of Flutter widgets.
-By embedding a semantics widget directly within Form, the framework
-can provide better information to accessibility services.
+Esta mudança faz parte de um esforço contínuo para melhorar a
+acessibilidade e a compreensão semântica dos widgets do Flutter.
+Ao incorporar um widget Semantics diretamente em Form, o framework
+pode fornecer informações melhores aos serviços de acessibilidade.
 
 ## Descrição da mudança
 
-The core change is the integration of a semantics widget
-into the Form widget's build method.
+A mudança principal é a integração de um widget Semantics
+ao método build do widget Form.
 
 ## Guia de migração
 
-If your app does not currently use the Form widget directly
-as a sliver within a scrollable list
-(e.g., as a direct child of CustomScrollView's slivers property),
-then no changes are required.
+Se o seu app não usa atualmente o widget Form diretamente
+como sliver dentro de uma lista rolável
+(por exemplo, como filho direto da propriedade slivers de um CustomScrollView),
+então nenhuma alteração é necessária.
 
-If your app use Form as a sliver, you will need to wrap the Form
-widget within a SliverToBoxAdapter. SliverToBoxAdapter is a
-sliver that contains a single box widget, converting a regular
-widget into a sliver that can be placed in a CustomScrollView.
+Se o seu app usa Form como sliver, você precisará envolver o widget Form
+em um SliverToBoxAdapter. SliverToBoxAdapter é um
+sliver que contém um único widget de caixa, convertendo um
+widget comum em um sliver que pode ser colocado em um CustomScrollView.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 sliver: Form(
@@ -53,7 +53,7 @@ sliver: Form(
 )
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 sliver: SliverToBoxAdapter(
@@ -66,19 +66,19 @@ sliver: SliverToBoxAdapter(
 
 ## Linha do tempo
 
-Landed in version: 3.35.0-pre<br>
-In stable release: 3.35
+Incluído na versão: 3.35.0-pre<br>
+Na versão estável: 3.35
 
 ## Referências
 
-API documentation:
+Documentação da API:
 
 * [`Form`]({{site.api}}/flutter/widgets/Form-class.html)
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue 161628]({{site.repo.flutter}}/issues/161628)
 
-Relevant PRs:
+PRs relevantes:
 
-* [PR 170709: Add semantics role for form]({{site.repo.flutter}}/pull/170709)
+* [PR 170709: Adiciona papel de semântica para form]({{site.repo.flutter}}/pull/170709)

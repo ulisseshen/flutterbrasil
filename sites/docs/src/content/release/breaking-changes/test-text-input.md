@@ -1,79 +1,79 @@
 ---
-title: TestTextInput state reset
-description: TestTextInput state is now reset between tests.
+title: Estado de TestTextInput redefinido
+description: O estado de TestTextInput agora é redefinido entre os testes.
 ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
-The state of a `TestTextInput` instance,
-a stub for the system's onscreen keyboard,
-is now reset between tests.
+O estado de uma instância de `TestTextInput`,
+um stub para o teclado virtual do sistema,
+agora é redefinido entre os testes.
 
-## Contexto
+## Contexto {:#context}
 
-The Flutter test framework uses a class called `TestTextInput`
-to track and manipulate editing state in a widgets test.
-Individual tests can make calls that modify the internal
-state of this object, sometimes indirectly (such as
-by setting their own handlers on `SystemChannels.textInput`).
-Subsequent tests might then check the state of
-`WidgetTester.testTextInput` and get unexpected values.
+O framework de testes do Flutter usa uma classe chamada `TestTextInput`
+para rastrear e manipular o estado de edição em um teste de widgets.
+Testes individuais podem fazer chamadas que modificam o estado interno
+desse objeto, às vezes de forma indireta (por exemplo,
+definindo os próprios handlers em `SystemChannels.textInput`).
+Testes posteriores podem então verificar o estado de
+`WidgetTester.testTextInput` e obter valores inesperados.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
-The state of `WidgetTester.testTextInput`
-is now reset before running a `testWidgets` test.
+O estado de `WidgetTester.testTextInput`
+agora é redefinido antes da execução de um teste `testWidgets`.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
-Tests that relied on dirty state from a previously run
-test must be updated. For example, the following test,
-from `packages/flutter/test/material/text_field_test.dart`
-in the `'Controller can update server'` test,
-previously passed because of a combination of dirty state
-from previous tests and a failure to actually set state
-in cases where it should have been set.
+Testes que dependiam de um estado sujo deixado por outro teste
+executado anteriormente devem ser atualizados. Por exemplo, o teste
+a seguir, de `packages/flutter/test/material/text_field_test.dart`,
+no teste `'Controller can update server'`, passava antes por causa
+de uma combinação de estado sujo dos testes anteriores
+e de uma falha em definir o estado nos casos em que ele deveria
+ter sido definido.
 
-Code before migration:
+Código antes da migração:
 
-In a `widgetsTest`, before actually changing text on a
-text editing widget, this call might have succeeded:
+Em um `widgetsTest`, antes de alterar de fato o texto de um
+widget de edição de texto, esta chamada podia ter sido bem-sucedida:
 
 ```dart
     expect(tester.testTextInput.editingState['text'], isEmpty);
 ```
 
-Code after migration:
+Código após a migração:
 
-Either remove the call entirely, or consider using the
-following to assert that the state hasn't been modified yet:
+Remova a chamada por completo ou use a seguinte verificação,
+para confirmar que o estado ainda não foi modificado:
 
 ```dart
     expect(tester.testTextInput.editingState, isNull);
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
-Landed in version: 1.16.3<br>
-In stable release: 1.17
+Incluído na versão: 1.16.3<br>
+Na versão estável: 1.17
 
-## Referências
+## Referências {:#references}
 
-API documentation:
+Documentação da API:
 
 * [`TestTextInput`][]
 * [`WidgetTester`][]
 
-Relevant issue:
+Issue relevante:
 
-* [Randomize test order to avoid global state][]
+* [Randomizar a ordem dos testes para evitar estado global][Randomize test order to avoid global state]
 
-Relevant PR:
+PR relevante:
 
-* [Reset state between tests][]
+* [Redefinir o estado entre os testes][Reset state between tests]
 
 
 [Randomize test order to avoid global state]: {{site.repo.flutter}}/issues/47233

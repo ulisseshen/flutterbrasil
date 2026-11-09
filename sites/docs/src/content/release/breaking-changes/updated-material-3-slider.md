@@ -1,8 +1,8 @@
 ---
-title: Updated Material 3 `Slider`
+title: '`Slider` do Material 3 atualizado'
 description: >-
-  The `Slider` widget has been updated to match the
-  Material 3 Design specifications.
+  O widget `Slider` foi atualizado para seguir as
+  especificações do Material 3 Design.
 ia-translate: true
 ---
 
@@ -10,36 +10,37 @@ ia-translate: true
 
 ## Resumo
 
-The `Slider` has been updated to match the Material 3 Design specifications.
+O `Slider` foi atualizado para seguir as especificações do Material 3 Design.
 
-The `Slider` changes include an updated height,
-a gap between the active and inactive track, and
-a stop indicator to show the end value of the inactive track.
-Pressing the thumb adjusts its width, and the track adjusts its shape.
-The new value indicator shape is a rounded rectangle.
-New color mappings have also been introduced for some of the `Slider` shapes.
+As mudanças no `Slider` incluem uma altura atualizada, um espaço entre
+a trilha ativa e a inativa, e um indicador de parada para mostrar o
+valor final da trilha inativa. Pressionar o thumb ajusta a largura dele,
+e a trilha ajusta o seu formato. O novo formato do indicador de valor
+é um retângulo arredondado. Também foram introduzidos novos mapeamentos
+de cores para alguns formatos do `Slider`.
 
 ## Contexto
 
-The Material 3 Design specs for the `Slider` were updated in December 2023.
-To opt into the 2024 design spec, set the `Slider.year2023` flag to `false`.
-This is done to ensure that existing apps aren't affected by
-the updated design specifications.
+As especificações do Material 3 Design para o `Slider` foram atualizadas
+em dezembro de 2023. Para optar pela especificação de design de 2024,
+defina a flag `Slider.year2023` como `false`.
+Isso foi feito para garantir que os apps existentes não sejam afetados
+pelas especificações de design atualizadas.
 
 ## Descrição da mudança
 
-The `Slider` widget has a `year2023` flag that can be set to `false` to
-opt in to the updated design spec.
-The default value for the `year2023` flag is `true`,
-which means that the `Slider` uses the previous 2023 design specifications.
+O widget `Slider` tem uma flag `year2023` que pode ser definida como `false`
+para optar pela especificação de design atualizada.
+O valor padrão da flag `year2023` é `true`, o que significa que o `Slider`
+usa as especificações de design de 2023 anteriores.
 
-When [`Slider.year2023`][] is set to `false`,
-the slider uses the updated design specifications.
+Quando [`Slider.year2023`][] é definido como `false`,
+o slider usa as especificações de design atualizadas.
 
 ## Guia de migração
 
-To opt into the updated design spec for the `Slider`,
-set the `year2023` flag to `false`:
+Para optar pela especificação de design atualizada do `Slider`,
+defina a flag `year2023` como `false`:
 
 ```dart highlightLines=2
 Slider(
@@ -53,8 +54,8 @@ Slider(
 ),
 ```
 
-To update your entire app to use the updated `Slider` design, set the
-`SliderThemeData.year2023` property to `false` in your `MaterialApp`:
+Para atualizar todo o seu app para usar o design atualizado do `Slider`,
+defina a propriedade `SliderThemeData.year2023` como `false` no seu `MaterialApp`:
 
 ```dart highlightLines=2
 return MaterialApp(
@@ -73,23 +74,23 @@ return MaterialApp(
 
 ## Linha do tempo
 
-Landed in version: 3.28.0-0.1.pre<br>
-In stable release: 3.29
+Incluído na versão: 3.28.0-0.1.pre<br>
+Na versão estável: 3.29
 
 ## Referências
 
-API documentation:
+Documentação da API:
 
-* [`Slider`][]
-* [`Slider.year2023`][]
+* [`Slider`][`Slider`]
+* [`Slider.year2023`][`Slider.year2023`]
 
-Relevant issues:
+Issues relevantes:
 
-* [Update `Slider` for Material 3 redesign][]
+* [Atualização do `Slider` para o redesign do Material 3][Update `Slider` for Material 3 redesign]
 
-Relevant PRs:
+PRs relevantes:
 
-* [Introduce new Material 3 `Slider` shapes][]
+* [Introdução de novos formatos do `Slider` do Material 3][Introduce new Material 3 `Slider` shapes]
 
 [`Slider`]: {{site.material_ui}}/Slider-class.html
 [`Slider.year2023`]: {{site.material_ui}}/Slider/year2023.html

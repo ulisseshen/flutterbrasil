@@ -1,53 +1,55 @@
 ---
-title: Eliminating nullOk Parameters
+title: Eliminando parâmetros nullOk
 description: >
-    To eliminate nullOk parameters to help with
-    API clarity in the face of null safety.
+    Eliminar os parâmetros nullOk para ajudar na clareza
+    da API diante da null safety.
 ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
-This migration guide describes conversion of code that uses the `nullOk`
-parameter on multiple `of` static accessors and related accessors to use
-alternate APIs with nullable return values.
+Este guia de migração descreve a conversão de código que usa o
+parâmetro `nullOk` em vários acessores estáticos `of` e em acessores
+relacionados, para que passe a usar APIs alternativas com valores de
+retorno anuláveis.
 
-## Contexto
+## Contexto {:#context}
 
-Flutter has a common pattern of allowing lookup of some types of widgets
-([`InheritedWidget`][]s) using static member functions that are typically called
-`of`, and take a `BuildContext`.
+O Flutter tem um padrão comum que permite buscar alguns tipos de widgets
+([`InheritedWidget`][]s) usando funções membro estáticas, normalmente
+chamadas `of`, que recebem um `BuildContext`.
 
-Before non-nullability was the default, it was useful to have a toggle on these
-APIs that swapped between throwing an exception if the widget was not present in
-the widget tree and returning null if it was not found. It was useful, and
-wasn't confusing, since every variable was nullable.
+Antes de a não nulabilidade se tornar o padrão, era útil ter uma opção
+nessas APIs que alternasse entre lançar uma exceção, caso o widget não
+estivesse presente na árvore de widgets, e retornar null, caso não fosse
+encontrado. Isso era útil e não causava confusão, já que toda variável
+era anulável.
 
-When non-nullability was made the default, it was then desirable to have the
-most commonly used APIs return a non-nullable value. This is because saying
-`MediaQuery.of(context, nullOk: false)` and then still requiring an `!` operator
-or `?` and a fallback value after that call felt awkward.
+Quando a não nulabilidade passou a ser o padrão, tornou-se desejável que
+as APIs mais usadas retornassem um valor não anulável. Isso porque escrever
+`MediaQuery.of(context, nullOk: false)` e ainda precisar de um operador `!`
+ou de `?` com um valor de fallback depois dessa chamada parecia estranho.
 
-The `nullOk` parameter was a cheap form of providing a null safety toggle, which
-in the face of true language support for non-nullability, was then supplying
-redundant, and perhaps contradictory signals to the developer.
+O parâmetro `nullOk` era uma forma simples de oferecer uma opção de null safety
+que, diante do suporte real da linguagem à não nulabilidade, passou a fornecer
+sinais redundantes e, talvez, contraditórios ao desenvolvedor.
 
-To solve this, the `of` accessors (and some related accessors that also used
-`nullOk`) were split into two calls: one that returned a non-nullable value and
-threw an exception when the sought-after widget was not present, and one that
-returned a nullable value that didn't throw an exception, and returned null if
-the widget was not present.
+Para resolver isso, os acessores `of` (e alguns acessores relacionados que
+também usavam `nullOk`) foram divididos em duas chamadas: uma que retorna um
+valor não anulável e lança uma exceção quando o widget procurado não está
+presente, e outra que retorna um valor anulável, não lança exceção e retorna
+null quando o widget não está presente.
 
-The design document for this change is [Eliminating nullOk parameters][].
+O documento de design desta mudança é [Eliminating nullOk parameters][].
 
 [Eliminating nullOk parameters]: /go/eliminating-nullok-parameters
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-change}
 
-The actual change modified these APIs to not have a `nullOk` parameter, and to
-return a non-nullable value:
+A mudança em si alterou essas APIs para que não tenham mais um parâmetro
+`nullOk` e passem a retornar um valor não anulável:
 
 * [`MediaQuery.of`][]
 * [`Navigator.of`][]
@@ -73,8 +75,8 @@ return a non-nullable value:
 * [`CupertinoTextThemeData.resolveFrom`][]
 * [`MaterialBasedCupertinoThemeData.resolveFrom`][]
 
-And introduced these new APIs alongside those, to
-return a nullable value:
+E introduziu estas novas APIs ao lado delas, para
+retornar um valor anulável:
 
 * [`MediaQuery.maybeOf`][]
 * [`Navigator.maybeOf`][]
@@ -94,55 +96,54 @@ return a nullable value:
 * [`CupertinoUserInterfaceLevel.maybeOf`][]
 * [`CupertinoTheme.maybeBrightnessOf`][]
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
-In order to modify your code to use the new form of the APIs, convert all
-instances of calls that include `nullOk = true` as a parameter to use the
-`maybe` form of the API instead.
+Para modificar seu código e usar a nova forma das APIs, converta todas as
+chamadas que incluem `nullOk = true` como parâmetro para usar a forma
+`maybe` da API.
 
-So this:
+Portanto, isto:
 
 ```dart
 MediaQueryData? data = MediaQuery.of(context, nullOk: true);
 ```
 
-becomes:
+passa a ser:
 
 ```dart
 MediaQueryData? data = MediaQuery.maybeOf(context);
 ```
 
-You also need to modify all instances of calling the API with `nullOk =
-false` (often the default), to accept non-nullable return values, or remove any
-`!` operators:
+Você também precisa modificar todas as chamadas da API com `nullOk =
+false` (frequentemente o padrão), para aceitar valores de retorno não
+anuláveis, ou remover quaisquer operadores `!`:
 
-So either of:
+Então, qualquer um destes:
 
 ```dart
 MediaQueryData data = MediaQuery.of(context)!; // nullOk false by default.
 MediaQueryData? data = MediaQuery.of(context); // nullOk false by default.
 ```
 
-both become:
+passa a ser:
 
 ```dart
 MediaQueryData data = MediaQuery.of(context); // No ! or ? operator here now.
 ```
 
-The `unnecessary_non_null_assertion` analysis option can be quite helpful in
-finding the places where the `!` operator should be removed, and the
-`unnecessary_nullable_for_final_variable_declarations` analysis option can be
-helpful in finding unnecessary question mark operators on `final` and `const`
-variables.
+A opção de análise `unnecessary_non_null_assertion` pode ser bastante útil
+para encontrar os lugares em que o operador `!` deve ser removido, e a opção
+de análise `unnecessary_nullable_for_final_variable_declarations` pode ajudar
+a encontrar operadores de interrogação desnecessários em variáveis `final` e `const`.
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
-Landed in version: 1.24.0<br>
-In stable release: 2.0.0
+Incluído na versão: 1.24.0<br>
+Na versão estável: 2.0.0
 
-## Referências
+## Referências {:#references}
 
-API documentation:
+Documentação da API:
 
 * [`MediaQuery.of`][]
 * [`Navigator.of`][]
@@ -185,23 +186,23 @@ API documentation:
 * [`CupertinoUserInterfaceLevel.maybeOf`][]
 * [`CupertinoTheme.maybeBrightnessOf`][]
 
-Relevant issue:
+Issue relevante:
 
 * [Issue 68637][]
 
-Relevant PRs:
+PRs relevantes:
 
-* [Remove `nullOk` in `MediaQuery.of`][]
-* [Remove `nullOk` in `Navigator.of`][]
-* [Remove `nullOk` parameter from `AnimatedList.of` and `SliverAnimatedList.of`][]
-* [Remove `nullOk` parameter from `Shortcuts.of`, `Actions.find`, and `Actions.handler`][]
-* [Remove `nullOk` parameter from `Focus.of`, `FocusTraversalOrder.of`, and `FocusTraversalGroup.of`][]
-* [Remove `nullOk` parameter from `Localizations.localeOf`][]
-* [Remove `nullOk` parameter from `Router.of`][]
-* [Remove `nullOk` from `Scaffold.of` and `ScaffoldMessenger.of`][]
-* [Remove `nullOk` parameter from Cupertino color resolution APIs][]
-* [Remove vestigial `nullOk` parameter from `Localizations.localeOf`][]
-* [Remove `nullOk` from `Actions.invoke`, add `Actions.maybeInvoke`][]
+* [Remover `nullOk` em `MediaQuery.of`][Remove `nullOk` in `MediaQuery.of`]
+* [Remover `nullOk` em `Navigator.of`][Remove `nullOk` in `Navigator.of`]
+* [Remover o parâmetro `nullOk` de `AnimatedList.of` e `SliverAnimatedList.of`][Remove `nullOk` parameter from `AnimatedList.of` and `SliverAnimatedList.of`]
+* [Remover o parâmetro `nullOk` de `Shortcuts.of`, `Actions.find` e `Actions.handler`][Remove `nullOk` parameter from `Shortcuts.of`, `Actions.find`, and `Actions.handler`]
+* [Remover o parâmetro `nullOk` de `Focus.of`, `FocusTraversalOrder.of` e `FocusTraversalGroup.of`][Remove `nullOk` parameter from `Focus.of`, `FocusTraversalOrder.of`, and `FocusTraversalGroup.of`]
+* [Remover o parâmetro `nullOk` de `Localizations.localeOf`][Remove `nullOk` parameter from `Localizations.localeOf`]
+* [Remover o parâmetro `nullOk` de `Router.of`][Remove `nullOk` parameter from `Router.of`]
+* [Remover `nullOk` de `Scaffold.of` e `ScaffoldMessenger.of`][Remove `nullOk` from `Scaffold.of` and `ScaffoldMessenger.of`]
+* [Remover o parâmetro `nullOk` das APIs de resolução de cores do Cupertino][Remove `nullOk` parameter from Cupertino color resolution APIs]
+* [Remover o parâmetro `nullOk` residual de `Localizations.localeOf`][Remove vestigial `nullOk` parameter from `Localizations.localeOf`]
+* [Remover `nullOk` de `Actions.invoke` e adicionar `Actions.maybeInvoke`][Remove `nullOk` from `Actions.invoke`, add `Actions.maybeInvoke`]
 
 [`MediaQuery.of`]: {{site.api}}/flutter/widgets/MediaQuery/of.html
 [`Navigator.of`]: {{site.api}}/flutter/widgets/Navigator/of.html

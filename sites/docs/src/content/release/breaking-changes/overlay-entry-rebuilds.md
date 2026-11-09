@@ -1,54 +1,54 @@
 ---
-title: Rebuild optimization for OverlayEntries and Routes
-description: OverlayEntries only rebuild on explicit state changes.
+title: Otimização de rebuilds para OverlayEntries e Routes
+description: OverlayEntries são reconstruídos apenas em mudanças explícitas de estado.
 ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
-This optimization improves performance for route transitions,
-but it may uncover missing calls to `setState` in your app.
+Esta otimização melhora o desempenho das transições de rota,
+mas pode revelar chamadas de `setState` que estão faltando no seu app.
 
-## Contexto
+## Contexto {:#context}
 
-Prior to this change, an `OverlayEntry` would rebuild when
-a new opaque entry was added on top of it or removed above it.
-These rebuilds were unnecessary because they were not triggered
-by a change in state of the affected `OverlayEntry`. This
-breaking change optimized how we handle the addition and removal of
-`OverlayEntry`s, and removes unnecessary rebuilds
-to improve performance.
+Antes desta mudança, um `OverlayEntry` era reconstruído quando
+uma nova entrada opaca era adicionada sobre ele ou removida acima dele.
+Essas reconstruções eram desnecessárias, pois não eram causadas
+por uma mudança de estado do `OverlayEntry` afetado. Esta
+mudança que quebra compatibilidade otimizou como tratamos a adição e a remoção de
+`OverlayEntry`s, eliminando reconstruções desnecessárias
+para melhorar o desempenho.
 
-Since the `Navigator` internally puts each `Route` into an
-`OverlayEntry` this change also applies to `Route` transitions:
-If an opaque `Route` is pushed on top or removed from above another
-`Route`, the `Route`s below the opaque `Route`
-no longer rebuilds unnecessarily.
+Como o `Navigator` coloca internamente cada `Route` em um
+`OverlayEntry`, esta mudança também se aplica às transições de `Route`:
+se uma `Route` opaca é empilhada sobre outra `Route` ou removida de cima dela,
+as `Route`s abaixo da `Route` opaca
+não são mais reconstruídas desnecessariamente.
 
-## Descrição da mudança
+## Descrição da mudança {:#description-of-the-change}
 
-In most cases, this change doesn't require any changes to your code.
-However, if your app was erroneously relying on the implicit
-rebuilds you may see issues, which can be resolved by wrapping
-any state change in a `setState` call.
+Na maioria dos casos, esta mudança não exige nenhuma alteração no seu código.
+No entanto, se o seu app dependia de forma incorreta das
+reconstruções implícitas, você pode ver problemas, que podem ser resolvidos
+envolvendo qualquer mudança de estado em uma chamada de `setState`.
 
-Furthermore, this change slightly modified the shape of the
-widget tree: Prior to this change,
-the `OverlayEntry`s were wrapped in a `Stack` widget.
-The explicit `Stack` widget was removed from the widget hierarchy.
+Além disso, esta mudança alterou um pouco a forma da
+árvore de widgets: antes dela,
+os `OverlayEntry`s eram envolvidos por um widget `Stack`.
+O `Stack` explícito foi removido da hierarquia de widgets.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
-If you're seeing issues after upgrading to a Flutter version
-that included this change, audit your code for missing calls to
-`setState`. In the example below, assigning the return value of
-`Navigator.pushNamed` to `buttonLabel` is
-implicitly modifying the state and it should be wrapped in an
-explicit `setState` call.
+Se você está vendo problemas após atualizar para uma versão do Flutter
+que incluiu esta mudança, audite seu código em busca de chamadas de
+`setState` ausentes. No exemplo abaixo, atribuir o valor de retorno de
+`Navigator.pushNamed` a `buttonLabel` modifica o estado
+implicitamente, e essa atribuição deveria estar envolvida em uma chamada explícita
+de `setState`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 class FooState extends State<Foo> {
@@ -66,7 +66,7 @@ class FooState extends State<Foo> {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 class FooState extends State<Foo> {
@@ -86,14 +86,14 @@ class FooState extends State<Foo> {
 }
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
-Landed in version: 1.16.3<br>
-In stable release: 1.17
+Incluído na versão: 1.16.3<br>
+Na versão estável: 1.17
 
-## Referências
+## Referências {:#references}
 
-API documentation:
+Documentação da API:
 
 * [`setState`][]
 * [`OverlayEntry`][]
@@ -102,11 +102,11 @@ API documentation:
 * [`Route`][]
 * [`OverlayRoute`][]
 
-Relevant issues:
+Issue relevante:
 
 * [Issue 45797][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Do not rebuild Routes when a new opaque Route is pushed on top][]
 * [Reland "Do not rebuild Routes when a new opaque Route is pushed on top"][]

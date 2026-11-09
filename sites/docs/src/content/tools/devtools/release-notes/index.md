@@ -21,9 +21,9 @@ $ dart devtools --version
 ### Notas de versão
 
 {% comment %}
-When adding the release notes for a new DevTools release,
-make sure to add the version number as the first entry in the list
-found at `/site/src/data/devtools_releases.dart`.
+Ao adicionar as notas de versão de uma nova versão do DevTools,
+certifique-se de adicionar o número da versão como primeira entrada da lista
+encontrada em `/site/src/data/devtools_releases.dart`.
 {% endcomment -%}
 
 <DevToolsReleaseNotesIndex />

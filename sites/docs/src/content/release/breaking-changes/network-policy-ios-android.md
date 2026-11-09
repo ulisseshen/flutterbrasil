@@ -1,61 +1,62 @@
 ---
-title: Insecure HTTP connections are disabled by default on iOS and Android
+title: Conexões HTTP inseguras são desabilitadas por padrão no iOS e no Android
 description: >
-  Accessing a URL with HTTP protocol throws an exception unless
-  the domain is explicitly allowed by policy.
+  Acessar uma URL com o protocolo HTTP lança uma exceção, a menos que
+  o domínio seja explicitamente permitido pela política.
 ia-translate: true
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
-If your code tries to open an HTTP connection to a host
-on iOS or Android, a `StateException` is now thrown with
-the following message:
+Se o seu código tentar abrir uma conexão HTTP com um host
+no iOS ou no Android, agora é lançado um `StateException` com
+a seguinte mensagem:
 
 ```plaintext
 Insecure HTTP is not allowed by platform: <host>
 ```
 
-Use HTTPS instead.
+Use HTTPS no lugar.
 
-## Contexto
+## Contexto {:#context}
 
-Starting with Android [API 28][] and [iOS 9][],
-these platforms disable insecure HTTP connections by default.
+A partir do Android [API 28][] e do [iOS 9][],
+essas plataformas desabilitam conexões HTTP inseguras por padrão.
 
-With this change Flutter also disables insecure connections on
-mobile platforms. Other platforms (desktop, web, etc)
-are not affected.
+Com essa mudança, o Flutter também desabilita conexões inseguras em
+plataformas móveis. Outras plataformas (desktop, web etc.)
+não são afetadas.
 
-You can override this behavior by following the
-platform-specific guidelines to define a domain-specific
-network policy. See the migration guide below for details.
+Você pode sobrescrever esse comportamento seguindo as
+diretrizes específicas de cada plataforma para definir uma
+política de rede por domínio. Consulte o guia de migração
+abaixo para mais detalhes.
 
 [API 28]: {{site.android-dev}}/training/articles/security-config#CleartextTrafficPermitted
 [iOS 9]: {{site.apple-dev}}/documentation/bundleresources/information_property_list/nsapptransportsecurity
 
 :::important
-The following only applies to platform native sockets (sockets owned
-by the Android and iOS platforms).
+O que segue se aplica somente a sockets nativos da plataforma (sockets
+pertencentes ao Android e ao iOS).
 
-Flutter does not enforce any policy at socket level; you would be
-responsible for securing the connection. If the socket is owned by
-Dart/Flutter, no policy will be enforced.
+O Flutter não impõe nenhuma política no nível de socket; você é
+responsável por proteger a conexão. Se o socket pertencer ao
+Dart/Flutter, nenhuma política será aplicada.
 :::
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
-On iOS, you can add [NSExceptionDomains][] to your
-application's Info.plist.
+No iOS, você pode adicionar [NSExceptionDomains][] ao
+Info.plist do seu app.
 
-On Android, you can add a [network security config][] XML.
+No Android, você pode adicionar um XML de [configuração de segurança de rede][network security config].
 
-### Allowing cleartext connection for debug builds
+### Permitindo conexão sem criptografia em builds de debug {:#allowing-cleartext-connection-for-debug-builds}
 
-If you would like to allow HTTP connections for Android debug
-builds, you can add the following snippet to your $project_path\android\app\src\debug\AndroidManifest.xml:
+Se você quiser permitir conexões HTTP em builds de debug do Android,
+pode adicionar o seguinte trecho em $project_path\android\app\src\debug\AndroidManifest.xml:
 
 ```xml
 <application android:networkSecurityConfig="@xml/network_security_config">
@@ -63,7 +64,7 @@ builds, you can add the following snippet to your $project_path\android\app\src\
 </application>
 ```
 
-Then, add the network configuration to your $project_path/android/app/src/debug/res/xml/network_security_config.xml:
+Em seguida, adicione a configuração de rede em $project_path/android/app/src/debug/res/xml/network_security_config.xml:
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
@@ -71,11 +72,11 @@ Then, add the network configuration to your $project_path/android/app/src/debug/
 </network-security-config>
 ```
 
-It is also possible to set the policy per domain.  See the Android
-documentation for more information.
+Também é possível definir a política por domínio. Consulte a
+documentação do Android para mais informações.
 
-For iOS, you can follow [these instructions][] to create a `Info-debug.plist`
-and put this in:
+No iOS, você pode seguir [estas instruções][these instructions] para criar um `Info-debug.plist`
+e incluí-lo:
 
 ```xml
 <key>NSAppTransportSecurity</key>
@@ -85,32 +86,32 @@ and put this in:
 </dict>
 ```
 
-We **do not** recommend you do this for your release builds.
+**Não** recomendamos que você faça isso nas builds de release.
 
-## Additional Information
+## Informações adicionais {:#additional-information}
 
-* Build time configuration is the only way to change
-  network policy. It cannot be modified at runtime.
+* A configuração em tempo de build é a única forma de
+  alterar a política de rede. Ela não pode ser modificada em tempo de execução.
 
 [network security config]: {{site.android-dev}}/training/articles/security-config#CleartextTrafficPermitted
 [NSExceptionDomains]: {{site.apple-dev}}/documentation/bundleresources/information_property_list/nsapptransportsecurity/nsexceptiondomains
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
-Landed in version: 1.23<br>
-In stable release: 2.0.0<br>
-Reverted in version: 2.2.0 (proposed)
+Incluído na versão: 1.23<br>
+Na versão estável: 2.0.0<br>
+Revertido na versão: 2.2.0 (proposto)
 
-## Referências
+## Referências {:#references}
 
-API documentation: There's no API for this change since
-the modification to network policy is done through the
-platform specific configuration as detailed above.
+Documentação da API: não há API para esta mudança, pois a alteração
+da política de rede é feita pela configuração específica de cada
+plataforma, conforme detalhado acima.
 
-Relevant PRs:
+PRs relevantes:
 
-* [PR 20218: Plumbing for setting domain network policy][]
-* [Introduce per-domain policy for strict secure connections][]
+* [PR 20218: Infraestrutura para definir a política de rede por domínio][PR 20218: Plumbing for setting domain network policy]
+* [Introduzir política por domínio para conexões seguras estritas][Introduce per-domain policy for strict secure connections]
 
 [PR 20218: Plumbing for setting domain network policy]: {{site.repo.engine}}/pull/20218
 [Introduce per-domain policy for strict secure connections]: {{site.repo.dart-sdk}}/commit/d878cfbf20375befa09f9bf85f0ba2b87b319427

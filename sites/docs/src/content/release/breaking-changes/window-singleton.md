@@ -1,99 +1,100 @@
 ---
-title: The window singleton is deprecated
+title: O singleton window está obsoleto
 description: >
+  Em preparação para o suporte a múltiplas views e
+  múltiplas janelas, o singleton window foi tornado obsoleto.
 ia-translate: true
-  In preparation for supporting multiple views and
-  multiple windows the window singleton has been deprecated.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Resumo
+## Resumo {:#summary}
 
-In preparation for supporting multiple views and multiple windows, the `window`
-singleton has been deprecated. Code previously relying on the `window` singleton
-needs to look up the specific view it wants to operate on via the `View.of` API
-or interact with the `PlatformDispatcher` directly.
+Em preparação para o suporte a múltiplas views e múltiplas janelas, o singleton
+`window` foi tornado obsoleto. O código que antes dependia do singleton `window`
+precisa buscar a view específica com a qual quer trabalhar, por meio da API
+`View.of`, ou interagir diretamente com o `PlatformDispatcher`.
 
-## Context
+## Contexto {:#context}
 
-Originally, Flutter assumed that an application would only consist of a single
-view (the `window`) into which content can be drawn. In a multi-view world, this
-assumption no longer makes sense and the APIs encoding this assumption have
-been deprecated. Instead, applications and libraries that relied on these APIs
-must choose a specific view they want to operate on and
-migrate to new multi-view compatible APIs as outlined in this migration guide.
+Originalmente, o Flutter presumia que um aplicativo consistiria em uma única
+view (a `window`) na qual o conteúdo pode ser desenhado. Em um mundo com
+múltiplas views, essa premissa não faz mais sentido, e as APIs que
+a codificavam foram tornadas obsoletas. Em vez disso, aplicativos e bibliotecas
+que dependiam dessas APIs precisam escolher a view específica
+com a qual querem trabalhar e migrar para as novas APIs compatíveis
+com múltiplas views, conforme descrito neste guia de migração.
 
-## Description of change
+## Descrição da mudança {:#description-of-the-change}
 
-The APIs that have been deprecated as part of this change are:
+As APIs que foram obsoletas como parte desta mudança são:
 
-* The global `window` property exposed by `dart:ui`.
-* The `window` property on the `BaseBinding` class,
-  which is usually accessed via
+* A propriedade global `window` exposta por `dart:ui`.
+* A propriedade `window` da classe `BaseBinding`, que normalmente é acessada via
   * `GestureBinding.instance.window`,
   * `SchedulerBinding.instance.window`,
   * `ServicesBinding.instance.window`,
   * `PaintingBinding.instance.window`,
   * `SemanticsBinding.instance.window`,
   * `RendererBinding.instance.window`,
-  * `WidgetsBinding.instance.window`, or
+  * `WidgetsBinding.instance.window`, ou
   * `WidgetTester.binding.window`.
-* The `SingletonFlutterView` class from `dart:ui`.
-* `TestWindow` from `flutter_test`, its constructors,
-  and all of its properties and methods.
+* A classe `SingletonFlutterView` de `dart:ui`.
+* `TestWindow` de `flutter_test`, seus construtores
+  e todas as suas propriedades e métodos.
 
-The following options exist to migrate application and library code that relies
-on these deprecated APIs:
+As opções a seguir existem para migrar o código de aplicativos e bibliotecas que
+dependem dessas APIs obsoletas:
 
-If a `BuildContext` is available, consider looking up the current `FlutterView`
-via `View.of`. This returns the `FlutterView` into
-which the widgets built by the `build` method associated with the given context
-will be drawn. The `FlutterView` provides access to the same functionality
-that was previously available on the deprecated `SingletonFlutterView` class
-returned by the deprecated `window` properties mentioned above. However, some
-of the platform-specific functionality has moved to the `PlatformDispatcher`,
-which can be accessed from the `FlutterView` returned by `View.of` via
-`FlutterView.platformDispatcher`. Using `View.of` is the preferred way of
-migrating away from the deprecated properties mentioned above.
+Se um `BuildContext` estiver disponível, considere buscar o `FlutterView` atual
+via `View.of`. Isso retorna o `FlutterView` no qual
+os widgets construídos pelo método `build` associado ao contexto dado
+serão desenhados. O `FlutterView` oferece acesso à mesma funcionalidade
+que antes estava disponível na classe obsoleta `SingletonFlutterView`,
+retornada pelas propriedades `window` obsoletas mencionadas acima. No entanto, parte da
+funcionalidade específica de plataforma foi movida para o `PlatformDispatcher`,
+que pode ser acessado a partir do `FlutterView` retornado por `View.of` via
+`FlutterView.platformDispatcher`. Usar `View.of` é a forma preferida de
+migrar para longe das propriedades obsoletas mencionadas acima.
 
-If no `BuildContext` is available to look up a `FlutterView`, the
-`PlatformDispatcher` can be consulted directly to access platform-specific
-functionality. It also maintains a list of all available `FlutterView`s in
-`PlatformDispatcher.views` to access view-specific functionality. If possible,
-the `PlatformDispatcher` should be accessed via a binding (for example
-`WidgetsBinding.instance.platformDispatcher`) instead of using the static
-`PlatformDispatcher.instance` property. This ensures that the functionality
-of the `PlatformDispatcher` can be properly mocked out in tests.
+Se nenhum `BuildContext` estiver disponível para buscar um `FlutterView`, o
+`PlatformDispatcher` pode ser consultado diretamente para acessar a
+funcionalidade específica de plataforma. Ele também mantém uma lista de todos os
+`FlutterView`s disponíveis em `PlatformDispatcher.views`, para acessar a
+funcionalidade específica de cada view. Se possível, o
+`PlatformDispatcher` deve ser acessado por meio de um binding (por exemplo,
+`WidgetsBinding.instance.platformDispatcher`), em vez de usar a propriedade
+estática `PlatformDispatcher.instance`. Isso garante que a funcionalidade
+do `PlatformDispatcher` possa ser devidamente mockada nos testes.
 
-### Testing
+### Testes {:#testing}
 
-For tests that accessed the `WidgetTester.binding.window` property to change
-window properties for testing, the following migrations are available:
+Para testes que acessavam a propriedade `WidgetTester.binding.window` para
+alterar propriedades da janela durante os testes, as seguintes migrações estão disponíveis:
 
-In tests written with `testWidgets`, two new properties have been added that
-together replace the functionality of `TestWindow`.
+Em testes escritos com `testWidgets`, foram adicionadas duas novas propriedades que,
+em conjunto, substituem a funcionalidade de `TestWindow`.
 
-* `WidgetTester.view` will provide a `TestFlutterView` that can be modified
-  similarly to `WidgetTester.binding.window`, but with only view-specific
-  properties such as the size of a view, its display pixel ratio, etc.
-  * `WidgetTester.viewOf` is available for certain multi-view use cases, but
-      should not be required for any migrations from
+* `WidgetTester.view` fornece um `TestFlutterView` que pode ser modificado
+  de forma semelhante a `WidgetTester.binding.window`, mas com apenas propriedades
+  específicas da view, como o tamanho da view, sua razão de pixels da tela etc.
+  * `WidgetTester.viewOf` está disponível para certos casos de uso com múltiplas views, mas
+      não deve ser necessário para nenhuma migração a partir de
       `WidgetTester.binding.window`.
-* `WidgetTester.platformDispatcher` will provide access to a
-  `TestPlatformDispatcher` that can be used to modify platform specific
-  properties such as the platform's locale, whether certain system features
-  are available, etc.
+* `WidgetTester.platformDispatcher` fornece acesso a um
+  `TestPlatformDispatcher` que pode ser usado para modificar propriedades
+  específicas de plataforma, como o locale da plataforma, se certos recursos
+  do sistema estão disponíveis etc.
 
-## Guia de migração
+## Guia de migração {:#migration-guide}
 
-Instead of accessing the static `window` property, application and library code
-that has access to a `BuildContext` should use `View.of` to look up the
-`FlutterView` the context is associated with. Some properties have moved to
-the `PlatformDispatcher` accessible from the view via the `platformDispatcher`
-getter.
+Em vez de acessar a propriedade estática `window`, o código de aplicativos e bibliotecas
+que tem acesso a um `BuildContext` deve usar `View.of` para buscar o
+`FlutterView` ao qual o contexto está associado. Algumas propriedades foram movidas para
+o `PlatformDispatcher`, acessível a partir da view via o getter
+`platformDispatcher`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 Widget build(BuildContext context) {
@@ -103,7 +104,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 Widget build(BuildContext context) {
@@ -113,10 +114,10 @@ Widget build(BuildContext context) {
 }
 ```
 
-If no `BuildContext` is available, the `PlatformDispatcher` exposed by the
-bindings can be consulted directly.
+Se nenhum `BuildContext` estiver disponível, o `PlatformDispatcher` exposto pelos
+bindings pode ser consultado diretamente.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 double getTextScaleFactor() {
@@ -124,7 +125,7 @@ double getTextScaleFactor() {
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 double getTextScaleFactor() {
@@ -133,18 +134,18 @@ double getTextScaleFactor() {
 }
 ```
 
-### Testing
+### Testes {:#testing-migration}
 
-In tests written with `testWidget`, the new `view` and `platformDispatcher`
-accessors should be used instead.
+Em testes escritos com `testWidget`, use as novas propriedades `view` e
+`platformDispatcher`.
 
-#### Setting view-specific properties
+#### Definindo propriedades específicas da view {:#setting-view-specific-properties}
 
-`TestFlutterView` has also made an effort to make the test API clearer and more
-concise by using setters with the same name as their related getter instead of
-setters with the `TestValue` suffix.
+`TestFlutterView` também buscou tornar a API de testes mais clara e concisa, usando
+setters com o mesmo nome do getter relacionado, em vez de setters com o
+sufixo `TestValue`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 testWidget('test name', (WidgetTester tester) async {
@@ -160,7 +161,7 @@ testWidget('test name', (WidgetTester tester) async {
 });
 ```
 
-Code after migration
+Código após a migração:
 
 ```dart
 testWidget('test name', (WidgetTester tester) async {
@@ -176,16 +177,16 @@ testWidget('test name', (WidgetTester tester) async {
 });
 ```
 
-#### Resetting view-specific properties
+#### Redefinindo propriedades específicas da view {:#resetting-view-specific-properties}
 
-`TestFlutterView` retains the capability to reset individual properties or the
-entire view but, in order to be more clear and consist, the naming of these
-methods has changed from `clear<property>TestValue` and `clearAllTestValues` to
-`reset<property>` and `reset` respectively.
+`TestFlutterView` mantém a capacidade de redefinir propriedades individuais ou a
+view inteira, mas, para ficar mais claro e consistente, os nomes desses
+métodos mudaram de `clear<property>TestValue` e `clearAllTestValues` para
+`reset<property>` e `reset`, respectivamente.
 
-##### Resetting individual properties
+##### Redefinindo propriedades individuais {:#resetting-individual-properties}
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 testWidget('test name', (WidgetTester tester) async {
@@ -201,7 +202,7 @@ testWidget('test name', (WidgetTester tester) async {
 });
 ```
 
-Code after migration
+Código após a migração:
 
 ```dart
 testWidget('test name', (WidgetTester tester) async {
@@ -217,9 +218,9 @@ testWidget('test name', (WidgetTester tester) async {
 });
 ```
 
-##### Resetting all properties at once
+##### Redefinindo todas as propriedades de uma vez {:#resetting-all-properties-at-once}
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 testWidget('test name', (WidgetTester tester) async {
@@ -227,7 +228,7 @@ testWidget('test name', (WidgetTester tester) async {
 });
 ```
 
-Code after migration
+Código após a migração:
 
 ```dart
 testWidget('test name', (WidgetTester tester) async {
@@ -235,14 +236,14 @@ testWidget('test name', (WidgetTester tester) async {
 });
 ```
 
-#### Setting platform-specific properties
+#### Definindo propriedades específicas da plataforma {:#setting-platform-specific-properties}
 
-`TestPlatformDispatcher` retains the same functionality and naming scheme for
-test setters as did `TestWindow`, so migration of platform-specific properties
-mainly consists of calling the same setters on the new
-`WidgetTester.platformDispatcher` accessor.
+`TestPlatformDispatcher` mantém a mesma funcionalidade e o mesmo esquema de nomes
+para os setters de teste que `TestWindow`, então a migração das propriedades
+específicas de plataforma consiste principalmente em chamar os mesmos setters no novo
+acessor `WidgetTester.platformDispatcher`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 testWidgets('test name', (WidgetTester tester) async {
@@ -260,7 +261,7 @@ testWidgets('test name', (WidgetTester tester) async {
 });
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 testWidgets('test name', (WidgetTester tester) async {
@@ -278,15 +279,15 @@ testWidgets('test name', (WidgetTester tester) async {
 });
 ```
 
-#### Resetting platform-specific properties
+#### Redefinindo propriedades específicas da plataforma {:#resetting-platform-specific-properties}
 
-Similarly to setting properties, resetting platform-specific properties consists
-mainly of changing from the `binding.window` accessor to the
-`platformDispatcher` accessor.
+Assim como na definição de propriedades, redefinir propriedades específicas de plataforma consiste
+principalmente em trocar o acessor `binding.window` pelo
+acessor `platformDispatcher`.
 
-##### Resetting individual properties
+##### Redefinindo propriedades individuais {:#resetting-individual-platform-properties}
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 testWidgets('test name', (WidgetTester tester) async {
@@ -304,7 +305,7 @@ testWidgets('test name', (WidgetTester tester) async {
 });
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 testWidgets('test name', (WidgetTester tester) async {
@@ -322,9 +323,9 @@ testWidgets('test name', (WidgetTester tester) async {
 });
 ```
 
-##### Resetting all properties at once
+##### Redefinindo todas as propriedades de uma vez {:#resetting-all-platform-properties-at-once}
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 testWidgets('test name', (WidgetTester tester) async {
@@ -332,7 +333,7 @@ testWidgets('test name', (WidgetTester tester) async {
 });
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 testWidgets('test name', (WidgetTester tester) async {
@@ -340,14 +341,14 @@ testWidgets('test name', (WidgetTester tester) async {
 });
 ```
 
-## Linha do tempo
+## Linha do tempo {:#timeline}
 
-Landed in version: 3.9.0-13.0.pre.20<br>
-In stable release: 3.10.0
+Incluído na versão: 3.9.0-13.0.pre.20<br>
+Na versão estável: 3.10.0
 
-## Referências
+## Referências {:#references}
 
-API documentation:
+Documentação da API:
 
 * [`View.of`][]
 * [`FlutterView`][]
@@ -356,13 +357,13 @@ API documentation:
 * [`TestFlutterView`][]
 * [`TestWidgetsFlutterBinding.window`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue 116929][]
 * [Issue 117481][]
 * [Issue 121915][]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Deprecate SingletonFlutterWindow and global window singleton][]
 * [Deprecate BindingBase.window][]

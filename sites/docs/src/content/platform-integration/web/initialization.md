@@ -116,7 +116,7 @@ em vez de fixar `"main.dart.js"` no código ou chamar a API descontinuada
 
 [web-content-hashing]: /deployment/web#web-content-hashing
 
-## Personalizar o Flutter loader
+## Personalizar o Flutter loader {:#customize-the-flutter-loader}
 
 A API JavaScript `_flutter.loader.load()` pode ser invocada com
 argumentos opcionais para personalizar o comportamento de inicialização:

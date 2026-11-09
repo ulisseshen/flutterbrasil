@@ -102,7 +102,7 @@ garantir a inclusão no próximo lançamento estável.
     </Tab>
 </Tabs>
 
-## Canal beta (Beta channel)
+## Canal beta (Beta channel) {:#beta-channel}
 
 <Tabs key="os-archive-tabs">
     <Tab name="Windows">

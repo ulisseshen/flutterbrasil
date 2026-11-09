@@ -49,7 +49,7 @@ Esta visão geral está dividida em várias seções:
 1. **Suporte para web**: Observações finais sobre as características do
    Flutter em um ambiente de navegador.
 
-## Camadas arquiteturais
+## Camadas arquiteturais {:#architectural-layers}
 
 O Flutter é projetado como um sistema extensível e em camadas. Ele existe como uma série de
 bibliotecas independentes, cada uma dependendo da camada subjacente. Nenhuma camada tem
@@ -769,7 +769,7 @@ além do escopo deste artigo de alto nível, mas mais informações podem ser en
 [nesta palestra sobre o pipeline de renderização do
 Flutter]({{site.yt.watch}}?v=UUfXWzp0-DU).
 
-## Embedding de plataforma
+## Embedding de plataforma {:#platform-embedding}
 
 Como vimos, em vez de serem traduzidas para os widgets equivalentes do SO,
 as interfaces de usuário do Flutter são construídas, dispostas, compostas e pintadas pelo próprio

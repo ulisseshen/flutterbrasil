@@ -15,7 +15,7 @@ dados estáticos (por exemplo, arquivos JSON),
 arquivos de configuração, ícones e imagens
 (JPEG, WebP, GIF, WebP/GIF animados, PNG, BMP e WBMP).
 
-## Especificando assets
+## Especificando assets {:#specifying-assets}
 
 Flutter usa o arquivo [`pubspec.yaml`][`pubspec.yaml`],
 localizado na raiz do seu projeto,

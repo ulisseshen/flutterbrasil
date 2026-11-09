@@ -3,25 +3,26 @@ title: Breaking changes and migration guides
 shortTitle: Breaking changes
 description: >-
    A collection of notices and migration guides for breaking changes in Flutter.
+ia-translate: true
 ---
 
-As described in the [breaking change policy][],
-on occasion we publish guides
-for migrating code across a breaking change.
+Conforme descrito na [política de breaking change][breaking change policy],
+ocasionalmente publicamos guias
+para migrar código através de uma breaking change.
 
 {% render "docs/breaking-changes.md" %}
 
-To be notified about future breaking changes,
-join the groups [Flutter announce][] and [Dart announce][].
+Para ser notificado sobre futuras breaking changes,
+junte-se aos grupos [Flutter announce][] e [Dart announce][].
 
-When facing Dart errors after upgrading Flutter,
-consider using the [`dart fix`][] command
-to automatically migrate your code.
-Not every breaking change is supported in this way,
-but many are.
+Ao enfrentar erros do Dart após atualizar o Flutter,
+considere usar o comando [`dart fix`][]
+para migrar automaticamente seu código.
+Nem toda breaking change é suportada desta forma,
+mas muitas são.
 
-To avoid being broken by future versions of Flutter,
-consider submitting your tests to the framework's [test registry][].
+Para evitar ser quebrado por versões futuras do Flutter,
+considere submeter seus testes para o [registro de testes][test registry] do framework.
 
 [breaking change policy]: /release/compatibility-policy
 [Flutter announce]: {{site.groups.flutter-announce}}
@@ -29,23 +30,23 @@ consider submitting your tests to the framework's [test registry][].
 [`dart fix`]: /tools/flutter-fix
 [test registry]: https://github.com/flutter/tests
 
-## Breaking changes by release
+## Breaking changes por versão {:#breaking-changes-by-release}
 
-The following guides are available.
-They're sorted by release and listed in alphabetical order:
+Os seguintes guias estão disponíveis.
+Eles estão organizados por versão e listados em ordem alfabética:
 
-<!-- ### Not yet released to stable -->
+<!-- ### Ainda não lançado na stable -->
 
 <a id="released-in-flutter-350" aria-hidden="true"></a>
-### Released in Flutter 3.50
+### Lançado no Flutter 3.50
 
-* [Added `enabled` to `DropdownButtonFormField` and made `onChanged` optional][] (`material_ui` 1.8.0)
-* [Migrate to standalone `material_ui` and `cupertino_ui` packages][]
-* [Restrict Android engine flags in release mode][]
-* [Soft hyphens render at line breaks][]
-* [Stricter Android `Intent` verification for app entrypoints][]
-* [Web `viewport-fit=cover` `SafeArea` support][]
-* [WidgetSpan order in right-to-left text][]
+* [Adicionado `enabled` ao `DropdownButtonFormField` e `onChanged` tornado opcional][Added `enabled` to `DropdownButtonFormField` and made `onChanged` optional] (`material_ui` 1.8.0)
+* [Migre para os pacotes independentes `material_ui` e `cupertino_ui`][Migrate to standalone `material_ui` and `cupertino_ui` packages]
+* [Restringe flags do engine Android em modo release][Restrict Android engine flags in release mode]
+* [Hifens suaves são renderizados nas quebras de linha][Soft hyphens render at line breaks]
+* [Verificação mais rigorosa de `Intent` do Android para entrypoints de apps][Stricter Android `Intent` verification for app entrypoints]
+* [Suporte a SafeArea com viewport-fit=cover na web][Web `viewport-fit=cover` `SafeArea` support]
+* [Ordem de WidgetSpan em texto da direita para a esquerda][WidgetSpan order in right-to-left text]
 
 [Added `enabled` to `DropdownButtonFormField` and made `onChanged` optional]: /release/breaking-changes/dropdownbuttonformfield-enabled-parameter
 [Migrate to standalone `material_ui` and `cupertino_ui` packages]: /release/breaking-changes/material-ui-and-cupertino-ui
@@ -56,28 +57,28 @@ They're sorted by release and listed in alphabetical order:
 [WidgetSpan order in right-to-left text]: /release/breaking-changes/widgetspan-rtl-bidi-order
 
 <a id="released-in-flutter-347" aria-hidden="true"></a>
-### Released in Flutter 3.47
+### Lançado no Flutter 3.47
 
-* [OpenGL ES render-to-texture content is stored top-down][]
-* [Update semantics header and headingLevel behavior on iOS and Android][]
-* [Removal of `describeEnum`][]
+* [O conteúdo de render-to-texture do OpenGL ES é armazenado de cima para baixo][OpenGL ES render-to-texture content is stored top-down]
+* [Atualização do comportamento de header e headingLevel no iOS e Android][Update semantics header and headingLevel behavior on iOS and Android]
+* [Remove describeEnum][Removal of `describeEnum`]
 
 [OpenGL ES render-to-texture content is stored top-down]: /release/breaking-changes/opengles-render-to-texture-top-down
 [Update semantics header and headingLevel behavior on iOS and Android]: /release/breaking-changes/semantics-header-heading-level
 [Removal of `describeEnum`]: /release/breaking-changes/remove-describeEnum
 
 <a id="released-in-flutter-344" aria-hidden="true"></a>
-### Released in Flutter 3.44
+### Lançado no Flutter 3.44
 
-* [Changing RawMenuAnchor close order][]
-* [Deprecate `onReorder` callback][]
-* [Deprecate `TextInputConnection.setStyle`][]
-* [Deprecated `cacheExtent` and `cacheExtentStyle`][]
-* [`IconData` class marked as `final`][]
-* [Large screen orientation and resizability restrictions ignored on Android 17][]
-* [ListTile reports an error in debug when wrapped in a colored widget][]
-* [Migrating Flutter Android projects to built-in Kotlin][]
-* [Page transition builders reorganization][]
+* [Mudança na ordem de fechamento do RawMenuAnchor][Changing RawMenuAnchor close order]
+* [Deprecação do callback onReorder][Deprecate `onReorder` callback]
+* [Descontinua `TextInputConnection.setStyle`][Deprecate `TextInputConnection.setStyle`]
+* ['`cacheExtent` e `cacheExtentStyle` descontinuados'][Deprecated `cacheExtent` and `cacheExtentStyle`]
+* [Classe IconData marcada como final][`IconData` class marked as `final`]
+* [Restrições de orientação e redimensionamento em telas grandes ignoradas no Android 17][Large screen orientation and resizability restrictions ignored on Android 17]
+* [ListTile reporta um erro em debug quando envolvido por um widget colorido][ListTile reports an error in debug when wrapped in a colored widget]
+* [Migração de projetos Android do Flutter para o Kotlin integrado][Migrating Flutter Android projects to built-in Kotlin]
+* [Reorganização dos builders de transição de página][Page transition builders reorganization]
 
 [Changing RawMenuAnchor close order]: /release/breaking-changes/raw-menu-anchor-close-order
 [Deprecate `onReorder` callback]: /release/breaking-changes/deprecate-onreorder-callback
@@ -90,13 +91,13 @@ They're sorted by release and listed in alphabetical order:
 [Page transition builders reorganization]: /release/breaking-changes/decouple-page-transition-builders
 
 <a id="released-in-flutter-341" aria-hidden="true"></a>
-### Released in Flutter 3.41
+### Lançado no Flutter 3.41
 
-* [Merged threads on Linux][]
-* [`FontWeight` also controls the weight attribute of variable fonts][]
-* [Deprecate `containsSemantics` in favor of `isSemantics`][]
-* [Deprecate `findChildIndexCallback` in favor of `findItemIndexCallback` in `ListView` and `SliverList` separated constructors][]
-* [Material 3 tokens update][]
+* [Threads unificadas no Linux][Merged threads on Linux]
+* [FontWeight também controla o atributo weight de fontes variáveis][`FontWeight` also controls the weight attribute of variable fonts]
+* [Depreciação de `containsSemantics` em favor de `isSemantics`][Deprecate `containsSemantics` in favor of `isSemantics`]
+* [Depreciação de `findChildIndexCallback` em favor de `findItemIndexCallback` nos construtores separated de `ListView` e `SliverList`][Deprecate `findChildIndexCallback` in favor of `findItemIndexCallback` in `ListView` and `SliverList` separated constructors]
+* [Atualização do Material Color Utilities no Flutter][Material 3 tokens update]
 
 [Merged threads on Linux]: /release/breaking-changes/linux-merged-threads
 [`FontWeight` also controls the weight attribute of variable fonts]: /release/breaking-changes/font-weight-variation
@@ -105,14 +106,14 @@ They're sorted by release and listed in alphabetical order:
 [Material 3 tokens update]: /release/breaking-changes/material-color-utilities
 
 <a id="released-in-flutter-338" aria-hidden="true"></a>
-### Released in Flutter 3.38
+### Lançado no Flutter 3.38
 
-* [`CupertinoDynamicColor` wide gamut support][]
-* [Deprecate `OverlayPortal.targetsRootOverlay`][]
-* [Deprecate `SemanticsProperties.focusable` and `SemanticsConfiguration.isFocusable`][]
-* [SnackBar with action no longer auto-dismisses][]
-* [The default page transition on Android is now `PredictiveBackPageTransitionBuilder`][]
-* [UISceneDelegate adoption][]
+* [Guia de migração para CupertinoDynamicColor de gamut amplo][`CupertinoDynamicColor` wide gamut support]
+* [Deprecate `OverlayPortal.targetsRootOverlay` and enforce `LookupBoundary` in `Overlay.of`][Deprecate `OverlayPortal.targetsRootOverlay`]
+* [Descontinuação de `SemanticsProperties.focusable` e `SemanticsConfiguration.isFocusable`][Deprecate `SemanticsProperties.focusable` and `SemanticsConfiguration.isFocusable`]
+* [SnackBar com action não fecha mais automaticamente][SnackBar with action no longer auto-dismisses]
+* [A transição de página padrão no Android agora é PredictiveBackPageTransitionsBuilder][The default page transition on Android is now `PredictiveBackPageTransitionBuilder`]
+* [Adoção do UIScene][UISceneDelegate adoption]
 
 [`CupertinoDynamicColor` wide gamut support]: /release/breaking-changes/wide-gamut-cupertino-dynamic-color
 [Deprecate `OverlayPortal.targetsRootOverlay`]: /release/breaking-changes/deprecate-overlay-portal-targets-root
@@ -122,18 +123,18 @@ They're sorted by release and listed in alphabetical order:
 [UISceneDelegate adoption]: /release/breaking-changes/uiscenedelegate
 
 <a id="released-in-flutter-335" aria-hidden="true"></a>
-### Released in Flutter 3.35
+### Lançado no Flutter 3.35
 
-* [Component theme normalization updates][]
-* [Deprecate `DropdownButtonFormField` `value` parameter in favor of `initialValue`][]
-* [Deprecate app bar color][]
-* [Redesigned the `Radio` widget][]
-* [Removed semantics elevation and thickness][]
-* [The `Form` widget no longer supports being a sliver][]
-* [Flutter now sets default `abiFilters` in Android builds][]
-* [Merged threads on macOS and Windows][]
-* [The `Visibility` widget is no longer focusable by default when `maintainState` is enabled][]
-* [`$FLUTTER_ROOT/version` replaced by `$FLUTTER_ROOT/bin/cache/flutter.version.json`][]
+* [Atualizações de normalização de temas de componentes][Component theme normalization updates]
+* [>-][Deprecate `DropdownButtonFormField` `value` parameter in favor of `initialValue`]
+* [Descontinuação do parâmetro color no tema do AppBar][Deprecate app bar color]
+* [Widget `Radio` redesenhado][Redesigned the `Radio` widget]
+* [Removido elevation e thickness da semântica][Removed semantics elevation and thickness]
+* [O widget Form não suporta mais ser um sliver.][The `Form` widget no longer supports being a sliver]
+* [Flutter agora define `abiFilters` padrão em builds Android][Flutter now sets default `abiFilters` in Android builds]
+* [Threads mescladas no macOS e Windows][Merged threads on macOS and Windows]
+* [O widget Visibility não é mais focalizável por padrão quando maintainState está habilitado][The `Visibility` widget is no longer focusable by default when `maintainState` is enabled]
+* [$FLUTTER_ROOT/bin/cache/flutter.version.json substitui $FLUTTER_ROOT/version][`$FLUTTER_ROOT/version` replaced by `$FLUTTER_ROOT/bin/cache/flutter.version.json`]
 
 [Component theme normalization updates]: /release/breaking-changes/component-theme-normalization-updates
 [Deprecate `DropdownButtonFormField` `value` parameter in favor of `initialValue`]: /release/breaking-changes/deprecate-dropdownbuttonformfield-value
@@ -147,19 +148,19 @@ They're sorted by release and listed in alphabetical order:
 [`$FLUTTER_ROOT/version` replaced by `$FLUTTER_ROOT/bin/cache/flutter.version.json`]: /release/breaking-changes/flutter-root-version-file
 
 <a id="released-in-flutter-332" aria-hidden="true"></a>
-### Released in Flutter 3.32
+### Lançado no Flutter 3.32
 
-* [Deprecate `SystemContextMenuController.show`][]
-* [Deprecate `ExpansionTileController` in favor of `ExpansibleController`][]
-* [Deprecate `RouteTransitionRecord.markForRemove`][deprecate-markForRemove]
-  in favor of `RouteTransitionRecord.markForComplete`
-* [Deprecate `ThemeData.indicatorColor` in favor of `TabBarThemeData.indicatorColor`][]
-* [Material Theme System Updates][]
-* [`.flutter-plugins-dependencies` replaces `.flutter-plugins`][]
-* [Localized messages are generated into source, not a synthetic package][]
-* [Changing the default `goldenFileComparator` for `integration_test`s][]
-* [Deprecate `InputDecoration.maintainHintHeight` in favor of `InputDecoration.maintainHintSize`][]
-* [Underdamped spring formula changed][]
+* [SystemContextMenuController.show descontinuado][Deprecate `SystemContextMenuController.show`]
+* [Descontinuação do ExpansionTileController][Deprecate `ExpansionTileController` in favor of `ExpansibleController`]
+* [Quando uma rota é removida da pilha, os futuros associados devem ser completados][deprecate-markForRemove]
+  em favor de `RouteTransitionRecord.markForComplete`
+* [Descontinuar `ThemeData.indicatorColor` em favor de][Deprecate `ThemeData.indicatorColor` in favor of `TabBarThemeData.indicatorColor`]
+* [Atualizações do sistema de tema Material][Material Theme System Updates]
+* [.flutter-plugins-dependencies substitui .flutter-plugins.][`.flutter-plugins-dependencies` replaces `.flutter-plugins`]
+* [Mensagens localizadas são geradas no código fonte, não em um pacote sintético][Localized messages are generated into source, not a synthetic package]
+* [Comparadores padrão de golden-file em testes de integração alterados no Android e iOS.][Changing the default `goldenFileComparator` for `integration_test`s]
+* [Depreciar `InputDecoration.maintainHintHeight` em favor de][Deprecate `InputDecoration.maintainHintHeight` in favor of `InputDecoration.maintainHintSize`]
+* [Fórmula de spring underdamped alterada][Underdamped spring formula changed]
 
 [Deprecate `SystemContextMenuController.show`]: /release/breaking-changes/system_context_menu_controller_show
 [Deprecate `ExpansionTileController` in favor of `ExpansibleController`]: /release/breaking-changes/expansion-tile-controller
@@ -173,14 +174,14 @@ They're sorted by release and listed in alphabetical order:
 [Underdamped spring formula changed]: /release/breaking-changes/spring-description-underdamped
 
 <a id="released-in-flutter-329" aria-hidden="true"></a>
-### Released in Flutter 3.29
+### Lançado no Flutter 3.29
 
-* [Removal of v1 Android embedding Java APIs][]
-* [Deprecate `WebGoldenComparator`][]
-* [Deprecate `ThemeData.dialogBackgroundColor` in favor of `DialogThemeData.backgroundColor`][]
-* [`ImageFilter.blur` default tile mode automatic selection][]
-* [Updated Material 3 `Slider`][]
-* [Updated Material 3 progress indicators][]
+* [Remoção das APIs Java do Android v1 embedding][Removal of v1 Android embedding Java APIs]
+* [Comparações golden específicas da Web não são mais suportadas][Deprecate `WebGoldenComparator`]
+* [Descontinuar `ThemeData.dialogBackgroundColor` em favor de][Deprecate `ThemeData.dialogBackgroundColor` in favor of `DialogThemeData.backgroundColor`]
+* [ImageFilter.blur default tile mode automatic selection.][`ImageFilter.blur` default tile mode automatic selection]
+* ['`Slider` do Material 3 atualizado'][Updated Material 3 `Slider`]
+* [Indicadores de progresso Material 3 atualizados][Updated Material 3 progress indicators]
 
 [Removal of v1 Android embedding Java APIs]: /release/breaking-changes/v1-android-embedding
 [Deprecate `WebGoldenComparator`]: /release/breaking-changes/web-golden-comparator
@@ -190,14 +191,14 @@ They're sorted by release and listed in alphabetical order:
 [Updated Material 3 `Slider`]: /release/breaking-changes/updated-material-3-slider
 
 <a id="released-in-flutter-327" aria-hidden="true"></a>
-### Released in Flutter 3.27
+### Lançado no Flutter 3.27
 
-* [`Color` wide gamut support][]
-* [Component theme normalization][]
-* [Deep links flag change][]
-* [Material 3 Tokens Update in Flutter][]
-* [Remove invalid parameters for `InputDecoration.collapsed`][]
-* [Set default for SystemUiMode to Edge-to-Edge][]
+* [Guia de migração para Color de gama ampla][`Color` wide gamut support]
+* [Normalização de component theme][Component theme normalization]
+* [Mudança na flag de deep links][Deep links flag change]
+* [Atualização de tokens Material 3 no Flutter][Material 3 Tokens Update in Flutter]
+* [Remover parâmetros inválidos para `InputDecoration.collapsed`][Remove invalid parameters for `InputDecoration.collapsed`]
+* [Definir padrão de `SystemUiMode` para edge-to-edge][Set default for SystemUiMode to Edge-to-Edge]
 
 [`Color` wide gamut support]: /release/breaking-changes/wide-gamut-framework
 [Component theme normalization]: /release/breaking-changes/component-theme-normalization
@@ -207,12 +208,12 @@ They're sorted by release and listed in alphabetical order:
 [Set default for SystemUiMode to Edge-to-Edge]: /release/breaking-changes/default-systemuimode-edge-to-edge
 
 <a id="released-in-flutter-324" aria-hidden="true"></a>
-### Released in Flutter 3.24
+### Lançado no Flutter 3.24
 
-* [Navigator's page APIs breaking change][]
-* [Generic types in `PopScope`][]
-* [Deprecate `ButtonBar` in favor of `OverflowBar`][]
-* [New APIs for Android plugins that render to a `Surface`][]
+* [Alteração incompatível nas APIs de página do Navigator][Navigator's page APIs breaking change]
+* [Tipos genéricos no PopScope][Generic types in `PopScope`]
+* [Descontinuar `ButtonBar` em favor de `OverflowBar`][Deprecate `ButtonBar` in favor of `OverflowBar`]
+* [Novas APIs para plugins Android que renderizam em uma Surface][New APIs for Android plugins that render to a `Surface`]
 
 [Navigator's page APIs breaking change]: /release/breaking-changes/navigator-and-page-api
 [Generic types in `PopScope`]: /release/breaking-changes/popscope-with-result
@@ -220,14 +221,14 @@ They're sorted by release and listed in alphabetical order:
 [New APIs for Android plugins that render to a `Surface`]: /release/breaking-changes/android-surface-plugins
 
 <a id="released-in-flutter-322" aria-hidden="true"></a>
-### Released in Flutter 3.22
+### Lançado no Flutter 3.22
 
-* [Deprecated API removed after v3.19][]
-* [Rename `MaterialState` to `WidgetState`][]
-* [Introduce new `ColorScheme` roles][]
-* [Dropping support for Android KitKat][]
-* [Nullable `PageView.controller`][]
-* [Rename `MemoryAllocations` to `FlutterMemoryAllocations`][]
+* [Deprecated API removed after v3.19][Deprecated API removed after v3.19]
+* [Renomear MaterialState para WidgetState][Rename `MaterialState` to `WidgetState`]
+* [Introduce new ColorScheme roles for Material 3][Introduce new `ColorScheme` roles]
+* [Descontinuando suporte para Android KitKat][Dropping support for Android KitKat]
+* [Tornar PageView.controller anulável][Nullable `PageView.controller`]
+* [Descontinuar MemoryAllocations em favor de FlutterMemoryAllocations][Rename `MemoryAllocations` to `FlutterMemoryAllocations`]
 
 [Deprecated API removed after v3.19]: /release/breaking-changes/3-19-deprecations
 [Rename `MaterialState` to `WidgetState`]: /release/breaking-changes/material-state
@@ -238,14 +239,14 @@ They're sorted by release and listed in alphabetical order:
 
 <a id="released-in-flutter-319" aria-hidden="true"></a>
 
-### Released in Flutter 3.19
+### Lançado no Flutter 3.19
 
-* [Deprecated API removed after v3.16][]
-* [Migrate RawKeyEvent/RawKeyboard system to KeyEvent/HardwareKeyboard system][]
-* [Deprecate imperative apply of Flutter's Gradle plugins][]
-* [Default multitouch scrolling][]
-* [Accessibility traversal order of tooltip changed][]
-* [Stop generating `AssetManifest.json`][]
+* [APIs descontinuadas removidas após v3.16][Deprecated API removed after v3.16]
+* [Migrar sistema RawKeyEvent/RawKeyboard para sistema KeyEvent/HardwareKeyboard][Migrate RawKeyEvent/RawKeyboard system to KeyEvent/HardwareKeyboard system]
+* [Aplicação imperativa descontinuada dos plugins Gradle do Flutter][Deprecate imperative apply of Flutter's Gradle plugins]
+* [Scrolling multitouch padrão][Default multitouch scrolling]
+* [Ordem de travessia de acessibilidade do tooltip alterada][Accessibility traversal order of tooltip changed]
+* [Remoção do AssetManifest.json][Stop generating `AssetManifest.json`]
 
 [Deprecated API removed after v3.16]: /release/breaking-changes/3-16-deprecations
 [Migrate RawKeyEvent/RawKeyboard system to KeyEvent/HardwareKeyboard system]: /release/breaking-changes/key-event-migration
@@ -255,21 +256,21 @@ They're sorted by release and listed in alphabetical order:
 [Stop generating `AssetManifest.json`]: /release/breaking-changes/asset-manifest-dot-json
 
 <a id="released-in-flutter-316" aria-hidden="true"></a>
-### Released in Flutter 3.16
+### Lançado no Flutter 3.16
 
-* [Migrating to Material 3][]
-* [Migrate ShortcutActivator and ShortcutManager to KeyEvent system][]
-* [The `ThemeData.useMaterial3` property is now set to true by default][]
-* [Deprecated API removed after v3.13][]
-* [Customize tabs alignment using the new `TabBar.tabAlignment` property][]
-* [Deprecate `textScaleFactor` in favor of `TextScaler`][]
-* [Android 14 nonlinear font scaling enabled][]
-* [Deprecate `describeEnum` and update `EnumProperty` to be type strict][]
-* [Deprecated just-in-time navigation pop APIs for Android Predictive Back][]
-* [Deprecated `Paint.enableDithering`][]
-* [Updated default text styles for menus][]
-* [Windows: External windows should notify Flutter engine of lifecycle changes][]
-* [Windows build path changed to add the target architecture][]
+* [Migrate to Material 3][Migrating to Material 3]
+* [Migrar ShortcutActivator e ShortcutManager para o sistema KeyEvent][Migrate ShortcutActivator and ShortcutManager to KeyEvent system]
+* [O flag ThemeData.useMaterial3 é true por padrão][The `ThemeData.useMaterial3` property is now set to true by default]
+* [API descontinuada removida após v3.13][Deprecated API removed after v3.13]
+* [Customizando alinhamento de tabs usando a nova propriedade TabBar.tabAlignment][Customize tabs alignment using the new `TabBar.tabAlignment` property]
+* [Descontinuação de textScaleFactor em favor de TextScaler][Deprecate `textScaleFactor` in favor of `TextScaler`]
+* [Escalonamento de fonte não linear do Android 14 habilitado][Android 14 nonlinear font scaling enabled]
+* [Guia de migração para describeEnum e EnumProperty][Deprecate `describeEnum` and update `EnumProperty` to be type strict]
+* [Retorno preditivo do Android][Deprecated just-in-time navigation pop APIs for Android Predictive Back]
+* [Paint.enableDithering is now true by default.][Deprecated `Paint.enableDithering`]
+* [Estilos de texto padrão atualizados para menus][Updated default text styles for menus]
+* [Introdução do FlutterEngine::ProcessExternalWindowMessage][Windows: External windows should notify Flutter engine of lifecycle changes]
+* [Caminho de build do Windows alterado para adicionar a arquitetura de destino][Windows build path changed to add the target architecture]
 
 [Migrating to Material 3]: /release/breaking-changes/material-3-migration
 [Migrate ShortcutActivator and ShortcutManager to KeyEvent system]: /release/breaking-changes/shortcut-key-event-migration
@@ -286,17 +287,17 @@ They're sorted by release and listed in alphabetical order:
 [Windows build path changed to add the target architecture]: /release/breaking-changes/windows-build-architecture
 
 <a id="released-in-flutter-313" aria-hidden="true"></a>
-### Released in Flutter 3.13
+### Lançado no Flutter 3.13
 
-* [Added missing `dispose()` for some disposable objects in Flutter][]
-* [Deprecated API removed after v3.10][]
-* [Added AppLifecycleState.hidden][] enum value
-* [Moved ReorderableListView's localized strings][] from material to widgets localizations
-* [Removed `ignoringSemantics`][] properties
-* [Deprecated `RouteInformation.location`][] and its related APIs
-* [Updated EditableText scroll into view behavior][]
-* [Migrate a Windows project to ensure the window is shown][]
-* [Updated `Checkbox.fillColor` behavior][]
+* [Adicionado `dispose()` ausente para alguns objetos descartáveis no Flutter][Added missing `dispose()` for some disposable objects in Flutter]
+* [API descontinuada removida após v3.10][Deprecated API removed after v3.10]
+* [Guia de migração para adicionar AppLifecycleState.hidden][Added AppLifecycleState.hidden] enum value
+* [Guia de migração para strings localizadas do Material][Moved ReorderableListView's localized strings] from material to widgets localizations
+* [Guia de migração para ignoringSemantics em IgnorePointer e classes relacionadas][Removed `ignoringSemantics`] properties
+* [Guia de migração para `RouteInformation.location`][Deprecated `RouteInformation.location`] and its related APIs
+* [Comportamento atualizado de scroll into view do EditableText][Updated EditableText scroll into view behavior]
+* [Migrar um projeto Windows para garantir que a janela seja exibida][Migrate a Windows project to ensure the window is shown]
+* [Comportamento atualizado do `Checkbox.fillColor`][Updated `Checkbox.fillColor` behavior]
 
 [Added missing `dispose()` for some disposable objects in Flutter]: /release/breaking-changes/dispose
 [Deprecated API removed after v3.10]: /release/breaking-changes/3-10-deprecations
@@ -309,15 +310,15 @@ They're sorted by release and listed in alphabetical order:
 [Updated `Checkbox.fillColor` behavior]: /release/breaking-changes/checkbox-fillColor
 
 <a id="released-in-flutter-310" aria-hidden="true"></a>
-### Released in Flutter 3.10
+### Lançado no Flutter 3.10
 
-* [Dart 3 changes in Flutter v3.10 and later][]
-* [Deprecated API removed after v3.7][]
-* [Insert content text input client][]
-* [Deprecated the window singleton][]
-* [Resolve the Android Java Gradle error][]
-* [Require one data variant for `ClipboardData` constructor][]
-* ["Zone mismatch" message][]
+* [Mudanças do Dart 3 no Flutter v3.10 e posteriores][Dart 3 changes in Flutter v3.10 and later]
+* [API descontinuada removida após v3.7][Deprecated API removed after v3.7]
+* [Cliente de entrada de texto com inserção de conteúdo][Insert content text input client]
+* [The window singleton is deprecated][Deprecated the window singleton]
+* [Guia de migração Android Java Gradle][Resolve the Android Java Gradle error]
+* [Pelo menos uma variante de dados da área de transferência deve ser fornecida][Require one data variant for `ClipboardData` constructor]
+* ["Mensagem \"Zone mismatch\""]["Zone mismatch" message]
 
 [Dart 3 changes in Flutter v3.10 and later]: {{site.dart-site}}/resources/dart-3-migration
 [Deprecated API removed after v3.7]: /release/breaking-changes/3-7-deprecations
@@ -328,15 +329,15 @@ They're sorted by release and listed in alphabetical order:
 ["Zone mismatch" message]: /release/breaking-changes/zone-errors
 
 <a id="released-in-flutter-37" aria-hidden="true"></a>
-### Released in Flutter 3.7
+### Lançado no Flutter 3.7
 
-* [Deprecated API removed after v3.3][]
-* [Replaced parameters for customizing context menus with a generic widget builder][]
-* [iOS FlutterViewController splashScreenView made nullable][]
-* [Migrate `of` to non-nullable return values, and add `maybeOf`][]
-* [Removed RouteSettings.copyWith][]
-* [ThemeData's toggleableActiveColor property has been deprecated][]
-* [Migrate a Windows project to support dark title bars][]
+* [API descontinuada removida após v3.3][Deprecated API removed after v3.3]
+* [Uma nova maneira de personalizar menus de contexto][Replaced parameters for customizing context menus with a generic widget builder]
+* [iOS FlutterViewController splashScreenView tornado anulável][iOS FlutterViewController splashScreenView made nullable]
+* [Migre `of` para valores de retorno não-nulos e adicione `maybeOf`][Migrate `of` to non-nullable return values, and add `maybeOf`]
+* [Guia de migração para RouteSettings copyWith][Removed RouteSettings.copyWith]
+* [A propriedade toggleableActiveColor do ThemeData foi descontinuada][ThemeData's toggleableActiveColor property has been deprecated]
+* [Migrar um projeto Windows para suportar barras de título escuras][Migrate a Windows project to support dark title bars]
 
 [Replaced parameters for customizing context menus with a generic widget builder]: /release/breaking-changes/context-menus
 [Deprecated API removed after v3.3]: /release/breaking-changes/3-3-deprecations
@@ -347,35 +348,35 @@ They're sorted by release and listed in alphabetical order:
 [Migrate a Windows project to support dark title bars]: /release/breaking-changes/windows-dark-mode
 
 <a id="released-in-flutter-33" aria-hidden="true"></a>
-### Released in Flutter 3.3
+### Lançado no Flutter 3.3
 
-* [Adding ImageProvider.loadBuffer][]
-* [Default PrimaryScrollController on Desktop][]
-* [Trackpad gestures can trigger GestureRecognizer][]
-* [Migrate a Windows project to set version information][]
+* [Adicionando ImageProvider.loadBuffer][Adding ImageProvider.loadBuffer]
+* [Default `PrimaryScrollController` on Desktop][Default PrimaryScrollController on Desktop]
+* [Gestos de trackpad podem acionar GestureRecognizer][Trackpad gestures can trigger GestureRecognizer]
+* [Migrar um projeto Windows para definir informações de versão][Migrate a Windows project to set version information]
 
 [Adding ImageProvider.loadBuffer]: /release/breaking-changes/image-provider-load-buffer
 [Default PrimaryScrollController on Desktop]: /release/breaking-changes/primary-scroll-controller-desktop
 [Trackpad gestures can trigger GestureRecognizer]: /release/breaking-changes/trackpad-gestures
 [Migrate a Windows project to set version information]: /release/breaking-changes/windows-version-information
 
-### Released in Flutter 3
+### Lançado no Flutter 3
 
-* [Deprecated API removed after v2.10][]
-* [Migrate useDeleteButtonTooltip to deleteButtonTooltipMessage of Chips][]
-* [Page transitions replaced by ZoomPageTransitionsBuilder][]
+* [API obsoleta removida após v2.10][Deprecated API removed after v2.10]
+* [Migrar useDeleteButtonTooltip para deleteButtonTooltipMessage dos Chips][Migrate useDeleteButtonTooltip to deleteButtonTooltipMessage of Chips]
+* [Transições de página substituídas por ZoomPageTransitionsBuilder][Page transitions replaced by ZoomPageTransitionsBuilder]
 
 [Deprecated API removed after v2.10]: /release/breaking-changes/2-10-deprecations
 [Page transitions replaced by ZoomPageTransitionsBuilder]: /release/breaking-changes/page-transition-replaced-by-ZoomPageTransitionBuilder
 [Migrate useDeleteButtonTooltip to deleteButtonTooltipMessage of Chips]: /release/breaking-changes/chip-usedeletebuttontooltip-migration
 
 <a id="released-in-flutter-210" aria-hidden="true"></a>
-### Released in Flutter 2.10
+### Lançado no Flutter 2.10
 
-* [Deprecated API removed after v2.5][]
-* [Raw images on Web uses correct origin and colors][]
-* [Required Kotlin version][]
-* [Scribble Text Input Client][]
+* [APIs descontinuadas removidas após v2.5][Deprecated API removed after v2.5]
+* [Imagens raw na Web usam origem e cores corretas][Raw images on Web uses correct origin and colors]
+* [Versão obrigatória do Kotlin][Required Kotlin version]
+* [Scribble Text Input Client][Scribble Text Input Client]
 
 [Deprecated API removed after v2.5]: /release/breaking-changes/2-5-deprecations
 [Raw images on Web uses correct origin and colors]: /release/breaking-changes/raw-images-on-web-uses-correct-origin-and-colors
@@ -383,18 +384,18 @@ They're sorted by release and listed in alphabetical order:
 [Scribble Text Input Client]: /release/breaking-changes/scribble-text-input-client
 
 <a id="released-in-flutter-25" aria-hidden="true"></a>
-### Released in Flutter 2.5
+### Lançado no Flutter 2.5
 
-* [Default drag scrolling devices][]
-* [Deprecated API removed after v2.2][]
-* [Change the enterText method to move the caret to the end of the input text][]
-* [GestureRecognizer cleanup][]
-* [Introducing package:flutter_lints][]
-* [Replace AnimationSheetBuilder.display with collate][]
-* [ThemeData's accent properties have been deprecated][]
-* [Transition of platform channel test interfaces to flutter_test package][]
-* [Using HTML slots to render platform views in the web][]
-* [Migrate a Windows project to the idiomatic run loop][]
+* [Dispositivos de arrasto de rolagem padrão][Default drag scrolling devices]
+* [API descontinuada removida após v2.2][Deprecated API removed after v2.2]
+* [Alterar o método enterText para mover o cursor para o final do texto de entrada][Change the enterText method to move the caret to the end of the input text]
+* [Limpeza do GestureRecognizer][GestureRecognizer cleanup]
+* [Apresentando package:flutter_lints][Introducing package:flutter_lints]
+* [Substituir AnimationSheetBuilder.display por collate][Replace AnimationSheetBuilder.display with collate]
+* [As propriedades accent do ThemeData foram descontinuadas][ThemeData's accent properties have been deprecated]
+* [Transição de interfaces de teste de canal de plataforma para o pacote flutter_test][Transition of platform channel test interfaces to flutter_test package]
+* [Usando slots HTML para renderizar platform views na web][Using HTML slots to render platform views in the web]
+* [Migrar um projeto Windows para o run loop idiomático][Migrate a Windows project to the idiomatic run loop]
 
 [Change the enterText method to move the caret to the end of the input text]: /release/breaking-changes/enterText-trailing-caret
 [Default drag scrolling devices]: /release/breaking-changes/default-scroll-behavior-drag
@@ -407,37 +408,37 @@ They're sorted by release and listed in alphabetical order:
 [Using HTML slots to render platform views in the web]: /release/breaking-changes/platform-views-using-html-slots-web
 [Migrate a Windows project to the idiomatic run loop]: /release/breaking-changes/windows-run-loop
 
-### Reverted change in 2.2
+### Mudança revertida na 2.2 {:#reverted-change-in-2-2}
 
-The following breaking change was reverted in release 2.2:
+A seguinte breaking change foi revertida na versão 2.2:
 
-**[Network Policy on iOS and Android][]**<br>
-:  Introduced in version: 2.0.0<br>
-   Reverted in version: 2.2.0
+**[Política de rede no iOS e Android][Network Policy on iOS and Android]**<br>
+:  Introduzida na versão: 2.0.0<br>
+   Revertida na versão: 2.2.0
 
 [Network Policy on iOS and Android]: /release/breaking-changes/network-policy-ios-android
 
 <a id="released-in-flutter-22" aria-hidden="true"></a>
-### Released in Flutter 2.2
+### Lançado no Flutter 2.2
 
-* [Default Scrollbars on Desktop][]
+* [Scrollbars padrão no Desktop][Default Scrollbars on Desktop]
 
 [Default Scrollbars on Desktop]: /release/breaking-changes/default-desktop-scrollbars
 
-### Released in Flutter 2
+### Lançado no Flutter 2
 
-* [Added BuildContext parameter to TextEditingController.buildTextSpan][]
-* [Android ActivityControlSurface attachToActivity signature change][]
-* [Android FlutterMain.setIsRunningInRobolectricTest testing API removed][]
-* [Clip behavior][]
-* [Deprecated API removed after v1.22][]
-* [Dry layout support for RenderBox][]
-* [Eliminating nullOk Parameters][]
-* [Material Chip button semantics][]
-* [SnackBars managed by the ScaffoldMessenger][]
-* [TextSelectionTheme migration][]
-* [Transition of platform channel test interfaces to flutter_test package][]
-* [Use maxLengthEnforcement instead of maxLengthEnforced][]
+* [Adicionado parâmetro BuildContext a TextEditingController.buildTextSpan][Added BuildContext parameter to TextEditingController.buildTextSpan]
+* [Mudança na assinatura do attachToActivity do ActivityControlSurface do Android][Android ActivityControlSurface attachToActivity signature change]
+* [FlutterMain.setIsRunningInRobolectricTest no Android removido][Android FlutterMain.setIsRunningInRobolectricTest testing API removed]
+* [Comportamento de Clip][Clip behavior]
+* [API obsoleta removida após v1.22][Deprecated API removed after v1.22]
+* [Suporte a dry layout para RenderBox][Dry layout support for RenderBox]
+* [Eliminating nullOk Parameters][Eliminating nullOk Parameters]
+* [Semântica de botão do Material Chip][Material Chip button semantics]
+* [SnackBars gerenciados pelo ScaffoldMessenger][SnackBars managed by the ScaffoldMessenger]
+* [Migração de TextSelectionTheme][TextSelectionTheme migration]
+* [Transição de interfaces de teste de canal de plataforma para o pacote flutter_test][Transition of platform channel test interfaces to flutter_test package]
+* [Use maxLengthEnforcement em vez de maxLengthEnforced][Use maxLengthEnforcement instead of maxLengthEnforced]
 
 [Added BuildContext parameter to TextEditingController.buildTextSpan]: /release/breaking-changes/buildtextspan-buildcontext
 [Android ActivityControlSurface attachToActivity signature change]: /release/breaking-changes/android-activity-control-surface-attach
@@ -453,11 +454,11 @@ The following breaking change was reverted in release 2.2:
 [Transition of platform channel test interfaces to flutter_test package]: /release/breaking-changes/mock-platform-channels
 
 <a id="released-in-flutter-122" aria-hidden="true"></a>
-### Released in Flutter 1.22
+### Lançado no Flutter 1.22
 
-* [Android v1 embedding app and plugin creation deprecation][]
-* [Cupertino icons 1.0.0][]
-* [The new Form, FormField auto-validation API][]
+* [Descontinuação da criação de apps e plugins com Android v1 embedding][Android v1 embedding app and plugin creation deprecation]
+* [Novo CupertinoIcons tem alterações nos glifos de ícones][Cupertino icons 1.0.0]
+* [A nova API de auto-validação de Form e FormField][The new Form, FormField auto-validation API]
 
 
 [Android v1 embedding app and plugin creation deprecation]: /release/breaking-changes/android-v1-embedding-create-deprecation
@@ -465,20 +466,20 @@ The following breaking change was reverted in release 2.2:
 [The new Form, FormField auto-validation API]: /release/breaking-changes/form-field-autovalidation-api
 
 <a id="released-in-flutter-120" aria-hidden="true"></a>
-### Released in Flutter 1.20
+### Lançado no Flutter 1.20
 
-* [Actions API revision][]
-* [Adding TextInputClient.currentAutofillScope property][]
-* [New Buttons and Button Themes][]
-* [Dialogs' Default BorderRadius][]
-* [More Strict Assertions in the Navigator and the Hero Controller Scope][]
-* [The Route Transition record and Transition delegate updates][]
-* [The RenderEditable needs to be laid out before hit testing][]
-* [Reversing the dependency between the scheduler and services layer][]
-* [Semantics Order of the Overlay Entries in Modal Routes][]
-* [showAutocorrectionPromptRect method added to TextInputClient][]
-* [TestWidgetsFlutterBinding.clock][]
-* [TextField requires MaterialLocalizations][]
+* [Revisão da API Actions][Actions API revision]
+* [Adicionando a propriedade TextInputClient.currentAutofillScope][Adding TextInputClient.currentAutofillScope property]
+* [Novos Botões e temas de Botões][New Buttons and Button Themes]
+* [BorderRadius padrão de Dialogs][Dialogs' Default BorderRadius]
+* [Asserções mais rigorosas no Navigator e no escopo do Hero controller][More Strict Assertions in the Navigator and the Hero Controller Scope]
+* [Atualizações de registro de transição de rota e delegado de transição][The Route Transition record and Transition delegate updates]
+* [O RenderEditable precisa ser diagramado antes do hit testing][The RenderEditable needs to be laid out before hit testing]
+* [Inversão da dependência entre as camadas scheduler e services][Reversing the dependency between the scheduler and services layer]
+* [Ordem de Semantics das Overlay Entries em Modal Routes][Semantics Order of the Overlay Entries in Modal Routes]
+* [Método showAutocorrectionPromptRect adicionado ao TextInputClient][showAutocorrectionPromptRect method added to TextInputClient]
+* [Mudança em TestWidgetsFlutterBinding.clock][TestWidgetsFlutterBinding.clock]
+* [TextField requer um widget MaterialLocalizations][TextField requires MaterialLocalizations]
 
 [Actions API revision]: /release/breaking-changes/actions-api-revision
 [Adding TextInputClient.currentAutofillScope property]: /release/breaking-changes/add-currentAutofillScope-to-TextInputClient
@@ -494,25 +495,25 @@ The following breaking change was reverted in release 2.2:
 [The Route Transition record and Transition delegate updates]: /release/breaking-changes/route-transition-record-and-transition-delegate
 
 <a id="released-in-flutter-117" aria-hidden="true"></a>
-### Released in Flutter 1.17
+### Lançado no Flutter 1.17
 
-* [Adding 'linux' and 'windows' to TargetPlatform enum][]
-* [Annotations return local position relative to object][]
-* [Container color optimization][]
-* [CupertinoTabBar requires Localizations parent][]
-* [Generic type of ParentDataWidget changed to ParentData][]
-* [ImageCache and ImageProvider changes][]
-* [ImageCache large images][]
-* [MouseTracker moved to rendering][]
-* [MouseTracker no longer attaches annotations][]
-* [Nullable CupertinoTheme.brightness][]
-* [Rebuild optimization for OverlayEntries and Routes][]
-* [Scrollable AlertDialog][]
-* [TestTextInput state reset][]
-* [TextInputClient currentTextEditingValue][]
-* [The forgetChild() method must call super][]
-* [The Route and Navigator refactoring][]
-* [FloatingActionButton and ThemeData's accent properties][]
+* [Adicionando 'linux' e 'windows' ao enum TargetPlatform][Adding 'linux' and 'windows' to TargetPlatform enum]
+* [AnnotatedRegionLayers retornam posição local relativa à região de clipping][Annotations return local position relative to object]
+* [Otimização de Container com color][Container color optimization]
+* [CupertinoTabBar requer parent Localizations][CupertinoTabBar requires Localizations parent]
+* [O tipo genérico de ParentDataWidget mudou para ParentData][Generic type of ParentDataWidget changed to ParentData]
+* [ImageCache and ImageProvider changes][ImageCache and ImageProvider changes]
+* [Imagens grandes no ImageCache][ImageCache large images]
+* [MouseTracker movido para rendering][MouseTracker moved to rendering]
+* [MouseTracker não anexa mais annotations][MouseTracker no longer attaches annotations]
+* [CupertinoThemeData.brightness anulável][Nullable CupertinoTheme.brightness]
+* [Otimização de rebuilds para OverlayEntries e Routes][Rebuild optimization for OverlayEntries and Routes]
+* [AlertDialog rolável (Não mais obsoleto)][Scrollable AlertDialog]
+* [Estado de TestTextInput redefinido][TestTextInput state reset]
+* [TextInputClient currentTextEditingValue][TextInputClient currentTextEditingValue]
+* [O método forgetChild() deve chamar super][The forgetChild() method must call super]
+* [Refatoração de Route e Navigator][The Route and Navigator refactoring]
+* [FloatingActionButton e as propriedades de accent do ThemeData][FloatingActionButton and ThemeData's accent properties]
 
 [Adding 'linux' and 'windows' to TargetPlatform enum]: /release/breaking-changes/target-platform-linux-windows
 [Annotations return local position relative to object]: /release/breaking-changes/annotations-return-local-position-relative-to-object

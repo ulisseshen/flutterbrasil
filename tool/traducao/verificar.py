@@ -29,6 +29,14 @@ ERROS
                 (tool/traducao/ultimo-sync-upstream.txt): rode
                 sincronizar_upstream.py.
 - pendente:     .traducao-pendente/ ainda tem arquivos para resolver.
+- ancora:       título traduzido cujo id automático difere do slug em inglês e
+                que não tem `{:#id}` explícito (links #ancora quebrariam).
+                Corrija com tool/traducao/ancorar_titulos.py <arquivo>.
+- link-interno: link para âncora da própria página (`](#id)` ou `[x]: #id`)
+                que não existe (títulos, `id="..."` e parciais incluídos).
+- dominio:      uso de domínios que não existem (ex.: api.flutterbrasil.dev; a
+                documentação de API não é traduzida e fica em api.flutter.dev).
+                Conferido em todo o site, não só nas páginas marcadas.
 
 AVISOS
 - parcial:      proporção de inglês entre 0.3 e 0.7 (tradução incompleta).
@@ -72,6 +80,12 @@ ESTRUTURA = {
     'âncoras {:#}': re.compile(r'\{:\s*#'),
 }
 DEFS_LINK = re.compile(r'^\s*\[[^\]]+\]:\s', re.M)
+# Domínios que NÃO existem. Os links de API devem apontar para os oficiais
+# (api.flutter.dev, main-api.flutter.dev, api.dart.dev).
+DOMINIOS_INEXISTENTES = re.compile(
+    r'(?<![\w.-])(?:main-)?api\.flutterbrasil\.dev|(?<![\w.-])api\.dartbrasil\.dev')
+PASTAS_DOMINIO = ['sites/docs', 'packages/site_shared/lib', 'tool/config',
+                  '.github', 'README.md']
 
 # Palavras-função para estimar o idioma da prosa.
 EN = set('the and of to is are you your this that with for in it be can when '
@@ -150,6 +164,50 @@ def marcados():
     return saida.split()
 
 
+def carregar_ancorador():
+    global ANC_MOD
+    caminho = ROOT / 'tool' / 'traducao' / 'ancorar_titulos.py'
+    spec = importlib.util.spec_from_file_location('anc', caminho)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    ANC_MOD = mod
+    return mod.ancorar
+
+
+ANCORAR = None
+ANC_MOD = None
+INCLUDES = ROOT / 'sites' / 'docs' / 'src' / '_includes'
+RENDER = re.compile(r'\{%-?\s*(?:render|include)\s+["\']([^"\']+)["\']')
+
+
+def ids_da_pagina(texto, profundidade=0):
+    ids = set(re.findall(r'\bid=["\']([^"\']+)["\']', texto))
+    for _, _, txt in ANC_MOD.titulos(texto):
+        sem, tokens = ANC_MOD.separar_atributos(txt)
+        explicitos = [t[1:] for t in tokens if t.startswith('#')]
+        # O id explícito substitui o automático (slug do texto).
+        ids.update(explicitos or [ANC_MOD.slug(sem)])
+        # O site deduplica ids repetidos com sufixos -1, -2...
+    base = set(ids)
+    for i in base:
+        ids.update(f'{i}-{n}' for n in range(1, 6))
+    if profundidade < 3:
+        for inc in RENDER.findall(texto):
+            arq = INCLUDES / inc
+            if arq.exists():
+                ids |= ids_da_pagina(arq.read_text(encoding='utf-8'), profundidade + 1)
+    return ids
+
+
+def links_internos_quebrados(texto):
+    t = sem_codigo(texto)
+    alvos = re.findall(r'\]\(#([^)\s]+)\)', t)
+    alvos += re.findall(r'^\s*\[[^\]]+\]:\s*#(\S+)', t, re.M)
+    alvos += re.findall(r'href=["\']#([^"\']+)["\']', t)
+    ids = ids_da_pagina(texto)
+    return sorted({a for a in alvos if a not in ids and '{{' not in a})
+
+
 def carregar_gerador_release_notes():
     caminho = ROOT / 'tool' / 'traducao' / 'traduzir_release_notes.py'
     spec = importlib.util.spec_from_file_location('trn', caminho)
@@ -197,6 +255,17 @@ def checar_arquivo(caminho, ref, sync, gerador):
         elif n >= MINIMO_PALAVRAS and prop >= LIMITE_AVISO:
             avisos.append(('parcial', f'{prop:.0%} da prosa ainda em inglês'))
 
+    if ANC_MOD is not None:
+        quebrados = set(links_internos_quebrados(texto)) - set(links_internos_quebrados(en))
+        if quebrados:
+            erros.append(('link-interno', 'âncoras inexistentes: ' + ', '.join(sorted(quebrados))))
+
+    if ANCORAR is not None:
+        _, n_ancoras = ANCORAR(en, texto)
+        if n_ancoras:
+            erros.append(('ancora', f'{n_ancoras} título(s) sem `{{:#id}}` em inglês; '
+                                    'rode tool/traducao/ancorar_titulos.py'))
+
     for nome, rx in ESTRUTURA.items():
         ne, np_ = len(rx.findall(en)), len(rx.findall(texto))
         # Âncoras a mais são permitidas (mantêm o id em inglês de títulos traduzidos).
@@ -232,6 +301,8 @@ def main():
     if sync and git('cat-file', '-e', sync) is None:
         sync = None  # histórico raso: pula a checagem de defasagem
     gerador = carregar_gerador_release_notes()
+    global ANCORAR
+    ANCORAR = carregar_ancorador()
 
     arquivos = a.arquivos or marcados()
     total_erros = total_avisos = 0
@@ -252,6 +323,17 @@ def main():
             f.name != 'RELATORIO.md' for f in PEND.rglob('*') if f.is_file()):
         print('✗ .traducao-pendente/\n    erro  [pendente] ainda há conflitos para resolver')
         total_erros += 1
+
+    if not a.arquivos:
+        saida = git('grep', '-nE', r'api\.flutterbrasil\.dev|api\.dartbrasil\.dev',
+                    '--', *PASTAS_DOMINIO) or ''
+        achados = [l for l in saida.splitlines()
+                   if DOMINIOS_INEXISTENTES.search(l.split(':', 2)[-1])]
+        if achados:
+            print('✗ domínios inexistentes')
+            for l in achados[:20]:
+                print(f'    erro  [dominio] {l[:140]}')
+            total_erros += 1
 
     print(f'{len(arquivos)} arquivo(s) conferido(s): {total_erros} com erro, '
           f'{total_avisos} só com aviso.')

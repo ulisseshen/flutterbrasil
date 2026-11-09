@@ -23,6 +23,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from ancorar_titulos import ancorar as _ancorar  # noqa: E402
 DIR = 'sites/docs/src/content/release/release-notes'
 FLAG = re.compile(r'^ia-translate:\s*true\s*$', re.M)
 
@@ -94,7 +96,10 @@ def traduzir(en):
         if not NEUTRA.match(linha) and not JA_PT.search(linha):
             sobra.append(linha)
         linhas.append(linha)
-    return f'---\n{fm}\n---\n' + '\n'.join(linhas), sobra
+    pt = f'---\n{fm}\n---\n' + '\n'.join(linhas)
+    # Títulos traduzidos mantêm o id em inglês (mesma regra de ancorar_titulos.py).
+    com_ancoras, _ = _ancorar(en, pt)
+    return (com_ancoras or pt), sobra
 
 
 def main():

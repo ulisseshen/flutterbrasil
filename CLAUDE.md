@@ -187,6 +187,19 @@ do inglês).
 Quando uma checagem nova pegar um caso que escapou, acrescente-a ao
 `verificar.py` em vez de corrigir só o arquivo.
 
+## Automações do GitHub
+
+Só ficam no repositório os workflows que fazem algo aqui: `docs.yml` (build,
+links e validação do `firebase.json`), `traducao.yml`, `firebase-preview.yml`
+e `firebase-deploy.yml`. O preview mantém **um único comentário por PR**,
+editado a cada push, em vez de comentar de novo.
+
+O Dependabot e os workflows que só servem ao flutter/website (`codeql`,
+`dart`, `www`, `no-response`) foram removidos: aqui eles só geravam
+execuções puladas e PRs de bot. Eles voltam a cada sync com a árvore do
+upstream, então o `sincronizar_upstream.py` os apaga de novo (lista
+`REMOVIDOS_NO_FORK`). Para trazer algum de volta, tire-o dessa lista.
+
 ## Personalizações do Flutter Brasil fora do conteúdo
 
 Ao sincronizar, confira se continuam funcionando:

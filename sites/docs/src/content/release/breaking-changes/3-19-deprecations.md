@@ -1,8 +1,8 @@
 ---
-title: Deprecated API removed after v3.19
+title: APIs descontinuadas removidas após a v3.19
 description: >-
-  After reaching end of life, the following deprecated APIs
-  were removed from Flutter.
+  Depois de chegarem ao fim da vida útil, as seguintes APIs descontinuadas
+  foram removidas do Flutter.
 ia-translate: true
 ---
 

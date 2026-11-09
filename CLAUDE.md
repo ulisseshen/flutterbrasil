@@ -155,6 +155,8 @@ Ele falha também com avisos (âncora inexistente).
 O `verificar.py` acusa como **erro**:
 
 - `conflito`: marcadores de merge (`<<<<<<<`, `|||||||`, `>>>>>>>`) esquecidos;
+- `frontmatter-en`: `title`, `shortTitle` ou `description` idêntico ao inglês
+  e escrito em inglês (nomes de produto, como "Flutter AI Toolkit", passam);
 - `flag`: `ia-translate` fora do frontmatter (ou o comentário fora da 1ª linha
   de um parcial);
 - `placeholder`: avisos de tradução pendente no texto ("Note for

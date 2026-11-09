@@ -1,8 +1,8 @@
 ---
-title: Breaking changes and migration guides
+title: Breaking changes e guias de migração
 shortTitle: Breaking changes
 description: >-
-   A collection of notices and migration guides for breaking changes in Flutter.
+   Uma coleção de avisos e guias de migração para breaking changes no Flutter.
 ia-translate: true
 ---
 

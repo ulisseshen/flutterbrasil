@@ -1,7 +1,7 @@
 ---
 ia-translate: true
 title: Adicione Flutter a um app existente
-shortTitle: Add to app
+shortTitle: Adicionar a um app
 description: Adicionando Flutter como uma biblioteca a um app Android, iOS, macOS ou web existente.
 ---
 

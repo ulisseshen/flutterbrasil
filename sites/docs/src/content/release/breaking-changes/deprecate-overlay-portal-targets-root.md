@@ -1,5 +1,5 @@
 ---
-title: Deprecate `OverlayPortal.targetsRootOverlay` and enforce `LookupBoundary` in `Overlay.of`
+title: Descontinuação de `OverlayPortal.targetsRootOverlay` e uso obrigatório de `LookupBoundary` em `Overlay.of`
 description: >-
   Saiba mais sobre as mudanças no OverlayPortal e no Overlay no Flutter.
 ia-translate: true

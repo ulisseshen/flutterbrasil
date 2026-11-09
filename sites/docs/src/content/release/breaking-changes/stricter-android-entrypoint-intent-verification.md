@@ -1,112 +1,113 @@
 ---
-title: Stricter Android `Intent` Verification for App Entrypoints
+ia-translate: true
+title: Verificação mais rigorosa de `Intent` do Android para entrypoints de apps
 description: >-
-  Android `Intent` extras for routing, entrypoints, and cached engines
-  are now strictly verified.
+  Os extras de `Intent` do Android para roteamento, entrypoints e engines em cache
+  agora são verificados de forma estrita.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-To prevent [`Intent`][]-based vulnerability exploits,
-the Flutter Android embedder
-(`FlutterActivity` and `FlutterFragmentActivity`)
-now verifies the sender of `Intent` objects
-before processing `EXTRA_INITIAL_ROUTE`, `EXTRA_DART_ENTRYPOINT`,
+Para evitar a exploração de vulnerabilidades baseadas em [`Intent`][],
+o embedder Android do Flutter
+(`FlutterActivity` e `FlutterFragmentActivity`)
+agora verifica o remetente dos objetos `Intent`
+antes de processar `EXTRA_INITIAL_ROUTE`, `EXTRA_DART_ENTRYPOINT`,
 `EXTRA_DART_ENTRYPOINT_ARGS`, `EXTRA_CACHED_ENGINE_ID`,
-and `EXTRA_CACHED_ENGINE_GROUP_ID`.
+e `EXTRA_CACHED_ENGINE_GROUP_ID`.
 
-In release mode, external `Intent` objects cannot set these extras
-unless verified as originating from the app itself.
-If verification fails, the embedder ignores the extras
-and falls back to manifest metadata or default values for initial routes
-and Dart entrypoints.
+Em modo release, objetos `Intent` externos não podem definir esses extras
+a menos que sejam verificados como originados do próprio app.
+Se a verificação falhar, o embedder ignora os extras
+e recorre aos metadados do manifesto ou aos valores padrão para as rotas iniciais
+e os entrypoints do Dart.
 
-## Context
+## Contexto {:#context}
 
-Previously, the Flutter Android embedder accepted routing, entrypoint,
-and engine configuration directly from `Intent` extras.
-This allowed external apps or malicious actors to:
+Anteriormente, o embedder Android do Flutter aceitava roteamento, entrypoint
+e configuração do engine diretamente dos extras de `Intent`.
+Isso permitia que apps externos ou agentes maliciosos:
 
-1. Hijack app navigation to sensitive internal routes
+1. Sequestrassem a navegação do app para rotas internas sensíveis
    (`EXTRA_INITIAL_ROUTE`).
-1. Execute arbitrary Dart entrypoints or pass unsafe arguments
-   (`EXTRA_DART_ENTRYPOINT` and `EXTRA_DART_ENTRYPOINT_ARGS`).
-1. Reuse active, pre-authenticated in-memory engine instances
-   (`EXTRA_CACHED_ENGINE_ID` and `EXTRA_CACHED_ENGINE_GROUP_ID`).
+1. Executassem entrypoints arbitrários do Dart ou passassem argumentos inseguros
+   (`EXTRA_DART_ENTRYPOINT` e `EXTRA_DART_ENTRYPOINT_ARGS`).
+1. Reutilizassem instâncias de engine ativas e já autenticadas em memória
+   (`EXTRA_CACHED_ENGINE_ID` e `EXTRA_CACHED_ENGINE_GROUP_ID`).
 
-To fix these vulnerabilities, Flutter now validates the `Intent` sender.
-Deep links remain supported,
-but they must match the `<intent-filter>` declarations
-in your `AndroidManifest.xml`.
+Para corrigir essas vulnerabilidades, o Flutter agora valida o remetente do `Intent`.
+Deep links continuam suportados,
+mas devem corresponder às declarações de `<intent-filter>`
+no seu `AndroidManifest.xml`.
 
-## Description of change
+## Descrição da mudança {:#description-of-change}
 
-In release builds, the Android embedder strictly validates `Intent` extras:
+Em builds de release, o embedder Android valida estritamente os extras de `Intent`:
 `"route"`, `"dart_entrypoint"`, `"dart_entrypoint_args"`,
-`"cached_engine_id"`, and `"cached_engine_group_id"`.
+`"cached_engine_id"` e `"cached_engine_group_id"`.
 
-### Intent verification rules
+### Regras de verificação de Intent {:#intent-verification-rules}
 
-An `Intent` is verified as safe if:
+Um `Intent` é verificado como seguro se:
 
-* **The activity is not exported:**
-  Activities with `android:exported="false"` are automatically trusted.
-* **On Android 14 and later (API 34+):**
-  The launching UID matches the application's UID (`getLaunchedFromUid()`).
-* **On Android 13 and earlier (API 33 and lower):**
-  The calling package matches the app package (`getCallingPackage()`).
-  This requires launching with `startActivityForResult()`
-  or `startActivityIfNeeded()`.
+* **A activity não é exportada:**
+  Activities com `android:exported="false"` são confiáveis automaticamente.
+* **No Android 14 e superior (API 34+):**
+  O UID de inicialização corresponde ao UID do aplicativo (`getLaunchedFromUid()`).
+* **No Android 13 e inferior (API 33 e inferiores):**
+  O pacote que chama corresponde ao pacote do app (`getCallingPackage()`).
+  Isso exige iniciar com `startActivityForResult()`
+  ou `startActivityIfNeeded()`.
 
-For deep links (`Intent.ACTION_VIEW`),
-the link URI must match an `<intent-filter>`
-declared in the application manifest,
-unless the `Intent` is verified as self-sent.
+Para deep links (`Intent.ACTION_VIEW`),
+a URI do link deve corresponder a um `<intent-filter>`
+declarado no manifesto do aplicativo,
+a menos que o `Intent` seja verificado como enviado pelo próprio app.
 
-### Fallback behavior
+### Comportamento de fallback {:#fallback-behavior}
 
-If verification fails in release builds, the extras are ignored:
+Se a verificação falhar em builds de release, os extras são ignorados:
 
-* **Initial route (`EXTRA_INITIAL_ROUTE`):**
-  Falls back to command-line arguments or `io.flutter.InitialRoute` metadata
-  in `AndroidManifest.xml`.
-  If neither is specified, it defaults to `"/"`.
-* **Dart entrypoint (`EXTRA_DART_ENTRYPOINT`):**
-  Falls back to `io.flutter.Entrypoint` metadata in `AndroidManifest.xml`.
-  If not specified, it defaults to `"main"`.
-* **Entrypoint arguments (`EXTRA_DART_ENTRYPOINT_ARGS`):**
-  Ignored; returns `null`.
-* **Cached engine IDs (`EXTRA_CACHED_ENGINE_ID` and
+* **Rota inicial (`EXTRA_INITIAL_ROUTE`):**
+  Recorre aos argumentos de linha de comando ou aos metadados `io.flutter.InitialRoute`
+  no `AndroidManifest.xml`.
+  Se nenhum for especificado, o padrão é `"/"`.
+* **Entrypoint do Dart (`EXTRA_DART_ENTRYPOINT`):**
+  Recorre aos metadados `io.flutter.Entrypoint` no `AndroidManifest.xml`.
+  Se não for especificado, o padrão é `"main"`.
+* **Argumentos do entrypoint (`EXTRA_DART_ENTRYPOINT_ARGS`):**
+  Ignorados; retorna `null`.
+* **IDs de engine em cache (`EXTRA_CACHED_ENGINE_ID` e
   `EXTRA_CACHED_ENGINE_GROUP_ID`):**
-  Ignored; returns `null`.
+  Ignorados; retorna `null`.
 
-### Behavior in debug and profile modes
+### Comportamento nos modos debug e profile {:#behavior-in-debug-and-profile-modes}
 
-In debug and profile builds,
-the embedder bypasses verification to preserve developer tooling
-(such as `adb shell am start`) and automated tests.
-However, if an `Intent` fails verification,
-the embedder logs a warning with the target component,
-intent extras, and migration instructions.
+Em builds de debug e profile,
+o embedder ignora a verificação para preservar as ferramentas de desenvolvimento
+(como `adb shell am start`) e os testes automatizados.
+No entanto, se um `Intent` falhar na verificação,
+o embedder registra um aviso com o componente de destino,
+os extras do intent e as instruções de migração.
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-You do not need to migrate if:
+Você não precisa migrar se:
 
-* You do not pass `route`, `dart_entrypoint`, `dart_entrypoint_args`,
-  `cached_engine_id`, or `cached_engine_group_id` extras in `Intent`s.
-* Your target `FlutterActivity` or `FlutterFragmentActivity`
-  is not exported (`android:exported="false"`).
+* Você não passa os extras `route`, `dart_entrypoint`, `dart_entrypoint_args`,
+  `cached_engine_id` ou `cached_engine_group_id` em `Intent`s.
+* Sua `FlutterActivity` ou `FlutterFragmentActivity` de destino
+  não é exportada (`android:exported="false"`).
 
-If you pass these extras to an exported activity,
-choose one of the following migration strategies:
+Se você passa esses extras para uma activity exportada,
+escolha uma das seguintes estratégias de migração:
 
-### Set host activities to non-exported
+### Defina as activities hospedeiras como não exportadas {:#set-host-activities-to-non-exported}
 
-If external apps do not need to open your activity directly,
-set `android:exported="false"` in `AndroidManifest.xml`:
+Se apps externos não precisam abrir sua activity diretamente,
+defina `android:exported="false"` no `AndroidManifest.xml`:
 
 ```xml title="AndroidManifest.xml"
 <activity
@@ -116,16 +117,16 @@ set `android:exported="false"` in `AndroidManifest.xml`:
 ```
 
 :::note
-Your app's main launcher activity (with `ACTION_MAIN`
-and `CATEGORY_LAUNCHER`) must remain exported so that the system launcher
-can launch your app.
+A activity principal de inicialização do seu app (com `ACTION_MAIN`
+e `CATEGORY_LAUNCHER`) deve continuar exportada para que o launcher do sistema
+possa iniciar o seu app.
 :::
 
-### Migrate to deep links for external routing
+### Migre para deep links no roteamento externo {:#migrate-to-deep-links-for-external-routing}
 
-To route to specific screens from external sources,
-shortcuts, or notifications,
-use standard [deep links][] instead of `EXTRA_INITIAL_ROUTE`:
+Para navegar para telas específicas a partir de fontes externas,
+atalhos ou notificações,
+use [deep links][] padrão em vez de `EXTRA_INITIAL_ROUTE`:
 
 ```java
 Intent intent = new Intent(context, MainActivity.class);
@@ -133,13 +134,13 @@ intent.setAction(Intent.ACTION_VIEW);
 intent.setData(Uri.parse("myapp://product_details"));
 ```
 
-Declare matching `<intent-filter>` entries in `AndroidManifest.xml`
-so the embedder can validate the incoming URL.
+Declare entradas `<intent-filter>` correspondentes no `AndroidManifest.xml`
+para que o embedder possa validar a URL recebida.
 
-### Declare entrypoints and routes in AndroidManifest.xml
+### Declare entrypoints e rotas no AndroidManifest.xml {:#declare-entrypoints-and-routes-in-androidmanifestxml}
 
-For static entrypoints or initial routes,
-declare them as `<meta-data>` in `AndroidManifest.xml`:
+Para entrypoints estáticos ou rotas iniciais,
+declare-os como `<meta-data>` no `AndroidManifest.xml`:
 
 ```xml title="AndroidManifest.xml"
 <activity 
@@ -154,25 +155,25 @@ declare them as `<meta-data>` in `AndroidManifest.xml`:
 </activity>
 ```
 
-### Use startActivityForResult on Android 13 and earlier
+### Use startActivityForResult no Android 13 e inferior {:#use-startactivityforresult-on-android-13-and-earlier}
 
-For internal app launches to an exported activity on Android 13 and earlier,
-call `startActivityForResult()` instead of `startActivity()`:
+Para inicializações internas do app em uma activity exportada no Android 13 e inferior,
+chame `startActivityForResult()` em vez de `startActivity()`:
 
 ```diff
 - startActivity(intent);
 + startActivityForResult(intent, REQUEST_CODE);
 ```
 
-This populates `getCallingPackage()`, allowing the embedder to verify
-that the `Intent` originated from your app.
-You do not need to handle the result in `onActivityResult()`.
+Isso preenche `getCallingPackage()`, permitindo que o embedder verifique
+que o `Intent` se originou do seu app.
+Você não precisa tratar o resultado em `onActivityResult()`.
 
-### Override configuration methods in an activity subclass
+### Sobrescreva métodos de configuração em uma subclasse de activity {:#override-configuration-methods-in-an-activity-subclass}
 
-To provide dynamic entrypoints or arguments without relying on `Intent` extras,
-subclass `FlutterActivity` or `FlutterFragmentActivity`
-and override the configuration methods:
+Para fornecer entrypoints ou argumentos dinâmicos sem depender de extras de `Intent`,
+crie uma subclasse de `FlutterActivity` ou `FlutterFragmentActivity`
+e sobrescreva os métodos de configuração:
 
 ```java
 public class MyFlutterActivity extends FlutterActivity {
@@ -190,22 +191,22 @@ public class MyFlutterActivity extends FlutterActivity {
 }
 ```
 
-## Timeline
+## Linha do tempo {:#timeline}
 
-Landed in version: 3.50.0-0.1.pre<br>
-In stable release: 3.50
+Incluído na versão: 3.50.0-0.1.pre<br>
+Na versão estável: 3.50
 
-## References
+## Referências {:#references}
 
-* [Android `Intent` filters][]
-* [Set up Flutter Android deep links][]
+* [Filtros de `Intent` do Android][Android `Intent` filters]
+* [Configure deep links do Android no Flutter][Set up Flutter Android deep links]
 
-Relevant issues:
+Issues relevantes:
 
 * [Issue 190450][]
 * [Issue 190452][]
 
-Relevant PR:
+PR relevante:
 
 * [PR 190249][]
 

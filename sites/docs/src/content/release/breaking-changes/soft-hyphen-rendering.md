@@ -1,96 +1,97 @@
 ---
-title: Soft hyphens render at line breaks
+ia-translate: true
+title: Hifens suaves são renderizados nas quebras de linha
 description: >-
-  On native platforms, text now shows a hyphen when
-  a line breaks at a soft hyphen (U+00AD),
-  and TextStyle.getParagraphStyle has a new hyphens parameter.
+  Em plataformas nativas, o texto agora exibe um hífen quando
+  uma linha quebra em um hífen suave (U+00AD),
+  e TextStyle.getParagraphStyle tem um novo parâmetro hyphens.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-On native platforms, Flutter now draws a visible hyphen
-when a line of text breaks at a soft hyphen (U+00AD).
-A new [`Hyphens`][] enum controls this,
-and [`TextStyle.getParagraphStyle`][] has a new `hyphens` parameter.
-Classes that override `getParagraphStyle` must add the parameter.
+Em plataformas nativas, o Flutter agora desenha um hífen visível
+quando uma linha de texto quebra em um hífen suave (U+00AD).
+Um novo enum [`Hyphens`][] controla isso,
+e [`TextStyle.getParagraphStyle`][] tem um novo parâmetro `hyphens`.
+Classes que sobrescrevem `getParagraphStyle` devem adicionar o parâmetro.
 
-## Background
+## Contexto {:#background}
 
-A soft hyphen marks a place where a word can be broken across lines.
-Flutter already broke lines at soft hyphens,
-but never drew the hyphen, so broken words looked cut off.
+Um hífen suave marca um lugar onde uma palavra pode ser quebrada entre linhas.
+O Flutter já quebrava linhas nos hifens suaves,
+mas nunca desenhava o hífen, então palavras quebradas pareciam cortadas.
 
-The new `hyphens` parameter on [`Text`][], [`RichText`][], [`TextPainter`][],
-and `dart:ui`'s [`ParagraphStyle`][] takes a `Hyphens` value:
+O novo parâmetro `hyphens` em [`Text`][], [`RichText`][], [`TextPainter`][]
+e no [`ParagraphStyle`][] de `dart:ui` recebe um valor `Hyphens`:
 
-* `Hyphens.manual` (the default) draws a hyphen at the break.
-* `Hyphens.hidden` doesn't draw a hyphen.
-  The soft hyphen is still a place where the line can break.
+* `Hyphens.manual` (o padrão) desenha um hífen na quebra.
+* `Hyphens.hidden` não desenha um hífen.
+  O hífen suave continua sendo um lugar onde a linha pode quebrar.
 
-This change affects apps in two ways.
+Esta mudança afeta os apps de duas formas.
 
-**Rendering.** On native platforms, text now shows a hyphen
-wherever a line breaks at a soft hyphen.
-Lines still break in the same places,
-but the hyphen makes its line wider,
-so it can change `Paragraph.longestLine` and the size of text
-laid out with [`TextWidthBasis.longestLine`][].
-Golden image tests that contain such text might need updating.
+**Renderização.** Em plataformas nativas, o texto agora exibe um hífen
+sempre que uma linha quebra em um hífen suave.
+As linhas continuam quebrando nos mesmos lugares,
+mas o hífen deixa a sua linha mais larga,
+então pode alterar `Paragraph.longestLine` e o tamanho do texto
+disposto com [`TextWidthBasis.longestLine`][].
+Testes de imagem golden que contenham esse tipo de texto podem precisar de atualização.
 
-In Flutter 3.50, this rendering change applies to all platforms except the web,
-where soft hyphens remain invisible at line breaks.
-The web gets this rendering change in a later release,
-so web apps might need the same updates at that point.
+No Flutter 3.50, essa mudança de renderização se aplica a todas as plataformas,
+exceto a web, onde os hifens suaves continuam invisíveis nas quebras de linha.
+A web recebe essa mudança de renderização em uma versão posterior,
+então apps web podem precisar das mesmas atualizações nesse momento.
 
-On native platforms, widgets built on `EditableText`,
-such as `TextField` and `SelectableText`,
-also render the hyphen but don't have a `hyphens` parameter yet,
-so there's no way to opt out for them.
+Em plataformas nativas, widgets baseados em `EditableText`,
+como `TextField` e `SelectableText`,
+também renderizam o hífen, mas ainda não têm um parâmetro `hyphens`,
+então não há como optar por não usar o recurso neles.
 
-In Flutter 3.50, the hyphen has a few known issues,
-which a later release fixes:
+No Flutter 3.50, o hífen tem alguns problemas conhecidos,
+que uma versão posterior corrige:
 
-* It can appear where a line doesn't break at the soft hyphen,
-  such as at the end of the text or before a space or line break.
-* It can extend slightly past the width of the paragraph.
-  With the fix, the line breaks earlier instead when the hyphen doesn't fit.
-* It isn't highlighted when the text is selected.
+* Ele pode aparecer onde a linha não quebra no hífen suave,
+  como no final do texto ou antes de um espaço ou quebra de linha.
+* Ele pode ultrapassar um pouco a largura do parágrafo.
+  Com a correção, a linha passa a quebrar antes quando o hífen não couber.
+* Ele não é destacado quando o texto é selecionado.
 
-To avoid these issues in 3.50,
-set `hyphens: Hyphens.hidden` on `Text`, `RichText`, or `TextPainter`.
+Para evitar esses problemas na 3.50,
+defina `hyphens: Hyphens.hidden` em `Text`, `RichText` ou `TextPainter`.
 
-**API.** `TextStyle.getParagraphStyle` gained an optional `hyphens` parameter.
-Because Dart requires an override to accept every parameter
-of the method it overrides, a class that overrides `getParagraphStyle`
-no longer compiles until it adds the parameter.
-This mostly affects test doubles and proxies of `TextStyle`,
-not typical app code.
+**API.** `TextStyle.getParagraphStyle` ganhou um parâmetro opcional `hyphens`.
+Como o Dart exige que uma sobrescrita aceite todos os parâmetros
+do método que sobrescreve, uma classe que sobrescreve `getParagraphStyle`
+deixa de compilar até adicionar o parâmetro.
+Isso afeta principalmente test doubles e proxies de `TextStyle`,
+e não o código típico de apps.
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
-### Keep the old rendering {: #keep-the-old-rendering }
+### Mantenha a renderização antiga {:#keep-the-old-rendering}
 
-To keep soft hyphens invisible, pass `Hyphens.hidden`.
+Para manter os hifens suaves invisíveis, passe `Hyphens.hidden`.
 
-Code before migration:
-
-```dart
-Text('inter\u00ADnational')
-```
-
-Code after migration:
+Código antes da migração:
 
 ```dart
-Text('inter\u00ADnational', hyphens: Hyphens.hidden)
+Text('inter­national')
 ```
 
-### Update overrides of `getParagraphStyle` {: #update-overrides }
+Código após a migração:
 
-If you override `TextStyle.getParagraphStyle`, add the new parameter.
+```dart
+Text('inter­national', hyphens: Hyphens.hidden)
+```
 
-Code before migration:
+### Atualize sobrescritas de `getParagraphStyle` {:#update-overrides}
+
+Se você sobrescreve `TextStyle.getParagraphStyle`, adicione o novo parâmetro.
+
+Código antes da migração:
 
 ```dart
 @override
@@ -103,7 +104,7 @@ ui.ParagraphStyle getParagraphStyle({
 }
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart
 @override
@@ -117,20 +118,20 @@ ui.ParagraphStyle getParagraphStyle({
 }
 ```
 
-If your override forwards to another `getParagraphStyle`
-or constructs a `ParagraphStyle`, pass `hyphens` through.
-Otherwise, accepting and ignoring the parameter is enough.
+Se a sua sobrescrita repassa a chamada para outro `getParagraphStyle`
+ou constrói um `ParagraphStyle`, passe `hyphens` adiante.
+Caso contrário, aceitar e ignorar o parâmetro é suficiente.
 
-## Timeline
+## Linha do tempo {:#timeline}
 
-Landed in version: 3.49.0-1.0.pre-294<br>
-In stable release: 3.50 (all platforms except the web)<br>
-On the web, landed in version: 3.50.0-1.0.pre-109<br>
-On the web, in stable release: After 3.50
+Incluído na versão: 3.49.0-1.0.pre-294<br>
+Na versão estável: 3.50 (todas as plataformas, exceto a web)<br>
+Na web, incluído na versão: 3.50.0-1.0.pre-109<br>
+Na web, na versão estável: Depois da 3.50
 
-## References
+## Referências {:#references}
 
-API documentation:
+Documentação da API:
 
 * [`Hyphens`][]
 * [`ParagraphStyle`][]
@@ -139,11 +140,11 @@ API documentation:
 * [`TextPainter`][]
 * [`TextStyle.getParagraphStyle`][]
 
-Relevant issues:
+Issues relevantes:
 
 * [Support soft hyphenation][issue-18443]
 
-Relevant PRs:
+PRs relevantes:
 
 * [Support soft hyphen (U+00AD) rendering with a Hyphens API][]
 * [Render soft hyphens on Skwasm][pr-193850]

@@ -1,83 +1,85 @@
 ---
-title: Added enabled to DropdownButtonFormField and made onChanged optional
+ia-translate: true
+title: Adicionado enabled ao DropdownButtonFormField e onChanged tornado opcional
 description: >-
-  DropdownButtonFormField in material_ui now supports an explicit enabled
-  parameter, and its onChanged callback is no longer required.
+  DropdownButtonFormField em material_ui agora oferece suporte a um parâmetro
+  enabled explícito, e o seu callback onChanged deixa de ser obrigatório.
 ---
 
 {% render "docs/breaking-changes.md" %}
 
-## Summary
+## Resumo {:#summary}
 
-In `package:material_ui`, `DropdownButtonFormField` now includes
-an `enabled` parameter to explicitly manage its interactive state,
-and the `onChanged` callback is no longer marked as `required`.
-This change is backward compatible, so existing code continues to work.
+Em `package:material_ui`, `DropdownButtonFormField` agora inclui
+um parâmetro `enabled` para controlar explicitamente o estado de interação,
+e o callback `onChanged` não é mais marcado como `required`.
+Essa mudança é retrocompatível, então o código existente continua funcionando.
 
 :::note
-The change is only available in `package:material_ui`.
-The `DropdownButtonFormField` in `package:flutter/material.dart`
-doesn't have an `enabled` parameter, and its `onChanged` is still required.
+A mudança está disponível apenas em `package:material_ui`.
+O `DropdownButtonFormField` de `package:flutter/material.dart`
+não tem um parâmetro `enabled`, e o seu `onChanged` continua sendo obrigatório.
 :::
 
-## Background
+## Contexto {:#background}
 
-Previously, `DropdownButtonFormField` didn't have an `enabled` parameter.
-The only way to disable the dropdown
-(graying it out and making it non-interactive) was to
-pass `null` to the `required` `onChanged` callback.
-This led to unintuitive code when trying to
-dynamically enable or disable the field,
-forcing developers to write conditional expressions for the callback itself,
-such as `onChanged: condition ? (value) { ... } : null`.
+Antes, `DropdownButtonFormField` não tinha um parâmetro `enabled`.
+A única forma de desabilitar o dropdown
+(deixando-o acinzentado e sem interação) era passar `null` para o
+callback `onChanged`, que era `required`.
+Isso resultava em código pouco intuitivo ao tentar
+habilitar ou desabilitar o campo dinamicamente,
+obrigando o desenvolvedor a escrever expressões condicionais no próprio callback,
+como `onChanged: condition ? (value) { ... } : null`.
 
-To improve this API, a dedicated `enabled` parameter was introduced,
-and `onChanged` was made optional.
+Para melhorar essa API, foi introduzido um parâmetro `enabled` dedicado,
+e `onChanged` passou a ser opcional.
 
-The `enabled` parameter is optional and
-determines the field's interactive state as follows:
+O parâmetro `enabled` é opcional e
+determina o estado de interação do campo da seguinte forma:
 
-* If `enabled` is `true`, the field is interactive,
-  even if `onChanged` is `null`.
-* If `enabled` is `false`, the field isn't interactive,
-  even if `onChanged` is provided.
-* If `enabled` isn't provided, the field is interactive only if
-  `onChanged` isn't `null`, which preserves backward compatibility.
+* Se `enabled` for `true`, o campo é interativo,
+  mesmo que `onChanged` seja `null`.
+* Se `enabled` for `false`, o campo não é interativo,
+  mesmo que `onChanged` seja informado.
+* Se `enabled` não for informado, o campo é interativo somente se
+  `onChanged` não for `null`, o que preserva a compatibilidade.
 
-In all of these cases,
-the field isn't interactive if `items` is empty or `null`.
+Em todos esses casos,
+o campo não é interativo se `items` estiver vazio ou for `null`.
 
-## Migration guide
+## Guia de migração {:#migration-guide}
 
 :::tip
-The `enabled` parameter is only available in `package:material_ui`.
-If your project still imports `package:flutter/material.dart`,
-first [migrate to the standalone packages][].
+O parâmetro `enabled` está disponível apenas em `package:material_ui`.
+Se o seu projeto ainda importa `package:flutter/material.dart`,
+primeiro [migre para os packages independentes][migrate to the standalone packages].
 :::
 
-If you previously disabled your `DropdownButtonFormField` by
-conditionally passing `null` to `onChanged`,
-you can migrate to the new `enabled` parameter.
-This cleanly separates the state of the widget (enabled/disabled) from
-its behavior (the callback).
+Se você desabilitava o seu `DropdownButtonFormField` passando `null`
+condicionalmente para `onChanged`,
+pode migrar para o novo parâmetro `enabled`.
+Isso separa de forma limpa o estado do widget (habilitado/desabilitado) do
+seu comportamento (o callback).
 
 :::important
-Unlike `onChanged: null`, `enabled: false` turns off the field's own
-`always`, `onUserInteraction`, and `onUserInteractionIfError` autovalidation.
-`FormState.validate` and the parent `Form`'s `autovalidateMode`
-still validate the field.
-If you rely on `AutovalidateMode.always` to show errors on a disabled field,
-keep using `onChanged: null` and omit `enabled`.
+Ao contrário de `onChanged: null`, `enabled: false` desativa a autovalidação
+própria do campo nos modos `always`, `onUserInteraction` e
+`onUserInteractionIfError`.
+`FormState.validate` e o `autovalidateMode` do `Form` pai
+ainda validam o campo.
+Se você depende de `AutovalidateMode.always` para exibir erros em um campo
+desabilitado, continue usando `onChanged: null` e omita `enabled`.
 :::
 
 [migrate to the standalone packages]: /release/breaking-changes/material-ui-and-cupertino-ui
 
-### Case 1: Statically disabled dropdown {: #case-1-statically-disabled }
+### Caso 1: dropdown desabilitado estaticamente {: #case-1-statically-disabled }
 
-For simple cases where a dropdown is permanently disabled,
-you can now simply omit `onChanged` and use `enabled: false`.
+Para casos simples em que o dropdown fica permanentemente desabilitado,
+agora você pode simplesmente omitir `onChanged` e usar `enabled: false`.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 final disabledDropdown = DropdownButtonFormField<String>(
@@ -89,7 +91,7 @@ final disabledDropdown = DropdownButtonFormField<String>(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart diff
   final disabledDropdown = DropdownButtonFormField<String>(
@@ -102,18 +104,18 @@ Code after migration:
   );
 ```
 
-### Case 2: Conditionally disabled dropdown {: #case-2-conditionally-disabled }
+### Caso 2: dropdown desabilitado condicionalmente {: #case-2-conditionally-disabled }
 
-The recommended best practice is to separate the callback from
-the interactive state by using the `enabled` parameter directly.
-Remove the condition from `onChanged` when you add `enabled`.
-If `enabled` is `true` and `onChanged` is `null`,
-users can still change the selection.
-The field stores the selected value in its form state and
-the parent `Form`'s `onChanged` callback runs,
-but the field has no callback of its own to run.
+A prática recomendada é separar o callback do
+estado de interação, usando diretamente o parâmetro `enabled`.
+Remova a condição de `onChanged` ao adicionar `enabled`.
+Se `enabled` for `true` e `onChanged` for `null`,
+os usuários ainda podem alterar a seleção.
+O campo armazena o valor selecionado no seu estado de formulário e
+o callback `onChanged` do `Form` pai é executado,
+mas o campo não tem um callback próprio para executar.
 
-Code before migration:
+Código antes da migração:
 
 ```dart
 final conditionalDropdown = DropdownButtonFormField<String>(
@@ -125,7 +127,7 @@ final conditionalDropdown = DropdownButtonFormField<String>(
 );
 ```
 
-Code after migration:
+Código após a migração:
 
 ```dart diff
   final conditionalDropdown = DropdownButtonFormField<String>(
@@ -139,25 +141,25 @@ Code after migration:
   );
 ```
 
-## Timeline
+## Linha do tempo {:#timeline}
 
-Landed in `package:material_ui` version: 1.8.0<br>
-Minimum supported Flutter version: 3.47
+Incluído na versão de `package:material_ui`: 1.8.0<br>
+Versão mínima do Flutter com suporte: 3.47
 
-## References
+## Referências {:#references}
 
-API documentation:
+Documentação da API:
 
 * [`DropdownButtonFormField`][]
 
-Relevant issues:
+Issues relevantes:
 
-* [Why is DropdownButtonFormField's onChanged required?][issue-57953]
+* [Por que o onChanged do DropdownButtonFormField é obrigatório?][issue-57953]
 
-Relevant PRs:
+PRs relevantes:
 
-* [Add enabled parameter to DropdownButtonFormField][]
-* [Original SDK proposal][] (closed without merging)
+* [Adiciona o parâmetro enabled ao DropdownButtonFormField][Add enabled parameter to DropdownButtonFormField]
+* [Proposta original para o SDK][Original SDK proposal] (fechada sem merge)
 
 [`DropdownButtonFormField`]: {{site.material_ui}}/DropdownButtonFormField-class.html
 [issue-57953]: {{site.repo.flutter}}/issues/57953

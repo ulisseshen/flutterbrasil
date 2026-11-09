@@ -127,9 +127,43 @@ Nunca resolva um conflito trocando a página pela versão em inglês e mantendo
 | Script | Para quê |
 |---|---|
 | `sincronizar_upstream.py` | Merge com o upstream preservando traduções (acima). |
-| `verificar.py [arquivos]` | Compara a estrutura com o inglês em `upstream/main`: cercas de código, code-excerpts, tags Liquid, admonitions, definições de link, âncoras e rótulos sem definição. |
+| `verificar.py [--estrito] [arquivos]` | **Checagens determinísticas** (roda no CI, ver abaixo). Sem argumentos confere todas as páginas marcadas. |
 | `gerar_todo.py` | Regenera `TODO-TRADUCAO.md` (status por seção a partir de `ia-translate`). |
 | `traduzir_release_notes.py [--todas]` | **Gera** a versão pt-BR das notas de lançamento do Flutter (`release/release-notes/`) a partir do inglês do upstream: traduz frontmatter, introdução e títulos e mantém a lista de PRs em inglês. Não use agente para essas páginas. Páginas antigas com prosa são listadas para tradução manual. |
+
+## Checagens determinísticas (CI)
+
+O workflow `.github/workflows/traducao.yml` roda em todo PR e push na `main`
+e falha se qualquer checagem der erro. Rode localmente antes do commit:
+
+```console
+python3 tool/traducao/verificar.py
+dart run dash_site --site=docs refresh-excerpts --fail-on-update --dry-run
+```
+
+O `verificar.py` acusa como **erro**:
+
+- `conflito`: marcadores de merge (`<<<<<<<`, `|||||||`, `>>>>>>>`) esquecidos;
+- `flag`: `ia-translate` fora do frontmatter (ou o comentário fora da 1ª linha
+  de um parcial);
+- `placeholder`: avisos de tradução pendente no texto ("Note for
+  translators", "To be translated"...);
+- `ingles`: página marcada como traduzida com 70% ou mais da prosa em inglês
+  (contagem de palavras-função; código, listas de PRs e links não entram);
+- `estrutura`: cercas de código, code-excerpts, tags Liquid, admonitions ou
+  âncoras diferentes do inglês, e rótulo de link sem definição;
+- `release-notes`: página de `release/release-notes/` diferente da saída de
+  `traduzir_release_notes.py`;
+- `defasada`: o inglês da página mudou no upstream depois do último sync
+  (`ultimo-sync-upstream.txt`). É a regra principal acima virando checagem;
+- `pendente`: `.traducao-pendente/` com arquivos não resolvidos.
+
+E como **aviso** (não falha, a menos que use `--estrito`): `parcial` (30% a
+70% da prosa em inglês) e `defs-link` (número de definições de link diferente
+do inglês).
+
+Quando uma checagem nova pegar um caso que escapou, acrescente-a ao
+`verificar.py` em vez de corrigir só o arquivo.
 
 ## Personalizações do Flutter Brasil fora do conteúdo
 

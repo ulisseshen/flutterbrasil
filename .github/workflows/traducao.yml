@@ -1,0 +1,56 @@
+name: Checagens de tradução
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  traducao:
+    name: Verificar traduções
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+
+      - name: Buscar o upstream (flutter/website)
+        # Histórico suficiente para comparar com o último sync registrado em
+        # tool/traducao/ultimo-sync-upstream.txt.
+        run: |
+          git fetch --no-tags --depth=3000 https://github.com/flutter/website.git \
+            main:refs/remotes/upstream/main
+          git fetch --no-tags --depth=1 https://github.com/flutter/website.git \
+            "$(cat tool/traducao/ultimo-sync-upstream.txt)" || true
+
+      - name: Checagens determinísticas (tool/traducao/verificar.py)
+        run: python3 tool/traducao/verificar.py
+
+  excerpts:
+    name: Code excerpts em sincronia com examples/
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: dart-lang/setup-dart@v1
+        with:
+          # Mesma versão usada pelo upstream em .github/workflows/docs.yml.
+          sdk: 3.14.0-315.3.beta
+      - name: Buscar dependências
+        run: dart pub get
+      - name: Verificar excerpts
+        run: dart run dash_site --site=docs refresh-excerpts --fail-on-update --dry-run

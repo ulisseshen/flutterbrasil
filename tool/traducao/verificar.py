@@ -40,6 +40,11 @@ ERROS
 - dominio:      uso de domínios que não existem (ex.: api.flutterbrasil.dev; a
                 documentação de API não é traduzida e fica em api.flutter.dev).
                 Conferido em todo o site, não só nas páginas marcadas.
+- workflow:     os jobs `linkcheck` e `firebase-validate` de
+                .github/workflows/docs.yml precisam rodar neste repo. O upstream
+                os prende a `github.repository == 'flutter/website'`; se um sync
+                trouxer essa condição de volta, link quebrado só aparece no
+                deploy da main, depois do merge.
 
 AVISOS
 - parcial:      proporção de inglês entre 0.3 e 0.7 (tradução incompleta).
@@ -295,6 +300,29 @@ def checar_arquivo(caminho, ref, sync, gerador):
     return erros, avisos
 
 
+REPO_FORK = 'ulisseshen/flutterbrasil'
+JOBS_OBRIGATORIOS = ('linkcheck', 'firebase-validate')
+
+
+def jobs_desligados_no_fork():
+    """Jobs de docs.yml cujo `if:` não deixa rodar no repo do Flutter Brasil."""
+    wf = ROOT / '.github' / 'workflows' / 'docs.yml'
+    if not wf.exists():
+        return list(JOBS_OBRIGATORIOS)
+    texto = wf.read_text()
+    faltando = []
+    for job in JOBS_OBRIGATORIOS:
+        m = re.search(rf'^  {re.escape(job)}:\n(.*?)(?=^  \S|\Z)', texto,
+                      re.M | re.S)
+        if not m:
+            faltando.append(job)
+            continue
+        cond = re.search(r'^    if:(.*)$', m.group(1), re.M)
+        if cond and REPO_FORK not in cond.group(1):
+            faltando.append(job)
+    return faltando
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--ref', default='upstream/main')
@@ -342,6 +370,15 @@ def main():
             print('✗ domínios inexistentes')
             for l in achados[:20]:
                 print(f'    erro  [dominio] {l[:140]}')
+            total_erros += 1
+
+    if not a.arquivos:
+        faltando = jobs_desligados_no_fork()
+        if faltando:
+            print('✗ .github/workflows/docs.yml')
+            for job in faltando:
+                print(f'    erro  [workflow] job `{job}` não roda em {REPO_FORK} '
+                      f'(o `if:` precisa incluir o repo)')
             total_erros += 1
 
     print(f'{len(arquivos)} arquivo(s) conferido(s): {total_erros} com erro, '

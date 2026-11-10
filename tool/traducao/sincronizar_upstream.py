@@ -170,7 +170,7 @@ def main():
         git('checkout', head, '--', *exclusivos_br)
     for p in REMOVIDOS_NO_FORK:
         if (ROOT / p).exists():
-            git('rm', '-q', '--', p)
+            git('rm', '-qf', '--', p)
 
     copiados, mesclados, conflitos, sem_destino, exclusivos = [], [], [], [], []
     mapeados = set()
